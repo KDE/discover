@@ -1,0 +1,27 @@
+set(muon_SRCS
+    main.cpp
+    MainWindow.cpp
+    ManagerWidget.cpp
+    FilterWidget.cpp
+    DetailsWidget.cpp
+    PackageModel/PackageModel.cpp
+    PackageModel/PackageProxyModel.cpp
+    PackageModel/PackageDelegate.cpp
+ )
+
+kde4_add_ui_files(muon_SRCS
+                  MainTab.ui)
+
+kde4_add_executable(muon ${muon_SRCS})
+
+target_link_libraries(muon ${KDE4_KDEUI_LIBS}
+                           ${KDE4_KIO_LIBS}
+                           qapt)
+
+install(TARGETS muon ${INSTALL_TARGETS_DEFAULT_ARGS} )
+
+
+########### install files ###############
+
+install( FILES muon.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR} )
+install( FILES muonui.rc  DESTINATION  ${DATA_INSTALL_DIR}/muon )
