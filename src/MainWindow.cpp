@@ -60,6 +60,9 @@ MainWindow::MainWindow()
     splitter->setOrientation(Qt::Horizontal);
     splitter->addWidget(m_filterBox);
     splitter->addWidget(m_managerWidget);
+    QList<int> sizes;
+    sizes << 115 << (this->width() - 115);
+    splitter->setSizes(sizes);
 
     m_stack->addWidget(splitter);
     m_stack->setCurrentWidget(splitter);
