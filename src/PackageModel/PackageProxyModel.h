@@ -41,6 +41,9 @@ public:
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
     QApt::Package *packageAt(const QModelIndex &index);
 
+protected:
+    bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
+
 private:
     QApt::Backend *m_backend;
     QApt::PackageList m_packages;

@@ -43,8 +43,13 @@ PackageProxyModel::~PackageProxyModel()
 
 void PackageProxyModel::search(const QString &searchText)
 {
-    m_packages = m_backend->search(searchText);
-    // Add packages manually via packageAt?
+    // 1-character searches are painfully slow
+    m_packages.clear();
+    if (searchText.size() > 1) {
+        m_packages = m_backend->search(searchText);
+    } else {
+        m_packages = m_backend->availablePackages();
+    }
     invalidateFilter();
 }
 
@@ -66,4 +71,25 @@ QApt::Package *PackageProxyModel::packageAt(const QModelIndex &index)
     QModelIndex sourceIndex = mapToSource(index);
     QApt::Package *package = static_cast<PackageModel*>(sourceModel())->packageAt(sourceIndex);
     return package;
+}
+
+bool PackageProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
+{
+    // This is expensive for very large datasets
+    if (m_packages.size() < 200) {
+            QApt::Package *leftPackage = static_cast<PackageModel*>(sourceModel())->packageAt(left);
+            QApt::Package *rightPackage = static_cast<PackageModel*>(sourceModel())->packageAt(right);
+            // The order in m_packages is based on relevancy when returned by m_backend->search()
+            // Use this order to determine less than
+            if (m_packages.indexOf(leftPackage) < m_packages.indexOf(rightPackage)) {
+                return false;
+            } else {
+                return true;
+            }
+    } else {
+        QString leftString = left.data(PackageModel::NameRole).toString();
+        QString rightString = right.data(PackageModel::NameRole).toString();
+
+        return leftString > rightString;
+    }
 }

@@ -60,7 +60,7 @@ ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
     browserHeader->setText(i18n("<b>Browse Packages</b>"));
 
     m_searchTimer = new QTimer(this);
-    m_searchTimer->setInterval(400);
+    m_searchTimer->setInterval(300);
     m_searchTimer->setSingleShot(true);
     connect(m_searchTimer, SIGNAL(timeout()), this, SLOT(startSearch()));
 
@@ -73,6 +73,7 @@ ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
     m_packageView->setModel(m_proxyModel);
     m_packageView->setItemDelegate(delegate);
     m_packageView->setAlternatingRowColors(true);
+    m_packageView->setSortingEnabled(true);
     m_packageView->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
     m_packageView->setRootIsDecorated(false);
     connect (m_packageView, SIGNAL(activated(const QModelIndex&)),
@@ -108,6 +109,10 @@ ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
     splitter->setOrientation(Qt::Vertical);
     splitter->addWidget(topVBox);
     splitter->addWidget(bottomVBox);
+    // TODO: Store/restore on app exit/restore
+    QList<int> sizes;
+    sizes  << 250 << 200;
+    splitter->setSizes(sizes);
 }
 
 ManagerWidget::~ManagerWidget()
@@ -122,10 +127,7 @@ void ManagerWidget::packageActivated(const QModelIndex &index)
 
 void ManagerWidget::startSearch()
 {
-    // 1-character searches are painfully slow
-    if (m_searchEdit->text().size() > 1) {
-        m_proxyModel->search(m_searchEdit->text());
-    }
+    m_proxyModel->search(m_searchEdit->text());
 }
 
 #include "ManagerWidget.moc"
