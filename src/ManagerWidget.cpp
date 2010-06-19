@@ -22,6 +22,7 @@
 
 // Qt includes
 #include <QtCore/QTimer>
+#include <QtGui/QHeaderView>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QLabel>
 #include <QtGui/QPushButton>
@@ -74,6 +75,8 @@ ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
     m_packageView->setItemDelegate(delegate);
     m_packageView->setAlternatingRowColors(true);
     m_packageView->setRootIsDecorated(false);
+    m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
+    m_packageView->header()->setStretchLastSection(false);
     connect (m_packageView, SIGNAL(activated(const QModelIndex&)),
              this, SLOT(packageActivated(const QModelIndex&)));
 
