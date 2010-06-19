@@ -25,13 +25,13 @@
 #include <KCmdLineArgs>
 
 static const char description[] =
-    I18N_NOOP("A package manager built with QApt");
+    I18N_NOOP("A package manager");
 
-static const char version[] = "0.1";
+static const char version[] = "0.1 Pre-alpha";
 
 int main(int argc, char **argv)
 {
-    KAboutData about("muon", 0, ki18n("Muon"), version, ki18n(description),
+    KAboutData about("muon", 0, ki18n("Muon Package Manager"), version, ki18n(description),
                      KAboutData::License_GPL, ki18n("(C) 2009, 2010 Jonathan Thomas"), KLocalizedString(), 0, "echidnaman@kubuntu.org");
     about.addAuthor( ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org" );
     about.setProgramIconName("application-x-deb");
