@@ -62,7 +62,7 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
         return false;
     }
 
-    bool result = (m_packages.isEmpty() || m_packages.contains(package));
+    bool result = (m_packages.contains(package));
     return result;
 }
 
