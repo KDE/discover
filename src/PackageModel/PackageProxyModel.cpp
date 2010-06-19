@@ -43,7 +43,7 @@ PackageProxyModel::~PackageProxyModel()
 
 void PackageProxyModel::search(const QString &searchText)
 {
-    // 1-character searches are painfully slow
+    // 1-character searches are painfully slow. >= 2 chars are fine, though
     m_packages.clear();
     if (searchText.size() > 1) {
         m_packages = m_backend->search(searchText);
@@ -75,8 +75,8 @@ QApt::Package *PackageProxyModel::packageAt(const QModelIndex &index)
 
 bool PackageProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
 {
-    // This is expensive for very large datasets
     if (m_packages.size() < 200) {
+            // This is expensive for very large datasets. It takes about 3 seconds with 30,000 packages
             QApt::Package *leftPackage = static_cast<PackageModel*>(sourceModel())->packageAt(left);
             QApt::Package *rightPackage = static_cast<PackageModel*>(sourceModel())->packageAt(right);
             // The order in m_packages is based on relevancy when returned by m_backend->search()
