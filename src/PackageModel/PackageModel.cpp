@@ -58,7 +58,7 @@ QVariant PackageModel::data(const QModelIndex & index, int role) const
             return m_packages[index.row()]->state();
         case Qt::ToolTipRole:
             return QVariant();
-        }
+    }
 
     return QVariant();
 }

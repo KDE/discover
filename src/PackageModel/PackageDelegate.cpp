@@ -128,6 +128,23 @@ void PackageDelegate::paintPackageName(QPainter* painter, const QStyleOptionView
 
     QLinearGradient gradient;
 
+    // Gradient part of the background - fading of the text at the end
+    if (leftToRight) {
+        gradient = QLinearGradient(left + width - m_spacing - 16 /*fade length*/, 0,
+                left + width - m_spacing, 0);
+        gradient.setColorAt(0, Qt::white);
+        gradient.setColorAt(1, Qt::transparent);
+    } else {
+        gradient = QLinearGradient(left + m_spacing, 0,
+                left + m_spacing + 16, 0);
+        gradient.setColorAt(0, Qt::transparent);
+        gradient.setColorAt(1, Qt::white);
+    }
+
+    QRect paintRect = option.rect;
+    p.setCompositionMode(QPainter::CompositionMode_DestinationIn);
+    p.fillRect(paintRect, gradient);
+
     p.end();
 
     painter->drawPixmap(option.rect.topLeft(), pixmap);
