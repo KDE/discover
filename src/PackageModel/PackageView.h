@@ -18,46 +18,17 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MANAGERWIDGET_H
-#define MANAGERWIDGET_H
+#ifndef PACKAGEVIEW_H
+#define PACKAGEVIEW_H
 
-#include <QModelIndex>
+#include <QtGui/QTreeView>
 
-#include <KVBox>
-
-class QTimer;
-class QTreeView;
-
-class KLineEdit;
-
-class PackageModel;
-class PackageProxyModel;
-class PackageView;
-class DetailsWidget;
-
-namespace QApt {
-    class Backend;
-}
-
-class ManagerWidget : public KVBox
+class PackageView : public QTreeView
 {
     Q_OBJECT
 public:
-    explicit ManagerWidget(QWidget *parent, QApt::Backend *backend);
-    ~ManagerWidget();
-
-private:
-    QApt::Backend *m_backend;
-    QTimer *m_searchTimer;
-    KLineEdit *m_searchEdit;
-    PackageModel *m_model;
-    PackageProxyModel *m_proxyModel;
-    PackageView *m_packageView;
-    DetailsWidget *m_detailsWidget;
-
-public Q_SLOTS:
-    void packageActivated(const QModelIndex &index);
-    void startSearch();
+    explicit PackageView(QWidget *parent);
+    ~PackageView();
 };
 
 #endif

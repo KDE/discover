@@ -6,6 +6,7 @@ set(muon_SRCS
     DetailsWidget.cpp
     PackageModel/PackageModel.cpp
     PackageModel/PackageProxyModel.cpp
+    PackageModel/PackageView.cpp
     PackageModel/PackageDelegate.cpp
  )
 

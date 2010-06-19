@@ -42,6 +42,7 @@
 #include "DetailsWidget.h"
 #include "PackageModel/PackageModel.h"
 #include "PackageModel/PackageProxyModel.h"
+#include "PackageModel/PackageView.h"
 #include "PackageModel/PackageDelegate.h"
 
 ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
@@ -70,13 +71,9 @@ ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
     m_searchEdit->setClearButtonShown(true);
     connect(m_searchEdit, SIGNAL(textChanged(const QString &)), m_searchTimer, SLOT(start()));
 
-    m_packageView = new QTreeView(topVBox);
+    m_packageView = new PackageView(topVBox);
     m_packageView->setModel(m_proxyModel);
     m_packageView->setItemDelegate(delegate);
-    m_packageView->setAlternatingRowColors(true);
-    m_packageView->setRootIsDecorated(false);
-    m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
-    m_packageView->header()->setStretchLastSection(false);
     connect (m_packageView, SIGNAL(activated(const QModelIndex&)),
              this, SLOT(packageActivated(const QModelIndex&)));
 
@@ -85,6 +82,7 @@ ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
         m_model->addPackage(package);
     }
     m_packageView->setSortingEnabled(true);
+    m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
 
     KVBox *bottomVBox = new KVBox;
 
