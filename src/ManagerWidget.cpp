@@ -73,7 +73,6 @@ ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
     m_packageView->setModel(m_proxyModel);
     m_packageView->setItemDelegate(delegate);
     m_packageView->setAlternatingRowColors(true);
-    m_packageView->setSortingEnabled(true);
     m_packageView->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
     m_packageView->setRootIsDecorated(false);
     connect (m_packageView, SIGNAL(activated(const QModelIndex&)),
@@ -83,6 +82,7 @@ ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
     foreach (QApt::Package *package, list) {
         m_model->addPackage(package);
     }
+    m_packageView->setSortingEnabled(true);
 
     KVBox *bottomVBox = new KVBox;
 
