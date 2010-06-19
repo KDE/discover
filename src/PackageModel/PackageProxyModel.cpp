@@ -53,7 +53,7 @@ void PackageProxyModel::search(const QString &searchText)
         m_packages = m_backend->availablePackages();
         m_sortByRelevancy = false;
     }
-    invalidateFilter();
+    invalidate();
 }
 
 bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
