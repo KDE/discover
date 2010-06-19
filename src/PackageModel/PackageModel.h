@@ -46,7 +46,9 @@ public:
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
 
     void addPackage(QApt::Package *package);
+    void addPackages(QApt::PackageList list);
     void removePackage(QApt::Package *package);
+    void removePackages(QApt::PackageList list);
     QApt::Package *packageAt(const QModelIndex &index);
 
 private:

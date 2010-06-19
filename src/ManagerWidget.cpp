@@ -77,10 +77,7 @@ ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
     connect (m_packageView, SIGNAL(activated(const QModelIndex&)),
              this, SLOT(packageActivated(const QModelIndex&)));
 
-    QApt::PackageList list = m_backend->availablePackages();
-    foreach (QApt::Package *package, list) {
-        m_model->addPackage(package);
-    }
+    m_model->addPackages(m_backend->availablePackages());
     m_packageView->setSortingEnabled(true);
     m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
 

@@ -86,6 +86,13 @@ void PackageModel::addPackage(QApt::Package *package)
     endInsertRows();
 }
 
+void PackageModel::addPackages(QApt::PackageList list)
+{
+    foreach (QApt::Package *package, list) {
+        addPackage(package);
+    }
+}
+
 void PackageModel::removePackage(QApt::Package *package)
 {
     int index = m_packages.indexOf(package);
@@ -93,6 +100,13 @@ void PackageModel::removePackage(QApt::Package *package)
         beginRemoveRows(QModelIndex(), index, index);
         m_packages.removeAt(index);
         endRemoveRows();
+    }
+}
+
+void PackageModel::removePackages(QApt::PackageList list)
+{
+    foreach (QApt::Package *package, list) {
+        removePackage(package);
     }
 }
 
