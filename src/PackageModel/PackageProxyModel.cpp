@@ -71,6 +71,7 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
 
 QApt::Package *PackageProxyModel::packageAt(const QModelIndex &index)
 {
+    // Since our representation is almost bound to change, we need to grab the parent model's index
     QModelIndex sourceIndex = mapToSource(index);
     QApt::Package *package = static_cast<PackageModel*>(sourceModel())->packageAt(sourceIndex);
     return package;
