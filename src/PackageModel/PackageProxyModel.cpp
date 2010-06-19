@@ -34,6 +34,7 @@ PackageProxyModel::PackageProxyModel(QObject *parent, QApt::Backend *backend)
         , m_backend(backend)
         , m_packages(backend->availablePackages())
         , m_searchText(QString())
+        , m_sortByRelevancy(false)
 {
 }
 
@@ -47,8 +48,10 @@ void PackageProxyModel::search(const QString &searchText)
     m_packages.clear();
     if (searchText.size() > 1) {
         m_packages = m_backend->search(searchText);
+        m_sortByRelevancy = true;
     } else {
         m_packages = m_backend->availablePackages();
+        m_sortByRelevancy = false;
     }
     invalidateFilter();
 }
@@ -75,7 +78,7 @@ QApt::Package *PackageProxyModel::packageAt(const QModelIndex &index)
 
 bool PackageProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
 {
-    if (m_packages.size() < 200) {
+    if (m_sortByRelevancy) {
             // This is expensive for very large datasets. It takes about 3 seconds with 30,000 packages
             QApt::Package *leftPackage = static_cast<PackageModel*>(sourceModel())->packageAt(left);
             QApt::Package *rightPackage = static_cast<PackageModel*>(sourceModel())->packageAt(right);

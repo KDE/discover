@@ -48,6 +48,7 @@ private:
     QApt::Backend *m_backend;
     QApt::PackageList m_packages;
     QString m_searchText;
+    bool m_sortByRelevancy;
 };
 
 #endif
