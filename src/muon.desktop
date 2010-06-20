@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Muon
 Name[pt]=Muon
+Name[pt_BR]=Muon
 Name[uk]=Muon
 Name[x-test]=xxMuonxx
 Exec=muon %i -caption "%c"
