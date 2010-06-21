@@ -24,7 +24,7 @@
 #include <QSortFilterProxyModel>
 #include <QString>
 
-#include <libqapt/globals.h>
+#include <libqapt/package.h>
 
 namespace QApt {
     class Backend;
@@ -39,6 +39,7 @@ public:
 
     void search(const QString &searchText);
     void setGroupFilter(const QString &filterText);
+    void setStateFilter(QApt::Package::PackageState state);
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
     QApt::Package *packageAt(const QModelIndex &index);
 
@@ -50,6 +51,7 @@ private:
     QApt::PackageList m_packages;
     QString m_searchText;
     QString m_groupFilter;
+    QApt::Package::PackageState m_stateFilter;
     bool m_sortByRelevancy;
 };
 

@@ -40,7 +40,7 @@
 
 // Own includes
 #include "DetailsWidget.h"
-#include "GroupStrings.h"
+#include "MuonStrings.h"
 #include "PackageModel/PackageModel.h"
 #include "PackageModel/PackageProxyModel.h"
 #include "PackageModel/PackageView.h"
@@ -130,9 +130,17 @@ void ManagerWidget::startSearch()
 
 void ManagerWidget::filterByGroup(const QString &groupName)
 {
-    QString groupKey = GroupStrings::groupKey(groupName);
+    QString groupKey = MuonStrings::groupKey(groupName);
+    if (groupName == i18n("All")) {
+        groupKey.clear();
+    }
     m_proxyModel->setGroupFilter(groupKey);
-    kDebug() << groupKey;
+}
+
+void ManagerWidget::filterByStatus(const QString &statusName)
+{
+    QApt::Package::PackageState state = MuonStrings::packageStateKey(statusName);
+    m_proxyModel->setStateFilter(state);
 }
 
 #include "ManagerWidget.moc"

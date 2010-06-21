@@ -34,7 +34,7 @@
 
 #include <libqapt/backend.h>
 
-#include "GroupStrings.h"
+#include "MuonStrings.h"
 
 FilterWidget::FilterWidget(QWidget *parent, QApt::Backend *backend)
     : KVBox(parent)
@@ -59,10 +59,13 @@ FilterWidget::FilterWidget(QWidget *parent, QApt::Backend *backend)
             this, SLOT(categoryActivated(const QModelIndex&)));
 
     m_statusList = new QListView(this);
+    m_statusList->setAlternatingRowColors(true);
     m_filterBox->addItem(m_statusList, KIcon(), i18n("By Status"));
     m_statusModel = new QStandardItemModel;
     populateStatuses();
     m_statusList->setModel(m_statusModel);
+    connect(m_statusList, SIGNAL(activated(const QModelIndex&)),
+            this, SLOT(statusActivated(const QModelIndex&)));
 
     m_originList = new QListView(this);
     m_filterBox->addItem(m_originList, KIcon(), i18n("By Origin"));
@@ -78,7 +81,7 @@ void FilterWidget::populateCategories()
     QSet<QString> groupSet;
 
     foreach (QApt::Group *group, groups) {
-        QString groupName = GroupStrings::groupName(group->name());
+        QString groupName = MuonStrings::groupName(group->name());
 
         if (!groupName.isEmpty()) {
             groupSet << groupName;
@@ -103,21 +106,26 @@ void FilterWidget::populateCategories()
 
 void FilterWidget::populateStatuses()
 {
+    QStandardItem *defaultItem = new QStandardItem;
+    defaultItem->setIcon(KIcon("bookmark-new-list"));
+    defaultItem->setText(i18n("All"));
+    m_statusModel->appendRow(defaultItem);
+
     QStandardItem *installedItem = new QStandardItem;
     installedItem->setIcon(KIcon("download"));
-    installedItem->setText(i18n("Installed"));
+    installedItem->setText(MuonStrings::packageStateName(QApt::Package::Installed));
 
     QStandardItem *notInstalledItem = new QStandardItem;
     notInstalledItem->setIcon(KIcon("application-x-deb"));
-    notInstalledItem->setText(i18n("Not Installed"));
+    notInstalledItem->setText(MuonStrings::packageStateName(QApt::Package::ToKeep));
 
     QStandardItem *upgradeableItem = new QStandardItem;
     upgradeableItem->setIcon(KIcon("system-software-update"));
-    upgradeableItem->setText(i18n("Upgradeable"));
+    upgradeableItem->setText(MuonStrings::packageStateName(QApt::Package::Upgradeable));
 
     QStandardItem *brokenItem = new QStandardItem;
     brokenItem->setIcon(KIcon("dialog-cancel"));
-    brokenItem->setText(i18n("Broken"));
+    brokenItem->setText(MuonStrings::packageStateName(QApt::Package::NowBroken));
 
     m_statusModel->appendRow(installedItem);
     m_statusModel->appendRow(notInstalledItem);
@@ -129,6 +137,12 @@ void FilterWidget::categoryActivated(const QModelIndex &index)
 {
     QString groupName = index.data(Qt::DisplayRole).toString();
     emit filterByGroup(groupName);
+}
+
+void FilterWidget::statusActivated(const QModelIndex &index)
+{
+    QString statusName = index.data(Qt::DisplayRole).toString();
+    emit filterByStatus(statusName);
 }
 
 #include "FilterWidget.moc"

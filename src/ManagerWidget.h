@@ -59,6 +59,7 @@ public Q_SLOTS:
     void packageActivated(const QModelIndex &index);
     void startSearch();
     void filterByGroup(const QString &groupName);
+    void filterByStatus(const QString &statusName);
 };
 
 #endif

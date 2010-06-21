@@ -1,7 +1,7 @@
 set(muon_SRCS
     main.cpp
     MainWindow.cpp
-    GroupStrings.cpp
+    MuonStrings.cpp
     ManagerWidget.cpp
     FilterWidget.cpp
     DetailsWidget.cpp

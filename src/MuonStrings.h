@@ -23,10 +23,14 @@
 
 #include <kdemacros.h>
 
-namespace GroupStrings
+#include <libqapt/package.h>
+
+namespace MuonStrings
 {
     KDE_EXPORT QString groupName(const QString &name);
     KDE_EXPORT QString groupKey(const QString &text);
+    KDE_EXPORT QString packageStateName(QApt::Package::PackageState state);
+    KDE_EXPORT QApt::Package::PackageState packageStateKey(const QString &text);
 };
 
 #endif

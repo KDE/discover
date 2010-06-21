@@ -64,9 +64,11 @@ private Q_SLOTS:
 //     void populateOrigins();
 
     void categoryActivated(const QModelIndex &index);
+    void statusActivated(const QModelIndex &index);
 
 signals:
     void filterByGroup(const QString &groupText);
+    void filterByStatus(const QString &statusText);
 };
 
 #endif

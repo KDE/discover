@@ -18,7 +18,7 @@
  *   Boston, MA 02110-1301, USA.                                           *
  ***************************************************************************/
 
-#include "GroupStrings.h"
+#include "MuonStrings.h"
 
 #include <KLocale>
 
@@ -152,7 +152,7 @@ QHash<QString, QString> groupMap()
     return hash;
 }
 
-QString GroupStrings::groupName(const QString &name)
+QString MuonStrings::groupName(const QString &name)
 {
     QHash<QString, QString> groups = groupMap();
     QString group;
@@ -175,9 +175,38 @@ QString GroupStrings::groupName(const QString &name)
     return QString();
 }
 
-QString GroupStrings::groupKey(const QString &text)
+QString MuonStrings::groupKey(const QString &text)
 {
     QHash<QString, QString> groups = groupMap();
 
     return groups.key(text);
 }
+
+QHash<int, QString> stateMap()
+{
+    QHash<int, QString> hash;
+    hash[QApt::Package::ToKeep] = i18n("Not Installed");
+    hash[QApt::Package::Installed] = i18n("Installed");
+    hash[QApt::Package::Upgradeable] = i18n("Upgradeable");
+    hash[QApt::Package::NowBroken] = i18n("Broken");
+
+    return hash;
+}
+
+QString MuonStrings::packageStateName(QApt::Package::PackageState state)
+{
+    QHash<int, QString> states = stateMap();
+
+    if (states.contains(state)) {
+        return states[state];
+    }
+    return QString();
+}
+
+QApt::Package::PackageState MuonStrings::packageStateKey(const QString &text)
+{
+    QHash<int, QString> states = stateMap();
+
+    return (QApt::Package::PackageState)states.key(text);
+}
+ 

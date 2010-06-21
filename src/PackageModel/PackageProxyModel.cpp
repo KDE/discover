@@ -36,6 +36,7 @@ PackageProxyModel::PackageProxyModel(QObject *parent, QApt::Backend *backend)
         , m_packages(backend->availablePackages())
         , m_searchText(QString())
         , m_groupFilter(QString())
+        , m_stateFilter(QApt::Package::ToKeep)
         , m_sortByRelevancy(false)
 {
 }
@@ -61,7 +62,13 @@ void PackageProxyModel::search(const QString &searchText)
 void PackageProxyModel::setGroupFilter(const QString &filterText)
 {
     m_groupFilter = filterText;
-    invalidateFilter();
+    invalidate();
+}
+
+void PackageProxyModel::setStateFilter(QApt::Package::PackageState state)
+{
+    m_stateFilter = state;
+    invalidate();
 }
 
 bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
@@ -79,7 +86,13 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
         }
     }
 
-    bool result = (m_packages.contains(package));
+    if (!m_stateFilter == 0) {
+        if ((bool)(package->state() & m_stateFilter) == false) {
+            return false;
+        }
+    }
+
+    bool result = m_packages.contains(package);
     return result;
 }
 
