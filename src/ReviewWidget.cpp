@@ -18,34 +18,30 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "ManagerWidget.h"
+#include "ReviewWidget.h"
 
 // Qt includes
-#include <QtCore/QTimer>
 #include <QtGui/QHeaderView>
 #include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
 #include <QtGui/QPushButton>
-#include <QtGui/QSplitter>
+#include <QtGui/QLabel>
 
 // KDE includes
-#include <KDebug>
 #include <KIcon>
-#include <KLineEdit>
 #include <KLocale>
+#include <KDebug>
 
 // LibQApt includes
 #include <libqapt/backend.h>
 
 // Own includes
-#include "DetailsWidget.h"
 #include "MuonStrings.h"
 #include "PackageModel/PackageModel.h"
 #include "PackageModel/PackageProxyModel.h"
 #include "PackageModel/PackageView.h"
 #include "PackageModel/PackageDelegate.h"
 
-ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
+ReviewWidget::ReviewWidget(QWidget *parent, QApt::Backend *backend)
     : KVBox(parent)
     , m_backend(backend)
 {
@@ -55,38 +51,22 @@ ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
     m_proxyModel = new PackageProxyModel(this, m_backend);
     m_proxyModel->setSourceModel(m_model);
 
-    KVBox *topVBox = new KVBox;
-
     QLabel *browserHeader = new QLabel(this);
     browserHeader->setTextFormat(Qt::RichText);
-    browserHeader->setText(i18n("<b>Browse Packages</b>"));
+    browserHeader->setText(i18n("<b>Review and Apply Changes</b>"));
 
-    m_searchTimer = new QTimer(this);
-    m_searchTimer->setInterval(300);
-    m_searchTimer->setSingleShot(true);
-    connect(m_searchTimer, SIGNAL(timeout()), this, SLOT(startSearch()));
-
-    m_searchEdit = new KLineEdit(topVBox);
-    m_searchEdit->setClickMessage("Search for packages");
-    m_searchEdit->setClearButtonShown(true);
-    connect(m_searchEdit, SIGNAL(textChanged(const QString &)), m_searchTimer, SLOT(start()));
-
-    m_packageView = new PackageView(topVBox);
+    m_packageView = new PackageView(this);
     m_packageView->setModel(m_proxyModel);
     m_packageView->setItemDelegate(delegate);
     connect (m_packageView, SIGNAL(activated(const QModelIndex&)),
              this, SLOT(packageActivated(const QModelIndex&)));
 
-    m_model->addPackages(m_backend->availablePackages());
+    m_model->addPackages(m_backend->markedPackages());
     m_packageView->setSortingEnabled(true);
     m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
 
-    KVBox *bottomVBox = new KVBox;
-
-    m_detailsWidget = new DetailsWidget(bottomVBox);
-
-    QWidget *hbox = new QWidget(bottomVBox);
-    QHBoxLayout *layout = new QHBoxLayout(hbox);
+    QWidget *hbox = new QWidget(this);
+    QHBoxLayout *layout = new QHBoxLayout(this);
     hbox->setLayout(layout);
     layout->addStretch();
 
@@ -98,55 +78,13 @@ ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
 
     QPushButton *applyButton = new QPushButton(hbox);
     applyButton->setIcon(KIcon("dialog-ok-apply"));
-    applyButton->setText(i18n("Review Changes"));
-    applyButton->setEnabled(false);
+    applyButton->setText(i18n("Apply Changes"));
+    connect(applyButton, SIGNAL(clicked()), this, SIGNAL(startCommit()));
     layout->addWidget(applyButton);
-
-    QSplitter *splitter = new QSplitter(this);
-    splitter->setOrientation(Qt::Vertical);
-    splitter->addWidget(topVBox);
-    splitter->addWidget(bottomVBox);
-    // TODO: Store/restore on app exit/restore
-    QList<int> sizes;
-    sizes  << 250 << 200;
-    splitter->setSizes(sizes);
 }
 
-ManagerWidget::~ManagerWidget()
+ReviewWidget::~ReviewWidget()
 {
 }
 
-void ManagerWidget::reload()
-{
-    m_model->clear();
-    m_proxyModel->clear();
-    m_model->addPackages(m_backend->availablePackages());
-}
-
-void ManagerWidget::packageActivated(const QModelIndex &index)
-{
-    QApt::Package *package = m_proxyModel->packageAt(index);
-    m_detailsWidget->setPackage(package);
-}
-
-void ManagerWidget::startSearch()
-{
-    m_proxyModel->search(m_searchEdit->text());
-}
-
-void ManagerWidget::filterByGroup(const QString &groupName)
-{
-    QString groupKey = MuonStrings::groupKey(groupName);
-    if (groupName == i18n("All")) {
-        groupKey.clear();
-    }
-    m_proxyModel->setGroupFilter(groupKey);
-}
-
-void ManagerWidget::filterByStatus(const QString &statusName)
-{
-    QApt::Package::PackageState state = MuonStrings::packageStateKey(statusName);
-    m_proxyModel->setStateFilter(state);
-}
-
-#include "ManagerWidget.moc"
+#include "ReviewWidget.moc"

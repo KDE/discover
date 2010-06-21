@@ -18,48 +18,31 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MANAGERWIDGET_H
-#define MANAGERWIDGET_H
+#ifndef COMMITWIDGET_H
+#define COMMITWIDGET_H
 
-#include <QModelIndex>
+#include <QtGui/QWidget>
 
-#include <KVBox>
+class QLabel;
+class QProgressBar;
 
-class QTimer;
-
-class KLineEdit;
-
-class PackageModel;
-class PackageProxyModel;
-class PackageView;
-class DetailsWidget;
-
-namespace QApt {
-    class Backend;
-}
-
-class ManagerWidget : public KVBox
+class CommitWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ManagerWidget(QWidget *parent, QApt::Backend *backend);
-    ~ManagerWidget();
+    CommitWidget(QWidget *parent = 0);
+    ~CommitWidget();
+
+    void setLabelText(const QString &text);
+    void setProgress(int percentage);
+    void clear();
 
 private:
-    QApt::Backend *m_backend;
-    QTimer *m_searchTimer;
-    KLineEdit *m_searchEdit;
-    PackageModel *m_model;
-    PackageProxyModel *m_proxyModel;
-    PackageView *m_packageView;
-    DetailsWidget *m_detailsWidget;
+    QLabel *m_commitLabel;
+    QProgressBar *m_progressBar;
 
 public Q_SLOTS:
-    void reload();
-    void packageActivated(const QModelIndex &index);
-    void startSearch();
-    void filterByGroup(const QString &groupName);
-    void filterByStatus(const QString &statusName);
+    void updateCommitProgress(const QString& message, int percentage);
 };
 
 #endif

@@ -4,6 +4,8 @@ set(muon_SRCS
     MuonStrings.cpp
     ManagerWidget.cpp
     ReviewWidget.cpp
+    DownloadWidget.cpp
+    CommitWidget.cpp
     FilterWidget.cpp
     DetailsWidget.cpp
     PackageModel/PackageModel.cpp

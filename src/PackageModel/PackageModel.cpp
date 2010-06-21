@@ -46,6 +46,9 @@ int PackageModel::columnCount(const QModelIndex & /*parent*/) const
 
 QVariant PackageModel::data(const QModelIndex & index, int role) const
 {
+    if (!index.isValid()) {
+        return false;
+    }
     switch (role) {
         case NameRole:
             return m_packages[index.row()]->name();
@@ -108,6 +111,13 @@ void PackageModel::removePackages(QApt::PackageList list)
     foreach (QApt::Package *package, list) {
         removePackage(package);
     }
+}
+
+void PackageModel::clear()
+{
+    beginRemoveRows(QModelIndex(), 0, m_packages.size());
+    m_packages.clear();
+    endRemoveRows();
 }
 
 QApt::Package *PackageModel::packageAt(const QModelIndex &index)

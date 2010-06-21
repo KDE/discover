@@ -18,48 +18,51 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MANAGERWIDGET_H
-#define MANAGERWIDGET_H
+#include "CommitWidget.h"
 
-#include <QModelIndex>
+// Qt includes
+#include <QtGui/QLabel>
+#include <QtGui/QProgressBar>
+#include <QVBoxLayout>
 
-#include <KVBox>
+CommitWidget::CommitWidget(QWidget *parent)
+    : QWidget(parent)
+{
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    setLayout(layout);
 
-class QTimer;
-
-class KLineEdit;
-
-class PackageModel;
-class PackageProxyModel;
-class PackageView;
-class DetailsWidget;
-
-namespace QApt {
-    class Backend;
+    layout->addStretch();
+    m_commitLabel = new QLabel(this);
+    layout->addWidget(m_commitLabel);
+    m_progressBar = new QProgressBar(this);
+    layout->addWidget(m_progressBar);
+    layout->addStretch();
 }
 
-class ManagerWidget : public KVBox
+CommitWidget::~CommitWidget()
 {
-    Q_OBJECT
-public:
-    explicit ManagerWidget(QWidget *parent, QApt::Backend *backend);
-    ~ManagerWidget();
+}
 
-private:
-    QApt::Backend *m_backend;
-    QTimer *m_searchTimer;
-    KLineEdit *m_searchEdit;
-    PackageModel *m_model;
-    PackageProxyModel *m_proxyModel;
-    PackageView *m_packageView;
-    DetailsWidget *m_detailsWidget;
+void CommitWidget::setLabelText(const QString &text)
+{
+    m_commitLabel->setText(text);
+}
 
-public Q_SLOTS:
-    void reload();
-    void packageActivated(const QModelIndex &index);
-    void startSearch();
-    void filterByGroup(const QString &groupName);
-    void filterByStatus(const QString &statusName);
-};
+void CommitWidget::setProgress(int percentage)
+{
+    m_progressBar->setValue(percentage);
+}
 
-#endif
+void CommitWidget::updateCommitProgress(const QString& message, int percentage)
+{
+    setLabelText(message);
+    setProgress(percentage);
+}
+
+void CommitWidget::clear()
+{
+    m_commitLabel->setText(QString());
+    m_progressBar->setValue(0);
+}
+
+#include "CommitWidget.moc"

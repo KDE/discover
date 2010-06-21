@@ -18,48 +18,41 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MANAGERWIDGET_H
-#define MANAGERWIDGET_H
+#ifndef REVIEWWIDGET_H
+#define REVIEWWIDGET_H
 
+// Qt includes
 #include <QModelIndex>
 
+// KDE includes
 #include <KVBox>
-
-class QTimer;
 
 class KLineEdit;
 
 class PackageModel;
 class PackageProxyModel;
 class PackageView;
-class DetailsWidget;
 
 namespace QApt {
     class Backend;
 }
 
-class ManagerWidget : public KVBox
+class ReviewWidget : public KVBox
 {
     Q_OBJECT
 public:
-    explicit ManagerWidget(QWidget *parent, QApt::Backend *backend);
-    ~ManagerWidget();
+    ReviewWidget(QWidget *parent, QApt::Backend *backend);
+    ~ReviewWidget();
 
 private:
     QApt::Backend *m_backend;
-    QTimer *m_searchTimer;
-    KLineEdit *m_searchEdit;
+
     PackageModel *m_model;
     PackageProxyModel *m_proxyModel;
     PackageView *m_packageView;
-    DetailsWidget *m_detailsWidget;
 
-public Q_SLOTS:
-    void reload();
-    void packageActivated(const QModelIndex &index);
-    void startSearch();
-    void filterByGroup(const QString &groupName);
-    void filterByStatus(const QString &statusName);
+signals:
+    void startCommit();
 };
 
 #endif

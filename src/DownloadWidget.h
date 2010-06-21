@@ -18,48 +18,50 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MANAGERWIDGET_H
-#define MANAGERWIDGET_H
+#ifndef DOWNLOADWIDGET_H
+#define DOWNLOADWIDGET_H
 
-#include <QModelIndex>
+#include <QItemDelegate>
+#include <QTextDocument>
+#include <QWidget>
 
 #include <KVBox>
 
-class QTimer;
+class QLabel;
+class QListView;
+class QProgressBar;
+class QStandardItemModel;
+class QPushButton;
 
-class KLineEdit;
-
-class PackageModel;
-class PackageProxyModel;
-class PackageView;
-class DetailsWidget;
-
-namespace QApt {
-    class Backend;
-}
-
-class ManagerWidget : public KVBox
+class DownloadWidget : public KVBox
 {
     Q_OBJECT
 public:
-    explicit ManagerWidget(QWidget *parent, QApt::Backend *backend);
-    ~ManagerWidget();
+    DownloadWidget(QWidget *parent);
+
+    ~DownloadWidget();
+
+    void clear();
+    void addItem(const QString &message);
+    void setHeaderText(const QString &text);
 
 private:
-    QApt::Backend *m_backend;
-    QTimer *m_searchTimer;
-    KLineEdit *m_searchEdit;
-    PackageModel *m_model;
-    PackageProxyModel *m_proxyModel;
-    PackageView *m_packageView;
-    DetailsWidget *m_detailsWidget;
+    QLabel *m_headerLabel;
+    QListView *m_downloadView;
+    QStandardItemModel *m_downloadModel;
+    QProgressBar *m_totalProgress;
+    QLabel *m_downloadLabel;
+    QPushButton *m_cancelButton;
 
 public Q_SLOTS:
-    void reload();
-    void packageActivated(const QModelIndex &index);
-    void startSearch();
-    void filterByGroup(const QString &groupName);
-    void filterByStatus(const QString &statusName);
+    void updateDownloadProgress(int percentage, int speed, int ETA);
+    void updateDownloadMessage(int flag, const QString &message);
+
+private Q_SLOTS:
+    void cancelButtonPressed();
+
+signals:
+    void cancelDownload();
 };
 
 #endif

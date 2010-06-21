@@ -49,6 +49,7 @@ public:
     void addPackages(QApt::PackageList list);
     void removePackage(QApt::Package *package);
     void removePackages(QApt::PackageList list);
+    void clear();
     QApt::Package *packageAt(const QModelIndex &index);
 
 private:

@@ -23,6 +23,9 @@
 
 #include <kxmlguiwindow.h>
 
+#include <libqapt/globals.h>
+
+class QSplitter;
 class QStackedWidget;
 class QToolBox;
 class KToggleAction;
@@ -30,6 +33,8 @@ class KToggleAction;
 class FilterWidget;
 class ManagerWidget;
 class ReviewWidget;
+class DownloadWidget;
+class CommitWidget;
 
 namespace QApt {
     class Backend;
@@ -55,19 +60,26 @@ private:
     QApt::Backend *m_backend;
 
     QStackedWidget *m_stack;
+    QSplitter *m_mainWidget;
     KToggleAction *m_toolbarAction;
 
     FilterWidget *m_filterBox;
     ManagerWidget *m_managerWidget;
     ReviewWidget *m_reviewWidget;
+    DownloadWidget *m_downloadWidget;
+    CommitWidget *m_commitWidget;
 
 public Q_SLOTS:
-    void slotUpgrade();
-    void reviewChanges();
 
 private Q_SLOTS:
     void setupActions();
     void slotQuit();
+    void slotUpgrade();
+    void workerEvent(QApt::WorkerEvent event);
+    void reviewChanges();
+    void startCommit();
+    void initDownloadWidget();
+    void initCommitWidget();
 };
 
 #endif // _MUON_H_

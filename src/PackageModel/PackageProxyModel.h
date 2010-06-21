@@ -42,6 +42,7 @@ public:
     void setStateFilter(QApt::Package::PackageState state);
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
     QApt::Package *packageAt(const QModelIndex &index);
+    void reset();
 
 protected:
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
