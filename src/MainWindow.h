@@ -28,7 +28,7 @@
 class QSplitter;
 class QStackedWidget;
 class QToolBox;
-class KToggleAction;
+class KAction;
 
 class FilterWidget;
 class ManagerWidget;
@@ -61,7 +61,8 @@ private:
 
     QStackedWidget *m_stack;
     QSplitter *m_mainWidget;
-    KToggleAction *m_toolbarAction;
+    KAction *m_updateAction;
+    KAction *m_upgradeAction;
 
     FilterWidget *m_filterBox;
     ManagerWidget *m_managerWidget;
@@ -81,6 +82,8 @@ private Q_SLOTS:
     void startCommit();
     void initDownloadWidget();
     void initCommitWidget();
+    void reload();
+    void reloadActions();
 };
 
 #endif // _MUON_H_

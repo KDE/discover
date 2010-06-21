@@ -34,6 +34,7 @@
 #include <KLocale>
 #include <KStandardAction>
 #include <KStatusBar>
+#include <KToolBar>
 #include <KDebug>
 
 // LibQApt includes
@@ -47,7 +48,7 @@
 #include "ReviewWidget.h"
 
 MainWindow::MainWindow()
-    : KXmlGuiWindow()
+    : KXmlGuiWindow(0)
     , m_backend(0)
     , m_stack(0)
     , m_reviewWidget(0)
@@ -109,14 +110,12 @@ void MainWindow::setupActions()
     updateAction->setText("Check for Updates");
     connect(updateAction, SIGNAL(triggered()), this, SLOT(slotUpdate()));
 
-    KAction *upgradeAction = actionCollection()->addAction("upgrade");
-    upgradeAction->setIcon(KIcon("system-software-update"));
-    upgradeAction->setText("Upgrade");
-    connect(upgradeAction, SIGNAL(triggered()), this, SLOT(slotUpgrade()));
-    if (m_backend->upgradeablePackages().isEmpty()) {
-        upgradeAction->setEnabled(false);
-    }
+    m_upgradeAction = actionCollection()->addAction("upgrade");
+    m_upgradeAction->setIcon(KIcon("system-software-update"));
+    m_upgradeAction->setText("Upgrade");
+    connect(m_upgradeAction, SIGNAL(triggered()), this, SLOT(slotUpgrade()));
 
+    reloadActions(); //Get initial enabled/disabled state
     setupGUI();
 }
 
@@ -142,38 +141,31 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
 {
     switch (event) {
         case QApt::CacheUpdateStarted:
+            this->toolBar("mainToolBar")->setEnabled(false);
             m_downloadWidget->clear();
             m_downloadWidget->setHeaderText(i18n("<b>Updating software sources</b>"));
             m_stack->setCurrentWidget(m_downloadWidget);
             connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
             break;
         case QApt::CacheUpdateFinished:
-            m_managerWidget->reload();
-            m_stack->setCurrentWidget(m_mainWidget);
-            delete m_downloadWidget;
-            m_downloadWidget = 0;
+            reload();
+            break;
+        case QApt::CommitChangesFinished:
             break;
         case QApt::PackageDownloadStarted:
+            this->toolBar("mainToolBar")->setEnabled(false);
             m_downloadWidget->clear();
             m_downloadWidget->setHeaderText(i18n("<b>Downloading Packages</b>"));
             m_stack->setCurrentWidget(m_downloadWidget);
-            kDebug() << "set current widget to downloadwidget";
             connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
-            break;
-        case QApt::PackageDownloadFinished:
-            m_stack->setCurrentWidget(m_mainWidget);
             break;
         case QApt::CommitChangesStarted:
             m_commitWidget->clear();
             m_stack->setCurrentWidget(m_commitWidget);
             break;
-        case QApt::CommitChangesFinished:
-            m_managerWidget->reload();
-            m_stack->setCurrentWidget(m_mainWidget);
-            delete m_downloadWidget;
-            delete m_commitWidget;
-            m_downloadWidget = 0;
-            m_commitWidget = 0;
+        case QApt::PackageDownloadFinished:
+        case QApt::InvalidEvent:
+        default:
             break;
     }
 }
@@ -216,6 +208,26 @@ void MainWindow::initCommitWidget()
         connect(m_backend, SIGNAL(commitProgress(const QString&, int)),
                 m_commitWidget, SLOT(updateCommitProgress(const QString&, int)));
     }
+}
+
+void MainWindow::reload()
+{
+    m_managerWidget->reload();
+    toolBar("mainToolBar")->setEnabled(true);
+    m_stack->setCurrentWidget(m_mainWidget);
+    reloadActions();
+
+    // No need to keep these around in memory.
+    delete m_downloadWidget;
+    delete m_commitWidget;
+    m_downloadWidget = 0;
+    m_commitWidget = 0;
+}
+
+void MainWindow::reloadActions()
+{
+    QApt::PackageList upgradeableList = m_backend->upgradeablePackages();
+    m_upgradeAction->setEnabled(!upgradeableList.isEmpty());
 }
 
 #include "MainWindow.moc"
