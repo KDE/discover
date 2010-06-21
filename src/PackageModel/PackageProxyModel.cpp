@@ -22,7 +22,6 @@
 
 // KDE includes
 #include <KLocale>
-#include <KDebug>
 
 // LibQApt includes
 #include <libqapt/backend.h>
@@ -36,7 +35,7 @@ PackageProxyModel::PackageProxyModel(QObject *parent, QApt::Backend *backend)
         , m_packages(backend->availablePackages())
         , m_searchText(QString())
         , m_groupFilter(QString())
-        , m_stateFilter(QApt::Package::ToKeep)
+        , m_stateFilter((QApt::Package::PackageState)0)
         , m_sortByRelevancy(false)
 {
 }
