@@ -90,10 +90,10 @@ MainWindow::MainWindow()
 
     setupActions();
 
-//     QLabel* packageCountLabel = new QLabel(this);
-//     packageCountLabel->setText(i18np("%1 item available", "%1 items available", m_backend->packageCount()));
-//     statusBar()->addWidget(packageCountLabel);
-    statusBar()->hide();
+    QLabel* packageCountLabel = new QLabel(this);
+    packageCountLabel->setText(i18np("%1 package available", "%1 packages available", m_backend->packageCount()));
+    statusBar()->addWidget(packageCountLabel);
+    statusBar()->show();
 }
 
 MainWindow::~MainWindow()
