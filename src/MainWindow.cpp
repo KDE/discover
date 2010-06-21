@@ -40,11 +40,13 @@
 
 #include "FilterWidget.h"
 #include "ManagerWidget.h"
+#include "ReviewWidget.h"
 
 MainWindow::MainWindow()
     : KXmlGuiWindow(),
       m_backend(0),
-      m_stack(0)
+      m_stack(0),
+      m_reviewWidget(0)
 
 {
     m_backend = new QApt::Backend;
@@ -89,6 +91,12 @@ void MainWindow::setupActions()
     // local - Destroys all sub-windows and exits
     KAction *quitAction = KStandardAction::quit(this, SLOT(slotQuit()), actionCollection());
     actionCollection()->addAction("quit", quitAction);
+
+    KAction *upgradeAction = actionCollection()->addAction("upgrade");
+    upgradeAction->setIcon(KIcon("system-software-update"));
+    upgradeAction->setText("Upgrade");
+    connect(upgradeAction, SIGNAL(triggered()), this, SLOT(slotUpgrade()));
+
     setupGUI();
 }
 
@@ -96,6 +104,28 @@ void MainWindow::slotQuit()
 {
     //Settings::self()->writeConfig();
     KApplication::instance()->quit();
+}
+
+void MainWindow::slotUpgrade()
+{
+    m_backend->markPackagesForDistUpgrade();
+    reviewChanges();
+}
+
+void MainWindow::reviewChanges()
+{
+    if (!m_reviewWidget) {
+        m_reviewWidget = new ReviewWidget(m_stack, m_backend);
+        connect(m_reviewWidget, SIGNAL(startCommit()), this, SLOT(startCommit()));
+        m_stack->addWidget(m_reviewWidget);
+    }
+
+    m_stack->setCurrentWidget(m_reviewWidget);
+}
+
+void MainWindow::startCommit()
+{
+    m_backend->commitChanges();
 }
 
 #include "MainWindow.moc"

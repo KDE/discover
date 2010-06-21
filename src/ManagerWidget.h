@@ -26,7 +26,6 @@
 #include <KVBox>
 
 class QTimer;
-class QTreeView;
 
 class KLineEdit;
 

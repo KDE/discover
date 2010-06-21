@@ -29,6 +29,7 @@ class KToggleAction;
 
 class FilterWidget;
 class ManagerWidget;
+class ReviewWidget;
 
 namespace QApt {
     class Backend;
@@ -50,12 +51,6 @@ public:
 
     virtual ~MainWindow();
 
-private slots:
-    void slotQuit();
-
-private:
-    void setupActions();
-
 private:
     QApt::Backend *m_backend;
 
@@ -64,6 +59,15 @@ private:
 
     FilterWidget *m_filterBox;
     ManagerWidget *m_managerWidget;
+    ReviewWidget *m_reviewWidget;
+
+public Q_SLOTS:
+    void slotUpgrade();
+    void reviewChanges();
+
+private Q_SLOTS:
+    void setupActions();
+    void slotQuit();
 };
 
 #endif // _MUON_H_

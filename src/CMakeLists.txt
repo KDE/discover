@@ -3,6 +3,7 @@ set(muon_SRCS
     MainWindow.cpp
     MuonStrings.cpp
     ManagerWidget.cpp
+    ReviewWidget.cpp
     FilterWidget.cpp
     DetailsWidget.cpp
     PackageModel/PackageModel.cpp
