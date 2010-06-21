@@ -91,6 +91,12 @@ void FilterWidget::populateCategories()
         groupItem->setText(group);
         m_categoryModel->appendRow(groupItem);
     }
+    //TODO: Some day this might not be the first item alphabetically...
+    QStandardItem *defaultItem = new QStandardItem;
+    defaultItem->setIcon(KIcon("bookmark-new-list"));
+    defaultItem->setText(i18n("All"));
+    m_categoryModel->appendRow(defaultItem);
+
     m_categoriesList->setSortingEnabled(true);
     m_categoriesList->sortByColumn(0, Qt::AscendingOrder);
 }

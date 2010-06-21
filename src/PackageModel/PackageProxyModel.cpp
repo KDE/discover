@@ -21,6 +21,7 @@
 #include "PackageProxyModel.h"
 
 // KDE includes
+#include <KLocale>
 #include <KDebug>
 
 // LibQApt includes
@@ -72,7 +73,7 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
         return false;
     }
 
-    if (!m_groupFilter.isEmpty()) {
+    if (!m_groupFilter.isEmpty() || m_groupFilter == i18n("All")) {
         if (!package->section().contains(m_groupFilter)) {
             return false;
         }
