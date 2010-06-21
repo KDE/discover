@@ -18,47 +18,15 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MANAGERWIDGET_H
-#define MANAGERWIDGET_H
+#ifndef GROUPSTRINGS_H
+#define GROUPSTRINGS_H
 
-#include <QModelIndex>
+#include <kdemacros.h>
 
-#include <KVBox>
-
-class QTimer;
-class QTreeView;
-
-class KLineEdit;
-
-class PackageModel;
-class PackageProxyModel;
-class PackageView;
-class DetailsWidget;
-
-namespace QApt {
-    class Backend;
-}
-
-class ManagerWidget : public KVBox
+namespace GroupStrings
 {
-    Q_OBJECT
-public:
-    explicit ManagerWidget(QWidget *parent, QApt::Backend *backend);
-    ~ManagerWidget();
-
-private:
-    QApt::Backend *m_backend;
-    QTimer *m_searchTimer;
-    KLineEdit *m_searchEdit;
-    PackageModel *m_model;
-    PackageProxyModel *m_proxyModel;
-    PackageView *m_packageView;
-    DetailsWidget *m_detailsWidget;
-
-public Q_SLOTS:
-    void packageActivated(const QModelIndex &index);
-    void startSearch();
-    void filterByGroup(const QString &groupName);
+    KDE_EXPORT QString groupName(const QString &name);
+    KDE_EXPORT QString groupKey(const QString &text);
 };
 
 #endif

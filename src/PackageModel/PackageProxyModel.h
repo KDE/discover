@@ -38,6 +38,7 @@ public:
     ~PackageProxyModel();
 
     void search(const QString &searchText);
+    void setGroupFilter(const QString &filterText);
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
     QApt::Package *packageAt(const QModelIndex &index);
 
@@ -48,6 +49,7 @@ private:
     QApt::Backend *m_backend;
     QApt::PackageList m_packages;
     QString m_searchText;
+    QString m_groupFilter;
     bool m_sortByRelevancy;
 };
 

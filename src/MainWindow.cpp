@@ -53,8 +53,10 @@ MainWindow::MainWindow()
     m_stack = new QStackedWidget;
     setCentralWidget(m_stack);
 
-    m_filterBox = new FilterWidget(m_stack);
+    m_filterBox = new FilterWidget(m_stack, m_backend);
     m_managerWidget = new ManagerWidget(m_stack, m_backend);
+    connect (m_filterBox, SIGNAL(filterByGroup(const QString&)),
+             m_managerWidget, SLOT(filterByGroup(const QString&)));
 
     QSplitter *splitter = new QSplitter(this);
     splitter->setOrientation(Qt::Horizontal);

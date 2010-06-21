@@ -40,6 +40,7 @@
 
 // Own includes
 #include "DetailsWidget.h"
+#include "GroupStrings.h"
 #include "PackageModel/PackageModel.h"
 #include "PackageModel/PackageProxyModel.h"
 #include "PackageModel/PackageView.h"
@@ -125,6 +126,13 @@ void ManagerWidget::packageActivated(const QModelIndex &index)
 void ManagerWidget::startSearch()
 {
     m_proxyModel->search(m_searchEdit->text());
+}
+
+void ManagerWidget::filterByGroup(const QString &groupName)
+{
+    QString groupKey = GroupStrings::groupKey(groupName);
+    m_proxyModel->setGroupFilter(groupKey);
+    kDebug() << groupKey;
 }
 
 #include "ManagerWidget.moc"

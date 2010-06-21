@@ -134,6 +134,7 @@ void DetailsWidget::setupPackageActions()
     m_removeAction->setText(i18n("Remove"));
 
     m_upgradeAction = new KAction(this);
+    m_upgradeAction->setIcon(KIcon("system-software-update"));
     m_upgradeAction->setText(i18n("Upgrade"));
 
     m_reinstallAction = new KAction(this);

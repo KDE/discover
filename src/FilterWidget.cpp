@@ -20,16 +20,25 @@
 
 #include "FilterWidget.h"
 
+#include <QStandardItemModel>
+#include <QtCore/QSet>
 #include <QtGui/QLabel>
 #include <QtGui/QListView>
+#include <QtGui/QTreeView>
 #include <QtGui/QToolBox>
 
 #include <KIcon>
 #include <KLineEdit>
 #include <KLocale>
+#include <KDebug>
 
-FilterWidget::FilterWidget(QWidget *parent)
+#include <libqapt/backend.h>
+
+#include "GroupStrings.h"
+
+FilterWidget::FilterWidget(QWidget *parent, QApt::Backend *backend)
     : KVBox(parent)
+    , m_backend(backend)
 {
     QLabel *headerLabel = new QLabel(this);
     headerLabel->setTextFormat(Qt::RichText);
@@ -38,18 +47,82 @@ FilterWidget::FilterWidget(QWidget *parent)
     m_filterBox = new QToolBox(this);
     m_filterBox->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
 
-    m_categoriesList = new QListView(this);
-    m_filterBox->addItem(m_categoriesList, KIcon(), i18n("By category"));
+    m_categoriesList = new QTreeView(this);
+    m_categoriesList->setAlternatingRowColors(true);
+    m_categoriesList->setRootIsDecorated(false);
+    m_categoriesList->setHeaderHidden(true);
+    m_filterBox->addItem(m_categoriesList, KIcon(), i18n("By Category"));
+    m_categoryModel = new QStandardItemModel;
+    populateCategories();
+    m_categoriesList->setModel(m_categoryModel);
+    connect(m_categoriesList, SIGNAL(activated(const QModelIndex&)),
+            this, SLOT(categoryActivated(const QModelIndex&)));
 
     m_statusList = new QListView(this);
-    m_filterBox->addItem(m_statusList, KIcon(), i18n("By status"));
+    m_filterBox->addItem(m_statusList, KIcon(), i18n("By Status"));
+    m_statusModel = new QStandardItemModel;
+    populateStatuses();
+    m_statusList->setModel(m_statusModel);
 
     m_originList = new QListView(this);
-    m_filterBox->addItem(m_originList, KIcon(), i18n("By origin"));
+    m_filterBox->addItem(m_originList, KIcon(), i18n("By Origin"));
 }
 
 FilterWidget::~FilterWidget()
 {
+}
+
+void FilterWidget::populateCategories()
+{
+    QApt::GroupList groups = m_backend->availableGroups();
+    QSet<QString> groupSet;
+
+    foreach (QApt::Group *group, groups) {
+        QString groupName = GroupStrings::groupName(group->name());
+
+        if (!groupName.isEmpty()) {
+            groupSet << groupName;
+        } else {
+            kDebug() << group->name();
+        }
+    }
+    foreach (const QString &group, groupSet.toList()) {
+        QStandardItem *groupItem = new QStandardItem;
+        groupItem->setText(group);
+        m_categoryModel->appendRow(groupItem);
+    }
+    m_categoriesList->setSortingEnabled(true);
+    m_categoriesList->sortByColumn(0, Qt::AscendingOrder);
+}
+
+void FilterWidget::populateStatuses()
+{
+    QStandardItem *installedItem = new QStandardItem;
+    installedItem->setIcon(KIcon("download"));
+    installedItem->setText(i18n("Installed"));
+
+    QStandardItem *notInstalledItem = new QStandardItem;
+    notInstalledItem->setIcon(KIcon("application-x-deb"));
+    notInstalledItem->setText(i18n("Not Installed"));
+
+    QStandardItem *upgradeableItem = new QStandardItem;
+    upgradeableItem->setIcon(KIcon("system-software-update"));
+    upgradeableItem->setText(i18n("Upgradeable"));
+
+    QStandardItem *brokenItem = new QStandardItem;
+    brokenItem->setIcon(KIcon("dialog-cancel"));
+    brokenItem->setText(i18n("Broken"));
+
+    m_statusModel->appendRow(installedItem);
+    m_statusModel->appendRow(notInstalledItem);
+    m_statusModel->appendRow(upgradeableItem);
+    m_statusModel->appendRow(brokenItem);
+}
+
+void FilterWidget::categoryActivated(const QModelIndex &index)
+{
+    QString groupName = index.data(Qt::DisplayRole).toString();
+    emit filterByGroup(groupName);
 }
 
 #include "FilterWidget.moc"

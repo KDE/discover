@@ -21,26 +21,52 @@
 #ifndef DETAILSWIDGET_H
 #define DETAILSWIDGET_H
 
+// Qt includes
+#include <QModelIndex>
+
+// KDE includes
 #include <KVBox>
 
 class QListView;
+class QStandardItemModel;
 class QToolBox;
+class QTreeView;
 
 class KLineEdit;
+
+namespace QApt {
+    class Backend;
+}
 
 class FilterWidget : public KVBox
 {
     Q_OBJECT
 public:
-    FilterWidget(QWidget *parent = 0);
+    FilterWidget(QWidget *parent, QApt::Backend *backend);
     ~FilterWidget();
 
 private:
+    QApt::Backend *m_backend;
+
     KLineEdit *m_searchEdit;
     QToolBox *m_filterBox;
-    QListView *m_categoriesList;
+    QTreeView *m_categoriesList;
     QListView *m_statusList;
     QListView *m_originList;
+
+    QStandardItemModel *m_categoryModel;
+    QStandardItemModel *m_statusModel;
+    QStandardItemModel *m_originModel;
+
+private Q_SLOTS:
+    void populateCategories();
+    void populateStatuses();
+//     void populateOrigins();
+
+    void categoryActivated(const QModelIndex &index);
+
+signals:
+    void filterByGroup(const QString &groupText);
 };
 
 #endif

@@ -34,6 +34,7 @@ PackageProxyModel::PackageProxyModel(QObject *parent, QApt::Backend *backend)
         , m_backend(backend)
         , m_packages(backend->availablePackages())
         , m_searchText(QString())
+        , m_groupFilter(QString())
         , m_sortByRelevancy(false)
 {
 }
@@ -56,6 +57,12 @@ void PackageProxyModel::search(const QString &searchText)
     invalidate();
 }
 
+void PackageProxyModel::setGroupFilter(const QString &filterText)
+{
+    m_groupFilter = filterText;
+    invalidateFilter();
+}
+
 bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
     //Our "main"-method
@@ -63,6 +70,12 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
     //We have a package as internal pointer
     if (!package) {
         return false;
+    }
+
+    if (!m_groupFilter.isEmpty()) {
+        if (package->section() != m_groupFilter) {
+            return false;
+        }
     }
 
     bool result = (m_packages.contains(package));
