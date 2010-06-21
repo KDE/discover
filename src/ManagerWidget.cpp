@@ -120,7 +120,9 @@ void ManagerWidget::reload()
 {
     m_model->clear();
     m_proxyModel->clear();
+    m_backend->reloadCache();
     m_model->addPackages(m_backend->availablePackages());
+    startSearch();
 }
 
 void ManagerWidget::packageActivated(const QModelIndex &index)

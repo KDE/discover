@@ -75,6 +75,7 @@ private Q_SLOTS:
     void setupActions();
     void slotQuit();
     void slotUpgrade();
+    void slotUpdate();
     void workerEvent(QApt::WorkerEvent event);
     void reviewChanges();
     void startCommit();

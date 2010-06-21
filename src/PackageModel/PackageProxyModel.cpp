@@ -108,8 +108,6 @@ void PackageProxyModel::reset()
     //TODO: Save search parameters and re-apply
     beginRemoveRows(QModelIndex(), 0, m_packages.size());
     m_packages = m_backend->availablePackages();
-    m_groupFilter.clear();
-    m_stateFilter = (QApt::Package::PackageState)0;
     endRemoveRows();
     invalidate();
 }

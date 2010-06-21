@@ -104,6 +104,11 @@ void MainWindow::setupActions()
     KAction *quitAction = KStandardAction::quit(this, SLOT(slotQuit()), actionCollection());
     actionCollection()->addAction("quit", quitAction);
 
+    KAction *updateAction = actionCollection()->addAction("update");
+    updateAction->setIcon(KIcon("download"));
+    updateAction->setText("Check for Updates");
+    connect(updateAction, SIGNAL(triggered()), this, SLOT(slotUpdate()));
+
     KAction *upgradeAction = actionCollection()->addAction("upgrade");
     upgradeAction->setIcon(KIcon("system-software-update"));
     upgradeAction->setText("Upgrade");
@@ -126,6 +131,13 @@ void MainWindow::slotUpgrade()
     m_backend->markPackagesForDistUpgrade();
     reviewChanges();
 }
+
+void MainWindow::slotUpdate()
+{
+    initDownloadWidget();
+    m_backend->updateCache();
+}
+
 void MainWindow::workerEvent(QApt::WorkerEvent event)
 {
     switch (event) {
@@ -136,7 +148,10 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
             connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
             break;
         case QApt::CacheUpdateFinished:
+            m_managerWidget->reload();
             m_stack->setCurrentWidget(m_mainWidget);
+            delete m_downloadWidget;
+            m_downloadWidget = 0;
             break;
         case QApt::PackageDownloadStarted:
             m_downloadWidget->clear();
@@ -155,6 +170,10 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
         case QApt::CommitChangesFinished:
             m_managerWidget->reload();
             m_stack->setCurrentWidget(m_mainWidget);
+            delete m_downloadWidget;
+            delete m_commitWidget;
+            m_downloadWidget = 0;
+            m_commitWidget = 0;
             break;
     }
 }

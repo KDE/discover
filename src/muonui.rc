@@ -12,6 +12,7 @@
     </Menubar>
     <ToolBar name="mainToolBar">
         <text context="@title:menu">Search Toolbar</text>
+        <Action name="update" />
         <Action name="upgrade" />
     </ToolBar>
 </gui>
