@@ -106,6 +106,7 @@ void ManagerWidget::reload()
     m_backend->reloadCache();
     m_model->addPackages(m_backend->availablePackages());
     startSearch();
+    m_packageView->sortByColumn(0, Qt::DescendingOrder);
 }
 
 void ManagerWidget::packageActivated(const QModelIndex &index)
