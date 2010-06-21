@@ -50,9 +50,6 @@ private:
     PackageModel *m_model;
     PackageProxyModel *m_proxyModel;
     PackageView *m_packageView;
-
-signals:
-    void startCommit();
 };
 
 #endif

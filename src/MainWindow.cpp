@@ -64,6 +64,7 @@ MainWindow::MainWindow()
             this, SLOT(errorOccurred(QApt::ErrorCode, const QVariantMap&)));
     connect(m_backend, SIGNAL(questionOccurred(QApt::WorkerQuestion, const QVariantMap&)),
             this, SLOT(questionOccurred(QApt::WorkerQuestion, const QVariantMap&)));
+    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(reloadActions()));
 
     m_stack = new QStackedWidget;
     setCentralWidget(m_stack);
@@ -115,6 +116,16 @@ void MainWindow::setupActions()
     m_upgradeAction->setText("Upgrade");
     connect(m_upgradeAction, SIGNAL(triggered()), this, SLOT(slotUpgrade()));
 
+    m_previewAction = actionCollection()->addAction("preview");
+    m_previewAction->setIcon(KIcon("document-preview-archive"));
+    m_previewAction->setText("Preview Changes");
+    connect(m_previewAction, SIGNAL(triggered()), this, SLOT(previewChanges()));
+
+    m_applyAction = actionCollection()->addAction("apply");
+    m_applyAction->setIcon(KIcon("dialog-ok-apply"));
+    m_applyAction->setText("Apply Changes");
+    connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
+
     reloadActions(); //Get initial enabled/disabled state
     setupGUI();
 }
@@ -128,7 +139,7 @@ void MainWindow::slotQuit()
 void MainWindow::slotUpgrade()
 {
     m_backend->markPackagesForDistUpgrade();
-    reviewChanges();
+    previewChanges();
 }
 
 void MainWindow::slotUpdate()
@@ -148,9 +159,8 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
             connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
             break;
         case QApt::CacheUpdateFinished:
-            reload();
-            break;
         case QApt::CommitChangesFinished:
+            reload();
             break;
         case QApt::PackageDownloadStarted:
             this->toolBar("mainToolBar")->setEnabled(false);
@@ -170,11 +180,10 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
     }
 }
 
-void MainWindow::reviewChanges()
+void MainWindow::previewChanges()
 {
     if (!m_reviewWidget) {
         m_reviewWidget = new ReviewWidget(m_stack, m_backend);
-        connect(m_reviewWidget, SIGNAL(startCommit()), this, SLOT(startCommit()));
         m_stack->addWidget(m_reviewWidget);
     }
 
@@ -227,7 +236,11 @@ void MainWindow::reload()
 void MainWindow::reloadActions()
 {
     QApt::PackageList upgradeableList = m_backend->upgradeablePackages();
+    QApt::PackageList changedList = m_backend->markedPackages();
+
     m_upgradeAction->setEnabled(!upgradeableList.isEmpty());
+    m_previewAction->setEnabled(!changedList.isEmpty());
+    m_applyAction->setEnabled(!changedList.isEmpty());
 }
 
 #include "MainWindow.moc"

@@ -64,23 +64,6 @@ ReviewWidget::ReviewWidget(QWidget *parent, QApt::Backend *backend)
     m_model->addPackages(m_backend->markedPackages());
     m_packageView->setSortingEnabled(true);
     m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
-
-    QWidget *hbox = new QWidget(this);
-    QHBoxLayout *layout = new QHBoxLayout(this);
-    hbox->setLayout(layout);
-    layout->addStretch();
-
-    QPushButton *revertButton = new QPushButton(hbox);
-    revertButton->setIcon(KIcon("document-revert"));
-    revertButton->setText(i18n("Revert Changes"));
-    revertButton->setEnabled(false);
-    layout->addWidget(revertButton);
-
-    QPushButton *applyButton = new QPushButton(hbox);
-    applyButton->setIcon(KIcon("dialog-ok-apply"));
-    applyButton->setText(i18n("Apply Changes"));
-    connect(applyButton, SIGNAL(clicked()), this, SIGNAL(startCommit()));
-    layout->addWidget(applyButton);
 }
 
 ReviewWidget::~ReviewWidget()

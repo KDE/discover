@@ -14,5 +14,8 @@
         <text context="@title:menu">Search Toolbar</text>
         <Action name="update" />
         <Action name="upgrade" />
+        <Separator/>
+        <Action name="preview" />
+        <Action name="apply" />
     </ToolBar>
 </gui>

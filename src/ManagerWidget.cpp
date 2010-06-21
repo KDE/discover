@@ -85,23 +85,6 @@ ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
 
     m_detailsWidget = new DetailsWidget(bottomVBox);
 
-    QWidget *hbox = new QWidget(bottomVBox);
-    QHBoxLayout *layout = new QHBoxLayout(hbox);
-    hbox->setLayout(layout);
-    layout->addStretch();
-
-    QPushButton *revertButton = new QPushButton(hbox);
-    revertButton->setIcon(KIcon("document-revert"));
-    revertButton->setText(i18n("Revert Changes"));
-    revertButton->setEnabled(false);
-    layout->addWidget(revertButton);
-
-    QPushButton *applyButton = new QPushButton(hbox);
-    applyButton->setIcon(KIcon("dialog-ok-apply"));
-    applyButton->setText(i18n("Review Changes"));
-    applyButton->setEnabled(false);
-    layout->addWidget(applyButton);
-
     QSplitter *splitter = new QSplitter(this);
     splitter->setOrientation(Qt::Vertical);
     splitter->addWidget(topVBox);

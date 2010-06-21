@@ -63,6 +63,8 @@ private:
     QSplitter *m_mainWidget;
     KAction *m_updateAction;
     KAction *m_upgradeAction;
+    KAction *m_previewAction;
+    KAction *m_applyAction;
 
     FilterWidget *m_filterBox;
     ManagerWidget *m_managerWidget;
@@ -78,7 +80,7 @@ private Q_SLOTS:
     void slotUpgrade();
     void slotUpdate();
     void workerEvent(QApt::WorkerEvent event);
-    void reviewChanges();
+    void previewChanges();
     void startCommit();
     void initDownloadWidget();
     void initCommitWidget();
