@@ -73,7 +73,7 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
     }
 
     if (!m_groupFilter.isEmpty()) {
-        if (package->section() != m_groupFilter) {
+        if (!package->section().contains(m_groupFilter)) {
             return false;
         }
     }
