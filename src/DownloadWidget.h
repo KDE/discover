@@ -21,11 +21,10 @@
 #ifndef DOWNLOADWIDGET_H
 #define DOWNLOADWIDGET_H
 
+// Qt includes
 #include <QItemDelegate>
 #include <QTextDocument>
 #include <QWidget>
-
-#include <KVBox>
 
 class QLabel;
 class QListView;
@@ -33,12 +32,11 @@ class QProgressBar;
 class QStandardItemModel;
 class QPushButton;
 
-class DownloadWidget : public KVBox
+class DownloadWidget : public QWidget
 {
     Q_OBJECT
 public:
-    DownloadWidget(QWidget *parent);
-
+    explicit DownloadWidget(QWidget *parent);
     ~DownloadWidget();
 
 private:

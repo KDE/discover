@@ -25,31 +25,42 @@
 #include <QtGui/QListView>
 #include <QtGui/QProgressBar>
 #include <QtGui/QPushButton>
+#include <QtGui/QVBoxLayout>
 #include <QStandardItemModel>
 
 // KDE includes
-#include <KIcon>
 #include <KGlobal>
+#include <KHBox>
+#include <KIcon>
 #include <KLocale>
 
 // LibQApt includes
 #include <libqapt/globals.h>
 
 DownloadWidget::DownloadWidget(QWidget *parent)
-    : KVBox(parent)
+    : QWidget(parent)
 {
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    setLayout(layout);
+
     m_headerLabel = new QLabel(this);
+    layout->addWidget(m_headerLabel);
+
+    m_downloadModel = new QStandardItemModel(this);
 
     //TODO: Just use a text browser with rich text enabled.
     m_downloadView = new QListView(this);
-
-    m_downloadModel = new QStandardItemModel(this);
+    layout->addWidget(m_downloadView);
     m_downloadView->setModel(m_downloadModel);
 
     m_downloadLabel = new QLabel(this);
-    m_totalProgress = new QProgressBar(this);
+    layout->addWidget(m_downloadLabel);
 
-    m_cancelButton = new QPushButton(this);
+    KHBox *hbox = new KHBox(this);
+    layout->addWidget(hbox);
+    m_totalProgress = new QProgressBar(hbox);
+
+    m_cancelButton = new QPushButton(hbox);
     m_cancelButton->setText(i18n("Cancel"));
     m_cancelButton->setIcon(KIcon("dialog-cancel"));
     connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(cancelButtonPressed()));
