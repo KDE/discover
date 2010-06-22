@@ -22,11 +22,10 @@
 #define FILTERWIDGET_H
 
 // Qt includes
-#include <QModelIndex>
+#include <QtCore/QModelIndex>
+#include <QtGui/QDockWidget>
 
-// KDE includes
-#include <KVBox>
-
+class QDockWidget;
 class QListView;
 class QStandardItemModel;
 class QToolBox;
@@ -38,7 +37,7 @@ namespace QApt {
     class Backend;
 }
 
-class FilterWidget : public KVBox
+class FilterWidget : public QDockWidget
 {
     Q_OBJECT
 public:

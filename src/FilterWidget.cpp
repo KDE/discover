@@ -36,12 +36,11 @@
 #include "MuonStrings.h"
 
 FilterWidget::FilterWidget(QWidget *parent, QApt::Backend *backend)
-    : KVBox(parent)
+    : QDockWidget(parent)
     , m_backend(backend)
 {
-    QLabel *headerLabel = new QLabel(this);
-    headerLabel->setTextFormat(Qt::RichText);
-    headerLabel->setText(i18n("<b>Filter:</b>"));
+    setFeatures(QDockWidget::NoDockWidgetFeatures);
+    setWindowTitle(i18n("Filter:"));
 
     m_filterBox = new QToolBox(this);
     m_filterBox->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
@@ -68,6 +67,8 @@ FilterWidget::FilterWidget(QWidget *parent, QApt::Backend *backend)
 
     m_originList = new QListView(this);
     m_filterBox->addItem(m_originList, KIcon(), i18n("By Origin"));
+
+    setWidget(m_filterBox);
 }
 
 FilterWidget::~FilterWidget()
