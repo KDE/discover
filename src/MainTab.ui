@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>543</width>
+    <width>688</width>
     <height>219</height>
    </rect>
   </property>
@@ -109,7 +109,7 @@
     </layout>
    </item>
    <item>
-    <widget class="KTextBrowser" name="changelogBrowser"/>
+    <widget class="KTextBrowser" name="descriptionBrowser"/>
    </item>
    <item>
     <widget class="QLabel" name="supportedLabel">

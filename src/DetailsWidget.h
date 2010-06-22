@@ -34,6 +34,7 @@ class KMenu;
 class KPushButton;
 class KVBox;
 class KTemporaryFile;
+class KTextBrowser;
 class KTreeWidgetSearchLineWidget;
 
 namespace Ui {
@@ -72,11 +73,12 @@ private:
     QTreeWidget *m_filesTreeWidget;
 
     QWidget *m_changelogTab;
+    KTextBrowser *m_changelogBrowser;
 
 private Q_SLOTS:
     void setupButtons(QApt::Package *oldPackage);
     void refreshButtons();
-    void populateFileList(QApt::Package *package);
+    void populateFileList();
     void fetchScreenshot();
     void screenshotFetched(KJob *job);
     void fetchChangelog();

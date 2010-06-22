@@ -21,6 +21,7 @@
 #include "DetailsWidget.h"
 
 // Qt
+#include <QtCore/QTextStream>
 #include <QtGui/QLabel>
 #include <QtGui/QTreeWidgetItem>
 #include <QtGui/QVBoxLayout>
@@ -36,6 +37,7 @@
 #include <KPushButton>
 #include <KVBox>
 #include <KTemporaryFile>
+#include <KTextBrowser>
 #include <KTreeWidgetSearchLineWidget>
 
 #include <libqapt/package.h>
@@ -75,13 +77,14 @@ DetailsWidget::DetailsWidget(QWidget *parent)
     m_filesTreeWidget->setHeaderLabel(i18n("Installed Files"));
     m_filesSearchEdit->searchLine()->setTreeWidget(m_filesTreeWidget);
 
-    // Changelog tab
-    m_changelogTab = new QWidget;
+    m_changelogTab = new KVBox;
+    m_changelogBrowser = new KTextBrowser(m_changelogTab);
 
 
     addTab(mainTab, i18n("Details"));
     addTab(m_technicalTab, i18n("Technical Details"));
     addTab(m_dependenciesTab, i18n("Dependencies"));
+    addTab(m_changelogTab, i18n("Changelog"));
 
     // Hide until a package is clicked
     hide();
@@ -103,13 +106,16 @@ void DetailsWidget::setPackage(QApt::Package *package)
     setupButtons(oldPackage);
     refreshButtons();
 
-    m_mainTab->changelogBrowser->setText(package->longDescription());
+    m_mainTab->descriptionBrowser->setText(package->longDescription());
 
     if (package->isInstalled()) {
         addTab(m_filesTab, i18n("Installed Files"));
-        populateFileList(package);
+        populateFileList();
     } else {
-        setCurrentIndex(0); // Switch to the main tab
+        if (currentIndex() == indexOf(m_filesTab)) {
+            kDebug() << "Switching to main tab";
+            setCurrentIndex(0); // Switch to the main tab
+        }
         removeTab(indexOf(m_filesTab));
     }
 
@@ -120,6 +126,8 @@ void DetailsWidget::setPackage(QApt::Package *package)
        m_mainTab->supportedLabel->setText(i18n("Canonical does not provide updates for %1. Some updates "
                                                "may be provided by the Ubuntu community", package->name()));
     }
+
+    fetchChangelog();
 }
 
 void DetailsWidget::setupButtons(QApt::Package *oldPackage)
@@ -197,10 +205,10 @@ void DetailsWidget::refreshButtons()
     }
 }
 
-void DetailsWidget::populateFileList(QApt::Package *package)
+void DetailsWidget::populateFileList()
 {
     m_filesTreeWidget->clear();
-    QStringList filesList = package->installedFilesList();
+    QStringList filesList = m_package->installedFilesList();
 
     foreach (const QString &file, filesList) {
         QStringList split = file.split(QChar('/'));
@@ -275,7 +283,7 @@ void DetailsWidget::fetchChangelog()
     m_changelogFile->open();
 
     KIO::FileCopyJob *getJob = KIO::file_copy(m_package->changelogUrl(),
-                                      m_screenshotFile->fileName(), -1,
+                                      m_changelogFile->fileName(), -1,
                                       KIO::Overwrite | KIO::HideProgressInfo);
     connect(getJob, SIGNAL(result(KJob*)),
             this, SLOT(changelogFetched(KJob*)));
@@ -283,8 +291,13 @@ void DetailsWidget::fetchChangelog()
 
 void DetailsWidget::changelogFetched(KJob *job)
 {
-    Q_UNUSED(job);
-    kDebug() << "changelog fetched";
+    QFile changelogFile(m_changelogFile->fileName());
+    if (job->error() || !changelogFile.open(QFile::ReadOnly)) {
+        m_changelogBrowser->setText("No changelog available");
+        return;
+    }
+    QTextStream stream(&changelogFile);
+    m_changelogBrowser->setText(stream.readAll());
 }
 
 #include "DetailsWidget.moc"
