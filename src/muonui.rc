@@ -5,7 +5,7 @@
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xsi:schemaLocation="http://www.kde.org/standards/kxmlgui/1.0
                          http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd">
-    <Menubar>
+    <MenuBar>
         <Menu name="file" >
             <Action name="preview" />
             <Action name="apply" />
@@ -15,9 +15,8 @@
             <Separator/>
             <Action name="quit" />
         </Menu>
-    </Menubar>
+    </MenuBar>
     <ToolBar name="mainToolBar">
-        <text context="@title:menu">Search Toolbar</text>
         <Action name="preview" />
         <Action name="apply" />
         <Separator/>
