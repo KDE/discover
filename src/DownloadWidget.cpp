@@ -97,7 +97,7 @@ void DownloadWidget::updateDownloadProgress(int percentage, int speed, int ETA)
         // If ETA is less than zero or bigger than 2 weeks
         timeRemaining = i18n(" - Unknown time remaining");
     } else {
-        timeRemaining = i18n(" - %1/s", KGlobal::locale()->prettyFormatDuration(ETAMilliseconds));
+        timeRemaining = i18n(" - %1 remaining", KGlobal::locale()->prettyFormatDuration(ETAMilliseconds));
     }
     m_downloadLabel->setText(downloadSpeed + timeRemaining);
 }
