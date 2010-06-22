@@ -89,10 +89,6 @@ ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
     splitter->setOrientation(Qt::Vertical);
     splitter->addWidget(topVBox);
     splitter->addWidget(bottomVBox);
-    // TODO: Store/restore on app exit/restore
-//     QList<int> sizes;
-//     sizes  << 250 << 200;
-//     splitter->setSizes(sizes);
 }
 
 ManagerWidget::~ManagerWidget()
@@ -101,6 +97,7 @@ ManagerWidget::~ManagerWidget()
 
 void ManagerWidget::reload()
 {
+    m_detailsWidget->hide();
     m_model->clear();
     m_proxyModel->clear();
     m_backend->reloadCache();
