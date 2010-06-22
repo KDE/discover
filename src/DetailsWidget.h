@@ -21,14 +21,19 @@
 #ifndef DETAILSWIDGET_H
 #define DETAILSWIDGET_H
 
+// Qt
+#include <QtCore/QUrl>
+
 #include <KTabWidget>
 
 class QLabel;
 class QTreeWidget;
 
+class KJob;
 class KMenu;
 class KPushButton;
 class KVBox;
+class KTemporaryFile;
 class KTreeWidgetSearchLineWidget;
 
 namespace Ui {
@@ -52,6 +57,8 @@ private:
     QApt::Package *m_package;
     Ui::MainTab *m_mainTab;
     KPushButton *m_screenshotButton;
+    KTemporaryFile *m_screenshotFile;
+    KTemporaryFile *m_changelogFile;
 
 
     QWidget *m_technicalTab;
@@ -70,6 +77,10 @@ private Q_SLOTS:
     void setupButtons(QApt::Package *oldPackage);
     void refreshButtons();
     void populateFileList(QApt::Package *package);
+    void fetchScreenshot();
+    void screenshotFetched(KJob *job);
+    void fetchChangelog();
+    void changelogFetched(KJob *job);
 };
 
 #endif

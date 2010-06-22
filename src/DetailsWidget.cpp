@@ -26,11 +26,16 @@
 #include <QtGui/QVBoxLayout>
 
 // KDE
+#include <KIO/Job>
+#include <KJob>
 #include <KDebug>
+#include <KDialog>
+#include <KJob>
 #include <KLocale>
 #include <KMenu>
 #include <KPushButton>
 #include <KVBox>
+#include <KTemporaryFile>
 #include <KTreeWidgetSearchLineWidget>
 
 #include <libqapt/package.h>
@@ -40,6 +45,8 @@
 DetailsWidget::DetailsWidget(QWidget *parent)
     : KTabWidget(parent)
     , m_package(0)
+    , m_screenshotFile(0)
+    , m_changelogFile(0)
 {
     setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -92,6 +99,7 @@ void DetailsWidget::setPackage(QApt::Package *package)
     m_mainTab->packageShortDescLabel->setText(package->shortDescription());
 
     m_screenshotButton->show();
+    connect (m_screenshotButton, SIGNAL(clicked()), this, SLOT(fetchScreenshot()));
     setupButtons(oldPackage);
     refreshButtons();
 
@@ -224,6 +232,59 @@ void DetailsWidget::populateFileList(QApt::Package *package)
             }
         }
     }
+}
+
+// TODO: Cache fetched items, and map them to packages
+
+void DetailsWidget::fetchScreenshot()
+{
+    m_screenshotFile = new KTemporaryFile;
+    m_screenshotFile->setPrefix("muon");
+    m_screenshotFile->setSuffix(".png");
+    m_screenshotFile->open();
+
+    KIO::FileCopyJob *getJob = KIO::file_copy(m_package->screenshotUrl(QApt::Screenshot),
+                                           m_screenshotFile->fileName(), -1, KIO::Overwrite);
+    connect(getJob, SIGNAL(result(KJob*)),
+            this, SLOT(screenshotFetched(KJob*)));
+}
+
+void DetailsWidget::screenshotFetched(KJob *job)
+{
+    if (job->error()) {
+        m_screenshotButton->setText(i18n("No Screenshot Available"));
+        m_screenshotButton->setEnabled(false);
+        return;
+    }
+    KDialog *dialog = new KDialog(this);
+
+    QLabel *label = new QLabel(dialog);
+    label->setPixmap(QPixmap(m_screenshotFile->fileName()));
+
+    dialog->setWindowTitle(i18n("Screenshot"));
+    dialog->setMainWidget(label);
+    dialog->setButtons(KDialog::Close);
+    dialog->show();
+}
+
+void DetailsWidget::fetchChangelog()
+{
+    m_changelogFile = new KTemporaryFile;
+    m_changelogFile->setPrefix("muon");
+    m_changelogFile->setSuffix(".txt");
+    m_changelogFile->open();
+
+    KIO::FileCopyJob *getJob = KIO::file_copy(m_package->changelogUrl(),
+                                      m_screenshotFile->fileName(), -1,
+                                      KIO::Overwrite | KIO::HideProgressInfo);
+    connect(getJob, SIGNAL(result(KJob*)),
+            this, SLOT(changelogFetched(KJob*)));
+}
+
+void DetailsWidget::changelogFetched(KJob *job)
+{
+    Q_UNUSED(job);
+    kDebug() << "changelog fetched";
 }
 
 #include "DetailsWidget.moc"
