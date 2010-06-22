@@ -109,7 +109,6 @@ void FilterWidget::populateStatuses()
     QStandardItem *defaultItem = new QStandardItem;
     defaultItem->setIcon(KIcon("bookmark-new-list"));
     defaultItem->setText(i18nc("Item that resets the filter to \"all\"", "All"));
-    m_statusModel->appendRow(defaultItem);
 
     QStandardItem *installedItem = new QStandardItem;
     installedItem->setIcon(KIcon("download"));
@@ -127,6 +126,7 @@ void FilterWidget::populateStatuses()
     brokenItem->setIcon(KIcon("dialog-cancel"));
     brokenItem->setText(MuonStrings::packageStateName(QApt::Package::NowBroken));
 
+    m_statusModel->appendRow(defaultItem);
     m_statusModel->appendRow(installedItem);
     m_statusModel->appendRow(notInstalledItem);
     m_statusModel->appendRow(upgradeableItem);
