@@ -18,8 +18,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef GROUPSTRINGS_H
-#define GROUPSTRINGS_H
+#ifndef MUONSTRINGS_H
+#define MUONSTRINGS_H
 
 #include <kdemacros.h>
 

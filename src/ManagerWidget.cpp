@@ -123,7 +123,7 @@ void ManagerWidget::startSearch()
 void ManagerWidget::filterByGroup(const QString &groupName)
 {
     QString groupKey = MuonStrings::groupKey(groupName);
-    if (groupName == i18n("All")) {
+    if (groupName == i18nc("Item that resets the filter to \"all\"", "All")) {
         groupKey.clear();
     }
     m_proxyModel->setGroupFilter(groupKey);

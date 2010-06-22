@@ -79,7 +79,7 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
         return false;
     }
 
-    if (!m_groupFilter.isEmpty() || m_groupFilter == i18n("All")) {
+    if (!m_groupFilter.isEmpty() || !(m_groupFilter == i18nc("Item that resets the filter to \"all\"", "All"))) {
         if (!package->section().contains(m_groupFilter)) {
             return false;
         }

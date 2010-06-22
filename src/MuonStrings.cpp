@@ -209,4 +209,3 @@ QApt::Package::PackageState MuonStrings::packageStateKey(const QString &text)
 
     return (QApt::Package::PackageState)states.key(text);
 }
- 

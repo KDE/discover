@@ -18,8 +18,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef DETAILSWIDGET_H
-#define DETAILSWIDGET_H
+#ifndef FILTERWIDGET_H
+#define FILTERWIDGET_H
 
 // Qt includes
 #include <QModelIndex>

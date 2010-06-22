@@ -97,7 +97,7 @@ void FilterWidget::populateCategories()
     //TODO: Some day this might not be the first item alphabetically...
     QStandardItem *defaultItem = new QStandardItem;
     defaultItem->setIcon(KIcon("bookmark-new-list"));
-    defaultItem->setText(i18n("All"));
+    defaultItem->setText(i18nc("Item that resets the filter to \"all\"", "All"));
     m_categoryModel->appendRow(defaultItem);
 
     m_categoriesList->setSortingEnabled(true);
@@ -108,7 +108,7 @@ void FilterWidget::populateStatuses()
 {
     QStandardItem *defaultItem = new QStandardItem;
     defaultItem->setIcon(KIcon("bookmark-new-list"));
-    defaultItem->setText(i18n("All"));
+    defaultItem->setText(i18nc("Item that resets the filter to \"all\"", "All"));
     m_statusModel->appendRow(defaultItem);
 
     QStandardItem *installedItem = new QStandardItem;
