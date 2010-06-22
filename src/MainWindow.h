@@ -81,6 +81,7 @@ private Q_SLOTS:
     void slotUpdate();
     void workerEvent(QApt::WorkerEvent event);
     void previewChanges();
+    void returnFromPreview();
     void startCommit();
     void initDownloadWidget();
     void initCommitWidget();

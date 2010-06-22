@@ -107,12 +107,12 @@ void MainWindow::setupActions()
     actionCollection()->addAction("quit", quitAction);
 
     KAction *updateAction = actionCollection()->addAction("update");
-    updateAction->setIcon(KIcon("download"));
+    updateAction->setIcon(KIcon("system-software-update"));
     updateAction->setText("Check for Updates");
     connect(updateAction, SIGNAL(triggered()), this, SLOT(slotUpdate()));
 
     m_upgradeAction = actionCollection()->addAction("upgrade");
-    m_upgradeAction->setIcon(KIcon("system-software-update"));
+    m_upgradeAction->setIcon(KIcon("go-top"));
     m_upgradeAction->setText("Upgrade");
     connect(m_upgradeAction, SIGNAL(triggered()), this, SLOT(slotUpgrade()));
 
@@ -188,6 +188,19 @@ void MainWindow::previewChanges()
     }
 
     m_stack->setCurrentWidget(m_reviewWidget);
+
+    m_previewAction->setIcon(KIcon("go-previous"));
+    m_previewAction->setText(i18n("Return to Package List"));
+    connect(m_previewAction, SIGNAL(triggered()), this, SLOT(returnFromPreview()));
+}
+
+void MainWindow::returnFromPreview()
+{
+    m_stack->setCurrentWidget(m_mainWidget);
+
+    m_previewAction->setIcon(KIcon("document-preview-archive"));
+    m_previewAction->setText("Preview Changes");
+    connect(m_previewAction, SIGNAL(triggered()), this, SLOT(previewChanges()));
 }
 
 void MainWindow::startCommit()
