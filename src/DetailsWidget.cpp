@@ -116,14 +116,15 @@ void DetailsWidget::setPackage(QApt::Package *package)
 
 void DetailsWidget::setupButtons(QApt::Package *oldPackage)
 {
-    disconnect(m_mainTab->installButton, SIGNAL(clicked()), oldPackage, SLOT(setInstall()));
-    disconnect(m_mainTab->removeButton, SIGNAL(clicked()), oldPackage, SLOT(setRemove()));
-    disconnect(m_mainTab->upgradeButton, SIGNAL(clicked()), oldPackage, SLOT(setInstall()));
-    disconnect(m_mainTab->reinstallButton, SIGNAL(clicked()), oldPackage, SLOT(setReInstall()));
-    disconnect(m_mainTab->purgeButton, SIGNAL(clicked()), oldPackage, SLOT(setPurge()));
-    disconnect(m_mainTab->cancelButton, SIGNAL(clicked()), oldPackage, SLOT(setKeep()));
+    if (oldPackage) {
+        disconnect(m_mainTab->installButton, SIGNAL(clicked()), oldPackage, SLOT(setInstall()));
+        disconnect(m_mainTab->removeButton, SIGNAL(clicked()), oldPackage, SLOT(setRemove()));
+        disconnect(m_mainTab->upgradeButton, SIGNAL(clicked()), oldPackage, SLOT(setInstall()));
+        disconnect(m_mainTab->reinstallButton, SIGNAL(clicked()), oldPackage, SLOT(setReInstall()));
+        disconnect(m_mainTab->purgeButton, SIGNAL(clicked()), oldPackage, SLOT(setPurge()));
+        disconnect(m_mainTab->cancelButton, SIGNAL(clicked()), oldPackage, SLOT(setKeep()));
+    }
 
-    kDebug() << "setting up buttons";
     m_mainTab->installButton->setIcon(KIcon("download"));
     m_mainTab->installButton->setText(i18n("Install"));
     connect(m_mainTab->installButton, SIGNAL(clicked()), m_package, SLOT(setInstall()));
