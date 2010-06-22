@@ -82,6 +82,9 @@ DetailsWidget::DetailsWidget(QWidget *parent)
     addTab(mainTab, i18n("Details"));
     addTab(m_technicalTab, i18n("Technical Details"));
     addTab(m_dependenciesTab, i18n("Dependencies"));
+
+    // Hide until a package is clicked
+    hide();
 }
 
 DetailsWidget::~DetailsWidget()
@@ -90,7 +93,7 @@ DetailsWidget::~DetailsWidget()
 
 void DetailsWidget::setPackage(QApt::Package *package)
 {
-    kDebug() << "Setting package";
+    show();
     m_package = package;
     m_mainTab->packageShortDescLabel->setText(package->shortDescription());
 
