@@ -148,6 +148,7 @@ void PackageDelegate::paintPackageName(QPainter* painter, const QStyleOptionView
     p.end();
 
     painter->drawPixmap(option.rect.topLeft(), pixmap);
+    delete icon;
 }
 
 void PackageDelegate::paintText(QPainter* painter, const QStyleOptionViewItem& option , const QModelIndex &index) const
