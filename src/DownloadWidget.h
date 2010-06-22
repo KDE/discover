@@ -22,8 +22,6 @@
 #define DOWNLOADWIDGET_H
 
 // Qt includes
-#include <QItemDelegate>
-#include <QTextDocument>
 #include <QWidget>
 
 class QLabel;

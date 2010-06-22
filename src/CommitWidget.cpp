@@ -23,7 +23,7 @@
 // Qt includes
 #include <QtGui/QLabel>
 #include <QtGui/QProgressBar>
-#include <QVBoxLayout>
+#include <QtGui/QVBoxLayout>
 
 CommitWidget::CommitWidget(QWidget *parent)
     : QWidget(parent)
