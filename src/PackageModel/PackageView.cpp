@@ -35,4 +35,11 @@ PackageView::~PackageView()
 {
 }
 
+void PackageView::updateView()
+{
+    QModelIndex oldIndex = currentIndex();
+    reset();
+    setCurrentIndex(oldIndex);
+}
+
 #include "PackageView.moc"

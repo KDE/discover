@@ -90,6 +90,7 @@ ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
     splitter->addWidget(topVBox);
     splitter->addWidget(bottomVBox);
 
+    connect(m_backend, SIGNAL(packageChanged()), m_packageView, SLOT(updateView()));
     connect(m_backend, SIGNAL(packageChanged()), m_detailsWidget, SLOT(refreshButtons()));
 }
 

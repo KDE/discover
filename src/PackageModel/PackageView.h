@@ -29,6 +29,9 @@ class PackageView : public QTreeView
 public:
     explicit PackageView(QWidget *parent);
     ~PackageView();
+
+public Q_SLOTS:
+    void updateView();
 };
 
 #endif
