@@ -85,8 +85,6 @@ void FilterWidget::populateCategories()
 
         if (!groupName.isEmpty()) {
             groupSet << groupName;
-        } else {
-            kDebug() << group->name();
         }
     }
     foreach (const QString &group, groupSet.toList()) {
