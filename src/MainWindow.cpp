@@ -106,15 +106,15 @@ void MainWindow::setupActions()
     KAction *quitAction = KStandardAction::quit(this, SLOT(slotQuit()), actionCollection());
     actionCollection()->addAction("quit", quitAction);
 
-    KAction *updateAction = actionCollection()->addAction("update");
-    updateAction->setIcon(KIcon("system-software-update"));
-    updateAction->setText("Check for Updates");
-    connect(updateAction, SIGNAL(triggered()), this, SLOT(slotUpdate()));
+    m_updateAction = actionCollection()->addAction("update");
+    m_updateAction->setIcon(KIcon("system-software-update"));
+    m_updateAction->setText("Check for Updates");
+    connect(m_updateAction, SIGNAL(triggered()), this, SLOT(checkForUpdates()));
 
     m_upgradeAction = actionCollection()->addAction("upgrade");
     m_upgradeAction->setIcon(KIcon("go-top"));
     m_upgradeAction->setText("Upgrade");
-    connect(m_upgradeAction, SIGNAL(triggered()), this, SLOT(slotUpgrade()));
+    connect(m_upgradeAction, SIGNAL(triggered()), this, SLOT(markUpgrades()));
 
     m_previewAction = actionCollection()->addAction("preview");
     m_previewAction->setIcon(KIcon("document-preview-archive"));
@@ -136,14 +136,15 @@ void MainWindow::slotQuit()
     KApplication::instance()->quit();
 }
 
-void MainWindow::slotUpgrade()
+void MainWindow::markUpgrades()
 {
     m_backend->markPackagesForDistUpgrade();
     previewChanges();
 }
 
-void MainWindow::slotUpdate()
+void MainWindow::checkForUpdates()
 {
+    setActionsEnabled(false);
     initDownloadWidget();
     m_backend->updateCache();
 }
@@ -152,7 +153,6 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
 {
     switch (event) {
         case QApt::CacheUpdateStarted:
-            this->toolBar("mainToolBar")->setEnabled(false);
             m_downloadWidget->clear();
             m_downloadWidget->setHeaderText(i18n("<b>Updating software sources</b>"));
             m_stack->setCurrentWidget(m_downloadWidget);
@@ -163,7 +163,6 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
             reload();
             break;
         case QApt::PackageDownloadStarted:
-            this->toolBar("mainToolBar")->setEnabled(false);
             m_downloadWidget->clear();
             m_downloadWidget->setHeaderText(i18n("<b>Downloading Packages</b>"));
             m_stack->setCurrentWidget(m_downloadWidget);
@@ -205,6 +204,7 @@ void MainWindow::returnFromPreview()
 
 void MainWindow::startCommit()
 {
+    setActionsEnabled(false);
     initDownloadWidget();
     initCommitWidget();
     m_backend->commitChanges();
@@ -235,7 +235,7 @@ void MainWindow::initCommitWidget()
 void MainWindow::reload()
 {
     m_managerWidget->reload();
-    toolBar("mainToolBar")->setEnabled(true);
+    setActionsEnabled(true);
     m_stack->setCurrentWidget(m_mainWidget);
     reloadActions();
 
@@ -254,6 +254,14 @@ void MainWindow::reloadActions()
     m_upgradeAction->setEnabled(!upgradeableList.isEmpty());
     m_previewAction->setEnabled(!changedList.isEmpty());
     m_applyAction->setEnabled(!changedList.isEmpty());
+}
+
+void MainWindow::setActionsEnabled(bool enabled)
+{
+    m_updateAction->setEnabled(enabled);
+    m_upgradeAction->setEnabled(enabled);
+    m_previewAction->setEnabled(enabled);
+    m_applyAction->setEnabled(enabled);
 }
 
 #include "MainWindow.moc"

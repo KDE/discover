@@ -77,8 +77,8 @@ public Q_SLOTS:
 private Q_SLOTS:
     void setupActions();
     void slotQuit();
-    void slotUpgrade();
-    void slotUpdate();
+    void markUpgrades();
+    void checkForUpdates();
     void workerEvent(QApt::WorkerEvent event);
     void previewChanges();
     void returnFromPreview();
@@ -87,6 +87,7 @@ private Q_SLOTS:
     void initCommitWidget();
     void reload();
     void reloadActions();
+    void setActionsEnabled(bool enabled);
 };
 
 #endif // _MUON_H_
