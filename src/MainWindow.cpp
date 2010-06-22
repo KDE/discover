@@ -91,6 +91,7 @@ MainWindow::MainWindow()
     setupActions();
 
     QLabel* packageCountLabel = new QLabel(this);
+    packageCountLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
     packageCountLabel->setText(i18np("%1 package available", "%1 packages available", m_backend->packageCount()));
     statusBar()->addWidget(packageCountLabel);
     statusBar()->show();
