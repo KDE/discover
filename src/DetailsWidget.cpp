@@ -159,7 +159,11 @@ void DetailsWidget::refreshButtons()
     if (state & QApt::Package::Installed) {
         m_mainTab->installButton->hide();
         m_mainTab->removeButton->show();
-        m_mainTab->upgradeButton->setEnabled(upgradeable);
+        if (upgradeable) {
+            m_mainTab->upgradeButton->show();
+        } else {
+            m_mainTab->upgradeButton->hide();
+        }
         m_mainTab->reinstallButton->show();
         m_mainTab->purgeButton->show();
         m_mainTab->cancelButton->hide();
