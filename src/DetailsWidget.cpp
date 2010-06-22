@@ -121,6 +121,14 @@ void DetailsWidget::setPackage(QApt::Package *package)
 
         m_actionMenu->addAction(m_installAction);
     }
+
+    if (package->isSupported()) {
+        m_mainTab->supportedLabel->setText(i18n("Canonical provides critical updates for %1 until %2",
+                                                package->name(), package->supportedUntil()));
+    } else {
+       m_mainTab->supportedLabel->setText(i18n("Canonical does not provide updates for %1. Some updates "
+                                               "may be provided by the Ubuntu community", package->name()));
+    }
 }
 
 void DetailsWidget::setupPackageActions()

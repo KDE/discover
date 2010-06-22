@@ -30,7 +30,6 @@
 #include <KIcon>
 #include <KLineEdit>
 #include <KLocale>
-#include <KDebug>
 
 #include <libqapt/backend.h>
 
