@@ -50,6 +50,9 @@ private:
     PackageModel *m_model;
     PackageProxyModel *m_proxyModel;
     PackageView *m_packageView;
+
+private Q_SLOTS:
+    void refresh();
 };
 
 #endif

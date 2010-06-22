@@ -64,10 +64,19 @@ ReviewWidget::ReviewWidget(QWidget *parent, QApt::Backend *backend)
     m_model->addPackages(m_backend->markedPackages());
     m_packageView->setSortingEnabled(true);
     m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
+
+    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(refresh()));
 }
 
 ReviewWidget::~ReviewWidget()
 {
+}
+
+void ReviewWidget::refresh()
+{
+   m_model->clear();
+   m_model->addPackages(m_backend->markedPackages());
+   m_packageView->updateView();
 }
 
 #include "ReviewWidget.moc"
