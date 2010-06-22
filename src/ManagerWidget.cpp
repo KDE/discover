@@ -89,6 +89,8 @@ ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
     splitter->setOrientation(Qt::Vertical);
     splitter->addWidget(topVBox);
     splitter->addWidget(bottomVBox);
+
+    connect(m_backend, SIGNAL(packageChanged()), m_detailsWidget, SLOT(refreshButtons()));
 }
 
 ManagerWidget::~ManagerWidget()

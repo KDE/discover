@@ -26,7 +26,6 @@
 #include <QtGui/QVBoxLayout>
 
 // KDE
-#include <KAction>
 #include <KDebug>
 #include <KLocale>
 #include <KMenu>
@@ -55,12 +54,6 @@ DetailsWidget::DetailsWidget(QWidget *parent)
     m_screenshotButton->setText("Get Screenshot");
     m_screenshotButton->hide();
     m_mainTab->topHBoxLayout->addWidget(m_screenshotButton);
-
-    setupPackageActions();
-    m_actionMenu = new KMenu(mainTab);
-    m_mainTab->actionToolButton->setMenu(m_actionMenu);
-    connect(m_mainTab->actionToolButton, SIGNAL(triggered(QAction *)),
-            this, SLOT(markPackage(QAction *)));
 
     // Technical tab
     m_technicalTab = new QWidget;
@@ -94,35 +87,22 @@ DetailsWidget::~DetailsWidget()
 void DetailsWidget::setPackage(QApt::Package *package)
 {
     show();
+    QApt::Package *oldPackage = m_package;
     m_package = package;
     m_mainTab->packageShortDescLabel->setText(package->shortDescription());
 
     m_screenshotButton->show();
-    m_mainTab->actionToolButton->setEnabled(true);
-    m_mainTab->actionToolButton->setText(i18n("Choose an action"));
-    m_actionMenu->clear();
+    setupButtons(oldPackage);
+    refreshButtons();
 
     m_mainTab->changelogBrowser->setText(package->longDescription());
 
     if (package->isInstalled()) {
         addTab(m_filesTab, i18n("Installed Files"));
         populateFileList(package);
-
-        //TODO: split into updateActionMenu(bool installed)
-        //TODO: Handle coming back to the package too, in case we marked something
-        // and are coming back
-        if (package->state() & QApt::Package::Upgradeable) {
-            m_actionMenu->addAction(m_upgradeAction);
-        }
-
-        m_actionMenu->addAction(m_removeAction);
-        m_actionMenu->addAction(m_reinstallAction);
-        m_actionMenu->addAction(m_purgeAction);
     } else {
         setCurrentIndex(0); // Switch to the main tab
         removeTab(indexOf(m_filesTab));
-
-        m_actionMenu->addAction(m_installAction);
     }
 
     if (package->isSupported()) {
@@ -134,68 +114,73 @@ void DetailsWidget::setPackage(QApt::Package *package)
     }
 }
 
-void DetailsWidget::setupPackageActions()
+void DetailsWidget::setupButtons(QApt::Package *oldPackage)
 {
-    m_installAction = new KAction(this);
-    m_installAction->setIcon(KIcon("download"));
-    m_installAction->setText(i18n("Install"));
+    disconnect(m_mainTab->installButton, SIGNAL(clicked()), oldPackage, SLOT(setInstall()));
+    disconnect(m_mainTab->removeButton, SIGNAL(clicked()), oldPackage, SLOT(setRemove()));
+    disconnect(m_mainTab->upgradeButton, SIGNAL(clicked()), oldPackage, SLOT(setInstall()));
+    disconnect(m_mainTab->reinstallButton, SIGNAL(clicked()), oldPackage, SLOT(setReInstall()));
+    disconnect(m_mainTab->purgeButton, SIGNAL(clicked()), oldPackage, SLOT(setPurge()));
+    disconnect(m_mainTab->cancelButton, SIGNAL(clicked()), oldPackage, SLOT(setKeep()));
 
-    m_removeAction = new KAction(this);
-    m_removeAction->setIcon(KIcon("edit-delete"));
-    m_removeAction->setText(i18n("Remove"));
+    kDebug() << "setting up buttons";
+    m_mainTab->installButton->setIcon(KIcon("download"));
+    m_mainTab->installButton->setText(i18n("Install"));
+    connect(m_mainTab->installButton, SIGNAL(clicked()), m_package, SLOT(setInstall()));
 
-    m_upgradeAction = new KAction(this);
-    m_upgradeAction->setIcon(KIcon("system-software-update"));
-    m_upgradeAction->setText(i18n("Upgrade"));
+    m_mainTab->removeButton->setIcon(KIcon("edit-delete"));
+    m_mainTab->removeButton->setText(i18n("Remove"));
+    connect(m_mainTab->removeButton, SIGNAL(clicked()), m_package, SLOT(setRemove()));
 
-    m_reinstallAction = new KAction(this);
-    m_reinstallAction->setIcon(KIcon("view-refresh"));
-    m_reinstallAction->setText(i18n("Reinstall"));
+    m_mainTab->upgradeButton->setIcon(KIcon("system-software-update"));
+    m_mainTab->upgradeButton->setText(i18n("Upgrade"));
+    connect(m_mainTab->upgradeButton, SIGNAL(clicked()), m_package, SLOT(setInstall()));
 
-    m_purgeAction = new KAction(this);
-    m_purgeAction->setIcon(KIcon("edit-delete-shred"));
-    m_purgeAction->setText(i18n("Purge"));
+    m_mainTab->reinstallButton->setIcon(KIcon("view-refresh"));
+    m_mainTab->reinstallButton->setText(i18n("Reinstall"));
+    connect(m_mainTab->reinstallButton, SIGNAL(clicked()), m_package, SLOT(setReInstall()));
 
-//     m_downgradeAction = new KAction(this);
-//     m_downgradeAction->setText(i18n("Downgrade"));
+    m_mainTab->purgeButton->setIcon(KIcon("edit-delete-shred"));
+    m_mainTab->purgeButton->setText(i18n("Purge"));
+    connect(m_mainTab->purgeButton, SIGNAL(clicked()), m_package, SLOT(setPurge()));
 
-    m_cancelAction = new KAction(this);
-    m_cancelAction->setIcon(KIcon("dialog-cancel"));
-    m_cancelAction->setText(i18n("Cancel"));
+    // TODO: Downgrade
+
+    m_mainTab->cancelButton->setIcon(KIcon("dialog-cancel"));
+    m_mainTab->cancelButton->setText(i18n("Cancel"));
+    connect(m_mainTab->cancelButton, SIGNAL(clicked()), m_package, SLOT(setKeep()));
 }
 
-void DetailsWidget::markPackage(QAction *action)
+void DetailsWidget::refreshButtons()
 {
-    if (action == m_cancelAction) {
-        m_package->setKeep();
-        // TODO: FAIL. Split out menu setting code into own function so that
-        // we don't have to reload the whole thing by calling setPacage();
-        setPackage(m_package);
-        m_mainTab->actionToolButton->setIcon(KIcon());
-        m_mainTab->actionToolButton->setText(i18n("Choose an action"));
+    int state = m_package->state();
+    bool upgradeable = (state & QApt::Package::Upgradeable);
+
+    if (state & QApt::Package::Installed) {
+        m_mainTab->installButton->hide();
+        m_mainTab->removeButton->show();
+        m_mainTab->upgradeButton->setEnabled(upgradeable);
+        m_mainTab->reinstallButton->show();
+        m_mainTab->purgeButton->show();
+        m_mainTab->cancelButton->hide();
     } else {
-        if (action == m_installAction) {
-            m_package->setInstall();
-            m_mainTab->actionToolButton->setIcon(KIcon("download"));
-            m_mainTab->actionToolButton->setText(i18n("Install"));
-        } else if (action == m_removeAction) {
-            m_package->setRemove();
-            m_mainTab->actionToolButton->setIcon(KIcon("edit-delete"));
-            m_mainTab->actionToolButton->setText(i18n("Remove"));
-        } else if (action == m_upgradeAction) {
-          m_package->setInstall(); // Upgrade == install for apt
-          m_mainTab->actionToolButton->setIcon(KIcon("view-refresh"));
-          m_mainTab->actionToolButton->setText(i18n("Upgrade"));
-        } else if (action == m_reinstallAction) {
-          m_package->setReInstall();
-          m_mainTab->actionToolButton->setText(i18n("Reinstall"));
-        } else if (action == m_purgeAction) {
-          m_package->setRemove(/*bool purge*/ true);
-          m_mainTab->actionToolButton->setIcon(KIcon("edit-delete-shred"));
-          m_mainTab->actionToolButton->setText(i18n("Purge"));
-        }
-        m_actionMenu->clear();
-        m_actionMenu->addAction(m_cancelAction);
+        m_mainTab->installButton->show();
+        m_mainTab->removeButton->hide();
+        m_mainTab->upgradeButton->hide();
+        m_mainTab->reinstallButton->hide();
+        m_mainTab->purgeButton->hide();
+        m_mainTab->cancelButton->hide();
+    }
+
+    if (state & (QApt::Package::ToInstall | QApt::Package::ToReInstall |
+                 QApt::Package::ToUpgrade | QApt::Package::ToDowngrade |
+                 QApt::Package::ToRemove  | QApt::Package::ToPurge)) {
+        m_mainTab->installButton->hide();
+        m_mainTab->removeButton->hide();
+        m_mainTab->upgradeButton->hide();
+        m_mainTab->reinstallButton->hide();
+        m_mainTab->purgeButton->hide();
+        m_mainTab->cancelButton->show();
     }
 }
 

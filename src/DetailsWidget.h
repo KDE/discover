@@ -26,7 +26,6 @@
 class QLabel;
 class QTreeWidget;
 
-class KAction;
 class KMenu;
 class KPushButton;
 class KVBox;
@@ -53,14 +52,6 @@ private:
     QApt::Package *m_package;
     Ui::MainTab *m_mainTab;
     KPushButton *m_screenshotButton;
-    KMenu *m_actionMenu;
-    KAction *m_installAction;
-    KAction *m_removeAction;
-    KAction *m_upgradeAction;
-    KAction *m_reinstallAction;
-    KAction *m_purgeAction;
-//     KAction *m_downgradeAction;
-    KAction *m_cancelAction;
 
 
     QWidget *m_technicalTab;
@@ -76,8 +67,8 @@ private:
     QWidget *m_changelogTab;
 
 private Q_SLOTS:
-    void setupPackageActions();
-    void markPackage(QAction *action);
+    void setupButtons(QApt::Package *oldPackage);
+    void refreshButtons();
     void populateFileList(QApt::Package *package);
 };
 
