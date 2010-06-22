@@ -41,10 +41,6 @@ public:
 
     ~DownloadWidget();
 
-    void clear();
-    void addItem(const QString &message);
-    void setHeaderText(const QString &text);
-
 private:
     QLabel *m_headerLabel;
     QListView *m_downloadView;
@@ -54,10 +50,13 @@ private:
     QPushButton *m_cancelButton;
 
 public Q_SLOTS:
+    void setHeaderText(const QString &text);
     void updateDownloadProgress(int percentage, int speed, int ETA);
     void updateDownloadMessage(int flag, const QString &message);
+    void clear();
 
 private Q_SLOTS:
+    void addItem(const QString &message);
     void cancelButtonPressed();
 
 signals:
