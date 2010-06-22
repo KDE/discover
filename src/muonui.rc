@@ -7,15 +7,21 @@
                          http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd">
     <Menubar>
         <Menu name="file" >
+            <Action name="preview" />
+            <Action name="apply" />
+            <Separator/>
+            <Action name="update" />
+            <Action name="upgrade" />
+            <Separator/>
             <Action name="quit" />
         </Menu>
     </Menubar>
     <ToolBar name="mainToolBar">
         <text context="@title:menu">Search Toolbar</text>
-        <Action name="update" />
-        <Action name="upgrade" />
-        <Separator/>
         <Action name="preview" />
         <Action name="apply" />
+        <Separator/>
+        <Action name="update" />
+        <Action name="upgrade" />
     </ToolBar>
 </gui>
