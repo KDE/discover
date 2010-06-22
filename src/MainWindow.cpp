@@ -237,7 +237,7 @@ void MainWindow::reload()
 {
     m_managerWidget->reload();
     setActionsEnabled(true);
-    m_stack->setCurrentWidget(m_mainWidget);
+    returnFromPreview();
     reloadActions();
 
     // No need to keep these around in memory.
