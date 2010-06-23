@@ -125,4 +125,9 @@ QApt::Package *PackageModel::packageAt(const QModelIndex &index)
     return m_packages[index.row()];
 }
 
+QApt::PackageList PackageModel::packages()
+{
+    return m_packages;
+}
+
 #include "PackageModel.moc"

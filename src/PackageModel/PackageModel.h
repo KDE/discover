@@ -51,6 +51,7 @@ public:
     void removePackages(QApt::PackageList list);
     void clear();
     QApt::Package *packageAt(const QModelIndex &index);
+    QApt::PackageList packages();
 
 private:
     QApt::PackageList m_packages;

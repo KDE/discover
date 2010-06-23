@@ -70,8 +70,23 @@ void MainWindow::initGUI()
     m_stack = new QStackedWidget;
     setCentralWidget(m_stack);
 
+    m_managerWidget = new ManagerWidget(m_stack);
+
     m_mainWidget = new QSplitter(this);
     m_mainWidget->setOrientation(Qt::Horizontal);
+
+    m_filterBox = new FilterWidget(m_stack);
+    connect (m_filterBox, SIGNAL(filterByGroup(const QString&)),
+             m_managerWidget, SLOT(filterByGroup(const QString&)));
+    connect (m_filterBox, SIGNAL(filterByStatus(const QString&)),
+             m_managerWidget, SLOT(filterByStatus(const QString&)));
+
+    m_mainWidget->addWidget(m_filterBox);
+    m_mainWidget->addWidget(m_managerWidget);
+    // TODO: Store/restore on app exit/restore
+    QList<int> sizes;
+    sizes << 115 << (this->width() - 115);
+    m_mainWidget->setSizes(sizes);
 
     m_stack->addWidget(m_mainWidget);
     m_stack->setCurrentWidget(m_mainWidget);
@@ -93,20 +108,6 @@ void MainWindow::initObject()
 
     reloadActions(); //Get initial enabled/disabled state
 
-    m_filterBox = new FilterWidget(m_stack, m_backend);
-    m_managerWidget = new ManagerWidget(m_stack, m_backend);
-    connect (m_filterBox, SIGNAL(filterByGroup(const QString&)),
-             m_managerWidget, SLOT(filterByGroup(const QString&)));
-    connect (m_filterBox, SIGNAL(filterByStatus(const QString&)),
-             m_managerWidget, SLOT(filterByStatus(const QString&)));
-
-    m_mainWidget->addWidget(m_filterBox);
-    m_mainWidget->addWidget(m_managerWidget);
-    // TODO: Store/restore on app exit/restore
-    QList<int> sizes;
-    sizes << 115 << (this->width() - 115);
-    m_mainWidget->setSizes(sizes);
-
     QLabel* packageCountLabel = new QLabel(this);
     packageCountLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
     packageCountLabel->setText(i18np("%1 package available", "%1 packages available", m_backend->packageCount()));
@@ -114,6 +115,8 @@ void MainWindow::initObject()
     statusBar()->show();
 
     m_managerWidget->setFocus();
+
+    backendReady();
 }
 
 void MainWindow::setupActions()
@@ -143,6 +146,12 @@ void MainWindow::setupActions()
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
 
     setupGUI();
+}
+
+void MainWindow::backendReady()
+{
+    m_filterBox->setBackend(m_backend);
+    m_managerWidget->setBackend(m_backend);
 }
 
 void MainWindow::slotQuit()

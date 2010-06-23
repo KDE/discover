@@ -48,7 +48,7 @@ ReviewWidget::ReviewWidget(QWidget *parent, QApt::Backend *backend)
     m_model = new PackageModel(this);
     PackageDelegate *delegate = new PackageDelegate(this);
 
-    m_proxyModel = new PackageProxyModel(this, m_backend);
+    m_proxyModel = new PackageProxyModel(this);
     m_proxyModel->setSourceModel(m_model);
 
     QLabel *browserHeader = new QLabel(this);
@@ -62,6 +62,7 @@ ReviewWidget::ReviewWidget(QWidget *parent, QApt::Backend *backend)
              this, SLOT(packageActivated(const QModelIndex&)));
 
     m_model->addPackages(m_backend->markedPackages());
+    m_proxyModel->setBackend(m_backend);
     m_packageView->setSortingEnabled(true);
     m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
 

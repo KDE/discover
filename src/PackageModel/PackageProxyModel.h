@@ -34,9 +34,10 @@ class PackageProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
 public:
-    PackageProxyModel(QObject *parent, QApt::Backend *backend);
+    PackageProxyModel(QObject *parent);
     ~PackageProxyModel();
 
+    void setBackend(QApt::Backend *backend);
     void search(const QString &searchText);
     void setGroupFilter(const QString &filterText);
     void setStateFilter(QApt::Package::PackageState state);

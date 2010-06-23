@@ -41,7 +41,7 @@ class FilterWidget : public QDockWidget
 {
     Q_OBJECT
 public:
-    FilterWidget(QWidget *parent, QApt::Backend *backend);
+    FilterWidget(QWidget *parent);
     ~FilterWidget();
 
 private:
@@ -56,6 +56,9 @@ private:
     QStandardItemModel *m_categoryModel;
     QStandardItemModel *m_statusModel;
     QStandardItemModel *m_originModel;
+
+public Q_SLOTS:
+    void setBackend(QApt::Backend *backend);
 
 private Q_SLOTS:
     void populateCategories();

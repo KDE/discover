@@ -45,14 +45,14 @@
 #include "PackageModel/PackageView.h"
 #include "PackageModel/PackageDelegate.h"
 
-ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
+ManagerWidget::ManagerWidget(QWidget *parent)
     : KVBox(parent)
-    , m_backend(backend)
+    , m_backend(0)
 {
     m_model = new PackageModel(this);
     PackageDelegate *delegate = new PackageDelegate(this);
 
-    m_proxyModel = new PackageProxyModel(this, m_backend);
+    m_proxyModel = new PackageProxyModel(this);
     m_proxyModel->setSourceModel(m_model);
 
     KVBox *topVBox = new KVBox;
@@ -77,10 +77,6 @@ ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
     connect (m_packageView, SIGNAL(activated(const QModelIndex&)),
              this, SLOT(packageActivated(const QModelIndex&)));
 
-    m_model->addPackages(m_backend->availablePackages());
-    m_packageView->setSortingEnabled(true);
-    m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
-
     KVBox *bottomVBox = new KVBox;
 
     m_detailsWidget = new DetailsWidget(bottomVBox);
@@ -89,13 +85,22 @@ ManagerWidget::ManagerWidget(QWidget *parent, QApt::Backend *backend)
     splitter->setOrientation(Qt::Vertical);
     splitter->addWidget(topVBox);
     splitter->addWidget(bottomVBox);
-
-    connect(m_backend, SIGNAL(packageChanged()), m_packageView, SLOT(updateView()));
-    connect(m_backend, SIGNAL(packageChanged()), m_detailsWidget, SLOT(refreshButtons()));
 }
 
 ManagerWidget::~ManagerWidget()
 {
+}
+
+void ManagerWidget::setBackend(QApt::Backend *backend)
+{
+    m_backend = backend;
+    connect(m_backend, SIGNAL(packageChanged()), m_packageView, SLOT(updateView()));
+    connect(m_backend, SIGNAL(packageChanged()), m_detailsWidget, SLOT(refreshButtons()));
+
+    m_model->addPackages(m_backend->availablePackages());
+    m_proxyModel->setBackend(backend);
+    m_packageView->setSortingEnabled(true);
+    m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
 }
 
 void ManagerWidget::setFocus()

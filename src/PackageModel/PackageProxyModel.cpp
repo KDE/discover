@@ -29,10 +29,10 @@
 // Own includes
 #include "PackageModel.h"
 
-PackageProxyModel::PackageProxyModel(QObject *parent, QApt::Backend *backend)
+PackageProxyModel::PackageProxyModel(QObject *parent)
         : QSortFilterProxyModel(parent)
-        , m_backend(backend)
-        , m_packages(backend->availablePackages())
+        , m_backend(0)
+        , m_packages(QApt::PackageList())
         , m_searchText(QString())
         , m_groupFilter(QString())
         , m_stateFilter((QApt::Package::PackageState)0)
@@ -44,6 +44,13 @@ PackageProxyModel::~PackageProxyModel()
 {
 }
 
+void PackageProxyModel::setBackend(QApt::Backend *backend)
+{
+    m_backend = backend;
+    m_packages = static_cast<PackageModel*>(sourceModel())->packages();
+    invalidate();
+}
+
 void PackageProxyModel::search(const QString &searchText)
 {
     // 1-character searches are painfully slow. >= 2 chars are fine, though
@@ -52,7 +59,7 @@ void PackageProxyModel::search(const QString &searchText)
         m_packages = m_backend->search(searchText);
         m_sortByRelevancy = true;
     } else {
-        m_packages = m_backend->availablePackages();
+        m_packages =  static_cast<PackageModel*>(sourceModel())->packages();
         m_sortByRelevancy = false;
     }
     invalidate();
@@ -107,7 +114,7 @@ void PackageProxyModel::reset()
 {
     //TODO: Save search parameters and re-apply
     beginRemoveRows(QModelIndex(), 0, m_packages.size());
-    m_packages = m_backend->availablePackages();
+    m_packages =  static_cast<PackageModel*>(sourceModel())->packages();
     endRemoveRows();
     invalidate();
 }

@@ -78,6 +78,7 @@ private Q_SLOTS:
     void initGUI();
     void initObject();
     void setupActions();
+    void backendReady();
     void slotQuit();
     void markUpgrades();
     void checkForUpdates();

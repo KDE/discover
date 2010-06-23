@@ -35,9 +35,9 @@
 
 #include "MuonStrings.h"
 
-FilterWidget::FilterWidget(QWidget *parent, QApt::Backend *backend)
+FilterWidget::FilterWidget(QWidget *parent)
     : QDockWidget(parent)
-    , m_backend(backend)
+    , m_backend(0)
 {
     setFeatures(QDockWidget::NoDockWidgetFeatures);
     setWindowTitle(i18n("Filter:"));
@@ -51,8 +51,6 @@ FilterWidget::FilterWidget(QWidget *parent, QApt::Backend *backend)
     m_categoriesList->setHeaderHidden(true);
     m_filterBox->addItem(m_categoriesList, KIcon(), i18n("By Category"));
     m_categoryModel = new QStandardItemModel;
-    populateCategories();
-    m_categoriesList->setModel(m_categoryModel);
     connect(m_categoriesList, SIGNAL(activated(const QModelIndex&)),
             this, SLOT(categoryActivated(const QModelIndex&)));
 
@@ -60,8 +58,6 @@ FilterWidget::FilterWidget(QWidget *parent, QApt::Backend *backend)
     m_statusList->setAlternatingRowColors(true);
     m_filterBox->addItem(m_statusList, KIcon(), i18n("By Status"));
     m_statusModel = new QStandardItemModel;
-    populateStatuses();
-    m_statusList->setModel(m_statusModel);
     connect(m_statusList, SIGNAL(activated(const QModelIndex&)),
             this, SLOT(statusActivated(const QModelIndex&)));
 
@@ -73,6 +69,17 @@ FilterWidget::FilterWidget(QWidget *parent, QApt::Backend *backend)
 
 FilterWidget::~FilterWidget()
 {
+}
+
+void FilterWidget::setBackend(QApt::Backend *backend)
+{
+    m_backend = backend;
+
+    populateCategories();
+    m_categoriesList->setModel(m_categoryModel);
+
+    populateStatuses();
+    m_statusList->setModel(m_statusModel);
 }
 
 void FilterWidget::populateCategories()
