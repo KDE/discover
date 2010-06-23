@@ -1,2 +1,1 @@
--Lazy initialization in MainWindow constructor
--Give FilterWidget a frame
+-Thread the QApt::Backend object
