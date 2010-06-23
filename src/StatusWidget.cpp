@@ -79,19 +79,19 @@ void StatusWidget::updateStatus()
         QString toUpgradeText;
         if (toUpgrade > 0 && toInstall > 0) {
             toUpgradeText= i18nc("Label for the number of packages pending upgrade when packages are also pending installation",
-                                 ", %1 to upgrade,", toUpgrade);
+                                 ", %1 to upgrade", toUpgrade);
         } else if (toUpgrade > 0) {
             toUpgradeText= i18nc("Label for the number of packages pending upgrade when there are only upgrades",
-                                 "%1 to upgrade,", toUpgrade);
+                                 "%1 to upgrade", toUpgrade);
         }
 
         QString toRemoveText;
         if (toRemove > 0 && toUpgrade > 0) {
             toRemoveText= i18nc("Label for the number of packages pending removal when packages are also pending upgrade",
-                                 ", %1 to remove,", toRemove);
+                                 ", %1 to remove", toRemove);
         } else if (toRemove > 0) {
             toUpgradeText= i18nc("Label for the number of packages pending removal when there are only removals",
-                                 "%1 to remove,", toRemove);
+                                 "%1 to remove", toRemove);
         }
 
         m_changesLabel->setText(changes % toInstallText % toUpgradeText % toRemoveText);
