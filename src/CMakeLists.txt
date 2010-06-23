@@ -8,6 +8,7 @@ set(muon_SRCS
     CommitWidget.cpp
     FilterWidget.cpp
     DetailsWidget.cpp
+    StatusWidget.cpp
     PackageModel/PackageModel.cpp
     PackageModel/PackageProxyModel.cpp
     PackageModel/PackageView.cpp

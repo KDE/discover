@@ -48,6 +48,7 @@
 #include "FilterWidget.h"
 #include "ManagerWidget.h"
 #include "ReviewWidget.h"
+#include "StatusWidget.h"
 
 MainWindow::MainWindow()
     : KXmlGuiWindow(0)
@@ -93,6 +94,10 @@ void MainWindow::initGUI()
     m_stack->setCurrentWidget(m_mainWidget);
 
     setupActions();
+
+    m_statusWidget = new StatusWidget(this);
+    statusBar()->addWidget(m_statusWidget);
+    statusBar()->show();
     setEnabled(false);
 }
 
@@ -109,12 +114,6 @@ void MainWindow::initObject()
     connect(m_backend, SIGNAL(packageChanged()), this, SLOT(reloadActions()));
 
     reloadActions(); //Get initial enabled/disabled state
-
-    QLabel* packageCountLabel = new QLabel(this);
-    packageCountLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
-    packageCountLabel->setText(i18np("%1 package available", "%1 packages available", m_backend->packageCount()));
-    statusBar()->addWidget(packageCountLabel);
-    statusBar()->show();
 
     m_managerWidget->setFocus();
 
@@ -154,6 +153,7 @@ void MainWindow::backendReady()
 {
     m_filterBox->setBackend(m_backend);
     m_managerWidget->setBackend(m_backend);
+    m_statusWidget->setBackend(m_backend);
     setEnabled(true);
 }
 

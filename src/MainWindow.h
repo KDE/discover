@@ -40,6 +40,7 @@ class ManagerWidget;
 class ReviewWidget;
 class DownloadWidget;
 class CommitWidget;
+class StatusWidget;
 
 namespace QApt {
     class Backend;
@@ -76,6 +77,7 @@ private:
     ReviewWidget *m_reviewWidget;
     DownloadWidget *m_downloadWidget;
     CommitWidget *m_commitWidget;
+    StatusWidget *m_statusWidget;
 
 public Q_SLOTS:
 
