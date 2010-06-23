@@ -171,6 +171,9 @@ void DetailsWidget::setupButtons(QApt::Package *oldPackage)
 
 void DetailsWidget::refreshButtons()
 {
+    if (!m_package) {
+        return; // Nothing to refresh yet, so return, else we crash
+    }
     int state = m_package->state();
     bool upgradeable = (state & QApt::Package::Upgradeable);
 
