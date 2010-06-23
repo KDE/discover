@@ -22,6 +22,7 @@ kde4_add_executable(muon ${muon_SRCS})
 
 target_link_libraries(muon ${KDE4_KDEUI_LIBS}
                            ${KDE4_KIO_LIBS}
+                           ${KDE4_SOLID_LIBS}
                            qapt)
 
 install(TARGETS muon ${INSTALL_TARGETS_DEFAULT_ARGS} )

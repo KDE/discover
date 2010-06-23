@@ -79,6 +79,8 @@ private:
     CommitWidget *m_commitWidget;
     StatusWidget *m_statusWidget;
 
+    int m_powerInhibitor;
+
 private Q_SLOTS:
     void initGUI();
     void initObject();

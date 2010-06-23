@@ -38,6 +38,7 @@
 #include <KStatusBar>
 #include <KToolBar>
 #include <KDebug>
+#include <Solid/PowerManagement>
 
 // LibQApt includes
 #include <libqapt/backend.h>
@@ -57,6 +58,7 @@ MainWindow::MainWindow()
     , m_reviewWidget(0)
     , m_downloadWidget(0)
     , m_commitWidget(0)
+    , m_powerInhibitor(0)
 
 {
     initGUI();
@@ -180,16 +182,19 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
             m_downloadWidget->clear();
             m_downloadWidget->setHeaderText(i18n("<b>Updating software sources</b>"));
             m_stack->setCurrentWidget(m_downloadWidget);
+            m_powerInhibitor = Solid::PowerManagement::beginSuppressingSleep(i18n("Muon is downloading packages"));
             connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
             break;
         case QApt::CacheUpdateFinished:
         case QApt::CommitChangesFinished:
+            Solid::PowerManagement::stopSuppressingSleep(m_powerInhibitor);
             reload();
             returnFromPreview();
             break;
         case QApt::PackageDownloadStarted:
             m_downloadWidget->clear();
             m_downloadWidget->setHeaderText(i18n("<b>Downloading Packages</b>"));
+            m_powerInhibitor = Solid::PowerManagement::beginSuppressingSleep(i18n("Muon is downloading packages"));
             m_stack->setCurrentWidget(m_downloadWidget);
             connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
             break;
