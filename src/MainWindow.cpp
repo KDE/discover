@@ -195,6 +195,7 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
             break;
         case QApt::CommitChangesStarted:
             m_commitWidget->clear();
+            m_stack->setCurrentWidget(m_commitWidget);
             break;
         case QApt::PackageDownloadFinished:
         case QApt::InvalidEvent:
