@@ -92,6 +92,7 @@ void MainWindow::initGUI()
     m_stack->setCurrentWidget(m_mainWidget);
 
     setupActions();
+    setEnabled(false);
 }
 
 void MainWindow::initObject()
@@ -152,6 +153,7 @@ void MainWindow::backendReady()
 {
     m_filterBox->setBackend(m_backend);
     m_managerWidget->setBackend(m_backend);
+    setEnabled(true);
 }
 
 void MainWindow::slotQuit()
