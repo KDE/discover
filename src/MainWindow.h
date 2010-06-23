@@ -75,6 +75,8 @@ private:
 public Q_SLOTS:
 
 private Q_SLOTS:
+    void initGUI();
+    void initObject();
     void setupActions();
     void slotQuit();
     void markUpgrades();

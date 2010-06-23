@@ -21,6 +21,7 @@
 #include "MainWindow.h"
 
 // Qt includes
+#include <QtCore/QTimer>
 #include <QtGui/QLabel>
 #include <QtGui/QSplitter>
 #include <QtGui/QStackedWidget>
@@ -56,6 +57,30 @@ MainWindow::MainWindow()
     , m_commitWidget(0)
 
 {
+    initGUI();
+    QTimer::singleShot(0, this, SLOT(initObject()));
+}
+
+MainWindow::~MainWindow()
+{
+}
+
+void MainWindow::initGUI()
+{
+    m_stack = new QStackedWidget;
+    setCentralWidget(m_stack);
+
+    m_mainWidget = new QSplitter(this);
+    m_mainWidget->setOrientation(Qt::Horizontal);
+
+    m_stack->addWidget(m_mainWidget);
+    m_stack->setCurrentWidget(m_mainWidget);
+
+    setupActions();
+}
+
+void MainWindow::initObject()
+{
     m_backend = new QApt::Backend;
     m_backend->init();
     connect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
@@ -66,8 +91,7 @@ MainWindow::MainWindow()
             this, SLOT(questionOccurred(QApt::WorkerQuestion, const QVariantMap&)));
     connect(m_backend, SIGNAL(packageChanged()), this, SLOT(reloadActions()));
 
-    m_stack = new QStackedWidget;
-    setCentralWidget(m_stack);
+    reloadActions(); //Get initial enabled/disabled state
 
     m_filterBox = new FilterWidget(m_stack, m_backend);
     m_managerWidget = new ManagerWidget(m_stack, m_backend);
@@ -76,19 +100,12 @@ MainWindow::MainWindow()
     connect (m_filterBox, SIGNAL(filterByStatus(const QString&)),
              m_managerWidget, SLOT(filterByStatus(const QString&)));
 
-    m_mainWidget = new QSplitter(this);
-    m_mainWidget->setOrientation(Qt::Horizontal);
     m_mainWidget->addWidget(m_filterBox);
     m_mainWidget->addWidget(m_managerWidget);
     // TODO: Store/restore on app exit/restore
     QList<int> sizes;
     sizes << 115 << (this->width() - 115);
     m_mainWidget->setSizes(sizes);
-
-    m_stack->addWidget(m_mainWidget);
-    m_stack->setCurrentWidget(m_mainWidget);
-
-    setupActions();
 
     QLabel* packageCountLabel = new QLabel(this);
     packageCountLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
@@ -97,10 +114,6 @@ MainWindow::MainWindow()
     statusBar()->show();
 
     m_managerWidget->setFocus();
-}
-
-MainWindow::~MainWindow()
-{
 }
 
 void MainWindow::setupActions()
@@ -129,7 +142,6 @@ void MainWindow::setupActions()
     m_applyAction->setText("Apply Changes");
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
 
-    reloadActions(); //Get initial enabled/disabled state
     setupGUI();
 }
 
