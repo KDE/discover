@@ -21,6 +21,7 @@
 #include "StatusWidget.h"
 
 // Qt includes
+#include <QtCore/QStringBuilder>
 #include <QtGui/QLabel>
 
 // KDE includes
@@ -63,10 +64,37 @@ void StatusWidget::updateStatus()
                                 m_backend->packageCount()));
 
     if (m_backend->markedPackages().count() > 0) {
-        m_changesLabel->setText(i18n("Changes: %1 to install, %2 to upgrade, %3 to remove",
-                                    m_backend->packageCount(QApt::Package::ToInstall) - m_backend->packageCount(QApt::Package::ToUpgrade),
-                                    m_backend->packageCount(QApt::Package::ToUpgrade),
-                                    m_backend->packageCount(QApt::Package::ToRemove)));
+        QString changes(i18nc("Header for the label showing what changes are to be made",
+                              "Changes: "));
+
+        int toInstall = m_backend->packageCount(QApt::Package::ToInstall) - m_backend->packageCount(QApt::Package::ToUpgrade);
+        int toUpgrade = m_backend->packageCount(QApt::Package::ToUpgrade);
+        int toRemove = m_backend->packageCount(QApt::Package::ToRemove);
+
+        QString toInstallText;
+        if (toInstall > 0) {
+            toInstallText = i18nc("Part of the status label", "%1 to install", toInstall);
+        }
+
+        QString toUpgradeText;
+        if (toUpgrade > 0 && toInstall > 0) {
+            toUpgradeText= i18nc("Label for the number of packages pending upgrade when packages are also pending installation",
+                                 ", %1 to upgrade,", toUpgrade);
+        } else if (toUpgrade > 0) {
+            toUpgradeText= i18nc("Label for the number of packages pending upgrade when there are only upgrades",
+                                 "%1 to upgrade,", toUpgrade);
+        }
+
+        QString toRemoveText;
+        if (toRemove > 0 && toUpgrade > 0) {
+            toRemoveText= i18nc("Label for the number of packages pending removal when packages are also pending upgrade",
+                                 ", %1 to remove,", toRemove);
+        } else if (toRemove > 0) {
+            toUpgradeText= i18nc("Label for the number of packages pending removal when there are only removals",
+                                 "%1 to remove,", toRemove);
+        }
+
+        m_changesLabel->setText(changes % toInstallText % toUpgradeText % toRemoveText);
 
         m_downloadLabel->setText(i18n("Download size: %1, Space needed: %2",
                                       KGlobal::locale()->formatByteSize(3546),
