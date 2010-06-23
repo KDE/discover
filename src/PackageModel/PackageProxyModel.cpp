@@ -98,8 +98,10 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
         }
     }
 
-    bool result = m_packages.contains(package);
-    return result;
+    if (m_sortByRelevancy) {
+        return m_packages.contains(package);
+    }
+    return true;
 }
 
 QApt::Package *PackageProxyModel::packageAt(const QModelIndex &index)
