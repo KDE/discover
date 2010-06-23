@@ -83,7 +83,8 @@ DetailsWidget::DetailsWidget(QWidget *parent)
 
     addTab(mainTab, i18n("Details"));
     addTab(m_technicalTab, i18n("Technical Details"));
-    addTab(m_dependenciesTab, i18n("Dependencies"));
+    // TODO: Needs serious work in LibQApt
+    // addTab(m_dependenciesTab, i18n("Dependencies"));
     addTab(m_changelogTab, i18n("Changelog"));
 
     // Hide until a package is clicked

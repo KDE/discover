@@ -26,7 +26,7 @@
 
 PackageModel::PackageModel(QObject *parent)
         : QAbstractListModel(parent)
-        , m_packages()
+        , m_packages(QApt::PackageList())
 {
 }
 
