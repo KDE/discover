@@ -95,6 +95,8 @@ MainWindow::MainWindow()
     packageCountLabel->setText(i18np("%1 package available", "%1 packages available", m_backend->packageCount()));
     statusBar()->addWidget(packageCountLabel);
     statusBar()->show();
+
+    m_managerWidget->setFocus();
 }
 
 MainWindow::~MainWindow()

@@ -55,6 +55,7 @@ private:
     DetailsWidget *m_detailsWidget;
 
 public Q_SLOTS:
+    void setFocus();
     void reload();
     void packageActivated(const QModelIndex &index);
     void startSearch();

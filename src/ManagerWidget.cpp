@@ -98,6 +98,11 @@ ManagerWidget::~ManagerWidget()
 {
 }
 
+void ManagerWidget::setFocus()
+{
+    m_searchEdit->setFocus();
+}
+
 void ManagerWidget::reload()
 {
     m_detailsWidget->hide();
