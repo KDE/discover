@@ -61,6 +61,7 @@ DetailsWidget::DetailsWidget(QWidget *parent)
     m_screenshotButton = new KPushButton(mainTab);
     m_screenshotButton->setIcon(KIcon("image-x-generic"));
     m_screenshotButton->setText(i18n("Get Screenshot..."));
+    connect (m_screenshotButton, SIGNAL(clicked()), this, SLOT(fetchScreenshot()));
     m_mainTab->topHBoxLayout->addWidget(m_screenshotButton);
 
     // Technical tab
@@ -103,7 +104,6 @@ void DetailsWidget::setPackage(QApt::Package *package)
     m_screenshotButton->setText(i18n("Get Screenshot..."));
     m_screenshotButton->setEnabled(true);
 
-    connect (m_screenshotButton, SIGNAL(clicked()), this, SLOT(fetchScreenshot()));
     setupButtons(oldPackage);
     refreshButtons();
 
