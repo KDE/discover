@@ -38,9 +38,6 @@ StatusWidget::StatusWidget(QWidget *parent)
     m_countsLabel = new QLabel(this);
     m_countsLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
 
-    m_changesLabel = new QLabel(this);
-    m_changesLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
-
     m_downloadLabel = new QLabel(this);
     m_downloadLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
 }
@@ -58,52 +55,47 @@ void StatusWidget::setBackend(QApt::Backend *backend)
 
 void StatusWidget::updateStatus()
 {
-    m_countsLabel->setText(i18n("Packages: %1 installed, %2 upgradeable, %3 available",
-                                m_backend->packageCount(QApt::Package::Installed),
-                                m_backend->packageCount(QApt::Package::Upgradeable),
-                                m_backend->packageCount()));
+    int upgradeable = m_backend->packageCount(QApt::Package::Upgradeable);
+    bool showChanges = (m_backend->markedPackages().count() > 0);
 
-    if (m_backend->markedPackages().count() > 0) {
-        QString changes(i18nc("Header for the label showing what changes are to be made",
-                              "Changes: "));
+    QString availableText = i18n("%1 packages available, ", m_backend->packageCount());
+    QString installText = i18n("%1 installed, ", m_backend->packageCount(QApt::Package::Installed));
+    QString upgradeableText;
 
-        int toInstall = m_backend->packageCount(QApt::Package::ToInstall) - m_backend->packageCount(QApt::Package::ToUpgrade);
-        int toUpgrade = m_backend->packageCount(QApt::Package::ToUpgrade);
+    if (upgradeable > 0 && showChanges) {
+        upgradeableText = i18n("%1 upgradeable, ", upgradeable);
+    } else {
+        upgradeableText = i18n("%1 upgradeable", upgradeable);
+        m_countsLabel->setText(availableText % installText % upgradeableText);
+    }
+
+    if (showChanges) {
+        int toInstallOrUpgrade = m_backend->packageCount(QApt::Package::ToInstall);
         int toRemove = m_backend->packageCount(QApt::Package::ToRemove);
 
-        QString toInstallText;
-        if (toInstall > 0) {
-            toInstallText = i18nc("Part of the status label", "%1 to install", toInstall);
-        }
-
-        QString toUpgradeText;
-        if (toUpgrade > 0 && toInstall > 0) {
-            toUpgradeText= i18nc("Label for the number of packages pending upgrade when packages are also pending installation",
-                                 ", %1 to upgrade", toUpgrade);
-        } else if (toUpgrade > 0) {
-            toUpgradeText= i18nc("Label for the number of packages pending upgrade when there are only upgrades",
-                                 "%1 to upgrade", toUpgrade);
-        }
-
+        QString toInstallOrUpgradeText;
         QString toRemoveText;
-        if (toRemove > 0 && toUpgrade > 0) {
+
+        if (toInstallOrUpgrade > 0) {
+            toInstallOrUpgradeText = i18nc("Part of the status label", "%1 to install/upgrade", toInstallOrUpgrade);
+        }
+
+        if (toRemove > 0 && toInstallOrUpgrade > 0) {
             toRemoveText= i18nc("Label for the number of packages pending removal when packages are also pending upgrade",
                                  ", %1 to remove", toRemove);
         } else if (toRemove > 0) {
-            toUpgradeText= i18nc("Label for the number of packages pending removal when there are only removals",
+            toRemoveText= i18nc("Label for the number of packages pending removal when there are only removals",
                                  "%1 to remove", toRemove);
         }
 
-        m_changesLabel->setText(changes % toInstallText % toUpgradeText % toRemoveText);
+        m_countsLabel->setText(availableText % installText % upgradeableText %
+                               toInstallOrUpgradeText % toRemoveText);
 
         m_downloadLabel->setText(i18n("Download size: %1, Space needed: %2",
                                       KGlobal::locale()->formatByteSize(3546),
                                       KGlobal::locale()->formatByteSize(4546)));
-
-        m_changesLabel->show();
         m_downloadLabel->show();
     } else {
-        m_changesLabel->hide();
         m_downloadLabel->hide();
     }
 }
