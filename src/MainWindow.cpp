@@ -60,7 +60,7 @@ MainWindow::MainWindow()
 
 {
     initGUI();
-    QTimer::singleShot(0, this, SLOT(initObject()));
+    QTimer::singleShot(10, this, SLOT(initObject()));
 }
 
 MainWindow::~MainWindow()
