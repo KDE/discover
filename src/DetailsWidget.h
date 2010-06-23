@@ -29,6 +29,7 @@
 class QLabel;
 class QTreeWidget;
 
+class KAction;
 class KJob;
 class KMenu;
 class KPushButton;
@@ -56,6 +57,8 @@ private:
     QApt::Package *m_package;
     Ui::MainTab *m_mainTab;
     KPushButton *m_screenshotButton;
+    KAction *m_purgeAction;
+    KMenu *m_purgeMenu;
     KTemporaryFile *m_screenshotFile;
     KTemporaryFile *m_changelogFile;
 

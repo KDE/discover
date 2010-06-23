@@ -27,6 +27,7 @@
 #include <QtGui/QVBoxLayout>
 
 // KDE
+#include <KAction>
 #include <KIO/Job>
 #include <KJob>
 #include <KDebug>
@@ -63,6 +64,11 @@ DetailsWidget::DetailsWidget(QWidget *parent)
     m_screenshotButton->setText(i18n("Get Screenshot..."));
     connect (m_screenshotButton, SIGNAL(clicked()), this, SLOT(fetchScreenshot()));
     m_mainTab->topHBoxLayout->addWidget(m_screenshotButton);
+
+    m_purgeMenu = new KMenu(m_mainTab->removeButton);
+    m_purgeAction = new KAction(this);
+    m_purgeMenu->addAction(m_purgeAction);
+    m_mainTab->removeButton->setMenu(m_purgeMenu);
 
     // Technical tab
     m_technicalTab = new QWidget;
@@ -145,29 +151,29 @@ void DetailsWidget::setupButtons(QApt::Package *oldPackage)
         disconnect(m_mainTab->removeButton, SIGNAL(clicked()), oldPackage, SLOT(setRemove()));
         disconnect(m_mainTab->upgradeButton, SIGNAL(clicked()), oldPackage, SLOT(setInstall()));
         disconnect(m_mainTab->reinstallButton, SIGNAL(clicked()), oldPackage, SLOT(setReInstall()));
-        disconnect(m_mainTab->purgeButton, SIGNAL(clicked()), oldPackage, SLOT(setPurge()));
+        disconnect(m_purgeAction, SIGNAL(triggered()), oldPackage, SLOT(setPurge()));
         disconnect(m_mainTab->cancelButton, SIGNAL(clicked()), oldPackage, SLOT(setKeep()));
     }
 
     m_mainTab->installButton->setIcon(KIcon("download"));
-    m_mainTab->installButton->setText(i18n("Mark for Installation"));
+    m_mainTab->installButton->setText(i18n("Installation"));
     connect(m_mainTab->installButton, SIGNAL(clicked()), m_package, SLOT(setInstall()));
 
     m_mainTab->removeButton->setIcon(KIcon("edit-delete"));
-    m_mainTab->removeButton->setText(i18n("Mark for Removal"));
+    m_mainTab->removeButton->setText(i18n("Removal"));
     connect(m_mainTab->removeButton, SIGNAL(clicked()), m_package, SLOT(setRemove()));
 
     m_mainTab->upgradeButton->setIcon(KIcon("system-software-update"));
-    m_mainTab->upgradeButton->setText(i18n("Mark for Upgrade"));
+    m_mainTab->upgradeButton->setText(i18n("Upgrade"));
     connect(m_mainTab->upgradeButton, SIGNAL(clicked()), m_package, SLOT(setInstall()));
 
     m_mainTab->reinstallButton->setIcon(KIcon("view-refresh"));
-    m_mainTab->reinstallButton->setText(i18n("Mark for Reinstallation"));
+    m_mainTab->reinstallButton->setText(i18n("Reinstallation"));
     connect(m_mainTab->reinstallButton, SIGNAL(clicked()), m_package, SLOT(setReInstall()));
 
-    m_mainTab->purgeButton->setIcon(KIcon("edit-delete-shred"));
-    m_mainTab->purgeButton->setText(i18n("Mark for Purge"));
-    connect(m_mainTab->purgeButton, SIGNAL(clicked()), m_package, SLOT(setPurge()));
+    m_purgeAction->setIcon(KIcon("edit-delete-shred"));
+    m_purgeAction->setText(i18n("Purge"));
+    connect(m_purgeAction, SIGNAL(triggered()), m_package, SLOT(setPurge()));
 
     // TODO: Downgrade
 
@@ -193,14 +199,12 @@ void DetailsWidget::refreshButtons()
             m_mainTab->upgradeButton->hide();
         }
         m_mainTab->reinstallButton->show();
-        m_mainTab->purgeButton->show();
         m_mainTab->cancelButton->hide();
     } else {
         m_mainTab->installButton->show();
         m_mainTab->removeButton->hide();
         m_mainTab->upgradeButton->hide();
         m_mainTab->reinstallButton->hide();
-        m_mainTab->purgeButton->hide();
         m_mainTab->cancelButton->hide();
     }
 
@@ -211,7 +215,6 @@ void DetailsWidget::refreshButtons()
         m_mainTab->removeButton->hide();
         m_mainTab->upgradeButton->hide();
         m_mainTab->reinstallButton->hide();
-        m_mainTab->purgeButton->hide();
         m_mainTab->cancelButton->show();
     }
 }

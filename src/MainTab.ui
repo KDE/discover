@@ -49,6 +49,13 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Mark for:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="installButton">
        <property name="text">
         <string/>
@@ -56,9 +63,21 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="removeButton">
+      <widget class="QToolButton" name="removeButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
         <string/>
+       </property>
+       <property name="popupMode">
+        <enum>QToolButton::MenuButtonPopup</enum>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextBesideIcon</enum>
        </property>
       </widget>
      </item>
@@ -71,13 +90,6 @@
      </item>
      <item>
       <widget class="QPushButton" name="reinstallButton">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="purgeButton">
        <property name="text">
         <string/>
        </property>
