@@ -25,6 +25,7 @@
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QPushButton>
 #include <QtGui/QLabel>
+#include <QtGui/QSplitter>
 
 // KDE includes
 #include <KIcon>
@@ -35,6 +36,7 @@
 #include <libqapt/backend.h>
 
 // Own includes
+#include "DetailsWidget.h"
 #include "MuonStrings.h"
 #include "PackageModel/PackageModel.h"
 #include "PackageModel/PackageProxyModel.h"
@@ -51,11 +53,13 @@ ReviewWidget::ReviewWidget(QWidget *parent, QApt::Backend *backend)
     m_proxyModel = new PackageProxyModel(this);
     m_proxyModel->setSourceModel(m_model);
 
-    QLabel *browserHeader = new QLabel(this);
+    KVBox *topVBox = new KVBox;
+
+    QLabel *browserHeader = new QLabel(topVBox);
     browserHeader->setTextFormat(Qt::RichText);
     browserHeader->setText(i18n("<b>Review and Apply Changes</b>"));
 
-    m_packageView = new PackageView(this);
+    m_packageView = new PackageView(topVBox);
     m_packageView->setModel(m_proxyModel);
     m_packageView->setItemDelegate(delegate);
     connect (m_packageView, SIGNAL(activated(const QModelIndex&)),
@@ -65,6 +69,15 @@ ReviewWidget::ReviewWidget(QWidget *parent, QApt::Backend *backend)
     m_proxyModel->setBackend(m_backend);
     m_packageView->setSortingEnabled(true);
     m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
+
+    KVBox *bottomVBox = new KVBox;
+
+    m_detailsWidget = new DetailsWidget(bottomVBox);
+
+    QSplitter *splitter = new QSplitter(this);
+    splitter->setOrientation(Qt::Vertical);
+    splitter->addWidget(topVBox);
+    splitter->addWidget(bottomVBox);
 
     connect(m_backend, SIGNAL(packageChanged()), this, SLOT(refresh()));
 }
@@ -78,6 +91,12 @@ void ReviewWidget::refresh()
    m_model->clear();
    m_model->addPackages(m_backend->markedPackages());
    m_packageView->updateView();
+}
+
+void ReviewWidget::packageActivated(const QModelIndex &index)
+{
+    QApt::Package *package = m_proxyModel->packageAt(index);
+    m_detailsWidget->setPackage(package);
 }
 
 #include "ReviewWidget.moc"

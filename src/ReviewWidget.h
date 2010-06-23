@@ -29,6 +29,7 @@
 
 class KLineEdit;
 
+class DetailsWidget;
 class PackageModel;
 class PackageProxyModel;
 class PackageView;
@@ -50,9 +51,11 @@ private:
     PackageModel *m_model;
     PackageProxyModel *m_proxyModel;
     PackageView *m_packageView;
+    DetailsWidget *m_detailsWidget;
 
 private Q_SLOTS:
     void refresh();
+    void packageActivated(const QModelIndex &index);
 };
 
 #endif
