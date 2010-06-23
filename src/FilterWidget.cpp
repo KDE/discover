@@ -65,6 +65,7 @@ FilterWidget::FilterWidget(QWidget *parent)
 //     m_filterBox->addItem(m_originList, KIcon(), i18n("By Origin"));
 
     setWidget(m_filterBox);
+    setEnabled(false);
 }
 
 FilterWidget::~FilterWidget()
@@ -80,6 +81,7 @@ void FilterWidget::setBackend(QApt::Backend *backend)
 
     populateStatuses();
     m_statusList->setModel(m_statusModel);
+    setEnabled(true);
 }
 
 void FilterWidget::populateCategories()

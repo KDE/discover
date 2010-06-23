@@ -42,7 +42,7 @@ class ReviewWidget : public KVBox
 {
     Q_OBJECT
 public:
-    ReviewWidget(QWidget *parent, QApt::Backend *backend);
+    ReviewWidget(QWidget *parent);
     ~ReviewWidget();
 
 private:
@@ -53,8 +53,11 @@ private:
     PackageView *m_packageView;
     DetailsWidget *m_detailsWidget;
 
-private Q_SLOTS:
+public Q_SLOTS:
+    void setBackend(QApt::Backend *backend);
     void refresh();
+
+private Q_SLOTS:
     void packageActivated(const QModelIndex &index);
 };
 

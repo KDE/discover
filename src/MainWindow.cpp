@@ -73,11 +73,15 @@ void MainWindow::initGUI()
     setCentralWidget(m_stack);
 
     m_managerWidget = new ManagerWidget(m_stack);
+    connect (this, SIGNAL(backendReady(QApt::Backend*)),
+             m_managerWidget, SLOT(setBackend(QApt::Backend*)));
 
     m_mainWidget = new QSplitter(this);
     m_mainWidget->setOrientation(Qt::Horizontal);
 
     m_filterBox = new FilterWidget(m_stack);
+    connect (this, SIGNAL(backendReady(QApt::Backend*)),
+             m_filterBox, SLOT(setBackend(QApt::Backend*)));
     connect (m_filterBox, SIGNAL(filterByGroup(const QString&)),
              m_managerWidget, SLOT(filterByGroup(const QString&)));
     connect (m_filterBox, SIGNAL(filterByStatus(const QString&)),
@@ -96,9 +100,10 @@ void MainWindow::initGUI()
     setupActions();
 
     m_statusWidget = new StatusWidget(this);
+    connect (this, SIGNAL(backendReady(QApt::Backend*)),
+             m_statusWidget, SLOT(setBackend(QApt::Backend*)));
     statusBar()->addWidget(m_statusWidget);
     statusBar()->show();
-    setEnabled(false);
 }
 
 void MainWindow::initObject()
@@ -117,7 +122,7 @@ void MainWindow::initObject()
 
     m_managerWidget->setFocus();
 
-    backendReady();
+    emit backendReady(m_backend);
 }
 
 void MainWindow::setupActions()
@@ -147,14 +152,6 @@ void MainWindow::setupActions()
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
 
     setupGUI();
-}
-
-void MainWindow::backendReady()
-{
-    m_filterBox->setBackend(m_backend);
-    m_managerWidget->setBackend(m_backend);
-    m_statusWidget->setBackend(m_backend);
-    setEnabled(true);
 }
 
 void MainWindow::slotQuit()
@@ -188,6 +185,7 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
         case QApt::CacheUpdateFinished:
         case QApt::CommitChangesFinished:
             reload();
+            returnFromPreview();
             break;
         case QApt::PackageDownloadStarted:
             m_downloadWidget->clear();
@@ -197,7 +195,6 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
             break;
         case QApt::CommitChangesStarted:
             m_commitWidget->clear();
-            m_stack->setCurrentWidget(m_commitWidget);
             break;
         case QApt::PackageDownloadFinished:
         case QApt::InvalidEvent:
@@ -256,7 +253,10 @@ void MainWindow::questionOccurred(QApt::WorkerQuestion code, const QVariantMap &
 void MainWindow::previewChanges()
 {
     if (!m_reviewWidget) {
-        m_reviewWidget = new ReviewWidget(m_stack, m_backend);
+        m_reviewWidget = new ReviewWidget(m_stack);
+        connect (this, SIGNAL(backendReady(QApt::Backend*)),
+                 m_reviewWidget, SLOT(setBackend(QApt::Backend*)));
+        m_reviewWidget->setBackend(m_backend);
         m_stack->addWidget(m_reviewWidget);
     }
 
@@ -309,9 +309,11 @@ void MainWindow::initCommitWidget()
 void MainWindow::reload()
 {
     m_managerWidget->reload();
+    if (m_reviewWidget) {
+        m_reviewWidget->refresh();
+    }
     m_statusWidget->updateStatus();
     setActionsEnabled(true);
-    returnFromPreview();
     reloadActions();
 
     // No need to keep these around in memory.

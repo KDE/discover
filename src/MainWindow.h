@@ -79,13 +79,10 @@ private:
     CommitWidget *m_commitWidget;
     StatusWidget *m_statusWidget;
 
-public Q_SLOTS:
-
 private Q_SLOTS:
     void initGUI();
     void initObject();
     void setupActions();
-    void backendReady();
     void slotQuit();
     void markUpgrades();
     void checkForUpdates();
@@ -99,6 +96,9 @@ private Q_SLOTS:
     void reload();
     void reloadActions();
     void setActionsEnabled(bool enabled);
+
+signals:
+    void backendReady(QApt::Backend *backend);
 };
 
 #endif // _MUON_H_

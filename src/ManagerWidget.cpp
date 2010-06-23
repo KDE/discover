@@ -85,6 +85,8 @@ ManagerWidget::ManagerWidget(QWidget *parent)
     splitter->setOrientation(Qt::Vertical);
     splitter->addWidget(topVBox);
     splitter->addWidget(bottomVBox);
+
+    setEnabled(false);
 }
 
 ManagerWidget::~ManagerWidget()
@@ -101,6 +103,7 @@ void ManagerWidget::setBackend(QApt::Backend *backend)
     m_proxyModel->setBackend(backend);
     m_packageView->setSortingEnabled(true);
     m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
+    setEnabled(true);
 }
 
 void ManagerWidget::setFocus()

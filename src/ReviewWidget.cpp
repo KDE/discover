@@ -43,9 +43,9 @@
 #include "PackageModel/PackageView.h"
 #include "PackageModel/PackageDelegate.h"
 
-ReviewWidget::ReviewWidget(QWidget *parent, QApt::Backend *backend)
+ReviewWidget::ReviewWidget(QWidget *parent)
     : KVBox(parent)
-    , m_backend(backend)
+    , m_backend(0)
 {
     m_model = new PackageModel(this);
     PackageDelegate *delegate = new PackageDelegate(this);
@@ -65,11 +65,6 @@ ReviewWidget::ReviewWidget(QWidget *parent, QApt::Backend *backend)
     connect (m_packageView, SIGNAL(activated(const QModelIndex&)),
              this, SLOT(packageActivated(const QModelIndex&)));
 
-    m_model->addPackages(m_backend->markedPackages());
-    m_proxyModel->setBackend(m_backend);
-    m_packageView->setSortingEnabled(true);
-    m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
-
     KVBox *bottomVBox = new KVBox;
 
     m_detailsWidget = new DetailsWidget(bottomVBox);
@@ -79,11 +74,25 @@ ReviewWidget::ReviewWidget(QWidget *parent, QApt::Backend *backend)
     splitter->addWidget(topVBox);
     splitter->addWidget(bottomVBox);
 
-    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(refresh()));
+    setEnabled(false);
 }
 
 ReviewWidget::~ReviewWidget()
 {
+}
+
+void ReviewWidget::setBackend(QApt::Backend *backend)
+{
+    m_backend = backend;
+    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(refresh()));
+    connect(m_backend, SIGNAL(packageChanged()), m_detailsWidget, SLOT(refreshButtons()));
+
+    m_model->addPackages(m_backend->markedPackages());
+    m_proxyModel->setBackend(m_backend);
+    m_packageView->setSortingEnabled(true);
+    m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
+
+    setEnabled(true);
 }
 
 void ReviewWidget::refresh()
