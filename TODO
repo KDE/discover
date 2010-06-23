@@ -1,1 +1,1 @@
--Thread the QApt::Backend object
+-Thread PackageProxyModel (sorting is slow())
