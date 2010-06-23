@@ -61,8 +61,6 @@ QHash<QString, QString> groupMap()
                                 "GNU R Statistical System");
     hash["gnustep"] = i18nc("Human-readable name for the Debian package section \"gnustep\"",
                             "Gnustep Desktop Environment");
-    hash["gnu-r"] = i18nc("Human-readable name for the Debian package section \"gnu-r\"",
-                                "GNU R Statistical System");
     hash["hamradio"] = i18nc("Human-readable name for the Debian package section \"hamradio\"",
                                 "Amateur Radio");
     hash["haskell"] = i18nc("Human-readable name for the Debian package section \"haskell\"",
