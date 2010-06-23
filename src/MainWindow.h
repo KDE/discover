@@ -21,8 +21,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <kxmlguiwindow.h>
+// KDE includes
+#include <KXmlGuiWindow>
 
+// Qt includes
+#include <QtCore/QVariantMap>
+
+// LibQApt includes
 #include <libqapt/globals.h>
 
 class QSplitter;
@@ -83,6 +88,7 @@ private Q_SLOTS:
     void markUpgrades();
     void checkForUpdates();
     void workerEvent(QApt::WorkerEvent event);
+    void questionOccurred(QApt::WorkerQuestion question, const QVariantMap &details);
     void previewChanges();
     void returnFromPreview();
     void startCommit();

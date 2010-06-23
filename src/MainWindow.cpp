@@ -33,6 +33,7 @@
 #include <KApplication>
 #include <KConfigDialog>
 #include <KLocale>
+#include <KMessageBox>
 #include <KStandardAction>
 #include <KStatusBar>
 #include <KToolBar>
@@ -202,6 +203,53 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
         case QApt::InvalidEvent:
         default:
             break;
+    }
+}
+
+void MainWindow::questionOccurred(QApt::WorkerQuestion code, const QVariantMap &args)
+{
+    QVariantMap response;
+
+    if (code == QApt::MediaChange) {
+        QString media = args["Media"].toString();
+        QString drive = args["Drive"].toString();
+
+        QString title = i18nc("@title:window", "Media Change Required");
+        QString text = i18nc("@label", "Please insert %1 into %2", media, drive);
+
+        KMessageBox::information(this, text, title);
+        response["MediaChanged"] = true;
+        m_backend->answerWorkerQuestion(response);
+    } else if (code == QApt::InstallUntrusted) {
+        QStringList untrustedItems = args["UntrustedItems"].toStringList();
+
+        QString title = i18nc("@title:window", "Untrusted Packages");
+        QString text = i18ncp("@label",
+                     "The following package has not been verified by its "
+                     "author. Installing unverified package represents a "
+                     "security risk, as unverified packages can be a "
+                     "sign of tampering. Do you wish to continue?",
+                     "The following packages have not been verified by "
+                     "their authors. Installing unverified packages "
+                     "represents a security risk, as unverified packages "
+                     "can be a sign of tampering. Do you wish to continue?",
+                     untrustedItems.size());
+        int result = KMessageBox::No;
+        bool installUntrusted = false;
+
+        result = KMessageBox::warningContinueCancelList(this, text,
+                                                        untrustedItems, title);
+        switch (result) {
+            case KMessageBox::Continue:
+                installUntrusted = true;
+                break;
+            case KMessageBox::Cancel:
+                installUntrusted = false;
+                break;
+        }
+
+        response["InstallUntrusted"] = installUntrusted;
+        m_backend->answerWorkerQuestion(response);
     }
 }
 

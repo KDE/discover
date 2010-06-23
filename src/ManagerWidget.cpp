@@ -110,7 +110,7 @@ void ManagerWidget::setFocus()
 
 void ManagerWidget::reload()
 {
-    m_detailsWidget->hide();
+    m_detailsWidget->clear();
     m_model->clear();
     m_proxyModel->clear();
     m_backend->reloadCache();

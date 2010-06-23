@@ -52,8 +52,6 @@ public:
     DetailsWidget(QWidget *parent = 0);
     ~DetailsWidget();
 
-    void setPackage(QApt::Package *package);
-
 private:
     QApt::Package *m_package;
     Ui::MainTab *m_mainTab;
@@ -74,6 +72,10 @@ private:
 
     QWidget *m_changelogTab;
     KTextBrowser *m_changelogBrowser;
+
+public Q_SLOTS:
+    void setPackage(QApt::Package *package);
+    void clear();
 
 private Q_SLOTS:
     void setupButtons(QApt::Package *oldPackage);

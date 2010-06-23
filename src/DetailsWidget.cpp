@@ -131,6 +131,12 @@ void DetailsWidget::setPackage(QApt::Package *package)
     fetchChangelog();
 }
 
+void DetailsWidget::clear()
+{
+    m_package = 0;
+    hide();
+}
+
 void DetailsWidget::setupButtons(QApt::Package *oldPackage)
 {
     if (oldPackage) {
