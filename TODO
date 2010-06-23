@@ -1,1 +1,2 @@
--Thread PackageProxyModel (sorting is slow())
+-Make a generic class housing a PackageView/DetailsWidget combo that ManagerWidget and ReviewWidget can subclass
+-Improve sort performance

@@ -128,22 +128,22 @@ void MainWindow::setupActions()
 
     m_updateAction = actionCollection()->addAction("update");
     m_updateAction->setIcon(KIcon("system-software-update"));
-    m_updateAction->setText("Check for Updates");
+    m_updateAction->setText(i18n("Check for Updates"));
     connect(m_updateAction, SIGNAL(triggered()), this, SLOT(checkForUpdates()));
 
     m_upgradeAction = actionCollection()->addAction("upgrade");
     m_upgradeAction->setIcon(KIcon("go-top"));
-    m_upgradeAction->setText("Upgrade");
+    m_upgradeAction->setText(i18n("Upgrade"));
     connect(m_upgradeAction, SIGNAL(triggered()), this, SLOT(markUpgrades()));
 
     m_previewAction = actionCollection()->addAction("preview");
     m_previewAction->setIcon(KIcon("document-preview-archive"));
-    m_previewAction->setText("Preview Changes");
+    m_previewAction->setText(i18n("Preview Changes"));
     connect(m_previewAction, SIGNAL(triggered()), this, SLOT(previewChanges()));
 
     m_applyAction = actionCollection()->addAction("apply");
     m_applyAction->setIcon(KIcon("dialog-ok-apply"));
-    m_applyAction->setText("Apply Changes");
+    m_applyAction->setText(i18n("Apply Changes"));
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
 
     setupGUI();
@@ -272,7 +272,7 @@ void MainWindow::returnFromPreview()
     m_stack->setCurrentWidget(m_mainWidget);
 
     m_previewAction->setIcon(KIcon("document-preview-archive"));
-    m_previewAction->setText("Preview Changes");
+    m_previewAction->setText(i18n("Preview Changes"));
     connect(m_previewAction, SIGNAL(triggered()), this, SLOT(previewChanges()));
 }
 
@@ -309,6 +309,7 @@ void MainWindow::initCommitWidget()
 void MainWindow::reload()
 {
     m_managerWidget->reload();
+    m_statusWidget->updateStatus();
     setActionsEnabled(true);
     returnFromPreview();
     reloadActions();

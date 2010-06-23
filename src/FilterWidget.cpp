@@ -61,8 +61,8 @@ FilterWidget::FilterWidget(QWidget *parent)
     connect(m_statusList, SIGNAL(activated(const QModelIndex&)),
             this, SLOT(statusActivated(const QModelIndex&)));
 
-    m_originList = new QListView(this);
-    m_filterBox->addItem(m_originList, KIcon(), i18n("By Origin"));
+//     m_originList = new QListView(this);
+//     m_filterBox->addItem(m_originList, KIcon(), i18n("By Origin"));
 
     setWidget(m_filterBox);
 }

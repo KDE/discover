@@ -304,7 +304,7 @@ void DetailsWidget::changelogFetched(KJob *job)
 {
     QFile changelogFile(m_changelogFile->fileName());
     if (job->error() || !changelogFile.open(QFile::ReadOnly)) {
-        m_changelogBrowser->setText("No changelog available");
+        m_changelogBrowser->setText(i18n("No changelog available"));
         return;
     }
     QTextStream stream(&changelogFile);
