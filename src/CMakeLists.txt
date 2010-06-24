@@ -24,7 +24,7 @@ target_link_libraries(muon ${KDE4_KDEUI_LIBS}
                            ${KDE4_KIO_LIBS}
                            ${KDE4_SOLID_LIBS}
                            debconf-kde
-                           qapt)
+                           ${QAPT_LIBRARY})
 
 install(TARGETS muon ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
