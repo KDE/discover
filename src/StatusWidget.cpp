@@ -101,3 +101,4 @@ void StatusWidget::updateStatus()
 }
 
 #include "StatusWidget.moc"
+

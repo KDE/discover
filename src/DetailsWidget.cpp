@@ -28,10 +28,9 @@
 
 // KDE
 #include <KAction>
-#include <KIO/Job>
-#include <KJob>
 #include <KDebug>
 #include <KDialog>
+#include <KIO/Job>
 #include <KJob>
 #include <KLocale>
 #include <KMenu>
