@@ -237,7 +237,7 @@ void MainWindow::questionOccurred(QApt::WorkerQuestion code, const QVariantMap &
                      "security risk, as the presence of unverifiable software "
                      "can be a sign of tampering. Do you wish to continue?",
                      untrustedItems.size());
-        int result = KMessageBox::No;
+        int result = KMessageBox::Cancel;
         bool installUntrusted = false;
 
         result = KMessageBox::warningContinueCancelList(this, text,
