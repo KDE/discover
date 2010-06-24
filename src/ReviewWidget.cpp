@@ -99,6 +99,7 @@ void ReviewWidget::refresh()
 {
    m_model->clear();
    m_model->addPackages(m_backend->markedPackages());
+   m_detailsWidget->clear();
    m_packageView->updateView();
 }
 
