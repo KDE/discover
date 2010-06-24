@@ -226,15 +226,15 @@ void MainWindow::questionOccurred(QApt::WorkerQuestion code, const QVariantMap &
     } else if (code == QApt::InstallUntrusted) {
         QStringList untrustedItems = args["UntrustedItems"].toStringList();
 
-        QString title = i18nc("@title:window", "Untrusted Packages");
+        QString title = i18nc("@title:window", "Warning - Unverified Software");
         QString text = i18ncp("@label",
-                     "The following package has not been verified by its "
-                     "author. Installing unverified package represents a "
-                     "security risk, as unverified packages can be a "
-                     "sign of tampering. Do you wish to continue?",
-                     "The following packages have not been verified by "
-                     "their authors. Installing unverified packages "
-                     "represents a security risk, as unverified packages "
+                     "The following piece of software cannot be verified. "
+                     "Installing unverified software represents a "
+                     "security risk, as the presence of unverifiable software "
+                     "can be a sign of tampering. Do you wish to continue?",
+                     "The following pieces of software cannot be authenticated. "
+                     "Installing unverified software represents a "
+                     "security risk, as the presence of unverifiable software "
                      "can be a sign of tampering. Do you wish to continue?",
                      untrustedItems.size());
         int result = KMessageBox::No;
