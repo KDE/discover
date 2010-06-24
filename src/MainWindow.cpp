@@ -135,22 +135,22 @@ void MainWindow::setupActions()
 
     m_updateAction = actionCollection()->addAction("update");
     m_updateAction->setIcon(KIcon("system-software-update"));
-    m_updateAction->setText(i18n("Check for Updates"));
+    m_updateAction->setText(i18nc("@action Checks the internet for updates", "Check for Updates"));
     connect(m_updateAction, SIGNAL(triggered()), this, SLOT(checkForUpdates()));
 
     m_upgradeAction = actionCollection()->addAction("upgrade");
     m_upgradeAction->setIcon(KIcon("go-top"));
-    m_upgradeAction->setText(i18n("Upgrade"));
+    m_upgradeAction->setText(i18nc("@action Marks upgradeable packages for upgrade", "Upgrade"));
     connect(m_upgradeAction, SIGNAL(triggered()), this, SLOT(markUpgrades()));
 
     m_previewAction = actionCollection()->addAction("preview");
     m_previewAction->setIcon(KIcon("document-preview-archive"));
-    m_previewAction->setText(i18n("Preview Changes"));
+    m_previewAction->setText(i18nc("@action Takes the user to the preview page", "Preview Changes"));
     connect(m_previewAction, SIGNAL(triggered()), this, SLOT(previewChanges()));
 
     m_applyAction = actionCollection()->addAction("apply");
     m_applyAction->setIcon(KIcon("dialog-ok-apply"));
-    m_applyAction->setText(i18n("Apply Changes"));
+    m_applyAction->setText(i18nc("@action Applys the changes a user has made", "Apply Changes"));
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
 
     setupGUI();
@@ -180,9 +180,9 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
     switch (event) {
         case QApt::CacheUpdateStarted:
             m_downloadWidget->clear();
-            m_downloadWidget->setHeaderText(i18n("<b>Updating software sources</b>"));
+            m_downloadWidget->setHeaderText(i18nc("@info:status", "<b>Updating software sources</b>"));
             m_stack->setCurrentWidget(m_downloadWidget);
-            m_powerInhibitor = Solid::PowerManagement::beginSuppressingSleep(i18n("Muon is downloading packages"));
+            m_powerInhibitor = Solid::PowerManagement::beginSuppressingSleep(i18nc("@info:status", "Muon is downloading packages"));
             connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
             break;
         case QApt::CacheUpdateFinished:
@@ -193,8 +193,8 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
             break;
         case QApt::PackageDownloadStarted:
             m_downloadWidget->clear();
-            m_downloadWidget->setHeaderText(i18n("<b>Downloading Packages</b>"));
-            m_powerInhibitor = Solid::PowerManagement::beginSuppressingSleep(i18n("Muon is downloading packages"));
+            m_downloadWidget->setHeaderText(i18nc("@info:status", "<b>Downloading Packages</b>"));
+            m_powerInhibitor = Solid::PowerManagement::beginSuppressingSleep(i18nc("@info:status", "Muon is downloading packages"));
             m_stack->setCurrentWidget(m_downloadWidget);
             connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
             break;
@@ -218,7 +218,7 @@ void MainWindow::questionOccurred(QApt::WorkerQuestion code, const QVariantMap &
         QString drive = args["Drive"].toString();
 
         QString title = i18nc("@title:window", "Media Change Required");
-        QString text = i18nc("@label", "Please insert %1 into %2", media, drive);
+        QString text = i18nc("@label", "Please insert %1 into <filename>%2</filename>", media, drive);
 
         KMessageBox::information(this, text, title);
         response["MediaChanged"] = true;
@@ -269,7 +269,7 @@ void MainWindow::previewChanges()
     m_stack->setCurrentWidget(m_reviewWidget);
 
     m_previewAction->setIcon(KIcon("go-previous"));
-    m_previewAction->setText(i18n("Return to Package List"));
+    m_previewAction->setText(i18nc("@action:intoolbar Return from the preview page", "Back"));
     connect(m_previewAction, SIGNAL(triggered()), this, SLOT(returnFromPreview()));
 }
 
@@ -278,7 +278,7 @@ void MainWindow::returnFromPreview()
     m_stack->setCurrentWidget(m_mainWidget);
 
     m_previewAction->setIcon(KIcon("document-preview-archive"));
-    m_previewAction->setText(i18n("Preview Changes"));
+    m_previewAction->setText(i18nc("@action", "Preview Changes"));
     connect(m_previewAction, SIGNAL(triggered()), this, SLOT(previewChanges()));
 }
 
