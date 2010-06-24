@@ -1,2 +1,3 @@
 -Make a generic class housing a PackageView/DetailsWidget combo that ManagerWidget and ReviewWidget can subclass
 -Improve sort performance
+-Make a DownloadModel class that has a column with a progress bar for reporting the progress of individual downloads

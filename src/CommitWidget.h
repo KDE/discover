@@ -26,6 +26,10 @@
 class QLabel;
 class QProgressBar;
 
+namespace DebconfKde {
+    class DebconfGui;
+}
+
 class CommitWidget : public QWidget
 {
     Q_OBJECT
@@ -38,6 +42,7 @@ public:
     void clear();
 
 private:
+    DebconfKde::DebconfGui *m_debconfGui;
     QLabel *m_commitLabel;
     QProgressBar *m_progressBar;
 

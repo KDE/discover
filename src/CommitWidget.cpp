@@ -25,6 +25,8 @@
 #include <QtGui/QProgressBar>
 #include <QtGui/QVBoxLayout>
 
+#include <DebconfGui.h>
+
 CommitWidget::CommitWidget(QWidget *parent)
     : QWidget(parent)
 {
@@ -32,10 +34,19 @@ CommitWidget::CommitWidget(QWidget *parent)
     setLayout(layout);
 
     layout->addStretch();
+
+    m_debconfGui = new DebconfKde::DebconfGui("/tmp/qapt-sock", this);
+    layout->addWidget(m_debconfGui);
+    m_debconfGui->connect(m_debconfGui, SIGNAL(activated()), m_debconfGui, SLOT(show()));
+    m_debconfGui->connect(m_debconfGui, SIGNAL(deactivated()), m_debconfGui, SLOT(hide()));
+    m_debconfGui->hide();
+
     m_commitLabel = new QLabel(this);
     layout->addWidget(m_commitLabel);
+
     m_progressBar = new QProgressBar(this);
     layout->addWidget(m_progressBar);
+
     layout->addStretch();
 }
 
