@@ -141,7 +141,7 @@ QHash<QString, QString> groupMap()
                                  "Internationalization and Localization");
     hash["metapackages"] = i18nc("@item:listbox Human-readable name for the Debian package section \"metapackages\"",
                                  "Meta Packages");
-    hash["non-us"] = i18nc("Debian package section \"non-US\", for packages that cannot be shipped in the US",
+    hash["non-us"] = i18nc("@item:listbox Debian package section \"non-US\", for packages that cannot be shipped in the US",
                            "Restricted On Export");
     hash["non-free"] = i18nc("@item:listbox Human-readable name for the Debian package section \"non-free\"",
                          "Non-free");

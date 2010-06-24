@@ -61,7 +61,7 @@ DownloadWidget::DownloadWidget(QWidget *parent)
     m_totalProgress = new QProgressBar(hbox);
 
     m_cancelButton = new QPushButton(hbox);
-    m_cancelButton->setText(i18n("Cancel"));
+    m_cancelButton->setText(i18nc("@action:button Cancels the download", "Cancel"));
     m_cancelButton->setIcon(KIcon("dialog-cancel"));
     connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(cancelButtonPressed()));
 }

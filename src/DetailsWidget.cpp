@@ -60,7 +60,7 @@ DetailsWidget::DetailsWidget(QWidget *parent)
 
     m_screenshotButton = new KPushButton(mainTab);
     m_screenshotButton->setIcon(KIcon("image-x-generic"));
-    m_screenshotButton->setText(i18n("Get Screenshot..."));
+    m_screenshotButton->setText(i18nc("@action:button", "Get Screenshot..."));
     connect (m_screenshotButton, SIGNAL(clicked()), this, SLOT(fetchScreenshot()));
     m_mainTab->topHBoxLayout->addWidget(m_screenshotButton);
 
@@ -79,18 +79,18 @@ DetailsWidget::DetailsWidget(QWidget *parent)
     m_filesTab = new KVBox;
     m_filesSearchEdit = new KTreeWidgetSearchLineWidget(m_filesTab);
     m_filesTreeWidget = new QTreeWidget(m_filesTab);
-    m_filesTreeWidget->setHeaderLabel(i18n("Installed Files"));
+    m_filesTreeWidget->setHeaderLabel(i18nc("@title:tab", "Installed Files"));
     m_filesSearchEdit->searchLine()->setTreeWidget(m_filesTreeWidget);
 
     m_changelogTab = new KVBox;
     m_changelogBrowser = new KTextBrowser(m_changelogTab);
 
 
-    addTab(mainTab, i18n("Details"));
-    addTab(m_technicalTab, i18n("Technical Details"));
+    addTab(mainTab, i18nc("@title:tab", "Details"));
+    addTab(m_technicalTab, i18nc("@title:tab", "Technical Details"));
     // TODO: Needs serious work in LibQApt
-    // addTab(m_dependenciesTab, i18n("Dependencies"));
-    addTab(m_changelogTab, i18n("Changelog"));
+    // addTab(m_dependenciesTab, i18nc("@title:tab", "Dependencies"));
+    addTab(m_changelogTab, i18nc("@title:tab", "Changelog"));
 
     // Hide until a package is clicked
     hide();
@@ -107,7 +107,7 @@ void DetailsWidget::setPackage(QApt::Package *package)
     m_package = package;
     m_mainTab->packageShortDescLabel->setText(package->shortDescription());
 
-    m_screenshotButton->setText(i18n("Get Screenshot..."));
+    m_screenshotButton->setText(i18nc("@action:button", "Get Screenshot..."));
     m_screenshotButton->setEnabled(true);
 
     setupButtons(oldPackage);
@@ -116,22 +116,23 @@ void DetailsWidget::setPackage(QApt::Package *package)
     m_mainTab->descriptionBrowser->setText(package->longDescription());
 
     if (package->isInstalled()) {
-        addTab(m_filesTab, i18n("Installed Files"));
+        addTab(m_filesTab, i18nc("@title:tab", "Installed Files"));
         populateFileList();
     } else {
         if (currentIndex() == indexOf(m_filesTab)) {
-            kDebug() << "Switching to main tab";
             setCurrentIndex(0); // Switch to the main tab
         }
         removeTab(indexOf(m_filesTab));
     }
 
     if (package->isSupported()) {
-        m_mainTab->supportedLabel->setText(i18n("Canonical provides critical updates for %1 until %2",
-                                                package->name(), package->supportedUntil()));
+        m_mainTab->supportedLabel->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
+                                                 "Canonical provides critical updates for %1 until %2",
+                                                 package->name(), package->supportedUntil()));
     } else {
-       m_mainTab->supportedLabel->setText(i18n("Canonical does not provide updates for %1. Some updates "
-                                               "may be provided by the Ubuntu community", package->name()));
+       m_mainTab->supportedLabel->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
+                                                "Canonical does not provide updates for %1. Some updates "
+                                                "may be provided by the Ubuntu community", package->name()));
     }
 
     fetchChangelog();
@@ -155,29 +156,29 @@ void DetailsWidget::setupButtons(QApt::Package *oldPackage)
     }
 
     m_mainTab->installButton->setIcon(KIcon("download"));
-    m_mainTab->installButton->setText(i18n("Installation"));
+    m_mainTab->installButton->setText(i18nc("@action:button", "Installation"));
     connect(m_mainTab->installButton, SIGNAL(clicked()), m_package, SLOT(setInstall()));
 
     m_mainTab->removeButton->setIcon(KIcon("edit-delete"));
-    m_mainTab->removeButton->setText(i18n("Removal"));
+    m_mainTab->removeButton->setText(i18nc("@action:button", "Removal"));
     connect(m_mainTab->removeButton, SIGNAL(clicked()), m_package, SLOT(setRemove()));
 
     m_mainTab->upgradeButton->setIcon(KIcon("system-software-update"));
-    m_mainTab->upgradeButton->setText(i18n("Upgrade"));
+    m_mainTab->upgradeButton->setText(i18nc("@action:button", "Upgrade"));
     connect(m_mainTab->upgradeButton, SIGNAL(clicked()), m_package, SLOT(setInstall()));
 
     m_mainTab->reinstallButton->setIcon(KIcon("view-refresh"));
-    m_mainTab->reinstallButton->setText(i18n("Reinstallation"));
+    m_mainTab->reinstallButton->setText(i18nc("@action:button", "Reinstallation"));
     connect(m_mainTab->reinstallButton, SIGNAL(clicked()), m_package, SLOT(setReInstall()));
 
     m_purgeAction->setIcon(KIcon("edit-delete-shred"));
-    m_purgeAction->setText(i18n("Purge"));
+    m_purgeAction->setText(i18nc("@action:button", "Purge"));
     connect(m_purgeAction, SIGNAL(triggered()), m_package, SLOT(setPurge()));
 
     // TODO: Downgrade
 
     m_mainTab->cancelButton->setIcon(KIcon("dialog-cancel"));
-    m_mainTab->cancelButton->setText(i18n("Unmark"));
+    m_mainTab->cancelButton->setText(i18nc("@action:button", "Unmark"));
     connect(m_mainTab->cancelButton, SIGNAL(clicked()), m_package, SLOT(setKeep()));
 }
 
@@ -273,7 +274,7 @@ void DetailsWidget::fetchScreenshot()
 void DetailsWidget::screenshotFetched(KJob *job)
 {
     if (job->error()) {
-        m_screenshotButton->setText(i18n("No Screenshot Available"));
+        m_screenshotButton->setText(i18nc("@info:status", "No Screenshot Available"));
         m_screenshotButton->setEnabled(false);
         return;
     }
@@ -282,7 +283,7 @@ void DetailsWidget::screenshotFetched(KJob *job)
     QLabel *label = new QLabel(dialog);
     label->setPixmap(QPixmap(m_screenshotFile->fileName()));
 
-    dialog->setWindowTitle(i18n("Screenshot"));
+    dialog->setWindowTitle(i18nc("@title:window", "Screenshot"));
     dialog->setMainWidget(label);
     dialog->setButtons(KDialog::Close);
     dialog->show();
@@ -306,7 +307,7 @@ void DetailsWidget::changelogFetched(KJob *job)
 {
     QFile changelogFile(m_changelogFile->fileName());
     if (job->error() || !changelogFile.open(QFile::ReadOnly)) {
-        m_changelogBrowser->setText(i18n("No changelog available"));
+        m_changelogBrowser->setText(i18nc("@info:status", "No changelog available"));
         return;
     }
     QTextStream stream(&changelogFile);

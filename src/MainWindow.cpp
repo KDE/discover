@@ -180,7 +180,7 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
     switch (event) {
         case QApt::CacheUpdateStarted:
             m_downloadWidget->clear();
-            m_downloadWidget->setHeaderText(i18nc("@info:status", "<b>Updating software sources</b>"));
+            m_downloadWidget->setHeaderText(i18nc("@info", "<title>Updating software sources</title>"));
             m_stack->setCurrentWidget(m_downloadWidget);
             m_powerInhibitor = Solid::PowerManagement::beginSuppressingSleep(i18nc("@info:status", "Muon is downloading packages"));
             connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
@@ -193,7 +193,7 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
             break;
         case QApt::PackageDownloadStarted:
             m_downloadWidget->clear();
-            m_downloadWidget->setHeaderText(i18nc("@info:status", "<b>Downloading Packages</b>"));
+            m_downloadWidget->setHeaderText(i18nc("@info", "<title>Downloading Packages</title>"));
             m_powerInhibitor = Solid::PowerManagement::beginSuppressingSleep(i18nc("@info:status", "Muon is downloading packages"));
             m_stack->setCurrentWidget(m_downloadWidget);
             connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
@@ -229,13 +229,13 @@ void MainWindow::questionOccurred(QApt::WorkerQuestion code, const QVariantMap &
         QString title = i18nc("@title:window", "Warning - Unverified Software");
         QString text = i18ncp("@label",
                      "The following piece of software cannot be verified. "
-                     "Installing unverified software represents a "
+                     "<warning>Installing unverified software represents a "
                      "security risk, as the presence of unverifiable software "
-                     "can be a sign of tampering. Do you wish to continue?",
+                     "can be a sign of tampering.</warning> Do you wish to continue?",
                      "The following pieces of software cannot be authenticated. "
-                     "Installing unverified software represents a "
+                     "<warning>Installing unverified software represents a "
                      "security risk, as the presence of unverifiable software "
-                     "can be a sign of tampering. Do you wish to continue?",
+                     "can be a sign of tampering.</warning> Do you wish to continue?",
                      untrustedItems.size());
         int result = KMessageBox::Cancel;
         bool installUntrusted = false;

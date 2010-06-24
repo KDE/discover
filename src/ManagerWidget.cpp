@@ -30,6 +30,7 @@
 
 // KDE includes
 #include <KDebug>
+#include <KHBox>
 #include <KIcon>
 #include <KLineEdit>
 #include <KLocale>
@@ -57,17 +58,18 @@ ManagerWidget::ManagerWidget(QWidget *parent)
 
     KVBox *topVBox = new KVBox;
 
-    QLabel *browserHeader = new QLabel(this);
-    browserHeader->setTextFormat(Qt::RichText);
-    browserHeader->setText(i18n("<b>Browse Packages</b>"));
-
     m_searchTimer = new QTimer(this);
     m_searchTimer->setInterval(300);
     m_searchTimer->setSingleShot(true);
     connect(m_searchTimer, SIGNAL(timeout()), this, SLOT(startSearch()));
 
-    m_searchEdit = new KLineEdit(topVBox);
-    m_searchEdit->setClickMessage("Search for packages");
+    KHBox *searchBox = new KHBox(this);
+
+    QLabel *searchLabel = new QLabel(searchBox);
+    searchLabel->setText(i18nc("@label", "Search packages:"));
+
+    m_searchEdit = new KLineEdit(searchBox);
+    m_searchEdit->setClickMessage(i18nc("@label Line edit click message", "Type to begin searching"));
     m_searchEdit->setClearButtonShown(true);
     connect(m_searchEdit, SIGNAL(textChanged(const QString &)), m_searchTimer, SLOT(start()));
 
