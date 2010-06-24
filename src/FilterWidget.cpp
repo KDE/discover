@@ -40,7 +40,7 @@ FilterWidget::FilterWidget(QWidget *parent)
     , m_backend(0)
 {
     setFeatures(QDockWidget::NoDockWidgetFeatures);
-    setWindowTitle(i18n("Filter:"));
+    setWindowTitle(i18nc("@title:window", "Filter:"));
 
     m_filterBox = new QToolBox(this);
     m_filterBox->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
@@ -49,14 +49,14 @@ FilterWidget::FilterWidget(QWidget *parent)
     m_categoriesList->setAlternatingRowColors(true);
     m_categoriesList->setRootIsDecorated(false);
     m_categoriesList->setHeaderHidden(true);
-    m_filterBox->addItem(m_categoriesList, KIcon(), i18n("By Category"));
+    m_filterBox->addItem(m_categoriesList, KIcon(), i18nc("@title:tab", "By Category"));
     m_categoryModel = new QStandardItemModel;
     connect(m_categoriesList, SIGNAL(activated(const QModelIndex&)),
             this, SLOT(categoryActivated(const QModelIndex&)));
 
     m_statusList = new QListView(this);
     m_statusList->setAlternatingRowColors(true);
-    m_filterBox->addItem(m_statusList, KIcon(), i18n("By Status"));
+    m_filterBox->addItem(m_statusList, KIcon(), i18nc("@title:tab", "By Status"));
     m_statusModel = new QStandardItemModel;
     connect(m_statusList, SIGNAL(activated(const QModelIndex&)),
             this, SLOT(statusActivated(const QModelIndex&)));
@@ -104,7 +104,7 @@ void FilterWidget::populateCategories()
     //TODO: Some day this might not be the first item alphabetically...
     QStandardItem *defaultItem = new QStandardItem;
     defaultItem->setIcon(KIcon("bookmark-new-list"));
-    defaultItem->setText(i18nc("Item that resets the filter to \"all\"", "All"));
+    defaultItem->setText(i18nc("@item:listbox Item that resets the filter to \"all\"", "All"));
     m_categoryModel->appendRow(defaultItem);
 
     m_categoriesList->setSortingEnabled(true);
@@ -115,7 +115,7 @@ void FilterWidget::populateStatuses()
 {
     QStandardItem *defaultItem = new QStandardItem;
     defaultItem->setIcon(KIcon("bookmark-new-list"));
-    defaultItem->setText(i18nc("Item that resets the filter to \"all\"", "All"));
+    defaultItem->setText(i18nc("@item:listbox Item that resets the filter to \"all\"", "All"));
 
     QStandardItem *installedItem = new QStandardItem;
     installedItem->setIcon(KIcon("download"));
