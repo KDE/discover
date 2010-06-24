@@ -95,10 +95,10 @@ void DownloadWidget::updateDownloadProgress(int percentage, int speed, int ETA)
 
     QString downloadSpeed;
     if (speed < 0) {
-        downloadSpeed = i18n("Unknown speed");
+        downloadSpeed = i18nc("@label Label for when the download speed is unknown", "Unknown speed");
     } else {
-        downloadSpeed = i18n("Download rate: %1/s",
-                                     KGlobal::locale()->formatByteSize(speed));
+        downloadSpeed = i18nc("@label Download rate", "Download rate: %1/s",
+                              KGlobal::locale()->formatByteSize(speed));
     }
 
     QString timeRemaining;
@@ -106,9 +106,11 @@ void DownloadWidget::updateDownloadProgress(int percentage, int speed, int ETA)
 
     if (ETAMilliseconds <= 0 || ETAMilliseconds > 14*24*60*60) {
         // If ETA is less than zero or bigger than 2 weeks
-        timeRemaining = i18n(" - Unknown time remaining");
+        timeRemaining = i18nc("@item:intext Label for when the remaining time is unknown",
+                              " - Unknown time remaining");
     } else {
-        timeRemaining = i18n(" - %1 remaining", KGlobal::locale()->prettyFormatDuration(ETAMilliseconds));
+        timeRemaining = i18nc("@item:intext Remaining time", " - %1 remaining",
+                              KGlobal::locale()->prettyFormatDuration(ETAMilliseconds));
     }
     m_downloadLabel->setText(downloadSpeed + timeRemaining);
 }
@@ -119,13 +121,13 @@ void DownloadWidget::updateDownloadMessage(int flag, const QString &message)
 
     switch (flag) {
       case QApt::DownloadFetch:
-          fullMessage = i18n("Downloading: %1", message);
+          fullMessage = i18nc("@info:status", "Downloading: %1", message);
           break;
       case QApt::HitFetch:
-          fullMessage = i18n("Checking: %1", message);
+          fullMessage = i18nc("@info:status", "Checking: %1", message);
           break;
       case QApt::IgnoredFetch:
-          fullMessage = i18n("Ignored: %1", message);
+          fullMessage = i18nc("@info:status", "Ignored: %1", message);
           break;
       default:
           fullMessage = message;
