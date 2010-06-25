@@ -90,7 +90,7 @@ DetailsWidget::DetailsWidget(QWidget *parent)
     addTab(m_technicalTab, i18nc("@title:tab", "Technical Details"));
     // TODO: Needs serious work in LibQApt
     // addTab(m_dependenciesTab, i18nc("@title:tab", "Dependencies"));
-    addTab(m_changelogTab, i18nc("@title:tab", "Changelog"));
+    addTab(m_changelogTab, i18nc("@title:tab", "Changes List"));
 
     // Hide until a package is clicked
     hide();
@@ -307,7 +307,9 @@ void DetailsWidget::changelogFetched(KJob *job)
 {
     QFile changelogFile(m_changelogFile->fileName());
     if (job->error() || !changelogFile.open(QFile::ReadOnly)) {
-        m_changelogBrowser->setText(i18nc("@info:status", "No changelog available"));
+        m_changelogBrowser->setText(i18nc("@info/rich", "<p>The list of changes is not available yet. "
+                                          "Please use <a href='%1'>Launchpad</a> instead.</p>",
+                                          QString("http://launchpad.net/ubuntu/+source/" + m_package->sourcePackage())));
         return;
     }
     QTextStream stream(&changelogFile);
