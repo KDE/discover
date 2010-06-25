@@ -54,7 +54,6 @@ ManagerWidget::ManagerWidget(QWidget *parent)
     PackageDelegate *delegate = new PackageDelegate(this);
 
     m_proxyModel = new PackageProxyModel(this);
-    m_proxyModel->setSourceModel(m_model);
 
     KVBox *topVBox = new KVBox;
 
@@ -102,6 +101,7 @@ void ManagerWidget::setBackend(QApt::Backend *backend)
     connect(m_backend, SIGNAL(packageChanged()), m_detailsWidget, SLOT(refreshButtons()));
 
     m_model->addPackages(m_backend->availablePackages());
+    m_proxyModel->setSourceModel(m_model);
     m_proxyModel->setBackend(backend);
     m_packageView->setSortingEnabled(true);
     m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);

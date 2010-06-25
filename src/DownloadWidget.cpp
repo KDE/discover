@@ -48,7 +48,7 @@ DownloadWidget::DownloadWidget(QWidget *parent)
 
     m_downloadModel = new QStandardItemModel(this);
 
-    //TODO: Just use a text browser with rich text enabled.
+    //TODO: Fancy model/view with progress bars for each item
     m_downloadView = new QListView(this);
     layout->addWidget(m_downloadView);
     m_downloadView->setModel(m_downloadModel);
