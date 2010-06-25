@@ -51,14 +51,14 @@ QVariant PackageModel::data(const QModelIndex & index, int role) const
     }
     switch (role) {
         case NameRole:
-            return m_packages[index.row()]->name();
+            return m_packages.at(index.row())->name();
         case IconRole:
             return KIcon("application-x-deb");
         case DescriptionRole:
-            return m_packages[index.row()]->shortDescription();
+            return m_packages.at(index.row())->shortDescription();
         case StatusRole:
         case ActionRole:
-            return m_packages[index.row()]->state();
+            return m_packages.at(index.row())->state();
         case Qt::ToolTipRole:
             return QVariant();
     }
@@ -122,7 +122,7 @@ void PackageModel::clear()
 
 QApt::Package *PackageModel::packageAt(const QModelIndex &index)
 {
-    return m_packages[index.row()];
+    return m_packages.at(index.row());
 }
 
 QApt::PackageList PackageModel::packages()
