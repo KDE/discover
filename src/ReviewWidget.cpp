@@ -51,7 +51,6 @@ ReviewWidget::ReviewWidget(QWidget *parent)
     PackageDelegate *delegate = new PackageDelegate(this);
 
     m_proxyModel = new PackageProxyModel(this);
-    m_proxyModel->setSourceModel(m_model);
 
     KVBox *topVBox = new KVBox;
 
@@ -88,6 +87,7 @@ void ReviewWidget::setBackend(QApt::Backend *backend)
     connect(m_backend, SIGNAL(packageChanged()), m_detailsWidget, SLOT(refreshButtons()));
 
     m_model->addPackages(m_backend->markedPackages());
+    m_proxyModel->setSourceModel(m_model);
     m_proxyModel->setBackend(m_backend);
     m_packageView->setSortingEnabled(true);
     m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
