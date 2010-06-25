@@ -32,11 +32,11 @@ public:
 
 protected:
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
-    void paintBackground(QPainter* painter, const QStyleOptionViewItem& option) const;
-    void paintPackageName(QPainter* painter, const QStyleOptionViewItem& option , const QModelIndex &index) const;
-    void paintText(QPainter* painter, const QStyleOptionViewItem& option , const QModelIndex &index) const;
+    void paintBackground(QPainter *painter, const QStyleOptionViewItem &option) const;
+    void paintPackageName(QPainter *painter, const QStyleOptionViewItem &option , const QModelIndex &index) const;
+    void paintText(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
 
-    QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
+    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
 
 private:
     int m_iconSize;

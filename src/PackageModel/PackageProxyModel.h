@@ -42,7 +42,7 @@ public:
     void setGroupFilter(const QString &filterText);
     void setStateFilter(QApt::Package::PackageState state);
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
-    QApt::Package *packageAt(const QModelIndex &index);
+    QApt::Package *packageAt(const QModelIndex &index) const;
     void reset();
 
 protected:

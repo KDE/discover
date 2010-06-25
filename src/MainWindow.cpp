@@ -209,6 +209,104 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
     }
 }
 
+void MainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args)
+{
+    QString text;
+    QString title;
+    QString failedItem;
+    QString errorText;
+    QString drive;
+
+    switch(code) {
+        case QApt::InitError:
+            text = i18nc("@label",
+                         "The package system could not be initialized, your "
+                         "configuration may be broken.");
+            title = i18nc("@title:window", "Initialization error");
+            KMessageBox::error(this, text, title);
+            break;
+        case QApt::LockError:
+            text = i18nc("@label",
+                         "Another application seems to be using the package "
+                         "system at this time. You must close all other package "
+                         "managers before you will be able to install or remove "
+                         "any packages.");
+            title = i18nc("@title:window", "Unable to obtain package system lock");
+            KMessageBox::error(this, text, title);
+            break;
+        case QApt::DiskSpaceError:
+            drive = args["DirectoryString"].toString();
+            text = i18nc("@label",
+                         "You do not have enough disk space in the directory "
+                         "at %1 to continue with this operation.", drive);
+            title = i18nc("@title:window", "Low disk space");
+            KMessageBox::error(this, text, title);
+            break;
+        case QApt::FetchError:
+            failedItem = args["FailedItem"].toString();
+            errorText = args["ErrorText"].toString();
+            text = i18nc("@label",
+                         "Failed to download %1\n"
+                         "%2", failedItem, errorText);
+            title = i18nc("@title:window", "Download failed");
+            KMessageBox::error(this, text, title);
+            break;
+        case QApt::CommitError:
+            failedItem = args["FailedItem"].toString();
+            errorText = args["ErrorText"].toString();
+            text = i18nc("@label", "An error occurred while committing changes.");
+
+            if (!failedItem.isEmpty() && !errorText.isEmpty()) {
+                text.append("\n\n");
+                text.append(i18n("File: %1", failedItem));
+                text.append("\n\n");
+                text.append(i18n("Error: %1", errorText));
+            }
+
+            title = i18nc("@title:window", "Commit error");
+            KMessageBox::error(this, text, title);
+            reload();
+            break;
+        case QApt::AuthError:
+            text = i18nc("@label",
+                         "This operation cannot continue since proper "
+                         "authorization was not provided");
+            title = i18nc("@title:window", "Authentication error");
+            KMessageBox::error(this, text, title);
+            break;
+        case QApt::WorkerDisappeared:
+            text = i18nc("@label", "It appears that the QApt worker has either crashed "
+                         "or disappeared. Please report a bug to the QApt maintainers");
+            title = i18nc("@title:window", "Unexpected Error");
+            KMessageBox::error(this, text, title);
+            reload();
+            break;
+        case QApt::UntrustedError: {
+            QStringList untrustedItems = args["UntrustedItems"].toStringList();
+            if (untrustedItems.size() == 1) {
+                text = i18ncp("@label",
+                             "The following package has not been verified by its author. "
+                             "Downloading untrusted packages has been disallowed "
+                             "by your current configuration.",
+                             "The following packages have not been verified by "
+                             "their authors. "
+                             "Downloading untrusted packages has "
+                             "been disallowed by your current configuration.",
+                             untrustedItems.size());
+            }
+            title = i18nc("@title:window", "Untrusted Packages");
+            KMessageBox::errorList(this, text, untrustedItems, title);
+            break;
+        }
+        case QApt::UserCancelError:
+        case QApt::UnknownError:
+        default:
+            break;
+    }
+    reloadActions();
+    m_stack->setCurrentWidget(m_mainWidget);
+}
+
 void MainWindow::questionOccurred(QApt::WorkerQuestion code, const QVariantMap &args)
 {
     QVariantMap response;
@@ -260,8 +358,8 @@ void MainWindow::previewChanges()
 {
     if (!m_reviewWidget) {
         m_reviewWidget = new ReviewWidget(m_stack);
-        connect (this, SIGNAL(backendReady(QApt::Backend*)),
-                 m_reviewWidget, SLOT(setBackend(QApt::Backend*)));
+        connect(this, SIGNAL(backendReady(QApt::Backend*)),
+                m_reviewWidget, SLOT(setBackend(QApt::Backend*)));
         m_reviewWidget->setBackend(m_backend);
         m_stack->addWidget(m_reviewWidget);
     }

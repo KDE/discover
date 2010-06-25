@@ -40,9 +40,9 @@ public:
     explicit PackageModel(QObject *parent = 0);
     ~PackageModel();
 
-    int rowCount(const QModelIndex & parent = QModelIndex()) const;
-    int columnCount(const QModelIndex & parent = QModelIndex()) const;
-    QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
+    int rowCount(const QModelIndex &parent = QModelIndex()) const;
+    int columnCount(const QModelIndex &parent = QModelIndex()) const;
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
 
     void addPackage(QApt::Package *package);
@@ -50,8 +50,8 @@ public:
     void removePackage(QApt::Package *package);
     void removePackages(QApt::PackageList list);
     void clear();
-    QApt::Package *packageAt(const QModelIndex &index);
-    QApt::PackageList packages();
+    QApt::Package *packageAt(const QModelIndex &index) const;
+    QApt::PackageList packages() const;
 
 private:
     QApt::PackageList m_packages;

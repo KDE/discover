@@ -22,7 +22,6 @@
 
 #include <KIcon>
 #include <KLocale>
-#include <KDebug>
 
 PackageModel::PackageModel(QObject *parent)
         : QAbstractListModel(parent)
@@ -120,12 +119,12 @@ void PackageModel::clear()
     endRemoveRows();
 }
 
-QApt::Package *PackageModel::packageAt(const QModelIndex &index)
+QApt::Package *PackageModel::packageAt(const QModelIndex &index) const
 {
     return m_packages.at(index.row());
 }
 
-QApt::PackageList PackageModel::packages()
+QApt::PackageList PackageModel::packages() const
 {
     return m_packages;
 }

@@ -21,18 +21,13 @@
 #include "PackageDelegate.h"
 
 // Qt
-#include <QAbstractItemView>
 #include <QApplication>
-#include <QtGui/QLabel>
 #include <QtGui/QPainter>
-#include <QtGui/QPushButton>
-#include <QtGui/QToolButton>
 
 // KDE
 #include <KIcon>
 #include <KIconLoader>
 #include <KLocale>
-#include <KDebug>
 
 // Own
 #include "PackageModel.h"
@@ -65,7 +60,7 @@ void PackageDelegate::paint(QPainter* painter, const QStyleOptionViewItem& optio
         paintText(painter, option, index);
         break;
     default:
-        kDebug() << "unexpected column";
+        break;
     }
 }
 
