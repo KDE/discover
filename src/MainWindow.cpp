@@ -280,6 +280,8 @@ void MainWindow::returnFromPreview()
     m_previewAction->setIcon(KIcon("document-preview-archive"));
     m_previewAction->setText(i18nc("@action", "Preview Changes"));
     connect(m_previewAction, SIGNAL(triggered()), this, SLOT(previewChanges()));
+    // We may not have anything to preview; check.
+    reloadActions(); 
 }
 
 void MainWindow::startCommit()
@@ -335,7 +337,12 @@ void MainWindow::reloadActions()
     QApt::PackageList changedList = m_backend->markedPackages();
 
     m_upgradeAction->setEnabled(!upgradeableList.isEmpty());
-    m_previewAction->setEnabled(!changedList.isEmpty());
+    if (m_stack->currentWidget() == m_reviewWidget) {
+        // We always need to be able to get back from review
+        m_previewAction->setEnabled(true);
+    } else {
+        m_previewAction->setEnabled(!changedList.isEmpty());
+    }
     m_applyAction->setEnabled(!changedList.isEmpty());
 }
 
