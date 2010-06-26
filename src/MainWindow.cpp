@@ -181,7 +181,6 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
 {
     switch (event) {
         case QApt::CacheUpdateStarted:
-            m_downloadWidget->clear();
             m_downloadWidget->setHeaderText(i18nc("@info", "<title>Updating software sources</title>"));
             m_stack->setCurrentWidget(m_downloadWidget);
             m_powerInhibitor = Solid::PowerManagement::beginSuppressingSleep(i18nc("@info:status", "Muon is downloading packages"));
@@ -194,14 +193,12 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
             returnFromPreview();
             break;
         case QApt::PackageDownloadStarted:
-            m_downloadWidget->clear();
             m_downloadWidget->setHeaderText(i18nc("@info", "<title>Downloading Packages</title>"));
             m_powerInhibitor = Solid::PowerManagement::beginSuppressingSleep(i18nc("@info:status", "Muon is downloading packages"));
             m_stack->setCurrentWidget(m_downloadWidget);
             connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
             break;
         case QApt::CommitChangesStarted:
-            m_commitWidget->clear();
             m_stack->setCurrentWidget(m_commitWidget);
             break;
         case QApt::PackageDownloadFinished:
