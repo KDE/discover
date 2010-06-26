@@ -123,7 +123,7 @@ void FilterWidget::populateStatuses()
 
     QStandardItem *notInstalledItem = new QStandardItem;
     notInstalledItem->setIcon(KIcon("application-x-deb"));
-    notInstalledItem->setText(MuonStrings::packageStateName(QApt::Package::ToKeep));
+    notInstalledItem->setText(MuonStrings::packageStateName(QApt::Package::NotInstalled));
 
     QStandardItem *upgradeableItem = new QStandardItem;
     upgradeableItem->setIcon(KIcon("system-software-update"));

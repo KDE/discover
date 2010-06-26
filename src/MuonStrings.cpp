@@ -175,7 +175,7 @@ QString MuonStrings::groupKey(const QString &text)
 QHash<int, QString> stateMap()
 {
     QHash<int, QString> hash;
-    hash[QApt::Package::ToKeep] = i18nc("@info:status Package state" , "Not Installed");
+    hash[QApt::Package::NotInstalled] = i18nc("@info:status Package state" , "Not Installed");
     hash[QApt::Package::Installed] =i18nc("@info:status Package state", "Installed");
     hash[QApt::Package::Upgradeable] = i18nc("@info:status Package state", "Upgradeable");
     hash[QApt::Package::NowBroken] = i18nc("@info:status Package state", "Broken");
