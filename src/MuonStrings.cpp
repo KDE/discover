@@ -27,125 +27,125 @@
 QHash<QString, QString> groupMap()
 {
     QHash<QString, QString> hash;
-    hash["admin"] = i18nc("@item:listbox Human-readable name for the Debian package section \"admin\"",
+    hash["admin"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"admin\"",
                           "System Administration");
-    hash["base"] = i18nc("@item:listbox Human-readable name for the Debian package section \"base\"",
+    hash["base"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"base\"",
                          "Base System");
-    hash["cli-mono"] = i18nc("@item:listbox Human-readable name for the Debian package section \"cli-mono\"",
+    hash["cli-mono"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"cli-mono\"",
                              "Mono/CLI Infrastructure");
-    hash["comm"] = i18nc("@item:listbox Human-readable name for the Debian package section \"comm\"",
+    hash["comm"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"comm\"",
                          "Communication");
-    hash["database"] = i18nc("@item:listbox Human-readable name for the Debian package section \"database\"",
+    hash["database"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"database\"",
                              "Databases");
-    hash["devel"] = i18nc("@item:listbox Human-readable name for the Debian package section \"devel\"",
+    hash["devel"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"devel\"",
                           "Development");
-    hash["doc"] = i18nc("@item:listbox Human-readable name for the Debian package section \"doc\"",
+    hash["doc"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"doc\"",
                          "Documentation");
-    hash["debug"] = i18nc("@item:listbox Human-readable name for the Debian package section \"debug\"",
+    hash["debug"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"debug\"",
                           "Debug");
-    hash["editors"] = i18nc("@item:listbox Human-readable name for the Debian package section \"editors\"",
+    hash["editors"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"editors\"",
                             "Editors");
-    hash["electronics"] = i18nc("@item:listbox Human-readable name for the Debian package section \"electronics\"",
+    hash["electronics"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"electronics\"",
                                 "Electronics");
-    hash["embedded"] = i18nc("@item:listbox Human-readable name for the Debian package section \"embedded\"",
+    hash["embedded"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"embedded\"",
                              "Embedded Devices");
-    hash["fonts"] = i18nc("@item:listbox Human-readable name for the Debian package section \"fonts\"",
+    hash["fonts"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"fonts\"",
                           "Fonts");
-    hash["games"] = i18nc("@item:listbox Human-readable name for the Debian package section \"games\"",
+    hash["games"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"games\"",
                           "Games and Amusement");
-    hash["gnome"] = i18nc("@item:listbox Human-readable name for the Debian package section \"gnome\"",
+    hash["gnome"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"gnome\"",
                           "GNOME Desktop Environment");
-    hash["graphics"] = i18nc("@item:listbox Human-readable name for the Debian package section \"graphics\"",
+    hash["graphics"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"graphics\"",
                              "Graphics");
-    hash["gnu-r"] = i18nc("@item:listbox Human-readable name for the Debian package section \"gnu-r\"",
+    hash["gnu-r"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"gnu-r\"",
                                 "GNU R Statistical System");
-    hash["gnustep"] = i18nc("@item:listbox Human-readable name for the Debian package section \"gnustep\"",
+    hash["gnustep"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"gnustep\"",
                             "Gnustep Desktop Environment");
-    hash["hamradio"] = i18nc("@item:listbox Human-readable name for the Debian package section \"hamradio\"",
+    hash["hamradio"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"hamradio\"",
                                 "Amateur Radio");
-    hash["haskell"] = i18nc("@item:listbox Human-readable name for the Debian package section \"haskell\"",
+    hash["haskell"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"haskell\"",
                                 "Haskell Programming Language");
-    hash["httpd"] = i18nc("@item:listbox Human-readable name for the Debian package section \"httpd\"",
+    hash["httpd"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"httpd\"",
                                 "Web Servers");
-    hash["interpreters"] = i18nc("@item:listbox Human-readable name for the Debian package section \"interpreters\"",
+    hash["interpreters"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"interpreters\"",
                                  "Interpreted Computer Languages");
-    hash["java"] = i18nc("@item:listbox Human-readable name for the Debian package section \"java\"",
+    hash["java"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"java\"",
                          "Java Programming Language");
-    hash["kde"] = i18nc("@item:listbox Human-readable name for the Debian package section \"kde\"",
+    hash["kde"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"kde\"",
                         "KDE Desktop Environment");
-    hash["kernel"] = i18nc("@item:listbox Human-readable name for the Debian package section \"kernel\"",
+    hash["kernel"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"kernel\"",
                            "Kernel and Modules");
-    hash["libdevel"] = i18nc("@item:listbox Human-readable name for the Debian package section \"libdevel\"",
+    hash["libdevel"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"libdevel\"",
                              "Libraries - Development");
-    hash["libs"] = i18nc("@item:listbox Human-readable name for the Debian package section \"libs\"",
+    hash["libs"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"libs\"",
                          "Libraries");
-    hash["lisp"] = i18nc("@item:listbox Human-readable name for the Debian package section \"lisp\"",
+    hash["lisp"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"lisp\"",
                                 "Lisp Programming Language");
-    hash["localization"] = i18nc("@item:listbox Human-readable name for the Debian package section \"localization\"",
+    hash["localization"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"localization\"",
                                  "Localization");
-    hash["mail"] = i18nc("@item:listbox Human-readable name for the Debian package section \"mail\"",
+    hash["mail"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"mail\"",
                          "Email");
-    hash["math"] = i18nc("@item:listbox Human-readable name for the Debian package section \"math\"",
+    hash["math"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"math\"",
                          "Mathematics");
-    hash["misc"] = i18nc("@item:listbox Human-readable name for the Debian package section \"misc\"",
+    hash["misc"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"misc\"",
                          "Miscellaneous - Text-based");
-    hash["net"] = i18nc("@item:listbox Human-readable name for the Debian package section \"net\"",
+    hash["net"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"net\"",
                          "Networking");
-    hash["news"] = i18nc("@item:listbox Human-readable name for the Debian package section \"news\"",
+    hash["news"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"news\"",
                          "Newsgroups");
-    hash["ocaml"] = i18nc("@item:listbox Human-readable name for the Debian package section \"ocaml\"",
+    hash["ocaml"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"ocaml\"",
                           "OCaml Programming Language");
-    hash["oldlibs"] = i18nc("@item:listbox Human-readable name for the Debian package section \"oldlibs\"",
+    hash["oldlibs"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"oldlibs\"",
                             "Libraries - Old");
-    hash["otherosfs"] = i18nc("@item:listbox Human-readable name for the Debian package section \"otherosfs\"",
+    hash["otherosfs"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"otherosfs\"",
                               "Cross Platform");
-    hash["perl"] = i18nc("@item:listbox Human-readable name for the Debian package section \"perl\"",
+    hash["perl"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"perl\"",
                          "Perl Programming Language");
-    hash["php"] = i18nc("@item:listbox Human-readable name for the Debian package section \"php\"",
+    hash["php"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"php\"",
                         "PHP Programming Language");
-    hash["python"] = i18nc("@item:listbox Human-readable name for the Debian package section \"python\"",
+    hash["python"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"python\"",
                            "Python Programming Language");
-    hash["ruby"] = i18nc("@item:listbox Human-readable name for the Debian package section \"ruby\"",
+    hash["ruby"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"ruby\"",
                          "Ruby Programming Language");
-    hash["science"] = i18nc("@item:listbox Human-readable name for the Debian package section \"science\"",
+    hash["science"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"science\"",
                             "Science");
-    hash["shells"] = i18nc("@item:listbox Human-readable name for the Debian package section \"shells\"",
+    hash["shells"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"shells\"",
                            "Shells");
-    hash["sound"] = i18nc("@item:listbox Human-readable name for the Debian package section \"sound\"",
+    hash["sound"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"sound\"",
                           "Multimedia");
-    hash["mail"] = i18nc("@item:listbox Human-readable name for the Debian package section \"mail\"",
+    hash["mail"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"mail\"",
                          "Email");
-    hash["tex"] = i18nc("@item:listbox Human-readable name for the Debian package section \"tex\"",
+    hash["tex"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"tex\"",
                         "TeX Authoring");
-    hash["text"] = i18nc("@item:listbox Human-readable name for the Debian package section \"text\"",
+    hash["text"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"text\"",
                          "Word Processing");
-    hash["utils"] = i18nc("@item:listbox Human-readable name for the Debian package section \"utils\"",
+    hash["utils"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"utils\"",
                          "Utilities");
-    hash["vcs"] = i18nc("@item:listbox Human-readable name for the Debian package section \"vcs\"",
+    hash["vcs"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"vcs\"",
                         "Version Control Systems");
-    hash["video"] = i18nc("@item:listbox Human-readable name for the Debian package section \"video\"",
+    hash["video"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"video\"",
                          "Video Software");
-    hash["web"] = i18nc("@item:listbox Human-readable name for the Debian package section \"web\"",
+    hash["web"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"web\"",
                         "Internet");
-    hash["x11"] = i18nc("@item:listbox Human-readable name for the Debian package section \"x11\"",
+    hash["x11"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"x11\"",
                         "Miscellaneous - Graphical");
-    hash["xfce"] = i18nc("@item:listbox Human-readable name for the Debian package section \"xfce\"",
+    hash["xfce"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"xfce\"",
                          "Xfce Desktop Environment");
-    hash["zope"] = i18nc("@item:listbox Human-readable name for the Debian package section \"zope\"",
+    hash["zope"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"zope\"",
                          "Zope/Plone Environment");
-    hash["unknown"] = i18nc("@item:listbox Human-readable name for the Debian package section \"unknown\"",
+    hash["unknown"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"unknown\"",
                             "Unknown");
-    hash["alien"] = i18nc("@item:listbox Human-readable name for the Debian package section \"alien\"",
+    hash["alien"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"alien\"",
                           "Converted from RPM by Alien");
-    hash["translations"] = i18nc("@item:listbox Human-readable name for the Debian package section \"translations\"",
+    hash["translations"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"translations\"",
                                  "Internationalization and Localization");
-    hash["metapackages"] = i18nc("@item:listbox Human-readable name for the Debian package section \"metapackages\"",
+    hash["metapackages"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"metapackages\"",
                                  "Meta Packages");
-    hash["non-us"] = i18nc("@item:listbox Debian package section \"non-US\", for packages that cannot be shipped in the US",
+    hash["non-us"] = i18nc("@item:inlistbox Debian package section \"non-US\", for packages that cannot be shipped in the US",
                            "Restricted On Export");
-    hash["non-free"] = i18nc("@item:listbox Human-readable name for the Debian package section \"non-free\"",
+    hash["non-free"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"non-free\"",
                          "Non-free");
-    hash["contrib"] = i18nc("@item:listbox Human-readable name for the Debian package section \"contrib\"",
+    hash["contrib"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"contrib\"",
                             "Contrib");
     return hash;
 }
