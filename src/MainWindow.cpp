@@ -116,6 +116,8 @@ void MainWindow::initObject()
             this, SLOT(workerEvent(QApt::WorkerEvent)));
     connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode, const QVariantMap&)),
             this, SLOT(errorOccurred(QApt::ErrorCode, const QVariantMap&)));
+    connect(m_backend, SIGNAL(warningOccurred(QApt::WarningCode, const QVariantMap&)),
+            this, SLOT(warningOccurred(QApt::WarningCode, const QVariantMap&)));
     connect(m_backend, SIGNAL(questionOccurred(QApt::WorkerQuestion, const QVariantMap&)),
             this, SLOT(questionOccurred(QApt::WorkerQuestion, const QVariantMap&)));
     connect(m_backend, SIGNAL(packageChanged()), this, SLOT(reloadActions()));
@@ -305,6 +307,27 @@ void MainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args)
     }
     reloadActions();
     m_stack->setCurrentWidget(m_mainWidget);
+}
+
+void MainWindow::warningOccurred(QApt::WarningCode warning, const QVariantMap &args)
+{
+    switch (warning) {
+        case QApt::SizeMismatchWarning:
+            break;
+        case QApt::FetchFailedWarning: {
+            QString failedItem = args["FailedItem"].toString();
+            QString warningText = args["WarningText"].toString();
+            QString text = i18nc("@label",
+                                 "Failed to download %1\n"
+                                 "%2", failedItem, warningText);
+            QString title = i18nc("@title:window", "Download Failed");
+            KMessageBox::sorry(this, text, title);
+        }
+        case QApt::UnknownWarning:
+        default:
+            break;
+    }
+
 }
 
 void MainWindow::questionOccurred(QApt::WorkerQuestion code, const QVariantMap &args)

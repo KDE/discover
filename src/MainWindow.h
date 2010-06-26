@@ -90,6 +90,7 @@ private Q_SLOTS:
     void checkForUpdates();
     void workerEvent(QApt::WorkerEvent event);
     void errorOccurred(QApt::ErrorCode code, const QVariantMap &args);
+    void warningOccurred(QApt::WarningCode warning, const QVariantMap &args);
     void questionOccurred(QApt::WorkerQuestion question, const QVariantMap &details);
     void previewChanges();
     void returnFromPreview();
