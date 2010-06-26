@@ -462,6 +462,7 @@ void MainWindow::reloadActions()
     int upgradeable = m_backend->packageCount(QApt::Package::Upgradeable) - held;
     QApt::PackageList changedList = m_backend->markedPackages();
 
+    m_updateAction->setEnabled(true);
     m_upgradeAction->setEnabled(upgradeable > 0);
     if (m_stack->currentWidget() == m_reviewWidget) {
         // We always need to be able to get back from review
