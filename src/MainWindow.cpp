@@ -305,7 +305,7 @@ void MainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args)
         default:
             break;
     }
-    reloadActions();
+    returnFromPreview(); // Change the "back" button back to normal in case we were in preview
     m_stack->setCurrentWidget(m_mainWidget);
 }
 
