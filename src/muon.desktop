@@ -25,4 +25,4 @@ GenericName[pt_BR]=Gerenciador de pacotes
 GenericName[sv]=Pakethanterare
 GenericName[uk]=Керування пакунками
 GenericName[x-test]=xxPackage Managerxx
-Terminal=false
+Categories=Qt;KDE;System;
