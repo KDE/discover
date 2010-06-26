@@ -55,7 +55,8 @@ void StatusWidget::setBackend(QApt::Backend *backend)
 
 void StatusWidget::updateStatus()
 {
-    int upgradeable = m_backend->packageCount(QApt::Package::Upgradeable);
+    int held = m_backend->packageCount(QApt::Package::Held);
+    int upgradeable = m_backend->packageCount(QApt::Package::Upgradeable) - held;
     bool showChanges = (m_backend->markedPackages().count() > 0);
 
     QString availableText = i18n("%1 packages available, ", m_backend->packageCount());

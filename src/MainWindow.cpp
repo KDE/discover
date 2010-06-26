@@ -311,46 +311,49 @@ void MainWindow::questionOccurred(QApt::WorkerQuestion code, const QVariantMap &
 {
     QVariantMap response;
 
-    if (code == QApt::MediaChange) {
-        QString media = args["Media"].toString();
-        QString drive = args["Drive"].toString();
+    switch (code) {
+        case QApt::MediaChange: {
+            QString media = args["Media"].toString();
+            QString drive = args["Drive"].toString();
 
-        QString title = i18nc("@title:window", "Media Change Required");
-        QString text = i18nc("@label", "Please insert %1 into <filename>%2</filename>", media, drive);
+            QString title = i18nc("@title:window", "Media Change Required");
+            QString text = i18nc("@label", "Please insert %1 into <filename>%2</filename>", media, drive);
 
-        KMessageBox::information(this, text, title);
-        response["MediaChanged"] = true;
-        m_backend->answerWorkerQuestion(response);
-    } else if (code == QApt::InstallUntrusted) {
-        QStringList untrustedItems = args["UntrustedItems"].toStringList();
-
-        QString title = i18nc("@title:window", "Warning - Unverified Software");
-        QString text = i18ncp("@label",
-                     "The following piece of software cannot be verified. "
-                     "<warning>Installing unverified software represents a "
-                     "security risk, as the presence of unverifiable software "
-                     "can be a sign of tampering.</warning> Do you wish to continue?",
-                     "The following pieces of software cannot be authenticated. "
-                     "<warning>Installing unverified software represents a "
-                     "security risk, as the presence of unverifiable software "
-                     "can be a sign of tampering.</warning> Do you wish to continue?",
-                     untrustedItems.size());
-        int result = KMessageBox::Cancel;
-        bool installUntrusted = false;
-
-        result = KMessageBox::warningContinueCancelList(this, text,
-                                                        untrustedItems, title);
-        switch (result) {
-            case KMessageBox::Continue:
-                installUntrusted = true;
-                break;
-            case KMessageBox::Cancel:
-                installUntrusted = false;
-                break;
+            KMessageBox::information(this, text, title);
+            response["MediaChanged"] = true;
+            m_backend->answerWorkerQuestion(response);
         }
+        case QApt::InstallUntrusted: {
+            QStringList untrustedItems = args["UntrustedItems"].toStringList();
 
-        response["InstallUntrusted"] = installUntrusted;
-        m_backend->answerWorkerQuestion(response);
+            QString title = i18nc("@title:window", "Warning - Unverified Software");
+            QString text = i18ncp("@label",
+                        "The following piece of software cannot be verified. "
+                        "<warning>Installing unverified software represents a "
+                        "security risk, as the presence of unverifiable software "
+                        "can be a sign of tampering.</warning> Do you wish to continue?",
+                        "The following pieces of software cannot be authenticated. "
+                        "<warning>Installing unverified software represents a "
+                        "security risk, as the presence of unverifiable software "
+                        "can be a sign of tampering.</warning> Do you wish to continue?",
+                        untrustedItems.size());
+            int result = KMessageBox::Cancel;
+            bool installUntrusted = false;
+
+            result = KMessageBox::warningContinueCancelList(this, text,
+                                                            untrustedItems, title);
+            switch (result) {
+                case KMessageBox::Continue:
+                    installUntrusted = true;
+                    break;
+                case KMessageBox::Cancel:
+                    installUntrusted = false;
+                    break;
+            }
+
+            response["InstallUntrusted"] = installUntrusted;
+            m_backend->answerWorkerQuestion(response);
+        }
     }
 }
 
@@ -431,10 +434,11 @@ void MainWindow::reload()
 
 void MainWindow::reloadActions()
 {
-    QApt::PackageList upgradeableList = m_backend->upgradeablePackages();
+    int held = m_backend->packageCount(QApt::Package::Held);
+    int upgradeable = m_backend->packageCount(QApt::Package::Upgradeable) - held;
     QApt::PackageList changedList = m_backend->markedPackages();
 
-    m_upgradeAction->setEnabled(!upgradeableList.isEmpty());
+    m_upgradeAction->setEnabled(upgradeable > 0);
     if (m_stack->currentWidget() == m_reviewWidget) {
         // We always need to be able to get back from review
         m_previewAction->setEnabled(true);
