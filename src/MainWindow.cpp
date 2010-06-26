@@ -458,8 +458,7 @@ void MainWindow::reload()
 
 void MainWindow::reloadActions()
 {
-    int held = m_backend->packageCount(QApt::Package::Held);
-    int upgradeable = m_backend->packageCount(QApt::Package::Upgradeable) - held;
+    int upgradeable = m_backend->packageCount(QApt::Package::Upgradeable);
     QApt::PackageList changedList = m_backend->markedPackages();
 
     m_updateAction->setEnabled(true);
