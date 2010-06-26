@@ -153,24 +153,16 @@ QHash<QString, QString> groupMap()
 QString MuonStrings::groupName(const QString &name)
 {
     QHash<QString, QString> groups = groupMap();
-    QString group;
-    QString prefix;
     QString suffix;
 
     if (name.contains('/')) {
         QStringList split = name.split('/');
-        prefix = split[0];
         suffix = split[1];
 
-        if (groups.contains(suffix)) {
-            return groups[suffix];
-        }
+        return groups.value(suffix);
     } else {
-        if (groups.contains(name)) {
-            return groups[name];
-        }
+        return groups.value(name);
     }
-    return QString();
 }
 
 QString MuonStrings::groupKey(const QString &text)
@@ -195,10 +187,7 @@ QString MuonStrings::packageStateName(QApt::Package::PackageState state)
 {
     QHash<int, QString> states = stateMap();
 
-    if (states.contains(state)) {
-        return states[state];
-    }
-    return QString();
+    return states.value(state);
 }
 
 QApt::Package::PackageState MuonStrings::packageStateKey(const QString &text)
