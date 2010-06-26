@@ -371,6 +371,7 @@ void MainWindow::questionOccurred(QApt::WorkerQuestion code, const QVariantMap &
                     break;
                 case KMessageBox::Cancel:
                     installUntrusted = false;
+                    reloadActions(); //Pseudo-error in this case. Reset things
                     break;
             }
 
