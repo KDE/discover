@@ -21,9 +21,10 @@
 #ifndef DETAILSWIDGET_H
 #define DETAILSWIDGET_H
 
-// Qt
+// Qt includes
 #include <QtCore/QUrl>
 
+// KDE inclues
 #include <KTabWidget>
 
 class QLabel;
@@ -50,7 +51,7 @@ class DetailsWidget : public KTabWidget
 {
     Q_OBJECT
 public:
-    DetailsWidget(QWidget *parent = 0);
+    explicit DetailsWidget(QWidget *parent = 0);
     ~DetailsWidget();
 
 private:
@@ -66,7 +67,7 @@ private:
     QWidget *m_technicalTab;
 
 
-    QWidget *m_dependenciesTab;
+//     QWidget *m_dependenciesTab;
 
 
     KVBox *m_filesTab;

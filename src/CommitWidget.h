@@ -34,7 +34,7 @@ class CommitWidget : public QWidget
 {
     Q_OBJECT
 public:
-    CommitWidget(QWidget *parent = 0);
+    explicit CommitWidget(QWidget *parent = 0);
     ~CommitWidget();
 
     void setLabelText(const QString &text);

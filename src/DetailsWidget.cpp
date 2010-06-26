@@ -73,7 +73,7 @@ DetailsWidget::DetailsWidget(QWidget *parent)
     m_technicalTab = new QWidget;
 
     // Dependencies tab
-    m_dependenciesTab = new QWidget;
+//     m_dependenciesTab = new QWidget;
 
     // File list tab
     m_filesTab = new KVBox;

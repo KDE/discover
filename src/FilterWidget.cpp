@@ -89,7 +89,7 @@ void FilterWidget::populateCategories()
     QApt::GroupList groups = m_backend->availableGroups();
     QSet<QString> groupSet;
 
-    foreach (QApt::Group *group, groups) {
+    foreach (const QApt::Group *group, groups) {
         QString groupName = MuonStrings::groupName(group->name());
 
         if (!groupName.isEmpty()) {
