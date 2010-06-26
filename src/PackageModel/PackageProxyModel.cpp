@@ -48,7 +48,6 @@ void PackageProxyModel::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
     m_packages = static_cast<PackageModel*>(sourceModel())->packages();
-    invalidate();
 }
 
 void PackageProxyModel::search(const QString &searchText)
