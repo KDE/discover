@@ -310,8 +310,8 @@ void DetailsWidget::changelogFetched(KJob *job)
     m_changelogBrowser->setCurrentCharFormat(format);
     QFile changelogFile(m_changelogFile->fileName());
     if (job->error() || !changelogFile.open(QFile::ReadOnly)) {
-        m_changelogBrowser->setText(i18nc("@info/rich", "<p>The list of changes is not available yet. "
-                                          "Please use <a href='%1'>Launchpad</a> instead.</p>",
+        m_changelogBrowser->setText(i18nc("@info/rich", "The list of changes is not available yet. "
+                                          "Please use <link url='%1'>Launchpad</link> instead.",
                                           QString("http://launchpad.net/ubuntu/+source/" + m_package->sourcePackage())));
         return;
     }
