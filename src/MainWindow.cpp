@@ -307,6 +307,7 @@ void MainWindow::warningOccurred(QApt::WarningCode warning, const QVariantMap &a
 {
     switch (warning) {
         case QApt::SizeMismatchWarning:
+            // TODO
             break;
         case QApt::FetchFailedWarning: {
             QString failedItem = args["FailedItem"].toString();

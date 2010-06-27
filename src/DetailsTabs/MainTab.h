@@ -18,66 +18,51 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef DETAILSWIDGET_H
-#define DETAILSWIDGET_H
+#ifndef MAINTAB_H
+#define MAINTAB_H
 
-// Qt includes
-#include <QtCore/QUrl>
+#include <QtGui/QWidget>
 
-// KDE inclues
-#include <KTabWidget>
+class QPushButton;
 
-class QScrollArea;
-class QTreeWidget;
-
+class KAction;
 class KJob;
-class KVBox;
+class KMenu;
 class KTemporaryFile;
-class KTextBrowser;
-class KTreeWidgetSearchLineWidget;
 
 namespace QApt {
     class Package;
 }
 
-class MainTab;
+namespace Ui {
+    class MainTab;
+}
 
-class DetailsWidget : public KTabWidget
+class MainTab : public QWidget
 {
     Q_OBJECT
 public:
-    explicit DetailsWidget(QWidget *parent = 0);
-    ~DetailsWidget();
+    explicit MainTab(QWidget *parent = 0);
+    ~MainTab();
 
 private:
+    Ui::MainTab *m_mainTab;
     QApt::Package *m_package;
 
-    MainTab *m_mainTab;
-
-
-    QScrollArea *m_technicalTab;
-
-
-//     QWidget *m_dependenciesTab;
-
-
-    KVBox *m_filesTab;
-    KTreeWidgetSearchLineWidget *m_filesSearchEdit;
-    QTreeWidget *m_filesTreeWidget;
-
-    QWidget *m_changelogTab;
-    KTextBrowser *m_changelogBrowser;
-    KTemporaryFile *m_changelogFile;
+    QPushButton *m_screenshotButton;
+    KAction *m_purgeAction;
+    KMenu *m_purgeMenu;
+    KTemporaryFile *m_screenshotFile;
 
 public Q_SLOTS:
     void setPackage(QApt::Package *package);
-    void refreshMainTabButtons();
+    void refreshButtons();
     void clear();
 
 private Q_SLOTS:
-    void populateFileList();
-    void fetchChangelog();
-    void changelogFetched(KJob *job);
+    void setupButtons(QApt::Package *oldPackage);
+    void fetchScreenshot();
+    void screenshotFetched(KJob *job);
 };
 
 #endif

@@ -23,54 +23,39 @@
 // Qt
 #include <QtCore/QTextStream>
 #include <QtGui/QLabel>
+#include <QtGui/QScrollArea>
 #include <QtGui/QTreeWidgetItem>
 #include <QtGui/QVBoxLayout>
 
 // KDE
-#include <KAction>
 #include <KDebug>
-#include <KDialog>
 #include <KIO/Job>
 #include <KJob>
 #include <KLocale>
-#include <KMenu>
-#include <KPushButton>
 #include <KVBox>
 #include <KTemporaryFile>
 #include <KTextBrowser>
 #include <KTreeWidgetSearchLineWidget>
 
+// LibQApt includes
 #include <libqapt/package.h>
 
-#include "ui_MainTab.h"
+// Own includes
+#include "DetailsTabs/MainTab.h"
 
 DetailsWidget::DetailsWidget(QWidget *parent)
     : KTabWidget(parent)
     , m_package(0)
-    , m_screenshotFile(0)
     , m_changelogFile(0)
 {
     setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
 
     // Main tab is in the Ui file. If anybody wants to write a C++ widget that
     // is equivalent to it, I would gladly use it. Layouting sucks with C++
-    QWidget *mainTab = new QWidget(this);
-    m_mainTab = new Ui::MainTab;
-    m_mainTab->setupUi(mainTab);
-
-    m_screenshotButton = new KPushButton(mainTab);
-    m_screenshotButton->setIcon(KIcon("image-x-generic"));
-    m_screenshotButton->setText(i18nc("@action:button", "Get Screenshot..."));
-    connect (m_screenshotButton, SIGNAL(clicked()), this, SLOT(fetchScreenshot()));
-    m_mainTab->topHBoxLayout->addWidget(m_screenshotButton);
-
-    m_purgeMenu = new KMenu(m_mainTab->removeButton);
-    m_purgeAction = new KAction(this);
-    m_purgeMenu->addAction(m_purgeAction);
-    m_mainTab->removeButton->setMenu(m_purgeMenu);
+    m_mainTab = new MainTab(this);
 
     // Technical tab
-    m_technicalTab = new QWidget;
+    m_technicalTab = new QScrollArea(this);
 
     // Dependencies tab
 //     m_dependenciesTab = new QWidget;
@@ -86,7 +71,7 @@ DetailsWidget::DetailsWidget(QWidget *parent)
     m_changelogBrowser = new KTextBrowser(m_changelogTab);
 
 
-    addTab(mainTab, i18nc("@title:tab", "Details"));
+    addTab(m_mainTab, i18nc("@title:tab", "Details"));
     addTab(m_technicalTab, i18nc("@title:tab", "Technical Details"));
     // TODO: Needs serious work in LibQApt
     // addTab(m_dependenciesTab, i18nc("@title:tab", "Dependencies"));
@@ -102,18 +87,9 @@ DetailsWidget::~DetailsWidget()
 
 void DetailsWidget::setPackage(QApt::Package *package)
 {
-    show();
-    QApt::Package *oldPackage = m_package;
     m_package = package;
-    m_mainTab->packageShortDescLabel->setText(package->shortDescription());
 
-    m_screenshotButton->setText(i18nc("@action:button", "Get Screenshot..."));
-    m_screenshotButton->setEnabled(true);
-
-    setupButtons(oldPackage);
-    refreshButtons();
-
-    m_mainTab->descriptionBrowser->setText(package->longDescription());
+    m_mainTab->setPackage(package);
 
     if (package->isInstalled()) {
         addTab(m_filesTab, i18nc("@title:tab", "Installed Files"));
@@ -125,98 +101,21 @@ void DetailsWidget::setPackage(QApt::Package *package)
         removeTab(indexOf(m_filesTab));
     }
 
-    if (package->isSupported()) {
-        m_mainTab->supportedLabel->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
-                                                 "Canonical provides critical updates for %1 until %2",
-                                                 package->name(), package->supportedUntil()));
-    } else {
-       m_mainTab->supportedLabel->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
-                                                "Canonical does not provide updates for %1. Some updates "
-                                                "may be provided by the Ubuntu community", package->name()));
-    }
-
     fetchChangelog();
+
+    show();
+}
+
+void DetailsWidget::refreshMainTabButtons()
+{
+    m_mainTab->refreshButtons();
 }
 
 void DetailsWidget::clear()
 {
+    m_mainTab->clear();
     m_package = 0;
     hide();
-}
-
-void DetailsWidget::setupButtons(QApt::Package *oldPackage)
-{
-    if (oldPackage) {
-        disconnect(m_mainTab->installButton, SIGNAL(clicked()), oldPackage, SLOT(setInstall()));
-        disconnect(m_mainTab->removeButton, SIGNAL(clicked()), oldPackage, SLOT(setRemove()));
-        disconnect(m_mainTab->upgradeButton, SIGNAL(clicked()), oldPackage, SLOT(setInstall()));
-        disconnect(m_mainTab->reinstallButton, SIGNAL(clicked()), oldPackage, SLOT(setReInstall()));
-        disconnect(m_purgeAction, SIGNAL(triggered()), oldPackage, SLOT(setPurge()));
-        disconnect(m_mainTab->cancelButton, SIGNAL(clicked()), oldPackage, SLOT(setKeep()));
-    }
-
-    m_mainTab->installButton->setIcon(KIcon("download"));
-    m_mainTab->installButton->setText(i18nc("@action:button", "Installation"));
-    connect(m_mainTab->installButton, SIGNAL(clicked()), m_package, SLOT(setInstall()));
-
-    m_mainTab->removeButton->setIcon(KIcon("edit-delete"));
-    m_mainTab->removeButton->setText(i18nc("@action:button", "Removal"));
-    connect(m_mainTab->removeButton, SIGNAL(clicked()), m_package, SLOT(setRemove()));
-
-    m_mainTab->upgradeButton->setIcon(KIcon("system-software-update"));
-    m_mainTab->upgradeButton->setText(i18nc("@action:button", "Upgrade"));
-    connect(m_mainTab->upgradeButton, SIGNAL(clicked()), m_package, SLOT(setInstall()));
-
-    m_mainTab->reinstallButton->setIcon(KIcon("view-refresh"));
-    m_mainTab->reinstallButton->setText(i18nc("@action:button", "Reinstallation"));
-    connect(m_mainTab->reinstallButton, SIGNAL(clicked()), m_package, SLOT(setReInstall()));
-
-    m_purgeAction->setIcon(KIcon("edit-delete-shred"));
-    m_purgeAction->setText(i18nc("@action:button", "Purge"));
-    connect(m_purgeAction, SIGNAL(triggered()), m_package, SLOT(setPurge()));
-
-    // TODO: Downgrade
-
-    m_mainTab->cancelButton->setIcon(KIcon("dialog-cancel"));
-    m_mainTab->cancelButton->setText(i18nc("@action:button", "Unmark"));
-    connect(m_mainTab->cancelButton, SIGNAL(clicked()), m_package, SLOT(setKeep()));
-}
-
-void DetailsWidget::refreshButtons()
-{
-    if (!m_package) {
-        return; // Nothing to refresh yet, so return, else we crash
-    }
-    int state = m_package->state();
-    bool upgradeable = (state & QApt::Package::Upgradeable);
-
-    if (state & QApt::Package::Installed) {
-        m_mainTab->installButton->hide();
-        m_mainTab->removeButton->show();
-        if (upgradeable) {
-            m_mainTab->upgradeButton->show();
-        } else {
-            m_mainTab->upgradeButton->hide();
-        }
-        m_mainTab->reinstallButton->show();
-        m_mainTab->cancelButton->hide();
-    } else {
-        m_mainTab->installButton->show();
-        m_mainTab->removeButton->hide();
-        m_mainTab->upgradeButton->hide();
-        m_mainTab->reinstallButton->hide();
-        m_mainTab->cancelButton->hide();
-    }
-
-    if (state & (QApt::Package::ToInstall | QApt::Package::ToReInstall |
-                 QApt::Package::ToUpgrade | QApt::Package::ToDowngrade |
-                 QApt::Package::ToRemove  | QApt::Package::ToPurge)) {
-        m_mainTab->installButton->hide();
-        m_mainTab->removeButton->hide();
-        m_mainTab->upgradeButton->hide();
-        m_mainTab->reinstallButton->hide();
-        m_mainTab->cancelButton->show();
-    }
 }
 
 void DetailsWidget::populateFileList()
@@ -256,53 +155,6 @@ void DetailsWidget::populateFileList()
     }
 }
 
-// TODO: Cache fetched items, and map them to packages
-
-void DetailsWidget::fetchScreenshot()
-{
-    m_screenshotFile = new KTemporaryFile;
-    m_screenshotFile->setPrefix("muon");
-    m_screenshotFile->setSuffix(".png");
-    m_screenshotFile->open();
-
-    KIO::FileCopyJob *getJob = KIO::file_copy(m_package->screenshotUrl(QApt::Screenshot),
-                                           m_screenshotFile->fileName(), -1, KIO::Overwrite);
-    connect(getJob, SIGNAL(result(KJob*)),
-            this, SLOT(screenshotFetched(KJob*)));
-}
-
-void DetailsWidget::screenshotFetched(KJob *job)
-{
-    if (job->error()) {
-        m_screenshotButton->setText(i18nc("@info:status", "No Screenshot Available"));
-        m_screenshotButton->setEnabled(false);
-        return;
-    }
-    KDialog *dialog = new KDialog(this);
-
-    QLabel *label = new QLabel(dialog);
-    label->setPixmap(QPixmap(m_screenshotFile->fileName()));
-
-    dialog->setWindowTitle(i18nc("@title:window", "Screenshot"));
-    dialog->setMainWidget(label);
-    dialog->setButtons(KDialog::Close);
-    dialog->show();
-}
-
-void DetailsWidget::fetchChangelog()
-{
-    m_changelogFile = new KTemporaryFile;
-    m_changelogFile->setPrefix("muon");
-    m_changelogFile->setSuffix(".txt");
-    m_changelogFile->open();
-
-    KIO::FileCopyJob *getJob = KIO::file_copy(m_package->changelogUrl(),
-                                      m_changelogFile->fileName(), -1,
-                                      KIO::Overwrite | KIO::HideProgressInfo);
-    connect(getJob, SIGNAL(result(KJob*)),
-            this, SLOT(changelogFetched(KJob*)));
-}
-
 void DetailsWidget::changelogFetched(KJob *job)
 {
     // Work around http://bugreports.qt.nokia.com/browse/QTBUG-2533 by forcibly resetting the CharFormat
@@ -317,6 +169,20 @@ void DetailsWidget::changelogFetched(KJob *job)
     }
     QTextStream stream(&changelogFile);
     m_changelogBrowser->setText(stream.readAll());
+}
+
+void DetailsWidget::fetchChangelog()
+{
+    m_changelogFile = new KTemporaryFile;
+    m_changelogFile->setPrefix("muon");
+    m_changelogFile->setSuffix(".txt");
+    m_changelogFile->open();
+
+    KIO::FileCopyJob *getJob = KIO::file_copy(m_package->changelogUrl(),
+                                      m_changelogFile->fileName(), -1,
+                                      KIO::Overwrite | KIO::HideProgressInfo);
+    connect(getJob, SIGNAL(result(KJob*)),
+            this, SLOT(changelogFetched(KJob*)));
 }
 
 #include "DetailsWidget.moc"
