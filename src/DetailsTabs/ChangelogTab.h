@@ -18,61 +18,37 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef DETAILSWIDGET_H
-#define DETAILSWIDGET_H
+#ifndef CHANGELOGTAB_H
+#define CHANGELOGTAB_H
 
-// Qt includes
-#include <QtCore/QUrl>
-
-// KDE inclues
-#include <KTabWidget>
-
-class QScrollArea;
-class QTreeWidget;
+#include <KVBox>
 
 class KJob;
-class KVBox;
-class KTreeWidgetSearchLineWidget;
+class KTemporaryFile;
+class KTextBrowser;
 
 namespace QApt {
     class Package;
 }
 
-class MainTab;
-class ChangelogTab;
-
-class DetailsWidget : public KTabWidget
+class ChangelogTab : public KVBox
 {
     Q_OBJECT
 public:
-    explicit DetailsWidget(QWidget *parent = 0);
-    ~DetailsWidget();
+    explicit ChangelogTab(QWidget *parent = 0);
+    ~ChangelogTab();
 
 private:
     QApt::Package *m_package;
-
-    MainTab *m_mainTab;
-
-
-    QScrollArea *m_technicalTab;
-
-
-//     QWidget *m_dependenciesTab;
-
-
-    KVBox *m_filesTab;
-    KTreeWidgetSearchLineWidget *m_filesSearchEdit;
-    QTreeWidget *m_filesTreeWidget;
-
-    ChangelogTab *m_changelogTab;
+    KTextBrowser *m_changelogBrowser;
+    KTemporaryFile *m_changelogFile;
 
 public Q_SLOTS:
     void setPackage(QApt::Package *package);
-    void refreshMainTabButtons();
-    void clear();
 
 private Q_SLOTS:
-    void populateFileList();
+    void fetchChangelog();
+    void changelogFetched(KJob *job);
 };
 
 #endif

@@ -21,7 +21,6 @@
 #include "DetailsWidget.h"
 
 // Qt
-#include <QtCore/QTextStream>
 #include <QtGui/QLabel>
 #include <QtGui/QScrollArea>
 #include <QtGui/QTreeWidgetItem>
@@ -29,12 +28,9 @@
 
 // KDE
 #include <KDebug>
-#include <KIO/Job>
-#include <KJob>
 #include <KLocale>
 #include <KVBox>
 #include <KTemporaryFile>
-#include <KTextBrowser>
 #include <KTreeWidgetSearchLineWidget>
 
 // LibQApt includes
@@ -42,11 +38,11 @@
 
 // Own includes
 #include "DetailsTabs/MainTab.h"
+#include "DetailsTabs/ChangelogTab.h"
 
 DetailsWidget::DetailsWidget(QWidget *parent)
     : KTabWidget(parent)
     , m_package(0)
-    , m_changelogFile(0)
 {
     setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -67,8 +63,7 @@ DetailsWidget::DetailsWidget(QWidget *parent)
     m_filesTreeWidget->setHeaderLabel(i18nc("@title:tab", "Installed Files"));
     m_filesSearchEdit->searchLine()->setTreeWidget(m_filesTreeWidget);
 
-    m_changelogTab = new KVBox;
-    m_changelogBrowser = new KTextBrowser(m_changelogTab);
+    m_changelogTab = new ChangelogTab(this);
 
 
     addTab(m_mainTab, i18nc("@title:tab", "Details"));
@@ -101,7 +96,7 @@ void DetailsWidget::setPackage(QApt::Package *package)
         removeTab(indexOf(m_filesTab));
     }
 
-    fetchChangelog();
+    m_changelogTab->setPackage(package);
 
     show();
 }
@@ -153,36 +148,6 @@ void DetailsWidget::populateFileList()
             }
         }
     }
-}
-
-void DetailsWidget::changelogFetched(KJob *job)
-{
-    // Work around http://bugreports.qt.nokia.com/browse/QTBUG-2533 by forcibly resetting the CharFormat
-    QTextCharFormat format;
-    m_changelogBrowser->setCurrentCharFormat(format);
-    QFile changelogFile(m_changelogFile->fileName());
-    if (job->error() || !changelogFile.open(QFile::ReadOnly)) {
-        m_changelogBrowser->setText(i18nc("@info/rich", "The list of changes is not available yet. "
-                                          "Please use <link url='%1'>Launchpad</link> instead.",
-                                          QString("http://launchpad.net/ubuntu/+source/" + m_package->sourcePackage())));
-        return;
-    }
-    QTextStream stream(&changelogFile);
-    m_changelogBrowser->setText(stream.readAll());
-}
-
-void DetailsWidget::fetchChangelog()
-{
-    m_changelogFile = new KTemporaryFile;
-    m_changelogFile->setPrefix("muon");
-    m_changelogFile->setSuffix(".txt");
-    m_changelogFile->open();
-
-    KIO::FileCopyJob *getJob = KIO::file_copy(m_package->changelogUrl(),
-                                      m_changelogFile->fileName(), -1,
-                                      KIO::Overwrite | KIO::HideProgressInfo);
-    connect(getJob, SIGNAL(result(KJob*)),
-            this, SLOT(changelogFetched(KJob*)));
 }
 
 #include "DetailsWidget.moc"
