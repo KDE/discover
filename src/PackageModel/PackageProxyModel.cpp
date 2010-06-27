@@ -113,7 +113,6 @@ QApt::Package *PackageProxyModel::packageAt(const QModelIndex &index) const
 
 void PackageProxyModel::reset()
 {
-    //TODO: Save search parameters and re-apply
     beginRemoveRows(QModelIndex(), 0, m_packages.size());
     m_packages =  static_cast<PackageModel*>(sourceModel())->packages();
     endRemoveRows();
