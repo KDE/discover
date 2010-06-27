@@ -67,13 +67,13 @@ void PackageProxyModel::search(const QString &searchText)
 void PackageProxyModel::setGroupFilter(const QString &filterText)
 {
     m_groupFilter = filterText;
-    invalidate();
+    invalidateFilter();
 }
 
 void PackageProxyModel::setStateFilter(QApt::Package::PackageState state)
 {
     m_stateFilter = state;
-    invalidate();
+    invalidateFilter();
 }
 
 bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
