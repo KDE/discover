@@ -242,11 +242,8 @@ void MainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args)
             KMessageBox::error(this, text, title);
             break;
         case QApt::FetchError:
-            failedItem = args["FailedItem"].toString();
-            errorText = args["ErrorText"].toString();
             text = i18nc("@label",
-                         "Failed to download %1\n"
-                         "%2", failedItem, errorText);
+                         "Could not download packages");
             title = i18nc("@title:window", "Download failed");
             KMessageBox::error(this, text, title);
             break;
