@@ -23,6 +23,8 @@
 
 #include <QtGui/QAbstractItemDelegate>
 
+class KIcon;
+
 class PackageDelegate: public QAbstractItemDelegate
 {
     Q_OBJECT
@@ -41,6 +43,8 @@ protected:
 private:
     int m_iconSize;
     int m_spacing;
+
+    KIcon *m_icon;
 
     int calcItemHeight(const QStyleOptionViewItem &option) const;
 };

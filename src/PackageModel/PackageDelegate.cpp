@@ -35,12 +35,15 @@
 PackageDelegate::PackageDelegate(QObject * parent)
         : QAbstractItemDelegate(parent)
 {
-    m_spacing    = 4;
+    m_spacing  = 4;
     m_iconSize = KIconLoader::global()->currentSize(KIconLoader::Toolbar);
+
+    m_icon = new KIcon("application-x-deb");
 }
 
 PackageDelegate::~PackageDelegate()
 {
+    delete m_icon;
 }
 
 void PackageDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
@@ -88,14 +91,13 @@ void PackageDelegate::paintPackageName(QPainter* painter, const QStyleOptionView
     QPainter p(&pixmap);
     p.translate(-option.rect.topLeft());
 
-    KIcon *icon = new KIcon("application-x-deb");
-    icon->paint(&p,
-           leftToRight ? left + m_spacing : left + width - m_spacing - m_iconSize,
-           top + m_spacing,
-           m_iconSize,
-           m_iconSize,
-           Qt::AlignCenter,
-           QIcon::Normal);
+    m_icon->paint(&p,
+                  leftToRight ? left + m_spacing : left + width - m_spacing - m_iconSize,
+                  top + m_spacing,
+                  m_iconSize,
+                  m_iconSize,
+                  Qt::AlignCenter,
+                  QIcon::Normal);
 
     // Text
     QStyleOptionViewItem name_item(option);
@@ -143,7 +145,6 @@ void PackageDelegate::paintPackageName(QPainter* painter, const QStyleOptionView
     p.end();
 
     painter->drawPixmap(option.rect.topLeft(), pixmap);
-    delete icon;
 }
 
 void PackageDelegate::paintText(QPainter* painter, const QStyleOptionViewItem& option , const QModelIndex &index) const
@@ -171,14 +172,11 @@ void PackageDelegate::paintText(QPainter* painter, const QStyleOptionViewItem& o
         case 2:
             state = index.data(PackageModel::ActionRole).toInt();
 
-            if (state & QApt::Package::NowBroken){
-                text = i18n("Broken");
-                pen.setColor(Qt::red);
-            }
-
             if (state & QApt::Package::ToKeep) {
                 text = i18n("No change");
                 pen.setColor(Qt::blue);
+                // No other "To" flag will be set if we are keeping
+                break;
             }
 
             if (state & QApt::Package::ToInstall) {
@@ -186,19 +184,10 @@ void PackageDelegate::paintText(QPainter* painter, const QStyleOptionViewItem& o
                 pen.setColor(Qt::darkGreen);
             }
 
-            if (state & QApt::Package::ToReInstall) {
-                text = i18n("Reinstall");
-                pen.setColor(Qt::darkGreen);
-            }
-
             if (state & QApt::Package::ToUpgrade) {
                 text = i18n("Upgrade");
                 pen.setColor(Qt::darkYellow);
-            }
-
-            if (state & QApt::Package::ToDowngrade) {
-                text = i18n("Downgrade");
-                pen.setColor(Qt::darkYellow);
+                break;
             }
 
             if (state & QApt::Package::ToRemove) {
@@ -209,6 +198,25 @@ void PackageDelegate::paintText(QPainter* painter, const QStyleOptionViewItem& o
             if (state & QApt::Package::ToPurge) {
                 text = i18n("Purge");
                 pen.setColor(Qt::red);
+                break;
+            }
+
+            if (state & QApt::Package::ToReInstall) {
+                text = i18n("Reinstall");
+                pen.setColor(Qt::darkGreen);
+                break;
+            }
+
+            if (state & QApt::Package::ToDowngrade) {
+                text = i18n("Downgrade");
+                pen.setColor(Qt::darkYellow);
+                break;
+            }
+
+            if (state & QApt::Package::NowBroken){
+                text = i18n("Broken");
+                pen.setColor(Qt::red);
+                break;
             }
             break;
     }
