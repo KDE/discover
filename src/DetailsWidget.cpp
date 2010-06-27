@@ -305,6 +305,9 @@ void DetailsWidget::fetchChangelog()
 
 void DetailsWidget::changelogFetched(KJob *job)
 {
+    // Work around http://bugreports.qt.nokia.com/browse/QTBUG-2533 by forcibly resetting the CharFormat
+    QTextCharFormat format;
+    m_changelogBrowser->setCurrentCharFormat(format);
     QFile changelogFile(m_changelogFile->fileName());
     if (job->error() || !changelogFile.open(QFile::ReadOnly)) {
         m_changelogBrowser->setText(i18nc("@info/rich", "<p>The list of changes is not available yet. "
