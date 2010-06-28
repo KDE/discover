@@ -45,47 +45,47 @@ TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
     KVBox *mainWidget = new KVBox(this);
     KHBox *versionWidget = new KHBox(mainWidget);
 
-    QGroupBox *installedVersionBox = new QGroupBox(versionWidget);
-    installedVersionBox->setTitle(i18nc("@title:group", "Installed Version"));
-    QGridLayout *installedGridLayout = new QGridLayout(installedVersionBox);
-    installedVersionBox->setLayout(installedGridLayout);
+    m_installedVersionBox = new QGroupBox(versionWidget);
+    m_installedVersionBox->setTitle(i18nc("@title:group", "Installed Version"));
+    QGridLayout *installedGridLayout = new QGridLayout(m_installedVersionBox);
+    m_installedVersionBox->setLayout(installedGridLayout);
 
     // installedVersionBox, row 0
-    QLabel *installedVersionLabel = new QLabel(installedVersionBox);
+    QLabel *installedVersionLabel = new QLabel(m_installedVersionBox);
     installedVersionLabel->setText(i18nc("@label Label preceeding the package version", "Version:"));
-    m_installedVersion = new QLabel(installedVersionBox);
+    m_installedVersion = new QLabel(m_installedVersionBox);
     installedGridLayout->addWidget(installedVersionLabel, 0, 0, Qt::AlignRight);
     installedGridLayout->addWidget(m_installedVersion, 0, 1, Qt::AlignLeft);
     // installedVersionBox, row 1
-    QLabel *installedSizeLabel = new QLabel(installedVersionBox);
+    QLabel *installedSizeLabel = new QLabel(m_installedVersionBox);
     installedSizeLabel->setText(i18nc("@label Label preceeding the package size", "Installed Size:"));
-    m_installedSize = new QLabel(installedVersionBox);
+    m_installedSize = new QLabel(m_installedVersionBox);
     installedGridLayout->addWidget(installedSizeLabel, 1, 0, Qt::AlignRight);
     installedGridLayout->addWidget(m_installedSize, 1, 1, Qt::AlignLeft);
     //TODO: Spacer for the 3rd row
 
 
-    QGroupBox *currentVersionBox = new QGroupBox(versionWidget);
-    currentVersionBox->setTitle(i18nc("@title:group", "Available Version"));
-    QGridLayout *currentGridLayout = new QGridLayout(currentVersionBox);
-    currentVersionBox->setLayout(currentGridLayout);
+    m_currentVersionBox = new QGroupBox(versionWidget);
+    m_currentVersionBox->setTitle(i18nc("@title:group", "Available Version"));
+    QGridLayout *currentGridLayout = new QGridLayout(m_currentVersionBox);
+    m_currentVersionBox->setLayout(currentGridLayout);
 
     // currentVersionBox, row 0
-    QLabel *currentVersionLabel = new QLabel(currentVersionBox);
+    QLabel *currentVersionLabel = new QLabel(m_currentVersionBox);
     currentVersionLabel->setText(i18nc("@label Label preceeding the package version", "Version:"));
-    m_currentVersion = new QLabel(currentVersionBox);
+    m_currentVersion = new QLabel(m_currentVersionBox);
     currentGridLayout->addWidget(currentVersionLabel, 0, 0, Qt::AlignRight);
     currentGridLayout->addWidget(m_currentVersion, 0, 1, Qt::AlignLeft);
     // currentVersionBox, row 1
-    QLabel *currentSizeLabel = new QLabel(currentVersionBox);
+    QLabel *currentSizeLabel = new QLabel(m_currentVersionBox);
     currentSizeLabel->setText(i18nc("@label Label preceeding the package size", "Installed Size:"));
-    m_currentSize = new QLabel(currentVersionBox);
+    m_currentSize = new QLabel(m_currentVersionBox);
     currentGridLayout->addWidget(currentSizeLabel, 1, 0, Qt::AlignRight);
     currentGridLayout->addWidget(m_currentSize, 1, 1, Qt::AlignLeft);
     // currentVersionBox, row 2
-    QLabel *downloadSizeLabel = new QLabel(currentVersionBox);
+    QLabel *downloadSizeLabel = new QLabel(m_currentVersionBox);
     downloadSizeLabel->setText(i18nc("@label Label preceeding the package's download size", "Download Size:"));
-    m_downloadSize = new QLabel(currentVersionBox);
+    m_downloadSize = new QLabel(m_currentVersionBox);
     currentGridLayout->addWidget(downloadSizeLabel, 2, 0, Qt::AlignRight);
     currentGridLayout->addWidget(m_downloadSize, 2, 1, Qt::AlignLeft);
 
@@ -103,10 +103,11 @@ void TechnicalDetailsTab::setPackage(QApt::Package *package)
     m_package = package;
 
     if (package->isInstalled()) {
+        m_installedVersionBox->show();
         m_installedVersion->setText(package->installedVersion());
         m_installedSize->setText(KGlobal::locale()->formatByteSize(package->currentInstalledSize()));
     } else {
-        // TODO: Hide groupbox
+        m_installedVersionBox->hide();
     }
 
     m_currentVersion->setText(package->availableVersion());

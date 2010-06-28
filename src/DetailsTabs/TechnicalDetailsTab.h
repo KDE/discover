@@ -23,6 +23,7 @@
 
 #include <QtGui/QScrollArea>
 
+class QGroupBox;
 class QLabel;
 
 namespace QApt {
@@ -38,6 +39,9 @@ public:
 
 private:
     QApt::Package *m_package;
+
+    QGroupBox *m_installedVersionBox;
+    QGroupBox *m_currentVersionBox;
 
     QLabel *m_installedVersion;
     QLabel *m_installedSize;
