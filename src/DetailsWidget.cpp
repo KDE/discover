@@ -22,13 +22,10 @@
 
 // Qt
 #include <QtGui/QScrollArea>
-#include <QtGui/QTreeWidgetItem>
-#include <QtGui/QVBoxLayout>
 
 // KDE
 #include <KDebug>
 #include <KLocale>
-#include <KVBox>
 
 // LibQApt includes
 #include <libqapt/package.h>
@@ -45,16 +42,9 @@ DetailsWidget::DetailsWidget(QWidget *parent)
     setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
 
     m_mainTab = new MainTab(this);
-
-    // Technical tab
     m_technicalTab = new QScrollArea(this);
-
-    // Dependencies tab
-//     m_dependenciesTab = new QWidget;
-
-    // File list tab
+    //m_dependenciesTab = new QWidget;
     m_filesTab = new InstalledFilesTab;
-
     m_changelogTab = new ChangelogTab(this);
 
 

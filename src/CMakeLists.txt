@@ -19,7 +19,7 @@ set(muon_SRCS
  )
 
 kde4_add_ui_files(muon_SRCS
-                  MainTab.ui)
+                  DetailsTabs/MainTab.ui)
 
 kde4_add_executable(muon ${muon_SRCS})
 
