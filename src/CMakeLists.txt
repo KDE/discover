@@ -15,6 +15,7 @@ set(muon_SRCS
     PackageModel/PackageDelegate.cpp
     DetailsTabs/MainTab.cpp
     DetailsTabs/ChangelogTab.cpp
+    DetailsTabs/InstalledFilesTab.cpp
  )
 
 kde4_add_ui_files(muon_SRCS

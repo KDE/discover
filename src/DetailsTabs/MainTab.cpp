@@ -44,6 +44,8 @@ MainTab::MainTab(QWidget *parent)
     , m_package(0)
     , m_screenshotFile(0)
 {
+    // Main tab is in the Ui file. If anybody wants to write a C++ widget that
+    // is equivalent to it, I would gladly use it. Layouting sucks with C++
     m_mainTab = new Ui::MainTab;
     m_mainTab->setupUi(this);
 

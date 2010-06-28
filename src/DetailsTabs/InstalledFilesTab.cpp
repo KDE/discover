@@ -18,42 +18,42 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef DETAILSWIDGET_H
-#define DETAILSWIDGET_H
+#include "InstalledFilesTab.h"
 
-// KDE inclues
-#include <KTabWidget>
+// Qt includes
+#include <QtGui/QTextBrowser>
 
-class QScrollArea;
+// LibQApt includes
+#include <libqapt/package.h>
 
-namespace QApt {
-    class Package;
+InstalledFilesTab::InstalledFilesTab(QWidget *parent)
+    : KVBox(parent)
+    , m_package(0)
+{
+    m_filesBrowser = new QTextBrowser(this);
 }
 
-class MainTab;
-class ChangelogTab;
-class InstalledFilesTab;
-
-class DetailsWidget : public KTabWidget
+InstalledFilesTab::~InstalledFilesTab()
 {
-    Q_OBJECT
-public:
-    explicit DetailsWidget(QWidget *parent = 0);
-    ~DetailsWidget();
+}
 
-private:
-    QApt::Package *m_package;
+void InstalledFilesTab::setPackage(QApt::Package *package)
+{
+    m_package = package;
+    populateFilesList();
+}
 
-    MainTab *m_mainTab;
-    QScrollArea *m_technicalTab;
-    // QWidget *m_dependenciesTab;
-    InstalledFilesTab *m_filesTab;
-    ChangelogTab *m_changelogTab;
+void InstalledFilesTab::populateFilesList()
+{
+    m_filesBrowser->clear();
+    QStringList filesList = m_package->installedFilesList();
+    QString filesString;
 
-public Q_SLOTS:
-    void setPackage(QApt::Package *package);
-    void refreshMainTabButtons();
-    void clear();
-};
+    foreach (const QString &file, filesList) {
+        filesString.append(file + '\n');
+    }
 
-#endif
+    m_filesBrowser->setPlainText(filesString);
+}
+
+#include "InstalledFilesTab.moc"

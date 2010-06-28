@@ -21,7 +21,6 @@
 #include "DetailsWidget.h"
 
 // Qt
-#include <QtGui/QLabel>
 #include <QtGui/QScrollArea>
 #include <QtGui/QTreeWidgetItem>
 #include <QtGui/QVBoxLayout>
@@ -30,8 +29,6 @@
 #include <KDebug>
 #include <KLocale>
 #include <KVBox>
-#include <KTemporaryFile>
-#include <KTreeWidgetSearchLineWidget>
 
 // LibQApt includes
 #include <libqapt/package.h>
@@ -39,6 +36,7 @@
 // Own includes
 #include "DetailsTabs/MainTab.h"
 #include "DetailsTabs/ChangelogTab.h"
+#include "DetailsTabs/InstalledFilesTab.h"
 
 DetailsWidget::DetailsWidget(QWidget *parent)
     : KTabWidget(parent)
@@ -46,8 +44,6 @@ DetailsWidget::DetailsWidget(QWidget *parent)
 {
     setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-    // Main tab is in the Ui file. If anybody wants to write a C++ widget that
-    // is equivalent to it, I would gladly use it. Layouting sucks with C++
     m_mainTab = new MainTab(this);
 
     // Technical tab
@@ -57,11 +53,7 @@ DetailsWidget::DetailsWidget(QWidget *parent)
 //     m_dependenciesTab = new QWidget;
 
     // File list tab
-    m_filesTab = new KVBox;
-    m_filesSearchEdit = new KTreeWidgetSearchLineWidget(m_filesTab);
-    m_filesTreeWidget = new QTreeWidget(m_filesTab);
-    m_filesTreeWidget->setHeaderLabel(i18nc("@title:tab", "Installed Files"));
-    m_filesSearchEdit->searchLine()->setTreeWidget(m_filesTreeWidget);
+    m_filesTab = new InstalledFilesTab;
 
     m_changelogTab = new ChangelogTab(this);
 
@@ -85,18 +77,17 @@ void DetailsWidget::setPackage(QApt::Package *package)
     m_package = package;
 
     m_mainTab->setPackage(package);
+    m_changelogTab->setPackage(package);
 
     if (package->isInstalled()) {
         addTab(m_filesTab, i18nc("@title:tab", "Installed Files"));
-        populateFileList();
+        m_filesTab->setPackage(package);
     } else {
         if (currentIndex() == indexOf(m_filesTab)) {
             setCurrentIndex(0); // Switch to the main tab
         }
         removeTab(indexOf(m_filesTab));
     }
-
-    m_changelogTab->setPackage(package);
 
     show();
 }
@@ -111,43 +102,6 @@ void DetailsWidget::clear()
     m_mainTab->clear();
     m_package = 0;
     hide();
-}
-
-void DetailsWidget::populateFileList()
-{
-    m_filesTreeWidget->clear();
-    QStringList filesList = m_package->installedFilesList();
-
-    foreach (const QString &file, filesList) {
-        QStringList split = file.split(QChar('/'));
-        QTreeWidgetItem *parentItem = 0;
-        foreach (const QString &spl, split) {
-            if (spl.isEmpty()) {
-                continue;
-            }
-            if (parentItem) {
-                bool there = false;
-                int j = parentItem->childCount();
-                for (int i = 0; i != j; i++) {
-                    if (parentItem->child(i)->text(0) == spl) {
-                        there = true;
-                        parentItem = parentItem->child(i);
-                        break;
-                    }
-                }
-                if (!there) {
-                    parentItem = new QTreeWidgetItem(parentItem, QStringList(spl));
-                }
-            } else {
-                QList<QTreeWidgetItem*> list = m_filesTreeWidget->findItems(spl, Qt::MatchExactly);
-                if (!list.isEmpty()) {
-                    parentItem = list.first();
-                } else {
-                    parentItem = new QTreeWidgetItem(m_filesTreeWidget, QStringList(spl));
-                }
-            }
-        }
-    }
 }
 
 #include "DetailsWidget.moc"

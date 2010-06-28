@@ -18,42 +18,33 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef DETAILSWIDGET_H
-#define DETAILSWIDGET_H
+#ifndef INSTALLEDFILESTAB_H
+#define INSTALLEDFILESTAB_H
 
-// KDE inclues
-#include <KTabWidget>
+#include <KVBox>
 
-class QScrollArea;
+class QTextBrowser;
 
 namespace QApt {
     class Package;
 }
 
-class MainTab;
-class ChangelogTab;
-class InstalledFilesTab;
-
-class DetailsWidget : public KTabWidget
+class InstalledFilesTab : public KVBox
 {
     Q_OBJECT
 public:
-    explicit DetailsWidget(QWidget *parent = 0);
-    ~DetailsWidget();
+    explicit InstalledFilesTab(QWidget *parent = 0);
+    ~InstalledFilesTab();
 
 private:
     QApt::Package *m_package;
-
-    MainTab *m_mainTab;
-    QScrollArea *m_technicalTab;
-    // QWidget *m_dependenciesTab;
-    InstalledFilesTab *m_filesTab;
-    ChangelogTab *m_changelogTab;
+    QTextBrowser *m_filesBrowser;
 
 public Q_SLOTS:
     void setPackage(QApt::Package *package);
-    void refreshMainTabButtons();
-    void clear();
+
+private Q_SLOTS:
+    void populateFilesList();
 };
 
 #endif
