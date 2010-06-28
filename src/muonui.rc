@@ -11,7 +11,8 @@
             <Action name="apply" />
             <Separator/>
             <Action name="update" />
-            <Action name="upgrade" />
+            <Action name="safeupgrade" />
+            <Action name="fullupgrade" />
             <Separator/>
             <Action name="quit" />
         </Menu>
@@ -21,6 +22,6 @@
         <Action name="apply" />
         <Separator/>
         <Action name="update" />
-        <Action name="upgrade" />
+        <Action name="fullupgrade" />
     </ToolBar>
 </gui>

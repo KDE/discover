@@ -140,10 +140,16 @@ void MainWindow::setupActions()
     m_updateAction->setText(i18nc("@action Checks the internet for updates", "Check for Updates"));
     connect(m_updateAction, SIGNAL(triggered()), this, SLOT(checkForUpdates()));
 
-    m_upgradeAction = actionCollection()->addAction("upgrade");
-    m_upgradeAction->setIcon(KIcon("go-top"));
-    m_upgradeAction->setText(i18nc("@action Marks upgradeable packages for upgrade", "Upgrade"));
-    connect(m_upgradeAction, SIGNAL(triggered()), this, SLOT(markUpgrades()));
+    m_safeUpgradeAction = actionCollection()->addAction("safeupgrade");
+    m_safeUpgradeAction->setIcon(KIcon("go-up"));
+    m_safeUpgradeAction->setText(i18nc("@action Marks upgradeable packages for upgrade", "Cautious Upgrade"));
+    connect(m_safeUpgradeAction, SIGNAL(triggered()), this, SLOT(markUpgrade()));
+
+    m_distUpgradeAction = actionCollection()->addAction("fullupgrade");
+    m_distUpgradeAction->setIcon(KIcon("go-top"));
+    m_distUpgradeAction->setText(i18nc("@action Marks upgradeable packages, including ones that install/remove new things",
+                                   "Full Upgrade"));
+    connect(m_distUpgradeAction, SIGNAL(triggered()), this, SLOT(markDistUpgrade()));
 
     m_previewAction = actionCollection()->addAction("preview");
     m_previewAction->setIcon(KIcon("document-preview-archive"));
@@ -164,7 +170,13 @@ void MainWindow::slotQuit()
     KApplication::instance()->quit();
 }
 
-void MainWindow::markUpgrades()
+void MainWindow::markUpgrade()
+{
+    m_backend->markPackagesForUpgrade();
+    previewChanges();
+}
+
+void MainWindow::markDistUpgrade()
 {
     m_backend->markPackagesForDistUpgrade();
     previewChanges();
@@ -457,7 +469,8 @@ void MainWindow::reloadActions()
     QApt::PackageList changedList = m_backend->markedPackages();
 
     m_updateAction->setEnabled(true);
-    m_upgradeAction->setEnabled(upgradeable > 0);
+    m_safeUpgradeAction->setEnabled(upgradeable > 0);
+    m_distUpgradeAction->setEnabled(upgradeable > 0);
     if (m_stack->currentWidget() == m_reviewWidget) {
         // We always need to be able to get back from review
         m_previewAction->setEnabled(true);
@@ -470,7 +483,8 @@ void MainWindow::reloadActions()
 void MainWindow::setActionsEnabled(bool enabled)
 {
     m_updateAction->setEnabled(enabled);
-    m_upgradeAction->setEnabled(enabled);
+    m_safeUpgradeAction->setEnabled(enabled);
+    m_distUpgradeAction->setEnabled(enabled);
     m_previewAction->setEnabled(enabled);
     m_applyAction->setEnabled(enabled);
 }

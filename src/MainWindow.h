@@ -68,7 +68,8 @@ private:
     QStackedWidget *m_stack;
     QSplitter *m_mainWidget;
     KAction *m_updateAction;
-    KAction *m_upgradeAction;
+    KAction *m_safeUpgradeAction;
+    KAction *m_distUpgradeAction;
     KAction *m_previewAction;
     KAction *m_applyAction;
 
@@ -86,7 +87,8 @@ private Q_SLOTS:
     void initObject();
     void setupActions();
     void slotQuit();
-    void markUpgrades();
+    void markUpgrade();
+    void markDistUpgrade();
     void checkForUpdates();
     void workerEvent(QApt::WorkerEvent event);
     void errorOccurred(QApt::ErrorCode code, const QVariantMap &args);
