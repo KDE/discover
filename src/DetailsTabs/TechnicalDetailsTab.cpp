@@ -104,13 +104,13 @@ void TechnicalDetailsTab::setPackage(QApt::Package *package)
 
     if (package->isInstalled()) {
         m_installedVersion->setText(package->installedVersion());
-        m_installedSize->setText(KGlobal::locale()->formatByteSize(package->installedSize()));
+        m_installedSize->setText(KGlobal::locale()->formatByteSize(package->currentInstalledSize()));
     } else {
         // TODO: Hide groupbox
     }
 
     m_currentVersion->setText(package->availableVersion());
-    m_currentSize->setText(KGlobal::locale()->formatByteSize(package->installedSize()));
+    m_currentSize->setText(KGlobal::locale()->formatByteSize(package->availableInstalledSize()));
     m_downloadSize->setText(KGlobal::locale()->formatByteSize(package->downloadSize()));
     
 }
