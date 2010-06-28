@@ -62,7 +62,9 @@ TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
     m_installedSize = new QLabel(m_installedVersionBox);
     installedGridLayout->addWidget(installedSizeLabel, 1, 0, Qt::AlignRight);
     installedGridLayout->addWidget(m_installedSize, 1, 1, Qt::AlignLeft);
-    //TODO: Spacer for the 3rd row
+    // installedVersion, row 2
+    QWidget *installedGridSpacer = new QWidget(m_installedVersionBox);
+    installedGridLayout->addWidget(installedGridSpacer, 2, 0, Qt::AlignRight);
 
 
     m_currentVersionBox = new QGroupBox(versionWidget);
