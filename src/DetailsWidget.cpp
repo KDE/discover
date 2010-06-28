@@ -32,6 +32,7 @@
 
 // Own includes
 #include "DetailsTabs/MainTab.h"
+#include "DetailsTabs/TechnicalDetailsTab.h"
 #include "DetailsTabs/ChangelogTab.h"
 #include "DetailsTabs/InstalledFilesTab.h"
 
@@ -42,7 +43,7 @@ DetailsWidget::DetailsWidget(QWidget *parent)
     setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
 
     m_mainTab = new MainTab(this);
-    m_technicalTab = new QScrollArea(this);
+    m_technicalTab = new TechnicalDetailsTab(this);
     //m_dependenciesTab = new QWidget;
     m_filesTab = new InstalledFilesTab;
     m_changelogTab = new ChangelogTab(this);
@@ -67,6 +68,7 @@ void DetailsWidget::setPackage(QApt::Package *package)
     m_package = package;
 
     m_mainTab->setPackage(package);
+    m_technicalTab->setPackage(package);
     m_changelogTab->setPackage(package);
 
     if (package->isInstalled()) {

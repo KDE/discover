@@ -18,43 +18,35 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef DETAILSWIDGET_H
-#define DETAILSWIDGET_H
+#ifndef TECHNICALDETAILSTAB_H
+#define TECHNICALDETAILSTAB_H
 
-// KDE inclues
-#include <KTabWidget>
+#include <QtGui/QScrollArea>
 
-class QScrollArea;
+class QLabel;
 
 namespace QApt {
     class Package;
 }
 
-class MainTab;
-class TechnicalDetailsTab;
-class ChangelogTab;
-class InstalledFilesTab;
-
-class DetailsWidget : public KTabWidget
+class TechnicalDetailsTab : public QScrollArea
 {
     Q_OBJECT
 public:
-    explicit DetailsWidget(QWidget *parent = 0);
-    ~DetailsWidget();
+    explicit TechnicalDetailsTab(QWidget *parent = 0);
+    ~TechnicalDetailsTab();
 
 private:
     QApt::Package *m_package;
 
-    MainTab *m_mainTab;
-    TechnicalDetailsTab *m_technicalTab;
-    // QWidget *m_dependenciesTab;
-    InstalledFilesTab *m_filesTab;
-    ChangelogTab *m_changelogTab;
+    QLabel *m_installedVersion;
+    QLabel *m_installedSize;
+    QLabel *m_currentVersion;
+    QLabel *m_currentSize;
+    QLabel *m_downloadSize;
 
 public Q_SLOTS:
     void setPackage(QApt::Package *package);
-    void refreshMainTabButtons();
-    void clear();
 };
 
 #endif
