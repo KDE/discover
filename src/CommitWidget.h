@@ -37,11 +37,13 @@ public:
     explicit CommitWidget(QWidget *parent = 0);
     ~CommitWidget();
 
+    void setHeaderText(const QString &text);
     void setLabelText(const QString &text);
     void setProgress(int percentage);
     void clear();
 
 private:
+    QLabel *m_headerLabel;
     DebconfKde::DebconfGui *m_debconfGui;
     QLabel *m_commitLabel;
     QProgressBar *m_progressBar;

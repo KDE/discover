@@ -211,6 +211,7 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
             connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
             break;
         case QApt::CommitChangesStarted:
+            m_commitWidget->setHeaderText(i18nc("@info", "<title>Committing Changes</title>"));
             m_stack->setCurrentWidget(m_commitWidget);
             break;
         case QApt::PackageDownloadFinished:

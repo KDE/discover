@@ -33,6 +33,9 @@ CommitWidget::CommitWidget(QWidget *parent)
     QVBoxLayout *layout = new QVBoxLayout(this);
     setLayout(layout);
 
+    m_headerLabel = new QLabel(this);
+    layout->addWidget(m_headerLabel);
+
     layout->addStretch();
 
     m_debconfGui = new DebconfKde::DebconfGui("/tmp/qapt-sock", this);
@@ -52,6 +55,11 @@ CommitWidget::CommitWidget(QWidget *parent)
 
 CommitWidget::~CommitWidget()
 {
+}
+
+void CommitWidget::setHeaderText(const QString &text)
+{
+    m_headerLabel->setText(text);
 }
 
 void CommitWidget::setLabelText(const QString &text)
