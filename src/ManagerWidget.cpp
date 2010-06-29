@@ -64,11 +64,8 @@ ManagerWidget::ManagerWidget(QWidget *parent)
 
     KHBox *searchBox = new KHBox(this);
 
-    QLabel *searchLabel = new QLabel(searchBox);
-    searchLabel->setText(i18nc("@label", "Search packages:"));
-
     m_searchEdit = new KLineEdit(searchBox);
-    m_searchEdit->setClickMessage(i18nc("@label Line edit click message", "Type to begin searching"));
+    m_searchEdit->setClickMessage(i18nc("@label Line edit click message", "Search"));
     m_searchEdit->setClearButtonShown(true);
     connect(m_searchEdit, SIGNAL(textChanged(const QString &)), m_searchTimer, SLOT(start()));
 
