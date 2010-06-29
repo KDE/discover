@@ -88,7 +88,7 @@ void PackageModel::addPackage(QApt::Package *package)
     endInsertRows();
 }
 
-void PackageModel::addPackages(QApt::PackageList list)
+void PackageModel::addPackages(const QApt::PackageList &list)
 {
     foreach (QApt::Package *package, list) {
         addPackage(package);
@@ -105,7 +105,7 @@ void PackageModel::removePackage(QApt::Package *package)
     }
 }
 
-void PackageModel::removePackages(QApt::PackageList list)
+void PackageModel::removePackages(const QApt::PackageList &list)
 {
     foreach (QApt::Package *package, list) {
         removePackage(package);
