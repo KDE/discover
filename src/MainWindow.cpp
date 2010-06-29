@@ -266,9 +266,9 @@ void MainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args)
 
             if (!failedItem.isEmpty() && !errorText.isEmpty()) {
                 text.append("\n\n");
-                text.append(i18n("File: %1", failedItem));
+                text.append(i18nc("@label Shows which package failed", "Package: %1", failedItem));
                 text.append("\n\n");
-                text.append(i18n("Error: %1", errorText));
+                text.append(i18nc("@label Shows the error", "Error: %1", errorText));
             }
 
             title = i18nc("@title:window", "Commit error");
