@@ -84,7 +84,7 @@ void ReviewWidget::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
     connect(m_backend, SIGNAL(packageChanged()), this, SLOT(refresh()));
-    connect(m_backend, SIGNAL(packageChanged()), m_detailsWidget, SLOT(refreshButtons()));
+    connect(m_backend, SIGNAL(packageChanged()), m_detailsWidget, SLOT(refreshMainTabButtons()));
 
     m_model->addPackages(m_backend->markedPackages());
     m_proxyModel->setSourceModel(m_model);
