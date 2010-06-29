@@ -45,10 +45,7 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
 
-    void addPackage(QApt::Package *package);
-    void addPackages(const QApt::PackageList &list);
-    void removePackage(QApt::Package *package);
-    void removePackages(const QApt::PackageList &list);
+    void setPackages(const QApt::PackageList &list);
     void clear();
     QApt::Package *packageAt(const QModelIndex &index) const;
     QApt::PackageList packages() const;

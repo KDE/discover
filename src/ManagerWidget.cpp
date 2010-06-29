@@ -100,7 +100,7 @@ void ManagerWidget::setBackend(QApt::Backend *backend)
     connect(m_backend, SIGNAL(packageChanged()), m_packageView, SLOT(updateView()));
     connect(m_backend, SIGNAL(packageChanged()), m_detailsWidget, SLOT(refreshMainTabButtons()));
 
-    m_model->addPackages(m_backend->availablePackages());
+    m_model->setPackages(m_backend->availablePackages());
     m_proxyModel->setSourceModel(m_model);
     m_proxyModel->setBackend(backend);
     m_packageView->setSortingEnabled(true);
@@ -120,7 +120,7 @@ void ManagerWidget::reload()
     m_proxyModel->clear();
     m_proxyModel->setSourceModel(0);
     m_backend->reloadCache();
-    m_model->addPackages(m_backend->availablePackages());
+    m_model->setPackages(m_backend->availablePackages());
     m_proxyModel->setSourceModel(m_model);
     startSearch();
     m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);

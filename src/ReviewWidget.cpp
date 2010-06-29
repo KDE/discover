@@ -86,7 +86,7 @@ void ReviewWidget::setBackend(QApt::Backend *backend)
     connect(m_backend, SIGNAL(packageChanged()), this, SLOT(refresh()));
     connect(m_backend, SIGNAL(packageChanged()), m_detailsWidget, SLOT(refreshMainTabButtons()));
 
-    m_model->addPackages(m_backend->markedPackages());
+    m_model->setPackages(m_backend->markedPackages());
     m_proxyModel->setSourceModel(m_model);
     m_proxyModel->setBackend(m_backend);
     m_packageView->setSortingEnabled(true);
@@ -98,7 +98,7 @@ void ReviewWidget::setBackend(QApt::Backend *backend)
 void ReviewWidget::refresh()
 {
    m_model->clear();
-   m_model->addPackages(m_backend->markedPackages());
+   m_model->setPackages(m_backend->markedPackages());
    m_detailsWidget->clear();
    m_packageView->updateView();
 }

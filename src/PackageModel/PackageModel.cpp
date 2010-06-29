@@ -81,35 +81,15 @@ QVariant PackageModel::headerData(int section, Qt::Orientation orientation, int 
     return QVariant();
 }
 
-void PackageModel::addPackage(QApt::Package *package)
+void PackageModel::setPackages(const QApt::PackageList &list)
 {
+    // Remove check when sid has >= 4.7
+    #if QT_VERSION >= 0x040700
+    m_packages.reserve(list.size());
+    #endif
     beginInsertRows(QModelIndex(), m_packages.count(), m_packages.count());
-    m_packages.append(package);
+    m_packages = list;
     endInsertRows();
-}
-
-void PackageModel::addPackages(const QApt::PackageList &list)
-{
-    foreach (QApt::Package *package, list) {
-        addPackage(package);
-    }
-}
-
-void PackageModel::removePackage(QApt::Package *package)
-{
-    int index = m_packages.indexOf(package);
-    if (index > -1) {
-        beginRemoveRows(QModelIndex(), index, index);
-        m_packages.removeAt(index);
-        endRemoveRows();
-    }
-}
-
-void PackageModel::removePackages(const QApt::PackageList &list)
-{
-    foreach (QApt::Package *package, list) {
-        removePackage(package);
-    }
 }
 
 void PackageModel::clear()
