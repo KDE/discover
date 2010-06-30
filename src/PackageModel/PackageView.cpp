@@ -22,6 +22,8 @@
 
 #include <QtGui/QHeaderView>
 
+#include <KDebug>
+
 PackageView::PackageView(QWidget *parent)
         : QTreeView(parent)
 {
@@ -33,6 +35,12 @@ PackageView::PackageView(QWidget *parent)
 
 PackageView::~PackageView()
 {
+}
+
+void PackageView::currentChanged(const QModelIndex & current, const QModelIndex & previous)
+{
+    emit currentPackageChanged(current);
+    QAbstractItemView::currentChanged(current, previous);
 }
 
 void PackageView::updateView()

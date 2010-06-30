@@ -30,8 +30,14 @@ public:
     explicit PackageView(QWidget *parent);
     ~PackageView();
 
+protected Q_SLOTS:
+    void currentChanged(const QModelIndex &current, const QModelIndex &previous);
+
 public Q_SLOTS:
     void updateView();
+
+signals:
+    void currentPackageChanged(const QModelIndex &current);
 };
 
 #endif

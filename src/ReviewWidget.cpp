@@ -61,7 +61,7 @@ ReviewWidget::ReviewWidget(QWidget *parent)
     m_packageView = new PackageView(topVBox);
     m_packageView->setModel(m_proxyModel);
     m_packageView->setItemDelegate(delegate);
-    connect (m_packageView, SIGNAL(activated(const QModelIndex&)),
+    connect (m_packageView, SIGNAL(currentPackageChanged(const QModelIndex&)),
              this, SLOT(packageActivated(const QModelIndex&)));
 
     KVBox *bottomVBox = new KVBox;
@@ -97,14 +97,21 @@ void ReviewWidget::setBackend(QApt::Backend *backend)
 
 void ReviewWidget::refresh()
 {
-   m_model->clear();
-   m_model->setPackages(m_backend->markedPackages());
-   m_detailsWidget->clear();
-   m_packageView->updateView();
+    m_detailsWidget->clear();
+    m_model->clear();
+    m_proxyModel->clear();
+    m_proxyModel->setSourceModel(0);
+    m_model->setPackages(m_backend->markedPackages());
+    m_proxyModel->setSourceModel(m_model);
+    m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
+    m_packageView->updateView();
 }
 
 void ReviewWidget::packageActivated(const QModelIndex &index)
 {
+    if (!index.isValid()) {
+        return;
+    }
     QApt::Package *package = m_proxyModel->packageAt(index);
     m_detailsWidget->setPackage(package);
 }
