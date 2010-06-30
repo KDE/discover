@@ -59,6 +59,7 @@ MainWindow::MainWindow()
     , m_downloadWidget(0)
     , m_commitWidget(0)
     , m_powerInhibitor(0)
+    , m_canExit(true)
 
 {
     initGUI();
@@ -175,11 +176,7 @@ void MainWindow::slotQuit()
 bool MainWindow::queryExit()
 {
     // We don't want to quit during the middle of a commit
-    if (m_commitWidget) {
-        return false;
-    }
-
-    return true;
+    return m_canExit;
 }
 
 void MainWindow::markUpgrade()
@@ -213,6 +210,7 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
         case QApt::CacheUpdateFinished:
         case QApt::CommitChangesFinished:
             Solid::PowerManagement::stopSuppressingSleep(m_powerInhibitor);
+            m_canExit = true;
             reload();
             returnFromPreview();
             break;
@@ -223,6 +221,7 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
             connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
             break;
         case QApt::CommitChangesStarted:
+            m_canExit = false;
             m_commitWidget->setHeaderText(i18nc("@info", "<title>Committing Changes</title>"));
             m_stack->setCurrentWidget(m_commitWidget);
             break;

@@ -84,6 +84,7 @@ private:
     StatusWidget *m_statusWidget;
 
     int m_powerInhibitor;
+    bool m_canExit;
 
 private Q_SLOTS:
     void initGUI();
