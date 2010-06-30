@@ -146,7 +146,7 @@ void ManagerWidget::filterByGroup(const QString &groupName)
 
 void ManagerWidget::filterByStatus(const QString &statusName)
 {
-    QApt::Package::PackageState state = MuonStrings::packageStateKey(statusName);
+    QApt::Package::State state = MuonStrings::packageStateKey(statusName);
     m_proxyModel->setStateFilter(state);
 }
 

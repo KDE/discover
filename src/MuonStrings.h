@@ -29,8 +29,8 @@ namespace MuonStrings
 {
     KDE_EXPORT QString groupName(const QString &name);
     KDE_EXPORT QString groupKey(const QString &text);
-    KDE_EXPORT QString packageStateName(QApt::Package::PackageState state);
-    KDE_EXPORT QApt::Package::PackageState packageStateKey(const QString &text);
+    KDE_EXPORT QString packageStateName(QApt::Package::State state);
+    KDE_EXPORT QApt::Package::State packageStateKey(const QString &text);
 };
 
 #endif

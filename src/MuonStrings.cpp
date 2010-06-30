@@ -183,16 +183,16 @@ QHash<int, QString> stateMap()
     return hash;
 }
 
-QString MuonStrings::packageStateName(QApt::Package::PackageState state)
+QString MuonStrings::packageStateName(QApt::Package::State state)
 {
     QHash<int, QString> states = stateMap();
 
     return states.value(state);
 }
 
-QApt::Package::PackageState MuonStrings::packageStateKey(const QString &text)
+QApt::Package::State MuonStrings::packageStateKey(const QString &text)
 {
     QHash<int, QString> states = stateMap();
 
-    return (QApt::Package::PackageState)states.key(text);
+    return (QApt::Package::State)states.key(text);
 }

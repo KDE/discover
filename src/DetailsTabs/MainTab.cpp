@@ -95,42 +95,42 @@ void MainTab::clear()
     m_package = 0;
 }
 
-void MainTab::setupButtons(QApt::Package *oldPackage)
+void MainTab::setupButtons(QApt::Package *oldpackage)
 {
-    if (oldPackage) {
-        disconnect(m_mainTab->installButton, SIGNAL(clicked()), oldPackage, SLOT(setInstall()));
-        disconnect(m_mainTab->removeButton, SIGNAL(clicked()), oldPackage, SLOT(setRemove()));
-        disconnect(m_mainTab->upgradeButton, SIGNAL(clicked()), oldPackage, SLOT(setInstall()));
-        disconnect(m_mainTab->reinstallButton, SIGNAL(clicked()), oldPackage, SLOT(setReInstall()));
-        disconnect(m_purgeAction, SIGNAL(triggered()), oldPackage, SLOT(setPurge()));
-        disconnect(m_mainTab->cancelButton, SIGNAL(clicked()), oldPackage, SLOT(setKeep()));
+    if (oldpackage) {
+        disconnect(m_mainTab->installButton, SIGNAL(clicked()), this, SLOT(setInstall()));
+        disconnect(m_mainTab->removeButton, SIGNAL(clicked()), this, SLOT(setRemove()));
+        disconnect(m_mainTab->upgradeButton, SIGNAL(clicked()), this, SLOT(setInstall()));
+        disconnect(m_mainTab->reinstallButton, SIGNAL(clicked()), this, SLOT(setReInstall()));
+        disconnect(m_purgeAction, SIGNAL(triggered()), this, SLOT(setPurge()));
+        disconnect(m_mainTab->cancelButton, SIGNAL(clicked()), this, SLOT(setKeep()));
     }
 
     m_mainTab->installButton->setIcon(KIcon("download"));
     m_mainTab->installButton->setText(i18nc("@action:button", "Installation"));
-    connect(m_mainTab->installButton, SIGNAL(clicked()), m_package, SLOT(setInstall()));
+    connect(m_mainTab->installButton, SIGNAL(clicked()), this, SLOT(setInstall()));
 
     m_mainTab->removeButton->setIcon(KIcon("edit-delete"));
     m_mainTab->removeButton->setText(i18nc("@action:button", "Removal"));
-    connect(m_mainTab->removeButton, SIGNAL(clicked()), m_package, SLOT(setRemove()));
+    connect(m_mainTab->removeButton, SIGNAL(clicked()), this, SLOT(setRemove()));
 
     m_mainTab->upgradeButton->setIcon(KIcon("system-software-update"));
     m_mainTab->upgradeButton->setText(i18nc("@action:button", "Upgrade"));
-    connect(m_mainTab->upgradeButton, SIGNAL(clicked()), m_package, SLOT(setInstall()));
+    connect(m_mainTab->upgradeButton, SIGNAL(clicked()), this, SLOT(setInstall()));
 
     m_mainTab->reinstallButton->setIcon(KIcon("view-refresh"));
     m_mainTab->reinstallButton->setText(i18nc("@action:button", "Reinstallation"));
-    connect(m_mainTab->reinstallButton, SIGNAL(clicked()), m_package, SLOT(setReInstall()));
+    connect(m_mainTab->reinstallButton, SIGNAL(clicked()), this, SLOT(setReInstall()));
 
     m_purgeAction->setIcon(KIcon("edit-delete-shred"));
     m_purgeAction->setText(i18nc("@action:button", "Purge"));
-    connect(m_purgeAction, SIGNAL(triggered()), m_package, SLOT(setPurge()));
+    connect(m_purgeAction, SIGNAL(triggered()), this, SLOT(setPurge()));
 
     // TODO: Downgrade
 
     m_mainTab->cancelButton->setIcon(KIcon("dialog-cancel"));
     m_mainTab->cancelButton->setText(i18nc("@action:button", "Unmark"));
-    connect(m_mainTab->cancelButton, SIGNAL(clicked()), m_package, SLOT(setKeep()));
+    connect(m_mainTab->cancelButton, SIGNAL(clicked()), this, SLOT(setKeep()));
 }
 
 void MainTab::refreshButtons()
@@ -201,6 +201,36 @@ void MainTab::screenshotFetched(KJob *job)
     dialog->setMainWidget(label);
     dialog->setButtons(KDialog::Close);
     dialog->show();
+}
+
+void MainTab::setInstall()
+{
+    m_package->setInstall();
+}
+
+void MainTab::setRemove()
+{
+    m_package->setRemove();
+}
+
+void MainTab::setUpgrade()
+{
+    m_package->setInstall();
+}
+
+void MainTab::setReInstall()
+{
+    m_package->setReInstall();
+}
+
+void MainTab::setPurge()
+{
+    m_package->setPurge();
+}
+
+void MainTab::setKeep()
+{
+    m_package->setKeep();
 }
 
 #include "MainTab.moc"

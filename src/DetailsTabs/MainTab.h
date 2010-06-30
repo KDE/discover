@@ -63,6 +63,12 @@ private Q_SLOTS:
     void setupButtons(QApt::Package *oldPackage);
     void fetchScreenshot();
     void screenshotFetched(KJob *job);
+    void setInstall();
+    void setRemove();
+    void setUpgrade();
+    void setReInstall();
+    void setPurge();
+    void setKeep();
 };
 
 #endif

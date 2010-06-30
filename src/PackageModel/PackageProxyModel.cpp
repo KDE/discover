@@ -35,7 +35,7 @@ PackageProxyModel::PackageProxyModel(QObject *parent)
         , m_packages(QApt::PackageList())
         , m_searchText(QString())
         , m_groupFilter(QString())
-        , m_stateFilter((QApt::Package::PackageState)0)
+        , m_stateFilter((QApt::Package::State)0)
         , m_sortByRelevancy(false)
 {
 }
@@ -70,7 +70,7 @@ void PackageProxyModel::setGroupFilter(const QString &filterText)
     invalidateFilter();
 }
 
-void PackageProxyModel::setStateFilter(QApt::Package::PackageState state)
+void PackageProxyModel::setStateFilter(QApt::Package::State state)
 {
     m_stateFilter = state;
     invalidateFilter();

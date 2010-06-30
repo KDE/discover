@@ -40,7 +40,7 @@ public:
     void setBackend(QApt::Backend *backend);
     void search(const QString &searchText);
     void setGroupFilter(const QString &filterText);
-    void setStateFilter(QApt::Package::PackageState state);
+    void setStateFilter(QApt::Package::State state);
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
     QApt::Package *packageAt(const QModelIndex &index) const;
     void reset();
@@ -53,7 +53,7 @@ private:
     QApt::PackageList m_packages;
     QString m_searchText;
     QString m_groupFilter;
-    QApt::Package::PackageState m_stateFilter;
+    QApt::Package::State m_stateFilter;
     bool m_sortByRelevancy;
 };
 
