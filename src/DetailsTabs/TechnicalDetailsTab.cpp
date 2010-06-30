@@ -34,6 +34,9 @@
 // LibQApt includes
 #include <libqapt/package.h>
 
+// Own includes
+#include "MuonStrings.h"
+
 TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
     : QScrollArea(parent)
     , m_package(0)
@@ -43,6 +46,36 @@ TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
     viewport()->setAutoFillBackground(false);
 
     KVBox *mainWidget = new KVBox(this);
+
+    QWidget *generalWidget = new QWidget(mainWidget);
+    QGridLayout *generalGrid = new QGridLayout(generalWidget);
+    generalWidget->setLayout(generalGrid);
+
+    // generalGrid, row 0
+    QLabel *maintainerLabel = new QLabel(generalWidget);
+    maintainerLabel->setText(i18nc("@label Label preceding the package maintainer", "Maintainer:"));
+    m_maintainer = new QLabel(generalWidget);
+    m_maintainer->setTextFormat(Qt::PlainText);
+    generalGrid->addWidget(maintainerLabel, 0, 0, Qt::AlignRight);
+    generalGrid->addWidget(m_maintainer, 0, 1, Qt::AlignLeft);
+
+    // generalGrid, row 1
+    QLabel *sectionLabel = new QLabel(generalWidget);
+    sectionLabel->setText(i18nc("@label Label preceding the package category", "Category:"));
+    m_section = new QLabel(generalWidget);
+    generalGrid->addWidget(sectionLabel, 1, 0, Qt::AlignRight);
+    generalGrid->addWidget(m_section, 1, 1, Qt::AlignLeft);
+
+    // generalGrid, row 2
+    QLabel *sourcePackageLabel = new QLabel(generalWidget);
+    sourcePackageLabel->setText(i18nc("@label The parent package that this package comes from",
+                                      "Source Package:"));
+    m_sourcePackage = new QLabel(generalWidget);
+    generalGrid->addWidget(sourcePackageLabel, 2, 0, Qt::AlignRight);
+    generalGrid->addWidget(m_sourcePackage, 2, 1, Qt::AlignLeft);
+
+    generalGrid->setColumnStretch(1, 1);
+
     KHBox *versionWidget = new KHBox(mainWidget);
 
     m_installedVersionBox = new QGroupBox(versionWidget);
@@ -52,19 +85,19 @@ TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
 
     // installedVersionBox, row 0
     QLabel *installedVersionLabel = new QLabel(m_installedVersionBox);
-    installedVersionLabel->setText(i18nc("@label Label preceeding the package version", "Version:"));
+    installedVersionLabel->setText(i18nc("@label Label preceding the package version", "Version:"));
     m_installedVersion = new QLabel(m_installedVersionBox);
     installedGridLayout->addWidget(installedVersionLabel, 0, 0, Qt::AlignRight);
     installedGridLayout->addWidget(m_installedVersion, 0, 1, Qt::AlignLeft);
     // installedVersionBox, row 1
     QLabel *installedSizeLabel = new QLabel(m_installedVersionBox);
-    installedSizeLabel->setText(i18nc("@label Label preceeding the package size", "Installed Size:"));
+    installedSizeLabel->setText(i18nc("@label Label preceding the package size", "Installed Size:"));
     m_installedSize = new QLabel(m_installedVersionBox);
     installedGridLayout->addWidget(installedSizeLabel, 1, 0, Qt::AlignRight);
     installedGridLayout->addWidget(m_installedSize, 1, 1, Qt::AlignLeft);
-    // installedVersion, row 2
-    QWidget *installedGridSpacer = new QWidget(m_installedVersionBox);
-    installedGridLayout->addWidget(installedGridSpacer, 2, 0, Qt::AlignRight);
+
+    installedGridLayout->setRowStretch(3, 1);
+    installedGridLayout->setColumnStretch(1, 1);
 
 
     m_currentVersionBox = new QGroupBox(versionWidget);
@@ -91,6 +124,8 @@ TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
     currentGridLayout->addWidget(downloadSizeLabel, 2, 0, Qt::AlignRight);
     currentGridLayout->addWidget(m_downloadSize, 2, 1, Qt::AlignLeft);
 
+    currentGridLayout->setColumnStretch(1, 1);
+
     QWidget *verticalSpacer = new QWidget(mainWidget);
     verticalSpacer->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
     setWidget(mainWidget);
@@ -103,6 +138,10 @@ TechnicalDetailsTab::~TechnicalDetailsTab()
 void TechnicalDetailsTab::setPackage(QApt::Package *package)
 {
     m_package = package;
+
+    m_maintainer->setText(m_package->maintainer());
+    m_section->setText(MuonStrings::groupName(package->section()));
+    m_sourcePackage->setText(m_package->sourcePackage());
 
     if (package->isInstalled()) {
         m_installedVersionBox->show();

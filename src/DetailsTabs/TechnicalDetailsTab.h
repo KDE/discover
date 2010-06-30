@@ -40,6 +40,10 @@ public:
 private:
     QApt::Package *m_package;
 
+    QLabel *m_maintainer;
+    QLabel *m_section;
+    QLabel *m_sourcePackage;
+
     QGroupBox *m_installedVersionBox;
     QGroupBox *m_currentVersionBox;
 
