@@ -403,27 +403,29 @@ void MainWindow::questionOccurred(QApt::WorkerQuestion code, const QVariantMap &
 
 void MainWindow::previewChanges()
 {
-    if (!m_reviewWidget) {
-        m_reviewWidget = new ReviewWidget(m_stack);
-        connect(this, SIGNAL(backendReady(QApt::Backend*)),
-                m_reviewWidget, SLOT(setBackend(QApt::Backend*)));
-        m_reviewWidget->setBackend(m_backend);
-        m_stack->addWidget(m_reviewWidget);
-    }
+    m_reviewWidget = new ReviewWidget(m_stack);
+    connect(this, SIGNAL(backendReady(QApt::Backend*)),
+            m_reviewWidget, SLOT(setBackend(QApt::Backend*)));
+    m_reviewWidget->setBackend(m_backend);
+    m_stack->addWidget(m_reviewWidget);
 
     m_stack->setCurrentWidget(m_reviewWidget);
 
     m_previewAction->setIcon(KIcon("go-previous"));
     m_previewAction->setText(i18nc("@action:intoolbar Return from the preview page", "Back"));
+    disconnect(m_previewAction, SIGNAL(triggered()), this, SLOT(previewChanges()));
     connect(m_previewAction, SIGNAL(triggered()), this, SLOT(returnFromPreview()));
 }
 
 void MainWindow::returnFromPreview()
 {
     m_stack->setCurrentWidget(m_mainWidget);
+    m_reviewWidget->deleteLater();
+    m_reviewWidget = 0;
 
     m_previewAction->setIcon(KIcon("document-preview-archive"));
     m_previewAction->setText(i18nc("@action", "Preview Changes"));
+    disconnect(m_previewAction, SIGNAL(triggered()), this, SLOT(returnFromPreview()));
     connect(m_previewAction, SIGNAL(triggered()), this, SLOT(previewChanges()));
     // We may not have anything to preview; check.
     reloadActions(); 
@@ -470,8 +472,8 @@ void MainWindow::reload()
     reloadActions();
 
     // No need to keep these around in memory.
-    delete m_downloadWidget;
-    delete m_commitWidget;
+    m_downloadWidget->deleteLater();
+    m_commitWidget->deleteLater();
     m_downloadWidget = 0;
     m_commitWidget = 0;
 }
