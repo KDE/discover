@@ -167,7 +167,19 @@ void MainWindow::setupActions()
 void MainWindow::slotQuit()
 {
     //Settings::self()->writeConfig();
-    KApplication::instance()->quit();
+    if (queryExit()) {
+        KApplication::instance()->quit();
+    }
+}
+
+bool MainWindow::queryExit()
+{
+    // We don't want to quit during the middle of a commit
+    if (m_commitWidget) {
+        return false;
+    }
+
+    return true;
 }
 
 void MainWindow::markUpgrade()

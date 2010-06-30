@@ -62,6 +62,9 @@ public:
 
     virtual ~MainWindow();
 
+protected:
+    virtual bool queryExit();
+
 private:
     QApt::Backend *m_backend;
 
