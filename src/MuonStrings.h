@@ -21,16 +21,26 @@
 #ifndef MUONSTRINGS_H
 #define MUONSTRINGS_H
 
-#include <kdemacros.h>
-
 #include <libqapt/package.h>
 
-namespace MuonStrings
+class MuonStrings : public QObject
 {
-    KDE_EXPORT QString groupName(const QString &name);
-    KDE_EXPORT QString groupKey(const QString &text);
-    KDE_EXPORT QString packageStateName(QApt::Package::State state);
-    KDE_EXPORT QApt::Package::State packageStateKey(const QString &text);
+    Q_OBJECT
+public:
+    explicit MuonStrings(QObject *parent);
+    ~MuonStrings();
+
+    QString groupName(const QString &name);
+    QString groupKey(const QString &text);
+    QString packageStateName(QApt::Package::State state);
+    QApt::Package::State packageStateKey(const QString &text);
+
+private:
+    QHash<QString, QString> m_groupHash;
+    QHash<int, QString> m_stateHash;
+
+    QHash<QString, QString> groupHash();
+    QHash<int, QString> stateHash();
 };
 
 #endif

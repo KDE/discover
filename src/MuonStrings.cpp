@@ -24,7 +24,19 @@
 
 #include <KDebug>
 
-QHash<QString, QString> groupMap()
+MuonStrings::MuonStrings(QObject *parent)
+    : QObject(parent)
+    , m_groupHash(groupHash())
+    , m_stateHash(stateHash())
+{
+}
+
+MuonStrings::~MuonStrings()
+{
+
+}
+
+QHash<QString, QString> MuonStrings::groupHash()
 {
     QHash<QString, QString> hash;
     hash["admin"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"admin\"",
@@ -152,27 +164,24 @@ QHash<QString, QString> groupMap()
 
 QString MuonStrings::groupName(const QString &name)
 {
-    QHash<QString, QString> groups = groupMap();
     QString suffix;
 
     if (name.contains('/')) {
         QStringList split = name.split('/');
         suffix = split[1];
 
-        return groups.value(suffix);
+        return m_groupHash.value(suffix);
     } else {
-        return groups.value(name);
+        return m_groupHash.value(name);
     }
 }
 
 QString MuonStrings::groupKey(const QString &text)
 {
-    QHash<QString, QString> groups = groupMap();
-
-    return groups.key(text);
+    return m_groupHash.key(text);
 }
 
-QHash<int, QString> stateMap()
+QHash<int, QString> MuonStrings::stateHash()
 {
     QHash<int, QString> hash;
     hash[QApt::Package::NotInstalled] = i18nc("@info:status Package state" , "Not Installed");
@@ -185,14 +194,10 @@ QHash<int, QString> stateMap()
 
 QString MuonStrings::packageStateName(QApt::Package::State state)
 {
-    QHash<int, QString> states = stateMap();
-
-    return states.value(state);
+    return m_stateHash.value(state);
 }
 
 QApt::Package::State MuonStrings::packageStateKey(const QString &text)
 {
-    QHash<int, QString> states = stateMap();
-
-    return (QApt::Package::State)states.key(text);
+    return (QApt::Package::State)m_stateHash.key(text);
 }

@@ -37,7 +37,6 @@
 
 // Own includes
 #include "DetailsWidget.h"
-#include "MuonStrings.h"
 #include "PackageModel/PackageModel.h"
 #include "PackageModel/PackageProxyModel.h"
 #include "PackageModel/PackageView.h"

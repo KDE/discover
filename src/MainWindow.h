@@ -59,7 +59,6 @@ class MainWindow : public KXmlGuiWindow
     Q_OBJECT
 public:
     MainWindow();
-
     virtual ~MainWindow();
 
 protected:

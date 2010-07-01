@@ -33,6 +33,7 @@ class PackageModel;
 class PackageProxyModel;
 class PackageView;
 class DetailsWidget;
+class MuonStrings;
 
 namespace QApt {
     class Backend;
@@ -47,6 +48,7 @@ public:
 
 private:
     QApt::Backend *m_backend;
+    MuonStrings *m_strings;
     QTimer *m_searchTimer;
     KLineEdit *m_searchEdit;
     PackageModel *m_model;

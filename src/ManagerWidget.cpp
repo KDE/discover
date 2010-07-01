@@ -50,6 +50,7 @@ ManagerWidget::ManagerWidget(QWidget *parent)
     : KVBox(parent)
     , m_backend(0)
 {
+    m_strings = new MuonStrings(this);
     m_model = new PackageModel(this);
     PackageDelegate *delegate = new PackageDelegate(this);
 
@@ -140,7 +141,7 @@ void ManagerWidget::startSearch()
 
 void ManagerWidget::filterByGroup(const QString &groupName)
 {
-    QString groupKey = MuonStrings::groupKey(groupName);
+    QString groupKey = m_strings->groupKey(groupName);
     if (groupName == i18nc("Item that resets the filter to \"all\"", "All")) {
         groupKey.clear();
     }
@@ -149,7 +150,7 @@ void ManagerWidget::filterByGroup(const QString &groupName)
 
 void ManagerWidget::filterByStatus(const QString &statusName)
 {
-    QApt::Package::State state = MuonStrings::packageStateKey(statusName);
+    QApt::Package::State state = m_strings->packageStateKey(statusName);
     m_proxyModel->setStateFilter(state);
 }
 

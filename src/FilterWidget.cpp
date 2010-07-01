@@ -39,6 +39,7 @@ FilterWidget::FilterWidget(QWidget *parent)
     : QDockWidget(parent)
     , m_backend(0)
 {
+    m_strings = new MuonStrings(this);
     setFeatures(QDockWidget::NoDockWidgetFeatures);
     setWindowTitle(i18nc("@title:window", "Filter:"));
 
@@ -90,7 +91,7 @@ void FilterWidget::populateCategories()
     QSet<QString> groupSet;
 
     foreach (const QApt::Group &group, groups) {
-        QString groupName = MuonStrings::groupName(group);
+        QString groupName = m_strings->groupName(group);
 
         if (!groupName.isEmpty()) {
             groupSet << groupName;
@@ -120,19 +121,19 @@ void FilterWidget::populateStatuses()
 
     QStandardItem *installedItem = new QStandardItem;
     installedItem->setIcon(KIcon("download"));
-    installedItem->setText(MuonStrings::packageStateName(QApt::Package::Installed));
+    installedItem->setText(m_strings->packageStateName(QApt::Package::Installed));
 
     QStandardItem *notInstalledItem = new QStandardItem;
     notInstalledItem->setIcon(KIcon("application-x-deb"));
-    notInstalledItem->setText(MuonStrings::packageStateName(QApt::Package::NotInstalled));
+    notInstalledItem->setText(m_strings->packageStateName(QApt::Package::NotInstalled));
 
     QStandardItem *upgradeableItem = new QStandardItem;
     upgradeableItem->setIcon(KIcon("system-software-update"));
-    upgradeableItem->setText(MuonStrings::packageStateName(QApt::Package::Upgradeable));
+    upgradeableItem->setText(m_strings->packageStateName(QApt::Package::Upgradeable));
 
     QStandardItem *brokenItem = new QStandardItem;
     brokenItem->setIcon(KIcon("dialog-cancel"));
-    brokenItem->setText(MuonStrings::packageStateName(QApt::Package::NowBroken));
+    brokenItem->setText(m_strings->packageStateName(QApt::Package::NowBroken));
 
     m_statusModel->appendRow(defaultItem);
     m_statusModel->appendRow(installedItem);

@@ -41,6 +41,7 @@ TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
     : QScrollArea(parent)
     , m_package(0)
 {
+    m_strings = new MuonStrings(this);
     setFrameStyle(QFrame::NoFrame);
     setWidgetResizable(true);
     viewport()->setAutoFillBackground(false);
@@ -140,7 +141,7 @@ void TechnicalDetailsTab::setPackage(QApt::Package *package)
     m_package = package;
 
     m_maintainer->setText(m_package->maintainer());
-    m_section->setText(MuonStrings::groupName(package->section()));
+    m_section->setText(m_strings->groupName(package->section()));
     m_sourcePackage->setText(m_package->sourcePackage());
 
     if (package->isInstalled()) {
