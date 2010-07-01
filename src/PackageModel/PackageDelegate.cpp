@@ -156,6 +156,13 @@ void PackageDelegate::paintText(QPainter* painter, const QStyleOptionViewItem& o
     switch (index.column()) {
         case 1:
             state = index.data(PackageModel::StatusRole).toInt();
+
+            if (state & QApt::Package::NowBroken){
+                text = i18n("Broken");
+                pen.setColor(Qt::red);
+                break;
+            }
+
             if (state & QApt::Package::Installed) {
                 text = i18n("Installed");
                 pen.setColor(Qt::darkGreen);
@@ -210,12 +217,6 @@ void PackageDelegate::paintText(QPainter* painter, const QStyleOptionViewItem& o
             if (state & QApt::Package::ToDowngrade) {
                 text = i18n("Downgrade");
                 pen.setColor(Qt::darkYellow);
-                break;
-            }
-
-            if (state & QApt::Package::NowBroken){
-                text = i18n("Broken");
-                pen.setColor(Qt::red);
                 break;
             }
             break;
