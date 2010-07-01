@@ -229,6 +229,8 @@ void MainTab::setRemove()
             default:
                 break;
         }
+    } else {
+        m_package->setRemove();
     }
 }
 
