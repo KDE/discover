@@ -234,9 +234,6 @@ void MainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args)
 {
     QString text;
     QString title;
-    QString failedItem;
-    QString errorText;
-    QString drive;
 
     switch(code) {
         case QApt::InitError:
@@ -255,23 +252,23 @@ void MainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args)
             title = i18nc("@title:window", "Unable to obtain package system lock");
             KMessageBox::error(this, text, title);
             break;
-        case QApt::DiskSpaceError:
-            drive = args["DirectoryString"].toString();
+        case QApt::DiskSpaceError: {
+            QString drive = args["DirectoryString"].toString();
             text = i18nc("@label",
                          "You do not have enough disk space in the directory "
                          "at %1 to continue with this operation.", drive);
             title = i18nc("@title:window", "Low disk space");
             KMessageBox::error(this, text, title);
-            break;
+        }
         case QApt::FetchError:
             text = i18nc("@label",
                          "Could not download packages");
             title = i18nc("@title:window", "Download failed");
             KMessageBox::error(this, text, title);
             break;
-        case QApt::CommitError:
-            failedItem = args["FailedItem"].toString();
-            errorText = args["ErrorText"].toString();
+        case QApt::CommitError: {
+            QString failedItem = args["FailedItem"].toString();
+            QString errorText = args["ErrorText"].toString();
             text = i18nc("@label", "An error occurred while committing changes.");
 
             if (!failedItem.isEmpty() && !errorText.isEmpty()) {
@@ -284,7 +281,7 @@ void MainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args)
             title = i18nc("@title:window", "Commit error");
             KMessageBox::error(this, text, title);
             reload();
-            break;
+        }
         case QApt::AuthError:
             text = i18nc("@label",
                          "This operation cannot continue since proper "
