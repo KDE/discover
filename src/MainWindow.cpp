@@ -317,6 +317,7 @@ void MainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args)
         default:
             break;
     }
+    m_canExit = true; // If we were committing changes, we aren't anymore
     returnFromPreview(); // Change the "back" button back to normal in case we were in preview
     m_stack->setCurrentWidget(m_mainWidget);
 }
