@@ -33,7 +33,6 @@ MuonStrings::MuonStrings(QObject *parent)
 
 MuonStrings::~MuonStrings()
 {
-
 }
 
 QHash<QString, QString> MuonStrings::groupHash()
@@ -162,13 +161,13 @@ QHash<QString, QString> MuonStrings::groupHash()
     return hash;
 }
 
-QString MuonStrings::groupName(const QString &name)
+QString MuonStrings::groupName(const QString &name) const
 {
     QString suffix;
 
     if (name.contains('/')) {
         QStringList split = name.split('/');
-        suffix = split[1];
+        suffix = split.at(1);
 
         return m_groupHash.value(suffix);
     } else {
@@ -176,7 +175,7 @@ QString MuonStrings::groupName(const QString &name)
     }
 }
 
-QString MuonStrings::groupKey(const QString &text)
+QString MuonStrings::groupKey(const QString &text) const
 {
     return m_groupHash.key(text);
 }
@@ -192,12 +191,12 @@ QHash<int, QString> MuonStrings::stateHash()
     return hash;
 }
 
-QString MuonStrings::packageStateName(QApt::Package::State state)
+QString MuonStrings::packageStateName(QApt::Package::State state) const
 {
     return m_stateHash.value(state);
 }
 
-QApt::Package::State MuonStrings::packageStateKey(const QString &text)
+QApt::Package::State MuonStrings::packageStateKey(const QString &text) const
 {
     return (QApt::Package::State)m_stateHash.key(text);
 }

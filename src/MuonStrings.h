@@ -30,14 +30,14 @@ public:
     explicit MuonStrings(QObject *parent);
     ~MuonStrings();
 
-    QString groupName(const QString &name);
-    QString groupKey(const QString &text);
-    QString packageStateName(QApt::Package::State state);
-    QApt::Package::State packageStateKey(const QString &text);
+    QString groupName(const QString &name) const;
+    QString groupKey(const QString &text) const;
+    QString packageStateName(QApt::Package::State state) const;
+    QApt::Package::State packageStateKey(const QString &text) const;
 
 private:
-    QHash<QString, QString> m_groupHash;
-    QHash<int, QString> m_stateHash;
+    const QHash<QString, QString> m_groupHash;
+    const QHash<int, QString> m_stateHash;
 
     QHash<QString, QString> groupHash();
     QHash<int, QString> stateHash();
