@@ -31,6 +31,7 @@
 #include <KIO/Job>
 #include <KJob>
 #include <KMenu>
+#include <KMessageBox>
 #include <KTemporaryFile>
 
 // LibQApt includes
@@ -205,12 +206,30 @@ void MainTab::screenshotFetched(KJob *job)
 
 void MainTab::setInstall()
 {
-    m_package->setInstall();
+    if (!m_package->availableVersion().isEmpty()) {
+        m_package->setInstall();
+    }
 }
 
 void MainTab::setRemove()
 {
-    m_package->setRemove();
+    if (m_package->state() & QApt::Package::IsImportant) {
+        QString text = i18nc("@label", "Removing this package may break your system. Are you sure you want to remove it?");
+        QString title = i18nc("@label", "Warning - Removing Important Package");
+        int result = KMessageBox::Cancel;
+
+        result = KMessageBox::warningContinueCancel(this, text, title, KStandardGuiItem::cont(),
+                                                    KStandardGuiItem::cancel(), QString(), KMessageBox::Dangerous);
+
+        switch (result) {
+            case KMessageBox::Continue:
+                m_package->setRemove();
+                break;
+            case KMessageBox::Cancel:
+            default:
+                break;
+        }
+    }
 }
 
 void MainTab::setUpgrade()
