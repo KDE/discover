@@ -21,6 +21,7 @@
 #include "MainWindow.h"
 
 // Qt includes
+#include <QStringBuilder>
 #include <QtCore/QTimer>
 #include <QtGui/QLabel>
 #include <QtGui/QSplitter>
@@ -32,6 +33,7 @@
 #include <KActionCollection>
 #include <KApplication>
 #include <KConfigDialog>
+#include <KDebug>
 #include <KLocale>
 #include <KMessageBox>
 #include <KStandardAction>
@@ -267,20 +269,17 @@ void MainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args)
             KMessageBox::error(this, text, title);
             break;
         case QApt::CommitError: {
-            QString failedItem = args["FailedItem"].toString();
-            QString errorText = args["ErrorText"].toString();
+            QString failedItem = i18nc("@label Shows which package failed", "Package: %1", args["FailedItem"].toString());
+            QString errorText = i18nc("@label Shows the error", "Error: %1", args["ErrorText"].toString());
+
             text = i18nc("@label", "An error occurred while committing changes.");
-
-            if (!failedItem.isEmpty() && !errorText.isEmpty()) {
-                text.append("\n\n");
-                text.append(i18nc("@label Shows which package failed", "Package: %1", failedItem));
-                text.append("\n\n");
-                text.append(i18nc("@label Shows the error", "Error: %1", errorText));
-            }
-
+            QString details = QString(failedItem % "\n\n" % errorText);
             title = i18nc("@title:window", "Commit error");
-            KMessageBox::error(this, text, title);
+            kDebug() << details;
+
+            KMessageBox::detailedError(this, text, details, title);
             reload();
+            break;
         }
         case QApt::AuthError:
             text = i18nc("@label",
@@ -336,6 +335,7 @@ void MainWindow::warningOccurred(QApt::WarningCode warning, const QVariantMap &a
                                  "%2", failedItem, warningText);
             QString title = i18nc("@title:window", "Download Failed");
             KMessageBox::sorry(this, text, title);
+            break;
         }
         case QApt::UnknownWarning:
         default:
