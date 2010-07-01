@@ -128,6 +128,7 @@ void ManagerWidget::reload()
 void ManagerWidget::packageActivated(const QModelIndex &index)
 {
     if (!index.isValid()) {
+        m_detailsWidget->hide();
         return;
     }
     QApt::Package *package = m_proxyModel->packageAt(index);
