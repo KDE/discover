@@ -36,8 +36,6 @@
 #include <KMessageBox>
 #include <KStandardAction>
 #include <KStatusBar>
-#include <KToolBar>
-#include <KDebug>
 #include <Solid/PowerManagement>
 
 // LibQApt includes
@@ -359,7 +357,7 @@ void MainWindow::questionOccurred(QApt::WorkerQuestion code, const QVariantMap &
             QString drive = args["Drive"].toString();
 
             QString title = i18nc("@title:window", "Media Change Required");
-            QString text = i18nc("@label", "Please insert %1 into <filename>%2</filename>", media, drive);
+            QString text = i18nc("@label Asks for a CD change", "Please insert %1 into <filename>%2</filename>", media, drive);
 
             KMessageBox::information(this, text, title);
             response["MediaChanged"] = true;
@@ -397,6 +395,9 @@ void MainWindow::questionOccurred(QApt::WorkerQuestion code, const QVariantMap &
             response["InstallUntrusted"] = installUntrusted;
             m_backend->answerWorkerQuestion(response);
         }
+        case QApt::InvalidQuestion:
+        default:
+            break;
     }
 }
 
