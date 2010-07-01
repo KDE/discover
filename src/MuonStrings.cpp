@@ -84,7 +84,7 @@ QHash<QString, QString> MuonStrings::groupHash()
     hash["java"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"java\"",
                          "Java Programming Language");
     hash["kde"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"kde\"",
-                        "KDE Desktop Environment");
+                        "KDE Software Compilation");
     hash["kernel"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"kernel\"",
                            "Kernel and Modules");
     hash["libdevel"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"libdevel\"",
