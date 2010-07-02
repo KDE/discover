@@ -96,7 +96,6 @@ void ReviewWidget::setBackend(QApt::Backend *backend)
 
 void ReviewWidget::refresh()
 {
-    m_detailsWidget->clear();
     m_model->clear();
     m_proxyModel->clear();
     m_proxyModel->setSourceModel(0);
@@ -108,11 +107,11 @@ void ReviewWidget::refresh()
 
 void ReviewWidget::packageActivated(const QModelIndex &index)
 {
-    if (!index.isValid()) {
+    QApt::Package *package = m_proxyModel->packageAt(index);
+    if (!index.isValid() || (index.row() == -1) || !package) {
         m_detailsWidget->hide();
         return;
     }
-    QApt::Package *package = m_proxyModel->packageAt(index);
     m_detailsWidget->setPackage(package);
 }
 

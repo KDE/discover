@@ -26,6 +26,7 @@
 
 // KDE includes
 #include <KAction>
+#include <KDebug>
 #include <KDialog>
 #include <KIcon>
 #include <KIO/Job>
@@ -69,6 +70,7 @@ MainTab::~MainTab()
 void MainTab::setPackage(QApt::Package *package)
 {
     QApt::Package *oldPackage = m_package;
+    qDebug() << "new package set";
     m_package = package;
     m_mainTab->packageShortDescLabel->setText(package->shortDescription());
 
@@ -93,6 +95,7 @@ void MainTab::setPackage(QApt::Package *package)
 
 void MainTab::clear()
 {
+    qDebug() << "cleared";
     m_package = 0;
 }
 
@@ -209,6 +212,7 @@ void MainTab::setInstall()
     if (!m_package->availableVersion().isEmpty()) {
         m_package->setInstall();
     }
+    willCacheBreak();
 }
 
 void MainTab::setRemove()
@@ -232,11 +236,13 @@ void MainTab::setRemove()
     } else {
         m_package->setRemove();
     }
+    willCacheBreak();
 }
 
 void MainTab::setUpgrade()
 {
     m_package->setInstall();
+    willCacheBreak();
 }
 
 void MainTab::setReInstall()
@@ -247,11 +253,23 @@ void MainTab::setReInstall()
 void MainTab::setPurge()
 {
     m_package->setPurge();
+    willCacheBreak();
 }
 
 void MainTab::setKeep()
 {
     m_package->setKeep();
+    willCacheBreak();
+}
+
+bool MainTab::willCacheBreak()
+{
+    if (m_package->wouldBreak()) {
+        kDebug() << "yes";
+        return true;
+    }
+    kDebug() << "no";
+    return false;
 }
 
 #include "MainTab.moc"

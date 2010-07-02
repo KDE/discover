@@ -69,6 +69,7 @@ private Q_SLOTS:
     void setReInstall();
     void setPurge();
     void setKeep();
+    bool willCacheBreak();
 };
 
 #endif
