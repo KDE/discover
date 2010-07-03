@@ -525,7 +525,7 @@ void MainWindow::reloadActions()
 
     m_undoAction->setEnabled(!m_backend->isUndoStackEmpty());
     m_redoAction->setEnabled(!m_backend->isRedoStackEmpty());
-    m_revertAction->setEnabled(!m_backend->isUndoStackEmpty() || !m_backend->isRedoStackEmpty());
+    m_revertAction->setEnabled(!m_backend->isUndoStackEmpty());
 }
 
 void MainWindow::setActionsEnabled(bool enabled)
