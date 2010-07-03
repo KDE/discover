@@ -37,7 +37,7 @@ PackageView::~PackageView()
 
 void PackageView::currentChanged(const QModelIndex & current, const QModelIndex & previous)
 {
-    if (previous.row() != -1 || (previous.row() == -1 && current.row() == 0)) {
+    if (previous.row() != -1) {
         emit currentPackageChanged(current);
     }
     QAbstractItemView::currentChanged(current, previous);
