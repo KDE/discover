@@ -1,4 +1,4 @@
 -Make a generic class housing a PackageView/DetailsWidget combo that ManagerWidget and ReviewWidget can subclass
 -Improve sort performance
 -Make a DownloadModel class that has a column with a progress bar for reporting the progress of individual downloads
--Sometimes upgradeable packages can't be installed due to unmet dependencies, but we can't know that until we actually try to install them. This can be problematic when calculating the number of upgradeable packages (which is used to enable/disable the "upgrade" button and the "back from preview" button, potentially leaving people stuck in the preview widget
+-Make a subclassable MuonMainWindow that has all the actions set up, as well as all the connections to the backend set up. That way making an update program or an app install program will not mean rewriting the shell
