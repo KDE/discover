@@ -7,14 +7,18 @@
                          http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd">
     <MenuBar>
         <Menu name="file" >
-            <Action name="preview" />
-            <Action name="apply" />
+            <Action name="quit" />
+        </Menu>
+        <Menu name="edit" >
+            <Action name="undo" />
+            <Action name="redo" />
             <Separator/>
             <Action name="update" />
             <Action name="safeupgrade" />
             <Action name="fullupgrade" />
             <Separator/>
-            <Action name="quit" />
+            <Action name="preview" />
+            <Action name="apply" />
         </Menu>
     </MenuBar>
     <ToolBar name="mainToolBar">

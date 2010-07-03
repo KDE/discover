@@ -74,6 +74,8 @@ private:
     KAction *m_distUpgradeAction;
     KAction *m_previewAction;
     KAction *m_applyAction;
+    KAction *m_undoAction;
+    KAction *m_redoAction;
 
     FilterWidget *m_filterBox;
     ManagerWidget *m_managerWidget;
@@ -105,6 +107,8 @@ private Q_SLOTS:
     void reload();
     void reloadActions();
     void setActionsEnabled(bool enabled);
+    void undo();
+    void redo();
 
 signals:
     void backendReady(QApt::Backend *backend);

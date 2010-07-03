@@ -236,6 +236,7 @@ bool MainTab::confirmEssentialRemoval()
 void MainTab::setInstall()
 {
     m_oldCacheState = m_backend->currentCacheState();
+    m_backend->saveCacheState();
     if (!m_package->availableVersion().isEmpty()) {
         m_package->setInstall();
     }
@@ -255,6 +256,7 @@ void MainTab::setRemove()
 
     if (remove) {
         m_oldCacheState = m_backend->currentCacheState();
+        m_backend->saveCacheState();
         m_package->setRemove();
 
         if (m_package->wouldBreak()) {
@@ -267,6 +269,7 @@ void MainTab::setRemove()
 void MainTab::setUpgrade()
 {
     m_oldCacheState = m_backend->currentCacheState();
+    m_backend->saveCacheState();
     m_package->setInstall();
 
     if (m_package->wouldBreak()) {
@@ -278,6 +281,7 @@ void MainTab::setUpgrade()
 void MainTab::setReInstall()
 {
     m_oldCacheState = m_backend->currentCacheState();
+    m_backend->saveCacheState();
     m_package->setReInstall();
 
     if (m_package->wouldBreak()) {
@@ -294,6 +298,7 @@ void MainTab::setPurge()
     }
 
     if (remove) {
+        m_backend->saveCacheState();
         m_oldCacheState = m_backend->currentCacheState();
         m_package->setPurge();
 
@@ -307,6 +312,7 @@ void MainTab::setPurge()
 void MainTab::setKeep()
 {
     m_oldCacheState = m_backend->currentCacheState();
+    m_backend->saveCacheState();
     m_package->setKeep();
 
     if (m_package->wouldBreak()) {

@@ -139,6 +139,7 @@ void MainWindow::setupActions()
     m_updateAction = actionCollection()->addAction("update");
     m_updateAction->setIcon(KIcon("system-software-update"));
     m_updateAction->setText(i18nc("@action Checks the internet for updates", "Check for Updates"));
+    m_updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     connect(m_updateAction, SIGNAL(triggered()), this, SLOT(checkForUpdates()));
 
     m_safeUpgradeAction = actionCollection()->addAction("safeupgrade");
@@ -162,11 +163,11 @@ void MainWindow::setupActions()
     m_applyAction->setText(i18nc("@action Applys the changes a user has made", "Apply Changes"));
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
 
-    KAction *undoAction = KStandardAction::undo(m_backend, SLOT(undo()), actionCollection());
-    actionCollection()->addAction("undo", undoAction);
+    m_undoAction = KStandardAction::undo(this, SLOT(undo()), actionCollection());
+    actionCollection()->addAction("undo", m_undoAction);
 
-    KAction *redoAction = KStandardAction::redo(m_backend, SLOT(redo()), actionCollection());
-    actionCollection()->addAction("redo", redoAction);
+    m_redoAction = KStandardAction::redo(this, SLOT(redo()), actionCollection());
+    actionCollection()->addAction("redo", m_redoAction);
 
     setupGUI();
 }
@@ -188,13 +189,32 @@ bool MainWindow::queryExit()
 void MainWindow::markUpgrade()
 {
     m_backend->markPackagesForUpgrade();
-    previewChanges();
+    
+    if(m_backend-> markedPackages().isEmpty()) {
+         QString text = i18nc("@label", "Unable to mark upgrades. The "
+                              "available upgrades may require new packages to "
+                              "be installed or removed. You may wish to try "
+                              "a full upgrade by clicking the <interface>Full "
+                              " Upgrade</interface> button.");
+         QString title = i18nc("@title:window", "Unable to Mark Upgrades");
+         KMessageBox::information(this, text, title);
+    } else {
+        previewChanges();
+    }
 }
 
 void MainWindow::markDistUpgrade()
 {
     m_backend->markPackagesForDistUpgrade();
-    previewChanges();
+    if(m_backend-> markedPackages().isEmpty()) {
+         QString text = i18nc("@label", "Unable to mark upgrades. Some "
+                              "upgrades may have unsatisfiable dependencies at "
+                              "the moment, or may have been manually held back.");
+         QString title = i18nc("@title:window", "Unable to Mark Upgrades");
+         KMessageBox::information(this, text, title);
+    } else {
+        previewChanges();
+    }
 }
 
 void MainWindow::checkForUpdates()
@@ -497,6 +517,9 @@ void MainWindow::reloadActions()
         m_previewAction->setEnabled(!changedList.isEmpty());
     }
     m_applyAction->setEnabled(!changedList.isEmpty());
+
+    m_undoAction->setEnabled(!m_backend->isUndoStackEmpty());
+    m_redoAction->setEnabled(!m_backend->isRedoStackEmpty());
 }
 
 void MainWindow::setActionsEnabled(bool enabled)
@@ -506,6 +529,18 @@ void MainWindow::setActionsEnabled(bool enabled)
     m_distUpgradeAction->setEnabled(enabled);
     m_previewAction->setEnabled(enabled);
     m_applyAction->setEnabled(enabled);
+    m_undoAction->setEnabled(enabled);
+    m_redoAction->setEnabled(enabled);
+}
+
+void MainWindow::undo()
+{
+    m_backend->undo();
+}
+
+void MainWindow::redo()
+{
+    m_backend->redo();
 }
 
 #include "MainWindow.moc"
