@@ -27,6 +27,7 @@
 class QScrollArea;
 
 namespace QApt {
+    class Backend;
     class Package;
 }
 
@@ -39,10 +40,11 @@ class DetailsWidget : public KTabWidget
 {
     Q_OBJECT
 public:
-    explicit DetailsWidget(QWidget *parent = 0);
+    explicit DetailsWidget(QWidget *parent);
     ~DetailsWidget();
 
 private:
+    QApt::Backend *m_backend;
     QApt::Package *m_package;
 
     MainTab *m_mainTab;
@@ -52,6 +54,7 @@ private:
     ChangelogTab *m_changelogTab;
 
 public Q_SLOTS:
+    void setBackend(QApt::Backend *backend);
     void setPackage(QApt::Package *package);
     void refreshMainTabButtons();
     void clear();

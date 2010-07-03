@@ -98,6 +98,7 @@ void ManagerWidget::setBackend(QApt::Backend *backend)
     connect(m_backend, SIGNAL(packageChanged()), m_packageView, SLOT(updateView()));
     connect(m_backend, SIGNAL(packageChanged()), m_detailsWidget, SLOT(refreshMainTabButtons()));
 
+    m_detailsWidget->setBackend(backend);
     m_model->setPackages(m_backend->availablePackages());
     m_proxyModel->setSourceModel(m_model);
     m_proxyModel->setBackend(backend);

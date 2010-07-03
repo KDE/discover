@@ -36,6 +36,7 @@
 #include <KTemporaryFile>
 
 // LibQApt includes
+#include <libqapt/backend.h>
 #include <libqapt/package.h>
 
 // Own includes
@@ -43,6 +44,7 @@
 
 MainTab::MainTab(QWidget *parent)
     : QWidget(parent)
+    , m_backend(0)
     , m_package(0)
     , m_screenshotFile(0)
 {
@@ -65,6 +67,11 @@ MainTab::MainTab(QWidget *parent)
 
 MainTab::~MainTab()
 {
+}
+
+void MainTab::setBackend(QApt::Backend *backend)
+{
+    m_backend = backend;
 }
 
 void MainTab::setPackage(QApt::Package *package)
@@ -95,7 +102,6 @@ void MainTab::setPackage(QApt::Package *package)
 
 void MainTab::clear()
 {
-    qDebug() << "cleared";
     m_package = 0;
 }
 
@@ -207,69 +213,112 @@ void MainTab::screenshotFetched(KJob *job)
     dialog->show();
 }
 
+bool MainTab::confirmEssentialRemoval()
+{
+    QString text = i18nc("@label", "Removing this package may break your system. Are you sure you want to remove it?");
+    QString title = i18nc("@label", "Warning - Removing Important Package");
+    int result = KMessageBox::Cancel;
+
+    result = KMessageBox::warningContinueCancel(this, text, title, KStandardGuiItem::cont(),
+                                                KStandardGuiItem::cancel(), QString(), KMessageBox::Dangerous);
+
+    switch (result) {
+        case KMessageBox::Continue:
+            return true;
+            break;
+        case KMessageBox::Cancel:
+        default:
+            return false;
+            break;
+    }
+}
+
 void MainTab::setInstall()
 {
+    m_oldCacheState = m_backend->currentCacheState();
     if (!m_package->availableVersion().isEmpty()) {
         m_package->setInstall();
     }
-    willCacheBreak();
+
+    if (m_package->wouldBreak()) {
+        showBrokenReason();
+        m_backend->restoreCacheState(m_oldCacheState);
+    }
 }
 
 void MainTab::setRemove()
 {
+    bool remove = true;
     if (m_package->state() & QApt::Package::IsImportant) {
-        QString text = i18nc("@label", "Removing this package may break your system. Are you sure you want to remove it?");
-        QString title = i18nc("@label", "Warning - Removing Important Package");
-        int result = KMessageBox::Cancel;
-
-        result = KMessageBox::warningContinueCancel(this, text, title, KStandardGuiItem::cont(),
-                                                    KStandardGuiItem::cancel(), QString(), KMessageBox::Dangerous);
-
-        switch (result) {
-            case KMessageBox::Continue:
-                m_package->setRemove();
-                break;
-            case KMessageBox::Cancel:
-            default:
-                break;
-        }
-    } else {
-        m_package->setRemove();
+        remove = confirmEssentialRemoval();
     }
-    willCacheBreak();
+
+    if (remove) {
+        kDebug() << m_backend;
+        m_oldCacheState = m_backend->currentCacheState();
+        m_package->setRemove();
+
+        if (m_package->wouldBreak()) {
+            showBrokenReason();
+            m_backend->restoreCacheState(m_oldCacheState);
+        }
+    }
 }
 
 void MainTab::setUpgrade()
 {
+    m_oldCacheState = m_backend->currentCacheState();
     m_package->setInstall();
-    willCacheBreak();
+
+    if (m_package->wouldBreak()) {
+        showBrokenReason();
+        m_backend->restoreCacheState(m_oldCacheState);
+    }
 }
 
 void MainTab::setReInstall()
 {
+    m_oldCacheState = m_backend->currentCacheState();
     m_package->setReInstall();
+
+    if (m_package->wouldBreak()) {
+        showBrokenReason();
+        m_backend->restoreCacheState(m_oldCacheState);
+    }
 }
 
 void MainTab::setPurge()
 {
-    m_package->setPurge();
-    willCacheBreak();
+    bool remove = true;
+    if (m_package->state() & QApt::Package::IsImportant) {
+        remove = confirmEssentialRemoval();
+    }
+
+    if (remove) {
+        m_oldCacheState = m_backend->currentCacheState();
+        m_package->setPurge();
+
+        if (m_package->wouldBreak()) {
+            showBrokenReason();
+            m_backend->restoreCacheState(m_oldCacheState);
+        }
+    }
 }
 
 void MainTab::setKeep()
 {
+    m_oldCacheState = m_backend->currentCacheState();
     m_package->setKeep();
-    willCacheBreak();
+
+    if (m_package->wouldBreak()) {
+        showBrokenReason();
+        m_backend->restoreCacheState(m_oldCacheState);
+    }
 }
 
-bool MainTab::willCacheBreak()
+void MainTab::showBrokenReason()
 {
-    if (m_package->wouldBreak()) {
-        kDebug() << "yes";
-        return true;
-    }
-    kDebug() << "no";
-    return false;
+    kDebug() << "Broken because you're a noob. But I'm not going to let you do that";
 }
 
 #include "MainTab.moc"

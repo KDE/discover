@@ -28,6 +28,7 @@
 #include <KLocale>
 
 // LibQApt includes
+#include <libqapt/backend.h>
 #include <libqapt/package.h>
 
 // Own includes
@@ -38,6 +39,7 @@
 
 DetailsWidget::DetailsWidget(QWidget *parent)
     : KTabWidget(parent)
+    , m_backend(0)
     , m_package(0)
 {
     setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
@@ -61,6 +63,11 @@ DetailsWidget::DetailsWidget(QWidget *parent)
 
 DetailsWidget::~DetailsWidget()
 {
+}
+
+void DetailsWidget::setBackend(QApt::Backend *backend)
+{
+    m_mainTab->setBackend(backend);
 }
 
 void DetailsWidget::setPackage(QApt::Package *package)

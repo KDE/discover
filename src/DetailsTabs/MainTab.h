@@ -21,7 +21,11 @@
 #ifndef MAINTAB_H
 #define MAINTAB_H
 
+// Qt includes
 #include <QtGui/QWidget>
+
+// LibQApt includes
+#include <libqapt/globals.h>
 
 class QPushButton;
 
@@ -31,6 +35,7 @@ class KMenu;
 class KTemporaryFile;
 
 namespace QApt {
+    class Backend;
     class Package;
 }
 
@@ -42,12 +47,14 @@ class MainTab : public QWidget
 {
     Q_OBJECT
 public:
-    explicit MainTab(QWidget *parent = 0);
+    explicit MainTab(QWidget *parent);
     ~MainTab();
 
 private:
     Ui::MainTab *m_mainTab;
+    QApt::Backend *m_backend;
     QApt::Package *m_package;
+    QApt::CacheState m_oldCacheState;
 
     QPushButton *m_screenshotButton;
     KAction *m_purgeAction;
@@ -55,6 +62,7 @@ private:
     KTemporaryFile *m_screenshotFile;
 
 public Q_SLOTS:
+    void setBackend(QApt::Backend *backend);
     void setPackage(QApt::Package *package);
     void refreshButtons();
     void clear();
@@ -63,13 +71,14 @@ private Q_SLOTS:
     void setupButtons(QApt::Package *oldPackage);
     void fetchScreenshot();
     void screenshotFetched(KJob *job);
+    bool confirmEssentialRemoval();
     void setInstall();
     void setRemove();
     void setUpgrade();
     void setReInstall();
     void setPurge();
     void setKeep();
-    bool willCacheBreak();
+    void showBrokenReason();
 };
 
 #endif
