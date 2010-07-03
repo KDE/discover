@@ -162,6 +162,12 @@ void MainWindow::setupActions()
     m_applyAction->setText(i18nc("@action Applys the changes a user has made", "Apply Changes"));
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
 
+    KAction *undoAction = KStandardAction::undo(m_backend, SLOT(undo()), actionCollection());
+    actionCollection()->addAction("undo", undoAction);
+
+    KAction *redoAction = KStandardAction::redo(m_backend, SLOT(redo()), actionCollection());
+    actionCollection()->addAction("redo", redoAction);
+
     setupGUI();
 }
 

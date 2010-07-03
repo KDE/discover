@@ -23,5 +23,8 @@
         <Separator/>
         <Action name="update" />
         <Action name="fullupgrade" />
+        <Separator/>
+        <Action name="undo" />
+        <Action name="redo" />
     </ToolBar>
 </gui>
