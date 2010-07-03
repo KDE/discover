@@ -21,6 +21,8 @@
 #ifndef MUONSTRINGS_H
 #define MUONSTRINGS_H
 
+#include <QtCore/QHash>
+
 #include <libqapt/package.h>
 
 class MuonStrings : public QObject
