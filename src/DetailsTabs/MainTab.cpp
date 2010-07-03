@@ -254,7 +254,6 @@ void MainTab::setRemove()
     }
 
     if (remove) {
-        kDebug() << m_backend;
         m_oldCacheState = m_backend->currentCacheState();
         m_package->setRemove();
 
