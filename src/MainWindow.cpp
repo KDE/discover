@@ -169,6 +169,11 @@ void MainWindow::setupActions()
     m_redoAction = KStandardAction::redo(this, SLOT(redo()), actionCollection());
     actionCollection()->addAction("redo", m_redoAction);
 
+    m_revertAction = actionCollection()->addAction("revert");
+    m_revertAction->setIcon(KIcon("document-revert"));
+    m_revertAction->setText(i18nc("@action Reverts all potential changes to the cache", "Revert Changes"));
+    connect(m_revertAction, SIGNAL(triggered()), this, SLOT(revertChanges()));
+
     setupGUI();
 }
 
@@ -520,6 +525,7 @@ void MainWindow::reloadActions()
 
     m_undoAction->setEnabled(!m_backend->isUndoStackEmpty());
     m_redoAction->setEnabled(!m_backend->isRedoStackEmpty());
+    m_revertAction->setEnabled(!m_backend->isUndoStackEmpty() || !m_backend->isRedoStackEmpty());
 }
 
 void MainWindow::setActionsEnabled(bool enabled)
@@ -531,6 +537,7 @@ void MainWindow::setActionsEnabled(bool enabled)
     m_applyAction->setEnabled(enabled);
     m_undoAction->setEnabled(enabled);
     m_redoAction->setEnabled(enabled);
+    m_revertAction->setEnabled(enabled);
 }
 
 void MainWindow::undo()
@@ -541,6 +548,12 @@ void MainWindow::undo()
 void MainWindow::redo()
 {
     m_backend->redo();
+}
+
+void MainWindow::revertChanges()
+{
+    m_backend->init();
+    reload();
 }
 
 #include "MainWindow.moc"
