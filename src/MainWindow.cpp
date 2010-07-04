@@ -175,7 +175,7 @@ void MainWindow::setupActions()
     m_revertAction->setText(i18nc("@action Reverts all potential changes to the cache", "Unmark All"));
     connect(m_revertAction, SIGNAL(triggered()), this, SLOT(revertChanges()));
 
-    QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_M), this);
+    QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_M), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(easterEggTriggered()));
 
     setupGUI();
