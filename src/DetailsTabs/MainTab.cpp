@@ -316,7 +316,6 @@ void MainTab::setKeep()
     m_package->setKeep();
 
     if (m_package->wouldBreak()) {
-        showBrokenReason();
         m_backend->restoreCacheState(m_oldCacheState);
     }
 }
