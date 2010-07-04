@@ -2,6 +2,7 @@ project(muon)
 
 find_package(KDE4 REQUIRED)
 find_package(QApt REQUIRED)
+find_package(DebconfKDE REQUIRED)
 include (KDE4Defaults)
 
 include( FindPkgConfig )
