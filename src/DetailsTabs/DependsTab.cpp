@@ -53,26 +53,41 @@ void DependsTab::setPackage(QApt::Package *package)
 {
     m_package = package;
     m_dependsBrowser->setText(QString());
-    kDebug() << m_comboBox->currentIndex();
     populateDepends(m_comboBox->currentIndex());
 }
 
 void DependsTab::populateDepends(int index)
 {
     m_dependsBrowser->setText(QString());
+    QStringList list;
     switch (index) {
         case 0:
-            foreach (const QString &string, m_package->dependencyList(false)) {
+            list = m_package->dependencyList(false);
+            if (list.isEmpty()) {
+                m_dependsBrowser->append(i18nc("@label", "This package does not have any dependencies"));
+                return;
+            }
+            foreach (const QString &string, list) {
                 m_dependsBrowser->append(string);
             }
             break;
         case 1:
-            foreach (const QString &string, m_package->dependencyList(true)) {
+            list = m_package->dependencyList(true);
+            if (list.isEmpty()) {
+                m_dependsBrowser->append(i18nc("@label", "This package does not have any dependencies"));
+                return;
+            }
+            foreach (const QString &string, list) {
                 m_dependsBrowser->append(string);
             }
             break;
         case 2:
-            foreach (const QString &string, m_package->providesList()) {
+            list = m_package->providesList();
+            if (list.isEmpty()) {
+                m_dependsBrowser->append(i18nc("@label", "This package does provide any virtual packages"));
+                return;
+            }
+            foreach (const QString &string, list) {
                 m_dependsBrowser->append(string);
             }
             break;
