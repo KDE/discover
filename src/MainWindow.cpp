@@ -193,8 +193,9 @@ bool MainWindow::queryExit()
 
 void MainWindow::markUpgrade()
 {
+    m_backend->saveCacheState();
     m_backend->markPackagesForUpgrade();
-    
+
     if(m_backend-> markedPackages().isEmpty()) {
          QString text = i18nc("@label", "Unable to mark upgrades. The "
                               "available upgrades may require new packages to "
@@ -210,6 +211,7 @@ void MainWindow::markUpgrade()
 
 void MainWindow::markDistUpgrade()
 {
+    m_backend->saveCacheState();
     m_backend->markPackagesForDistUpgrade();
     if(m_backend-> markedPackages().isEmpty()) {
          QString text = i18nc("@label", "Unable to mark upgrades. Some "
