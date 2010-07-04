@@ -24,6 +24,7 @@
 #include <QStringBuilder>
 #include <QtCore/QTimer>
 #include <QtGui/QLabel>
+#include <QtGui/QShortcut>
 #include <QtGui/QSplitter>
 #include <QtGui/QStackedWidget>
 #include <QtGui/QToolBox>
@@ -173,6 +174,9 @@ void MainWindow::setupActions()
     m_revertAction->setIcon(KIcon("document-revert"));
     m_revertAction->setText(i18nc("@action Reverts all potential changes to the cache", "Unmark All"));
     connect(m_revertAction, SIGNAL(triggered()), this, SLOT(revertChanges()));
+
+    QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_M), this);
+    connect(shortcut, SIGNAL(activated()), this, SLOT(easterEggTriggered()));
 
     setupGUI();
 }
@@ -556,6 +560,25 @@ void MainWindow::revertChanges()
 {
     m_backend->init();
     reload();
+}
+
+void MainWindow::easterEggTriggered()
+{
+    KDialog *dialog = new KDialog(this);
+    KVBox *widget = new KVBox(dialog);
+    QLabel *label = new QLabel(widget);
+    label->setText(i18nc("@label Easter Egg", "This Muon has super cow powers"));
+    QLabel *moo = new QLabel(widget);
+    moo->setFont(QFont("monospace"));
+    moo->setText("             (__)\n"
+                 "             (oo)\n"
+                 "    /---------\\/\n"
+                 "   / | Muon!!||\n"
+                 "  *  ||------||\n"
+                 "     ^^      ^^\n");
+
+    dialog->setMainWidget(widget);
+    dialog->show();
 }
 
 #include "MainWindow.moc"

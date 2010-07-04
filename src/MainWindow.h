@@ -111,6 +111,7 @@ private Q_SLOTS:
     void undo();
     void redo();
     void revertChanges();
+    void easterEggTriggered();
 
 signals:
     void backendReady(QApt::Backend *backend);
