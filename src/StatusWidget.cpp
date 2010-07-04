@@ -94,7 +94,8 @@ void StatusWidget::updateStatus()
         m_downloadLabel->setText(i18n("Download size: %1, Space needed: %2",
                                       KGlobal::locale()->formatByteSize(3546),
                                       KGlobal::locale()->formatByteSize(4546)));
-        m_downloadLabel->show();
+        // TODO: LibQApt work needed to get info for the above label from
+        m_downloadLabel->hide();
     } else {
         m_downloadLabel->hide();
     }
