@@ -171,7 +171,7 @@ void MainWindow::setupActions()
 
     m_revertAction = actionCollection()->addAction("revert");
     m_revertAction->setIcon(KIcon("document-revert"));
-    m_revertAction->setText(i18nc("@action Reverts all potential changes to the cache", "Revert Changes"));
+    m_revertAction->setText(i18nc("@action Reverts all potential changes to the cache", "Unmark All"));
     connect(m_revertAction, SIGNAL(triggered()), this, SLOT(revertChanges()));
 
     setupGUI();
