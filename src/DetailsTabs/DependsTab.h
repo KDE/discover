@@ -48,7 +48,7 @@ public Q_SLOTS:
     void setPackage(QApt::Package *package);
 
 private Q_SLOTS:
-    void populateDepends();
+    void populateDepends(int index);
 };
 
 #endif

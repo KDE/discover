@@ -24,6 +24,8 @@
 #include <QtGui/QComboBox>
 
 // KDE includes
+#include <KDebug>
+#include <KLocale>
 #include <KTextBrowser>
 
 // LibQApt includes
@@ -36,6 +38,10 @@ DependsTab::DependsTab(QWidget *parent)
     , m_dependsBrowser(0)
 {
     m_comboBox = new QComboBox(this);
+    m_comboBox->addItem(i18nc("@item:inlistbox", "Depenencies of the Current Version"));
+    m_comboBox->addItem(i18nc("@item:inlistbox", "Depenencies of the Latest Version"));
+    m_comboBox->addItem(i18nc("@item:inlistbox", "Provided Packages"));
+    connect(m_comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(populateDepends(int)));
     m_dependsBrowser = new KTextBrowser(this);
 }
 
@@ -46,14 +52,30 @@ DependsTab::~DependsTab()
 void DependsTab::setPackage(QApt::Package *package)
 {
     m_package = package;
-    m_dependsBrowser->clear();
-    populateDepends();
+    m_dependsBrowser->setText(QString());
+    kDebug() << m_comboBox->currentIndex();
+    populateDepends(m_comboBox->currentIndex());
 }
 
-void DependsTab::populateDepends()
+void DependsTab::populateDepends(int index)
 {
-    foreach (const QString &string, m_package->dependencyList(true)) {
-        m_dependsBrowser->append(string);
+    m_dependsBrowser->setText(QString());
+    switch (index) {
+        case 0:
+            foreach (const QString &string, m_package->dependencyList(false)) {
+                m_dependsBrowser->append(string);
+            }
+            break;
+        case 1:
+            foreach (const QString &string, m_package->dependencyList(true)) {
+                m_dependsBrowser->append(string);
+            }
+            break;
+        case 2:
+            foreach (const QString &string, m_package->providesList()) {
+                m_dependsBrowser->append(string);
+            }
+            break;
     }
 }
 
