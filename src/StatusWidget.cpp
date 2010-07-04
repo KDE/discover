@@ -77,7 +77,7 @@ void StatusWidget::updateStatus()
         QString toRemoveText;
 
         if (toInstallOrUpgrade > 0) {
-            toInstallOrUpgradeText = i18nc("Part of the status label", "%1 to install/upgrade", toInstallOrUpgrade);
+            toInstallOrUpgradeText = i18nc("Part of the status label", " %1 to install/upgrade", toInstallOrUpgrade);
         }
 
         if (toRemove > 0 && toInstallOrUpgrade > 0) {
