@@ -22,6 +22,7 @@
 #define MAINTAB_H
 
 // Qt includes
+#include <QtCore/QVariantMap>
 #include <QtGui/QWidget>
 
 // LibQApt includes
@@ -60,6 +61,8 @@ private:
     KAction *m_purgeAction;
     KMenu *m_purgeMenu;
     KTemporaryFile *m_screenshotFile;
+
+    QString digestReason(QApt::BrokenReason failType, QHash<QString, QVariantMap> failReason);
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
