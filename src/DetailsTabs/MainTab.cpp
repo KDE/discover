@@ -77,7 +77,6 @@ void MainTab::setBackend(QApt::Backend *backend)
 void MainTab::setPackage(QApt::Package *package)
 {
     QApt::Package *oldPackage = m_package;
-    qDebug() << "new package set";
     m_package = package;
     m_mainTab->packageShortDescLabel->setText(package->shortDescription());
 

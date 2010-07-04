@@ -15,6 +15,7 @@ set(muon_SRCS
     PackageModel/PackageDelegate.cpp
     DetailsTabs/MainTab.cpp
     DetailsTabs/ChangelogTab.cpp
+    DetailsTabs/DependsTab.cpp
     DetailsTabs/InstalledFilesTab.cpp
     DetailsTabs/TechnicalDetailsTab.cpp
  )

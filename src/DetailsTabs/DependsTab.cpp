@@ -18,47 +18,43 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef DETAILSWIDGET_H
-#define DETAILSWIDGET_H
+#include "DependsTab.h"
 
-// KDE inclues
-#include <KTabWidget>
+// Qt includes
+#include <QtGui/QComboBox>
 
-class QScrollArea;
+// KDE includes
+#include <KTextBrowser>
 
-namespace QApt {
-    class Backend;
-    class Package;
+// LibQApt includes
+#include <libqapt/package.h>
+
+DependsTab::DependsTab(QWidget *parent)
+    : KVBox(parent)
+    , m_package(0)
+    , m_comboBox(0)
+    , m_dependsBrowser(0)
+{
+    m_comboBox = new QComboBox(this);
+    m_dependsBrowser = new KTextBrowser(this);
 }
 
-class MainTab;
-class TechnicalDetailsTab;
-class DependsTab;
-class ChangelogTab;
-class InstalledFilesTab;
-
-class DetailsWidget : public KTabWidget
+DependsTab::~DependsTab()
 {
-    Q_OBJECT
-public:
-    explicit DetailsWidget(QWidget *parent);
-    ~DetailsWidget();
+}
 
-private:
-    QApt::Backend *m_backend;
-    QApt::Package *m_package;
+void DependsTab::setPackage(QApt::Package *package)
+{
+    m_package = package;
+    m_dependsBrowser->clear();
+    populateDepends();
+}
 
-    MainTab *m_mainTab;
-    TechnicalDetailsTab *m_technicalTab;
-    DependsTab *m_dependsTab;
-    InstalledFilesTab *m_filesTab;
-    ChangelogTab *m_changelogTab;
+void DependsTab::populateDepends()
+{
+    foreach (const QString &string, m_package->dependencyList(true)) {
+        m_dependsBrowser->append(string);
+    }
+}
 
-public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
-    void setPackage(QApt::Package *package);
-    void refreshMainTabButtons();
-    void clear();
-};
-
-#endif
+#include "DependsTab.moc"

@@ -18,47 +18,37 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef DETAILSWIDGET_H
-#define DETAILSWIDGET_H
+#ifndef DEPENDSTAB_H
+#define DEPENDSTAB_H
 
-// KDE inclues
-#include <KTabWidget>
+#include <KVBox>
 
-class QScrollArea;
+class QComboBox;
+
+class KTextBrowser;
 
 namespace QApt {
-    class Backend;
     class Package;
 }
 
-class MainTab;
-class TechnicalDetailsTab;
-class DependsTab;
-class ChangelogTab;
-class InstalledFilesTab;
-
-class DetailsWidget : public KTabWidget
+class DependsTab : public KVBox
 {
     Q_OBJECT
 public:
-    explicit DetailsWidget(QWidget *parent);
-    ~DetailsWidget();
+    explicit DependsTab(QWidget *parent = 0);
+    ~DependsTab();
 
 private:
-    QApt::Backend *m_backend;
     QApt::Package *m_package;
 
-    MainTab *m_mainTab;
-    TechnicalDetailsTab *m_technicalTab;
-    DependsTab *m_dependsTab;
-    InstalledFilesTab *m_filesTab;
-    ChangelogTab *m_changelogTab;
+    QComboBox *m_comboBox;
+    KTextBrowser *m_dependsBrowser;
 
 public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
     void setPackage(QApt::Package *package);
-    void refreshMainTabButtons();
-    void clear();
+
+private Q_SLOTS:
+    void populateDepends();
 };
 
 #endif

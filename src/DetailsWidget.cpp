@@ -34,6 +34,7 @@
 // Own includes
 #include "DetailsTabs/MainTab.h"
 #include "DetailsTabs/TechnicalDetailsTab.h"
+#include "DetailsTabs/DependsTab.h"
 #include "DetailsTabs/ChangelogTab.h"
 #include "DetailsTabs/InstalledFilesTab.h"
 
@@ -46,15 +47,14 @@ DetailsWidget::DetailsWidget(QWidget *parent)
 
     m_mainTab = new MainTab(this);
     m_technicalTab = new TechnicalDetailsTab(this);
-    //m_dependenciesTab = new QWidget;
+    m_dependsTab = new DependsTab(this);
     m_filesTab = new InstalledFilesTab;
     m_changelogTab = new ChangelogTab(this);
 
 
     addTab(m_mainTab, i18nc("@title:tab", "Details"));
     addTab(m_technicalTab, i18nc("@title:tab", "Technical Details"));
-    // TODO: Needs serious work in LibQApt
-    // addTab(m_dependenciesTab, i18nc("@title:tab", "Dependencies"));
+    addTab(m_dependsTab, i18nc("@title:tab", "Dependencies"));
     addTab(m_changelogTab, i18nc("@title:tab", "Changes List"));
 
     // Hide until a package is clicked
@@ -76,6 +76,7 @@ void DetailsWidget::setPackage(QApt::Package *package)
 
     m_mainTab->setPackage(package);
     m_technicalTab->setPackage(package);
+    m_dependsTab->setPackage(package);
     m_changelogTab->setPackage(package);
 
     if (package->isInstalled()) {
