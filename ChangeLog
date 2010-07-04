@@ -3,12 +3,12 @@
 
 - Initial release. Features of note include:
   * A powerful, yet intuitive interface
-  * Fast, accurate package search using the apt-xapian index
-  * Support filtering packages by status and by package group
+  * Fast, accurate package search using the apt-xapian index and the Synaptic search algorithm
+  * Support for filtering packages by status and category
   * Media change support
-  * Configure packages through the debconf system
+  * Support for configuring packages through the debconf system
   * Warn about/disallow the installation of untrusted packages, depending on APT settings
-  * Uses Polkit for running privileged actions for enhanced security, convenience, and integration
+  * Uses Polkit for running privileged actions for enhanced security, convenience, and desktop integration
   * Power management suspension during package downloads, installations and removals
   * Support for download the latest changelog of a package
   * Package screenshots
