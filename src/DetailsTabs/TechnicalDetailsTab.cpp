@@ -56,7 +56,6 @@ TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
     QLabel *maintainerLabel = new QLabel(generalWidget);
     maintainerLabel->setText(i18nc("@label Label preceding the package maintainer", "Maintainer:"));
     m_maintainer = new QLabel(generalWidget);
-    m_maintainer->setTextFormat(Qt::PlainText);
     generalGrid->addWidget(maintainerLabel, 0, 0, Qt::AlignRight);
     generalGrid->addWidget(m_maintainer, 0, 1, Qt::AlignLeft);
 
