@@ -23,7 +23,7 @@
 
 #include <KVBox>
 
-class QTextBrowser;
+class KTextBrowser;
 
 namespace QApt {
     class Package;
@@ -38,7 +38,7 @@ public:
 
 private:
     QApt::Package *m_package;
-    QTextBrowser *m_filesBrowser;
+    KTextBrowser *m_filesBrowser;
 
 public Q_SLOTS:
     void setPackage(QApt::Package *package);

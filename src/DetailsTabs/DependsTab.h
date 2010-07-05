@@ -23,8 +23,7 @@
 
 #include <KVBox>
 
-class QComboBox;
-
+class KComboBox;
 class KTextBrowser;
 
 namespace QApt {
@@ -41,7 +40,7 @@ public:
 private:
     QApt::Package *m_package;
 
-    QComboBox *m_comboBox;
+    KComboBox *m_comboBox;
     KTextBrowser *m_dependsBrowser;
 
 public Q_SLOTS:

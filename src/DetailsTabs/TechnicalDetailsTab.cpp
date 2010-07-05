@@ -154,5 +154,6 @@ void TechnicalDetailsTab::setPackage(QApt::Package *package)
     m_currentVersion->setText(package->availableVersion());
     m_currentSize->setText(KGlobal::locale()->formatByteSize(package->availableInstalledSize()));
     m_downloadSize->setText(KGlobal::locale()->formatByteSize(package->downloadSize()));
-    
 }
+
+#include "TechnicalDetailsTab.moc"

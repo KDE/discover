@@ -20,8 +20,8 @@
 
 #include "InstalledFilesTab.h"
 
-// Qt includes
-#include <QtGui/QTextBrowser>
+// KDE includes
+#include <KTextBrowser>
 
 // LibQApt includes
 #include <libqapt/package.h>
@@ -30,7 +30,7 @@ InstalledFilesTab::InstalledFilesTab(QWidget *parent)
     : KVBox(parent)
     , m_package(0)
 {
-    m_filesBrowser = new QTextBrowser(this);
+    m_filesBrowser = new KTextBrowser(this);
 }
 
 InstalledFilesTab::~InstalledFilesTab()

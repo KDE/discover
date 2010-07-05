@@ -20,11 +20,8 @@
 
 #include "DependsTab.h"
 
-// Qt includes
-#include <QtGui/QComboBox>
-
 // KDE includes
-#include <KDebug>
+#include <KComboBox>
 #include <KLocale>
 #include <KTextBrowser>
 
@@ -37,7 +34,7 @@ DependsTab::DependsTab(QWidget *parent)
     , m_comboBox(0)
     , m_dependsBrowser(0)
 {
-    m_comboBox = new QComboBox(this);
+    m_comboBox = new KComboBox(this);
     m_comboBox->addItem(i18nc("@item:inlistbox", "Depenencies of the Current Version"));
     m_comboBox->addItem(i18nc("@item:inlistbox", "Depenencies of the Latest Version"));
     m_comboBox->addItem(i18nc("@item:inlistbox", "Provided Packages"));
