@@ -111,6 +111,8 @@ private Q_SLOTS:
     void undo();
     void redo();
     void revertChanges();
+    void runSourcesEditor();
+    void sourcesEditorFinished(int exitCode);
     void easterEggTriggered();
 
 signals:

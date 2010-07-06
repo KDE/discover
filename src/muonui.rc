@@ -21,6 +21,10 @@
             <Action name="preview" />
             <Action name="apply" />
         </Menu>
+        <Menu name="settings">
+          <Separator />
+          <Action name="software_properties" />
+        </Menu>
     </MenuBar>
     <ToolBar name="mainToolBar">
         <Action name="preview" />

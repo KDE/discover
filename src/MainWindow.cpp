@@ -37,6 +37,7 @@
 #include <KDebug>
 #include <KLocale>
 #include <KMessageBox>
+#include <KProcess>
 #include <KStandardAction>
 #include <KStatusBar>
 #include <Solid/PowerManagement>
@@ -174,6 +175,11 @@ void MainWindow::setupActions()
     m_revertAction->setIcon(KIcon("document-revert"));
     m_revertAction->setText(i18nc("@action Reverts all potential changes to the cache", "Unmark All"));
     connect(m_revertAction, SIGNAL(triggered()), this, SLOT(revertChanges()));
+
+    KAction *action = actionCollection()->addAction("software_properties");
+    action->setIcon(KIcon("configure"));
+    action->setText(i18nc("@action Opens the software sources configuration dialog", "Configure Software Sources"));
+    connect(action, SIGNAL(triggered()), this, SLOT(runSourcesEditor()));
 
     QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_M), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(easterEggTriggered()));
@@ -562,6 +568,29 @@ void MainWindow::revertChanges()
     reload();
 }
 
+void MainWindow::runSourcesEditor()
+{
+    KProcess* proc = new KProcess(this);
+    QStringList arguments;
+    QString cmd;
+    int winID = effectiveWinId();
+    cmd = "software-properties-kde --dont-update --attach " + QString::number(winID);
+    arguments << "/usr/lib/kde4/libexec/kdesu" << QString(cmd);
+    proc->setProgram(arguments);
+    find(winID)->setEnabled(false);
+    proc->start();
+    connect( proc, SIGNAL( finished(int, QProcess::ExitStatus) ),
+             this, SLOT( sourcesEditorFinished(int) ) );
+}
+
+void MainWindow::sourcesEditorFinished(int reload)
+{
+    find(effectiveWinId())->setEnabled(true);
+    if(reload == 1) {
+        checkForUpdates();
+    }
+}
+
 void MainWindow::easterEggTriggered()
 {
     KDialog *dialog = new KDialog(this);
@@ -573,7 +602,7 @@ void MainWindow::easterEggTriggered()
     moo->setText("             (__)\n"
                  "             (oo)\n"
                  "    /---------\\/\n"
-                 "   / | Muon!!||\n"
+                 "   / | Muuu!!||\n"
                  "  *  ||------||\n"
                  "     ^^      ^^\n");
 
