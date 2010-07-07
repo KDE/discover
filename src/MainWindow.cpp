@@ -461,8 +461,10 @@ void MainWindow::previewChanges()
 void MainWindow::returnFromPreview()
 {
     m_stack->setCurrentWidget(m_mainWidget);
-    m_reviewWidget->deleteLater();
-    m_reviewWidget = 0;
+    if (m_reviewWidget) {
+        m_reviewWidget->deleteLater();
+        m_reviewWidget = 0;
+    }
 
     m_previewAction->setIcon(KIcon("document-preview-archive"));
     m_previewAction->setText(i18nc("@action", "Preview Changes"));
@@ -513,10 +515,14 @@ void MainWindow::reload()
     reloadActions();
 
     // No need to keep these around in memory.
-    m_downloadWidget->deleteLater();
-    m_commitWidget->deleteLater();
-    m_downloadWidget = 0;
-    m_commitWidget = 0;
+    if (m_downloadWidget) {
+        m_downloadWidget->deleteLater();
+        m_downloadWidget = 0;
+    }
+    if (m_commitWidget) {
+        m_commitWidget->deleteLater();
+        m_commitWidget = 0;
+    }
 }
 
 void MainWindow::reloadActions()
