@@ -85,17 +85,25 @@ void StatusWidget::updateStatus()
                                  ", %1 to remove", toRemove);
         } else if (toRemove > 0) {
             toRemoveText= i18nc("Label for the number of packages pending removal when there are only removals",
-                                 "%1 to remove", toRemove);
+                                 "% 1 to remove", toRemove);
         }
 
         m_countsLabel->setText(availableText % installText % upgradeableText %
                                toInstallOrUpgradeText % toRemoveText);
 
-        m_downloadLabel->setText(i18n("Download size: %1, Space needed: %2",
-                                      KGlobal::locale()->formatByteSize(3546),
-                                      KGlobal::locale()->formatByteSize(4546)));
-        // TODO: LibQApt work needed to get info for the above label from
-        m_downloadLabel->hide();
+        int installSize = m_backend->installSize();
+        if (installSize < 0) {
+            installSize = -installSize;
+            m_downloadLabel->setText(i18nc("@label showing download and install size", "%1 to download, %2 of space to be freed",
+                                     KGlobal::locale()->formatByteSize(m_backend->downloadSize()),
+                                     KGlobal::locale()->formatByteSize(installSize)));
+        } else {
+            m_downloadLabel->setText(i18nc("@label showing download and install size", "%1 to download, %2 of space to be used",
+                                     KGlobal::locale()->formatByteSize(m_backend->downloadSize()),
+                                     KGlobal::locale()->formatByteSize(installSize)));
+        }
+
+        m_downloadLabel->show();
     } else {
         m_downloadLabel->hide();
     }
