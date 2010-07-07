@@ -20,6 +20,7 @@
 
 #include "FilterWidget.h"
 
+// Qt includes
 #include <QStandardItemModel>
 #include <QtCore/QSet>
 #include <QtGui/QLabel>
@@ -27,6 +28,7 @@
 #include <QtGui/QTreeView>
 #include <QtGui/QToolBox>
 
+// KDE includes
 #include <KIcon>
 #include <KLineEdit>
 #include <KLocale>
@@ -62,8 +64,12 @@ FilterWidget::FilterWidget(QWidget *parent)
     connect(m_statusList, SIGNAL(activated(const QModelIndex&)),
             this, SLOT(statusActivated(const QModelIndex&)));
 
-//     m_originList = new QListView(this);
-//     m_filterBox->addItem(m_originList, KIcon(), i18n("By Origin"));
+    m_originList = new QListView(this);
+    m_originList->setAlternatingRowColors(true);
+    m_filterBox->addItem(m_originList, KIcon(), i18n("By Origin"));
+    m_originModel = new QStandardItemModel;
+    connect(m_originList, SIGNAL(activated(const QModelIndex&)),
+            this, SLOT(originActivated(const QModelIndex&)));
 
     setWidget(m_filterBox);
     setEnabled(false);
@@ -82,6 +88,10 @@ void FilterWidget::setBackend(QApt::Backend *backend)
 
     populateStatuses();
     m_statusList->setModel(m_statusModel);
+
+    populateOrigins();
+    m_originList->setModel(m_originModel);
+
     setEnabled(true);
 }
 
@@ -142,6 +152,22 @@ void FilterWidget::populateStatuses()
     m_statusModel->appendRow(brokenItem);
 }
 
+void FilterWidget::populateOrigins()
+{
+    QStringList originLabels = m_backend->originLabels();
+
+    QStandardItem *defaultItem = new QStandardItem;
+    defaultItem->setIcon(KIcon("bookmark-new-list"));
+    defaultItem->setText(i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All"));
+    m_originModel->appendRow(defaultItem);
+
+    foreach(const QString &originLabel, originLabels) {
+        QStandardItem *originItem = new QStandardItem;
+        originItem->setText(originLabel);
+        m_originModel->appendRow(originItem);
+    }
+}
+
 void FilterWidget::categoryActivated(const QModelIndex &index)
 {
     QString groupName = index.data(Qt::DisplayRole).toString();
@@ -152,6 +178,12 @@ void FilterWidget::statusActivated(const QModelIndex &index)
 {
     QString statusName = index.data(Qt::DisplayRole).toString();
     emit filterByStatus(statusName);
+}
+
+void FilterWidget::originActivated(const QModelIndex &index)
+{
+    QString originName = index.data(Qt::DisplayRole).toString();
+    emit filterByOrigin(originName);
 }
 
 #include "FilterWidget.moc"

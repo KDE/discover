@@ -158,4 +158,10 @@ void ManagerWidget::filterByStatus(const QString &statusName)
     m_proxyModel->setStateFilter(state);
 }
 
+void ManagerWidget::filterByOrigin(const QString &originName)
+{
+    QString origin = m_backend->origin(originName);
+    m_proxyModel->setOriginFilter(origin);
+}
+
 #include "ManagerWidget.moc"

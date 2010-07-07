@@ -33,9 +33,10 @@ PackageProxyModel::PackageProxyModel(QObject *parent)
         : QSortFilterProxyModel(parent)
         , m_backend(0)
         , m_packages(QApt::PackageList())
-        , m_searchText(QString())
-        , m_groupFilter(QString())
+        , m_searchText()
+        , m_groupFilter()
         , m_stateFilter((QApt::Package::State)0)
+        , m_originFilter()
         , m_sortByRelevancy(false)
 {
 }
@@ -76,6 +77,12 @@ void PackageProxyModel::setStateFilter(QApt::Package::State state)
     invalidate();
 }
 
+void PackageProxyModel::setOriginFilter(const QString &origin)
+{
+    m_originFilter = origin;
+    invalidate();
+}
+
 bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
     //Our "main"-method
@@ -93,6 +100,12 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
 
     if (!m_stateFilter == 0) {
         if ((bool)(package->state() & m_stateFilter) == false) {
+            return false;
+        }
+    }
+
+    if (!m_originFilter.isEmpty()) {
+        if (!(package->origin() == m_originFilter)) {
             return false;
         }
     }

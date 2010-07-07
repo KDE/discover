@@ -64,6 +64,7 @@ public Q_SLOTS:
     void startSearch();
     void filterByGroup(const QString &groupName);
     void filterByStatus(const QString &statusName);
+    void filterByOrigin(const QString &originName);
 };
 
 #endif

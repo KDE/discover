@@ -91,6 +91,8 @@ void MainWindow::initGUI()
              m_managerWidget, SLOT(filterByGroup(const QString&)));
     connect (m_filterBox, SIGNAL(filterByStatus(const QString&)),
              m_managerWidget, SLOT(filterByStatus(const QString&)));
+    connect (m_filterBox, SIGNAL(filterByOrigin(const QString&)),
+             m_managerWidget, SLOT(filterByOrigin(const QString&)));
 
     m_mainWidget->addWidget(m_filterBox);
     m_mainWidget->addWidget(m_managerWidget);

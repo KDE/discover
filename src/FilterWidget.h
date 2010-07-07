@@ -58,7 +58,7 @@ private:
 
     QStandardItemModel *m_categoryModel;
     QStandardItemModel *m_statusModel;
-//     QStandardItemModel *m_originModel;
+    QStandardItemModel *m_originModel;
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
@@ -66,14 +66,16 @@ public Q_SLOTS:
 private Q_SLOTS:
     void populateCategories();
     void populateStatuses();
-//     void populateOrigins();
+    void populateOrigins();
 
     void categoryActivated(const QModelIndex &index);
     void statusActivated(const QModelIndex &index);
+    void originActivated(const QModelIndex &index);
 
 signals:
-    void filterByGroup(const QString &groupText);
-    void filterByStatus(const QString &statusText);
+    void filterByGroup(const QString &groupName);
+    void filterByStatus(const QString &statusName);
+    void filterByOrigin(const QString &originName);
 };
 
 #endif
