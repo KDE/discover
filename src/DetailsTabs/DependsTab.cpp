@@ -35,9 +35,10 @@ DependsTab::DependsTab(QWidget *parent)
     , m_dependsBrowser(0)
 {
     m_comboBox = new KComboBox(this);
-    m_comboBox->addItem(i18nc("@item:inlistbox", "Depenencies of the Current Version"));
-    m_comboBox->addItem(i18nc("@item:inlistbox", "Depenencies of the Latest Version"));
-    m_comboBox->addItem(i18nc("@item:inlistbox", "Provided Packages"));
+    m_comboBox->addItem(i18nc("@item:inlistbox", "Dependencies of the Current Version"));
+    m_comboBox->addItem(i18nc("@item:inlistbox", "Dependencies of the Latest Version"));
+    m_comboBox->addItem(i18nc("@item:inlistbox", "Dependants (Reverse Dependencies)"));
+    m_comboBox->addItem(i18nc("@item:inlistbox", "Virtual Packages Provided"));
     connect(m_comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(populateDepends(int)));
     m_dependsBrowser = new KTextBrowser(this);
 }
@@ -79,6 +80,16 @@ void DependsTab::populateDepends(int index)
             }
             break;
         case 2:
+            list = m_package->requiredByList();
+            if (list.isEmpty()) {
+                m_dependsBrowser->append(i18nc("@label", "This package has no dependants. (Nothing depends on it.)"));
+                return;
+            }
+            foreach (const QString &string, list) {
+                m_dependsBrowser->append(string);
+            }
+            break;
+        case 3:
             list = m_package->providesList();
             if (list.isEmpty()) {
                 m_dependsBrowser->append(i18nc("@label", "This package does provide any virtual packages"));
