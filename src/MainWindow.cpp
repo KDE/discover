@@ -52,6 +52,7 @@
 #include "ManagerWidget.h"
 #include "ReviewWidget.h"
 #include "StatusWidget.h"
+#include "MuonSettings.h"
 
 MainWindow::MainWindow()
     : KXmlGuiWindow(0)
@@ -70,6 +71,7 @@ MainWindow::MainWindow()
 
 MainWindow::~MainWindow()
 {
+    MuonSettings::self()->writeConfig();
 }
 
 void MainWindow::initGUI()
@@ -83,6 +85,7 @@ void MainWindow::initGUI()
 
     m_mainWidget = new QSplitter(this);
     m_mainWidget->setOrientation(Qt::Horizontal);
+    connect(m_mainWidget, SIGNAL(splitterMoved(int, int)), this, SLOT(saveSplitterSizes()));
 
     m_filterBox = new FilterWidget(m_stack);
     connect (this, SIGNAL(backendReady(QApt::Backend*)),
@@ -96,10 +99,7 @@ void MainWindow::initGUI()
 
     m_mainWidget->addWidget(m_filterBox);
     m_mainWidget->addWidget(m_managerWidget);
-    // TODO: Store/restore on app exit/restore
-    QList<int> sizes;
-    sizes << 115 << (this->width() - 115);
-    m_mainWidget->setSizes(sizes);
+    loadSplitterSizes();
 
     m_stack->addWidget(m_mainWidget);
     m_stack->setCurrentWidget(m_mainWidget);
@@ -132,6 +132,24 @@ void MainWindow::initObject()
     m_managerWidget->setFocus();
 
     emit backendReady(m_backend);
+}
+
+void MainWindow::loadSplitterSizes()
+{
+    QList<int> sizes = MuonSettings::self()->splitterSizes();
+    kDebug() << sizes;
+
+    if (sizes.isEmpty()) {
+        sizes << 115 << (this->width() - 115);
+    }
+    m_mainWidget->setSizes(sizes);
+}
+
+void MainWindow::saveSplitterSizes()
+{
+    MuonSettings::self()->setSplitterSizes(m_mainWidget->sizes());
+    MuonSettings::self()->writeConfig();
+    kDebug() << "saving splitter sizes" << m_mainWidget->sizes();
 }
 
 void MainWindow::setupActions()
@@ -191,7 +209,6 @@ void MainWindow::setupActions()
 
 void MainWindow::slotQuit()
 {
-    //Settings::self()->writeConfig();
     if (queryExit()) {
         KApplication::instance()->quit();
     }

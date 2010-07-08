@@ -91,6 +91,8 @@ private:
 private Q_SLOTS:
     void initGUI();
     void initObject();
+    void loadSplitterSizes();
+    void saveSplitterSizes();
     void setupActions();
     void slotQuit();
     void markUpgrade();

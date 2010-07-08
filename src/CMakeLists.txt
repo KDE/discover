@@ -23,6 +23,9 @@ set(muon_SRCS
 kde4_add_ui_files(muon_SRCS
                   DetailsTabs/MainTab.ui)
 
+kde4_add_kcfg_files(muon_SRCS GENERATE_MOC config/MuonSettings.kcfgc)
+install(FILES config/muon.kcfg DESTINATION ${KCFG_INSTALL_DIR})
+
 kde4_add_executable(muon ${muon_SRCS})
 
 target_link_libraries(muon ${KDE4_KDEUI_LIBS}

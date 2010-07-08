@@ -10,7 +10,7 @@ include( FindPkgConfig )
 macro_log_feature(QAPT_FOUND "QApt" "High-level Qt wrapper/Apt implementation around the Apt-pkg library"
                   "http://kubuntu.org" FALSE "" "Muon's package management backend")
 
-include_directories( ${KDE4_INCLUDES} ${QT_INCLUDES} )
+include_directories(${KDE4_INCLUDES} ${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR})
 
 add_subdirectory( src )
 

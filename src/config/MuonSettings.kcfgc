@@ -1,0 +1,4 @@
+File=muon.kcfg
+ClassName=MuonSettings
+Singleton=true
+Mutators=true
