@@ -63,7 +63,7 @@ void StatusWidget::updateStatus()
     QString upgradeableText;
 
     if (upgradeable > 0 && showChanges) {
-        upgradeableText = i18n("%1 upgradeable, ", upgradeable);
+        upgradeableText = i18n("%1 upgradeable,", upgradeable);
     } else {
         upgradeableText = i18n("%1 upgradeable", upgradeable);
         m_countsLabel->setText(availableText % installText % upgradeableText);
@@ -85,7 +85,7 @@ void StatusWidget::updateStatus()
                                  ", %1 to remove", toRemove);
         } else if (toRemove > 0) {
             toRemoveText= i18nc("Label for the number of packages pending removal when there are only removals",
-                                 "% 1 to remove", toRemove);
+                                 " %1 to remove", toRemove);
         }
 
         m_countsLabel->setText(availableText % installText % upgradeableText %
