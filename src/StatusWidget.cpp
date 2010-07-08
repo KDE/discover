@@ -92,7 +92,7 @@ void StatusWidget::updateStatus()
         m_countsLabel->setText(availableText % installText % upgradeableText %
                                toInstallOrUpgradeText % toRemoveText);
 
-        double installSize = m_backend->installSize();
+        qint64 installSize = m_backend->installSize();
         if (installSize < 0) {
             installSize = -installSize;
             m_downloadLabel->setText(i18nc("@label showing download and install size", "%1 to download, %2 of space to be freed",
