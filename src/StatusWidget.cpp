@@ -25,6 +25,7 @@
 #include <QtGui/QLabel>
 
 // KDE includes
+#include <KDebug>
 #include <KGlobal>
 #include <KLocale>
 
@@ -91,7 +92,7 @@ void StatusWidget::updateStatus()
         m_countsLabel->setText(availableText % installText % upgradeableText %
                                toInstallOrUpgradeText % toRemoveText);
 
-        int installSize = m_backend->installSize();
+        double installSize = m_backend->installSize();
         if (installSize < 0) {
             installSize = -installSize;
             m_downloadLabel->setText(i18nc("@label showing download and install size", "%1 to download, %2 of space to be freed",
