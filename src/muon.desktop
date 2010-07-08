@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Muon
 Name[es]=Muon
+Name[hu]=Muon
 Name[pt]=Muon
 Name[pt_BR]=Muon
 Name[sv]=Muon
@@ -18,6 +19,7 @@ GenericName[en_GB]=Package Manager
 GenericName[eo]=Administrilo por programpakaĵoj
 GenericName[es]=Gestor de paquetes
 GenericName[fi]=Paketinhallinta
+GenericName[hu]=Csomagkezelő
 GenericName[ja]=パッケージマネージャ
 GenericName[nb]=Pakkebehandler
 GenericName[nn]=Pakkehandsamar
