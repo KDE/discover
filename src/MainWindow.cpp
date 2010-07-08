@@ -387,9 +387,13 @@ void MainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args)
 void MainWindow::warningOccurred(QApt::WarningCode warning, const QVariantMap &args)
 {
     switch (warning) {
-        case QApt::SizeMismatchWarning:
-            // TODO
+        case QApt::SizeMismatchWarning: {
+            QString text = i18nc("@label",
+                                 "The size of the downloaded items did not equal the expected size.");
+            QString title = i18nc("@title:window", "Size mismatch");
+            KMessageBox::sorry(this, text, title);
             break;
+        }
         case QApt::FetchFailedWarning: {
             QString failedItem = args["FailedItem"].toString();
             QString warningText = args["WarningText"].toString();
