@@ -20,9 +20,11 @@
 
 #include "MainWindow.h"
 
-#include <KApplication>
+#include <KUniqueApplication>
 #include <KAboutData>
 #include <KCmdLineArgs>
+
+#include <stdio.h>
 
 static const char description[] =
     I18N_NOOP("A package manager");
@@ -35,23 +37,19 @@ int main(int argc, char **argv)
                      KAboutData::License_GPL, ki18n("(C) 2009, 2010 Jonathan Thomas"), KLocalizedString(), 0);
     about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
     about.setProgramIconName("application-x-deb");
+
     KCmdLineArgs::init(argc, argv, &about);
 
-    KCmdLineOptions options;
-    KCmdLineArgs::addCmdLineOptions(options);
-    KApplication app;
+    if (!KUniqueApplication::start()) {
+        fprintf(stderr, "Muon is already running!\n");
+        return 0;
+    }
+
+    KUniqueApplication app;
+    app.disableSessionManagement();
 
     MainWindow *mainWindow = new MainWindow;
-
-    // see if we are starting with session management
-    if (app.isSessionRestored())
-    {
-        RESTORE(MainWindow);
-    }
-    else
-    {
-        mainWindow->show();
-    }
+    mainWindow->show();
 
     return app.exec();
 }
