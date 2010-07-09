@@ -40,10 +40,17 @@ VersionTab::VersionTab(QWidget *parent)
     , m_package(0)
     , m_versions()
 {
-    KHBox *headerWidget = new KHBox(this);
-    QLabel *infoIconLabel = new QLabel(headerWidget);
+    QLabel *label = new QLabel(this);
+    label->setText(i18nc("@label", "Available versions:"));
+    m_versionModel = new QStandardItemModel(this);
+    m_versionsView = new QListView(this);
+    m_versionsView->setModel(m_versionModel);
+    connect(m_versionsView, SIGNAL(activated(const QModelIndex &)), this, SLOT(enableButton()));
+
+    KHBox *footerWidget = new KHBox(this);
+    QLabel *infoIconLabel = new QLabel(footerWidget);
     infoIconLabel->setPixmap(KIcon("dialog-warning").pixmap(32, 32));
-    QLabel *infoLabel = new QLabel(headerWidget);
+    QLabel *infoLabel = new QLabel(footerWidget);
     infoLabel->setWordWrap(true);
     infoLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     infoLabel->setText(i18nc("@label", "Muon always selects the most "
@@ -51,13 +58,7 @@ VersionTab::VersionTab(QWidget *parent)
                                        "you force a different version from the "
                                        "default one, errors in the dependency "
                                        "handling can occur."));
-
-    m_versionModel = new QStandardItemModel(this);
-    m_versionsView = new QListView(this);
-    m_versionsView->setModel(m_versionModel);
-    connect(m_versionsView, SIGNAL(activated(const QModelIndex &)), this, SLOT(enableButton()));
-
-    m_forceButton = new QPushButton(this);
+    m_forceButton = new QPushButton(footerWidget);
     m_forceButton->setText(i18nc("@action:button", "Force Version"));
     m_forceButton->setEnabled(false);
     connect(m_forceButton, SIGNAL(clicked()), this, SLOT(forceVersion()));
