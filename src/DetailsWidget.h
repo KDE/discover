@@ -36,6 +36,7 @@ class TechnicalDetailsTab;
 class DependsTab;
 class ChangelogTab;
 class InstalledFilesTab;
+class VersionTab;
 
 class DetailsWidget : public KTabWidget
 {
@@ -53,11 +54,12 @@ private:
     DependsTab *m_dependsTab;
     InstalledFilesTab *m_filesTab;
     ChangelogTab *m_changelogTab;
+    VersionTab *m_versionTab;
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void setPackage(QApt::Package *package);
-    void refreshMainTabButtons();
+    void refreshTabs();
     void clear();
 };
 

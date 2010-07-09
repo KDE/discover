@@ -138,22 +138,26 @@ TechnicalDetailsTab::~TechnicalDetailsTab()
 void TechnicalDetailsTab::setPackage(QApt::Package *package)
 {
     m_package = package;
+    refresh();
+}
 
+void TechnicalDetailsTab::refresh()
+{
     m_maintainer->setText(m_package->maintainer());
-    m_section->setText(m_strings->groupName(package->section()));
+    m_section->setText(m_strings->groupName(m_package->section()));
     m_sourcePackage->setText(m_package->sourcePackage());
 
-    if (package->isInstalled()) {
+    if (m_package->isInstalled()) {
         m_installedVersionBox->show();
-        m_installedVersion->setText(package->installedVersion());
-        m_installedSize->setText(KGlobal::locale()->formatByteSize(package->currentInstalledSize()));
+        m_installedVersion->setText(m_package->installedVersion());
+        m_installedSize->setText(KGlobal::locale()->formatByteSize(m_package->currentInstalledSize()));
     } else {
         m_installedVersionBox->hide();
     }
 
-    m_currentVersion->setText(package->availableVersion());
-    m_currentSize->setText(KGlobal::locale()->formatByteSize(package->availableInstalledSize()));
-    m_downloadSize->setText(KGlobal::locale()->formatByteSize(package->downloadSize()));
+    m_currentVersion->setText(m_package->availableVersion());
+    m_currentSize->setText(KGlobal::locale()->formatByteSize(m_package->availableInstalledSize()));
+    m_downloadSize->setText(KGlobal::locale()->formatByteSize(m_package->downloadSize()));
 }
 
 #include "TechnicalDetailsTab.moc"

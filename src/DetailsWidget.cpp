@@ -37,6 +37,7 @@
 #include "DetailsTabs/DependsTab.h"
 #include "DetailsTabs/ChangelogTab.h"
 #include "DetailsTabs/InstalledFilesTab.h"
+#include "DetailsTabs/VersionTab.h"
 
 DetailsWidget::DetailsWidget(QWidget *parent)
     : KTabWidget(parent)
@@ -49,6 +50,7 @@ DetailsWidget::DetailsWidget(QWidget *parent)
     m_technicalTab = new TechnicalDetailsTab(this);
     m_dependsTab = new DependsTab(this);
     m_filesTab = new InstalledFilesTab;
+    m_versionTab = new VersionTab();
     m_changelogTab = new ChangelogTab(this);
 
 
@@ -79,6 +81,16 @@ void DetailsWidget::setPackage(QApt::Package *package)
     m_dependsTab->setPackage(package);
     m_changelogTab->setPackage(package);
 
+    if (package->availableVersions().size() > 1) {
+        addTab(m_versionTab, i18nc("@title:tab", "Versions"));
+        m_versionTab->setPackage(package);
+    } else {
+        if (currentIndex() == indexOf(m_versionTab)) {
+            setCurrentIndex(0); // Switch to the main tab
+        }
+        removeTab(indexOf(m_versionTab));
+    }
+
     if (package->isInstalled()) {
         addTab(m_filesTab, i18nc("@title:tab", "Installed Files"));
         m_filesTab->setPackage(package);
@@ -92,9 +104,11 @@ void DetailsWidget::setPackage(QApt::Package *package)
     show();
 }
 
-void DetailsWidget::refreshMainTabButtons()
+void DetailsWidget::refreshTabs()
 {
-    m_mainTab->refreshButtons();
+    m_mainTab->refresh();
+    m_technicalTab->refresh();
+    m_dependsTab->refresh();
 }
 
 void DetailsWidget::clear()

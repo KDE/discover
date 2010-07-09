@@ -18,6 +18,7 @@ set(muon_SRCS
     DetailsTabs/DependsTab.cpp
     DetailsTabs/InstalledFilesTab.cpp
     DetailsTabs/TechnicalDetailsTab.cpp
+    DetailsTabs/VersionTab.cpp
  )
 
 kde4_add_ui_files(muon_SRCS

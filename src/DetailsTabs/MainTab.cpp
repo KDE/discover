@@ -78,25 +78,9 @@ void MainTab::setPackage(QApt::Package *package)
 {
     QApt::Package *oldPackage = m_package;
     m_package = package;
-    m_mainTab->packageShortDescLabel->setText(package->shortDescription());
-
-    m_screenshotButton->setText(i18nc("@action:button", "Get Screenshot..."));
-    m_screenshotButton->setEnabled(true);
 
     setupButtons(oldPackage);
-    refreshButtons();
-
-    m_mainTab->descriptionBrowser->setText(package->longDescription());
-
-    if (package->isSupported()) {
-        m_mainTab->supportedLabel->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
-                                                 "Canonical provides critical updates for %1 until %2",
-                                                 package->name(), package->supportedUntil()));
-    } else {
-       m_mainTab->supportedLabel->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
-                                                "Canonical does not provide updates for %1. Some updates "
-                                                "may be provided by the Ubuntu community", package->name()));
-    }
+    refresh();
 }
 
 void MainTab::clear()
@@ -142,7 +126,7 @@ void MainTab::setupButtons(QApt::Package *oldpackage)
     connect(m_mainTab->cancelButton, SIGNAL(clicked()), this, SLOT(setKeep()));
 }
 
-void MainTab::refreshButtons()
+void MainTab::refresh()
 {
     if (!m_package) {
         return; // Nothing to refresh yet, so return, else we crash
@@ -176,6 +160,23 @@ void MainTab::refreshButtons()
         m_mainTab->upgradeButton->hide();
         m_mainTab->reinstallButton->hide();
         m_mainTab->cancelButton->show();
+    }
+
+    m_mainTab->packageShortDescLabel->setText(m_package->shortDescription());
+
+    m_screenshotButton->setText(i18nc("@action:button", "Get Screenshot..."));
+    m_screenshotButton->setEnabled(true);
+
+    m_mainTab->descriptionBrowser->setText(m_package->longDescription());
+
+    if (m_package->isSupported()) {
+        m_mainTab->supportedLabel->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
+                                                 "Canonical provides critical updates for %1 until %2",
+                                                 m_package->name(), m_package->supportedUntil()));
+    } else {
+       m_mainTab->supportedLabel->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
+                                                "Canonical does not provide updates for %1. Some updates "
+                                                "may be provided by the Ubuntu community", m_package->name()));
     }
 }
 

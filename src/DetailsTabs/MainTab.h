@@ -67,7 +67,7 @@ private:
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void setPackage(QApt::Package *package);
-    void refreshButtons();
+    void refresh();
     void clear();
 
 private Q_SLOTS:

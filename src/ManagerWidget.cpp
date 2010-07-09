@@ -98,7 +98,7 @@ void ManagerWidget::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
     connect(m_backend, SIGNAL(packageChanged()), m_packageView, SLOT(updateView()));
-    connect(m_backend, SIGNAL(packageChanged()), m_detailsWidget, SLOT(refreshMainTabButtons()));
+    connect(m_backend, SIGNAL(packageChanged()), m_detailsWidget, SLOT(refreshTabs()));
 
     m_detailsWidget->setBackend(backend);
     m_model->setPackages(m_backend->availablePackages());

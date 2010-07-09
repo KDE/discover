@@ -18,37 +18,41 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef DEPENDSTAB_H
-#define DEPENDSTAB_H
+#ifndef VERSIONTAB_H
+#define VERSIONTAB_H
 
 #include <KVBox>
 
-class KComboBox;
-class KTextBrowser;
+class QListView;
+class QPushButton;
+class QStandardItemModel;
 
 namespace QApt {
     class Package;
 }
 
-class DependsTab : public KVBox
+class VersionTab : public KVBox
 {
     Q_OBJECT
 public:
-    explicit DependsTab(QWidget *parent = 0);
-    ~DependsTab();
+    explicit VersionTab(QWidget *parent = 0);
+    ~VersionTab();
 
 private:
     QApt::Package *m_package;
 
-    KComboBox *m_comboBox;
-    KTextBrowser *m_dependsBrowser;
+    QStandardItemModel *m_versionModel;
+    QListView *m_versionsView;
+    QPushButton *m_forceButton;
+    QStringList m_versions;
 
 public Q_SLOTS:
     void setPackage(QApt::Package *package);
-    void refresh();
 
 private Q_SLOTS:
-    void populateDepends(int index);
+    void enableButton();
+    void populateVersions();
+    void forceVersion();
 };
 
 #endif

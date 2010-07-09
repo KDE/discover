@@ -50,6 +50,11 @@ DependsTab::~DependsTab()
 void DependsTab::setPackage(QApt::Package *package)
 {
     m_package = package;
+    refresh();
+}
+
+void DependsTab::refresh()
+{
     m_dependsBrowser->setText(QString());
     populateDepends(m_comboBox->currentIndex());
 }
