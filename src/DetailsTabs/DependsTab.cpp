@@ -20,8 +20,12 @@
 
 #include "DependsTab.h"
 
+// Qt includes
+#include <QtGui/QScrollBar>
+
 // KDE includes
 #include <KComboBox>
+#include <KDebug>
 #include <KLocale>
 #include <KTextBrowser>
 
@@ -109,6 +113,9 @@ void DependsTab::populateDepends(int index)
             }
             break;
     }
+
+    // Doesn't work all the time, but QTextEdit has awful API and even this was hard to find so I'll keep it commented
+    // m_dependsBrowser->verticalScrollBar()->triggerAction(QAbstractSlider::SliderToMinimum);
 }
 
 #include "DependsTab.moc"
