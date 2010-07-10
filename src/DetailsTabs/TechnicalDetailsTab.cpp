@@ -143,6 +143,10 @@ void TechnicalDetailsTab::setPackage(QApt::Package *package)
 
 void TechnicalDetailsTab::refresh()
 {
+    if (!m_package) {
+        return; // Nothing to refresh yet, so return, else we crash
+    }
+
     m_maintainer->setText(m_package->maintainer());
     m_section->setText(m_strings->groupName(m_package->section()));
     m_sourcePackage->setText(m_package->sourcePackage());

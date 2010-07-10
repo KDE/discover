@@ -55,6 +55,10 @@ void DependsTab::setPackage(QApt::Package *package)
 
 void DependsTab::refresh()
 {
+    if (!m_package) {
+        return; // Nothing to refresh yet, so return, else we crash
+    }
+
     m_dependsBrowser->setText(QString());
     populateDepends(m_comboBox->currentIndex());
 }
