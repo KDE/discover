@@ -107,19 +107,19 @@ TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
 
     // currentVersionBox, row 0
     QLabel *currentVersionLabel = new QLabel(m_currentVersionBox);
-    currentVersionLabel->setText(i18nc("@label Label preceeding the package version", "Version:"));
+    currentVersionLabel->setText(i18nc("@label Label preceding the package version", "Version:"));
     m_currentVersion = new QLabel(m_currentVersionBox);
     currentGridLayout->addWidget(currentVersionLabel, 0, 0, Qt::AlignRight);
     currentGridLayout->addWidget(m_currentVersion, 0, 1, Qt::AlignLeft);
     // currentVersionBox, row 1
     QLabel *currentSizeLabel = new QLabel(m_currentVersionBox);
-    currentSizeLabel->setText(i18nc("@label Label preceeding the package size", "Installed Size:"));
+    currentSizeLabel->setText(i18nc("@label Label preceding the package size", "Installed Size:"));
     m_currentSize = new QLabel(m_currentVersionBox);
     currentGridLayout->addWidget(currentSizeLabel, 1, 0, Qt::AlignRight);
     currentGridLayout->addWidget(m_currentSize, 1, 1, Qt::AlignLeft);
     // currentVersionBox, row 2
     QLabel *downloadSizeLabel = new QLabel(m_currentVersionBox);
-    downloadSizeLabel->setText(i18nc("@label Label preceeding the package's download size", "Download Size:"));
+    downloadSizeLabel->setText(i18nc("@label Label preceding the package's download size", "Download Size:"));
     m_downloadSize = new QLabel(m_currentVersionBox);
     currentGridLayout->addWidget(downloadSizeLabel, 2, 0, Qt::AlignRight);
     currentGridLayout->addWidget(m_downloadSize, 2, 1, Qt::AlignLeft);

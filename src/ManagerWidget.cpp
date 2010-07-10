@@ -146,7 +146,7 @@ void ManagerWidget::startSearch()
 void ManagerWidget::filterByGroup(const QString &groupName)
 {
     QString groupKey = m_strings->groupKey(groupName);
-    if (groupName == i18nc("Item that resets the filter to \"all\"", "All")) {
+    if (groupName == i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All")) {
         groupKey.clear();
     }
     m_proxyModel->setGroupFilter(groupKey);

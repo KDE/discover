@@ -66,7 +66,7 @@ FilterWidget::FilterWidget(QWidget *parent)
 
     m_originList = new QListView(this);
     m_originList->setAlternatingRowColors(true);
-    m_filterBox->addItem(m_originList, KIcon(), i18n("By Origin"));
+    m_filterBox->addItem(m_originList, KIcon(), i18nc("@title:tab", "By Origin"));
     m_originModel = new QStandardItemModel;
     connect(m_originList, SIGNAL(activated(const QModelIndex&)),
             this, SLOT(originActivated(const QModelIndex&)));

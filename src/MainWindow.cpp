@@ -160,7 +160,7 @@ void MainWindow::setupActions()
 
     m_updateAction = actionCollection()->addAction("update");
     m_updateAction->setIcon(KIcon("system-software-update"));
-    m_updateAction->setText(i18nc("@action Checks the internet for updates", "Check for Updates"));
+    m_updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     m_updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     connect(m_updateAction, SIGNAL(triggered()), this, SLOT(checkForUpdates()));
 
@@ -603,7 +603,7 @@ void MainWindow::runSourcesEditor()
     QStringList arguments;
     QString cmd;
     int winID = effectiveWinId();
-    cmd = "software-properties-kde --dont-update --attach " + QString::number(winID);
+    cmd = "software-properties-kde --dont-update --attach " + QString::number(winID); //krazy:exclude=spelling
     arguments << "/usr/lib/kde4/libexec/kdesu" << QString(cmd);
     proc->setProgram(arguments);
     find(winID)->setEnabled(false);

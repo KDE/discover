@@ -82,3 +82,5 @@ void ChangelogTab::fetchChangelog()
     connect(getJob, SIGNAL(result(KJob*)),
             this, SLOT(changelogFetched(KJob*)));
 }
+
+#include "ChangelogTab.moc"
