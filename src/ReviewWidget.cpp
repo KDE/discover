@@ -60,10 +60,10 @@ ReviewWidget::ReviewWidget(QWidget *parent)
     m_packageView = new PackageView(topVBox);
     m_packageView->setModel(m_proxyModel);
     m_packageView->setItemDelegate(delegate);
-    connect(m_packageView, SIGNAL(clicked(const QModelIndex&)),
-            this, SLOT(packageActivated(const QModelIndex&)));
-    connect (m_packageView, SIGNAL(currentPackageChanged(const QModelIndex&)),
-             this, SLOT(packageActivated(const QModelIndex&)));
+    connect(m_packageView, SIGNAL(clicked(const QModelIndex &)),
+            this, SLOT(packageActivated(const QModelIndex &)));
+    connect(m_packageView, SIGNAL(currentPackageChanged(const QModelIndex &)),
+            this, SLOT(packageActivated(const QModelIndex &)));
 
     KVBox *bottomVBox = new KVBox;
 

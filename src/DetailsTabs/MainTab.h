@@ -35,12 +35,14 @@ class KJob;
 class KMenu;
 class KTemporaryFile;
 
-namespace QApt {
+namespace QApt
+{
     class Backend;
     class Package;
 }
 
-namespace Ui {
+namespace Ui
+{
     class MainTab;
 }
 

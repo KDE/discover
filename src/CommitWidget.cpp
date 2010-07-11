@@ -72,7 +72,7 @@ void CommitWidget::setProgress(int percentage)
     m_progressBar->setValue(percentage);
 }
 
-void CommitWidget::updateCommitProgress(const QString& message, int percentage)
+void CommitWidget::updateCommitProgress(const QString &message, int percentage)
 {
     setLabelText(message);
     setProgress(percentage);

@@ -24,8 +24,8 @@
 #include <KLocale>
 
 PackageModel::PackageModel(QObject *parent)
-        : QAbstractListModel(parent)
-        , m_packages(QApt::PackageList())
+    : QAbstractListModel(parent)
+    , m_packages(QApt::PackageList())
 {
 }
 
@@ -43,23 +43,23 @@ int PackageModel::columnCount(const QModelIndex & /*parent*/) const
     return 3;
 }
 
-QVariant PackageModel::data(const QModelIndex & index, int role) const
+QVariant PackageModel::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid()) {
         return false;
     }
     switch (role) {
-        case NameRole:
-            return m_packages.at(index.row())->name();
-        case IconRole:
-            return KIcon("application-x-deb");
-        case DescriptionRole:
-            return m_packages.at(index.row())->shortDescription();
-        case StatusRole:
-        case ActionRole:
-            return m_packages.at(index.row())->state();
-        case Qt::ToolTipRole:
-            return QVariant();
+    case NameRole:
+        return m_packages.at(index.row())->name();
+    case IconRole:
+        return KIcon("application-x-deb");
+    case DescriptionRole:
+        return m_packages.at(index.row())->shortDescription();
+    case StatusRole:
+    case ActionRole:
+        return m_packages.at(index.row())->state();
+    case Qt::ToolTipRole:
+        return QVariant();
     }
 
     return QVariant();
@@ -69,13 +69,13 @@ QVariant PackageModel::headerData(int section, Qt::Orientation orientation, int 
 {
     Q_UNUSED(orientation);
     if (role == Qt::DisplayRole) {
-        switch(section) {
-            case 0:
-                return QVariant(i18n("Package"));
-            case 1:
-                return QVariant(i18n("Status"));
-            case 2:
-                return QVariant(i18n("Requested"));
+        switch (section) {
+        case 0:
+            return QVariant(i18n("Package"));
+        case 1:
+            return QVariant(i18n("Status"));
+        case 2:
+            return QVariant(i18n("Requested"));
         }
     }
     return QVariant();
@@ -84,9 +84,9 @@ QVariant PackageModel::headerData(int section, Qt::Orientation orientation, int 
 void PackageModel::setPackages(const QApt::PackageList &list)
 {
     // Remove check when sid has >= 4.7
-    #if QT_VERSION >= 0x040700
+#if QT_VERSION >= 0x040700
     m_packages.reserve(list.size());
-    #endif
+#endif
     beginInsertRows(QModelIndex(), m_packages.count(), m_packages.count());
     m_packages = list;
     endInsertRows();

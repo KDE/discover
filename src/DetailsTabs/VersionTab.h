@@ -27,7 +27,8 @@ class QListView;
 class QPushButton;
 class QStandardItemModel;
 
-namespace QApt {
+namespace QApt
+{
     class Package;
 }
 

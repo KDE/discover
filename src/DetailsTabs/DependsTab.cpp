@@ -72,46 +72,46 @@ void DependsTab::populateDepends(int index)
     m_dependsBrowser->setText(QString());
     QStringList list;
     switch (index) {
-        case 0:
-            list = m_package->dependencyList(false);
-            if (list.isEmpty()) {
-                m_dependsBrowser->append(i18nc("@label", "This package does not have any dependencies"));
-                return;
-            }
-            foreach (const QString &string, list) {
-                m_dependsBrowser->append(string);
-            }
-            break;
-        case 1:
-            list = m_package->dependencyList(true);
-            if (list.isEmpty()) {
-                m_dependsBrowser->append(i18nc("@label", "This package does not have any dependencies"));
-                return;
-            }
-            foreach (const QString &string, list) {
-                m_dependsBrowser->append(string);
-            }
-            break;
-        case 2:
-            list = m_package->requiredByList();
-            if (list.isEmpty()) {
-                m_dependsBrowser->append(i18nc("@label", "This package has no dependants. (Nothing depends on it.)"));
-                return;
-            }
-            foreach (const QString &string, list) {
-                m_dependsBrowser->append(string);
-            }
-            break;
-        case 3:
-            list = m_package->providesList();
-            if (list.isEmpty()) {
-                m_dependsBrowser->append(i18nc("@label", "This package does provide any virtual packages"));
-                return;
-            }
-            foreach (const QString &string, list) {
-                m_dependsBrowser->append(string);
-            }
-            break;
+    case 0:
+        list = m_package->dependencyList(false);
+        if (list.isEmpty()) {
+            m_dependsBrowser->append(i18nc("@label", "This package does not have any dependencies"));
+            return;
+        }
+        foreach(const QString & string, list) {
+            m_dependsBrowser->append(string);
+        }
+        break;
+    case 1:
+        list = m_package->dependencyList(true);
+        if (list.isEmpty()) {
+            m_dependsBrowser->append(i18nc("@label", "This package does not have any dependencies"));
+            return;
+        }
+        foreach(const QString & string, list) {
+            m_dependsBrowser->append(string);
+        }
+        break;
+    case 2:
+        list = m_package->requiredByList();
+        if (list.isEmpty()) {
+            m_dependsBrowser->append(i18nc("@label", "This package has no dependants. (Nothing depends on it.)"));
+            return;
+        }
+        foreach(const QString & string, list) {
+            m_dependsBrowser->append(string);
+        }
+        break;
+    case 3:
+        list = m_package->providesList();
+        if (list.isEmpty()) {
+            m_dependsBrowser->append(i18nc("@label", "This package does provide any virtual packages"));
+            return;
+        }
+        foreach(const QString & string, list) {
+            m_dependsBrowser->append(string);
+        }
+        break;
     }
 
     // Doesn't work all the time, but QTextEdit has awful API and even this was hard to find so I'll keep it commented

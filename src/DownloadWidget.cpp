@@ -104,7 +104,7 @@ void DownloadWidget::updateDownloadProgress(int percentage, int speed, int ETA)
     QString timeRemaining;
     int ETAMilliseconds = ETA * 1000;
 
-    if (ETAMilliseconds <= 0 || ETAMilliseconds > 14*24*60*60) {
+    if (ETAMilliseconds <= 0 || ETAMilliseconds > 14 * 24 * 60 * 60) {
         // If ETA is less than zero or bigger than 2 weeks
         timeRemaining = i18nc("@item:intext Label for when the remaining time is unknown",
                               " - Unknown time remaining");
@@ -120,17 +120,17 @@ void DownloadWidget::updateDownloadMessage(int flag, const QString &message)
     QString fullMessage;
 
     switch (flag) {
-      case QApt::DownloadFetch:
-          fullMessage = i18nc("@info:status", "Downloading: %1", message);
-          break;
-      case QApt::HitFetch:
-          fullMessage = i18nc("@info:status", "Checking: %1", message);
-          break;
-      case QApt::IgnoredFetch:
-          fullMessage = i18nc("@info:status", "Ignored: %1", message);
-          break;
-      default:
-          fullMessage = message;
+    case QApt::DownloadFetch:
+        fullMessage = i18nc("@info:status", "Downloading: %1", message);
+        break;
+    case QApt::HitFetch:
+        fullMessage = i18nc("@info:status", "Checking: %1", message);
+        break;
+    case QApt::IgnoredFetch:
+        fullMessage = i18nc("@info:status", "Ignored: %1", message);
+        break;
+    default:
+        fullMessage = message;
     }
     addItem(fullMessage);
 }

@@ -32,8 +32,8 @@
 // Own
 #include "PackageModel.h"
 
-PackageDelegate::PackageDelegate(QObject * parent)
-        : QAbstractItemDelegate(parent)
+PackageDelegate::PackageDelegate(QObject *parent)
+    : QAbstractItemDelegate(parent)
 {
     m_spacing  = 4;
     m_iconSize = KIconLoader::global()->currentSize(KIconLoader::Toolbar);
@@ -46,7 +46,7 @@ PackageDelegate::~PackageDelegate()
     delete m_icon;
 }
 
-void PackageDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
+void PackageDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     if (!index.isValid()) {
         return;
@@ -67,14 +67,14 @@ void PackageDelegate::paint(QPainter* painter, const QStyleOptionViewItem& optio
     }
 }
 
-void PackageDelegate::paintBackground(QPainter* painter, const QStyleOptionViewItem& option) const
+void PackageDelegate::paintBackground(QPainter *painter, const QStyleOptionViewItem &option) const
 {
     QStyleOptionViewItemV4 opt(option);
     QStyle *style = opt.widget ? opt.widget->style() : QApplication::style();
     style->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt, painter, opt.widget);
 }
 
-void PackageDelegate::paintPackageName(QPainter* painter, const QStyleOptionViewItem& option , const QModelIndex &index) const
+void PackageDelegate::paintPackageName(QPainter *painter, const QStyleOptionViewItem &option , const QModelIndex &index) const
 {
     int left = option.rect.left();
     int top = option.rect.top();
@@ -82,8 +82,8 @@ void PackageDelegate::paintPackageName(QPainter* painter, const QStyleOptionView
 
     bool leftToRight = (painter->layoutDirection() == Qt::LeftToRight);
 
-    QColor foregroundColor = (option.state.testFlag(QStyle::State_Selected))?
-        option.palette.color(QPalette::HighlightedText):option.palette.color(QPalette::Text);
+    QColor foregroundColor = (option.state.testFlag(QStyle::State_Selected)) ?
+                             option.palette.color(QPalette::HighlightedText) : option.palette.color(QPalette::Text);
 
     // Pixmap that the text/icon goes in
     QPixmap pixmap(option.rect.size());
@@ -128,12 +128,12 @@ void PackageDelegate::paintPackageName(QPainter* painter, const QStyleOptionView
     // Gradient part of the background - fading of the text at the end
     if (leftToRight) {
         gradient = QLinearGradient(left + width - m_spacing - 16 /*fade length*/, 0,
-                left + width - m_spacing, 0);
+                                   left + width - m_spacing, 0);
         gradient.setColorAt(0, Qt::white);
         gradient.setColorAt(1, Qt::transparent);
     } else {
         gradient = QLinearGradient(left + m_spacing, 0,
-                left + m_spacing + 16, 0);
+                                   left + m_spacing + 16, 0);
         gradient.setColorAt(0, Qt::transparent);
         gradient.setColorAt(1, Qt::white);
     }
@@ -147,83 +147,83 @@ void PackageDelegate::paintPackageName(QPainter* painter, const QStyleOptionView
     painter->drawPixmap(option.rect.topLeft(), pixmap);
 }
 
-void PackageDelegate::paintText(QPainter* painter, const QStyleOptionViewItem& option , const QModelIndex &index) const
+void PackageDelegate::paintText(QPainter *painter, const QStyleOptionViewItem &option , const QModelIndex &index) const
 {
     int state;
     QString text;
     QPen pen;
 
     switch (index.column()) {
-        case 1:
-            state = index.data(PackageModel::StatusRole).toInt();
+    case 1:
+        state = index.data(PackageModel::StatusRole).toInt();
 
-            if (state & QApt::Package::NowBroken){
-                text = i18n("Broken");
-                pen.setColor(Qt::red);
-                break;
-            }
-
-            if (state & QApt::Package::Installed) {
-                text = i18n("Installed");
-                pen.setColor(Qt::darkGreen);
-
-                if (state & QApt::Package::Upgradeable) {
-                    text = i18n("Upgradeable");
-                    pen.setColor(Qt::darkYellow);
-                }
-            } else {
-                text = i18n("Not installed");
-                pen.setColor(Qt::blue);
-            }
+        if (state & QApt::Package::NowBroken) {
+            text = i18n("Broken");
+            pen.setColor(Qt::red);
             break;
-        case 2:
-            state = index.data(PackageModel::ActionRole).toInt();
+        }
 
-            if (state & QApt::Package::ToKeep) {
-                text = i18n("No change");
-                pen.setColor(Qt::blue);
-                // No other "To" flag will be set if we are keeping
-                break;
-            }
+        if (state & QApt::Package::Installed) {
+            text = i18n("Installed");
+            pen.setColor(Qt::darkGreen);
 
-            if (state & QApt::Package::ToInstall) {
-                text = i18n("Install");
-                pen.setColor(Qt::darkGreen);
-            }
-
-            if (state & QApt::Package::ToUpgrade) {
-                text = i18n("Upgrade");
+            if (state & QApt::Package::Upgradeable) {
+                text = i18n("Upgradeable");
                 pen.setColor(Qt::darkYellow);
-                break;
             }
+        } else {
+            text = i18n("Not installed");
+            pen.setColor(Qt::blue);
+        }
+        break;
+    case 2:
+        state = index.data(PackageModel::ActionRole).toInt();
 
-            if (state & QApt::Package::ToRemove) {
-                text = i18n("Remove");
-                pen.setColor(Qt::red);
-            }
-
-            if (state & QApt::Package::ToPurge) {
-                text = i18n("Purge");
-                pen.setColor(Qt::red);
-                break;
-            }
-
-            if (state & QApt::Package::ToReInstall) {
-                text = i18n("Reinstall");
-                pen.setColor(Qt::darkGreen);
-                break;
-            }
-
-            if (state & QApt::Package::ToDowngrade) {
-                text = i18n("Downgrade");
-                pen.setColor(Qt::darkYellow);
-                break;
-            }
+        if (state & QApt::Package::ToKeep) {
+            text = i18n("No change");
+            pen.setColor(Qt::blue);
+            // No other "To" flag will be set if we are keeping
             break;
+        }
+
+        if (state & QApt::Package::ToInstall) {
+            text = i18n("Install");
+            pen.setColor(Qt::darkGreen);
+        }
+
+        if (state & QApt::Package::ToUpgrade) {
+            text = i18n("Upgrade");
+            pen.setColor(Qt::darkYellow);
+            break;
+        }
+
+        if (state & QApt::Package::ToRemove) {
+            text = i18n("Remove");
+            pen.setColor(Qt::red);
+        }
+
+        if (state & QApt::Package::ToPurge) {
+            text = i18n("Purge");
+            pen.setColor(Qt::red);
+            break;
+        }
+
+        if (state & QApt::Package::ToReInstall) {
+            text = i18n("Reinstall");
+            pen.setColor(Qt::darkGreen);
+            break;
+        }
+
+        if (state & QApt::Package::ToDowngrade) {
+            text = i18n("Downgrade");
+            pen.setColor(Qt::darkYellow);
+            break;
+        }
+        break;
     }
 
     int x = option.rect.x() + m_spacing;
-    int y = option.rect.y() + calcItemHeight(option)/2 + m_spacing;
+    int y = option.rect.y() + calcItemHeight(option) / 2 + m_spacing;
     int width = option.rect.width();
 
     QFont font = option.font;
@@ -233,7 +233,7 @@ void PackageDelegate::paintText(QPainter* painter, const QStyleOptionViewItem& o
     painter->drawText(x, y, fontMetrics.elidedText(text, option.textElideMode, width));
 }
 
-QSize PackageDelegate::sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const
+QSize PackageDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     Q_UNUSED(option);
     Q_UNUSED(index);

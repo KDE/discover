@@ -23,7 +23,7 @@
 #include <QtGui/QHeaderView>
 
 PackageView::PackageView(QWidget *parent)
-        : QTreeView(parent)
+    : QTreeView(parent)
 {
     setAlternatingRowColors(true);
     setRootIsDecorated(false);
@@ -35,7 +35,7 @@ PackageView::~PackageView()
 {
 }
 
-void PackageView::currentChanged(const QModelIndex & current, const QModelIndex & previous)
+void PackageView::currentChanged(const QModelIndex &current, const QModelIndex &previous)
 {
     if (previous.row() != -1) {
         emit currentPackageChanged(current);

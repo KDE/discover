@@ -33,7 +33,8 @@ class QTreeView;
 
 class KLineEdit;
 
-namespace QApt {
+namespace QApt
+{
     class Backend;
 }
 

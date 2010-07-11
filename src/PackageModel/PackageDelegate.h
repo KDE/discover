@@ -29,7 +29,7 @@ class PackageDelegate: public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    explicit PackageDelegate(QObject* parent = 0);
+    explicit PackageDelegate(QObject *parent = 0);
     ~PackageDelegate();
 
 protected:

@@ -29,8 +29,7 @@ class PackageModel: public QAbstractListModel
 {
     Q_OBJECT
 public:
-    enum
-    {
+    enum {
         NameRole = Qt::UserRole,
         IconRole = Qt::UserRole + 1,
         DescriptionRole = Qt::UserRole + 2,

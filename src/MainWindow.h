@@ -42,7 +42,8 @@ class DownloadWidget;
 class CommitWidget;
 class StatusWidget;
 
-namespace QApt {
+namespace QApt
+{
     class Backend;
 }
 

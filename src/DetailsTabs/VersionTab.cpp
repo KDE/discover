@@ -54,10 +54,10 @@ VersionTab::VersionTab(QWidget *parent)
     infoLabel->setWordWrap(true);
     infoLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     infoLabel->setText(i18nc("@label", "Muon always selects the most "
-                                       "applicable version available. If "
-                                       "you force a different version from the "
-                                       "default one, errors in the dependency "
-                                       "handling can occur."));
+                             "applicable version available. If "
+                             "you force a different version from the "
+                             "default one, errors in the dependency "
+                             "handling can occur."));
     m_forceButton = new QPushButton(footerWidget);
     m_forceButton->setText(i18nc("@action:button", "Force Version"));
     m_forceButton->setEnabled(false);
@@ -84,7 +84,7 @@ void VersionTab::populateVersions()
 {
     QStringList availableVersions = m_package->availableVersions();
 
-    foreach(const QString &version, availableVersions) {
+    foreach(const QString & version, availableVersions) {
         QStringList split = version.split(' ');
         m_versions.append(split.at(0));
 

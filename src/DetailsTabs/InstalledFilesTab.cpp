@@ -49,7 +49,7 @@ void InstalledFilesTab::populateFilesList()
     QStringList filesList = m_package->installedFilesList();
     QString filesString;
 
-    foreach (const QString &file, filesList) {
+    foreach(const QString & file, filesList) {
         filesString.append(file + '\n');
     }
 

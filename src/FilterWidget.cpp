@@ -54,22 +54,22 @@ FilterWidget::FilterWidget(QWidget *parent)
     m_categoriesList->setHeaderHidden(true);
     m_filterBox->addItem(m_categoriesList, KIcon(), i18nc("@title:tab", "By Category"));
     m_categoryModel = new QStandardItemModel;
-    connect(m_categoriesList, SIGNAL(activated(const QModelIndex&)),
-            this, SLOT(categoryActivated(const QModelIndex&)));
+    connect(m_categoriesList, SIGNAL(activated(const QModelIndex &)),
+            this, SLOT(categoryActivated(const QModelIndex &)));
 
     m_statusList = new QListView(this);
     m_statusList->setAlternatingRowColors(true);
     m_filterBox->addItem(m_statusList, KIcon(), i18nc("@title:tab", "By Status"));
     m_statusModel = new QStandardItemModel;
-    connect(m_statusList, SIGNAL(activated(const QModelIndex&)),
-            this, SLOT(statusActivated(const QModelIndex&)));
+    connect(m_statusList, SIGNAL(activated(const QModelIndex &)),
+            this, SLOT(statusActivated(const QModelIndex &)));
 
     m_originList = new QListView(this);
     m_originList->setAlternatingRowColors(true);
     m_filterBox->addItem(m_originList, KIcon(), i18nc("@title:tab", "By Origin"));
     m_originModel = new QStandardItemModel;
-    connect(m_originList, SIGNAL(activated(const QModelIndex&)),
-            this, SLOT(originActivated(const QModelIndex&)));
+    connect(m_originList, SIGNAL(activated(const QModelIndex &)),
+            this, SLOT(originActivated(const QModelIndex &)));
 
     setWidget(m_filterBox);
     setEnabled(false);
@@ -100,7 +100,7 @@ void FilterWidget::populateCategories()
     QApt::GroupList groups = m_backend->availableGroups();
     QSet<QString> groupSet;
 
-    foreach (const QApt::Group &group, groups) {
+    foreach(const QApt::Group & group, groups) {
         QString groupName = m_strings->groupName(group);
 
         if (!groupName.isEmpty()) {
@@ -108,7 +108,7 @@ void FilterWidget::populateCategories()
         }
     }
 
-    foreach (const QString &group, groupSet.toList()) {
+    foreach(const QString & group, groupSet.toList()) {
         QStandardItem *groupItem = new QStandardItem;
         groupItem->setText(group);
         m_categoryModel->appendRow(groupItem);
@@ -161,7 +161,7 @@ void FilterWidget::populateOrigins()
     defaultItem->setText(i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All"));
     m_originModel->appendRow(defaultItem);
 
-    foreach(const QString &originLabel, originLabels) {
+    foreach(const QString & originLabel, originLabels) {
         QStandardItem *originItem = new QStandardItem;
         originItem->setText(originLabel);
         m_originModel->appendRow(originItem);

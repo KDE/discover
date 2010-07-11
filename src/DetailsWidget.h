@@ -26,7 +26,8 @@
 
 class QScrollArea;
 
-namespace QApt {
+namespace QApt
+{
     class Backend;
     class Package;
 }

@@ -26,7 +26,8 @@
 class QGroupBox;
 class QLabel;
 
-namespace QApt {
+namespace QApt
+{
     class Package;
 }
 

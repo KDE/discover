@@ -26,7 +26,8 @@
 class KComboBox;
 class KTextBrowser;
 
-namespace QApt {
+namespace QApt
+{
     class Package;
 }
 

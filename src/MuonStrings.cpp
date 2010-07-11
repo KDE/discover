@@ -51,7 +51,7 @@ QHash<QString, QString> MuonStrings::groupHash()
     hash["devel"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"devel\"",
                           "Development");
     hash["doc"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"doc\"",
-                         "Documentation");
+                        "Documentation");
     hash["debug"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"debug\"",
                           "Debug");
     hash["editors"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"editors\"",
@@ -69,15 +69,15 @@ QHash<QString, QString> MuonStrings::groupHash()
     hash["graphics"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"graphics\"",
                              "Graphics");
     hash["gnu-r"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"gnu-r\"",
-                                "GNU R Statistical System");
+                          "GNU R Statistical System");
     hash["gnustep"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"gnustep\"",
                             "Gnustep Desktop Environment");
     hash["hamradio"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"hamradio\"",
-                                "Amateur Radio");
+                             "Amateur Radio");
     hash["haskell"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"haskell\"",
-                                "Haskell Programming Language");
+                            "Haskell Programming Language");
     hash["httpd"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"httpd\"",
-                                "Web Servers");
+                          "Web Servers");
     hash["interpreters"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"interpreters\"",
                                  "Interpreted Computer Languages");
     hash["java"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"java\"",
@@ -91,7 +91,7 @@ QHash<QString, QString> MuonStrings::groupHash()
     hash["libs"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"libs\"",
                          "Libraries");
     hash["lisp"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"lisp\"",
-                                "Lisp Programming Language");
+                         "Lisp Programming Language");
     hash["localization"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"localization\"",
                                  "Localization");
     hash["mail"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"mail\"",
@@ -101,7 +101,7 @@ QHash<QString, QString> MuonStrings::groupHash()
     hash["misc"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"misc\"",
                          "Miscellaneous - Text-based");
     hash["net"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"net\"",
-                         "Networking");
+                        "Networking");
     hash["news"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"news\"",
                          "Newsgroups");
     hash["ocaml"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"ocaml\"",
@@ -131,11 +131,11 @@ QHash<QString, QString> MuonStrings::groupHash()
     hash["text"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"text\"",
                          "Word Processing");
     hash["utils"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"utils\"",
-                         "Utilities");
+                          "Utilities");
     hash["vcs"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"vcs\"",
                         "Version Control Systems");
     hash["video"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"video\"",
-                         "Video Software");
+                          "Video Software");
     hash["web"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"web\"",
                         "Internet");
     hash["x11"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"x11\"",
@@ -155,7 +155,7 @@ QHash<QString, QString> MuonStrings::groupHash()
     hash["non-us"] = i18nc("@item:inlistbox Debian package section \"non-US\", for packages that cannot be shipped in the US",
                            "Restricted On Export");
     hash["non-free"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"non-free\"",
-                         "Non-free");
+                             "Non-free");
     hash["contrib"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"contrib\"",
                             "Contrib");
     return hash;
@@ -184,7 +184,7 @@ QHash<int, QString> MuonStrings::stateHash()
 {
     QHash<int, QString> hash;
     hash[QApt::Package::NotInstalled] = i18nc("@info:status Package state" , "Not Installed");
-    hash[QApt::Package::Installed] =i18nc("@info:status Package state", "Installed");
+    hash[QApt::Package::Installed] = i18nc("@info:status Package state", "Installed");
     hash[QApt::Package::Upgradeable] = i18nc("@info:status Package state", "Upgradeable");
     hash[QApt::Package::NowBroken] = i18nc("@info:status Package state", "Broken");
 

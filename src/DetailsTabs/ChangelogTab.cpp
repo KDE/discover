@@ -77,10 +77,10 @@ void ChangelogTab::fetchChangelog()
     m_changelogFile->open();
 
     KIO::FileCopyJob *getJob = KIO::file_copy(m_package->changelogUrl(),
-                                      m_changelogFile->fileName(), -1,
-                                      KIO::Overwrite | KIO::HideProgressInfo);
-    connect(getJob, SIGNAL(result(KJob*)),
-            this, SLOT(changelogFetched(KJob*)));
+                               m_changelogFile->fileName(), -1,
+                               KIO::Overwrite | KIO::HideProgressInfo);
+    connect(getJob, SIGNAL(result(KJob *)),
+            this, SLOT(changelogFetched(KJob *)));
 }
 
 #include "ChangelogTab.moc"

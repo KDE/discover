@@ -26,7 +26,8 @@
 class QLabel;
 class QProgressBar;
 
-namespace DebconfKde {
+namespace DebconfKde
+{
     class DebconfGui;
 }
 
@@ -49,7 +50,7 @@ private:
     QProgressBar *m_progressBar;
 
 public Q_SLOTS:
-    void updateCommitProgress(const QString& message, int percentage);
+    void updateCommitProgress(const QString &message, int percentage);
 };
 
 #endif

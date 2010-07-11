@@ -82,10 +82,10 @@ void StatusWidget::updateStatus()
         }
 
         if (toRemove > 0 && toInstallOrUpgrade > 0) {
-            toRemoveText= i18nc("Label for the number of packages pending removal when packages are also pending upgrade",
+            toRemoveText = i18nc("Label for the number of packages pending removal when packages are also pending upgrade",
                                  ", %1 to remove", toRemove);
         } else if (toRemove > 0) {
-            toRemoveText= i18nc("Label for the number of packages pending removal when there are only removals",
+            toRemoveText = i18nc("Label for the number of packages pending removal when there are only removals",
                                  " %1 to remove", toRemove);
         }
 
@@ -96,12 +96,12 @@ void StatusWidget::updateStatus()
         if (installSize < 0) {
             installSize = -installSize;
             m_downloadLabel->setText(i18nc("@label showing download and install size", "%1 to download, %2 of space to be freed",
-                                     KGlobal::locale()->formatByteSize(m_backend->downloadSize()),
-                                     KGlobal::locale()->formatByteSize(installSize)));
+                                           KGlobal::locale()->formatByteSize(m_backend->downloadSize()),
+                                           KGlobal::locale()->formatByteSize(installSize)));
         } else {
             m_downloadLabel->setText(i18nc("@label showing download and install size", "%1 to download, %2 of space to be used",
-                                     KGlobal::locale()->formatByteSize(m_backend->downloadSize()),
-                                     KGlobal::locale()->formatByteSize(installSize)));
+                                           KGlobal::locale()->formatByteSize(m_backend->downloadSize()),
+                                           KGlobal::locale()->formatByteSize(installSize)));
         }
 
         m_downloadLabel->show();

@@ -34,7 +34,8 @@ class PackageModel;
 class PackageProxyModel;
 class PackageView;
 
-namespace QApt {
+namespace QApt
+{
     class Backend;
 }
 
