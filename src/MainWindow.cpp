@@ -666,7 +666,7 @@ void MainWindow::loadSelections()
         QString text = i18nc("@label", "Could not mark changes. Please make sure "
                                        "that the file is a markings file created by "
                                        "either the Muon Package Manager or the "
-                                       "Synaptic Package Manager");
+                                       "Synaptic Package Manager.");
         KMessageBox::error(this, text, QString());
     }
 }
