@@ -240,8 +240,12 @@ bool MainWindow::queryExit()
                                               "quitwithoutsave");
         switch(res) {
             case KMessageBox::Yes:
-                saveSelections();
-                return true;
+                if (saveSelections()) {
+                    return true;
+                } else {
+                    // In case of save failure, try again as to not lose data
+                    queryExit();
+                }
                 break;
             case KMessageBox::No:
                 return true;
@@ -657,7 +661,7 @@ void MainWindow::sourcesEditorFinished(int reload)
     }
 }
 
-void MainWindow::saveSelections()
+bool MainWindow::saveSelections()
 {
     QString filename;
 
@@ -665,7 +669,7 @@ void MainWindow::saveSelections()
                                             i18nc("@title:window", "Save Markings As"));
 
     if (filename.isEmpty()) {
-        return;
+        return false;
     }
 
     if (!m_backend->saveSelections(filename)) {
@@ -676,7 +680,9 @@ void MainWindow::saveSelections()
                                        "or that enough disk space is available.",
                              filename);
         KMessageBox::error(this, text, QString());
+        return false;
     }
+    return true;
 }
 
 void MainWindow::loadSelections()

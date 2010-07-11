@@ -117,7 +117,7 @@ private Q_SLOTS:
     void revertChanges();
     void runSourcesEditor();
     void sourcesEditorFinished(int exitCode);
-    void saveSelections();
+    bool saveSelections();
     void loadSelections();
     void easterEggTriggered();
 
