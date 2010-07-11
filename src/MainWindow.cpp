@@ -138,7 +138,6 @@ void MainWindow::initObject()
 void MainWindow::loadSplitterSizes()
 {
     QList<int> sizes = MuonSettings::self()->splitterSizes();
-    kDebug() << sizes;
 
     if (sizes.isEmpty()) {
         sizes << 115 << (this->width() - 115);
