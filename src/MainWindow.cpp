@@ -128,6 +128,10 @@ void MainWindow::initObject()
             this, SLOT(questionOccurred(QApt::WorkerQuestion, const QVariantMap &)));
     connect(m_backend, SIGNAL(packageChanged()), this, SLOT(reloadActions()));
 
+    if (m_backend->xapianIndexNeedsUpdate()) {
+        m_backend->updateXapianIndex();
+    }
+
     reloadActions(); //Get initial enabled/disabled state
 
     m_managerWidget->setFocus();
@@ -311,6 +315,9 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
         Solid::PowerManagement::stopSuppressingSleep(m_powerInhibitor);
         m_canExit = true;
         reload();
+        if (m_backend->xapianIndexNeedsUpdate()) {
+            m_backend->updateXapianIndex();
+        }
         returnFromPreview();
         break;
     case QApt::PackageDownloadStarted:
@@ -323,6 +330,11 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
         m_canExit = false;
         m_commitWidget->setHeaderText(i18nc("@info", "<title>Committing Changes</title>"));
         m_stack->setCurrentWidget(m_commitWidget);
+        break;
+    case QApt::XapianUpdateStarted:
+        break;
+    case QApt::XapianUpdateFinished:
+        m_backend->openXapianIndex();
         break;
     case QApt::PackageDownloadFinished:
     case QApt::InvalidEvent:
