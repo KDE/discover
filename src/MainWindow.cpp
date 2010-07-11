@@ -226,7 +226,31 @@ void MainWindow::slotQuit()
 bool MainWindow::queryExit()
 {
     // We don't want to quit during the middle of a commit
-    return m_canExit;
+    if (!m_canExit) {
+        return false;
+    }
+
+    if (m_backend->markedPackages().count() > 0) {
+        QString text = i18nc("@label", "There are marked changes that have not yet "
+                                       "been applied. Do you want to save your changes "
+                                       "or discard them?");
+        int res = KMessageBox::Cancel;
+        res = KMessageBox::warningYesNoCancel(this, text, QString(), KStandardGuiItem::saveAs(),
+                                              KStandardGuiItem::discard(),KStandardGuiItem::cancel(),
+                                              "quitwithoutsave");
+        switch(res) {
+            case KMessageBox::Yes:
+                saveSelections();
+                return true;
+                break;
+            case KMessageBox::No:
+                return true;
+            case KMessageBox::Cancel:
+                return false;
+        }
+    }
+
+    return true;
 }
 
 void MainWindow::markUpgrade()
