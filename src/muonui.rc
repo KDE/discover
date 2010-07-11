@@ -7,6 +7,10 @@
                          http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd">
     <MenuBar>
         <Menu name="file" >
+            <Action name="open_markings" />
+            <Separator/>
+            <Action name="save_markings" />
+            <Separator/>
             <Action name="quit" />
         </Menu>
         <Menu name="edit" >

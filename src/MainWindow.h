@@ -77,6 +77,8 @@ private:
     KAction *m_undoAction;
     KAction *m_redoAction;
     KAction *m_revertAction;
+    KAction *m_saveSelectionsAction;
+    KAction *m_loadSelectionsAction;
 
     FilterWidget *m_filterBox;
     ManagerWidget *m_managerWidget;
@@ -115,6 +117,8 @@ private Q_SLOTS:
     void revertChanges();
     void runSourcesEditor();
     void sourcesEditorFinished(int exitCode);
+    void saveSelections();
+    void loadSelections();
     void easterEggTriggered();
 
 signals:

@@ -35,6 +35,7 @@
 #include <KApplication>
 #include <KConfigDialog>
 #include <KDebug>
+#include <KFileDialog>
 #include <KLocale>
 #include <KMessageBox>
 #include <KProcess>
@@ -149,7 +150,6 @@ void MainWindow::saveSplitterSizes()
 {
     MuonSettings::self()->setSplitterSizes(m_mainWidget->sizes());
     MuonSettings::self()->writeConfig();
-    kDebug() << "saving splitter sizes" << m_mainWidget->sizes();
 }
 
 void MainWindow::setupActions()
@@ -157,6 +157,16 @@ void MainWindow::setupActions()
     // local - Destroys all sub-windows and exits
     KAction *quitAction = KStandardAction::quit(this, SLOT(slotQuit()), actionCollection());
     actionCollection()->addAction("quit", quitAction);
+
+    m_loadSelectionsAction = actionCollection()->addAction("open_markings");
+    m_loadSelectionsAction->setIcon(KIcon("document-open"));
+    m_loadSelectionsAction->setText(i18nc("@action", "Read Markings..."));
+    connect(m_loadSelectionsAction, SIGNAL(triggered()), this, SLOT(loadSelections()));
+
+    m_saveSelectionsAction = actionCollection()->addAction("save_markings");
+    m_saveSelectionsAction->setIcon(KIcon("document-save-as"));
+    m_saveSelectionsAction->setText(i18nc("@action", "Save Markings As..."));
+    connect(m_saveSelectionsAction, SIGNAL(triggered()), this, SLOT(saveSelections()));
 
     m_updateAction = actionCollection()->addAction("update");
     m_updateAction->setIcon(KIcon("system-software-update"));
@@ -567,10 +577,14 @@ void MainWindow::reloadActions()
     m_undoAction->setEnabled(!m_backend->isUndoStackEmpty());
     m_redoAction->setEnabled(!m_backend->isRedoStackEmpty());
     m_revertAction->setEnabled(!m_backend->isUndoStackEmpty());
+
+    m_saveSelectionsAction->setEnabled(!changedList.isEmpty());
 }
 
 void MainWindow::setActionsEnabled(bool enabled)
 {
+    m_loadSelectionsAction->setEnabled(enabled);
+    m_saveSelectionsAction->setEnabled(enabled);
     m_updateAction->setEnabled(enabled);
     m_safeUpgradeAction->setEnabled(enabled);
     m_distUpgradeAction->setEnabled(enabled);
@@ -617,6 +631,43 @@ void MainWindow::sourcesEditorFinished(int reload)
     find(effectiveWinId())->setEnabled(true);
     if(reload == 1) {
         checkForUpdates();
+    }
+}
+
+void MainWindow::saveSelections()
+{
+    QString filename;
+
+    filename = KFileDialog::getSaveFileName(QString(), QString(), this,
+                                            i18nc("@title:window", "Save Markings As"));
+
+    if (filename.isEmpty()) {
+        return;
+    }
+
+    if (!m_backend->saveSelections(filename)) {
+        QString text = i18nc("@label", "The document could not be saved, as it "
+                                       "was not possible to write to "
+                                       "<filename>%1</filename>\n\nCheck "
+                                       "that you have write access to this file "
+                                       "or that enough disk space is available.",
+                             filename);
+        KMessageBox::error(this, text, QString());
+    }
+}
+
+void MainWindow::loadSelections()
+{
+    QString filename;
+
+    filename = KFileDialog::getOpenFileName(QString(), QString(), this, i18nc("@title:window", "Open File"));
+
+    if (!m_backend->loadSelections(filename)) {
+        QString text = i18nc("@label", "Could not mark changes. Please make sure "
+                                       "that the file is a markings file created by "
+                                       "either the Muon Package Manager or the "
+                                       "Synaptic Package Manager");
+        KMessageBox::error(this, text, QString());
     }
 }
 
