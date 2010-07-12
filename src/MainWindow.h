@@ -67,6 +67,8 @@ protected:
 
 private:
     QApt::Backend *m_backend;
+    QList<QVariantMap> m_warningStack;
+    QList<QVariantMap> m_errorStack;
 
     QStackedWidget *m_stack;
     QSplitter *m_mainWidget;
@@ -105,6 +107,8 @@ private Q_SLOTS:
     void errorOccurred(QApt::ErrorCode code, const QVariantMap &args);
     void warningOccurred(QApt::WarningCode warning, const QVariantMap &args);
     void questionOccurred(QApt::WorkerQuestion question, const QVariantMap &details);
+    void showQueuedWarnings();
+    void showQueuedErrors();
     void previewChanges();
     void returnFromPreview();
     void startCommit();

@@ -319,6 +319,14 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
             m_backend->updateXapianIndex();
         }
         returnFromPreview();
+        if (m_warningStack.size() > 0) {
+            showQueuedWarnings();
+            m_warningStack.clear();
+        }
+        if (m_errorStack.size() > 0) {
+            showQueuedErrors();
+            m_errorStack.clear();
+        }
         break;
     case QApt::PackageDownloadStarted:
         m_downloadWidget->setHeaderText(i18nc("@info", "<title>Downloading Packages</title>"));
@@ -380,15 +388,7 @@ void MainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args)
         KMessageBox::error(this, text, title);
         break;
     case QApt::CommitError: {
-        QString failedItem = i18nc("@label Shows which package failed", "Package: %1", args["FailedItem"].toString());
-        QString errorText = i18nc("@label Shows the error", "Error: %1", args["ErrorText"].toString());
-
-        text = i18nc("@label", "An error occurred while committing changes.");
-        QString details = QString(failedItem % "\n\n" % errorText);
-        title = i18nc("@title:window", "Commit error");
-        kDebug() << details;
-
-        KMessageBox::detailedError(this, text, details, title);
+        m_errorStack.append(args);
         reload();
         break;
     }
@@ -444,20 +444,13 @@ void MainWindow::warningOccurred(QApt::WarningCode warning, const QVariantMap &a
         break;
     }
     case QApt::FetchFailedWarning: {
-        QString failedItem = args["FailedItem"].toString();
-        QString warningText = args["WarningText"].toString();
-        QString text = i18nc("@label",
-                             "Failed to download %1\n"
-                             "%2", failedItem, warningText);
-        QString title = i18nc("@title:window", "Download Failed");
-        KMessageBox::sorry(this, text, title);
+        m_warningStack.append(args);
         break;
     }
     case QApt::UnknownWarning:
     default:
         break;
     }
-
 }
 
 void MainWindow::questionOccurred(QApt::WorkerQuestion code, const QVariantMap &args)
@@ -512,6 +505,37 @@ void MainWindow::questionOccurred(QApt::WorkerQuestion code, const QVariantMap &
     default:
         break;
     }
+}
+
+void MainWindow::showQueuedWarnings()
+{
+    QStringList details;
+    QString text = i18nc("@label", "Unable to download the following packages:");
+    foreach (QVariantMap args, m_warningStack) {
+        QString failedItem = args["FailedItem"].toString();
+        QString warningText = args["WarningText"].toString();
+        details.append(i18nc("@label",
+                             "Failed to download %1\n"
+                             "%2\n\n", failedItem, warningText));
+    }
+    QString title = i18nc("@title:window", "Some Packages Could not be Downloaded");
+    KMessageBox::errorList(this, text, details, title);
+}
+
+void MainWindow::showQueuedErrors()
+{
+    QStringList details;
+    QString text = i18ncp("@label", "An error occurred while applying changes:",
+                                    "The following errors occurred while applying changes:",
+                                    m_warningStack.size());
+    foreach (QVariantMap args, m_errorStack) {
+        QString failedItem = i18nc("@label Shows which package failed", "Package: %1", args["FailedItem"].toString());
+        QString errorText = i18nc("@label Shows the error", "Error: %1", args["ErrorText"].toString());
+        details.append(failedItem % "\n" % errorText);
+    }
+
+    QString title = i18nc("@title:window", "Commit error");
+    KMessageBox::errorList(this, text, details, title);
 }
 
 void MainWindow::previewChanges()
