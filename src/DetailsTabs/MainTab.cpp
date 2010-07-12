@@ -117,6 +117,7 @@ MainTab::MainTab(QWidget *parent)
 
 MainTab::~MainTab()
 {
+    delete m_screenshotFile;
 }
 
 void MainTab::setBackend(QApt::Backend *backend)
@@ -193,6 +194,10 @@ void MainTab::refresh()
 
 void MainTab::fetchScreenshot()
 {
+    if (m_screenshotFile) {
+        m_screenshotFile->deleteLater();
+        m_screenshotFile = 0;
+    }
     m_screenshotFile = new KTemporaryFile;
     m_screenshotFile->setPrefix("muon");
     m_screenshotFile->setSuffix(".png");

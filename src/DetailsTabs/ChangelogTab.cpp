@@ -45,6 +45,7 @@ ChangelogTab::ChangelogTab(QWidget *parent)
 
 ChangelogTab::~ChangelogTab()
 {
+    delete m_changelogFile;
 }
 
 void ChangelogTab::setPackage(QApt::Package *package)
@@ -71,6 +72,10 @@ void ChangelogTab::changelogFetched(KJob *job)
 
 void ChangelogTab::fetchChangelog()
 {
+    if (m_changelogFile) {
+        m_changelogFile->deleteLater();
+        m_changelogFile = 0;
+    }
     m_changelogFile = new KTemporaryFile;
     m_changelogFile->setPrefix("muon");
     m_changelogFile->setSuffix(".txt");
