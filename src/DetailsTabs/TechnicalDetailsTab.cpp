@@ -141,6 +141,11 @@ void TechnicalDetailsTab::setPackage(QApt::Package *package)
     refresh();
 }
 
+void TechnicalDetailsTab::clear()
+{
+    m_package = 0;
+}
+
 void TechnicalDetailsTab::refresh()
 {
     if (!m_package) {

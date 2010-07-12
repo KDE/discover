@@ -59,6 +59,7 @@ private:
 
 public Q_SLOTS:
     void setPackage(QApt::Package *package);
+    void clear();
     void refresh();
 };
 

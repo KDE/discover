@@ -57,6 +57,11 @@ void DependsTab::setPackage(QApt::Package *package)
     refresh();
 }
 
+void DependsTab::clear()
+{
+    m_package = 0;
+}
+
 void DependsTab::refresh()
 {
     if (!m_package) {

@@ -114,6 +114,8 @@ void DetailsWidget::refreshTabs()
 void DetailsWidget::clear()
 {
     m_mainTab->clear();
+    m_technicalTab->clear();
+    m_dependsTab->clear();
     m_package = 0;
     hide();
 }
