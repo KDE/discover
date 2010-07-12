@@ -108,19 +108,19 @@ void FilterWidget::populateCategories()
         }
     }
 
-    foreach(const QString & group, groupSet.toList()) {
-        QStandardItem *groupItem = new QStandardItem;
-        groupItem->setText(group);
-        m_categoryModel->appendRow(groupItem);
-    }
-    //TODO: Some day this might not be the first item alphabetically...
     QStandardItem *defaultItem = new QStandardItem;
     defaultItem->setIcon(KIcon("bookmark-new-list"));
     defaultItem->setText(i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All"));
     m_categoryModel->appendRow(defaultItem);
 
-    m_categoriesList->setSortingEnabled(true);
-    m_categoriesList->sortByColumn(0, Qt::AscendingOrder);
+    QStringList groupList = groupSet.toList();
+    qSort(groupList);
+
+    foreach(const QString & group, groupList) {
+        QStandardItem *groupItem = new QStandardItem;
+        groupItem->setText(group);
+        m_categoryModel->appendRow(groupItem);
+    }
 }
 
 void FilterWidget::populateStatuses()
