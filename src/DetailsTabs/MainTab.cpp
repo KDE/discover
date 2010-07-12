@@ -190,7 +190,7 @@ void MainTab::fetchScreenshot()
     m_screenshotFile->open();
 
     KIO::FileCopyJob *getJob = KIO::file_copy(m_package->screenshotUrl(QApt::Screenshot),
-                               m_screenshotFile->fileName(), -1, KIO::Overwrite);
+                               m_screenshotFile->fileName(), -1, KIO::Overwrite | KIO::HideProgressInfo);
     connect(getJob, SIGNAL(result(KJob *)),
             this, SLOT(screenshotFetched(KJob *)));
 }
