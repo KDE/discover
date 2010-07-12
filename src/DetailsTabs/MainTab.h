@@ -29,21 +29,19 @@
 #include <libqapt/globals.h>
 
 class QPushButton;
+class QLabel;
+class QToolButton;
 
 class KAction;
 class KJob;
 class KMenu;
 class KTemporaryFile;
+class KTextBrowser;
 
 namespace QApt
 {
     class Backend;
     class Package;
-}
-
-namespace Ui
-{
-    class MainTab;
 }
 
 class MainTab : public QWidget
@@ -54,15 +52,25 @@ public:
     ~MainTab();
 
 private:
-    Ui::MainTab *m_mainTab;
     QApt::Backend *m_backend;
     QApt::Package *m_package;
     QApt::CacheState m_oldCacheState;
 
+    QLabel *m_packageShortDescLabel;
     QPushButton *m_screenshotButton;
+
+    QPushButton *m_installButton;
+    QToolButton *m_removeButton;
+    QPushButton *m_upgradeButton;
+    QPushButton *m_reinstallButton;
     KAction *m_purgeAction;
     KMenu *m_purgeMenu;
+    QPushButton *m_cancelButton;
+
+    KTextBrowser *m_descriptionBrowser;
     KTemporaryFile *m_screenshotFile;
+
+    QLabel *m_supportedLabel;
 
     QString digestReason(QApt::BrokenReason failType, QHash<QString, QVariantMap> failReason);
 
@@ -73,7 +81,6 @@ public Q_SLOTS:
     void clear();
 
 private Q_SLOTS:
-    void setupButtons(QApt::Package *oldPackage);
     void fetchScreenshot();
     void screenshotFetched(KJob *job);
     bool confirmEssentialRemoval();

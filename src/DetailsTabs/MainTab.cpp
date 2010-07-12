@@ -23,17 +23,20 @@
 // Qt includes
 #include <QtGui/QLabel>
 #include <QtGui/QPushButton>
+#include <QtGui/QVBoxLayout>
 
 // KDE includes
 #include <KAction>
 #include <KDebug>
 #include <KDialog>
+#include <KHBox>
 #include <KIcon>
 #include <KIO/Job>
 #include <KJob>
 #include <KMenu>
 #include <KMessageBox>
 #include <KTemporaryFile>
+#include <KTextBrowser>
 
 // LibQApt includes
 #include <libqapt/backend.h>
@@ -48,21 +51,68 @@ MainTab::MainTab(QWidget *parent)
     , m_package(0)
     , m_screenshotFile(0)
 {
-    // Main tab is in the Ui file. If anybody wants to write a C++ widget that
-    // is equivalent to it, I would gladly use it. Layouting sucks with C++
-    m_mainTab = new Ui::MainTab;
-    m_mainTab->setupUi(this);
-
-    m_screenshotButton = new QPushButton(this);
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    setLayout(layout);
+    KHBox *headerBox = new KHBox(this);
+    layout->addWidget(headerBox);
+    m_packageShortDescLabel = new QLabel(headerBox);
+    m_packageShortDescLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Maximum);
+    QFont font;
+    font.setBold(true);
+    m_packageShortDescLabel->setFont(font);
+    m_screenshotButton = new QPushButton(headerBox);
     m_screenshotButton->setIcon(KIcon("image-x-generic"));
     m_screenshotButton->setText(i18nc("@action:button", "Get Screenshot..."));
     connect(m_screenshotButton, SIGNAL(clicked()), this, SLOT(fetchScreenshot()));
-    m_mainTab->topHBoxLayout->addWidget(m_screenshotButton);
 
-    m_purgeMenu = new KMenu(m_mainTab->removeButton);
+    KHBox *buttonBox = new KHBox(this);
+    layout->addWidget(buttonBox);
+    QLabel *buttonLabel = new QLabel(buttonBox);
+    buttonLabel->setText(i18nc("@label", "Mark for:"));
+
+    m_installButton = new QPushButton(buttonBox);
+    m_installButton->setIcon(KIcon("download"));
+    m_installButton->setText(i18nc("@action:button", "Installation"));
+    connect(m_installButton, SIGNAL(clicked()), this, SLOT(setInstall()));
+
+    m_removeButton = new QToolButton(buttonBox);
+    m_removeButton->setPopupMode(QToolButton::MenuButtonPopup);
+    m_removeButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    m_removeButton->setIcon(KIcon("edit-delete"));
+    m_removeButton->setText(i18nc("@action:button", "Removal"));
+    connect(m_removeButton, SIGNAL(clicked()), this, SLOT(setRemove()));
+
+    m_upgradeButton = new QPushButton(buttonBox);
+    m_upgradeButton->setIcon(KIcon("system-software-update"));
+    m_upgradeButton->setText(i18nc("@action:button", "Upgrade"));
+    connect(m_upgradeButton, SIGNAL(clicked()), this, SLOT(setInstall()));
+
+    m_reinstallButton = new QPushButton(buttonBox);
+    m_reinstallButton->setIcon(KIcon("view-refresh"));
+    m_reinstallButton->setText(i18nc("@action:button", "Reinstallation"));
+    connect(m_reinstallButton, SIGNAL(clicked()), this, SLOT(setReInstall()));
+
+    m_purgeMenu = new KMenu(m_removeButton);
     m_purgeAction = new KAction(this);
+    m_purgeAction->setIcon(KIcon("edit-delete-shred"));
+    m_purgeAction->setText(i18nc("@action:button", "Purge"));
+    connect(m_purgeAction, SIGNAL(triggered()), this, SLOT(setPurge()));
     m_purgeMenu->addAction(m_purgeAction);
-    m_mainTab->removeButton->setMenu(m_purgeMenu);
+    m_removeButton->setMenu(m_purgeMenu);
+
+    m_cancelButton = new QPushButton(buttonBox);
+    m_cancelButton->setIcon(KIcon("dialog-cancel"));
+    m_cancelButton->setText(i18nc("@action:button", "Unmark"));
+    connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(setKeep()));
+
+    QWidget *buttonSpacer = new QWidget(buttonBox);
+    buttonSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Maximum);
+
+    m_descriptionBrowser = new KTextBrowser(this);
+    layout->addWidget(m_descriptionBrowser);
+
+    m_supportedLabel = new QLabel(this);
+    layout->addWidget(m_supportedLabel);
 }
 
 MainTab::~MainTab()
@@ -76,54 +126,13 @@ void MainTab::setBackend(QApt::Backend *backend)
 
 void MainTab::setPackage(QApt::Package *package)
 {
-    QApt::Package *oldPackage = m_package;
     m_package = package;
-
-    setupButtons(oldPackage);
     refresh();
 }
 
 void MainTab::clear()
 {
     m_package = 0;
-}
-
-void MainTab::setupButtons(QApt::Package *oldpackage)
-{
-    if (oldpackage) {
-        disconnect(m_mainTab->installButton, SIGNAL(clicked()), this, SLOT(setInstall()));
-        disconnect(m_mainTab->removeButton, SIGNAL(clicked()), this, SLOT(setRemove()));
-        disconnect(m_mainTab->upgradeButton, SIGNAL(clicked()), this, SLOT(setInstall()));
-        disconnect(m_mainTab->reinstallButton, SIGNAL(clicked()), this, SLOT(setReInstall()));
-        disconnect(m_purgeAction, SIGNAL(triggered()), this, SLOT(setPurge()));
-        disconnect(m_mainTab->cancelButton, SIGNAL(clicked()), this, SLOT(setKeep()));
-    }
-
-    m_mainTab->installButton->setIcon(KIcon("download"));
-    m_mainTab->installButton->setText(i18nc("@action:button", "Installation"));
-    connect(m_mainTab->installButton, SIGNAL(clicked()), this, SLOT(setInstall()));
-
-    m_mainTab->removeButton->setIcon(KIcon("edit-delete"));
-    m_mainTab->removeButton->setText(i18nc("@action:button", "Removal"));
-    connect(m_mainTab->removeButton, SIGNAL(clicked()), this, SLOT(setRemove()));
-
-    m_mainTab->upgradeButton->setIcon(KIcon("system-software-update"));
-    m_mainTab->upgradeButton->setText(i18nc("@action:button", "Upgrade"));
-    connect(m_mainTab->upgradeButton, SIGNAL(clicked()), this, SLOT(setInstall()));
-
-    m_mainTab->reinstallButton->setIcon(KIcon("view-refresh"));
-    m_mainTab->reinstallButton->setText(i18nc("@action:button", "Reinstallation"));
-    connect(m_mainTab->reinstallButton, SIGNAL(clicked()), this, SLOT(setReInstall()));
-
-    m_purgeAction->setIcon(KIcon("edit-delete-shred"));
-    m_purgeAction->setText(i18nc("@action:button", "Purge"));
-    connect(m_purgeAction, SIGNAL(triggered()), this, SLOT(setPurge()));
-
-    // TODO: Downgrade
-
-    m_mainTab->cancelButton->setIcon(KIcon("dialog-cancel"));
-    m_mainTab->cancelButton->setText(i18nc("@action:button", "Unmark"));
-    connect(m_mainTab->cancelButton, SIGNAL(clicked()), this, SLOT(setKeep()));
 }
 
 void MainTab::refresh()
@@ -135,48 +144,48 @@ void MainTab::refresh()
     bool upgradeable = (state & QApt::Package::Upgradeable);
 
     if (state & QApt::Package::Installed) {
-        m_mainTab->installButton->hide();
-        m_mainTab->removeButton->show();
+        m_installButton->hide();
+        m_removeButton->show();
         if (upgradeable) {
-            m_mainTab->upgradeButton->show();
+            m_upgradeButton->show();
         } else {
-            m_mainTab->upgradeButton->hide();
+            m_upgradeButton->hide();
         }
-        m_mainTab->reinstallButton->show();
-        m_mainTab->cancelButton->hide();
+        m_reinstallButton->show();
+        m_cancelButton->hide();
     } else {
-        m_mainTab->installButton->show();
-        m_mainTab->removeButton->hide();
-        m_mainTab->upgradeButton->hide();
-        m_mainTab->reinstallButton->hide();
-        m_mainTab->cancelButton->hide();
+        m_installButton->show();
+        m_removeButton->hide();
+        m_upgradeButton->hide();
+        m_reinstallButton->hide();
+        m_cancelButton->hide();
     }
 
     if (state & (QApt::Package::ToInstall | QApt::Package::ToReInstall |
                  QApt::Package::ToUpgrade | QApt::Package::ToDowngrade |
                  QApt::Package::ToRemove  | QApt::Package::ToPurge)) {
-        m_mainTab->installButton->hide();
-        m_mainTab->removeButton->hide();
-        m_mainTab->upgradeButton->hide();
-        m_mainTab->reinstallButton->hide();
-        m_mainTab->cancelButton->show();
+        m_installButton->hide();
+        m_removeButton->hide();
+        m_upgradeButton->hide();
+        m_reinstallButton->hide();
+        m_cancelButton->show();
     }
 
-    m_mainTab->packageShortDescLabel->setText(m_package->shortDescription());
+    m_packageShortDescLabel->setText(m_package->shortDescription());
 
     m_screenshotButton->setText(i18nc("@action:button", "Get Screenshot..."));
     m_screenshotButton->setEnabled(true);
 
-    m_mainTab->descriptionBrowser->setText(m_package->longDescription());
+    m_descriptionBrowser->setText(m_package->longDescription());
 
     if (m_package->isSupported()) {
-        m_mainTab->supportedLabel->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
-                                           "Canonical provides critical updates for %1 until %2",
-                                           m_package->name(), m_package->supportedUntil()));
+        m_supportedLabel->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
+                                        "Canonical provides critical updates for %1 until %2",
+                                        m_package->name(), m_package->supportedUntil()));
     } else {
-        m_mainTab->supportedLabel->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
-                                           "Canonical does not provide updates for %1. Some updates "
-                                           "may be provided by the Ubuntu community", m_package->name()));
+        m_supportedLabel->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
+                                        "Canonical does not provide updates for %1. Some updates "
+                                        "may be provided by the Ubuntu community", m_package->name()));
     }
 }
 
