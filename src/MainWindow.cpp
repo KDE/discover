@@ -511,7 +511,7 @@ void MainWindow::showQueuedWarnings()
 {
     QStringList details;
     QString text = i18nc("@label", "Unable to download the following packages:");
-    foreach (QVariantMap args, m_warningStack) {
+    foreach (const QVariantMap &args, m_warningStack) {
         QString failedItem = args["FailedItem"].toString();
         QString warningText = args["WarningText"].toString();
         details.append(i18nc("@label",
@@ -528,7 +528,7 @@ void MainWindow::showQueuedErrors()
     QString text = i18ncp("@label", "An error occurred while applying changes:",
                                     "The following errors occurred while applying changes:",
                                     m_warningStack.size());
-    foreach (QVariantMap args, m_errorStack) {
+    foreach (const QVariantMap &args, m_errorStack) {
         QString failedItem = i18nc("@label Shows which package failed", "Package: %1", args["FailedItem"].toString());
         QString errorText = i18nc("@label Shows the error", "Error: %1", args["ErrorText"].toString());
         details.append(failedItem % "\n" % errorText);
