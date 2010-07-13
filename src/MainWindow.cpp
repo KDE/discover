@@ -439,7 +439,7 @@ void MainWindow::warningOccurred(QApt::WarningCode warning, const QVariantMap &a
     case QApt::SizeMismatchWarning: {
         QString text = i18nc("@label",
                              "The size of the downloaded items did not equal the expected size.");
-        QString title = i18nc("@title:window", "Size mismatch");
+        QString title = i18nc("@title:window", "Size Mismatch");
         KMessageBox::sorry(this, text, title);
         break;
     }
