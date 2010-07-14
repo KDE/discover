@@ -23,6 +23,7 @@
 // Qt includes
 #include <QtGui/QLabel>
 #include <QtGui/QPushButton>
+#include <QtGui/QToolButton>
 #include <QtGui/QVBoxLayout>
 
 // KDE includes
@@ -33,6 +34,7 @@
 #include <KIcon>
 #include <KIO/Job>
 #include <KJob>
+#include <KLocale>
 #include <KMenu>
 #include <KMessageBox>
 #include <KTemporaryFile>
@@ -41,9 +43,6 @@
 // LibQApt includes
 #include <libqapt/backend.h>
 #include <libqapt/package.h>
-
-// Own includes
-#include "ui_MainTab.h"
 
 MainTab::MainTab(QWidget *parent)
     : QWidget(parent)
