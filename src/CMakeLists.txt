@@ -28,6 +28,7 @@ kde4_add_executable(muon ${muon_SRCS})
 target_link_libraries(muon ${KDE4_KDEUI_LIBS}
                            ${KDE4_KIO_LIBS}
                            ${KDE4_SOLID_LIBS}
+                           ${KDE4_PHONON_LIBS}
                            ${QAPT_LIBRARY}
                            debconf-kde)
 
@@ -38,3 +39,4 @@ install(TARGETS muon ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 install( FILES muon.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR} )
 install( FILES muonui.rc  DESTINATION  ${DATA_INSTALL_DIR}/muon )
+install( FILES moo.ogg DESTINATION ${DATA_INSTALL_DIR}/muon )

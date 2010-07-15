@@ -40,7 +40,9 @@
 #include <KMessageBox>
 #include <KProcess>
 #include <KStandardAction>
+#include <KStandardDirs>
 #include <KStatusBar>
+#include <Phonon/MediaObject>
 #include <Solid/PowerManagement>
 
 // LibQApt includes
@@ -753,6 +755,12 @@ void MainWindow::easterEggTriggered()
 
     dialog->setMainWidget(widget);
     dialog->show();
+
+    QString mooFile = KStandardDirs::locate("appdata", "moo.ogg");
+    Phonon::MediaObject *music =
+    Phonon::createPlayer(Phonon::MusicCategory,
+                         Phonon::MediaSource(mooFile));
+    music->play();
 }
 
 #include "MainWindow.moc"
