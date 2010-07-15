@@ -109,6 +109,7 @@ void FilterWidget::populateCategories()
     }
 
     QStandardItem *defaultItem = new QStandardItem;
+    defaultItem->setEditable(false);
     defaultItem->setIcon(KIcon("bookmark-new-list"));
     defaultItem->setText(i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All"));
     m_categoryModel->appendRow(defaultItem);
@@ -118,6 +119,7 @@ void FilterWidget::populateCategories()
 
     foreach(const QString & group, groupList) {
         QStandardItem *groupItem = new QStandardItem;
+        groupItem->setEditable(false);
         groupItem->setText(group);
         m_categoryModel->appendRow(groupItem);
     }
@@ -126,22 +128,27 @@ void FilterWidget::populateCategories()
 void FilterWidget::populateStatuses()
 {
     QStandardItem *defaultItem = new QStandardItem;
+    defaultItem->setEditable(false);
     defaultItem->setIcon(KIcon("bookmark-new-list"));
     defaultItem->setText(i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All"));
 
     QStandardItem *installedItem = new QStandardItem;
+    installedItem->setEditable(false);
     installedItem->setIcon(KIcon("download"));
     installedItem->setText(m_strings->packageStateName(QApt::Package::Installed));
 
     QStandardItem *notInstalledItem = new QStandardItem;
+    notInstalledItem->setEditable(false);
     notInstalledItem->setIcon(KIcon("application-x-deb"));
     notInstalledItem->setText(m_strings->packageStateName(QApt::Package::NotInstalled));
 
     QStandardItem *upgradeableItem = new QStandardItem;
+    upgradeableItem->setEditable(false);
     upgradeableItem->setIcon(KIcon("system-software-update"));
     upgradeableItem->setText(m_strings->packageStateName(QApt::Package::Upgradeable));
 
     QStandardItem *brokenItem = new QStandardItem;
+    brokenItem->setEditable(false);
     brokenItem->setIcon(KIcon("dialog-cancel"));
     brokenItem->setText(m_strings->packageStateName(QApt::Package::NowBroken));
 
@@ -157,12 +164,14 @@ void FilterWidget::populateOrigins()
     QStringList originLabels = m_backend->originLabels();
 
     QStandardItem *defaultItem = new QStandardItem;
+    defaultItem->setEditable(false);
     defaultItem->setIcon(KIcon("bookmark-new-list"));
     defaultItem->setText(i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All"));
     m_originModel->appendRow(defaultItem);
 
     foreach(const QString & originLabel, originLabels) {
         QStandardItem *originItem = new QStandardItem;
+        originItem->setEditable(false);
         originItem->setText(originLabel);
         m_originModel->appendRow(originItem);
     }
