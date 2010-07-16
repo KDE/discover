@@ -54,6 +54,8 @@ void MuonMainWindow::initObject()
             this, SLOT(errorOccurred(QApt::ErrorCode, const QVariantMap &)));
     connect(m_backend, SIGNAL(warningOccurred(QApt::WarningCode, const QVariantMap &)),
             this, SLOT(warningOccurred(QApt::WarningCode, const QVariantMap &)));
+    connect(m_backend, SIGNAL(questionOccurred(QApt::WorkerQuestion, const QVariantMap &)),
+            this, SLOT(questionOccurred(QApt::WorkerQuestion, const QVariantMap &)));
 
     if (m_backend->xapianIndexNeedsUpdate()) {
         m_backend->updateXapianIndex();
