@@ -119,8 +119,9 @@ void DependsTab::populateDepends(int index)
         break;
     }
 
-    // Doesn't work all the time, but QTextEdit has awful API and even this was hard to find so I'll keep it commented
-    // m_dependsBrowser->verticalScrollBar()->triggerAction(QAbstractSlider::SliderToMinimum);
+    QScrollBar *scrollBar = m_dependsBrowser->verticalScrollBar();
+    scrollBar->setValue(scrollBar->minimum());
+    kDebug() << scrollBar->value();
 }
 
 #include "DependsTab.moc"
