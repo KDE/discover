@@ -21,14 +21,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-// KDE includes
-#include <KXmlGuiWindow>
-
-// Qt includes
-#include <QtCore/QVariantMap>
-
-// LibQApt includes
-#include <libqapt/globals.h>
+// Own includes
+#include "MuonMainWindow.h"
 
 class QSplitter;
 class QStackedWidget;
@@ -55,21 +49,14 @@ namespace QApt
  * @author Jonathan Thomas <echidnaman@kubuntu.org>
  * @version 0.1
  */
-class MainWindow : public KXmlGuiWindow
+class MainWindow : public MuonMainWindow
 {
     Q_OBJECT
 public:
     MainWindow();
     virtual ~MainWindow();
 
-protected:
-    virtual bool queryExit();
-
 private:
-    QApt::Backend *m_backend;
-    QList<QVariantMap> m_warningStack;
-    QList<QVariantMap> m_errorStack;
-
     QStackedWidget *m_stack;
     QSplitter *m_mainWidget;
     KAction *m_updateAction;
@@ -91,7 +78,6 @@ private:
     StatusWidget *m_statusWidget;
 
     int m_powerInhibitor;
-    bool m_canExit;
 
 private Q_SLOTS:
     void initGUI();
@@ -99,16 +85,10 @@ private Q_SLOTS:
     void loadSplitterSizes();
     void saveSplitterSizes();
     void setupActions();
-    void slotQuit();
     void markUpgrade();
     void markDistUpgrade();
     void checkForUpdates();
     void workerEvent(QApt::WorkerEvent event);
-    void errorOccurred(QApt::ErrorCode code, const QVariantMap &args);
-    void warningOccurred(QApt::WarningCode warning, const QVariantMap &args);
-    void questionOccurred(QApt::WorkerQuestion question, const QVariantMap &details);
-    void showQueuedWarnings();
-    void showQueuedErrors();
     void previewChanges();
     void returnFromPreview();
     void startCommit();
@@ -117,17 +97,9 @@ private Q_SLOTS:
     void reload();
     void reloadActions();
     void setActionsEnabled(bool enabled);
-    void undo();
-    void redo();
-    void revertChanges();
     void runSourcesEditor();
     void sourcesEditorFinished(int exitCode);
-    bool saveSelections();
-    void loadSelections();
     void easterEggTriggered();
-
-signals:
-    void backendReady(QApt::Backend *backend);
 };
 
 #endif // _MUON_H_

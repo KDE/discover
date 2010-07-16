@@ -1,5 +1,6 @@
 set(muon_SRCS
     main.cpp
+    MuonMainWindow.cpp
     MainWindow.cpp
     MuonStrings.cpp
     ManagerWidget.cpp

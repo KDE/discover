@@ -58,14 +58,12 @@
 #include "MuonSettings.h"
 
 MainWindow::MainWindow()
-    : KXmlGuiWindow(0)
-    , m_backend(0)
+    : MuonMainWindow()
     , m_stack(0)
     , m_reviewWidget(0)
     , m_downloadWidget(0)
     , m_commitWidget(0)
     , m_powerInhibitor(0)
-    , m_canExit(true)
 
 {
     initGUI();
@@ -118,27 +116,12 @@ void MainWindow::initGUI()
 
 void MainWindow::initObject()
 {
-    m_backend = new QApt::Backend;
-    m_backend->init();
-    connect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
-            this, SLOT(workerEvent(QApt::WorkerEvent)));
-    connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode, const QVariantMap &)),
-            this, SLOT(errorOccurred(QApt::ErrorCode, const QVariantMap &)));
-    connect(m_backend, SIGNAL(warningOccurred(QApt::WarningCode, const QVariantMap &)),
-            this, SLOT(warningOccurred(QApt::WarningCode, const QVariantMap &)));
-    connect(m_backend, SIGNAL(questionOccurred(QApt::WorkerQuestion, const QVariantMap &)),
-            this, SLOT(questionOccurred(QApt::WorkerQuestion, const QVariantMap &)));
+    MuonMainWindow::initObject();
     connect(m_backend, SIGNAL(packageChanged()), this, SLOT(reloadActions()));
-
-    if (m_backend->xapianIndexNeedsUpdate()) {
-        m_backend->updateXapianIndex();
-    }
 
     reloadActions(); //Get initial enabled/disabled state
 
     m_managerWidget->setFocus();
-
-    emit backendReady(m_backend);
 }
 
 void MainWindow::loadSplitterSizes()
@@ -159,9 +142,7 @@ void MainWindow::saveSplitterSizes()
 
 void MainWindow::setupActions()
 {
-    // local - Destroys all sub-windows and exits
-    KAction *quitAction = KStandardAction::quit(this, SLOT(slotQuit()), actionCollection());
-    actionCollection()->addAction("quit", quitAction);
+    MuonMainWindow::setupActions();
 
     m_loadSelectionsAction = actionCollection()->addAction("open_markings");
     m_loadSelectionsAction->setIcon(KIcon("document-open"));
@@ -220,47 +201,6 @@ void MainWindow::setupActions()
     connect(shortcut, SIGNAL(activated()), this, SLOT(easterEggTriggered()));
 
     setupGUI();
-}
-
-void MainWindow::slotQuit()
-{
-    if (queryExit()) {
-        KApplication::instance()->quit();
-    }
-}
-
-bool MainWindow::queryExit()
-{
-    // We don't want to quit during the middle of a commit
-    if (!m_canExit) {
-        return false;
-    }
-
-    if (m_backend->markedPackages().count() > 0) {
-        QString text = i18nc("@label", "There are marked changes that have not yet "
-                             "been applied. Do you want to save your changes "
-                             "or discard them?");
-        int res = KMessageBox::Cancel;
-        res = KMessageBox::warningYesNoCancel(this, text, QString(), KStandardGuiItem::saveAs(),
-                                              KStandardGuiItem::discard(), KStandardGuiItem::cancel(),
-                                              "quitwithoutsave");
-        switch (res) {
-        case KMessageBox::Yes:
-            if (saveSelections()) {
-                return true;
-            } else {
-                // In case of save failure, try again as to not lose data
-                queryExit();
-            }
-            break;
-        case KMessageBox::No:
-            return true;
-        case KMessageBox::Cancel:
-            return false;
-        }
-    }
-
-    return true;
 }
 
 void MainWindow::markUpgrade()
@@ -351,193 +291,6 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
     default:
         break;
     }
-}
-
-void MainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args)
-{
-    QString text;
-    QString title;
-
-    switch (code) {
-    case QApt::InitError:
-        text = i18nc("@label",
-                     "The package system could not be initialized, your "
-                     "configuration may be broken.");
-        title = i18nc("@title:window", "Initialization error");
-        KMessageBox::error(this, text, title);
-        break;
-    case QApt::LockError:
-        text = i18nc("@label",
-                     "Another application seems to be using the package "
-                     "system at this time. You must close all other package "
-                     "managers before you will be able to install or remove "
-                     "any packages.");
-        title = i18nc("@title:window", "Unable to obtain package system lock");
-        KMessageBox::error(this, text, title);
-        break;
-    case QApt::DiskSpaceError: {
-        QString drive = args["DirectoryString"].toString();
-        text = i18nc("@label",
-                     "You do not have enough disk space in the directory "
-                     "at %1 to continue with this operation.", drive);
-        title = i18nc("@title:window", "Low disk space");
-        KMessageBox::error(this, text, title);
-    }
-    case QApt::FetchError:
-        text = i18nc("@label",
-                     "Could not download packages");
-        title = i18nc("@title:window", "Download failed");
-        KMessageBox::error(this, text, title);
-        break;
-    case QApt::CommitError: {
-        m_errorStack.append(args);
-        reload();
-        break;
-    }
-    case QApt::AuthError:
-        text = i18nc("@label",
-                     "This operation cannot continue since proper "
-                     "authorization was not provided");
-        title = i18nc("@title:window", "Authentication error");
-        KMessageBox::error(this, text, title);
-        break;
-    case QApt::WorkerDisappeared:
-        text = i18nc("@label", "It appears that the QApt worker has either crashed "
-                     "or disappeared. Please report a bug to the QApt maintainers");
-        title = i18nc("@title:window", "Unexpected Error");
-        KMessageBox::error(this, text, title);
-        reload();
-        break;
-    case QApt::UntrustedError: {
-        QStringList untrustedItems = args["UntrustedItems"].toStringList();
-        if (untrustedItems.size() == 1) {
-            text = i18ncp("@label",
-                          "The following package has not been verified by its author. "
-                          "Downloading untrusted packages has been disallowed "
-                          "by your current configuration.",
-                          "The following packages have not been verified by "
-                          "their authors. "
-                          "Downloading untrusted packages has "
-                          "been disallowed by your current configuration.",
-                          untrustedItems.size());
-        }
-        title = i18nc("@title:window", "Untrusted Packages");
-        KMessageBox::errorList(this, text, untrustedItems, title);
-        break;
-    }
-    case QApt::UserCancelError:
-    case QApt::UnknownError:
-    default:
-        break;
-    }
-    m_canExit = true; // If we were committing changes, we aren't anymore
-    returnFromPreview(); // Change the "back" button back to normal in case we were in preview
-    m_stack->setCurrentWidget(m_mainWidget);
-}
-
-void MainWindow::warningOccurred(QApt::WarningCode warning, const QVariantMap &args)
-{
-    switch (warning) {
-    case QApt::SizeMismatchWarning: {
-        QString text = i18nc("@label",
-                             "The size of the downloaded items did not equal the expected size.");
-        QString title = i18nc("@title:window", "Size Mismatch");
-        KMessageBox::sorry(this, text, title);
-        break;
-    }
-    case QApt::FetchFailedWarning: {
-        m_warningStack.append(args);
-        break;
-    }
-    case QApt::UnknownWarning:
-    default:
-        break;
-    }
-}
-
-void MainWindow::questionOccurred(QApt::WorkerQuestion code, const QVariantMap &args)
-{
-    QVariantMap response;
-
-    switch (code) {
-    case QApt::MediaChange: {
-        QString media = args["Media"].toString();
-        QString drive = args["Drive"].toString();
-
-        QString title = i18nc("@title:window", "Media Change Required");
-        QString text = i18nc("@label Asks for a CD change", "Please insert %1 into <filename>%2</filename>", media, drive);
-
-        KMessageBox::information(this, text, title);
-        response["MediaChanged"] = true;
-        m_backend->answerWorkerQuestion(response);
-    }
-    case QApt::InstallUntrusted: {
-        QStringList untrustedItems = args["UntrustedItems"].toStringList();
-
-        QString title = i18nc("@title:window", "Warning - Unverified Software");
-        QString text = i18ncp("@label",
-                              "The following piece of software cannot be verified. "
-                              "<warning>Installing unverified software represents a "
-                              "security risk, as the presence of unverifiable software "
-                              "can be a sign of tampering.</warning> Do you wish to continue?",
-                              "The following pieces of software cannot be authenticated. "
-                              "<warning>Installing unverified software represents a "
-                              "security risk, as the presence of unverifiable software "
-                              "can be a sign of tampering.</warning> Do you wish to continue?",
-                              untrustedItems.size());
-        int result = KMessageBox::Cancel;
-        bool installUntrusted = false;
-
-        result = KMessageBox::warningContinueCancelList(this, text,
-                 untrustedItems, title);
-        switch (result) {
-        case KMessageBox::Continue:
-            installUntrusted = true;
-            break;
-        case KMessageBox::Cancel:
-            installUntrusted = false;
-            reloadActions(); //Pseudo-error in this case. Reset things
-            break;
-        }
-
-        response["InstallUntrusted"] = installUntrusted;
-        m_backend->answerWorkerQuestion(response);
-    }
-    case QApt::InvalidQuestion:
-    default:
-        break;
-    }
-}
-
-void MainWindow::showQueuedWarnings()
-{
-    QStringList details;
-    QString text = i18nc("@label", "Unable to download the following packages:");
-    foreach (const QVariantMap &args, m_warningStack) {
-        QString failedItem = args["FailedItem"].toString();
-        QString warningText = args["WarningText"].toString();
-        details.append(i18nc("@label",
-                             "Failed to download %1\n"
-                             "%2\n\n", failedItem, warningText));
-    }
-    QString title = i18nc("@title:window", "Some Packages Could not be Downloaded");
-    KMessageBox::errorList(this, text, details, title);
-}
-
-void MainWindow::showQueuedErrors()
-{
-    QStringList details;
-    QString text = i18ncp("@label", "An error occurred while applying changes:",
-                                    "The following errors occurred while applying changes:",
-                                    m_warningStack.size());
-    foreach (const QVariantMap &args, m_errorStack) {
-        QString failedItem = i18nc("@label Shows which package failed", "Package: %1", args["FailedItem"].toString());
-        QString errorText = i18nc("@label Shows the error", "Error: %1", args["ErrorText"].toString());
-        details.append(failedItem % "\n" % errorText);
-    }
-
-    QString title = i18nc("@title:window", "Commit error");
-    KMessageBox::errorList(this, text, details, title);
 }
 
 void MainWindow::previewChanges()
@@ -660,22 +413,6 @@ void MainWindow::setActionsEnabled(bool enabled)
     m_revertAction->setEnabled(enabled);
 }
 
-void MainWindow::undo()
-{
-    m_backend->undo();
-}
-
-void MainWindow::redo()
-{
-    m_backend->redo();
-}
-
-void MainWindow::revertChanges()
-{
-    m_backend->init();
-    reload();
-}
-
 void MainWindow::runSourcesEditor()
 {
     KProcess *proc = new KProcess(this);
@@ -696,45 +433,6 @@ void MainWindow::sourcesEditorFinished(int reload)
     find(effectiveWinId())->setEnabled(true);
     if (reload == 1) {
         checkForUpdates();
-    }
-}
-
-bool MainWindow::saveSelections()
-{
-    QString filename;
-
-    filename = KFileDialog::getSaveFileName(QString(), QString(), this,
-                                            i18nc("@title:window", "Save Markings As"));
-
-    if (filename.isEmpty()) {
-        return false;
-    }
-
-    if (!m_backend->saveSelections(filename)) {
-        QString text = i18nc("@label", "The document could not be saved, as it "
-                             "was not possible to write to "
-                             "<filename>%1</filename>\n\nCheck "
-                             "that you have write access to this file "
-                             "or that enough disk space is available.",
-                             filename);
-        KMessageBox::error(this, text, QString());
-        return false;
-    }
-    return true;
-}
-
-void MainWindow::loadSelections()
-{
-    QString filename;
-
-    filename = KFileDialog::getOpenFileName(QString(), QString(), this, i18nc("@title:window", "Open File"));
-
-    if (!m_backend->loadSelections(filename)) {
-        QString text = i18nc("@label", "Could not mark changes. Please make sure "
-                             "that the file is a markings file created by "
-                             "either the Muon Package Manager or the "
-                             "Synaptic Package Manager.");
-        KMessageBox::error(this, text, QString());
     }
 }
 
