@@ -335,6 +335,10 @@ void MuonMainWindow::loadSelections()
 
     filename = KFileDialog::getOpenFileName(QString(), QString(), this, i18nc("@title:window", "Open File"));
 
+    if (filename.isEmpty()) {
+        return;
+    }
+
     if (!m_backend->loadSelections(filename)) {
         QString text = i18nc("@label", "Could not mark changes. Please make sure "
                              "that the file is a markings file created by "
