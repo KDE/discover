@@ -222,12 +222,12 @@ void PackageDelegate::paintText(QPainter *painter, const QStyleOptionViewItem &o
         break;
     }
 
-    int x = option.rect.x() + m_spacing;
-    int y = option.rect.y() + calcItemHeight(option) / 2 + m_spacing;
-    int width = option.rect.width();
-
     QFont font = option.font;
     QFontMetrics fontMetrics(font);
+
+    int x = option.rect.x() + m_spacing;
+    int y = option.rect.y() + calcItemHeight(option) / 4 + fontMetrics.height() -1;
+    int width = option.rect.width();
 
     painter->setPen(pen);
     painter->drawText(x, y, fontMetrics.elidedText(text, option.textElideMode, width));
@@ -235,7 +235,6 @@ void PackageDelegate::paintText(QPainter *painter, const QStyleOptionViewItem &o
 
 QSize PackageDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
-    Q_UNUSED(option);
     Q_UNUSED(index);
 
     QSize size;
