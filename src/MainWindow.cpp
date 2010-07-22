@@ -257,9 +257,6 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
         Solid::PowerManagement::stopSuppressingSleep(m_powerInhibitor);
         m_canExit = true;
         reload();
-        if (m_backend->xapianIndexNeedsUpdate()) {
-            m_backend->updateXapianIndex();
-        }
         returnFromPreview();
         if (m_warningStack.size() > 0) {
             showQueuedWarnings();
@@ -374,6 +371,10 @@ void MainWindow::reload()
         m_commitWidget->deleteLater();
         m_commitWidget = 0;
     }
+
+    if (m_backend->xapianIndexNeedsUpdate()) {
+        m_backend->updateXapianIndex();
+    }
 }
 
 void MainWindow::reloadActions()
@@ -419,21 +420,19 @@ void MainWindow::runSourcesEditor()
     QStringList arguments;
     QString cmd;
     int winID = effectiveWinId();
-    cmd = "software-properties-kde --dont-update --attach " + QString::number(winID); //krazy:exclude=spelling
+    cmd = "software-properties-kde --attach " + QString::number(winID); //krazy:exclude=spelling
     arguments << "/usr/lib/kde4/libexec/kdesu" << QString(cmd);
     proc->setProgram(arguments);
     find(winID)->setEnabled(false);
     proc->start();
     connect(proc, SIGNAL(finished(int, QProcess::ExitStatus)),
-            this, SLOT(sourcesEditorFinished(int)));
+            this, SLOT(sourcesEditorFinished()));
 }
 
-void MainWindow::sourcesEditorFinished(int reload)
+void MainWindow::sourcesEditorFinished()
 {
     find(effectiveWinId())->setEnabled(true);
-    if (reload == 1) {
-        checkForUpdates();
-    }
+    reload();
 }
 
 void MainWindow::easterEggTriggered()
