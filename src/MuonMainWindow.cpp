@@ -273,7 +273,7 @@ void MuonMainWindow::questionOccurred(QApt::WorkerQuestion code, const QVariantM
 
 void MuonMainWindow::showQueuedWarnings()
 {
-    QStringList details;
+    QString details;
     QString text = i18nc("@label", "Unable to download the following packages:");
     foreach (const QVariantMap &args, m_warningStack) {
         QString failedItem = args["FailedItem"].toString();
@@ -283,23 +283,23 @@ void MuonMainWindow::showQueuedWarnings()
                              "%2\n\n", failedItem, warningText));
     }
     QString title = i18nc("@title:window", "Some Packages Could not be Downloaded");
-    KMessageBox::errorList(this, text, details, title);
+    KMessageBox::detailedError(this, text, details, title);
 }
 
 void MuonMainWindow::showQueuedErrors()
 {
-    QStringList details;
+    QString details;
     QString text = i18ncp("@label", "An error occurred while applying changes:",
                                     "The following errors occurred while applying changes:",
                                     m_warningStack.size());
     foreach (const QVariantMap &args, m_errorStack) {
         QString failedItem = i18nc("@label Shows which package failed", "Package: %1", args["FailedItem"].toString());
         QString errorText = i18nc("@label Shows the error", "Error: %1", args["ErrorText"].toString());
-        details.append(failedItem % "\n" % errorText);
+        details.append(failedItem % '\n' % errorText % "\n\n");
     }
 
     QString title = i18nc("@title:window", "Commit error");
-    KMessageBox::errorList(this, text, details, title);
+    KMessageBox::detailedError(this, text, details, title);
 }
 
 void MuonMainWindow::reload()
