@@ -121,7 +121,6 @@ void DependsTab::populateDepends(int index)
 
     QScrollBar *scrollBar = m_dependsBrowser->verticalScrollBar();
     scrollBar->setValue(scrollBar->minimum());
-    kDebug() << scrollBar->value();
 }
 
 #include "DependsTab.moc"
