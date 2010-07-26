@@ -34,7 +34,7 @@ static const char version[] = "0.3 (1.0 alpha 2)";
 int main(int argc, char **argv)
 {
     KAboutData about("muon", 0, ki18n("Muon Package Manager"), version, ki18n(description),
-                     KAboutData::License_GPL, ki18n("(C) 2009, 2010 Jonathan Thomas"), KLocalizedString(), 0);
+                     KAboutData::License_GPL, ki18n("© 2009, 2010 Jonathan Thomas"), KLocalizedString(), 0);
     about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
     about.setProgramIconName("application-x-deb");
 
