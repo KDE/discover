@@ -124,8 +124,6 @@ QHash<QString, QString> MuonStrings::groupHash()
                            "Shells");
     hash["sound"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"sound\"",
                           "Multimedia");
-    hash["mail"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"mail\"",
-                         "Email");
     hash["tex"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"tex\"",
                         "TeX Authoring");
     hash["text"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"text\"",
