@@ -24,6 +24,7 @@
 #include <KVBox>
 
 class KJob;
+class KPixmapSequenceOverlayPainter;
 class KTemporaryFile;
 class KTextBrowser;
 
@@ -42,6 +43,7 @@ public:
 private:
     QApt::Package *m_package;
     KTextBrowser *m_changelogBrowser;
+    KPixmapSequenceOverlayPainter *m_busyWidget;
     KTemporaryFile *m_changelogFile;
 
 public Q_SLOTS:

@@ -28,6 +28,8 @@
 #include <KIO/Job>
 #include <KJob>
 #include <KLocale>
+#include <KPixmapSequence>
+#include <KPixmapSequenceOverlayPainter>
 #include <KTemporaryFile>
 #include <KTextBrowser>
 
@@ -41,6 +43,11 @@ ChangelogTab::ChangelogTab(QWidget *parent)
     , m_changelogFile(0)
 {
     m_changelogBrowser = new KTextBrowser(this);
+
+    m_busyWidget = new KPixmapSequenceOverlayPainter(this);
+    m_busyWidget->setSequence(KPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
+    m_busyWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    m_busyWidget->setWidget(m_changelogBrowser->viewport());
 }
 
 ChangelogTab::~ChangelogTab()
@@ -68,10 +75,13 @@ void ChangelogTab::changelogFetched(KJob *job)
     }
     QTextStream stream(&changelogFile);
     m_changelogBrowser->setText(stream.readAll());
+    m_busyWidget->stop();
 }
 
 void ChangelogTab::fetchChangelog()
 {
+    m_changelogBrowser->clear();
+    m_busyWidget->start();
     if (m_changelogFile) {
         m_changelogFile->deleteLater();
         m_changelogFile = 0;
