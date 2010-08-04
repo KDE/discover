@@ -67,6 +67,7 @@ void ChangelogTab::changelogFetched(KJob *job)
     QTextCharFormat format;
     m_changelogBrowser->setCurrentCharFormat(format);
     QFile changelogFile(m_changelogFile->fileName());
+    m_busyWidget->stop();
     if (job->error() || !changelogFile.open(QFile::ReadOnly)) {
         m_changelogBrowser->setText(i18nc("@info/rich", "The list of changes is not available yet. "
                                           "Please use <link url='%1'>Launchpad</link> instead.",
@@ -75,7 +76,6 @@ void ChangelogTab::changelogFetched(KJob *job)
     }
     QTextStream stream(&changelogFile);
     m_changelogBrowser->setText(stream.readAll());
-    m_busyWidget->stop();
 }
 
 void ChangelogTab::fetchChangelog()
