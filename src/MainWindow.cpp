@@ -426,11 +426,8 @@ void MainWindow::runSourcesEditor()
 {
     KProcess *proc = new KProcess(this);
     QStringList arguments;
-    QString cmd;
     int winID = effectiveWinId();
-    cmd = "software-properties-kde --attach " + QString::number(winID); //krazy:exclude=spelling
-    arguments << "/usr/bin/kdesudo" << cmd;
-    proc->setProgram(arguments);
+    proc->setProgram(QStringList() << "/usr/bin/kdesudo" << "software-properties-kde --attach " << QString::number(winID));
     find(winID)->setEnabled(false);
     proc->start();
     connect(proc, SIGNAL(finished(int, QProcess::ExitStatus)),
