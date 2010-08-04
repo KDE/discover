@@ -110,7 +110,7 @@ void DependsTab::populateDepends(int index)
     case 3:
         list = m_package->providesList();
         if (list.isEmpty()) {
-            m_dependsBrowser->append(i18nc("@label", "This package does provide any virtual packages"));
+            m_dependsBrowser->append(i18nc("@label", "This package does not provide any virtual packages"));
             return;
         }
         foreach(const QString & string, list) {
