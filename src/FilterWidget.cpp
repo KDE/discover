@@ -85,12 +85,15 @@ void FilterWidget::setBackend(QApt::Backend *backend)
 
     populateCategories();
     m_categoriesList->setModel(m_categoryModel);
+    selectFirstRow(m_categoriesList);
 
     populateStatuses();
     m_statusList->setModel(m_statusModel);
+    selectFirstRow(m_statusList);
 
     populateOrigins();
     m_originList->setModel(m_originModel);
+    selectFirstRow(m_originList);
 
     setEnabled(true);
 }
@@ -193,6 +196,12 @@ void FilterWidget::originActivated(const QModelIndex &index)
 {
     QString originName = index.data(Qt::DisplayRole).toString();
     emit filterByOrigin(originName);
+}
+
+void FilterWidget::selectFirstRow(const QAbstractItemView *itemView)
+{
+    QModelIndex firstRow = itemView->model()->index(0, 0);
+    itemView->selectionModel()->select(firstRow, QItemSelectionModel::Select);
 }
 
 #include "FilterWidget.moc"

@@ -25,6 +25,7 @@
 #include <QtCore/QModelIndex>
 #include <QtGui/QDockWidget>
 
+class QAbstractItemView;
 class QDockWidget;
 class QListView;
 class QStandardItemModel;
@@ -60,6 +61,8 @@ private:
     QStandardItemModel *m_categoryModel;
     QStandardItemModel *m_statusModel;
     QStandardItemModel *m_originModel;
+
+    void selectFirstRow(const QAbstractItemView *itemView);
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
