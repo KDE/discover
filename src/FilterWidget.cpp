@@ -54,21 +54,21 @@ FilterWidget::FilterWidget(QWidget *parent)
     m_categoriesList->setHeaderHidden(true);
     m_filterBox->addItem(m_categoriesList, KIcon(), i18nc("@title:tab", "By Category"));
     m_categoryModel = new QStandardItemModel;
-    connect(m_categoriesList, SIGNAL(activated(const QModelIndex &)),
+    connect(m_categoriesList, SIGNAL(clicked(const QModelIndex &)),
             this, SLOT(categoryActivated(const QModelIndex &)));
 
     m_statusList = new QListView(this);
     m_statusList->setAlternatingRowColors(true);
     m_filterBox->addItem(m_statusList, KIcon(), i18nc("@title:tab", "By Status"));
     m_statusModel = new QStandardItemModel;
-    connect(m_statusList, SIGNAL(activated(const QModelIndex &)),
+    connect(m_statusList, SIGNAL(clicked(const QModelIndex &)),
             this, SLOT(statusActivated(const QModelIndex &)));
 
     m_originList = new QListView(this);
     m_originList->setAlternatingRowColors(true);
     m_filterBox->addItem(m_originList, KIcon(), i18nc("@title:tab", "By Origin"));
     m_originModel = new QStandardItemModel;
-    connect(m_originList, SIGNAL(activated(const QModelIndex &)),
+    connect(m_originList, SIGNAL(clicked(const QModelIndex &)),
             this, SLOT(originActivated(const QModelIndex &)));
 
     setWidget(m_filterBox);
