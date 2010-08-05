@@ -465,4 +465,13 @@ void MainWindow::easterEggTriggered()
     music->play();
 }
 
+void MainWindow::revertChanges()
+{
+    MuonMainWindow::revertChanges();
+
+    if (m_reviewWidget) {
+        returnFromPreview();
+    }
+}
+
 #include "MainWindow.moc"

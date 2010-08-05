@@ -101,6 +101,7 @@ private Q_SLOTS:
     void runSourcesEditor();
     void sourcesEditorFinished();
     void easterEggTriggered();
+    void revertChanges();
 };
 
 #endif // _MUON_H_
