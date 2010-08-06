@@ -21,6 +21,8 @@
 #ifndef CHANGELOGTAB_H
 #define CHANGELOGTAB_H
 
+#include <QtCore/QHash>
+
 #include <KVBox>
 
 class KJob;
@@ -44,7 +46,7 @@ private:
     QApt::Package *m_package;
     KTextBrowser *m_changelogBrowser;
     KPixmapSequenceOverlayPainter *m_busyWidget;
-    KTemporaryFile *m_changelogFile;
+    QHash<KJob *, QString> m_jobFilenames;
 
 public Q_SLOTS:
     void setPackage(QApt::Package *package);

@@ -40,7 +40,6 @@ ChangelogTab::ChangelogTab(QWidget *parent)
     : KVBox(parent)
     , m_package(0)
     , m_changelogBrowser(0)
-    , m_changelogFile(0)
 {
     m_changelogBrowser = new KTextBrowser(this);
 
@@ -52,7 +51,6 @@ ChangelogTab::ChangelogTab(QWidget *parent)
 
 ChangelogTab::~ChangelogTab()
 {
-    delete m_changelogFile;
 }
 
 void ChangelogTab::setPackage(QApt::Package *package)
@@ -66,34 +64,39 @@ void ChangelogTab::changelogFetched(KJob *job)
     // Work around http://bugreports.qt.nokia.com/browse/QTBUG-2533 by forcibly resetting the CharFormat
     QTextCharFormat format;
     m_changelogBrowser->setCurrentCharFormat(format);
-    QFile changelogFile(m_changelogFile->fileName());
+    QFile changelogFile(m_jobFilenames[job]);
     m_busyWidget->stop();
     if (job->error() || !changelogFile.open(QFile::ReadOnly)) {
         m_changelogBrowser->setText(i18nc("@info/rich", "The list of changes is not available yet. "
                                           "Please use <link url='%1'>Launchpad</link> instead.",
                                           QString("http://launchpad.net/ubuntu/+source/" + m_package->sourcePackage())));
-        return;
     }
-    QTextStream stream(&changelogFile);
-    m_changelogBrowser->setText(stream.readAll());
+    else {
+        QTextStream stream(&changelogFile);
+        m_changelogBrowser->setText(stream.readAll());
+    }
+
+    m_jobFilenames.remove(job);
+    changelogFile.remove();
 }
 
 void ChangelogTab::fetchChangelog()
 {
     m_changelogBrowser->clear();
     m_busyWidget->start();
-    if (m_changelogFile) {
-        m_changelogFile->deleteLater();
-        m_changelogFile = 0;
-    }
-    m_changelogFile = new KTemporaryFile;
-    m_changelogFile->setPrefix("muon");
-    m_changelogFile->setSuffix(".txt");
-    m_changelogFile->open();
+
+    KTemporaryFile *changelogFile = new KTemporaryFile;
+    changelogFile->setAutoRemove(false);
+    changelogFile->setPrefix("muon");
+    changelogFile->setSuffix(".txt");
+    changelogFile->open();
+    QString filename = changelogFile->fileName();
+    delete changelogFile;
 
     KIO::FileCopyJob *getJob = KIO::file_copy(m_package->changelogUrl(),
-                               m_changelogFile->fileName(), -1,
+                               filename, -1,
                                KIO::Overwrite | KIO::HideProgressInfo);
+    m_jobFilenames.insert(getJob, filename);
     connect(getJob, SIGNAL(result(KJob *)),
             this, SLOT(changelogFetched(KJob *)));
 }
