@@ -29,7 +29,7 @@
 static const char description[] =
     I18N_NOOP("A package manager");
 
-static const char version[] = "0.5.0 (1.0 RC)";
+static const char version[] = "1.0 \"Ambivalent Atraxi\"";
 
 int main(int argc, char **argv)
 {
