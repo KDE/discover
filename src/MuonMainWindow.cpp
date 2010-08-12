@@ -48,7 +48,6 @@ MuonMainWindow::~MuonMainWindow()
 void MuonMainWindow::initObject()
 {
     m_backend = new QApt::Backend;
-    m_backend->init();
     connect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
             this, SLOT(workerEvent(QApt::WorkerEvent)));
     connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode, const QVariantMap &)),
@@ -57,6 +56,7 @@ void MuonMainWindow::initObject()
             this, SLOT(warningOccurred(QApt::WarningCode, const QVariantMap &)));
     connect(m_backend, SIGNAL(questionOccurred(QApt::WorkerQuestion, const QVariantMap &)),
             this, SLOT(questionOccurred(QApt::WorkerQuestion, const QVariantMap &)));
+    m_backend->init();
 
     if (m_backend->xapianIndexNeedsUpdate()) {
         m_backend->updateXapianIndex();
@@ -129,6 +129,7 @@ void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args
                      "configuration may be broken.");
         title = i18nc("@title:window", "Initialization error");
         KMessageBox::error(this, text, title);
+        KApplication::instance()->quit();
         break;
     case QApt::LockError:
         text = i18nc("@label",
