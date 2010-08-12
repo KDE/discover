@@ -123,14 +123,16 @@ void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args
     QString title;
 
     switch (code) {
-    case QApt::InitError:
+    case QApt::InitError: {
         text = i18nc("@label",
                      "The package system could not be initialized, your "
                      "configuration may be broken.");
         title = i18nc("@title:window", "Initialization error");
-        KMessageBox::error(this, text, title);
+        QString details = args["ErrorText"].toString();
+        KMessageBox::detailedError(this, text, details, title);
         KApplication::instance()->quit();
         break;
+    }
     case QApt::LockError:
         text = i18nc("@label",
                      "Another application seems to be using the package "
