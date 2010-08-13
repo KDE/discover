@@ -35,6 +35,7 @@ class QToolButton;
 class KAction;
 class KJob;
 class KMenu;
+class KPixmapSequenceWidget;
 class KTemporaryFile;
 class KTextBrowser;
 
@@ -57,6 +58,7 @@ private:
     QApt::CacheState m_oldCacheState;
 
     QLabel *m_packageShortDescLabel;
+    KPixmapSequenceWidget *m_throbberWidget;
     QPushButton *m_screenshotButton;
 
     QPushButton *m_installButton;

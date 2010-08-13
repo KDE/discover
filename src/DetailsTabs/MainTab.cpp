@@ -37,6 +37,8 @@
 #include <KLocale>
 #include <KMenu>
 #include <KMessageBox>
+#include <KPixmapSequence>
+#include <KPixmapSequenceWidget>
 #include <KTemporaryFile>
 #include <KTextBrowser>
 
@@ -59,6 +61,12 @@ MainTab::MainTab(QWidget *parent)
     QFont font;
     font.setBold(true);
     m_packageShortDescLabel->setFont(font);
+
+    //Busy widget
+    m_throbberWidget = new KPixmapSequenceWidget(headerBox);
+    m_throbberWidget->setSequence(KPixmapSequence("process-working", 22));
+    m_throbberWidget->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
+    m_throbberWidget->hide();
     m_screenshotButton = new QPushButton(headerBox);
     m_screenshotButton->setIcon(KIcon("image-x-generic"));
     m_screenshotButton->setText(i18nc("@action:button", "Get Screenshot..."));
@@ -193,6 +201,7 @@ void MainTab::refresh()
 
 void MainTab::fetchScreenshot()
 {
+    m_throbberWidget->show();
     if (m_screenshotFile) {
         m_screenshotFile->deleteLater();
         m_screenshotFile = 0;
@@ -213,6 +222,7 @@ void MainTab::screenshotFetched(KJob *job)
     if (job->error()) {
         m_screenshotButton->setText(i18nc("@info:status", "No Screenshot Available"));
         m_screenshotButton->setEnabled(false);
+        m_throbberWidget->hide();
         return;
     }
     KDialog *dialog = new KDialog(this);
@@ -224,6 +234,7 @@ void MainTab::screenshotFetched(KJob *job)
     dialog->setMainWidget(label);
     dialog->setButtons(KDialog::Close);
     dialog->show();
+    m_throbberWidget->hide();
 }
 
 bool MainTab::confirmEssentialRemoval()
