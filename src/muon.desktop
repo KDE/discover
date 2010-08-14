@@ -1,5 +1,7 @@
 [Desktop Entry]
 Name=Muon
+Name[pt]=Muon
+Name[sv]=Muon
 Name[uk]=Muon
 Name[x-test]=xxMuonxx
 Exec=muon %i -caption "%c"
@@ -7,6 +9,8 @@ Icon=application-x-deb
 Type=Application
 X-DocPath=muon/index.html
 GenericName=Package Manager
+GenericName[pt]=Gestor de Pacotes
+GenericName[sv]=Pakethanterare
 GenericName[uk]=Керування пакунками
 GenericName[x-test]=xxPackage Managerxx
 Categories=Qt;KDE;System;
