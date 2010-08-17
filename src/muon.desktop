@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Muon
 Name[da]=Muon
+Name[es]=Muon
 Name[pt]=Muon
 Name[pt_BR]=Muon
 Name[sv]=Muon
@@ -12,6 +13,7 @@ Type=Application
 X-DocPath=muon/index.html
 GenericName=Package Manager
 GenericName[da]=Pakkehåndtering
+GenericName[es]=Gestor de paquetes
 GenericName[pt]=Gestor de Pacotes
 GenericName[pt_BR]=Gerenciador de pacotes
 GenericName[sv]=Pakethanterare
