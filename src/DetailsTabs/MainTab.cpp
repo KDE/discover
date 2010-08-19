@@ -338,6 +338,7 @@ void MainTab::setKeep()
     m_oldCacheState = m_backend->currentCacheState();
     m_backend->saveCacheState();
     m_package->setKeep();
+    kDebug() << m_package->wouldBreak();
 
     if (m_package->wouldBreak()) {
         m_backend->restoreCacheState(m_oldCacheState);
