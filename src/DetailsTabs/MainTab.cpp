@@ -107,6 +107,11 @@ MainTab::MainTab(QWidget *parent)
     m_purgeMenu->addAction(m_purgeAction);
     m_removeButton->setMenu(m_purgeMenu);
 
+    m_purgeButton = new QPushButton(buttonBox);
+    m_purgeButton->setIcon(m_purgeAction->icon());
+    m_purgeButton->setText(m_purgeAction->text());
+    connect(m_purgeButton, SIGNAL(clicked()), this, SLOT(setPurge()));
+
     m_cancelButton = new QPushButton(buttonBox);
     m_cancelButton->setIcon(KIcon("dialog-cancel"));
     m_cancelButton->setText(i18nc("@action:button", "Unmark"));
@@ -161,11 +166,19 @@ void MainTab::refresh()
         }
         m_reinstallButton->show();
         m_cancelButton->hide();
+    } else if (state & QApt::Package::ResidualConfig) {
+        m_purgeButton->show();
+        m_installButton->show();
+        m_removeButton->hide();
+        m_upgradeButton->hide();
+        m_reinstallButton->hide();
+        m_cancelButton->hide();
     } else {
         m_installButton->show();
         m_removeButton->hide();
         m_upgradeButton->hide();
         m_reinstallButton->hide();
+        m_purgeButton->hide();
         m_cancelButton->hide();
     }
 
@@ -176,6 +189,7 @@ void MainTab::refresh()
         m_removeButton->hide();
         m_upgradeButton->hide();
         m_reinstallButton->hide();
+        m_purgeButton->hide();
         m_cancelButton->show();
     }
 

@@ -67,6 +67,7 @@ private:
     QPushButton *m_reinstallButton;
     KAction *m_purgeAction;
     KMenu *m_purgeMenu;
+    QPushButton *m_purgeButton;
     QPushButton *m_cancelButton;
 
     KTextBrowser *m_descriptionBrowser;
