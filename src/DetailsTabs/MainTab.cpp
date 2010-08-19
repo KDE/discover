@@ -201,6 +201,7 @@ void MainTab::refresh()
 
 void MainTab::fetchScreenshot()
 {
+    m_screenshotButton->setEnabled(false);
     m_throbberWidget->show();
     if (m_screenshotFile) {
         m_screenshotFile->deleteLater();
@@ -221,10 +222,10 @@ void MainTab::screenshotFetched(KJob *job)
 {
     if (job->error()) {
         m_screenshotButton->setText(i18nc("@info:status", "No Screenshot Available"));
-        m_screenshotButton->setEnabled(false);
         m_throbberWidget->hide();
         return;
     }
+    m_screenshotButton->setEnabled(true);
     KDialog *dialog = new KDialog(this);
 
     QLabel *label = new QLabel(dialog);
@@ -338,7 +339,6 @@ void MainTab::setKeep()
     m_oldCacheState = m_backend->currentCacheState();
     m_backend->saveCacheState();
     m_package->setKeep();
-    kDebug() << m_package->wouldBreak();
 
     if (m_package->wouldBreak()) {
         m_backend->restoreCacheState(m_oldCacheState);
