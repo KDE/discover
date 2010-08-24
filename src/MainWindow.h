@@ -99,7 +99,7 @@ private Q_SLOTS:
     void reloadActions();
     void setActionsEnabled(bool enabled);
     void runSourcesEditor();
-    void sourcesEditorFinished();
+    void sourcesEditorFinished(int reload);
     void easterEggTriggered();
     void revertChanges();
 };

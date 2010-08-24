@@ -433,17 +433,21 @@ void MainWindow::runSourcesEditor()
     KProcess *proc = new KProcess(this);
     QStringList arguments;
     int winID = effectiveWinId();
-    proc->setProgram(QStringList() << "/usr/bin/kdesudo" << "software-properties-kde --attach " << QString::number(winID));
+    proc->setProgram(QStringList() << "/usr/bin/kdesudo"
+                                   << "software-properties-kde --dont-update --attach "
+                                   << QString::number(winID)); //krazy:exclude=spelling
     find(winID)->setEnabled(false);
     proc->start();
     connect(proc, SIGNAL(finished(int, QProcess::ExitStatus)),
-            this, SLOT(sourcesEditorFinished()));
+            this, SLOT(sourcesEditorFinished(int)));
 }
 
-void MainWindow::sourcesEditorFinished()
+void MainWindow::sourcesEditorFinished(int reload)
 {
     find(effectiveWinId())->setEnabled(true);
-    reload();
+    if (reload == 1) {
+        checkForUpdates();
+    }
 }
 
 void MainWindow::easterEggTriggered()
