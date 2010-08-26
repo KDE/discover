@@ -38,7 +38,7 @@
 #include <KMenu>
 #include <KMessageBox>
 #include <KPixmapSequence>
-#include <KPixmapSequenceWidget>
+#include <kpixmapsequencewidget.h>
 #include <KTemporaryFile>
 #include <KTextBrowser>
 
