@@ -166,6 +166,7 @@ void MainTab::refresh()
         }
         m_reinstallButton->show();
         m_cancelButton->hide();
+        m_purgeButton->hide();
     } else if (state & QApt::Package::ResidualConfig) {
         m_purgeButton->show();
         m_installButton->show();
