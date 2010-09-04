@@ -1,6 +1,5 @@
 set(muon_SRCS
     main.cpp
-    MuonMainWindow.cpp
     MainWindow.cpp
     MuonStrings.cpp
     ManagerWidget.cpp
@@ -31,6 +30,7 @@ target_link_libraries(muon ${KDE4_KDEUI_LIBS}
                            ${KDE4_SOLID_LIBS}
                            ${KDE4_PHONON_LIBS}
                            ${QAPT_LIBRARY}
+                           libmuon
                            debconf-kde)
 
 install(TARGETS muon ${INSTALL_TARGETS_DEFAULT_ARGS} )

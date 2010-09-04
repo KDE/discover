@@ -12,6 +12,8 @@ macro_log_feature(QAPT_FOUND "QApt" "High-level Qt wrapper/Apt implementation ar
 
 include_directories(${KDE4_INCLUDES} ${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR})
 
-add_subdirectory( src )
+add_subdirectory(libmuon)
+add_subdirectory(muon)
+add_subdirectory(installer)
 
 macro_display_feature_log()

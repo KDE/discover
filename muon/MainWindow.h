@@ -22,7 +22,7 @@
 #define MAINWINDOW_H
 
 // Own includes
-#include "MuonMainWindow.h"
+#include "../libmuon/MuonMainWindow.h"
 
 class QSplitter;
 class QStackedWidget;
