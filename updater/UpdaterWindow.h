@@ -49,15 +49,12 @@ private:
     QStackedWidget *m_stack;
     UpdaterWidget *m_updaterWidget;
 
-    KAction *m_updateAction;
     KAction *m_applyAction;
-    KAction *m_revertAction;
 
     DownloadWidget *m_downloadWidget;
     CommitWidget *m_commitWidget;
     StatusWidget *m_statusWidget;
 
-    int m_powerInhibitor;
 
 private Q_SLOTS:
     void initGUI();

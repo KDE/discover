@@ -59,9 +59,10 @@ protected:
     QList<QVariantMap> m_warningStack;
     QList<QVariantMap> m_errorStack;
 
-
+    KAction *m_updateAction;
     KAction *m_undoAction;
     KAction *m_redoAction;
+    KAction *m_revertAction;
 
     int m_powerInhibitor;
     bool m_canExit;

@@ -112,11 +112,22 @@ void MuonMainWindow::setupActions()
     KAction *quitAction = KStandardAction::quit(this, SLOT(slotQuit()), actionCollection());
     actionCollection()->addAction("quit", quitAction);
 
+    m_updateAction = actionCollection()->addAction("update");
+    m_updateAction->setIcon(KIcon("system-software-update"));
+    m_updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
+    m_updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
+    connect(m_updateAction, SIGNAL(triggered()), this, SLOT(checkForUpdates()));
+
     m_undoAction = KStandardAction::undo(this, SLOT(undo()), actionCollection());
     actionCollection()->addAction("undo", m_undoAction);
 
     m_redoAction = KStandardAction::redo(this, SLOT(redo()), actionCollection());
     actionCollection()->addAction("redo", m_redoAction);
+
+    m_revertAction = actionCollection()->addAction("revert");
+    m_revertAction->setIcon(KIcon("document-revert"));
+    m_revertAction->setText(i18nc("@action Reverts all potential changes to the cache", "Unmark All"));
+    connect(m_revertAction, SIGNAL(triggered()), this, SLOT(revertChanges()));
 }
 
 void MuonMainWindow::workerEvent(QApt::WorkerEvent event)

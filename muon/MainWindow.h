@@ -59,12 +59,10 @@ public:
 private:
     QStackedWidget *m_stack;
     QSplitter *m_mainWidget;
-    KAction *m_updateAction;
     KAction *m_safeUpgradeAction;
     KAction *m_distUpgradeAction;
     KAction *m_previewAction;
     KAction *m_applyAction;
-    KAction *m_revertAction;
     KAction *m_saveSelectionsAction;
     KAction *m_loadSelectionsAction;
 

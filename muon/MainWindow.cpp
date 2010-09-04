@@ -153,12 +153,6 @@ void MainWindow::setupActions()
     m_saveSelectionsAction->setText(i18nc("@action", "Save Markings As..."));
     connect(m_saveSelectionsAction, SIGNAL(triggered()), this, SLOT(saveSelections()));
 
-    m_updateAction = actionCollection()->addAction("update");
-    m_updateAction->setIcon(KIcon("system-software-update"));
-    m_updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
-    m_updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
-    connect(m_updateAction, SIGNAL(triggered()), this, SLOT(checkForUpdates()));
-
     m_safeUpgradeAction = actionCollection()->addAction("safeupgrade");
     m_safeUpgradeAction->setIcon(KIcon("go-up"));
     m_safeUpgradeAction->setText(i18nc("@action Marks upgradeable packages for upgrade", "Cautious Upgrade"));
@@ -179,11 +173,6 @@ void MainWindow::setupActions()
     m_applyAction->setIcon(KIcon("dialog-ok-apply"));
     m_applyAction->setText(i18nc("@action Applys the changes a user has made", "Apply Changes"));
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
-
-    m_revertAction = actionCollection()->addAction("revert");
-    m_revertAction->setIcon(KIcon("document-revert"));
-    m_revertAction->setText(i18nc("@action Reverts all potential changes to the cache", "Unmark All"));
-    connect(m_revertAction, SIGNAL(triggered()), this, SLOT(revertChanges()));
 
     KAction *action = actionCollection()->addAction("software_properties");
     action->setIcon(KIcon("configure"));

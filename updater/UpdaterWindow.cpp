@@ -89,12 +89,6 @@ void UpdaterWindow::setupActions()
 {
     MuonMainWindow::setupActions();
 
-    m_updateAction = actionCollection()->addAction("update");
-    m_updateAction->setIcon(KIcon("system-software-update"));
-    m_updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
-    m_updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
-    connect(m_updateAction, SIGNAL(triggered()), this, SLOT(checkForUpdates()));
-
     m_applyAction = actionCollection()->addAction("apply");
     m_applyAction->setIcon(KIcon("dialog-ok-apply"));
     m_applyAction->setText(i18nc("@action Downloads and installs updates", "Install Updates"));
