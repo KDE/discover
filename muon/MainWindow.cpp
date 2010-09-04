@@ -49,12 +49,12 @@
 #include <libqapt/backend.h>
 
 // Own includes
-#include "CommitWidget.h"
-#include "DownloadWidget.h"
+#include "../libmuon/CommitWidget.h"
+#include "../libmuon/DownloadWidget.h"
+#include "../libmuon/StatusWidget.h"
 #include "FilterWidget.h"
 #include "ManagerWidget.h"
 #include "ReviewWidget.h"
-#include "StatusWidget.h"
 #include "MuonSettings.h"
 
 MainWindow::MainWindow()

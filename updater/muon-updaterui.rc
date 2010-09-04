@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gui name="muon-updater"
+     version="1"
+     xmlns="http://www.kde.org/standards/kxmlgui/1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.kde.org/standards/kxmlgui/1.0
+                         http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd">
+    <MenuBar>
+        <Menu name="file" >
+            <Action name="quit" />
+        </Menu>
+        <Menu name="edit" >
+            <Action name="undo" />
+            <Action name="redo" />
+            <Action name="revert" />
+            <Separator/>
+            <Action name="update" />
+            <Separator/>
+            <Action name="apply" />
+        </Menu>
+        <Menu name="settings">
+          <Separator />
+          <Action name="software_properties" />
+        </Menu>
+    </MenuBar>
+    <ToolBar name="mainToolBar">
+        <Action name="apply" />
+        <Action name="quit" />
+        <Separator/>
+        <Action name="update" />
+        <Separator/>
+        <Action name="undo" />
+        <Action name="redo" />
+        <Action name="revert" />
+    </ToolBar>
+</gui>

@@ -1,24 +1,9 @@
 set(muon_SRCS
     main.cpp
     MainWindow.cpp
-    MuonStrings.cpp
     ManagerWidget.cpp
     ReviewWidget.cpp
-    DownloadWidget.cpp
-    CommitWidget.cpp
-    FilterWidget.cpp
-    DetailsWidget.cpp
-    StatusWidget.cpp
-    PackageModel/PackageModel.cpp
-    PackageModel/PackageProxyModel.cpp
-    PackageModel/PackageView.cpp
-    PackageModel/PackageDelegate.cpp
-    DetailsTabs/MainTab.cpp
-    DetailsTabs/ChangelogTab.cpp
-    DetailsTabs/DependsTab.cpp
-    DetailsTabs/InstalledFilesTab.cpp
-    DetailsTabs/TechnicalDetailsTab.cpp
-    DetailsTabs/VersionTab.cpp)
+    FilterWidget.cpp)
 
 kde4_add_kcfg_files(muon_SRCS GENERATE_MOC config/MuonSettings.kcfgc)
 install(FILES config/muon.kcfg DESTINATION ${KCFG_INSTALL_DIR})

@@ -33,9 +33,11 @@
 #include <KLineEdit>
 #include <KLocale>
 
+// LibQApt includes
 #include <libqapt/backend.h>
 
-#include "MuonStrings.h"
+// Own includes
+#include "../libmuon/MuonStrings.h"
 
 FilterWidget::FilterWidget(QWidget *parent)
     : QDockWidget(parent)

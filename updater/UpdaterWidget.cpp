@@ -18,7 +18,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "ReviewWidget.h"
+#include "UpdaterWidget.h"
 
 // Qt includes
 #include <QtGui/QHeaderView>
@@ -37,12 +37,12 @@
 
 // Own includes
 #include "../libmuon/DetailsWidget.h"
-#include "../libmuon/PackageModel/PackageModel.h"
 #include "../libmuon/PackageModel/PackageProxyModel.h"
+#include "../libmuon/PackageModel/PackageModel.h"
 #include "../libmuon/PackageModel/PackageView.h"
 #include "../libmuon/PackageModel/PackageDelegate.h"
 
-ReviewWidget::ReviewWidget(QWidget *parent)
+UpdaterWidget::UpdaterWidget(QWidget *parent)
     : KVBox(parent)
     , m_backend(0)
 {
@@ -55,7 +55,7 @@ ReviewWidget::ReviewWidget(QWidget *parent)
 
     QLabel *browserHeader = new QLabel(topVBox);
     browserHeader->setTextFormat(Qt::RichText);
-    browserHeader->setText(i18n("<b>Review and Apply Changes</b>"));
+    browserHeader->setText(i18n("<b>Update Packages</b>"));
 
     m_packageView = new PackageView(topVBox);
     m_packageView->setModel(m_proxyModel);
@@ -77,17 +77,18 @@ ReviewWidget::ReviewWidget(QWidget *parent)
     setEnabled(false);
 }
 
-ReviewWidget::~ReviewWidget()
+UpdaterWidget::~UpdaterWidget()
 {
 }
 
-void ReviewWidget::setBackend(QApt::Backend *backend)
+void UpdaterWidget::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
     connect(m_backend, SIGNAL(packageChanged()), this, SLOT(refresh()));
     connect(m_backend, SIGNAL(packageChanged()), m_detailsWidget, SLOT(refreshTabs()));
 
     m_detailsWidget->setBackend(backend);
+    m_backend->markPackagesForDistUpgrade();
     m_model->setPackages(m_backend->markedPackages());
     m_proxyModel->setSourceModel(m_model);
     m_proxyModel->setBackend(m_backend);
@@ -97,8 +98,9 @@ void ReviewWidget::setBackend(QApt::Backend *backend)
     setEnabled(true);
 }
 
-void ReviewWidget::refresh()
+void UpdaterWidget::refresh()
 {
+    m_detailsWidget->clear();
     m_model->clear();
     m_proxyModel->clear();
     m_proxyModel->setSourceModel(0);
@@ -108,7 +110,7 @@ void ReviewWidget::refresh()
     m_packageView->updateView();
 }
 
-void ReviewWidget::packageActivated(const QModelIndex &index)
+void UpdaterWidget::packageActivated(const QModelIndex &index)
 {
     QApt::Package *package = m_proxyModel->packageAt(index);
     if (!index.isValid() || (index.row() == -1) || !package) {
@@ -118,4 +120,4 @@ void ReviewWidget::packageActivated(const QModelIndex &index)
     m_detailsWidget->setPackage(package);
 }
 
-#include "ReviewWidget.moc"
+#include "UpdaterWidget.moc"
