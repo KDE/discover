@@ -84,6 +84,7 @@ void DownloadWidget::setHeaderText(const QString &text)
 void DownloadWidget::addItem(const QString &message)
 {
     QStandardItem *n = new QStandardItem();
+    n->setEditable(false);
     n->setText(message);
     m_downloadModel->appendRow(n);
     m_downloadView->scrollTo(m_downloadModel->indexFromItem(n));

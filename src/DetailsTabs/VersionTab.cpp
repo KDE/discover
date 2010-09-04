@@ -89,6 +89,7 @@ void VersionTab::populateVersions()
         m_versions.append(split.at(0));
 
         QStandardItem *versionItem = new QStandardItem;
+        versionItem->setEditable(false);
         versionItem->setText(version);
         m_versionModel->appendRow(versionItem);
     }
