@@ -63,7 +63,6 @@ MainWindow::MainWindow()
     , m_reviewWidget(0)
     , m_downloadWidget(0)
     , m_commitWidget(0)
-    , m_powerInhibitor(0)
 
 {
     initGUI();
@@ -180,12 +179,6 @@ void MainWindow::setupActions()
     m_applyAction->setIcon(KIcon("dialog-ok-apply"));
     m_applyAction->setText(i18nc("@action Applys the changes a user has made", "Apply Changes"));
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
-
-    m_undoAction = KStandardAction::undo(this, SLOT(undo()), actionCollection());
-    actionCollection()->addAction("undo", m_undoAction);
-
-    m_redoAction = KStandardAction::redo(this, SLOT(redo()), actionCollection());
-    actionCollection()->addAction("redo", m_redoAction);
 
     m_revertAction = actionCollection()->addAction("revert");
     m_revertAction->setIcon(KIcon("document-revert"));

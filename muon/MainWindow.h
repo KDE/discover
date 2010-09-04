@@ -64,8 +64,6 @@ private:
     KAction *m_distUpgradeAction;
     KAction *m_previewAction;
     KAction *m_applyAction;
-    KAction *m_undoAction;
-    KAction *m_redoAction;
     KAction *m_revertAction;
     KAction *m_saveSelectionsAction;
     KAction *m_loadSelectionsAction;
@@ -76,8 +74,6 @@ private:
     DownloadWidget *m_downloadWidget;
     CommitWidget *m_commitWidget;
     StatusWidget *m_statusWidget;
-
-    int m_powerInhibitor;
 
 private Q_SLOTS:
     void initGUI();

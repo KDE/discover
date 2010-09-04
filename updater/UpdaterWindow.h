@@ -51,8 +51,6 @@ private:
 
     KAction *m_updateAction;
     KAction *m_applyAction;
-    KAction *m_undoAction;
-    KAction *m_redoAction;
     KAction *m_revertAction;
 
     DownloadWidget *m_downloadWidget;

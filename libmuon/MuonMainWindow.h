@@ -31,6 +31,8 @@
 // LibQApt includes
 #include <libqapt/globals.h>
 
+class KAction;
+
 namespace QApt
 {
     class Backend;
@@ -57,6 +59,11 @@ protected:
     QList<QVariantMap> m_warningStack;
     QList<QVariantMap> m_errorStack;
 
+
+    KAction *m_undoAction;
+    KAction *m_redoAction;
+
+    int m_powerInhibitor;
     bool m_canExit;
 
 protected Q_SLOTS:

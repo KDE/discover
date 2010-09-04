@@ -37,6 +37,7 @@
 MuonMainWindow::MuonMainWindow()
     : KXmlGuiWindow(0)
     , m_backend(0)
+    , m_powerInhibitor(0)
     , m_canExit(true)
 {
 }
@@ -110,6 +111,12 @@ void MuonMainWindow::setupActions()
 {
     KAction *quitAction = KStandardAction::quit(this, SLOT(slotQuit()), actionCollection());
     actionCollection()->addAction("quit", quitAction);
+
+    m_undoAction = KStandardAction::undo(this, SLOT(undo()), actionCollection());
+    actionCollection()->addAction("undo", m_undoAction);
+
+    m_redoAction = KStandardAction::redo(this, SLOT(redo()), actionCollection());
+    actionCollection()->addAction("redo", m_redoAction);
 }
 
 void MuonMainWindow::workerEvent(QApt::WorkerEvent event)
