@@ -62,6 +62,7 @@ private Q_SLOTS:
     void setupActions();
     void checkForUpdates();
     void workerEvent(QApt::WorkerEvent event);
+    void errorOccurred(QApt::ErrorCode code, const QVariantMap &args);
     void initDownloadWidget();
     void initCommitWidget();
     void startCommit();

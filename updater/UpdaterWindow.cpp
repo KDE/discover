@@ -162,6 +162,13 @@ void UpdaterWindow::workerEvent(QApt::WorkerEvent event)
     }
 }
 
+void UpdaterWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args)
+{
+    MuonMainWindow::errorOccurred(code, args);
+
+    returnFromPreview();
+}
+
 void UpdaterWindow::initDownloadWidget()
 {
     if (!m_downloadWidget) {
