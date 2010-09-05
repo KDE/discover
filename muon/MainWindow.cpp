@@ -331,7 +331,7 @@ void MainWindow::initDownloadWidget()
     if (!m_downloadWidget) {
         m_downloadWidget = new DownloadWidget(this);
         m_stack->addWidget(m_downloadWidget);
-        connect(m_backend, SIGNAL(downloadProgress(int, int, int)),
+        connect(m_backend, SIGNAL(globalDownloadProgress(int, int, int)),
                 m_downloadWidget, SLOT(updateDownloadProgress(int, int, int)));
         connect(m_backend, SIGNAL(downloadMessage(int, const QString &)),
                 m_downloadWidget, SLOT(updateDownloadMessage(int, const QString &)));
