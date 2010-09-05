@@ -26,7 +26,7 @@
 #include <QtGui/QWidget>
 
 // LibQApt includes
-#include <libqapt/globals.h>
+#include <LibQApt/Globals>
 
 class QPushButton;
 class QLabel;

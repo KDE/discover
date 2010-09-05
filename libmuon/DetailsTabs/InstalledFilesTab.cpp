@@ -24,7 +24,7 @@
 #include <KTextBrowser>
 
 // LibQApt includes
-#include <libqapt/package.h>
+#include <LibQApt/Package>
 
 InstalledFilesTab::InstalledFilesTab(QWidget *parent)
     : KVBox(parent)

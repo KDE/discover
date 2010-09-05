@@ -32,7 +32,7 @@
 #include <KMessageBox>
 
 // LibQApt includes
-#include <libqapt/backend.h>
+#include <LibQApt/Backend>
 
 MuonMainWindow::MuonMainWindow()
     : KXmlGuiWindow(0)

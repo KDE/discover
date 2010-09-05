@@ -34,7 +34,7 @@
 #include <KTextBrowser>
 
 // LibQApt includes
-#include <libqapt/package.h>
+#include <LibQApt/Package>
 
 ChangelogTab::ChangelogTab(QWidget *parent)
     : KVBox(parent)

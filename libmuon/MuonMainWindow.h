@@ -29,7 +29,7 @@
 #include <KLocale>
 
 // LibQApt includes
-#include <libqapt/globals.h>
+#include <LibQApt/Globals>
 
 class KAction;
 

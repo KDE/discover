@@ -33,7 +33,7 @@
 #include <KLocale>
 
 // LibQApt includes
-#include <libqapt/package.h>
+#include <LibQApt/Package>
 
 VersionTab::VersionTab(QWidget *parent)
     : KVBox(parent)

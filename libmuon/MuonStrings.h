@@ -23,7 +23,7 @@
 
 #include <QtCore/QHash>
 
-#include <libqapt/package.h>
+#include <LibQApt/Package>
 
 class MuonStrings : public QObject
 {

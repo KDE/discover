@@ -36,7 +36,7 @@
 #include <KLocale>
 
 // LibQApt includes
-#include <libqapt/backend.h>
+#include <LibQApt/Backend>
 
 // Own includes
 #include "../libmuon/DetailsWidget.h"

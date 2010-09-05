@@ -30,7 +30,7 @@
 #include <KLocale>
 
 // LibQApt includes
-#include <libqapt/backend.h>
+#include <LibQApt/Backend>
 
 StatusWidget::StatusWidget(QWidget *parent)
     : KHBox(parent)

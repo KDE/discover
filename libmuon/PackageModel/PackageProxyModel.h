@@ -21,10 +21,10 @@
 #ifndef PACKAGEPROXYMODEL_H
 #define PACKAGEPROXYMODEL_H
 
-#include <QSortFilterProxyModel>
-#include <QString>
+#include <QtGui/QSortFilterProxyModel>
+#include <QtCore/QString>
 
-#include <libqapt/package.h>
+#include <LibQApt/Package>
 
 namespace QApt {
     class Backend;

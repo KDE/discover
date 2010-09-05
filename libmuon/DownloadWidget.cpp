@@ -35,7 +35,7 @@
 #include <KLocale>
 
 // LibQApt includes
-#include <libqapt/globals.h>
+#include <LibQApt/Globals>
 
 DownloadWidget::DownloadWidget(QWidget *parent)
     : QWidget(parent)

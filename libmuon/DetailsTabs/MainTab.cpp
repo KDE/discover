@@ -43,8 +43,8 @@
 #include <KTextBrowser>
 
 // LibQApt includes
-#include <libqapt/backend.h>
-#include <libqapt/package.h>
+#include <LibQApt/Backend>
+#include <LibQApt/Package>
 
 MainTab::MainTab(QWidget *parent)
     : QWidget(parent)

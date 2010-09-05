@@ -28,8 +28,8 @@
 #include <KLocale>
 
 // LibQApt includes
-#include <libqapt/backend.h>
-#include <libqapt/package.h>
+#include <LibQApt/Backend>
+#include <LibQApt/Package>
 
 // Own includes
 #include "DetailsTabs/MainTab.h"

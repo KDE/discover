@@ -30,7 +30,7 @@
 #include <KTextBrowser>
 
 // LibQApt includes
-#include <libqapt/package.h>
+#include <LibQApt/Package>
 
 DependsTab::DependsTab(QWidget *parent)
     : KVBox(parent)

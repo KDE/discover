@@ -32,7 +32,7 @@
 #include <KHBox>
 
 // LibQApt includes
-#include <libqapt/package.h>
+#include <LibQApt/Package>
 
 // Own includes
 #include "MuonStrings.h"

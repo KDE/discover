@@ -23,7 +23,7 @@
 
 #include <QAbstractListModel>
 
-#include <libqapt/package.h>
+#include <LibQApt/Package>
 
 class PackageModel: public QAbstractListModel
 {

@@ -21,7 +21,7 @@
 #include "MainWindow.h"
 
 // Qt includes
-#include <QStringBuilder>
+#include <QtCore/QStringBuilder>
 #include <QtCore/QTimer>
 #include <QtGui/QLabel>
 #include <QtGui/QShortcut>
@@ -46,7 +46,7 @@
 #include <Solid/PowerManagement>
 
 // LibQApt includes
-#include <libqapt/backend.h>
+#include <LibQApt/Backend>
 
 // Own includes
 #include "../libmuon/CommitWidget.h"

@@ -33,7 +33,7 @@
 #include <Solid/PowerManagement>
 
 // LibQApt includes
-#include <libqapt/backend.h>
+#include <LibQApt/Backend>
 
 // Own includes
 #include "../libmuon/CommitWidget.h"
