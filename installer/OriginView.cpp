@@ -26,7 +26,7 @@
 #include <KDebug>
 
 // LibQApt includes
-#include <libqapt/backend.h>
+#include <LibQApt/Backend>
 
 OriginView::OriginView(QWidget *parent)
     : QTreeView(parent)

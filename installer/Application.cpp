@@ -27,8 +27,8 @@
 #include <KDebug>
 
 // QApt includes
-#include <libqapt/package.h>
-#include <libqapt/backend.h>
+#include <LibQApt/Package>
+#include <LibQApt/Backend>
 
 Application::Application(const QString &fileName, QApt::Backend *backend)
         : m_fileName(fileName)

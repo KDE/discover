@@ -37,7 +37,7 @@
 #include <Nepomuk/KRatingPainter>
 
 // LibQApt includes
-#include <libqapt/package.h>
+#include <LibQApt/Package>
 
 #include "ApplicationModel.h"
 

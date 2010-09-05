@@ -25,7 +25,7 @@
 #include <KLocale>
 #include <KExtendableItemDelegate>
 
-#include <libqapt/package.h>
+#include <LibQApt/Package>
 
 #include <math.h>
 
