@@ -70,6 +70,7 @@ DetailsWidget::~DetailsWidget()
 void DetailsWidget::setBackend(QApt::Backend *backend)
 {
     m_mainTab->setBackend(backend);
+    m_technicalTab->setBackend(backend);
 }
 
 void DetailsWidget::setPackage(QApt::Package *package)

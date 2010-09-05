@@ -28,6 +28,7 @@ class QLabel;
 
 namespace QApt
 {
+    class Backend;
     class Package;
 }
 
@@ -41,12 +42,14 @@ public:
     ~TechnicalDetailsTab();
 
 private:
+    QApt::Backend *m_backend;
     QApt::Package *m_package;
     MuonStrings *m_strings;
 
     QLabel *m_maintainer;
     QLabel *m_section;
     QLabel *m_sourcePackage;
+    QLabel *m_origin;
 
     QGroupBox *m_installedVersionBox;
     QGroupBox *m_currentVersionBox;
@@ -58,6 +61,7 @@ private:
     QLabel *m_downloadSize;
 
 public Q_SLOTS:
+    void setBackend(QApt::Backend *backend);
     void setPackage(QApt::Package *package);
     void clear();
     void refresh();

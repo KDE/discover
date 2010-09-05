@@ -32,6 +32,7 @@
 #include <KHBox>
 
 // LibQApt includes
+#include <LibQApt/Backend>
 #include <LibQApt/Package>
 
 // Own includes
@@ -39,6 +40,7 @@
 
 TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
     : QScrollArea(parent)
+    , m_backend(0)
     , m_package(0)
 {
     m_strings = new MuonStrings(this);
@@ -73,6 +75,14 @@ TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
     m_sourcePackage = new QLabel(generalWidget);
     generalGrid->addWidget(sourcePackageLabel, 2, 0, Qt::AlignRight);
     generalGrid->addWidget(m_sourcePackage, 2, 1, Qt::AlignLeft);
+
+    // generalGrid, row 3
+    QLabel *originLabel = new QLabel(generalWidget);
+    originLabel->setText(i18nc("@label The software source that this package comes from",
+                                      "Origin:"));
+    m_origin = new QLabel(generalWidget);
+    generalGrid->addWidget(originLabel, 3, 0, Qt::AlignRight);
+    generalGrid->addWidget(m_origin, 3, 1, Qt::AlignLeft);
 
     generalGrid->setColumnStretch(1, 1);
 
@@ -135,6 +145,11 @@ TechnicalDetailsTab::~TechnicalDetailsTab()
 {
 }
 
+void TechnicalDetailsTab::setBackend(QApt::Backend *backend)
+{
+    m_backend = backend;
+}
+
 void TechnicalDetailsTab::setPackage(QApt::Package *package)
 {
     m_package = package;
@@ -155,6 +170,7 @@ void TechnicalDetailsTab::refresh()
     m_maintainer->setText(m_package->maintainer());
     m_section->setText(m_strings->groupName(m_package->section()));
     m_sourcePackage->setText(m_package->sourcePackage());
+    m_origin->setText(m_backend->originLabel(m_package->origin()));
 
     if (m_package->isInstalled()) {
         m_installedVersionBox->show();
