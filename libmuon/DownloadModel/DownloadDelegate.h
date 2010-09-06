@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010 Guillaume Martres <smarter@ubuntu.com>               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,48 +18,20 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef DOWNLOADWIDGET_H
-#define DOWNLOADWIDGET_H
+#ifndef DOWNLOADDELEGATE_H
+#define DOWNLOADDELEGATE_H
 
-// Qt includes
-#include <QWidget>
+#include <QStyledItemDelegate>
 
-class QLabel;
-class QTableView;
-class QProgressBar;
-class QPushButton;
 
-class DownloadDelegate;
-class DownloadModel;
-
-class DownloadWidget : public QWidget
+class DownloadDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
 public:
-    explicit DownloadWidget(QWidget *parent);
-    ~DownloadWidget();
+    explicit DownloadDelegate(QObject *parent = 0);
 
-private:
-    QLabel *m_headerLabel;
-    QTableView *m_downloadView;
-    DownloadModel *m_downloadModel;
-    DownloadDelegate *m_downloadDelegate;
-    QProgressBar *m_totalProgress;
-    QLabel *m_downloadLabel;
-    QPushButton *m_cancelButton;
-
-public Q_SLOTS:
-    void setHeaderText(const QString &text);
-    void updateDownloadProgress(int percentage, int speed, int ETA);
-    void updatePackageDownloadProgress(const QString &name, int percentage, const QString &URI, double size, int flag);
-    void updateDownloadMessage(int flag, const QString &message);
-    void clear();
-
-private Q_SLOTS:
-    void cancelButtonPressed();
-
-signals:
-    void cancelDownload();
+    virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    virtual void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
 };
 
-#endif
+#endif // DOWNLOADDELEGATE_H

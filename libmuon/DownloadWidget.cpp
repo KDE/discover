@@ -21,14 +21,15 @@
 #include "DownloadWidget.h"
 
 // Qt includes
+#include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
-#include <QtGui/QListView>
+#include <QtGui/QTableView>
 #include <QtGui/QProgressBar>
 #include <QtGui/QPushButton>
 #include <QtGui/QVBoxLayout>
-#include <QStandardItemModel>
 
 // KDE includes
+#include <KDebug>
 #include <KGlobal>
 #include <KHBox>
 #include <KIcon>
@@ -36,6 +37,9 @@
 
 // LibQApt includes
 #include <LibQApt/Globals>
+
+#include "DownloadModel/DownloadDelegate.h"
+#include "DownloadModel/DownloadModel.h"
 
 DownloadWidget::DownloadWidget(QWidget *parent)
     : QWidget(parent)
@@ -46,12 +50,14 @@ DownloadWidget::DownloadWidget(QWidget *parent)
     m_headerLabel = new QLabel(this);
     layout->addWidget(m_headerLabel);
 
-    m_downloadModel = new QStandardItemModel(this);
+    m_downloadModel = new DownloadModel(this);
+    m_downloadDelegate = new DownloadDelegate(this);
 
-    //TODO: Fancy model/view with progress bars for each item
-    m_downloadView = new QListView(this);
+    m_downloadView = new QTableView(this);
+    m_downloadView->verticalHeader()->hide();
     layout->addWidget(m_downloadView);
     m_downloadView->setModel(m_downloadModel);
+    m_downloadView->setItemDelegate(m_downloadDelegate);
 
     m_downloadLabel = new QLabel(this);
     layout->addWidget(m_downloadLabel);
@@ -72,22 +78,13 @@ DownloadWidget::~DownloadWidget()
 
 void DownloadWidget::clear()
 {
-    m_downloadModel->clear();
+    //m_downloadModel->clear();
     m_totalProgress->setValue(0);
 }
 
 void DownloadWidget::setHeaderText(const QString &text)
 {
     m_headerLabel->setText(text);
-}
-
-void DownloadWidget::addItem(const QString &message)
-{
-    QStandardItem *n = new QStandardItem();
-    n->setEditable(false);
-    n->setText(message);
-    m_downloadModel->appendRow(n);
-    m_downloadView->scrollTo(m_downloadModel->indexFromItem(n));
 }
 
 void DownloadWidget::updateDownloadProgress(int percentage, int speed, int ETA)
@@ -116,6 +113,15 @@ void DownloadWidget::updateDownloadProgress(int percentage, int speed, int ETA)
     m_downloadLabel->setText(downloadSpeed + timeRemaining);
 }
 
+void DownloadWidget::updatePackageDownloadProgress(const QString &name, int percentage, const QString &URI, double size, int flag)
+{
+    if (flag != QApt::DownloadFetch) {
+        return;
+    }
+
+    m_downloadModel->updatePercentage(name, percentage);
+}
+
 void DownloadWidget::updateDownloadMessage(int flag, const QString &message)
 {
     QString fullMessage;
@@ -133,7 +139,6 @@ void DownloadWidget::updateDownloadMessage(int flag, const QString &message)
     default:
         fullMessage = message;
     }
-    addItem(fullMessage);
 }
 
 void DownloadWidget::cancelButtonPressed()

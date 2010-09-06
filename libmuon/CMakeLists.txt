@@ -5,6 +5,8 @@ set(muon_LIB_SRCS
     DownloadWidget.cpp
     StatusWidget.cpp
     DetailsWidget.cpp
+    DownloadModel/DownloadModel.cpp
+    DownloadModel/DownloadDelegate.cpp
     PackageModel/PackageModel.cpp
     PackageModel/PackageProxyModel.cpp
     PackageModel/PackageView.cpp

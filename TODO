@@ -1,2 +1,1 @@
 -Improve sort performance
--Make a DownloadModel class that has a column with a progress bar for reporting the progress of individual downloads

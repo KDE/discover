@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010 Guillaume Martres <smarter@ubuntu.com>               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,48 +18,34 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef DOWNLOADWIDGET_H
-#define DOWNLOADWIDGET_H
+#ifndef DOWNLOADMODEL_H
+#define DOWNLOADMODEL_H
 
-// Qt includes
-#include <QWidget>
+#include <QList>
+#include <QHash>
+#include <QModelIndex>
 
-class QLabel;
-class QTableView;
-class QProgressBar;
-class QPushButton;
+//TODO: global.h for enum
+#include "../PackageModel/PackageModel.h"
 
-class DownloadDelegate;
-class DownloadModel;
-
-class DownloadWidget : public QWidget
+class DownloadModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    explicit DownloadWidget(QWidget *parent);
-    ~DownloadWidget();
-
-private:
-    QLabel *m_headerLabel;
-    QTableView *m_downloadView;
-    DownloadModel *m_downloadModel;
-    DownloadDelegate *m_downloadDelegate;
-    QProgressBar *m_totalProgress;
-    QLabel *m_downloadLabel;
-    QPushButton *m_cancelButton;
+    explicit DownloadModel(QObject *parent = 0);
+    virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
+    virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const;
+    virtual int columnCount(const QModelIndex& parent = QModelIndex()) const;
+    virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
 
 public Q_SLOTS:
-    void setHeaderText(const QString &text);
-    void updateDownloadProgress(int percentage, int speed, int ETA);
-    void updatePackageDownloadProgress(const QString &name, int percentage, const QString &URI, double size, int flag);
-    void updateDownloadMessage(int flag, const QString &message);
-    void clear();
+    void updatePercentage(const QString &package, int percentage);
 
-private Q_SLOTS:
-    void cancelButtonPressed();
+Q_SIGNALS:
+    void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight);
 
-signals:
-    void cancelDownload();
+private:
+    QList< QPair<QString, int> > m_packageList;
 };
 
-#endif
+#endif // DOWNLOADMODEL_H
