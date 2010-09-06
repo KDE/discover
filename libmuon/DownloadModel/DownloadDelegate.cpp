@@ -24,7 +24,7 @@
 
 #include <QPainter>
 
-#include "../PackageModel/PackageModel.h"
+#include "DownloadModel.h"
 
 DownloadDelegate::DownloadDelegate(QObject *parent)
 : QStyledItemDelegate(parent)
@@ -37,7 +37,7 @@ QSize DownloadDelegate::sizeHint(const QStyleOptionViewItem& option, const QMode
     QSize size;
 
     size.setWidth(option.fontMetrics.height() * 4);
-    size.setHeight(option.fontMetrics.height() * 2);
+    size.setHeight(option.fontMetrics.height() * 1);
     return size;
 }
 
@@ -55,18 +55,18 @@ void DownloadDelegate::paint(QPainter* painter, const QStyleOptionViewItem& opti
 
         QPen pen;
         painter->setPen(pen);
-        QString text = index.data(PackageModel::NameRole).toString();
+        QString text = index.data(DownloadModel::NameRole).toString();
         painter->drawText(x, y, fontMetrics.elidedText(text, option.textElideMode, width));
         //QStyledItemDelegate::paint(painter, option, index);
     } else {
-        int percentage = index.data(PackageModel::StatusRole).toInt();
+        int percentage = index.data(DownloadModel::PercentRole).toInt();
 
         QStyleOptionProgressBar progressBarOption;
         progressBarOption.rect = option.rect;
         progressBarOption.minimum = 0;
         progressBarOption.maximum = 100;
         progressBarOption.progress = percentage;
-        progressBarOption.text = QString::number(percentage) + "%";
+        progressBarOption.text = QString::number(percentage) + '%';
         progressBarOption.textVisible = true;
 
         KApplication::style()->drawControl(QStyle::CE_ProgressBar, &progressBarOption, painter);

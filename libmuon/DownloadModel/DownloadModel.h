@@ -21,17 +21,22 @@
 #ifndef DOWNLOADMODEL_H
 #define DOWNLOADMODEL_H
 
-#include <QList>
-#include <QHash>
+#include <QtCore/QHash>
+#include <QtCore/QList>
 #include <QModelIndex>
-
-//TODO: global.h for enum
-#include "../PackageModel/PackageModel.h"
 
 class DownloadModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
+    enum {
+        NameRole = Qt::UserRole,
+        DescriptionRole = Qt::UserRole + 1,
+        PercentRole = Qt::UserRole + 2,
+        SizeRole = Qt::UserRole + 3,
+        URIRole = Qt::UserRole + 4
+    };
+
     explicit DownloadModel(QObject *parent = 0);
     virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
     virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const;
@@ -39,13 +44,14 @@ public:
     virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
 
 public Q_SLOTS:
-    void updatePercentage(const QString &package, int percentage);
+    void updatePercentage(const QString &package, int percentage, const QString &URI,
+                          double size, int flag);
 
 Q_SIGNALS:
     void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight);
 
 private:
-    QList< QPair<QString, int> > m_packageList;
+    QList< QHash<int, QVariant> > m_packageList;
 };
 
 #endif // DOWNLOADMODEL_H

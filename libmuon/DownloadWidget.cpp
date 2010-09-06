@@ -119,7 +119,7 @@ void DownloadWidget::updatePackageDownloadProgress(const QString &name, int perc
         return;
     }
 
-    m_downloadModel->updatePercentage(name, percentage);
+    m_downloadModel->updatePercentage(name, percentage, URI, size, flag);
 }
 
 void DownloadWidget::updateDownloadMessage(int flag, const QString &message)

@@ -30,12 +30,12 @@ DownloadModel::DownloadModel(QObject *parent)
 
 QVariant DownloadModel::data(const QModelIndex& index, int role) const
 {
-    QPair<QString, int> packagePair = m_packageList.at(index.row());
+    QHash<int, QVariant> details = m_packageList.at(index.row());
     switch (role) {
-    case PackageModel::NameRole:
-        return QVariant(packagePair.first);
-    case PackageModel::StatusRole:
-        return QVariant(packagePair.second);
+    case NameRole:
+        return QVariant(details[NameRole]);
+    case PercentRole:
+        return QVariant(details[PercentRole]);
     default:
         return QVariant();
     }
@@ -58,27 +58,35 @@ QVariant DownloadModel::headerData(int section, Qt::Orientation orientation, int
     }
 }
 
-void DownloadModel::updatePercentage(const QString &package, int percentage)
+void DownloadModel::updatePercentage(const QString &package, int percentage, const QString &URI,
+                                     double size, int status)
 {
     bool newPackage = true;
-    for (int i = 0; i < m_packageList.size(); i++) {
-        if (m_packageList.at(i).first != package) {
+    for (int i = 0; i < m_packageList.size(); ++i) {
+        if (m_packageList[i].value(URIRole).toString() != URI) {
             continue;
         }
 
         newPackage = false;
-        m_packageList[i].second = percentage;
+        m_packageList[i].insert(NameRole, package);
+        m_packageList[i].insert(PercentRole, percentage);
+        m_packageList[i].insert(SizeRole, size);
+        // TODO value[StatusRole] = status;
         emit dataChanged(index(i, 1), index(i, 1));
         break;
     }
 
     if (newPackage) {
         beginInsertRows(QModelIndex(), m_packageList.count(), m_packageList.count());
-        m_packageList.append(qMakePair(package, percentage));
+        QHash<int, QVariant> details;
+        details[URIRole] = URI;
+        details[NameRole] = package;
+        details[PercentRole] = percentage;
+        details[SizeRole] = size;
+        // TODO details[StatusRole] = status;
+        m_packageList.append(details);
         endInsertRows();
     }
-
-    kDebug() << m_packageList;
 
     return;
 }
