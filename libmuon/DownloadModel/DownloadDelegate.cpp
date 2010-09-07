@@ -26,6 +26,7 @@
 // KDE includes
 #include <KApplication>
 #include <KLocale>
+#include <KDebug>
 
 // LibQApt includes
 #include <LibQApt/Globals>
@@ -47,34 +48,21 @@ void DownloadDelegate::paint(QPainter* painter, const QStyleOptionViewItem& opti
 {
     switch (index.column()) {
         case 0: {
-            QFont font = option.font;
-            QFontMetrics fontMetrics(font);
-
-            int x = option.rect.x();
-            int y = option.rect.y() + calcItemHeight(option);
-            int width = option.rect.width();
-
-            QPen pen;
-            painter->setPen(pen);
             QString text = index.data(DownloadModel::NameRole).toString();
-            painter->drawText(x, y, fontMetrics.elidedText(text, option.textElideMode, width));
+            paintText(painter, option, text);
             break;
         }
         case 1: {
-            QFont font = option.font;
-            QFontMetrics fontMetrics(font);
-
-            int x = option.rect.x();
-            int y = option.rect.y() + calcItemHeight(option);
-            int width = option.rect.width();
-
-            QPen pen;
-            painter->setPen(pen);
             QString text = index.data(DownloadModel::URIRole).toString();
-            painter->drawText(x, y, fontMetrics.elidedText(text, option.textElideMode, width));
+            paintText(painter, option, text);
             break;
         }
         case 2: {
+            QString sizeText = KGlobal::locale()->formatByteSize(index.data(DownloadModel::SizeRole).toDouble());
+            paintText(painter, option, sizeText);
+            break;
+        }
+        case 3: {
             int percentage = index.data(DownloadModel::PercentRole).toInt();
             int status = index.data(DownloadModel::StatusRole).toInt();
             QString text;
@@ -118,6 +106,20 @@ int DownloadDelegate::calcItemHeight(const QStyleOptionViewItem &option) const
 
     int textHeight = QFontInfo(name_item.font).pixelSize();
     return textHeight;
+}
+
+void DownloadDelegate::paintText(QPainter *painter, const QStyleOptionViewItem &option, const QString &text) const
+{
+    QFont font = option.font;
+    QFontMetrics fontMetrics(font);
+
+    int x = option.rect.x();
+    int y = option.rect.y() + calcItemHeight(option);
+    int width = option.rect.width();
+
+    QPen pen;
+    painter->setPen(pen);
+    painter->drawText(x, y, fontMetrics.elidedText(text, option.textElideMode, width));
 }
 
 #include "DownloadDelegate.moc"

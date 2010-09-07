@@ -36,8 +36,8 @@ public:
 private:
     int m_spacing;
 
-private Q_SLOTS:
     int calcItemHeight(const QStyleOptionViewItem &option) const;
+    void paintText(QPainter *painter, const QStyleOptionViewItem &option, const QString &text) const;
 };
 
 #endif // DOWNLOADDELEGATE_H

@@ -38,6 +38,8 @@ QVariant DownloadModel::data(const QModelIndex& index, int role) const
         return QVariant(details[URIRole]);
     case PercentRole:
         return QVariant(details[PercentRole]);
+    case SizeRole:
+        return QVariant(details[SizeRole]);
     default:
         return QVariant();
     }
@@ -52,9 +54,13 @@ QVariant DownloadModel::headerData(int section, Qt::Orientation orientation, int
 
     switch (section) {
         case 0:
-            return QVariant(i18n("Package"));
+            return i18n("Package");
         case 1:
-            return QVariant(i18n("Downloaded"));
+            return i18n("Location");
+        case 2:
+            return i18n("Size");
+        case 3:
+            return i18n("Progress");
         default:
             return QVariant();
     }
@@ -100,7 +106,7 @@ int DownloadModel::rowCount(const QModelIndex& /*parent*/) const
 
 int DownloadModel::columnCount(const QModelIndex& /*parent*/) const
 {
-    return 3;
+    return 4;
 }
 
 #include "DownloadModel.moc"
