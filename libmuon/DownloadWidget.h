@@ -52,7 +52,6 @@ public Q_SLOTS:
     void setHeaderText(const QString &text);
     void updateDownloadProgress(int percentage, int speed, int ETA);
     void updatePackageDownloadProgress(const QString &name, int percentage, const QString &URI, double size, int flag);
-    void updateDownloadMessage(int flag, const QString &message);
     void clear();
 
 private Q_SLOTS:

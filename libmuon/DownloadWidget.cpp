@@ -125,25 +125,6 @@ void DownloadWidget::updatePackageDownloadProgress(const QString &name, int perc
     m_downloadModel->updatePercentage(name, percentage, URI, size, flag);
 }
 
-void DownloadWidget::updateDownloadMessage(int flag, const QString &message)
-{
-    QString fullMessage;
-
-    switch (flag) {
-    case QApt::DownloadFetch:
-        fullMessage = i18nc("@info:status", "Downloading: %1", message);
-        break;
-    case QApt::HitFetch:
-        fullMessage = i18nc("@info:status", "Checking: %1", message);
-        break;
-    case QApt::IgnoredFetch:
-        fullMessage = i18nc("@info:status", "Ignored: %1", message);
-        break;
-    default:
-        fullMessage = message;
-    }
-}
-
 void DownloadWidget::cancelButtonPressed()
 {
     emit cancelDownload();
