@@ -34,6 +34,8 @@ QVariant DownloadModel::data(const QModelIndex& index, int role) const
     switch (role) {
     case NameRole:
         return QVariant(details[NameRole]);
+    case URIRole:
+        return QVariant(details[URIRole]);
     case PercentRole:
         return QVariant(details[PercentRole]);
     default:
@@ -98,7 +100,7 @@ int DownloadModel::rowCount(const QModelIndex& /*parent*/) const
 
 int DownloadModel::columnCount(const QModelIndex& /*parent*/) const
 {
-    return 2;
+    return 3;
 }
 
 #include "DownloadModel.moc"

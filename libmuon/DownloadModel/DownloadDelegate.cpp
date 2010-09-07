@@ -27,50 +27,70 @@
 #include "DownloadModel.h"
 
 DownloadDelegate::DownloadDelegate(QObject *parent)
-: QStyledItemDelegate(parent)
+    : QStyledItemDelegate(parent)
+    , m_spacing(4)
 {
 }
 
-
-QSize DownloadDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const
+DownloadDelegate::~DownloadDelegate()
 {
-    QSize size;
-
-    size.setWidth(option.fontMetrics.height() * 4);
-    size.setHeight(option.fontMetrics.height() * 1);
-    return size;
 }
 
 void DownloadDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
 {
-    //initStyleOption(option, index);
+    switch (index.column()) {
+        case 0: {
+            QFont font = option.font;
+            QFontMetrics fontMetrics(font);
 
-    if (index.column() == 0) {
-        QFont font = option.font;
-        QFontMetrics fontMetrics(font);
+            int x = option.rect.x();
+            int y = option.rect.y() + calcItemHeight(option);
+            int width = option.rect.width();
 
-        int x = option.rect.x();
-        int y = option.rect.y() + fontMetrics.height();
-        int width = option.rect.width();
+            QPen pen;
+            painter->setPen(pen);
+            QString text = index.data(DownloadModel::NameRole).toString();
+            painter->drawText(x, y, fontMetrics.elidedText(text, option.textElideMode, width));
+            break;
+        }
+        case 1: {
+            QFont font = option.font;
+            QFontMetrics fontMetrics(font);
 
-        QPen pen;
-        painter->setPen(pen);
-        QString text = index.data(DownloadModel::NameRole).toString();
-        painter->drawText(x, y, fontMetrics.elidedText(text, option.textElideMode, width));
-        //QStyledItemDelegate::paint(painter, option, index);
-    } else {
-        int percentage = index.data(DownloadModel::PercentRole).toInt();
+            int x = option.rect.x();
+            int y = option.rect.y() + calcItemHeight(option);
+            int width = option.rect.width();
 
-        QStyleOptionProgressBar progressBarOption;
-        progressBarOption.rect = option.rect;
-        progressBarOption.minimum = 0;
-        progressBarOption.maximum = 100;
-        progressBarOption.progress = percentage;
-        progressBarOption.text = QString::number(percentage) + '%';
-        progressBarOption.textVisible = true;
+            QPen pen;
+            painter->setPen(pen);
+            QString text = index.data(DownloadModel::URIRole).toString();
+            painter->drawText(x, y, fontMetrics.elidedText(text, option.textElideMode, width));
+            break;
+        }
+        case 2: {
+            int percentage = index.data(DownloadModel::PercentRole).toInt();
 
-        KApplication::style()->drawControl(QStyle::CE_ProgressBar, &progressBarOption, painter);
+            QStyleOptionProgressBar progressBarOption;
+            progressBarOption.rect = option.rect;
+            progressBarOption.minimum = 0;
+            progressBarOption.maximum = 100;
+            progressBarOption.progress = percentage;
+            progressBarOption.text = QString::number(percentage) + '%';
+            progressBarOption.textVisible = true;
+
+            KApplication::style()->drawControl(QStyle::CE_ProgressBar, &progressBarOption, painter);
+            break;
+        }
     }
+}
+
+int DownloadDelegate::calcItemHeight(const QStyleOptionViewItem &option) const
+{
+    // Painting main column
+    QStyleOptionViewItem name_item(option);
+
+    int textHeight = QFontInfo(name_item.font).pixelSize();
+    return textHeight;
 }
 
 #include "DownloadDelegate.moc"

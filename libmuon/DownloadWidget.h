@@ -25,7 +25,7 @@
 #include <QWidget>
 
 class QLabel;
-class QTableView;
+class QTreeView;
 class QProgressBar;
 class QPushButton;
 
@@ -41,7 +41,7 @@ public:
 
 private:
     QLabel *m_headerLabel;
-    QTableView *m_downloadView;
+    QTreeView *m_downloadView;
     DownloadModel *m_downloadModel;
     DownloadDelegate *m_downloadDelegate;
     QProgressBar *m_totalProgress;

@@ -23,9 +23,9 @@
 // Qt includes
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
-#include <QtGui/QTableView>
 #include <QtGui/QProgressBar>
 #include <QtGui/QPushButton>
+#include <QtGui/QTreeView>
 #include <QtGui/QVBoxLayout>
 
 // KDE includes
@@ -53,11 +53,13 @@ DownloadWidget::DownloadWidget(QWidget *parent)
     m_downloadModel = new DownloadModel(this);
     m_downloadDelegate = new DownloadDelegate(this);
 
-    m_downloadView = new QTableView(this);
-    m_downloadView->verticalHeader()->hide();
+    m_downloadView = new QTreeView(this);
     layout->addWidget(m_downloadView);
     m_downloadView->setModel(m_downloadModel);
+    m_downloadView->setRootIsDecorated(false);
     m_downloadView->setItemDelegate(m_downloadDelegate);
+    m_downloadView->setSelectionMode(QAbstractItemView::NoSelection);
+    m_downloadView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     m_downloadLabel = new QLabel(this);
     layout->addWidget(m_downloadLabel);

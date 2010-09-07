@@ -29,9 +29,15 @@ class DownloadDelegate : public QStyledItemDelegate
     Q_OBJECT
 public:
     explicit DownloadDelegate(QObject *parent = 0);
+    ~DownloadDelegate();
 
-    virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
     virtual void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+
+private:
+    int m_spacing;
+
+private Q_SLOTS:
+    int calcItemHeight(const QStyleOptionViewItem &option) const;
 };
 
 #endif // DOWNLOADDELEGATE_H
