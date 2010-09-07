@@ -62,6 +62,9 @@ DownloadWidget::DownloadWidget(QWidget *parent)
     m_downloadView->setSelectionMode(QAbstractItemView::NoSelection);
     m_downloadView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
+    m_downloadView->header()->setStretchLastSection(false);
+    m_downloadView->header()->setResizeMode(1, QHeaderView::Stretch);
+
     m_downloadLabel = new QLabel(this);
     layout->addWidget(m_downloadLabel);
 
