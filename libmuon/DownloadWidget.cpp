@@ -57,6 +57,7 @@ DownloadWidget::DownloadWidget(QWidget *parent)
     layout->addWidget(m_downloadView);
     m_downloadView->setModel(m_downloadModel);
     m_downloadView->setRootIsDecorated(false);
+    m_downloadView->setUniformRowHeights(true);
     m_downloadView->setItemDelegate(m_downloadDelegate);
     m_downloadView->setSelectionMode(QAbstractItemView::NoSelection);
     m_downloadView->setEditTriggers(QAbstractItemView::NoEditTriggers);

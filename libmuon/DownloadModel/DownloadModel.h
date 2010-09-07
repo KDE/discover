@@ -34,7 +34,8 @@ public:
         DescriptionRole = Qt::UserRole + 1,
         PercentRole = Qt::UserRole + 2,
         SizeRole = Qt::UserRole + 3,
-        URIRole = Qt::UserRole + 4
+        URIRole = Qt::UserRole + 4,
+        StatusRole = Qt::UserRole + 5
     };
 
     explicit DownloadModel(QObject *parent = 0);

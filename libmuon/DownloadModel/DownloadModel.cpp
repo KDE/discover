@@ -73,7 +73,7 @@ void DownloadModel::updatePercentage(const QString &package, int percentage, con
         m_packageList[i].insert(NameRole, package);
         m_packageList[i].insert(PercentRole, percentage);
         m_packageList[i].insert(SizeRole, size);
-        // TODO value[StatusRole] = status;
+        m_packageList[i].insert(StatusRole, status);
         emit dataChanged(index(i, 1), index(i, 1));
         break;
     }
@@ -85,7 +85,7 @@ void DownloadModel::updatePercentage(const QString &package, int percentage, con
         details[NameRole] = package;
         details[PercentRole] = percentage;
         details[SizeRole] = size;
-        // TODO details[StatusRole] = status;
+        details[StatusRole] = status;
         m_packageList.append(details);
         endInsertRows();
     }

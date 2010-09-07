@@ -20,10 +20,17 @@
 
 #include "DownloadDelegate.h"
 
+// Qt includes
+#include <QtGui/QPainter>
+
+// KDE includes
 #include <KApplication>
+#include <KLocale>
 
-#include <QPainter>
+// LibQApt includes
+#include <LibQApt/Globals>
 
+// Own includes
 #include "DownloadModel.h"
 
 DownloadDelegate::DownloadDelegate(QObject *parent)
@@ -69,13 +76,33 @@ void DownloadDelegate::paint(QPainter* painter, const QStyleOptionViewItem& opti
         }
         case 2: {
             int percentage = index.data(DownloadModel::PercentRole).toInt();
+            int status = index.data(DownloadModel::StatusRole).toInt();
+            QString text;
+
+            switch (status) {
+                case QApt::DownloadFetch:
+                    break;
+                case QApt::HitFetch:
+                    text = i18nc("@info:status", "Done");
+                    break;
+                case QApt::IgnoredFetch:
+                    text = i18nc("@info:status", "Ignored");
+                    break;
+                default:
+                    text = QString::number(percentage) + '%';
+                    break;
+            }
+
+            if (percentage == 100) {
+                text = i18nc("@info:status", "Done");
+            }
 
             QStyleOptionProgressBar progressBarOption;
             progressBarOption.rect = option.rect;
             progressBarOption.minimum = 0;
             progressBarOption.maximum = 100;
             progressBarOption.progress = percentage;
-            progressBarOption.text = QString::number(percentage) + '%';
+            progressBarOption.text = text;
             progressBarOption.textVisible = true;
 
             KApplication::style()->drawControl(QStyle::CE_ProgressBar, &progressBarOption, painter);
