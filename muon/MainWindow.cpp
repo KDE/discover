@@ -335,8 +335,6 @@ void MainWindow::initDownloadWidget()
                 m_downloadWidget, SLOT(updateDownloadProgress(int, int, int)));
         connect(m_backend, SIGNAL(packageDownloadProgress(const QString &, int, const QString &, double, int)),
                 m_downloadWidget, SLOT(updatePackageDownloadProgress(const QString &, int, const QString &, double, int)));
-        connect(m_backend, SIGNAL(downloadMessage(int, const QString &)),
-                m_downloadWidget, SLOT(updateDownloadMessage(int, const QString &)));
     }
 }
 

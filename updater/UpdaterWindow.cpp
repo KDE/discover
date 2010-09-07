@@ -176,8 +176,8 @@ void UpdaterWindow::initDownloadWidget()
         m_stack->addWidget(m_downloadWidget);
         connect(m_backend, SIGNAL(downloadProgress(int, int, int)),
                 m_downloadWidget, SLOT(updateDownloadProgress(int, int, int)));
-        connect(m_backend, SIGNAL(downloadMessage(int, const QString &)),
-                m_downloadWidget, SLOT(updateDownloadMessage(int, const QString &)));
+        connect(m_backend, SIGNAL(packageDownloadProgress(const QString &, int, const QString &, double, int)),
+                m_downloadWidget, SLOT(updatePackageDownloadProgress(const QString &, int, const QString &, double, int)));
     }
 }
 
