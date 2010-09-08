@@ -66,8 +66,8 @@ QVariant DownloadModel::headerData(int section, Qt::Orientation orientation, int
     }
 }
 
-void DownloadModel::updatePercentage(const QString &package, int percentage, const QString &URI,
-                                     double size, int status)
+void DownloadModel::updatePercentage(const QString &package, int percentage,
+                                     const QString &URI, double size, int status)
 {
     bool newPackage = true;
     for (int i = 0; i < m_packageList.size(); ++i) {
@@ -80,7 +80,9 @@ void DownloadModel::updatePercentage(const QString &package, int percentage, con
         m_packageList[i].insert(PercentRole, percentage);
         m_packageList[i].insert(SizeRole, size);
         m_packageList[i].insert(StatusRole, status);
-        emit dataChanged(index(i, 1), index(i, 1));
+        // If we get more than 10 columns we'll have to bump this.
+        // ... but that's really not likely...
+        emit dataChanged(index(i, 0), index(i, 9));
         break;
     }
 
