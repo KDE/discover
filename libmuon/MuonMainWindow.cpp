@@ -80,7 +80,7 @@ bool MuonMainWindow::queryExit()
         return false;
     }
 
-    if (m_backend->markedPackages().count() > 0) {
+    if (m_backend->markedPackages().size() > 0) {
         QString text = i18nc("@label", "There are marked changes that have not yet "
                              "been applied. Do you want to save your changes "
                              "or discard them?");

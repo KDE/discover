@@ -42,7 +42,7 @@ ApplicationModel::~ApplicationModel()
 
 int ApplicationModel::rowCount(const QModelIndex & /*parent*/) const
 {
-    return m_apps.count();
+    return m_apps.size();
 }
 
 int ApplicationModel::columnCount(const QModelIndex & /*parent*/) const

@@ -35,7 +35,7 @@ PackageModel::~PackageModel()
 
 int PackageModel::rowCount(const QModelIndex & /*parent*/) const
 {
-    return m_packages.count();
+    return m_packages.size();
 }
 
 int PackageModel::columnCount(const QModelIndex & /*parent*/) const
@@ -87,14 +87,14 @@ void PackageModel::setPackages(const QApt::PackageList &list)
 #if QT_VERSION >= 0x040700
     m_packages.reserve(list.size());
 #endif
-    beginInsertRows(QModelIndex(), m_packages.count(), m_packages.count());
+    beginInsertRows(QModelIndex(), m_packages.size(), m_packages.size());
     m_packages = list;
     endInsertRows();
 }
 
 void PackageModel::clear()
 {
-    beginRemoveRows(QModelIndex(), 0, m_packages.size());
+    beginRemoveRows(QModelIndex(), 0, m_packages.size() - 1);
     m_packages.clear();
     endRemoveRows();
 }
