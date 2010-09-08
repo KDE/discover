@@ -23,6 +23,18 @@
 #include <KDebug>
 #include <KLocale>
 
+class PackageDetails
+{
+public:
+    PackageDetails()
+    : percentage(0), size(0) {};
+    QString name;
+    int percentage;
+    QString URI;
+    double size;
+    int status;
+};
+
 DownloadModel::DownloadModel(QObject *parent)
 : QAbstractListModel(parent)
 {
@@ -30,16 +42,16 @@ DownloadModel::DownloadModel(QObject *parent)
 
 QVariant DownloadModel::data(const QModelIndex& index, int role) const
 {
-    QHash<int, QVariant> details = m_packageList.at(index.row());
+    PackageDetails details = m_packageList.at(index.row());
     switch (role) {
     case NameRole:
-        return QVariant(details[NameRole]);
-    case URIRole:
-        return QVariant(details[URIRole]);
+        return QVariant(details.name);
     case PercentRole:
-        return QVariant(details[PercentRole]);
+        return QVariant(details.percentage);
+    case URIRole:
+        return QVariant(details.URI);
     case SizeRole:
-        return QVariant(details[SizeRole]);
+        return QVariant(details.size);
     default:
         return QVariant();
     }
@@ -71,15 +83,15 @@ void DownloadModel::updatePercentage(const QString &package, int percentage,
 {
     bool newPackage = true;
     for (int i = 0; i < m_packageList.size(); ++i) {
-        if (m_packageList[i].value(URIRole).toString() != URI) {
+        if (m_packageList[i].URI != URI) {
             continue;
         }
 
         newPackage = false;
-        m_packageList[i].insert(NameRole, package);
-        m_packageList[i].insert(PercentRole, percentage);
-        m_packageList[i].insert(SizeRole, size);
-        m_packageList[i].insert(StatusRole, status);
+        m_packageList[i].name = package;
+        m_packageList[i].percentage = percentage;
+        m_packageList[i].size = size;
+        m_packageList[i].status = status;
         // If we get more than 10 columns we'll have to bump this.
         // ... but that's really not likely...
         emit dataChanged(index(i, 0), index(i, 9));
@@ -88,12 +100,12 @@ void DownloadModel::updatePercentage(const QString &package, int percentage,
 
     if (newPackage) {
         beginInsertRows(QModelIndex(), m_packageList.count(), m_packageList.count());
-        QHash<int, QVariant> details;
-        details[URIRole] = URI;
-        details[NameRole] = package;
-        details[PercentRole] = percentage;
-        details[SizeRole] = size;
-        details[StatusRole] = status;
+        PackageDetails details;
+        details.name = package;
+        details.percentage = percentage;
+        details.URI = URI;
+        details.size = size;
+        details.status = status;
         m_packageList.append(details);
         endInsertRows();
     }

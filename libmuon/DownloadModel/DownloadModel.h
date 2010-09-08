@@ -21,9 +21,10 @@
 #ifndef DOWNLOADMODEL_H
 #define DOWNLOADMODEL_H
 
-#include <QtCore/QHash>
 #include <QtCore/QList>
 #include <QModelIndex>
+
+class PackageDetails;
 
 class DownloadModel : public QAbstractListModel
 {
@@ -52,7 +53,7 @@ Q_SIGNALS:
     void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight);
 
 private:
-    QList< QHash<int, QVariant> > m_packageList;
+    QList<PackageDetails> m_packageList;
 };
 
 #endif // DOWNLOADMODEL_H
