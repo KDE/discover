@@ -111,7 +111,7 @@ void ReviewWidget::refresh()
 void ReviewWidget::packageActivated(const QModelIndex &index)
 {
     QApt::Package *package = m_proxyModel->packageAt(index);
-    if (!index.isValid() || (index.row() == -1) || !package) {
+    if (package == 0) {
         m_detailsWidget->hide();
         return;
     }
