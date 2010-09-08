@@ -103,7 +103,7 @@ void OriginView::populateOrigins()
             originItem->setIcon(KIcon("partner"));
         }
 
-        if (originName.startsWith("LP-PPA")) {
+        if (originName.startsWith(QLatin1String("LP-PPA"))) {
             originItem->setIcon(KIcon("user-identity"));
         }
 
@@ -126,7 +126,7 @@ void OriginView::populateOrigins()
             originItem->setIcon(KIcon("partner"));
         }
 
-        if (originName.startsWith("LP-PPA")) {
+        if (originName.startsWith(QLatin1String("LP-PPA"))) {
             originItem->setIcon(KIcon("user-identity"));
         }
 
