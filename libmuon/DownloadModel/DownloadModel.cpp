@@ -27,7 +27,7 @@ class PackageDetails
 {
 public:
     PackageDetails()
-    : percentage(0), size(0) {};
+    : percentage(0), size(0), status(0) {};
     QString name;
     int percentage;
     QString URI;
