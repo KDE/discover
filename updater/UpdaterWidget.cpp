@@ -85,7 +85,6 @@ void UpdaterWidget::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
     connect(m_backend, SIGNAL(packageChanged()), this, SLOT(refresh()));
-    connect(m_backend, SIGNAL(packageChanged()), m_detailsWidget, SLOT(refreshTabs()));
 
     m_detailsWidget->setBackend(backend);
     m_backend->markPackagesForDistUpgrade();
@@ -100,7 +99,7 @@ void UpdaterWidget::setBackend(QApt::Backend *backend)
 
 void UpdaterWidget::refresh()
 {
-    m_detailsWidget->clear();
+    m_detailsWidget->hide();
     m_model->clear();
     m_proxyModel->clear();
     m_proxyModel->setSourceModel(0);
