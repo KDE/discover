@@ -1,1 +1,5 @@
 -Improve sort performance
+-Supplemental "slow" search that does a search over package information fields, as opposed to the quick xapian-based search
+-Configuration dialog for APT system settings (such as treating recommends as dependencies, etc (Would require KAuth)
+-Add a progress bar for xapian index (re)building status to the statusbar. Will require getting status reporting working in the qaptworker
+-Common log viewer component for /var/log/apt/history.log
