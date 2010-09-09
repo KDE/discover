@@ -50,7 +50,7 @@ ApplicationWindow::~ApplicationWindow()
 
 void ApplicationWindow::initGUI()
 {
-    setWindowTitle(i18n("Kubuntu Software Center"));
+    setWindowTitle(i18n("Muon Software Center"));
 
     m_mainWidget = new QSplitter(this);
     m_mainWidget->setOrientation(Qt::Horizontal);
