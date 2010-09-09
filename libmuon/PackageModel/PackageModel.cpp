@@ -83,13 +83,9 @@ QVariant PackageModel::headerData(int section, Qt::Orientation orientation, int 
 
 void PackageModel::setPackages(const QApt::PackageList &list)
 {
-    // Remove check when sid has >= 4.7
-#if QT_VERSION >= 0x040700
-    m_packages.reserve(list.size());
-#endif
-    beginInsertRows(QModelIndex(), m_packages.size(), m_packages.size());
+    beginResetModel();
     m_packages = list;
-    endInsertRows();
+    endResetModel();
 }
 
 void PackageModel::clear()
