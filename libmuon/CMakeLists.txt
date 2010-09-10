@@ -11,6 +11,7 @@ set(muon_LIB_SRCS
     PackageModel/PackageProxyModel.cpp
     PackageModel/PackageView.cpp
     PackageModel/PackageDelegate.cpp
+    PackageModel/PackageWidget.cpp
     DetailsTabs/MainTab.cpp
     DetailsTabs/ChangelogTab.cpp
     DetailsTabs/DependsTab.cpp

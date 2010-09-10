@@ -23,23 +23,19 @@
 
 #include <QModelIndex>
 
-#include <KVBox>
+#include "../libmuon/PackageModel/PackageWidget.h"
 
 class QTimer;
 
 class KLineEdit;
 
-class PackageModel;
-class PackageProxyModel;
-class PackageView;
-class DetailsWidget;
 class MuonStrings;
 
 namespace QApt {
     class Backend;
 }
 
-class ManagerWidget : public KVBox
+class ManagerWidget : public PackageWidget
 {
     Q_OBJECT
 public:
@@ -47,20 +43,13 @@ public:
     ~ManagerWidget();
 
 private:
-    QApt::Backend *m_backend;
     MuonStrings *m_strings;
     QTimer *m_searchTimer;
     KLineEdit *m_searchEdit;
-    PackageModel *m_model;
-    PackageProxyModel *m_proxyModel;
-    PackageView *m_packageView;
-    DetailsWidget *m_detailsWidget;
 
 public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
     void setFocus();
-    void reload();
-    void packageActivated(const QModelIndex &index);
+    void setPackages();
     void startSearch();
     void filterByGroup(const QString &groupName);
     void filterByStatus(const QString &statusName);

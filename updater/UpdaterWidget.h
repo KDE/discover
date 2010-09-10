@@ -21,43 +21,16 @@
 #ifndef UPDATERWIDGET_H
 #define UPDATERWIDGET_H
 
-// Qt includes
-#include <QModelIndex>
+#include "../libmuon/PackageModel/PackageWidget.h"
 
-// KDE includes
-#include <KVBox>
-
-class DetailsWidget;
-class PackageModel;
-class PackageProxyModel;
-class PackageView;
-
-namespace QApt
-{
-    class Backend;
-}
-
-class UpdaterWidget : public KVBox
+class UpdaterWidget : public PackageWidget
 {
     Q_OBJECT
 public:
     UpdaterWidget(QWidget *parent);
     ~UpdaterWidget();
 
-private:
-    QApt::Backend *m_backend;
-
-    PackageModel *m_model;
-    PackageProxyModel *m_proxyModel;
-    PackageView *m_packageView;
-    DetailsWidget *m_detailsWidget;
-
-public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
-    void refresh();
-
-private Q_SLOTS:
-    void packageActivated(const QModelIndex &index);
+    void setPackages();
 };
 
 #endif

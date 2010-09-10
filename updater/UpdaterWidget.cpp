@@ -20,104 +20,29 @@
 
 #include "UpdaterWidget.h"
 
-// Qt includes
-#include <QtGui/QHeaderView>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QPushButton>
-#include <QtGui/QLabel>
-#include <QtGui/QSplitter>
-
-// KDE includes
-#include <KIcon>
 #include <KLocale>
-#include <KDebug>
 
-// LibQApt includes
-#include <LibQApt/Backend>
-
-// Own includes
 #include "../libmuon/DetailsWidget.h"
-#include "../libmuon/PackageModel/PackageProxyModel.h"
-#include "../libmuon/PackageModel/PackageModel.h"
-#include "../libmuon/PackageModel/PackageView.h"
-#include "../libmuon/PackageModel/PackageDelegate.h"
 
 UpdaterWidget::UpdaterWidget(QWidget *parent)
-    : KVBox(parent)
-    , m_backend(0)
+    : PackageWidget(parent)
 {
-    m_model = new PackageModel(this);
-    PackageDelegate *delegate = new PackageDelegate(this);
+    setPackagesType(PackageWidget::MarkedPackages);
 
-    m_proxyModel = new PackageProxyModel(this);
+    QLabel *headerLabel = new QLabel(this);
+    headerLabel->setTextFormat(Qt::RichText);
+    headerLabel->setText(i18n("<b>Update Packages</b>"));
+    setHeaderWidget(headerLabel);
+}
 
-    KVBox *topVBox = new KVBox;
-
-    QLabel *browserHeader = new QLabel(topVBox);
-    browserHeader->setTextFormat(Qt::RichText);
-    browserHeader->setText(i18n("<b>Update Packages</b>"));
-
-    m_packageView = new PackageView(topVBox);
-    m_packageView->setModel(m_proxyModel);
-    m_packageView->setItemDelegate(delegate);
-    connect(m_packageView, SIGNAL(clicked(const QModelIndex &)),
-            this, SLOT(packageActivated(const QModelIndex &)));
-    connect(m_packageView, SIGNAL(currentPackageChanged(const QModelIndex &)),
-            this, SLOT(packageActivated(const QModelIndex &)));
-
-    KVBox *bottomVBox = new KVBox;
-
-    m_detailsWidget = new DetailsWidget(bottomVBox);
-
-    QSplitter *splitter = new QSplitter(this);
-    splitter->setOrientation(Qt::Vertical);
-    splitter->addWidget(topVBox);
-    splitter->addWidget(bottomVBox);
-
-    setEnabled(false);
+void UpdaterWidget::setPackages()
+{
+    m_detailsWidget->hide();
+    PackageWidget::setPackages();
 }
 
 UpdaterWidget::~UpdaterWidget()
 {
-}
-
-void UpdaterWidget::setBackend(QApt::Backend *backend)
-{
-    m_backend = backend;
-    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(refresh()));
-
-    m_detailsWidget->setBackend(backend);
-    m_backend->markPackagesForDistUpgrade();
-    m_model->setPackages(m_backend->markedPackages());
-    m_proxyModel->setSourceModel(m_model);
-    m_proxyModel->setBackend(m_backend);
-    m_packageView->setSortingEnabled(true);
-    m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
-
-    setEnabled(true);
-}
-
-void UpdaterWidget::refresh()
-{
-    m_detailsWidget->hide();
-    m_model->clear();
-    m_proxyModel->clear();
-    m_proxyModel->setSourceModel(0);
-    m_model->setPackages(m_backend->markedPackages());
-    m_proxyModel->setSourceModel(m_model);
-    m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
-    m_packageView->updateView();
-}
-
-void UpdaterWidget::packageActivated(const QModelIndex &index)
-{
-    QApt::Package *package = m_proxyModel->packageAt(index);
-    if (package == 0) {
-        m_detailsWidget->hide();
-        return;
-    }
-
-    m_detailsWidget->setPackage(package);
 }
 
 #include "UpdaterWidget.moc"

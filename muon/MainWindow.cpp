@@ -42,6 +42,7 @@
 #include <KStandardAction>
 #include <KStandardDirs>
 #include <KStatusBar>
+#include <KVBox>
 #include <Phonon/MediaObject>
 #include <Solid/PowerManagement>
 
@@ -350,7 +351,7 @@ void MainWindow::initCommitWidget()
 
 void MainWindow::reload()
 {
-    m_managerWidget->reload();
+    m_managerWidget->refresh();
     if (m_reviewWidget) {
         m_reviewWidget->refresh();
     }

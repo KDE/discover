@@ -47,66 +47,26 @@
 #include "../libmuon/PackageModel/PackageDelegate.h"
 
 ManagerWidget::ManagerWidget(QWidget *parent)
-    : KVBox(parent)
-    , m_backend(0)
+    : PackageWidget(parent)
 {
+    setPackagesType(PackageWidget::AvailablePackages);
+
     m_strings = new MuonStrings(this);
-    m_model = new PackageModel(this);
-    PackageDelegate *delegate = new PackageDelegate(this);
-
-    m_proxyModel = new PackageProxyModel(this);
-
-    KVBox *topVBox = new KVBox;
 
     m_searchTimer = new QTimer(this);
     m_searchTimer->setInterval(300);
     m_searchTimer->setSingleShot(true);
     connect(m_searchTimer, SIGNAL(timeout()), this, SLOT(startSearch()));
 
-    KHBox *searchBox = new KHBox(this);
-
-    m_searchEdit = new KLineEdit(searchBox);
+    m_searchEdit = new KLineEdit(this);
     m_searchEdit->setClickMessage(i18nc("@label Line edit click message", "Search"));
     m_searchEdit->setClearButtonShown(true);
+    setHeaderWidget(m_searchEdit);
     connect(m_searchEdit, SIGNAL(textChanged(const QString &)), m_searchTimer, SLOT(start()));
-
-    m_packageView = new PackageView(topVBox);
-    m_packageView->setModel(m_proxyModel);
-    m_packageView->setItemDelegate(delegate);
-    connect(m_packageView, SIGNAL(clicked(const QModelIndex &)),
-            this, SLOT(packageActivated(const QModelIndex &)));
-    connect(m_packageView, SIGNAL(currentPackageChanged(const QModelIndex &)),
-            this, SLOT(packageActivated(const QModelIndex &)));
-
-    KVBox *bottomVBox = new KVBox;
-
-    m_detailsWidget = new DetailsWidget(bottomVBox);
-
-    QSplitter *splitter = new QSplitter(this);
-    splitter->setOrientation(Qt::Vertical);
-    splitter->addWidget(topVBox);
-    splitter->addWidget(bottomVBox);
-
-    setEnabled(false);
 }
 
 ManagerWidget::~ManagerWidget()
 {
-}
-
-void ManagerWidget::setBackend(QApt::Backend *backend)
-{
-    m_backend = backend;
-    connect(m_backend, SIGNAL(packageChanged()), m_packageView, SLOT(updateView()));
-    connect(m_backend, SIGNAL(packageChanged()), m_detailsWidget, SLOT(refreshTabs()));
-
-    m_detailsWidget->setBackend(backend);
-    m_model->setPackages(m_backend->availablePackages());
-    m_proxyModel->setSourceModel(m_model);
-    m_proxyModel->setBackend(backend);
-    m_packageView->setSortingEnabled(true);
-    m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
-    setEnabled(true);
 }
 
 void ManagerWidget::setFocus()
@@ -114,29 +74,16 @@ void ManagerWidget::setFocus()
     m_searchEdit->setFocus();
 }
 
-void ManagerWidget::reload()
+void ManagerWidget::setPackages()
 {
+    m_proxyModel->invalidate();
+
+    PackageWidget::setPackages();
     m_detailsWidget->clear();
-    m_model->clear();
-    m_proxyModel->clear();
-    m_proxyModel->setSourceModel(0);
-    m_backend->reloadCache();
-    m_model->setPackages(m_backend->availablePackages());
-    m_proxyModel->setSourceModel(m_model);
+    //FIXME: when this is uncommented, clicking on the cautious/full upgrade buttons results in a crash
+    //m_backend->reloadCache();
     startSearch();
-    m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
     m_packageView->sortByColumn(0, Qt::DescendingOrder);
-}
-
-void ManagerWidget::packageActivated(const QModelIndex &index)
-{
-    QApt::Package *package = m_proxyModel->packageAt(index);
-    if (package == 0) {
-        m_detailsWidget->hide();
-        return;
-    }
-
-    m_detailsWidget->setPackage(package);
 }
 
 void ManagerWidget::startSearch()

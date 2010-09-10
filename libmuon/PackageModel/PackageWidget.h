@@ -18,22 +18,70 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "ReviewWidget.h"
+#ifndef PACKAGEWIDGET_H
+#define PACKAGEWIDGET_H
 
-#include <KLocale>
+// Qt includes
+#include <QModelIndex>
+#include <QLabel>
+#include <QSplitter>
 
-ReviewWidget::ReviewWidget(QWidget *parent)
-    : PackageWidget(parent)
+class QVBoxLayout;
+
+class KLineEdit;
+
+class DetailsWidget;
+class PackageModel;
+class PackageProxyModel;
+class PackageView;
+
+namespace QApt
 {
-    setPackagesType(PackageWidget::MarkedPackages);
-
-    QLabel *headerLabel = new QLabel(this);
-    headerLabel->setText(i18n("<b>Review and Apply Changes</b>"));
-    setHeaderWidget(headerLabel);
+    class Backend;
 }
 
-ReviewWidget::~ReviewWidget()
+class PackageWidget : public QSplitter
 {
-}
+    Q_OBJECT
+public:
+    enum PackagesType {
+        AvailablePackages = 1,
+        UpgradeablePackages = 2,
+        MarkedPackages = 3
+    };
 
-#include "ReviewWidget.moc"
+    PackageWidget(QWidget *parent);
+    ~PackageWidget();
+
+    void setHeaderWidget(QWidget *widget);
+    QWidget *headerWidget() {
+        return m_headerWidget;
+    }
+
+    void setPackagesType(int type);
+    int packagesType() {
+        return m_packagesType;
+    }
+
+protected:
+    QApt::Backend *m_backend;
+    PackageView *m_packageView;
+    DetailsWidget *m_detailsWidget;
+    PackageModel *m_model;
+    PackageProxyModel *m_proxyModel;
+
+private:
+    QWidget *m_headerWidget;
+    QVBoxLayout* m_topLayout;
+
+    int m_packagesType;
+
+public Q_SLOTS:
+    void setBackend(QApt::Backend *backend);
+    void setPackages();
+
+private Q_SLOTS:
+    void packageActivated(const QModelIndex &index);
+};
+
+#endif
