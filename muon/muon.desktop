@@ -2,6 +2,7 @@
 Name=Muon
 Name[cs]=Muon
 Name[da]=Muon
+Name[de]=Muon
 Name[en_GB]=Muon
 Name[es]=Muon
 Name[et]=Muon
@@ -20,6 +21,7 @@ X-DocPath=muon/index.html
 GenericName=Package Manager
 GenericName[cs]=Správce balíčků
 GenericName[da]=Pakkehåndtering
+GenericName[de]=Paketverwaltung
 GenericName[en_GB]=Package Manager
 GenericName[es]=Gestor de paquetes
 GenericName[et]=Tarkvarahaldur
