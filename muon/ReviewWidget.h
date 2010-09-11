@@ -29,6 +29,9 @@ class ReviewWidget : public PackageWidget
 public:
     ReviewWidget(QWidget *parent);
     ~ReviewWidget();
+
+public Q_SLOTS:
+    void setPackages();
 };
 
 #endif

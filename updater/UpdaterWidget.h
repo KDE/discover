@@ -30,6 +30,8 @@ public:
     UpdaterWidget(QWidget *parent);
     ~UpdaterWidget();
 
+public Q_SLOTS:
+    void setBackend(QApt::Backend *backend);
     void setPackages();
 };
 

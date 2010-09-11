@@ -23,6 +23,7 @@
 #include <KLocale>
 
 #include "../libmuon/DetailsWidget.h"
+#include <LibQApt/Backend>
 
 UpdaterWidget::UpdaterWidget(QWidget *parent)
     : PackageWidget(parent)
@@ -33,6 +34,12 @@ UpdaterWidget::UpdaterWidget(QWidget *parent)
     headerLabel->setTextFormat(Qt::RichText);
     headerLabel->setText(i18n("<b>Update Packages</b>"));
     setHeaderWidget(headerLabel);
+}
+
+void UpdaterWidget::setBackend(QApt::Backend *backend)
+{
+    backend->markPackagesForDistUpgrade();
+    PackageWidget::setBackend(backend);
 }
 
 void UpdaterWidget::setPackages()

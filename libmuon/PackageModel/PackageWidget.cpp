@@ -54,11 +54,13 @@ PackageWidget::PackageWidget(QWidget *parent)
     m_proxyModel->setSourceModel(m_model);
 
     QWidget *topWidget = new QWidget(this);
+    setStretchFactor(0, 4);
     m_topLayout = new QVBoxLayout(topWidget);
 
     m_packageView = new PackageView(topWidget);
     m_packageView->setModel(m_proxyModel);
     m_packageView->setItemDelegate(delegate);
+    m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
 
     m_topLayout->addWidget(m_packageView);
 
@@ -121,7 +123,6 @@ void PackageWidget::setPackages()
     }
 
     m_model->setPackages(packageList);
-    m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
     m_packageView->updateView();
 }
 
