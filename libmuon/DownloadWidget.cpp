@@ -76,6 +76,7 @@ DownloadWidget::DownloadWidget(QWidget *parent)
     m_cancelButton->setText(i18nc("@action:button Cancels the download", "Cancel"));
     m_cancelButton->setIcon(KIcon("dialog-cancel"));
     connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(cancelButtonPressed()));
+    connect(m_downloadModel, SIGNAL(rowsInserted(const QModelIndex&, int, int)), m_downloadView, SLOT(scrollToBottom()));
 }
 
 DownloadWidget::~DownloadWidget()
