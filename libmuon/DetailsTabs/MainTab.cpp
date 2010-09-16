@@ -204,11 +204,11 @@ void MainTab::refresh()
     if (m_package->isSupported()) {
         m_supportedLabel->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
                                         "Canonical provides critical updates for %1 until %2",
-                                        m_package->name(), m_package->supportedUntil()));
+                                        m_package->latin1Name(), m_package->supportedUntil()));
     } else {
         m_supportedLabel->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
                                         "Canonical does not provide updates for %1. Some updates "
-                                        "may be provided by the Ubuntu community", m_package->name()));
+                                        "may be provided by the Ubuntu community", m_package->latin1Name()));
     }
 }
 
@@ -365,7 +365,7 @@ void MainTab::showBrokenReason()
     QHash<int, QHash<QString, QVariantMap> > failedReasons = m_package->brokenReason();
     QString reason;
     QString dialogText = i18nc("@label", "The \"%1\" package could not be marked for installation or upgrade:",
-                               m_package->name());
+                               m_package->latin1Name());
     dialogText += '\n';
     QString title = i18nc("@title:window", "Unable to Mark Package");
 
@@ -394,7 +394,7 @@ QString MainTab::digestReason(QApt::BrokenReason failType, QHash<QString, QVaria
         reason = i18nc("@label", "The \"%1\" package has no available version, but exists in the database.\n"
                        "\tThis typically means that the package was mentioned in a dependency and "
                        "never uploaded, has been obsoleted, or is not available from the currently-enabled "
-                       "repositories.", m_package->name());
+                       "repositories.", m_package->latin1Name());
         break;
     }
     case QApt::WrongCandidateVersion: {

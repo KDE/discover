@@ -50,7 +50,7 @@ QVariant PackageModel::data(const QModelIndex &index, int role) const
     }
     switch (role) {
     case NameRole:
-        return m_packages.at(index.row())->name();
+        return m_packages.at(index.row())->latin1Name();
     case IconRole:
         return KIcon("application-x-deb");
     case DescriptionRole:
