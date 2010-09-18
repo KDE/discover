@@ -100,7 +100,7 @@ void DependsTab::populateDepends(int index)
     case 2:
         list = m_package->requiredByList();
         if (list.isEmpty()) {
-            m_dependsBrowser->append(i18nc("@label", "This package has no dependants. (Nothing depends on it.)"));
+            m_dependsBrowser->append(i18nc("@label", "This package has no dependents. (Nothing depends on it.)"));
             return;
         }
         foreach(const QString & string, list) {
