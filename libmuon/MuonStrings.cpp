@@ -22,8 +22,6 @@
 
 #include <KLocale>
 
-#include <KDebug>
-
 MuonStrings::MuonStrings(QObject *parent)
     : QObject(parent)
     , m_groupHash(groupHash())
