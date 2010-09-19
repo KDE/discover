@@ -185,6 +185,7 @@ QHash<int, QString> MuonStrings::stateHash()
     hash[QApt::Package::Installed] = i18nc("@info:status Package state", "Installed");
     hash[QApt::Package::Upgradeable] = i18nc("@info:status Package state", "Upgradeable");
     hash[QApt::Package::NowBroken] = i18nc("@info:status Package state", "Broken");
+    hash[QApt::Package::ResidualConfig] = i18nc("@info:status Package state", "Residual Configuration");
 
     return hash;
 }

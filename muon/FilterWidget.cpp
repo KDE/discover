@@ -157,11 +157,17 @@ void FilterWidget::populateStatuses()
     brokenItem->setIcon(KIcon("dialog-cancel"));
     brokenItem->setText(m_strings->packageStateName(QApt::Package::NowBroken));
 
+    QStandardItem *purgeableItem = new QStandardItem;
+    purgeableItem->setEditable(false);
+    purgeableItem->setIcon(KIcon("user-trash-full"));
+    purgeableItem->setText(m_strings->packageStateName(QApt::Package::ResidualConfig));
+
     m_statusModel->appendRow(defaultItem);
     m_statusModel->appendRow(installedItem);
     m_statusModel->appendRow(notInstalledItem);
     m_statusModel->appendRow(upgradeableItem);
     m_statusModel->appendRow(brokenItem);
+    m_statusModel->appendRow(purgeableItem);
 }
 
 void FilterWidget::populateOrigins()
