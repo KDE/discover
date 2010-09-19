@@ -1,3 +1,13 @@
+1.1:
+====
+
+- Added the "muon-updater" program, an update-centric GUI
+- The download view has been revamped, now supporting per-item progress, 
+  as well as displaying the size for each item
+- A new filterable status "Residual Config" is available in the filters pane.
+  This filter shows packages taht still have purgeable config files laying around.
+- The Technical Details tab now displays the package's origin
+
 1.0:
 ====
 
