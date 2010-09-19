@@ -165,6 +165,12 @@ void MainWindow::setupActions()
                                        "Full Upgrade"));
     connect(m_distUpgradeAction, SIGNAL(triggered()), this, SLOT(markDistUpgrade()));
 
+    m_autoRemoveAction = actionCollection()->addAction("autoremove");
+    m_autoRemoveAction->setIcon(KIcon("trash-empty"));
+    m_autoRemoveAction->setText(i18nc("@action Marks packages no longer needed for removal",
+                                      "Remove Unnecessary Packages"));
+    connect(m_autoRemoveAction, SIGNAL(triggered()), this, SLOT(markAutoRemove()));
+
     m_previewAction = actionCollection()->addAction("preview");
     m_previewAction->setIcon(KIcon("document-preview-archive"));
     m_previewAction->setText(i18nc("@action Takes the user to the preview page", "Preview Changes"));
@@ -219,6 +225,13 @@ void MainWindow::markDistUpgrade()
     }
 }
 
+void MainWindow::markAutoRemove()
+{
+    m_backend->saveCacheState();
+    m_backend->markPackagesForAutoRemove();
+    previewChanges();
+}
+
 void MainWindow::checkForUpdates()
 {
     setActionsEnabled(false);
@@ -268,9 +281,15 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
         }
         break;
     case QApt::XapianUpdateStarted:
+        m_statusWidget->showXapianProgress();
+        connect(m_backend, SIGNAL(xapianUpdateProgress(int)),
+                m_statusWidget, SLOT(updateXapianProgress(int)));
         break;
     case QApt::XapianUpdateFinished:
         m_backend->openXapianIndex();
+        disconnect(m_backend, SIGNAL(xapianUpdateProgress(int)),
+                   m_statusWidget, SLOT(updateXapianProgress(int)));
+        m_statusWidget->hideXapianProgress();
         break;
     case QApt::PackageDownloadFinished:
     case QApt::InvalidEvent:
@@ -355,6 +374,7 @@ void MainWindow::reload()
     if (m_reviewWidget) {
         m_reviewWidget->refresh();
     }
+    kDebug() << "updating status";
     m_statusWidget->updateStatus();
     setActionsEnabled(true);
     reloadActions();
@@ -378,10 +398,12 @@ void MainWindow::reloadActions()
 {
     int upgradeable = m_backend->packageCount(QApt::Package::Upgradeable);
     QApt::PackageList changedList = m_backend->markedPackages();
+    int autoRemoveable = m_backend->packageCount(QApt::Package::IsGarbage);
 
     m_updateAction->setEnabled(true);
     m_safeUpgradeAction->setEnabled(upgradeable > 0);
     m_distUpgradeAction->setEnabled(upgradeable > 0);
+    m_autoRemoveAction->setEnabled(autoRemoveable > 0);
     if (m_stack->currentWidget() == m_reviewWidget) {
         // We always need to be able to get back from review
         m_previewAction->setEnabled(true);
@@ -404,6 +426,7 @@ void MainWindow::setActionsEnabled(bool enabled)
     m_updateAction->setEnabled(enabled);
     m_safeUpgradeAction->setEnabled(enabled);
     m_distUpgradeAction->setEnabled(enabled);
+    m_autoRemoveAction->setEnabled(enabled);
     m_previewAction->setEnabled(enabled);
     m_applyAction->setEnabled(enabled);
     m_undoAction->setEnabled(enabled);

@@ -61,6 +61,7 @@ private:
     QSplitter *m_mainWidget;
     KAction *m_safeUpgradeAction;
     KAction *m_distUpgradeAction;
+    KAction *m_autoRemoveAction;
     KAction *m_previewAction;
     KAction *m_applyAction;
     KAction *m_saveSelectionsAction;
@@ -81,6 +82,7 @@ private Q_SLOTS:
     void setupActions();
     void markUpgrade();
     void markDistUpgrade();
+    void markAutoRemove();
     void checkForUpdates();
     void workerEvent(QApt::WorkerEvent event);
     void errorOccurred(QApt::ErrorCode code, const QVariantMap &args);

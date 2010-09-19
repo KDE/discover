@@ -21,6 +21,7 @@
             <Action name="update" />
             <Action name="safeupgrade" />
             <Action name="fullupgrade" />
+            <Action name="autoremove" />
             <Separator/>
             <Action name="preview" />
             <Action name="apply" />
