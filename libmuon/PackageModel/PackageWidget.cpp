@@ -134,7 +134,6 @@ void PackageWidget::reload()
     m_model->clear();
     m_proxyModel->clear();
     m_proxyModel->setSourceModel(0);
-    m_backend->reloadCache();
     m_model->setPackages(m_backend->availablePackages());
     m_proxyModel->setSourceModel(m_model);
     m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
