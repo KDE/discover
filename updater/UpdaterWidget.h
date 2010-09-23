@@ -32,7 +32,6 @@ public:
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
-    void setPackages();
 };
 
 #endif

@@ -89,41 +89,56 @@ void PackageWidget::setHeaderWidget(QWidget* widget)
 void PackageWidget::setPackagesType(int type)
 {
     m_packagesType = type;
+
+    switch (m_packagesType) {
+        case AvailablePackages:
+            break;
+        case UpgradeablePackages: {
+            QApt::Package::State state =
+                        (QApt::Package::State)(QApt::Package::Upgradeable | QApt::Package::ToInstall |
+                        QApt::Package::ToReInstall | QApt::Package::ToUpgrade |
+                        QApt::Package::ToDowngrade | QApt::Package::ToRemove |
+                        QApt::Package::ToPurge);
+            m_proxyModel->setStateFilter(state);
+            break;
+        }
+        case MarkedPackages: {
+            QApt::Package::State state =
+                          (QApt::Package::State)(QApt::Package::ToInstall |
+                          QApt::Package::ToReInstall | QApt::Package::ToUpgrade |
+                          QApt::Package::ToDowngrade | QApt::Package::ToRemove |
+                          QApt::Package::ToPurge);
+            m_proxyModel->setStateFilter(state);
+            break;
+        }
+    }
 }
 
 void PackageWidget::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
-    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setPackages()));
     connect(m_backend, SIGNAL(packageChanged()), m_detailsWidget, SLOT(refreshTabs()));
 
     m_detailsWidget->setBackend(backend);
     m_proxyModel->setBackend(m_backend);
-    setPackages();
+    m_model->setPackages(m_backend->availablePackages());
+    m_packageView->updateView();
     m_packageView->setSortingEnabled(true);
 
     setEnabled(true);
 }
 
-void PackageWidget::setPackages()
+void PackageWidget::reload()
 {
-    QApt::PackageList packageList;
-    switch (m_packagesType) {
-        case AvailablePackages:
-            packageList = m_backend->availablePackages();
-            break;
-        case UpgradeablePackages:
-            packageList = m_backend->upgradeablePackages();
-            break;
-        case MarkedPackages:
-            packageList = m_backend->markedPackages();
-            break;
-        default:
-            break;
-    }
-
-    m_model->setPackages(packageList);
-    m_packageView->updateView();
+    m_detailsWidget->clear();
+    m_model->clear();
+    m_proxyModel->clear();
+    m_proxyModel->setSourceModel(0);
+    m_backend->reloadCache();
+    m_model->setPackages(m_backend->availablePackages());
+    m_proxyModel->setSourceModel(m_model);
+    m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
+    m_packageView->sortByColumn(0, Qt::DescendingOrder);
 }
 
 void PackageWidget::packageActivated(const QModelIndex &index)

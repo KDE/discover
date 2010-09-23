@@ -74,16 +74,10 @@ void ManagerWidget::setFocus()
     m_searchEdit->setFocus();
 }
 
-void ManagerWidget::setPackages()
+void ManagerWidget::reload()
 {
-    m_proxyModel->invalidate();
-
-    PackageWidget::setPackages();
-    m_detailsWidget->clear();
-    //FIXME: when this is uncommented, clicking on the cautious/full upgrade buttons results in a crash
-    //m_backend->reloadCache();
+    PackageWidget::reload();
     startSearch();
-    m_packageView->sortByColumn(0, Qt::DescendingOrder);
 }
 
 void ManagerWidget::startSearch()

@@ -370,9 +370,9 @@ void MainWindow::initCommitWidget()
 
 void MainWindow::reload()
 {
-    m_managerWidget->refresh();
+    m_managerWidget->reload();
     if (m_reviewWidget) {
-        m_reviewWidget->refresh();
+        m_reviewWidget->reload();
     }
     kDebug() << "updating status";
     m_statusWidget->updateStatus();

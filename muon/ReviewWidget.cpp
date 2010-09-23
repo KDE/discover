@@ -38,10 +38,4 @@ ReviewWidget::~ReviewWidget()
 {
 }
 
-void ReviewWidget::setPackages()
-{
-    m_detailsWidget->hide();
-    PackageWidget::setPackages();
-}
-
 #include "ReviewWidget.moc"

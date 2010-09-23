@@ -49,7 +49,7 @@ private:
 
 public Q_SLOTS:
     void setFocus();
-    void setPackages();
+    void reload();
     void startSearch();
     void filterByGroup(const QString &groupName);
     void filterByStatus(const QString &statusName);

@@ -202,7 +202,7 @@ void UpdaterWindow::startCommit()
 void UpdaterWindow::reload()
 {
     m_backend->reloadCache();
-    m_updaterWidget->refresh();
+    m_updaterWidget->reload();
     m_statusWidget->updateStatus();
     setActionsEnabled(true);
     reloadActions();

@@ -78,7 +78,7 @@ private:
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
-    void setPackages();
+    void reload();
 
 private Q_SLOTS:
     void packageActivated(const QModelIndex &index);

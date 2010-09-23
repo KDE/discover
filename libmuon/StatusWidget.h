@@ -25,6 +25,7 @@
 #include <KHBox>
 
 class QLabel;
+class QProgressBar;
 
 namespace QApt {
     class Backend;
@@ -43,10 +44,14 @@ private:
     QLabel *m_countsLabel;
     QLabel *m_changesLabel;
     QLabel *m_downloadLabel;
+    QProgressBar *m_xapianProgress;
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
+    void showXapianProgress();
+    void hideXapianProgress();
     void updateStatus();
+    void updateXapianProgress(int percentage);
 };
 
 #endif

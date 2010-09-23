@@ -23,6 +23,7 @@
 // Qt includes
 #include <QtCore/QStringBuilder>
 #include <QtGui/QLabel>
+#include <QtGui/QProgressBar>
 
 // KDE includes
 #include <KDebug>
@@ -41,6 +42,13 @@ StatusWidget::StatusWidget(QWidget *parent)
 
     m_downloadLabel = new QLabel(this);
     m_downloadLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
+
+    QWidget *spacer = new QWidget(this);
+    spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+
+    m_xapianProgress = new QProgressBar(this);
+    m_xapianProgress->setFormat(i18nc("@status", "Rebuilding Search Index"));
+    m_xapianProgress->hide();
 }
 
 StatusWidget::~StatusWidget()
@@ -108,6 +116,21 @@ void StatusWidget::updateStatus()
     } else {
         m_downloadLabel->hide();
     }
+}
+
+void StatusWidget::showXapianProgress()
+{
+    m_xapianProgress->show();
+}
+
+void StatusWidget::hideXapianProgress()
+{
+    m_xapianProgress->hide();
+}
+
+void StatusWidget::updateXapianProgress(int percentage)
+{
+    m_xapianProgress->setValue(percentage);
 }
 
 #include "StatusWidget.moc"

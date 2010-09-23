@@ -42,12 +42,6 @@ void UpdaterWidget::setBackend(QApt::Backend *backend)
     PackageWidget::setBackend(backend);
 }
 
-void UpdaterWidget::setPackages()
-{
-    m_detailsWidget->hide();
-    PackageWidget::setPackages();
-}
-
 UpdaterWidget::~UpdaterWidget()
 {
 }
