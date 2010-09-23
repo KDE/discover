@@ -43,9 +43,6 @@ StatusWidget::StatusWidget(QWidget *parent)
     m_downloadLabel = new QLabel(this);
     m_downloadLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
 
-    QWidget *spacer = new QWidget(this);
-    spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-
     m_xapianProgress = new QProgressBar(this);
     m_xapianProgress->setFormat(i18nc("@status", "Rebuilding Search Index"));
     m_xapianProgress->hide();
@@ -67,7 +64,7 @@ void StatusWidget::updateStatus()
     int upgradeable = m_backend->packageCount(QApt::Package::Upgradeable);
     bool showChanges = (m_backend->markedPackages().count() > 0);
 
-    QString availableText = i18np("1 package available, ", "%1 packages available, ", m_backend->packageCount());
+    QString availableText = i18n("%1 packages available, ", m_backend->packageCount());
     QString installText = i18n("%1 installed, ", m_backend->packageCount(QApt::Package::Installed));
     QString upgradeableText;
 
