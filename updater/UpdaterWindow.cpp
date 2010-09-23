@@ -150,11 +150,6 @@ void UpdaterWindow::workerEvent(QApt::WorkerEvent event)
             m_stack->setCurrentWidget(m_commitWidget);
         }
         break;
-    case QApt::XapianUpdateStarted:
-        break;
-    case QApt::XapianUpdateFinished:
-        m_backend->openXapianIndex();
-        break;
     case QApt::PackageDownloadFinished:
     case QApt::InvalidEvent:
     default:
