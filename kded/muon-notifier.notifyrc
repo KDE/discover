@@ -1,0 +1,9 @@
+[Global]
+IconName=applications-system
+Comment=System Notification
+
+[Event/DistUpgrade]
+Name=Upgrade Available
+Comment=A new version of Kubuntu is available
+Action=Popup
+

@@ -16,5 +16,6 @@ add_subdirectory(libmuon)
 add_subdirectory(muon)
 add_subdirectory(installer)
 add_subdirectory(updater)
+add_subdirectory(kded)
 
 macro_display_feature_log()
