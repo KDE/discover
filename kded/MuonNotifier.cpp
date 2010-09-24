@@ -82,7 +82,7 @@ void MuonNotifier::init()
 
     if (!m_updateEvent->isHidden()) {
         KDirWatch *stampDirWatch = new KDirWatch(this);
-        stampDirWatch->addFile("/var/lib/update-notifier/dpkg-run-stamp");
+        stampDirWatch->addFile("/var/lib/update-notifier/updates-available");
         connect(stampDirWatch, SIGNAL(dirty(const QString &)),
                 this, SLOT(updateEvent()));
         connect(m_configWatcher, SIGNAL(reloadConfigCalled()),
@@ -99,7 +99,10 @@ void MuonNotifier::distUpgradeEvent()
 
 void MuonNotifier::updateEvent()
 {
-    m_updateEvent->show();
+    kDebug() << "Checking to see if we have updates";
+    if (QFile::exists("/var/lib/update-notifier/updates-available")) {
+        m_updateEvent->getUpdateInfo();
+    }
 }
 
 #include "MuonNotifier.moc"

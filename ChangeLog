@@ -8,6 +8,7 @@
   This filter shows packages taht still have purgeable config files laying around.
 - The Technical Details tab now displays the package's origin
 - Added a progress bar to Muon's statusbar to show Xapian indexing update progress.
+- Added an update notification KDED Module
 
 1.0:
 ====

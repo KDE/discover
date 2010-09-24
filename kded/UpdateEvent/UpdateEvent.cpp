@@ -20,12 +20,12 @@
 
 #include "UpdateEvent.h"
 
-#include <KDebug>
-#include <KProcess>
+#include <QProcess>
 #include <KToolInvocation>
 
 UpdateEvent::UpdateEvent(QObject* parent, const QString &name)
         : Event(parent, name)
+        , m_checkerProcess(0)
 {
 }
 
@@ -33,27 +33,36 @@ UpdateEvent::~UpdateEvent()
 {
 }
 
-bool UpdateEvent::updatesAvailable()
+void UpdateEvent::show(int updates, int securityUpdates)
 {
-    KProcess checkerProcess;
-    checkerProcess.setProgram(QStringList() << "/usr/lib/update-notifier/apt-check");
-
-    if (checkerProcess.execute() == 0) {
-        return true;
-    }
-    return false;
-}
-
-void UpdateEvent::show()
-{
-    if (!updatesAvailable()) {
-        kDebug() << "No updates available";
+    if (!updates || securityUpdates) {
         return;
     }
 
-    QPixmap icon = KIcon("system-software-update").pixmap(NOTIFICATION_ICON_SIZE);
-    QString text(i18nc("Notification when updates are available",
-                       "Updates Available"));
+    QPixmap icon;
+    QString text;
+
+    if (securityUpdates && updates) {
+        icon = KIcon("security-medium").pixmap(NOTIFICATION_ICON_SIZE);
+        text = i18ncp("Notification text", "%1 security update is available\n"
+                                           "%2 software update is available",
+                                           "%1 security updates are available\n"
+                                           "%2 software updates are available",
+                                           securityUpdates, updates);
+    } else if (securityUpdates && !updates) {
+        icon = KIcon("security-medium").pixmap(NOTIFICATION_ICON_SIZE);
+        text = i18ncp("Notification text", "%1 security update is available",
+                                           "%1 secuirty updates are available",
+                                           securityUpdates);
+    } else {
+        icon = KIcon("system-software-update").pixmap(NOTIFICATION_ICON_SIZE);
+        text = i18ncp("Notification text", "%1 software update is available",
+                                           "%1 software updates are available",
+                                           updates);
+    }
+
+    kDebug() << text;
+
     QStringList actions;
     actions << i18nc("Start the update", "Update");
     actions << i18nc("Button to dismiss this notification once", "Ignore for now");
@@ -66,6 +75,30 @@ void UpdateEvent::run()
     KToolInvocation::kdeinitExec("/usr/bin/muon-updater");
 
     Event::run();
+}
+
+void UpdateEvent::getUpdateInfo()
+{
+    m_checkerProcess = new QProcess(this);
+    connect(m_checkerProcess, SIGNAL(finished(int)), this, SLOT(parseUpdateInfo()));
+    m_checkerProcess->start("/usr/lib/update-notifier/apt-check",
+                            QStringList() << "--human-readable");
+}
+
+void UpdateEvent::parseUpdateInfo()
+{
+    QString updatesLine = m_checkerProcess->readLine();
+    QString securityLine = m_checkerProcess->readLine();
+
+    // In --human-readable the number of updates is the first word
+    QString updatesString = updatesLine.split(' ').at(0);
+    QString securityString = securityLine.split(' ').at(0);
+
+    int securityUpdates = securityString.toInt();
+    int updates = updatesString.toInt() - securityUpdates;
+    kDebug() << updates << securityUpdates;
+
+    show(updates, securityUpdates);
 }
 
 #include "UpdateEvent.moc"

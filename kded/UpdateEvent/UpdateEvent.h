@@ -24,6 +24,8 @@
 
 #include "../event.h"
 
+class QProcess;
+
 class UpdateEvent : public Event
 {
     Q_OBJECT
@@ -32,12 +34,16 @@ public:
 
     virtual ~UpdateEvent();
 
+private:
+    QProcess *m_checkerProcess;
+
 public slots:
-    void show();
-    bool updatesAvailable();
+    void show(int updates, int securityUpdates);
+    void getUpdateInfo();
 
 private slots:
     void run();
+    void parseUpdateInfo();
 };
 
 #endif
