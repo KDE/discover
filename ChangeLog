@@ -7,6 +7,7 @@
 - A new filterable status "Residual Config" is available in the filters pane.
   This filter shows packages taht still have purgeable config files laying around.
 - The Technical Details tab now displays the package's origin
+- Added a progress bar to Muon's statusbar to show Xapian indexing update progress.
 
 1.0:
 ====
