@@ -33,6 +33,7 @@
 
 // Own includes
 #include "distupgradeevent/distupgradeevent.h"
+#include "UpdateEvent/UpdateEvent.h"
 
 #include "configwatcher.h"
 
@@ -47,7 +48,7 @@ MuonNotifier::MuonNotifier(QObject* parent, const QList<QVariant>&)
         , m_distUpgradeEvent(0)
         , m_configWatcher(0)
 {
-    KAboutData aboutData("muon-notifier", "muon-updater",
+    KAboutData aboutData("muon-notifier", "muon-notifier",
                          ki18n("Muon Notification Daemon"),
                          "1.1", ki18n("A Notification Daemon for Muon"),
                          KAboutData::License_GPL,
@@ -66,22 +67,39 @@ void MuonNotifier::init()
     m_configWatcher = new ConfigWatcher(this);
 
     m_distUpgradeEvent = new DistUpgradeEvent(this, "Apport");
+    m_updateEvent = new UpdateEvent(this, "Update");
 
     if (!m_distUpgradeEvent->isHidden()) {
         KDirWatch *stampDirWatch = new KDirWatch(this);
         stampDirWatch->addFile("/var/lib/update-notifier/dpkg-run-stamp");
         connect(stampDirWatch, SIGNAL(dirty(const QString &)),
-                this, SLOT(rebootEvent()));
+                this, SLOT(distUpgradeEvent()));
         connect(m_configWatcher, SIGNAL(reloadConfigCalled()),
                 m_distUpgradeEvent, SLOT(reloadConfig()));
 
         distUpgradeEvent();
+    }
+
+    if (!m_updateEvent->isHidden()) {
+        KDirWatch *stampDirWatch = new KDirWatch(this);
+        stampDirWatch->addFile("/var/lib/update-notifier/dpkg-run-stamp");
+        connect(stampDirWatch, SIGNAL(dirty(const QString &)),
+                this, SLOT(updateEvent()));
+        connect(m_configWatcher, SIGNAL(reloadConfigCalled()),
+                m_updateEvent, SLOT(reloadConfig()));
+
+        updateEvent();
     }
 }
 
 void MuonNotifier::distUpgradeEvent()
 {
     m_distUpgradeEvent->show();
+}
+
+void MuonNotifier::updateEvent()
+{
+    m_updateEvent->show();
 }
 
 #include "MuonNotifier.moc"

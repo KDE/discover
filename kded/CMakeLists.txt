@@ -3,6 +3,7 @@ set(muon-notifier_SRCS
     event.cpp
     configwatcher.cpp
     distupgradeevent/distupgradeevent.cpp
+    UpdateEvent/UpdateEvent.cpp
 )
 
 QT4_ADD_DBUS_ADAPTOR(muon-notifier_SRCS org.kubuntu.MuonNotifier.xml

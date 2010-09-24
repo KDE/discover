@@ -19,36 +19,25 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MUONNOTIFIER_H
-#define MUONNOTIFIER_H
+#ifndef UPDATEEVENT_H
+#define UPDATEEVENT_H
 
-// KDE includes
-#include <KDEDModule>
+#include "../event.h"
 
-class DistUpgradeEvent;
-class UpdateEvent;
-
-class ConfigWatcher;
-
-class MuonNotifier
-        : public KDEDModule
+class UpdateEvent : public Event
 {
     Q_OBJECT
 public:
-    MuonNotifier(QObject* parent, const QList<QVariant>&);
+    UpdateEvent(QObject* parent, const QString &name);
 
-    virtual ~MuonNotifier();
+    virtual ~UpdateEvent();
 
-private Q_SLOTS:
-    void init();
-    void distUpgradeEvent();
-    void updateEvent();
+public slots:
+    void show();
+    bool updatesAvailable();
 
-private:
-    DistUpgradeEvent *m_distUpgradeEvent;
-    UpdateEvent *m_updateEvent;
-
-    ConfigWatcher* m_configWatcher;
+private slots:
+    void run();
 };
 
 #endif

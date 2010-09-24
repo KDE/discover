@@ -1,6 +1,5 @@
 /***************************************************************************
  *   Copyright © 2009 Jonathan Thomas <echidnaman@kubuntu.org>             *
- *   Copyright © 2009 Harald Sitter <apachelogger@ubuntu.com>              *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -19,36 +18,54 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MUONNOTIFIER_H
-#define MUONNOTIFIER_H
+#include "UpdateEvent.h"
 
-// KDE includes
-#include <KDEDModule>
+#include <KDebug>
+#include <KProcess>
+#include <KToolInvocation>
 
-class DistUpgradeEvent;
-class UpdateEvent;
-
-class ConfigWatcher;
-
-class MuonNotifier
-        : public KDEDModule
+UpdateEvent::UpdateEvent(QObject* parent, const QString &name)
+        : Event(parent, name)
 {
-    Q_OBJECT
-public:
-    MuonNotifier(QObject* parent, const QList<QVariant>&);
+}
 
-    virtual ~MuonNotifier();
+UpdateEvent::~UpdateEvent()
+{
+}
 
-private Q_SLOTS:
-    void init();
-    void distUpgradeEvent();
-    void updateEvent();
+bool UpdateEvent::updatesAvailable()
+{
+    KProcess checkerProcess;
+    checkerProcess.setProgram(QStringList() << "/usr/lib/update-notifier/apt-check");
 
-private:
-    DistUpgradeEvent *m_distUpgradeEvent;
-    UpdateEvent *m_updateEvent;
+    if (checkerProcess.execute() == 0) {
+        return true;
+    }
+    return false;
+}
 
-    ConfigWatcher* m_configWatcher;
-};
+void UpdateEvent::show()
+{
+    if (!updatesAvailable()) {
+        kDebug() << "No updates available";
+        return;
+    }
 
-#endif
+    QPixmap icon = KIcon("system-software-update").pixmap(NOTIFICATION_ICON_SIZE);
+    QString text(i18nc("Notification when updates are available",
+                       "Updates Available"));
+    QStringList actions;
+    actions << i18nc("Start the update", "Update");
+    actions << i18nc("Button to dismiss this notification once", "Ignore for now");
+
+    Event::show(icon, text, actions);
+}
+
+void UpdateEvent::run()
+{
+    KToolInvocation::kdeinitExec("/usr/bin/muon-updater");
+
+    Event::run();
+}
+
+#include "UpdateEvent.moc"

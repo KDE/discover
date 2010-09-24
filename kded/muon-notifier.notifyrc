@@ -7,3 +7,8 @@ Name=Upgrade Available
 Comment=A new version of Kubuntu is available
 Action=Popup
 
+[Event/Update]
+Name=Updates Available
+Comment=Updates Available
+Action=Popup
+
