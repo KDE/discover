@@ -1,1 +1,0 @@
-KPackageKit will be used to handle this, but should KPackageKit not work or for any other reason not used, this code can be enabled by adding the .cpp to CMakeLists.txt, installing releasechecker, and adding some code to simply show() the module when the apt list directory changes
