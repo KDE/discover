@@ -68,7 +68,7 @@ void Event::show(const QPixmap &icon, const QString &text, const QStringList &ac
 
     m_active = true;
     KNotification *notify = new KNotification(m_name, 0, KNotification::Persistent);
-    notify->setComponentData(KComponentData("muon-updater"));
+    notify->setComponentData(KComponentData("muon-notifier"));
 
     notify->setPixmap(icon);
     notify->setText(text);
