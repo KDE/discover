@@ -20,7 +20,11 @@
 
 #include "UpdateEvent.h"
 
-#include <QProcess>
+// Qt includes
+#include <QtCore/QProcess>
+#include <QtCore/QStringBuilder>
+
+// KDE includes
 #include <KToolInvocation>
 
 UpdateEvent::UpdateEvent(QObject* parent, const QString &name)
@@ -40,28 +44,33 @@ void UpdateEvent::show(int updates, int securityUpdates)
     }
 
     QPixmap icon;
+
+    QString updatesText;
+    QString securityText;
     QString text;
 
-    if (securityUpdates && updates) {
-        icon = KIcon("security-medium").pixmap(NOTIFICATION_ICON_SIZE);
-        text = i18ncp("Notification text", "%1 security update is available\n"
-                                           "%2 software update is available",
-                                           "%1 security updates are available\n"
-                                           "%2 software updates are available",
-                                           securityUpdates, updates);
-    } else if (securityUpdates && !updates) {
-        icon = KIcon("security-medium").pixmap(NOTIFICATION_ICON_SIZE);
-        text = i18ncp("Notification text", "%1 security update is available",
-                                           "%1 secuirty updates are available",
-                                           securityUpdates);
-    } else {
-        icon = KIcon("system-software-update").pixmap(NOTIFICATION_ICON_SIZE);
+    if (securityUpdates) {
+        i18ncp("Notification text", "%1 security update is available",
+                                    "%1 secuirty updates are available",
+                                    securityUpdates);
+    }
+
+    if (updates) {
         text = i18ncp("Notification text", "%1 software update is available",
                                            "%1 software updates are available",
                                            updates);
     }
 
-    kDebug() << text;
+    if (securityUpdates && updates) {
+        icon = KIcon("security-medium").pixmap(NOTIFICATION_ICON_SIZE);
+        text = securityText % '\n' % updatesText;
+    } else if (securityUpdates && !updates) {
+        icon = KIcon("security-medium").pixmap(NOTIFICATION_ICON_SIZE);
+        text = securityText;
+    } else {
+        icon = KIcon("system-software-update").pixmap(NOTIFICATION_ICON_SIZE);
+        text = updatesText;
+    }
 
     QStringList actions;
     actions << i18nc("Start the update", "Update");
