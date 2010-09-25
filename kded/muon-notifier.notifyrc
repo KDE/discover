@@ -1,14 +1,19 @@
 [Global]
 IconName=applications-system
 Comment=System Notification
+Comment[x-test]=xxSystem Notificationxx
 
 [Event/DistUpgrade]
 Name=Upgrade Available
+Name[x-test]=xxUpgrade Availablexx
 Comment=A new version of Kubuntu is available
+Comment[x-test]=xxA new version of Kubuntu is availablexx
 Action=Popup
 
 [Event/Update]
 Name=Updates Available
+Name[x-test]=xxUpdates Availablexx
 Comment=Updates Available
+Comment[x-test]=xxUpdates Availablexx
 Action=Popup
 

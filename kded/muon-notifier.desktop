@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Muon Notifier
+Name[x-test]=xxMuon Notifierxx
 Type=Service
 X-KDE-ServiceTypes=KDEDModule
 X-KDE-Library=muon-notifier
