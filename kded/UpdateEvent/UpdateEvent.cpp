@@ -50,15 +50,15 @@ void UpdateEvent::show(int updates, int securityUpdates)
     QString text;
 
     if (securityUpdates) {
-        i18ncp("Notification text", "%1 security update is available",
-                                    "%1 secuirty updates are available",
-                                    securityUpdates);
+        securityText = i18ncp("Notification text", "%1 security update is available",
+                                                   "%1 secuirty updates are available",
+                                                   securityUpdates);
     }
 
     if (updates) {
-        text = i18ncp("Notification text", "%1 software update is available",
-                                           "%1 software updates are available",
-                                           updates);
+        updatesText = i18ncp("Notification text", "%1 software update is available",
+                                                  "%1 software updates are available",
+                                                  updates);
     }
 
     if (securityUpdates && updates) {
