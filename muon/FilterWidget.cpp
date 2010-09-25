@@ -162,12 +162,18 @@ void FilterWidget::populateStatuses()
     purgeableItem->setIcon(KIcon("user-trash-full"));
     purgeableItem->setText(m_strings->packageStateName(QApt::Package::ResidualConfig));
 
+    QStandardItem *autoRemoveItem = new QStandardItem;
+    autoRemoveItem->setEditable(false);
+    autoRemoveItem->setIcon(KIcon("archive-remove"));
+    autoRemoveItem->setText(m_strings->packageStateName(QApt::Package::IsGarbage));
+
     m_statusModel->appendRow(defaultItem);
     m_statusModel->appendRow(installedItem);
     m_statusModel->appendRow(notInstalledItem);
     m_statusModel->appendRow(upgradeableItem);
     m_statusModel->appendRow(brokenItem);
     m_statusModel->appendRow(purgeableItem);
+    m_statusModel->appendRow(autoRemoveItem);
 }
 
 void FilterWidget::populateOrigins()
