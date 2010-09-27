@@ -51,7 +51,7 @@ void UpdateEvent::show(int updates, int securityUpdates)
 
     if (securityUpdates) {
         securityText = i18ncp("Notification text", "%1 security update is available",
-                                                   "%1 secuirty updates are available",
+                                                   "%1 security updates are available",
                                                    securityUpdates);
     }
 
