@@ -24,6 +24,9 @@
 #include <QtCore/QFile>
 #include <QtCore/QStringList>
 #include <QtCore/QTextStream>
+
+// KDE includes
+#include <KLocale>
 #include <KDebug>
 
 // QApt includes
@@ -56,7 +59,7 @@ QString Application::name()
         }
     }
 
-    return name;
+    return i18n(name.toUtf8());
 }
 
 QString Application::comment()
@@ -68,7 +71,7 @@ QString Application::comment()
         }
     }
 
-    return comment;
+    return i18n(comment.toUtf8());
 }
 
 QApt::Package *Application::package()

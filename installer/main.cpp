@@ -46,6 +46,7 @@ int main(int argc, char **argv)
     }
 
     KUniqueApplication app;
+    KGlobal::locale()->insertCatalog("app-install-data");
     app.disableSessionManagement();
 
     ApplicationWindow *mainWindow = new ApplicationWindow;
