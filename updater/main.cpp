@@ -33,7 +33,7 @@ static const char version[] = "1.0.1 \"Ambivalent Atraxi\"";
 
 int main(int argc, char **argv)
 {
-    KAboutData about("muon-updater", 0, ki18n("Muon Update Manager"), version, ki18n(description),
+    KAboutData about("muon-updater", "muon", ki18n("Muon Update Manager"), version, ki18n(description),
                      KAboutData::License_GPL, ki18n("©2010 Jonathan Thomas"), KLocalizedString(), 0);
     about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
     about.setProgramIconName("system-software-update");
