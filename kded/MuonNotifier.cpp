@@ -48,7 +48,7 @@ MuonNotifier::MuonNotifier(QObject* parent, const QList<QVariant>&)
         , m_distUpgradeEvent(0)
         , m_configWatcher(0)
 {
-    KAboutData aboutData("muon-notifier", "muon-notifier",
+    KAboutData aboutData("muon-notifier", "muon",
                          ki18n("Muon Notification Daemon"),
                          "1.1", ki18n("A Notification Daemon for Muon"),
                          KAboutData::License_GPL,
