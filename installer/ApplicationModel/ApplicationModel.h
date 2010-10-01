@@ -18,8 +18,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef PACKAGEMODEL_H
-#define PACKAGEMODEL_H
+#ifndef APPLICATIONMODEL_H
+#define APPLICATIONMODEL_H
 
 #include <QAbstractListModel>
 
