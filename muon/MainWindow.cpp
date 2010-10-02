@@ -189,6 +189,8 @@ void MainWindow::setupActions()
     QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_M), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(easterEggTriggered()));
 
+    setActionsEnabled(false);
+
     setupGUI();
 }
 
