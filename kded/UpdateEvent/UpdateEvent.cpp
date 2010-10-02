@@ -43,11 +43,10 @@ void UpdateEvent::show(int updates, int securityUpdates)
         return;
     }
 
-    KIcon icon;
-
     QString updatesText;
     QString securityText;
     QString text;
+    QString icon;
 
     if (securityUpdates) {
         securityText = i18ncp("Notification text", "%1 security update is available",
@@ -62,13 +61,13 @@ void UpdateEvent::show(int updates, int securityUpdates)
     }
 
     if (securityUpdates && updates) {
-        icon = KIcon("security-medium");
+        icon = "security-medium";
         text = securityText % '\n' % updatesText;
     } else if (securityUpdates && !updates) {
-        icon = KIcon("security-medium");
+        icon = "security-medium";
         text = securityText;
     } else {
-        icon = KIcon("system-software-update");
+        icon = "system-software-update";
         text = updatesText;
     }
 

@@ -45,7 +45,7 @@ public:
 
 public slots:
     bool isHidden() const;
-    void show(const KIcon &icon, const QString &text, const QStringList &actions);
+    void show(const QString &icon, const QString &text, const QStringList &actions);
     void run();
     void reloadConfig();
 

@@ -82,7 +82,7 @@ bool Event::isHidden() const
     return m_hidden;
 }
 
-void Event::show(const KIcon &icon, const QString &text, const QStringList &actions)
+void Event::show(const QString &icon, const QString &text, const QStringList &actions)
 {
     if (m_active || m_hidden) {
         return;
@@ -100,7 +100,7 @@ void Event::show(const KIcon &icon, const QString &text, const QStringList &acti
         KNotification *notify = new KNotification(m_name, 0, flag);
         notify->setComponentData(KComponentData("muon-notifier"));
 
-        notify->setPixmap(icon.pixmap(NOTIFICATION_ICON_SIZE));
+        notify->setPixmap(KIcon(icon).pixmap(NOTIFICATION_ICON_SIZE));
         notify->setText(text);
         notify->setActions(actions);
 
@@ -118,19 +118,19 @@ void Event::show(const KIcon &icon, const QString &text, const QStringList &acti
 
     if (m_useTrayIcon) {
         m_notifierItem = new KStatusNotifierItem(this);
-        m_notifierItem->setIconByPixmap(icon);
-        m_notifierItem->setToolTipIconByPixmap(icon);
-        m_notifierItem->setToolTipTitle(i18n("System Notification Helper"));
+        m_notifierItem->setIconByName(icon);
+        m_notifierItem->setToolTipIconByName(icon);
+        m_notifierItem->setToolTipTitle(i18n("System Notification"));
         m_notifierItem->setToolTipSubTitle(text);
         m_notifierItem->setStatus(KStatusNotifierItem::NeedsAttention);
         m_notifierItem->setCategory(KStatusNotifierItem::SystemServices);
         m_notifierItem->setStandardActionsEnabled(false);
 
         KMenu *contextMenu = new KMenu(0);
-        contextMenu->addTitle(KIcon("applications-system"), i18n("System Notification Helper"));
+        contextMenu->addTitle(KIcon("applications-system"), i18n("System Notification"));
 
         QAction *runAction = contextMenu->addAction(actions.at(0));
-        runAction->setIcon(icon);
+        runAction->setIcon(KIcon(icon));
         connect(runAction, SIGNAL(triggered()), this, SLOT(run()));
         contextMenu->addAction(runAction);
 

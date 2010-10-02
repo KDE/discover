@@ -52,7 +52,7 @@ void DistUpgradeEvent::show()
         return;
     }
 
-    KIcon icon("system-software-update");
+    QString icon = "system-software-update";
     QString text(i18nc("Notification when a new version of Kubuntu is available",
                        "A new version of Kubuntu is available"));
     QStringList actions;
