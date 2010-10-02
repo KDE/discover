@@ -376,7 +376,7 @@ void MainWindow::reload()
     if (m_reviewWidget) {
         m_reviewWidget->reload();
     }
-    kDebug() << "updating status";
+
     m_statusWidget->updateStatus();
     setActionsEnabled(true);
     reloadActions();
