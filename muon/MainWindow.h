@@ -66,6 +66,7 @@ private:
     KAction *m_applyAction;
     KAction *m_saveSelectionsAction;
     KAction *m_loadSelectionsAction;
+    KAction *m_softwarePropertiesAction;
 
     FilterWidget *m_filterBox;
     ManagerWidget *m_managerWidget;

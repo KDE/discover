@@ -181,10 +181,10 @@ void MainWindow::setupActions()
     m_applyAction->setText(i18nc("@action Applys the changes a user has made", "Apply Changes"));
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
 
-    KAction *action = actionCollection()->addAction("software_properties");
-    action->setIcon(KIcon("configure"));
-    action->setText(i18nc("@action Opens the software sources configuration dialog", "Configure Software Sources"));
-    connect(action, SIGNAL(triggered()), this, SLOT(runSourcesEditor()));
+    m_softwarePropertiesAction = actionCollection()->addAction("software_properties");
+    m_softwarePropertiesAction->setIcon(KIcon("configure"));
+    m_softwarePropertiesAction->setText(i18nc("@action Opens the software sources configuration dialog", "Configure Software Sources"));
+    connect(m_softwarePropertiesAction, SIGNAL(triggered()), this, SLOT(runSourcesEditor()));
 
     QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_M), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(easterEggTriggered()));
@@ -432,6 +432,7 @@ void MainWindow::setActionsEnabled(bool enabled)
     m_undoAction->setEnabled(enabled);
     m_redoAction->setEnabled(enabled);
     m_revertAction->setEnabled(enabled);
+    m_softwarePropertiesAction->setEnabled(enabled);
 }
 
 void MainWindow::runSourcesEditor()
