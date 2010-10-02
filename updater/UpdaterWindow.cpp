@@ -99,6 +99,8 @@ void UpdaterWindow::setupActions()
     m_revertAction->setText(i18nc("@action Reverts all potential changes to the cache", "Unmark All"));
     connect(m_revertAction, SIGNAL(triggered()), this, SLOT(revertChanges()));
 
+    setActionsEnabled(false);
+
     setupGUI();
 }
 
