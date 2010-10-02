@@ -99,7 +99,6 @@ void MuonNotifier::distUpgradeEvent()
 
 void MuonNotifier::updateEvent()
 {
-    kDebug() << "Checking to see if we have updates";
     if (QFile::exists("/var/lib/update-notifier/updates-available")) {
         m_updateEvent->getUpdateInfo();
     }

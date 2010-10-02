@@ -1,6 +1,6 @@
 /***************************************************************************
  *   Copyright © 2009 Harald Sitter <apachelogger@ubuntu.com>              *
- *   Copyright © 2009-2010 Jonathan Thomas <echidnaman@kubuntu.org>        *
+ *   Copyright © 2009 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -23,8 +23,11 @@
 
 #include <QtCore/QStringBuilder>
 
+#include <KActionCollection>
 #include <KConfigGroup>
+#include <KMenu>
 #include <KNotification>
+#include <KStatusNotifierItem>
 
 Event::Event(QObject* parent, const QString &name)
         : QObject(parent)
@@ -32,8 +35,9 @@ Event::Event(QObject* parent, const QString &name)
         , m_hidden(false)
         , m_active(false)
 {
-    m_cfgstring = QString("hide" % m_name % "Notifier");
+    m_hiddenCfgString = QString("hide" % m_name % "Notifier");
     m_hidden = readHiddenConfig();
+    readNotifyConfig();
 }
 
 Event::~Event()
@@ -44,15 +48,33 @@ bool Event::readHiddenConfig()
 {
     KConfig cfg("muon-notifier");
     KConfigGroup notifyGroup(&cfg, "Event");
-    return notifyGroup.readEntry(m_cfgstring, false);
+    return notifyGroup.readEntry(m_hiddenCfgString, false);
 }
 
 void Event::writeHiddenConfig(bool value)
 {
     KConfig cfg("muon-notifier");
     KConfigGroup notifyGroup(&cfg, "Event");
-    notifyGroup.writeEntry(m_cfgstring, value);
+    notifyGroup.writeEntry(m_hiddenCfgString, value);
     notifyGroup.config()->sync();
+}
+
+void Event::readNotifyConfig()
+{
+    KConfig cfg("muon-notifier");
+    KConfigGroup notifyTypeGroup(&cfg, "NotificationType");
+    QString notifyType = notifyTypeGroup.readEntry("NotifyType", "Combo");
+
+    if (notifyType == "Combo") {
+        m_useKNotify = true;
+        m_useTrayIcon = true;
+    } else if (notifyType == "TrayOnly") {
+        m_useKNotify = false;
+        m_useTrayIcon = true;
+    } else { // KNotifyOnly
+        m_useKNotify = true;
+        m_useTrayIcon = false;
+    }
 }
 
 bool Event::isHidden() const
@@ -66,31 +88,82 @@ void Event::show(const QPixmap &icon, const QString &text, const QStringList &ac
         return;
     }
 
-    m_active = true;
-    KNotification *notify = new KNotification(m_name, 0, KNotification::Persistent);
-    notify->setComponentData(KComponentData("muon-notifier"));
+    if (m_useKNotify) {
+        KNotification::NotificationFlag flag;
 
-    notify->setPixmap(icon);
-    notify->setText(text);
-    notify->setActions(actions);
+        if (!m_useTrayIcon) {
+            // Tray icon not in use, so be persistant
+            flag = KNotification::Persistant;
+        }
 
-    connect(notify, SIGNAL(action1Activated()), this, SLOT(run()));
-    connect(notify, SIGNAL(action2Activated()), this, SLOT(ignore()));
-    connect(notify, SIGNAL(action3Activated()), this, SLOT(hide()));
+        m_active = true;
+        KNotification *notify = new KNotification(m_name, 0, flag);
+        notify->setComponentData(KComponentData("muon-notifier"));
 
-    connect(notify, SIGNAL(closed()), this, SLOT(notifyClosed()));
+        notify->setPixmap(icon);
+        notify->setText(text);
+        notify->setActions(actions);
 
-    notify->sendEvent();
-    kDebug() << "notification for" << m_name << "sent";
+        if (!m_useTrayIcon) {
+            // Tray icon not in use to handle actions
+            connect(notify, SIGNAL(action1Activated()), this, SLOT(run()));
+            connect(notify, SIGNAL(action2Activated()), this, SLOT(ignore()));
+            connect(notify, SIGNAL(action3Activated()), this, SLOT(hide()));
+        }
+
+        connect(notify, SIGNAL(closed()), this, SLOT(notifyClosed()));
+
+        notify->sendEvent();
+    }
+
+    if (m_useTrayIcon) {
+        m_notifierItem = new KStatusNotifierItem(this);
+        m_notifierItem->setIconByPixmap(icon);
+        m_notifierItem->setToolTipIconByPixmap(icon);
+        m_notifierItem->setToolTipTitle(i18n("System Notification Helper"));
+        m_notifierItem->setToolTipSubTitle(text);
+        m_notifierItem->setStatus(KStatusNotifierItem::NeedsAttention);
+        m_notifierItem->setCategory(KStatusNotifierItem::SystemServices);
+        m_notifierItem->setStandardActionsEnabled(false);
+
+        KMenu *contextMenu = new KMenu(0);
+        contextMenu->addTitle(KIcon("applications-system"), i18n("System Notification Helper"));
+
+        QAction *runAction = contextMenu->addAction(actions.at(0));
+        // FIXME: DBusmenu doesn't support pixmap icons yet. Change function to take KIcon
+        runAction->setIcon(icon);
+        connect(runAction, SIGNAL(triggered()), this, SLOT(run()));
+        contextMenu->addAction(runAction);
+
+        QAction *ignoreForeverAction = contextMenu->addAction(actions.at(2));
+        connect(ignoreForeverAction, SIGNAL(triggered()), this, SLOT(hide()));
+        contextMenu->addAction(ignoreForeverAction);
+
+        contextMenu->addSeparator();
+
+        QAction *hideAction = contextMenu->addAction(i18n("Hide"));
+        hideAction->setIcon(KIcon("application-exit"));
+        connect(hideAction, SIGNAL(triggered()), this, SLOT(ignore()));
+        contextMenu->addAction(hideAction);
+
+        m_notifierItem->setContextMenu(contextMenu);
+        m_notifierItem->setAssociatedWidget(NULL);
+
+        connect(m_notifierItem, SIGNAL(activateRequested(bool, const QPoint &)), this, SLOT(run()));
+    }
 }
 
 void Event::run()
 {
+    delete m_notifierItem;
+    m_notifierItem = 0;
     notifyClosed();
 }
 
 void Event::ignore()
 {
+    m_notifierItem->deleteLater();
+    m_notifierItem = 0;
     notifyClosed();
 }
 

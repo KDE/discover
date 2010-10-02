@@ -105,7 +105,6 @@ void UpdateEvent::parseUpdateInfo()
 
     int securityUpdates = securityString.toInt();
     int updates = updatesString.toInt() - securityUpdates;
-    kDebug() << updates << securityUpdates;
 
     show(updates, securityUpdates);
 }
