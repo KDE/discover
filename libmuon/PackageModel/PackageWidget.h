@@ -25,6 +25,7 @@
 #include <QModelIndex>
 #include <QLabel>
 #include <QSplitter>
+#include <QFutureWatcher>
 
 class QVBoxLayout;
 
@@ -38,6 +39,7 @@ class PackageView;
 namespace QApt
 {
     class Backend;
+    class Package;
 }
 
 class PackageWidget : public QSplitter
@@ -71,6 +73,7 @@ protected:
     PackageProxyModel *m_proxyModel;
 
 private:
+    QFutureWatcher<QList<QApt::Package*> >* m_watcher;
     QWidget *m_headerWidget;
     QVBoxLayout* m_topLayout;
 
@@ -82,6 +85,7 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void packageActivated(const QModelIndex &index);
+    void setSortedPackages();
 };
 
 #endif

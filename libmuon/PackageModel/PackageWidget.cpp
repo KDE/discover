@@ -22,6 +22,7 @@
 #include "PackageWidget.h"
 
 // Qt includes
+#include <QtConcurrentRun>
 #include <QtGui/QHeaderView>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QPushButton>
@@ -42,11 +43,25 @@
 #include "../libmuon/PackageModel/PackageView.h"
 #include "../libmuon/PackageModel/PackageDelegate.h"
 
+bool packageNameLessThan(QApt::Package *p1, QApt::Package *p2)
+{
+     return p1->latin1Name() < p2->latin1Name();
+}
+
+QApt::PackageList sortPackages(QApt::PackageList list)
+{
+    qSort(list.begin(), list.end(), packageNameLessThan);
+    return list;
+}
+
 PackageWidget::PackageWidget(QWidget *parent)
 : QSplitter(parent)
 , m_backend(0), m_headerWidget(0), m_packagesType(0)
 {
     setOrientation(Qt::Vertical);
+
+    m_watcher = new QFutureWatcher<QList<QApt::Package*> >(this);
+    connect(m_watcher, SIGNAL(finished()), this, SLOT(setSortedPackages()));
 
     m_model = new PackageModel(this);
     PackageDelegate *delegate = new PackageDelegate(this);
@@ -121,9 +136,11 @@ void PackageWidget::setBackend(QApt::Backend *backend)
 
     m_detailsWidget->setBackend(backend);
     m_proxyModel->setBackend(m_backend);
-    m_model->setPackages(m_backend->availablePackages());
-    m_packageView->updateView();
     m_packageView->setSortingEnabled(true);
+    QApt::PackageList packageList = m_backend->availablePackages();
+    QFuture<QList<QApt::Package*> > future = QtConcurrent::run(sortPackages, packageList);
+    m_watcher->setFuture(future);
+    m_packageView->updateView();
 
     setEnabled(true);
 }
@@ -134,10 +151,11 @@ void PackageWidget::reload()
     m_model->clear();
     m_proxyModel->clear();
     m_proxyModel->setSourceModel(0);
-    m_model->setPackages(m_backend->availablePackages());
+    QApt::PackageList packageList = m_backend->availablePackages();
+    QFuture<QList<QApt::Package*> > future = QtConcurrent::run(sortPackages, packageList);
+    m_watcher->setFuture(future);
     m_proxyModel->setSourceModel(m_model);
     m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
-    m_packageView->sortByColumn(0, Qt::DescendingOrder);
 }
 
 void PackageWidget::packageActivated(const QModelIndex &index)
@@ -148,6 +166,12 @@ void PackageWidget::packageActivated(const QModelIndex &index)
         return;
     }
     m_detailsWidget->setPackage(package);
+}
+
+void PackageWidget::setSortedPackages()
+{
+    QApt::PackageList packageList = m_watcher->future().result();
+    m_model->setPackages(packageList);
 }
 
 #include "PackageWidget.moc"
