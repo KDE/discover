@@ -23,6 +23,7 @@
 
 // Qt includes
 #include <QtConcurrentRun>
+#include <QApplication>
 #include <QtGui/QHeaderView>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QPushButton>
@@ -55,8 +56,10 @@ QApt::PackageList sortPackages(QApt::PackageList list)
 }
 
 PackageWidget::PackageWidget(QWidget *parent)
-: QSplitter(parent)
-, m_backend(0), m_headerWidget(0), m_packagesType(0)
+        : QSplitter(parent)
+        , m_backend(0)
+        , m_headerWidget(0)
+        , m_packagesType(0)
 {
     setOrientation(Qt::Vertical);
 
@@ -81,6 +84,7 @@ PackageWidget::PackageWidget(QWidget *parent)
 
     m_detailsWidget = new DetailsWidget(this);
 
+    QApplication::setOverrideCursor(Qt::WaitCursor);
     setEnabled(false);
 
     connect(m_packageView, SIGNAL(clicked(const QModelIndex &)),
@@ -141,8 +145,6 @@ void PackageWidget::setBackend(QApt::Backend *backend)
     QFuture<QList<QApt::Package*> > future = QtConcurrent::run(sortPackages, packageList);
     m_watcher->setFuture(future);
     m_packageView->updateView();
-
-    setEnabled(true);
 }
 
 void PackageWidget::reload()
@@ -172,6 +174,8 @@ void PackageWidget::setSortedPackages()
 {
     QApt::PackageList packageList = m_watcher->future().result();
     m_model->setPackages(packageList);
+    setEnabled(true);
+    QApplication::restoreOverrideCursor();
 }
 
 #include "PackageWidget.moc"
