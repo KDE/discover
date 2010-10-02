@@ -82,7 +82,7 @@ bool Event::isHidden() const
     return m_hidden;
 }
 
-void Event::show(const QPixmap &icon, const QString &text, const QStringList &actions)
+void Event::show(const KIcon &icon, const QString &text, const QStringList &actions)
 {
     if (m_active || m_hidden) {
         return;
@@ -100,7 +100,7 @@ void Event::show(const QPixmap &icon, const QString &text, const QStringList &ac
         KNotification *notify = new KNotification(m_name, 0, flag);
         notify->setComponentData(KComponentData("muon-notifier"));
 
-        notify->setPixmap(icon);
+        notify->setPixmap(icon.pixmap(NOTIFICATION_ICON_SIZE));
         notify->setText(text);
         notify->setActions(actions);
 
@@ -130,7 +130,6 @@ void Event::show(const QPixmap &icon, const QString &text, const QStringList &ac
         contextMenu->addTitle(KIcon("applications-system"), i18n("System Notification Helper"));
 
         QAction *runAction = contextMenu->addAction(actions.at(0));
-        // FIXME: DBusmenu doesn't support pixmap icons yet. Change function to take KIcon
         runAction->setIcon(icon);
         connect(runAction, SIGNAL(triggered()), this, SLOT(run()));
         contextMenu->addAction(runAction);

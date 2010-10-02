@@ -43,7 +43,7 @@ void UpdateEvent::show(int updates, int securityUpdates)
         return;
     }
 
-    QPixmap icon;
+    KIcon icon;
 
     QString updatesText;
     QString securityText;
@@ -62,13 +62,13 @@ void UpdateEvent::show(int updates, int securityUpdates)
     }
 
     if (securityUpdates && updates) {
-        icon = KIcon("security-medium").pixmap(NOTIFICATION_ICON_SIZE);
+        icon = KIcon("security-medium");
         text = securityText % '\n' % updatesText;
     } else if (securityUpdates && !updates) {
-        icon = KIcon("security-medium").pixmap(NOTIFICATION_ICON_SIZE);
+        icon = KIcon("security-medium");
         text = securityText;
     } else {
-        icon = KIcon("system-software-update").pixmap(NOTIFICATION_ICON_SIZE);
+        icon = KIcon("system-software-update");
         text = updatesText;
     }
 
