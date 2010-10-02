@@ -1,7 +1,7 @@
 1.1:
 ====
 
-- Added the "muon-updater" program, an update-centric GUI
+- Introducing the "muon-updater" program, an update-centric GUI
 - The download view has been revamped, now supporting per-item progress, 
   as well as displaying the size for each item
 - Add a new "Residual Config" filter to the filters pane.
@@ -11,7 +11,8 @@
   have any installed dependants. (Basically, what apt-get autoremove would show)
 - The Technical Details tab now displays the package's origin
 - Added a progress bar to Muon's statusbar to show Xapian indexing update progress.
-- Added an update notification KDED Module
+- Introducing an update notification KDED Module
+- Improved startup time
 
 1.0:
 ====

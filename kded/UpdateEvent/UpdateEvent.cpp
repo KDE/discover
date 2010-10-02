@@ -75,6 +75,8 @@ void UpdateEvent::show(int updates, int securityUpdates)
     QStringList actions;
     actions << i18nc("Start the update", "Update");
     actions << i18nc("Button to dismiss this notification once", "Ignore for now");
+    actions << i18nc("Button to make this notification never show up again",
+                     "Never show again");
 
     Event::show(icon, text, actions);
 }
