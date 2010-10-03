@@ -109,9 +109,10 @@ void Event::show(const QString &icon, const QString &text, const QStringList &ac
             connect(notify, SIGNAL(action1Activated()), this, SLOT(run()));
             connect(notify, SIGNAL(action2Activated()), this, SLOT(ignore()));
             connect(notify, SIGNAL(action3Activated()), this, SLOT(hide()));
-        }
 
-        connect(notify, SIGNAL(closed()), this, SLOT(notifyClosed()));
+            // The tray icon will stick around, so we will still be active
+            connect(notify, SIGNAL(closed()), this, SLOT(notifyClosed()));
+        }
 
         notify->sendEvent();
     }
