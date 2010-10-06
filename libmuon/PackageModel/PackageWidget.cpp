@@ -32,7 +32,8 @@
 
 // KDE includes
 #include <KIcon>
-#include <KDebug>
+#include <KPixmapSequence>
+#include <KPixmapSequenceOverlayPainter>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -84,8 +85,14 @@ PackageWidget::PackageWidget(QWidget *parent)
 
     m_detailsWidget = new DetailsWidget(this);
 
+    m_busyWidget = new KPixmapSequenceOverlayPainter(this);
+    m_busyWidget->setSequence(KPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
+    m_busyWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    m_busyWidget->setWidget(m_packageView->viewport());
+
     QApplication::setOverrideCursor(Qt::WaitCursor);
-    setEnabled(false);
+
+    m_busyWidget->start();
 
     connect(m_packageView, SIGNAL(clicked(const QModelIndex &)),
             this, SLOT(packageActivated(const QModelIndex &)));
@@ -174,7 +181,7 @@ void PackageWidget::setSortedPackages()
 {
     QApt::PackageList packageList = m_watcher->future().result();
     m_model->setPackages(packageList);
-    setEnabled(true);
+    m_busyWidget->stop();
     QApplication::restoreOverrideCursor();
 }
 

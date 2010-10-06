@@ -30,6 +30,7 @@
 class QVBoxLayout;
 
 class KLineEdit;
+class KPixmapSequenceOverlayPainter;
 
 class DetailsWidget;
 class PackageModel;
@@ -71,6 +72,7 @@ protected:
     DetailsWidget *m_detailsWidget;
     PackageModel *m_model;
     PackageProxyModel *m_proxyModel;
+    KPixmapSequenceOverlayPainter *m_busyWidget;
 
 private:
     QFutureWatcher<QList<QApt::Package*> >* m_watcher;
