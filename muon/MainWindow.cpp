@@ -419,6 +419,7 @@ void MainWindow::reloadActions()
     m_revertAction->setEnabled(!m_backend->isUndoStackEmpty());
 
     m_saveSelectionsAction->setEnabled(!changedList.isEmpty());
+    m_softwarePropertiesAction->setEnabled(true);
 }
 
 void MainWindow::setActionsEnabled(bool enabled)
