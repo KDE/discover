@@ -145,10 +145,10 @@ QHash<QString, QString> Application::desktopContents()
             }
             QString value = contents[lastKey];
             if (!value.isEmpty())
-                value += ' ';
+                value += QLatin1Char(' ');
             contents[lastKey] = value + line;
         } else {
-            QStringList splitLine = line.split('=');
+            QStringList splitLine = line.split(QLatin1Char('='));
             if (!(splitLine.size() == 2)) {
                 continue;
             }
