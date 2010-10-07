@@ -65,7 +65,7 @@ void StatusWidget::updateStatus()
     bool showChanges = (m_backend->markedPackages().count() > 0);
 
     QString availableText = i18np("1 package available, ", "%1 packages available, ", m_backend->packageCount());
-    QString installText = i18n("%1 installed, ", m_backend->packageCount(QApt::Package::Installed));
+    QString installText = i18n("%1 installed, ", m_backend->installedCount());
     QString upgradeableText;
 
     if (upgradeable > 0 && showChanges) {
