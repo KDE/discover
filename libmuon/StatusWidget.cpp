@@ -76,8 +76,8 @@ void StatusWidget::updateStatus()
     }
 
     if (showChanges) {
-        int toInstallOrUpgrade = m_backend->packageCount(QApt::Package::ToInstall);
-        int toRemove = m_backend->packageCount((QApt::Package::State)(QApt::Package::ToRemove | QApt::Package::ToPurge));
+        int toInstallOrUpgrade = m_backend->toInstallCount();
+        int toRemove = m_backend->toRemoveCount();
 
         QString toInstallOrUpgradeText;
         QString toRemoveText;
