@@ -42,6 +42,7 @@ public:
     QString icon();
     QString categories();
     int popconScore();
+    bool isValid();
 
     QString getField(const QString &field);
     QHash<QString, QString> desktopContents();
@@ -51,6 +52,8 @@ private:
     QHash<QString, QString> m_data;
     QApt::Backend *m_backend;
     QApt::Package *m_package;
+
+    bool m_isValid;
 };
 
 #endif

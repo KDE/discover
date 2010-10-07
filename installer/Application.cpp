@@ -37,6 +37,7 @@ Application::Application(const QString &fileName, QApt::Backend *backend)
         : m_fileName(fileName)
         , m_backend(backend)
         , m_package(0)
+        , m_isValid(true)
 {
     m_data = desktopContents();
 }
@@ -66,9 +67,7 @@ QString Application::comment()
 {
     QString comment = getField("Comment");
     if (comment.isEmpty()) {
-        if (m_package) {
-            return m_package->shortDescription();
-        }
+        return package()->shortDescription();
     }
 
     return i18n(comment.toUtf8());
@@ -105,6 +104,11 @@ int Application::popconScore()
     return popconString.toInt();
 }
 
+bool Application::isValid()
+{
+    return m_isValid;
+}
+
 QString Application::getField(const QString &field)
 {
     return m_data.value(field);
@@ -134,6 +138,7 @@ QHash<QString, QString> Application::desktopContents()
                 continue; // treat it like empty line (lenient)
             }
             if (lastKey.isEmpty()) {
+                m_isValid = false;
                 return emptyMap; // not a valid desktop file
             }
             QString value = contents[lastKey];

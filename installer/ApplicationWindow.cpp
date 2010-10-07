@@ -88,8 +88,12 @@ void ApplicationWindow::reload()
     QStringList fileList = appDir.entryList(QDir::Files);
     foreach(const QString &fileName, fileList) {
         Application *app = new Application("/usr/share/app-install/desktop/" + fileName, m_backend);
-        list << app;
-        popconScores << app->popconScore();
+        if (app->isValid()) {
+            list << app;
+            popconScores << app->popconScore();
+        } else {
+            kDebug() << fileName;
+        }
     }
     qSort(popconScores);
     kDebug() << popconScores.last();
