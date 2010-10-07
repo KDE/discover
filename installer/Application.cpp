@@ -55,9 +55,7 @@ QString Application::name()
 {
     QString name = getField("Name");
     if (name.isEmpty()) {
-        if (m_package) {
-            return m_package->name();
-        }
+        return package()->name();
     }
 
     return i18n(name.toUtf8());
