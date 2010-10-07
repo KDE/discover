@@ -65,7 +65,11 @@ QString Application::comment()
 {
     QString comment = getField("Comment");
     if (comment.isEmpty()) {
-        return package()->shortDescription();
+        // Sometimes GenericName is used instead of Comment
+        comment = getField("GenericName");
+        if (comment.isEmpty()) {
+            return package()->shortDescription();
+        }
     }
 
     return i18n(comment.toUtf8());
