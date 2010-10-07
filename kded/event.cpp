@@ -121,7 +121,7 @@ void Event::show(const QString &icon, const QString &text, const QStringList &ac
         m_notifierItem->setToolTipIconByName(icon);
         m_notifierItem->setToolTipTitle(i18n("System Notification"));
         m_notifierItem->setToolTipSubTitle(text);
-        m_notifierItem->setStatus(KStatusNotifierItem::NeedsAttention);
+        m_notifierItem->setStatus(KStatusNotifierItem::Active);
         m_notifierItem->setCategory(KStatusNotifierItem::SystemServices);
         m_notifierItem->setStandardActionsEnabled(false);
 
