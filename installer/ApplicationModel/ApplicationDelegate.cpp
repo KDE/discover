@@ -271,8 +271,7 @@ void ApplicationDelegate::itemActivated(QModelIndex index)
 
     QPushButton *actionButton = new QPushButton(m_extender);
 
-    int state = app->package()->state();
-    if (state & QApt::Package::Installed) {
+    if (app->package()->isInstalled()) {
         actionButton->setIcon(m_removeIcon);
         actionButton->setText(m_removeString);
     } else {
