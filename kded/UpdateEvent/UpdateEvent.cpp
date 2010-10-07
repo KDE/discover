@@ -62,7 +62,7 @@ void UpdateEvent::show(int updates, int securityUpdates)
 
     if (securityUpdates && updates) {
         icon = "security-medium";
-        text = securityText % '\n' % updatesText;
+        text = securityText % QLatin1Char('\n') % updatesText;
     } else if (securityUpdates && !updates) {
         icon = "security-medium";
         text = securityText;

@@ -35,7 +35,7 @@ Event::Event(QObject* parent, const QString &name)
         , m_hidden(false)
         , m_active(false)
 {
-    m_hiddenCfgString = QString("hide" % m_name % "Notifier");
+    m_hiddenCfgString = QString(QLatin1Literal("hide") % m_name % QLatin1Literal("Notifier"));
     m_hidden = readHiddenConfig();
     readNotifyConfig();
 }

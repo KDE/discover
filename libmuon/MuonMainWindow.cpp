@@ -316,7 +316,7 @@ void MuonMainWindow::showQueuedErrors()
     foreach (const QVariantMap &args, m_errorStack) {
         QString failedItem = i18nc("@label Shows which package failed", "Package: %1", args["FailedItem"].toString());
         QString errorText = i18nc("@label Shows the error", "Error: %1", args["ErrorText"].toString());
-        details.append(failedItem % '\n' % errorText % "\n\n");
+        details.append(failedItem % QLatin1Char('\n') % errorText % QLatin1Literal("\n\n"));
     }
 
     QString title = i18nc("@title:window", "Commit error");
