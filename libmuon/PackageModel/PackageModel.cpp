@@ -58,6 +58,8 @@ QVariant PackageModel::data(const QModelIndex &index, int role) const
     case StatusRole:
     case ActionRole:
         return m_packages.at(index.row())->state();
+    case SupportRole:
+        return m_packages.at(index.row())->isSupported();
     case Qt::ToolTipRole:
         return QVariant();
     }

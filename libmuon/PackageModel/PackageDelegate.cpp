@@ -36,9 +36,11 @@ PackageDelegate::PackageDelegate(QObject *parent)
     : QAbstractItemDelegate(parent)
 {
     m_spacing  = 4;
-    m_iconSize = KIconLoader::global()->currentSize(KIconLoader::Toolbar);
 
+    m_iconSize = KIconLoader::global()->currentSize(KIconLoader::Toolbar);
     m_icon = new KIcon("application-x-deb");
+
+    m_supportedIcon = new KIcon("application-x-deb", 0, QStringList() << "ubuntu-logo");
 }
 
 PackageDelegate::~PackageDelegate()
@@ -91,13 +93,23 @@ void PackageDelegate::paintPackageName(QPainter *painter, const QStyleOptionView
     QPainter p(&pixmap);
     p.translate(-option.rect.topLeft());
 
-    m_icon->paint(&p,
-                  leftToRight ? left + m_spacing : left + width - m_spacing - m_iconSize,
-                  top + m_spacing,
-                  m_iconSize,
-                  m_iconSize,
-                  Qt::AlignCenter,
-                  QIcon::Normal);
+    if (index.data(PackageModel::SupportRole).toBool()) {
+        m_supportedIcon->paint(&p,
+                      leftToRight ? left + m_spacing : left + width - m_spacing - m_iconSize,
+                      top + m_spacing,
+                      m_iconSize,
+                      m_iconSize,
+                      Qt::AlignCenter,
+                      QIcon::Normal);
+    } else {
+        m_icon->paint(&p,
+                      leftToRight ? left + m_spacing : left + width - m_spacing - m_iconSize,
+                      top + m_spacing,
+                      m_iconSize,
+                      m_iconSize,
+                      Qt::AlignCenter,
+                      QIcon::Normal);
+    }
 
     // Text
     QStyleOptionViewItem name_item(option);

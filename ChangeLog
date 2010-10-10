@@ -15,6 +15,7 @@
 - Improved startup time
 - The contents of the "Installed Files" package tab are now sorted alphabetically
 - Implement sorting the package list by status and requested changes
+- Canonical-supported packages now have a K/Ubuntu emblem on the icon in the package view
 
 1.0:
 ====

@@ -45,6 +45,7 @@ private:
     int m_spacing;
 
     KIcon *m_icon;
+    KIcon *m_supportedIcon;
 
     int calcItemHeight(const QStyleOptionViewItem &option) const;
 };
