@@ -47,9 +47,10 @@ void InstalledFilesTab::populateFilesList()
 {
     m_filesBrowser->clear();
     QStringList filesList = m_package->installedFilesList();
+    qSort(filesList);
     QString filesString;
 
-    foreach(const QString & file, filesList) {
+    foreach(const QString &file, filesList) {
         filesString.append(file + '\n');
     }
 
