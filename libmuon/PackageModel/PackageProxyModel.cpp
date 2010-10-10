@@ -29,6 +29,25 @@
 // Own includes
 #include "PackageModel.h"
 
+static const int status_sort_magic = (QApt::Package::Installed
+//                                       | QApt::Package::Outdated
+                                      | QApt::Package::New);
+bool packageStatusLessThan(QApt::Package *p1, QApt::Package *p2)
+{
+    return (p1->state() & (status_sort_magic))  <
+           (p2->state() & (status_sort_magic));
+};
+
+static const int requested_sort_magic = (QApt::Package::ToInstall
+                                         | QApt::Package::ToRemove
+                                         | QApt::Package::ToKeep);
+
+bool packageRequestedLessThan(QApt::Package *p1, QApt::Package *p2)
+{
+    return (p1->state() & (requested_sort_magic))  <
+           (p2->state() & (requested_sort_magic));
+};
+
 PackageProxyModel::PackageProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
     , m_backend(0)
@@ -134,21 +153,31 @@ void PackageProxyModel::reset()
 
 bool PackageProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
 {
-    if (m_sortByRelevancy) {
-        // This is expensive for very large datasets. It takes about 3 seconds with 30,000 packages
-        QApt::Package *leftPackage = static_cast<PackageModel *>(sourceModel())->packageAt(left);
-        QApt::Package *rightPackage = static_cast<PackageModel *>(sourceModel())->packageAt(right);
-        // The order in m_packages is based on relevancy when returned by m_backend->search()
-        // Use this order to determine less than
-        if (m_packages.indexOf(leftPackage) < m_packages.indexOf(rightPackage)) {
-            return false;
-        } else {
-            return true;
-        }
-    } else {
-        QString leftString = left.data(PackageModel::NameRole).toString();
-        QString rightString = right.data(PackageModel::NameRole).toString();
+    QApt::Package *leftPackage = static_cast<PackageModel *>(sourceModel())->packageAt(left);
+    QApt::Package *rightPackage = static_cast<PackageModel *>(sourceModel())->packageAt(right);
+    
+    switch (left.column()) {
+      case 0:
+          if (m_sortByRelevancy) {
+              // This is expensive for very large datasets. It takes about 3 seconds with 30,000 packages
+              // The order in m_packages is based on relevancy when returned by m_backend->search()
+              // Use this order to determine less than
+              if (m_packages.indexOf(leftPackage) < m_packages.indexOf(rightPackage)) {
+                  return false;
+              } else {
+                  return true;
+              }
+          } else {
+              QString leftString = left.data(PackageModel::NameRole).toString();
+              QString rightString = right.data(PackageModel::NameRole).toString();
 
-        return leftString > rightString;
+              return leftString > rightString;
+          }
+      case 1:
+          return packageStatusLessThan(leftPackage, rightPackage);
+      case 2:
+          return packageRequestedLessThan(leftPackage, rightPackage);
     }
+
+    return false;
 }

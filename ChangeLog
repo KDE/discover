@@ -13,6 +13,8 @@
 - Added a progress bar to Muon's statusbar to show Xapian indexing update progress.
 - Introducing an update notification KDED Module
 - Improved startup time
+- The contents of the "Installed Files" package tab are now sorted alphabetically
+- Implement sorting the package list by status and requested changes
 
 1.0:
 ====
