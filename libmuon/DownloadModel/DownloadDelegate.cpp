@@ -119,7 +119,7 @@ void DownloadDelegate::paintText(QPainter *painter, const QStyleOptionViewItem &
 
     QPen pen;
     painter->setPen(pen);
-    painter->drawText(x, y, fontMetrics.elidedText(text, option.textElideMode, width));
+    painter->drawText(x + m_spacing, y, fontMetrics.elidedText(text, option.textElideMode, width));
 }
 
 #include "DownloadDelegate.moc"
