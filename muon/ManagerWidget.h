@@ -27,8 +27,6 @@
 
 class QTimer;
 
-class KLineEdit;
-
 class MuonStrings;
 
 namespace QApt {
@@ -44,13 +42,9 @@ public:
 
 private:
     MuonStrings *m_strings;
-    QTimer *m_searchTimer;
-    KLineEdit *m_searchEdit;
 
 public Q_SLOTS:
-    void setFocus();
     void reload();
-    void startSearch();
     void filterByGroup(const QString &groupName);
     void filterByStatus(const QString &statusName);
     void filterByOrigin(const QString &originName);

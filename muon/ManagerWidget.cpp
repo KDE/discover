@@ -21,7 +21,6 @@
 #include "ManagerWidget.h"
 
 // Qt includes
-#include <QtCore/QTimer>
 #include <QtGui/QHeaderView>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QLabel>
@@ -32,7 +31,6 @@
 #include <KDebug>
 #include <KHBox>
 #include <KIcon>
-#include <KLineEdit>
 #include <KLocale>
 
 // LibQApt includes
@@ -53,25 +51,12 @@ ManagerWidget::ManagerWidget(QWidget *parent)
 
     m_strings = new MuonStrings(this);
 
-    m_searchTimer = new QTimer(this);
-    m_searchTimer->setInterval(300);
-    m_searchTimer->setSingleShot(true);
-    connect(m_searchTimer, SIGNAL(timeout()), this, SLOT(startSearch()));
-
-    m_searchEdit = new KLineEdit(this);
-    m_searchEdit->setClickMessage(i18nc("@label Line edit click message", "Search"));
-    m_searchEdit->setClearButtonShown(true);
-    setHeaderWidget(m_searchEdit);
-    connect(m_searchEdit, SIGNAL(textChanged(const QString &)), m_searchTimer, SLOT(start()));
+    hideHeaderLabel();
+    showSearchEdit();
 }
 
 ManagerWidget::~ManagerWidget()
 {
-}
-
-void ManagerWidget::setFocus()
-{
-    m_searchEdit->setFocus();
 }
 
 void ManagerWidget::reload()
@@ -87,11 +72,6 @@ void ManagerWidget::reload()
     m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
     m_packageView->sortByColumn(0, Qt::DescendingOrder);
     startSearch();
-}
-
-void ManagerWidget::startSearch()
-{
-    m_proxyModel->search(m_searchEdit->text());
 }
 
 void ManagerWidget::filterByGroup(const QString &groupName)

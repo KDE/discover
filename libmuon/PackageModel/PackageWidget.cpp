@@ -24,6 +24,7 @@
 // Qt includes
 #include <QtConcurrentRun>
 #include <QApplication>
+#include <QtCore/QTimer>
 #include <QtGui/QHeaderView>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QPushButton>
@@ -32,8 +33,11 @@
 
 // KDE includes
 #include <KIcon>
+#include <KLineEdit>
+#include <KLocale>
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
+#include <KVBox>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -57,13 +61,12 @@ QApt::PackageList sortPackages(QApt::PackageList list)
 }
 
 PackageWidget::PackageWidget(QWidget *parent)
-        : QSplitter(parent)
+        : KVBox(parent)
         , m_backend(0)
-        , m_headerWidget(0)
+        , m_headerLabel(0)
+        , m_searchEdit(0)
         , m_packagesType(0)
 {
-    setOrientation(Qt::Vertical);
-
     m_watcher = new QFutureWatcher<QList<QApt::Package*> >(this);
     connect(m_watcher, SIGNAL(finished()), this, SLOT(setSortedPackages()));
 
@@ -72,18 +75,29 @@ PackageWidget::PackageWidget(QWidget *parent)
     m_proxyModel = new PackageProxyModel(this);
     m_proxyModel->setSourceModel(m_model);
 
-    QWidget *topWidget = new QWidget(this);
-    setStretchFactor(0, 4);
-    m_topLayout = new QVBoxLayout(topWidget);
+    KVBox *topVBox = new KVBox;
 
-    m_packageView = new PackageView(topWidget);
+    m_headerLabel = new QLabel(topVBox);
+    m_headerLabel->setTextFormat(Qt::RichText);
+
+    m_searchTimer = new QTimer(this);
+    m_searchTimer->setInterval(300);
+    m_searchTimer->setSingleShot(true);
+    connect(m_searchTimer, SIGNAL(timeout()), this, SLOT(startSearch()));
+
+    m_searchEdit = new KLineEdit(topVBox);
+    m_searchEdit->setClickMessage(i18nc("@label Line edit click message", "Search"));
+    m_searchEdit->setClearButtonShown(true);
+    m_searchEdit->hide(); // Off by default, use showSearchEdit() to show
+
+    m_packageView = new PackageView(topVBox);
     m_packageView->setModel(m_proxyModel);
     m_packageView->setItemDelegate(delegate);
     m_packageView->header()->setResizeMode(0, QHeaderView::Stretch);
 
-    m_topLayout->addWidget(m_packageView);
+    KVBox *bottomVBox = new KVBox(this);
 
-    m_detailsWidget = new DetailsWidget(this);
+    m_detailsWidget = new DetailsWidget(bottomVBox);
 
     m_busyWidget = new KPixmapSequenceOverlayPainter(this);
     m_busyWidget->setSequence(KPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
@@ -98,18 +112,21 @@ PackageWidget::PackageWidget(QWidget *parent)
             this, SLOT(packageActivated(const QModelIndex &)));
     connect(m_packageView, SIGNAL(currentPackageChanged(const QModelIndex &)),
             this, SLOT(packageActivated(const QModelIndex &)));
+    connect(m_searchEdit, SIGNAL(textChanged(const QString &)), m_searchTimer, SLOT(start()));
+
+    QSplitter *splitter = new QSplitter(this);
+    splitter->setOrientation(Qt::Vertical);
+    splitter->addWidget(topVBox);
+    splitter->addWidget(bottomVBox);
 }
 
 PackageWidget::~PackageWidget()
 {
 }
 
-void PackageWidget::setHeaderWidget(QWidget* widget)
+void PackageWidget::setHeaderText(const QString &text)
 {
-    if (m_topLayout->count() == 2) {
-        m_topLayout->takeAt(0);
-    }
-    m_topLayout->insertWidget(0, widget);
+    m_headerLabel->setText(text);
 }
 
 void PackageWidget::setPackagesType(int type)
@@ -138,6 +155,16 @@ void PackageWidget::setPackagesType(int type)
             break;
         }
     }
+}
+
+void PackageWidget::hideHeaderLabel()
+{
+    m_headerLabel->hide();
+}
+
+void PackageWidget::showSearchEdit()
+{
+    m_searchEdit->show();
 }
 
 void PackageWidget::setBackend(QApt::Backend *backend)
@@ -183,6 +210,11 @@ void PackageWidget::setSortedPackages()
     m_model->setPackages(packageList);
     m_busyWidget->stop();
     QApplication::restoreOverrideCursor();
+}
+
+void PackageWidget::startSearch()
+{
+    m_proxyModel->search(m_searchEdit->text());
 }
 
 #include "PackageWidget.moc"

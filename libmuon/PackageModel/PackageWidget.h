@@ -24,9 +24,13 @@
 // Qt includes
 #include <QModelIndex>
 #include <QtGui/QLabel>
-#include <QtGui/QSplitter>
 #include <QFutureWatcher>
 
+// KDE includes
+#include <KVBox>
+
+class QLabel;
+class QTimer;
 class QVBoxLayout;
 
 class KLineEdit;
@@ -43,7 +47,7 @@ namespace QApt
     class Package;
 }
 
-class PackageWidget : public QSplitter
+class PackageWidget : public KVBox
 {
     Q_OBJECT
 public:
@@ -56,12 +60,10 @@ public:
     PackageWidget(QWidget *parent);
     ~PackageWidget();
 
-    void setHeaderWidget(QWidget *widget);
-    QWidget *headerWidget() {
-        return m_headerWidget;
-    }
-
     void setPackagesType(int type);
+    void setHeaderText(const QString &text);
+    void hideHeaderLabel();
+    void showSearchEdit();
     int packagesType() {
         return m_packagesType;
     }
@@ -77,13 +79,16 @@ protected:
 private:
     QFutureWatcher<QList<QApt::Package*> >* m_watcher;
     QWidget *m_headerWidget;
-    QVBoxLayout* m_topLayout;
+    QLabel *m_headerLabel;
+    KLineEdit *m_searchEdit;
+    QTimer *m_searchTimer;
 
     int m_packagesType;
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void reload();
+    void startSearch();
 
 private Q_SLOTS:
     void packageActivated(const QModelIndex &index);

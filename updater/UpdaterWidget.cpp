@@ -30,20 +30,17 @@ UpdaterWidget::UpdaterWidget(QWidget *parent)
 {
     setPackagesType(PackageWidget::MarkedPackages);
 
-    QLabel *headerLabel = new QLabel(this);
-    headerLabel->setTextFormat(Qt::RichText);
-    headerLabel->setText(i18n("<b>Update Packages</b>"));
-    setHeaderWidget(headerLabel);
+    setHeaderText(i18n("<b>Update Packages</b>"));
+}
+
+UpdaterWidget::~UpdaterWidget()
+{
 }
 
 void UpdaterWidget::setBackend(QApt::Backend *backend)
 {
     backend->markPackagesForDistUpgrade();
     PackageWidget::setBackend(backend);
-}
-
-UpdaterWidget::~UpdaterWidget()
-{
 }
 
 #include "UpdaterWidget.moc"

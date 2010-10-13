@@ -29,9 +29,7 @@ ReviewWidget::ReviewWidget(QWidget *parent)
 {
     setPackagesType(PackageWidget::MarkedPackages);
 
-    QLabel *headerLabel = new QLabel(this);
-    headerLabel->setText(i18n("<b>Review and Apply Changes</b>"));
-    setHeaderWidget(headerLabel);
+    setHeaderText(i18n("<b>Review and Apply Changes</b>"));
 }
 
 ReviewWidget::~ReviewWidget()
