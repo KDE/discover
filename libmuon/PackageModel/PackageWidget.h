@@ -23,8 +23,8 @@
 
 // Qt includes
 #include <QModelIndex>
-#include <QLabel>
-#include <QSplitter>
+#include <QtGui/QLabel>
+#include <QtGui/QSplitter>
 #include <QFutureWatcher>
 
 class QVBoxLayout;
