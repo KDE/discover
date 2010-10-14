@@ -39,7 +39,7 @@ UpdateEvent::~UpdateEvent()
 
 void UpdateEvent::show(int updates, int securityUpdates)
 {
-    if (!updates || securityUpdates) {
+    if (!updates || !securityUpdates) {
         return;
     }
 
