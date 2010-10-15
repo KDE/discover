@@ -15,6 +15,7 @@ target_link_libraries(muon-installer ${KDE4_KDEUI_LIBS}
                                      ${KDE4_SOLID_LIBS}
                                      ${QAPT_LIBRARY}
                                      libmuon
+                                     ${KDE4_NEPOMUK_LIBS}
                                      debconf-kde)
 
 install(TARGETS muon-installer ${INSTALL_TARGETS_DEFAULT_ARGS} )
