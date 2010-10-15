@@ -151,6 +151,22 @@ void Event::show(const QString &icon, const QString &text, const QStringList &ac
     }
 }
 
+void Event::update(const QString &icon, const QString &text)
+{
+    if (!m_active) {
+        return;
+    }
+
+    // we can't update already-fired notifications, and those are usually
+    // transient anyways.
+    if (m_useTrayIcon && m_notifierItem) {
+        m_notifierItem->setIconByName(icon);
+        m_notifierItem->setToolTipIconByName(icon);
+        m_notifierItem->setToolTipTitle(i18n("System Notification"));
+        m_notifierItem->setToolTipSubTitle(text);
+    }
+}
+
 void Event::run()
 {
     delete m_notifierItem;

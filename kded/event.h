@@ -46,6 +46,7 @@ public:
 public slots:
     bool isHidden() const;
     void show(const QString &icon, const QString &text, const QStringList &actions);
+    void update(const QString &icon, const QString &text);
     void run();
     void reloadConfig();
 
@@ -63,9 +64,11 @@ private:
     bool m_hidden;
     bool m_useKNotify;
     bool m_useTrayIcon;
-    bool m_active;
 
     KStatusNotifierItem *m_notifierItem;
+
+protected:
+    bool m_active;
 };
 
 #endif

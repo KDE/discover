@@ -25,6 +25,7 @@
 #include <QtCore/QStringBuilder>
 
 // KDE includes
+#include <KDebug>
 #include <KToolInvocation>
 
 UpdateEvent::UpdateEvent(QObject* parent, const QString &name)
@@ -39,7 +40,7 @@ UpdateEvent::~UpdateEvent()
 
 void UpdateEvent::show(int updates, int securityUpdates)
 {
-    if (!updates || !securityUpdates) {
+    if (!updates && !securityUpdates) {
         return;
     }
 
@@ -77,7 +78,11 @@ void UpdateEvent::show(int updates, int securityUpdates)
     actions << i18nc("Button to make this notification never show up again",
                      "Never show again");
 
-    Event::show(icon, text, actions);
+    if (!m_active) {
+        Event::show(icon, text, actions);
+    } else {
+        Event::update(icon, text);
+    }
 }
 
 void UpdateEvent::run()
