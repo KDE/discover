@@ -29,6 +29,7 @@ class QStackedWidget;
 class QToolBox;
 class KAction;
 
+class ManagerSettingsDialog;
 class FilterWidget;
 class ManagerWidget;
 class ReviewWidget;
@@ -68,6 +69,7 @@ private:
     KAction *m_loadSelectionsAction;
     KAction *m_softwarePropertiesAction;
 
+    ManagerSettingsDialog *m_settingsDialog;
     FilterWidget *m_filterBox;
     ManagerWidget *m_managerWidget;
     ReviewWidget *m_reviewWidget;
@@ -99,6 +101,8 @@ private Q_SLOTS:
     void sourcesEditorFinished(int reload);
     void easterEggTriggered();
     void revertChanges();
+    void editSettings();
+    void closeSettingsDialog();
 };
 
 #endif // _MUON_H_

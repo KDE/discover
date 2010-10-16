@@ -3,7 +3,8 @@ set(muon_SRCS
     MainWindow.cpp
     ManagerWidget.cpp
     ReviewWidget.cpp
-    FilterWidget.cpp)
+    FilterWidget.cpp
+    config/ManagerSettingsDialog.cpp)
 
 kde4_add_kcfg_files(muon_SRCS GENERATE_MOC config/MuonSettings.kcfgc)
 install(FILES config/muon.kcfg DESTINATION ${KCFG_INSTALL_DIR})

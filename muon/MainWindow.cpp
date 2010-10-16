@@ -50,6 +50,7 @@
 #include <LibQApt/Backend>
 
 // Own includes
+#include "config/ManagerSettingsDialog.h"
 #include "../libmuon/CommitWidget.h"
 #include "../libmuon/DownloadWidget.h"
 #include "../libmuon/StatusWidget.h"
@@ -61,6 +62,7 @@
 MainWindow::MainWindow()
     : MuonMainWindow()
     , m_stack(0)
+    , m_settingsDialog(0)
     , m_reviewWidget(0)
     , m_downloadWidget(0)
     , m_commitWidget(0)
@@ -185,6 +187,8 @@ void MainWindow::setupActions()
     m_softwarePropertiesAction->setIcon(KIcon("configure"));
     m_softwarePropertiesAction->setText(i18nc("@action Opens the software sources configuration dialog", "Configure Software Sources"));
     connect(m_softwarePropertiesAction, SIGNAL(triggered()), this, SLOT(runSourcesEditor()));
+
+    KStandardAction::preferences(this, SLOT(editSettings()), actionCollection());
 
     QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_M), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(easterEggTriggered()));
@@ -458,6 +462,23 @@ void MainWindow::sourcesEditorFinished(int reload)
     if (reload == 1) {
         checkForUpdates();
     }
+}
+
+void MainWindow::editSettings()
+{
+    if (!m_settingsDialog) {
+        m_settingsDialog = new ManagerSettingsDialog(this);
+        connect(m_settingsDialog, SIGNAL(okClicked()), SLOT(closeSettingsDialog()));
+        m_settingsDialog->show();
+    } else {
+        m_settingsDialog->raise();
+    }
+}
+
+void MainWindow::closeSettingsDialog()
+{
+    m_settingsDialog->deleteLater();
+    m_settingsDialog = 0;
 }
 
 void MainWindow::easterEggTriggered()

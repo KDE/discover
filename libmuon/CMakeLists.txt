@@ -17,6 +17,8 @@ set(muon_LIB_SRCS
     DetailsTabs/DependsTab.cpp
     DetailsTabs/InstalledFilesTab.cpp
     DetailsTabs/TechnicalDetailsTab.cpp
-    DetailsTabs/VersionTab.cpp)
+    DetailsTabs/VersionTab.cpp
+    settings/SettingsPageBase.cpp
+    settings/NotifySettingsPage.cpp)
 
 kde4_add_library( libmuon  STATIC ${muon_LIB_SRCS} )
