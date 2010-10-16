@@ -46,6 +46,9 @@ NotifySettingsPage::NotifySettingsPage(QWidget* parent) :
     m_updatesCheckBox = new QCheckBox(i18n("Available updates"), this);
     m_distUpgradeCheckBox = new QCheckBox(i18n("Distribution upgrades"), this);
 
+    connect(m_updatesCheckBox, SIGNAL(clicked()), this, SIGNAL(changed()));
+    connect(m_distUpgradeCheckBox, SIGNAL(clicked()), this, SIGNAL(changed()));
+
     QWidget *spacer = new QWidget(this);
     spacer->setSizePolicy(QSizePolicy::Preferred,  QSizePolicy::Expanding);
 
@@ -104,6 +107,11 @@ void NotifySettingsPage::loadSettings()
 void NotifySettingsPage::applySettings()
 {
     KConfig notifierConfig("muon-notifierrc", KConfig::NoGlobals);
+    KConfigGroup notifyGroup(&notifierConfig, "Event");
+
+    notifyGroup.writeEntry("hideUpdateNotifier", !m_updatesCheckBox->isChecked());
+    notifyGroup.writeEntry("hideDistUpgradeNotifier", !m_distUpgradeCheckBox->isChecked());
+
     KConfigGroup notifyTypeGroup(&notifierConfig, "NotificationType");
 
     notifyTypeGroup.writeEntry("NotifyType", m_comboRadio->isChecked() ? "Combo" :
