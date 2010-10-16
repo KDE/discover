@@ -36,6 +36,7 @@
 #include <LibQApt/Backend>
 
 // Own includes
+#include "config/UpdaterSettingsDialog.h"
 #include "../libmuon/CommitWidget.h"
 #include "../libmuon/DownloadWidget.h"
 #include "../libmuon/StatusWidget.h"
@@ -44,6 +45,7 @@
 UpdaterWindow::UpdaterWindow()
     : MuonMainWindow()
     , m_stack(0)
+    , m_settingsDialog(0)
     , m_downloadWidget(0)
     , m_commitWidget(0)
 {
@@ -98,6 +100,8 @@ void UpdaterWindow::setupActions()
     m_revertAction->setIcon(KIcon("document-revert"));
     m_revertAction->setText(i18nc("@action Reverts all potential changes to the cache", "Unmark All"));
     connect(m_revertAction, SIGNAL(triggered()), this, SLOT(revertChanges()));
+
+    KStandardAction::preferences(this, SLOT(editSettings()), actionCollection());
 
     setActionsEnabled(false);
 
@@ -247,6 +251,23 @@ void UpdaterWindow::setActionsEnabled(bool enabled)
     m_undoAction->setEnabled(enabled);
     m_redoAction->setEnabled(enabled);
     m_revertAction->setEnabled(enabled);
+}
+
+void UpdaterWindow::editSettings()
+{
+    if (!m_settingsDialog) {
+        m_settingsDialog = new UpdaterSettingsDialog(this);
+        connect(m_settingsDialog, SIGNAL(okClicked()), SLOT(closeSettingsDialog()));
+        m_settingsDialog->show();
+    } else {
+        m_settingsDialog->raise();
+    }
+}
+
+void UpdaterWindow::closeSettingsDialog()
+{
+    m_settingsDialog->deleteLater();
+    m_settingsDialog = 0;
 }
 
 #include "UpdaterWindow.moc"

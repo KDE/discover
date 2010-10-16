@@ -18,62 +18,32 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef UPDATERWINDOW_H
-#define UPDATERWINDOW_H
+#ifndef UPDATERSETTINGSDIALOG_H
+#define UPDATERSETTINGSDIALOG_H
 
-// Own includes
-#include "../libmuon/MuonMainWindow.h"
+#include <KPageDialog>
 
-class QStackedWidget;
+class SettingsPageBase;
 
-class KAction;
-
-class DownloadWidget;
-class CommitWidget;
-class StatusWidget;
-class UpdaterSettingsDialog;
-class UpdaterWidget;
-
-namespace QApt
-{
-    class Backend;
-}
-
-class UpdaterWindow : public MuonMainWindow
+class UpdaterSettingsDialog : public KPageDialog
 {
     Q_OBJECT
 public:
-    UpdaterWindow();
-    virtual ~UpdaterWindow();
+    explicit UpdaterSettingsDialog(QWidget* parent);
+    virtual ~UpdaterSettingsDialog();
 
-private:
-    QStackedWidget *m_stack;
-    UpdaterWidget *m_updaterWidget;
-
-    KAction *m_applyAction;
-
-    UpdaterSettingsDialog *m_settingsDialog;
-    DownloadWidget *m_downloadWidget;
-    CommitWidget *m_commitWidget;
-    StatusWidget *m_statusWidget;
-
+protected slots:
+    virtual void slotButtonClicked(int button);
 
 private Q_SLOTS:
-    void initGUI();
-    void initObject();
-    void setupActions();
-    void checkForUpdates();
-    void workerEvent(QApt::WorkerEvent event);
-    void errorOccurred(QApt::ErrorCode code, const QVariantMap &args);
-    void initDownloadWidget();
-    void initCommitWidget();
-    void startCommit();
-    void returnFromPreview();
-    void reload();
-    void reloadActions();
-    void setActionsEnabled(bool enabled);
-    void editSettings();
-    void closeSettingsDialog();
+    void enableApply();
+
+private:
+    void applySettings();
+    void restoreDefaults();
+
+private:
+    QList<SettingsPageBase*> m_pages;
 };
 
 #endif

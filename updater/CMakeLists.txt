@@ -1,7 +1,8 @@
 set(muon_updater_SRCS
     main.cpp
     UpdaterWindow.cpp
-    UpdaterWidget.cpp)
+    UpdaterWidget.cpp
+    config/UpdaterSettingsDialog.cpp)
 
 kde4_add_executable(muon-updater ${muon_updater_SRCS})
 
