@@ -21,6 +21,7 @@
 #include "NotifySettingsPage.h"
 
 #include <QtGui/QButtonGroup>
+#include <QtGui/QCheckBox>
 #include <QtGui/QLabel>
 #include <QtGui/QRadioButton>
 #include <QtGui/QVBoxLayout>
@@ -31,20 +32,29 @@
 
 NotifySettingsPage::NotifySettingsPage(QWidget* parent) :
         SettingsPageBase(parent)
+        , m_comboRadio(new QRadioButton(this))
+        , m_trayOnlyRadio(new QRadioButton(this))
+        , m_KNotifyOnlyRadio(new QRadioButton(this))
 {
     QVBoxLayout* layout = new QVBoxLayout(this);
     layout->setMargin(0);
     layout->setSpacing(KDialog::spacingHint());
 
     QLabel *label = new QLabel(this);
-    label->setText(i18n("Update Notification type:"));
+    label->setText(i18n("Show notifications for:"));
+
+    m_updatesCheckBox = new QCheckBox(i18n("Available updates"), this);
+    m_distUpgradeCheckBox = new QCheckBox(i18n("Distribution upgrades"), this);
+
+    QWidget *spacer = new QWidget(this);
+    spacer->setSizePolicy(QSizePolicy::Preferred,  QSizePolicy::Expanding);
+
+    QLabel *label2 = new QLabel(this);
+    label2->setText(i18n("Notification type:"));
 
     QButtonGroup *notifyTypeGroup = new QButtonGroup(this);
-    m_comboRadio = new QRadioButton(this);
     m_comboRadio->setText(i18n("Use both popups and tray icons"));
-    m_trayOnlyRadio = new QRadioButton(this);
     m_trayOnlyRadio->setText(i18n("Tray icons only"));
-    m_KNotifyOnlyRadio = new QRadioButton(this);
     m_KNotifyOnlyRadio->setText(i18n("Popup notifications only"));
 
     notifyTypeGroup->addButton(m_comboRadio);
@@ -56,6 +66,10 @@ NotifySettingsPage::NotifySettingsPage(QWidget* parent) :
     connect(m_KNotifyOnlyRadio, SIGNAL(clicked()), this, SIGNAL(changed()));
 
     layout->addWidget(label);
+    layout->addWidget(m_updatesCheckBox);
+    layout->addWidget(m_distUpgradeCheckBox);
+    layout->addWidget(label2);
+    layout->addWidget(spacer);
     layout->addWidget(m_comboRadio);
     layout->addWidget(m_trayOnlyRadio);
     layout->addWidget(m_KNotifyOnlyRadio);
@@ -70,6 +84,11 @@ NotifySettingsPage::~NotifySettingsPage()
 void NotifySettingsPage::loadSettings()
 {
     KConfig notifierConfig("muon-notifierrc", KConfig::NoGlobals);
+    KConfigGroup notifyGroup(&notifierConfig, "Event");
+
+    m_updatesCheckBox->setChecked(!notifyGroup.readEntry("hideUpdateNotifier", false));
+    m_distUpgradeCheckBox->setChecked(!notifyGroup.readEntry("hideDistUpgradeNotifier", false));
+
     KConfigGroup notifyTypeGroup(&notifierConfig, "NotificationType");
     QString notifyType = notifyTypeGroup.readEntry("NotifyType", "Combo");
 

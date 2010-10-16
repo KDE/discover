@@ -66,7 +66,7 @@ void MuonNotifier::init()
 {
     m_configWatcher = new ConfigWatcher(this);
 
-    m_distUpgradeEvent = new DistUpgradeEvent(this, "Apport");
+    m_distUpgradeEvent = new DistUpgradeEvent(this, "DistUpgrade");
     m_updateEvent = new UpdateEvent(this, "Update");
 
     if (!m_distUpgradeEvent->isHidden()) {
