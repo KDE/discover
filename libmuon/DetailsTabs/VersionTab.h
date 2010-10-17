@@ -21,7 +21,7 @@
 #ifndef VERSIONTAB_H
 #define VERSIONTAB_H
 
-#include <KVBox>
+#include <QtGui/QWidget>
 
 class QListView;
 class QPushButton;
@@ -32,7 +32,7 @@ namespace QApt
     class Package;
 }
 
-class VersionTab : public KVBox
+class VersionTab : public QWidget
 {
     Q_OBJECT
 public:

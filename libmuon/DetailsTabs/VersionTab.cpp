@@ -21,14 +21,15 @@
 #include "VersionTab.h"
 
 // Qt includes
+#include <QtGui/QHBoxLayout>
 #include <QtGui/QLabel>
 #include <QtGui/QListView>
 #include <QtGui/QPushButton>
+#include <QtGui/QVBoxLayout>
 #include <QStandardItemModel>
 
 // KDE includes
-#include <KDebug>
-#include <KHBox>
+#include <KDialog>
 #include <KIcon>
 #include <KLocale>
 
@@ -36,20 +37,32 @@
 #include <LibQApt/Package>
 
 VersionTab::VersionTab(QWidget *parent)
-    : KVBox(parent)
+    : QWidget(parent)
     , m_package(0)
     , m_versions()
 {
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    setLayout(layout);
+
     QLabel *label = new QLabel(this);
+    layout->addWidget(label);
     label->setText(i18nc("@label", "Available versions:"));
+
     m_versionModel = new QStandardItemModel(this);
     m_versionsView = new QListView(this);
     m_versionsView->setModel(m_versionModel);
     connect(m_versionsView, SIGNAL(activated(const QModelIndex &)), this, SLOT(enableButton()));
+    layout->addWidget(m_versionsView);
 
-    KHBox *footerWidget = new KHBox(this);
+    QWidget *footerWidget = new QWidget(this);
+    QHBoxLayout *footerLayout = new QHBoxLayout(footerWidget);
+    footerWidget->setLayout(footerLayout);
+    layout->addWidget(footerWidget);
+
     QLabel *infoIconLabel = new QLabel(footerWidget);
     infoIconLabel->setPixmap(KIcon("dialog-warning").pixmap(32, 32));
+    footerLayout->addWidget(infoIconLabel);
+
     QLabel *infoLabel = new QLabel(footerWidget);
     infoLabel->setWordWrap(true);
     infoLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
@@ -58,10 +71,13 @@ VersionTab::VersionTab(QWidget *parent)
                              "you force a different version from the "
                              "default one, errors in the dependency "
                              "handling can occur."));
+    footerLayout->addWidget(infoLabel);
+
     m_forceButton = new QPushButton(footerWidget);
     m_forceButton->setText(i18nc("@action:button", "Force Version"));
     m_forceButton->setEnabled(false);
     connect(m_forceButton, SIGNAL(clicked()), this, SLOT(forceVersion()));
+    footerLayout->addWidget(m_forceButton);
 }
 
 VersionTab::~VersionTab()
