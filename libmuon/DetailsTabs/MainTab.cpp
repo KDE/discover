@@ -164,7 +164,11 @@ void MainTab::refresh()
         } else {
             m_upgradeButton->hide();
         }
-        m_reinstallButton->show();
+        if (state & (QApt::Package::NotDownloadable) || upgradeable) {
+            m_reinstallButton->hide();
+        } else {
+            m_reinstallButton->show();
+        }
         m_cancelButton->hide();
         m_purgeButton->hide();
     } else if (state & QApt::Package::ResidualConfig) {
