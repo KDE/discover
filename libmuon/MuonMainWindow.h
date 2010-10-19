@@ -80,6 +80,7 @@ protected Q_SLOTS:
     virtual void showQueuedErrors();
     virtual void reload();
     bool saveSelections();
+    bool saveInstalledPackagesList();
     void loadSelections();
     void undo();
     void redo();

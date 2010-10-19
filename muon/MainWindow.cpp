@@ -156,6 +156,11 @@ void MainWindow::setupActions()
     m_saveSelectionsAction->setText(i18nc("@action", "Save Markings As..."));
     connect(m_saveSelectionsAction, SIGNAL(triggered()), this, SLOT(saveSelections()));
 
+    m_saveInstalledAction = actionCollection()->addAction("save_package_list");
+    m_saveInstalledAction->setIcon(KIcon("document-save-as"));
+    m_saveInstalledAction->setText(i18nc("@action", "Save Installed Packages List..."));
+    connect(m_saveInstalledAction, SIGNAL(triggered()), this, SLOT(saveInstalledPackagesList()));
+
     m_safeUpgradeAction = actionCollection()->addAction("safeupgrade");
     m_safeUpgradeAction->setIcon(KIcon("go-up"));
     m_safeUpgradeAction->setText(i18nc("@action Marks upgradeable packages for upgrade", "Cautious Upgrade"));

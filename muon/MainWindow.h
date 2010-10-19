@@ -65,6 +65,7 @@ private:
     KAction *m_autoRemoveAction;
     KAction *m_previewAction;
     KAction *m_applyAction;
+    KAction *m_saveInstalledAction;
     KAction *m_saveSelectionsAction;
     KAction *m_loadSelectionsAction;
     KAction *m_softwarePropertiesAction;

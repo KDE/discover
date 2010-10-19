@@ -348,6 +348,32 @@ bool MuonMainWindow::saveSelections()
         KMessageBox::error(this, text, QString());
         return false;
     }
+
+    return true;
+}
+
+bool MuonMainWindow::saveInstalledPackagesList()
+{
+    QString filename;
+
+    filename = KFileDialog::getSaveFileName(QString(), QString(), this,
+                                            i18nc("@title:window", "Save Installed Packages List As"));
+
+    if (filename.isEmpty()) {
+        return false;
+    }
+
+    if (!m_backend->saveInstalledPackagesList(filename)) {
+        QString text = i18nc("@label", "The document could not be saved, as it "
+                             "was not possible to write to "
+                             "<filename>%1</filename>\n\nCheck "
+                             "that you have write access to this file "
+                             "or that enough disk space is available.",
+                             filename);
+        KMessageBox::error(this, text, QString());
+        return false;
+    }
+
     return true;
 }
 

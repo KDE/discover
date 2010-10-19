@@ -10,6 +10,7 @@
             <Action name="open_markings" />
             <Separator/>
             <Action name="save_markings" />
+            <Action name="save_package_list" />
             <Separator/>
             <Action name="quit" />
         </Menu>
