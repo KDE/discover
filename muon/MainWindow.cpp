@@ -427,13 +427,16 @@ void MainWindow::reloadActions()
     m_redoAction->setEnabled(!m_backend->isRedoStackEmpty());
     m_revertAction->setEnabled(!m_backend->isUndoStackEmpty());
 
+    m_loadSelectionsAction->setEnabled(true);
     m_saveSelectionsAction->setEnabled(!changedList.isEmpty());
+    m_saveInstalledAction->setEnabled(true);
     m_softwarePropertiesAction->setEnabled(true);
 }
 
 void MainWindow::setActionsEnabled(bool enabled)
 {
     m_loadSelectionsAction->setEnabled(enabled);
+    m_saveInstalledAction->setEnabled(enabled);
     m_saveSelectionsAction->setEnabled(enabled);
     m_updateAction->setEnabled(enabled);
     m_safeUpgradeAction->setEnabled(enabled);

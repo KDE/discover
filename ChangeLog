@@ -16,6 +16,8 @@
 - The contents of the "Installed Files" package tab are now sorted alphabetically
 - Implement sorting the package list by status and requested changes
 - Canonical-supported packages now have a K/Ubuntu emblem on the icon in the package view
+- A "Save Installed Packages List" feature has been added, allowing you to make a list of
+  all installed packages that can be read by Muon or Synaptic on another computer.
 
 1.0:
 ====
