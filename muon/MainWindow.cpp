@@ -483,7 +483,7 @@ void MainWindow::editSettings()
 {
     if (!m_settingsDialog) {
         m_settingsDialog = new ManagerSettingsDialog(this);
-        connect(m_settingsDialog, SIGNAL(okClicked()), SLOT(closeSettingsDialog()));
+        connect(m_settingsDialog, SIGNAL(finished()), SLOT(closeSettingsDialog()));
         connect(m_settingsDialog, SIGNAL(settingsChanged()), SLOT(loadSettings()));
         m_settingsDialog->show();
     } else {
