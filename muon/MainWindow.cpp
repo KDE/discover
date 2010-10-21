@@ -121,9 +121,16 @@ void MainWindow::initObject()
     MuonMainWindow::initObject();
     connect(m_backend, SIGNAL(packageChanged()), this, SLOT(reloadActions()));
 
+    loadSettings();
+
     reloadActions(); //Get initial enabled/disabled state
 
     m_managerWidget->setFocus();
+}
+
+void MainWindow::loadSettings()
+{
+    m_backend->setUndoRedoCacheSize(MuonSettings::self()->undoStackSize());
 }
 
 void MainWindow::loadSplitterSizes()
@@ -477,6 +484,7 @@ void MainWindow::editSettings()
     if (!m_settingsDialog) {
         m_settingsDialog = new ManagerSettingsDialog(this);
         connect(m_settingsDialog, SIGNAL(okClicked()), SLOT(closeSettingsDialog()));
+        connect(m_settingsDialog, SIGNAL(settingsChanged()), SLOT(loadSettings()));
         m_settingsDialog->show();
     } else {
         m_settingsDialog->raise();

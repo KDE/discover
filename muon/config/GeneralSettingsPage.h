@@ -18,35 +18,29 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MANAGERSETTINGSDIALOG_H
-#define MANAGERSETTINGSDIALOG_H
+#ifndef GENERALSETTINGSPAGE_H
+#define GENERALSETTINGSPAGE_H
 
-#include <KPageDialog>
+#include <QtGui/QWidget>
 
-class SettingsPageBase;
+#include "../../libmuon/settings/SettingsPageBase.h"
 
-class ManagerSettingsDialog : public KPageDialog
+class QSpinBox;
+
+class GeneralSettingsPage : public SettingsPageBase
 {
     Q_OBJECT
+
 public:
-    explicit ManagerSettingsDialog(QWidget* parent);
-    virtual ~ManagerSettingsDialog();
+    GeneralSettingsPage(QWidget* parent);
+    virtual ~GeneralSettingsPage();
 
-protected slots:
-    virtual void slotButtonClicked(int button);
-
-private Q_SLOTS:
-    void enableApply();
-
-Q_SIGNALS:
-    void settingsChanged();
+    void loadSettings();
+    virtual void applySettings();
+    virtual void restoreDefaults();
 
 private:
-    void applySettings();
-    void restoreDefaults();
-
-private:
-    QList<SettingsPageBase*> m_pages;
+    QSpinBox *m_undoStackSpinbox;
 };
 
 #endif

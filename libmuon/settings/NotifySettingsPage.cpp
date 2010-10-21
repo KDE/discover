@@ -50,7 +50,7 @@ NotifySettingsPage::NotifySettingsPage(QWidget* parent) :
     connect(m_distUpgradeCheckBox, SIGNAL(clicked()), this, SIGNAL(changed()));
 
     QWidget *spacer = new QWidget(this);
-    spacer->setSizePolicy(QSizePolicy::Preferred,  QSizePolicy::Expanding);
+    spacer->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
 
     QLabel *label2 = new QLabel(this);
     label2->setText(i18n("Notification type:"));

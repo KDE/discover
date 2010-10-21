@@ -82,6 +82,7 @@ private Q_SLOTS:
     void initGUI();
     void initObject();
     void loadSplitterSizes();
+    void loadSettings();
     void saveSplitterSizes();
     void setupActions();
     void markUpgrade();

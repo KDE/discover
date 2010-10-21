@@ -16,5 +16,9 @@
       <label>Height of the main window.</label>
       <default>400</default>
     </entry>
+    <entry name="UndoStackSize" type="Int">
+      <label>The amount of history kept for undo/redo.</label>
+      <default>20</default>
+    </entry>
   </group>
 </kcfg>

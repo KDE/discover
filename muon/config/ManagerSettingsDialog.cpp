@@ -25,6 +25,7 @@
 
 #include "../../libmuon/settings/SettingsPageBase.h"
 #include "../../libmuon/settings/NotifySettingsPage.h"
+#include "GeneralSettingsPage.h"
 
 ManagerSettingsDialog::ManagerSettingsDialog(QWidget* parent) :
     KPageDialog(parent),
@@ -40,13 +41,21 @@ ManagerSettingsDialog::ManagerSettingsDialog(QWidget* parent) :
     enableButtonApply(false);
     setDefaultButton(Ok);
 
+    // General settings
+    GeneralSettingsPage *generalPage = new GeneralSettingsPage(this);
+    KPageWidgetItem *generalSettingsFrame = addPage(generalPage,
+                                                    i18nc("@title:group", "General"));
+    generalSettingsFrame->setIcon(KIcon("system-run"));
+    connect(generalPage, SIGNAL(changed()), this, SLOT(enableApply()));
+
     // Notification settings
     NotifySettingsPage *notifyPage = new NotifySettingsPage(this);
-    KPageWidgetItem* notifySettingsFrame = addPage(notifyPage,
+    KPageWidgetItem *notifySettingsFrame = addPage(notifyPage,
                                                     i18nc("@title:group", "Notifications"));
     notifySettingsFrame->setIcon(KIcon("preferences-desktop-notification"));
     connect(notifyPage, SIGNAL(changed()), this, SLOT(enableApply()));
 
+    m_pages.append(generalPage);
     m_pages.append(notifyPage);
 }
 
@@ -76,6 +85,7 @@ void ManagerSettingsDialog::applySettings()
         page->applySettings();
     }
 
+    emit settingsChanged();
     enableButtonApply(false);
 }
 
