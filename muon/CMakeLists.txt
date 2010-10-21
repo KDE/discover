@@ -25,6 +25,6 @@ install(TARGETS muon ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### install files ###############
 
-install( FILES muon.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR} )
+install( PROGRAMS muon.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR} )
 install( FILES muonui.rc  DESTINATION  ${DATA_INSTALL_DIR}/muon )
 install( FILES moo.ogg DESTINATION ${DATA_INSTALL_DIR}/muon )
