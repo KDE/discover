@@ -387,6 +387,7 @@ void MuonMainWindow::loadSelections()
         return;
     }
 
+    m_backend->saveCacheState();
     if (!m_backend->loadSelections(filename)) {
         QString text = i18nc("@label", "Could not mark changes. Please make sure "
                              "that the file is a markings file created by "
