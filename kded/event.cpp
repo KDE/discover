@@ -46,14 +46,14 @@ Event::~Event()
 
 bool Event::readHiddenConfig()
 {
-    KConfig cfg("muon-notifier");
+    KConfig cfg("muon-notifierrc");
     KConfigGroup notifyGroup(&cfg, "Event");
     return notifyGroup.readEntry(m_hiddenCfgString, false);
 }
 
 void Event::writeHiddenConfig(bool value)
 {
-    KConfig cfg("muon-notifier");
+    KConfig cfg("muon-notifierrc");
     KConfigGroup notifyGroup(&cfg, "Event");
     notifyGroup.writeEntry(m_hiddenCfgString, value);
     notifyGroup.config()->sync();
@@ -61,7 +61,7 @@ void Event::writeHiddenConfig(bool value)
 
 void Event::readNotifyConfig()
 {
-    KConfig cfg("muon-notifier");
+    KConfig cfg("muon-notifierrc");
     KConfigGroup notifyTypeGroup(&cfg, "NotificationType");
     QString notifyType = notifyTypeGroup.readEntry("NotifyType", "Combo");
 
