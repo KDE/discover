@@ -105,7 +105,7 @@ void FilterWidget::populateCategories()
     QApt::GroupList groups = m_backend->availableGroups();
     QSet<QString> groupSet;
 
-    foreach(const QApt::Group & group, groups) {
+    foreach(const QApt::Group &group, groups) {
         QString groupName = m_strings->groupName(group);
 
         if (!groupName.isEmpty()) {
@@ -122,7 +122,7 @@ void FilterWidget::populateCategories()
     QStringList groupList = groupSet.toList();
     qSort(groupList);
 
-    foreach(const QString & group, groupList) {
+    foreach(const QString &group, groupList) {
         QStandardItem *groupItem = new QStandardItem;
         groupItem->setEditable(false);
         groupItem->setText(group);
@@ -186,7 +186,7 @@ void FilterWidget::populateOrigins()
     defaultItem->setText(i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All"));
     m_originModel->appendRow(defaultItem);
 
-    foreach(const QString & originLabel, originLabels) {
+    foreach(const QString &originLabel, originLabels) {
         QStandardItem *originItem = new QStandardItem;
         originItem->setEditable(false);
         originItem->setText(originLabel);
