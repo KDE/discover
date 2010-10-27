@@ -23,13 +23,15 @@
 #include <KIcon>
 #include <KLocale>
 
+#include <LibQApt/Config>
+
 #include "../../libmuon/settings/SettingsPageBase.h"
 #include "../../libmuon/settings/NotifySettingsPage.h"
 #include "GeneralSettingsPage.h"
 
-ManagerSettingsDialog::ManagerSettingsDialog(QWidget* parent) :
+ManagerSettingsDialog::ManagerSettingsDialog(QWidget* parent, QApt::Config *aptConfig) :
     KPageDialog(parent),
-    m_pages()
+    m_aptConfig(aptConfig)
 
 {
     const QSize minSize = minimumSize();
@@ -42,7 +44,7 @@ ManagerSettingsDialog::ManagerSettingsDialog(QWidget* parent) :
     setDefaultButton(Ok);
 
     // General settings
-    GeneralSettingsPage *generalPage = new GeneralSettingsPage(this);
+    GeneralSettingsPage *generalPage = new GeneralSettingsPage(this, m_aptConfig);
     KPageWidgetItem *generalSettingsFrame = addPage(generalPage,
                                                     i18nc("@title:group", "General"));
     generalSettingsFrame->setIcon(KIcon("system-run"));

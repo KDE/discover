@@ -25,14 +25,19 @@
 
 #include "../../libmuon/settings/SettingsPageBase.h"
 
+class QCheckBox;
 class QSpinBox;
+
+namespace QApt {
+    class Config;
+}
 
 class GeneralSettingsPage : public SettingsPageBase
 {
     Q_OBJECT
 
 public:
-    GeneralSettingsPage(QWidget* parent);
+    GeneralSettingsPage(QWidget* parent, QApt::Config *aptConfig);
     virtual ~GeneralSettingsPage();
 
     void loadSettings();
@@ -40,6 +45,8 @@ public:
     virtual void restoreDefaults();
 
 private:
+    QApt::Config *m_aptConfig;
+    QCheckBox *m_recommendsCheckBox;
     QSpinBox *m_undoStackSpinbox;
 };
 

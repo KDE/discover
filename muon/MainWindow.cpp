@@ -48,6 +48,7 @@
 
 // LibQApt includes
 #include <LibQApt/Backend>
+#include <LibQApt/Config>
 
 // Own includes
 #include "config/ManagerSettingsDialog.h"
@@ -482,7 +483,7 @@ void MainWindow::sourcesEditorFinished(int reload)
 void MainWindow::editSettings()
 {
     if (!m_settingsDialog) {
-        m_settingsDialog = new ManagerSettingsDialog(this);
+        m_settingsDialog = new ManagerSettingsDialog(this, m_backend->config());
         connect(m_settingsDialog, SIGNAL(finished()), SLOT(closeSettingsDialog()));
         connect(m_settingsDialog, SIGNAL(settingsChanged()), SLOT(loadSettings()));
         m_settingsDialog->show();

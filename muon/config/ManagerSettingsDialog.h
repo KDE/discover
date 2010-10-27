@@ -25,11 +25,15 @@
 
 class SettingsPageBase;
 
+namespace QApt {
+    class Config;
+}
+
 class ManagerSettingsDialog : public KPageDialog
 {
     Q_OBJECT
 public:
-    explicit ManagerSettingsDialog(QWidget* parent);
+    ManagerSettingsDialog(QWidget *parent, QApt::Config *aptConfig);
     virtual ~ManagerSettingsDialog();
 
 protected slots:
@@ -42,6 +46,8 @@ Q_SIGNALS:
     void settingsChanged();
 
 private:
+    QApt::Config *m_aptConfig;
+
     void applySettings();
     void restoreDefaults();
 

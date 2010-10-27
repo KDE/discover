@@ -20,6 +20,7 @@
 
 #include "GeneralSettingsPage.h"
 
+#include <QtGui/QCheckBox>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QLabel>
 #include <QtGui/QSpinBox>
@@ -28,16 +29,22 @@
 #include <KDialog>
 #include <KLocale>
 
+#include <LibQApt/Config>
+
 #include "MuonSettings.h"
 
-GeneralSettingsPage::GeneralSettingsPage(QWidget* parent) :
+GeneralSettingsPage::GeneralSettingsPage(QWidget* parent, QApt::Config *aptConfig) :
         SettingsPageBase(parent)
+        , m_aptConfig(aptConfig)
+        , m_recommendsCheckBox(new QCheckBox(this))
         , m_undoStackSpinbox(new QSpinBox(this))
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->setMargin(0);
     layout->setSpacing(KDialog::spacingHint());
     setLayout(layout);
+
+    m_recommendsCheckBox->setText(i18n("Treat recommended packages as dependencies"));
 
     QWidget *undoSizeWidget = new QWidget(this);
 
@@ -54,8 +61,14 @@ GeneralSettingsPage::GeneralSettingsPage(QWidget* parent) :
     undoSizeLayout->addWidget(m_undoStackSpinbox);
     undoSizeLayout->addWidget(undoSizeWidgetSpacer);
 
-    layout->addWidget(undoSizeWidget);
+    QWidget *spacer = new QWidget(this);
+    spacer->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
 
+    layout->addWidget(m_recommendsCheckBox);
+    layout->addWidget(undoSizeWidget);
+    layout->addWidget(spacer);
+
+    connect(m_recommendsCheckBox, SIGNAL(clicked()), this, SIGNAL(changed()));
     connect(m_undoStackSpinbox, SIGNAL(valueChanged(int)), this, SIGNAL(changed()));
 
     loadSettings();
@@ -69,6 +82,7 @@ void GeneralSettingsPage::loadSettings()
 {
     MuonSettings *settings = MuonSettings::self();
 
+    m_recommendsCheckBox->setChecked(m_aptConfig->readEntry("APT::Install-Recommends", true));
     m_undoStackSpinbox->setValue(settings->undoStackSize());
 }
 
@@ -78,6 +92,12 @@ void GeneralSettingsPage::applySettings()
 
     settings->setUndoStackSize(m_undoStackSpinbox->value());
     settings->writeConfig();
+
+    // Only write if changed. Unnecessary password dialogs ftl
+    if (m_aptConfig->readEntry("APT::Install-Recommends", false) != m_recommendsCheckBox->isChecked()) {
+        // TODO: Change apply button icon to the auth key.
+        m_aptConfig->writeEntry("APT::Install-Recommends", m_recommendsCheckBox->isChecked());
+    }
 }
 
 void GeneralSettingsPage::restoreDefaults()
