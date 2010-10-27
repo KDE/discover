@@ -18,6 +18,8 @@
 - Canonical-supported packages now have a K/Ubuntu emblem on the icon in the package view
 - A "Save Installed Packages List" feature has been added, allowing you to make a list of
   all installed packages that can be read by Muon or Synaptic on another computer.
+- Add an option to configure whether or not a package's recommended packages are 
+  considered as dependencies.
 
 1.0:
 ====
