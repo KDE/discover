@@ -67,7 +67,11 @@ QString Application::comment()
         // Sometimes GenericName is used instead of Comment
         comment = getField("GenericName");
         if (comment.isEmpty()) {
-            return package()->shortDescription();
+            QApt::Package *pkg = package();
+
+            if (pkg) {
+                return pkg->shortDescription();
+            }
         }
     }
 
