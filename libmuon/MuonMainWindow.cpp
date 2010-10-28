@@ -30,6 +30,7 @@
 #include <KDebug>
 #include <KFileDialog>
 #include <KMessageBox>
+#include <Solid/Networking>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -39,6 +40,7 @@ MuonMainWindow::MuonMainWindow()
     , m_backend(0)
     , m_powerInhibitor(0)
     , m_canExit(true)
+    , m_actionsDisabled(false)
 {
 }
 
@@ -48,6 +50,8 @@ MuonMainWindow::~MuonMainWindow()
 
 void MuonMainWindow::initObject()
 {
+    connect(Solid::Networking::notifier(), SIGNAL(statusChanged(Solid::Networking::Status)), this, SLOT(networkChanged()));
+
     m_backend = new QApt::Backend;
     connect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
             this, SLOT(workerEvent(QApt::WorkerEvent)));
@@ -117,6 +121,11 @@ void MuonMainWindow::setupActions()
     m_updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     m_updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     connect(m_updateAction, SIGNAL(triggered()), this, SLOT(checkForUpdates()));
+    if (!isConnected()) {
+        m_updateAction->setDisabled(true);
+    }
+    connect(this, SIGNAL(shouldConnect(bool)), m_updateAction, SLOT(setEnabled(bool)));
+
 
     m_undoAction = KStandardAction::undo(this, SLOT(undo()), actionCollection());
     actionCollection()->addAction("undo", m_undoAction);
@@ -128,6 +137,29 @@ void MuonMainWindow::setupActions()
     m_revertAction->setIcon(KIcon("document-revert"));
     m_revertAction->setText(i18nc("@action Reverts all potential changes to the cache", "Unmark All"));
     connect(m_revertAction, SIGNAL(triggered()), this, SLOT(revertChanges()));
+}
+
+void MuonMainWindow::setActionsEnabled(bool enabled)
+{
+    m_actionsDisabled = !enabled;
+    for (int i = 0; i < actionCollection()->count(); ++i) {
+        actionCollection()->action(i)->setEnabled(enabled);
+    }
+    m_updateAction->setEnabled(isConnected() && enabled);
+}
+
+void MuonMainWindow::networkChanged()
+{
+    if (m_actionsDisabled) {
+        return;
+    }
+
+    emit shouldConnect(isConnected());
+}
+
+bool MuonMainWindow::isConnected() {
+    return (Solid::Networking::status() == Solid::Networking::Connected
+         || Solid::Networking::status() == Solid::Networking::Unknown);
 }
 
 void MuonMainWindow::workerEvent(QApt::WorkerEvent event)

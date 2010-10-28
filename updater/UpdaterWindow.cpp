@@ -82,9 +82,9 @@ void UpdaterWindow::initGUI()
 void UpdaterWindow::initObject()
 {
     MuonMainWindow::initObject();
-    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(reloadActions()));
+    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
 
-    reloadActions(); //Get initial enabled/disabled state
+    setActionsEnabled(); //Get initial enabled/disabled state
 }
 
 void UpdaterWindow::setupActions()
@@ -94,7 +94,9 @@ void UpdaterWindow::setupActions()
     m_applyAction = actionCollection()->addAction("apply");
     m_applyAction->setIcon(KIcon("dialog-ok-apply"));
     m_applyAction->setText(i18nc("@action Downloads and installs updates", "Install Updates"));
+    m_applyAction->setEnabled(isConnected());
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
+    connect(this, SIGNAL(shouldConnect(bool)), m_applyAction, SLOT(setEnabled(bool)));
 
     m_revertAction = actionCollection()->addAction("revert");
     m_revertAction->setIcon(KIcon("document-revert"));
@@ -205,8 +207,7 @@ void UpdaterWindow::reload()
     m_backend->reloadCache();
     m_updaterWidget->reload();
     m_statusWidget->updateStatus();
-    setActionsEnabled(true);
-    reloadActions();
+    setActionsEnabled();
 
     // No need to keep these around in memory.
     if (m_downloadWidget) {
@@ -229,28 +230,27 @@ void UpdaterWindow::returnFromPreview()
     m_backend->markPackagesForDistUpgrade();
 
     // We may not have anything to preview; check.
-    reloadActions();
-}
-
-void UpdaterWindow::reloadActions()
-{
-    QApt::PackageList changedList = m_backend->markedPackages();
-
-    m_updateAction->setEnabled(true);
-    m_applyAction->setEnabled(!changedList.isEmpty());
-
-    m_undoAction->setEnabled(!m_backend->isUndoStackEmpty());
-    m_redoAction->setEnabled(!m_backend->isRedoStackEmpty());
-    m_revertAction->setEnabled(!m_backend->isUndoStackEmpty());
+    setActionsEnabled();
 }
 
 void UpdaterWindow::setActionsEnabled(bool enabled)
 {
-    m_updateAction->setEnabled(enabled);
-    m_applyAction->setEnabled(enabled);
-    m_undoAction->setEnabled(enabled);
-    m_redoAction->setEnabled(enabled);
-    m_revertAction->setEnabled(enabled);
+    MuonMainWindow::setActionsEnabled(enabled);
+    if (!enabled) {
+        return;
+    }
+
+    QApt::PackageList changedList = m_backend->markedPackages();
+
+    if (isConnected()) {
+        m_applyAction->setEnabled(!changedList.isEmpty());
+    } else {
+        m_applyAction->setEnabled(false);
+    }
+
+    m_undoAction->setEnabled(!m_backend->isUndoStackEmpty());
+    m_redoAction->setEnabled(!m_backend->isRedoStackEmpty());
+    m_revertAction->setEnabled(!m_backend->isUndoStackEmpty());
 }
 
 void UpdaterWindow::editSettings()

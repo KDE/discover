@@ -70,8 +70,7 @@ private Q_SLOTS:
     void startCommit();
     void returnFromPreview();
     void reload();
-    void reloadActions();
-    void setActionsEnabled(bool enabled);
+    void setActionsEnabled(bool enabled = true);
     void editSettings();
     void closeSettingsDialog();
 };

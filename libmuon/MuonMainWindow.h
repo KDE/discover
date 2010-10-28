@@ -53,12 +53,14 @@ class MuonMainWindow : public KXmlGuiWindow
 public:
     MuonMainWindow();
     virtual ~MuonMainWindow();
+    
+    bool isConnected();
 
 protected:
     QApt::Backend *m_backend;
     QList<QVariantMap> m_warningStack;
     QList<QVariantMap> m_errorStack;
-
+    
     KAction *m_updateAction;
     KAction *m_undoAction;
     KAction *m_redoAction;
@@ -79,6 +81,8 @@ protected Q_SLOTS:
     virtual void showQueuedWarnings();
     virtual void showQueuedErrors();
     virtual void reload();
+    void setActionsEnabled(bool enabled = true);
+    void networkChanged();
     bool saveSelections();
     bool saveInstalledPackagesList();
     void loadSelections();
@@ -86,8 +90,12 @@ protected Q_SLOTS:
     void redo();
     virtual void revertChanges();
 
-signals:
+Q_SIGNALS:
     void backendReady(QApt::Backend *backend);
+    void shouldConnect(bool isConnected);
+
+private:
+    bool m_actionsDisabled;
 };
 
 #endif

@@ -120,11 +120,11 @@ void MainWindow::initGUI()
 void MainWindow::initObject()
 {
     MuonMainWindow::initObject();
-    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(reloadActions()));
+    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
 
     loadSettings();
 
-    reloadActions(); //Get initial enabled/disabled state
+    setActionsEnabled(); //Get initial enabled/disabled state
 
     m_managerWidget->setFocus();
 }
@@ -195,6 +195,8 @@ void MainWindow::setupActions()
     m_applyAction->setIcon(KIcon("dialog-ok-apply"));
     m_applyAction->setText(i18nc("@action Applys the changes a user has made", "Apply Changes"));
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
+    m_applyAction->setEnabled(isConnected());
+    connect(this, SIGNAL(shouldConnect(bool)), m_applyAction, SLOT(setEnabled(bool)));
 
     m_softwarePropertiesAction = actionCollection()->addAction("software_properties");
     m_softwarePropertiesAction->setIcon(KIcon("configure"));
@@ -354,7 +356,7 @@ void MainWindow::returnFromPreview()
     disconnect(m_previewAction, SIGNAL(triggered()), this, SLOT(returnFromPreview()));
     connect(m_previewAction, SIGNAL(triggered()), this, SLOT(previewChanges()));
     // We may not have anything to preview; check.
-    reloadActions();
+    setActionsEnabled();
 }
 
 void MainWindow::startCommit()
@@ -395,8 +397,7 @@ void MainWindow::reload()
     }
 
     m_statusWidget->updateStatus();
-    setActionsEnabled(true);
-    reloadActions();
+    setActionsEnabled();
 
     // No need to keep these around in memory.
     if (m_downloadWidget) {
@@ -413,13 +414,17 @@ void MainWindow::reload()
     }
 }
 
-void MainWindow::reloadActions()
+void MainWindow::setActionsEnabled(bool enabled)
 {
+    MuonMainWindow::setActionsEnabled(enabled);
+    if (!enabled) {
+        return;
+    }
+
     int upgradeable = m_backend->packageCount(QApt::Package::Upgradeable);
     QApt::PackageList changedList = m_backend->markedPackages();
     int autoRemoveable = m_backend->packageCount(QApt::Package::IsGarbage);
 
-    m_updateAction->setEnabled(true);
     m_safeUpgradeAction->setEnabled(upgradeable > 0);
     m_distUpgradeAction->setEnabled(upgradeable > 0);
     m_autoRemoveAction->setEnabled(autoRemoveable > 0);
@@ -429,7 +434,12 @@ void MainWindow::reloadActions()
     } else {
         m_previewAction->setEnabled(!changedList.isEmpty());
     }
-    m_applyAction->setEnabled(!changedList.isEmpty());
+
+    if (isConnected()) {
+        m_applyAction->setEnabled(!changedList.isEmpty());
+    } else {
+        m_applyAction->setEnabled(false);
+    }
 
     m_undoAction->setEnabled(!m_backend->isUndoStackEmpty());
     m_redoAction->setEnabled(!m_backend->isRedoStackEmpty());
@@ -439,23 +449,6 @@ void MainWindow::reloadActions()
     m_saveSelectionsAction->setEnabled(!changedList.isEmpty());
     m_saveInstalledAction->setEnabled(true);
     m_softwarePropertiesAction->setEnabled(true);
-}
-
-void MainWindow::setActionsEnabled(bool enabled)
-{
-    m_loadSelectionsAction->setEnabled(enabled);
-    m_saveInstalledAction->setEnabled(enabled);
-    m_saveSelectionsAction->setEnabled(enabled);
-    m_updateAction->setEnabled(enabled);
-    m_safeUpgradeAction->setEnabled(enabled);
-    m_distUpgradeAction->setEnabled(enabled);
-    m_autoRemoveAction->setEnabled(enabled);
-    m_previewAction->setEnabled(enabled);
-    m_applyAction->setEnabled(enabled);
-    m_undoAction->setEnabled(enabled);
-    m_redoAction->setEnabled(enabled);
-    m_revertAction->setEnabled(enabled);
-    m_softwarePropertiesAction->setEnabled(enabled);
 }
 
 void MainWindow::runSourcesEditor()

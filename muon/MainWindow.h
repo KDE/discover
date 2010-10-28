@@ -97,8 +97,9 @@ private Q_SLOTS:
     void initDownloadWidget();
     void initCommitWidget();
     void reload();
-    void reloadActions();
-    void setActionsEnabled(bool enabled);
+    void setActionsEnabled(bool enabled = true);
+
+public Q_SLOTS:
     void runSourcesEditor();
     void sourcesEditorFinished(int reload);
     void easterEggTriggered();
