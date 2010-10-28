@@ -20,6 +20,7 @@
   all installed packages that can be read by Muon or Synaptic on another computer.
 - Add an option to configure whether or not a package's recommended packages are 
   considered as dependencies.
+- Add an option to configure how often APT autocleans cached package files.
 
 1.0:
 ====

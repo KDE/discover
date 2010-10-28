@@ -44,10 +44,15 @@ public:
     virtual void applySettings();
     virtual void restoreDefaults();
 
+public Q_SLOTS:
+    void updateAutoCleanSpinboxSuffix();
+
 private:
     QApt::Config *m_aptConfig;
     QCheckBox *m_recommendsCheckBox;
     QSpinBox *m_undoStackSpinbox;
+    QCheckBox *m_autoCleanCheckBox;
+    QSpinBox *m_autoCleanSpinbox;
 };
 
 #endif
