@@ -119,7 +119,7 @@ void OriginView::populateOrigins()
 
         if (originName == "Ubuntu") {
             originItem->setText("Kubuntu");
-            originItem->setIcon(KIcon("start-here-kubuntu"));
+            originItem->setIcon(KIcon("ubuntu-logo"));
         }
 
         if (originName == "Canonical") {
