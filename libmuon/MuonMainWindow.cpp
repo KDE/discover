@@ -39,7 +39,7 @@ MuonMainWindow::MuonMainWindow()
     : KXmlGuiWindow(0)
     , m_backend(0)
     , m_powerInhibitor(0)
-    , m_canExit(true)
+    , m_canExit(false)
     , m_actionsDisabled(false)
 {
 }
@@ -68,6 +68,8 @@ void MuonMainWindow::initObject()
     }
 
     emit backendReady(m_backend);
+
+    m_canExit = true;
 }
 
 void MuonMainWindow::slotQuit()
