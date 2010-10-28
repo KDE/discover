@@ -21,6 +21,7 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
+#include <QtCore/QByteArray>
 #include <QtCore/QHash>
 #include <QtCore/QString>
 
@@ -44,12 +45,12 @@ public:
     int popconScore();
     bool isValid();
 
-    QString getField(const QString &field);
-    QHash<QString, QString> desktopContents();
+    QByteArray getField(const QByteArray &field);
+    QHash<QByteArray, QByteArray> desktopContents();
 
 private:
     QString m_fileName;
-    QHash<QString, QString> m_data;
+    QHash<QByteArray, QByteArray> m_data;
     QApt::Backend *m_backend;
     QApt::Package *m_package;
 

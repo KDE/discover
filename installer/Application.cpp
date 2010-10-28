@@ -23,7 +23,6 @@
 // Qt includes
 #include <QtCore/QFile>
 #include <QtCore/QStringList>
-#include <QtCore/QTextStream>
 
 // KDE includes
 #include <KLocale>
@@ -111,52 +110,52 @@ bool Application::isValid()
     return m_isValid;
 }
 
-QString Application::getField(const QString &field)
+QByteArray Application::getField(const QByteArray &field)
 {
     return m_data.value(field);
 }
 
-QHash<QString, QString> Application::desktopContents()
+QHash<QByteArray, QByteArray> Application::desktopContents()
 {
-    QHash<QString, QString> contents;
-    const QHash<QString, QString> emptyMap;
+    QHash<QByteArray, QByteArray> contents;
 
     QFile file(m_fileName);
     if (!file.open(QFile::ReadOnly)) {
-        return emptyMap;
+        return contents;
     }
 
-    QTextStream stream(&file);
+    int lineIndex = 0;
+    QByteArray buffer = file.readAll();
 
-    QString line = stream.readLine();
-    QString lastKey;
-    while (!line.isNull()) {
-        line = stream.readLine();
-        if (line.isEmpty()) {
+    QList<QByteArray> lines = buffer.split('\n');
+
+    while (lineIndex < lines.size()) {
+        QByteArray line = lines.at(lineIndex);
+        if (line.isEmpty() || line.at(0) == '#') {
+            lineIndex++;
             continue;
-        } else if (line.at(0).isSpace()) {
-            line = line.simplified();
-            if (line.isEmpty()) {
-                continue; // treat it like empty line (lenient)
-            }
-            if (lastKey.isEmpty()) {
-                m_isValid = false;
-                return emptyMap; // not a valid desktop file
-            }
-            QString value = contents[lastKey];
-            if (!value.isEmpty())
-                value += QLatin1Char(' ');
-            contents[lastKey] = value + line;
-        } else {
-            QStringList splitLine = line.split(QLatin1Char('='));
-            if (!(splitLine.size() == 2)) {
-                continue;
-            }
-            QString key = splitLine[0];
-            QString value = splitLine[1].simplified();
-            contents[key] = value;
-            lastKey = key;
         }
+
+        QByteArray aKey;
+        QByteArray aValue;
+        int eqpos = line.indexOf('=');
+
+        if (eqpos < 0) {
+            // Invalid
+            lineIndex++;
+            continue;
+        } else {
+            aKey = line.left(eqpos);
+            aValue = line.right(line.size() - eqpos -1);
+
+            contents[aKey] = aValue;
+        }
+
+        lineIndex++;
+    }
+
+    if (contents.isEmpty()) {
+        m_isValid = false;
     }
 
     return contents;
