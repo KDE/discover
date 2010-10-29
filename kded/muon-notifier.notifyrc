@@ -14,6 +14,7 @@ Comment[pt_BR]=Notificação do sistema
 Comment[ru]=Системное уведомление
 Comment[uk]=Системне сповіщення
 Comment[x-test]=xxSystem Notificationxx
+Comment[zh_TW]=系統通知
 
 [Event/DistUpgrade]
 Name=Upgrade Available
@@ -30,6 +31,7 @@ Name[pt_BR]=Atualização disponível
 Name[ru]=Доступно обновление дистрибутива
 Name[uk]=Доступне оновлення дистрибутива
 Name[x-test]=xxUpgrade Availablexx
+Name[zh_TW]=有可用的更新
 Comment=A new version of Kubuntu is available
 Comment[da]=En ny version af Kubuntu er tilgængelig
 Comment[en_GB]=A new version of Kubuntu is available
@@ -44,6 +46,7 @@ Comment[pt_BR]=Está disponível uma nova versão do Kubuntu
 Comment[ru]=Доступна новая версия Kubuntu
 Comment[uk]=Доступна нова версія Kubuntu
 Comment[x-test]=xxA new version of Kubuntu is availablexx
+Comment[zh_TW]=已經有新版本的 Kubuntu
 Action=Popup
 
 [Event/Update]
@@ -61,6 +64,7 @@ Name[pt_BR]=Atualizações disponíveis
 Name[ru]=Доступны обновления
 Name[uk]=Доступні оновлення
 Name[x-test]=xxUpdates Availablexx
+Name[zh_TW]=可用的更新
 Comment=Updates Available
 Comment[da]=Opdateringer tilgængelige
 Comment[en_GB]=Updates Available
@@ -75,5 +79,6 @@ Comment[pt_BR]=Atualizações disponíveis
 Comment[ru]=Доступны обновления
 Comment[uk]=Доступні оновлення
 Comment[x-test]=xxUpdates Availablexx
+Comment[zh_TW]=可用的更新
 Action=Popup
 

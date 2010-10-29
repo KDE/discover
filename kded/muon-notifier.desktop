@@ -13,6 +13,7 @@ Name[pt_BR]=Notificador do Muon
 Name[ru]=Уведомления Muon
 Name[uk]=Сповіщувач Muon
 Name[x-test]=xxMuon Notifierxx
+Name[zh_TW]=Muon 通知器
 Type=Service
 X-KDE-ServiceTypes=KDEDModule
 X-KDE-Library=muon-notifier
