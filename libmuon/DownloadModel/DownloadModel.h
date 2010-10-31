@@ -40,10 +40,10 @@ public:
     };
 
     explicit DownloadModel(QObject *parent = 0);
-    virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const;
-    virtual int columnCount(const QModelIndex& parent = QModelIndex()) const;
-    virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
+    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const;
+    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
 
 public Q_SLOTS:
     void updatePackageDetails(const QString &package, int percentage, const QString &URI,

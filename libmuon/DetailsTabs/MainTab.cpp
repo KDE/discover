@@ -201,6 +201,7 @@ void MainTab::refresh()
         m_cancelButton->hide();
     }
 
+    // If status changed
     if (state & (QApt::Package::ToInstall | QApt::Package::ToReInstall |
                  QApt::Package::ToUpgrade | QApt::Package::ToDowngrade |
                  QApt::Package::ToRemove  | QApt::Package::ToPurge)) {

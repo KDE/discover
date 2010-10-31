@@ -39,7 +39,6 @@
 VersionTab::VersionTab(QWidget *parent)
     : QWidget(parent)
     , m_package(0)
-    , m_versions()
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
     setLayout(layout);
@@ -100,7 +99,7 @@ void VersionTab::populateVersions()
 {
     QStringList availableVersions = m_package->availableVersions();
 
-    foreach(const QString & version, availableVersions) {
+    foreach(const QString &version, availableVersions) {
         QStringList split = version.split(' ');
         m_versions.append(split.at(0));
 
