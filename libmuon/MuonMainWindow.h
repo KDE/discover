@@ -53,14 +53,14 @@ class MuonMainWindow : public KXmlGuiWindow
 public:
     MuonMainWindow();
     virtual ~MuonMainWindow();
-    
+
     bool isConnected();
 
 protected:
     QApt::Backend *m_backend;
     QList<QVariantMap> m_warningStack;
     QList<QVariantMap> m_errorStack;
-    
+
     KAction *m_updateAction;
     KAction *m_undoAction;
     KAction *m_redoAction;
