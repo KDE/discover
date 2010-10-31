@@ -78,12 +78,13 @@ QVariant DownloadModel::headerData(int section, Qt::Orientation orientation, int
     }
 }
 
-void DownloadModel::updatePercentage(const QString &package, int percentage,
-                                     const QString &URI, double size, int status)
+void DownloadModel::updatePackageDetails(const QString &package, int percentage,
+                                         const QString &URI, double size, int status)
 {
     bool newPackage = true;
     for (int i = 0; i < m_packageList.size(); ++i) {
-        if (m_packageList[i].URI != URI) {
+        // URI should be unique
+        if (m_packageList.at(i).URI != URI) {
             continue;
         }
 

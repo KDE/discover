@@ -46,8 +46,8 @@ public:
     virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
 
 public Q_SLOTS:
-    void updatePercentage(const QString &package, int percentage, const QString &URI,
-                          double size, int flag);
+    void updatePackageDetails(const QString &package, int percentage, const QString &URI,
+                              double size, int flag);
 
 Q_SIGNALS:
     void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight);
