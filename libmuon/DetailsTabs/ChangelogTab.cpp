@@ -39,7 +39,6 @@
 ChangelogTab::ChangelogTab(QWidget *parent)
     : KVBox(parent)
     , m_package(0)
-    , m_changelogBrowser(0)
 {
     m_changelogBrowser = new KTextBrowser(this);
 

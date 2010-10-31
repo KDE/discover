@@ -35,8 +35,6 @@
 DependsTab::DependsTab(QWidget *parent)
     : KVBox(parent)
     , m_package(0)
-    , m_comboBox(0)
-    , m_dependsBrowser(0)
 {
     m_comboBox = new KComboBox(this);
     m_comboBox->addItem(i18nc("@item:inlistbox", "Dependencies of the Current Version"));
@@ -83,18 +81,12 @@ void DependsTab::populateDepends(int index)
             m_dependsBrowser->append(i18nc("@label", "This package does not have any dependencies"));
             return;
         }
-        foreach(const QString & string, list) {
-            m_dependsBrowser->append(string);
-        }
         break;
     case 1:
         list = m_package->dependencyList(true);
         if (list.isEmpty()) {
             m_dependsBrowser->append(i18nc("@label", "This package does not have any dependencies"));
             return;
-        }
-        foreach(const QString & string, list) {
-            m_dependsBrowser->append(string);
         }
         break;
     case 2:
@@ -103,9 +95,6 @@ void DependsTab::populateDepends(int index)
             m_dependsBrowser->append(i18nc("@label", "This package has no dependents. (Nothing depends on it.)"));
             return;
         }
-        foreach(const QString & string, list) {
-            m_dependsBrowser->append(string);
-        }
         break;
     case 3:
         list = m_package->providesList();
@@ -113,10 +102,11 @@ void DependsTab::populateDepends(int index)
             m_dependsBrowser->append(i18nc("@label", "This package does not provide any virtual packages"));
             return;
         }
-        foreach(const QString & string, list) {
-            m_dependsBrowser->append(string);
-        }
         break;
+    }
+
+    foreach(const QString &string, list) {
+            m_dependsBrowser->append(string);
     }
 
     QScrollBar *scrollBar = m_dependsBrowser->verticalScrollBar();
