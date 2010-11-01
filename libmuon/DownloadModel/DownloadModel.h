@@ -48,6 +48,7 @@ public:
 public Q_SLOTS:
     void updatePackageDetails(const QString &package, int percentage, const QString &URI,
                               double size, int flag);
+    void clear();
 
 Q_SIGNALS:
     void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight);

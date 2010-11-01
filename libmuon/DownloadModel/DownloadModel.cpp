@@ -114,6 +114,11 @@ void DownloadModel::updatePackageDetails(const QString &package, int percentage,
     return;
 }
 
+void DownloadModel::clear()
+{
+    m_packageList.clear();
+}
+
 int DownloadModel::rowCount(const QModelIndex& /*parent*/) const
 {
     return m_packageList.size();

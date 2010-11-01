@@ -85,7 +85,7 @@ DownloadWidget::~DownloadWidget()
 
 void DownloadWidget::clear()
 {
-    //m_downloadModel->clear();
+    m_downloadModel->clear();
     m_totalProgress->setValue(0);
 }
 
