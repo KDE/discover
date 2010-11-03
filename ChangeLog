@@ -1,26 +1,35 @@
 1.1:
 ====
 
-- Introducing the "muon-updater" program, an update-centric GUI
-- The download view has been revamped, now supporting per-item progress, 
-  as well as displaying the size for each item
-- Add a new "Residual Config" filter to the filters pane.
-  This filter shows packages that still have purgeable config files laying around.
-- Add a new "Installed (auto-removable)" filter to the filters pane.
-  This filter shows packages that were automatically installed that no longer
-  have any installed dependants. (Basically, what apt-get autoremove would show)
-- The Technical Details tab now displays the package's origin
-- Added a progress bar to Muon's statusbar to show Xapian indexing update progress.
-- Introducing an update notification KDED Module
-- Improved startup time
-- The contents of the "Installed Files" package tab are now sorted alphabetically
-- Implement sorting the package list by status and requested changes
-- Canonical-supported packages now have a K/Ubuntu emblem on the icon in the package view
-- A "Save Installed Packages List" feature has been added, allowing you to make a list of
-  all installed packages that can be read by Muon or Synaptic on another computer.
-- Add an option to configure whether or not a package's recommended packages are 
-  considered as dependencies.
-- Add an option to configure how often APT autocleans cached package files.
+- Features:
+  * Introducing the "muon-updater" program, an update-centric GUI
+  * The download view has been revamped, now supporting per-item progress,
+    as well as displaying the size for each item
+  * Add a new "Residual Config" filter to the filters pane. This filter shows packages
+    that still have purgeable config files laying around.
+  * Add a new "Installed (auto-removable)" filter to the filters pane. This filter shows
+    packages that were automatically installed that no longer have any installed
+    dependents. (Basically, what apt-get autoremove would show)
+  * The Technical Details tab now displays the package's origin
+  * Added a progress bar to Muon's statusbar to show Xapian indexing update progress.
+  * Added an update notifier
+  * Improved startup time
+  * The contents of the "Installed Files" package tab are now sorted alphabetically
+    (BKO: #253751)
+  * Implemented sorting the package list by status and by requested changes
+  * Canonical-supported packages now have a K/Ubuntu emblem on the icon in the package
+    view
+  * A "Save Installed Packages List" feature has been added, allowing you to make a list
+    of all installed packages that can be read by Muon or Synaptic on another computer.
+  * Added an option to configure whether or not a package's recommended packages are
+    considered as dependencies.
+  * Added an option to configure how often APT autocleans cached package files.
+  * Enable/disable the "update" and "apply" buttons based on network availability
+
+- Bugfixes:
+  * Spacing improvements in the details tabs.
+  * Disable the reinstall button for non-reinstallable items, such as non-downloadable
+    and/or locally-installed packages. (BKO: #254449)
 
 1.0:
 ====

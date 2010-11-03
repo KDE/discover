@@ -14,7 +14,7 @@ include_directories(${KDE4_INCLUDES} ${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR})
 
 add_subdirectory(libmuon)
 add_subdirectory(muon)
-add_subdirectory(installer)
+#add_subdirectory(installer)
 add_subdirectory(updater)
 add_subdirectory(kded)
 
