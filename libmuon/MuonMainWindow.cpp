@@ -210,7 +210,6 @@ void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args
         break;
     case QApt::CommitError: {
         m_errorStack.append(args);
-        reload();
         break;
     }
     case QApt::AuthError:
