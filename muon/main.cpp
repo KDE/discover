@@ -47,6 +47,8 @@ int main(int argc, char **argv)
 
     KUniqueApplication app;
     app.disableSessionManagement();
+    // Libmuon translations
+    KGlobal::locale()->insertCatalog("libmuon");
 
     MainWindow *mainWindow = new MainWindow;
     mainWindow->show();

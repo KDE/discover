@@ -29,11 +29,11 @@
 static const char description[] =
     I18N_NOOP("An application manager");
 
-static const char version[] = "1.0.1 \"Ambivalent Atraxi\"";
+static const char version[] = "1.0.60 \"Bullish Bandril\"";
 
 int main(int argc, char **argv)
 {
-    KAboutData about("muon-installer", "muon", ki18n("Muon Software Center"), version, ki18n(description),
+    KAboutData about("muon-installer", "muon-installer", ki18n("Muon Software Center"), version, ki18n(description),
                      KAboutData::License_GPL, ki18n("©2010 Jonathan Thomas"), KLocalizedString(), 0);
     about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
     about.setProgramIconName("applications-other");
@@ -46,7 +46,9 @@ int main(int argc, char **argv)
     }
 
     KUniqueApplication app;
+    // Translations from other templates
     KGlobal::locale()->insertCatalog("app-install-data");
+    KGlobal::locale()->insertCatalog("libmuon");
     app.disableSessionManagement();
 
     ApplicationWindow *mainWindow = new ApplicationWindow;
