@@ -109,7 +109,7 @@ void UpdateEvent::parseUpdateInfo()
 
     if (eqpos > 0) {
         QByteArray updatesString = line.left(eqpos);
-        QByteArray securityString = line.right(line.size() - eqpos -2);
+        QByteArray securityString = line.right(line.size() - eqpos -1);
 
         int numSecurityUpdates = securityString.toInt();
         int numUpdates = updatesString.toInt() - numSecurityUpdates;
