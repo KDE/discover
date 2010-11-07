@@ -96,23 +96,28 @@ void UpdateEvent::getUpdateInfo()
 {
     m_checkerProcess = new QProcess(this);
     connect(m_checkerProcess, SIGNAL(finished(int)), this, SLOT(parseUpdateInfo()));
-    m_checkerProcess->start("/usr/lib/update-notifier/apt-check",
-                            QStringList() << "--human-readable");
+    m_checkerProcess->start("/usr/lib/update-notifier/apt-check");
 }
 
 void UpdateEvent::parseUpdateInfo()
 {
-    QString updatesLine = m_checkerProcess->readLine();
-    QString securityLine = m_checkerProcess->readLine();
+    // Weirdly enough, apt-check gives output on stderr
+    QByteArray line = m_checkerProcess->readAllStandardError();
 
-    // In --human-readable the number of updates is the first word
-    QString updatesString = updatesLine.split(' ').at(0);
-    QString securityString = securityLine.split(' ').at(0);
+    // Format updates;security
+    int eqpos = line.indexOf(';');
 
-    int securityUpdates = securityString.toInt();
-    int updates = updatesString.toInt() - securityUpdates;
+    if (eqpos > 0) {
+        QByteArray updatesString = line.left(eqpos);
+        QByteArray securityString = line.right(line.size() - eqpos -2);
 
-    show(updates, securityUpdates);
+        int numSecurityUpdates = securityString.toInt();
+        int numUpdates = updatesString.toInt() - numSecurityUpdates;
+
+        show(numUpdates, numSecurityUpdates);
+    }
+
+    // ';' not found, apt-check broke :("
 }
 
 #include "UpdateEvent.moc"
