@@ -47,7 +47,6 @@ public:
     ~DetailsWidget();
 
 private:
-    QApt::Backend *m_backend;
     QApt::Package *m_package;
 
     MainTab *m_mainTab;

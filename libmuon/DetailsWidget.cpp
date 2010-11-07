@@ -41,7 +41,6 @@
 
 DetailsWidget::DetailsWidget(QWidget *parent)
     : KTabWidget(parent)
-    , m_backend(0)
     , m_package(0)
 {
     setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
