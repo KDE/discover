@@ -18,33 +18,43 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONVIEW_H
-#define APPLICATIONVIEW_H
+#ifndef APPLICATIONPROXYMODEL_H
+#define APPLICATIONPROXYMODEL_H
 
-#include <QtGui/QTreeView>
+#include <QtGui/QSortFilterProxyModel>
+#include <QtCore/QString>
 
-class ApplicationModel;
-class ApplicationProxyModel;
+#include <LibQApt/Package>
 
 namespace QApt {
     class Backend;
 }
 
-class ApplicationView : public QTreeView
+class Application;
+
+class ApplicationProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
 public:
-    ApplicationView(QWidget *parent);
-    ~ApplicationView();
+    explicit ApplicationProxyModel(QObject *parent);
+    ~ApplicationProxyModel();
+
+    void setBackend(QApt::Backend *backend);
+    void setStateFilter(QApt::Package::State state);
+    void setOriginFilter(const QString &origin);
+
+    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
+    Application *applicationAt(const QModelIndex &index) const;
+    void reset();
+
+protected:
+    bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
 
 private:
     QApt::Backend *m_backend;
-    ApplicationModel *m_appModel;
-    ApplicationProxyModel *m_proxyModel;
-
-public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
-    void reload();
+    QList<Application *> m_apps;
+    QApt::Package::State m_stateFilter;
+    QString m_originFilter;
 };
 
 #endif

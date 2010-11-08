@@ -40,6 +40,7 @@
 #include <LibQApt/Package>
 
 #include "ApplicationModel.h"
+#include "ApplicationProxyModel.h"
 
 #define FAV_ICON_SIZE 24
 #define EMBLEM_ICON_SIZE 8
@@ -253,7 +254,7 @@ void ApplicationDelegate::itemActivated(QModelIndex index)
         contractItem(m_oldIndex);
     }
 
-    Application *app = static_cast<const ApplicationModel*>(index.model())->applicationAt(index);
+    Application *app = static_cast<const ApplicationProxyModel*>(index.model())->applicationAt(index);
 
     QTreeView *view = static_cast<QTreeView*>(parent());
     m_extender = new QWidget(view);

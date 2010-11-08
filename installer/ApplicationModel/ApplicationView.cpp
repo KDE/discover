@@ -27,6 +27,7 @@
 #include <LibQApt/Backend>
 
 #include "ApplicationModel.h"
+#include "ApplicationProxyModel.h"
 #include "ApplicationDelegate.h"
 
 ApplicationView::ApplicationView(QWidget *parent)
@@ -38,9 +39,11 @@ ApplicationView::ApplicationView(QWidget *parent)
     setUniformRowHeights(true);
 
     m_appModel = new ApplicationModel(this);
+    m_proxyModel = new ApplicationProxyModel(this);
+    m_proxyModel->setSourceModel(m_appModel);
     ApplicationDelegate *delegate = new ApplicationDelegate(this);
 
-    setModel(m_appModel);
+    setModel(m_proxyModel);
     setItemDelegate(delegate);
 }
 
@@ -51,11 +54,18 @@ ApplicationView::~ApplicationView()
 void ApplicationView::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
+    setSortingEnabled(true);
+    m_proxyModel->setBackend(backend);
     reload();
+    sortByColumn(0, Qt::DescendingOrder);
 }
 
 void ApplicationView::reload()
 {
+    m_appModel->clear();
+    m_proxyModel->clear();
+    m_proxyModel->setSourceModel(0);
+
     QList<Application*> list;
     QList<int> popconScores;
     QDir appDir("/usr/share/app-install/desktop/");
@@ -74,6 +84,8 @@ void ApplicationView::reload()
     kDebug() << popconScores.last();
     m_appModel->setMaxPopcon(popconScores.last());
     m_appModel->setApplications(list);
+
+    m_proxyModel->setSourceModel(m_appModel);
 }
 
 #include "ApplicationView.moc"
