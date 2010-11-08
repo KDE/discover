@@ -36,9 +36,12 @@ Application::Application(const QString &fileName, QApt::Backend *backend)
         : m_fileName(fileName)
         , m_backend(backend)
         , m_package(0)
-        , m_isValid(true)
+        , m_isValid(false)
 {
     m_data = desktopContents();
+    if (!m_isValid) {
+        kDebug() << "Not valid" << m_fileName;
+    }
 }
 
 Application::Application(QApt::Package *package)
@@ -52,8 +55,9 @@ Application::~Application()
 
 QString Application::name()
 {
-    QString name = getField("Name");
+    QString name = getField("Name").trimmed();
     if (name.isEmpty()) {
+        kDebug() << m_fileName;
         return package()->name();
     }
 
@@ -140,6 +144,11 @@ QHash<QByteArray, QByteArray> Application::desktopContents()
             continue;
         }
 
+        // Looking for a group heading.
+        if (!m_isValid && line.startsWith('[') && line.contains(']')) {
+            m_isValid = true;
+        }
+
         QByteArray aKey;
         QByteArray aValue;
         int eqpos = line.indexOf('=');
@@ -156,10 +165,6 @@ QHash<QByteArray, QByteArray> Application::desktopContents()
         }
 
         lineIndex++;
-    }
-
-    if (contents.isEmpty()) {
-        m_isValid = false;
     }
 
     return contents;
