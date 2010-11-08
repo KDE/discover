@@ -100,5 +100,5 @@ bool ApplicationProxyModel::lessThan(const QModelIndex &left, const QModelIndex 
     QString leftString = left.data(ApplicationModel::NameRole).toString();
     QString rightString = right.data(ApplicationModel::NameRole).toString();
 
-    return leftString > rightString;
+    return leftString.toUpper() > rightString.toUpper();
 }
