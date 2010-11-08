@@ -18,39 +18,62 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "ApplicationWindow.h"
+#include "ApplicationView.h"
 
-#include <KUniqueApplication>
-#include <KAboutData>
-#include <KCmdLineArgs>
+#include <QtCore/QDir>
 
-#include <stdio.h>
+#include <KDebug>
 
-static const char description[] =
-    I18N_NOOP("An application manager");
+#include <LibQApt/Backend>
 
-static const char version[] = "1.0.1 \"Ambivalent Atraxi\"";
+#include "ApplicationModel.h"
+#include "ApplicationDelegate.h"
 
-int main(int argc, char **argv)
+ApplicationView::ApplicationView(QWidget *parent)
+        : QTreeView(parent)
 {
-    KAboutData about("muon-installer", "muon", ki18n("Muon Software Center"), version, ki18n(description),
-                     KAboutData::License_GPL, ki18n("©2010 Jonathan Thomas"), KLocalizedString(), 0);
-    about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
-    about.setProgramIconName("applications-other");
+    setAlternatingRowColors(true);
+    setHeaderHidden(true);
+    setRootIsDecorated(false);
+    setUniformRowHeights(true);
 
-    KCmdLineArgs::init(argc, argv, &about);
+    m_appModel = new ApplicationModel(this);
+    ApplicationDelegate *delegate = new ApplicationDelegate(this);
 
-    if (!KUniqueApplication::start()) {
-        fprintf(stderr, "Software Center is already running!\n");
-        return 0;
-    }
-
-    KUniqueApplication app;
-    KGlobal::locale()->insertCatalog("app-install-data");
-    app.disableSessionManagement();
-
-    ApplicationWindow *mainWindow = new ApplicationWindow;
-    mainWindow->show();
-
-    return app.exec();
+    setModel(m_appModel);
+    setItemDelegate(delegate);
 }
+
+ApplicationView::~ApplicationView()
+{
+}
+
+void ApplicationView::setBackend(QApt::Backend *backend)
+{
+    m_backend = backend;
+    reload();
+}
+
+void ApplicationView::reload()
+{
+    QList<Application*> list;
+    QList<int> popconScores;
+    QDir appDir("/usr/share/app-install/desktop/");
+    QStringList fileList = appDir.entryList(QDir::Files);
+    foreach(const QString &fileName, fileList) {
+        Application *app = new Application("/usr/share/app-install/desktop/" + fileName, m_backend);
+        if (app->isValid()) {
+            list << app;
+            popconScores << app->popconScore();
+        } else {
+            // Invalid .desktop file
+            kDebug() << fileName;
+        }
+    }
+    qSort(popconScores);
+    kDebug() << popconScores.last();
+    m_appModel->setMaxPopcon(popconScores.last());
+    m_appModel->setApplications(list);
+}
+
+#include "ApplicationView.moc"

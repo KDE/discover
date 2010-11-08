@@ -21,20 +21,18 @@
 #include "ApplicationWindow.h"
 
 // Qt includes
-#include <QtCore/QDir>
 #include <QStandardItemModel>
 #include <QtCore/QTimer>
 #include <QtGui/QSplitter>
-#include <QtGui/QTreeView>
-#include <KDebug>
 #include <KCategorizedSortFilterProxyModel>
+
+// KDE includes
+#include <KIcon>
 
 // Own includes
 #include "CategoryView.h"
 #include "OriginView.h"
-#include "Application.h"
-#include "ApplicationModel/ApplicationModel.h"
-#include "ApplicationModel/ApplicationDelegate.h"
+#include "ApplicationModel/ApplicationView.h"
 
 ApplicationWindow::ApplicationWindow()
     : MuonMainWindow()
@@ -65,41 +63,17 @@ void ApplicationWindow::initGUI()
             originView, SLOT(setBackend(QApt::Backend *)));
     m_mainWidget->addWidget(originView);
 
-    m_appView = new QTreeView(this);
-
-    m_appModel = new ApplicationModel(this);
-    ApplicationDelegate *delegate = new ApplicationDelegate(m_appView);
-    m_appView->setModel(m_appModel);
-    m_appView->setItemDelegate(delegate);
-    m_appView->setAlternatingRowColors(true);
-    m_appView->setRootIsDecorated(false);
-
+    m_appView = new ApplicationView(this);
     m_mainWidget->addWidget(m_appView);
 
+    connect(this, SIGNAL(backendReady(QApt::Backend *)),
+            m_appView, SLOT(setBackend(QApt::Backend *)));
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
             this, SLOT(reload()));
 }
 
 void ApplicationWindow::reload()
 {
-    QList<Application*> list;
-    QList<int> popconScores;
-    QDir appDir("/usr/share/app-install/desktop/");
-    QStringList fileList = appDir.entryList(QDir::Files);
-    foreach(const QString &fileName, fileList) {
-        Application *app = new Application("/usr/share/app-install/desktop/" + fileName, m_backend);
-        if (app->isValid()) {
-            list << app;
-            popconScores << app->popconScore();
-        } else {
-            kDebug() << fileName;
-        }
-    }
-    qSort(popconScores);
-    kDebug() << popconScores.last();
-    m_appModel->setMaxPopcon(popconScores.last());
-    m_appModel->setApplications(list);
-
     QStandardItemModel *categoryModel = new QStandardItemModel(this);
     QStandardItem *categoryItem = new QStandardItem;
     categoryItem->setText(i18n("Internet"));

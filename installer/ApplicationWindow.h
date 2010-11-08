@@ -27,7 +27,6 @@
 class QSplitter;
 class QTreeView;
 
-class ApplicationModel;
 class CategoryView;
 
 namespace QApt
@@ -46,7 +45,6 @@ private:
     QSplitter *m_mainWidget;
     CategoryView *m_categoryView;
     QTreeView *m_appView;
-    ApplicationModel *m_appModel;
     int m_powerInhibitor;
 
 private Q_SLOTS:

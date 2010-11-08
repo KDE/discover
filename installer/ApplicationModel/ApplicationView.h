@@ -18,39 +18,31 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "ApplicationWindow.h"
+#ifndef APPLICATIONVIEW_H
+#define APPLICATIONVIEW_H
 
-#include <KUniqueApplication>
-#include <KAboutData>
-#include <KCmdLineArgs>
+#include <QtGui/QTreeView>
 
-#include <stdio.h>
+class ApplicationModel;
 
-static const char description[] =
-    I18N_NOOP("An application manager");
-
-static const char version[] = "1.0.1 \"Ambivalent Atraxi\"";
-
-int main(int argc, char **argv)
-{
-    KAboutData about("muon-installer", "muon", ki18n("Muon Software Center"), version, ki18n(description),
-                     KAboutData::License_GPL, ki18n("©2010 Jonathan Thomas"), KLocalizedString(), 0);
-    about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
-    about.setProgramIconName("applications-other");
-
-    KCmdLineArgs::init(argc, argv, &about);
-
-    if (!KUniqueApplication::start()) {
-        fprintf(stderr, "Software Center is already running!\n");
-        return 0;
-    }
-
-    KUniqueApplication app;
-    KGlobal::locale()->insertCatalog("app-install-data");
-    app.disableSessionManagement();
-
-    ApplicationWindow *mainWindow = new ApplicationWindow;
-    mainWindow->show();
-
-    return app.exec();
+namespace QApt {
+    class Backend;
 }
+
+class ApplicationView : public QTreeView
+{
+    Q_OBJECT
+public:
+    ApplicationView(QWidget *parent);
+    ~ApplicationView();
+
+private:
+    QApt::Backend *m_backend;
+    ApplicationModel *m_appModel;
+
+public Q_SLOTS:
+    void setBackend(QApt::Backend *backend);
+    void reload();
+};
+
+#endif

@@ -4,6 +4,7 @@ set(muon_installer_SRCS
     ApplicationWindow.cpp
     ApplicationModel/ApplicationModel.cpp
     ApplicationModel/ApplicationDelegate.cpp
+    ApplicationModel/ApplicationView.cpp
     CategoryView.cpp
     CategoryDrawer.cpp
     OriginView.cpp)
