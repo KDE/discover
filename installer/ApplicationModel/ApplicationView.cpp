@@ -88,4 +88,14 @@ void ApplicationView::reload()
     m_proxyModel->setSourceModel(m_appModel);
 }
 
+void ApplicationView::setStateFilter(QApt::Package::State state)
+{
+    m_proxyModel->setStateFilter(state);
+}
+
+void ApplicationView::setOriginFilter(const QString &origin)
+{
+    m_proxyModel->setOriginFilter(origin);
+}
+
 #include "ApplicationView.moc"

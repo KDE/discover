@@ -23,6 +23,8 @@
 
 #include <QtGui/QTreeView>
 
+#include <LibQApt/Package>
+
 class ApplicationModel;
 class ApplicationProxyModel;
 
@@ -45,6 +47,8 @@ private:
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void reload();
+    void setStateFilter(QApt::Package::State state);
+    void setOriginFilter(const QString &origin);
 };
 
 #endif

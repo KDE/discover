@@ -37,9 +37,6 @@ OriginView::OriginView(QWidget *parent)
     setIconSize(QSize(24,24));
 
     m_originModel = new QStandardItemModel;
-    connect(this, SIGNAL(activated(const QModelIndex &)),
-            this, SLOT(originActivated(const QModelIndex &)));
-
 }
 
 OriginView::~OriginView()
