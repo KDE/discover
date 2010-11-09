@@ -141,31 +141,37 @@ void FilterWidget::populateStatuses()
     installedItem->setEditable(false);
     installedItem->setIcon(KIcon("download"));
     installedItem->setText(m_strings->packageStateName(QApt::Package::Installed));
+    installedItem->setData(QApt::Package::Installed);
 
     QStandardItem *notInstalledItem = new QStandardItem;
     notInstalledItem->setEditable(false);
     notInstalledItem->setIcon(KIcon("application-x-deb"));
     notInstalledItem->setText(m_strings->packageStateName(QApt::Package::NotInstalled));
+    notInstalledItem->setData(QApt::Package::NotInstalled);
 
     QStandardItem *upgradeableItem = new QStandardItem;
     upgradeableItem->setEditable(false);
     upgradeableItem->setIcon(KIcon("system-software-update"));
     upgradeableItem->setText(m_strings->packageStateName(QApt::Package::Upgradeable));
+    upgradeableItem->setData(QApt::Package::Upgradeable);
 
     QStandardItem *brokenItem = new QStandardItem;
     brokenItem->setEditable(false);
     brokenItem->setIcon(KIcon("dialog-cancel"));
     brokenItem->setText(m_strings->packageStateName(QApt::Package::NowBroken));
+    brokenItem->setData(QApt::Package::NowBroken);
 
     QStandardItem *purgeableItem = new QStandardItem;
     purgeableItem->setEditable(false);
     purgeableItem->setIcon(KIcon("user-trash-full"));
     purgeableItem->setText(m_strings->packageStateName(QApt::Package::ResidualConfig));
+    purgeableItem->setData(QApt::Package::ResidualConfig);
 
     QStandardItem *autoRemoveItem = new QStandardItem;
     autoRemoveItem->setEditable(false);
     autoRemoveItem->setIcon(KIcon("archive-remove"));
     autoRemoveItem->setText(m_strings->packageStateName(QApt::Package::IsGarbage));
+    autoRemoveItem->setData(QApt::Package::IsGarbage);
 
     m_statusModel->appendRow(defaultItem);
     m_statusModel->appendRow(installedItem);
@@ -202,8 +208,8 @@ void FilterWidget::categoryActivated(const QModelIndex &index)
 
 void FilterWidget::statusActivated(const QModelIndex &index)
 {
-    QString statusName = index.data(Qt::DisplayRole).toString();
-    emit filterByStatus(statusName);
+    QApt::Package::State state = (QApt::Package::State)index.data(Qt::UserRole+1).toInt();
+    emit filterByStatus(state);
 }
 
 void FilterWidget::originActivated(const QModelIndex &index)

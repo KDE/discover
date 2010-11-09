@@ -23,6 +23,8 @@
 
 #include <QModelIndex>
 
+#include <LibQApt/Package>
+
 #include "../libmuon/PackageModel/PackageWidget.h"
 
 class QTimer;
@@ -46,7 +48,7 @@ private:
 public Q_SLOTS:
     void reload();
     void filterByGroup(const QString &groupName);
-    void filterByStatus(const QString &statusName);
+    void filterByStatus(const QApt::Package::State state);
     void filterByOrigin(const QString &originName);
 };
 

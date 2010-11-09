@@ -25,6 +25,8 @@
 #include <QtCore/QModelIndex>
 #include <QtGui/QDockWidget>
 
+#include <LibQApt/Package>
+
 class QAbstractItemView;
 class QDockWidget;
 class QListView;
@@ -78,7 +80,7 @@ private Q_SLOTS:
 
 signals:
     void filterByGroup(const QString &groupName);
-    void filterByStatus(const QString &statusName);
+    void filterByStatus(const QApt::Package::State state);
     void filterByOrigin(const QString &originName);
 };
 

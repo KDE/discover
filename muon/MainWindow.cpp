@@ -96,8 +96,8 @@ void MainWindow::initGUI()
             m_filterBox, SLOT(setBackend(QApt::Backend *)));
     connect(m_filterBox, SIGNAL(filterByGroup(const QString &)),
             m_managerWidget, SLOT(filterByGroup(const QString &)));
-    connect(m_filterBox, SIGNAL(filterByStatus(const QString &)),
-            m_managerWidget, SLOT(filterByStatus(const QString &)));
+    connect(m_filterBox, SIGNAL(filterByStatus(const QApt::Package::State)),
+            m_managerWidget, SLOT(filterByStatus(const QApt::Package::State)));
     connect(m_filterBox, SIGNAL(filterByOrigin(const QString &)),
             m_managerWidget, SLOT(filterByOrigin(const QString &)));
 

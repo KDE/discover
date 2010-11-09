@@ -83,9 +83,8 @@ void ManagerWidget::filterByGroup(const QString &groupName)
     m_proxyModel->setGroupFilter(groupKey);
 }
 
-void ManagerWidget::filterByStatus(const QString &statusName)
+void ManagerWidget::filterByStatus(const QApt::Package::State state)
 {
-    QApt::Package::State state = m_strings->packageStateKey(statusName);
     m_proxyModel->setStateFilter(state);
 }
 
