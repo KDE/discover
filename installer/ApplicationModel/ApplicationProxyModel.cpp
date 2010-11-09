@@ -90,7 +90,7 @@ Application *ApplicationProxyModel::applicationAt(const QModelIndex &index) cons
 void ApplicationProxyModel::reset()
 {
     beginRemoveRows(QModelIndex(), 0, m_apps.size());
-    m_apps =  static_cast<ApplicationModel *>(sourceModel())->applications();
+    m_apps = static_cast<ApplicationModel *>(sourceModel())->applications();
     endRemoveRows();
     invalidate();
 }

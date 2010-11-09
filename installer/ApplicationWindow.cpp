@@ -61,6 +61,8 @@ void ApplicationWindow::initGUI()
     OriginView *originView = new OriginView(this);
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
             originView, SLOT(setBackend(QApt::Backend *)));
+//     connect(originView, SIGNAL(activated(const QModelIndex &)),
+//            m_mainView, SIGNAL(changeView(const QModelIndex &)));
     m_mainWidget->addWidget(originView);
 
     m_appView = new ApplicationView(this);
