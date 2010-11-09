@@ -57,7 +57,7 @@ void ApplicationView::setBackend(QApt::Backend *backend)
     setSortingEnabled(true);
     m_proxyModel->setBackend(backend);
     reload();
-    sortByColumn(0, Qt::DescendingOrder);
+    sortByColumn(0, Qt::AscendingOrder);
 }
 
 void ApplicationView::reload()
