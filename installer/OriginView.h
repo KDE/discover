@@ -49,6 +49,10 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void populateOrigins();
+    void emitActivated(const QModelIndex &index);
+
+Q_SIGNALS:
+    void activated(int index);
 };
 
 #endif

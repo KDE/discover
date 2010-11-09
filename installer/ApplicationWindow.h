@@ -24,9 +24,12 @@
 // Own includes
 #include "../libmuon/MuonMainWindow.h"
 
+class QModelIndex;
 class QSplitter;
+class QStackedWidget;
 class QTreeView;
 
+class ApplicationView;
 class CategoryView;
 
 namespace QApt
@@ -43,13 +46,14 @@ public:
 
 private:
     QSplitter *m_mainWidget;
-    CategoryView *m_categoryView;
-    QTreeView *m_appView;
+    QStackedWidget *m_mainView;
+    ApplicationView *m_appView;
     int m_powerInhibitor;
 
 private Q_SLOTS:
     void initGUI();
     void reload();
+    void changeView(const QModelIndex &index);
 };
 
 #endif

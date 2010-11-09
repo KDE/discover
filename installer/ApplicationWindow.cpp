@@ -21,13 +21,13 @@
 #include "ApplicationWindow.h"
 
 // Qt includes
-#include <QStandardItemModel>
 #include <QtCore/QTimer>
 #include <QtGui/QSplitter>
-#include <KCategorizedSortFilterProxyModel>
+#include <QtGui/QStackedWidget>
 
 // KDE includes
 #include <KIcon>
+#include <KDebug>
 
 // Own includes
 #include "CategoryView.h"
@@ -55,14 +55,14 @@ void ApplicationWindow::initGUI()
     connect(m_mainWidget, SIGNAL(splitterMoved(int, int)), this, SLOT(saveSplitterSizes()));
     setCentralWidget(m_mainWidget);
 
-    m_categoryView = new CategoryView(this);
-    m_mainWidget->addWidget(m_categoryView);
+    m_mainView = new QStackedWidget(this);
+    m_mainWidget->addWidget(m_mainView);
 
     OriginView *originView = new OriginView(this);
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
             originView, SLOT(setBackend(QApt::Backend *)));
-//     connect(originView, SIGNAL(activated(const QModelIndex &)),
-//            m_mainView, SIGNAL(changeView(const QModelIndex &)));
+    connect(originView, SIGNAL(activated(const QModelIndex &)),
+           this, SLOT(changeView(const QModelIndex &)));
     m_mainWidget->addWidget(originView);
 
     m_appView = new ApplicationView(this);
@@ -76,18 +76,11 @@ void ApplicationWindow::initGUI()
 
 void ApplicationWindow::reload()
 {
-    QStandardItemModel *categoryModel = new QStandardItemModel(this);
-    QStandardItem *categoryItem = new QStandardItem;
-    categoryItem->setText(i18n("Internet"));
-    categoryItem->setIcon(KIcon("applications-internet"));
-    categoryItem->setData(i18n("Groups"), KCategorizedSortFilterProxyModel::CategoryDisplayRole);
-    categoryModel->appendRow(categoryItem);
+}
 
-    KCategorizedSortFilterProxyModel *proxy = new KCategorizedSortFilterProxyModel(this);
-    proxy->setSourceModel(categoryModel);
-    proxy->setCategorizedModel(true);
-    proxy->sort(0);
-    m_categoryView->setModel(proxy);
+void ApplicationWindow::changeView(const QModelIndex &index)
+{
+    kDebug() << index;
 }
 
 #include "ApplicationWindow.moc"

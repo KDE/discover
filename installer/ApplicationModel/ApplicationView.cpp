@@ -21,6 +21,7 @@
 #include "ApplicationView.h"
 
 #include <QtCore/QDir>
+#include <QtGui/QTreeView>
 
 #include <KDebug>
 
@@ -31,20 +32,20 @@
 #include "ApplicationDelegate.h"
 
 ApplicationView::ApplicationView(QWidget *parent)
-        : QTreeView(parent)
+        : KVBox(parent)
 {
-    setAlternatingRowColors(true);
-    setHeaderHidden(true);
-    setRootIsDecorated(false);
-    setUniformRowHeights(true);
+    m_treeView = new QTreeView(this);
+    m_treeView->setAlternatingRowColors(true);
+    m_treeView->setHeaderHidden(true);
+    m_treeView->setRootIsDecorated(false);
 
     m_appModel = new ApplicationModel(this);
     m_proxyModel = new ApplicationProxyModel(this);
     m_proxyModel->setSourceModel(m_appModel);
-    ApplicationDelegate *delegate = new ApplicationDelegate(this);
+    ApplicationDelegate *delegate = new ApplicationDelegate(m_treeView);
 
-    setModel(m_proxyModel);
-    setItemDelegate(delegate);
+    m_treeView->setModel(m_proxyModel);
+    m_treeView->setItemDelegate(delegate);
 }
 
 ApplicationView::~ApplicationView()
@@ -54,10 +55,10 @@ ApplicationView::~ApplicationView()
 void ApplicationView::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
-    setSortingEnabled(true);
+    m_treeView->setSortingEnabled(true);
     m_proxyModel->setBackend(backend);
     reload();
-    sortByColumn(0, Qt::AscendingOrder);
+    m_treeView->sortByColumn(0, Qt::AscendingOrder);
 }
 
 void ApplicationView::reload()

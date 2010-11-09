@@ -21,9 +21,11 @@
 #ifndef APPLICATIONVIEW_H
 #define APPLICATIONVIEW_H
 
-#include <QtGui/QTreeView>
+#include <KVBox>
 
 #include <LibQApt/Package>
+
+class QTreeView;
 
 class ApplicationModel;
 class ApplicationProxyModel;
@@ -32,7 +34,7 @@ namespace QApt {
     class Backend;
 }
 
-class ApplicationView : public QTreeView
+class ApplicationView : public KVBox
 {
     Q_OBJECT
 public:
@@ -43,6 +45,8 @@ private:
     QApt::Backend *m_backend;
     ApplicationModel *m_appModel;
     ApplicationProxyModel *m_proxyModel;
+
+    QTreeView *m_treeView;
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
