@@ -193,8 +193,3 @@ QString MuonStrings::packageStateName(QApt::Package::State state) const
 {
     return m_stateHash.value(state);
 }
-
-QApt::Package::State MuonStrings::packageStateKey(const QString &text) const
-{
-    return (QApt::Package::State)m_stateHash.key(text);
-}

@@ -35,7 +35,6 @@ public:
     QString groupName(const QString &name) const;
     QString groupKey(const QString &text) const;
     QString packageStateName(QApt::Package::State state) const;
-    QApt::Package::State packageStateKey(const QString &text) const;
 
 private:
     const QHash<QString, QString> m_groupHash;
