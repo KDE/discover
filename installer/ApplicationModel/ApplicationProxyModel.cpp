@@ -40,7 +40,6 @@ void ApplicationProxyModel::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
     m_apps = static_cast<ApplicationModel *>(sourceModel())->applications();
-    kDebug() << m_apps.size();
 }
 
 void ApplicationProxyModel::setStateFilter(QApt::Package::State state)
@@ -57,10 +56,10 @@ void ApplicationProxyModel::setOriginFilter(const QString &origin)
 
 bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
-    Application *application = static_cast<ApplicationModel *>(sourceModel())->applicationAt(sourceModel()->index(sourceRow, 1, sourceParent));
-
+    Application *application = static_cast<ApplicationModel *>(sourceModel())->applicationAt(sourceModel()->index(sourceRow, 0, sourceParent));
     //We have a package as internal pointer
-    if (!application) {
+    if (!application || !application->package()) {
+        kDebug() << "no application";
         return false;
     }
 
@@ -92,6 +91,12 @@ void ApplicationProxyModel::reset()
     beginRemoveRows(QModelIndex(), 0, m_apps.size());
     m_apps = static_cast<ApplicationModel *>(sourceModel())->applications();
     endRemoveRows();
+    invalidate();
+}
+
+void ApplicationProxyModel::parentDataChanged()
+{
+    m_apps = static_cast<ApplicationModel *>(sourceModel())->applications();
     invalidate();
 }
 

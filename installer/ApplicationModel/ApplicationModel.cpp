@@ -24,6 +24,7 @@
 #include <KDebug>
 #include <KLocale>
 #include <KExtendableItemDelegate>
+#include <KDebug>
 
 #include <LibQApt/Package>
 
@@ -84,6 +85,7 @@ void ApplicationModel::setApplications(const QList<Application*> &list)
 #endif
     beginInsertRows(QModelIndex(), m_apps.count(), m_apps.count());
     m_apps = list;
+    emit dataChanged();
     endInsertRows();
 }
 

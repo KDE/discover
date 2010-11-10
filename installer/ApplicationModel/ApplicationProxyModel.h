@@ -55,6 +55,9 @@ private:
     QList<Application *> m_apps;
     QApt::Package::State m_stateFilter;
     QString m_originFilter;
+
+public Q_SLOTS:
+    void parentDataChanged();
 };
 
 #endif

@@ -18,41 +18,18 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef ORIGINVIEW_H
-#define ORIGINVIEW_H
-
-// We must spread the word of Origin. Hallowed be the Ori! ;P
+#ifndef VIEWSWITCHER_H
+#define VIEWSWITCHER_H
 
 // Qt includes
-#include <QStandardItemModel>
 #include <QtGui/QTreeView>
 
-namespace QApt
-{
-    class Backend;
-}
-
-class OriginView : public QTreeView
+class ViewSwitcher : public QTreeView
 {
     Q_OBJECT
 public:
-    explicit OriginView(QWidget *parent);
-    ~OriginView();
-
-private:
-    QApt::Backend *m_backend;
-
-    QStandardItemModel *m_originModel;
-
-public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
-
-private Q_SLOTS:
-    void populateOrigins();
-    void emitActivated(const QModelIndex &index);
-
-Q_SIGNALS:
-    void activated(int index);
+    explicit ViewSwitcher(QWidget *parent);
+    ~ViewSwitcher();
 };
 
 #endif

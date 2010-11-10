@@ -9,7 +9,7 @@ set(muon_installer_SRCS
     AvailableView.cpp
     CategoryView.cpp
     CategoryDrawer.cpp
-    OriginView.cpp)
+    ViewSwitcher.cpp)
 
 kde4_add_executable(muon-installer ${muon_installer_SRCS})
 

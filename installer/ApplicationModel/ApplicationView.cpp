@@ -20,9 +20,11 @@
 
 #include "ApplicationView.h"
 
-#include <QtCore/QDir>
+#include <QApplication>
 #include <QtGui/QTreeView>
 
+#include <KPixmapSequence>
+#include <KPixmapSequenceOverlayPainter>
 #include <KDebug>
 
 #include <LibQApt/Backend>
@@ -30,21 +32,23 @@
 #include "ApplicationModel.h"
 #include "ApplicationProxyModel.h"
 #include "ApplicationDelegate.h"
+#include "../ApplicationWindow.h"
 
-ApplicationView::ApplicationView(QWidget *parent)
+ApplicationView::ApplicationView(ApplicationWindow *parent)
         : KVBox(parent)
+        , m_parent(parent)
 {
+    m_appModel = new ApplicationModel(this);
+    m_proxyModel = new ApplicationProxyModel(this);
+    m_proxyModel->setSourceModel(m_appModel);
+
     m_treeView = new QTreeView(this);
     m_treeView->setAlternatingRowColors(true);
     m_treeView->setHeaderHidden(true);
     m_treeView->setRootIsDecorated(false);
 
-    m_appModel = new ApplicationModel(this);
-    m_proxyModel = new ApplicationProxyModel(this);
-    m_proxyModel->setSourceModel(m_appModel);
-    ApplicationDelegate *delegate = new ApplicationDelegate(m_treeView);
-
     m_treeView->setModel(m_proxyModel);
+    ApplicationDelegate *delegate = new ApplicationDelegate(m_treeView);
     m_treeView->setItemDelegate(delegate);
 }
 
@@ -55,38 +59,26 @@ ApplicationView::~ApplicationView()
 void ApplicationView::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
-    m_treeView->setSortingEnabled(true);
+    m_appModel->setMaxPopcon(m_parent->maxPopconScore());
+    m_appModel->setApplications(m_parent->applicationList());
     m_proxyModel->setBackend(backend);
-    reload();
+    m_treeView->setSortingEnabled(true);
     m_treeView->sortByColumn(0, Qt::AscendingOrder);
 }
 
 void ApplicationView::reload()
 {
     m_appModel->clear();
+    m_proxyModel->invalidate();
     m_proxyModel->clear();
     m_proxyModel->setSourceModel(0);
 
-    QList<Application*> list;
-    QList<int> popconScores;
-    QDir appDir("/usr/share/app-install/desktop/");
-    QStringList fileList = appDir.entryList(QDir::Files);
-    foreach(const QString &fileName, fileList) {
-        Application *app = new Application("/usr/share/app-install/desktop/" + fileName, m_backend);
-        if (app->isValid()) {
-            list << app;
-            popconScores << app->popconScore();
-        } else {
-            // Invalid .desktop file
-            kDebug() << fileName;
-        }
-    }
-    qSort(popconScores);
-    kDebug() << popconScores.last();
-    m_appModel->setMaxPopcon(popconScores.last());
-    m_appModel->setApplications(list);
+    m_appModel->setMaxPopcon(m_parent->maxPopconScore());
+    m_appModel->setApplications(m_parent->applicationList());
 
     m_proxyModel->setSourceModel(m_appModel);
+    m_proxyModel->parentDataChanged();
+    m_treeView->sortByColumn(0, Qt::AscendingOrder);
 }
 
 void ApplicationView::setStateFilter(QApt::Package::State state)

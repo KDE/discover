@@ -27,15 +27,36 @@
 class QModelIndex;
 class QSplitter;
 class QStackedWidget;
+class QStandardItemModel;
 class QTreeView;
 
-class ApplicationView;
-class CategoryView;
+class Application;
+class ViewSwitcher;
 
 namespace QApt
 {
     class Backend;
 }
+
+enum ViewModelRole {
+    /// A role for storing ViewType
+    ViewTypeRole = Qt::UserRole + 1,
+    /// A role for storing origin filter data
+    OriginFilterRole = Qt::UserRole + 2,
+    /// A role for storing state filter data
+    StateFilterRole = Qt::UserRole + 3
+};
+
+enum ViewType {
+   /// An invalid value
+   InvalidView = 0,
+   /// A simple ApplicationView that is filterable by status or origin
+   AppView = 1,
+   /// An ApplicationView that has a Categorical homepage
+   CatView = 2,
+   /// A view for showing history
+   HistoryView = 3
+};
 
 class ApplicationWindow : public MuonMainWindow
 {
@@ -44,15 +65,25 @@ public:
     ApplicationWindow();
     virtual ~ApplicationWindow();
 
+    int maxPopconScore() const;
+    QList<Application *> applicationList() const;
+
 private:
     QSplitter *m_mainWidget;
-    QStackedWidget *m_mainView;
-    ApplicationView *m_appView;
+    QStackedWidget *m_viewStack;
+    ViewSwitcher *m_viewSwitcher;
+    QStandardItemModel *m_viewModel;
+    QHash<QModelIndex, QWidget *> m_viewHash;
+
     int m_powerInhibitor;
+    QList<Application *> m_appList;
+    int m_maxPopconScore;
 
 private Q_SLOTS:
     void initGUI();
     void reload();
+    void populateAppList();
+    void populateViews();
     void changeView(const QModelIndex &index);
 };
 

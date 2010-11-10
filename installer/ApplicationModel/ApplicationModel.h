@@ -48,11 +48,14 @@ public:
     void setMaxPopcon(int popconScore);
     void clear();
     Application *applicationAt(const QModelIndex &index) const;
-    QList<Application*> applications() const;
+    QList<Application *> applications() const;
 
 private:
-    QList<Application*> m_apps;
+    QList<Application *> m_apps;
     int m_maxPopcon;
+
+Q_SIGNALS:
+   void dataChanged();
 };
 
 #endif

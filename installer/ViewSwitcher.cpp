@@ -18,46 +18,26 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONVIEW_H
-#define APPLICATIONVIEW_H
+#include "ViewSwitcher.h"
 
-#include <KVBox>
+// KDE includes
+#include <KIcon>
+#include <KLocale>
+#include <KDebug>
 
-#include <LibQApt/Package>
+// LibQApt includes
+#include <LibQApt/Backend>
 
-class QTreeView;
-
-class KPixmapSequenceOverlayPainter;
-
-class ApplicationModel;
-class ApplicationProxyModel;
-class ApplicationWindow;
-
-namespace QApt {
-    class Backend;
+ViewSwitcher::ViewSwitcher(QWidget *parent)
+    : QTreeView(parent)
+{
+    setHeaderHidden(true);
+    setUniformRowHeights(true);
+    setIconSize(QSize(24,24));
 }
 
-class ApplicationView : public KVBox
+ViewSwitcher::~ViewSwitcher()
 {
-    Q_OBJECT
-public:
-    ApplicationView(ApplicationWindow *parent);
-    ~ApplicationView();
+}
 
-private:
-    QApt::Backend *m_backend;
-    ApplicationWindow *m_parent;
-    ApplicationModel *m_appModel;
-    ApplicationProxyModel *m_proxyModel;
-
-    QTreeView *m_treeView;
-    KPixmapSequenceOverlayPainter *m_busyWidget;
-
-public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
-    void reload();
-    void setStateFilter(QApt::Package::State state);
-    void setOriginFilter(const QString &origin);
-};
-
-#endif
+#include "ViewSwitcher.moc"

@@ -21,6 +21,8 @@
 #include "ApplicationWindow.h"
 
 // Qt includes
+#include <QStandardItemModel>
+#include <QtCore/QDir>
 #include <QtCore/QTimer>
 #include <QtGui/QSplitter>
 #include <QtGui/QStackedWidget>
@@ -29,9 +31,12 @@
 #include <KIcon>
 #include <KDebug>
 
+#include <LibQApt/Backend>
+
 // Own includes
+#include "Application.h"
 #include "CategoryView.h"
-#include "OriginView.h"
+#include "ViewSwitcher.h"
 #include "ApplicationModel/ApplicationView.h"
 
 ApplicationWindow::ApplicationWindow()
@@ -55,32 +60,189 @@ void ApplicationWindow::initGUI()
     connect(m_mainWidget, SIGNAL(splitterMoved(int, int)), this, SLOT(saveSplitterSizes()));
     setCentralWidget(m_mainWidget);
 
-    m_mainView = new QStackedWidget(this);
-    m_mainWidget->addWidget(m_mainView);
-
-    OriginView *originView = new OriginView(this);
-    connect(this, SIGNAL(backendReady(QApt::Backend *)),
-            originView, SLOT(setBackend(QApt::Backend *)));
-    connect(originView, SIGNAL(activated(const QModelIndex &)),
+    // Set up the navigational sidebar on the right
+    m_viewSwitcher = new ViewSwitcher(this);
+    connect(m_viewSwitcher, SIGNAL(activated(const QModelIndex &)),
            this, SLOT(changeView(const QModelIndex &)));
-    m_mainWidget->addWidget(originView);
+    m_mainWidget->addWidget(m_viewSwitcher);
 
-    m_appView = new ApplicationView(this);
-    m_mainWidget->addWidget(m_appView);
+    // Set up the main pane
+    m_viewStack = new QStackedWidget(this);
+    m_mainWidget->addWidget(m_viewStack);
 
-    connect(this, SIGNAL(backendReady(QApt::Backend *)),
-            m_appView, SLOT(setBackend(QApt::Backend *)));
+    m_viewModel = new QStandardItemModel(this);
+    m_viewSwitcher->setModel(m_viewModel);
+
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
             this, SLOT(reload()));
 }
 
 void ApplicationWindow::reload()
 {
+    populateAppList();
+    populateViews();
+}
+
+void ApplicationWindow::populateAppList()
+{
+    qDeleteAll(m_appList);
+    QList<int> popconScores;
+    QDir appDir("/usr/share/app-install/desktop/");
+    QStringList fileList = appDir.entryList(QDir::Files);
+    foreach(const QString &fileName, fileList) {
+        Application *app = new Application("/usr/share/app-install/desktop/" + fileName, m_backend);
+        if (app->isValid()) {
+            m_appList << app;
+            popconScores << app->popconScore();
+        } else {
+            // Invalid .desktop file
+            // kDebug() << fileName;
+        }
+    }
+    qSort(popconScores);
+
+    m_maxPopconScore = popconScores.last();
+}
+
+void ApplicationWindow::populateViews()
+{
+    m_viewHash.clear();
+
+    QStringList originLabels = m_backend->originLabels();
+    QStringList originNames;
+    foreach (const QString &originLabel, originLabels) {
+        originNames << m_backend->origin(originLabel);
+    }
+
+    if (originNames.contains("Ubuntu")) {
+        int index = originNames.indexOf("Ubuntu");
+        originNames.move(index, 0); // Move to front of the list
+    }
+
+    if (originNames.contains("Canonical")) {
+        int index = originNames.indexOf("Canonical");
+        originNames.move(index, 1); // Move to 2nd spot
+    }
+
+    QStandardItem *parentItem = m_viewModel->invisibleRootItem();
+
+    QStandardItem *availableItem = new QStandardItem;
+    availableItem->setEditable(false);
+    availableItem->setIcon(KIcon("applications-other").pixmap(32,32));
+    availableItem->setText(i18nc("@item:inlistbox Parent item for available software", "Get Software"));
+    availableItem->setData(CatView, ViewTypeRole);
+    parentItem->appendRow(availableItem);
+    m_viewHash[availableItem->index()] = 0;
+
+    QStandardItem *installedItem = new QStandardItem;
+    installedItem->setEditable(false);
+    installedItem->setIcon(KIcon("computer"));
+    installedItem->setText(i18nc("@item:inlistbox Parent item for installed software", "Installed Software"));
+    installedItem->setData(AppView, ViewTypeRole);
+    installedItem->setData(QApt::Package::Installed, StateFilterRole);
+    parentItem->appendRow(installedItem);
+    m_viewHash[installedItem->index()] = 0;
+
+    parentItem = availableItem;
+    foreach(const QString &originName, originNames) {
+        QString originLabel = m_backend->originLabel(originName);
+        QStandardItem *viewItem = new QStandardItem;
+        viewItem->setEditable(false);
+        viewItem->setText(originLabel);
+        viewItem->setData(originName, OriginFilterRole);
+        viewItem->setData(AppView, ViewTypeRole);
+
+        if (originName == "Ubuntu") {
+            viewItem->setText(i18n("Provided by Kubuntu"));
+            viewItem->setIcon(KIcon("ubuntu-logo"));
+        }
+
+        if (originName == "Canonical") {
+            viewItem->setText(i18n("Canonical Partners"));
+            viewItem->setIcon(KIcon("partner"));
+        }
+
+        if (originName.startsWith(QLatin1String("LP-PPA"))) {
+            viewItem->setIcon(KIcon("user-identity"));
+        }
+
+        availableItem->appendRow(viewItem);
+        m_viewHash[viewItem->index()] = 0;
+    }
+
+    parentItem = installedItem;
+    foreach(const QString & originName, originNames) {
+        // We must spread the word of Origin. Hallowed are the Ori! ;P
+        QString originLabel = m_backend->originLabel(originName);
+        QStandardItem *viewItem = new QStandardItem;
+        viewItem->setEditable(false);
+        viewItem->setText(originLabel);
+        viewItem->setData(QApt::Package::Installed, StateFilterRole);
+        viewItem->setData(originName, OriginFilterRole);
+
+        if (originName == "Ubuntu") {
+            viewItem->setText("Kubuntu");
+            viewItem->setIcon(KIcon("ubuntu-logo"));
+            viewItem->setData(AppView, ViewTypeRole);
+        }
+
+        if (originName == "Canonical") {
+            viewItem->setIcon(KIcon("partner"));
+            viewItem->setData(AppView, ViewTypeRole);
+        }
+
+        if (originName.startsWith(QLatin1String("LP-PPA"))) {
+            viewItem->setIcon(KIcon("user-identity"));
+            viewItem->setData(AppView, ViewTypeRole);
+        }
+
+        installedItem->appendRow(viewItem);
+        m_viewHash[viewItem->index()] = 0;
+    }
 }
 
 void ApplicationWindow::changeView(const QModelIndex &index)
 {
-    kDebug() << index;
+    QWidget *view = m_viewHash.value(index);
+
+    // Create new widget if not already created
+    if (!view) {
+        switch (index.data(ViewTypeRole).toInt()) {
+        case AppView: {
+            QString originFilter = index.data(OriginFilterRole).toString();
+            QApt::Package::State stateFilter = (QApt::Package::State)index.data(StateFilterRole).toInt();
+            view = new ApplicationView(this);
+            ApplicationView *appView = static_cast<ApplicationView *>(view);
+            m_viewStack->addWidget(view);
+            appView->setBackend(m_backend);
+            appView->setStateFilter(stateFilter);
+            appView->setOriginFilter(originFilter);
+        }
+        break;
+        case CatView:
+            view = new CategoryView(this);
+            m_viewStack->addWidget(view);
+            break;
+        case HistoryView:
+        case InvalidView:
+        default:
+            break;
+        }
+    }
+
+    m_viewStack->setCurrentWidget(view);
+
+    m_viewHash[index] = view;
+}
+
+int ApplicationWindow::maxPopconScore() const
+{
+    return m_maxPopconScore;
+}
+
+QList<Application *> ApplicationWindow::applicationList() const
+{
+    return m_appList;
 }
 
 #include "ApplicationWindow.moc"

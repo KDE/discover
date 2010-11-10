@@ -91,6 +91,10 @@ QApt::Package *Application::package()
         }
     }
 
+    if (!m_package) {
+        kDebug() << m_fileName;
+    }
+
     return m_package;
 }
 
