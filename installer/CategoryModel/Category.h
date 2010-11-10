@@ -18,39 +18,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "AvailableView.h"
+#ifndef CATEGORY_H
+#define CATEGORY_H
 
-#include <QStandardItemModel>
-
-#include <KCategorizedSortFilterProxyModel>
-#include <KIcon>
-#include <KLocale>
-
-#include "CategoryModel/CategoryView.h"
-
-AvailableView::AvailableView(QWidget *parent)
-        : QStackedWidget(parent)
-{
-    m_categoryView = new CategoryView(this);
-
-    QStandardItemModel *categoryModel = new QStandardItemModel(this);
-    QStandardItem *categoryItem = new QStandardItem;
-    categoryItem->setText(i18n("Internet"));
-    categoryItem->setIcon(KIcon("applications-internet"));
-    categoryItem->setData(i18n("Groups"), KCategorizedSortFilterProxyModel::CategoryDisplayRole);
-    categoryModel->appendRow(categoryItem);
-
-    KCategorizedSortFilterProxyModel *proxy = new KCategorizedSortFilterProxyModel(this);
-    proxy->setSourceModel(categoryModel);
-    proxy->setCategorizedModel(true);
-    proxy->sort(0);
-    m_categoryView->setModel(proxy);
-
-    addWidget(m_categoryView);
-}
-
-AvailableView::~AvailableView()
-{
-}
-
-#include "AvailableView.moc"
+#endif

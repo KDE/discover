@@ -35,7 +35,7 @@
 
 // Own includes
 #include "Application.h"
-#include "CategoryView.h"
+#include "AvailableView.h"
 #include "ViewSwitcher.h"
 #include "ApplicationModel/ApplicationView.h"
 
@@ -220,7 +220,7 @@ void ApplicationWindow::changeView(const QModelIndex &index)
         }
         break;
         case CatView:
-            view = new CategoryView(this);
+            view = new AvailableView(this);
             m_viewStack->addWidget(view);
             break;
         case HistoryView:
