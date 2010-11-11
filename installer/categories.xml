@@ -339,7 +339,7 @@
   
   <Menu>
     <Name>Games</Name>
-    <Directory>Game.directory</Directory>
+    <Icon>applications-games</Icon>
     <Include>
       <And>
         <Category>Game</Category>
@@ -348,21 +348,21 @@
     
     <Menu>
       <Name>Arcade</Name>
-      <Icon>applications-arcade</Icon>
+      <Icon>applications-games-arcade</Icon>
       <Include>
         <Category>ArcadeGame</Category>
       </Include>
     </Menu>
     <Menu>
       <Name>Board Games</Name>
-      <Icon>applications-boardgames</Icon>
+      <Icon>applications-games-board</Icon>
       <Include>
         <Category>BoardGame</Category>
       </Include>
     </Menu>
     <Menu>
       <Name>Card Games</Name>
-      <Icon>applications-cardgames</Icon>
+      <Icon>applications-games-card</Icon>
       <Include>
         <Category>CardGame</Category>
       </Include>
@@ -383,16 +383,14 @@
     </Menu>
     <Menu>
       <Name>Simulation</Name>
-      <Directory>SimulationGames.directory</Directory>
-      <Icon>applications-simulation</Icon>
+      <Icon>applications-games-strategy</Icon>
       <Include>
         <Category>Simulation</Category>
       </Include>
     </Menu>
     <Menu>
       <Name>Sports</Name>
-      <Directory>SportsGames.directory</Directory>
-      <Icon>applications-sports</Icon>
+      <Icon>applications-games</Icon>
       <Include>
         <Category>SportsGame</Category>
       </Include>
@@ -403,7 +401,7 @@
   
   <Menu>
     <Name>Graphics</Name>
-    <Directory>Graphics.directory</Directory>
+    <Icon>applications-graphics</Icon>
     <Include>
       <And>
         <Category>Graphics</Category>
