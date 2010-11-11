@@ -51,7 +51,7 @@ AvailableView::AvailableView(QWidget *parent)
     QDomElement root = menuDocument.documentElement();
 
     QDomNode node = root.firstChild();
-    while( !node.isNull() )
+    while(!node.isNull())
     {
         Category *category = new Category(this, node);
         categoryList << category;

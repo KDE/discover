@@ -21,8 +21,16 @@
 #ifndef CATEGORY_H
 #define CATEGORY_H
 
-#include <QtCore/QStringList>
+#include <QtCore/QHash>
 #include <QtXml/QDomNode>
+
+enum FilterType {
+    InvalidFilter = 0,
+    CategoryFilter = 1,
+    PkgSectionFilter = 2,
+    PkgWildcardFilter = 3,
+    PkgNameFilter = 4
+};
 
 class Category : public QObject
 {
@@ -33,20 +41,21 @@ public:
 
     QString name() const;
     QString icon() const;
-    QStringList orSections() const;
-    QStringList notSections() const;
+    QList<QPair<FilterType, QString> > andOrFilters() const;
+    QList<QPair<FilterType, QString> > notFilters() const;
     bool hasSubCategories() const;
     QList<Category *> subCategories() const;
 
 private:
     QString m_name;
     QString m_iconString;
-    QStringList m_orSections;
-    QStringList m_notSections;
+    QList<QPair<FilterType, QString> > m_andOrFilters;
+    QList<QPair<FilterType, QString> > m_notFilters;
     bool m_hasSubCategories;
     QList<Category *> m_subCategories;
 
-    void parseData(const QDomNode &node);
+    void parseData(const QDomNode &data);
+    QList<QPair<FilterType, QString> > parseIncludes(const QDomNode &data);
 };
 
 #endif

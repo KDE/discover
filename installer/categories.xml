@@ -10,7 +10,7 @@
         <Not><Category>Accessibility</Category></Not>
       </And>
     </Include>
-  </Menu> 
+  </Menu>
 
   <Menu>
     <Name>Accessibility</Name>
@@ -21,7 +21,7 @@
         <Not><Category>Settings</Category></Not>
       </And>
     </Include>
-  </Menu> 
+  </Menu>
 
   <Menu>
     <Name>Developer Tools</Name>
@@ -29,10 +29,10 @@
     <Include>
       <Or>
         <Category>Development</Category>
-        <SCSection>devel</SCSection>
-        <SCSection>restricted/devel</SCSection>
-        <SCSection>universe/devel</SCSection>
-        <SCSection>multiverse/devel</SCSection>
+        <PkgSection>devel</PkgSection>
+        <PkgSection>restricted/devel</PkgSection>
+        <PkgSection>universe/devel</PkgSection>
+        <PkgSection>multiverse/devel</PkgSection>
       </Or>
       <Filename>emacs.desktop</Filename>
     </Include>
@@ -42,7 +42,9 @@
       <Name>Debugging</Name>
       <Icon>applications-debugging</Icon>
       <Include>
-	<Category>Debugger</Category>
+        <And>
+          <Category>Debugger</Category>
+        </And>
       </Include>
     </Menu>
 
@@ -50,7 +52,9 @@
       <Name>Graphic Interface Design</Name>
       <Icon>applications-interfacedesign</Icon>
       <Include>
-	<Category>GUIDesigner</Category>
+        <And>
+          <Category>GUIDesigner</Category>
+        </And>
       </Include>
     </Menu>
 
@@ -58,12 +62,12 @@
       <Name>Haskell</Name>
       <Icon>applications-haskell</Icon>
       <Include>
-	<Or>
-	  <SCSection>haskell</SCSection>
-	  <SCSection>restricted/haskell</SCSection>
-	  <SCSection>universe/haskell</SCSection>
-	  <SCSection>multiverse/haskell</SCSection>
-	</Or>
+        <Or>
+          <PkgSection>haskell</PkgSection>
+          <PkgSection>restricted/haskell</PkgSection>
+          <PkgSection>universe/haskell</PkgSection>
+          <PkgSection>multiverse/haskell</PkgSection>
+        </Or>
       </Include>
     </Menu>
 
@@ -71,7 +75,9 @@
       <Name>IDEs</Name>
       <Icon>applications-ide</Icon>
       <Include>
-	<Category>IDE</Category>
+        <And>
+          <Category>IDE</Category>
+        </And>
       </Include>
     </Menu>
 
@@ -79,12 +85,12 @@
       <Name>Java</Name>
       <Icon>applications-java</Icon>
       <Include>
-	<Or>
-	  <SCSection>java</SCSection>
-	  <SCSection>restricted/java</SCSection>
-	  <SCSection>universe/java</SCSection>
-	  <SCSection>multiverse/java</SCSection>
-	</Or>
+        <Or>
+          <PkgSection>java</PkgSection>
+          <PkgSection>restricted/java</PkgSection>
+          <PkgSection>universe/java</PkgSection>
+          <PkgSection>multiverse/java</PkgSection>
+        </Or>
       </Include>
     </Menu>
 
@@ -92,12 +98,12 @@
       <Name>Libraries</Name>
       <Icon>applications-libraries</Icon>
       <Include>
-	<Or>
-	  <SCSection>libdevel</SCSection>
-	  <SCSection>restricted/libdevel</SCSection>
-	  <SCSection>universe/libdevel</SCSection>
-	  <SCSection>multiverse/libdevel</SCSection>
-	</Or>
+        <Or>
+          <PkgSection>libdevel</PkgSection>
+          <PkgSection>restricted/libdevel</PkgSection>
+          <PkgSection>universe/libdevel</PkgSection>
+          <PkgSection>multiverse/libdevel</PkgSection>
+        </Or>
       </Include>
     </Menu>
 
@@ -105,12 +111,12 @@
       <Name>Lisp</Name>
       <Icon>applications-lisp</Icon>
       <Include>
-	<Or>
-	  <SCSection>lisp</SCSection>
-	  <SCSection>restricted/lisp</SCSection>
-	  <SCSection>universe/lisp</SCSection>
-	  <SCSection>multiverse/lisp</SCSection>
-	</Or>
+        <Or>
+          <PkgSection>lisp</PkgSection>
+          <PkgSection>restricted/lisp</PkgSection>
+          <PkgSection>universe/lisp</PkgSection>
+          <PkgSection>multiverse/lisp</PkgSection>
+        </Or>
       </Include>
     </Menu>
 
@@ -118,9 +124,9 @@
       <Name>Localization</Name>
       <Icon>preferences-desktop-locale</Icon>
       <Include>
-	<And>
-	  <Category>Translation</Category>
-	</And>
+        <And>
+          <Category>Translation</Category>
+        </And>
       </Include>
     </Menu>
 
@@ -129,10 +135,10 @@
       <Icon>applications-monodevelopment</Icon>
       <Include>
         <Or>
-          <SCSection>cli-mono</SCSection>
-          <SCSection>restricted/cli-mono</SCSection>
-          <SCSection>universe/cli-mono</SCSection>
-          <SCSection>multiverse/cli-mono</SCSection>
+          <PkgSection>cli-mono</PkgSection>
+          <PkgSection>restricted/cli-mono</PkgSection>
+          <PkgSection>universe/cli-mono</PkgSection>
+          <PkgSection>multiverse/cli-mono</PkgSection>
         </Or>
       </Include>
     </Menu>
@@ -142,10 +148,10 @@
       <Icon>applications-ocaml</Icon>
       <Include>
         <Or>
-          <SCSection>ocaml</SCSection>
-          <SCSection>restricted/ocaml</SCSection>
-          <SCSection>universe/ocaml</SCSection>
-          <SCSection>multiverse/ocaml</SCSection>
+          <PkgSection>ocaml</PkgSection>
+          <PkgSection>restricted/ocaml</PkgSection>
+          <PkgSection>universe/ocaml</PkgSection>
+          <PkgSection>multiverse/ocaml</PkgSection>
         </Or>
       </Include>
     </Menu>
@@ -154,12 +160,12 @@
       <Name>Perl</Name>
       <Icon>applications-perl</Icon>
       <Include>
-	<Or>
-	  <SCSection>perl</SCSection>
-	  <SCSection>restricted/perl</SCSection>
-	  <SCSection>universe/perl</SCSection>
-	  <SCSection>multiverse/perl</SCSection>
-	</Or>
+        <Or>
+          <PkgSection>perl</PkgSection>
+          <PkgSection>restricted/perl</PkgSection>
+          <PkgSection>universe/perl</PkgSection>
+          <PkgSection>multiverse/perl</PkgSection>
+        </Or>
       </Include>
     </Menu>
 
@@ -167,7 +173,7 @@
       <Name>Profiling</Name>
       <Icon>applications-profiling</Icon>
       <Include>
-	<Category>Profiling</Category>
+        <Category>Profiling</Category>
       </Include>
     </Menu>
 
@@ -175,12 +181,12 @@
       <Name>Python</Name>
       <Icon>applications-python</Icon>
       <Include>
-	<Or>
-	  <SCSection>python</SCSection>
-	  <SCSection>restricted/python</SCSection>
-	  <SCSection>universe/python</SCSection>
-	  <SCSection>multiverse/python</SCSection>
-	</Or>
+        <Or>
+          <PkgSection>python</PkgSection>
+          <PkgSection>restricted/python</PkgSection>
+          <PkgSection>universe/python</PkgSection>
+          <PkgSection>multiverse/python</PkgSection>
+        </Or>
       </Include>
     </Menu>
 
@@ -188,12 +194,12 @@
       <Name>Ruby</Name>
       <Icon>applications-ruby</Icon>
       <Include>
-	<Or>
-	  <SCSection>ruby</SCSection>
-	  <SCSection>restricted/ruby</SCSection>
-	  <SCSection>universe/ruby</SCSection>
-	  <SCSection>multiverse/ruby</SCSection>
-	</Or>
+        <Or>
+          <PkgSection>ruby</PkgSection>
+          <PkgSection>restricted/ruby</PkgSection>
+          <PkgSection>universe/ruby</PkgSection>
+          <PkgSection>multiverse/ruby</PkgSection>
+        </Or>
       </Include>
     </Menu>
 
@@ -201,37 +207,43 @@
       <Name>Version Control</Name>
       <Icon>applications-versioncontrol</Icon>
       <Include>
-	<Or>
-	  <SCSection>vcs</SCSection>
-	  <SCSection>restricted/vcs</SCSection>
-	  <SCSection>universe/vcs</SCSection>
-	  <SCSection>multiverse/vcs</SCSection>
-	  <Category>RevisionControl</Category>
-	</Or>
+        <Or>
+          <PkgSection>vcs</PkgSection>
+          <PkgSection>restricted/vcs</PkgSection>
+          <PkgSection>universe/vcs</PkgSection>
+          <PkgSection>multiverse/vcs</PkgSection>
+          <Category>RevisionControl</Category>
+        </Or>
       </Include>
     </Menu>
 
     <Menu>
       <Name>Web Development</Name>
-      <Include><And><Category>WebDevelopment</Category></And></Include>
+      <Include>
+        <And>
+          <Category>WebDevelopment</Category>
+        </And>
+      </Include>
       <Icon>applications-internet</Icon>
     </Menu>
 
-  </Menu> 
+  </Menu>
 
-  
+
   <Menu>
     <Name>Education</Name>
     <Icon>applications-education</Icon>
     <Include>
       <And>
         <Category>Education</Category>
-        <Not><Category>Science</Category></Not>
+        <Not>
+          <Category>Science</Category>
+        </Not>
       </And>
     </Include>
-  </Menu> 
+  </Menu>
 
-  
+
   <Menu>
     <Name>Science &amp; Engineering</Name>
     <Icon>applications-science</Icon>
@@ -244,17 +256,29 @@
     <Menu>
       <Name>Astronomy</Name>
       <Icon>applications-astronomy</Icon>
-      <Include><Category>Astronomy</Category></Include>
+      <Include>
+        <And>
+          <Category>Astronomy</Category>
+        </And>
+      </Include>
     </Menu>
     <Menu>
       <Name>Biology</Name>
       <Icon>applications-biology</Icon>
-      <Include><Category>Biology</Category></Include>
+      <Include>
+        <And>
+          <Category>Biology</Category>
+        </And>
+      </Include>
     </Menu>
     <Menu>
       <Name>Chemistry</Name>
       <Icon>applications-science</Icon>
-      <Include><Category>Chemistry</Category></Include>
+      <Include>
+        <And>
+          <Category>Chemistry</Category>
+        </And>
+      </Include>
     </Menu>
     <Menu>
       <Name>Computer Science &amp; Robotics</Name>
@@ -270,23 +294,38 @@
     <Menu>
       <Name>Electronics</Name>
       <Icon>applications-electronics</Icon>
-      <Include><Category>Electronics</Category></Include>
+      <Include>
+        <And>
+          <Category>Electronics</Category>
+        </And>
+      </Include>
     </Menu>
     <Menu>
       <Name>Engineering</Name>
       <Icon>applications-engineering</Icon>
-      <Include><Category>Engineering</Category></Include>
+      <Include>
+        <And>
+          <Category>Engineering</Category>
+        </And>
+      </Include>
     </Menu>
     <Menu>
       <Name>Geography</Name>
       <Icon>applications-geography</Icon>
-      <Include><Category>Geography</Category></Include>
+      <Include>
+        <And>
+          <Category>Geography</Category>
+        </And>
+      </Include>
     </Menu>
     <Menu>
       <Name>Geology</Name>
       <Icon>applications-geology</Icon>
       <Include>
-        <Or><Category>Geology</Category><Category>Geoscience</Category></Or>
+        <Or>
+          <Category>Geology</Category>
+          <Category>Geoscience</Category>
+        </Or>
       </Include>
     </Menu>
     <Menu>
@@ -297,46 +336,50 @@
           <Category>DataVisualization</Category>
           <Category>Math</Category>
           <Category>NumericalAnalysis</Category>
-          <SCSection>math</SCSection>
-          <SCSection>restricted/math</SCSection>
-          <SCSection>universe/math</SCSection>
-          <SCSection>multiverse/math</SCSection>
-          <SCSection>gnu-r</SCSection>
-          <SCSection>restricted/gnu-r</SCSection>
-          <SCSection>universe/gnu-r</SCSection>
-          <SCSection>multiverse/gnu-r</SCSection>
+          <PkgSection>math</PkgSection>
+          <PkgSection>restricted/math</PkgSection>
+          <PkgSection>universe/math</PkgSection>
+          <PkgSection>multiverse/math</PkgSection>
+          <PkgSection>gnu-r</PkgSection>
+          <PkgSection>restricted/gnu-r</PkgSection>
+          <PkgSection>universe/gnu-r</PkgSection>
+          <PkgSection>multiverse/gnu-r</PkgSection>
         </Or>
       </Include>
     </Menu>
     <Menu>
       <Name>Physics</Name>
       <Icon>applications-physics</Icon>
-      <Include><Category>Physics</Category></Include>
+      <Include>
+        <And>
+          <Category>Physics</Category>
+        </And>
+      </Include>
     </Menu>
-  </Menu> 
+  </Menu>
 
-  
+
   <Menu>
     <Name>Fonts</Name>
     <Icon>preferences-desktop-font</Icon>
     <Include>
       <And>
         <Or>
-          <SCPkgnameWildcard>ttf*</SCPkgnameWildcard>
-          <SCPkgnameWildcard>otf*</SCPkgnameWildcard>
-          <SCSection>fonts</SCSection>
-          <SCSection>restricted/fonts</SCSection>
-          <SCSection>universe/fonts</SCSection>
-          <SCSection>multiverse/fonts</SCSection>
+          <PkgWildcard>ttf*</PkgWildcard>
+          <PkgWildcard>otf*</PkgWildcard>
+          <PkgSection>fonts</PkgSection>
+          <PkgSection>restricted/fonts</PkgSection>
+          <PkgSection>universe/fonts</PkgSection>
+          <PkgSection>multiverse/fonts</PkgSection>
         </Or>
         <Not>
-          <SCPkgname>ttfm</SCPkgname>
+          <PkgName>ttfm</PkgName>
         </Not>
       </And>
     </Include>
   </Menu>
 
-  
+
   <Menu>
     <Name>Games</Name>
     <Icon>applications-games</Icon>
@@ -345,60 +388,74 @@
         <Category>Game</Category>
       </And>
     </Include>
-    
+
     <Menu>
       <Name>Arcade</Name>
       <Icon>applications-games-arcade</Icon>
       <Include>
-        <Category>ArcadeGame</Category>
+        <And>
+          <Category>ArcadeGame</Category>
+        </And>
       </Include>
     </Menu>
     <Menu>
       <Name>Board Games</Name>
       <Icon>applications-games-board</Icon>
       <Include>
-        <Category>BoardGame</Category>
+        <And>
+          <Category>BoardGame</Category>
+        </And>
       </Include>
     </Menu>
     <Menu>
       <Name>Card Games</Name>
       <Icon>applications-games-card</Icon>
       <Include>
-        <Category>CardGame</Category>
+        <And>
+          <Category>CardGame</Category>
+        </And>
       </Include>
     </Menu>
     <Menu>
       <Name>Puzzles</Name>
       <Icon>applications-puzzles</Icon>
       <Include>
-        <Category>LogicGame</Category>
+        <And>
+          <Category>LogicGame</Category>
+        </And>
       </Include>
     </Menu>
     <Menu>
       <Name>Role Playing</Name>
       <Icon>applications-roleplaying</Icon>
       <Include>
-        <Category>RolePlaying</Category>
+        <And>
+          <Category>RolePlaying</Category>
+        </And>
       </Include>
     </Menu>
     <Menu>
       <Name>Simulation</Name>
       <Icon>applications-games-strategy</Icon>
       <Include>
-        <Category>Simulation</Category>
+        <And>
+          <Category>Simulation</Category>
+        </And>
       </Include>
     </Menu>
     <Menu>
       <Name>Sports</Name>
       <Icon>applications-games</Icon>
       <Include>
-        <Category>SportsGame</Category>
+        <And>
+          <Category>SportsGame</Category>
+        </And>
       </Include>
     </Menu>
 
-  </Menu> 
+  </Menu>
 
-  
+
   <Menu>
     <Name>Graphics</Name>
     <Icon>applications-graphics</Icon>
@@ -410,7 +467,11 @@
     <Menu>
       <Name>3D</Name>
       <Icon>applications-3D</Icon>
-      <Include><And><Category>3DGraphics</Category></And></Include>
+      <Include>
+        <And>
+          <Category>3DGraphics</Category>
+        </And>
+      </Include>
     </Menu>
     <Menu>
       <Name>Drawing</Name>
@@ -418,7 +479,9 @@
       <Include>
         <And>
           <Category>VectorGraphics</Category>
-          <Not><Category>Viewer</Category></Not>
+          <Not>
+            <Category>Viewer</Category>
+          </Not>
         </And>
       </Include>
     </Menu>
@@ -428,20 +491,30 @@
       <Include>
         <And>
           <Category>RasterGraphics</Category>
-          <Not><Category>Viewer</Category></Not>
-          <Not><Category>Scanning</Category></Not>
+          <Not>
+              <Category>Viewer</Category>
+              <Category>Scanning</Category>
+          </Not>
         </And>
       </Include>
     </Menu>
     <Menu>
       <Name>Photography</Name>
       <Icon>applications-photography</Icon>
-      <Include><And><Category>Photography</Category></And></Include>
+      <Include>
+        <And>
+          <Category>Photography</Category>
+        </And>
+      </Include>
     </Menu>
     <Menu>
       <Name>Publishing</Name>
       <Icon>applications-publishing</Icon>
-      <Include><And><Category>Publishing</Category></And></Include>
+      <Include>
+        <And>
+          <Category>Publishing</Category>
+        </And>
+      </Include>
     </Menu>
     <Menu>
       <Name>Scanning &amp; OCR</Name>
@@ -456,11 +529,15 @@
     <Menu>
       <Name>Viewers</Name>
       <Icon>applications-viewers</Icon>
-      <Include><And><Category>Viewer</Category></And></Include>
+      <Include>
+        <And>
+          <Category>Viewer</Category>
+        </And>
+      </Include>
     </Menu>
-  </Menu> 
+  </Menu>
 
-  
+
   <Menu>
     <Name>Internet</Name>
     <Icon>applications-internet</Icon>
@@ -472,26 +549,42 @@
     <Menu>
       <Name>Chat</Name>
       <Icon>kopete</Icon>
-      <Include><And><Category>InstantMessaging</Category></And></Include>
+      <Include>
+        <And>
+          <Category>InstantMessaging</Category>
+          </And>
+      </Include>
     </Menu>
     <Menu>
       <Name>File Sharing</Name>
       <Icon>ktorrent</Icon>
-      <Include><And><Category>FileTransfer</Category></And></Include>
+      <Include>
+        <And>
+          <Category>FileTransfer</Category>
+        </And>
+      </Include>
     </Menu>
     <Menu>
       <Name>Mail</Name>
       <Icon>internet-mail</Icon>
-      <Include><And><Category>Email</Category></And></Include>
+      <Include>
+        <And>
+          <Category>Email</Category>
+        </And>
+      </Include>
     </Menu>
     <Menu>
       <Name>Web Browsers</Name>
       <Icon>internet-web-browser</Icon>
-      <Include><And><Category>WebBrowser</Category></And></Include>
+      <Include>
+        <And>
+          <Category>WebBrowser</Category>
+        </And>
+      </Include>
     </Menu>
-  </Menu>   
+  </Menu>
 
-  
+
   <Menu>
     <Name>Multimedia</Name>
     <Icon>applications-multimedia</Icon>
@@ -500,9 +593,9 @@
         <Category>AudioVideo</Category>
       </And>
     </Include>
-  </Menu>   
+  </Menu>
 
-  
+
   <Menu>
     <Name>Office</Name>
     <Icon>applications-office</Icon>
@@ -511,21 +604,16 @@
         <Category>Office</Category>
       </And>
     </Include>
-  </Menu> 
+  </Menu>
 
   <Menu>
     <Name>Themes &amp; Tweaks</Name>
     <Icon>preferences-other</Icon>
-    <Include><Category>Settings</Category></Include>
-  </Menu>
-
- 
-  <Menu>
-    <Name>System</Name>
-    <Icon>applications-system</Icon>
-    <OnlyUnallocated/>
     <Include>
+      <And>
+        <Category>Settings</Category>
+      </And>
     </Include>
-  </Menu> 
+  </Menu>
 
 </Menu>

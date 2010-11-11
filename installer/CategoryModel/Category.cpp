@@ -27,6 +27,9 @@ Category::Category(QObject *parent, const QDomNode &data)
         , m_iconString("applications-other")
 {
     parseData(data);
+    kDebug() << m_andOrFilters;
+    kDebug() << m_notFilters;
+    kDebug() << QString("\n\n");
 }
 
 Category::~Category()
@@ -47,19 +50,57 @@ void Category::parseData(const QDomNode &data)
                 continue;
             }
             m_name = tempElement.text();
-        }
-
-        if (tempElement.tagName() == QLatin1String("Icon")) {
+        } else if (tempElement.tagName() == QLatin1String("Icon")) {
             m_iconString = tempElement.text();
-        }
-
-        if (tempElement.tagName() == QLatin1String("Menu")) {
+        } else if (tempElement.tagName() == QLatin1String("Menu")) {
             Category *subCategory = new Category(this, node);
             m_subCategories << subCategory;
+        } else if (tempElement.tagName() == QLatin1String("Include")) {
+            parseIncludes(tempElement);
         }
 
         node = node.nextSibling();
     }
+}
+
+QList<QPair<FilterType, QString> > Category::parseIncludes(const QDomNode &data)
+{
+    QDomNode node = data.firstChild();
+    QList<QPair<FilterType, QString> > filter;
+    while(!node.isNull())
+    {
+        QDomElement tempElement = node.toElement();
+
+        if (tempElement.tagName() == QLatin1String("And") || tempElement.tagName() == QLatin1String("Or")) {
+            // Parse children
+            m_andOrFilters.append(parseIncludes(node));
+        } else if (tempElement.tagName() == QLatin1String("Not")) {
+            m_notFilters.append(parseIncludes(node));
+        } else if (tempElement.tagName() == QLatin1String("PkgSection")) {
+            QPair<FilterType, QString> pkgSectionFilter;
+            pkgSectionFilter.first = PkgSectionFilter;
+            pkgSectionFilter.second = tempElement.text();
+            filter.append(pkgSectionFilter);
+        } else if (tempElement.tagName() == QLatin1String("Category")) {
+            QPair<FilterType, QString> categoryFilter;
+            categoryFilter.first = CategoryFilter;
+            categoryFilter.second = tempElement.text();
+            filter.append(categoryFilter);
+        } else if (tempElement.tagName() == QLatin1String("PkgWildcard")) {
+            QPair<FilterType, QString> wildcardFilter;
+            wildcardFilter.first = PkgWildcardFilter;
+            wildcardFilter.second = tempElement.text();
+            filter.append(wildcardFilter);
+        } else if (tempElement.tagName() == QLatin1String("PkgName")) {
+            QPair<FilterType, QString> nameFilter;
+            nameFilter.first = PkgNameFilter;
+            nameFilter.second = tempElement.text();
+            filter.append(nameFilter);
+        }
+        node = node.nextSibling();
+    }
+
+    return filter;
 }
 
 QString Category::name() const
@@ -72,14 +113,14 @@ QString Category::icon() const
     return m_iconString;
 }
 
-QStringList Category::orSections() const
+QList<QPair<FilterType, QString> > Category::andOrFilters() const
 {
-    return m_orSections;
+    return m_andOrFilters;
 }
 
-QStringList Category::notSections() const
+QList<QPair<FilterType, QString> > Category::notFilters() const
 {
-    return m_notSections;
+    return m_notFilters;
 }
 
 bool Category::hasSubCategories() const
