@@ -19,3 +19,70 @@
  ***************************************************************************/
 
 #include "Category.h"
+
+#include <KDebug>
+
+Category::Category(QObject *parent, const QDomNode &data)
+        : QObject(parent)
+        , m_iconString("applications-other")
+{
+    parseData(data);
+}
+
+Category::~Category()
+{
+}
+
+void Category::parseData(const QDomNode &data)
+{
+    QDomNode node = data.firstChild();
+    while( !node.isNull() )
+    {
+        QDomElement tempElement = node.toElement();
+
+        if (tempElement.tagName() == QLatin1String("Name")) {
+            if (tempElement.hasAttribute("xml:lang")) {
+                // Skip translated nodes. We'll look up the l10n later
+                node = node.nextSibling();
+                continue;
+            }
+            m_name = tempElement.text();
+        }
+
+        if (tempElement.tagName() == QLatin1String("Icon")) {
+            m_iconString = tempElement.text();
+        }
+
+        node = node.nextSibling();
+    }
+}
+
+QString Category::name() const
+{
+    return m_name;
+}
+
+QString Category::icon() const
+{
+    return m_iconString;
+}
+
+QStringList Category::orSections() const
+{
+    return m_orSections;
+}
+
+QStringList Category::notSections() const
+{
+    return m_notSections;
+}
+
+bool Category::hasSubCategories() const
+{
+    return m_hasSubCategories;
+}
+
+QList<Category *> Category::subCategories() const
+{
+    return m_subCategories;
+}

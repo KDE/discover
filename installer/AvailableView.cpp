@@ -21,11 +21,16 @@
 #include "AvailableView.h"
 
 #include <QStandardItemModel>
+#include <QtCore/QFile>
+#include <QtXml/QDomDocument>
 
 #include <KCategorizedSortFilterProxyModel>
 #include <KIcon>
 #include <KLocale>
+#include <KStandardDirs>
+#include <KDebug>
 
+#include "CategoryModel/Category.h"
 #include "CategoryModel/CategoryView.h"
 
 AvailableView::AvailableView(QWidget *parent)
@@ -33,12 +38,40 @@ AvailableView::AvailableView(QWidget *parent)
 {
     m_categoryView = new CategoryView(this);
 
+    QList<Category *> categoryList;
+
+    QFile menuFile(KStandardDirs::locate("appdata", "categories.xml"));
+    menuFile.open(QIODevice::ReadOnly);
+
+    QDomDocument menuDocument;
+    QString error;
+    int line;
+    menuDocument.setContent(&menuFile, &error, &line);
+
+    QDomElement root = menuDocument.documentElement();
+
+    QDomNode node = root.firstChild();
+    while( !node.isNull() )
+    {
+        Category *category = new Category(this, node);
+        kDebug() << category->name();
+        kDebug() << category->icon();
+        categoryList << category;
+
+        node = node.nextSibling();
+    }
+//     Category *accessories = new Category(this, menuList.at(0).childNodes().at(0));
+//     kDebug() << accessories->name();
+
     QStandardItemModel *categoryModel = new QStandardItemModel(this);
-    QStandardItem *categoryItem = new QStandardItem;
-    categoryItem->setText(i18n("Internet"));
-    categoryItem->setIcon(KIcon("applications-internet"));
-    categoryItem->setData(i18n("Groups"), KCategorizedSortFilterProxyModel::CategoryDisplayRole);
-    categoryModel->appendRow(categoryItem);
+
+    foreach (Category *category, categoryList) {
+        QStandardItem *categoryItem = new QStandardItem;
+        categoryItem->setText(category->name());
+        categoryItem->setIcon(KIcon(category->icon()));
+        categoryItem->setData(i18n("Categories"), KCategorizedSortFilterProxyModel::CategoryDisplayRole);
+        categoryModel->appendRow(categoryItem);
+    }
 
     KCategorizedSortFilterProxyModel *proxy = new KCategorizedSortFilterProxyModel(this);
     proxy->setSourceModel(categoryModel);

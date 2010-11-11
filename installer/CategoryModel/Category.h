@@ -21,4 +21,32 @@
 #ifndef CATEGORY_H
 #define CATEGORY_H
 
+#include <QtCore/QStringList>
+#include <QtXml/QDomNode>
+
+class Category : public QObject
+{
+    Q_OBJECT
+public:
+    explicit Category(QObject *parent, const QDomNode &node);
+    ~Category();
+
+    QString name() const;
+    QString icon() const;
+    QStringList orSections() const;
+    QStringList notSections() const;
+    bool hasSubCategories() const;
+    QList<Category *> subCategories() const;
+
+private:
+    QString m_name;
+    QString m_iconString;
+    QStringList m_orSections;
+    QStringList m_notSections;
+    bool m_hasSubCategories;
+    QList<Category *> m_subCategories;
+
+    void parseData(const QDomNode &node);
+};
+
 #endif

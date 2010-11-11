@@ -29,3 +29,4 @@ install(TARGETS muon-installer ${INSTALL_TARGETS_DEFAULT_ARGS} )
 #FIXME
 # install( PROGRAMS muon-installer.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR} )
 # install( FILES muon-installerui.rc  DESTINATION  ${DATA_INSTALL_DIR}/muon )
+install ( FILES categories.xml DESTINATION ${DATA_INSTALL_DIR}/muon-installer )
