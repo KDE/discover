@@ -22,7 +22,7 @@
 #define APPLICATIONWIDGET_H
 
 // Qt includes
-#include <QtGui/QWidget>
+#include <QtGui/QScrollArea>
 
 class QLabel;
 class QPushButton;
@@ -30,7 +30,7 @@ class QPushButton;
 class Application;
 
 // Widget for showing details about a single application
-class ApplicationWidget : public QWidget
+class ApplicationWidget : public QScrollArea
 {
     Q_OBJECT
 public:

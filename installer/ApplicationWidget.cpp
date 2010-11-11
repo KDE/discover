@@ -34,14 +34,17 @@
 #include "Application.h"
 
 ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
-    : QWidget(parent)
+    : QScrollArea(parent)
     , m_app(app)
 {
-    QVBoxLayout *layout = new QVBoxLayout(this);
-    setLayout(layout);
+    setFrameShape(QFrame::NoFrame);
+
+    QWidget *widget = new QWidget(this);
+    QVBoxLayout *layout = new QVBoxLayout(widget);
+    widget->setLayout(layout);
 
     // Header
-    QWidget *headerWidget = new QWidget(this);
+    QWidget *headerWidget = new QWidget(widget);
     QHBoxLayout *headerLayout = new QHBoxLayout(headerWidget);
     headerWidget->setLayout(headerLayout);
 
@@ -53,21 +56,30 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
     QVBoxLayout *nameDescLayout = new QVBoxLayout(nameDescWidget);
     m_nameLabel = new QLabel(nameDescWidget);
     m_nameLabel->setText(QLatin1Literal("<h1>") % app->name() % QLatin1Literal("</h1>"));
+    m_nameLabel->setAlignment(Qt::AlignLeft);
     m_descriptionLabel = new QLabel(nameDescWidget);
     m_descriptionLabel->setText(app->comment());
+    m_descriptionLabel->setAlignment(Qt::AlignLeft);
 
     nameDescLayout->addWidget(m_nameLabel);
     nameDescLayout->addWidget(m_descriptionLabel);
 
+    QWidget *headerSpacer = new QWidget(headerWidget);
+    headerSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+
     headerLayout->addWidget(m_iconLabel);
     headerLayout->addWidget(nameDescWidget);
+    headerLayout->addWidget(headerSpacer);
 
-    QWidget *verticalSpacer = new QWidget(this);
+    // Spacer
+    QWidget *verticalSpacer = new QWidget(widget);
     verticalSpacer->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
 
 
     layout->addWidget(headerWidget);
     layout->addWidget(verticalSpacer);
+
+    setWidget(widget);
 }
 
 ApplicationWidget::~ApplicationWidget()
