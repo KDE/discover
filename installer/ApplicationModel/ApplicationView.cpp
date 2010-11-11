@@ -32,6 +32,7 @@
 #include "ApplicationModel.h"
 #include "ApplicationProxyModel.h"
 #include "ApplicationDelegate.h"
+#include "../Application.h"
 #include "../ApplicationBackend.h"
 
 ApplicationView::ApplicationView(QWidget *parent, ApplicationBackend *appBackend)

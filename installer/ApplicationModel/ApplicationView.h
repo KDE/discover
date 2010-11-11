@@ -33,6 +33,7 @@ class QTreeView;
 
 class KPixmapSequenceOverlayPainter;
 
+class Application;
 class ApplicationBackend;
 class ApplicationModel;
 class ApplicationProxyModel;
@@ -65,6 +66,11 @@ public Q_SLOTS:
     void setOriginFilter(const QString &origin);
     void setAndOrFilters(const QList<QPair<FilterType, QString> > &andFilters);
     void setNotFilters(const QList<QPair<FilterType, QString> > &notFilters);
+
+Q_SIGNALS:
+    void infoButtonClicked(Application *app);
+    void removeButtonClicked(Application *app);
+    void installButtonClicked(Application *app);
 };
 
 #endif
