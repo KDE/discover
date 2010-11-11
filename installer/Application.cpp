@@ -91,7 +91,10 @@ QApt::Package *Application::package()
         }
     }
 
+    // Packages removed from archive will remain in app-install-data until the
+    // next refresh, so we can have valid .desktops with no package
     if (!m_package) {
+        m_isValid = false;
         kDebug() << m_fileName;
     }
 
