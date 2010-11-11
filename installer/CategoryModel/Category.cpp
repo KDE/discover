@@ -53,6 +53,11 @@ void Category::parseData(const QDomNode &data)
             m_iconString = tempElement.text();
         }
 
+        if (tempElement.tagName() == QLatin1String("Menu")) {
+            Category *subCategory = new Category(this, node);
+            m_subCategories << subCategory;
+        }
+
         node = node.nextSibling();
     }
 }

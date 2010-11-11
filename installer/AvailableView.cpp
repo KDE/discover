@@ -54,8 +54,6 @@ AvailableView::AvailableView(QWidget *parent)
     while( !node.isNull() )
     {
         Category *category = new Category(this, node);
-        kDebug() << category->name();
-        kDebug() << category->icon();
         categoryList << category;
 
         node = node.nextSibling();
