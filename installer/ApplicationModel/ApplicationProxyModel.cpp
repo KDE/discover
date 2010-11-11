@@ -117,8 +117,6 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
             switch ((*filter).first) {
             case CategoryFilter:
                 if (application->categories().contains((*filter).second)) {
-                    kDebug() << (*filter).second;
-                    kDebug() << application->categories();
                     return false;
                 }
                 break;

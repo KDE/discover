@@ -32,10 +32,17 @@
 
 #include <LibQApt/Backend>
 
+#include "Application.h"
+#include "ApplicationWidget.h"
 #include "ApplicationBackend.h"
 #include "ApplicationModel/ApplicationView.h"
 #include "CategoryView/Category.h"
 #include "CategoryView/CategoryView.h"
+
+bool categoryLessThan(Category *c1, const Category *c2)
+{
+    return (QString::localeAwareCompare(c1->name(), c2->name()) < 0);
+}
 
 AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)
         : QStackedWidget(parent)
@@ -108,6 +115,8 @@ void AvailableView::populateCategories()
 
         node = node.nextSibling();
     }
+
+    qSort(m_categoryList.begin(), m_categoryList.end(), categoryLessThan);
 }
 
 void AvailableView::changeView(const QModelIndex &index)
@@ -124,9 +133,11 @@ void AvailableView::changeView(const QModelIndex &index)
             appView->setBackend(m_backend);
             Category *category = m_categoryList.at(index.row());
 
-            kDebug() << category->andOrFilters();
             appView->setAndOrFilters(category->andOrFilters());
             appView->setNotFilters(category->notFilters());
+
+            connect(appView, SIGNAL(infoButtonClicked(Application *)),
+                    this, SLOT(showAppDetails(Application *)));
         }
             break;
         case SubCatType:
@@ -139,6 +150,15 @@ void AvailableView::changeView(const QModelIndex &index)
     setCurrentWidget(view);
 
     m_viewHash[index] = view;
+}
+
+void AvailableView::showAppDetails(Application *app)
+{
+  ApplicationWidget *widget = new ApplicationWidget(this, app);
+  // TODO: Add to Widget navigation mapping, etc
+
+  addWidget(widget);
+  setCurrentWidget(widget);
 }
 
 #include "AvailableView.moc"

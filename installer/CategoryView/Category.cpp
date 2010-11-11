@@ -20,17 +20,12 @@
 
 #include "Category.h"
 
-#include <KDebug>
-
 Category::Category(QObject *parent, const QDomNode &data)
         : QObject(parent)
         , m_iconString("applications-other")
         , m_hasSubCategories(false)
 {
     parseData(data);
-    kDebug() << m_andOrFilters;
-    kDebug() << m_notFilters;
-    kDebug() << QString("\n\n");
 }
 
 Category::~Category()

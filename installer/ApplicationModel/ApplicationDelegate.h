@@ -1,6 +1,7 @@
 /*
  *   Copyright (C) 2007 Ivan Cukic <ivan.cukic+kde@gmail.com>
  *   Copyright (C) 2008 Daniel Nicoletti <dantti85-pk@yahoo.com.br>
+ *   Copyright (C) 2010 Jonathan Thomas <echidnaman@kubuntu.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library/Lesser General Public License
