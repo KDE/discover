@@ -28,6 +28,7 @@ class QLabel;
 class QPushButton;
 
 class Application;
+class ClickableLabel;
 
 // Widget for showing details about a single application
 class ApplicationWidget : public QScrollArea
@@ -42,7 +43,9 @@ private:
 
     QLabel *m_iconLabel;
     QLabel *m_nameLabel;
-    QLabel *m_descriptionLabel;
+    QLabel *m_shortDescLabel;
+    QLabel *m_longDescLabel;
+    ClickableLabel *m_screenshotLabel;
 };
 
 #endif

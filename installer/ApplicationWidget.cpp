@@ -32,6 +32,7 @@
 #include <LibQApt/Package>
 
 #include "Application.h"
+#include "ClickableLabel.h"
 
 ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
     : QScrollArea(parent)
@@ -57,12 +58,12 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
     m_nameLabel = new QLabel(nameDescWidget);
     m_nameLabel->setText(QLatin1Literal("<h1>") % app->name() % QLatin1Literal("</h1>"));
     m_nameLabel->setAlignment(Qt::AlignLeft);
-    m_descriptionLabel = new QLabel(nameDescWidget);
-    m_descriptionLabel->setText(app->comment());
-    m_descriptionLabel->setAlignment(Qt::AlignLeft);
+    m_shortDescLabel = new QLabel(nameDescWidget);
+    m_shortDescLabel->setText(app->comment());
+    m_shortDescLabel->setAlignment(Qt::AlignLeft);
 
     nameDescLayout->addWidget(m_nameLabel);
-    nameDescLayout->addWidget(m_descriptionLabel);
+    nameDescLayout->addWidget(m_shortDescLabel);
 
     QWidget *headerSpacer = new QWidget(headerWidget);
     headerSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
@@ -71,12 +72,27 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
     headerLayout->addWidget(nameDescWidget);
     headerLayout->addWidget(headerSpacer);
 
+    // Long description and Screenshot
+    QWidget *body = new QWidget(widget);
+    QHBoxLayout *bodyLayout = new QHBoxLayout(body);
+
+    m_longDescLabel = new QLabel(body);
+    m_longDescLabel->setWordWrap(true);
+    m_longDescLabel->setText(app->package()->longDescription());
+    m_screenshotLabel = new ClickableLabel(body);
+    m_screenshotLabel->setMinimumSize(170,150);
+    m_screenshotLabel->setPixmap(KIcon(app->icon()).pixmap(48,48)); // FIXME: Use screenshot
+
+    bodyLayout->addWidget(m_longDescLabel);
+    bodyLayout->addWidget(m_screenshotLabel);
+
     // Spacer
     QWidget *verticalSpacer = new QWidget(widget);
     verticalSpacer->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
 
 
     layout->addWidget(headerWidget);
+    layout->addWidget(body);
     layout->addWidget(verticalSpacer);
 
     setWidget(widget);

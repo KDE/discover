@@ -13,6 +13,7 @@ set(muon_installer_SRCS
     CategoryView/Category.cpp
     CategoryView/CategoryView.cpp
     CategoryView/CategoryDrawer.cpp
+    ClickableLabel.cpp
     ViewSwitcher.cpp)
 
 kde4_add_executable(muon-installer ${muon_installer_SRCS})
