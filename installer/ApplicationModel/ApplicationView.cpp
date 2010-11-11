@@ -51,6 +51,13 @@ ApplicationView::ApplicationView(QWidget *parent, ApplicationBackend *appBackend
     m_treeView->setModel(m_proxyModel);
     ApplicationDelegate *delegate = new ApplicationDelegate(m_treeView);
     m_treeView->setItemDelegate(delegate);
+
+    connect(delegate, SIGNAL(infoButtonClicked(Application *)),
+            this, SIGNAL(infoButtonClicked(Application *)));
+    connect(delegate, SIGNAL(installButtonClicked(Application *)),
+            this, SIGNAL(installButtonClicked(Application *)));
+    connect(delegate, SIGNAL(removeButtonClicked(Application *)),
+            this, SIGNAL(removeButtonClicked(Application *)));
 }
 
 ApplicationView::~ApplicationView()
@@ -61,7 +68,6 @@ void ApplicationView::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
     m_appModel->setMaxPopcon(m_appBackend->maxPopconScore());
-    kDebug() << m_appBackend->maxPopconScore();
     m_appModel->setApplications(m_appBackend->applicationList());
     m_proxyModel->setBackend(backend);
     m_treeView->setSortingEnabled(true);

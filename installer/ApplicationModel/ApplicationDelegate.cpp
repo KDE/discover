@@ -26,7 +26,6 @@
 #include <QtGui/QPainter>
 #include <QtGui/QPushButton>
 #include <QtGui/QTreeView>
-#include <QtGui/QVBoxLayout>
 
 // KDE includes
 #include <KDebug>
@@ -39,6 +38,7 @@
 // LibQApt includes
 #include <LibQApt/Package>
 
+#include "ApplicationExtender.h"
 #include "ApplicationModel.h"
 #include "ApplicationProxyModel.h"
 
@@ -51,7 +51,6 @@
 ApplicationDelegate::ApplicationDelegate(QAbstractItemView *parent)
   : KExtendableItemDelegate(parent),
     // loads it here to be faster when displaying items
-    m_installIcon("download"),
     m_installString(i18n("Install")),
     m_removeIcon("edit-delete"),
     m_removeString(i18n("Remove")),
@@ -251,35 +250,28 @@ void ApplicationDelegate::itemActivated(QModelIndex index)
     }
 
     if (isExtended(m_oldIndex)) {
+        disconnect(m_extender, SIGNAL(infoButtonClicked(Application *)),
+                   this, SIGNAL(infoButtonClicked(Application *)));
+        disconnect(m_extender, SIGNAL(installButtonClicked(Application *)),
+                   this, SIGNAL(installButtonClicked(Application *)));
+        disconnect(m_extender, SIGNAL(removeButtonClicked(Application *)),
+                   this, SIGNAL(removeButtonClicked(Application *)));
         contractItem(m_oldIndex);
+
+        m_extender->deleteLater();
+        m_extender = 0;
     }
 
     Application *app = static_cast<const ApplicationProxyModel*>(index.model())->applicationAt(index);
 
     QTreeView *view = static_cast<QTreeView*>(parent());
-    m_extender = new QWidget(view);
-
-    QHBoxLayout *layout = new QHBoxLayout(m_extender);
-    m_extender->setLayout(layout);
-
-    QPushButton *infoButton = new QPushButton(m_extender);
-    infoButton->setText(i18n("More Info"));
-    layout->addWidget(infoButton);
-
-    QWidget *buttonSpacer = new QWidget(m_extender);
-    buttonSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Maximum);
-    layout->addWidget(buttonSpacer);
-
-    QPushButton *actionButton = new QPushButton(m_extender);
-
-    if (app->package()->isInstalled()) {
-        actionButton->setIcon(m_removeIcon);
-        actionButton->setText(m_removeString);
-    } else {
-        actionButton->setIcon(m_installIcon);
-        actionButton->setText(m_installString);
-    }
-    layout->addWidget(actionButton);
+    m_extender = new ApplicationExtender(view, app);
+    connect(m_extender, SIGNAL(infoButtonClicked(Application *)),
+            this, SIGNAL(infoButtonClicked(Application *)));
+    connect(m_extender, SIGNAL(installButtonClicked(Application *)),
+            this, SIGNAL(installButtonClicked(Application *)));
+    connect(m_extender, SIGNAL(removeButtonClicked(Application *)),
+            this, SIGNAL(removeButtonClicked(Application *)));
 
     extendItem(m_extender, index);
     m_oldIndex = index;

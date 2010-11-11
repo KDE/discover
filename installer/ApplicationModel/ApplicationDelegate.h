@@ -27,6 +27,9 @@
 
 class KIconLoader;
 
+class Application;
+class ApplicationExtender;
+
 /**
  * Delegate for displaying the packages
  */
@@ -54,7 +57,7 @@ private:
     QSize   m_buttonIconSize;
     KIcon   m_unknownIcon;
 
-    QWidget *m_extender;
+    ApplicationExtender *m_extender;
     mutable QPersistentModelIndex m_oldIndex;
 
 public Q_SLOTS:
@@ -62,6 +65,9 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     void showExtendItem(const QModelIndex &index);
+    void infoButtonClicked(Application *app);
+    void installButtonClicked(Application *app);
+    void removeButtonClicked(Application *app);
 };
 
 #endif
