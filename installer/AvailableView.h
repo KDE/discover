@@ -21,19 +21,56 @@
 #ifndef AVAILABLEVIEW_H
 #define AVAILABLEVIEW_H
 
+#include <QModelIndex>
 #include <QtGui/QStackedWidget>
 
+class QStandardItemModel;
+
+class ApplicationBackend;
+class Category;
 class CategoryView;
+
+namespace QApt {
+    class Backend;
+}
+
+enum CategoryModelRole {
+    CategoryTypeRole = Qt::UserRole + 1,
+    AndOrFilterRole = Qt::UserRole + 2,
+    NotFilterRolr = Qt::UserRole + 3
+};
+
+enum CatViewType {
+    /// An invalid type
+    InvalidType = 0,
+    /// An AppView since there are no sub-cats
+    CategoryType = 1,
+    /// A SubCategoryView
+    SubCatType = 2
+};
 
 class AvailableView : public QStackedWidget
 {
     Q_OBJECT
 public:
-    AvailableView(QWidget *parent);
+    AvailableView(QWidget *parent, ApplicationBackend *m_appBackend);
     ~AvailableView();
 
 private:
+    QApt::Backend *m_backend;
+    ApplicationBackend *m_appBackend;
+
     CategoryView *m_categoryView;
+    QHash<QModelIndex, QWidget *> m_viewHash;
+    QStandardItemModel *m_categoryModel;
+    QList<Category *> m_categoryList;
+
+public Q_SLOTS:
+    void setBackend(QApt::Backend *backend);
+
+private Q_SLOTS:
+    void populateCategories();
+    void changeView(const QModelIndex &index);
 };
 
 #endif

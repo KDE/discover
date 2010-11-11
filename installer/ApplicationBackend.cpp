@@ -18,47 +18,58 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef CATEGORY_H
-#define CATEGORY_H
+#include "ApplicationBackend.h"
 
-#include <QtCore/QList>
-#include <QtCore/QObject>
-#include <QtCore/QPair>
-#include <QtCore/QString>
-#include <QtXml/QDomNode>
+#include <QtCore/QDir>
+#include <QtCore/QStringList>
 
-enum FilterType {
-    InvalidFilter = 0,
-    CategoryFilter = 1,
-    PkgSectionFilter = 2,
-    PkgWildcardFilter = 3,
-    PkgNameFilter = 4
-};
+#include <LibQApt/Backend>
 
-class Category : public QObject
+#include "Application.h"
+
+ApplicationBackend::ApplicationBackend(QObject *parent)
+    : QObject(parent)
+    , m_backend(0)
 {
-    Q_OBJECT
-public:
-    explicit Category(QObject *parent, const QDomNode &node);
-    ~Category();
+}
 
-    QString name() const;
-    QString icon() const;
-    QList<QPair<FilterType, QString> > andOrFilters() const;
-    QList<QPair<FilterType, QString> > notFilters() const;
-    bool hasSubCategories() const;
-    QList<Category *> subCategories() const;
+ApplicationBackend::~ApplicationBackend()
+{
+}
 
-private:
-    QString m_name;
-    QString m_iconString;
-    QList<QPair<FilterType, QString> > m_andOrFilters;
-    QList<QPair<FilterType, QString> > m_notFilters;
-    bool m_hasSubCategories;
-    QList<Category *> m_subCategories;
+void ApplicationBackend::setBackend(QApt::Backend *backend)
+{
+    m_backend = backend;
+    reload();
+}
 
-    void parseData(const QDomNode &data);
-    QList<QPair<FilterType, QString> > parseIncludes(const QDomNode &data);
-};
+void ApplicationBackend::reload()
+{
+    qDeleteAll(m_appList);
+    QList<int> popconScores;
+    QDir appDir("/usr/share/app-install/desktop/");
+    QStringList fileList = appDir.entryList(QDir::Files);
+    foreach(const QString &fileName, fileList) {
+        Application *app = new Application("/usr/share/app-install/desktop/" + fileName, m_backend);
+        if (app->isValid()) {
+            m_appList << app;
+            popconScores << app->popconScore();
+        } else {
+            // Invalid .desktop file
+            // kDebug() << fileName;
+        }
+    }
+    qSort(popconScores);
 
-#endif
+    m_maxPopconScore = popconScores.last();
+}
+
+QList<Application *> ApplicationBackend::applicationList() const
+{
+    return m_appList;
+}
+
+int ApplicationBackend::maxPopconScore() const
+{
+    return m_maxPopconScore;
+}

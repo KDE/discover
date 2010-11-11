@@ -41,7 +41,7 @@ public:
     QString comment();
     QApt::Package *package();
     QString icon();
-    QString categories();
+    QList<QString> categories();
     int popconScore();
     bool isValid();
 

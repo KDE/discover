@@ -32,11 +32,12 @@
 #include "ApplicationModel.h"
 #include "ApplicationProxyModel.h"
 #include "ApplicationDelegate.h"
-#include "../ApplicationWindow.h"
+#include "../ApplicationBackend.h"
 
-ApplicationView::ApplicationView(ApplicationWindow *parent)
+ApplicationView::ApplicationView(QWidget *parent, ApplicationBackend *appBackend)
         : KVBox(parent)
-        , m_parent(parent)
+        , m_backend(0)
+        , m_appBackend(appBackend)
 {
     m_appModel = new ApplicationModel(this);
     m_proxyModel = new ApplicationProxyModel(this);
@@ -59,8 +60,9 @@ ApplicationView::~ApplicationView()
 void ApplicationView::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
-    m_appModel->setMaxPopcon(m_parent->maxPopconScore());
-    m_appModel->setApplications(m_parent->applicationList());
+    m_appModel->setMaxPopcon(m_appBackend->maxPopconScore());
+    kDebug() << m_appBackend->maxPopconScore();
+    m_appModel->setApplications(m_appBackend->applicationList());
     m_proxyModel->setBackend(backend);
     m_treeView->setSortingEnabled(true);
     m_treeView->sortByColumn(0, Qt::AscendingOrder);
@@ -73,8 +75,8 @@ void ApplicationView::reload()
     m_proxyModel->clear();
     m_proxyModel->setSourceModel(0);
 
-    m_appModel->setMaxPopcon(m_parent->maxPopconScore());
-    m_appModel->setApplications(m_parent->applicationList());
+    m_appModel->setMaxPopcon(m_appBackend->maxPopconScore());
+    m_appModel->setApplications(m_appBackend->applicationList());
 
     m_proxyModel->setSourceModel(m_appModel);
     m_proxyModel->parentDataChanged();
@@ -89,6 +91,16 @@ void ApplicationView::setStateFilter(QApt::Package::State state)
 void ApplicationView::setOriginFilter(const QString &origin)
 {
     m_proxyModel->setOriginFilter(origin);
+}
+
+void ApplicationView::setAndOrFilters(const QList<QPair<FilterType, QString> > &andFilters)
+{
+    m_proxyModel->setAndOrFilters(andFilters);
+}
+
+void ApplicationView::setNotFilters(const QList<QPair<FilterType, QString> > &notFilters)
+{
+    m_proxyModel->setNotFilters(notFilters);
 }
 
 #include "ApplicationView.moc"

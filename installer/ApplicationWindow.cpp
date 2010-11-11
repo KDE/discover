@@ -22,7 +22,6 @@
 
 // Qt includes
 #include <QStandardItemModel>
-#include <QtCore/QDir>
 #include <QtCore/QTimer>
 #include <QtGui/QSplitter>
 #include <QtGui/QStackedWidget>
@@ -34,6 +33,7 @@
 #include <LibQApt/Backend>
 
 // Own includes
+#include "ApplicationBackend.h"
 #include "Application.h"
 #include "AvailableView.h"
 #include "ViewSwitcher.h"
@@ -74,34 +74,22 @@ void ApplicationWindow::initGUI()
     m_viewSwitcher->setModel(m_viewModel);
 
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
-            this, SLOT(reload()));
+            this, SLOT(populateViews()));
+}
+
+void ApplicationWindow::initObject()
+{
+    m_appBackend = new ApplicationBackend(this);
+    connect(this, SIGNAL(backendReady(QApt::Backend *)),
+            m_appBackend, SLOT(setBackend(QApt::Backend *)));
+
+    MuonMainWindow::initObject();
 }
 
 void ApplicationWindow::reload()
 {
-    populateAppList();
+    m_appBackend->reload();
     populateViews();
-}
-
-void ApplicationWindow::populateAppList()
-{
-    qDeleteAll(m_appList);
-    QList<int> popconScores;
-    QDir appDir("/usr/share/app-install/desktop/");
-    QStringList fileList = appDir.entryList(QDir::Files);
-    foreach(const QString &fileName, fileList) {
-        Application *app = new Application("/usr/share/app-install/desktop/" + fileName, m_backend);
-        if (app->isValid()) {
-            m_appList << app;
-            popconScores << app->popconScore();
-        } else {
-            // Invalid .desktop file
-            // kDebug() << fileName;
-        }
-    }
-    qSort(popconScores);
-
-    m_maxPopconScore = popconScores.last();
 }
 
 void ApplicationWindow::populateViews()
@@ -211,7 +199,7 @@ void ApplicationWindow::changeView(const QModelIndex &index)
         case AppView: {
             QString originFilter = index.data(OriginFilterRole).toString();
             QApt::Package::State stateFilter = (QApt::Package::State)index.data(StateFilterRole).toInt();
-            view = new ApplicationView(this);
+            view = new ApplicationView(this, m_appBackend);
             ApplicationView *appView = static_cast<ApplicationView *>(view);
             m_viewStack->addWidget(view);
             appView->setBackend(m_backend);
@@ -220,7 +208,7 @@ void ApplicationWindow::changeView(const QModelIndex &index)
         }
         break;
         case CatView:
-            view = new AvailableView(this);
+            view = new AvailableView(this, m_appBackend);
             m_viewStack->addWidget(view);
             break;
         case HistoryView:
@@ -235,14 +223,9 @@ void ApplicationWindow::changeView(const QModelIndex &index)
     m_viewHash[index] = view;
 }
 
-int ApplicationWindow::maxPopconScore() const
+ApplicationBackend *ApplicationWindow::appBackend() const
 {
-    return m_maxPopconScore;
-}
-
-QList<Application *> ApplicationWindow::applicationList() const
-{
-    return m_appList;
+    return m_appBackend;
 }
 
 #include "ApplicationWindow.moc"

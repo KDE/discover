@@ -1,15 +1,16 @@
 set(muon_installer_SRCS
     main.cpp
     Application.cpp
+    ApplicationBackend.cpp
     ApplicationWindow.cpp
     ApplicationModel/ApplicationModel.cpp
     ApplicationModel/ApplicationProxyModel.cpp
     ApplicationModel/ApplicationDelegate.cpp
     ApplicationModel/ApplicationView.cpp
     AvailableView.cpp
-    CategoryModel/Category.cpp
-    CategoryModel/CategoryView.cpp
-    CategoryModel/CategoryDrawer.cpp
+    CategoryView/Category.cpp
+    CategoryView/CategoryView.cpp
+    CategoryView/CategoryDrawer.cpp
     ViewSwitcher.cpp)
 
 kde4_add_executable(muon-installer ${muon_installer_SRCS})

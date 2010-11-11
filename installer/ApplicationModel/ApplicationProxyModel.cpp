@@ -54,6 +54,18 @@ void ApplicationProxyModel::setOriginFilter(const QString &origin)
     invalidate();
 }
 
+void ApplicationProxyModel::setAndOrFilters(const QList<QPair<FilterType, QString> > &andFilters)
+{
+    m_andOrFilters = andFilters;
+    invalidate();
+}
+
+void ApplicationProxyModel::setNotFilters(const QList<QPair<FilterType, QString> > &notFilters)
+{
+    m_notFilters = notFilters;
+    invalidate();
+}
+
 bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
     Application *application = static_cast<ApplicationModel *>(sourceModel())->applicationAt(sourceModel()->index(sourceRow, 0, sourceParent));
@@ -72,6 +84,56 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
     if (!m_originFilter.isEmpty()) {
         if (application->package()->origin() != m_originFilter) {
             return false;
+        }
+    }
+
+    if (!m_andOrFilters.isEmpty()) {
+        QList<QPair<FilterType, QString> >::const_iterator filter = m_andOrFilters.constBegin();
+        while (filter != m_andOrFilters.constEnd()) {
+            switch ((*filter).first) {
+            case CategoryFilter:
+                if (!application->categories().contains((*filter).second)) {
+                    return false;
+                }
+                break;
+            case PkgSectionFilter:
+                break;
+            case PkgWildcardFilter:
+                break;
+            case PkgNameFilter:
+                break;
+            case InvalidFilter:
+            default:
+                break;
+            }
+
+            ++filter;
+        }
+    }
+
+    if (!m_notFilters.isEmpty()) {
+        QList<QPair<FilterType, QString> >::const_iterator filter = m_notFilters.constBegin();
+        while (filter != m_notFilters.constEnd()) {
+            switch ((*filter).first) {
+            case CategoryFilter:
+                if (application->categories().contains((*filter).second)) {
+                    kDebug() << (*filter).second;
+                    kDebug() << application->categories();
+                    return false;
+                }
+                break;
+            case PkgSectionFilter:
+                break;
+            case PkgWildcardFilter:
+                break;
+            case PkgNameFilter:
+                break;
+            case InvalidFilter:
+            default:
+                break;
+            }
+
+            ++filter;
         }
     }
 

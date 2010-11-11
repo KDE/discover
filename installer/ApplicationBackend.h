@@ -18,74 +18,37 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONWINDOW_H
-#define APPLICATIONWINDOW_H
+#ifndef APPLICATIONBACKEND_H
+#define APPLICATIONBACKEND_H
 
-// Own includes
-#include "../libmuon/MuonMainWindow.h"
+#include <QtCore/QList>
+#include <QtCore/QObject>
 
-class QModelIndex;
-class QSplitter;
-class QStackedWidget;
-class QStandardItemModel;
-class QTreeView;
-
-class Application;
-class ApplicationBackend;
-class ViewSwitcher;
-
-namespace QApt
-{
+namespace QApt {
     class Backend;
 }
 
-enum ViewModelRole {
-    /// A role for storing ViewType
-    ViewTypeRole = Qt::UserRole + 1,
-    /// A role for storing origin filter data
-    OriginFilterRole = Qt::UserRole + 2,
-    /// A role for storing state filter data
-    StateFilterRole = Qt::UserRole + 3
-};
+class Application;
 
-enum ViewType {
-   /// An invalid value
-   InvalidView = 0,
-   /// A simple ApplicationView that is filterable by status or origin
-   AppView = 1,
-   /// An ApplicationView that has a Categorical homepage
-   CatView = 2,
-   /// A CategoryView showing subcategories
-   SubCatView = 3,
-   /// A view for showing history
-   HistoryView = 4
-};
-
-class ApplicationWindow : public MuonMainWindow
+class ApplicationBackend : public QObject
 {
     Q_OBJECT
 public:
-    ApplicationWindow();
-    virtual ~ApplicationWindow();
+    explicit ApplicationBackend(QObject *parent);
+    ~ApplicationBackend();
 
-    ApplicationBackend *appBackend() const;
+    QList<Application *> applicationList() const;
+    int maxPopconScore() const;
 
 private:
-    ApplicationBackend *m_appBackend;
-    QSplitter *m_mainWidget;
-    QStackedWidget *m_viewStack;
-    ViewSwitcher *m_viewSwitcher;
-    QStandardItemModel *m_viewModel;
-    QHash<QModelIndex, QWidget *> m_viewHash;
+    QApt::Backend *m_backend;
 
-    int m_powerInhibitor;
+    QList<Application *> m_appList;
+    int m_maxPopconScore;
 
-private Q_SLOTS:
-    void initGUI();
-    void initObject();
+public Q_SLOTS:
+    void setBackend(QApt::Backend *backend);
     void reload();
-    void populateViews();
-    void changeView(const QModelIndex &index);
 };
 
 #endif

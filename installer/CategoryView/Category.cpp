@@ -25,6 +25,7 @@
 Category::Category(QObject *parent, const QDomNode &data)
         : QObject(parent)
         , m_iconString("applications-other")
+        , m_hasSubCategories(false)
 {
     parseData(data);
     kDebug() << m_andOrFilters;
@@ -55,6 +56,7 @@ void Category::parseData(const QDomNode &data)
         } else if (tempElement.tagName() == QLatin1String("Menu")) {
             Category *subCategory = new Category(this, node);
             m_subCategories << subCategory;
+            m_hasSubCategories = true;
         } else if (tempElement.tagName() == QLatin1String("Include")) {
             parseIncludes(tempElement);
         }

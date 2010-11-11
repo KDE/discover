@@ -108,9 +108,10 @@ QString Application::icon()
     return icon;
 }
 
-QString Application::categories()
+QList<QString> Application::categories()
 {
-    return getField("Categories");
+    QString categoryString = getField("Categories");
+    return categoryString.split(';');
 }
 
 int Application::popconScore()

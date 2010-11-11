@@ -21,17 +21,21 @@
 #ifndef APPLICATIONVIEW_H
 #define APPLICATIONVIEW_H
 
+#include <QPair>
+
 #include <KVBox>
 
 #include <LibQApt/Package>
+
+#include "../CategoryView/Category.h"
 
 class QTreeView;
 
 class KPixmapSequenceOverlayPainter;
 
+class ApplicationBackend;
 class ApplicationModel;
 class ApplicationProxyModel;
-class ApplicationWindow;
 
 namespace QApt {
     class Backend;
@@ -41,12 +45,12 @@ class ApplicationView : public KVBox
 {
     Q_OBJECT
 public:
-    ApplicationView(ApplicationWindow *parent);
+    ApplicationView(QWidget *parent, ApplicationBackend *appBackend);
     ~ApplicationView();
 
 private:
     QApt::Backend *m_backend;
-    ApplicationWindow *m_parent;
+    ApplicationBackend *m_appBackend;
     ApplicationModel *m_appModel;
     ApplicationProxyModel *m_proxyModel;
 
@@ -56,8 +60,11 @@ private:
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void reload();
+
     void setStateFilter(QApt::Package::State state);
     void setOriginFilter(const QString &origin);
+    void setAndOrFilters(const QList<QPair<FilterType, QString> > &andFilters);
+    void setNotFilters(const QList<QPair<FilterType, QString> > &notFilters);
 };
 
 #endif
