@@ -24,7 +24,6 @@
 #include <KDebug>
 #include <KLocale>
 #include <KExtendableItemDelegate>
-#include <KDebug>
 
 #include <LibQApt/Package>
 
