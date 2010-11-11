@@ -58,8 +58,6 @@ AvailableView::AvailableView(QWidget *parent)
 
         node = node.nextSibling();
     }
-//     Category *accessories = new Category(this, menuList.at(0).childNodes().at(0));
-//     kDebug() << accessories->name();
 
     QStandardItemModel *categoryModel = new QStandardItemModel(this);
 
