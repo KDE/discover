@@ -1,0 +1,4 @@
+File=muon-installer.kcfg
+ClassName=MuonInstallerSettings
+Singleton=true
+Mutators=true

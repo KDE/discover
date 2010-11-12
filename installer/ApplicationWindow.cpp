@@ -39,6 +39,7 @@
 #include "AvailableView.h"
 #include "ViewSwitcher.h"
 #include "ApplicationModel/ApplicationView.h"
+#include "MuonInstallerSettings.h"
 
 ApplicationWindow::ApplicationWindow()
     : MuonMainWindow()
@@ -50,6 +51,7 @@ ApplicationWindow::ApplicationWindow()
 
 ApplicationWindow::~ApplicationWindow()
 {
+    MuonInstallerSettings::self()->writeConfig();
 }
 
 void ApplicationWindow::initGUI()
@@ -69,13 +71,17 @@ void ApplicationWindow::initGUI()
 
     // Set up the main pane
     m_viewStack = new QStackedWidget(this);
+    m_viewStack->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
     m_mainWidget->addWidget(m_viewStack);
+    loadSplitterSizes();
 
     m_viewModel = new QStandardItemModel(this);
     m_viewSwitcher->setModel(m_viewModel);
 
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
             this, SLOT(populateViews()));
+
+    setupGUI();
 }
 
 void ApplicationWindow::initObject()
@@ -85,6 +91,22 @@ void ApplicationWindow::initObject()
             m_appBackend, SLOT(setBackend(QApt::Backend *)));
 
     MuonMainWindow::initObject();
+}
+
+void ApplicationWindow::loadSplitterSizes()
+{
+    QList<int> sizes = MuonInstallerSettings::self()->splitterSizes();
+
+    if (sizes.isEmpty()) {
+        sizes << 115 << (this->width() - 115);
+    }
+    m_mainWidget->setSizes(sizes);
+}
+
+void ApplicationWindow::saveSplitterSizes()
+{
+    MuonInstallerSettings::self()->setSplitterSizes(m_mainWidget->sizes());
+    MuonInstallerSettings::self()->writeConfig();
 }
 
 void ApplicationWindow::reload()

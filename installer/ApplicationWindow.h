@@ -84,6 +84,8 @@ private:
 private Q_SLOTS:
     void initGUI();
     void initObject();
+    void loadSplitterSizes();
+    void saveSplitterSizes();
     void reload();
     void populateViews();
     void changeView(const QModelIndex &index);

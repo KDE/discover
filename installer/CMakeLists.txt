@@ -16,6 +16,8 @@ set(muon_installer_SRCS
     ClickableLabel.cpp
     ViewSwitcher.cpp)
 
+kde4_add_kcfg_files(muon_installer_SRCS GENERATE_MOC config/MuonInstallerSettings.kcfgc)
+
 kde4_add_executable(muon-installer ${muon_installer_SRCS})
 
 target_link_libraries(muon-installer ${KDE4_KDEUI_LIBS}
@@ -32,5 +34,6 @@ install(TARGETS muon-installer ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 #FIXME
 # install( PROGRAMS muon-installer.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR} )
-# install( FILES muon-installerui.rc  DESTINATION  ${DATA_INSTALL_DIR}/muon )
-install ( FILES categories.xml DESTINATION ${DATA_INSTALL_DIR}/muon-installer )
+install(FILES muon-installerui.rc  DESTINATION  ${DATA_INSTALL_DIR}/muon-installer)
+install(FILES categories.xml DESTINATION ${DATA_INSTALL_DIR}/muon-installer)
+install(FILES config/muon-installer.kcfg DESTINATION ${KCFG_INSTALL_DIR})
