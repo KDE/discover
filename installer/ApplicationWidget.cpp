@@ -33,6 +33,8 @@
 #include <KIO/Job>
 #include <KJob>
 #include <KLocale>
+#include <KPixmapSequence>
+#include <kpixmapsequenceoverlaypainter.h>
 #include <KTemporaryFile>
 #include <KDebug>
 
@@ -98,19 +100,14 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
     m_screenshotLabel->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     m_screenshotLabel->setMinimumSize(170, 130);
 
-    GraphicsOpacityDropShadowEffect *shadow = new GraphicsOpacityDropShadowEffect(m_screenshotLabel);
-    shadow->setBlurRadius(BLUR_RADIUS);
-    shadow->setOpacity(0);
-    shadow->setOffset(2);
-    shadow->setColor(QApplication::palette().dark().color());
-    m_screenshotLabel->setGraphicsEffect(shadow);
+    m_throbberWidget = new KPixmapSequenceOverlayPainter(m_screenshotLabel);
+    m_throbberWidget->setSequence(KPixmapSequence("process-working", 22));
+    m_throbberWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    m_throbberWidget->setWidget(m_screenshotLabel);
+    m_throbberWidget->start();
+
     fetchScreenshot(QApt::Thumbnail);
     connect(m_screenshotLabel, SIGNAL(clicked()), this, SLOT(screenshotLabelClicked()));
-
-    m_fadeScreenshot = new QPropertyAnimation(shadow, "opacity");
-    m_fadeScreenshot->setDuration(500);
-    m_fadeScreenshot->setStartValue(qreal(0));
-    m_fadeScreenshot->setEndValue(qreal(1));
 
     bodyLayout->addWidget(m_longDescLabel);
     bodyLayout->addWidget(m_screenshotLabel);
@@ -252,11 +249,24 @@ void ApplicationWidget::fetchScreenshot(QApt::ScreenshotType screenshotType)
 
 void ApplicationWidget::thumbnailFetched(KJob *job)
 {
+    m_throbberWidget->stop();
     if (job->error()) {
         m_screenshotLabel->hide();
         return;
     }
-    m_screenshotLabel->show();
+
+    GraphicsOpacityDropShadowEffect *shadow = new GraphicsOpacityDropShadowEffect(m_screenshotLabel);
+    shadow->setBlurRadius(BLUR_RADIUS);
+    shadow->setOpacity(0);
+    shadow->setOffset(2);
+    shadow->setColor(QApplication::palette().dark().color());
+    m_screenshotLabel->setGraphicsEffect(shadow);
+
+    m_fadeScreenshot = new QPropertyAnimation(shadow, "opacity");
+    m_fadeScreenshot->setDuration(500);
+    m_fadeScreenshot->setStartValue(qreal(0));
+    m_fadeScreenshot->setEndValue(qreal(1));
+
     m_screenshotLabel->setPixmap(QPixmap(m_screenshotFile->fileName()).scaled(160,120, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     m_screenshotLabel->setCursor(Qt::PointingHandCursor);
     fadeInScreenshot();

@@ -30,6 +30,7 @@ class QPropertyAnimation;
 class QPushButton;
 
 class KJob;
+class KPixmapSequenceOverlayPainter;
 class KTemporaryFile;
 
 class Application;
@@ -59,6 +60,7 @@ private:
 
     QPropertyAnimation *m_fadeDetails;
     QPropertyAnimation *m_fadeScreenshot;
+    KPixmapSequenceOverlayPainter *m_throbberWidget;
 
     KTemporaryFile *m_screenshotFile;
 
