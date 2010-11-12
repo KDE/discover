@@ -23,6 +23,7 @@
 
 // Qt includes
 #include <QtGui/QScrollArea>
+#include <LibQApt/Globals>
 
 class QLabel;
 class QPushButton;
@@ -57,8 +58,10 @@ private:
     KTemporaryFile *m_screenshotFile;
 
 private Q_SLOTS:
-    void fetchScreenshot();
+    void fetchScreenshot(QApt::ScreenshotType screenshotType);
+    void thumbnailFetched(KJob *job);
     void screenshotFetched(KJob *job);
+    void screenshotLabelClicked();
 };
 
 #endif

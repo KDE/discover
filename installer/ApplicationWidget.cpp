@@ -20,6 +20,7 @@
 
 #include "ApplicationWidget.h"
 
+#include <QApplication>
 #include <QtCore/QStringBuilder>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QLabel>
@@ -32,12 +33,15 @@
 #include <KJob>
 #include <KLocale>
 #include <KTemporaryFile>
+#include <KDebug>
 
 #include <LibQApt/Package>
-#include <LibQApt/Globals>
 
 #include "Application.h"
 #include "ClickableLabel.h"
+#include "effects/GraphicsOpacityDropShadowEffect.h"
+
+#define BLUR_RADIUS 15
 
 ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
     : QScrollArea(parent)
@@ -58,7 +62,8 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
     headerWidget->setLayout(headerLayout);
 
     m_iconLabel = new QLabel(headerWidget);
-    // FIXME: Bigger if possible
+    // FIXME: Always keep label size at 48x48, and render the largest size
+    // we can up to that point. Otherwise some icons will be blurry
     m_iconLabel->setPixmap(KIcon(app->icon()).pixmap(48,48));
 
     QWidget *nameDescWidget = new QWidget(headerWidget);
@@ -68,7 +73,6 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
     m_nameLabel->setAlignment(Qt::AlignLeft);
     m_shortDescLabel = new QLabel(nameDescWidget);
     m_shortDescLabel->setText(app->comment());
-    m_shortDescLabel->setAlignment(Qt::AlignLeft);
 
     nameDescLayout->addWidget(m_nameLabel);
     nameDescLayout->addWidget(m_shortDescLabel);
@@ -87,9 +91,18 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
     m_longDescLabel = new QLabel(body);
     m_longDescLabel->setWordWrap(true);
     m_longDescLabel->setText(app->package()->longDescription());
+    m_longDescLabel->setAlignment(Qt::AlignLeft | Qt::AlignTop);
+
     m_screenshotLabel = new ClickableLabel(body);
-    m_screenshotLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
-    fetchScreenshot();
+    m_screenshotLabel->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    m_screenshotLabel->setMinimumSize(170, 130);
+    GraphicsOpacityDropShadowEffect *shadow = new GraphicsOpacityDropShadowEffect(m_screenshotLabel);
+    shadow->setBlurRadius(BLUR_RADIUS);
+    shadow->setOffset(2);
+    shadow->setColor(QApplication::palette().dark().color());
+    m_screenshotLabel->setGraphicsEffect(shadow);
+    fetchScreenshot(QApt::Thumbnail);
+    connect(m_screenshotLabel, SIGNAL(clicked()), this, SLOT(screenshotLabelClicked()));
 
     bodyLayout->addWidget(m_longDescLabel);
     bodyLayout->addWidget(m_screenshotLabel);
@@ -173,7 +186,7 @@ ApplicationWidget::~ApplicationWidget()
 {
 }
 
-void ApplicationWidget::fetchScreenshot()
+void ApplicationWidget::fetchScreenshot(QApt::ScreenshotType screenshotType)
 {
     if (m_screenshotFile) {
         m_screenshotFile->deleteLater();
@@ -184,20 +197,48 @@ void ApplicationWidget::fetchScreenshot()
     m_screenshotFile->setSuffix(".png");
     m_screenshotFile->open();
 
-    KIO::FileCopyJob *getJob = KIO::file_copy(m_app->package()->screenshotUrl(QApt::Thumbnail),
+    KIO::FileCopyJob *getJob = KIO::file_copy(m_app->package()->screenshotUrl(screenshotType),
                                m_screenshotFile->fileName(), -1, KIO::Overwrite | KIO::HideProgressInfo);
-    connect(getJob, SIGNAL(result(KJob *)),
+
+    switch (screenshotType) {
+    case QApt::Thumbnail:
+        connect(getJob, SIGNAL(result(KJob *)),
+            this, SLOT(thumbnailFetched(KJob *)));
+        break;
+    case QApt::Screenshot:
+        connect(getJob, SIGNAL(result(KJob *)),
             this, SLOT(screenshotFetched(KJob *)));
+        break;
+    case QApt::UnknownType:
+    default:
+        break;
+    }
 }
 
-void ApplicationWidget::screenshotFetched(KJob *job)
+void ApplicationWidget::thumbnailFetched(KJob *job)
 {
     if (job->error()) {
         m_screenshotLabel->hide();
         return;
     }
     m_screenshotLabel->show();
-    m_screenshotLabel->setPixmap(QPixmap(m_screenshotFile->fileName()));
+    m_screenshotLabel->setPixmap(QPixmap(m_screenshotFile->fileName()).scaled(160,120, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    m_screenshotLabel->setCursor(Qt::PointingHandCursor);
+}
+
+void ApplicationWidget::screenshotFetched(KJob *job)
+{
+    if (job->error()) {
+        return;
+    }
+
+    // Create KDialog for showing screenie
+    kDebug() << "big screenie fetched";
+}
+
+void ApplicationWidget::screenshotLabelClicked()
+{
+    fetchScreenshot(QApt::Screenshot);
 }
 
 #include "ApplicationWidget.moc"
