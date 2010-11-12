@@ -142,9 +142,14 @@ void ApplicationDelegate::paint(QPainter *painter,
     p.translate(-option.rect.topLeft());
 
     // Main icon
+    QStringList overlays;
+    // FIXME: Copy dialog-ok.png to emblem-installed.png and install to muon-installer/icons
+    if (index.data(ApplicationModel::StatusRole).toInt() & QApt::Package::Installed) {
+        overlays << "installed";
+    }
     KIcon icon(KIconLoader::global()->loadIcon(index.data(ApplicationModel::IconRole).toString(),
                                                        KIconLoader::User, 0, KIconLoader::DefaultState,
-                                                       QStringList(), 0L, true));
+                                                       overlays, 0L, true));
     if (icon.isNull()) {
         icon = m_unknownIcon;
     }
