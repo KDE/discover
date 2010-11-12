@@ -24,6 +24,7 @@
 // Own includes
 #include "../libmuon/MuonMainWindow.h"
 
+class QAbstractItemView;
 class QModelIndex;
 class QSplitter;
 class QStackedWidget;
@@ -86,6 +87,7 @@ private Q_SLOTS:
     void reload();
     void populateViews();
     void changeView(const QModelIndex &index);
+    void selectFirstRow(const QAbstractItemView *itemView);
 };
 
 #endif

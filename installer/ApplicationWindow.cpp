@@ -23,6 +23,7 @@
 // Qt includes
 #include <QStandardItemModel>
 #include <QtCore/QTimer>
+#include <QtGui/QAbstractItemView>
 #include <QtGui/QSplitter>
 #include <QtGui/QStackedWidget>
 
@@ -187,6 +188,8 @@ void ApplicationWindow::populateViews()
         installedItem->appendRow(viewItem);
         m_viewHash[viewItem->index()] = 0;
     }
+
+    selectFirstRow(m_viewSwitcher);
 }
 
 void ApplicationWindow::changeView(const QModelIndex &index)
@@ -221,6 +224,13 @@ void ApplicationWindow::changeView(const QModelIndex &index)
     m_viewStack->setCurrentWidget(view);
 
     m_viewHash[index] = view;
+}
+
+void ApplicationWindow::selectFirstRow(const QAbstractItemView *itemView)
+{
+    QModelIndex firstRow = itemView->model()->index(0, 0);
+    itemView->selectionModel()->select(firstRow, QItemSelectionModel::Select);
+    changeView(firstRow);
 }
 
 ApplicationBackend *ApplicationWindow::appBackend() const
