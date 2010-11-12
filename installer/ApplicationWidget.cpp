@@ -107,6 +107,19 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
     bodyLayout->addWidget(m_longDescLabel);
     bodyLayout->addWidget(m_screenshotLabel);
 
+    m_websiteLabel = new QLabel(this);
+
+    QString homepageUrl = app->package()->homepage();
+    if (!homepageUrl.isEmpty()) {
+        QString websiteString = i18nc("@label visible text for an app's URL", "Website");
+        m_websiteLabel->setAlignment(Qt::AlignLeft);
+        m_websiteLabel->setText(QLatin1Literal("<a href=\"") % homepageUrl % "\">" %
+                                websiteString % QLatin1Literal("</a>"));
+        m_websiteLabel->setOpenExternalLinks(true);
+    } else {
+        m_websiteLabel->hide();
+    }
+
     // Technical details
     QWidget *detailsWidget = new QWidget(widget);
     QGridLayout *detailsGrid = new QGridLayout(detailsWidget);
@@ -176,6 +189,7 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
 
     layout->addWidget(headerWidget);
     layout->addWidget(body);
+    layout->addWidget(m_websiteLabel);
     layout->addWidget(detailsWidget);
     layout->addWidget(verticalSpacer);
 

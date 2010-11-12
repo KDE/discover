@@ -50,6 +50,7 @@ private:
     QLabel *m_shortDescLabel;
     QLabel *m_longDescLabel;
     ClickableLabel *m_screenshotLabel;
+    QLabel *m_websiteLabel;
     QLabel *m_size;
     QLabel *m_version;
     QLabel *m_license;
