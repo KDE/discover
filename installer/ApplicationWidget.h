@@ -26,6 +26,7 @@
 #include <LibQApt/Globals>
 
 class QLabel;
+class QPropertyAnimation;
 class QPushButton;
 
 class KJob;
@@ -56,9 +57,14 @@ private:
     QLabel *m_license;
     QLabel *m_support;
 
+    QPropertyAnimation *m_fadeDetails;
+    QPropertyAnimation *m_fadeScreenshot;
+
     KTemporaryFile *m_screenshotFile;
 
 private Q_SLOTS:
+    void fadeInDetails();
+    void fadeInScreenshot();
     void fetchScreenshot(QApt::ScreenshotType screenshotType);
     void thumbnailFetched(KJob *job);
     void screenshotFetched(KJob *job);

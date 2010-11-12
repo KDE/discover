@@ -21,6 +21,7 @@
 #include "ApplicationWidget.h"
 
 #include <QApplication>
+#include <QPropertyAnimation>
 #include <QtCore/QStringBuilder>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QLabel>
@@ -96,13 +97,20 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
     m_screenshotLabel = new ClickableLabel(body);
     m_screenshotLabel->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     m_screenshotLabel->setMinimumSize(170, 130);
+
     GraphicsOpacityDropShadowEffect *shadow = new GraphicsOpacityDropShadowEffect(m_screenshotLabel);
     shadow->setBlurRadius(BLUR_RADIUS);
+    shadow->setOpacity(0);
     shadow->setOffset(2);
     shadow->setColor(QApplication::palette().dark().color());
     m_screenshotLabel->setGraphicsEffect(shadow);
     fetchScreenshot(QApt::Thumbnail);
     connect(m_screenshotLabel, SIGNAL(clicked()), this, SLOT(screenshotLabelClicked()));
+
+    m_fadeScreenshot = new QPropertyAnimation(shadow, "opacity");
+    m_fadeScreenshot->setDuration(500);
+    m_fadeScreenshot->setStartValue(qreal(0));
+    m_fadeScreenshot->setEndValue(qreal(1));
 
     bodyLayout->addWidget(m_longDescLabel);
     bodyLayout->addWidget(m_screenshotLabel);
@@ -200,6 +208,18 @@ ApplicationWidget::~ApplicationWidget()
 {
 }
 
+void ApplicationWidget::fadeInDetails()
+{
+    m_fadeDetails->setDirection(QAbstractAnimation::Forward);
+    m_fadeDetails->start();
+}
+
+void ApplicationWidget::fadeInScreenshot()
+{
+    m_fadeScreenshot->setDirection(QAbstractAnimation::Forward);
+    m_fadeScreenshot->start();
+}
+
 void ApplicationWidget::fetchScreenshot(QApt::ScreenshotType screenshotType)
 {
     if (m_screenshotFile) {
@@ -238,6 +258,7 @@ void ApplicationWidget::thumbnailFetched(KJob *job)
     m_screenshotLabel->show();
     m_screenshotLabel->setPixmap(QPixmap(m_screenshotFile->fileName()).scaled(160,120, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     m_screenshotLabel->setCursor(Qt::PointingHandCursor);
+    fadeInScreenshot();
 }
 
 void ApplicationWidget::screenshotFetched(KJob *job)
