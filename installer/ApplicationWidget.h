@@ -27,6 +27,9 @@
 class QLabel;
 class QPushButton;
 
+class KJob;
+class KTemporaryFile;
+
 class Application;
 class ClickableLabel;
 
@@ -50,6 +53,12 @@ private:
     QLabel *m_version;
     QLabel *m_license;
     QLabel *m_support;
+
+    KTemporaryFile *m_screenshotFile;
+
+private Q_SLOTS:
+    void fetchScreenshot();
+    void screenshotFetched(KJob *job);
 };
 
 #endif

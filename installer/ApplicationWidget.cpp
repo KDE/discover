@@ -28,9 +28,13 @@
 
 #include <KGlobal>
 #include <KIcon>
+#include <KIO/Job>
+#include <KJob>
 #include <KLocale>
+#include <KTemporaryFile>
 
 #include <LibQApt/Package>
+#include <LibQApt/Globals>
 
 #include "Application.h"
 #include "ClickableLabel.h"
@@ -38,8 +42,11 @@
 ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
     : QScrollArea(parent)
     , m_app(app)
+    , m_screenshotFile(0)
 {
     setFrameShape(QFrame::NoFrame);
+    setWidgetResizable(true);
+    viewport()->setAutoFillBackground(false);
 
     QWidget *widget = new QWidget(this);
     QVBoxLayout *layout = new QVBoxLayout(widget);
@@ -52,7 +59,7 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
 
     m_iconLabel = new QLabel(headerWidget);
     // FIXME: Bigger if possible
-    m_iconLabel->setPixmap(KIcon(app->icon()).pixmap(32,32));
+    m_iconLabel->setPixmap(KIcon(app->icon()).pixmap(48,48));
 
     QWidget *nameDescWidget = new QWidget(headerWidget);
     QVBoxLayout *nameDescLayout = new QVBoxLayout(nameDescWidget);
@@ -81,7 +88,8 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
     m_longDescLabel->setWordWrap(true);
     m_longDescLabel->setText(app->package()->longDescription());
     m_screenshotLabel = new ClickableLabel(body);
-    m_screenshotLabel->setPixmap(KIcon(app->icon()).pixmap(48,48)); // FIXME: Use screenshot
+    m_screenshotLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+    fetchScreenshot();
 
     bodyLayout->addWidget(m_longDescLabel);
     bodyLayout->addWidget(m_screenshotLabel);
@@ -134,7 +142,6 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
     QLabel *supportLabel = new QLabel(detailsWidget);
     supportLabel->setText(i18nc("@label Label preceeding the app support", "Support:"));
     m_support = new QLabel(detailsWidget);
-    m_support->setWordWrap(true);
     if (app->package()->isSupported()) {
         m_support->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
                                  "Canonical provides critical updates for %1 until %2",
@@ -145,13 +152,13 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
                                  "may be provided by the Ubuntu community", app->name()));
     }
 
-    // Spacer
-    QWidget *verticalSpacer = new QWidget(widget);
-    verticalSpacer->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
-
     detailsGrid->addWidget(supportLabel, 3, 0, Qt::AlignRight);
     detailsGrid->addWidget(m_support, 3, 1, Qt::AlignLeft);
-    detailsGrid->setColumnStretch(1, 1);
+
+    detailsGrid->setColumnStretch(1,1);
+
+    QWidget *verticalSpacer = new QWidget(this);
+    verticalSpacer->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
 
 
     layout->addWidget(headerWidget);
@@ -164,6 +171,33 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
 
 ApplicationWidget::~ApplicationWidget()
 {
+}
+
+void ApplicationWidget::fetchScreenshot()
+{
+    if (m_screenshotFile) {
+        m_screenshotFile->deleteLater();
+        m_screenshotFile = 0;
+    }
+    m_screenshotFile = new KTemporaryFile;
+    m_screenshotFile->setPrefix("muon");
+    m_screenshotFile->setSuffix(".png");
+    m_screenshotFile->open();
+
+    KIO::FileCopyJob *getJob = KIO::file_copy(m_app->package()->screenshotUrl(QApt::Thumbnail),
+                               m_screenshotFile->fileName(), -1, KIO::Overwrite | KIO::HideProgressInfo);
+    connect(getJob, SIGNAL(result(KJob *)),
+            this, SLOT(screenshotFetched(KJob *)));
+}
+
+void ApplicationWidget::screenshotFetched(KJob *job)
+{
+    if (job->error()) {
+        m_screenshotLabel->hide();
+        return;
+    }
+    m_screenshotLabel->show();
+    m_screenshotLabel->setPixmap(QPixmap(m_screenshotFile->fileName()));
 }
 
 #include "ApplicationWidget.moc"
