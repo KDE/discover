@@ -207,12 +207,6 @@ ApplicationWidget::~ApplicationWidget()
 {
 }
 
-void ApplicationWidget::fadeInDetails()
-{
-    m_fadeDetails->setDirection(QAbstractAnimation::Forward);
-    m_fadeDetails->start();
-}
-
 void ApplicationWidget::fadeInScreenshot()
 {
     m_fadeScreenshot->setDirection(QAbstractAnimation::Forward);
