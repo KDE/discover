@@ -123,6 +123,7 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
         m_websiteLabel->setAlignment(Qt::AlignLeft);
         m_websiteLabel->setText(QLatin1Literal("<a href=\"") % homepageUrl % "\">" %
                                 websiteString % QLatin1Literal("</a>"));
+        m_websiteLabel->setToolTip(homepageUrl);
         m_websiteLabel->setOpenExternalLinks(true);
     } else {
         m_websiteLabel->hide();
