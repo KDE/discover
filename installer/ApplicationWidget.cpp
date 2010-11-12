@@ -43,6 +43,7 @@
 #include "Application.h"
 #include "ClickableLabel.h"
 #include "effects/GraphicsOpacityDropShadowEffect.h"
+#include "ScreenShotViewer.h"
 
 #define BLUR_RADIUS 15
 
@@ -278,8 +279,9 @@ void ApplicationWidget::screenshotFetched(KJob *job)
         return;
     }
 
-    // Create KDialog for showing screenie
-    kDebug() << "big screenie fetched";
+    ScreenShotViewer *view = new ScreenShotViewer(m_screenshotFile->fileName());
+    view->setWindowTitle(m_app->name());
+    view->show();
 }
 
 void ApplicationWidget::screenshotLabelClicked()

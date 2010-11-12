@@ -15,7 +15,8 @@ set(muon_installer_SRCS
     CategoryView/CategoryDrawer.cpp
     ClickableLabel.cpp
     effects/GraphicsOpacityDropShadowEffect.cpp
-    ViewSwitcher.cpp)
+    ViewSwitcher.cpp
+    ScreenShotViewer.cpp)
 
 kde4_add_kcfg_files(muon_installer_SRCS GENERATE_MOC config/MuonInstallerSettings.kcfgc)
 
