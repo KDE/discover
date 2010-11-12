@@ -28,8 +28,6 @@
 #include <QtGui/QPushButton>
 #include <QtGui/QVBoxLayout>
 
-#include <KConfig>
-#include <KConfigGroup>
 #include <KGlobal>
 #include <KIcon>
 #include <KIO/Job>
@@ -57,11 +55,6 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
     setFrameShape(QFrame::NoFrame);
     setWidgetResizable(true);
     viewport()->setAutoFillBackground(false);
-
-    KConfig animConfig("kwinrc", KConfig::NoGlobals);
-    KConfigGroup animGroup(&animConfig, "Compositing");
-    const double factors[] = { 0, 0.2, 0.5, 1, 2, 4, 20 };
-    m_animationSpeed = 150 * factors[animGroup.readEntry("AnimationSpeed", 3)];
 
     QWidget *widget = new QWidget(this);
     QVBoxLayout *layout = new QVBoxLayout(widget);
@@ -271,7 +264,7 @@ void ApplicationWidget::thumbnailFetched(KJob *job)
     m_screenshotLabel->setGraphicsEffect(shadow);
 
     m_fadeScreenshot = new QPropertyAnimation(shadow, "opacity");
-    m_fadeScreenshot->setDuration(m_animationSpeed);
+    m_fadeScreenshot->setDuration(500);
     m_fadeScreenshot->setStartValue(qreal(0));
     m_fadeScreenshot->setEndValue(qreal(1));
 
