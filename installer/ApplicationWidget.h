@@ -63,6 +63,7 @@ private:
     KPixmapSequenceOverlayPainter *m_throbberWidget;
 
     KTemporaryFile *m_screenshotFile;
+    int m_animationSpeed;
 
 private Q_SLOTS:
     void fadeInDetails();
