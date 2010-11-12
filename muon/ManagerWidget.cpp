@@ -22,7 +22,6 @@
 
 // Qt includes
 #include <QtGui/QHeaderView>
-#include <QtGui/QHBoxLayout>
 #include <QtGui/QLabel>
 #include <QtGui/QPushButton>
 #include <QtGui/QSplitter>
