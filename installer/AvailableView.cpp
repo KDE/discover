@@ -154,6 +154,7 @@ void AvailableView::changeView(const QModelIndex &index)
         case CategoryType: {
             view = new ApplicationView(this, m_appBackend);
             ApplicationView *appView = static_cast<ApplicationView *>(view);
+            connect(appView, SIGNAL(destroyed(QObject *)), this, SLOT(onViewDestroyed(QObject *)));
             m_viewStack->addWidget(view);
             appView->setBackend(m_backend);
             Category *category = m_categoryList.at(index.row());
@@ -195,17 +196,24 @@ void AvailableView::activateItem(BreadcrumbItem *item)
 
 void AvailableView::showAppDetails(Application *app)
 {
-  ApplicationWidget *widget = new ApplicationWidget(this, app);
-  // FIXME: Connect to destruction, which is handled in the breadcrumb since
-  // it carries parentage info. Otherwise m_viewStack will grow
+    ApplicationWidget *widget = new ApplicationWidget(this, app);
+    // FIXME: This leaks if we go back and choose another app
+    // Keep only one ApplicationWidget at a time as a member variable
+    // and only change it on showAppDetails
 
-  BreadcrumbItem *item = new BreadcrumbItem(m_breadcrumbWidget);
-  item->setText(app->name());
-  item->setAssociatedWidget(widget);
-  m_breadcrumbWidget->addLevel(item);
+    BreadcrumbItem *item = new BreadcrumbItem(m_breadcrumbWidget);
+    item->setText(app->name());
+    item->setAssociatedWidget(widget);
+    m_breadcrumbWidget->addLevel(item);
 
-  m_viewStack->addWidget(widget);
-  m_viewStack->setCurrentWidget(widget);
+    m_viewStack->addWidget(widget);
+    m_viewStack->setCurrentWidget(widget);
+}
+
+void AvailableView::onViewDestroyed(QObject *object)
+{
+    QWidget *view = static_cast<QWidget *>(object);
+    m_viewHash.remove(m_viewHash.key(view));
 }
 
 #include "AvailableView.moc"

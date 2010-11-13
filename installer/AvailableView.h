@@ -79,6 +79,7 @@ private Q_SLOTS:
     void changeView(const QModelIndex &index);
     void activateItem(BreadcrumbItem *item);
     void showAppDetails(Application *app);
+    void onViewDestroyed(QObject *view);
 };
 
 #endif
