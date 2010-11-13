@@ -44,6 +44,8 @@ public:
     */
     void removeItem(BreadcrumbItem *crumb);
 
+    BreadcrumbItem *breadcrumbForWidget(QWidget *widget);
+
 private:
     QList<BreadcrumbItem *> m_items;
 

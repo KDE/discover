@@ -80,4 +80,17 @@ void BreadcrumbWidget::removeItem(BreadcrumbItem *item)
     m_items.removeLast();
 }
 
+BreadcrumbItem *BreadcrumbWidget::breadcrumbForWidget(QWidget *widget)
+{
+    BreadcrumbItem *itemForWidget = 0;
+
+    foreach (BreadcrumbItem *item, m_items) {
+         if (widget == item->associatedWidget()) {
+             itemForWidget = item;
+         }
+    }
+
+    return itemForWidget;
+}
+
 #include "BreadcrumbWidget.moc"

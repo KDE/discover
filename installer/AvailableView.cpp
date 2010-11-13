@@ -144,8 +144,12 @@ void AvailableView::changeView(const QModelIndex &index)
 {
     QWidget *view = m_viewHash.value(index);
 
+    BreadcrumbItem *breadcrumbItem = m_breadcrumbWidget->breadcrumbForWidget(m_viewStack->currentWidget());
+    if (breadcrumbItem->hasChildren()) {
+        m_breadcrumbWidget->removeItem(breadcrumbItem->childItem());
+    }
+
     if (!view) {
-        kDebug() << index.data(CategoryTypeRole).toInt();
         switch (index.data(CategoryTypeRole).toInt()) {
         case CategoryType: {
             view = new ApplicationView(this, m_appBackend);
@@ -187,9 +191,6 @@ void AvailableView::activateItem(BreadcrumbItem *item)
     }
 
     m_viewStack->setCurrentWidget(toActivate);
-    if (item->hasChildren()) {
-        m_breadcrumbWidget->removeItem(item->childItem());
-    }
 }
 
 void AvailableView::showAppDetails(Application *app)
