@@ -63,6 +63,7 @@ AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)
     m_breadcrumbWidget = new BreadcrumbWidget(this);
     BreadcrumbItem *rootItem = new BreadcrumbItem(m_breadcrumbWidget);
     rootItem->setText(i18n("Get Software"));
+    rootItem->setIcon(KIcon("applications-other"));
     rootItem->setAssociatedWidget(m_categoryView);
     m_breadcrumbWidget->setRootItem(rootItem);
     connect(m_breadcrumbWidget, SIGNAL(itemActivated(BreadcrumbItem *)),
@@ -161,6 +162,7 @@ void AvailableView::changeView(const QModelIndex &index)
 
             BreadcrumbItem *item = new BreadcrumbItem(m_breadcrumbWidget);
             item->setText(category->name());
+            item->setIcon(KIcon(category->icon()));
             item->setAssociatedWidget(m_appView);
             m_breadcrumbWidget->addLevel(item);
 
@@ -211,6 +213,7 @@ void AvailableView::showAppDetails(Application *app)
 
     BreadcrumbItem *item = new BreadcrumbItem(m_breadcrumbWidget);
     item->setText(app->name());
+    item->setIcon(KIcon(app->icon()));
     item->setAssociatedWidget(m_appWidget);
     m_breadcrumbWidget->addLevel(item);
 

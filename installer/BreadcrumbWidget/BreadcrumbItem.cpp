@@ -68,6 +68,11 @@ void BreadcrumbItem::setText(const QString &text)
     m_button->setText(text);
 }
 
+void BreadcrumbItem::setIcon(const QIcon &icon)
+{
+    m_button->setIcon(icon);
+}
+
 void BreadcrumbItem::emitActivated()
 {
     emit activated(this);
