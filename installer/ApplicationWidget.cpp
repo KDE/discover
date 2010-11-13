@@ -133,7 +133,7 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
 
     // detailsGrid, row 0
     QLabel *sizeLabel = new QLabel(detailsWidget);
-    sizeLabel->setText(i18nc("@label Label preceeding the app size", "Total Size:"));
+    sizeLabel->setText(i18nc("@label Label preceding the app size", "Total Size:"));
     m_size = new QLabel(detailsWidget);
     if (!app->package()->isInstalled()) {
         m_size->setText(i18nc("@info app size", "%1 to download, %2 on disk",
@@ -148,7 +148,7 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
 
     // detailsGrid, row 1
     QLabel *versionLabel = new QLabel(detailsWidget);
-    versionLabel->setText(i18nc("@label Label preceeding the app version", "Version:"));
+    versionLabel->setText(i18nc("@label Label preceding the app version", "Version:"));
     m_version = new QLabel(detailsWidget);
     if (!app->package()->isInstalled()) {
          m_version->setText(app->package()->availableVersion());
@@ -160,7 +160,7 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
 
     // detailsGrid, row 2
     QLabel *licenseLabel = new QLabel(detailsWidget);
-    licenseLabel->setText(i18nc("@label Label preceeding the app license", "License:"));
+    licenseLabel->setText(i18nc("@label Label preceding the app license", "License:"));
     m_license = new QLabel(detailsWidget);
     if (app->package()->component() == "main" ||
         app->package()->component() == "universe") {
@@ -173,7 +173,7 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
 
     // detailsGrid, row 3
     QLabel *supportLabel = new QLabel(detailsWidget);
-    supportLabel->setText(i18nc("@label Label preceeding the app support", "Support:"));
+    supportLabel->setText(i18nc("@label Label preceding the app support", "Support:"));
     m_support = new QLabel(detailsWidget);
     if (app->package()->isSupported()) {
         m_support->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
