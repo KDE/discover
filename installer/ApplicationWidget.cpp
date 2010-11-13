@@ -160,7 +160,7 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
 
     // detailsGrid, row 2
     QLabel *licenseLabel = new QLabel(detailsWidget);
-    licenseLabel->setText(i18nc("@label Label preceeding the app license", "Liscense:"));
+    licenseLabel->setText(i18nc("@label Label preceeding the app license", "License:"));
     m_license = new QLabel(detailsWidget);
     if (app->package()->component() == "main" ||
         app->package()->component() == "universe") {
