@@ -20,7 +20,6 @@
 
 #include "AvailableView.h"
 
-#include <QStandardItemModel>
 #include <QtCore/QFile>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QStackedWidget>
@@ -75,29 +74,7 @@ AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)
 
     populateCategories();
 
-    m_categoryModel = new QStandardItemModel(this);
-
-    foreach (Category *category, m_categoryList) {
-        QStandardItem *categoryItem = new QStandardItem;
-        categoryItem->setText(category->name());
-        categoryItem->setIcon(KIcon(category->icon()));
-        categoryItem->setEditable(false);
-        categoryItem->setData(i18n("Categories"), KCategorizedSortFilterProxyModel::CategoryDisplayRole);
-
-        if (category->hasSubCategories()) {
-            categoryItem->setData(SubCatType, CategoryTypeRole);
-        } else {
-            categoryItem->setData(CategoryType, CategoryTypeRole);
-        }
-
-        m_categoryModel->appendRow(categoryItem);
-    }
-
-    KCategorizedSortFilterProxyModel *proxy = new KCategorizedSortFilterProxyModel(this);
-    proxy->setSourceModel(m_categoryModel);
-    proxy->setCategorizedModel(true);
-    proxy->sort(0);
-    m_categoryView->setModel(proxy);
+    m_categoryView->setCategories(m_categoryList);
 
     m_viewStack->addWidget(m_categoryView);
     m_viewStack->setCurrentWidget(m_categoryView);
@@ -151,6 +128,7 @@ void AvailableView::changeView(const QModelIndex &index)
 {
     QWidget *view = m_viewHash.value(index);
 
+    // Check if our current widget has children, and delete them if it does
     BreadcrumbItem *breadcrumbItem = m_breadcrumbWidget->breadcrumbForWidget(m_viewStack->currentWidget());
     if (breadcrumbItem->hasChildren() && m_viewHash[index] != view) {
         m_breadcrumbWidget->removeItem(breadcrumbItem->childItem());

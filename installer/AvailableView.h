@@ -40,21 +40,6 @@ namespace QApt {
     class Backend;
 }
 
-enum CategoryModelRole {
-    CategoryTypeRole = Qt::UserRole + 1,
-    AndOrFilterRole = Qt::UserRole + 2,
-    NotFilterRolr = Qt::UserRole + 3
-};
-
-enum CatViewType {
-    /// An invalid type
-    InvalidType = 0,
-    /// An AppView since there are no sub-cats
-    CategoryType = 1,
-    /// A SubCategoryView
-    SubCatType = 2
-};
-
 class AvailableView : public QWidget
 {
     Q_OBJECT

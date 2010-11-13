@@ -20,12 +20,18 @@
 
 #include "CategoryView.h"
 
+// Qt includes
+#include <QStandardItemModel>
+
 // KDE includes
+#include <KCategorizedSortFilterProxyModel>
 #include <KDialog>
 #include <KCategoryDrawer>
 #include <KFileItemDelegate>
 #include <KDE/KLocale>
 
+// Own includes
+#include "Category.h"
 #include "CategoryDrawer.h"
 
 CategoryView::CategoryView(QWidget *parent)
@@ -45,6 +51,14 @@ CategoryView::CategoryView(QWidget *parent)
     KFileItemDelegate *delegate = new KFileItemDelegate(this);
     delegate->setWrapMode(QTextOption::WordWrap);
     setItemDelegate(delegate);
+
+    m_categoryModel = new QStandardItemModel(this);
+
+    KCategorizedSortFilterProxyModel *proxy = new KCategorizedSortFilterProxyModel(this);
+    proxy->setSourceModel(m_categoryModel);
+    proxy->setCategorizedModel(true);
+    proxy->sort(0);
+    setModel(proxy);
 }
 
 void CategoryView::setModel(QAbstractItemModel *model)
@@ -61,6 +75,25 @@ void CategoryView::setModel(QAbstractItemModel *model)
     }
     setGridSize(QSize(maxWidth, maxHeight ));
     static_cast<KFileItemDelegate*>(itemDelegate())->setMaximumSize(QSize(maxWidth, maxHeight));
+}
+
+void CategoryView::setCategories(const QList<Category *> &categoryList)
+{
+    foreach (Category *category, categoryList) {
+        QStandardItem *categoryItem = new QStandardItem;
+        categoryItem->setText(category->name());
+        categoryItem->setIcon(KIcon(category->icon()));
+        categoryItem->setEditable(false);
+        categoryItem->setData(i18n("Categories"), KCategorizedSortFilterProxyModel::CategoryDisplayRole);
+
+        if (category->hasSubCategories()) {
+            categoryItem->setData(SubCatType, CategoryTypeRole);
+        } else {
+            categoryItem->setData(CategoryType, CategoryTypeRole);
+        }
+
+        m_categoryModel->appendRow(categoryItem);
+    }
 }
 
 #include "CategoryView.moc"
