@@ -151,7 +151,7 @@ void AvailableView::changeView(const QModelIndex &index)
     QWidget *view = m_viewHash.value(index);
 
     BreadcrumbItem *breadcrumbItem = m_breadcrumbWidget->breadcrumbForWidget(m_viewStack->currentWidget());
-    if (breadcrumbItem->hasChildren()) {
+    if (breadcrumbItem->hasChildren() && m_viewHash[index] != view) {
         m_breadcrumbWidget->removeItem(breadcrumbItem->childItem());
     }
 
