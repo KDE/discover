@@ -22,6 +22,8 @@
 
 #include <QStandardItemModel>
 #include <QtCore/QFile>
+#include <QtGui/QVBoxLayout>
+#include <QtGui/QStackedWidget>
 #include <QtXml/QDomDocument>
 
 #include <KCategorizedSortFilterProxyModel>
@@ -36,6 +38,8 @@
 #include "ApplicationWidget.h"
 #include "ApplicationBackend.h"
 #include "ApplicationModel/ApplicationView.h"
+#include "BreadcrumbWidget/BreadcrumbItem.h"
+#include "BreadcrumbWidget/BreadcrumbWidget.h"
 #include "CategoryView/Category.h"
 #include "CategoryView/CategoryView.h"
 
@@ -45,11 +49,24 @@ bool categoryLessThan(Category *c1, const Category *c2)
 }
 
 AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)
-        : QStackedWidget(parent)
+        : QWidget(parent)
         , m_backend(0)
         , m_appBackend(appBackend)
 {
-    m_categoryView = new CategoryView(this);
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    setLayout(layout);
+
+    m_viewStack = new QStackedWidget(this);
+
+    m_categoryView = new CategoryView(m_viewStack);
+
+    m_breadcrumbWidget = new BreadcrumbWidget(this);
+    BreadcrumbItem *rootItem = new BreadcrumbItem(m_breadcrumbWidget);
+    rootItem->setText(i18n("Get Software"));
+    rootItem->setAssociatedWidget(m_categoryView);
+    m_breadcrumbWidget->setRootItem(rootItem);
+    connect(m_breadcrumbWidget, SIGNAL(itemActivated(BreadcrumbItem *)),
+            this, SLOT(activateItem(BreadcrumbItem *)));
 
     populateCategories();
 
@@ -76,7 +93,11 @@ AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)
     proxy->sort(0);
     m_categoryView->setModel(proxy);
 
-    addWidget(m_categoryView);
+    m_viewStack->addWidget(m_categoryView);
+    m_viewStack->setCurrentWidget(m_categoryView);
+
+    layout->addWidget(m_breadcrumbWidget);
+    layout->addWidget(m_viewStack);
 
     connect(m_categoryView, SIGNAL(activated(const QModelIndex &)),
            this, SLOT(changeView(const QModelIndex &)));
@@ -129,9 +150,14 @@ void AvailableView::changeView(const QModelIndex &index)
         case CategoryType: {
             view = new ApplicationView(this, m_appBackend);
             ApplicationView *appView = static_cast<ApplicationView *>(view);
-            addWidget(view);
+            m_viewStack->addWidget(view);
             appView->setBackend(m_backend);
             Category *category = m_categoryList.at(index.row());
+
+            BreadcrumbItem *item = new BreadcrumbItem(m_breadcrumbWidget);
+            item->setText(category->name());
+            item->setAssociatedWidget(appView);
+            m_breadcrumbWidget->addLevel(item);
 
             appView->setAndOrFilters(category->andOrFilters());
             appView->setNotFilters(category->notFilters());
@@ -147,18 +173,38 @@ void AvailableView::changeView(const QModelIndex &index)
         }
     }
 
-    setCurrentWidget(view);
+    m_viewStack->setCurrentWidget(view);
 
     m_viewHash[index] = view;
+}
+
+void AvailableView::activateItem(BreadcrumbItem *item)
+{
+    QWidget *toActivate = item->associatedWidget();
+    if (!toActivate) {
+        // Screwed
+        return;
+    }
+
+    m_viewStack->setCurrentWidget(toActivate);
+    if (item->hasChildren()) {
+        m_breadcrumbWidget->removeItem(item->childItem());
+    }
 }
 
 void AvailableView::showAppDetails(Application *app)
 {
   ApplicationWidget *widget = new ApplicationWidget(this, app);
-  // TODO: Add to Widget navigation mapping, etc
+  // FIXME: Connect to destruction, which is handled in the breadcrumb since
+  // it carries parentage info. Otherwise m_viewStack will grow
 
-  addWidget(widget);
-  setCurrentWidget(widget);
+  BreadcrumbItem *item = new BreadcrumbItem(m_breadcrumbWidget);
+  item->setText(app->name());
+  item->setAssociatedWidget(widget);
+  m_breadcrumbWidget->addLevel(item);
+
+  m_viewStack->addWidget(widget);
+  m_viewStack->setCurrentWidget(widget);
 }
 
 #include "AvailableView.moc"

@@ -18,67 +18,41 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef AVAILABLEVIEW_H
-#define AVAILABLEVIEW_H
+#ifndef BREADCRUMBITEM_H
+#define BREADCRUMBITEM_H
 
-#include <QModelIndex>
-#include <QtGui/QWidget>
+#include <KHBox>
 
-class QStackedWidget;
-class QStandardItemModel;
+class QPushButton;
 
-class Application;
-class ApplicationBackend;
-class BreadcrumbItem;
-class BreadcrumbWidget;
-class Category;
-class CategoryView;
-
-namespace QApt {
-    class Backend;
-}
-
-enum CategoryModelRole {
-    CategoryTypeRole = Qt::UserRole + 1,
-    AndOrFilterRole = Qt::UserRole + 2,
-    NotFilterRolr = Qt::UserRole + 3
-};
-
-enum CatViewType {
-    /// An invalid type
-    InvalidType = 0,
-    /// An AppView since there are no sub-cats
-    CategoryType = 1,
-    /// A SubCategoryView
-    SubCatType = 2
-};
-
-class AvailableView : public QWidget
+// FIXME: Should be : public BreadcrumbButton, once it exists
+class BreadcrumbItem : public KHBox
 {
     Q_OBJECT
 public:
-    AvailableView(QWidget *parent, ApplicationBackend *m_appBackend);
-    ~AvailableView();
+    BreadcrumbItem(QWidget *parent);
+    ~BreadcrumbItem();
+
+    BreadcrumbItem *childItem() const;
+    QWidget *associatedWidget() const;
+    bool hasChildren() const;
+
+    void setChildItem(BreadcrumbItem *child);
+    void setAssociatedWidget(QWidget *widget);
+    void setText(const QString &text);
 
 private:
-    QApt::Backend *m_backend;
-    ApplicationBackend *m_appBackend;
+    BreadcrumbItem *m_childItem;
 
-    QStackedWidget *m_viewStack;
-    BreadcrumbWidget *m_breadcrumbWidget;
-    CategoryView *m_categoryView;
-    QHash<QModelIndex, QWidget *> m_viewHash;
-    QStandardItemModel *m_categoryModel;
-    QList<Category *> m_categoryList;
-
-public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
+    bool m_hasChildren;
+    QWidget *m_associatedWidget;
+    QPushButton *m_button;
 
 private Q_SLOTS:
-    void populateCategories();
-    void changeView(const QModelIndex &index);
-    void activateItem(BreadcrumbItem *item);
-    void showAppDetails(Application *app);
+    void emitActivated();
+
+Q_SIGNALS:
+    void activated(BreadcrumbItem *item);
 };
 
 #endif

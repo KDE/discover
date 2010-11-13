@@ -10,6 +10,8 @@ set(muon_installer_SRCS
     ApplicationModel/ApplicationExtender.cpp
     ApplicationModel/ApplicationView.cpp
     AvailableView.cpp
+    BreadcrumbWidget/BreadcrumbItem.cpp
+    BreadcrumbWidget/BreadcrumbWidget.cpp
     CategoryView/Category.cpp
     CategoryView/CategoryView.cpp
     CategoryView/CategoryDrawer.cpp

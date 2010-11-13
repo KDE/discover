@@ -18,67 +18,59 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef AVAILABLEVIEW_H
-#define AVAILABLEVIEW_H
+#include "BreadcrumbItem.h"
 
-#include <QModelIndex>
-#include <QtGui/QWidget>
+#include <QtGui/QPushButton>
 
-class QStackedWidget;
-class QStandardItemModel;
+BreadcrumbItem::BreadcrumbItem(QWidget *parent)
+    : KHBox(parent)
+    , m_hasChildren(false)
+{
+    m_button = new QPushButton(this);
+    hide();
 
-class Application;
-class ApplicationBackend;
-class BreadcrumbItem;
-class BreadcrumbWidget;
-class Category;
-class CategoryView;
-
-namespace QApt {
-    class Backend;
+    connect(m_button, SIGNAL(clicked()), this, SLOT(emitActivated()));
 }
 
-enum CategoryModelRole {
-    CategoryTypeRole = Qt::UserRole + 1,
-    AndOrFilterRole = Qt::UserRole + 2,
-    NotFilterRolr = Qt::UserRole + 3
-};
-
-enum CatViewType {
-    /// An invalid type
-    InvalidType = 0,
-    /// An AppView since there are no sub-cats
-    CategoryType = 1,
-    /// A SubCategoryView
-    SubCatType = 2
-};
-
-class AvailableView : public QWidget
+BreadcrumbItem::~BreadcrumbItem()
 {
-    Q_OBJECT
-public:
-    AvailableView(QWidget *parent, ApplicationBackend *m_appBackend);
-    ~AvailableView();
+}
 
-private:
-    QApt::Backend *m_backend;
-    ApplicationBackend *m_appBackend;
+BreadcrumbItem *BreadcrumbItem::childItem() const
+{
+    return m_childItem;
+}
 
-    QStackedWidget *m_viewStack;
-    BreadcrumbWidget *m_breadcrumbWidget;
-    CategoryView *m_categoryView;
-    QHash<QModelIndex, QWidget *> m_viewHash;
-    QStandardItemModel *m_categoryModel;
-    QList<Category *> m_categoryList;
+QWidget *BreadcrumbItem::associatedWidget() const
+{
+    return m_associatedWidget;
+}
 
-public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
+bool BreadcrumbItem::hasChildren() const
+{
+    return m_hasChildren;
+}
 
-private Q_SLOTS:
-    void populateCategories();
-    void changeView(const QModelIndex &index);
-    void activateItem(BreadcrumbItem *item);
-    void showAppDetails(Application *app);
-};
+void BreadcrumbItem::setChildItem(BreadcrumbItem *child)
+{
+    m_childItem = child;
+    // Setting a null pointer would technically make this false...
+    m_hasChildren = true;
+}
 
-#endif
+void BreadcrumbItem::setAssociatedWidget(QWidget *widget)
+{
+    m_associatedWidget = widget;
+}
+
+void BreadcrumbItem::setText(const QString &text)
+{
+    m_button->setText(text);
+}
+
+void BreadcrumbItem::emitActivated()
+{
+    emit activated(this);
+}
+
+#include "BreadcrumbItem.moc"

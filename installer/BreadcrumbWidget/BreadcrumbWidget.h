@@ -18,67 +18,42 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef AVAILABLEVIEW_H
-#define AVAILABLEVIEW_H
+#ifndef BREADCRUMBWIDGET_H
+#define BREADCRUMBWIDGET_H
 
-#include <QModelIndex>
-#include <QtGui/QWidget>
+#include <QtCore/QList>
 
-class QStackedWidget;
-class QStandardItemModel;
+#include <KHBox>
 
-class Application;
-class ApplicationBackend;
 class BreadcrumbItem;
-class BreadcrumbWidget;
-class Category;
-class CategoryView;
 
-namespace QApt {
-    class Backend;
-}
-
-enum CategoryModelRole {
-    CategoryTypeRole = Qt::UserRole + 1,
-    AndOrFilterRole = Qt::UserRole + 2,
-    NotFilterRolr = Qt::UserRole + 3
-};
-
-enum CatViewType {
-    /// An invalid type
-    InvalidType = 0,
-    /// An AppView since there are no sub-cats
-    CategoryType = 1,
-    /// A SubCategoryView
-    SubCatType = 2
-};
-
-class AvailableView : public QWidget
+class BreadcrumbWidget : public KHBox
 {
     Q_OBJECT
 public:
-    AvailableView(QWidget *parent, ApplicationBackend *m_appBackend);
-    ~AvailableView();
+    BreadcrumbWidget(QWidget *parent);
+    ~BreadcrumbWidget();
+
+    void setRootItem(BreadcrumbItem *root);
+    void addLevel(BreadcrumbItem *crumb);
+
+   /**
+    * Removes the given item and all children
+    *
+    * @param The \c BreadcrumbItem to remove
+    */
+    void removeItem(BreadcrumbItem *crumb);
 
 private:
-    QApt::Backend *m_backend;
-    ApplicationBackend *m_appBackend;
+    QList<BreadcrumbItem *> m_items;
 
-    QStackedWidget *m_viewStack;
-    BreadcrumbWidget *m_breadcrumbWidget;
-    CategoryView *m_categoryView;
-    QHash<QModelIndex, QWidget *> m_viewHash;
-    QStandardItemModel *m_categoryModel;
-    QList<Category *> m_categoryList;
-
-public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
+    KHBox *m_breadcrumbArea;
 
 private Q_SLOTS:
-    void populateCategories();
-    void changeView(const QModelIndex &index);
-    void activateItem(BreadcrumbItem *item);
-    void showAppDetails(Application *app);
+    void clearCrumbs();
+
+Q_SIGNALS:
+    void itemActivated(BreadcrumbItem *item);
 };
 
 #endif

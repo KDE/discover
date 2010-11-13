@@ -18,67 +18,66 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef AVAILABLEVIEW_H
-#define AVAILABLEVIEW_H
+#include "BreadcrumbWidget.h"
 
-#include <QModelIndex>
-#include <QtGui/QWidget>
+#include "BreadcrumbItem.h"
 
-class QStackedWidget;
-class QStandardItemModel;
+BreadcrumbWidget::BreadcrumbWidget(QWidget *parent)
+    : KHBox(parent)
+{
+    m_items.clear();
+    m_breadcrumbArea = new KHBox(this);
 
-class Application;
-class ApplicationBackend;
-class BreadcrumbItem;
-class BreadcrumbWidget;
-class Category;
-class CategoryView;
-
-namespace QApt {
-    class Backend;
+    QWidget *spacer = new QWidget(this);
+    spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 }
 
-enum CategoryModelRole {
-    CategoryTypeRole = Qt::UserRole + 1,
-    AndOrFilterRole = Qt::UserRole + 2,
-    NotFilterRolr = Qt::UserRole + 3
-};
-
-enum CatViewType {
-    /// An invalid type
-    InvalidType = 0,
-    /// An AppView since there are no sub-cats
-    CategoryType = 1,
-    /// A SubCategoryView
-    SubCatType = 2
-};
-
-class AvailableView : public QWidget
+BreadcrumbWidget::~BreadcrumbWidget()
 {
-    Q_OBJECT
-public:
-    AvailableView(QWidget *parent, ApplicationBackend *m_appBackend);
-    ~AvailableView();
+}
 
-private:
-    QApt::Backend *m_backend;
-    ApplicationBackend *m_appBackend;
+void BreadcrumbWidget::setRootItem(BreadcrumbItem *root)
+{
+    clearCrumbs();
+    addLevel(root);
+}
 
-    QStackedWidget *m_viewStack;
-    BreadcrumbWidget *m_breadcrumbWidget;
-    CategoryView *m_categoryView;
-    QHash<QModelIndex, QWidget *> m_viewHash;
-    QStandardItemModel *m_categoryModel;
-    QList<Category *> m_categoryList;
+void BreadcrumbWidget::clearCrumbs()
+{
+    if (!m_items.isEmpty()) {
+      foreach(BreadcrumbItem *item, m_items) {
+          item->hide();
+          item->deleteLater();
+      }
+    }
 
-public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
+    m_items.clear();
+}
 
-private Q_SLOTS:
-    void populateCategories();
-    void changeView(const QModelIndex &index);
-    void activateItem(BreadcrumbItem *item);
-    void showAppDetails(Application *app);
-};
+void BreadcrumbWidget::addLevel(BreadcrumbItem *item)
+{
+    if (!m_items.isEmpty()) {
+        m_items.last()->setChildItem(item);
+    }
 
-#endif
+    item->setParent(m_breadcrumbArea);
+    item->show();
+
+    m_items.append(item);
+    connect(item, SIGNAL(activated(BreadcrumbItem *)), this, SIGNAL(itemActivated(BreadcrumbItem *)));
+}
+
+void BreadcrumbWidget::removeItem(BreadcrumbItem *item)
+{
+    // Recursion ftw
+    if (item->hasChildren()){
+        removeItem(item->childItem());
+    }
+
+    item->hide();
+    item->associatedWidget()->deleteLater();
+    item->deleteLater();
+    m_items.removeLast();
+}
+
+#include "BreadcrumbWidget.moc"
