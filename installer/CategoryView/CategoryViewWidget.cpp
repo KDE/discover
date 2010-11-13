@@ -129,7 +129,7 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
 
 void CategoryViewWidget::onSubViewDestroyed()
 {
-//     m_subViewHash.remove(m_subView);
+    m_subViewHash.remove(m_subViewHash.key(m_subView));
 }
 
 #include "CategoryViewWidget.moc"
