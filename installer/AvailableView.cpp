@@ -36,7 +36,7 @@
 #include <LibQApt/Backend>
 
 #include "Application.h"
-#include "ApplicationWidget.h"
+#include "ApplicationDetailsWidget.h"
 #include "ApplicationBackend.h"
 #include "ApplicationModel/ApplicationView.h"
 #include "BreadcrumbWidget/BreadcrumbItem.h"
@@ -215,7 +215,7 @@ void AvailableView::showAppDetails(Application *app)
         }
     }
 
-    m_appWidget = new ApplicationWidget(this, app);
+    m_appDetailsWidget = new ApplicationDetailsWidget(this, app);
     // FIXME: This leaks if we go back and choose another app
     // Keep only one ApplicationWidget at a time as a member variable
     // and only change it on showAppDetails
@@ -223,12 +223,12 @@ void AvailableView::showAppDetails(Application *app)
     BreadcrumbItem *item = new BreadcrumbItem(m_breadcrumbWidget);
     item->setText(app->name());
     item->setIcon(KIcon(app->icon()));
-    item->setAssociatedWidget(m_appWidget);
+    item->setAssociatedWidget(m_appDetailsWidget);
     m_breadcrumbWidget->addLevel(item);
 
     parent->setChildItem(item);
-    m_viewStack->addWidget(m_appWidget);
-    m_viewStack->setCurrentWidget(m_appWidget);
+    m_viewStack->addWidget(m_appDetailsWidget);
+    m_viewStack->setCurrentWidget(m_appDetailsWidget);
 }
 
 void AvailableView::onViewDestroyed(QObject *object)

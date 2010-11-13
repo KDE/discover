@@ -2,8 +2,8 @@ set(muon_installer_SRCS
     main.cpp
     Application.cpp
     ApplicationBackend.cpp
+    ApplicationDetailsWidget.cpp
     ApplicationWindow.cpp
-    ApplicationWidget.cpp
     ApplicationModel/ApplicationModel.cpp
     ApplicationModel/ApplicationProxyModel.cpp
     ApplicationModel/ApplicationDelegate.cpp

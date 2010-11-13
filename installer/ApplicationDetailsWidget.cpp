@@ -18,7 +18,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "ApplicationWidget.h"
+#include "ApplicationDetailsWidget.h"
 
 #include <QApplication>
 #include <QPropertyAnimation>
@@ -47,7 +47,7 @@
 
 #define BLUR_RADIUS 15
 
-ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
+ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, Application *app)
     : QScrollArea(parent)
     , m_app(app)
     , m_screenshotFile(0)
@@ -203,17 +203,17 @@ ApplicationWidget::ApplicationWidget(QWidget *parent, Application *app)
     setWidget(widget);
 }
 
-ApplicationWidget::~ApplicationWidget()
+ApplicationDetailsWidget::~ApplicationDetailsWidget()
 {
 }
 
-void ApplicationWidget::fadeInScreenshot()
+void ApplicationDetailsWidget::fadeInScreenshot()
 {
     m_fadeScreenshot->setDirection(QAbstractAnimation::Forward);
     m_fadeScreenshot->start();
 }
 
-void ApplicationWidget::fetchScreenshot(QApt::ScreenshotType screenshotType)
+void ApplicationDetailsWidget::fetchScreenshot(QApt::ScreenshotType screenshotType)
 {
     if (m_screenshotFile) {
         m_screenshotFile->deleteLater();
@@ -242,7 +242,7 @@ void ApplicationWidget::fetchScreenshot(QApt::ScreenshotType screenshotType)
     }
 }
 
-void ApplicationWidget::thumbnailFetched(KJob *job)
+void ApplicationDetailsWidget::thumbnailFetched(KJob *job)
 {
     m_throbberWidget->stop();
     if (job->error()) {
@@ -267,7 +267,7 @@ void ApplicationWidget::thumbnailFetched(KJob *job)
     fadeInScreenshot();
 }
 
-void ApplicationWidget::screenshotFetched(KJob *job)
+void ApplicationDetailsWidget::screenshotFetched(KJob *job)
 {
     if (job->error()) {
         return;
@@ -278,11 +278,11 @@ void ApplicationWidget::screenshotFetched(KJob *job)
     view->show();
 }
 
-void ApplicationWidget::screenshotLabelClicked()
+void ApplicationDetailsWidget::screenshotLabelClicked()
 {
     fetchScreenshot(QApt::Screenshot);
 }
 
-#include "ApplicationWidget.moc"
+#include "ApplicationDetailsWidget.moc"
 
 

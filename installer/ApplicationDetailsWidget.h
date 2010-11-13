@@ -18,8 +18,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONWIDGET_H
-#define APPLICATIONWIDGET_H
+#ifndef APPLICATIONDETAILSWIDGET_H
+#define APPLICATIONDETAILSWIDGET_H
 
 // Qt includes
 #include <QtGui/QScrollArea>
@@ -37,12 +37,12 @@ class Application;
 class ClickableLabel;
 
 // Widget for showing details about a single application
-class ApplicationWidget : public QScrollArea
+class ApplicationDetailsWidget : public QScrollArea
 {
     Q_OBJECT
 public:
-    explicit ApplicationWidget(QWidget *parent, Application *app);
-    ~ApplicationWidget();
+    explicit ApplicationDetailsWidget(QWidget *parent, Application *app);
+    ~ApplicationDetailsWidget();
 
 private:
     Application *m_app;

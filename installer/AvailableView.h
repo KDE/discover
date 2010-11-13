@@ -30,7 +30,7 @@ class QStandardItemModel;
 class Application;
 class ApplicationBackend;
 class ApplicationView;
-class ApplicationWidget;
+class ApplicationDetailsWidget;
 class BreadcrumbItem;
 class BreadcrumbWidget;
 class Category;
@@ -73,7 +73,7 @@ private:
     QStandardItemModel *m_categoryModel;
     QList<Category *> m_categoryList;
     ApplicationView *m_appView;
-    ApplicationWidget *m_appWidget;
+    ApplicationDetailsWidget *m_appDetailsWidget;
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
