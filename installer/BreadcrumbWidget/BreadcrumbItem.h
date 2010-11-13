@@ -25,9 +25,9 @@
 
 class QIcon;
 
+class AbstractViewBase;
 class BreadcrumbItemButton;
 
-// FIXME: Should be : public BreadcrumbButton, once it exists
 class BreadcrumbItem : public KHBox
 {
     Q_OBJECT
@@ -36,11 +36,11 @@ public:
     ~BreadcrumbItem();
 
     BreadcrumbItem *childItem() const;
-    QWidget *associatedWidget() const;
+    AbstractViewBase *associatedView() const;
     bool hasChildren() const;
 
     void setChildItem(BreadcrumbItem *child);
-    void setAssociatedWidget(QWidget *widget);
+    void setAssociatedView(AbstractViewBase *view);
     void setText(const QString &text);
     void setIcon(const QIcon &icon);
     void setActive(bool active);
@@ -49,7 +49,7 @@ private:
     BreadcrumbItem *m_childItem;
 
     bool m_hasChildren;
-    QWidget *m_associatedWidget;
+    AbstractViewBase *m_associatedView;
     BreadcrumbItemButton *m_button;
 
 private Q_SLOTS:

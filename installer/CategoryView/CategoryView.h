@@ -21,30 +21,8 @@
 #ifndef CATEGORYVIEW_H
 #define CATEGORYVIEW_H
 
-#include <QtCore/QList>
-
 // KDE includes
 #include <KCategorizedView>
-
-class QStandardItemModel;
-
-class Category;
-
-enum CatViewType {
-    /// An invalid type
-    InvalidType = 0,
-    /// An AppView since there are no sub-cats
-    CategoryType = 1,
-    /// A SubCategoryView
-    SubCatType = 2
-};
-
-enum CategoryModelRole {
-    CategoryTypeRole = Qt::UserRole + 1,
-    AndOrFilterRole = Qt::UserRole + 2,
-    NotFilterRolr = Qt::UserRole + 3
-};
-
 
 class CategoryView : public KCategorizedView
 {
@@ -54,10 +32,6 @@ public:
     CategoryView(QWidget *parent=0);
 
     void setModel(QAbstractItemModel *model);
-    void setCategories(const QList<Category *> &categoryList);
-
-private:
-    QStandardItemModel *m_categoryModel;
 };
 
 #endif

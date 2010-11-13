@@ -18,49 +18,62 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "CategoryView.h"
+#ifndef CATEGORYVIEWWIDGET_H
+#define CATEGORYVIEWWIDGET_H
 
-// KDE includes
-#include <KDialog>
-#include <KCategoryDrawer>
-#include <KFileItemDelegate>
+#include "../AbstractViewBase.h"
 
-// Own includes
-#include "CategoryDrawer.h"
+#include <QModelIndex>
+#include <QtCore/QList>
 
-CategoryView::CategoryView(QWidget *parent)
-    : KCategorizedView(parent)
+class QIcon;
+class QStandardItemModel;
+class QString;
+
+class Category;
+class CategoryView;
+
+enum CatViewType {
+    /// An invalid type
+    InvalidType = 0,
+    /// An AppView since there are no sub-cats
+    CategoryType = 1,
+    /// A SubCategoryView
+    SubCatType = 2
+};
+
+enum CategoryModelRole {
+    CategoryTypeRole = Qt::UserRole + 1,
+    AndOrFilterRole = Qt::UserRole + 2,
+    NotFilterRole = Qt::UserRole + 3
+};
+
+class CategoryViewWidget : public AbstractViewBase
 {
-    CategoryDrawer *drawer = new CategoryDrawer();
+    Q_OBJECT
+public:
+    CategoryViewWidget(QWidget *parent);
+    ~CategoryViewWidget();
 
-    setSelectionMode(QAbstractItemView::SingleSelection);
-    setSpacing(KDialog::spacingHint());
-    setResizeMode(QListView::Adjust);
-    setWordWrap(true);
-    setCategoryDrawer(drawer);
-    setViewMode(QListView::IconMode);
-    setMouseTracking( true );
-    viewport()->setAttribute( Qt::WA_Hover );
+    void setCategories(const QList<Category *> &categoryList,
+                       const QString &rootText,
+                       const QIcon &rootIcon);
 
-    KFileItemDelegate *delegate = new KFileItemDelegate(this);
-    delegate->setWrapMode(QTextOption::WordWrap);
-    setItemDelegate(delegate);
-}
+private:
+    QStandardItemModel *m_categoryModel;
+    QList<Category *> m_categoryList;
+    QHash<QModelIndex, AbstractViewBase *> m_subViewHash;
 
-void CategoryView::setModel(QAbstractItemModel *model)
-{
-    //icon stuff ripped from System Settings trunk
-    KCategorizedView::setModel(model);
-    int maxWidth = -1;
-    int maxHeight = -1;
-    for (int i = 0; i < model->rowCount(); ++i) {
-        const QModelIndex index = model->index(i, modelColumn(), rootIndex());
-        const QSize size = sizeHintForIndex(index);
-        maxWidth = qMax(maxWidth, size.width());
-        maxHeight = qMax(maxHeight, size.height());
-    }
-    setGridSize(QSize(maxWidth, maxHeight ));
-    static_cast<KFileItemDelegate*>(itemDelegate())->setMaximumSize(QSize(maxWidth, maxHeight));
-}
+    CategoryView *m_categoryView;
+    AbstractViewBase *m_subView;
 
-#include "CategoryView.moc"
+private Q_SLOTS:
+    void onIndexActivated(const QModelIndex &index);
+    void onSubViewDestroyed();
+
+Q_SIGNALS:
+    void switchToSubView(AbstractViewBase *view);
+    void registerNewSubView(AbstractViewBase *view);
+};
+
+#endif

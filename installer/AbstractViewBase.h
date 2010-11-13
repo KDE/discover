@@ -18,49 +18,30 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "CategoryView.h"
+#ifndef ABSTRACTVIEWBASE_H
+#define ABSTRACTVIEWBASE_H
 
-// KDE includes
-#include <KDialog>
-#include <KCategoryDrawer>
-#include <KFileItemDelegate>
+#include <QtGui/QWidget>
 
-// Own includes
-#include "CategoryDrawer.h"
+class QVBoxLayout;
 
-CategoryView::CategoryView(QWidget *parent)
-    : KCategorizedView(parent)
+class BreadcrumbItem;
+
+class AbstractViewBase : public QWidget
 {
-    CategoryDrawer *drawer = new CategoryDrawer();
+    Q_OBJECT
+public:
+    AbstractViewBase(QWidget *parent);
+    ~AbstractViewBase();
 
-    setSelectionMode(QAbstractItemView::SingleSelection);
-    setSpacing(KDialog::spacingHint());
-    setResizeMode(QListView::Adjust);
-    setWordWrap(true);
-    setCategoryDrawer(drawer);
-    setViewMode(QListView::IconMode);
-    setMouseTracking( true );
-    viewport()->setAttribute( Qt::WA_Hover );
+    BreadcrumbItem *breadcrumbItem();
 
-    KFileItemDelegate *delegate = new KFileItemDelegate(this);
-    delegate->setWrapMode(QTextOption::WordWrap);
-    setItemDelegate(delegate);
-}
+protected:
+    QVBoxLayout *m_layout;
+    BreadcrumbItem *m_crumb;
 
-void CategoryView::setModel(QAbstractItemModel *model)
-{
-    //icon stuff ripped from System Settings trunk
-    KCategorizedView::setModel(model);
-    int maxWidth = -1;
-    int maxHeight = -1;
-    for (int i = 0; i < model->rowCount(); ++i) {
-        const QModelIndex index = model->index(i, modelColumn(), rootIndex());
-        const QSize size = sizeHintForIndex(index);
-        maxWidth = qMax(maxWidth, size.width());
-        maxHeight = qMax(maxHeight, size.height());
-    }
-    setGridSize(QSize(maxWidth, maxHeight ));
-    static_cast<KFileItemDelegate*>(itemDelegate())->setMaximumSize(QSize(maxWidth, maxHeight));
-}
+Q_SIGNALS:
+    void subviewCreated(AbstractViewBase *view);
+};
 
-#include "CategoryView.moc"
+#endif

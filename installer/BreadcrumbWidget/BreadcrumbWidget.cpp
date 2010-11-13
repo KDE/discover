@@ -20,6 +20,7 @@
 
 #include "BreadcrumbWidget.h"
 
+#include "../AbstractViewBase.h"
 #include "BreadcrumbItem.h"
 
 BreadcrumbWidget::BreadcrumbWidget(QWidget *parent)
@@ -78,7 +79,7 @@ void BreadcrumbWidget::removeItem(BreadcrumbItem *item)
     }
 
     item->hide();
-    item->associatedWidget()->deleteLater();
+    item->associatedView()->deleteLater();
     item->deleteLater();
     m_items.removeLast();
 }
@@ -90,17 +91,17 @@ void BreadcrumbWidget::setItemBolded(BreadcrumbItem *itemToBold)
     }
 }
 
-BreadcrumbItem *BreadcrumbWidget::breadcrumbForWidget(QWidget *widget)
+BreadcrumbItem *BreadcrumbWidget::breadcrumbForView(AbstractViewBase *view)
 {
-    BreadcrumbItem *itemForWidget = 0;
+    BreadcrumbItem *itemForView = 0;
 
     foreach (BreadcrumbItem *item, m_items) {
-         if (widget == item->associatedWidget()) {
-             itemForWidget = item;
+         if (item->associatedView() == view) {
+             itemForView = item;
          }
     }
 
-    return itemForWidget;
+    return itemForView;
 }
 
 #include "BreadcrumbWidget.moc"

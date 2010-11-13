@@ -34,14 +34,12 @@
 
 #include <LibQApt/Backend>
 
-#include "Application.h"
-#include "ApplicationDetailsWidget.h"
+#include "AbstractViewBase.h"
 #include "ApplicationBackend.h"
-#include "ApplicationModel/ApplicationView.h"
 #include "BreadcrumbWidget/BreadcrumbItem.h"
 #include "BreadcrumbWidget/BreadcrumbWidget.h"
 #include "CategoryView/Category.h"
-#include "CategoryView/CategoryView.h"
+#include "CategoryView/CategoryViewWidget.h"
 
 bool categoryLessThan(Category *c1, const Category *c2)
 {
@@ -58,33 +56,33 @@ AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)
 
     m_viewStack = new QStackedWidget(this);
 
-    m_categoryView = new CategoryView(m_viewStack);
+    m_categoryViewWidget = new CategoryViewWidget(m_viewStack);
 
     m_breadcrumbWidget = new BreadcrumbWidget(this);
-    BreadcrumbItem *rootItem = new BreadcrumbItem(m_breadcrumbWidget);
-    rootItem->setText(i18n("Get Software"));
-    rootItem->setIcon(KIcon("applications-other"));
-    rootItem->setAssociatedWidget(m_categoryView);
-    m_breadcrumbWidget->setRootItem(rootItem);
-    connect(m_breadcrumbWidget, SIGNAL(itemActivated(BreadcrumbItem *)),
-            this, SLOT(activateItem(BreadcrumbItem *)));
 
     KSeparator *horizonatalSeparator = new KSeparator(this);
     horizonatalSeparator->setOrientation(Qt::Horizontal);
 
     populateCategories();
 
-    m_categoryView->setCategories(m_categoryList);
+    QString rootName = i18n("Get Software");
+    KIcon rootIcon = KIcon("applications-other");
+    m_categoryViewWidget->setCategories(m_categoryList, rootName, rootIcon);
+    m_breadcrumbWidget->setRootItem(m_categoryViewWidget->breadcrumbItem());
 
-    m_viewStack->addWidget(m_categoryView);
-    m_viewStack->setCurrentWidget(m_categoryView);
+    m_viewStack->addWidget(m_categoryViewWidget);
+    m_viewStack->setCurrentWidget(m_categoryViewWidget);
 
     layout->addWidget(m_breadcrumbWidget);
     layout->addWidget(horizonatalSeparator);
     layout->addWidget(m_viewStack);
 
-    connect(m_categoryView, SIGNAL(activated(const QModelIndex &)),
-           this, SLOT(changeView(const QModelIndex &)));
+    connect(m_breadcrumbWidget, SIGNAL(itemActivated(BreadcrumbItem *)),
+            this, SLOT(activateBreadcrumbItem(BreadcrumbItem *)));
+    connect(m_categoryViewWidget, SIGNAL(registerNewSubView(AbstractViewBase *)),
+            this, SLOT(registerNewSubView(AbstractViewBase *)));
+    connect(m_categoryViewWidget, SIGNAL(switchToSubView(AbstractViewBase *)),
+            this, SLOT(switchToSubView(AbstractViewBase *)));
 }
 
 AvailableView::~AvailableView()
@@ -124,56 +122,31 @@ void AvailableView::populateCategories()
     qSort(m_categoryList.begin(), m_categoryList.end(), categoryLessThan);
 }
 
-void AvailableView::changeView(const QModelIndex &index)
+void AvailableView::registerNewSubView(AbstractViewBase *subView)
 {
-    QWidget *view = m_viewHash.value(index);
+    AbstractViewBase *currentView = static_cast<AbstractViewBase *>(m_viewStack->currentWidget());
+    BreadcrumbItem *currentItem = m_breadcrumbWidget->breadcrumbForView(currentView);
 
-    // Check if our current widget has children, and delete them if it does
-    BreadcrumbItem *breadcrumbItem = m_breadcrumbWidget->breadcrumbForWidget(m_viewStack->currentWidget());
-    if (breadcrumbItem->hasChildren() && m_viewHash[index] != view) {
-        m_breadcrumbWidget->removeItem(breadcrumbItem->childItem());
+    // If we are activating a new subView from a view that already has
+    // children, the old ones must go
+    if (currentItem->hasChildren()) {
+        m_breadcrumbWidget->removeItem(currentItem->childItem());
     }
 
-    if (!view) {
-        switch (index.data(CategoryTypeRole).toInt()) {
-        case CategoryType: {
-            view = new ApplicationView(this, m_appBackend);
-            m_appView = static_cast<ApplicationView *>(view);
-            connect(m_appView, SIGNAL(destroyed(QObject *)), this, SLOT(onViewDestroyed(QObject *)));
-            m_viewStack->addWidget(view);
-            m_appView->setBackend(m_backend);
-            Category *category = m_categoryList.at(index.row());
-
-            BreadcrumbItem *item = new BreadcrumbItem(m_breadcrumbWidget);
-            item->setText(category->name());
-            item->setIcon(KIcon(category->icon()));
-            item->setAssociatedWidget(m_appView);
-            m_breadcrumbWidget->addLevel(item);
-
-            m_appView->setAndOrFilters(category->andOrFilters());
-            m_appView->setNotFilters(category->notFilters());
-
-            connect(m_appView, SIGNAL(infoButtonClicked(Application *)),
-                    this, SLOT(showAppDetails(Application *)));
-        }
-            break;
-        case SubCatType:
-            break;
-        default:
-            break;
-        }
-    }
-
-    m_viewStack->setCurrentWidget(view);
-    BreadcrumbItem *item = m_breadcrumbWidget->breadcrumbForWidget(view);
-    m_breadcrumbWidget->setItemBolded(item);
-
-    m_viewHash[index] = view;
+    m_viewStack->addWidget(subView);
+    m_viewStack->setCurrentWidget(subView);
+    m_breadcrumbWidget->addLevel(subView->breadcrumbItem());
 }
 
-void AvailableView::activateItem(BreadcrumbItem *item)
+void AvailableView::switchToSubView(AbstractViewBase *subView)
 {
-    QWidget *toActivate = item->associatedWidget();
+    m_viewStack->setCurrentWidget(subView);
+    m_breadcrumbWidget->setItemBolded(m_breadcrumbWidget->breadcrumbForView(subView));
+}
+
+void AvailableView::activateBreadcrumbItem(BreadcrumbItem *item)
+{
+    AbstractViewBase *toActivate = item->associatedView();
     if (!toActivate) {
         // Screwed
         return;
@@ -183,36 +156,27 @@ void AvailableView::activateItem(BreadcrumbItem *item)
     m_breadcrumbWidget->setItemBolded(item);
 }
 
-void AvailableView::showAppDetails(Application *app)
-{
-    BreadcrumbItem *parent = m_breadcrumbWidget->breadcrumbForWidget(m_appView);
-
-    if (parent) {
-        if (parent->hasChildren()) {
-            m_breadcrumbWidget->removeItem(parent->childItem());
-        }
-    }
-
-    m_appDetailsWidget = new ApplicationDetailsWidget(this, app);
-    // FIXME: This leaks if we go back and choose another app
-    // Keep only one ApplicationWidget at a time as a member variable
-    // and only change it on showAppDetails
-
-    BreadcrumbItem *item = new BreadcrumbItem(m_breadcrumbWidget);
-    item->setText(app->name());
-    item->setIcon(KIcon(app->icon()));
-    item->setAssociatedWidget(m_appDetailsWidget);
-    m_breadcrumbWidget->addLevel(item);
-
-    parent->setChildItem(item);
-    m_viewStack->addWidget(m_appDetailsWidget);
-    m_viewStack->setCurrentWidget(m_appDetailsWidget);
-}
-
-void AvailableView::onViewDestroyed(QObject *object)
-{
-    QWidget *view = static_cast<QWidget *>(object);
-    m_viewHash.remove(m_viewHash.key(view));
-}
+// void AvailableView::showAppDetails(Application *app)
+// {
+//     BreadcrumbItem *parent = m_breadcrumbWidget->breadcrumbForView(m_appView);
+// 
+//     if (parent) {
+//         if (parent->hasChildren()) {
+//             m_breadcrumbWidget->removeItem(parent->childItem());
+//         }
+//     }
+// 
+//     m_appDetailsWidget = new ApplicationDetailsWidget(this, app);
+// 
+//     BreadcrumbItem *item = new BreadcrumbItem(m_breadcrumbWidget);
+//     item->setText(app->name());
+//     item->setIcon(KIcon(app->icon()));
+//     item->setAssociatedWidget(m_appDetailsWidget);
+//     m_breadcrumbWidget->addLevel(item);
+// 
+//     parent->setChildItem(item);
+//     m_viewStack->addWidget(m_appDetailsWidget);
+//     m_viewStack->setCurrentWidget(m_appDetailsWidget);
+// }
 
 #include "AvailableView.moc"

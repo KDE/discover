@@ -18,49 +18,30 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "CategoryView.h"
+#include "AbstractViewBase.h"
 
-// KDE includes
-#include <KDialog>
-#include <KCategoryDrawer>
-#include <KFileItemDelegate>
+// Qt includes
+#include <QtGui/QVBoxLayout>
 
 // Own includes
-#include "CategoryDrawer.h"
+#include "BreadcrumbWidget/BreadcrumbItem.h"
 
-CategoryView::CategoryView(QWidget *parent)
-    : KCategorizedView(parent)
+AbstractViewBase::AbstractViewBase(QWidget *parent)
+        : QWidget(parent)
 {
-    CategoryDrawer *drawer = new CategoryDrawer();
+    m_layout = new QVBoxLayout(this);
+    setLayout(m_layout);
 
-    setSelectionMode(QAbstractItemView::SingleSelection);
-    setSpacing(KDialog::spacingHint());
-    setResizeMode(QListView::Adjust);
-    setWordWrap(true);
-    setCategoryDrawer(drawer);
-    setViewMode(QListView::IconMode);
-    setMouseTracking( true );
-    viewport()->setAttribute( Qt::WA_Hover );
-
-    KFileItemDelegate *delegate = new KFileItemDelegate(this);
-    delegate->setWrapMode(QTextOption::WordWrap);
-    setItemDelegate(delegate);
+    m_crumb = new BreadcrumbItem(this);
 }
 
-void CategoryView::setModel(QAbstractItemModel *model)
+AbstractViewBase::~AbstractViewBase()
 {
-    //icon stuff ripped from System Settings trunk
-    KCategorizedView::setModel(model);
-    int maxWidth = -1;
-    int maxHeight = -1;
-    for (int i = 0; i < model->rowCount(); ++i) {
-        const QModelIndex index = model->index(i, modelColumn(), rootIndex());
-        const QSize size = sizeHintForIndex(index);
-        maxWidth = qMax(maxWidth, size.width());
-        maxHeight = qMax(maxHeight, size.height());
-    }
-    setGridSize(QSize(maxWidth, maxHeight ));
-    static_cast<KFileItemDelegate*>(itemDelegate())->setMaximumSize(QSize(maxWidth, maxHeight));
 }
 
-#include "CategoryView.moc"
+BreadcrumbItem *AbstractViewBase::breadcrumbItem()
+{
+    return m_crumb;
+}
+
+#include "AbstractViewBase.moc"

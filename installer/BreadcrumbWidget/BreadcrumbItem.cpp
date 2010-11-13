@@ -22,6 +22,7 @@
 
 #include <QtGui/QPushButton>
 
+#include "../AbstractViewBase.h"
 #include "BreadcrumbItemButton.h"
 
 BreadcrumbItem::BreadcrumbItem(QWidget *parent)
@@ -43,9 +44,9 @@ BreadcrumbItem *BreadcrumbItem::childItem() const
     return m_childItem;
 }
 
-QWidget *BreadcrumbItem::associatedWidget() const
+AbstractViewBase *BreadcrumbItem::associatedView() const
 {
-    return m_associatedWidget;
+    return m_associatedView;
 }
 
 bool BreadcrumbItem::hasChildren() const
@@ -60,9 +61,9 @@ void BreadcrumbItem::setChildItem(BreadcrumbItem *child)
     m_hasChildren = true;
 }
 
-void BreadcrumbItem::setAssociatedWidget(QWidget *widget)
+void BreadcrumbItem::setAssociatedView(AbstractViewBase *view)
 {
-    m_associatedWidget = widget;
+    m_associatedView = view;
 }
 
 void BreadcrumbItem::setText(const QString &text)

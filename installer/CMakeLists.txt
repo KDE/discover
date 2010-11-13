@@ -9,13 +9,15 @@ set(muon_installer_SRCS
     ApplicationModel/ApplicationDelegate.cpp
     ApplicationModel/ApplicationExtender.cpp
     ApplicationModel/ApplicationView.cpp
+    AbstractViewBase.cpp
     AvailableView.cpp
     BreadcrumbWidget/BreadcrumbItem.cpp
     BreadcrumbWidget/BreadcrumbWidget.cpp
     BreadcrumbWidget/BreadcrumbItemButton.cpp
     CategoryView/Category.cpp
-    CategoryView/CategoryView.cpp
     CategoryView/CategoryDrawer.cpp
+    CategoryView/CategoryView.cpp
+    CategoryView/CategoryViewWidget.cpp
     ClickableLabel.cpp
     effects/GraphicsOpacityDropShadowEffect.cpp
     ViewSwitcher.cpp

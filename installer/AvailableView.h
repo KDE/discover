@@ -21,20 +21,16 @@
 #ifndef AVAILABLEVIEW_H
 #define AVAILABLEVIEW_H
 
-#include <QModelIndex>
 #include <QtGui/QWidget>
 
 class QStackedWidget;
-class QStandardItemModel;
 
-class Application;
+class AbstractViewBase;
 class ApplicationBackend;
-class ApplicationView;
-class ApplicationDetailsWidget;
 class BreadcrumbItem;
 class BreadcrumbWidget;
 class Category;
-class CategoryView;
+class CategoryViewWidget;
 
 namespace QApt {
     class Backend;
@@ -50,25 +46,20 @@ public:
 private:
     QApt::Backend *m_backend;
     ApplicationBackend *m_appBackend;
+    QList<Category *> m_categoryList;
 
     QStackedWidget *m_viewStack;
     BreadcrumbWidget *m_breadcrumbWidget;
-    CategoryView *m_categoryView;
-    QHash<QModelIndex, QWidget *> m_viewHash;
-    QStandardItemModel *m_categoryModel;
-    QList<Category *> m_categoryList;
-    ApplicationView *m_appView;
-    ApplicationDetailsWidget *m_appDetailsWidget;
+    CategoryViewWidget *m_categoryViewWidget;
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
 
 private Q_SLOTS:
     void populateCategories();
-    void changeView(const QModelIndex &index);
-    void activateItem(BreadcrumbItem *item);
-    void showAppDetails(Application *app);
-    void onViewDestroyed(QObject *view);
+    void registerNewSubView(AbstractViewBase *subView);
+    void activateBreadcrumbItem(BreadcrumbItem *item);
+    void switchToSubView(AbstractViewBase *subView);
 };
 
 #endif

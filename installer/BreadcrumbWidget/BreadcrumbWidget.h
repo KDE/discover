@@ -25,6 +25,7 @@
 
 #include <KHBox>
 
+class AbstractViewBase;
 class BreadcrumbItem;
 
 class BreadcrumbWidget : public KHBox
@@ -44,7 +45,7 @@ public:
     */
     void removeItem(BreadcrumbItem *crumb);
 
-    BreadcrumbItem *breadcrumbForWidget(QWidget *widget);
+    BreadcrumbItem *breadcrumbForView(AbstractViewBase *view);
 
 private:
     QList<BreadcrumbItem *> m_items;
