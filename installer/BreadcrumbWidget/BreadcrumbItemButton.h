@@ -20,6 +20,7 @@
 #define BREADCRUMBITEMBUTTON_P_H
 
 #include <QColor>
+#include <QPushButton>
 
 #include "ElidingButton.h"
 
@@ -31,7 +32,7 @@ class QEvent;
  * Each button of the URL navigator contains an URL, which
  * is set as soon as the button has been clicked.
  */
-class BreadcrumbItemButton : public ElidingButton
+class BreadcrumbItemButton : public QPushButton
 {
     Q_OBJECT
 

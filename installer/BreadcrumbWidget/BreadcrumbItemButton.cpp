@@ -31,14 +31,14 @@
 #include <QStyleOptionFocusRect>
 
 BreadcrumbItemButton::BreadcrumbItemButton( QWidget *parent )
-    : ElidingButton( parent )
+    : QPushButton( parent )
     , m_displayHint( 0 )
 {
     init();
 }
 
 BreadcrumbItemButton::BreadcrumbItemButton( const QIcon &icon, const QString &text, QWidget *parent )
-    : ElidingButton( icon, text, parent )
+    : QPushButton( icon, text, parent )
     , m_displayHint( 0 )
 {
     init();
@@ -163,7 +163,7 @@ BreadcrumbItemButton::foregroundColor() const
 QSize
 BreadcrumbItemButton::sizeHint() const
 {
-    QSize size = ElidingButton::sizeHint();
+    QSize size = QPushButton::sizeHint();
     QFontMetrics fm( font() );
     size.setWidth( fm.width( text() ) + iconSize().width() + 8 );
     return size;
