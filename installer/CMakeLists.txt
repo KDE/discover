@@ -12,6 +12,8 @@ set(muon_installer_SRCS
     AvailableView.cpp
     BreadcrumbWidget/BreadcrumbItem.cpp
     BreadcrumbWidget/BreadcrumbWidget.cpp
+    BreadcrumbWidget/BreadcrumbItemButton.cpp
+    BreadcrumbWidget/ElidingButton.cpp
     CategoryView/Category.cpp
     CategoryView/CategoryView.cpp
     CategoryView/CategoryDrawer.cpp

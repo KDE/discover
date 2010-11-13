@@ -24,7 +24,8 @@
 #include <KHBox>
 
 class QIcon;
-class QPushButton;
+
+class BreadcrumbItemButton;
 
 // FIXME: Should be : public BreadcrumbButton, once it exists
 class BreadcrumbItem : public KHBox
@@ -42,13 +43,14 @@ public:
     void setAssociatedWidget(QWidget *widget);
     void setText(const QString &text);
     void setIcon(const QIcon &icon);
+    void setActive(bool active);
 
 private:
     BreadcrumbItem *m_childItem;
 
     bool m_hasChildren;
     QWidget *m_associatedWidget;
-    QPushButton *m_button;
+    BreadcrumbItemButton *m_button;
 
 private Q_SLOTS:
     void emitActivated();

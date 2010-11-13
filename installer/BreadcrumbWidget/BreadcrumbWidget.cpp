@@ -64,7 +64,9 @@ void BreadcrumbWidget::addLevel(BreadcrumbItem *item)
     item->show();
 
     m_items.append(item);
+    setItemBolded(item);
     connect(item, SIGNAL(activated(BreadcrumbItem *)), this, SIGNAL(itemActivated(BreadcrumbItem *)));
+    connect(item, SIGNAL(activated(BreadcrumbItem *)), this, SLOT(setItemBolded(BreadcrumbItem *)));
 }
 
 void BreadcrumbWidget::removeItem(BreadcrumbItem *item)
@@ -78,6 +80,13 @@ void BreadcrumbWidget::removeItem(BreadcrumbItem *item)
     item->associatedWidget()->deleteLater();
     item->deleteLater();
     m_items.removeLast();
+}
+
+void BreadcrumbWidget::setItemBolded(BreadcrumbItem *itemToBold)
+{
+    foreach(BreadcrumbItem *item, m_items) {
+        item->setActive(item == itemToBold);
+    }
 }
 
 BreadcrumbItem *BreadcrumbWidget::breadcrumbForWidget(QWidget *widget)

@@ -53,6 +53,7 @@ private:
 
 private Q_SLOTS:
     void clearCrumbs();
+    void setItemBolded(BreadcrumbItem *crumb);
 
 Q_SIGNALS:
     void itemActivated(BreadcrumbItem *item);

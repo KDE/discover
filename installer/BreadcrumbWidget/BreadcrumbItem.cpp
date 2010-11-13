@@ -22,11 +22,13 @@
 
 #include <QtGui/QPushButton>
 
+#include "BreadcrumbItemButton.h"
+
 BreadcrumbItem::BreadcrumbItem(QWidget *parent)
     : KHBox(parent)
     , m_hasChildren(false)
 {
-    m_button = new QPushButton(this);
+    m_button = new BreadcrumbItemButton(this);
     hide();
 
     connect(m_button, SIGNAL(clicked()), this, SLOT(emitActivated()));
@@ -71,6 +73,11 @@ void BreadcrumbItem::setText(const QString &text)
 void BreadcrumbItem::setIcon(const QIcon &icon)
 {
     m_button->setIcon(icon);
+}
+
+void BreadcrumbItem::setActive(bool active)
+{
+    m_button->setActive(active);
 }
 
 void BreadcrumbItem::emitActivated()
