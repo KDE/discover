@@ -29,6 +29,8 @@ class QStandardItemModel;
 
 class Application;
 class ApplicationBackend;
+class ApplicationView;
+class ApplicationWidget;
 class BreadcrumbItem;
 class BreadcrumbWidget;
 class Category;
@@ -70,6 +72,8 @@ private:
     QHash<QModelIndex, QWidget *> m_viewHash;
     QStandardItemModel *m_categoryModel;
     QList<Category *> m_categoryList;
+    ApplicationView *m_appView;
+    ApplicationWidget *m_appWidget;
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);

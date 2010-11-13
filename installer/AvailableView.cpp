@@ -153,21 +153,21 @@ void AvailableView::changeView(const QModelIndex &index)
         switch (index.data(CategoryTypeRole).toInt()) {
         case CategoryType: {
             view = new ApplicationView(this, m_appBackend);
-            ApplicationView *appView = static_cast<ApplicationView *>(view);
-            connect(appView, SIGNAL(destroyed(QObject *)), this, SLOT(onViewDestroyed(QObject *)));
+            m_appView = static_cast<ApplicationView *>(view);
+            connect(m_appView, SIGNAL(destroyed(QObject *)), this, SLOT(onViewDestroyed(QObject *)));
             m_viewStack->addWidget(view);
-            appView->setBackend(m_backend);
+            m_appView->setBackend(m_backend);
             Category *category = m_categoryList.at(index.row());
 
             BreadcrumbItem *item = new BreadcrumbItem(m_breadcrumbWidget);
             item->setText(category->name());
-            item->setAssociatedWidget(appView);
+            item->setAssociatedWidget(m_appView);
             m_breadcrumbWidget->addLevel(item);
 
-            appView->setAndOrFilters(category->andOrFilters());
-            appView->setNotFilters(category->notFilters());
+            m_appView->setAndOrFilters(category->andOrFilters());
+            m_appView->setNotFilters(category->notFilters());
 
-            connect(appView, SIGNAL(infoButtonClicked(Application *)),
+            connect(m_appView, SIGNAL(infoButtonClicked(Application *)),
                     this, SLOT(showAppDetails(Application *)));
         }
             break;
@@ -196,18 +196,27 @@ void AvailableView::activateItem(BreadcrumbItem *item)
 
 void AvailableView::showAppDetails(Application *app)
 {
-    ApplicationWidget *widget = new ApplicationWidget(this, app);
+    BreadcrumbItem *parent = m_breadcrumbWidget->breadcrumbForWidget(m_appView);
+
+    if (parent) {
+        if (parent->hasChildren()) {
+            m_breadcrumbWidget->removeItem(parent->childItem());
+        }
+    }
+
+    m_appWidget = new ApplicationWidget(this, app);
     // FIXME: This leaks if we go back and choose another app
     // Keep only one ApplicationWidget at a time as a member variable
     // and only change it on showAppDetails
 
     BreadcrumbItem *item = new BreadcrumbItem(m_breadcrumbWidget);
     item->setText(app->name());
-    item->setAssociatedWidget(widget);
+    item->setAssociatedWidget(m_appWidget);
     m_breadcrumbWidget->addLevel(item);
 
-    m_viewStack->addWidget(widget);
-    m_viewStack->setCurrentWidget(widget);
+    parent->setChildItem(item);
+    m_viewStack->addWidget(m_appWidget);
+    m_viewStack->setCurrentWidget(m_appWidget);
 }
 
 void AvailableView::onViewDestroyed(QObject *object)
