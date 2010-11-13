@@ -81,6 +81,7 @@ AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)
         QStandardItem *categoryItem = new QStandardItem;
         categoryItem->setText(category->name());
         categoryItem->setIcon(KIcon(category->icon()));
+        categoryItem->setEditable(false);
         categoryItem->setData(i18n("Categories"), KCategorizedSortFilterProxyModel::CategoryDisplayRole);
 
         if (category->hasSubCategories()) {
