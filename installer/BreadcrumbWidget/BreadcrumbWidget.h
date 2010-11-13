@@ -51,9 +51,11 @@ private:
 
     KHBox *m_breadcrumbArea;
 
+public Q_SLOTS:
+    void setItemBolded(BreadcrumbItem *crumb);
+
 private Q_SLOTS:
     void clearCrumbs();
-    void setItemBolded(BreadcrumbItem *crumb);
 
 Q_SIGNALS:
     void itemActivated(BreadcrumbItem *item);

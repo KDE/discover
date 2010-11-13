@@ -186,6 +186,8 @@ void AvailableView::changeView(const QModelIndex &index)
     }
 
     m_viewStack->setCurrentWidget(view);
+    BreadcrumbItem *item = m_breadcrumbWidget->breadcrumbForWidget(view);
+    m_breadcrumbWidget->setItemBolded(item);
 
     m_viewHash[index] = view;
 }
@@ -199,6 +201,7 @@ void AvailableView::activateItem(BreadcrumbItem *item)
     }
 
     m_viewStack->setCurrentWidget(toActivate);
+    m_breadcrumbWidget->setItemBolded(item);
 }
 
 void AvailableView::showAppDetails(Application *app)
