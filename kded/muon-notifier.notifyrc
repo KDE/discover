@@ -1,6 +1,7 @@
 [Global]
 IconName=applications-system
 Comment=System Notification
+Comment[cs]=Oznámení v panelu
 Comment[da]=Systembekendtgørelse
 Comment[en_GB]=System Notification
 Comment[es]=Notificación del sistema
@@ -35,6 +36,7 @@ Name[uk]=Доступне оновлення дистрибутива
 Name[x-test]=xxUpgrade Availablexx
 Name[zh_TW]=有可用的更新
 Comment=A new version of Kubuntu is available
+Comment[cs]=Je dostupná nová verze Kubuntu
 Comment[da]=En ny version af Kubuntu er tilgængelig
 Comment[en_GB]=A new version of Kubuntu is available
 Comment[es]=Está disponible una nueva versión de Kubuntu
@@ -54,6 +56,7 @@ Action=Popup
 
 [Event/Update]
 Name=Updates Available
+Name[cs]=Jsou dostupné aktualizace
 Name[da]=Opdateringer tilgængelige
 Name[en_GB]=Updates Available
 Name[es]=Actualizaciones disponibles
@@ -70,6 +73,7 @@ Name[uk]=Доступні оновлення
 Name[x-test]=xxUpdates Availablexx
 Name[zh_TW]=可用的更新
 Comment=Updates Available
+Comment[cs]=Jsou dostupné aktualizace
 Comment[da]=Opdateringer tilgængelige
 Comment[en_GB]=Updates Available
 Comment[es]=Actualizaciones disponibles
