@@ -29,6 +29,7 @@
 #include <KCategorizedSortFilterProxyModel>
 #include <KIcon>
 #include <KLocale>
+#include <KSeparator>
 #include <KStandardDirs>
 #include <KDebug>
 
@@ -69,6 +70,9 @@ AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)
     connect(m_breadcrumbWidget, SIGNAL(itemActivated(BreadcrumbItem *)),
             this, SLOT(activateItem(BreadcrumbItem *)));
 
+    KSeparator *horizonatalSeparator = new KSeparator(this);
+    horizonatalSeparator->setOrientation(Qt::Horizontal);
+
     populateCategories();
 
     m_categoryModel = new QStandardItemModel(this);
@@ -98,6 +102,7 @@ AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)
     m_viewStack->setCurrentWidget(m_categoryView);
 
     layout->addWidget(m_breadcrumbWidget);
+    layout->addWidget(horizonatalSeparator);
     layout->addWidget(m_viewStack);
 
     connect(m_categoryView, SIGNAL(activated(const QModelIndex &)),
