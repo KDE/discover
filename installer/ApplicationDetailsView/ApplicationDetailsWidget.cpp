@@ -88,6 +88,29 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, Application 
     headerLayout->addWidget(nameDescWidget);
     headerLayout->addWidget(headerSpacer);
 
+    // Menu path label
+    QWidget *menuPathWidget = new QWidget(this);
+    QHBoxLayout *menuPathLayout = new QHBoxLayout(menuPathWidget);
+    menuPathWidget->setLayout(menuPathLayout);
+
+    QLabel *menuLabel = new QLabel(menuPathWidget);
+    menuLabel->setText(i18nc("@info", "Find in the menu:"));
+    m_menuPathLabel = new QLabel(menuPathWidget);
+
+    QString menuPathString = app->menuPath();
+    if (!menuPathString.isEmpty()) {
+        m_menuPathLabel->setText(menuPathString);
+    } else {
+        menuPathWidget->hide();
+    }
+
+    QWidget *menuPathSpacer = new QWidget(this);
+    menuPathSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+    menuPathLayout->addWidget(menuLabel);
+    menuPathLayout->addWidget(m_menuPathLabel);
+    menuPathLayout->addWidget(menuPathSpacer);
+
     // Long description and Screenshot
     QWidget *body = new QWidget(widget);
     QHBoxLayout *bodyLayout = new QHBoxLayout(body);
@@ -195,6 +218,7 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, Application 
 
 
     layout->addWidget(headerWidget);
+    layout->addWidget(menuPathWidget);
     layout->addWidget(body);
     layout->addWidget(m_websiteLabel);
     layout->addWidget(detailsWidget);

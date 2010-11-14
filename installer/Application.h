@@ -41,6 +41,7 @@ public:
     QString comment();
     QApt::Package *package();
     QString icon();
+    QString menuPath();
     QList<QString> categories();
     int popconScore();
     bool isValid();
@@ -55,6 +56,8 @@ private:
     QApt::Package *m_package;
 
     bool m_isValid;
+
+    QVector<QPair<QString, QString> > locateApplication(const QString &_relPath, const QString &menuId) const;
 };
 
 #endif

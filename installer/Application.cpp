@@ -25,7 +25,10 @@
 #include <QtCore/QStringList>
 
 // KDE includes
+#include <KIconLoader>
 #include <KLocale>
+#include <KService>
+#include <KServiceGroup>
 #include <KDebug>
 
 // QApt includes
@@ -110,6 +113,88 @@ QString Application::icon()
     }
 
     return icon;
+}
+
+QString Application::menuPath()
+{
+    QString path;
+
+    KService::Ptr service = KService::serviceByDesktopName(name());
+    QVector<QPair<QString, QString> > ret;
+    if (service) {
+        ret = locateApplication(QString(), service->menuId());
+    }
+    if (!ret.isEmpty()) {
+        path.append(QString("<img width=\"16\" heigh=\"16\"src=\"%1\"/>")
+                    .arg(KIconLoader::global()->iconPath("kde", KIconLoader::Small)));
+        path.append(QString("&nbsp;%1 <img width=\"16\" heigh=\"16\" src=\"%2\"/>&nbsp;%3")
+                    .arg(QString::fromUtf8("➜"))
+                    .arg(KIconLoader::global()->iconPath("applications-other", KIconLoader::Small))
+                    .arg(i18n("Applications")));
+        for (int i = 0; i < ret.size(); i++) {
+            path.append(QString("&nbsp;%1&nbsp;<img width=\"16\" heigh=\"16\" src=\"%2\"/>&nbsp;%3")
+                        .arg(QString::fromUtf8("➜"))
+                        .arg(KIconLoader::global()->iconPath(ret.at(i).second, KIconLoader::Small))
+                        .arg(ret.at(i).first));
+        }
+    }
+
+    return path;
+}
+
+QVector<QPair<QString, QString> > Application::locateApplication(const QString &_relPath, const QString &menuId) const
+{
+    QVector<QPair<QString, QString> > ret;
+    KServiceGroup::Ptr root = KServiceGroup::group(_relPath);
+
+    if (!root || !root->isValid()) {
+        return ret;
+    }
+
+    const KServiceGroup::List list = root->entries(false /* sorted */,
+                                                   true /* exclude no display entries */,
+                                                   false /* allow separators */);
+
+    for (KServiceGroup::List::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it) {
+        const KSycocaEntry::Ptr p = (*it);
+
+        if (p->isType(KST_KService)) {
+            const KService::Ptr service = KService::Ptr::staticCast(p);
+
+            if (service->noDisplay()) {
+                continue;
+            }
+
+            if (service->menuId() == menuId) {
+                QPair<QString, QString> pair;
+                pair.first  = service->name();
+                pair.second = service->icon();
+                ret << pair;
+                return ret;
+            }
+        } else if (p->isType(KST_KServiceGroup)) {
+            const KServiceGroup::Ptr serviceGroup = KServiceGroup::Ptr::staticCast(p);
+
+            if (serviceGroup->noDisplay() || serviceGroup->childCount() == 0) {
+                continue;
+            }
+
+            QVector<QPair<QString, QString> > found;
+            found = locateApplication(serviceGroup->relPath(), menuId);
+            if (!found.isEmpty()) {
+                QPair<QString, QString> pair;
+                pair.first  = serviceGroup->caption();
+                pair.second = serviceGroup->icon();
+                ret << pair;
+                ret << found;
+                return ret;
+            }
+        } else {
+            continue;
+        }
+    }
+
+    return ret;
 }
 
 QList<QString> Application::categories()
