@@ -20,6 +20,7 @@
 
 #include "BreadcrumbItem.h"
 
+#include <QtCore/QStringBuilder>
 #include <QtGui/QPushButton>
 
 #include "../AbstractViewBase.h"
@@ -59,6 +60,8 @@ void BreadcrumbItem::setChildItem(BreadcrumbItem *child)
     m_childItem = child;
     // Setting a null pointer would technically make this false...
     m_hasChildren = true;
+
+    m_button->setText(m_button->text() % ' ' % QString::fromUtf8("➜"));
 }
 
 void BreadcrumbItem::setAssociatedView(AbstractViewBase *view)

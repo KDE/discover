@@ -28,7 +28,7 @@ BreadcrumbWidget::BreadcrumbWidget(QWidget *parent)
 {
     m_items.clear();
     m_breadcrumbArea = new KHBox(this);
-    m_breadcrumbArea->setSpacing(4);
+    m_breadcrumbArea->setSpacing(2);
 
     QWidget *spacer = new QWidget(this);
     spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
