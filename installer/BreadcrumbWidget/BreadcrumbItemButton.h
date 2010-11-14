@@ -19,10 +19,8 @@
 #ifndef BREADCRUMBITEMBUTTON_P_H
 #define BREADCRUMBITEMBUTTON_P_H
 
-#include <QColor>
-#include <QPushButton>
-
-#include "ElidingButton.h"
+#include <QtGui/QColor>
+#include <QtGui/QPushButton>
 
 class QEvent;
 

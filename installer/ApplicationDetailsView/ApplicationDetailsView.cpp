@@ -18,66 +18,33 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONVIEW_H
-#define APPLICATIONVIEW_H
+#include "ApplicationDetailsView.h"
 
-#include <QtCore/QPair>
+// Qt includes
+#include <QtGui/QVBoxLayout>
 
-#include <LibQApt/Package>
+// KDE includes
+#include <KIcon>
 
-#include "AbstractViewBase.h"
+// Own includes
+#include "ApplicationDetailsWidget.h"
+#include "../Application.h"
+#include "../BreadcrumbWidget/BreadcrumbItem.h"
 
-class QTreeView;
+ApplicationDetailsView::ApplicationDetailsView(QWidget *parent, Application *app)
+    : AbstractViewBase(parent)
+{
+    m_detailsWidget = new ApplicationDetailsWidget(this, app);
 
-class KPixmapSequenceOverlayPainter;
+    m_layout->addWidget(m_detailsWidget);
 
-class Application;
-class ApplicationBackend;
-class ApplicationDetailsView;
-class ApplicationModel;
-class ApplicationProxyModel;
-class Category;
-
-namespace QApt {
-    class Backend;
+    m_crumb->setText(app->name());
+    m_crumb->setIcon(KIcon(app->icon()));
+    m_crumb->setAssociatedView(this);
 }
 
-class ApplicationView : public AbstractViewBase
+ApplicationDetailsView::~ApplicationDetailsView()
 {
-    Q_OBJECT
-public:
-    ApplicationView(QWidget *parent, ApplicationBackend *appBackend);
-    ~ApplicationView();
+}
 
-private:
-    QApt::Backend *m_backend;
-    ApplicationBackend *m_appBackend;
-    ApplicationModel *m_appModel;
-    ApplicationProxyModel *m_proxyModel;
-    QPair<AbstractViewBase *, Application *> m_currentPair;
-
-    QTreeView *m_treeView;
-    KPixmapSequenceOverlayPainter *m_busyWidget;
-    ApplicationDetailsView *m_detailsView;
-
-private Q_SLOTS:
-    void infoButtonClicked(Application *app);
-    void onSubViewDestroyed();
-
-public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
-    void reload();
-
-    void setStateFilter(QApt::Package::State state);
-    void setOriginFilter(const QString &origin);
-    void setFiltersFromCategory(Category *category);
-
-Q_SIGNALS:
-    void switchToSubView(AbstractViewBase *view);
-    void registerNewSubView(AbstractViewBase *view);
-
-    void removeButtonClicked(Application *app);
-    void installButtonClicked(Application *app);
-};
-
-#endif
+#include "ApplicationDetailsView.moc"

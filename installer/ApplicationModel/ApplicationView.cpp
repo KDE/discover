@@ -22,6 +22,7 @@
 
 #include <QApplication>
 #include <QtGui/QTreeView>
+#include <QtGui/QVBoxLayout>
 
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
@@ -34,11 +35,15 @@
 #include "ApplicationDelegate.h"
 #include "../Application.h"
 #include "../ApplicationBackend.h"
+#include "../ApplicationDetailsView/ApplicationDetailsView.h"
+#include "../BreadcrumbWidget/BreadcrumbItem.h"
+#include "../CategoryView/Category.h"
 
 ApplicationView::ApplicationView(QWidget *parent, ApplicationBackend *appBackend)
-        : KVBox(parent)
+        : AbstractViewBase(parent)
         , m_backend(0)
         , m_appBackend(appBackend)
+        , m_detailsView(0)
 {
     m_appModel = new ApplicationModel(this);
     m_proxyModel = new ApplicationProxyModel(this);
@@ -53,8 +58,10 @@ ApplicationView::ApplicationView(QWidget *parent, ApplicationBackend *appBackend
     ApplicationDelegate *delegate = new ApplicationDelegate(m_treeView);
     m_treeView->setItemDelegate(delegate);
 
+    m_layout->addWidget(m_treeView);
+
     connect(delegate, SIGNAL(infoButtonClicked(Application *)),
-            this, SIGNAL(infoButtonClicked(Application *)));
+            this, SLOT(infoButtonClicked(Application *)));
     connect(delegate, SIGNAL(installButtonClicked(Application *)),
             this, SIGNAL(installButtonClicked(Application *)));
     connect(delegate, SIGNAL(removeButtonClicked(Application *)),
@@ -73,6 +80,8 @@ void ApplicationView::setBackend(QApt::Backend *backend)
     m_proxyModel->setBackend(backend);
     m_treeView->setSortingEnabled(true);
     m_treeView->sortByColumn(0, Qt::AscendingOrder);
+
+    m_crumb->setAssociatedView(this);
 }
 
 void ApplicationView::reload()
@@ -100,14 +109,35 @@ void ApplicationView::setOriginFilter(const QString &origin)
     m_proxyModel->setOriginFilter(origin);
 }
 
-void ApplicationView::setAndOrFilters(const QList<QPair<FilterType, QString> > &andFilters)
+void ApplicationView::setFiltersFromCategory(Category *category)
 {
-    m_proxyModel->setAndOrFilters(andFilters);
+    m_proxyModel->setAndOrFilters(category->andOrFilters());
+    m_proxyModel->setNotFilters(category->notFilters());
 }
 
-void ApplicationView::setNotFilters(const QList<QPair<FilterType, QString> > &notFilters)
+void ApplicationView::infoButtonClicked(Application *app)
 {
-    m_proxyModel->setNotFilters(notFilters);
+    // Check to see if a view for this app already exists
+    if (m_currentPair.second == app) {
+        emit switchToSubView(m_currentPair.first);
+        return;
+    }
+
+    // Create one if not
+    m_detailsView = new ApplicationDetailsView(this, app);
+    m_currentPair.first = m_detailsView;
+
+    connect(m_detailsView, SIGNAL(destroyed(QObject *)),
+            this, SLOT(onSubViewDestroyed()));
+
+    // Tell our parent that we can exist, so that they can forward it
+    emit registerNewSubView(m_detailsView);
+}
+
+void ApplicationView::onSubViewDestroyed()
+{
+    m_currentPair.first = 0;
+    m_currentPair.second = 0;
 }
 
 #include "ApplicationView.moc"

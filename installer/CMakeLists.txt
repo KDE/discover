@@ -2,13 +2,14 @@ set(muon_installer_SRCS
     main.cpp
     Application.cpp
     ApplicationBackend.cpp
-    ApplicationDetailsWidget.cpp
     ApplicationWindow.cpp
     ApplicationModel/ApplicationModel.cpp
     ApplicationModel/ApplicationProxyModel.cpp
     ApplicationModel/ApplicationDelegate.cpp
     ApplicationModel/ApplicationExtender.cpp
     ApplicationModel/ApplicationView.cpp
+    ApplicationDetailsView/ApplicationDetailsWidget.cpp
+    ApplicationDetailsView/ApplicationDetailsView.cpp
     AbstractViewBase.cpp
     AvailableView.cpp
     BreadcrumbWidget/BreadcrumbItem.cpp

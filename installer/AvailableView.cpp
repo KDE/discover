@@ -56,7 +56,7 @@ AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)
 
     m_viewStack = new QStackedWidget(this);
 
-    m_categoryViewWidget = new CategoryViewWidget(m_viewStack);
+    m_categoryViewWidget = new CategoryViewWidget(m_viewStack, m_appBackend);
 
     m_breadcrumbWidget = new BreadcrumbWidget(this);
 
@@ -92,6 +92,8 @@ AvailableView::~AvailableView()
 void AvailableView::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
+
+    m_categoryViewWidget->setBackend(backend);
 }
 
 void AvailableView::populateCategories()

@@ -18,72 +18,25 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef CATEGORYVIEWWIDGET_H
-#define CATEGORYVIEWWIDGET_H
+#ifndef APPLICATIONDETAILSVIEW_H
+#define APPLICATIONDETAILSVIEW_H
 
 #include "../AbstractViewBase.h"
 
-#include <QModelIndex>
-#include <QtCore/QList>
+class Application;
+class ApplicationDetailsWidget;
 
-class QIcon;
-class QStandardItemModel;
-class QString;
-
-class ApplicationBackend;
-class Category;
-class CategoryView;
-
-namespace QApt {
-    class Backend;
-}
-
-enum CatViewType {
-    /// An invalid type
-    InvalidType = 0,
-    /// An AppView since there are no sub-cats
-    CategoryType = 1,
-    /// A SubCategoryView
-    SubCatType = 2
-};
-
-enum CategoryModelRole {
-    CategoryTypeRole = Qt::UserRole + 1,
-    AndOrFilterRole = Qt::UserRole + 2,
-    NotFilterRole = Qt::UserRole + 3
-};
-
-class CategoryViewWidget : public AbstractViewBase
+class ApplicationDetailsView : public AbstractViewBase
 {
     Q_OBJECT
 public:
-    CategoryViewWidget(QWidget *parent, ApplicationBackend *appBackend);
-    ~CategoryViewWidget();
-
-    void setCategories(const QList<Category *> &categoryList,
-                       const QString &rootText,
-                       const QIcon &rootIcon);
+    // FIXME: use setApplication instead of defining in constructor
+    ApplicationDetailsView(QWidget *parent, Application *app);
+    ~ApplicationDetailsView();
 
 private:
-    QApt::Backend *m_backend;
-    ApplicationBackend *m_appBackend;
-    QStandardItemModel *m_categoryModel;
-    QList<Category *> m_categoryList;
-    QHash<QModelIndex, AbstractViewBase *> m_subViewHash;
+    ApplicationDetailsWidget *m_detailsWidget;
 
-    CategoryView *m_categoryView;
-    AbstractViewBase *m_subView;
-
-public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
-
-private Q_SLOTS:
-    void onIndexActivated(const QModelIndex &index);
-    void onSubViewDestroyed();
-
-Q_SIGNALS:
-    void switchToSubView(AbstractViewBase *view);
-    void registerNewSubView(AbstractViewBase *view);
 };
 
 #endif
