@@ -21,11 +21,11 @@
 #include "ApplicationListView.h"
 
 // Qt includes
+#include <QtGui/QIcon>
 #include <QtGui/QStackedWidget>
 #include <QtGui/QVBoxLayout>
 
 // KDE includes
-#include <KIcon>
 #include <KSeparator>
 
 // Own includes
@@ -47,7 +47,7 @@ ApplicationListView::ApplicationListView(QWidget *parent, ApplicationBackend *ap
 
     m_appViewWidget = new ApplicationViewWidget(this, appBackend);
     m_appViewWidget->setTitle(index.data(Qt::DisplayRole).toString());
-    m_appViewWidget->setIcon(KIcon(index.data(Qt::DecorationRole).toString()));
+    m_appViewWidget->setIcon(index.data(Qt::DecorationRole).value<QIcon>());
 
     m_breadcrumbWidget = new BreadcrumbWidget(this);
     m_breadcrumbWidget->setRootItem(m_appViewWidget->breadcrumbItem());
