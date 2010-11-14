@@ -57,13 +57,15 @@ bool BreadcrumbItem::hasChildren() const
 
 void BreadcrumbItem::setChildItem(BreadcrumbItem *child)
 {
+    // Only give an arrow if it has never had children. If it has, it will
+    // already have one
+    if (!m_hasChildren) {
+        m_button->setText(m_button->text() % ' ' % QString::fromUtf8("➜"));
+    }
+
     m_childItem = child;
     // Setting a null pointer would technically make this false...
     m_hasChildren = true;
-
-    if (!m_button->text().contains(QString::fromUtf8("➜"))) {
-        m_button->setText(m_button->text() % ' ' % QString::fromUtf8("➜"));
-    }
 }
 
 void BreadcrumbItem::setAssociatedView(AbstractViewBase *view)
