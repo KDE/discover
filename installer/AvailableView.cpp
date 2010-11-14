@@ -21,22 +21,17 @@
 #include "AvailableView.h"
 
 #include <QtCore/QFile>
-#include <QtGui/QVBoxLayout>
 #include <QtGui/QStackedWidget>
 #include <QtXml/QDomDocument>
 
 #include <KCategorizedSortFilterProxyModel>
 #include <KIcon>
 #include <KLocale>
-#include <KSeparator>
 #include <KStandardDirs>
-#include <KDebug>
 
 #include <LibQApt/Backend>
 
-#include "AbstractViewBase.h"
 #include "ApplicationBackend.h"
-#include "BreadcrumbWidget/BreadcrumbItem.h"
 #include "BreadcrumbWidget/BreadcrumbWidget.h"
 #include "CategoryView/Category.h"
 #include "CategoryView/CategoryViewWidget.h"
@@ -47,23 +42,12 @@ bool categoryLessThan(Category *c1, const Category *c2)
 }
 
 AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)
-        : QWidget(parent)
+        : AbstractViewContainer(parent)
         , m_backend(0)
         , m_appBackend(appBackend)
 {
-    QVBoxLayout *layout = new QVBoxLayout(this);
-    layout->setContentsMargins(0, 0, 0, 0);
-    setLayout(layout);
-
-    m_viewStack = new QStackedWidget(this);
 
     m_categoryViewWidget = new CategoryViewWidget(m_viewStack, m_appBackend);
-
-    m_breadcrumbWidget = new BreadcrumbWidget(this);
-
-    KSeparator *horizonatalSeparator = new KSeparator(this);
-    horizonatalSeparator->setOrientation(Qt::Horizontal);
-
     populateCategories();
 
     QString rootName = i18n("Get Software");
@@ -74,12 +58,6 @@ AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)
     m_viewStack->addWidget(m_categoryViewWidget);
     m_viewStack->setCurrentWidget(m_categoryViewWidget);
 
-    layout->addWidget(m_breadcrumbWidget);
-    layout->addWidget(horizonatalSeparator);
-    layout->addWidget(m_viewStack);
-
-    connect(m_breadcrumbWidget, SIGNAL(itemActivated(BreadcrumbItem *)),
-            this, SLOT(activateBreadcrumbItem(BreadcrumbItem *)));
     connect(m_categoryViewWidget, SIGNAL(registerNewSubView(AbstractViewBase *)),
             this, SLOT(registerNewSubView(AbstractViewBase *)));
     connect(m_categoryViewWidget, SIGNAL(switchToSubView(AbstractViewBase *)),
@@ -124,64 +102,5 @@ void AvailableView::populateCategories()
 
     qSort(m_categoryList.begin(), m_categoryList.end(), categoryLessThan);
 }
-
-// FIXME: Next 3 functions can be copied verbatim to ApplicationListView
-// AvailableView and AppListView need a common base
-void AvailableView::registerNewSubView(AbstractViewBase *subView)
-{
-    AbstractViewBase *currentView = static_cast<AbstractViewBase *>(m_viewStack->currentWidget());
-    BreadcrumbItem *currentItem = m_breadcrumbWidget->breadcrumbForView(currentView);
-
-    // If we are activating a new subView from a view that already has
-    // children, the old ones must go
-    if (currentItem->hasChildren()) {
-        m_breadcrumbWidget->removeItem(currentItem->childItem());
-    }
-
-    m_viewStack->addWidget(subView);
-    m_viewStack->setCurrentWidget(subView);
-    m_breadcrumbWidget->addLevel(subView->breadcrumbItem());
-}
-
-void AvailableView::switchToSubView(AbstractViewBase *subView)
-{
-    m_viewStack->setCurrentWidget(subView);
-    m_breadcrumbWidget->setItemBolded(m_breadcrumbWidget->breadcrumbForView(subView));
-}
-
-void AvailableView::activateBreadcrumbItem(BreadcrumbItem *item)
-{
-    AbstractViewBase *toActivate = item->associatedView();
-    if (!toActivate) {
-        // Screwed
-        return;
-    }
-
-    m_viewStack->setCurrentWidget(toActivate);
-    m_breadcrumbWidget->setItemBolded(item);
-}
-
-// void AvailableView::showAppDetails(Application *app)
-// {
-//     BreadcrumbItem *parent = m_breadcrumbWidget->breadcrumbForView(m_appView);
-// 
-//     if (parent) {
-//         if (parent->hasChildren()) {
-//             m_breadcrumbWidget->removeItem(parent->childItem());
-//         }
-//     }
-// 
-//     m_appDetailsWidget = new ApplicationDetailsWidget(this, app);
-// 
-//     BreadcrumbItem *item = new BreadcrumbItem(m_breadcrumbWidget);
-//     item->setText(app->name());
-//     item->setIcon(KIcon(app->icon()));
-//     item->setAssociatedWidget(m_appDetailsWidget);
-//     m_breadcrumbWidget->addLevel(item);
-// 
-//     parent->setChildItem(item);
-//     m_viewStack->addWidget(m_appDetailsWidget);
-//     m_viewStack->setCurrentWidget(m_appDetailsWidget);
-// }
 
 #include "AvailableView.moc"

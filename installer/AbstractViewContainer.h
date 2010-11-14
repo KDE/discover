@@ -18,41 +18,34 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONLISTVIEW_H
-#define APPLICATIONLISTVIEW_H
+#ifndef ABSTRACTVIEWCONTAINER_H
+#define ABSTRACTVIEWCONTAINER_H
 
-#include <QModelIndex>
+#include <QtGui/QWidget>
 
-#include <LibQApt/Package>
+class QStackedWidget;
+class QVBoxLayout;
 
-#include "AbstractViewContainer.h"
+class AbstractViewBase;
+class BreadcrumbItem;
+class BreadcrumbWidget;
 
-class ApplicationBackend;
-class ApplicationViewWidget;
-
-namespace QApt {
-    class Backend;
-}
-
-class ApplicationListView : public AbstractViewContainer
+class AbstractViewContainer : public QWidget
 {
     Q_OBJECT
 public:
-    ApplicationListView(QWidget *parent, ApplicationBackend *m_appBackend,
-                        const QModelIndex &index);
-    ~ApplicationListView();
+    AbstractViewContainer(QWidget *parent);
+    ~AbstractViewContainer();
 
-    void setStateFilter(QApt::Package::State state);
-    void setOriginFilter(const QString &origin);
+protected:
+    QVBoxLayout *m_layout;
+    BreadcrumbWidget *m_breadcrumbWidget;
+    QStackedWidget *m_viewStack;
 
-private:
-    QApt::Backend *m_backend;
-    ApplicationBackend *m_appBackend;
-
-    ApplicationViewWidget *m_appViewWidget;
-
-public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
+private Q_SLOTS:
+    void registerNewSubView(AbstractViewBase *subView);
+    void activateBreadcrumbItem(BreadcrumbItem *item);
+    void switchToSubView(AbstractViewBase *subView);
 };
 
 #endif

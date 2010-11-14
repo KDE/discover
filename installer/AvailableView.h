@@ -23,12 +23,10 @@
 
 #include <QtGui/QWidget>
 
-class QStackedWidget;
+#include "AbstractViewContainer.h"
 
 class AbstractViewBase;
 class ApplicationBackend;
-class BreadcrumbItem;
-class BreadcrumbWidget;
 class Category;
 class CategoryViewWidget;
 
@@ -36,7 +34,7 @@ namespace QApt {
     class Backend;
 }
 
-class AvailableView : public QWidget
+class AvailableView : public AbstractViewContainer
 {
     Q_OBJECT
 public:
@@ -48,8 +46,6 @@ private:
     ApplicationBackend *m_appBackend;
     QList<Category *> m_categoryList;
 
-    QStackedWidget *m_viewStack;
-    BreadcrumbWidget *m_breadcrumbWidget;
     CategoryViewWidget *m_categoryViewWidget;
 
 public Q_SLOTS:
@@ -57,9 +53,6 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void populateCategories();
-    void registerNewSubView(AbstractViewBase *subView);
-    void activateBreadcrumbItem(BreadcrumbItem *item);
-    void switchToSubView(AbstractViewBase *subView);
 };
 
 #endif

@@ -12,6 +12,7 @@ set(muon_installer_SRCS
     ApplicationDetailsView/ApplicationDetailsWidget.cpp
     ApplicationDetailsView/ApplicationDetailsView.cpp
     AbstractViewBase.cpp
+    AbstractViewContainer.cpp
     AvailableView.cpp
     BreadcrumbWidget/BreadcrumbItem.cpp
     BreadcrumbWidget/BreadcrumbWidget.cpp
