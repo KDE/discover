@@ -192,12 +192,12 @@ void ApplicationWindow::populateViews()
         viewItem->setData(originName, OriginFilterRole);
 
         if (originName == "Ubuntu") {
-            viewItem->setText("Kubuntu");
+            viewItem->setText("Provided by Kubuntu");
             viewItem->setIcon(KIcon("ubuntu-logo"));
             viewItem->setData(AppView, ViewTypeRole);
         }
 
-        if (originName == "Canonical") {
+        if (originName == "Canonical Partners") {
             viewItem->setIcon(KIcon("partner"));
             viewItem->setData(AppView, ViewTypeRole);
         }
