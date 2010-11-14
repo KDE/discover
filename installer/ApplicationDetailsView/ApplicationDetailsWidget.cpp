@@ -119,6 +119,7 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, Application 
     m_longDescLabel->setWordWrap(true);
     m_longDescLabel->setText(app->package()->longDescription());
     m_longDescLabel->setAlignment(Qt::AlignLeft | Qt::AlignTop);
+    m_longDescLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
     m_screenshotLabel = new ClickableLabel(body);
     m_screenshotLabel->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
