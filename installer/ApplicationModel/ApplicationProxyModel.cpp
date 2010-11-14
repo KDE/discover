@@ -20,6 +20,8 @@
 
 #include "ApplicationProxyModel.h"
 
+#include <QtCore/QRegExp>
+
 #include <KDebug>
 
 // Own includes
@@ -100,9 +102,15 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
                     foundOrCondition = true;
                 }
                 break;
-            case PkgWildcardFilter:
-                // FIXME: QRegExp on that shit
+            case PkgWildcardFilter: {
+                QRegExp rx((*filter).second);
+                rx.setPatternSyntax(QRegExp::Wildcard);
+
+                if (rx.exactMatch(application->package()->name())) {
+                    foundOrCondition = true;
+                }
                 break;
+            }
             case PkgNameFilter: // Only useful in the not filters
             case InvalidFilter:
             default:
@@ -133,8 +141,14 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
                     andConditionsMet = false;
                 }
                 break;
-            case PkgWildcardFilter:
-                // FIXME: QRegExp on that shit
+            case PkgWildcardFilter: {
+                QRegExp rx((*filter).second);
+                rx.setPatternSyntax(QRegExp::Wildcard);
+
+                if (!rx.exactMatch(application->package()->name())) {
+                    andConditionsMet = false;
+                }
+            }
                 break;
             case PkgNameFilter: // Only useful in the not filters
             case InvalidFilter:
@@ -164,7 +178,14 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
                     return false;
                 }
                 break;
-            case PkgWildcardFilter:
+            case PkgWildcardFilter: {
+                QRegExp rx((*filter).second);
+                rx.setPatternSyntax(QRegExp::Wildcard);
+
+                if (rx.exactMatch(application->package()->name())) {
+                    return false;
+                }
+            }
                 break;
             case PkgNameFilter:
                 if (application->package()->name() == (*filter).second) {
