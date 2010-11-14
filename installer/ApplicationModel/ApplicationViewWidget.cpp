@@ -121,8 +121,7 @@ void ApplicationViewWidget::setOriginFilter(const QString &origin)
 
 void ApplicationViewWidget::setFiltersFromCategory(Category *category)
 {
-    m_proxyModel->setAndOrFilters(category->andOrFilters());
-    m_proxyModel->setNotFilters(category->notFilters());
+    m_proxyModel->setFiltersFromCategory(category);
 }
 
 void ApplicationViewWidget::infoButtonClicked(Application *app)

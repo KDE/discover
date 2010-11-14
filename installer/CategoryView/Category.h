@@ -44,7 +44,8 @@ public:
 
     QString name() const;
     QString icon() const;
-    QList<QPair<FilterType, QString> > andOrFilters() const;
+    QList<QPair<FilterType, QString> > andFilters() const;
+    QList<QPair<FilterType, QString> > orFilters() const;
     QList<QPair<FilterType, QString> > notFilters() const;
     bool hasSubCategories() const;
     QList<Category *> subCategories() const;
@@ -52,7 +53,8 @@ public:
 private:
     QString m_name;
     QString m_iconString;
-    QList<QPair<FilterType, QString> > m_andOrFilters;
+    QList<QPair<FilterType, QString> > m_andFilters;
+    QList<QPair<FilterType, QString> > m_orFilters;
     QList<QPair<FilterType, QString> > m_notFilters;
     bool m_hasSubCategories;
     QList<Category *> m_subCategories;

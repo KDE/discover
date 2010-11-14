@@ -44,8 +44,7 @@ public:
     void setBackend(QApt::Backend *backend);
     void setStateFilter(QApt::Package::State state);
     void setOriginFilter(const QString &origin);
-    void setAndOrFilters(const QList<QPair<FilterType, QString> > &andFilters);
-    void setNotFilters(const QList<QPair<FilterType, QString> > &notFilters);
+    void setFiltersFromCategory(Category *category);
 
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
     Application *applicationAt(const QModelIndex &index) const;
@@ -57,10 +56,11 @@ protected:
 private:
     QApt::Backend *m_backend;
     QList<Application *> m_apps;
-    
+
     QApt::Package::State m_stateFilter;
     QString m_originFilter;
-    QList<QPair<FilterType, QString> > m_andOrFilters;
+    QList<QPair<FilterType, QString> > m_andFilters;
+    QList<QPair<FilterType, QString> > m_orFilters;
     QList<QPair<FilterType, QString> > m_notFilters;
 
 public Q_SLOTS:

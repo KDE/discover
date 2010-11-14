@@ -64,7 +64,7 @@ void BreadcrumbItem::setChildItem(BreadcrumbItem *child)
     }
 
     m_childItem = child;
-    // Setting a null pointer would technically make this false...
+    // Setting a null crumb pointer would technically make this false...
     m_hasChildren = true;
 }
 

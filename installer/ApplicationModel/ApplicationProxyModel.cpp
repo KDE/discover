@@ -54,15 +54,11 @@ void ApplicationProxyModel::setOriginFilter(const QString &origin)
     invalidate();
 }
 
-void ApplicationProxyModel::setAndOrFilters(const QList<QPair<FilterType, QString> > &andFilters)
+void ApplicationProxyModel::setFiltersFromCategory(Category *category)
 {
-    m_andOrFilters = andFilters;
-    invalidate();
-}
-
-void ApplicationProxyModel::setNotFilters(const QList<QPair<FilterType, QString> > &notFilters)
-{
-    m_notFilters = notFilters;
+    m_andFilters = category->andFilters();
+    m_orFilters = category->orFilters();
+    m_notFilters = category->notFilters();
     invalidate();
 }
 
@@ -87,27 +83,70 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
         }
     }
 
-    if (!m_andOrFilters.isEmpty()) {
-        QList<QPair<FilterType, QString> >::const_iterator filter = m_andOrFilters.constBegin();
-        while (filter != m_andOrFilters.constEnd()) {
+    if (!m_orFilters.isEmpty()) {
+        // Set a boolean value to true when any of the conditions are found.
+        // It is set to false by default so that if none are found, we return false
+        QList<QPair<FilterType, QString> >::const_iterator filter = m_orFilters.constBegin();
+        bool foundOrCondition = false;
+        while (filter != m_orFilters.constEnd()) {
             switch ((*filter).first) {
             case CategoryFilter:
-                if (!application->categories().contains((*filter).second)) {
-                    return false;
+                if (application->categories().contains((*filter).second)) {
+                    foundOrCondition = true;
                 }
                 break;
             case PkgSectionFilter:
+                if (application->package()->section() == (*filter).second) {
+                    foundOrCondition = true;
+                }
                 break;
             case PkgWildcardFilter:
+                // FIXME: QRegExp on that shit
                 break;
-            case PkgNameFilter:
-                break;
+            case PkgNameFilter: // Only useful in the not filters
             case InvalidFilter:
             default:
                 break;
             }
 
             ++filter;
+        }
+
+        if (!foundOrCondition) {
+            return false;
+        }
+    }
+
+    if (!m_andFilters.isEmpty()) {
+        // Set a boolean value to false when any conditions fail to meet
+        QList<QPair<FilterType, QString> >::const_iterator filter = m_andFilters.constBegin();
+        bool andConditionsMet = true;
+        while (filter != m_andFilters.constEnd()) {
+            switch ((*filter).first) {
+            case CategoryFilter:
+                if (!application->categories().contains((*filter).second)) {
+                    andConditionsMet = false;
+                }
+                break;
+            case PkgSectionFilter:
+                if (!(application->package()->section() == (*filter).second)) {
+                    andConditionsMet = false;
+                }
+                break;
+            case PkgWildcardFilter:
+                // FIXME: QRegExp on that shit
+                break;
+            case PkgNameFilter: // Only useful in the not filters
+            case InvalidFilter:
+            default:
+                break;
+            }
+
+            ++filter;
+        }
+
+        if (!andConditionsMet) {
+            return false;
         }
     }
 
@@ -121,6 +160,9 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
                 }
                 break;
             case PkgSectionFilter:
+                if (application->package()->section() == (*filter).second) {
+                    return false;
+                }
                 break;
             case PkgWildcardFilter:
                 break;

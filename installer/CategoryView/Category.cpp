@@ -68,9 +68,11 @@ QList<QPair<FilterType, QString> > Category::parseIncludes(const QDomNode &data)
     {
         QDomElement tempElement = node.toElement();
 
-        if (tempElement.tagName() == QLatin1String("And") || tempElement.tagName() == QLatin1String("Or")) {
+        if (tempElement.tagName() == QLatin1String("And")) {
             // Parse children
-            m_andOrFilters.append(parseIncludes(node));
+            m_andFilters.append(parseIncludes(node));
+        } else if (tempElement.tagName() == QLatin1String("Or")) {
+            m_orFilters.append(parseIncludes(node));
         } else if (tempElement.tagName() == QLatin1String("Not")) {
             m_notFilters.append(parseIncludes(node));
         } else if (tempElement.tagName() == QLatin1String("PkgSection")) {
@@ -110,9 +112,14 @@ QString Category::icon() const
     return m_iconString;
 }
 
-QList<QPair<FilterType, QString> > Category::andOrFilters() const
+QList<QPair<FilterType, QString> > Category::andFilters() const
 {
-    return m_andOrFilters;
+    return m_andFilters;
+}
+
+QList<QPair<FilterType, QString> > Category::orFilters() const
+{
+    return m_orFilters;
 }
 
 QList<QPair<FilterType, QString> > Category::notFilters() const
