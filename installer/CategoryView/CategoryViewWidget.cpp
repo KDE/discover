@@ -115,6 +115,8 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
         ApplicationViewWidget *appView = static_cast<ApplicationViewWidget *>(m_subView);
         appView->setBackend(m_backend);
         appView->setFiltersFromCategory(category);
+        appView->setTitle(category->name());
+        appView->setIcon(KIcon(category->icon()));
     }
         break;
     case SubCatType: { // Displays the subcategories of a category
