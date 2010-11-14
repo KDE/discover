@@ -18,7 +18,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "ApplicationView.h"
+#include "ApplicationViewWidget.h"
 
 #include <QApplication>
 #include <QtGui/QTreeView>
@@ -39,7 +39,7 @@
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
 #include "../CategoryView/Category.h"
 
-ApplicationView::ApplicationView(QWidget *parent, ApplicationBackend *appBackend)
+ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend *appBackend)
         : AbstractViewBase(parent)
         , m_backend(0)
         , m_appBackend(appBackend)
@@ -68,11 +68,11 @@ ApplicationView::ApplicationView(QWidget *parent, ApplicationBackend *appBackend
             this, SIGNAL(removeButtonClicked(Application *)));
 }
 
-ApplicationView::~ApplicationView()
+ApplicationViewWidget::~ApplicationViewWidget()
 {
 }
 
-void ApplicationView::setBackend(QApt::Backend *backend)
+void ApplicationViewWidget::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
     m_appModel->setMaxPopcon(m_appBackend->maxPopconScore());
@@ -84,7 +84,7 @@ void ApplicationView::setBackend(QApt::Backend *backend)
     m_crumb->setAssociatedView(this);
 }
 
-void ApplicationView::reload()
+void ApplicationViewWidget::reload()
 {
     m_appModel->clear();
     m_proxyModel->invalidate();
@@ -99,23 +99,33 @@ void ApplicationView::reload()
     m_treeView->sortByColumn(0, Qt::AscendingOrder);
 }
 
-void ApplicationView::setStateFilter(QApt::Package::State state)
+void ApplicationViewWidget::setTitle(const QString &title)
+{
+    m_crumb->setText(title);
+}
+
+void ApplicationViewWidget::setIcon(const QIcon &icon)
+{
+    m_crumb->setIcon(icon);
+}
+
+void ApplicationViewWidget::setStateFilter(QApt::Package::State state)
 {
     m_proxyModel->setStateFilter(state);
 }
 
-void ApplicationView::setOriginFilter(const QString &origin)
+void ApplicationViewWidget::setOriginFilter(const QString &origin)
 {
     m_proxyModel->setOriginFilter(origin);
 }
 
-void ApplicationView::setFiltersFromCategory(Category *category)
+void ApplicationViewWidget::setFiltersFromCategory(Category *category)
 {
     m_proxyModel->setAndOrFilters(category->andOrFilters());
     m_proxyModel->setNotFilters(category->notFilters());
 }
 
-void ApplicationView::infoButtonClicked(Application *app)
+void ApplicationViewWidget::infoButtonClicked(Application *app)
 {
     // Check to see if a view for this app already exists
     if (m_currentPair.second == app) {
@@ -134,10 +144,10 @@ void ApplicationView::infoButtonClicked(Application *app)
     emit registerNewSubView(m_detailsView);
 }
 
-void ApplicationView::onSubViewDestroyed()
+void ApplicationViewWidget::onSubViewDestroyed()
 {
     m_currentPair.first = 0;
     m_currentPair.second = 0;
 }
 
-#include "ApplicationView.moc"
+#include "ApplicationViewWidget.moc"

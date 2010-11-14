@@ -38,7 +38,7 @@
 #include "Application.h"
 #include "AvailableView.h"
 #include "ViewSwitcher.h"
-#include "ApplicationModel/ApplicationView.h"
+#include "ApplicationModel/ApplicationListView.h"
 #include "MuonInstallerSettings.h"
 
 ApplicationWindow::ApplicationWindow()
@@ -224,8 +224,8 @@ void ApplicationWindow::changeView(const QModelIndex &index)
         case AppView: {
             QString originFilter = index.data(OriginFilterRole).toString();
             QApt::Package::State stateFilter = (QApt::Package::State)index.data(StateFilterRole).toInt();
-            view = new ApplicationView(this, m_appBackend);
-            ApplicationView *appView = static_cast<ApplicationView *>(view);
+            view = new ApplicationListView(this, m_appBackend, index);
+            ApplicationListView *appView = static_cast<ApplicationListView *>(view);
             m_viewStack->addWidget(view);
             appView->setBackend(m_backend);
             appView->setStateFilter(stateFilter);

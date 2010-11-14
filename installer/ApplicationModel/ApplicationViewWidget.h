@@ -18,8 +18,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONVIEW_H
-#define APPLICATIONVIEW_H
+#ifndef APPLICATIONVIEWWIDGET_H
+#define APPLICATIONVIEWWIDGET_H
 
 #include <QtCore/QPair>
 
@@ -27,6 +27,7 @@
 
 #include "AbstractViewBase.h"
 
+class QIcon;
 class QTreeView;
 
 class KPixmapSequenceOverlayPainter;
@@ -42,12 +43,12 @@ namespace QApt {
     class Backend;
 }
 
-class ApplicationView : public AbstractViewBase
+class ApplicationViewWidget : public AbstractViewBase
 {
     Q_OBJECT
 public:
-    ApplicationView(QWidget *parent, ApplicationBackend *appBackend);
-    ~ApplicationView();
+    ApplicationViewWidget(QWidget *parent, ApplicationBackend *appBackend);
+    ~ApplicationViewWidget();
 
 private:
     QApt::Backend *m_backend;
@@ -68,6 +69,8 @@ public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void reload();
 
+    void setTitle(const QString &title);
+    void setIcon(const QIcon &icon);
     void setStateFilter(QApt::Package::State state);
     void setOriginFilter(const QString &origin);
     void setFiltersFromCategory(Category *category);

@@ -7,7 +7,8 @@ set(muon_installer_SRCS
     ApplicationModel/ApplicationProxyModel.cpp
     ApplicationModel/ApplicationDelegate.cpp
     ApplicationModel/ApplicationExtender.cpp
-    ApplicationModel/ApplicationView.cpp
+    ApplicationModel/ApplicationListView.cpp
+    ApplicationModel/ApplicationViewWidget.cpp
     ApplicationDetailsView/ApplicationDetailsWidget.cpp
     ApplicationDetailsView/ApplicationDetailsView.cpp
     AbstractViewBase.cpp

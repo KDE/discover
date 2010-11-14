@@ -18,35 +18,24 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "AvailableView.h"
+#include "ApplicationListView.h"
 
-#include <QtCore/QFile>
-#include <QtGui/QVBoxLayout>
+// Qt includes
 #include <QtGui/QStackedWidget>
-#include <QtXml/QDomDocument>
+#include <QtGui/QVBoxLayout>
 
-#include <KCategorizedSortFilterProxyModel>
+// KDE includes
 #include <KIcon>
-#include <KLocale>
 #include <KSeparator>
-#include <KStandardDirs>
-#include <KDebug>
 
-#include <LibQApt/Backend>
+// Own includes
+#include "ApplicationViewWidget.h"
+#include "../AbstractViewBase.h"
+#include "../BreadcrumbWidget/BreadcrumbItem.h"
+#include "../BreadcrumbWidget/BreadcrumbWidget.h"
 
-#include "AbstractViewBase.h"
-#include "ApplicationBackend.h"
-#include "BreadcrumbWidget/BreadcrumbItem.h"
-#include "BreadcrumbWidget/BreadcrumbWidget.h"
-#include "CategoryView/Category.h"
-#include "CategoryView/CategoryViewWidget.h"
-
-bool categoryLessThan(Category *c1, const Category *c2)
-{
-    return (QString::localeAwareCompare(c1->name(), c2->name()) < 0);
-}
-
-AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)
+ApplicationListView::ApplicationListView(QWidget *parent, ApplicationBackend *appBackend,
+                                         const QModelIndex &index)
         : QWidget(parent)
         , m_backend(0)
         , m_appBackend(appBackend)
@@ -56,22 +45,18 @@ AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)
 
     m_viewStack = new QStackedWidget(this);
 
-    m_categoryViewWidget = new CategoryViewWidget(m_viewStack, m_appBackend);
+    m_appViewWidget = new ApplicationViewWidget(this, appBackend);
+    m_appViewWidget->setTitle(index.data(Qt::DisplayRole).toString());
+    m_appViewWidget->setIcon(KIcon(index.data(Qt::DecorationRole).toString()));
 
     m_breadcrumbWidget = new BreadcrumbWidget(this);
+    m_breadcrumbWidget->setRootItem(m_appViewWidget->breadcrumbItem());
 
     KSeparator *horizonatalSeparator = new KSeparator(this);
     horizonatalSeparator->setOrientation(Qt::Horizontal);
 
-    populateCategories();
-
-    QString rootName = i18n("Get Software");
-    KIcon rootIcon = KIcon("applications-other");
-    m_categoryViewWidget->setCategories(m_categoryList, rootName, rootIcon);
-    m_breadcrumbWidget->setRootItem(m_categoryViewWidget->breadcrumbItem());
-
-    m_viewStack->addWidget(m_categoryViewWidget);
-    m_viewStack->setCurrentWidget(m_categoryViewWidget);
+    m_viewStack->addWidget(m_appViewWidget);
+    m_viewStack->setCurrentWidget(m_appViewWidget);
 
     layout->addWidget(m_breadcrumbWidget);
     layout->addWidget(horizonatalSeparator);
@@ -79,54 +64,36 @@ AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)
 
     connect(m_breadcrumbWidget, SIGNAL(itemActivated(BreadcrumbItem *)),
             this, SLOT(activateBreadcrumbItem(BreadcrumbItem *)));
-    connect(m_categoryViewWidget, SIGNAL(registerNewSubView(AbstractViewBase *)),
+    connect(m_appViewWidget, SIGNAL(registerNewSubView(AbstractViewBase *)),
             this, SLOT(registerNewSubView(AbstractViewBase *)));
-    connect(m_categoryViewWidget, SIGNAL(switchToSubView(AbstractViewBase *)),
+    connect(m_appViewWidget, SIGNAL(switchToSubView(AbstractViewBase *)),
             this, SLOT(switchToSubView(AbstractViewBase *)));
 }
 
-AvailableView::~AvailableView()
+ApplicationListView::~ApplicationListView()
 {
 }
 
-void AvailableView::setBackend(QApt::Backend *backend)
+void ApplicationListView::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
 
-    m_categoryViewWidget->setBackend(backend);
+    m_appViewWidget->setBackend(backend);
 }
 
-void AvailableView::populateCategories()
+void ApplicationListView::setStateFilter(QApt::Package::State state)
 {
-    QFile menuFile(KStandardDirs::locate("appdata", "categories.xml"));
-
-    if (!menuFile.open(QIODevice::ReadOnly)) {
-        // Broken install or broken FS
-        return;
-    }
-
-    QDomDocument menuDocument;
-    QString error;
-    int line;
-    menuDocument.setContent(&menuFile, &error, &line);
-
-    QDomElement root = menuDocument.documentElement();
-
-    QDomNode node = root.firstChild();
-    while(!node.isNull())
-    {
-        Category *category = new Category(this, node);
-        m_categoryList << category;
-
-        node = node.nextSibling();
-    }
-
-    qSort(m_categoryList.begin(), m_categoryList.end(), categoryLessThan);
+    m_appViewWidget->setStateFilter(state);
 }
 
-// FIXME: Next 3 functions can be copied verbatim to ApplicationListView
-// AvailableView and AppListView need a common base
-void AvailableView::registerNewSubView(AbstractViewBase *subView)
+void ApplicationListView::setOriginFilter(const QString &origin)
+{
+    m_appViewWidget->setOriginFilter(origin);
+}
+
+// FIXME: Next 3 functions can be copied verbatim to AvailableView
+// ApplicationListView and AppListView need a common base
+void ApplicationListView::registerNewSubView(AbstractViewBase *subView)
 {
     AbstractViewBase *currentView = static_cast<AbstractViewBase *>(m_viewStack->currentWidget());
     BreadcrumbItem *currentItem = m_breadcrumbWidget->breadcrumbForView(currentView);
@@ -142,13 +109,13 @@ void AvailableView::registerNewSubView(AbstractViewBase *subView)
     m_breadcrumbWidget->addLevel(subView->breadcrumbItem());
 }
 
-void AvailableView::switchToSubView(AbstractViewBase *subView)
+void ApplicationListView::switchToSubView(AbstractViewBase *subView)
 {
     m_viewStack->setCurrentWidget(subView);
     m_breadcrumbWidget->setItemBolded(m_breadcrumbWidget->breadcrumbForView(subView));
 }
 
-void AvailableView::activateBreadcrumbItem(BreadcrumbItem *item)
+void ApplicationListView::activateBreadcrumbItem(BreadcrumbItem *item)
 {
     AbstractViewBase *toActivate = item->associatedView();
     if (!toActivate) {
@@ -160,27 +127,4 @@ void AvailableView::activateBreadcrumbItem(BreadcrumbItem *item)
     m_breadcrumbWidget->setItemBolded(item);
 }
 
-// void AvailableView::showAppDetails(Application *app)
-// {
-//     BreadcrumbItem *parent = m_breadcrumbWidget->breadcrumbForView(m_appView);
-// 
-//     if (parent) {
-//         if (parent->hasChildren()) {
-//             m_breadcrumbWidget->removeItem(parent->childItem());
-//         }
-//     }
-// 
-//     m_appDetailsWidget = new ApplicationDetailsWidget(this, app);
-// 
-//     BreadcrumbItem *item = new BreadcrumbItem(m_breadcrumbWidget);
-//     item->setText(app->name());
-//     item->setIcon(KIcon(app->icon()));
-//     item->setAssociatedWidget(m_appDetailsWidget);
-//     m_breadcrumbWidget->addLevel(item);
-// 
-//     parent->setChildItem(item);
-//     m_viewStack->addWidget(m_appDetailsWidget);
-//     m_viewStack->setCurrentWidget(m_appDetailsWidget);
-// }
-
-#include "AvailableView.moc"
+#include "ApplicationListView.moc"

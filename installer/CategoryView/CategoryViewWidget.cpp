@@ -34,7 +34,7 @@
 
 // Own includes
 #include "../ApplicationBackend.h"
-#include "../ApplicationModel/ApplicationView.h"
+#include "../ApplicationModel/ApplicationViewWidget.h"
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
 #include "Category.h"
 #include "CategoryView.h"
@@ -110,9 +110,9 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
 
     switch (index.data(CategoryTypeRole).toInt()) {
     case CategoryType: { // Displays the apps in a category
-        m_subView = new ApplicationView(this, m_appBackend);
+        m_subView = new ApplicationViewWidget(this, m_appBackend);
 
-        ApplicationView *appView = static_cast<ApplicationView *>(m_subView);
+        ApplicationViewWidget *appView = static_cast<ApplicationViewWidget *>(m_subView);
         appView->setBackend(m_backend);
         appView->setFiltersFromCategory(category);
     }
