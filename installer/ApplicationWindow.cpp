@@ -197,7 +197,8 @@ void ApplicationWindow::populateViews()
             viewItem->setData(AppView, ViewTypeRole);
         }
 
-        if (originName == "Canonical Partners") {
+        if (originName == "Canonical") {
+            viewItem->setText(i18n("Canonical Partners"));
             viewItem->setIcon(KIcon("partner"));
             viewItem->setData(AppView, ViewTypeRole);
         }
