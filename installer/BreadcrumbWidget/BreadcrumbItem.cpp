@@ -61,7 +61,9 @@ void BreadcrumbItem::setChildItem(BreadcrumbItem *child)
     // Setting a null pointer would technically make this false...
     m_hasChildren = true;
 
-    m_button->setText(m_button->text() % ' ' % QString::fromUtf8("➜"));
+    if (!m_button->text().contains(QString::fromUtf8("➜"))) {
+        m_button->setText(m_button->text() % ' ' % QString::fromUtf8("➜"));
+    }
 }
 
 void BreadcrumbItem::setAssociatedView(AbstractViewBase *view)
