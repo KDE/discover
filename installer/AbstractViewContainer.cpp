@@ -22,9 +22,9 @@
 
 // Qt includes
 #include <QtGui/QStackedWidget>
-#include <QtGui/QVBoxLayout>
 
 // KDE includes
+#include <KDialog>
 #include <KSeparator>
 
 #include "AbstractViewBase.h"
@@ -32,22 +32,15 @@
 #include "BreadcrumbWidget/BreadcrumbItem.h"
 
 AbstractViewContainer::AbstractViewContainer(QWidget *parent)
-        : QWidget(parent)
+        : KVBox(parent)
 {
-    m_layout = new QVBoxLayout(this);
-    m_layout->setContentsMargins(0, 0, 0, 0);
-    setLayout(m_layout);
-
-    m_viewStack = new QStackedWidget(this);
-
+    setSpacing(KDialog::spacingHint());
     m_breadcrumbWidget = new BreadcrumbWidget(this);
 
     KSeparator *horizontalSeparator = new KSeparator(this);
     horizontalSeparator->setOrientation(Qt::Horizontal);
 
-    m_layout->addWidget(m_breadcrumbWidget);
-    m_layout->addWidget(horizontalSeparator);
-    m_layout->addWidget(m_viewStack);
+    m_viewStack = new QStackedWidget(this);
 
     connect(m_breadcrumbWidget, SIGNAL(itemActivated(BreadcrumbItem *)),
             this, SLOT(activateBreadcrumbItem(BreadcrumbItem *)));

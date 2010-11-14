@@ -21,16 +21,15 @@
 #ifndef ABSTRACTVIEWCONTAINER_H
 #define ABSTRACTVIEWCONTAINER_H
 
-#include <QtGui/QWidget>
+#include <KVBox>
 
 class QStackedWidget;
-class QVBoxLayout;
 
 class AbstractViewBase;
 class BreadcrumbItem;
 class BreadcrumbWidget;
 
-class AbstractViewContainer : public QWidget
+class AbstractViewContainer : public KVBox
 {
     Q_OBJECT
 public:
@@ -38,7 +37,6 @@ public:
     ~AbstractViewContainer();
 
 protected:
-    QVBoxLayout *m_layout;
     BreadcrumbWidget *m_breadcrumbWidget;
     QStackedWidget *m_viewStack;
 
