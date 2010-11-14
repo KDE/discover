@@ -105,6 +105,10 @@ QString Application::icon()
 {
     QString icon = getField("Icon");
 
+    if (icon.isEmpty()) {
+        icon = QLatin1String("applications-other");
+    }
+
     return icon;
 }
 
