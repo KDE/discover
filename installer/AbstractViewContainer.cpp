@@ -24,7 +24,6 @@
 #include <QtGui/QStackedWidget>
 
 // KDE includes
-#include <KDialog>
 #include <KSeparator>
 
 #include "AbstractViewBase.h"
@@ -34,7 +33,7 @@
 AbstractViewContainer::AbstractViewContainer(QWidget *parent)
         : KVBox(parent)
 {
-    setSpacing(KDialog::spacingHint());
+    setSpacing(2);
     m_breadcrumbWidget = new BreadcrumbWidget(this);
 
     KSeparator *horizontalSeparator = new KSeparator(this);
