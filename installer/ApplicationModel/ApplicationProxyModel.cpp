@@ -167,6 +167,9 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
             case PkgWildcardFilter:
                 break;
             case PkgNameFilter:
+                if (application->package()->name() == (*filter).second) {
+                    return false;
+                }
                 break;
             case InvalidFilter:
             default:
