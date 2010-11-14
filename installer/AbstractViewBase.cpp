@@ -30,6 +30,7 @@ AbstractViewBase::AbstractViewBase(QWidget *parent)
         : QWidget(parent)
 {
     m_layout = new QVBoxLayout(this);
+    m_layout->setContentsMargins(0, 0, 0, 0);
     setLayout(m_layout);
 
     m_crumb = new BreadcrumbItem(this);

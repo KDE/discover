@@ -41,6 +41,7 @@ ApplicationListView::ApplicationListView(QWidget *parent, ApplicationBackend *ap
         , m_appBackend(appBackend)
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
+    layout->setContentsMargins(0, 0, 0, 0);
     setLayout(layout);
 
     m_viewStack = new QStackedWidget(this);
