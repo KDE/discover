@@ -607,12 +607,13 @@
   </Menu>
 
   <Menu>
-    <Name>Themes &amp; Tweaks</Name>
-    <Icon>preferences-desktop-personal</Icon>
+    <Name>System &amp; Settings</Name>
+    <Icon>preferences-system</Icon>
     <Include>
-      <And>
+      <Or>
         <Category>Settings</Category>
-      </And>
+        <Category>System</Category>
+      </Or>
     </Include>
   </Menu>
 
