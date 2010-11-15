@@ -64,13 +64,7 @@ void AbstractViewContainer::switchToSubView(AbstractViewBase *subView)
 
 void AbstractViewContainer::activateBreadcrumbItem(BreadcrumbItem *item)
 {
-    AbstractViewBase *toActivate = item->associatedView();
-    if (!toActivate) {
-        // Screwed
-        return;
-    }
-
-    m_viewStack->setCurrentWidget(toActivate);
+    m_viewStack->setCurrentWidget(item->associatedView());
 }
 
 #include "AbstractViewContainer.moc"
