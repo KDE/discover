@@ -40,7 +40,7 @@
 
     <Menu>
       <Name>Debugging</Name>
-      <Icon>applications-debugging</Icon>
+      <Icon>tools-report-bug</Icon>
       <Include>
         <And>
           <Category>Debugger</Category>
@@ -50,7 +50,7 @@
 
     <Menu>
       <Name>Graphic Interface Design</Name>
-      <Icon>applications-interfacedesign</Icon>
+      <Icon></Icon>
       <Include>
         <And>
           <Category>GUIDesigner</Category>
@@ -60,7 +60,7 @@
 
     <Menu>
       <Name>Haskell</Name>
-      <Icon>applications-haskell</Icon>
+      <Icon>text-x-haskell</Icon>
       <Include>
         <Or>
           <PkgSection>haskell</PkgSection>
@@ -73,7 +73,7 @@
 
     <Menu>
       <Name>IDEs</Name>
-      <Icon>applications-ide</Icon>
+      <Icon></Icon>
       <Include>
         <And>
           <Category>IDE</Category>
@@ -83,7 +83,7 @@
 
     <Menu>
       <Name>Java</Name>
-      <Icon>applications-java</Icon>
+      <Icon>application-x-java</Icon>
       <Include>
         <Or>
           <PkgSection>java</PkgSection>
@@ -96,7 +96,7 @@
 
     <Menu>
       <Name>Libraries</Name>
-      <Icon>applications-libraries</Icon>
+      <Icon></Icon>
       <Include>
         <Or>
           <PkgSection>libdevel</PkgSection>
@@ -109,7 +109,7 @@
 
     <Menu>
       <Name>Lisp</Name>
-      <Icon>applications-lisp</Icon>
+      <Icon></Icon>
       <Include>
         <Or>
           <PkgSection>lisp</PkgSection>
@@ -132,7 +132,7 @@
 
     <Menu>
       <Name>Mono/CLI</Name>
-      <Icon>applications-monodevelopment</Icon>
+      <Icon></Icon>
       <Include>
         <Or>
           <PkgSection>cli-mono</PkgSection>
@@ -145,7 +145,7 @@
 
     <Menu>
       <Name>OCaml</Name>
-      <Icon>applications-ocaml</Icon>
+      <Icon></Icon>
       <Include>
         <Or>
           <PkgSection>ocaml</PkgSection>
@@ -158,7 +158,7 @@
 
     <Menu>
       <Name>Perl</Name>
-      <Icon>applications-perl</Icon>
+      <Icon></Icon>
       <Include>
         <Or>
           <PkgSection>perl</PkgSection>
@@ -171,7 +171,7 @@
 
     <Menu>
       <Name>Profiling</Name>
-      <Icon>applications-profiling</Icon>
+      <Icon></Icon>
       <Include>
         <Category>Profiling</Category>
       </Include>
@@ -179,7 +179,7 @@
 
     <Menu>
       <Name>Python</Name>
-      <Icon>applications-python</Icon>
+      <Icon>text-x-python</Icon>
       <Include>
         <Or>
           <PkgSection>python</PkgSection>
@@ -192,7 +192,7 @@
 
     <Menu>
       <Name>Ruby</Name>
-      <Icon>applications-ruby</Icon>
+      <Icon>application-x-ruby</Icon>
       <Include>
         <Or>
           <PkgSection>ruby</PkgSection>
@@ -205,7 +205,7 @@
 
     <Menu>
       <Name>Version Control</Name>
-      <Icon>applications-versioncontrol</Icon>
+      <Icon>text-x-patch</Icon>
       <Include>
         <Or>
           <PkgSection>vcs</PkgSection>
@@ -255,7 +255,7 @@
     </Include>
     <Menu>
       <Name>Astronomy</Name>
-      <Icon>applications-astronomy</Icon>
+      <Icon></Icon>
       <Include>
         <And>
           <Category>Astronomy</Category>
@@ -264,7 +264,7 @@
     </Menu>
     <Menu>
       <Name>Biology</Name>
-      <Icon>applications-biology</Icon>
+      <Icon></Icon>
       <Include>
         <And>
           <Category>Biology</Category>
@@ -293,7 +293,7 @@
     </Menu>
     <Menu>
       <Name>Electronics</Name>
-      <Icon>applications-electronics</Icon>
+      <Icon>audio-card</Icon>
       <Include>
         <And>
           <Category>Electronics</Category>
@@ -311,7 +311,7 @@
     </Menu>
     <Menu>
       <Name>Geography</Name>
-      <Icon>applications-geography</Icon>
+      <Icon></Icon>
       <Include>
         <And>
           <Category>Geography</Category>
@@ -320,7 +320,7 @@
     </Menu>
     <Menu>
       <Name>Geology</Name>
-      <Icon>applications-geology</Icon>
+      <Icon></Icon>
       <Include>
         <Or>
           <Category>Geology</Category>
@@ -330,7 +330,7 @@
     </Menu>
     <Menu>
       <Name>Mathematics</Name>
-      <Icon>applications-mathematics</Icon>
+      <Icon>applications-education-mathematics</Icon>
       <Include>
         <Or>
           <Category>DataVisualization</Category>
@@ -349,7 +349,7 @@
     </Menu>
     <Menu>
       <Name>Physics</Name>
-      <Icon>applications-physics</Icon>
+      <Icon>step</Icon>
       <Include>
         <And>
           <Category>Physics</Category>
@@ -418,7 +418,7 @@
     </Menu>
     <Menu>
       <Name>Puzzles</Name>
-      <Icon>applications-puzzles</Icon>
+      <Icon>applications-games</Icon>
       <Include>
         <And>
           <Category>LogicGame</Category>
@@ -427,7 +427,7 @@
     </Menu>
     <Menu>
       <Name>Role Playing</Name>
-      <Icon>applications-roleplaying</Icon>
+      <Icon>applications-games</Icon>
       <Include>
         <And>
           <Category>RolePlaying</Category>
@@ -466,7 +466,7 @@
     </Include>
     <Menu>
       <Name>3D</Name>
-      <Icon>applications-3D</Icon>
+      <Icon></Icon>
       <Include>
         <And>
           <Category>3DGraphics</Category>
@@ -475,7 +475,7 @@
     </Menu>
     <Menu>
       <Name>Drawing</Name>
-      <Icon>applications-drawing</Icon>
+      <Icon>draw-freehand</Icon>
       <Include>
         <And>
           <Category>VectorGraphics</Category>
@@ -487,7 +487,7 @@
     </Menu>
     <Menu>
       <Name>Painting &amp; Editing</Name>
-      <Icon>applications-painting</Icon>
+      <Icon>draw-brush</Icon>
       <Include>
         <And>
           <Category>RasterGraphics</Category>
@@ -500,7 +500,7 @@
     </Menu>
     <Menu>
       <Name>Photography</Name>
-      <Icon>applications-photography</Icon>
+      <Icon>image-x-generic</Icon>
       <Include>
         <And>
           <Category>Photography</Category>
@@ -509,7 +509,7 @@
     </Menu>
     <Menu>
       <Name>Publishing</Name>
-      <Icon>applications-publishing</Icon>
+      <Icon>document-export</Icon>
       <Include>
         <And>
           <Category>Publishing</Category>
@@ -528,7 +528,7 @@
     </Menu>
     <Menu>
       <Name>Viewers</Name>
-      <Icon>applications-viewers</Icon>
+      <Icon>graphics-viewer-document</Icon>
       <Include>
         <And>
           <Category>Viewer</Category>
@@ -608,7 +608,7 @@
 
   <Menu>
     <Name>Themes &amp; Tweaks</Name>
-    <Icon>preferences-other</Icon>
+    <Icon>preferences-desktop-personal</Icon>
     <Include>
       <And>
         <Category>Settings</Category>

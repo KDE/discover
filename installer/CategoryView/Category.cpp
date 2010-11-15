@@ -47,7 +47,9 @@ void Category::parseData(const QDomNode &data)
             }
             m_name = tempElement.text();
         } else if (tempElement.tagName() == QLatin1String("Icon")) {
-            m_iconString = tempElement.text();
+            if (!tempElement.text().isEmpty()) {
+                m_iconString = tempElement.text();
+            }
         } else if (tempElement.tagName() == QLatin1String("Menu")) {
             Category *subCategory = new Category(this, node);
             m_subCategories << subCategory;
