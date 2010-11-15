@@ -77,6 +77,7 @@ void AvailableView::setBackend(QApt::Backend *backend)
 
 void AvailableView::populateCategories()
 {
+    qDeleteAll(m_categoryList);
     QFile menuFile(KStandardDirs::locate("appdata", "categories.xml"));
 
     if (!menuFile.open(QIODevice::ReadOnly)) {
@@ -94,7 +95,7 @@ void AvailableView::populateCategories()
     QDomNode node = root.firstChild();
     while(!node.isNull())
     {
-        Category *category = new Category(this, node);
+        Category *category = new Category(node);
         m_categoryList << category;
 
         node = node.nextSibling();

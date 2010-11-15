@@ -22,10 +22,10 @@
 #define CATEGORY_H
 
 #include <QtCore/QList>
-#include <QtCore/QObject>
 #include <QtCore/QPair>
 #include <QtCore/QString>
-#include <QtXml/QDomNode>
+
+class QDomNode;
 
 enum FilterType {
     InvalidFilter = 0,
@@ -35,11 +35,10 @@ enum FilterType {
     PkgNameFilter = 4
 };
 
-class Category : public QObject
+class Category
 {
-    Q_OBJECT
 public:
-    explicit Category(QObject *parent, const QDomNode &node);
+    explicit Category(const QDomNode &node);
     ~Category();
 
     QString name() const;

@@ -20,9 +20,10 @@
 
 #include "Category.h"
 
-Category::Category(QObject *parent, const QDomNode &data)
-        : QObject(parent)
-        , m_iconString("applications-other")
+#include <QtXml/QDomNode>
+
+Category::Category(const QDomNode &data)
+        : m_iconString("applications-other")
         , m_hasSubCategories(false)
 {
     parseData(data);
@@ -30,6 +31,7 @@ Category::Category(QObject *parent, const QDomNode &data)
 
 Category::~Category()
 {
+    qDeleteAll(m_subCategories);
 }
 
 void Category::parseData(const QDomNode &data)
@@ -51,7 +53,7 @@ void Category::parseData(const QDomNode &data)
                 m_iconString = tempElement.text();
             }
         } else if (tempElement.tagName() == QLatin1String("Menu")) {
-            Category *subCategory = new Category(this, node);
+            Category *subCategory = new Category(node);
             m_subCategories << subCategory;
             m_hasSubCategories = true;
         } else if (tempElement.tagName() == QLatin1String("Include")) {
