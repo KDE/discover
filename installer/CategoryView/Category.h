@@ -35,10 +35,16 @@ enum FilterType {
     PkgNameFilter = 4
 };
 
+enum CategoryChildPolicy {
+    InvalidPolicy = 0,
+    CanHaveChildren = 1,
+    NoChildren = 2
+};
+
 class Category
 {
 public:
-    explicit Category(const QDomNode &node);
+    explicit Category(const QDomNode &node, CategoryChildPolicy type = CanHaveChildren);
     ~Category();
 
     QString name() const;
@@ -57,6 +63,7 @@ private:
     QList<QPair<FilterType, QString> > m_notFilters;
     bool m_hasSubCategories;
     QList<Category *> m_subCategories;
+    CategoryChildPolicy m_policy;
 
     void parseData(const QDomNode &data);
     QList<QPair<FilterType, QString> > parseIncludes(const QDomNode &data);

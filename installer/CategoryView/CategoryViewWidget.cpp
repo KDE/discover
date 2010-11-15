@@ -87,7 +87,6 @@ void CategoryViewWidget::setCategories(const QList<Category *> &categoryList,
     KCategorizedSortFilterProxyModel *proxy = new KCategorizedSortFilterProxyModel(this);
     proxy->setSourceModel(m_categoryModel);
     proxy->setCategorizedModel(true);
-    proxy->sort(0);
     m_categoryView->setModel(proxy);
 
     m_crumb->setText(rootName);

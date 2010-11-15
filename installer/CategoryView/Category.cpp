@@ -22,9 +22,12 @@
 
 #include <QtXml/QDomNode>
 
-Category::Category(const QDomNode &data)
+#include <KLocale>
+
+Category::Category(const QDomNode &data, CategoryChildPolicy policy)
         : m_iconString("applications-other")
         , m_hasSubCategories(false)
+        , m_policy(policy)
 {
     parseData(data);
 }
@@ -47,20 +50,32 @@ void Category::parseData(const QDomNode &data)
                 node = node.nextSibling();
                 continue;
             }
-            m_name = tempElement.text();
+
+            if (m_policy == CanHaveChildren) {
+                m_name = tempElement.text();
+            } else {
+                m_name = i18nc("@label", "All");
+            }
         } else if (tempElement.tagName() == QLatin1String("Icon")) {
             if (!tempElement.text().isEmpty()) {
                 m_iconString = tempElement.text();
             }
         } else if (tempElement.tagName() == QLatin1String("Menu")) {
-            Category *subCategory = new Category(node);
-            m_subCategories << subCategory;
-            m_hasSubCategories = true;
+            if (m_policy == CanHaveChildren) {
+                Category *subCategory = new Category(node);
+                m_subCategories << subCategory;
+                m_hasSubCategories = true;
+            }
         } else if (tempElement.tagName() == QLatin1String("Include")) {
             parseIncludes(tempElement);
         }
 
         node = node.nextSibling();
+    }
+
+    if (m_hasSubCategories) {
+        Category *allSubCategory = new Category(data, NoChildren);
+        m_subCategories << allSubCategory;
     }
 }
 
