@@ -51,15 +51,6 @@ AbstractViewContainer::~AbstractViewContainer()
 
 void AbstractViewContainer::registerNewSubView(AbstractViewBase *subView)
 {
-    AbstractViewBase *currentView = static_cast<AbstractViewBase *>(m_viewStack->currentWidget());
-    BreadcrumbItem *currentItem = m_breadcrumbWidget->breadcrumbForView(currentView);
-
-    // If we are activating a new subView from a view that already has
-    // children, the old ones must go
-    if (currentItem->hasChildren()) {
-        m_breadcrumbWidget->removeItem(currentItem->childItem());
-    }
-
     m_viewStack->addWidget(subView);
     m_viewStack->setCurrentWidget(subView);
     m_breadcrumbWidget->addLevel(subView->breadcrumbItem());
@@ -68,7 +59,7 @@ void AbstractViewContainer::registerNewSubView(AbstractViewBase *subView)
 void AbstractViewContainer::switchToSubView(AbstractViewBase *subView)
 {
     m_viewStack->setCurrentWidget(subView);
-    m_breadcrumbWidget->setItemBolded(m_breadcrumbWidget->breadcrumbForView(subView));
+    m_breadcrumbWidget->setCurrentItem(m_breadcrumbWidget->breadcrumbForView(subView));
 }
 
 void AbstractViewContainer::activateBreadcrumbItem(BreadcrumbItem *item)
@@ -80,7 +71,6 @@ void AbstractViewContainer::activateBreadcrumbItem(BreadcrumbItem *item)
     }
 
     m_viewStack->setCurrentWidget(toActivate);
-    m_breadcrumbWidget->setItemBolded(item);
 }
 
 #include "AbstractViewContainer.moc"

@@ -25,6 +25,8 @@
 
 #include <KHBox>
 
+class QPushButton;
+
 class AbstractViewBase;
 class BreadcrumbItem;
 
@@ -49,13 +51,19 @@ public:
 
 private:
     QList<BreadcrumbItem *> m_items;
+    BreadcrumbItem *m_currentItem;
 
+    QPushButton *m_backButton;
+    QPushButton *m_forwardButton;
     KHBox *m_breadcrumbArea;
 
 public Q_SLOTS:
-    void setItemBolded(BreadcrumbItem *crumb);
+    void setCurrentItem(BreadcrumbItem *crumb);
 
 private Q_SLOTS:
+    void goBack();
+    void goForward();
+    void onItemActivated(BreadcrumbItem *item);
     void clearCrumbs();
 
 Q_SIGNALS:
