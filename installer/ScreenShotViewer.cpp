@@ -58,7 +58,7 @@ ScreenShotViewer::ScreenShotViewer(const QString &url, QWidget *parent)
     QPropertyAnimation *anim1 = new QPropertyAnimation(this, "size");
     anim1->setDuration(500);
     anim1->setStartValue(size());
-    anim1->setEndValue(m_screenshot.size() + (size()/2));
+    anim1->setEndValue(m_screenshot.size() + (size()/3));
     anim1->setEasingCurve(QEasingCurve::OutCubic);
 
     connect(anim1, SIGNAL(finished()), this, SLOT(fadeIn()));
