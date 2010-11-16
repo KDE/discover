@@ -240,6 +240,7 @@ void ApplicationDetailsWidget::fadeInScreenshot()
 
 void ApplicationDetailsWidget::fetchScreenshot(QApt::ScreenshotType screenshotType)
 {
+    m_screenshotLabel->setCursor(Qt::BusyCursor);
     if (m_screenshotFile) {
         m_screenshotFile->deleteLater();
         m_screenshotFile = 0;
@@ -294,11 +295,14 @@ void ApplicationDetailsWidget::thumbnailFetched(KJob *job)
 
 void ApplicationDetailsWidget::screenshotFetched(KJob *job)
 {
+    m_screenshotLabel->unsetCursor();
     if (job->error()) {
         return;
     }
 
     ScreenShotViewer *view = new ScreenShotViewer(m_screenshotFile->fileName());
+    connect(view, SIGNAL(destroyed(QObject *)), this, SLOT(onScreenshotDialogClosed()));
+    connect(view, SIGNAL(finished(int)), this, SLOT(onScreenshotDialogClosed()));
     view->setWindowTitle(m_app->name());
     view->show();
 }
@@ -306,6 +310,11 @@ void ApplicationDetailsWidget::screenshotFetched(KJob *job)
 void ApplicationDetailsWidget::screenshotLabelClicked()
 {
     fetchScreenshot(QApt::Screenshot);
+}
+
+void ApplicationDetailsWidget::onScreenshotDialogClosed()
+{
+    m_screenshotLabel->setCursor(Qt::PointingHandCursor);
 }
 
 #include "ApplicationDetailsWidget.moc"

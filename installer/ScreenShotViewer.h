@@ -18,18 +18,18 @@
  *   Boston, MA 02110-1301, USA.                                           *
  ***************************************************************************/
 
-#ifndef SCREEN_SHOT_VIEWER_H
-#define SCREEN_SHOT_VIEWER_H
+#ifndef SCREENSHOTVIEWER_H
+#define SCREENSHOTVIEWER_H
 
+#include <QtGui/QPixmap>
 
-#include <KPixmapSequenceOverlayPainter>
-#include <KJob>
+#include <KDialog>
 
-#include <QScrollArea>
-#include <QPixmap>
+class QScrollArea;
 
 class ClickableLabel;
-class ScreenShotViewer : public QScrollArea
+
+class ScreenShotViewer : public KDialog
 {
 Q_OBJECT
 public:
@@ -37,12 +37,11 @@ public:
     ~ScreenShotViewer();
 
 private slots:
-    void resultJob(KJob *);
     void fadeIn();
 
 private:
-    KPixmapSequenceOverlayPainter *m_busySeq;
-    QPixmap         m_screenshot;
+    QScrollArea *m_scrollArea;
+    QPixmap m_screenshot;
     ClickableLabel *m_screenshotL;
 };
 

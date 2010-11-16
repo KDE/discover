@@ -70,6 +70,7 @@ private Q_SLOTS:
     void thumbnailFetched(KJob *job);
     void screenshotFetched(KJob *job);
     void screenshotLabelClicked();
+    void onScreenshotDialogClosed();
 };
 
 #endif
