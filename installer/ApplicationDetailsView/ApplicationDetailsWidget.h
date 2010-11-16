@@ -35,6 +35,7 @@ class KTemporaryFile;
 
 class Application;
 class ClickableLabel;
+class ScreenShotViewer;
 
 // Widget for showing details about a single application
 class ApplicationDetailsWidget : public QScrollArea
@@ -63,6 +64,7 @@ private:
     KPixmapSequenceOverlayPainter *m_throbberWidget;
 
     KTemporaryFile *m_screenshotFile;
+    ScreenShotViewer *m_screenshotDialog;
 
 private Q_SLOTS:
     void fadeInScreenshot();

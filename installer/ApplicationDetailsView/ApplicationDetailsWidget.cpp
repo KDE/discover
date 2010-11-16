@@ -51,6 +51,7 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, Application 
     : QScrollArea(parent)
     , m_app(app)
     , m_screenshotFile(0)
+    , m_screenshotDialog(0)
 {
     setFrameShape(QFrame::NoFrame);
     setWidgetResizable(true);
@@ -300,11 +301,13 @@ void ApplicationDetailsWidget::screenshotFetched(KJob *job)
         return;
     }
 
-    ScreenShotViewer *view = new ScreenShotViewer(m_screenshotFile->fileName());
-    connect(view, SIGNAL(destroyed(QObject *)), this, SLOT(onScreenshotDialogClosed()));
-    connect(view, SIGNAL(finished(int)), this, SLOT(onScreenshotDialogClosed()));
-    view->setWindowTitle(m_app->name());
-    view->show();
+    m_screenshotDialog = new ScreenShotViewer(m_screenshotFile->fileName());
+    connect(m_screenshotDialog, SIGNAL(destroyed(QObject *)),
+            this, SLOT(onScreenshotDialogClosed()));
+    connect(m_screenshotDialog, SIGNAL(finished(int)),
+            this, SLOT(onScreenshotDialogClosed()));
+    m_screenshotDialog->setWindowTitle(m_app->name());
+    m_screenshotDialog->show();
 }
 
 void ApplicationDetailsWidget::screenshotLabelClicked()
@@ -315,6 +318,8 @@ void ApplicationDetailsWidget::screenshotLabelClicked()
 void ApplicationDetailsWidget::onScreenshotDialogClosed()
 {
     m_screenshotLabel->setCursor(Qt::PointingHandCursor);
+    m_screenshotDialog->deleteLater();
+    m_screenshotDialog = 0;
 }
 
 #include "ApplicationDetailsWidget.moc"
