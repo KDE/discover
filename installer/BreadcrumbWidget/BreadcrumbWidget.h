@@ -25,7 +25,7 @@
 
 #include <KHBox>
 
-class QPushButton;
+class QToolButton;
 
 class AbstractViewBase;
 class BreadcrumbItem;
@@ -53,8 +53,8 @@ private:
     QList<BreadcrumbItem *> m_items;
     BreadcrumbItem *m_currentItem;
 
-    QPushButton *m_backButton;
-    QPushButton *m_forwardButton;
+    QToolButton *m_backButton;
+    QToolButton *m_forwardButton;
     KHBox *m_breadcrumbArea;
 
 public Q_SLOTS:

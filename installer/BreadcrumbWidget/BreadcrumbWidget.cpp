@@ -20,8 +20,9 @@
 
 #include "BreadcrumbWidget.h"
 
-#include <QtGui/QPushButton>
+#include <QtGui/QToolButton>
 
+#include <KSeparator>
 #include <KStandardGuiItem>
 
 #include "../AbstractViewBase.h"
@@ -34,15 +35,20 @@ BreadcrumbWidget::BreadcrumbWidget(QWidget *parent)
     KGuiItem backButton = KStandardGuiItem::back();
     KGuiItem forwardButton = KStandardGuiItem::forward();
 
-    m_backButton = new QPushButton(this);
+    m_backButton = new QToolButton(this);
+    m_backButton->setAutoRaise(true);
     m_backButton->setToolTip(backButton.toolTip());
     m_backButton->setIcon(backButton.icon());
     m_backButton->setEnabled(false);
 
-    m_forwardButton = new QPushButton(this);
+    m_forwardButton = new QToolButton(this);
+    m_forwardButton->setAutoRaise(true);
     m_forwardButton->setToolTip(forwardButton.toolTip());
     m_forwardButton->setIcon(forwardButton.icon());
     m_forwardButton->setEnabled(false);
+
+    KSeparator *verticalSeparator = new KSeparator(this);
+    verticalSeparator->setOrientation(Qt::Vertical);
 
     m_breadcrumbArea = new KHBox(this);
     m_breadcrumbArea->setSpacing(2);
