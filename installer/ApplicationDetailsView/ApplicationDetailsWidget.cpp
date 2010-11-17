@@ -119,7 +119,6 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent)
     m_throbberWidget->setWidget(m_screenshotLabel);
     m_throbberWidget->start();
 
-    fetchScreenshot(QApt::Thumbnail);
     connect(m_screenshotLabel, SIGNAL(clicked()), this, SLOT(screenshotLabelClicked()));
 
     bodyLayout->addWidget(m_longDescLabel);
@@ -242,6 +241,8 @@ void ApplicationDetailsWidget::setApplication(Application *app)
                                  "Canonical does not provide updates for %1. Some updates "
                                  "may be provided by the Ubuntu community", app->name()));
     }
+
+    fetchScreenshot(QApt::Thumbnail);
 }
 
 void ApplicationDetailsWidget::fadeInScreenshot()
