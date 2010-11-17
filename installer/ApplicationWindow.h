@@ -21,6 +21,8 @@
 #ifndef APPLICATIONWINDOW_H
 #define APPLICATIONWINDOW_H
 
+#include <LibQApt/Globals>
+
 // Own includes
 #include "../libmuon/MuonMainWindow.h"
 
@@ -87,6 +89,7 @@ private Q_SLOTS:
     void loadSplitterSizes();
     void saveSplitterSizes();
     void reload();
+    void workerEvent(QApt::WorkerEvent event);
     void populateViews();
     void changeView(const QModelIndex &index);
     void selectFirstRow(const QAbstractItemView *itemView);

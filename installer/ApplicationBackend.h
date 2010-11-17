@@ -49,6 +49,9 @@ private:
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void reload();
+
+private Q_SLOTS:
+    void init();
 };
 
 #endif

@@ -40,12 +40,11 @@ ApplicationBackend::~ApplicationBackend()
 void ApplicationBackend::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
-    reload();
+    init();
 }
 
-void ApplicationBackend::reload()
+void ApplicationBackend::init()
 {
-    qDeleteAll(m_appList);
     QList<int> popconScores;
     QDir appDir("/usr/share/app-install/desktop/");
     QStringList fileList = appDir.entryList(QDir::Files);
@@ -62,6 +61,15 @@ void ApplicationBackend::reload()
     qSort(popconScores);
 
     m_maxPopconScore = popconScores.last();
+}
+
+void ApplicationBackend::reload()
+{
+    qDeleteAll(m_appList);
+    m_appList.clear();
+    m_backend->reloadCache();
+
+    init();
 }
 
 QList<Application *> ApplicationBackend::applicationList() const

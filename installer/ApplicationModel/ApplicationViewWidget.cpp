@@ -29,6 +29,7 @@
 #include <KDebug>
 
 #include <LibQApt/Backend>
+#include <LibQApt/Package>
 
 #include "ApplicationModel.h"
 #include "ApplicationProxyModel.h"
@@ -63,9 +64,9 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
     connect(delegate, SIGNAL(infoButtonClicked(Application *)),
             this, SLOT(infoButtonClicked(Application *)));
     connect(delegate, SIGNAL(installButtonClicked(Application *)),
-            this, SIGNAL(installButtonClicked(Application *)));
+            this, SLOT(installButtonClicked(Application *)));
     connect(delegate, SIGNAL(removeButtonClicked(Application *)),
-            this, SIGNAL(removeButtonClicked(Application *)));
+            this, SLOT(removeButtonClicked(Application *)));
 }
 
 ApplicationViewWidget::~ApplicationViewWidget()
@@ -142,6 +143,55 @@ void ApplicationViewWidget::infoButtonClicked(Application *app)
 
     // Tell our parent that we can exist, so that they can forward it
     emit registerNewSubView(m_detailsView);
+}
+
+void ApplicationViewWidget::installButtonClicked(Application *app)
+{
+    kDebug() << app->package();
+    QList<int> oldCacheState = m_backend->currentCacheState();
+    QApt::Package *package = app->package();
+
+    if (!package->availableVersion().isEmpty()) {
+        package->setInstall();
+    }
+
+    if (package->wouldBreak()) {
+        m_backend->restoreCacheState(oldCacheState);
+        //TODO Notify of error
+    }
+
+    QApt::PackageList markedPackages = m_backend->markedPackages();
+
+    if (markedPackages.count() > 1) {
+        // TODO Show dialog with dependencies
+        // showAdditionalPackages(package);
+    }
+
+    m_backend->commitChanges();
+}
+
+void ApplicationViewWidget::removeButtonClicked(Application *app)
+{
+    kDebug() << app->package();
+    QList<int> oldCacheState = m_backend->currentCacheState();
+
+    QApt::Package *package = app->package();
+
+    package->setRemove();
+
+    if (package->wouldBreak()) {
+        m_backend->restoreCacheState(oldCacheState);
+        //TODO Notify of error
+    }
+
+    QApt::PackageList markedPackages = m_backend->markedPackages();
+
+    if (markedPackages.count() > 1) {
+        // TODO Show dialog with dependencies
+        // showAdditionalPackages(package);
+    }
+
+    m_backend->commitChanges();
 }
 
 void ApplicationViewWidget::onSubViewDestroyed()

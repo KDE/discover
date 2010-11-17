@@ -63,6 +63,8 @@ private:
 
 private Q_SLOTS:
     void infoButtonClicked(Application *app);
+    void installButtonClicked(Application *app);
+    void removeButtonClicked(Application *app);
     void onSubViewDestroyed();
 
 public Q_SLOTS:
@@ -78,9 +80,6 @@ public Q_SLOTS:
 Q_SIGNALS:
     void switchToSubView(AbstractViewBase *view);
     void registerNewSubView(AbstractViewBase *view);
-
-    void removeButtonClicked(Application *app);
-    void installButtonClicked(Application *app);
 };
 
 #endif

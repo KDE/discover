@@ -42,9 +42,9 @@ Application::Application(const QString &fileName, QApt::Backend *backend)
         , m_isValid(false)
 {
     m_data = desktopContents();
-    if (!m_isValid) {
-        kDebug() << "Not valid" << m_fileName;
-    }
+//     if (!m_isValid) {
+//         kDebug() << "Not valid" << m_fileName;
+//     }
 }
 
 Application::Application(QApt::Package *package)

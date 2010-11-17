@@ -29,7 +29,7 @@
 
 // KDE includes
 #include <KIcon>
-#include <KDebug>
+#include <Solid/PowerManagement>
 
 #include <LibQApt/Backend>
 
@@ -112,13 +112,44 @@ void ApplicationWindow::saveSplitterSizes()
 void ApplicationWindow::reload()
 {
     m_appBackend->reload();
+    foreach (QWidget *widget, m_viewHash) {
+        widget->deleteLater();
+    }
+    m_viewHash.clear();
+    m_viewModel->clear();
     populateViews();
+}
+
+void ApplicationWindow::workerEvent(QApt::WorkerEvent event)
+{
+    switch (event) {
+    case QApt::CommitChangesFinished:
+        Solid::PowerManagement::stopSuppressingSleep(m_powerInhibitor);
+        m_canExit = true;
+        reload();
+        if (m_warningStack.size() > 0) {
+            showQueuedWarnings();
+            m_warningStack.clear();
+        }
+        if (m_errorStack.size() > 0) {
+            showQueuedErrors();
+            m_errorStack.clear();
+        }
+        break;
+    case QApt::PackageDownloadStarted:
+        m_powerInhibitor = Solid::PowerManagement::beginSuppressingSleep(i18nc("@info:status", "Muon is downloading packages"));
+        break;
+    case QApt::CommitChangesStarted:
+        m_canExit = false;
+        break;
+    case QApt::InvalidEvent:
+    default:
+        break;
+    }
 }
 
 void ApplicationWindow::populateViews()
 {
-    m_viewHash.clear();
-
     QStringList originLabels = m_backend->originLabels();
     QStringList originNames;
     foreach (const QString &originLabel, originLabels) {
@@ -233,9 +264,13 @@ void ApplicationWindow::changeView(const QModelIndex &index)
             appView->setOriginFilter(originFilter);
         }
         break;
-        case CatView:
+        case CatView: {
             view = new AvailableView(this, m_appBackend);
+
+            AvailableView *availableView = static_cast<AvailableView *>(view);
+            availableView->setBackend(m_backend);
             m_viewStack->addWidget(view);
+        }
             break;
         case HistoryView:
         case InvalidView:

@@ -28,6 +28,7 @@
 #include <KIcon>
 #include <KLocale>
 #include <KStandardDirs>
+#include <KDebug>
 
 #include <LibQApt/Backend>
 
@@ -71,6 +72,7 @@ AvailableView::~AvailableView()
 void AvailableView::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
+    kDebug() << "setting backend in available view" << m_backend;
 
     m_categoryViewWidget->setBackend(backend);
 }
