@@ -67,6 +67,8 @@ private Q_SLOTS:
     void removeButtonClicked(Application *app);
     void onSubViewDestroyed();
 
+    bool shouldInstallAdditionalPackages(QApt::PackageList &packageList);
+
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void reload();

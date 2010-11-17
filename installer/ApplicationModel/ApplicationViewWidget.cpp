@@ -24,6 +24,8 @@
 #include <QtGui/QTreeView>
 #include <QtGui/QVBoxLayout>
 
+#include <KLocale>
+#include <KMessageBox>
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
 #include <KDebug>
@@ -147,7 +149,6 @@ void ApplicationViewWidget::infoButtonClicked(Application *app)
 
 void ApplicationViewWidget::installButtonClicked(Application *app)
 {
-    kDebug() << app->package();
     QList<int> oldCacheState = m_backend->currentCacheState();
     QApt::Package *package = app->package();
 
@@ -162,17 +163,17 @@ void ApplicationViewWidget::installButtonClicked(Application *app)
 
     QApt::PackageList markedPackages = m_backend->markedPackages();
 
-    if (markedPackages.count() > 1) {
-        // TODO Show dialog with dependencies
-        // showAdditionalPackages(package);
-    }
+    bool commitChanges = shouldInstallAdditionalPackages(markedPackages);
 
-    m_backend->commitChanges();
+    if (commitChanges) {
+        m_backend->commitChanges();
+    } else {
+        m_backend->restoreCacheState(oldCacheState);
+    }
 }
 
 void ApplicationViewWidget::removeButtonClicked(Application *app)
 {
-    kDebug() << app->package();
     QList<int> oldCacheState = m_backend->currentCacheState();
 
     QApt::Package *package = app->package();
@@ -186,12 +187,29 @@ void ApplicationViewWidget::removeButtonClicked(Application *app)
 
     QApt::PackageList markedPackages = m_backend->markedPackages();
 
-    if (markedPackages.count() > 1) {
-        // TODO Show dialog with dependencies
-        // showAdditionalPackages(package);
+    m_backend->commitChanges();
+}
+
+bool ApplicationViewWidget::shouldInstallAdditionalPackages(QApt::PackageList &list)
+{
+    int diskSpaceUsed = 0;
+    int downloadSize = 0;
+    int result = KMessageBox::Cancel;
+
+    foreach (QApt::Package *package, list) {
+        downloadSize += package->downloadSize();
+        diskSpaceUsed += package->availableInstalledSize();
     }
 
-    m_backend->commitChanges();
+    QString text = i18nc("@label", "Installing will require %1 of disk space.\n"
+                                   "Do you wish to continue?",
+                                   KGlobal::locale()->formatByteSize(diskSpaceUsed));
+    QString title = i18nc("@title:window", "Confirm Installation");
+
+    result = KMessageBox::questionYesNo(this, text, title, KStandardGuiItem::cont(),
+                                        KStandardGuiItem::cancel(), QLatin1String("AskForDependencies"));
+
+    return (result == KMessageBox::Yes);
 }
 
 void ApplicationViewWidget::onSubViewDestroyed()
