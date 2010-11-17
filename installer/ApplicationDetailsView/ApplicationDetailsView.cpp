@@ -34,7 +34,8 @@
 ApplicationDetailsView::ApplicationDetailsView(QWidget *parent, Application *app)
     : AbstractViewBase(parent)
 {
-    m_detailsWidget = new ApplicationDetailsWidget(this, app);
+    m_detailsWidget = new ApplicationDetailsWidget(this);
+    m_detailsWidget->setApplication(app);
 
     m_layout->addWidget(m_detailsWidget);
 

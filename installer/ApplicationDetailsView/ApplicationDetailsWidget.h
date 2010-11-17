@@ -42,8 +42,10 @@ class ApplicationDetailsWidget : public QScrollArea
 {
     Q_OBJECT
 public:
-    explicit ApplicationDetailsWidget(QWidget *parent, Application *app);
+    explicit ApplicationDetailsWidget(QWidget *parent);
     ~ApplicationDetailsWidget();
+
+    void setApplication(Application *app);
 
 private:
     Application *m_app;
@@ -51,6 +53,7 @@ private:
     QLabel *m_iconLabel;
     QLabel *m_nameLabel;
     QLabel *m_shortDescLabel;
+    QWidget *m_menuPathWidget;
     QLabel *m_menuPathLabel;
     QLabel *m_longDescLabel;
     ClickableLabel *m_screenshotLabel;

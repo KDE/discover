@@ -47,9 +47,8 @@
 
 #define BLUR_RADIUS 15
 
-ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, Application *app)
+ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent)
     : QScrollArea(parent)
-    , m_app(app)
     , m_screenshotFile(0)
     , m_screenshotDialog(0)
 {
@@ -67,17 +66,12 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, Application 
     headerWidget->setLayout(headerLayout);
 
     m_iconLabel = new QLabel(headerWidget);
-    // FIXME: Always keep label size at 48x48, and render the largest size
-    // we can up to that point. Otherwise some icons will be blurry
-    m_iconLabel->setPixmap(KIcon(app->icon()).pixmap(48,48));
 
     QWidget *nameDescWidget = new QWidget(headerWidget);
     QVBoxLayout *nameDescLayout = new QVBoxLayout(nameDescWidget);
     m_nameLabel = new QLabel(nameDescWidget);
-    m_nameLabel->setText(QLatin1Literal("<h1>") % app->name() % QLatin1Literal("</h1>"));
     m_nameLabel->setAlignment(Qt::AlignLeft);
     m_shortDescLabel = new QLabel(nameDescWidget);
-    m_shortDescLabel->setText(app->comment());
 
     nameDescLayout->addWidget(m_nameLabel);
     nameDescLayout->addWidget(m_shortDescLabel);
@@ -90,20 +84,14 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, Application 
     headerLayout->addWidget(headerSpacer);
 
     // Menu path label
-    QWidget *menuPathWidget = new QWidget(this);
-    QHBoxLayout *menuPathLayout = new QHBoxLayout(menuPathWidget);
-    menuPathWidget->setLayout(menuPathLayout);
+    m_menuPathWidget = new QWidget(this);
+    QHBoxLayout *menuPathLayout = new QHBoxLayout(m_menuPathWidget);
+    m_menuPathWidget->setLayout(menuPathLayout);
 
-    QLabel *menuLabel = new QLabel(menuPathWidget);
+    QLabel *menuLabel = new QLabel(m_menuPathWidget);
     menuLabel->setText(i18nc("@info", "Find in the menu:"));
-    m_menuPathLabel = new QLabel(menuPathWidget);
+    m_menuPathLabel = new QLabel(m_menuPathWidget);
 
-    QString menuPathString = app->menuPath();
-    if (!menuPathString.isEmpty()) {
-        m_menuPathLabel->setText(menuPathString);
-    } else {
-        menuPathWidget->hide();
-    }
 
     QWidget *menuPathSpacer = new QWidget(this);
     menuPathSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
@@ -118,7 +106,6 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, Application 
 
     m_longDescLabel = new QLabel(body);
     m_longDescLabel->setWordWrap(true);
-    m_longDescLabel->setText(app->package()->longDescription());
     m_longDescLabel->setAlignment(Qt::AlignLeft | Qt::AlignTop);
     m_longDescLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -139,18 +126,8 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, Application 
     bodyLayout->addWidget(m_screenshotLabel);
 
     m_websiteLabel = new QLabel(this);
-
-    QString homepageUrl = app->package()->homepage();
-    if (!homepageUrl.isEmpty()) {
-        QString websiteString = i18nc("@label visible text for an app's URL", "Website");
-        m_websiteLabel->setAlignment(Qt::AlignLeft);
-        m_websiteLabel->setText(QLatin1Literal("<a href=\"") % homepageUrl % "\">" %
-                                websiteString % QLatin1Literal("</a>"));
-        m_websiteLabel->setToolTip(homepageUrl);
-        m_websiteLabel->setOpenExternalLinks(true);
-    } else {
-        m_websiteLabel->hide();
-    }
+    m_websiteLabel->setAlignment(Qt::AlignLeft);
+    m_websiteLabel->setOpenExternalLinks(true);
 
     // Technical details
     QWidget *detailsWidget = new QWidget(widget);
@@ -160,14 +137,6 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, Application 
     QLabel *sizeLabel = new QLabel(detailsWidget);
     sizeLabel->setText(i18nc("@label Label preceding the app size", "Total Size:"));
     m_size = new QLabel(detailsWidget);
-    if (!app->package()->isInstalled()) {
-        m_size->setText(i18nc("@info app size", "%1 to download, %2 on disk",
-                              KGlobal::locale()->formatByteSize(app->package()->downloadSize()),
-                              KGlobal::locale()->formatByteSize(app->package()->availableInstalledSize())));
-    } else {
-        m_size->setText(i18nc("@info app size", "%1 on disk",
-                              KGlobal::locale()->formatByteSize(app->package()->currentInstalledSize())));
-    }
     detailsGrid->addWidget(sizeLabel, 0, 0, Qt::AlignRight);
     detailsGrid->addWidget(m_size, 0, 1, Qt::AlignLeft);
 
@@ -175,11 +144,6 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, Application 
     QLabel *versionLabel = new QLabel(detailsWidget);
     versionLabel->setText(i18nc("@label Label preceding the app version", "Version:"));
     m_version = new QLabel(detailsWidget);
-    if (!app->package()->isInstalled()) {
-         m_version->setText(app->package()->availableVersion());
-    } else {
-         m_version->setText(app->package()->installedVersion());
-    }
     detailsGrid->addWidget(versionLabel, 1, 0, Qt::AlignRight);
     detailsGrid->addWidget(m_version, 1, 1, Qt::AlignLeft);
 
@@ -187,12 +151,6 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, Application 
     QLabel *licenseLabel = new QLabel(detailsWidget);
     licenseLabel->setText(i18nc("@label Label preceding the app license", "License:"));
     m_license = new QLabel(detailsWidget);
-    if (app->package()->component() == "main" ||
-        app->package()->component() == "universe") {
-        m_license->setText(i18nc("@info license", "Open Source"));
-    } else if (app->package()->component() == "restricted") {
-        m_license->setText(i18nc("@info license", "Proprietary"));
-    }
     detailsGrid->addWidget(licenseLabel, 2, 0, Qt::AlignRight);
     detailsGrid->addWidget(m_license, 2, 1, Qt::AlignLeft);
 
@@ -200,16 +158,6 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, Application 
     QLabel *supportLabel = new QLabel(detailsWidget);
     supportLabel->setText(i18nc("@label Label preceding the app support", "Support:"));
     m_support = new QLabel(detailsWidget);
-    if (app->package()->isSupported()) {
-        m_support->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
-                                 "Canonical provides critical updates for %1 until %2",
-                                 app->name(), app->package()->supportedUntil()));
-    } else {
-        m_support->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
-                                 "Canonical does not provide updates for %1. Some updates "
-                                 "may be provided by the Ubuntu community", app->name()));
-    }
-
     detailsGrid->addWidget(supportLabel, 3, 0, Qt::AlignRight);
     detailsGrid->addWidget(m_support, 3, 1, Qt::AlignLeft);
 
@@ -220,7 +168,7 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, Application 
 
 
     layout->addWidget(headerWidget);
-    layout->addWidget(menuPathWidget);
+    layout->addWidget(m_menuPathWidget);
     layout->addWidget(body);
     layout->addWidget(m_websiteLabel);
     layout->addWidget(detailsWidget);
@@ -231,6 +179,69 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, Application 
 
 ApplicationDetailsWidget::~ApplicationDetailsWidget()
 {
+}
+
+void ApplicationDetailsWidget::setApplication(Application *app)
+{
+    m_app = app;
+
+    // FIXME: Always keep label size at 48x48, and render the largest size
+    // we can up to that point. Otherwise some icons will be blurry
+    m_iconLabel->setPixmap(KIcon(app->icon()).pixmap(48,48));
+
+    m_nameLabel->setText(QLatin1Literal("<h1>") % app->name() % QLatin1Literal("</h1>"));
+    m_shortDescLabel->setText(app->comment());
+
+    QString menuPathString = app->menuPath();
+    if (!menuPathString.isEmpty()) {
+        m_menuPathLabel->setText(menuPathString);
+    } else {
+        m_menuPathWidget->hide();
+    }
+
+    m_longDescLabel->setText(app->package()->longDescription());
+
+    QString homepageUrl = app->package()->homepage();
+    if (!homepageUrl.isEmpty()) {
+        QString websiteString = i18nc("@label visible text for an app's URL", "Website");
+        m_websiteLabel->setText(QLatin1Literal("<a href=\"") % homepageUrl % "\">" %
+                                websiteString % QLatin1Literal("</a>"));
+        m_websiteLabel->setToolTip(homepageUrl);
+    } else {
+        m_websiteLabel->hide();
+    }
+
+    if (!app->package()->isInstalled()) {
+        m_size->setText(i18nc("@info app size", "%1 to download, %2 on disk",
+                              KGlobal::locale()->formatByteSize(app->package()->downloadSize()),
+                              KGlobal::locale()->formatByteSize(app->package()->availableInstalledSize())));
+    } else {
+        m_size->setText(i18nc("@info app size", "%1 on disk",
+                              KGlobal::locale()->formatByteSize(app->package()->currentInstalledSize())));
+    }
+
+    if (!app->package()->isInstalled()) {
+         m_version->setText(app->package()->availableVersion());
+    } else {
+         m_version->setText(app->package()->installedVersion());
+    }
+
+    if (app->package()->component() == "main" ||
+        app->package()->component() == "universe") {
+        m_license->setText(i18nc("@info license", "Open Source"));
+    } else if (app->package()->component() == "restricted") {
+        m_license->setText(i18nc("@info license", "Proprietary"));
+    }
+
+    if (app->package()->isSupported()) {
+        m_support->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
+                                 "Canonical provides critical updates for %1 until %2",
+                                 app->name(), app->package()->supportedUntil()));
+    } else {
+        m_support->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
+                                 "Canonical does not provide updates for %1. Some updates "
+                                 "may be provided by the Ubuntu community", app->name()));
+    }
 }
 
 void ApplicationDetailsWidget::fadeInScreenshot()
