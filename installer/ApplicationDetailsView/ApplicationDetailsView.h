@@ -30,9 +30,10 @@ class ApplicationDetailsView : public AbstractViewBase
 {
     Q_OBJECT
 public:
-    // FIXME: use setApplication instead of defining in constructor
-    ApplicationDetailsView(QWidget *parent, Application *app);
+    ApplicationDetailsView(QWidget *parent);
     ~ApplicationDetailsView();
+
+    void setApplication(Application *app);
 
 private:
     ApplicationDetailsWidget *m_detailsWidget;

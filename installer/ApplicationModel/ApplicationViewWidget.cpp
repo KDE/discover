@@ -133,7 +133,8 @@ void ApplicationViewWidget::infoButtonClicked(Application *app)
     }
 
     // Create one if not
-    m_detailsView = new ApplicationDetailsView(this, app);
+    m_detailsView = new ApplicationDetailsView(this);
+    m_detailsView->setApplication(app);
     m_currentPair.first = m_detailsView;
 
     connect(m_detailsView, SIGNAL(destroyed(QObject *)),

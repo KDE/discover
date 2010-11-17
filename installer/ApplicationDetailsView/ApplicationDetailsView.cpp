@@ -31,21 +31,26 @@
 #include "../Application.h"
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
 
-ApplicationDetailsView::ApplicationDetailsView(QWidget *parent, Application *app)
+ApplicationDetailsView::ApplicationDetailsView(QWidget *parent)
     : AbstractViewBase(parent)
 {
     m_detailsWidget = new ApplicationDetailsWidget(this);
-    m_detailsWidget->setApplication(app);
 
     m_layout->addWidget(m_detailsWidget);
 
-    m_crumb->setText(app->name());
-    m_crumb->setIcon(KIcon(app->icon()));
     m_crumb->setAssociatedView(this);
 }
 
 ApplicationDetailsView::~ApplicationDetailsView()
 {
+}
+
+void ApplicationDetailsView::setApplication(Application *app)
+{
+    m_detailsWidget->setApplication(app);
+
+    m_crumb->setText(app->name());
+    m_crumb->setIcon(KIcon(app->icon()));
 }
 
 #include "ApplicationDetailsView.moc"
