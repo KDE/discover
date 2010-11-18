@@ -39,6 +39,11 @@ ApplicationDetailsView::ApplicationDetailsView(QWidget *parent)
     m_layout->addWidget(m_detailsWidget);
 
     m_crumb->setAssociatedView(this);
+
+    connect(m_detailsWidget, SIGNAL(installButtonClicked(Application *)),
+            this, SIGNAL(installButtonClicked(Application *)));
+            connect(m_detailsWidget, SIGNAL(removeButtonClicked(Application *)),
+            this, SIGNAL(removeButtonClicked(Application *)));
 }
 
 ApplicationDetailsView::~ApplicationDetailsView()

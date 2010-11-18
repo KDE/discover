@@ -29,6 +29,7 @@
 #include <QtGui/QVBoxLayout>
 
 #include <KGlobal>
+#include <KHBox>
 #include <KIcon>
 #include <KIO/Job>
 #include <KJob>
@@ -36,6 +37,7 @@
 #include <KPixmapSequence>
 #include <kpixmapsequenceoverlaypainter.h>
 #include <KTemporaryFile>
+#include <KToolInvocation>
 #include <KDebug>
 
 #include <LibQApt/Package>
@@ -92,13 +94,20 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent)
     menuLabel->setText(i18nc("@info", "Find in the menu:"));
     m_menuPathLabel = new QLabel(m_menuPathWidget);
 
-
     QWidget *menuPathSpacer = new QWidget(this);
     menuPathSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
     menuPathLayout->addWidget(menuLabel);
     menuPathLayout->addWidget(m_menuPathLabel);
     menuPathLayout->addWidget(menuPathSpacer);
+
+    // Install/remove/update button
+    KHBox *actionButtonWidget = new KHBox(this);
+
+    m_actionButton = new QPushButton(actionButtonWidget);
+    connect(m_actionButton, SIGNAL(clicked()), this, SLOT(actionButtonClicked()));
+    QWidget *actionButtonSpacer = new QWidget(actionButtonWidget);
+    actionButtonSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
     // Long description and Screenshot
     QWidget *body = new QWidget(widget);
@@ -168,6 +177,7 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent)
 
     layout->addWidget(headerWidget);
     layout->addWidget(m_menuPathWidget);
+    layout->addWidget(actionButtonWidget);
     layout->addWidget(body);
     layout->addWidget(m_websiteLabel);
     layout->addWidget(detailsWidget);
@@ -196,6 +206,15 @@ void ApplicationDetailsWidget::setApplication(Application *app)
         m_menuPathLabel->setText(menuPathString);
     } else {
         m_menuPathWidget->hide();
+    }
+
+    if (!app->package()->isInstalled()) {
+        m_actionButton->setText(i18nc("@action", "Install"));
+        m_actionButton->setIcon(KIcon("download"));
+        m_actionButton->show();
+    } else {
+        m_actionButton->setText(i18nc("@action", "Remove"));
+        m_actionButton->setIcon(KIcon("edit-delete"));
     }
 
     m_longDescLabel->setText(app->package()->longDescription());
@@ -332,6 +351,16 @@ void ApplicationDetailsWidget::onScreenshotDialogClosed()
     m_screenshotLabel->setCursor(Qt::PointingHandCursor);
     m_screenshotDialog->deleteLater();
     m_screenshotDialog = 0;
+}
+
+void ApplicationDetailsWidget::actionButtonClicked()
+{
+    // TODO: update packages
+    if (m_app->package()->isInstalled()) {
+        emit removeButtonClicked(m_app);
+    } else {
+        emit installButtonClicked(m_app);
+    }
 }
 
 #include "ApplicationDetailsWidget.moc"

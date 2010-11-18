@@ -55,6 +55,7 @@ private:
     QLabel *m_shortDescLabel;
     QWidget *m_menuPathWidget;
     QLabel *m_menuPathLabel;
+    QPushButton *m_actionButton;
     QLabel *m_longDescLabel;
     ClickableLabel *m_screenshotLabel;
     QLabel *m_websiteLabel;
@@ -76,6 +77,11 @@ private Q_SLOTS:
     void screenshotFetched(KJob *job);
     void screenshotLabelClicked();
     void onScreenshotDialogClosed();
+    void actionButtonClicked();
+
+Q_SIGNALS:
+    void installButtonClicked(Application *app);
+    void removeButtonClicked(Application *app);
 };
 
 #endif

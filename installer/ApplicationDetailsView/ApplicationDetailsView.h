@@ -38,6 +38,10 @@ public:
 private:
     ApplicationDetailsWidget *m_detailsWidget;
 
+Q_SIGNALS:
+    void installButtonClicked(Application *);
+    void removeButtonClicked(Application *);
+
 };
 
 #endif
