@@ -82,7 +82,6 @@ void UpdaterWindow::initGUI()
 void UpdaterWindow::initObject()
 {
     MuonMainWindow::initObject();
-    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
 
     setActionsEnabled(); //Get initial enabled/disabled state
 }

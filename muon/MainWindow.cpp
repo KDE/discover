@@ -120,7 +120,6 @@ void MainWindow::initGUI()
 void MainWindow::initObject()
 {
     MuonMainWindow::initObject();
-    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
 
     loadSettings();
 
