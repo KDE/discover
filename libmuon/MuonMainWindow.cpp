@@ -30,6 +30,7 @@
 #include <KDebug>
 #include <KFileDialog>
 #include <KMessageBox>
+#include <KProcess>
 #include <Solid/Networking>
 
 // LibQApt includes
@@ -140,6 +141,11 @@ void MuonMainWindow::setupActions()
     m_revertAction->setIcon(KIcon("document-revert"));
     m_revertAction->setText(i18nc("@action Reverts all potential changes to the cache", "Unmark All"));
     connect(m_revertAction, SIGNAL(triggered()), this, SLOT(revertChanges()));
+
+    m_softwarePropertiesAction = actionCollection()->addAction("software_properties");
+    m_softwarePropertiesAction->setIcon(KIcon("configure"));
+    m_softwarePropertiesAction->setText(i18nc("@action Opens the software sources configuration dialog", "Configure Software Sources"));
+    connect(m_softwarePropertiesAction, SIGNAL(triggered()), this, SLOT(runSourcesEditor()));
 }
 
 void MuonMainWindow::setActionsEnabled(bool enabled)
@@ -163,6 +169,10 @@ void MuonMainWindow::networkChanged()
 bool MuonMainWindow::isConnected() {
     return (Solid::Networking::status() == Solid::Networking::Connected
          || Solid::Networking::status() == Solid::Networking::Unknown);
+}
+
+void MuonMainWindow::checkForUpdates()
+{
 }
 
 void MuonMainWindow::workerEvent(QApt::WorkerEvent event)
@@ -445,6 +455,28 @@ void MuonMainWindow::revertChanges()
 {
     m_backend->init();
     reload();
+}
+
+void MuonMainWindow::runSourcesEditor()
+{
+    KProcess *proc = new KProcess(this);
+    QStringList arguments;
+    int winID = effectiveWinId();
+    proc->setProgram(QStringList() << "/usr/bin/kdesudo"
+                                   << "software-properties-kde --dont-update --attach "//krazy:exclude=spelling
+                                   << QString::number(winID));
+    find(winID)->setEnabled(false);
+    proc->start();
+    connect(proc, SIGNAL(finished(int, QProcess::ExitStatus)),
+            this, SLOT(sourcesEditorFinished(int)));
+}
+
+void MuonMainWindow::sourcesEditorFinished(int reload)
+{
+    find(effectiveWinId())->setEnabled(true);
+    if (reload == 1) {
+        checkForUpdates();
+    }
 }
 
 #include "MuonMainWindow.moc"

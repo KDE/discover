@@ -65,6 +65,7 @@ protected:
     KAction *m_undoAction;
     KAction *m_redoAction;
     KAction *m_revertAction;
+    KAction *m_softwarePropertiesAction;
 
     int m_powerInhibitor;
     bool m_canExit;
@@ -74,6 +75,7 @@ protected Q_SLOTS:
     virtual void slotQuit();
     virtual bool queryExit();
     virtual void setupActions();
+    virtual void checkForUpdates();
     virtual void workerEvent(QApt::WorkerEvent event);
     virtual void errorOccurred(QApt::ErrorCode code, const QVariantMap &args);
     virtual void warningOccurred(QApt::WarningCode warning, const QVariantMap &args);
@@ -89,6 +91,10 @@ protected Q_SLOTS:
     void undo();
     void redo();
     virtual void revertChanges();
+
+public Q_SLOTS:
+    void runSourcesEditor();
+    void sourcesEditorFinished(int reload);
 
 Q_SIGNALS:
     void backendReady(QApt::Backend *backend);

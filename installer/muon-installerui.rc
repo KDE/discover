@@ -13,5 +13,9 @@
             <Separator/>
             <Action name="quit" />
         </Menu>
+        <Menu name="settings">
+          <Separator />
+          <Action name="software_properties" />
+        </Menu>
     </MenuBar>
 </gui>

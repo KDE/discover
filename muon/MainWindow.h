@@ -68,7 +68,6 @@ private:
     KAction *m_saveInstalledAction;
     KAction *m_saveSelectionsAction;
     KAction *m_loadSelectionsAction;
-    KAction *m_softwarePropertiesAction;
 
     ManagerSettingsDialog *m_settingsDialog;
     FilterWidget *m_filterBox;
@@ -100,8 +99,6 @@ private Q_SLOTS:
     void setActionsEnabled(bool enabled = true);
 
 public Q_SLOTS:
-    void runSourcesEditor();
-    void sourcesEditorFinished(int reload);
     void easterEggTriggered();
     void revertChanges();
     void editSettings();

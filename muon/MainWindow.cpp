@@ -38,7 +38,6 @@
 #include <KFileDialog>
 #include <KLocale>
 #include <KMessageBox>
-#include <KProcess>
 #include <KStandardAction>
 #include <KStandardDirs>
 #include <KStatusBar>
@@ -196,11 +195,6 @@ void MainWindow::setupActions()
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
     m_applyAction->setEnabled(isConnected());
     connect(this, SIGNAL(shouldConnect(bool)), m_applyAction, SLOT(setEnabled(bool)));
-
-    m_softwarePropertiesAction = actionCollection()->addAction("software_properties");
-    m_softwarePropertiesAction->setIcon(KIcon("configure"));
-    m_softwarePropertiesAction->setText(i18nc("@action Opens the software sources configuration dialog", "Configure Software Sources"));
-    connect(m_softwarePropertiesAction, SIGNAL(triggered()), this, SLOT(runSourcesEditor()));
 
     KStandardAction::preferences(this, SLOT(editSettings()), actionCollection());
 
@@ -448,28 +442,6 @@ void MainWindow::setActionsEnabled(bool enabled)
     m_saveSelectionsAction->setEnabled(!changedList.isEmpty());
     m_saveInstalledAction->setEnabled(true);
     m_softwarePropertiesAction->setEnabled(true);
-}
-
-void MainWindow::runSourcesEditor()
-{
-    KProcess *proc = new KProcess(this);
-    QStringList arguments;
-    int winID = effectiveWinId();
-    proc->setProgram(QStringList() << "/usr/bin/kdesudo"
-                                   << "software-properties-kde --dont-update --attach "//krazy:exclude=spelling
-                                   << QString::number(winID));
-    find(winID)->setEnabled(false);
-    proc->start();
-    connect(proc, SIGNAL(finished(int, QProcess::ExitStatus)),
-            this, SLOT(sourcesEditorFinished(int)));
-}
-
-void MainWindow::sourcesEditorFinished(int reload)
-{
-    find(effectiveWinId())->setEnabled(true);
-    if (reload == 1) {
-        checkForUpdates();
-    }
 }
 
 void MainWindow::editSettings()
