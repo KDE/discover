@@ -111,12 +111,13 @@ void ApplicationWindow::saveSplitterSizes()
 
 void ApplicationWindow::reload()
 {
-    m_appBackend->reload();
     foreach (QWidget *widget, m_viewHash) {
-        widget->deleteLater();
+        delete widget;
     }
     m_viewHash.clear();
     m_viewModel->clear();
+
+    m_appBackend->reload();
     populateViews();
 }
 
