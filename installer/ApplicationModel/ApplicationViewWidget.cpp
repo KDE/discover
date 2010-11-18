@@ -197,11 +197,9 @@ void ApplicationViewWidget::removeButtonClicked(Application *app)
 bool ApplicationViewWidget::shouldInstallAdditionalPackages(QApt::PackageList &list)
 {
     int diskSpaceUsed = 0;
-    int downloadSize = 0;
     int result = KMessageBox::Cancel;
 
     foreach (QApt::Package *package, list) {
-        downloadSize += package->downloadSize();
         diskSpaceUsed += package->availableInstalledSize();
     }
 
