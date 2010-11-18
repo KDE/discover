@@ -33,6 +33,8 @@ class QStackedWidget;
 class QStandardItemModel;
 class QTreeView;
 
+class KAction;
+
 class Application;
 class ApplicationBackend;
 class ViewSwitcher;
@@ -80,6 +82,8 @@ private:
     ViewSwitcher *m_viewSwitcher;
     QStandardItemModel *m_viewModel;
     QHash<QModelIndex, QWidget *> m_viewHash;
+    KAction *m_loadSelectionsAction;
+    KAction *m_saveSelectionsAction;
 
     int m_powerInhibitor;
 
@@ -88,7 +92,10 @@ private Q_SLOTS:
     void initObject();
     void loadSplitterSizes();
     void saveSplitterSizes();
+    void setupActions();
     void reload();
+    void checkForUpdates();
+    void setActionsEnabled(bool enabled = true);
     void workerEvent(QApt::WorkerEvent event);
     void populateViews();
     void changeView(const QModelIndex &index);

@@ -28,9 +28,12 @@
 #include <QtGui/QStackedWidget>
 
 // KDE includes
+#include <KAction>
+#include <KActionCollection>
 #include <KIcon>
 #include <Solid/PowerManagement>
 
+// LibQApt includes
 #include <LibQApt/Backend>
 
 // Own includes
@@ -81,6 +84,7 @@ void ApplicationWindow::initGUI()
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
             this, SLOT(populateViews()));
 
+    setupActions();
     setupGUI();
 }
 
@@ -91,6 +95,8 @@ void ApplicationWindow::initObject()
             m_appBackend, SLOT(setBackend(QApt::Backend *)));
 
     MuonMainWindow::initObject();
+
+    setActionsEnabled();
 }
 
 void ApplicationWindow::loadSplitterSizes()
@@ -109,6 +115,34 @@ void ApplicationWindow::saveSplitterSizes()
     MuonInstallerSettings::self()->writeConfig();
 }
 
+void ApplicationWindow::setupActions()
+{
+    MuonMainWindow::setupActions();
+
+    m_loadSelectionsAction = actionCollection()->addAction("open_markings");
+    m_loadSelectionsAction->setIcon(KIcon("document-open"));
+    m_loadSelectionsAction->setText(i18nc("@action", "Read Markings..."));
+    connect(m_loadSelectionsAction, SIGNAL(triggered()), this, SLOT(loadSelections()));
+
+    m_saveSelectionsAction = actionCollection()->addAction("save_markings");
+    m_saveSelectionsAction->setIcon(KIcon("document-save-as"));
+    m_saveSelectionsAction->setText(i18nc("@action", "Save Markings As..."));
+    connect(m_saveSelectionsAction, SIGNAL(triggered()), this, SLOT(saveSelections()));
+}
+
+void ApplicationWindow::setActionsEnabled(bool enabled)
+{
+    MuonMainWindow::setActionsEnabled(enabled);
+    if (!enabled) {
+        return;
+    }
+
+    QApt::PackageList changedList = m_backend->markedPackages();
+
+    m_loadSelectionsAction->setEnabled(true);
+    m_saveSelectionsAction->setEnabled(!changedList.isEmpty());
+}
+
 void ApplicationWindow::reload()
 {
     foreach (QWidget *widget, m_viewHash) {
@@ -119,6 +153,11 @@ void ApplicationWindow::reload()
 
     m_appBackend->reload();
     populateViews();
+}
+
+void ApplicationWindow::checkForUpdates()
+{
+    m_backend->updateCache();
 }
 
 void ApplicationWindow::workerEvent(QApt::WorkerEvent event)
