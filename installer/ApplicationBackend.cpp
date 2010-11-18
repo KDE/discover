@@ -40,6 +40,7 @@ ApplicationBackend::~ApplicationBackend()
 void ApplicationBackend::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
+    m_backend->setUndoRedoCacheSize(1);
     init();
 }
 

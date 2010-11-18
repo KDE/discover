@@ -154,6 +154,8 @@ void ApplicationViewWidget::infoButtonClicked(Application *app)
 void ApplicationViewWidget::installButtonClicked(Application *app)
 {
     QList<int> oldCacheState = m_backend->currentCacheState();
+    m_backend->saveCacheState();
+
     QApt::Package *package = app->package();
 
     if (!package->availableVersion().isEmpty()) {
@@ -179,6 +181,7 @@ void ApplicationViewWidget::installButtonClicked(Application *app)
 void ApplicationViewWidget::removeButtonClicked(Application *app)
 {
     QList<int> oldCacheState = m_backend->currentCacheState();
+    m_backend->saveCacheState();
 
     QApt::Package *package = app->package();
 
