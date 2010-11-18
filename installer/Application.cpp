@@ -58,9 +58,9 @@ Application::~Application()
 
 QString Application::name()
 {
-    QString name = getField("Name").trimmed();
+    QString name = QString::fromUtf8(getField("Name")).trimmed();
     if (name.isEmpty()) {
-        kDebug() << m_fileName;
+        // kDebug() << m_fileName;
         return package()->name();
     }
 
