@@ -23,23 +23,34 @@
 
 #include <QtGui/QWidget>
 
+#include <LibQApt/Globals>
+
+class QProgressBar;
 class QPushButton;
 
 class Application;
+
+namespace QApt {
+    class Backend;
+}
 
 class ApplicationExtender : public QWidget
 {
     Q_OBJECT
 public:
-    ApplicationExtender(QWidget *parent, Application *app);
+    ApplicationExtender(QWidget *parent, Application *app, QApt::Backend *backend);
     ~ApplicationExtender();
 
 private:
     Application *m_app;
-    QPushButton *m_infoButton;
+    QApt::Backend *m_backend;
     QPushButton *m_actionButton;
+    QProgressBar *m_progressBar;
 
 private Q_SLOTS:
+    void workerEvent(QApt::WorkerEvent event);
+    void updateProgress(int percentage);
+    void updateProgress(const QString &text, int percentage);
     void emitInfoButtonClicked();
     void emitRemoveButtonClicked();
     void emitInstallButtonClicked();

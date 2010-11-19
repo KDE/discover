@@ -36,7 +36,7 @@
 #include <Nepomuk/KRatingPainter>
 
 // LibQApt includes
-#include <LibQApt/Package>
+#include <LibQApt/Backend>
 
 #include "ApplicationExtender.h"
 #include "ApplicationModel.h"
@@ -45,7 +45,6 @@
 #define FAV_ICON_SIZE 24
 #define EMBLEM_ICON_SIZE 8
 #define UNIVERSAL_PADDING 4
-#define FADE_LENGTH 16
 #define MAIN_ICON_SIZE 32
 
 ApplicationDelegate::ApplicationDelegate(QAbstractItemView *parent)
@@ -70,6 +69,11 @@ ApplicationDelegate::ApplicationDelegate(QAbstractItemView *parent)
 
     // For icons later
     KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
+}
+
+void ApplicationDelegate::setBackend(QApt::Backend *backend)
+{
+    m_backend = backend;
 }
 
 void ApplicationDelegate::paint(QPainter *painter,
@@ -270,7 +274,7 @@ void ApplicationDelegate::itemActivated(QModelIndex index)
     Application *app = static_cast<const ApplicationProxyModel*>(index.model())->applicationAt(index);
 
     QTreeView *view = static_cast<QTreeView*>(parent());
-    m_extender = new ApplicationExtender(view, app);
+    m_extender = new ApplicationExtender(view, app, m_backend);
     connect(m_extender, SIGNAL(infoButtonClicked(Application *)),
             this, SIGNAL(infoButtonClicked(Application *)));
     connect(m_extender, SIGNAL(installButtonClicked(Application *)),

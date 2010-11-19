@@ -31,6 +31,10 @@ class KIconLoader;
 class Application;
 class ApplicationExtender;
 
+namespace QApt {
+    class Backend;
+}
+
 /**
  * Delegate for displaying the packages
  */
@@ -48,6 +52,7 @@ public:
                      const QModelIndex &index);
 
 private:
+    QApt::Backend *m_backend;
     int calcItemHeight(const QStyleOptionViewItem &option) const;
 
     KIcon   m_installIcon;
@@ -63,6 +68,7 @@ private:
 
 public Q_SLOTS:
     void itemActivated(QModelIndex index);
+    void setBackend(QApt::Backend *backend);
 
 Q_SIGNALS:
     void showExtendItem(const QModelIndex &index);

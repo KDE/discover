@@ -34,6 +34,7 @@ class KPixmapSequenceOverlayPainter;
 
 class Application;
 class ApplicationBackend;
+class ApplicationDelegate;
 class ApplicationDetailsView;
 class ApplicationModel;
 class ApplicationProxyModel;
@@ -58,6 +59,7 @@ private:
     QPair<AbstractViewBase *, Application *> m_currentPair;
 
     QTreeView *m_treeView;
+    ApplicationDelegate *m_delegate;
     KPixmapSequenceOverlayPainter *m_busyWidget;
     ApplicationDetailsView *m_detailsView;
 

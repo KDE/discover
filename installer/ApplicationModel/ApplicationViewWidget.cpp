@@ -58,16 +58,16 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
     m_treeView->setRootIsDecorated(false);
 
     m_treeView->setModel(m_proxyModel);
-    ApplicationDelegate *delegate = new ApplicationDelegate(m_treeView);
-    m_treeView->setItemDelegate(delegate);
+    m_delegate = new ApplicationDelegate(m_treeView);
+    m_treeView->setItemDelegate(m_delegate);
 
     m_layout->addWidget(m_treeView);
 
-    connect(delegate, SIGNAL(infoButtonClicked(Application *)),
+    connect(m_delegate, SIGNAL(infoButtonClicked(Application *)),
             this, SLOT(infoButtonClicked(Application *)));
-    connect(delegate, SIGNAL(installButtonClicked(Application *)),
+    connect(m_delegate, SIGNAL(installButtonClicked(Application *)),
             this, SLOT(installButtonClicked(Application *)));
-    connect(delegate, SIGNAL(removeButtonClicked(Application *)),
+    connect(m_delegate, SIGNAL(removeButtonClicked(Application *)),
             this, SLOT(removeButtonClicked(Application *)));
 }
 
@@ -78,6 +78,7 @@ ApplicationViewWidget::~ApplicationViewWidget()
 void ApplicationViewWidget::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
+    m_delegate->setBackend(backend);
     m_appModel->setMaxPopcon(m_appBackend->maxPopconScore());
     m_appModel->setApplications(m_appBackend->applicationList());
     m_proxyModel->setBackend(backend);
