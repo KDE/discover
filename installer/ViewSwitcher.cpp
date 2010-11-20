@@ -34,6 +34,7 @@ ViewSwitcher::ViewSwitcher(QWidget *parent)
     setHeaderHidden(true);
     setUniformRowHeights(true);
     setIconSize(QSize(24,24));
+    setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
 }
 
 ViewSwitcher::~ViewSwitcher()
