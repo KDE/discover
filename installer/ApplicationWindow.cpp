@@ -74,7 +74,7 @@ void ApplicationWindow::initGUI()
 
     // Set up the main pane
     m_viewStack = new QStackedWidget(this);
-    m_viewStack->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    m_viewStack->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
     m_mainWidget->addWidget(m_viewStack);
     loadSplitterSizes();
 
