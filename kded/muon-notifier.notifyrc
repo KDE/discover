@@ -55,7 +55,7 @@ Comment[zh_TW]=已經有新版本的 Kubuntu
 Action=Popup
 
 [Event/Update]
-Name=Updates Available
+Name=Updates Are Available
 Name[cs]=Jsou dostupné aktualizace
 Name[da]=Opdateringer tilgængelige
 Name[en_GB]=Updates Available
