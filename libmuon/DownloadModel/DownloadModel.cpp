@@ -66,13 +66,13 @@ QVariant DownloadModel::headerData(int section, Qt::Orientation orientation, int
 
     switch (section) {
         case 0:
-            return i18n("Package");
+            return i18nc("@title:column", "Package");
         case 1:
-            return i18n("Location");
+            return i18nc("@title:column", "Location");
         case 2:
-            return i18n("Size");
+            return i18nc("@title:column", "Size");
         case 3:
-            return i18n("Progress");
+            return i18nc("@title:column", "Progress");
         default:
             return QVariant();
     }
