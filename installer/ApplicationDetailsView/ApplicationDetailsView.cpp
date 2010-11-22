@@ -29,7 +29,6 @@
 // Own includes
 #include "ApplicationDetailsWidget.h"
 #include "../Application.h"
-// #include "../ApplicationBackend.h"
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
 
 ApplicationDetailsView::ApplicationDetailsView(QWidget *parent, ApplicationBackend *backend)
