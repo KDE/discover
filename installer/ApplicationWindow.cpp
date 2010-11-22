@@ -93,6 +93,8 @@ void ApplicationWindow::initObject()
     m_appBackend = new ApplicationBackend(this);
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
             m_appBackend, SLOT(setBackend(QApt::Backend *)));
+    connect(m_appBackend, SIGNAL(reloaded()),
+            this, SLOT(populateViews()));
 
     MuonMainWindow::initObject();
 
@@ -150,9 +152,6 @@ void ApplicationWindow::reload()
     }
     m_viewHash.clear();
     m_viewModel->clear();
-
-    m_appBackend->reload();
-    populateViews();
 }
 
 void ApplicationWindow::checkForUpdates()

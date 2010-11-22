@@ -29,28 +29,24 @@ class QProgressBar;
 class QPushButton;
 
 class Application;
-
-namespace QApt {
-    class Backend;
-}
+class ApplicationBackend;
 
 class ApplicationExtender : public QWidget
 {
     Q_OBJECT
 public:
-    ApplicationExtender(QWidget *parent, Application *app, QApt::Backend *backend);
+    ApplicationExtender(QWidget *parent, Application *app, ApplicationBackend *backend);
     ~ApplicationExtender();
 
 private:
     Application *m_app;
-    QApt::Backend *m_backend;
+    ApplicationBackend *m_appBackend;
     QPushButton *m_actionButton;
     QProgressBar *m_progressBar;
 
 private Q_SLOTS:
-    void workerEvent(QApt::WorkerEvent event);
-    void updateProgress(int percentage);
-    void updateProgress(const QString &text, int percentage);
+    void workerEvent(QApt::WorkerEvent event, Application *app);
+    void updateProgress(Application *app, int percentage);
     void emitInfoButtonClicked();
     void emitRemoveButtonClicked();
     void emitInstallButtonClicked();

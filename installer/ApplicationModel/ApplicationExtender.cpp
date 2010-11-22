@@ -28,14 +28,15 @@
 #include <KIcon>
 #include <KLocale>
 
-#include <LibQApt/Backend>
+#include <LibQApt/Package>
 
 #include "Application.h"
+#include "ApplicationBackend.h"
 
-ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, QApt::Backend *backend)
+ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, ApplicationBackend *backend)
     : QWidget(parent)
     , m_app(app)
-    , m_backend(backend)
+    , m_appBackend(backend)
 {
     QHBoxLayout *layout = new QHBoxLayout(this);
     setLayout(layout);
@@ -68,27 +69,34 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, QApt
     layout->addWidget(m_actionButton);
     layout->addWidget(m_progressBar);
 
-    connect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
-            this, SLOT(workerEvent(QApt::WorkerEvent)));
+    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Application *)),
+            this, SLOT(workerEvent(QApt::WorkerEvent, Application *)));
+
+    QPair<QApt::WorkerEvent, Application *> workerState = m_appBackend->workerState();
+    workerEvent(workerState.first, workerState.second);
 }
 
 ApplicationExtender::~ApplicationExtender()
 {
 }
 
-void ApplicationExtender::workerEvent(QApt::WorkerEvent event)
+void ApplicationExtender::workerEvent(QApt::WorkerEvent event, Application *app)
 {
+    if (m_app != app) {
+        return;
+    }
+
     switch (event) {
     case QApt::PackageDownloadStarted:
         m_actionButton->hide();
         m_progressBar->show();
         m_progressBar->setFormat(i18nc("@info:status", "Downloading"));
-        connect(m_backend, SIGNAL(downloadProgress(int, int, int)),
-                this, SLOT(updateProgress(int)));
+        connect(m_appBackend, SIGNAL(progress(Application *, int)),
+                this, SLOT(updateProgress(Application *, int)));
         break;
     case QApt::PackageDownloadFinished:
-        disconnect(m_backend, SIGNAL(downloadProgress(int, int, int)),
-                   this, SLOT(updateProgress(int)));
+        disconnect(m_appBackend, SIGNAL(progress(Application *, int)),
+                   this, SLOT(updateProgress(Application *, int)));
         break;
     case QApt::CommitChangesStarted:
         m_progressBar->setValue(0);
@@ -97,27 +105,23 @@ void ApplicationExtender::workerEvent(QApt::WorkerEvent event)
         } else {
             m_progressBar->setFormat(i18nc("@info:status", "Removing"));
         }
-        connect(m_backend, SIGNAL(commitProgress(const QString &, int)),
-                this, SLOT(updateProgress(const QString &, int)));
+        connect(m_appBackend, SIGNAL(progress(Application *, int)),
+                this, SLOT(updateProgress(Application *, int)));
         break;
     case QApt::CommitChangesFinished:
-        disconnect(m_backend, SIGNAL(commitProgress(const QString &, int)),
-                   this, SLOT(updateProgress(const QString &, int)));
+        disconnect(m_appBackend, SIGNAL(progress(Application *, int)),
+                   this, SLOT(updateProgress(Application *, int)));
         break;
     default:
         break;
     }
 }
 
-void ApplicationExtender::updateProgress(int percentage)
+void ApplicationExtender::updateProgress(Application *app, int percentage)
 {
-    m_progressBar->setValue(percentage);
-}
-
-void ApplicationExtender::updateProgress(const QString &text, int percentage)
-{
-    Q_UNUSED(text);
-    updateProgress(percentage);
+    if (m_app == app) {
+        m_progressBar->setValue(percentage);
+    }
 }
 
 void ApplicationExtender::emitInfoButtonClicked()

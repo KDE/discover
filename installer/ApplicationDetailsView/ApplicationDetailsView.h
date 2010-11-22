@@ -24,13 +24,14 @@
 #include "../AbstractViewBase.h"
 
 class Application;
+class ApplicationBackend;
 class ApplicationDetailsWidget;
 
 class ApplicationDetailsView : public AbstractViewBase
 {
     Q_OBJECT
 public:
-    ApplicationDetailsView(QWidget *parent);
+    ApplicationDetailsView(QWidget *parent, ApplicationBackend *backend);
     ~ApplicationDetailsView();
 
     void setApplication(Application *app);

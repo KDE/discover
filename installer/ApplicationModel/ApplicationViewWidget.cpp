@@ -24,8 +24,6 @@
 #include <QtGui/QTreeView>
 #include <QtGui/QVBoxLayout>
 
-#include <KLocale>
-#include <KMessageBox>
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
 #include <KDebug>
@@ -58,7 +56,7 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
     m_treeView->setRootIsDecorated(false);
 
     m_treeView->setModel(m_proxyModel);
-    m_delegate = new ApplicationDelegate(m_treeView);
+    m_delegate = new ApplicationDelegate(m_treeView, m_appBackend);
     m_treeView->setItemDelegate(m_delegate);
 
     m_layout->addWidget(m_treeView);
@@ -78,7 +76,6 @@ ApplicationViewWidget::~ApplicationViewWidget()
 void ApplicationViewWidget::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
-    m_delegate->setBackend(backend);
     m_appModel->setMaxPopcon(m_appBackend->maxPopconScore());
     m_appModel->setApplications(m_appBackend->applicationList());
     m_proxyModel->setBackend(backend);
@@ -137,7 +134,7 @@ void ApplicationViewWidget::infoButtonClicked(Application *app)
     }
 
     // Create one if not
-    m_detailsView = new ApplicationDetailsView(this);
+    m_detailsView = new ApplicationDetailsView(this, m_appBackend);
     m_detailsView->setApplication(app);
     m_currentPair.first = m_detailsView;
 
@@ -154,68 +151,14 @@ void ApplicationViewWidget::infoButtonClicked(Application *app)
 
 void ApplicationViewWidget::installButtonClicked(Application *app)
 {
-    QList<int> oldCacheState = m_backend->currentCacheState();
-    m_backend->saveCacheState();
-
-    QApt::Package *package = app->package();
-
-    if (!package->availableVersion().isEmpty()) {
-        package->setInstall();
-    }
-
-    if (package->wouldBreak()) {
-        m_backend->restoreCacheState(oldCacheState);
-        //TODO Notify of error
-    }
-
-    QApt::PackageList markedPackages = m_backend->markedPackages();
-
-    bool commitChanges = shouldInstallAdditionalPackages(markedPackages);
-
-    if (commitChanges) {
-        m_backend->commitChanges();
-    } else {
-        m_backend->restoreCacheState(oldCacheState);
-    }
+    Transaction transaction = { app, QApt::Package::ToInstall };
+    m_appBackend->addTransaction(transaction);
 }
 
 void ApplicationViewWidget::removeButtonClicked(Application *app)
 {
-    QList<int> oldCacheState = m_backend->currentCacheState();
-    m_backend->saveCacheState();
-
-    QApt::Package *package = app->package();
-
-    package->setRemove();
-
-    if (package->wouldBreak()) {
-        m_backend->restoreCacheState(oldCacheState);
-        //TODO Notify of error
-    }
-
-    QApt::PackageList markedPackages = m_backend->markedPackages();
-
-    m_backend->commitChanges();
-}
-
-bool ApplicationViewWidget::shouldInstallAdditionalPackages(QApt::PackageList &list)
-{
-    int diskSpaceUsed = 0;
-    int result = KMessageBox::Cancel;
-
-    foreach (QApt::Package *package, list) {
-        diskSpaceUsed += package->availableInstalledSize();
-    }
-
-    QString text = i18nc("@label", "Installing will require %1 of disk space.\n"
-                                   "Do you wish to continue?",
-                                   KGlobal::locale()->formatByteSize(diskSpaceUsed));
-    QString title = i18nc("@title:window", "Confirm Installation");
-
-    result = KMessageBox::questionYesNo(this, text, title, KStandardGuiItem::cont(),
-                                        KStandardGuiItem::cancel(), QLatin1String("AskForDependencies"));
-
-    return (result == KMessageBox::Yes);
+    Transaction transaction = { app, QApt::Package::ToRemove };
+    m_appBackend->addTransaction(transaction);
 }
 
 void ApplicationViewWidget::onSubViewDestroyed()

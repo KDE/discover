@@ -25,6 +25,7 @@
 #include <QtCore/QStringBuilder>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QLabel>
+#include <QtGui/QProgressBar>
 #include <QtGui/QPushButton>
 #include <QtGui/QVBoxLayout>
 
@@ -43,14 +44,16 @@
 #include <LibQApt/Package>
 
 #include "Application.h"
+#include "ApplicationBackend.h"
 #include "ClickableLabel.h"
 #include "effects/GraphicsOpacityDropShadowEffect.h"
 #include "ScreenShotViewer.h"
 
 #define BLUR_RADIUS 15
 
-ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent)
+ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationBackend *backend)
     : QScrollArea(parent)
+    , m_appBackend(backend)
     , m_screenshotFile(0)
     , m_screenshotDialog(0)
 {
@@ -106,6 +109,11 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent)
 
     m_actionButton = new QPushButton(actionButtonWidget);
     connect(m_actionButton, SIGNAL(clicked()), this, SLOT(actionButtonClicked()));
+
+    m_progressBar = new QProgressBar(actionButtonWidget);
+    m_progressBar->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Preferred);
+    m_progressBar->hide();
+
     QWidget *actionButtonSpacer = new QWidget(actionButtonWidget);
     actionButtonSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -182,6 +190,9 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent)
     layout->addWidget(m_websiteLabel);
     layout->addWidget(detailsWidget);
     layout->addWidget(verticalSpacer);
+
+    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Application *)),
+            this, SLOT(workerEvent(QApt::WorkerEvent, Application *)));
 
     setWidget(widget);
 }
@@ -261,7 +272,58 @@ void ApplicationDetailsWidget::setApplication(Application *app)
                                  "may be provided by the Ubuntu community", app->name()));
     }
 
+    // Catch already-begun downloads. If the state is something else, we won't
+    // care because we won't handle it
+    QPair<QApt::WorkerEvent, Application *> workerState = m_appBackend->workerState();
+    workerEvent(workerState.first, workerState.second);
+
     fetchScreenshot(QApt::Thumbnail);
+}
+
+void ApplicationDetailsWidget::workerEvent(QApt::WorkerEvent event, Application *app)
+{
+    if (m_app != app) {
+        return;
+    }
+
+    switch (event) {
+    case QApt::PackageDownloadStarted:
+        m_actionButton->hide();
+        m_progressBar->show();
+        m_progressBar->setFormat(i18nc("@info:status", "Downloading"));
+        connect(m_appBackend, SIGNAL(progress(Application *, int)),
+                this, SLOT(updateProgress(Application *, int)));
+        break;
+    case QApt::PackageDownloadFinished:
+        disconnect(m_appBackend, SIGNAL(progress(Application *, int)),
+                   this, SLOT(updateProgress(Application *, int)));
+        break;
+    case QApt::CommitChangesStarted:
+        m_actionButton->hide();
+        m_progressBar->show();
+        m_progressBar->setValue(0);
+        if (!m_app->package()->isInstalled()) {
+            m_progressBar->setFormat(i18nc("@info:status", "Installing"));
+        } else {
+            m_progressBar->setFormat(i18nc("@info:status", "Removing"));
+        }
+        connect(m_appBackend, SIGNAL(progress(Application *, int)),
+                this, SLOT(updateProgress(Application *, int)));
+        break;
+    case QApt::CommitChangesFinished:
+        disconnect(m_appBackend, SIGNAL(progress(Application *, int)),
+                   this, SLOT(updateProgress(Application *, int)));
+        break;
+    default:
+        break;
+    }
+}
+
+void ApplicationDetailsWidget::updateProgress(Application *app, int percentage)
+{
+    if (m_app == app) {
+        m_progressBar->setValue(percentage);
+    }
 }
 
 void ApplicationDetailsWidget::fadeInScreenshot()

@@ -23,9 +23,11 @@
 
 // Qt includes
 #include <QtGui/QScrollArea>
+
 #include <LibQApt/Globals>
 
 class QLabel;
+class QProgressBar;
 class QPropertyAnimation;
 class QPushButton;
 
@@ -34,6 +36,7 @@ class KPixmapSequenceOverlayPainter;
 class KTemporaryFile;
 
 class Application;
+class ApplicationBackend;
 class ClickableLabel;
 class ScreenShotViewer;
 
@@ -42,13 +45,14 @@ class ApplicationDetailsWidget : public QScrollArea
 {
     Q_OBJECT
 public:
-    explicit ApplicationDetailsWidget(QWidget *parent);
+    explicit ApplicationDetailsWidget(QWidget *parent, ApplicationBackend *backend);
     ~ApplicationDetailsWidget();
 
     void setApplication(Application *app);
 
 private:
     Application *m_app;
+    ApplicationBackend *m_appBackend;
 
     QLabel *m_iconLabel;
     QLabel *m_nameLabel;
@@ -56,6 +60,7 @@ private:
     QWidget *m_menuPathWidget;
     QLabel *m_menuPathLabel;
     QPushButton *m_actionButton;
+    QProgressBar *m_progressBar;
     QLabel *m_longDescLabel;
     ClickableLabel *m_screenshotLabel;
     QLabel *m_websiteLabel;
@@ -71,6 +76,8 @@ private:
     ScreenShotViewer *m_screenshotDialog;
 
 private Q_SLOTS:
+    void workerEvent(QApt::WorkerEvent event, Application *app);
+    void updateProgress(Application *app, int percentage);
     void fadeInScreenshot();
     void fetchScreenshot(QApt::ScreenshotType screenshotType);
     void thumbnailFetched(KJob *job);

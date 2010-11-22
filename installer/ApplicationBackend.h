@@ -24,11 +24,18 @@
 #include <QtCore/QList>
 #include <QtCore/QObject>
 
+#include <LibQApt/Globals>
+
 namespace QApt {
     class Backend;
 }
 
 class Application;
+
+struct Transaction {
+    Application *application;
+    int action;
+};
 
 class ApplicationBackend : public QObject
 {
@@ -38,13 +45,21 @@ public:
     ~ApplicationBackend();
 
     QList<Application *> applicationList() const;
+    QPair<QApt::WorkerEvent, Application *> workerState() const;
     int maxPopconScore() const;
+
+    void addTransaction(Transaction transaction);
+    void runNextTransaction();
 
 private:
     QApt::Backend *m_backend;
 
     QList<Application *> m_appList;
+    QList<Transaction> m_queue;
+    QPair<QApt::WorkerEvent, Application *> m_workerState;
     int m_maxPopconScore;
+
+    bool shouldInstallAdditionalPackages(QApt::PackageList &list);
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
@@ -52,6 +67,14 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void init();
+    void workerEvent(QApt::WorkerEvent event);
+    void updateDownloadProgress(int percentage);
+    void updateCommitProgress(const QString &text, int percentage);
+
+Q_SIGNALS:
+    void reloaded();
+    void workerEvent(QApt::WorkerEvent event, Application *app);
+    void progress(Application *app, int progress);
 };
 
 #endif

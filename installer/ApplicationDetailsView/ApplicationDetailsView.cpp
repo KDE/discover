@@ -29,12 +29,13 @@
 // Own includes
 #include "ApplicationDetailsWidget.h"
 #include "../Application.h"
+// #include "../ApplicationBackend.h"
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
 
-ApplicationDetailsView::ApplicationDetailsView(QWidget *parent)
+ApplicationDetailsView::ApplicationDetailsView(QWidget *parent, ApplicationBackend *backend)
     : AbstractViewBase(parent)
 {
-    m_detailsWidget = new ApplicationDetailsWidget(this);
+    m_detailsWidget = new ApplicationDetailsWidget(this, backend);
 
     m_layout->addWidget(m_detailsWidget);
 
