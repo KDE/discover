@@ -94,7 +94,7 @@ void ApplicationWindow::initObject()
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
             m_appBackend, SLOT(setBackend(QApt::Backend *)));
     connect(m_appBackend, SIGNAL(reloaded()),
-            this, SLOT(populateViews()));
+            this, SLOT(reload()));
 
     MuonMainWindow::initObject();
 
@@ -147,11 +147,15 @@ void ApplicationWindow::setActionsEnabled(bool enabled)
 
 void ApplicationWindow::reload()
 {
+    m_viewStack->setEnabled(false);
     foreach (QWidget *widget, m_viewHash) {
         delete widget;
     }
     m_viewHash.clear();
     m_viewModel->clear();
+
+    populateViews();
+    m_viewStack->setEnabled(true);
 }
 
 void ApplicationWindow::checkForUpdates()
@@ -165,7 +169,6 @@ void ApplicationWindow::workerEvent(QApt::WorkerEvent event)
     case QApt::CommitChangesFinished:
         Solid::PowerManagement::stopSuppressingSleep(m_powerInhibitor);
         m_canExit = true;
-        reload();
         if (m_warningStack.size() > 0) {
             showQueuedWarnings();
             m_warningStack.clear();

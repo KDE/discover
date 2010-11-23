@@ -59,8 +59,6 @@ private:
     QPair<QApt::WorkerEvent, Application *> m_workerState;
     int m_maxPopconScore;
 
-    bool shouldInstallAdditionalPackages(QApt::PackageList &list);
-
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void reload();

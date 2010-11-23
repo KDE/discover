@@ -25,6 +25,7 @@
 
 #include <KLocale>
 #include <KMessageBox>
+#include <KDebug>
 
 #include <LibQApt/Backend>
 
@@ -68,6 +69,7 @@ void ApplicationBackend::init()
     qSort(popconScores);
 
     m_maxPopconScore = popconScores.last();
+    m_queue.clear();
 }
 
 void ApplicationBackend::reload()
@@ -84,7 +86,9 @@ void ApplicationBackend::reload()
 void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
 {
     m_workerState.first = event;
-    m_workerState.second = m_queue.first().application;
+    if (!m_queue.isEmpty()) {
+        m_workerState.second = m_queue.first().application;
+    }
     switch (event) {
     case QApt::PackageDownloadStarted:
         emit workerEvent(QApt::PackageDownloadStarted, m_queue.first().application);
@@ -146,7 +150,7 @@ void ApplicationBackend::addTransaction(Transaction transaction)
 
 void ApplicationBackend::runNextTransaction()
 {
-    QList<int> oldCacheState = m_backend->currentCacheState();
+    QApt::CacheState oldCacheState = m_backend->currentCacheState();
     m_backend->saveCacheState();
 
     Transaction transaction = m_queue.first();
@@ -169,46 +173,7 @@ void ApplicationBackend::runNextTransaction()
         //TODO Notify of error
     }
 
-    QApt::PackageList markedPackages = m_backend->markedPackages();
-    bool commitChanges = false;
-
-    switch (transaction.action) {
-    case QApt::Package::ToInstall:
-    case QApt::Package::ToUpgrade:
-        commitChanges = shouldInstallAdditionalPackages(markedPackages);
-        break;
-    case QApt::Package::ToRemove:
-        commitChanges = true;
-        break;
-    default:
-        break;
-    }
-
-    if (commitChanges) {
-        m_backend->commitChanges();
-    } else {
-        m_backend->restoreCacheState(oldCacheState);
-    }
-}
-
-bool ApplicationBackend::shouldInstallAdditionalPackages(QApt::PackageList &list)
-{
-    int diskSpaceUsed = 0;
-    int result = KMessageBox::Cancel;
-
-    foreach (QApt::Package *package, list) {
-        diskSpaceUsed += package->availableInstalledSize();
-    }
-
-    QString text = i18nc("@label", "Installing will require %1 of disk space.\n"
-                                   "Do you wish to continue?",
-                                   KGlobal::locale()->formatByteSize(diskSpaceUsed));
-    QString title = i18nc("@title:window", "Confirm Installation");
-
-    result = KMessageBox::questionYesNo(0, text, title, KStandardGuiItem::cont(),
-                                        KStandardGuiItem::cancel(), QLatin1String("AskForDependencies"));
-
-    return (result == KMessageBox::Yes);
+    m_backend->commitChanges();
 }
 
 QList<Application *> ApplicationBackend::applicationList() const

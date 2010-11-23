@@ -158,6 +158,7 @@ void ApplicationViewWidget::installButtonClicked(Application *app)
 void ApplicationViewWidget::removeButtonClicked(Application *app)
 {
     Transaction transaction = { app, QApt::Package::ToRemove };
+
     m_appBackend->addTransaction(transaction);
 }
 
