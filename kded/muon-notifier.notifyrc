@@ -59,6 +59,10 @@ Action=Popup
 
 [Event/Update]
 Name=Updates Are Available
+Name[nl]=Bijwerken is beschikbaar
+Name[pt]=Estão Disponíveis Actualizações
+Name[sv]=Uppdateringar tillgängliga
+Name[uk]=Доступні оновлення
 Name[x-test]=xxUpdates Are Availablexx
 Comment=Updates Available
 Comment[cs]=Jsou dostupné aktualizace
