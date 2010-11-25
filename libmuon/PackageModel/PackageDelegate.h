@@ -25,6 +25,8 @@
 
 class KIcon;
 
+class MuonStrings;
+
 class PackageDelegate: public QAbstractItemDelegate
 {
     Q_OBJECT
@@ -46,6 +48,7 @@ private:
 
     KIcon *m_icon;
     KIcon *m_supportedIcon;
+    MuonStrings *m_strings;
 
     int calcItemHeight(const QStyleOptionViewItem &option) const;
 };

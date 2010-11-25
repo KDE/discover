@@ -27,9 +27,9 @@
 // KDE
 #include <KIcon>
 #include <KIconLoader>
-#include <KLocale>
 
 // Own
+#include "../MuonStrings.h"
 #include "PackageModel.h"
 
 PackageDelegate::PackageDelegate(QObject *parent)
@@ -41,6 +41,7 @@ PackageDelegate::PackageDelegate(QObject *parent)
     m_icon = new KIcon("application-x-deb");
 
     m_supportedIcon = new KIcon("application-x-deb", 0, QStringList() << "ubuntu-logo");
+    m_strings = new MuonStrings(this);
 }
 
 PackageDelegate::~PackageDelegate()
@@ -170,21 +171,21 @@ void PackageDelegate::paintText(QPainter *painter, const QStyleOptionViewItem &o
         state = index.data(PackageModel::StatusRole).toInt();
 
         if (state & QApt::Package::NowBroken) {
-            text = i18n("Broken");
+            text = m_strings->packageStateName(QApt::Package::NowBroken);
             pen.setColor(Qt::red);
             break;
         }
 
         if (state & QApt::Package::Installed) {
-            text = i18n("Installed");
+            text = m_strings->packageStateName(QApt::Package::Installed);
             pen.setColor(Qt::darkGreen);
 
             if (state & QApt::Package::Upgradeable) {
-                text = i18n("Upgradeable");
+                text = m_strings->packageStateName(QApt::Package::Upgradeable);
                 pen.setColor(Qt::darkYellow);
             }
         } else {
-            text = i18n("Not installed");
+            text = m_strings->packageStateName(QApt::Package::NotInstalled);
             pen.setColor(Qt::blue);
         }
         break;
@@ -192,42 +193,42 @@ void PackageDelegate::paintText(QPainter *painter, const QStyleOptionViewItem &o
         state = index.data(PackageModel::ActionRole).toInt();
 
         if (state & QApt::Package::ToKeep) {
-            text = i18n("No change");
+            text = m_strings->packageStateName(QApt::Package::ToKeep);
             pen.setColor(Qt::blue);
             // No other "To" flag will be set if we are keeping
             break;
         }
 
         if (state & QApt::Package::ToInstall) {
-            text = i18n("Install");
+            text = m_strings->packageStateName(QApt::Package::ToInstall);
             pen.setColor(Qt::darkGreen);
         }
 
         if (state & QApt::Package::ToUpgrade) {
-            text = i18n("Upgrade");
+            text = m_strings->packageStateName(QApt::Package::ToUpgrade);
             pen.setColor(Qt::darkYellow);
             break;
         }
 
         if (state & QApt::Package::ToRemove) {
-            text = i18n("Remove");
+            text = m_strings->packageStateName(QApt::Package::ToRemove);
             pen.setColor(Qt::red);
         }
 
         if (state & QApt::Package::ToPurge) {
-            text = i18n("Purge");
+            text = m_strings->packageStateName(QApt::Package::ToPurge);
             pen.setColor(Qt::red);
             break;
         }
 
         if (state & QApt::Package::ToReInstall) {
-            text = i18n("Reinstall");
+            text = m_strings->packageStateName(QApt::Package::ToReInstall);
             pen.setColor(Qt::darkGreen);
             break;
         }
 
         if (state & QApt::Package::ToDowngrade) {
-            text = i18n("Downgrade");
+            text = m_strings->packageStateName(QApt::Package::ToDowngrade);
             pen.setColor(Qt::darkYellow);
             break;
         }
