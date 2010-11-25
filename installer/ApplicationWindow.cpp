@@ -37,6 +37,7 @@
 #include <LibQApt/Backend>
 
 // Own includes
+#include "../libmuon/HistoryModel/HistoryView.h"
 #include "ApplicationBackend.h"
 #include "Application.h"
 #include "AvailableView.h"
@@ -300,6 +301,16 @@ void ApplicationWindow::populateViews()
         m_viewHash[viewItem->index()] = 0;
     }
 
+    parentItem = m_viewModel->invisibleRootItem();
+
+    QStandardItem *historyItem = new QStandardItem;
+    historyItem->setEditable(false);
+    historyItem->setIcon(KIcon("view-history").pixmap(32,32));
+    historyItem->setText(i18nc("@item:inlistbox Item for showing the history view", "History"));
+    historyItem->setData(History, ViewTypeRole);
+    parentItem->appendRow(historyItem);
+    m_viewHash[historyItem->index()] = 0;
+
     selectFirstRow(m_viewSwitcher);
 }
 
@@ -329,7 +340,9 @@ void ApplicationWindow::changeView(const QModelIndex &index)
             m_viewStack->addWidget(view);
         }
             break;
-        case HistoryView:
+        case History:
+            view = new HistoryView(this);
+            m_viewStack->addWidget(view);
         case InvalidView:
         default:
             break;

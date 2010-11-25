@@ -63,7 +63,7 @@ enum ViewType {
    /// A CategoryView showing subcategories
    SubCatView = 3,
    /// A view for showing history
-   HistoryView = 4
+   History = 4
 };
 
 class ApplicationWindow : public MuonMainWindow
