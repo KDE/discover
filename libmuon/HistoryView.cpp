@@ -42,13 +42,12 @@ HistoryView::HistoryView(QWidget *parent)
     m_historyModel->setHeaderData(0, Qt::Horizontal, i18n("Date"));
     m_historyView = new QTreeView(this);
 
-    QDateTime currentDateTime = QDateTime::currentDateTime();
+    QDateTime weekAgoTime = QDateTime::currentDateTime().addDays(-7);
     foreach (QApt::HistoryItem *item, m_history->historyItems()) {
         QString category;
         QDateTime startDateTime = item->startDate();
 
-        currentDateTime.addDays(-7);
-        if (currentDateTime < startDateTime) {
+        if (startDateTime > weekAgoTime) {
             //category = KGlobal::locale()->dayPeriodText(startDateTime.time(), KLocale::LongName);
             category = startDateTime.toString("dddd");
         } else {
