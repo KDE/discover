@@ -48,12 +48,14 @@ HistoryView::HistoryView(QWidget *parent)
         QDateTime startDateTime = item->startDate();
         QString formattedTime = KGlobal::locale()->formatTime(startDateTime.time());
 
-        if (startDateTime > weekAgoTime) {
-            //category = KGlobal::locale()->dayPeriodText(startDateTime.time(), KLocale::LongName);
-            category = startDateTime.toString("dddd");
-        } else {
-            category = startDateTime.toString("MMMM dd");
-        }
+        category = startDateTime.toString("MMMM dd");
+
+//         if (startDateTime > weekAgoTime) {
+//             //category = KGlobal::locale()->dayPeriodText(startDateTime.time(), KLocale::LongName);
+//             category = startDateTime.toString("dddd");
+//         } else {
+//             category = startDateTime.toString("MMMM dd");
+//         }
 
         QStandardItem *parentItem = 0;
 
