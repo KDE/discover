@@ -41,7 +41,7 @@ HistoryView::HistoryView(QWidget *parent)
 
     m_historyModel = new QStandardItemModel(this);
     m_historyModel->setColumnCount(1);
-    m_historyModel->setHeaderData(0, Qt::Horizontal, i18n("Date"));
+    m_historyModel->setHeaderData(0, Qt::Horizontal, i18nc("@title:column", "Date"));
     m_historyView = new QTreeView(this);
 
     QDateTime weekAgoTime = QDateTime::currentDateTime().addDays(-7);
