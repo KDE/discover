@@ -32,6 +32,8 @@
 
 #include <LibQApt/History>
 
+#include "HistoryProxyModel.h"
+
 HistoryView::HistoryView(QWidget *parent)
     : KVBox(parent)
 {
@@ -63,6 +65,7 @@ HistoryView::HistoryView(QWidget *parent)
             parentItem = new QStandardItem;
             parentItem->setEditable(false);
             parentItem->setText(category);
+            parentItem->setData(startDateTime, HistoryProxyModel::HistoryDateRole);
 
             m_historyModel->appendRow(parentItem);
             m_categoryHash[category] = parentItem;
@@ -79,6 +82,8 @@ HistoryView::HistoryView(QWidget *parent)
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
                                  package, action, formattedTime);
             historyItem->setText(text);
+            historyItem->setData(startDateTime, HistoryProxyModel::HistoryDateRole);
+            historyItem->setData(QApt::Package::ToInstall, HistoryProxyModel::HistoryActionRole);
 
             parentItem->appendRow(historyItem);
         }
@@ -92,6 +97,8 @@ HistoryView::HistoryView(QWidget *parent)
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
                                  package, action, formattedTime);
             historyItem->setText(text);
+            historyItem->setData(startDateTime, HistoryProxyModel::HistoryDateRole);
+            historyItem->setData(QApt::Package::ToUpgrade, HistoryProxyModel::HistoryActionRole);
 
             parentItem->appendRow(historyItem);
         }
@@ -105,6 +112,8 @@ HistoryView::HistoryView(QWidget *parent)
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
                                  package, action, formattedTime);
             historyItem->setText(text);
+            historyItem->setData(startDateTime, HistoryProxyModel::HistoryDateRole);
+            historyItem->setData(QApt::Package::ToDowngrade, HistoryProxyModel::HistoryActionRole);
 
             parentItem->appendRow(historyItem);
         }
@@ -118,6 +127,8 @@ HistoryView::HistoryView(QWidget *parent)
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
                                  package, action, formattedTime);
             historyItem->setText(text);
+            historyItem->setData(startDateTime, HistoryProxyModel::HistoryDateRole);
+            historyItem->setData(QApt::Package::ToRemove, HistoryProxyModel::HistoryActionRole);
 
             parentItem->appendRow(historyItem);
         }
@@ -131,6 +142,8 @@ HistoryView::HistoryView(QWidget *parent)
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
                                  package, action, formattedTime);
             historyItem->setText(text);
+            historyItem->setData(startDateTime, HistoryProxyModel::HistoryDateRole);
+            historyItem->setData(QApt::Package::ToPurge, HistoryProxyModel::HistoryActionRole);
 
             parentItem->appendRow(historyItem);
         }
@@ -139,7 +152,11 @@ HistoryView::HistoryView(QWidget *parent)
     m_historyView->setMouseTracking(true);
     m_historyView->setVerticalScrollMode(QListView::ScrollPerPixel);
 
-    m_historyView->setModel(m_historyModel);
+    m_proxyModel = new HistoryProxyModel(this);
+    m_proxyModel->setSourceModel(m_historyModel);
+    m_proxyModel->sort(0);
+
+    m_historyView->setModel(m_proxyModel);
 }
 
 HistoryView::~HistoryView()

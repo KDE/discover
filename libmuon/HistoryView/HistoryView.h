@@ -29,11 +29,11 @@ class QStandardItem;
 class QStandardItemModel;
 class QTreeView;
 
-class KCategorizedSortFilterProxyModel;
-
 namespace QApt {
     class History;
 }
+
+class HistoryProxyModel;
 
 class HistoryView : public KVBox
 {
@@ -45,7 +45,7 @@ public:
 private:
     QApt::History *m_history;
     QStandardItemModel *m_historyModel;
-    KCategorizedSortFilterProxyModel *m_proxyModel;
+    HistoryProxyModel *m_proxyModel;
     QHash<QString, QStandardItem *> m_categoryHash;
 
     QTreeView *m_historyView;

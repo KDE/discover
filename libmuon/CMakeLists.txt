@@ -7,7 +7,8 @@ set(muon_LIB_SRCS
     DetailsWidget.cpp
     DownloadModel/DownloadModel.cpp
     DownloadModel/DownloadDelegate.cpp
-    HistoryView.cpp
+    HistoryView/HistoryProxyModel.cpp
+    HistoryView/HistoryView.cpp
     PackageModel/PackageModel.cpp
     PackageModel/PackageProxyModel.cpp
     PackageModel/PackageView.cpp

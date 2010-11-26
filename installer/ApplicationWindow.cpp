@@ -37,7 +37,7 @@
 #include <LibQApt/Backend>
 
 // Own includes
-#include "../libmuon/HistoryView.h"
+#include "../libmuon/HistoryView/HistoryView.h"
 #include "ApplicationBackend.h"
 #include "Application.h"
 #include "AvailableView.h"
