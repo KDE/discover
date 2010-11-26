@@ -67,7 +67,7 @@ HistoryView::HistoryView(QWidget *parent)
             parentItem = m_categoryHash.value(category);
         }
 
-        foreach (const QString &package, item->packageList()) {
+        foreach (const QString &package, item->packages()) {
             QStandardItem *historyItem = new QStandardItem;
             historyItem->setEditable(false);
             historyItem->setIcon(KIcon("applications-other").pixmap(32,32));
