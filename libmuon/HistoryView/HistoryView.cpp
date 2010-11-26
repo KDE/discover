@@ -86,6 +86,9 @@ HistoryView::HistoryView(QWidget *parent)
             historyItem->setData(QApt::Package::ToInstall, HistoryProxyModel::HistoryActionRole);
 
             parentItem->appendRow(historyItem);
+            int parentState = parentItem->data(HistoryProxyModel::HistoryActionRole).toInt();
+            parentState |= QApt::Package::ToInstall;
+            parentItem->setData(parentState, HistoryProxyModel::HistoryActionRole);
         }
 
         foreach (const QString &package, item->upgradedPackages()) {
@@ -101,6 +104,9 @@ HistoryView::HistoryView(QWidget *parent)
             historyItem->setData(QApt::Package::ToUpgrade, HistoryProxyModel::HistoryActionRole);
 
             parentItem->appendRow(historyItem);
+            int parentState = parentItem->data(HistoryProxyModel::HistoryActionRole).toInt();
+            parentState |= QApt::Package::ToUpgrade;
+            parentItem->setData(parentState, HistoryProxyModel::HistoryActionRole);
         }
 
         foreach (const QString &package, item->downgradedPackages()) {
@@ -116,6 +122,9 @@ HistoryView::HistoryView(QWidget *parent)
             historyItem->setData(QApt::Package::ToDowngrade, HistoryProxyModel::HistoryActionRole);
 
             parentItem->appendRow(historyItem);
+            int parentState = parentItem->data(HistoryProxyModel::HistoryActionRole).toInt();
+            parentState |= QApt::Package::ToDowngrade;
+            parentItem->setData(parentState, HistoryProxyModel::HistoryActionRole);
         }
 
         foreach (const QString &package, item->removedPackages()) {
@@ -131,6 +140,9 @@ HistoryView::HistoryView(QWidget *parent)
             historyItem->setData(QApt::Package::ToRemove, HistoryProxyModel::HistoryActionRole);
 
             parentItem->appendRow(historyItem);
+            int parentState = parentItem->data(HistoryProxyModel::HistoryActionRole).toInt();
+            parentState |= QApt::Package::ToRemove;
+            parentItem->setData(parentState, HistoryProxyModel::HistoryActionRole);
         }
 
         foreach (const QString &package, item->purgedPackages()) {
@@ -146,6 +158,9 @@ HistoryView::HistoryView(QWidget *parent)
             historyItem->setData(QApt::Package::ToPurge, HistoryProxyModel::HistoryActionRole);
 
             parentItem->appendRow(historyItem);
+            int parentState = parentItem->data(HistoryProxyModel::HistoryActionRole).toInt();
+            parentState |= QApt::Package::ToRemove;
+            parentItem->setData(parentState, HistoryProxyModel::HistoryActionRole);
         }
     }
 

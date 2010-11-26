@@ -28,7 +28,6 @@ HistoryProxyModel::HistoryProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
     , m_stateFilter((QApt::Package::State)0)
 {
-//     m_stateFilter = QApt::Package::ToUpgrade;
 }
 
 HistoryProxyModel::~HistoryProxyModel()
@@ -51,13 +50,10 @@ bool HistoryProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
     QStandardItem *item = static_cast<QStandardItemModel *>(sourceModel())->itemFromIndex(sourceModel()->index(sourceRow, 0, sourceParent));
 
     if (!item) {
-        kDebug() << "no item";
         return false;
     }
 
-    kDebug() << "m_stateFilter == " << m_stateFilter;
     if (!m_stateFilter == 0) {
-        kDebug() << item->data(HistoryActionRole).toInt();
         if ((bool)(item->data(HistoryActionRole).toInt() & m_stateFilter) == false) {
             return false;
         }

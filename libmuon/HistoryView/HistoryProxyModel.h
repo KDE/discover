@@ -30,8 +30,8 @@ class HistoryProxyModel : public QSortFilterProxyModel
     Q_OBJECT
 public:
     enum {
-        HistoryActionRole = Qt::UserRole,
-        HistoryDateRole = Qt::UserRole + 1
+        HistoryDateRole = Qt::UserRole + 1,
+        HistoryActionRole = Qt::UserRole + 2
     };
     HistoryProxyModel(QObject *parent);
     ~HistoryProxyModel();
