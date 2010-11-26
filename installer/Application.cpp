@@ -22,6 +22,7 @@
 
 // Qt includes
 #include <QtCore/QFile>
+#include <QtCore/QVector>
 #include <QtCore/QStringList>
 
 // KDE includes
@@ -29,10 +30,8 @@
 #include <KLocale>
 #include <KService>
 #include <KServiceGroup>
-#include <KDebug>
 
 // QApt includes
-#include <LibQApt/Package>
 #include <LibQApt/Backend>
 
 Application::Application(const QString &fileName, QApt::Backend *backend)
@@ -98,7 +97,7 @@ QApt::Package *Application::package()
     // next refresh, so we can have valid .desktops with no package
     if (!m_package) {
         m_isValid = false;
-        kDebug() << m_fileName;
+        // kDebug() << m_fileName;
     }
 
     return m_package;

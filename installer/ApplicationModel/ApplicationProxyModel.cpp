@@ -22,8 +22,6 @@
 
 #include <QtCore/QRegExp>
 
-#include <KDebug>
-
 // Own includes
 #include "ApplicationModel.h"
 
@@ -69,7 +67,6 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
     Application *application = static_cast<ApplicationModel *>(sourceModel())->applicationAt(sourceModel()->index(sourceRow, 0, sourceParent));
     //We have a package as internal pointer
     if (!application || !application->package()) {
-        kDebug() << "no application";
         return false;
     }
 
