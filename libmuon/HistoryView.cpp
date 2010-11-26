@@ -38,6 +38,8 @@ HistoryView::HistoryView(QWidget *parent)
     m_history = new QApt::History(this);
 
     m_historyModel = new QStandardItemModel(this);
+    m_historyModel->setColumnCount(1);
+    m_historyModel->setHeaderData(0, Qt::Horizontal, i18n("Date"));
     m_historyView = new QTreeView(this);
 
     QDateTime currentDateTime = QDateTime::currentDateTime();
