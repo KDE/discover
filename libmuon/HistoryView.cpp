@@ -20,13 +20,11 @@
 
 #include "HistoryView.h"
 
+#include <QtGui/QListView>
 #include <QtGui/QTreeView>
 #include <QtGui/QVBoxLayout>
 #include <QStandardItemModel>
 
-#include <KCategorizedSortFilterProxyModel>
-#include <KCategorizedView>
-#include <KCategoryDrawer>
 #include <KGlobal>
 #include <KIcon>
 #include <KLocale>
