@@ -20,13 +20,18 @@
 
 #include "HistoryView.h"
 
+#include <QtCore/QTimer>
+#include <QtGui/QLabel>
 #include <QtGui/QListView>
 #include <QtGui/QTreeView>
 #include <QtGui/QVBoxLayout>
 #include <QStandardItemModel>
 
+#include <KComboBox>
 #include <KGlobal>
+#include <KHBox>
 #include <KIcon>
+#include <KLineEdit>
 #include <KLocale>
 #include <KDebug>
 
@@ -38,6 +43,49 @@ HistoryView::HistoryView(QWidget *parent)
     : KVBox(parent)
 {
     m_history = new QApt::History(this);
+
+    QWidget *headerWidget = new QWidget(this);
+    QHBoxLayout *headerLayout = new QHBoxLayout(headerWidget);
+
+    QLabel *headerLabel = new QLabel(headerWidget);
+    headerLabel->setText(i18nc("@info", "<title>History</title>"));
+
+    QWidget *headerSpacer = new QWidget(headerWidget);
+    headerSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+
+    m_searchEdit = new KLineEdit(headerWidget);
+    m_searchEdit->setClickMessage(i18nc("@label Line edit click message", "Search"));
+    m_searchEdit->setClearButtonShown(true);
+
+    m_searchTimer = new QTimer(this);
+    m_searchTimer->setInterval(300);
+    m_searchTimer->setSingleShot(true);
+    connect(m_searchTimer, SIGNAL(timeout()), this, SLOT(startSearch()));
+    connect(m_searchEdit, SIGNAL(textChanged(const QString &)), m_searchTimer, SLOT(start()));
+
+    m_filterBox = new KComboBox(headerWidget);
+    m_filterBox->insertItem(AllChangesItem, KIcon("bookmark-new-list"),
+                            i18nc("@item:inlistbox Filters all changes in the history view",
+                                  "All changes"),
+                            0);
+    m_filterBox->insertItem(InstallationsItem, KIcon("download"),
+                            i18nc("@item:inlistbox Filters installations in the history view",
+                                  "Installations"),
+                            QApt::Package::ToInstall);
+    m_filterBox->insertItem(UpdatesItem, KIcon("system-software-update"),
+                            i18nc("@item:inlistbox Filters updates in the history view",
+                                  "Updates"),
+                            QApt::Package::ToUpgrade);
+    m_filterBox->insertItem(RemovalsItem, KIcon("edit-delete"),
+                            i18nc("@item:inlistbox Filters removals in the history view",
+                                  "Removals"),
+                            (QApt::Package::State)(QApt::Package::ToRemove | QApt::Package::ToPurge));
+    connect(m_filterBox, SIGNAL(currentIndexChanged(int)), this, SLOT(setStateFilter(int)));
+
+    headerLayout->addWidget(headerLabel);
+    headerLayout->addWidget(headerSpacer);
+    headerLayout->addWidget(m_searchEdit);
+    headerLayout->addWidget(m_filterBox);
 
     m_historyModel = new QStandardItemModel(this);
     m_historyModel->setColumnCount(1);
@@ -161,6 +209,17 @@ HistoryView::HistoryView(QWidget *parent)
 
 HistoryView::~HistoryView()
 {
+}
+
+void HistoryView::setStateFilter(int index)
+{
+    QApt::Package::State state = (QApt::Package::State)m_filterBox->itemData(index).toInt();
+    m_proxyModel->setStateFilter(state);
+}
+
+void HistoryView::startSearch()
+{
+    m_proxyModel->search(m_searchEdit->text());
 }
 
 #include "HistoryView.moc"

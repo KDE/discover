@@ -27,7 +27,11 @@
 
 class QStandardItem;
 class QStandardItemModel;
+class QTimer;
 class QTreeView;
+
+class KComboBox;
+class KLineEdit;
 
 namespace QApt {
     class History;
@@ -39,6 +43,12 @@ class HistoryView : public KVBox
 {
     Q_OBJECT
 public:
+    enum ComboItems {
+        AllChangesItem = 0,
+        InstallationsItem = 1,
+        UpdatesItem = 2,
+        RemovalsItem = 3
+    };
     HistoryView(QWidget *parent);
     ~HistoryView();
 
@@ -48,7 +58,14 @@ private:
     HistoryProxyModel *m_proxyModel;
     QHash<QString, QStandardItem *> m_categoryHash;
 
+    KLineEdit *m_searchEdit;
+    QTimer *m_searchTimer;
+    KComboBox *m_filterBox;
     QTreeView *m_historyView;
+
+private Q_SLOTS:
+    void setStateFilter(int index);
+    void startSearch();
 };
 
 #endif
