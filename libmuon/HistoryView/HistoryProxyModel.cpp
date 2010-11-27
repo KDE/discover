@@ -36,6 +36,8 @@ HistoryProxyModel::~HistoryProxyModel()
 
 void HistoryProxyModel::search(const QString &searchText)
 {
+    m_searchText = searchText;
+    invalidate();
 }
 
 void HistoryProxyModel::setStateFilter(QApt::Package::State state)
@@ -46,6 +48,13 @@ void HistoryProxyModel::setStateFilter(QApt::Package::State state)
 
 bool HistoryProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
+    QModelIndex sourceIndex = sourceModel()->index(sourceRow, 0, sourceParent);
+        for(int i = 0 ; i < sourceModel()->rowCount(sourceIndex); i++) {
+            if (filterAcceptsRow(i, sourceIndex)) {
+                return true;
+            }
+        }
+
     //Our "main"-method
     QStandardItem *item = static_cast<QStandardItemModel *>(sourceModel())->itemFromIndex(sourceModel()->index(sourceRow, 0, sourceParent));
 
@@ -55,6 +64,12 @@ bool HistoryProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
 
     if (!m_stateFilter == 0) {
         if ((bool)(item->data(HistoryActionRole).toInt() & m_stateFilter) == false) {
+            return false;
+        }
+    }
+
+    if (!m_searchText.isEmpty()) {
+        if ((bool)(item->data(Qt::DisplayRole).toString().contains(m_searchText)) == false) {
             return false;
         }
     }
