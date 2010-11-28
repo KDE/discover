@@ -49,6 +49,8 @@ void ApplicationBackend::setBackend(QApt::Backend *backend)
 
     connect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
             this, SLOT(workerEvent(QApt::WorkerEvent)));
+    connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode, QVariantMap)),
+            this, SLOT(errorOccurred()));
 }
 
 void ApplicationBackend::init()
@@ -122,6 +124,16 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
         break;
     default:
         break;
+    }
+}
+
+void ApplicationBackend::errorOccurred()
+{
+    // Remove running transaction on failure
+    if (m_workerState.second) {
+        m_workerState.first = QApt::InvalidEvent;
+        m_workerState.second = 0;
+        m_queue.removeFirst();
     }
 }
 

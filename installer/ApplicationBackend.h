@@ -66,6 +66,7 @@ public Q_SLOTS:
 private Q_SLOTS:
     void init();
     void workerEvent(QApt::WorkerEvent event);
+    void errorOccurred();
     void updateDownloadProgress(int percentage);
     void updateCommitProgress(const QString &text, int percentage);
 
