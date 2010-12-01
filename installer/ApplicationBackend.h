@@ -32,9 +32,16 @@ namespace QApt {
 
 class Application;
 
+enum TransactionState {
+    InvalidState = 0,
+    QueuedState = 1,
+	RunningState = 2
+};
+
 struct Transaction {
     Application *application;
     int action;
+	TransactionState state;
 };
 
 class ApplicationBackend : public QObject
@@ -46,6 +53,7 @@ public:
 
     QList<Application *> applicationList() const;
     QPair<QApt::WorkerEvent, Application *> workerState() const;
+    Transaction currentTransaction() const;
     int maxPopconScore() const;
 
     void addTransaction(Transaction transaction);

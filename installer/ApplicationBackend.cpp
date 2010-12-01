@@ -96,6 +96,7 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
     
     switch (event) {
     case QApt::PackageDownloadStarted:
+        m_queue.first().state = RunningState;
         connect(m_backend, SIGNAL(downloadProgress(int, int, int)),
                 this, SLOT(updateDownloadProgress(int)));
         break;
@@ -104,6 +105,7 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
                    this, SLOT(updateDownloadProgress(int)));
         break;
     case QApt::CommitChangesStarted:
+        m_queue.first().state = RunningState;
         connect(m_backend, SIGNAL(commitProgress(const QString &, int)),
                 this, SLOT(updateCommitProgress(const QString &, int)));
         break;
@@ -152,6 +154,7 @@ void ApplicationBackend::updateCommitProgress(const QString &text, int percentag
 
 void ApplicationBackend::addTransaction(Transaction transaction)
 {
+    transaction.state = QueuedState;
     m_queue.append(transaction);
 
     if (m_queue.count() == 1) {
@@ -163,11 +166,11 @@ void ApplicationBackend::runNextTransaction()
 {
     QApt::CacheState oldCacheState = m_backend->currentCacheState();
     m_backend->saveCacheState();
+    kDebug() << m_queue.first().state;
 
-    Transaction transaction = m_queue.first();
-    Application *app = transaction.application;
+    Application *app = m_queue.first().application;
 
-    switch (transaction.action) {
+    switch (m_queue.first().action) {
     case QApt::Package::ToInstall:
     case QApt::Package::ToUpgrade:
         app->package()->setInstall();
@@ -195,6 +198,16 @@ QList<Application *> ApplicationBackend::applicationList() const
 QPair<QApt::WorkerEvent, Application *> ApplicationBackend::workerState() const
 {
     return m_workerState;
+}
+
+Transaction ApplicationBackend::currentTransaction() const
+{
+    Transaction transaction= {0, 0, InvalidState};
+    if (!m_queue.isEmpty())
+    {
+        transaction = m_queue.first();
+    }
+    return transaction;
 }
 
 int ApplicationBackend::maxPopconScore() const

@@ -151,13 +151,13 @@ void ApplicationViewWidget::infoButtonClicked(Application *app)
 
 void ApplicationViewWidget::installButtonClicked(Application *app)
 {
-    Transaction transaction = { app, QApt::Package::ToInstall };
+    Transaction transaction = { app, QApt::Package::ToInstall, (TransactionState)0 };
     m_appBackend->addTransaction(transaction);
 }
 
 void ApplicationViewWidget::removeButtonClicked(Application *app)
 {
-    Transaction transaction = { app, QApt::Package::ToRemove };
+    Transaction transaction = { app, QApt::Package::ToRemove, (TransactionState)0 };
 
     m_appBackend->addTransaction(transaction);
 }

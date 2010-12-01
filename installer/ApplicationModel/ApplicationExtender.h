@@ -47,6 +47,7 @@ private:
 private Q_SLOTS:
     void workerEvent(QApt::WorkerEvent event, Application *app);
     void updateProgress(Application *app, int percentage);
+    void transactionQueued(Application *app);
     void emitInfoButtonClicked();
     void emitRemoveButtonClicked();
     void emitInstallButtonClicked();

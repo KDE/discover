@@ -74,6 +74,12 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, Appl
 
     QPair<QApt::WorkerEvent, Application *> workerState = m_appBackend->workerState();
     workerEvent(workerState.first, workerState.second);
+    
+    Transaction transaction = m_appBackend->currentTransaction();
+    kDebug() << transaction.state;
+    if (transaction.state == QueuedState){
+        transactionQueued(transaction.application); 
+    }
 }
 
 ApplicationExtender::~ApplicationExtender()
@@ -99,6 +105,8 @@ void ApplicationExtender::workerEvent(QApt::WorkerEvent event, Application *app)
                    this, SLOT(updateProgress(Application *, int)));
         break;
     case QApt::CommitChangesStarted:
+        m_actionButton->hide();
+        m_progressBar->show();
         m_progressBar->setValue(0);
         if (!m_app->package()->isInstalled()) {
             m_progressBar->setFormat(i18nc("@info:status", "Installing"));
@@ -117,6 +125,16 @@ void ApplicationExtender::workerEvent(QApt::WorkerEvent event, Application *app)
     }
 }
 
+void ApplicationExtender::transactionQueued(Application *app)
+{
+    if (m_app == app) {
+        m_actionButton->hide();
+        m_progressBar->show();
+        m_progressBar->setValue(0);
+        m_progressBar->setFormat(i18nc("@info:status", "Waiting"));
+    }
+}
+
 void ApplicationExtender::updateProgress(Application *app, int percentage)
 {
     if (m_app == app) {
@@ -132,11 +150,13 @@ void ApplicationExtender::emitInfoButtonClicked()
 void ApplicationExtender::emitRemoveButtonClicked()
 {
     emit removeButtonClicked(m_app);
+    transactionQueued(m_app);
 }
 
 void ApplicationExtender::emitInstallButtonClicked()
 {
     emit installButtonClicked(m_app);
+    transactionQueued(m_app);
 }
 
 #include "ApplicationExtender.moc"
