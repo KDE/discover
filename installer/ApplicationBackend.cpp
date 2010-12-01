@@ -49,8 +49,8 @@ void ApplicationBackend::setBackend(QApt::Backend *backend)
 
     connect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
             this, SLOT(workerEvent(QApt::WorkerEvent)));
-    connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode, QVariantMap)),
-            this, SLOT(errorOccurred()));
+    connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode, const QVariantMap &)),
+            this, SLOT(errorOccurred(QApt::ErrorCode, const QVariantMap &)));
 }
 
 void ApplicationBackend::init()
@@ -128,8 +128,21 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
     }
 }
 
-void ApplicationBackend::errorOccurred()
+void ApplicationBackend::errorOccurred(QApt::ErrorCode error, const QVariantMap &details)
 {
+    Q_UNUSED(details);
+
+    // Undo marking if an AuthError is encountered, since our install/remove
+    // buttons do both marking and committing
+    switch (error) {
+    case QApt::AuthError:
+        emit transactionCancelled(m_queue.first().application);
+        m_backend->undo();
+        break;
+    default:
+        break;
+    }    
+
     // Remove running transaction on failure
     if (m_workerState.second) {
         m_workerState.first = QApt::InvalidEvent;
@@ -139,6 +152,7 @@ void ApplicationBackend::errorOccurred()
     if (!m_queue.isEmpty()) {
         m_queue.removeFirst(); 
     }
+   
 }
 
 void ApplicationBackend::updateDownloadProgress(int percentage)

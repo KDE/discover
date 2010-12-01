@@ -97,7 +97,6 @@ private Q_SLOTS:
     void checkForUpdates();
     void setActionsEnabled(bool enabled = true);
     void workerEvent(QApt::WorkerEvent event);
-    void errorOccurred(QApt::ErrorCode error, const QVariantMap &args);
     void populateViews();
     void changeView(const QModelIndex &index);
     void selectFirstRow(const QAbstractItemView *itemView);

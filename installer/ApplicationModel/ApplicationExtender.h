@@ -48,14 +48,17 @@ private Q_SLOTS:
     void workerEvent(QApt::WorkerEvent event, Application *app);
     void updateProgress(Application *app, int percentage);
     void transactionQueued(Application *app);
+    void transactionCancelled(Application *app);
     void emitInfoButtonClicked();
     void emitRemoveButtonClicked();
     void emitInstallButtonClicked();
+//     void emitCancelButtonClicked();
 
 Q_SIGNALS:
     void infoButtonClicked(Application *app);
     void removeButtonClicked(Application *app);
     void installButtonClicked(Application *app);
+    void cancelButtonClicked(Application *app);
 };
 
 #endif

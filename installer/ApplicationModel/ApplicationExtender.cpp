@@ -71,6 +71,8 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, Appl
 
     connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Application *)),
             this, SLOT(workerEvent(QApt::WorkerEvent, Application *)));
+    connect(m_appBackend, SIGNAL(transactionCancelled(Application *)),
+            this, SLOT(transactionCancelled(Application *)));
 
     QPair<QApt::WorkerEvent, Application *> workerState = m_appBackend->workerState();
     workerEvent(workerState.first, workerState.second);
@@ -131,6 +133,14 @@ void ApplicationExtender::transactionQueued(Application *app)
         m_progressBar->show();
         m_progressBar->setValue(0);
         m_progressBar->setFormat(i18nc("@info:status", "Waiting"));
+    }
+}
+
+void ApplicationExtender::transactionCancelled(Application *app)
+{
+    if (m_app == app) {
+        m_progressBar->hide();
+        m_actionButton->show();
     }
 }
 

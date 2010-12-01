@@ -74,7 +74,7 @@ public Q_SLOTS:
 private Q_SLOTS:
     void init();
     void workerEvent(QApt::WorkerEvent event);
-    void errorOccurred();
+    void errorOccurred(QApt::ErrorCode error, const QVariantMap &details);
     void updateDownloadProgress(int percentage);
     void updateCommitProgress(const QString &text, int percentage);
 
@@ -82,6 +82,7 @@ Q_SIGNALS:
     void reloaded();
     void workerEvent(QApt::WorkerEvent event, Application *app);
     void progress(Application *app, int progress);
+    void transactionCancelled(Application *app);
 };
 
 #endif

@@ -196,21 +196,6 @@ void ApplicationWindow::workerEvent(QApt::WorkerEvent event)
     }
 }
 
-void ApplicationWindow::errorOccurred(QApt::ErrorCode error, const QVariantMap &args)
-{
-    MuonMainWindow::errorOccurred(error, args);
-
-    // Undo marking if an AuthError is encountered, since our install/remove
-    // buttons do both marking and committing
-    switch (error) {
-    case QApt::AuthError:
-        m_backend->undo();
-        break;
-    default:
-        break;
-    }
-}
-
 void ApplicationWindow::populateViews()
 {
     QStringList originLabels = m_backend->originLabels();
