@@ -94,10 +94,16 @@ void ApplicationWindow::initObject()
     m_appBackend = new ApplicationBackend(this);
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
             m_appBackend, SLOT(setBackend(QApt::Backend *)));
+	connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Application *)),
+			this, SLOT(workerEvent(QApt::WorkerEvent)));
     connect(m_appBackend, SIGNAL(reloaded()),
             this, SLOT(reload()));
 
     MuonMainWindow::initObject();
+	// Our modified ApplicationBackend provides us events in a way that
+	// makes queuing things while committing possible
+	disconnect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
+			   this, SLOT(workerEvent(QApt::WorkerEvent)));
 
     setActionsEnabled();
 }
@@ -148,7 +154,6 @@ void ApplicationWindow::setActionsEnabled(bool enabled)
 
 void ApplicationWindow::reload()
 {
-    m_viewStack->setEnabled(false);
     foreach (QWidget *widget, m_viewHash) {
         delete widget;
     }
@@ -156,7 +161,6 @@ void ApplicationWindow::reload()
     m_viewModel->clear();
 
     populateViews();
-    m_viewStack->setEnabled(true);
 }
 
 void ApplicationWindow::checkForUpdates()
@@ -178,6 +182,7 @@ void ApplicationWindow::workerEvent(QApt::WorkerEvent event)
             showQueuedErrors();
             m_errorStack.clear();
         }
+        reload();
         break;
     case QApt::PackageDownloadStarted:
         m_powerInhibitor = Solid::PowerManagement::beginSuppressingSleep(i18nc("@info:status", "Muon is downloading packages"));

@@ -91,24 +91,23 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
     if (!m_queue.isEmpty()) {
         m_workerState.second = m_queue.first().application;
     }
+    
+    emit workerEvent(event, m_queue.first().application);
+    
     switch (event) {
     case QApt::PackageDownloadStarted:
-        emit workerEvent(QApt::PackageDownloadStarted, m_queue.first().application);
         connect(m_backend, SIGNAL(downloadProgress(int, int, int)),
                 this, SLOT(updateDownloadProgress(int)));
         break;
     case QApt::PackageDownloadFinished:
-        emit workerEvent(QApt::PackageDownloadFinished, m_queue.first().application);
         disconnect(m_backend, SIGNAL(downloadProgress(int, int, int)),
                    this, SLOT(updateDownloadProgress(int)));
         break;
     case QApt::CommitChangesStarted:
-        emit workerEvent(QApt::CommitChangesStarted, m_queue.first().application);
         connect(m_backend, SIGNAL(commitProgress(const QString &, int)),
                 this, SLOT(updateCommitProgress(const QString &, int)));
         break;
     case QApt::CommitChangesFinished:
-        emit workerEvent(QApt::CommitChangesFinished, m_queue.first().application);
         disconnect(m_backend, SIGNAL(commitProgress(const QString &, int)),
                    this, SLOT(updateCommitProgress(const QString &, int)));
 
