@@ -134,7 +134,10 @@ void ApplicationBackend::errorOccurred()
     if (m_workerState.second) {
         m_workerState.first = QApt::InvalidEvent;
         m_workerState.second = 0;
-        m_queue.removeFirst();
+    }
+    
+    if (!m_queue.isEmpty()) {
+        m_queue.removeFirst(); 
     }
 }
 
