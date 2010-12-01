@@ -169,7 +169,6 @@ void ApplicationBackend::runNextTransaction()
 {
     QApt::CacheState oldCacheState = m_backend->currentCacheState();
     m_backend->saveCacheState();
-    kDebug() << m_queue.first().state;
 
     Application *app = m_queue.first().application;
 

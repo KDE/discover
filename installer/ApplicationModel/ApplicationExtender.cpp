@@ -76,7 +76,6 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, Appl
     workerEvent(workerState.first, workerState.second);
     
     Transaction transaction = m_appBackend->currentTransaction();
-    kDebug() << transaction.state;
     if (transaction.state == QueuedState){
         transactionQueued(transaction.application); 
     }

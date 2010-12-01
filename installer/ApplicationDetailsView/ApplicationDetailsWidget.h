@@ -78,6 +78,7 @@ private:
 private Q_SLOTS:
     void workerEvent(QApt::WorkerEvent event, Application *app);
     void updateProgress(Application *app, int percentage);
+    void transactionQueued(Application *app);
     void fadeInScreenshot();
     void fetchScreenshot(QApt::ScreenshotType screenshotType);
     void thumbnailFetched(KJob *job);

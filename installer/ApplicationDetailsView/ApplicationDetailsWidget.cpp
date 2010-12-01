@@ -276,6 +276,11 @@ void ApplicationDetailsWidget::setApplication(Application *app)
     // care because we won't handle it
     QPair<QApt::WorkerEvent, Application *> workerState = m_appBackend->workerState();
     workerEvent(workerState.first, workerState.second);
+    
+    Transaction transaction = m_appBackend->currentTransaction();
+    if (transaction.state == QueuedState){
+        transactionQueued(transaction.application); 
+    }
 
     fetchScreenshot(QApt::Thumbnail);
 }
@@ -323,6 +328,16 @@ void ApplicationDetailsWidget::updateProgress(Application *app, int percentage)
 {
     if (m_app == app) {
         m_progressBar->setValue(percentage);
+    }
+}
+
+void ApplicationDetailsWidget::transactionQueued(Application *app)
+{
+    if (m_app == app) {
+        m_actionButton->hide();
+        m_progressBar->show();
+        m_progressBar->setValue(0);
+        m_progressBar->setFormat(i18nc("@info:status", "Waiting"));
     }
 }
 
@@ -423,6 +438,8 @@ void ApplicationDetailsWidget::actionButtonClicked()
     } else {
         emit installButtonClicked(m_app);
     }
+    
+    transactionQueued(m_app);
 }
 
 #include "ApplicationDetailsWidget.moc"
