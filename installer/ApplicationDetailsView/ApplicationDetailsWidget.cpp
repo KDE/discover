@@ -37,6 +37,7 @@
 #include <KLocale>
 #include <KPixmapSequence>
 #include <kpixmapsequenceoverlaypainter.h>
+#include <KStandardGuiItem>
 #include <KTemporaryFile>
 #include <KToolInvocation>
 #include <KDebug>
@@ -113,6 +114,13 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     m_progressBar = new QProgressBar(actionButtonWidget);
     m_progressBar->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Preferred);
     m_progressBar->hide();
+
+    m_cancelButton = new QPushButton(actionButtonWidget);
+    KGuiItem cancelButton = KStandardGuiItem::cancel();
+    m_cancelButton->setIcon(cancelButton.icon());
+    m_cancelButton->setToolTip(cancelButton.toolTip());
+    m_cancelButton->hide();
+    connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(cancelButtonClicked()));
 
     QWidget *actionButtonSpacer = new QWidget(actionButtonWidget);
     actionButtonSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
@@ -296,6 +304,7 @@ void ApplicationDetailsWidget::workerEvent(QApt::WorkerEvent event, Application 
     switch (event) {
     case QApt::PackageDownloadStarted:
         m_actionButton->hide();
+        m_cancelButton->show();
         m_progressBar->show();
         m_progressBar->setFormat(i18nc("@info:status", "Downloading"));
         connect(m_appBackend, SIGNAL(progress(Application *, int)),
@@ -307,6 +316,7 @@ void ApplicationDetailsWidget::workerEvent(QApt::WorkerEvent event, Application 
         break;
     case QApt::CommitChangesStarted:
         m_actionButton->hide();
+        m_cancelButton->hide();
         m_progressBar->show();
         m_progressBar->setValue(0);
         if (!m_app->package()->isInstalled()) {
@@ -347,6 +357,7 @@ void ApplicationDetailsWidget::transactionCancelled(Application *app)
 {
     if (m_app == app) {
         m_progressBar->hide();
+        m_cancelButton->hide();
         m_actionButton->show();
     }
 }
@@ -448,8 +459,13 @@ void ApplicationDetailsWidget::actionButtonClicked()
     } else {
         emit installButtonClicked(m_app);
     }
-    
+
     transactionQueued(m_app);
+}
+
+void ApplicationDetailsWidget::cancelButtonClicked()
+{
+    emit cancelButtonClicked(m_app);
 }
 
 #include "ApplicationDetailsWidget.moc"

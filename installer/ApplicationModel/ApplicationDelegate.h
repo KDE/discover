@@ -71,6 +71,7 @@ Q_SIGNALS:
     void infoButtonClicked(Application *app);
     void installButtonClicked(Application *app);
     void removeButtonClicked(Application *app);
+    void cancelButtonClicked(Application *app);
 };
 
 #endif

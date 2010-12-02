@@ -87,13 +87,15 @@ void ApplicationBackend::reload()
 
 void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
 {
+    Application *app = 0;
     m_workerState.first = event;
     if (!m_queue.isEmpty()) {
         m_workerState.second = m_queue.first().application;
+        app = m_queue.first().application;
     }
-    
-    emit workerEvent(event, m_queue.first().application);
-    
+
+    emit workerEvent(event, app);
+
     switch (event) {
     case QApt::PackageDownloadStarted:
         m_queue.first().state = RunningState;
@@ -132,6 +134,11 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error, const QVariantMap 
 {
     Q_UNUSED(details);
 
+    disconnect(m_backend, SIGNAL(downloadProgress(int, int, int)),
+                   this, SLOT(updateDownloadProgress(int)));
+    disconnect(m_backend, SIGNAL(commitProgress(const QString &, int)),
+                   this, SLOT(updateCommitProgress(const QString &, int)));
+
     // Undo marking if an AuthError is encountered, since our install/remove
     // buttons do both marking and committing
     switch (error) {
@@ -139,20 +146,22 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error, const QVariantMap 
         emit transactionCancelled(m_queue.first().application);
         m_backend->undo();
         break;
+    case QApt::UserCancelError:
+        // Handled in transactionCancelled()
+        return;
     default:
         break;
-    }    
+    }
 
     // Remove running transaction on failure
     if (m_workerState.second) {
         m_workerState.first = QApt::InvalidEvent;
         m_workerState.second = 0;
     }
-    
+
     if (!m_queue.isEmpty()) {
         m_queue.removeFirst(); 
     }
-   
 }
 
 void ApplicationBackend::updateDownloadProgress(int percentage)
@@ -177,6 +186,29 @@ void ApplicationBackend::addTransaction(Transaction transaction)
     if (m_queue.count() == 1) {
         runNextTransaction();
     }
+}
+
+void ApplicationBackend::cancelTransaction(Application *app)
+{
+    disconnect(m_backend, SIGNAL(downloadProgress(int, int, int)),
+               this, SLOT(updateDownloadProgress(int)));
+    disconnect(m_backend, SIGNAL(commitProgress(const QString &, int)),
+               this, SLOT(updateCommitProgress(const QString &, int)));
+    QList<Transaction>::iterator iter = m_queue.begin();
+
+    while (iter != m_queue.end()) {
+        if ((*iter).application == app) {
+            if ((*iter).state == RunningState) {
+                m_backend->cancelDownload();
+                m_backend->undo();
+            }
+            m_queue.erase(iter);
+            break;
+        }
+        ++iter;
+    }
+
+    emit transactionCancelled(app);
 }
 
 void ApplicationBackend::runNextTransaction()

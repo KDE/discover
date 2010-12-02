@@ -42,6 +42,7 @@ private:
 Q_SIGNALS:
     void installButtonClicked(Application *);
     void removeButtonClicked(Application *);
+    void cancelButtonClicked(Application *);
 
 };
 

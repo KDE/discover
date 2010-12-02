@@ -67,6 +67,8 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
             this, SLOT(installButtonClicked(Application *)));
     connect(m_delegate, SIGNAL(removeButtonClicked(Application *)),
             this, SLOT(removeButtonClicked(Application *)));
+    connect(m_delegate, SIGNAL(cancelButtonClicked(Application *)),
+            this, SLOT(cancelButtonClicked(Application *)));
 }
 
 ApplicationViewWidget::~ApplicationViewWidget()
@@ -142,6 +144,8 @@ void ApplicationViewWidget::infoButtonClicked(Application *app)
             this, SLOT(installButtonClicked(Application *)));
     connect(m_detailsView, SIGNAL(removeButtonClicked(Application *)),
             this, SLOT(removeButtonClicked(Application *)));
+    connect(m_detailsView, SIGNAL(cancelButtonClicked(Application *)),
+            this, SLOT(cancelButtonClicked(Application *)));
     connect(m_detailsView, SIGNAL(destroyed(QObject *)),
             this, SLOT(onSubViewDestroyed()));
 
@@ -160,6 +164,11 @@ void ApplicationViewWidget::removeButtonClicked(Application *app)
     Transaction transaction = { app, QApt::Package::ToRemove, (TransactionState)0 };
 
     m_appBackend->addTransaction(transaction);
+}
+
+void ApplicationViewWidget::cancelButtonClicked(Application *app)
+{
+    m_appBackend->cancelTransaction(app); 
 }
 
 void ApplicationViewWidget::onSubViewDestroyed()

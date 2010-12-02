@@ -61,6 +61,7 @@ private:
     QLabel *m_menuPathLabel;
     QPushButton *m_actionButton;
     QProgressBar *m_progressBar;
+    QPushButton *m_cancelButton;
     QLabel *m_longDescLabel;
     ClickableLabel *m_screenshotLabel;
     QLabel *m_websiteLabel;
@@ -87,6 +88,7 @@ private Q_SLOTS:
     void screenshotLabelClicked();
     void onScreenshotDialogClosed();
     void actionButtonClicked();
+    void cancelButtonClicked();
 
 Q_SIGNALS:
     void installButtonClicked(Application *app);

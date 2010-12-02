@@ -260,6 +260,8 @@ void ApplicationDelegate::itemActivated(QModelIndex index)
                    this, SIGNAL(installButtonClicked(Application *)));
         disconnect(m_extender, SIGNAL(removeButtonClicked(Application *)),
                    this, SIGNAL(removeButtonClicked(Application *)));
+        disconnect(m_extender, SIGNAL(cancelButtonClicked(Application *)),
+                   this, SIGNAL(cancelButtonClicked(Application *)));
         contractItem(m_oldIndex);
 
         m_extender->deleteLater();
@@ -276,6 +278,8 @@ void ApplicationDelegate::itemActivated(QModelIndex index)
             this, SIGNAL(installButtonClicked(Application *)));
     connect(m_extender, SIGNAL(removeButtonClicked(Application *)),
             this, SIGNAL(removeButtonClicked(Application *)));
+    connect(m_extender, SIGNAL(cancelButtonClicked(Application *)),
+            this, SIGNAL(cancelButtonClicked(Application *)));
 
     extendItem(m_extender, index);
     m_oldIndex = index;

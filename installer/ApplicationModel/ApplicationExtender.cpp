@@ -27,6 +27,7 @@
 #include <KDebug>
 #include <KIcon>
 #include <KLocale>
+#include <KStandardGuiItem>
 
 #include <LibQApt/Package>
 
@@ -64,10 +65,18 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, Appl
     m_progressBar->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Preferred);
     m_progressBar->hide();
 
+    m_cancelButton = new QPushButton(this);
+    KGuiItem cancelButton = KStandardGuiItem::cancel();
+    m_cancelButton->setIcon(cancelButton.icon());
+    m_cancelButton->setToolTip(cancelButton.toolTip());
+    m_cancelButton->hide();
+    connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(emitCancelButtonClicked()));
+
     layout->addWidget(infoButton);
     layout->addWidget(buttonSpacer);
     layout->addWidget(m_actionButton);
     layout->addWidget(m_progressBar);
+    layout->addWidget(m_cancelButton);
 
     connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Application *)),
             this, SLOT(workerEvent(QApt::WorkerEvent, Application *)));
@@ -96,6 +105,7 @@ void ApplicationExtender::workerEvent(QApt::WorkerEvent event, Application *app)
     switch (event) {
     case QApt::PackageDownloadStarted:
         m_actionButton->hide();
+        m_cancelButton->show();
         m_progressBar->show();
         m_progressBar->setFormat(i18nc("@info:status", "Downloading"));
         connect(m_appBackend, SIGNAL(progress(Application *, int)),
@@ -107,6 +117,7 @@ void ApplicationExtender::workerEvent(QApt::WorkerEvent event, Application *app)
         break;
     case QApt::CommitChangesStarted:
         m_actionButton->hide();
+        m_cancelButton->hide();
         m_progressBar->show();
         m_progressBar->setValue(0);
         if (!m_app->package()->isInstalled()) {
@@ -140,6 +151,7 @@ void ApplicationExtender::transactionCancelled(Application *app)
 {
     if (m_app == app) {
         m_progressBar->hide();
+        m_cancelButton->hide();
         m_actionButton->show();
     }
 }
@@ -166,6 +178,11 @@ void ApplicationExtender::emitInstallButtonClicked()
 {
     emit installButtonClicked(m_app);
     transactionQueued(m_app);
+}
+
+void ApplicationExtender::emitCancelButtonClicked()
+{
+    emit cancelButtonClicked(m_app);
 }
 
 #include "ApplicationExtender.moc"

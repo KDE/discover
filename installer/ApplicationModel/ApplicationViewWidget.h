@@ -67,6 +67,7 @@ private Q_SLOTS:
     void infoButtonClicked(Application *app);
     void installButtonClicked(Application *app);
     void removeButtonClicked(Application *app);
+    void cancelButtonClicked(Application *app);
     void onSubViewDestroyed();
 
 public Q_SLOTS:

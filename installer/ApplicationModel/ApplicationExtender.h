@@ -43,6 +43,7 @@ private:
     ApplicationBackend *m_appBackend;
     QPushButton *m_actionButton;
     QProgressBar *m_progressBar;
+    QPushButton *m_cancelButton;
 
 private Q_SLOTS:
     void workerEvent(QApt::WorkerEvent event, Application *app);
@@ -52,7 +53,7 @@ private Q_SLOTS:
     void emitInfoButtonClicked();
     void emitRemoveButtonClicked();
     void emitInstallButtonClicked();
-//     void emitCancelButtonClicked();
+    void emitCancelButtonClicked();
 
 Q_SIGNALS:
     void infoButtonClicked(Application *app);

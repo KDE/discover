@@ -57,7 +57,7 @@ public:
     int maxPopconScore() const;
 
     void addTransaction(Transaction transaction);
-    void runNextTransaction();
+    void cancelTransaction(Application *app);
 
 private:
     QApt::Backend *m_backend;
@@ -73,6 +73,7 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void init();
+    void runNextTransaction();
     void workerEvent(QApt::WorkerEvent event);
     void errorOccurred(QApt::ErrorCode error, const QVariantMap &details);
     void updateDownloadProgress(int percentage);
