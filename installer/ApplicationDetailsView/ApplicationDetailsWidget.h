@@ -79,6 +79,7 @@ private Q_SLOTS:
     void workerEvent(QApt::WorkerEvent event, Application *app);
     void updateProgress(Application *app, int percentage);
     void transactionQueued(Application *app);
+    void transactionCancelled(Application *app);
     void fadeInScreenshot();
     void fetchScreenshot(QApt::ScreenshotType screenshotType);
     void thumbnailFetched(KJob *job);
@@ -90,6 +91,7 @@ private Q_SLOTS:
 Q_SIGNALS:
     void installButtonClicked(Application *app);
     void removeButtonClicked(Application *app);
+    void cancelButtonClicked(Application *app);
 };
 
 #endif

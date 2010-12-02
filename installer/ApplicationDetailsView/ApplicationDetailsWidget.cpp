@@ -193,6 +193,8 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
 
     connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Application *)),
             this, SLOT(workerEvent(QApt::WorkerEvent, Application *)));
+    connect(m_appBackend, SIGNAL(transactionCancelled(Application *)),
+            this, SLOT(transactionCancelled(Application *)));
 
     setWidget(widget);
 }
@@ -338,6 +340,14 @@ void ApplicationDetailsWidget::transactionQueued(Application *app)
         m_progressBar->show();
         m_progressBar->setValue(0);
         m_progressBar->setFormat(i18nc("@info:status", "Waiting"));
+    }
+}
+
+void ApplicationDetailsWidget::transactionCancelled(Application *app)
+{
+    if (m_app == app) {
+        m_progressBar->hide();
+        m_actionButton->show();
     }
 }
 
