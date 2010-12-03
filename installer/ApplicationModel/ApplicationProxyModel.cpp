@@ -22,6 +22,8 @@
 
 #include <QtCore/QRegExp>
 
+#include <LibQApt/Backend>
+
 // Own includes
 #include "ApplicationModel.h"
 
@@ -29,6 +31,7 @@ ApplicationProxyModel::ApplicationProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
     , m_backend(0)
     , m_stateFilter((QApt::Package::State)0)
+    , m_sortByRelevancy(false)
 {
 }
 
@@ -40,6 +43,19 @@ void ApplicationProxyModel::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
     m_apps = static_cast<ApplicationModel *>(sourceModel())->applications();
+}
+
+void ApplicationProxyModel::search(const QString &searchText)
+{
+    // 1-character searches are painfully slow. >= 2 chars are fine, though
+    m_packages.clear();
+    if (searchText.size() > 1) {
+        m_packages = m_backend->search(searchText);
+        m_sortByRelevancy = true;
+    } else {
+        m_sortByRelevancy = false;
+    }
+    invalidate();
 }
 
 void ApplicationProxyModel::setStateFilter(QApt::Package::State state)
@@ -196,6 +212,10 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
 
             ++filter;
         }
+    }
+
+    if(m_sortByRelevancy) {
+        return m_packages.contains(application->package());
     }
 
     return true;

@@ -42,6 +42,7 @@ public:
     ~ApplicationProxyModel();
 
     void setBackend(QApt::Backend *backend);
+    void search(const QString &text);
     void setStateFilter(QApt::Package::State state);
     void setOriginFilter(const QString &origin);
     void setFiltersFromCategory(Category *category);
@@ -59,9 +60,12 @@ private:
 
     QApt::Package::State m_stateFilter;
     QString m_originFilter;
+    QApt::PackageList m_packages;
     QList<QPair<FilterType, QString> > m_andFilters;
     QList<QPair<FilterType, QString> > m_orFilters;
     QList<QPair<FilterType, QString> > m_notFilters;
+
+    bool m_sortByRelevancy;
 
 public Q_SLOTS:
     void parentDataChanged();
