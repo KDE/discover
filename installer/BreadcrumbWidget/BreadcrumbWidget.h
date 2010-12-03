@@ -49,6 +49,8 @@ public:
     * @param The \c BreadcrumbItem to remove
     */
     void removeItem(BreadcrumbItem *crumb);
+    void showSearchEdit();
+    void hideSearchEdit();
 
     BreadcrumbItem *breadcrumbForView(AbstractViewBase *view);
 

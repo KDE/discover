@@ -56,17 +56,38 @@ void AbstractViewContainer::registerNewSubView(AbstractViewBase *subView)
     m_viewStack->addWidget(subView);
     m_viewStack->setCurrentWidget(subView);
     m_breadcrumbWidget->addLevel(subView->breadcrumbItem());
+
+    AbstractViewBase *currentWidget = static_cast<AbstractViewBase *>(m_viewStack->currentWidget());
+    if (currentWidget->isSearchable()) {
+        m_breadcrumbWidget->showSearchEdit();
+    } else {
+        m_breadcrumbWidget->hideSearchEdit();
+    }
 }
 
 void AbstractViewContainer::switchToSubView(AbstractViewBase *subView)
 {
     m_viewStack->setCurrentWidget(subView);
     m_breadcrumbWidget->setCurrentItem(m_breadcrumbWidget->breadcrumbForView(subView));
+
+    AbstractViewBase *currentWidget = static_cast<AbstractViewBase *>(m_viewStack->currentWidget());
+    if (currentWidget->isSearchable()) {
+        m_breadcrumbWidget->showSearchEdit();
+    } else {
+        m_breadcrumbWidget->hideSearchEdit();
+    }
 }
 
 void AbstractViewContainer::activateBreadcrumbItem(BreadcrumbItem *item)
 {
     m_viewStack->setCurrentWidget(item->associatedView());
+
+    AbstractViewBase *currentWidget = static_cast<AbstractViewBase *>(m_viewStack->currentWidget());
+    if (currentWidget->isSearchable()) {
+        m_breadcrumbWidget->showSearchEdit();
+    } else {
+        m_breadcrumbWidget->hideSearchEdit();
+    }
 }
 
 void AbstractViewContainer::search(const QString &text)

@@ -171,6 +171,16 @@ void BreadcrumbWidget::startSearch()
     emit search(m_searchEdit->text());
 }
 
+void BreadcrumbWidget::showSearchEdit()
+{
+    m_searchEdit->show();
+}
+
+void BreadcrumbWidget::hideSearchEdit()
+{
+    m_searchEdit->hide();
+}
+
 BreadcrumbItem *BreadcrumbWidget::breadcrumbForView(AbstractViewBase *view)
 {
     BreadcrumbItem *itemForView = 0;
