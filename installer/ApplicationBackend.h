@@ -31,6 +31,7 @@ namespace QApt {
 }
 
 class Application;
+class ApplicationLauncher;
 
 enum TransactionState {
     InvalidState = 0,
@@ -63,9 +64,12 @@ private:
     QApt::Backend *m_backend;
 
     QList<Application *> m_appList;
+    QList<QLatin1String> m_appLaunchQueue;
     QList<Transaction> m_queue;
     QPair<QApt::WorkerEvent, Application *> m_workerState;
     int m_maxPopconScore;
+
+    ApplicationLauncher *m_appLauncher;
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
@@ -78,6 +82,8 @@ private Q_SLOTS:
     void errorOccurred(QApt::ErrorCode error, const QVariantMap &details);
     void updateDownloadProgress(int percentage);
     void updateCommitProgress(const QString &text, int percentage);
+    void showAppLauncher();
+    void onAppLauncherClosed();
 
 Q_SIGNALS:
     void reloaded();

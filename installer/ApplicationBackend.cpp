@@ -23,17 +23,21 @@
 #include <QtCore/QDir>
 #include <QtCore/QStringList>
 
+#include <KConfigGroup>
 #include <KLocale>
 #include <KMessageBox>
+#include <KService>
 #include <KDebug>
 
 #include <LibQApt/Backend>
 
 #include "Application.h"
+#include "ApplicationLauncher.h"
 
 ApplicationBackend::ApplicationBackend(QObject *parent)
     : QObject(parent)
     , m_backend(0)
+    , m_appLauncher(0)
 {
 }
 
@@ -82,6 +86,15 @@ void ApplicationBackend::reload()
     m_backend->reloadCache();
 
     init();
+
+    KConfig config("muon-installerrc");
+    KConfigGroup notifyGroup(&config, "Notification Messages");
+    bool show = notifyGroup.readEntry("ShowApplicationLauncher", true);
+
+    if (show) {
+        showAppLauncher();
+    }
+
     emit reloaded();
 }
 
@@ -114,6 +127,8 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
     case QApt::CommitChangesFinished:
         disconnect(m_backend, SIGNAL(commitProgress(const QString &, int)),
                    this, SLOT(updateCommitProgress(const QString &, int)));
+
+        m_appLaunchQueue << m_queue.first().application->package()->latin1Name();
 
         m_workerState.first = QApt::InvalidEvent;
         m_workerState.second = 0;
@@ -236,6 +251,57 @@ void ApplicationBackend::runNextTransaction()
     }
 
     m_backend->commitChanges();
+}
+
+void ApplicationBackend::showAppLauncher()
+{
+    QApt::PackageList packages;
+
+    foreach (const QLatin1String &package, m_appLaunchQueue) {
+        QApt::Package *pkg = m_backend->package(package);
+        if (pkg) {
+            packages << pkg;
+        }
+    }
+
+    m_appLaunchQueue.clear();
+
+    foreach (QApt::Package *package, packages) {
+        if (!package->isInstalled()) {
+            return;
+        }
+
+        QVector<KService*> apps;
+
+        // TODO: move to Application (perhaps call it Application::executables())
+        foreach (const QString &desktop, package->installedFilesList().filter(".desktop")) {
+            // we create a new KService because findByDestopPath
+            // might fail because the Sycoca database is not up to date yet.
+            KService *service = new KService(desktop);
+            if (service->isApplication() &&
+              !service->noDisplay() &&
+              !service->exec().isEmpty())
+            {
+                apps << service;
+            }
+        }
+
+        if (!m_appLauncher) {
+            m_appLauncher = new ApplicationLauncher(apps);
+            connect(m_appLauncher, SIGNAL(destroyed(QObject *)),
+                this, SLOT(onAppLauncherClosed()));
+            connect(m_appLauncher, SIGNAL(finished(int)),
+                this, SLOT(onAppLauncherClosed()));
+            m_appLauncher->setWindowTitle(i18nc("@title:window", "Installation Complete"));
+            m_appLauncher->show();
+        }
+    }
+}
+
+void ApplicationBackend::onAppLauncherClosed()
+{
+    m_appLauncher->deleteLater();
+    m_appLauncher = 0;
 }
 
 QList<Application *> ApplicationBackend::applicationList() const
