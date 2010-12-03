@@ -20,8 +20,11 @@
 
 #include "BreadcrumbWidget.h"
 
+#include <QtCore/QTimer>
 #include <QtGui/QToolButton>
 
+#include <KLocale>
+#include <KLineEdit>
 #include <KSeparator>
 #include <KStandardGuiItem>
 
@@ -56,8 +59,18 @@ BreadcrumbWidget::BreadcrumbWidget(QWidget *parent)
     QWidget *spacer = new QWidget(this);
     spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
+    m_searchEdit = new KLineEdit(this);
+    m_searchEdit->setClickMessage(i18nc("@label Line edit click message", "Search"));
+    m_searchEdit->setClearButtonShown(true);
+
+    m_searchTimer = new QTimer(this);
+    m_searchTimer->setInterval(300);
+    m_searchTimer->setSingleShot(true);
+
     connect(m_backButton, SIGNAL(clicked()), this, SLOT(goBack()));
     connect(m_forwardButton, SIGNAL(clicked()), this, SLOT(goForward()));
+    connect(m_searchTimer, SIGNAL(timeout()), this, SLOT(startSearch()));
+    connect(m_searchEdit, SIGNAL(textChanged(const QString &)), m_searchTimer, SLOT(start()));
 }
 
 BreadcrumbWidget::~BreadcrumbWidget()
@@ -151,6 +164,11 @@ void BreadcrumbWidget::onItemActivated(BreadcrumbItem *item)
     m_forwardButton->setEnabled(item != m_items.last());
 
     emit itemActivated(item);
+}
+
+void BreadcrumbWidget::startSearch()
+{
+    emit search(m_searchEdit->text());
 }
 
 BreadcrumbItem *BreadcrumbWidget::breadcrumbForView(AbstractViewBase *view)

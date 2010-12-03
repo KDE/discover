@@ -28,6 +28,7 @@
 
 AbstractViewBase::AbstractViewBase(QWidget *parent)
         : QWidget(parent)
+        , m_searchable(false)
 {
     m_layout = new QVBoxLayout(this);
     m_layout->setContentsMargins(0, 0, 0, 0);
@@ -40,9 +41,19 @@ AbstractViewBase::~AbstractViewBase()
 {
 }
 
+void AbstractViewBase::search(const QString &text)
+{
+    Q_UNUSED(text);
+}
+
 BreadcrumbItem *AbstractViewBase::breadcrumbItem()
 {
     return m_crumb;
+}
+
+bool AbstractViewBase::isSearchable()
+{
+    return m_searchable;
 }
 
 #include "AbstractViewBase.moc"

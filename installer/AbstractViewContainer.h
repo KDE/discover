@@ -44,6 +44,7 @@ private Q_SLOTS:
     void registerNewSubView(AbstractViewBase *subView);
     void activateBreadcrumbItem(BreadcrumbItem *item);
     void switchToSubView(AbstractViewBase *subView);
+    void search(const QString &searchText);
 };
 
 #endif

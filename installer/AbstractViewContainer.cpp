@@ -43,6 +43,8 @@ AbstractViewContainer::AbstractViewContainer(QWidget *parent)
 
     connect(m_breadcrumbWidget, SIGNAL(itemActivated(BreadcrumbItem *)),
             this, SLOT(activateBreadcrumbItem(BreadcrumbItem *)));
+    connect(m_breadcrumbWidget, SIGNAL(search(const QString &)),
+            this, SLOT(search(const QString &)));
 }
 
 AbstractViewContainer::~AbstractViewContainer()
@@ -65,6 +67,14 @@ void AbstractViewContainer::switchToSubView(AbstractViewBase *subView)
 void AbstractViewContainer::activateBreadcrumbItem(BreadcrumbItem *item)
 {
     m_viewStack->setCurrentWidget(item->associatedView());
+}
+
+void AbstractViewContainer::search(const QString &text)
+{
+    AbstractViewBase *currentWidget = static_cast<AbstractViewBase *>(m_viewStack->currentWidget());
+    if (currentWidget->isSearchable()) {
+        currentWidget->search(text);
+    }
 }
 
 #include "AbstractViewContainer.moc"

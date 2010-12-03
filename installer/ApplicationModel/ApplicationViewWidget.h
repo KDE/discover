@@ -51,6 +51,8 @@ public:
     ApplicationViewWidget(QWidget *parent, ApplicationBackend *appBackend);
     ~ApplicationViewWidget();
 
+    virtual void search(const QString &text);
+
 private:
     QApt::Backend *m_backend;
     ApplicationBackend *m_appBackend;

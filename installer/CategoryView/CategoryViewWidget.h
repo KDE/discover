@@ -31,6 +31,7 @@ class QStandardItemModel;
 class QString;
 
 class ApplicationBackend;
+class ApplicationViewWidget;
 class Category;
 class CategoryView;
 
@@ -63,6 +64,7 @@ public:
     void setCategories(const QList<Category *> &categoryList,
                        const QString &rootText,
                        const QIcon &rootIcon);
+    virtual void search(const QString &text);
 
 private:
     QApt::Backend *m_backend;
@@ -73,6 +75,7 @@ private:
 
     CategoryView *m_categoryView;
     AbstractViewBase *m_subView;
+    ApplicationViewWidget *m_searchView;
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);

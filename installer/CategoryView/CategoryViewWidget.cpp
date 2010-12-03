@@ -27,6 +27,7 @@
 // KDE includes
 #include <KCategorizedSortFilterProxyModel>
 #include <KIcon>
+#include <KLocale>
 #include <KDebug>
 
 // LibQApt includes
@@ -43,7 +44,9 @@ CategoryViewWidget::CategoryViewWidget(QWidget *parent, ApplicationBackend *appB
     : AbstractViewBase(parent)
     , m_backend(0)
     , m_appBackend(appBackend)
+    , m_searchView(0)
 {
+    m_searchable = true;
     m_categoryModel = new QStandardItemModel(this);
 
     m_categoryView = new CategoryView(this);
@@ -139,6 +142,29 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
 
     // Tell our parent that we can exist, so that they can forward it
     emit registerNewSubView(m_subView);
+}
+
+void CategoryViewWidget::search(const QString &text)
+{
+    if (!m_searchView) {
+        m_searchView = new ApplicationViewWidget(this, m_appBackend);
+        m_searchView->setBackend(m_backend);
+        m_searchView->setTitle(i18nc("@label", "Search Results"));
+        m_searchView->setIcon(KIcon("applications-other"));
+
+        // Forward on to parent so that they can handle adding subviews to breadcrumb,
+        // switching to subviews from the new subview, etc
+        connect(m_searchView, SIGNAL(registerNewSubView(AbstractViewBase *)),
+                this, SIGNAL(registerNewSubView(AbstractViewBase *)));
+        // Make sure we remove the index/widget association upon deletion
+        connect(m_searchView, SIGNAL(destroyed(QObject *)),
+                this, SLOT(onSubViewDestroyed()));
+
+        // Tell our parent that we can exist, so that they can forward it
+        emit registerNewSubView(m_searchView);
+    }
+
+    m_searchView->search(text);
 }
 
 void CategoryViewWidget::onSubViewDestroyed()

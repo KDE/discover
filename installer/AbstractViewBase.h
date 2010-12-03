@@ -35,10 +35,13 @@ public:
     ~AbstractViewBase();
 
     BreadcrumbItem *breadcrumbItem();
+    bool isSearchable();
+    virtual void search(const QString &text);
 
 protected:
     QVBoxLayout *m_layout;
     BreadcrumbItem *m_crumb;
+    bool m_searchable;
 
 Q_SIGNALS:
     void subviewCreated(AbstractViewBase *view);

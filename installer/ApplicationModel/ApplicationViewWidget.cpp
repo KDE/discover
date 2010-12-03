@@ -46,6 +46,7 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
         , m_appBackend(appBackend)
         , m_detailsView(0)
 {
+    m_searchable = true;
     m_appModel = new ApplicationModel(this);
     m_proxyModel = new ApplicationProxyModel(this);
     m_proxyModel->setSourceModel(m_appModel);
@@ -125,6 +126,11 @@ void ApplicationViewWidget::setOriginFilter(const QString &origin)
 void ApplicationViewWidget::setFiltersFromCategory(Category *category)
 {
     m_proxyModel->setFiltersFromCategory(category);
+}
+
+void ApplicationViewWidget::search(const QString &text)
+{
+    m_proxyModel->search(text);
 }
 
 void ApplicationViewWidget::infoButtonClicked(Application *app)

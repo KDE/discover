@@ -25,7 +25,10 @@
 
 #include <KHBox>
 
+class QTimer;
 class QToolButton;
+
+class KLineEdit;
 
 class AbstractViewBase;
 class BreadcrumbItem;
@@ -56,6 +59,8 @@ private:
     QToolButton *m_backButton;
     QToolButton *m_forwardButton;
     KHBox *m_breadcrumbArea;
+    KLineEdit *m_searchEdit;
+    QTimer *m_searchTimer;
 
 public Q_SLOTS:
     void setCurrentItem(BreadcrumbItem *crumb);
@@ -65,9 +70,11 @@ private Q_SLOTS:
     void goForward();
     void onItemActivated(BreadcrumbItem *item);
     void clearCrumbs();
+    void startSearch();
 
 Q_SIGNALS:
     void itemActivated(BreadcrumbItem *item);
+    void search(const QString &text);
 };
 
 #endif
