@@ -43,6 +43,7 @@ void ApplicationProxyModel::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
     m_apps = static_cast<ApplicationModel *>(sourceModel())->applications();
+    search("cd burning");
 }
 
 void ApplicationProxyModel::search(const QString &searchText)
@@ -245,6 +246,20 @@ void ApplicationProxyModel::parentDataChanged()
 
 bool ApplicationProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
 {
+    ApplicationModel *model = static_cast<ApplicationModel *>(sourceModel());
+    QApt::Package *leftPackage = model->applicationAt(left)->package();
+    QApt::Package *rightPackage = model->applicationAt(right)->package();
+
+    if (m_sortByRelevancy) {
+        // This is expensive for very large datasets. It takes about 3 seconds with 30,000 packages
+        // The order in m_packages is based on relevancy when returned by m_backend->search()
+        // Use this order to determine less than
+        if (m_packages.indexOf(leftPackage) > m_packages.indexOf(rightPackage)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
     QString leftString = left.data(ApplicationModel::NameRole).toString();
     QString rightString = right.data(ApplicationModel::NameRole).toString();
 
