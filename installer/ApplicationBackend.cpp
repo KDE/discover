@@ -30,6 +30,7 @@
 #include <KDebug>
 
 #include <LibQApt/Backend>
+#include <DebconfGui.h>
 
 #include "Application.h"
 #include "ApplicationLauncher.h"
@@ -120,9 +121,12 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
                    this, SLOT(updateDownloadProgress(int)));
         break;
     case QApt::CommitChangesStarted:
+        m_debconfGui = new DebconfKde::DebconfGui("/tmp/qapt-sock");
         m_queue.first().state = RunningState;
         connect(m_backend, SIGNAL(commitProgress(const QString &, int)),
                 this, SLOT(updateCommitProgress(const QString &, int)));
+        m_debconfGui->connect(m_debconfGui, SIGNAL(activated()), m_debconfGui, SLOT(show()));
+        m_debconfGui->connect(m_debconfGui, SIGNAL(deactivated()), m_debconfGui, SLOT(hide()));
         break;
     case QApt::CommitChangesFinished:
         disconnect(m_backend, SIGNAL(commitProgress(const QString &, int)),

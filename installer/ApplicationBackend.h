@@ -30,6 +30,11 @@ namespace QApt {
     class Backend;
 }
 
+namespace DebconfKde
+{
+    class DebconfGui;
+}
+
 class Application;
 class ApplicationLauncher;
 
@@ -70,6 +75,7 @@ private:
     int m_maxPopconScore;
 
     ApplicationLauncher *m_appLauncher;
+    DebconfKde::DebconfGui *m_debconfGui;
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
