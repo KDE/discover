@@ -162,6 +162,8 @@ void CategoryViewWidget::search(const QString &text)
 
         // Tell our parent that we can exist, so that they can forward it
         emit registerNewSubView(m_searchView);
+    } else {
+        switchToSubView(m_searchView);
     }
 
     m_searchView->search(text);
