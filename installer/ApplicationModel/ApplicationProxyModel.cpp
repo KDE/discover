@@ -43,7 +43,6 @@ void ApplicationProxyModel::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
     m_apps = static_cast<ApplicationModel *>(sourceModel())->applications();
-    search("cd burning");
 }
 
 void ApplicationProxyModel::search(const QString &searchText)

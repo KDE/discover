@@ -149,9 +149,10 @@ void PackageProxyModel::reset()
 
 bool PackageProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
 {
-    QApt::Package *leftPackage = static_cast<PackageModel *>(sourceModel())->packageAt(left);
-    QApt::Package *rightPackage = static_cast<PackageModel *>(sourceModel())->packageAt(right);
-    
+    PackageModel *model = static_cast<PackageModel *>(sourceModel());
+    QApt::Package *leftPackage = model->packageAt(left);
+    QApt::Package *rightPackage = model->packageAt(right);
+
     switch (left.column()) {
       case 0:
           if (m_sortByRelevancy) {
