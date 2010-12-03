@@ -34,6 +34,7 @@
 #include <KLineEdit>
 #include <KLocale>
 #include <KDebug>
+#include <kdeversion.h>
 
 #include <LibQApt/History>
 
@@ -94,18 +95,9 @@ HistoryView::HistoryView(QWidget *parent)
 
     QDateTime weekAgoTime = QDateTime::currentDateTime().addDays(-7);
     foreach (QApt::HistoryItem *item, m_history->historyItems()) {
-        QString category;
         QDateTime startDateTime = item->startDate();
         QString formattedTime = KGlobal::locale()->formatTime(startDateTime.time());
-
-        category = startDateTime.toString("MMMM dd");
-
-//         if (startDateTime > weekAgoTime) {
-//             //category = KGlobal::locale()->dayPeriodText(startDateTime.time(), KLocale::LongName);
-//             category = startDateTime.toString("dddd");
-//         } else {
-//             category = startDateTime.toString("MMMM dd");
-//         }
+        QString category = KGlobal::locale()->formatDate(startDateTime.date(), KLocale::FancyShortDate);
 
         QStandardItem *parentItem = 0;
 
