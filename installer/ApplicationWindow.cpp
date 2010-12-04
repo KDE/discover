@@ -182,7 +182,6 @@ void ApplicationWindow::workerEvent(QApt::WorkerEvent event)
             showQueuedErrors();
             m_errorStack.clear();
         }
-        reload();
         break;
     case QApt::PackageDownloadStarted:
         m_powerInhibitor = Solid::PowerManagement::beginSuppressingSleep(i18nc("@info:status", "Muon is downloading packages"));
