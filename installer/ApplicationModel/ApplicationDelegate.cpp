@@ -287,6 +287,7 @@ void ApplicationDelegate::itemActivated(QModelIndex index)
 
 void ApplicationDelegate::invalidate()
 {
+    // If only contractAll was a Q_SLOT...
     contractAll();
 }
 
