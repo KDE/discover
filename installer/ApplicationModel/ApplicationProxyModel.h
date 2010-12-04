@@ -69,6 +69,9 @@ private:
 
 public Q_SLOTS:
     void parentDataChanged();
+
+Q_SIGNALS:
+    void invalidated();
 };
 
 #endif

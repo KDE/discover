@@ -60,6 +60,9 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
     m_delegate = new ApplicationDelegate(m_treeView, m_appBackend);
     m_treeView->setItemDelegate(m_delegate);
 
+    connect(m_proxyModel, SIGNAL(invalidated()),
+            m_delegate, SLOT(invalidate()));
+
     m_layout->addWidget(m_treeView);
 
     connect(m_delegate, SIGNAL(infoButtonClicked(Application *)),

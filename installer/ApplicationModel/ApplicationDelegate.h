@@ -65,6 +65,7 @@ private:
 
 public Q_SLOTS:
     void itemActivated(QModelIndex index);
+    void invalidate();
 
 Q_SIGNALS:
     void showExtendItem(const QModelIndex &index);

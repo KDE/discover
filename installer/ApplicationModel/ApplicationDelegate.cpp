@@ -285,4 +285,9 @@ void ApplicationDelegate::itemActivated(QModelIndex index)
     m_oldIndex = index;
 }
 
+void ApplicationDelegate::invalidate()
+{
+    contractAll();
+}
+
 #include "ApplicationDelegate.moc"

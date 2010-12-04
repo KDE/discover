@@ -56,18 +56,21 @@ void ApplicationProxyModel::search(const QString &searchText)
         m_sortByRelevancy = false;
     }
     invalidate();
+    emit invalidated();
 }
 
 void ApplicationProxyModel::setStateFilter(QApt::Package::State state)
 {
     m_stateFilter = state;
     invalidate();
+    emit invalidated();
 }
 
 void ApplicationProxyModel::setOriginFilter(const QString &origin)
 {
     m_originFilter = origin;
     invalidate();
+    emit invalidated();
 }
 
 void ApplicationProxyModel::setFiltersFromCategory(Category *category)
@@ -76,6 +79,7 @@ void ApplicationProxyModel::setFiltersFromCategory(Category *category)
     m_orFilters = category->orFilters();
     m_notFilters = category->notFilters();
     invalidate();
+    emit invalidated();
 }
 
 bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
