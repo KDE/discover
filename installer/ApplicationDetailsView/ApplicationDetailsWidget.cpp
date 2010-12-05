@@ -491,5 +491,3 @@ void ApplicationDetailsWidget::cancelButtonClicked()
 }
 
 #include "ApplicationDetailsWidget.moc"
-
-
