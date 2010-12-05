@@ -59,7 +59,7 @@ public:
 
     QList<Application *> applicationList() const;
     QPair<QApt::WorkerEvent, Application *> workerState() const;
-    Transaction currentTransaction() const;
+    QList<Transaction> transactions() const;
     int maxPopconScore() const;
 
     void addTransaction(Transaction transaction);

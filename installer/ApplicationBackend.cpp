@@ -318,14 +318,9 @@ QPair<QApt::WorkerEvent, Application *> ApplicationBackend::workerState() const
     return m_workerState;
 }
 
-Transaction ApplicationBackend::currentTransaction() const
+QList<Transaction> ApplicationBackend::transactions() const
 {
-    Transaction transaction= {0, 0, InvalidState};
-    if (!m_queue.isEmpty())
-    {
-        transaction = m_queue.first();
-    }
-    return transaction;
+    return m_queue;
 }
 
 int ApplicationBackend::maxPopconScore() const

@@ -86,9 +86,10 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, Appl
     QPair<QApt::WorkerEvent, Application *> workerState = m_appBackend->workerState();
     workerEvent(workerState.first, workerState.second);
 
-    Transaction transaction = m_appBackend->currentTransaction();
-    if (transaction.state == QueuedState){
-        transactionQueued(transaction.application); 
+    foreach (Transaction transaction, m_appBackend->transactions()) {
+        if (transaction.state == QueuedState){
+            transactionQueued(transaction.application);
+        }
     }
 }
 
