@@ -2,7 +2,10 @@
 ====
 
 - Features:
+  * Introducing the Muon Software Center, an easy to use Application-centric
+    package manager for the common man.
   * Introducing the "muon-updater" program, an update-centric GUI
+  * Added an update notifier
   * The download view has been revamped, now supporting per-item progress,
     as well as displaying the size for each item
   * Add a new "Residual Config" filter to the filters pane. This filter shows packages
@@ -12,7 +15,6 @@
     dependents. (Basically, what apt-get autoremove would show)
   * The Technical Details tab now displays the package's origin
   * Added a progress bar to Muon's statusbar to show Xapian indexing update progress.
-  * Added an update notifier
   * Improved startup time
   * The contents of the "Installed Files" package tab are now sorted alphabetically
     (BKO: #253751)
