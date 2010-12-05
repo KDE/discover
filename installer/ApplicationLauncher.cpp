@@ -43,7 +43,7 @@ ApplicationLauncher::ApplicationLauncher(const QVector<KService*> &applications,
 
     QLabel *label = new QLabel(this);
     label->setText(i18np("The following application was just installed, click on it to launch:",
-                         "The following applications where just installed, click on them to launch:",
+                         "The following applications were just installed, click on them to launch:",
                          applications.size()));
 
     QListView *appView = new QListView(this);
