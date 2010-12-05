@@ -41,7 +41,8 @@ class ApplicationLauncher;
 enum TransactionState {
     InvalidState = 0,
     QueuedState = 1,
-	RunningState = 2
+	RunningState = 2,
+	DoneState = 3
 };
 
 struct Transaction {
@@ -71,6 +72,7 @@ private:
     QList<Application *> m_appList;
     QList<QLatin1String> m_appLaunchQueue;
     QList<Transaction> m_queue;
+    QList<Transaction>::iterator m_currentTransaction;
     QPair<QApt::WorkerEvent, Application *> m_workerState;
     int m_maxPopconScore;
 

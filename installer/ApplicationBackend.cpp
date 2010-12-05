@@ -104,15 +104,15 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
     Application *app = 0;
     m_workerState.first = event;
     if (!m_queue.isEmpty()) {
-        m_workerState.second = m_queue.first().application;
-        app = m_queue.first().application;
+        m_workerState.second = (*m_currentTransaction).application;
+        app = (*m_currentTransaction).application;
     }
 
     emit workerEvent(event, app);
 
     switch (event) {
     case QApt::PackageDownloadStarted:
-        m_queue.first().state = RunningState;
+        (*m_currentTransaction).state = RunningState;
         connect(m_backend, SIGNAL(downloadProgress(int, int, int)),
                 this, SLOT(updateDownloadProgress(int)));
         break;
@@ -122,7 +122,7 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
         break;
     case QApt::CommitChangesStarted:
         m_debconfGui = new DebconfKde::DebconfGui("/tmp/qapt-sock");
-        m_queue.first().state = RunningState;
+        (*m_currentTransaction).state = RunningState;
         connect(m_backend, SIGNAL(commitProgress(const QString &, int)),
                 this, SLOT(updateCommitProgress(const QString &, int)));
         m_debconfGui->connect(m_debconfGui, SIGNAL(activated()), m_debconfGui, SLOT(show()));
@@ -132,13 +132,14 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
         disconnect(m_backend, SIGNAL(commitProgress(const QString &, int)),
                    this, SLOT(updateCommitProgress(const QString &, int)));
 
-        m_appLaunchQueue << m_queue.first().application->package()->latin1Name();
+        m_appLaunchQueue << (*m_currentTransaction).application->package()->latin1Name();
 
         m_workerState.first = QApt::InvalidEvent;
         m_workerState.second = 0;
-        m_queue.removeFirst();
+        (*m_currentTransaction).state = DoneState;
+        ++m_currentTransaction;
 
-        if (m_queue.isEmpty()) {
+        if (m_currentTransaction == m_queue.end()) {
             reload();
         } else {
             runNextTransaction();
@@ -162,7 +163,7 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error, const QVariantMap 
     // buttons do both marking and committing
     switch (error) {
     case QApt::AuthError:
-        emit transactionCancelled(m_queue.first().application);
+        emit transactionCancelled((*m_currentTransaction).application);
         m_backend->undo();
         break;
     case QApt::UserCancelError:
@@ -178,14 +179,12 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error, const QVariantMap 
         m_workerState.second = 0;
     }
 
-    if (!m_queue.isEmpty()) {
-        m_queue.removeFirst(); 
-    }
+    ++m_currentTransaction;
 }
 
 void ApplicationBackend::updateDownloadProgress(int percentage)
 {
-    Application *app = m_queue.first().application;
+    Application *app = (*m_currentTransaction).application;
     emit progress(app, percentage);
 }
 
@@ -193,7 +192,7 @@ void ApplicationBackend::updateCommitProgress(const QString &text, int percentag
 {
     Q_UNUSED(text);
 
-    Application *app = m_queue.first().application;
+    Application *app = (*m_currentTransaction).application;
     emit progress(app, percentage);
 }
 
@@ -203,6 +202,7 @@ void ApplicationBackend::addTransaction(Transaction transaction)
     m_queue.append(transaction);
 
     if (m_queue.count() == 1) {
+        m_currentTransaction = m_queue.begin();
         runNextTransaction();
     }
 }
@@ -235,9 +235,9 @@ void ApplicationBackend::runNextTransaction()
     QApt::CacheState oldCacheState = m_backend->currentCacheState();
     m_backend->saveCacheState();
 
-    Application *app = m_queue.first().application;
+    Application *app = (*m_currentTransaction).application;
 
-    switch (m_queue.first().action) {
+    switch ((*m_currentTransaction).action) {
     case QApt::Package::ToInstall:
     case QApt::Package::ToUpgrade:
         app->package()->setInstall();

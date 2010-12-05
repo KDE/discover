@@ -32,7 +32,6 @@
 #include <LibQApt/Package>
 
 #include "Application.h"
-#include "ApplicationBackend.h"
 
 ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, ApplicationBackend *backend)
     : QWidget(parent)
@@ -87,8 +86,8 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, Appl
     workerEvent(workerState.first, workerState.second);
 
     foreach (Transaction transaction, m_appBackend->transactions()) {
-        if (transaction.state == QueuedState){
-            transactionQueued(transaction.application);
+        if (transaction.application == m_app){
+            showTransactionState(transaction.state);
         }
     }
 }
@@ -138,14 +137,32 @@ void ApplicationExtender::workerEvent(QApt::WorkerEvent event, Application *app)
     }
 }
 
-void ApplicationExtender::transactionQueued(Application *app)
+void ApplicationExtender::showTransactionState(TransactionState state)
 {
-    if (m_app == app) {
-        m_actionButton->hide();
-        m_progressBar->show();
-        m_progressBar->setValue(0);
-        m_progressBar->setFormat(i18nc("@info:status", "Waiting"));
+    m_actionButton->hide();
+    m_progressBar->show();
+    m_progressBar->setValue(0);
+
+    QString text;
+    switch (state) {
+    case QueuedState:
+        text = i18nc("@info:status", "Waiting");
+        break;
+    case RunningState:
+        if (!m_app->package()->isInstalled()) {
+            text = i18nc("@info:status", "Installing");
+        } else {
+            text = i18nc("@info:status", "Removing");
+        }
+        break;
+    case DoneState:
+        text = i18nc("@info:status", "Done");
+        m_progressBar->setValue(100);
+        break;
+    default:
+        break;
     }
+    m_progressBar->setFormat(text);
 }
 
 void ApplicationExtender::transactionCancelled(Application *app)
@@ -172,13 +189,13 @@ void ApplicationExtender::emitInfoButtonClicked()
 void ApplicationExtender::emitRemoveButtonClicked()
 {
     emit removeButtonClicked(m_app);
-    transactionQueued(m_app);
+    showTransactionState(QueuedState);
 }
 
 void ApplicationExtender::emitInstallButtonClicked()
 {
     emit installButtonClicked(m_app);
-    transactionQueued(m_app);
+    showTransactionState(QueuedState);
 }
 
 void ApplicationExtender::emitCancelButtonClicked()

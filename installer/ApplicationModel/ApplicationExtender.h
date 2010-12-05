@@ -25,6 +25,8 @@
 
 #include <LibQApt/Globals>
 
+#include "ApplicationBackend.h"
+
 class QProgressBar;
 class QPushButton;
 
@@ -48,7 +50,7 @@ private:
 private Q_SLOTS:
     void workerEvent(QApt::WorkerEvent event, Application *app);
     void updateProgress(Application *app, int percentage);
-    void transactionQueued(Application *app);
+    void showTransactionState(TransactionState state);
     void transactionCancelled(Application *app);
     void emitInfoButtonClicked();
     void emitRemoveButtonClicked();
