@@ -1,10 +1,8 @@
 [Desktop Entry]
 Name=Muon Software Center
-Name[x-test]=xxMuon Software Centerxx
 Exec=muon-installer %i -caption "%c"
 Icon=applications-other
 Type=Application
 X-DocPath=muon/index.html
 GenericName=Software Center
-GenericName[x-test]=xxSoftware Centerxx
 Categories=Qt;KDE;System;

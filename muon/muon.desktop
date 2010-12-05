@@ -1,27 +1,5 @@
 [Desktop Entry]
 Name=Muon Package Manager
-Name[ca]=Muon
-Name[cs]=Muon
-Name[da]=Muon
-Name[de]=Muon
-Name[en_GB]=Muon
-Name[es]=Muon
-Name[et]=Muon
-Name[fr]=Muon
-Name[hu]=Muon
-Name[it]=Muon
-Name[nb]=Muon
-Name[nds]=Muon
-Name[nl]=Muon
-Name[pt]=Muon
-Name[pt_BR]=Muon
-Name[ru]=Muon
-Name[sk]=Muon
-Name[sv]=Muon
-Name[tr]=Muon
-Name[uk]=Muon
-Name[x-test]=xxMuonxx
-Name[zh_TW]=Muon
 Exec=muon %i -caption "%c"
 Icon=application-x-deb
 Type=Application
