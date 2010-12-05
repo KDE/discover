@@ -132,7 +132,7 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
         disconnect(m_backend, SIGNAL(commitProgress(const QString &, int)),
                    this, SLOT(updateCommitProgress(const QString &, int)));
 
-        m_appLaunchQueue << (*m_currentTransaction).application->package()->latin1Name();
+        m_appLaunchQueue << (*m_currentTransaction).application->package()->name();
 
         m_workerState.first = QApt::InvalidEvent;
         m_workerState.second = 0;
@@ -261,7 +261,7 @@ void ApplicationBackend::showAppLauncher()
 {
     QApt::PackageList packages;
 
-    foreach (const QLatin1String &package, m_appLaunchQueue) {
+    foreach (const QString &package, m_appLaunchQueue) {
         QApt::Package *pkg = m_backend->package(package);
         if (pkg) {
             packages << pkg;
@@ -270,12 +270,11 @@ void ApplicationBackend::showAppLauncher()
 
     m_appLaunchQueue.clear();
 
+    QVector<KService*> apps;
     foreach (QApt::Package *package, packages) {
         if (!package->isInstalled()) {
-            return;
+            continue;
         }
-
-        QVector<KService*> apps;
 
         // TODO: move to Application (perhaps call it Application::executables())
         foreach (const QString &desktop, package->installedFilesList().filter(".desktop")) {
@@ -286,19 +285,20 @@ void ApplicationBackend::showAppLauncher()
               !service->noDisplay() &&
               !service->exec().isEmpty())
             {
+                kDebug() << desktop;
                 apps << service;
             }
         }
+    }
 
-        if (!m_appLauncher) {
-            m_appLauncher = new ApplicationLauncher(apps);
-            connect(m_appLauncher, SIGNAL(destroyed(QObject *)),
-                this, SLOT(onAppLauncherClosed()));
-            connect(m_appLauncher, SIGNAL(finished(int)),
-                this, SLOT(onAppLauncherClosed()));
-            m_appLauncher->setWindowTitle(i18nc("@title:window", "Installation Complete"));
-            m_appLauncher->show();
-        }
+    if (!m_appLauncher) {
+        m_appLauncher = new ApplicationLauncher(apps);
+        connect(m_appLauncher, SIGNAL(destroyed(QObject *)),
+            this, SLOT(onAppLauncherClosed()));
+        connect(m_appLauncher, SIGNAL(finished(int)),
+            this, SLOT(onAppLauncherClosed()));
+        m_appLauncher->setWindowTitle(i18nc("@title:window", "Installation Complete"));
+        m_appLauncher->show();
     }
 }
 

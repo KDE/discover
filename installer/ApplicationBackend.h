@@ -70,7 +70,7 @@ private:
     QApt::Backend *m_backend;
 
     QList<Application *> m_appList;
-    QList<QLatin1String> m_appLaunchQueue;
+    QList<QString> m_appLaunchQueue;
     QList<Transaction> m_queue;
     QList<Transaction>::iterator m_currentTransaction;
     QPair<QApt::WorkerEvent, Application *> m_workerState;
