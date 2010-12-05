@@ -24,7 +24,17 @@
 #include <QtCore/QList>
 #include <QModelIndex>
 
-class PackageDetails;
+class PackageDetails
+{
+public:
+    PackageDetails()
+    : percentage(0), size(0), status(0) {};
+    QString name;
+    int percentage;
+    QString URI;
+    double size;
+    int status;
+};
 
 class DownloadModel : public QAbstractListModel
 {
