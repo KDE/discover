@@ -178,6 +178,10 @@ void ApplicationExtender::updateProgress(Application *app, int percentage)
 {
     if (m_app == app) {
         m_progressBar->setValue(percentage);
+
+        if (percentage == 100) {
+            showTransactionState(DoneState);
+        }
     }
 }
 
