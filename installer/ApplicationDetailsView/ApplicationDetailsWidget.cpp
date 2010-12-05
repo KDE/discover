@@ -45,7 +45,6 @@
 #include <LibQApt/Package>
 
 #include "Application.h"
-#include "ApplicationBackend.h"
 #include "ClickableLabel.h"
 #include "effects/GraphicsOpacityDropShadowEffect.h"
 #include "ScreenShotViewer.h"
@@ -286,10 +285,10 @@ void ApplicationDetailsWidget::setApplication(Application *app)
     // care because we won't handle it
     QPair<QApt::WorkerEvent, Application *> workerState = m_appBackend->workerState();
     workerEvent(workerState.first, workerState.second);
-    
+
     foreach (Transaction transaction, m_appBackend->transactions()) {
-        if (transaction.state == QueuedState){
-            transactionQueued(transaction.application);
+        if (transaction.application == m_app){
+            showTransactionState(transaction.state);
         }
     }
 
@@ -344,14 +343,32 @@ void ApplicationDetailsWidget::updateProgress(Application *app, int percentage)
     }
 }
 
-void ApplicationDetailsWidget::transactionQueued(Application *app)
+void ApplicationDetailsWidget::showTransactionState(TransactionState state)
 {
-    if (m_app == app) {
-        m_actionButton->hide();
-        m_progressBar->show();
-        m_progressBar->setValue(0);
-        m_progressBar->setFormat(i18nc("@info:status", "Waiting"));
+    m_actionButton->hide();
+    m_progressBar->show();
+    m_progressBar->setValue(0);
+
+    QString text;
+    switch (state) {
+    case QueuedState:
+        text = i18nc("@info:status", "Waiting");
+        break;
+    case RunningState:
+        if (!m_app->package()->isInstalled()) {
+            text = i18nc("@info:status", "Installing");
+        } else {
+            text = i18nc("@info:status", "Removing");
+        }
+        break;
+    case DoneState:
+        text = i18nc("@info:status", "Done");
+        m_progressBar->setValue(100);
+        break;
+    default:
+        break;
     }
+    m_progressBar->setFormat(text);
 }
 
 void ApplicationDetailsWidget::transactionCancelled(Application *app)
@@ -461,7 +478,7 @@ void ApplicationDetailsWidget::actionButtonClicked()
         emit installButtonClicked(m_app);
     }
 
-    transactionQueued(m_app);
+    showTransactionState(QueuedState);
 }
 
 void ApplicationDetailsWidget::cancelButtonClicked()

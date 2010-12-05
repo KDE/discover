@@ -24,7 +24,11 @@
 // Qt includes
 #include <QtGui/QScrollArea>
 
+// LibQApt includes
 #include <LibQApt/Globals>
+
+// Own includes
+#include "ApplicationBackend.h"
 
 class QLabel;
 class QProgressBar;
@@ -36,7 +40,6 @@ class KPixmapSequenceOverlayPainter;
 class KTemporaryFile;
 
 class Application;
-class ApplicationBackend;
 class ClickableLabel;
 class ScreenShotViewer;
 
@@ -79,7 +82,7 @@ private:
 private Q_SLOTS:
     void workerEvent(QApt::WorkerEvent event, Application *app);
     void updateProgress(Application *app, int percentage);
-    void transactionQueued(Application *app);
+    void showTransactionState(TransactionState state);
     void transactionCancelled(Application *app);
     void fadeInScreenshot();
     void fetchScreenshot(QApt::ScreenshotType screenshotType);
