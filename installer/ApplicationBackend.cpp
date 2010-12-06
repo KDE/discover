@@ -40,6 +40,7 @@ ApplicationBackend::ApplicationBackend(QObject *parent)
     , m_backend(0)
     , m_appLauncher(0)
 {
+    m_currentTransaction = m_queue.end();
 }
 
 ApplicationBackend::~ApplicationBackend()
@@ -133,7 +134,9 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
         disconnect(m_backend, SIGNAL(commitProgress(const QString &, int)),
                    this, SLOT(updateCommitProgress(const QString &, int)));
 
-        m_appLaunchQueue << (*m_currentTransaction).application->package()->name();
+        if (m_currentTransaction != m_queue.end()) {
+            m_appLaunchQueue << (*m_currentTransaction).application->package()->name();
+        }
 
         m_workerState.first = QApt::InvalidEvent;
         m_workerState.second = 0;
@@ -180,7 +183,11 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error, const QVariantMap 
         m_workerState.second = 0;
     }
 
-    ++m_currentTransaction;
+    // A CommitChangesFinished signal will still be fired in this case,
+    // and workerEvent will take care of this for us
+    if (error != QApt::CommitError) {
+        ++m_currentTransaction;
+    }
 }
 
 void ApplicationBackend::updateDownloadProgress(int percentage)
