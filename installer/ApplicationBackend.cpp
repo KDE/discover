@@ -81,6 +81,7 @@ void ApplicationBackend::init()
 
 void ApplicationBackend::reload()
 {
+    emit reloadStarted();
     qDeleteAll(m_appList);
     m_appList.clear();
     m_queue.clear();
@@ -96,7 +97,7 @@ void ApplicationBackend::reload()
         showAppLauncher();
     }
 
-    emit reloaded();
+    emit reloadFinished();
 }
 
 void ApplicationBackend::workerEvent(QApt::WorkerEvent event)

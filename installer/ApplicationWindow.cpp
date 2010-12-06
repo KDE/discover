@@ -94,16 +94,18 @@ void ApplicationWindow::initObject()
     m_appBackend = new ApplicationBackend(this);
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
             m_appBackend, SLOT(setBackend(QApt::Backend *)));
-	connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Application *)),
-			this, SLOT(workerEvent(QApt::WorkerEvent)));
-    connect(m_appBackend, SIGNAL(reloaded()),
-            this, SLOT(reload()));
+    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Application *)),
+            this, SLOT(workerEvent(QApt::WorkerEvent)));
+    connect(m_appBackend, SIGNAL(reloadStarted()),
+            this, SLOT(clearViews()));
+    connect(m_appBackend, SIGNAL(reloadFinished()),
+            this, SLOT(populateViews()));
 
     MuonMainWindow::initObject();
-	// Our modified ApplicationBackend provides us events in a way that
-	// makes queuing things while committing possible
-	disconnect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
-			   this, SLOT(workerEvent(QApt::WorkerEvent)));
+    // Our modified ApplicationBackend provides us events in a way that
+    // makes queuing things while committing possible
+    disconnect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
+               this, SLOT(workerEvent(QApt::WorkerEvent)));
 
     setActionsEnabled();
 }
@@ -152,15 +154,13 @@ void ApplicationWindow::setActionsEnabled(bool enabled)
     m_saveSelectionsAction->setEnabled(!changedList.isEmpty());
 }
 
-void ApplicationWindow::reload()
+void ApplicationWindow::clearViews()
 {
     foreach (QWidget *widget, m_viewHash) {
         delete widget;
     }
     m_viewHash.clear();
     m_viewModel->clear();
-
-    populateViews();
 }
 
 void ApplicationWindow::checkForUpdates()

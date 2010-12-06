@@ -94,7 +94,8 @@ private Q_SLOTS:
     void onAppLauncherClosed();
 
 Q_SIGNALS:
-    void reloaded();
+    void reloadStarted();
+    void reloadFinished();
     void workerEvent(QApt::WorkerEvent event, Application *app);
     void progress(Application *app, int progress);
     void transactionCancelled(Application *app);

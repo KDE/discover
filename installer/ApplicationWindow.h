@@ -93,7 +93,7 @@ private Q_SLOTS:
     void loadSplitterSizes();
     void saveSplitterSizes();
     void setupActions();
-    void reload();
+    void clearViews();
     void checkForUpdates();
     void setActionsEnabled(bool enabled = true);
     void workerEvent(QApt::WorkerEvent event);
