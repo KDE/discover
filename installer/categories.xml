@@ -359,7 +359,7 @@
   </Menu>
 
 
-  <Menu>
+<!--  <Menu>
     <Name>Fonts</Name>
     <Icon>preferences-desktop-font</Icon>
     <Include>
@@ -377,7 +377,7 @@
         </Not>
       </And>
     </Include>
-  </Menu>
+  </Menu>-->
 
 
   <Menu>
