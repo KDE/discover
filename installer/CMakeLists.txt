@@ -31,13 +31,13 @@ kde4_add_kcfg_files(muon_installer_SRCS GENERATE_MOC config/MuonInstallerSetting
 
 kde4_add_executable(muon-installer ${muon_installer_SRCS})
 
-target_link_libraries(muon-installer ${KDE4_KDEUI_LIBS}
+target_link_libraries(muon-installer libmuon
+                                     ${KDE4_KDEUI_LIBS}
                                      ${KDE4_KIO_LIBS}
                                      ${KDE4_SOLID_LIBS}
                                      ${QAPT_LIBRARY}
                                      ${KDE4_NEPOMUK_LIBS}
-                                     ${DEBCONF_KDE_LIB}
-                                     libmuon)
+                                     ${DEBCONF_KDE_LIB})
 
 install(TARGETS muon-installer ${INSTALL_TARGETS_DEFAULT_ARGS} )
 

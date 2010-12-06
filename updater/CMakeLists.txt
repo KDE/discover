@@ -6,12 +6,12 @@ set(muon_updater_SRCS
 
 kde4_add_executable(muon-updater ${muon_updater_SRCS})
 
-target_link_libraries(muon-updater ${KDE4_KDEUI_LIBS}
-                                     ${KDE4_KIO_LIBS}
-                                     ${KDE4_SOLID_LIBS}
-                                     ${QAPT_LIBRARY}
-                                     ${DEBCONF_KDE_LIB}
-                                     libmuon)
+target_link_libraries(muon-updater libmuon
+                                   ${KDE4_KDEUI_LIBS}
+                                   ${KDE4_KIO_LIBS}
+                                   ${KDE4_SOLID_LIBS}
+                                   ${QAPT_LIBRARY}
+                                   ${DEBCONF_KDE_LIB})
 
 install(TARGETS muon-updater ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
