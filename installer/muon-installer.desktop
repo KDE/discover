@@ -1,8 +1,20 @@
 [Desktop Entry]
 Name=Muon Software Center
+Name[hu]=Muon szoftverközpont
+Name[nl]=Muon softwarecentrum
+Name[pt_BR]=Centro de aplicativos do Muon
+Name[sv]=Muon programvarucentral
+Name[uk]=Центр програм Muon
+Name[x-test]=xxMuon Software Centerxx
 Exec=muon-installer %i -caption "%c"
 Icon=applications-other
 Type=Application
 X-DocPath=muon/index.html
 GenericName=Software Center
+GenericName[hu]=Szoftverközpont
+GenericName[nl]=Softwarecentrum
+GenericName[pt_BR]=Centro de aplicativos
+GenericName[sv]=Programvarucentral
+GenericName[uk]=Центр програм
+GenericName[x-test]=xxSoftware Centerxx
 Categories=Qt;KDE;System;

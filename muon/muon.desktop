@@ -1,5 +1,11 @@
 [Desktop Entry]
 Name=Muon Package Manager
+Name[hu]=Muon csomagkezelő
+Name[nl]=Muon pakketbeheerder
+Name[pt_BR]=Gerenciador de pacotes Muon
+Name[sv]=Muon pakethanterare
+Name[uk]=Програма для керування пакунками Muon
+Name[x-test]=xxMuon Package Managerxx
 Exec=muon %i -caption "%c"
 Icon=application-x-deb
 Type=Application
