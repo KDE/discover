@@ -177,7 +177,7 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error, const QVariantMap 
         break;
     }
 
-    // Remove running transaction on failure
+    // Reset worker state on failure
     if (m_workerState.second) {
         m_workerState.first = QApt::InvalidEvent;
         m_workerState.second = 0;
