@@ -29,6 +29,7 @@
 
 // Own includes
 #include "ApplicationBackend.h"
+#include "Transaction.h"
 
 class QLabel;
 class QProgressBar;

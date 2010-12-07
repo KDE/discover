@@ -286,9 +286,9 @@ void ApplicationDetailsWidget::setApplication(Application *app)
     QPair<QApt::WorkerEvent, Application *> workerState = m_appBackend->workerState();
     workerEvent(workerState.first, workerState.second);
 
-    foreach (Transaction transaction, m_appBackend->transactions()) {
-        if (transaction.application == m_app){
-            showTransactionState(transaction.state);
+    foreach (Transaction *transaction, m_appBackend->transactions()) {
+        if (transaction->application() == m_app){
+            showTransactionState(transaction->state());
         }
     }
 

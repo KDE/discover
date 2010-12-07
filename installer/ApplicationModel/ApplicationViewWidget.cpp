@@ -39,6 +39,7 @@
 #include "../ApplicationDetailsView/ApplicationDetailsView.h"
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
 #include "../CategoryView/Category.h"
+#include "../Transaction.h"
 
 ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend *appBackend)
         : AbstractViewBase(parent)
@@ -164,13 +165,13 @@ void ApplicationViewWidget::infoButtonClicked(Application *app)
 
 void ApplicationViewWidget::installButtonClicked(Application *app)
 {
-    Transaction transaction = { app, QApt::Package::ToInstall, (TransactionState)0 };
+    Transaction *transaction = new Transaction(app, QApt::Package::ToInstall);
     m_appBackend->addTransaction(transaction);
 }
 
 void ApplicationViewWidget::removeButtonClicked(Application *app)
 {
-    Transaction transaction = { app, QApt::Package::ToRemove, (TransactionState)0 };
+    Transaction *transaction = new Transaction(app, QApt::Package::ToRemove);
 
     m_appBackend->addTransaction(transaction);
 }

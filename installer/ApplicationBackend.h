@@ -37,19 +37,7 @@ namespace DebconfKde
 
 class Application;
 class ApplicationLauncher;
-
-enum TransactionState {
-    InvalidState = 0,
-    QueuedState = 1,
-    RunningState = 2,
-    DoneState = 3
-};
-
-struct Transaction {
-    Application *application;
-    int action;
-    TransactionState state;
-};
+class Transaction;
 
 class ApplicationBackend : public QObject
 {
@@ -60,10 +48,10 @@ public:
 
     QList<Application *> applicationList() const;
     QPair<QApt::WorkerEvent, Application *> workerState() const;
-    QList<Transaction> transactions() const;
+    QList<Transaction *> transactions() const;
     int maxPopconScore() const;
 
-    void addTransaction(Transaction transaction);
+    void addTransaction(Transaction *transaction);
     void cancelTransaction(Application *app);
 
 private:
@@ -72,8 +60,8 @@ private:
     QList<Application *> m_appList;
     QList<QString> m_appLaunchQueue;
     QList<QString> m_pkgBlacklist;
-    QList<Transaction> m_queue;
-    QList<Transaction>::iterator m_currentTransaction;
+    QList<Transaction *> m_queue;
+    QList<Transaction *>::iterator m_currentTransaction;
     QPair<QApt::WorkerEvent, Application *> m_workerState;
     int m_maxPopconScore;
 
