@@ -306,7 +306,7 @@ void ApplicationBackend::showAppLauncher()
         }
     }
 
-    if (!m_appLauncher) {
+    if (!m_appLauncher && !apps.isEmpty()) {
         m_appLauncher = new ApplicationLauncher(apps);
         connect(m_appLauncher, SIGNAL(destroyed(QObject *)),
             this, SLOT(onAppLauncherClosed()));
