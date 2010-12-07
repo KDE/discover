@@ -23,6 +23,7 @@
 // Qt includes
 #include <QtCore/QFile>
 #include <QtCore/QVector>
+#include <QtCore/QStringBuilder>
 #include <QtCore/QStringList>
 
 // KDE includes
@@ -117,6 +118,7 @@ QString Application::icon()
 QString Application::menuPath()
 {
     QString path;
+    QString arrow(' ' % QString::fromUtf8("➜") % ' ');
 
     KService::Ptr service = KService::serviceByDesktopName(name());
     QVector<QPair<QString, QString> > ret;
@@ -127,12 +129,12 @@ QString Application::menuPath()
         path.append(QString("<img width=\"16\" heigh=\"16\"src=\"%1\"/>")
                     .arg(KIconLoader::global()->iconPath("kde", KIconLoader::Small)));
         path.append(QString("&nbsp;%1 <img width=\"16\" heigh=\"16\" src=\"%2\"/>&nbsp;%3")
-                    .arg(QString::fromUtf8("➜"))
+                    .arg(arrow)
                     .arg(KIconLoader::global()->iconPath("applications-other", KIconLoader::Small))
                     .arg(i18n("Applications")));
         for (int i = 0; i < ret.size(); i++) {
             path.append(QString("&nbsp;%1&nbsp;<img width=\"16\" heigh=\"16\" src=\"%2\"/>&nbsp;%3")
-                        .arg(QString::fromUtf8("➜"))
+                        .arg(arrow)
                         .arg(KIconLoader::global()->iconPath(ret.at(i).second, KIconLoader::Small))
                         .arg(ret.at(i).first));
         }
