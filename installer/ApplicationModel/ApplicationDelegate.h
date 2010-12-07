@@ -58,7 +58,6 @@ private:
     QString m_removeString;
     QSize   m_buttonSize;
     QSize   m_buttonIconSize;
-    KIcon   m_unknownIcon;
 
     ApplicationExtender *m_extender;
     mutable QPersistentModelIndex m_oldIndex;

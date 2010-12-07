@@ -52,8 +52,7 @@ ApplicationDelegate::ApplicationDelegate(QAbstractItemView *parent, ApplicationB
     m_appBackend(backend),
     m_installString(i18n("Install")),
     m_removeIcon("edit-delete"),
-    m_removeString(i18n("Remove")),
-    m_unknownIcon("applications-other")
+    m_removeString(i18n("Remove"))
 {
     // To get sizing.
     QPushButton button, button2;
@@ -146,12 +145,7 @@ void ApplicationDelegate::paint(QPainter *painter,
     if (index.data(ApplicationModel::StatusRole).toInt() & QApt::Package::Installed) {
         overlays << "installed";
     }
-    KIcon icon(KIconLoader::global()->loadIcon(index.data(ApplicationModel::IconRole).toString(),
-                                                       KIconLoader::User, 0, KIconLoader::DefaultState,
-                                                       overlays, 0L, true));
-    if (icon.isNull()) {
-        icon = m_unknownIcon;
-    }
+    KIcon icon(index.data(ApplicationModel::IconRole).toString());
 
     int iconSize = calcItemHeight(option) - 2 * UNIVERSAL_PADDING;
     icon.paint(&p,
