@@ -358,28 +358,6 @@
     </Menu>
   </Menu>
 
-
-<!--  <Menu>
-    <Name>Fonts</Name>
-    <Icon>preferences-desktop-font</Icon>
-    <Include>
-      <And>
-        <Or>
-          <PkgWildcard>ttf*</PkgWildcard>
-          <PkgWildcard>otf*</PkgWildcard>
-          <PkgSection>fonts</PkgSection>
-          <PkgSection>restricted/fonts</PkgSection>
-          <PkgSection>universe/fonts</PkgSection>
-          <PkgSection>multiverse/fonts</PkgSection>
-        </Or>
-        <Not>
-          <PkgName>ttfm</PkgName>
-        </Not>
-      </And>
-    </Include>
-  </Menu>-->
-
-
   <Menu>
     <Name>Games</Name>
     <Icon>applications-games</Icon>
