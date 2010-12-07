@@ -23,7 +23,6 @@
 // Qt includes
 #include <QtCore/QFile>
 #include <QtCore/QVector>
-#include <QtCore/QStringBuilder>
 #include <QtCore/QStringList>
 
 // KDE includes
@@ -118,7 +117,7 @@ QString Application::icon()
 QString Application::menuPath()
 {
     QString path;
-    QString arrow(' ' % QString::fromUtf8("➜") % ' ');
+    QString arrow(QString::fromUtf8(" ➜ "));
 
     KService::Ptr service = KService::serviceByDesktopName(name());
     QVector<QPair<QString, QString> > ret;
