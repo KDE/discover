@@ -156,9 +156,9 @@ void CategoryViewWidget::search(const QString &text)
         // switching to subviews from the new subview, etc
         connect(m_searchView, SIGNAL(registerNewSubView(AbstractViewBase *)),
                 this, SIGNAL(registerNewSubView(AbstractViewBase *)));
-        // Make sure we remove the index/widget association upon deletion
+        // Make sure we clear the pointer upon deletion
         connect(m_searchView, SIGNAL(destroyed(QObject *)),
-                this, SLOT(onSubViewDestroyed()));
+                this, SLOT(onSearchViewDestroyed()));
 
         // Tell our parent that we can exist, so that they can forward it
         emit registerNewSubView(m_searchView);
@@ -172,6 +172,11 @@ void CategoryViewWidget::search(const QString &text)
 void CategoryViewWidget::onSubViewDestroyed()
 {
     m_subViewHash.remove(m_subViewHash.key(m_subView));
+}
+
+void CategoryViewWidget::onSearchViewDestroyed()
+{
+    m_searchView = 0;
 }
 
 #include "CategoryViewWidget.moc"

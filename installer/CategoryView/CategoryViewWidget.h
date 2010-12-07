@@ -83,6 +83,7 @@ public Q_SLOTS:
 private Q_SLOTS:
     void onIndexActivated(const QModelIndex &index);
     void onSubViewDestroyed();
+    void onSearchViewDestroyed();
 
 Q_SIGNALS:
     void switchToSubView(AbstractViewBase *view);
