@@ -42,7 +42,7 @@ ApplicationBackend::ApplicationBackend(QObject *parent)
 {
     m_currentTransaction = m_queue.end();
 
-    m_pkgBlacklist << "kdebase-runtime" << "kdepim-runtime";
+    m_pkgBlacklist << "kdebase-runtime" << "kdepim-runtime" << "kdelibs5-plugins";
 }
 
 ApplicationBackend::~ApplicationBackend()
