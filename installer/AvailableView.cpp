@@ -28,7 +28,6 @@
 #include <KIcon>
 #include <KLocale>
 #include <KStandardDirs>
-#include <KDebug>
 
 #include <LibQApt/Backend>
 

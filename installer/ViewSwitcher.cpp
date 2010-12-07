@@ -20,14 +20,6 @@
 
 #include "ViewSwitcher.h"
 
-// KDE includes
-#include <KIcon>
-#include <KLocale>
-#include <KDebug>
-
-// LibQApt includes
-#include <LibQApt/Backend>
-
 ViewSwitcher::ViewSwitcher(QWidget *parent)
     : QTreeView(parent)
 {

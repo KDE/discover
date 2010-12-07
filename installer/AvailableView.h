@@ -21,8 +21,6 @@
 #ifndef AVAILABLEVIEW_H
 #define AVAILABLEVIEW_H
 
-#include <QtGui/QWidget>
-
 #include "AbstractViewContainer.h"
 
 class AbstractViewBase;

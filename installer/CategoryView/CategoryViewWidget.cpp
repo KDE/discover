@@ -28,7 +28,6 @@
 #include <KCategorizedSortFilterProxyModel>
 #include <KIcon>
 #include <KLocale>
-#include <KDebug>
 
 // LibQApt includes
 #include <LibQApt/Backend>
