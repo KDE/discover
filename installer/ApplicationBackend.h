@@ -41,14 +41,14 @@ class ApplicationLauncher;
 enum TransactionState {
     InvalidState = 0,
     QueuedState = 1,
-	RunningState = 2,
-	DoneState = 3
+    RunningState = 2,
+    DoneState = 3
 };
 
 struct Transaction {
     Application *application;
     int action;
-	TransactionState state;
+    TransactionState state;
 };
 
 class ApplicationBackend : public QObject
@@ -71,6 +71,7 @@ private:
 
     QList<Application *> m_appList;
     QList<QString> m_appLaunchQueue;
+    QList<QString> m_pkgBlacklist;
     QList<Transaction> m_queue;
     QList<Transaction>::iterator m_currentTransaction;
     QPair<QApt::WorkerEvent, Application *> m_workerState;

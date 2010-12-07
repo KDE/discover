@@ -41,6 +41,8 @@ ApplicationBackend::ApplicationBackend(QObject *parent)
     , m_appLauncher(0)
 {
     m_currentTransaction = m_queue.end();
+
+    m_pkgBlacklist << "kdebase-runtime" << "kdepim-runtime";
 }
 
 ApplicationBackend::~ApplicationBackend()
@@ -67,8 +69,10 @@ void ApplicationBackend::init()
     foreach(const QString &fileName, fileList) {
         Application *app = new Application("/usr/share/app-install/desktop/" + fileName, m_backend);
         if (app->isValid()) {
-            m_appList << app;
-            popconScores << app->popconScore();
+            if (app->package() && !m_pkgBlacklist.contains(app->package()->latin1Name())) {
+                m_appList << app;
+                popconScores << app->popconScore();
+            }
         } else {
             // Invalid .desktop file
             // kDebug() << fileName;
