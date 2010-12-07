@@ -27,7 +27,6 @@
 #include <KLocale>
 #include <KMessageBox>
 #include <KService>
-#include <KDebug>
 
 #include <LibQApt/Backend>
 #include <DebconfGui.h>
@@ -300,7 +299,6 @@ void ApplicationBackend::showAppLauncher()
               !service->noDisplay() &&
               !service->exec().isEmpty())
             {
-                kDebug() << desktop;
                 apps << service;
             }
         }
