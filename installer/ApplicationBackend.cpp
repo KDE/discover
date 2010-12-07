@@ -94,6 +94,9 @@ void ApplicationBackend::reload()
 
     init();
 
+    // We must init() before showing the app launcher, otherwise we
+    // won't be able to get installed file info on the newly-installed
+    // packages
     KConfig config("muon-installerrc");
     KConfigGroup notifyGroup(&config, "Notification Messages");
     bool show = notifyGroup.readEntry("ShowApplicationLauncher", true);
