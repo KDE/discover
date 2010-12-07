@@ -78,6 +78,7 @@ void AvailableView::setBackend(QApt::Backend *backend)
 void AvailableView::populateCategories()
 {
     qDeleteAll(m_categoryList);
+    m_categoryList.clear();
     QFile menuFile(KStandardDirs::locate("appdata", "categories.xml"));
 
     if (!menuFile.open(QIODevice::ReadOnly)) {
