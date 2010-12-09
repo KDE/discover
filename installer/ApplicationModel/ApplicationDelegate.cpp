@@ -52,7 +52,8 @@ ApplicationDelegate::ApplicationDelegate(QAbstractItemView *parent, ApplicationB
     m_appBackend(backend),
     m_installString(i18n("Install")),
     m_removeIcon("edit-delete"),
-    m_removeString(i18n("Remove"))
+    m_removeString(i18n("Remove")),
+    m_extender(0)
 {
     // To get sizing.
     QPushButton button, button2;
