@@ -125,13 +125,13 @@ void ApplicationExtender::workerEvent(QApt::WorkerEvent event, Transaction *tran
         m_progressBar->setValue(0);
         switch (transaction->action()) {
         case InstallApp:
-            text = i18nc("@info:status", "Installing");
+            m_progressBar->setFormat(i18nc("@info:status", "Installing"));
             break;
         case ChangeAddons:
-            text = i18nc("@info:status", "Changing Addons");
+            m_progressBar->setFormat(i18nc("@info:status", "Changing Addons"));
             break;
         case RemoveApp:
-            text = i18nc("@info:status", "Removing");
+            m_progressBar->setFormat(i18nc("@info:status", "Removing"));
             break;
         default:
             break;
