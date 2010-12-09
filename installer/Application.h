@@ -23,7 +23,7 @@
 
 #include <QtCore/QByteArray>
 #include <QtCore/QHash>
-#include <QtCore/QString>
+#include <QtCore/QStringList>
 
 #include <LibQApt/Package>
 
@@ -43,7 +43,7 @@ public:
     QApt::Package *package();
     QString icon();
     QString menuPath();
-    QList<QString> categories();
+    QStringList categories();
     QApt::PackageList addons();
     int popconScore();
     bool isValid();

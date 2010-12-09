@@ -198,7 +198,7 @@ QVector<QPair<QString, QString> > Application::locateApplication(const QString &
     return ret;
 }
 
-QList<QString> Application::categories()
+QStringList Application::categories()
 {
     QString categoryString = getField("Categories");
     return categoryString.split(';');
