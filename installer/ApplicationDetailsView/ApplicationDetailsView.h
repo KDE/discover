@@ -21,6 +21,8 @@
 #ifndef APPLICATIONDETAILSVIEW_H
 #define APPLICATIONDETAILSVIEW_H
 
+#include <LibQApt/Package>
+
 #include "../AbstractViewBase.h"
 
 class Application;
@@ -41,6 +43,8 @@ private:
 
 Q_SIGNALS:
     void installButtonClicked(Application *);
+    void installButtonClicked(Application *,
+                              const QHash<QApt::Package *, QApt::Package::State> &addons);
     void removeButtonClicked(Application *);
     void cancelButtonClicked(Application *);
 

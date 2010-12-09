@@ -203,6 +203,30 @@ QList<QString> Application::categories()
     return categoryString.split(';');
 }
 
+QApt::PackageList Application::addons()
+{
+    QApt::PackageList addons;
+
+    QApt::Package *pkg = package();
+    if (!pkg) {
+        return addons;
+    }
+
+    QStringList tempList;
+    tempList << m_package->recommendsList();
+    tempList << m_package->suggestsList();
+    tempList << m_package->enhancedByList();
+
+    foreach (const QString &addon, tempList) {
+        QApt::Package *package = m_backend->package(addon);
+        if (!package->section().contains("lib")) {
+            addons << package;
+        }
+    }
+
+    return addons;
+}
+
 int Application::popconScore()
 {
     QString popconString = getField("X-AppInstall-Popcon");

@@ -265,6 +265,23 @@ void ApplicationBackend::runNextTransaction()
         break;
     }
 
+    QHash<QApt::Package *, QApt::Package::State> addons = (*m_currentTransaction)->addons();
+    QHash<QApt::Package *, QApt::Package::State>::const_iterator iter = addons.constBegin();
+
+    while (iter != addons.constEnd()) {
+        switch (iter.value()) {
+        case QApt::Package::ToInstall:
+            iter.key()->setInstall();
+            break;
+        case QApt::Package::ToRemove:
+            iter.key()->setRemove();
+            break;
+        default:
+            break;
+        }
+        ++iter;
+    }
+
     if (app->package()->wouldBreak()) {
         m_backend->restoreCacheState(oldCacheState);
         //TODO Notify of error

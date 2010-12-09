@@ -150,8 +150,8 @@ void ApplicationViewWidget::infoButtonClicked(Application *app)
     m_detailsView->setApplication(app);
     m_currentPair.first = m_detailsView;
 
-    connect(m_detailsView, SIGNAL(installButtonClicked(Application *)),
-            this, SLOT(installButtonClicked(Application *)));
+    connect(m_detailsView, SIGNAL(installButtonClicked(Application *, const QHash<QApt::Package *, QApt::Package::State> &)),
+            this, SLOT(installButtonClicked(Application *, const QHash<QApt::Package *, QApt::Package::State> &)));
     connect(m_detailsView, SIGNAL(removeButtonClicked(Application *)),
             this, SLOT(removeButtonClicked(Application *)));
     connect(m_detailsView, SIGNAL(cancelButtonClicked(Application *)),
@@ -161,6 +161,12 @@ void ApplicationViewWidget::infoButtonClicked(Application *app)
 
     // Tell our parent that we can exist, so that they can forward it
     emit registerNewSubView(m_detailsView);
+}
+
+void ApplicationViewWidget::installButtonClicked(Application *app, const QHash<QApt::Package *, QApt::Package::State> &addons)
+{
+    Transaction *transaction = new Transaction(app, QApt::Package::ToInstall, addons);
+    m_appBackend->addTransaction(transaction);
 }
 
 void ApplicationViewWidget::installButtonClicked(Application *app)

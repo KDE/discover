@@ -42,6 +42,8 @@ ApplicationDetailsView::ApplicationDetailsView(QWidget *parent, ApplicationBacke
 
     connect(m_detailsWidget, SIGNAL(installButtonClicked(Application *)),
             this, SIGNAL(installButtonClicked(Application *)));
+    connect(m_detailsWidget, SIGNAL(installButtonClicked(Application *, const QHash<QApt::Package *, QApt::Package::State> &)),
+            this, SIGNAL(installButtonClicked(Application *, const QHash<QApt::Package *, QApt::Package::State> &)));
     connect(m_detailsWidget, SIGNAL(removeButtonClicked(Application *)),
             this, SIGNAL(removeButtonClicked(Application *)));
     connect(m_detailsWidget, SIGNAL(cancelButtonClicked(Application *)),

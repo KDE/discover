@@ -25,9 +25,10 @@
 #include <QtCore/QHash>
 #include <QtCore/QString>
 
+#include <LibQApt/Package>
+
 namespace QApt {
     class Backend;
-    class Package;
 }
 
 class Application
@@ -43,6 +44,7 @@ public:
     QString icon();
     QString menuPath();
     QList<QString> categories();
+    QApt::PackageList addons();
     int popconScore();
     bool isValid();
 
