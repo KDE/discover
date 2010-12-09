@@ -41,14 +41,14 @@ public:
     QString name();
     QString comment();
     QApt::Package *package();
-    QString icon();
+    QString icon() const;
     QString menuPath();
-    QStringList categories();
+    QStringList categories() const;
     QApt::PackageList addons();
-    int popconScore();
-    bool isValid();
+    int popconScore() const;
+    bool isValid() const;
 
-    QByteArray getField(const QByteArray &field);
+    QByteArray getField(const QByteArray &field) const;
     QHash<QByteArray, QByteArray> desktopContents();
 
 private:

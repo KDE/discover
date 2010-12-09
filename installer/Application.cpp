@@ -104,7 +104,7 @@ QApt::Package *Application::package()
     return m_package;
 }
 
-QString Application::icon()
+QString Application::icon() const
 {
     QString icon = getField("Icon");
 
@@ -198,7 +198,7 @@ QVector<QPair<QString, QString> > Application::locateApplication(const QString &
     return ret;
 }
 
-QStringList Application::categories()
+QStringList Application::categories() const
 {
     QString categoryString = getField("Categories");
     return categoryString.split(';');
@@ -256,19 +256,19 @@ QApt::PackageList Application::addons()
     return addons;
 }
 
-int Application::popconScore()
+int Application::popconScore() const
 {
     QString popconString = getField("X-AppInstall-Popcon");
 
     return popconString.toInt();
 }
 
-bool Application::isValid()
+bool Application::isValid() const
 {
     return m_isValid;
 }
 
-QByteArray Application::getField(const QByteArray &field)
+QByteArray Application::getField(const QByteArray &field) const
 {
     return m_data.value(field);
 }
