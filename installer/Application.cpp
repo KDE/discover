@@ -30,6 +30,7 @@
 #include <KLocale>
 #include <KService>
 #include <KServiceGroup>
+#include <KDebug>
 
 // QApt includes
 #include <LibQApt/Backend>
@@ -217,9 +218,37 @@ QApt::PackageList Application::addons()
     tempList << m_package->suggestsList();
     tempList << m_package->enhancedByList();
 
+    QStringList languagePackages;
+    QFile l10nFilterFile("/usr/share/language-selector/data/pkg_depends");
+
+    if (l10nFilterFile.open(QFile::ReadOnly)) {
+        QString contents = l10nFilterFile.readAll();
+
+        foreach (const QString &line, contents.split('\n')) {
+            if (line.startsWith("#")) {
+                continue;
+            }
+            languagePackages << line.split(':').last();
+        }
+
+        languagePackages.removeAll("");
+    }
+
     foreach (const QString &addon, tempList) {
+        bool shouldShow = true;
         QApt::Package *package = m_backend->package(addon);
-        if (!package->section().contains("lib")) {
+        if (package->section().contains("lib")) {
+            continue;
+        }
+
+        foreach (const QString &langpack, languagePackages) {
+            if (addon.contains(langpack)) {
+                shouldShow = false;
+                break;
+            }
+        }
+
+        if (shouldShow) {
             addons << package;
         }
     }
