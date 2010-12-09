@@ -50,6 +50,7 @@
 #include "ClickableLabel.h"
 #include "effects/GraphicsOpacityDropShadowEffect.h"
 #include "ScreenShotViewer.h"
+#include "../../libmuon/MuonStrings.h"
 
 #define BLUR_RADIUS 15
 
@@ -58,6 +59,7 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     , m_appBackend(backend)
     , m_screenshotFile(0)
     , m_screenshotDialog(0)
+    , m_strings(new MuonStrings(this))
 {
     setFrameShape(QFrame::NoFrame);
     setWidgetResizable(true);
@@ -107,7 +109,16 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     menuPathLayout->addWidget(menuPathSpacer);
 
     // Install/remove/update button
-    KHBox *actionButtonWidget = new KHBox(this);
+    QFrame *actionButtonWidget = new QFrame(this);
+    QHBoxLayout *actionButtonLayout = new QHBoxLayout(actionButtonWidget);
+    actionButtonWidget->setLayout(actionButtonLayout);
+    actionButtonWidget->setFrameShadow(QFrame::Sunken);
+    actionButtonWidget->setFrameShape(QFrame::StyledPanel);
+
+    m_statusLabel = new QLabel(actionButtonWidget);
+
+    QWidget *actionButtonSpacer = new QWidget(actionButtonWidget);
+    actionButtonSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
     m_actionButton = new QPushButton(actionButtonWidget);
     connect(m_actionButton, SIGNAL(clicked()), this, SLOT(actionButtonClicked()));
@@ -123,8 +134,11 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     m_cancelButton->hide();
     connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(cancelButtonClicked()));
 
-    QWidget *actionButtonSpacer = new QWidget(actionButtonWidget);
-    actionButtonSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    actionButtonLayout->addWidget(m_statusLabel);
+    actionButtonLayout->addWidget(actionButtonSpacer);
+    actionButtonLayout->addWidget(m_actionButton);
+    actionButtonLayout->addWidget(m_progressBar);
+    actionButtonLayout->addWidget(m_cancelButton);
 
     // Long description and Screenshot
     QWidget *body = new QWidget(widget);
@@ -272,10 +286,12 @@ void ApplicationDetailsWidget::setApplication(Application *app)
     }
 
     if (!app->package()->isInstalled()) {
+        m_statusLabel->setText(m_strings->packageStateName(QApt::Package::NotInstalled));
         m_actionButton->setText(i18nc("@action", "Install"));
         m_actionButton->setIcon(KIcon("download"));
         m_actionButton->show();
     } else {
+        m_statusLabel->setText(m_strings->packageStateName(QApt::Package::Installed));
         m_actionButton->setText(i18nc("@action", "Remove"));
         m_actionButton->setIcon(KIcon("edit-delete"));
     }

@@ -45,6 +45,7 @@ class KTemporaryFile;
 
 class Application;
 class ClickableLabel;
+class MuonStrings;
 class ScreenShotViewer;
 
 // Widget for showing details about a single application
@@ -69,6 +70,7 @@ private:
     QLabel *m_shortDescLabel;
     QWidget *m_menuPathWidget;
     QLabel *m_menuPathLabel;
+    QLabel *m_statusLabel;
     QPushButton *m_actionButton;
     QProgressBar *m_progressBar;
     QPushButton *m_cancelButton;
@@ -89,6 +91,8 @@ private:
 
     KTemporaryFile *m_screenshotFile;
     ScreenShotViewer *m_screenshotDialog;
+
+    MuonStrings *m_strings;
 
 private Q_SLOTS:
     void workerEvent(QApt::WorkerEvent event, Transaction *transaction);
