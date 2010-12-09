@@ -91,9 +91,9 @@ private:
     ScreenShotViewer *m_screenshotDialog;
 
 private Q_SLOTS:
-    void workerEvent(QApt::WorkerEvent event, Application *app);
-    void updateProgress(Application *app, int percentage);
-    void showTransactionState(TransactionState state);
+    void workerEvent(QApt::WorkerEvent event, Transaction *transaction);
+    void updateProgress(Transaction *transaction, int percentage);
+    void showTransactionState(Transaction *transaction);
     void transactionCancelled(Application *app);
     void fadeInScreenshot();
     void fetchScreenshot(QApt::ScreenshotType screenshotType);

@@ -165,19 +165,27 @@ void ApplicationViewWidget::infoButtonClicked(Application *app)
 
 void ApplicationViewWidget::installButtonClicked(Application *app, const QHash<QApt::Package *, QApt::Package::State> &addons)
 {
-    Transaction *transaction = new Transaction(app, QApt::Package::ToInstall, addons);
+    TransactionAction action = InvalidAction;
+
+    if (app->package()->isInstalled()) {
+        action = ChangeAddons;
+    } else {
+        action = InstallApp;
+    }
+
+    Transaction *transaction = new Transaction(app, action, addons);
     m_appBackend->addTransaction(transaction);
 }
 
 void ApplicationViewWidget::installButtonClicked(Application *app)
 {
-    Transaction *transaction = new Transaction(app, QApt::Package::ToInstall);
+    Transaction *transaction = new Transaction(app, InstallApp);
     m_appBackend->addTransaction(transaction);
 }
 
 void ApplicationViewWidget::removeButtonClicked(Application *app)
 {
-    Transaction *transaction = new Transaction(app, QApt::Package::ToRemove);
+    Transaction *transaction = new Transaction(app, RemoveApp);
 
     m_appBackend->addTransaction(transaction);
 }

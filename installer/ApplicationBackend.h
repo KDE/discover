@@ -47,7 +47,7 @@ public:
     ~ApplicationBackend();
 
     QList<Application *> applicationList() const;
-    QPair<QApt::WorkerEvent, Application *> workerState() const;
+    QPair<QApt::WorkerEvent, Transaction *> workerState() const;
     QList<Transaction *> transactions() const;
     int maxPopconScore() const;
 
@@ -62,7 +62,7 @@ private:
     QList<QString> m_pkgBlacklist;
     QList<Transaction *> m_queue;
     QList<Transaction *>::iterator m_currentTransaction;
-    QPair<QApt::WorkerEvent, Application *> m_workerState;
+    QPair<QApt::WorkerEvent, Transaction *> m_workerState;
     int m_maxPopconScore;
 
     ApplicationLauncher *m_appLauncher;
@@ -85,8 +85,8 @@ private Q_SLOTS:
 Q_SIGNALS:
     void reloadStarted();
     void reloadFinished();
-    void workerEvent(QApt::WorkerEvent event, Application *app);
-    void progress(Application *app, int progress);
+    void workerEvent(QApt::WorkerEvent event, Transaction *app);
+    void progress(Transaction *transaction, int progress);
     void transactionCancelled(Application *app);
 };
 

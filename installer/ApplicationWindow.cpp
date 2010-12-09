@@ -94,7 +94,7 @@ void ApplicationWindow::initObject()
     m_appBackend = new ApplicationBackend(this);
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
             m_appBackend, SLOT(setBackend(QApt::Backend *)));
-    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Application *)),
+    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Transaction *)),
             this, SLOT(workerEvent(QApt::WorkerEvent)));
     connect(m_appBackend, SIGNAL(reloadStarted()),
             this, SLOT(clearViews()));

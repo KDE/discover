@@ -111,14 +111,15 @@ void ApplicationBackend::reload()
 
 void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
 {
-    Application *app = 0;
     m_workerState.first = event;
+
+    Transaction *transaction = 0;
     if (!m_queue.isEmpty()) {
-        m_workerState.second = (*m_currentTransaction)->application();
-        app = (*m_currentTransaction)->application();
+        m_workerState.second = (*m_currentTransaction);
+        transaction = (*m_currentTransaction);
     }
 
-    emit workerEvent(event, app);
+    emit workerEvent(event, transaction);
 
     switch (event) {
     case QApt::PackageDownloadStarted:
@@ -200,16 +201,14 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error, const QVariantMap 
 
 void ApplicationBackend::updateDownloadProgress(int percentage)
 {
-    Application *app = (*m_currentTransaction)->application();
-    emit progress(app, percentage);
+    emit progress(*m_currentTransaction, percentage);
 }
 
 void ApplicationBackend::updateCommitProgress(const QString &text, int percentage)
 {
     Q_UNUSED(text);
 
-    Application *app = (*m_currentTransaction)->application();
-    emit progress(app, percentage);
+    emit progress(*m_currentTransaction, percentage);
 }
 
 void ApplicationBackend::addTransaction(Transaction *transaction)
@@ -254,11 +253,10 @@ void ApplicationBackend::runNextTransaction()
     Application *app = (*m_currentTransaction)->application();
 
     switch ((*m_currentTransaction)->action()) {
-    case QApt::Package::ToInstall:
-    case QApt::Package::ToUpgrade:
+    case InstallApp:
         app->package()->setInstall();
         break;
-    case QApt::Package::ToRemove:
+    case RemoveApp:
         app->package()->setRemove();
         break;
     default:
@@ -345,7 +343,7 @@ QList<Application *> ApplicationBackend::applicationList() const
     return m_appList;
 }
 
-QPair<QApt::WorkerEvent, Application *> ApplicationBackend::workerState() const
+QPair<QApt::WorkerEvent, Transaction *> ApplicationBackend::workerState() const
 {
     return m_workerState;
 }

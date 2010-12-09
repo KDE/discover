@@ -248,6 +248,8 @@ void ApplicationDelegate::itemActivated(QModelIndex index)
         return;
     }
 
+    kDebug() << m_oldIndex;
+
     if (isExtended(m_oldIndex)) {
         disconnect(m_extender, SIGNAL(infoButtonClicked(Application *)),
                    this, SIGNAL(infoButtonClicked(Application *)));

@@ -241,8 +241,8 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     layout->addWidget(detailsWidget);
     layout->addWidget(verticalSpacer);
 
-    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Application *)),
-            this, SLOT(workerEvent(QApt::WorkerEvent, Application *)));
+    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Transaction *)),
+            this, SLOT(workerEvent(QApt::WorkerEvent, Transaction *)));
     connect(m_appBackend, SIGNAL(transactionCancelled(Application *)),
             this, SLOT(transactionCancelled(Application *)));
 
@@ -328,21 +328,21 @@ void ApplicationDetailsWidget::setApplication(Application *app)
 
     // Catch already-begun downloads. If the state is something else, we won't
     // care because we won't handle it
-    QPair<QApt::WorkerEvent, Application *> workerState = m_appBackend->workerState();
+    QPair<QApt::WorkerEvent, Transaction *> workerState = m_appBackend->workerState();
     workerEvent(workerState.first, workerState.second);
 
     foreach (Transaction *transaction, m_appBackend->transactions()) {
         if (transaction->application() == m_app){
-            showTransactionState(transaction->state());
+            showTransactionState(transaction);
         }
     }
 
     fetchScreenshot(QApt::Thumbnail);
 }
 
-void ApplicationDetailsWidget::workerEvent(QApt::WorkerEvent event, Application *app)
+void ApplicationDetailsWidget::workerEvent(QApt::WorkerEvent event, Transaction *transaction)
 {
-    if (m_app != app) {
+    if (!transaction || m_app != transaction->application()) {
         return;
     }
 
@@ -352,64 +352,78 @@ void ApplicationDetailsWidget::workerEvent(QApt::WorkerEvent event, Application 
         m_cancelButton->show();
         m_progressBar->show();
         m_progressBar->setFormat(i18nc("@info:status", "Downloading"));
-        connect(m_appBackend, SIGNAL(progress(Application *, int)),
-                this, SLOT(updateProgress(Application *, int)));
+        connect(m_appBackend, SIGNAL(progress(Transaction *, int)),
+                this, SLOT(updateProgress(Transaction *, int)));
         break;
     case QApt::PackageDownloadFinished:
-        disconnect(m_appBackend, SIGNAL(progress(Application *, int)),
-                   this, SLOT(updateProgress(Application *, int)));
+        disconnect(m_appBackend, SIGNAL(progress(Transaction *, int)),
+                   this, SLOT(updateProgress(Transaction *, int)));
         break;
     case QApt::CommitChangesStarted:
         m_actionButton->hide();
         m_cancelButton->hide();
         m_progressBar->show();
         m_progressBar->setValue(0);
-        // FIXME: Installing plugins for already-installed apps makes this
-        // say "Removing"
-        if (!m_app->package()->isInstalled()) {
+        switch(transaction->action()) {
+        case InstallApp:
             m_progressBar->setFormat(i18nc("@info:status", "Installing"));
-        } else {
+            break;
+        case ChangeAddons:
+            m_progressBar->setFormat(i18nc("@info:status", "Changing Addons"));
+            break;
+        case RemoveApp:
             m_progressBar->setFormat(i18nc("@info:status", "Removing"));
+            break;
+        default:
+            break;
         }
-        connect(m_appBackend, SIGNAL(progress(Application *, int)),
-                this, SLOT(updateProgress(Application *, int)));
+        connect(m_appBackend, SIGNAL(progress(Transaction *, int)),
+                this, SLOT(updateProgress(Transaction *, int)));
         break;
     case QApt::CommitChangesFinished:
-        disconnect(m_appBackend, SIGNAL(progress(Application *, int)),
-                   this, SLOT(updateProgress(Application *, int)));
+        disconnect(m_appBackend, SIGNAL(progress(Transaction *, int)),
+                   this, SLOT(updateProgress(Transaction *, int)));
         break;
     default:
         break;
     }
 }
 
-void ApplicationDetailsWidget::updateProgress(Application *app, int percentage)
+void ApplicationDetailsWidget::updateProgress(Transaction *transaction, int percentage)
 {
-    if (m_app == app) {
+    if (m_app == transaction->application()) {
         m_progressBar->setValue(percentage);
 
         if (percentage == 100) {
-            showTransactionState(DoneState);
+            m_progressBar->setFormat(i18nc("@info:status", "Done"));
         }
     }
 }
 
-void ApplicationDetailsWidget::showTransactionState(TransactionState state)
+void ApplicationDetailsWidget::showTransactionState(Transaction *transaction)
 {
     m_actionButton->hide();
     m_progressBar->show();
     m_progressBar->setValue(0);
 
     QString text;
-    switch (state) {
+    switch (transaction->state()) {
     case QueuedState:
         text = i18nc("@info:status", "Waiting");
         break;
     case RunningState:
-        if (!m_app->package()->isInstalled()) {
+        switch (transaction->action()) {
+        case InstallApp:
             text = i18nc("@info:status", "Installing");
-        } else {
+            break;
+        case ChangeAddons:
+            text = i18nc("@info:status", "Changing Addons");
+            break;
+        case RemoveApp:
             text = i18nc("@info:status", "Removing");
+            break;
+        default:
+            break;
         }
         break;
     case DoneState:
@@ -529,7 +543,10 @@ void ApplicationDetailsWidget::actionButtonClicked()
         emit installButtonClicked(m_app);
     }
 
-    showTransactionState(QueuedState);
+    m_actionButton->hide();
+    m_progressBar->show();
+    m_progressBar->setValue(0);
+    m_progressBar->setFormat(i18nc("@info:status", "Waiting"));
 }
 
 void ApplicationDetailsWidget::cancelButtonClicked()
@@ -644,6 +661,11 @@ void ApplicationDetailsWidget::addonsRevertButtonClicked()
 void ApplicationDetailsWidget::addonsApplyButtonClicked()
 {
     emit installButtonClicked(m_app, m_changedAddons);
+
+    m_actionButton->hide();
+    m_progressBar->show();
+    m_progressBar->setValue(0);
+    m_progressBar->setFormat(i18nc("@info:status", "Waiting"));
 }
 
 #include "ApplicationDetailsWidget.moc"
