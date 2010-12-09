@@ -177,7 +177,8 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
 
     m_addonsApplyButton = new QPushButton(m_addonsWidget);
     m_addonsApplyButton->setIcon(KIcon("dialog-ok-apply"));
-    m_addonsApplyButton->setText(i18nc("@action:button", "Apply Changes to Addons"));
+    m_addonsApplyButton->setText(i18nc("@action:button", "Apply"));
+    m_addonsApplyButton->setToolTip(i18nc("@info:tooltip", "Apply changes to addons"));
     connect(m_addonsApplyButton, SIGNAL(clicked()),
             this, SLOT(addonsApplyButtonClicked()));
 
