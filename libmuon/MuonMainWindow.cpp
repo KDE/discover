@@ -57,12 +57,12 @@ void MuonMainWindow::initObject()
     m_backend = new QApt::Backend;
     connect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
             this, SLOT(workerEvent(QApt::WorkerEvent)));
-    connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode, const QVariantMap &)),
-            this, SLOT(errorOccurred(QApt::ErrorCode, const QVariantMap &)));
-    connect(m_backend, SIGNAL(warningOccurred(QApt::WarningCode, const QVariantMap &)),
-            this, SLOT(warningOccurred(QApt::WarningCode, const QVariantMap &)));
-    connect(m_backend, SIGNAL(questionOccurred(QApt::WorkerQuestion, const QVariantMap &)),
-            this, SLOT(questionOccurred(QApt::WorkerQuestion, const QVariantMap &)));
+    connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode, QVariantMap)),
+            this, SLOT(errorOccurred(QApt::ErrorCode, QVariantMap)));
+    connect(m_backend, SIGNAL(warningOccurred(QApt::WarningCode, QVariantMap)),
+            this, SLOT(warningOccurred(QApt::WarningCode, QVariantMap)));
+    connect(m_backend, SIGNAL(questionOccurred(QApt::WorkerQuestion, QVariantMap)),
+            this, SLOT(questionOccurred(QApt::WorkerQuestion, QVariantMap)));
     connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
     m_backend->init();
 

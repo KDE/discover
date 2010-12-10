@@ -68,8 +68,8 @@ void ApplicationWindow::initGUI()
 
     // Set up the navigational sidebar on the right
     m_viewSwitcher = new ViewSwitcher(this);
-    connect(m_viewSwitcher, SIGNAL(activated(const QModelIndex &)),
-           this, SLOT(changeView(const QModelIndex &)));
+    connect(m_viewSwitcher, SIGNAL(activated(QModelIndex)),
+           this, SLOT(changeView(QModelIndex)));
     m_mainWidget->addWidget(m_viewSwitcher);
 
     // Set up the main pane
