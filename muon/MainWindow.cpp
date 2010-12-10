@@ -254,6 +254,8 @@ void MainWindow::checkForUpdates()
 
 void MainWindow::workerEvent(QApt::WorkerEvent event)
 {
+    MuonMainWindow::workerEvent(event);
+
     switch (event) {
     case QApt::CacheUpdateStarted:
         if (m_downloadWidget) {

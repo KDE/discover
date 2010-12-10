@@ -169,6 +169,8 @@ void ApplicationWindow::checkForUpdates()
 
 void ApplicationWindow::workerEvent(QApt::WorkerEvent event)
 {
+    MuonMainWindow::workerEvent(event);
+ 
     switch (event) {
     case QApt::CommitChangesFinished:
         if (m_warningStack.size() > 0) {
