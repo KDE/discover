@@ -93,7 +93,7 @@ protected Q_SLOTS:
     virtual void revertChanges();
 
 public Q_SLOTS:
-    void runSourcesEditor();
+    void runSourcesEditor(bool update = false);
     void sourcesEditorFinished(int reload);
 
 Q_SIGNALS:

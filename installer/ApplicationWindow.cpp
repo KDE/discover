@@ -343,6 +343,18 @@ void ApplicationWindow::selectFirstRow(const QAbstractItemView *itemView)
     changeView(firstRow);
 }
 
+void ApplicationWindow::runSourcesEditor()
+{
+    // Let QApt Batch handle the update GUI
+    MuonMainWindow::runSourcesEditor(true);
+}
+
+void ApplicationWindow::sourcesEditorFinished(int reload)
+{
+    m_appBackend->reload();
+    MuonMainWindow::sourcesEditorFinished(reload);
+}
+
 ApplicationBackend *ApplicationWindow::appBackend() const
 {
     return m_appBackend;

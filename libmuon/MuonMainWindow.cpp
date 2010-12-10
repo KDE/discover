@@ -472,14 +472,23 @@ void MuonMainWindow::revertChanges()
     reload();
 }
 
-void MuonMainWindow::runSourcesEditor()
+void MuonMainWindow::runSourcesEditor(bool update)
 {
     KProcess *proc = new KProcess(this);
     QStringList arguments;
     int winID = effectiveWinId();
-    proc->setProgram(QStringList() << "/usr/bin/kdesudo"
-                                   << "software-properties-kde --dont-update --attach "//krazy:exclude=spelling
-                                   << QString::number(winID));
+
+    QString editor = "software-properties-kde";
+
+    if (!update) {
+        editor.append(" --dont-update --attach " % QString::number(winID)); //krazy:exclude=spelling;
+    } else {
+        editor.append(" --attach " % QString::number(winID));
+    }
+
+    arguments << "/usr/bin/kdesudo" << editor;
+
+    proc->setProgram(arguments);
     find(winID)->setEnabled(false);
     proc->start();
     connect(proc, SIGNAL(finished(int, QProcess::ExitStatus)),
