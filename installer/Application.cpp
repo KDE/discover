@@ -34,6 +34,7 @@
 
 // QApt includes
 #include <LibQApt/Backend>
+#include <LibQApt/Config>
 
 Application::Application(const QString &fileName, QApt::Backend *backend)
         : m_fileName(fileName)
@@ -214,8 +215,14 @@ QApt::PackageList Application::addons()
     }
 
     QStringList tempList;
-    tempList << m_package->recommendsList();
-    tempList << m_package->suggestsList();
+    // Only add recommends or suggests to the list if they aren't already going to be
+    // installed
+    if (!m_backend->config()->readEntry("APT::Install-Recommends", true)) {
+        tempList << m_package->recommendsList();
+    }
+    if (!m_backend->config()->readEntry("APT::Install-Suggests", false)) {
+        tempList << m_package->suggestsList();
+    }
     tempList << m_package->enhancedByList();
 
     QStringList languagePackages;

@@ -43,7 +43,6 @@
 #include <KStatusBar>
 #include <KVBox>
 #include <Phonon/MediaObject>
-#include <Solid/PowerManagement>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -260,14 +259,11 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
         if (m_downloadWidget) {
             m_downloadWidget->setHeaderText(i18nc("@info", "<title>Updating software sources</title>"));
             m_stack->setCurrentWidget(m_downloadWidget);
-            m_powerInhibitor = Solid::PowerManagement::beginSuppressingSleep(i18nc("@info:status", "Muon is downloading packages"));
             connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
         }
         break;
     case QApt::CacheUpdateFinished:
     case QApt::CommitChangesFinished:
-        Solid::PowerManagement::stopSuppressingSleep(m_powerInhibitor);
-        m_canExit = true;
         reload();
         returnFromPreview();
         if (m_warningStack.size() > 0) {
@@ -282,14 +278,12 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
     case QApt::PackageDownloadStarted:
         if (m_downloadWidget) {
             m_downloadWidget->setHeaderText(i18nc("@info", "<title>Downloading Packages</title>"));
-            m_powerInhibitor = Solid::PowerManagement::beginSuppressingSleep(i18nc("@info:status", "Muon is downloading packages"));
             m_stack->setCurrentWidget(m_downloadWidget);
             connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
         }
         break;
     case QApt::CommitChangesStarted:
         if (m_commitWidget) {
-            m_canExit = false;
             m_commitWidget->setHeaderText(i18nc("@info", "<title>Committing Changes</title>"));
             m_stack->setCurrentWidget(m_commitWidget);
         }

@@ -48,7 +48,6 @@ namespace QApt
  *
  * @short Main window class
  * @author Jonathan Thomas <echidnaman@kubuntu.org>
- * @version 0.1
  */
 class MainWindow : public MuonMainWindow
 {
@@ -105,4 +104,4 @@ public Q_SLOTS:
     void closeSettingsDialog();
 };
 
-#endif // _MUON_H_
+#endif

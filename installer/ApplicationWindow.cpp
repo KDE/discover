@@ -31,7 +31,6 @@
 #include <KAction>
 #include <KActionCollection>
 #include <KIcon>
-#include <Solid/PowerManagement>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -172,8 +171,6 @@ void ApplicationWindow::workerEvent(QApt::WorkerEvent event)
 {
     switch (event) {
     case QApt::CommitChangesFinished:
-        Solid::PowerManagement::stopSuppressingSleep(m_powerInhibitor);
-        m_canExit = true;
         if (m_warningStack.size() > 0) {
             showQueuedWarnings();
             m_warningStack.clear();
@@ -182,12 +179,6 @@ void ApplicationWindow::workerEvent(QApt::WorkerEvent event)
             showQueuedErrors();
             m_errorStack.clear();
         }
-        break;
-    case QApt::PackageDownloadStarted:
-        m_powerInhibitor = Solid::PowerManagement::beginSuppressingSleep(i18nc("@info:status", "Muon is downloading packages"));
-        break;
-    case QApt::CommitChangesStarted:
-        m_canExit = false;
         break;
     case QApt::InvalidEvent:
     default:

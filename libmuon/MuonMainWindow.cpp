@@ -32,6 +32,7 @@
 #include <KMessageBox>
 #include <KProcess>
 #include <Solid/Networking>
+#include <Solid/PowerManagement>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -177,7 +178,21 @@ void MuonMainWindow::checkForUpdates()
 
 void MuonMainWindow::workerEvent(QApt::WorkerEvent event)
 {
-    Q_UNUSED(event);
+    switch (event) {
+    case QApt::CacheUpdateStarted:
+    case QApt::PackageDownloadStarted:
+        m_powerInhibitor = Solid::PowerManagement::beginSuppressingSleep(i18nc("@info:status", "Muon is making system changes"));
+    case QApt::CommitChangesStarted:
+        m_canExit = false;
+        break;
+    case QApt::CacheUpdateFinished:
+    case QApt::CommitChangesFinished:
+        Solid::PowerManagement::stopSuppressingSleep(m_powerInhibitor);
+        m_canExit = true;
+        break;
+    default:
+        break;
+    }
 }
 
 void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args)

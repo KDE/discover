@@ -174,6 +174,7 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     addonsTitle->setAlignment(Qt::AlignLeft);
 
     m_addonsView = new QListView(m_addonsWidget);
+    m_addonsView->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
     m_addonsModel = new QStandardItemModel(this);
     m_addonsView->setModel(m_addonsModel);
 
@@ -573,6 +574,7 @@ void ApplicationDetailsWidget::cancelButtonClicked()
 void ApplicationDetailsWidget::populateAddons()
 {
     QApt::PackageList addons = m_app->addons();
+
     m_availableAddons = addons;
 
     if (!addons.isEmpty()) {
