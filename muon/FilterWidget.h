@@ -34,8 +34,6 @@ class QStandardItemModel;
 class QToolBox;
 class QTreeView;
 
-class KLineEdit;
-
 namespace QApt
 {
     class Backend;
@@ -54,7 +52,6 @@ private:
     QApt::Backend *m_backend;
     MuonStrings *m_strings;
 
-    KLineEdit *m_searchEdit;
     QToolBox *m_filterBox;
     QTreeView *m_categoriesList;
     QListView *m_statusList;
