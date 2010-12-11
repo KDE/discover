@@ -251,11 +251,23 @@ QSize PackageDelegate::sizeHint(const QStyleOptionViewItem &option, const QModel
     Q_UNUSED(index);
 
     QSize size;
+    QFontMetrics metric = QFontMetrics(option.font);
 
-    // Doing this for realz would result in 90,000 iterations grabbing font metrics...
-    // I fear for how columns will look by default for translations... FIXME if we can...
-    size.setWidth(option.fontMetrics.height() * 4);
+    switch (index.column()) {
+    case 0:
+        size.setWidth(metric.width(index.data(PackageModel::DescriptionRole).toString()));
+        break;
+    case 1:
+        size.setWidth(metric.width(index.data(PackageModel::StatusRole).toString()));
+        break;
+    case 2:
+        size.setWidth(metric.width(index.data(PackageModel::ActionRole).toString()));
+        break;
+    default:
+        break;
+    }
     size.setHeight(option.fontMetrics.height() * 2 + m_spacing);
+
     return size;
 }
 
