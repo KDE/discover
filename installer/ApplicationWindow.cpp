@@ -85,7 +85,7 @@ void ApplicationWindow::initGUI()
             this, SLOT(populateViews()));
 
     setupActions();
-    setupGUI();
+    setupGUI((StandardWindowOption)(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
 }
 
 void ApplicationWindow::initObject()
