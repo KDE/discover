@@ -89,7 +89,7 @@ QString Application::comment()
 QApt::Package *Application::package()
 {
     if (!m_package) {
-        QString packageName = getField("X-AppInstall-Package");
+        QLatin1String packageName(getField("X-AppInstall-Package").data());
         if (m_backend) {
             m_package = m_backend->package(packageName);
         }
