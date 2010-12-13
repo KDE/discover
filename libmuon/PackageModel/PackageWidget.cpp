@@ -88,6 +88,7 @@ PackageWidget::PackageWidget(QWidget *parent)
     m_searchEdit = new KLineEdit(topVBox);
     m_searchEdit->setClickMessage(i18nc("@label Line edit click message", "Search"));
     m_searchEdit->setClearButtonShown(true);
+    m_searchEdit->setEnabled(false);
     m_searchEdit->hide(); // Off by default, use showSearchEdit() to show
 
     m_packageView = new PackageView(topVBox);
@@ -208,6 +209,7 @@ void PackageWidget::setSortedPackages()
 {
     QApt::PackageList packageList = m_watcher->future().result();
     m_model->setPackages(packageList);
+    m_searchEdit->setEnabled(true);
     m_busyWidget->stop();
     QApplication::restoreOverrideCursor();
 }
