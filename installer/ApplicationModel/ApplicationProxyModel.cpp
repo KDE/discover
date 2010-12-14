@@ -25,6 +25,7 @@
 #include <LibQApt/Backend>
 
 // Own includes
+#include "../Application.h"
 #include "ApplicationModel.h"
 
 ApplicationProxyModel::ApplicationProxyModel(QObject *parent)

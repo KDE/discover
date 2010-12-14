@@ -60,10 +60,6 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, Appl
         connect(m_actionButton, SIGNAL(clicked()), this, SLOT(emitInstallButtonClicked()));
     }
 
-    m_progressBar = new QProgressBar(this);
-    m_progressBar->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Preferred);
-    m_progressBar->hide();
-
     m_cancelButton = new QPushButton(this);
     KGuiItem cancelButton = KStandardGuiItem::cancel();
     m_cancelButton->setIcon(cancelButton.icon());
@@ -74,7 +70,6 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, Appl
     layout->addWidget(infoButton);
     layout->addWidget(buttonSpacer);
     layout->addWidget(m_actionButton);
-    layout->addWidget(m_progressBar);
     layout->addWidget(m_cancelButton);
 
     connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Transaction *)),
@@ -86,13 +81,6 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, Appl
     // care because we won't handle it
     QPair<QApt::WorkerEvent, Transaction *> workerState = m_appBackend->workerState();
     workerEvent(workerState.first, workerState.second);
-
-    foreach (Transaction *transaction, m_appBackend->transactions()) {
-        if (transaction->application() == m_app){
-            showTransactionState(transaction);
-        }
-    }
-
 }
 
 ApplicationExtender::~ApplicationExtender()
@@ -109,96 +97,19 @@ void ApplicationExtender::workerEvent(QApt::WorkerEvent event, Transaction *tran
     case QApt::PackageDownloadStarted:
         m_actionButton->hide();
         m_cancelButton->show();
-        m_progressBar->show();
-        m_progressBar->setFormat(i18nc("@info:status", "Downloading"));
-        connect(m_appBackend, SIGNAL(progress(Transaction *, int)),
-                this, SLOT(updateProgress(Transaction *, int)));
-        break;
-    case QApt::PackageDownloadFinished:
-        disconnect(m_appBackend, SIGNAL(progress(Transaction *, int)),
-                   this, SLOT(updateProgress(Transaction *, int)));
         break;
     case QApt::CommitChangesStarted:
-        m_actionButton->hide();
         m_cancelButton->hide();
-        m_progressBar->show();
-        m_progressBar->setValue(0);
-        switch (transaction->action()) {
-        case InstallApp:
-            m_progressBar->setFormat(i18nc("@info:status", "Installing"));
-            break;
-        case ChangeAddons:
-            m_progressBar->setFormat(i18nc("@info:status", "Changing Addons"));
-            break;
-        case RemoveApp:
-            m_progressBar->setFormat(i18nc("@info:status", "Removing"));
-            break;
-        default:
-            break;
-        }
-        connect(m_appBackend, SIGNAL(progress(Transaction *, int)),
-                this, SLOT(updateProgress(Transaction *, int)));
-        break;
-    case QApt::CommitChangesFinished:
-        disconnect(m_appBackend, SIGNAL(progress(Transaction *, int)),
-                   this, SLOT(updateProgress(Transaction *, int)));
+        m_actionButton->hide();
         break;
     default:
         break;
     }
-}
-
-void ApplicationExtender::updateProgress(Transaction *transaction, int percentage)
-{
-    if (m_app == transaction->application()) {
-        m_progressBar->setValue(percentage);
-
-        if (percentage == 100) {
-            m_progressBar->setFormat(i18nc("@info:status", "Done"));
-        }
-    }
-}
-
-void ApplicationExtender::showTransactionState(Transaction *transaction)
-{
-    m_actionButton->hide();
-    m_progressBar->show();
-    m_progressBar->setValue(0);
-
-    QString text;
-    switch (transaction->state()) {
-    case QueuedState:
-        text = i18nc("@info:status", "Waiting");
-        break;
-    case RunningState:
-        switch (transaction->action()) {
-        case InstallApp:
-            text = i18nc("@info:status", "Installing");
-            break;
-        case ChangeAddons:
-            text = i18nc("@info:status", "Changing Addons");
-            break;
-        case RemoveApp:
-            text = i18nc("@info:status", "Removing");
-            break;
-        default:
-            break;
-        }
-        break;
-    case DoneState:
-        text = i18nc("@info:status", "Done");
-        m_progressBar->setValue(100);
-        break;
-    default:
-        break;
-    }
-    m_progressBar->setFormat(text);
 }
 
 void ApplicationExtender::transactionCancelled(Application *app)
 {
     if (m_app == app) {
-        m_progressBar->hide();
         m_cancelButton->hide();
         m_actionButton->show();
     }
@@ -213,20 +124,16 @@ void ApplicationExtender::emitRemoveButtonClicked()
 {
     emit removeButtonClicked(m_app);
 
-    m_actionButton->hide();
-    m_progressBar->show();
-    m_progressBar->setValue(0);
-    m_progressBar->setFormat(i18nc("@info:status", "Waiting"));
+    m_actionButton->setEnabled(false);
+    m_actionButton->setText(i18nc("@info:status", "Waiting"));
 }
 
 void ApplicationExtender::emitInstallButtonClicked()
 {
     emit installButtonClicked(m_app);
 
-    m_actionButton->hide();
-    m_progressBar->show();
-    m_progressBar->setValue(0);
-    m_progressBar->setFormat(i18nc("@info:status", "Waiting"));
+    m_actionButton->setEnabled(false);
+    m_actionButton->setText(i18nc("@info:status", "Waiting"));
 }
 
 void ApplicationExtender::emitCancelButtonClicked()

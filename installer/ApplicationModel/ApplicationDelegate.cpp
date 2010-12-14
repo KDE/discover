@@ -29,7 +29,7 @@
 #include <QtGui/QTreeView>
 
 // KDE includes
-#include <KDebug>
+#include <KApplication>
 #include <KIconLoader>
 #include <KGlobal>
 #include <KLocale>
@@ -119,7 +119,20 @@ void ApplicationDelegate::paint(QPainter *painter,
     rect.setTop(rect.top() + ((calcItemHeight(option) - m_buttonSize.height()) / 2));
     rect.setSize(m_buttonSize); // the width and height sizes of the button
 
-    m_ratingPainter->paint(painter, rect, index.data(ApplicationModel::PopconRole).toInt());
+    bool transactionActive = index.data(ApplicationModel::ActiveRole).toBool();
+
+    if (!transactionActive) {
+        m_ratingPainter->paint(painter, rect, index.data(ApplicationModel::PopconRole).toInt());
+    } else {
+        QStyleOptionProgressBar progressBarOption;
+        progressBarOption.rect = rect;
+        progressBarOption.minimum = 0;
+        progressBarOption.maximum = 100;
+        progressBarOption.progress = index.data(ApplicationModel::ProgressRole).toInt();
+        progressBarOption.text = index.data(ApplicationModel::ProgressTextRole).toString();
+        progressBarOption.textVisible = true;
+        KApplication::style()->drawControl(QStyle::CE_ProgressBar, &progressBarOption, painter);
+    }
 
 
     // selects the mode to paint the icon based on the info field

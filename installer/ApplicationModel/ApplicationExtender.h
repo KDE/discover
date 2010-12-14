@@ -45,13 +45,10 @@ private:
     Application *m_app;
     ApplicationBackend *m_appBackend;
     QPushButton *m_actionButton;
-    QProgressBar *m_progressBar;
     QPushButton *m_cancelButton;
 
 private Q_SLOTS:
     void workerEvent(QApt::WorkerEvent event, Transaction *transaction);
-    void updateProgress(Transaction *transaction, int percentage);
-    void showTransactionState(Transaction *transaction);
     void transactionCancelled(Application *app);
     void emitInfoButtonClicked();
     void emitRemoveButtonClicked();

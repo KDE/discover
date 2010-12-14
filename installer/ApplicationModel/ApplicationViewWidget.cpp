@@ -48,7 +48,7 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
         , m_detailsView(0)
 {
     m_searchable = true;
-    m_appModel = new ApplicationModel(this);
+    m_appModel = new ApplicationModel(this, m_appBackend);
     m_proxyModel = new ApplicationProxyModel(this);
     m_proxyModel->setSourceModel(m_appModel);
 

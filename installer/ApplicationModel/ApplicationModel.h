@@ -23,7 +23,11 @@
 
 #include <QAbstractListModel>
 
-#include "../Application.h"
+#include <LibQApt/Globals>
+
+class Application;
+class ApplicationBackend;
+class Transaction;
 
 class ApplicationModel: public QAbstractListModel
 {
@@ -35,9 +39,12 @@ public:
         CommentRole = Qt::UserRole + 2,
         ActionRole = Qt::UserRole + 3,
         StatusRole = Qt::UserRole + 4,
-        PopconRole = Qt::UserRole + 5
+        PopconRole = Qt::UserRole + 5,
+        ActiveRole = Qt::UserRole + 6,
+        ProgressRole = Qt::UserRole + 7,
+        ProgressTextRole = Qt::UserRole + 8
     };
-    explicit ApplicationModel(QObject *parent = 0);
+    explicit ApplicationModel(QObject *parent, ApplicationBackend *backend);
     ~ApplicationModel();
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
@@ -48,14 +55,23 @@ public:
     void setMaxPopcon(int popconScore);
     void clear();
     Application *applicationAt(const QModelIndex &index) const;
+    Transaction *transactionAt(const QModelIndex &index) const;
     QList<Application *> applications() const;
 
 private:
+    ApplicationBackend *m_appBackend;
     QList<Application *> m_apps;
+    QHash<Transaction *, int> m_runningTransactions;
     int m_maxPopcon;
 
+public Q_SLOTS:
+    void updateTransactionProgress(Transaction *transaction, int progress);
+
+private Q_SLOTS:
+    void workerEvent(QApt::WorkerEvent event, Transaction *trans);
+
 Q_SIGNALS:
-   void dataChanged();
+   void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight);
 };
 
 #endif

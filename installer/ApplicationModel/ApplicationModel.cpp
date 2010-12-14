@@ -21,7 +21,6 @@
 #include "ApplicationModel.h"
 
 #include <KIcon>
-#include <KDebug>
 #include <KLocale>
 #include <KExtendableItemDelegate>
 
@@ -29,11 +28,22 @@
 
 #include <math.h>
 
-ApplicationModel::ApplicationModel(QObject *parent)
+#include "../Application.h"
+#include "../ApplicationBackend.h"
+#include "../Transaction.h"
+
+ApplicationModel::ApplicationModel(QObject *parent, ApplicationBackend *backend)
     : QAbstractListModel(parent)
+    , m_appBackend(backend)
     , m_apps()
     , m_maxPopcon(0)
 {
+    connect(m_appBackend, SIGNAL(progress(Transaction *, int)),
+                this, SLOT(updateTransactionProgress(Transaction *, int)));
+    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Transaction *)),
+            this, SLOT(workerEvent(QApt::WorkerEvent, Transaction *)));
+    connect(m_appBackend, SIGNAL(transactionCancelled(Application *)),
+            this, SLOT(transactionCancelled(Application *)));
 }
 
 ApplicationModel::~ApplicationModel()
@@ -63,12 +73,79 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role) const
         case CommentRole:
             return m_apps.at(index.row())->comment();
         case StatusRole:
-        case ActionRole:
             return m_apps.at(index.row())->package()->state();
+        case ActionRole: {
+            Transaction *transaction = transactionAt(index);
+
+            if (!transaction) {
+                return 0;
+            }
+
+            return transaction->action();
+        }
         case PopconRole:
             // Take the log of the popcon score, divide by max +1, then multiply by number
-            // of star steps. (10 in the case of KRatingsPainter
+            // of star steps. (10 in the case of KRatingsPainter)
             return (int)(10* log(m_apps.at(index.row())->popconScore())/log(m_maxPopcon+1));
+        case ActiveRole: {
+            Transaction *transaction = transactionAt(index);
+
+            if (!transaction) {
+                return 0;
+            }
+
+            if (transaction->state() != InvalidState) {
+                return true;
+            }
+            return false;
+        }
+        case ProgressRole: {
+            Transaction *transaction = transactionAt(index);
+
+            if (!transaction) {
+                return 0;
+            }
+
+            if (transaction->state() == RunningState) {
+                return m_runningTransactions.value(transaction);
+            }
+            return 0;
+        }
+        case ProgressTextRole: {
+            Transaction *transaction = transactionAt(index);
+
+            if (!transaction) {
+                return QVariant();
+            }
+
+            switch(transaction->state()) {
+            case QueuedState:
+                return i18nc("@info:status", "Waiting");
+            case DoneState:
+                return i18nc("@info:status", "Done");
+            case RunningState:
+            default:
+                break;
+            }
+
+            switch (m_appBackend->workerState().first) {
+            case QApt::PackageDownloadStarted:
+                return i18nc("@info:status", "Downloading");
+            case QApt::CommitChangesStarted:
+                switch (index.data(ApplicationModel::ActionRole).toInt()) {
+                case InstallApp:
+                    return i18nc("@info:status", "Installing");
+                case ChangeAddons:
+                    return i18nc("@info:status", "Changing Addons");
+                case RemoveApp:
+                    return i18nc("@info:status", "Removing");
+                default:
+                    return QVariant();
+                }
+            default:
+                return QVariant();
+            }
+        }
         case Qt::ToolTipRole:
             return QVariant();
     }
@@ -84,7 +161,6 @@ void ApplicationModel::setApplications(const QList<Application*> &list)
 #endif
     beginInsertRows(QModelIndex(), m_apps.count(), m_apps.count());
     m_apps = list;
-    emit dataChanged();
     endInsertRows();
 }
 
@@ -97,13 +173,46 @@ void ApplicationModel::clear()
 {
     beginRemoveRows(QModelIndex(), 0, m_apps.size());
     m_apps.clear();
+    m_runningTransactions.clear();
     m_maxPopcon = 0;
     endRemoveRows();
+}
+
+void ApplicationModel::updateTransactionProgress(Transaction *trans, int progress)
+{
+    m_runningTransactions[trans] = progress;
+
+    emit dataChanged(index(m_apps.indexOf(trans->application()), 0),
+                         index(m_apps.indexOf(trans->application()), 0));
+}
+
+void ApplicationModel::workerEvent(QApt::WorkerEvent event, Transaction *trans)
+{
+    Q_UNUSED(event);
+
+    if (trans != 0) {
+        emit dataChanged(index(m_apps.indexOf(trans->application()), 0),
+                         index(m_apps.indexOf(trans->application()), 0));
+    }
 }
 
 Application *ApplicationModel::applicationAt(const QModelIndex &index) const
 {
     return m_apps.at(index.row());
+}
+
+Transaction *ApplicationModel::transactionAt(const QModelIndex &index) const
+{
+    Transaction *transaction = 0;
+
+    Application *app = applicationAt(index);
+    foreach (Transaction *trns, m_appBackend->transactions()) {
+        if (trns->application() == app) {
+            transaction = trns;
+        }
+    }
+
+    return transaction;
 }
 
 QList<Application*> ApplicationModel::applications() const
