@@ -112,6 +112,7 @@ void ApplicationExtender::transactionCancelled(Application *app)
     if (m_app == app) {
         m_cancelButton->hide();
         m_actionButton->show();
+        m_actionButton->setEnabled(true);
         if (app->package()->isInstalled()) {
             m_actionButton->setIcon(KIcon("edit-delete"));
             m_actionButton->setText(i18n("Remove"));
