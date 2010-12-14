@@ -1,6 +1,7 @@
 /*
  *   Copyright (C) 2007 Ivan Cukic <ivan.cukic+kde@gmail.com>
  *   Copyright (C) 2008 Daniel Nicoletti <dantti85-pk@yahoo.com.br>
+ *   Copyright (C) 2010 Jonathan Thomas <echidnaman@kubuntu.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library/Lesser General Public License
@@ -69,6 +70,8 @@ ApplicationDelegate::ApplicationDelegate(QAbstractItemView *parent, ApplicationB
 
     // For icons later
     KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
+
+    m_ratingPainter = new KRatingPainter;
 }
 
 void ApplicationDelegate::paint(QPainter *painter,
@@ -102,7 +105,6 @@ void ApplicationDelegate::paint(QPainter *painter,
     int top = opt.rect.top();
     int width = opt.rect.width();
 
-    KRatingPainter ratingPainter;
     QRect rect = opt.rect;
 
     if (leftToRight) {
@@ -117,7 +119,7 @@ void ApplicationDelegate::paint(QPainter *painter,
     rect.setTop(rect.top() + ((calcItemHeight(option) - m_buttonSize.height()) / 2));
     rect.setSize(m_buttonSize); // the width and height sizes of the button
 
-    ratingPainter.paint(painter, rect, index.data(ApplicationModel::PopconRole).toInt());
+    m_ratingPainter->paint(painter, rect, index.data(ApplicationModel::PopconRole).toInt());
 
 
     // selects the mode to paint the icon based on the info field
@@ -247,8 +249,6 @@ void ApplicationDelegate::itemActivated(QModelIndex index)
     if (index == m_oldIndex) {
         return;
     }
-
-    kDebug() << m_oldIndex;
 
     if (isExtended(m_oldIndex)) {
         disconnect(m_extender, SIGNAL(infoButtonClicked(Application *)),

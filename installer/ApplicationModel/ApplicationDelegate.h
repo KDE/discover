@@ -27,6 +27,7 @@
 #include <KIcon>
 
 class KIconLoader;
+class KRatingPainter;
 
 class Application;
 class ApplicationBackend;
@@ -61,6 +62,8 @@ private:
 
     ApplicationExtender *m_extender;
     mutable QPersistentModelIndex m_oldIndex;
+
+    KRatingPainter *m_ratingPainter;
 
 public Q_SLOTS:
     void itemActivated(QModelIndex index);
