@@ -35,7 +35,6 @@
 ApplicationModel::ApplicationModel(QObject *parent, ApplicationBackend *backend)
     : QAbstractListModel(parent)
     , m_appBackend(backend)
-    , m_apps()
     , m_maxPopcon(0)
 {
     connect(m_appBackend, SIGNAL(progress(Transaction *, int)),
