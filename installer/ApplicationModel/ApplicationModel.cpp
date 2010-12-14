@@ -42,8 +42,6 @@ ApplicationModel::ApplicationModel(QObject *parent, ApplicationBackend *backend)
                 this, SLOT(updateTransactionProgress(Transaction *, int)));
     connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Transaction *)),
             this, SLOT(workerEvent(QApt::WorkerEvent, Transaction *)));
-    connect(m_appBackend, SIGNAL(transactionCancelled(Application *)),
-            this, SLOT(transactionCancelled(Application *)));
 }
 
 ApplicationModel::~ApplicationModel()

@@ -112,6 +112,13 @@ void ApplicationExtender::transactionCancelled(Application *app)
     if (m_app == app) {
         m_cancelButton->hide();
         m_actionButton->show();
+        if (app->package()->isInstalled()) {
+            m_actionButton->setIcon(KIcon("edit-delete"));
+            m_actionButton->setText(i18n("Remove"));
+        } else {
+            m_actionButton->setIcon(KIcon("download"));
+            m_actionButton->setText(i18n("Install"));
+        }
     }
 }
 
@@ -125,7 +132,6 @@ void ApplicationExtender::emitRemoveButtonClicked()
     emit removeButtonClicked(m_app);
 
     m_actionButton->setEnabled(false);
-    m_actionButton->setText(i18nc("@info:status", "Waiting"));
 }
 
 void ApplicationExtender::emitInstallButtonClicked()
@@ -133,7 +139,6 @@ void ApplicationExtender::emitInstallButtonClicked()
     emit installButtonClicked(m_app);
 
     m_actionButton->setEnabled(false);
-    m_actionButton->setText(i18nc("@info:status", "Waiting"));
 }
 
 void ApplicationExtender::emitCancelButtonClicked()
