@@ -41,6 +41,8 @@ ApplicationModel::ApplicationModel(QObject *parent, ApplicationBackend *backend)
                 this, SLOT(updateTransactionProgress(Transaction *, int)));
     connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Transaction *)),
             this, SLOT(workerEvent(QApt::WorkerEvent, Transaction *)));
+    connect(m_appBackend, SIGNAL(transactionCancelled(Application *)),
+            this, SLOT(transactionCancelled(Application *)));
 }
 
 ApplicationModel::~ApplicationModel()
@@ -91,10 +93,10 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role) const
                 return 0;
             }
 
-            if (transaction->state() != InvalidState) {
-                return true;
+            if (transaction->state() == (DoneState | InvalidState)) {
+                return false;
             }
-            return false;
+            return true;
         }
         case ProgressRole: {
             Transaction *transaction = transactionAt(index);
@@ -191,6 +193,12 @@ void ApplicationModel::workerEvent(QApt::WorkerEvent event, Transaction *trans)
         emit dataChanged(index(m_apps.indexOf(trans->application()), 0),
                          index(m_apps.indexOf(trans->application()), 0));
     }
+}
+
+void ApplicationModel::transactionCancelled(Application *application)
+{
+    emit dataChanged(index(m_apps.indexOf(application), 0),
+                     index(m_apps.indexOf(application), 0));
 }
 
 Application *ApplicationModel::applicationAt(const QModelIndex &index) const

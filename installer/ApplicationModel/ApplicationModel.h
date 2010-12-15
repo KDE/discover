@@ -69,6 +69,7 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void workerEvent(QApt::WorkerEvent event, Transaction *trans);
+    void transactionCancelled(Application *app);
 
 Q_SIGNALS:
    void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight);

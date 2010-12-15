@@ -27,6 +27,7 @@
 #include <KLocale>
 #include <KMessageBox>
 #include <KService>
+#include <KDebug>
 
 #include <LibQApt/Backend>
 #include <DebconfGui.h>
@@ -176,7 +177,7 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error, const QVariantMap 
     // buttons do both marking and committing
     switch (error) {
     case QApt::AuthError:
-        emit transactionCancelled((*m_currentTransaction)->application());
+        cancelTransaction((*m_currentTransaction)->application());
         m_backend->undo();
         break;
     case QApt::UserCancelError:
@@ -236,6 +237,7 @@ void ApplicationBackend::cancelTransaction(Application *app)
                 m_backend->cancelDownload();
                 m_backend->undo();
             }
+
             m_queue.erase(iter);
             break;
         }
