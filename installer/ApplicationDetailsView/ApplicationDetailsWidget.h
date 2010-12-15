@@ -41,6 +41,7 @@ class QStandardItemModel;
 
 class KJob;
 class KPixmapSequenceOverlayPainter;
+class KRatingWidget;
 class KTemporaryFile;
 
 class Application;
@@ -68,6 +69,7 @@ private:
     QLabel *m_iconLabel;
     QLabel *m_nameLabel;
     QLabel *m_shortDescLabel;
+    KRatingWidget *m_ratingWidget;
     QWidget *m_menuPathWidget;
     QLabel *m_menuPathLabel;
     QLabel *m_statusLabel;

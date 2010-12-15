@@ -43,8 +43,11 @@
 #include <KTemporaryFile>
 #include <KToolInvocation>
 #include <KDebug>
+#include <Nepomuk/KRatingWidget>
 
 #include <LibQApt/Package>
+
+#include <math.h>
 
 #include "Application.h"
 #include "ClickableLabel.h"
@@ -88,9 +91,14 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     QWidget *headerSpacer = new QWidget(headerWidget);
     headerSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
+    m_ratingWidget = new KRatingWidget(headerWidget);
+    m_ratingWidget->setAttribute(Qt::WA_TransparentForMouseEvents);
+    m_ratingWidget->setPixmapSize(32);
+
     headerLayout->addWidget(m_iconLabel);
     headerLayout->addWidget(nameDescWidget);
     headerLayout->addWidget(headerSpacer);
+    headerLayout->addWidget(m_ratingWidget);
 
     // Menu path label
     m_menuPathWidget = new QWidget(this);
@@ -278,6 +286,8 @@ void ApplicationDetailsWidget::setApplication(Application *app)
 
     m_nameLabel->setText(QLatin1Literal("<h1>") % app->name() % QLatin1Literal("</h1>"));
     m_shortDescLabel->setText(app->comment());
+
+    m_ratingWidget->setRating((int)(10* log(app->popconScore())/log(m_appBackend->maxPopconScore()+1)));
 
     QString menuPathString = app->menuPath();
     if (!menuPathString.isEmpty()) {
