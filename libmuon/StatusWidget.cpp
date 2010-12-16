@@ -62,7 +62,7 @@ void StatusWidget::setBackend(QApt::Backend *backend)
 void StatusWidget::updateStatus()
 {
     int upgradeable = m_backend->packageCount(QApt::Package::Upgradeable);
-    bool showChanges = (m_backend->markedPackages().count() > 0);
+    bool showChanges = m_backend->areChangesMarked();
 
     QString availableText = i18np("1 package available, ", "%1 packages available, ", m_backend->packageCount());
     QString installText = i18n("%1 installed, ", m_backend->installedCount());
