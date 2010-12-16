@@ -147,10 +147,8 @@ void ApplicationWindow::setActionsEnabled(bool enabled)
         return;
     }
 
-    QApt::PackageList changedList = m_backend->markedPackages();
-
     m_loadSelectionsAction->setEnabled(true);
-    m_saveSelectionsAction->setEnabled(!changedList.isEmpty());
+    m_saveSelectionsAction->setEnabled(m_backend->areChangesMarked());
 }
 
 void ApplicationWindow::clearViews()
