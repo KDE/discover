@@ -235,10 +235,8 @@ void UpdaterWindow::setActionsEnabled(bool enabled)
         return;
     }
 
-    QApt::PackageList changedList = m_backend->markedPackages();
-
     if (isConnected()) {
-        m_applyAction->setEnabled(!changedList.isEmpty());
+        m_applyAction->setEnabled(m_backend->areChangesMarked());
     } else {
         m_applyAction->setEnabled(false);
     }
