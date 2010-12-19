@@ -55,7 +55,7 @@ ScreenShotViewer::ScreenShotViewer(const QString &url, QWidget *parent)
 
     m_screenshot = QPixmap(url);
 
-    QPropertyAnimation *anim1 = new QPropertyAnimation(this, "size");
+    QPropertyAnimation *anim1 = new QPropertyAnimation(this, "size", this);
     anim1->setDuration(500);
     anim1->setStartValue(size());
     anim1->setEndValue(m_screenshot.size() + (size()/3));
@@ -79,7 +79,7 @@ void ScreenShotViewer::fadeIn()
     effect->setOffset(2);
     effect->setColor(QApplication::palette().dark().color());
 
-    QPropertyAnimation *anim = new QPropertyAnimation(effect, "opacity");
+    QPropertyAnimation *anim = new QPropertyAnimation(effect, "opacity", this);
     anim->setDuration(500);
     anim->setStartValue(qreal(0));
     anim->setEndValue(qreal(1));

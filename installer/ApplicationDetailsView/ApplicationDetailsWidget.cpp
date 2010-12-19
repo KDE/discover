@@ -523,7 +523,7 @@ void ApplicationDetailsWidget::thumbnailFetched(KJob *job)
     shadow->setColor(QApplication::palette().dark().color());
     m_screenshotLabel->setGraphicsEffect(shadow);
 
-    m_fadeScreenshot = new QPropertyAnimation(shadow, "opacity");
+    m_fadeScreenshot = new QPropertyAnimation(shadow, "opacity", this);
     m_fadeScreenshot->setDuration(500);
     m_fadeScreenshot->setStartValue(qreal(0));
     m_fadeScreenshot->setEndValue(qreal(1));
