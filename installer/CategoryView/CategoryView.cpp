@@ -31,7 +31,7 @@
 CategoryView::CategoryView(QWidget *parent)
     : KCategorizedView(parent)
 {
-    CategoryDrawer *drawer = new CategoryDrawer();
+    CategoryDrawer *drawer = new CategoryDrawer(this);
 
     setSelectionMode(QAbstractItemView::SingleSelection);
     setSpacing(KDialog::spacingHint());
