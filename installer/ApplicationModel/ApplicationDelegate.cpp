@@ -51,22 +51,20 @@
 ApplicationDelegate::ApplicationDelegate(QAbstractItemView *parent, ApplicationBackend *backend)
   : KExtendableItemDelegate(parent),
     m_appBackend(backend),
-    m_installString(i18n("Install")),
-    m_removeIcon("edit-delete"),
-    m_removeString(i18n("Remove")),
     m_extender(0)
 {
     // To get sizing.
     QPushButton button, button2;
-    button.setText(m_installString);
-    button.setIcon(m_installIcon);
-    button2.setText(m_removeString);
-    button2.setIcon(m_removeIcon);
+    KIcon icon("edit-delete");
+
+    button.setText(i18n("Install"));
+    button.setIcon(icon);
+    button2.setText(i18n("Remove"));
+    button2.setIcon(icon);
     m_buttonSize = button.sizeHint();
     int width = qMax(button.sizeHint().width(), button2.sizeHint().width());
     width = qMax(width, button2.sizeHint().width());
     m_buttonSize.setWidth(width);
-    m_buttonIconSize = button.iconSize();
 
     // For icons later
     KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");

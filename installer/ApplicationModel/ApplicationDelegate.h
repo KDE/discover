@@ -53,15 +53,10 @@ private:
     ApplicationBackend *m_appBackend;
     int calcItemHeight(const QStyleOptionViewItem &option) const;
 
-    KIcon   m_installIcon;
-    QString m_installString;
-    KIcon   m_removeIcon;
-    QString m_removeString;
     QSize   m_buttonSize;
-    QSize   m_buttonIconSize;
 
     ApplicationExtender *m_extender;
-    mutable QPersistentModelIndex m_oldIndex;
+    QPersistentModelIndex m_oldIndex;
 
     KRatingPainter *m_ratingPainter;
 
