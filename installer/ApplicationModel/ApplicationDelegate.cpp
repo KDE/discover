@@ -66,9 +66,6 @@ ApplicationDelegate::ApplicationDelegate(QAbstractItemView *parent, ApplicationB
     width = qMax(width, button2.sizeHint().width());
     m_buttonSize.setWidth(width);
 
-    // For icons later
-    KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
-
     m_ratingPainter = new KRatingPainter;
 }
 

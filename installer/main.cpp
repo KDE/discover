@@ -20,9 +20,10 @@
 
 #include "ApplicationWindow.h"
 
-#include <KUniqueApplication>
 #include <KAboutData>
 #include <KCmdLineArgs>
+#include <KStandardDirs>
+#include <KUniqueApplication>
 
 #include <stdio.h>
 
@@ -46,8 +47,11 @@ int main(int argc, char **argv)
     }
 
     KUniqueApplication app;
+    // Translations
     KGlobal::locale()->insertCatalog("app-install-data");
     KGlobal::locale()->insertCatalog("libmuon");
+    // Needed for KIcon compatibility w/ application icons from app-install-data
+    KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
     app.disableSessionManagement();
 
     ApplicationWindow *mainWindow = new ApplicationWindow;
