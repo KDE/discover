@@ -51,14 +51,13 @@ public:
 
 private:
     ApplicationBackend *m_appBackend;
-    int calcItemHeight(const QStyleOptionViewItem &option) const;
 
     QSize   m_buttonSize;
-
-    ApplicationExtender *m_extender;
     QPersistentModelIndex m_oldIndex;
-
+    ApplicationExtender *m_extender;
     KRatingPainter *m_ratingPainter;
+
+    int calcItemHeight(const QStyleOptionViewItem &option) const;
 
 public Q_SLOTS:
     void itemActivated(QModelIndex index);
