@@ -232,7 +232,7 @@ QApt::PackageList Application::addons()
         QString contents = l10nFilterFile.readAll();
 
         foreach (const QString &line, contents.split('\n')) {
-            if (line.startsWith("#")) {
+            if (line.startsWith(QLatin1Char('#'))) {
                 continue;
             }
             languagePackages << line.split(':').last();
