@@ -29,7 +29,7 @@
 static const char description[] =
     I18N_NOOP("An update manager");
 
-static const char version[] = "1.0.80 \"Bullish Bandril\"";
+static const char version[] = "1.0.90 \"Bullish Bandril\"";
 
 int main(int argc, char **argv)
 {
