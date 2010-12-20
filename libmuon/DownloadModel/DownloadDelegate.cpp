@@ -71,7 +71,7 @@ void DownloadDelegate::paint(QPainter* painter, const QStyleOptionViewItem& opti
                 case QApt::DownloadFetch:
                     break;
                 case QApt::HitFetch:
-                    text = i18nc("@info:status Progress text when a download completes", "Done");
+                    text = i18nc("@info:status Progress text when done", "Done");
                     break;
                 case QApt::IgnoredFetch:
                     text = i18nc("@info:status Progress text when a download is ignored", "Ignored");
@@ -82,7 +82,7 @@ void DownloadDelegate::paint(QPainter* painter, const QStyleOptionViewItem& opti
             }
 
             if (percentage == 100) {
-                text = i18nc("@info:status Progress text when a download completes", "Done");
+                text = i18nc("@info:status Progress text when done", "Done");
             }
 
             QStyleOptionProgressBar progressBarOption;
