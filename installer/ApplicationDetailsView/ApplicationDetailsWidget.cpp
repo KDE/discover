@@ -422,7 +422,7 @@ void ApplicationDetailsWidget::updateProgress(Transaction *transaction, int perc
         m_progressBar->setValue(percentage);
 
         if (percentage == 100) {
-            m_progressBar->setFormat(i18nc("@info:status", "Done"));
+            m_progressBar->setFormat(i18nc("@info:status Progress text when done", "Done"));
         }
     }
 }
@@ -436,7 +436,7 @@ void ApplicationDetailsWidget::showTransactionState(Transaction *transaction)
     QString text;
     switch (transaction->state()) {
     case QueuedState:
-        text = i18nc("@info:status", "Waiting");
+        text = i18nc("@info:status Progress text when waiting", "Waiting");
         break;
     case RunningState:
         switch (transaction->action()) {
@@ -454,7 +454,7 @@ void ApplicationDetailsWidget::showTransactionState(Transaction *transaction)
         }
         break;
     case DoneState:
-        text = i18nc("@info:status", "Done");
+        text = i18nc("@info:status Progress text when done", "Done");
         m_progressBar->setValue(100);
         break;
     default:
@@ -573,7 +573,7 @@ void ApplicationDetailsWidget::actionButtonClicked()
     m_actionButton->hide();
     m_progressBar->show();
     m_progressBar->setValue(0);
-    m_progressBar->setFormat(i18nc("@info:status", "Waiting"));
+    m_progressBar->setFormat(i18nc("@info:status Progress text when waiting", "Waiting"));
 }
 
 void ApplicationDetailsWidget::cancelButtonClicked()
@@ -693,7 +693,7 @@ void ApplicationDetailsWidget::addonsApplyButtonClicked()
     m_actionButton->hide();
     m_progressBar->show();
     m_progressBar->setValue(0);
-    m_progressBar->setFormat(i18nc("@info:status", "Waiting"));
+    m_progressBar->setFormat(i18nc("@info:status Progress text when waiting", "Waiting"));
 }
 
 #include "ApplicationDetailsWidget.moc"

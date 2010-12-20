@@ -59,7 +59,7 @@ ApplicationWindow::~ApplicationWindow()
 
 void ApplicationWindow::initGUI()
 {
-    setWindowTitle(i18n("Muon Software Center"));
+    setWindowTitle(i18nc("@title:window", "Muon Software Center"));
 
     m_mainWidget = new QSplitter(this);
     m_mainWidget->setOrientation(Qt::Horizontal);
@@ -233,12 +233,12 @@ void ApplicationWindow::populateViews()
         viewItem->setData(AppView, ViewTypeRole);
 
         if (originName == "Ubuntu") {
-            viewItem->setText(i18n("Provided by Kubuntu"));
+            viewItem->setText(i18nc("@item:inlistbox", "Provided by Kubuntu"));
             viewItem->setIcon(KIcon("ubuntu-logo"));
         }
 
         if (originName == "Canonical") {
-            viewItem->setText(i18n("Canonical Partners"));
+            viewItem->setText(i18nc("@item:inlistbox","Canonical Partners"));
             viewItem->setIcon(KIcon("partner"));
         }
 
@@ -261,13 +261,13 @@ void ApplicationWindow::populateViews()
         viewItem->setData(originName, OriginFilterRole);
 
         if (originName == "Ubuntu") {
-            viewItem->setText("Provided by Kubuntu");
+            viewItem->setText(i18nc("@item:inlistbox", "Provided by Kubuntu"));
             viewItem->setIcon(KIcon("ubuntu-logo"));
             viewItem->setData(AppView, ViewTypeRole);
         }
 
         if (originName == "Canonical") {
-            viewItem->setText(i18n("Canonical Partners"));
+            viewItem->setText(i18nc("@item:inlistbox", "Canonical Partners"));
             viewItem->setIcon(KIcon("partner"));
             viewItem->setData(AppView, ViewTypeRole);
         }

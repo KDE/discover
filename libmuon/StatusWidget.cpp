@@ -44,7 +44,7 @@ StatusWidget::StatusWidget(QWidget *parent)
     m_downloadLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
 
     m_xapianProgress = new QProgressBar(this);
-    m_xapianProgress->setFormat(i18nc("@status", "Rebuilding Search Index"));
+    m_xapianProgress->setFormat(i18nc("@info:status", "Rebuilding Search Index"));
     m_xapianProgress->hide();
 }
 
@@ -64,14 +64,14 @@ void StatusWidget::updateStatus()
     int upgradeable = m_backend->packageCount(QApt::Package::Upgradeable);
     bool showChanges = m_backend->areChangesMarked();
 
-    QString availableText = i18np("1 package available, ", "%1 packages available, ", m_backend->packageCount());
-    QString installText = i18n("%1 installed, ", m_backend->installedCount());
+    QString availableText = i18ncp("@info:status", "1 package available, ", "%1 packages available, ", m_backend->packageCount());
+    QString installText = i18nc("@info:status", "%1 installed, ", m_backend->installedCount());
     QString upgradeableText;
 
     if (upgradeable > 0 && showChanges) {
-        upgradeableText = i18n("%1 upgradeable,", upgradeable);
+        upgradeableText = i18nc("@info:status", "%1 upgradeable,", upgradeable);
     } else {
-        upgradeableText = i18n("%1 upgradeable", upgradeable);
+        upgradeableText = i18nc("@info:status", "%1 upgradeable", upgradeable);
         m_countsLabel->setText(availableText % installText % upgradeableText);
     }
 
@@ -83,14 +83,14 @@ void StatusWidget::updateStatus()
         QString toRemoveText;
 
         if (toInstallOrUpgrade > 0) {
-            toInstallOrUpgradeText = i18nc("Part of the status label", " %1 to install/upgrade", toInstallOrUpgrade);
+            toInstallOrUpgradeText = i18nc("@info:status Part of the status label", " %1 to install/upgrade", toInstallOrUpgrade);
         }
 
         if (toRemove > 0 && toInstallOrUpgrade > 0) {
-            toRemoveText = i18nc("Label for the number of packages pending removal when packages are also pending upgrade",
+            toRemoveText = i18nc("@info:status Label for the number of packages pending removal when packages are also pending upgrade",
                                  ", %1 to remove", toRemove);
         } else if (toRemove > 0) {
-            toRemoveText = i18nc("Label for the number of packages pending removal when there are only removals",
+            toRemoveText = i18nc("@info:statsus Label for the number of packages pending removal when there are only removals",
                                  " %1 to remove", toRemove);
         }
 

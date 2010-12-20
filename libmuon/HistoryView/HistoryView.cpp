@@ -118,7 +118,7 @@ HistoryView::HistoryView(QWidget *parent)
             historyItem->setEditable(false);
             historyItem->setIcon(KIcon("applications-other").pixmap(32,32));
 
-            QString action = i18nc("@status describes a past-tense action", "Installed");
+            QString action = i18nc("@info:status describes a past-tense action", "Installed");
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
                                  package, action, formattedTime);
             historyItem->setText(text);

@@ -54,7 +54,7 @@ void Category::parseData(const QDomNode &data)
             if (m_policy == CanHaveChildren) {
                 m_name = tempElement.text();
             } else {
-                m_name = i18nc("@label", "All");
+                m_name = i18nc("@label The label used for viewing all members of this category", "All");
             }
         } else if (tempElement.tagName() == QLatin1String("Icon")) {
             if (!tempElement.text().isEmpty()) {

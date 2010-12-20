@@ -46,7 +46,7 @@ ManagerSettingsDialog::ManagerSettingsDialog(QWidget* parent, QApt::Config *aptC
     // General settings
     GeneralSettingsPage *generalPage = new GeneralSettingsPage(this, m_aptConfig);
     KPageWidgetItem *generalSettingsFrame = addPage(generalPage,
-                                                    i18nc("@title:group", "General"));
+                                                    i18nc("@title:group Title of the general group", "General"));
     generalSettingsFrame->setIcon(KIcon("system-run"));
     connect(generalPage, SIGNAL(changed()), this, SLOT(enableApply()));
 

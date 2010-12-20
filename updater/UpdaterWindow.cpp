@@ -58,7 +58,7 @@ UpdaterWindow::~UpdaterWindow()
 
 void UpdaterWindow::initGUI()
 {
-    setWindowTitle(i18n("Software Updates"));
+    setWindowTitle(i18nc("@title:window", "Software Updates"));
     m_stack = new QStackedWidget;
     setCentralWidget(m_stack);
 

@@ -119,9 +119,9 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role) const
 
             switch(transaction->state()) {
             case QueuedState:
-                return i18nc("@info:status", "Waiting");
+                return i18nc("@info:status Progress text when waiting", "Waiting");
             case DoneState:
-                return i18nc("@info:status", "Done");
+                return i18nc("@info:status Progress text when done", "Done");
             case RunningState:
             default:
                 break;
