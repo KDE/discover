@@ -77,6 +77,7 @@ void ApplicationBackend::init()
         } else {
             // Invalid .desktop file
             // kDebug() << fileName;
+            delete app;
         }
     }
     qSort(popconScores);
