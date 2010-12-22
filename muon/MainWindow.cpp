@@ -406,7 +406,7 @@ void MainWindow::setActionsEnabled(bool enabled)
     }
 
     int upgradeable = m_backend->packageCount(QApt::Package::Upgradeable);
-    QApt::PackageList changedList = m_backend->markedPackages();
+    bool changesPending = m_backend->areChangesMarked();
     int autoRemoveable = m_backend->packageCount(QApt::Package::IsGarbage);
 
     m_safeUpgradeAction->setEnabled(upgradeable > 0);
@@ -416,11 +416,11 @@ void MainWindow::setActionsEnabled(bool enabled)
         // We always need to be able to get back from review
         m_previewAction->setEnabled(true);
     } else {
-        m_previewAction->setEnabled(!changedList.isEmpty());
+        m_previewAction->setEnabled(changesPending);
     }
 
     if (isConnected()) {
-        m_applyAction->setEnabled(!changedList.isEmpty());
+        m_applyAction->setEnabled(changesPending);
     } else {
         m_applyAction->setEnabled(false);
     }
@@ -430,7 +430,7 @@ void MainWindow::setActionsEnabled(bool enabled)
     m_revertAction->setEnabled(!m_backend->isUndoStackEmpty());
 
     m_loadSelectionsAction->setEnabled(true);
-    m_saveSelectionsAction->setEnabled(!changedList.isEmpty());
+    m_saveSelectionsAction->setEnabled(changesPending);
     m_saveInstalledAction->setEnabled(true);
     m_softwarePropertiesAction->setEnabled(true);
 }
