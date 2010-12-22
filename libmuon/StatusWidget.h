@@ -26,6 +26,7 @@
 
 class QLabel;
 class QProgressBar;
+class QTimer;
 
 namespace QApt {
     class Backend;
@@ -45,6 +46,7 @@ private:
     QLabel *m_changesLabel;
     QLabel *m_downloadLabel;
     QProgressBar *m_xapianProgress;
+    QTimer *m_xapianTimeout;
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);

@@ -22,6 +22,7 @@
 
 // Qt includes
 #include <QtCore/QStringBuilder>
+#include <QtCore/QTimer>
 #include <QtGui/QLabel>
 #include <QtGui/QProgressBar>
 
@@ -46,6 +47,12 @@ StatusWidget::StatusWidget(QWidget *parent)
     m_xapianProgress = new QProgressBar(this);
     m_xapianProgress->setFormat(i18nc("@info:status", "Rebuilding Search Index"));
     m_xapianProgress->hide();
+
+    m_xapianTimeout = new QTimer(this);
+    // Time out if no progress at all is made in 10 seconds
+    m_xapianTimeout->setInterval(10000);
+    m_xapianTimeout->setSingleShot(true);
+    connect(m_xapianTimeout, SIGNAL(timeout()), this, SLOT(hideXapianProgress()));
 }
 
 StatusWidget::~StatusWidget()
@@ -118,16 +125,19 @@ void StatusWidget::updateStatus()
 void StatusWidget::showXapianProgress()
 {
     m_xapianProgress->show();
+    m_xapianTimeout->start();
 }
 
 void StatusWidget::hideXapianProgress()
 {
     m_xapianProgress->hide();
+    m_xapianTimeout->stop();
 }
 
 void StatusWidget::updateXapianProgress(int percentage)
 {
     m_xapianProgress->setValue(percentage);
+    m_xapianTimeout->start();
 }
 
 #include "StatusWidget.moc"
