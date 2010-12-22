@@ -308,14 +308,6 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
     }
 }
 
-void MainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args)
-{
-    MuonMainWindow::errorOccurred(code, args);
-
-    returnFromPreview();
-    m_stack->setCurrentWidget(m_mainWidget);
-}
-
 void MainWindow::previewChanges()
 {
     m_reviewWidget = new ReviewWidget(m_stack);
@@ -380,6 +372,9 @@ void MainWindow::initCommitWidget()
 
 void MainWindow::reload()
 {
+    returnFromPreview();
+    m_stack->setCurrentWidget(m_mainWidget);
+
     m_managerWidget->reload();
     if (m_reviewWidget) {
         m_reviewWidget->reload();
