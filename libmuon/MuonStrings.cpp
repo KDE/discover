@@ -186,12 +186,12 @@ QHash<int, QString> MuonStrings::stateHash()
     hash[QApt::Package::ResidualConfig] = i18nc("@info:status Package state", "Residual Configuration");
     hash[QApt::Package::IsGarbage] = i18nc("@info:status Package state", "Installed (auto-removable)");
     hash[QApt::Package::ToKeep] = i18nc("@info:status Package state", "No Change");
-    hash[QApt::Package::ToInstall] = i18nc("@info:status Package state", "Install");
-    hash[QApt::Package::ToUpgrade] = i18nc("@info:status Package state", "Upgrade");
-    hash[QApt::Package::ToRemove] = i18nc("@info:status Package state", "Remove");
-    hash[QApt::Package::ToPurge] = i18nc("@info:status Package state", "Purge");
-    hash[QApt::Package::ToReInstall] = i18nc("@info:status Package state", "Reinstall");
-    hash[QApt::Package::ToDowngrade] = i18nc("@info:status Package state", "Downgrade");
+    hash[QApt::Package::ToInstall] = i18nc("@info:status Requested action", "Install");
+    hash[QApt::Package::ToUpgrade] = i18nc("@info:status Requested action", "Upgrade");
+    hash[QApt::Package::ToRemove] = i18nc("@info:status Requested action", "Remove");
+    hash[QApt::Package::ToPurge] = i18nc("@info:status Requested action", "Purge");
+    hash[QApt::Package::ToReInstall] = i18nc("@info:status Requested action", "Reinstall");
+    hash[QApt::Package::ToDowngrade] = i18nc("@info:status Requested action", "Downgrade");
 
     return hash;
 }
