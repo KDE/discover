@@ -93,7 +93,7 @@ HistoryView::HistoryView(QWidget *parent)
     m_historyModel->setHeaderData(0, Qt::Horizontal, i18nc("@title:column", "Date"));
     m_historyView = new QTreeView(this);
 
-    QPixmap itemPixmap = KIcon("applications-other").pixmap(32,32);
+    KIcon itemIcon("applications-other");
 
     QHash<int, QString> categoryHash;
 
@@ -135,7 +135,7 @@ HistoryView::HistoryView(QWidget *parent)
         foreach (const QString &package, item->installedPackages()) {
             QStandardItem *historyItem = new QStandardItem;
             historyItem->setEditable(false);
-            historyItem->setIcon(itemPixmap);
+            historyItem->setIcon(itemIcon);
 
             QString action = actionHash.value(InstalledAction);
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
@@ -150,7 +150,7 @@ HistoryView::HistoryView(QWidget *parent)
         foreach (const QString &package, item->upgradedPackages()) {
             QStandardItem *historyItem = new QStandardItem;
             historyItem->setEditable(false);
-            historyItem->setIcon(itemPixmap);
+            historyItem->setIcon(itemIcon);
 
             QString action = actionHash.value(UpgradedAction);
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
@@ -165,7 +165,7 @@ HistoryView::HistoryView(QWidget *parent)
         foreach (const QString &package, item->downgradedPackages()) {
             QStandardItem *historyItem = new QStandardItem;
             historyItem->setEditable(false);
-            historyItem->setIcon(itemPixmap);
+            historyItem->setIcon(itemIcon);
 
             QString action = actionHash.value(DowngradedAction);
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
@@ -180,7 +180,7 @@ HistoryView::HistoryView(QWidget *parent)
         foreach (const QString &package, item->removedPackages()) {
             QStandardItem *historyItem = new QStandardItem;
             historyItem->setEditable(false);
-            historyItem->setIcon(itemPixmap);
+            historyItem->setIcon(itemIcon);
 
             QString action = actionHash.value(RemovedAction);
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
@@ -195,7 +195,7 @@ HistoryView::HistoryView(QWidget *parent)
         foreach (const QString &package, item->purgedPackages()) {
             QStandardItem *historyItem = new QStandardItem;
             historyItem->setEditable(false);
-            historyItem->setIcon(itemPixmap);
+            historyItem->setIcon(itemIcon);
 
             QString action = actionHash.value(PurgedAction);
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
