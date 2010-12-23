@@ -59,8 +59,6 @@ ApplicationWindow::~ApplicationWindow()
 
 void ApplicationWindow::initGUI()
 {
-    setWindowTitle(i18nc("@title:window", "Muon Software Center"));
-
     m_mainWidget = new QSplitter(this);
     m_mainWidget->setOrientation(Qt::Horizontal);
     connect(m_mainWidget, SIGNAL(splitterMoved(int, int)), this, SLOT(saveSplitterSizes()));
