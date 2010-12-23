@@ -1,6 +1,7 @@
 project(muon)
 
-find_package(KDE4 REQUIRED)
+set(KDE_MIN_VERSION "4.5.0")
+find_package(KDE4 ${KDE_MIN_VERSION} REQUIRED)
 find_package(QApt REQUIRED)
 find_package(DebconfKDE REQUIRED)
 include (KDE4Defaults)
