@@ -46,7 +46,6 @@
 
 ApplicationWindow::ApplicationWindow()
     : MuonMainWindow()
-    , m_powerInhibitor(0)
 {
     initGUI();
     QTimer::singleShot(10, this, SLOT(initObject()));

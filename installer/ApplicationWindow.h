@@ -85,8 +85,6 @@ private:
     KAction *m_loadSelectionsAction;
     KAction *m_saveSelectionsAction;
 
-    int m_powerInhibitor;
-
 private Q_SLOTS:
     void initGUI();
     void initObject();
