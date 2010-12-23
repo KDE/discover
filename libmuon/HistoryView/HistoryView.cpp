@@ -95,11 +95,21 @@ HistoryView::HistoryView(QWidget *parent)
 
     QPixmap itemPixmap = KIcon("applications-other").pixmap(32,32);
 
+    QHash<int, QString> categoryHash;
+
     QDateTime weekAgoTime = QDateTime::currentDateTime().addDays(-7);
     foreach (QApt::HistoryItem *item, m_history->historyItems()) {
         QDateTime startDateTime = item->startDate();
         QString formattedTime = KGlobal::locale()->formatTime(startDateTime.time());
-        QString category = KGlobal::locale()->formatDate(startDateTime.date(), KLocale::FancyShortDate);
+        QString category;
+
+        int day = startDateTime.date().day();
+        if (categoryHash.contains(day)) {
+            category = categoryHash.value(day);
+        } else {
+            category = KGlobal::locale()->formatDate(startDateTime.date(), KLocale::FancyShortDate);
+            categoryHash[day] = category;
+        }
 
         QStandardItem *parentItem = 0;
 
