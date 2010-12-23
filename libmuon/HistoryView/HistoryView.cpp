@@ -97,6 +97,13 @@ HistoryView::HistoryView(QWidget *parent)
 
     QHash<int, QString> categoryHash;
 
+    QHash<PastActions, QString> actionHash;
+    actionHash[InstalledAction] = i18nc("@info:status describes a past-tense action", "Installed");
+    actionHash[UpgradedAction] = i18nc("@status describes a past-tense action", "Upgraded");
+    actionHash[DowngradedAction] = i18nc("@status describes a past-tense action", "Downgraded");
+    actionHash[RemovedAction] = i18nc("@status describes a past-tense action", "Removed");
+    actionHash[PurgedAction] = i18nc("@status describes a past-tense action", "Purged");
+
     QDateTime weekAgoTime = QDateTime::currentDateTime().addDays(-7);
     foreach (QApt::HistoryItem *item, m_history->historyItems()) {
         QDateTime startDateTime = item->startDate();
@@ -130,7 +137,7 @@ HistoryView::HistoryView(QWidget *parent)
             historyItem->setEditable(false);
             historyItem->setIcon(itemPixmap);
 
-            QString action = i18nc("@info:status describes a past-tense action", "Installed");
+            QString action = actionHash.value(InstalledAction);
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
                                  package, action, formattedTime);
             historyItem->setText(text);
@@ -145,7 +152,7 @@ HistoryView::HistoryView(QWidget *parent)
             historyItem->setEditable(false);
             historyItem->setIcon(itemPixmap);
 
-            QString action = i18nc("@status describes a past-tense action", "Upgraded");
+            QString action = actionHash.value(UpgradedAction);
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
                                  package, action, formattedTime);
             historyItem->setText(text);
@@ -160,7 +167,7 @@ HistoryView::HistoryView(QWidget *parent)
             historyItem->setEditable(false);
             historyItem->setIcon(itemPixmap);
 
-            QString action = i18nc("@status describes a past-tense action", "Downgraded");
+            QString action = actionHash.value(DowngradedAction);
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
                                  package, action, formattedTime);
             historyItem->setText(text);
@@ -175,7 +182,7 @@ HistoryView::HistoryView(QWidget *parent)
             historyItem->setEditable(false);
             historyItem->setIcon(itemPixmap);
 
-            QString action = i18nc("@status describes a past-tense action", "Removed");
+            QString action = actionHash.value(RemovedAction);
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
                                  package, action, formattedTime);
             historyItem->setText(text);
@@ -190,7 +197,7 @@ HistoryView::HistoryView(QWidget *parent)
             historyItem->setEditable(false);
             historyItem->setIcon(itemPixmap);
 
-            QString action = i18nc("@status describes a past-tense action", "Purged");
+            QString action = actionHash.value(PurgedAction);
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
                                  package, action, formattedTime);
             historyItem->setText(text);

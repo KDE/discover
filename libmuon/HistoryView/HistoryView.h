@@ -49,6 +49,14 @@ public:
         UpdatesItem = 2,
         RemovalsItem = 3
     };
+    enum PastActions {
+        InvalidAction = 0,
+        InstalledAction = 1,
+        UpgradedAction = 2,
+        DowngradedAction = 3,
+        RemovedAction = 4,
+        PurgedAction = 5
+    };
     HistoryView(QWidget *parent);
     ~HistoryView();
 
