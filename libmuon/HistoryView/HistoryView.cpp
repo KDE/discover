@@ -93,6 +93,8 @@ HistoryView::HistoryView(QWidget *parent)
     m_historyModel->setHeaderData(0, Qt::Horizontal, i18nc("@title:column", "Date"));
     m_historyView = new QTreeView(this);
 
+    QPixmap itemPixmap = KIcon("applications-other").pixmap(32,32);
+
     QDateTime weekAgoTime = QDateTime::currentDateTime().addDays(-7);
     foreach (QApt::HistoryItem *item, m_history->historyItems()) {
         QDateTime startDateTime = item->startDate();
@@ -116,7 +118,7 @@ HistoryView::HistoryView(QWidget *parent)
         foreach (const QString &package, item->installedPackages()) {
             QStandardItem *historyItem = new QStandardItem;
             historyItem->setEditable(false);
-            historyItem->setIcon(KIcon("applications-other").pixmap(32,32));
+            historyItem->setIcon(itemPixmap);
 
             QString action = i18nc("@info:status describes a past-tense action", "Installed");
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
@@ -131,7 +133,7 @@ HistoryView::HistoryView(QWidget *parent)
         foreach (const QString &package, item->upgradedPackages()) {
             QStandardItem *historyItem = new QStandardItem;
             historyItem->setEditable(false);
-            historyItem->setIcon(KIcon("applications-other").pixmap(32,32));
+            historyItem->setIcon(itemPixmap);
 
             QString action = i18nc("@status describes a past-tense action", "Upgraded");
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
@@ -146,7 +148,7 @@ HistoryView::HistoryView(QWidget *parent)
         foreach (const QString &package, item->downgradedPackages()) {
             QStandardItem *historyItem = new QStandardItem;
             historyItem->setEditable(false);
-            historyItem->setIcon(KIcon("applications-other").pixmap(32,32));
+            historyItem->setIcon(itemPixmap);
 
             QString action = i18nc("@status describes a past-tense action", "Downgraded");
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
@@ -161,7 +163,7 @@ HistoryView::HistoryView(QWidget *parent)
         foreach (const QString &package, item->removedPackages()) {
             QStandardItem *historyItem = new QStandardItem;
             historyItem->setEditable(false);
-            historyItem->setIcon(KIcon("applications-other").pixmap(32,32));
+            historyItem->setIcon(itemPixmap);
 
             QString action = i18nc("@status describes a past-tense action", "Removed");
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
@@ -176,7 +178,7 @@ HistoryView::HistoryView(QWidget *parent)
         foreach (const QString &package, item->purgedPackages()) {
             QStandardItem *historyItem = new QStandardItem;
             historyItem->setEditable(false);
-            historyItem->setIcon(KIcon("applications-other").pixmap(32,32));
+            historyItem->setIcon(itemPixmap);
 
             QString action = i18nc("@status describes a past-tense action", "Purged");
             QString text = i18nc("@item example: muon installed at 16:00", "%1 %2 at %3",
