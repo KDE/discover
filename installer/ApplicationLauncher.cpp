@@ -56,7 +56,7 @@ ApplicationLauncher::ApplicationLauncher(const QVector<KService*> &applications,
     bottomBox->setLayout(bottomLayout);
 
     m_noShowCheckBox = new QCheckBox(bottomBox);
-    m_noShowCheckBox->setText(i18n("Don't show this dialog again"));
+    m_noShowCheckBox->setText(i18n("Do not show this dialog again"));
 
     QWidget *bottomSpacer = new QWidget(bottomBox);
     bottomSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
