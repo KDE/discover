@@ -165,7 +165,7 @@ void CategoryDrawer::drawCategory(const QModelIndex &index,
 
     //BEGIN: draw text
     {
-        const QString category = index.model()->data(index, KCategorizedSortFilterProxyModel::CategoryDisplayRole).toString();
+        const QString category = index.data(KCategorizedSortFilterProxyModel::CategoryDisplayRole).toString();
         QRect textRect = QRect(option.rect.topLeft(), QSize(option.rect.width(), height));
         textRect.setTop(textRect.top() + 2 + 3 /* corner */);
         textRect.setLeft(textRect.left() + 2 + 3 /* corner */ + 3 /* a bit of margin */);
