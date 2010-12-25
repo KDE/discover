@@ -1,3 +1,5 @@
+add_subdirectory(icons)
+
 set(muon_SRCS
     main.cpp
     MainWindow.cpp
