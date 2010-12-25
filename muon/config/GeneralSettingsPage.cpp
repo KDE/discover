@@ -24,7 +24,7 @@
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QLabel>
 #include <QtGui/QSpinBox>
-#include <QtGui/QVBoxLayout>
+#include <QtGui/QFormLayout>
 
 #include <KDialog>
 #include <KLocale>
@@ -41,32 +41,14 @@ GeneralSettingsPage::GeneralSettingsPage(QWidget* parent, QApt::Config *aptConfi
         , m_autoCleanCheckBox(new QCheckBox(this))
         , m_autoCleanSpinbox(new QSpinBox(this))
 {
-    QVBoxLayout *layout = new QVBoxLayout(this);
+    QFormLayout *layout = new QFormLayout(this);
     layout->setMargin(0);
     layout->setSpacing(KDialog::spacingHint());
     setLayout(layout);
 
     m_recommendsCheckBox->setText(i18n("Treat recommended packages as dependencies"));
 
-    // TODO: 1.1 Blocker: use proper form alignment as per KDE HIG
-    // Undo settings
-    QWidget *undoSizeWidget = new QWidget(this);
-
-    QHBoxLayout *undoSizeLayout = new QHBoxLayout(undoSizeWidget);
-    undoSizeWidget->setLayout(undoSizeLayout);
-
-    QLabel *undoLabel = new QLabel(this);
-    undoLabel->setText(i18n("Number of undo operations:"));
-
-    QWidget *undoSizeWidgetSpacer = new QWidget(undoSizeWidget);
-    undoSizeWidgetSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-
-    undoSizeLayout->addWidget(undoLabel);
-    undoSizeLayout->addWidget(m_undoStackSpinbox);
-    undoSizeLayout->addWidget(undoSizeWidgetSpacer);
-
     // Autoclean settings
-
     QWidget *autoCleanWidget = new QWidget(this);
 
     QHBoxLayout *autoCleanLayout = new QHBoxLayout(autoCleanWidget);
@@ -86,10 +68,10 @@ GeneralSettingsPage::GeneralSettingsPage(QWidget* parent, QApt::Config *aptConfi
     QWidget *spacer = new QWidget(this);
     spacer->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
 
-    layout->addWidget(m_recommendsCheckBox);
-    layout->addWidget(undoSizeWidget);
-    layout->addWidget(autoCleanWidget);
-    layout->addWidget(spacer);
+    layout->addRow(m_recommendsCheckBox);
+    layout->addRow(i18n("Number of undo operations:"), m_undoStackSpinbox);
+    layout->addRow(autoCleanWidget);
+    layout->addRow(spacer);
 
     connect(m_recommendsCheckBox, SIGNAL(clicked()), this, SIGNAL(changed()));
     connect(m_undoStackSpinbox, SIGNAL(valueChanged(int)), this, SIGNAL(changed()));
