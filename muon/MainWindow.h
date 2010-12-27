@@ -88,6 +88,7 @@ private Q_SLOTS:
     void markAutoRemove();
     void checkForUpdates();
     void workerEvent(QApt::WorkerEvent event);
+    void errorOccurred(QApt::ErrorCode error, const QVariantMap &details);
     void previewChanges();
     void returnFromPreview();
     void startCommit();

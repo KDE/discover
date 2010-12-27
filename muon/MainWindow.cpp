@@ -252,6 +252,19 @@ void MainWindow::checkForUpdates()
     m_backend->updateCache();
 }
 
+void MainWindow::errorOccurred(QApt::ErrorCode error, const QVariantMap &details)
+{
+    Q_UNUSED(details);
+
+    switch(error) {
+    case QApt::UserCancelError:
+        returnFromPreview();
+        break;
+    default:
+        break;
+    }
+}
+
 void MainWindow::workerEvent(QApt::WorkerEvent event)
 {
     MuonMainWindow::workerEvent(event);

@@ -270,6 +270,8 @@ void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args
         break;
     }
     case QApt::UserCancelError:
+        m_canExit = true;
+        break;
     case QApt::UnknownError:
     default:
         break;
