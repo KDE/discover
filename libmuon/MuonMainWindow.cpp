@@ -274,6 +274,7 @@ void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args
     default:
         break;
     }
+    setActionsEnabled();
     m_canExit = true; // If we were committing changes, we aren't anymore
 }
 
