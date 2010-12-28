@@ -256,6 +256,8 @@ void MainWindow::errorOccurred(QApt::ErrorCode error, const QVariantMap &details
 {
     Q_UNUSED(details);
 
+    MuonMainWindow::errorOccurred(error, details);
+
     switch(error) {
     case QApt::UserCancelError:
         returnFromPreview();

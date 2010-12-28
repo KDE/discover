@@ -207,8 +207,11 @@ void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args
                      "configuration may be broken.");
         title = i18nc("@title:window", "Initialization error");
         QString details = args["ErrorText"].toString();
+        bool fromWorker = args["FromWorker"].toBool();
         KMessageBox::detailedError(this, text, details, title);
-        KApplication::instance()->quit();
+        if (!fromWorker) {
+            KApplication::instance()->quit();
+        }
         break;
     }
     case QApt::LockError:
@@ -270,14 +273,13 @@ void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args
         break;
     }
     case QApt::UserCancelError:
-        m_canExit = true;
         break;
     case QApt::UnknownError:
     default:
+        setActionsEnabled();
+        m_canExit = true; // If we were committing changes, we aren't anymore
         break;
     }
-    setActionsEnabled();
-    m_canExit = true; // If we were committing changes, we aren't anymore
 }
 
 void MuonMainWindow::warningOccurred(QApt::WarningCode warning, const QVariantMap &args)
