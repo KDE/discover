@@ -142,6 +142,7 @@ void UpdaterWindow::workerEvent(QApt::WorkerEvent event)
         break;
     case QApt::PackageDownloadStarted:
         if (m_downloadWidget) {
+            // TODO: Change to "Downloading Updates" after string freeze
             m_downloadWidget->setHeaderText(i18nc("@info", "<title>Downloading Packages</title>"));
             m_stack->setCurrentWidget(m_downloadWidget);
             connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
@@ -149,6 +150,7 @@ void UpdaterWindow::workerEvent(QApt::WorkerEvent event)
         break;
     case QApt::CommitChangesStarted:
         if (m_commitWidget) {
+            // TODO: Change to "Installing Updates" after string freeze
             m_commitWidget->setHeaderText(i18nc("@info", "<title>Committing Changes</title>"));
             m_stack->setCurrentWidget(m_commitWidget);
         }
