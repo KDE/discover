@@ -121,7 +121,9 @@ QString Application::menuPath()
     QString path;
     QString arrow(QString::fromUtf8(" ➜ "));
 
-    KService::Ptr service = KService::serviceByDesktopName(name());
+    // Take the file name and remove the .desktop ending
+    QString desktopName = m_fileName.split('/').last().remove(QLatin1String(".desktop"));
+    KService::Ptr service = KService::serviceByDesktopName(desktopName);
     QVector<QPair<QString, QString> > ret;
     if (service) {
         ret = locateApplication(QString(), service->menuId());
