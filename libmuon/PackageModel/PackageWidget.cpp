@@ -189,6 +189,7 @@ void PackageWidget::reload()
     m_proxyModel->clear();
     m_proxyModel->setSourceModel(0);
     m_busyWidget->start();
+    m_backend->reloadCache();
     QApt::PackageList packageList = m_backend->availablePackages();
     QFuture<QList<QApt::Package*> > future = QtConcurrent::run(sortPackages, packageList);
     m_watcher->setFuture(future);
