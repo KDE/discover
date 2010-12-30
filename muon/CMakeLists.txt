@@ -13,12 +13,9 @@ install(FILES config/muon.kcfg DESTINATION ${KCFG_INSTALL_DIR})
 kde4_add_executable(muon ${muon_SRCS})
 
 target_link_libraries(muon muonprivate
-                           ${KDE4_KDEUI_LIBS}
                            ${KDE4_KIO_LIBS}
-                           ${KDE4_SOLID_LIBS}
                            ${KDE4_PHONON_LIBS}
-                           ${QAPT_LIBRARY}
-                           ${DEBCONF_KDE_LIB})
+                           ${QAPT_LIBRARY})
 
 install(TARGETS muon ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
