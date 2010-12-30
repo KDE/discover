@@ -151,6 +151,7 @@ void BreadcrumbWidget::goBack()
 
 void BreadcrumbWidget::setCurrentItem(BreadcrumbItem *itemToBold)
 {
+    // Bolds the appropriate item and unbolds everything else
     foreach(BreadcrumbItem *item, m_items) {
         item->setActive(item == itemToBold);
     }

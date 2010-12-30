@@ -145,6 +145,10 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
 
 void CategoryViewWidget::search(const QString &text)
 {
+    if (text.size() < 2) {
+        return;
+    }
+
     if (!m_searchView) {
         m_searchView = new ApplicationViewWidget(this, m_appBackend);
         m_searchView->setBackend(m_backend);
