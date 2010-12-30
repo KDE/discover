@@ -23,4 +23,18 @@ set(muon_LIB_SRCS
     settings/SettingsPageBase.cpp
     settings/NotifySettingsPage.cpp)
 
-kde4_add_library( libmuon  STATIC ${muon_LIB_SRCS} )
+kde4_add_library(muonprivate SHARED ${muon_LIB_SRCS})
+
+set_target_properties(muonprivate PROPERTIES
+    VERSION 1.0.90
+    SOVERSION 1
+)
+
+target_link_libraries(muonprivate
+    ${KDE4_KDEUI_LIBS}
+    ${KDE4_KIO_LIBS}
+    ${KDE4_SOLID_LIBS}
+    ${QAPT_LIBRARY}
+    ${DEBCONF_KDE_LIB})
+
+install( TARGETS muonprivate  ${INSTALL_TARGETS_DEFAULT_ARGS} )

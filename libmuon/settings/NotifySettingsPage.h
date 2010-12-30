@@ -25,10 +25,12 @@
 
 #include "SettingsPageBase.h"
 
+#include "../libmuonprivate_export.h"
+
 class QCheckBox;
 class QRadioButton;
 
-class NotifySettingsPage : public SettingsPageBase
+class MUONPRIVATE_EXPORT NotifySettingsPage : public SettingsPageBase
 {
     Q_OBJECT
 

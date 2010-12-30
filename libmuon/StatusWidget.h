@@ -24,6 +24,8 @@
 // KDE includes
 #include <KHBox>
 
+#include "libmuonprivate_export.h"
+
 class QLabel;
 class QProgressBar;
 class QTimer;
@@ -32,7 +34,7 @@ namespace QApt {
     class Backend;
 }
 
-class StatusWidget : public KHBox
+class MUONPRIVATE_EXPORT StatusWidget : public KHBox
 {
     Q_OBJECT
 public:

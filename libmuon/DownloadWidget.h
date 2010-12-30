@@ -24,6 +24,8 @@
 // Qt includes
 #include <QWidget>
 
+#include "libmuonprivate_export.h"
+
 class QLabel;
 class QTreeView;
 class QProgressBar;
@@ -32,7 +34,7 @@ class QPushButton;
 class DownloadDelegate;
 class DownloadModel;
 
-class DownloadWidget : public QWidget
+class MUONPRIVATE_EXPORT DownloadWidget : public QWidget
 {
     Q_OBJECT
 public:

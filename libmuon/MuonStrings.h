@@ -25,7 +25,9 @@
 
 #include <LibQApt/Package>
 
-class MuonStrings : public QObject
+#include "libmuonprivate_export.h"
+
+class MUONPRIVATE_EXPORT MuonStrings : public QObject
 {
     Q_OBJECT
 public:

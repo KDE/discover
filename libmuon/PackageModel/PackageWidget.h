@@ -29,6 +29,8 @@
 // KDE includes
 #include <KVBox>
 
+#include "../libmuonprivate_export.h"
+
 class QLabel;
 class QTimer;
 class QVBoxLayout;
@@ -47,7 +49,7 @@ namespace QApt
     class Package;
 }
 
-class PackageWidget : public KVBox
+class MUONPRIVATE_EXPORT PackageWidget : public KVBox
 {
     Q_OBJECT
 public:

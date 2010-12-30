@@ -18,51 +18,24 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef DETAILSWIDGET_H
-#define DETAILSWIDGET_H
+#ifndef MUONPRIVATE_EXPORT_H
+#define MUONPRIVATE_EXPORT_H
 
-// KDE inclues
-#include <KTabWidget>
+// needed for KDE_EXPORT and KDE_IMPORT macros
+#include <kdemacros.h>
 
-#include "libmuonprivate_export.h"
+#ifndef MUONPRIVATE_EXPORT
+# if defined(MAKE_MUONPRIVATE_LIB)
+   // We are building this library
+#  define MUONPRIVATE_EXPORT KDE_EXPORT
+# else
+   // We are using this library
+#  define MUONPRIVATE_EXPORT KDE_IMPORT
+# endif
+#endif
 
-class QScrollArea;
-
-namespace QApt
-{
-    class Backend;
-    class Package;
-}
-
-class MainTab;
-class TechnicalDetailsTab;
-class DependsTab;
-class ChangelogTab;
-class InstalledFilesTab;
-class VersionTab;
-
-class MUONPRIVATE_EXPORT DetailsWidget : public KTabWidget
-{
-    Q_OBJECT
-public:
-    explicit DetailsWidget(QWidget *parent);
-    ~DetailsWidget();
-
-private:
-    QApt::Package *m_package;
-
-    MainTab *m_mainTab;
-    TechnicalDetailsTab *m_technicalTab;
-    DependsTab *m_dependsTab;
-    InstalledFilesTab *m_filesTab;
-    ChangelogTab *m_changelogTab;
-    VersionTab *m_versionTab;
-
-public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
-    void setPackage(QApt::Package *package);
-    void refreshTabs();
-    void clear();
-};
+# ifndef MUONPRIVATE_EXPORT_DEPRECATED
+#  define MUONPRIVATE_EXPORT_DEPRECATED KDE_DEPRECATED MUONPRIVATE_EXPORT
+# endif
 
 #endif

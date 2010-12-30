@@ -26,11 +26,13 @@
 
 #include <LibQApt/Package>
 
+#include "../libmuonprivate_export.h"
+
 namespace QApt {
     class Backend;
 }
 
-class PackageProxyModel : public QSortFilterProxyModel
+class MUONPRIVATE_EXPORT PackageProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
 public:

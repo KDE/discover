@@ -23,6 +23,8 @@
 
 #include <QtGui/QWidget>
 
+#include "libmuonprivate_export.h"
+
 class QLabel;
 class QProgressBar;
 
@@ -31,7 +33,7 @@ namespace DebconfKde
     class DebconfGui;
 }
 
-class CommitWidget : public QWidget
+class MUONPRIVATE_EXPORT CommitWidget : public QWidget
 {
     Q_OBJECT
 public:

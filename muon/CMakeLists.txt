@@ -1,5 +1,3 @@
-add_subdirectory(icons)
-
 set(muon_SRCS
     main.cpp
     MainWindow.cpp
@@ -14,7 +12,7 @@ install(FILES config/muon.kcfg DESTINATION ${KCFG_INSTALL_DIR})
 
 kde4_add_executable(muon ${muon_SRCS})
 
-target_link_libraries(muon libmuon
+target_link_libraries(muon muonprivate
                            ${KDE4_KDEUI_LIBS}
                            ${KDE4_KIO_LIBS}
                            ${KDE4_SOLID_LIBS}

@@ -31,6 +31,8 @@
 // LibQApt includes
 #include <LibQApt/Globals>
 
+#include "libmuonprivate_export.h"
+
 class KAction;
 
 namespace QApt
@@ -47,7 +49,7 @@ namespace QApt
  * @author Jonathan Thomas <echidnaman@kubuntu.org>
  * @version 0.1
  */
-class MuonMainWindow : public KXmlGuiWindow
+class MUONPRIVATE_EXPORT MuonMainWindow : public KXmlGuiWindow
 {
     Q_OBJECT
 public:
