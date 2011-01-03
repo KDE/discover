@@ -203,8 +203,7 @@ QVector<QPair<QString, QString> > Application::locateApplication(const QString &
 
 QString Application::categories() const
 {
-    QString categoryString = getField("Categories");
-    return categoryString;
+    return getField("Categories");
 }
 
 QApt::PackageList Application::addons()
