@@ -26,7 +26,7 @@ set(muon_LIB_SRCS
 kde4_add_library(muonprivate SHARED ${muon_LIB_SRCS})
 
 set_target_properties(muonprivate PROPERTIES
-    VERSION 1.0.90
+    VERSION 1.0.95
     SOVERSION 1
 )
 
