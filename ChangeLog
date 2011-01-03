@@ -32,6 +32,9 @@
   * Avoid a l10n reverse-lookup for package status by using the UserRoles available to 
     us in QStandardItem to store the QApt::Package::State, and emitting this state when 
     passing it to the PackageView
+  * Use the new QApt::Backend::areChangesMarked() function for determining whether or not
+    actions should be enabled. This avoids constructing a QApt::PackageList as well as
+    67,000 calls to QApt::Package::state() in the Backend::markedPackages() function
 
 - Bugfixes:
   * Spacing improvements in the details tabs.
@@ -39,6 +42,12 @@
     and/or locally-installed packages. (BKO: #254449)
   * Fix a bug with the new DownloadModel where items from previous downloads would 
     remain if the user cancelled the download
+  * Don’t enable the Muon Package Manager’s search widget before the package list is
+    populated, so that it is impossible to try to search before the backend has initialized. (And crash)
+    In theory this sort of thing could only happen under valgrind-levels of load, but for the
+    sake of being proper this is should be fixed.
+  * Move libmuon to the top of the link list, so that ld can link it when the –as-needed flag
+    is passed to it. (gold is unaffected)
 
 1.0:
 ====
