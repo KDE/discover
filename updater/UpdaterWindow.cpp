@@ -207,6 +207,7 @@ void UpdaterWindow::startCommit()
 
 void UpdaterWindow::reload()
 {
+    returnFromPreview();
     m_updaterWidget->reload();
     m_statusWidget->updateStatus();
     setActionsEnabled();
