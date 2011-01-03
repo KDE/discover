@@ -96,8 +96,7 @@ void AvailableView::populateCategories()
     QDomNode node = root.firstChild();
     while(!node.isNull())
     {
-        Category *category = new Category(node);
-        m_categoryList << category;
+        m_categoryList << new Category(node);
 
         node = node.nextSibling();
     }
