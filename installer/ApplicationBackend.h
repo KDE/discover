@@ -21,8 +21,9 @@
 #ifndef APPLICATIONBACKEND_H
 #define APPLICATIONBACKEND_H
 
-#include <QtCore/QList>
+#include <QtCore/QStringList>
 #include <QtCore/QObject>
+#include <QtCore/QSet>
 
 #include <LibQApt/Globals>
 
@@ -47,6 +48,8 @@ public:
     ~ApplicationBackend();
 
     QList<Application *> applicationList() const;
+    QSet<QString> appOrigins() const;
+    QSet<QString> installedAppOrigins() const;
     QPair<QApt::WorkerEvent, Transaction *> workerState() const;
     QList<Transaction *> transactions() const;
     int maxPopconScore() const;
@@ -58,8 +61,10 @@ private:
     QApt::Backend *m_backend;
 
     QList<Application *> m_appList;
-    QList<QString> m_appLaunchQueue;
-    QList<QString> m_pkgBlacklist;
+    QSet<QString> m_originList;
+    QSet<QString> m_instOriginList;
+    QStringList m_appLaunchQueue;
+    QStringList m_pkgBlacklist;
     QList<Transaction *> m_queue;
     QList<Transaction *>::iterator m_currentTransaction;
     QPair<QApt::WorkerEvent, Transaction *> m_workerState;
@@ -83,6 +88,7 @@ private Q_SLOTS:
     void onAppLauncherClosed();
 
 Q_SIGNALS:
+    void appBackendReady();
     void reloadStarted();
     void reloadFinished();
     void workerEvent(QApt::WorkerEvent event, Transaction *app);

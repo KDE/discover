@@ -60,6 +60,8 @@ void ApplicationBackend::setBackend(QApt::Backend *backend)
             this, SLOT(workerEvent(QApt::WorkerEvent)));
     connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode, QVariantMap)),
             this, SLOT(errorOccurred(QApt::ErrorCode, QVariantMap)));
+
+    emit appBackendReady();
 }
 
 void ApplicationBackend::init()
@@ -72,6 +74,11 @@ void ApplicationBackend::init()
         if (app->isValid()) {
             if (app->package() && !m_pkgBlacklist.contains(app->package()->latin1Name())) {
                 m_appList << app;
+                if (app->package()->isInstalled()) {
+                    m_instOriginList << app->package()->origin();
+                } else {
+                    m_originList << app->package()->origin();
+                }
                 popconScores << app->popconScore();
             }
         } else {
@@ -80,6 +87,15 @@ void ApplicationBackend::init()
             delete app;
         }
     }
+
+    if (m_originList.contains(QLatin1String(""))) {
+        m_originList.remove(QLatin1String(""));
+    }
+
+    if (m_instOriginList.contains(QLatin1String(""))) {
+        m_instOriginList.remove(QLatin1String(""));
+    }
+
     qSort(popconScores);
 
     m_maxPopconScore = popconScores.last();
@@ -344,6 +360,16 @@ void ApplicationBackend::onAppLauncherClosed()
 QList<Application *> ApplicationBackend::applicationList() const
 {
     return m_appList;
+}
+
+QSet<QString> ApplicationBackend::appOrigins() const
+{
+    return m_originList;
+}
+
+QSet<QString> ApplicationBackend::installedAppOrigins() const
+{
+    return m_instOriginList;
 }
 
 QPair<QApt::WorkerEvent, Transaction *> ApplicationBackend::workerState() const

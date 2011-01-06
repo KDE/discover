@@ -78,9 +78,6 @@ void ApplicationWindow::initGUI()
     m_viewModel = new QStandardItemModel(this);
     m_viewSwitcher->setModel(m_viewModel);
 
-    connect(this, SIGNAL(backendReady(QApt::Backend *)),
-            this, SLOT(populateViews()));
-
     setupActions();
     setupGUI((StandardWindowOption)(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
 }
@@ -92,6 +89,8 @@ void ApplicationWindow::initObject()
             m_appBackend, SLOT(setBackend(QApt::Backend *)));
     connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Transaction *)),
             this, SLOT(workerEvent(QApt::WorkerEvent)));
+    connect(m_appBackend, SIGNAL(appBackendReady()),
+            this, SLOT(populateViews()));
     connect(m_appBackend, SIGNAL(reloadStarted()),
             this, SLOT(clearViews()));
     connect(m_appBackend, SIGNAL(reloadFinished()),
@@ -185,10 +184,10 @@ void ApplicationWindow::workerEvent(QApt::WorkerEvent event)
 
 void ApplicationWindow::populateViews()
 {
-    QStringList originLabels = m_backend->originLabels();
-    QStringList originNames;
-    foreach (const QString &originLabel, originLabels) {
-        originNames << m_backend->origin(originLabel);
+    QStringList originNames = m_appBackend->appOrigins().toList();
+    QStringList originLabels;
+    foreach (const QString &originName, originNames) {
+        originLabels << m_backend->originLabel(originName);
     }
 
     if (originNames.contains("Ubuntu")) {
@@ -247,8 +246,14 @@ void ApplicationWindow::populateViews()
         m_viewHash[viewItem->index()] = 0;
     }
 
+    QStringList instOriginNames = m_appBackend->installedAppOrigins().toList();
+    QStringList instOriginLabels;
+    foreach (const QString &originName, instOriginNames) {
+        instOriginLabels << m_backend->originLabel(originName);
+    }
+
     parentItem = installedItem;
-    foreach(const QString & originName, originNames) {
+    foreach(const QString & originName, instOriginNames) {
         // We must spread the word of Origin. Hallowed are the Ori! ;P
         QString originLabel = m_backend->originLabel(originName);
         QStandardItem *viewItem = new QStandardItem;
