@@ -247,6 +247,7 @@ void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args
                      "authorization was not provided");
         title = i18nc("@title:window", "Authentication error");
         KMessageBox::error(this, text, title);
+        setActionsEnabled();
         break;
     case QApt::WorkerDisappeared:
         text = i18nc("@label", "It appears that the QApt worker has either crashed "
