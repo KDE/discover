@@ -273,7 +273,6 @@ void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args
         break;
     }
     case QApt::UserCancelError:
-        break;
     case QApt::UnknownError:
     default:
         setActionsEnabled();
