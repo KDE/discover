@@ -76,6 +76,7 @@ void ApplicationBackend::init()
                 m_appList << app;
                 if (app->package()->isInstalled()) {
                     m_instOriginList << app->package()->origin();
+                    m_originList << app->package()->origin();
                 } else {
                     m_originList << app->package()->origin();
                 }
