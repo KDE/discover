@@ -190,6 +190,9 @@ void MuonMainWindow::workerEvent(QApt::WorkerEvent event)
         Solid::PowerManagement::stopSuppressingSleep(m_powerInhibitor);
         m_canExit = true;
         break;
+    case QApt::XapianUpdateFinished:
+        m_backend->openXapianIndex();
+        break;
     default:
         break;
     }

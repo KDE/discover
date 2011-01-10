@@ -176,6 +176,9 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
             runNextTransaction();
         }
         break;
+    case QApt::XapianUpdateFinished:
+        emit xapianReloaded();
+        break;
     default:
         break;
     }

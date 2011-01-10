@@ -58,6 +58,8 @@ AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)
     m_viewStack->addWidget(m_categoryViewWidget);
     m_viewStack->setCurrentWidget(m_categoryViewWidget);
 
+    connect(m_appBackend, SIGNAL(xapianReloaded()),
+            m_breadcrumbWidget, SLOT(startSearch()));
     connect(m_categoryViewWidget, SIGNAL(registerNewSubView(AbstractViewBase *)),
             this, SLOT(registerNewSubView(AbstractViewBase *)));
     connect(m_categoryViewWidget, SIGNAL(switchToSubView(AbstractViewBase *)),

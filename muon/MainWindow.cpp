@@ -311,7 +311,7 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
                 m_statusWidget, SLOT(updateXapianProgress(int)));
         break;
     case QApt::XapianUpdateFinished:
-        m_backend->openXapianIndex();
+        m_managerWidget->startSearch();
         disconnect(m_backend, SIGNAL(xapianUpdateProgress(int)),
                    m_statusWidget, SLOT(updateXapianProgress(int)));
         m_statusWidget->hideXapianProgress();

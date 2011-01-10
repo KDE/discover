@@ -29,6 +29,7 @@
 #include <KSeparator>
 
 // Own includes
+#include "ApplicationBackend.h"
 #include "ApplicationViewWidget.h"
 
 ApplicationListView::ApplicationListView(QWidget *parent, ApplicationBackend *appBackend,
@@ -45,6 +46,8 @@ ApplicationListView::ApplicationListView(QWidget *parent, ApplicationBackend *ap
     m_viewStack->addWidget(m_appViewWidget);
     m_viewStack->setCurrentWidget(m_appViewWidget);
 
+    connect(appBackend, SIGNAL(xapianReloaded()),
+            m_breadcrumbWidget, SLOT(startSearch()));
     connect(m_appViewWidget, SIGNAL(registerNewSubView(AbstractViewBase *)),
             this, SLOT(registerNewSubView(AbstractViewBase *)));
     connect(m_appViewWidget, SIGNAL(switchToSubView(AbstractViewBase *)),

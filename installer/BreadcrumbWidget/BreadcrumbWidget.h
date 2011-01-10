@@ -66,13 +66,13 @@ private:
 
 public Q_SLOTS:
     void setCurrentItem(BreadcrumbItem *crumb);
+    void startSearch();
 
 private Q_SLOTS:
     void goBack();
     void goForward();
     void onItemActivated(BreadcrumbItem *item);
     void clearCrumbs();
-    void startSearch();
 
 Q_SIGNALS:
     void itemActivated(BreadcrumbItem *item);
