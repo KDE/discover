@@ -215,6 +215,8 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error, const QVariantMap 
     if (error != QApt::CommitError) {
         ++m_currentTransaction;
     }
+
+    emit errorSignal(error, details);
 }
 
 void ApplicationBackend::updateDownloadProgress(int percentage)

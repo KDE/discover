@@ -89,6 +89,8 @@ void ApplicationWindow::initObject()
             m_appBackend, SLOT(setBackend(QApt::Backend *)));
     connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Transaction *)),
             this, SLOT(workerEvent(QApt::WorkerEvent)));
+    connect(m_appBackend, SIGNAL(errorSignal(QApt::ErrorCode, QVariantMap)),
+            this, SLOT(errorOccurred(QApt::ErrorCode, QVariantMap)));
     connect(m_appBackend, SIGNAL(appBackendReady()),
             this, SLOT(populateViews()));
     connect(m_appBackend, SIGNAL(reloadStarted()),
@@ -101,6 +103,8 @@ void ApplicationWindow::initObject()
     // makes queuing things while committing possible
     disconnect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
                this, SLOT(workerEvent(QApt::WorkerEvent)));
+    disconnect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode, QVariantMap)),
+               this, SLOT(errorOccurred(QApt::ErrorCode, QVariantMap)));
 
     setActionsEnabled();
 }

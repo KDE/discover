@@ -92,6 +92,7 @@ Q_SIGNALS:
     void reloadStarted();
     void reloadFinished();
     void workerEvent(QApt::WorkerEvent event, Transaction *app);
+    void errorSignal(QApt::ErrorCode code, const QVariantMap &details);
     void progress(Transaction *transaction, int progress);
     void transactionCancelled(Application *app);
 };
