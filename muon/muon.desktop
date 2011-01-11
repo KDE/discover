@@ -22,6 +22,7 @@ Type=Application
 X-DocPath=muon/index.html
 GenericName=Package Manager
 GenericName[ca]=Gestor de paquets
+GenericName[ca@valencia]=Gestor de paquets
 GenericName[cs]=Správce balíčků
 GenericName[da]=Pakkehåndtering
 GenericName[de]=Paketverwaltung
