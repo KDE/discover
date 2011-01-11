@@ -1,0 +1,10 @@
+Binary dependencies:
+libmuonprivate:
+- kdesudo
+- software-properties
+
+muon:
+- apt-xapian-index
+
+muon-installer:
+- apt-xapian-index
