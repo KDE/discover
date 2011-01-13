@@ -147,6 +147,7 @@ void UpdaterWindow::workerEvent(QApt::WorkerEvent event)
             m_stack->setCurrentWidget(m_downloadWidget);
             connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
         }
+        QApplication::restoreOverrideCursor();
         break;
     case QApt::CommitChangesStarted:
         if (m_commitWidget) {
@@ -154,6 +155,7 @@ void UpdaterWindow::workerEvent(QApt::WorkerEvent event)
             m_commitWidget->setHeaderText(i18nc("@info", "<title>Committing Changes</title>"));
             m_stack->setCurrentWidget(m_commitWidget);
         }
+        QApplication::restoreOverrideCursor();
         break;
     case QApt::PackageDownloadFinished:
     case QApt::InvalidEvent:
@@ -200,6 +202,7 @@ void UpdaterWindow::initCommitWidget()
 void UpdaterWindow::startCommit()
 {
     setActionsEnabled(false);
+    QApplication::setOverrideCursor(Qt::WaitCursor);
     initDownloadWidget();
     initCommitWidget();
     m_backend->commitChanges();

@@ -298,12 +298,14 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
             m_stack->setCurrentWidget(m_downloadWidget);
             connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
         }
+        QApplication::restoreOverrideCursor();
         break;
     case QApt::CommitChangesStarted:
         if (m_commitWidget) {
             m_commitWidget->setHeaderText(i18nc("@info", "<title>Committing Changes</title>"));
             m_stack->setCurrentWidget(m_commitWidget);
         }
+        QApplication::restoreOverrideCursor();
         break;
     case QApt::XapianUpdateStarted:
         m_statusWidget->showXapianProgress();
@@ -358,6 +360,7 @@ void MainWindow::returnFromPreview()
 void MainWindow::startCommit()
 {
     setActionsEnabled(false);
+    QApplication::setOverrideCursor(Qt::WaitCursor);
     initDownloadWidget();
     initCommitWidget();
     m_backend->commitChanges();
