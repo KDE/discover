@@ -21,6 +21,8 @@
 #ifndef MANAGERSETTINGSDIALOG_H
 #define MANAGERSETTINGSDIALOG_H
 
+#include <QtCore/QSet>
+
 #include <KPageDialog>
 
 class SettingsPageBase;

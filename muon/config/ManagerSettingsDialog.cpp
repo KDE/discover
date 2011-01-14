@@ -57,8 +57,8 @@ ManagerSettingsDialog::ManagerSettingsDialog(QWidget* parent, QApt::Config *aptC
     notifySettingsFrame->setIcon(KIcon("preferences-desktop-notification"));
     connect(notifyPage, SIGNAL(changed()), this, SLOT(enableApply()));
 
-    m_pages.append(generalPage);
-    m_pages.append(notifyPage);
+    m_pages.insert(generalPage);
+    m_pages.insert(notifyPage);
 }
 
 ManagerSettingsDialog::~ManagerSettingsDialog()
