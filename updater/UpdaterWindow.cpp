@@ -21,6 +21,7 @@
 #include "UpdaterWindow.h"
 
 // Qt includes
+#include <QApplication>
 #include <QtCore/QTimer>
 #include <QtGui/QStackedWidget>
 
