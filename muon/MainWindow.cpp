@@ -21,6 +21,7 @@
 #include "MainWindow.h"
 
 // Qt includes
+#include <QApplication>
 #include <QtCore/QStringBuilder>
 #include <QtCore/QTimer>
 #include <QtGui/QLabel>
@@ -32,9 +33,6 @@
 // KDE includes
 #include <KAction>
 #include <KActionCollection>
-#include <KApplication>
-#include <KConfigDialog>
-#include <KDebug>
 #include <KFileDialog>
 #include <KLocale>
 #include <KMessageBox>
