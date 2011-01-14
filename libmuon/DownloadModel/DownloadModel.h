@@ -21,7 +21,7 @@
 #ifndef DOWNLOADMODEL_H
 #define DOWNLOADMODEL_H
 
-#include <QtCore/QList>
+#include <QtCore/QVector>
 #include <QModelIndex>
 
 class PackageDetails
@@ -64,7 +64,7 @@ Q_SIGNALS:
     void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight);
 
 private:
-    QList<PackageDetails> m_packageList;
+    QVector<PackageDetails> m_packageList;
 };
 
 #endif // DOWNLOADMODEL_H
