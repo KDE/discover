@@ -52,7 +52,7 @@ private:
     void restoreDefaults();
 
 private:
-    QList<SettingsPageBase*> m_pages;
+    QSet<SettingsPageBase*> m_pages;
 };
 
 #endif
