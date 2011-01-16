@@ -528,9 +528,10 @@
       <Name>Chat</Name>
       <Icon>kopete</Icon>
       <Include>
-        <And>
+        <Or>
           <Category>InstantMessaging</Category>
-          </And>
+          <Category>IRCClient</Category>
+        </Or>
       </Include>
     </Menu>
     <Menu>
