@@ -27,6 +27,7 @@
     considered as dependencies.
   * Added an option to configure how often APT autocleans cached package files.
   * Enable/disable the "update" and "apply" buttons based on network availability
+  * Automatically reload searches after a rebuild of the search index is triggered
 
 - Optimizations:
   * Avoid a l10n reverse-lookup for package status by using the UserRoles available to 
