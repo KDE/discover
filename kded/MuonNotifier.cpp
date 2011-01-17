@@ -52,7 +52,7 @@ MuonNotifier::MuonNotifier(QObject* parent, const QList<QVariant>&)
                          ki18n("Muon Notification Daemon"),
                          "1.1", ki18n("A Notification Daemon for Muon"),
                          KAboutData::License_GPL,
-                         ki18n("(C) 2009-2010 Jonathan Thomas, (C) 2009 Harald Sitter"),
+                         ki18n("(C) 2009-2011 Jonathan Thomas, (C) 2009 Harald Sitter"),
                          KLocalizedString(), "http://kubuntu.org");
 
     QTimer::singleShot(0, this, SLOT(init()));

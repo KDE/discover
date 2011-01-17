@@ -35,7 +35,7 @@ static const char version[] = "1.1.0 \"Bullish Bandril\"";
 int main(int argc, char **argv)
 {
     KAboutData about("muon-installer", "muon-installer", ki18n("Muon Software Center"), version, ki18n(description),
-                     KAboutData::License_GPL, ki18n("©2010 Jonathan Thomas"), KLocalizedString(), 0);
+                     KAboutData::License_GPL, ki18n("©2010, 2011 Jonathan Thomas"), KLocalizedString(), 0);
     about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
     about.setProgramIconName("applications-other");
 

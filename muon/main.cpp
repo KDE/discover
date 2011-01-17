@@ -34,7 +34,7 @@ static const char version[] = "1.1.0 \"Bullish Bandril\"";
 int main(int argc, char **argv)
 {
     KAboutData about("muon", 0, ki18n("Muon Package Manager"), version, ki18n(description),
-                     KAboutData::License_GPL, ki18n("© 2009, 2010 Jonathan Thomas"), KLocalizedString(), 0);
+                     KAboutData::License_GPL, ki18n("© 2009-2011 Jonathan Thomas"), KLocalizedString(), 0);
     about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
 
     KCmdLineArgs::init(argc, argv, &about);
