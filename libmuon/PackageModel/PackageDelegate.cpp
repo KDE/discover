@@ -34,19 +34,18 @@
 
 PackageDelegate::PackageDelegate(QObject *parent)
     : QAbstractItemDelegate(parent)
+    , m_icon(KIcon("application-x-deb"))
+    , m_emblem(KIcon("ubuntu-logo").pixmap(QSize(12,12)))
 {
     m_spacing  = 4;
 
-    m_iconSize = KIconLoader::global()->currentSize(KIconLoader::Toolbar);
-    m_icon = new KIcon("application-x-deb");
+    m_iconSize = KIconLoader::SizeSmallMedium;
 
-    m_supportedIcon = new KIcon("application-x-deb", 0, QStringList() << "ubuntu-logo");
     m_strings = new MuonStrings(this);
 }
 
 PackageDelegate::~PackageDelegate()
 {
-    delete m_icon;
 }
 
 void PackageDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
@@ -94,22 +93,18 @@ void PackageDelegate::paintPackageName(QPainter *painter, const QStyleOptionView
     QPainter p(&pixmap);
     p.translate(-option.rect.topLeft());
 
+    m_icon.paint(&p,
+                 leftToRight ? left + m_spacing : left + width - m_spacing - m_iconSize,
+                 top + m_spacing,
+                 m_iconSize,
+                 m_iconSize,
+                 Qt::AlignCenter,
+                 QIcon::Normal);
+
     if (index.data(PackageModel::SupportRole).toBool()) {
-        m_supportedIcon->paint(&p,
-                      leftToRight ? left + m_spacing : left + width - m_spacing - m_iconSize,
-                      top + m_spacing,
-                      m_iconSize,
-                      m_iconSize,
-                      Qt::AlignCenter,
-                      QIcon::Normal);
-    } else {
-        m_icon->paint(&p,
-                      leftToRight ? left + m_spacing : left + width - m_spacing - m_iconSize,
-                      top + m_spacing,
-                      m_iconSize,
-                      m_iconSize,
-                      Qt::AlignCenter,
-                      QIcon::Normal);
+        p.drawPixmap(left + m_iconSize - m_emblem.width()/2,
+                     top + option.rect.height() - 1.5*m_emblem.height(),
+                     m_emblem);
     }
 
     // Text

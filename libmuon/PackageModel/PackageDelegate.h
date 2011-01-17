@@ -23,7 +23,7 @@
 
 #include <QtGui/QAbstractItemDelegate>
 
-class KIcon;
+#include <KIcon>
 
 class MuonStrings;
 
@@ -46,8 +46,8 @@ private:
     int m_iconSize;
     int m_spacing;
 
-    KIcon *m_icon;
-    KIcon *m_supportedIcon;
+    KIcon m_icon;
+    QPixmap m_emblem;
     MuonStrings *m_strings;
 
     int calcItemHeight(const QStyleOptionViewItem &option) const;
