@@ -42,7 +42,8 @@ public:
         PopconRole = Qt::UserRole + 5,
         ActiveRole = Qt::UserRole + 6,
         ProgressRole = Qt::UserRole + 7,
-        ProgressTextRole = Qt::UserRole + 8
+        ProgressTextRole = Qt::UserRole + 8,
+        InstalledRole = Qt::UserRole +9
     };
     explicit ApplicationModel(QObject *parent, ApplicationBackend *backend);
     ~ApplicationModel();

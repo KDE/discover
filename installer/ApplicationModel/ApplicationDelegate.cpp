@@ -35,6 +35,7 @@
 #include <KLocale>
 #include <KStandardDirs>
 #include <Nepomuk/KRatingPainter>
+#include <KDebug>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -66,6 +67,7 @@ ApplicationDelegate::ApplicationDelegate(QAbstractItemView *parent, ApplicationB
     width = qMax(width, button2.sizeHint().width());
     m_buttonSize.setWidth(width);
 
+    m_emblem = KIcon("dialog-ok").pixmap(QSize(16, 16));
     m_ratingPainter = new KRatingPainter;
 }
 
@@ -151,11 +153,6 @@ void ApplicationDelegate::paint(QPainter *painter,
     p.translate(-option.rect.topLeft());
 
     // Main icon
-    QStringList overlays;
-    // FIXME: Copy dialog-ok.png to emblem-installed.png and install to muon-installer/icons
-    if (index.data(ApplicationModel::StatusRole).toInt() & QApt::Package::Installed) {
-        overlays << "installed";
-    }
     KIcon icon(index.data(ApplicationModel::IconRole).toString());
 
     int iconSize = calcItemHeight(option) - 2 * UNIVERSAL_PADDING;
@@ -166,6 +163,10 @@ void ApplicationDelegate::paint(QPainter *painter,
                iconSize,
                Qt::AlignCenter,
                iconMode);
+
+    if (index.data(ApplicationModel::InstalledRole).toBool()) {
+        p.drawPixmap(leftCount, top + rect.height() - m_emblem.height()/2, m_emblem);
+    }
 
     int textWidth;
     if (leftToRight) {

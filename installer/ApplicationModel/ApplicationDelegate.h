@@ -56,6 +56,7 @@ private:
     QPersistentModelIndex m_oldIndex;
     ApplicationExtender *m_extender;
     KRatingPainter *m_ratingPainter;
+    QPixmap m_emblem;
 
     int calcItemHeight(const QStyleOptionViewItem &option) const;
 
