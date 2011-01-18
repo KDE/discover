@@ -49,6 +49,7 @@
 // Own includes
 #include "config/ManagerSettingsDialog.h"
 #include "../libmuon/CommitWidget.h"
+#include "../libmuon/HistoryView/HistoryView.h"
 #include "../libmuon/DownloadWidget.h"
 #include "../libmuon/StatusWidget.h"
 #include "FilterWidget.h"
@@ -60,6 +61,7 @@ MainWindow::MainWindow()
     : MuonMainWindow()
     , m_stack(0)
     , m_settingsDialog(0)
+    , m_historyDialog(0)
     , m_reviewWidget(0)
     , m_downloadWidget(0)
     , m_commitWidget(0)
@@ -194,6 +196,12 @@ void MainWindow::setupActions()
     connect(this, SIGNAL(shouldConnect(bool)), m_applyAction, SLOT(setEnabled(bool)));
 
     KStandardAction::preferences(this, SLOT(editSettings()), actionCollection());
+
+    m_historyAction = actionCollection()->addAction("history");
+    m_historyAction->setIcon(KIcon("view-history"));
+    m_historyAction->setText(i18nc("@action::inmenu", "History..."));
+    m_historyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_H));
+    connect(m_historyAction, SIGNAL(triggered()), this, SLOT(showHistoryDialog()));
 
     QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_M), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(easterEggTriggered()));
@@ -467,6 +475,36 @@ void MainWindow::closeSettingsDialog()
 {
     m_settingsDialog->deleteLater();
     m_settingsDialog = 0;
+}
+
+void MainWindow::showHistoryDialog()
+{
+    if (!m_historyDialog) {
+        m_historyDialog = new KDialog(this);
+
+        KConfigGroup dialogConfig(KSharedConfig::openConfig("muonrc"),
+                                  "HistoryDialog");
+        m_historyDialog->restoreDialogSize(dialogConfig);
+
+        connect(m_historyDialog, SIGNAL(finished()), SLOT(closeHistoryDialog()));
+        HistoryView *historyView = new HistoryView(m_historyDialog);
+        m_historyDialog->setMainWidget(historyView);
+        m_historyDialog->setWindowTitle(i18nc("@title:window", "Package History"));
+        m_historyDialog->setWindowIcon(KIcon("view-history"));
+        m_historyDialog->setButtons(KDialog::Close);
+        m_historyDialog->show();
+    } else {
+        m_historyDialog->raise();
+    }
+}
+
+void MainWindow::closeHistoryDialog()
+{
+    KConfigGroup dialogConfig(KSharedConfig::openConfig("muonrc"),
+                              "HistoryDialog");
+    m_historyDialog->saveDialogSize(dialogConfig, KConfigBase::Persistent);
+    m_historyDialog->deleteLater();
+    m_historyDialog = 0;
 }
 
 void MainWindow::easterEggTriggered()

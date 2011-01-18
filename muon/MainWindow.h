@@ -28,6 +28,7 @@ class QSplitter;
 class QStackedWidget;
 class QToolBox;
 class KAction;
+class KDialog;
 
 class ManagerSettingsDialog;
 class FilterWidget;
@@ -64,11 +65,13 @@ private:
     KAction *m_autoRemoveAction;
     KAction *m_previewAction;
     KAction *m_applyAction;
+    KAction *m_historyAction;
     KAction *m_saveInstalledAction;
     KAction *m_saveSelectionsAction;
     KAction *m_loadSelectionsAction;
 
     ManagerSettingsDialog *m_settingsDialog;
+    KDialog *m_historyDialog;
     FilterWidget *m_filterBox;
     ManagerWidget *m_managerWidget;
     ReviewWidget *m_reviewWidget;
@@ -102,6 +105,8 @@ public Q_SLOTS:
     void revertChanges();
     void editSettings();
     void closeSettingsDialog();
+    void showHistoryDialog();
+    void closeHistoryDialog();
 };
 
 #endif
