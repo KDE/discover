@@ -162,7 +162,7 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
         disconnect(m_backend, SIGNAL(commitProgress(QString, int)),
                    this, SLOT(updateCommitProgress(QString, int)));
 
-        if (m_currentTransaction != m_queue.end()) {
+        if (m_currentTransaction != m_queue.end() && (*m_currentTransaction)->action() != ChangeAddons) {
             m_appLaunchQueue << (*m_currentTransaction)->application()->package()->name();
         }
 
