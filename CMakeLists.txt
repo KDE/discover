@@ -4,12 +4,26 @@ set(KDE_MIN_VERSION "4.5.0")
 find_package(KDE4 ${KDE_MIN_VERSION} REQUIRED)
 find_package(QApt REQUIRED)
 find_package(DebconfKDE REQUIRED)
+find_package(QZeitgeist)
 include (KDE4Defaults)
 
 include( FindPkgConfig )
 
+OPTION (ENABLE_QZEITGEIST "QZeitgeist support for App usage statistics" ON)
+
+if (QZEITGEIST_INCLUDE_DIR)
+    MESSAGE(STATUS "Found QZEITGEIST:")
+    if (ENABLE_QZEITGEIST)
+        set(HAVE_QZEITGEIST TRUE)
+    endif (ENABLE_QZEITGEIST)
+else (QZEITGEIST_INCLUDE_DIR)
+    set(ENABLE_QZEITGEIST FALSE)
+endif (QZEITGEIST_INCLUDE_DIR)
+
 macro_log_feature(QAPT_FOUND "QApt" "High-level Qt wrapper/Apt implementation around the Apt-pkg library"
                   "http://kubuntu.org" FALSE "" "Muon's package management backend")
+macro_log_feature(HAVE_QZEITGEIST "LibQZeitgeist" "Qt wrapper around the Zeitgeist DBus event logging service"
+                  "http://launchpad.net/zeitgeist/" FALSE "" "Used for application usage counting")
 
 include_directories(${KDE4_INCLUDES} ${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR})
 

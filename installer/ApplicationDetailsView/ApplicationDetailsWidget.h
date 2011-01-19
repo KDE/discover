@@ -70,6 +70,7 @@ private:
     QLabel *m_nameLabel;
     QLabel *m_shortDescLabel;
     KRatingWidget *m_ratingWidget;
+    QLabel *m_usageLabel;
     QWidget *m_menuPathWidget;
     QLabel *m_menuPathLabel;
     QLabel *m_statusLabel;
@@ -101,6 +102,7 @@ private Q_SLOTS:
     void updateProgress(Transaction *transaction, int percentage);
     void showTransactionState(Transaction *transaction);
     void transactionCancelled(Application *app);
+    void populateZeitgeistInfo();
     void fadeInScreenshot();
     void fetchScreenshot(QApt::ScreenshotType screenshotType);
     void thumbnailFetched(KJob *job);

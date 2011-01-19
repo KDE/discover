@@ -39,6 +39,7 @@
 #include <KLocale>
 #include <KPixmapSequence>
 #include <kpixmapsequenceoverlaypainter.h>
+#include <KService>
 #include <KStandardGuiItem>
 #include <KTemporaryFile>
 #include <KToolInvocation>
@@ -46,6 +47,17 @@
 #include <Nepomuk/KRatingWidget>
 
 #include <LibQApt/Package>
+
+
+#include "HaveQZeitgeist.h"
+#ifdef HAVE_QZEITGEIST
+#include <QtZeitgeist/DataModel/Event>
+#include <QtZeitgeist/DataModel/TimeRange>
+#include <QtZeitgeist/Log>
+#include <QtZeitgeist/Interpretation>
+#include <QtZeitgeist/Manifestation>
+#include <QtZeitgeist/QtZeitgeist>
+#endif
 
 #include <math.h>
 
@@ -91,14 +103,24 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     QWidget *headerSpacer = new QWidget(headerWidget);
     headerSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-    m_ratingWidget = new KRatingWidget(headerWidget);
+    QWidget *ratingUseWidget = new QWidget(headerWidget);
+    QVBoxLayout *ratingUseLayout = new QVBoxLayout(ratingUseWidget);
+
+    m_ratingWidget = new KRatingWidget(ratingUseWidget);
     m_ratingWidget->setAttribute(Qt::WA_TransparentForMouseEvents);
     m_ratingWidget->setPixmapSize(32);
+
+    m_usageLabel = new QLabel(ratingUseWidget);
+    m_usageLabel->setAlignment(Qt::AlignHCenter);
+    m_usageLabel->setText("Used: 1337 times");
+
+    ratingUseLayout->addWidget(m_ratingWidget);
+    ratingUseLayout->addWidget(m_usageLabel);
 
     headerLayout->addWidget(m_iconLabel);
     headerLayout->addWidget(nameDescWidget);
     headerLayout->addWidget(headerSpacer);
-    headerLayout->addWidget(m_ratingWidget);
+    headerLayout->addWidget(ratingUseWidget);
 
     // Menu path label
     m_menuPathWidget = new QWidget(this);
@@ -289,6 +311,8 @@ void ApplicationDetailsWidget::setApplication(Application *app)
 
     m_ratingWidget->setRating((int)(10* log(app->popconScore())/log(m_appBackend->maxPopconScore()+1)));
 
+    populateZeitgeistInfo();
+
     QString menuPathString = app->menuPath();
     if (!menuPathString.isEmpty()) {
         m_menuPathLabel->setText(menuPathString);
@@ -470,6 +494,67 @@ void ApplicationDetailsWidget::transactionCancelled(Application *app)
         m_cancelButton->hide();
         m_actionButton->show();
     }
+}
+
+void ApplicationDetailsWidget::populateZeitgeistInfo()
+{
+#ifdef HAVE_QZEITGEIST
+    QString desktopFile;
+
+    foreach (const QString &desktop, m_app->package()->installedFilesList().filter(".desktop")) {
+            // we create a new KService because findByDestopPath
+            // might fail because the Sycoca database is not up to date yet.
+            KService *service = new KService(desktop);
+            if (service->isApplication() &&
+              !service->noDisplay() &&
+              !service->exec().isEmpty())
+            {
+                desktopFile = desktop.split('/').last();
+                break;
+            }
+    }
+
+    QtZeitgeist::init();
+    int usageCount = 0;
+
+    QtZeitgeist::Log *log = new QtZeitgeist::Log(this);
+
+    QtZeitgeist::DataModel::EventList eventListTemplate;
+
+    QtZeitgeist::DataModel::Event event1;
+    event1.setActor("application://" + desktopFile);
+    event1.setInterpretation(QtZeitgeist::Interpretation::Event::ZGModifyEvent);
+    event1.setManifestation(QtZeitgeist::Manifestation::Event::ZGUserActivity);
+
+    QtZeitgeist::DataModel::Event event2;
+    event2.setActor("application://" + desktopFile);
+    event2.setInterpretation(QtZeitgeist::Interpretation::Event::ZGCreateEvent);
+    event2.setManifestation(QtZeitgeist::Manifestation::Event::ZGUserActivity);
+
+    eventListTemplate << event1 << event2;
+
+    QDBusPendingReply<QtZeitgeist::DataModel::EventIdList> reply = log->findEventIds(QtZeitgeist::DataModel::TimeRange::always(),
+                                                                                     eventListTemplate,
+                                                                                     QtZeitgeist::Log::Any,
+                                                                                     0, QtZeitgeist::Log::MostRecentEvents);
+    reply.waitForFinished();
+
+    if (reply.isValid()) {
+        usageCount = reply.value().size();
+//         kDebug() << reply.value().at(0).interpretation();
+    }
+
+    if (!usageCount) {
+        // More likely there are no stats than no usage, so just hide the label and return
+        m_usageLabel->hide();
+        return;
+    }
+
+    m_usageLabel->setText(i18ncp("@info:label The number of times an app has been used",
+                                  "Used one time", "Used: %1 times", usageCount));
+#else
+    m_usageLabel->hide();
+#endif // HAVE_QZEITGEIST
 }
 
 void ApplicationDetailsWidget::fadeInScreenshot()

@@ -28,6 +28,9 @@ set(muon_installer_SRCS
     ScreenShotViewer.cpp
     Transaction.cpp)
 
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ApplicationDetailsView/HaveQZeitgeist.h.in
+               ${CMAKE_CURRENT_SOURCE_DIR}/ApplicationDetailsView/HaveQZeitgeist.h)
+
 kde4_add_kcfg_files(muon_installer_SRCS GENERATE_MOC config/MuonInstallerSettings.kcfgc)
 
 kde4_add_executable(muon-installer ${muon_installer_SRCS})
@@ -35,7 +38,12 @@ kde4_add_executable(muon-installer ${muon_installer_SRCS})
 target_link_libraries(muon-installer muonprivate
                                      ${KDE4_KIO_LIBS}
                                      ${QAPT_LIBRARY}
-                                     ${DEBCONF_KDE_LIB})
+                                     ${DEBCONF_KDE_LIB}
+                                     ${QZEITGEIST_LIBRARY})
+
+if (ENABLE_QZEITGEIST)
+    target_link_libraries(muon-installer ${QZEITGEIST_LIBRARY})
+endif (ENABLE_QZEITGEIST)
 
 install(TARGETS muon-installer ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
