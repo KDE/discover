@@ -541,7 +541,6 @@ void ApplicationDetailsWidget::populateZeitgeistInfo()
 
     if (reply.isValid()) {
         usageCount = reply.value().size();
-//         kDebug() << reply.value().at(0).interpretation();
     }
 
     if (!usageCount) {
