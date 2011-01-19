@@ -37,6 +37,7 @@ GeneralSettingsPage::GeneralSettingsPage(QWidget* parent, QApt::Config *aptConfi
         SettingsPageBase(parent)
         , m_aptConfig(aptConfig)
         , m_recommendsCheckBox(new QCheckBox(this))
+        , m_suggestsCheckBox(new QCheckBox(this))
         , m_undoStackSpinbox(new QSpinBox(this))
         , m_autoCleanCheckBox(new QCheckBox(this))
         , m_autoCleanSpinbox(new QSpinBox(this))
@@ -47,6 +48,7 @@ GeneralSettingsPage::GeneralSettingsPage(QWidget* parent, QApt::Config *aptConfi
     setLayout(layout);
 
     m_recommendsCheckBox->setText(i18n("Treat recommended packages as dependencies"));
+    m_suggestsCheckBox->setText(i18n("Treat suggested packages as dependencies"));
 
     // Autoclean settings
     QWidget *autoCleanWidget = new QWidget(this);
@@ -69,11 +71,13 @@ GeneralSettingsPage::GeneralSettingsPage(QWidget* parent, QApt::Config *aptConfi
     spacer->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
 
     layout->addRow(m_recommendsCheckBox);
+    layout->addRow(m_suggestsCheckBox);
     layout->addRow(i18n("Number of undo operations:"), m_undoStackSpinbox);
     layout->addRow(autoCleanWidget);
     layout->addRow(spacer);
 
     connect(m_recommendsCheckBox, SIGNAL(clicked()), this, SIGNAL(changed()));
+    connect(m_suggestsCheckBox, SIGNAL(clicked()), this, SIGNAL(changed()));
     connect(m_undoStackSpinbox, SIGNAL(valueChanged(int)), this, SIGNAL(changed()));
     connect(m_autoCleanCheckBox, SIGNAL(clicked()), this, SIGNAL(changed()));
     connect(m_autoCleanSpinbox, SIGNAL(valueChanged(int)), this, SIGNAL(changed()));
@@ -94,6 +98,7 @@ void GeneralSettingsPage::loadSettings()
     MuonSettings *settings = MuonSettings::self();
 
     m_recommendsCheckBox->setChecked(m_aptConfig->readEntry("APT::Install-Recommends", true));
+    m_suggestsCheckBox->setChecked(m_aptConfig->readEntry("APT::Install-Suggests", false));
     m_undoStackSpinbox->setValue(settings->undoStackSize());
 
     int autoCleanValue = m_aptConfig->readEntry("APT::Periodic::AutocleanInterval", 0);
@@ -112,6 +117,11 @@ void GeneralSettingsPage::applySettings()
     if (m_aptConfig->readEntry("APT::Install-Recommends", false) != m_recommendsCheckBox->isChecked()) {
         // TODO: Change apply button icon to the auth key.
         m_aptConfig->writeEntry("APT::Install-Recommends", m_recommendsCheckBox->isChecked());
+    }
+
+    if (m_aptConfig->readEntry("APT::Install-Suggests", false) != m_suggestsCheckBox->isChecked()) {
+        // TODO: Change apply button icon to the auth key.
+        m_aptConfig->writeEntry("APT::Install-Suggests", m_suggestsCheckBox->isChecked());
     }
 
     int autoCleanValue;

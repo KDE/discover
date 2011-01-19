@@ -50,6 +50,7 @@ public Q_SLOTS:
 private:
     QApt::Config *m_aptConfig;
     QCheckBox *m_recommendsCheckBox;
+    QCheckBox *m_suggestsCheckBox;
     QSpinBox *m_undoStackSpinbox;
     QCheckBox *m_autoCleanCheckBox;
     QSpinBox *m_autoCleanSpinbox;
