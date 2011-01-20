@@ -48,14 +48,15 @@ ManagerSettingsDialog::ManagerSettingsDialog(QWidget* parent, QApt::Config *aptC
     KPageWidgetItem *generalSettingsFrame = addPage(generalPage,
                                                     i18nc("@title:group Title of the general group", "General"));
     generalSettingsFrame->setIcon(KIcon("system-run"));
-    connect(generalPage, SIGNAL(changed()), this, SLOT(enableApply()));
+    connect(generalPage, SIGNAL(changed()), this, SLOT(changed()));
+    connect(generalPage, SIGNAL(authChanged()), this, SLOT(authChanged()));
 
     // Notification settings
     NotifySettingsPage *notifyPage = new NotifySettingsPage(this);
     KPageWidgetItem *notifySettingsFrame = addPage(notifyPage,
                                                     i18nc("@title:group", "Notifications"));
     notifySettingsFrame->setIcon(KIcon("preferences-desktop-notification"));
-    connect(notifyPage, SIGNAL(changed()), this, SLOT(enableApply()));
+    connect(notifyPage, SIGNAL(changed()), this, SLOT(changed()));
 
     m_pages.insert(generalPage);
     m_pages.insert(notifyPage);
@@ -76,8 +77,16 @@ void ManagerSettingsDialog::slotButtonClicked(int button)
     KPageDialog::slotButtonClicked(button);
 }
 
-void ManagerSettingsDialog::enableApply()
+void ManagerSettingsDialog::changed()
 {
+    setButtonIcon(Apply, KIcon("dialog-ok-apply"));
+
+    enableButtonApply(true);
+}
+
+void ManagerSettingsDialog::authChanged()
+{
+    setButtonIcon(Apply, KIcon("dialog-password"));
     enableButtonApply(true);
 }
 
@@ -88,6 +97,7 @@ void ManagerSettingsDialog::applySettings()
     }
 
     emit settingsChanged();
+    setButtonIcon(Apply, KIcon("dialog-ok-apply"));
     enableButtonApply(false);
 }
 
@@ -96,6 +106,8 @@ void ManagerSettingsDialog::restoreDefaults()
     foreach (SettingsPageBase* page, m_pages) {
         page->restoreDefaults();
     }
+
+    setButtonIcon(Apply, KIcon("dialog-ok-apply"));
 }
 
 #include "ManagerSettingsDialog.moc"

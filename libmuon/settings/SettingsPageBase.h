@@ -53,6 +53,9 @@ public:
 signals:
     /** Is emitted if a setting has been changed. */
     void changed();
+
+    /** Is emitted if a setting needing auth changes. */
+    void authChanged();
 };
 
 #endif

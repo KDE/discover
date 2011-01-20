@@ -44,7 +44,8 @@ public:
     virtual void applySettings();
     virtual void restoreDefaults();
 
-public Q_SLOTS:
+private Q_SLOTS:
+    void emitAuthChanged();
     void updateAutoCleanSpinboxSuffix();
 
 private:
@@ -54,6 +55,8 @@ private:
     QSpinBox *m_undoStackSpinbox;
     QCheckBox *m_autoCleanCheckBox;
     QSpinBox *m_autoCleanSpinbox;
+
+    int autoCleanValue() const;
 };
 
 #endif

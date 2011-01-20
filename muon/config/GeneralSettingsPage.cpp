@@ -76,11 +76,11 @@ GeneralSettingsPage::GeneralSettingsPage(QWidget* parent, QApt::Config *aptConfi
     layout->addRow(autoCleanWidget);
     layout->addRow(spacer);
 
-    connect(m_recommendsCheckBox, SIGNAL(clicked()), this, SIGNAL(changed()));
-    connect(m_suggestsCheckBox, SIGNAL(clicked()), this, SIGNAL(changed()));
+    connect(m_recommendsCheckBox, SIGNAL(clicked()), this, SLOT(emitAuthChanged()));
+    connect(m_suggestsCheckBox, SIGNAL(clicked()), this, SLOT(emitAuthChanged()));
     connect(m_undoStackSpinbox, SIGNAL(valueChanged(int)), this, SIGNAL(changed()));
-    connect(m_autoCleanCheckBox, SIGNAL(clicked()), this, SIGNAL(changed()));
-    connect(m_autoCleanSpinbox, SIGNAL(valueChanged(int)), this, SIGNAL(changed()));
+    connect(m_autoCleanCheckBox, SIGNAL(clicked()), this, SLOT(emitAuthChanged()));
+    connect(m_autoCleanSpinbox, SIGNAL(valueChanged(int)), this, SLOT(emitAuthChanged()));
 
     connect(m_autoCleanSpinbox, SIGNAL(valueChanged(int)),
             this, SLOT(updateAutoCleanSpinboxSuffix()));
@@ -124,16 +124,10 @@ void GeneralSettingsPage::applySettings()
         m_aptConfig->writeEntry("APT::Install-Suggests", m_suggestsCheckBox->isChecked());
     }
 
-    int autoCleanValue;
+    int aCleanValue = autoCleanValue();
 
-    if (m_autoCleanCheckBox->isChecked()) {
-        autoCleanValue = m_autoCleanSpinbox->value();
-    } else {
-        autoCleanValue = 0;
-    }
-
-    if (m_aptConfig->readEntry("APT::Periodic::AutocleanInterval", 0) != autoCleanValue) {
-        m_aptConfig->writeEntry("APT::Periodic::AutocleanInterval", autoCleanValue);
+    if (m_aptConfig->readEntry("APT::Periodic::AutocleanInterval", 0) != aCleanValue) {
+        m_aptConfig->writeEntry("APT::Periodic::AutocleanInterval", aCleanValue);
     }
 }
 
@@ -145,6 +139,34 @@ void GeneralSettingsPage::restoreDefaults()
 void GeneralSettingsPage::updateAutoCleanSpinboxSuffix()
 {
     m_autoCleanSpinbox->setSuffix(i18np(" day", " days", m_autoCleanSpinbox->value()));
+}
+
+int GeneralSettingsPage::autoCleanValue() const
+{
+    int autoCleanValue;
+
+    if (m_autoCleanCheckBox->isChecked()) {
+        autoCleanValue = m_autoCleanSpinbox->value();
+    } else {
+        autoCleanValue = 0;
+    }
+
+    return autoCleanValue;
+}
+
+void GeneralSettingsPage::emitAuthChanged()
+{
+    bool recChanged = m_aptConfig->readEntry("APT::Install-Recommends", false) != m_recommendsCheckBox->isChecked();
+    bool sugChanged = m_aptConfig->readEntry("APT::Install-Suggests", false) != m_recommendsCheckBox->isChecked();
+
+    int cleanInt = autoCleanValue();
+    bool cleanIntChanged = m_aptConfig->readEntry("APT::Periodic::AutocleanInterval", 0) != cleanInt;
+
+    if (recChanged || sugChanged || cleanIntChanged) {
+        emit authChanged();
+    } else {
+        emit changed();
+    }
 }
 
 #include "GeneralSettingsPage.moc"

@@ -20,12 +20,11 @@
 
 #include "SettingsPageBase.h"
 
-SettingsPageBase::SettingsPageBase(QWidget* parent) :
-        QWidget(parent)
+SettingsPageBase::SettingsPageBase(QWidget* parent)
+        : QWidget(parent)
 {}
 
 SettingsPageBase::~SettingsPageBase()
 {}
-
 
 #include "SettingsPageBase.moc"

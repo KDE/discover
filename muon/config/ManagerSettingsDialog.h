@@ -42,7 +42,8 @@ protected slots:
     virtual void slotButtonClicked(int button);
 
 private Q_SLOTS:
-    void enableApply();
+    void changed();
+    void authChanged();
 
 Q_SIGNALS:
     void settingsChanged();
