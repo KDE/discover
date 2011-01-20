@@ -52,6 +52,7 @@ private:
     QApt::Config *m_aptConfig;
     QCheckBox *m_recommendsCheckBox;
     QCheckBox *m_suggestsCheckBox;
+    QCheckBox *m_untrustedCheckBox;
     QSpinBox *m_undoStackSpinbox;
     QCheckBox *m_autoCleanCheckBox;
     QSpinBox *m_autoCleanSpinbox;
