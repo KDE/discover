@@ -37,7 +37,7 @@ bool DistUpgradeEvent::upgradeAvailable()
 {
     QString checkerFile = KStandardDirs::locate("appdata", "releasechecker");
     KProcess checkerProcess;
-    checkerProcess.setProgram(QStringList() << checkerFile);
+    checkerProcess.setProgram(QStringList() << "/usr/bin/python" << checkerFile);
 
     if (checkerProcess.execute() == 0) {
         return true;
