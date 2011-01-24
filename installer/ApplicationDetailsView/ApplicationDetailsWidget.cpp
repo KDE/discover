@@ -517,10 +517,8 @@ void ApplicationDetailsWidget::populateZeitgeistInfo()
     }
 
     QtZeitgeist::init();
-    int usageCount = 0;
 
-    QtZeitgeist::Log log;
-
+    // Prepare the Zeitgeist query
     QtZeitgeist::DataModel::EventList eventListTemplate;
 
     QtZeitgeist::DataModel::Event event1;
@@ -535,12 +533,14 @@ void ApplicationDetailsWidget::populateZeitgeistInfo()
 
     eventListTemplate << event1 << event2;
 
+    QtZeitgeist::Log log;
     QDBusPendingReply<QtZeitgeist::DataModel::EventIdList> reply = log.findEventIds(QtZeitgeist::DataModel::TimeRange::always(),
                                                                                     eventListTemplate,
                                                                                     QtZeitgeist::Log::Any,
                                                                                     0, QtZeitgeist::Log::MostRecentEvents);
     reply.waitForFinished();
 
+    int usageCount = 0;
     if (reply.isValid()) {
         usageCount = reply.value().size();
     }
