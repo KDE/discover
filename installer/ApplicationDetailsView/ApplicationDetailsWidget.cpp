@@ -112,7 +112,6 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
 
     m_usageLabel = new QLabel(ratingUseWidget);
     m_usageLabel->setAlignment(Qt::AlignHCenter);
-    m_usageLabel->setText("Used: 1337 times");
 
     ratingUseLayout->addWidget(m_ratingWidget);
     ratingUseLayout->addWidget(m_usageLabel);
@@ -311,9 +310,7 @@ void ApplicationDetailsWidget::setApplication(Application *app)
 
     m_ratingWidget->setRating((int)(10* log(app->popconScore())/log(m_appBackend->maxPopconScore()+1)));
 
-    if (app->package()->isInstalled()) {
-        populateZeitgeistInfo();
-    }
+    populateZeitgeistInfo();
 
     QString menuPathString = app->menuPath();
     if (!menuPathString.isEmpty()) {
@@ -501,6 +498,11 @@ void ApplicationDetailsWidget::transactionCancelled(Application *app)
 void ApplicationDetailsWidget::populateZeitgeistInfo()
 {
 #ifdef HAVE_QZEITGEIST
+    if (!m_app->package()->isInstalled()) {
+        m_usageLabel->hide();
+        return;
+    }
+
     QString desktopFile;
 
     foreach (const QString &desktop, m_app->package()->installedFilesList().filter(".desktop")) {
