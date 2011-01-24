@@ -502,9 +502,7 @@ void ApplicationDetailsWidget::populateZeitgeistInfo()
     QString desktopFile;
 
     foreach (const QString &desktop, m_app->package()->installedFilesList().filter(".desktop")) {
-            // we create a new KService because findByDestopPath
-            // might fail because the Sycoca database is not up to date yet.
-            KService *service = new KService(desktop);
+            KService::Ptr service = KService::serviceByDesktopPath(desktop);
             if (service->isApplication() &&
               !service->noDisplay() &&
               !service->exec().isEmpty())
