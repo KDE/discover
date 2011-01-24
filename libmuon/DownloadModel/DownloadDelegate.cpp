@@ -117,8 +117,7 @@ void DownloadDelegate::paintText(QPainter *painter, const QStyleOptionViewItem &
     int y = option.rect.y() + calcItemHeight(option);
     int width = option.rect.width();
 
-    QPen pen;
-    painter->setPen(pen);
+    painter->setPen(option.palette.color(QPalette::Text));
     painter->drawText(x + m_spacing, y, fontMetrics.elidedText(text, option.textElideMode, width));
 }
 
