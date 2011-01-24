@@ -311,7 +311,9 @@ void ApplicationDetailsWidget::setApplication(Application *app)
 
     m_ratingWidget->setRating((int)(10* log(app->popconScore())/log(m_appBackend->maxPopconScore()+1)));
 
-    populateZeitgeistInfo();
+    if (app->package()->isInstalled()) {
+        populateZeitgeistInfo();
+    }
 
     QString menuPathString = app->menuPath();
     if (!menuPathString.isEmpty()) {
