@@ -32,9 +32,11 @@
 #include <QtGui/QSplitter>
 
 // KDE includes
+#include <KAction>
 #include <KIcon>
 #include <KLineEdit>
 #include <KLocale>
+#include <KMenu>
 #include <KMessageBox>
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
@@ -50,6 +52,8 @@
 #include "../libmuon/PackageModel/PackageProxyModel.h"
 #include "../libmuon/PackageModel/PackageView.h"
 #include "../libmuon/PackageModel/PackageDelegate.h"
+
+#define NUM_COLUMNS 3
 
 bool packageNameLessThan(QApt::Package *p1, QApt::Package *p2)
 {
@@ -87,6 +91,8 @@ PackageWidget::PackageWidget(QWidget *parent)
     m_searchTimer->setSingleShot(true);
     connect(m_searchTimer, SIGNAL(timeout()), this, SLOT(startSearch()));
 
+    setupActions();
+
     m_searchEdit = new KLineEdit(topVBox);
     m_searchEdit->setClickMessage(i18nc("@label Line edit click message", "Search"));
     m_searchEdit->setClearButtonShown(true);
@@ -123,6 +129,8 @@ PackageWidget::PackageWidget(QWidget *parent)
 
     m_busyWidget->start();
 
+    connect(m_packageView, SIGNAL(customContextMenuRequested(const QPoint &)),
+            this, SLOT(contextMenuRequested(const QPoint &)));
     connect(m_packageView, SIGNAL(currentPackageChanged(const QModelIndex &)),
             this, SLOT(packageActivated(const QModelIndex &)));
     connect(m_packageView, SIGNAL(selectionEmpty()), m_detailsWidget, SLOT(hide()));
@@ -136,6 +144,40 @@ PackageWidget::PackageWidget(QWidget *parent)
 
 PackageWidget::~PackageWidget()
 {
+}
+
+void PackageWidget::setupActions()
+{
+    m_installAction = new KAction(this);
+    m_installAction->setIcon(KIcon("download"));
+    m_installAction->setText(i18nc("@action:inmenu", "Mark for Installation"));
+    connect(m_installAction, SIGNAL(triggered()), this, SLOT(setPackagesInstall()));
+
+    m_removeAction = new KAction(this);
+    m_removeAction->setIcon(KIcon("edit-delete"));
+    m_removeAction->setText(i18nc("@action:button", "Mark for Removal"));
+    connect(m_removeAction, SIGNAL(triggered()), this, SLOT(setPackagesRemove()));
+
+    m_upgradeAction = new KAction(this);
+    m_upgradeAction->setIcon(KIcon("system-software-update"));
+    m_upgradeAction->setText(i18nc("@action:button", "Mark for Upgrade"));
+    connect(m_upgradeAction, SIGNAL(triggered()), this, SLOT(setPackagesUpgrade()));
+
+    m_reinstallAction = new KAction(this);
+    m_reinstallAction->setIcon(KIcon("view-refresh"));
+    m_reinstallAction->setText(i18nc("@action:button", "Mark for Reinstallation"));
+    connect(m_reinstallAction, SIGNAL(triggered()), this, SLOT(setPackagesReInstall()));
+
+    m_purgeAction = new KAction(this);
+    m_purgeAction->setIcon(KIcon("edit-delete-shred"));
+    m_purgeAction->setText(i18nc("@action:button", "Mark for Purge"));
+    connect(m_purgeAction, SIGNAL(triggered()), this, SLOT(setPackagesPurge()));
+
+    m_keepAction = new KAction(this);
+    m_keepAction->setIcon(KIcon("dialog-cancel"));
+    m_keepAction->setText(i18nc("@action:button", "Unmark"));
+    connect(m_keepAction, SIGNAL(triggered()), this, SLOT(setPackagesKeep()));
+    
 }
 
 void PackageWidget::setHeaderText(const QString &text)
@@ -220,6 +262,66 @@ void PackageWidget::packageActivated(const QModelIndex &index)
     m_detailsWidget->setPackage(package);
 }
 
+void PackageWidget::contextMenuRequested(const QPoint &pos)
+{
+    KMenu menu;
+
+    menu.addAction(m_installAction);
+    menu.addAction(m_removeAction);
+    menu.addAction(m_upgradeAction);
+    menu.addAction(m_reinstallAction);
+    menu.addAction(m_purgeAction);
+    menu.addAction(m_keepAction);
+
+    QModelIndexList selected = m_packageView->currentSelection();
+
+    // Divide by the number of columns
+    if (selected.size()/NUM_COLUMNS == 1) {
+        int state = m_proxyModel->packageAt(selected.first())->state();
+        bool upgradeable = (state & QApt::Package::Upgradeable);
+
+        if (state & QApt::Package::Installed) {
+            m_installAction->setEnabled(false);
+            m_removeAction->setEnabled(true);
+            if (upgradeable) {
+                m_upgradeAction->setEnabled(true);
+            } else {
+                m_upgradeAction->setEnabled(false);
+            }
+            if (state & (QApt::Package::NotDownloadable) || upgradeable) {
+                m_reinstallAction->setEnabled(false);
+            } else {
+                m_reinstallAction->setEnabled(true);
+            }
+            m_keepAction->setEnabled(false);
+            m_purgeAction->setEnabled(false);
+        } else if (state & QApt::Package::ResidualConfig) {
+            m_purgeAction->setEnabled(true);
+            m_installAction->setEnabled(true);
+            m_removeAction->setEnabled(false);
+            m_upgradeAction->setEnabled(false);
+            m_reinstallAction->setEnabled(false);
+            m_keepAction->setEnabled(false);
+        } else {
+            m_installAction->setEnabled(true);
+            m_removeAction->setEnabled(false);
+            m_upgradeAction->setEnabled(false);
+            m_reinstallAction->setEnabled(false);
+            m_purgeAction->setEnabled(false);
+            m_keepAction->setEnabled(false);
+        }
+    } else {
+        m_installAction->setEnabled(true);
+        m_removeAction->setEnabled(true);
+        m_upgradeAction->setEnabled(true);
+        m_reinstallAction->setEnabled(true);
+        m_purgeAction->setEnabled(true);
+        m_keepAction->setEnabled(true);
+    }
+
+    menu.exec(m_packageView->mapToGlobal(pos));
+}
+
 void PackageWidget::setSortedPackages()
 {
     QApt::PackageList packageList = m_watcher->future().result();
@@ -254,6 +356,41 @@ bool PackageWidget::confirmEssentialRemoval()
     }
 }
 
+void PackageWidget::actOnPackages(QApt::Package::State action)
+{
+    QModelIndexList selected = m_packageView->selectionModel()->selectedIndexes();
+
+    if (selected.isEmpty()) {
+        return;
+    }
+
+    foreach (const QModelIndex &index, selected) {
+        QApt::Package *package = m_proxyModel->packageAt(index);
+        switch (action) {
+        case QApt::Package::ToInstall:
+            setInstall(package);
+            break;
+        case QApt::Package::ToRemove:
+            setRemove(package);
+            break;
+        case QApt::Package::ToUpgrade:
+            setUpgrade(package);
+            break;
+        case QApt::Package::ToReInstall:
+            setReInstall(package);
+            break;
+        case QApt::Package::ToKeep:
+            setKeep(package);
+            break;
+        case QApt::Package::ToPurge:
+            setPurge(package);
+            break;
+        default:
+            break;
+        }
+    }
+}
+
 void PackageWidget::setInstall(QApt::Package *package)
 {
     m_oldCacheState = m_backend->currentCacheState();
@@ -266,6 +403,11 @@ void PackageWidget::setInstall(QApt::Package *package)
         showBrokenReason(package);
         m_backend->restoreCacheState(m_oldCacheState);
     }
+}
+
+void PackageWidget::setPackagesInstall()
+{
+    actOnPackages(QApt::Package::ToInstall);
 }
 
 void PackageWidget::setRemove(QApt::Package *package)
@@ -287,6 +429,11 @@ void PackageWidget::setRemove(QApt::Package *package)
     }
 }
 
+void PackageWidget::setPackagesRemove()
+{
+    actOnPackages(QApt::Package::ToRemove);
+}
+
 void PackageWidget::setUpgrade(QApt::Package *package)
 {
     m_oldCacheState = m_backend->currentCacheState();
@@ -299,6 +446,11 @@ void PackageWidget::setUpgrade(QApt::Package *package)
     }
 }
 
+void PackageWidget::setPackagesUpgrade()
+{
+    actOnPackages(QApt::Package::ToUpgrade);
+}
+
 void PackageWidget::setReInstall(QApt::Package *package)
 {
     m_oldCacheState = m_backend->currentCacheState();
@@ -309,6 +461,11 @@ void PackageWidget::setReInstall(QApt::Package *package)
         showBrokenReason(package);
         m_backend->restoreCacheState(m_oldCacheState);
     }
+}
+
+void PackageWidget::setPackagesReInstall()
+{
+    actOnPackages(QApt::Package::ToReInstall);
 }
 
 void PackageWidget::setPurge(QApt::Package *package)
@@ -330,6 +487,11 @@ void PackageWidget::setPurge(QApt::Package *package)
     }
 }
 
+void PackageWidget::setPackagesPurge()
+{
+    actOnPackages(QApt::Package::ToPurge);
+}
+
 void PackageWidget::setKeep(QApt::Package *package)
 {
     m_oldCacheState = m_backend->currentCacheState();
@@ -339,6 +501,11 @@ void PackageWidget::setKeep(QApt::Package *package)
     if (package->wouldBreak()) {
         m_backend->restoreCacheState(m_oldCacheState);
     }
+}
+
+void PackageWidget::setPackagesKeep()
+{
+    actOnPackages(QApt::Package::ToKeep);
 }
 
 void PackageWidget::showBrokenReason(QApt::Package *package)

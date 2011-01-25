@@ -26,6 +26,7 @@ PackageView::PackageView(QWidget *parent)
     : QTreeView(parent)
 {
     setAlternatingRowColors(true);
+    setContextMenuPolicy(Qt::CustomContextMenu);
     setRootIsDecorated(false);
     setSelectionMode(QAbstractItemView::ExtendedSelection);
     setUniformRowHeights(true);
@@ -34,6 +35,11 @@ PackageView::PackageView(QWidget *parent)
 
 PackageView::~PackageView()
 {
+}
+
+QModelIndexList PackageView::currentSelection() const
+{
+    return selectedIndexes();
 }
 
 void PackageView::currentChanged(const QModelIndex &current, const QModelIndex &previous)

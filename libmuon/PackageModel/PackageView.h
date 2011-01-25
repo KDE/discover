@@ -30,6 +30,8 @@ public:
     explicit PackageView(QWidget *parent);
     ~PackageView();
 
+    QModelIndexList currentSelection() const;
+
 protected Q_SLOTS:
     void currentChanged(const QModelIndex &current, const QModelIndex &previous);
     void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);

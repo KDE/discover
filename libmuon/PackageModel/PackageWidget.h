@@ -29,7 +29,7 @@
 // KDE includes
 #include <KVBox>
 
-#include <LibQApt/Globals>
+#include <LibQApt/Package>
 
 #include "../libmuonprivate_export.h"
 
@@ -37,6 +37,7 @@ class QLabel;
 class QTimer;
 class QVBoxLayout;
 
+class KAction;
 class KLineEdit;
 class KPixmapSequenceOverlayPainter;
 
@@ -48,7 +49,6 @@ class PackageView;
 namespace QApt
 {
     class Backend;
-    class Package;
 }
 
 class MUONPRIVATE_EXPORT PackageWidget : public KVBox
@@ -82,11 +82,19 @@ protected:
 
 private:
     QApt::CacheState m_oldCacheState;
+
     QFutureWatcher<QList<QApt::Package*> >* m_watcher;
     QWidget *m_headerWidget;
     QLabel *m_headerLabel;
     KLineEdit *m_searchEdit;
     QTimer *m_searchTimer;
+
+    KAction *m_installAction;
+    KAction *m_removeAction;
+    KAction *m_upgradeAction;
+    KAction *m_reinstallAction;
+    KAction *m_keepAction;
+    KAction *m_purgeAction;
 
     int m_packagesType;
     QString digestReason(QApt::Package *pkg,
@@ -99,16 +107,25 @@ public Q_SLOTS:
     void startSearch();
 
 private Q_SLOTS:
+    void setupActions();
     void packageActivated(const QModelIndex &index);
+    void contextMenuRequested(const QPoint &pos);
     void setSortedPackages();
 
     bool confirmEssentialRemoval();
+    void actOnPackages(QApt::Package::State state);
     void setInstall(QApt::Package *package);
+    void setPackagesInstall();
     void setRemove(QApt::Package *package);
+    void setPackagesRemove();
     void setUpgrade(QApt::Package *package);
+    void setPackagesUpgrade();
     void setReInstall(QApt::Package *package);
+    void setPackagesReInstall();
     void setPurge(QApt::Package *package);
+    void setPackagesPurge();
     void setKeep(QApt::Package *package);
+    void setPackagesKeep();
     void showBrokenReason(QApt::Package *package);
 };
 
