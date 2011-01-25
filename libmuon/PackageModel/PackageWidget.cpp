@@ -364,8 +364,13 @@ void PackageWidget::actOnPackages(QApt::Package::State action)
         return;
     }
 
+    // There are three indexes per row, so we want a duplicate-less set of packages
+    QSet<QApt::Package *> packages;
     foreach (const QModelIndex &index, selected) {
-        QApt::Package *package = m_proxyModel->packageAt(index);
+        packages << m_proxyModel->packageAt(index);
+    }
+
+    foreach (QApt::Package *package, packages) {
         switch (action) {
         case QApt::Package::ToInstall:
             setInstall(package);
