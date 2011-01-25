@@ -87,7 +87,7 @@ MainTab::MainTab(QWidget *parent)
     m_installButton = new QPushButton(buttonBox);
     m_installButton->setIcon(KIcon("download"));
     m_installButton->setText(i18nc("@action:button", "Installation"));
-    connect(m_installButton, SIGNAL(clicked()), this, SLOT(setInstall()));
+    connect(m_installButton, SIGNAL(clicked()), this, SLOT(emitSetInstall()));
     buttonBoxLayout->addWidget(m_installButton);
 
     m_removeButton = new QToolButton(buttonBox);
@@ -95,39 +95,39 @@ MainTab::MainTab(QWidget *parent)
     m_removeButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     m_removeButton->setIcon(KIcon("edit-delete"));
     m_removeButton->setText(i18nc("@action:button", "Removal"));
-    connect(m_removeButton, SIGNAL(clicked()), this, SLOT(setRemove()));
+    connect(m_removeButton, SIGNAL(clicked()), this, SLOT(emitSetRemove()));
     buttonBoxLayout->addWidget(m_removeButton);
 
     m_upgradeButton = new QPushButton(buttonBox);
     m_upgradeButton->setIcon(KIcon("system-software-update"));
     m_upgradeButton->setText(i18nc("@action:button", "Upgrade"));
-    connect(m_upgradeButton, SIGNAL(clicked()), this, SLOT(setInstall()));
+    connect(m_upgradeButton, SIGNAL(clicked()), this, SLOT(emitSetInstall()));
     buttonBoxLayout->addWidget(m_upgradeButton);
 
     m_reinstallButton = new QPushButton(buttonBox);
     m_reinstallButton->setIcon(KIcon("view-refresh"));
     m_reinstallButton->setText(i18nc("@action:button", "Reinstallation"));
-    connect(m_reinstallButton, SIGNAL(clicked()), this, SLOT(setReInstall()));
+    connect(m_reinstallButton, SIGNAL(clicked()), this, SLOT(emitSetReInstall()));
     buttonBoxLayout->addWidget(m_reinstallButton);
 
     m_purgeMenu = new KMenu(m_removeButton);
     m_purgeAction = new KAction(this);
     m_purgeAction->setIcon(KIcon("edit-delete-shred"));
     m_purgeAction->setText(i18nc("@action:button", "Purge"));
-    connect(m_purgeAction, SIGNAL(triggered()), this, SLOT(setPurge()));
+    connect(m_purgeAction, SIGNAL(triggered()), this, SLOT(emitSetPurge()));
     m_purgeMenu->addAction(m_purgeAction);
     m_removeButton->setMenu(m_purgeMenu);
 
     m_purgeButton = new QPushButton(buttonBox);
     m_purgeButton->setIcon(m_purgeAction->icon());
     m_purgeButton->setText(m_purgeAction->text());
-    connect(m_purgeButton, SIGNAL(clicked()), this, SLOT(setPurge()));
+    connect(m_purgeButton, SIGNAL(clicked()), this, SLOT(emitSetPurge()));
     buttonBoxLayout->addWidget(m_purgeButton);
 
     m_cancelButton = new QPushButton(buttonBox);
     m_cancelButton->setIcon(KIcon("dialog-cancel"));
     m_cancelButton->setText(i18nc("@action:button", "Unmark"));
-    connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(setKeep()));
+    connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(emitSetKeep()));
     buttonBoxLayout->addWidget(m_cancelButton);
 
     QWidget *buttonSpacer = new QWidget(buttonBox);
@@ -272,231 +272,34 @@ void MainTab::screenshotFetched(KJob *job)
     m_throbberWidget->hide();
 }
 
-bool MainTab::confirmEssentialRemoval()
+void MainTab::emitSetInstall()
 {
-    QString text = i18nc("@label", "Removing this package may break your system. Are you sure you want to remove it?");
-    QString title = i18nc("@label", "Warning - Removing Important Package");
-    int result = KMessageBox::Cancel;
-
-    result = KMessageBox::warningContinueCancel(this, text, title, KStandardGuiItem::cont(),
-             KStandardGuiItem::cancel(), QString(), KMessageBox::Dangerous);
-
-    switch (result) {
-    case KMessageBox::Continue:
-        return true;
-        break;
-    case KMessageBox::Cancel:
-    default:
-        return false;
-        break;
-    }
+    emit setInstall(m_package);
 }
 
-void MainTab::setInstall()
+void MainTab::emitSetRemove()
 {
-    m_oldCacheState = m_backend->currentCacheState();
-    m_backend->saveCacheState();
-    if (!m_package->availableVersion().isEmpty()) {
-        m_package->setInstall();
-    }
-
-    if (m_package->wouldBreak()) {
-        showBrokenReason();
-        m_backend->restoreCacheState(m_oldCacheState);
-    }
+    emit setRemove(m_package);
 }
 
-void MainTab::setRemove()
+void MainTab::emitSetUpgrade()
 {
-    bool remove = true;
-    if (m_package->state() & QApt::Package::IsImportant) {
-        remove = confirmEssentialRemoval();
-    }
-
-    if (remove) {
-        m_oldCacheState = m_backend->currentCacheState();
-        m_backend->saveCacheState();
-        m_package->setRemove();
-
-        if (m_package->wouldBreak()) {
-            showBrokenReason();
-            m_backend->restoreCacheState(m_oldCacheState);
-        }
-    }
+    emit setUpgrade(m_package);
 }
 
-void MainTab::setUpgrade()
+void MainTab::emitSetReInstall()
 {
-    m_oldCacheState = m_backend->currentCacheState();
-    m_backend->saveCacheState();
-    m_package->setInstall();
-
-    if (m_package->wouldBreak()) {
-        showBrokenReason();
-        m_backend->restoreCacheState(m_oldCacheState);
-    }
+    emit setReInstall(m_package);
 }
 
-void MainTab::setReInstall()
+void MainTab::emitSetKeep()
 {
-    m_oldCacheState = m_backend->currentCacheState();
-    m_backend->saveCacheState();
-    m_package->setReInstall();
-
-    if (m_package->wouldBreak()) {
-        showBrokenReason();
-        m_backend->restoreCacheState(m_oldCacheState);
-    }
+    emit setKeep(m_package);
 }
 
-void MainTab::setPurge()
+void MainTab::emitSetPurge()
 {
-    bool remove = true;
-    if (m_package->state() & QApt::Package::IsImportant) {
-        remove = confirmEssentialRemoval();
-    }
-
-    if (remove) {
-        m_backend->saveCacheState();
-        m_oldCacheState = m_backend->currentCacheState();
-        m_package->setPurge();
-
-        if (m_package->wouldBreak()) {
-            showBrokenReason();
-            m_backend->restoreCacheState(m_oldCacheState);
-        }
-    }
-}
-
-void MainTab::setKeep()
-{
-    m_oldCacheState = m_backend->currentCacheState();
-    m_backend->saveCacheState();
-    m_package->setKeep();
-
-    if (m_package->wouldBreak()) {
-        m_backend->restoreCacheState(m_oldCacheState);
-    }
-}
-
-void MainTab::showBrokenReason()
-{
-    QHash<int, QHash<QString, QVariantMap> > failedReasons = m_package->brokenReason();
-    QString reason;
-    QString dialogText = i18nc("@label", "The \"%1\" package could not be marked for installation or upgrade:",
-                               m_package->latin1Name());
-    dialogText += '\n';
-    QString title = i18nc("@title:window", "Unable to Mark Package");
-
-    QHash<int, QHash<QString, QVariantMap> >::const_iterator reasonIter = failedReasons.constBegin();
-    QHash<int, QHash<QString, QVariantMap> >::const_iterator end = failedReasons.constEnd();
-    while (reasonIter != end) {
-        QApt::BrokenReason failType = (QApt::BrokenReason)reasonIter.key();
-        QHash<QString, QVariantMap> failReason = reasonIter.value();
-        dialogText += digestReason(failType, failReason);
-
-        reasonIter++;
-    }
-
-    KMessageBox::information(this, dialogText, title);
-}
-
-QString MainTab::digestReason(QApt::BrokenReason failType, QHash<QString, QVariantMap> failReason)
-{
-    QHash<QString, QVariantMap>::const_iterator packageIter = failReason.constBegin();
-    QHash<QString, QVariantMap>::const_iterator end = failReason.constEnd();
-    QString reason;
-
-    switch (failType) {
-    case QApt::ParentNotInstallable: {
-        reason += '\t';
-        reason = i18nc("@label", "The \"%1\" package has no available version, but exists in the database.\n"
-                       "\tThis typically means that the package was mentioned in a dependency and "
-                       "never uploaded, has been obsoleted, or is not available from the currently-enabled "
-                       "repositories.", m_package->latin1Name());
-        break;
-    }
-    case QApt::WrongCandidateVersion: {
-        while (packageIter != end) {
-            QString package = packageIter.key();
-            QString relation = packageIter.value()["Relation"].toString();
-            QString requiredVersion = packageIter.value()["RequiredVersion"].toString();
-            QString candidateVersion = packageIter.value()["CandidateVersion"].toString();
-            bool isFirstOr = !packageIter.value()["IsFirstOr"].toBool();
-
-            if (isFirstOr) {
-                reason += '\t';
-                reason += i18nc("@label Example: Depends: libqapt 0.1, but 0.2 is to be installed",
-                                "%1: %2 %3, but %4 is to be installed",
-                                relation, package, requiredVersion, candidateVersion);
-                reason += '\n';
-            } else {
-                reason += '\t';
-                reason += QString(i18nc("@label Example: or libqapt 0.1, but 0.2 is to be installed",
-                                        "or %1 %2, but %3 is to be installed",
-                                        package, requiredVersion, candidateVersion));
-                reason += '\n';
-            }
-            packageIter++;
-        }
-
-        return reason;
-        break;
-    }
-    case QApt::DepNotInstallable: {
-        while (packageIter != end) {
-            QString package = packageIter.key();
-            QString relation = packageIter.value()["Relation"].toString();
-            bool isFirstOr = !packageIter.value()["IsFirstOr"].toBool();
-
-            if (isFirstOr) {
-                reason += '\t';
-                reason += i18nc("@label Example: Depends: libqapt, but is not installable",
-                                "%1: %2, but it is not installable",
-                                relation, package);
-                reason += '\n';
-            } else {
-                reason += '\t';
-                reason += QString(i18nc("@label Example: or libqapt, but is not installable",
-                                        "or %1, but is not installable",
-                                        package));
-                reason += '\n';
-            }
-            packageIter++;
-        }
-
-        return reason;
-        break;
-    }
-    case QApt::VirtualPackage:
-        while (packageIter != end) {
-            QString package = packageIter.key();
-            QString relation = packageIter.value()["Relation"].toString();
-            bool isFirstOr = !packageIter.value()["IsFirstOr"].toBool();
-
-            if (isFirstOr) {
-                reason += '\t';
-                reason += i18nc("@label Example: Depends: libqapt, but it is a virtual package",
-                                "%1: %2, but it is a virtual package",
-                                relation, package);
-                reason += '\n';
-            } else {
-                reason += '\t';
-                reason += QString(i18nc("@label Example: or libqapt, but it is a virtual package",
-                                        "or %1, but it is a virtual package",
-                                        package));
-                reason += '\n';
-            }
-            packageIter++;
-        }
-
-        return reason;
-        break;
-    default:
-        break;
-    }
-
-    return reason;
+    emit setPurge(m_package);
 }
 
 #include "MainTab.moc"

@@ -63,6 +63,14 @@ public Q_SLOTS:
     void setPackage(QApt::Package *package);
     void refreshTabs();
     void clear();
+
+signals:
+    void setInstall(QApt::Package *package);
+    void setRemove(QApt::Package *package);
+    void setUpgrade(QApt::Package *package);
+    void setReInstall(QApt::Package *package);
+    void setKeep(QApt::Package *package);
+    void setPurge(QApt::Package *package);
 };
 
 #endif

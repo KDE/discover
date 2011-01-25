@@ -60,6 +60,19 @@ DetailsWidget::DetailsWidget(QWidget *parent)
 
     // Hide until a package is clicked
     hide();
+
+    connect(m_mainTab, SIGNAL(setInstall(QApt::Package *)),
+            this, SIGNAL(setInstall(QApt::Package *)));
+    connect(m_mainTab, SIGNAL(setRemove(QApt::Package *)),
+            this, SIGNAL(setRemove(QApt::Package *)));
+    connect(m_mainTab, SIGNAL(setUpgrade(QApt::Package *)),
+            this, SIGNAL(setUpgrade(QApt::Package *)));
+    connect(m_mainTab, SIGNAL(setReInstall(QApt::Package *)),
+            this, SIGNAL(setReInstall(QApt::Package *)));
+    connect(m_mainTab, SIGNAL(setKeep(QApt::Package *)),
+            this, SIGNAL(setKeep(QApt::Package *)));
+    connect(m_mainTab, SIGNAL(setPurge(QApt::Package *)),
+            this, SIGNAL(setPurge(QApt::Package *)));
 }
 
 DetailsWidget::~DetailsWidget()

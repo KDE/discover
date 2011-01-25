@@ -29,6 +29,8 @@
 // KDE includes
 #include <KVBox>
 
+#include <LibQApt/Globals>
+
 #include "../libmuonprivate_export.h"
 
 class QLabel;
@@ -79,6 +81,7 @@ protected:
     KPixmapSequenceOverlayPainter *m_busyWidget;
 
 private:
+    QApt::CacheState m_oldCacheState;
     QFutureWatcher<QList<QApt::Package*> >* m_watcher;
     QWidget *m_headerWidget;
     QLabel *m_headerLabel;
@@ -86,6 +89,9 @@ private:
     QTimer *m_searchTimer;
 
     int m_packagesType;
+    QString digestReason(QApt::Package *pkg,
+                         QApt::BrokenReason failType,
+                         QHash<QString, QVariantMap> failReason);
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
@@ -95,6 +101,15 @@ public Q_SLOTS:
 private Q_SLOTS:
     void packageActivated(const QModelIndex &index);
     void setSortedPackages();
+
+    bool confirmEssentialRemoval();
+    void setInstall(QApt::Package *package);
+    void setRemove(QApt::Package *package);
+    void setUpgrade(QApt::Package *package);
+    void setReInstall(QApt::Package *package);
+    void setPurge(QApt::Package *package);
+    void setKeep(QApt::Package *package);
+    void showBrokenReason(QApt::Package *package);
 };
 
 #endif

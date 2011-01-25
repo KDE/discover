@@ -55,7 +55,6 @@ public:
 private:
     QApt::Backend *m_backend;
     QApt::Package *m_package;
-    QApt::CacheState m_oldCacheState;
 
     QLabel *m_packageShortDescLabel;
     KPixmapSequenceWidget *m_throbberWidget;
@@ -75,8 +74,6 @@ private:
 
     QLabel *m_supportedLabel;
 
-    QString digestReason(QApt::BrokenReason failType, QHash<QString, QVariantMap> failReason);
-
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void setPackage(QApt::Package *package);
@@ -86,14 +83,20 @@ public Q_SLOTS:
 private Q_SLOTS:
     void fetchScreenshot();
     void screenshotFetched(KJob *job);
-    bool confirmEssentialRemoval();
-    void setInstall();
-    void setRemove();
-    void setUpgrade();
-    void setReInstall();
-    void setPurge();
-    void setKeep();
-    void showBrokenReason();
+    void emitSetInstall();
+    void emitSetRemove();
+    void emitSetUpgrade();
+    void emitSetReInstall();
+    void emitSetPurge();
+    void emitSetKeep();
+
+Q_SIGNALS:
+    void setInstall(QApt::Package *package);
+    void setRemove(QApt::Package *package);
+    void setUpgrade(QApt::Package *package);
+    void setReInstall(QApt::Package *package);
+    void setKeep(QApt::Package *package);
+    void setPurge(QApt::Package *package);
 };
 
 #endif
