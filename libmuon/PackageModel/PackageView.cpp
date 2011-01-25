@@ -27,6 +27,7 @@ PackageView::PackageView(QWidget *parent)
 {
     setAlternatingRowColors(true);
     setRootIsDecorated(false);
+    setSelectionMode(QAbstractItemView::ExtendedSelection);
     setUniformRowHeights(true);
     header()->setStretchLastSection(false);
 }
@@ -41,6 +42,20 @@ void PackageView::currentChanged(const QModelIndex &current, const QModelIndex &
         emit currentPackageChanged(current);
     }
     QAbstractItemView::currentChanged(current, previous);
+}
+
+void PackageView::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
+{
+    QTreeView::selectionChanged(selected, deselected);
+
+    if (!selectedIndexes().size()) {
+        emit selectionEmpty();
+        return;
+    }
+
+    if (!selected.indexes().isEmpty()) {
+        emit currentPackageChanged(selected.indexes().first());
+    }
 }
 
 void PackageView::updateView()

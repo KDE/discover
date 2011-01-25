@@ -109,10 +109,9 @@ PackageWidget::PackageWidget(QWidget *parent)
 
     m_busyWidget->start();
 
-    connect(m_packageView, SIGNAL(clicked(const QModelIndex &)),
-            this, SLOT(packageActivated(const QModelIndex &)));
     connect(m_packageView, SIGNAL(currentPackageChanged(const QModelIndex &)),
             this, SLOT(packageActivated(const QModelIndex &)));
+    connect(m_packageView, SIGNAL(selectionEmpty()), m_detailsWidget, SLOT(hide()));
     connect(m_searchEdit, SIGNAL(textChanged(const QString &)), m_searchTimer, SLOT(start()));
 
     QSplitter *splitter = new QSplitter(this);

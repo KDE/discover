@@ -32,12 +32,14 @@ public:
 
 protected Q_SLOTS:
     void currentChanged(const QModelIndex &current, const QModelIndex &previous);
+    void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
 
 public Q_SLOTS:
     void updateView();
 
 signals:
     void currentPackageChanged(const QModelIndex &current);
+    void selectionEmpty();
 };
 
 #endif
