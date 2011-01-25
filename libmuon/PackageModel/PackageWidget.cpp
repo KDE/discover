@@ -72,6 +72,8 @@ PackageWidget::PackageWidget(QWidget *parent)
         , m_headerLabel(0)
         , m_searchEdit(0)
         , m_packagesType(0)
+        , m_compressEvents(false)
+        , m_stop(false)
 {
     m_watcher = new QFutureWatcher<QList<QApt::Package*> >(this);
     connect(m_watcher, SIGNAL(finished()), this, SLOT(setSortedPackages()));
@@ -356,6 +358,23 @@ bool PackageWidget::confirmEssentialRemoval()
     }
 }
 
+void PackageWidget::saveState()
+{
+    if (!m_compressEvents) {
+        m_oldCacheState = m_backend->currentCacheState();
+        m_backend->saveCacheState();
+    }
+}
+
+void PackageWidget::handleBreakage(QApt::Package *package)
+{
+    if (package->wouldBreak()) {
+        showBrokenReason(package);
+        m_backend->restoreCacheState(m_oldCacheState);
+        m_stop = true;
+    }
+}
+
 void PackageWidget::actOnPackages(QApt::Package::State action)
 {
     QModelIndexList selected = m_packageView->selectionModel()->selectedIndexes();
@@ -364,6 +383,11 @@ void PackageWidget::actOnPackages(QApt::Package::State action)
         return;
     }
 
+    QApplication::setOverrideCursor(Qt::WaitCursor);
+    saveState();
+    m_compressEvents = true;
+    m_stop = false;
+
     // There are three indexes per row, so we want a duplicate-less set of packages
     QSet<QApt::Package *> packages;
     foreach (const QModelIndex &index, selected) {
@@ -371,6 +395,10 @@ void PackageWidget::actOnPackages(QApt::Package::State action)
     }
 
     foreach (QApt::Package *package, packages) {
+        if (m_stop) {
+            break;
+        }
+
         switch (action) {
         case QApt::Package::ToInstall:
             setInstall(package);
@@ -394,20 +422,21 @@ void PackageWidget::actOnPackages(QApt::Package::State action)
             break;
         }
     }
+
+    m_compressEvents = false;
+    QApplication::restoreOverrideCursor();
 }
 
 void PackageWidget::setInstall(QApt::Package *package)
 {
-    m_oldCacheState = m_backend->currentCacheState();
-    m_backend->saveCacheState();
+    saveState();
+
     if (!package->availableVersion().isEmpty()) {
         package->setInstall();
     }
 
-    if (package->wouldBreak()) {
-        showBrokenReason(package);
-        m_backend->restoreCacheState(m_oldCacheState);
-    }
+    // Check for/handle breakage
+    handleBreakage(package);
 }
 
 void PackageWidget::setPackagesInstall()
@@ -423,14 +452,10 @@ void PackageWidget::setRemove(QApt::Package *package)
     }
 
     if (remove) {
-        m_oldCacheState = m_backend->currentCacheState();
-        m_backend->saveCacheState();
+        saveState();
         package->setRemove();
 
-        if (package->wouldBreak()) {
-            showBrokenReason(package);
-            m_backend->restoreCacheState(m_oldCacheState);
-        }
+        handleBreakage(package);
     }
 }
 
@@ -441,14 +466,7 @@ void PackageWidget::setPackagesRemove()
 
 void PackageWidget::setUpgrade(QApt::Package *package)
 {
-    m_oldCacheState = m_backend->currentCacheState();
-    m_backend->saveCacheState();
-    package->setInstall();
-
-    if (package->wouldBreak()) {
-        showBrokenReason(package);
-        m_backend->restoreCacheState(m_oldCacheState);
-    }
+    setInstall(package);
 }
 
 void PackageWidget::setPackagesUpgrade()
@@ -458,14 +476,11 @@ void PackageWidget::setPackagesUpgrade()
 
 void PackageWidget::setReInstall(QApt::Package *package)
 {
-    m_oldCacheState = m_backend->currentCacheState();
-    m_backend->saveCacheState();
+    saveState();
+
     package->setReInstall();
 
-    if (package->wouldBreak()) {
-        showBrokenReason(package);
-        m_backend->restoreCacheState(m_oldCacheState);
-    }
+    handleBreakage(package);
 }
 
 void PackageWidget::setPackagesReInstall()
@@ -481,14 +496,10 @@ void PackageWidget::setPurge(QApt::Package *package)
     }
 
     if (remove) {
-        m_backend->saveCacheState();
-        m_oldCacheState = m_backend->currentCacheState();
+        saveState();
         package->setPurge();
 
-        if (package->wouldBreak()) {
-            showBrokenReason(package);
-            m_backend->restoreCacheState(m_oldCacheState);
-        }
+        handleBreakage(package);
     }
 }
 
@@ -499,13 +510,10 @@ void PackageWidget::setPackagesPurge()
 
 void PackageWidget::setKeep(QApt::Package *package)
 {
-    m_oldCacheState = m_backend->currentCacheState();
-    m_backend->saveCacheState();
+    saveState();
     package->setKeep();
 
-    if (package->wouldBreak()) {
-        m_backend->restoreCacheState(m_oldCacheState);
-    }
+    handleBreakage(package);
 }
 
 void PackageWidget::setPackagesKeep()

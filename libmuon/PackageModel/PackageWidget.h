@@ -97,6 +97,9 @@ private:
     KAction *m_purgeAction;
 
     int m_packagesType;
+    bool m_compressEvents;
+    bool m_stop;
+
     QString digestReason(QApt::Package *pkg,
                          QApt::BrokenReason failType,
                          QHash<QString, QVariantMap> failReason);
@@ -113,6 +116,8 @@ private Q_SLOTS:
     void setSortedPackages();
 
     bool confirmEssentialRemoval();
+    void saveState();
+    void handleBreakage(QApt::Package *package);
     void actOnPackages(QApt::Package::State state);
     void setInstall(QApt::Package *package);
     void setPackagesInstall();
