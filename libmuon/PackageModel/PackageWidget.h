@@ -95,6 +95,7 @@ private:
     KAction *m_reinstallAction;
     KAction *m_keepAction;
     KAction *m_purgeAction;
+    KAction *m_lockAction;
 
     int m_packagesType;
     bool m_compressEvents;
@@ -131,6 +132,8 @@ private Q_SLOTS:
     void setPackagesPurge();
     void setKeep(QApt::Package *package);
     void setPackagesKeep();
+    bool setLocked(QApt::Package *package, bool lock);
+    void setPackagesLocked(bool lock);
     void showBrokenReason(QApt::Package *package);
 };
 

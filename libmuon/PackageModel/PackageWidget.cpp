@@ -179,7 +179,12 @@ void PackageWidget::setupActions()
     m_keepAction->setIcon(KIcon("dialog-cancel"));
     m_keepAction->setText(i18nc("@action:button", "Unmark"));
     connect(m_keepAction, SIGNAL(triggered()), this, SLOT(setPackagesKeep()));
-    
+
+    m_lockAction = new KAction(this);
+    m_lockAction->setCheckable(true);
+    m_lockAction->setIcon(KIcon("object-locked"));
+    m_lockAction->setText(i18nc("@action:button", "Lock Package at Current Version"));
+    connect(m_lockAction, SIGNAL(triggered(bool)), this, SLOT(setPackagesLocked(bool)));
 }
 
 void PackageWidget::setHeaderText(const QString &text)
@@ -274,6 +279,8 @@ void PackageWidget::contextMenuRequested(const QPoint &pos)
     menu.addAction(m_reinstallAction);
     menu.addAction(m_purgeAction);
     menu.addAction(m_keepAction);
+    menu.addSeparator();
+    menu.addAction(m_lockAction);
 
     QModelIndexList selected = m_packageView->currentSelection();
 
@@ -311,6 +318,16 @@ void PackageWidget::contextMenuRequested(const QPoint &pos)
             m_reinstallAction->setEnabled(false);
             m_purgeAction->setEnabled(false);
             m_keepAction->setEnabled(false);
+        }
+
+        if (state & QApt::Package::IsPinned) {
+            m_lockAction->setChecked(true);
+            m_lockAction->setText(i18nc("@action:button", "Unlock package"));
+            m_lockAction->setIcon(KIcon("object-unlocked"));
+        } else {
+            m_lockAction->setChecked(false);
+            m_lockAction->setText(i18nc("@action:button", "Lock at Current Version"));
+            m_lockAction->setIcon(KIcon("object-locked"));
         }
     } else {
         m_installAction->setEnabled(true);
@@ -519,6 +536,35 @@ void PackageWidget::setKeep(QApt::Package *package)
 void PackageWidget::setPackagesKeep()
 {
     actOnPackages(QApt::Package::ToKeep);
+}
+
+bool PackageWidget::setLocked(QApt::Package *package, bool lock)
+{
+   return m_backend->setPackagePinned(package, lock);
+}
+
+void PackageWidget::setPackagesLocked(bool lock)
+{
+    QModelIndexList selected = m_packageView->selectionModel()->selectedIndexes();
+
+    if (selected.isEmpty()) {
+        return;
+    }
+
+    // There are three indexes per row, so we want a duplicate-less set of packages
+    QSet<QApt::Package *> packages;
+    foreach (const QModelIndex &index, selected) {
+        packages << m_proxyModel->packageAt(index);
+    }
+
+    foreach (QApt::Package *package, packages) {
+        bool locked = setLocked(package, lock);
+        if (!locked) {
+            // TODO: report error
+        }
+    }
+
+    reload();
 }
 
 void PackageWidget::showBrokenReason(QApt::Package *package)
