@@ -105,8 +105,8 @@ void PackageDelegate::paintPackageName(QPainter *painter, const QStyleOptionView
     int state = index.data(PackageModel::StatusRole).toInt();
 
     if (state & QApt::Package::IsPinned) {
-        p.drawPixmap(left + m_iconSize - m_supportedEmblem.width()/2,
-                     top + option.rect.height() - 1.5*m_supportedEmblem.height(),
+        p.drawPixmap(left + m_iconSize - m_lockedEmblem.width()/2,
+                     top + option.rect.height() - 1.5*m_lockedEmblem.height(),
                      m_lockedEmblem);
     } else if (index.data(PackageModel::SupportRole).toBool()) {
         p.drawPixmap(left + m_iconSize - m_supportedEmblem.width()/2,

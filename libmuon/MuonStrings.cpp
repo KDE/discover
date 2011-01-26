@@ -192,6 +192,8 @@ QHash<int, QString> MuonStrings::stateHash()
     hash[QApt::Package::ToPurge] = i18nc("@info:status Requested action", "Purge");
     hash[QApt::Package::ToReInstall] = i18nc("@info:status Requested action", "Reinstall");
     hash[QApt::Package::ToDowngrade] = i18nc("@info:status Requested action", "Downgrade");
+    hash[QApt::Package::IsPinned] = i18nc("@info:status Package locked at a certain version",
+                                          "Locked");
 
     return hash;
 }

@@ -173,6 +173,12 @@ void FilterWidget::populateStatuses()
     autoRemoveItem->setText(m_strings->packageStateName(QApt::Package::IsGarbage));
     autoRemoveItem->setData(QApt::Package::IsGarbage);
 
+    QStandardItem *lockedItem = new QStandardItem;
+    lockedItem->setEditable(false);
+    lockedItem->setIcon(KIcon("object-locked"));
+    lockedItem->setText(m_strings->packageStateName(QApt::Package::IsPinned));
+    lockedItem->setData(QApt::Package::IsPinned);
+
     m_statusModel->appendRow(defaultItem);
     m_statusModel->appendRow(installedItem);
     m_statusModel->appendRow(notInstalledItem);
@@ -180,6 +186,7 @@ void FilterWidget::populateStatuses()
     m_statusModel->appendRow(brokenItem);
     m_statusModel->appendRow(purgeableItem);
     m_statusModel->appendRow(autoRemoveItem);
+    m_statusModel->appendRow(lockedItem);
 }
 
 void FilterWidget::populateOrigins()
