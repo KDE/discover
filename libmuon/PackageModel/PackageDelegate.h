@@ -47,7 +47,8 @@ private:
     int m_spacing;
 
     KIcon m_icon;
-    QPixmap m_emblem;
+    QPixmap m_supportedEmblem;
+    QPixmap m_lockedEmblem;
     MuonStrings *m_strings;
 
     int calcItemHeight(const QStyleOptionViewItem &option) const;

@@ -35,7 +35,8 @@
 PackageDelegate::PackageDelegate(QObject *parent)
     : QAbstractItemDelegate(parent)
     , m_icon(KIcon("application-x-deb"))
-    , m_emblem(KIcon("ubuntu-logo").pixmap(QSize(12,12)))
+    , m_supportedEmblem(KIcon("ubuntu-logo").pixmap(QSize(12,12)))
+    , m_lockedEmblem(KIcon("object-locked").pixmap(QSize(12,12)))
 {
     m_spacing  = 4;
 
@@ -101,10 +102,16 @@ void PackageDelegate::paintPackageName(QPainter *painter, const QStyleOptionView
                  Qt::AlignCenter,
                  QIcon::Normal);
 
-    if (index.data(PackageModel::SupportRole).toBool()) {
-        p.drawPixmap(left + m_iconSize - m_emblem.width()/2,
-                     top + option.rect.height() - 1.5*m_emblem.height(),
-                     m_emblem);
+    int state = index.data(PackageModel::StatusRole).toInt();
+
+    if (state & QApt::Package::IsPinned) {
+        p.drawPixmap(left + m_iconSize - m_supportedEmblem.width()/2,
+                     top + option.rect.height() - 1.5*m_supportedEmblem.height(),
+                     m_lockedEmblem);
+    } else if (index.data(PackageModel::SupportRole).toBool()) {
+        p.drawPixmap(left + m_iconSize - m_supportedEmblem.width()/2,
+                     top + option.rect.height() - 1.5*m_supportedEmblem.height(),
+                     m_supportedEmblem);
     }
 
     // Text
