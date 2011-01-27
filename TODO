@@ -1,3 +1,4 @@
 -Supplemental "slow" search that does a search over package information fields, as opposed to the quick xapian-based search
 -Config GUI for: Policy on untrusted packages, confirmation dialogs (save on quit)
 -Optional columns for installed and available versions in the Muon Package Manager
+-Commercial app support. (See: software-center/db/update.py, backends/restfulclient.py)
