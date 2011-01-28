@@ -507,6 +507,10 @@ void ApplicationDetailsWidget::populateZeitgeistInfo()
 
     foreach (const QString &desktop, m_app->package()->installedFilesList().filter(".desktop")) {
             KService::Ptr service = KService::serviceByDesktopPath(desktop);
+            if (!service) {
+                break;
+            }
+
             if (service->isApplication() &&
               !service->noDisplay() &&
               !service->exec().isEmpty())
