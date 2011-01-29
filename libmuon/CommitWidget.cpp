@@ -25,9 +25,6 @@
 #include <QtGui/QProgressBar>
 #include <QtGui/QVBoxLayout>
 
-// KDE includes
-#include <KDebug>
-
 #include <DebconfGui.h>
 
 CommitWidget::CommitWidget(QWidget *parent)
@@ -75,15 +72,10 @@ void CommitWidget::setProgress(int percentage)
     m_progressBar->setValue(percentage);
 }
 
-void CommitWidget::updateCommitProgress(const QString &status, int percentage)
+void CommitWidget::updateCommitProgress(const QString &message, int percentage)
 {
-    setLabelText(status);
+    setLabelText(message);
     setProgress(percentage);
-}
-
-void CommitWidget::updateCommitMessage(const QString &message)
-{
-    kDebug() << message;
 }
 
 void CommitWidget::clear()

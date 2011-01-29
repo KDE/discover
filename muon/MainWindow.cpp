@@ -391,8 +391,6 @@ void MainWindow::initCommitWidget()
         m_stack->addWidget(m_commitWidget);
         connect(m_backend, SIGNAL(commitProgress(const QString &, int)),
                 m_commitWidget, SLOT(updateCommitProgress(const QString &, int)));
-        connect(m_backend, SIGNAL(commitMessage(const QString &)),
-                m_commitWidget, SLOT(updateCommitMessage(const QString &)));
     }
 }
 
