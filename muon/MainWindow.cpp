@@ -266,6 +266,7 @@ void MainWindow::errorOccurred(QApt::ErrorCode error, const QVariantMap &details
 
     switch(error) {
     case QApt::UserCancelError:
+        QApplication::restoreOverrideCursor();
         returnFromPreview();
         break;
     default:

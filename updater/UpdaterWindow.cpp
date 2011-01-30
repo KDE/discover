@@ -170,6 +170,7 @@ void UpdaterWindow::errorOccurred(QApt::ErrorCode error, const QVariantMap &args
 
     switch(error) {
     case QApt::UserCancelError:
+        QApplication::restoreOverrideCursor();
         returnFromPreview();
         break;
     default:
