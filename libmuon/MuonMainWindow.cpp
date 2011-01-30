@@ -36,6 +36,7 @@
 
 // LibQApt includes
 #include <LibQApt/Backend>
+#include <LibQApt/DebFile>
 
 MuonMainWindow::MuonMainWindow()
     : KXmlGuiWindow(0)
@@ -446,9 +447,8 @@ bool MuonMainWindow::saveInstalledPackagesList()
 
 void MuonMainWindow::loadSelections()
 {
-    QString filename;
-
-    filename = KFileDialog::getOpenFileName(QString(), QString(), this, i18nc("@title:window", "Open File"));
+    QString filename = KFileDialog::getOpenFileName(QString(), QString(),
+                                                    this, i18nc("@title:window", "Open File"));
 
     if (filename.isEmpty()) {
         return;
@@ -461,6 +461,50 @@ void MuonMainWindow::loadSelections()
                              "either the Muon Package Manager or the "
                              "Synaptic Package Manager.");
         KMessageBox::error(this, text, QString());
+    }
+}
+
+void MuonMainWindow::loadArchives()
+{
+    QString dirName;
+
+    dirName = KFileDialog::getExistingDirectory(KUrl(), this,
+                                                i18nc("@title:window",
+                                                      "Choose a Directory"));
+
+    if (dirName.isEmpty()) {
+        // User cancelled
+        return;
+    }
+
+    QDir dir(dirName);
+    QStringList archiveFiles = dir.entryList(QDir::Files, QDir::Name);
+
+    int successCount = 0;
+    foreach (const QString &archiveFile, archiveFiles) {
+        const QApt::DebFile debFile(dirName % '/' % archiveFile);
+
+        if (debFile.isValid()) {
+            kDebug() << debFile.homepage();
+            if (m_backend->addArchiveToCache(debFile)) {
+                successCount++;
+            }
+        }
+    }
+
+    if (successCount) {
+        QString message = i18ncp("@label",
+                                 "%1 package was successfully added to the cache",
+                                 "%2 packages were successfully added to the cache",
+                                 successCount);
+        KMessageBox::information(this, message, QString());
+    } else {
+        QString message = i18nc("@label",
+                                "No valid packages could be found in this directory. "
+                                "Please make sure the packages are compatible with your "
+                                "computer and are at the latest version.");
+        KMessageBox::error(this, message, i18nc("@title:window",
+                                                "Packages Could Not be Found"));
     }
 }
 

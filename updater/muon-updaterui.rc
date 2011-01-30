@@ -7,6 +7,9 @@
                          http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd">
     <MenuBar>
         <Menu name="file" >
+            <Separator/>
+            <Action name="load_archives" />
+            <Separator/>
             <Action name="quit" />
         </Menu>
         <Menu name="edit" >

@@ -12,6 +12,8 @@
             <Action name="save_markings" />
             <Action name="save_package_list" />
             <Separator/>
+            <Action name="load_archives" />
+            <Separator/>
             <Action name="quit" />
         </Menu>
         <Menu name="edit" >

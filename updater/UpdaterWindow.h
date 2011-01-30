@@ -51,6 +51,7 @@ private:
     UpdaterWidget *m_updaterWidget;
 
     KAction *m_applyAction;
+    KAction *m_loadArchivesAction;
 
     UpdaterSettingsDialog *m_settingsDialog;
     DownloadWidget *m_downloadWidget;

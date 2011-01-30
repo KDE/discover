@@ -69,6 +69,7 @@ private:
     KAction *m_saveInstalledAction;
     KAction *m_saveSelectionsAction;
     KAction *m_loadSelectionsAction;
+    KAction *m_loadArchivesAction;
 
     ManagerSettingsDialog *m_settingsDialog;
     KDialog *m_historyDialog;

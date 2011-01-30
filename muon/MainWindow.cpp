@@ -161,6 +161,11 @@ void MainWindow::setupActions()
     m_saveSelectionsAction->setText(i18nc("@action", "Save Markings As..."));
     connect(m_saveSelectionsAction, SIGNAL(triggered()), this, SLOT(saveSelections()));
 
+    m_loadArchivesAction = actionCollection()->addAction("load_archives");
+    m_loadArchivesAction->setIcon(KIcon("document-open"));
+    m_loadArchivesAction->setText(i18nc("@action", "Add Downloaded Packages"));
+    connect(m_loadArchivesAction, SIGNAL(triggered()), this, SLOT(loadArchives()));
+
     m_saveInstalledAction = actionCollection()->addAction("save_package_list");
     m_saveInstalledAction->setIcon(KIcon("document-save-as"));
     m_saveInstalledAction->setText(i18nc("@action", "Save Installed Packages List..."));
