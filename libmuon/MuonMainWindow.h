@@ -90,6 +90,8 @@ protected Q_SLOTS:
     bool saveSelections();
     bool saveInstalledPackagesList();
     void loadSelections();
+    bool createDownloadList();
+    void downloadPackagesFromList();
     void loadArchives();
     void undo();
     void redo();

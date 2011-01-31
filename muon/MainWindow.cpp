@@ -161,6 +161,20 @@ void MainWindow::setupActions()
     m_saveSelectionsAction->setText(i18nc("@action", "Save Markings As..."));
     connect(m_saveSelectionsAction, SIGNAL(triggered()), this, SLOT(saveSelections()));
 
+    m_createDownloadListAction = actionCollection()->addAction("save_download_list");
+    m_createDownloadListAction->setIcon(KIcon("document-save-as"));
+    m_createDownloadListAction->setText(i18nc("@action", "Save Package Download List..."));
+    connect(m_createDownloadListAction, SIGNAL(triggered()), this, SLOT(createDownloadList()));
+
+    m_downloadListAction = actionCollection()->addAction("download_from_list");
+    m_downloadListAction->setIcon(KIcon("download"));
+    m_downloadListAction->setText(i18nc("@action", "Download Packages From List..."));
+    connect(m_downloadListAction, SIGNAL(triggered()), this, SLOT(downloadPackagesFromList()));
+    if (!isConnected()) {
+        m_downloadListAction->setDisabled(false);
+    }
+    connect(this, SIGNAL(shouldConnect(bool)), m_downloadListAction, SLOT(setEnabled(bool)));
+
     m_loadArchivesAction = actionCollection()->addAction("load_archives");
     m_loadArchivesAction->setIcon(KIcon("document-open"));
     m_loadArchivesAction->setText(i18nc("@action", "Add Downloaded Packages"));
@@ -259,8 +273,15 @@ void MainWindow::markAutoRemove()
 void MainWindow::checkForUpdates()
 {
     setActionsEnabled(false);
+    m_managerWidget->setEnabled(false);
     initDownloadWidget();
     m_backend->updateCache();
+}
+
+void MainWindow::downloadPackagesFromList()
+{
+    initDownloadWidget();
+    MuonMainWindow::downloadPackagesFromList();
 }
 
 void MainWindow::errorOccurred(QApt::ErrorCode error, const QVariantMap &details)
@@ -271,6 +292,7 @@ void MainWindow::errorOccurred(QApt::ErrorCode error, const QVariantMap &details
 
     switch(error) {
     case QApt::UserCancelError:
+        m_managerWidget->setEnabled(true);
         QApplication::restoreOverrideCursor();
         returnFromPreview();
         break;
@@ -294,6 +316,7 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
     case QApt::CacheUpdateFinished:
     case QApt::CommitChangesFinished:
         reload();
+    case QApt::PackageDownloadFinished:
         returnFromPreview();
         if (m_warningStack.size() > 0) {
             showQueuedWarnings();
@@ -303,6 +326,9 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
             showQueuedErrors();
             m_errorStack.clear();
         }
+
+        m_downloadWidget->deleteLater();
+        m_downloadWidget = 0;
         break;
     case QApt::PackageDownloadStarted:
         if (m_downloadWidget) {
@@ -330,7 +356,6 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
                    m_statusWidget, SLOT(updateXapianProgress(int)));
         m_statusWidget->hideXapianProgress();
         break;
-    case QApt::PackageDownloadFinished:
     case QApt::InvalidEvent:
     default:
         break;
@@ -372,6 +397,7 @@ void MainWindow::returnFromPreview()
 void MainWindow::startCommit()
 {
     setActionsEnabled(false);
+    m_managerWidget->setEnabled(false);
     QApplication::setOverrideCursor(Qt::WaitCursor);
     initDownloadWidget();
     initCommitWidget();
@@ -412,6 +438,7 @@ void MainWindow::reload()
 
     m_statusWidget->updateStatus();
     setActionsEnabled();
+    m_managerWidget->setEnabled(true);
 
     // No need to keep these around in memory.
     if (m_downloadWidget) {
@@ -451,8 +478,10 @@ void MainWindow::setActionsEnabled(bool enabled)
 
     if (isConnected()) {
         m_applyAction->setEnabled(changesPending);
+        m_downloadListAction->setEnabled(true);
     } else {
         m_applyAction->setEnabled(false);
+        m_downloadListAction->setEnabled(false);
     }
 
     m_undoAction->setEnabled(!m_backend->isUndoStackEmpty());

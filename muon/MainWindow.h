@@ -69,6 +69,8 @@ private:
     KAction *m_saveInstalledAction;
     KAction *m_saveSelectionsAction;
     KAction *m_loadSelectionsAction;
+    KAction *m_createDownloadListAction;
+    KAction *m_downloadListAction;
     KAction *m_loadArchivesAction;
 
     ManagerSettingsDialog *m_settingsDialog;
@@ -91,6 +93,7 @@ private Q_SLOTS:
     void markDistUpgrade();
     void markAutoRemove();
     void checkForUpdates();
+    void downloadPackagesFromList();
     void workerEvent(QApt::WorkerEvent event);
     void errorOccurred(QApt::ErrorCode error, const QVariantMap &details);
     void previewChanges();

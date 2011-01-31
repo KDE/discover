@@ -187,6 +187,7 @@ void MuonMainWindow::workerEvent(QApt::WorkerEvent event)
         m_canExit = false;
         break;
     case QApt::CacheUpdateFinished:
+    case QApt::PackageDownloadFinished:
     case QApt::CommitChangesFinished:
         Solid::PowerManagement::stopSuppressingSleep(m_powerInhibitor);
         m_canExit = true;
@@ -280,10 +281,11 @@ void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args
     case QApt::UserCancelError:
     case QApt::UnknownError:
     default:
-        setActionsEnabled();
-        m_canExit = true; // If we were committing changes, we aren't anymore
         break;
     }
+
+    setActionsEnabled();
+    m_canExit = true; // If we were committing changes, we aren't anymore
 }
 
 void MuonMainWindow::warningOccurred(QApt::WarningCode warning, const QVariantMap &args)
@@ -443,6 +445,45 @@ bool MuonMainWindow::saveInstalledPackagesList()
     }
 
     return true;
+}
+
+bool MuonMainWindow::createDownloadList()
+{
+    QString filename;
+    filename = KFileDialog::getSaveFileName(QString(), QString(), this,
+                                            i18nc("@title:window", "Save Download List As"));
+
+    if (filename.isEmpty()) {
+        return false;
+    }
+
+    if (!m_backend->saveDownloadList(filename)) {
+        QString text = i18nc("@label", "The document could not be saved, as it "
+                             "was not possible to write to "
+                             "<filename>%1</filename>\n\nCheck "
+                             "that you have write access to this file "
+                             "or that enough disk space is available.",
+                             filename);
+        KMessageBox::error(this, text, QString());
+        return false;
+    }
+
+    return true;
+}
+
+void MuonMainWindow::downloadPackagesFromList()
+{
+    QString filename = KFileDialog::getOpenFileName(QString(), QString(),
+                                                    this, i18nc("@title:window", "Open File"));
+
+    if (filename.isEmpty()) {
+        return;
+    }
+
+    QString dirName = filename.left(filename.lastIndexOf('/'));
+
+    setActionsEnabled(false);
+    m_backend->downloadArchives(filename, dirName % QLatin1String("/packages"));
 }
 
 void MuonMainWindow::loadSelections()

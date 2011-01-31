@@ -12,6 +12,8 @@
             <Action name="save_markings" />
             <Action name="save_package_list" />
             <Separator/>
+            <Action name="save_download_list" />
+            <Action name="download_from_list" />
             <Action name="load_archives" />
             <Separator/>
             <Action name="quit" />

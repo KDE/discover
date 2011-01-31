@@ -8,6 +8,8 @@
     <MenuBar>
         <Menu name="file" >
             <Separator/>
+            <Action name="save_download_list" />
+            <Action name="download_from_list" />
             <Action name="load_archives" />
             <Separator/>
             <Action name="quit" />

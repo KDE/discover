@@ -51,6 +51,8 @@ private:
     UpdaterWidget *m_updaterWidget;
 
     KAction *m_applyAction;
+    KAction *m_createDownloadListAction;
+    KAction *m_downloadListAction;
     KAction *m_loadArchivesAction;
 
     UpdaterSettingsDialog *m_settingsDialog;
@@ -64,6 +66,7 @@ private Q_SLOTS:
     void initObject();
     void setupActions();
     void checkForUpdates();
+    void downloadPackagesFromList();
     void workerEvent(QApt::WorkerEvent event);
     void errorOccurred(QApt::ErrorCode code, const QVariantMap &args);
     void initDownloadWidget();

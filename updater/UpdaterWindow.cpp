@@ -90,6 +90,20 @@ void UpdaterWindow::setupActions()
 {
     MuonMainWindow::setupActions();
 
+    m_createDownloadListAction = actionCollection()->addAction("save_download_list");
+    m_createDownloadListAction->setIcon(KIcon("document-save-as"));
+    m_createDownloadListAction->setText(i18nc("@action", "Save Package Download List..."));
+    connect(m_createDownloadListAction, SIGNAL(triggered()), this, SLOT(createDownloadList()));
+
+    m_downloadListAction = actionCollection()->addAction("download_from_list");
+    m_downloadListAction->setIcon(KIcon("download"));
+    m_downloadListAction->setText(i18nc("@action", "Download Packages From List..."));
+    connect(m_downloadListAction, SIGNAL(triggered()), this, SLOT(downloadPackagesFromList()));
+    if (!isConnected()) {
+        m_downloadListAction->setDisabled(false);
+    }
+    connect(this, SIGNAL(shouldConnect(bool)), m_downloadListAction, SLOT(setEnabled(bool)));
+
     m_loadArchivesAction = actionCollection()->addAction("load_archives");
     m_loadArchivesAction->setIcon(KIcon("document-open"));
     m_loadArchivesAction->setText(i18nc("@action", "Add Downloaded Packages"));
@@ -117,8 +131,15 @@ void UpdaterWindow::setupActions()
 void UpdaterWindow::checkForUpdates()
 {
     setActionsEnabled(false);
+    m_updaterWidget->setEnabled(false);
     initDownloadWidget();
     m_backend->updateCache();
+}
+
+void UpdaterWindow::downloadPackagesFromList()
+{
+    initDownloadWidget();
+    MuonMainWindow::downloadPackagesFromList();
 }
 
 void UpdaterWindow::workerEvent(QApt::WorkerEvent event)
@@ -136,6 +157,7 @@ void UpdaterWindow::workerEvent(QApt::WorkerEvent event)
     case QApt::CacheUpdateFinished:
     case QApt::CommitChangesFinished:
         reload();
+    case QApt::PackageDownloadFinished:
         returnFromPreview();
         if (m_warningStack.size() > 0) {
             showQueuedWarnings();
@@ -161,7 +183,6 @@ void UpdaterWindow::workerEvent(QApt::WorkerEvent event)
         }
         QApplication::restoreOverrideCursor();
         break;
-    case QApt::PackageDownloadFinished:
     case QApt::InvalidEvent:
     default:
         break;
@@ -174,6 +195,7 @@ void UpdaterWindow::errorOccurred(QApt::ErrorCode error, const QVariantMap &args
 
     switch(error) {
     case QApt::UserCancelError:
+        m_updaterWidget->setEnabled(true);
         QApplication::restoreOverrideCursor();
         returnFromPreview();
         break;
@@ -207,6 +229,7 @@ void UpdaterWindow::initCommitWidget()
 void UpdaterWindow::startCommit()
 {
     setActionsEnabled(false);
+    m_updaterWidget->setEnabled(false);
     QApplication::setOverrideCursor(Qt::WaitCursor);
     initDownloadWidget();
     initCommitWidget();
@@ -219,6 +242,7 @@ void UpdaterWindow::reload()
     m_updaterWidget->reload();
     m_statusWidget->updateStatus();
     setActionsEnabled();
+    m_updaterWidget->setEnabled(true);
 
     // No need to keep these around in memory.
     if (m_downloadWidget) {
@@ -253,8 +277,10 @@ void UpdaterWindow::setActionsEnabled(bool enabled)
 
     if (isConnected()) {
         m_applyAction->setEnabled(m_backend->areChangesMarked());
+        m_downloadListAction->setEnabled(true);
     } else {
         m_applyAction->setEnabled(false);
+        m_downloadListAction->setEnabled(false);
     }
 
     m_undoAction->setEnabled(!m_backend->isUndoStackEmpty());
