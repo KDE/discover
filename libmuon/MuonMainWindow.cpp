@@ -485,7 +485,6 @@ void MuonMainWindow::loadArchives()
         const QApt::DebFile debFile(dirName % '/' % archiveFile);
 
         if (debFile.isValid()) {
-            kDebug() << debFile.homepage();
             if (m_backend->addArchiveToCache(debFile)) {
                 successCount++;
             }
