@@ -282,7 +282,7 @@ void PackageWidget::contextMenuRequested(const QPoint &pos)
     menu.addSeparator();
     menu.addAction(m_lockAction);
 
-    QModelIndexList selected = m_packageView->currentSelection();
+    const QModelIndexList selected = m_packageView->currentSelection();
 
     // Divide by the number of columns
     if (selected.size()/NUM_COLUMNS == 1) {
