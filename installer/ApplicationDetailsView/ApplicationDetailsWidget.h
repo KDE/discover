@@ -46,7 +46,6 @@ class KTemporaryFile;
 
 class Application;
 class ClickableLabel;
-class MuonStrings;
 class ScreenShotViewer;
 
 // Widget for showing details about a single application
@@ -94,8 +93,6 @@ private:
 
     KTemporaryFile *m_screenshotFile;
     ScreenShotViewer *m_screenshotDialog;
-
-    MuonStrings *m_strings;
 
 private Q_SLOTS:
     void workerEvent(QApt::WorkerEvent event, Transaction *transaction);

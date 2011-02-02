@@ -34,6 +34,8 @@ public:
     explicit MuonStrings(QObject *parent);
     ~MuonStrings();
 
+    static MuonStrings* global();
+
     QString groupName(const QString &name) const;
     QString groupKey(const QString &text) const;
     QString packageStateName(QApt::Package::State state) const;

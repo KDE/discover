@@ -43,7 +43,6 @@ TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
     , m_backend(0)
     , m_package(0)
 {
-    m_strings = new MuonStrings(this);
     setFrameStyle(QFrame::NoFrame);
     setWidgetResizable(true);
     viewport()->setAutoFillBackground(false);
@@ -168,7 +167,7 @@ void TechnicalDetailsTab::refresh()
     }
 
     m_maintainer->setText(m_package->maintainer());
-    m_section->setText(m_strings->groupName(m_package->section()));
+    m_section->setText(MuonStrings::global()->groupName(m_package->section()));
     m_sourcePackage->setText(m_package->sourcePackage());
     m_origin->setText(m_backend->originLabel(m_package->origin()));
 

@@ -48,8 +48,6 @@ ManagerWidget::ManagerWidget(QWidget *parent)
 {
     setPackagesType(PackageWidget::AvailablePackages);
 
-    m_strings = new MuonStrings(this);
-
     hideHeaderLabel();
     showSearchEdit();
 }
@@ -66,7 +64,7 @@ void ManagerWidget::reload()
 
 void ManagerWidget::filterByGroup(const QString &groupName)
 {
-    QString groupKey = m_strings->groupKey(groupName);
+    QString groupKey = MuonStrings::global()->groupKey(groupName);
     if (groupName == i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All")) {
         groupKey.clear();
     }

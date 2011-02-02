@@ -27,10 +27,6 @@
 
 #include "../libmuon/PackageModel/PackageWidget.h"
 
-class QTimer;
-
-class MuonStrings;
-
 namespace QApt {
     class Backend;
 }
@@ -41,9 +37,6 @@ class ManagerWidget : public PackageWidget
 public:
     explicit ManagerWidget(QWidget *parent);
     ~ManagerWidget();
-
-private:
-    MuonStrings *m_strings;
 
 public Q_SLOTS:
     void reload();

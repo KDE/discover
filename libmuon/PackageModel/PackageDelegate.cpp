@@ -41,8 +41,6 @@ PackageDelegate::PackageDelegate(QObject *parent)
     m_spacing  = 4;
 
     m_iconSize = KIconLoader::SizeSmallMedium;
-
-    m_strings = new MuonStrings(this);
 }
 
 PackageDelegate::~PackageDelegate()
@@ -173,21 +171,21 @@ void PackageDelegate::paintText(QPainter *painter, const QStyleOptionViewItem &o
         state = index.data(PackageModel::StatusRole).toInt();
 
         if (state & QApt::Package::NowBroken) {
-            text = m_strings->packageStateName(QApt::Package::NowBroken);
+            text = MuonStrings::global()->packageStateName(QApt::Package::NowBroken);
             pen.setColor(Qt::red);
             break;
         }
 
         if (state & QApt::Package::Installed) {
-            text = m_strings->packageStateName(QApt::Package::Installed);
+            text = MuonStrings::global()->packageStateName(QApt::Package::Installed);
             pen.setColor(Qt::darkGreen);
 
             if (state & QApt::Package::Upgradeable) {
-                text = m_strings->packageStateName(QApt::Package::Upgradeable);
+                text = MuonStrings::global()->packageStateName(QApt::Package::Upgradeable);
                 pen.setColor(Qt::darkYellow);
             }
         } else {
-            text = m_strings->packageStateName(QApt::Package::NotInstalled);
+            text = MuonStrings::global()->packageStateName(QApt::Package::NotInstalled);
             pen.setColor(Qt::blue);
         }
         break;
@@ -195,42 +193,42 @@ void PackageDelegate::paintText(QPainter *painter, const QStyleOptionViewItem &o
         state = index.data(PackageModel::ActionRole).toInt();
 
         if (state & QApt::Package::ToKeep) {
-            text = m_strings->packageStateName(QApt::Package::ToKeep);
+            text = MuonStrings::global()->packageStateName(QApt::Package::ToKeep);
             pen.setColor(Qt::blue);
             // No other "To" flag will be set if we are keeping
             break;
         }
 
         if (state & QApt::Package::ToInstall) {
-            text = m_strings->packageStateName(QApt::Package::ToInstall);
+            text = MuonStrings::global()->packageStateName(QApt::Package::ToInstall);
             pen.setColor(Qt::darkGreen);
         }
 
         if (state & QApt::Package::ToUpgrade) {
-            text = m_strings->packageStateName(QApt::Package::ToUpgrade);
+            text = MuonStrings::global()->packageStateName(QApt::Package::ToUpgrade);
             pen.setColor(Qt::darkYellow);
             break;
         }
 
         if (state & QApt::Package::ToRemove) {
-            text = m_strings->packageStateName(QApt::Package::ToRemove);
+            text = MuonStrings::global()->packageStateName(QApt::Package::ToRemove);
             pen.setColor(Qt::red);
         }
 
         if (state & QApt::Package::ToPurge) {
-            text = m_strings->packageStateName(QApt::Package::ToPurge);
+            text = MuonStrings::global()->packageStateName(QApt::Package::ToPurge);
             pen.setColor(Qt::red);
             break;
         }
 
         if (state & QApt::Package::ToReInstall) {
-            text = m_strings->packageStateName(QApt::Package::ToReInstall);
+            text = MuonStrings::global()->packageStateName(QApt::Package::ToReInstall);
             pen.setColor(Qt::darkGreen);
             break;
         }
 
         if (state & QApt::Package::ToDowngrade) {
-            text = m_strings->packageStateName(QApt::Package::ToDowngrade);
+            text = MuonStrings::global()->packageStateName(QApt::Package::ToDowngrade);
             pen.setColor(Qt::darkYellow);
             break;
         }

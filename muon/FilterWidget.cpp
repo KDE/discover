@@ -43,7 +43,6 @@ FilterWidget::FilterWidget(QWidget *parent)
     : QDockWidget(parent)
     , m_backend(0)
 {
-    m_strings = new MuonStrings(this);
     setFeatures(QDockWidget::NoDockWidgetFeatures);
     setWindowTitle(i18nc("@title:window", "Filter:"));
 
@@ -106,7 +105,7 @@ void FilterWidget::populateCategories()
     QSet<QString> groupSet;
 
     foreach(const QApt::Group &group, groups) {
-        QString groupName = m_strings->groupName(group);
+        QString groupName = MuonStrings::global()->groupName(group);
 
         if (!groupName.isEmpty()) {
             groupSet << groupName;
@@ -140,43 +139,43 @@ void FilterWidget::populateStatuses()
     QStandardItem *installedItem = new QStandardItem;
     installedItem->setEditable(false);
     installedItem->setIcon(KIcon("download"));
-    installedItem->setText(m_strings->packageStateName(QApt::Package::Installed));
+    installedItem->setText(MuonStrings::global()->packageStateName(QApt::Package::Installed));
     installedItem->setData(QApt::Package::Installed);
 
     QStandardItem *notInstalledItem = new QStandardItem;
     notInstalledItem->setEditable(false);
     notInstalledItem->setIcon(KIcon("application-x-deb"));
-    notInstalledItem->setText(m_strings->packageStateName(QApt::Package::NotInstalled));
+    notInstalledItem->setText(MuonStrings::global()->packageStateName(QApt::Package::NotInstalled));
     notInstalledItem->setData(QApt::Package::NotInstalled);
 
     QStandardItem *upgradeableItem = new QStandardItem;
     upgradeableItem->setEditable(false);
     upgradeableItem->setIcon(KIcon("system-software-update"));
-    upgradeableItem->setText(m_strings->packageStateName(QApt::Package::Upgradeable));
+    upgradeableItem->setText(MuonStrings::global()->packageStateName(QApt::Package::Upgradeable));
     upgradeableItem->setData(QApt::Package::Upgradeable);
 
     QStandardItem *brokenItem = new QStandardItem;
     brokenItem->setEditable(false);
     brokenItem->setIcon(KIcon("dialog-cancel"));
-    brokenItem->setText(m_strings->packageStateName(QApt::Package::NowBroken));
+    brokenItem->setText(MuonStrings::global()->packageStateName(QApt::Package::NowBroken));
     brokenItem->setData(QApt::Package::NowBroken);
 
     QStandardItem *purgeableItem = new QStandardItem;
     purgeableItem->setEditable(false);
     purgeableItem->setIcon(KIcon("user-trash-full"));
-    purgeableItem->setText(m_strings->packageStateName(QApt::Package::ResidualConfig));
+    purgeableItem->setText(MuonStrings::global()->packageStateName(QApt::Package::ResidualConfig));
     purgeableItem->setData(QApt::Package::ResidualConfig);
 
     QStandardItem *autoRemoveItem = new QStandardItem;
     autoRemoveItem->setEditable(false);
     autoRemoveItem->setIcon(KIcon("archive-remove"));
-    autoRemoveItem->setText(m_strings->packageStateName(QApt::Package::IsGarbage));
+    autoRemoveItem->setText(MuonStrings::global()->packageStateName(QApt::Package::IsGarbage));
     autoRemoveItem->setData(QApt::Package::IsGarbage);
 
     QStandardItem *lockedItem = new QStandardItem;
     lockedItem->setEditable(false);
     lockedItem->setIcon(KIcon("object-locked"));
-    lockedItem->setText(m_strings->packageStateName(QApt::Package::IsPinned));
+    lockedItem->setText(MuonStrings::global()->packageStateName(QApt::Package::IsPinned));
     lockedItem->setData(QApt::Package::IsPinned);
 
     m_statusModel->appendRow(defaultItem);

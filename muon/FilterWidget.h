@@ -39,8 +39,6 @@ namespace QApt
     class Backend;
 }
 
-class MuonStrings;
-
 class FilterWidget : public QDockWidget
 {
     Q_OBJECT
@@ -50,7 +48,6 @@ public:
 
 private:
     QApt::Backend *m_backend;
-    MuonStrings *m_strings;
 
     QToolBox *m_filterBox;
     QTreeView *m_categoriesList;

@@ -74,7 +74,6 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     , m_appBackend(backend)
     , m_screenshotFile(0)
     , m_screenshotDialog(0)
-    , m_strings(new MuonStrings(this))
 {
     setFrameShape(QFrame::NoFrame);
     setWidgetResizable(true);
@@ -320,12 +319,12 @@ void ApplicationDetailsWidget::setApplication(Application *app)
     }
 
     if (!app->package()->isInstalled()) {
-        m_statusLabel->setText(m_strings->packageStateName(QApt::Package::NotInstalled));
+        m_statusLabel->setText(MuonStrings::global()->packageStateName(QApt::Package::NotInstalled));
         m_actionButton->setText(i18nc("@action", "Install"));
         m_actionButton->setIcon(KIcon("download"));
         m_actionButton->show();
     } else {
-        m_statusLabel->setText(m_strings->packageStateName(QApt::Package::Installed));
+        m_statusLabel->setText(MuonStrings::global()->packageStateName(QApt::Package::Installed));
         m_actionButton->setText(i18nc("@action", "Remove"));
         m_actionButton->setIcon(KIcon("edit-delete"));
     }

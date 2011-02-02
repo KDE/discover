@@ -25,8 +25,6 @@
 
 #include <KIcon>
 
-class MuonStrings;
-
 class PackageDelegate: public QAbstractItemDelegate
 {
     Q_OBJECT
@@ -49,7 +47,6 @@ private:
     KIcon m_icon;
     QPixmap m_supportedEmblem;
     QPixmap m_lockedEmblem;
-    MuonStrings *m_strings;
 
     int calcItemHeight(const QStyleOptionViewItem &option) const;
 };

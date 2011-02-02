@@ -20,7 +20,15 @@
 
 #include "MuonStrings.h"
 
+#include <KGlobal>
 #include <KLocale>
+
+K_GLOBAL_STATIC_WITH_ARGS(MuonStrings, globalMuonStrings, (0))
+
+MuonStrings *MuonStrings::global()
+{
+    return globalMuonStrings;
+}
 
 MuonStrings::MuonStrings(QObject *parent)
     : QObject(parent)

@@ -32,8 +32,6 @@ namespace QApt
     class Package;
 }
 
-class MuonStrings;
-
 class TechnicalDetailsTab : public QScrollArea
 {
     Q_OBJECT
@@ -44,7 +42,6 @@ public:
 private:
     QApt::Backend *m_backend;
     QApt::Package *m_package;
-    MuonStrings *m_strings;
 
     QLabel *m_maintainer;
     QLabel *m_section;
