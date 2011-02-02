@@ -68,8 +68,12 @@ QString Application::name()
         if (!name.isEmpty()) {
             // Graduate to non-technical, since it has Appname
             m_isTechnical = false;
+        }
+
+        if (m_isTechnical) {
+            return package()->shortDescription();
         } else {
-            return package()->name();
+            return package()->latin1Name();
         }
     }
 
@@ -83,10 +87,10 @@ QString Application::comment()
         // Sometimes GenericName is used instead of Comment
         comment = getField("GenericName");
         if (comment.isEmpty()) {
-            QApt::Package *pkg = package();
-
-            if (pkg) {
-                return pkg->shortDescription();
+            if (m_isTechnical) {
+                return package()->name();
+            } else {
+                return package()->shortDescription();
             }
         }
     }
