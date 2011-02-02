@@ -535,7 +535,7 @@ void MuonMainWindow::loadArchives()
     if (successCount) {
         QString message = i18ncp("@label",
                                  "%1 package was successfully added to the cache",
-                                 "%2 packages were successfully added to the cache",
+                                 "%1 packages were successfully added to the cache",
                                  successCount);
         KMessageBox::information(this, message, QString());
     } else {
