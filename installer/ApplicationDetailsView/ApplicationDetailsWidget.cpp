@@ -294,6 +294,7 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
 
 ApplicationDetailsWidget::~ApplicationDetailsWidget()
 {
+    delete m_screenshotFile;
 }
 
 void ApplicationDetailsWidget::setApplication(Application *app)
