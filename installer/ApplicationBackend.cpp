@@ -69,8 +69,19 @@ void ApplicationBackend::init()
     QList<int> popconScores;
     QDir appDir("/usr/share/app-install/desktop/");
     QStringList fileList = appDir.entryList(QDir::Files);
+
+    QList<Application *> tempList;
     foreach(const QString &fileName, fileList) {
         Application *app = new Application("/usr/share/app-install/desktop/" + fileName, m_backend);
+        tempList << app;
+    }
+
+    foreach (QApt::Package *package, m_backend->availablePackages()) {
+        Application *app = new Application(package, m_backend);
+        tempList << app;
+    }
+
+    foreach (Application *app, tempList) {
         if (app->isValid()) {
             if (app->package() && !m_pkgBlacklist.contains(app->package()->latin1Name())) {
                 m_appList << app;
@@ -87,12 +98,6 @@ void ApplicationBackend::init()
             // kDebug() << fileName;
             delete app;
         }
-    }
-
-    foreach (QApt::Package *package, m_backend->availablePackages()) {
-        Application *app = new Application(package, m_backend);
-
-        m_appList << app;
     }
 
     if (m_originList.contains(QLatin1String(""))) {

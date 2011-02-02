@@ -75,4 +75,9 @@ void ApplicationListView::setOriginFilter(const QString &origin)
     m_appViewWidget->setOriginFilter(origin);
 }
 
+void ApplicationListView::setShouldShowTechnical(bool show)
+{
+    m_appViewWidget->setShouldShowTechnical(show);
+}
+
 #include "ApplicationListView.moc"
