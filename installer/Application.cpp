@@ -63,7 +63,7 @@ QString Application::name()
     QString name = QString::fromUtf8(getField("Name")).trimmed();
     if (name.isEmpty()) {
         // extras.ubuntu.com packages can have this
-        name = package()->controlField("Appname");
+        name = package()->controlField(QLatin1String("Appname"));
 
         if (!name.isEmpty()) {
             // Graduate to non-technical, since it has Appname
@@ -219,7 +219,7 @@ QString Application::categories()
 
     if (categories.isEmpty()) {
         // extras.ubuntu.com packages can have this field
-        categories = package()->controlField("Category");
+        categories = package()->controlField(QLatin1String("Category"));
 
         if (!categories.isEmpty()) {
             // Graduate to non-technical, since it has Appname
@@ -234,10 +234,10 @@ QUrl Application::screenshotUrl(QApt::ScreenshotType type)
     QString appUrl;
     switch (type) {
     case QApt::Thumbnail:
-        appUrl = package()->controlField("Thumbnail-Url");
+        appUrl = package()->controlField(QLatin1String("Thumbnail-Url"));
         break;
     case QApt::Screenshot:
-        appUrl = package()->controlField("Screenshot-Url");
+        appUrl = package()->controlField(QLatin1String("Screenshot-Url"));
         break;
     default:
         break;
