@@ -46,6 +46,7 @@ public:
     void setStateFilter(QApt::Package::State state);
     void setOriginFilter(const QString &origin);
     void setFiltersFromCategory(Category *category);
+    void setShouldShowTechnical(bool show);
 
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
     Application *applicationAt(const QModelIndex &index) const;
@@ -66,6 +67,7 @@ private:
     QList<QPair<FilterType, QString> > m_notFilters;
 
     bool m_sortByRelevancy;
+    bool m_showTechnical;
 
 public Q_SLOTS:
     void parentDataChanged();

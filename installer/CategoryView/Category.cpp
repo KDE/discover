@@ -27,6 +27,7 @@
 Category::Category(const QDomNode &data, CategoryChildPolicy policy)
         : m_iconString("applications-other")
         , m_hasSubCategories(false)
+        , m_showTechnical(false)
         , m_policy(policy)
 {
     parseData(data);
@@ -40,7 +41,7 @@ Category::~Category()
 void Category::parseData(const QDomNode &data)
 {
     QDomNode node = data.firstChild();
-    while( !node.isNull() )
+    while(!node.isNull())
     {
         QDomElement tempElement = node.toElement();
 
@@ -60,6 +61,8 @@ void Category::parseData(const QDomNode &data)
             if (!tempElement.text().isEmpty()) {
                 m_iconString = tempElement.text();
             }
+        } else if (tempElement.tagName() == QLatin1String("ShowTechnical")) {
+            m_showTechnical = true;
         } else if (tempElement.tagName() == QLatin1String("Menu")) {
             if (m_policy == CanHaveChildren) {
                 Category *subCategory = new Category(node);
@@ -149,6 +152,11 @@ QList<QPair<FilterType, QString> > Category::notFilters() const
 bool Category::hasSubCategories() const
 {
     return m_hasSubCategories;
+}
+
+bool Category::shouldShowTechnical() const
+{
+    return m_showTechnical;
 }
 
 QList<Category *> Category::subCategories() const

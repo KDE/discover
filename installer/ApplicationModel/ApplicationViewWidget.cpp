@@ -132,6 +132,11 @@ void ApplicationViewWidget::setFiltersFromCategory(Category *category)
     m_proxyModel->setFiltersFromCategory(category);
 }
 
+void ApplicationViewWidget::setShouldShowTechnical(bool show)
+{
+    m_proxyModel->setShouldShowTechnical(show);
+}
+
 void ApplicationViewWidget::search(const QString &text)
 {
     m_proxyModel->search(text);

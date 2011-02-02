@@ -35,7 +35,7 @@ class Application
 {
 public:
     explicit Application(const QString &fileName, QApt::Backend *backend);
-    explicit Application(QApt::Package *package);
+    explicit Application(QApt::Package *package, QApt::Backend *backend);
     ~Application();
 
     QString name();
@@ -47,6 +47,7 @@ public:
     QApt::PackageList addons();
     int popconScore() const;
     bool isValid() const;
+    bool isTechnical() const;
 
     QByteArray getField(const QByteArray &field) const;
     QHash<QByteArray, QByteArray> desktopContents();
@@ -58,6 +59,7 @@ private:
     QApt::Package *m_package;
 
     bool m_isValid;
+    bool m_isTechnical;
 
     QVector<QPair<QString, QString> > locateApplication(const QString &_relPath, const QString &menuId) const;
 };

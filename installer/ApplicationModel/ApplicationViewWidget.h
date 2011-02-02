@@ -82,6 +82,7 @@ public Q_SLOTS:
     void setStateFilter(QApt::Package::State state);
     void setOriginFilter(const QString &origin);
     void setFiltersFromCategory(Category *category);
+    void setShouldShowTechnical(bool show);
 
 Q_SIGNALS:
     void switchToSubView(AbstractViewBase *view);

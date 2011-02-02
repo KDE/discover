@@ -53,6 +53,7 @@ public:
     QList<QPair<FilterType, QString> > orFilters() const;
     QList<QPair<FilterType, QString> > notFilters() const;
     bool hasSubCategories() const;
+    bool shouldShowTechnical() const;
     QList<Category *> subCategories() const;
 
 private:
@@ -62,6 +63,7 @@ private:
     QList<QPair<FilterType, QString> > m_orFilters;
     QList<QPair<FilterType, QString> > m_notFilters;
     bool m_hasSubCategories;
+    bool m_showTechnical;
     QList<Category *> m_subCategories;
     CategoryChildPolicy m_policy;
 

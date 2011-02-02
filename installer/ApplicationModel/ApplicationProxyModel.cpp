@@ -33,6 +33,7 @@ ApplicationProxyModel::ApplicationProxyModel(QObject *parent)
     , m_backend(0)
     , m_stateFilter((QApt::Package::State)0)
     , m_sortByRelevancy(false)
+    , m_showTechnical(false)
 {
 }
 
@@ -83,6 +84,11 @@ void ApplicationProxyModel::setFiltersFromCategory(Category *category)
     emit invalidated();
 }
 
+void ApplicationProxyModel::setShouldShowTechnical(bool show)
+{
+    m_showTechnical = show;
+}
+
 bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
     Application *application = static_cast<ApplicationModel *>(sourceModel())->applicationAt(sourceModel()->index(sourceRow, 0, sourceParent));
@@ -99,6 +105,12 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
 
     if (!m_originFilter.isEmpty()) {
         if (application->package()->origin() != m_originFilter) {
+            return false;
+        }
+    }
+
+    if (!m_showTechnical) {
+        if (application->isTechnical()) {
             return false;
         }
     }

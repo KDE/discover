@@ -118,6 +118,7 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
         appView->setFiltersFromCategory(category);
         appView->setTitle(category->name());
         appView->setIcon(KIcon(category->icon()));
+        appView->setShouldShowTechnical(category->shouldShowTechnical());
     }
         break;
     case SubCatType: { // Displays the subcategories of a category

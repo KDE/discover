@@ -41,15 +41,16 @@ Application::Application(const QString &fileName, QApt::Backend *backend)
         , m_backend(backend)
         , m_package(0)
         , m_isValid(false)
+        , m_isTechnical(false)
 {
     m_data = desktopContents();
-//     if (!m_isValid) {
-//         kDebug() << "Not valid" << m_fileName;
-//     }
 }
 
-Application::Application(QApt::Package *package)
-        : m_package(package)
+Application::Application(QApt::Package *package, QApt::Backend *backend)
+        : m_backend(backend)
+        , m_package(package)
+        , m_isValid(true)
+        , m_isTechnical(true)
 {
 }
 
@@ -274,6 +275,11 @@ int Application::popconScore() const
 bool Application::isValid() const
 {
     return m_isValid;
+}
+
+bool Application::isTechnical() const
+{
+    return m_isTechnical;
 }
 
 QByteArray Application::getField(const QByteArray &field) const

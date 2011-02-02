@@ -89,6 +89,12 @@ void ApplicationBackend::init()
         }
     }
 
+    foreach (QApt::Package *package, m_backend->availablePackages()) {
+        Application *app = new Application(package, m_backend);
+
+        m_appList << app;
+    }
+
     if (m_originList.contains(QLatin1String(""))) {
         m_originList.remove(QLatin1String(""));
     }
