@@ -193,6 +193,9 @@ void UpdaterWindow::errorOccurred(QApt::ErrorCode error, const QVariantMap &args
 
     switch(error) {
     case QApt::UserCancelError:
+        if (m_downloadWidget) {
+            m_downloadWidget->clear();
+        }
         m_updaterWidget->setEnabled(true);
         QApplication::restoreOverrideCursor();
         returnFromPreview();

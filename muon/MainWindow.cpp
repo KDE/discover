@@ -290,6 +290,9 @@ void MainWindow::errorOccurred(QApt::ErrorCode error, const QVariantMap &details
 
     switch(error) {
     case QApt::UserCancelError:
+        if (m_downloadWidget) {
+            m_downloadWidget->clear();
+        }
         m_managerWidget->setEnabled(true);
         QApplication::restoreOverrideCursor();
         returnFromPreview();
