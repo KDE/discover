@@ -95,6 +95,12 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
         return false;
     }
 
+    if (!m_showTechnical) {
+        if (application->isTechnical()) {
+            return false;
+        }
+    }
+
     if (m_stateFilter) {
         if ((bool)(application->package()->state() & m_stateFilter) == false) {
             return false;
@@ -220,12 +226,6 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
             }
 
             ++filter;
-        }
-    }
-
-    if (!m_showTechnical) {
-        if (application->isTechnical()) {
-            return false;
         }
     }
 
