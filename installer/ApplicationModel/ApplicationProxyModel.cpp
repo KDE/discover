@@ -126,7 +126,7 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
                 }
                 break;
             case PkgSectionFilter:
-                if (application->package()->section() == (*filter).second) {
+                if (application->package()->latin1Section() == (*filter).second) {
                     foundOrCondition = true;
                 }
                 break;
@@ -165,7 +165,7 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
                 }
                 break;
             case PkgSectionFilter:
-                if (!(application->package()->section() == (*filter).second)) {
+                if (!(application->package()->latin1Section() == (*filter).second)) {
                     andConditionsMet = false;
                 }
                 break;
@@ -202,7 +202,7 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
                 }
                 break;
             case PkgSectionFilter:
-                if (application->package()->section() == (*filter).second) {
+                if (application->package()->latin1Section() == (*filter).second) {
                     return false;
                 }
                 break;
