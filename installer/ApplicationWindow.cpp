@@ -248,11 +248,13 @@ void ApplicationWindow::populateViews()
         }
 
         if (originName.startsWith(QLatin1String("LP-PPA"))) {
+            viewItem->setIcon(KIcon("user-identity"));
+
             if (originName == QLatin1String("LP-PPA-app-review-board")) {
                 viewItem->setText(i18nc("@item:inlistbox An independent software source",
                                         "Independent"));
+                viewItem->setIcon(KIcon("system-users"));
             }
-            viewItem->setIcon(KIcon("user-identity"));
         }
 
         availableItem->appendRow(viewItem);
