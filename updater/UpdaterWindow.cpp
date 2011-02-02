@@ -112,9 +112,7 @@ void UpdaterWindow::setupActions()
     m_applyAction = actionCollection()->addAction("apply");
     m_applyAction->setIcon(KIcon("dialog-ok-apply"));
     m_applyAction->setText(i18nc("@action Downloads and installs updates", "Install Updates"));
-    m_applyAction->setEnabled(isConnected());
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
-    connect(this, SIGNAL(shouldConnect(bool)), m_applyAction, SLOT(setEnabled(bool)));
 
     m_revertAction = actionCollection()->addAction("revert");
     m_revertAction->setIcon(KIcon("document-revert"));
@@ -275,14 +273,9 @@ void UpdaterWindow::setActionsEnabled(bool enabled)
         return;
     }
 
-    if (isConnected()) {
-        m_applyAction->setEnabled(m_backend->areChangesMarked());
-        m_downloadListAction->setEnabled(true);
-    } else {
-        m_applyAction->setEnabled(false);
-        m_downloadListAction->setEnabled(false);
-    }
+    m_downloadListAction->setEnabled(isConnected());
 
+    m_applyAction->setEnabled(m_backend->areChangesMarked());
     m_undoAction->setEnabled(!m_backend->isUndoStackEmpty());
     m_redoAction->setEnabled(!m_backend->isRedoStackEmpty());
     m_revertAction->setEnabled(!m_backend->isUndoStackEmpty());

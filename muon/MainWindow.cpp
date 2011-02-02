@@ -211,8 +211,6 @@ void MainWindow::setupActions()
     m_applyAction->setIcon(KIcon("dialog-ok-apply"));
     m_applyAction->setText(i18nc("@action Applys the changes a user has made", "Apply Changes"));
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
-    m_applyAction->setEnabled(isConnected());
-    connect(this, SIGNAL(shouldConnect(bool)), m_applyAction, SLOT(setEnabled(bool)));
 
     KStandardAction::preferences(this, SLOT(editSettings()), actionCollection());
 
@@ -476,13 +474,9 @@ void MainWindow::setActionsEnabled(bool enabled)
         m_previewAction->setEnabled(changesPending);
     }
 
-    if (isConnected()) {
-        m_applyAction->setEnabled(changesPending);
-        m_downloadListAction->setEnabled(true);
-    } else {
-        m_applyAction->setEnabled(false);
-        m_downloadListAction->setEnabled(false);
-    }
+    m_downloadListAction->setEnabled(isConnected());
+
+    m_applyAction->setEnabled(changesPending);
 
     m_undoAction->setEnabled(!m_backend->isUndoStackEmpty());
     m_redoAction->setEnabled(!m_backend->isRedoStackEmpty());
