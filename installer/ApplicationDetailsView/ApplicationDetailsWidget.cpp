@@ -580,7 +580,7 @@ void ApplicationDetailsWidget::fetchScreenshot(QApt::ScreenshotType screenshotTy
     m_screenshotFile->setSuffix(".png");
     m_screenshotFile->open();
 
-    KIO::FileCopyJob *getJob = KIO::file_copy(m_app->package()->screenshotUrl(screenshotType),
+    KIO::FileCopyJob *getJob = KIO::file_copy(m_app->screenshotUrl(screenshotType),
                                m_screenshotFile->fileName(), -1, KIO::Overwrite | KIO::HideProgressInfo);
 
     switch (screenshotType) {

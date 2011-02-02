@@ -43,7 +43,8 @@ public:
     QApt::Package *package();
     QString icon() const;
     QString menuPath();
-    QString categories() const;
+    QString categories();
+    QUrl screenshotUrl(QApt::ScreenshotType type);
     QApt::PackageList addons();
     int popconScore() const;
     bool isValid() const;

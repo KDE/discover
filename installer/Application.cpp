@@ -62,8 +62,15 @@ QString Application::name()
 {
     QString name = QString::fromUtf8(getField("Name")).trimmed();
     if (name.isEmpty()) {
-        // kDebug() << m_fileName;
-        return package()->name();
+        // extras.ubuntu.com packages can have this
+        name = package()->controlField("Appname");
+
+        if (!name.isEmpty()) {
+            // Graduate to non-technical, since it has Appname
+            m_isTechnical = false;
+        } else {
+            return package()->name();
+        }
     }
 
     return i18n(name.toUtf8());
@@ -202,9 +209,44 @@ QVector<QPair<QString, QString> > Application::locateApplication(const QString &
     return ret;
 }
 
-QString Application::categories() const
+QString Application::categories()
 {
-    return getField("Categories");
+    QString categories = getField("Categories");
+
+    if (categories.isEmpty()) {
+        // extras.ubuntu.com packages can have this field
+        categories = package()->controlField("Category");
+
+        if (!categories.isEmpty()) {
+            // Graduate to non-technical, since it has Appname
+            m_isTechnical = false;
+        }
+    }
+    return categories;
+}
+
+QUrl Application::screenshotUrl(QApt::ScreenshotType type)
+{
+    QString appUrl;
+    switch (type) {
+    case QApt::Thumbnail:
+        appUrl = package()->controlField("Thumbnail-Url");
+        break;
+    case QApt::Screenshot:
+        appUrl = package()->controlField("Screenshot-Url");
+        break;
+    default:
+        break;
+    }
+
+    QUrl url;
+    if (appUrl.isEmpty()) {
+        url = package()->screenshotUrl(type);
+    } else {
+        url = QUrl(appUrl);
+    }
+
+    return url;
 }
 
 QApt::PackageList Application::addons()

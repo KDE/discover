@@ -109,12 +109,6 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
         }
     }
 
-    if (!m_showTechnical) {
-        if (application->isTechnical()) {
-            return false;
-        }
-    }
-
     if (!m_orFilters.isEmpty()) {
         // Set a boolean value to true when any of the conditions are found.
         // It is set to false by default so that if none are found, we return false
@@ -228,6 +222,12 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
             }
 
             ++filter;
+        }
+    }
+
+    if (!m_showTechnical) {
+        if (application->isTechnical()) {
+            return false;
         }
     }
 

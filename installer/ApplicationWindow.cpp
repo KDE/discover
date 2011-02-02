@@ -204,6 +204,11 @@ void ApplicationWindow::populateViews()
         originNames.move(index, 1); // Move to 2nd spot
     }
 
+    if (originNames.contains("LP-PPA-app-review-board")) {
+        int index = originNames.indexOf("LP-PPA-app-review-board");
+        originNames.move(index, 2); // Move to third spot
+    }
+
     QStandardItem *parentItem = m_viewModel->invisibleRootItem();
 
     QStandardItem *availableItem = new QStandardItem;
@@ -238,11 +243,15 @@ void ApplicationWindow::populateViews()
         }
 
         if (originName == "Canonical") {
-            viewItem->setText(i18nc("@item:inlistbox","Canonical Partners"));
+            viewItem->setText(i18nc("@item:inlistbox ","Canonical Partners"));
             viewItem->setIcon(KIcon("partner"));
         }
 
         if (originName.startsWith(QLatin1String("LP-PPA"))) {
+            if (originName == QLatin1String("LP-PPA-app-review-board")) {
+                viewItem->setText(i18nc("@item:inlistbox An independent software source",
+                                        "Independent"));
+            }
             viewItem->setIcon(KIcon("user-identity"));
         }
 
@@ -265,22 +274,24 @@ void ApplicationWindow::populateViews()
         viewItem->setText(originLabel);
         viewItem->setData(QApt::Package::Installed, StateFilterRole);
         viewItem->setData(originName, OriginFilterRole);
+        viewItem->setData(AppView, ViewTypeRole);
 
         if (originName == "Ubuntu") {
             viewItem->setText(i18nc("@item:inlistbox", "Provided by Kubuntu"));
             viewItem->setIcon(KIcon("ubuntu-logo"));
-            viewItem->setData(AppView, ViewTypeRole);
         }
 
         if (originName == "Canonical") {
             viewItem->setText(i18nc("@item:inlistbox", "Canonical Partners"));
             viewItem->setIcon(KIcon("partner"));
-            viewItem->setData(AppView, ViewTypeRole);
         }
 
         if (originName.startsWith(QLatin1String("LP-PPA"))) {
+            if (originName == QLatin1String("LP-PPA-app-review-board")) {
+                viewItem->setText(i18nc("@item:inlistbox An independent software source",
+                                        "Independent"));
+            }
             viewItem->setIcon(KIcon("user-identity"));
-            viewItem->setData(AppView, ViewTypeRole);
         }
 
         installedItem->appendRow(viewItem);
