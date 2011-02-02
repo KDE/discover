@@ -143,10 +143,16 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
 {
     m_workerState.first = event;
 
+    if (event == QApt::XapianUpdateFinished) {
+        emit xapianReloaded();
+    }
+
     Transaction *transaction = 0;
     if (!m_queue.isEmpty()) {
         m_workerState.second = (*m_currentTransaction);
         transaction = (*m_currentTransaction);
+    } else {
+        return;
     }
 
     emit workerEvent(event, transaction);
@@ -187,9 +193,6 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
         } else {
             runNextTransaction();
         }
-        break;
-    case QApt::XapianUpdateFinished:
-        emit xapianReloaded();
         break;
     default:
         break;
