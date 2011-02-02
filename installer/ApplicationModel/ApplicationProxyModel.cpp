@@ -20,8 +20,6 @@
 
 #include "ApplicationProxyModel.h"
 
-#include <QtCore/QRegExp>
-
 #include <LibQApt/Backend>
 
 // Own includes
@@ -127,10 +125,10 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
                 }
                 break;
             case PkgWildcardFilter: {
-                QRegExp rx((*filter).second);
-                rx.setPatternSyntax(QRegExp::Wildcard);
+                QString wildcard = (*filter).second;
+                wildcard.remove('*');
 
-                if (rx.exactMatch(application->package()->name())) {
+                if (application->package()->name().contains(wildcard)) {
                     foundOrCondition = true;
                 }
                 break;
@@ -166,10 +164,10 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
                 }
                 break;
             case PkgWildcardFilter: {
-                QRegExp rx((*filter).second);
-                rx.setPatternSyntax(QRegExp::Wildcard);
+                QString wildcard = (*filter).second;
+                wildcard.remove('*');
 
-                if (!rx.exactMatch(application->package()->name())) {
+                if (application->package()->name().contains(wildcard)) {
                     andConditionsMet = false;
                 }
             }
@@ -203,10 +201,10 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
                 }
                 break;
             case PkgWildcardFilter: {
-                QRegExp rx((*filter).second);
-                rx.setPatternSyntax(QRegExp::Wildcard);
+                QString wildcard = (*filter).second;
+                wildcard.remove('*');
 
-                if (rx.exactMatch(application->package()->name())) {
+                if (application->package()->name().contains(wildcard)) {
                     return false;
                 }
             }
