@@ -209,7 +209,6 @@ void MainTab::refresh()
         m_removeButton->hide();
         m_upgradeButton->hide();
         m_reinstallButton->hide();
-        m_purgeButton->hide();
         m_cancelButton->show();
     }
 

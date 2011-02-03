@@ -303,7 +303,7 @@ void PackageWidget::contextMenuRequested(const QPoint &pos)
                 m_reinstallAction->setEnabled(true);
             }
             m_keepAction->setEnabled(false);
-            m_purgeAction->setEnabled(false);
+            m_purgeAction->setEnabled(true);
         } else if (state & QApt::Package::ResidualConfig) {
             m_purgeAction->setEnabled(true);
             m_installAction->setEnabled(true);
@@ -316,7 +316,6 @@ void PackageWidget::contextMenuRequested(const QPoint &pos)
             m_removeAction->setEnabled(false);
             m_upgradeAction->setEnabled(false);
             m_reinstallAction->setEnabled(false);
-            m_purgeAction->setEnabled(false);
             m_keepAction->setEnabled(false);
         }
 
