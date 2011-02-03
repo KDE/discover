@@ -203,6 +203,11 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error, const QVariantMap 
 {
     Q_UNUSED(details);
 
+    if (m_queue.isEmpty()) {
+        emit errorSignal(error, details);
+        return;
+    }
+
     disconnect(m_backend, SIGNAL(downloadProgress(int, int, int)),
                    this, SLOT(updateDownloadProgress(int)));
     disconnect(m_backend, SIGNAL(commitProgress(QString, int)),
