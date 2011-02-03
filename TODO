@@ -2,3 +2,15 @@
 -Config GUI for: Policy on untrusted packages, confirmation dialogs (save on quit)
 -Optional columns for installed and available versions in the Muon Package Manager
 -Commercial app support. (See: software-center/db/update.py, backends/restfulclient.py)
+
+
+New updater GUI:
+- Split updates in to categories:
+  - "System Libraries" (better name?)
+  - Source packages
+  - Security updates
+- Do not give package counts in notifications or category headers
+- Do give download size amounts, since that is interesting to users.
+- Give each category a details extender, where a list of affected packages can be found
+- List updates by source package. A user doesn't need to see that ktorrent, ktorrent-data
+  and plasma-widget-ktorrent are being updated unless he cares enough to check the details
