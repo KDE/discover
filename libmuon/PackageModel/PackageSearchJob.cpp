@@ -55,6 +55,11 @@ void PackageSearchJob::run()
         }
         break;
     case VersionSearch:
+        foreach (QApt::Package *package, m_searchPackages) {
+            if (package->availableVersion().contains(m_searchText)) {
+                m_searchResults.append(package);
+            }
+        }
         break;
     case DependsSearch:
         foreach (QApt::Package *package, m_searchPackages) {
