@@ -27,7 +27,6 @@
 #include <LibQApt/Package>
 
 #include "../libmuonprivate_export.h"
-#include "PackageSearchJob.h"
 
 namespace QApt {
     class Backend;

@@ -52,7 +52,6 @@
 #include "../libmuon/DetailsWidget.h"
 #include "PackageModel.h"
 #include "PackageProxyModel.h"
-#include "PackageSearchJob.h"
 #include "PackageView.h"
 #include "PackageDelegate.h"
 
