@@ -46,6 +46,11 @@ void PackageSearchJob::run()
     case NameDescSearch:
         break;
     case MaintainerSearch:
+        foreach (QApt::Package *package, m_searchPackages) {
+            if (package->maintainer().contains(m_searchText)) {
+                m_searchResults.append(package);
+            }
+        }
         break;
     case VersionSearch:
         break;
