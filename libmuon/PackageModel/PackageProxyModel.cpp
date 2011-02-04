@@ -103,6 +103,7 @@ void PackageProxyModel::search(const QString &text, PackageSearchJob::SearchType
         job->setSearchType(type);
 
         m_weaver->enqueue(job);
+        m_weaver->finish();
         return;
     }
 
