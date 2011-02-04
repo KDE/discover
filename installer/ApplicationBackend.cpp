@@ -83,19 +83,21 @@ void ApplicationBackend::init()
 
     foreach (Application *app, tempList) {
         if (app->isValid()) {
-            if (app->package() && !m_pkgBlacklist.contains(app->package()->latin1Name())) {
+            QApt::Package *pkg = app->package();
+            if ((pkg) && !m_pkgBlacklist.contains(pkg->latin1Name())) {
                 m_appList << app;
-                if (app->package()->isInstalled()) {
-                    m_instOriginList << app->package()->origin();
-                    m_originList << app->package()->origin();
+                if (pkg->isInstalled()) {
+                    m_instOriginList << pkg->origin();
+                    m_originList << pkg->origin();
                 } else {
-                    m_originList << app->package()->origin();
+                    m_originList << pkg->origin();
                 }
                 popconScores << app->popconScore();
+            } else {
+                delete app;
             }
         } else {
             // Invalid .desktop file
-            // kDebug() << fileName;
             delete app;
         }
     }
