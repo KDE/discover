@@ -68,6 +68,7 @@ QString Application::name()
         if (!name.isEmpty()) {
             // Graduate to non-technical, since it has Appname
             m_isTechnical = false;
+            return name;
         }
 
         if (m_isTechnical) {
