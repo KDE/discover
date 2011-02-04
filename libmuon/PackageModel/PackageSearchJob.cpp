@@ -20,6 +20,8 @@
 
 #include "PackageSearchJob.h"
 
+#include <QStringList>
+
 #include <KDebug>
 
 PackageSearchJob::PackageSearchJob(QObject *parent)
@@ -55,8 +57,18 @@ void PackageSearchJob::run()
     case VersionSearch:
         break;
     case DependsSearch:
+        foreach (QApt::Package *package, m_searchPackages) {
+            if (package->dependencyList(true).contains(m_searchText)) {
+                m_searchResults.append(package);
+            }
+        }
         break;
     case ProvidesSearch:
+        foreach (QApt::Package *package, m_searchPackages) {
+            if (package->providesList().contains(m_searchText)) {
+                m_searchResults.append(package);
+            }
+        }
         break;
     case QuickSearch:
         m_searchResults = m_backend->search(m_searchText);
