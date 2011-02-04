@@ -29,11 +29,6 @@
 #include "../libmuonprivate_export.h"
 #include "PackageSearchJob.h"
 
-namespace ThreadWeaver {
-    class Job;
-    class Weaver;
-}
-
 namespace QApt {
     class Backend;
 }
@@ -46,7 +41,7 @@ public:
     ~PackageProxyModel();
 
     void setBackend(QApt::Backend *backend);
-    void search(const QString &searchText, PackageSearchJob::SearchType type);
+    void search(const QString &searchText);
     void setGroupFilter(const QString &filterText);
     void setStateFilter(QApt::Package::State state);
     void setOriginFilter(const QString &origin);
@@ -61,8 +56,6 @@ protected:
 private:
     QApt::Backend *m_backend;
     QApt::PackageList m_packages;
-    QApt::PackageList m_fullSearchResults;
-    ThreadWeaver::Weaver *m_weaver;
 
     QString m_searchText;
     QString m_groupFilter;
@@ -70,11 +63,6 @@ private:
     QString m_originFilter;
 
     bool m_sortByRelevancy;
-    bool m_fullSearch;
-    int m_expectedJobs;
-
-private Q_SLOTS:
-    void searchDone(ThreadWeaver::Job *job);
 };
 
 #endif

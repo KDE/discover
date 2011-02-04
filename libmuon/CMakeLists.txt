@@ -11,7 +11,6 @@ set(muon_LIB_SRCS
     HistoryView/HistoryView.cpp
     PackageModel/PackageModel.cpp
     PackageModel/PackageProxyModel.cpp
-    PackageModel/PackageSearchJob.cpp
     PackageModel/PackageView.cpp
     PackageModel/PackageDelegate.cpp
     PackageModel/PackageWidget.cpp

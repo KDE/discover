@@ -33,6 +33,8 @@
 
 // KDE includes
 #include <KAction>
+#include <KComboBox>
+#include <KHBox>
 #include <KIcon>
 #include <KLineEdit>
 #include <KLocale>
@@ -99,7 +101,6 @@ PackageWidget::PackageWidget(QWidget *parent)
     m_searchEdit = new KLineEdit(topVBox);
     m_searchEdit->setClickMessage(i18nc("@label Line edit click message", "Search"));
     m_searchEdit->setClearButtonShown(true);
-    m_searchEdit->setEnabled(false);
     m_searchEdit->hide(); // Off by default, use showSearchEdit() to show
 
     m_packageView = new PackageView(topVBox);
@@ -352,7 +353,7 @@ void PackageWidget::setSortedPackages()
 
 void PackageWidget::startSearch()
 {
-    m_proxyModel->search(m_searchEdit->text(), PackageSearchJob::QuickSearch);
+    m_proxyModel->search(m_searchEdit->text());
 }
 
 bool PackageWidget::confirmEssentialRemoval()
