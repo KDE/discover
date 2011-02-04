@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,63 +18,51 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef PACKAGEPROXYMODEL_H
-#define PACKAGEPROXYMODEL_H
+#ifndef PACKAGESEARCHJOB_H
+#define PACKAGESEARCHJOB_H
 
-#include <QtGui/QSortFilterProxyModel>
-#include <QtCore/QString>
+#include <threadweaver/Job.h>
 
-#include <LibQApt/Package>
+#include <LibQApt/Backend>
 
 #include "../libmuonprivate_export.h"
-#include "PackageSearchJob.h"
 
-namespace ThreadWeaver {
-    class Job;
-    class Weaver;
-}
-
-namespace QApt {
-    class Backend;
-}
-
-class MUONPRIVATE_EXPORT PackageProxyModel : public QSortFilterProxyModel
+class MUONPRIVATE_EXPORT PackageSearchJob : public ThreadWeaver::Job
 {
-    Q_OBJECT
+Q_OBJECT
 public:
-    PackageProxyModel(QObject *parent);
-    ~PackageProxyModel();
+    enum SearchType {
+        InvalidType = 0,
+        NameSearch = 1,
+        NameDescSearch = 2,
+        MaintainerSearch = 3,
+        VersionSearch = 4,
+        DependsSearch = 5,
+        ProvidesSearch = 6,
+        QuickSearch = 7
+    };
+
+    PackageSearchJob(QObject *parent = 0);
+    ~PackageSearchJob();
 
     void setBackend(QApt::Backend *backend);
-    void search(const QString &searchText, PackageSearchJob::SearchType type);
-    void setGroupFilter(const QString &filterText);
-    void setStateFilter(QApt::Package::State state);
-    void setOriginFilter(const QString &origin);
+    void setSearchPackages(const QApt::PackageList &packages);
+    void setSearchText(const QString &searchText);
+    void setSearchType(SearchType type);
 
-    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
-    QApt::Package *packageAt(const QModelIndex &index) const;
-    void reset();
+    QApt::PackageList searchResults();
 
 protected:
-    bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
+    void run();
 
 private:
-    QApt::Backend *m_backend;
-    QApt::PackageList m_packages;
-    QApt::PackageList m_fullSearchResults;
-    ThreadWeaver::Weaver *m_weaver;
+    QApt::Backend *m_backend; // For quicksearch via xapian
 
+    QApt::PackageList m_searchPackages;
     QString m_searchText;
-    QString m_groupFilter;
-    QApt::Package::State m_stateFilter;
-    QString m_originFilter;
+    SearchType m_searchType;
 
-    bool m_sortByRelevancy;
-    bool m_fullSearch;
-    int m_expectedJobs;
-
-private Q_SLOTS:
-    void searchDone(ThreadWeaver::Job *job);
+    QApt::PackageList m_searchResults;
 };
 
 #endif

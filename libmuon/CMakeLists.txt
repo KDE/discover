@@ -11,6 +11,7 @@ set(muon_LIB_SRCS
     HistoryView/HistoryView.cpp
     PackageModel/PackageModel.cpp
     PackageModel/PackageProxyModel.cpp
+    PackageModel/PackageSearchJob.cpp
     PackageModel/PackageView.cpp
     PackageModel/PackageDelegate.cpp
     PackageModel/PackageWidget.cpp
@@ -34,6 +35,7 @@ target_link_libraries(muonprivate
     ${KDE4_KDEUI_LIBS}
     ${KDE4_KIO_LIBS}
     ${KDE4_SOLID_LIBS}
+    ${KDE4_THREADWEAVER_LIBRARIES}
     ${QAPT_LIBRARY}
     ${DEBCONF_KDE_LIB})
 

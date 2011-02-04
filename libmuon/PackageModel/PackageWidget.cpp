@@ -48,10 +48,11 @@
 
 // Own includes
 #include "../libmuon/DetailsWidget.h"
-#include "../libmuon/PackageModel/PackageModel.h"
-#include "../libmuon/PackageModel/PackageProxyModel.h"
-#include "../libmuon/PackageModel/PackageView.h"
-#include "../libmuon/PackageModel/PackageDelegate.h"
+#include "PackageModel.h"
+#include "PackageProxyModel.h"
+#include "PackageSearchJob.h"
+#include "PackageView.h"
+#include "PackageDelegate.h"
 
 #define NUM_COLUMNS 3
 
@@ -351,7 +352,7 @@ void PackageWidget::setSortedPackages()
 
 void PackageWidget::startSearch()
 {
-    m_proxyModel->search(m_searchEdit->text());
+    m_proxyModel->search(m_searchEdit->text(), PackageSearchJob::QuickSearch);
 }
 
 bool PackageWidget::confirmEssentialRemoval()

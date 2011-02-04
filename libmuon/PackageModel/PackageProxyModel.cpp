@@ -22,6 +22,10 @@
 
 // KDE includes
 #include <KLocale>
+#include <Solid/Device>
+#include <Solid/DeviceInterface>
+#include <threadweaver/ThreadWeaver.h>
+#include <KDebug>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -53,7 +57,11 @@ PackageProxyModel::PackageProxyModel(QObject *parent)
     , m_backend(0)
     , m_stateFilter((QApt::Package::State)0)
     , m_sortByRelevancy(false)
+    , m_fullSearch(false)
 {
+    m_weaver = ThreadWeaver::Weaver::instance();
+    connect(m_weaver, SIGNAL(jobDone(ThreadWeaver::Job *)),
+            this, SLOT(searchDone(ThreadWeaver::Job *)));
 }
 
 PackageProxyModel::~PackageProxyModel()
@@ -66,18 +74,99 @@ void PackageProxyModel::setBackend(QApt::Backend *backend)
     m_packages = static_cast<PackageModel *>(sourceModel())->packages();
 }
 
-void PackageProxyModel::search(const QString &searchText)
+void PackageProxyModel::search(const QString &text, PackageSearchJob::SearchType type)
 {
-    // 1-character searches are painfully slow. >= 2 chars are fine, though
     m_packages.clear();
-    if (searchText.size() > 1) {
-        m_packages = m_backend->search(searchText);
-        m_sortByRelevancy = true;
-    } else {
+    m_fullSearchResults.clear();
+
+    // One-character searches will either provide way to may results for full
+    // search or cause quicksearch to hang for a few seconds.
+    if (!(text.size() > 1)) {
         m_packages =  static_cast<PackageModel *>(sourceModel())->packages();
         m_sortByRelevancy = false;
+        m_fullSearch = false;
+
+        invalidate();
+        return;
     }
-    invalidate();
+
+    // We don't need multiple buckets for quicksearch. Xapian doesn't do the
+    // search on the package level and can do most searches in a few ms in
+    // one thread.
+    if (type == PackageSearchJob::QuickSearch) {
+        m_sortByRelevancy = true;
+        m_expectedJobs = 1;
+
+        PackageSearchJob *job = new PackageSearchJob(this);
+        job->setBackend(m_backend);
+        job->setSearchText(text);
+        job->setSearchType(type);
+
+        m_weaver->enqueue(job);
+        return;
+    }
+
+    m_fullSearch = true;
+    // Set up the optimal number of threads for the processor
+    const int numProcs =
+            qMax(Solid::Device::listFromType(Solid::DeviceInterface::Processor).count(), 1);
+    int numThreads = (2 + ((numProcs - 1) * 2));
+
+    if (numThreads > m_weaver->maximumNumberOfThreads()) {
+        m_weaver->setMaximumNumberOfThreads(numThreads);
+    } else {
+        numThreads = m_weaver->maximumNumberOfThreads();
+    }
+
+    QApt::PackageList allPackages = m_backend->availablePackages();
+
+    int bucketSize = allPackages.size() / numThreads;
+    int remainder = allPackages.size() % numThreads;
+
+    m_expectedJobs = numThreads;
+
+    // kDebug() << "Package Count:" << allPackages.size();
+    // kDebug() << "Bucket size:" << bucketSize;
+    // kDebug() << "Remainder:" << remainder;
+
+    int packagesIndex = 0;
+    for (int i = 0; i < numThreads; ++i) {
+        QApt::PackageList jobList = allPackages.mid(packagesIndex, bucketSize);
+        packagesIndex += bucketSize;
+
+        // Give the remainder to our last job
+        if (remainder) {
+            if (i == (numThreads - 1)) {
+                jobList.append(allPackages.mid(packagesIndex, remainder));
+            }
+        }
+
+        PackageSearchJob *job = new PackageSearchJob(this);
+        job->setBackend(m_backend);
+        job->setSearchPackages(jobList);
+        job->setSearchText(text);
+        job->setSearchType(type);
+
+        m_weaver->enqueue(job);
+    }
+}
+
+void PackageProxyModel::searchDone(ThreadWeaver::Job *job)
+{
+    kDebug() << "Search done";
+    PackageSearchJob *searchJob = (PackageSearchJob *)job;
+    kDebug() << searchJob->searchResults().size();
+    m_fullSearchResults.append(searchJob->searchResults());
+
+    delete searchJob;
+
+    m_expectedJobs--;
+
+    if (!m_expectedJobs) {
+        kDebug() << "setting results";
+        m_packages = m_fullSearchResults;
+        invalidate();
+    }
 }
 
 void PackageProxyModel::setGroupFilter(const QString &filterText)
@@ -125,7 +214,7 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
         }
     }
 
-    if (m_sortByRelevancy) {
+    if (m_sortByRelevancy || m_fullSearch) {
         return m_packages.contains(package);
     }
     return true;
