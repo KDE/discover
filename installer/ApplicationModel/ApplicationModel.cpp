@@ -182,6 +182,9 @@ void ApplicationModel::clear()
 
 void ApplicationModel::updateTransactionProgress(Transaction *trans, int progress)
 {
+    if (!m_appBackend->transactions().contains(trans)) {
+        return;
+    }
     m_runningTransactions[trans] = progress;
 
     emit dataChanged(index(m_apps.indexOf(trans->application()), 0),
@@ -191,6 +194,10 @@ void ApplicationModel::updateTransactionProgress(Transaction *trans, int progres
 void ApplicationModel::workerEvent(QApt::WorkerEvent event, Transaction *trans)
 {
     Q_UNUSED(event);
+
+    if (!m_appBackend->transactions().contains(trans)) {
+        return;
+    }
 
     if (trans != 0) {
         emit dataChanged(index(m_apps.indexOf(trans->application()), 0),
