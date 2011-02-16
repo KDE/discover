@@ -230,7 +230,7 @@ QString Application::categories()
     return categories;
 }
 
-QUrl Application::screenshotUrl(QApt::ScreenshotType type)
+KUrl Application::screenshotUrl(QApt::ScreenshotType type)
 {
     QString appUrl;
     switch (type) {
@@ -244,11 +244,11 @@ QUrl Application::screenshotUrl(QApt::ScreenshotType type)
         break;
     }
 
-    QUrl url;
+    KUrl url;
     if (appUrl.isEmpty()) {
         url = package()->screenshotUrl(type);
     } else {
-        url = QUrl(appUrl);
+        url = KUrl(appUrl);
     }
 
     return url;

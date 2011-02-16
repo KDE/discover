@@ -25,6 +25,8 @@
 #include <QtCore/QHash>
 #include <QtCore/QStringList>
 
+#include <KUrl>
+
 #include <LibQApt/Package>
 
 namespace QApt {
@@ -44,7 +46,7 @@ public:
     QString icon() const;
     QString menuPath();
     QString categories();
-    QUrl screenshotUrl(QApt::ScreenshotType type);
+    KUrl screenshotUrl(QApt::ScreenshotType type);
     QApt::PackageList addons();
     int popconScore() const;
     bool isValid() const;
