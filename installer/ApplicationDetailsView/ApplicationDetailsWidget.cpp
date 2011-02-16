@@ -555,7 +555,7 @@ void ApplicationDetailsWidget::populateZeitgeistInfo()
         return;
     }
 
-    m_usageLabel->setText(i18ncp("@info:label The number of times an app has been used",
+    m_usageLabel->setText(i18ncp("@label The number of times an app has been used",
                                   "Used one time", "Used: %1 times", usageCount));
 #else
     m_usageLabel->hide();

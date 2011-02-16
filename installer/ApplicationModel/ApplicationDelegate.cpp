@@ -86,7 +86,7 @@ void ApplicationDelegate::paint(QPainter *painter,
     style->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt, painter, opt.widget);
     painter->restore();
 
-    // pain the background (checkbox and the extender)
+    // paint the extender
     KExtendableItemDelegate::paint(painter, opt, index);
 
     int leftCount;

@@ -97,7 +97,7 @@ void StatusWidget::updateStatus()
             toRemoveText = i18nc("@info:status Label for the number of packages pending removal when packages are also pending upgrade",
                                  ", %1 to remove", toRemove);
         } else if (toRemove > 0) {
-            toRemoveText = i18nc("@info:statsus Label for the number of packages pending removal when there are only removals",
+            toRemoveText = i18nc("@info:status Label for the number of packages pending removal when there are only removals",
                                  " %1 to remove", toRemove);
         }
 

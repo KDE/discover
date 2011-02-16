@@ -99,7 +99,7 @@ HistoryView::HistoryView(QWidget *parent)
 
     QHash<PastActions, QString> actionHash;
     actionHash[InstalledAction] = i18nc("@info:status describes a past-tense action", "Installed");
-    actionHash[UpgradedAction] = i18nc("@status describes a past-tense action", "Upgraded");
+    actionHash[UpgradedAction] = i18nc("@info:status describes a past-tense action", "Upgraded");
     actionHash[DowngradedAction] = i18nc("@status describes a past-tense action", "Downgraded");
     actionHash[RemovedAction] = i18nc("@status describes a past-tense action", "Removed");
     actionHash[PurgedAction] = i18nc("@status describes a past-tense action", "Purged");
