@@ -27,7 +27,6 @@
 #include <QtGui/QProgressBar>
 
 // KDE includes
-#include <KDebug>
 #include <KGlobal>
 #include <KLocale>
 
