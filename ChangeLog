@@ -1,3 +1,25 @@
+1.1.1:
+=====
+- Bugfixes:
+  * Don't show the app launcher dialog for transactions that are only changing
+    the addons of an already-installed application.
+  * Fix a bug where the Muon Update Notifier would cause kded to accumulate
+    zombie processes (Bug 263790)
+  * Fix the text of the download view being unreadable with dark themes.
+  * Fix a bug where the busy cursor would not go away when a commit was canceled
+  * Disable the package view while waiting for a commit to start (Bug 264927)
+  * Don't leak our m_screenshotFile when an AppDetailsWidget gets destroyed in
+    the Muon Software Center.
+  * Fix double exit confirmation for the Muon Package Manager and Update Managers
+    (Bug 265283)
+  * Don't crash if we get progress updates for transactions that have since
+    been removed from the Muon Software Center's transaction queue. (Bug 266173)
+  * Fix a bug where an application item in the Muon Software Center could not
+    be extended after changing filtering.
+- Features:
+  * Show the purge button when a package is set to be removed, in case the user
+    wants to purge dependencies that had been marked for removal. (Bug 265283)
+
 1.1:
 ====
 
