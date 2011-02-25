@@ -18,48 +18,42 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef REVIEWSBACKEND_H
-#define REVIEWSBACKEND_H
+#ifndef REVIEW_H
+#define REVIEW_H
 
-#include <QtCore/QString>
+#include <QtCore/QDateTime>
 #include <QtCore/QVariant>
 
-class KJob;
-class KTemporaryFile;
-
-class Application;
-class Rating;
-class Review;
-
-class ReviewsBackend : public QObject
+class Review
 {
-    Q_OBJECT
 public:
-    ReviewsBackend(QObject *parent);
-    ~ReviewsBackend();
+    explicit Review(const QVariantMap &data);
+    ~Review();
 
-    Rating *ratingForApplication(Application *app) const;
-
-    void fetchReviews(Application *app);
+    QString applicationName() const;
+    QString packageName() const;
+    QString packageVersion() const;
+    QString language() const;
+    QString summary() const;
+    QString reviewText() const;
+    QString reviewer() const;
+    QDateTime creationDate() const;
+    bool shouldShow() const;
+    quint64 id() const;
+    int rating() const;
 
 private:
-    QString m_serverBase;
-    KTemporaryFile *m_ratingsFile;
-    KTemporaryFile *m_reviewsFile;
-    QList<Rating *> m_ratings;
-    // cache key is package name + app name, since both by their own may not be unique
-    QHash<QString, QList<Review *> > m_reviewsCache;
-    QHash<KJob *, Application *> m_jobHash;
-
-    void fetchRatings();
-    QString getLanguage();
-
-private Q_SLOTS:
-    void ratingsFetched(KJob *job);
-    void reviewsFetched(KJob *job);
-
-Q_SIGNALS:
-    void reviewsReady(Application *app, QList<Review *>);
+    QString m_appName;
+    QDateTime m_creationDate;
+    bool m_shouldShow;
+    quint64 m_id;
+    QString m_language;
+    QString m_packageName;
+    int m_rating;
+    QString m_reviewText;
+    QString m_reviewer;
+    QString m_summary;
+    QString m_packageVersion;
 };
 
 #endif

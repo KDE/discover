@@ -20,9 +20,12 @@
 
 #include "ReviewsBackend.h"
 
+#include <QtCore/QProcess>
 #include <QtCore/QStringBuilder>
 
+#include <KGlobal>
 #include <KIO/Job>
+#include <KLocale>
 #include <KTemporaryFile>
 #include <KUrl>
 #include <KDebug>
@@ -31,11 +34,13 @@
 
 #include "../Application.h"
 #include "Rating.h"
+#include "Review.h"
 
 ReviewsBackend::ReviewsBackend(QObject *parent)
         : QObject(parent)
         , m_serverBase("http://reviews.staging.ubuntu.com/reviews/api/1.0/")
         , m_ratingsFile(0)
+        , m_reviewsFile(0)
 {
     fetchRatings();
 }
@@ -105,5 +110,99 @@ Rating *ReviewsBackend::ratingForApplication(Application *app) const
     }
 
     return 0;
+}
+
+void ReviewsBackend::fetchReviews(Application *app)
+{
+    // Check our cache before fetching from the 'net
+    QString hashName = app->package()->latin1Name() + app->name();
+    if (m_reviewsCache.contains(hashName)) {
+        emit reviewsReady(app, m_reviewsCache.value(hashName));
+        return;
+    }
+
+    QString lang = getLanguage();
+    QString origin = QLatin1String("any");
+
+    QString program = QLatin1String("lsb_release -c -s");
+    QProcess lsb_release;
+    lsb_release.start(program);
+    lsb_release.waitForFinished();
+    QString distroSeries = lsb_release.readAllStandardOutput();
+    distroSeries = distroSeries.trimmed();
+
+    QString version = QLatin1String("any");
+    QString packageName = app->package()->latin1Name();
+    QString appName = ';' + app->name();
+    appName.replace(' ', QLatin1String("%2B"));
+
+    KUrl reviewsUrl(m_serverBase % lang % '/' % origin % '/' % distroSeries %
+                    '/' % version % '/' % packageName % appName % '/' %
+                    QLatin1Literal("page") % '/' % '1');
+    kDebug() << reviewsUrl;
+
+    if (m_reviewsFile) {
+        m_reviewsFile->deleteLater();
+        m_reviewsFile = 0;
+    }
+
+    m_reviewsFile = new KTemporaryFile();
+    m_reviewsFile->open();
+
+    KIO::FileCopyJob *getJob = KIO::file_copy(reviewsUrl,
+                               m_reviewsFile->fileName(), -1,
+                               KIO::Overwrite | KIO::HideProgressInfo);
+    m_jobHash[getJob] = app;
+    connect(getJob, SIGNAL(result(KJob *)),
+            this, SLOT(reviewsFetched(KJob *)));
+}
+
+void ReviewsBackend::reviewsFetched(KJob *job)
+{
+    if (job->error()) {
+        return;
+    }
+
+    QFile file(m_reviewsFile->fileName());
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+
+    QJson::Parser parser;
+    QByteArray json = file.readAll();
+
+    bool ok = false;
+    QVariant reviews = parser.parse(json, &ok);
+
+    if (!ok) {
+        return;
+    }
+
+    QList<Review *> reviewsList;
+    foreach (const QVariant &data, reviews.toList()) {
+        Review *review = new Review(data.toMap());
+        kDebug() << "Summary:" << review->summary();
+        reviewsList << review;
+    }
+
+    Application *app = m_jobHash.value(job);
+    m_jobHash.remove(job);
+
+    m_reviewsCache[app->package()->latin1Name() + app->name()] = reviewsList;
+
+    emit reviewsReady(app, reviewsList);
+}
+
+QString ReviewsBackend::getLanguage()
+{
+    QStringList fullLangs;
+    // The reviews API abbreviates all langs past the _ char except these
+    fullLangs << "pt_BR" << "zh_CN" << "zh_TW";
+
+    QString language = KGlobal::locale()->language();
+
+    if (fullLangs.contains(language)) {
+        return language;
+    }
+
+    return language.split('_').first();
 }
 

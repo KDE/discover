@@ -66,6 +66,7 @@
 #include "effects/GraphicsOpacityDropShadowEffect.h"
 #include "ScreenShotViewer.h"
 #include "ReviewsBackend/Rating.h"
+#include "ReviewsBackend/Review.h"
 #include "ReviewsBackend/ReviewsBackend.h"
 #include "../../libmuon/MuonStrings.h"
 
@@ -305,8 +306,6 @@ void ApplicationDetailsWidget::setApplication(Application *app)
 {
     m_app = app;
 
-    //kDebug() << m_appBackend->reviewsBackend()->ratingForApplication(app)->rating();
-
     // FIXME: Always keep label size at 48x48, and render the largest size
     // we can up to that point. Otherwise some icons will be blurry
     m_iconLabel->setPixmap(KIcon(app->icon()).pixmap(48,48));
@@ -314,7 +313,8 @@ void ApplicationDetailsWidget::setApplication(Application *app)
     m_nameLabel->setText(QLatin1Literal("<h1>") % app->name() % QLatin1Literal("</h1>"));
     m_shortDescLabel->setText(app->comment());
 
-    Rating *rating = m_appBackend->reviewsBackend()->ratingForApplication(app);
+    ReviewsBackend *reviewsBackend = m_appBackend->reviewsBackend();
+    Rating *rating = reviewsBackend->ratingForApplication(app);
     if (rating) {
         m_ratingWidget->setRating(rating->rating());
         m_ratingCountLabel->setText(i18ncp("@label The number of ratings the app has",
@@ -348,6 +348,11 @@ void ApplicationDetailsWidget::setApplication(Application *app)
     m_longDescLabel->setText(app->package()->longDescription());
 
     populateAddons();
+
+    // Fetch reviews
+    reviewsBackend->fetchReviews(app);
+    connect(reviewsBackend, SIGNAL(reviewsReady(Application *, QList<Review *>)),
+            this, SLOT(populateReviews(Application *, QList<Review *>)));
 
     QString homepageUrl = app->package()->homepage();
     if (!homepageUrl.isEmpty()) {
@@ -733,6 +738,10 @@ void ApplicationDetailsWidget::populateAddons()
 
     m_addonsRevertButton->setEnabled(false);
     m_addonsApplyButton->setEnabled(false);
+}
+
+void ApplicationDetailsWidget::populateReviews(Application *app, const QList<Review *> &reviews)
+{
 }
 
 void ApplicationDetailsWidget::addonStateChanged(const QModelIndex &left, const QModelIndex &right)

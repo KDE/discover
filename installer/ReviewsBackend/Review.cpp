@@ -18,48 +18,81 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef REVIEWSBACKEND_H
-#define REVIEWSBACKEND_H
+#include "Review.h"
 
-#include <QtCore/QString>
-#include <QtCore/QVariant>
-
-class KJob;
-class KTemporaryFile;
-
-class Application;
-class Rating;
-class Review;
-
-class ReviewsBackend : public QObject
+Review::Review(const QVariantMap &data)
 {
-    Q_OBJECT
-public:
-    ReviewsBackend(QObject *parent);
-    ~ReviewsBackend();
+    m_appName = data.value("app_name").toString();
+    m_packageName = data.value("package_name").toString();
+    m_packageVersion = data.value("version").toString();
+    m_language = data.value("language").toString();
+    m_summary = data.value("summary").toString();
+    m_reviewText = data.value("review_text").toString();
+    m_reviewer = data.value("reviewer_username").toString();
 
-    Rating *ratingForApplication(Application *app) const;
+    QString creationDate = data.value("date_created").toString();
+    m_creationDate = QDateTime::fromString(creationDate, "yyyy-MM-dd HH:mm:ss");
 
-    void fetchReviews(Application *app);
+    m_shouldShow = !data.value("hide").toBool();
+    m_id = data.value("id").toULongLong();
+    m_rating = data.value("rating").toInt() * 2;
+}
 
-private:
-    QString m_serverBase;
-    KTemporaryFile *m_ratingsFile;
-    KTemporaryFile *m_reviewsFile;
-    QList<Rating *> m_ratings;
-    // cache key is package name + app name, since both by their own may not be unique
-    QHash<QString, QList<Review *> > m_reviewsCache;
-    QHash<KJob *, Application *> m_jobHash;
+Review::~Review()
+{
+}
 
-    void fetchRatings();
-    QString getLanguage();
+QString Review::applicationName() const
+{
+    return m_appName;
+}
 
-private Q_SLOTS:
-    void ratingsFetched(KJob *job);
-    void reviewsFetched(KJob *job);
+QString Review::packageName() const
+{
+    return m_packageName;
+}
 
-Q_SIGNALS:
-    void reviewsReady(Application *app, QList<Review *>);
-};
+QString Review::packageVersion() const
+{
+    return m_packageVersion;
+}
 
-#endif
+QString Review::language() const
+{
+    return m_language;
+}
+
+QString Review::summary() const
+{
+    return m_summary;
+}
+
+QString Review::reviewText() const
+{
+    return m_reviewText;
+}
+
+QString Review::reviewer() const
+{
+    return m_reviewer;
+}
+
+QDateTime Review::creationDate() const
+{
+    return m_creationDate;
+}
+
+bool Review::shouldShow() const
+{
+    return m_shouldShow;
+}
+
+quint64 Review::id() const
+{
+    return m_id;
+}
+
+int Review::rating() const
+{
+    return m_rating;
+}

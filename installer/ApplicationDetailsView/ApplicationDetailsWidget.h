@@ -46,6 +46,7 @@ class KTemporaryFile;
 
 class Application;
 class ClickableLabel;
+class Review;
 class ScreenShotViewer;
 
 // Widget for showing details about a single application
@@ -110,6 +111,7 @@ private Q_SLOTS:
     void actionButtonClicked();
     void cancelButtonClicked();
     void populateAddons();
+    void populateReviews(Application *app, const QList<Review *> &reviews);
     void addonStateChanged(const QModelIndex &left, const QModelIndex &right);
     void addonsApplyButtonClicked();
     void addonsRevertButtonClicked();

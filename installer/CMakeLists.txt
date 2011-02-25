@@ -28,6 +28,7 @@ set(muon_installer_SRCS
     ScreenShotViewer.cpp
     Transaction.cpp
     ReviewsBackend/Rating.cpp
+    ReviewsBackend/Review.cpp
     ReviewsBackend/ReviewsBackend.cpp)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ApplicationDetailsView/HaveQZeitgeist.h.in
