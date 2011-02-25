@@ -93,6 +93,10 @@ void ReviewsBackend::ratingsFetched(KJob *job)
     m_ratings.clear();
     foreach (const QVariant &data, ratings.toList()) {
         Rating *rating = new Rating(data.toMap());
+        if (!rating->ratingCount()) {
+            delete rating;
+            continue;
+        }
         m_ratings << rating;
     }
 }
