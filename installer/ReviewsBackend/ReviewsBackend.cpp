@@ -137,11 +137,17 @@ void ReviewsBackend::fetchReviews(Application *app)
 
     QString version = QLatin1String("any");
     QString packageName = app->package()->latin1Name();
-    QString appName = ';' + app->name();
+    QString appName = app->name();
+    // Replace spaces with %2B for the url
     appName.replace(' ', QLatin1String("%2B"));
 
+    // Figuring out how this damn Django url was put together took more
+    // time than figuring out QJson...
+    // But that could be because the Ubuntu Software Center (which I used to
+    // figure it out) is written in python, so you have to go hunting to where
+    // a variable was initially initialized with a primitive to figure out its type.
     KUrl reviewsUrl(m_serverBase % lang % '/' % origin % '/' % distroSeries %
-                    '/' % version % '/' % packageName % appName % '/' %
+                    '/' % version % '/' % packageName % ';' % appName % '/' %
                     QLatin1Literal("page") % '/' % '1');
     kDebug() << reviewsUrl;
 
