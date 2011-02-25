@@ -34,6 +34,7 @@
 
 #include "Application.h"
 #include "ApplicationLauncher.h"
+#include "ReviewsBackend/ReviewsBackend.h"
 #include "Transaction.h"
 
 ApplicationBackend::ApplicationBackend(QObject *parent)
@@ -44,6 +45,8 @@ ApplicationBackend::ApplicationBackend(QObject *parent)
     m_currentTransaction = m_queue.end();
 
     m_pkgBlacklist << "kdebase-runtime" << "kdepim-runtime" << "kdelibs5-plugins";
+
+    m_reviewsBackend = new ReviewsBackend(this);
 }
 
 ApplicationBackend::~ApplicationBackend()
@@ -66,7 +69,6 @@ void ApplicationBackend::setBackend(QApt::Backend *backend)
 
 void ApplicationBackend::init()
 {
-    QList<int> popconScores;
     QDir appDir("/usr/share/app-install/desktop/");
     QStringList fileList = appDir.entryList(QDir::Files);
 
@@ -92,7 +94,6 @@ void ApplicationBackend::init()
                 } else {
                     m_originList << pkg->origin();
                 }
-                popconScores << app->popconScore();
             } else {
                 delete app;
             }
@@ -109,10 +110,6 @@ void ApplicationBackend::init()
     if (m_instOriginList.contains(QLatin1String(""))) {
         m_instOriginList.remove(QLatin1String(""));
     }
-
-    qSort(popconScores);
-
-    m_maxPopconScore = popconScores.last();
 }
 
 void ApplicationBackend::reload()
@@ -383,6 +380,11 @@ void ApplicationBackend::onAppLauncherClosed()
     m_appLauncher = 0;
 }
 
+ReviewsBackend *ApplicationBackend::reviewsBackend() const
+{
+    return m_reviewsBackend;
+}
+
 QList<Application *> ApplicationBackend::applicationList() const
 {
     return m_appList;
@@ -406,9 +408,4 @@ QPair<QApt::WorkerEvent, Transaction *> ApplicationBackend::workerState() const
 QList<Transaction *> ApplicationBackend::transactions() const
 {
     return m_queue;
-}
-
-int ApplicationBackend::maxPopconScore() const
-{
-    return m_maxPopconScore;
 }

@@ -5,6 +5,8 @@ find_package(KDE4 ${KDE_MIN_VERSION} REQUIRED)
 find_package(QApt REQUIRED)
 find_package(DebconfKDE REQUIRED)
 find_package(QZeitgeist)
+find_package(QJSON REQUIRED)
+
 include (KDE4Defaults)
 
 include( FindPkgConfig )

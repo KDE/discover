@@ -119,7 +119,10 @@ void ApplicationDelegate::paint(QPainter *painter,
     bool transactionActive = index.data(ApplicationModel::ActiveRole).toBool();
 
     if (!transactionActive) {
-        m_ratingPainter->paint(painter, rect, index.data(ApplicationModel::PopconRole).toInt());
+        int rating = index.data(ApplicationModel::RatingRole).toInt();
+        if (rating != -1) {
+            m_ratingPainter->paint(painter, rect, rating);
+        }
     } else {
         QStyleOptionProgressBar progressBarOption;
         progressBarOption.rect = rect;

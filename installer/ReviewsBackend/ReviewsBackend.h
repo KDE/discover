@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010-2011 Jonathan Thomas <echidnaman@kubuntu.org>        *
+ *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,52 +18,36 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATION_H
-#define APPLICATION_H
+#ifndef REVIEWSBACKEND_H
+#define REVIEWSBACKEND_H
 
-#include <QtCore/QByteArray>
-#include <QtCore/QHash>
-#include <QtCore/QStringList>
+#include <QtCore/QString>
+#include <QtCore/QVariant>
 
-#include <KUrl>
+class KJob;
+class KTemporaryFile;
 
-#include <LibQApt/Package>
+class Application;
+class Rating;
 
-namespace QApt {
-    class Backend;
-}
-
-class Application
+class ReviewsBackend : public QObject
 {
+    Q_OBJECT
 public:
-    explicit Application(const QString &fileName, QApt::Backend *backend);
-    explicit Application(QApt::Package *package, QApt::Backend *backend);
-    ~Application();
+    ReviewsBackend(QObject *parent);
+    ~ReviewsBackend();
 
-    QString name();
-    QString comment();
-    QApt::Package *package();
-    QString icon() const;
-    QString menuPath();
-    QString categories();
-    KUrl screenshotUrl(QApt::ScreenshotType type);
-    QApt::PackageList addons();
-    bool isValid() const;
-    bool isTechnical() const;
-
-    QByteArray getField(const QByteArray &field) const;
-    QHash<QByteArray, QByteArray> desktopContents();
+    Rating *ratingForApplication(Application *app) const;
 
 private:
-    QString m_fileName;
-    QHash<QByteArray, QByteArray> m_data;
-    QApt::Backend *m_backend;
-    QApt::Package *m_package;
+    QString m_serverBase;
+    KTemporaryFile *m_ratingsFile;
+    QList<Rating *> m_ratings;
 
-    bool m_isValid;
-    bool m_isTechnical;
+    void fetchRatings();
 
-    QVector<QPair<QString, QString> > locateApplication(const QString &_relPath, const QString &menuId) const;
+private Q_SLOTS:
+    void ratingsFetched(KJob *job);
 };
 
 #endif

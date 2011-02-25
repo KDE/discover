@@ -65,6 +65,8 @@
 #include "ClickableLabel.h"
 #include "effects/GraphicsOpacityDropShadowEffect.h"
 #include "ScreenShotViewer.h"
+#include "ReviewsBackend/Rating.h"
+#include "ReviewsBackend/ReviewsBackend.h"
 #include "../../libmuon/MuonStrings.h"
 
 #define BLUR_RADIUS 15
@@ -109,11 +111,11 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     m_ratingWidget->setAttribute(Qt::WA_TransparentForMouseEvents);
     m_ratingWidget->setPixmapSize(32);
 
-    m_usageLabel = new QLabel(ratingUseWidget);
-    m_usageLabel->setAlignment(Qt::AlignHCenter);
+    m_ratingCountLabel = new QLabel(ratingUseWidget);
+    m_ratingCountLabel->setAlignment(Qt::AlignHCenter);
 
     ratingUseLayout->addWidget(m_ratingWidget);
-    ratingUseLayout->addWidget(m_usageLabel);
+    ratingUseLayout->addWidget(m_ratingCountLabel);
 
     headerLayout->addWidget(m_iconLabel);
     headerLayout->addWidget(nameDescWidget);
@@ -144,6 +146,7 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     actionButtonWidget->setFrameShape(QFrame::StyledPanel);
 
     m_statusLabel = new QLabel(actionButtonWidget);
+    m_usageLabel = new QLabel(actionButtonWidget);
 
     QWidget *actionButtonSpacer = new QWidget(actionButtonWidget);
     actionButtonSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
@@ -163,6 +166,7 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(cancelButtonClicked()));
 
     actionButtonLayout->addWidget(m_statusLabel);
+    actionButtonLayout->addWidget(m_usageLabel);
     actionButtonLayout->addWidget(actionButtonSpacer);
     actionButtonLayout->addWidget(m_actionButton);
     actionButtonLayout->addWidget(m_progressBar);
@@ -301,6 +305,8 @@ void ApplicationDetailsWidget::setApplication(Application *app)
 {
     m_app = app;
 
+    //kDebug() << m_appBackend->reviewsBackend()->ratingForApplication(app)->rating();
+
     // FIXME: Always keep label size at 48x48, and render the largest size
     // we can up to that point. Otherwise some icons will be blurry
     m_iconLabel->setPixmap(KIcon(app->icon()).pixmap(48,48));
@@ -308,7 +314,16 @@ void ApplicationDetailsWidget::setApplication(Application *app)
     m_nameLabel->setText(QLatin1Literal("<h1>") % app->name() % QLatin1Literal("</h1>"));
     m_shortDescLabel->setText(app->comment());
 
-    m_ratingWidget->setRating((int)(10* log(app->popconScore())/log(m_appBackend->maxPopconScore()+1)));
+    Rating *rating = m_appBackend->reviewsBackend()->ratingForApplication(app);
+    if (rating) {
+        m_ratingWidget->setRating(rating->rating());
+        m_ratingCountLabel->setText(i18ncp("@label The number of ratings the app has",
+                                           "%1 rating", "%1 ratings",
+                                           rating->ratingCount()));
+    } else {
+        m_ratingWidget->hide();
+        m_ratingCountLabel->hide();
+    }
 
     populateZeitgeistInfo();
 
@@ -556,7 +571,7 @@ void ApplicationDetailsWidget::populateZeitgeistInfo()
     }
 
     m_usageLabel->setText(i18ncp("@label The number of times an app has been used",
-                                  "Used one time", "Used: %1 times", usageCount));
+                                  "Used one time", "(Used %1 times)", usageCount));
 #else
     m_usageLabel->hide();
 #endif // HAVE_QZEITGEIST

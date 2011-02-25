@@ -69,10 +69,11 @@ private:
     QLabel *m_nameLabel;
     QLabel *m_shortDescLabel;
     KRatingWidget *m_ratingWidget;
-    QLabel *m_usageLabel;
+    QLabel *m_ratingCountLabel;
     QWidget *m_menuPathWidget;
     QLabel *m_menuPathLabel;
     QLabel *m_statusLabel;
+    QLabel *m_usageLabel;
     QPushButton *m_actionButton;
     QProgressBar *m_progressBar;
     QPushButton *m_cancelButton;

@@ -312,13 +312,6 @@ QApt::PackageList Application::addons()
     return addons;
 }
 
-int Application::popconScore() const
-{
-    QString popconString = getField("X-AppInstall-Popcon");
-
-    return popconString.toInt();
-}
-
 bool Application::isValid() const
 {
     return m_isValid;

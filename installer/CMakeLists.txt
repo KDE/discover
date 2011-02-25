@@ -26,7 +26,9 @@ set(muon_installer_SRCS
     effects/GraphicsOpacityDropShadowEffect.cpp
     ViewSwitcher.cpp
     ScreenShotViewer.cpp
-    Transaction.cpp)
+    Transaction.cpp
+    ReviewsBackend/Rating.cpp
+    ReviewsBackend/ReviewsBackend.cpp)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ApplicationDetailsView/HaveQZeitgeist.h.in
                ${CMAKE_CURRENT_SOURCE_DIR}/ApplicationDetailsView/HaveQZeitgeist.h)
@@ -39,7 +41,8 @@ target_link_libraries(muon-installer muonprivate
                                      ${KDE4_KIO_LIBS}
                                      ${QAPT_LIBRARY}
                                      ${DEBCONF_KDE_LIB}
-                                     ${QZEITGEIST_LIBRARY})
+                                     ${QZEITGEIST_LIBRARY}
+                                     ${QJSON_LIBRARIES})
 
 if (ENABLE_QZEITGEIST)
     target_link_libraries(muon-installer ${QZEITGEIST_LIBRARY})

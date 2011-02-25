@@ -28,14 +28,15 @@
 
 #include <math.h>
 
-#include "../Application.h"
-#include "../ApplicationBackend.h"
-#include "../Transaction.h"
+#include "Application.h"
+#include "ApplicationBackend.h"
+#include "ReviewsBackend/Rating.h"
+#include "ReviewsBackend/ReviewsBackend.h"
+#include "Transaction.h"
 
 ApplicationModel::ApplicationModel(QObject *parent, ApplicationBackend *backend)
     : QAbstractListModel(parent)
     , m_appBackend(backend)
-    , m_maxPopcon(0)
 {
     connect(m_appBackend, SIGNAL(progress(Transaction *, int)),
                 this, SLOT(updateTransactionProgress(Transaction *, int)));
@@ -82,10 +83,15 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role) const
 
             return transaction->action();
         }
-        case PopconRole:
-            // Take the log of the popcon score, divide by max +1, then multiply by number
-            // of star steps. (10 in the case of KRatingsPainter)
-            return (int)(10* log(m_apps.at(index.row())->popconScore())/log(m_maxPopcon+1));
+        case RatingRole: {
+            Rating *rating = m_appBackend->reviewsBackend()->ratingForApplication(m_apps.at(index.row()));
+
+            if (rating) {
+                return rating->rating();
+            } else {
+                return -1;
+            }
+        }
         case ActiveRole: {
             Transaction *transaction = transactionAt(index);
 
@@ -166,17 +172,11 @@ void ApplicationModel::setApplications(const QList<Application*> &list)
     endInsertRows();
 }
 
-void ApplicationModel::setMaxPopcon(int popconScore)
-{
-    m_maxPopcon = popconScore;
-}
-
 void ApplicationModel::clear()
 {
     beginRemoveRows(QModelIndex(), 0, m_apps.size());
     m_apps.clear();
     m_runningTransactions.clear();
-    m_maxPopcon = 0;
     endRemoveRows();
 }
 

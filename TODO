@@ -1,7 +1,14 @@
--Supplemental "slow" search that does a search over package information fields, as opposed to the quick xapian-based search
--Config GUI for: Policy on untrusted packages, confirmation dialogs (save on quit)
--Optional columns for installed and available versions in the Muon Package Manager
--Commercial app support. (See: software-center/db/update.py, backends/restfulclient.py)
+Legend:
+ - [MPM] = Muon Package Manager
+ - [MUM] = Muon Update Manager
+ - [MSC] = Muon Software Center
+
+-[MPM] Supplemental "slow" search that does a search over package information fields, as opposed to the quick xapian-based search
+-[MPM] Config GUI for: Policy on untrusted packages, confirmation dialogs (save on quit)
+-[MPM] Optional columns for installed and available versions in the Muon Package Manager
+-[MSC] Commercial app support. (See: software-center/db/update.py, backends/restfulclient.py)
+-[MSC] Keep a cached copy of the rating stats in our config directory so ratings can be vied in offline mode.
+-[MSC] Reviews support (ex url: http://reviews.staging.ubuntu.com/reviews/api/1.0/en/ubuntu/natty/any/dolphin%3BDolphin/page/1/ )
 
 
 New updater GUI:

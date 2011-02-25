@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010-2011 Jonathan Thomas <echidnaman@kubuntu.org>        *
+ *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,52 +18,38 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATION_H
-#define APPLICATION_H
+#include "Rating.h"
 
-#include <QtCore/QByteArray>
-#include <QtCore/QHash>
-#include <QtCore/QStringList>
+Rating::Rating(const QVariantMap &data)
+{
+    m_packageName = data.value("package_name").toString();
+    m_appName = data.value("app_name").toString();
+    m_ratingCount = data.value("ratings_total").toULongLong();
 
-#include <KUrl>
-
-#include <LibQApt/Package>
-
-namespace QApt {
-    class Backend;
+    QString ratingString = data.value("ratings_average").toString();
+    m_rating = ratingString.toDouble() * 2;
 }
 
-class Application
+Rating::~Rating()
 {
-public:
-    explicit Application(const QString &fileName, QApt::Backend *backend);
-    explicit Application(QApt::Package *package, QApt::Backend *backend);
-    ~Application();
+}
 
-    QString name();
-    QString comment();
-    QApt::Package *package();
-    QString icon() const;
-    QString menuPath();
-    QString categories();
-    KUrl screenshotUrl(QApt::ScreenshotType type);
-    QApt::PackageList addons();
-    bool isValid() const;
-    bool isTechnical() const;
+QString Rating::packageName() const
+{
+    return m_packageName;
+}
 
-    QByteArray getField(const QByteArray &field) const;
-    QHash<QByteArray, QByteArray> desktopContents();
+QString Rating::applicationName() const
+{
+    return m_appName;
+}
 
-private:
-    QString m_fileName;
-    QHash<QByteArray, QByteArray> m_data;
-    QApt::Backend *m_backend;
-    QApt::Package *m_package;
+quint64 Rating::ratingCount() const
+{
+    return m_ratingCount;
+}
 
-    bool m_isValid;
-    bool m_isTechnical;
-
-    QVector<QPair<QString, QString> > locateApplication(const QString &_relPath, const QString &menuId) const;
-};
-
-#endif
+int Rating::rating() const
+{
+    return m_rating;
+}

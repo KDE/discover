@@ -39,7 +39,7 @@ public:
         CommentRole = Qt::UserRole + 2,
         ActionRole = Qt::UserRole + 3,
         StatusRole = Qt::UserRole + 4,
-        PopconRole = Qt::UserRole + 5,
+        RatingRole = Qt::UserRole + 5,
         ActiveRole = Qt::UserRole + 6,
         ProgressRole = Qt::UserRole + 7,
         ProgressTextRole = Qt::UserRole + 8,
@@ -53,7 +53,6 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
     void setApplications(const QList<Application*> &list);
-    void setMaxPopcon(int popconScore);
     void clear();
     Application *applicationAt(const QModelIndex &index) const;
     Transaction *transactionAt(const QModelIndex &index) const;
@@ -63,7 +62,6 @@ private:
     ApplicationBackend *m_appBackend;
     QList<Application *> m_apps;
     QHash<Transaction *, int> m_runningTransactions;
-    int m_maxPopcon;
 
 public Q_SLOTS:
     void updateTransactionProgress(Transaction *transaction, int progress);

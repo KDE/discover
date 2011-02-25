@@ -38,6 +38,7 @@ namespace DebconfKde
 
 class Application;
 class ApplicationLauncher;
+class ReviewsBackend;
 class Transaction;
 
 class ApplicationBackend : public QObject
@@ -47,18 +48,19 @@ public:
     explicit ApplicationBackend(QObject *parent);
     ~ApplicationBackend();
 
+    ReviewsBackend *reviewsBackend() const;
     QList<Application *> applicationList() const;
     QSet<QString> appOrigins() const;
     QSet<QString> installedAppOrigins() const;
     QPair<QApt::WorkerEvent, Transaction *> workerState() const;
     QList<Transaction *> transactions() const;
-    int maxPopconScore() const;
 
     void addTransaction(Transaction *transaction);
     void cancelTransaction(Application *app);
 
 private:
     QApt::Backend *m_backend;
+    ReviewsBackend *m_reviewsBackend;
 
     QList<Application *> m_appList;
     QSet<QString> m_originList;
@@ -68,7 +70,6 @@ private:
     QList<Transaction *> m_queue;
     QList<Transaction *>::iterator m_currentTransaction;
     QPair<QApt::WorkerEvent, Transaction *> m_workerState;
-    int m_maxPopconScore;
 
     ApplicationLauncher *m_appLauncher;
     DebconfKde::DebconfGui *m_debconfGui;

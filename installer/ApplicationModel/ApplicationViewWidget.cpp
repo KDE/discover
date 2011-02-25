@@ -83,7 +83,6 @@ ApplicationViewWidget::~ApplicationViewWidget()
 void ApplicationViewWidget::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
-    m_appModel->setMaxPopcon(m_appBackend->maxPopconScore());
     m_appModel->setApplications(m_appBackend->applicationList());
     m_proxyModel->setBackend(backend);
     m_treeView->setSortingEnabled(true);
@@ -99,7 +98,6 @@ void ApplicationViewWidget::reload()
     m_proxyModel->clear();
     m_proxyModel->setSourceModel(0);
 
-    m_appModel->setMaxPopcon(m_appBackend->maxPopconScore());
     m_appModel->setApplications(m_appBackend->applicationList());
 
     m_proxyModel->setSourceModel(m_appModel);
