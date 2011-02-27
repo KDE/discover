@@ -149,7 +149,6 @@ void ReviewsBackend::fetchReviews(Application *app)
     KUrl reviewsUrl(m_serverBase % lang % '/' % origin % '/' % distroSeries %
                     '/' % version % '/' % packageName % ';' % appName % '/' %
                     QLatin1Literal("page") % '/' % '1');
-    kDebug() << reviewsUrl;
 
     if (m_reviewsFile) {
         m_reviewsFile->deleteLater();
