@@ -742,6 +742,9 @@ void ApplicationDetailsWidget::populateAddons()
 
 void ApplicationDetailsWidget::populateReviews(Application *app, const QList<Review *> &reviews)
 {
+    if (reviews.isEmpty()) {
+        return;
+    }
 }
 
 void ApplicationDetailsWidget::addonStateChanged(const QModelIndex &left, const QModelIndex &right)
