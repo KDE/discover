@@ -30,6 +30,10 @@ public:
     explicit Review(const QVariantMap &data);
     ~Review();
 
+    // Creation date determines greater than/less than
+    bool operator<(const Review &rhs) const;
+    bool operator>(const Review &rhs) const;
+
     QString applicationName() const;
     QString packageName() const;
     QString packageVersion() const;

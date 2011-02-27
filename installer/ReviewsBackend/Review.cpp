@@ -42,6 +42,16 @@ Review::~Review()
 {
 }
 
+bool Review::operator<(const Review &rhs) const
+{
+    return m_creationDate < rhs.creationDate();
+}
+
+bool Review::operator>(const Review &rhs) const
+{
+    return m_creationDate > rhs.creationDate();
+}
+
 QString Review::applicationName() const
 {
     return m_appName;
