@@ -126,7 +126,7 @@ void ReviewsBackend::fetchReviews(Application *app)
     }
 
     QString lang = getLanguage();
-    QString origin = QLatin1String("any");
+    QString origin = app->package()->origin().toLower();
 
     QString program = QLatin1String("lsb_release -c -s");
     QProcess lsb_release;
