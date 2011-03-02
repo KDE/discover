@@ -47,6 +47,7 @@ class KTemporaryFile;
 class Application;
 class ClickableLabel;
 class Review;
+class ReviewsWidget;
 class ScreenShotViewer;
 
 // Widget for showing details about a single application
@@ -89,6 +90,7 @@ private:
     QLabel *m_version;
     QLabel *m_license;
     QLabel *m_support;
+    ReviewsWidget *m_reviewsWidget;
 
     QPropertyAnimation *m_fadeScreenshot;
     KPixmapSequenceOverlayPainter *m_throbberWidget;

@@ -67,6 +67,7 @@
 #include "ScreenShotViewer.h"
 #include "ReviewsBackend/Rating.h"
 #include "ReviewsBackend/Review.h"
+#include "ReviewsBackend/ReviewsWidget.h"
 #include "ReviewsBackend/ReviewsBackend.h"
 #include "../../libmuon/MuonStrings.h"
 
@@ -276,6 +277,8 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
 
     detailsGrid->setColumnStretch(1,1);
 
+    m_reviewsWidget = new ReviewsWidget(widget);
+
     QWidget *verticalSpacer = new QWidget(this);
     verticalSpacer->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -287,6 +290,7 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     layout->addWidget(m_addonsWidget);
     layout->addWidget(m_websiteLabel);
     layout->addWidget(detailsWidget);
+    layout->addWidget(m_reviewsWidget);
     layout->addWidget(verticalSpacer);
 
     connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Transaction *)),
@@ -349,11 +353,6 @@ void ApplicationDetailsWidget::setApplication(Application *app)
 
     populateAddons();
 
-    // Fetch reviews
-    reviewsBackend->fetchReviews(app);
-    connect(reviewsBackend, SIGNAL(reviewsReady(Application *, QList<Review *>)),
-            this, SLOT(populateReviews(Application *, QList<Review *>)));
-
     QString homepageUrl = app->package()->homepage();
     if (!homepageUrl.isEmpty()) {
         QString websiteString = i18nc("@label visible text for an app's URL", "Website");
@@ -395,6 +394,11 @@ void ApplicationDetailsWidget::setApplication(Application *app)
                                  "Canonical does not provide updates for %1. Some updates "
                                  "may be provided by the Ubuntu community", app->name()));
     }
+
+    // Fetch reviews
+    reviewsBackend->fetchReviews(app);
+    connect(reviewsBackend, SIGNAL(reviewsReady(Application *, QList<Review *>)),
+            this, SLOT(populateReviews(Application *, QList<Review *>)));
 
     // Catch already-begun downloads. If the state is something else, we won't
     // care because we won't handle it
@@ -742,9 +746,11 @@ void ApplicationDetailsWidget::populateAddons()
 
 void ApplicationDetailsWidget::populateReviews(Application *app, const QList<Review *> &reviews)
 {
-    if (reviews.isEmpty()) {
+    if (reviews.isEmpty() || app != m_app) {
         return;
     }
+
+    m_reviewsWidget->addReviews(reviews);
 }
 
 void ApplicationDetailsWidget::addonStateChanged(const QModelIndex &left, const QModelIndex &right)
