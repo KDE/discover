@@ -9,6 +9,7 @@ Legend:
 -[MSC] Commercial app support. (See: software-center/db/update.py, backends/restfulclient.py)
 -[MSC] Keep a cached copy of the rating stats in our config directory so ratings can be vied in offline mode.
 -[MSC] Review submittal (Use KIO::storedHttpPost)
+-[MSC] Add an on-hover magnifying graphic to the screenshot preview
 
 
 New updater GUI:
