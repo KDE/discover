@@ -28,7 +28,14 @@ Review::Review(const QVariantMap &data)
     m_language = data.value("language").toString();
     m_summary = data.value("summary").toString();
     m_reviewText = data.value("review_text").toString();
-    m_reviewer = data.value("reviewer_username").toString();
+
+    QString reviewUsername = data.value("reviewer_username").toString();
+    QString reviewDisplayName = data.value("reviewer_displayname").toString();
+    if (!reviewDisplayName.isEmpty()) {
+        m_reviewer = reviewDisplayName;
+    } else {
+        m_reviewer = reviewUsername;
+    }
 
     QString creationDate = data.value("date_created").toString();
     m_creationDate = QDateTime::fromString(creationDate, "yyyy-MM-dd HH:mm:ss");
