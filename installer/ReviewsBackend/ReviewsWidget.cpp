@@ -92,6 +92,7 @@ void ReviewsWidget::addReviews(QList<Review *> reviews)
 {
     if (reviews.isEmpty()) {
         m_statusLabel->setText(i18nc("@info:status", "No reviews available"));
+        return;
     } else {
         m_statusLabel->hide();
     }
