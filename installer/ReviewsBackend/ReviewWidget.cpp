@@ -67,7 +67,6 @@ void ReviewWidget::setReview(Review *review)
     m_summaryLabel->setText(QLatin1Literal("<b>") % review->summary()
                             % QLatin1Literal("</b>"));
 
-    // TODO: Date
     QString date = KGlobal::locale()->formatDate(review->creationDate().date(), KLocale::FancyShortDate);
     m_nameDateLabel->setText(i18nc("@label Formatted: username, date",
                                    "%1, %2",
