@@ -36,6 +36,8 @@ Review::Review(const QVariantMap &data)
     m_shouldShow = !data.value("hide").toBool();
     m_id = data.value("id").toULongLong();
     m_rating = data.value("rating").toInt() * 2;
+    m_usefulnessTotal = data.value("usefulness_total").toInt();
+    m_usefulnessFavorable = data.value("usefulness_favorable").toInt();
 }
 
 Review::~Review()
@@ -105,4 +107,14 @@ quint64 Review::id() const
 int Review::rating() const
 {
     return m_rating;
+}
+
+int Review::usefulnessTotal() const
+{
+    return m_usefulnessTotal;
+}
+
+int Review::usefulnessFavorable() const
+{
+    return m_usefulnessFavorable;
 }

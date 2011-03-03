@@ -45,6 +45,8 @@ public:
     bool shouldShow() const;
     quint64 id() const;
     int rating() const;
+    int usefulnessTotal() const;
+    int usefulnessFavorable() const;
 
 private:
     QString m_appName;
@@ -56,6 +58,8 @@ private:
     int m_rating;
     QString m_reviewText;
     QString m_reviewer;
+    int m_usefulnessTotal;
+    int m_usefulnessFavorable;
     QString m_summary;
     QString m_packageVersion;
 };
