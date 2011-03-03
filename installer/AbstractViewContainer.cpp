@@ -23,9 +23,6 @@
 // Qt includes
 #include <QtGui/QStackedWidget>
 
-// KDE includes
-#include <KSeparator>
-
 #include "AbstractViewBase.h"
 #include "BreadcrumbWidget/BreadcrumbWidget.h"
 #include "BreadcrumbWidget/BreadcrumbItem.h"
@@ -35,9 +32,6 @@ AbstractViewContainer::AbstractViewContainer(QWidget *parent)
 {
     setSpacing(2);
     m_breadcrumbWidget = new BreadcrumbWidget(this);
-
-    KSeparator *horizontalSeparator = new KSeparator(this);
-    horizontalSeparator->setOrientation(Qt::Horizontal);
 
     m_viewStack = new QStackedWidget(this);
 

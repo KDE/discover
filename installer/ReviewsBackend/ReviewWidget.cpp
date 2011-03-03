@@ -45,6 +45,7 @@ ReviewWidget::ReviewWidget(QWidget *parent)
     QWidget *headerSpacer = new QWidget(headerWidget);
     headerSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
     m_nameDateLabel = new QLabel(headerWidget);
+    m_nameDateLabel->setEnabled(false);
 
     headerLayout->addWidget(m_ratingWidget);
     headerLayout->addWidget(m_summaryLabel);
