@@ -65,6 +65,12 @@ ReviewsWidget::ReviewsWidget(QWidget *parent)
     m_reviewLayout = new QVBoxLayout(m_reviewContainer);
     m_reviewLayout->setSpacing(2*KDialog::spacingHint());
     m_reviewContainer->setLayout(m_reviewLayout);
+
+    m_statusLabel = new QLabel(m_reviewContainer);
+    m_statusLabel->setAlignment(Qt::AlignHCenter);
+    m_statusLabel->setText(i18nc("@info:status", "Loading reviews"));
+
+    m_reviewLayout->addWidget(m_statusLabel);
 }
 
 ReviewsWidget::~ReviewsWidget()
@@ -84,6 +90,12 @@ void ReviewsWidget::expandButtonClicked()
 
 void ReviewsWidget::addReviews(QList<Review *> reviews)
 {
+    if (reviews.isEmpty()) {
+        m_statusLabel->setText(i18nc("@info:status", "No reviews available"));
+    } else {
+        m_statusLabel->hide();
+    }
+
     qSort(reviews.begin(), reviews.end(), reviewsLessThan);
 
     foreach (Review *review, reviews) {

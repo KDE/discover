@@ -23,6 +23,7 @@
 
 #include <KVBox>
 
+class QLabel;
 class QToolButton;
 class QVBoxLayout;
 
@@ -39,6 +40,7 @@ public:
 
 private:
     QToolButton *m_expandButton;
+    QLabel *m_statusLabel;
     QWidget *m_reviewContainer;
     QVBoxLayout *m_reviewLayout;
 

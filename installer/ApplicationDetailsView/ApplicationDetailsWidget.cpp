@@ -746,7 +746,7 @@ void ApplicationDetailsWidget::populateAddons()
 
 void ApplicationDetailsWidget::populateReviews(Application *app, const QList<Review *> &reviews)
 {
-    if (reviews.isEmpty() || app != m_app) {
+    if (app != m_app) {
         return;
     }
 
