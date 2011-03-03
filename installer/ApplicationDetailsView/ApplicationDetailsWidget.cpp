@@ -31,6 +31,7 @@
 #include <QtGui/QStandardItemModel>
 #include <QtGui/QVBoxLayout>
 
+#include <KDialog>
 #include <KGlobal>
 #include <KHBox>
 #include <KIcon>
@@ -181,10 +182,17 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     QWidget *body = new QWidget(widget);
     QHBoxLayout *bodyLayout = new QHBoxLayout(body);
 
-    m_longDescLabel = new QLabel(body);
+    KVBox *bodyLeft = new KVBox(body);
+    bodyLeft->setSpacing(2*KDialog::spacingHint());
+
+    m_longDescLabel = new QLabel(bodyLeft);
     m_longDescLabel->setWordWrap(true);
     m_longDescLabel->setAlignment(Qt::AlignLeft | Qt::AlignTop);
     m_longDescLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+    m_websiteLabel = new QLabel(bodyLeft);
+    m_websiteLabel->setAlignment(Qt::AlignLeft);
+    m_websiteLabel->setOpenExternalLinks(true);
 
     m_screenshotLabel = new ClickableLabel(body);
     m_screenshotLabel->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
@@ -198,7 +206,7 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
 
     connect(m_screenshotLabel, SIGNAL(clicked()), this, SLOT(screenshotLabelClicked()));
 
-    bodyLayout->addWidget(m_longDescLabel);
+    bodyLayout->addWidget(bodyLeft);
     bodyLayout->addWidget(m_screenshotLabel);
 
     m_addonsWidget = new QWidget(widget);
@@ -241,10 +249,6 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     addonsLayout->addWidget(addonsTitle);
     addonsLayout->addWidget(m_addonsView);
     addonsLayout->addWidget(addonsButtonBox);
-
-    m_websiteLabel = new QLabel(this);
-    m_websiteLabel->setAlignment(Qt::AlignLeft);
-    m_websiteLabel->setOpenExternalLinks(true);
 
     // Technical details
     QWidget *detailsWidget = new QWidget(widget);
@@ -291,7 +295,6 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     layout->addWidget(actionButtonWidget);
     layout->addWidget(body);
     layout->addWidget(m_addonsWidget);
-    layout->addWidget(m_websiteLabel);
     layout->addWidget(detailsWidget);
     layout->addWidget(m_reviewsWidget);
     layout->addWidget(verticalSpacer);
