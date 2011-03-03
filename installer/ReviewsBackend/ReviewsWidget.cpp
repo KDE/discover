@@ -32,9 +32,9 @@
 #include "Review.h"
 #include "ReviewWidget.h"
 
-bool reviewsLessThan(Review *lhs, Review *rhs)
+bool reviewsGreaterThan(Review *lhs, Review *rhs)
 {
-    return lhs < rhs;
+    return *lhs > *rhs;
 }
 
 ReviewsWidget::ReviewsWidget(QWidget *parent)
@@ -97,7 +97,7 @@ void ReviewsWidget::addReviews(QList<Review *> reviews)
         m_statusLabel->hide();
     }
 
-    qSort(reviews.begin(), reviews.end(), reviewsLessThan);
+    qSort(reviews.begin(), reviews.end(), reviewsGreaterThan);
 
     foreach (Review *review, reviews) {
         if (!review->shouldShow()) {
