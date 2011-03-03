@@ -24,6 +24,7 @@
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QLabel>
 
+#include <KGlobal>
 #include <KLocale>
 #include <Nepomuk/KRatingWidget>
 
@@ -66,7 +67,10 @@ void ReviewWidget::setReview(Review *review)
                             % QLatin1Literal("</b>"));
 
     // TODO: Date
-    m_nameDateLabel->setText(review->reviewer());
+    QString date = KGlobal::locale()->formatDate(review->creationDate().date(), KLocale::FancyShortDate);
+    m_nameDateLabel->setText(i18nc("@label Formatted: username, date",
+                                   "%1, %2",
+                                   review->reviewer(), date));
 
     m_reviewLabel->setText(review->reviewText());
 }
