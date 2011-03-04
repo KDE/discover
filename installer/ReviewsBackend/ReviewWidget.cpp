@@ -54,6 +54,18 @@ ReviewWidget::ReviewWidget(QWidget *parent)
 
     m_reviewLabel = new QLabel(this);
     m_reviewLabel->setWordWrap(true);
+
+    m_versionLabel = new QLabel(this);
+
+    QWidget *usefulnessWidget = new QWidget(this);
+    QHBoxLayout *usefulnessLayout = new QHBoxLayout(usefulnessWidget);
+    usefulnessLayout->setMargin(0);
+    usefulnessWidget->setLayout(usefulnessLayout);
+
+    m_usefulnessLabel = new QLabel(usefulnessWidget);
+    // TODO: Report usefulness/inappropriateness once submitting works
+
+    usefulnessLayout->addWidget(m_usefulnessLabel);
 }
 
 ReviewWidget::~ReviewWidget()
@@ -67,12 +79,18 @@ void ReviewWidget::setReview(Review *review)
     m_summaryLabel->setText(QLatin1Literal("<b>") % review->summary()
                             % QLatin1Literal("</b>"));
 
-    QString date = KGlobal::locale()->formatDate(review->creationDate().date(), KLocale::FancyShortDate);
+    QString date = KGlobal::locale()->formatDate(review->creationDate().date(), KLocale::ShortDate);
     m_nameDateLabel->setText(i18nc("@label Formatted: username, date",
                                    "%1, %2",
                                    review->reviewer(), date));
 
     m_reviewLabel->setText(review->reviewText());
+
+    if (review->usefulnessTotal()) {
+        m_usefulnessLabel->setText(i18ncp("@label", "%1 out of %2 person found this review useful",
+                                          "%1 out of %2 people found this review useful",
+                                          review->usefulnessFavorable(), review->usefulnessTotal()));
+    }
 }
 
 #include "ReviewWidget.moc"

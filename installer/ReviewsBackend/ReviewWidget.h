@@ -43,6 +43,8 @@ private:
     QLabel *m_summaryLabel;
     QLabel *m_nameDateLabel;
     QLabel *m_reviewLabel;
+    QLabel *m_versionLabel;
+    QLabel *m_usefulnessLabel;
 };
 
 #endif

@@ -256,28 +256,28 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
 
     // detailsGrid, row 0
     QLabel *sizeLabel = new QLabel(detailsWidget);
-    sizeLabel->setText(i18nc("@label Label preceding the app size", "Total Size:"));
+    sizeLabel->setText("<b>" % i18nc("@label Label preceding the app size", "Total Size:")  % "</b>");
     m_size = new QLabel(detailsWidget);
     detailsGrid->addWidget(sizeLabel, 0, 0, Qt::AlignRight);
     detailsGrid->addWidget(m_size, 0, 1, Qt::AlignLeft);
 
     // detailsGrid, row 1
     QLabel *versionLabel = new QLabel(detailsWidget);
-    versionLabel->setText(i18nc("@label Label preceding the app version", "Version:"));
+    versionLabel->setText("<b>" % i18nc("@label/rich Label preceding the app version", "Version:") % "</b>");
     m_version = new QLabel(detailsWidget);
     detailsGrid->addWidget(versionLabel, 1, 0, Qt::AlignRight);
     detailsGrid->addWidget(m_version, 1, 1, Qt::AlignLeft);
 
     // detailsGrid, row 2
     QLabel *licenseLabel = new QLabel(detailsWidget);
-    licenseLabel->setText(i18nc("@label Label preceding the app license", "License:"));
+    licenseLabel->setText("<b>" % i18nc("@label Label preceding the app license", "License:") % "</b>");
     m_license = new QLabel(detailsWidget);
     detailsGrid->addWidget(licenseLabel, 2, 0, Qt::AlignRight);
     detailsGrid->addWidget(m_license, 2, 1, Qt::AlignLeft);
 
     // detailsGrid, row 3
     QLabel *supportLabel = new QLabel(detailsWidget);
-    supportLabel->setText(i18nc("@label Label preceding the app support", "Support:"));
+    supportLabel->setText("<b>" % i18nc("@label Label preceding the app support", "Support:") % "</b>");
     m_support = new QLabel(detailsWidget);
     detailsGrid->addWidget(supportLabel, 3, 0, Qt::AlignRight);
     detailsGrid->addWidget(m_support, 3, 1, Qt::AlignLeft);
