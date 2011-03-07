@@ -32,18 +32,16 @@
 #include "Transaction.h"
 
 class QLabel;
-class QListView;
-class QModelIndex;
 class QProgressBar;
 class QPropertyAnimation;
 class QPushButton;
-class QStandardItemModel;
 
 class KJob;
 class KPixmapSequenceOverlayPainter;
 class KRatingWidget;
 class KTemporaryFile;
 
+class AddonsWidget;
 class Application;
 class ClickableLabel;
 class Review;
@@ -63,9 +61,6 @@ public:
 private:
     Application *m_app;
     ApplicationBackend *m_appBackend;
-    QStandardItemModel *m_addonsModel;
-    QApt::PackageList m_availableAddons;
-    QHash<QApt::Package *, QApt::Package::State> m_changedAddons;
 
     QLabel *m_iconLabel;
     QLabel *m_nameLabel;
@@ -82,10 +77,7 @@ private:
     QLabel *m_longDescLabel;
     ClickableLabel *m_screenshotLabel;
     QLabel *m_websiteLabel;
-    QWidget *m_addonsWidget;
-    QListView *m_addonsView;
-    QPushButton *m_addonsRevertButton;
-    QPushButton *m_addonsApplyButton;
+    AddonsWidget *m_addonsWidget;
     QLabel *m_size;
     QLabel *m_version;
     QLabel *m_license;
@@ -114,9 +106,7 @@ private Q_SLOTS:
     void cancelButtonClicked();
     void populateAddons();
     void populateReviews(Application *app, const QList<Review *> &reviews);
-    void addonStateChanged(const QModelIndex &left, const QModelIndex &right);
-    void addonsApplyButtonClicked();
-    void addonsRevertButtonClicked();
+    void addonsApplyButtonClicked(const QHash<QApt::Package *, QApt::Package::State> &changedAddons);
 
 Q_SIGNALS:
     void installButtonClicked(Application *app);

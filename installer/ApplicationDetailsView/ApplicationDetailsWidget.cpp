@@ -25,10 +25,8 @@
 #include <QtCore/QStringBuilder>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QLabel>
-#include <QtGui/QListView>
 #include <QtGui/QProgressBar>
 #include <QtGui/QPushButton>
-#include <QtGui/QStandardItemModel>
 #include <QtGui/QVBoxLayout>
 
 #include <KDialog>
@@ -62,6 +60,7 @@
 
 #include <math.h>
 
+#include "AddonsWidget.h"
 #include "Application.h"
 #include "ClickableLabel.h"
 #include "effects/GraphicsOpacityDropShadowEffect.h"
@@ -209,46 +208,10 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     bodyLayout->addWidget(bodyLeft);
     bodyLayout->addWidget(m_screenshotLabel);
 
-    m_addonsWidget = new QWidget(widget);
-    QVBoxLayout *addonsLayout = new QVBoxLayout(m_addonsWidget);
-    m_addonsWidget->setLayout(addonsLayout);
+    m_addonsWidget = new AddonsWidget(widget, m_appBackend);
+    connect(m_addonsWidget, SIGNAL(applyButtonClicked(QHash<QApt::Package *, QApt::Package::State>)),
+            this, SLOT(addonsApplyButtonClicked(QHash<QApt::Package *, QApt::Package::State>)));
     m_addonsWidget->hide();
-
-    QLabel *addonsTitle = new QLabel(m_addonsWidget);
-    addonsTitle->setText(i18nc("@title:group", "Addons"));
-    addonsTitle->setAlignment(Qt::AlignLeft);
-
-    m_addonsView = new QListView(m_addonsWidget);
-    m_addonsView->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
-    m_addonsModel = new QStandardItemModel(this);
-    m_addonsView->setModel(m_addonsModel);
-
-    QWidget *addonsButtonBox = new QWidget(m_addonsWidget);
-    QHBoxLayout *addonButtonsLayout = new QHBoxLayout(addonsButtonBox);
-
-    QWidget *addonsButtonSpacer = new QWidget(m_addonsWidget);
-    addonsButtonSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-    m_addonsRevertButton = new QPushButton(addonsButtonBox);
-    m_addonsRevertButton->setIcon(KIcon("edit-undo"));
-    m_addonsRevertButton->setText(i18nc("@action:button", "Revert"));
-    connect(m_addonsRevertButton, SIGNAL(clicked()),
-            this, SLOT(addonsRevertButtonClicked()));
-
-    m_addonsApplyButton = new QPushButton(m_addonsWidget);
-    m_addonsApplyButton->setIcon(KIcon("dialog-ok-apply"));
-    m_addonsApplyButton->setText(i18nc("@action:button", "Apply"));
-    m_addonsApplyButton->setToolTip(i18nc("@info:tooltip", "Apply changes to addons"));
-    connect(m_addonsApplyButton, SIGNAL(clicked()),
-            this, SLOT(addonsApplyButtonClicked()));
-
-    addonButtonsLayout->addWidget(addonsButtonSpacer);
-    addonButtonsLayout->addWidget(m_addonsRevertButton);
-    addonButtonsLayout->addWidget(m_addonsApplyButton);
-
-    addonsLayout->addWidget(addonsTitle);
-    addonsLayout->addWidget(m_addonsView);
-    addonsLayout->addWidget(addonsButtonBox);
 
     // Technical details
     QWidget *detailsWidget = new QWidget(widget);
@@ -705,49 +668,10 @@ void ApplicationDetailsWidget::populateAddons()
 {
     QApt::PackageList addons = m_app->addons();
 
-    m_availableAddons = addons;
-
     if (!addons.isEmpty()) {
+        m_addonsWidget->setAddons(addons);
         m_addonsWidget->show();
-        connect(m_addonsModel, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)),
-                this, SLOT(addonStateChanged(const QModelIndex &, const QModelIndex &)));
     }
-
-    foreach (QApt::Package *addon, addons) {
-        // Check if we have an application for the addon
-        Application *addonApp = 0;
-
-        foreach (Application *app, m_appBackend->applicationList()) {
-            if (app->package()->name() == addon->name()) {
-                addonApp = app;
-            }
-        }
-
-        QStandardItem *addonItem = new QStandardItem;
-        addonItem->setData(addon->latin1Name());
-        QString packageName = QLatin1Literal(" (") % addon->latin1Name() % ')';
-        if (addonApp) {
-            addonItem->setText(addonApp->name() % packageName);
-            addonItem->setIcon(KIcon(addonApp->icon()));
-        } else {
-            addonItem->setText(addon->shortDescription() % packageName);
-            addonItem->setIcon(KIcon("applications-other"));
-        }
-
-        addonItem->setEditable(false);
-        addonItem->setCheckable(true);
-
-        if (addon->isInstalled()) {
-            addonItem->setCheckState(Qt::Checked);
-        } else {
-            addonItem->setCheckState(Qt::Unchecked);
-        }
-
-        m_addonsModel->appendRow(addonItem);
-    }
-
-    m_addonsRevertButton->setEnabled(false);
-    m_addonsApplyButton->setEnabled(false);
 }
 
 void ApplicationDetailsWidget::populateReviews(Application *app, const QList<Review *> &reviews)
@@ -759,65 +683,10 @@ void ApplicationDetailsWidget::populateReviews(Application *app, const QList<Rev
     m_reviewsWidget->addReviews(reviews);
 }
 
-void ApplicationDetailsWidget::addonStateChanged(const QModelIndex &left, const QModelIndex &right)
+void ApplicationDetailsWidget::addonsApplyButtonClicked(const QHash<QApt::Package *,
+                                                        QApt::Package::State> &changedAddons)
 {
-    Q_UNUSED(right);
-    QStandardItem *item = m_addonsModel->itemFromIndex(left);
-    QApt::Package *addon = 0;
-
-    QString addonName = item->data().toString();
-    foreach(QApt::Package *pkg, m_availableAddons) {
-        if (pkg->latin1Name() == addonName) {
-            addon = pkg;
-        }
-    }
-
-    if (!addon) {
-        return;
-    }
-
-    if (addon->isInstalled()) {
-        switch (item->checkState()) {
-        case Qt::Checked:
-            if (m_changedAddons.contains(addon)) {
-                m_changedAddons.remove(addon);
-            }
-            break;
-        case Qt::Unchecked:
-            m_changedAddons[addon] = QApt::Package::ToRemove;
-            break;
-        default:
-            break;
-        }
-    } else {
-        switch (item->checkState()) {
-        case Qt::Checked:
-            m_changedAddons[addon] = QApt::Package::ToInstall;
-            break;
-        case Qt::Unchecked:
-            if (m_changedAddons.contains(addon)) {
-                m_changedAddons.remove(addon);
-            }
-            break;
-        default:
-            break;
-        }
-    }
-
-    m_addonsRevertButton->setEnabled(!m_changedAddons.isEmpty());
-    m_addonsApplyButton->setEnabled(!m_changedAddons.isEmpty());
-}
-
-void ApplicationDetailsWidget::addonsRevertButtonClicked()
-{
-    m_availableAddons.clear();
-    m_addonsModel->clear();
-    populateAddons();
-}
-
-void ApplicationDetailsWidget::addonsApplyButtonClicked()
-{
-    emit installButtonClicked(m_app, m_changedAddons);
+    emit installButtonClicked(m_app, changedAddons);
 
     m_actionButton->hide();
     m_progressBar->show();
