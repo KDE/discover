@@ -12,6 +12,7 @@ set(muon_installer_SRCS
     ApplicationModel/ApplicationViewWidget.cpp
     ApplicationDetailsView/ApplicationDetailsWidget.cpp
     ApplicationDetailsView/ApplicationDetailsView.cpp
+    ApplicationDetailsView/AddonsWidget.cpp
     AbstractViewBase.cpp
     AbstractViewContainer.cpp
     AvailableView.cpp
