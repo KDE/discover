@@ -28,7 +28,8 @@
 #include <KLocale>
 #include <KTemporaryFile>
 #include <KUrl>
-#include <KDebug>
+
+#include <LibQApt/Backend>
 
 #include <qjson/parser.h>
 
@@ -38,6 +39,7 @@
 
 ReviewsBackend::ReviewsBackend(QObject *parent)
         : QObject(parent)
+        , m_aptBackend(0)
         , m_serverBase("http://reviews.staging.ubuntu.com/reviews/api/1.0/")
         , m_ratingsFile(0)
         , m_reviewsFile(0)
@@ -49,6 +51,20 @@ ReviewsBackend::~ReviewsBackend()
 {
     delete m_ratingsFile;
     qDeleteAll(m_ratings);
+}
+
+void ReviewsBackend::setAptBackend(QApt::Backend *aptBackend)
+{
+    m_aptBackend = aptBackend;
+}
+
+void ReviewsBackend::clearReviewCache()
+{
+    foreach (QList<Review *> reviewList, m_reviewsCache) {
+        qDeleteAll(reviewList);
+    }
+
+    m_reviewsCache.clear();
 }
 
 void ReviewsBackend::fetchRatings()
@@ -188,7 +204,7 @@ void ReviewsBackend::reviewsFetched(KJob *job)
     QList<Review *> reviewsList;
     foreach (const QVariant &data, reviews.toList()) {
         Review *review = new Review(data.toMap());
-        kDebug() << "Summary:" << review->summary();
+        review->setPackage(m_aptBackend->package(review->packageName()));
         reviewsList << review;
     }
 

@@ -28,6 +28,8 @@
 #include <KLocale>
 #include <Nepomuk/KRatingWidget>
 
+#include <LibQApt/Package>
+
 #include "Review.h"
 
 ReviewWidget::ReviewWidget(QWidget *parent)
@@ -56,6 +58,8 @@ ReviewWidget::ReviewWidget(QWidget *parent)
     m_reviewLabel->setWordWrap(true);
 
     m_versionLabel = new QLabel(this);
+    m_versionLabel->setEnabled(false);
+    m_versionLabel->hide();
 
     QWidget *usefulnessWidget = new QWidget(this);
     QHBoxLayout *usefulnessLayout = new QHBoxLayout(usefulnessWidget);
@@ -85,6 +89,19 @@ void ReviewWidget::setReview(Review *review)
                                    review->reviewer(), date));
 
     m_reviewLabel->setText(review->reviewText());
+
+    const QString reviewUpstream = QApt::Package::upstreamVersion(review->packageVersion());
+    const QString currentUpstream = review->package()->upstreamVersion();
+
+    int res = QApt::Package::compareVersion(reviewUpstream, currentUpstream);
+
+    if (res < 0) {
+        m_versionLabel->setText(QLatin1Literal("<i>") %
+                                i18nc("@label", "This review was written for an older version "
+                                                "(Version: %1)", review->packageVersion()) %
+                                QLatin1Literal("</i>"));
+        m_versionLabel->show();
+    }
 
     if (review->usefulnessTotal()) {
         m_usefulnessLabel->setText(i18ncp("@label", "%1 out of %2 person found this review useful",

@@ -24,6 +24,10 @@
 #include <QtCore/QDateTime>
 #include <QtCore/QVariant>
 
+namespace QApt {
+    class Package;
+}
+
 class Review
 {
 public:
@@ -47,6 +51,9 @@ public:
     int rating() const;
     int usefulnessTotal() const;
     int usefulnessFavorable() const;
+    QApt::Package *package() const;
+
+    void setPackage(QApt::Package *package);
 
 private:
     QString m_appName;
@@ -62,6 +69,8 @@ private:
     int m_usefulnessFavorable;
     QString m_summary;
     QString m_packageVersion;
+
+    QApt::Package *m_package;
 };
 
 #endif

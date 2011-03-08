@@ -69,6 +69,8 @@ void ApplicationBackend::setBackend(QApt::Backend *backend)
 
 void ApplicationBackend::init()
 {
+    m_reviewsBackend->setAptBackend(m_backend);
+
     QDir appDir("/usr/share/app-install/desktop/");
     QStringList fileList = appDir.entryList(QDir::Files);
 
@@ -120,6 +122,7 @@ void ApplicationBackend::reload()
     qDeleteAll(m_queue);
     m_queue.clear();
     m_backend->reloadCache();
+    m_reviewsBackend->clearReviewCache();
 
     init();
 

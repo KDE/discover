@@ -27,6 +27,10 @@
 class KJob;
 class KTemporaryFile;
 
+namespace QApt {
+    class Backend;
+}
+
 class Application;
 class Rating;
 class Review;
@@ -40,9 +44,13 @@ public:
 
     Rating *ratingForApplication(Application *app) const;
 
+    void setAptBackend(QApt::Backend *aptBackend);
     void fetchReviews(Application *app);
+    void clearReviewCache();
 
 private:
+    QApt::Backend *m_aptBackend;
+
     QString m_serverBase;
     KTemporaryFile *m_ratingsFile;
     KTemporaryFile *m_reviewsFile;

@@ -20,6 +20,8 @@
 
 #include "Review.h"
 
+#include <LibQApt/Package>
+
 Review::Review(const QVariantMap &data)
 {
     m_appName = data.value("app_name").toString();
@@ -124,4 +126,14 @@ int Review::usefulnessTotal() const
 int Review::usefulnessFavorable() const
 {
     return m_usefulnessFavorable;
+}
+
+QApt::Package *Review::package() const
+{
+    return m_package;
+}
+
+void Review::setPackage(QApt::Package *package)
+{
+    m_package = package;
 }
