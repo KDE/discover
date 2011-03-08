@@ -352,6 +352,8 @@ void ApplicationDetailsWidget::setApplication(Application *app)
         m_license->setText(i18nc("@info license", "Open Source"));
     } else if (app->package()->component() == "restricted") {
         m_license->setText(i18nc("@info license", "Proprietary"));
+    } else {
+        m_license->setText(i18nc("@info license", "Unknown"));
     }
 
     if (app->package()->isSupported()) {
