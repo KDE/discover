@@ -119,8 +119,9 @@ void AddonsWidget::populateModel()
         Application *addonApp = 0;
 
         foreach (Application *app, m_appBackend->applicationList()) {
-            if (app->package()->name() == addon->name()) {
+            if (app->package()->latin1Name() == addon->latin1Name()) {
                 addonApp = app;
+                break;
             }
         }
 
