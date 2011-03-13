@@ -124,7 +124,7 @@ Rating *ReviewsBackend::ratingForApplication(Application *app) const
             continue;
         }
 
-        if (rating->applicationName() == app->name()) {
+        if (rating->applicationName() == app->untranslatedName()) {
             return rating;
         }
     }
@@ -135,7 +135,7 @@ Rating *ReviewsBackend::ratingForApplication(Application *app) const
 void ReviewsBackend::fetchReviews(Application *app)
 {
     // Check our cache before fetching from the 'net
-    QString hashName = app->package()->latin1Name() + app->name();
+    QString hashName = app->package()->latin1Name() + app->untranslatedName();
     if (m_reviewsCache.contains(hashName)) {
         emit reviewsReady(app, m_reviewsCache.value(hashName));
         return;

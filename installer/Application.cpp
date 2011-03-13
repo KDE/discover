@@ -60,6 +60,11 @@ Application::~Application()
 
 QString Application::name()
 {
+    return i18n(untranslatedName().toUtf8());
+}
+
+QString Application::untranslatedName()
+{
     QString name = QString::fromUtf8(getField("Name")).trimmed();
     if (name.isEmpty()) {
         // extras.ubuntu.com packages can have this
@@ -78,7 +83,7 @@ QString Application::name()
         }
     }
 
-    return i18n(name.toUtf8());
+    return name;
 }
 
 QString Application::comment()

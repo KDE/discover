@@ -41,6 +41,7 @@ public:
     ~Application();
 
     QString name();
+    QString untranslatedName();
     QString comment();
     QApt::Package *package();
     QString icon() const;
