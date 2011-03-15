@@ -45,6 +45,7 @@ public:
     QString comment();
     QApt::Package *package();
     QString icon() const;
+    QString mimetypes() const;
     QString menuPath();
     QString categories();
     KUrl screenshotUrl(QApt::ScreenshotType type);

@@ -134,6 +134,11 @@ QString Application::icon() const
     return icon;
 }
 
+QString Application::mimetypes() const
+{
+    return getField("MimeType");
+}
+
 QString Application::menuPath()
 {
     QString path;
