@@ -168,7 +168,9 @@ void MuonMainWindow::networkChanged()
 
 bool MuonMainWindow::isConnected() {
     int status = Solid::Networking::status();
-    return status & (Solid::Networking::Connected | Solid::Networking::Unknown);
+    bool connected = ((status == Solid::Networking::Connected) ||
+                      (status == Solid::Networking::Unknown));
+    return connected;
 }
 
 void MuonMainWindow::checkForUpdates()
