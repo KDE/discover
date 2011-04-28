@@ -40,7 +40,7 @@
 ReviewsBackend::ReviewsBackend(QObject *parent)
         : QObject(parent)
         , m_aptBackend(0)
-        , m_serverBase("http://reviews.staging.ubuntu.com/reviews/api/1.0/")
+        , m_serverBase("http://reviews.ubuntu.com/reviews/api/1.0/")
         , m_ratingsFile(0)
         , m_reviewsFile(0)
 {
