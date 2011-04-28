@@ -124,9 +124,11 @@ Rating *ReviewsBackend::ratingForApplication(Application *app) const
             continue;
         }
 
-        if (rating->applicationName() == app->untranslatedName()) {
-            return rating;
-        }
+        // if (rating->applicationName() == app->untranslatedName()) {
+        //     return rating;
+        // }
+
+        return rating;
     }
 
     return 0;
