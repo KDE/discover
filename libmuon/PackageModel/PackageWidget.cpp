@@ -285,6 +285,10 @@ void PackageWidget::contextMenuRequested(const QPoint &pos)
 
     const QModelIndexList selected = m_packageView->currentSelection();
 
+    if (!selected.size()) {
+        return;
+    }
+
     // Divide by the number of columns
     if (selected.size()/NUM_COLUMNS == 1) {
         int state = m_proxyModel->packageAt(selected.first())->state();
