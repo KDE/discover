@@ -136,9 +136,6 @@ MainTab::MainTab(QWidget *parent)
 
     m_descriptionBrowser = new KTextBrowser(this);
     layout->addWidget(m_descriptionBrowser);
-
-    m_supportedLabel = new QLabel(this);
-    layout->addWidget(m_supportedLabel);
 }
 
 MainTab::~MainTab()
@@ -219,12 +216,14 @@ void MainTab::refresh()
 
     m_descriptionBrowser->setText(m_package->longDescription());
 
+    // Append a newline to give a bit of separation for the support string
+    m_descriptionBrowser->append(QString());
     if (m_package->isSupported()) {
-        m_supportedLabel->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
+        m_descriptionBrowser->append(i18nc("@info Tells how long Canonical, Ltd. will support a package",
                                         "Canonical provides critical updates for %1 until %2",
                                         m_package->latin1Name(), m_package->supportedUntil()));
     } else {
-        m_supportedLabel->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
+        m_descriptionBrowser->append(i18nc("@info Tells how long Canonical, Ltd. will support a package",
                                         "Canonical does not provide updates for %1. Some updates "
                                         "may be provided by the Ubuntu community", m_package->latin1Name()));
     }

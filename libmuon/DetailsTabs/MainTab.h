@@ -72,8 +72,6 @@ private:
     KTextBrowser *m_descriptionBrowser;
     KTemporaryFile *m_screenshotFile;
 
-    QLabel *m_supportedLabel;
-
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void setPackage(QApt::Package *package);
