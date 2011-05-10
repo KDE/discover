@@ -44,6 +44,7 @@ DetailsWidget::DetailsWidget(QWidget *parent)
     , m_package(0)
 {
     setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
+    setDocumentMode(true);
 
     m_mainTab = new MainTab(this);
     m_technicalTab = new TechnicalDetailsTab(this);
