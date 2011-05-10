@@ -79,16 +79,13 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     , m_screenshotFile(0)
     , m_screenshotDialog(0)
 {
-    setFrameShape(QFrame::NoFrame);
     setWidgetResizable(true);
     viewport()->setAutoFillBackground(false);
 
     QWidget *widget = new QWidget(this);
-    setStyleSheet(QString("ApplicationDetailsWidget {"
-                          "background-color: rgb(255, 255, 255);"
-                          "}"));
     QVBoxLayout *layout = new QVBoxLayout(widget);
     widget->setLayout(layout);
+    widget->setBackgroundRole(QPalette::Base);
 
     // Header
     QWidget *headerWidget = new QWidget(widget);
