@@ -33,10 +33,7 @@ class QLabel;
 class QToolButton;
 
 class KAction;
-class KJob;
 class KMenu;
-class KPixmapSequenceWidget;
-class KTemporaryFile;
 class KTextBrowser;
 
 namespace QApt
@@ -57,8 +54,6 @@ private:
     QApt::Package *m_package;
 
     QLabel *m_packageShortDescLabel;
-    KPixmapSequenceWidget *m_throbberWidget;
-    QPushButton *m_screenshotButton;
 
     QPushButton *m_installButton;
     QToolButton *m_removeButton;
@@ -70,7 +65,6 @@ private:
     QPushButton *m_cancelButton;
 
     KTextBrowser *m_descriptionBrowser;
-    KTemporaryFile *m_screenshotFile;
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
@@ -79,8 +73,6 @@ public Q_SLOTS:
     void clear();
 
 private Q_SLOTS:
-    void fetchScreenshot();
-    void screenshotFetched(KJob *job);
     void emitSetInstall();
     void emitSetRemove();
     void emitSetUpgrade();

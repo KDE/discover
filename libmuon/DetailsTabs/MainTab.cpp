@@ -33,14 +33,9 @@
 #include <KDialog>
 #include <KHBox>
 #include <KIcon>
-#include <KIO/Job>
-#include <KJob>
 #include <KLocale>
 #include <KMenu>
 #include <KMessageBox>
-#include <KPixmapSequence>
-#include <kpixmapsequencewidget.h>
-#include <KTemporaryFile>
 #include <KTextBrowser>
 
 // LibQApt includes
@@ -51,9 +46,9 @@ MainTab::MainTab(QWidget *parent)
     : QWidget(parent)
     , m_backend(0)
     , m_package(0)
-    , m_screenshotFile(0)
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
+    layout->setMargin(0);
     setLayout(layout);
     KHBox *headerBox = new KHBox(this);
     layout->addWidget(headerBox);
@@ -63,18 +58,7 @@ MainTab::MainTab(QWidget *parent)
     font.setBold(true);
     m_packageShortDescLabel->setFont(font);
 
-    //Busy widget
-    m_throbberWidget = new KPixmapSequenceWidget(headerBox);
-    m_throbberWidget->setSequence(KPixmapSequence("process-working", 22));
-    m_throbberWidget->setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
-    m_throbberWidget->hide();
-    m_screenshotButton = new QPushButton(headerBox);
-    m_screenshotButton->setIcon(KIcon("image-x-generic"));
-    m_screenshotButton->setText(i18nc("@action:button", "Get Screenshot..."));
-    connect(m_screenshotButton, SIGNAL(clicked()), this, SLOT(fetchScreenshot()));
-
-    QWidget *buttonBox = new QWidget(this);
-    layout->addWidget(buttonBox);
+    QWidget *buttonBox = new QWidget(headerBox);
 
     QHBoxLayout *buttonBoxLayout = new QHBoxLayout(buttonBox);
     buttonBoxLayout->setMargin(0);
@@ -130,17 +114,12 @@ MainTab::MainTab(QWidget *parent)
     connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(emitSetKeep()));
     buttonBoxLayout->addWidget(m_cancelButton);
 
-    QWidget *buttonSpacer = new QWidget(buttonBox);
-    buttonSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Maximum);
-    buttonBoxLayout->addWidget(buttonSpacer);
-
     m_descriptionBrowser = new KTextBrowser(this);
     layout->addWidget(m_descriptionBrowser);
 }
 
 MainTab::~MainTab()
 {
-    delete m_screenshotFile;
 }
 
 void MainTab::setBackend(QApt::Backend *backend)
@@ -211,9 +190,6 @@ void MainTab::refresh()
 
     m_packageShortDescLabel->setText(m_package->shortDescription());
 
-    m_screenshotButton->setText(i18nc("@action:button", "Get Screenshot..."));
-    m_screenshotButton->setEnabled(true);
-
     m_descriptionBrowser->setText(m_package->longDescription());
 
     // Append a newline to give a bit of separation for the support string
@@ -227,47 +203,6 @@ void MainTab::refresh()
                                         "Canonical does not provide updates for %1. Some updates "
                                         "may be provided by the Ubuntu community", m_package->latin1Name()));
     }
-}
-
-// TODO: Cache fetched items, and map them to packages
-
-void MainTab::fetchScreenshot()
-{
-    m_screenshotButton->setEnabled(false);
-    m_throbberWidget->show();
-    if (m_screenshotFile) {
-        m_screenshotFile->deleteLater();
-        m_screenshotFile = 0;
-    }
-    m_screenshotFile = new KTemporaryFile;
-    m_screenshotFile->setPrefix("muon");
-    m_screenshotFile->setSuffix(".png");
-    m_screenshotFile->open();
-
-    KIO::FileCopyJob *getJob = KIO::file_copy(m_package->screenshotUrl(QApt::Screenshot),
-                               m_screenshotFile->fileName(), -1, KIO::Overwrite | KIO::HideProgressInfo);
-    connect(getJob, SIGNAL(result(KJob *)),
-            this, SLOT(screenshotFetched(KJob *)));
-}
-
-void MainTab::screenshotFetched(KJob *job)
-{
-    if (job->error()) {
-        m_screenshotButton->setText(i18nc("@info:status", "No Screenshot Available"));
-        m_throbberWidget->hide();
-        return;
-    }
-    m_screenshotButton->setEnabled(true);
-    KDialog *dialog = new KDialog(this);
-
-    QLabel *label = new QLabel(dialog);
-    label->setPixmap(QPixmap(m_screenshotFile->fileName()));
-
-    dialog->setWindowTitle(i18nc("@title:window", "Screenshot"));
-    dialog->setMainWidget(label);
-    dialog->setButtons(KDialog::Close);
-    dialog->show();
-    m_throbberWidget->hide();
 }
 
 void MainTab::emitSetInstall()
