@@ -49,6 +49,7 @@ MainTab::MainTab(QWidget *parent)
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->setMargin(0);
+    layout->setSpacing(0);
     setLayout(layout);
     KHBox *headerBox = new KHBox(this);
     layout->addWidget(headerBox);
