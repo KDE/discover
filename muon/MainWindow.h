@@ -105,7 +105,6 @@ private Q_SLOTS:
     void setActionsEnabled(bool enabled = true);
 
 public Q_SLOTS:
-    void easterEggTriggered();
     void revertChanges();
     void editSettings();
     void closeSettingsDialog();

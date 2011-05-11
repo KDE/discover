@@ -24,8 +24,6 @@
 #include <QApplication>
 #include <QtCore/QStringBuilder>
 #include <QtCore/QTimer>
-#include <QtGui/QLabel>
-#include <QtGui/QShortcut>
 #include <QtGui/QSplitter>
 #include <QtGui/QStackedWidget>
 #include <QtGui/QToolBox>
@@ -37,10 +35,7 @@
 #include <KLocale>
 #include <KMessageBox>
 #include <KStandardAction>
-#include <KStandardDirs>
 #include <KStatusBar>
-#include <KVBox>
-#include <Phonon/MediaObject>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -219,9 +214,6 @@ void MainWindow::setupActions()
     m_historyAction->setText(i18nc("@action::inmenu", "History..."));
     m_historyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_H));
     connect(m_historyAction, SIGNAL(triggered()), this, SLOT(showHistoryDialog()));
-
-    QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_M), this);
-    connect(shortcut, SIGNAL(activated()), this, SLOT(easterEggTriggered()));
 
     setActionsEnabled(false);
 
@@ -537,31 +529,6 @@ void MainWindow::closeHistoryDialog()
     m_historyDialog->saveDialogSize(dialogConfig, KConfigBase::Persistent);
     m_historyDialog->deleteLater();
     m_historyDialog = 0;
-}
-
-void MainWindow::easterEggTriggered()
-{
-    KDialog *dialog = new KDialog(this);
-    KVBox *widget = new KVBox(dialog);
-    QLabel *label = new QLabel(widget);
-    label->setText(i18nc("@label Easter Egg", "This Muon has super cow powers"));
-    QLabel *moo = new QLabel(widget);
-    moo->setFont(QFont("monospace"));
-    moo->setText("             (__)\n"
-                 "             (oo)\n"
-                 "    /---------\\/\n"
-                 "   / | Muuu!!||\n"
-                 "  *  ||------||\n"
-                 "     ^^      ^^\n");
-
-    dialog->setMainWidget(widget);
-    dialog->show();
-
-    QString mooFile = KStandardDirs::locate("appdata", "moo.ogg");
-    Phonon::MediaObject *music =
-    Phonon::createPlayer(Phonon::MusicCategory,
-                         Phonon::MediaSource(mooFile));
-    music->play();
 }
 
 void MainWindow::revertChanges()

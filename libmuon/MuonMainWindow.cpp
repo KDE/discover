@@ -22,6 +22,8 @@
 
 // Qt includes
 #include <QStringBuilder>
+#include <QtGui/QLabel>
+#include <QtGui/QShortcut>
 
 // KDE includes
 #include <KAction>
@@ -31,6 +33,9 @@
 #include <KFileDialog>
 #include <KMessageBox>
 #include <KProcess>
+#include <KStandardDirs>
+#include <KVBox>
+#include <Phonon/MediaObject>
 #include <Solid/Networking>
 #include <Solid/PowerManagement>
 
@@ -146,6 +151,9 @@ void MuonMainWindow::setupActions()
     m_softwarePropertiesAction->setIcon(KIcon("configure"));
     m_softwarePropertiesAction->setText(i18nc("@action Opens the software sources configuration dialog", "Configure Software Sources"));
     connect(m_softwarePropertiesAction, SIGNAL(triggered()), this, SLOT(runSourcesEditor()));
+
+    QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_M), this);
+    connect(shortcut, SIGNAL(activated()), this, SLOT(easterEggTriggered()));
 }
 
 void MuonMainWindow::setActionsEnabled(bool enabled)
@@ -593,6 +601,31 @@ void MuonMainWindow::sourcesEditorFinished(int reload)
     if (reload == 1) {
         checkForUpdates();
     }
+}
+
+void MuonMainWindow::easterEggTriggered()
+{
+    KDialog *dialog = new KDialog(this);
+    KVBox *widget = new KVBox(dialog);
+    QLabel *label = new QLabel(widget);
+    label->setText(i18nc("@label Easter Egg", "This Muon has super cow powers"));
+    QLabel *moo = new QLabel(widget);
+    moo->setFont(QFont("monospace"));
+    moo->setText("             (__)\n"
+                 "             (oo)\n"
+                 "    /---------\\/\n"
+                 "   / | Muuu!!||\n"
+                 "  *  ||------||\n"
+                 "     ^^      ^^\n");
+
+    dialog->setMainWidget(widget);
+    dialog->show();
+
+    QString mooFile = KStandardDirs::locate("appdata", "moo.ogg");
+    Phonon::MediaObject *music =
+    Phonon::createPlayer(Phonon::MusicCategory,
+                         Phonon::MediaSource(mooFile));
+    music->play();
 }
 
 #include "MuonMainWindow.moc"

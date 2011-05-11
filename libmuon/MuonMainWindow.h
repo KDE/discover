@@ -100,6 +100,7 @@ protected Q_SLOTS:
 public Q_SLOTS:
     void runSourcesEditor(bool update = false);
     void sourcesEditorFinished(int reload);
+    void easterEggTriggered();
 
 Q_SIGNALS:
     void backendReady(QApt::Backend *backend);
