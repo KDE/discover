@@ -40,3 +40,4 @@ target_link_libraries(muonprivate
     ${DEBCONF_KDE_LIB})
 
 install( TARGETS muonprivate  ${INSTALL_TARGETS_DEFAULT_ARGS} )
+install( FILES moo.ogg DESTINATION ${DATA_INSTALL_DIR}/libmuon )
