@@ -197,12 +197,12 @@ void MainTab::refresh()
     m_descriptionBrowser->append(QString());
     if (m_package->isSupported()) {
         m_descriptionBrowser->append(i18nc("@info Tells how long Canonical, Ltd. will support a package",
-                                        "Canonical provides critical updates for %1 until %2",
+                                        "Canonical provides critical updates for %1 until %2.",
                                         m_package->latin1Name(), m_package->supportedUntil()));
     } else {
         m_descriptionBrowser->append(i18nc("@info Tells how long Canonical, Ltd. will support a package",
                                         "Canonical does not provide updates for %1. Some updates "
-                                        "may be provided by the Ubuntu community", m_package->latin1Name()));
+                                        "may be provided by the Ubuntu community.", m_package->latin1Name()));
     }
 }
 
