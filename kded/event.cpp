@@ -116,6 +116,7 @@ void Event::show(const QString &icon, const QString &text, const QStringList &ac
     }
 
     if (m_useTrayIcon) {
+        m_active = true;
         m_notifierItem = new KStatusNotifierItem(this);
         m_notifierItem->setIconByName(icon);
         m_notifierItem->setToolTipIconByName(icon);
