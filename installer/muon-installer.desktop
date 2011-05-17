@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Muon Software Center
+Name[bs]=Muon softverski centar
 Name[ca]=Centre de programari Muon
 Name[cs]=Centrum softwaru Muon
 Name[da]=Muon softwarecenter
@@ -26,6 +27,7 @@ Icon=applications-other
 Type=Application
 X-DocPath=muon/index.html
 GenericName=Software Center
+GenericName[bs]=Softverski centar
 GenericName[ca]=Centre de programari
 GenericName[cs]=Centrum softwaru
 GenericName[da]=Softwarecenter
