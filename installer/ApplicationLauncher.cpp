@@ -52,6 +52,8 @@ ApplicationLauncher::ApplicationLauncher(const QVector<KService*> &applications,
 
     QWidget *bottomBox = new QWidget(this);
     QHBoxLayout *bottomLayout = new QHBoxLayout(bottomBox);
+    bottomLayout->setSpacing(0);
+    bottomLayout->setMargin(0);
     bottomBox->setLayout(bottomLayout);
 
     QWidget *bottomSpacer = new QWidget(bottomBox);
