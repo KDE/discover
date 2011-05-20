@@ -23,7 +23,6 @@
 
 #include <QtGui/QDialog>
 
-class QCheckBox;
 class QModelIndex;
 class QStandardItemModel;
 
@@ -38,7 +37,6 @@ public:
 
 private:
     QStandardItemModel *m_model;
-    QCheckBox *m_noShowCheckBox;
 
 private Q_SLOTS:
     void onAppClicked(const QModelIndex &index);

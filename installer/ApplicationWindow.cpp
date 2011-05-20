@@ -22,6 +22,7 @@
 
 // Qt includes
 #include <QStandardItemModel>
+#include <QtCore/QStringBuilder>
 #include <QtCore/QTimer>
 #include <QtGui/QAbstractItemView>
 #include <QtGui/QSplitter>
@@ -32,6 +33,8 @@
 #include <KActionCollection>
 #include <KIcon>
 #include <KService>
+#include <KToolInvocation>
+#include "kmessagewidget.h"
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -48,6 +51,7 @@
 
 ApplicationWindow::ApplicationWindow()
     : MuonMainWindow()
+    , m_launcherMessage(0)
     , m_appLauncher(0)
 {
     initGUI();
@@ -73,9 +77,15 @@ void ApplicationWindow::initGUI()
     m_mainWidget->addWidget(m_viewSwitcher);
 
     // Set up the main pane
-    m_viewStack = new QStackedWidget(this);
+    KVBox *leftWidget = new KVBox(this);
+    m_launcherMessage = new KMessageWidget(leftWidget);
+    m_launcherMessage->hide();
+    m_launcherMessage->setMessageType(KMessageWidget::Positive);
+
+    m_viewStack = new QStackedWidget(leftWidget);
     m_viewStack->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
-    m_mainWidget->addWidget(m_viewStack);
+
+    m_mainWidget->addWidget(leftWidget);
     loadSplitterSizes();
 
     m_viewModel = new QStandardItemModel(this);
@@ -387,6 +397,7 @@ ApplicationBackend *ApplicationWindow::appBackend() const
 
 void ApplicationWindow::showLauncherMessage()
 {
+    clearMessageActions();
     QApt::PackageList packages;
 
     foreach (const QString &package, m_appBackend->launchList()) {
@@ -398,7 +409,7 @@ void ApplicationWindow::showLauncherMessage()
 
     m_appBackend->clearLaunchList();
 
-    QVector<KService*> apps;
+    QVector<KService *> apps;
     foreach (QApt::Package *package, packages) {
         if (!package->isInstalled()) {
             continue;
@@ -417,9 +428,40 @@ void ApplicationWindow::showLauncherMessage()
             }
         }
     }
+    m_launchableApps = apps;
 
-    if (!m_appLauncher && !apps.isEmpty()) {
-        m_appLauncher = new ApplicationLauncher(apps);
+    if (apps.size() == 1) {
+        KService *service = apps.first();
+        QString name = service->genericName().isEmpty() ?
+                       service->property("Name").toString() :
+                       service->property("Name").toString() % QLatin1Literal(" - ") % service->genericName();
+        m_launcherMessage->setText(i18nc("@info", "%1 was succesfully installed.", name));
+
+        KAction *launchAction = new KAction(KIcon(service->icon()), i18nc("@action", "Start"), this);
+        connect(launchAction, SIGNAL(activated()), this, SLOT(launchSingleApp()));
+
+        m_launcherMessage->addAction(launchAction);
+        m_launcherMessage->animatedShow();
+    } else if (apps.size() > 1) {
+        m_launcherMessage->setText(i18nc("@info", "Applications succesfully installed."));
+        KAction *launchAction = new KAction(i18nc("@action", "Run New Applications..."), this);
+        connect(launchAction, SIGNAL(activated()), this, SLOT(showAppLauncher()));
+        m_launcherMessage->addAction(launchAction);
+        m_launcherMessage->animatedShow();
+    }
+}
+
+void ApplicationWindow::launchSingleApp()
+{
+    KToolInvocation::startServiceByDesktopPath(m_launchableApps.first()->desktopEntryPath());
+    m_launcherMessage->animatedHide();
+    m_launcherMessage->removeAction(m_launcherMessage->actions().first());
+}
+
+void ApplicationWindow::showAppLauncher()
+{
+    if (!m_appLauncher && !m_launchableApps.isEmpty()) {
+        m_appLauncher = new ApplicationLauncher(m_launchableApps);
         connect(m_appLauncher, SIGNAL(destroyed(QObject *)),
             this, SLOT(onAppLauncherClosed()));
         connect(m_appLauncher, SIGNAL(finished(int)),
@@ -427,11 +469,19 @@ void ApplicationWindow::showLauncherMessage()
         m_appLauncher->setWindowTitle(i18nc("@title:window", "Installation Complete"));
         m_appLauncher->show();
     }
+    m_launcherMessage->animatedHide();
 }
 
 void ApplicationWindow::onAppLauncherClosed()
 {
     m_appLauncher = 0;
+}
+
+void ApplicationWindow::clearMessageActions()
+{
+    foreach (QAction *action, m_launcherMessage->actions()) {
+        m_launcherMessage->removeAction(action);
+    }
 }
 
 #include "ApplicationWindow.moc"

@@ -34,6 +34,8 @@ class QStandardItemModel;
 class QTreeView;
 
 class KAction;
+class KMessageWidget;
+class KService;
 
 class Application;
 class ApplicationBackend;
@@ -85,7 +87,10 @@ private:
     QHash<QModelIndex, QWidget *> m_viewHash;
     KAction *m_loadSelectionsAction;
     KAction *m_saveSelectionsAction;
+    KMessageWidget *m_launcherMessage;
     ApplicationLauncher *m_appLauncher;
+
+    QVector<KService *> m_launchableApps;
 
 private Q_SLOTS:
     void initGUI();
@@ -103,7 +108,10 @@ private Q_SLOTS:
     void runSourcesEditor();
     void sourcesEditorFinished(int reload);
     void showLauncherMessage();
+    void launchSingleApp();
+    void showAppLauncher();
     void onAppLauncherClosed();
+    void clearMessageActions();
 };
 
 #endif

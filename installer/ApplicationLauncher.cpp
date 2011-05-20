@@ -21,7 +21,6 @@
 #include "ApplicationLauncher.h"
 
 #include <QtCore/QStringBuilder>
-#include <QtGui/QCheckBox>
 #include <QtGui/QLabel>
 #include <QtGui/QListView>
 #include <QtGui/QPushButton>
@@ -55,9 +54,6 @@ ApplicationLauncher::ApplicationLauncher(const QVector<KService*> &applications,
     QHBoxLayout *bottomLayout = new QHBoxLayout(bottomBox);
     bottomBox->setLayout(bottomLayout);
 
-    m_noShowCheckBox = new QCheckBox(bottomBox);
-    m_noShowCheckBox->setText(i18n("Do not show this dialog again"));
-
     QWidget *bottomSpacer = new QWidget(bottomBox);
     bottomSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -67,7 +63,6 @@ ApplicationLauncher::ApplicationLauncher(const QVector<KService*> &applications,
     closeButton->setIcon(closeItem.icon());
     connect(closeButton, SIGNAL(clicked()), this, SLOT(accept()));
 
-    bottomLayout->addWidget(m_noShowCheckBox);
     bottomLayout->addWidget(bottomSpacer);
     bottomLayout->addWidget(closeButton);
 
@@ -82,11 +77,6 @@ ApplicationLauncher::ApplicationLauncher(const QVector<KService*> &applications,
 
 ApplicationLauncher::~ApplicationLauncher()
 {
-    if (m_noShowCheckBox->isChecked()) {
-        KConfig config("muon-installerrc");
-        KConfigGroup notifyGroup(&config, "Notification Messages");
-        notifyGroup.writeEntry("ShowApplicationLauncher", false);
-    }
 }
 
 void ApplicationLauncher::addApplications(const QVector<KService*> &applications)

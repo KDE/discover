@@ -1,3 +1,9 @@
+if (HAVEKDE4_6_60)
+else (HAVEKDE4_6_60)
+    set(messagewidget_SRCS backports/kmessagewidget.cpp)
+    include_directories(backports)
+endif (HAVEKDE4_6_60)
+
 set(muon_installer_SRCS
     main.cpp
     Application.cpp
@@ -32,7 +38,9 @@ set(muon_installer_SRCS
     ReviewsBackend/Review.cpp
     ReviewsBackend/ReviewWidget.cpp
     ReviewsBackend/ReviewsWidget.cpp
-    ReviewsBackend/ReviewsBackend.cpp)
+    ReviewsBackend/ReviewsBackend.cpp
+    ${messagewidget_SRCS})
+
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/HaveQZeitgeist.h.in
                ${CMAKE_CURRENT_BINARY_DIR}/HaveQZeitgeist.h)
