@@ -26,7 +26,6 @@
 #include <QApplication>
 #include <QtCore/QTimer>
 #include <QtGui/QHeaderView>
-#include <QtGui/QHBoxLayout>
 #include <QtGui/QPushButton>
 #include <QtGui/QLabel>
 #include <QtGui/QSplitter>
