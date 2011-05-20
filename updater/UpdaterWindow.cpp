@@ -24,6 +24,7 @@
 #include <QApplication>
 #include <QtCore/QTimer>
 #include <QtGui/QStackedWidget>
+#include <QtGui/QVBoxLayout>
 
 // KDE includes
 #include <KAction>
@@ -60,8 +61,17 @@ UpdaterWindow::~UpdaterWindow()
 void UpdaterWindow::initGUI()
 {
     setWindowTitle(i18nc("@title:window", "Software Updates"));
-    m_stack = new QStackedWidget;
-    setCentralWidget(m_stack);
+
+    QWidget *centralWidget = new QWidget(this);
+    QVBoxLayout *centralLayout = new QVBoxLayout(centralWidget);
+    centralLayout->setSpacing(0);
+    centralLayout->setMargin(0);
+
+    m_stack = new QStackedWidget(centralWidget);
+    m_stack->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
+    centralLayout->addWidget(m_stack);
+
+    setCentralWidget(centralWidget);
 
     m_updaterWidget = new UpdaterWidget(m_stack);
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
@@ -75,8 +85,7 @@ void UpdaterWindow::initGUI()
     m_statusWidget = new StatusWidget(this);
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
             m_statusWidget, SLOT(setBackend(QApt::Backend *)));
-    statusBar()->addWidget(m_statusWidget);
-    statusBar()->show();
+    centralLayout->addWidget(m_statusWidget);
 }
 
 void UpdaterWindow::initObject()
@@ -123,7 +132,7 @@ void UpdaterWindow::setupActions()
 
     setActionsEnabled(false);
 
-    setupGUI();
+    setupGUI((StandardWindowOption)(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
 }
 
 void UpdaterWindow::checkForUpdates()

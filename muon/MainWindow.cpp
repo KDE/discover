@@ -27,6 +27,7 @@
 #include <QtGui/QSplitter>
 #include <QtGui/QStackedWidget>
 #include <QtGui/QToolBox>
+#include <QtGui/QVBoxLayout>
 
 // KDE includes
 #include <KAction>
@@ -73,8 +74,16 @@ MainWindow::~MainWindow()
 
 void MainWindow::initGUI()
 {
-    m_stack = new QStackedWidget;
-    setCentralWidget(m_stack);
+    QWidget *centralWidget = new QWidget(this);
+    QVBoxLayout *centralLayout = new QVBoxLayout(centralWidget);
+    centralLayout->setSpacing(0);
+    centralLayout->setMargin(0);
+
+    m_stack = new QStackedWidget(centralWidget);
+    m_stack->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
+    centralLayout->addWidget(m_stack);
+
+    setCentralWidget(centralWidget);
 
     m_managerWidget = new ManagerWidget(m_stack);
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
@@ -103,11 +112,10 @@ void MainWindow::initGUI()
 
     setupActions();
 
-    m_statusWidget = new StatusWidget(this);
+    m_statusWidget = new StatusWidget(centralWidget);
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
             m_statusWidget, SLOT(setBackend(QApt::Backend *)));
-    statusBar()->addWidget(m_statusWidget);
-    statusBar()->show();
+    centralLayout->addWidget(m_statusWidget);
 }
 
 void MainWindow::initObject()
@@ -217,7 +225,7 @@ void MainWindow::setupActions()
 
     setActionsEnabled(false);
 
-    setupGUI();
+    setupGUI((StandardWindowOption)(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
 }
 
 void MainWindow::markUpgrade()

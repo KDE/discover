@@ -23,6 +23,7 @@
 // Qt includes
 #include <QtCore/QStringBuilder>
 #include <QtCore/QTimer>
+#include <QtGui/QHBoxLayout>
 #include <QtGui/QLabel>
 #include <QtGui/QProgressBar>
 
@@ -34,16 +35,20 @@
 #include <LibQApt/Backend>
 
 StatusWidget::StatusWidget(QWidget *parent)
-    : KHBox(parent)
+    : QWidget(parent)
     , m_backend(0)
 {
     m_countsLabel = new QLabel(this);
-    m_countsLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
+    m_countsLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
 
     m_downloadLabel = new QLabel(this);
-    m_downloadLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
+    m_downloadLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+
+    const int fontHeight = QFontMetrics(m_countsLabel->font()).height();
 
     m_xapianProgress = new QProgressBar(this);
+    m_xapianProgress->setMaximumSize(250, fontHeight);
+    m_xapianProgress->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     m_xapianProgress->setFormat(i18nc("@info:status", "Rebuilding Search Index"));
     m_xapianProgress->hide();
 
@@ -52,6 +57,14 @@ StatusWidget::StatusWidget(QWidget *parent)
     m_xapianTimeout->setInterval(10000);
     m_xapianTimeout->setSingleShot(true);
     connect(m_xapianTimeout, SIGNAL(timeout()), this, SLOT(hideXapianProgress()));
+
+    QHBoxLayout* topLayout = new QHBoxLayout(this);
+    setLayout(topLayout);
+    topLayout->setMargin(0);
+    topLayout->setSpacing(4);
+    topLayout->addWidget(m_countsLabel);
+    topLayout->addWidget(m_downloadLabel);
+    topLayout->addWidget(m_xapianProgress);
 }
 
 StatusWidget::~StatusWidget()

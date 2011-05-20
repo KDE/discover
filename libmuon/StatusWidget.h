@@ -21,8 +21,8 @@
 #ifndef STATUSWIDGET_H
 #define STATUSWIDGET_H
 
-// KDE includes
-#include <KHBox>
+// Qt includes
+#include <QtGui/QWidget>
 
 #include "libmuonprivate_export.h"
 
@@ -34,7 +34,7 @@ namespace QApt {
     class Backend;
 }
 
-class MUONPRIVATE_EXPORT StatusWidget : public KHBox
+class MUONPRIVATE_EXPORT StatusWidget : public QWidget
 {
     Q_OBJECT
 public:
