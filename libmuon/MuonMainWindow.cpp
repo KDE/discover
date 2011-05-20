@@ -581,9 +581,9 @@ void MuonMainWindow::runSourcesEditor(bool update)
     QString editor = "software-properties-kde";
 
     if (!update) {
-        editor.append(" --dont-update --attach " % QString::number(winID)); //krazy:exclude=spelling;
+        editor.append(QLatin1Literal(" --dont-update --attach ") % QString::number(winID)); //krazy:exclude=spelling;
     } else {
-        editor.append(" --attach " % QString::number(winID));
+        editor.append(QLatin1Literal(" --attach ") % QString::number(winID));
     }
 
     arguments << "/usr/bin/kdesudo" << editor;
