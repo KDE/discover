@@ -15,7 +15,6 @@ From the Oneiric UDS Muon sprint:
 -Remove status bar borders, using the status bar api to properly place items
 -Don't show label when we don't know download speed or time
 -Implement size hint for HistoryView
--Use KMessageWidget for app launcher. Launch directly when only one is installed, launch the dialog when multiple
 
 
 New updater GUI:
