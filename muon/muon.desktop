@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Muon Package Manager
+Name[bs]=Muon menadžer paketa
 Name[ca]=Gestor de paquets Muon
 Name[cs]=Správce balíčků Muon
 Name[da]=Muon pakkehåndtering
@@ -26,6 +27,7 @@ Icon=muon
 Type=Application
 X-DocPath=muon/index.html
 GenericName=Package Manager
+GenericName[bs]=Menadžer paketa
 GenericName[ca]=Gestor de paquets
 GenericName[ca@valencia]=Gestor de paquets
 GenericName[cs]=Správce balíčků
