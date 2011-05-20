@@ -37,6 +37,7 @@ class KAction;
 
 class Application;
 class ApplicationBackend;
+class ApplicationLauncher;
 class ViewSwitcher;
 
 namespace QApt
@@ -84,6 +85,7 @@ private:
     QHash<QModelIndex, QWidget *> m_viewHash;
     KAction *m_loadSelectionsAction;
     KAction *m_saveSelectionsAction;
+    ApplicationLauncher *m_appLauncher;
 
 private Q_SLOTS:
     void initGUI();
@@ -100,6 +102,8 @@ private Q_SLOTS:
     void selectFirstRow(const QAbstractItemView *itemView);
     void runSourcesEditor();
     void sourcesEditorFinished(int reload);
+    void showLauncherMessage();
+    void onAppLauncherClosed();
 };
 
 #endif

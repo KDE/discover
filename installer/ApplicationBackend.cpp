@@ -23,24 +23,20 @@
 #include <QtCore/QDir>
 #include <QtCore/QStringList>
 
-#include <KConfigGroup>
 #include <KLocale>
 #include <KMessageBox>
-#include <KService>
 #include <KDebug>
 
 #include <LibQApt/Backend>
 #include <DebconfGui.h>
 
 #include "Application.h"
-#include "ApplicationLauncher.h"
 #include "ReviewsBackend/ReviewsBackend.h"
 #include "Transaction.h"
 
 ApplicationBackend::ApplicationBackend(QObject *parent)
     : QObject(parent)
     , m_backend(0)
-    , m_appLauncher(0)
 {
     m_currentTransaction = m_queue.end();
 
@@ -126,17 +122,6 @@ void ApplicationBackend::reload()
 
     init();
 
-    // We must init() before showing the app launcher, otherwise we
-    // won't be able to get installed file info on the newly-installed
-    // packages
-    KConfig config("muon-installerrc");
-    KConfigGroup notifyGroup(&config, "Notification Messages");
-    bool show = notifyGroup.readEntry("ShowApplicationLauncher", true);
-
-    if (show) {
-        showAppLauncher();
-    }
-
     emit reloadFinished();
 }
 
@@ -181,7 +166,7 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
                    this, SLOT(updateCommitProgress(QString, int)));
 
         if (m_currentTransaction != m_queue.end() && (*m_currentTransaction)->action() != ChangeAddons) {
-            m_appLaunchQueue << (*m_currentTransaction)->application()->package()->name();
+            m_appLaunchList << (*m_currentTransaction)->application()->package()->name();
         }
 
         m_workerState.first = QApt::InvalidEvent;
@@ -333,54 +318,14 @@ void ApplicationBackend::runNextTransaction()
     m_backend->commitChanges();
 }
 
-void ApplicationBackend::showAppLauncher()
+QStringList ApplicationBackend::launchList() const
 {
-    QApt::PackageList packages;
-
-    foreach (const QString &package, m_appLaunchQueue) {
-        QApt::Package *pkg = m_backend->package(package);
-        if (pkg) {
-            packages << pkg;
-        }
-    }
-
-    m_appLaunchQueue.clear();
-
-    QVector<KService*> apps;
-    foreach (QApt::Package *package, packages) {
-        if (!package->isInstalled()) {
-            continue;
-        }
-
-        // TODO: move to Application (perhaps call it Application::executables())
-        foreach (const QString &desktop, package->installedFilesList().filter(".desktop")) {
-            // we create a new KService because findByDestopPath
-            // might fail because the Sycoca database is not up to date yet.
-            KService *service = new KService(desktop);
-            if (service->isApplication() &&
-              !service->noDisplay() &&
-              !service->exec().isEmpty())
-            {
-                apps << service;
-            }
-        }
-    }
-
-    if (!m_appLauncher && !apps.isEmpty()) {
-        m_appLauncher = new ApplicationLauncher(apps);
-        connect(m_appLauncher, SIGNAL(destroyed(QObject *)),
-            this, SLOT(onAppLauncherClosed()));
-        connect(m_appLauncher, SIGNAL(finished(int)),
-            this, SLOT(onAppLauncherClosed()));
-        m_appLauncher->setWindowTitle(i18nc("@title:window", "Installation Complete"));
-        m_appLauncher->show();
-    }
+    return m_appLaunchList;
 }
 
-void ApplicationBackend::onAppLauncherClosed()
+void ApplicationBackend::clearLaunchList()
 {
-    m_appLauncher->deleteLater();
-    m_appLauncher = 0;
+    m_appLaunchList.clear();
 }
 
 ReviewsBackend *ApplicationBackend::reviewsBackend() const

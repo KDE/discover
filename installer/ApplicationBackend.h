@@ -37,7 +37,6 @@ namespace DebconfKde
 }
 
 class Application;
-class ApplicationLauncher;
 class ReviewsBackend;
 class Transaction;
 
@@ -54,9 +53,11 @@ public:
     QSet<QString> installedAppOrigins() const;
     QPair<QApt::WorkerEvent, Transaction *> workerState() const;
     QList<Transaction *> transactions() const;
+    QStringList launchList() const;
 
     void addTransaction(Transaction *transaction);
     void cancelTransaction(Application *app);
+    void clearLaunchList();
 
 private:
     QApt::Backend *m_backend;
@@ -65,13 +66,12 @@ private:
     QList<Application *> m_appList;
     QSet<QString> m_originList;
     QSet<QString> m_instOriginList;
-    QStringList m_appLaunchQueue;
+    QStringList m_appLaunchList;
     QStringList m_pkgBlacklist;
     QList<Transaction *> m_queue;
     QList<Transaction *>::iterator m_currentTransaction;
     QPair<QApt::WorkerEvent, Transaction *> m_workerState;
 
-    ApplicationLauncher *m_appLauncher;
     DebconfKde::DebconfGui *m_debconfGui;
 
 public Q_SLOTS:
@@ -85,8 +85,6 @@ private Q_SLOTS:
     void errorOccurred(QApt::ErrorCode error, const QVariantMap &details);
     void updateDownloadProgress(int percentage);
     void updateCommitProgress(const QString &text, int percentage);
-    void showAppLauncher();
-    void onAppLauncherClosed();
 
 Q_SIGNALS:
     void appBackendReady();

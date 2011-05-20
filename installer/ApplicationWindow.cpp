@@ -31,6 +31,7 @@
 #include <KAction>
 #include <KActionCollection>
 #include <KIcon>
+#include <KService>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -39,6 +40,7 @@
 #include "../libmuon/HistoryView/HistoryView.h"
 #include "ApplicationBackend.h"
 #include "Application.h"
+#include "ApplicationLauncher.h"
 #include "AvailableView.h"
 #include "ViewSwitcher.h"
 #include "ApplicationModel/ApplicationListView.h"
@@ -46,6 +48,7 @@
 
 ApplicationWindow::ApplicationWindow()
     : MuonMainWindow()
+    , m_appLauncher(0)
 {
     initGUI();
     QTimer::singleShot(10, this, SLOT(initObject()));
@@ -97,6 +100,8 @@ void ApplicationWindow::initObject()
             this, SLOT(clearViews()));
     connect(m_appBackend, SIGNAL(reloadFinished()),
             this, SLOT(populateViews()));
+    connect(m_appBackend, SIGNAL(reloadFinished()),
+            this, SLOT(showLauncherMessage()));
 
     MuonMainWindow::initObject();
     // Our modified ApplicationBackend provides us events in a way that
@@ -378,6 +383,55 @@ void ApplicationWindow::sourcesEditorFinished(int reload)
 ApplicationBackend *ApplicationWindow::appBackend() const
 {
     return m_appBackend;
+}
+
+void ApplicationWindow::showLauncherMessage()
+{
+    QApt::PackageList packages;
+
+    foreach (const QString &package, m_appBackend->launchList()) {
+        QApt::Package *pkg = m_backend->package(package);
+        if (pkg) {
+            packages << pkg;
+        }
+    }
+
+    m_appBackend->clearLaunchList();
+
+    QVector<KService*> apps;
+    foreach (QApt::Package *package, packages) {
+        if (!package->isInstalled()) {
+            continue;
+        }
+
+        // TODO: move to Application (perhaps call it Application::executables())
+        foreach (const QString &desktop, package->installedFilesList().filter(".desktop")) {
+            // we create a new KService because findByDestopPath
+            // might fail because the Sycoca database is not up to date yet.
+            KService *service = new KService(desktop);
+            if (service->isApplication() &&
+              !service->noDisplay() &&
+              !service->exec().isEmpty())
+            {
+                apps << service;
+            }
+        }
+    }
+
+    if (!m_appLauncher && !apps.isEmpty()) {
+        m_appLauncher = new ApplicationLauncher(apps);
+        connect(m_appLauncher, SIGNAL(destroyed(QObject *)),
+            this, SLOT(onAppLauncherClosed()));
+        connect(m_appLauncher, SIGNAL(finished(int)),
+            this, SLOT(onAppLauncherClosed()));
+        m_appLauncher->setWindowTitle(i18nc("@title:window", "Installation Complete"));
+        m_appLauncher->show();
+    }
+}
+
+void ApplicationWindow::onAppLauncherClosed()
+{
+    m_appLauncher = 0;
 }
 
 #include "ApplicationWindow.moc"
