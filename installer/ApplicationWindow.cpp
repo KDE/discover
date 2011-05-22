@@ -435,7 +435,7 @@ void ApplicationWindow::showLauncherMessage()
         QString name = service->genericName().isEmpty() ?
                        service->property("Name").toString() :
                        service->property("Name").toString() % QLatin1Literal(" - ") % service->genericName();
-        m_launcherMessage->setText(i18nc("@info", "%1 was succesfully installed.", name));
+        m_launcherMessage->setText(i18nc("@info", "%1 was successfully installed.", name));
 
         KAction *launchAction = new KAction(KIcon(service->icon()), i18nc("@action", "Start"), this);
         connect(launchAction, SIGNAL(activated()), this, SLOT(launchSingleApp()));
@@ -443,7 +443,7 @@ void ApplicationWindow::showLauncherMessage()
         m_launcherMessage->addAction(launchAction);
         m_launcherMessage->animatedShow();
     } else if (apps.size() > 1) {
-        m_launcherMessage->setText(i18nc("@info", "Applications succesfully installed."));
+        m_launcherMessage->setText(i18nc("@info", "Applications successfully installed."));
         KAction *launchAction = new KAction(i18nc("@action", "Run New Applications..."), this);
         connect(launchAction, SIGNAL(activated()), this, SLOT(showAppLauncher()));
         m_launcherMessage->addAction(launchAction);
