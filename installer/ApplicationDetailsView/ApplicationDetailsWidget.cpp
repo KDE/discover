@@ -384,7 +384,8 @@ void ApplicationDetailsWidget::setApplication(Application *app)
 
 void ApplicationDetailsWidget::workerEvent(QApt::WorkerEvent event, Transaction *transaction)
 {
-    if (!transaction || m_app != transaction->application()) {
+    if (!transaction || !m_appBackend->transactions().contains(transaction) ||
+        m_app != transaction->application()) {
         return;
     }
 
