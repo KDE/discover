@@ -17,9 +17,9 @@ From the Oneiric UDS Muon sprint:
 
 
 New updater GUI:
-- Split updates in to categories:
+- Split available updates in to categories:
   - "System Libraries" (better name?)
-  - Source packages
+  - Source packages (generally applications)
   - Security updates
 - Do not give package counts in notifications or category headers
 - Do give download size amounts, since that is interesting to users.
