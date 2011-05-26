@@ -205,6 +205,7 @@ void UpdaterWindow::errorOccurred(QApt::ErrorCode error, const QVariantMap &args
         if (m_downloadWidget) {
             m_downloadWidget->clear();
         }
+    case QApt::AuthError:
         m_updaterWidget->setEnabled(true);
         QApplication::restoreOverrideCursor();
         returnFromPreview();
