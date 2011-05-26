@@ -37,6 +37,7 @@ int main(int argc, char **argv)
                      KAboutData::License_GPL, ki18n("©2010, 2011 Jonathan Thomas"), KLocalizedString(), 0);
     about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
     about.setProgramIconName("system-software-update");
+    about.setProductName("muon/updater");
 
     KCmdLineArgs::init(argc, argv, &about);
 
