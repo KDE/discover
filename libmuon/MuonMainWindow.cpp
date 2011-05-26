@@ -189,6 +189,7 @@ void MuonMainWindow::workerEvent(QApt::WorkerEvent event)
 {
     switch (event) {
     case QApt::CacheUpdateStarted:
+        break;
     case QApt::PackageDownloadStarted:
         m_powerInhibitor = Solid::PowerManagement::beginSuppressingSleep(i18nc("@info:status", "Muon is making system changes"));
     case QApt::CommitChangesStarted:
@@ -235,6 +236,7 @@ void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args
                      "any packages.");
         title = i18nc("@title:window", "Unable to obtain package system lock");
         KMessageBox::error(this, text, title);
+        setActionsEnabled();
         break;
     case QApt::DiskSpaceError: {
         QString drive = args["DirectoryString"].toString();
@@ -243,6 +245,8 @@ void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args
                      "at %1 to continue with this operation.", drive);
         title = i18nc("@title:window", "Low disk space");
         KMessageBox::error(this, text, title);
+        setActionsEnabled();
+        break;
     }
     case QApt::FetchError:
         text = i18nc("@label",
@@ -252,7 +256,7 @@ void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args
         break;
     case QApt::CommitError: {
         m_errorStack.append(args);
-        break;
+        return;
     }
     case QApt::AuthError:
         text = i18nc("@label",
@@ -284,6 +288,7 @@ void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args
         }
         title = i18nc("@title:window", "Untrusted Packages");
         KMessageBox::errorList(this, text, untrustedItems, title);
+        setActionsEnabled();
         break;
     }
     case QApt::UserCancelError:
@@ -292,7 +297,6 @@ void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args
         break;
     }
 
-    setActionsEnabled();
     m_canExit = true; // If we were committing changes, we aren't anymore
 }
 
@@ -399,6 +403,7 @@ void MuonMainWindow::showQueuedErrors()
 
     QString title = i18nc("@title:window", "Commit error");
     KMessageBox::detailedError(this, text, details, title);
+    m_canExit = true;
 }
 
 void MuonMainWindow::reload()
