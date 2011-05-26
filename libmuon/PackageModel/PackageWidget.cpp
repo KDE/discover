@@ -355,7 +355,9 @@ void PackageWidget::setSortedPackages()
 
 void PackageWidget::startSearch()
 {
-    m_proxyModel->search(m_searchEdit->text());
+    if (m_proxyModel->sourceModel()) {
+        m_proxyModel->search(m_searchEdit->text());
+    }
 }
 
 bool PackageWidget::confirmEssentialRemoval()
