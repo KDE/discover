@@ -97,6 +97,7 @@ PackageWidget::PackageWidget(QWidget *parent)
     setupActions();
 
     m_searchEdit = new KLineEdit(topVBox);
+    m_searchEdit->setEnabled(false);
     m_searchEdit->setClickMessage(i18nc("@label Line edit click message", "Search"));
     m_searchEdit->setClearButtonShown(true);
     m_searchEdit->hide(); // Off by default, use showSearchEdit() to show
