@@ -36,6 +36,7 @@ int main(int argc, char **argv)
     KAboutData about("muon", 0, ki18n("Muon Package Manager"), version, ki18n(description),
                      KAboutData::License_GPL, ki18n("© 2009-2011 Jonathan Thomas"), KLocalizedString(), 0);
     about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
+    about.setProductName("muon/muon");
 
     KCmdLineArgs::init(argc, argv, &about);
 
