@@ -320,6 +320,7 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
         reload();
         setActionsEnabled();
     case QApt::PackageDownloadFinished:
+        returnFromPreview();
         if (m_warningStack.size() > 0) {
             showQueuedWarnings();
             m_warningStack.clear();
@@ -392,8 +393,6 @@ void MainWindow::returnFromPreview()
     m_previewAction->setText(i18nc("@action", "Preview Changes"));
     disconnect(m_previewAction, SIGNAL(triggered()), this, SLOT(returnFromPreview()));
     connect(m_previewAction, SIGNAL(triggered()), this, SLOT(previewChanges()));
-    // We may not have anything to preview; check.
-    setActionsEnabled();
 }
 
 void MainWindow::startCommit()

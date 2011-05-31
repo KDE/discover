@@ -164,6 +164,7 @@ void UpdaterWindow::workerEvent(QApt::WorkerEvent event)
     case QApt::CacheUpdateFinished:
     case QApt::CommitChangesFinished:
         reload();
+        setActionsEnabled();
     case QApt::PackageDownloadFinished:
         returnFromPreview();
         if (m_warningStack.size() > 0) {
@@ -274,9 +275,6 @@ void UpdaterWindow::returnFromPreview()
 {
     m_stack->setCurrentWidget(m_updaterWidget);
     m_backend->markPackagesForDistUpgrade();
-
-    // We may not have anything to preview; check.
-    setActionsEnabled();
 }
 
 void UpdaterWindow::setActionsEnabled(bool enabled)
