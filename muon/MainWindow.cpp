@@ -318,8 +318,8 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
     case QApt::CacheUpdateFinished:
     case QApt::CommitChangesFinished:
         reload();
+        setActionsEnabled();
     case QApt::PackageDownloadFinished:
-        returnFromPreview();
         if (m_warningStack.size() > 0) {
             showQueuedWarnings();
             m_warningStack.clear();
