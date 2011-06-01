@@ -57,6 +57,7 @@ public:
     virtual ~MuonMainWindow();
 
     bool isConnected();
+    QSize sizeHint() const;
 
 protected:
     QApt::Backend *m_backend;

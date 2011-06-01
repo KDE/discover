@@ -181,6 +181,11 @@ bool MuonMainWindow::isConnected() {
     return connected;
 }
 
+QSize MuonMainWindow::sizeHint() const
+{
+    return KXmlGuiWindow::sizeHint().expandedTo(QSize(900, 500));
+}
+
 void MuonMainWindow::checkForUpdates()
 {
 }
