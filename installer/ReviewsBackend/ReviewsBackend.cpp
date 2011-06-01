@@ -20,7 +20,6 @@
 
 #include "ReviewsBackend.h"
 
-#include <QtCore/QProcess>
 #include <QtCore/QStringBuilder>
 
 #include <KGlobal>
@@ -146,13 +145,6 @@ void ReviewsBackend::fetchReviews(Application *app)
     QString lang = getLanguage();
     QString origin = app->package()->origin().toLower();
 
-    QString program = QLatin1String("lsb_release -c -s");
-    QProcess lsb_release;
-    lsb_release.start(program);
-    lsb_release.waitForFinished();
-    QString distroSeries = lsb_release.readAllStandardOutput();
-    distroSeries = distroSeries.trimmed();
-
     QString version = QLatin1String("any");
     QString packageName = app->package()->latin1Name();
     QString appName = app->name();
@@ -164,9 +156,9 @@ void ReviewsBackend::fetchReviews(Application *app)
     // But that could be because the Ubuntu Software Center (which I used to
     // figure it out) is written in python, so you have to go hunting to where
     // a variable was initially initialized with a primitive to figure out its type.
-    KUrl reviewsUrl(m_serverBase % lang % '/' % origin % '/' % distroSeries %
-                    '/' % version % '/' % packageName % ';' % appName % '/' %
-                    QLatin1Literal("page") % '/' % '1');
+    KUrl reviewsUrl(m_serverBase % QLatin1Literal("reviews/filter/") % lang % '/'
+                    % origin % '/' % QLatin1Literal("any") % '/' % version % '/' % packageName
+                    % ';' % appName % '/' % QLatin1Literal("page") % '/' % '1');
 
     if (m_reviewsFile) {
         m_reviewsFile->deleteLater();
