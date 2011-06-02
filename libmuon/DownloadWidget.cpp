@@ -21,6 +21,7 @@
 #include "DownloadWidget.h"
 
 // Qt includes
+#include <QtCore/QStringBuilder>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QProgressBar>
@@ -99,9 +100,7 @@ void DownloadWidget::updateDownloadProgress(int percentage, int speed, int ETA)
     m_totalProgress->setValue(percentage);
 
     QString downloadSpeed;
-    if (speed < 0) {
-        downloadSpeed = i18nc("@label Label for when the download speed is unknown", "Unknown speed");
-    } else {
+    if (speed > -1) {
         downloadSpeed = i18nc("@label Download rate", "Download rate: %1/s",
                               KGlobal::locale()->formatByteSize(speed));
     }
@@ -109,15 +108,21 @@ void DownloadWidget::updateDownloadProgress(int percentage, int speed, int ETA)
     QString timeRemaining;
     int ETAMilliseconds = ETA * 1000;
 
-    if (ETAMilliseconds <= 0 || ETAMilliseconds > 14 * 24 * 60 * 60) {
-        // If ETA is less than zero or bigger than 2 weeks
-        timeRemaining = i18nc("@item:intext Label for when the remaining time is unknown",
-                              " - Unknown time remaining");
-    } else {
-        timeRemaining = i18nc("@item:intext Remaining time", " - %1 remaining",
+    if (ETAMilliseconds > 0 && ETAMilliseconds < 14 * 24 * 60 * 60) {
+        // If ETA is greater than zero or less than 2 weeks
+        timeRemaining = i18nc("@item:intext Remaining time", "%1 remaining",
                               KGlobal::locale()->prettyFormatDuration(ETAMilliseconds));
     }
-    m_downloadLabel->setText(downloadSpeed + timeRemaining);
+
+    QString label = downloadSpeed;
+
+    if (!label.isEmpty() && !timeRemaining.isEmpty()) {
+        label.append(QLatin1Literal(" - ") % timeRemaining);
+    } else {
+        label = timeRemaining;
+    }
+
+    m_downloadLabel->setText(label);
 }
 
 void DownloadWidget::updatePackageDownloadProgress(const QString &name, int percentage, const QString &URI, double size, int flag)
