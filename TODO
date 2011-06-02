@@ -12,7 +12,6 @@ Legend:
 -[MSC] Add an on-hover magnifying graphic to the screenshot preview
 
 From the Oneiric UDS Muon sprint:
--Don't show label when we don't know download speed or time
 -Implement size hint for HistoryView
 
 
