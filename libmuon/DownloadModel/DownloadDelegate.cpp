@@ -26,7 +26,6 @@
 // KDE includes
 #include <KApplication>
 #include <KLocale>
-#include <KDebug>
 
 // LibQApt includes
 #include <LibQApt/Globals>

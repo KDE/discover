@@ -30,7 +30,6 @@
 #include <QtGui/QVBoxLayout>
 
 // KDE includes
-#include <KDebug>
 #include <KGlobal>
 #include <KHBox>
 #include <KIcon>
