@@ -74,7 +74,7 @@ class ApplicationWindow : public MuonMainWindow
     Q_OBJECT
 public:
     ApplicationWindow();
-    virtual ~ApplicationWindow();
+    ~ApplicationWindow();
 
     ApplicationBackend *appBackend() const;
 

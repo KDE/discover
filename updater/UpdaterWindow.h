@@ -44,7 +44,7 @@ class UpdaterWindow : public MuonMainWindow
     Q_OBJECT
 public:
     UpdaterWindow();
-    virtual ~UpdaterWindow();
+    ~UpdaterWindow();
 
 private:
     QStackedWidget *m_stack;

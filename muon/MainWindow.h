@@ -55,7 +55,7 @@ class MainWindow : public MuonMainWindow
     Q_OBJECT
 public:
     MainWindow();
-    virtual ~MainWindow();
+    ~MainWindow();
 
 private:
     QStackedWidget *m_stack;
