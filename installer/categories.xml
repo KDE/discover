@@ -95,65 +95,12 @@
     </Menu>
 
     <Menu>
-      <Name>Libraries</Name>
-      <Icon></Icon>
-      <Include>
-        <Or>
-          <PkgSection>libdevel</PkgSection>
-          <PkgSection>restricted/libdevel</PkgSection>
-          <PkgSection>universe/libdevel</PkgSection>
-          <PkgSection>multiverse/libdevel</PkgSection>
-        </Or>
-      </Include>
-    </Menu>
-
-    <Menu>
-      <Name>Lisp</Name>
-      <Icon></Icon>
-      <Include>
-        <Or>
-          <PkgSection>lisp</PkgSection>
-          <PkgSection>restricted/lisp</PkgSection>
-          <PkgSection>universe/lisp</PkgSection>
-          <PkgSection>multiverse/lisp</PkgSection>
-        </Or>
-      </Include>
-    </Menu>
-
-    <Menu>
       <Name>Localization</Name>
       <Icon>preferences-desktop-locale</Icon>
       <Include>
         <And>
           <Category>Translation</Category>
         </And>
-      </Include>
-    </Menu>
-
-    <Menu>
-      <Name>Mono/CLI</Name>
-      <Icon></Icon>
-      <Include>
-        <Or>
-          <PkgSection>cli-mono</PkgSection>
-          <PkgSection>restricted/cli-mono</PkgSection>
-          <PkgSection>universe/cli-mono</PkgSection>
-          <PkgSection>multiverse/cli-mono</PkgSection>
-        </Or>
-      </Include>
-    </Menu>
-
-    <Menu>
-      <Name>OCaml</Name>
-      <ShowTechnical>true</ShowTechnical>
-      <Icon></Icon>
-      <Include>
-        <Or>
-          <PkgSection>ocaml</PkgSection>
-          <PkgSection>restricted/ocaml</PkgSection>
-          <PkgSection>universe/ocaml</PkgSection>
-          <PkgSection>multiverse/ocaml</PkgSection>
-        </Or>
       </Include>
     </Menu>
 
@@ -174,7 +121,9 @@
       <Name>Profiling</Name>
       <Icon></Icon>
       <Include>
-        <Category>Profiling</Category>
+        <Or>
+          <Category>Profiling</Category>
+        </Or>
       </Include>
     </Menu>
 
@@ -187,19 +136,6 @@
           <PkgSection>restricted/python</PkgSection>
           <PkgSection>universe/python</PkgSection>
           <PkgSection>multiverse/python</PkgSection>
-        </Or>
-      </Include>
-    </Menu>
-
-    <Menu>
-      <Name>Ruby</Name>
-      <Icon>application-x-ruby</Icon>
-      <Include>
-        <Or>
-          <PkgSection>ruby</PkgSection>
-          <PkgSection>restricted/ruby</PkgSection>
-          <PkgSection>universe/ruby</PkgSection>
-          <PkgSection>multiverse/ruby</PkgSection>
         </Or>
       </Include>
     </Menu>
