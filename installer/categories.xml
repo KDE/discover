@@ -145,6 +145,7 @@
 
     <Menu>
       <Name>OCaml</Name>
+      <ShowTechnical>true</ShowTechnical>
       <Icon></Icon>
       <Include>
         <Or>
