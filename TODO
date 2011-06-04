@@ -10,6 +10,8 @@ Legend:
 -[MSC] Keep a cached copy of the rating stats in our config directory so ratings can be vied in offline mode.
 -[MSC] Review submittal (Use KIO::storedHttpPost)
 -[MSC] Add an on-hover magnifying graphic to the screenshot preview
+-[MSC] Include addons size in Total size calculation
+-[MSC] When going back from a child breadcrumb, hide the crumb, but still be able to go forward
 
 From the Oneiric UDS Muon sprint:
 -Implement size hint for HistoryView
