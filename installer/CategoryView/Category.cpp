@@ -46,12 +46,6 @@ void Category::parseData(const QDomNode &data)
         QDomElement tempElement = node.toElement();
 
         if (tempElement.tagName() == QLatin1String("Name")) {
-            if (tempElement.hasAttribute("xml:lang")) {
-                // Skip translated nodes. We'll look up the l10n later
-                node = node.nextSibling();
-                continue;
-            }
-
             if (m_policy == CanHaveChildren) {
                 m_name = i18nc("Category", tempElement.text().toUtf8());
             } else {
