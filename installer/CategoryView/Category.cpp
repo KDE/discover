@@ -53,7 +53,7 @@ void Category::parseData(const QDomNode &data)
             }
 
             if (m_policy == CanHaveChildren) {
-                m_name = tempElement.text();
+                m_name = i18nc("Category", tempElement.text().toUtf8());
             } else {
                 m_name = i18nc("@label The label used for viewing all members of this category", "All");
             }
