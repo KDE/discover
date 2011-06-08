@@ -1,11 +1,9 @@
 #! /usr/bin/env bash
 
-EXTRACTXML="./extractxml"
-
 $EXTRACTRC `find muon/ -name \*.rc` >> muonrc.cpp
 $EXTRACTRC `find updater/ -name \*.rc` >> updaterrc.cpp
 $EXTRACTRC `find kded/ -name \*.rc` >> notifierrc.cpp
-$EXTRACTXML --extract --unquote --context="Category" --tag="Name" installer/categories.xml >> categoriesxml.cpp
+$EXTRACTRC --context="Category" --tag-group=none --tag=Name installer/categories.xml >> categoriesxml.cpp
 $XGETTEXT `find libmuon -name \*.cpp` -o $podir/libmuon.pot
 $XGETTEXT rc.cpp muonrc.cpp `find muon -name \*.cpp` -o $podir/muon.pot
 $XGETTEXT rc.cpp updaterrc.cpp `find updater -name \*.cpp` -o $podir/muon-updater.pot
