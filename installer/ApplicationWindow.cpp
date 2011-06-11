@@ -212,16 +212,21 @@ void ApplicationWindow::populateViews()
     if (originNames.contains("Ubuntu")) {
         int index = originNames.indexOf("Ubuntu");
         originNames.move(index, 0); // Move to front of the list
-    }
 
-    if (originNames.contains("Canonical")) {
+        if (originNames.contains("Canonical")) {
         int index = originNames.indexOf("Canonical");
         originNames.move(index, 1); // Move to 2nd spot
+        }
+
+        if (originNames.contains("LP-PPA-app-review-board")) {
+            int index = originNames.indexOf("LP-PPA-app-review-board");
+            originNames.move(index, 2); // Move to third spot
+        }
     }
 
-    if (originNames.contains("LP-PPA-app-review-board")) {
-        int index = originNames.indexOf("LP-PPA-app-review-board");
-        originNames.move(index, 2); // Move to third spot
+    if (originNames.contains("Debian")) {
+        int index = originNames.indexOf("Debian");
+        originNames.move(index, 0); // Move to front of the list
     }
 
     QStandardItem *parentItem = m_viewModel->invisibleRootItem();
@@ -257,6 +262,11 @@ void ApplicationWindow::populateViews()
             viewItem->setIcon(KIcon("ubuntu-logo"));
         }
 
+        if (originName == "Debian") {
+            viewItem->setText(i18nc("@item:inlistbox", "Provided by Debian"));
+            viewItem->setIcon(KIcon("emblem-debian"));
+        }
+
         if (originName == "Canonical") {
             viewItem->setText(i18nc("@item:inlistbox ","Canonical Partners"));
             viewItem->setIcon(KIcon("partner"));
@@ -280,6 +290,26 @@ void ApplicationWindow::populateViews()
     QStringList instOriginLabels;
     foreach (const QString &originName, instOriginNames) {
         instOriginLabels << m_backend->originLabel(originName);
+    }
+
+    if (instOriginNames.contains("Ubuntu")) {
+        int index = instOriginNames.indexOf("Ubuntu");
+        instOriginNames.move(index, 0); // Move to front of the list
+
+        if (instOriginNames.contains("Canonical")) {
+        int index = instOriginNames.indexOf("Canonical");
+        instOriginNames.move(index, 1); // Move to 2nd spot
+        }
+
+        if (instOriginNames.contains("LP-PPA-app-review-board")) {
+            int index = instOriginNames.indexOf("LP-PPA-app-review-board");
+            originNames.move(index, 2); // Move to third spot
+        }
+    }
+
+    if (instOriginNames.contains("Debian")) {
+        int index = instOriginNames.indexOf("Debian");
+        instOriginNames.move(index, 0); // Move to front of the list
     }
 
     parentItem = installedItem;
