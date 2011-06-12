@@ -163,10 +163,7 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role) const
 
 void ApplicationModel::setApplications(const QList<Application*> &list)
 {
-    // Remove check when sid has >= 4.7
-#if QT_VERSION >= 0x040700
     m_apps.reserve(list.size());
-#endif
     beginInsertRows(QModelIndex(), m_apps.count(), m_apps.count());
     m_apps = list;
     endInsertRows();
