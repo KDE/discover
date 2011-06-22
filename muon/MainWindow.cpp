@@ -317,8 +317,10 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
         break;
     case QApt::CacheUpdateFinished:
     case QApt::CommitChangesFinished:
-        reload();
-        setActionsEnabled();
+        if (m_backend) {
+            reload();
+            setActionsEnabled();
+        }
     case QApt::PackageDownloadFinished:
         returnFromPreview();
         if (m_warningStack.size() > 0) {
