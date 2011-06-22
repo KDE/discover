@@ -23,6 +23,7 @@
 
 #include <QtCore/QStringList>
 #include <QtCore/QObject>
+#include <QtCore/QQueue>
 #include <QtCore/QSet>
 
 #include <LibQApt/Globals>
@@ -68,8 +69,8 @@ private:
     QSet<QString> m_instOriginList;
     QStringList m_appLaunchList;
     QStringList m_pkgBlacklist;
-    QList<Transaction *> m_queue;
-    QList<Transaction *>::iterator m_currentTransaction;
+    QQueue<Transaction *> m_queue;
+    Transaction *m_currentTransaction;
     QPair<QApt::WorkerEvent, Transaction *> m_workerState;
 
     DebconfKde::DebconfGui *m_debconfGui;
