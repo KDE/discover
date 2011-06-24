@@ -216,10 +216,17 @@ HistoryView::HistoryView(QWidget *parent)
     m_proxyModel->sort(0);
 
     m_historyView->setModel(m_proxyModel);
+
+    setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
 }
 
 HistoryView::~HistoryView()
 {
+}
+
+QSize HistoryView::sizeHint() const
+{
+    return QWidget::sizeHint().expandedTo(QSize(500, 500));
 }
 
 void HistoryView::setStateFilter(int index)

@@ -62,6 +62,8 @@ public:
     HistoryView(QWidget *parent);
     ~HistoryView();
 
+    QSize sizeHint() const;
+
 private:
     QApt::History *m_history;
     QStandardItemModel *m_historyModel;
