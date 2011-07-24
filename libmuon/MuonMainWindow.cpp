@@ -334,23 +334,25 @@ void MuonMainWindow::questionOccurred(QApt::WorkerQuestion code, const QVariantM
         // TODO: diff support
         QString oldFile = args["OldConfFile"].toString();
 
-        QString title = i18nc("@title:window", "Configuration File Changed");
-        QString text = i18nc("@label Notifies a config file change",
-                             "A new version of the configuration file "
-                             "<filename>%1</filename> is available, but your version has "
-                             "been modified. Would you like to keep your current version "
-                             "or install the new version?", oldFile);
-
-        KGuiItem useNew(i18nc("@action Use the new config file", "Use New Version"));
-        KGuiItem useOld(i18nc("@action Keep the old config file", "Keep Old Version"));
-
-        int ret = KMessageBox::questionYesNo(this, text, title, useNew, useOld);
-
-        if (ret == KMessageBox::Yes) {
-            response["ReplaceFile"] = true;
-        } else {
-            response["ReplaceFile"] = false;
-        }
+        // FIXME: dpkg isn't waiting for a response within the qaptworker.
+        // Re-enable once that's working
+//         QString title = i18nc("@title:window", "Configuration File Changed");
+//         QString text = i18nc("@label Notifies a config file change",
+//                              "A new version of the configuration file "
+//                              "<filename>%1</filename> is available, but your version has "
+//                              "been modified. Would you like to keep your current version "
+//                              "or install the new version?", oldFile);
+// 
+//         KGuiItem useNew(i18nc("@action Use the new config file", "Use New Version"));
+//         KGuiItem useOld(i18nc("@action Keep the old config file", "Keep Old Version"));
+// 
+//         int ret = KMessageBox::questionYesNo(this, text, title, useNew, useOld);
+// 
+//         if (ret == KMessageBox::Yes) {
+//             response["ReplaceFile"] = true;
+//         } else {
+//             response["ReplaceFile"] = false;
+//         }
 
         m_backend->answerWorkerQuestion(response);
         break;
