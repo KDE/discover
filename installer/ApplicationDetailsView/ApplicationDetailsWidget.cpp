@@ -64,7 +64,7 @@
 #include "Application.h"
 #include "ClickableLabel.h"
 #include "effects/GraphicsOpacityDropShadowEffect.h"
-#include "ScreenShotViewer.h"
+#include "ScreenShotOverlay.h"
 #include "ReviewsBackend/Rating.h"
 #include "ReviewsBackend/Review.h"
 #include "ReviewsBackend/ReviewsWidget.h"
@@ -77,7 +77,6 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     : QScrollArea(parent)
     , m_appBackend(backend)
     , m_screenshotFile(0)
-    , m_screenshotDialog(0)
 {
     setWidgetResizable(true);
     viewport()->setAutoFillBackground(false);
@@ -563,7 +562,6 @@ void ApplicationDetailsWidget::fadeInScreenshot()
 
 void ApplicationDetailsWidget::fetchScreenshot(QApt::ScreenshotType screenshotType)
 {
-    m_screenshotLabel->setCursor(Qt::BusyCursor);
     if (m_screenshotFile) {
         m_screenshotFile->deleteLater();
         m_screenshotFile = 0;
@@ -618,30 +616,16 @@ void ApplicationDetailsWidget::thumbnailFetched(KJob *job)
 
 void ApplicationDetailsWidget::screenshotFetched(KJob *job)
 {
-    m_screenshotLabel->unsetCursor();
     if (job->error()) {
         return;
     }
 
-    m_screenshotDialog = new ScreenShotViewer(m_screenshotFile->fileName());
-    connect(m_screenshotDialog, SIGNAL(destroyed(QObject *)),
-            this, SLOT(onScreenshotDialogClosed()));
-    connect(m_screenshotDialog, SIGNAL(finished(int)),
-            this, SLOT(onScreenshotDialogClosed()));
-    m_screenshotDialog->setWindowTitle(m_app->name());
-    m_screenshotDialog->show();
+    new ScreenShotOverlay(m_screenshotFile->fileName(), viewport(), this);
 }
 
 void ApplicationDetailsWidget::screenshotLabelClicked()
 {
     fetchScreenshot(QApt::Screenshot);
-}
-
-void ApplicationDetailsWidget::onScreenshotDialogClosed()
-{
-    m_screenshotLabel->setCursor(Qt::PointingHandCursor);
-    m_screenshotDialog->deleteLater();
-    m_screenshotDialog = 0;
 }
 
 void ApplicationDetailsWidget::actionButtonClicked()

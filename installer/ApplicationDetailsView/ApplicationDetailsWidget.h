@@ -46,7 +46,6 @@ class Application;
 class ClickableLabel;
 class Review;
 class ReviewsWidget;
-class ScreenShotViewer;
 
 // Widget for showing details about a single application
 class ApplicationDetailsWidget : public QScrollArea
@@ -88,7 +87,6 @@ private:
     KPixmapSequenceOverlayPainter *m_throbberWidget;
 
     KTemporaryFile *m_screenshotFile;
-    ScreenShotViewer *m_screenshotDialog;
 
 private Q_SLOTS:
     void workerEvent(QApt::WorkerEvent event, Transaction *transaction);
@@ -101,7 +99,6 @@ private Q_SLOTS:
     void thumbnailFetched(KJob *job);
     void screenshotFetched(KJob *job);
     void screenshotLabelClicked();
-    void onScreenshotDialogClosed();
     void actionButtonClicked();
     void cancelButtonClicked();
     void populateAddons();

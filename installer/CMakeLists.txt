@@ -32,7 +32,7 @@ set(muon_installer_SRCS
     ClickableLabel.cpp
     effects/GraphicsOpacityDropShadowEffect.cpp
     ViewSwitcher.cpp
-    ScreenShotViewer.cpp
+    ScreenShotOverlay.cpp
     Transaction.cpp
     ReviewsBackend/Rating.cpp
     ReviewsBackend/Review.cpp
