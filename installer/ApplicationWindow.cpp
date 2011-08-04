@@ -168,6 +168,7 @@ void ApplicationWindow::setActionsEnabled(bool enabled)
 
 void ApplicationWindow::clearViews()
 {
+    m_canExit = false; // APT is reloading at this point
     foreach (QWidget *widget, m_viewHash) {
         delete widget;
     }
@@ -203,6 +204,7 @@ void ApplicationWindow::workerEvent(QApt::WorkerEvent event)
 
 void ApplicationWindow::populateViews()
 {
+    m_canExit = true; // APT is done reloading at this point
     QStringList originNames = m_appBackend->appOrigins().toList();
     QStringList originLabels;
     foreach (const QString &originName, originNames) {

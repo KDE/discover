@@ -252,6 +252,7 @@ void UpdaterWindow::startCommit()
 
 void UpdaterWindow::reload()
 {
+    m_canExit = false;
     returnFromPreview();
     m_updaterWidget->reload();
     m_statusWidget->updateStatus();
@@ -271,6 +272,8 @@ void UpdaterWindow::reload()
     if (m_backend->xapianIndexNeedsUpdate()) {
         m_backend->updateXapianIndex();
     }
+
+    m_canExit = true;
 }
 
 void UpdaterWindow::returnFromPreview()

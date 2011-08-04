@@ -431,6 +431,7 @@ void MainWindow::initCommitWidget()
 
 void MainWindow::reload()
 {
+    m_canExit = false;
     returnFromPreview();
     m_stack->setCurrentWidget(m_mainWidget);
 
@@ -456,6 +457,8 @@ void MainWindow::reload()
     if (m_backend->xapianIndexNeedsUpdate()) {
         m_backend->updateXapianIndex();
     }
+
+    m_canExit = true;
 }
 
 void MainWindow::setActionsEnabled(bool enabled)
