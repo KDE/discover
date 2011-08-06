@@ -109,8 +109,9 @@ void DependsTab::populateDepends(int index)
             m_dependsBrowser->append(string);
     }
 
-    QScrollBar *scrollBar = m_dependsBrowser->verticalScrollBar();
-    scrollBar->setValue(scrollBar->minimum());
+    QTextCursor cursor;
+    cursor.movePosition(QTextCursor::Start);
+    m_dependsBrowser->setTextCursor(cursor);
 }
 
 #include "DependsTab.moc"
