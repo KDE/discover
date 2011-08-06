@@ -303,6 +303,11 @@ QApt::PackageList Application::addons()
     foreach (const QString &addon, tempList) {
         bool shouldShow = true;
         QApt::Package *package = m_backend->package(addon);
+
+        if (!package) {
+            continue;
+        }
+
         if (package->section().contains("lib")) {
             continue;
         }
