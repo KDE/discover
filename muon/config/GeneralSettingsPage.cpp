@@ -103,7 +103,7 @@ void GeneralSettingsPage::loadSettings()
 
     m_recommendsCheckBox->setChecked(m_aptConfig->readEntry("APT::Install-Recommends", true));
     m_suggestsCheckBox->setChecked(m_aptConfig->readEntry("APT::Install-Suggests", false));
-    m_untrustedCheckBox->setChecked(m_aptConfig->readEntry("APT::Get::AllowUnauthenticated", true));
+    m_untrustedCheckBox->setChecked(m_aptConfig->readEntry("APT::Get::AllowUnauthenticated", false));
     m_undoStackSpinbox->setValue(settings->undoStackSize());
 
     int autoCleanValue = m_aptConfig->readEntry("APT::Periodic::AutocleanInterval", 0);
