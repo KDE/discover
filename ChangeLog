@@ -1,3 +1,94 @@
+1.2.0:
+======
+- Features:
+  * Added a checkmark emblem to installed applications in the Muon Software Center.
+  * Added a history dialog to the Muon Package Manager using the HistoryView from
+    libmuon. Accessible from the "View" menu or by the Ctrl + H shortcut.
+  * Use more appropriate header strings in the Muon Update Manager.
+  * Added a Zeitgeist-based app usage counter to the Muon Software Center.
+  * Make changes requiring authorization turn the MPM config dialog's apply
+    button's icon into the password icon, like System Settings modules that require
+    admin access have on their apply button.
+  * Add an option to the Muon Package Manager for controlling whether or not to allow
+    the installation of untrusted packages altogether.
+  * Add a "Locked" filter to the status filters in the Muon Package Manager.
+  * Add support for downloading packages from a list, and adding these packages to the
+    cache. (For internet-less computers)
+  * Show non-application packages in the Muon Software Center's PPA views.
+  * Add support to the Muon Software Center for displaying applications from
+    extras.ubuntu.com, which extend the package control records to provide app
+    information in leiu of .desktop files in app-install-data.
+  * Use the Ubuntu ratings and reviews API for application ratings rather than relying
+    on PopCon.
+  * Add support to the Muon Software Center for displaying reviews from the Ubuntu
+    Reviews and Ratings API using QJson.
+  * Made the "Addons" and "Reviews" widgets hideable in the Muon Software Center.
+  * Move the support string in to the package description. This wastes less space in
+    general, and makes things more elegant for distributions that are not driven by
+    Canonical in the first place. (libmuon)
+  * Several layout improvements to the main details tab that reduces the amount of
+    chrome, making more space for content. (libmuon)
+  * Tighten up the spacing between the short description/button box and the long
+    description text area. (libmuon)
+  * Make the easter egg common to all frontends using libmuon (libmuon)
+  * Use a KMessageWidget for application launch notification rather than a dialog.
+    (The dialog is still used when multiple apps are installed at once) (MSC)
+  * Status bar layout improvements that allow us to lose the frame around the labels
+    in the statusbar. (libmuon)
+  * Added some Debian branding love (Debian icon/main origin at the top of the list),
+    like what we currently do for Kubuntu.
+
+- Optimizations:
+  * Speed up application menu path determination by using the KService entry for
+    an application that is already cached in the KDE Sycoca database rather than creating
+    a new KService object. (MSC)
+  * Use a global MuonStrings instance throughout the Muon Suite so that each class that
+    uses MuonStrings doesn't have to keep its own copy of the identical data. (All)
+  * Take the '*''s off of our wildcard filter and use QString::contains rather than a
+    QRegExp. This results in around a 15% speedup for filtering by a package name
+    wildcard, as used in the fonts category. (MSC)
+  * Use QApt::Package::latin1Section() rather than section() when doing a
+    PkgSectionFilter-type filter. This speeds up filtering by package section ~30% in the
+    Muon Software Center. (MSC)
+  * Cache the result of Application::package() during ApplicationBackend initialization
+    in the Muon Software Center. (MSC)
+
+- Bugfixes:
+  * Fixed certain items in the Muon Software Center from having a wrong name string.
+    (Taking the name field of a second group in the .desktop file) (MSC)
+  * Use a sane size hint for default window sizes for all Muon frontends
+  * Do not show download speed or ETA if we have no good info to show. (MPM)
+  * Remove empty categories, and fix the Profiling subcategory showing every
+    package available (MSC)
+  * Category title text in the Muon Software Center is now translatable.
+  * Fix a crash that occurs when the QApt Worker sends a CacheUpdateFinished
+    signal while Muon is still starting up. (Bug 276132) (Common)
+  * Use QQueue for our installation/removal queue. It is much more robust than QList
+    with homebrewn queue behavior using iterators, and solves several crashes.
+    (Bug 274225) (MSC)
+  * Give the HistoryView a sane default size.
+
+1.1.3:
+======
+- Bugfixes:
+  * Fixed the Muon Software Center displaying Firefox's name as
+    "Open a New Window", which is the name field for the Unity launcher group in the
+    .desktop file. This was fixed by only taking the name from the first .desktop
+    group encountered.
+  * Set the event as active while a KSNI is around. This fixes the Muon Notifier
+    displaying multiple status icons when events are triggered. (LP: #769482)
+  * Merge CategoryDrawer from SystemSettings trunk, bringing in some RTL fixes.
+  * Do not search if we are in the middle of a cache reload, like when the
+    "Unmark All Changes" button is pressed. This prevents a crash that occurs when
+    the proxy model's source model is null during reload. (BKO: #274182)
+
+1.1.2:
+======
+- Bugfixes:
+  * Fixed a serious bug uncovered by a regression in the KDE Solid hardware
+    abstraction library in KDE 4.6.2 that prevents actions requiring
+    network connectivity from being possible.
+
 1.1.1:
 =====
 - Bugfixes:
