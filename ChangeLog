@@ -9,6 +9,12 @@
   * Make changes requiring authorization turn the MPM config dialog's apply
     button's icon into the password icon, like System Settings modules that require
     admin access have on their apply button.
+  * Added an option to the configuration dialog to make APT treat a package’s
+    "Suggests" as dependencies. For those who don’t care about disk space.
+  * Enabled selection of multiple packages at a time in the Muon Package Manager,
+    as well as the option to mark multiple packages at once.
+  * A package in the package view can now be de-selected, hiding the details widget,
+    by ctrl-clicking on the package.
   * Add an option to the Muon Package Manager for controlling whether or not to allow
     the installation of untrusted packages altogether.
   * Add a "Locked" filter to the status filters in the Muon Package Manager.

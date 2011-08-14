@@ -4,7 +4,7 @@ Legend:
  - [MSC] = Muon Software Center
 
 -[MPM] Supplemental "slow" search that does a search over package information fields, as opposed to the quick xapian-based search
--[MPM] Config GUI for: Policy on untrusted packages, confirmation dialogs (save on quit)
+-[MPM] Config GUI for confirmation dialogs (save on quit)
 -[MPM] Optional columns for installed and available versions in the Muon Package Manager
 -[MSC] Commercial app support. (See: software-center/db/update.py, backends/restfulclient.py)
 -[MSC] Keep a cached copy of the rating stats in our config directory so ratings can be vied in offline mode.
