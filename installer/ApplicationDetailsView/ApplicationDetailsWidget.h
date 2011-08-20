@@ -31,6 +31,8 @@
 #include "ApplicationBackend.h"
 #include "Transaction.h"
 
+class QDeclarativeView;
+class QGraphicsBlurEffect;
 class QLabel;
 class QProgressBar;
 class QPropertyAnimation;
@@ -74,7 +76,7 @@ private:
     QProgressBar *m_progressBar;
     QPushButton *m_cancelButton;
     QLabel *m_longDescLabel;
-    ClickableLabel *m_screenshotLabel;
+    QDeclarativeView *m_screenshotView;
     QLabel *m_websiteLabel;
     AddonsWidget *m_addonsWidget;
     QLabel *m_size;
@@ -83,8 +85,9 @@ private:
     QLabel *m_support;
     ReviewsWidget *m_reviewsWidget;
 
-    QPropertyAnimation *m_fadeScreenshot;
     KPixmapSequenceOverlayPainter *m_throbberWidget;
+    QGraphicsBlurEffect *m_blurEffect;
+    QPropertyAnimation *m_fadeBlur;
 
     KTemporaryFile *m_screenshotFile;
 
@@ -94,10 +97,9 @@ private Q_SLOTS:
     void showTransactionState(Transaction *transaction);
     void transactionCancelled(Application *app);
     void populateZeitgeistInfo();
-    void fadeInScreenshot();
     void fetchScreenshot(QApt::ScreenshotType screenshotType);
-    void thumbnailFetched(KJob *job);
     void screenshotFetched(KJob *job);
+    void overlayClosed();
     void screenshotLabelClicked();
     void actionButtonClicked();
     void cancelButtonClicked();

@@ -20,6 +20,7 @@ set(muon_LIB_SRCS
     DetailsTabs/InstalledFilesTab.cpp
     DetailsTabs/TechnicalDetailsTab.cpp
     DetailsTabs/VersionTab.cpp
+    mobile/src/mousecursor.cpp
     settings/SettingsPageBase.cpp
     settings/NotifySettingsPage.cpp)
 
@@ -31,6 +32,7 @@ set_target_properties(muonprivate PROPERTIES
 )
 
 target_link_libraries(muonprivate
+    ${QT_QTDECLARATIVE_LIBRARY}
     ${KDE4_KDEUI_LIBS}
     ${KDE4_KIO_LIBS}
     ${KDE4_PHONON_LIBS}
@@ -39,5 +41,9 @@ target_link_libraries(muonprivate
     ${QAPT_LIBRARY}
     ${DEBCONF_KDE_LIB})
 
-install( TARGETS muonprivate  ${INSTALL_TARGETS_DEFAULT_ARGS} )
-install( FILES moo.ogg DESTINATION ${DATA_INSTALL_DIR}/libmuon )
+file(GLOB muon_QMLS "${CMAKE_CURRENT_SOURCE_DIR}/mobile/qml/*.qml")
+
+install(TARGETS muonprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(FILES moo.ogg DESTINATION ${DATA_INSTALL_DIR}/libmuon)
+install(FILES ${muon_QMLS} DESTINATION ${DATA_INSTALL_DIR}/libmuon)
+

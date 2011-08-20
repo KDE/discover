@@ -23,7 +23,14 @@
 #include <QApplication>
 #include <QPropertyAnimation>
 #include <QtCore/QStringBuilder>
+#include <QtDeclarative/QDeclarativeView>
+#include <QtDeclarative/QDeclarativeContext>
+#include <QtDeclarative/QDeclarativeComponent>
+#include <QtDeclarative/QDeclarativeError>
 #include <QtGui/QHBoxLayout>
+#include <QtGui/QGraphicsDropShadowEffect>
+#include <QtGui/QGraphicsBlurEffect>
+#include <QtGui/QGraphicsObject>
 #include <QtGui/QLabel>
 #include <QtGui/QProgressBar>
 #include <QtGui/QPushButton>
@@ -39,6 +46,7 @@
 #include <KPixmapSequence>
 #include <kpixmapsequenceoverlaypainter.h>
 #include <KService>
+#include <KStandardDirs>
 #include <KStandardGuiItem>
 #include <KTemporaryFile>
 #include <KToolInvocation>
@@ -63,13 +71,13 @@
 #include "AddonsWidget.h"
 #include "Application.h"
 #include "ClickableLabel.h"
-#include "effects/GraphicsOpacityDropShadowEffect.h"
 #include "ScreenShotOverlay.h"
 #include "ReviewsBackend/Rating.h"
 #include "ReviewsBackend/Review.h"
 #include "ReviewsBackend/ReviewsWidget.h"
 #include "ReviewsBackend/ReviewsBackend.h"
 #include "../../libmuon/MuonStrings.h"
+#include "../../libmuon/mobile/src/mousecursor.h"
 
 #define BLUR_RADIUS 15
 
@@ -78,6 +86,9 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     , m_appBackend(backend)
     , m_screenshotFile(0)
 {
+    qmlRegisterType<QGraphicsDropShadowEffect>("Effects",1,0,"DropShadow");
+    qmlRegisterType<MouseCursor>("MuonMobile", 1, 0, "MouseCursor");
+
     setWidgetResizable(true);
     viewport()->setAutoFillBackground(false);
 
@@ -189,20 +200,24 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     m_websiteLabel->setAlignment(Qt::AlignLeft);
     m_websiteLabel->setOpenExternalLinks(true);
 
-    m_screenshotLabel = new ClickableLabel(body);
-    m_screenshotLabel->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    m_screenshotLabel->setMinimumSize(170, 130);
+    m_screenshotView = new QDeclarativeView(this);
+    m_screenshotView->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    m_screenshotView->setMinimumSize(170, 130);
+    m_screenshotView->rootContext()->setContextProperty("view", m_screenshotView);
+    m_screenshotView->setSource(KStandardDirs::locate("data", QLatin1String("libmuon/ThumbnailView.qml")));
+    QObject *item = m_screenshotView->rootObject();
+    connect(item, SIGNAL(thumbnailClicked()), this, SLOT(screenshotLabelClicked()));
 
-    m_throbberWidget = new KPixmapSequenceOverlayPainter(m_screenshotLabel);
+    m_throbberWidget = new KPixmapSequenceOverlayPainter(m_screenshotView->viewport());
     m_throbberWidget->setSequence(KPixmapSequence("process-working", 22));
     m_throbberWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    m_throbberWidget->setWidget(m_screenshotLabel);
+    m_throbberWidget->setWidget(m_screenshotView->viewport());
     m_throbberWidget->start();
-
-    connect(m_screenshotLabel, SIGNAL(clicked()), this, SLOT(screenshotLabelClicked()));
+    connect(item, SIGNAL(thumbnailLoaded()), m_throbberWidget, SLOT(stop()));
 
     bodyLayout->addWidget(bodyLeft);
-    bodyLayout->addWidget(m_screenshotLabel);
+    bodyLayout->addWidget(m_screenshotView);
+    m_screenshotView->show();
 
     m_addonsWidget = new AddonsWidget(widget, m_appBackend);
     connect(m_addonsWidget, SIGNAL(applyButtonClicked(QHash<QApt::Package *, QApt::Package::State>)),
@@ -248,6 +263,20 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     QWidget *verticalSpacer = new QWidget(this);
     verticalSpacer->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
 
+    // Blur effect for later
+    m_blurEffect = new QGraphicsBlurEffect(widget);
+    m_blurEffect->setBlurHints(QGraphicsBlurEffect::PerformanceHint);
+    m_blurEffect->setBlurRadius(0);
+    widget->setGraphicsEffect(m_blurEffect);
+
+    m_fadeBlur = new QPropertyAnimation(m_blurEffect, "blurRadius", this);
+    m_fadeBlur->setDuration(200);
+    m_fadeBlur->setStartValue(qreal(0));
+    m_fadeBlur->setEndValue(qreal(5));
+
+    // Workarounds for QScrollAreas not repainting whilst under the effects of a QGraphicsEffect
+    connect(m_fadeBlur, SIGNAL(finished()), m_addonsWidget, SLOT(repaintViewport()));
+    connect(m_fadeBlur, SIGNAL(finished()), m_screenshotView->viewport(), SLOT(repaint()));
 
     layout->addWidget(headerWidget);
     layout->addWidget(m_menuPathWidget);
@@ -554,12 +583,6 @@ void ApplicationDetailsWidget::populateZeitgeistInfo()
 #endif // HAVE_QZEITGEIST
 }
 
-void ApplicationDetailsWidget::fadeInScreenshot()
-{
-    m_fadeScreenshot->setDirection(QAbstractAnimation::Forward);
-    m_fadeScreenshot->start();
-}
-
 void ApplicationDetailsWidget::fetchScreenshot(QApt::ScreenshotType screenshotType)
 {
     if (m_screenshotFile) {
@@ -575,10 +598,13 @@ void ApplicationDetailsWidget::fetchScreenshot(QApt::ScreenshotType screenshotTy
                                m_screenshotFile->fileName(), -1, KIO::Overwrite | KIO::HideProgressInfo);
 
     switch (screenshotType) {
-    case QApt::Thumbnail:
-        connect(getJob, SIGNAL(result(KJob *)),
-            this, SLOT(thumbnailFetched(KJob *)));
+    case QApt::Thumbnail: {
+        QObject *object = m_screenshotView->rootObject();
+        if (object) {
+            object->setProperty("source", m_app->screenshotUrl(QApt::Thumbnail).pathOrUrl());
+        }
         break;
+    }
     case QApt::Screenshot:
         connect(getJob, SIGNAL(result(KJob *)),
             this, SLOT(screenshotFetched(KJob *)));
@@ -589,42 +615,34 @@ void ApplicationDetailsWidget::fetchScreenshot(QApt::ScreenshotType screenshotTy
     }
 }
 
-void ApplicationDetailsWidget::thumbnailFetched(KJob *job)
-{
-    m_throbberWidget->stop();
-    if (job->error()) {
-        m_screenshotLabel->hide();
-        return;
-    }
-
-    GraphicsOpacityDropShadowEffect *shadow = new GraphicsOpacityDropShadowEffect(m_screenshotLabel);
-    shadow->setBlurRadius(BLUR_RADIUS);
-    shadow->setOpacity(0);
-    shadow->setOffset(2);
-    shadow->setColor(QApplication::palette().dark().color());
-    m_screenshotLabel->setGraphicsEffect(shadow);
-
-    m_fadeScreenshot = new QPropertyAnimation(shadow, "opacity", this);
-    m_fadeScreenshot->setDuration(500);
-    m_fadeScreenshot->setStartValue(qreal(0));
-    m_fadeScreenshot->setEndValue(qreal(1));
-
-    m_screenshotLabel->setPixmap(QPixmap(m_screenshotFile->fileName()).scaled(160,120, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-    m_screenshotLabel->setCursor(Qt::PointingHandCursor);
-    fadeInScreenshot();
-}
-
 void ApplicationDetailsWidget::screenshotFetched(KJob *job)
 {
     if (job->error()) {
         return;
     }
 
-    new ScreenShotOverlay(m_screenshotFile->fileName(), viewport(), this);
+    m_fadeBlur->setDirection(QAbstractAnimation::Forward);
+    m_fadeBlur->start();
+
+    ScreenShotOverlay *overlay = new ScreenShotOverlay(m_screenshotFile->fileName(), viewport(), this);
+    connect(overlay, SIGNAL(destroyed(QObject*)), this, SLOT(overlayClosed()));
+}
+
+void ApplicationDetailsWidget::overlayClosed()
+{
+    QObject *item = m_screenshotView->rootObject();
+    connect(item, SIGNAL(thumbnailClicked()), this, SLOT(screenshotLabelClicked()));
+
+    m_fadeBlur->setDirection(QAbstractAnimation::Backward);
+    m_fadeBlur->start();
+
+    unsetCursor();
 }
 
 void ApplicationDetailsWidget::screenshotLabelClicked()
 {
+    QObject *item = m_screenshotView->rootObject();
+    disconnect(item, SIGNAL(thumbnailClicked()), this, SLOT(screenshotLabelClicked()));
     fetchScreenshot(QApt::Screenshot);
 }
 

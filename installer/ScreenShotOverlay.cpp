@@ -133,7 +133,7 @@ void ScreenShotOverlay::fadeIn()
     effect->setColor(QApplication::palette().dark().color());
 
     QPropertyAnimation *anim = new QPropertyAnimation(effect, "opacity", this);
-    anim->setDuration(500);
+    anim->setDuration(200);
     anim->setStartValue(qreal(0));
     anim->setEndValue(qreal(1));
 

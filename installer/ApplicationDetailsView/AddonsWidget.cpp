@@ -110,6 +110,12 @@ void AddonsWidget::setAddons(QApt::PackageList addons)
     populateModel();
 }
 
+void AddonsWidget::repaintViewport()
+{
+    m_addonsView->viewport()->update();
+    m_addonsView->viewport()->repaint();
+}
+
 void AddonsWidget::populateModel()
 {
     m_addonsModel->clear();

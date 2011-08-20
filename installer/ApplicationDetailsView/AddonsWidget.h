@@ -54,6 +54,9 @@ private:
     QPushButton *m_addonsRevertButton;
     QPushButton *m_addonsApplyButton;
 
+public Q_SLOTS:
+    void repaintViewport();
+
 private Q_SLOTS:
     void populateModel();
     void expandButtonClicked();
