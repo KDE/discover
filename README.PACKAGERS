@@ -1,10 +1,11 @@
-Binary dependencies:
+Runtime dependencies:
 libmuonprivate:
 - kdesudo
-- software-properties
+- software-properties-kde
 
 muon:
 - apt-xapian-index
 
 muon-installer:
+- app-install-data
 - apt-xapian-index
