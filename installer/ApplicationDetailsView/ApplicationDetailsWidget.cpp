@@ -392,9 +392,9 @@ void ApplicationDetailsWidget::setApplication(Application *app)
     }
 
     // Fetch reviews
-    reviewsBackend->fetchReviews(app);
     connect(reviewsBackend, SIGNAL(reviewsReady(Application *, QList<Review *>)),
             this, SLOT(populateReviews(Application *, QList<Review *>)));
+    reviewsBackend->fetchReviews(app);
 
     // Catch already-begun downloads. If the state is something else, we won't
     // care because we won't handle it
