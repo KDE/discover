@@ -15,9 +15,9 @@ Legend:
 
 New updater GUI:
 - Split available updates in to categories:
-  - "System Libraries" (better name?)
-  - Source packages (generally applications)
-  - Security updates
+  - "System Updates" (better name?)
+  - "Application Updates" Source packages (generally applications)
+  - "Security Updates", at top if present
 - Do not give package counts in notifications or category headers
 - Do give download size amounts, since that is interesting to users.
 - Give each category a details extender, where a list of affected packages can be found

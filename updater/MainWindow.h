@@ -8,12 +8,13 @@ class MainWindow : public MuonMainWindow
 {
     Q_OBJECT
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    MainWindow();
 
-signals:
+private:
 
-public slots:
-
+private Q_SLOTS:
+    void initGUI();
+    void setupActions();
 };
 
 #endif // MAINWINDOW_H

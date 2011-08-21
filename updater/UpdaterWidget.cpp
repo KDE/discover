@@ -1,46 +1,133 @@
-/***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
- *                                                                         *
- *   This program is free software; you can redistribute it and/or         *
- *   modify it under the terms of the GNU General Public License as        *
- *   published by the Free Software Foundation; either version 2 of        *
- *   the License or (at your option) version 3 or any later version        *
- *   accepted by the membership of KDE e.V. (or its successor approved     *
- *   by the membership of KDE e.V.), which shall act as a proxy            *
- *   defined in Section 14 of version 3 of the license.                    *
- *                                                                         *
- *   This program is distributed in the hope that it will be useful,       *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
- ***************************************************************************/
-
 #include "UpdaterWidget.h"
 
-#include <KLocale>
+// Qt includes
+#include <QStandardItemModel>
+#include <QtCore/QDir>
+#include <QtGui/QTreeView>
+#include <QtGui/QVBoxLayout>
 
-#include "../libmuon/DetailsWidget.h"
+// KDE includes
+#include <KIcon>
+#include <KLocale>
+#include <KDebug>
+
+// LibQApt includes
 #include <LibQApt/Backend>
 
-UpdaterWidget::UpdaterWidget(QWidget *parent)
-    : PackageWidget(parent)
-{
-    setPackagesType(PackageWidget::MarkedPackages);
+// Own includes
+#include "../installer/Application.h"
+#include "UpdateModel/UpdateModel.h"
+#include "UpdateModel/UpdateItem.h"
 
-    setHeaderText(i18n("<b>Update Packages</b>"));
-}
-
-UpdaterWidget::~UpdaterWidget()
+UpdaterWidget::UpdaterWidget(QWidget *parent) :
+    QWidget(parent)
 {
+    setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+    m_updateModel = new UpdateModel(this);
+
+    m_updateView = new QTreeView(this);
+    m_updateView->setAlternatingRowColors(true);
+    m_updateView->setModel(m_updateModel);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout(this);
+    mainLayout->setMargin(0);
+
+    mainLayout->addWidget(m_updateView);
+
+    setLayout(mainLayout);
 }
 
 void UpdaterWidget::setBackend(QApt::Backend *backend)
 {
-    backend->markPackagesForDistUpgrade();
-    PackageWidget::setBackend(backend);
+    m_backend = backend;
+
+    populateUpdateModel();
 }
 
-#include "UpdaterWidget.moc"
+void UpdaterWidget::reload()
+{
+    //m_updateModel->clear();
+    m_backend->reloadCache();
+
+    populateUpdateModel();
+}
+
+void UpdaterWidget::populateUpdateModel()
+{
+    QApt::PackageList upgradeList = m_backend->upgradeablePackages();
+
+    UpdateItem *securityItem = new UpdateItem("Security Updates",
+                                              KIcon("security-medium"));
+
+    UpdateItem *appItem = new UpdateItem("Application Updates",
+                                          KIcon("applications-other"));
+
+    UpdateItem *systemItem = new UpdateItem("System Updates",
+                                             KIcon("applications-system"));
+
+    QDir appDir("/usr/share/app-install/desktop/");
+    QStringList fileList = appDir.entryList(QDir::Files);
+
+    foreach(const QString &fileName, fileList) {
+        Application *app = new Application("/usr/share/app-install/desktop/" + fileName, m_backend);
+        QApt::Package *package = app->package();
+        if (!package || !upgradeList.contains(package)) {
+            continue;
+        }
+        int state = package->state();
+
+        if (!(state & QApt::Package::Upgradeable)) {
+            continue;
+        }
+
+        UpdateItem *updateItem = new UpdateItem(app);
+
+        // Set update type
+        if (package->component().contains(QLatin1String("security"))) {
+            securityItem->appendChild(updateItem);
+        } else {
+            appItem->appendChild(updateItem);
+        }
+
+        // Set list index
+        m_upgradeableApps.append(app);
+        //upgradeItem->setData(m_upgradeableApps.count()-1, ListIndexRole);
+
+        upgradeList.removeAll(package);
+    }
+
+    foreach (QApt::Package *package, upgradeList) {
+        Application *app = new Application(package, m_backend);
+        UpdateItem *updateItem = new UpdateItem(app);
+
+        // Set update type
+        if (package->component().contains(QLatin1String("security"))) {
+            securityItem->appendChild(updateItem);
+        } else {
+            systemItem->appendChild(updateItem);
+        }
+
+        // Set list index
+        m_upgradeableApps.append(app);
+        //upgradeItem->setData(m_upgradeableApps.count()-1, ListIndexRole);
+    }
+
+    if (securityItem->childCount()) {
+        m_updateModel->addItem(securityItem);
+    } else {
+        delete securityItem;
+    }
+
+    if (appItem->childCount()) {
+        m_updateModel->addItem(appItem);
+    } else {
+        delete appItem;
+    }
+
+    if (systemItem->childCount()) {
+        m_updateModel->addItem(systemItem);
+    } else {
+        delete systemItem;
+    }
+}

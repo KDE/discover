@@ -18,11 +18,12 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "UpdaterWindow.h"
+#include "MainWindow.h"
 
 #include <KUniqueApplication>
 #include <KAboutData>
 #include <KCmdLineArgs>
+#include <KStandardDirs>
 
 #include <stdio.h>
 
@@ -48,10 +49,13 @@ int main(int argc, char **argv)
 
     KUniqueApplication app;
     app.disableSessionManagement();
-    // Libmuon translations
+    // Translations
+    KGlobal::locale()->insertCatalog("app-install-data");
     KGlobal::locale()->insertCatalog("libmuon");
+    // Needed for KIcon compatibility w/ application icons from app-install-data
+    KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
 
-    UpdaterWindow *mainWindow = new UpdaterWindow;
+    MainWindow *mainWindow = new MainWindow;
     mainWindow->show();
 
     return app.exec();
