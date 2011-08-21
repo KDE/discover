@@ -21,8 +21,6 @@
 #ifndef APPLICATIONWINDOW_H
 #define APPLICATIONWINDOW_H
 
-#include <LibQApt/Globals>
-
 // Own includes
 #include "../libmuon/MuonMainWindow.h"
 
@@ -33,7 +31,6 @@ class QStackedWidget;
 class QStandardItemModel;
 class QTreeView;
 
-class KAction;
 class KMessageWidget;
 class KService;
 
@@ -41,11 +38,6 @@ class Application;
 class ApplicationBackend;
 class ApplicationLauncher;
 class ViewSwitcher;
-
-namespace QApt
-{
-    class Backend;
-}
 
 enum ViewModelRole {
     /// A role for storing ViewType
