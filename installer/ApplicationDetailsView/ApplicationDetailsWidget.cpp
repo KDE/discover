@@ -594,9 +594,6 @@ void ApplicationDetailsWidget::fetchScreenshot(QApt::ScreenshotType screenshotTy
     m_screenshotFile->setSuffix(".png");
     m_screenshotFile->open();
 
-    KIO::FileCopyJob *getJob = KIO::file_copy(m_app->screenshotUrl(screenshotType),
-                               m_screenshotFile->fileName(), -1, KIO::Overwrite | KIO::HideProgressInfo);
-
     switch (screenshotType) {
     case QApt::Thumbnail: {
         QObject *object = m_screenshotView->rootObject();
@@ -605,10 +602,13 @@ void ApplicationDetailsWidget::fetchScreenshot(QApt::ScreenshotType screenshotTy
         }
         break;
     }
-    case QApt::Screenshot:
+    case QApt::Screenshot: {
+        KIO::FileCopyJob *getJob = KIO::file_copy(m_app->screenshotUrl(screenshotType),
+                               m_screenshotFile->fileName(), -1, KIO::Overwrite | KIO::HideProgressInfo);
         connect(getJob, SIGNAL(result(KJob *)),
             this, SLOT(screenshotFetched(KJob *)));
         break;
+    }
     case QApt::UnknownType:
     default:
         break;
