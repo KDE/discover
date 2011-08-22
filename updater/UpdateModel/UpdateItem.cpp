@@ -118,7 +118,7 @@ UpdateItem::ItemType UpdateItem::type() const
     }
 
     // We now know we have a parent
-    if (!m_parent->parent()) {
+    if (parent()->parent() == 0) {
         return CategoryItem;
     } else {
         return ApplicationItem;

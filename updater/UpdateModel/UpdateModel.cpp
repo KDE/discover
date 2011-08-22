@@ -1,12 +1,19 @@
 #include "UpdateModel.h"
 
+// Qt includes
+#include <QtGui/QFont>
+
 // KDE includes
 #include <KGlobal>
+#include <KIconLoader>
 #include <KLocale>
 
 // Own includes
 #include "UpdateItem.h"
 #include "../../installer/Application.h"
+
+#define ICON_SIZE KIconLoader::SizeSmallMedium
+
 
 UpdateModel::UpdateModel(QObject *parent) :
     QAbstractItemModel(parent)
@@ -40,8 +47,24 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         return QVariant();
     case Qt::DecorationRole:
         if (column == 0) {
-            return item->icon();
+            return item->icon().pixmap(ICON_SIZE, ICON_SIZE);
         }
+    case Qt::FontRole: {
+        QFont font;
+        if ((item->type() == UpdateItem::CategoryItem) && column == 1) {
+            font.setBold(true);
+            return font;
+        }
+        return font;
+    }
+    case Qt::CheckStateRole:
+        switch (column) {
+        case 0:
+            return Qt::Unchecked;
+        case 1:
+            break;
+        }
+        return QVariant();
     default:
         return QVariant();
     }

@@ -4,6 +4,7 @@ set(muon_updater_SRCS
     UpdaterWidget.cpp
     UpdateModel/UpdateItem.cpp
     UpdateModel/UpdateModel.cpp
+    UpdateModel/UpdateDelegate.cpp
     ../installer/Application.cpp
     config/UpdaterSettingsDialog.cpp)
 

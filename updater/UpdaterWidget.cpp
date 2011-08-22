@@ -3,6 +3,7 @@
 // Qt includes
 #include <QStandardItemModel>
 #include <QtCore/QDir>
+#include <QtGui/QHeaderView>
 #include <QtGui/QTreeView>
 #include <QtGui/QVBoxLayout>
 
@@ -18,6 +19,7 @@
 #include "../installer/Application.h"
 #include "UpdateModel/UpdateModel.h"
 #include "UpdateModel/UpdateItem.h"
+#include "UpdateModel/UpdateDelegate.h"
 
 UpdaterWidget::UpdaterWidget(QWidget *parent) :
     QWidget(parent)
@@ -28,7 +30,11 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
 
     m_updateView = new QTreeView(this);
     m_updateView->setAlternatingRowColors(true);
+    m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
     m_updateView->setModel(m_updateModel);
+
+    UpdateDelegate *delegate = new UpdateDelegate(m_updateView);
+    m_updateView->setItemDelegate(delegate);
 
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setMargin(0);
@@ -130,4 +136,7 @@ void UpdaterWidget::populateUpdateModel()
     } else {
         delete systemItem;
     }
+
+    m_updateView->resizeColumnToContents(0);
+    m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
 }
