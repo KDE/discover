@@ -6,6 +6,7 @@
 #include <QtGui/QPainter>
 
 // KDE includes
+#include <KDebug>
 #include <KIcon>
 #include <KIconLoader>
 
@@ -50,7 +51,7 @@ QSize UpdateDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelI
         QRect rect = style->subElementRect(QStyle::SE_CheckBoxIndicator, &option);
         // Adds the icon size AND the checkbox size
         // [ x ] (icon) Text
-        size.rwidth() += 4 * SPACING + 44 + rect.width();
+        size.rwidth() += 4 * SPACING + ICON_SIZE + rect.width();
     }
 
     return size;
@@ -63,8 +64,7 @@ bool UpdateDelegate::editorEvent(QEvent *event,
 {
     bool setData = false;
     if (index.column() == 0 &&
-        event->type() == QEvent::MouseButtonPress) {
-        setData = true;
+        event->type() == QEvent::MouseButtonRelease) {
     }
 
     const QWidget *widget = 0;
@@ -77,6 +77,7 @@ bool UpdateDelegate::editorEvent(QEvent *event,
     // make sure that we have the right event type
     if ((event->type() == QEvent::MouseButtonRelease)
         || (event->type() == QEvent::MouseButtonDblClick)) {
+        setData = true;
         QStyleOptionViewItemV4 viewOpt(option);
         initStyleOption(&viewOpt, index);
         QRect checkRect = style->subElementRect(QStyle::SE_ItemViewItemCheckIndicator, &viewOpt, widget);

@@ -37,6 +37,8 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void populateUpdateModel();
+    void checkApps(QList<Application *> apps, bool checked);
+    void checkApp(Application *app, bool checked);
 };
 
 #endif // UPDATERWIDGET_H

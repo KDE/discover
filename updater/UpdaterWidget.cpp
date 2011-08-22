@@ -28,6 +28,11 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
 
     m_updateModel = new UpdateModel(this);
 
+    connect(m_updateModel, SIGNAL(checkApps(QList<Application*>,bool)),
+            this, SLOT(checkApps(QList<Application*>,bool)));
+    connect(m_updateModel, SIGNAL(checkApp(Application*,bool)),
+            this, SLOT(checkApp(Application*,bool)));
+
     m_updateView = new QTreeView(this);
     m_updateView->setAlternatingRowColors(true);
     m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
@@ -96,13 +101,12 @@ void UpdaterWidget::populateUpdateModel()
             appItem->appendChild(updateItem);
         }
 
-        // Set list index
         m_upgradeableApps.append(app);
-        //upgradeItem->setData(m_upgradeableApps.count()-1, ListIndexRole);
 
         upgradeList.removeAll(package);
     }
 
+    // Remaining packages in the upgrade list aren't applications
     foreach (QApt::Package *package, upgradeList) {
         Application *app = new Application(package, m_backend);
         UpdateItem *updateItem = new UpdateItem(app);
@@ -114,9 +118,7 @@ void UpdaterWidget::populateUpdateModel()
             systemItem->appendChild(updateItem);
         }
 
-        // Set list index
         m_upgradeableApps.append(app);
-        //upgradeItem->setData(m_upgradeableApps.count()-1, ListIndexRole);
     }
 
     if (securityItem->childCount()) {
@@ -139,4 +141,18 @@ void UpdaterWidget::populateUpdateModel()
 
     m_updateView->resizeColumnToContents(0);
     m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
+    m_backend->markPackagesForUpgrade();
+}
+
+void UpdaterWidget::checkApp(Application *app, bool checked)
+{
+    checked ? app->package()->setInstall() : app->package()->setKeep();
+}
+
+void UpdaterWidget::checkApps(QList<Application *> apps, bool checked)
+{
+    // FIXME: Do event compression and crap
+    foreach (Application *app, apps) {
+        checkApp(app, checked);
+    }
 }

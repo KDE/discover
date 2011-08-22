@@ -30,6 +30,7 @@ public:
     void setParent(UpdateItem *parent);
 
     void appendChild(UpdateItem *child);
+    QList<UpdateItem *> children() const;
     UpdateItem *child(int row) const;
     int childCount() const;
     int row() const;
@@ -38,6 +39,7 @@ public:
     QString name() const;
     KIcon icon() const;
     qint64 size() const;
+    Qt::CheckState checked() const;
     ItemType type() const;
 
 private:

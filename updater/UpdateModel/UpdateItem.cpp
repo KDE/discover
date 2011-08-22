@@ -1,5 +1,7 @@
 #include "UpdateItem.h"
 
+#include <KDebug>
+
 #include "../../installer/Application.h"
 
 UpdateItem::UpdateItem()
@@ -42,6 +44,11 @@ void UpdateItem::appendChild(UpdateItem *child)
 {
     child->setParent(this);
     m_children.append(child);
+}
+
+QList<UpdateItem *> UpdateItem::children() const
+{
+    return m_children;
 }
 
 UpdateItem *UpdateItem::child(int row) const
@@ -104,11 +111,49 @@ qint64 UpdateItem::size() const
         size = m_app->package()->downloadSize();
     } else if (itemType == CategoryItem) {
         foreach (UpdateItem *item, m_children) {
-            size += item->size();
+            if (item->app()->package()->state() & QApt::Package::ToUpgrade) {
+                size += item->size();
+            }
         }
     }
 
     return size;
+}
+
+Qt::CheckState UpdateItem::checked() const
+{
+    int itemType = type();
+    Qt::CheckState checkState = Qt::Unchecked;
+
+    switch (itemType) {
+    case CategoryItem: {
+        int checkedCount = 0;
+        int uncheckedCount = 0;
+
+        foreach (UpdateItem *child, m_children) {
+            (child->app()->package()->state() & QApt::Package::ToUpgrade) ?
+                        checkedCount++ : uncheckedCount++;
+        }
+
+        if (checkedCount && uncheckedCount) {
+            checkState = Qt::PartiallyChecked;
+            break;
+        }
+
+        if ((checkedCount && !uncheckedCount)) {
+            checkState = Qt::Checked;
+        } else {
+            checkState = Qt::Unchecked;
+        }
+        break;
+    }
+    case ApplicationItem:
+        (app()->package()->state() & QApt::Package::ToUpgrade) ?
+                    checkState = Qt::Checked : checkState = Qt::Unchecked;
+        break;
+    }
+
+    return checkState;
 }
 
 UpdateItem::ItemType UpdateItem::type() const

@@ -3,6 +3,7 @@
 
 #include <QtCore/QAbstractItemModel>
 
+class Application;
 class UpdateItem;
 
 class UpdateModel : public QAbstractItemModel
@@ -25,9 +26,14 @@ public:
     UpdateItem *itemFromIndex(const QModelIndex &index) const;
 
     void addItem(UpdateItem *item);
+    bool setData(const QModelIndex &index, const QVariant &value, int role);
 
 private:
     UpdateItem *m_rootItem;
+
+Q_SIGNALS:
+    void checkApp(Application *app, bool checked);
+    void checkApps(QList<Application *> apps, bool checked);
 };
 
 #endif // UPDATEMODEL_H

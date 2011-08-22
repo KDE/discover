@@ -22,12 +22,16 @@ void MainWindow::initGUI()
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
             updaterWidget, SLOT(setBackend(QApt::Backend *)));
 
+    setupActions();
+
     setCentralWidget(updaterWidget);
 }
 
 void MainWindow::setupActions()
 {
     MuonMainWindow::setupActions();
+
+    setActionsEnabled(false);
 
     setupGUI((StandardWindowOption)(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
 }

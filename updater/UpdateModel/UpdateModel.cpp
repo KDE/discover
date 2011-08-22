@@ -7,6 +7,7 @@
 #include <KGlobal>
 #include <KIconLoader>
 #include <KLocale>
+#include <KDebug>
 
 // Own includes
 #include "UpdateItem.h"
@@ -58,11 +59,8 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         return font;
     }
     case Qt::CheckStateRole:
-        switch (column) {
-        case 0:
-            return Qt::Unchecked;
-        case 1:
-            break;
+        if (column == 0) {
+            return item->checked();
         }
         return QVariant();
     default:
@@ -152,4 +150,29 @@ void UpdateModel::addItem(UpdateItem *item)
     beginInsertRows(QModelIndex(), m_rootItem->childCount(), m_rootItem->childCount());
     m_rootItem->appendChild(item);
     endInsertRows();
+}
+
+bool UpdateModel::setData(const QModelIndex &index, const QVariant &value, int role)
+{
+    if (role == Qt::CheckStateRole) {
+        UpdateItem *item = static_cast<UpdateItem*>(index.internalPointer());
+        bool newValue = value.toBool();
+        int type = item->type();
+
+        if (type == UpdateItem::CategoryItem) {
+            QList<Application *> apps;
+
+            // Collect items to (un)check
+            foreach (UpdateItem *child, item->children()) {
+                apps << child->app();
+            }
+
+            emit checkApps(apps, newValue);
+        } else if (type == UpdateItem::ApplicationItem) {
+            emit checkApp(item->app(), newValue);
+        }
+        return true;
+    }
+
+    return false;
 }
