@@ -73,7 +73,6 @@ PackageWidget::PackageWidget(QWidget *parent)
         , m_headerLabel(0)
         , m_searchEdit(0)
         , m_packagesType(0)
-        , m_compressEvents(false)
         , m_stop(false)
 {
     m_watcher = new QFutureWatcher<QList<QApt::Package*> >(this);
@@ -383,7 +382,7 @@ bool PackageWidget::confirmEssentialRemoval()
 
 void PackageWidget::saveState()
 {
-    if (!m_compressEvents) {
+    if (!m_backend->areEventsCompressed()) {
         m_oldCacheState = m_backend->currentCacheState();
         m_backend->saveCacheState();
     }
@@ -408,7 +407,7 @@ void PackageWidget::actOnPackages(QApt::Package::State action)
 
     QApplication::setOverrideCursor(Qt::WaitCursor);
     saveState();
-    m_compressEvents = true;
+    m_backend->setCompressEvents(true);
     m_stop = false;
 
     // There are three indexes per row, so we want a duplicate-less set of packages
@@ -419,6 +418,8 @@ void PackageWidget::actOnPackages(QApt::Package::State action)
 
     foreach (QApt::Package *package, packages) {
         if (m_stop) {
+            m_backend->setCompressEvents(false);
+            QApplication::restoreOverrideCursor();
             break;
         }
 
@@ -446,7 +447,7 @@ void PackageWidget::actOnPackages(QApt::Package::State action)
         }
     }
 
-    m_compressEvents = false;
+    m_backend->setCompressEvents(false);
     QApplication::restoreOverrideCursor();
 }
 

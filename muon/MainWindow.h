@@ -27,7 +27,6 @@
 class QSplitter;
 class QStackedWidget;
 class QToolBox;
-class KAction;
 class KDialog;
 
 class ManagerSettingsDialog;
@@ -37,11 +36,6 @@ class ReviewWidget;
 class DownloadWidget;
 class CommitWidget;
 class StatusWidget;
-
-namespace QApt
-{
-    class Backend;
-}
 
 /**
  * This class serves as the main window for Muon.  It handles the
