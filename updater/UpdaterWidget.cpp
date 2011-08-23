@@ -165,5 +165,7 @@ void UpdaterWidget::checkApps(QList<Application *> apps, bool checked)
         action = QApt::Package::ToKeep;
     }
 
+    QApplication::setOverrideCursor(Qt::WaitCursor);
     m_backend->markPackages(list, action);
+    QApplication::restoreOverrideCursor();
 }
