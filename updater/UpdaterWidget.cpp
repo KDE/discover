@@ -1,6 +1,7 @@
 #include "UpdaterWidget.h"
 
 // Qt includes
+#include <QApplication>
 #include <QStandardItemModel>
 #include <QtCore/QDir>
 #include <QtGui/QHeaderView>
