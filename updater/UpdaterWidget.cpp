@@ -151,8 +151,17 @@ void UpdaterWidget::checkApp(Application *app, bool checked)
 
 void UpdaterWidget::checkApps(QList<Application *> apps, bool checked)
 {
-    // FIXME: Do event compression and crap
+    QApt::PackageList list;
     foreach (Application *app, apps) {
-        checkApp(app, checked);
+        list << app->package();
     }
+
+    QApt::Package::State action;
+    if (checked) {
+        action = QApt::Package::ToInstall;
+    } else {
+        action = QApt::Package::ToKeep;
+    }
+
+    m_backend->markPackages(list, action);
 }
