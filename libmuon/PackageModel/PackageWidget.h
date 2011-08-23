@@ -98,7 +98,6 @@ private:
     KAction *m_lockAction;
 
     int m_packagesType;
-    bool m_compressEvents;
     bool m_stop;
 
     QString digestReason(QApt::Package *pkg,
