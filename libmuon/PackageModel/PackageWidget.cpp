@@ -453,9 +453,7 @@ void PackageWidget::actOnPackages(QApt::Package::State action)
 
 void PackageWidget::setInstall(QApt::Package *package)
 {
-    if (!m_backend->areEventsCompressed()) {
-        saveState();
-    }
+    saveState();
 
     if (!package->availableVersion().isEmpty()) {
         package->setInstall();
@@ -478,9 +476,7 @@ void PackageWidget::setRemove(QApt::Package *package)
     }
 
     if (remove) {
-        if (!m_backend->areEventsCompressed()) {
-            saveState();
-        }
+        saveState();
         package->setRemove();
 
         handleBreakage(package);
@@ -504,9 +500,7 @@ void PackageWidget::setPackagesUpgrade()
 
 void PackageWidget::setReInstall(QApt::Package *package)
 {
-    if (!m_backend->areEventsCompressed()) {
-        saveState();
-    }
+    saveState();
 
     package->setReInstall();
 
@@ -526,9 +520,7 @@ void PackageWidget::setPurge(QApt::Package *package)
     }
 
     if (remove) {
-        if (!m_backend->areEventsCompressed()) {
-            saveState();
-        }
+        saveState();
         package->setPurge();
 
         handleBreakage(package);
@@ -542,9 +534,7 @@ void PackageWidget::setPackagesPurge()
 
 void PackageWidget::setKeep(QApt::Package *package)
 {
-    if (!m_backend->areEventsCompressed()) {
-        saveState();
-    }
+    saveState();
     package->setKeep();
 
     handleBreakage(package);
