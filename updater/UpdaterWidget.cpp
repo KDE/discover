@@ -61,7 +61,7 @@ void UpdaterWidget::setBackend(QApt::Backend *backend)
 
 void UpdaterWidget::reload()
 {
-    //m_updateModel->clear();
+    m_updateModel->clear();
     m_backend->reloadCache();
 
     populateUpdateModel();

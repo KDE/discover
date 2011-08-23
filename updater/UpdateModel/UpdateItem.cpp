@@ -46,6 +46,17 @@ void UpdateItem::appendChild(UpdateItem *child)
     m_children.append(child);
 }
 
+bool UpdateItem::removeChildren(int position, int count)
+{
+    if (position < 0 || position > m_children.size())
+        return false;
+
+    for (int row = 0; row < count; ++row)
+        delete m_children.takeAt(position);
+
+    return true;
+}
+
 QList<UpdateItem *> UpdateItem::children() const
 {
     return m_children;

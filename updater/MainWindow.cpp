@@ -18,13 +18,13 @@ void MainWindow::initGUI()
 {
     setWindowTitle(i18nc("@title:window", "Software Updates"));
 
-    UpdaterWidget *updaterWidget = new UpdaterWidget(this);
+    m_updaterWidget = new UpdaterWidget(this);
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
-            updaterWidget, SLOT(setBackend(QApt::Backend *)));
+            m_updaterWidget, SLOT(setBackend(QApt::Backend *)));
 
     setupActions();
 
-    setCentralWidget(updaterWidget);
+    setCentralWidget(m_updaterWidget);
 }
 
 void MainWindow::setupActions()
@@ -34,4 +34,13 @@ void MainWindow::setupActions()
     setActionsEnabled(false);
 
     setupGUI((StandardWindowOption)(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
+}
+
+void MainWindow::reload()
+{
+    m_canExit = false;
+
+    m_updaterWidget->reload();
+
+    m_canExit = true;
 }

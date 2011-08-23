@@ -30,6 +30,7 @@ public:
     void setParent(UpdateItem *parent);
 
     void appendChild(UpdateItem *child);
+    bool removeChildren(int position, int count);
     QList<UpdateItem *> children() const;
     UpdateItem *child(int row) const;
     int childCount() const;

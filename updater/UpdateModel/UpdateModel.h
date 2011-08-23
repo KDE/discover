@@ -23,6 +23,10 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
 
+    void clear();
+    bool removeItem(const QModelIndex &index);
+    bool removeRows(int position, int rows, const QModelIndex &index);
+    QModelIndexList collectItems(const QModelIndex &parent) const;
     UpdateItem *itemFromIndex(const QModelIndex &index) const;
 
     void addItem(UpdateItem *item);

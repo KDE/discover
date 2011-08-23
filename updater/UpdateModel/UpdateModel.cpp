@@ -138,6 +138,50 @@ int UpdateModel::columnCount(const QModelIndex &parent) const
     return 2;
 }
 
+void UpdateModel::clear()
+{
+    beginResetModel();
+    removeItem(QModelIndex());
+    endResetModel();
+}
+
+bool UpdateModel::removeItem(const QModelIndex &index)
+{
+    QModelIndexList indexes;
+    if (rowCount(index) > 0) {
+        indexes = collectItems(index);
+    }
+    indexes.append(index);
+
+    foreach (const QModelIndex &itemToRemove, indexes) {
+        if (!removeRow(itemToRemove.row(), itemToRemove.parent()))
+            return false;
+    }
+    return true;
+}
+
+bool UpdateModel::removeRows(int position, int rows, const QModelIndex &index)
+{
+    bool success = false;
+    if (UpdateItem *parent = itemFromIndex(index)) {
+        beginRemoveRows(index, position, position + rows - 1);
+        success = parent->removeChildren(position, rows);
+        endRemoveRows();
+    }
+    return success;
+}
+
+QModelIndexList UpdateModel::collectItems(const QModelIndex &parent) const
+{
+    QModelIndexList list;
+    for (int i = rowCount(parent) - 1; i >= 0 ; --i) {
+        const QModelIndex &next = index(i, 0, parent);
+        list += collectItems(next);
+        list.append(next);
+    }
+    return list;
+}
+
 UpdateItem* UpdateModel::itemFromIndex(const QModelIndex &index) const
 {
     if (index.isValid())
