@@ -31,6 +31,9 @@ public:
 private:
     UpdateItem *m_rootItem;
 
+public Q_SLOTS:
+    void packageChanged();
+
 Q_SIGNALS:
     void checkApp(Application *app, bool checked);
     void checkApps(QList<Application *> apps, bool checked);

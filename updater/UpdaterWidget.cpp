@@ -52,6 +52,8 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
 void UpdaterWidget::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
+    connect(m_backend, SIGNAL(packageChanged()),
+            m_updateModel, SLOT(packageChanged()));
 
     populateUpdateModel();
 }

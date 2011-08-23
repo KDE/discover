@@ -176,3 +176,9 @@ bool UpdateModel::setData(const QModelIndex &index, const QVariant &value, int r
 
     return false;
 }
+
+void UpdateModel::packageChanged()
+{
+    // We don't know what changed or not, so say everything changed
+    emit dataChanged(index(0, 0), QModelIndex());
+}
