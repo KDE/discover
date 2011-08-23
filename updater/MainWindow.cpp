@@ -4,6 +4,13 @@
 #include <QtCore/QTimer>
 #include <QtGui/QVBoxLayout>
 
+// KDE includes
+#include <KAction>
+#include <KActionCollection>
+
+// LibQApt includes
+#include <LibQApt/Backend>
+
 // Own includes
 #include "UpdaterWidget.h"
 
@@ -27,9 +34,20 @@ void MainWindow::initGUI()
     setCentralWidget(m_updaterWidget);
 }
 
+void MainWindow::initObject()
+{
+    MuonMainWindow::initObject();
+    setActionsEnabled(); //Get initial enabled/disabled state
+}
+
 void MainWindow::setupActions()
 {
     MuonMainWindow::setupActions();
+
+    m_applyAction = actionCollection()->addAction("apply");
+    m_applyAction->setIcon(KIcon("dialog-ok-apply"));
+    m_applyAction->setText(i18nc("@action Downloads and installs updates", "Install Updates"));
+    connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
 
     setActionsEnabled(false);
 
@@ -43,4 +61,19 @@ void MainWindow::reload()
     m_updaterWidget->reload();
 
     m_canExit = true;
+}
+
+void MainWindow::setActionsEnabled(bool enabled)
+{
+    MuonMainWindow::setActionsEnabled(enabled);
+    if (!enabled) {
+        return;
+    }
+
+    //m_downloadListAction->setEnabled(isConnected());
+
+    m_applyAction->setEnabled(m_backend->areChangesMarked());
+    m_undoAction->setEnabled(!m_backend->isUndoStackEmpty());
+    m_redoAction->setEnabled(!m_backend->isRedoStackEmpty());
+    m_revertAction->setEnabled(!m_backend->isUndoStackEmpty());
 }
