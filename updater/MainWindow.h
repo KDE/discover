@@ -6,6 +6,7 @@
 
 class KAction;
 
+class ProgressWidget;
 class UpdaterWidget;
 
 class MainWindow : public MuonMainWindow
@@ -15,6 +16,7 @@ public:
     MainWindow();
 
 private:
+    ProgressWidget *m_progressWidget;
     UpdaterWidget *m_updaterWidget;
 
     KAction *m_applyAction;
@@ -23,8 +25,10 @@ private Q_SLOTS:
     void initGUI();
     void initObject();
     void setupActions();
+    void workerEvent(QApt::WorkerEvent event);
     void reload();
     void setActionsEnabled(bool enabled = true);
+    void checkForUpdates();
 };
 
 #endif // MAINWINDOW_H

@@ -1,6 +1,7 @@
 set(muon_updater_SRCS
     main.cpp
     MainWindow.cpp
+    ProgressWidget.cpp
     UpdaterWidget.cpp
     UpdateModel/UpdateItem.cpp
     UpdateModel/UpdateModel.cpp
