@@ -18,24 +18,6 @@ UpdateDelegate::UpdateDelegate(QObject *parent)
 {
 }
 
-void UpdateDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
-{
-    if (!index.isValid()) {
-        return;
-    }
-
-    paintBackground(painter, option);
-
-    QStyledItemDelegate::paint(painter, option, index);
-}
-
-void UpdateDelegate::paintBackground(QPainter *painter, const QStyleOptionViewItem &option) const
-{
-    QStyleOptionViewItemV4 opt(option);
-    QStyle *style = opt.widget ? opt.widget->style() : QApplication::style();
-    style->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt, painter, opt.widget);
-}
-
 QSize UpdateDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     Q_UNUSED(index);

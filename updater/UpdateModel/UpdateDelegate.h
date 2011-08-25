@@ -30,8 +30,6 @@ public:
     explicit UpdateDelegate(QObject *parent = 0);
 
 protected:
-    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
-
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
     bool editorEvent(QEvent *event,
                         QAbstractItemModel *model,
@@ -39,7 +37,6 @@ protected:
                         const QModelIndex &index);
 
 private:
-    void paintBackground(QPainter *painter, const QStyleOptionViewItem &option) const;
     int calcItemHeight(const QStyleOptionViewItem &option) const;
 };
 
