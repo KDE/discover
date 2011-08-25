@@ -1,6 +1,8 @@
 #include "ProgressWidget.h"
 
 // Qt includes
+#include <QtCore/QParallelAnimationGroup>
+#include <QtCore/QPropertyAnimation>
 #include <QtCore/QStringBuilder>
 #include <QtGui/QLabel>
 #include <QtGui/QProgressBar>
@@ -40,6 +42,23 @@ ProgressWidget::ProgressWidget(QWidget *parent)
     mainLayout->addWidget(m_detailsLabel);
 
     setLayout(mainLayout);
+
+    int finalHeight = sizeHint().height() + 20;
+
+    QPropertyAnimation *anim1 = new QPropertyAnimation(this, "maximumSize", this);
+    anim1->setDuration(500);
+    anim1->setEasingCurve(QEasingCurve::OutQuart);
+    anim1->setStartValue(QSize(QWIDGETSIZE_MAX, 0));
+    anim1->setEndValue(QSize(QWIDGETSIZE_MAX, finalHeight));
+    QPropertyAnimation *anim2 = new QPropertyAnimation(this, "minimumSize", this);
+    anim2->setDuration(500);
+    anim2->setEasingCurve(QEasingCurve::OutQuart);
+    anim2->setStartValue(QSize(QWIDGETSIZE_MAX, 0));
+    anim2->setEndValue(QSize(QWIDGETSIZE_MAX, finalHeight));
+
+    m_expandWidget = new QParallelAnimationGroup(this);
+    m_expandWidget->addAnimation(anim1);
+    m_expandWidget->addAnimation(anim2);
 }
 
 void ProgressWidget::setCommitProgress(int percentage)
@@ -77,7 +96,28 @@ void ProgressWidget::updateDownloadProgress(int percentage, int speed, int ETA)
     m_detailsLabel->setText(label);
 }
 
+void ProgressWidget::updateCommitProgress(const QString &message, int percentage)
+{
+    Q_UNUSED(message);
+    m_progressBar->setValue(percentage);
+}
+
 void ProgressWidget::setHeaderText(const QString &text)
 {
     m_statusLabel->setText(text);
+}
+
+void ProgressWidget::show()
+{
+    QWidget::show();
+
+    m_expandWidget->setDirection(QAbstractAnimation::Forward);
+    m_expandWidget->start();
+}
+
+void ProgressWidget::animatedHide()
+{
+    m_expandWidget->setDirection(QAbstractAnimation::Backward);
+    m_expandWidget->start();
+    connect(m_expandWidget, SIGNAL(finished()), this, SLOT(hide()));
 }

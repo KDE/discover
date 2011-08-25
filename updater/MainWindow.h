@@ -29,6 +29,7 @@ private Q_SLOTS:
     void reload();
     void setActionsEnabled(bool enabled = true);
     void checkForUpdates();
+    void startCommit();
 };
 
 #endif // MAINWINDOW_H

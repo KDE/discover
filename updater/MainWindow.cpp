@@ -1,12 +1,14 @@
 #include "MainWindow.h"
 
 // Qt includes
+#include <QApplication>
 #include <QtCore/QTimer>
 #include <QtGui/QVBoxLayout>
 
 // KDE includes
 #include <KAction>
 #include <KActionCollection>
+#include <KDebug>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -52,6 +54,8 @@ void MainWindow::initObject()
 
     connect(m_backend, SIGNAL(downloadProgress(int, int, int)),
             m_progressWidget, SLOT(updateDownloadProgress(int, int, int)));
+    connect(m_backend, SIGNAL(commitProgress(const QString &, int)),
+            m_progressWidget, SLOT(updateCommitProgress(const QString &, int)));
 }
 
 void MainWindow::setupActions()
@@ -74,20 +78,28 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
 
     switch (event) {
     case QApt::CacheUpdateStarted:
+        m_progressWidget->show();
         m_progressWidget->setHeaderText(i18nc("@info", "<title>Updating software sources</title>"));
         connect(m_progressWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
         break;
     case QApt::CacheUpdateFinished:
     case QApt::CommitChangesFinished:
         if (m_backend) {
-            m_progressWidget->hide();
+            m_progressWidget->animatedHide();
             m_updaterWidget->setEnabled(true);
             reload();
             setActionsEnabled();
         }
     case QApt::PackageDownloadStarted:
+        m_progressWidget->show();
         m_progressWidget->setHeaderText(i18nc("@info", "<title>Downloading Updates</title>"));
         connect(m_progressWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
+        QApplication::restoreOverrideCursor();
+        break;
+    case QApt::CommitChangesStarted:
+        m_progressWidget->setHeaderText(i18nc("@info", "<title>Committing Changes</title>"));
+        QApplication::restoreOverrideCursor();
+        break;
     }
 }
 
@@ -119,6 +131,14 @@ void MainWindow::checkForUpdates()
 {
     setActionsEnabled(false);
     m_updaterWidget->setEnabled(false);
-    m_progressWidget->show();
+    QApplication::setOverrideCursor(Qt::WaitCursor);
     m_backend->updateCache();
+}
+
+void MainWindow::startCommit()
+{
+    setActionsEnabled(false);
+    m_updaterWidget->setEnabled(false);
+    QApplication::setOverrideCursor(Qt::WaitCursor);
+    m_backend->commitChanges();
 }
