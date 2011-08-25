@@ -91,13 +91,13 @@ void UpdaterWidget::populateUpdateModel()
 {
     QApt::PackageList upgradeList = m_backend->upgradeablePackages();
 
-    UpdateItem *securityItem = new UpdateItem("Security Updates",
+    UpdateItem *securityItem = new UpdateItem(i18nc("@item:inlistbox", "Security Updates"),
                                               KIcon("security-medium"));
 
-    UpdateItem *appItem = new UpdateItem("Application Updates",
+    UpdateItem *appItem = new UpdateItem(i18nc("@item:inlistbox", "Application Updates"),
                                           KIcon("applications-other"));
 
-    UpdateItem *systemItem = new UpdateItem("System Updates",
+    UpdateItem *systemItem = new UpdateItem(i18nc("@item:inlistbox", "System Updates)",
                                              KIcon("applications-system"));
 
     QDir appDir("/usr/share/app-install/desktop/");
