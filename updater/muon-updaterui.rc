@@ -17,7 +17,6 @@
         <Menu name="edit" >
             <Action name="undo" />
             <Action name="redo" />
-            <Action name="revert" />
             <Separator/>
             <Action name="update" />
             <Separator/>
@@ -36,6 +35,5 @@
         <Separator/>
         <Action name="undo" />
         <Action name="redo" />
-        <Action name="revert" />
     </ToolBar>
 </gui>

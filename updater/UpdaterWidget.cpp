@@ -144,11 +144,13 @@ void UpdaterWidget::populateUpdateModel()
 
     m_updateView->resizeColumnToContents(0);
     m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
-    m_backend->markPackagesForUpgrade();
+    m_backend->saveCacheState();
+    m_backend->markPackagesForDistUpgrade();
 }
 
 void UpdaterWidget::checkApp(Application *app, bool checked)
 {
+    m_backend->saveCacheState();
     checked ? app->package()->setInstall() : app->package()->setKeep();
 }
 
@@ -167,6 +169,7 @@ void UpdaterWidget::checkApps(QList<Application *> apps, bool checked)
     }
 
     QApplication::setOverrideCursor(Qt::WaitCursor);
+    m_backend->saveCacheState();
     m_backend->markPackages(list, action);
     QApplication::restoreOverrideCursor();
 }
