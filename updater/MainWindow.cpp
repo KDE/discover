@@ -90,6 +90,7 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
             reload();
             setActionsEnabled();
         }
+        break;
     case QApt::PackageDownloadStarted:
         m_progressWidget->show();
         m_progressWidget->setHeaderText(i18nc("@info", "<title>Downloading Updates</title>"));
