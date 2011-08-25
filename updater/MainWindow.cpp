@@ -15,10 +15,12 @@
 
 // Own includes
 #include "ProgressWidget.h"
+#include "config/UpdaterSettingsDialog.h"
 #include "UpdaterWidget.h"
 
 MainWindow::MainWindow()
     : MuonMainWindow()
+    , m_settingsDialog(0)
 {
     initGUI();
     QTimer::singleShot(10, this, SLOT(initObject()));
@@ -85,6 +87,8 @@ void MainWindow::setupActions()
     m_applyAction->setIcon(KIcon("dialog-ok-apply"));
     m_applyAction->setText(i18nc("@action Downloads and installs updates", "Install Updates"));
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
+
+    KStandardAction::preferences(this, SLOT(editSettings()), actionCollection());
 
     setActionsEnabled(false);
 
@@ -189,4 +193,21 @@ void MainWindow::startCommit()
     m_updaterWidget->setEnabled(false);
     QApplication::setOverrideCursor(Qt::WaitCursor);
     m_backend->commitChanges();
+}
+
+void MainWindow::editSettings()
+{
+    if (!m_settingsDialog) {
+        m_settingsDialog = new UpdaterSettingsDialog(this);
+        connect(m_settingsDialog, SIGNAL(okClicked()), SLOT(closeSettingsDialog()));
+        m_settingsDialog->show();
+    } else {
+        m_settingsDialog->raise();
+    }
+}
+
+void MainWindow::closeSettingsDialog()
+{
+    m_settingsDialog->deleteLater();
+    m_settingsDialog = 0;
 }

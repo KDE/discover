@@ -7,6 +7,7 @@
 class KAction;
 
 class ProgressWidget;
+class UpdaterSettingsDialog;
 class UpdaterWidget;
 
 class MainWindow : public MuonMainWindow
@@ -18,6 +19,7 @@ public:
 private:
     ProgressWidget *m_progressWidget;
     UpdaterWidget *m_updaterWidget;
+    UpdaterSettingsDialog *m_settingsDialog;
 
     KAction *m_applyAction;
     KAction *m_createDownloadListAction;
@@ -34,6 +36,8 @@ private Q_SLOTS:
     void setActionsEnabled(bool enabled = true);
     void checkForUpdates();
     void startCommit();
+    void editSettings();
+    void closeSettingsDialog();
 };
 
 #endif // MAINWINDOW_H
