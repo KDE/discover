@@ -110,6 +110,8 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
         m_progressWidget->setHeaderText(i18nc("@info", "<title>Committing Changes</title>"));
         QApplication::restoreOverrideCursor();
         break;
+    default:
+        break;
     }
 }
 
