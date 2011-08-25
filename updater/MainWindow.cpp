@@ -104,6 +104,23 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
     }
 }
 
+void MainWindow::errorOccurred(QApt::ErrorCode error, const QVariantMap &args)
+{
+    MuonMainWindow::errorOccurred(error, args);
+
+    switch (error) {
+    case QApt::UserCancelError:
+        QApplication::restoreOverrideCursor();
+        break;
+    case QApt::AuthError:
+        m_updaterWidget->setEnabled(true);
+        setActionsEnabled();
+        QApplication::restoreOverrideCursor();
+    default:
+        break;
+    }
+}
+
 void MainWindow::reload()
 {
     m_canExit = false;

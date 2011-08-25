@@ -26,6 +26,7 @@ private Q_SLOTS:
     void initObject();
     void setupActions();
     void workerEvent(QApt::WorkerEvent event);
+    void errorOccurred(QApt::ErrorCode error, const QVariantMap &args);
     void reload();
     void setActionsEnabled(bool enabled = true);
     void checkForUpdates();
