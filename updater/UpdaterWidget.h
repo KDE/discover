@@ -19,11 +19,6 @@ class UpdaterWidget : public QWidget
 public:
     explicit UpdaterWidget(QWidget *parent = 0);
 
-    enum UpdateModelRole {
-        UpdateTypeRole = Qt::UserRole + 1,
-        ListIndexRole = Qt::UserRole + 2
-    };
-
 private:
     QApt::Backend *m_backend;
     UpdateModel *m_updateModel;
