@@ -90,6 +90,15 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
             reload();
             setActionsEnabled();
         }
+    case QApt::PackageDownloadFinished:
+        if (m_warningStack.size() > 0) {
+            showQueuedWarnings();
+            m_warningStack.clear();
+        }
+        if (m_errorStack.size() > 0) {
+            showQueuedErrors();
+            m_errorStack.clear();
+        }
         break;
     case QApt::PackageDownloadStarted:
         m_progressWidget->show();
