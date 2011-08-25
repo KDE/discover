@@ -20,6 +20,9 @@ private:
     UpdaterWidget *m_updaterWidget;
 
     KAction *m_applyAction;
+    KAction *m_createDownloadListAction;
+    KAction *m_downloadListAction;
+    KAction *m_loadArchivesAction;
 
 private Q_SLOTS:
     void initGUI();

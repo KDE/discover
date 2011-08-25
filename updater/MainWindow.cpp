@@ -62,6 +62,25 @@ void MainWindow::setupActions()
 {
     MuonMainWindow::setupActions();
 
+    m_createDownloadListAction = actionCollection()->addAction("save_download_list");
+    m_createDownloadListAction->setIcon(KIcon("document-save-as"));
+    m_createDownloadListAction->setText(i18nc("@action", "Save Package Download List..."));
+    connect(m_createDownloadListAction, SIGNAL(triggered()), this, SLOT(createDownloadList()));
+
+    m_downloadListAction = actionCollection()->addAction("download_from_list");
+    m_downloadListAction->setIcon(KIcon("download"));
+    m_downloadListAction->setText(i18nc("@action", "Download Packages From List..."));
+    connect(m_downloadListAction, SIGNAL(triggered()), this, SLOT(downloadPackagesFromList()));
+    if (!isConnected()) {
+        m_downloadListAction->setDisabled(false);
+    }
+    connect(this, SIGNAL(shouldConnect(bool)), m_downloadListAction, SLOT(setEnabled(bool)));
+
+    m_loadArchivesAction = actionCollection()->addAction("load_archives");
+    m_loadArchivesAction->setIcon(KIcon("document-open"));
+    m_loadArchivesAction->setText(i18nc("@action", "Add Downloaded Packages"));
+    connect(m_loadArchivesAction, SIGNAL(triggered()), this, SLOT(loadArchives()));
+
     m_applyAction = actionCollection()->addAction("apply");
     m_applyAction->setIcon(KIcon("dialog-ok-apply"));
     m_applyAction->setText(i18nc("@action Downloads and installs updates", "Install Updates"));
