@@ -97,7 +97,7 @@ void UpdaterWidget::populateUpdateModel()
     UpdateItem *appItem = new UpdateItem(i18nc("@item:inlistbox", "Application Updates"),
                                           KIcon("applications-other"));
 
-    UpdateItem *systemItem = new UpdateItem(i18nc("@item:inlistbox", "System Updates)",
+    UpdateItem *systemItem = new UpdateItem(i18nc("@item:inlistbox", "System Updates"),
                                              KIcon("applications-system"));
 
     QDir appDir("/usr/share/app-install/desktop/");
