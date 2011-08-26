@@ -40,7 +40,7 @@ ApplicationBackend::ApplicationBackend(QObject *parent)
     , m_reviewsBackend(new ReviewsBackend(this))
     , m_currentTransaction(0)
 {
-    m_pkgBlacklist << "kdebase-runtime" << "kdepim-runtime" << "kdelibs5-plugins";
+    m_pkgBlacklist << "kdebase-runtime" << "kdepim-runtime" << "kdelibs5-plugins" << "kdelibs5-data";
 }
 
 ApplicationBackend::~ApplicationBackend()
