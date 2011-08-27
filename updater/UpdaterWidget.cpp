@@ -97,7 +97,7 @@ void UpdaterWidget::populateUpdateModel()
     UpdateItem *appItem = new UpdateItem(i18nc("@item:inlistbox", "Application Updates"),
                                           KIcon("applications-other"));
 
-    UpdateItem *systemItem = new UpdateItem(i18nc("@item:inlistbox", "System Updates)",
+    UpdateItem *systemItem = new UpdateItem(i18nc("@item:inlistbox", "System Updates"),
                                              KIcon("applications-system"));
 
     QDir appDir("/usr/share/app-install/desktop/");
@@ -162,6 +162,7 @@ void UpdaterWidget::populateUpdateModel()
         delete systemItem;
     }
 
+    m_updateView->expand(m_updateModel->index(0,0)); // Expand apps category
     m_updateView->resizeColumnToContents(0);
     m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
     m_backend->saveCacheState();
