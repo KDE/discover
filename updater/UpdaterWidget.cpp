@@ -166,7 +166,7 @@ void UpdaterWidget::populateUpdateModel()
     m_updateView->resizeColumnToContents(0);
     m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
     m_backend->saveCacheState();
-    m_backend->markPackagesForDistUpgrade();
+    m_backend->markPackagesForUpgrade();
 }
 
 void UpdaterWidget::checkApp(Application *app, bool checked)
