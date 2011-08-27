@@ -183,11 +183,7 @@ void UpdaterWidget::checkApps(QList<Application *> apps, bool checked)
     }
 
     QApt::Package::State action;
-    if (checked) {
-        action = QApt::Package::ToInstall;
-    } else {
-        action = QApt::Package::ToKeep;
-    }
+    checked ?  action = QApt::Package::ToInstall : action = QApt::Package::ToKeep;
 
     QApplication::setOverrideCursor(Qt::WaitCursor);
     m_backend->saveCacheState();
