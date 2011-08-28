@@ -42,7 +42,7 @@ public:
     UpdateItem();
     UpdateItem(const QString &categoryName,
                const KIcon &categoryIcon);
-    UpdateItem(Application *app, UpdateItem *parent = 0);
+    explicit UpdateItem(Application *app, UpdateItem *parent = 0);
 
     ~UpdateItem();
 
