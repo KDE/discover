@@ -35,6 +35,7 @@
 
 // LibQApt includes
 #include <LibQApt/Package>
+#include <LibQApt/Changelog>
 
 ChangelogTab::ChangelogTab(QWidget *parent)
     : KVBox(parent)
@@ -72,7 +73,8 @@ void ChangelogTab::changelogFetched(KJob *job)
     }
     else {
         QTextStream stream(&changelogFile);
-        m_changelogBrowser->setText(stream.readAll());
+        const QApt::Changelog log(stream.readAll(), m_package->sourcePackage());
+        m_changelogBrowser->setText(log.text());
     }
 
     m_jobFilenames.remove(job);
