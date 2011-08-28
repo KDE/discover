@@ -171,7 +171,7 @@ void MainWindow::setActionsEnabled(bool enabled)
         return;
     }
 
-    //m_downloadListAction->setEnabled(isConnected());
+    m_downloadListAction->setEnabled(isConnected());
 
     m_applyAction->setEnabled(m_backend->areChangesMarked());
     m_undoAction->setEnabled(!m_backend->isUndoStackEmpty());
