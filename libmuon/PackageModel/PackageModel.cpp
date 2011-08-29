@@ -20,6 +20,8 @@
 
 #include "PackageModel.h"
 
+#include <QtCore/QStringBuilder>
+
 #include <KIcon>
 #include <KLocale>
 
@@ -48,18 +50,23 @@ QVariant PackageModel::data(const QModelIndex &index, int role) const
     if (!index.isValid()) {
         return false;
     }
+    QApt::Package *package = m_packages.at(index.row());
     switch (role) {
     case NameRole:
-        return m_packages.at(index.row())->latin1Name();
+        if (package->isMultiArchEnabled()) {
+            return QString(package->latin1Name() % QLatin1String(" (")
+                    % package->architecture() % ')');
+        }
+        return package->latin1Name();
     case IconRole:
         return KIcon("application-x-deb");
     case DescriptionRole:
-        return m_packages.at(index.row())->shortDescription();
+        return package->shortDescription();
     case StatusRole:
     case ActionRole:
-        return m_packages.at(index.row())->state();
+        return package->state();
     case SupportRole:
-        return m_packages.at(index.row())->isSupported();
+        return package->isSupported();
     case Qt::ToolTipRole:
         return QVariant();
     }
