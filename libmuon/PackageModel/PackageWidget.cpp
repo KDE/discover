@@ -316,6 +316,7 @@ void PackageWidget::contextMenuRequested(const QPoint &pos)
             m_reinstallAction->setEnabled(false);
             m_keepAction->setEnabled(false);
         } else {
+            m_purgeAction->setEnabled(false);
             m_installAction->setEnabled(true);
             m_removeAction->setEnabled(false);
             m_upgradeAction->setEnabled(false);
