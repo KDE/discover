@@ -55,6 +55,14 @@ ChangelogTab::~ChangelogTab()
 
 void ChangelogTab::setPackage(QApt::Package *package)
 {
+    // Clean up old jobs
+    QHash<KJob *, QString>::const_iterator i = m_jobFilenames.constBegin();
+    while (i != m_jobFilenames.constEnd()) {
+        i.key()->kill();
+        ++i;
+    }
+    m_jobFilenames.clear(); // We don't delete the KJob pointers, they delete themselves
+
     m_package = package;
     fetchChangelog();
 }
