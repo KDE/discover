@@ -75,9 +75,13 @@ void ChangelogTab::changelogFetched(KJob *job)
     QFile changelogFile(m_jobFilenames[job]);
     m_busyWidget->stop();
     if (job->error() || !changelogFile.open(QFile::ReadOnly)) {
-        m_changelogBrowser->setText(i18nc("@info/rich", "The list of changes is not available yet. "
-                                          "Please use <link url='%1'>Launchpad</link> instead.",
-                                          QString("http://launchpad.net/ubuntu/+source/" + m_package->sourcePackage())));
+        if (m_package->origin() == QLatin1String("Ubuntu")) {
+            m_changelogBrowser->setText(i18nc("@info/rich", "The list of changes is not yet available. "
+                                            "Please use <link url='%1'>Launchpad</link> instead.",
+                                            QString("http://launchpad.net/ubuntu/+source/" + m_package->sourcePackage())));
+        } else {
+            m_changelogBrowser->setText(i18nc("@info", "The list of changes is not yet available."));
+        }
     }
     else {
         QTextStream stream(&changelogFile);
