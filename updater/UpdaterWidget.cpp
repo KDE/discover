@@ -203,6 +203,7 @@ void UpdaterWidget::selectionChanged(const QItemSelection &selected,
 
     if (indexes.isEmpty()) {
         emit packageChanged(package);
+        return;
     }
 
     Application *app = m_updateModel->itemFromIndex(indexes.first())->app();
