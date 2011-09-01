@@ -24,7 +24,6 @@
 #include <QtCore/QTextStream>
 
 // KDE includes
-#include <KDialog>
 #include <KIO/Job>
 #include <KJob>
 #include <KLocale>
