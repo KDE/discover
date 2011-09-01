@@ -23,11 +23,13 @@
 
 #include <QtGui/QWidget>
 
+class QItemSelection;
 class QStandardItemModel;
 class QTreeView;
 
 namespace QApt {
     class Backend;
+    class Package;
 }
 
 class Application;
@@ -54,6 +56,11 @@ private Q_SLOTS:
     void populateUpdateModel();
     void checkApps(QList<Application *> apps, bool checked);
     void checkApp(Application *app, bool checked);
+    void selectionChanged(const QItemSelection &selected,
+                          const QItemSelection &deselected);
+
+signals:
+    void packageChanged(QApt::Package *Package);
 };
 
 #endif // UPDATERWIDGET_H

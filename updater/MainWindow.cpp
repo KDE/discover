@@ -34,6 +34,7 @@
 #include <LibQApt/Backend>
 
 // Own includes
+#include "ChangelogWidget.h"
 #include "ProgressWidget.h"
 #include "config/UpdaterSettingsDialog.h"
 #include "UpdaterWidget.h"
@@ -60,8 +61,16 @@ void MainWindow::initGUI()
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
             m_updaterWidget, SLOT(setBackend(QApt::Backend *)));
 
+    m_changelogWidget = new ChangelogWidget(this);
+    m_changelogWidget->hide();
+    connect(this, SIGNAL(backendReady(QApt::Backend *)),
+            m_changelogWidget, SLOT(setBackend(QApt::Backend *)));
+    connect(m_updaterWidget, SIGNAL(packageChanged(QApt::Package*)),
+            m_changelogWidget, SLOT(setPackage(QApt::Package*)));
+
     mainLayout->addWidget(m_progressWidget);
     mainLayout->addWidget(m_updaterWidget);
+    mainLayout->addWidget(m_changelogWidget);
 
     setupActions();
 
@@ -180,6 +189,7 @@ void MainWindow::reload()
     m_canExit = false;
 
     m_updaterWidget->reload();
+    m_changelogWidget->animatedHide();
 
     m_canExit = true;
 }

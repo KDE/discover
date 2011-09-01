@@ -18,48 +18,51 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef CHANGELOGWIDGET_H
+#define CHANGELOGWIDGET_H
 
-// Own includes
-#include "../libmuon/MuonMainWindow.h"
+#include <QtGui/QWidget>
 
-class KAction;
+class QParallelAnimationGroup;
 
-class ChangelogWidget;
-class ProgressWidget;
-class UpdaterSettingsDialog;
-class UpdaterWidget;
+class KJob;
+class KPixmapSequenceOverlayPainter;
+class KTemporaryFile;
+class KTextBrowser;
 
-class MainWindow : public MuonMainWindow
+namespace QApt {
+    class Backend;
+    class Changelog;
+    class Package;
+}
+
+class ChangelogWidget : public QWidget
 {
     Q_OBJECT
 public:
-    MainWindow();
+    explicit ChangelogWidget(QWidget *parent = 0);
 
 private:
-    ProgressWidget *m_progressWidget;
-    UpdaterWidget *m_updaterWidget;
-    ChangelogWidget *m_changelogWidget;
-    UpdaterSettingsDialog *m_settingsDialog;
+    QApt::Backend *m_backend;
+    QApt::Package *m_package;
+    QString m_jobFileName;
+    bool m_show;
 
-    KAction *m_applyAction;
-    KAction *m_createDownloadListAction;
-    KAction *m_downloadListAction;
-    KAction *m_loadArchivesAction;
+    QParallelAnimationGroup *m_expandWidget;
+    KTextBrowser *m_changelogBrowser;
+    KPixmapSequenceOverlayPainter *m_busyWidget;
+
+    QString buildDescription(const QApt::Changelog &log);
+
+public Q_SLOTS:
+    void setBackend(QApt::Backend *backend);
+    void setPackage(QApt::Package *package);
+    void show();
+    void animatedHide();
 
 private Q_SLOTS:
-    void initGUI();
-    void initObject();
-    void setupActions();
-    void workerEvent(QApt::WorkerEvent event);
-    void errorOccurred(QApt::ErrorCode error, const QVariantMap &args);
-    void reload();
-    void setActionsEnabled(bool enabled = true);
-    void checkForUpdates();
-    void startCommit();
-    void editSettings();
-    void closeSettingsDialog();
+    void fetchChangelog();
+    void changelogFetched(KJob *job);
 };
 
-#endif // MAINWINDOW_H
+#endif

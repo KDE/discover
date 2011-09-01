@@ -58,6 +58,8 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     m_updateView->setAlternatingRowColors(true);
     m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
     m_updateView->setModel(m_updateModel);
+    connect(m_updateView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
+            this, SLOT(selectionChanged(QItemSelection,QItemSelection)));
 
     UpdateDelegate *delegate = new UpdateDelegate(m_updateView);
     m_updateView->setItemDelegate(delegate);
@@ -189,4 +191,22 @@ void UpdaterWidget::checkApps(QList<Application *> apps, bool checked)
     m_backend->saveCacheState();
     m_backend->markPackages(list, action);
     QApplication::restoreOverrideCursor();
+}
+
+void UpdaterWidget::selectionChanged(const QItemSelection &selected,
+                                     const QItemSelection &deselected)
+{
+    Q_UNUSED(deselected);
+
+    QModelIndexList indexes = selected.indexes();
+    QApt::Package *package = 0;
+
+    if (indexes.isEmpty()) {
+        emit packageChanged(package);
+    }
+
+    Application *app = m_updateModel->itemFromIndex(indexes.first())->app();
+    app ? package = app->package() : package = 0;
+
+    emit packageChanged(package);
 }
