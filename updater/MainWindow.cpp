@@ -189,7 +189,7 @@ void MainWindow::reload()
     m_canExit = false;
 
     m_updaterWidget->reload();
-    m_changelogWidget->animatedHide();
+    QApplication::restoreOverrideCursor();
 
     m_canExit = true;
 }
@@ -214,6 +214,7 @@ void MainWindow::checkForUpdates()
     setActionsEnabled(false);
     m_updaterWidget->setEnabled(false);
     QApplication::setOverrideCursor(Qt::WaitCursor);
+    m_changelogWidget->animatedHide();
     m_backend->updateCache();
 }
 
@@ -222,6 +223,7 @@ void MainWindow::startCommit()
     setActionsEnabled(false);
     m_updaterWidget->setEnabled(false);
     QApplication::setOverrideCursor(Qt::WaitCursor);
+    m_changelogWidget->animatedHide();
     m_backend->commitChanges();
 }
 
