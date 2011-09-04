@@ -50,6 +50,7 @@ StatusWidget::StatusWidget(QWidget *parent)
     m_xapianProgress->setMaximumSize(250, fontHeight);
     m_xapianProgress->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     m_xapianProgress->setFormat(i18nc("@info:status", "Rebuilding Search Index"));
+    m_xapianProgress->setTextVisible(true);
     m_xapianProgress->hide();
 
     m_xapianTimeout = new QTimer(this);
