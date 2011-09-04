@@ -167,7 +167,6 @@ void UpdaterWidget::populateUpdateModel()
     m_updateView->expand(m_updateModel->index(0,0)); // Expand apps category
     m_updateView->resizeColumnToContents(0);
     m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
-    m_backend->saveCacheState();
     m_backend->markPackagesForUpgrade();
 }
 
