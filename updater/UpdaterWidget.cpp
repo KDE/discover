@@ -31,6 +31,8 @@
 // KDE includes
 #include <KIcon>
 #include <KLocale>
+#include <KPixmapSequence>
+#include <KPixmapSequenceOverlayPainter>
 #include <KDebug>
 
 // LibQApt includes
@@ -60,6 +62,15 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     m_updateView->setModel(m_updateModel);
     connect(m_updateView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged(QItemSelection,QItemSelection)));
+
+    m_busyWidget = new KPixmapSequenceOverlayPainter(this);
+    m_busyWidget->setSequence(KPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
+    m_busyWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    m_busyWidget->setWidget(m_updateView->viewport());
+
+    QApplication::setOverrideCursor(Qt::WaitCursor);
+
+    m_busyWidget->start();
 
     UpdateDelegate *delegate = new UpdateDelegate(m_updateView);
     m_updateView->setItemDelegate(delegate);
@@ -167,6 +178,8 @@ void UpdaterWidget::populateUpdateModel()
     m_updateView->expand(m_updateModel->index(0,0)); // Expand apps category
     m_updateView->resizeColumnToContents(0);
     m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
+    m_busyWidget->stop();
+    QApplication::restoreOverrideCursor();
     m_backend->markPackagesForUpgrade();
 }
 

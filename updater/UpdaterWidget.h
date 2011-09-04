@@ -27,6 +27,8 @@ class QItemSelection;
 class QStandardItemModel;
 class QTreeView;
 
+class KPixmapSequenceOverlayPainter;
+
 namespace QApt {
     class Backend;
     class Package;
@@ -47,6 +49,7 @@ private:
     QList<Application *> m_upgradeableApps;
 
     QTreeView *m_updateView;
+    KPixmapSequenceOverlayPainter *m_busyWidget;
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
