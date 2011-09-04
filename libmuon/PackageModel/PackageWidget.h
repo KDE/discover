@@ -23,7 +23,6 @@
 
 // Qt includes
 #include <QModelIndex>
-#include <QtGui/QLabel>
 #include <QFutureWatcher>
 
 // KDE includes
