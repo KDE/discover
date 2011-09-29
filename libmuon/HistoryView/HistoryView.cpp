@@ -95,7 +95,7 @@ HistoryView::HistoryView(QWidget *parent)
 
     KIcon itemIcon("applications-other");
 
-    QHash<int, QString> categoryHash;
+    QHash<QString, QString> categoryHash;
 
     QHash<PastActions, QString> actionHash;
     actionHash[InstalledAction] = i18nc("@info:status describes a past-tense action", "Installed");
@@ -110,12 +110,12 @@ HistoryView::HistoryView(QWidget *parent)
         QString formattedTime = KGlobal::locale()->formatTime(startDateTime.time());
         QString category;
 
-        int day = startDateTime.date().day();
-        if (categoryHash.contains(day)) {
-            category = categoryHash.value(day);
+        QString date = startDateTime.date().toString();
+        if (categoryHash.contains(date)) {
+            category = categoryHash.value(date);
         } else {
             category = KGlobal::locale()->formatDate(startDateTime.date(), KLocale::FancyShortDate);
-            categoryHash[day] = category;
+            categoryHash[date] = category;
         }
 
         QStandardItem *parentItem = 0;
