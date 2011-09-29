@@ -1,3 +1,24 @@
+1.2.1:
+======
+- Bugfixes:
+  * Fixed a bug with the Muon Software Center where reviews would not load when
+    visiting an application page you had already been to since you started MSC.
+  * Fixed a bug in the Muon Package and Update Managers where the busy cursor
+    would not go away if a mass package marking failed.
+  * Fixed a crash in the Muon Update Manager when hitting the "Revert Changes"
+    button in the toolbar.
+  * Added the kdelibs5-data package to the Muon Software Center's blacklist.
+    It has desktop files that show up as Apps, and we don't want people breaking
+    their system by uninstalling them. (And thereby uninstalling kdelibs)
+  * Only enable the purge action in MPM/MUM for uninstalled packages when the
+    uninstalled packages also have residual configurtaion. (LP: #836967)
+  * Set the xapain progress message visible even before it has gone from 0% to 1%
+  * Fix a bug where installing a package from within the "More Details" view of
+    the Muon Software Center would not do anything. (LP: #841323)
+  * Use LibQApt's new multi-arch support to disambiguate between native and
+    foreign-arch packages, fixing an apparent duplication of packages. (BKO: #276389,
+    LP: #837389)
+
 1.2.0:
 ======
 - Features:
