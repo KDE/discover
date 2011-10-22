@@ -21,6 +21,7 @@
 #ifndef CHANGELOGWIDGET_H
 #define CHANGELOGWIDGET_H
 
+#include <QtCore/QHash>
 #include <QtGui/QWidget>
 
 class QParallelAnimationGroup;
@@ -45,6 +46,7 @@ public:
 private:
     QApt::Backend *m_backend;
     QApt::Package *m_package;
+    QHash<KJob *, QString> m_jobHash;
     QString m_jobFileName;
     bool m_show;
 
@@ -59,6 +61,7 @@ public Q_SLOTS:
     void setPackage(QApt::Package *package);
     void show();
     void animatedHide();
+    void stopPendingJobs();
 
 private Q_SLOTS:
     void fetchChangelog();

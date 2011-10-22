@@ -140,12 +140,25 @@ void ChangelogWidget::animatedHide()
     connect(m_expandWidget, SIGNAL(finished()), this, SLOT(hide()));
 }
 
+void ChangelogWidget::stopPendingJobs()
+{
+    QHash<KJob *, QString>::const_iterator iter = m_jobHash.constBegin();
+    while (iter != m_jobHash.constEnd()) {
+        KJob *getJob = iter.key();
+        disconnect(getJob, SIGNAL(result(KJob *)),
+            this, SLOT(changelogFetched(KJob *)));
+        iter++;
+    }
+
+    m_jobHash.clear();
+}
+
 void ChangelogWidget::changelogFetched(KJob *job)
 {
     // Work around http://bugreports.qt.nokia.com/browse/QTBUG-2533 by forcibly resetting the CharFormat
     QTextCharFormat format;
     m_changelogBrowser->setCurrentCharFormat(format);
-    QFile changelogFile(m_jobFileName);
+    QFile changelogFile(m_jobHash[job]);
 
     if (job->error() || !changelogFile.open(QFile::ReadOnly)) {
         if (m_package->origin() == QLatin1String("Ubuntu")) {
@@ -170,7 +183,7 @@ void ChangelogWidget::changelogFetched(KJob *job)
         return;
     }
 
-    m_jobFileName.clear();
+    m_jobHash.remove(job);
     changelogFile.remove();
 }
 
@@ -192,7 +205,7 @@ void ChangelogWidget::fetchChangelog()
                                filename, -1,
                                KIO::Overwrite | KIO::HideProgressInfo);
 
-    m_jobFileName = filename;
+    m_jobHash[getJob] = filename;
     connect(getJob, SIGNAL(result(KJob *)),
             this, SLOT(changelogFetched(KJob *)));
 }

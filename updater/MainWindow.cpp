@@ -215,6 +215,7 @@ void MainWindow::checkForUpdates()
     m_updaterWidget->setEnabled(false);
     QApplication::setOverrideCursor(Qt::WaitCursor);
     m_changelogWidget->animatedHide();
+    m_changelogWidget->stopPendingJobs();
     m_backend->updateCache();
 }
 
@@ -224,6 +225,7 @@ void MainWindow::startCommit()
     m_updaterWidget->setEnabled(false);
     QApplication::setOverrideCursor(Qt::WaitCursor);
     m_changelogWidget->animatedHide();
+    m_changelogWidget->stopPendingJobs();
     m_backend->commitChanges();
 }
 
