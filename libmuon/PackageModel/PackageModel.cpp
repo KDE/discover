@@ -53,7 +53,7 @@ QVariant PackageModel::data(const QModelIndex &index, int role) const
     QApt::Package *package = m_packages.at(index.row());
     switch (role) {
     case NameRole:
-        if (package->isMultiArchEnabled()) {
+        if (package->isForeignArch()) {
             return QString(package->latin1Name() % QLatin1String(" (")
                     % package->architecture() % ')');
         }
