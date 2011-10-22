@@ -131,7 +131,15 @@ void UpdaterWidget::populateUpdateModel()
         UpdateItem *updateItem = new UpdateItem(app);
 
         // Set update type
-        if (package->component().contains(QLatin1String("security"))) {
+        bool securityFound = false;
+        foreach (QString archive, package->archives()) {
+            if (archive.contains(QLatin1String("security"))) {
+                securityFound = true;
+                break;
+            }
+        }
+
+        if (securityFound) {
             securityItem->appendChild(updateItem);
         } else {
             appItem->appendChild(updateItem);
@@ -148,7 +156,15 @@ void UpdaterWidget::populateUpdateModel()
         UpdateItem *updateItem = new UpdateItem(app);
 
         // Set update type
-        if (package->component().contains(QLatin1String("security"))) {
+        bool securityFound = false;
+        foreach (QString archive, package->archives()) {
+            if (archive.contains(QLatin1String("security"))) {
+                securityFound = true;
+                break;
+            }
+        }
+
+        if (securityFound) {
             securityItem->appendChild(updateItem);
         } else {
             systemItem->appendChild(updateItem);
