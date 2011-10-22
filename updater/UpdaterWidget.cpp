@@ -104,7 +104,7 @@ void UpdaterWidget::populateUpdateModel()
 {
     QApt::PackageList upgradeList = m_backend->upgradeablePackages();
 
-    UpdateItem *securityItem = new UpdateItem(i18nc("@item:inlistbox", "Security Updates"),
+    UpdateItem *securityItem = new UpdateItem(i18nc("@item:inlistbox", "Important Security Updates"),
                                               KIcon("security-medium"));
 
     UpdateItem *appItem = new UpdateItem(i18nc("@item:inlistbox", "Application Updates"),
