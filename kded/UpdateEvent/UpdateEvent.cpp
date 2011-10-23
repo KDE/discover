@@ -103,8 +103,7 @@ void UpdateEvent::parseUpdateInfo()
 {
     // Weirdly enough, apt-check gives output on stderr
     QByteArray line = m_checkerProcess->readAllStandardError();
-    delete m_checkerProcess;
-    m_checkerProcess = 0;
+    m_checkerProcess->deleteLater();
 
     // Format updates;security
     int eqpos = line.indexOf(';');
