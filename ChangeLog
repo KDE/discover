@@ -1,3 +1,12 @@
+1.2.2:
+======
+- Bugfixes:
+  * Fix a bug where history entries would show up on the wrong date.
+    Muon was using the day that the entry occurred on to categorize all the entries,
+    but this is non-unique past one month, causing entries from the 29th of a month
+    to show up on the 29th of every month. (BKO: #282504)
+  * Fixed a small memory leak with the update notifier.
+
 1.2.1:
 ======
 - Bugfixes:
