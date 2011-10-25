@@ -146,7 +146,7 @@ void ChangelogWidget::stopPendingJobs()
     while (iter != m_jobHash.constEnd()) {
         KJob *getJob = iter.key();
         disconnect(getJob, SIGNAL(result(KJob *)),
-            this, SLOT(changelogFetched(KJob *)));
+                   this, SLOT(changelogFetched(KJob *)));
         iter++;
     }
 

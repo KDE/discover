@@ -188,7 +188,12 @@ void MainWindow::reload()
 {
     m_canExit = false;
 
+    disconnect(m_updaterWidget, SIGNAL(packageChanged(QApt::Package*)),
+               m_changelogWidget, SLOT(setPackage(QApt::Package*)));
     m_updaterWidget->reload();
+    connect(m_updaterWidget, SIGNAL(packageChanged(QApt::Package*)),
+            m_changelogWidget, SLOT(setPackage(QApt::Package*)));
+    m_changelogWidget->setPackage(0);
     QApplication::restoreOverrideCursor();
 
     m_canExit = true;
