@@ -70,6 +70,7 @@ protected:
     KAction *m_revertAction;
     KAction *m_softwarePropertiesAction;
 
+    QApt::CacheState m_originalState;
     int m_powerInhibitor;
     bool m_canExit;
 

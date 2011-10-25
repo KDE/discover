@@ -71,6 +71,7 @@ void MuonMainWindow::initObject()
             this, SLOT(questionOccurred(QApt::WorkerQuestion, QVariantMap)));
     connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
     m_backend->init();
+    m_originalState = m_backend->currentCacheState();
 
     if (m_backend->xapianIndexNeedsUpdate()) {
         m_backend->updateXapianIndex();
@@ -605,8 +606,7 @@ void MuonMainWindow::redo()
 
 void MuonMainWindow::revertChanges()
 {
-    m_backend->init();
-    reload();
+    m_backend->restoreCacheState(m_originalState);
 }
 
 void MuonMainWindow::runSourcesEditor(bool update)

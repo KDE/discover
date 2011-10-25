@@ -439,6 +439,7 @@ void MainWindow::reload()
     if (m_reviewWidget) {
         m_reviewWidget->reload();
     }
+    m_originalState = m_backend->currentCacheState();
 
     m_statusWidget->updateStatus();
     setActionsEnabled();
