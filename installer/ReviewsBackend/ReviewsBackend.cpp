@@ -133,6 +133,19 @@ Rating *ReviewsBackend::ratingForApplication(Application *app) const
     return 0;
 }
 
+void ReviewsBackend::stopPendingJobs()
+{
+    QHash<KJob *, Application *>::const_iterator iter = m_jobHash.constBegin();
+    while (iter != m_jobHash.constEnd()) {
+        KJob *getJob = iter.key();
+        disconnect(getJob, SIGNAL(result(KJob *)),
+                   this, SLOT(changelogFetched(KJob *)));
+        iter++;
+    }
+
+    m_jobHash.clear();
+}
+
 void ReviewsBackend::fetchReviews(Application *app)
 {
     // Check our cache before fetching from the 'net

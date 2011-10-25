@@ -47,6 +47,7 @@ public:
     void setAptBackend(QApt::Backend *aptBackend);
     void fetchReviews(Application *app);
     void clearReviewCache();
+    void stopPendingJobs();
 
 private:
     QApt::Backend *m_aptBackend;

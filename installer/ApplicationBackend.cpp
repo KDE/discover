@@ -115,6 +115,7 @@ void ApplicationBackend::reload()
     m_appList.clear();
     qDeleteAll(m_queue);
     m_queue.clear();
+    m_reviewsBackend->stopPendingJobs();
     m_backend->reloadCache();
     m_reviewsBackend->clearReviewCache();
 
