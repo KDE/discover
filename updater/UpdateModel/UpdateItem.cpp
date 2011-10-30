@@ -20,7 +20,7 @@
 
 #include "UpdateItem.h"
 
-#include <KDebug>
+#include <QtCore/QStringBuilder>
 
 #include "../../installer/Application.h"
 
@@ -111,9 +111,13 @@ QString UpdateItem::name() const
     case CategoryItem:
         return m_categoryName;
     case ApplicationItem:
+        if (m_app->package()->isForeignArch()) {
+            return QString(m_app->name() % QLatin1String(" (")
+                    % m_app->package()->architecture() % ')');
+        }
         return m_app->name();
     default:
-        return QString();
+        break;
     }
 
     return QString();
