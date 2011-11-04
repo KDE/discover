@@ -25,6 +25,7 @@
 #include "../libmuon/MuonMainWindow.h"
 
 class KAction;
+class KMessageWidget;
 
 class ChangelogWidget;
 class ProgressWidget;
@@ -42,6 +43,7 @@ private:
     UpdaterWidget *m_updaterWidget;
     ChangelogWidget *m_changelogWidget;
     UpdaterSettingsDialog *m_settingsDialog;
+    KMessageWidget *m_powerMessage;
 
     KAction *m_applyAction;
     KAction *m_createDownloadListAction;
@@ -60,6 +62,8 @@ private Q_SLOTS:
     void startCommit();
     void editSettings();
     void closeSettingsDialog();
+    void checkPlugState();
+    void updatePlugState(bool plugged);
 };
 
 #endif // MAINWINDOW_H

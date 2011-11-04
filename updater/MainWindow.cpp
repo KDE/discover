@@ -29,6 +29,9 @@
 #include <KAction>
 #include <KActionCollection>
 #include <KDebug>
+#include "kmessagewidget.h"
+#include <Solid/Device>
+#include <Solid/AcAdapter>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -54,6 +57,12 @@ void MainWindow::initGUI()
     QWidget *mainWidget = new QWidget(this);
     QVBoxLayout *mainLayout = new QVBoxLayout(mainWidget);
 
+    m_powerMessage = new KMessageWidget(mainWidget);
+    m_powerMessage->setText(i18nc("@info Warning to plug in laptop before updating",
+                                  "It is safer to plug in the power adapter before updating."));
+    m_powerMessage->hide();
+    m_powerMessage->setMessageType(KMessageWidget::Warning);
+
     m_progressWidget = new ProgressWidget(mainWidget);
     m_progressWidget->hide();
 
@@ -68,6 +77,7 @@ void MainWindow::initGUI()
     connect(m_updaterWidget, SIGNAL(packageChanged(QApt::Package*)),
             m_changelogWidget, SLOT(setPackage(QApt::Package*)));
 
+    mainLayout->addWidget(m_powerMessage);
     mainLayout->addWidget(m_progressWidget);
     mainLayout->addWidget(m_updaterWidget);
     mainLayout->addWidget(m_changelogWidget);
@@ -81,6 +91,7 @@ void MainWindow::initGUI()
 void MainWindow::initObject()
 {
     MuonMainWindow::initObject();
+    checkPlugState();
     setActionsEnabled(); //Get initial enabled/disabled state
 
     connect(m_backend, SIGNAL(downloadProgress(int, int, int)),
@@ -196,6 +207,8 @@ void MainWindow::reload()
     m_changelogWidget->setPackage(0);
     QApplication::restoreOverrideCursor();
 
+    checkPlugState();
+
     m_canExit = true;
 }
 
@@ -249,4 +262,24 @@ void MainWindow::closeSettingsDialog()
 {
     m_settingsDialog->deleteLater();
     m_settingsDialog = 0;
+}
+
+void MainWindow::checkPlugState()
+{
+    const QList<Solid::Device> acAdapters = Solid::Device::listFromType(Solid::DeviceInterface::AcAdapter);
+    bool isPlugged = true;
+
+    foreach(Solid::Device device_ac, acAdapters) {
+        Solid::AcAdapter* acAdapter = device_ac.as<Solid::AcAdapter>();
+        isPlugged |= acAdapter->isPlugged();
+        connect(acAdapter, SIGNAL(plugStateChanged(bool,QString)),
+                this, SLOT(updatePlugState(bool)), Qt::UniqueConnection);
+    }
+
+    updatePlugState(isPlugged);
+}
+
+void MainWindow::updatePlugState(bool plugged)
+{
+    plugged ? m_powerMessage->hide() : m_powerMessage->show();
 }
