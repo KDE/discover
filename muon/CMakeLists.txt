@@ -5,7 +5,11 @@ set(muon_SRCS
     MainWindow.cpp
     ManagerWidget.cpp
     ReviewWidget.cpp
-    FilterWidget.cpp
+    FilterWidget/CategoryFilter.cpp
+    FilterWidget/FilterModel.cpp
+    FilterWidget/FilterWidget.cpp
+    FilterWidget/OriginFilter.cpp
+    FilterWidget/StatusFilter.cpp
     config/ManagerSettingsDialog.cpp
     config/GeneralSettingsPage.cpp)
 

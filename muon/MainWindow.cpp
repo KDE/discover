@@ -48,7 +48,7 @@
 #include "../libmuon/HistoryView/HistoryView.h"
 #include "../libmuon/DownloadWidget.h"
 #include "../libmuon/StatusWidget.h"
-#include "FilterWidget.h"
+#include "FilterWidget/FilterWidget.h"
 #include "ManagerWidget.h"
 #include "ReviewWidget.h"
 #include "MuonSettings.h"

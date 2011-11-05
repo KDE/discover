@@ -34,6 +34,8 @@ class QStandardItemModel;
 class QToolBox;
 class QTreeView;
 
+class FilterModel;
+
 namespace QApt
 {
     class Backend;
@@ -50,13 +52,12 @@ private:
     QApt::Backend *m_backend;
 
     QToolBox *m_filterBox;
-    QTreeView *m_categoriesList;
+    QListView *m_categoriesList;
     QListView *m_statusList;
     QListView *m_originList;
 
-    QStandardItemModel *m_categoryModel;
-    QStandardItemModel *m_statusModel;
-    QStandardItemModel *m_originModel;
+    QVector<QListView *> m_listViews;
+    QVector<FilterModel *> m_filterModels;
 
     void selectFirstRow(const QAbstractItemView *itemView);
 
@@ -66,9 +67,6 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void populateFilters();
-    void populateCategories();
-    void populateStatuses();
-    void populateOrigins();
 
     void categoryActivated(const QModelIndex &index);
     void statusActivated(const QModelIndex &index);
