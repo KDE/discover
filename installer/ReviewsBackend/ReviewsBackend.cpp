@@ -135,7 +135,7 @@ Rating *ReviewsBackend::ratingForApplication(Application *app) const
 
 void ReviewsBackend::stopPendingJobs()
 {
-    QHash<KJob *, Application *>::const_iterator iter = m_jobHash.constBegin();
+    auto iter = m_jobHash.constBegin();
     while (iter != m_jobHash.constEnd()) {
         KJob *getJob = iter.key();
         disconnect(getJob, SIGNAL(result(KJob *)),

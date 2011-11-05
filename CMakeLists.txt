@@ -25,6 +25,8 @@ else (QZEITGEIST_INCLUDE_DIR)
     set(ENABLE_QZEITGEIST FALSE)
 endif (QZEITGEIST_INCLUDE_DIR)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+
 macro_log_feature(qjson_FOUND "QJson" "Qt-based library that maps JSON data to QVariant objects"
                   "http://qjson.sourceforge.net/" FALSE "" "Used for review fetching")
 macro_log_feature(QAPT_FOUND "QApt" "High-level Qt wrapper/Apt implementation around the Apt-pkg library"

@@ -584,9 +584,8 @@ void PackageWidget::showBrokenReason(QApt::Package *package)
     dialogText += '\n';
     QString title = i18nc("@title:window", "Unable to Mark Package");
 
-    QHash<int, QHash<QString, QVariantMap> >::const_iterator reasonIter = failedReasons.constBegin();
-    QHash<int, QHash<QString, QVariantMap> >::const_iterator end = failedReasons.constEnd();
-    while (reasonIter != end) {
+    auto reasonIter = failedReasons.constBegin();
+    while (reasonIter != failedReasons.constEnd()) {
         QApt::BrokenReason failType = (QApt::BrokenReason)reasonIter.key();
         QHash<QString, QVariantMap> failReason = reasonIter.value();
         dialogText += digestReason(package, failType, failReason);
@@ -599,8 +598,7 @@ void PackageWidget::showBrokenReason(QApt::Package *package)
 
 QString PackageWidget::digestReason(QApt::Package *pkg, QApt::BrokenReason failType, QHash<QString, QVariantMap> failReason)
 {
-    QHash<QString, QVariantMap>::const_iterator packageIter = failReason.constBegin();
-    QHash<QString, QVariantMap>::const_iterator end = failReason.constEnd();
+    auto packageIter = failReason.constBegin();
     QString reason;
 
     switch (failType) {
@@ -613,7 +611,7 @@ QString PackageWidget::digestReason(QApt::Package *pkg, QApt::BrokenReason failT
         break;
     }
     case QApt::WrongCandidateVersion: {
-        while (packageIter != end) {
+        while (packageIter != failReason.constEnd()) {
             QString package = packageIter.key();
             QString relation = packageIter.value()["Relation"].toString();
             QString requiredVersion = packageIter.value()["RequiredVersion"].toString();
@@ -640,7 +638,7 @@ QString PackageWidget::digestReason(QApt::Package *pkg, QApt::BrokenReason failT
         break;
     }
     case QApt::DepNotInstallable: {
-        while (packageIter != end) {
+        while (packageIter != failReason.constEnd()) {
             QString package = packageIter.key();
             QString relation = packageIter.value()["Relation"].toString();
             bool isFirstOr = !packageIter.value()["IsFirstOr"].toBool();
@@ -665,7 +663,7 @@ QString PackageWidget::digestReason(QApt::Package *pkg, QApt::BrokenReason failT
         break;
     }
     case QApt::VirtualPackage:
-        while (packageIter != end) {
+        while (packageIter != failReason.constEnd()) {
             QString package = packageIter.key();
             QString relation = packageIter.value()["Relation"].toString();
             bool isFirstOr = !packageIter.value()["IsFirstOr"].toBool();
