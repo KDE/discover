@@ -55,6 +55,7 @@ FilterWidget::FilterWidget(QWidget *parent)
     m_categoriesList->setHeaderHidden(true);
     m_filterBox->addItem(m_categoriesList, KIcon(), i18nc("@title:tab", "By Category"));
     m_categoryModel = new QStandardItemModel;
+    m_categoriesList->setModel(m_categoryModel);
     connect(m_categoriesList, SIGNAL(clicked(const QModelIndex &)),
             this, SLOT(categoryActivated(const QModelIndex &)));
 
@@ -62,6 +63,7 @@ FilterWidget::FilterWidget(QWidget *parent)
     m_statusList->setAlternatingRowColors(true);
     m_filterBox->addItem(m_statusList, KIcon(), i18nc("@title:tab", "By Status"));
     m_statusModel = new QStandardItemModel;
+    m_statusList->setModel(m_statusModel);
     connect(m_statusList, SIGNAL(clicked(const QModelIndex &)),
             this, SLOT(statusActivated(const QModelIndex &)));
 
@@ -69,6 +71,7 @@ FilterWidget::FilterWidget(QWidget *parent)
     m_originList->setAlternatingRowColors(true);
     m_filterBox->addItem(m_originList, KIcon(), i18nc("@title:tab", "By Origin"));
     m_originModel = new QStandardItemModel;
+    m_originList->setModel(m_originModel);
     connect(m_originList, SIGNAL(clicked(const QModelIndex &)),
             this, SLOT(originActivated(const QModelIndex &)));
 
@@ -84,19 +87,30 @@ void FilterWidget::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
 
+    populateFilters();
+
+    setEnabled(true);
+}
+
+void FilterWidget::reload()
+{
+    m_categoryModel->clear();
+    m_statusModel->clear();
+    m_originModel->clear();
+
+    populateFilters();
+}
+
+void FilterWidget::populateFilters()
+{
     populateCategories();
-    m_categoriesList->setModel(m_categoryModel);
     selectFirstRow(m_categoriesList);
 
     populateStatuses();
-    m_statusList->setModel(m_statusModel);
     selectFirstRow(m_statusList);
 
     populateOrigins();
-    m_originList->setModel(m_originModel);
     selectFirstRow(m_originList);
-
-    setEnabled(true);
 }
 
 void FilterWidget::populateCategories()

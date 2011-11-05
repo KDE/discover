@@ -441,6 +441,8 @@ void MainWindow::reload()
     }
     m_originalState = m_backend->currentCacheState();
 
+    m_filterBox->reload();
+
     m_statusWidget->updateStatus();
     setActionsEnabled();
     m_managerWidget->setEnabled(true);

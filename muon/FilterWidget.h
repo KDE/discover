@@ -62,8 +62,10 @@ private:
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
+    void reload();
 
 private Q_SLOTS:
+    void populateFilters();
     void populateCategories();
     void populateStatuses();
     void populateOrigins();
