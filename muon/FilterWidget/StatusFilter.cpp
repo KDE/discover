@@ -17,59 +17,56 @@ StatusFilter::StatusFilter(QObject *parent)
 
 void StatusFilter::populate()
 {
+    QVector<QStandardItem *> items;
     QStandardItem *defaultItem = new QStandardItem;
-    defaultItem->setEditable(false);
+    items.append(defaultItem);
     defaultItem->setIcon(KIcon("bookmark-new-list"));
     defaultItem->setText(i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All"));
 
     QStandardItem *installedItem = new QStandardItem;
-    installedItem->setEditable(false);
+    items.append(installedItem);
     installedItem->setIcon(KIcon("download"));
     installedItem->setText(MuonStrings::global()->packageStateName(QApt::Package::Installed));
     installedItem->setData(QApt::Package::Installed);
 
     QStandardItem *notInstalledItem = new QStandardItem;
-    notInstalledItem->setEditable(false);
+    items.append(notInstalledItem);
     notInstalledItem->setIcon(KIcon("application-x-deb"));
     notInstalledItem->setText(MuonStrings::global()->packageStateName(QApt::Package::NotInstalled));
     notInstalledItem->setData(QApt::Package::NotInstalled);
 
     QStandardItem *upgradeableItem = new QStandardItem;
-    upgradeableItem->setEditable(false);
+    items.append(upgradeableItem);
     upgradeableItem->setIcon(KIcon("system-software-update"));
     upgradeableItem->setText(MuonStrings::global()->packageStateName(QApt::Package::Upgradeable));
     upgradeableItem->setData(QApt::Package::Upgradeable);
 
     QStandardItem *brokenItem = new QStandardItem;
-    brokenItem->setEditable(false);
+    items.append(brokenItem);
     brokenItem->setIcon(KIcon("dialog-cancel"));
     brokenItem->setText(MuonStrings::global()->packageStateName(QApt::Package::NowBroken));
     brokenItem->setData(QApt::Package::NowBroken);
 
     QStandardItem *purgeableItem = new QStandardItem;
-    purgeableItem->setEditable(false);
+    items.append(purgeableItem);
     purgeableItem->setIcon(KIcon("user-trash-full"));
     purgeableItem->setText(MuonStrings::global()->packageStateName(QApt::Package::ResidualConfig));
     purgeableItem->setData(QApt::Package::ResidualConfig);
 
     QStandardItem *autoRemoveItem = new QStandardItem;
-    autoRemoveItem->setEditable(false);
+    items.append(autoRemoveItem);
     autoRemoveItem->setIcon(KIcon("archive-remove"));
     autoRemoveItem->setText(MuonStrings::global()->packageStateName(QApt::Package::IsGarbage));
     autoRemoveItem->setData(QApt::Package::IsGarbage);
 
     QStandardItem *lockedItem = new QStandardItem;
-    lockedItem->setEditable(false);
+    items.append(lockedItem);
     lockedItem->setIcon(KIcon("object-locked"));
     lockedItem->setText(MuonStrings::global()->packageStateName(QApt::Package::IsPinned));
     lockedItem->setData(QApt::Package::IsPinned);
 
-    appendRow(defaultItem);
-    appendRow(installedItem);
-    appendRow(notInstalledItem);
-    appendRow(upgradeableItem);
-    appendRow(brokenItem);
-    appendRow(purgeableItem);
-    appendRow(autoRemoveItem);
-    appendRow(lockedItem);
+    for (QStandardItem *item : items) {
+        item->setEditable(false);
+        appendRow(item);
+    }
 }
