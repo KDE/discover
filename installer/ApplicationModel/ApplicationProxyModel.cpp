@@ -116,7 +116,7 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
     if (!m_orFilters.isEmpty()) {
         // Set a boolean value to true when any of the conditions are found.
         // It is set to false by default so that if none are found, we return false
-        QList<QPair<FilterType, QString> >::const_iterator filter = m_orFilters.constBegin();
+        auto filter = m_orFilters.constBegin();
         bool foundOrCondition = false;
         while (filter != m_orFilters.constEnd()) {
             switch ((*filter).first) {
@@ -155,7 +155,7 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
 
     if (!m_andFilters.isEmpty()) {
         // Set a boolean value to false when any conditions fail to meet
-        QList<QPair<FilterType, QString> >::const_iterator filter = m_andFilters.constBegin();
+        auto filter = m_andFilters.constBegin();
         bool andConditionsMet = true;
         while (filter != m_andFilters.constEnd()) {
             switch ((*filter).first) {
@@ -193,7 +193,7 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
     }
 
     if (!m_notFilters.isEmpty()) {
-        QList<QPair<FilterType, QString> >::const_iterator filter = m_notFilters.constBegin();
+        auto filter = m_notFilters.constBegin();
         while (filter != m_notFilters.constEnd()) {
             switch ((*filter).first) {
             case CategoryFilter:

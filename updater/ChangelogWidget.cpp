@@ -142,7 +142,7 @@ void ChangelogWidget::animatedHide()
 
 void ChangelogWidget::stopPendingJobs()
 {
-    QHash<KJob *, QString>::const_iterator iter = m_jobHash.constBegin();
+    auto iter = m_jobHash.constBegin();
     while (iter != m_jobHash.constEnd()) {
         KJob *getJob = iter.key();
         disconnect(getJob, SIGNAL(result(KJob *)),

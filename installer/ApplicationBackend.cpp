@@ -296,7 +296,7 @@ void ApplicationBackend::runNextTransaction()
     }
 
     QHash<QApt::Package *, QApt::Package::State> addons = m_currentTransaction->addons();
-    QHash<QApt::Package *, QApt::Package::State>::const_iterator iter = addons.constBegin();
+    auto iter = addons.constBegin();
 
     while (iter != addons.constEnd()) {
         switch (iter.value()) {

@@ -55,7 +55,7 @@ ChangelogTab::~ChangelogTab()
 void ChangelogTab::setPackage(QApt::Package *package)
 {
     // Clean up old jobs
-    QHash<KJob *, QString>::const_iterator i = m_jobFilenames.constBegin();
+    auto i = m_jobFilenames.constBegin();
     while (i != m_jobFilenames.constEnd()) {
         i.key()->kill();
         ++i;
