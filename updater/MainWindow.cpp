@@ -37,6 +37,7 @@
 #include <LibQApt/Backend>
 
 // Own includes
+#include "../libmuon/HistoryView/HistoryView.h"
 #include "ChangelogWidget.h"
 #include "ProgressWidget.h"
 #include "config/UpdaterSettingsDialog.h"
@@ -45,6 +46,7 @@
 MainWindow::MainWindow()
     : MuonMainWindow()
     , m_settingsDialog(0)
+    , m_historyDialog(0)
 {
     initGUI();
     QTimer::singleShot(10, this, SLOT(initObject()));
@@ -129,6 +131,12 @@ void MainWindow::setupActions()
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
 
     KStandardAction::preferences(this, SLOT(editSettings()), actionCollection());
+
+    m_historyAction = actionCollection()->addAction("history");
+    m_historyAction->setIcon(KIcon("view-history"));
+    m_historyAction->setText(i18nc("@action::inmenu", "History..."));
+    m_historyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_H));
+    connect(m_historyAction, SIGNAL(triggered()), this, SLOT(showHistoryDialog()));
 
     setActionsEnabled(false);
 
@@ -262,6 +270,36 @@ void MainWindow::closeSettingsDialog()
 {
     m_settingsDialog->deleteLater();
     m_settingsDialog = 0;
+}
+
+void MainWindow::showHistoryDialog()
+{
+    if (!m_historyDialog) {
+        m_historyDialog = new KDialog(this);
+
+        KConfigGroup dialogConfig(KSharedConfig::openConfig("muonrc"),
+                                  "HistoryDialog");
+        m_historyDialog->restoreDialogSize(dialogConfig);
+
+        connect(m_historyDialog, SIGNAL(finished()), SLOT(closeHistoryDialog()));
+        HistoryView *historyView = new HistoryView(m_historyDialog);
+        m_historyDialog->setMainWidget(historyView);
+        m_historyDialog->setWindowTitle(i18nc("@title:window", "Package History"));
+        m_historyDialog->setWindowIcon(KIcon("view-history"));
+        m_historyDialog->setButtons(KDialog::Close);
+        m_historyDialog->show();
+    } else {
+        m_historyDialog->raise();
+    }
+}
+
+void MainWindow::closeHistoryDialog()
+{
+    KConfigGroup dialogConfig(KSharedConfig::openConfig("muonrc"),
+                              "HistoryDialog");
+    m_historyDialog->saveDialogSize(dialogConfig, KConfigBase::Persistent);
+    m_historyDialog->deleteLater();
+    m_historyDialog = 0;
 }
 
 void MainWindow::checkPlugState()

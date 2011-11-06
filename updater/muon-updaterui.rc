@@ -22,6 +22,9 @@
             <Separator/>
             <Action name="apply" />
         </Menu>
+        <Menu name="view" >
+            <Action name="history" />
+        </Menu>
         <Menu name="settings">
           <Separator />
           <Action name="software_properties" />
