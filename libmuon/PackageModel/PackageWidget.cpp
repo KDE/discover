@@ -196,28 +196,17 @@ void PackageWidget::setPackagesType(int type)
 {
     m_packagesType = type;
 
-    switch (m_packagesType) {
-        case AvailablePackages:
-            break;
-        case UpgradeablePackages: {
-            QApt::Package::State state =
-                        (QApt::Package::State)(QApt::Package::Upgradeable | QApt::Package::ToInstall |
-                        QApt::Package::ToReInstall | QApt::Package::ToUpgrade |
-                        QApt::Package::ToDowngrade | QApt::Package::ToRemove |
-                        QApt::Package::ToPurge);
-            m_proxyModel->setStateFilter(state);
-            break;
-        }
-        case MarkedPackages: {
-            QApt::Package::State state =
-                          (QApt::Package::State)(QApt::Package::ToInstall |
-                          QApt::Package::ToReInstall | QApt::Package::ToUpgrade |
-                          QApt::Package::ToDowngrade | QApt::Package::ToRemove |
-                          QApt::Package::ToPurge);
-            m_proxyModel->setStateFilter(state);
-            break;
-        }
+    QApt::Package::State state = (QApt::Package::State)0;
+
+
+    if (type == MarkedPackages) {
+        state = (QApt::Package::State)(QApt::Package::ToInstall |
+                 QApt::Package::ToReInstall | QApt::Package::ToUpgrade |
+                 QApt::Package::ToDowngrade | QApt::Package::ToRemove |
+                 QApt::Package::ToPurge);
     }
+
+    m_proxyModel->setStateFilter(state);
 }
 
 void PackageWidget::hideHeaderLabel()
