@@ -170,7 +170,7 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
         QApplication::restoreOverrideCursor();
         break;
     case QApt::CommitChangesStarted:
-        m_progressWidget->setHeaderText(i18nc("@info", "<title>Committing Changes</title>"));
+        m_progressWidget->setHeaderText(i18nc("@info", "<title>Installing Updates</title>"));
         QApplication::restoreOverrideCursor();
         break;
     default:
