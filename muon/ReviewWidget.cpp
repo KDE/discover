@@ -22,8 +22,6 @@
 
 #include <KLocale>
 
-#include "../libmuon/DetailsWidget.h"
-
 ReviewWidget::ReviewWidget(QWidget *parent)
     : PackageWidget(parent)
 {

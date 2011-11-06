@@ -43,15 +43,15 @@
 #include <LibQApt/Config>
 
 // Own includes
-#include "config/ManagerSettingsDialog.h"
-#include "../libmuon/CommitWidget.h"
 #include "../libmuon/HistoryView/HistoryView.h"
-#include "../libmuon/DownloadWidget.h"
-#include "../libmuon/StatusWidget.h"
+#include "CommitWidget.h"
+#include "DownloadWidget.h"
 #include "FilterWidget/FilterWidget.h"
 #include "ManagerWidget.h"
 #include "ReviewWidget.h"
 #include "MuonSettings.h"
+#include "StatusWidget.h"
+#include "config/ManagerSettingsDialog.h"
 
 MainWindow::MainWindow()
     : MuonMainWindow()

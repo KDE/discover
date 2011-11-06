@@ -25,7 +25,7 @@
 
 #include <LibQApt/Package>
 
-#include "../libmuon/PackageModel/PackageWidget.h"
+#include "PackageModel/PackageWidget.h"
 
 namespace QApt {
     class Backend;

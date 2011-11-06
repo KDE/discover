@@ -1,25 +1,8 @@
 set(muon_LIB_SRCS
     MuonMainWindow.cpp
     MuonStrings.cpp
-    CommitWidget.cpp
-    DownloadWidget.cpp
-    StatusWidget.cpp
-    DetailsWidget.cpp
-    DownloadModel/DownloadModel.cpp
-    DownloadModel/DownloadDelegate.cpp
     HistoryView/HistoryProxyModel.cpp
     HistoryView/HistoryView.cpp
-    PackageModel/PackageModel.cpp
-    PackageModel/PackageProxyModel.cpp
-    PackageModel/PackageView.cpp
-    PackageModel/PackageDelegate.cpp
-    PackageModel/PackageWidget.cpp
-    DetailsTabs/MainTab.cpp
-    DetailsTabs/ChangelogTab.cpp
-    DetailsTabs/DependsTab.cpp
-    DetailsTabs/InstalledFilesTab.cpp
-    DetailsTabs/TechnicalDetailsTab.cpp
-    DetailsTabs/VersionTab.cpp
     mobile/src/mousecursor.cpp
     settings/SettingsPageBase.cpp
     settings/NotifySettingsPage.cpp)
@@ -37,9 +20,7 @@ target_link_libraries(muonprivate
     ${KDE4_KIO_LIBS}
     ${KDE4_PHONON_LIBS}
     ${KDE4_SOLID_LIBS}
-    ${KDE4_THREADWEAVER_LIBRARIES}
-    ${QAPT_LIBRARY}
-    ${DEBCONF_KDE_LIB})
+    ${QAPT_LIBRARY})
 
 file(GLOB muon_QMLS "${CMAKE_CURRENT_SOURCE_DIR}/mobile/qml/*.qml")
 

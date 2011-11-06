@@ -36,12 +36,12 @@
 #include <LibQApt/Backend>
 
 // Own includes
-#include "../libmuon/DetailsWidget.h"
 #include "../libmuon/MuonStrings.h"
-#include "../libmuon/PackageModel/PackageModel.h"
-#include "../libmuon/PackageModel/PackageProxyModel.h"
-#include "../libmuon/PackageModel/PackageView.h"
-#include "../libmuon/PackageModel/PackageDelegate.h"
+#include "DetailsWidget.h"
+#include "PackageModel/PackageModel.h"
+#include "PackageModel/PackageProxyModel.h"
+#include "PackageModel/PackageView.h"
+#include "PackageModel/PackageDelegate.h"
 
 ManagerWidget::ManagerWidget(QWidget *parent)
     : PackageWidget(parent)

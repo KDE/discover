@@ -36,7 +36,7 @@
 #include <LibQApt/Package>
 
 // Own includes
-#include "MuonStrings.h"
+#include "../libmuon/MuonStrings.h"
 
 TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
     : QScrollArea(parent)

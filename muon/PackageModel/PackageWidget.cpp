@@ -48,7 +48,7 @@
 #include <LibQApt/Backend>
 
 // Own includes
-#include "../libmuon/DetailsWidget.h"
+#include "DetailsWidget.h"
 #include "PackageModel.h"
 #include "PackageProxyModel.h"
 #include "PackageView.h"

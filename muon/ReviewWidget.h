@@ -21,7 +21,7 @@
 #ifndef REVIEWWIDGET_H
 #define REVIEWWIDGET_H
 
-#include "../libmuon/PackageModel/PackageWidget.h"
+#include "PackageModel/PackageWidget.h"
 
 class ReviewWidget : public PackageWidget
 {

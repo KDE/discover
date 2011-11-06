@@ -5,11 +5,28 @@ set(muon_SRCS
     MainWindow.cpp
     ManagerWidget.cpp
     ReviewWidget.cpp
+    CommitWidget.cpp
+    DetailsTabs/MainTab.cpp
+    DetailsTabs/ChangelogTab.cpp
+    DetailsTabs/DependsTab.cpp
+    DetailsTabs/InstalledFilesTab.cpp
+    DetailsTabs/TechnicalDetailsTab.cpp
+    DetailsTabs/VersionTab.cpp
+    DetailsWidget.cpp
+    DownloadModel/DownloadModel.cpp
+    DownloadModel/DownloadDelegate.cpp
+    DownloadWidget.cpp
     FilterWidget/CategoryFilter.cpp
     FilterWidget/FilterModel.cpp
     FilterWidget/FilterWidget.cpp
     FilterWidget/OriginFilter.cpp
     FilterWidget/StatusFilter.cpp
+    PackageModel/PackageModel.cpp
+    PackageModel/PackageProxyModel.cpp
+    PackageModel/PackageView.cpp
+    PackageModel/PackageDelegate.cpp
+    PackageModel/PackageWidget.cpp
+    StatusWidget.cpp
     config/ManagerSettingsDialog.cpp
     config/GeneralSettingsPage.cpp)
 
@@ -20,7 +37,8 @@ kde4_add_executable(muon ${muon_SRCS})
 
 target_link_libraries(muon muonprivate
                            ${KDE4_KIO_LIBS}
-                           ${QAPT_LIBRARY})
+                           ${QAPT_LIBRARY}
+                           ${DEBCONF_KDE_LIB})
 
 install(TARGETS muon ${INSTALL_TARGETS_DEFAULT_ARGS} )
 

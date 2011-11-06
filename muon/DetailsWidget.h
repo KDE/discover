@@ -24,8 +24,6 @@
 // KDE inclues
 #include <KTabWidget>
 
-#include "libmuonprivate_export.h"
-
 class QScrollArea;
 
 namespace QApt
@@ -41,7 +39,7 @@ class ChangelogTab;
 class InstalledFilesTab;
 class VersionTab;
 
-class MUONPRIVATE_EXPORT DetailsWidget : public KTabWidget
+class DetailsWidget : public KTabWidget
 {
     Q_OBJECT
 public:

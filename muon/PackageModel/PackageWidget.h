@@ -30,8 +30,6 @@
 
 #include <LibQApt/Package>
 
-#include "../libmuonprivate_export.h"
-
 class QLabel;
 class QTimer;
 class QVBoxLayout;
@@ -50,7 +48,7 @@ namespace QApt
     class Backend;
 }
 
-class MUONPRIVATE_EXPORT PackageWidget : public KVBox
+class PackageWidget : public KVBox
 {
     Q_OBJECT
 public:

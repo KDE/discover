@@ -18,50 +18,47 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef PACKAGEPROXYMODEL_H
-#define PACKAGEPROXYMODEL_H
+#ifndef DOWNLOADWIDGET_H
+#define DOWNLOADWIDGET_H
 
-#include <QtGui/QSortFilterProxyModel>
-#include <QtCore/QString>
+// Qt includes
+#include <QWidget>
 
-#include <LibQApt/Package>
+class QLabel;
+class QTreeView;
+class QProgressBar;
+class QPushButton;
 
-#include "../libmuonprivate_export.h"
+class DownloadDelegate;
+class DownloadModel;
 
-namespace QApt {
-    class Backend;
-}
-
-class MUONPRIVATE_EXPORT PackageProxyModel : public QSortFilterProxyModel
+class DownloadWidget : public QWidget
 {
     Q_OBJECT
 public:
-    PackageProxyModel(QObject *parent);
-    ~PackageProxyModel();
-
-    void setBackend(QApt::Backend *backend);
-    void search(const QString &searchText);
-    void setGroupFilter(const QString &filterText);
-    void setStateFilter(QApt::Package::State state);
-    void setOriginFilter(const QString &origin);
-
-    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
-    QApt::Package *packageAt(const QModelIndex &index) const;
-    void reset();
-
-protected:
-    bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
+    explicit DownloadWidget(QWidget *parent);
+    ~DownloadWidget();
 
 private:
-    QApt::Backend *m_backend;
-    QApt::PackageList m_packages;
+    QLabel *m_headerLabel;
+    QTreeView *m_downloadView;
+    DownloadModel *m_downloadModel;
+    DownloadDelegate *m_downloadDelegate;
+    QProgressBar *m_totalProgress;
+    QLabel *m_downloadLabel;
+    QPushButton *m_cancelButton;
 
-    QString m_searchText;
-    QString m_groupFilter;
-    QApt::Package::State m_stateFilter;
-    QString m_originFilter;
+public Q_SLOTS:
+    void setHeaderText(const QString &text);
+    void updateDownloadProgress(int percentage, int speed, int ETA);
+    void updatePackageDownloadProgress(const QString &name, int percentage, const QString &URI, double size, int flag);
+    void clear();
 
-    bool m_sortByRelevancy;
+private Q_SLOTS:
+    void cancelButtonPressed();
+
+signals:
+    void cancelDownload();
 };
 
 #endif
