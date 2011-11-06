@@ -448,6 +448,8 @@ void PackageWidget::actOnPackages(QApt::Package::State action)
         }
     }
 
+    emit packageChanged();
+
     m_backend->setCompressEvents(false);
     QApplication::restoreOverrideCursor();
 }

@@ -88,6 +88,7 @@ void MainWindow::initGUI()
     m_managerWidget = new ManagerWidget(m_stack);
     connect(this, SIGNAL(backendReady(QApt::Backend *)),
             m_managerWidget, SLOT(setBackend(QApt::Backend *)));
+    connect(m_managerWidget, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
 
     m_mainWidget = new QSplitter(this);
     m_mainWidget->setOrientation(Qt::Horizontal);

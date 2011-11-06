@@ -133,6 +133,9 @@ private Q_SLOTS:
     bool setLocked(QApt::Package *package, bool lock);
     void setPackagesLocked(bool lock);
     void showBrokenReason(QApt::Package *package);
+
+Q_SIGNALS:
+    void packageChanged();
 };
 
 #endif
