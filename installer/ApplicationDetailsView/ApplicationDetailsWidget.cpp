@@ -367,9 +367,11 @@ void ApplicationDetailsWidget::setApplication(Application *app)
     }
 
     if (!app->package()->isInstalled()) {
-         m_version->setText(app->package()->availableVersion());
+         m_version->setText(app->package()->latin1Name() % ' ' %
+                            app->package()->availableVersion());
     } else {
-         m_version->setText(app->package()->installedVersion());
+         m_version->setText(app->package()->latin1Name() % ' ' %
+                            app->package()->installedVersion());
     }
 
     if (app->package()->component() == "main" ||

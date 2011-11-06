@@ -437,6 +437,11 @@ void PackageWidget::actOnPackages(QApt::Package::State action)
         }
     }
 
+    QHash<QApt::Package::State, QApt::PackageList> changes;
+    changes = m_backend->stateChanges(m_oldCacheState, packages.toList());
+
+    kDebug() << changes;
+
     emit packageChanged();
 
     m_backend->setCompressEvents(false);
