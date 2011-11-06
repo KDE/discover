@@ -20,5 +20,9 @@
       <label>The amount of history kept for undo/redo.</label>
       <default>20</default>
     </entry>
+    <entry name="AskChanges" type="Bool">
+      <label>Whether or not to confirm additional changes.</label>
+      <default>true</default>
+    </entry>
   </group>
 </kcfg>

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,47 +18,29 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef GENERALSETTINGSPAGE_H
-#define GENERALSETTINGSPAGE_H
+#ifndef CHANGESDIALOG_H
+#define CHANGESDIALOG_H
 
-#include <QtGui/QWidget>
+// Qt includes
+#include <QStandardItemModel>
+#include <QtGui/QDialog>
 
-#include "../../libmuon/settings/SettingsPageBase.h"
+// LibQApt includes
+#include <LibQApt/Package>
 
-class QCheckBox;
-class QSpinBox;
+#include "libmuonprivate_export.h"
 
-namespace QApt {
-    class Config;
-}
+class QStandardItemModel;
 
-class GeneralSettingsPage : public SettingsPageBase
+class MUONPRIVATE_EXPORT ChangesDialog : public QDialog
 {
-    Q_OBJECT
-
 public:
-    GeneralSettingsPage(QWidget* parent, QApt::Config *aptConfig);
-    virtual ~GeneralSettingsPage();
-
-    void loadSettings();
-    virtual void applySettings();
-    virtual void restoreDefaults();
-
-private Q_SLOTS:
-    void emitAuthChanged();
-    void updateAutoCleanSpinboxSuffix();
+    ChangesDialog(QWidget *parent, const QApt::StateChanges &changes);
 
 private:
-    QApt::Config *m_aptConfig;
-    QCheckBox *m_askChangesCheckBox;
-    QCheckBox *m_recommendsCheckBox;
-    QCheckBox *m_suggestsCheckBox;
-    QCheckBox *m_untrustedCheckBox;
-    QSpinBox *m_undoStackSpinbox;
-    QCheckBox *m_autoCleanCheckBox;
-    QSpinBox *m_autoCleanSpinbox;
+    QStandardItemModel *m_model;
 
-    int autoCleanValue() const;
+    void addPackages(const QApt::StateChanges &changes);
 };
 
-#endif
+#endif // CHANGESDIALOG_H

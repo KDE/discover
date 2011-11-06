@@ -195,6 +195,7 @@ QHash<int, QString> MuonStrings::stateHash()
     hash[QApt::Package::IsGarbage] = i18nc("@info:status Package state", "Installed (auto-removable)");
     hash[QApt::Package::ToKeep] = i18nc("@info:status Package state", "No Change");
     hash[QApt::Package::ToInstall] = i18nc("@info:status Requested action", "Install");
+    hash[QApt::Package::NewInstall] = i18nc("@info:status Requested action", "Install");
     hash[QApt::Package::ToUpgrade] = i18nc("@info:status Requested action", "Upgrade");
     hash[QApt::Package::ToRemove] = i18nc("@info:status Requested action", "Remove");
     hash[QApt::Package::ToPurge] = i18nc("@info:status Requested action", "Purge");

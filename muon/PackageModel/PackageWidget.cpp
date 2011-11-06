@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010,2011 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *   Copyright © 2010 Guillaume Martres <smarter@ubuntu.com>               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
@@ -48,7 +48,9 @@
 #include <LibQApt/Backend>
 
 // Own includes
+#include "../libmuon/ChangesDialog.h"
 #include "DetailsWidget.h"
+#include "MuonSettings.h"
 #include "PackageModel.h"
 #include "PackageProxyModel.h"
 #include "PackageView.h"
@@ -389,24 +391,17 @@ void PackageWidget::handleBreakage(QApt::Package *package)
 
 void PackageWidget::actOnPackages(QApt::Package::State action)
 {
-    QModelIndexList selected = m_packageView->selectionModel()->selectedIndexes();
+    const QApt::PackageList packages = selectedPackages();
 
-    if (selected.isEmpty()) {
+    if (packages.isEmpty())
         return;
-    }
 
     QApplication::setOverrideCursor(Qt::WaitCursor);
     saveState();
     m_backend->setCompressEvents(true);
     m_stop = false;
 
-    // There are three indexes per row, so we want a duplicate-less set of packages
-    QSet<QApt::Package *> packages;
-    foreach (const QModelIndex &index, selected) {
-        packages << m_proxyModel->packageAt(index);
-    }
-
-    foreach (QApt::Package *package, packages) {
+    for (QApt::Package *package : packages) {
         if (m_stop) {
             m_backend->setCompressEvents(false);
             QApplication::restoreOverrideCursor();
@@ -437,15 +432,12 @@ void PackageWidget::actOnPackages(QApt::Package::State action)
         }
     }
 
-    QHash<QApt::Package::State, QApt::PackageList> changes;
-    changes = m_backend->stateChanges(m_oldCacheState, packages.toList());
-
-    kDebug() << changes;
-
     emit packageChanged();
 
     m_backend->setCompressEvents(false);
     QApplication::restoreOverrideCursor();
+
+    checkChanges();
 }
 
 void PackageWidget::setInstall(QApt::Package *package)
@@ -458,6 +450,7 @@ void PackageWidget::setInstall(QApt::Package *package)
 
     // Check for/handle breakage
     handleBreakage(package);
+    checkChanges();
 }
 
 void PackageWidget::setPackagesInstall()
@@ -477,6 +470,7 @@ void PackageWidget::setRemove(QApt::Package *package)
         package->setRemove();
 
         handleBreakage(package);
+        checkChanges();
     }
 }
 
@@ -502,6 +496,7 @@ void PackageWidget::setReInstall(QApt::Package *package)
     package->setReInstall();
 
     handleBreakage(package);
+    checkChanges();
 }
 
 void PackageWidget::setPackagesReInstall()
@@ -521,6 +516,7 @@ void PackageWidget::setPurge(QApt::Package *package)
         package->setPurge();
 
         handleBreakage(package);
+        checkChanges();
     }
 }
 
@@ -535,6 +531,7 @@ void PackageWidget::setKeep(QApt::Package *package)
     package->setKeep();
 
     handleBreakage(package);
+    checkChanges();
 }
 
 void PackageWidget::setPackagesKeep()
@@ -549,19 +546,12 @@ bool PackageWidget::setLocked(QApt::Package *package, bool lock)
 
 void PackageWidget::setPackagesLocked(bool lock)
 {
-    QModelIndexList selected = m_packageView->selectionModel()->selectedIndexes();
+    const QApt::PackageList packages = selectedPackages();
 
-    if (selected.isEmpty()) {
+    if (packages.isEmpty())
         return;
-    }
 
-    // There are three indexes per row, so we want a duplicate-less set of packages
-    QSet<QApt::Package *> packages;
-    foreach (const QModelIndex &index, selected) {
-        packages << m_proxyModel->packageAt(index);
-    }
-
-    foreach (QApt::Package *package, packages) {
+    for (QApt::Package *package : packages) {
         bool locked = setLocked(package, lock);
         if (!locked) {
             // TODO: report error
@@ -569,6 +559,42 @@ void PackageWidget::setPackagesLocked(bool lock)
     }
 
     reload();
+}
+
+void PackageWidget::checkChanges()
+{
+    MuonSettings *settings = MuonSettings::self();
+
+    if (m_backend->areEventsCompressed() || !settings->askChanges())
+        return;
+
+    auto changes = m_backend->stateChanges(m_oldCacheState, selectedPackages());
+
+    if (changes.isEmpty())
+        return;
+
+    ChangesDialog *dialog = new ChangesDialog(this, changes);
+    int res = dialog->exec();
+
+    if (res != QDialog::Accepted)
+        m_backend->restoreCacheState(m_oldCacheState);
+}
+
+QApt::PackageList PackageWidget::selectedPackages()
+{
+    const QModelIndexList selected = m_packageView->selectionModel()->selectedIndexes();
+
+    if (selected.isEmpty()) {
+        return QApt::PackageList();
+    }
+
+    // There are three indexes per row, so we want a duplicate-less set of packages
+    QSet<QApt::Package *> packages;
+    for (const QModelIndex &index : selected) {
+        packages << m_proxyModel->packageAt(index);
+    }
+
+    return packages.toList();
 }
 
 void PackageWidget::showBrokenReason(QApt::Package *package)

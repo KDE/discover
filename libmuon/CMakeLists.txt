@@ -1,4 +1,5 @@
 set(muon_LIB_SRCS
+    ChangesDialog.cpp
     MuonMainWindow.cpp
     MuonStrings.cpp
     HistoryView/HistoryProxyModel.cpp
