@@ -31,6 +31,7 @@
 UpdateEvent::UpdateEvent(QObject* parent, const QString &name)
         : Event(parent, name)
         , m_checkerProcess(0)
+        , m_checkingUpdates(false)
 {
 }
 
@@ -94,6 +95,11 @@ void UpdateEvent::run()
 
 void UpdateEvent::getUpdateInfo()
 {
+    if (m_checkingUpdates) {
+        return;
+    }
+
+    m_checkingUpdates = true;
     m_checkerProcess = new QProcess(this);
     connect(m_checkerProcess, SIGNAL(finished(int)), this, SLOT(parseUpdateInfo()));
     m_checkerProcess->start("/usr/lib/update-notifier/apt-check");
@@ -104,6 +110,8 @@ void UpdateEvent::parseUpdateInfo()
     // Weirdly enough, apt-check gives output on stderr
     QByteArray line = m_checkerProcess->readAllStandardError();
     m_checkerProcess->deleteLater();
+    m_checkerProcess = 0;
+    m_checkingUpdates = false;
 
     // Format updates;security
     int eqpos = line.indexOf(';');

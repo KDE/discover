@@ -36,6 +36,7 @@ public:
 
 private:
     QProcess *m_checkerProcess;
+    bool m_checkingUpdates;
 
 public slots:
     void show(int updates, int securityUpdates);

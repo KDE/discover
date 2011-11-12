@@ -82,6 +82,8 @@ void MuonNotifier::init()
 
     if (!m_updateEvent->isHidden()) {
         KDirWatch *stampDirWatch = new KDirWatch(this);
+        stampDirWatch->addDir("/var/lib/apt/lists/");
+        stampDirWatch->addDir("/var/lib/apt/lists/partial/");
         stampDirWatch->addFile("/var/lib/update-notifier/updates-available");
         connect(stampDirWatch, SIGNAL(dirty(const QString &)),
                 this, SLOT(updateEvent()));
