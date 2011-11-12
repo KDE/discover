@@ -35,6 +35,7 @@ Event::Event(QObject* parent, const QString &name)
         , m_hidden(false)
         , m_notifierItem(0)
         , m_active(false)
+        , m_verbose(false)
 {
     m_hiddenCfgString = QString(QLatin1Literal("hide") % m_name % QLatin1Literal("Notifier"));
     m_hidden = readHiddenConfig();
@@ -65,6 +66,7 @@ void Event::readNotifyConfig()
     KConfig cfg("muon-notifierrc");
     KConfigGroup notifyTypeGroup(&cfg, "NotificationType");
     QString notifyType = notifyTypeGroup.readEntry("NotifyType", "Combo");
+    m_verbose = notifyTypeGroup.readEntry("Verbose", false);
 
     if (notifyType == "Combo") {
         m_useKNotify = true;
@@ -163,7 +165,7 @@ void Event::show(const QString &icon, const QString &text, const QStringList &ac
     }
 }
 
-void Event::update(const QString &icon, const QString &text)
+void Event::update(const QString &icon, const QString &text, const QString &tTipIcon)
 {
     if (!m_active) {
         return;
@@ -173,7 +175,11 @@ void Event::update(const QString &icon, const QString &text)
     // transient anyways.
     if (m_useTrayIcon && m_notifierItem) {
         m_notifierItem->setIconByName(icon);
-        m_notifierItem->setToolTipIconByName(icon);
+        if (!tTipIcon.isEmpty()) {
+            m_notifierItem->setToolTipIconByName(tTipIcon);
+        } else {
+            m_notifierItem->setToolTipIconByName(icon);
+        }
         m_notifierItem->setToolTipTitle(i18n("System Notification"));
         m_notifierItem->setToolTipSubTitle(text);
     }
@@ -208,6 +214,7 @@ void Event::notifyClosed()
 void Event::reloadConfig()
 {
     m_hidden = readHiddenConfig();
+    readNotifyConfig();
 }
 
 #include "event.moc"

@@ -41,6 +41,7 @@ private:
 public slots:
     void show(int updates, int securityUpdates);
     void getUpdateInfo();
+    void reloadConfig();
 
 private slots:
     void run();

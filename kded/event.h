@@ -46,9 +46,9 @@ public:
 public slots:
     bool isHidden() const;
     void show(const QString &icon, const QString &text, const QStringList &actions, const QString &tTipIcon = QString());
-    void update(const QString &icon, const QString &text);
+    void update(const QString &icon, const QString &text, const QString &tTipIcon = QString());
     void run();
-    void reloadConfig();
+    virtual void reloadConfig();
 
 private slots:
     bool readHiddenConfig();
@@ -69,6 +69,7 @@ private:
 
 protected:
     bool m_active;
+    bool m_verbose;
 };
 
 #endif

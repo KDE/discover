@@ -44,6 +44,7 @@ public:
 
 private:
     QCheckBox *m_updatesCheckBox;
+    QCheckBox *m_verboseCheckBox;
     QCheckBox *m_distUpgradeCheckBox;
 
     QRadioButton *m_comboRadio;

@@ -52,15 +52,27 @@ void UpdateEvent::show(int updates, int securityUpdates)
     QString tTipIcon;
 
     if (securityUpdates) {
-        securityText = i18ncp("Notification text", "%1 security update is available",
-                                                   "%1 security updates are available",
-                                                   securityUpdates);
+        if (m_verbose) {
+            securityText = i18ncp("Notification text", "%1 security update is available",
+                                                       "%1 security updates are available",
+                                                       securityUpdates);
+        } else {
+            securityText = i18ncp("Notification text", "A security update is available",
+                                                       "Security updates are available",
+                                                        securityUpdates);
+        }
     }
 
     if (updates) {
-        updatesText = i18ncp("Notification text", "%1 software update is available",
-                                                  "%1 software updates are available",
-                                                  updates);
+        if (m_verbose) {
+            updatesText = i18ncp("Notification text", "%1 software update is available",
+                                                      "%1 software updates are available",
+                                                      updates);
+        } else {
+            updatesText = i18ncp("Notification text", "A software update is available",
+                                                      "Software updates are available",
+                                                      updates);
+        }
     }
 
     if (securityUpdates && updates) {
@@ -86,7 +98,7 @@ void UpdateEvent::show(int updates, int securityUpdates)
     if (!m_active) {
         Event::show(icon, text, actions, tTipIcon);
     } else {
-        Event::update(icon, text);
+        Event::update(icon, text, tTipIcon);
     }
 }
 
@@ -95,6 +107,13 @@ void UpdateEvent::run()
     KToolInvocation::kdeinitExec("/usr/bin/muon-updater");
 
     Event::run();
+}
+
+void UpdateEvent::reloadConfig()
+{
+    Event::reloadConfig();
+
+    getUpdateInfo();
 }
 
 void UpdateEvent::getUpdateInfo()

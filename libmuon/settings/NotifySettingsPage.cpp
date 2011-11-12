@@ -20,6 +20,8 @@
 
 #include "NotifySettingsPage.h"
 
+#include <QtDBus/QDBusConnection>
+#include <QtDBus/QDBusMessage>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QCheckBox>
 #include <QtGui/QLabel>
@@ -44,10 +46,21 @@ NotifySettingsPage::NotifySettingsPage(QWidget* parent) :
     label->setText(i18n("Show notifications for:"));
 
     m_updatesCheckBox = new QCheckBox(i18n("Available updates"), this);
+    m_verboseCheckBox = new QCheckBox(i18n("Show the number of available updates"), this);
     m_distUpgradeCheckBox = new QCheckBox(i18n("Distribution upgrades"), this);
 
     connect(m_updatesCheckBox, SIGNAL(clicked()), this, SIGNAL(changed()));
+    connect(m_verboseCheckBox, SIGNAL(clicked()), this, SIGNAL(changed()));
     connect(m_distUpgradeCheckBox, SIGNAL(clicked()), this, SIGNAL(changed()));
+
+    QWidget *hBox = new QWidget(this);
+    QHBoxLayout *hLayout = new QHBoxLayout(hBox);
+    hBox->setLayout(hLayout);
+    QSpacerItem * hSpacer = new QSpacerItem(20, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+
+    hLayout->setMargin(0);
+    hLayout->addSpacerItem(hSpacer);
+    hLayout->addWidget(m_verboseCheckBox);
 
     QWidget *spacer = new QWidget(this);
     spacer->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
@@ -70,6 +83,7 @@ NotifySettingsPage::NotifySettingsPage(QWidget* parent) :
 
     layout->addWidget(label);
     layout->addWidget(m_updatesCheckBox);
+    layout->addWidget(hBox);
     layout->addWidget(m_distUpgradeCheckBox);
     layout->addWidget(label2);
     layout->addWidget(spacer);
@@ -94,6 +108,9 @@ void NotifySettingsPage::loadSettings()
 
     KConfigGroup notifyTypeGroup(&notifierConfig, "NotificationType");
     QString notifyType = notifyTypeGroup.readEntry("NotifyType", "Combo");
+    bool verbose = notifyTypeGroup.readEntry("Verbose", false);
+
+    m_verboseCheckBox->setChecked(verbose);
 
     if (notifyType == "Combo") {
         m_comboRadio->setChecked(true);
@@ -114,11 +131,18 @@ void NotifySettingsPage::applySettings()
 
     KConfigGroup notifyTypeGroup(&notifierConfig, "NotificationType");
 
+    notifyTypeGroup.writeEntry("Verbose", m_verboseCheckBox->isChecked());
     notifyTypeGroup.writeEntry("NotifyType", m_comboRadio->isChecked() ? "Combo" :
                                m_trayOnlyRadio->isChecked() ? "TrayOnly" :
                                m_KNotifyOnlyRadio->isChecked() ? "KNotifyOnly" :
                                "Combo");
     notifyTypeGroup.sync();
+
+    QDBusMessage message = QDBusMessage::createMethodCall("org.kubuntu.MuonNotifier",
+                               "/MuonNotifier",
+                               "org.kubuntu.MuonNotifier",
+                               "reloadConfig");
+    QDBusConnection::sessionBus().send(message);
 }
 
 void NotifySettingsPage::restoreDefaults()
