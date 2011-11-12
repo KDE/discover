@@ -33,8 +33,8 @@ Event::Event(QObject* parent, const QString &name)
         : QObject(parent)
         , m_name(name)
         , m_hidden(false)
-        , m_active(false)
         , m_notifierItem(0)
+        , m_active(false)
 {
     m_hiddenCfgString = QString(QLatin1Literal("hide") % m_name % QLatin1Literal("Notifier"));
     m_hidden = readHiddenConfig();
@@ -83,7 +83,7 @@ bool Event::isHidden() const
     return m_hidden;
 }
 
-void Event::show(const QString &icon, const QString &text, const QStringList &actions)
+void Event::show(const QString &icon, const QString &text, const QStringList &actions, const QString &tTipIcon)
 {
     if (m_active || m_hidden) {
         return;
@@ -101,7 +101,13 @@ void Event::show(const QString &icon, const QString &text, const QStringList &ac
         KNotification *notify = new KNotification(m_name, 0, flag);
         notify->setComponentData(KComponentData("muon-notifier"));
 
-        notify->setPixmap(KIcon(icon).pixmap(NOTIFICATION_ICON_SIZE));
+        KIcon notifyIcon(icon);
+
+        if (!tTipIcon.isEmpty()) {
+            notifyIcon = KIcon(tTipIcon);
+        }
+
+        notify->setPixmap(notifyIcon.pixmap(NOTIFICATION_ICON_SIZE));
         notify->setText(text);
 
         if (!m_useTrayIcon) {
@@ -120,7 +126,11 @@ void Event::show(const QString &icon, const QString &text, const QStringList &ac
         m_active = true;
         m_notifierItem = new KStatusNotifierItem(this);
         m_notifierItem->setIconByName(icon);
-        m_notifierItem->setToolTipIconByName(icon);
+        if (!tTipIcon.isEmpty()) {
+            m_notifierItem->setToolTipIconByName(tTipIcon);
+        } else {
+            m_notifierItem->setToolTipIconByName(icon);
+        }
         m_notifierItem->setToolTipTitle(i18n("System Notification"));
         m_notifierItem->setToolTipSubTitle(text);
         m_notifierItem->setStatus(KStatusNotifierItem::Active);

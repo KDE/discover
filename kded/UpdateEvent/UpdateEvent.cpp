@@ -49,6 +49,7 @@ void UpdateEvent::show(int updates, int securityUpdates)
     QString securityText;
     QString text;
     QString icon;
+    QString tTipIcon;
 
     if (securityUpdates) {
         securityText = i18ncp("Notification text", "%1 security update is available",
@@ -63,13 +64,16 @@ void UpdateEvent::show(int updates, int securityUpdates)
     }
 
     if (securityUpdates && updates) {
-        icon = "security-medium";
+        icon = "kpackagekit-security";
+        tTipIcon = "security-medium";
         text = securityText % QLatin1Char('\n') % updatesText;
     } else if (securityUpdates && !updates) {
-        icon = "security-medium";
+        icon = "kpackagekit-security";
+        tTipIcon = "security-medium";
         text = securityText;
     } else {
-        icon = "system-software-update";
+        icon = "kpackagekit-updates";
+        tTipIcon = "system-software-update";
         text = updatesText;
     }
 
@@ -80,7 +84,7 @@ void UpdateEvent::show(int updates, int securityUpdates)
                      "Never show again");
 
     if (!m_active) {
-        Event::show(icon, text, actions);
+        Event::show(icon, text, actions, tTipIcon);
     } else {
         Event::update(icon, text);
     }
