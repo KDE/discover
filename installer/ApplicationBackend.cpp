@@ -20,16 +20,21 @@
 
 #include "ApplicationBackend.h"
 
+// Qt includes
 #include <QtCore/QDir>
 #include <QtCore/QStringList>
 
+// KDE includes
 #include <KLocale>
 #include <KMessageBox>
 #include <KDebug>
 
+// LibQApt/DebconfKDE includes
 #include <LibQApt/Backend>
 #include <DebconfGui.h>
 
+// Own includes
+#include "../libmuon/ChangesDialog.h"
 #include "Application.h"
 #include "ReviewsBackend/ReviewsBackend.h"
 #include "Transaction.h"
@@ -238,8 +243,76 @@ void ApplicationBackend::updateCommitProgress(const QString &text, int percentag
     emit progress(m_currentTransaction, percentage);
 }
 
+bool ApplicationBackend::confirmRemoval(Transaction *transaction)
+{
+    QApt::CacheState oldCacheState = m_backend->currentCacheState();
+
+    // Simulate transaction
+    markTransaction(transaction);
+
+    // Find changes due to markings
+    QApt::PackageList excluded;
+    excluded.append(transaction->application()->package());
+    QApt::StateChanges changes = m_backend->stateChanges(oldCacheState, excluded);
+    // Restore cache state, we're only checking at the moment
+    m_backend->restoreCacheState(oldCacheState);
+
+    if (changes[QApt::Package::ToRemove].isEmpty()) {
+        return true;
+    }
+    QHash<QApt::Package::State, QApt::PackageList> removals;
+    removals[QApt::Package::ToRemove] = changes[QApt::Package::ToRemove];
+
+    ChangesDialog *dialog = new ChangesDialog(0, removals);
+
+    return (dialog->exec() == QDialog::Accepted);
+}
+
+void ApplicationBackend::markTransaction(Transaction *transaction)
+{
+    Application *app = transaction->application();
+
+    switch (transaction->action()) {
+    case InstallApp:
+        app->package()->setInstall();
+        break;
+    case RemoveApp:
+        app->package()->setRemove();
+        break;
+    default:
+        break;
+    }
+
+    QHash<QApt::Package *, QApt::Package::State> addons = transaction->addons();
+    auto iter = addons.constBegin();
+
+    QApt::Package *package;
+    QApt::Package::State state;
+    while (iter != addons.constEnd()) {
+        package = iter.key();
+        state = iter.value();
+        switch (state) {
+        case QApt::Package::ToInstall:
+            package->setInstall();
+            break;
+        case QApt::Package::ToRemove:
+            package->setRemove();
+            break;
+        default:
+            break;
+        }
+        ++iter;
+    }
+}
+
 void ApplicationBackend::addTransaction(Transaction *transaction)
 {
+    if (!confirmRemoval(transaction)) {
+        emit transactionCancelled(transaction->application());
+        delete transaction;
+        return;
+    }
+
     transaction->setState(QueuedState);
     m_queue.enqueue(transaction);
 
@@ -284,33 +357,7 @@ void ApplicationBackend::runNextTransaction()
 
     Application *app = m_currentTransaction->application();
 
-    switch (m_currentTransaction->action()) {
-    case InstallApp:
-        app->package()->setInstall();
-        break;
-    case RemoveApp:
-        app->package()->setRemove();
-        break;
-    default:
-        break;
-    }
-
-    QHash<QApt::Package *, QApt::Package::State> addons = m_currentTransaction->addons();
-    auto iter = addons.constBegin();
-
-    while (iter != addons.constEnd()) {
-        switch (iter.value()) {
-        case QApt::Package::ToInstall:
-            iter.key()->setInstall();
-            break;
-        case QApt::Package::ToRemove:
-            iter.key()->setRemove();
-            break;
-        default:
-            break;
-        }
-        ++iter;
-    }
+    markTransaction(m_currentTransaction);
 
     if (app->package()->wouldBreak()) {
         m_backend->restoreCacheState(oldCacheState);

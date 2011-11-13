@@ -131,16 +131,14 @@ void ApplicationExtender::emitInfoButtonClicked()
 
 void ApplicationExtender::emitRemoveButtonClicked()
 {
-    emit removeButtonClicked(m_app);
-
     m_actionButton->setEnabled(false);
+    emit removeButtonClicked(m_app);
 }
 
 void ApplicationExtender::emitInstallButtonClicked()
 {
-    emit installButtonClicked(m_app);
-
     m_actionButton->setEnabled(false);
+    emit installButtonClicked(m_app);
 }
 
 void ApplicationExtender::emitCancelButtonClicked()

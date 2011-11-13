@@ -56,6 +56,8 @@ public:
     QList<Transaction *> transactions() const;
     QStringList launchList() const;
 
+    bool confirmRemoval(Transaction *transaction);
+    void markTransaction(Transaction *transaction);
     void addTransaction(Transaction *transaction);
     void cancelTransaction(Application *app);
     void clearLaunchList();

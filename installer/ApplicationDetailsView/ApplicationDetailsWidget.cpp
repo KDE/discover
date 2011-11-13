@@ -650,17 +650,17 @@ void ApplicationDetailsWidget::screenshotLabelClicked()
 
 void ApplicationDetailsWidget::actionButtonClicked()
 {
+    m_actionButton->hide();
+    m_progressBar->show();
+    m_progressBar->setValue(0);
+    m_progressBar->setFormat(i18nc("@info:status Progress text when waiting", "Waiting"));
+
     // TODO: update packages
     if (m_app->package()->isInstalled()) {
         emit removeButtonClicked(m_app);
     } else {
         emit installButtonClicked(m_app);
     }
-
-    m_actionButton->hide();
-    m_progressBar->show();
-    m_progressBar->setValue(0);
-    m_progressBar->setFormat(i18nc("@info:status Progress text when waiting", "Waiting"));
 }
 
 void ApplicationDetailsWidget::cancelButtonClicked()
