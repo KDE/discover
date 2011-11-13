@@ -192,6 +192,11 @@ void MainWindow::errorOccurred(QApt::ErrorCode error, const QVariantMap &args)
 
     switch (error) {
     case QApt::UserCancelError:
+        if (m_backend) {
+            m_progressWidget->animatedHide();
+            m_updaterWidget->setEnabled(true);
+            setActionsEnabled();
+        }
         QApplication::restoreOverrideCursor();
         break;
     case QApt::AuthError:
