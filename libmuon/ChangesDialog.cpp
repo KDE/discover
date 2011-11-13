@@ -30,7 +30,6 @@
 #include <KIcon>
 #include <KLocale>
 #include <KStandardGuiItem>
-#include <KDebug>
 
 // Own includes
 #include "../libmuon/MuonStrings.h"
@@ -94,7 +93,6 @@ void ChangesDialog::addPackages(const QApt::StateChanges &changes)
     for (auto i = changes.constBegin(); i != changes.constEnd(); ++i) {
         QStandardItem *root = new QStandardItem;
         root->setText(MuonStrings::global()->packageStateName(i.key()));
-        kDebug() << i.key()<< "lollercopter";
         root->setEditable(false);
 
         QFont font = root->font();
