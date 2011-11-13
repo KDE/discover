@@ -37,16 +37,18 @@
 ChangesDialog::ChangesDialog(QWidget *parent, const QApt::StateChanges &changes)
     : QDialog(parent)
 {
+    setWindowTitle(i18nc("@title:window", "Confirm Additional Changes"));
     QVBoxLayout *layout = new QVBoxLayout(this);
     setLayout(layout);
 
     QLabel *headerLabel = new QLabel(this);
     headerLabel->setText(i18nc("@info", "<h2>Mark additional changes?</h2>"));
 
+    int count = countChanges(changes);
     QLabel *label = new QLabel(this);
     label->setText(i18np("This action requires a change to another package:",
                          "This action requires changes to other packages:",
-                         changes.size()));
+                         count));
 
     QTreeView *packageView = new QTreeView(this);
     packageView->setHeaderHidden(true);
@@ -113,4 +115,19 @@ void ChangesDialog::addPackages(const QApt::StateChanges &changes)
 
         m_model->appendRow(root);
     }
+}
+
+int ChangesDialog::countChanges(const QApt::StateChanges &changes)
+{
+    int count = 0;
+    auto iter = changes.constBegin();
+
+    while (iter != changes.constEnd()) {
+        const QApt::PackageList packages = iter.value();
+        count += packages.size();
+
+        ++iter;
+    }
+
+    return count;
 }

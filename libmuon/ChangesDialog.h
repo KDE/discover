@@ -41,6 +41,7 @@ private:
     QStandardItemModel *m_model;
 
     void addPackages(const QApt::StateChanges &changes);
+    int countChanges(const QApt::StateChanges &changes);
 };
 
 #endif // CHANGESDIALOG_H
