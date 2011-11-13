@@ -64,6 +64,7 @@ void MainWindow::initGUI()
                                   "It is safer to plug in the power adapter before updating."));
     m_powerMessage->hide();
     m_powerMessage->setMessageType(KMessageWidget::Warning);
+    checkPlugState();
 
     m_progressWidget = new ProgressWidget(mainWidget);
     m_progressWidget->hide();
@@ -93,7 +94,6 @@ void MainWindow::initGUI()
 void MainWindow::initObject()
 {
     MuonMainWindow::initObject();
-    checkPlugState();
     setActionsEnabled(); //Get initial enabled/disabled state
 
     connect(m_backend, SIGNAL(downloadProgress(int, int, int)),
@@ -305,7 +305,7 @@ void MainWindow::closeHistoryDialog()
 void MainWindow::checkPlugState()
 {
     const QList<Solid::Device> acAdapters = Solid::Device::listFromType(Solid::DeviceInterface::AcAdapter);
-    bool isPlugged = true;
+    bool isPlugged = false;
 
     foreach(Solid::Device device_ac, acAdapters) {
         Solid::AcAdapter* acAdapter = device_ac.as<Solid::AcAdapter>();
