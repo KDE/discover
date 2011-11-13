@@ -223,18 +223,17 @@ bool UpdateModel::setData(const QModelIndex &index, const QVariant &value, int r
         bool newValue = value.toBool();
         int type = item->type();
 
+        QList<Application *> apps;
         if (type == UpdateItem::CategoryItem) {
-            QList<Application *> apps;
-
             // Collect items to (un)check
             foreach (UpdateItem *child, item->children()) {
                 apps << child->app();
             }
-
-            emit checkApps(apps, newValue);
         } else if (type == UpdateItem::ApplicationItem) {
-            emit checkApp(item->app(), newValue);
+            apps << item->app();
         }
+
+        emit checkApps(apps, newValue);
         return true;
     }
 

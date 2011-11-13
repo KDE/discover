@@ -53,8 +53,6 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
 
     connect(m_updateModel, SIGNAL(checkApps(QList<Application*>,bool)),
             this, SLOT(checkApps(QList<Application*>,bool)));
-    connect(m_updateModel, SIGNAL(checkApp(Application*,bool)),
-            this, SLOT(checkApp(Application*,bool)));
 
     m_updateView = new QTreeView(this);
     m_updateView->setAlternatingRowColors(true);
@@ -199,12 +197,6 @@ void UpdaterWidget::populateUpdateModel()
     m_backend->markPackagesForUpgrade();
 }
 
-void UpdaterWidget::checkApp(Application *app, bool checked)
-{
-    m_backend->saveCacheState();
-    checked ? app->package()->setInstall() : app->package()->setKeep();
-}
-
 void UpdaterWidget::checkApps(QList<Application *> apps, bool checked)
 {
     QApt::PackageList list;
@@ -215,7 +207,9 @@ void UpdaterWidget::checkApps(QList<Application *> apps, bool checked)
     QApt::Package::State action;
     checked ?  action = QApt::Package::ToInstall : action = QApt::Package::ToKeep;
 
-    QApplication::setOverrideCursor(Qt::WaitCursor);
+    if (list.size() > 1) {
+        QApplication::setOverrideCursor(Qt::WaitCursor);
+    }
     m_backend->saveCacheState();
     m_backend->markPackages(list, action);
     QApplication::restoreOverrideCursor();

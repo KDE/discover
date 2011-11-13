@@ -58,7 +58,6 @@ public Q_SLOTS:
 private Q_SLOTS:
     void populateUpdateModel();
     void checkApps(QList<Application *> apps, bool checked);
-    void checkApp(Application *app, bool checked);
     void selectionChanged(const QItemSelection &selected,
                           const QItemSelection &deselected);
 
