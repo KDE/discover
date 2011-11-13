@@ -25,7 +25,6 @@
 #include <QtGui/QLabel>
 #include <QtGui/QListView>
 #include <QtGui/QPushButton>
-#include <QtGui/QVBoxLayout>
 #include <QStandardItemModel>
 
 // KDE includes
@@ -37,26 +36,21 @@
 #include <LibQApt/Package>
 
 VersionTab::VersionTab(QWidget *parent)
-    : QWidget(parent)
-    , m_package(0)
+    : DetailsTab(parent)
 {
-    QVBoxLayout *layout = new QVBoxLayout(this);
-    setLayout(layout);
+    m_name = i18nc("@title:tab", "Versions");
 
     QLabel *label = new QLabel(this);
-    layout->addWidget(label);
     label->setText(i18nc("@label", "Available versions:"));
 
     m_versionModel = new QStandardItemModel(this);
     m_versionsView = new QListView(this);
     m_versionsView->setModel(m_versionModel);
     connect(m_versionsView, SIGNAL(activated(const QModelIndex &)), this, SLOT(enableButton()));
-    layout->addWidget(m_versionsView);
 
     QWidget *footerWidget = new QWidget(this);
     QHBoxLayout *footerLayout = new QHBoxLayout(footerWidget);
     footerWidget->setLayout(footerLayout);
-    layout->addWidget(footerWidget);
 
     QLabel *infoIconLabel = new QLabel(footerWidget);
     infoIconLabel->setPixmap(KIcon("dialog-warning").pixmap(32, 32));
@@ -77,10 +71,19 @@ VersionTab::VersionTab(QWidget *parent)
     m_forceButton->setEnabled(false);
     connect(m_forceButton, SIGNAL(clicked()), this, SLOT(forceVersion()));
     footerLayout->addWidget(m_forceButton);
+
+    m_layout->addWidget(label);
+    m_layout->addWidget(m_versionsView);
+    m_layout->addWidget(footerWidget);
 }
 
-VersionTab::~VersionTab()
+bool VersionTab::shouldShow() const
 {
+    if (!m_package) {
+        return false;
+    }
+
+    return m_package->availableVersions().size() > 1;
 }
 
 void VersionTab::enableButton()

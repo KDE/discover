@@ -21,32 +21,22 @@
 #ifndef DEPENDSTAB_H
 #define DEPENDSTAB_H
 
-#include <KVBox>
+#include "DetailsTab.h"
 
 class KComboBox;
 class KTextBrowser;
 
-namespace QApt
-{
-    class Package;
-}
-
-class DependsTab : public KVBox
+class DependsTab : public DetailsTab
 {
     Q_OBJECT
 public:
     explicit DependsTab(QWidget *parent = 0);
-    ~DependsTab();
 
 private:
-    QApt::Package *m_package;
-
     KComboBox *m_comboBox;
     KTextBrowser *m_dependsBrowser;
 
 public Q_SLOTS:
-    void setPackage(QApt::Package *package);
-    void clear();
     void refresh();
 
 private Q_SLOTS:

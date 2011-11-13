@@ -43,16 +43,11 @@
 #include <LibQApt/Package>
 
 MainTab::MainTab(QWidget *parent)
-    : QWidget(parent)
-    , m_backend(0)
-    , m_package(0)
+    : DetailsTab(parent)
 {
-    QVBoxLayout *layout = new QVBoxLayout(this);
-    layout->setMargin(0);
-    layout->setSpacing(0);
-    setLayout(layout);
+    m_name = i18nc("@title:tab", "Details");
+
     KHBox *headerBox = new KHBox(this);
-    layout->addWidget(headerBox);
     m_packageShortDescLabel = new QLabel(headerBox);
     m_packageShortDescLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Maximum);
     QFont font;
@@ -116,27 +111,9 @@ MainTab::MainTab(QWidget *parent)
     buttonBoxLayout->addWidget(m_cancelButton);
 
     m_descriptionBrowser = new KTextBrowser(this);
-    layout->addWidget(m_descriptionBrowser);
-}
 
-MainTab::~MainTab()
-{
-}
-
-void MainTab::setBackend(QApt::Backend *backend)
-{
-    m_backend = backend;
-}
-
-void MainTab::setPackage(QApt::Package *package)
-{
-    m_package = package;
-    refresh();
-}
-
-void MainTab::clear()
-{
-    m_package = 0;
+    m_layout->addWidget(headerBox);
+    m_layout->addWidget(m_descriptionBrowser);
 }
 
 void MainTab::refresh()

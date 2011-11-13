@@ -21,24 +21,19 @@
 #ifndef INSTALLEDFILESTAB_H
 #define INSTALLEDFILESTAB_H
 
-#include <KVBox>
+#include "DetailsTab.h"
 
 class KTextBrowser;
 
-namespace QApt
-{
-    class Package;
-}
-
-class InstalledFilesTab : public KVBox
+class InstalledFilesTab : public DetailsTab
 {
     Q_OBJECT
 public:
     explicit InstalledFilesTab(QWidget *parent = 0);
-    ~InstalledFilesTab();
+
+    bool shouldShow() const;
 
 private:
-    QApt::Package *m_package;
     KTextBrowser *m_filesBrowser;
 
 public Q_SLOTS:

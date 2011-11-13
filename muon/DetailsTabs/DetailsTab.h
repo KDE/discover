@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,47 +18,40 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "InstalledFilesTab.h"
+#ifndef DETAILSTAB_H
+#define DETAILSTAB_H
 
-// KDE includes
-#include <KTextBrowser>
-#include <KLocale>
+#include <QtGui/QWidget>
+#include <QtGui/QVBoxLayout>
 
-// LibQApt includes
-#include <LibQApt/Package>
-
-InstalledFilesTab::InstalledFilesTab(QWidget *parent)
-    : DetailsTab(parent)
+namespace QApt
 {
-    m_name = i18nc("@title:tab", "Installed Files");
-    m_filesBrowser = new KTextBrowser(this);
-
-    m_layout->addWidget(m_filesBrowser);
+    class Backend;
+    class Package;
 }
 
-bool InstalledFilesTab::shouldShow() const
+class DetailsTab : public QWidget
 {
-    return m_package->isInstalled();
-}
+    Q_OBJECT
+public:
+    explicit DetailsTab(QWidget *parent = 0);
 
-void InstalledFilesTab::setPackage(QApt::Package *package)
-{
-    m_package = package;
-    populateFilesList();
-}
+    QString name() const;
+    virtual bool shouldShow() const;
 
-void InstalledFilesTab::populateFilesList()
-{
-    m_filesBrowser->clear();
-    QStringList filesList = m_package->installedFilesList();
-    qSort(filesList);
-    QString filesString;
+protected:
+    QApt::Backend *m_backend;
+    QApt::Package *m_package;
+    QString m_name;
 
-    foreach(const QString &file, filesList) {
-        filesString.append(file + '\n');
-    }
+    QVBoxLayout *m_layout;
 
-    m_filesBrowser->setPlainText(filesString);
-}
+public Q_SLOTS:
+    void setBackend(QApt::Backend *backend);
+    virtual void setPackage(QApt::Package *package);
+    virtual void refresh();
+    virtual void clear();
+    
+};
 
-#include "InstalledFilesTab.moc"
+#endif // DETAILSTAB_H

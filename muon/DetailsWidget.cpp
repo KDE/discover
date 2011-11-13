@@ -24,7 +24,6 @@
 #include <QtGui/QScrollArea>
 
 // KDE
-#include <KDebug>
 #include <KLocale>
 
 // LibQApt includes
@@ -41,38 +40,32 @@
 
 DetailsWidget::DetailsWidget(QWidget *parent)
     : KTabWidget(parent)
-    , m_package(0)
 {
     setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
     setDocumentMode(true);
 
-    m_mainTab = new MainTab(this);
-    m_technicalTab = new TechnicalDetailsTab(this);
-    m_dependsTab = new DependsTab(this);
-    m_filesTab = new InstalledFilesTab;
-    m_versionTab = new VersionTab();
-    m_changelogTab = new ChangelogTab(this);
-
-
-    addTab(m_mainTab, i18nc("@title:tab", "Details"));
-    addTab(m_technicalTab, i18nc("@title:tab", "Technical Details"));
-    addTab(m_dependsTab, i18nc("@title:tab", "Dependencies"));
-    addTab(m_changelogTab, i18nc("@title:tab", "Changes List"));
+    DetailsTab *mainTab = new MainTab(this);
+    m_detailsTabs.append(mainTab);
+    m_detailsTabs.append(new TechnicalDetailsTab(this));
+    m_detailsTabs.append(new DependsTab(this));
+    m_detailsTabs.append(new InstalledFilesTab(0));
+    m_detailsTabs.append(new VersionTab(0));
+    m_detailsTabs.append(new ChangelogTab(this));
 
     // Hide until a package is clicked
     hide();
 
-    connect(m_mainTab, SIGNAL(setInstall(QApt::Package *)),
+    connect(mainTab, SIGNAL(setInstall(QApt::Package *)),
             this, SIGNAL(setInstall(QApt::Package *)));
-    connect(m_mainTab, SIGNAL(setRemove(QApt::Package *)),
+    connect(mainTab, SIGNAL(setRemove(QApt::Package *)),
             this, SIGNAL(setRemove(QApt::Package *)));
-    connect(m_mainTab, SIGNAL(setUpgrade(QApt::Package *)),
+    connect(mainTab, SIGNAL(setUpgrade(QApt::Package *)),
             this, SIGNAL(setUpgrade(QApt::Package *)));
-    connect(m_mainTab, SIGNAL(setReInstall(QApt::Package *)),
+    connect(mainTab, SIGNAL(setReInstall(QApt::Package *)),
             this, SIGNAL(setReInstall(QApt::Package *)));
-    connect(m_mainTab, SIGNAL(setKeep(QApt::Package *)),
+    connect(mainTab, SIGNAL(setKeep(QApt::Package *)),
             this, SIGNAL(setKeep(QApt::Package *)));
-    connect(m_mainTab, SIGNAL(setPurge(QApt::Package *)),
+    connect(mainTab, SIGNAL(setPurge(QApt::Package *)),
             this, SIGNAL(setPurge(QApt::Package *)));
 }
 
@@ -82,37 +75,24 @@ DetailsWidget::~DetailsWidget()
 
 void DetailsWidget::setBackend(QApt::Backend *backend)
 {
-    m_mainTab->setBackend(backend);
-    m_technicalTab->setBackend(backend);
+    for (DetailsTab *tab : m_detailsTabs) {
+        tab->setBackend(backend);
+    }
 }
 
 void DetailsWidget::setPackage(QApt::Package *package)
 {
-    m_package = package;
+    for (DetailsTab *tab : m_detailsTabs) {
+        tab->setPackage(package);
 
-    m_mainTab->setPackage(package);
-    m_technicalTab->setPackage(package);
-    m_dependsTab->setPackage(package);
-    m_changelogTab->setPackage(package);
-
-    if (package->availableVersions().size() > 1) {
-        addTab(m_versionTab, i18nc("@title:tab", "Versions"));
-        m_versionTab->setPackage(package);
-    } else {
-        if (currentIndex() == indexOf(m_versionTab)) {
-            setCurrentIndex(0); // Switch to the main tab
+        if (tab->shouldShow()) {
+            addTab(tab, tab->name());
+        } else {
+            if (currentIndex() == indexOf(tab)) {
+                setCurrentIndex(0);
+            }
+            removeTab(indexOf(tab));
         }
-        removeTab(indexOf(m_versionTab));
-    }
-
-    if (package->isInstalled()) {
-        addTab(m_filesTab, i18nc("@title:tab", "Installed Files"));
-        m_filesTab->setPackage(package);
-    } else {
-        if (currentIndex() == indexOf(m_filesTab)) {
-            setCurrentIndex(0); // Switch to the main tab
-        }
-        removeTab(indexOf(m_filesTab));
     }
 
     show();
@@ -120,18 +100,17 @@ void DetailsWidget::setPackage(QApt::Package *package)
 
 void DetailsWidget::refreshTabs()
 {
-    m_mainTab->refresh();
-    m_technicalTab->refresh();
-    m_dependsTab->refresh();
+    for (DetailsTab *tab : m_detailsTabs) {
+        tab->refresh();
+    }
 }
 
 void DetailsWidget::clear()
 {
-    m_mainTab->clear();
-    m_technicalTab->clear();
-    m_dependsTab->clear();
-    m_changelogTab->setPackage(0);
-    m_package = 0;
+    for (DetailsTab *tab : m_detailsTabs) {
+        tab->clear();
+    }
+
     hide();
 }
 

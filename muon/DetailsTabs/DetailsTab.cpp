@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,47 +18,47 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "InstalledFilesTab.h"
+#include "DetailsTab.h"
 
-// KDE includes
-#include <KTextBrowser>
-#include <KLocale>
+#include <QtGui/QVBoxLayout>
 
-// LibQApt includes
-#include <LibQApt/Package>
-
-InstalledFilesTab::InstalledFilesTab(QWidget *parent)
-    : DetailsTab(parent)
+DetailsTab::DetailsTab(QWidget *parent)
+    : QWidget(parent)
+    , m_backend(0)
+    , m_package(0)
 {
-    m_name = i18nc("@title:tab", "Installed Files");
-    m_filesBrowser = new KTextBrowser(this);
-
-    m_layout->addWidget(m_filesBrowser);
+    m_layout = new QVBoxLayout(this);
+    m_layout->setMargin(0);
+    m_layout->setSpacing(0);
+    setLayout(m_layout);
 }
 
-bool InstalledFilesTab::shouldShow() const
+QString DetailsTab::name() const
 {
-    return m_package->isInstalled();
+    return m_name;
 }
 
-void InstalledFilesTab::setPackage(QApt::Package *package)
+bool DetailsTab::shouldShow() const
+{
+    return true;
+}
+
+void DetailsTab::setBackend(QApt::Backend *backend)
+{
+    m_backend = backend;
+}
+
+void DetailsTab::setPackage(QApt::Package *package)
 {
     m_package = package;
-    populateFilesList();
+    refresh();
 }
 
-void InstalledFilesTab::populateFilesList()
+void DetailsTab::refresh()
 {
-    m_filesBrowser->clear();
-    QStringList filesList = m_package->installedFilesList();
-    qSort(filesList);
-    QString filesString;
-
-    foreach(const QString &file, filesList) {
-        filesString.append(file + '\n');
-    }
-
-    m_filesBrowser->setPlainText(filesString);
 }
 
-#include "InstalledFilesTab.moc"
+void DetailsTab::clear()
+{
+    m_package = 0;
+}

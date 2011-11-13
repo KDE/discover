@@ -6,6 +6,7 @@ set(muon_SRCS
     ManagerWidget.cpp
     ReviewWidget.cpp
     CommitWidget.cpp
+    DetailsTabs/DetailsTab.cpp
     DetailsTabs/MainTab.cpp
     DetailsTabs/ChangelogTab.cpp
     DetailsTabs/DependsTab.cpp

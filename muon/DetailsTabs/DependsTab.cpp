@@ -33,9 +33,10 @@
 #include <LibQApt/Package>
 
 DependsTab::DependsTab(QWidget *parent)
-    : KVBox(parent)
-    , m_package(0)
+    : DetailsTab(parent)
 {
+    m_name = i18nc("@title:tab", "Dependencies");
+
     m_comboBox = new KComboBox(this);
     m_comboBox->addItem(i18nc("@item:inlistbox", "Dependencies of the Current Version"));
     m_comboBox->addItem(i18nc("@item:inlistbox", "Dependencies of the Latest Version"));
@@ -43,21 +44,9 @@ DependsTab::DependsTab(QWidget *parent)
     m_comboBox->addItem(i18nc("@item:inlistbox", "Virtual Packages Provided"));
     connect(m_comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(populateDepends(int)));
     m_dependsBrowser = new KTextBrowser(this);
-}
 
-DependsTab::~DependsTab()
-{
-}
-
-void DependsTab::setPackage(QApt::Package *package)
-{
-    m_package = package;
-    refresh();
-}
-
-void DependsTab::clear()
-{
-    m_package = 0;
+    m_layout->addWidget(m_comboBox);
+    m_layout->addWidget(m_dependsBrowser);
 }
 
 void DependsTab::refresh()

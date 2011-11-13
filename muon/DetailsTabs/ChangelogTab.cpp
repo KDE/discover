@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010,2011 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -37,23 +37,30 @@
 #include <LibQApt/Changelog>
 
 ChangelogTab::ChangelogTab(QWidget *parent)
-    : KVBox(parent)
-    , m_package(0)
+    : DetailsTab(parent)
 {
+    m_name = i18nc("@title:tab", "Changes List");
+
     m_changelogBrowser = new KTextBrowser(this);
 
     m_busyWidget = new KPixmapSequenceOverlayPainter(this);
     m_busyWidget->setSequence(KPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
     m_busyWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     m_busyWidget->setWidget(m_changelogBrowser->viewport());
-}
 
-ChangelogTab::~ChangelogTab()
-{
+    m_layout->addWidget(m_changelogBrowser);
 }
 
 void ChangelogTab::setPackage(QApt::Package *package)
 {
+    m_package = package;
+    fetchChangelog();
+}
+
+void ChangelogTab::clear()
+{
+    DetailsTab::clear();
+
     // Clean up old jobs
     auto i = m_jobFilenames.constBegin();
     while (i != m_jobFilenames.constEnd()) {
@@ -63,9 +70,6 @@ void ChangelogTab::setPackage(QApt::Package *package)
         ++i;
     }
     m_jobFilenames.clear(); // We don't delete the KJob pointers, they delete themselves
-
-    m_package = package;
-    fetchChangelog();
 }
 
 void ChangelogTab::changelogFetched(KJob *job)

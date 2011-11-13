@@ -21,27 +21,21 @@
 #ifndef VERSIONTAB_H
 #define VERSIONTAB_H
 
-#include <QtGui/QWidget>
+#include "DetailsTab.h"
 
 class QListView;
 class QPushButton;
 class QStandardItemModel;
 
-namespace QApt
-{
-    class Package;
-}
-
-class VersionTab : public QWidget
+class VersionTab : public DetailsTab
 {
     Q_OBJECT
 public:
     explicit VersionTab(QWidget *parent = 0);
-    ~VersionTab();
+
+    bool shouldShow() const;
 
 private:
-    QApt::Package *m_package;
-
     QStandardItemModel *m_versionModel;
     QListView *m_versionsView;
     QPushButton *m_forceButton;

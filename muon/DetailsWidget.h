@@ -21,8 +21,11 @@
 #ifndef DETAILSWIDGET_H
 #define DETAILSWIDGET_H
 
-// KDE inclues
 #include <KTabWidget>
+
+
+// Qt includes
+#include <QtCore/QVector>
 
 class QScrollArea;
 
@@ -32,12 +35,7 @@ namespace QApt
     class Package;
 }
 
-class MainTab;
-class TechnicalDetailsTab;
-class DependsTab;
-class ChangelogTab;
-class InstalledFilesTab;
-class VersionTab;
+class DetailsTab;
 
 class DetailsWidget : public KTabWidget
 {
@@ -47,14 +45,7 @@ public:
     ~DetailsWidget();
 
 private:
-    QApt::Package *m_package;
-
-    MainTab *m_mainTab;
-    TechnicalDetailsTab *m_technicalTab;
-    DependsTab *m_dependsTab;
-    InstalledFilesTab *m_filesTab;
-    ChangelogTab *m_changelogTab;
-    VersionTab *m_versionTab;
+    QVector<DetailsTab *> m_detailsTabs;
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);

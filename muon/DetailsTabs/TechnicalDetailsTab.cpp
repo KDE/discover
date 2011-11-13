@@ -24,6 +24,7 @@
 #include <QtGui/QGridLayout>
 #include <QtGui/QGroupBox>
 #include <QtGui/QLabel>
+#include <QtGui/QScrollArea>
 
 // KDE includes
 #include <KGlobal>
@@ -39,13 +40,15 @@
 #include "../libmuon/MuonStrings.h"
 
 TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
-    : QScrollArea(parent)
-    , m_backend(0)
-    , m_package(0)
+    : DetailsTab(parent)
 {
-    setFrameStyle(QFrame::NoFrame);
-    setWidgetResizable(true);
-    viewport()->setAutoFillBackground(false);
+    m_name = i18nc("@title:tab", "Technical Details");
+
+    QScrollArea *scrollArea = new QScrollArea(this);
+    scrollArea->setFrameStyle(QFrame::NoFrame);
+    scrollArea->setWidgetResizable(true);
+    scrollArea->viewport()->setAutoFillBackground(false);
+    m_layout->addWidget(scrollArea);
 
     KVBox *mainWidget = new KVBox(this);
 
@@ -137,27 +140,7 @@ TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
 
     QWidget *verticalSpacer = new QWidget(mainWidget);
     verticalSpacer->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
-    setWidget(mainWidget);
-}
-
-TechnicalDetailsTab::~TechnicalDetailsTab()
-{
-}
-
-void TechnicalDetailsTab::setBackend(QApt::Backend *backend)
-{
-    m_backend = backend;
-}
-
-void TechnicalDetailsTab::setPackage(QApt::Package *package)
-{
-    m_package = package;
-    refresh();
-}
-
-void TechnicalDetailsTab::clear()
-{
-    m_package = 0;
+    scrollArea->setWidget(mainWidget);
 }
 
 void TechnicalDetailsTab::refresh()

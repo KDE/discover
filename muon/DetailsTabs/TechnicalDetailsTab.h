@@ -21,28 +21,18 @@
 #ifndef TECHNICALDETAILSTAB_H
 #define TECHNICALDETAILSTAB_H
 
-#include <QtGui/QScrollArea>
+#include "DetailsTab.h"
 
 class QGroupBox;
 class QLabel;
 
-namespace QApt
-{
-    class Backend;
-    class Package;
-}
-
-class TechnicalDetailsTab : public QScrollArea
+class TechnicalDetailsTab : public DetailsTab
 {
     Q_OBJECT
 public:
     explicit TechnicalDetailsTab(QWidget *parent = 0);
-    ~TechnicalDetailsTab();
 
 private:
-    QApt::Backend *m_backend;
-    QApt::Package *m_package;
-
     QLabel *m_maintainer;
     QLabel *m_section;
     QLabel *m_sourcePackage;
@@ -58,9 +48,6 @@ private:
     QLabel *m_downloadSize;
 
 public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
-    void setPackage(QApt::Package *package);
-    void clear();
     void refresh();
 };
 

@@ -21,9 +21,10 @@
 #ifndef MAINTAB_H
 #define MAINTAB_H
 
+#include "DetailsTab.h"
+
 // Qt includes
 #include <QtCore/QVariantMap>
-#include <QtGui/QWidget>
 
 // LibQApt includes
 #include <LibQApt/Globals>
@@ -36,23 +37,13 @@ class KAction;
 class KMenu;
 class KTextBrowser;
 
-namespace QApt
-{
-    class Backend;
-    class Package;
-}
-
-class MainTab : public QWidget
+class MainTab : public DetailsTab
 {
     Q_OBJECT
 public:
     explicit MainTab(QWidget *parent);
-    ~MainTab();
 
 private:
-    QApt::Backend *m_backend;
-    QApt::Package *m_package;
-
     QLabel *m_packageShortDescLabel;
 
     QPushButton *m_installButton;
@@ -67,10 +58,7 @@ private:
     KTextBrowser *m_descriptionBrowser;
 
 public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
-    void setPackage(QApt::Package *package);
     void refresh();
-    void clear();
 
 private Q_SLOTS:
     void emitSetInstall();

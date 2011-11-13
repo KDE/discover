@@ -21,35 +21,30 @@
 #ifndef CHANGELOGTAB_H
 #define CHANGELOGTAB_H
 
-#include <QtCore/QHash>
+#include "DetailsTab.h"
 
-#include <KVBox>
+// Qt includes
+#include <QtCore/QHash>
 
 class KJob;
 class KPixmapSequenceOverlayPainter;
 class KTemporaryFile;
 class KTextBrowser;
 
-namespace QApt
-{
-    class Package;
-}
-
-class ChangelogTab : public KVBox
+class ChangelogTab : public DetailsTab
 {
     Q_OBJECT
 public:
     explicit ChangelogTab(QWidget *parent = 0);
-    ~ChangelogTab();
 
 private:
-    QApt::Package *m_package;
     KTextBrowser *m_changelogBrowser;
     KPixmapSequenceOverlayPainter *m_busyWidget;
     QHash<KJob *, QString> m_jobFilenames;
 
 public Q_SLOTS:
     void setPackage(QApt::Package *package);
+    void clear();
 
 private Q_SLOTS:
     void fetchChangelog();
