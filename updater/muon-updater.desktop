@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Muon Update Manager
+Exec=muon-updater %i -caption "%c"
+Icon=system-software-update
+Type=Application
+X-DocPath=muon/index.html
+GenericName=Update Manager
+Categories=Qt;KDE;System;
