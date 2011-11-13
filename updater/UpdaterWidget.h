@@ -23,6 +23,10 @@
 
 #include <QtGui/QWidget>
 
+// LibQApt includes
+#include <LibQApt/Globals>
+#include <LibQApt/Package>
+
 class QItemSelection;
 class QStandardItemModel;
 class QTreeView;
@@ -31,7 +35,6 @@ class KPixmapSequenceOverlayPainter;
 
 namespace QApt {
     class Backend;
-    class Package;
 }
 
 class Application;
@@ -45,6 +48,7 @@ public:
 
 private:
     QApt::Backend *m_backend;
+    QApt::CacheState m_oldCacheState;
     UpdateModel *m_updateModel;
     QList<Application *> m_upgradeableApps;
 
@@ -58,6 +62,7 @@ public Q_SLOTS:
 private Q_SLOTS:
     void populateUpdateModel();
     void checkApps(QList<Application *> apps, bool checked);
+    void checkChanges(const QHash<QApt::Package::State, QApt::PackageList> &removals);
     void selectionChanged(const QItemSelection &selected,
                           const QItemSelection &deselected);
 

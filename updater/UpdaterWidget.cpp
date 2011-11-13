@@ -39,6 +39,7 @@
 #include <LibQApt/Backend>
 
 // Own includes
+#include "../libmuon/ChangesDialog.h"
 #include "../installer/Application.h"
 #include "UpdateModel/UpdateModel.h"
 #include "UpdateModel/UpdateItem.h"
@@ -210,9 +211,30 @@ void UpdaterWidget::checkApps(QList<Application *> apps, bool checked)
     if (list.size() > 1) {
         QApplication::setOverrideCursor(Qt::WaitCursor);
     }
+
+    m_oldCacheState = m_backend->currentCacheState();
     m_backend->saveCacheState();
     m_backend->markPackages(list, action);
+
+    // Check for removals
+    auto changes = m_backend->stateChanges(m_oldCacheState, list);
+
+    checkChanges(changes);
+
     QApplication::restoreOverrideCursor();
+}
+
+void UpdaterWidget::checkChanges(const QHash<QApt::Package::State, QApt::PackageList> &removals)
+{
+    if (removals.isEmpty()) {
+        return;
+    }
+
+    ChangesDialog *dialog = new ChangesDialog(this, removals);
+    int res = dialog->exec();
+
+    if (res != QDialog::Accepted)
+        m_backend->restoreCacheState(m_oldCacheState);
 }
 
 void UpdaterWidget::selectionChanged(const QItemSelection &selected,
