@@ -57,7 +57,9 @@ void ChangelogTab::setPackage(QApt::Package *package)
     // Clean up old jobs
     auto i = m_jobFilenames.constBegin();
     while (i != m_jobFilenames.constEnd()) {
-        i.key()->kill();
+        KJob *getJob = i.key();
+        disconnect(getJob, SIGNAL(result(KJob *)),
+                   this, SLOT(changelogFetched(KJob *)));
         ++i;
     }
     m_jobFilenames.clear(); // We don't delete the KJob pointers, they delete themselves
@@ -94,6 +96,10 @@ void ChangelogTab::changelogFetched(KJob *job)
 
 void ChangelogTab::fetchChangelog()
 {
+    if (!m_package) {
+        return;
+    }
+
     m_changelogBrowser->clear();
     m_busyWidget->start();
 

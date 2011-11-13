@@ -130,6 +130,7 @@ void DetailsWidget::clear()
     m_mainTab->clear();
     m_technicalTab->clear();
     m_dependsTab->clear();
+    m_changelogTab->setPackage(0);
     m_package = 0;
     hide();
 }
