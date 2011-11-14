@@ -119,11 +119,13 @@ void UpdaterWidget::populateUpdateModel()
         Application *app = new Application("/usr/share/app-install/desktop/" + fileName, m_backend);
         QApt::Package *package = app->package();
         if (!package || !upgradeList.contains(package)) {
+            delete app;
             continue;
         }
         int state = package->state();
 
         if (!(state & QApt::Package::Upgradeable)) {
+            delete app;
             continue;
         }
 

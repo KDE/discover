@@ -47,6 +47,7 @@ UpdateItem::UpdateItem(Application *app, UpdateItem *parent)
 
 UpdateItem::~UpdateItem()
 {
+    delete m_app;
     qDeleteAll(m_children);
 }
 
