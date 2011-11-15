@@ -1,8 +1,18 @@
 [Desktop Entry]
 Name=Muon Update Manager
+Name[cs]=Správce aktualizací Muon
+Name[pt]=Gestor de Actualizações Muon
+Name[sv]=Muon uppdateringshanterare
+Name[uk]=Керування оновленнями
+Name[x-test]=xxMuon Update Managerxx
 Exec=muon-updater %i -caption "%c"
 Icon=system-software-update
 Type=Application
 X-DocPath=muon/index.html
 GenericName=Update Manager
+GenericName[cs]=Správce aktualizací
+GenericName[pt]=Gestor de Actualizações
+GenericName[sv]=Uppdateringshanterare
+GenericName[uk]=Керування оновленнями
+GenericName[x-test]=xxUpdate Managerxx
 Categories=Qt;KDE;System;
