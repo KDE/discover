@@ -270,7 +270,8 @@ void ApplicationWindow::populateViews()
         }
 
         if (originName == "Canonical") {
-            viewItem->setText(i18nc("@item:inlistbox ","Canonical Partners"));
+            viewItem->setText(i18nc("@item:inlistbox The name of the repository provided by Canonical, Ltd. ",
+                                    "Canonical Partners"));
             viewItem->setIcon(KIcon("partner"));
         }
 
@@ -331,7 +332,8 @@ void ApplicationWindow::populateViews()
         }
 
         if (originName == "Canonical") {
-            viewItem->setText(i18nc("@item:inlistbox", "Canonical Partners"));
+            viewItem->setText(i18nc("@item:inlistbox The name of the repository provided by Canonical, Ltd. ",
+                                    "Canonical Partners"));
             viewItem->setIcon(KIcon("partner"));
         }
 
