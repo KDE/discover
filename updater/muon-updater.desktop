@@ -1,7 +1,10 @@
 [Desktop Entry]
 Name=Muon Update Manager
 Name[cs]=Správce aktualizací Muon
+Name[nl]=Muon beheerder voor bijwerken
 Name[pt]=Gestor de Actualizações Muon
+Name[pt_BR]=Gerenciador de atualizações do Muon
+Name[ru]=Менеджер Muon для обновлений
 Name[sv]=Muon uppdateringshanterare
 Name[uk]=Керування оновленнями
 Name[x-test]=xxMuon Update Managerxx
@@ -11,7 +14,10 @@ Type=Application
 X-DocPath=muon/index.html
 GenericName=Update Manager
 GenericName[cs]=Správce aktualizací
+GenericName[nl]=Beheerder voor bijwerken
 GenericName[pt]=Gestor de Actualizações
+GenericName[pt_BR]=Gerenciador de atualizações
+GenericName[ru]=Менеджер обновлений
 GenericName[sv]=Uppdateringshanterare
 GenericName[uk]=Керування оновленнями
 GenericName[x-test]=xxUpdate Managerxx
