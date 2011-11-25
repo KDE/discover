@@ -238,6 +238,7 @@ void MainWindow::setActionsEnabled(bool enabled)
     m_undoAction->setEnabled(!m_backend->isUndoStackEmpty());
     m_redoAction->setEnabled(!m_backend->isRedoStackEmpty());
     m_revertAction->setEnabled(!m_backend->isUndoStackEmpty());
+    m_updaterWidget->setEnabled(true);
 }
 
 void MainWindow::checkForUpdates()
@@ -310,6 +311,12 @@ void MainWindow::closeHistoryDialog()
 void MainWindow::checkPlugState()
 {
     const QList<Solid::Device> acAdapters = Solid::Device::listFromType(Solid::DeviceInterface::AcAdapter);
+
+    if (acAdapters.isEmpty()) {
+        updatePlugState(true);
+        return;
+    }
+    
     bool isPlugged = false;
 
     foreach(Solid::Device device_ac, acAdapters) {
