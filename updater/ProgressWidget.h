@@ -37,6 +37,7 @@ private:
     QLabel *m_statusLabel;
     QProgressBar *m_progressBar;
     QLabel *m_detailsLabel;
+    bool m_show;
 
     QParallelAnimationGroup *m_expandWidget;
 

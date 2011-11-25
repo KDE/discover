@@ -36,6 +36,7 @@
 
 ProgressWidget::ProgressWidget(QWidget *parent)
     : QWidget(parent)
+    , m_show(false)
 {
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setMargin(0);
@@ -131,12 +132,19 @@ void ProgressWidget::show()
 {
     QWidget::show();
 
-    m_expandWidget->setDirection(QAbstractAnimation::Forward);
-    m_expandWidget->start();
+    if (!m_show) {
+        m_show = true;
+        // Disconnect from previous animatedHide(), else we'll hide once we finish showing
+        disconnect(m_expandWidget, SIGNAL(finished()), this, SLOT(hide()));
+        m_expandWidget->setDirection(QAbstractAnimation::Forward);
+        m_expandWidget->start();
+    }
 }
 
 void ProgressWidget::animatedHide()
 {
+    m_show = false;
+
     m_expandWidget->setDirection(QAbstractAnimation::Backward);
     m_expandWidget->start();
     connect(m_expandWidget, SIGNAL(finished()), this, SLOT(hide()));
