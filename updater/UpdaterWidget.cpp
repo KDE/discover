@@ -21,10 +21,11 @@
 #include "UpdaterWidget.h"
 
 // Qt includes
-#include <QApplication>
 #include <QStandardItemModel>
 #include <QtCore/QDir>
+#include <QtGui/QApplication>
 #include <QtGui/QHeaderView>
+#include <QtGui/QLabel>
 #include <QtGui/QTreeView>
 #include <QtGui/QVBoxLayout>
 
@@ -46,23 +47,31 @@
 #include "UpdateModel/UpdateDelegate.h"
 
 UpdaterWidget::UpdaterWidget(QWidget *parent) :
-    QWidget(parent)
+    QStackedWidget(parent)
 {
     setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-    m_updateModel = new UpdateModel(this);
+    // First page (update view)
+    QWidget *page1 = new QWidget(this);
+    QVBoxLayout * page1Layout = new QVBoxLayout(page1);
+    page1Layout->setMargin(0);
+    page1Layout->setSpacing(0);
+    page1->setLayout(page1Layout);
+
+    m_updateModel = new UpdateModel(page1);
 
     connect(m_updateModel, SIGNAL(checkApps(QList<Application*>,bool)),
             this, SLOT(checkApps(QList<Application*>,bool)));
 
-    m_updateView = new QTreeView(this);
+    m_updateView = new QTreeView(page1);
     m_updateView->setAlternatingRowColors(true);
     m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
     m_updateView->setModel(m_updateModel);
     connect(m_updateView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged(QItemSelection,QItemSelection)));
+    page1Layout->addWidget(m_updateView);
 
-    m_busyWidget = new KPixmapSequenceOverlayPainter(this);
+    m_busyWidget = new KPixmapSequenceOverlayPainter(page1);
     m_busyWidget->setSequence(KPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
     m_busyWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     m_busyWidget->setWidget(m_updateView->viewport());
@@ -74,12 +83,30 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     UpdateDelegate *delegate = new UpdateDelegate(m_updateView);
     m_updateView->setItemDelegate(delegate);
 
-    QVBoxLayout *mainLayout = new QVBoxLayout(this);
-    mainLayout->setMargin(0);
+    // Second page (If no updates, show when last check or warn about lack of updates)
+    QFrame *page2 = new QFrame(this);
+    page2->setFrameShape(QFrame::StyledPanel);
+    page2->setFrameShadow(QFrame::Sunken);
+    page2->setBackgroundRole(QPalette::Base);
+    QGridLayout *page2Layout = new QGridLayout(page2);
+    page2->setLayout(page2Layout);
 
-    mainLayout->addWidget(m_updateView);
+    m_updateStatusIcon = new QLabel(page2);
+    m_notifyTitle = new QLabel(page2);
+    m_notifyTitle->setAlignment(Qt::AlignLeft | Qt::AlignBottom);
+    m_notifyDesc = new QLabel(page2);
+    m_notifyDesc->setAlignment(Qt::AlignLeft | Qt::AlignTop);
 
-    setLayout(mainLayout);
+    page2Layout->setColumnStretch(0, 1);
+    page2Layout->addWidget(m_updateStatusIcon, 0, 1, 0, 1);
+    page2Layout->addWidget(m_notifyTitle, 0, 2);
+    page2Layout->addWidget(m_notifyDesc, 1, 2);
+    page2Layout->setColumnStretch(3, 1);
+
+
+    addWidget(page1);
+    addWidget(page2);
+    setCurrentWidget(page1);
 }
 
 void UpdaterWidget::setBackend(QApt::Backend *backend)
@@ -96,6 +123,7 @@ void UpdaterWidget::reload()
     m_updateModel->clear();
     m_backend->reloadCache();
 
+    setCurrentIndex(0);
     populateUpdateModel();
 }
 
@@ -198,6 +226,8 @@ void UpdaterWidget::populateUpdateModel()
     m_busyWidget->stop();
     QApplication::restoreOverrideCursor();
     m_backend->markPackagesForUpgrade();
+
+    checkUpToDate();
 }
 
 void UpdaterWidget::checkApps(QList<Application *> apps, bool checked)
@@ -256,4 +286,43 @@ void UpdaterWidget::selectionChanged(const QItemSelection &selected,
     app ? package = app->package() : package = 0;
 
     emit packageChanged(package);
+}
+
+void UpdaterWidget::checkUpToDate()
+{
+    if(m_backend->upgradeablePackages().isEmpty()) {
+        setCurrentIndex(1);
+        QDateTime lastUpdate = m_backend->timeCacheLastUpdated();
+
+        // Unknown time since last update
+        if (!lastUpdate.isValid()) {
+            m_updateStatusIcon->setPixmap(KIcon("security-medium").pixmap(128, 128));
+            m_notifyTitle->setText(i18nc("@info",
+                                         "It is unknown when the last check for updates was."));
+            m_notifyDesc->setText(i18nc("@info", "Please click <interface>Check For Updates "
+                                        "to check."));
+            return;
+        }
+
+        qint64 msecSinceUpdate = lastUpdate.msecsTo(QDateTime::currentDateTime());
+        qint64 day = 1000 * 60 * 60 * 24;
+        qint64 week = 1000 * 60 * 60 * 24 * 7;
+
+        if (msecSinceUpdate < day) {
+            m_updateStatusIcon->setPixmap(KIcon("security-high").pixmap(128, 128));
+            m_notifyTitle->setText(i18nc("@info", "The software on this computer is up to date."));
+            m_notifyDesc->setText(i18nc("@info", "Last checked %1 ago.",
+                                        KGlobal::locale()->prettyFormatDuration(msecSinceUpdate)));
+        } else if (msecSinceUpdate < week) {
+            m_updateStatusIcon->setPixmap(KIcon("security-medium").pixmap(128, 128));
+            m_notifyTitle->setText(i18nc("@info", "No updates are available."));
+            m_notifyDesc->setText(i18nc("@info", "Last checked %1 ago.",
+                                        KGlobal::locale()->prettyFormatDuration(msecSinceUpdate)));
+        } else {
+            m_updateStatusIcon->setPixmap(KIcon("security-low").pixmap(128, 128));
+            m_notifyTitle->setText("The last check for updates was over a week ago.");
+            m_notifyDesc->setText(i18nc("@info", "Please click <interface>Check For Updates "
+                                        "to check."));
+        }
+    }
 }

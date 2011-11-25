@@ -158,6 +158,7 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
         if (m_backend) {
             m_progressWidget->animatedHide();
             m_updaterWidget->setEnabled(true);
+            m_updaterWidget->setCurrentIndex(0);
             reload();
             setActionsEnabled();
         }

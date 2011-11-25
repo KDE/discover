@@ -21,13 +21,14 @@
 #ifndef UPDATERWIDGET_H
 #define UPDATERWIDGET_H
 
-#include <QtGui/QWidget>
+#include <QtGui/QStackedWidget>
 
 // LibQApt includes
 #include <LibQApt/Globals>
 #include <LibQApt/Package>
 
 class QItemSelection;
+class QLabel;
 class QStandardItemModel;
 class QTreeView;
 
@@ -40,7 +41,7 @@ namespace QApt {
 class Application;
 class UpdateModel;
 
-class UpdaterWidget : public QWidget
+class UpdaterWidget : public QStackedWidget
 {
     Q_OBJECT
 public:
@@ -54,6 +55,9 @@ private:
 
     QTreeView *m_updateView;
     KPixmapSequenceOverlayPainter *m_busyWidget;
+    QLabel *m_updateStatusIcon;
+    QLabel *m_notifyTitle;
+    QLabel *m_notifyDesc;
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
@@ -65,6 +69,7 @@ private Q_SLOTS:
     void checkChanges(const QHash<QApt::Package::State, QApt::PackageList> &removals);
     void selectionChanged(const QItemSelection &selected,
                           const QItemSelection &deselected);
+    void checkUpToDate();
 
 signals:
     void packageChanged(QApt::Package *Package);
