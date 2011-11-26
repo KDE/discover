@@ -299,7 +299,7 @@ void UpdaterWidget::checkUpToDate()
             m_updateStatusIcon->setPixmap(KIcon("security-medium").pixmap(128, 128));
             m_notifyTitle->setText(i18nc("@info",
                                          "It is unknown when the last check for updates was."));
-            m_notifyDesc->setText(i18nc("@info", "Please click <interface>Check For Updates "
+            m_notifyDesc->setText(i18nc("@info", "Please click <interface>Check for Updates</interface> "
                                         "to check."));
             return;
         }
@@ -321,7 +321,7 @@ void UpdaterWidget::checkUpToDate()
         } else {
             m_updateStatusIcon->setPixmap(KIcon("security-low").pixmap(128, 128));
             m_notifyTitle->setText("The last check for updates was over a week ago.");
-            m_notifyDesc->setText(i18nc("@info", "Please click <interface>Check For Updates "
+            m_notifyDesc->setText(i18nc("@info", "Please click <interface>Check for Updates</interface> "
                                         "to check."));
         }
     }
