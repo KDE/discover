@@ -32,6 +32,7 @@ Name[sv]=Muon underrättelse
 Name[ug]=Muon ئەسكەرتكۈچ
 Name[uk]=Сповіщувач Muon
 Name[x-test]=xxMuon Notifierxx
+Name[zh_CN]=Muon 通知器
 Name[zh_TW]=Muon 通知器
 Type=Service
 X-KDE-ServiceTypes=KDEDModule
