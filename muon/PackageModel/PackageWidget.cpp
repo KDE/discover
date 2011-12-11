@@ -382,7 +382,7 @@ void PackageWidget::saveState()
 
 void PackageWidget::handleBreakage(QApt::Package *package)
 {
-    if (package->wouldBreak()) {
+    if (package->wouldBreak() || m_backend->isBroken()) {
         showBrokenReason(package);
         m_backend->restoreCacheState(m_oldCacheState);
         m_stop = true;
