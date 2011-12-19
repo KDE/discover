@@ -75,3 +75,4 @@ GenericName[x-test]=xxPackage Managerxx
 GenericName[zh_CN]=软件包管理器
 GenericName[zh_TW]=套件管理器
 Categories=Qt;KDE;System;
+X-KDE-Keywords=program,software,repository,archive,package,install,remove,update,deb
