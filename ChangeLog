@@ -15,6 +15,7 @@
     the classic KMenu.
   * Add a confirmation/warning dialog when removing an application also removes other
     packages in the Muon Software Center. (MSC)
+  * Added keywords to allow muon to be found easier via krunner. (MPM)
 - Bugfixes:
   * Launchpad links are no longer given in the "no changelog ready yet" error when
     a package doesn't originate from Ubuntu. (MPM)
