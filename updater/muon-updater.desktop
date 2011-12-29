@@ -2,6 +2,7 @@
 Name=Muon Update Manager
 Name[cs]=Správce aktualizací Muon
 Name[da]=Muon håndtering af opdateringer
+Name[el]=Διαχειριστής ενημερώσεων Muon
 Name[es]=Gestor de actualizaciones de Muon
 Name[hu]=Muon frissítéskezelő
 Name[nb]=Muon oppdateringsbehandler
@@ -21,6 +22,7 @@ X-DocPath=muon/index.html
 GenericName=Update Manager
 GenericName[cs]=Správce aktualizací
 GenericName[da]=Håndtering af opdateringer
+GenericName[el]=Διαχειριστής ενημερώσεων
 GenericName[es]=Gestor de actualizaciones
 GenericName[hu]=Frissítéskezelő
 GenericName[nb]=Oppdateringsbehandler
