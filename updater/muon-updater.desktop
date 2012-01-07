@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Muon Update Manager
+Name[ca]=Gestor d'actualitzacions Muon
 Name[cs]=Správce aktualizací Muon
 Name[da]=Muon håndtering af opdateringer
 Name[el]=Διαχειριστής ενημερώσεων Muon
@@ -22,6 +23,7 @@ Icon=system-software-update
 Type=Application
 X-DocPath=muon/index.html
 GenericName=Update Manager
+GenericName[ca]=Gestor d'actualitzacions
 GenericName[cs]=Správce aktualizací
 GenericName[da]=Håndtering af opdateringer
 GenericName[el]=Διαχειριστής ενημερώσεων
