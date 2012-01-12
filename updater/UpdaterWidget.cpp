@@ -161,7 +161,7 @@ void UpdaterWidget::populateUpdateModel()
 
         // Set update type
         bool securityFound = false;
-        foreach (QString archive, package->archives()) {
+        for (const QString &archive : package->archives()) {
             if (archive.contains(QLatin1String("security"))) {
                 securityFound = true;
                 break;
@@ -186,7 +186,7 @@ void UpdaterWidget::populateUpdateModel()
 
         // Set update type
         bool securityFound = false;
-        foreach (QString archive, package->archives()) {
+        for (const QString &archive : package->archives()) {
             if (archive.contains(QLatin1String("security"))) {
                 securityFound = true;
                 break;
