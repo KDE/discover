@@ -55,18 +55,18 @@ DetailsWidget::DetailsWidget(QWidget *parent)
     // Hide until a package is clicked
     hide();
 
-    connect(mainTab, SIGNAL(setInstall(QApt::Package *)),
-            this, SIGNAL(setInstall(QApt::Package *)));
-    connect(mainTab, SIGNAL(setRemove(QApt::Package *)),
-            this, SIGNAL(setRemove(QApt::Package *)));
-    connect(mainTab, SIGNAL(setUpgrade(QApt::Package *)),
-            this, SIGNAL(setUpgrade(QApt::Package *)));
-    connect(mainTab, SIGNAL(setReInstall(QApt::Package *)),
-            this, SIGNAL(setReInstall(QApt::Package *)));
-    connect(mainTab, SIGNAL(setKeep(QApt::Package *)),
-            this, SIGNAL(setKeep(QApt::Package *)));
-    connect(mainTab, SIGNAL(setPurge(QApt::Package *)),
-            this, SIGNAL(setPurge(QApt::Package *)));
+    connect(mainTab, SIGNAL(setInstall(QApt::Package*)),
+            this, SIGNAL(setInstall(QApt::Package*)));
+    connect(mainTab, SIGNAL(setRemove(QApt::Package*)),
+            this, SIGNAL(setRemove(QApt::Package*)));
+    connect(mainTab, SIGNAL(setUpgrade(QApt::Package*)),
+            this, SIGNAL(setUpgrade(QApt::Package*)));
+    connect(mainTab, SIGNAL(setReInstall(QApt::Package*)),
+            this, SIGNAL(setReInstall(QApt::Package*)));
+    connect(mainTab, SIGNAL(setKeep(QApt::Package*)),
+            this, SIGNAL(setKeep(QApt::Package*)));
+    connect(mainTab, SIGNAL(setPurge(QApt::Package*)),
+            this, SIGNAL(setPurge(QApt::Package*)));
 }
 
 DetailsWidget::~DetailsWidget()

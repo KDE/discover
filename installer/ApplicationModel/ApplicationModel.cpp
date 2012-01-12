@@ -38,12 +38,12 @@ ApplicationModel::ApplicationModel(QObject *parent, ApplicationBackend *backend)
     : QAbstractListModel(parent)
     , m_appBackend(backend)
 {
-    connect(m_appBackend, SIGNAL(progress(Transaction *, int)),
-                this, SLOT(updateTransactionProgress(Transaction *, int)));
-    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Transaction *)),
-            this, SLOT(workerEvent(QApt::WorkerEvent, Transaction *)));
-    connect(m_appBackend, SIGNAL(transactionCancelled(Application *)),
-            this, SLOT(transactionCancelled(Application *)));
+    connect(m_appBackend, SIGNAL(progress(Transaction*,int)),
+                this, SLOT(updateTransactionProgress(Transaction*,int)));
+    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent,Transaction*)),
+            this, SLOT(workerEvent(QApt::WorkerEvent,Transaction*)));
+    connect(m_appBackend, SIGNAL(transactionCancelled(Application*)),
+            this, SLOT(transactionCancelled(Application*)));
 }
 
 ApplicationModel::~ApplicationModel()

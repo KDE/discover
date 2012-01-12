@@ -66,14 +66,14 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
 
     m_layout->addWidget(m_treeView);
 
-    connect(m_delegate, SIGNAL(infoButtonClicked(Application *)),
-            this, SLOT(infoButtonClicked(Application *)));
-    connect(m_delegate, SIGNAL(installButtonClicked(Application *)),
-            this, SLOT(installButtonClicked(Application *)));
-    connect(m_delegate, SIGNAL(removeButtonClicked(Application *)),
-            this, SLOT(removeButtonClicked(Application *)));
-    connect(m_delegate, SIGNAL(cancelButtonClicked(Application *)),
-            this, SLOT(cancelButtonClicked(Application *)));
+    connect(m_delegate, SIGNAL(infoButtonClicked(Application*)),
+            this, SLOT(infoButtonClicked(Application*)));
+    connect(m_delegate, SIGNAL(installButtonClicked(Application*)),
+            this, SLOT(installButtonClicked(Application*)));
+    connect(m_delegate, SIGNAL(removeButtonClicked(Application*)),
+            this, SLOT(removeButtonClicked(Application*)));
+    connect(m_delegate, SIGNAL(cancelButtonClicked(Application*)),
+            this, SLOT(cancelButtonClicked(Application*)));
 }
 
 ApplicationViewWidget::~ApplicationViewWidget()
@@ -155,13 +155,13 @@ void ApplicationViewWidget::infoButtonClicked(Application *app)
 
     connect(m_detailsView, SIGNAL(installButtonClicked(Application*)),
             this, SLOT(installButtonClicked(Application*)));
-    connect(m_detailsView, SIGNAL(installButtonClicked(Application *, const QHash<QApt::Package *, QApt::Package::State> &)),
-            this, SLOT(installButtonClicked(Application *, const QHash<QApt::Package *, QApt::Package::State> &)));
-    connect(m_detailsView, SIGNAL(removeButtonClicked(Application *)),
-            this, SLOT(removeButtonClicked(Application *)));
-    connect(m_detailsView, SIGNAL(cancelButtonClicked(Application *)),
-            this, SLOT(cancelButtonClicked(Application *)));
-    connect(m_detailsView, SIGNAL(destroyed(QObject *)),
+    connect(m_detailsView, SIGNAL(installButtonClicked(Application*,QHash<QApt::Package*,QApt::Package::State>)),
+            this, SLOT(installButtonClicked(Application*,QHash<QApt::Package*,QApt::Package::State>)));
+    connect(m_detailsView, SIGNAL(removeButtonClicked(Application*)),
+            this, SLOT(removeButtonClicked(Application*)));
+    connect(m_detailsView, SIGNAL(cancelButtonClicked(Application*)),
+            this, SLOT(cancelButtonClicked(Application*)));
+    connect(m_detailsView, SIGNAL(destroyed(QObject*)),
             this, SLOT(onSubViewDestroyed()));
 
     // Tell our parent that we can exist, so that they can forward it

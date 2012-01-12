@@ -48,10 +48,10 @@ ApplicationListView::ApplicationListView(QWidget *parent, ApplicationBackend *ap
 
     connect(appBackend, SIGNAL(xapianReloaded()),
             m_breadcrumbWidget, SLOT(startSearch()));
-    connect(m_appViewWidget, SIGNAL(registerNewSubView(AbstractViewBase *)),
-            this, SLOT(registerNewSubView(AbstractViewBase *)));
-    connect(m_appViewWidget, SIGNAL(switchToSubView(AbstractViewBase *)),
-            this, SLOT(switchToSubView(AbstractViewBase *)));
+    connect(m_appViewWidget, SIGNAL(registerNewSubView(AbstractViewBase*)),
+            this, SLOT(registerNewSubView(AbstractViewBase*)));
+    connect(m_appViewWidget, SIGNAL(switchToSubView(AbstractViewBase*)),
+            this, SLOT(switchToSubView(AbstractViewBase*)));
 }
 
 ApplicationListView::~ApplicationListView()

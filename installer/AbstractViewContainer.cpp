@@ -35,10 +35,10 @@ AbstractViewContainer::AbstractViewContainer(QWidget *parent)
 
     m_viewStack = new QStackedWidget(this);
 
-    connect(m_breadcrumbWidget, SIGNAL(itemActivated(BreadcrumbItem *)),
-            this, SLOT(activateBreadcrumbItem(BreadcrumbItem *)));
-    connect(m_breadcrumbWidget, SIGNAL(search(const QString &)),
-            this, SLOT(search(const QString &)));
+    connect(m_breadcrumbWidget, SIGNAL(itemActivated(BreadcrumbItem*)),
+            this, SLOT(activateBreadcrumbItem(BreadcrumbItem*)));
+    connect(m_breadcrumbWidget, SIGNAL(search(QString)),
+            this, SLOT(search(QString)));
 }
 
 AbstractViewContainer::~AbstractViewContainer()

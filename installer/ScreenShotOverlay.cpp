@@ -46,7 +46,7 @@ ScreenShotOverlay::ScreenShotOverlay(const QString &url, QWidget *baseWidget, QW
   : QWidget( parent ? parent : baseWidget->window() ),
     mBaseWidget( baseWidget )
 {
-  connect( baseWidget, SIGNAL( destroyed() ), SLOT( deleteLater() ) );
+  connect( baseWidget, SIGNAL(destroyed()), SLOT(deleteLater()) );
   setAttribute(Qt::WA_DeleteOnClose);
   setCursor(Qt::PointingHandCursor);
 

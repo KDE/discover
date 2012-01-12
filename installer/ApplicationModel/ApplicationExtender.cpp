@@ -72,10 +72,10 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, Appl
     layout->addWidget(m_actionButton);
     layout->addWidget(m_cancelButton);
 
-    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Transaction *)),
-            this, SLOT(workerEvent(QApt::WorkerEvent, Transaction *)));
-    connect(m_appBackend, SIGNAL(transactionCancelled(Application *)),
-            this, SLOT(transactionCancelled(Application *)));
+    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent,Transaction*)),
+            this, SLOT(workerEvent(QApt::WorkerEvent,Transaction*)));
+    connect(m_appBackend, SIGNAL(transactionCancelled(Application*)),
+            this, SLOT(transactionCancelled(Application*)));
 
     // Catch already-begun downloads. If the state is something else, we won't
     // care because we won't handle it

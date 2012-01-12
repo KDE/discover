@@ -47,8 +47,8 @@ ApplicationLauncher::ApplicationLauncher(const QVector<KService*> &applications,
 
     QListView *appView = new QListView(this);
     appView->setIconSize(QSize(32, 32));
-    connect(appView, SIGNAL(activated(const QModelIndex &)),
-            this, SLOT(onAppClicked(const QModelIndex &)));
+    connect(appView, SIGNAL(activated(QModelIndex)),
+            this, SLOT(onAppClicked(QModelIndex)));
 
     QWidget *bottomBox = new QWidget(this);
     QHBoxLayout *bottomLayout = new QHBoxLayout(bottomBox);

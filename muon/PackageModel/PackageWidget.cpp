@@ -111,18 +111,18 @@ PackageWidget::PackageWidget(QWidget *parent)
     KVBox *bottomVBox = new KVBox(this);
 
     m_detailsWidget = new DetailsWidget(bottomVBox);
-    connect(m_detailsWidget, SIGNAL(setInstall(QApt::Package *)),
-            this, SLOT(setInstall(QApt::Package *)));
-    connect(m_detailsWidget, SIGNAL(setRemove(QApt::Package *)),
-            this, SLOT(setRemove(QApt::Package *)));
-    connect(m_detailsWidget, SIGNAL(setUpgrade(QApt::Package *)),
-            this, SLOT(setUpgrade(QApt::Package *)));
-    connect(m_detailsWidget, SIGNAL(setReInstall(QApt::Package *)),
-            this, SLOT(setReInstall(QApt::Package *)));
-    connect(m_detailsWidget, SIGNAL(setKeep(QApt::Package *)),
-            this, SLOT(setKeep(QApt::Package *)));
-    connect(m_detailsWidget, SIGNAL(setPurge(QApt::Package *)),
-            this, SLOT(setPurge(QApt::Package *)));
+    connect(m_detailsWidget, SIGNAL(setInstall(QApt::Package*)),
+            this, SLOT(setInstall(QApt::Package*)));
+    connect(m_detailsWidget, SIGNAL(setRemove(QApt::Package*)),
+            this, SLOT(setRemove(QApt::Package*)));
+    connect(m_detailsWidget, SIGNAL(setUpgrade(QApt::Package*)),
+            this, SLOT(setUpgrade(QApt::Package*)));
+    connect(m_detailsWidget, SIGNAL(setReInstall(QApt::Package*)),
+            this, SLOT(setReInstall(QApt::Package*)));
+    connect(m_detailsWidget, SIGNAL(setKeep(QApt::Package*)),
+            this, SLOT(setKeep(QApt::Package*)));
+    connect(m_detailsWidget, SIGNAL(setPurge(QApt::Package*)),
+            this, SLOT(setPurge(QApt::Package*)));
 
     m_busyWidget = new KPixmapSequenceOverlayPainter(this);
     m_busyWidget->setSequence(KPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
@@ -133,12 +133,12 @@ PackageWidget::PackageWidget(QWidget *parent)
 
     m_busyWidget->start();
 
-    connect(m_packageView, SIGNAL(customContextMenuRequested(const QPoint &)),
-            this, SLOT(contextMenuRequested(const QPoint &)));
-    connect(m_packageView, SIGNAL(currentPackageChanged(const QModelIndex &)),
-            this, SLOT(packageActivated(const QModelIndex &)));
+    connect(m_packageView, SIGNAL(customContextMenuRequested(QPoint)),
+            this, SLOT(contextMenuRequested(QPoint)));
+    connect(m_packageView, SIGNAL(currentPackageChanged(QModelIndex)),
+            this, SLOT(packageActivated(QModelIndex)));
     connect(m_packageView, SIGNAL(selectionEmpty()), m_detailsWidget, SLOT(hide()));
-    connect(m_searchEdit, SIGNAL(textChanged(const QString &)), m_searchTimer, SLOT(start()));
+    connect(m_searchEdit, SIGNAL(textChanged(QString)), m_searchTimer, SLOT(start()));
 
     QSplitter *splitter = new QSplitter(this);
     splitter->setOrientation(Qt::Vertical);

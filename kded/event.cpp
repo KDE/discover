@@ -161,7 +161,7 @@ void Event::show(const QString &icon, const QString &text, const QStringList &ac
         m_notifierItem->setContextMenu(contextMenu);
         m_notifierItem->setAssociatedWidget(NULL);
 
-        connect(m_notifierItem, SIGNAL(activateRequested(bool, const QPoint &)), this, SLOT(run()));
+        connect(m_notifierItem, SIGNAL(activateRequested(bool,QPoint)), this, SLOT(run()));
     }
 }
 

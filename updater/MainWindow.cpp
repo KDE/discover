@@ -70,13 +70,13 @@ void MainWindow::initGUI()
     m_progressWidget->hide();
 
     m_updaterWidget = new UpdaterWidget(mainWidget);
-    connect(this, SIGNAL(backendReady(QApt::Backend *)),
-            m_updaterWidget, SLOT(setBackend(QApt::Backend *)));
+    connect(this, SIGNAL(backendReady(QApt::Backend*)),
+            m_updaterWidget, SLOT(setBackend(QApt::Backend*)));
 
     m_changelogWidget = new ChangelogWidget(this);
     m_changelogWidget->hide();
-    connect(this, SIGNAL(backendReady(QApt::Backend *)),
-            m_changelogWidget, SLOT(setBackend(QApt::Backend *)));
+    connect(this, SIGNAL(backendReady(QApt::Backend*)),
+            m_changelogWidget, SLOT(setBackend(QApt::Backend*)));
     connect(m_updaterWidget, SIGNAL(packageChanged(QApt::Package*)),
             m_changelogWidget, SLOT(setPackage(QApt::Package*)));
 
@@ -96,10 +96,10 @@ void MainWindow::initObject()
     MuonMainWindow::initObject();
     setActionsEnabled(); //Get initial enabled/disabled state
 
-    connect(m_backend, SIGNAL(downloadProgress(int, int, int)),
-            m_progressWidget, SLOT(updateDownloadProgress(int, int, int)));
-    connect(m_backend, SIGNAL(commitProgress(const QString &, int)),
-            m_progressWidget, SLOT(updateCommitProgress(const QString &, int)));
+    connect(m_backend, SIGNAL(downloadProgress(int,int,int)),
+            m_progressWidget, SLOT(updateDownloadProgress(int,int,int)));
+    connect(m_backend, SIGNAL(commitProgress(QString,int)),
+            m_progressWidget, SLOT(updateCommitProgress(QString,int)));
 }
 
 void MainWindow::setupActions()
@@ -320,7 +320,7 @@ void MainWindow::checkPlugState()
     
     bool isPlugged = false;
 
-    foreach(Solid::Device device_ac, acAdapters) {
+    for(Solid::Device device_ac : acAdapters) {
         Solid::AcAdapter* acAdapter = device_ac.as<Solid::AcAdapter>();
         isPlugged |= acAdapter->isPlugged();
         connect(acAdapter, SIGNAL(plugStateChanged(bool,QString)),

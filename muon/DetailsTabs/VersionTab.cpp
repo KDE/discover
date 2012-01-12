@@ -46,7 +46,7 @@ VersionTab::VersionTab(QWidget *parent)
     m_versionModel = new QStandardItemModel(this);
     m_versionsView = new QListView(this);
     m_versionsView->setModel(m_versionModel);
-    connect(m_versionsView, SIGNAL(activated(const QModelIndex &)), this, SLOT(enableButton()));
+    connect(m_versionsView, SIGNAL(activated(QModelIndex)), this, SLOT(enableButton()));
 
     QWidget *footerWidget = new QWidget(this);
     QHBoxLayout *footerLayout = new QHBoxLayout(footerWidget);

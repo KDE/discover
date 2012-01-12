@@ -62,7 +62,7 @@ HistoryView::HistoryView(QWidget *parent)
     m_searchTimer->setInterval(300);
     m_searchTimer->setSingleShot(true);
     connect(m_searchTimer, SIGNAL(timeout()), this, SLOT(startSearch()));
-    connect(m_searchEdit, SIGNAL(textChanged(const QString &)), m_searchTimer, SLOT(start()));
+    connect(m_searchEdit, SIGNAL(textChanged(QString)), m_searchTimer, SLOT(start()));
 
     m_filterBox = new KComboBox(headerWidget);
     m_filterBox->insertItem(AllChangesItem, KIcon("bookmark-new-list"),

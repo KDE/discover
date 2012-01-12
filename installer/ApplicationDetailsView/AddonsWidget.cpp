@@ -104,8 +104,8 @@ void AddonsWidget::setAddons(QApt::PackageList addons)
 {
     m_availableAddons = addons;
 
-    connect(m_addonsModel, SIGNAL(dataChanged(const QModelIndex &, const QModelIndex &)),
-                this, SLOT(addonStateChanged(const QModelIndex &, const QModelIndex &)));
+    connect(m_addonsModel, SIGNAL(dataChanged(QModelIndex,QModelIndex)),
+                this, SLOT(addonStateChanged(QModelIndex,QModelIndex)));
 
     populateModel();
 }

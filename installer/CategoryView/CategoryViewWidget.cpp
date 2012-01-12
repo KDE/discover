@@ -52,8 +52,8 @@ CategoryViewWidget::CategoryViewWidget(QWidget *parent, ApplicationBackend *appB
 
     m_layout->addWidget(m_categoryView);
 
-    connect(m_categoryView, SIGNAL(activated(const QModelIndex &)),
-           this, SLOT(onIndexActivated(const QModelIndex &)));
+    connect(m_categoryView, SIGNAL(activated(QModelIndex)),
+           this, SLOT(onIndexActivated(QModelIndex)));
 }
 
 CategoryViewWidget::~CategoryViewWidget()
@@ -134,10 +134,10 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
 
     // Forward on to parent so that they can handle adding subviews to breadcrumb,
     // switching to subviews from the new subview, etc
-    connect(m_subView, SIGNAL(registerNewSubView(AbstractViewBase *)),
-            this, SIGNAL(registerNewSubView(AbstractViewBase *)));
+    connect(m_subView, SIGNAL(registerNewSubView(AbstractViewBase*)),
+            this, SIGNAL(registerNewSubView(AbstractViewBase*)));
     // Make sure we remove the index/widget association upon deletion
-    connect(m_subView, SIGNAL(destroyed(QObject *)),
+    connect(m_subView, SIGNAL(destroyed(QObject*)),
             this, SLOT(onSubViewDestroyed()));
 
     // Tell our parent that we can exist, so that they can forward it
@@ -158,10 +158,10 @@ void CategoryViewWidget::search(const QString &text)
 
         // Forward on to parent so that they can handle adding subviews to breadcrumb,
         // switching to subviews from the new subview, etc
-        connect(m_searchView, SIGNAL(registerNewSubView(AbstractViewBase *)),
-                this, SIGNAL(registerNewSubView(AbstractViewBase *)));
+        connect(m_searchView, SIGNAL(registerNewSubView(AbstractViewBase*)),
+                this, SIGNAL(registerNewSubView(AbstractViewBase*)));
         // Make sure we clear the pointer upon deletion
-        connect(m_searchView, SIGNAL(destroyed(QObject *)),
+        connect(m_searchView, SIGNAL(destroyed(QObject*)),
                 this, SLOT(onSearchViewDestroyed()));
 
         // Tell our parent that we can exist, so that they can forward it

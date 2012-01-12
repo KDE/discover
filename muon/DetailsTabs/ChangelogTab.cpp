@@ -65,8 +65,8 @@ void ChangelogTab::clear()
     auto i = m_jobFilenames.constBegin();
     while (i != m_jobFilenames.constEnd()) {
         KJob *getJob = i.key();
-        disconnect(getJob, SIGNAL(result(KJob *)),
-                   this, SLOT(changelogFetched(KJob *)));
+        disconnect(getJob, SIGNAL(result(KJob*)),
+                   this, SLOT(changelogFetched(KJob*)));
         ++i;
     }
     m_jobFilenames.clear(); // We don't delete the KJob pointers, they delete themselves
@@ -119,8 +119,8 @@ void ChangelogTab::fetchChangelog()
                                filename, -1,
                                KIO::Overwrite | KIO::HideProgressInfo);
     m_jobFilenames.insert(getJob, filename);
-    connect(getJob, SIGNAL(result(KJob *)),
-            this, SLOT(changelogFetched(KJob *)));
+    connect(getJob, SIGNAL(result(KJob*)),
+            this, SLOT(changelogFetched(KJob*)));
 }
 
 #include "ChangelogTab.moc"

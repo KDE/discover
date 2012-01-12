@@ -72,7 +72,7 @@ void MuonNotifier::init()
     if (!m_distUpgradeEvent->isHidden()) {
         KDirWatch *stampDirWatch = new KDirWatch(this);
         stampDirWatch->addFile("/var/lib/update-notifier/dpkg-run-stamp");
-        connect(stampDirWatch, SIGNAL(dirty(const QString &)),
+        connect(stampDirWatch, SIGNAL(dirty(QString)),
                 this, SLOT(distUpgradeEvent()));
         connect(m_configWatcher, SIGNAL(reloadConfigCalled()),
                 m_distUpgradeEvent, SLOT(reloadConfig()));
@@ -85,7 +85,7 @@ void MuonNotifier::init()
         stampDirWatch->addDir("/var/lib/apt/lists/");
         stampDirWatch->addDir("/var/lib/apt/lists/partial/");
         stampDirWatch->addFile("/var/lib/update-notifier/updates-available");
-        connect(stampDirWatch, SIGNAL(dirty(const QString &)),
+        connect(stampDirWatch, SIGNAL(dirty(QString)),
                 this, SLOT(updateEvent()));
         connect(m_configWatcher, SIGNAL(reloadConfigCalled()),
                 m_updateEvent, SLOT(reloadConfig()));

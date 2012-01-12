@@ -60,10 +60,10 @@ AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)
 
     connect(m_appBackend, SIGNAL(xapianReloaded()),
             m_breadcrumbWidget, SLOT(startSearch()));
-    connect(m_categoryViewWidget, SIGNAL(registerNewSubView(AbstractViewBase *)),
-            this, SLOT(registerNewSubView(AbstractViewBase *)));
-    connect(m_categoryViewWidget, SIGNAL(switchToSubView(AbstractViewBase *)),
-            this, SLOT(switchToSubView(AbstractViewBase *)));
+    connect(m_categoryViewWidget, SIGNAL(registerNewSubView(AbstractViewBase*)),
+            this, SLOT(registerNewSubView(AbstractViewBase*)));
+    connect(m_categoryViewWidget, SIGNAL(switchToSubView(AbstractViewBase*)),
+            this, SLOT(switchToSubView(AbstractViewBase*)));
 }
 
 AvailableView::~AvailableView()

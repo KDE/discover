@@ -49,20 +49,20 @@ FilterWidget::FilterWidget(QWidget *parent)
     m_filterBox->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
 
     m_categoriesList = new QListView(this);
-    connect(m_categoriesList, SIGNAL(clicked(const QModelIndex &)),
-            this, SLOT(categoryActivated(const QModelIndex &)));
+    connect(m_categoriesList, SIGNAL(clicked(QModelIndex)),
+            this, SLOT(categoryActivated(QModelIndex)));
     m_listViews.append(m_categoriesList);
     m_filterBox->addItem(m_categoriesList, KIcon(), i18nc("@title:tab", "By Category"));
 
     m_statusList = new QListView(this);
-    connect(m_statusList, SIGNAL(clicked(const QModelIndex &)),
-            this, SLOT(statusActivated(const QModelIndex &)));
+    connect(m_statusList, SIGNAL(clicked(QModelIndex)),
+            this, SLOT(statusActivated(QModelIndex)));
     m_listViews.append(m_statusList);
     m_filterBox->addItem(m_statusList, KIcon(), i18nc("@title:tab", "By Status"));
 
     m_originList = new QListView(this);
-    connect(m_originList, SIGNAL(clicked(const QModelIndex &)),
-            this, SLOT(originActivated(const QModelIndex &)));
+    connect(m_originList, SIGNAL(clicked(QModelIndex)),
+            this, SLOT(originActivated(QModelIndex)));
     m_listViews.append(m_originList);
     m_filterBox->addItem(m_originList, KIcon(), i18nc("@title:tab", "By Origin"));
 

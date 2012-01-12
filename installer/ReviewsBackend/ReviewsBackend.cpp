@@ -81,8 +81,8 @@ void ReviewsBackend::fetchRatings()
     KIO::FileCopyJob *getJob = KIO::file_copy(ratingsUrl,
                                m_ratingsFile->fileName(), -1,
                                KIO::Overwrite | KIO::HideProgressInfo);
-    connect(getJob, SIGNAL(result(KJob *)),
-            this, SLOT(ratingsFetched(KJob *)));
+    connect(getJob, SIGNAL(result(KJob*)),
+            this, SLOT(ratingsFetched(KJob*)));
 }
 
 void ReviewsBackend::ratingsFetched(KJob *job)
@@ -138,8 +138,8 @@ void ReviewsBackend::stopPendingJobs()
     auto iter = m_jobHash.constBegin();
     while (iter != m_jobHash.constEnd()) {
         KJob *getJob = iter.key();
-        disconnect(getJob, SIGNAL(result(KJob *)),
-                   this, SLOT(changelogFetched(KJob *)));
+        disconnect(getJob, SIGNAL(result(KJob*)),
+                   this, SLOT(changelogFetched(KJob*)));
         iter++;
     }
 
@@ -185,8 +185,8 @@ void ReviewsBackend::fetchReviews(Application *app)
                                m_reviewsFile->fileName(), -1,
                                KIO::Overwrite | KIO::HideProgressInfo);
     m_jobHash[getJob] = app;
-    connect(getJob, SIGNAL(result(KJob *)),
-            this, SLOT(reviewsFetched(KJob *)));
+    connect(getJob, SIGNAL(result(KJob*)),
+            this, SLOT(reviewsFetched(KJob*)));
 }
 
 void ReviewsBackend::reviewsFetched(KJob *job)

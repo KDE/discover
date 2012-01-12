@@ -67,7 +67,7 @@ void ApplicationWindow::initGUI()
 {
     m_mainWidget = new QSplitter(this);
     m_mainWidget->setOrientation(Qt::Horizontal);
-    connect(m_mainWidget, SIGNAL(splitterMoved(int, int)), this, SLOT(saveSplitterSizes()));
+    connect(m_mainWidget, SIGNAL(splitterMoved(int,int)), this, SLOT(saveSplitterSizes()));
     setCentralWidget(m_mainWidget);
 
     // Set up the navigational sidebar on the right
@@ -98,12 +98,12 @@ void ApplicationWindow::initGUI()
 void ApplicationWindow::initObject()
 {
     m_appBackend = new ApplicationBackend(this);
-    connect(this, SIGNAL(backendReady(QApt::Backend *)),
-            m_appBackend, SLOT(setBackend(QApt::Backend *)));
-    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Transaction *)),
+    connect(this, SIGNAL(backendReady(QApt::Backend*)),
+            m_appBackend, SLOT(setBackend(QApt::Backend*)));
+    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent,Transaction*)),
             this, SLOT(workerEvent(QApt::WorkerEvent)));
-    connect(m_appBackend, SIGNAL(errorSignal(QApt::ErrorCode, QVariantMap)),
-            this, SLOT(errorOccurred(QApt::ErrorCode, QVariantMap)));
+    connect(m_appBackend, SIGNAL(errorSignal(QApt::ErrorCode,QVariantMap)),
+            this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
     connect(m_appBackend, SIGNAL(appBackendReady()),
             this, SLOT(populateViews()));
     connect(m_appBackend, SIGNAL(reloadStarted()),
@@ -118,8 +118,8 @@ void ApplicationWindow::initObject()
     // makes queuing things while committing possible
     disconnect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
                this, SLOT(workerEvent(QApt::WorkerEvent)));
-    disconnect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode, QVariantMap)),
-               this, SLOT(errorOccurred(QApt::ErrorCode, QVariantMap)));
+    disconnect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)),
+               this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
 
     setActionsEnabled();
 }
@@ -496,7 +496,7 @@ void ApplicationWindow::showAppLauncher()
 {
     if (!m_appLauncher && !m_launchableApps.isEmpty()) {
         m_appLauncher = new ApplicationLauncher(m_launchableApps);
-        connect(m_appLauncher, SIGNAL(destroyed(QObject *)),
+        connect(m_appLauncher, SIGNAL(destroyed(QObject*)),
             this, SLOT(onAppLauncherClosed()));
         connect(m_appLauncher, SIGNAL(finished(int)),
             this, SLOT(onAppLauncherClosed()));

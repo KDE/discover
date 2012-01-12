@@ -60,8 +60,8 @@ void ApplicationBackend::setBackend(QApt::Backend *backend)
 
     connect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
             this, SLOT(workerEvent(QApt::WorkerEvent)));
-    connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode, QVariantMap)),
-            this, SLOT(errorOccurred(QApt::ErrorCode, QVariantMap)));
+    connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)),
+            this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
 
     emit appBackendReady();
 }
@@ -152,24 +152,24 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
     switch (event) {
     case QApt::PackageDownloadStarted:
         m_currentTransaction->setState(RunningState);
-        connect(m_backend, SIGNAL(downloadProgress(int, int, int)),
+        connect(m_backend, SIGNAL(downloadProgress(int,int,int)),
                 this, SLOT(updateDownloadProgress(int)));
         break;
     case QApt::PackageDownloadFinished:
-        disconnect(m_backend, SIGNAL(downloadProgress(int, int, int)),
+        disconnect(m_backend, SIGNAL(downloadProgress(int,int,int)),
                    this, SLOT(updateDownloadProgress(int)));
         break;
     case QApt::CommitChangesStarted:
         m_debconfGui = new DebconfKde::DebconfGui("/tmp/qapt-sock");
         m_currentTransaction->setState(RunningState);
-        connect(m_backend, SIGNAL(commitProgress(QString, int)),
-                this, SLOT(updateCommitProgress(QString, int)));
+        connect(m_backend, SIGNAL(commitProgress(QString,int)),
+                this, SLOT(updateCommitProgress(QString,int)));
         m_debconfGui->connect(m_debconfGui, SIGNAL(activated()), m_debconfGui, SLOT(show()));
         m_debconfGui->connect(m_debconfGui, SIGNAL(deactivated()), m_debconfGui, SLOT(hide()));
         break;
     case QApt::CommitChangesFinished:
-        disconnect(m_backend, SIGNAL(commitProgress(QString, int)),
-                   this, SLOT(updateCommitProgress(QString, int)));
+        disconnect(m_backend, SIGNAL(commitProgress(QString,int)),
+                   this, SLOT(updateCommitProgress(QString,int)));
 
         m_currentTransaction->setState(DoneState);
 
@@ -201,10 +201,10 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error, const QVariantMap 
         return;
     }
 
-    disconnect(m_backend, SIGNAL(downloadProgress(int, int, int)),
+    disconnect(m_backend, SIGNAL(downloadProgress(int,int,int)),
                    this, SLOT(updateDownloadProgress(int)));
-    disconnect(m_backend, SIGNAL(commitProgress(QString, int)),
-                   this, SLOT(updateCommitProgress(QString, int)));
+    disconnect(m_backend, SIGNAL(commitProgress(QString,int)),
+                   this, SLOT(updateCommitProgress(QString,int)));
 
     // Undo marking if an AuthError is encountered, since our install/remove
     // buttons do both marking and committing
@@ -324,10 +324,10 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
 
 void ApplicationBackend::cancelTransaction(Application *app)
 {
-    disconnect(m_backend, SIGNAL(downloadProgress(int, int, int)),
+    disconnect(m_backend, SIGNAL(downloadProgress(int,int,int)),
                this, SLOT(updateDownloadProgress(int)));
-    disconnect(m_backend, SIGNAL(commitProgress(QString, int)),
-               this, SLOT(updateCommitProgress(QString, int)));
+    disconnect(m_backend, SIGNAL(commitProgress(QString,int)),
+               this, SLOT(updateCommitProgress(QString,int)));
     QQueue<Transaction *>::iterator iter = m_queue.begin();
 
     while (iter != m_queue.end()) {

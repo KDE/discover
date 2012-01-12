@@ -86,23 +86,23 @@ void MainWindow::initGUI()
     setCentralWidget(centralWidget);
 
     m_managerWidget = new ManagerWidget(m_stack);
-    connect(this, SIGNAL(backendReady(QApt::Backend *)),
-            m_managerWidget, SLOT(setBackend(QApt::Backend *)));
+    connect(this, SIGNAL(backendReady(QApt::Backend*)),
+            m_managerWidget, SLOT(setBackend(QApt::Backend*)));
     connect(m_managerWidget, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
 
     m_mainWidget = new QSplitter(this);
     m_mainWidget->setOrientation(Qt::Horizontal);
-    connect(m_mainWidget, SIGNAL(splitterMoved(int, int)), this, SLOT(saveSplitterSizes()));
+    connect(m_mainWidget, SIGNAL(splitterMoved(int,int)), this, SLOT(saveSplitterSizes()));
 
     m_filterBox = new FilterWidget(m_stack);
-    connect(this, SIGNAL(backendReady(QApt::Backend *)),
-            m_filterBox, SLOT(setBackend(QApt::Backend *)));
-    connect(m_filterBox, SIGNAL(filterByGroup(const QString &)),
-            m_managerWidget, SLOT(filterByGroup(const QString &)));
-    connect(m_filterBox, SIGNAL(filterByStatus(const QApt::Package::State)),
-            m_managerWidget, SLOT(filterByStatus(const QApt::Package::State)));
-    connect(m_filterBox, SIGNAL(filterByOrigin(const QString &)),
-            m_managerWidget, SLOT(filterByOrigin(const QString &)));
+    connect(this, SIGNAL(backendReady(QApt::Backend*)),
+            m_filterBox, SLOT(setBackend(QApt::Backend*)));
+    connect(m_filterBox, SIGNAL(filterByGroup(QString)),
+            m_managerWidget, SLOT(filterByGroup(QString)));
+    connect(m_filterBox, SIGNAL(filterByStatus(QApt::Package::State)),
+            m_managerWidget, SLOT(filterByStatus(QApt::Package::State)));
+    connect(m_filterBox, SIGNAL(filterByOrigin(QString)),
+            m_managerWidget, SLOT(filterByOrigin(QString)));
 
     m_mainWidget->addWidget(m_filterBox);
     m_mainWidget->addWidget(m_managerWidget);
@@ -114,8 +114,8 @@ void MainWindow::initGUI()
     setupActions();
 
     m_statusWidget = new StatusWidget(centralWidget);
-    connect(this, SIGNAL(backendReady(QApt::Backend *)),
-            m_statusWidget, SLOT(setBackend(QApt::Backend *)));
+    connect(this, SIGNAL(backendReady(QApt::Backend*)),
+            m_statusWidget, SLOT(setBackend(QApt::Backend*)));
     centralLayout->addWidget(m_statusWidget);
 }
 
@@ -371,8 +371,8 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
 void MainWindow::previewChanges()
 {
     m_reviewWidget = new ReviewWidget(m_stack);
-    connect(this, SIGNAL(backendReady(QApt::Backend *)),
-            m_reviewWidget, SLOT(setBackend(QApt::Backend *)));
+    connect(this, SIGNAL(backendReady(QApt::Backend*)),
+            m_reviewWidget, SLOT(setBackend(QApt::Backend*)));
     m_reviewWidget->setBackend(m_backend);
     m_stack->addWidget(m_reviewWidget);
 
@@ -413,10 +413,10 @@ void MainWindow::initDownloadWidget()
     if (!m_downloadWidget) {
         m_downloadWidget = new DownloadWidget(this);
         m_stack->addWidget(m_downloadWidget);
-        connect(m_backend, SIGNAL(downloadProgress(int, int, int)),
-                m_downloadWidget, SLOT(updateDownloadProgress(int, int, int)));
-        connect(m_backend, SIGNAL(packageDownloadProgress(const QString &, int, const QString &, double, int)),
-                m_downloadWidget, SLOT(updatePackageDownloadProgress(const QString &, int, const QString &, double, int)));
+        connect(m_backend, SIGNAL(downloadProgress(int,int,int)),
+                m_downloadWidget, SLOT(updateDownloadProgress(int,int,int)));
+        connect(m_backend, SIGNAL(packageDownloadProgress(QString,int,QString,double,int)),
+                m_downloadWidget, SLOT(updatePackageDownloadProgress(QString,int,QString,double,int)));
     }
 }
 
@@ -425,8 +425,8 @@ void MainWindow::initCommitWidget()
     if (!m_commitWidget) {
         m_commitWidget = new CommitWidget(this);
         m_stack->addWidget(m_commitWidget);
-        connect(m_backend, SIGNAL(commitProgress(const QString &, int)),
-                m_commitWidget, SLOT(updateCommitProgress(const QString &, int)));
+        connect(m_backend, SIGNAL(commitProgress(QString,int)),
+                m_commitWidget, SLOT(updateCommitProgress(QString,int)));
     }
 }
 

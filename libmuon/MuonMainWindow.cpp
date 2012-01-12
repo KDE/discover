@@ -63,12 +63,12 @@ void MuonMainWindow::initObject()
     m_backend = new QApt::Backend;
     connect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
             this, SLOT(workerEvent(QApt::WorkerEvent)));
-    connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode, QVariantMap)),
-            this, SLOT(errorOccurred(QApt::ErrorCode, QVariantMap)));
-    connect(m_backend, SIGNAL(warningOccurred(QApt::WarningCode, QVariantMap)),
-            this, SLOT(warningOccurred(QApt::WarningCode, QVariantMap)));
-    connect(m_backend, SIGNAL(questionOccurred(QApt::WorkerQuestion, QVariantMap)),
-            this, SLOT(questionOccurred(QApt::WorkerQuestion, QVariantMap)));
+    connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)),
+            this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
+    connect(m_backend, SIGNAL(warningOccurred(QApt::WarningCode,QVariantMap)),
+            this, SLOT(warningOccurred(QApt::WarningCode,QVariantMap)));
+    connect(m_backend, SIGNAL(questionOccurred(QApt::WorkerQuestion,QVariantMap)),
+            this, SLOT(questionOccurred(QApt::WorkerQuestion,QVariantMap)));
     connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
     m_backend->init();
     m_originalState = m_backend->currentCacheState();
@@ -628,7 +628,7 @@ void MuonMainWindow::runSourcesEditor(bool update)
     proc->setProgram(arguments);
     find(winID)->setEnabled(false);
     proc->start();
-    connect(proc, SIGNAL(finished(int, QProcess::ExitStatus)),
+    connect(proc, SIGNAL(finished(int,QProcess::ExitStatus)),
             this, SLOT(sourcesEditorFinished(int)));
 }
 

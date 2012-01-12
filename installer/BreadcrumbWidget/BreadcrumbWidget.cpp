@@ -70,7 +70,7 @@ BreadcrumbWidget::BreadcrumbWidget(QWidget *parent)
     connect(m_backButton, SIGNAL(clicked()), this, SLOT(goBack()));
     connect(m_forwardButton, SIGNAL(clicked()), this, SLOT(goForward()));
     connect(m_searchTimer, SIGNAL(timeout()), this, SLOT(startSearch()));
-    connect(m_searchEdit, SIGNAL(textChanged(const QString &)), m_searchTimer, SLOT(start()));
+    connect(m_searchEdit, SIGNAL(textChanged(QString)), m_searchTimer, SLOT(start()));
 }
 
 BreadcrumbWidget::~BreadcrumbWidget()
@@ -120,8 +120,8 @@ void BreadcrumbWidget::addLevel(BreadcrumbItem *item)
     m_forwardButton->setEnabled(false);
     m_backButton->setEnabled(true);
 
-    connect(item, SIGNAL(activated(BreadcrumbItem *)), this, SLOT(onItemActivated(BreadcrumbItem *)));
-    connect(item, SIGNAL(activated(BreadcrumbItem *)), this, SLOT(setCurrentItem(BreadcrumbItem *)));
+    connect(item, SIGNAL(activated(BreadcrumbItem*)), this, SLOT(onItemActivated(BreadcrumbItem*)));
+    connect(item, SIGNAL(activated(BreadcrumbItem*)), this, SLOT(setCurrentItem(BreadcrumbItem*)));
 }
 
 void BreadcrumbWidget::removeItem(BreadcrumbItem *item)

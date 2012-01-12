@@ -220,8 +220,8 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     m_screenshotView->show();
 
     m_addonsWidget = new AddonsWidget(widget, m_appBackend);
-    connect(m_addonsWidget, SIGNAL(applyButtonClicked(QHash<QApt::Package *, QApt::Package::State>)),
-            this, SLOT(addonsApplyButtonClicked(QHash<QApt::Package *, QApt::Package::State>)));
+    connect(m_addonsWidget, SIGNAL(applyButtonClicked(QHash<QApt::Package*,QApt::Package::State>)),
+            this, SLOT(addonsApplyButtonClicked(QHash<QApt::Package*,QApt::Package::State>)));
     m_addonsWidget->hide();
 
     // Technical details
@@ -287,10 +287,10 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     layout->addWidget(m_reviewsWidget);
     layout->addWidget(verticalSpacer);
 
-    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent, Transaction *)),
-            this, SLOT(workerEvent(QApt::WorkerEvent, Transaction *)));
-    connect(m_appBackend, SIGNAL(transactionCancelled(Application *)),
-            this, SLOT(transactionCancelled(Application *)));
+    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent,Transaction*)),
+            this, SLOT(workerEvent(QApt::WorkerEvent,Transaction*)));
+    connect(m_appBackend, SIGNAL(transactionCancelled(Application*)),
+            this, SLOT(transactionCancelled(Application*)));
 
     setWidget(widget);
 }
@@ -394,8 +394,8 @@ void ApplicationDetailsWidget::setApplication(Application *app)
     }
 
     // Fetch reviews
-    connect(reviewsBackend, SIGNAL(reviewsReady(Application *, QList<Review *>)),
-            this, SLOT(populateReviews(Application *, QList<Review *>)));
+    connect(reviewsBackend, SIGNAL(reviewsReady(Application*,QList<Review*>)),
+            this, SLOT(populateReviews(Application*,QList<Review*>)));
     reviewsBackend->fetchReviews(app);
 
     // Catch already-begun downloads. If the state is something else, we won't
@@ -425,12 +425,12 @@ void ApplicationDetailsWidget::workerEvent(QApt::WorkerEvent event, Transaction 
         m_cancelButton->show();
         m_progressBar->show();
         m_progressBar->setFormat(i18nc("@info:status", "Downloading"));
-        connect(m_appBackend, SIGNAL(progress(Transaction *, int)),
-                this, SLOT(updateProgress(Transaction *, int)));
+        connect(m_appBackend, SIGNAL(progress(Transaction*,int)),
+                this, SLOT(updateProgress(Transaction*,int)));
         break;
     case QApt::PackageDownloadFinished:
-        disconnect(m_appBackend, SIGNAL(progress(Transaction *, int)),
-                   this, SLOT(updateProgress(Transaction *, int)));
+        disconnect(m_appBackend, SIGNAL(progress(Transaction*,int)),
+                   this, SLOT(updateProgress(Transaction*,int)));
         break;
     case QApt::CommitChangesStarted:
         m_actionButton->hide();
@@ -450,12 +450,12 @@ void ApplicationDetailsWidget::workerEvent(QApt::WorkerEvent event, Transaction 
         default:
             break;
         }
-        connect(m_appBackend, SIGNAL(progress(Transaction *, int)),
-                this, SLOT(updateProgress(Transaction *, int)));
+        connect(m_appBackend, SIGNAL(progress(Transaction*,int)),
+                this, SLOT(updateProgress(Transaction*,int)));
         break;
     case QApt::CommitChangesFinished:
-        disconnect(m_appBackend, SIGNAL(progress(Transaction *, int)),
-                   this, SLOT(updateProgress(Transaction *, int)));
+        disconnect(m_appBackend, SIGNAL(progress(Transaction*,int)),
+                   this, SLOT(updateProgress(Transaction*,int)));
         break;
     default:
         break;
@@ -607,8 +607,8 @@ void ApplicationDetailsWidget::fetchScreenshot(QApt::ScreenshotType screenshotTy
     case QApt::Screenshot: {
         KIO::FileCopyJob *getJob = KIO::file_copy(m_app->screenshotUrl(screenshotType),
                                m_screenshotFile->fileName(), -1, KIO::Overwrite | KIO::HideProgressInfo);
-        connect(getJob, SIGNAL(result(KJob *)),
-            this, SLOT(screenshotFetched(KJob *)));
+        connect(getJob, SIGNAL(result(KJob*)),
+            this, SLOT(screenshotFetched(KJob*)));
         break;
     }
     case QApt::UnknownType:

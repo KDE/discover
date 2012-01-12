@@ -145,8 +145,8 @@ void ChangelogWidget::stopPendingJobs()
     auto iter = m_jobHash.constBegin();
     while (iter != m_jobHash.constEnd()) {
         KJob *getJob = iter.key();
-        disconnect(getJob, SIGNAL(result(KJob *)),
-                   this, SLOT(changelogFetched(KJob *)));
+        disconnect(getJob, SIGNAL(result(KJob*)),
+                   this, SLOT(changelogFetched(KJob*)));
         iter++;
     }
 
@@ -206,8 +206,8 @@ void ChangelogWidget::fetchChangelog()
                                KIO::Overwrite | KIO::HideProgressInfo);
 
     m_jobHash[getJob] = filename;
-    connect(getJob, SIGNAL(result(KJob *)),
-            this, SLOT(changelogFetched(KJob *)));
+    connect(getJob, SIGNAL(result(KJob*)),
+            this, SLOT(changelogFetched(KJob*)));
 }
 
 QString ChangelogWidget::buildDescription(const QApt::Changelog &changelog)
