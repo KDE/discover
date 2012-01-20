@@ -658,12 +658,11 @@ void MuonMainWindow::easterEggTriggered()
     dialog->setMainWidget(widget);
     dialog->show();
 
-    QString mooFile = KStandardDirs::installPath("data") % QLatin1Literal("libmuon/moo.ogg");
+    QString mooFile = KStandardDirs::locate("data", "libmuon/moo.ogg");
     Phonon::MediaObject *music =
         Phonon::createPlayer(Phonon::MusicCategory,
                              Phonon::MediaSource(mooFile));
     music->play();
-    delete music;
 }
 
 #include "MuonMainWindow.moc"
