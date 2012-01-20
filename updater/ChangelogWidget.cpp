@@ -131,7 +131,6 @@ void ChangelogWidget::show()
 
 void ChangelogWidget::animatedHide()
 {
-    m_package = 0;
     m_show = false;
     m_changelogBrowser->clear();
 
