@@ -21,8 +21,8 @@
 #include "MainWindow.h"
 
 // Qt includes
-#include <QApplication>
 #include <QtCore/QTimer>
+#include <QtGui/QApplication>
 #include <QtGui/QVBoxLayout>
 
 // KDE includes
@@ -30,6 +30,8 @@
 #include <KActionCollection>
 #include <KDebug>
 #include "kmessagewidget.h"
+#include <KProcess>
+#include <KStandardDirs>
 #include <Solid/Device>
 #include <Solid/AcAdapter>
 
@@ -45,8 +47,9 @@
 
 MainWindow::MainWindow()
     : MuonMainWindow()
-    , m_settingsDialog(0)
-    , m_historyDialog(0)
+    , m_settingsDialog(nullptr)
+    , m_historyDialog(nullptr)
+    , m_checkerProcess(nullptr)
 {
     initGUI();
     QTimer::singleShot(10, this, SLOT(initObject()));
@@ -66,6 +69,12 @@ void MainWindow::initGUI()
     m_powerMessage->setMessageType(KMessageWidget::Warning);
     checkPlugState();
 
+    m_distUpgradeMessage = new KMessageWidget(mainWidget);
+    m_distUpgradeMessage->hide();
+    m_distUpgradeMessage->setMessageType(KMessageWidget::Information);
+    m_distUpgradeMessage->setText(i18nc("Notification when a new version of Kubuntu is available",
+                                        "A new version of Kubuntu is available."));
+
     m_progressWidget = new ProgressWidget(mainWidget);
     m_progressWidget->hide();
 
@@ -81,6 +90,7 @@ void MainWindow::initGUI()
             m_changelogWidget, SLOT(setPackage(QApt::Package*)));
 
     mainLayout->addWidget(m_powerMessage);
+    mainLayout->addWidget(m_distUpgradeMessage);
     mainLayout->addWidget(m_progressWidget);
     mainLayout->addWidget(m_updaterWidget);
     mainLayout->addWidget(m_changelogWidget);
@@ -89,6 +99,8 @@ void MainWindow::initGUI()
 
     mainWidget->setLayout(mainLayout);
     setCentralWidget(mainWidget);
+
+    checkDistUpgrade();
 }
 
 void MainWindow::initObject()
@@ -137,6 +149,11 @@ void MainWindow::setupActions()
     m_historyAction->setText(i18nc("@action::inmenu", "History..."));
     m_historyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_H));
     connect(m_historyAction, SIGNAL(triggered()), this, SLOT(showHistoryDialog()));
+
+    KAction *distUpgradeAction = new KAction(KIcon("system-software-update"), i18nc("@action", "Upgrade"), this);
+    connect(distUpgradeAction, SIGNAL(activated()), this, SLOT(launchDistUpgrade()));
+
+    m_distUpgradeMessage->addAction(distUpgradeAction);
 
     setActionsEnabled(false);
 
@@ -333,4 +350,27 @@ void MainWindow::checkPlugState()
 void MainWindow::updatePlugState(bool plugged)
 {
     plugged ? m_powerMessage->hide() : m_powerMessage->show();
+}
+
+void MainWindow::checkDistUpgrade()
+{
+    QString checkerFile = KStandardDirs::locate("data", "muon-notifier/releasechecker");
+
+    m_checkerProcess = new KProcess(this);
+    m_checkerProcess->setProgram(QStringList() << "/usr/bin/python" << checkerFile);
+    connect(m_checkerProcess, SIGNAL(finished(int)), this, SLOT(checkerFinished(int)));
+    m_checkerProcess->start();
+}
+
+void MainWindow::checkerFinished(int res)
+{
+    if (res == 0) {
+        m_distUpgradeMessage->show();
+    }
+}
+
+void MainWindow::launchDistUpgrade()
+{
+    KProcess::startDetached(QStringList() << "python"
+                            << "/usr/share/pyshared/UpdateManager/DistUpgradeFetcherKDE.py");
 }

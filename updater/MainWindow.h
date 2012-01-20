@@ -27,6 +27,7 @@
 class KAction;
 class KDialog;
 class KMessageWidget;
+class KProcess;
 
 class ChangelogWidget;
 class ProgressWidget;
@@ -46,12 +47,15 @@ private:
     UpdaterSettingsDialog *m_settingsDialog;
     KDialog *m_historyDialog;
     KMessageWidget *m_powerMessage;
+    KMessageWidget *m_distUpgradeMessage;
 
     KAction *m_applyAction;
     KAction *m_createDownloadListAction;
     KAction *m_downloadListAction;
     KAction *m_loadArchivesAction;
     KAction *m_historyAction;
+
+    KProcess *m_checkerProcess;
 
 private Q_SLOTS:
     void initGUI();
@@ -69,6 +73,9 @@ private Q_SLOTS:
     void closeHistoryDialog();
     void checkPlugState();
     void updatePlugState(bool plugged);
+    void checkDistUpgrade();
+    void checkerFinished(int res);
+    void launchDistUpgrade();
 };
 
 #endif // MAINWINDOW_H
