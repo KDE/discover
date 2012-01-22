@@ -293,7 +293,7 @@ void MainWindow::editSettings()
 void MainWindow::closeSettingsDialog()
 {
     m_settingsDialog->deleteLater();
-    m_settingsDialog = 0;
+    m_settingsDialog = nullptr;
 }
 
 void MainWindow::showHistoryDialog()
@@ -323,7 +323,7 @@ void MainWindow::closeHistoryDialog()
                               "HistoryDialog");
     m_historyDialog->saveDialogSize(dialogConfig, KConfigBase::Persistent);
     m_historyDialog->deleteLater();
-    m_historyDialog = 0;
+    m_historyDialog = nullptr;
 }
 
 void MainWindow::checkPlugState()
