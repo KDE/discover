@@ -66,6 +66,8 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     m_updateView = new QTreeView(page1);
     m_updateView->setAlternatingRowColors(true);
     m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
+    m_updateView->header()->setResizeMode(1, QHeaderView::ResizeToContents);
+    m_updateView->header()->setStretchLastSection(false);
     m_updateView->setModel(m_updateModel);
     connect(m_updateView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged(QItemSelection,QItemSelection)));
