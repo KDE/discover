@@ -361,15 +361,7 @@ bool PackageWidget::confirmEssentialRemoval()
     result = KMessageBox::warningContinueCancel(this, text, title, KStandardGuiItem::cont(),
              KStandardGuiItem::cancel(), QString(), KMessageBox::Dangerous);
 
-    switch (result) {
-    case KMessageBox::Continue:
-        return true;
-        break;
-    case KMessageBox::Cancel:
-    default:
-        return false;
-        break;
-    }
+    return (result == KMessageBox::Continue) ? true : false;
 }
 
 void PackageWidget::saveState()
