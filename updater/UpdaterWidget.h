@@ -69,6 +69,7 @@ private Q_SLOTS:
     void checkChanges(const QHash<QApt::Package::State, QApt::PackageList> &removals);
     void selectionChanged(const QItemSelection &selected,
                           const QItemSelection &deselected);
+    void checkAllMarked();
     void checkUpToDate();
 
 signals:

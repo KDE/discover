@@ -32,6 +32,7 @@
 // KDE includes
 #include <KIcon>
 #include <KLocale>
+#include <KMessageBox>
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
 #include <KDebug>
@@ -229,6 +230,7 @@ void UpdaterWidget::populateUpdateModel()
     QApplication::restoreOverrideCursor();
     m_backend->markPackagesForUpgrade();
 
+    checkAllMarked();
     checkUpToDate();
 }
 
@@ -258,13 +260,13 @@ void UpdaterWidget::checkApps(QList<Application *> apps, bool checked)
     QApplication::restoreOverrideCursor();
 }
 
-void UpdaterWidget::checkChanges(const QHash<QApt::Package::State, QApt::PackageList> &removals)
+void UpdaterWidget::checkChanges(const QHash<QApt::Package::State, QApt::PackageList> &changes)
 {
-    if (removals.isEmpty()) {
+    if (changes.isEmpty()) {
         return;
     }
 
-    ChangesDialog *dialog = new ChangesDialog(this, removals);
+    ChangesDialog *dialog = new ChangesDialog(this, changes);
     int res = dialog->exec();
 
     if (res != QDialog::Accepted)
@@ -288,6 +290,37 @@ void UpdaterWidget::selectionChanged(const QItemSelection &selected,
     app ? package = app->package() : package = 0;
 
     emit packageChanged(package);
+}
+
+void UpdaterWidget::checkAllMarked()
+{
+    QApt::PackageList upgradeable = m_backend->upgradeablePackages();
+    int markedCount = m_backend->packageCount(QApt::Package::ToUpgrade);
+
+    if (markedCount < upgradeable.count())
+    {
+        QString text = i18nc("@label", "Not all packages could be marked for upgrade. "
+                             "The available upgrades may require new packages to "
+                             "be installed or removed. Do you want to mark upgrades "
+                             "that may require the installation or removal of additional "
+                             "packages?");
+        QString title = i18nc("@title:window", "Unable to Mark Upgrades");
+        KGuiItem markUpgrades(i18nc("@action", "Mark Upgrades"));
+
+        int res = KMessageBox::questionYesNo(this, text, title, markUpgrades);
+
+        if (res != KMessageBox::Yes)
+            return;
+
+        // Mark dist upgrade
+        m_oldCacheState = m_backend->currentCacheState();
+        m_backend->saveCacheState();
+        m_backend->markPackagesForDistUpgrade();
+
+        // Show user packages to be installed/removed
+        auto changes = m_backend->stateChanges(m_oldCacheState, upgradeable);
+        checkChanges(changes);
+    }
 }
 
 void UpdaterWidget::checkUpToDate()
