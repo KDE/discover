@@ -256,8 +256,9 @@ void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args
     }
     case QApt::FetchError:
         text = i18nc("@label",
-                     "Could not download packages");
-        title = i18nc("@title:window", "Download failed");
+                     "Changes could not be applied since some packages "
+                     "could not be downloaded.");
+        title = i18nc("@title:window", "Failed to Apply Changes");
         KMessageBox::error(this, text, title);
         break;
     case QApt::CommitError: {
