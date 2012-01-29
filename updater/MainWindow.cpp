@@ -197,6 +197,7 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
         break;
     case QApt::CommitChangesStarted:
         m_progressWidget->setHeaderText(i18nc("@info", "<title>Installing Updates</title>"));
+        m_progressWidget->hideCancelButton();
         QApplication::restoreOverrideCursor();
         break;
     default:

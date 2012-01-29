@@ -48,13 +48,13 @@ ProgressWidget::ProgressWidget(QWidget *parent)
     QHBoxLayout *layout = new QHBoxLayout(widget);
     widget->setLayout(layout);
 
-    QPushButton *cancelButton = new QPushButton(widget);
-    cancelButton->setText(i18nc("@action:button Cancels the download", "Cancel"));
-    cancelButton->setIcon(KIcon("dialog-cancel"));
-    connect(cancelButton, SIGNAL(clicked()), this, SIGNAL(cancelDownload()));
+    m_cancelButton = new QPushButton(widget);
+    m_cancelButton->setText(i18nc("@action:button Cancels the download", "Cancel"));
+    m_cancelButton->setIcon(KIcon("dialog-cancel"));
+    connect(m_cancelButton, SIGNAL(clicked()), this, SIGNAL(cancelDownload()));
 
     layout->addWidget(m_progressBar);
-    layout->addWidget(cancelButton);
+    layout->addWidget(m_cancelButton);
 
     m_detailsLabel = new QLabel(this);
 
@@ -134,6 +134,7 @@ void ProgressWidget::show()
 
     if (!m_show) {
         m_show = true;
+        return; // FIXME: Disables anim, Workaround oxygen alloc'ing a GB of memory during anim.
         // Disconnect from previous animatedHide(), else we'll hide once we finish showing
         disconnect(m_expandWidget, SIGNAL(finished()), this, SLOT(hide()));
         m_expandWidget->setDirection(QAbstractAnimation::Forward);
@@ -145,7 +146,16 @@ void ProgressWidget::animatedHide()
 {
     m_show = false;
 
+    hide(); // FIXME: Disables anim, Workaround oxygen alloc'ing a GB of memory during anim.
+    return;
+
     m_expandWidget->setDirection(QAbstractAnimation::Backward);
     m_expandWidget->start();
     connect(m_expandWidget, SIGNAL(finished()), this, SLOT(hide()));
+    connect(m_expandWidget, SIGNAL(finished()), m_cancelButton, SLOT(show()));
+}
+
+void ProgressWidget::hideCancelButton()
+{
+    m_cancelButton->hide();
 }

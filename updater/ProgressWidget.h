@@ -25,6 +25,7 @@
 
 class QLabel;
 class QParallelAnimationGroup;
+class QPushButton;
 class QProgressBar;
 
 class ProgressWidget : public QWidget
@@ -36,6 +37,7 @@ public:
 private:
     QLabel *m_statusLabel;
     QProgressBar *m_progressBar;
+    QPushButton *m_cancelButton;
     QLabel *m_detailsLabel;
     bool m_show;
 
@@ -49,6 +51,7 @@ public Q_SLOTS:
 
     void show();
     void animatedHide();
+    void hideCancelButton();
 
 Q_SIGNALS:
     void cancelDownload();
