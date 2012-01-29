@@ -1,4 +1,4 @@
-1.3.0: (as of 1.3 alpha)
+1.3.0: (as of 1.3 RC)
 ======
 - Features:
   * Rewrote the Muon Update Manger with a more user-friendly GUI. (MUM)
@@ -16,12 +16,20 @@
   * Add a confirmation/warning dialog when removing an application also removes other
     packages in the Muon Software Center. (MSC)
   * Added keywords to allow muon to be found easier via krunner. (MPM)
+  * Manual distribution upgrade from the Muon Update Manager. (MUM)
+  * When updates are not marked due to the updates requiring the installation or removal
+    of other packages, inform the user and ask them if they wish to mark these updates.
+    (BKO: #287176)
 - Bugfixes:
   * Launchpad links are no longer given in the "no changelog ready yet" error when
     a package doesn't originate from Ubuntu. (MPM)
+  * Fixed the easter egg not playing its sound. (Common)
+  * Fixed compilation when compiling with -Werror=return-type (MPM)
+  * Made the FetchError string less redundant with FetchFailedWarning's (Common)
 - Optimizations:
   * Use QApt::Backend::markPackages() for marking multiple packages. This results
     in a 300% speed increase for marking multiple packages.(MPM, MUM)
+  * Normalize all signal/slot declarations for a (micro)optimization
 
 1.2.2:
 ======
