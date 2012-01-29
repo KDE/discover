@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010-2011 Jonathan Thomas <echidnaman@kubuntu.org>        *
+ *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -29,7 +29,7 @@
 static const char description[] =
     I18N_NOOP("A package manager");
 
-static const char version[] = "1.2.80 \"Daring Dalek\"";
+static const char version[] = "1.2.95 \"Daring Dalek\"";
 
 int main(int argc, char **argv)
 {
