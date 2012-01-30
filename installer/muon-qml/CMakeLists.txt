@@ -1,0 +1,29 @@
+include_directories(.. ${CMAKE_CURRENT_BINARY_DIR}/..)
+
+set(muon_installer_qml_SRCS
+    main.cpp
+    ../Application.cpp
+    ../ApplicationBackend.cpp
+    ../ApplicationLauncher.cpp
+    ../ApplicationModel/ApplicationModel.cpp
+    ../ApplicationModel/ApplicationProxyModel.cpp
+    ../ApplicationModel/ApplicationDelegate.cpp
+    ../ApplicationModel/ApplicationExtender.cpp
+    ../CategoryView/Category.cpp
+    ../ViewSwitcher.cpp
+    ../Transaction.cpp
+    ../CategoryModel.cpp
+    ../ReviewsBackend/Rating.cpp
+    ../ReviewsBackend/Review.cpp
+    ../ReviewsBackend/ReviewsBackend.cpp
+    ${messagewidget_SRCS})
+
+kde4_add_executable(muon-installer-qml ${muon_installer_qml_SRCS})
+
+target_link_libraries(muon-installer-qml muonprivate
+                                     ${KDE4_KIO_LIBS}
+                                     ${QAPT_LIBRARY}
+                                     ${DEBCONF_KDE_LIB}
+                                     ${QZEITGEIST_LIBRARY}
+                                     ${QJSON_LIBRARIES}
+                                     ${QT_QTDECLARATIVE_LIBRARY})
