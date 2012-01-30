@@ -34,7 +34,7 @@ macro_log_feature(QAPT_FOUND "QApt" "High-level Qt wrapper/Apt implementation ar
 macro_log_feature(HAVE_QZEITGEIST "LibQZeitgeist" "Qt wrapper around the Zeitgeist DBus event logging service"
                   "http://launchpad.net/zeitgeist/" FALSE "" "Used for application usage counting")
 
-include_directories(${KDE4_INCLUDES} ${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR})
+include_directories(${KDE4_INCLUDES} ${QT_INCLUDES} ${QAPT_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
 
 add_subdirectory(libmuon)
 add_subdirectory(muon)
