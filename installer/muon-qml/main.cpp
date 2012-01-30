@@ -1,8 +1,5 @@
 /*
- * 
- *   Copyright (C) 2007 Ivan Cukic <ivan.cukic+kde@gmail.com>
- *   Copyright (C) 2008 Daniel Nicoletti <dantti85-pk@yahoo.com.br>
- *   Copyright (C) 2010 Jonathan Thomas <echidnaman@kubuntu.org>
+ *   Copyright (C) 2012 Aleix Pol Gonzalez <aleixpol@kde.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library/Lesser General Public License
@@ -19,6 +16,7 @@
  *   Free Software Foundation, Inc.,
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
+
 #include <KApplication>
 #include <QWidget>
 #include <KAboutData>
@@ -26,6 +24,7 @@
 #include <KUniqueApplication>
 #include <ApplicationWindow.h>
 #include <KStandardDirs>
+#include "MuonInstallerDeclarativeView.h"
 
 static const char description[] =
     I18N_NOOP("An application manager");
@@ -56,7 +55,7 @@ int main(int argc, char** argv)
     KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
     app.disableSessionManagement();
 
-    QWidget *mainWindow = new QWidget;
+    MuonInstallerDeclarativeView *mainWindow = new MuonInstallerDeclarativeView;
     mainWindow->show();
 
     return app.exec();

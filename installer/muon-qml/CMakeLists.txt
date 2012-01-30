@@ -2,6 +2,7 @@ include_directories(.. ${CMAKE_CURRENT_BINARY_DIR}/..)
 
 set(muon_installer_qml_SRCS
     main.cpp
+    MuonInstallerDeclarativeView.cpp
     ../Application.cpp
     ../ApplicationBackend.cpp
     ../ApplicationLauncher.cpp
@@ -18,10 +19,13 @@ set(muon_installer_qml_SRCS
     ../ReviewsBackend/ReviewsBackend.cpp
     ${messagewidget_SRCS})
 
+qt4_add_resources(muon_installer_qml_SRCS resources.qrc)
+
 kde4_add_executable(muon-installer-qml ${muon_installer_qml_SRCS})
 
 target_link_libraries(muon-installer-qml muonprivate
                                      ${KDE4_KIO_LIBS}
+                                     kdeclarative
                                      ${QAPT_LIBRARY}
                                      ${DEBCONF_KDE_LIB}
                                      ${QZEITGEIST_LIBRARY}
