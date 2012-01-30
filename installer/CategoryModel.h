@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@kde.org>                *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,61 +18,39 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef CATEGORYVIEWWIDGET_H
-#define CATEGORYVIEWWIDGET_H
+#ifndef CATEGORYMODEL_H
+#define CATEGORYMODEL_H
 
-#include "../AbstractViewBase.h"
+#include <QtGui/QStandardItemModel>
 
-#include <QModelIndex>
-#include <QtCore/QList>
-
-class CategoryModel;
-class QIcon;
-class QStandardItemModel;
-class QString;
-
-class ApplicationBackend;
-class ApplicationViewWidget;
 class Category;
-class CategoryView;
 
-namespace QApt {
-    class Backend;
-}
-
-class CategoryViewWidget : public AbstractViewBase
+class CategoryModel : public QStandardItemModel
 {
     Q_OBJECT
-public:
-    CategoryViewWidget(QWidget *parent, ApplicationBackend *appBackend);
-    ~CategoryViewWidget();
-
-    void setCategories(const QList<Category *> &categoryList,
-                       const QString &rootText,
-                       const QIcon &rootIcon);
-    virtual void search(const QString &text);
-
-private:
-    QApt::Backend *m_backend;
-    ApplicationBackend *m_appBackend;
-    CategoryModel *m_categoryModel;
-    QHash<QModelIndex, AbstractViewBase *> m_subViewHash;
-
-    CategoryView *m_categoryView;
-    AbstractViewBase *m_subView;
-    ApplicationViewWidget *m_searchView;
-
-public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
-
-private Q_SLOTS:
-    void onIndexActivated(const QModelIndex &index);
-    void onSubViewDestroyed();
-    void onSearchViewDestroyed();
-
-Q_SIGNALS:
-    void switchToSubView(AbstractViewBase *view);
-    void registerNewSubView(AbstractViewBase *view);
+    public:
+        enum CategoryModelRole {
+            CategoryTypeRole = Qt::UserRole + 1,
+            AndOrFilterRole = Qt::UserRole + 2,
+            NotFilterRole = Qt::UserRole + 3
+        };
+        
+        enum CatViewType {
+            /// An invalid type
+            InvalidType = 0,
+            /// An AppView since there are no sub-cats
+            CategoryType = 1,
+            /// A SubCategoryView
+            SubCatType = 2
+        };
+        
+        explicit CategoryModel(QObject* parent = 0);
+        
+        void setCategories(const QList<Category *> &categoryList, const QString &rootName);
+        Category* categoryForIndex(const QModelIndex& index);
+        
+    private:
+        QList<Category*> m_categoryList;
 };
 
-#endif
+#endif // CATEGORYMODEL_H

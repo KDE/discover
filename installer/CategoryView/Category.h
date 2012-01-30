@@ -41,9 +41,14 @@ enum CategoryChildPolicy {
     NoChildren = 2
 };
 
-class Category
+class Category : public QObject
 {
+Q_OBJECT
 public:
+    Q_PROPERTY(QString name READ name CONSTANT)
+    Q_PROPERTY(QString icon READ icon CONSTANT)
+    Q_PROPERTY(bool hasSubCategories READ hasSubCategories CONSTANT)
+    Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical CONSTANT)
     explicit Category(const QDomNode &node, CategoryChildPolicy type = CanHaveChildren);
     ~Category();
 

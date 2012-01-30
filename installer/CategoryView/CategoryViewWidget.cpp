@@ -38,6 +38,7 @@
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
 #include "Category.h"
 #include "CategoryView.h"
+#include <CategoryModel.h>
 
 CategoryViewWidget::CategoryViewWidget(QWidget *parent, ApplicationBackend *appBackend)
     : AbstractViewBase(parent)
@@ -46,7 +47,7 @@ CategoryViewWidget::CategoryViewWidget(QWidget *parent, ApplicationBackend *appB
     , m_searchView(0)
 {
     m_searchable = true;
-    m_categoryModel = new QStandardItemModel(this);
+    m_categoryModel = new CategoryModel(this);
 
     m_categoryView = new CategoryView(this);
 
@@ -69,22 +70,7 @@ void CategoryViewWidget::setCategories(const QList<Category *> &categoryList,
                                        const QString &rootName,
                                        const QIcon &icon)
 {
-    m_categoryList = categoryList;
-    foreach (Category *category, m_categoryList) {
-        QStandardItem *categoryItem = new QStandardItem;
-        categoryItem->setText(category->name());
-        categoryItem->setIcon(KIcon(category->icon()));
-        categoryItem->setEditable(false);
-        categoryItem->setData(rootName, KCategorizedSortFilterProxyModel::CategoryDisplayRole);
-
-        if (category->hasSubCategories()) {
-            categoryItem->setData(SubCatType, CategoryTypeRole);
-        } else {
-            categoryItem->setData(CategoryType, CategoryTypeRole);
-        }
-
-        m_categoryModel->appendRow(categoryItem);
-    }
+    m_categoryModel->setCategories(categoryList, rootName);
 
     KCategorizedSortFilterProxyModel *proxy = new KCategorizedSortFilterProxyModel(this);
     proxy->setSourceModel(m_categoryModel);
@@ -107,10 +93,10 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
     }
 
     // Otherwise we have to create a new view
-    Category *category = m_categoryList.at(index.row());
+    Category *category = m_categoryModel->categoryForIndex(index);
 
-    switch (index.data(CategoryTypeRole).toInt()) {
-    case CategoryType: { // Displays the apps in a category
+    switch (index.data(CategoryModel::CategoryTypeRole).toInt()) {
+    case CategoryModel::CategoryType: { // Displays the apps in a category
         m_subView = new ApplicationViewWidget(this, m_appBackend);
 
         ApplicationViewWidget *appView = static_cast<ApplicationViewWidget *>(m_subView);
@@ -121,7 +107,7 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
         appView->setShouldShowTechnical(category->shouldShowTechnical());
     }
         break;
-    case SubCatType: { // Displays the subcategories of a category
+    case CategoryModel::SubCatType: { // Displays the subcategories of a category
         m_subView = new CategoryViewWidget(this, m_appBackend);
 
         CategoryViewWidget *subCatView = static_cast<CategoryViewWidget *>(m_subView);

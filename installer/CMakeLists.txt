@@ -1,3 +1,5 @@
+add_subdirectory(muon-qml)
+
 if (HAVEKDE4_6_60)
 else (HAVEKDE4_6_60)
     set(messagewidget_SRCS backports/kmessagewidget.cpp)
@@ -34,6 +36,7 @@ set(muon_installer_SRCS
     ViewSwitcher.cpp
     ScreenShotOverlay.cpp
     Transaction.cpp
+    CategoryModel.cpp
     ReviewsBackend/Rating.cpp
     ReviewsBackend/Review.cpp
     ReviewsBackend/ReviewWidget.cpp
