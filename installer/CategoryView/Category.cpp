@@ -23,6 +23,8 @@
 #include <QtXml/QDomNode>
 
 #include <KLocale>
+#include <KStandardDirs>
+#include <QFile>
 
 Category::Category(const QDomNode &data, CategoryChildPolicy policy)
         : m_iconString("applications-other")
@@ -156,4 +158,39 @@ bool Category::shouldShowTechnical() const
 QList<Category *> Category::subCategories() const
 {
     return m_subCategories;
+}
+
+bool categoryLessThan(Category *c1, const Category *c2)
+{
+    return (QString::localeAwareCompare(c1->name(), c2->name()) < 0);
+}
+
+QList< Category* > Category::populateCategories()
+{
+    QFile menuFile(KStandardDirs::locate("appdata", "categories.xml"));
+    QList<Category *> ret;
+
+    if (!menuFile.open(QIODevice::ReadOnly)) {
+        // Broken install or broken FS
+        return ret;
+    }
+
+    QDomDocument menuDocument;
+    QString error;
+    int line;
+    menuDocument.setContent(&menuFile, &error, &line);
+
+    QDomElement root = menuDocument.documentElement();
+
+    QDomNode node = root.firstChild();
+    while(!node.isNull())
+    {
+        ret << new Category(node);
+
+        node = node.nextSibling();
+    }
+
+    qSort(ret.begin(), ret.end(), categoryLessThan);
+    
+    return ret;
 }

@@ -42,15 +42,11 @@ public:
 private:
     QApt::Backend *m_backend;
     ApplicationBackend *m_appBackend;
-    QList<Category *> m_categoryList;
 
     CategoryViewWidget *m_categoryViewWidget;
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
-
-private Q_SLOTS:
-    void populateCategories();
 };
 
 #endif

@@ -52,6 +52,10 @@ kde4_add_kcfg_files(muon_installer_SRCS GENERATE_MOC config/MuonInstallerSetting
 
 kde4_add_executable(muon-installer ${muon_installer_SRCS})
 
+if(NOT qjson_LIBRARIES) #hack to compatibilize different qjson finder versions
+    set(qjson_LIBRARIES ${QJSON_LIBRARIES})
+endif()
+
 target_link_libraries(muon-installer muonprivate
                                      ${KDE4_KIO_LIBS}
                                      ${QAPT_LIBRARY}

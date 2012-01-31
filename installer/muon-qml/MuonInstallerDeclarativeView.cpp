@@ -19,6 +19,9 @@
 
 #include "MuonInstallerDeclarativeView.h"
 #include <kdeclarative.h>
+#include <qdeclarative.h>
+#include <CategoryModel.h>
+#include <CategoryView/Category.h>
 
 MuonInstallerDeclarativeView::MuonInstallerDeclarativeView(QWidget* parent)
     : QDeclarativeView(parent)
@@ -28,6 +31,10 @@ MuonInstallerDeclarativeView::MuonInstallerDeclarativeView(QWidget* parent)
     kdeclarative.initialize();
     //binds things like kconfig and icons
     kdeclarative.setupBindings();
+    
+    qmlRegisterType<CategoryModel>("org.kde.muon", 1, 0, "CategoryModel");
+    qmlRegisterInterface<Category>("Category");
+//     qmlRegisterInterface<QList<Category*> >("QList<Category*>");
     
     setResizeMode(SizeRootObjectToView);
     setSource(QUrl("qrc:/qml/Main.qml"));

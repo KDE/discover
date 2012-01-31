@@ -93,7 +93,7 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
     }
 
     // Otherwise we have to create a new view
-    Category *category = m_categoryModel->categoryForIndex(index);
+    Category *category = m_categoryModel->categoryForIndex(index.row());
 
     switch (index.data(CategoryModel::CategoryTypeRole).toInt()) {
     case CategoryModel::CategoryType: { // Displays the apps in a category

@@ -60,6 +60,8 @@ public:
     bool hasSubCategories() const;
     bool shouldShowTechnical() const;
     QList<Category *> subCategories() const;
+    
+    static QList<Category*> populateCategories();
 
 private:
     QString m_name;

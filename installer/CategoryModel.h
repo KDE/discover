@@ -45,9 +45,14 @@ class CategoryModel : public QStandardItemModel
         };
         
         explicit CategoryModel(QObject* parent = 0);
+        virtual ~CategoryModel();
         
         void setCategories(const QList<Category *> &categoryList, const QString &rootName);
-        Category* categoryForIndex(const QModelIndex& index);
+        Q_SCRIPTABLE Category* categoryForIndex(int row);
+        Q_SCRIPTABLE QObject* objectForIndex(int row);
+
+        Q_SCRIPTABLE void populateCategories(const QString& rootName);
+        Q_SCRIPTABLE void setSubcategories(Category* c);
         
     private:
         QList<Category*> m_categoryList;
