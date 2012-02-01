@@ -36,9 +36,7 @@ Category::Category(const QDomNode &data, CategoryChildPolicy policy)
 }
 
 Category::~Category()
-{
-    qDeleteAll(m_subCategories);
-}
+{}
 
 void Category::parseData(const QDomNode &data)
 {
@@ -62,6 +60,7 @@ void Category::parseData(const QDomNode &data)
         } else if (tempElement.tagName() == QLatin1String("Menu")) {
             if (m_policy == CanHaveChildren) {
                 Category *subCategory = new Category(node);
+                subCategory->setParent(this);
                 m_subCategories << subCategory;
                 m_hasSubCategories = true;
             }
@@ -74,6 +73,7 @@ void Category::parseData(const QDomNode &data)
 
     if (m_hasSubCategories) {
         Category *allSubCategory = new Category(data, NoChildren);
+        allSubCategory->setParent(this);
         m_subCategories << allSubCategory;
     }
 }
