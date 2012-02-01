@@ -1,5 +1,8 @@
 <!DOCTYPE RCC><RCC version="1.0">
  <qresource>
     <file>qml/Main.qml</file>
+    <file>qml/CategoryView.qml</file>
+    <file>qml/Breadcrumbs.qml</file>
+    <file>qml/ApplicationsList.qml</file>
  </qresource>
 </RCC>

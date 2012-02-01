@@ -20,8 +20,16 @@
 #include "MuonInstallerDeclarativeView.h"
 #include <kdeclarative.h>
 #include <qdeclarative.h>
+#include <QDeclarativeEngine>
+#include <QDeclarativeContext>
 #include <CategoryModel.h>
 #include <CategoryView/Category.h>
+#include <ApplicationBackend.h>
+#include <LibQApt/Backend>
+#include <QDebug>
+#include "ApplicationProxyModelHelper.h"
+
+Q_DECLARE_METATYPE(ApplicationBackend*)
 
 MuonInstallerDeclarativeView::MuonInstallerDeclarativeView(QWidget* parent)
     : QDeclarativeView(parent)
@@ -33,9 +41,11 @@ MuonInstallerDeclarativeView::MuonInstallerDeclarativeView(QWidget* parent)
     kdeclarative.setupBindings();
     
     qmlRegisterType<CategoryModel>("org.kde.muon", 1, 0, "CategoryModel");
+    qmlRegisterType<ApplicationProxyModelHelper>("org.kde.muon", 1, 0, "ApplicationProxyModel");
     qmlRegisterInterface<Category>("Category");
-//     qmlRegisterInterface<QList<Category*> >("QList<Category*>");
+    qmlRegisterInterface<ApplicationBackend>("ApplicationBackend");
     
     setResizeMode(SizeRootObjectToView);
     setSource(QUrl("qrc:/qml/Main.qml"));
+    
 }

@@ -21,6 +21,9 @@
 #define MUONINSTALLERDECLARATIVEVIEW_H
 
 #include <QtDeclarative/QDeclarativeView>
+#include <LibQApt/Globals>
+
+namespace QApt { class Backend; }
 
 class MuonInstallerDeclarativeView : public QDeclarativeView
 {

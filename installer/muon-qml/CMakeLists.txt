@@ -3,6 +3,8 @@ include_directories(.. ${CMAKE_CURRENT_BINARY_DIR}/..)
 set(muon_installer_qml_SRCS
     main.cpp
     MuonInstallerDeclarativeView.cpp
+    ApplicationProxyModelHelper.cpp
+    BackendsSingleton.cpp
     ../Application.cpp
     ../ApplicationBackend.cpp
     ../ApplicationLauncher.cpp

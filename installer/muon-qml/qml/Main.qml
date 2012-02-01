@@ -1,59 +1,50 @@
 import QtQuick 1.1
 import org.kde.plasma.components 0.1
-import org.kde.qtextracomponents 0.1
-import org.kde.muon 1.0
 
 Rectangle {
     height: 400
-    width: 300
+    width: 500
     color: "lightgrey"
+    property Component categoryComp: Qt.createComponent("qrc:/qml/CategoryView.qml")
+    property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsList.qml")
     
-    Component {
-        id: categoryComp
-        
-        Page {
-            property variant category
-            property QtObject model: cats
-            
-            ListView {
-                model: cats
-                anchors.fill: parent
-                delegate: categoryDelegate
-            }
-            
-            CategoryModel {
-                id: cats
-                Component.onCompleted: {
-                    console.log("lalala "+category)
-                    if(category)
-                        setSubcategories(category)
-                    else
-                        populateCategories(i18n("Get Software"))
-                }
-            }
-        }
-    }
-    
-    Component {
-        id: categoryDelegate
-        ListItem {
-            Row {
-                spacing: 10
-                QIconItem { icon: decoration; width: 40; height: 40 }
-                Label { text: i18n("%1", display) }
-            }
-            MouseArea { anchors.fill: parent; onClicked: goToPage(index) }
-        }
-    }
-    
-    function goToPage(idx) {
+    function openApplicationList(cat) {
         try {
-            console.log("......... "+pageStack.currentPage)
-            var cat = pageStack.currentPage.model.categoryForIndex(idx)
-            var obj = categoryComp.createObject(pageStack, { category: cat })
+            var obj = applicationListComp.createObject(pageStack, { category: cat })
+            console.log("holaaa "+obj)
             pageStack.push(obj);
+            breadcrumbs.pushItem("user-home", "cosa")
         } catch (e) {
             console.log("error: "+e)
+            console.log("comp error: "+applicationListComp.errorString())
+        }
+    }
+    
+    function openCategory(cat) {
+        try {
+            var obj = categoryComp.createObject(pageStack, { category: cat })
+            pageStack.push(obj);
+            breadcrumbs.pushItem("go-home", "hola")
+        } catch (e) {
+            console.log("error: "+e)
+        }
+    }
+    
+    ToolBar {
+        id:toolbar
+        z: 10
+        height: 40
+        width: parent.width
+        anchors.top: parent.top
+        clip: true
+        
+        Breadcrumbs {
+            id: breadcrumbs
+            anchors.fill: parent
+            onClicked: {
+                var pos = idx;
+                while(pos--) { pageStack.pop(); breadcrumbs.popItem() }
+            }
         }
     }
     
@@ -61,10 +52,10 @@ Rectangle {
     {
         id: pageStack
         width: parent.width
-        anchors.fill: parent
-    }
-    
-    Component.onCompleted: {
-        pageStack.initialPage = categoryComp.createObject(pageStack)
+        anchors.bottom: parent.bottom
+        anchors.top: toolbar.bottom
+        initialPage: CategoryView {}
+        
+        toolBar: toolbar
     }
 }
