@@ -45,13 +45,35 @@ Page
     
     Column {
         anchors.top: header.bottom
-        Label { text: "Description\nLink" }
+        anchors.left: parent.left
+        anchors.right: parent.right
+        spacing: 10
+        
+        Button {
+            text: application.isInstalled ? i18n("Remove") : i18n("Install")
+            onClicked: console.log("install "+application.name)
+        }
         
         Label {
-            text: i18n(  "<b>Total Size:</b> %1 to download, %2 on disk.<br/>"
-                        +"<b>Version:</b> %3<br/>"
-                        +"<b>License:</b> %4<br/>"
-                        +"<b>Support:</b> %5<br/>", 1,2,3,4,5
+            width: parent.width
+            wrapMode: Text.WordWrap
+            text: i18n("<b>Description:</b><br/>%1", application.longDescription)
+        }
+        
+        Button {
+            text: i18n("Homepage")
+            enabled: application.homepage
+            onClicked: console.log("open "+application.homepage)
+        }
+        
+        Label {
+            text: i18n(  "<b>Total Size:</b> %1<br/>"
+                        +"<b>Version:</b> %2<br/>"
+                        +"<b>License:</b> %3<br/>",
+                         application.sizeDescription,
+                         application.name+" "+(application.isInstalled ?
+                                                    application.installedVersion : application.availableVersion),
+                         application.license
             )
         }
         

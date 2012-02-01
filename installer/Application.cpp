@@ -264,6 +264,18 @@ KUrl Application::screenshotUrl(QApt::ScreenshotType type)
     return url;
 }
 
+QString Application::license()
+{
+    if (package()->component() == "main" ||
+        package()->component() == "universe") {
+        return i18nc("@info license", "Open Source");
+    } else if (package()->component() == "restricted") {
+        return i18nc("@info license", "Proprietary");
+    } else {
+        return i18nc("@info license", "Unknown");
+    }
+}
+
 QApt::PackageList Application::addons()
 {
     QApt::PackageList addons;
@@ -340,6 +352,47 @@ bool Application::isTechnical() const
 QByteArray Application::getField(const QByteArray &field) const
 {
     return m_data.value(field);
+}
+
+bool Application::isInstalled() const
+{
+    return m_package && m_package->isInstalled();
+}
+
+QString Application::homepage() const
+{
+    if(!m_package) return QString();
+    return m_package->homepage();
+}
+
+QString Application::longDescription() const
+{
+    if(!m_package) return QString();
+    return m_package->longDescription();
+}
+
+QString Application::availableVersion() const
+{
+    if(!m_package) return QString();
+    return m_package->availableVersion();
+}
+
+QString Application::installedVersion() const
+{
+    if(!m_package) return QString();
+    return m_package->installedVersion();
+}
+
+QString Application::sizeDescription()
+{
+    if (!isInstalled()) {
+        return i18nc("@info app size", "%1 to download, %2 on disk",
+                              KGlobal::locale()->formatByteSize(package()->downloadSize()),
+                              KGlobal::locale()->formatByteSize(package()->availableInstalledSize()));
+    } else {
+        return i18nc("@info app size", "%1 on disk",
+                              KGlobal::locale()->formatByteSize(package()->currentInstalledSize()));
+    }
 }
 
 QHash<QByteArray, QByteArray> Application::desktopContents()

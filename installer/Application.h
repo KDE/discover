@@ -43,8 +43,15 @@ Q_PROPERTY(QString icon READ icon CONSTANT)
 Q_PROPERTY(QString mimetypes READ mimetypes CONSTANT)
 Q_PROPERTY(QString menuPath READ menuPath CONSTANT)
 Q_PROPERTY(QString categories READ categories CONSTANT)
+Q_PROPERTY(QString homepage READ homepage CONSTANT)
+Q_PROPERTY(QString longDescription READ longDescription CONSTANT)
+Q_PROPERTY(QString license READ license CONSTANT)
+Q_PROPERTY(QString installedVersion READ installedVersion CONSTANT)
+Q_PROPERTY(QString availableVersion READ availableVersion CONSTANT)
+Q_PROPERTY(QString sizeDescription READ sizeDescription)
 Q_PROPERTY(bool isValid READ isValid CONSTANT)
 Q_PROPERTY(bool isTechnical READ isTechnical CONSTANT)
+Q_PROPERTY(bool isInstalled READ isInstalled)
 public:
     explicit Application(const QString &fileName, QApt::Backend *backend);
     explicit Application(QApt::Package *package, QApt::Backend *backend);
@@ -58,6 +65,7 @@ public:
     QString mimetypes() const;
     QString menuPath();
     QString categories();
+    QString license();
     Q_SCRIPTABLE QUrl screenshotUrl() { return screenshotUrl(QApt::Screenshot); }
     KUrl screenshotUrl(QApt::ScreenshotType type);
     Q_SCRIPTABLE QApt::PackageList addons();
@@ -67,6 +75,13 @@ public:
     Q_SCRIPTABLE QByteArray getField(const QByteArray &field) const;
     Q_SCRIPTABLE QHash<QByteArray, QByteArray> desktopContents();
 
+    //QApt::Package forwarding
+    bool isInstalled() const;
+    QString homepage() const;
+    QString longDescription() const;
+    QString installedVersion() const;
+    QString availableVersion() const;
+    QString sizeDescription();
 private:
     QString m_fileName;
     QHash<QByteArray, QByteArray> m_data;

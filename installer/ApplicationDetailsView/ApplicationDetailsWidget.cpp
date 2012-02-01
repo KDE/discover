@@ -374,14 +374,7 @@ void ApplicationDetailsWidget::setApplication(Application *app)
                             app->package()->installedVersion());
     }
 
-    if (app->package()->component() == "main" ||
-        app->package()->component() == "universe") {
-        m_license->setText(i18nc("@info license", "Open Source"));
-    } else if (app->package()->component() == "restricted") {
-        m_license->setText(i18nc("@info license", "Proprietary"));
-    } else {
-        m_license->setText(i18nc("@info license", "Unknown"));
-    }
+    m_license->setText(app->license());
 
     if (app->package()->isSupported()) {
         m_support->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
