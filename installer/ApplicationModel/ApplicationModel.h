@@ -34,6 +34,7 @@ class ApplicationModel: public QAbstractListModel
     Q_OBJECT
     Q_PROPERTY(ApplicationBackend* backend READ backend WRITE setBackend)
 public:
+    //FIXME: remove all these "UserRole", only the first is necessary!
     enum {
         NameRole = Qt::UserRole,
         IconRole = Qt::UserRole + 1,
@@ -44,7 +45,8 @@ public:
         ActiveRole = Qt::UserRole + 6,
         ProgressRole = Qt::UserRole + 7,
         ProgressTextRole = Qt::UserRole + 8,
-        InstalledRole = Qt::UserRole +9
+        InstalledRole = Qt::UserRole +9,
+        ApplicationRole
     };
     explicit ApplicationModel(QObject* parent=0);
     ~ApplicationModel();

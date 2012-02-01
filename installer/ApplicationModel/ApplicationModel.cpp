@@ -50,6 +50,7 @@ ApplicationModel::ApplicationModel(QObject *parent)
     roles[ProgressRole] = "progress";
     roles[ProgressTextRole] = "progressText";
     roles[InstalledRole] = "installed";
+    roles[ApplicationRole] = "application";
     setRoleNames(roles);
 }
 
@@ -185,6 +186,9 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role) const
             return m_apps.at(index.row())->package()->isInstalled();
         case Qt::ToolTipRole:
             return QVariant();
+        case ApplicationRole:
+            return qVariantFromValue<QObject*>(m_apps.at(index.row()));
+            break;
     }
 
     return QVariant();
