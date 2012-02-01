@@ -6,6 +6,10 @@ import org.kde.muon 1.0
 Page {
     property variant category
     
+    function searchFor(text) {
+        apps.search(text)
+    }
+    
     Component {
         id: delegate
         ListItem {
@@ -28,9 +32,11 @@ Page {
         delegate: delegate
         
         model: ApplicationProxyModel {
+            id: apps
             
             Component.onCompleted: {
-                setFiltersFromCategory(category)
+                if(category)
+                    setFiltersFromCategory(category)
             }
         }
     }

@@ -75,7 +75,6 @@ void ApplicationProxyModel::setOriginFilter(const QString &origin)
 
 void ApplicationProxyModel::setFiltersFromCategory(Category *category)
 {
-    qDebug() << "fiuuuuuuuuu" << category;
     m_andFilters = category->andFilters();
     m_orFilters = category->orFilters();
     m_notFilters = category->notFilters();

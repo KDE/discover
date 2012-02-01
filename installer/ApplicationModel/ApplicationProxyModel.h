@@ -42,9 +42,8 @@ public:
     explicit ApplicationProxyModel(QObject *parent=0);
     ~ApplicationProxyModel();
 
-    void setShit(int) {}
     void setBackend(QApt::Backend *backend);
-    void search(const QString &text);
+    Q_SCRIPTABLE void search(const QString &text);
     void setStateFilter(QApt::Package::State state);
     void setOriginFilter(const QString &origin);
     Q_SCRIPTABLE void setFiltersFromCategory(Category *category);

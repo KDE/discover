@@ -5,6 +5,11 @@ import org.kde.muon 1.0
 
 Page {
     property variant category
+    
+    function searchFor(text) {
+        console.log("search!! "+text)
+        openApplicationList(category, text)
+    }
 
     Component {
         id: categoryDelegate
@@ -20,7 +25,7 @@ Page {
                     var cat = cats.categoryForIndex(index)
                     switch(categoryType) {
                         case CategoryModel.CategoryType:
-                            openApplicationList(cat)
+                            openApplicationList(cat, "")
                             break;
                         case CategoryModel.SubCatType:
                             openCategory(cat)

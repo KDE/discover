@@ -25,6 +25,7 @@ ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
     : ApplicationProxyModel(parent)
 {
     setSourceModel(BackendsSingleton::self()->appsModel());
+    setBackend(BackendsSingleton::self()->backend());
 }
 
 
