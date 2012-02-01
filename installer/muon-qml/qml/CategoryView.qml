@@ -20,10 +20,10 @@ Page {
                     var cat = cats.categoryForIndex(index)
                     switch(categoryType) {
                         case CategoryModel.CategoryType:
-                            openApplicationList(cat);
+                            openApplicationList(cat)
                             break;
                         case CategoryModel.SubCatType:
-                            openCategory(cat);
+                            openCategory(cat)
                             break;
                     }
                 }

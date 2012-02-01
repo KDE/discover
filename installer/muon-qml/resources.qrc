@@ -4,5 +4,6 @@
     <file>qml/CategoryView.qml</file>
     <file>qml/Breadcrumbs.qml</file>
     <file>qml/ApplicationsList.qml</file>
+    <file>qml/ApplicationView.qml</file>
  </qresource>
 </RCC>

@@ -7,6 +7,7 @@ Rectangle {
     color: "lightgrey"
     property Component categoryComp: Qt.createComponent("qrc:/qml/CategoryView.qml")
     property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsList.qml")
+    property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationView.qml")
     
     function openApplicationList(cat) {
         try {
@@ -27,6 +28,18 @@ Rectangle {
             breadcrumbs.pushItem("go-home", "hola")
         } catch (e) {
             console.log("error: "+e)
+        }
+    }
+    
+    function openApplication(app) {
+        try {
+            var obj = applicationComp.createObject(pageStack, { application: app })
+            console.log("holaaa "+obj)
+            pageStack.push(obj);
+            breadcrumbs.pushItem(app.icon, app.name)
+        } catch (e) {
+            console.log("error: "+e)
+            console.log("comp error: "+applicationComp.errorString())
         }
     }
     

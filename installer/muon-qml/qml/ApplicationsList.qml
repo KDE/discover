@@ -14,6 +14,11 @@ Page {
                 QIconItem { icon: model["icon"]; width: 40; height: 40 }
                 Label { text: name }
             }
+            
+            MouseArea {
+                anchors.fill: parent
+                onClicked: openApplication(application)
+            }
         }
     }
     
