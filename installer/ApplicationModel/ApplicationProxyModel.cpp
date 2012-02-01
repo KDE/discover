@@ -25,6 +25,7 @@
 // Own includes
 #include "../Application.h"
 #include "ApplicationModel.h"
+#include <QDebug>
 
 ApplicationProxyModel::ApplicationProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
@@ -42,7 +43,6 @@ ApplicationProxyModel::~ApplicationProxyModel()
 void ApplicationProxyModel::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
-    m_apps = static_cast<ApplicationModel *>(sourceModel())->applications();
 }
 
 void ApplicationProxyModel::search(const QString &searchText)
@@ -75,6 +75,7 @@ void ApplicationProxyModel::setOriginFilter(const QString &origin)
 
 void ApplicationProxyModel::setFiltersFromCategory(Category *category)
 {
+    qDebug() << "fiuuuuuuuuu" << category;
     m_andFilters = category->andFilters();
     m_orFilters = category->orFilters();
     m_notFilters = category->notFilters();
@@ -242,20 +243,6 @@ Application *ApplicationProxyModel::applicationAt(const QModelIndex &index) cons
     QModelIndex sourceIndex = mapToSource(index);
     Application *application = static_cast<ApplicationModel *>(sourceModel())->applicationAt(sourceIndex);
     return application;
-}
-
-void ApplicationProxyModel::reset()
-{
-    beginRemoveRows(QModelIndex(), 0, m_apps.size());
-    m_apps = static_cast<ApplicationModel *>(sourceModel())->applications();
-    endRemoveRows();
-    invalidate();
-}
-
-void ApplicationProxyModel::parentDataChanged()
-{
-    m_apps = static_cast<ApplicationModel *>(sourceModel())->applications();
-    invalidate();
 }
 
 bool ApplicationProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const

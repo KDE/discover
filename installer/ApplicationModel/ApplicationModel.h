@@ -32,6 +32,7 @@ class Transaction;
 class ApplicationModel: public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(ApplicationBackend* backend READ backend WRITE setBackend)
 public:
     enum {
         NameRole = Qt::UserRole,
@@ -45,20 +46,23 @@ public:
         ProgressTextRole = Qt::UserRole + 8,
         InstalledRole = Qt::UserRole +9
     };
-    explicit ApplicationModel(QObject *parent, ApplicationBackend *backend);
+    explicit ApplicationModel(QObject* parent=0);
     ~ApplicationModel();
 
+    void setBackend(ApplicationBackend* backend);
+    ApplicationBackend* backend() const;
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
-    int columnCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
-    void setApplications(const QList<Application*> &list);
     void clear();
     Application *applicationAt(const QModelIndex &index) const;
     Transaction *transactionAt(const QModelIndex &index) const;
     QList<Application *> applications() const;
-
+    void reloadApplications();
+    
 private:
+    void setApplications(const QList<Application*> &list);
+    
     ApplicationBackend *m_appBackend;
     QList<Application *> m_apps;
     QHash<Transaction *, int> m_runningTransactions;

@@ -33,11 +33,44 @@
 #include "ReviewsBackend/Rating.h"
 #include "ReviewsBackend/ReviewsBackend.h"
 #include "Transaction.h"
+#include <QDebug>
 
-ApplicationModel::ApplicationModel(QObject *parent, ApplicationBackend *backend)
+ApplicationModel::ApplicationModel(QObject *parent)
     : QAbstractListModel(parent)
-    , m_appBackend(backend)
+    , m_appBackend(0)
 {
+    QHash< int, QByteArray > roles = roleNames();
+    roles[NameRole] = "name";
+    roles[IconRole] = "icon";
+    roles[CommentRole] = "comment";
+    roles[ActionRole] = "action";
+    roles[StatusRole] = "status";
+    roles[RatingRole] = "rating";
+    roles[ActiveRole] = "active";
+    roles[ProgressRole] = "progress";
+    roles[ProgressTextRole] = "progressText";
+    roles[InstalledRole] = "installed";
+    setRoleNames(roles);
+}
+
+ApplicationModel::~ApplicationModel()
+{
+}
+
+void ApplicationModel::setBackend(ApplicationBackend* backend)
+{
+    if(m_appBackend) {
+        disconnect(m_appBackend, SIGNAL(progress(Transaction*,int)),
+                    this, SLOT(updateTransactionProgress(Transaction*,int)));
+        disconnect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent,Transaction*)),
+                this, SLOT(workerEvent(QApt::WorkerEvent,Transaction*)));
+        disconnect(m_appBackend, SIGNAL(transactionCancelled(Application*)),
+                this, SLOT(transactionCancelled(Application*)));
+    }
+    
+    m_appBackend = backend;
+    reloadApplications();
+    
     connect(m_appBackend, SIGNAL(progress(Transaction*,int)),
                 this, SLOT(updateTransactionProgress(Transaction*,int)));
     connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent,Transaction*)),
@@ -46,18 +79,14 @@ ApplicationModel::ApplicationModel(QObject *parent, ApplicationBackend *backend)
             this, SLOT(transactionCancelled(Application*)));
 }
 
-ApplicationModel::~ApplicationModel()
+ApplicationBackend* ApplicationModel::backend() const
 {
+    return m_appBackend;
 }
 
 int ApplicationModel::rowCount(const QModelIndex & /*parent*/) const
 {
     return m_apps.size();
-}
-
-int ApplicationModel::columnCount(const QModelIndex & /*parent*/) const
-{
-    return 1;
 }
 
 QVariant ApplicationModel::data(const QModelIndex &index, int role) const
@@ -163,6 +192,8 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role) const
 
 void ApplicationModel::setApplications(const QList<Application*> &list)
 {
+    clear();
+    
     m_apps.reserve(list.size());
     beginInsertRows(QModelIndex(), m_apps.count(), m_apps.count());
     m_apps = list;
@@ -230,6 +261,11 @@ Transaction *ApplicationModel::transactionAt(const QModelIndex &index) const
 QList<Application*> ApplicationModel::applications() const
 {
     return m_apps;
+}
+
+void ApplicationModel::reloadApplications()
+{
+    setApplications(m_appBackend->applicationList());
 }
 
 #include "ApplicationModel.moc"

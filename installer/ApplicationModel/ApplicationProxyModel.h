@@ -37,27 +37,27 @@ class Application;
 class ApplicationProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
+    Q_PROPERTY(QAbstractItemModel* sourceModel READ sourceModel WRITE setSourceModel)
 public:
-    explicit ApplicationProxyModel(QObject *parent);
+    explicit ApplicationProxyModel(QObject *parent=0);
     ~ApplicationProxyModel();
 
+    void setShit(int) {}
     void setBackend(QApt::Backend *backend);
     void search(const QString &text);
     void setStateFilter(QApt::Package::State state);
     void setOriginFilter(const QString &origin);
-    void setFiltersFromCategory(Category *category);
+    Q_SCRIPTABLE void setFiltersFromCategory(Category *category);
     void setShouldShowTechnical(bool show);
 
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
     Application *applicationAt(const QModelIndex &index) const;
-    void reset();
 
 protected:
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
 
 private:
     QApt::Backend *m_backend;
-    QList<Application *> m_apps;
 
     QApt::Package::State m_stateFilter;
     QString m_originFilter;
@@ -68,9 +68,6 @@ private:
 
     bool m_sortByRelevancy;
     bool m_showTechnical;
-
-public Q_SLOTS:
-    void parentDataChanged();
 
 Q_SIGNALS:
     void invalidated();

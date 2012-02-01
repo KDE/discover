@@ -48,7 +48,8 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
         , m_detailsView(0)
 {
     m_searchable = true;
-    m_appModel = new ApplicationModel(this, m_appBackend);
+    m_appModel = new ApplicationModel(this);
+    m_appModel->setBackend(m_appBackend);
     m_proxyModel = new ApplicationProxyModel(this);
     m_proxyModel->setSourceModel(m_appModel);
 
@@ -83,7 +84,6 @@ ApplicationViewWidget::~ApplicationViewWidget()
 void ApplicationViewWidget::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
-    m_appModel->setApplications(m_appBackend->applicationList());
     m_proxyModel->setBackend(backend);
     m_treeView->setSortingEnabled(true);
     m_treeView->sortByColumn(0, Qt::AscendingOrder);
@@ -93,15 +93,10 @@ void ApplicationViewWidget::setBackend(QApt::Backend *backend)
 
 void ApplicationViewWidget::reload()
 {
-    m_appModel->clear();
-    m_proxyModel->invalidate();
-    m_proxyModel->clear();
-    m_proxyModel->setSourceModel(0);
-
-    m_appModel->setApplications(m_appBackend->applicationList());
+    m_appModel->reloadApplications();
 
     m_proxyModel->setSourceModel(m_appModel);
-    m_proxyModel->parentDataChanged();
+    m_proxyModel->invalidate();
     m_treeView->sortByColumn(0, Qt::AscendingOrder);
 }
 

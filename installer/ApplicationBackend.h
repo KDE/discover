@@ -45,7 +45,7 @@ class ApplicationBackend : public QObject
 {
     Q_OBJECT
 public:
-    explicit ApplicationBackend(QObject *parent);
+    explicit ApplicationBackend(QObject *parent=0);
     ~ApplicationBackend();
 
     ReviewsBackend *reviewsBackend() const;
