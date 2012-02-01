@@ -26,7 +26,13 @@
 
 CategoryModel::CategoryModel(QObject* parent)
     : QStandardItemModel(parent)
-{}
+{
+    QHash< int, QByteArray > names = roleNames();
+    names[CategoryTypeRole] = "categoryType";
+    names[AndOrFilterRole] = "andOrFilter";
+    names[NotFilterRole] = "notFilter";
+    setRoleNames(names);
+}
 
 CategoryModel::~CategoryModel()
 {
@@ -38,7 +44,6 @@ void CategoryModel::setCategories(const QList<Category *> &categoryList,
 {
     qDeleteAll(m_categoryList);
     m_categoryList = categoryList;
-    qDebug() << "fuuuuuuuuu";
     foreach (Category *category, m_categoryList) {
         QStandardItem *categoryItem = new QStandardItem;
         categoryItem->setText(category->name());

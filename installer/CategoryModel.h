@@ -43,6 +43,7 @@ class CategoryModel : public QStandardItemModel
             /// A SubCategoryView
             SubCatType = 2
         };
+        Q_ENUMS(CatViewType);
         
         explicit CategoryModel(QObject* parent = 0);
         virtual ~CategoryModel();
