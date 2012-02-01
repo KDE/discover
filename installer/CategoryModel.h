@@ -50,7 +50,6 @@ class CategoryModel : public QStandardItemModel
         
         void setCategories(const QList<Category *> &categoryList, const QString &rootName);
         Q_SCRIPTABLE Category* categoryForIndex(int row);
-        Q_SCRIPTABLE QObject* objectForIndex(int row);
 
         Q_SCRIPTABLE void populateCategories(const QString& rootName);
         Q_SCRIPTABLE void setSubcategories(Category* c);

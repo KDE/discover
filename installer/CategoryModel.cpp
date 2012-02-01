@@ -75,8 +75,3 @@ void CategoryModel::setSubcategories(Category* c)
 {
     setCategories(c->subCategories(), c->name());
 }
-
-QObject* CategoryModel::objectForIndex(int row)
-{
-    return categoryForIndex(row);
-}
