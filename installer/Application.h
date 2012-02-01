@@ -33,8 +33,18 @@ namespace QApt {
     class Backend;
 }
 
-class Application
+class Application : public QObject
 {
+Q_OBJECT
+Q_PROPERTY(QString name READ name CONSTANT)
+Q_PROPERTY(QString untranslatedName READ untranslatedName CONSTANT)
+Q_PROPERTY(QString comment READ comment CONSTANT)
+Q_PROPERTY(QString icon READ icon CONSTANT)
+Q_PROPERTY(QString mimetypes READ mimetypes CONSTANT)
+Q_PROPERTY(QString menuPath READ menuPath CONSTANT)
+Q_PROPERTY(QString categories READ categories CONSTANT)
+Q_PROPERTY(bool isValid READ isValid CONSTANT)
+Q_PROPERTY(bool isTechnical READ isTechnical CONSTANT)
 public:
     explicit Application(const QString &fileName, QApt::Backend *backend);
     explicit Application(QApt::Package *package, QApt::Backend *backend);
@@ -43,18 +53,19 @@ public:
     QString name();
     QString untranslatedName();
     QString comment();
-    QApt::Package *package();
+    Q_SCRIPTABLE QApt::Package *package();
     QString icon() const;
     QString mimetypes() const;
     QString menuPath();
     QString categories();
+    Q_SCRIPTABLE QUrl screenshotUrl() { return screenshotUrl(QApt::Screenshot); }
     KUrl screenshotUrl(QApt::ScreenshotType type);
-    QApt::PackageList addons();
+    Q_SCRIPTABLE QApt::PackageList addons();
     bool isValid() const;
     bool isTechnical() const;
 
-    QByteArray getField(const QByteArray &field) const;
-    QHash<QByteArray, QByteArray> desktopContents();
+    Q_SCRIPTABLE QByteArray getField(const QByteArray &field) const;
+    Q_SCRIPTABLE QHash<QByteArray, QByteArray> desktopContents();
 
 private:
     QString m_fileName;
