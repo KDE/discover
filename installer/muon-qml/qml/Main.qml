@@ -41,7 +41,7 @@ Rectangle {
         } finally {
             opening=false
         }
-        
+        console.log("opened "+name)
         return obj
     }
     
@@ -61,7 +61,11 @@ Rectangle {
                 while(pos--) { pageStack.pop(); breadcrumbs.popItem() }
             }
             
-            onSearchChanged: pageStack.currentPage.searchFor(search)
+            onSearchChanged: {
+                if(search)
+                    pageStack.currentPage.searchFor(search)
+            }
+            
             Component.onCompleted: pushItem("go-home", i18n("Get Software"), true)
         }
     }
