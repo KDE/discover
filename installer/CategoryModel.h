@@ -32,7 +32,8 @@ class CategoryModel : public QStandardItemModel
         enum CategoryModelRole {
             CategoryTypeRole = Qt::UserRole + 1,
             AndOrFilterRole = Qt::UserRole + 2,
-            NotFilterRole = Qt::UserRole + 3
+            NotFilterRole = Qt::UserRole + 3,
+            CategoryRole
         };
         
         enum CatViewType {

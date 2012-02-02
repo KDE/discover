@@ -31,12 +31,12 @@ CategoryModel::CategoryModel(QObject* parent)
     names[CategoryTypeRole] = "categoryType";
     names[AndOrFilterRole] = "andOrFilter";
     names[NotFilterRole] = "notFilter";
+    names[CategoryRole] = "category";
     setRoleNames(names);
 }
 
 CategoryModel::~CategoryModel()
 {
-    qDeleteAll(m_categoryList);
 }
 
 void CategoryModel::setCategories(const QList<Category *> &categoryList,
@@ -45,11 +45,14 @@ void CategoryModel::setCategories(const QList<Category *> &categoryList,
     qDeleteAll(m_categoryList);
     m_categoryList = categoryList;
     foreach (Category *category, m_categoryList) {
+        if(!category->parent())
+            category->setParent(this);
         QStandardItem *categoryItem = new QStandardItem;
         categoryItem->setText(category->name());
         categoryItem->setIcon(KIcon(category->icon()));
         categoryItem->setEditable(false);
         categoryItem->setData(rootName, KCategorizedSortFilterProxyModel::CategoryDisplayRole);
+        categoryItem->setData(qVariantFromValue<QObject*>(category), CategoryRole);
 
         if (category->hasSubCategories()) {
             categoryItem->setData(SubCatType, CategoryTypeRole);
