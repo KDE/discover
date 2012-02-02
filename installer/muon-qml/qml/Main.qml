@@ -28,7 +28,6 @@ Rectangle {
         //due to animations, it can happen that the user clicks twice at the same button
         if(breadcrumbs.currentItem()==name || opening)
             return
-        console.log("dsadasdasda "+breadcrumbs.currentItem()+" "+name)
         opening=true
         
         var obj
@@ -43,7 +42,6 @@ Rectangle {
             opening=false
         }
         
-        console.log("new page "+name)
         return obj
     }
     
