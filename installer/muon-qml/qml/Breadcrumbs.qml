@@ -6,6 +6,8 @@ Item {
     signal clicked(int idx)
     property alias search: searchInput.text
     
+    function currentItem() { return items.get(items.count-1).display }
+    
     function pushItem(icon, text, withsearch) {
         items.append({"decoration": icon, "display": text, "withsearch": withsearch})
     }

@@ -8,7 +8,7 @@ Page {
     
     function searchFor(text) {
         console.log("search!! "+text)
-        openApplicationList(category, text)
+        openApplicationList("kalgebra", "hola", category, text)
     }
 
     Component {
@@ -25,10 +25,10 @@ Page {
                     var cat = cats.categoryForIndex(index)
                     switch(categoryType) {
                         case CategoryModel.CategoryType:
-                            openApplicationList(cat, "")
+                            openApplicationList(category.icon, category.name, cat, "")
                             break;
                         case CategoryModel.SubCatType:
-                            openCategory(cat)
+                            openCategory(category.icon, category.name, cat)
                             break;
                     }
                 }

@@ -8,39 +8,43 @@ Rectangle {
     property Component categoryComp: Qt.createComponent("qrc:/qml/CategoryView.qml")
     property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsList.qml")
     property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationView.qml")
+    property bool opening: false
     
-    function openApplicationList(cat, search) {
-        try {
-            var obj = applicationListComp.createObject(pageStack, { category: cat })
-            if(search)
-                obj.searchFor(search)
-            pageStack.push(obj);
-            breadcrumbs.pushItem("user-home", "cosa", true)
-        } catch (e) {
-            console.log("error: "+e)
-            console.log("comp error: "+applicationListComp.errorString())
-        }
+    function openApplicationList(icon, name, cat, search) {
+        obj=openPage(icon, name, applicationListComp, { category: cat }, true)
+        if(search)
+            obj.searchFor(search)
     }
     
-    function openCategory(cat) {
-        try {
-            var obj = categoryComp.createObject(pageStack, { category: cat })
-            pageStack.push(obj);
-            breadcrumbs.pushItem("go-home", "hola", true)
-        } catch (e) {
-            console.log("error: "+e)
-        }
+    function openCategory(icon, name, cat) {
+        openPage(icon, name, categoryComp, { category: cat }, true)
     }
     
     function openApplication(app) {
+        openPage(app.icon, app.name, applicationComp, { application: app }, false)
+    }
+    
+    function openPage(icon, name, component, props, search) {
+        //due to animations, it can happen that the user clicks twice at the same button
+        if(breadcrumbs.currentItem()==name || opening)
+            return
+        console.log("dsadasdasda "+breadcrumbs.currentItem()+" "+name)
+        opening=true
+        
+        var obj
         try {
-            var obj = applicationComp.createObject(pageStack, { application: app })
+            obj = component.createObject(pageStack, props)
             pageStack.push(obj);
-            breadcrumbs.pushItem(app.icon, app.name, false)
+            breadcrumbs.pushItem(icon, name, search)
         } catch (e) {
             console.log("error: "+e)
             console.log("comp error: "+applicationComp.errorString())
+        } finally {
+            opening=false
         }
+        
+        console.log("new page "+name)
+        return obj
     }
     
     ToolBar {
