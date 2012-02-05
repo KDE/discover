@@ -223,7 +223,7 @@ void ApplicationWindow::populateViews()
 
         if (originNames.contains("LP-PPA-app-review-board")) {
             int index = originNames.indexOf("LP-PPA-app-review-board");
-            if (originNames >= 3)
+            if (originNames.size() >= 3)
                 originNames.move(index, 2); // Move to third spot
         }
     }
@@ -309,7 +309,7 @@ void ApplicationWindow::populateViews()
 
         if (instOriginNames.contains("LP-PPA-app-review-board")) {
             int index = instOriginNames.indexOf("LP-PPA-app-review-board");
-            if (originNames.size() >= 2)
+            if (originNames.size() >= 3)
                 originNames.move(index, 2); // Move to third spot
         }
     }
