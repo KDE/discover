@@ -211,8 +211,12 @@ void ReviewsBackend::reviewsFetched(KJob *job)
     QList<Review *> reviewsList;
     foreach (const QVariant &data, reviews.toList()) {
         Review *review = new Review(data.toMap());
-        review->setPackage(m_aptBackend->package(review->packageName()));
-        reviewsList << review;
+        QApt::Package *package = m_aptBackend->package(review->packageName());
+
+        if (package) {
+            review->setPackage(package);
+            reviewsList << review;
+        }
     }
 
     Application *app = m_jobHash.value(job);

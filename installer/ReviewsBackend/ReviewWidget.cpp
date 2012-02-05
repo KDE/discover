@@ -78,6 +78,9 @@ ReviewWidget::~ReviewWidget()
 
 void ReviewWidget::setReview(Review *review)
 {
+    if (!review->package())
+        return;
+
     m_ratingWidget->setRating(review->rating());
 
     m_summaryLabel->setText(QLatin1Literal("<b>") % review->summary()
