@@ -33,7 +33,6 @@ Item {
         orientation: ListView.Horizontal
         delegate: ToolButton {
             height: 30
-            width: implicitWidth
             iconSource: decoration
             anchors.verticalCenter: parent.verticalCenter
             onClicked: bread.clicked(items.count-index-1)

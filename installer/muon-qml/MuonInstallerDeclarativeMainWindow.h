@@ -22,14 +22,23 @@
 
 #include <QtDeclarative/QDeclarativeView>
 #include <LibQApt/Globals>
+#include <../../libmuon/MuonMainWindow.h>
 
 namespace QApt { class Backend; }
 
-class MuonInstallerDeclarativeView : public QDeclarativeView
+class MuonInstallerMainWindow : public MuonMainWindow
 {
     Q_OBJECT
+    Q_PROPERTY(QVariantList actions READ actions NOTIFY actionsChanged)
     public:
-        explicit MuonInstallerDeclarativeView(QWidget* parent = 0);
+        explicit MuonInstallerMainWindow();
+        
+        QVariantList actions() const;
+        
+    signals:
+        void actionsChanged();
+public slots:
+    void setBackend(QApt::Backend* b);
 };
 
 #endif // MUONINSTALLERDECLARATIVEVIEW_H

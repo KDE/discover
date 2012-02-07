@@ -33,17 +33,10 @@ BackendsSingleton* BackendsSingleton::self()
 }
 
 BackendsSingleton::BackendsSingleton()
-    : m_appsModel(0)
+    : m_backend(0)
+    , m_appsModel(0)
     , m_applicationBackend(0)
-{
-    m_backend = new QApt::Backend;
-    m_backend->init();
-    m_originalState = m_backend->currentCacheState();
-
-    if (m_backend->xapianIndexNeedsUpdate()) {
-        m_backend->updateXapianIndex();
-    }
-}
+{}
 
 ApplicationBackend* BackendsSingleton::applicationBackend()
 {
@@ -62,6 +55,11 @@ ApplicationModel* BackendsSingleton::appsModel()
         m_appsModel->setBackend(applicationBackend());
     }
     return m_appsModel;
+}
+
+void BackendsSingleton::setBackend(QApt::Backend* b)
+{
+    m_backend = b;
 }
 
 QApt::Backend* BackendsSingleton::backend()

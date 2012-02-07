@@ -17,7 +17,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include "MuonInstallerDeclarativeView.h"
+#include "MuonInstallerDeclarativeMainWindow.h"
 #include <kdeclarative.h>
 #include <qdeclarative.h>
 #include <QDeclarativeEngine>
@@ -27,15 +27,21 @@
 #include <ApplicationBackend.h>
 #include <LibQApt/Backend>
 #include <QDebug>
+#include <QTimer>
+#include <qaction.h>
+#include <KActionCollection>
 #include "ApplicationProxyModelHelper.h"
+#include "BackendsSingleton.h"
 
 Q_DECLARE_METATYPE(ApplicationBackend*)
 
-MuonInstallerDeclarativeView::MuonInstallerDeclarativeView(QWidget* parent)
-    : QDeclarativeView(parent)
+MuonInstallerMainWindow::MuonInstallerMainWindow()
+    : MuonMainWindow()
 {
+    QDeclarativeView* view = new QDeclarativeView(this);
+    
     KDeclarative kdeclarative;
-    kdeclarative.setDeclarativeEngine(engine());
+    kdeclarative.setDeclarativeEngine(view->engine());
     kdeclarative.initialize();
     //binds things like kconfig and icons
     kdeclarative.setupBindings();
@@ -45,7 +51,30 @@ MuonInstallerDeclarativeView::MuonInstallerDeclarativeView(QWidget* parent)
     qmlRegisterInterface<Category>("Category");
     qmlRegisterInterface<ApplicationBackend>("ApplicationBackend");
     
-    setResizeMode(SizeRootObjectToView);
-    setSource(QUrl("qrc:/qml/Main.qml"));
+    connect(actionCollection(), SIGNAL(inserted(QAction*)), SIGNAL(actionsChanged()));
+    connect(actionCollection(), SIGNAL(removed(QAction*)), SIGNAL(actionsChanged()));
+    connect(this, SIGNAL(backendReady(QApt::Backend*)), SLOT(setBackend(QApt::Backend*)));
     
+    view->engine()->rootContext()->setContextProperty("app", this);
+    view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+    view->setSource(QUrl("qrc:/qml/Main.qml"));
+    
+    QTimer::singleShot(10, this, SLOT(initObject()));
+    setupActions();
+    setCentralWidget(view);
+}
+
+QVariantList MuonInstallerMainWindow::actions() const
+{
+    QList<QAction*> acts = actionCollection()->actions();
+    QVariantList ret;
+    foreach(QAction* a, acts) {
+        ret += qVariantFromValue<QObject*>(a);
+    }
+    return ret;
+}
+
+void MuonInstallerMainWindow::setBackend(QApt::Backend* b)
+{
+    BackendsSingleton::self()->setBackend(b);
 }

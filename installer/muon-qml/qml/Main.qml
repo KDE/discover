@@ -1,9 +1,10 @@
 import QtQuick 1.1
 import org.kde.plasma.components 0.1
+import org.kde.qtextracomponents 0.1
 
 Rectangle {
-    height: 400
-    width: 500
+    width: 800
+    height: 600
     color: "lightgrey"
     property Component categoryComp: Qt.createComponent("qrc:/qml/CategoryView.qml")
     property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsList.qml")
@@ -53,9 +54,40 @@ Rectangle {
         anchors.top: parent.top
         clip: true
         
+        Row {
+            id: tools
+            spacing: 10
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+                left: parent.left
+                topMargin: 5
+            }
+            
+            Repeater {
+                model: app.actions
+                delegate: ToolButton {
+                    width: height; height: 30
+                    
+                    onClicked: modelData.trigger()
+                    
+                    QIconItem {
+                        anchors.margins: 5
+                        anchors.fill: parent
+                        icon: modelData.icon
+                    }
+                }
+            }
+        }
+        
         Breadcrumbs {
             id: breadcrumbs
-            anchors.fill: parent
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+                right: parent.right
+                left: tools.right
+            }
             onClicked: {
                 var pos = idx;
                 while(pos--) { pageStack.pop(); breadcrumbs.popItem() }

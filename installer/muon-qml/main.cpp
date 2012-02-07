@@ -24,7 +24,7 @@
 #include <KUniqueApplication>
 #include <ApplicationWindow.h>
 #include <KStandardDirs>
-#include "MuonInstallerDeclarativeView.h"
+#include "MuonInstallerDeclarativeMainWindow.h"
 
 static const char description[] =
     I18N_NOOP("An application manager");
@@ -55,7 +55,7 @@ int main(int argc, char** argv)
     KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
     app.disableSessionManagement();
 
-    MuonInstallerDeclarativeView *mainWindow = new MuonInstallerDeclarativeView;
+    MuonInstallerMainWindow *mainWindow = new MuonInstallerMainWindow;
     mainWindow->show();
 
     return app.exec();

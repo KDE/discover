@@ -31,6 +31,9 @@ public:
     BackendsSingleton();
     
     static BackendsSingleton* self();
+    
+    void setBackend(QApt::Backend*);
+    
     ApplicationModel* appsModel();
     QApt::Backend* backend();
     ApplicationBackend* applicationBackend();
