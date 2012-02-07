@@ -31,6 +31,7 @@
 #include "ApplicationBackend.h"
 #include "Transaction.h"
 
+class TransactionListener;
 class QDeclarativeView;
 class QGraphicsBlurEffect;
 class QLabel;
@@ -90,12 +91,9 @@ private:
     QPropertyAnimation *m_fadeBlur;
 
     KTemporaryFile *m_screenshotFile;
+    TransactionListener* m_listener;
 
 private Q_SLOTS:
-    void workerEvent(QApt::WorkerEvent event, Transaction *transaction);
-    void updateProgress(Transaction *transaction, int percentage);
-    void showTransactionState(Transaction *transaction);
-    void transactionCancelled(Application *app);
     void fetchScreenshot(QApt::ScreenshotType screenshotType);
     void screenshotFetched(KJob *job);
     void overlayClosed();
@@ -105,12 +103,16 @@ private Q_SLOTS:
     void populateAddons();
     void populateReviews(Application *app, const QList<Review *> &reviews);
     void addonsApplyButtonClicked(const QHash<QApt::Package *, QApt::Package::State> &changedAddons);
+    void progressCommentChanged();
+    void progressChanged();
 
 Q_SIGNALS:
     void installButtonClicked(Application *app);
     void installButtonClicked(Application *app, const QHash<QApt::Package *, QApt::Package::State> &);
     void removeButtonClicked(Application *app);
     void cancelButtonClicked(Application *app);
+public slots:
+    void applicationInstallingChanged(bool installing);
 };
 
 #endif

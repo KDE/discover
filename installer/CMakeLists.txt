@@ -37,6 +37,7 @@ set(muon_installer_SRCS
     ScreenShotOverlay.cpp
     Transaction.cpp
     CategoryModel.cpp
+    TransactionListener.cpp
     ReviewsBackend/Rating.cpp
     ReviewsBackend/Review.cpp
     ReviewsBackend/ReviewWidget.cpp

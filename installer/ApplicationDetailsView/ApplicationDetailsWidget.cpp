@@ -1,5 +1,6 @@
 /***************************************************************************
  *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@kde.org>                *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -68,6 +69,7 @@
 #include "ReviewsBackend/Review.h"
 #include "ReviewsBackend/ReviewsWidget.h"
 #include "ReviewsBackend/ReviewsBackend.h"
+#include <TransactionListener.h>
 #include "../../libmuon/MuonStrings.h"
 #include "../../libmuon/mobile/src/mousecursor.h"
 
@@ -278,11 +280,14 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     layout->addWidget(detailsWidget);
     layout->addWidget(m_reviewsWidget);
     layout->addWidget(verticalSpacer);
+    
+    m_listener = new TransactionListener(this);
+    m_listener->setApplication(m_app);
+    m_listener->setBackend(m_appBackend);
 
-    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent,Transaction*)),
-            this, SLOT(workerEvent(QApt::WorkerEvent,Transaction*)));
-    connect(m_appBackend, SIGNAL(transactionCancelled(Application*)),
-            this, SLOT(transactionCancelled(Application*)));
+    connect(m_listener, SIGNAL(progressChanged()), SLOT(progressChanged()));
+    connect(m_listener, SIGNAL(commentChanged()), SLOT(progressCommentChanged()));
+    connect(m_listener, SIGNAL(installing(bool)), SLOT(applicationInstallingChanged(bool)));
 
     setWidget(widget);
 }
@@ -388,124 +393,7 @@ void ApplicationDetailsWidget::setApplication(Application *app)
             this, SLOT(populateReviews(Application*,QList<Review*>)));
     reviewsBackend->fetchReviews(app);
 
-    // Catch already-begun downloads. If the state is something else, we won't
-    // care because we won't handle it
-    QPair<QApt::WorkerEvent, Transaction *> workerState = m_appBackend->workerState();
-    workerEvent(workerState.first, workerState.second);
-
-    foreach (Transaction *transaction, m_appBackend->transactions()) {
-        if (transaction->application() == m_app){
-            showTransactionState(transaction);
-        }
-    }
-
     fetchScreenshot(QApt::Thumbnail);
-}
-
-void ApplicationDetailsWidget::workerEvent(QApt::WorkerEvent event, Transaction *transaction)
-{
-    if (!transaction || !m_appBackend->transactions().contains(transaction) ||
-        m_app != transaction->application()) {
-        return;
-    }
-
-    switch (event) {
-    case QApt::PackageDownloadStarted:
-        m_actionButton->hide();
-        m_cancelButton->show();
-        m_progressBar->show();
-        m_progressBar->setFormat(i18nc("@info:status", "Downloading"));
-        connect(m_appBackend, SIGNAL(progress(Transaction*,int)),
-                this, SLOT(updateProgress(Transaction*,int)));
-        break;
-    case QApt::PackageDownloadFinished:
-        disconnect(m_appBackend, SIGNAL(progress(Transaction*,int)),
-                   this, SLOT(updateProgress(Transaction*,int)));
-        break;
-    case QApt::CommitChangesStarted:
-        m_actionButton->hide();
-        m_cancelButton->hide();
-        m_progressBar->show();
-        m_progressBar->setValue(0);
-        switch(transaction->action()) {
-        case InstallApp:
-            m_progressBar->setFormat(i18nc("@info:status", "Installing"));
-            break;
-        case ChangeAddons:
-            m_progressBar->setFormat(i18nc("@info:status", "Changing Addons"));
-            break;
-        case RemoveApp:
-            m_progressBar->setFormat(i18nc("@info:status", "Removing"));
-            break;
-        default:
-            break;
-        }
-        connect(m_appBackend, SIGNAL(progress(Transaction*,int)),
-                this, SLOT(updateProgress(Transaction*,int)));
-        break;
-    case QApt::CommitChangesFinished:
-        disconnect(m_appBackend, SIGNAL(progress(Transaction*,int)),
-                   this, SLOT(updateProgress(Transaction*,int)));
-        break;
-    default:
-        break;
-    }
-}
-
-void ApplicationDetailsWidget::updateProgress(Transaction *transaction, int percentage)
-{
-    if (m_app == transaction->application()) {
-        m_progressBar->setValue(percentage);
-
-        if (percentage == 100) {
-            m_progressBar->setFormat(i18nc("@info:status Progress text when done", "Done"));
-        }
-    }
-}
-
-void ApplicationDetailsWidget::showTransactionState(Transaction *transaction)
-{
-    m_actionButton->hide();
-    m_progressBar->show();
-    m_progressBar->setValue(0);
-
-    QString text;
-    switch (transaction->state()) {
-    case QueuedState:
-        text = i18nc("@info:status Progress text when waiting", "Waiting");
-        break;
-    case RunningState:
-        switch (transaction->action()) {
-        case InstallApp:
-            text = i18nc("@info:status", "Installing");
-            break;
-        case ChangeAddons:
-            text = i18nc("@info:status", "Changing Addons");
-            break;
-        case RemoveApp:
-            text = i18nc("@info:status", "Removing");
-            break;
-        default:
-            break;
-        }
-        break;
-    case DoneState:
-        text = i18nc("@info:status Progress text when done", "Done");
-        m_progressBar->setValue(100);
-        break;
-    default:
-        break;
-    }
-    m_progressBar->setFormat(text);
-}
-
-void ApplicationDetailsWidget::transactionCancelled(Application *app)
-{
-    if (m_app == app) {
-        m_progressBar->hide();
-        m_cancelButton->hide();
-        m_actionButton->show();
-    }
 }
 
 void ApplicationDetailsWidget::fetchScreenshot(QApt::ScreenshotType screenshotType)
@@ -573,11 +461,6 @@ void ApplicationDetailsWidget::screenshotLabelClicked()
 
 void ApplicationDetailsWidget::actionButtonClicked()
 {
-    m_actionButton->hide();
-    m_progressBar->show();
-    m_progressBar->setValue(0);
-    m_progressBar->setFormat(i18nc("@info:status Progress text when waiting", "Waiting"));
-
     // TODO: update packages
     if (m_app->package()->isInstalled()) {
         emit removeButtonClicked(m_app);
@@ -619,6 +502,23 @@ void ApplicationDetailsWidget::addonsApplyButtonClicked(const QHash<QApt::Packag
     m_progressBar->show();
     m_progressBar->setValue(0);
     m_progressBar->setFormat(i18nc("@info:status Progress text when waiting", "Waiting"));
+}
+
+void ApplicationDetailsWidget::applicationInstallingChanged(bool installing)
+{
+    m_actionButton->setVisible(!installing);
+    m_cancelButton->setVisible(installing);
+    m_progressBar->setVisible(installing);
+}
+
+void ApplicationDetailsWidget::progressChanged()
+{
+    m_progressBar->setValue(m_listener->progress());
+}
+
+void ApplicationDetailsWidget::progressCommentChanged()
+{
+    m_progressBar->setFormat(m_listener->comment());
 }
 
 #include "ApplicationDetailsWidget.moc"
