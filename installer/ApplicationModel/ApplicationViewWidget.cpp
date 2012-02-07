@@ -70,11 +70,11 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
     connect(m_delegate, SIGNAL(infoButtonClicked(Application*)),
             this, SLOT(infoButtonClicked(Application*)));
     connect(m_delegate, SIGNAL(installButtonClicked(Application*)),
-            this, SLOT(installButtonClicked(Application*)));
+            m_appBackend, SLOT(installApplication(Application*)));
     connect(m_delegate, SIGNAL(removeButtonClicked(Application*)),
-            this, SLOT(removeButtonClicked(Application*)));
+            m_appBackend, SLOT(removeApplication(Application*)));
     connect(m_delegate, SIGNAL(cancelButtonClicked(Application*)),
-            this, SLOT(cancelButtonClicked(Application*)));
+            m_appBackend, SLOT(cancelTransaction(Application*)));
 }
 
 ApplicationViewWidget::~ApplicationViewWidget()
@@ -149,50 +149,18 @@ void ApplicationViewWidget::infoButtonClicked(Application *app)
     m_currentPair.first = m_detailsView;
 
     connect(m_detailsView, SIGNAL(installButtonClicked(Application*)),
-            this, SLOT(installButtonClicked(Application*)));
+            m_appBackend, SLOT(installApplication(Application*)));
     connect(m_detailsView, SIGNAL(installButtonClicked(Application*,QHash<QApt::Package*,QApt::Package::State>)),
-            this, SLOT(installButtonClicked(Application*,QHash<QApt::Package*,QApt::Package::State>)));
+            m_appBackend, SLOT(installApplication(Application*,QHash<QApt::Package*,QApt::Package::State>)));
     connect(m_detailsView, SIGNAL(removeButtonClicked(Application*)),
-            this, SLOT(removeButtonClicked(Application*)));
+            m_appBackend, SLOT(removeApplication(Application*)));
     connect(m_detailsView, SIGNAL(cancelButtonClicked(Application*)),
-            this, SLOT(cancelButtonClicked(Application*)));
+            m_appBackend, SLOT(cancelTransaction(Application*)));
     connect(m_detailsView, SIGNAL(destroyed(QObject*)),
             this, SLOT(onSubViewDestroyed()));
 
     // Tell our parent that we can exist, so that they can forward it
     emit registerNewSubView(m_detailsView);
-}
-
-void ApplicationViewWidget::installButtonClicked(Application *app, const QHash<QApt::Package *, QApt::Package::State> &addons)
-{
-    TransactionAction action = InvalidAction;
-
-    if (app->package()->isInstalled()) {
-        action = ChangeAddons;
-    } else {
-        action = InstallApp;
-    }
-
-    Transaction *transaction = new Transaction(app, action, addons);
-    m_appBackend->addTransaction(transaction);
-}
-
-void ApplicationViewWidget::installButtonClicked(Application *app)
-{
-    Transaction *transaction = new Transaction(app, InstallApp);
-    m_appBackend->addTransaction(transaction);
-}
-
-void ApplicationViewWidget::removeButtonClicked(Application *app)
-{
-    Transaction *transaction = new Transaction(app, RemoveApp);
-
-    m_appBackend->addTransaction(transaction);
-}
-
-void ApplicationViewWidget::cancelButtonClicked(Application *app)
-{
-    m_appBackend->cancelTransaction(app); 
 }
 
 void ApplicationViewWidget::onSubViewDestroyed()

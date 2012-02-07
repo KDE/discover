@@ -406,3 +406,27 @@ QList<Transaction *> ApplicationBackend::transactions() const
 {
     return m_queue;
 }
+
+void ApplicationBackend::installApplication(Application *app, const QHash<QApt::Package *, QApt::Package::State> &addons)
+{
+    TransactionAction action = InvalidAction;
+
+    if (app->package()->isInstalled()) {
+        action = ChangeAddons;
+    } else {
+        action = InstallApp;
+    }
+
+    Transaction *transaction = new Transaction(app, action, addons);
+    addTransaction(transaction);
+}
+
+void ApplicationBackend::installApplication(Application *app)
+{
+    addTransaction(new Transaction(app, InstallApp));
+}
+
+void ApplicationBackend::removeApplication(Application *app)
+{
+    addTransaction(new Transaction(app, RemoveApp));
+}

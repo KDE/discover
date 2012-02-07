@@ -27,6 +27,7 @@
 #include <QtCore/QSet>
 
 #include <LibQApt/Globals>
+#include <LibQApt/Package>
 
 namespace QApt {
     class Backend;
@@ -59,8 +60,14 @@ public:
     bool confirmRemoval(Transaction *transaction);
     void markTransaction(Transaction *transaction);
     void addTransaction(Transaction *transaction);
-    void cancelTransaction(Application *app);
     void clearLaunchList();
+    
+public slots:
+    //helper functions
+    void installApplication(Application *app, const QHash<QApt::Package *, QApt::Package::State> &addons);
+    void installApplication(Application *app);
+    void removeApplication(Application *app);
+    void cancelTransaction(Application *app);
 
 private:
     QApt::Backend *m_backend;
