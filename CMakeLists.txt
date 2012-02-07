@@ -36,6 +36,9 @@ macro_log_feature(HAVE_QZEITGEIST "LibQZeitgeist" "Qt wrapper around the Zeitgei
 
 include_directories(${KDE4_INCLUDES} ${QT_INCLUDES} ${QAPT_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
 
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/HaveQZeitgeist.h.in
+               ${CMAKE_CURRENT_BINARY_DIR}/HaveQZeitgeist.h)
+
 add_subdirectory(libmuon)
 add_subdirectory(muon)
 add_subdirectory(installer)

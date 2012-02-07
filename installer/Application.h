@@ -51,7 +51,8 @@ Q_PROPERTY(QString availableVersion READ availableVersion CONSTANT)
 Q_PROPERTY(QString sizeDescription READ sizeDescription)
 Q_PROPERTY(bool isValid READ isValid CONSTANT)
 Q_PROPERTY(bool isTechnical READ isTechnical CONSTANT)
-Q_PROPERTY(bool isInstalled READ isInstalled)
+Q_PROPERTY(bool isInstalled READ isInstalled CONSTANT)
+Q_PROPERTY(int usageCount READ usageCount CONSTANT)
 public:
     explicit Application(const QString &fileName, QApt::Backend *backend);
     explicit Application(QApt::Package *package, QApt::Backend *backend);
@@ -71,6 +72,7 @@ public:
     Q_SCRIPTABLE QApt::PackageList addons();
     bool isValid() const;
     bool isTechnical() const;
+    int usageCount() const;
 
     Q_SCRIPTABLE QByteArray getField(const QByteArray &field) const;
     Q_SCRIPTABLE QHash<QByteArray, QByteArray> desktopContents();
@@ -83,6 +85,9 @@ public:
     QString availableVersion() const;
     QString sizeDescription();
 private:
+    void populateZeitgeistInfo();
+    QVector<QPair<QString, QString> > locateApplication(const QString &_relPath, const QString &menuId) const;
+    
     QString m_fileName;
     QHash<QByteArray, QByteArray> m_data;
     QApt::Backend *m_backend;
@@ -90,8 +95,7 @@ private:
 
     bool m_isValid;
     bool m_isTechnical;
-
-    QVector<QPair<QString, QString> > locateApplication(const QString &_relPath, const QString &menuId) const;
+    int m_usageCount;
 };
 
 #endif

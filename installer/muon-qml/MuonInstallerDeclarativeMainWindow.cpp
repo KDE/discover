@@ -75,7 +75,6 @@ QVariantList MuonInstallerMainWindow::actions() const
     QList<QAction*> acts = actionCollection()->actions();
     QVariantList ret;
     foreach(QAction* a, acts) {
-        qDebug() << "fuuuuuu" << a << m_undesiredActions;
         if(!m_undesiredActions.contains(a))
             ret += qVariantFromValue<QObject*>(a);
     }

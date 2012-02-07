@@ -44,10 +44,6 @@ set(muon_installer_SRCS
     ReviewsBackend/ReviewsBackend.cpp
     ${messagewidget_SRCS})
 
-
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/HaveQZeitgeist.h.in
-               ${CMAKE_CURRENT_BINARY_DIR}/HaveQZeitgeist.h)
-
 kde4_add_kcfg_files(muon_installer_SRCS GENERATE_MOC config/MuonInstallerSettings.kcfgc)
 
 kde4_add_executable(muon-installer ${muon_installer_SRCS})

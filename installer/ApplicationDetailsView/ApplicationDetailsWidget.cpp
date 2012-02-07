@@ -57,14 +57,6 @@
 
 
 #include "HaveQZeitgeist.h"
-#ifdef HAVE_QZEITGEIST
-#include <QtZeitgeist/DataModel/Event>
-#include <QtZeitgeist/DataModel/TimeRange>
-#include <QtZeitgeist/Log>
-#include <QtZeitgeist/Interpretation>
-#include <QtZeitgeist/Manifestation>
-#include <QtZeitgeist/QtZeitgeist>
-#endif
 
 #include <math.h>
 
@@ -323,8 +315,13 @@ void ApplicationDetailsWidget::setApplication(Application *app)
         m_ratingCountLabel->hide();
     }
 
-    populateZeitgeistInfo();
-
+#ifdef HAVE_QZEITGEIST
+    m_usageLabel->setText(i18ncp("@label The number of times an app has been used",
+                                  "Used one time", "(Used %1 times)", app->usageCount()));
+#else
+    m_usageLabel->hide();
+#endif
+    
     QString menuPathString = app->menuPath();
     if (!menuPathString.isEmpty()) {
         m_menuPathLabel->setText(menuPathString);
@@ -509,73 +506,6 @@ void ApplicationDetailsWidget::transactionCancelled(Application *app)
         m_cancelButton->hide();
         m_actionButton->show();
     }
-}
-
-void ApplicationDetailsWidget::populateZeitgeistInfo()
-{
-#ifdef HAVE_QZEITGEIST
-    if (!m_app->package()->isInstalled()) {
-        m_usageLabel->hide();
-        return;
-    }
-
-    QString desktopFile;
-
-    foreach (const QString &desktop, m_app->package()->installedFilesList().filter(".desktop")) {
-            KService::Ptr service = KService::serviceByDesktopPath(desktop);
-            if (!service) {
-                break;
-            }
-
-            if (service->isApplication() &&
-              !service->noDisplay() &&
-              !service->exec().isEmpty())
-            {
-                desktopFile = desktop.split('/').last();
-                break;
-            }
-    }
-
-    QtZeitgeist::init();
-
-    // Prepare the Zeitgeist query
-    QtZeitgeist::DataModel::EventList eventListTemplate;
-
-    QtZeitgeist::DataModel::Event event1;
-    event1.setActor("application://" + desktopFile);
-    event1.setInterpretation(QtZeitgeist::Interpretation::Event::ZGModifyEvent);
-    event1.setManifestation(QtZeitgeist::Manifestation::Event::ZGUserActivity);
-
-    QtZeitgeist::DataModel::Event event2;
-    event2.setActor("application://" + desktopFile);
-    event2.setInterpretation(QtZeitgeist::Interpretation::Event::ZGCreateEvent);
-    event2.setManifestation(QtZeitgeist::Manifestation::Event::ZGUserActivity);
-
-    eventListTemplate << event1 << event2;
-
-    QtZeitgeist::Log log;
-    QDBusPendingReply<QtZeitgeist::DataModel::EventIdList> reply = log.findEventIds(QtZeitgeist::DataModel::TimeRange::always(),
-                                                                                    eventListTemplate,
-                                                                                    QtZeitgeist::Log::Any,
-                                                                                    0, QtZeitgeist::Log::MostRecentEvents);
-    reply.waitForFinished();
-
-    int usageCount = 0;
-    if (reply.isValid()) {
-        usageCount = reply.value().size();
-    }
-
-    if (!usageCount) {
-        // More likely there are no stats than no usage, so just hide the label and return
-        m_usageLabel->hide();
-        return;
-    }
-
-    m_usageLabel->setText(i18ncp("@label The number of times an app has been used",
-                                  "Used one time", "(Used %1 times)", usageCount));
-#else
-    m_usageLabel->hide();
-#endif // HAVE_QZEITGEIST
 }
 
 void ApplicationDetailsWidget::fetchScreenshot(QApt::ScreenshotType screenshotType)

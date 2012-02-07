@@ -36,12 +36,24 @@
 #include <LibQApt/Backend>
 #include <LibQApt/Config>
 
+//QtZeitgeist includes
+#include "HaveQZeitgeist.h"
+#ifdef HAVE_QZEITGEIST
+#include <QtZeitgeist/DataModel/Event>
+#include <QtZeitgeist/DataModel/TimeRange>
+#include <QtZeitgeist/Log>
+#include <QtZeitgeist/Interpretation>
+#include <QtZeitgeist/Manifestation>
+#include <QtZeitgeist/QtZeitgeist>
+#endif
+
 Application::Application(const QString &fileName, QApt::Backend *backend)
         : m_fileName(fileName)
         , m_backend(backend)
         , m_package(0)
         , m_isValid(false)
         , m_isTechnical(false)
+        , m_usageCount(-1)
 {
     m_data = desktopContents();
 }
@@ -51,6 +63,7 @@ Application::Application(QApt::Package *package, QApt::Backend *backend)
         , m_package(package)
         , m_isValid(true)
         , m_isTechnical(true)
+        , m_usageCount(-1)
 {
 }
 
@@ -442,4 +455,60 @@ QHash<QByteArray, QByteArray> Application::desktopContents()
     }
 
     return contents;
+}
+
+void Application::populateZeitgeistInfo()
+{
+    m_usageCount = -1;
+#ifdef HAVE_QZEITGEIST
+    QString desktopFile;
+
+    foreach (const QString &desktop, package()->installedFilesList().filter(".desktop")) {
+            KService::Ptr service = KService::serviceByDesktopPath(desktop);
+            if (!service) {
+                break;
+            }
+
+            if (service->isApplication() &&
+              !service->noDisplay() &&
+              !service->exec().isEmpty())
+            {
+                desktopFile = desktop.split('/').last();
+                break;
+            }
+    }
+
+    QtZeitgeist::init();
+
+    // Prepare the Zeitgeist query
+    QtZeitgeist::DataModel::EventList eventListTemplate;
+
+    QtZeitgeist::DataModel::Event event1;
+    event1.setActor("application://" + desktopFile);
+    event1.setInterpretation(QtZeitgeist::Interpretation::Event::ZGModifyEvent);
+    event1.setManifestation(QtZeitgeist::Manifestation::Event::ZGUserActivity);
+
+    QtZeitgeist::DataModel::Event event2;
+    event2.setActor("application://" + desktopFile);
+    event2.setInterpretation(QtZeitgeist::Interpretation::Event::ZGCreateEvent);
+    event2.setManifestation(QtZeitgeist::Manifestation::Event::ZGUserActivity);
+
+    eventListTemplate << event1 << event2;
+
+    QtZeitgeist::Log log;
+    QDBusPendingReply<QtZeitgeist::DataModel::EventIdList> reply = log.findEventIds(QtZeitgeist::DataModel::TimeRange::always(),
+                                                                                    eventListTemplate,
+                                                                                    QtZeitgeist::Log::Any,
+                                                                                    0, QtZeitgeist::Log::MostRecentEvents);
+    reply.waitForFinished();
+
+    if (reply.isValid()) {
+        m_usageCount = reply.value().size();
+    }
+#endif // HAVE_QZEITGEIST
+}
+
+int Application::usageCount() const
+{
+    return m_usageCount;
 }

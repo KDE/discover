@@ -96,7 +96,6 @@ private Q_SLOTS:
     void updateProgress(Transaction *transaction, int percentage);
     void showTransactionState(Transaction *transaction);
     void transactionCancelled(Application *app);
-    void populateZeitgeistInfo();
     void fetchScreenshot(QApt::ScreenshotType screenshotType);
     void screenshotFetched(KJob *job);
     void overlayClosed();
