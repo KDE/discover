@@ -30,6 +30,7 @@
 #include <QTimer>
 #include <qaction.h>
 #include <KActionCollection>
+#include <KAction>
 #include "ApplicationProxyModelHelper.h"
 #include "BackendsSingleton.h"
 
@@ -57,10 +58,15 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     
     view->engine()->rootContext()->setContextProperty("app", this);
     view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
-    view->setSource(QUrl("qrc:/qml/Main.qml"));
     
     QTimer::singleShot(10, this, SLOT(initObject()));
     setupActions();
+    m_undesiredActions.insert(m_undoAction);
+    m_undesiredActions.insert(m_redoAction);
+    m_undesiredActions.insert(m_revertAction);
+    m_undesiredActions.insert(m_updateAction);
+    
+    view->setSource(QUrl("qrc:/qml/Main.qml"));
     setCentralWidget(view);
 }
 
@@ -69,7 +75,9 @@ QVariantList MuonInstallerMainWindow::actions() const
     QList<QAction*> acts = actionCollection()->actions();
     QVariantList ret;
     foreach(QAction* a, acts) {
-        ret += qVariantFromValue<QObject*>(a);
+        qDebug() << "fuuuuuu" << a << m_undesiredActions;
+        if(!m_undesiredActions.contains(a))
+            ret += qVariantFromValue<QObject*>(a);
     }
     return ret;
 }

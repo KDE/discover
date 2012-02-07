@@ -56,7 +56,7 @@ Rectangle {
         
         Row {
             id: tools
-            spacing: 10
+            spacing: 5
             anchors {
                 top: parent.top
                 bottom: parent.bottom
@@ -70,6 +70,7 @@ Rectangle {
                     width: height; height: 30
                     
                     onClicked: modelData.trigger()
+                    enabled: modelData.enabled
                     
                     QIconItem {
                         anchors.margins: 5
@@ -82,6 +83,7 @@ Rectangle {
         
         Breadcrumbs {
             id: breadcrumbs
+            anchors.margins: 10
             anchors {
                 top: parent.top
                 bottom: parent.bottom

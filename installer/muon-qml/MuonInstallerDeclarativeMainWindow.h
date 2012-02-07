@@ -37,8 +37,12 @@ class MuonInstallerMainWindow : public MuonMainWindow
         
     signals:
         void actionsChanged();
-public slots:
-    void setBackend(QApt::Backend* b);
+        
+    public slots:
+        void setBackend(QApt::Backend* b);
+        
+    private:
+        QSet<QAction*> m_undesiredActions;
 };
 
 #endif // MUONINSTALLERDECLARATIVEVIEW_H
