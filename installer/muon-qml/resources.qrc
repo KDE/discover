@@ -5,5 +5,7 @@
     <file>qml/Breadcrumbs.qml</file>
     <file>qml/ApplicationsList.qml</file>
     <file>qml/ApplicationView.qml</file>
+    <file>qml/InstallApplicationButton.qml</file>
+    <file>qml/Rating.qml</file>
  </qresource>
 </RCC>
