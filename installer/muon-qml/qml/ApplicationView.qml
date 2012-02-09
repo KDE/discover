@@ -5,6 +5,7 @@ import org.kde.muon 1.0
 
 Page
 {
+    id: page
     property QtObject application
     anchors.margins: 20
     
@@ -30,8 +31,8 @@ Page
             Label { text: application.comment }
         }
         Column {
-            Label { text: "rating..." }
-            Label { text: "N reviews" }
+            Rating { rating: app.appBackend.reviewsBackend().ratingForApplication(application).rating() }
+            Label { text: i18n("%1 reviews", app.appBackend.reviewsBackend().ratingForApplication(application).ratingCount()) }
         }
         
         Image {
@@ -49,9 +50,8 @@ Page
         anchors.right: parent.right
         spacing: 10
         
-        Button {
-            text: application.isInstalled ? i18n("Remove") : i18n("Install")
-            onClicked: console.log("install "+application.name)
+        InstallApplicationButton {
+            application: page.application
         }
         
         Label {

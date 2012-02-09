@@ -4,7 +4,7 @@ import org.kde.qtextracomponents 0.1
 import org.kde.muon 1.0
 
 Page {
-    property variant category
+    property QtObject category
     
     function searchFor(text) {
         apps.search(text)
@@ -17,6 +17,10 @@ Page {
                 spacing: 10
                 QIconItem { icon: model["icon"]; width: 40; height: 40 }
                 Label { text: name }
+            }
+            Rating {
+                anchors.right: parent.right
+                rating: model["rating"]
             }
             
             MouseArea {

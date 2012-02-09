@@ -19,6 +19,7 @@ set(muon_installer_qml_SRCS
     ../ReviewsBackend/Rating.cpp
     ../ReviewsBackend/Review.cpp
     ../ReviewsBackend/ReviewsBackend.cpp
+    ../TransactionListener.cpp
     ${messagewidget_SRCS})
 
 qt4_add_resources(muon_installer_qml_SRCS resources.qrc)
