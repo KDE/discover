@@ -50,7 +50,7 @@
   * Fixed an issue where marking breakages caused by the breakage of a dependency were
     not being caught, only to fail silently when committed.
   * Fixed a serious crash on startup with the Muon Software Center when less than
-    three software origins were present in the sidebar. (MSC) (BKO: #291262)s
+    three software origins were present in the sidebar. (MSC) (BKO: #291262)
 
 1.2.2:
 ======
