@@ -42,7 +42,7 @@ public:
     ReviewsBackend(QObject *parent);
     ~ReviewsBackend();
 
-    Rating *ratingForApplication(Application *app) const;
+    Q_SCRIPTABLE Rating *ratingForApplication(Application *app) const;
 
     void setAptBackend(QApt::Backend *aptBackend);
     void fetchReviews(Application *app);

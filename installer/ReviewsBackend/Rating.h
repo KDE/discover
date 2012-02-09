@@ -21,19 +21,21 @@
 #ifndef RATING_H
 #define RATING_H
 
+#include <QtCore/QObject>
 #include <QtCore/QVariant>
 
-class Rating
+class Rating : public QObject
 {
+Q_OBJECT
 public:
     explicit Rating(const QVariantMap &data);
     ~Rating();
 
     QString packageName() const;
     QString applicationName() const;
-    quint64 ratingCount() const;
+    Q_SCRIPTABLE quint64 ratingCount() const;
     // 0.0 - 5.0 ranged rating multiplied by two and rounded for KRating*
-    int rating() const;
+    Q_SCRIPTABLE int rating() const;
 
 private:
     QString m_packageName;
