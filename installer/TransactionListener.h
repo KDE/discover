@@ -35,6 +35,7 @@ class TransactionListener : public QObject
     Q_PROPERTY(QString comment READ comment NOTIFY commentChanged)
     Q_PROPERTY(Application* application READ application WRITE setApplication NOTIFY applicationChanged)
     Q_PROPERTY(ApplicationBackend* backend READ backend WRITE setBackend)
+    Q_PROPERTY(bool isInstalling READ isInstalling NOTIFY installing)
     public:
         explicit TransactionListener(QObject* parent = 0);
         virtual ~TransactionListener();
@@ -45,6 +46,7 @@ class TransactionListener : public QObject
         Application* application() const;
         ApplicationBackend* backend() const;
         void init();
+        bool isInstalling() const;
 
     signals:
         void progressChanged();
@@ -56,7 +58,6 @@ class TransactionListener : public QObject
         void workerEvent(QApt::WorkerEvent event, Transaction *transaction);
         void updateProgress(Transaction*,int);
         void transactionCancelled(Application*);
-        void installChanged();
 
     private:
         void showTransactionState(Transaction* transaction);

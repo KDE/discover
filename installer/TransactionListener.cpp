@@ -24,14 +24,13 @@
 #include "Transaction.h"
 #include "Application.h"
 #include <KLocalizedString>
+#include <QDebug>
 
 TransactionListener::TransactionListener(QObject* parent)
     : QObject(parent)
     , m_appBackend(0)
     , m_app(0)
-{
-    connect(this, SIGNAL(installing(bool)), SLOT(installChanged()));
-}
+{}
 
 TransactionListener::~TransactionListener()
 {}
@@ -67,6 +66,18 @@ void TransactionListener::init()
             showTransactionState(transaction);
         }
     }
+}
+
+bool TransactionListener::isInstalling() const
+{
+    if(!m_appBackend)
+        return false;
+    foreach (Transaction *transaction, m_appBackend->transactions()) {
+        if (transaction->application() == m_app) {
+            return true;
+        }
+    }
+    return false;
 }
 
 void TransactionListener::workerEvent(QApt::WorkerEvent event, Transaction *transaction)
@@ -145,6 +156,7 @@ void TransactionListener::setStateComment(Transaction* transaction)
         case InstallApp:
             m_comment = i18nc("@info:status", "Installing");
             emit commentChanged();
+            emit installing(true);
             break;
         case ChangeAddons:
             m_comment = i18nc("@info:status", "Changing Addons");
@@ -176,18 +188,17 @@ void TransactionListener::transactionCancelled(Application* )
 
 void TransactionListener::setApplication(Application* app)
 {
+    disconnect(this, SIGNAL(installing(bool)),
+            m_app, SIGNAL(installChanged()));
     m_app = app;
     emit applicationChanged();
+    connect(this, SIGNAL(installing(bool)),
+            m_app, SIGNAL(installChanged()));
 }
 
 Application* TransactionListener::application() const
 {
     return m_app;
-}
-
-void TransactionListener::installChanged()
-{
-    emit m_app->installChanged();
 }
 
 ApplicationBackend* TransactionListener::backend() const
