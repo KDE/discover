@@ -112,25 +112,13 @@ void ReviewsBackend::ratingsFetched(KJob *job)
             delete rating;
             continue;
         }
-        m_ratings << rating;
+        m_ratings[rating->packageName()] = rating;
     }
 }
 
 Rating *ReviewsBackend::ratingForApplication(Application *app) const
 {
-    foreach (Rating *rating, m_ratings) {
-        if (rating->packageName() != app->package()->latin1Name()) {
-            continue;
-        }
-
-        // if (rating->applicationName() == app->untranslatedName()) {
-        //     return rating;
-        // }
-
-        return rating;
-    }
-
-    return 0;
+    return m_ratings.value(app->package()->name());
 }
 
 void ReviewsBackend::stopPendingJobs()
