@@ -232,8 +232,9 @@ void ApplicationModel::workerEvent(QApt::WorkerEvent event, Transaction *trans)
     }
 
     if (trans != 0) {
-        emit dataChanged(index(m_apps.indexOf(trans->application()), 0),
-                         index(m_apps.indexOf(trans->application()), 0));
+        int app = m_apps.indexOf(trans->application());
+        emit dataChanged(index(app, 0),
+                         index(app, 0));
     }
 }
 
