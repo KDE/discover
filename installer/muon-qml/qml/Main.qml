@@ -36,13 +36,13 @@ Rectangle {
             obj = component.createObject(pageStack, props)
             pageStack.push(obj);
             breadcrumbs.pushItem(icon, name, search)
+            console.log("opened "+name)
         } catch (e) {
             console.log("error: "+e)
             console.log("comp error: "+applicationComp.errorString())
         } finally {
             opening=false
         }
-        console.log("opened "+name)
         return obj
     }
     
