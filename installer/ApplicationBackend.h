@@ -49,7 +49,7 @@ public:
     explicit ApplicationBackend(QObject *parent=0);
     ~ApplicationBackend();
 
-    ReviewsBackend *reviewsBackend() const;
+    Q_SCRIPTABLE ReviewsBackend *reviewsBackend() const;
     QList<Application *> applicationList() const;
     QSet<QString> appOrigins() const;
     QSet<QString> installedAppOrigins() const;
