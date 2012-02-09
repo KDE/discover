@@ -24,23 +24,26 @@
 #include <LibQApt/Globals>
 #include <../../libmuon/MuonMainWindow.h>
 
+class ApplicationBackend;
 namespace QApt { class Backend; }
 
 class MuonInstallerMainWindow : public MuonMainWindow
 {
     Q_OBJECT
     Q_PROPERTY(QVariantList actions READ actions NOTIFY actionsChanged)
+    Q_PROPERTY(ApplicationBackend* appBackend READ appBackend CONSTANT)
     public:
         explicit MuonInstallerMainWindow();
-        
+
         QVariantList actions() const;
-        
+        ApplicationBackend* appBackend() const;
+
     signals:
         void actionsChanged();
-        
+
     public slots:
         void setBackend(QApt::Backend* b);
-        
+
     private:
         QSet<QAction*> m_undesiredActions;
 };

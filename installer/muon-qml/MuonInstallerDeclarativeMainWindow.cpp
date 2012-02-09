@@ -33,8 +33,12 @@
 #include <KAction>
 #include "ApplicationProxyModelHelper.h"
 #include "BackendsSingleton.h"
+#include <TransactionListener.h>
+#include <Application.h>
+#include <ReviewsBackend/ReviewsBackend.h>
+#include <ReviewsBackend/Rating.h>
 
-Q_DECLARE_METATYPE(ApplicationBackend*)
+QML_DECLARE_TYPE(ApplicationBackend)
 
 MuonInstallerMainWindow::MuonInstallerMainWindow()
     : MuonMainWindow()
@@ -49,8 +53,12 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     
     qmlRegisterType<CategoryModel>("org.kde.muon", 1, 0, "CategoryModel");
     qmlRegisterType<ApplicationProxyModelHelper>("org.kde.muon", 1, 0, "ApplicationProxyModel");
-    qmlRegisterInterface<Category>("Category");
-    qmlRegisterInterface<ApplicationBackend>("ApplicationBackend");
+    qmlRegisterType<TransactionListener>("org.kde.muon", 1, 0, "TransactionListener");
+    qmlRegisterType<ReviewsBackend>();
+    qmlRegisterType<Rating>();
+    qmlRegisterType<Application>();
+    qmlRegisterType<Category>();
+    qmlRegisterType<ApplicationBackend>();
     
     connect(actionCollection(), SIGNAL(inserted(QAction*)), SIGNAL(actionsChanged()));
     connect(actionCollection(), SIGNAL(removed(QAction*)), SIGNAL(actionsChanged()));
@@ -84,4 +92,9 @@ QVariantList MuonInstallerMainWindow::actions() const
 void MuonInstallerMainWindow::setBackend(QApt::Backend* b)
 {
     BackendsSingleton::self()->setBackend(b);
+}
+
+ApplicationBackend* MuonInstallerMainWindow::appBackend() const
+{
+    return BackendsSingleton::self()->applicationBackend();
 }
