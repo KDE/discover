@@ -22,6 +22,7 @@
 #include "TransactionListener.h"
 #include "ApplicationBackend.h"
 #include "Transaction.h"
+#include "Application.h"
 #include <KLocalizedString>
 
 TransactionListener::TransactionListener(QObject* parent)
@@ -29,7 +30,11 @@ TransactionListener::TransactionListener(QObject* parent)
     , m_appBackend(0)
     , m_app(0)
 {
+    connect(this, SIGNAL(installing(bool)), SLOT(installChanged()));
 }
+
+TransactionListener::~TransactionListener()
+{}
 
 void TransactionListener::setBackend(ApplicationBackend* appBackend)
 {
@@ -172,4 +177,21 @@ void TransactionListener::transactionCancelled(Application* )
 void TransactionListener::setApplication(Application* app)
 {
     m_app = app;
+    emit applicationChanged();
 }
+
+Application* TransactionListener::application() const
+{
+    return m_app;
+}
+
+void TransactionListener::installChanged()
+{
+    emit m_app->installChanged();
+}
+
+ApplicationBackend* TransactionListener::backend() const
+{
+    return m_appBackend;
+}
+
