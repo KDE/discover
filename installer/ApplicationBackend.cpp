@@ -56,6 +56,7 @@ void ApplicationBackend::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
     m_backend->setUndoRedoCacheSize(1);
+    m_reviewsBackend->setAptBackend(m_backend);
     init();
 
     connect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
@@ -68,7 +69,6 @@ void ApplicationBackend::setBackend(QApt::Backend *backend)
 
 void ApplicationBackend::init()
 {
-    m_reviewsBackend->setAptBackend(m_backend);
 
     QDir appDir("/usr/share/app-install/desktop/");
     QStringList fileList = appDir.entryList(QDir::Files);
