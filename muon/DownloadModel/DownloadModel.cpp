@@ -30,6 +30,10 @@ DownloadModel::DownloadModel(QObject *parent)
 
 QVariant DownloadModel::data(const QModelIndex& index, int role) const
 {
+    if (!index.isValid() || index.row() > m_packageList.size() || index.row() < 0) {
+        return QVariant();
+    }
+
     PackageDetails details = m_packageList.at(index.row());
     switch (role) {
     case NameRole:
