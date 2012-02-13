@@ -512,3 +512,8 @@ int Application::usageCount() const
 {
     return m_usageCount;
 }
+
+void Application::clearPackage()
+{
+    m_package=0;
+}

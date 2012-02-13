@@ -79,11 +79,6 @@ void ApplicationBackend::init()
         tempList << app;
     }
 
-    foreach (QApt::Package *package, m_backend->availablePackages()) {
-        Application *app = new Application(package, m_backend);
-        tempList << app;
-    }
-
     foreach (Application *app, tempList) {
         if (app->isValid()) {
             QApt::Package *pkg = app->package();
@@ -182,7 +177,7 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
         m_workerState.second = 0;
 
         if (m_queue.isEmpty()) {
-            reload();
+            refreshBackend();
         } else {
             runNextTransaction();
         }
@@ -429,4 +424,11 @@ void ApplicationBackend::installApplication(Application *app)
 void ApplicationBackend::removeApplication(Application *app)
 {
     addTransaction(new Transaction(app, RemoveApp));
+}
+
+void ApplicationBackend::refreshBackend()
+{
+    foreach(Application* app, m_appList)
+        app->clearPackage();
+    m_backend->reloadCache();
 }
