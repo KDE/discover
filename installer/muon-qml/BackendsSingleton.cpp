@@ -33,8 +33,8 @@ BackendsSingleton* BackendsSingleton::self()
 }
 
 BackendsSingleton::BackendsSingleton()
-    : m_backend(0)
-    , m_appsModel(0)
+    : m_appsModel(0)
+    , m_backend(0)
     , m_applicationBackend(0)
 {}
 
