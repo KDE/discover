@@ -34,3 +34,5 @@ target_link_libraries(muon-installer-qml muonprivate
                                      ${QZEITGEIST_LIBRARY}
                                      ${QJSON_LIBRARIES}
                                      ${QT_QTDECLARATIVE_LIBRARY})
+
+install(TARGETS muon-installer-qml ${INSTALL_TARGETS_DEFAULT_ARGS} )
