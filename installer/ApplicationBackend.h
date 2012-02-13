@@ -61,7 +61,7 @@ public:
     void markTransaction(Transaction *transaction);
     void addTransaction(Transaction *transaction);
     void clearLaunchList();
-    
+
 public slots:
     //helper functions
     void installApplication(Application *app, const QHash<QApt::Package *, QApt::Package::State> &addons);
@@ -70,6 +70,8 @@ public slots:
     void cancelTransaction(Application *app);
 
 private:
+    void refreshBackend();
+
     QApt::Backend *m_backend;
     ReviewsBackend *m_reviewsBackend;
 
