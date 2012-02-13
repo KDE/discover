@@ -31,6 +31,27 @@
     in a 300% speed increase for marking multiple packages.(MPM, MUM)
   * Normalize all signal/slot declarations for a (micro)optimization
 
+1.2.3:
+======
+-Bugfixes:
+  * Don't listen to reviewFetched signals during a cache reload. We'll crash if we
+    try to handle them. (BKO: #283728) (MSC)
+  * Fix several crashes related to hitting the "Revert All Changes" button
+    (BKO: #281623) (MPM, MUM)
+  * Fix a bug where newly-added origins would not appear in the Muon Package Manager
+    until the next time it was started. (MPM)
+  * Add a watch on /var/lib/apt/lists to fix the Muon Notifier not notifying of
+    upgrades in certain situations. (BKO: #285435)
+  * Fixed setting modifications for the Muon Update Notifier not being applied
+    until a reboot or re-login.
+  * Discard pending changelog fetch jobs before cache reloads. This prevents changelog
+    jobs finishing when the QApt::Backend is in a state where package pointers are
+    invalid. (BKO: #270920)
+  * Fixed an issue where marking breakages caused by the breakage of a dependency were
+    not being caught, only to fail silently when committed.
+  * Fixed a serious crash on startup with the Muon Software Center when less than
+    three software origins were present in the sidebar. (MSC) (BKO: #291262)
+
 1.2.2:
 ======
 - Bugfixes:

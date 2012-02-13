@@ -216,13 +216,15 @@ void ApplicationWindow::populateViews()
         originNames.move(index, 0); // Move to front of the list
 
         if (originNames.contains("Canonical")) {
-        int index = originNames.indexOf("Canonical");
-        originNames.move(index, 1); // Move to 2nd spot
+            int index = originNames.indexOf("Canonical");
+            if (originNames.size() >= 2)
+                originNames.move(index, 1); // Move to 2nd spot
         }
 
         if (originNames.contains("LP-PPA-app-review-board")) {
             int index = originNames.indexOf("LP-PPA-app-review-board");
-            originNames.move(index, 2); // Move to third spot
+            if (originNames.size() >= 3)
+                originNames.move(index, 2); // Move to third spot
         }
     }
 
@@ -300,13 +302,15 @@ void ApplicationWindow::populateViews()
         instOriginNames.move(index, 0); // Move to front of the list
 
         if (instOriginNames.contains("Canonical")) {
-        int index = instOriginNames.indexOf("Canonical");
-        instOriginNames.move(index, 1); // Move to 2nd spot
+            int index = instOriginNames.indexOf("Canonical");
+            if (originNames.size() >= 2)
+                instOriginNames.move(index, 1); // Move to 2nd spot
         }
 
         if (instOriginNames.contains("LP-PPA-app-review-board")) {
             int index = instOriginNames.indexOf("LP-PPA-app-review-board");
-            originNames.move(index, 2); // Move to third spot
+            if (originNames.size() >= 3)
+                originNames.move(index, 2); // Move to third spot
         }
     }
 

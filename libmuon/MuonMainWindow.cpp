@@ -230,7 +230,7 @@ void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args
         bool fromWorker = args["FromWorker"].toBool();
         KMessageBox::detailedError(this, text, details, title);
         if (!fromWorker) {
-            KApplication::instance()->quit();
+            exit(-1);
         }
         break;
     }
