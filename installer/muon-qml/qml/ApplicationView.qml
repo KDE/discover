@@ -106,5 +106,17 @@ Page
             application: page.application
             backend: app.appBackend.reviewsBackend()
         }
+        
+        ScrollBar {
+                orientation: Qt.Vertical
+                flickableItem: reviewsView
+                stepSize: 40
+                scrollButtonInterval: 50
+                anchors {
+                        top: reviewsView.top
+                        right: reviewsView.right
+                        bottom: reviewsView.bottom
+                }
+        }
     }
 }
