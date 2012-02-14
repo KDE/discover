@@ -71,6 +71,7 @@ private:
 
 public Q_SLOTS:
     void updateTransactionProgress(Transaction *transaction, int progress);
+    void allDataChanged();
 
 private Q_SLOTS:
     void workerEvent(QApt::WorkerEvent event, Transaction *trans);

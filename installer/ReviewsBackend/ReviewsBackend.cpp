@@ -114,6 +114,7 @@ void ReviewsBackend::ratingsFetched(KJob *job)
         }
         m_ratings[rating->packageName()] = rating;
     }
+    emit ratingsReady();
 }
 
 Rating *ReviewsBackend::ratingForApplication(Application *app) const

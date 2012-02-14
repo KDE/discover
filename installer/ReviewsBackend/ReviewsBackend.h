@@ -69,6 +69,7 @@ private Q_SLOTS:
 
 Q_SIGNALS:
     void reviewsReady(Application *app, QList<Review *>);
+    void ratingsReady();
 };
 
 #endif

@@ -67,6 +67,7 @@ void ApplicationModel::setBackend(ApplicationBackend* backend)
                 this, SLOT(workerEvent(QApt::WorkerEvent,Transaction*)));
         disconnect(m_appBackend, SIGNAL(transactionCancelled(Application*)),
                 this, SLOT(transactionCancelled(Application*)));
+        disconnect(m_appBackend->reviewsBackend(), SIGNAL(ratingsReady()), this, SLOT(allDataChanged()));
     }
     
     m_appBackend = backend;
@@ -78,6 +79,7 @@ void ApplicationModel::setBackend(ApplicationBackend* backend)
             this, SLOT(workerEvent(QApt::WorkerEvent,Transaction*)));
     connect(m_appBackend, SIGNAL(transactionCancelled(Application*)),
             this, SLOT(transactionCancelled(Application*)));
+    connect(m_appBackend->reviewsBackend(), SIGNAL(ratingsReady()), SLOT(allDataChanged()));
 }
 
 ApplicationBackend* ApplicationModel::backend() const
@@ -271,6 +273,11 @@ QList<Application*> ApplicationModel::applications() const
 void ApplicationModel::reloadApplications()
 {
     setApplications(m_appBackend->applicationList());
+}
+
+void ApplicationModel::allDataChanged()
+{
+    emit dataChanged(index(0,0), index(rowCount(), 0));
 }
 
 #include "ApplicationModel.moc"
