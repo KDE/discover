@@ -28,7 +28,7 @@
 #include <LibQApt/Backend>
 #include <QDebug>
 #include <QTimer>
-#include <qaction.h>
+#include <QDesktopServices>
 #include <KActionCollection>
 #include <KAction>
 #include "ApplicationProxyModelHelper.h"
@@ -99,4 +99,9 @@ void MuonInstallerMainWindow::setBackend(QApt::Backend* b)
 ApplicationBackend* MuonInstallerMainWindow::appBackend() const
 {
     return BackendsSingleton::self()->applicationBackend();
+}
+
+bool MuonInstallerMainWindow::openUrl(const QUrl& url)
+{
+    return QDesktopServices::openUrl(url);
 }

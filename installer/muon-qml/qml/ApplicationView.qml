@@ -64,7 +64,7 @@ Page
         Button {
             text: i18n("Homepage")
             enabled: application.homepage
-            onClicked: console.log("open "+application.homepage)
+            onClicked: app.openUrl(application.homepage)
         }
         
         Label {

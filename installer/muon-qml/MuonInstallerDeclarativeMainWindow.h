@@ -37,6 +37,7 @@ class MuonInstallerMainWindow : public MuonMainWindow
 
         QVariantList actions() const;
         ApplicationBackend* appBackend() const;
+        Q_SCRIPTABLE bool openUrl(const QUrl& url);
 
     signals:
         void actionsChanged();
