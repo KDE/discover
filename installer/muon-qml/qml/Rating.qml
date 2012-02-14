@@ -17,7 +17,7 @@ Row {
     property int max: 5
     property real rating: 2
     
-    spacing: 10
+    spacing: 2
     Repeater {
         model: view.max
         delegate: del
