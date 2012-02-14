@@ -4,11 +4,14 @@ import org.kde.qtextracomponents 0.1
 import org.kde.muon 1.0
 
 Page {
-    property variant category
+    property QtObject category
     
     function searchFor(text) {
         console.log("search!! "+text)
-        openApplicationList("kalgebra", "hola", category, text)
+        if(category)
+            openApplicationList(category.icon, i18n("Search in '%1'...", category.name), category, text)
+        else
+            openApplicationList("go-home", i18n("Search..."), category, text)
     }
 
     Component {
