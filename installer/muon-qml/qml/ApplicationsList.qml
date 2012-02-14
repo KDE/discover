@@ -5,6 +5,7 @@ import org.kde.muon 1.0
 
 Page {
     property QtObject category
+    property alias sortRole: apps.sortRole
     
     function searchFor(text) {
         apps.search(text)
@@ -37,10 +38,13 @@ Page {
         
         model: ApplicationProxyModel {
             id: apps
+            sortRole: 37
+            dynamicSortFilter: true
             
             Component.onCompleted: {
                 if(category)
                     setFiltersFromCategory(category)
+                sort(0, Qt.DescendingOrder)
             }
         }
     }
