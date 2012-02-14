@@ -47,6 +47,7 @@ class MuonInstallerMainWindow : public MuonMainWindow
 
     private:
         QSet<QAction*> m_undesiredActions;
+    QDeclarativeView* m_view;
 };
 
 #endif // MUONINSTALLERDECLARATIVEVIEW_H

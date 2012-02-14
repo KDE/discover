@@ -44,10 +44,10 @@ QML_DECLARE_TYPE(ApplicationBackend)
 MuonInstallerMainWindow::MuonInstallerMainWindow()
     : MuonMainWindow()
 {
-    QDeclarativeView* view = new QDeclarativeView(this);
+    m_view = new QDeclarativeView(this);
     
     KDeclarative kdeclarative;
-    kdeclarative.setDeclarativeEngine(view->engine());
+    kdeclarative.setDeclarativeEngine(m_view->engine());
     kdeclarative.initialize();
     //binds things like kconfig and icons
     kdeclarative.setupBindings();
@@ -66,8 +66,8 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     connect(actionCollection(), SIGNAL(removed(QAction*)), SIGNAL(actionsChanged()));
     connect(this, SIGNAL(backendReady(QApt::Backend*)), SLOT(setBackend(QApt::Backend*)));
     
-    view->engine()->rootContext()->setContextProperty("app", this);
-    view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+    m_view->engine()->rootContext()->setContextProperty("app", this);
+    m_view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
     
     QTimer::singleShot(10, this, SLOT(initObject()));
     setupActions();
@@ -76,8 +76,8 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     m_undesiredActions.insert(m_revertAction);
     m_undesiredActions.insert(m_updateAction);
     
-    view->setSource(QUrl("qrc:/qml/Main.qml"));
-    setCentralWidget(view);
+    m_view->setSource(QUrl("qrc:/qml/Main.qml"));
+    setCentralWidget(m_view);
 }
 
 QVariantList MuonInstallerMainWindow::actions() const
@@ -94,6 +94,7 @@ QVariantList MuonInstallerMainWindow::actions() const
 void MuonInstallerMainWindow::setBackend(QApt::Backend* b)
 {
     BackendsSingleton::self()->setBackend(b);
+    appBackend(); //here we force the retrieval of the appbackend to get ratings
 }
 
 ApplicationBackend* MuonInstallerMainWindow::appBackend() const
