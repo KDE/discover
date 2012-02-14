@@ -246,22 +246,21 @@ Application *ApplicationProxyModel::applicationAt(const QModelIndex &index) cons
 
 bool ApplicationProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
 {
-    ApplicationModel *model = static_cast<ApplicationModel *>(sourceModel());
-    QApt::Package *leftPackage = model->applicationAt(left)->package();
-    QApt::Package *rightPackage = model->applicationAt(right)->package();
-
     if (m_sortByRelevancy) {
+        ApplicationModel *model = static_cast<ApplicationModel *>(sourceModel());
+        QApt::Package *leftPackage = model->applicationAt(left)->package();
+        QApt::Package *rightPackage = model->applicationAt(right)->package();
+
         // This is expensive for very large datasets. It takes about 3 seconds with 30,000 packages
         // The order in m_packages is based on relevancy when returned by m_backend->search()
         // Use this order to determine less than
-        if (m_packages.indexOf(leftPackage) > m_packages.indexOf(rightPackage)) {
-            return false;
-        } else {
-            return true;
-        }
+        return m_packages.indexOf(leftPackage) > m_packages.indexOf(rightPackage);
     }
-    QString leftString = left.data(ApplicationModel::NameRole).toString();
-    QString rightString = right.data(ApplicationModel::NameRole).toString();
-
-    return (QString::localeAwareCompare(leftString, rightString) < 0);
+    QVariant leftValue = left.data(sortRole());
+    QVariant rightValue = right.data(sortRole());
+    
+    if(leftValue.canConvert(QVariant::String) && rightValue.canConvert(QVariant::String))
+        return QString::localeAwareCompare(leftValue.toString(), rightValue.toString()) < 0;
+    else
+        return QSortFilterProxyModel::lessThan(left, right);
 }

@@ -33,9 +33,10 @@ class ApplicationModel: public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(ApplicationBackend* backend READ backend WRITE setBackend)
+    Q_ENUMS(Roles)
 public:
     //FIXME: remove all these "UserRole", only the first is necessary!
-    enum {
+    enum Roles {
         NameRole = Qt::UserRole,
         IconRole = Qt::UserRole + 1,
         CommentRole = Qt::UserRole + 2,
