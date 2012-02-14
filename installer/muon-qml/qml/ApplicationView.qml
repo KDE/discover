@@ -45,6 +45,7 @@ Page
     }
     
     Column {
+        id: info
         anchors.top: header.bottom
         anchors.left: parent.left
         anchors.right: parent.right
@@ -78,5 +79,32 @@ Page
         }
         
         Label { text: "Reviews" }
+    }
+    
+    ListView {
+        id: reviewsView
+        clip: true
+        anchors.top: info.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        spacing: 5
+        delegate: ListItem {
+//             Column {
+                Label {
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                    }
+                    text: display
+                    wrapMode: Text.WordWrap
+                }
+//             }
+        }
+        
+        model: ReviewsModel {
+            application: page.application
+            backend: app.appBackend.reviewsBackend()
+        }
     }
 }

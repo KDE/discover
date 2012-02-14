@@ -1,0 +1,35 @@
+#ifndef REVIEWSMODEL_H
+#define REVIEWSMODEL_H
+
+#include <QModelIndex>
+
+class Review;
+class Application;
+class ReviewsBackend;
+class ReviewsModel : public QAbstractListModel
+{
+    Q_OBJECT
+    Q_PROPERTY(ReviewsBackend* backend READ backend WRITE setBackend)
+    Q_PROPERTY(Application* application READ application WRITE setApplication)
+    public:
+        explicit ReviewsModel(QObject* parent = 0);
+        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
+        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
+
+        void setBackend(ReviewsBackend* backend);
+        ReviewsBackend* backend() const;
+        void setApplication(Application* app);
+        Application* application() const;
+
+    public slots:
+        void addReviews(Application* app, const QList<Review*>& reviews);
+
+    private:
+        void restartFetching();
+
+        Application* m_app;
+        ReviewsBackend* m_backend;
+        QList<Review*> m_reviews;
+};
+
+#endif // REVIEWSMODEL_H

@@ -5,6 +5,7 @@ set(muon_installer_qml_SRCS
     MuonInstallerDeclarativeMainWindow.cpp
     ApplicationProxyModelHelper.cpp
     BackendsSingleton.cpp
+    ReviewsModel.cpp
     ../Application.cpp
     ../ApplicationBackend.cpp
     ../ApplicationLauncher.cpp
