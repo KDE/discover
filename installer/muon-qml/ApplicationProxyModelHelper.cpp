@@ -28,4 +28,8 @@ ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
     setBackend(BackendsSingleton::self()->backend());
 }
 
+void ApplicationProxyModelHelper::sort(int column, Qt::SortOrder order)
+{
+    QSortFilterProxyModel::sort(column, order);
+}
 
