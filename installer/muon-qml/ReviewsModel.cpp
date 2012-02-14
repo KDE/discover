@@ -92,7 +92,7 @@ void ReviewsModel::restartFetching()
 
 void ReviewsModel::addReviews(Application* app, const QList<Review*>& reviews)
 {
-    if(app!=m_app)
+    if(app!=m_app || reviews.isEmpty())
         return;
     qDebug() << "reviews arrived..." << reviews.size();
     
