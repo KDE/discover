@@ -7,7 +7,7 @@ Page
 {
     id: page
     property QtObject application
-    anchors.margins: 20
+    anchors.margins: 10
     
     Row {
         id: header

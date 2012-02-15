@@ -4,6 +4,7 @@
     <file>qml/CategoryPage.qml</file>
     <file>qml/ApplicationsListPage.qml</file>
     <file>qml/ApplicationPage.qml</file>
+    <file>qml/ApplicationsList.qml</file>
     <file>qml/Breadcrumbs.qml</file>
     <file>qml/InstallApplicationButton.qml</file>
     <file>qml/Rating.qml</file>

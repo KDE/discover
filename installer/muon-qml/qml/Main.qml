@@ -39,7 +39,7 @@ Rectangle {
             console.log("opened "+name)
         } catch (e) {
             console.log("error: "+e)
-            console.log("comp error: "+applicationComp.errorString())
+            console.log("comp error: "+component.errorString())
         } finally {
             opening=false
         }
