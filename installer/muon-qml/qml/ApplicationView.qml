@@ -34,14 +34,37 @@ Page
             Rating { rating: app.appBackend.reviewsBackend().ratingForApplication(application).rating() }
             Label { text: i18n("%1 reviews", app.appBackend.reviewsBackend().ratingForApplication(application).ratingCount()) }
         }
+    }
         
-        Image {
-            id: screenshot
-            width: 100
-            height: 100
-            
-            source: application.screenshotUrl(1)
-            asynchronous: true
+    Image {
+        id: screenshot
+        width: 200
+        anchors.top: parent.top
+        anchors.right: parent.right
+        
+        asynchronous: true
+        fillMode: Image.PreserveAspectFit
+        source: application.screenshotUrl(state == "thumbnail" ? 0 : 1)
+        state: "thumbnail"
+        
+        states: [
+            State { name: "thumbnail"
+                PropertyChanges { target: screenshot; height: 100 }
+            },
+            State { name: "full"
+                PropertyChanges { target: screenshot; height: parent.height }
+                PropertyChanges { target: screenshot; width: parent.width }
+                PropertyChanges { target: screenshot; z: 1 }
+            }
+        ]
+        
+        transitions: Transition {
+            NumberAnimation { properties: "height,width"; easing.type: Easing.InOutBack; duration: 500 }
+        }
+        
+        MouseArea {
+            anchors.fill: screenshot
+            onClicked: { screenshot.state= screenshot.state == "thumbnail" ? "full" : "thumbnail" }
         }
     }
     
@@ -64,6 +87,7 @@ Page
         
         Button {
             text: i18n("Homepage")
+            iconSource: "go-home"
             enabled: application.homepage
             onClicked: app.openUrl(application.homepage)
         }
