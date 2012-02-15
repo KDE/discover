@@ -40,7 +40,8 @@ Page
             width: 100
             height: 100
             
-            source: application.screenshotUrl()
+            source: application.screenshotUrl(1)
+            asynchronous: true
         }
     }
     
