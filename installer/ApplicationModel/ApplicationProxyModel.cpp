@@ -259,7 +259,7 @@ bool ApplicationProxyModel::lessThan(const QModelIndex &left, const QModelIndex 
     QVariant leftValue = left.data(sortRole());
     QVariant rightValue = right.data(sortRole());
     
-    if(leftValue.canConvert(QVariant::String) && rightValue.canConvert(QVariant::String))
+    if(leftValue.type()==QVariant::String && rightValue.type()==QVariant::String)
         return QString::localeAwareCompare(leftValue.toString(), rightValue.toString()) < 0;
     else
         return QSortFilterProxyModel::lessThan(left, right);
