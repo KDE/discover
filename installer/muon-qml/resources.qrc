@@ -1,10 +1,10 @@
 <!DOCTYPE RCC><RCC version="1.0">
  <qresource>
     <file>qml/Main.qml</file>
-    <file>qml/CategoryView.qml</file>
+    <file>qml/CategoryPage.qml</file>
+    <file>qml/ApplicationsListPage.qml</file>
+    <file>qml/ApplicationPage.qml</file>
     <file>qml/Breadcrumbs.qml</file>
-    <file>qml/ApplicationsList.qml</file>
-    <file>qml/ApplicationView.qml</file>
     <file>qml/InstallApplicationButton.qml</file>
     <file>qml/Rating.qml</file>
  </qresource>

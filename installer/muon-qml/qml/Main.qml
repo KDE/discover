@@ -6,9 +6,9 @@ Rectangle {
     width: 800
     height: 600
     color: "lightgrey"
-    property Component categoryComp: Qt.createComponent("qrc:/qml/CategoryView.qml")
-    property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsList.qml")
-    property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationView.qml")
+    property Component categoryComp: Qt.createComponent("qrc:/qml/CategoryPage.qml")
+    property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
+    property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
     property bool opening: false
     
     function openApplicationList(icon, name, cat, search) {
@@ -110,7 +110,7 @@ Rectangle {
         width: parent.width
         anchors.bottom: parent.bottom
         anchors.top: toolbar.bottom
-        initialPage: CategoryView {}
+        initialPage: CategoryPage {}
         
         toolBar: toolbar
     }
