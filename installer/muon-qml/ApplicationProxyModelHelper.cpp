@@ -20,6 +20,7 @@
 #include "ApplicationProxyModelHelper.h"
 #include <ApplicationModel/ApplicationModel.h>
 #include "BackendsSingleton.h"
+#include <QDebug>
 
 ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
     : ApplicationProxyModel(parent)
@@ -28,8 +29,8 @@ ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
     setBackend(BackendsSingleton::self()->backend());
 }
 
-void ApplicationProxyModelHelper::sort(int column, Qt::SortOrder order)
+void ApplicationProxyModelHelper::sortModel(int column, int order)
 {
-    QSortFilterProxyModel::sort(column, order);
+    QSortFilterProxyModel::sort(column, (Qt::SortOrder) order);
 }
 

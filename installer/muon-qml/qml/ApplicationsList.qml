@@ -18,6 +18,7 @@ Page {
                 spacing: 10
                 QIconItem { icon: model["icon"]; width: 40; height: 40 }
                 Label { text: name }
+                Label { text: rating }
             }
             Rating {
                 anchors.right: parent.right
@@ -44,7 +45,7 @@ Page {
             Component.onCompleted: {
                 if(category)
                     setFiltersFromCategory(category)
-                sort(0, Qt.DescendingOrder)
+                sortModel(0, 1)
             }
         }
     }
