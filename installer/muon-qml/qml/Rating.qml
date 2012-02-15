@@ -9,17 +9,17 @@ Row {
         QIconItem {
             height: 20; width: 20
             icon: "rating"
-            opacity: index>rating ? 0.4 : 1
+            opacity: (max/5*index)>rating ? 0.4 : 1
         }
     }
     
     id: view
-    property int max: 5
+    property int max: 10
     property real rating: 2
     
     spacing: 2
     Repeater {
-        model: view.max
+        model: 5
         delegate: del
     }
 }
