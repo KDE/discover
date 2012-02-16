@@ -74,13 +74,13 @@ Rectangle {
             Repeater {
                 model: app.actions
                 delegate: ToolButton {
-                    width: height; height: 30
+                width: height; height: parent.height
                     
                     onClicked: modelData.trigger()
                     enabled: modelData.enabled
                     
                     QIconItem {
-                        anchors.margins: 5
+                        anchors.margins: 10
                         anchors.fill: parent
                         icon: modelData.icon
                     }
@@ -88,7 +88,7 @@ Rectangle {
             }
             
             ToolButton {
-                width: height; height: 30
+                width: height; height: parent.height
                 iconSource: "applications-other"
                 onClicked: openInstalledList()
             }
