@@ -7,6 +7,7 @@ ListView
 {
     property QtObject category
     property alias sortRole: apps.sortRole
+    property int elemHeight: 40
 
     function searchFor(text) {
         apps.search(text)
@@ -14,14 +15,20 @@ ListView
     Component {
         id: delegate
         ListItem {
+            property real contHeight: elemHeight*0.7
+            height: elemHeight
             Row {
                 spacing: 10
-                QIconItem { icon: model["icon"]; width: 40; height: 40 }
+                QIconItem {
+                    icon: model["icon"]; width: contHeight; height: contHeight
+                    anchors.verticalCenter: parent.verticalCenter
+                }
                 Label { text: name }
             }
             Rating {
                 anchors.right: parent.right
                 rating: model["rating"]
+                height: contHeight*.7
             }
             
             MouseArea {
