@@ -8,6 +8,7 @@ ListView
     property QtObject category
     property alias sortRole: apps.sortRole
     property int elemHeight: 40
+    property alias stateFilter: apps.stateFilter
 
     function searchFor(text) {
         apps.search(text)

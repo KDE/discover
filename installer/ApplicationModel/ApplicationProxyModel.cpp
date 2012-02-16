@@ -264,3 +264,8 @@ bool ApplicationProxyModel::lessThan(const QModelIndex &left, const QModelIndex 
     else
         return QSortFilterProxyModel::lessThan(left, right);
 }
+
+QApt::Package::State ApplicationProxyModel::stateFilter() const
+{
+    return m_stateFilter;
+}

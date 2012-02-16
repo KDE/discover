@@ -26,7 +26,9 @@
 class ApplicationProxyModelHelper : public ApplicationProxyModel
 {
     Q_OBJECT
+    Q_PROPERTY(int stateFilter READ stateFilter WRITE setStateFilter_hack)
     public:
+        void setStateFilter_hack(int state);
         explicit ApplicationProxyModelHelper(QObject* parent = 0);
         
         Q_SCRIPTABLE void sortModel(int column, int order);

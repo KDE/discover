@@ -12,6 +12,12 @@ Rectangle {
     property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
     property bool opening: false
     
+    function openInstalledList() {
+        while(breadcrumbs.count>1) { pageStack.pop(); breadcrumbs.popItem() }
+        var obj = openPage("applications-other", i18n("Installed Applications"), applicationListComp, {}, true)
+        obj.stateFilter = (1<<8)
+    }
+    
     function openApplicationList(icon, name, cat, search) {
         obj=openPage(icon, name, applicationListComp, { category: cat }, true)
         if(search)
@@ -79,6 +85,12 @@ Rectangle {
                         icon: modelData.icon
                     }
                 }
+            }
+            
+            ToolButton {
+                width: height; height: 30
+                iconSource: "applications-other"
+                onClicked: openInstalledList()
             }
         }
         

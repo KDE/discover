@@ -34,3 +34,7 @@ void ApplicationProxyModelHelper::sortModel(int column, int order)
     QSortFilterProxyModel::sort(column, (Qt::SortOrder) order);
 }
 
+void ApplicationProxyModelHelper::setStateFilter_hack(int state)
+{
+    setStateFilter((QApt::Package::State) state);
+}

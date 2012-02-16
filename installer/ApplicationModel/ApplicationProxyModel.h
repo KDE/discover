@@ -45,6 +45,7 @@ public:
     void setBackend(QApt::Backend *backend);
     Q_SCRIPTABLE void search(const QString &text);
     void setStateFilter(QApt::Package::State state);
+    QApt::Package::State stateFilter() const;
     void setOriginFilter(const QString &origin);
     Q_SCRIPTABLE void setFiltersFromCategory(Category *category);
     void setShouldShowTechnical(bool show);

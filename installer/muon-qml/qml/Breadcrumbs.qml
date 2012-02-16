@@ -5,6 +5,7 @@ Item {
     id: bread
     signal clicked(int idx)
     property alias search: searchInput.text
+    property alias count: items.count
     
     function currentItem() { return items.get(items.count-1).display }
     
