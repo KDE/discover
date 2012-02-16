@@ -3,6 +3,7 @@ import org.kde.plasma.components 0.1
 import org.kde.qtextracomponents 0.1
 
 Rectangle {
+    id: window
     width: 800
     height: 600
     color: "lightgrey"
@@ -99,9 +100,17 @@ Rectangle {
                 if(search)
                     pageStack.currentPage.searchFor(search)
             }
-            
-            Component.onCompleted: pushItem("go-home", i18n("Get Software"), true)
         }
+    }
+    
+    onStateChanged: { 
+        console.log("lalala")
+        if(state=="loaded")
+            breadcrumbs.pushItem("go-home", i18n("Get Software"), true)
+    }
+    
+    CategoryPage {
+        id: mainPage
     }
     
     PageStack
@@ -110,7 +119,7 @@ Rectangle {
         width: parent.width
         anchors.bottom: parent.bottom
         anchors.top: toolbar.bottom
-        initialPage: CategoryPage {}
+        initialPage: window.state=="loaded" ? mainPage : null
         
         toolBar: toolbar
     }

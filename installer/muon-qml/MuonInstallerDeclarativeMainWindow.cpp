@@ -29,6 +29,7 @@
 #include <QDebug>
 #include <QTimer>
 #include <QDesktopServices>
+#include <QGraphicsObject>
 #include <KActionCollection>
 #include <KAction>
 #include "ApplicationProxyModelHelper.h"
@@ -75,8 +76,9 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     m_undesiredActions.insert(m_redoAction);
     m_undesiredActions.insert(m_revertAction);
     m_undesiredActions.insert(m_updateAction);
-    
     m_view->setSource(QUrl("qrc:/qml/Main.qml"));
+    m_view->rootObject()->setProperty("state", "loading");
+    
     setCentralWidget(m_view);
 }
 
@@ -95,6 +97,7 @@ void MuonInstallerMainWindow::setBackend(QApt::Backend* b)
 {
     BackendsSingleton::self()->setBackend(b);
     appBackend(); //here we force the retrieval of the appbackend to get ratings
+    m_view->rootObject()->setProperty("state", "loaded");
 }
 
 ApplicationBackend* MuonInstallerMainWindow::appBackend() const
