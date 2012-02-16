@@ -6,6 +6,7 @@ set(muon_installer_qml_SRCS
     ApplicationProxyModelHelper.cpp
     BackendsSingleton.cpp
     ReviewsModel.cpp
+    ApplicationUpdates.cpp
     ../Application.cpp
     ../ApplicationBackend.cpp
     ../ApplicationLauncher.cpp

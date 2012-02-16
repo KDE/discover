@@ -32,6 +32,7 @@ class ApplicationProxyModelHelper : public ApplicationProxyModel
         explicit ApplicationProxyModelHelper(QObject* parent = 0);
         
         Q_SCRIPTABLE void sortModel(int column, int order);
+        Q_SCRIPTABLE Application* applicationAt(int row);
 };
 
 #endif // APPLICATIONPROXYMODELHELPER_H

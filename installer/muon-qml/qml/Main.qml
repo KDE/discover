@@ -114,7 +114,7 @@ Rectangle {
         
         Breadcrumbs {
             id: breadcrumbs
-            anchors.margins: 10
+            clip: true
             anchors {
                 top: parent.top
                 bottom: parent.bottom

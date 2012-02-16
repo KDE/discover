@@ -38,3 +38,8 @@ void ApplicationProxyModelHelper::setStateFilter_hack(int state)
 {
     setStateFilter((QApt::Package::State) state);
 }
+
+Application* ApplicationProxyModelHelper::applicationAt(int row)
+{
+    return ApplicationProxyModel::applicationAt(index(row, 0));
+}

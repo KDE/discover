@@ -36,6 +36,7 @@ BackendsSingleton::BackendsSingleton()
     : m_appsModel(0)
     , m_backend(0)
     , m_applicationBackend(0)
+    , m_mainWindow(0)
 {}
 
 ApplicationBackend* BackendsSingleton::applicationBackend()
@@ -57,13 +58,19 @@ ApplicationModel* BackendsSingleton::appsModel()
     return m_appsModel;
 }
 
-void BackendsSingleton::setBackend(QApt::Backend* b)
+void BackendsSingleton::initialize(QApt::Backend* b, MuonInstallerMainWindow* main)
 {
     m_backend = b;
+    m_mainWindow = main;
 }
 
 QApt::Backend* BackendsSingleton::backend()
 {
     return m_backend;
+}
+
+MuonInstallerMainWindow* BackendsSingleton::mainWindow() const
+{
+    return m_mainWindow;
 }
 

@@ -38,7 +38,8 @@ class MuonInstallerMainWindow : public MuonMainWindow
         QVariantList actions() const;
         ApplicationBackend* appBackend() const;
         Q_SCRIPTABLE bool openUrl(const QUrl& url);
-
+        virtual void errorOccurred(QApt::ErrorCode code, const QVariantMap& args);
+        
     signals:
         void actionsChanged();
 
@@ -47,7 +48,7 @@ class MuonInstallerMainWindow : public MuonMainWindow
 
     private:
         QSet<QAction*> m_undesiredActions;
-    QDeclarativeView* m_view;
+        QDeclarativeView* m_view;
 };
 
 #endif // MUONINSTALLERDECLARATIVEVIEW_H

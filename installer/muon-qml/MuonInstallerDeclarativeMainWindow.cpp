@@ -35,6 +35,7 @@
 #include "ApplicationProxyModelHelper.h"
 #include "BackendsSingleton.h"
 #include "ReviewsModel.h"
+#include "ApplicationUpdates.h"
 #include <TransactionListener.h>
 #include <Application.h>
 #include <ReviewsBackend/ReviewsBackend.h>
@@ -57,6 +58,7 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     qmlRegisterType<ApplicationProxyModelHelper>("org.kde.muon", 1, 0, "ApplicationProxyModel");
     qmlRegisterType<TransactionListener>("org.kde.muon", 1, 0, "TransactionListener");
     qmlRegisterType<ReviewsModel>("org.kde.muon", 1, 0, "ReviewsModel");
+    qmlRegisterType<ApplicationUpdates>("org.kde.muon", 1, 0, "ApplicationUpdates");
     qmlRegisterType<ReviewsBackend>();
     qmlRegisterType<Rating>();
     qmlRegisterType<Application>();
@@ -95,7 +97,7 @@ QVariantList MuonInstallerMainWindow::actions() const
 
 void MuonInstallerMainWindow::setBackend(QApt::Backend* b)
 {
-    BackendsSingleton::self()->setBackend(b);
+    BackendsSingleton::self()->initialize(b, this);
     appBackend(); //here we force the retrieval of the appbackend to get ratings
     m_view->rootObject()->setProperty("state", "loaded");
 }
@@ -108,4 +110,9 @@ ApplicationBackend* MuonInstallerMainWindow::appBackend() const
 bool MuonInstallerMainWindow::openUrl(const QUrl& url)
 {
     return QDesktopServices::openUrl(url);
+}
+
+void MuonInstallerMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap& args)
+{
+    MuonMainWindow::errorOccurred(code, args);
 }
