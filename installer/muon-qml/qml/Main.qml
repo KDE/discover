@@ -10,10 +10,22 @@ Rectangle {
     property Component categoryComp: Qt.createComponent("qrc:/qml/CategoryPage.qml")
     property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
     property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
+    property Component updatesComp: Qt.createComponent("qrc:/qml/UpdatesPage.qml")
     property bool opening: false
     
+    function clearOpened() {
+        while(breadcrumbs.count>1) {
+            pageStack.pop(); breadcrumbs.popItem()
+        }
+    }
+    
+    function openUpdatePage() {
+        clearOpened()
+        openPage("view-refresh", i18n("Updates..."), updatesComp, {}, true)
+    }
+    
     function openInstalledList() {
-        while(breadcrumbs.count>1) { pageStack.pop(); breadcrumbs.popItem() }
+        clearOpened()
         var obj = openPage("applications-other", i18n("Installed Applications"), applicationListComp, {}, true)
         obj.stateFilter = (1<<8)
     }
@@ -91,6 +103,12 @@ Rectangle {
                 width: height; height: parent.height
                 iconSource: "applications-other"
                 onClicked: openInstalledList()
+            }
+            
+            ToolButton {
+                width: height; height: parent.height
+                iconSource: "view-refresh"
+                onClicked: openUpdatePage()
             }
         }
         

@@ -286,7 +286,7 @@ void UpdaterWidget::selectionChanged(const QItemSelection &selected,
     }
 
     Application *app = m_updateModel->itemFromIndex(indexes.first())->app();
-    app ? package = app->package() : package = 0;
+    package = app ? app->package() : 0;
 
     emit packageChanged(package);
 }

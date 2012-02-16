@@ -8,5 +8,6 @@
     <file>qml/Breadcrumbs.qml</file>
     <file>qml/InstallApplicationButton.qml</file>
     <file>qml/Rating.qml</file>
+    <file>qml/UpdatesPage.qml</file>
  </qresource>
 </RCC>
