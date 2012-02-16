@@ -104,7 +104,6 @@ Rectangle {
     }
     
     onStateChanged: { 
-        console.log("lalala")
         if(state=="loaded")
             breadcrumbs.pushItem("go-home", i18n("Get Software"), true)
     }
