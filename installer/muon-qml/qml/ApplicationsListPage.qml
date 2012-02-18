@@ -6,7 +6,7 @@ Page {
     property alias stateFilter: apps.stateFilter
     
     function searchFor(text) {
-        apps.search(text)
+        apps.searchFor(text)
     }
     
     ApplicationsList {
