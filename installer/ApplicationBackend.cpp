@@ -43,6 +43,7 @@ ApplicationBackend::ApplicationBackend(QObject *parent)
     : QObject(parent)
     , m_backend(0)
     , m_reviewsBackend(new ReviewsBackend(this))
+    , m_isReloading(false)
     , m_currentTransaction(0)
 {
     m_pkgBlacklist << "kdebase-runtime" << "kdepim-runtime" << "kdelibs5-plugins" << "kdelibs5-data";
@@ -69,7 +70,6 @@ void ApplicationBackend::setBackend(QApt::Backend *backend)
 
 void ApplicationBackend::init()
 {
-
     QDir appDir("/usr/share/app-install/desktop/");
     QStringList fileList = appDir.entryList(QDir::Files);
 
@@ -111,17 +111,22 @@ void ApplicationBackend::init()
 void ApplicationBackend::reload()
 {
     emit reloadStarted();
-    qDeleteAll(m_appList);
-    m_appList.clear();
+    m_isReloading = true;
+    foreach(Application* app, m_appList)
+        app->clearPackage();
     qDeleteAll(m_queue);
     m_queue.clear();
     m_reviewsBackend->stopPendingJobs();
     m_backend->reloadCache();
     m_reviewsBackend->clearReviewCache();
 
-    init();
-
     emit reloadFinished();
+    m_isReloading = false;
+}
+
+bool ApplicationBackend::isReloading() const
+{
+    return m_isReloading;
 }
 
 void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
@@ -177,7 +182,7 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
         m_workerState.second = 0;
 
         if (m_queue.isEmpty()) {
-            refreshBackend();
+            reload();
         } else {
             runNextTransaction();
         }
@@ -424,11 +429,4 @@ void ApplicationBackend::installApplication(Application *app)
 void ApplicationBackend::removeApplication(Application *app)
 {
     addTransaction(new Transaction(app, RemoveApp));
-}
-
-void ApplicationBackend::refreshBackend()
-{
-    foreach(Application* app, m_appList)
-        app->clearPackage();
-    m_backend->reloadCache();
 }

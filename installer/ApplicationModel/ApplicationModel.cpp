@@ -33,7 +33,7 @@
 #include "ReviewsBackend/Rating.h"
 #include "ReviewsBackend/ReviewsBackend.h"
 #include "Transaction.h"
-#include <QDebug>
+#include <KDebug>
 
 ApplicationModel::ApplicationModel(QObject *parent)
     : QAbstractListModel(parent)
@@ -68,11 +68,13 @@ void ApplicationModel::setBackend(ApplicationBackend* backend)
         disconnect(m_appBackend, SIGNAL(transactionCancelled(Application*)),
                 this, SLOT(transactionCancelled(Application*)));
         disconnect(m_appBackend->reviewsBackend(), SIGNAL(ratingsReady()), this, SLOT(allDataChanged()));
+        disconnect(m_appBackend, SIGNAL(reloadStarted()), this, SLOT(reloadStarted()));
+        disconnect(m_appBackend, SIGNAL(reloadFinished()), this, SLOT(reloadFinished()));
     }
-    
+
     m_appBackend = backend;
     reloadApplications();
-    
+
     connect(m_appBackend, SIGNAL(progress(Transaction*,int)),
                 this, SLOT(updateTransactionProgress(Transaction*,int)));
     connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent,Transaction*)),
@@ -80,6 +82,24 @@ void ApplicationModel::setBackend(ApplicationBackend* backend)
     connect(m_appBackend, SIGNAL(transactionCancelled(Application*)),
             this, SLOT(transactionCancelled(Application*)));
     connect(m_appBackend->reviewsBackend(), SIGNAL(ratingsReady()), SLOT(allDataChanged()));
+    connect(m_appBackend, SIGNAL(reloadStarted()), this, SLOT(reloadStarted()));
+    connect(m_appBackend, SIGNAL(reloadFinished()), this, SLOT(reloadFinished()));
+}
+
+void ApplicationModel::reloadStarted()
+{
+    m_appsTemp = m_apps;
+    clear();
+}
+
+void ApplicationModel::reloadFinished()
+{
+    for (Application *app : m_appsTemp)
+    {
+        app->clearPackage();
+    }
+
+    setApplications(m_appsTemp);
 }
 
 ApplicationBackend* ApplicationModel::backend() const
@@ -94,8 +114,8 @@ int ApplicationModel::rowCount(const QModelIndex & /*parent*/) const
 
 QVariant ApplicationModel::data(const QModelIndex &index, int role) const
 {
-    if (!index.isValid()) {
-        return false;
+    if (!index.isValid() || m_appBackend->isReloading()) {
+        return QVariant();
     }
     switch (role) {
         case NameRole:
@@ -199,7 +219,7 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role) const
 void ApplicationModel::setApplications(const QList<Application*> &list)
 {
     clear();
-    
+
     m_apps.reserve(list.size());
     beginInsertRows(QModelIndex(), m_apps.count(), m_apps.count());
     m_apps = list;

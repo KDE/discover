@@ -50,6 +50,7 @@ void ApplicationProxyModel::search(const QString &searchText)
     // 1-character searches are painfully slow. >= 2 chars are fine, though
     m_packages.clear();
     if (searchText.size() > 1) {
+        m_lastSearch = searchText;
         m_packages = m_backend->search(searchText);
         m_sortByRelevancy = true;
     } else {
@@ -57,6 +58,11 @@ void ApplicationProxyModel::search(const QString &searchText)
     }
     invalidate();
     emit invalidated();
+}
+
+void ApplicationProxyModel::refreshSearch()
+{
+    search(m_lastSearch);
 }
 
 void ApplicationProxyModel::setStateFilter(QApt::Package::State state)

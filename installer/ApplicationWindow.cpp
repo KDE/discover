@@ -106,10 +106,8 @@ void ApplicationWindow::initObject()
             this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
     connect(m_appBackend, SIGNAL(appBackendReady()),
             this, SLOT(populateViews()));
-    connect(m_appBackend, SIGNAL(reloadStarted()),
-            this, SLOT(clearViews()));
-    connect(m_appBackend, SIGNAL(reloadFinished()),
-            this, SLOT(populateViews()));
+   // connect(m_appBackend, SIGNAL(reloadFinished()),
+   //         this, SLOT(populateViews()));
     connect(m_appBackend, SIGNAL(reloadFinished()),
             this, SLOT(showLauncherMessage()));
 
@@ -253,6 +251,7 @@ void ApplicationWindow::populateViews()
     m_viewHash[installedItem->index()] = 0;
 
     parentItem = availableItem;
+    kDebug() << originNames.size();
     foreach(const QString &originName, originNames) {
         QString originLabel = m_backend->originLabel(originName);
         QStandardItem *viewItem = new QStandardItem;
@@ -425,6 +424,8 @@ void ApplicationWindow::runSourcesEditor()
 void ApplicationWindow::sourcesEditorFinished(int reload)
 {
     m_appBackend->reload();
+    clearViews();
+    populateViews();
     MuonMainWindow::sourcesEditorFinished(reload);
 }
 

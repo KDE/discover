@@ -75,6 +75,8 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
             m_appBackend, SLOT(removeApplication(Application*)));
     connect(m_delegate, SIGNAL(cancelButtonClicked(Application*)),
             m_appBackend, SLOT(cancelTransaction(Application*)));
+    connect(m_appBackend, SIGNAL(reloadFinished()),
+            m_proxyModel, SLOT(refreshSearch()));
 }
 
 ApplicationViewWidget::~ApplicationViewWidget()
@@ -89,15 +91,6 @@ void ApplicationViewWidget::setBackend(QApt::Backend *backend)
     m_treeView->sortByColumn(0, Qt::AscendingOrder);
 
     m_crumb->setAssociatedView(this);
-}
-
-void ApplicationViewWidget::reload()
-{
-    m_appModel->reloadApplications();
-
-    m_proxyModel->setSourceModel(m_appModel);
-    m_proxyModel->invalidate();
-    m_treeView->sortByColumn(0, Qt::AscendingOrder);
 }
 
 void ApplicationViewWidget::setTitle(const QString &title)
