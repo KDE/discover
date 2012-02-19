@@ -65,6 +65,7 @@ Application::Application(QApt::Package *package, QApt::Backend *backend)
         , m_isTechnical(true)
         , m_usageCount(-1)
 {
+    m_packageName = m_package->name();
 }
 
 Application::~Application()
@@ -120,9 +121,16 @@ QString Application::comment()
 QApt::Package *Application::package()
 {
     if (!m_package) {
-        QLatin1String packageName(getField("X-AppInstall-Package").data());
-        if (m_backend) {
-            m_package = m_backend->package(packageName);
+        QString packageName;
+        if (m_isTechnical) {
+            if (m_backend) {
+                m_package = m_backend->package(m_packageName);
+            }
+        } else {
+            packageName = getField("X-AppInstall-Package").data();
+            if (m_backend) {
+                m_package = m_backend->package(packageName);
+            }
         }
     }
 

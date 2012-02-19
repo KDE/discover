@@ -79,6 +79,11 @@ void ApplicationBackend::init()
         tempList << app;
     }
 
+    foreach (QApt::Package *package, m_backend->availablePackages()) {
+        Application *app = new Application(package, m_backend);
+        tempList << app;
+    }
+
     foreach (Application *app, tempList) {
         if (app->isValid()) {
             QApt::Package *pkg = app->package();

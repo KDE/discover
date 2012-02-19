@@ -96,11 +96,12 @@ signals:
 private:
     void populateZeitgeistInfo();
     QVector<QPair<QString, QString> > locateApplication(const QString &_relPath, const QString &menuId) const;
-    
+
     QString m_fileName;
     QHash<QByteArray, QByteArray> m_data;
     QApt::Backend *m_backend;
     QApt::Package *m_package;
+    QString m_packageName;
 
     bool m_isValid;
     bool m_isTechnical;
