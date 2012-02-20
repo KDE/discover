@@ -123,7 +123,7 @@ Page
             
             function usefulnessToString(favorable, total)
             {
-                return total==0 ? "" : i18n("%1 out of %2 people found this review useful", favorable, total)
+                return total==0 ? "" : i18n("<em>%1 out of %2 people found this review useful</em>", favorable, total)
                 
             }
             
@@ -132,7 +132,7 @@ Page
                 anchors.right: parent.right
                 
                 id: content
-                text: i18n("<b>%1</b> by %2<p/>%3<br/><em>%4</em>", summary, reviewer,
+                text: i18n("<b>%1</b> by %2<p/>%3<br/>%4", summary, reviewer,
                            display, usefulnessToString(usefulnessFavorable, usefulnessTotal))
                 wrapMode: Text.WordWrap
             }
