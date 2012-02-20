@@ -119,7 +119,7 @@ void ReviewsBackend::ratingsFetched(KJob *job)
 
 Rating *ReviewsBackend::ratingForApplication(Application *app) const
 {
-    return m_ratings.value(app->package()->name());
+    return m_ratings.value(app->packageName());
 }
 
 void ReviewsBackend::stopPendingJobs()
