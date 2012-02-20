@@ -32,7 +32,7 @@ Rectangle {
                 height: parent.height
                 icon: "download"
                 text: i18n("Get software")
-//                 onClicked: Navigation.openInstalledList()
+                onClicked: Navigation.clearOpened()
             }
             MuonToolButton {
                 height: parent.height
