@@ -60,16 +60,29 @@ Rectangle {
                 onClicked: Navigation.openUpdatePage()
             }
         }
+    }
+    
+    onStateChanged: { 
+        if(state=="loaded")
+            breadcrumbs.pushItem("go-home", i18n("Get Software"), true)
+    }
+    
+    CategoryPage {
+        id: mainPage
+    }
+    
+    ToolBar {
+        id: breadcrumbsBar
+        height: 40
+        anchors {
+            top: toolbar.bottom
+            right: parent.right
+            left: parent.left
+        }
         
         Breadcrumbs {
             id: breadcrumbs
-            clip: true
-            anchors {
-                top: parent.top
-                bottom: parent.bottom
-                right: parent.right
-                left: tools.right
-            }
+            anchors.fill: parent
             onClicked: {
                 var pos = idx;
                 while(pos--) { pageStack.pop(); breadcrumbs.popItem() }
@@ -82,21 +95,12 @@ Rectangle {
         }
     }
     
-    onStateChanged: { 
-        if(state=="loaded")
-            breadcrumbs.pushItem("go-home", i18n("Get Software"), true)
-    }
-    
-    CategoryPage {
-        id: mainPage
-    }
-    
     PageStack
     {
         id: pageStack
         width: parent.width
         anchors.bottom: parent.bottom
-        anchors.top: toolbar.bottom
+        anchors.top: breadcrumbsBar.bottom
         initialPage: window.state=="loaded" ? mainPage : null
         
         toolBar: toolbar
