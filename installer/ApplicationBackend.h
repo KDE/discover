@@ -58,6 +58,7 @@ public:
     QStringList launchList() const;
 
     bool confirmRemoval(Transaction *transaction);
+    bool isReloading() const;
     void markTransaction(Transaction *transaction);
     void addTransaction(Transaction *transaction);
     void clearLaunchList();
@@ -70,10 +71,9 @@ public slots:
     void cancelTransaction(Application *app);
 
 private:
-    void refreshBackend();
-
     QApt::Backend *m_backend;
     ReviewsBackend *m_reviewsBackend;
+    bool m_isReloading;
 
     QList<Application *> m_appList;
     QSet<QString> m_originList;

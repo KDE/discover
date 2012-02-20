@@ -68,6 +68,7 @@ private:
     
     ApplicationBackend *m_appBackend;
     QList<Application *> m_apps;
+    QList<Application *> m_appsTemp;
     QHash<Transaction *, int> m_runningTransactions;
 
 public Q_SLOTS:
@@ -77,6 +78,8 @@ public Q_SLOTS:
 private Q_SLOTS:
     void workerEvent(QApt::WorkerEvent event, Transaction *trans);
     void transactionCancelled(Application *app);
+    void reloadStarted();
+    void reloadFinished();
 
 Q_SIGNALS:
    void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight);

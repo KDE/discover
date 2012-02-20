@@ -59,6 +59,7 @@ protected:
 private:
     QApt::Backend *m_backend;
 
+    QString m_lastSearch;
     QApt::Package::State m_stateFilter;
     QString m_originFilter;
     QApt::PackageList m_packages;
@@ -68,6 +69,9 @@ private:
 
     bool m_sortByRelevancy;
     bool m_showTechnical;
+
+public Q_SLOTS:
+    void refreshSearch();
 
 Q_SIGNALS:
     void invalidated();

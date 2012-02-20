@@ -71,7 +71,6 @@ private Q_SLOTS:
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
-    void reload();
 
     void setTitle(const QString &title);
     void setIcon(const QIcon &icon);
