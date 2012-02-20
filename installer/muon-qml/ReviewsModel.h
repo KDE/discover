@@ -12,6 +12,15 @@ class ReviewsModel : public QAbstractListModel
     Q_PROPERTY(ReviewsBackend* backend READ backend WRITE setBackend)
     Q_PROPERTY(Application* application READ application WRITE setApplication)
     public:
+        enum Roles {
+            ShouldShow=Qt::UserRole+1,
+            Reviewer,
+            CreationDate,
+            UsefulnessTotal,
+            UsefulnessFavorable,
+            Rating,
+            Summary
+        };
         explicit ReviewsModel(QObject* parent = 0);
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
         virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
@@ -33,3 +42,4 @@ class ReviewsModel : public QAbstractListModel
 };
 
 #endif // REVIEWSMODEL_H
+

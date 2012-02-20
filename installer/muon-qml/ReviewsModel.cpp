@@ -29,6 +29,13 @@ ReviewsModel::ReviewsModel(QObject* parent)
     , m_backend(0)
 {
     QHash<int, QByteArray> roles = roleNames();
+    roles.insert(ShouldShow, "shouldShow");
+    roles.insert(Reviewer, "reviewer");
+    roles.insert(CreationDate, "date");
+    roles.insert(UsefulnessTotal, "usefulnessTotal");
+    roles.insert(UsefulnessFavorable, "usefulnessFavorable");
+    roles.insert(Rating, "rating");
+    roles.insert(Summary, "summary");
     setRoleNames(roles);
 }
 
@@ -40,6 +47,20 @@ QVariant ReviewsModel::data(const QModelIndex& index, int role) const
     switch(role) {
         case Qt::DisplayRole:
             return m_reviews.at(index.row())->reviewText();
+        case ShouldShow:
+            return m_reviews.at(index.row())->shouldShow();
+        case Reviewer:
+            return m_reviews.at(index.row())->reviewer();
+        case CreationDate:
+            return m_reviews.at(index.row())->creationDate();
+        case UsefulnessTotal:
+            return m_reviews.at(index.row())->usefulnessTotal();
+        case UsefulnessFavorable:
+            return m_reviews.at(index.row())->usefulnessFavorable();
+        case Rating:
+            return m_reviews.at(index.row())->rating();
+        case Summary:
+            return m_reviews.at(index.row())->summary();
     }
     return QVariant();
 }

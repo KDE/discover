@@ -103,7 +103,10 @@ Page
             )
         }
         
-        Label { text: "Reviews" }
+        Label {
+            text: "<b>Reviews:</b>" 
+            visible: reviewsView.count>0
+        }
     }
     
     ListView {
@@ -115,16 +118,31 @@ Page
         anchors.bottom: parent.bottom
         spacing: 5
         delegate: ListItem {
-//             Column {
-                Label {
-                    anchors {
-                        left: parent.left
-                        right: parent.right
-                    }
-                    text: display
-                    wrapMode: Text.WordWrap
-                }
-//             }
+            visible: shouldShow
+            height: content.height+10
+            
+            function usefulnessToString(favorable, total)
+            {
+                return total==0 ? "" : i18n("%1 out of %2 people found this review useful", favorable, total)
+                
+            }
+            
+            Label {
+                anchors.left: parent.left
+                anchors.right: parent.right
+                
+                id: content
+                text: i18n("<b>%1</b> by %2<p/>%3<br/><em>%4</em>", summary, reviewer,
+                           display, usefulnessToString(usefulnessFavorable, usefulnessTotal))
+                wrapMode: Text.WordWrap
+            }
+            
+            Rating {
+                anchors.top: parent.top
+                anchors.right: parent.right
+                rating: rating
+                height: content.font.pixelSize
+            }
         }
         
         model: ReviewsModel {
