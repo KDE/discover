@@ -107,7 +107,7 @@ Rectangle {
             
             ToolButton {
                 width: height; height: parent.height
-                iconSource: "view-refresh"
+                iconSource: "system-software-update"
                 onClicked: openUpdatePage()
             }
         }
