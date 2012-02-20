@@ -9,5 +9,6 @@
     <file>qml/InstallApplicationButton.qml</file>
     <file>qml/Rating.qml</file>
     <file>qml/UpdatesPage.qml</file>
+    <file>qml/navigation.js</file>
  </qresource>
 </RCC>

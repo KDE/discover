@@ -2,6 +2,7 @@ import QtQuick 1.1
 import org.kde.plasma.components 0.1
 import org.kde.qtextracomponents 0.1
 import org.kde.muon 1.0
+import "navigation.js" as Navigation
 
 Page {
     property QtObject category
@@ -9,9 +10,9 @@ Page {
     function searchFor(text) {
         console.log("search!! "+text)
         if(category)
-            openApplicationList(category.icon, i18n("Search in '%1'...", category.name), category, text)
+            Navigation.openApplicationList(category.icon, i18n("Search in '%1'...", category.name), category, text)
         else
-            openApplicationList("go-home", i18n("Search..."), category, text)
+            Navigation.openApplicationList("go-home", i18n("Search..."), category, text)
     }
 
     Component {
@@ -28,10 +29,10 @@ Page {
                     var cat = cats.categoryForIndex(index)
                     switch(categoryType) {
                         case CategoryModel.CategoryType:
-                            openApplicationList(category.icon, category.name, cat, "")
+                            Navigation.openApplicationList(category.icon, category.name, cat, "")
                             break;
                         case CategoryModel.SubCatType:
-                            openCategory(category.icon, category.name, cat)
+                            Navigation.openCategory(category.icon, category.name, cat)
                             break;
                     }
                 }
