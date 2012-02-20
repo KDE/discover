@@ -6,7 +6,6 @@ import "navigation.js" as Navigation
 Rectangle {
     id: window
     width: 800
-    height: 600
     color: "lightgrey"
     property Component categoryComp: Qt.createComponent("qrc:/qml/CategoryPage.qml")
     property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
@@ -17,7 +16,7 @@ Rectangle {
     ToolBar {
         id:toolbar
         z: 10
-        height: 60
+        height: 50
         width: parent.width
         anchors.top: parent.top
         clip: true
@@ -29,20 +28,22 @@ Rectangle {
                 bottom: parent.bottom
                 left: parent.left
             }
-            ToolButton {
-                width: height; height: parent.height
-                iconSource: "download"
+            MuonToolButton {
+                height: parent.height
+                icon: "download"
+                text: i18n("Get software")
 //                 onClicked: Navigation.openInstalledList()
             }
-            ToolButton {
-                width: height; height: parent.height
-                iconSource: "applications-other"
+            MuonToolButton {
+                height: parent.height
+                icon: "applications-other"
+                text: i18n("Installed")
                 onClicked: Navigation.openInstalledList()
             }
-            
-            ToolButton {
-                width: height; height: parent.height
-                iconSource: "system-software-update"
+            MuonToolButton {
+                height: parent.height
+                icon: "system-software-update"
+                text: i18n("Updates")
                 onClicked: Navigation.openUpdatePage()
             }
         }
@@ -56,19 +57,15 @@ Rectangle {
             }
             
             Repeater {
-                model: ["quit", "software_properties"]
+                model: ["software_properties", "quit"]
                 
-                delegate: ToolButton {
+                delegate: MuonToolButton {
                     property QtObject action: app.getAction(modelData)
-                    width: height; height: parent.height
+                    height: parent.height
                     
                     onClicked: action.trigger()
                     enabled: action.enabled
-                    QIconItem {
-                        anchors.margins: 10
-                        anchors.fill: parent
-                        icon: action.icon
-                    }
+                    icon: action.icon
                 }
             }
         }
