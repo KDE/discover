@@ -118,20 +118,15 @@ QString Application::comment()
     return i18n(comment.toUtf8());
 }
 
+QString Application::packageName() const
+{
+    return m_isTechnical ? m_packageName : getField("X-AppInstall-Package");
+}
+
 QApt::Package *Application::package()
 {
-    if (!m_package) {
-        QString packageName;
-        if (m_isTechnical) {
-            if (m_backend) {
-                m_package = m_backend->package(m_packageName);
-            }
-        } else {
-            packageName = getField("X-AppInstall-Package").data();
-            if (m_backend) {
-                m_package = m_backend->package(packageName);
-            }
-        }
+    if (!m_package && m_backend) {
+        m_package = m_backend->package(packageName());
     }
 
     // Packages removed from archive will remain in app-install-data until the

@@ -75,6 +75,7 @@ public:
     bool isValid() const;
     bool isTechnical() const;
     int usageCount() const;
+    QString packageName() const;
 
     Q_SCRIPTABLE QByteArray getField(const QByteArray &field) const;
     Q_SCRIPTABLE QHash<QByteArray, QByteArray> desktopContents();
