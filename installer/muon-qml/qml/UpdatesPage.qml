@@ -8,17 +8,23 @@ Page
     state: "show"
     ApplicationUpdates {
         id: updates
+        onProgress: { progress.value=percentage; message.text=text }
+        onDownloadMessage: { message.text=msg }
+        onInstallMessage: { message.text=msg }
     }
     Column {
         spacing: 10
         visible: page.state=="updating"
         anchors.fill: parent
-        anchors.margins: 10
         ProgressBar {
+            id: progress
             anchors.right: parent.right
             anchors.left: parent.left
+            minimumValue: 0
+            maximumValue: 100
         }
         Label {
+            id: message
             anchors.right: parent.right
             anchors.left: parent.left
         }
@@ -49,10 +55,10 @@ Page
             //TODO: Untested, I don't have anything to update now
             var toupgrade = new Array;
             for(var i=0; i<apps.count; i++) {
-                toupgrade.append(apps.applicationAt(i))
+                toupgrade.push(apps.model.applicationAt(i))
             }
-            page.state = "updating"
             updates.updateApplications(toupgrade);
+            page.state = "updating"
         }
     }
     

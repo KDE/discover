@@ -29,18 +29,15 @@ class ApplicationUpdates : public QObject
     Q_OBJECT
     public:
         explicit ApplicationUpdates(QObject* parent = 0);
-        Q_SCRIPTABLE void updateApplications(const QList<Application*>& apps);
+        Q_SCRIPTABLE void updateApplications(const QList< QObject* >& apps);
         
     signals:
-        void updateProgress(int percentage);
+        void progress(const QString& txt, int percentage);
+        void downloadMessage(int code, const QString& msg);
+        void installMessage(const QString& msg);
         
     public slots:
         void errorOccurred(QApt::ErrorCode code, const QVariantMap& args );
-        
-    signals:
-        void progress(const QString& txt,int);
-        void downloadMessage(int code, const QString& message);
-        void installMessage(const QString& message);
 };
 
 #endif // APPLICATIONUPDATES_H

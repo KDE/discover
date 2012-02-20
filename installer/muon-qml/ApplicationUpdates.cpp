@@ -34,10 +34,10 @@ ApplicationUpdates::ApplicationUpdates(QObject* parent): QObject(parent)
     connect(BackendsSingleton::self()->backend(), SIGNAL(debInstallMessage(QString)), SIGNAL(installMessage(QString)));
 }
 
-void ApplicationUpdates::updateApplications(const QList< Application* >& apps)
+void ApplicationUpdates::updateApplications(const QList< QObject* >& apps)
 {
-    foreach(Application* app, apps) {
-        app->package()->setInstall();
+    foreach(QObject* app, apps) {
+        qobject_cast<Application*>(app)->package()->setInstall();
     }
     BackendsSingleton::self()->backend()->commitChanges();
 }
