@@ -17,37 +17,23 @@ Rectangle {
     ToolBar {
         id:toolbar
         z: 10
-        height: 40
+        height: 60
         width: parent.width
         anchors.top: parent.top
         clip: true
         
         Row {
-            id: tools
             spacing: 5
             anchors {
                 top: parent.top
                 bottom: parent.bottom
                 left: parent.left
-                topMargin: 5
             }
-            
-            Repeater {
-                model: app.actions
-                delegate: ToolButton {
+            ToolButton {
                 width: height; height: parent.height
-                    
-                    onClicked: modelData.trigger()
-                    enabled: modelData.enabled
-                    
-                    QIconItem {
-                        anchors.margins: 10
-                        anchors.fill: parent
-                        icon: modelData.icon
-                    }
-                }
+                iconSource: "download"
+//                 onClicked: Navigation.openInstalledList()
             }
-            
             ToolButton {
                 width: height; height: parent.height
                 iconSource: "applications-other"
@@ -58,6 +44,32 @@ Rectangle {
                 width: height; height: parent.height
                 iconSource: "system-software-update"
                 onClicked: Navigation.openUpdatePage()
+            }
+        }
+        
+        Row {
+            spacing: 5
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+                right: parent.right
+            }
+            
+            Repeater {
+                model: ["quit", "software_properties"]
+                
+                delegate: ToolButton {
+                    property QtObject action: app.getAction(modelData)
+                    width: height; height: parent.height
+                    
+                    onClicked: action.trigger()
+                    enabled: action.enabled
+                    QIconItem {
+                        anchors.margins: 10
+                        anchors.fill: parent
+                        icon: action.icon
+                    }
+                }
             }
         }
     }

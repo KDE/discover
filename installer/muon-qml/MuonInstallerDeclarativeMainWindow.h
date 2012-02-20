@@ -30,24 +30,19 @@ namespace QApt { class Backend; }
 class MuonInstallerMainWindow : public MuonMainWindow
 {
     Q_OBJECT
-    Q_PROPERTY(QVariantList actions READ actions NOTIFY actionsChanged)
     Q_PROPERTY(ApplicationBackend* appBackend READ appBackend CONSTANT)
     public:
         explicit MuonInstallerMainWindow();
 
-        QVariantList actions() const;
         ApplicationBackend* appBackend() const;
         Q_SCRIPTABLE bool openUrl(const QUrl& url);
         virtual void errorOccurred(QApt::ErrorCode code, const QVariantMap& args);
-        
-    signals:
-        void actionsChanged();
+        Q_SCRIPTABLE QAction* getAction(const QString& name);
 
     public slots:
         void setBackend(QApt::Backend* b);
 
     private:
-        QSet<QAction*> m_undesiredActions;
         QDeclarativeView* m_view;
 };
 

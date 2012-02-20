@@ -65,8 +65,6 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     qmlRegisterType<Category>();
     qmlRegisterType<ApplicationBackend>();
     
-    connect(actionCollection(), SIGNAL(inserted(QAction*)), SIGNAL(actionsChanged()));
-    connect(actionCollection(), SIGNAL(removed(QAction*)), SIGNAL(actionsChanged()));
     connect(this, SIGNAL(backendReady(QApt::Backend*)), SLOT(setBackend(QApt::Backend*)));
     
     m_view->engine()->rootContext()->setContextProperty("app", this);
@@ -74,25 +72,10 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     
     QTimer::singleShot(10, this, SLOT(initObject()));
     setupActions();
-    m_undesiredActions.insert(m_undoAction);
-    m_undesiredActions.insert(m_redoAction);
-    m_undesiredActions.insert(m_revertAction);
-    m_undesiredActions.insert(m_updateAction);
     m_view->setSource(QUrl("qrc:/qml/Main.qml"));
     m_view->rootObject()->setProperty("state", "loading");
     
     setCentralWidget(m_view);
-}
-
-QVariantList MuonInstallerMainWindow::actions() const
-{
-    QList<QAction*> acts = actionCollection()->actions();
-    QVariantList ret;
-    foreach(QAction* a, acts) {
-        if(!m_undesiredActions.contains(a))
-            ret += qVariantFromValue<QObject*>(a);
-    }
-    return ret;
 }
 
 void MuonInstallerMainWindow::setBackend(QApt::Backend* b)
@@ -115,4 +98,9 @@ bool MuonInstallerMainWindow::openUrl(const QUrl& url)
 void MuonInstallerMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap& args)
 {
     MuonMainWindow::errorOccurred(code, args);
+}
+
+QAction* MuonInstallerMainWindow::getAction(const QString& name)
+{
+    return actionCollection()->action(name);
 }
