@@ -171,9 +171,9 @@ Page
                 stepSize: 40
                 scrollButtonInterval: 50
                 anchors {
-                        top: reviewsView.top
-                        right: reviewsView.right
-                        bottom: reviewsView.bottom
+                    top: reviewsView.top
+                    right: reviewsView.right
+                    bottom: reviewsView.bottom
                 }
         }
     }
