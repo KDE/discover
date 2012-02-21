@@ -52,8 +52,8 @@ Page
                 PropertyChanges { target: screenshot; height: 100 }
             },
             State { name: "full"
-                PropertyChanges { target: screenshot; height: parent.height }
-                PropertyChanges { target: screenshot; width: parent.width }
+                PropertyChanges { target: screenshot; height: Math.min(parent.height, sourceSize.height) }
+                PropertyChanges { target: screenshot; width: Math.min(parent.width, sourceSize.width) }
                 PropertyChanges { target: screenshot; z: 1 }
             }
         ]
