@@ -7,35 +7,49 @@ Page
 {
     id: page
     property QtObject application
-    anchors.margins: 10
+    anchors.margins: 5
     
-    Row {
-        id: header
-        spacing: 20
+    QIconItem {
+        id: icon
         anchors.top: parent.top
         anchors.left: parent.left
-        anchors.right: parent.right
-        QIconItem {
-            id: icon
-            width: 40
-            height: 40
-            
-            icon: application.icon
-        }
+        anchors.margins: 5
+        width: 40
+        height: 40
         
-        Column {
-            Label {
-                font.bold: true
-                text: application.name
-            }
-            Label { text: application.comment }
+        icon: application.icon
+    }
+    
+    Column {
+        id: header
+        anchors.top: parent.top
+        anchors.left: icon.right
+        anchors.right: ratings.left
+        anchors.margins: 5
+        spacing: 5
+        
+        Text {
+            text: application.name
+            width: parent.width
+            font.bold: true
         }
-        Column {
-            Rating { rating: app.appBackend.reviewsBackend().ratingForApplication(application).rating() }
-            Label { text: i18n("%1 reviews", app.appBackend.reviewsBackend().ratingForApplication(application).ratingCount()) }
+        Label {
+            text: application.comment
+            wrapMode: Text.WordWrap
+            width: parent.width
         }
     }
+    
+    Column {
+        id: ratings
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.rightMargin: 200
         
+        Rating { rating: app.appBackend.reviewsBackend().ratingForApplication(application).rating() }
+        Label { text: i18n("%1 reviews", app.appBackend.reviewsBackend().ratingForApplication(application).ratingCount()) }
+    }
+    
     Image {
         id: screenshot
         width: 200
@@ -73,6 +87,7 @@ Page
         anchors.top: header.bottom
         anchors.left: parent.left
         anchors.right: parent.right
+        anchors.margins: 5
         spacing: 10
         
         InstallApplicationButton {
