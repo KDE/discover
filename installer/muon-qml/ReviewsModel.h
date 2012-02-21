@@ -29,6 +29,8 @@ class ReviewsModel : public QAbstractListModel
         ReviewsBackend* backend() const;
         void setApplication(Application* app);
         Application* application() const;
+        virtual void fetchMore(const QModelIndex& parent=QModelIndex());
+        virtual bool canFetchMore(const QModelIndex&) const;
 
     public slots:
         void addReviews(Application* app, const QList<Review*>& reviews);
@@ -39,6 +41,8 @@ class ReviewsModel : public QAbstractListModel
         Application* m_app;
         ReviewsBackend* m_backend;
         QList<Review*> m_reviews;
+        int m_lastPage;
+        bool m_canFetchMore;
 };
 
 #endif // REVIEWSMODEL_H

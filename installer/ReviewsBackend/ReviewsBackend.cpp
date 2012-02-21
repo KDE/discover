@@ -21,6 +21,7 @@
 #include "ReviewsBackend.h"
 
 #include <QtCore/QStringBuilder>
+#include <QDebug>
 
 #include <KGlobal>
 #include <KIO/Job>
@@ -139,8 +140,11 @@ void ReviewsBackend::fetchReviews(Application *app, int page)
 {
     // Check our cache before fetching from the 'net
     QString hashName = app->package()->latin1Name() + app->untranslatedName();
-    if (m_reviewsCache.contains(hashName)) {
-        emit reviewsReady(app, m_reviewsCache.value(hashName));
+    
+    QList<Review*> revs = m_reviewsCache.value(hashName);
+    qDebug() << "============" << revs.size() << page;
+    if (revs.size()>(page*5)) { //there are 5 reviews per page
+        emit reviewsReady(app, revs.mid(page*5, 5));
         return;
     }
 
@@ -211,7 +215,7 @@ void ReviewsBackend::reviewsFetched(KJob *job)
     Application *app = m_jobHash.value(job);
     m_jobHash.remove(job);
 
-    m_reviewsCache[app->package()->latin1Name() + app->name()] = reviewsList;
+    m_reviewsCache[app->package()->latin1Name() + app->name()].append(reviewsList);
 
     emit reviewsReady(app, reviewsList);
 }

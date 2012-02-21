@@ -27,6 +27,8 @@ ReviewsModel::ReviewsModel(QObject* parent)
     : QAbstractListModel(parent)
     , m_app(0)
     , m_backend(0)
+    , m_lastPage(0)
+    , m_canFetchMore(true)
 {
     QHash<int, QByteArray> roles = roleNames();
     roles.insert(ShouldShow, "shouldShow");
@@ -107,17 +109,35 @@ void ReviewsModel::restartFetching()
 {
     if(!m_app || !m_backend)
         return;
-    m_backend->fetchReviews(m_app);
-    qDebug() << "fetching reviews...";
+
+    m_canFetchMore=true;
+    m_lastPage = 0;
+    fetchMore();
+}
+
+void ReviewsModel::fetchMore(const QModelIndex& parent)
+{
+    if(!m_backend || !m_app || m_backend->isFetching() || parent.isValid() || !m_canFetchMore)
+        return;
+
+    m_lastPage++;
+    m_backend->fetchReviews(m_app, m_lastPage);
+    qDebug() << "fetching reviews... " << m_lastPage;
 }
 
 void ReviewsModel::addReviews(Application* app, const QList<Review*>& reviews)
 {
+    m_canFetchMore=!reviews.isEmpty();
     if(app!=m_app || reviews.isEmpty())
         return;
-    qDebug() << "reviews arrived..." << reviews.size();
+    qDebug() << "reviews arrived..." << m_lastPage << reviews.size();
     
     beginInsertRows(QModelIndex(), rowCount(), rowCount()+reviews.size());
     m_reviews += reviews;
     endInsertRows();
+}
+
+bool ReviewsModel::canFetchMore(const QModelIndex&) const
+{
+    return m_canFetchMore;
 }
