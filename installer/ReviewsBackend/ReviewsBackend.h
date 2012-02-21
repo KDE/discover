@@ -45,9 +45,10 @@ public:
     Q_SCRIPTABLE Rating *ratingForApplication(Application *app) const;
 
     void setAptBackend(QApt::Backend *aptBackend);
-    void fetchReviews(Application *app);
+    void fetchReviews(Application* app, int page=1);
     void clearReviewCache();
     void stopPendingJobs();
+    bool isFetching() const;
 
 private:
     QApt::Backend *m_aptBackend;

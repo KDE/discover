@@ -135,7 +135,7 @@ void ReviewsBackend::stopPendingJobs()
     m_jobHash.clear();
 }
 
-void ReviewsBackend::fetchReviews(Application *app)
+void ReviewsBackend::fetchReviews(Application *app, int page)
 {
     // Check our cache before fetching from the 'net
     QString hashName = app->package()->latin1Name() + app->untranslatedName();
@@ -160,7 +160,7 @@ void ReviewsBackend::fetchReviews(Application *app)
     // a variable was initially initialized with a primitive to figure out its type.
     KUrl reviewsUrl(m_serverBase % QLatin1Literal("reviews/filter/") % lang % '/'
                     % origin % '/' % QLatin1Literal("any") % '/' % version % '/' % packageName
-                    % ';' % appName % '/' % QLatin1Literal("page") % '/' % '1');
+                    % ';' % appName % '/' % QLatin1Literal("page") % '/' % QString::number(page));
 
     if (m_reviewsFile) {
         m_reviewsFile->deleteLater();
@@ -231,3 +231,7 @@ QString ReviewsBackend::getLanguage()
     return language.split('_').first();
 }
 
+bool ReviewsBackend::isFetching() const
+{
+    return !m_jobHash.isEmpty();
+}
