@@ -21,7 +21,6 @@
 #include "ReviewsBackend.h"
 
 #include <QtCore/QStringBuilder>
-#include <QDebug>
 
 #include <KGlobal>
 #include <KIO/Job>
@@ -142,9 +141,8 @@ void ReviewsBackend::fetchReviews(Application *app, int page)
     QString hashName = app->package()->latin1Name() + app->untranslatedName();
     
     QList<Review*> revs = m_reviewsCache.value(hashName);
-    qDebug() << "============" << revs.size() << page;
-    if (revs.size()>(page*10)) { //there are 5 reviews per page
-	emit reviewsReady(app, revs.mid(page*10, 10));
+    if (revs.size()>(page*5)) { //there are 5 reviews per page
+        emit reviewsReady(app, revs.mid(page*5, 5));
         return;
     }
 
