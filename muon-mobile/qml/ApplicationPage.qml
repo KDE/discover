@@ -155,7 +155,7 @@ Page
             Rating {
                 anchors.top: parent.top
                 anchors.right: parent.right
-                rating: rating
+                rating: model["rating"]
                 height: content.font.pixelSize
             }
         }
