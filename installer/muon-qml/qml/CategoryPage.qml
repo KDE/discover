@@ -41,9 +41,29 @@ Page {
     }
 
     ListView {
+        anchors {
+            top: parent.top
+            left: parent.left
+            bottom: parent.bottom
+            right: scroll.left
+        }
+        id: view
         model: cats
         anchors.fill: parent
         delegate: categoryDelegate
+    }
+    
+    ScrollBar {
+        id: scroll
+        orientation: Qt.Vertical
+        flickableItem: view
+        stepSize: 40
+        scrollButtonInterval: 50
+        anchors {
+                top: parent.top
+                right: parent.right
+                bottom: parent.bottom
+        }
     }
     
     CategoryModel {
