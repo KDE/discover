@@ -37,7 +37,7 @@
 #include "../libmuon/ChangesDialog.h"
 #include "Application.h"
 #include "ReviewsBackend/ReviewsBackend.h"
-#include "Transaction.h"
+#include "Transaction/Transaction.h"
 
 ApplicationBackend::ApplicationBackend(QObject *parent)
     : QObject(parent)

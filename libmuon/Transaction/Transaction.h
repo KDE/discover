@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,33 +18,51 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef REVIEWWIDGET_H
-#define REVIEWWIDGET_H
+#ifndef TRANSACTION_H
+#define TRANSACTION_H
 
-#include <KVBox>
+#include <QtCore/QHash>
 
-class QLabel;
+#include <LibQApt/Package>
 
-class KRatingWidget;
+#include "libmuonprivate_export.h"
 
-class Review;
+class Application;
 
-class ReviewWidget : public KVBox
+enum TransactionState {
+    InvalidState = 0,
+    QueuedState = 1,
+    RunningState = 2,
+    DoneState = 3
+};
+
+enum TransactionAction {
+    InvalidAction = 0,
+    InstallApp = 1,
+    RemoveApp = 2,
+    ChangeAddons = 3
+};
+
+class MUONPRIVATE_EXPORT Transaction
 {
-    Q_OBJECT
 public:
-    ReviewWidget(QWidget *parent);
-    ~ReviewWidget();
+    explicit Transaction (Application *app, TransactionAction);
+    explicit Transaction (Application *app, TransactionAction,
+                          const QHash<QApt::Package *, QApt::Package::State> &addons);
+    ~Transaction();
 
-    void setReview(Review *review);
+    void setState(TransactionState state);
+
+    Application *application() const;
+    TransactionAction action() const;
+    TransactionState state() const;
+    QHash<QApt::Package *, QApt::Package::State> addons() const;
 
 private:
-    KRatingWidget *m_ratingWidget;
-    QLabel *m_summaryLabel;
-    QLabel *m_nameDateLabel;
-    QLabel *m_reviewLabel;
-    QLabel *m_versionLabel;
-    QLabel *m_usefulnessLabel;
+    Application *m_application;
+    TransactionAction m_action;
+    TransactionState m_state;
+    QHash<QApt::Package *, QApt::Package::State> m_addons;
 };
 
 #endif

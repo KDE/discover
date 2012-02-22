@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,49 +18,61 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef TRANSACTION_H
-#define TRANSACTION_H
+#ifndef REVIEW_H
+#define REVIEW_H
 
-#include <QtCore/QHash>
+#include <QtCore/QDateTime>
+#include <QtCore/QVariant>
 
-#include <LibQApt/Package>
+#include "libmuonprivate_export.h"
 
-class Application;
+namespace QApt {
+    class Package;
+}
 
-enum TransactionState {
-    InvalidState = 0,
-    QueuedState = 1,
-    RunningState = 2,
-    DoneState = 3
-};
-
-enum TransactionAction {
-    InvalidAction = 0,
-    InstallApp = 1,
-    RemoveApp = 2,
-    ChangeAddons = 3
-};
-
-class Transaction
+class MUONPRIVATE_EXPORT Review
 {
 public:
-    explicit Transaction (Application *app, TransactionAction);
-    explicit Transaction (Application *app, TransactionAction,
-                          const QHash<QApt::Package *, QApt::Package::State> &addons);
-    ~Transaction();
+    explicit Review(const QVariantMap &data);
+    ~Review();
 
-    void setState(TransactionState state);
+    // Creation date determines greater than/less than
+    bool operator<(const Review &rhs) const;
+    bool operator>(const Review &rhs) const;
 
-    Application *application() const;
-    TransactionAction action() const;
-    TransactionState state() const;
-    QHash<QApt::Package *, QApt::Package::State> addons() const;
+    QString applicationName() const;
+    QString packageName() const;
+    QString packageVersion() const;
+    QString language() const;
+    QString summary() const;
+    QString reviewText() const;
+    QString reviewer() const;
+    QDateTime creationDate() const;
+    bool shouldShow() const;
+    quint64 id() const;
+    int rating() const;
+    int usefulnessTotal() const;
+    int usefulnessFavorable() const;
+    QApt::Package *package() const;
+
+    void setPackage(QApt::Package *package);
 
 private:
-    Application *m_application;
-    TransactionAction m_action;
-    TransactionState m_state;
-    QHash<QApt::Package *, QApt::Package::State> m_addons;
+    QString m_appName;
+    QDateTime m_creationDate;
+    bool m_shouldShow;
+    quint64 m_id;
+    QString m_language;
+    QString m_packageName;
+    int m_rating;
+    QString m_reviewText;
+    QString m_reviewer;
+    int m_usefulnessTotal;
+    int m_usefulnessFavorable;
+    QString m_summary;
+    QString m_packageVersion;
+
+    QApt::Package *m_package;
 };
 
 #endif

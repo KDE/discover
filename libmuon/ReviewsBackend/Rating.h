@@ -18,58 +18,32 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef REVIEWSBACKEND_H
-#define REVIEWSBACKEND_H
+#ifndef RATING_H
+#define RATING_H
 
-#include <QtCore/QString>
+#include <QtCore/QObject>
 #include <QtCore/QVariant>
 
-class KJob;
-class KTemporaryFile;
+#include "libmuonprivate_export.h"
 
-namespace QApt {
-    class Backend;
-}
-
-class Application;
-class Rating;
-class Review;
-
-class ReviewsBackend : public QObject
+class MUONPRIVATE_EXPORT Rating : public QObject
 {
-    Q_OBJECT
+Q_OBJECT
 public:
-    ReviewsBackend(QObject *parent);
-    ~ReviewsBackend();
+    explicit Rating(const QVariantMap &data);
+    ~Rating();
 
-    Q_SCRIPTABLE Rating *ratingForApplication(Application *app) const;
-
-    void setAptBackend(QApt::Backend *aptBackend);
-    void fetchReviews(Application *app);
-    void clearReviewCache();
-    void stopPendingJobs();
+    QString packageName() const;
+    QString applicationName() const;
+    Q_SCRIPTABLE quint64 ratingCount() const;
+    // 0.0 - 5.0 ranged rating multiplied by two and rounded for KRating*
+    Q_SCRIPTABLE int rating() const;
 
 private:
-    QApt::Backend *m_aptBackend;
-
-    QString m_serverBase;
-    KTemporaryFile *m_ratingsFile;
-    KTemporaryFile *m_reviewsFile;
-    QHash<QString, Rating *> m_ratings;
-    // cache key is package name + app name, since both by their own may not be unique
-    QHash<QString, QList<Review *> > m_reviewsCache;
-    QHash<KJob *, Application *> m_jobHash;
-
-    void fetchRatings();
-    QString getLanguage();
-
-private Q_SLOTS:
-    void ratingsFetched(KJob *job);
-    void reviewsFetched(KJob *job);
-
-Q_SIGNALS:
-    void reviewsReady(Application *app, QList<Review *>);
-    void ratingsReady();
+    QString m_packageName;
+    QString m_appName;
+    quint64 m_ratingCount;
+    int m_rating;
 };
 
 #endif

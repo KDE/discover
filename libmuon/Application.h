@@ -29,11 +29,13 @@
 
 #include <LibQApt/Package>
 
+#include "libmuonprivate_export.h"
+
 namespace QApt {
     class Backend;
 }
 
-class Application : public QObject
+class MUONPRIVATE_EXPORT Application : public QObject
 {
 Q_OBJECT
 Q_PROPERTY(QString name READ name CONSTANT)
@@ -55,7 +57,7 @@ Q_PROPERTY(bool isInstalled READ isInstalled NOTIFY installChanged)
 Q_PROPERTY(int usageCount READ usageCount CONSTANT)
 public:
     friend class TransactionListener;
-    
+
     explicit Application(const QString &fileName, QApt::Backend *backend);
     explicit Application(QApt::Package *package, QApt::Backend *backend);
     ~Application();
@@ -87,7 +89,7 @@ public:
     QString installedVersion() const;
     QString availableVersion() const;
     QString sizeDescription();
-    
+
     void clearPackage();
 signals:
     ///to have it emitted, you'll need to attach a TransactionListener

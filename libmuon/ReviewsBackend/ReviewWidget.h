@@ -18,30 +18,35 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef RATING_H
-#define RATING_H
+#ifndef REVIEWWIDGET_H
+#define REVIEWWIDGET_H
 
-#include <QtCore/QObject>
-#include <QtCore/QVariant>
+#include <KVBox>
 
-class Rating : public QObject
+#include "libmuonprivate_export.h"
+
+class QLabel;
+
+class KRatingWidget;
+
+class Review;
+
+class MUONPRIVATE_EXPORT ReviewWidget : public KVBox
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-    explicit Rating(const QVariantMap &data);
-    ~Rating();
+    ReviewWidget(QWidget *parent);
+    ~ReviewWidget();
 
-    QString packageName() const;
-    QString applicationName() const;
-    Q_SCRIPTABLE quint64 ratingCount() const;
-    // 0.0 - 5.0 ranged rating multiplied by two and rounded for KRating*
-    Q_SCRIPTABLE int rating() const;
+    void setReview(Review *review);
 
 private:
-    QString m_packageName;
-    QString m_appName;
-    quint64 m_ratingCount;
-    int m_rating;
+    KRatingWidget *m_ratingWidget;
+    QLabel *m_summaryLabel;
+    QLabel *m_nameDateLabel;
+    QLabel *m_reviewLabel;
+    QLabel *m_versionLabel;
+    QLabel *m_usefulnessLabel;
 };
 
 #endif

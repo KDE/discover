@@ -7,15 +7,8 @@ set(muon_installer_qml_SRCS
     BackendsSingleton.cpp
     ReviewsModel.cpp
     ApplicationUpdates.cpp
-    ../Application.cpp
-    ../ApplicationBackend.cpp
     ../ApplicationModel/ApplicationModel.cpp
-    ../ApplicationModel/ApplicationProxyModel.cpp
-    ../Transaction.cpp
-    ../ReviewsBackend/Rating.cpp
-    ../ReviewsBackend/Review.cpp
-    ../ReviewsBackend/ReviewsBackend.cpp
-    ../TransactionListener.cpp)
+    ../ApplicationModel/ApplicationProxyModel.cpp)
 
 qt4_add_resources(muon_installer_qml_SRCS resources.qrc)
 
@@ -25,9 +18,7 @@ target_link_libraries(muon-installer-qml muonprivate
                                      ${KDE4_KIO_LIBS}
                                      kdeclarative
                                      ${QAPT_LIBRARY}
-                                     ${DEBCONF_KDE_LIB}
                                      ${QZEITGEIST_LIBRARY}
-                                     ${qjson_LIBRARIES}
                                      ${QT_QTDECLARATIVE_LIBRARY})
 
 install(TARGETS muon-installer-qml ${INSTALL_TARGETS_DEFAULT_ARGS} )

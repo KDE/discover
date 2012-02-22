@@ -10,8 +10,6 @@ include_directories(../libmuon)
 
 set(muon_installer_SRCS
     main.cpp
-    Application.cpp
-    ApplicationBackend.cpp
     ApplicationLauncher.cpp
     ApplicationWindow.cpp
     ApplicationModel/ApplicationModel.cpp
@@ -36,29 +34,16 @@ set(muon_installer_SRCS
     effects/GraphicsOpacityDropShadowEffect.cpp
     ViewSwitcher.cpp
     ScreenShotOverlay.cpp
-    Transaction.cpp
-    TransactionListener.cpp
-    ReviewsBackend/Rating.cpp
-    ReviewsBackend/Review.cpp
-    ReviewsBackend/ReviewWidget.cpp
-    ReviewsBackend/ReviewsWidget.cpp
-    ReviewsBackend/ReviewsBackend.cpp
     ${messagewidget_SRCS})
 
 kde4_add_kcfg_files(muon_installer_SRCS GENERATE_MOC config/MuonInstallerSettings.kcfgc)
 
 kde4_add_executable(muon-installer ${muon_installer_SRCS})
 
-if(NOT qjson_LIBRARIES) #hack to compatibilize different qjson finder versions
-    set(qjson_LIBRARIES ${QJSON_LIBRARIES})
-endif()
-
 target_link_libraries(muon-installer muonprivate
                                      ${KDE4_KIO_LIBS}
                                      ${QAPT_LIBRARY}
-                                     ${DEBCONF_KDE_LIB}
                                      ${QZEITGEIST_LIBRARY}
-                                     ${qjson_LIBRARIES}
                                      ${QT_QTDECLARATIVE_LIBRARY})
 
 if (ENABLE_QZEITGEIST)

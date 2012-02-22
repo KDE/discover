@@ -21,6 +21,7 @@
 
 #include "ApplicationDetailsWidget.h"
 
+// Qt includes
 #include <QApplication>
 #include <QPropertyAnimation>
 #include <QtCore/QStringBuilder>
@@ -37,6 +38,7 @@
 #include <QtGui/QPushButton>
 #include <QtGui/QVBoxLayout>
 
+// KDE includes
 #include <KDialog>
 #include <KGlobal>
 #include <KHBox>
@@ -54,24 +56,29 @@
 #include <KDebug>
 #include <Nepomuk/KRatingWidget>
 
+// LibQApt includes
 #include <LibQApt/Package>
 
-
+// QZeitgeist includes
 #include "HaveQZeitgeist.h"
 
+// Libmuon includes
+#include <Application.h>
+#include <MuonStrings.h>
+#include <ReviewsBackend/Rating.h>
+#include <ReviewsBackend/Review.h>
+#include <ReviewsBackend/ReviewsWidget.h>
+#include <ReviewsBackend/ReviewsBackend.h>
+#include <Transaction/TransactionListener.h>
+#include "../../libmuon/mobile/src/mousecursor.h"
+
+// std includes
 #include <math.h>
 
+// Own includes
 #include "AddonsWidget.h"
-#include "Application.h"
 #include "ClickableLabel.h"
 #include "ScreenShotOverlay.h"
-#include "ReviewsBackend/Rating.h"
-#include "ReviewsBackend/Review.h"
-#include "ReviewsBackend/ReviewsWidget.h"
-#include "ReviewsBackend/ReviewsBackend.h"
-#include <TransactionListener.h>
-#include "../../libmuon/MuonStrings.h"
-#include "../../libmuon/mobile/src/mousecursor.h"
 
 #define BLUR_RADIUS 15
 

@@ -38,11 +38,11 @@
 #include <LibQApt/Backend>
 
 // Libmuon includes
+#include <Application.h>
+#include <ApplicationBackend.h>
 #include <Category/CategoryModel.h>
 #include <Category/Category.h>
-#include <ApplicationBackend.h>
-#include <TransactionListener.h>
-#include <Application.h>
+#include <Transaction/TransactionListener.h>
 #include <ReviewsBackend/ReviewsBackend.h>
 #include <ReviewsBackend/Rating.h>
 

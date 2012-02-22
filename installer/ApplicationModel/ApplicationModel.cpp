@@ -32,7 +32,7 @@
 #include "ApplicationBackend.h"
 #include "ReviewsBackend/Rating.h"
 #include "ReviewsBackend/ReviewsBackend.h"
-#include "Transaction.h"
+#include "Transaction/Transaction.h"
 #include <KDebug>
 
 ApplicationModel::ApplicationModel(QObject *parent)

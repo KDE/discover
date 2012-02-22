@@ -27,9 +27,9 @@
 // LibQApt includes
 #include <LibQApt/Globals>
 
-// Own includes
-#include "ApplicationBackend.h"
-#include "Transaction.h"
+// Libmuon includes
+#include <ApplicationBackend.h>
+#include <Transaction/Transaction.h>
 
 class TransactionListener;
 class QDeclarativeView;

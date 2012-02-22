@@ -32,12 +32,14 @@
 // LibQApt includes
 #include <LibQApt/Backend>
 
-// Own includes
-#include "../ApplicationBackend.h"
-#include "../ApplicationModel/ApplicationViewWidget.h"
-#include "../BreadcrumbWidget/BreadcrumbItem.h"
+// Libmuon includes
+#include <ApplicationBackend.h>
 #include <Category/Category.h>
 #include <Category/CategoryModel.h>
+
+// Own includes
+#include "../ApplicationModel/ApplicationViewWidget.h"
+#include "../BreadcrumbWidget/BreadcrumbItem.h"
 #include "CategoryView.h"
 
 CategoryViewWidget::CategoryViewWidget(QWidget *parent, ApplicationBackend *appBackend)

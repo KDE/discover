@@ -34,12 +34,12 @@
 #include "ApplicationModel.h"
 #include "ApplicationProxyModel.h"
 #include "ApplicationDelegate.h"
-#include "../Application.h"
-#include "../ApplicationBackend.h"
+#include "Application.h"
+#include "ApplicationBackend.h"
 #include "../ApplicationDetailsView/ApplicationDetailsView.h"
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
-#include <Category/Category.h>
-#include "../Transaction.h"
+#include "Category/Category.h"
+#include "Transaction/Transaction.h"
 
 ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend *appBackend)
         : AbstractViewBase(parent)

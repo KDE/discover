@@ -25,10 +25,13 @@
 #include <QObject>
 #include <LibQApt/Globals>
 
+#include "libmuonprivate_export.h"
+
 class Transaction;
 class Application;
 class ApplicationBackend;
-class TransactionListener : public QObject
+
+class MUONPRIVATE_EXPORT TransactionListener : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int progress READ progress NOTIFY progressChanged)

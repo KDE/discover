@@ -40,9 +40,11 @@
 // LibQApt includes
 #include <LibQApt/Backend>
 
+// Libmuon includes
+#include <Application.h>
+#include <ChangesDialog.h>
+
 // Own includes
-#include "../libmuon/ChangesDialog.h"
-#include "../installer/Application.h"
 #include "UpdateModel/UpdateModel.h"
 #include "UpdateModel/UpdateItem.h"
 #include "UpdateModel/UpdateDelegate.h"

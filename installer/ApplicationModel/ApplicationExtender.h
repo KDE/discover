@@ -26,7 +26,7 @@
 #include <LibQApt/Globals>
 
 #include "ApplicationBackend.h"
-#include "Transaction.h"
+#include "Transaction/Transaction.h"
 
 class QProgressBar;
 class QPushButton;
