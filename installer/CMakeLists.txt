@@ -6,6 +6,8 @@ else (HAVEKDE4_6_60)
     include_directories(backports)
 endif (HAVEKDE4_6_60)
 
+include_directories(../libmuon)
+
 set(muon_installer_SRCS
     main.cpp
     Application.cpp
@@ -27,7 +29,6 @@ set(muon_installer_SRCS
     BreadcrumbWidget/BreadcrumbItem.cpp
     BreadcrumbWidget/BreadcrumbWidget.cpp
     BreadcrumbWidget/BreadcrumbItemButton.cpp
-    CategoryView/Category.cpp
     CategoryView/CategoryDrawer.cpp
     CategoryView/CategoryView.cpp
     CategoryView/CategoryViewWidget.cpp
@@ -36,7 +37,6 @@ set(muon_installer_SRCS
     ViewSwitcher.cpp
     ScreenShotOverlay.cpp
     Transaction.cpp
-    CategoryModel.cpp
     TransactionListener.cpp
     ReviewsBackend/Rating.cpp
     ReviewsBackend/Review.cpp

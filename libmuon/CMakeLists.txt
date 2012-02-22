@@ -2,6 +2,8 @@ set(muon_LIB_SRCS
     ChangesDialog.cpp
     MuonMainWindow.cpp
     MuonStrings.cpp
+    Category/Category.cpp
+    Category/CategoryModel.cpp
     HistoryView/HistoryProxyModel.cpp
     HistoryView/HistoryView.cpp
     mobile/src/mousecursor.cpp

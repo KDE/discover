@@ -26,7 +26,7 @@
 
 #include <LibQApt/Package>
 
-#include "CategoryView/Category.h"
+#include <Category/Category.h>
 
 namespace QApt {
     class Backend;

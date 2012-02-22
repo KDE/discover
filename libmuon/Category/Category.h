@@ -25,6 +25,8 @@
 #include <QtCore/QPair>
 #include <QtCore/QString>
 
+#include "libmuonprivate_export.h"
+
 class QDomNode;
 
 enum FilterType {
@@ -41,7 +43,7 @@ enum CategoryChildPolicy {
     NoChildren = 2
 };
 
-class Category : public QObject
+class MUONPRIVATE_EXPORT Category : public QObject
 {
 Q_OBJECT
 public:

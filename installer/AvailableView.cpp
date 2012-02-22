@@ -20,20 +20,22 @@
 
 #include "AvailableView.h"
 
-#include <QtCore/QFile>
+// Qt includes
 #include <QtGui/QStackedWidget>
-#include <QtXml/QDomDocument>
 
+// KDE includes
 #include <KCategorizedSortFilterProxyModel>
 #include <KIcon>
 #include <KLocale>
 #include <KStandardDirs>
 
+// LibQApt includes
 #include <LibQApt/Backend>
 
+// Own includes
+#include <Category/Category.h>
 #include "ApplicationBackend.h"
 #include "BreadcrumbWidget/BreadcrumbWidget.h"
-#include "CategoryView/Category.h"
 #include "CategoryView/CategoryViewWidget.h"
 
 AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)

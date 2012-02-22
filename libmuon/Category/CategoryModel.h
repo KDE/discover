@@ -23,9 +23,11 @@
 
 #include <QtGui/QStandardItemModel>
 
+#include "libmuonprivate_export.h"
+
 class Category;
 
-class CategoryModel : public QStandardItemModel
+class MUONPRIVATE_EXPORT CategoryModel : public QStandardItemModel
 {
     Q_OBJECT
     public:
@@ -35,7 +37,7 @@ class CategoryModel : public QStandardItemModel
             NotFilterRole = Qt::UserRole + 3,
             CategoryRole
         };
-        
+
         enum CatViewType {
             /// An invalid type
             InvalidType = 0,
@@ -45,16 +47,15 @@ class CategoryModel : public QStandardItemModel
             SubCatType = 2
         };
         Q_ENUMS(CatViewType);
-        
+
         explicit CategoryModel(QObject* parent = 0);
-        virtual ~CategoryModel();
-        
+
         void setCategories(const QList<Category *> &categoryList, const QString &rootName);
         Q_SCRIPTABLE Category* categoryForIndex(int row);
 
         Q_SCRIPTABLE void populateCategories(const QString& rootName);
         Q_SCRIPTABLE void setSubcategories(Category* c);
-        
+
     private:
         QList<Category*> m_categoryList;
 };

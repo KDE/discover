@@ -36,9 +36,9 @@
 #include "../ApplicationBackend.h"
 #include "../ApplicationModel/ApplicationViewWidget.h"
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
-#include "Category.h"
+#include <Category/Category.h>
+#include <Category/CategoryModel.h>
 #include "CategoryView.h"
-#include <CategoryModel.h>
 
 CategoryViewWidget::CategoryViewWidget(QWidget *parent, ApplicationBackend *appBackend)
     : AbstractViewBase(parent)

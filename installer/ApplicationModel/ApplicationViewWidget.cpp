@@ -38,7 +38,7 @@
 #include "../ApplicationBackend.h"
 #include "../ApplicationDetailsView/ApplicationDetailsView.h"
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
-#include "../CategoryView/Category.h"
+#include <Category/Category.h>
 #include "../Transaction.h"
 
 ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend *appBackend)

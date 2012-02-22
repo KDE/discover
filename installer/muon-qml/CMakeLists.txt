@@ -1,4 +1,4 @@
-include_directories(.. ${CMAKE_CURRENT_BINARY_DIR}/..)
+include_directories(.. ${CMAKE_CURRENT_BINARY_DIR}/.. ../../libmuon)
 
 set(muon_installer_qml_SRCS
     main.cpp
@@ -11,9 +11,7 @@ set(muon_installer_qml_SRCS
     ../ApplicationBackend.cpp
     ../ApplicationModel/ApplicationModel.cpp
     ../ApplicationModel/ApplicationProxyModel.cpp
-    ../CategoryView/Category.cpp
     ../Transaction.cpp
-    ../CategoryModel.cpp
     ../ReviewsBackend/Rating.cpp
     ../ReviewsBackend/Review.cpp
     ../ReviewsBackend/ReviewsBackend.cpp

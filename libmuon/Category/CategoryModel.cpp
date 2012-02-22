@@ -18,11 +18,13 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
+// Own includes
 #include "CategoryModel.h"
-#include "CategoryView/Category.h"
+#include "Category.h"
+
+// KDE includes
 #include <KIcon>
 #include <KCategorizedSortFilterProxyModel>
-#include <QDebug>
 
 CategoryModel::CategoryModel(QObject* parent)
     : QStandardItemModel(parent)
@@ -33,10 +35,6 @@ CategoryModel::CategoryModel(QObject* parent)
     names[NotFilterRole] = "notFilter";
     names[CategoryRole] = "category";
     setRoleNames(names);
-}
-
-CategoryModel::~CategoryModel()
-{
 }
 
 void CategoryModel::setCategories(const QList<Category *> &categoryList,

@@ -22,8 +22,8 @@
 #include <qdeclarative.h>
 #include <QDeclarativeEngine>
 #include <QDeclarativeContext>
-#include <CategoryModel.h>
-#include <CategoryView/Category.h>
+#include <Category/CategoryModel.h>
+#include <Category/Category.h>
 #include <ApplicationBackend.h>
 #include <LibQApt/Backend>
 #include <QDebug>
