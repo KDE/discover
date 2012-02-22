@@ -9,9 +9,13 @@ Page
     property QtObject application
     anchors.margins: 5
     
+    RatingAndReviewsConnection {
+        id: topbox
+    }
+    
     QIconItem {
         id: icon
-        anchors.top: parent.top
+        anchors.top: topbox.bottom
         anchors.left: parent.left
         anchors.margins: 5
         width: 40
@@ -22,7 +26,7 @@ Page
     
     Column {
         id: header
-        anchors.top: parent.top
+        anchors.top: topbox.bottom
         anchors.left: icon.right
         anchors.right: ratings.left
         anchors.margins: 5
@@ -42,7 +46,7 @@ Page
     
     Column {
         id: ratings
-        anchors.top: parent.top
+        anchors.top: topbox.bottom
         anchors.right: parent.right
         anchors.rightMargin: 200
         
@@ -53,7 +57,7 @@ Page
     Image {
         id: screenshot
         width: 200
-        anchors.top: parent.top
+        anchors.top: topbox.bottom
         anchors.right: parent.right
         
         asynchronous: true
@@ -139,7 +143,6 @@ Page
             function usefulnessToString(favorable, total)
             {
                 return total==0 ? "" : i18n("<em>%1 out of %2 people found this review useful</em>", favorable, total)
-                
             }
             
             Label {

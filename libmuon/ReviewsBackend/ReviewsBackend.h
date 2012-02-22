@@ -33,6 +33,7 @@ namespace QApt {
     class Backend;
 }
 
+class AbstractLoginBackend;
 class Application;
 class Rating;
 class Review;
@@ -40,6 +41,8 @@ class Review;
 class MUONPRIVATE_EXPORT ReviewsBackend : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(bool hasCredentials READ hasCredentials NOTIFY loginStateChanged)
+    Q_PROPERTY(QString name READ userName NOTIFY loginStateChanged)
 public:
     ReviewsBackend(QObject *parent);
     ~ReviewsBackend();
@@ -51,6 +54,12 @@ public:
     void clearReviewCache();
     void stopPendingJobs();
     bool isFetching() const;
+
+    QString userName() const;
+    bool hasCredentials() const;
+
+signals:
+    void loginStateChanged();
 
 private:
     QApt::Backend *m_aptBackend;
@@ -65,10 +74,15 @@ private:
 
     void fetchRatings();
     QString getLanguage();
+    AbstractLoginBackend* m_loginBackend;
 
 private Q_SLOTS:
     void ratingsFetched(KJob *job);
     void reviewsFetched(KJob *job);
+
+public slots:
+    void login();
+    void registerAndLogin();
 
 Q_SIGNALS:
     void reviewsReady(Application *app, QList<Review *>);

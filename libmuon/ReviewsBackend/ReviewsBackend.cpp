@@ -35,6 +35,8 @@
 #include "../Application.h"
 #include "Rating.h"
 #include "Review.h"
+#include "AbstractLoginBackend.h"
+#include "UbuntuLoginBackend.h"
 
 ReviewsBackend::ReviewsBackend(QObject *parent)
         : QObject(parent)
@@ -43,6 +45,7 @@ ReviewsBackend::ReviewsBackend(QObject *parent)
         , m_ratingsFile(0)
         , m_reviewsFile(0)
 {
+    m_loginBackend = new UbuntuLoginBackend(this);
     fetchRatings();
 }
 
@@ -236,4 +239,25 @@ QString ReviewsBackend::getLanguage()
 bool ReviewsBackend::isFetching() const
 {
     return !m_jobHash.isEmpty();
+}
+
+bool ReviewsBackend::hasCredentials() const
+{
+    return m_loginBackend->hasCredentials();
+}
+
+QString ReviewsBackend::userName() const
+{
+    Q_ASSERT(m_loginBackend->hasCredentials());
+    return m_loginBackend->displayName();
+}
+
+void ReviewsBackend::login()
+{
+    m_loginBackend->login();
+}
+
+void ReviewsBackend::registerAndLogin()
+{
+    m_loginBackend->registerAndLogin();
 }
