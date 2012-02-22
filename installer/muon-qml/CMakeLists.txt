@@ -12,17 +12,13 @@ set(muon_installer_qml_SRCS
     ../ApplicationLauncher.cpp
     ../ApplicationModel/ApplicationModel.cpp
     ../ApplicationModel/ApplicationProxyModel.cpp
-    ../ApplicationModel/ApplicationDelegate.cpp
-    ../ApplicationModel/ApplicationExtender.cpp
     ../CategoryView/Category.cpp
-    ../ViewSwitcher.cpp
     ../Transaction.cpp
     ../CategoryModel.cpp
     ../ReviewsBackend/Rating.cpp
     ../ReviewsBackend/Review.cpp
     ../ReviewsBackend/ReviewsBackend.cpp
-    ../TransactionListener.cpp
-    ${messagewidget_SRCS})
+    ../TransactionListener.cpp)
 
 qt4_add_resources(muon_installer_qml_SRCS resources.qrc)
 
