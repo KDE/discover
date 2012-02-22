@@ -9,7 +9,6 @@ set(muon_installer_qml_SRCS
     ApplicationUpdates.cpp
     ../Application.cpp
     ../ApplicationBackend.cpp
-    ../ApplicationLauncher.cpp
     ../ApplicationModel/ApplicationModel.cpp
     ../ApplicationModel/ApplicationProxyModel.cpp
     ../CategoryView/Category.cpp
