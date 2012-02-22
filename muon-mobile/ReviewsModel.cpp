@@ -45,7 +45,6 @@ QVariant ReviewsModel::data(const QModelIndex& index, int role) const
 {
     if(!index.isValid())
         return QVariant();
-    
     switch(role) {
         case Qt::DisplayRole:
             return m_reviews.at(index.row())->reviewText();
@@ -67,8 +66,10 @@ QVariant ReviewsModel::data(const QModelIndex& index, int role) const
     return QVariant();
 }
 
-int ReviewsModel::rowCount(const QModelIndex& ) const
+int ReviewsModel::rowCount(const QModelIndex& parent) const
 {
+    if(parent.isValid())
+        return 0;
     return m_reviews.count();
 }
 
