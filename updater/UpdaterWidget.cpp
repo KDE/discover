@@ -135,6 +135,7 @@ void UpdaterWidget::populateUpdateModel()
     QApt::PackageList upgradeList = m_backend->upgradeablePackages();
 
     if (upgradeList.isEmpty()) {
+        QApplication::restoreOverrideCursor();
         m_busyWidget->stop();
         checkUpToDate();
         return;
