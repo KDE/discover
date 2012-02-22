@@ -18,28 +18,39 @@
  */
 
 #include "MuonInstallerDeclarativeMainWindow.h"
-#include <kdeclarative.h>
+
+// Qt includes
+#include <QDebug>
+#include <QtDeclarative/QDeclarativeEngine>
+#include <QtDeclarative/QDeclarativeContext>
+#include <QtDeclarative/QDeclarativeView>
+#include <QDesktopServices>
+#include <QTimer>
+#include <QGraphicsObject>
 #include <qdeclarative.h>
-#include <QDeclarativeEngine>
-#include <QDeclarativeContext>
+
+// KDE includes
+#include <KActionCollection>
+#include <KAction>
+#include <kdeclarative.h>
+
+// QApt includes
+#include <LibQApt/Backend>
+
+// Libmuon includes
 #include <Category/CategoryModel.h>
 #include <Category/Category.h>
 #include <ApplicationBackend.h>
-#include <LibQApt/Backend>
-#include <QDebug>
-#include <QTimer>
-#include <QDesktopServices>
-#include <QGraphicsObject>
-#include <KActionCollection>
-#include <KAction>
-#include "ApplicationProxyModelHelper.h"
-#include "BackendsSingleton.h"
-#include "ReviewsModel.h"
-#include "ApplicationUpdates.h"
 #include <TransactionListener.h>
 #include <Application.h>
 #include <ReviewsBackend/ReviewsBackend.h>
 #include <ReviewsBackend/Rating.h>
+
+// Own includes
+#include "ApplicationProxyModelHelper.h"
+#include "BackendsSingleton.h"
+#include "ReviewsModel.h"
+#include "ApplicationUpdates.h"
 
 QML_DECLARE_TYPE(ApplicationBackend)
 

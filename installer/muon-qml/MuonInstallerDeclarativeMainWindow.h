@@ -20,10 +20,10 @@
 #ifndef MUONINSTALLERDECLARATIVEVIEW_H
 #define MUONINSTALLERDECLARATIVEVIEW_H
 
-#include <QtDeclarative/QDeclarativeView>
 #include <LibQApt/Globals>
-#include <../../libmuon/MuonMainWindow.h>
+#include <MuonMainWindow.h>
 
+class QDeclarativeView;
 class ApplicationBackend;
 namespace QApt { class Backend; }
 
