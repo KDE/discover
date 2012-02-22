@@ -134,6 +134,12 @@ void UpdaterWidget::populateUpdateModel()
 {
     QApt::PackageList upgradeList = m_backend->upgradeablePackages();
 
+    if (upgradeList.isEmpty()) {
+        m_busyWidget->stop();
+        checkUpToDate();
+        return;
+    }
+
     UpdateItem *securityItem = new UpdateItem(i18nc("@item:inlistbox", "Important Security Updates"),
                                               KIcon("security-medium"));
 
