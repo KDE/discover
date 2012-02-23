@@ -42,6 +42,7 @@ public:
     void setGroupFilter(const QString &filterText);
     void setStateFilter(QApt::Package::State state);
     void setOriginFilter(const QString &origin);
+    void setArchFilter(const QString &arch);
 
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
     QApt::Package *packageAt(const QModelIndex &index) const;
@@ -58,6 +59,7 @@ private:
     QString m_groupFilter;
     QApt::Package::State m_stateFilter;
     QString m_originFilter;
+    QString m_archFilter;
 
     bool m_sortByRelevancy;
 };

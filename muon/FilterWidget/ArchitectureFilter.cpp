@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2012 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,32 +18,47 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MANAGERWIDGET_H
-#define MANAGERWIDGET_H
+#include "ArchitectureFilter.h"
 
-#include <QModelIndex>
+// KDE includes
+#include <KIcon>
+#include <KLocale>
 
-#include <LibQApt/Package>
+// LibQApt includes
+#include <LibQApt/Backend>
 
-#include "PackageModel/PackageWidget.h"
-
-namespace QApt {
-    class Backend;
+ArchitectureFilter::ArchitectureFilter(QObject *parent, QApt::Backend *backend)
+    : FilterModel(parent)
+    , m_backend(backend)
+    , m_shouldShow(true)
+{
 }
 
-class ManagerWidget : public PackageWidget
+bool ArchitectureFilter::shouldShow() const
 {
-    Q_OBJECT
-public:
-    explicit ManagerWidget(QWidget *parent);
-    ~ManagerWidget();
+    return m_shouldShow;
+}
 
-public Q_SLOTS:
-    void reload();
-    void filterByGroup(const QString &groupName);
-    void filterByStatus(const QApt::Package::State state);
-    void filterByOrigin(const QString &originName);
-    void filterByArchitecture(const QString &arch);
-};
+void ArchitectureFilter::populate()
+{
+    QStringList archList = m_backend->architectures();
 
-#endif
+    if (archList.size() < 0) {
+        m_shouldShow = false;
+        return;
+    }
+
+    QStandardItem *defaultItem = new QStandardItem;
+    defaultItem->setEditable(false);
+    defaultItem->setIcon(KIcon("bookmark-new-list"));
+    defaultItem->setText(i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All"));
+    appendRow(defaultItem);
+
+    for (const QString &arch : archList) {
+        QStandardItem *archItem = new QStandardItem;
+        archItem->setEditable(false);
+        archItem->setText(arch);
+        archItem->setData(arch, Qt::UserRole+1);
+        appendRow(archItem);
+    }
+}

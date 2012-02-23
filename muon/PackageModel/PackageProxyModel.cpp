@@ -99,6 +99,12 @@ void PackageProxyModel::setOriginFilter(const QString &origin)
     invalidate();
 }
 
+void PackageProxyModel::setArchFilter(const QString &arch)
+{
+    m_archFilter = arch;
+    invalidate();
+}
+
 bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
     //Our "main"-method
@@ -122,6 +128,12 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
 
     if (!m_originFilter.isEmpty()) {
         if (!(package->origin() == m_originFilter)) {
+            return false;
+        }
+    }
+
+    if (!m_archFilter.isEmpty()) {
+        if (!(package->architecture() == m_archFilter)) {
             return false;
         }
     }
