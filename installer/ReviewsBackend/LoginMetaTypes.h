@@ -18,33 +18,13 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef UBUNTULOGINBACKEND_H
-#define UBUNTULOGINBACKEND_H
+#ifndef LOGINMETATYPES_H
+#define LOGINMETATYPES_H
 
-#include <ReviewsBackend/AbstractLoginBackend.h>
+#include <QMap>
 #include <QVariant>
 
-class ComUbuntuSsoApplicationCredentialsInterface;
-class UbuntuLoginBackend : public AbstractLoginBackend
-{
-    Q_OBJECT
-    public:
-        UbuntuLoginBackend(QObject* parent=0);
-        
-        virtual void login();
-        virtual void registerAndLogin();
-        virtual QString displayName() const;
-        virtual bool hasCredentials() const;
+typedef QMap<QString,QString> MapString;
+Q_DECLARE_METATYPE(MapString)
 
-    private slots:
-        void credentialsError(const QString& app, const QString&, const QString& );
-        void authorizationDenied(const QString& app);
-        void successfulLogin(const QString& app, const QMap<QString, QString>& credentials);
-
-    private:
-        QString appname() const;
-        ComUbuntuSsoApplicationCredentialsInterface* m_interface;
-        QMap<QString,QString> m_credentials;
-};
-
-#endif // UBUNTULOGINBACKEND_H
+#endif

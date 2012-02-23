@@ -46,6 +46,7 @@ ReviewsBackend::ReviewsBackend(QObject *parent)
         , m_reviewsFile(0)
 {
     m_loginBackend = new UbuntuLoginBackend(this);
+    connect(m_loginBackend, SIGNAL(connectionStateChanged()), SIGNAL(loginStateChanged()));
     fetchRatings();
 }
 

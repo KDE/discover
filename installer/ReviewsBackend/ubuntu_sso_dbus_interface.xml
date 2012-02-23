@@ -1,0 +1,44 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node name="/credentials">
+  <interface name="com.ubuntu.sso.ApplicationCredentials">
+    <signal name="CredentialsError">
+      <arg type="s" name="app_name" />
+      <arg type="s" name="error_message" />
+      <arg type="s" name="detailed_error" />
+    </signal>
+    <signal name="AuthorizationDenied">
+      <arg type="s" name="app_name" />
+    </signal>
+    <method name="login_or_register_to_get_credentials">
+      <arg direction="in"  type="s" name="app_name" />
+      <arg direction="in"  type="s" name="terms_and_conditions_url" />
+      <arg direction="in"  type="s" name="help_text" />
+      <arg direction="in"  type="x" name="window_id" />
+    </method>
+    <method name="find_credentials">
+      <arg direction="in"  type="s" name="app_name" />
+      <arg direction="out" type="a{ss}" />
+      <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="QMap&lt;QString,QString&gt;"/>
+    </method>
+    <method name="login_to_get_credentials">
+      <arg direction="in"  type="s" name="app_name" />
+      <arg direction="in"  type="s" name="help_text" />
+      <arg direction="in"  type="x" name="window_id" />
+    </method>
+    <signal name="CredentialsFound">
+      <arg type="s" name="app_name" />
+      <arg type="a{ss}" name="credentials" />
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="QMap&lt;QString,QString&gt;"/>
+    </signal>
+    <method name="clear_token">
+      <arg direction="in"  type="s" name="app_name" />
+    </method>
+  </interface>
+  <interface name="org.freedesktop.DBus.Introspectable">
+    <method name="Introspect">
+      <arg direction="out" type="s" />
+    </method>
+  </interface>
+</node>
+

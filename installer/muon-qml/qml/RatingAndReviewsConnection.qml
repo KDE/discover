@@ -29,6 +29,7 @@ Item {
     }
     
     Row {
+        visible: parent.state=="notlogged"
         anchors {
             right: parent.right
             verticalCenter: parent.verticalCenter
