@@ -138,6 +138,10 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
         }
     }
 
+    // TODO before 1.4: Configurable
+    if (package->isMultiArchDuplicate())
+        return false;
+
     if (m_sortByRelevancy) {
         return m_packages.contains(package);
     }
