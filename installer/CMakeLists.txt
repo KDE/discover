@@ -12,12 +12,10 @@ set(muon_installer_SRCS
     main.cpp
     ApplicationLauncher.cpp
     ApplicationWindow.cpp
-    ApplicationModel/ApplicationModel.cpp
-    ApplicationModel/ApplicationProxyModel.cpp
-    ApplicationModel/ApplicationDelegate.cpp
-    ApplicationModel/ApplicationExtender.cpp
-    ApplicationModel/ApplicationListView.cpp
-    ApplicationModel/ApplicationViewWidget.cpp
+    ApplicationView/ApplicationDelegate.cpp
+    ApplicationView/ApplicationExtender.cpp
+    ApplicationView/ApplicationListView.cpp
+    ApplicationView/ApplicationViewWidget.cpp
     ApplicationDetailsView/ApplicationDetailsWidget.cpp
     ApplicationDetailsView/ApplicationDetailsView.cpp
     ApplicationDetailsView/AddonsWidget.cpp

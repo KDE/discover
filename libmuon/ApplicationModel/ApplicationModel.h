@@ -25,11 +25,13 @@
 
 #include <LibQApt/Globals>
 
+#include "libmuonprivate_export.h"
+
 class Application;
 class ApplicationBackend;
 class Transaction;
 
-class ApplicationModel: public QAbstractListModel
+class MUONPRIVATE_EXPORT ApplicationModel: public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(ApplicationBackend* backend READ backend WRITE setBackend)

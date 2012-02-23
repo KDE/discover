@@ -1,6 +1,8 @@
 set(muon_LIB_SRCS
     Application.cpp
     ApplicationBackend.cpp
+    ApplicationModel/ApplicationModel.cpp
+    ApplicationModel/ApplicationProxyModel.cpp
     ChangesDialog.cpp
     MuonMainWindow.cpp
     MuonStrings.cpp

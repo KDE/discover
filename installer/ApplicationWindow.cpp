@@ -39,14 +39,16 @@
 // LibQApt includes
 #include <LibQApt/Backend>
 
+// Libmuon includes
+#include <Application.h>
+#include <ApplicationBackend.h>
+#include <HistoryView/HistoryView.h>
+
 // Own includes
-#include "../libmuon/HistoryView/HistoryView.h"
-#include "ApplicationBackend.h"
-#include "Application.h"
 #include "ApplicationLauncher.h"
 #include "AvailableView.h"
 #include "ViewSwitcher.h"
-#include "ApplicationModel/ApplicationListView.h"
+#include "ApplicationView/ApplicationListView.h"
 #include "MuonInstallerSettings.h"
 
 ApplicationWindow::ApplicationWindow()

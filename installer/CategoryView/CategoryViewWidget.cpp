@@ -38,7 +38,7 @@
 #include <Category/CategoryModel.h>
 
 // Own includes
-#include "../ApplicationModel/ApplicationViewWidget.h"
+#include "../ApplicationView/ApplicationViewWidget.h"
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
 #include "CategoryView.h"
 
