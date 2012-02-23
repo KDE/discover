@@ -30,12 +30,12 @@
 UbuntuLoginBackend::UbuntuLoginBackend(QObject* parent)
     : AbstractLoginBackend(parent)
 {
+    qDBusRegisterMetaType<MapString>();
     m_interface = new ComUbuntuSsoApplicationCredentialsInterface( "com.ubuntu.sso", "/credentials", QDBusConnection::sessionBus(), this);
     connect(m_interface, SIGNAL(CredentialsError(QString,QString,QString)), SLOT(credentialsError(QString,QString,QString)));
     connect(m_interface, SIGNAL(AuthorizationDenied(QString)), SLOT(authorizationDenied(QString)));
-    connect(m_interface, SIGNAL(CredentialsFound(QString,QVariantMap)), this, SLOT(successfulLogin(QString,QVariantMap)));
+    connect(m_interface, SIGNAL(CredentialsFound(QString, MapString)), this, SLOT(successfulLogin(QString, MapString)));
     qDebug() << "falalala" << m_interface->lastError().message();
-    qDBusRegisterMetaType<QMap<QString,QString> >();
     
     QDBusPendingReply< QMap<QString,QString> > cred = m_interface->find_credentials(appname());
     cred.waitForFinished();
@@ -45,7 +45,7 @@ UbuntuLoginBackend::UbuntuLoginBackend(QObject* parent)
 
 void UbuntuLoginBackend::login()
 {
-    m_interface->login_to_get_credentials(appname(), i18n("log in to the Ubuntu SSO service"),
+    QDBusPendingReply< void > ret = m_interface->login_to_get_credentials(appname(), i18n("log in to the Ubuntu SSO service"),
                                           qobject_cast<QApplication*>(qApp)->activeWindow()->winId());
 }
 
@@ -67,6 +67,7 @@ bool UbuntuLoginBackend::hasCredentials() const
 
 void UbuntuLoginBackend::successfulLogin(const QString& app, const QMap<QString,QString>& credentials)
 {
+    qDebug() << "logged in" << appname() << app << credentials;
     if(app==appname()) {
         m_credentials = credentials;
         emit connectionStateChanged();
@@ -80,13 +81,22 @@ QString UbuntuLoginBackend::appname() const
 
 void UbuntuLoginBackend::authorizationDenied(const QString& app)
 {
+    qDebug() << "denied" << app;
     if(app==appname())
         emit connectionStateChanged();
 }
 
-void UbuntuLoginBackend::credentialsError(const QString& app, const QString& , const QString& )
+void UbuntuLoginBackend::credentialsError(const QString& app, const QString& a, const QString& b)
 {
     //TODO: provide error message?
+    qDebug() << "error" << app << a << b;
     if(app==appname())
         emit connectionStateChanged();
+}
+
+void UbuntuLoginBackend::logout()
+{
+    m_interface->clear_token(appname());
+    m_credentials.clear();
+    emit connectionStateChanged();
 }

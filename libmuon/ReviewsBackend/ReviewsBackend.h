@@ -83,6 +83,7 @@ private Q_SLOTS:
 public slots:
     void login();
     void registerAndLogin();
+    void logout();
 
 Q_SIGNALS:
     void reviewsReady(Application *app, QList<Review *>);

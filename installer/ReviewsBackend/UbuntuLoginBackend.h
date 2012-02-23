@@ -23,6 +23,7 @@
 
 #include <ReviewsBackend/AbstractLoginBackend.h>
 #include <QVariant>
+#include "LoginMetaTypes.h"
 
 class ComUbuntuSsoApplicationCredentialsInterface;
 class UbuntuLoginBackend : public AbstractLoginBackend
@@ -33,18 +34,19 @@ class UbuntuLoginBackend : public AbstractLoginBackend
         
         virtual void login();
         virtual void registerAndLogin();
+        virtual void logout();
         virtual QString displayName() const;
         virtual bool hasCredentials() const;
 
     private slots:
-        void credentialsError(const QString& app, const QString&, const QString& );
+        void credentialsError(const QString& app, const QString& a, const QString& b );
         void authorizationDenied(const QString& app);
-        void successfulLogin(const QString& app, const QMap<QString, QString>& credentials);
+        void successfulLogin(const QString& app, const MapString& credentials);
 
     private:
         QString appname() const;
         ComUbuntuSsoApplicationCredentialsInterface* m_interface;
-        QMap<QString,QString> m_credentials;
+        MapString m_credentials;
 };
 
 #endif // UBUNTULOGINBACKEND_H

@@ -50,6 +50,19 @@ Item {
         }
     }
     
+    Button {
+        visible: parent.state=="logged"
+        anchors {
+            verticalCenter: parent.verticalCenter
+            right: parent.right
+            rightMargin: 5
+        }
+        
+        text: i18n("Logout")
+        iconSource: "dialog-close"
+        onClicked: reviews.logout();
+    }
+    
     state: reviews.hasCredentials ? "logged" : "notlogged"
     states: [
         State {

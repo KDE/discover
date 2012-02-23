@@ -34,6 +34,7 @@ class AbstractLoginBackend : public QObject
     public slots:
         virtual void login() = 0;
         virtual void registerAndLogin() = 0;
+        virtual void logout() = 0;
 
     signals:
         void connectionStateChanged();

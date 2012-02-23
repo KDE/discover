@@ -262,3 +262,8 @@ void ReviewsBackend::registerAndLogin()
 {
     m_loginBackend->registerAndLogin();
 }
+
+void ReviewsBackend::logout()
+{
+    m_loginBackend->logout();
+}
