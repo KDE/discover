@@ -1,4 +1,4 @@
-include_directories(.. ${CMAKE_CURRENT_BINARY_DIR}/.. ../../libmuon)
+include_directories(.. ${CMAKE_CURRENT_BINARY_DIR}/.. ../libmuon)
 
 set(muon_installer_qml_SRCS
     main.cpp

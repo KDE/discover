@@ -1,5 +1,3 @@
-add_subdirectory(muon-qml)
-
 if (HAVEKDE4_6_60)
 else (HAVEKDE4_6_60)
     set(messagewidget_SRCS backports/kmessagewidget.cpp)
