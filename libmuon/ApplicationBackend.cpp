@@ -214,14 +214,12 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error, const QVariantMap 
     // Undo marking if an AuthError is encountered, since our install/remove
     // buttons do both marking and committing
     switch (error) {
-    case QApt::AuthError:
-        cancelTransaction(m_currentTransaction->application());
-        m_backend->undo();
-        break;
     case QApt::UserCancelError:
         // Handled in transactionCancelled()
         return;
     default:
+        cancelTransaction(m_currentTransaction->application());
+        m_backend->undo();
         break;
     }
 
