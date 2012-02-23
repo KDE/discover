@@ -33,6 +33,7 @@
 #include <KFileDialog>
 #include <KMessageBox>
 #include <KProcess>
+#include <KProtocolManager>
 #include <KStandardDirs>
 #include <KVBox>
 #include <Phonon/MediaObject>
@@ -75,6 +76,10 @@ void MuonMainWindow::initObject()
 
     if (m_backend->xapianIndexNeedsUpdate()) {
         m_backend->updateXapianIndex();
+    }
+
+    if (KProtocolManager::proxyType() == KProtocolManager::ManualProxy) {
+        m_backend->setWorkerProxy(KProtocolManager::proxyFor("http"));
     }
 
     emit backendReady(m_backend);
