@@ -40,9 +40,11 @@
 // LibQApt includes
 #include <LibQApt/Backend>
 
+// Libmuon includes
+#include <Application.h>
+#include <ChangesDialog.h>
+
 // Own includes
-#include "../libmuon/ChangesDialog.h"
-#include "../installer/Application.h"
 #include "UpdateModel/UpdateModel.h"
 #include "UpdateModel/UpdateItem.h"
 #include "UpdateModel/UpdateDelegate.h"
@@ -133,6 +135,13 @@ void UpdaterWidget::reload()
 void UpdaterWidget::populateUpdateModel()
 {
     QApt::PackageList upgradeList = m_backend->upgradeablePackages();
+
+    if (upgradeList.isEmpty()) {
+        QApplication::restoreOverrideCursor();
+        m_busyWidget->stop();
+        checkUpToDate();
+        return;
+    }
 
     UpdateItem *securityItem = new UpdateItem(i18nc("@item:inlistbox", "Important Security Updates"),
                                               KIcon("security-medium"));

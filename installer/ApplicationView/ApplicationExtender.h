@@ -18,49 +18,48 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef TRANSACTION_H
-#define TRANSACTION_H
+#ifndef APPLICATIONEXTENDER_H
+#define APPLICATIONEXTENDER_H
 
-#include <QtCore/QHash>
+#include <QtGui/QWidget>
 
-#include <LibQApt/Package>
+#include <LibQApt/Globals>
+
+#include "ApplicationBackend.h"
+#include "Transaction/Transaction.h"
+
+class QProgressBar;
+class QPushButton;
 
 class Application;
+class ApplicationBackend;
 
-enum TransactionState {
-    InvalidState = 0,
-    QueuedState = 1,
-    RunningState = 2,
-    DoneState = 3
-};
-
-enum TransactionAction {
-    InvalidAction = 0,
-    InstallApp = 1,
-    RemoveApp = 2,
-    ChangeAddons = 3
-};
-
-class Transaction
+class ApplicationExtender : public QWidget
 {
+    Q_OBJECT
 public:
-    explicit Transaction (Application *app, TransactionAction);
-    explicit Transaction (Application *app, TransactionAction,
-                          const QHash<QApt::Package *, QApt::Package::State> &addons);
-    ~Transaction();
-
-    void setState(TransactionState state);
-
-    Application *application() const;
-    TransactionAction action() const;
-    TransactionState state() const;
-    QHash<QApt::Package *, QApt::Package::State> addons() const;
+    ApplicationExtender(QWidget *parent, Application *app, ApplicationBackend *backend);
+    ~ApplicationExtender();
 
 private:
-    Application *m_application;
-    TransactionAction m_action;
-    TransactionState m_state;
-    QHash<QApt::Package *, QApt::Package::State> m_addons;
+    Application *m_app;
+    ApplicationBackend *m_appBackend;
+    QPushButton *m_actionButton;
+    QPushButton *m_cancelButton;
+
+private Q_SLOTS:
+    void workerEvent(QApt::WorkerEvent event, Transaction *transaction);
+    void transactionCancelled(Application *app);
+    void emitInfoButtonClicked();
+    void emitRemoveButtonClicked();
+    void emitInstallButtonClicked();
+    void emitCancelButtonClicked();
+
+Q_SIGNALS:
+    void infoButtonClicked(Application *app);
+    void removeButtonClicked(Application *app);
+    void installButtonClicked(Application *app);
+    void cancelButtonClicked(Application *app);
 };
 
 #endif

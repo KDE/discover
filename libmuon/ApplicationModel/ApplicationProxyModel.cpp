@@ -23,9 +23,8 @@
 #include <LibQApt/Backend>
 
 // Own includes
-#include "../Application.h"
+#include "Application.h"
 #include "ApplicationModel.h"
-#include <QDebug>
 
 ApplicationProxyModel::ApplicationProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)

@@ -26,9 +26,11 @@
 // KDE includes
 #include <KIcon>
 
+// Libmuon includes
+#include <Application.h>
+
 // Own includes
 #include "ApplicationDetailsWidget.h"
-#include "../Application.h"
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
 
 ApplicationDetailsView::ApplicationDetailsView(QWidget *parent, ApplicationBackend *backend)

@@ -17,6 +17,7 @@ set(muon_SRCS
     DownloadModel/DownloadModel.cpp
     DownloadModel/DownloadDelegate.cpp
     DownloadWidget.cpp
+    FilterWidget/ArchitectureFilter.cpp
     FilterWidget/CategoryFilter.cpp
     FilterWidget/FilterModel.cpp
     FilterWidget/FilterWidget.cpp

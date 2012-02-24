@@ -20,26 +20,32 @@
 
 #include "ApplicationViewWidget.h"
 
+// Qt includes
 #include <QApplication>
 #include <QtGui/QTreeView>
 #include <QtGui/QVBoxLayout>
 
+// KDE includes
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
 #include <KDebug>
 
+// LibQApt includes
 #include <LibQApt/Backend>
 #include <LibQApt/Package>
 
-#include "ApplicationModel.h"
-#include "ApplicationProxyModel.h"
+// Libmuon includes
+#include <Application.h>
+#include <ApplicationBackend.h>
+#include <ApplicationModel/ApplicationModel.h>
+#include <ApplicationModel/ApplicationProxyModel.h>
+#include <Category/Category.h>
+#include <Transaction/Transaction.h>
+
+// Own includes
 #include "ApplicationDelegate.h"
-#include "../Application.h"
-#include "../ApplicationBackend.h"
 #include "../ApplicationDetailsView/ApplicationDetailsView.h"
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
-#include "../CategoryView/Category.h"
-#include "../Transaction.h"
 
 ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend *appBackend)
         : AbstractViewBase(parent)

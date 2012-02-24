@@ -29,9 +29,11 @@
 #include <KLocale>
 #include <KDebug>
 
+// Libmuon includes
+#include <Application.h>
+
 // Own includes
 #include "UpdateItem.h"
-#include "../../installer/Application.h"
 
 #define ICON_SIZE KIconLoader::SizeSmallMedium
 

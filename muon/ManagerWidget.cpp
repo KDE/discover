@@ -82,4 +82,9 @@ void ManagerWidget::filterByOrigin(const QString &originName)
     m_proxyModel->setOriginFilter(origin);
 }
 
+void ManagerWidget::filterByArchitecture(const QString &arch)
+{
+    m_proxyModel->setArchFilter(arch);
+}
+
 #include "ManagerWidget.moc"

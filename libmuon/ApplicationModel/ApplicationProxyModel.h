@@ -26,7 +26,9 @@
 
 #include <LibQApt/Package>
 
-#include "CategoryView/Category.h"
+#include <Category/Category.h>
+
+#include "libmuonprivate_export.h"
 
 namespace QApt {
     class Backend;
@@ -34,7 +36,7 @@ namespace QApt {
 
 class Application;
 
-class ApplicationProxyModel : public QSortFilterProxyModel
+class MUONPRIVATE_EXPORT ApplicationProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
     Q_PROPERTY(QAbstractItemModel* sourceModel READ sourceModel WRITE setSourceModel)

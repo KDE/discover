@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,32 +18,35 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MANAGERWIDGET_H
-#define MANAGERWIDGET_H
+#ifndef REVIEWWIDGET_H
+#define REVIEWWIDGET_H
 
-#include <QModelIndex>
+#include <KVBox>
 
-#include <LibQApt/Package>
+#include "libmuonprivate_export.h"
 
-#include "PackageModel/PackageWidget.h"
+class QLabel;
 
-namespace QApt {
-    class Backend;
-}
+class KRatingWidget;
 
-class ManagerWidget : public PackageWidget
+class Review;
+
+class MUONPRIVATE_EXPORT ReviewWidget : public KVBox
 {
     Q_OBJECT
 public:
-    explicit ManagerWidget(QWidget *parent);
-    ~ManagerWidget();
+    ReviewWidget(QWidget *parent);
+    ~ReviewWidget();
 
-public Q_SLOTS:
-    void reload();
-    void filterByGroup(const QString &groupName);
-    void filterByStatus(const QApt::Package::State state);
-    void filterByOrigin(const QString &originName);
-    void filterByArchitecture(const QString &arch);
+    void setReview(Review *review);
+
+private:
+    KRatingWidget *m_ratingWidget;
+    QLabel *m_summaryLabel;
+    QLabel *m_nameDateLabel;
+    QLabel *m_reviewLabel;
+    QLabel *m_versionLabel;
+    QLabel *m_usefulnessLabel;
 };
 
 #endif

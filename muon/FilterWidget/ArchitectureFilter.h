@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2012 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,32 +18,26 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MANAGERWIDGET_H
-#define MANAGERWIDGET_H
+#ifndef ARCHITECTUREFILTER_H
+#define ARCHITECTUREFILTER_H
 
-#include <QModelIndex>
-
-#include <LibQApt/Package>
-
-#include "PackageModel/PackageWidget.h"
+#include "FilterModel.h"
 
 namespace QApt {
     class Backend;
 }
 
-class ManagerWidget : public PackageWidget
+class ArchitectureFilter : public FilterModel
 {
-    Q_OBJECT
 public:
-    explicit ManagerWidget(QWidget *parent);
-    ~ManagerWidget();
+    ArchitectureFilter(QObject *parent, QApt::Backend *backend);
 
-public Q_SLOTS:
-    void reload();
-    void filterByGroup(const QString &groupName);
-    void filterByStatus(const QApt::Package::State state);
-    void filterByOrigin(const QString &originName);
-    void filterByArchitecture(const QString &arch);
+    bool shouldShow() const;
+    void populate();
+
+private:
+    QApt::Backend *m_backend;
+    bool m_shouldShow;
 };
 
-#endif
+#endif // ARCHITECTUREFILTER_H

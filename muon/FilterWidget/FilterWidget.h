@@ -55,6 +55,7 @@ private:
     QListView *m_categoriesList;
     QListView *m_statusList;
     QListView *m_originList;
+    QListView *m_archList;
 
     QVector<QListView *> m_listViews;
     QVector<FilterModel *> m_filterModels;
@@ -71,11 +72,13 @@ private Q_SLOTS:
     void categoryActivated(const QModelIndex &index);
     void statusActivated(const QModelIndex &index);
     void originActivated(const QModelIndex &index);
+    void architectureActivated(const QModelIndex &index);
 
 signals:
     void filterByGroup(const QString &groupName);
     void filterByStatus(const QApt::Package::State state);
     void filterByOrigin(const QString &originName);
+    void filterByArchitecture(const QString &architecture);
 };
 
 #endif

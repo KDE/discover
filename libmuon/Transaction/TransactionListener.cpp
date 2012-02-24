@@ -23,8 +23,8 @@
 #include "ApplicationBackend.h"
 #include "Transaction.h"
 #include "Application.h"
+
 #include <KLocalizedString>
-#include <QDebug>
 
 TransactionListener::TransactionListener(QObject* parent)
     : QObject(parent)

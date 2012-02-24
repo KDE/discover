@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@kde.org>                *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,59 +18,46 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef REVIEWSBACKEND_H
-#define REVIEWSBACKEND_H
+#ifndef CATEGORYMODEL_H
+#define CATEGORYMODEL_H
 
-#include <QtCore/QString>
-#include <QtCore/QVariant>
+#include <QtGui/QStandardItemModel>
 
-class KJob;
-class KTemporaryFile;
+#include "libmuonprivate_export.h"
 
-namespace QApt {
-    class Backend;
-}
+class Category;
 
-class Application;
-class Rating;
-class Review;
-
-class ReviewsBackend : public QObject
+class MUONPRIVATE_EXPORT CategoryModel : public QStandardItemModel
 {
     Q_OBJECT
-public:
-    ReviewsBackend(QObject *parent);
-    ~ReviewsBackend();
+    public:
+        enum CategoryModelRole {
+            CategoryTypeRole = Qt::UserRole + 1,
+            AndOrFilterRole = Qt::UserRole + 2,
+            NotFilterRole = Qt::UserRole + 3,
+            CategoryRole
+        };
 
-    Q_SCRIPTABLE Rating *ratingForApplication(Application *app) const;
+        enum CatViewType {
+            /// An invalid type
+            InvalidType = 0,
+            /// An AppView since there are no sub-cats
+            CategoryType = 1,
+            /// A SubCategoryView
+            SubCatType = 2
+        };
+        Q_ENUMS(CatViewType);
 
-    void setAptBackend(QApt::Backend *aptBackend);
-    void fetchReviews(Application* app, int page=1);
-    void clearReviewCache();
-    void stopPendingJobs();
-    bool isFetching() const;
+        explicit CategoryModel(QObject* parent = 0);
 
-private:
-    QApt::Backend *m_aptBackend;
+        void setCategories(const QList<Category *> &categoryList, const QString &rootName);
+        Q_SCRIPTABLE Category* categoryForIndex(int row);
 
-    QString m_serverBase;
-    KTemporaryFile *m_ratingsFile;
-    KTemporaryFile *m_reviewsFile;
-    QHash<QString, Rating *> m_ratings;
-    // cache key is package name + app name, since both by their own may not be unique
-    QHash<QString, QList<Review *> > m_reviewsCache;
-    QHash<KJob *, Application *> m_jobHash;
+        Q_SCRIPTABLE void populateCategories(const QString& rootName);
+        Q_SCRIPTABLE void setSubcategories(Category* c);
 
-    void fetchRatings();
-    QString getLanguage();
-
-private Q_SLOTS:
-    void ratingsFetched(KJob *job);
-    void reviewsFetched(KJob *job);
-
-Q_SIGNALS:
-    void reviewsReady(Application *app, QList<Review *>);
-    void ratingsReady();
+    private:
+        QList<Category*> m_categoryList;
 };
 
-#endif
+#endif // CATEGORYMODEL_H

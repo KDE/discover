@@ -99,6 +99,12 @@ void PackageProxyModel::setOriginFilter(const QString &origin)
     invalidate();
 }
 
+void PackageProxyModel::setArchFilter(const QString &arch)
+{
+    m_archFilter = arch;
+    invalidate();
+}
+
 bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
     //Our "main"-method
@@ -125,6 +131,16 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
             return false;
         }
     }
+
+    if (!m_archFilter.isEmpty()) {
+        if (!(package->architecture() == m_archFilter)) {
+            return false;
+        }
+    }
+
+    // TODO before 1.4: Configurable
+    if (package->isMultiArchDuplicate())
+        return false;
 
     if (m_sortByRelevancy) {
         return m_packages.contains(package);

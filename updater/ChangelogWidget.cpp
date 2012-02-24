@@ -154,6 +154,9 @@ void ChangelogWidget::stopPendingJobs()
 
 void ChangelogWidget::changelogFetched(KJob *job)
 {
+    if (!m_package)
+        return;
+
     // Work around http://bugreports.qt.nokia.com/browse/QTBUG-2533 by forcibly resetting the CharFormat
     QTextCharFormat format;
     m_changelogBrowser->setCurrentCharFormat(format);

@@ -22,7 +22,6 @@
 #include <KAboutData>
 #include <KCmdLineArgs>
 #include <KUniqueApplication>
-#include <ApplicationWindow.h>
 #include <KStandardDirs>
 #include "MuonInstallerDeclarativeMainWindow.h"
 

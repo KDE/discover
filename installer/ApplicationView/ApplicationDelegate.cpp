@@ -40,9 +40,12 @@
 // LibQApt includes
 #include <LibQApt/Backend>
 
+//Libmuon includes
+#include <ApplicationModel/ApplicationModel.h>
+#include <ApplicationModel/ApplicationProxyModel.h>
+
+// Own includes
 #include "ApplicationExtender.h"
-#include "ApplicationModel.h"
-#include "ApplicationProxyModel.h"
 
 #define FAV_ICON_SIZE 24
 #define EMBLEM_ICON_SIZE 8

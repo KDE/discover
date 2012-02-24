@@ -1,23 +1,19 @@
-add_subdirectory(muon-qml)
-
 if (HAVEKDE4_6_60)
 else (HAVEKDE4_6_60)
     set(messagewidget_SRCS backports/kmessagewidget.cpp)
     include_directories(backports)
 endif (HAVEKDE4_6_60)
 
+include_directories(../libmuon)
+
 set(muon_installer_SRCS
     main.cpp
-    Application.cpp
-    ApplicationBackend.cpp
     ApplicationLauncher.cpp
     ApplicationWindow.cpp
-    ApplicationModel/ApplicationModel.cpp
-    ApplicationModel/ApplicationProxyModel.cpp
-    ApplicationModel/ApplicationDelegate.cpp
-    ApplicationModel/ApplicationExtender.cpp
-    ApplicationModel/ApplicationListView.cpp
-    ApplicationModel/ApplicationViewWidget.cpp
+    ApplicationView/ApplicationDelegate.cpp
+    ApplicationView/ApplicationExtender.cpp
+    ApplicationView/ApplicationListView.cpp
+    ApplicationView/ApplicationViewWidget.cpp
     ApplicationDetailsView/ApplicationDetailsWidget.cpp
     ApplicationDetailsView/ApplicationDetailsView.cpp
     ApplicationDetailsView/AddonsWidget.cpp
@@ -27,7 +23,6 @@ set(muon_installer_SRCS
     BreadcrumbWidget/BreadcrumbItem.cpp
     BreadcrumbWidget/BreadcrumbWidget.cpp
     BreadcrumbWidget/BreadcrumbItemButton.cpp
-    CategoryView/Category.cpp
     CategoryView/CategoryDrawer.cpp
     CategoryView/CategoryView.cpp
     CategoryView/CategoryViewWidget.cpp
@@ -35,30 +30,16 @@ set(muon_installer_SRCS
     effects/GraphicsOpacityDropShadowEffect.cpp
     ViewSwitcher.cpp
     ScreenShotOverlay.cpp
-    Transaction.cpp
-    CategoryModel.cpp
-    TransactionListener.cpp
-    ReviewsBackend/Rating.cpp
-    ReviewsBackend/Review.cpp
-    ReviewsBackend/ReviewWidget.cpp
-    ReviewsBackend/ReviewsWidget.cpp
-    ReviewsBackend/ReviewsBackend.cpp
     ${messagewidget_SRCS})
 
 kde4_add_kcfg_files(muon_installer_SRCS GENERATE_MOC config/MuonInstallerSettings.kcfgc)
 
 kde4_add_executable(muon-installer ${muon_installer_SRCS})
 
-if(NOT qjson_LIBRARIES) #hack to compatibilize different qjson finder versions
-    set(qjson_LIBRARIES ${QJSON_LIBRARIES})
-endif()
-
 target_link_libraries(muon-installer muonprivate
                                      ${KDE4_KIO_LIBS}
                                      ${QAPT_LIBRARY}
-                                     ${DEBCONF_KDE_LIB}
                                      ${QZEITGEIST_LIBRARY}
-                                     ${qjson_LIBRARIES}
                                      ${QT_QTDECLARATIVE_LIBRARY})
 
 if (ENABLE_QZEITGEIST)

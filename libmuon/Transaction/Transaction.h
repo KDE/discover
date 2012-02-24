@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@kde.org>                *
+ *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,45 +18,51 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef CATEGORYMODEL_H
-#define CATEGORYMODEL_H
+#ifndef TRANSACTION_H
+#define TRANSACTION_H
 
-#include <QtGui/QStandardItemModel>
+#include <QtCore/QHash>
 
-class Category;
+#include <LibQApt/Package>
 
-class CategoryModel : public QStandardItemModel
-{
-    Q_OBJECT
-    public:
-        enum CategoryModelRole {
-            CategoryTypeRole = Qt::UserRole + 1,
-            AndOrFilterRole = Qt::UserRole + 2,
-            NotFilterRole = Qt::UserRole + 3,
-            CategoryRole
-        };
-        
-        enum CatViewType {
-            /// An invalid type
-            InvalidType = 0,
-            /// An AppView since there are no sub-cats
-            CategoryType = 1,
-            /// A SubCategoryView
-            SubCatType = 2
-        };
-        Q_ENUMS(CatViewType);
-        
-        explicit CategoryModel(QObject* parent = 0);
-        virtual ~CategoryModel();
-        
-        void setCategories(const QList<Category *> &categoryList, const QString &rootName);
-        Q_SCRIPTABLE Category* categoryForIndex(int row);
+#include "libmuonprivate_export.h"
 
-        Q_SCRIPTABLE void populateCategories(const QString& rootName);
-        Q_SCRIPTABLE void setSubcategories(Category* c);
-        
-    private:
-        QList<Category*> m_categoryList;
+class Application;
+
+enum TransactionState {
+    InvalidState = 0,
+    QueuedState = 1,
+    RunningState = 2,
+    DoneState = 3
 };
 
-#endif // CATEGORYMODEL_H
+enum TransactionAction {
+    InvalidAction = 0,
+    InstallApp = 1,
+    RemoveApp = 2,
+    ChangeAddons = 3
+};
+
+class MUONPRIVATE_EXPORT Transaction
+{
+public:
+    explicit Transaction (Application *app, TransactionAction);
+    explicit Transaction (Application *app, TransactionAction,
+                          const QHash<QApt::Package *, QApt::Package::State> &addons);
+    ~Transaction();
+
+    void setState(TransactionState state);
+
+    Application *application() const;
+    TransactionAction action() const;
+    TransactionState state() const;
+    QHash<QApt::Package *, QApt::Package::State> addons() const;
+
+private:
+    Application *m_application;
+    TransactionAction m_action;
+    TransactionState m_state;
+    QHash<QApt::Package *, QApt::Package::State> m_addons;
+};
+
+#endif

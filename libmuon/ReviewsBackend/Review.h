@@ -18,30 +18,61 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef RATING_H
-#define RATING_H
+#ifndef REVIEW_H
+#define REVIEW_H
 
-#include <QtCore/QObject>
+#include <QtCore/QDateTime>
 #include <QtCore/QVariant>
 
-class Rating : public QObject
-{
-Q_OBJECT
-public:
-    explicit Rating(const QVariantMap &data);
-    ~Rating();
+#include "libmuonprivate_export.h"
 
-    QString packageName() const;
+namespace QApt {
+    class Package;
+}
+
+class MUONPRIVATE_EXPORT Review
+{
+public:
+    explicit Review(const QVariantMap &data);
+    ~Review();
+
+    // Creation date determines greater than/less than
+    bool operator<(const Review &rhs) const;
+    bool operator>(const Review &rhs) const;
+
     QString applicationName() const;
-    Q_SCRIPTABLE quint64 ratingCount() const;
-    // 0.0 - 5.0 ranged rating multiplied by two and rounded for KRating*
-    Q_SCRIPTABLE int rating() const;
+    QString packageName() const;
+    QString packageVersion() const;
+    QString language() const;
+    QString summary() const;
+    QString reviewText() const;
+    QString reviewer() const;
+    QDateTime creationDate() const;
+    bool shouldShow() const;
+    quint64 id() const;
+    int rating() const;
+    int usefulnessTotal() const;
+    int usefulnessFavorable() const;
+    QApt::Package *package() const;
+
+    void setPackage(QApt::Package *package);
 
 private:
-    QString m_packageName;
     QString m_appName;
-    quint64 m_ratingCount;
+    QDateTime m_creationDate;
+    bool m_shouldShow;
+    quint64 m_id;
+    QString m_language;
+    QString m_packageName;
     int m_rating;
+    QString m_reviewText;
+    QString m_reviewer;
+    int m_usefulnessTotal;
+    int m_usefulnessFavorable;
+    QString m_summary;
+    QString m_packageVersion;
+
+    QApt::Package *m_package;
 };
 
 #endif

@@ -18,59 +18,61 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef REVIEW_H
-#define REVIEW_H
+#ifndef REVIEWSBACKEND_H
+#define REVIEWSBACKEND_H
 
-#include <QtCore/QDateTime>
+#include <QtCore/QString>
 #include <QtCore/QVariant>
 
+#include "libmuonprivate_export.h"
+
+class KJob;
+class KTemporaryFile;
+
 namespace QApt {
-    class Package;
+    class Backend;
 }
 
-class Review
+class Application;
+class Rating;
+class Review;
+
+class MUONPRIVATE_EXPORT ReviewsBackend : public QObject
 {
+    Q_OBJECT
 public:
-    explicit Review(const QVariantMap &data);
-    ~Review();
+    ReviewsBackend(QObject *parent);
+    ~ReviewsBackend();
 
-    // Creation date determines greater than/less than
-    bool operator<(const Review &rhs) const;
-    bool operator>(const Review &rhs) const;
+    Q_SCRIPTABLE Rating *ratingForApplication(Application *app) const;
 
-    QString applicationName() const;
-    QString packageName() const;
-    QString packageVersion() const;
-    QString language() const;
-    QString summary() const;
-    QString reviewText() const;
-    QString reviewer() const;
-    QDateTime creationDate() const;
-    bool shouldShow() const;
-    quint64 id() const;
-    int rating() const;
-    int usefulnessTotal() const;
-    int usefulnessFavorable() const;
-    QApt::Package *package() const;
-
-    void setPackage(QApt::Package *package);
+    void setAptBackend(QApt::Backend *aptBackend);
+    void fetchReviews(Application* app, int page=1);
+    void clearReviewCache();
+    void stopPendingJobs();
+    bool isFetching() const;
 
 private:
-    QString m_appName;
-    QDateTime m_creationDate;
-    bool m_shouldShow;
-    quint64 m_id;
-    QString m_language;
-    QString m_packageName;
-    int m_rating;
-    QString m_reviewText;
-    QString m_reviewer;
-    int m_usefulnessTotal;
-    int m_usefulnessFavorable;
-    QString m_summary;
-    QString m_packageVersion;
+    QApt::Backend *m_aptBackend;
 
-    QApt::Package *m_package;
+    QString m_serverBase;
+    KTemporaryFile *m_ratingsFile;
+    KTemporaryFile *m_reviewsFile;
+    QHash<QString, Rating *> m_ratings;
+    // cache key is package name + app name, since both by their own may not be unique
+    QHash<QString, QList<Review *> > m_reviewsCache;
+    QHash<KJob *, Application *> m_jobHash;
+
+    void fetchRatings();
+    QString getLanguage();
+
+private Q_SLOTS:
+    void ratingsFetched(KJob *job);
+    void reviewsFetched(KJob *job);
+
+Q_SIGNALS:
+    void reviewsReady(Application *app, QList<Review *>);
+    void ratingsReady();
 };
 
 #endif

@@ -18,33 +18,36 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef REVIEWWIDGET_H
-#define REVIEWWIDGET_H
+#ifndef REVIEWSWIDGET_H
+#define REVIEWSWIDGET_H
 
 #include <KVBox>
 
-class QLabel;
+#include "libmuonprivate_export.h"
 
-class KRatingWidget;
+class QLabel;
+class QToolButton;
+class QVBoxLayout;
 
 class Review;
 
-class ReviewWidget : public KVBox
+class MUONPRIVATE_EXPORT ReviewsWidget : public KVBox
 {
     Q_OBJECT
 public:
-    ReviewWidget(QWidget *parent);
-    ~ReviewWidget();
+    ReviewsWidget(QWidget *parent);
+    ~ReviewsWidget();
 
-    void setReview(Review *review);
+    void addReviews(QList<Review *> reviews);
 
 private:
-    KRatingWidget *m_ratingWidget;
-    QLabel *m_summaryLabel;
-    QLabel *m_nameDateLabel;
-    QLabel *m_reviewLabel;
-    QLabel *m_versionLabel;
-    QLabel *m_usefulnessLabel;
+    QToolButton *m_expandButton;
+    QLabel *m_statusLabel;
+    QWidget *m_reviewContainer;
+    QVBoxLayout *m_reviewLayout;
+
+private Q_SLOTS:
+    void expandButtonClicked();
 };
 
 #endif

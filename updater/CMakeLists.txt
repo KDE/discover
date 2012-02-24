@@ -4,6 +4,8 @@ else (HAVEKDE4_6_60)
     include_directories(backports)
 endif (HAVEKDE4_6_60)
 
+include_directories(../libmuon)
+
 set(muon_updater_SRCS
     main.cpp
     MainWindow.cpp
@@ -13,7 +15,6 @@ set(muon_updater_SRCS
     UpdateModel/UpdateItem.cpp
     UpdateModel/UpdateModel.cpp
     UpdateModel/UpdateDelegate.cpp
-    ../installer/Application.cpp
     config/UpdaterSettingsDialog.cpp
     ${messagewidget_SRCS})
 
@@ -23,7 +24,7 @@ target_link_libraries(muon-updater muonprivate
                                    ${KDE4_KIO_LIBS}
                                    ${KDE4_SOLID_LIBS}
                                    ${QAPT_LIBRARY})
-                                   
+
 if (ENABLE_QZEITGEIST)
     target_link_libraries(muon-updater ${QZEITGEIST_LIBRARY})
 endif (ENABLE_QZEITGEIST)

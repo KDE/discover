@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,48 +18,32 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONEXTENDER_H
-#define APPLICATIONEXTENDER_H
+#ifndef RATING_H
+#define RATING_H
 
-#include <QtGui/QWidget>
+#include <QtCore/QObject>
+#include <QtCore/QVariant>
 
-#include <LibQApt/Globals>
+#include "libmuonprivate_export.h"
 
-#include "ApplicationBackend.h"
-#include "Transaction.h"
-
-class QProgressBar;
-class QPushButton;
-
-class Application;
-class ApplicationBackend;
-
-class ApplicationExtender : public QWidget
+class MUONPRIVATE_EXPORT Rating : public QObject
 {
-    Q_OBJECT
+Q_OBJECT
 public:
-    ApplicationExtender(QWidget *parent, Application *app, ApplicationBackend *backend);
-    ~ApplicationExtender();
+    explicit Rating(const QVariantMap &data);
+    ~Rating();
+
+    QString packageName() const;
+    QString applicationName() const;
+    Q_SCRIPTABLE quint64 ratingCount() const;
+    // 0.0 - 5.0 ranged rating multiplied by two and rounded for KRating*
+    Q_SCRIPTABLE int rating() const;
 
 private:
-    Application *m_app;
-    ApplicationBackend *m_appBackend;
-    QPushButton *m_actionButton;
-    QPushButton *m_cancelButton;
-
-private Q_SLOTS:
-    void workerEvent(QApt::WorkerEvent event, Transaction *transaction);
-    void transactionCancelled(Application *app);
-    void emitInfoButtonClicked();
-    void emitRemoveButtonClicked();
-    void emitInstallButtonClicked();
-    void emitCancelButtonClicked();
-
-Q_SIGNALS:
-    void infoButtonClicked(Application *app);
-    void removeButtonClicked(Application *app);
-    void installButtonClicked(Application *app);
-    void cancelButtonClicked(Application *app);
+    QString m_packageName;
+    QString m_appName;
+    quint64 m_ratingCount;
+    int m_rating;
 };
 
 #endif

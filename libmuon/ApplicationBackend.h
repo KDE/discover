@@ -29,6 +29,8 @@
 #include <LibQApt/Globals>
 #include <LibQApt/Package>
 
+#include "libmuonprivate_export.h"
+
 namespace QApt {
     class Backend;
 }
@@ -42,7 +44,7 @@ class Application;
 class ReviewsBackend;
 class Transaction;
 
-class ApplicationBackend : public QObject
+class MUONPRIVATE_EXPORT ApplicationBackend : public QObject
 {
     Q_OBJECT
 public:
