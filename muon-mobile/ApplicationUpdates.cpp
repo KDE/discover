@@ -20,8 +20,8 @@
 
 #include "ApplicationUpdates.h"
 #include "BackendsSingleton.h"
-#include "MuonInstallerDeclarativeMainWindow.h"
 #include <Application.h>
+#include "MuonInstallerMainWindow.h"
 #include <LibQApt/Backend>
 
 ApplicationUpdates::ApplicationUpdates(QObject* parent): QObject(parent)

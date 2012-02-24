@@ -2,7 +2,7 @@ include_directories(.. ${CMAKE_CURRENT_BINARY_DIR}/.. ../libmuon)
 
 set(muon_installer_qml_SRCS
     main.cpp
-    MuonInstallerDeclarativeMainWindow.cpp
+    MuonInstallerMainWindow.cpp
     ApplicationProxyModelHelper.cpp
     BackendsSingleton.cpp
     ReviewsModel.cpp

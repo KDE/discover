@@ -17,7 +17,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include "MuonInstallerDeclarativeMainWindow.h"
+#include "MuonInstallerMainWindow.h"
 
 // Qt includes
 #include <QDebug>

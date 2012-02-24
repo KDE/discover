@@ -23,7 +23,7 @@
 #include <KCmdLineArgs>
 #include <KUniqueApplication>
 #include <KStandardDirs>
-#include "MuonInstallerDeclarativeMainWindow.h"
+#include "MuonInstallerMainWindow.h"
 
 static const char description[] =
     I18N_NOOP("An application manager");
