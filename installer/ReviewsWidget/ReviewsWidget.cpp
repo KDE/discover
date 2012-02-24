@@ -29,7 +29,8 @@
 #include <KDialog>
 #include <KLocale>
 
-#include "Review.h"
+#include <ReviewsBackend/Review.h>
+
 #include "ReviewWidget.h"
 
 bool reviewsGreaterThan(Review *lhs, Review *rhs)

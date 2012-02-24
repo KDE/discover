@@ -67,7 +67,6 @@
 #include <MuonStrings.h>
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/Review.h>
-#include <ReviewsBackend/ReviewsWidget.h>
 #include <ReviewsBackend/ReviewsBackend.h>
 #include <Transaction/TransactionListener.h>
 #include "../../libmuon/mobile/src/mousecursor.h"
@@ -78,6 +77,7 @@
 // Own includes
 #include "AddonsWidget.h"
 #include "ClickableLabel.h"
+#include "ReviewsWidget/ReviewsWidget.h"
 #include "ScreenShotOverlay.h"
 
 #define BLUR_RADIUS 15
