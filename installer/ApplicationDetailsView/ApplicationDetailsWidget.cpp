@@ -260,6 +260,7 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     detailsGrid->setColumnStretch(1,1);
 
     m_reviewsWidget = new ReviewsWidget(widget);
+    connect(m_reviewsWidget, SIGNAL(fetchPage(int)), this, SLOT(fetchReviews(int)));
 
     QWidget *verticalSpacer = new QWidget(this);
     verticalSpacer->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
@@ -397,8 +398,8 @@ void ApplicationDetailsWidget::setApplication(Application *app)
 
     // Fetch reviews
     connect(reviewsBackend, SIGNAL(reviewsReady(Application*,QList<Review*>)),
-            this, SLOT(populateReviews(Application*,QList<Review*>)));
-    reviewsBackend->fetchReviews(app);
+	    this, SLOT(populateReviews(Application*,QList<Review*>)));
+    fetchReviews(1);
 
     fetchScreenshot(QApt::Thumbnail);
 }
@@ -489,6 +490,16 @@ void ApplicationDetailsWidget::populateAddons()
         m_addonsWidget->setAddons(addons);
         m_addonsWidget->show();
     }
+}
+
+void ApplicationDetailsWidget::fetchReviews(int page)
+{
+    if (!m_app) {
+	return;
+    }
+
+    m_appBackend->reviewsBackend()->fetchReviews(m_app, page);
+
 }
 
 void ApplicationDetailsWidget::populateReviews(Application *app, const QList<Review *> &reviews)
