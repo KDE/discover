@@ -43,7 +43,7 @@ void ArchitectureFilter::populate()
 {
     QStringList archList = m_backend->architectures();
 
-    if (archList.size() < 0) {
+    if (archList.size() < 2) {
         m_shouldShow = false;
         return;
     }
