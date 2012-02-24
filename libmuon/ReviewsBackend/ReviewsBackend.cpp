@@ -143,8 +143,8 @@ void ReviewsBackend::fetchReviews(Application *app, int page)
     
     QList<Review*> revs = m_reviewsCache.value(hashName);
     qDebug() << "============" << revs.size() << page;
-    if (revs.size()>(page*5)) { //there are 5 reviews per page
-        emit reviewsReady(app, revs.mid(page*5, 5));
+    if (revs.size()>(page*10)) { //there are 5 reviews per page
+	emit reviewsReady(app, revs.mid(page*10, 10));
         return;
     }
 
@@ -162,9 +162,9 @@ void ReviewsBackend::fetchReviews(Application *app, int page)
     // But that could be because the Ubuntu Software Center (which I used to
     // figure it out) is written in python, so you have to go hunting to where
     // a variable was initially initialized with a primitive to figure out its type.
-    KUrl reviewsUrl(m_serverBase % QLatin1Literal("reviews/filter/") % lang % '/'
-                    % origin % '/' % QLatin1Literal("any") % '/' % version % '/' % packageName
-                    % ';' % appName % '/' % QLatin1Literal("page") % '/' % QString::number(page));
+    KUrl reviewsUrl(m_serverBase % QLatin1String("reviews/filter/") % lang % '/'
+		    % origin % '/' % QLatin1String("any") % '/' % version % '/' % packageName
+		    % ';' % appName % '/' % QLatin1String("page") % '/' % QString::number(page));
 
     if (m_reviewsFile) {
         m_reviewsFile->deleteLater();
