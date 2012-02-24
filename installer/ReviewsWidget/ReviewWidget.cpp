@@ -30,7 +30,7 @@
 
 #include <LibQApt/Package>
 
-#include "Review.h"
+#include <ReviewsBackend/Review.h>
 
 ReviewWidget::ReviewWidget(QWidget *parent)
         : KVBox(parent)

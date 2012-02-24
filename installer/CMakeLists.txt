@@ -29,6 +29,8 @@ set(muon_installer_SRCS
     ClickableLabel.cpp
     effects/GraphicsOpacityDropShadowEffect.cpp
     ViewSwitcher.cpp
+    ReviewsWidget/ReviewWidget.cpp
+    ReviewsWidget/ReviewsWidget.cpp
     ScreenShotOverlay.cpp
     ${messagewidget_SRCS})
 

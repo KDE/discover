@@ -13,8 +13,6 @@ set(muon_LIB_SRCS
     mobile/src/mousecursor.cpp
     ReviewsBackend/Rating.cpp
     ReviewsBackend/Review.cpp
-    ReviewsBackend/ReviewWidget.cpp
-    ReviewsBackend/ReviewsWidget.cpp
     ReviewsBackend/ReviewsBackend.cpp
     settings/SettingsPageBase.cpp
     settings/NotifySettingsPage.cpp

@@ -23,15 +23,13 @@
 
 #include <KVBox>
 
-#include "libmuonprivate_export.h"
-
 class QLabel;
 
 class KRatingWidget;
 
 class Review;
 
-class MUONPRIVATE_EXPORT ReviewWidget : public KVBox
+class ReviewWidget : public KVBox
 {
     Q_OBJECT
 public:
