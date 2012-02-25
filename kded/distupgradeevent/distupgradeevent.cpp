@@ -35,7 +35,7 @@ DistUpgradeEvent::~DistUpgradeEvent()
 
 bool DistUpgradeEvent::upgradeAvailable()
 {
-    QString checkerFile = KStandardDirs::locate("appdata", "releasechecker");
+    QString checkerFile = KStandardDirs::locate("data", "muon-notifier/releasechecker");
     KProcess checkerProcess;
     checkerProcess.setProgram(QStringList() << "/usr/bin/python" << checkerFile);
 
