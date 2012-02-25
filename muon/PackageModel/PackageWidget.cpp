@@ -342,6 +342,7 @@ void PackageWidget::setSortedPackages()
 {
     QApt::PackageList packageList = m_watcher->future().result();
     m_model->setPackages(packageList);
+    m_proxyModel->search(QString());
     m_searchEdit->setEnabled(true);
     m_busyWidget->stop();
     QApplication::restoreOverrideCursor();
