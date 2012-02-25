@@ -138,7 +138,7 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
 {
     m_workerState.first = event;
 
-    if (event == QApt::XapianUpdateFinished) {
+    if (event == QApt::XapianUpdateFinished && !isReloading()) {
         emit xapianReloaded();
     }
 
