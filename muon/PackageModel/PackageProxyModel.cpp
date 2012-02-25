@@ -36,7 +36,7 @@ bool packageStatusLessThan(QApt::Package *p1, QApt::Package *p2)
 {
     return (p1->state() & (status_sort_magic))  <
            (p2->state() & (status_sort_magic));
-};
+}
 
 static const int requested_sort_magic = (QApt::Package::ToInstall
                                          | QApt::Package::ToRemove
@@ -78,6 +78,12 @@ void PackageProxyModel::search(const QString &searchText)
         m_sortByRelevancy = false;
     }
 
+    invalidate();
+}
+
+void PackageProxyModel::setSortByRelevancy(bool enabled)
+{
+    m_sortByRelevancy = enabled;
     invalidate();
 }
 
@@ -142,10 +148,7 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
     if (package->isMultiArchDuplicate())
         return false;
 
-    if (m_sortByRelevancy) {
-        return m_packages.contains(package);
-    }
-    return true;
+    return m_packages.contains(package);
 }
 
 QApt::Package *PackageProxyModel::packageAt(const QModelIndex &index) const

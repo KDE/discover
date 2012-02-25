@@ -138,6 +138,8 @@ PackageWidget::PackageWidget(QWidget *parent)
     connect(m_packageView, SIGNAL(currentPackageChanged(QModelIndex)),
             this, SLOT(packageActivated(QModelIndex)));
     connect(m_packageView, SIGNAL(selectionEmpty()), m_detailsWidget, SLOT(hide()));
+    connect(m_packageView->header(), SIGNAL(sectionClicked(int)),
+            this, SLOT(sectionClicked(int)));
     connect(m_searchEdit, SIGNAL(textChanged(QString)), m_searchTimer, SLOT(start()));
 
     QSplitter *splitter = new QSplitter(this);
@@ -343,6 +345,13 @@ void PackageWidget::setSortedPackages()
     m_searchEdit->setEnabled(true);
     m_busyWidget->stop();
     QApplication::restoreOverrideCursor();
+}
+
+void PackageWidget::sectionClicked(int section)
+{
+    if (section == 0) {
+        m_proxyModel->setSortByRelevancy(false);
+    }
 }
 
 void PackageWidget::startSearch()

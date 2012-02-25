@@ -39,6 +39,7 @@ public:
 
     void setBackend(QApt::Backend *backend);
     void search(const QString &searchText);
+    void setSortByRelevancy(bool enabled);
     void setGroupFilter(const QString &filterText);
     void setStateFilter(QApt::Package::State state);
     void setOriginFilter(const QString &origin);
