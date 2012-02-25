@@ -29,6 +29,7 @@
 BreadcrumbItem::BreadcrumbItem(QWidget *parent)
     : KHBox(parent)
     , m_hasChildren(false)
+    , m_associatedView(nullptr)
 {
     m_button = new BreadcrumbItemButton(this);
     hide();

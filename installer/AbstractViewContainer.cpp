@@ -74,6 +74,9 @@ void AbstractViewContainer::switchToSubView(AbstractViewBase *subView)
 
 void AbstractViewContainer::activateBreadcrumbItem(BreadcrumbItem *item)
 {
+    if (!item->associatedView())
+        return;
+
     m_viewStack->setCurrentWidget(item->associatedView());
 
     AbstractViewBase *currentWidget = static_cast<AbstractViewBase *>(m_viewStack->currentWidget());
