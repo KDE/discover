@@ -105,6 +105,7 @@ private Q_SLOTS:
     void addonsApplyButtonClicked(const QHash<QApt::Package *, QApt::Package::State> &changedAddons);
     void progressCommentChanged();
     void progressChanged();
+    void updateActionButton();
 
 public slots:
     void applicationRunningChanged(bool running);

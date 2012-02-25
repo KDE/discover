@@ -166,6 +166,7 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
 
     m_actionButton = new QPushButton(actionButtonWidget);
     connect(m_actionButton, SIGNAL(clicked()), this, SLOT(actionButtonClicked()));
+    connect(m_appBackend, SIGNAL(reloadFinished()), this, SLOT(updateActionButton()));
 
     m_progressBar = new QProgressBar(actionButtonWidget);
     m_progressBar->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Preferred);
@@ -342,16 +343,7 @@ void ApplicationDetailsWidget::setApplication(Application *app)
         m_menuPathWidget->hide();
     }
 
-    if (!app->package()->isInstalled()) {
-        m_statusLabel->setText(MuonStrings::global()->packageStateName(QApt::Package::NotInstalled));
-        m_actionButton->setText(i18nc("@action", "Install"));
-        m_actionButton->setIcon(KIcon("download"));
-        m_actionButton->show();
-    } else {
-        m_statusLabel->setText(MuonStrings::global()->packageStateName(QApt::Package::Installed));
-        m_actionButton->setText(i18nc("@action", "Remove"));
-        m_actionButton->setIcon(KIcon("edit-delete"));
-    }
+    updateActionButton();
 
     m_longDescLabel->setText(app->package()->longDescription());
 
@@ -539,6 +531,23 @@ void ApplicationDetailsWidget::progressChanged()
 void ApplicationDetailsWidget::progressCommentChanged()
 {
     m_progressBar->setFormat(m_listener->comment());
+}
+
+void ApplicationDetailsWidget::updateActionButton()
+{
+    if (!m_app)
+        return;
+
+    if (!m_app->package()->isInstalled()) {
+        m_statusLabel->setText(MuonStrings::global()->packageStateName(QApt::Package::NotInstalled));
+        m_actionButton->setText(i18nc("@action", "Install"));
+        m_actionButton->setIcon(KIcon("download"));
+        m_actionButton->show();
+    } else {
+        m_statusLabel->setText(MuonStrings::global()->packageStateName(QApt::Package::Installed));
+        m_actionButton->setText(i18nc("@action", "Remove"));
+        m_actionButton->setIcon(KIcon("edit-delete"));
+    }
 }
 
 #include "ApplicationDetailsWidget.moc"
