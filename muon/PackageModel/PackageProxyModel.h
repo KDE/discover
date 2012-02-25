@@ -55,6 +55,7 @@ protected:
 private:
     QApt::Backend *m_backend;
     QApt::PackageList m_packages;
+    QApt::PackageList m_searchPackages;
 
     QString m_searchText;
     QString m_groupFilter;

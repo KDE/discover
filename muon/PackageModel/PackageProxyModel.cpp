@@ -69,11 +69,11 @@ void PackageProxyModel::setBackend(QApt::Backend *backend)
 void PackageProxyModel::search(const QString &searchText)
 {
     // 1-character searches are painfully slow. >= 2 chars are fine, though
-    m_packages.clear();
     if (searchText.size() > 1) {
-        m_packages = m_backend->search(searchText);
+        m_searchPackages = m_backend->search(searchText);
         m_sortByRelevancy = true;
     } else {
+        m_searchPackages.clear();
         m_packages =  static_cast<PackageModel *>(sourceModel())->packages();
         m_sortByRelevancy = false;
     }
@@ -148,7 +148,10 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
     if (package->isMultiArchDuplicate())
         return false;
 
-    return m_packages.contains(package);
+    if (!m_searchPackages.isEmpty())
+        return m_searchPackages.contains(package);
+
+    return true;
 }
 
 QApt::Package *PackageProxyModel::packageAt(const QModelIndex &index) const
@@ -179,7 +182,7 @@ bool PackageProxyModel::lessThan(const QModelIndex &left, const QModelIndex &rig
               // This is expensive for very large datasets. It takes about 3 seconds with 30,000 packages
               // The order in m_packages is based on relevancy when returned by m_backend->search()
               // Use this order to determine less than
-              if (m_packages.indexOf(leftPackage) < m_packages.indexOf(rightPackage)) {
+              if (m_searchPackages.indexOf(leftPackage) < m_searchPackages.indexOf(rightPackage)) {
                   return false;
               } else {
                   return true;
