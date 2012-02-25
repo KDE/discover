@@ -108,8 +108,6 @@ void ApplicationWindow::initObject()
             this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
     connect(m_appBackend, SIGNAL(appBackendReady()),
             this, SLOT(populateViews()));
-   // connect(m_appBackend, SIGNAL(reloadFinished()),
-   //         this, SLOT(populateViews()));
     connect(m_appBackend, SIGNAL(reloadFinished()),
             this, SLOT(showLauncherMessage()));
 

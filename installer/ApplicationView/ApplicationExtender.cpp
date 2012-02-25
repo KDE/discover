@@ -21,7 +21,6 @@
 #include "ApplicationExtender.h"
 
 #include <QtGui/QHBoxLayout>
-#include <QtGui/QProgressBar>
 #include <QtGui/QPushButton>
 
 #include <KDebug>
