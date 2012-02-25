@@ -104,9 +104,11 @@ Q_SIGNALS:
     void appBackendReady();
     void reloadStarted();
     void reloadFinished();
+    void startingFirstTransaction();
     void workerEvent(QApt::WorkerEvent event, Transaction *app);
     void errorSignal(QApt::ErrorCode code, const QVariantMap &details);
     void progress(Transaction *transaction, int progress);
+    void transactionAdded(Transaction *transaction);
     void transactionCancelled(Application *app);
     void xapianReloaded();
 };

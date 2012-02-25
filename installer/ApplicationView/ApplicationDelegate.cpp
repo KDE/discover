@@ -55,7 +55,8 @@
 ApplicationDelegate::ApplicationDelegate(QAbstractItemView *parent, ApplicationBackend *backend)
   : KExtendableItemDelegate(parent),
     m_appBackend(backend),
-    m_extender(0)
+    m_extender(0),
+    m_extenderEnabled(true)
 {
     // To get sizing.
     QPushButton button, button2;
@@ -261,7 +262,7 @@ QSize ApplicationDelegate::sizeHint(const QStyleOptionViewItem &option,
 
 void ApplicationDelegate::itemActivated(QModelIndex index)
 {
-    if (index == m_oldIndex && isExtended(index)) {
+    if ((index == m_oldIndex && isExtended(index)) || !m_extenderEnabled) {
         return;
     }
 
@@ -301,6 +302,11 @@ void ApplicationDelegate::invalidate()
 {
     // If only contractAll was a Q_SLOT...
     contractAll();
+}
+
+void ApplicationDelegate::disableExtender()
+{
+    m_extenderEnabled = false;
 }
 
 #include "ApplicationDelegate.moc"

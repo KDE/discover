@@ -25,11 +25,13 @@
 #include "Application.h"
 
 #include <KLocalizedString>
+#include <KDebug>
 
 TransactionListener::TransactionListener(QObject* parent)
     : QObject(parent)
     , m_appBackend(0)
     , m_app(0)
+    , m_progress(0)
 {}
 
 TransactionListener::~TransactionListener()
@@ -63,6 +65,7 @@ void TransactionListener::init()
     foreach (Transaction *transaction, m_appBackend->transactions()) {
         if (transaction->application() == m_app) {
             emit running(true);
+            kDebug() << transaction->state();
             showTransactionState(transaction);
         }
     }
@@ -195,6 +198,7 @@ void TransactionListener::setApplication(Application* app)
     disconnect(this, SIGNAL(running(bool)),
             m_app, SIGNAL(installChanged()));
     m_app = app;
+    init();
     emit applicationChanged();
     connect(this, SIGNAL(running(bool)),
             m_app, SIGNAL(installChanged()));

@@ -150,6 +150,8 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
 
     emit workerEvent(event, m_currentTransaction);
 
+    // Due to bad design on my part, we can get events from other apps.
+    // This is required to ensure that we only handle events for stuff we started
     if (!m_currentTransaction) {
         return;
     }
@@ -318,10 +320,12 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
 
     transaction->setState(QueuedState);
     m_queue.enqueue(transaction);
+    emit transactionAdded(transaction);
 
     if (m_queue.count() == 1) {
         m_currentTransaction = m_queue.head();
         runNextTransaction();
+        emit startingFirstTransaction();
     }
 }
 

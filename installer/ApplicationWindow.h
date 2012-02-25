@@ -28,6 +28,7 @@ class QAbstractItemView;
 class QModelIndex;
 class QSplitter;
 class QStackedWidget;
+class QStandardItem;
 class QStandardItemModel;
 class QTreeView;
 
@@ -37,6 +38,7 @@ class KService;
 class Application;
 class ApplicationBackend;
 class ApplicationLauncher;
+class ProgressView;
 class ViewSwitcher;
 
 enum ViewModelRole {
@@ -49,16 +51,18 @@ enum ViewModelRole {
 };
 
 enum ViewType {
-   /// An invalid value
-   InvalidView = 0,
-   /// A simple ApplicationView that is filterable by status or origin
-   AppView = 1,
-   /// An ApplicationView that has a Categorical homepage
-   CatView = 2,
-   /// A CategoryView showing subcategories
-   SubCatView = 3,
-   /// A view for showing history
-   History = 4
+    /// An invalid value
+    InvalidView = 0,
+    /// A simple ApplicationView that is filterable by status or origin
+    AppView,
+    /// An ApplicationView that has a Categorical homepage
+    CatView,
+    /// A CategoryView showing subcategories
+    SubCatView,
+    /// A view for showing history
+    History,
+    /// A view for showing in-progress transactions
+    Progress
 };
 
 class ApplicationWindow : public MuonMainWindow
@@ -81,6 +85,8 @@ private:
     KAction *m_saveSelectionsAction;
     KMessageWidget *m_launcherMessage;
     ApplicationLauncher *m_appLauncher;
+    ProgressView *m_progressView;
+    QStandardItem *m_progressItem;
 
     QVector<KService *> m_launchableApps;
 
@@ -104,6 +110,8 @@ private Q_SLOTS:
     void showAppLauncher();
     void onAppLauncherClosed();
     void clearMessageActions();
+    void addProgressItem();
+    void removeProgressItem();
 };
 
 #endif

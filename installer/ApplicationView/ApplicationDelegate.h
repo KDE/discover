@@ -48,6 +48,7 @@ public:
                      QAbstractItemModel *model,
                      const QStyleOptionViewItem &option,
                      const QModelIndex &index);
+    void disableExtender();
 
 private:
     ApplicationBackend *m_appBackend;
@@ -57,6 +58,7 @@ private:
     ApplicationExtender *m_extender;
     KRatingPainter *m_ratingPainter;
     QPixmap m_emblem;
+    bool m_extenderEnabled;
 
     int calcItemHeight(const QStyleOptionViewItem &option) const;
 

@@ -28,10 +28,11 @@ set(muon_installer_SRCS
     CategoryView/CategoryViewWidget.cpp
     ClickableLabel.cpp
     effects/GraphicsOpacityDropShadowEffect.cpp
-    ViewSwitcher.cpp
+    ProgressView.cpp
     ReviewsWidget/ReviewWidget.cpp
     ReviewsWidget/ReviewsWidget.cpp
     ScreenShotOverlay.cpp
+    ViewSwitcher.cpp
     ${messagewidget_SRCS})
 
 kde4_add_kcfg_files(muon_installer_SRCS GENERATE_MOC config/MuonInstallerSettings.kcfgc)

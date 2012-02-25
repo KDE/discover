@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2012 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,72 +18,42 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONMODEL_H
-#define APPLICATIONMODEL_H
+#ifndef TRANSACTIONMODEL_H
+#define TRANSACTIONMODEL_H
 
 #include <QAbstractListModel>
-
-#include <LibQApt/Globals>
 
 #include "libmuonprivate_export.h"
 
 class Application;
 class ApplicationBackend;
 class Transaction;
+class TransactionListener;
 
-class MUONPRIVATE_EXPORT ApplicationModel: public QAbstractListModel
+class MUONPRIVATE_EXPORT TransactionModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(ApplicationBackend* backend READ backend WRITE setBackend)
-    Q_ENUMS(Roles)
 public:
-    enum Roles {
-        NameRole = Qt::UserRole,
-        IconRole,
-        CommentRole,
-        ActionRole,
-        StatusRole,
-        RatingRole,
-        ActiveRole,
-        ProgressRole,
-        ProgressTextRole,
-        InstalledRole,
-        ApplicationRole
-    };
-    explicit ApplicationModel(QObject* parent=0);
-    ~ApplicationModel();
+    explicit TransactionModel(QObject *parent = 0);
+    ~TransactionModel();
 
-    void setBackend(ApplicationBackend* backend);
-    ApplicationBackend* backend() const;
+    QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
-    void clear();
-    Application *applicationAt(const QModelIndex &index) const;
-    Transaction *transactionAt(const QModelIndex &index) const;
-    QList<Application *> applications() const;
-    void reloadApplications();
-    
+    void setBackend(ApplicationBackend* appBackend);
+    void addTransactions(const QList<Transaction *> &trans);
+
 private:
-    void setApplications(const QList<Application*> &list);
-    
     ApplicationBackend *m_appBackend;
-    QList<Application *> m_apps;
-    QList<Application *> m_appsTemp;
-    QHash<Transaction *, int> m_runningTransactions;
+    QList<TransactionListener *> m_transactions;
 
-public Q_SLOTS:
-    void updateTransactionProgress(Transaction *transaction, int progress);
-    void allDataChanged();
-
-private Q_SLOTS:
-    void workerEvent(QApt::WorkerEvent event, Transaction *trans);
-    void transactionCancelled(Application *app);
-    void reloadStarted();
-    void reloadFinished();
-
-Q_SIGNALS:
-   void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight);
+    void removeTransaction(TransactionListener *listener);
+    
+private slots:
+    void addTransaction(Transaction *trans);
+    void removeTransaction(Application *app);
+    void externalUpdate();
+    void clear();
 };
 
-#endif
+#endif // TRANSACTIONMODEL_H

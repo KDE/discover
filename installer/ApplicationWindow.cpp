@@ -46,15 +46,17 @@
 
 // Own includes
 #include "ApplicationLauncher.h"
-#include "AvailableView.h"
-#include "ViewSwitcher.h"
 #include "ApplicationView/ApplicationListView.h"
+#include "AvailableView.h"
+#include "ProgressView.h"
+#include "ViewSwitcher.h"
 #include "MuonInstallerSettings.h"
 
 ApplicationWindow::ApplicationWindow()
     : MuonMainWindow()
-    , m_launcherMessage(0)
-    , m_appLauncher(0)
+    , m_launcherMessage(nullptr)
+    , m_appLauncher(nullptr)
+    , m_progressItem(nullptr)
 {
     initGUI();
     QTimer::singleShot(10, this, SLOT(initObject()));
@@ -108,8 +110,12 @@ void ApplicationWindow::initObject()
             this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
     connect(m_appBackend, SIGNAL(appBackendReady()),
             this, SLOT(populateViews()));
+    connect(m_appBackend, SIGNAL(reloadStarted()),
+            this, SLOT(removeProgressItem()));
     connect(m_appBackend, SIGNAL(reloadFinished()),
             this, SLOT(showLauncherMessage()));
+    connect(m_appBackend, SIGNAL(startingFirstTransaction()),
+            this, SLOT(addProgressItem()));
 
     MuonMainWindow::initObject();
     // Our modified ApplicationBackend provides us events in a way that
@@ -375,12 +381,13 @@ void ApplicationWindow::changeView(const QModelIndex &index)
         case AppView: {
             QString originFilter = index.data(OriginFilterRole).toString();
             QApt::Package::State stateFilter = (QApt::Package::State)index.data(StateFilterRole).toInt();
+
             view = new ApplicationListView(this, m_appBackend, index);
             ApplicationListView *appView = static_cast<ApplicationListView *>(view);
-            m_viewStack->addWidget(view);
             appView->setBackend(m_backend);
             appView->setStateFilter(stateFilter);
             appView->setOriginFilter(originFilter);
+
             if (originFilter.contains(QLatin1String("LP-PPA"))) {
                 appView->setShouldShowTechnical(true);
             }
@@ -391,18 +398,22 @@ void ApplicationWindow::changeView(const QModelIndex &index)
 
             AvailableView *availableView = static_cast<AvailableView *>(view);
             availableView->setBackend(m_backend);
-            m_viewStack->addWidget(view);
         }
             break;
         case History:
             view = new HistoryView(this);
-            m_viewStack->addWidget(view);
+            break;
+        case Progress:
+            view = new ProgressView(this, m_appBackend);
         case InvalidView:
         default:
             break;
         }
+
+        m_viewStack->addWidget(view);
     }
 
+    m_viewStack->addWidget(view);
     m_viewStack->setCurrentWidget(view);
 
     m_viewHash[index] = view;
@@ -521,6 +532,30 @@ void ApplicationWindow::clearMessageActions()
     foreach (QAction *action, m_launcherMessage->actions()) {
         m_launcherMessage->removeAction(action);
     }
+}
+
+void ApplicationWindow::addProgressItem()
+{
+    QStandardItem *parentItem = m_viewModel->invisibleRootItem();
+
+    if (m_progressItem)
+        return;
+
+    m_progressItem = new QStandardItem;
+    m_progressItem->setEditable(false);
+    m_progressItem->setIcon(KIcon("view-history").pixmap(32,32));
+    m_progressItem->setText(i18nc("@item:inlistbox Item for showing the progress view", "In Progress"));
+    m_progressItem->setData(Progress, ViewTypeRole);
+    parentItem->appendRow(m_progressItem);
+
+    m_viewHash[m_progressItem->index()] = 0;
+}
+
+void ApplicationWindow::removeProgressItem()
+{
+    m_viewHash[m_progressItem->index()]->deleteLater();
+    m_viewHash.remove(m_progressItem->index());
+    m_viewModel->removeRow(m_viewModel->indexFromItem(m_progressItem).row());
 }
 
 #include "ApplicationWindow.moc"

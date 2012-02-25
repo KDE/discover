@@ -17,7 +17,8 @@ set(muon_LIB_SRCS
     settings/SettingsPageBase.cpp
     settings/NotifySettingsPage.cpp
     Transaction/Transaction.cpp
-    Transaction/TransactionListener.cpp)
+    Transaction/TransactionListener.cpp
+    Transaction/TransactionModel.cpp)
 
 kde4_add_library(muonprivate SHARED ${muon_LIB_SRCS})
 
