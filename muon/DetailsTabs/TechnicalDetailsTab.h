@@ -37,6 +37,7 @@ private:
     QLabel *m_section;
     QLabel *m_sourcePackage;
     QLabel *m_origin;
+    QLabel *m_component;
 
     QGroupBox *m_installedVersionBox;
     QGroupBox *m_currentVersionBox;

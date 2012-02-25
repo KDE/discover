@@ -86,6 +86,14 @@ TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
     generalGrid->addWidget(originLabel, 3, 0, Qt::AlignRight);
     generalGrid->addWidget(m_origin, 3, 1, Qt::AlignLeft);
 
+    // generalGrid, row 4
+    QLabel *componentLabel = new QLabel(generalWidget);
+    componentLabel->setText(i18nc("@label The package archive component that this package comes from",
+                                      "Component:"));
+    m_component = new QLabel(generalWidget);
+    generalGrid->addWidget(componentLabel, 4, 0, Qt::AlignRight);
+    generalGrid->addWidget(m_component, 4, 1, Qt::AlignLeft);
+
     generalGrid->setColumnStretch(1, 1);
 
     KHBox *versionWidget = new KHBox(mainWidget);
@@ -153,6 +161,7 @@ void TechnicalDetailsTab::refresh()
     m_section->setText(MuonStrings::global()->groupName(m_package->section()));
     m_sourcePackage->setText(m_package->sourcePackage());
     m_origin->setText(m_backend->originLabel(m_package->origin()));
+    m_component->setText(m_package->component());
 
     if (m_package->isInstalled()) {
         m_installedVersionBox->show();
