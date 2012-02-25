@@ -31,7 +31,7 @@ from UpdateManager.Core.MetaRelease import MetaReleaseCore
 if __name__ == "__main__":
     """ check for updates, if there are any say so """
     #FIXME: implement command line options for MetaReleaseCore args
-    metaRelease = MetaReleaseCore(True, False)
+    metaRelease = MetaReleaseCore(False, False)
     while metaRelease.downloading:
         time.sleep(1)
     new_dist = metaRelease.new_dist
