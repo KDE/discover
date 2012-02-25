@@ -38,7 +38,7 @@ class MUONPRIVATE_EXPORT TransactionListener : public QObject
     Q_PROPERTY(QString comment READ comment NOTIFY commentChanged)
     Q_PROPERTY(Application* application READ application WRITE setApplication NOTIFY applicationChanged)
     Q_PROPERTY(ApplicationBackend* backend READ backend WRITE setBackend)
-    Q_PROPERTY(bool isInstalling READ isInstalling NOTIFY installing)
+    Q_PROPERTY(bool isRunning READ isRunning NOTIFY running)
     public:
         explicit TransactionListener(QObject* parent = 0);
         virtual ~TransactionListener();
@@ -49,13 +49,14 @@ class MUONPRIVATE_EXPORT TransactionListener : public QObject
         Application* application() const;
         ApplicationBackend* backend() const;
         void init();
-        bool isInstalling() const;
+        bool isRunning() const;
 
     signals:
         void progressChanged();
         void commentChanged();
         void applicationChanged();
-        void installing(bool isInstalling);
+        void running(bool isRunning);
+        void downloading(bool isDownloading);
 
     private slots:
         void workerEvent(QApt::WorkerEvent event, Transaction *transaction);

@@ -62,16 +62,17 @@ void TransactionListener::init()
 
     foreach (Transaction *transaction, m_appBackend->transactions()) {
         if (transaction->application() == m_app) {
-            emit installing(true);
+            emit running(true);
             showTransactionState(transaction);
         }
     }
 }
 
-bool TransactionListener::isInstalling() const
+bool TransactionListener::isRunning() const
 {
     if(!m_appBackend)
         return false;
+
     foreach (Transaction *transaction, m_appBackend->transactions()) {
         if (transaction->application() == m_app) {
             return true;
@@ -93,13 +94,15 @@ void TransactionListener::workerEvent(QApt::WorkerEvent event, Transaction *tran
         m_progress = 0;
         connect(m_appBackend, SIGNAL(progress(Transaction*,int)),
                 this, SLOT(updateProgress(Transaction*,int)));
-        emit installing(true);
+        emit running(true);
+        emit downloading(true);
         emit commentChanged();
         emit progressChanged();
         break;
     case QApt::PackageDownloadFinished:
         disconnect(m_appBackend, SIGNAL(progress(Transaction*,int)),
                    this, SLOT(updateProgress(Transaction*,int)));
+        emit downloading(false);
         break;
     case QApt::CommitChangesStarted:
         setStateComment(transaction);
@@ -107,7 +110,7 @@ void TransactionListener::workerEvent(QApt::WorkerEvent event, Transaction *tran
                 this, SLOT(updateProgress(Transaction*,int)));
         break;
     case QApt::CommitChangesFinished:
-        emit installing(false);
+        emit running(false);
         disconnect(m_appBackend, SIGNAL(progress(Transaction*,int)),
                    this, SLOT(updateProgress(Transaction*,int)));
         break;
@@ -156,7 +159,7 @@ void TransactionListener::setStateComment(Transaction* transaction)
         case InstallApp:
             m_comment = i18nc("@info:status", "Installing");
             emit commentChanged();
-            emit installing(true);
+            emit running(true);
             break;
         case ChangeAddons:
             m_comment = i18nc("@info:status", "Changing Addons");
@@ -183,16 +186,17 @@ int TransactionListener::progress() const
 
 void TransactionListener::transactionCancelled(Application* )
 {
-    emit installing(false);
+    emit running(false);
+    emit downloading(false);
 }
 
 void TransactionListener::setApplication(Application* app)
 {
-    disconnect(this, SIGNAL(installing(bool)),
+    disconnect(this, SIGNAL(running(bool)),
             m_app, SIGNAL(installChanged()));
     m_app = app;
     emit applicationChanged();
-    connect(this, SIGNAL(installing(bool)),
+    connect(this, SIGNAL(running(bool)),
             m_app, SIGNAL(installChanged()));
 }
 

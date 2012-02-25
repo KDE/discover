@@ -106,13 +106,15 @@ private Q_SLOTS:
     void progressCommentChanged();
     void progressChanged();
 
+public slots:
+    void applicationRunningChanged(bool running);
+    void applicationDownloadingChanged(bool downloading);
+
 Q_SIGNALS:
     void installButtonClicked(Application *app);
     void installButtonClicked(Application *app, const QHash<QApt::Package *, QApt::Package::State> &);
     void removeButtonClicked(Application *app);
     void cancelButtonClicked(Application *app);
-public slots:
-    void applicationInstallingChanged(bool installing);
 };
 
 #endif

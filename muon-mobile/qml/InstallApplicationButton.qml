@@ -13,7 +13,7 @@ Item {
         backend: app.appBackend
     }
     
-    state: transactions.isInstalling ? "working" : "idle"
+    state: transactions.isRunning ? "working" : "idle"
     
     Button {
         id: button

@@ -293,7 +293,8 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
 
     connect(m_listener, SIGNAL(progressChanged()), SLOT(progressChanged()));
     connect(m_listener, SIGNAL(commentChanged()), SLOT(progressCommentChanged()));
-    connect(m_listener, SIGNAL(installing(bool)), SLOT(applicationInstallingChanged(bool)));
+    connect(m_listener, SIGNAL(running(bool)), SLOT(applicationRunningChanged(bool)));
+    connect(m_listener, SIGNAL(downloading(bool)), SLOT(applicationDownloadingChanged(bool)));
 
     setWidget(widget);
 }
@@ -511,11 +512,15 @@ void ApplicationDetailsWidget::addonsApplyButtonClicked(const QHash<QApt::Packag
     m_progressBar->setFormat(i18nc("@info:status Progress text when waiting", "Waiting"));
 }
 
-void ApplicationDetailsWidget::applicationInstallingChanged(bool installing)
+void ApplicationDetailsWidget::applicationRunningChanged(bool running)
 {
-    m_actionButton->setVisible(!installing);
-    m_cancelButton->setVisible(installing);
-    m_progressBar->setVisible(installing);
+    m_actionButton->setVisible(!running);
+    m_progressBar->setVisible(running);
+}
+
+void ApplicationDetailsWidget::applicationDownloadingChanged(bool downloading)
+{
+    m_cancelButton->setVisible(downloading);
 }
 
 void ApplicationDetailsWidget::progressChanged()
