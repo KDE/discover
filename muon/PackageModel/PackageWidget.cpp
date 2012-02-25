@@ -411,7 +411,8 @@ void PackageWidget::actOnPackages(QApt::Package::State action)
             setUpgrade(package);
             break;
         case QApt::Package::ToReInstall:
-            setReInstall(package);
+            if (package->isInstalled())
+                setReInstall(package);
             break;
         case QApt::Package::ToKeep:
             setKeep(package);
