@@ -64,6 +64,7 @@ private:
     QString m_archFilter;
 
     bool m_sortByRelevancy;
+    bool m_useSearchResults;
 };
 
 #endif

@@ -53,6 +53,7 @@ PackageProxyModel::PackageProxyModel(QObject *parent)
     , m_backend(0)
     , m_stateFilter((QApt::Package::State)0)
     , m_sortByRelevancy(false)
+    , m_useSearchResults(false)
 {
 }
 
@@ -72,10 +73,12 @@ void PackageProxyModel::search(const QString &searchText)
     if (searchText.size() > 1) {
         m_searchPackages = m_backend->search(searchText);
         m_sortByRelevancy = true;
+        m_useSearchResults = true;
     } else {
         m_searchPackages.clear();
         m_packages =  static_cast<PackageModel *>(sourceModel())->packages();
         m_sortByRelevancy = false;
+        m_useSearchResults = false;
     }
 
     invalidate();
@@ -148,7 +151,7 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
     if (package->isMultiArchDuplicate())
         return false;
 
-    if (!m_searchPackages.isEmpty())
+    if (m_useSearchResults)
         return m_searchPackages.contains(package);
 
     return true;
