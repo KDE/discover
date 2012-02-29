@@ -1,29 +1,3 @@
-# make the macro a bit more smart, making it possible to pass arguments to qdbusxml2cpp
-MACRO(QT4_ADD_DBUS_INTERFACE _sources _interface _basename)
-  GET_FILENAME_COMPONENT(_infile ${_interface} ABSOLUTE)
-  SET(_header ${CMAKE_CURRENT_BINARY_DIR}/${_basename}.h)
-  SET(_impl   ${CMAKE_CURRENT_BINARY_DIR}/${_basename}.cpp)
-  SET(_moc    ${CMAKE_CURRENT_BINARY_DIR}/${_basename}.moc)
-
-  # handling more arguments (as in FindQt4.cmake from KDE4) will come soon, then
-  # _params will be used for more than just -m
-  SET(_params -m)
-
-  ADD_CUSTOM_COMMAND(OUTPUT ${_impl} ${_header}
-      COMMAND ${QT_DBUSXML2CPP_EXECUTABLE} ${_params} -p ${_basename} ${_infile} ${ARGN}
-      DEPENDS ${_infile})
-
-  SET_SOURCE_FILES_PROPERTIES(${_impl} PROPERTIES SKIP_AUTOMOC TRUE)
-
-  QT4_GENERATE_MOC(${_header} ${_moc})
-
-  SET(${_sources} ${${_sources}} ${_impl} ${_header} ${_moc})
-  MACRO_ADD_FILE_DEPENDENCIES(${_impl} ${_moc})
-
-ENDMACRO(QT4_ADD_DBUS_INTERFACE)
-
-add_subdirectory(muon-qml)
-
 if (HAVEKDE4_6_60)
 else (HAVEKDE4_6_60)
     set(messagewidget_SRCS backports/kmessagewidget.cpp)
@@ -59,8 +33,6 @@ set(muon_installer_SRCS
     ReviewsWidget/ReviewsWidget.cpp
     ScreenShotOverlay.cpp
     ${messagewidget_SRCS})
-    
-qt4_add_dbus_interface(muon_installer_SRCS ReviewsBackend/ubuntu_sso_dbus_interface.xml ubuntu_sso -i "ReviewsBackend/LoginMetaTypes.h")
 
 kde4_add_kcfg_files(muon_installer_SRCS GENERATE_MOC config/MuonInstallerSettings.kcfgc)
 
@@ -71,8 +43,7 @@ target_link_libraries(muon-installer muonprivate
                                      ${QAPT_LIBRARY}
                                      ${QZEITGEIST_LIBRARY}
                                      ${qjson_LIBRARIES}
-                                     ${QT_QTDECLARATIVE_LIBRARY}
-                                     ${QTOAUTH_LIBRARY})
+                                     ${QT_QTDECLARATIVE_LIBRARY})
 
 if (ENABLE_QZEITGEIST)
     target_link_libraries(muon-installer ${QZEITGEIST_LIBRARY})

@@ -23,7 +23,6 @@ set(muon_installer_qml_SRCS
 
 qt4_add_dbus_interface(muon_installer_qml_SRCS ../ReviewsBackend/ubuntu_sso_dbus_interface.xml ubuntu_sso -i "ReviewsBackend/LoginMetaTypes.h")
 # set_source_files_properties(../ReviewsBackend/ubuntu_sso_dbus_interface.xml PROPERTIES INCLUDE )
-qt4_add_resources(muon_installer_qml_SRCS resources.qrc)
 
 kde4_add_executable(muon-installer-qml ${muon_installer_qml_SRCS})
 
