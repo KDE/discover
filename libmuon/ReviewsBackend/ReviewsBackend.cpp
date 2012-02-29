@@ -267,6 +267,7 @@ void ReviewsBackend::postInformation(const QString& path, const QVariantMap& dat
     job->addMetaData("Content-Type", "application/json" );
     job->addMetaData("Authorization", authorization(m_oauthInterface, url, m_loginBackend));
     connect(job, SIGNAL(result(KJob*)), this, SLOT(informationPosted(KJob*)));
+    job->start();
 }
 
 void ReviewsBackend::informationPosted(KJob* j)
