@@ -26,6 +26,10 @@
 
 #include "libmuonprivate_export.h"
 
+namespace QOAuth {
+    class Interface;
+}
+
 class KJob;
 class KTemporaryFile;
 
@@ -58,9 +62,6 @@ public:
     QString userName() const;
     bool hasCredentials() const;
 
-signals:
-    void loginStateChanged();
-
 private:
     QApt::Backend *m_aptBackend;
 
@@ -75,19 +76,24 @@ private:
     void fetchRatings();
     QString getLanguage();
     AbstractLoginBackend* m_loginBackend;
+    QOAuth::Interface* m_oauthInterface;
 
 private Q_SLOTS:
     void ratingsFetched(KJob *job);
     void reviewsFetched(KJob *job);
+    void postInformation(const QString& path, const QVariantMap& data);
 
 public slots:
     void login();
     void registerAndLogin();
     void logout();
+    void submitUsefulness(Review* r, bool useful);
+    void informationPosted(KJob* job);
 
 Q_SIGNALS:
     void reviewsReady(Application *app, QList<Review *>);
     void ratingsReady();
+    void loginStateChanged();
 };
 
 #endif

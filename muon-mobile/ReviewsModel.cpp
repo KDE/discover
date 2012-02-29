@@ -142,3 +142,9 @@ bool ReviewsModel::canFetchMore(const QModelIndex&) const
 {
     return m_canFetchMore;
 }
+
+void ReviewsModel::markUseful(int row, bool useful)
+{
+    Review* r = m_reviews[row];
+    m_backend->submitUsefulness(r, useful);
+}

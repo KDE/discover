@@ -50,7 +50,7 @@ Item {
         }
     }
     
-    Button {
+    ToolButton {
         visible: parent.state=="logged"
         anchors {
             verticalCenter: parent.verticalCenter

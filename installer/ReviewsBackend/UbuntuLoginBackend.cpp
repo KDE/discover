@@ -100,3 +100,23 @@ void UbuntuLoginBackend::logout()
     m_credentials.clear();
     emit connectionStateChanged();
 }
+
+QByteArray UbuntuLoginBackend::token() const
+{
+    return m_credentials["token"].toLatin1();
+}
+
+QByteArray UbuntuLoginBackend::tokenSecret() const
+{
+    return m_credentials["token_secret"].toLatin1();
+}
+
+QByteArray UbuntuLoginBackend::consumerKey() const
+{
+    return m_credentials["consumer_key"].toLatin1();
+}
+
+QByteArray UbuntuLoginBackend::consumerSecret() const
+{
+    return m_credentials["consumer_secret"].toLatin1();
+}

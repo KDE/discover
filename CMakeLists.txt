@@ -1,10 +1,14 @@
 project(muon)
 
+set(CMAKE_MODULE_PATH "${muon_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+
 set(KDE_MIN_VERSION "4.5.0")
 find_package(KDE4 ${KDE_MIN_VERSION} REQUIRED)
 find_package(QApt REQUIRED)
 find_package(DebconfKDE REQUIRED)
 find_package(QZeitgeist)
+find_package(QtOAuth REQUIRED)
+find_package(QCA2 REQUIRED) #required by QtOAuth
 find_package(QJSON REQUIRED)
 
 include (KDE4Defaults)
@@ -34,7 +38,7 @@ macro_log_feature(QAPT_FOUND "QApt" "High-level Qt wrapper/Apt implementation ar
 macro_log_feature(HAVE_QZEITGEIST "LibQZeitgeist" "Qt wrapper around the Zeitgeist DBus event logging service"
                   "http://launchpad.net/zeitgeist/" FALSE "" "Used for application usage counting")
 
-include_directories(${KDE4_INCLUDES} ${QT_INCLUDES} ${QAPT_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+include_directories(${KDE4_INCLUDES} ${QT_INCLUDES} ${QAPT_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${QCA2_INCLUDE_DIR})
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/HaveQZeitgeist.h.in
                ${CMAKE_CURRENT_BINARY_DIR}/HaveQZeitgeist.h)

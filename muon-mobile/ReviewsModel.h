@@ -33,6 +33,9 @@ class ReviewsModel : public QAbstractListModel
         virtual bool canFetchMore(const QModelIndex&) const;
 
     public slots:
+        void markUseful(int row, bool useful);
+
+    private slots:
         void addReviews(Application* app, const QList<Review*>& reviews);
 
     private:

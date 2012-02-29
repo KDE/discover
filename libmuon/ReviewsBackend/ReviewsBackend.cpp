@@ -21,6 +21,7 @@
 #include "ReviewsBackend.h"
 
 #include <QtCore/QStringBuilder>
+#include <QDebug>
 
 #include <KGlobal>
 #include <KIO/Job>
@@ -31,6 +32,9 @@
 #include <LibQApt/Backend>
 
 #include <qjson/parser.h>
+#include <qjson/serializer.h>
+
+#include <QtOAuth/interface.h>
 
 #include "../Application.h"
 #include "Rating.h"
@@ -48,6 +52,9 @@ ReviewsBackend::ReviewsBackend(QObject *parent)
     m_loginBackend = new UbuntuLoginBackend(this);
     connect(m_loginBackend, SIGNAL(connectionStateChanged()), SIGNAL(loginStateChanged()));
     fetchRatings();
+    m_oauthInterface = new QOAuth::Interface(this);
+    m_oauthInterface->setConsumerKey(m_loginBackend->consumerKey());
+    m_oauthInterface->setConsumerSecret(m_loginBackend->consumerSecret());
 }
 
 ReviewsBackend::~ReviewsBackend()
@@ -237,6 +244,41 @@ QString ReviewsBackend::getLanguage()
     return language.split('_').first();
 }
 
+void ReviewsBackend::submitUsefulness(Review* r, bool useful)
+{
+    QVariantMap data;
+    data["useful"] = useful;
+    
+    postInformation(QString("/reviews/%1/recommendations/").arg(r->id()), data);
+}
+
+QByteArray authorization(QOAuth::Interface* oauth, const KUrl& url, AbstractLoginBackend* login)
+{
+    return oauth->createParametersString(url.url(), QOAuth::POST, login->token(), login->tokenSecret(),
+                                           QOAuth::HMAC_SHA1, QOAuth::ParamMap(), QOAuth::ParseForHeaderArguments);
+}
+
+void ReviewsBackend::postInformation(const QString& path, const QVariantMap& data)
+{
+    KUrl url(m_serverBase);
+    url.addPath(path);
+    
+    KIO::StoredTransferJob* job = KIO::storedHttpPost(QJson::Serializer().serialize(data), url, KIO::Overwrite | KIO::HideProgressInfo);
+    job->addMetaData("Content-Type", "application/json" );
+    job->addMetaData("Authorization", authorization(m_oauthInterface, url, m_loginBackend));
+    connect(job, SIGNAL(result(KJob*)), this, SLOT(informationPosted(KJob*)));
+}
+
+void ReviewsBackend::informationPosted(KJob* j)
+{
+    KIO::StoredTransferJob* job = qobject_cast<KIO::StoredTransferJob*>(j);
+    if(job->error()==0) {
+        qDebug() << "success" << job->data();
+    } else {
+        qDebug() << "error..." << job->error() << job->errorString() << job->errorText();
+    }
+}
+
 bool ReviewsBackend::isFetching() const
 {
     return !m_jobHash.isEmpty();
@@ -255,15 +297,18 @@ QString ReviewsBackend::userName() const
 
 void ReviewsBackend::login()
 {
+    Q_ASSERT(!m_loginBackend->hasCredentials());
     m_loginBackend->login();
 }
 
 void ReviewsBackend::registerAndLogin()
 {
+    Q_ASSERT(!m_loginBackend->hasCredentials());
     m_loginBackend->registerAndLogin();
 }
 
 void ReviewsBackend::logout()
 {
+    Q_ASSERT(m_loginBackend->hasCredentials());
     m_loginBackend->logout();
 }

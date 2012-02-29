@@ -35,6 +35,10 @@ class AbstractLoginBackend : public QObject
         virtual void login() = 0;
         virtual void registerAndLogin() = 0;
         virtual void logout() = 0;
+        virtual QByteArray token() const = 0;
+        virtual QByteArray tokenSecret() const = 0;
+        virtual QByteArray consumerKey() const = 0;
+        virtual QByteArray consumerSecret() const = 0;
 
     signals:
         void connectionStateChanged();

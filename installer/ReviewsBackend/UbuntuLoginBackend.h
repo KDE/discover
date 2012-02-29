@@ -37,6 +37,11 @@ class UbuntuLoginBackend : public AbstractLoginBackend
         virtual void logout();
         virtual QString displayName() const;
         virtual bool hasCredentials() const;
+        
+        virtual QByteArray token() const;
+        virtual QByteArray tokenSecret() const;
+        virtual QByteArray consumerKey() const;
+        virtual QByteArray consumerSecret() const;
 
     private slots:
         void credentialsError(const QString& app, const QString& a, const QString& b );

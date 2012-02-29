@@ -135,6 +135,7 @@ Page
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
+        anchors.rightMargin: scroll.width
         spacing: 5
         delegate: ListItem {
             visible: shouldShow
@@ -155,6 +156,19 @@ Page
                 wrapMode: Text.WordWrap
             }
             
+            Row {
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+                ToolButton {
+                    iconSource: "list-add"
+                    onClicked: reviewsModel.markUseful(index, true)
+                }
+                ToolButton {
+                    iconSource: "list-remove"
+                    onClicked: reviewsModel.markUseful(index, false)
+                }
+            }
+            
             Rating {
                 anchors.top: parent.top
                 anchors.right: parent.right
@@ -164,20 +178,22 @@ Page
         }
         
         model: ReviewsModel {
+            id: reviewsModel
             application: page.application
             backend: app.appBackend.reviewsBackend()
         }
-        
-        ScrollBar {
-                orientation: Qt.Vertical
-                flickableItem: reviewsView
-                stepSize: 40
-                scrollButtonInterval: 50
-                anchors {
-                    top: reviewsView.top
-                    right: reviewsView.right
-                    bottom: reviewsView.bottom
-                }
+    }
+    
+    ScrollBar {
+        id: scroll
+        orientation: Qt.Vertical
+        flickableItem: reviewsView
+        stepSize: 40
+        scrollButtonInterval: 50
+        anchors {
+            top: reviewsView.top
+            right: parent.right
+            bottom: reviewsView.bottom
         }
     }
 }
