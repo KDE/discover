@@ -47,7 +47,7 @@ static QString getCodename(const QString& value)
     QString ret;
     QFile f("/etc/lsb-release");
     if(f.open(QIODevice::ReadOnly|QIODevice::Text)) {
-        QRegExp rx(QString("%1=(+.)").arg(value));
+        QRegExp rx(QString("%1=(.+)\n").arg(value));
         while(!f.atEnd()) {
             QByteArray line = f.readLine();
             if(rx.exactMatch(line)) {

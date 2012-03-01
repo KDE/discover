@@ -86,7 +86,7 @@ Page
     ReviewDialog {
         id: reviewDialog
         application: page.application
-        onAccepted: console.log("send!")
+        onAccepted: app.appBackend.reviewsBackend().submitReview(page.application, summary, review, rating)
     }
     
     Image {
