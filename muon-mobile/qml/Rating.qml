@@ -3,6 +3,10 @@ import org.kde.plasma.components 0.1
 import org.kde.qtextracomponents 0.1
 
 Row {
+    property bool editable: false
+    property int max: 10
+    property real rating: 2
+    
     id: view
     height: 25
     
@@ -12,11 +16,15 @@ Row {
             height: view.height; width: view.height
             icon: "rating"
             opacity: (max/5*index)>rating ? 0.4 : 1
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: if(editable) {
+                    rating = (max/5*index)
+                }
+            }
         }
     }
-    
-    property int max: 10
-    property real rating: 2
     
     spacing: 2
     Repeater {
