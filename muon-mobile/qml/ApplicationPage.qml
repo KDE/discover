@@ -85,6 +85,8 @@ Page
     
     ReviewDialog {
         id: reviewDialog
+        application: page.application
+        onAccepted: console.log("send!")
     }
     
     Image {
