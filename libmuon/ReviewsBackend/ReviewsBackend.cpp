@@ -261,11 +261,12 @@ QByteArray authorization(QOAuth::Interface* oauth, const KUrl& url, AbstractLogi
 void ReviewsBackend::postInformation(const QString& path, const QVariantMap& data)
 {
     KUrl url(m_serverBase);
+    url.setScheme("https");
     url.addPath(path);
     
     KIO::StoredTransferJob* job = KIO::storedHttpPost(QJson::Serializer().serialize(data), url, KIO::Overwrite | KIO::HideProgressInfo);
-    job->addMetaData("Content-Type", "application/json" );
-    job->addMetaData("Authorization", authorization(m_oauthInterface, url, m_loginBackend));
+    job->addMetaData("content-type", "Content-Type: application/json" );
+    job->addMetaData("customHTTPHeader", "Authorization: " + authorization(m_oauthInterface, url, m_loginBackend));
     connect(job, SIGNAL(result(KJob*)), this, SLOT(informationPosted(KJob*)));
     job->start();
 }
