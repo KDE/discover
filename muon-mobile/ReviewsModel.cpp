@@ -148,3 +148,15 @@ void ReviewsModel::markUseful(int row, bool useful)
     Review* r = m_reviews[row];
     m_backend->submitUsefulness(r, useful);
 }
+
+void ReviewsModel::deleteReview(int row)
+{
+    Review* r = m_reviews[row];
+    m_backend->deleteReview(r);
+}
+
+void ReviewsModel::flagReview(int row, const QString& reason, const QString& text)
+{
+    Review* r = m_reviews[row];
+    m_backend->flagReview(r, reason, text);
+}

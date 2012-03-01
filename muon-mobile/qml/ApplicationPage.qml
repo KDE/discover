@@ -9,13 +9,9 @@ Page
     property QtObject application
     anchors.margins: 5
     
-    RatingAndReviewsConnection {
-        id: topbox
-    }
-    
     QIconItem {
         id: icon
-        anchors.top: topbox.bottom
+        anchors.top: page.top
         anchors.left: parent.left
         anchors.margins: 5
         width: 40
@@ -26,7 +22,7 @@ Page
     
     Column {
         id: header
-        anchors.top: topbox.bottom
+        anchors.top: page.top
         anchors.left: icon.right
         anchors.right: ratings.left
         anchors.margins: 5
@@ -46,7 +42,7 @@ Page
     
     Column {
         id: ratings
-        anchors.top: topbox.bottom
+        anchors.top: page.top
         anchors.right: parent.right
         anchors.rightMargin: 200
         
@@ -57,7 +53,7 @@ Page
     Image {
         id: screenshot
         width: 200
-        anchors.top: topbox.bottom
+        anchors.top: page.top
         anchors.right: parent.right
         
         asynchronous: true
@@ -101,7 +97,7 @@ Page
         Label {
             width: parent.width
             wrapMode: Text.WordWrap
-            text: i18n("<b>Description:</b><br/>%1", application.longDescription)
+            text: application.longDescription
         }
         
         Button {

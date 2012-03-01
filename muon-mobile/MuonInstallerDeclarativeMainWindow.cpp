@@ -84,6 +84,9 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     QTimer::singleShot(10, this, SLOT(initObject()));
     setupActions();
     m_view->setSource(QUrl("qrc:/qml/Main.qml"));
+    if(!m_view->errors().isEmpty())
+        qDebug() << "errors: " << m_view->errors();
+    Q_ASSERT(m_view->errors().isEmpty());
     m_view->rootObject()->setProperty("state", "loading");
     
     setCentralWidget(m_view);

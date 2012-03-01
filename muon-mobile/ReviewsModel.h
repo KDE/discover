@@ -33,6 +33,8 @@ class ReviewsModel : public QAbstractListModel
         virtual bool canFetchMore(const QModelIndex&) const;
 
     public slots:
+        void deleteReview(int row);
+        void flagReview(int row, const QString& reason, const QString& text);
         void markUseful(int row, bool useful);
 
     private slots:

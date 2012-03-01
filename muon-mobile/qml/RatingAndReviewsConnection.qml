@@ -3,37 +3,32 @@ import org.kde.plasma.components 0.1
 import org.kde.muon 1.0
 
 Item {
-    height: 30
-    property QtObject reviews: app.appBackend.reviewsBackend()
+    property QtObject reviews
+    
+    function init() {
+        reviews=app.appBackend.reviewsBackend()
+    }
     
     Rectangle {
         id: bg
         anchors.fill: parent
-        opacity: 0.2
-        color: "blue"
-    }
-    
-    anchors {
-        top: parent.top
-        left: parent.left
-        right: parent.right
+        opacity: 0.4
     }
     
     Label {
         id: msg
         anchors {
-            left: parent.left
-            verticalCenter: parent.verticalCenter
+            top: parent.top
             leftMargin: 5
+            horizontalCenter: parent.horizontalCenter
         }
     }
     
-    Row {
+    Column {
         visible: parent.state=="notlogged"
         anchors {
-            right: parent.right
-            verticalCenter: parent.verticalCenter
-            rightMargin: 5
+            top: msg.bottom
+            horizontalCenter: parent.horizontalCenter
         }
         
         spacing: 10
@@ -63,17 +58,17 @@ Item {
         onClicked: reviews.logout();
     }
     
-    state: reviews.hasCredentials ? "logged" : "notlogged"
+    state: (reviews && reviews.hasCredentials) ? "logged" : "notlogged"
     states: [
         State {
             name: "logged"
             PropertyChanges { target: msg; text: i18n("Signed in as <em>%1</em>", reviews.name) }
-            PropertyChanges { target: bg; opacity: 0 }
+            PropertyChanges { target: bg; color: "orange" }
         },
         State {
             name: "notlogged"
             PropertyChanges { target: msg; text: i18n("Sign in is required") }
-            PropertyChanges { target: bg; opacity: 0.2 }
+            PropertyChanges { target: bg; color: "blue" }
         }
     ]
 }

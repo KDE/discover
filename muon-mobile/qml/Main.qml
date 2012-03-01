@@ -19,7 +19,6 @@ Rectangle {
         height: 50
         width: parent.width
         anchors.top: parent.top
-        clip: true
         
         Row {
             spacing: 5
@@ -56,6 +55,24 @@ Rectangle {
                 right: parent.right
             }
             
+            MuonToolButton {
+                id: usersButton
+                icon: "system-users"
+                visible: window.state=="loaded"
+                height: parent.height
+//                 toggled: connectionBox.visible
+                onClicked: connectionBox.visible=!connectionBox.visible
+                
+                RatingAndReviewsConnection {
+                    id: connectionBox
+                    visible: false
+                    width: 200
+                    height: 100
+                    anchors.horizontalCenter: usersButton.horizontalCenter
+                    anchors.top: usersButton.bottom
+                }
+            }
+            
             Repeater {
                 model: ["software_properties", "quit"]
                 
@@ -72,8 +89,10 @@ Rectangle {
     }
     
     onStateChanged: { 
-        if(state=="loaded")
+        if(state=="loaded") {
             breadcrumbs.pushItem("go-home", i18n("Get Software"), true)
+            connectionBox.init()
+        }
     }
     
     CategoryPage {
@@ -88,6 +107,7 @@ Rectangle {
             right: parent.right
             left: parent.left
         }
+        z: 0
         
         Breadcrumbs {
             id: breadcrumbs
