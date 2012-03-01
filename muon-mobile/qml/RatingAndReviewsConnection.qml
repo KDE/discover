@@ -3,7 +3,10 @@ import org.kde.plasma.components 0.1
 import org.kde.muon 1.0
 
 Item {
+    id: page
     property QtObject reviews
+    width: contents.width+2*contents.anchors.margins
+    height: contents.height+2*contents.anchors.margins
     
     function init() {
         reviews=app.appBackend.reviewsBackend()
@@ -13,49 +16,40 @@ Item {
         id: bg
         anchors.fill: parent
         opacity: 0.4
-    }
-    
-    Label {
-        id: msg
-        anchors {
-            top: parent.top
-            leftMargin: 5
-            horizontalCenter: parent.horizontalCenter
-        }
+        radius: 10
     }
     
     Column {
-        visible: parent.state=="notlogged"
-        anchors {
-            top: msg.bottom
-            horizontalCenter: parent.horizontalCenter
+        id: contents
+        spacing: 10
+        anchors.margins: 10
+        anchors.centerIn: parent
+        Label {
+            id: msg
         }
         
-        spacing: 10
-        
         Button {
+            anchors.horizontalCenter: contents.horizontalCenter
+            visible: page.state=="notlogged"
             text: i18n("Login")
             iconSource: "network-connect"
             onClicked: reviews.login()
         }
         Button {
+            anchors.horizontalCenter: contents.horizontalCenter
+            visible: page.state=="notlogged"
             text: i18n("Register")
             iconSource: "system-users"
             onClicked: reviews.registerAndLogin();
         }
-    }
-    
-    ToolButton {
-        visible: parent.state=="logged"
-        anchors {
-            verticalCenter: parent.verticalCenter
-            right: parent.right
-            rightMargin: 5
+        Button {
+            anchors.horizontalCenter: contents.horizontalCenter
+            visible: page.state=="logged"
+            
+            text: i18n("Logout")
+            iconSource: "dialog-close"
+            onClicked: reviews.logout();
         }
-        
-        text: i18n("Logout")
-        iconSource: "dialog-close"
-        onClicked: reviews.logout();
     }
     
     state: (reviews && reviews.hasCredentials) ? "logged" : "notlogged"

@@ -60,14 +60,13 @@ Rectangle {
                 icon: "system-users"
                 visible: window.state=="loaded"
                 height: parent.height
-//                 toggled: connectionBox.visible
+                checkable: true
+                checked: connectionBox.visible
                 onClicked: connectionBox.visible=!connectionBox.visible
                 
                 RatingAndReviewsConnection {
                     id: connectionBox
                     visible: false
-                    width: 200
-                    height: 100
                     anchors.horizontalCenter: usersButton.horizontalCenter
                     anchors.top: usersButton.bottom
                 }
