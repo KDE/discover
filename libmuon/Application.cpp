@@ -332,11 +332,7 @@ QApt::PackageList Application::addons()
         bool shouldShow = true;
         QApt::Package *package = m_backend->package(addon);
 
-        if (!package) {
-            continue;
-        }
-
-        if (package->section().contains("lib")) {
+        if (!package || package->section().contains("lib") || addons.contains(package)) {
             continue;
         }
 
