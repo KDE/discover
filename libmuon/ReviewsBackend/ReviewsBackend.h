@@ -81,6 +81,7 @@ private:
 private Q_SLOTS:
     void ratingsFetched(KJob *job);
     void reviewsFetched(KJob *job);
+    void informationPosted(KJob* job);
     void postInformation(const QString& path, const QVariantMap& data);
 
 public slots:
@@ -88,7 +89,10 @@ public slots:
     void registerAndLogin();
     void logout();
     void submitUsefulness(Review* r, bool useful);
-    void informationPosted(KJob* job);
+    void submitReview(Application* app, const QString& summary,
+                      const QString& review_text, const QString& rating);
+    void deleteReview(Review* r);
+    void flagReview(Review* r, const QString& reason, const QString &text);
 
 Q_SIGNALS:
     void reviewsReady(Application *app, QList<Review *>);

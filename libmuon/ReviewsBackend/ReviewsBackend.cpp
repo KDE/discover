@@ -42,6 +42,23 @@
 #include "AbstractLoginBackend.h"
 #include "UbuntuLoginBackend.h"
 
+static QString getCodename(const QString& value)
+{
+    QString ret;
+    QFile f("/etc/lsb-release");
+    if(f.open(QIODevice::ReadOnly|QIODevice::Text)) {
+        QRegExp rx(QString("%1=(+.)").arg(value));
+        while(!f.atEnd()) {
+            QByteArray line = f.readLine();
+            if(rx.exactMatch(line)) {
+                ret = rx.cap(1);
+                break;
+            }
+        }
+    }
+    return ret;
+}
+
 ReviewsBackend::ReviewsBackend(QObject *parent)
         : QObject(parent)
         , m_aptBackend(0)
@@ -250,6 +267,38 @@ void ReviewsBackend::submitUsefulness(Review* r, bool useful)
     data["useful"] = useful;
     
     postInformation(QString("/reviews/%1/recommendations/").arg(r->id()), data);
+}
+
+void ReviewsBackend::submitReview(Application* app, const QString& summary,
+                      const QString& review_text, const QString& rating)
+{
+    QVariantMap data;
+    data["app_name"] = app->name();
+    data["package_name"] = app->packageName();
+    data["summary"] = summary;
+    data["version"] = app->package()->version();
+    data["review_text"] = review_text;
+    data["rating"] = rating;
+    data["language"] = getLanguage();
+    data["origin"] = app->package()->origin();
+    data["distroseries"] = getCodename("DISTRIB_CODENAME");
+    data["arch_tag"] = app->package()->architecture();
+    
+    postInformation("/reviews/", data);
+}
+
+void ReviewsBackend::deleteReview(Review* r)
+{
+    postInformation(QString("/reviews/delete/%1/").arg(r->id()), QVariantMap());
+}
+
+void ReviewsBackend::flagReview(Review* r, const QString& reason, const QString& text)
+{
+    QVariantMap data;
+    data["reason"] = reason;
+    data["text"] = text;
+
+    postInformation(QString("/reviews/%1/flags/").arg(r->id()), data);
 }
 
 QByteArray authorization(QOAuth::Interface* oauth, const KUrl& url, AbstractLoginBackend* login)
