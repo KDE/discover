@@ -42,12 +42,37 @@ Page
     
     Column {
         id: ratings
-        anchors.top: page.top
+        spacing: 10
+        anchors.top: installButton.bottom
         anchors.right: parent.right
-        anchors.rightMargin: 200
         
-        Rating { rating: app.appBackend.reviewsBackend().ratingForApplication(application).rating() }
-        Label { text: i18n("%1 reviews", app.appBackend.reviewsBackend().ratingForApplication(application).ratingCount()) }
+        Rating { 
+            anchors.horizontalCenter: parent.horizontalCenter
+            rating: app.appBackend.reviewsBackend().ratingForApplication(application).rating()
+        }
+        Label {
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: i18n("%1 reviews", app.appBackend.reviewsBackend().ratingForApplication(application).ratingCount())
+        }
+        
+        
+        Button {
+            text: i18n("Homepage")
+            iconSource: "go-home"
+            enabled: application.homepage
+            onClicked: app.openUrl(application.homepage)
+        }
+        
+        Label {
+            text: i18n(  "<b>Total Size:</b> %1<br/>"
+                        +"<b>Version:</b> %2<br/>"
+                        +"<b>License:</b> %3<br/>",
+                         application.sizeDescription,
+                         application.name+" "+(application.isInstalled ?
+                                                    application.installedVersion : application.availableVersion),
+                         application.license
+            )
+        }
     }
     
     Image {
@@ -63,7 +88,7 @@ Page
         
         states: [
             State { name: "thumbnail"
-                PropertyChanges { target: screenshot; height: 100 }
+                PropertyChanges { target: screenshot; height: icon.height+installButton.height }
             },
             State { name: "full"
                 PropertyChanges { target: screenshot; height: Math.min(parent.height, sourceSize.height) }
@@ -82,40 +107,25 @@ Page
         }
     }
     
+    InstallApplicationButton {
+        id: installButton
+        anchors.left: parent.left
+        anchors.top: header.bottom
+        application: page.application
+    }
+    
     Column {
         id: info
-        anchors.top: header.bottom
+        anchors.top: installButton.bottom
         anchors.left: parent.left
-        anchors.right: parent.right
+        anchors.right: ratings.left
         anchors.margins: 5
         spacing: 10
-        
-        InstallApplicationButton {
-            application: page.application
-        }
         
         Label {
             width: parent.width
             wrapMode: Text.WordWrap
             text: application.longDescription
-        }
-        
-        Button {
-            text: i18n("Homepage")
-            iconSource: "go-home"
-            enabled: application.homepage
-            onClicked: app.openUrl(application.homepage)
-        }
-        
-        Label {
-            text: i18n(  "<b>Total Size:</b> %1<br/>"
-                        +"<b>Version:</b> %2<br/>"
-                        +"<b>License:</b> %3<br/>",
-                         application.sizeDescription,
-                         application.name+" "+(application.isInstalled ?
-                                                    application.installedVersion : application.availableVersion),
-                         application.license
-            )
         }
         
         Label {
@@ -153,6 +163,7 @@ Page
             }
             
             Row {
+                visible: app.appBackend.reviewsBackend().hasCredentials
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
                 ToolButton {
