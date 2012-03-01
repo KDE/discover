@@ -52,6 +52,12 @@ Item {
         }
     }
     
+    onVisibleChanged: opacity=(visible? 1 : 0)
+    
+    Behavior on opacity {
+        NumberAnimation { duration: 250; easing.type: Easing.InOutQuad }
+    }
+    
     state: (reviews && reviews.hasCredentials) ? "logged" : "notlogged"
     states: [
         State {
