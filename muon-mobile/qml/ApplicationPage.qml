@@ -57,10 +57,18 @@ Page
         
         
         Button {
+            anchors.horizontalCenter: parent.horizontalCenter
             text: i18n("Homepage")
             iconSource: "go-home"
             enabled: application.homepage
             onClicked: app.openUrl(application.homepage)
+        }
+        
+        Button {
+            anchors.horizontalCenter: parent.horizontalCenter
+            visible: application.isInstalled
+            text: i18n("Review")
+            onClicked: reviewDialog.open()
         }
         
         Label {
@@ -73,6 +81,10 @@ Page
                          application.license
             )
         }
+    }
+    
+    ReviewDialog {
+        id: reviewDialog
     }
     
     Image {

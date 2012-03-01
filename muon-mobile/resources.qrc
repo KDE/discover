@@ -11,6 +11,7 @@
     <file>qml/UpdatesPage.qml</file>
     <file>qml/MuonToolButton.qml</file>
     <file>qml/RatingAndReviewsConnection.qml</file>
+    <file>qml/ReviewDialog.qml</file>
 
     <file>qml/navigation.js</file>
  </qresource>
