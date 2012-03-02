@@ -9,6 +9,7 @@ Item {
     property alias sortRole: apps.sortRole
     property int elemHeight: 40
     property alias stateFilter: apps.stateFilter
+    property alias count: view.count
 
     function searchFor(text) {
         apps.search(text)
