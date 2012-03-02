@@ -127,6 +127,7 @@ QApt::Package *Application::package()
 {
     if (!m_package && m_backend) {
         m_package = m_backend->package(packageName());
+        emit installChanged();
     }
 
     // Packages removed from archive will remain in app-install-data until the
@@ -372,6 +373,7 @@ QByteArray Application::getField(const QByteArray &field) const
 
 bool Application::isInstalled() const
 {
+    qDebug() << "isinstalled" << m_package;
     return m_package && m_package->isInstalled();
 }
 
@@ -518,5 +520,6 @@ int Application::usageCount() const
 
 void Application::clearPackage()
 {
-    m_package=0;
+    m_package = 0;
+    emit installChanged();
 }

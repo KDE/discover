@@ -62,7 +62,7 @@ void TransactionListener::init()
 
     foreach (Transaction *transaction, m_appBackend->transactions()) {
         if (transaction->application() == m_app) {
-            emit installing(true);
+            emit installing();
             showTransactionState(transaction);
         }
     }
@@ -74,7 +74,7 @@ bool TransactionListener::isInstalling() const
         return false;
     foreach (Transaction *transaction, m_appBackend->transactions()) {
         if (transaction->application() == m_app) {
-            return true;
+            return transaction->state()!=TransactionState::DoneState;
         }
     }
     return false;
@@ -93,7 +93,7 @@ void TransactionListener::workerEvent(QApt::WorkerEvent event, Transaction *tran
         m_progress = 0;
         connect(m_appBackend, SIGNAL(progress(Transaction*,int)),
                 this, SLOT(updateProgress(Transaction*,int)));
-        emit installing(true);
+        emit installing();
         emit commentChanged();
         emit progressChanged();
         break;
@@ -107,7 +107,7 @@ void TransactionListener::workerEvent(QApt::WorkerEvent event, Transaction *tran
                 this, SLOT(updateProgress(Transaction*,int)));
         break;
     case QApt::CommitChangesFinished:
-        emit installing(false);
+        emit installing();
         disconnect(m_appBackend, SIGNAL(progress(Transaction*,int)),
                    this, SLOT(updateProgress(Transaction*,int)));
         break;
@@ -156,7 +156,7 @@ void TransactionListener::setStateComment(Transaction* transaction)
         case InstallApp:
             m_comment = i18nc("@info:status", "Installing");
             emit commentChanged();
-            emit installing(true);
+            emit installing();
             break;
         case ChangeAddons:
             m_comment = i18nc("@info:status", "Changing Addons");
@@ -183,17 +183,18 @@ int TransactionListener::progress() const
 
 void TransactionListener::transactionCancelled(Application* )
 {
-    emit installing(false);
+    emit installing();
 }
 
 void TransactionListener::setApplication(Application* app)
 {
-    disconnect(this, SIGNAL(installing(bool)),
-            m_app, SIGNAL(installChanged()));
+    if(m_app) {
+        disconnect(m_app, SIGNAL(installChanged()), this, SIGNAL(installing()));
+    }
+    
     m_app = app;
     emit applicationChanged();
-    connect(this, SIGNAL(installing(bool)),
-            m_app, SIGNAL(installChanged()));
+    connect(m_app, SIGNAL(installChanged()), this, SIGNAL(installing()));
 }
 
 Application* TransactionListener::application() const

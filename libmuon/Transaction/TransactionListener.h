@@ -55,7 +55,7 @@ class MUONPRIVATE_EXPORT TransactionListener : public QObject
         void progressChanged();
         void commentChanged();
         void applicationChanged();
-        void installing(bool isInstalling);
+        void installing();
 
     private slots:
         void workerEvent(QApt::WorkerEvent event, Transaction *transaction);
