@@ -123,7 +123,6 @@ void ApplicationBackend::reload()
     m_queue.clear();
     m_reviewsBackend->stopPendingJobs();
     m_backend->reloadCache();
-    m_reviewsBackend->clearReviewCache();
 
     emit reloadFinished();
     m_isReloading = false;
