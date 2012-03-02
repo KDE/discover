@@ -36,7 +36,6 @@ Item {
         delegate: ToolButton {
             height: bread.height
             iconSource: decoration
-            anchors.verticalCenter: bread.verticalCenter
             onClicked: bread.clicked(items.count-index-1)
             text: display
         }
