@@ -80,7 +80,6 @@ Page
             id: icon
             anchors.top: parent.top
             anchors.left: parent.left
-            anchors.rightMargin: 5
             width: 40
             height: 40
             
@@ -92,6 +91,7 @@ Page
             anchors.top: parent.top
             anchors.left: icon.right
             anchors.right: ratings.left
+            anchors.leftMargin: 5
             spacing: 5
             
             Text {
