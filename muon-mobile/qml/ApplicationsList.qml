@@ -35,6 +35,15 @@ Item {
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.left: parent.left
                 }
+                
+                QIconItem {
+                    anchors.right: icon.right
+                    anchors.bottom: icon.bottom
+                    visible: installed
+                    icon: "dialog-ok"
+                    height: 16
+                    width: 16
+                }
                 Label {
                     anchors.top: parent.top
                     anchors.left: icon.right
