@@ -38,16 +38,16 @@ Item {
                     anchors.top: parent.top
                     anchors.left: icon.right
                     anchors.leftMargin: 5
-                    anchors.topMargin: -7
+                    anchors.topMargin: -5
                     text: name
                 }
                 Label {
                     anchors.bottom: parent.bottom
                     anchors.left: icon.right
                     anchors.leftMargin: 5
-                    anchors.bottomMargin: -7
+                    anchors.bottomMargin: -5
                     text: "<em>"+comment+"</em>"
-                    opacity: delegateArea.containsMouse ? 1 : 0.4
+                    opacity: delegateArea.containsMouse ? 1 : 0.2
                 }
                 Rating {
                     anchors.right: parent.right
