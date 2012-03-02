@@ -34,9 +34,9 @@ Item {
         layoutDirection: Qt.LeftToRight
         orientation: ListView.Horizontal
         delegate: ToolButton {
-            height: parent.height
+            height: bread.height
             iconSource: decoration
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenter: bread.verticalCenter
             onClicked: bread.clicked(items.count-index-1)
             text: display
         }
