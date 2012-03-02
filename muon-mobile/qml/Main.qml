@@ -130,6 +130,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.top: breadcrumbsBar.bottom
         initialPage: window.state=="loaded" ? mainPage : null
+        clip: true
         
         toolBar: toolbar
     }
