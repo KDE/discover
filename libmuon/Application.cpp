@@ -373,7 +373,6 @@ QByteArray Application::getField(const QByteArray &field) const
 
 bool Application::isInstalled() const
 {
-    qDebug() << "isinstalled" << m_package;
     return m_package && m_package->isInstalled();
 }
 

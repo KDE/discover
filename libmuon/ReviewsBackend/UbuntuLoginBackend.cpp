@@ -35,11 +35,9 @@ UbuntuLoginBackend::UbuntuLoginBackend(QObject* parent)
     connect(m_interface, SIGNAL(CredentialsError(QString,QString,QString)), SLOT(credentialsError(QString,QString,QString)));
     connect(m_interface, SIGNAL(AuthorizationDenied(QString)), SLOT(authorizationDenied(QString)));
     connect(m_interface, SIGNAL(CredentialsFound(QString, MapString)), this, SLOT(successfulLogin(QString, MapString)));
-    qDebug() << "falalala" << m_interface->lastError().message();
     
     QDBusPendingReply< QMap<QString,QString> > cred = m_interface->find_credentials(appname());
     cred.waitForFinished();
-    qDebug() << "lalala" << cred.error().message();
     m_credentials = cred.value();
 }
 
