@@ -1,4 +1,4 @@
-1.3.0: (as of 1.3 RC)
+1.3.0:
 ======
 - Features:
   * Rewrote the Muon Update Manger with a more user-friendly GUI. (MUM)
@@ -21,11 +21,30 @@
     of other packages, inform the user and ask them if they wish to mark these updates.
     (BKO: #287176)
 - Bugfixes:
+  * Fixed a crash when attempting to display a review with an invalid package pointer.
+    (MSC) (BKO: #293058)
+  * Fixed a rare crash when attempting to update download data for a removed row in
+    the Muon Package Manager's download view. (MPM) (BKO: #287490)
+  * Fix various crashes that occur when reloading the APT backend results in an
+    initialization error. (Common) (BKO: #287988)
+  * Fixed the Muon Software Center hanging on failed transactions, and not being able
+    to process new ones. (MSC) (BKO: #284600)
+  * Fixed a crash in the Muon Software Center that occurred when the search index was
+    reloaded in the midst of a cache refresh. (MSC)
+  * Fixed a rare crash when navigating breadcrumb items in the Muon Software Center
+    (MSC) (BKO: #284611)
+  * Fixed a crash that occurs when trying to mark an uninstalled package for
+    reinstallation. (MPM) (BKO: #294785)
   * Launchpad links are no longer given in the "no changelog ready yet" error when
     a package doesn't originate from Ubuntu. (MPM)
   * Fixed the easter egg not playing its sound. (Common)
   * Fixed compilation when compiling with -Werror=return-type (MPM)
   * Made the FetchError string less redundant with FetchFailedWarning's (Common)
+  * Fixed the Muon Notifier notifying users of new development releases.
+  * Fixed a bug where the Muon Notifier would never show its tray icon when a new
+    release was detected.
+  * Filter out duplicate addons that can accumulate when an addon both recommends
+    and enhances an application. (MSC)
 - Optimizations:
   * Use QApt::Backend::markPackages() for marking multiple packages. This results
     in a 300% speed increase for marking multiple packages.(MPM, MUM)
