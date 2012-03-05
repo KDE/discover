@@ -62,7 +62,8 @@ Rectangle {
                 checkable: true
                 checked: progressBox.visible
                 onClicked: progressBox.visible=!progressBox.visible
-                
+                visible: progressBox.active
+
                 ProgressView {
                     id: progressBox
                     visible: false

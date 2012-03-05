@@ -5,6 +5,7 @@ import org.kde.muon 1.0
 Item {
     id: page
     property QtObject backend: app.appBackend
+    property bool active: installedView.count>0 || installingView.count>0
     width: 300
     height: contents.height+2*contents.anchors.margins
     
@@ -43,9 +44,13 @@ Item {
             onClicked: backend.clearLaunchList()
         }
         
-        Label { text: i18n("Installed:") }
+        Label {
+            visible: installedView.count>0
+            text: i18n("Installed:")
+        }
         
         Repeater {
+            id: installedView
             model: LaunchListModel {
                 id: launchModel
                 backend: page.backend
@@ -65,9 +70,13 @@ Item {
             }
         }
         
-        Label { text: i18n("Installing:") }
+        Label {
+            text: i18n("Installing:")
+            visible: installingView.count>0
+        }
         
         Repeater {
+            id: installingView
             model: ListModel {
                 ListElement { display: "..." }
                 ListElement { display: "..." }
