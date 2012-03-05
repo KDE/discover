@@ -169,8 +169,8 @@ void ReviewsBackend::fetchReviews(Application *app, int page)
     QString hashName = app->package()->latin1Name() + app->untranslatedName();
     
     QList<Review*> revs = m_reviewsCache.value(hashName);
-    if (revs.size()>(page*5)) { //there are 5 reviews per page
-        emit reviewsReady(app, revs.mid(page*5, 5));
+    if (revs.size()>(page*10)) { //there are 10 reviews per page
+        emit reviewsReady(app, revs.mid(page*10, 10));
         return;
     }
 
