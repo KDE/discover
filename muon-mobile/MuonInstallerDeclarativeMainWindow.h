@@ -1,5 +1,5 @@
 /*
- *   Copyright (C) 2012 Aleix Pol Gonzalez <aleixpol@kde.org>
+ *   Copyright (C) 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library/Lesser General Public License

@@ -1,5 +1,5 @@
 /*
- *   Copyright (C) 2012 Aleix Pol Gonzalez <aleixpol@kde.org>
+ *   Copyright (C) 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library/Lesser General Public License
@@ -35,7 +35,7 @@ int main(int argc, char** argv)
     KAboutData about("muon-installer", "muon-installer", ki18n("Muon Software Center"), version, ki18n(description),
                      KAboutData::License_GPL, ki18n("©2010, 2011 Jonathan Thomas"), KLocalizedString(), 0);
     about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
-    about.addAuthor(ki18n("Aleix Pol Gonzalez"), KLocalizedString(), "aleixpol@kde.org");
+    about.addAuthor(ki18n("Aleix Pol Gonzalez"), KLocalizedString(), "aleixpol@blue-systems.com");
     about.setProgramIconName("applications-other");
     about.setProductName("muon/installer");
 
