@@ -5,7 +5,7 @@ import org.kde.muon 1.0
 Item {
     id: page
     property QtObject backend: app.appBackend
-    width: 100
+    width: 300
     height: contents.height+2*contents.anchors.margins
     
     Rectangle {
@@ -43,17 +43,29 @@ Item {
             onClicked: backend.clearLaunchList()
         }
         
+        Label { text: i18n("Installed:") }
+        
         Repeater {
             model: LaunchListModel {
+                id: launchModel
                 backend: page.backend
             }
+            
             delegate: ListItem {
                 Label {
                     anchors.fill: parent
                     text: display
                 }
+                MuonToolButton {
+                    icon: decoration
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    onClicked: launchModel.invokeApplication(index)
+                }
             }
         }
+        
+        Label { text: i18n("Installing:") }
         
         Repeater {
             model: ListModel {
