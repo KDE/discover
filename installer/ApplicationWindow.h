@@ -23,6 +23,7 @@
 
 // Own includes
 #include "../libmuon/MuonMainWindow.h"
+#include <KService>
 
 class QAbstractItemView;
 class QModelIndex;
@@ -82,7 +83,7 @@ private:
     KMessageWidget *m_launcherMessage;
     ApplicationLauncher *m_appLauncher;
 
-    QVector<KService *> m_launchableApps;
+    QVector<KService::Ptr> m_launchableApps;
 
 private Q_SLOTS:
     void initGUI();

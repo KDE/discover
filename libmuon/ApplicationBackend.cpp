@@ -179,7 +179,8 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
 
         m_queue.dequeue();
         if (m_currentTransaction->action() == InstallApp) {
-            m_appLaunchList << m_currentTransaction->application()->package()->name();
+            m_appLaunchList << m_currentTransaction->application();
+            emit launchListChanged();
         }
 
         m_workerState.first = QApt::InvalidEvent;
@@ -369,7 +370,7 @@ void ApplicationBackend::runNextTransaction()
     m_backend->commitChanges();
 }
 
-QStringList ApplicationBackend::launchList() const
+QList<Application*> ApplicationBackend::launchList() const
 {
     return m_appLaunchList;
 }

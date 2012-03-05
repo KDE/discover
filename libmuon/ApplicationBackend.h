@@ -47,6 +47,7 @@ class Transaction;
 class MUONPRIVATE_EXPORT ApplicationBackend : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QList<Application*> launchList READ launchList RESET clearLaunchList NOTIFY launchListChanged)
 public:
     explicit ApplicationBackend(QObject *parent=0);
     ~ApplicationBackend();
@@ -57,13 +58,12 @@ public:
     QSet<QString> installedAppOrigins() const;
     QPair<QApt::WorkerEvent, Transaction *> workerState() const;
     QList<Transaction *> transactions() const;
-    QStringList launchList() const;
+    QList<Application*> launchList() const;
 
     bool confirmRemoval(Transaction *transaction);
     bool isReloading() const;
     void markTransaction(Transaction *transaction);
     void addTransaction(Transaction *transaction);
-    void clearLaunchList();
 
 public slots:
     //helper functions
@@ -71,6 +71,10 @@ public slots:
     void installApplication(Application *app);
     void removeApplication(Application *app);
     void cancelTransaction(Application *app);
+    void clearLaunchList();
+
+signals:
+    void launchListChanged();
 
 private:
     QApt::Backend *m_backend;
@@ -80,7 +84,7 @@ private:
     QList<Application *> m_appList;
     QSet<QString> m_originList;
     QSet<QString> m_instOriginList;
-    QStringList m_appLaunchList;
+    QList<Application*> m_appLaunchList;
     QStringList m_pkgBlacklist;
     QQueue<Transaction *> m_queue;
     Transaction *m_currentTransaction;

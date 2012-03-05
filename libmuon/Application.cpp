@@ -522,3 +522,20 @@ void Application::clearPackage()
     m_package = 0;
     emit installChanged();
 }
+
+QVector<KService::Ptr> Application::executables()
+{
+    QVector<KService::Ptr> ret;
+    foreach (const QString &desktop, m_package->installedFilesList().filter(".desktop")) {
+        // we create a new KService because findByDestopPath
+        // might fail because the Sycoca database is not up to date yet.
+        KService::Ptr service(new KService(desktop));
+        if (service->isApplication() &&
+            !service->noDisplay() &&
+            !service->exec().isEmpty())
+        {
+            ret << service;
+        }
+    }
+    return ret;
+}

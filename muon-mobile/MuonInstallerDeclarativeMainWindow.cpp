@@ -96,6 +96,7 @@ void MuonInstallerMainWindow::setBackend(QApt::Backend* b)
 {
     BackendsSingleton::self()->initialize(b, this);
     appBackend(); //here we force the retrieval of the appbackend to get ratings
+    emit appBackendChanged();
     m_view->rootObject()->setProperty("state", "loaded");
 }
 

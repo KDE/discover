@@ -18,6 +18,7 @@
  */
 
 #include "BackendsSingleton.h"
+#include "MuonInstallerDeclarativeMainWindow.h"
 #include <LibQApt/Backend>
 #include <ApplicationModel/ApplicationModel.h>
 #include <ApplicationBackend.h>
@@ -41,8 +42,7 @@ BackendsSingleton::BackendsSingleton()
 
 ApplicationBackend* BackendsSingleton::applicationBackend()
 {
-    if(!m_applicationBackend) {
-        Q_ASSERT(m_backend);
+    if(m_backend && !m_applicationBackend) {
         m_applicationBackend = new ApplicationBackend;
         m_applicationBackend->setBackend(m_backend);
     }

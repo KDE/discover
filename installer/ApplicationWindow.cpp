@@ -439,40 +439,19 @@ ApplicationBackend *ApplicationWindow::appBackend() const
 void ApplicationWindow::showLauncherMessage()
 {
     clearMessageActions();
-    QApt::PackageList packages;
 
-    foreach (const QString &package, m_appBackend->launchList()) {
-        QApt::Package *pkg = m_backend->package(package);
-        if (pkg) {
-            packages << pkg;
-        }
-    }
-
-    m_appBackend->clearLaunchList();
-
-    QVector<KService *> apps;
-    foreach (QApt::Package *package, packages) {
-        if (!package->isInstalled()) {
+    QVector<KService::Ptr> apps;
+    foreach (Application *app, m_appBackend->launchList()) {
+        if (!app->isInstalled()) {
             continue;
         }
-
-        // TODO: move to Application (perhaps call it Application::executables())
-        foreach (const QString &desktop, package->installedFilesList().filter(".desktop")) {
-            // we create a new KService because findByDestopPath
-            // might fail because the Sycoca database is not up to date yet.
-            KService *service = new KService(desktop);
-            if (service->isApplication() &&
-              !service->noDisplay() &&
-              !service->exec().isEmpty())
-            {
-                apps << service;
-            }
-        }
+        apps << app->executables();
     }
+    m_appBackend->clearLaunchList();
     m_launchableApps = apps;
 
     if (apps.size() == 1) {
-        KService *service = apps.first();
+        KService::Ptr service = apps.first();
         QString name = service->genericName().isEmpty() ?
                        service->property("Name").toString() :
                        service->property("Name").toString() % QLatin1Literal(" - ") % service->genericName();
@@ -502,7 +481,7 @@ void ApplicationWindow::launchSingleApp()
 void ApplicationWindow::showAppLauncher()
 {
     if (!m_appLauncher && !m_launchableApps.isEmpty()) {
-        m_appLauncher = new ApplicationLauncher(m_launchableApps);
+        m_appLauncher = new ApplicationLauncher(m_appBackend);
         connect(m_appLauncher, SIGNAL(destroyed(QObject*)),
             this, SLOT(onAppLauncherClosed()));
         connect(m_appLauncher, SIGNAL(finished(int)),

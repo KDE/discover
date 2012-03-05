@@ -56,6 +56,22 @@ Rectangle {
             }
             
             MuonToolButton {
+                id: progressButton
+                icon: "view-refresh"
+                height: parent.height
+                checkable: true
+                checked: progressBox.visible
+                onClicked: progressBox.visible=!progressBox.visible
+                
+                ProgressView {
+                    id: progressBox
+                    visible: false
+                    anchors.horizontalCenter: progressButton.horizontalCenter
+                    anchors.top: progressButton.bottom
+                }
+            }
+            
+            MuonToolButton {
                 id: usersButton
                 icon: "system-users"
                 visible: window.state=="loaded"

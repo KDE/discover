@@ -27,6 +27,7 @@ set(muon_LIB_SRCS
     ApplicationBackend.cpp
     ApplicationModel/ApplicationModel.cpp
     ApplicationModel/ApplicationProxyModel.cpp
+    ApplicationModel/LaunchListModel.cpp
     ChangesDialog.cpp
     MuonMainWindow.cpp
     MuonStrings.cpp

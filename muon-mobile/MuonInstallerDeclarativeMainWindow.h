@@ -30,7 +30,7 @@ namespace QApt { class Backend; }
 class MuonInstallerMainWindow : public MuonMainWindow
 {
     Q_OBJECT
-    Q_PROPERTY(ApplicationBackend* appBackend READ appBackend CONSTANT)
+    Q_PROPERTY(ApplicationBackend* appBackend READ appBackend NOTIFY appBackendChanged)
     public:
         explicit MuonInstallerMainWindow();
 
@@ -41,6 +41,9 @@ class MuonInstallerMainWindow : public MuonMainWindow
 
     public slots:
         void setBackend(QApt::Backend* b);
+
+    signals:
+        void appBackendChanged();
 
     private:
         QDeclarativeView* m_view;
