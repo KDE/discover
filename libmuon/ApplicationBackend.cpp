@@ -171,17 +171,15 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
         m_debconfGui->connect(m_debconfGui, SIGNAL(activated()), m_debconfGui, SLOT(show()));
         m_debconfGui->connect(m_debconfGui, SIGNAL(deactivated()), m_debconfGui, SLOT(hide()));
         break;
-    case QApt::CommitChangesFinished:
+    case QApt::CommitChangesFinished: {
         disconnect(m_backend, SIGNAL(commitProgress(QString,int)),
                    this, SLOT(updateCommitProgress(QString,int)));
 
         m_currentTransaction->setState(DoneState);
 
-        {
-            Transaction* t = m_queue.dequeue();
-            transactionRemoved(t);
-            delete t;
-        }
+        Transaction* t = m_queue.dequeue();
+        Q_ASSERT(t==m_currentTransaction);
+        transactionRemoved(t);
 
         if (m_currentTransaction->action() == InstallApp) {
             m_appLaunchList << m_currentTransaction->application();
@@ -190,13 +188,14 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
 
         m_workerState.first = QApt::InvalidEvent;
         m_workerState.second = 0;
+        delete m_currentTransaction;
 
         if (m_queue.isEmpty()) {
             reload();
         } else {
             runNextTransaction();
         }
-        break;
+    }   break;
     default:
         break;
     }

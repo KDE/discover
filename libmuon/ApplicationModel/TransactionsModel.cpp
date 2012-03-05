@@ -22,6 +22,7 @@
 #include <ApplicationBackend.h>
 #include <Transaction/Transaction.h>
 #include <Application.h>
+#include <QDebug>
 
 TransactionsModel::TransactionsModel(QObject* parent)
     : QAbstractListModel(parent)
@@ -76,6 +77,13 @@ ApplicationBackend* TransactionsModel::backend() const
 
 void TransactionsModel::setBackend(ApplicationBackend* b)
 {
+    if(m_backend) {
+        disconnect(b, SIGNAL(reloadStarted()), this, SLOT(clearTransactions()));
+        disconnect(b, SIGNAL(transactionRemoved(Transaction*)), this, SLOT(removeTransaction(Transaction*)));
+        disconnect(b, SIGNAL(transactionAdded(Transaction*)), this, SLOT(addTransaction(Transaction*)));
+        disconnect(b, SIGNAL(workerEvent(QApt::WorkerEvent,Transaction*)), this, SLOT(transactionChanged(QApt::WorkerEvent,Transaction*)));
+    }
+    
     m_backend = b;
     m_transactions.clear();
     if(b) {
@@ -98,7 +106,7 @@ void TransactionsModel::removeTransaction(Transaction* t)
 {
     int idx = m_transactions.indexOf(t);
     if(idx>=0) {
-        beginRemoveRows(QModelIndex(), idx, 1);
+        beginRemoveRows(QModelIndex(), idx, idx);
         m_transactions.removeAt(idx);
         endRemoveRows();
     }
@@ -106,7 +114,7 @@ void TransactionsModel::removeTransaction(Transaction* t)
 
 void TransactionsModel::addTransaction(Transaction* t)
 {
-    beginInsertRows(QModelIndex(), 0, 1);
+    beginInsertRows(QModelIndex(), 0, 0);
     m_transactions.prepend(t);
     endInsertRows();
 }
