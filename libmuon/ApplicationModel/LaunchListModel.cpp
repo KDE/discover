@@ -23,6 +23,7 @@
 #include <Application.h>
 #include <ApplicationBackend.h>
 #include <QStringBuilder>
+#include <QDebug>
 #include <KIcon>
 #include <KService>
 #include <KToolInvocation>
@@ -37,25 +38,29 @@ void LaunchListModel::setBackend(ApplicationBackend* backend)
     if(m_backend)
         disconnect(m_backend, SIGNAL(launchListChanged()), this, SLOT(resetApplications()));
     m_backend = backend;
-    if(m_backend)
+    if(m_backend) {
         connect(m_backend, SIGNAL(launchListChanged()), this, SLOT(resetApplications()));
+        resetApplications();
+    }
 }
 
 void LaunchListModel::resetApplications()
 {
-    QStandardItem *item = 0;
+    clear();
+    QList<QStandardItem*> items;
     foreach (Application *app, m_backend->launchList()) {
         QVector<KService::Ptr> execs = app->executables();
         foreach (KService::Ptr service, execs) {
             QString name = service->genericName().isEmpty() ?
                         service->property("Name").toString() :
                         service->property("Name").toString() % QLatin1Literal(" - ") % service->genericName();
-            item = new QStandardItem(name);
+            QStandardItem *item = new QStandardItem(name);
             item->setIcon(KIcon(service->icon()));
             item->setData(service->desktopEntryPath(), Qt::UserRole);
-            appendRow(item);
+            items += item;
         }
     }
+    invisibleRootItem()->appendRows(items);
 }
 
 void LaunchListModel::invokeApplication(int row) const
