@@ -3,6 +3,7 @@ import org.kde.plasma.components 0.1
 import org.kde.muon 1.0
 
 Item {
+    id: page
     property QtObject backend: app.appBackend
     width: 100
     height: contents.height+2*contents.anchors.margins
@@ -43,7 +44,9 @@ Item {
         }
         
         Repeater {
-            model: backend.launchList
+            model: LaunchListModel {
+                backend: page.backend
+            }
             delegate: ListItem {
                 Label {
                     anchors.fill: parent

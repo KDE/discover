@@ -45,6 +45,7 @@
 #include <Transaction/TransactionListener.h>
 #include <ReviewsBackend/ReviewsBackend.h>
 #include <ReviewsBackend/Rating.h>
+#include <ApplicationModel/LaunchListModel.h>
 
 // Own includes
 #include "ApplicationProxyModelHelper.h"
@@ -70,6 +71,7 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     qmlRegisterType<TransactionListener>("org.kde.muon", 1, 0, "TransactionListener");
     qmlRegisterType<ReviewsModel>("org.kde.muon", 1, 0, "ReviewsModel");
     qmlRegisterType<ApplicationUpdates>("org.kde.muon", 1, 0, "ApplicationUpdates");
+    qmlRegisterType<LaunchListModel>("org.kde.muon", 1, 0, "LaunchListModel");
     qmlRegisterType<ReviewsBackend>();
     qmlRegisterType<Rating>();
     qmlRegisterType<Application>();

@@ -35,7 +35,6 @@
 #include <KLocale>
 #include <KService>
 #include <KStandardGuiItem>
-#include <KToolInvocation>
 
 ApplicationLauncher::ApplicationLauncher(ApplicationBackend* backend, QWidget* parent)
     : QDialog(parent)

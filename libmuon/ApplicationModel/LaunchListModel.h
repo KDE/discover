@@ -28,9 +28,12 @@ class Application;
 class ApplicationBackend;
 class MUONPRIVATE_EXPORT LaunchListModel : public QStandardItemModel
 {
+    Q_OBJECT
+    Q_PROPERTY(ApplicationBackend* backend READ backend WRITE setBackend)
     public:
         explicit LaunchListModel(QObject* parent = 0);
         void setBackend(ApplicationBackend* backend);
+        ApplicationBackend* backend() const { return m_backend; }
         void invokeApplication(int row) const;
 
     private slots:

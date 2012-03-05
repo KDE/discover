@@ -29,11 +29,16 @@
 
 LaunchListModel::LaunchListModel(QObject* parent)
     : QStandardItemModel(parent)
+    , m_backend(0)
 {}
 
 void LaunchListModel::setBackend(ApplicationBackend* backend)
 {
+    if(m_backend)
+        disconnect(m_backend, SIGNAL(launchListChanged()), this, SLOT(resetApplications()));
     m_backend = backend;
+    if(m_backend)
+        connect(m_backend, SIGNAL(launchListChanged()), this, SLOT(resetApplications()));
 }
 
 void LaunchListModel::resetApplications()
