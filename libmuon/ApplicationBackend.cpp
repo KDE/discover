@@ -177,7 +177,12 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
 
         m_currentTransaction->setState(DoneState);
 
-        delete m_queue.dequeue();
+        {
+            Transaction* t = m_queue.dequeue();
+            transactionRemoved(t);
+            delete t;
+        }
+
         if (m_currentTransaction->action() == InstallApp) {
             m_appLaunchList << m_currentTransaction->application();
             emit launchListChanged();
@@ -318,6 +323,7 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
 
     transaction->setState(QueuedState);
     m_queue.enqueue(transaction);
+    emit transactionAdded(transaction);
 
     if (m_queue.count() == 1) {
         m_currentTransaction = m_queue.head();
@@ -340,8 +346,10 @@ void ApplicationBackend::cancelTransaction(Application *app)
                 m_backend->undo();
             }
 
-            delete *iter;
+            Transaction* t = *iter;
+            transactionRemoved(t);
             m_queue.erase(iter);
+            delete t;
             break;
         }
         ++iter;

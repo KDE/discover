@@ -65,17 +65,6 @@ public:
     void markTransaction(Transaction *transaction);
     void addTransaction(Transaction *transaction);
 
-public slots:
-    //helper functions
-    void installApplication(Application *app, const QHash<QApt::Package *, QApt::Package::State> &addons);
-    void installApplication(Application *app);
-    void removeApplication(Application *app);
-    void cancelTransaction(Application *app);
-    void clearLaunchList();
-
-signals:
-    void launchListChanged();
-
 private:
     QApt::Backend *m_backend;
     ReviewsBackend *m_reviewsBackend;
@@ -95,6 +84,13 @@ private:
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void reload();
+    
+    //helper functions
+    void installApplication(Application *app, const QHash<QApt::Package *, QApt::Package::State> &addons);
+    void installApplication(Application *app);
+    void removeApplication(Application *app);
+    void cancelTransaction(Application *app);
+    void clearLaunchList();
 
 private Q_SLOTS:
     void init();
@@ -112,7 +108,10 @@ Q_SIGNALS:
     void errorSignal(QApt::ErrorCode code, const QVariantMap &details);
     void progress(Transaction *transaction, int progress);
     void transactionCancelled(Application *app);
+    void transactionRemoved(Transaction* t);
+    void transactionAdded(Transaction* t);
     void xapianReloaded();
+    void launchListChanged();
 };
 
 #endif

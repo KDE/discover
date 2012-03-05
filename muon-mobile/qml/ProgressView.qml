@@ -39,6 +39,7 @@ Item {
         }
         
         MuonToolButton {
+            visible: installedView.count>0
             anchors.right: parent.right
             icon: "dialog-close"
             onClicked: backend.clearLaunchList()
@@ -77,11 +78,8 @@ Item {
         
         Repeater {
             id: installingView
-            model: ListModel {
-                ListElement { display: "..." }
-                ListElement { display: "..." }
-                ListElement { display: "..." }
-                ListElement { display: "..." }
+            model: TransactionsModel {
+                backend: page.backend
             }
             delegate: ListItem {
                 Label {
