@@ -162,6 +162,10 @@ QHash<QString, QString> MuonStrings::groupHash()
                              "Non-free");
     hash["contrib"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"contrib\"",
                             "Contrib");
+    hash["education"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"education\"",
+                            "Education");
+    hash["introspection"] = i18nc("@item:inlistbox Human-readable name for the Debian package section \"introspection\"",
+                            "GObject Introspection Data");
     return hash;
 }
 
