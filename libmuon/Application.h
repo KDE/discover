@@ -26,6 +26,7 @@
 #include <QtCore/QStringList>
 
 #include <KUrl>
+#include <KService>
 
 #include <LibQApt/Package>
 
@@ -91,6 +92,7 @@ public:
     QString sizeDescription();
 
     void clearPackage();
+    QVector<KService::Ptr> executables();
 signals:
     ///to have it emitted, you'll need to attach a TransactionListener
     ///to the application instance

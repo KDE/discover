@@ -18,26 +18,30 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONUPDATES_H
-#define APPLICATIONUPDATES_H
-#include <QObject>
-#include <LibQApt/Globals>
+#ifndef ABSTRACTLOGINBACKEND_H
+#define ABSTRACTLOGINBACKEND_H
 
-class Application;
-class ApplicationUpdates : public QObject
+#include <QObject>
+
+class AbstractLoginBackend : public QObject
 {
     Q_OBJECT
     public:
-        explicit ApplicationUpdates(QObject* parent = 0);
-        Q_SCRIPTABLE void updateApplications(const QList< QObject* >& apps);
-        
-    signals:
-        void progress(const QString& txt, int percentage);
-        void downloadMessage(int code, const QString& msg);
-        void installMessage(const QString& msg);
-        
+        AbstractLoginBackend(QObject* parent=0);
+        virtual bool hasCredentials() const = 0;
+        virtual QString displayName() const = 0;
+
     public slots:
-        void errorOccurred(QApt::ErrorCode code, const QVariantMap& args );
+        virtual void login() = 0;
+        virtual void registerAndLogin() = 0;
+        virtual void logout() = 0;
+        virtual QByteArray token() const = 0;
+        virtual QByteArray tokenSecret() const = 0;
+        virtual QByteArray consumerKey() const = 0;
+        virtual QByteArray consumerSecret() const = 0;
+
+    signals:
+        void connectionStateChanged();
 };
 
-#endif // APPLICATIONUPDATES_H
+#endif // ABSTRACTLOGINBACKEND_H

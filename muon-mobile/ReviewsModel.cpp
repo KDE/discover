@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@kde.org>                *
+ *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -27,6 +27,8 @@ ReviewsModel::ReviewsModel(QObject* parent)
     : QAbstractListModel(parent)
     , m_app(0)
     , m_backend(0)
+    , m_lastPage(0)
+    , m_canFetchMore(true)
 {
     QHash<int, QByteArray> roles = roleNames();
     roles.insert(ShouldShow, "shouldShow");
@@ -43,7 +45,6 @@ QVariant ReviewsModel::data(const QModelIndex& index, int role) const
 {
     if(!index.isValid())
         return QVariant();
-    
     switch(role) {
         case Qt::DisplayRole:
             return m_reviews.at(index.row())->reviewText();
@@ -65,8 +66,10 @@ QVariant ReviewsModel::data(const QModelIndex& index, int role) const
     return QVariant();
 }
 
-int ReviewsModel::rowCount(const QModelIndex& ) const
+int ReviewsModel::rowCount(const QModelIndex& parent) const
 {
+    if(parent.isValid())
+        return 0;
     return m_reviews.count();
 }
 
@@ -107,17 +110,53 @@ void ReviewsModel::restartFetching()
 {
     if(!m_app || !m_backend)
         return;
-    m_backend->fetchReviews(m_app);
-    qDebug() << "fetching reviews...";
+
+    m_canFetchMore=true;
+    m_lastPage = 0;
+    fetchMore();
+}
+
+void ReviewsModel::fetchMore(const QModelIndex& parent)
+{
+    if(!m_backend || !m_app || m_backend->isFetching() || parent.isValid() || !m_canFetchMore)
+        return;
+
+    m_lastPage++;
+    m_backend->fetchReviews(m_app, m_lastPage);
+    qDebug() << "fetching reviews... " << m_lastPage;
 }
 
 void ReviewsModel::addReviews(Application* app, const QList<Review*>& reviews)
 {
+    m_canFetchMore=!reviews.isEmpty();
     if(app!=m_app || reviews.isEmpty())
         return;
-    qDebug() << "reviews arrived..." << reviews.size();
+    qDebug() << "reviews arrived..." << m_lastPage << reviews.size();
     
     beginInsertRows(QModelIndex(), rowCount(), rowCount()+reviews.size());
     m_reviews += reviews;
     endInsertRows();
+}
+
+bool ReviewsModel::canFetchMore(const QModelIndex&) const
+{
+    return m_canFetchMore;
+}
+
+void ReviewsModel::markUseful(int row, bool useful)
+{
+    Review* r = m_reviews[row];
+    m_backend->submitUsefulness(r, useful);
+}
+
+void ReviewsModel::deleteReview(int row)
+{
+    Review* r = m_reviews[row];
+    m_backend->deleteReview(r);
+}
+
+void ReviewsModel::flagReview(int row, const QString& reason, const QString& text)
+{
+    Review* r = m_reviews[row];
+    m_backend->flagReview(r, reason, text);
 }

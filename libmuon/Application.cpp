@@ -127,6 +127,7 @@ QApt::Package *Application::package()
 {
     if (!m_package && m_backend) {
         m_package = m_backend->package(packageName());
+        emit installChanged();
     }
 
     // Packages removed from archive will remain in app-install-data until the
@@ -514,5 +515,23 @@ int Application::usageCount() const
 
 void Application::clearPackage()
 {
-    m_package=0;
+    m_package = 0;
+    emit installChanged();
+}
+
+QVector<KService::Ptr> Application::executables()
+{
+    QVector<KService::Ptr> ret;
+    foreach (const QString &desktop, m_package->installedFilesList().filter(".desktop")) {
+        // we create a new KService because findByDestopPath
+        // might fail because the Sycoca database is not up to date yet.
+        KService::Ptr service(new KService(desktop));
+        if (service->isApplication() &&
+            !service->noDisplay() &&
+            !service->exec().isEmpty())
+        {
+            ret << service;
+        }
+    }
+    return ret;
 }

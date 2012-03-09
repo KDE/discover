@@ -18,26 +18,32 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONUPDATES_H
-#define APPLICATIONUPDATES_H
-#include <QObject>
-#include <LibQApt/Globals>
+#ifndef LAUNCHLISTMODEL_H
+#define LAUNCHLISTMODEL_H
+
+#include "libmuonprivate_export.h"
+#include <QStandardItemModel>
 
 class Application;
-class ApplicationUpdates : public QObject
+class ApplicationBackend;
+class MUONPRIVATE_EXPORT LaunchListModel : public QStandardItemModel
 {
     Q_OBJECT
+    Q_PROPERTY(ApplicationBackend* backend READ backend WRITE setBackend)
     public:
-        explicit ApplicationUpdates(QObject* parent = 0);
-        Q_SCRIPTABLE void updateApplications(const QList< QObject* >& apps);
-        
-    signals:
-        void progress(const QString& txt, int percentage);
-        void downloadMessage(int code, const QString& msg);
-        void installMessage(const QString& msg);
-        
+        explicit LaunchListModel(QObject* parent = 0);
+        void setBackend(ApplicationBackend* backend);
+        ApplicationBackend* backend() const { return m_backend; }
+
     public slots:
-        void errorOccurred(QApt::ErrorCode code, const QVariantMap& args );
+        void invokeApplication(int row) const;
+
+    private slots:
+        void resetApplications();
+
+    private:
+        ApplicationBackend* m_backend;
 };
 
-#endif // APPLICATIONUPDATES_H
+#endif // LAUNCHLISTMODEL_H
+

@@ -43,6 +43,7 @@ target_link_libraries(muon-installer muonprivate
                                      ${KDE4_KIO_LIBS}
                                      ${QAPT_LIBRARY}
                                      ${QZEITGEIST_LIBRARY}
+                                     ${qjson_LIBRARIES}
                                      ${QT_QTDECLARATIVE_LIBRARY})
 
 if (ENABLE_QZEITGEIST)

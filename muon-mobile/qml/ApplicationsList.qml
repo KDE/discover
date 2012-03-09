@@ -9,6 +9,7 @@ Item {
     property alias sortRole: apps.sortRole
     property int elemHeight: 40
     property alias stateFilter: apps.stateFilter
+    property alias count: view.count
 
     function searchFor(text) {
         apps.search(text)
@@ -28,23 +29,48 @@ Item {
             ListItem {
                 property real contHeight: elemHeight*0.7
                 height: elemHeight
-                Row {
-                    spacing: 10
-                    QIconItem {
-                        icon: model["icon"]; width: contHeight; height: contHeight
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
-                    Label { text: name }
+                QIconItem {
+                    id: icon
+                    icon: model["icon"]; width: contHeight; height: contHeight
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.left: parent.left
+                }
+                
+                QIconItem {
+                    anchors.right: icon.right
+                    anchors.bottom: icon.bottom
+                    visible: installed
+                    icon: "dialog-ok"
+                    height: 16
+                    width: 16
+                }
+                Label {
+                    anchors.top: parent.top
+                    anchors.left: icon.right
+                    anchors.leftMargin: 5
+                    anchors.topMargin: -5
+                    text: name
+                }
+                Label {
+                    anchors.bottom: parent.bottom
+                    anchors.left: icon.right
+                    anchors.leftMargin: 5
+                    anchors.bottomMargin: -5
+                    text: "<em>"+comment+"</em>"
+                    opacity: delegateArea.containsMouse ? 1 : 0.2
                 }
                 Rating {
                     anchors.right: parent.right
+                    anchors.top: parent.top
                     rating: model["rating"]
                     height: contHeight*.7
                 }
                 
                 MouseArea {
+                    id: delegateArea
                     anchors.fill: parent
                     onClicked: Navigation.openApplication(application)
+                    hoverEnabled: true
                 }
             }
         }

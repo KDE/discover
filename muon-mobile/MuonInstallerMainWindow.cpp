@@ -1,5 +1,5 @@
 /*
- *   Copyright (C) 2012 Aleix Pol Gonzalez <aleixpol@kde.org>
+ *   Copyright (C) 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library/Lesser General Public License
@@ -45,6 +45,8 @@
 #include <Transaction/TransactionListener.h>
 #include <ReviewsBackend/ReviewsBackend.h>
 #include <ReviewsBackend/Rating.h>
+#include <ApplicationModel/LaunchListModel.h>
+#include <ApplicationModel/TransactionsModel.h>
 
 // Own includes
 #include "ApplicationProxyModelHelper.h"
@@ -70,6 +72,8 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     qmlRegisterType<TransactionListener>("org.kde.muon", 1, 0, "TransactionListener");
     qmlRegisterType<ReviewsModel>("org.kde.muon", 1, 0, "ReviewsModel");
     qmlRegisterType<ApplicationUpdates>("org.kde.muon", 1, 0, "ApplicationUpdates");
+    qmlRegisterType<LaunchListModel>("org.kde.muon", 1, 0, "LaunchListModel");
+    qmlRegisterType<TransactionsModel>("org.kde.muon", 1, 0, "TransactionsModel");
     qmlRegisterType<ReviewsBackend>();
     qmlRegisterType<Rating>();
     qmlRegisterType<Application>();
@@ -84,6 +88,9 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     QTimer::singleShot(10, this, SLOT(initObject()));
     setupActions();
     m_view->setSource(QUrl("qrc:/qml/Main.qml"));
+    if(!m_view->errors().isEmpty())
+        qDebug() << "errors: " << m_view->errors();
+    Q_ASSERT(m_view->errors().isEmpty());
     m_view->rootObject()->setProperty("state", "loading");
     
     setCentralWidget(m_view);
@@ -93,6 +100,7 @@ void MuonInstallerMainWindow::setBackend(QApt::Backend* b)
 {
     BackendsSingleton::self()->initialize(b, this);
     appBackend(); //here we force the retrieval of the appbackend to get ratings
+    emit appBackendChanged();
     m_view->rootObject()->setProperty("state", "loaded");
 }
 

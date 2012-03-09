@@ -21,6 +21,7 @@
 #include "ReviewsBackend.h"
 
 #include <QtCore/QStringBuilder>
+#include <QDebug>
 
 #include <KGlobal>
 #include <KIO/Job>
@@ -31,10 +32,32 @@
 #include <LibQApt/Backend>
 
 #include <qjson/parser.h>
+#include <qjson/serializer.h>
+
+#include <QtOAuth/interface.h>
 
 #include "../Application.h"
 #include "Rating.h"
 #include "Review.h"
+#include "AbstractLoginBackend.h"
+#include "UbuntuLoginBackend.h"
+
+static QString getCodename(const QString& value)
+{
+    QString ret;
+    QFile f("/etc/lsb-release");
+    if(f.open(QIODevice::ReadOnly|QIODevice::Text)) {
+        QRegExp rx(QString("%1=(.+)\n").arg(value));
+        while(!f.atEnd()) {
+            QByteArray line = f.readLine();
+            if(rx.exactMatch(line)) {
+                ret = rx.cap(1);
+                break;
+            }
+        }
+    }
+    return ret;
+}
 
 ReviewsBackend::ReviewsBackend(QObject *parent)
         : QObject(parent)
@@ -43,7 +66,12 @@ ReviewsBackend::ReviewsBackend(QObject *parent)
         , m_ratingsFile(0)
         , m_reviewsFile(0)
 {
+    m_loginBackend = new UbuntuLoginBackend(this);
+    connect(m_loginBackend, SIGNAL(connectionStateChanged()), SIGNAL(loginStateChanged()));
     fetchRatings();
+    m_oauthInterface = new QOAuth::Interface(this);
+    m_oauthInterface->setConsumerKey(m_loginBackend->consumerKey());
+    m_oauthInterface->setConsumerSecret(m_loginBackend->consumerSecret());
 }
 
 ReviewsBackend::~ReviewsBackend()
@@ -135,12 +163,14 @@ void ReviewsBackend::stopPendingJobs()
     m_jobHash.clear();
 }
 
-void ReviewsBackend::fetchReviews(Application *app)
+void ReviewsBackend::fetchReviews(Application *app, int page)
 {
     // Check our cache before fetching from the 'net
     QString hashName = app->package()->latin1Name() + app->untranslatedName();
-    if (m_reviewsCache.contains(hashName)) {
-        emit reviewsReady(app, m_reviewsCache.value(hashName));
+    
+    QList<Review*> revs = m_reviewsCache.value(hashName);
+    if (revs.size()>(page*10)) { //there are 10 reviews per page
+        emit reviewsReady(app, revs.mid(page*10, 10));
         return;
     }
 
@@ -158,9 +188,9 @@ void ReviewsBackend::fetchReviews(Application *app)
     // But that could be because the Ubuntu Software Center (which I used to
     // figure it out) is written in python, so you have to go hunting to where
     // a variable was initially initialized with a primitive to figure out its type.
-    KUrl reviewsUrl(m_serverBase % QLatin1Literal("reviews/filter/") % lang % '/'
-                    % origin % '/' % QLatin1Literal("any") % '/' % version % '/' % packageName
-                    % ';' % appName % '/' % QLatin1Literal("page") % '/' % '1');
+    KUrl reviewsUrl(m_serverBase % QLatin1String("reviews/filter/") % lang % '/'
+		    % origin % '/' % QLatin1String("any") % '/' % version % '/' % packageName
+		    % ';' % appName % '/' % QLatin1String("page") % '/' % QString::number(page));
 
     if (m_reviewsFile) {
         m_reviewsFile->deleteLater();
@@ -211,7 +241,7 @@ void ReviewsBackend::reviewsFetched(KJob *job)
     Application *app = m_jobHash.value(job);
     m_jobHash.remove(job);
 
-    m_reviewsCache[app->package()->latin1Name() + app->name()] = reviewsList;
+    m_reviewsCache[app->package()->latin1Name() + app->name()].append(reviewsList);
 
     emit reviewsReady(app, reviewsList);
 }
@@ -231,3 +261,105 @@ QString ReviewsBackend::getLanguage()
     return language.split('_').first();
 }
 
+void ReviewsBackend::submitUsefulness(Review* r, bool useful)
+{
+    QVariantMap data;
+    data["useful"] = useful;
+    
+    postInformation(QString("/reviews/%1/recommendations/").arg(r->id()), data);
+}
+
+void ReviewsBackend::submitReview(Application* app, const QString& summary,
+                      const QString& review_text, const QString& rating)
+{
+    QVariantMap data;
+    data["app_name"] = app->name();
+    data["package_name"] = app->packageName();
+    data["summary"] = summary;
+    data["version"] = app->package()->version();
+    data["review_text"] = review_text;
+    data["rating"] = rating;
+    data["language"] = getLanguage();
+    data["origin"] = app->package()->origin();
+    data["distroseries"] = getCodename("DISTRIB_CODENAME");
+    data["arch_tag"] = app->package()->architecture();
+    
+    postInformation("/reviews/", data);
+}
+
+void ReviewsBackend::deleteReview(Review* r)
+{
+    postInformation(QString("/reviews/delete/%1/").arg(r->id()), QVariantMap());
+}
+
+void ReviewsBackend::flagReview(Review* r, const QString& reason, const QString& text)
+{
+    QVariantMap data;
+    data["reason"] = reason;
+    data["text"] = text;
+
+    postInformation(QString("/reviews/%1/flags/").arg(r->id()), data);
+}
+
+QByteArray authorization(QOAuth::Interface* oauth, const KUrl& url, AbstractLoginBackend* login)
+{
+    return oauth->createParametersString(url.url(), QOAuth::POST, login->token(), login->tokenSecret(),
+                                           QOAuth::HMAC_SHA1, QOAuth::ParamMap(), QOAuth::ParseForHeaderArguments);
+}
+
+void ReviewsBackend::postInformation(const QString& path, const QVariantMap& data)
+{
+    KUrl url(m_serverBase);
+    url.setScheme("https");
+    url.addPath(path);
+    
+    KIO::StoredTransferJob* job = KIO::storedHttpPost(QJson::Serializer().serialize(data), url, KIO::Overwrite | KIO::HideProgressInfo);
+    job->addMetaData("content-type", "Content-Type: application/json" );
+    job->addMetaData("customHTTPHeader", "Authorization: " + authorization(m_oauthInterface, url, m_loginBackend));
+    connect(job, SIGNAL(result(KJob*)), this, SLOT(informationPosted(KJob*)));
+    job->start();
+}
+
+void ReviewsBackend::informationPosted(KJob* j)
+{
+    KIO::StoredTransferJob* job = qobject_cast<KIO::StoredTransferJob*>(j);
+    if(job->error()==0) {
+        qDebug() << "success" << job->data();
+    } else {
+        qDebug() << "error..." << job->error() << job->errorString() << job->errorText();
+    }
+}
+
+bool ReviewsBackend::isFetching() const
+{
+    return !m_jobHash.isEmpty();
+}
+
+bool ReviewsBackend::hasCredentials() const
+{
+    return m_loginBackend->hasCredentials();
+}
+
+QString ReviewsBackend::userName() const
+{
+    Q_ASSERT(m_loginBackend->hasCredentials());
+    return m_loginBackend->displayName();
+}
+
+void ReviewsBackend::login()
+{
+    Q_ASSERT(!m_loginBackend->hasCredentials());
+    m_loginBackend->login();
+}
+
+void ReviewsBackend::registerAndLogin()
+{
+    Q_ASSERT(!m_loginBackend->hasCredentials());
+    m_loginBackend->registerAndLogin();
+}
+
+void ReviewsBackend::logout()
+{
+    Q_ASSERT(m_loginBackend->hasCredentials());
+    m_loginBackend->logout();
+}

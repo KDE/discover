@@ -18,26 +18,13 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONUPDATES_H
-#define APPLICATIONUPDATES_H
-#include <QObject>
-#include <LibQApt/Globals>
+#ifndef LOGINMETATYPES_H
+#define LOGINMETATYPES_H
 
-class Application;
-class ApplicationUpdates : public QObject
-{
-    Q_OBJECT
-    public:
-        explicit ApplicationUpdates(QObject* parent = 0);
-        Q_SCRIPTABLE void updateApplications(const QList< QObject* >& apps);
-        
-    signals:
-        void progress(const QString& txt, int percentage);
-        void downloadMessage(int code, const QString& msg);
-        void installMessage(const QString& msg);
-        
-    public slots:
-        void errorOccurred(QApt::ErrorCode code, const QVariantMap& args );
-};
+#include <QMap>
+#include <QVariant>
 
-#endif // APPLICATIONUPDATES_H
+typedef QMap<QString,QString> MapString;
+Q_DECLARE_METATYPE(MapString)
+
+#endif

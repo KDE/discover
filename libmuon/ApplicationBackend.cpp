@@ -123,7 +123,6 @@ void ApplicationBackend::reload()
     m_queue.clear();
     m_reviewsBackend->stopPendingJobs();
     m_backend->reloadCache();
-    m_reviewsBackend->clearReviewCache();
 
     emit reloadFinished();
     m_isReloading = false;
@@ -174,26 +173,31 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
         m_debconfGui->connect(m_debconfGui, SIGNAL(activated()), m_debconfGui, SLOT(show()));
         m_debconfGui->connect(m_debconfGui, SIGNAL(deactivated()), m_debconfGui, SLOT(hide()));
         break;
-    case QApt::CommitChangesFinished:
+    case QApt::CommitChangesFinished: {
         disconnect(m_backend, SIGNAL(commitProgress(QString,int)),
                    this, SLOT(updateCommitProgress(QString,int)));
 
         m_currentTransaction->setState(DoneState);
 
-        m_queue.dequeue();
+        Transaction* t = m_queue.dequeue();
+        Q_ASSERT(t==m_currentTransaction);
+        transactionRemoved(t);
+
         if (m_currentTransaction->action() == InstallApp) {
-            m_appLaunchList << m_currentTransaction->application()->package()->name();
+            m_appLaunchList << m_currentTransaction->application();
+            emit launchListChanged();
         }
 
         m_workerState.first = QApt::InvalidEvent;
         m_workerState.second = 0;
+        delete m_currentTransaction;
 
         if (m_queue.isEmpty()) {
             reload();
         } else {
             runNextTransaction();
         }
-        break;
+    }   break;
     default:
         break;
     }
@@ -344,7 +348,10 @@ void ApplicationBackend::cancelTransaction(Application *app)
                 m_backend->undo();
             }
 
+            Transaction* t = *iter;
+            transactionRemoved(t);
             m_queue.erase(iter);
+            delete t;
             break;
         }
         ++iter;
@@ -374,7 +381,7 @@ void ApplicationBackend::runNextTransaction()
     m_backend->commitChanges();
 }
 
-QStringList ApplicationBackend::launchList() const
+QList<Application*> ApplicationBackend::launchList() const
 {
     return m_appLaunchList;
 }

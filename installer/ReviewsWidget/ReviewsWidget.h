@@ -24,6 +24,7 @@
 #include <KVBox>
 
 class QLabel;
+class QPushButton;
 class QToolButton;
 class QVBoxLayout;
 
@@ -40,12 +41,19 @@ public:
 
 private:
     QToolButton *m_expandButton;
-    QLabel *m_statusLabel;
     QWidget *m_reviewContainer;
     QVBoxLayout *m_reviewLayout;
+    QLabel *m_statusLabel;
+    QPushButton *m_moreButton;
+
+    int m_pagesFetched;
 
 private Q_SLOTS:
     void expandButtonClicked();
+    void emitFetchPage();
+
+signals:
+    void fetchPage(int page);
 };
 
 #endif

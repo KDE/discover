@@ -26,6 +26,10 @@
 
 #include "libmuonprivate_export.h"
 
+namespace QOAuth {
+    class Interface;
+}
+
 class KJob;
 class KTemporaryFile;
 
@@ -33,6 +37,7 @@ namespace QApt {
     class Backend;
 }
 
+class AbstractLoginBackend;
 class Application;
 class Rating;
 class Review;
@@ -40,6 +45,8 @@ class Review;
 class MUONPRIVATE_EXPORT ReviewsBackend : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(bool hasCredentials READ hasCredentials NOTIFY loginStateChanged)
+    Q_PROPERTY(QString name READ userName NOTIFY loginStateChanged)
 public:
     ReviewsBackend(QObject *parent);
     ~ReviewsBackend();
@@ -47,9 +54,13 @@ public:
     Q_SCRIPTABLE Rating *ratingForApplication(Application *app) const;
 
     void setAptBackend(QApt::Backend *aptBackend);
-    void fetchReviews(Application *app);
+    void fetchReviews(Application* app, int page=1);
     void clearReviewCache();
     void stopPendingJobs();
+    bool isFetching() const;
+
+    QString userName() const;
+    bool hasCredentials() const;
 
 private:
     QApt::Backend *m_aptBackend;
@@ -64,14 +75,29 @@ private:
 
     void fetchRatings();
     QString getLanguage();
+    AbstractLoginBackend* m_loginBackend;
+    QOAuth::Interface* m_oauthInterface;
 
 private Q_SLOTS:
     void ratingsFetched(KJob *job);
     void reviewsFetched(KJob *job);
+    void informationPosted(KJob* job);
+    void postInformation(const QString& path, const QVariantMap& data);
+
+public slots:
+    void login();
+    void registerAndLogin();
+    void logout();
+    void submitUsefulness(Review* r, bool useful);
+    void submitReview(Application* app, const QString& summary,
+                      const QString& review_text, const QString& rating);
+    void deleteReview(Review* r);
+    void flagReview(Review* r, const QString& reason, const QString &text);
 
 Q_SIGNALS:
     void reviewsReady(Application *app, QList<Review *>);
     void ratingsReady();
+    void loginStateChanged();
 };
 
 #endif

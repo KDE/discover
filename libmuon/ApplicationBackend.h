@@ -47,6 +47,7 @@ class Transaction;
 class MUONPRIVATE_EXPORT ApplicationBackend : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QList<Application*> launchList READ launchList RESET clearLaunchList NOTIFY launchListChanged)
 public:
     explicit ApplicationBackend(QObject *parent=0);
     ~ApplicationBackend();
@@ -57,20 +58,12 @@ public:
     QSet<QString> installedAppOrigins() const;
     QPair<QApt::WorkerEvent, Transaction *> workerState() const;
     QList<Transaction *> transactions() const;
-    QStringList launchList() const;
+    QList<Application*> launchList() const;
 
     bool confirmRemoval(Transaction *transaction);
     bool isReloading() const;
     void markTransaction(Transaction *transaction);
     void addTransaction(Transaction *transaction);
-    void clearLaunchList();
-
-public slots:
-    //helper functions
-    void installApplication(Application *app, const QHash<QApt::Package *, QApt::Package::State> &addons);
-    void installApplication(Application *app);
-    void removeApplication(Application *app);
-    void cancelTransaction(Application *app);
 
 private:
     QApt::Backend *m_backend;
@@ -80,7 +73,7 @@ private:
     QList<Application *> m_appList;
     QSet<QString> m_originList;
     QSet<QString> m_instOriginList;
-    QStringList m_appLaunchList;
+    QList<Application*> m_appLaunchList;
     QStringList m_pkgBlacklist;
     QQueue<Transaction *> m_queue;
     Transaction *m_currentTransaction;
@@ -91,6 +84,13 @@ private:
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void reload();
+    
+    //helper functions
+    void installApplication(Application *app, const QHash<QApt::Package *, QApt::Package::State> &addons);
+    void installApplication(Application *app);
+    void removeApplication(Application *app);
+    void cancelTransaction(Application *app);
+    void clearLaunchList();
 
 private Q_SLOTS:
     void init();
@@ -110,7 +110,9 @@ Q_SIGNALS:
     void progress(Transaction *transaction, int progress);
     void transactionAdded(Transaction *transaction);
     void transactionCancelled(Application *app);
+    void transactionRemoved(Transaction* t);
     void xapianReloaded();
+    void launchListChanged();
 };
 
 #endif

@@ -18,26 +18,36 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONUPDATES_H
-#define APPLICATIONUPDATES_H
-#include <QObject>
-#include <LibQApt/Globals>
+#ifndef TRANSACTIONSMODEL_H
+#define TRANSACTIONSMODEL_H
 
-class Application;
-class ApplicationUpdates : public QObject
+#include <QAbstractListModel>
+#include <LibQApt/Globals>
+#include "libmuonprivate_export.h"
+
+class Transaction;
+class ApplicationBackend;
+class MUONPRIVATE_EXPORT TransactionsModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(ApplicationBackend* backend READ backend WRITE setBackend)
     public:
-        explicit ApplicationUpdates(QObject* parent = 0);
-        Q_SCRIPTABLE void updateApplications(const QList< QObject* >& apps);
+        TransactionsModel(QObject* parent=0);
+        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
+        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
         
-    signals:
-        void progress(const QString& txt, int percentage);
-        void downloadMessage(int code, const QString& msg);
-        void installMessage(const QString& msg);
+        ApplicationBackend* backend() const;
+        void setBackend(ApplicationBackend* b);
         
-    public slots:
-        void errorOccurred(QApt::ErrorCode code, const QVariantMap& args );
+    private slots:
+        void clearTransactions();
+        void removeTransaction(Transaction*);
+        void addTransaction(Transaction*);
+        void transactionChanged(QApt::WorkerEvent, Transaction*);
+
+    private:
+        QList<Transaction*> m_transactions;
+        ApplicationBackend* m_backend;
 };
 
-#endif // APPLICATIONUPDATES_H
+#endif // TRANSACTIONSMODEL_H

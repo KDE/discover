@@ -19,6 +19,9 @@
  ***************************************************************************/
 
 #include "ApplicationLauncher.h"
+#include <ApplicationModel/LaunchListModel.h>
+#include <Application.h>
+#include <ApplicationBackend.h>
 
 #include <QtCore/QStringBuilder>
 #include <QtGui/QLabel>
@@ -32,9 +35,8 @@
 #include <KLocale>
 #include <KService>
 #include <KStandardGuiItem>
-#include <KToolInvocation>
 
-ApplicationLauncher::ApplicationLauncher(const QVector<KService*> &applications, QWidget *parent)
+ApplicationLauncher::ApplicationLauncher(ApplicationBackend* backend, QWidget* parent)
     : QDialog(parent)
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
@@ -43,7 +45,7 @@ ApplicationLauncher::ApplicationLauncher(const QVector<KService*> &applications,
     QLabel *label = new QLabel(this);
     label->setText(i18np("The following application was just installed, click on it to launch:",
                          "The following applications were just installed, click on them to launch:",
-                         applications.size()));
+                         backend->launchList().size()));
 
     QListView *appView = new QListView(this);
     appView->setIconSize(QSize(32, 32));
@@ -68,8 +70,8 @@ ApplicationLauncher::ApplicationLauncher(const QVector<KService*> &applications,
     bottomLayout->addWidget(bottomSpacer);
     bottomLayout->addWidget(closeButton);
 
-    m_model = new QStandardItemModel(this);
-    addApplications(applications);
+    m_model = new LaunchListModel(this);
+    m_model->setBackend(backend);
     appView->setModel(m_model);
 
     layout->addWidget(label);
@@ -81,23 +83,9 @@ ApplicationLauncher::~ApplicationLauncher()
 {
 }
 
-void ApplicationLauncher::addApplications(const QVector<KService*> &applications)
-{
-    QStandardItem *item = 0;
-    foreach (const KService *service, applications) {
-        QString name = service->genericName().isEmpty() ?
-                       service->property("Name").toString() :
-                       service->property("Name").toString() % QLatin1Literal(" - ") % service->genericName();
-        item = new QStandardItem(name);
-        item->setIcon(KIcon(service->icon()));
-        item->setData(service->desktopEntryPath(), Qt::UserRole);
-        m_model->appendRow(item);
-    }
-}
-
 void ApplicationLauncher::onAppClicked(const QModelIndex &index)
 {
-    KToolInvocation::startServiceByDesktopPath(index.data(Qt::UserRole).toString());
+    m_model->invokeApplication(index.row());
 }
 
 #include "ApplicationLauncher.moc"

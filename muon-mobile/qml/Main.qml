@@ -19,7 +19,6 @@ Rectangle {
         height: 50
         width: parent.width
         anchors.top: parent.top
-        clip: true
         
         Row {
             spacing: 5
@@ -56,6 +55,40 @@ Rectangle {
                 right: parent.right
             }
             
+            MuonToolButton {
+                id: progressButton
+                icon: "view-refresh"
+                height: parent.height
+                checkable: true
+                checked: progressBox.visible
+                onClicked: progressBox.visible=!progressBox.visible
+                visible: progressBox.active
+
+                ProgressView {
+                    id: progressBox
+                    visible: false
+                    anchors.horizontalCenter: progressButton.horizontalCenter
+                    anchors.top: progressButton.bottom
+                }
+            }
+            
+            MuonToolButton {
+                id: usersButton
+                icon: "system-users"
+                visible: window.state=="loaded"
+                height: parent.height
+                checkable: true
+                checked: connectionBox.visible
+                onClicked: connectionBox.visible=!connectionBox.visible
+                
+                RatingAndReviewsConnection {
+                    id: connectionBox
+                    visible: false
+                    anchors.horizontalCenter: usersButton.horizontalCenter
+                    anchors.top: usersButton.bottom
+                }
+            }
+            
             Repeater {
                 model: ["software_properties", "quit"]
                 
@@ -72,8 +105,10 @@ Rectangle {
     }
     
     onStateChanged: { 
-        if(state=="loaded")
+        if(state=="loaded") {
             breadcrumbs.pushItem("go-home", i18n("Get Software"), true)
+            connectionBox.init()
+        }
     }
     
     CategoryPage {
@@ -88,6 +123,7 @@ Rectangle {
             right: parent.right
             left: parent.left
         }
+        z: 0
         
         Breadcrumbs {
             id: breadcrumbs
@@ -111,6 +147,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.top: breadcrumbsBar.bottom
         initialPage: window.state=="loaded" ? mainPage : null
+        clip: true
         
         toolBar: toolbar
     }

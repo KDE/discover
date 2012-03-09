@@ -1,6 +1,6 @@
 /***************************************************************************
  *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
- *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@kde.org>                *
+ *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -78,7 +78,7 @@ bool TransactionListener::isRunning() const
 
     foreach (Transaction *transaction, m_appBackend->transactions()) {
         if (transaction->application() == m_app) {
-            return true;
+            return transaction->state()!=TransactionState::DoneState;
         }
     }
     return false;
@@ -195,8 +195,11 @@ void TransactionListener::transactionCancelled(Application* )
 
 void TransactionListener::setApplication(Application* app)
 {
-    disconnect(this, SIGNAL(running(bool)),
+    if(m_app) {
+        disconnect(this, SIGNAL(running(bool)),
             m_app, SIGNAL(installChanged()));
+    }
+    
     m_app = app;
     init();
     emit applicationChanged();

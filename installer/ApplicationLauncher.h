@@ -23,6 +23,9 @@
 
 #include <QtGui/QDialog>
 
+class ApplicationBackend;
+class Application;
+class LaunchListModel;
 class QModelIndex;
 class QStandardItemModel;
 
@@ -32,15 +35,14 @@ class ApplicationLauncher : public QDialog
 {
     Q_OBJECT
 public:
-    explicit ApplicationLauncher(const QVector<KService*> &applications, QWidget *parent = 0);
+    explicit ApplicationLauncher(ApplicationBackend* backend, QWidget* parent = 0);
     ~ApplicationLauncher();
 
 private:
-    QStandardItemModel *m_model;
+    LaunchListModel *m_model;
 
 private Q_SLOTS:
     void onAppClicked(const QModelIndex &index);
-    void addApplications(const QVector<KService*> &applications);
 };
 
 #endif

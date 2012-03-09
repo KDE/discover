@@ -1,5 +1,5 @@
 /*
- *   Copyright (C) 2012 Aleix Pol Gonzalez <aleixpol@kde.org>
+ *   Copyright (C) 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library/Lesser General Public License
@@ -18,6 +18,7 @@
  */
 
 #include "BackendsSingleton.h"
+#include "MuonInstallerMainWindow.h"
 #include <LibQApt/Backend>
 #include <ApplicationModel/ApplicationModel.h>
 #include <ApplicationBackend.h>
@@ -41,7 +42,7 @@ BackendsSingleton::BackendsSingleton()
 
 ApplicationBackend* BackendsSingleton::applicationBackend()
 {
-    if(!m_applicationBackend) {
+    if(m_backend && !m_applicationBackend) {
         m_applicationBackend = new ApplicationBackend;
         m_applicationBackend->setBackend(m_backend);
     }

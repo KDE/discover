@@ -18,26 +18,40 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONUPDATES_H
-#define APPLICATIONUPDATES_H
-#include <QObject>
-#include <LibQApt/Globals>
+#ifndef UBUNTULOGINBACKEND_H
+#define UBUNTULOGINBACKEND_H
 
-class Application;
-class ApplicationUpdates : public QObject
+#include <ReviewsBackend/AbstractLoginBackend.h>
+#include <QVariant>
+#include "LoginMetaTypes.h"
+
+class ComUbuntuSsoApplicationCredentialsInterface;
+class UbuntuLoginBackend : public AbstractLoginBackend
 {
     Q_OBJECT
     public:
-        explicit ApplicationUpdates(QObject* parent = 0);
-        Q_SCRIPTABLE void updateApplications(const QList< QObject* >& apps);
+        UbuntuLoginBackend(QObject* parent=0);
         
-    signals:
-        void progress(const QString& txt, int percentage);
-        void downloadMessage(int code, const QString& msg);
-        void installMessage(const QString& msg);
+        virtual void login();
+        virtual void registerAndLogin();
+        virtual void logout();
+        virtual QString displayName() const;
+        virtual bool hasCredentials() const;
         
-    public slots:
-        void errorOccurred(QApt::ErrorCode code, const QVariantMap& args );
+        virtual QByteArray token() const;
+        virtual QByteArray tokenSecret() const;
+        virtual QByteArray consumerKey() const;
+        virtual QByteArray consumerSecret() const;
+
+    private slots:
+        void credentialsError(const QString& app, const QString& a, const QString& b );
+        void authorizationDenied(const QString& app);
+        void successfulLogin(const QString& app, const MapString& credentials);
+
+    private:
+        QString appname() const;
+        ComUbuntuSsoApplicationCredentialsInterface* m_interface;
+        MapString m_credentials;
 };
 
-#endif // APPLICATIONUPDATES_H
+#endif // UBUNTULOGINBACKEND_H

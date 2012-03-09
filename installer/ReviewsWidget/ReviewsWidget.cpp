@@ -40,6 +40,7 @@ bool reviewsGreaterThan(Review *lhs, Review *rhs)
 
 ReviewsWidget::ReviewsWidget(QWidget *parent)
         : KVBox(parent)
+	, m_pagesFetched(0)
 {
     QWidget *headerWidget = new QWidget(this);
     QHBoxLayout *headerLayout = new QHBoxLayout(headerWidget);
@@ -72,6 +73,11 @@ ReviewsWidget::ReviewsWidget(QWidget *parent)
     m_statusLabel->setText(i18nc("@info:status", "Loading reviews"));
 
     m_reviewLayout->addWidget(m_statusLabel);
+
+    m_moreButton = new QPushButton(this);
+    m_moreButton->hide();
+    m_moreButton->setText(i18nc("@action", "Check for more reviews"));
+    connect(m_moreButton, SIGNAL(clicked()), this, SLOT(emitFetchPage()));
 }
 
 ReviewsWidget::~ReviewsWidget()
@@ -92,11 +98,17 @@ void ReviewsWidget::expandButtonClicked()
 void ReviewsWidget::addReviews(QList<Review *> reviews)
 {
     if (reviews.isEmpty()) {
-        m_statusLabel->setText(i18nc("@info:status", "No reviews available"));
+	m_moreButton->hide();
+	if (!m_pagesFetched) {
+	    m_statusLabel->setText(i18nc("@info:status", "No reviews available"));
+	}
         return;
-    } else {
-        m_statusLabel->hide();
     }
+
+    m_pagesFetched++;
+    m_statusLabel->hide();
+    m_moreButton->show();
+    m_moreButton->setEnabled(true);
 
     qSort(reviews.begin(), reviews.end(), reviewsGreaterThan);
 
@@ -109,6 +121,12 @@ void ReviewsWidget::addReviews(QList<Review *> reviews)
 
         m_reviewLayout->addWidget(reviewWidget);
     }
+}
+
+void ReviewsWidget::emitFetchPage()
+{
+    emit fetchPage(m_pagesFetched + 1);
+    m_moreButton->setEnabled(false);
 }
 
 #include "ReviewsWidget.moc"
