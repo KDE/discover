@@ -18,13 +18,31 @@ Page {
     Component {
         id: categoryDelegate
         ListItem {
-            Row {
+            width: view.cellWidth -10
+            height: view.cellHeight -10
+            Column {
+                anchors.fill: parent
                 spacing: 10
-                QIconItem { icon: decoration; width: 40; height: 40 }
-                Label { text: display }
+                QIconItem {
+                    icon: decoration
+                    width: 40; height: 40
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+                Label {
+                    text: display
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+                
+            }
+            Rectangle {
+                anchors.fill: parent
+                color: "white"
+                opacity: itemArea.containsMouse ? 0.3 : 0 
             }
             MouseArea {
+                id: itemArea
                 anchors.fill: parent
+                hoverEnabled: true
                 onClicked: {
                     var cat = cats.categoryForIndex(index)
                     switch(categoryType) {
@@ -40,7 +58,10 @@ Page {
         }
     }
 
-    ListView {
+    GridView {
+        cellWidth: 130
+        cellHeight: 100
+        
         anchors {
             top: parent.top
             left: parent.left
