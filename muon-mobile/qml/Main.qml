@@ -3,15 +3,26 @@ import org.kde.plasma.components 0.1
 import org.kde.qtextracomponents 0.1
 import "navigation.js" as Navigation
 
-Rectangle {
+Item {
     id: window
     width: 800
-    color: "lightgrey"
     property Component categoryComp: Qt.createComponent("qrc:/qml/CategoryPage.qml")
     property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
     property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
     property Component updatesComp: Qt.createComponent("qrc:/qml/UpdatesPage.qml")
     property bool opening: false
+    
+    //sebas's hack :D
+    Rectangle {
+        anchors.fill: parent
+        color: theme.backgroundColor
+        opacity: .2
+        
+        Rectangle {
+            anchors.fill: parent
+            color: theme.textColor
+        }
+    }
     
     ToolBar {
         id:toolbar
