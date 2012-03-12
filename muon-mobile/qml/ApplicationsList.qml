@@ -15,6 +15,9 @@ Item {
         apps.search(text)
     }
     
+    function stringToRole(role) { return apps.stringToRole(role) }
+    function roleToString(role) { return apps.roleToString(role) }
+    
     ListView
     {
         id: view
@@ -84,7 +87,7 @@ Item {
             Component.onCompleted: {
                 if(category)
                     setFiltersFromCategory(category)
-                sortModel(0, 1)
+                sortModel(0, Qt.DescendingOrder)
             }
         }
     }

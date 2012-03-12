@@ -47,6 +47,7 @@
 #include <ReviewsBackend/Rating.h>
 #include <ApplicationModel/LaunchListModel.h>
 #include <ApplicationModel/TransactionsModel.h>
+#include <ApplicationModel/ApplicationModel.h>
 
 // Own includes
 #include "ApplicationProxyModelHelper.h"
@@ -79,6 +80,7 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     qmlRegisterType<Application>();
     qmlRegisterType<Category>();
     qmlRegisterType<ApplicationBackend>();
+    qmlRegisterType<ApplicationModel>();
     
     connect(this, SIGNAL(backendReady(QApt::Backend*)), SLOT(setBackend(QApt::Backend*)));
     

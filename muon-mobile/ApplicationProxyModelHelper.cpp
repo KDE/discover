@@ -43,3 +43,19 @@ Application* ApplicationProxyModelHelper::applicationAt(int row)
 {
     return ApplicationProxyModel::applicationAt(index(row, 0));
 }
+
+int ApplicationProxyModelHelper::stringToRole(const QByteArray& strRole) const
+{
+    return roleNames().key(strRole);
+}
+
+QByteArray ApplicationProxyModelHelper::roleToString(int role) const
+{
+    return roleNames().value(role);
+}
+
+void ApplicationProxyModelHelper::setSortRole_hack(int role)
+{
+    setSortRole(role);
+    emit sortRoleChanged();
+}
