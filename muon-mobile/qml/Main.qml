@@ -171,9 +171,13 @@ Item {
     PageStack
     {
         id: pageStack
-        width: parent.width
-        anchors.bottom: parent.bottom
-        anchors.top: breadcrumbsBar.bottom
+        anchors {
+            bottom: parent.bottom
+            top: breadcrumbsBar.bottom
+            left: parent.left
+            right: parent.right
+            margins: 10
+        }
         initialPage: window.state=="loaded" ? mainPage : null
         clip: true
         
