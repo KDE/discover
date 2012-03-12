@@ -12,12 +12,18 @@ Page
     ListView {
         id: reviewsView
         clip: true
-        anchors.top: reviewsLabel.bottom
+        anchors.top: appInfo.bottom
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.rightMargin: scroll.width
+        visible: reviewsView.count>0
         spacing: 5
+        
+        header: Label {
+            text: i18n("<b>Reviews:</b>")
+        }
+        
         delegate: ListItem {
             visible: model["shouldShow"]
             height: content.height+10
@@ -139,10 +145,10 @@ Page
             
             Label {
                 text: i18n(  "<b>Total Size:</b> %1<br/>"
-                            +"<b>Version:</b> %2<br/>"
-                            +"<b>License:</b> %3<br/>",
+                            +"<b>Version:</b> %2 %3<br/>"
+                            +"<b>License:</b> %4<br/>",
                             application.sizeDescription,
-                            application.name+" "+(application.isInstalled ?
+                            application.name, (application.isInstalled ?
                                                         application.installedVersion : application.availableVersion),
                             application.license
                 )
@@ -203,13 +209,6 @@ Page
             wrapMode: Text.WordWrap
             text: application.longDescription
         }
-    }
-    
-    Label {
-        id: reviewsLabel
-        anchors.top: appInfo.bottom
-        text: "<b>Reviews:</b>" 
-        visible: reviewsView.count>0
     }
     
     ScrollBar {
