@@ -5,6 +5,7 @@ import org.kde.muon 1.0
 import "navigation.js" as Navigation
 
 Page {
+    id: page
     property QtObject category
     
     function searchFor(text) {
@@ -13,6 +14,14 @@ Page {
             Navigation.openApplicationList(category.icon, i18n("Search in '%1'...", category.name), category, text)
         else
             Navigation.openApplicationList("go-home", i18n("Search..."), category, text)
+    }
+    
+    tools: TextField {
+        id: searchInput
+        width: 80
+        placeholderText: i18n("Search... ")
+        onTextChanged: searchFor(text)
+        opacity: page.status == PageStatus.Active ? 1 : 0
     }
 
     Component {

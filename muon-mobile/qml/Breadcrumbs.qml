@@ -4,29 +4,25 @@ import org.kde.plasma.components 0.1
 Item {
     id: bread
     signal clicked(int idx)
-    property alias search: searchInput.text
     property alias count: items.count
+    property Item tools: toolbar
     anchors.margins: 5
     
     function currentItem() { return items.get(items.count-1).display }
     
-    function pushItem(icon, text, withsearch) {
-        items.append({"decoration": icon, "display": text, "withsearch": withsearch})
+    function pushItem(icon, text) {
+        items.append({"decoration": icon, "display": text})
     }
     
     function popItem() {
         items.remove(items.count-1)
-        searchInput.text=""
     }
     
     ListView
     {
         id: view
         anchors {
-            top: parent.top
-            bottom: parent.bottom
-            left: parent.left
-            right: searchInput.left
+            fill: parent
         }
         
         spacing: 10
@@ -43,16 +39,5 @@ Item {
         onCountChanged: view.positionViewAtEnd()
         
         ListModel { id: items }
-    }
-    
-    TextField {
-        id: searchInput
-        anchors {
-            verticalCenter: parent.verticalCenter
-            right: parent.right
-        }
-        width: 80
-        placeholderText: i18n("Search...")
-        visible: items.count>0 && items.get(items.count-1).withsearch
     }
 }

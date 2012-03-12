@@ -10,7 +10,6 @@ Item {
     property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
     property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
     property Component updatesComp: Qt.createComponent("qrc:/qml/UpdatesPage.qml")
-    property bool opening: false
     
     //sebas's hack :D
     Rectangle {
@@ -128,12 +127,13 @@ Item {
     
     ToolBar {
         id: breadcrumbsBar
-        height: 40
         anchors {
             top: toolbar.bottom
-            right: parent.right
             left: parent.left
+            right: pageToolBar.left
+            rightMargin: 10
         }
+        height: 30
         z: 0
         
         Breadcrumbs {
@@ -141,12 +141,29 @@ Item {
             anchors.fill: parent
             onClicked: {
                 var pos = idx;
-                while(pos--) { pageStack.pop(); breadcrumbs.popItem() }
+                while(pos--) {
+                    pageStack.pop(pos>1)
+                    breadcrumbs.popItem()
+                }
             }
-            
-            onSearchChanged: {
-                if(search)
-                    pageStack.currentPage.searchFor(search)
+        }
+    }
+    
+    ToolBar {
+        id: pageToolBar
+        anchors {
+            leftMargin: 10
+            rightMargin: 10
+            top: toolbar.bottom
+            right: parent.right
+        }
+        width: visible ? parent.width/4 : 0
+        visible: tools!=null
+        
+        Behavior on width {
+            PropertyAnimation { 
+                id: heightAnimation
+                duration: 250
             }
         }
     }
@@ -160,6 +177,6 @@ Item {
         initialPage: window.state=="loaded" ? mainPage : null
         clip: true
         
-        toolBar: toolbar
+        toolBar: pageToolBar
     }
 }

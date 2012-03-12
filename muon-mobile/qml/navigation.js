@@ -1,51 +1,49 @@
-function clearOpened() {
+function clearOpened(immediate) {
     while(breadcrumbs.count>1) {
-        pageStack.pop(); breadcrumbs.popItem()
+        pageStack.pop(null, breadcrumbs.count>2 || immediate)
+        breadcrumbs.popItem()
     }
 }
 
 function openUpdatePage() {
-    clearOpened()
-    openPage("view-refresh", i18n("Updates..."), updatesComp, {}, true)
+    clearOpened(true)
+    openPage("view-refresh", i18n("Updates..."), updatesComp, {})
 }
 
 function openInstalledList() {
-    clearOpened()
-    var obj = openPage("applications-other", i18n("Installed Applications"), applicationListComp, {}, true)
+    clearOpened(true)
+    var obj = openPage("applications-other", i18n("Installed Applications"), applicationListComp, {})
     obj.stateFilter = (1<<8)
 }
 
 function openApplicationList(icon, name, cat, search) {
-    obj=openPage(icon, name, applicationListComp, { category: cat }, true)
+    var obj = openPage(icon, name, applicationListComp, { category: cat })
     if(search)
         obj.searchFor(search)
 }
 
 function openCategory(icon, name, cat) {
-    openPage(icon, name, categoryComp, { category: cat }, true)
+    openPage(icon, name, categoryComp, { category: cat })
 }
 
 function openApplication(app) {
-    openPage(app.icon, app.name, applicationComp, { application: app }, false)
+    openPage(app.icon, app.name, applicationComp, { application: app })
 }
 
-function openPage(icon, name, component, props, search) {
+function openPage(icon, name, component, props) {
     //due to animations, it can happen that the user clicks twice at the same button
-    if(breadcrumbs.currentItem()==name || opening)
+    if(breadcrumbs.currentItem()==name || pageStack.busy)
         return
-    opening=true
     
     var obj
     try {
         obj = component.createObject(pageStack, props)
         pageStack.push(obj);
-        breadcrumbs.pushItem(icon, name, search)
+        breadcrumbs.pushItem(icon, name)
         console.log("opened "+name)
     } catch (e) {
         console.log("error: "+e)
         console.log("comp error: "+component.errorString())
-    } finally {
-        opening=false
     }
     return obj
 }

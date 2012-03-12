@@ -20,9 +20,7 @@ Page
         visible: reviewsView.count>0
         spacing: 5
         
-        header: Label {
-            text: i18n("<b>Reviews:</b>")
-        }
+        header: Label { text: i18n("<b>Reviews:</b>") }
         
         delegate: ListItem {
             visible: model["shouldShow"]
