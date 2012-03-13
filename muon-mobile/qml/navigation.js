@@ -33,7 +33,7 @@ function jumpToIndex(pageStack, bread, idx)
 {
     var pos = idx;
     for(; pos>0; --pos) {
-        pageStack.pop(undefined, true)
+        pageStack.pop(undefined, pos>1)
         bread.popItem()
     }
 }
