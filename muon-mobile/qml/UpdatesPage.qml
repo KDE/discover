@@ -50,7 +50,7 @@ Item
             left: parent.left
             right: parent.right
         }
-        text: i18n("Update!")
+        text: i18n("Update All!")
         visible: apps.count>0 && page.state!="updating"
         
         onClicked: {
