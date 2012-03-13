@@ -56,6 +56,8 @@ Item {
         
         initialPage: ApplicationsListPage {
             stateFilter: (1<<8)
+            sortRole: 32
+            sortOrder: Qt.Ascending
         }
         
         toolBar: pageToolBar

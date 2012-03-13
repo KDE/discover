@@ -29,9 +29,9 @@ ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
     setBackend(BackendsSingleton::self()->backend());
 }
 
-void ApplicationProxyModelHelper::sortModel(int column, int order)
+void ApplicationProxyModelHelper::sortModel()
 {
-    QSortFilterProxyModel::sort(column, (Qt::SortOrder) order);
+    QSortFilterProxyModel::sort(sortColumn(), sortOrder());
 }
 
 void ApplicationProxyModelHelper::setStateFilter_hack(int state)
@@ -58,4 +58,10 @@ void ApplicationProxyModelHelper::setSortRole_hack(int role)
 {
     setSortRole(role);
     emit sortRoleChanged();
+}
+
+void ApplicationProxyModelHelper::setSortOrder_hack(Qt::SortOrder order)
+{
+    sort(sortColumn(), order);
+    emit sortOrderChanged();
 }

@@ -8,6 +8,7 @@ Item {
     property QtObject category
     property Item stack
     property alias sortRole: apps.sortRole
+    property alias sortOrder: apps.sortOrder
     property int elemHeight: 40
     property alias stateFilter: apps.stateFilter
     property alias count: view.count
@@ -83,12 +84,13 @@ Item {
         model: ApplicationProxyModel {
             id: apps
             sortRole: 37
+            sortOrder: Qt.DescendingOrder
             dynamicSortFilter: true
             
             Component.onCompleted: {
                 if(category)
                     setFiltersFromCategory(category)
-                sortModel(0, Qt.DescendingOrder)
+                sortModel()
             }
         }
     }

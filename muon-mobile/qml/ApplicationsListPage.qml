@@ -5,6 +5,7 @@ Page {
     id: page
     property alias category: apps.category
     property alias sortRole: apps.sortRole
+    property alias sortOrder: apps.sortOrder
     property alias stateFilter: apps.stateFilter
     
     tools: Item {

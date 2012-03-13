@@ -28,18 +28,21 @@ class ApplicationProxyModelHelper : public ApplicationProxyModel
     Q_OBJECT
     Q_PROPERTY(int stateFilter READ stateFilter WRITE setStateFilter_hack)
     Q_PROPERTY(int sortRole READ sortRole WRITE setSortRole_hack NOTIFY sortRoleChanged)
+    Q_PROPERTY(Qt::SortOrder sortOrder READ sortOrder WRITE setSortOrder_hack NOTIFY sortOrderChanged)
     public:
         void setStateFilter_hack(int state);
         explicit ApplicationProxyModelHelper(QObject* parent = 0);
         
-        Q_SCRIPTABLE void sortModel(int column, int order);
+        Q_SCRIPTABLE void sortModel();
         Q_SCRIPTABLE Application* applicationAt(int row);
         Q_SCRIPTABLE int stringToRole(const QByteArray& strRole) const;
         Q_SCRIPTABLE QByteArray roleToString(int role) const;
         
         void setSortRole_hack(int role);
+        void setSortOrder_hack(Qt::SortOrder order);
     signals:
         void sortRoleChanged();
+        void sortOrderChanged();
 };
 
 #endif // APPLICATIONPROXYMODELHELPER_H
