@@ -32,12 +32,8 @@ function openPage(stack, icon, name, component, props) {
 function jumpToIndex(pageStack, bread, idx)
 {
     var pos = idx;
-    console.log("... "+pos)
     for(; pos>0; --pos) {
-        console.log(".... "+pageStack.busy)
         pageStack.pop(undefined, true)
         bread.popItem()
-        
-        console.log("lalala "+pos+"/"+idx+" ... "+pageStack.depth)
     }
 }
