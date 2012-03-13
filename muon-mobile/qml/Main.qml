@@ -5,11 +5,14 @@ import org.kde.qtextracomponents 0.1
 Item {
     id: window
     width: 800
-    property Component browsingComp: Qt.createComponent("qrc:/qml/BrowsingPage.qml")
-    property Component installedComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
-    property Component categoryComp: Qt.createComponent("qrc:/qml/CategoryPage.qml")
     property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
     property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
+    property Component categoryComp: Qt.createComponent("qrc:/qml/CategoryPage.qml")
+    
+    //toplevels
+    property Component welcomeComp: Qt.createComponent("qrc:/qml/WelcomePage.qml")
+    property Component browsingComp: Qt.createComponent("qrc:/qml/BrowsingPage.qml")
+    property Component installedComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
     property Component updatesComp: Qt.createComponent("qrc:/qml/UpdatesPage.qml")
     property Component currentTopLevel
     
@@ -64,8 +67,15 @@ Item {
             }
             MuonToolButton {
                 height: parent.height
-                icon: "download"
+                icon: "tools-wizard"
                 text: i18n("Get software")
+                checked: currentTopLevel==welcomeComp
+                onClicked: currentTopLevel=welcomeComp
+            }
+            MuonToolButton {
+                height: parent.height
+                icon: "category-show-all"
+                text: i18n("Browse")
                 checked: currentTopLevel==browsingComp
                 onClicked: currentTopLevel=browsingComp
             }
@@ -145,7 +155,7 @@ Item {
     onStateChanged: { 
         if(state=="loaded") {
             connectionBox.init()
-            currentTopLevel = browsingComp
+            currentTopLevel = welcomeComp
         }
     }
     
