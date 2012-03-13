@@ -41,10 +41,7 @@ Item {
         visible: tools!=null
         
         Behavior on width {
-            PropertyAnimation { 
-                id: heightAnimation
-                duration: 250
-            }
+            NumberAnimation { duration: 250 }
         }
     }
     
