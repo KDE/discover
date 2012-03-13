@@ -62,6 +62,6 @@ void ApplicationProxyModelHelper::setSortRole_hack(int role)
 
 void ApplicationProxyModelHelper::setSortOrder_hack(Qt::SortOrder order)
 {
-    sort(sortColumn(), order);
+    sort(0, order);
     emit sortOrderChanged();
 }
