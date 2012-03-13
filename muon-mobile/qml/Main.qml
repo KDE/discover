@@ -105,7 +105,7 @@ Item {
             
             MuonToolButton {
                 id: progressButton
-                icon: "view-refresh"
+                icon: "download"
                 height: parent.height
                 checkable: true
                 checked: progressBox.visible
