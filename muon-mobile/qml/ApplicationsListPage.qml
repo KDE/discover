@@ -54,7 +54,10 @@ Page {
                         delegate: ToolButton {
                             width: buttons.width
                             text: display
-                            onClicked: apps.sortRole=apps.stringToRole(role)
+                            onClicked: {
+                                apps.sortRole=apps.stringToRole(role)
+                                apps.sortOrder=sorting
+                            }
                             checked: apps.roleToString(apps.sortRole)==role
                         }
                     }
@@ -67,10 +70,12 @@ Page {
         QtObject {
             property string display: i18n("Name")
             property string role: "name"
+            property variant sorting: Qt.AscendingOrder
         },
         QtObject {
             property string display: i18n("Rating")
             property string role: "rating"
+            property variant sorting: Qt.DescendingOrder
         }
     ]
     

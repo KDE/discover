@@ -39,6 +39,8 @@ Item
             bottom: parent.bottom
         }
         stateFilter: (1<<9)//Upgradeable
+        sortRole: 32
+        sortOrder: 0
         visible: apps.count>0 && page.state!="updating"
     }
     Button {
