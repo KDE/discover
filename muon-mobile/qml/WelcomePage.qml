@@ -63,8 +63,14 @@ Item {
             }
         }
         
-        Rectangle {
+        Component {
+            id: topsDelegate
+            Label { text: display }
+        }
+        
+        ListView {
             id: top1
+            clip: true
             anchors {
                 margins: 5
                 top: info.bottom
@@ -72,11 +78,21 @@ Item {
                 bottom: parent.bottom
             }
             width: parent.width/4
-            color: "green"
+            header: Label { text: i18n("<b>Most Downloads</b>") }
+            model: ListModel {
+                ListElement { display: "hola - 213123 downloads" }
+                ListElement { display: "hola - 213123 downloads" }
+                ListElement { display: "hola - 213123 downloads" }
+                ListElement { display: "hola - 213123 downloads" }
+                ListElement { display: "hola - 213123 downloads" }
+                ListElement { display: "hola - 213123 downloads" }
+                ListElement { display: "hola - 213123 downloads" }
+            }
+            delegate: topsDelegate
         }
-        Rectangle {
+        ListView {
             id: top2
-            color: "blue"
+            clip: true
             anchors {
                 margins: 5
                 top: info.bottom
@@ -84,9 +100,21 @@ Item {
                 bottom: parent.bottom
             }
             width: parent.width/4
+            header: Label { text: i18n("<b>Best Ratings</b>") }
+            model: ListModel {
+                ListElement { display: "hola - 5 stars" }
+                ListElement { display: "hola - 5 stars" }
+                ListElement { display: "hola - 5 stars" }
+                ListElement { display: "hola - 5 stars" }
+                ListElement { display: "hola - 5 stars" }
+                ListElement { display: "hola - 5 stars" }
+                ListElement { display: "hola - 5 stars" }
+            }
+            delegate: topsDelegate
         }
-        Rectangle {
+        ListView {
             id: top3
+            clip: true
             anchors {
                 margins: 5
                 top: info.bottom
@@ -94,7 +122,19 @@ Item {
                 bottom: parent.bottom
             }
             width: parent.width/4
-            color: "black"
+            header: Label { text: i18n("<b>More Frequently Used</b>") }
+            model: ListModel {
+                ListElement { display: "hola - 1231231231 times" }
+                ListElement { display: "hola - 1231231231 times" }
+                ListElement { display: "hola - 1231231231 times" }
+                ListElement { display: "hola - 1231231231 times" }
+                ListElement { display: "hola - 1231231231 times" }
+                ListElement { display: "hola - 1231231231 times" }
+                ListElement { display: "hola - 1231231231 times" }
+                ListElement { display: "hola - 1231231231 times" }
+                ListElement { display: "hola - 1231231231 times" }
+            }
+            delegate: topsDelegate
         }
     }
     
