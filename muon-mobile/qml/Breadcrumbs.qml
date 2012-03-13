@@ -8,7 +8,9 @@ Item {
     property Item tools: toolbar
     anchors.margins: 5
     
-    function currentItem() { return items.get(items.count-1).display }
+    function currentItem() {
+        return items.count=="" ? null : items.get(items.count-1).display
+    }
     
     function pushItem(icon, text) {
         items.append({"decoration": icon, "display": text})
@@ -33,7 +35,7 @@ Item {
             height: bread.height
             iconSource: decoration
             onClicked: bread.clicked(items.count-index-1)
-            text: display
+            text: display ? display : ""
         }
         
         onCountChanged: view.positionViewAtEnd()

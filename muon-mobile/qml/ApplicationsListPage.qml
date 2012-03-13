@@ -76,5 +76,6 @@ Page {
     ApplicationsList {
         id: apps
         anchors.fill: parent
+        stack: page.pageStack
     }
 }

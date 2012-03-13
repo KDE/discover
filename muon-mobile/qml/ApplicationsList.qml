@@ -6,6 +6,7 @@ import "navigation.js" as Navigation
 
 Item {
     property QtObject category
+    property Item stack
     property alias sortRole: apps.sortRole
     property int elemHeight: 40
     property alias stateFilter: apps.stateFilter
@@ -72,7 +73,7 @@ Item {
                 MouseArea {
                     id: delegateArea
                     anchors.fill: parent
-                    onClicked: Navigation.openApplication(application)
+                    onClicked: Navigation.openApplication(stack, application)
                     hoverEnabled: true
                 }
             }

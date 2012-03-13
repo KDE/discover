@@ -11,9 +11,9 @@ Page {
     function searchFor(text) {
         console.log("search!! "+text)
         if(category)
-            Navigation.openApplicationList(category.icon, i18n("Search in '%1'...", category.name), category, text)
+            Navigation.openApplicationList(pageStack, category.icon, i18n("Search in '%1'...", category.name), category, text)
         else
-            Navigation.openApplicationList("go-home", i18n("Search..."), category, text)
+            Navigation.openApplicationList(pageStack, "go-home", i18n("Search..."), category, text)
     }
     
     tools: TextField {
@@ -56,10 +56,10 @@ Page {
                     var cat = cats.categoryForIndex(index)
                     switch(categoryType) {
                         case CategoryModel.CategoryType:
-                            Navigation.openApplicationList(category.icon, category.name, cat, "")
+                            Navigation.openApplicationList(pageStack, category.icon, category.name, cat, "")
                             break;
                         case CategoryModel.SubCatType:
-                            Navigation.openCategory(category.icon, category.name, cat)
+                            Navigation.openCategory(pageStack, category.icon, category.name, cat)
                             break;
                     }
                 }
