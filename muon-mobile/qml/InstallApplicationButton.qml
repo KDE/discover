@@ -40,24 +40,33 @@ Item {
         ]
     }
     
-    Row {
+    Item {
         visible: parent.state=="working"
-        spacing: 10
+        anchors.fill: parent
         
         Label {
+            id: workingLabel
             anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.left
             text: transactions.comment
         }
         ProgressBar {
             id: progress
-            anchors.verticalCenter: parent.verticalCenter
+            anchors {
+                verticalCenter: parent.verticalCenter
+                left: workingLabel.right
+                right: workingCancelButton.left
+            }
+            
             minimumValue: 0
             maximumValue: 100
             value: transactions.progress
         }
         
         Button {
+            id: workingCancelButton
             anchors.verticalCenter: parent.verticalCenter
+            anchors.right: parent.right
             iconSource: "dialog-cancel"
         }
     }
