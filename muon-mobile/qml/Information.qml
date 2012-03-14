@@ -14,7 +14,7 @@ Item {
     onDelegateChanged: restoreView()
     
     function restoreView() {
-        if(!delegate || !currentElement)
+        if(!delegate || !currentElement || destroyAnimation.running)
             return
         try {
             var oldItem = viewItem.currentItem
@@ -43,7 +43,7 @@ Item {
             property: "opacity"
             target: viewItem.currentItem
             easing.type: Easing.InQuad
-            onCompleted: viewItem.currentItem.destroy()
+            onCompleted: target.destroy()
         }
         NumberAnimation {
             id: fadeinAnimation
