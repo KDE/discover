@@ -43,24 +43,16 @@ Item {
     Item {
         visible: parent.state=="working"
         anchors.fill: parent
+        height: workingCancelButton.height
         
         Label {
             id: workingLabel
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.left: parent.left
-            text: transactions.comment
-        }
-        ProgressBar {
-            id: progress
             anchors {
                 verticalCenter: parent.verticalCenter
-                left: workingLabel.right
+                left: parent.left
                 right: workingCancelButton.left
             }
-            
-            minimumValue: 0
-            maximumValue: 100
-            value: transactions.progress
+            text: transactions.comment
         }
         
         Button {
@@ -68,17 +60,19 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             iconSource: "dialog-cancel"
+            enabled: transactions.isDownloading
+            onClicked: app.appBackend.cancelTransaction(application)
         }
     }
     
     states: [
         State {
             name: "idle"
-            when: !transactions.isRunning
+            when: !transactions.isActive
         },
         State {
             name: "working"
-            when: transactions.isRunning
+            when: transactions.isActive
         }
     ]
 }

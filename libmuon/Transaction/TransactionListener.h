@@ -38,7 +38,8 @@ class MUONPRIVATE_EXPORT TransactionListener : public QObject
     Q_PROPERTY(QString comment READ comment NOTIFY commentChanged)
     Q_PROPERTY(Application* application READ application WRITE setApplication NOTIFY applicationChanged)
     Q_PROPERTY(ApplicationBackend* backend READ backend WRITE setBackend)
-    Q_PROPERTY(bool isRunning READ isRunning NOTIFY running)
+    Q_PROPERTY(bool isActive READ isActive NOTIFY running)
+    Q_PROPERTY(bool isDownloading READ isDownloading NOTIFY downloading)
     public:
         explicit TransactionListener(QObject* parent = 0);
         virtual ~TransactionListener();
@@ -49,7 +50,8 @@ class MUONPRIVATE_EXPORT TransactionListener : public QObject
         Application* application() const;
         ApplicationBackend* backend() const;
         void init();
-        bool isRunning() const;
+        bool isActive() const;
+        bool isDownloading() const;
 
     signals:
         void progressChanged();
@@ -64,6 +66,7 @@ class MUONPRIVATE_EXPORT TransactionListener : public QObject
         void transactionCancelled(Application*);
 
     private:
+        void setDownloading(bool);
         void showTransactionState(Transaction* transaction);
         void setStateComment(Transaction* transaction);
         
@@ -71,6 +74,9 @@ class MUONPRIVATE_EXPORT TransactionListener : public QObject
         Application* m_app;
         int m_progress;
         QString m_comment;
+        bool m_downloading;
+public slots:
+    void transactionRemoved(Transaction*);
 };
 
 #endif // TRANSACTIONLISTENER_H

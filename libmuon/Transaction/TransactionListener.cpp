@@ -32,6 +32,7 @@ TransactionListener::TransactionListener(QObject* parent)
     , m_appBackend(0)
     , m_app(0)
     , m_progress(0)
+    , m_downloading(false)
 {}
 
 TransactionListener::~TransactionListener()
@@ -44,6 +45,8 @@ void TransactionListener::setBackend(ApplicationBackend* appBackend)
                 this, SLOT(workerEvent(QApt::WorkerEvent,Transaction*)));
         disconnect(m_appBackend, SIGNAL(transactionCancelled(Application*)),
                 this, SLOT(transactionCancelled(Application*)));
+        disconnect(m_appBackend, SIGNAL(transactionRemoved(Transaction*)),
+                this, SLOT(transactionRemoved(Transaction*)));
     }
     
     m_appBackend = appBackend;
@@ -55,6 +58,8 @@ void TransactionListener::setBackend(ApplicationBackend* appBackend)
             this, SLOT(workerEvent(QApt::WorkerEvent,Transaction*)));
     connect(m_appBackend, SIGNAL(transactionCancelled(Application*)),
             this, SLOT(transactionCancelled(Application*)));
+    connect(m_appBackend, SIGNAL(transactionRemoved(Transaction*)),
+                this, SLOT(transactionRemoved(Transaction*)));
 }
 
 void TransactionListener::init()
@@ -71,7 +76,7 @@ void TransactionListener::init()
     }
 }
 
-bool TransactionListener::isRunning() const
+bool TransactionListener::isActive() const
 {
     if(!m_appBackend)
         return false;
@@ -82,6 +87,11 @@ bool TransactionListener::isRunning() const
         }
     }
     return false;
+}
+
+bool TransactionListener::isDownloading() const
+{
+    return m_appBackend && m_downloading;
 }
 
 void TransactionListener::workerEvent(QApt::WorkerEvent event, Transaction *transaction)
@@ -98,14 +108,14 @@ void TransactionListener::workerEvent(QApt::WorkerEvent event, Transaction *tran
         connect(m_appBackend, SIGNAL(progress(Transaction*,int)),
                 this, SLOT(updateProgress(Transaction*,int)));
         emit running(true);
-        emit downloading(true);
         emit commentChanged();
         emit progressChanged();
+        setDownloading(true);
         break;
     case QApt::PackageDownloadFinished:
         disconnect(m_appBackend, SIGNAL(progress(Transaction*,int)),
                    this, SLOT(updateProgress(Transaction*,int)));
-        emit downloading(false);
+        setDownloading(false);
         break;
     case QApt::CommitChangesStarted:
         setStateComment(transaction);
@@ -192,7 +202,7 @@ void TransactionListener::transactionCancelled(Application* app)
     if(app!=m_app)
         return;
     emit running(false);
-    emit downloading(false);
+    setDownloading(false);
 }
 
 void TransactionListener::setApplication(Application* app)
@@ -212,3 +222,15 @@ ApplicationBackend* TransactionListener::backend() const
     return m_appBackend;
 }
 
+void TransactionListener::setDownloading(bool b)
+{
+    m_downloading = b;
+    emit downloading(b);
+}
+
+void TransactionListener::transactionRemoved(Transaction* t)
+{
+    if(t && t->application()==m_app) {
+        emit running(false);
+    }
+}
