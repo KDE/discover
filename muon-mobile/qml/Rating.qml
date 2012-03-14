@@ -18,10 +18,10 @@ Row {
             opacity: (max/5*index)>rating ? 0.4 : 1
 
             MouseArea {
+                enabled: editable
+                
                 anchors.fill: parent
-                onClicked: if(editable) {
-                    rating = (max/5*index)
-                }
+                onClicked: rating = (max/5*index)
             }
         }
     }
