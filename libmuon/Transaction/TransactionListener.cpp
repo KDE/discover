@@ -187,8 +187,10 @@ int TransactionListener::progress() const
     return m_progress;
 }
 
-void TransactionListener::transactionCancelled(Application* )
+void TransactionListener::transactionCancelled(Application* app)
 {
+    if(app!=m_app)
+        return;
     emit running(false);
     emit downloading(false);
 }
