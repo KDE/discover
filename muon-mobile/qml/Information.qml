@@ -50,12 +50,12 @@ Item {
             model: viewItem.dataModel.count
             
             Rectangle {
-                width: 10
-                height: 10
-                radius: 10
+                width:  7
+                height: 7
+                radius: 7
                 smooth: true
                 color: "black"
-                opacity: area.containsMouse ? 0.2 : 0.6
+                opacity: area.containsMouse ? 0.2 : (modelData == current ? 1 : 0.6)
                 
                 Behavior on opacity {
                     NumberAnimation { duration: 250 }
