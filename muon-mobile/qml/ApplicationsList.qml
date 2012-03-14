@@ -9,7 +9,7 @@ Item {
     property Item stack
     property alias sortRole: apps.sortRole
     property alias sortOrder: apps.sortOrder
-    property int elemHeight: 40
+    property int elemHeight: 65
     property alias stateFilter: apps.stateFilter
     property alias count: view.count
 
@@ -23,15 +23,17 @@ Item {
     ListView
     {
         id: view
+        clip: true
         anchors {
             top: parent.top
             left: parent.left
             bottom: parent.bottom
             right: scroll.left
         }
-        Component {
-            id: delegate
-            ListItem {
+        spacing: 3
+        
+        delegate: ListItem {
+                width: parent.width
                 property real contHeight: elemHeight*0.7
                 height: elemHeight
                 QIconItem {
@@ -50,36 +52,57 @@ Item {
                     width: 16
                 }
                 Label {
-                    anchors.top: parent.top
+                    anchors.top: icon.top
                     anchors.left: icon.right
+                    anchors.right: ratingsItem.left
                     anchors.leftMargin: 5
-                    anchors.topMargin: -5
+                    font.pointSize: commentLabel.font.pointSize*1.7
                     text: name
                 }
                 Label {
-                    anchors.bottom: parent.bottom
+                    id: commentLabel
+                    anchors.bottom: icon.bottom
                     anchors.left: icon.right
                     anchors.leftMargin: 5
-                    anchors.bottomMargin: -5
                     text: "<em>"+comment+"</em>"
                     opacity: delegateArea.containsMouse ? 1 : 0.2
                 }
                 Rating {
-                    anchors.right: parent.right
-                    anchors.top: parent.top
-                    rating: model["rating"]
-                    height: contHeight*.7
+                    id: ratingsItem
+                    anchors {
+                        right: parent.right
+                        top: parent.top
+                    }
+                    height: contHeight*.5
+                    rating: model.rating
                 }
-                
+                InstallApplicationButton {
+                    id: installButton
+                    width: ratingsItem.width
+                    anchors {
+                        bottom: icon.bottom
+                        top: ratingsItem.bottom
+                        topMargin: 5
+                    }
+                    z: delegateArea.z+1
+                    x: delegateArea.containsMouse ? ratingsItem.x : parent.x+parent.width
+                    application: model.application
+                    
+                    Behavior on x {
+                        NumberAnimation {
+                            duration: 100
+                            easing.type: Easing.InQuad
+                        }
+                    }
+                }
                 MouseArea {
                     id: delegateArea
                     anchors.fill: parent
+                    anchors.margins: -20
                     onClicked: Navigation.openApplication(stack, application)
                     hoverEnabled: true
                 }
             }
-        }
-        delegate: delegate
         
         model: ApplicationProxyModel {
             id: apps
