@@ -396,6 +396,12 @@ QString Application::installedVersion() const
     return m_package->installedVersion();
 }
 
+bool Application::canUpgrade() const
+{
+    if(!m_package) return false;
+    return m_package->state()&QApt::Package::ToUpgrade;
+}
+
 QString Application::sizeDescription()
 {
     if (!isInstalled()) {
@@ -494,8 +500,10 @@ void Application::populateZeitgeistInfo()
 #endif // HAVE_QZEITGEIST
 }
 
-int Application::usageCount() const
+int Application::usageCount()
 {
+    if(m_usageCount<0)
+        populateZeitgeistInfo();
     return m_usageCount;
 }
 

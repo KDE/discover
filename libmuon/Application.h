@@ -55,6 +55,7 @@ Q_PROPERTY(QString sizeDescription READ sizeDescription NOTIFY installChanged)
 Q_PROPERTY(bool isValid READ isValid CONSTANT)
 Q_PROPERTY(bool isTechnical READ isTechnical CONSTANT)
 Q_PROPERTY(bool isInstalled READ isInstalled NOTIFY installChanged)
+Q_PROPERTY(bool canUpgrade READ canUpgrade NOTIFY installChanged)
 Q_PROPERTY(int usageCount READ usageCount CONSTANT)
 public:
     friend class TransactionListener;
@@ -77,7 +78,7 @@ public:
     Q_SCRIPTABLE QApt::PackageList addons();
     bool isValid() const;
     bool isTechnical() const;
-    int usageCount() const;
+    int usageCount();
     QString packageName() const;
 
     Q_SCRIPTABLE QByteArray getField(const QByteArray &field) const;
@@ -90,6 +91,7 @@ public:
     QString installedVersion() const;
     QString availableVersion() const;
     QString sizeDescription();
+    bool canUpgrade() const;
 
     void clearPackage();
     QVector<KService::Ptr> executables();

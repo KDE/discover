@@ -48,7 +48,8 @@ public:
         ProgressRole,
         ProgressTextRole,
         InstalledRole,
-        ApplicationRole
+        ApplicationRole,
+        UsageCountRole
     };
     explicit ApplicationModel(QObject* parent=0);
     ~ApplicationModel();
