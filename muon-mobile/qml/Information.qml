@@ -17,13 +17,42 @@ Item {
         if(!delegate || !currentElement)
             return
         try {
-            if(viewItem.currentItem)
-                viewItem.currentItem.destroy()
+            var oldItem = viewItem.currentItem
             viewItem.currentItem = delegate.createObject(viewItem, { "modelData": currentElement })
             viewItem.currentItem.anchors.fill=viewItem
+            
+            if(oldItem) {
+                viewItem.currentItem.opacity = 0
+                
+                fadeoutAnimation.target = oldItem
+                fadeinAnimation.target = viewItem.currentItem
+                destroyAnimation.start()
+            }
         } catch (e) {
             console.log("error: "+e)
             console.log("comp error: "+delegate.errorString())
+        }
+    }
+    
+    SequentialAnimation {
+        id: destroyAnimation
+        NumberAnimation {
+            id: fadeoutAnimation
+            duration: 500
+            to: 0
+            property: "opacity"
+            target: viewItem.currentItem
+            easing.type: Easing.InQuad
+            onCompleted: viewItem.currentItem.destroy()
+        }
+        NumberAnimation {
+            id: fadeinAnimation
+            duration: 500
+            from: 0
+            to: 1
+            property: "opacity"
+            target: viewItem.currentItem
+            easing.type: Easing.InQuad
         }
     }
     
