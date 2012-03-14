@@ -13,26 +13,27 @@ Item {
         backend: app.appBackend
     }
     
-    state: transactions.isRunning ? "working" : "idle"
-    
     Button {
         id: button
-        state: application.isInstalled ? "willremove" : "willinstall"
         visible: parent.state=="idle"
         anchors.fill: parent
         
         onClicked: {
-            if(state=="willinstall") app.appBackend.installApplication(application)
-            else if(state=="willremove") app.appBackend.removeApplication(application)
+            switch(state) {
+                case "willinstall": app.appBackend.installApplication(application); break;
+                case "willremove":  app.appBackend.removeApplication(application); break;
+            }
         }
         
         states: [
             State {
                 name: "willinstall"
+                when: !application.isInstalled
                 PropertyChanges { target: button;  text: i18n("Install") }
             },
             State {
                 name: "willremove"
+                when: application.isInstalled
                 PropertyChanges { target: button;  text: i18n("Remove") }
             }
         ]
@@ -61,7 +62,13 @@ Item {
     }
     
     states: [
-        State { name: "idle" },
-        State { name: "working" }
+        State {
+            name: "idle"
+            when: !transactions.isRunning
+        },
+        State {
+            name: "working"
+            when: transactions.isRunning
+        }
     ]
 }
