@@ -95,11 +95,6 @@ void ApplicationModel::reloadStarted()
 
 void ApplicationModel::reloadFinished()
 {
-    for (Application *app : m_appsTemp)
-    {
-        app->clearPackage();
-    }
-
     setApplications(m_appsTemp);
 }
 
