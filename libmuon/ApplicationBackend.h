@@ -48,6 +48,7 @@ class MUONPRIVATE_EXPORT ApplicationBackend : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QList<Application*> launchList READ launchList RESET clearLaunchList NOTIFY launchListChanged)
+    Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
 public:
     explicit ApplicationBackend(QObject *parent=0);
     ~ApplicationBackend();
@@ -81,6 +82,7 @@ private:
 
     DebconfKde::DebconfGui *m_debconfGui;
 
+    int updatesCount() const;
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void reload();
@@ -113,6 +115,7 @@ Q_SIGNALS:
     void transactionRemoved(Transaction* t);
     void xapianReloaded();
     void launchListChanged();
+    void updatesCountChanged();
 };
 
 #endif

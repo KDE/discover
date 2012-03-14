@@ -47,6 +47,8 @@ ApplicationBackend::ApplicationBackend(QObject *parent)
     , m_currentTransaction(0)
 {
     m_pkgBlacklist << "kdebase-runtime" << "kdepim-runtime" << "kdelibs5-plugins" << "kdelibs5-data";
+    
+    connect(this, SIGNAL(reloadFinished()), SIGNAL(updatesCountChanged()));
 }
 
 ApplicationBackend::~ApplicationBackend()
@@ -444,4 +446,13 @@ void ApplicationBackend::installApplication(Application *app)
 void ApplicationBackend::removeApplication(Application *app)
 {
     addTransaction(new Transaction(app, RemoveApp));
+}
+
+int ApplicationBackend::updatesCount() const
+{
+    int count = 0;
+    foreach(Application* app, m_appList) {
+        count += app->canUpgrade();
+    }
+    return count;
 }
