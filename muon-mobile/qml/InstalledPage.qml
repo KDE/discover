@@ -46,6 +46,7 @@ Item {
     
     PageStack {
         id: pageStack
+        clip: true
         anchors {
             top: breadcrumbsBar.bottom
             left: parent.left
