@@ -319,7 +319,7 @@ void ApplicationBackend::markTransaction(Transaction *transaction)
 
 void ApplicationBackend::addTransaction(Transaction *transaction)
 {
-    if (!confirmRemoval(transaction)) {
+    if (m_isReloading || !confirmRemoval(transaction)) {
         emit transactionCancelled(transaction->application());
         delete transaction;
         return;
