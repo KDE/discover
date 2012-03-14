@@ -417,41 +417,27 @@ QHash<QByteArray, QByteArray> Application::desktopContents()
         return contents;
     }
 
-    int lineIndex = 0;
-    QByteArray buffer = file.readAll();
-
-    QList<QByteArray> lines = buffer.split('\n');
-
-    while (lineIndex < lines.size()) {
-        QByteArray line = lines.at(lineIndex);
-        if (line.isEmpty() || line.at(0) == '#') {
-            lineIndex++;
+    while(!file.atEnd()) {
+        QByteArray line = file.readLine();
+        line.chop(1);
+        
+        if (line.isEmpty() || line.startsWith('#')) {
             continue;
         }
 
         // Looking for a group heading.
-        if (!m_isValid && line.startsWith('[') && line.contains(']')) {
-            m_isValid = true;
-        }
+        m_isValid = m_isValid || (line.startsWith('[') && line.contains(']'));
 
-        QByteArray aKey;
-        QByteArray aValue;
         int eqpos = line.indexOf('=');
 
-        if (eqpos < 0) {
-            // Invalid
-            lineIndex++;
-            continue;
-        } else {
-            aKey = line.left(eqpos);
-            aValue = line.right(line.size() - eqpos -1);
+        if (eqpos >= 0) {
+            QByteArray aKey = line.left(eqpos);
 
             if (!contents.contains(aKey)) {
+                QByteArray aValue = line.mid(eqpos+1);
                 contents[aKey] = aValue;
             }
         }
-
-        lineIndex++;
     }
 
     return contents;
