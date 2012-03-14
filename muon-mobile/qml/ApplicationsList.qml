@@ -57,6 +57,7 @@ Item {
                     anchors.right: ratingsItem.left
                     anchors.leftMargin: 5
                     font.pointSize: commentLabel.font.pointSize*1.7
+                    elide: Text.ElideRight
                     text: name
                 }
                 Label {
@@ -76,31 +77,33 @@ Item {
                     height: contHeight*.5
                     rating: model.rating
                 }
-                InstallApplicationButton {
-                    id: installButton
-                    width: ratingsItem.width
-                    anchors {
-                        bottom: icon.bottom
-                        top: ratingsItem.bottom
-                        topMargin: 5
-                    }
-                    z: delegateArea.z+1
-                    x: delegateArea.containsMouse ? ratingsItem.x : parent.x+parent.width
-                    application: model.application
-                    
-                    Behavior on x {
-                        NumberAnimation {
-                            duration: 100
-                            easing.type: Easing.InQuad
-                        }
-                    }
-                }
+                
                 MouseArea {
                     id: delegateArea
                     anchors.fill: parent
-                    anchors.margins: -20
                     onClicked: Navigation.openApplication(stack, application)
                     hoverEnabled: true
+                    
+                    InstallApplicationButton {
+                        id: installButton
+                        width: ratingsItem.width
+                        height: contHeight*0.5
+                        anchors {
+                            bottom: parent.bottom
+                            margins: 5
+                        }
+                        
+                        property bool isVisible: delegateArea.containsMouse && !installButton.canHide
+                        x: isVisible ? ratingsItem.x : parent.x+parent.width
+                        application: model.application
+                        
+                        Behavior on x {
+                            NumberAnimation {
+                                duration: 100
+                                easing.type: Easing.InQuad
+                            }
+                        }
+                    }
                 }
             }
         
