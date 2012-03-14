@@ -74,6 +74,7 @@ Item {
     }
     
     Row {
+        id: selectorRow
         anchors {
             horizontalCenter: parent.horizontalCenter
             bottom: parent.bottom
@@ -87,16 +88,18 @@ Item {
             model: viewItem.dataModel.count
             
             Rectangle {
-                width:  7
-                height: 7
-                radius: 7
+                anchors.verticalCenter: parent.verticalCenter
+                width:  modelData == current ? 12 : 7
+                height: width
+                radius: width
                 smooth: true
                 color: "black"
+                border.color: "white"
+                border.width: 2
                 opacity: area.containsMouse ? 0.2 : (modelData == current ? 1 : 0.6)
                 
-                Behavior on opacity {
-                    NumberAnimation { duration: 250 }
-                }
+                Behavior on opacity { NumberAnimation { duration: 250 } }
+                Behavior on width { NumberAnimation { duration: 250 } }
                 
                 MouseArea {
                     id: area
