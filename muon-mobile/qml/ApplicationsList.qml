@@ -33,7 +33,7 @@ Item {
         spacing: 3
         
         delegate: ListItem {
-                width: parent.width
+                width: view.width
                 property real contHeight: elemHeight*0.7
                 height: elemHeight
                 QIconItem {
