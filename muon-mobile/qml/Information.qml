@@ -24,6 +24,7 @@ Item {
             if(oldItem) {
                 viewItem.currentItem.opacity = 0
                 
+                oldItem.z = viewItem.currentItem.z+1
                 fadeoutAnimation.target = oldItem
                 fadeinAnimation.target = viewItem.currentItem
                 destroyAnimation.start()
@@ -34,16 +35,23 @@ Item {
         }
     }
     
-    SequentialAnimation {
+    ParallelAnimation {
         id: destroyAnimation
         NumberAnimation {
             id: fadeoutAnimation
             duration: 500
-            to: 0
-            property: "opacity"
+            to: 1230
+            property: "anchors.leftMargin"
             target: viewItem.currentItem
             easing.type: Easing.InQuad
             onCompleted: target.destroy()
+        }
+        NumberAnimation {
+            duration: 500
+            to: -fadeoutAnimation.to
+            property: "anchors.rightMargin"
+            target: fadeoutAnimation.target
+            easing.type: fadeoutAnimation.easing.type
         }
         NumberAnimation {
             id: fadeinAnimation
