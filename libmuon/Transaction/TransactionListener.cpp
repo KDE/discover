@@ -195,16 +195,9 @@ void TransactionListener::transactionCancelled(Application* )
 
 void TransactionListener::setApplication(Application* app)
 {
-    if(m_app) {
-        disconnect(this, SIGNAL(running(bool)),
-            m_app, SIGNAL(installChanged()));
-    }
-    
     m_app = app;
     init();
     emit applicationChanged();
-    connect(this, SIGNAL(running(bool)),
-            m_app, SIGNAL(installChanged()));
 }
 
 Application* TransactionListener::application() const

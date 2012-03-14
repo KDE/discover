@@ -93,9 +93,10 @@ public:
 
     void clearPackage();
     QVector<KService::Ptr> executables();
+    
+    /** Used to trigger the installChanged signal from the ApplicationBackend */
+    void emitInstallChanged();
 signals:
-    ///to have it emitted, you'll need to attach a TransactionListener
-    ///to the application instance
     void installChanged();
 
 private:

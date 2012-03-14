@@ -521,3 +521,8 @@ QVector<KService::Ptr> Application::executables()
     }
     return ret;
 }
+
+void Application::emitInstallChanged()
+{
+    emit installChanged();
+}

@@ -190,6 +190,7 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
 
         m_workerState.first = QApt::InvalidEvent;
         m_workerState.second = 0;
+        m_currentTransaction->application()->emitInstallChanged();
         delete m_currentTransaction;
 
         if (m_queue.isEmpty()) {
