@@ -450,6 +450,9 @@ void ApplicationBackend::removeApplication(Application *app)
 
 int ApplicationBackend::updatesCount() const
 {
+    if(m_isReloading)
+        return 0;
+    
     int count = 0;
     foreach(Application* app, m_appList) {
         count += app->canUpgrade();
