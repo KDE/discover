@@ -5,6 +5,7 @@ import org.kde.muon 1.0
 
 Item {
     property alias application: transactions.application
+    property bool canHide: parent.state=="idle"
     width: 100
     height: 30
     
