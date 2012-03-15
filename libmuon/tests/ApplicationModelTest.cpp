@@ -63,6 +63,8 @@ void ApplicationModelTest::testReload()
     updatesProxy->setStateFilter(QApt::Package::ToUpgrade);
     
     QCOMPARE(updatesProxy->rowCount(), appBackend->updatesCount());
-    m_backend->reloadCache();
+    appBackend->reload();
+    
+    QVERIFY(!appBackend->applicationList().isEmpty());
     QCOMPARE(appBackend->applicationList().count(), model->rowCount());
 }

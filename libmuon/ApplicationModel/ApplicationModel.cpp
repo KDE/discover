@@ -218,7 +218,7 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role) const
 
 void ApplicationModel::clear()
 {
-    beginRemoveRows(QModelIndex(), 0, m_apps.count());
+    beginRemoveRows(QModelIndex(), 0, m_apps.count()-1);
     m_apps.clear();
     m_runningTransactions.clear();
     endRemoveRows();
