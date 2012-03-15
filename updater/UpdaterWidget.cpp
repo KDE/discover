@@ -156,6 +156,8 @@ void UpdaterWidget::populateUpdateModel()
     QStringList fileList = appDir.entryList(QDir::Files);
 
     foreach(const QString &fileName, fileList) {
+        if (fileName.endsWith(QLatin1String(".menu"))) // Skip non-desktop files that can slip in
+            continue;
         Application *app = new Application("/usr/share/app-install/desktop/" + fileName, m_backend);
         QApt::Package *package = app->package();
         if (!package || !upgradeList.contains(package)) {

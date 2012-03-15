@@ -77,6 +77,8 @@ void ApplicationBackend::init()
 
     QList<Application *> tempList;
     foreach(const QString &fileName, fileList) {
+        if (fileName.endsWith(QLatin1String(".menu"))) // Skip non-desktop files that can slip in
+            continue;
         Application *app = new Application("/usr/share/app-install/desktop/" + fileName, m_backend);
         tempList << app;
     }
