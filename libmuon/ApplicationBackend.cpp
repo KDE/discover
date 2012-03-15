@@ -73,13 +73,11 @@ void ApplicationBackend::setBackend(QApt::Backend *backend)
 void ApplicationBackend::init()
 {
     QDir appDir("/usr/share/app-install/desktop/");
-    QStringList fileList = appDir.entryList(QDir::Files);
+    QStringList fileList = appDir.entryList(QStringList("*.desktop"), QDir::Files);
 
     QList<Application *> tempList;
     foreach(const QString &fileName, fileList) {
-        if (fileName.endsWith(QLatin1String(".menu"))) // Skip non-desktop files that can slip in
-            continue;
-        Application *app = new Application("/usr/share/app-install/desktop/" + fileName, m_backend);
+        Application *app = new Application(appDir.filePath(fileName), m_backend);
         tempList << app;
     }
 
