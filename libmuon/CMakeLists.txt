@@ -22,6 +22,8 @@ MACRO(QT4_ADD_DBUS_INTERFACE _sources _interface _basename)
 
 ENDMACRO(QT4_ADD_DBUS_INTERFACE)
 
+add_subdirectory(tests)
+
 set(muon_LIB_SRCS
     Application.cpp
     ApplicationBackend.cpp
