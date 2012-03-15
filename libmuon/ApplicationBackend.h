@@ -61,6 +61,8 @@ public:
     QList<Transaction *> transactions() const;
     QList<Application*> launchList() const;
 
+    int updatesCount() const;
+
     bool confirmRemoval(Transaction *transaction);
     bool isReloading() const;
     void markTransaction(Transaction *transaction);
@@ -81,8 +83,6 @@ private:
     QPair<QApt::WorkerEvent, Transaction *> m_workerState;
 
     DebconfKde::DebconfGui *m_debconfGui;
-
-    int updatesCount() const;
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void reload();
