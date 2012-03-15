@@ -6,6 +6,7 @@ Row {
     property bool editable: false
     property int max: 10
     property real rating: 2
+    visible: rating>=0
     
     id: view
     height: 25
