@@ -66,11 +66,8 @@ public:
     void reloadApplications();
     
 private:
-    void setApplications(const QList<Application*> &list);
-    
     ApplicationBackend *m_appBackend;
     QList<Application *> m_apps;
-    QList<Application *> m_appsTemp;
     QHash<Transaction *, int> m_runningTransactions;
 
 public Q_SLOTS:

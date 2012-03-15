@@ -89,13 +89,12 @@ void ApplicationModel::setBackend(ApplicationBackend* backend)
 
 void ApplicationModel::reloadStarted()
 {
-    m_appsTemp = m_apps;
     clear();
 }
 
 void ApplicationModel::reloadFinished()
 {
-    setApplications(m_appsTemp);
+    reloadApplications();
 }
 
 ApplicationBackend* ApplicationModel::backend() const
@@ -103,8 +102,10 @@ ApplicationBackend* ApplicationModel::backend() const
     return m_appBackend;
 }
 
-int ApplicationModel::rowCount(const QModelIndex & /*parent*/) const
+int ApplicationModel::rowCount(const QModelIndex & parent) const
 {
+    if(parent.isValid())
+        return 0;
     return m_apps.size();
 }
 
@@ -215,19 +216,9 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-void ApplicationModel::setApplications(const QList<Application*> &list)
-{
-    clear();
-
-    m_apps.reserve(list.size());
-    beginInsertRows(QModelIndex(), m_apps.count(), m_apps.count());
-    m_apps = list;
-    endInsertRows();
-}
-
 void ApplicationModel::clear()
 {
-    beginRemoveRows(QModelIndex(), 0, m_apps.size());
+    beginRemoveRows(QModelIndex(), 0, m_apps.count());
     m_apps.clear();
     m_runningTransactions.clear();
     endRemoveRows();
@@ -291,7 +282,10 @@ QList<Application*> ApplicationModel::applications() const
 
 void ApplicationModel::reloadApplications()
 {
-    setApplications(m_appBackend->applicationList());
+    beginResetModel();
+    m_apps = m_appBackend->applicationList();
+    m_runningTransactions.clear();
+    endResetModel();
 }
 
 void ApplicationModel::allDataChanged()
