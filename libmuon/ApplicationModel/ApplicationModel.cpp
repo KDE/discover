@@ -207,7 +207,6 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role) const
             return QVariant();
         case ApplicationRole:
             return qVariantFromValue<QObject*>(m_apps.at(index.row()));
-            break;
         case UsageCountRole:
             return m_apps.at(index.row())->usageCount();
             break;
