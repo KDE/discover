@@ -28,6 +28,9 @@
 #include <QTimer>
 #include <QGraphicsObject>
 #include <qdeclarative.h>
+#if !defined(QT_NO_OPENGL)
+    #include <QGLWidget>
+#endif
 
 // KDE includes
 #include <KActionCollection>
@@ -86,7 +89,9 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     
     m_view->engine()->rootContext()->setContextProperty("app", this);
     m_view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
-    
+#if !defined(QT_NO_OPENGL)
+    m_view->setViewport(new QGLWidget);
+#endif
     QTimer::singleShot(10, this, SLOT(initObject()));
     setupActions();
     m_view->setSource(QUrl("qrc:/qml/Main.qml"));
