@@ -37,9 +37,7 @@ private:
     TransactionModel *m_progressModel;
     
 signals:
-    
-public slots:
-    
+    void lastTransactionCancelled();
 };
 
 #endif // PROGRESSVIEW_H

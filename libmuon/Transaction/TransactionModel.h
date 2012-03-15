@@ -35,7 +35,6 @@ class MUONPRIVATE_EXPORT TransactionModel : public QAbstractListModel
     Q_OBJECT
 public:
     explicit TransactionModel(QObject *parent = 0);
-    ~TransactionModel();
 
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
@@ -54,6 +53,9 @@ private slots:
     void removeTransaction(Application *app);
     void externalUpdate();
     void clear();
+
+signals:
+    void lastTransactionCancelled();
 };
 
 #endif // TRANSACTIONMODEL_H

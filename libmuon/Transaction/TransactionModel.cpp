@@ -35,11 +35,6 @@ TransactionModel::TransactionModel(QObject *parent)
 {
 }
 
-TransactionModel::~TransactionModel()
-{
-    clear();
-}
-
 QVariant TransactionModel::data(const QModelIndex& index, int role) const
 {
     if(!index.isValid())
@@ -79,8 +74,8 @@ QVariant TransactionModel::data(const QModelIndex& index, int role) const
 
 int TransactionModel::rowCount(const QModelIndex &parent) const
 {
-    Q_UNUSED(parent);
-
+    if(parent.isValid())
+        return 0;
     return m_transactions.size();
 }
 
@@ -105,7 +100,7 @@ void TransactionModel::addTransaction(Transaction *trans)
     if (!trans || !trans->application())
         return;
 
-    beginInsertRows(QModelIndex(), rowCount(), rowCount() + 1);
+    beginInsertRows(QModelIndex(), 0, 0);
     TransactionListener *listener = new TransactionListener(this);
     listener->setBackend(m_appBackend);
     listener->setApplication(trans->application());
@@ -131,19 +126,22 @@ void TransactionModel::removeTransaction(TransactionListener *listener)
 {
     if (listener) {
         int row = m_transactions.indexOf(listener);
-        beginInsertRows(QModelIndex(), row, row);
+        beginRemoveRows(QModelIndex(), row, row);
         m_transactions.removeAll(listener);
         delete listener;
-        endInsertRows();
+        endRemoveRows();
     }
+
+    if (!m_transactions.size())
+        emit lastTransactionCancelled();
 }
 
 void TransactionModel::clear()
 {
-    beginRemoveRows(QModelIndex(), 0, m_transactions.size());
+    beginResetModel();
     qDeleteAll(m_transactions);
     m_transactions.clear();
-    endRemoveRows();
+    endResetModel();
 }
 
 void TransactionModel::externalUpdate()

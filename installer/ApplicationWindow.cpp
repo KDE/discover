@@ -403,8 +403,11 @@ void ApplicationWindow::changeView(const QModelIndex &index)
         case History:
             view = new HistoryView(this);
             break;
-        case Progress:
+        case Progress: {
             view = new ProgressView(this, m_appBackend);
+            ProgressView *pView = (ProgressView *)view;
+            connect(pView, SIGNAL(lastTransactionCancelled()), this, SLOT(removeProgressItem()));
+        }
         case InvalidView:
         default:
             break;

@@ -49,4 +49,9 @@ ProgressView::ProgressView(QWidget *parent, ApplicationBackend *backend)
     delegate->setShowInfoButton(false);
     listView->setItemDelegate(delegate);
     listView->setModel(m_progressModel);
+
+    connect(delegate, SIGNAL(cancelButtonClicked(Application*)),
+            m_appBackend, SLOT(cancelTransaction(Application*)));
+    connect(m_progressModel, SIGNAL(lastTransactionCancelled()),
+            this, SIGNAL(lastTransactionCancelled()));
 }
