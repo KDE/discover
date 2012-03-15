@@ -451,11 +451,14 @@ void ApplicationWindow::showLauncherMessage()
 
     QVector<KService::Ptr> apps;
     foreach (Application *app, m_appBackend->launchList()) {
+        app->clearPackage();
+        app->package(); // Regenerate package
         if (!app->isInstalled()) {
             continue;
         }
         apps << app->executables();
     }
+
     m_appBackend->clearLaunchList();
     m_launchableApps = apps;
 
@@ -532,9 +535,16 @@ void ApplicationWindow::addProgressItem()
 
 void ApplicationWindow::removeProgressItem()
 {
-    m_viewHash[m_progressItem->index()]->deleteLater();
+    if (!m_progressItem)
+        return;
+
+    QObject *progressView = m_viewHash[m_progressItem->index()];
+    if (progressView)
+            progressView->deleteLater();
+
     m_viewHash.remove(m_progressItem->index());
     m_viewModel->removeRow(m_viewModel->indexFromItem(m_progressItem).row());
+    m_progressItem = nullptr;
 }
 
 #include "ApplicationWindow.moc"
