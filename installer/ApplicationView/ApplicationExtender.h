@@ -41,9 +41,12 @@ public:
     ApplicationExtender(QWidget *parent, Application *app, ApplicationBackend *backend);
     ~ApplicationExtender();
 
+    void setShowInfoButton(bool show);
+
 private:
     Application *m_app;
     ApplicationBackend *m_appBackend;
+    QPushButton *m_infoButton;
     QPushButton *m_actionButton;
     QPushButton *m_cancelButton;
 

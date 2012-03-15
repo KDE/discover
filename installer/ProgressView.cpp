@@ -46,7 +46,7 @@ ProgressView::ProgressView(QWidget *parent, ApplicationBackend *backend)
     QListView *listView = new QListView(this);
     listView->setAlternatingRowColors(true);
     ApplicationDelegate *delegate = new ApplicationDelegate(listView, m_appBackend);
-    delegate->disableExtender();
+    delegate->setShowInfoButton(false);
     listView->setItemDelegate(delegate);
     listView->setModel(m_progressModel);
 }

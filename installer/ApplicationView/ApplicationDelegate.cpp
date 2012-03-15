@@ -56,7 +56,7 @@ ApplicationDelegate::ApplicationDelegate(QAbstractItemView *parent, ApplicationB
   : KExtendableItemDelegate(parent),
     m_appBackend(backend),
     m_extender(0),
-    m_extenderEnabled(true)
+    m_showInfoButton(true)
 {
     // To get sizing.
     QPushButton button, button2;
@@ -262,7 +262,7 @@ QSize ApplicationDelegate::sizeHint(const QStyleOptionViewItem &option,
 
 void ApplicationDelegate::itemActivated(QModelIndex index)
 {
-    if ((index == m_oldIndex && isExtended(index)) || !m_extenderEnabled) {
+    if ((index == m_oldIndex && isExtended(index))) {
         return;
     }
 
@@ -281,10 +281,12 @@ void ApplicationDelegate::itemActivated(QModelIndex index)
         m_extender = 0;
     }
 
-    Application *app = static_cast<const ApplicationProxyModel*>(index.model())->applicationAt(index);
+    QVariant appVarient = static_cast<const QAbstractItemModel*>(index.model())->data(index, ApplicationModel::ApplicationRole);
+    Application *app = (Application *)appVarient.value<void *>();
 
     QTreeView *view = static_cast<QTreeView*>(parent());
     m_extender = new ApplicationExtender(view, app, m_appBackend);
+    m_extender->setShowInfoButton(m_showInfoButton);
     connect(m_extender, SIGNAL(infoButtonClicked(Application*)),
             this, SIGNAL(infoButtonClicked(Application*)));
     connect(m_extender, SIGNAL(installButtonClicked(Application*)),
@@ -304,9 +306,9 @@ void ApplicationDelegate::invalidate()
     contractAll();
 }
 
-void ApplicationDelegate::disableExtender()
+void ApplicationDelegate::setShowInfoButton(bool show)
 {
-    m_extenderEnabled = false;
+    m_showInfoButton = show;
 }
 
 #include "ApplicationDelegate.moc"

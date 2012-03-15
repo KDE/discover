@@ -69,7 +69,7 @@ QVariant TransactionModel::data(const QModelIndex& index, int role) const
         case Qt::ToolTipRole:
             return QVariant();
         case ApplicationModel::ApplicationRole:
-            return qVariantFromValue<QObject*>(trans->application());
+            return qVariantFromValue<void *>(trans->application());
         default:
             return QVariant();
     }

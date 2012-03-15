@@ -124,7 +124,7 @@ QString Application::packageName() const
     QString ret = m_isTechnical ? m_packageName : getField("X-AppInstall-Package");
     if(ret.isEmpty())
         ret = m_packageName;
-    
+
     Q_ASSERT(!ret.isEmpty());
     return ret;
 }

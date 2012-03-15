@@ -48,7 +48,7 @@ public:
                      QAbstractItemModel *model,
                      const QStyleOptionViewItem &option,
                      const QModelIndex &index);
-    void disableExtender();
+    void setShowInfoButton(bool show);
 
 private:
     ApplicationBackend *m_appBackend;
@@ -58,7 +58,7 @@ private:
     ApplicationExtender *m_extender;
     KRatingPainter *m_ratingPainter;
     QPixmap m_emblem;
-    bool m_extenderEnabled;
+    bool m_showInfoButton;
 
     int calcItemHeight(const QStyleOptionViewItem &option) const;
 

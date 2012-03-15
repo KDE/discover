@@ -40,9 +40,9 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, Appl
     QHBoxLayout *layout = new QHBoxLayout(this);
     setLayout(layout);
 
-    QPushButton *infoButton = new QPushButton(this);
-    infoButton->setText(i18n("More Info"));
-    connect(infoButton, SIGNAL(clicked()), this, SLOT(emitInfoButtonClicked()));
+    m_infoButton = new QPushButton(this);
+    m_infoButton->setText(i18n("More Info"));
+    connect(m_infoButton, SIGNAL(clicked()), this, SLOT(emitInfoButtonClicked()));
 
     QWidget *buttonSpacer = new QWidget(this);
     buttonSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Maximum);
@@ -66,7 +66,7 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, Appl
     m_cancelButton->hide();
     connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(emitCancelButtonClicked()));
 
-    layout->addWidget(infoButton);
+    layout->addWidget(m_infoButton);
     layout->addWidget(buttonSpacer);
     layout->addWidget(m_actionButton);
     layout->addWidget(m_cancelButton);
@@ -84,6 +84,11 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, Appl
 
 ApplicationExtender::~ApplicationExtender()
 {
+}
+
+void ApplicationExtender::setShowInfoButton(bool show)
+{
+    show ? m_infoButton->show() : m_infoButton->hide();
 }
 
 void ApplicationExtender::workerEvent(QApt::WorkerEvent event, Transaction *transaction)
