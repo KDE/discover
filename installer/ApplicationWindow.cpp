@@ -528,7 +528,7 @@ void ApplicationWindow::addProgressItem()
 
     m_progressItem = new QStandardItem;
     m_progressItem->setEditable(false);
-    m_progressItem->setIcon(KIcon("view-history").pixmap(32,32));
+    m_progressItem->setIcon(KIcon("download").pixmap(32,32));
     m_progressItem->setText(i18nc("@item:inlistbox Item for showing the progress view", "In Progress"));
     m_progressItem->setData(Progress, ViewTypeRole);
     parentItem->appendRow(m_progressItem);

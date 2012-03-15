@@ -282,7 +282,7 @@ void ApplicationDelegate::itemActivated(QModelIndex index)
     }
 
     QVariant appVarient = static_cast<const QAbstractItemModel*>(index.model())->data(index, ApplicationModel::ApplicationRole);
-    Application *app = (Application *)appVarient.value<void *>();
+    Application *app = (Application *)appVarient.value<QObject *>();
 
     QTreeView *view = static_cast<QTreeView*>(parent());
     m_extender = new ApplicationExtender(view, app, m_appBackend);
