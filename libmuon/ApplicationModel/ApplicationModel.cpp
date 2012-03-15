@@ -202,7 +202,7 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role) const
         }
         break;
         case InstalledRole:
-            return m_apps.at(index.row())->package()->isInstalled();
+            return m_apps.at(index.row())->isInstalled();
         case Qt::ToolTipRole:
             return QVariant();
         case ApplicationRole:

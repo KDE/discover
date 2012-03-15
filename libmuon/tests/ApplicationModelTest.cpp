@@ -27,6 +27,7 @@
 #include <KProtocolManager>
 
 #include "modeltest.h"
+#include <Application.h>
 
 QTEST_MAIN( ApplicationModelTest )
 
@@ -62,9 +63,22 @@ void ApplicationModelTest::testReload()
     model->setBackend(appBackend);
     updatesProxy->setStateFilter(QApt::Package::ToUpgrade);
     
+    QList<Application*> apps = appBackend->applicationList();
+    for(int i=0; i<model->rowCount(); ++i) {
+        Application* app = apps[i];
+        QCOMPARE(model->data(model->index(i), ApplicationModel::NameRole).toString(), app->name());
+    }
+    
     QCOMPARE(updatesProxy->rowCount(), appBackend->updatesCount());
     appBackend->reload();
+    QCOMPARE(apps, appBackend->applicationList() );
     
-    QVERIFY(!appBackend->applicationList().isEmpty());
-    QCOMPARE(appBackend->applicationList().count(), model->rowCount());
+    QVERIFY(!apps.isEmpty());
+    QCOMPARE(apps.count(), model->rowCount());
+    
+    for(int i=0; i<model->rowCount(); ++i) {
+        Application* app = apps[i];
+        QVERIFY(app->package()!=0);
+        QCOMPARE(model->data(model->index(i), ApplicationModel::NameRole).toString(), app->name());
+    }
 }

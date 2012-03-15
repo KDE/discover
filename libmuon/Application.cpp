@@ -81,6 +81,7 @@ QString Application::untranslatedName()
 {
     QString name = QString::fromUtf8(getField("Name")).trimmed();
     if (name.isEmpty()) {
+        Q_ASSERT(package());
         // extras.ubuntu.com packages can have this
         name = package()->controlField(QLatin1String("Appname"));
 
@@ -120,7 +121,12 @@ QString Application::comment()
 
 QString Application::packageName() const
 {
-    return m_isTechnical ? m_packageName : getField("X-AppInstall-Package");
+    QString ret = m_isTechnical ? m_packageName : getField("X-AppInstall-Package");
+    if(ret.isEmpty())
+        ret = m_packageName;
+    
+    Q_ASSERT(!ret.isEmpty());
+    return ret;
 }
 
 QApt::Package *Application::package()
