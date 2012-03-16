@@ -79,7 +79,7 @@ Page {
         },
         QtObject {
             property string display: i18n("Rating")
-            property string role: "rating"
+            property string role: "ratingPoints"
             property variant sorting: Qt.DescendingOrder
         },
         QtObject {

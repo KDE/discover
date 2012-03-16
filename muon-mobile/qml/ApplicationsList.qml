@@ -109,7 +109,7 @@ Item {
         
         model: ApplicationProxyModel {
             id: apps
-            sortRole: 37
+            stringSortRole: "ratingPoints"
             sortOrder: Qt.DescendingOrder
             dynamicSortFilter: true
             
