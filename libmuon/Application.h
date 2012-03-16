@@ -91,7 +91,7 @@ public:
     QString installedVersion() const;
     QString availableVersion() const;
     QString sizeDescription();
-    bool canUpgrade() const;
+    bool canUpgrade();
 
     void clearPackage();
     QVector<KService::Ptr> executables();
