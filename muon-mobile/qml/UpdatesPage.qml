@@ -4,29 +4,37 @@ import org.kde.muon 1.0
 
 Item
 {
+    anchors.margins: 10
+    
     id: page
     state: "show"
     ApplicationUpdates {
         id: updates
-        onProgress: { progress.value=percentage; message.text=text }
-        onDownloadMessage: { message.text=msg }
-        onInstallMessage: { message.text=msg }
+        onProgress: { progress.value=percentage; message.text+=text+'\n' }
+        onDownloadMessage: { message.text+=msg+'\n' }
+        onInstallMessage: { message.text+=msg+'\n' }
     }
-    Column {
-        spacing: 10
-        visible: page.state=="updating"
-        anchors.fill: parent
-        ProgressBar {
-            id: progress
-            anchors.right: parent.right
-            anchors.left: parent.left
-            minimumValue: 0
-            maximumValue: 100
+    ProgressBar {
+        id: progress
+        visible: parent.state=="updating"
+        anchors {
+            right: parent.right
+            left: parent.left
+            top: parent.top
         }
-        Label {
-            id: message
-            anchors.right: parent.right
-            anchors.left: parent.left
+        
+        minimumValue: 0
+        maximumValue: 100
+    }
+    TextArea {
+        id: message
+        readOnly: true
+        visible: parent.state=="updating"
+        anchors {
+            top: progress.bottom
+            right: parent.right
+            left: parent.left
+            bottom: parent.bottom
         }
     }
     
@@ -43,6 +51,14 @@ Item
         sortOrder: 0
         visible: apps.count>0 && page.state!="updating"
     }
+    Label {
+        anchors.fill: parent
+        font.pointSize: 25
+        text: i18n("%1 system updates", app.appBackend.updatesCount)
+        visible: app.appBackend.updatesCount>0 && page.state!="updating"
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+    }
     Button {
         id: commitButton
         anchors {
@@ -50,16 +66,11 @@ Item
             left: parent.left
             right: parent.right
         }
-        text: i18n("Update All!")
-        visible: apps.count>0 && page.state!="updating"
+        text: i18n("Upgrade All!")
+        visible: app.appBackend.updatesCount>0 && page.state!="updating"
         
         onClicked: {
-            //TODO: Untested, I don't have anything to update now
-            var toupgrade = new Array;
-            for(var i=0; i<apps.count; i++) {
-                toupgrade.push(apps.model.applicationAt(i))
-            }
-            updates.updateApplications(toupgrade);
+            updates.upgradeAll();
             page.state = "updating"
         }
     }
@@ -68,7 +79,7 @@ Item
         anchors.fill: parent
         font.pointSize: 25
         text: i18n("Nothing to update")
-        visible: apps.count==0 && page.state!="updating"
+        visible: app.appBackend.updatesCount==0 && page.state!="updating"
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
     }
