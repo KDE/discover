@@ -18,7 +18,7 @@ Item {
             width: 80
             placeholderText: i18n("Search... ")
             onTextChanged: searchFor(text)
-            opacity: page.status == PageStatus.Active ? 1 : 0
+            opacity: mainPage.status == PageStatus.Active ? 1 : 0
         }
         
         Information {
@@ -43,6 +43,7 @@ Item {
                         anchors.fill: parent
                         radius: 10
                         color: modelData.color
+                        opacity: 0.5
                     }
                     
                     Label {

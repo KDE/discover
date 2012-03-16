@@ -106,15 +106,16 @@ Item {
             model: viewItem.dataModel.count
             
             Rectangle {
+                property bool isCurrent: modelData == current
                 anchors.verticalCenter: parent.verticalCenter
-                width:  modelData == current ? 15 : 10
+                width:  isCurrent ? 15 : 10
                 height: width
                 radius: width
                 smooth: true
-                color: "black"
+                color: dataModel.get(modelData).color
                 border.color: "white"
                 border.width: 2
-                opacity: area.containsMouse ? 0.2 : (modelData == current ? 1 : 0.6)
+                opacity: area.containsMouse ? 0.2 : (isCurrent ? 1 : 0.6)
                 
                 Behavior on opacity { NumberAnimation { duration: 250 } }
                 Behavior on width { NumberAnimation { duration: 250 } }
