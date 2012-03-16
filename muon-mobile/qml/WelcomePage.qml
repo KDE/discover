@@ -22,9 +22,9 @@ Item {
             }
             
             dataModel: ListModel {
-                ListElement { text: "KAlgebra"; color: "#770033"; icon: "kalgebra"; opacity: 0.2 }
-                ListElement { text: "Digikam"; color: "#000088"; icon: "digikam"; opacity: 0.2 }
-                ListElement { text: "Plasma"; color: "#003333"; icon: "plasma"; opacity: 0.2 }
+                ListElement { text: "KAlgebra"; color: "#cc77cc"; icon: "kalgebra"; packageName: "kalgebra" }
+                ListElement { text: "Digikam"; color: "#9999ff"; icon: "digikam"; packageName: "digikam" }
+                ListElement { text: "Plasma"; color: "#bd9"; icon: "plasma"; packageName: "plasma" }
             }
             
             delegate: Item {
@@ -34,7 +34,6 @@ Item {
                         anchors.fill: parent
                         radius: 10
                         color: modelData.color
-                        opacity: modelData.opacity
                     }
                     
                     Label {
@@ -56,6 +55,14 @@ Item {
                         }
                         width: height
                         icon: modelData.icon
+                    }
+                    
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            var application = app.appBackend.applicationByPackageName(modelData.packageName)
+                            Navigation.openApplication(pageStack, application)
+                        }
                     }
             }
         }
