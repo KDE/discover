@@ -8,6 +8,11 @@ Page {
     property alias sortOrder: apps.sortOrder
     property alias stateFilter: apps.stateFilter
     
+    function searchFor(text) {
+        field.text = text
+        field.focus = true
+    }
+    
     tools: Item {
         opacity: page.status == PageStatus.Active ? 1 : 0
         height: field.height
