@@ -139,7 +139,7 @@ Item {
             }
             
             Repeater {
-                model: ["software_properties", "quit"]
+                model: ["software_properties"]
                 
                 delegate: MuonToolButton {
                     property QtObject action: app.getAction(modelData)
