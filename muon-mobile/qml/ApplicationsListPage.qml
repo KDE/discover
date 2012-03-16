@@ -81,6 +81,11 @@ Page {
             property string display: i18n("Rating")
             property string role: "rating"
             property variant sorting: Qt.DescendingOrder
+        },
+        QtObject {
+            property string display: i18n("Popcon")
+            property string role: "popcon"
+            property variant sorting: Qt.DescendingOrder
         }//,
 //         QtObject {
 //             property string display: i18n("Usage")
