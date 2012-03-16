@@ -515,7 +515,6 @@ int Application::usageCount()
 void Application::clearPackage()
 {
     m_package = 0;
-    emit installChanged();
 }
 
 QVector<KService::Ptr> Application::executables()
