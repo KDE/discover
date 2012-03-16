@@ -76,43 +76,42 @@ void ApplicationBackend::init()
     QStringList fileList = appDir.entryList(QStringList("*.desktop"), QDir::Files);
 
     QList<Application *> tempList;
+    QSet<QString> packages;
     foreach(const QString &fileName, fileList) {
         Application *app = new Application(appDir.filePath(fileName), m_backend);
+        packages.insert(app->packageName());
         tempList << app;
     }
 
     foreach (QApt::Package *package, m_backend->availablePackages()) {
+        //Don't create applications twice
+        if(packages.contains(package->name())) {
+            continue;
+        }
         Application *app = new Application(package, m_backend);
         tempList << app;
     }
 
     foreach (Application *app, tempList) {
+        bool added = false;
         if (app->isValid()) {
             QApt::Package *pkg = app->package();
             if ((pkg) && !m_pkgBlacklist.contains(pkg->latin1Name())) {
                 m_appList << app;
                 if (pkg->isInstalled()) {
                     m_instOriginList << pkg->origin();
-                    m_originList << pkg->origin();
-                } else {
-                    m_originList << pkg->origin();
                 }
-            } else {
-                delete app;
+                m_originList << pkg->origin();
+                added = true;
             }
-        } else {
-            // Invalid .desktop file
-            delete app;
         }
+
+        if(!added)
+            delete app;
     }
 
-    if (m_originList.contains(QLatin1String(""))) {
-        m_originList.remove(QLatin1String(""));
-    }
-
-    if (m_instOriginList.contains(QLatin1String(""))) {
-        m_instOriginList.remove(QLatin1String(""));
-    }
+    m_originList.remove(QString());
+    m_instOriginList.remove(QString());
 }
 
 void ApplicationBackend::reload()
