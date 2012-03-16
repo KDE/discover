@@ -125,8 +125,8 @@ void ApplicationBackend::reload()
     m_reviewsBackend->stopPendingJobs();
     m_backend->reloadCache();
 
-    emit reloadFinished();
     m_isReloading = false;
+    emit reloadFinished();
 }
 
 bool ApplicationBackend::isReloading() const
