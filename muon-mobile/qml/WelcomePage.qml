@@ -5,12 +5,21 @@ import org.kde.muon 1.0
 import "navigation.js" as Navigation
 
 Item {
-    function init() {
-        breadcrumbsItem.pushItem("go-home")
+    function init() { breadcrumbsItem.pushItem("go-home") }
+    
+    function searchFor(text) {
+        Navigation.openApplicationList(pageStack, "edit-find", i18n("Search..."), null, text)
     }
     
     Page {
         id: mainPage
+        
+        tools: TextField {
+            width: 80
+            placeholderText: i18n("Search... ")
+            onTextChanged: searchFor(text)
+            opacity: page.status == PageStatus.Active ? 1 : 0
+        }
         
         Information {
             id: info
