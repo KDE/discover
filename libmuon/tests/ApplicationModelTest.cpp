@@ -72,7 +72,7 @@ void ApplicationModelTest::testReload()
         QVERIFY(app->isValid());
     }
     
-//     QCOMPARE(updatesProxy->rowCount(), appBackend->updatesCount());
+    QCOMPARE(updatesProxy->rowCount(), appBackend->updatesCount());
     appBackend->reload();
     appBackend->updatesCount();
     QCOMPARE(apps, appBackend->applicationList() );
@@ -83,7 +83,7 @@ void ApplicationModelTest::testReload()
     for(int i=0; i<model->rowCount(); ++i) {
         Application* app = apps[i];
 //         qDebug() << "a" << appNames[i];
-//         QVERIFY(app->package()!=0);
+//         if(!app->package()) qDebug() << "laaaaaa" << app->packageName();
         QCOMPARE(appNames[i], app->packageName());
         QCOMPARE(model->data(model->index(i), ApplicationModel::NameRole).toString(), app->name());
 //         if(appNames[i]!=app->name()) qDebug() << "ffffffff" << app->packageName() << appNames[i] << app->name() << app->isTechnical();
