@@ -458,3 +458,12 @@ int ApplicationBackend::updatesCount() const
     }
     return count;
 }
+
+Application* ApplicationBackend::applicationByPackageName(const QString& name) const
+{
+    foreach(Application* app, m_appList) {
+        if(app->packageName()==name)
+            return app;
+    }
+    return 0;
+}
