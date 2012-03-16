@@ -65,3 +65,13 @@ void ApplicationProxyModelHelper::setSortOrder_hack(Qt::SortOrder order)
     sort(0, order);
     emit sortOrderChanged();
 }
+
+void ApplicationProxyModelHelper::setStringSortRole_hack(const QString& role)
+{
+    setSortRole_hack(stringToRole(role.toUtf8()));
+}
+
+QString ApplicationProxyModelHelper::stringSortRole() const
+{
+    return roleToString(sortRole());
+}
