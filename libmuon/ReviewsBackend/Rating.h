@@ -38,12 +38,14 @@ public:
     Q_SCRIPTABLE quint64 ratingCount() const;
     // 0.0 - 5.0 ranged rating multiplied by two and rounded for KRating*
     Q_SCRIPTABLE int rating() const;
+    int ratingPoints() const;
 
 private:
     QString m_packageName;
     QString m_appName;
     quint64 m_ratingCount;
     int m_rating;
+    int m_ratingPoints;
 };
 
 #endif

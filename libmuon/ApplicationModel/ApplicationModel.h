@@ -44,6 +44,7 @@ public:
         ActionRole,
         StatusRole,
         RatingRole,
+        RatingPointsRole,
         ActiveRole,
         ProgressRole,
         ProgressTextRole,
