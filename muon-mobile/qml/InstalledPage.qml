@@ -52,6 +52,7 @@ Item {
             left: parent.left
             right: parent.right
             bottom: parent.bottom
+            margins: 10
         }
         property Item breadcrumbs: breadcrumbsItem
         
