@@ -404,7 +404,7 @@ QString Application::installedVersion() const
 bool Application::canUpgrade()
 {
     QApt::Package* p = package();
-    return p && p->state()&QApt::Package::ToUpgrade;
+    return p && p->state()&QApt::Package::Upgradeable;
 }
 
 QString Application::sizeDescription()
