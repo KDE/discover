@@ -95,16 +95,32 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     QTimer::singleShot(10, this, SLOT(initObject()));
     setupActions();
     m_view->setSource(QUrl("qrc:/qml/Main.qml"));
-    if(!m_view->errors().isEmpty())
+    if(!m_view->errors().isEmpty()) {
+        QString errors;
+
+        for (const QDeclarativeError &error : m_view->errors()) {
+            errors.append(error.toString() + QLatin1String("\n\n"));
+        }
+
+        QVariantMap args;
+        args["ErrorText"] = errors;
+        args["FromWorker"] = false;
+        errorOccurred(QApt::InitError, args);
         qDebug() << "errors: " << m_view->errors();
+    }
+}
     Q_ASSERT(m_view->errors().isEmpty());
-    m_view->rootObject()->setProperty("state", "loading");
-    
+    if (m_view->rootObject())
+        m_view->rootObject()->setProperty("state", "loading");
+
     setCentralWidget(m_view);
 }
 
 void MuonInstallerMainWindow::setBackend(QApt::Backend* b)
 {
+    if (!m_view->rootObject())
+        return;
+
     BackendsSingleton::self()->initialize(b, this);
     appBackend(); //here we force the retrieval of the appbackend to get ratings
     emit appBackendChanged();
