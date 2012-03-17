@@ -108,7 +108,6 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
         errorOccurred(QApt::InitError, args);
         qDebug() << "errors: " << m_view->errors();
     }
-}
     Q_ASSERT(m_view->errors().isEmpty());
     if (m_view->rootObject())
         m_view->rootObject()->setProperty("state", "loading");
