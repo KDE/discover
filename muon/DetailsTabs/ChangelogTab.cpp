@@ -78,6 +78,9 @@ void ChangelogTab::changelogFetched(KJob *job)
     QTextCharFormat format;
     m_changelogBrowser->setCurrentCharFormat(format);
     QFile changelogFile(m_jobFilenames[job]);
+
+    m_jobFilenames.remove(job);
+
     m_busyWidget->stop();
     if (job->error() || !changelogFile.open(QFile::ReadOnly)) {
         if (m_package->origin() == QLatin1String("Ubuntu")) {
@@ -94,7 +97,6 @@ void ChangelogTab::changelogFetched(KJob *job)
         m_changelogBrowser->setText(log.text());
     }
 
-    m_jobFilenames.remove(job);
     changelogFile.remove();
 }
 
