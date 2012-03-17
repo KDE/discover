@@ -23,6 +23,7 @@
 
 #include <QtTest/QtTest>
 
+class ApplicationBackend;
 namespace QApt { class Backend; }
 
 class ApplicationModelTest : public QObject
@@ -34,9 +35,11 @@ class ApplicationModelTest : public QObject
 
     private slots:
         void testReload();
+        void testSearch();
 
     private:
         QApt::Backend* m_backend;
+        ApplicationBackend* m_appBackend;
 };
 
 #endif

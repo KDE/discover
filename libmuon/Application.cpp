@@ -80,10 +80,9 @@ QString Application::name()
 QString Application::untranslatedName()
 {
     QString name = QString::fromUtf8(getField("Name")).trimmed();
-    if (name.isEmpty()) {
-        Q_ASSERT(package());
+    if (name.isEmpty() && package()) {
         // extras.ubuntu.com packages can have this
-        name = package()->controlField(QLatin1String("Appname"));
+        name = m_package->controlField(QLatin1String("Appname"));
 
         if (!name.isEmpty()) {
             // Graduate to non-technical, since it has Appname
@@ -92,9 +91,9 @@ QString Application::untranslatedName()
         }
 
         if (m_isTechnical) {
-            return package()->shortDescription();
+            return m_package->shortDescription();
         } else {
-            return package()->latin1Name();
+            return m_package->latin1Name();
         }
     }
 
@@ -402,10 +401,10 @@ QString Application::installedVersion() const
     return m_package->installedVersion();
 }
 
-bool Application::canUpgrade() const
+bool Application::canUpgrade()
 {
-    if(!m_package) return false;
-    return m_package->state()&QApt::Package::ToUpgrade;
+    QApt::Package* p = package();
+    return p && p->state()&QApt::Package::Upgradeable;
 }
 
 QString Application::sizeDescription()
@@ -516,7 +515,6 @@ int Application::usageCount()
 void Application::clearPackage()
 {
     m_package = 0;
-    emit installChanged();
 }
 
 QVector<KService::Ptr> Application::executables()

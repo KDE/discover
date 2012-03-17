@@ -8,6 +8,11 @@ Page {
     property alias sortOrder: apps.sortOrder
     property alias stateFilter: apps.stateFilter
     
+    function searchFor(text) {
+        field.text = text
+        field.focus = true
+    }
+    
     tools: Item {
         opacity: page.status == PageStatus.Active ? 1 : 0
         height: field.height
@@ -74,7 +79,12 @@ Page {
         },
         QtObject {
             property string display: i18n("Rating")
-            property string role: "rating"
+            property string role: "ratingPoints"
+            property variant sorting: Qt.DescendingOrder
+        },
+        QtObject {
+            property string display: i18n("Popcon")
+            property string role: "popcon"
             property variant sorting: Qt.DescendingOrder
         }//,
 //         QtObject {

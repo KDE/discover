@@ -13,7 +13,7 @@ Page {
         if(category)
             Navigation.openApplicationList(pageStack, category.icon, i18n("Search in '%1'...", category.name), category, text)
         else
-            Navigation.openApplicationList(pageStack, "go-home", i18n("Search..."), category, text)
+            Navigation.openApplicationList(pageStack, "edit-find", i18n("Search..."), category, text)
     }
     
     tools: TextField {

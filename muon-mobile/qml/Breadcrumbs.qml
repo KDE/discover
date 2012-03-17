@@ -36,6 +36,7 @@ Item {
             iconSource: decoration
             onClicked: bread.clicked(items.count-index-1)
             text: display ? display : ""
+            visible: items.count-index>1
         }
         
         onCountChanged: view.positionViewAtEnd()

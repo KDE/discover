@@ -21,17 +21,21 @@
 #include "ApplicationUpdates.h"
 #include "BackendsSingleton.h"
 #include <Application.h>
+#include <ApplicationModel/ApplicationModel.h>
 #include "MuonInstallerMainWindow.h"
 #include <LibQApt/Backend>
 
 ApplicationUpdates::ApplicationUpdates(QObject* parent): QObject(parent)
 {
-    connect(BackendsSingleton::self()->backend(), SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)),
+    QApt::Backend* backend = BackendsSingleton::self()->backend();
+    connect(backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)),
             SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
-    connect(BackendsSingleton::self()->backend(), SIGNAL(commitProgress(QString,int)),
+    connect(backend, SIGNAL(commitProgress(QString,int)),
             SIGNAL(progress(QString,int)));
-    connect(BackendsSingleton::self()->backend(), SIGNAL(downloadMessage(int,QString)), SIGNAL(downloadMessage(int,QString)));
-    connect(BackendsSingleton::self()->backend(), SIGNAL(debInstallMessage(QString)), SIGNAL(installMessage(QString)));
+    connect(backend, SIGNAL(downloadMessage(int,QString)), SIGNAL(downloadMessage(int,QString)));
+    connect(backend, SIGNAL(debInstallMessage(QString)), SIGNAL(installMessage(QString)));
+    connect(backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
+            this, SLOT(workerEvent(QApt::WorkerEvent)));
 }
 
 void ApplicationUpdates::updateApplications(const QList< QObject* >& apps)
@@ -42,7 +46,25 @@ void ApplicationUpdates::updateApplications(const QList< QObject* >& apps)
     BackendsSingleton::self()->backend()->commitChanges();
 }
 
+void ApplicationUpdates::upgradeAll()
+{
+    QApt::Backend* backend = BackendsSingleton::self()->backend();
+    QApt::PackageList packages = backend->upgradeablePackages();
+    foreach(QApt::Package* p, packages) {
+        p->setInstall();
+    }
+    backend->commitChanges();
+}
+
 void ApplicationUpdates::errorOccurred(QApt::ErrorCode code, const QVariantMap& args)
 {
     BackendsSingleton::self()->mainWindow()->errorOccurred(code, args);
+}
+
+void ApplicationUpdates::workerEvent(QApt::WorkerEvent e)
+{
+    if(e==QApt::CommitChangesFinished) {
+        //when it's done, trigger a reload of the whole system
+        BackendsSingleton::self()->appsModel()->reloadApplications();
+    }
 }

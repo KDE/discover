@@ -43,6 +43,7 @@
 //Libmuon includes
 #include <ApplicationModel/ApplicationModel.h>
 #include <ApplicationModel/ApplicationProxyModel.h>
+#include <Application.h>
 
 // Own includes
 #include "ApplicationExtender.h"
@@ -282,7 +283,7 @@ void ApplicationDelegate::itemActivated(QModelIndex index)
     }
 
     QVariant appVarient = static_cast<const QAbstractItemModel*>(index.model())->data(index, ApplicationModel::ApplicationRole);
-    Application *app = (Application *)appVarient.value<QObject *>();
+    Application *app = qobject_cast<Application*>(appVarient.value<QObject*>());
 
     QTreeView *view = static_cast<QTreeView*>(parent());
     m_extender = new ApplicationExtender(view, app, m_appBackend);

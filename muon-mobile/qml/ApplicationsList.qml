@@ -13,12 +13,10 @@ Item {
     property alias stateFilter: apps.stateFilter
     property alias count: view.count
 
-    function searchFor(text) {
-        apps.search(text)
-    }
-    
+    function searchFor(text) { apps.search(text) }
     function stringToRole(role) { return apps.stringToRole(role) }
     function roleToString(role) { return apps.roleToString(role) }
+    function applicationAt(i) { return apps.applicationAt(i) }
     
     ListView
     {
@@ -109,7 +107,7 @@ Item {
         
         model: ApplicationProxyModel {
             id: apps
-            sortRole: 37
+            stringSortRole: "ratingPoints"
             sortOrder: Qt.DescendingOrder
             dynamicSortFilter: true
             

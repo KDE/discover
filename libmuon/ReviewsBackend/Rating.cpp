@@ -19,6 +19,8 @@
  ***************************************************************************/
 
 #include "Rating.h"
+#include <QStringList>
+#include <QDebug>
 
 Rating::Rating(const QVariantMap &data)
 {
@@ -28,6 +30,14 @@ Rating::Rating(const QVariantMap &data)
 
     QString ratingString = data.value("ratings_average").toString();
     m_rating = ratingString.toDouble() * 2;
+    
+    m_ratingPoints = 0;
+    QString histogram = data.value("histogram").toString();
+    QStringList histo = histogram.mid(1,histogram.size()-2).split(", ");
+    for(int i=0; i<histo.size(); ++i) {
+        int points = histo[i].toInt();
+        m_ratingPoints = i*points;
+    }
 }
 
 Rating::~Rating()
@@ -52,4 +62,9 @@ quint64 Rating::ratingCount() const
 int Rating::rating() const
 {
     return m_rating;
+}
+
+int Rating::ratingPoints() const
+{
+    return m_ratingPoints;
 }

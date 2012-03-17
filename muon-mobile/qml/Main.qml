@@ -92,8 +92,7 @@ Item {
                 text: i18n("Updates")
                 checked: currentTopLevel==updatesComp
                 onClicked: currentTopLevel=updatesComp
-                enabled: app.appBackend!=null && app.appBackend.updatesCount>0
-                overlayText: enabled ? app.appBackend.updatesCount : ""
+                overlayText: enabled && app.appBackend ? app.appBackend.updatesCount : ""
             }
         }
         
@@ -140,7 +139,7 @@ Item {
             }
             
             Repeater {
-                model: ["software_properties", "quit"]
+                model: ["software_properties"]
                 
                 delegate: MuonToolButton {
                     property QtObject action: app.getAction(modelData)

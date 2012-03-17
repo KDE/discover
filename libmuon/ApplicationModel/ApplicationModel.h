@@ -44,12 +44,14 @@ public:
         ActionRole,
         StatusRole,
         RatingRole,
+        RatingPointsRole,
         ActiveRole,
         ProgressRole,
         ProgressTextRole,
         InstalledRole,
         ApplicationRole,
-        UsageCountRole
+        UsageCountRole,
+        PopConRole
     };
     explicit ApplicationModel(QObject* parent=0);
     ~ApplicationModel();

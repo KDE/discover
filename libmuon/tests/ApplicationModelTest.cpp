@@ -34,6 +34,17 @@ QTEST_MAIN( ApplicationModelTest )
 ApplicationModelTest::ApplicationModelTest()
 {
     m_backend = new QApt::Backend;
+    if (m_backend->xapianIndexNeedsUpdate()) {
+        m_backend->updateXapianIndex();
+    }
+
+    if (KProtocolManager::proxyType() == KProtocolManager::ManualProxy) {
+        m_backend->setWorkerProxy(KProtocolManager::proxyFor("http"));
+    }
+    m_backend->init();
+    
+    m_appBackend = new ApplicationBackend(this);
+    m_appBackend->setBackend(m_backend);
 }
 
 ApplicationModelTest::~ApplicationModelTest()
@@ -43,27 +54,16 @@ ApplicationModelTest::~ApplicationModelTest()
 
 void ApplicationModelTest::testReload()
 {
-    m_backend->init();
-
-    if (m_backend->xapianIndexNeedsUpdate()) {
-        m_backend->updateXapianIndex();
-    }
-
-    if (KProtocolManager::proxyType() == KProtocolManager::ManualProxy) {
-        m_backend->setWorkerProxy(KProtocolManager::proxyFor("http"));
-    }
-    ApplicationBackend* appBackend = new ApplicationBackend(this);
-    appBackend->setBackend(m_backend);
-    
     ApplicationModel* model = new ApplicationModel(this);
     ApplicationProxyModel* updatesProxy = new ApplicationProxyModel(this);
+    updatesProxy->setBackend(m_backend);
     updatesProxy->setSourceModel(model);
     new ModelTest(model, model);
     new ModelTest(updatesProxy, updatesProxy);
-    model->setBackend(appBackend);
+    model->setBackend(m_appBackend);
     updatesProxy->setStateFilter(QApt::Package::ToUpgrade);
     
-    QList<Application*> apps = appBackend->applicationList();
+    QList<Application*> apps = m_appBackend->applicationList();
     QVector<QString> appNames(apps.size());
     for(int i=0; i<model->rowCount(); ++i) {
         Application* app = apps[i];
@@ -72,10 +72,10 @@ void ApplicationModelTest::testReload()
         QVERIFY(app->isValid());
     }
     
-//     QCOMPARE(updatesProxy->rowCount(), appBackend->updatesCount());
-    appBackend->reload();
-    appBackend->updatesCount();
-    QCOMPARE(apps, appBackend->applicationList() );
+    QCOMPARE(updatesProxy->rowCount(), m_appBackend->updatesCount());
+    m_appBackend->reload();
+    m_appBackend->updatesCount();
+    QCOMPARE(apps, m_appBackend->applicationList() );
     
     QVERIFY(!apps.isEmpty());
     QCOMPARE(apps.count(), model->rowCount());
@@ -83,9 +83,25 @@ void ApplicationModelTest::testReload()
     for(int i=0; i<model->rowCount(); ++i) {
         Application* app = apps[i];
 //         qDebug() << "a" << appNames[i];
-//         QVERIFY(app->package()!=0);
+//         if(!app->package()) qDebug() << "laaaaaa" << app->packageName();
         QCOMPARE(appNames[i], app->packageName());
         QCOMPARE(model->data(model->index(i), ApplicationModel::NameRole).toString(), app->name());
 //         if(appNames[i]!=app->name()) qDebug() << "ffffffff" << app->packageName() << appNames[i] << app->name() << app->isTechnical();
     }
+}
+
+void ApplicationModelTest::testSearch()
+{
+    ApplicationModel* model = new ApplicationModel(this);
+    ApplicationProxyModel* updatesProxy = new ApplicationProxyModel(this);
+    updatesProxy->setBackend(m_backend);
+    updatesProxy->setSourceModel(model);
+    new ModelTest(model, model);
+    new ModelTest(updatesProxy, updatesProxy);
+    model->setBackend(m_appBackend);
+    
+    updatesProxy->search("kal");
+    int oldCount = updatesProxy->rowCount();
+    updatesProxy->search("kalgebra");
+    QVERIFY(oldCount>updatesProxy->rowCount());
 }

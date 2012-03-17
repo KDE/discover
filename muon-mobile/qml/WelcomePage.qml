@@ -1,15 +1,25 @@
 import QtQuick 1.1
 import org.kde.plasma.components 0.1
 import org.kde.qtextracomponents 0.1
+import org.kde.muon 1.0
 import "navigation.js" as Navigation
 
 Item {
-    function init() {
-        breadcrumbsItem.pushItem("go-home")
+    function init() { breadcrumbsItem.pushItem("go-home") }
+    
+    function searchFor(text) {
+        Navigation.openApplicationList(pageStack, "edit-find", i18n("Search..."), null, text)
     }
     
     Page {
         id: mainPage
+        
+        tools: TextField {
+            width: 80
+            placeholderText: i18n("Search... ")
+            onTextChanged: searchFor(text)
+            opacity: mainPage.status == PageStatus.Active ? 1 : 0
+        }
         
         Information {
             id: info
@@ -21,9 +31,9 @@ Item {
             }
             
             dataModel: ListModel {
-                ListElement { text: "KAlgebra"; color: "#770033"; icon: "kalgebra"; opacity: 0.2 }
-                ListElement { text: "Digikam"; color: "#000088"; icon: "digikam"; opacity: 0.2 }
-                ListElement { text: "Plasma"; color: "#003333"; icon: "plasma"; opacity: 0.2 }
+                ListElement { text: "KAlgebra"; color: "#cc77cc"; icon: "kalgebra"; packageName: "kalgebra" }
+                ListElement { text: "Digikam"; color: "#9999ff"; icon: "digikam"; packageName: "digikam" }
+                ListElement { text: "Plasma"; color: "#bd9"; icon: "plasma"; packageName: "plasma" }
             }
             
             delegate: Item {
@@ -33,7 +43,7 @@ Item {
                         anchors.fill: parent
                         radius: 10
                         color: modelData.color
-                        opacity: modelData.opacity
+                        opacity: 0.5
                     }
                     
                     Label {
@@ -56,12 +66,15 @@ Item {
                         width: height
                         icon: modelData.icon
                     }
+                    
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            var application = app.appBackend.applicationByPackageName(modelData.packageName)
+                            Navigation.openApplication(pageStack, application)
+                        }
+                    }
             }
-        }
-        
-        Component {
-            id: topsDelegate
-            Label { text: display }
         }
         
         ListView {
@@ -73,18 +86,35 @@ Item {
                 left: parent.left
                 bottom: parent.bottom
             }
-            width: parent.width/4
-            header: Label { text: i18n("<b>Most Downloads</b>") }
-            model: ListModel {
-                ListElement { display: "hola - 213123 downloads" }
-                ListElement { display: "hola - 213123 downloads" }
-                ListElement { display: "hola - 213123 downloads" }
-                ListElement { display: "hola - 213123 downloads" }
-                ListElement { display: "hola - 213123 downloads" }
-                ListElement { display: "hola - 213123 downloads" }
-                ListElement { display: "hola - 213123 downloads" }
+            width: parent.width/2-10
+            header: Label { text: i18n("<b>Popularity Contest</b>") }
+            model: ApplicationProxyModel {
+                stringSortRole: "popcon"
+                sortOrder: Qt.DescendingOrder
+                
+                Component.onCompleted: sortModel()
             }
-            delegate: topsDelegate
+            delegate: ListItem {
+                        width: top1.width
+                        QIconItem {
+                            id: iconItem
+                            anchors { left: parent.left; verticalCenter: parent.verticalCenter }
+                            height: parent.height*0.8
+                            width: height
+                            icon: model["icon"]
+                        }
+                        Label {
+                            anchors { left: iconItem.right; right: pointsLabel.left; verticalCenter: parent.verticalCenter }
+                            text: name
+                            elide: Text.ElideRight
+                        }
+                        Label {
+                            anchors { right: parent.right; verticalCenter: parent.verticalCenter }
+                            id: pointsLabel
+                            text: i18n("points: %1", popcon)
+                        }
+                        MouseArea { anchors.fill: parent; onClicked: Navigation.openApplication(pageStack, application) }
+                    }
         }
         ListView {
             id: top2
@@ -92,45 +122,42 @@ Item {
             anchors {
                 margins: 5
                 top: info.bottom
-                horizontalCenter: parent.horizontalCenter
-                bottom: parent.bottom
-            }
-            width: parent.width/4
-            header: Label { text: i18n("<b>Best Ratings</b>") }
-            model: ListModel {
-                ListElement { display: "hola - 5 stars" }
-                ListElement { display: "hola - 5 stars" }
-                ListElement { display: "hola - 5 stars" }
-                ListElement { display: "hola - 5 stars" }
-                ListElement { display: "hola - 5 stars" }
-                ListElement { display: "hola - 5 stars" }
-                ListElement { display: "hola - 5 stars" }
-            }
-            delegate: topsDelegate
-        }
-        ListView {
-            id: top3
-            clip: true
-            anchors {
-                margins: 5
-                top: info.bottom
                 right: parent.right
                 bottom: parent.bottom
             }
-            width: parent.width/4
-            header: Label { text: i18n("<b>More Frequently Used</b>") }
-            model: ListModel {
-                ListElement { display: "hola - 1231231231 times" }
-                ListElement { display: "hola - 1231231231 times" }
-                ListElement { display: "hola - 1231231231 times" }
-                ListElement { display: "hola - 1231231231 times" }
-                ListElement { display: "hola - 1231231231 times" }
-                ListElement { display: "hola - 1231231231 times" }
-                ListElement { display: "hola - 1231231231 times" }
-                ListElement { display: "hola - 1231231231 times" }
-                ListElement { display: "hola - 1231231231 times" }
+            width: parent.width/2-10
+            header: Label { text: i18n("<b>Best Ratings</b>") }
+            model: ApplicationProxyModel {
+                id: ratingsTopModel
+                stringSortRole: "ratingPoints"
+                sortOrder: Qt.DescendingOrder
             }
-            delegate: topsDelegate
+            Connections {
+                target: app.appBackend.reviewsBackend()
+                onRatingsReady: ratingsTopModel.sortModel()
+            }
+            delegate: ListItem {
+                        width: top1.width
+                        QIconItem {
+                            id: iconItem
+                            anchors { left: parent.left; verticalCenter: parent.verticalCenter }
+                            height: parent.height*0.8
+                            width: height
+                            icon: model["icon"]
+                        }
+                        Label {
+                            anchors { left: iconItem.right; right: ratingsItem.left; verticalCenter: parent.verticalCenter }
+                            text: name
+                            elide: Text.ElideRight
+                        }
+                        Rating {
+                            id: ratingsItem
+                            anchors { verticalCenter: parent.verticalCenter; right: parent.right }
+                            rating: model.rating
+                            height: 10
+                        }
+                        MouseArea { anchors.fill: parent; onClicked: Navigation.openApplication(pageStack, application) }
+                    }
         }
     }
     

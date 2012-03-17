@@ -10,7 +10,11 @@ Item {
     property Item currentItem
     
     smooth: true
-    onCurrentElementChanged: restoreView()
+    onCurrentElementChanged: {
+        if(timer.running)
+            timer.restart()
+        restoreView()
+    }
     onDelegateChanged: restoreView()
     
     function restoreView() {
@@ -42,7 +46,6 @@ Item {
             duration: 500
             to: 1230
             property: "anchors.leftMargin"
-            target: viewItem.currentItem
             easing.type: Easing.InQuad
             onCompleted: target.destroy()
         }
@@ -52,6 +55,14 @@ Item {
             property: "anchors.rightMargin"
             target: fadeoutAnimation.target
             easing.type: fadeoutAnimation.easing.type
+        }
+        NumberAnimation {
+            duration: 500
+            from: 1
+            to: 0
+            property: "opacity"
+            target: fadeoutAnimation.target
+            easing.type: Easing.InQuad
         }
         NumberAnimation {
             id: fadeinAnimation
@@ -73,6 +84,12 @@ Item {
         onClicked: info.next()
     }
     
+    Timer {
+        id: timer
+        interval: 5000; running: true; repeat: true
+        onTriggered: info.next()
+    }
+    
     Row {
         id: selectorRow
         anchors {
@@ -83,20 +100,22 @@ Item {
         width: 100
         height: 20
         spacing: 10
+        z: currentItem ? currentItem.z+2 : 0
         
         Repeater {
             model: viewItem.dataModel.count
             
             Rectangle {
+                property bool isCurrent: modelData == current
                 anchors.verticalCenter: parent.verticalCenter
-                width:  modelData == current ? 12 : 7
+                width:  isCurrent ? 15 : 10
                 height: width
                 radius: width
                 smooth: true
-                color: "black"
+                color: dataModel.get(modelData).color
                 border.color: "white"
                 border.width: 2
-                opacity: area.containsMouse ? 0.2 : (modelData == current ? 1 : 0.6)
+                opacity: area.containsMouse ? 0.2 : (isCurrent ? 1 : 0.6)
                 
                 Behavior on opacity { NumberAnimation { duration: 250 } }
                 Behavior on width { NumberAnimation { duration: 250 } }
