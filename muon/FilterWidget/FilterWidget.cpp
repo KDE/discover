@@ -120,7 +120,6 @@ void FilterWidget::populateFilters()
 
     ArchitectureFilter *archFilter = new ArchitectureFilter(this, m_backend);
     m_filterModels.append(archFilter);
-    m_archList->setModel(archFilter);
 
     // Populate filter lists
     for (FilterModel *filterModel : m_filterModels) {
@@ -129,6 +128,8 @@ void FilterWidget::populateFilters()
 
     // Special-case showing the architecture list, it won't show on single-arch systems
     if (archFilter->shouldShow()) {
+        m_archList->setModel(archFilter);
+
         if (m_filterBox->indexOf(m_archList) == -1)
             m_filterBox->addItem(m_archList, KIcon(), i18nc("@title:tab", "By Architecture"));
         m_archList->show();
