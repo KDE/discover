@@ -92,7 +92,7 @@ Item {
                 text: i18n("Updates")
                 checked: currentTopLevel==updatesComp
                 onClicked: currentTopLevel=updatesComp
-                overlayText: enabled && app.appBackend ? app.appBackend.updatesCount : ""
+                overlayText: enabled && app.appBackend && app.appBackend.updatesCount>0 ? app.appBackend.updatesCount : ""
             }
         }
         
