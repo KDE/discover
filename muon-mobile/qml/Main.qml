@@ -59,40 +59,29 @@ Item {
         anchors.top: parent.top
         
         Row {
+            id: toplevelsRow
             spacing: 5
             anchors {
                 top: parent.top
                 bottom: parent.bottom
                 left: parent.left
             }
-            MuonToolButton {
-                height: parent.height
-                icon: "tools-wizard"
-                text: i18n("Get software")
-                checked: currentTopLevel==welcomeComp
-                onClicked: currentTopLevel=welcomeComp
-            }
-            MuonToolButton {
-                height: parent.height
-                icon: "category-show-all"
-                text: i18n("Browse")
-                checked: currentTopLevel==browsingComp
-                onClicked: currentTopLevel=browsingComp
-            }
-            MuonToolButton {
-                height: parent.height
-                icon: "applications-other"
-                text: i18n("Installed")
-                checked: currentTopLevel==installedComp
-                onClicked: currentTopLevel=installedComp
-            }
-            MuonToolButton {
-                height: parent.height
-                icon: "system-software-update"
-                text: i18n("Updates")
-                checked: currentTopLevel==updatesComp
-                onClicked: currentTopLevel=updatesComp
-                overlayText: enabled && app.appBackend && app.appBackend.updatesCount>0 ? app.appBackend.updatesCount : ""
+            property list<TopLevelPageData> sectionsModel: [
+                TopLevelPageData { icon: "tools-wizard"; text: i18n("Get Software"); component: welcomeComp },
+                TopLevelPageData { icon: "category-show-all"; text: i18n("Browse"); component: browsingComp },
+                TopLevelPageData { icon: "applications-other"; text: i18n("Installed"); component: installedComp },
+                TopLevelPageData { icon: "system-software-update"; text: i18n("Updates"); component: browsingComp }
+            ]
+            Repeater {
+                model: toplevelsRow.sectionsModel
+                
+                delegate: MuonToolButton {
+                    height: toplevelsRow.height
+                    text: modelData.text
+                    icon: modelData.icon
+                    checked: currentTopLevel==modelData.component
+                    onClicked: currentTopLevel=modelData.component
+                }
             }
         }
         
