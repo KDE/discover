@@ -172,7 +172,7 @@ Item {
         height: 30
         z: 0
         
-        Breadcrumbs {
+            Breadcrumbs {
             id: breadcrumbsItem
             anchors.fill: parent
             onClicked: Navigation.jumpToIndex(pageStack, breadcrumbsItem, idx)

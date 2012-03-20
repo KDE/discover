@@ -18,7 +18,7 @@ Item {
         height: 30
         z: 0
         
-        Breadcrumbs {
+        tools: Breadcrumbs {
             id: breadcrumbsItem
             anchors.fill: parent
             onClicked: Navigation.jumpToIndex(pageStack, breadcrumbsItem, idx)
@@ -38,7 +38,6 @@ Item {
         
         Behavior on width {
             PropertyAnimation { 
-                id: heightAnimation
                 duration: 250
             }
         }
