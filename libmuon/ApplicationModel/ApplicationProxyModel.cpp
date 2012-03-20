@@ -21,6 +21,7 @@
 #include "ApplicationProxyModel.h"
 
 #include <LibQApt/Backend>
+#include <QDebug>
 
 // Own includes
 #include "Application.h"
@@ -264,9 +265,16 @@ bool ApplicationProxyModel::lessThan(const QModelIndex &left, const QModelIndex 
     QVariant leftValue = left.data(sortRole());
     QVariant rightValue = right.data(sortRole());
     
-    if(leftValue.type()==QVariant::String && rightValue.type()==QVariant::String)
-        return QString::localeAwareCompare(leftValue.toString(), rightValue.toString()) < 0;
-    else
+    //if we're comparing two equal values, we want the model sorted by application name
+    if(sortRole()!=ApplicationModel::NameRole && leftValue == rightValue) {
+        leftValue = left.data(ApplicationModel::NameRole);
+        rightValue = right.data(ApplicationModel::NameRole);
+    }
+    
+    if(leftValue.type()==QVariant::String && rightValue.type()==QVariant::String) {
+        int comp = QString::localeAwareCompare(leftValue.toString(), rightValue.toString());
+        return comp < 0;
+    } else
         return QSortFilterProxyModel::lessThan(left, right);
 }
 
