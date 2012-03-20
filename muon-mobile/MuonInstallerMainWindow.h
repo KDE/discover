@@ -31,10 +31,12 @@ class MuonInstallerMainWindow : public MuonMainWindow
 {
     Q_OBJECT
     Q_PROPERTY(ApplicationBackend* appBackend READ appBackend NOTIFY appBackendChanged)
+    Q_PROPERTY(QApt::Backend* backend READ backend NOTIFY appBackendChanged)
     public:
         explicit MuonInstallerMainWindow();
 
         ApplicationBackend* appBackend() const;
+        QApt::Backend* backend() const;
         Q_SCRIPTABLE bool openUrl(const QUrl& url);
         virtual void errorOccurred(QApt::ErrorCode code, const QVariantMap& args);
         Q_SCRIPTABLE QAction* getAction(const QString& name);

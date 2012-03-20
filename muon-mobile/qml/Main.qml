@@ -1,6 +1,5 @@
 import QtQuick 1.1
 import org.kde.plasma.components 0.1
-import org.kde.qtextracomponents 0.1
 
 Item {
     id: window
@@ -14,6 +13,7 @@ Item {
     property Component browsingComp: Qt.createComponent("qrc:/qml/BrowsingPage.qml")
     property Component installedComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
     property Component updatesComp: Qt.createComponent("qrc:/qml/UpdatesPage.qml")
+    property Component sourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
     property Component currentTopLevel
     
     onCurrentTopLevelChanged: {
@@ -70,7 +70,8 @@ Item {
                 TopLevelPageData { icon: "tools-wizard"; text: i18n("Get Software"); component: welcomeComp },
                 TopLevelPageData { icon: "category-show-all"; text: i18n("Browse"); component: browsingComp },
                 TopLevelPageData { icon: "applications-other"; text: i18n("Installed"); component: installedComp },
-                TopLevelPageData { icon: "system-software-update"; text: i18n("Updates"); component: browsingComp }
+                TopLevelPageData { icon: "system-software-update"; text: i18n("Updates"); component: updatesComp },
+                TopLevelPageData { icon: "document-import"; text: i18n("Sources"); component: sourcesComp }
             ]
             Repeater {
                 model: toplevelsRow.sectionsModel

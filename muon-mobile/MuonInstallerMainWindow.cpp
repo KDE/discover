@@ -84,6 +84,7 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     qmlRegisterType<Category>();
     qmlRegisterType<ApplicationBackend>();
     qmlRegisterType<ApplicationModel>();
+    qmlRegisterType<QApt::Backend>();
     
     connect(this, SIGNAL(backendReady(QApt::Backend*)), SLOT(setBackend(QApt::Backend*)));
     
@@ -129,6 +130,11 @@ void MuonInstallerMainWindow::setBackend(QApt::Backend* b)
 ApplicationBackend* MuonInstallerMainWindow::appBackend() const
 {
     return BackendsSingleton::self()->applicationBackend();
+}
+
+QApt::Backend* MuonInstallerMainWindow::backend() const
+{
+    return BackendsSingleton::self()->backend();
 }
 
 bool MuonInstallerMainWindow::openUrl(const QUrl& url)
