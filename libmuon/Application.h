@@ -52,6 +52,7 @@ Q_PROPERTY(QString license READ license CONSTANT)
 Q_PROPERTY(QString installedVersion READ installedVersion CONSTANT)
 Q_PROPERTY(QString availableVersion READ availableVersion CONSTANT)
 Q_PROPERTY(QString sizeDescription READ sizeDescription NOTIFY installChanged)
+Q_PROPERTY(QString origin READ origin CONSTANT)
 Q_PROPERTY(bool isValid READ isValid CONSTANT)
 Q_PROPERTY(bool isTechnical READ isTechnical CONSTANT)
 Q_PROPERTY(bool isInstalled READ isInstalled NOTIFY installChanged)
@@ -91,6 +92,7 @@ public:
     QString installedVersion() const;
     QString availableVersion() const;
     QString sizeDescription();
+    QString origin() const;
     bool canUpgrade();
 
     void clearPackage();

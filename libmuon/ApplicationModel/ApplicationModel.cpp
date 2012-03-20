@@ -54,6 +54,7 @@ ApplicationModel::ApplicationModel(QObject *parent)
     roles[ApplicationRole] = "application";
     roles[UsageCountRole] = "usageCount";
     roles[PopConRole] = "popcon";
+    roles[OriginRole] = "origin";
     setRoleNames(roles);
 }
 
@@ -212,6 +213,8 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role) const
             return m_apps.at(index.row())->usageCount();
         case PopConRole:
             return m_apps.at(index.row())->getField("X-AppInstall-Popcon").toInt();
+        case OriginRole:
+            return m_apps.at(index.row())->origin();
     }
 
     return QVariant();

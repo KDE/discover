@@ -383,6 +383,12 @@ QString Application::homepage() const
     return m_package->homepage();
 }
 
+QString Application::origin() const
+{
+    if(!m_package) return QString();
+    return m_package->origin();
+}
+
 QString Application::longDescription() const
 {
     if(!m_package) return QString();
