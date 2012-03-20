@@ -96,12 +96,20 @@ Page {
         }
     }
     
+    Component {
+        id: categoryHeaderComponent
+        CategoryHeader {
+            category: page.category
+        }
+    }
+    
     CategoryModel {
         id: cats
         Component.onCompleted: {
-            if(category)
+            if(category) {
                 setSubcategories(category)
-            else
+                view.header = categoryHeaderComponent
+            } else
                 populateCategories(i18n("Get Software"))
         }
     }

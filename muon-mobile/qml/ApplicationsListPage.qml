@@ -94,9 +94,18 @@ Page {
 //         }
     ]
     
+    Component {
+        id: categoryHeaderComponent
+        CategoryHeader {
+            id: categoryHeader
+            category: page.category
+        }
+    }
+    
     ApplicationsList {
         id: apps
         anchors.fill: parent
         stack: page.pageStack
+        header: parent.category==null ? null : categoryHeaderComponent
     }
 }

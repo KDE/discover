@@ -12,6 +12,7 @@ Item {
     property int elemHeight: 65
     property alias stateFilter: apps.stateFilter
     property alias count: view.count
+    property alias header: view.header
 
     function searchFor(text) { apps.search(text) }
     function stringToRole(role) { return apps.stringToRole(role) }
