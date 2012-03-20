@@ -93,10 +93,11 @@ Item {
                         }
                         
                         property bool isVisible: delegateArea.containsMouse && !installButton.canHide
-                        x: isVisible ? ratingsItem.x : parent.x+parent.width
+                        x: ratingsItem.x
+                        opacity: isVisible ? 1 : 0
                         application: model.application
                         
-                        Behavior on x {
+                        Behavior on opacity {
                             NumberAnimation {
                                 duration: 100
                                 easing.type: Easing.InQuad
