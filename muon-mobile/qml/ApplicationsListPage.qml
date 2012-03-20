@@ -7,6 +7,7 @@ Page {
     property alias sortRole: apps.sortRole
     property alias sortOrder: apps.sortOrder
     property alias stateFilter: apps.stateFilter
+    property alias section: apps.section
     
     function searchFor(text) {
         field.text = text

@@ -58,8 +58,11 @@ Item {
         
         initialPage: ApplicationsListPage {
             stateFilter: (1<<8)
-            sortRole: 32
+            sortRole: "origin"
             sortOrder: 0
+            
+            section.property: "origin"
+            section.delegate: Label { text: i18n("From %1", section) }
         }
         
         toolBar: pageToolBar

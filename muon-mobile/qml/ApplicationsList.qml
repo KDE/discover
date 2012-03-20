@@ -7,12 +7,13 @@ import "navigation.js" as Navigation
 Item {
     property QtObject category
     property Item stack
-    property alias sortRole: apps.sortRole
+    property alias sortRole: apps.stringSortRole
     property alias sortOrder: apps.sortOrder
     property int elemHeight: 65
     property alias stateFilter: apps.stateFilter
     property alias count: view.count
     property alias header: view.header
+    property alias section: view.section
 
     function searchFor(text) { apps.search(text) }
     function stringToRole(role) { return apps.stringToRole(role) }
