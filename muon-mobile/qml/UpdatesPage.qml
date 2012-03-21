@@ -13,6 +13,8 @@ Item
         onProgress: { progress.value=percentage; message.text+=text+'\n' }
         onDownloadMessage: { message.text+=msg+'\n' }
         onInstallMessage: { message.text+=msg+'\n' }
+        
+        onUpdatesFinnished: page.state="show"
     }
     ProgressBar {
         id: progress
@@ -44,7 +46,7 @@ Item
             top: commitButton.bottom
             left: parent.left
             right: parent.right
-            bottom: parent.bottom
+            bottom: librariesUpdatesLabel.top
         }
         stateFilter: (1<<9)//Upgradeable
         sortRole: "origin"
@@ -52,10 +54,17 @@ Item
         visible: apps.count>0 && page.state!="updating"
     }
     Label {
-        anchors.fill: parent
+        id: librariesUpdatesLabel
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+            bottomMargin: apps.count>0 ? 0 : page.height/2
+        }
+        height: app.appBackend.updatesCount==0 ? 0 : 30
         font.pointSize: 25
         text: i18n("%1 system updates", app.appBackend.updatesCount)
-        visible: app.appBackend.updatesCount>0 && page.state!="updating"
+        visible: page.state!="updating"
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
     }
