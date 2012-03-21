@@ -64,7 +64,7 @@ Item
         height: app.appBackend.updatesCount==0 ? 0 : 30
         font.pointSize: 25
         text: i18n("%1 system updates", app.appBackend.updatesCount)
-        visible: page.state!="updating"
+        visible: app.appBackend.updatesCount>0 && page.state!="updating"
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
     }
