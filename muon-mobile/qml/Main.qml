@@ -127,19 +127,6 @@ Item {
                     anchors.top: usersButton.bottom
                 }
             }
-            
-            Repeater {
-                model: ["software_properties"]
-                
-                delegate: MuonToolButton {
-                    property QtObject action: app.getAction(modelData)
-                    height: parent.height
-                    
-                    onClicked: action.trigger()
-                    enabled: action.enabled
-                    icon: action.icon
-                }
-            }
         }
     }
     
