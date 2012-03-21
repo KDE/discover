@@ -25,7 +25,7 @@
 #include <QVariant>
 #include "LoginMetaTypes.h"
 
-class ComUbuntuSsoApplicationCredentialsInterface;
+class HackedComUbuntuSsoCredentialsManagementInterface;
 class UbuntuLoginBackend : public AbstractLoginBackend
 {
     Q_OBJECT
@@ -50,7 +50,7 @@ class UbuntuLoginBackend : public AbstractLoginBackend
 
     private:
         QString appname() const;
-        ComUbuntuSsoApplicationCredentialsInterface* m_interface;
+        HackedComUbuntuSsoCredentialsManagementInterface* m_interface;
         MapString m_credentials;
 };
 

@@ -1,38 +1,67 @@
 <!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
 "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
-<node name="/credentials">
-  <interface name="com.ubuntu.sso.ApplicationCredentials">
+<node name="/com/ubuntu/sso/credentials">
+  <interface name="com.ubuntu.sso.CredentialsManagement">
     <signal name="CredentialsError">
       <arg type="s" name="app_name" />
-      <arg type="s" name="error_message" />
-      <arg type="s" name="detailed_error" />
+      <arg type="a{ss}" name="error_dict" />
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="MapString"/>
+    </signal>
+    <signal name="CredentialsStored">
+      <arg type="s" name="app_name" />
+    </signal>
+    <signal name="CredentialsNotFound">
+      <arg type="s" name="app_name" />
     </signal>
     <signal name="AuthorizationDenied">
       <arg type="s" name="app_name" />
     </signal>
-    <method name="login_or_register_to_get_credentials">
+<!--
+    NOTE: this is commented out because the method is called register and it's a c++ reserved keyword and it doesn't work
+    <method name="register">
       <arg direction="in"  type="s" name="app_name" />
-      <arg direction="in"  type="s" name="terms_and_conditions_url" />
-      <arg direction="in"  type="s" name="help_text" />
-      <arg direction="in"  type="x" name="window_id" />
-    </method>
-    <method name="find_credentials">
+      <arg direction="in"  type="a{ss}" name="args" />
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="MapString"/>
+    </method>-->
+    <method name="find_credentials_sync">
       <arg direction="in"  type="s" name="app_name" />
+      <arg direction="in"  type="a{ss}" name="args" />
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="MapString"/>
       <arg direction="out" type="a{ss}" />
       <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="MapString"/>
     </method>
-    <method name="login_to_get_credentials">
+    <method name="find_credentials">
       <arg direction="in"  type="s" name="app_name" />
-      <arg direction="in"  type="s" name="help_text" />
-      <arg direction="in"  type="x" name="window_id" />
+      <arg direction="in"  type="a{ss}" name="args" />
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="MapString"/>
+    </method>
+    <signal name="CredentialsCleared">
+      <arg type="s" name="app_name" />
+    </signal>
+    <method name="clear_credentials">
+      <arg direction="in"  type="s" name="app_name" />
+      <arg direction="in"  type="a{ss}" name="args" />
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="MapString"/>
     </method>
     <signal name="CredentialsFound">
       <arg type="s" name="app_name" />
       <arg type="a{ss}" name="credentials" />
       <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="MapString"/>
     </signal>
-    <method name="clear_token">
+    <method name="login">
       <arg direction="in"  type="s" name="app_name" />
+      <arg direction="in"  type="a{ss}" name="args" />
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="MapString"/>
+    </method>
+    <method name="login_email_password">
+      <arg direction="in"  type="s" name="app_name" />
+      <arg direction="in"  type="a{ss}" name="args" />
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="MapString"/>
+    </method>
+    <method name="store_credentials">
+      <arg direction="in"  type="s" name="app_name" />
+      <arg direction="in"  type="a{ss}" name="args" />
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="MapString"/>
     </method>
   </interface>
   <interface name="org.freedesktop.DBus.Introspectable">
