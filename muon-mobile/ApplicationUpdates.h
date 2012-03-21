@@ -36,6 +36,7 @@ class ApplicationUpdates : public QObject
         void progress(const QString& text, int percentage);
         void downloadMessage(int code, const QString& msg);
         void installMessage(const QString& msg);
+        void updatesFinnished();
         
     public slots:
         void errorOccurred(QApt::ErrorCode code, const QVariantMap& args );

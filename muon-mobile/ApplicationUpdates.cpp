@@ -21,9 +21,10 @@
 #include "ApplicationUpdates.h"
 #include "BackendsSingleton.h"
 #include <Application.h>
-#include <ApplicationModel/ApplicationModel.h>
+#include <ApplicationBackend.h>
 #include "MuonInstallerMainWindow.h"
 #include <LibQApt/Backend>
+#include <QDebug>
 
 ApplicationUpdates::ApplicationUpdates(QObject* parent): QObject(parent)
 {
@@ -64,7 +65,10 @@ void ApplicationUpdates::errorOccurred(QApt::ErrorCode code, const QVariantMap& 
 void ApplicationUpdates::workerEvent(QApt::WorkerEvent e)
 {
     if(e==QApt::CommitChangesFinished) {
+        qDebug() << "updates done. Reloading...";
+        
         //when it's done, trigger a reload of the whole system
-        BackendsSingleton::self()->appsModel()->reloadApplications();
+        BackendsSingleton::self()->applicationBackend()->reload();
+        emit updatesFinnished();
     }
 }
