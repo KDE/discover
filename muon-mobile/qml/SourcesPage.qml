@@ -1,5 +1,6 @@
 import QtQuick 1.0
 import org.kde.plasma.components 0.1
+import org.kde.muon 1.0
 
 Item {
     id: page
@@ -38,6 +39,10 @@ Item {
         }
     }
     
+    OriginsBackend {
+        id: origins
+    }
+    
     ListView {
         anchors {
             margins: 10
@@ -48,11 +53,11 @@ Item {
         }
         clip: true
         
-        model: app.backend.originLabels()
+        model: origins.labels
         
         delegate: ListItem {
-            Label { anchors.fill: parent; text: i18n("%1 - %2", modelData, app.backend.origin(modelData)) }
-            ToolButton { anchors.right: parent.right; iconSource: "list-remove" }
+            Label { anchors.fill: parent; anchors.leftMargin: removeButton.width; text: i18n("%1 - %2", modelData, origins.labelsOrigin(modelData)) }
+            ToolButton { id: removeButton; anchors.left: parent.left; iconSource: "list-remove" }
         }
     }
 }
