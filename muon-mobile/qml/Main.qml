@@ -123,7 +123,7 @@ Item {
                 RatingAndReviewsConnection {
                     id: connectionBox
                     visible: false
-                    anchors.horizontalCenter: usersButton.horizontalCenter
+                    anchors.right: usersButton.right
                     anchors.top: usersButton.bottom
                 }
             }
