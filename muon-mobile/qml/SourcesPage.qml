@@ -74,6 +74,7 @@ Item {
                     anchors {
                         left: parent.left
                         right: parent.right
+                        margins: 10
                     }
                     wrapMode: Text.WordWrap
                     text: i18n("<sourceline> - The apt repository source line to add. This is one of:\n"
@@ -86,7 +87,7 @@ Item {
                                 +"    http://myserver/path/to/repo myrepo\n"
                                 +"    https://packages.medibuntu.org free non-free\n"
                                 +"    http://extras.ubuntu.com/ubuntu\n"
-                                +"    ppa:user/repository\n") }
+                                +"    ppa:user/repository") }
                 TextField {
                     id: repository
                     anchors.left: parent.left
