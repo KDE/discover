@@ -25,6 +25,7 @@
 #include <QtCore/QObject>
 #include <QtCore/QQueue>
 #include <QtCore/QSet>
+#include <QVector>
 
 #include <LibQApt/Globals>
 #include <LibQApt/Package>
@@ -55,7 +56,7 @@ public:
 
     Q_SCRIPTABLE ReviewsBackend *reviewsBackend() const;
     Q_SCRIPTABLE Application* applicationByPackageName(const QString& name) const;
-    QList<Application *> applicationList() const;
+    QVector<Application *> applicationList() const;
     QSet<QString> appOrigins() const;
     QSet<QString> installedAppOrigins() const;
     QPair<QApt::WorkerEvent, Transaction *> workerState() const;
@@ -74,7 +75,7 @@ private:
     ReviewsBackend *m_reviewsBackend;
     bool m_isReloading;
 
-    QList<Application *> m_appList;
+    QVector<Application *> m_appList;
     QSet<QString> m_originList;
     QSet<QString> m_instOriginList;
     QList<Application*> m_appLaunchList;

@@ -22,6 +22,7 @@
 #define APPLICATIONMODEL_H
 
 #include <QAbstractListModel>
+#include <QVector>
 
 #include <LibQApt/Globals>
 
@@ -65,12 +66,12 @@ public:
     void clear();
     Application *applicationAt(const QModelIndex &index) const;
     Transaction *transactionAt(const QModelIndex &index) const;
-    QList<Application *> applications() const;
+    QVector<Application *> applications() const;
     void reloadApplications();
     
 private:
     ApplicationBackend *m_appBackend;
-    QList<Application *> m_apps;
+    QVector<Application *> m_apps;
     QHash<Transaction *, int> m_runningTransactions;
 
 public Q_SLOTS:

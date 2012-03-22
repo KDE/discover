@@ -279,7 +279,7 @@ Transaction *ApplicationModel::transactionAt(const QModelIndex &index) const
     return transaction;
 }
 
-QList<Application*> ApplicationModel::applications() const
+QVector< Application* > ApplicationModel::applications() const
 {
     return m_apps;
 }

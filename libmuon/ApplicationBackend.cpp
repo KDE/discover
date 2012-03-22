@@ -398,7 +398,7 @@ ReviewsBackend *ApplicationBackend::reviewsBackend() const
     return m_reviewsBackend;
 }
 
-QList<Application *> ApplicationBackend::applicationList() const
+QVector<Application *> ApplicationBackend::applicationList() const
 {
     return m_appList;
 }
