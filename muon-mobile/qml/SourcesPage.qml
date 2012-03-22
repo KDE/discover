@@ -91,6 +91,7 @@ Item {
                     id: repository
                     anchors.left: parent.left
                     anchors.right: parent.right
+//                     onAccepted: newSourceDialog.accept()
                 }
             }
         }
@@ -114,7 +115,7 @@ Item {
             Label {
                 anchors {
                     fill: parent
-                    leftMargin: removeButton.width
+                    leftMargin: removeButton.width+5
                 }
                 text: i18n("%1 - %2", modelData, origins.labelsOrigin(modelData))
             }

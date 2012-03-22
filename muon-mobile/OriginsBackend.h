@@ -36,9 +36,11 @@ class OriginsBackend : public QObject
         void addRepository(const QString& repository);
         void removeRepository(const QString& repository);
 
-    signals:
+    private slots:
         void additionDone(int processErrorCode);
         void removalDone(int processErrorCode);
+
+    signals:
         void originsChanged();
 };
 
