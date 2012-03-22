@@ -94,8 +94,8 @@ void ApplicationBackend::init()
 
     foreach (Application *app, tempList) {
         bool added = false;
+        QApt::Package *pkg = app->package();
         if (app->isValid()) {
-            QApt::Package *pkg = app->package();
             if ((pkg) && !m_pkgBlacklist.contains(pkg->latin1Name())) {
                 m_appList << app;
                 if (pkg->isInstalled()) {
