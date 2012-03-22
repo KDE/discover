@@ -22,6 +22,7 @@
 #define ORIGINSBACKEND_H
 
 #include <QObject>
+#include <QStringList>
 
 class OriginsBackend : public QObject
 {
