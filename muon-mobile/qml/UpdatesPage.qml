@@ -48,6 +48,8 @@ Item
             right: parent.right
             bottom: librariesUpdatesLabel.top
         }
+        section.property: "origin"
+        section.delegate: Label { text: i18n("From %1", section) }
         stateFilter: (1<<9)//Upgradeable
         sortRole: "origin"
         sortOrder: 0
