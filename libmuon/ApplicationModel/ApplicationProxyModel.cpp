@@ -93,6 +93,11 @@ void ApplicationProxyModel::setShouldShowTechnical(bool show)
     m_showTechnical = show;
 }
 
+bool ApplicationProxyModel::shouldShowTechnical() const
+{
+    return m_showTechnical;
+}
+
 bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
     Application *application = static_cast<ApplicationModel *>(sourceModel())->applicationAt(sourceModel()->index(sourceRow, 0, sourceParent));
