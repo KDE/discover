@@ -44,7 +44,7 @@ class UbuntuLoginBackend : public AbstractLoginBackend
         virtual QByteArray consumerSecret() const;
 
     private slots:
-        void credentialsError(const QString& app, const QString& a, const QString& b );
+        void credentialsError(const QString& app, const MapString& a);
         void authorizationDenied(const QString& app);
         void successfulLogin(const QString& app, const MapString& credentials);
 

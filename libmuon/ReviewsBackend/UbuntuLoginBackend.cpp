@@ -47,7 +47,7 @@ UbuntuLoginBackend::UbuntuLoginBackend(QObject* parent)
 {
     qDBusRegisterMetaType<MapString>();
     m_interface = new HackedComUbuntuSsoCredentialsManagementInterface( "com.ubuntu.sso", "/com/ubuntu/sso/credentials", QDBusConnection::sessionBus(), this);
-    connect(m_interface, SIGNAL(CredentialsError(QString,QString,QString)), SLOT(credentialsError(QString,QString,QString)));
+    connect(m_interface, SIGNAL(CredentialsError(QString,MapString)), SLOT(credentialsError(QString,MapString)));
     connect(m_interface, SIGNAL(AuthorizationDenied(QString)), SLOT(authorizationDenied(QString)));
     connect(m_interface, SIGNAL(CredentialsFound(QString, MapString)), this, SLOT(successfulLogin(QString, MapString)));
     
@@ -101,10 +101,10 @@ void UbuntuLoginBackend::authorizationDenied(const QString& app)
         emit connectionStateChanged();
 }
 
-void UbuntuLoginBackend::credentialsError(const QString& app, const QString& a, const QString& b)
+void UbuntuLoginBackend::credentialsError(const QString& app, const MapString& a)
 {
     //TODO: provide error message?
-    qDebug() << "error" << app << a << b;
+    qDebug() << "error" << app << a;
     if(app==appname())
         emit connectionStateChanged();
 }
