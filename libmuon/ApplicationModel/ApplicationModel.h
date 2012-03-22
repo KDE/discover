@@ -53,6 +53,7 @@ public:
         ApplicationRole,
         UsageCountRole,
         PopConRole,
+        UntranslatedNameRole,
         OriginRole
     };
     explicit ApplicationModel(QObject* parent=0);
