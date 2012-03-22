@@ -63,7 +63,7 @@ void ApplicationModelTest::testReload()
     model->setBackend(m_appBackend);
     updatesProxy->setStateFilter(QApt::Package::ToUpgrade);
     
-    QList<Application*> apps = m_appBackend->applicationList();
+    QVector<Application*> apps = m_appBackend->applicationList();
     QVector<QString> appNames(apps.size());
     for(int i=0; i<model->rowCount(); ++i) {
         Application* app = apps[i];
@@ -72,7 +72,6 @@ void ApplicationModelTest::testReload()
         QVERIFY(app->isValid());
     }
     
-    QCOMPARE(updatesProxy->rowCount(), m_appBackend->updatesCount());
     m_appBackend->reload();
     m_appBackend->updatesCount();
     QCOMPARE(apps, m_appBackend->applicationList() );
