@@ -39,7 +39,12 @@ Page {
                 }
                 Label {
                     text: display
-                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                    }
+                    horizontalAlignment: Text.AlignHCenter
+                    wrapMode: Text.WordWrap
                 }
                 
             }
