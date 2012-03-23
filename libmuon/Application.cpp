@@ -167,7 +167,7 @@ QString Application::menuPath()
     QString arrow(QString::fromUtf8(" ➜ "));
 
     // Take the file name and remove the .desktop ending
-    QString desktopName = m_fileName.split('/').last().remove(QLatin1String(".desktop")).split(':').first();
+    QString desktopName = m_fileName.split('/').last().split(':').first();
     KService::Ptr service = KService::serviceByDesktopName(desktopName);
     QVector<QPair<QString, QString> > ret;
 
