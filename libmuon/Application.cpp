@@ -167,12 +167,14 @@ QString Application::menuPath()
     QString arrow(QString::fromUtf8(" ➜ "));
 
     // Take the file name and remove the .desktop ending
-    QString desktopName = m_fileName.split('/').last().remove(QLatin1String(".desktop"));
+    QString desktopName = m_fileName.split('/').last().remove(QLatin1String(".desktop")).split(':').first();
     KService::Ptr service = KService::serviceByDesktopName(desktopName);
     QVector<QPair<QString, QString> > ret;
+
     if (service) {
         ret = locateApplication(QString(), service->menuId());
     }
+
     if (!ret.isEmpty()) {
         path.append(QString("<img width=\"16\" heigh=\"16\"src=\"%1\"/>")
                     .arg(KIconLoader::global()->iconPath("kde", KIconLoader::Small)));
