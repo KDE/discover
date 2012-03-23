@@ -26,8 +26,9 @@ namespace QApt { class Backend; }
 class ApplicationBackend;
 class ApplicationModel;
 
-class BackendsSingleton
+class BackendsSingleton : public QObject
 {
+Q_OBJECT
 public:
     BackendsSingleton();
     
@@ -39,6 +40,10 @@ public:
     QApt::Backend* backend();
     ApplicationBackend* applicationBackend();
     MuonInstallerMainWindow* mainWindow() const;
+
+signals:
+    void initialized();
+    
 private:
     static BackendsSingleton* m_self;
     ApplicationModel* m_appsModel;

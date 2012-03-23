@@ -63,6 +63,7 @@ void BackendsSingleton::initialize(QApt::Backend* b, MuonInstallerMainWindow* ma
 {
     m_backend = b;
     m_mainWindow = main;
+    emit initialized();
 }
 
 QApt::Backend* BackendsSingleton::backend()
