@@ -467,18 +467,18 @@ void Application::populateZeitgeistInfo()
     QString desktopFile;
 
     foreach (const QString &desktop, package()->installedFilesList().filter(".desktop")) {
-            KService::Ptr service = KService::serviceByDesktopPath(desktop);
-            if (!service) {
-                break;
-            }
+        KService::Ptr service = KService::serviceByDesktopPath(desktop);
+        if (!service) {
+            continue;
+        }
 
-            if (service->isApplication() &&
-              !service->noDisplay() &&
-              !service->exec().isEmpty())
-            {
-                desktopFile = desktop.split('/').last();
-                break;
-            }
+        if (service->isApplication() &&
+            !service->noDisplay() &&
+            !service->exec().isEmpty())
+        {
+            desktopFile = desktop.split('/').last();
+            break;
+        }
     }
 
     QtZeitgeist::init();
