@@ -43,6 +43,8 @@ ApplicationProxyModel::~ApplicationProxyModel()
 void ApplicationProxyModel::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
+    invalidate();
+    emit invalidated();
 }
 
 void ApplicationProxyModel::search(const QString &searchText)

@@ -43,9 +43,16 @@ class ApplicationProxyModelHelper : public ApplicationProxyModel
         void setSortOrder_hack(Qt::SortOrder order);
         void setStringSortRole_hack(const QString& role);
         QString stringSortRole() const;
+
+    public slots:
+        void init();
+
     signals:
         void sortRoleChanged();
         void sortOrderChanged();
+
+    private:
+        QString m_sortRoleString;
 };
 
 #endif // APPLICATIONPROXYMODELHELPER_H

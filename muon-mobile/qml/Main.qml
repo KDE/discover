@@ -14,7 +14,7 @@ Item {
     property Component installedComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
     property Component updatesComp: Qt.createComponent("qrc:/qml/UpdatesPage.qml")
     property Component sourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
-    property Component currentTopLevel
+    property Component currentTopLevel: welcomeComp
     
     onCurrentTopLevelChanged: {
         if(currentTopLevel.status==Component.Error) {
@@ -133,7 +133,6 @@ Item {
     onStateChanged: { 
         if(state=="loaded") {
             connectionBox.init()
-            currentTopLevel = welcomeComp
         }
     }
     
