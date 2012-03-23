@@ -23,19 +23,57 @@
 
 #include <QObject>
 #include <QStringList>
+#include <QVariantList>
+
+class Source : public QObject
+{
+    Q_OBJECT
+    Q_PROPERTY(bool isSource READ isSource CONSTANT)
+    Q_PROPERTY(QString uri READ uri CONSTANT)
+    Q_PROPERTY(QStringList args READ args CONSTANT)
+    Q_PROPERTY(QString suite READ suite CONSTANT)
+    Q_PROPERTY(QString arch READ arch CONSTANT)
+
+    public:
+        bool isSource() const { return m_isSource; }
+        void setSource(bool s) { m_isSource = s; }
+        
+        QString uri() { return m_uri; }
+        void setUri(const QByteArray& uri) { m_uri = uri; }
+        
+        QStringList args() const { return m_args; }
+        void setArgs(const QStringList& args) { m_args = args; }
+        
+        QString suite() const { return m_suite; }
+        void setSuite(const QByteArray& suite) { m_suite = suite; }
+        
+        void setArch(const QString& arch) { m_arch = arch; }
+        QString arch() const { return m_arch; }
+    private:
+        bool m_isSource;
+        QByteArray m_uri;
+        QStringList m_args;
+        QByteArray m_suite;
+        QString m_arch;
+};
 
 class OriginsBackend : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QStringList labels READ labels NOTIFY originsChanged);
+    Q_PROPERTY(QVariantList sources READ sourcesVariant NOTIFY originsChanged);
     public:
         explicit OriginsBackend(QObject* parent = 0);
-        QStringList labels() const;
-        Q_SCRIPTABLE QString labelsOrigin(const QString& label) const;
+        virtual ~OriginsBackend();
+
+        void load();
+        void load(const QString& file);
+        QVariantList sourcesVariant() const;
+        QList<Source*> sources() const { return m_sources; }
 
     public slots:
         void addRepository(const QString& repository);
         void removeRepository(const QString& repository);
+        void initialize();
 
     private slots:
         void additionDone(int processErrorCode);
@@ -43,6 +81,9 @@ class OriginsBackend : public QObject
 
     signals:
         void originsChanged();
+
+    private:
+        QList<Source*> m_sources;
 };
 
 #endif // ORIGINSBACKEND_H

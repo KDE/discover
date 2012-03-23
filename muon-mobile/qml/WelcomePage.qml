@@ -133,6 +133,7 @@ Item {
                 sortOrder: Qt.DescendingOrder
             }
             Connections {
+                ignoreUnknownSignals: true
                 target: app.appBackend.reviewsBackend()
                 onRatingsReady: ratingsTopModel.sortModel()
             }
@@ -207,7 +208,7 @@ Item {
         }
         property alias breadcrumbs: breadcrumbsItem
         
-        initialPage: window.state=="loaded" ? mainPage : null
+        initialPage: mainPage
         clip: true
         
         toolBar: pageToolBar

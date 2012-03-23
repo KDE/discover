@@ -40,10 +40,6 @@ Item {
         }
     }
     
-    OriginsBackend {
-        id: origins
-    }
-    
     CommonDialog {
         id: newSourceDialog
         onClickedOutside: reviewDialog.close()
@@ -92,13 +88,14 @@ Item {
                     id: repository
                     anchors.left: parent.left
                     anchors.right: parent.right
-//                     onAccepted: newSourceDialog.accept()
+                    Keys.onEnterPressed: newSourceDialog.accept()
                 }
             }
         }
         
         onAccepted: origins.addRepository(repository.text)
     }
+    OriginsBackend { id: origins }
     
     ListView {
         anchors {
@@ -109,8 +106,10 @@ Item {
             bottom: parent.bottom
         }
         clip: true
+        section.property: "uri"
+        section.delegate: Label { text: section }
         
-        model: origins.labels
+        model: origins.sources
         
         delegate: ListItem {
             Label {
@@ -118,9 +117,14 @@ Item {
                     fill: parent
                     leftMargin: removeButton.width+5
                 }
-                text: i18n("%1 - %2", modelData, origins.labelsOrigin(modelData))
+                text: modelData.isSource ? i18n("%1 (Source)", modelData.suite) : modelData.suite
             }
-            ToolButton { id: removeButton; anchors.left: parent.left; iconSource: "list-remove" }
+            ToolButton {
+                id: removeButton
+                anchors.left: parent.left
+                iconSource: "list-remove"
+                onClicked: origins.removeRepository(modelData.uri)
+            }
         }
     }
 }

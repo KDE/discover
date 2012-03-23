@@ -25,8 +25,20 @@
 ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
     : ApplicationProxyModel(parent)
 {
-    setSourceModel(BackendsSingleton::self()->appsModel());
+    if(BackendsSingleton::self()->backend())
+        init();
+    else
+        connect(BackendsSingleton::self(), SIGNAL(initialized()), SLOT(init()));
+}
+
+void ApplicationProxyModelHelper::init()
+{
     setBackend(BackendsSingleton::self()->backend());
+    setSourceModel(BackendsSingleton::self()->appsModel());
+    
+    if(!m_sortRoleString.isEmpty())
+        setStringSortRole_hack(m_sortRoleString);
+    sortModel();
 }
 
 void ApplicationProxyModelHelper::sortModel()
@@ -69,6 +81,7 @@ void ApplicationProxyModelHelper::setSortOrder_hack(Qt::SortOrder order)
 void ApplicationProxyModelHelper::setStringSortRole_hack(const QString& role)
 {
     setSortRole_hack(stringToRole(role.toUtf8()));
+    m_sortRoleString = role;
 }
 
 QString ApplicationProxyModelHelper::stringSortRole() const
