@@ -21,13 +21,13 @@
 #ifndef APPLICATIONBACKEND_H
 #define APPLICATIONBACKEND_H
 
-#include <QtCore/QStringList>
+#include <QFutureWatcher>
 #include <QtCore/QObject>
 #include <QtCore/QQueue>
 #include <QtCore/QSet>
-#include <QVector>
+#include <QtCore/QStringList>
+#include <QtCore/QVector>
 
-#include <LibQApt/Globals>
 #include <LibQApt/Package>
 
 #include "libmuonprivate_export.h"
@@ -75,11 +75,11 @@ private:
     ReviewsBackend *m_reviewsBackend;
     bool m_isReloading;
 
+    QFutureWatcher<QVector<Application*> >* m_watcher;
     QVector<Application *> m_appList;
     QSet<QString> m_originList;
     QSet<QString> m_instOriginList;
     QList<Application*> m_appLaunchList;
-    QStringList m_pkgBlacklist;
     QQueue<Transaction *> m_queue;
     Transaction *m_currentTransaction;
     QPair<QApt::WorkerEvent, Transaction *> m_workerState;
@@ -97,7 +97,7 @@ public Q_SLOTS:
     void clearLaunchList();
 
 private Q_SLOTS:
-    void init();
+    void setApplications();
     void runNextTransaction();
     void workerEvent(QApt::WorkerEvent event);
     void errorOccurred(QApt::ErrorCode error, const QVariantMap &details);

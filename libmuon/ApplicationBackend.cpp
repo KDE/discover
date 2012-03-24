@@ -21,6 +21,7 @@
 #include "ApplicationBackend.h"
 
 // Qt includes
+#include <QtConcurrentRun>
 #include <QtCore/QDir>
 #include <QtCore/QStringList>
 
@@ -46,8 +47,8 @@ ApplicationBackend::ApplicationBackend(QObject *parent)
     , m_isReloading(false)
     , m_currentTransaction(0)
 {
-    m_pkgBlacklist << "kdebase-runtime" << "kdepim-runtime" << "kdelibs5-plugins" << "kdelibs5-data";
-    
+    m_watcher = new QFutureWatcher<QVector<Application*> >(this);
+    connect(m_watcher, SIGNAL(finished()), this, SLOT(setApplications()));
     connect(this, SIGNAL(reloadFinished()), SIGNAL(updatesCountChanged()));
 }
 
@@ -55,40 +56,29 @@ ApplicationBackend::~ApplicationBackend()
 {
 }
 
-void ApplicationBackend::setBackend(QApt::Backend *backend)
+QVector<Application *> init(QApt::Backend *backend)
 {
-    m_backend = backend;
-    m_backend->setUndoRedoCacheSize(1);
-    m_reviewsBackend->setAptBackend(m_backend);
-    init();
-
-    connect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
-            this, SLOT(workerEvent(QApt::WorkerEvent)));
-    connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)),
-            this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
-
-    emit appBackendReady();
-}
-
-void ApplicationBackend::init()
-{
+    QVector<Application *> appList;
     QDir appDir("/usr/share/app-install/desktop/");
     QStringList fileList = appDir.entryList(QStringList("*.desktop"), QDir::Files);
+
+    QStringList pkgBlacklist;
+    pkgBlacklist << "kdebase-runtime" << "kdepim-runtime" << "kdelibs5-plugins" << "kdelibs5-data";
 
     QList<Application *> tempList;
     QSet<QString> packages;
     foreach(const QString &fileName, fileList) {
-        Application *app = new Application(appDir.filePath(fileName), m_backend);
+        Application *app = new Application(appDir.filePath(fileName), backend);
         packages.insert(app->packageName());
         tempList << app;
     }
 
-    foreach (QApt::Package *package, m_backend->availablePackages()) {
+    foreach (QApt::Package *package, backend->availablePackages()) {
         //Don't create applications twice
         if(packages.contains(package->name())) {
             continue;
         }
-        Application *app = new Application(package, m_backend);
+        Application *app = new Application(package, backend);
         tempList << app;
     }
 
@@ -96,12 +86,8 @@ void ApplicationBackend::init()
         bool added = false;
         QApt::Package *pkg = app->package();
         if (app->isValid()) {
-            if ((pkg) && !m_pkgBlacklist.contains(pkg->latin1Name())) {
-                m_appList << app;
-                if (pkg->isInstalled()) {
-                    m_instOriginList << pkg->origin();
-                }
-                m_originList << pkg->origin();
+            if ((pkg) && !pkgBlacklist.contains(pkg->latin1Name())) {
+                appList << app;
                 added = true;
             }
         }
@@ -110,8 +96,43 @@ void ApplicationBackend::init()
             delete app;
     }
 
+    return appList;
+}
+
+void ApplicationBackend::setBackend(QApt::Backend *backend)
+{
+    m_backend = backend;
+    m_backend->setUndoRedoCacheSize(1);
+    m_reviewsBackend->setAptBackend(m_backend);
+
+    QFuture<QVector<Application*> > future = QtConcurrent::run(init, backend);
+    m_watcher->setFuture(future);
+
+    connect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
+            this, SLOT(workerEvent(QApt::WorkerEvent)));
+    connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)),
+            this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
+}
+
+void ApplicationBackend::setApplications()
+{
+    m_appList = m_watcher->future().result();
+
+    // Populate origin lists
+    QApt::Package *pkg;
+    for (Application *app : m_appList) {
+        pkg = app->package();
+        if (pkg->isInstalled()) {
+            m_instOriginList << pkg->origin();
+        }
+
+        m_originList << pkg->origin();
+    }
+
     m_originList.remove(QString());
     m_instOriginList.remove(QString());
+
+    emit appBackendReady();
 }
 
 void ApplicationBackend::reload()
