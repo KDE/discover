@@ -8,7 +8,7 @@ Legend:
 -[MPM] Config GUI for confirmation dialogs (save on quit)
 -[MPM] Optional columns for installed and available versions in the Muon Package Manager
 -[MSC] Commercial app support. (See: software-center/db/update.py, backends/restfulclient.py)
--[MSC] Keep a cached copy of the rating stats in our config directory so ratings can be vied in offline mode.
+-[MSC] Keep a cached copy of the rating stats in our config directory so ratings can be viewed in offline mode.
 -[MSC] Review submittal (Use KIO::storedHttpPost)
 -[MSC] Add an on-hover magnifying graphic to the screenshot preview
 -[MSC] Include addons size in Total size calculation

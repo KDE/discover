@@ -26,6 +26,7 @@
 #include <KGlobal>
 #include <KIO/Job>
 #include <KLocale>
+#include <KStandardDirs>
 #include <KTemporaryFile>
 #include <KUrl>
 
@@ -68,10 +69,11 @@ ReviewsBackend::ReviewsBackend(QObject *parent)
 {
     m_loginBackend = new UbuntuLoginBackend(this);
     connect(m_loginBackend, SIGNAL(connectionStateChanged()), SIGNAL(loginStateChanged()));
-    fetchRatings();
     m_oauthInterface = new QOAuth::Interface(this);
     m_oauthInterface->setConsumerKey(m_loginBackend->consumerKey());
     m_oauthInterface->setConsumerSecret(m_loginBackend->consumerSecret());
+
+    fetchRatings();
 }
 
 ReviewsBackend::~ReviewsBackend()
@@ -96,6 +98,10 @@ void ReviewsBackend::clearReviewCache()
 
 void ReviewsBackend::fetchRatings()
 {
+    // First, load our old ratings cache in case we don't have net connectivity
+    loadRatingsFromFile(KStandardDirs::locateLocal("data", "libmuon/ratings.txt"));
+
+    // Try to fetch the latest ratings from the internet
     KUrl ratingsUrl(m_serverBase % "review-stats/");
 
     if (m_ratingsFile) {
@@ -119,7 +125,12 @@ void ReviewsBackend::ratingsFetched(KJob *job)
         return;
     }
 
-    QFile file(m_ratingsFile->fileName());
+    loadRatingsFromFile(m_ratingsFile->fileName());
+}
+
+void ReviewsBackend::loadRatingsFromFile(const QString &fileName)
+{
+    QFile file(fileName);
     file.open(QIODevice::ReadOnly | QIODevice::Text);
 
     QJson::Parser parser;
@@ -130,6 +141,13 @@ void ReviewsBackend::ratingsFetched(KJob *job)
 
     if (!ok) {
         return;
+    }
+
+    // Replace old ratings cache
+    QString ratingsCache = KStandardDirs::locateLocal("data", "libmuon/ratings.txt", true);
+    if (fileName != ratingsCache) {
+        QFile::remove(ratingsCache);
+        QFile::copy(fileName, ratingsCache);
     }
 
     qDeleteAll(m_ratings);

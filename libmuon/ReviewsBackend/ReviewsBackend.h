@@ -74,6 +74,7 @@ private:
     QHash<KJob *, Application *> m_jobHash;
 
     void fetchRatings();
+    void loadRatingsFromFile(const QString &fileName);
     QString getLanguage();
     AbstractLoginBackend* m_loginBackend;
     QOAuth::Interface* m_oauthInterface;
