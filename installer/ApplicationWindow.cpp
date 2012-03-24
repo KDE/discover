@@ -32,6 +32,8 @@
 #include <KAction>
 #include <KActionCollection>
 #include <KIcon>
+#include <KPixmapSequence>
+#include <KPixmapSequenceOverlayPainter>
 #include <KService>
 #include <KToolInvocation>
 #include "kmessagewidget.h"
@@ -88,6 +90,16 @@ void ApplicationWindow::initGUI()
 
     m_viewStack = new QStackedWidget(leftWidget);
     m_viewStack->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+    // Busy widget
+    m_busyWidget = new QWidget(m_viewStack);
+    KPixmapSequenceOverlayPainter *busyWidget = new KPixmapSequenceOverlayPainter(m_busyWidget);
+    busyWidget->setSequence(KPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
+    busyWidget->setWidget(m_busyWidget);
+    busyWidget->start();
+
+    m_viewStack->addWidget(m_busyWidget);
+    m_viewStack->setCurrentWidget(m_busyWidget);
 
     m_mainWidget->addWidget(leftWidget);
     loadSplitterSizes();
@@ -418,6 +430,10 @@ void ApplicationWindow::changeView(const QModelIndex &index)
 
     m_viewStack->addWidget(view);
     m_viewStack->setCurrentWidget(view);
+    m_viewStack->removeWidget(m_busyWidget);
+
+    delete m_busyWidget;
+    m_busyWidget = nullptr;
 
     m_viewHash[index] = view;
 }

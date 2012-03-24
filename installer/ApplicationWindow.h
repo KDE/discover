@@ -35,6 +35,7 @@ class QTreeView;
 
 class KMessageWidget;
 class KService;
+class KVBox;
 
 class Application;
 class ApplicationBackend;
@@ -79,6 +80,7 @@ private:
     ApplicationBackend *m_appBackend;
     QSplitter *m_mainWidget;
     QStackedWidget *m_viewStack;
+    QWidget *m_busyWidget;
     ViewSwitcher *m_viewSwitcher;
     QStandardItemModel *m_viewModel;
     QHash<QModelIndex, QWidget *> m_viewHash;
