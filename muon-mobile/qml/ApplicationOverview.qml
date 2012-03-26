@@ -92,21 +92,19 @@ Item {
             asynchronous: true
             fillMode: Image.PreserveAspectFit
             
-            onStatusChanged: if(status==Image.Error) { source="kalgebra"}
+//             onStatusChanged: if(status==Image.Error) { source="image://icon/image-missing" }
         }
         
         states: [
             State { name: "thumbnail"
-//                 PropertyChanges { target: screenshot; anchors.right: overviewContents.left }
                 PropertyChanges { target: shadowItem; opacity: 0.1 }
-                PropertyChanges { target: shadow; width: overviewContents.x-x }
+                PropertyChanges { target: shadow; width: overviewContents.x-x-5 }
                 PropertyChanges { target: shadow; height: parent.height }
                 PropertyChanges { target: shadow; x: 0 }
-                PropertyChanges { target: shadow; y: 0 }
+                PropertyChanges { target: shadow; y: 5 }
                 PropertyChanges { target: screenshot; source: application.screenshotUrl(0) }
             },
             State { name: "full"
-//                 PropertyChanges { target: screenshot; anchors.right: appInfo.right }
                 PropertyChanges { target: shadowItem; opacity: 0.7 }
                 PropertyChanges { target: shadow; x: 0 }
                 PropertyChanges { target: shadow; y: 0 }
@@ -116,6 +114,7 @@ Item {
                 PropertyChanges { target: screenshot; source: application.screenshotUrl(1) }
             }
         ]
+        Behavior on y { NumberAnimation { easing.type: Easing.OutQuad; duration: 500 } }
         Behavior on width { NumberAnimation { easing.type: Easing.OutQuad; duration: 500 } }
         Behavior on height { NumberAnimation { easing.type: Easing.OutQuad; duration: 500 } }
         
