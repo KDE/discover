@@ -37,6 +37,7 @@ Item {
             }
             
             dataModel: ListModel {
+                ListElement { text: "KDE Workspace"; color: "#7777cc"; icon: "kde"; packageName: "kde" }
                 ListElement { text: "KAlgebra"; color: "#cc77cc"; icon: "kalgebra"; packageName: "kalgebra" }
                 ListElement { text: "Digikam"; color: "#9999ff"; icon: "digikam"; packageName: "digikam" }
                 ListElement { text: "Plasma"; color: "#bd9"; icon: "plasma"; packageName: "plasma" }
