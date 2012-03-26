@@ -6,6 +6,8 @@
     <file>qml/CategoryHeader.qml</file>
     <file>qml/ApplicationsListPage.qml</file>
     <file>qml/ApplicationPage.qml</file>
+    <file>qml/ReviewsView.qml</file>
+    <file>qml/ApplicationOverview.qml</file>
     <file>qml/ApplicationsList.qml</file>
     <file>qml/Breadcrumbs.qml</file>
     <file>qml/InstallApplicationButton.qml</file>
