@@ -37,10 +37,10 @@ DependsTab::DependsTab(QWidget *parent)
     m_name = i18nc("@title:tab", "Dependencies");
 
     m_comboBox = new KComboBox(this);
-    m_comboBox->insertItem(CurrentVersionType, i18nc("@item:inlistbox", "Dependencies of the Current Version"));
-    m_comboBox->insertItem(LatestVersionType,  i18nc("@item:inlistbox", "Dependencies of the Latest Version"));
-    m_comboBox->insertItem(ReverseDependsType, i18nc("@item:inlistbox", "Dependants (Reverse Dependencies)"));
-    m_comboBox->insertItem(VirtualDependsType, i18nc("@item:inlistbox", "Virtual Packages Provided"));
+    m_comboBox->addItem(i18nc("@item:inlistbox", "Dependencies of the Current Version"), CurrentVersionType);
+    m_comboBox->addItem(i18nc("@item:inlistbox", "Dependencies of the Latest Version"),  LatestVersionType);
+    m_comboBox->addItem(i18nc("@item:inlistbox", "Dependants (Reverse Dependencies)"), ReverseDependsType);
+    m_comboBox->addItem(i18nc("@item:inlistbox", "Virtual Packages Provided"), VirtualDependsType);
     connect(m_comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(populateDepends(int)));
     m_dependsBrowser = new KTextBrowser(this);
 
@@ -62,7 +62,9 @@ void DependsTab::populateDepends(int index)
 {
     m_dependsBrowser->setText(QString());
     QStringList list;
-    switch (index) {
+
+    int depType = m_comboBox->itemData(index).toInt();
+    switch (depType) {
     case CurrentVersionType:
         list = m_package->dependencyList(false);
         if (list.isEmpty()) {
