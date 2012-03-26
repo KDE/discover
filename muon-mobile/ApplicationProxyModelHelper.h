@@ -34,7 +34,6 @@ class ApplicationProxyModelHelper : public ApplicationProxyModel
         void setStateFilter_hack(int state);
         explicit ApplicationProxyModelHelper(QObject* parent = 0);
         
-        Q_SCRIPTABLE void sortModel();
         Q_SCRIPTABLE Application* applicationAt(int row);
         Q_SCRIPTABLE int stringToRole(const QByteArray& strRole) const;
         Q_SCRIPTABLE QByteArray roleToString(int role) const;
@@ -46,6 +45,7 @@ class ApplicationProxyModelHelper : public ApplicationProxyModel
 
     public slots:
         void init();
+        void sortModel();
 
     signals:
         void sortRoleChanged();

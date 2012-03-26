@@ -38,6 +38,9 @@ void ApplicationProxyModelHelper::init()
     
     if(!m_sortRoleString.isEmpty())
         setStringSortRole_hack(m_sortRoleString);
+    
+    connect(BackendsSingleton::self()->appsModel(), SIGNAL(modelReset()),
+            SLOT(sortModel()));
     sortModel();
 }
 
