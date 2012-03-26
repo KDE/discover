@@ -5,54 +5,26 @@ import org.kde.muon 1.0
 
 Item {
     id: appInfo
-    anchors.top: parent.top
-    anchors.left: parent.left
-    anchors.right: parent.right
-    height: Math.max(header.height+info.height+55, 100+ratings.height)
-    
-    QIconItem {
-        id: icon
-        anchors.top: parent.top
-        anchors.left: parent.left
-        width: 40
-        height: 40
-        
-        icon: application.icon
-    }
+    property QtObject application
     
     Column {
-        id: header
-        anchors.top: parent.top
-        anchors.left: icon.right
-        anchors.right: ratings.left
-        anchors.leftMargin: 5
-        spacing: 5
-        
-        Text {
-            text: application.name
-            width: parent.width
-            font.bold: true
-        }
-        Label {
-            text: application.comment
-            wrapMode: Text.WordWrap
-            width: parent.width
-        }
-    }
-    
-    Column {
-        id: ratings
+        id: overviewContents
         spacing: 10
-        anchors.top: installButton.bottom
-        anchors.right: parent.right
+        width: parent.width/3
+        anchors {
+            top: parent.top
+            right: parent.right
+            margins: 10
+        }
         
-        Rating { 
+        property QtObject ratingInstance: appInfo.application ? app.appBackend.reviewsBackend().ratingForApplication(appInfo.application) : null
+        Rating {
             anchors.horizontalCenter: parent.horizontalCenter
-            rating: app.appBackend.reviewsBackend().ratingForApplication(application).rating()
+            rating: overviewContents.ratingInstance.rating()
         }
         Label {
             anchors.horizontalCenter: parent.horizontalCenter
-            text: i18n("%1 reviews", app.appBackend.reviewsBackend().ratingForApplication(application).ratingCount())
+            text: i18n("%1 reviews", overviewContents.ratingInstance.ratingCount())
         }
         
         
@@ -81,60 +53,75 @@ Item {
                         application.license
             )
         }
+        
+        Label {
+            id: info
+            anchors {
+                left: parent.left
+                right: parent.right
+                margins: 5
+            }
+            wrapMode: Text.WordWrap
+            text: application.longDescription
+        }
     }
     
     ReviewDialog {
         id: reviewDialog
-        application: page.application
-        onAccepted: app.appBackend.reviewsBackend().submitReview(page.application, summary, review, rating)
+        application: appInfo.application
+        onAccepted: app.appBackend.reviewsBackend().submitReview(appInfo.application, summary, review, rating)
     }
     
-    Image {
-        id: screenshot
-        width: 200
-        anchors.top: parent.top
-        anchors.right: parent.right
-        
-        asynchronous: true
-        fillMode: Image.PreserveAspectFit
-        source: application.screenshotUrl(state == "thumbnail" ? 0 : 1)
+    Item {
+        id: shadow
         state: "thumbnail"
+        
+        Rectangle {
+            id: shadowItem
+            anchors.fill: parent
+            color: "black"
+            Behavior on opacity { NumberAnimation { duration: 1000 } }
+        }
+        
+        Image {
+            id: screenshot
+            anchors.centerIn: parent
+            height: sourceSize ? Math.min(parent.height, sourceSize.height) : parent.height
+            width: sourceSize ? Math.min(parent.width, sourceSize.width) : parent.width
+            
+            asynchronous: true
+            fillMode: Image.PreserveAspectFit
+            
+            onStatusChanged: if(status==Image.Error) { source="kalgebra"}
+        }
         
         states: [
             State { name: "thumbnail"
-                PropertyChanges { target: screenshot; height: icon.height+installButton.height }
+//                 PropertyChanges { target: screenshot; anchors.right: overviewContents.left }
+                PropertyChanges { target: shadowItem; opacity: 0.1 }
+                PropertyChanges { target: shadow; width: overviewContents.x-x }
+                PropertyChanges { target: shadow; height: parent.height }
+                PropertyChanges { target: shadow; x: 0 }
+                PropertyChanges { target: shadow; y: 0 }
+                PropertyChanges { target: screenshot; source: application.screenshotUrl(0) }
             },
             State { name: "full"
-                PropertyChanges { target: screenshot; height: Math.min(page.height, sourceSize.height) }
-                PropertyChanges { target: screenshot; width: Math.min(page.width, sourceSize.width) }
-                PropertyChanges { target: screenshot; z: 1 }
+//                 PropertyChanges { target: screenshot; anchors.right: appInfo.right }
+                PropertyChanges { target: shadowItem; opacity: 0.7 }
+                PropertyChanges { target: shadow; x: 0 }
+                PropertyChanges { target: shadow; y: 0 }
+                PropertyChanges { target: shadow; height: appInfo.height }
+                PropertyChanges { target: shadow; width: appInfo.width }
+                PropertyChanges { target: shadow; z: 0 }
+                PropertyChanges { target: screenshot; source: application.screenshotUrl(1) }
             }
         ]
-        
-        transitions: Transition {
-            NumberAnimation { properties: "height,width"; easing.type: Easing.InOutBack; duration: 500 }
-        }
+        Behavior on width { NumberAnimation { easing.type: Easing.OutQuad; duration: 500 } }
+        Behavior on height { NumberAnimation { easing.type: Easing.OutQuad; duration: 500 } }
         
         MouseArea {
-            anchors.fill: screenshot
-            onClicked: { screenshot.state= screenshot.state == "thumbnail" ? "full" : "thumbnail" }
+            anchors.fill: parent
+            onClicked: { shadow.state = shadow.state == "thumbnail" ? "full" : "thumbnail" }
         }
-    }
-    
-    InstallApplicationButton {
-        id: installButton
-        anchors.left: parent.left
-        anchors.top: header.bottom
-        application: page.application
-    }
-    
-    Label {
-        id: info
-        anchors.top: installButton.bottom
-        anchors.left: parent.left
-        anchors.right: ratings.left
-        anchors.margins: 5
-        wrapMode: Text.WordWrap
-        text: application.longDescription
     }
 }
