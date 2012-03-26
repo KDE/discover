@@ -133,7 +133,7 @@ void ReviewsModel::addReviews(Application* app, const QList<Review*>& reviews)
         return;
     qDebug() << "reviews arrived..." << m_lastPage << reviews.size();
     
-    beginInsertRows(QModelIndex(), rowCount(), rowCount()+reviews.size());
+    beginInsertRows(QModelIndex(), rowCount(), rowCount()+reviews.size()-1);
     m_reviews += reviews;
     endInsertRows();
 }
