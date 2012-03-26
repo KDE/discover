@@ -47,12 +47,14 @@ Item {
         buttons: Row {
             spacing: 5
             Button {
-                text: i18n("Submit")
+                text: i18n("Ok")
+                iconSource: "dialog-ok"
                 enabled: repository.text!=""
                 onClicked: newSourceDialog.accept()
             }
             Button {
                 text: i18n("Cancel")
+                iconSource: "dialog-cancel"
                 onClicked: newSourceDialog.reject()
             }
         }
