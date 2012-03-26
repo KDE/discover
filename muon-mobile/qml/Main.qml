@@ -4,6 +4,7 @@ import org.kde.plasma.components 0.1
 Item {
     id: window
     width: 800
+    state: "loading" //changed onAppBackendChanged
     property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
     property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
     property Component categoryComp: Qt.createComponent("qrc:/qml/CategoryPage.qml")
@@ -130,10 +131,13 @@ Item {
         }
     }
     
-    onStateChanged: { 
-        if(state=="loaded") {
+    Connections {
+        target: app
+        onAppBackendChanged: {
             connectionBox.init()
+            window.state = "loaded"
         }
+        onOpenApplicationInternal: contentItem.content.openApplication(app)
     }
     
     Item {

@@ -42,11 +42,17 @@ class MuonInstallerMainWindow : public MuonMainWindow
 
     public slots:
         void setBackend(QApt::Backend* b);
+        void openApplication(const QString& app);
+
+    private slots:
+        void triggerOpenApplication();
 
     signals:
         void appBackendChanged();
+        void openApplicationInternal(const QString& app);
 
     private:
+        QString m_appToBeOpened;
         QDeclarativeView* m_view;
 };
 

@@ -40,6 +40,9 @@ int main(int argc, char** argv)
     about.setProductName("muon/installer");
 
     KCmdLineArgs::init(argc, argv, &about);
+    KCmdLineOptions options;
+    options.add("application <name>", ki18n("Directly open the specified application by its package name."));
+    KCmdLineArgs::addCmdLineOptions( options );
 
     if (!KUniqueApplication::start()) {
         fprintf(stderr, "Software Center is already running!\n");
@@ -53,8 +56,11 @@ int main(int argc, char** argv)
     // Needed for KIcon compatibility w/ application icons from app-install-data
     KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
     app.disableSessionManagement();
-
+    KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
+    
     MuonInstallerMainWindow *mainWindow = new MuonInstallerMainWindow;
+    if(args->isSet("application"))
+        mainWindow->openApplication(args->getOption("application"));
     mainWindow->show();
 
     return app.exec();

@@ -113,8 +113,6 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
         qDebug() << "errors: " << m_view->errors();
     }
     Q_ASSERT(m_view->errors().isEmpty());
-    if (m_view->rootObject())
-        m_view->rootObject()->setProperty("state", "loading");
 
     setCentralWidget(m_view);
 }
@@ -127,7 +125,7 @@ void MuonInstallerMainWindow::setBackend(QApt::Backend* b)
     BackendsSingleton::self()->initialize(b, this);
     appBackend(); //here we force the retrieval of the appbackend to get ratings
     emit appBackendChanged();
-    m_view->rootObject()->setProperty("state", "loaded");
+    connect(appBackend(), SIGNAL(appBackendReady()), SLOT(triggerOpenApplication()));
 }
 
 ApplicationBackend* MuonInstallerMainWindow::appBackend() const
@@ -148,4 +146,19 @@ bool MuonInstallerMainWindow::openUrl(const QUrl& url)
 QAction* MuonInstallerMainWindow::getAction(const QString& name)
 {
     return actionCollection()->action(name);
+}
+
+void MuonInstallerMainWindow::openApplication(const QString& app)
+{
+    m_appToBeOpened = app;
+    triggerOpenApplication();
+}
+
+void MuonInstallerMainWindow::triggerOpenApplication()
+{
+    if(m_view->rootObject()->property("state").toString()!="loading") {
+        QObject* obj = m_view->rootObject();
+        emit openApplicationInternal(m_appToBeOpened);
+        m_appToBeOpened.clear();
+    }
 }

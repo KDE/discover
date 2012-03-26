@@ -11,6 +11,12 @@ Item {
         Navigation.openApplicationList(pageStack, "edit-find", i18n("Search..."), null, text)
     }
     
+    function openApplication(packageName) {
+        var application = app.appBackend.applicationByPackageName(packageName)
+        console.log("opening "+packageName + "..."+application)
+        Navigation.openApplication(pageStack, application)
+    }
+    
     Page {
         id: mainPage
         
@@ -69,10 +75,7 @@ Item {
                     
                     MouseArea {
                         anchors.fill: parent
-                        onClicked: {
-                            var application = app.appBackend.applicationByPackageName(modelData.packageName)
-                            Navigation.openApplication(pageStack, application)
-                        }
+                        onClicked: openApplication(modelData.packageName)
                     }
             }
         }
