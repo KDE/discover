@@ -145,11 +145,6 @@ bool MuonInstallerMainWindow::openUrl(const QUrl& url)
     return QDesktopServices::openUrl(url);
 }
 
-void MuonInstallerMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap& args)
-{
-    MuonMainWindow::errorOccurred(code, args);
-}
-
 QAction* MuonInstallerMainWindow::getAction(const QString& name)
 {
     return actionCollection()->action(name);

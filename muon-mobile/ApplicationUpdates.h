@@ -39,7 +39,6 @@ class ApplicationUpdates : public QObject
         void updatesFinnished();
         
     public slots:
-        void errorOccurred(QApt::ErrorCode code, const QVariantMap& args );
         void workerEvent(QApt::WorkerEvent);
 };
 

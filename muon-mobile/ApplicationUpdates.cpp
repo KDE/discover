@@ -29,7 +29,7 @@
 ApplicationUpdates::ApplicationUpdates(QObject* parent): QObject(parent)
 {
     QApt::Backend* backend = BackendsSingleton::self()->backend();
-    connect(backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)),
+    connect(backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)), BackendsSingleton::self()->mainWindow(),
             SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
     connect(backend, SIGNAL(commitProgress(QString,int)),
             SIGNAL(progress(QString,int)));
@@ -55,11 +55,6 @@ void ApplicationUpdates::upgradeAll()
         p->setInstall();
     }
     backend->commitChanges();
-}
-
-void ApplicationUpdates::errorOccurred(QApt::ErrorCode code, const QVariantMap& args)
-{
-    BackendsSingleton::self()->mainWindow()->errorOccurred(code, args);
 }
 
 void ApplicationUpdates::workerEvent(QApt::WorkerEvent e)

@@ -38,7 +38,6 @@ class MuonInstallerMainWindow : public MuonMainWindow
         ApplicationBackend* appBackend() const;
         QApt::Backend* backend() const;
         Q_SCRIPTABLE bool openUrl(const QUrl& url);
-        virtual void errorOccurred(QApt::ErrorCode code, const QVariantMap& args);
         Q_SCRIPTABLE QAction* getAction(const QString& name);
 
     public slots:
