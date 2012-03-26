@@ -6,6 +6,7 @@ import org.kde.muon 1.0
 Item {
     property alias application: transactions.application
     property bool canHide: parent.state=="idle"
+    property bool preferUpgrade: false
     width: 100
     height: 30
     
@@ -21,12 +22,18 @@ Item {
         
         onClicked: {
             switch(state) {
+                case "willupgrade":
                 case "willinstall": app.appBackend.installApplication(application); break;
                 case "willremove":  app.appBackend.removeApplication(application); break;
             }
         }
         
         states: [
+            State {
+                name: "willupgrade"
+                when: application.canUpgrade && preferUpgrade
+                PropertyChanges { target: button;  text: i18n("Upgrade") }
+            },
             State {
                 name: "willinstall"
                 when: !application.isInstalled

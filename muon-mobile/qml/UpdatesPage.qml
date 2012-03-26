@@ -54,6 +54,7 @@ Item
         sortRole: "origin"
         sortOrder: 0
         visible: apps.count>0 && page.state!="updating"
+        preferUpgrade: true
     }
     Label {
         id: librariesUpdatesLabel

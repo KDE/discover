@@ -5,6 +5,7 @@ import org.kde.muon 1.0
 import "navigation.js" as Navigation
 
 Item {
+    id: parentItem
     property QtObject category
     property Item stack
     property alias sortRole: apps.stringSortRole
@@ -14,6 +15,7 @@ Item {
     property alias count: view.count
     property alias header: view.header
     property alias section: view.section
+    property bool preferUpgrade: false
 
     function searchFor(text) { apps.search(text) }
     function stringToRole(role) { return apps.stringToRole(role) }
@@ -97,6 +99,7 @@ Item {
                         x: ratingsItem.x
                         opacity: isVisible ? 1 : 0
                         application: model.application
+                        preferUpgrade: parentItem.preferUpgrade
                         
                         Behavior on opacity {
                             NumberAnimation {
