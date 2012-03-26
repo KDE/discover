@@ -30,7 +30,7 @@
 #include "modeltest.h"
 #include <Application.h>
 
-QTEST_MAIN( ApplicationModelTest )
+QTEST_KDEMAIN_CORE( ApplicationModelTest )
 
 ApplicationModelTest::ApplicationModelTest()
 {
