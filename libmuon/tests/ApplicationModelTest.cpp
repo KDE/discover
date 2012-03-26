@@ -25,6 +25,7 @@
 #include <QStringList>
 #include <LibQApt/Backend>
 #include <KProtocolManager>
+#include <qtest_kde.h>
 
 #include "modeltest.h"
 #include <Application.h>
@@ -45,6 +46,7 @@ ApplicationModelTest::ApplicationModelTest()
     
     m_appBackend = new ApplicationBackend(this);
     m_appBackend->setBackend(m_backend);
+    QTest::kWaitForSignal(m_appBackend, SIGNAL(appBackendReady()), 1000);
 }
 
 ApplicationModelTest::~ApplicationModelTest()
