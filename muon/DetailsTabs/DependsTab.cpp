@@ -38,10 +38,10 @@ DependsTab::DependsTab(QWidget *parent)
     m_name = i18nc("@title:tab", "Dependencies");
 
     m_comboBox = new KComboBox(this);
-    m_comboBox->addItem(i18nc("@item:inlistbox", "Dependencies of the Current Version"));
-    m_comboBox->addItem(i18nc("@item:inlistbox", "Dependencies of the Latest Version"));
-    m_comboBox->addItem(i18nc("@item:inlistbox", "Dependants (Reverse Dependencies)"));
-    m_comboBox->addItem(i18nc("@item:inlistbox", "Virtual Packages Provided"));
+    m_comboBox->insertItem(CurrentVersionType, i18nc("@item:inlistbox", "Dependencies of the Current Version"));
+    m_comboBox->insertItem(LatestVersionType,  i18nc("@item:inlistbox", "Dependencies of the Latest Version"));
+    m_comboBox->insertItem(ReverseDependsType, i18nc("@item:inlistbox", "Dependants (Reverse Dependencies)"));
+    m_comboBox->insertItem(VirtualDependsType, i18nc("@item:inlistbox", "Virtual Packages Provided"));
     connect(m_comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(populateDepends(int)));
     m_dependsBrowser = new KTextBrowser(this);
 
@@ -64,28 +64,28 @@ void DependsTab::populateDepends(int index)
     m_dependsBrowser->setText(QString());
     QStringList list;
     switch (index) {
-    case 0:
+    case CurrentVersionType:
         list = m_package->dependencyList(false);
         if (list.isEmpty()) {
             m_dependsBrowser->append(i18nc("@label", "This package does not have any dependencies"));
             return;
         }
         break;
-    case 1:
+    case LatestVersionType:
         list = m_package->dependencyList(true);
         if (list.isEmpty()) {
             m_dependsBrowser->append(i18nc("@label", "This package does not have any dependencies"));
             return;
         }
         break;
-    case 2:
+    case ReverseDependsType:
         list = m_package->requiredByList();
         if (list.isEmpty()) {
             m_dependsBrowser->append(i18nc("@label", "This package has no dependents. (Nothing depends on it.)"));
             return;
         }
         break;
-    case 3:
+    case VirtualDependsType:
         list = m_package->providesList();
         if (list.isEmpty()) {
             m_dependsBrowser->append(i18nc("@label", "This package does not provide any virtual packages"));

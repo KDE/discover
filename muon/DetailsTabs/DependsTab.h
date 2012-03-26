@@ -32,6 +32,13 @@ class DependsTab : public DetailsTab
 public:
     explicit DependsTab(QWidget *parent = 0);
 
+    enum DepTypes {
+        CurrentVersionType = 0,
+        LatestVersionType,
+        ReverseDependsType,
+        VirtualDependsType
+    };
+
 private:
     KComboBox *m_comboBox;
     KTextBrowser *m_dependsBrowser;
