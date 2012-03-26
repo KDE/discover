@@ -9,7 +9,27 @@ CommonDialog {
     id: reviewDialog
     onClickedOutside: reviewDialog.close()
     titleText: i18n("Reviewing %1", application.name)
-    buttons: Button { text: i18n("Submit"); onClicked: reviewDialog.accept() }
+    buttons: Item {
+        height: 30
+        width: 200
+        Button {
+            id: submitButton
+            height: parent.height
+            anchors.left: parent.left
+            anchors.margins: 10
+            width: 100
+            text: i18n("Submit"); onClicked: reviewDialog.accept()
+            iconSource: "dialog-accept"
+        }
+        Button {
+            height: parent.height
+            width: 100
+            anchors.margins: 10
+            anchors.right: parent.right; anchors.left: submitButton.right
+            iconSource: "dialog-close"
+            text: i18n("Close"); onClicked: reviewDialog.reject()
+        }
+    }
     
     content: Item {
         height: 200

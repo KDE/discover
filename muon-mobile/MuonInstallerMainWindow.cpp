@@ -157,7 +157,6 @@ void MuonInstallerMainWindow::openApplication(const QString& app)
 void MuonInstallerMainWindow::triggerOpenApplication()
 {
     if(m_view->rootObject()->property("state").toString()!="loading") {
-        QObject* obj = m_view->rootObject();
         emit openApplicationInternal(m_appToBeOpened);
         m_appToBeOpened.clear();
     }
