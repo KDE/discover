@@ -75,6 +75,7 @@ void ApplicationModel::setBackend(ApplicationBackend* backend)
         disconnect(m_appBackend->reviewsBackend(), SIGNAL(ratingsReady()), this, SLOT(allDataChanged()));
         disconnect(m_appBackend, SIGNAL(reloadStarted()), this, SLOT(reloadStarted()));
         disconnect(m_appBackend, SIGNAL(reloadFinished()), this, SLOT(reloadFinished()));
+        disconnect(m_appBackend, SIGNAL(appBackendReady()), this, SLOT(reloadApplications()));
     }
 
     m_appBackend = backend;
@@ -89,6 +90,7 @@ void ApplicationModel::setBackend(ApplicationBackend* backend)
     connect(m_appBackend->reviewsBackend(), SIGNAL(ratingsReady()), SLOT(allDataChanged()));
     connect(m_appBackend, SIGNAL(reloadStarted()), this, SLOT(reloadStarted()));
     connect(m_appBackend, SIGNAL(reloadFinished()), this, SLOT(reloadFinished()));
+    connect(m_appBackend, SIGNAL(appBackendReady()), this, SLOT(reloadApplications()));
 }
 
 void ApplicationModel::reloadStarted()

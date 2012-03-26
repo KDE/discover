@@ -68,7 +68,6 @@ public:
     Application *applicationAt(const QModelIndex &index) const;
     Transaction *transactionAt(const QModelIndex &index) const;
     QVector<Application *> applications() const;
-    void reloadApplications();
     
 private:
     ApplicationBackend *m_appBackend;
@@ -78,6 +77,7 @@ private:
 public Q_SLOTS:
     void updateTransactionProgress(Transaction *transaction, int progress);
     void allDataChanged();
+    void reloadApplications();
 
 private Q_SLOTS:
     void workerEvent(QApt::WorkerEvent event, Transaction *trans);
