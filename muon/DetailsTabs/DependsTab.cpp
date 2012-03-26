@@ -25,7 +25,6 @@
 
 // KDE includes
 #include <KComboBox>
-#include <KDebug>
 #include <KLocale>
 #include <KTextBrowser>
 
