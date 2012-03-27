@@ -19,8 +19,11 @@
  ***************************************************************************/
 
 #include "ApplicationAddonsModel.h"
+#include "BackendsSingleton.h"
 #include <Application.h>
+#include <ApplicationBackend.h>
 #include <QDebug>
+#include <LibQApt/Backend>
 
 ApplicationAddonsModel::ApplicationAddonsModel(QObject* parent)
     : QAbstractListModel(parent)
@@ -28,13 +31,9 @@ ApplicationAddonsModel::ApplicationAddonsModel(QObject* parent)
 
 void ApplicationAddonsModel::setApplication(Application* app)
 {
-    m_state.clear();
+    discardChanges();
     m_app = app;
     m_addons = m_app->addons();
-    
-    foreach(QApt::Package* p, m_addons) {
-        m_state.insert(p, p->isInstalled());
-    }
     
     QHash<int, QByteArray> roles = roleNames();
     roles.insert(Qt::CheckStateRole, "checked");
@@ -68,3 +67,27 @@ QVariant ApplicationAddonsModel::data(const QModelIndex& index, int role) const
     return QVariant();
 }
 
+void ApplicationAddonsModel::discardChanges()
+{
+    m_state.clear();
+}
+
+void ApplicationAddonsModel::applyChanges()
+{
+    ApplicationBackend* appBackend = BackendsSingleton::self()->applicationBackend();
+    QApt::Backend* backend = BackendsSingleton::self()->backend();
+    QHash<QApt::Package*, QApt::Package::State> newStates;
+    QMap<QString, bool>::const_iterator it = m_state.constBegin(), itEnd = m_state.constEnd();
+    for(; it!=itEnd; ++it) {
+        QApt::Package* package = backend->package(it.key());
+        QApt::Package::State state = it.value() ? QApt::Package::ToInstall : QApt::Package::ToRemove;
+        newStates.insert(package, state);
+    }
+    
+    appBackend->installApplication(m_app, newStates);
+}
+
+void ApplicationAddonsModel::changeState(const QString& packageName, bool installed)
+{
+    m_state.insert(packageName, installed);
+}

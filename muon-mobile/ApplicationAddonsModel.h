@@ -38,11 +38,16 @@ class ApplicationAddonsModel : public QAbstractListModel
         
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
         virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
+        
+    public slots:
+        void discardChanges();
+        void applyChanges();
+        void changeState(const QString& packageName, bool installed);
 
     private:
         Application* m_app;
         QList<QApt::Package*> m_addons;
-        QMap<QApt::Package*, bool> m_state;
+        QMap<QString, bool> m_state;
 };
 
 #endif // APPLICATIONADDONSMODEL_H
