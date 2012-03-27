@@ -10,7 +10,7 @@ Item {
     Column {
         id: overviewContents
         spacing: 10
-        width: parent.width/3
+        width: 2*parent.width/3
         anchors {
             top: parent.top
             right: parent.right
