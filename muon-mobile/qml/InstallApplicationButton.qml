@@ -7,6 +7,7 @@ Item {
     property alias application: transactions.application
     property bool canHide: parent.state=="idle"
     property bool preferUpgrade: false
+    property alias isInstalling: transactions.isActive
     width: 100
     height: 30
     

@@ -4,24 +4,34 @@ import org.kde.muon 1.0
 
 ListView
 {
-    property alias application: model.application
-    model: ApplicationAddonsModel { id: model }
+    id: addonsView
+    property alias application: addonsModel.application
+    property alias addonsHaveChanged: addonsModel.hasChanges
+    property bool isInstalling: false
+    model: ApplicationAddonsModel { id: addonsModel }
     
-    anchors.leftMargin: scroll.width
+    anchors {
+        rightMargin: scroll.width
+        topMargin: -100
+    }
     delegate: Row {
         height: 50
         width: 50
         spacing: 10
         CheckBox {
+            enabled: !isInstalling
             anchors.verticalCenter: parent.verticalCenter
             checked: model.checked
+            onClicked: addonsModel.changeState(display, checked)
         }
         Image {
             source: "image://icon/applications-other"
             height: parent.height; width: height
             smooth: true
+            opacity: isInstalling ? 0.3 : 1
         }
         Label {
+            enabled: !isInstalling
             anchors.verticalCenter: parent.verticalCenter
             text: i18n("<qt>%1<br/><em>%2</em></qt>", display, toolTip)
         }
@@ -37,6 +47,29 @@ ListView
             top: parent.top
             right: parent.right
             bottom: parent.bottom
+        }
+    }
+    Row {
+        id: buttonsRow
+        layoutDirection: Qt.RightToLeft
+        anchors {
+            top: parent.top
+            right: parent.right
+        }
+        spacing: 5
+        height: 100
+        
+        Button {
+            iconSource: "dialog-ok"
+            text: i18n("Apply")
+            onClicked: addonsModel.applyChanges()
+            enabled: addonsModel.hasChanges && !isInstalling
+        }
+        Button {
+            iconSource: "document-revert"
+            text: i18n("Discard")
+            enabled: addonsModel.hasChanges && !isInstalling
+            onClicked: addonsModel.discardChanges()
         }
     }
     clip: true

@@ -85,6 +85,7 @@ Page
             left: parent.left
             right: parent.right
             bottom: parent.bottom
+            margins: 10
         }
         
         ApplicationOverview {
@@ -95,6 +96,7 @@ Page
         AddonsView {
             id:addonsView
             application: page.application
+            isInstalling: installButton.isInstalling
         }
         
         ReviewsView {
