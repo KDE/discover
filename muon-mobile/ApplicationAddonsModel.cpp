@@ -39,6 +39,7 @@ void ApplicationAddonsModel::setApplication(Application* app)
     QHash<int, QByteArray> roles = roleNames();
     roles.insert(Qt::CheckStateRole, "checked");
     setRoleNames(roles);
+    emit applicationChanged();
 }
 
 Application* ApplicationAddonsModel::application() const
@@ -109,4 +110,9 @@ void ApplicationAddonsModel::changeState(const QString& packageName, bool instal
 bool ApplicationAddonsModel::hasChanges() const
 {
     return !m_state.isEmpty();
+}
+
+bool ApplicationAddonsModel::isEmpty() const
+{
+    return m_addons.isEmpty();
 }

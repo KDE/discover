@@ -8,9 +8,13 @@ ListView
     property alias application: addonsModel.application
     property alias addonsHaveChanged: addonsModel.hasChanges
     property bool isInstalling: false
-    property bool isEmpty: addonsView.count == 0
-    model: ApplicationAddonsModel { id: addonsModel }
+    property alias isEmpty: addonsModel.isEmpty
     
+    ApplicationAddonsModel { id: addonsModel }
+    
+    model: addonsModel
+    
+    clip: true
     delegate: Row {
         height: 50
         width: 50
@@ -47,27 +51,28 @@ ListView
         }
     }
     
-    header: Row {
+    header: addonsModel.hasChanges && !isInstalling ? buttonsRow : null
+    
+    Component {
         id: buttonsRow
-        layoutDirection: Qt.RightToLeft
-        anchors {
-            top: parent.top
-            right: parent.right
-        }
-        spacing: 5
-        
-        Button {
-            iconSource: "dialog-ok"
-            text: i18n("Apply")
-            onClicked: addonsModel.applyChanges()
-            enabled: addonsModel.hasChanges && !isInstalling
-        }
-        Button {
-            iconSource: "document-revert"
-            text: i18n("Discard")
-            enabled: addonsModel.hasChanges && !isInstalling
-            onClicked: addonsModel.discardChanges()
+        Row {
+            layoutDirection: Qt.RightToLeft
+            anchors {
+                top: parent.top
+                right: parent.right
+            }
+            spacing: 5
+            
+            Button {
+                iconSource: "dialog-ok"
+                text: i18n("Apply")
+                onClicked: addonsModel.applyChanges()
+            }
+            Button {
+                iconSource: "document-revert"
+                text: i18n("Discard")
+                onClicked: addonsModel.discardChanges()
+            }
         }
     }
-    clip: true
 }

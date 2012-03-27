@@ -31,6 +31,7 @@ class ApplicationAddonsModel : public QAbstractListModel
     Q_OBJECT
     Q_PROPERTY(Application* application READ application WRITE setApplication)
     Q_PROPERTY(bool hasChanges READ hasChanges NOTIFY stateChanged)
+    Q_PROPERTY(bool isEmpty READ isEmpty NOTIFY applicationChanged)
     public:
         explicit ApplicationAddonsModel(QObject* parent = 0);
         
@@ -40,6 +41,7 @@ class ApplicationAddonsModel : public QAbstractListModel
         
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
         virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
+        bool isEmpty() const;
 
     public slots:
         void discardChanges();
@@ -48,6 +50,7 @@ class ApplicationAddonsModel : public QAbstractListModel
 
     signals:
         void stateChanged();
+        void applicationChanged();
 
     private:
         Application* m_app;
