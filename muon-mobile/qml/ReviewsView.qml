@@ -43,8 +43,11 @@ Item
             
             Label {
                 visible: app.appBackend.reviewsBackend().hasCredentials
-                anchors.right: parent.right
-                anchors.bottom: parent.bottom
+                anchors {
+                    right: parent.right
+                    bottom: parent.bottom
+                    bottomMargin: -5
+                }
                 opacity: delegateArea.containsMouse ? 1 : 0.2
                 
                 text: i18n("<em>Useful? <a href='true'>Yes</a>/<a href='false'>No</a></em>")
