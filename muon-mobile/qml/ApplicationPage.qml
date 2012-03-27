@@ -70,6 +70,7 @@ Page
         TabButton {
             tab: addonsView
             text: i18n("Add-ons")
+            visible: !addonsView.isEmpty //TODO: probably should be enabled: instead
         }
         TabButton {
             tab: reviewsView

@@ -8,6 +8,7 @@ ListView
     property alias application: addonsModel.application
     property alias addonsHaveChanged: addonsModel.hasChanges
     property bool isInstalling: false
+    property bool isEmpty: addonsView.count == 0
     model: ApplicationAddonsModel { id: addonsModel }
     
     delegate: Row {
