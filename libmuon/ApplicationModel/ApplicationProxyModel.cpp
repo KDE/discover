@@ -267,7 +267,7 @@ bool ApplicationProxyModel::lessThan(const QModelIndex &left, const QModelIndex 
         // This is expensive for very large datasets. It takes about 3 seconds with 30,000 packages
         // The order in m_packages is based on relevancy when returned by m_backend->search()
         // Use this order to determine less than
-        return m_packages.indexOf(leftPackage) > m_packages.indexOf(rightPackage);
+        return m_packages.indexOf(leftPackage) < m_packages.indexOf(rightPackage);
     }
     QVariant leftValue = left.data(sortRole());
     QVariant rightValue = right.data(sortRole());

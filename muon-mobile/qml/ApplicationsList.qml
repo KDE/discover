@@ -17,7 +17,7 @@ Item {
     property alias section: view.section
     property bool preferUpgrade: false
 
-    function searchFor(text) { apps.search(text) }
+    function searchFor(text) { apps.search(text); apps.sortOrder=Qt.AscendingOrder }
     function stringToRole(role) { return apps.stringToRole(role) }
     function roleToString(role) { return apps.roleToString(role) }
     function applicationAt(i) { return apps.applicationAt(i) }
