@@ -27,6 +27,7 @@
 
 ApplicationAddonsModel::ApplicationAddonsModel(QObject* parent)
     : QAbstractListModel(parent)
+    , m_app(0)
 {}
 
 void ApplicationAddonsModel::setApplication(Application* app)
@@ -60,8 +61,15 @@ QVariant ApplicationAddonsModel::data(const QModelIndex& index, int role) const
             return m_addons[index.row()]->name();
         case Qt::ToolTipRole:
             return m_addons[index.row()]->shortDescription();
-        case Qt::CheckStateRole:
-            return m_addons[index.row()]->isInstalled();
+        case Qt::CheckStateRole: {
+            QApt::Package* p = m_addons[index.row()];
+            QMap<QString, bool>::const_iterator it = m_state.constFind(p->name());
+            if(it==m_state.constEnd()) {
+                return p->isInstalled();
+            } else {
+                return it.value();
+            }
+        }
     }
     
     return QVariant();
@@ -70,6 +78,7 @@ QVariant ApplicationAddonsModel::data(const QModelIndex& index, int role) const
 void ApplicationAddonsModel::discardChanges()
 {
     m_state.clear();
+    emit stateChanged();
 }
 
 void ApplicationAddonsModel::applyChanges()
@@ -89,5 +98,15 @@ void ApplicationAddonsModel::applyChanges()
 
 void ApplicationAddonsModel::changeState(const QString& packageName, bool installed)
 {
-    m_state.insert(packageName, installed);
+    bool restored = BackendsSingleton::self()->backend()->package(packageName)->isInstalled()==installed;
+    if(restored)
+        m_state.remove(packageName);
+    else
+        m_state.insert(packageName, installed);
+    emit stateChanged();
+}
+
+bool ApplicationAddonsModel::hasChanges() const
+{
+    return !m_state.isEmpty();
 }

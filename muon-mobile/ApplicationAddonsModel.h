@@ -30,19 +30,24 @@ class ApplicationAddonsModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(Application* application READ application WRITE setApplication)
+    Q_PROPERTY(bool hasChanges READ hasChanges NOTIFY stateChanged)
     public:
         explicit ApplicationAddonsModel(QObject* parent = 0);
         
         Application* application() const;
         void setApplication(Application* app);
+        bool hasChanges() const;
         
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
         virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
-        
+
     public slots:
         void discardChanges();
         void applyChanges();
         void changeState(const QString& packageName, bool installed);
+
+    signals:
+        void stateChanged();
 
     private:
         Application* m_app;
