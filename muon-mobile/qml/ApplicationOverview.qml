@@ -92,7 +92,7 @@ Item {
             asynchronous: true
             fillMode: Image.PreserveAspectFit
             
-//             onStatusChanged: if(status==Image.Error) { source="image://icon/image-missing" }
+            onStatusChanged: if(status==Image.Error) { source="image://icon/image-missing" }
         }
         
         states: [
