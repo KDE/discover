@@ -76,7 +76,7 @@ public:
     QString license();
     Q_SCRIPTABLE QUrl screenshotUrl() { return screenshotUrl(QApt::Screenshot); }
     KUrl screenshotUrl(QApt::ScreenshotType type);
-    Q_SCRIPTABLE QApt::PackageList addons();
+    QApt::PackageList addons();
     bool isValid() const;
     bool isTechnical() const;
     int usageCount();

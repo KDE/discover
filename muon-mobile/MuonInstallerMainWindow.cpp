@@ -58,6 +58,7 @@
 #include "ReviewsModel.h"
 #include "ApplicationUpdates.h"
 #include "OriginsBackend.h"
+#include "ApplicationAddonsModel.h"
 
 QML_DECLARE_TYPE(ApplicationBackend)
 
@@ -80,6 +81,7 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     qmlRegisterType<LaunchListModel>("org.kde.muon", 1, 0, "LaunchListModel");
     qmlRegisterType<TransactionsModel>("org.kde.muon", 1, 0, "TransactionsModel");
     qmlRegisterType<OriginsBackend>("org.kde.muon", 1, 0, "OriginsBackend");
+    qmlRegisterType<ApplicationAddonsModel>("org.kde.muon", 1, 0, "ApplicationAddonsModel");
     qmlRegisterType<ReviewsBackend>();
     qmlRegisterType<Rating>();
     qmlRegisterType<Application>();

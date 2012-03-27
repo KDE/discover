@@ -68,7 +68,7 @@ Page
             text: i18n("Overview")
         }
         TabButton {
-            tab: holaLabel
+            tab: addonsView
             text: i18n("Add-ons")
         }
         TabButton {
@@ -92,7 +92,11 @@ Page
             application: page.application
         }
         
-        Label { id: holaLabel; text: "hola" }
+        AddonsView {
+            id:addonsView
+            application: page.application
+        }
+        
         ReviewsView {
             id: reviewsView
             application: page.application

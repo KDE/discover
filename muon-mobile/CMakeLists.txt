@@ -9,7 +9,9 @@ set(muon_installer_qml_SRCS
     BackendsSingleton.cpp
     ReviewsModel.cpp
     ApplicationUpdates.cpp
-    OriginsBackend.cpp)
+    OriginsBackend.cpp
+    ApplicationAddonsModel.cpp
+)
 
 qt4_add_resources(muon_installer_qml_SRCS resources.qrc)
 
