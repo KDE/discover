@@ -13,10 +13,12 @@ Row {
     
     Component {
         id: del
-        QIconItem {
+        Image {
             height: view.height; width: view.height
-            icon: "rating"
+            source: "image://icon/rating"
             opacity: (max/5*index)>rating ? 0.4 : 1
+            smooth: true
+            cache: true
 
             MouseArea {
                 enabled: editable
