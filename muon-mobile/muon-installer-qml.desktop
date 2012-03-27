@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Muon Software Center
+Exec=muon-installer-qml
+Icon=applications-other
+Type=Application
+X-DocPath=muon/index.html
+GenericName=Software Center
+Categories=Qt;KDE;System;

@@ -26,3 +26,5 @@ target_link_libraries(muon-installer-qml muonprivate
                                      ${QT_QTDECLARATIVE_LIBRARY})
 
 install(TARGETS muon-installer-qml ${INSTALL_TARGETS_DEFAULT_ARGS} )
+
+install(PROGRAMS muon-installer-qml.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
