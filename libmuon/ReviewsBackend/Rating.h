@@ -39,6 +39,8 @@ public:
     // 0.0 - 5.0 ranged rating multiplied by two and rounded for KRating*
     Q_SCRIPTABLE int rating() const;
     int ratingPoints() const;
+    // Returns a dampened rating calculated with the Wilson Score Interval algorithm
+    double sortableRating() const;
 
 private:
     QString m_packageName;
@@ -46,6 +48,7 @@ private:
     quint64 m_ratingCount;
     int m_rating;
     int m_ratingPoints;
+    double m_sortableRating;
 };
 
 #endif

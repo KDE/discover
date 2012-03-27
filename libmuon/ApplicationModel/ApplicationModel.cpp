@@ -47,6 +47,7 @@ ApplicationModel::ApplicationModel(QObject *parent)
     roles[StatusRole] = "status";
     roles[RatingRole] = "rating";
     roles[RatingPointsRole] = "ratingPoints";
+    roles[SortableRatingRole] = "sortableRating";
     roles[ActiveRole] = "active";
     roles[ProgressRole] = "progress";
     roles[ProgressTextRole] = "progressText";
@@ -145,6 +146,10 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role) const
         case RatingPointsRole: {
             Rating *rating = m_appBackend->reviewsBackend()->ratingForApplication(m_apps.at(index.row()));
             return rating ? rating->ratingPoints() : -1;
+        }
+        case SortableRatingRole: {
+            Rating *rating = m_appBackend->reviewsBackend()->ratingForApplication(m_apps.at(index.row()));
+            return rating ? rating->sortableRating() : -1;
         }
         case ActiveRole: {
             Transaction *transaction = transactionAt(index);

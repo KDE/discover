@@ -64,7 +64,7 @@ Page {
                                 apps.sortRole=apps.stringToRole(role)
                                 apps.sortOrder=sorting
                             }
-                            checked: apps.roleToString(apps.sortRole)==role
+                            checked: apps.sortRole==role
                         }
                     }
                 }
@@ -80,6 +80,11 @@ Page {
         },
         QtObject {
             property string display: i18n("Rating")
+            property string role: "sortableRating"
+            property variant sorting: Qt.DescendingOrder
+        },
+        QtObject {
+            property string display: i18n("Buzz")
             property string role: "ratingPoints"
             property variant sorting: Qt.DescendingOrder
         },
