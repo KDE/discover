@@ -10,10 +10,6 @@ ListView
     property bool isInstalling: false
     model: ApplicationAddonsModel { id: addonsModel }
     
-    anchors {
-        rightMargin: scroll.width
-        topMargin: -100
-    }
     delegate: Row {
         height: 50
         width: 50
@@ -49,7 +45,8 @@ ListView
             bottom: parent.bottom
         }
     }
-    Row {
+    
+    header: Row {
         id: buttonsRow
         layoutDirection: Qt.RightToLeft
         anchors {
@@ -57,7 +54,6 @@ ListView
             right: parent.right
         }
         spacing: 5
-        height: 100
         
         Button {
             iconSource: "dialog-ok"
