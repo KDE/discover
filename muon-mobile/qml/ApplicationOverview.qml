@@ -86,8 +86,8 @@ Item {
         Image {
             id: screenshot
             anchors.centerIn: parent
-            height: sourceSize ? Math.min(parent.height, sourceSize.height) : parent.height
-            width: sourceSize ? Math.min(parent.width, sourceSize.width) : parent.width
+            height: sourceSize ? Math.min(parent.height-5, sourceSize.height) : parent.height
+            width: sourceSize ? Math.min(parent.width-5, sourceSize.width) : parent.width
             
             asynchronous: true
             fillMode: Image.PreserveAspectFit
