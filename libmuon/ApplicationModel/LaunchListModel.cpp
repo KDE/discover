@@ -60,7 +60,8 @@ void LaunchListModel::resetApplications()
             items += item;
         }
     }
-    invisibleRootItem()->appendRows(items);
+    if(!items.isEmpty())
+        invisibleRootItem()->appendRows(items);
 }
 
 void LaunchListModel::invokeApplication(int row) const
