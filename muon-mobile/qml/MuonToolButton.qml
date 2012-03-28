@@ -5,13 +5,13 @@ import org.kde.qtextracomponents 0.1
 ToolButton
 {
     id: button
-    property string icon
+    property alias icon: iconItem.icon
     property alias text: labelItem.text
     property alias overlayText: overlayTextItem.text
     width: height+(labelItem.text=="" ? 0 : labelItem.width)
     anchors.margins: 5
     
-    Image {
+    QIconItem {
         id: iconItem
         anchors {
             top: parent.top
@@ -21,7 +21,6 @@ ToolButton
         }
         width: height
         smooth: true
-        source: "image://icon/"+button.icon
     }
     
     Label {
