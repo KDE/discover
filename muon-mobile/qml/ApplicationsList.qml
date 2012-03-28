@@ -6,7 +6,6 @@ import "navigation.js" as Navigation
 
 Item {
     id: parentItem
-    property QtObject category
     property Item stack
     property alias sortRole: apps.stringSortRole
     property alias sortOrder: apps.sortOrder
@@ -15,6 +14,7 @@ Item {
     property alias count: view.count
     property alias header: view.header
     property alias section: view.section
+    property alias category: apps.filteredCategory
     property bool preferUpgrade: false
 
     function searchFor(text) { apps.search(text); apps.sortOrder=Qt.AscendingOrder }
@@ -115,13 +115,8 @@ Item {
             id: apps
             stringSortRole: "ratingPoints"
             sortOrder: Qt.DescendingOrder
-            dynamicSortFilter: true
             
-            Component.onCompleted: {
-                if(category)
-                    setFiltersFromCategory(category)
-                sortModel()
-            }
+            Component.onCompleted: sortModel()
         }
     }
     

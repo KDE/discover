@@ -10,12 +10,12 @@ Item {
     property Component categoryComp: Qt.createComponent("qrc:/qml/CategoryPage.qml")
     
     //toplevels
-    property Component welcomeComp: Qt.createComponent("qrc:/qml/WelcomePage.qml")
+//     property Component welcomeComp: Qt.createComponent("qrc:/qml/WelcomePage.qml")
     property Component browsingComp: Qt.createComponent("qrc:/qml/BrowsingPage.qml")
     property Component installedComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
     property Component updatesComp: Qt.createComponent("qrc:/qml/UpdatesPage.qml")
     property Component sourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
-    property Component currentTopLevel: welcomeComp
+    property Component currentTopLevel: browsingComp
     
     onCurrentTopLevelChanged: {
         if(currentTopLevel.status==Component.Error) {
@@ -56,7 +56,7 @@ Item {
                 left: parent.left
             }
             property list<TopLevelPageData> sectionsModel: [
-                TopLevelPageData { icon: "tools-wizard"; text: i18n("Get Software"); component: welcomeComp },
+//                 TopLevelPageData { icon: "tools-wizard"; text: i18n("Get Software"); component: welcomeComp },
                 TopLevelPageData { icon: "category-show-all"; text: i18n("Browse"); component: browsingComp },
                 TopLevelPageData { icon: "applications-other"; text: i18n("Installed"); component: installedComp },
                 TopLevelPageData {

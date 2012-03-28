@@ -105,6 +105,8 @@ Page {
         CategoryHeader {
             id: categoryHeader
             category: page.category
+            height: 100
+            width: parent.width
         }
     }
     
