@@ -22,7 +22,7 @@ Item {
         
         ListModel {
             id: noCategoryModel
-            ListElement { text: "KDE Workspace"; color: "red"; icon: "kde"; packageName: "" }
+            ListElement { text: "KDE Workspace"; color: "#3333ff"; icon: "kde"; packageName: "" }
             ListElement { text: "KAlgebra"; color: "#cc77cc"; icon: "kalgebra"; packageName: "kalgebra" }
             ListElement { text: "Digikam"; color: "#9999ff"; icon: "digikam"; packageName: "digikam" }
             ListElement { text: "Plasma"; color: "#bd9"; icon: "plasma"; packageName: "" }
@@ -39,7 +39,9 @@ Item {
                     anchors.fill: parent
                     radius: 10
                     color: modelData.color
-                    opacity: 0.5
+                    opacity: infoArea.containsMouse ? 0.7 : 0.3
+                    
+                    Behavior on opacity { NumberAnimation { duration: 500 } }
                 }
                 
                 Label {
@@ -65,9 +67,11 @@ Item {
                 }
                 
                 MouseArea {
+                    id: infoArea
                     enabled: modelData.packageName!=""
                     anchors.fill: parent
                     onClicked: openApplication(modelData.packageName)
+                    hoverEnabled: true
                 }
         }
     }
