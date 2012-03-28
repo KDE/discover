@@ -71,7 +71,10 @@ Item {
                 TopLevelPageData { icon: "tools-wizard"; text: i18n("Get Software"); component: welcomeComp },
                 TopLevelPageData { icon: "category-show-all"; text: i18n("Browse"); component: browsingComp },
                 TopLevelPageData { icon: "applications-other"; text: i18n("Installed"); component: installedComp },
-                TopLevelPageData { icon: "system-software-update"; text: i18n("Updates"); component: updatesComp },
+                TopLevelPageData {
+                                icon: "system-software-update"; text: i18n("Updates"); component: updatesComp
+                                overlay: app.appBackend.updatesCount==0 ? "" : app.appBackend.updatesCount
+                },
                 TopLevelPageData { icon: "document-import"; text: i18n("Sources"); component: sourcesComp }
             ]
             Repeater {
@@ -81,6 +84,7 @@ Item {
                     height: toplevelsRow.height
                     text: modelData.text
                     icon: modelData.icon
+                    overlayText: modelData.overlay
                     checked: currentTopLevel==modelData.component
                     onClicked: currentTopLevel=modelData.component
                 }
