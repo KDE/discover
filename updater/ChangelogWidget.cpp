@@ -154,13 +154,16 @@ void ChangelogWidget::stopPendingJobs()
 
 void ChangelogWidget::changelogFetched(KJob *job)
 {
-    if (!m_package)
+    if (!m_package) {
+        m_jobHash.remove(job);
         return;
+    }
 
     // Work around http://bugreports.qt.nokia.com/browse/QTBUG-2533 by forcibly resetting the CharFormat
     QTextCharFormat format;
     m_changelogBrowser->setCurrentCharFormat(format);
     QFile changelogFile(m_jobHash[job]);
+    m_jobHash.remove(job);
 
     if (job->error() || !changelogFile.open(QFile::ReadOnly)) {
         if (m_package->origin() == QLatin1String("Ubuntu")) {
@@ -182,10 +185,8 @@ void ChangelogWidget::changelogFetched(KJob *job)
     m_busyWidget->stop();
     if (!m_show) {
         animatedHide();
-        return;
     }
 
-    m_jobHash.remove(job);
     changelogFile.remove();
 }
 
