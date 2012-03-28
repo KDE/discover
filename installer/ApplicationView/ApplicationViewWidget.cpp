@@ -21,14 +21,13 @@
 #include "ApplicationViewWidget.h"
 
 // Qt includes
-#include <QApplication>
+#include <QtCore/QStringBuilder>
+#include <QtGui/QLabel>
 #include <QtGui/QTreeView>
 #include <QtGui/QVBoxLayout>
 
 // KDE includes
-#include <KPixmapSequence>
-#include <KPixmapSequenceOverlayPainter>
-#include <KDebug>
+#include <KComboBox>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -58,6 +57,26 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
     m_appModel->setBackend(m_appBackend);
     m_proxyModel = new ApplicationProxyModel(this);
     m_proxyModel->setSourceModel(m_appModel);
+    m_proxyModel->setSortRole(ApplicationModel::SortableRatingRole);
+
+    QWidget *header = new QWidget(this);
+    QHBoxLayout *headerLayout = new QHBoxLayout(header);
+    headerLayout->setMargin(0);
+    header->setLayout(headerLayout);
+
+    m_headerIcon = new QLabel(header);
+    m_headerLabel = new QLabel(header);
+    m_sortCombo = new KComboBox(header);
+    m_sortCombo->addItem(i18nc("@item:inlistbox", "By Name"), ApplicationModel::NameRole);
+    m_sortCombo->addItem(i18nc("@item:inlistbox", "By Top Rated"), ApplicationModel::SortableRatingRole);
+    m_sortCombo->setCurrentIndex(1); // Top Rated index
+    connect(m_sortCombo, SIGNAL(currentIndexChanged(int)),
+            this, SLOT(sortComboChanged(int)));
+
+    headerLayout->addWidget(m_headerIcon);
+    headerLayout->addWidget(m_headerLabel);
+    headerLayout->addStretch();
+    headerLayout->addWidget(m_sortCombo);
 
     m_treeView = new QTreeView(this);
     m_treeView->setAlternatingRowColors(true);
@@ -71,6 +90,7 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
     connect(m_proxyModel, SIGNAL(invalidated()),
             m_delegate, SLOT(invalidate()));
 
+    m_layout->addWidget(header);
     m_layout->addWidget(m_treeView);
 
     connect(m_delegate, SIGNAL(infoButtonClicked(Application*)),
@@ -102,11 +122,13 @@ void ApplicationViewWidget::setBackend(QApt::Backend *backend)
 void ApplicationViewWidget::setTitle(const QString &title)
 {
     m_crumb->setText(title);
+    m_headerLabel->setText(QLatin1String("<h2>") % title % "</h2>");
 }
 
 void ApplicationViewWidget::setIcon(const QIcon &icon)
 {
     m_crumb->setIcon(icon);
+    m_headerIcon->setPixmap(icon.pixmap(24,24));
 }
 
 void ApplicationViewWidget::setStateFilter(QApt::Package::State state)
@@ -166,6 +188,11 @@ void ApplicationViewWidget::onSubViewDestroyed()
 {
     m_currentPair.first = 0;
     m_currentPair.second = 0;
+}
+
+void ApplicationViewWidget::sortComboChanged(int index)
+{
+    m_proxyModel->setSortRole(m_sortCombo->itemData(index).toInt());
 }
 
 #include "ApplicationViewWidget.moc"

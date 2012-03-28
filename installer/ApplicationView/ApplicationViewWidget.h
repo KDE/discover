@@ -28,9 +28,10 @@
 #include "AbstractViewBase.h"
 
 class QIcon;
+class QLabel;
 class QTreeView;
 
-class KPixmapSequenceOverlayPainter;
+class KComboBox;
 
 class Application;
 class ApplicationBackend;
@@ -60,14 +61,17 @@ private:
     ApplicationProxyModel *m_proxyModel;
     QPair<AbstractViewBase *, Application *> m_currentPair;
 
+    QLabel *m_headerIcon;
+    QLabel *m_headerLabel;
+    KComboBox *m_sortCombo;
     QTreeView *m_treeView;
     ApplicationDelegate *m_delegate;
-    KPixmapSequenceOverlayPainter *m_busyWidget;
     ApplicationDetailsView *m_detailsView;
 
 private Q_SLOTS:
     void infoButtonClicked(Application *app);
     void onSubViewDestroyed();
+    void sortComboChanged(int index);
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
