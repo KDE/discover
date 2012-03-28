@@ -84,6 +84,7 @@ Item {
         ListView {
             id: top1
             clip: true
+            interactive: false
             anchors {
                 margins: 5
                 top: info.bottom
@@ -123,6 +124,7 @@ Item {
         ListView {
             id: top2
             clip: true
+            interactive: false
             anchors {
                 margins: 5
                 top: info.bottom
