@@ -56,7 +56,7 @@ ApplicationModel::ApplicationModel(QObject *parent)
     roles[UsageCountRole] = "usageCount";
     roles[PopConRole] = "popcon";
     roles[OriginRole] = "origin";
-    roles[OriginRole] = "untranslatedName";
+    roles[UntranslatedNameRole] = "untranslatedName";
     setRoleNames(roles);
 }
 
