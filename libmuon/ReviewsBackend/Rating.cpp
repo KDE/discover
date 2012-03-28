@@ -21,6 +21,7 @@
 #include "Rating.h"
 #include <QStringList>
 #include <QDebug>
+#include <qmath.h>
 
 // Converted from a Ruby example, returns an inverse normal distribution
 double pnormaldist(double qn)
@@ -36,15 +37,15 @@ double pnormaldist(double qn)
     double w1 = qn;
     if(qn > 0.5)
         w1 = 1.0 - w1;
-    double w3 = -log(4.0 * w1 * (1.0 - w1));
+    double w3 = -qLn(4.0 * w1 * (1.0 - w1));
     w1 = b[0];
 
     for(int i = 1; i < 11; i++)
-        w1 += b[i] * pow(w3,i);
+        w1 += b[i] * qPow(w3,i);
 
     if(qn > 0.5)
-        return sqrt(w1*w3);
-    return -sqrt(w1*w3);
+        return qSqrt(w1*w3);
+    return -qSqrt(w1*w3);
 }
 
 double wilson_score(int pos, int n, double power = 0.2)
@@ -54,7 +55,7 @@ double wilson_score(int pos, int n, double power = 0.2)
 
     double z = pnormaldist(1 - power / 2);
     double phat = 1.0 * pos / n;
-    return (phat + z * z / (2 * n) - z * sqrt(
+    return (phat + z * z / (2 * n) - z * qSqrt(
             (phat * (1 - phat) + z * z / (4 * n)) / n)) / (1 + z * z / n);
 }
 
