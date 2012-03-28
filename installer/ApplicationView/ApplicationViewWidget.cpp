@@ -69,6 +69,8 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
     m_sortCombo = new KComboBox(header);
     m_sortCombo->addItem(i18nc("@item:inlistbox", "By Name"), ApplicationModel::NameRole);
     m_sortCombo->addItem(i18nc("@item:inlistbox", "By Top Rated"), ApplicationModel::SortableRatingRole);
+    m_sortCombo->addItem(i18nc("@item:inlistbox", "By Most Buzz"), ApplicationModel::RatingPointsRole);
+    m_sortCombo->addItem(i18nc("@item:inlistbox", "By Most Used"), ApplicationModel::PopConRole);
     m_sortCombo->setCurrentIndex(1); // Top Rated index
     connect(m_sortCombo, SIGNAL(currentIndexChanged(int)),
             this, SLOT(sortComboChanged(int)));
@@ -194,7 +196,7 @@ void ApplicationViewWidget::sortComboChanged(int index)
 {
     m_proxyModel->setSortRole(m_sortCombo->itemData(index).toInt());
 
-    switch (index) {
+    switch (m_proxyModel->sortRole()) {
     case ApplicationModel::SortableRatingRole:
     case ApplicationModel::RatingPointsRole:
     case ApplicationModel::PopConRole:
