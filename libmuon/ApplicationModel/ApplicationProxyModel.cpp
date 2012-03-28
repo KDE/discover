@@ -33,6 +33,7 @@ ApplicationProxyModel::ApplicationProxyModel(QObject *parent)
     , m_stateFilter((QApt::Package::State)0)
     , m_sortByRelevancy(false)
     , m_showTechnical(false)
+    , m_filteredCategory(0)
 {
 }
 
@@ -83,9 +84,16 @@ void ApplicationProxyModel::setOriginFilter(const QString &origin)
 
 void ApplicationProxyModel::setFiltersFromCategory(Category *category)
 {
-    m_andFilters = category->andFilters();
-    m_orFilters = category->orFilters();
-    m_notFilters = category->notFilters();
+    if(category) {
+        m_andFilters = category->andFilters();
+        m_orFilters = category->orFilters();
+        m_notFilters = category->notFilters();
+    } else {
+        m_andFilters.clear();
+        m_orFilters.clear();
+        m_notFilters.clear();
+    }
+    m_filteredCategory = category;
     invalidate();
     emit invalidated();
 }
@@ -288,4 +296,9 @@ bool ApplicationProxyModel::lessThan(const QModelIndex &left, const QModelIndex 
 QApt::Package::State ApplicationProxyModel::stateFilter() const
 {
     return m_stateFilter;
+}
+
+Category* ApplicationProxyModel::filteredCategory() const
+{
+    return m_filteredCategory;
 }

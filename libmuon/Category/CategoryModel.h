@@ -30,6 +30,7 @@ class Category;
 class MUONPRIVATE_EXPORT CategoryModel : public QStandardItemModel
 {
     Q_OBJECT
+    Q_PROPERTY(Category* displayedCategory READ displayedCategory WRITE setSubcategories)
     public:
         enum CategoryModelRole {
             CategoryTypeRole = Qt::UserRole + 1,
@@ -54,10 +55,12 @@ class MUONPRIVATE_EXPORT CategoryModel : public QStandardItemModel
         Q_SCRIPTABLE Category* categoryForIndex(int row);
 
         Q_SCRIPTABLE void populateCategories(const QString& rootName);
-        Q_SCRIPTABLE void setSubcategories(Category* c);
+        void setSubcategories(Category* c);
+        Category* displayedCategory() const;
 
     private:
         QList<Category*> m_categoryList;
+        Category* m_currentCategory;
 };
 
 #endif // CATEGORYMODEL_H

@@ -41,6 +41,7 @@ class MUONPRIVATE_EXPORT ApplicationProxyModel : public QSortFilterProxyModel
     Q_OBJECT
     Q_PROPERTY(QAbstractItemModel* sourceModel READ sourceModel WRITE setSourceModel)
     Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical WRITE setShouldShowTechnical)
+    Q_PROPERTY(Category* filteredCategory READ filteredCategory WRITE setFiltersFromCategory)
 public:
     explicit ApplicationProxyModel(QObject *parent=0);
     ~ApplicationProxyModel();
@@ -50,12 +51,13 @@ public:
     void setStateFilter(QApt::Package::State state);
     QApt::Package::State stateFilter() const;
     void setOriginFilter(const QString &origin);
-    Q_SCRIPTABLE void setFiltersFromCategory(Category *category);
+    void setFiltersFromCategory(Category *category);
     void setShouldShowTechnical(bool show);
     bool shouldShowTechnical() const;
 
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
     Application *applicationAt(const QModelIndex &index) const;
+    Category* filteredCategory() const;
 
 protected:
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
@@ -73,6 +75,7 @@ private:
 
     bool m_sortByRelevancy;
     bool m_showTechnical;
+    Category* m_filteredCategory;
 
 public Q_SLOTS:
     void refreshSearch();

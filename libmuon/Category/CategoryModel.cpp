@@ -40,6 +40,7 @@ CategoryModel::CategoryModel(QObject* parent)
 void CategoryModel::setCategories(const QList<Category *> &categoryList,
                                   const QString &rootName)
 {
+    invisibleRootItem()->removeRows(0, invisibleRootItem()->rowCount());
     qDeleteAll(m_categoryList);
     m_categoryList = categoryList;
     foreach (Category *category, m_categoryList) {
@@ -74,5 +75,14 @@ void CategoryModel::populateCategories(const QString& rootName)
 
 void CategoryModel::setSubcategories(Category* c)
 {
-    setCategories(c->subCategories(), c->name());
+    m_currentCategory = c;
+    if(c)
+        setCategories(c->subCategories(), c->name());
+    else
+        populateCategories(QString());
+}
+
+Category* CategoryModel::displayedCategory() const
+{
+    return m_currentCategory;
 }
