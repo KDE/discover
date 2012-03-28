@@ -92,7 +92,7 @@ Item {
                 checkable: true
                 checked: progressBox.visible
                 onClicked: progressBox.visible=!progressBox.visible
-                visible: progressBox.active
+                enabled: progressBox.active
 
                 ProgressView {
                     id: progressBox
