@@ -57,7 +57,7 @@ Item {
                 QIconItem {
                     id: iconItem
                     anchors {
-                        margins: 20
+                        margins: 5
                         left: parent.left
                         top: parent.top
                         bottom: parent.bottom
