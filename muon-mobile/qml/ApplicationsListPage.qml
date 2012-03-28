@@ -61,7 +61,7 @@ Page {
                             width: buttons.width
                             text: display
                             onClicked: {
-                                apps.sortRole=apps.stringToRole(role)
+                                apps.sortRole=role
                                 apps.sortOrder=sorting
                             }
                             checked: apps.sortRole==role
@@ -89,8 +89,13 @@ Page {
             property variant sorting: Qt.DescendingOrder
         },
         QtObject {
-            property string display: i18n("Popcon")
+            property string display: i18n("Popularity")
             property string role: "popcon"
+            property variant sorting: Qt.DescendingOrder
+        },
+        QtObject {
+            property string display: i18n("Origin")
+            property string role: "origin"
             property variant sorting: Qt.DescendingOrder
         }//,
 //         QtObject {
