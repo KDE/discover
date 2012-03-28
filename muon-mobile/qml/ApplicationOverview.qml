@@ -38,7 +38,7 @@ Item {
         
         Button {
             anchors.horizontalCenter: parent.horizontalCenter
-            visible: application.isInstalled
+            visible: application.isInstalled && app.appBackend.reviewsBackend().hasCredentials
             text: i18n("Review")
             onClicked: reviewDialog.open()
         }
