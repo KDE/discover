@@ -50,6 +50,7 @@ ApplicationBackend::ApplicationBackend(QObject *parent)
     m_watcher = new QFutureWatcher<QVector<Application*> >(this);
     connect(m_watcher, SIGNAL(finished()), this, SLOT(setApplications()));
     connect(this, SIGNAL(reloadFinished()), SIGNAL(updatesCountChanged()));
+    connect(this, SIGNAL(appBackendReady()), SIGNAL(updatesCountChanged()));
 }
 
 ApplicationBackend::~ApplicationBackend()
