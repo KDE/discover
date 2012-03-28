@@ -3,14 +3,12 @@ import org.kde.plasma.components 0.1
 
 Item {
     id: window
-    width: 800
     state: "loading" //changed onAppBackendChanged
     property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
     property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
     property Component categoryComp: Qt.createComponent("qrc:/qml/CategoryPage.qml")
     
     //toplevels
-//     property Component welcomeComp: Qt.createComponent("qrc:/qml/WelcomePage.qml")
     property Component browsingComp: Qt.createComponent("qrc:/qml/BrowsingPage.qml")
     property Component installedComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
     property Component updatesComp: Qt.createComponent("qrc:/qml/UpdatesPage.qml")

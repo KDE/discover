@@ -140,10 +140,11 @@ Page {
         }
         delegate: ListItem {
                     width: top1.width
+                    height: 30
                     QIconItem {
                         id: iconItem
                         anchors { left: parent.left; verticalCenter: parent.verticalCenter }
-                        height: parent.height*0.8
+                        height: parent.height*0.9
                         width: height
                         icon: model["icon"]
                     }
@@ -164,7 +165,7 @@ Page {
         id: top2
         clip: true
         interactive: false
-        height: Math.min(250, parent.height/2)
+        height: Math.min(200, parent.height/2)
         anchors {
             right: parent.right
             bottom: parent.bottom
@@ -184,10 +185,11 @@ Page {
         }
         delegate: ListItem {
                     width: top1.width
+                    height: 30
                     QIconItem {
                         id: iconItem
                         anchors { left: parent.left; verticalCenter: parent.verticalCenter }
-                        height: parent.height*0.8
+                        height: parent.height*0.9
                         width: height
                         icon: model["icon"]
                     }

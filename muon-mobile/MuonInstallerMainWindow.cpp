@@ -164,3 +164,8 @@ void MuonInstallerMainWindow::triggerOpenApplication()
         m_appToBeOpened.clear();
     }
 }
+
+QSize MuonInstallerMainWindow::sizeHint() const
+{
+    return QSize(800, 800);
+}
