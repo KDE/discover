@@ -230,6 +230,7 @@ void MainWindow::errorOccurred(QApt::ErrorCode error, const QVariantMap &args)
 void MainWindow::reload()
 {
     m_canExit = false;
+    m_changelogWidget->stopPendingJobs();
 
     disconnect(m_updaterWidget, SIGNAL(packageChanged(QApt::Package*)),
                m_changelogWidget, SLOT(setPackage(QApt::Package*)));
