@@ -18,7 +18,6 @@
     <file>qml/RatingAndReviewsConnection.qml</file>
     <file>qml/ReviewDialog.qml</file>
     <file>qml/ProgressView.qml</file>
-    <file>qml/WelcomePage.qml</file>
     <file>qml/BrowsingPage.qml</file>
     <file>qml/InstalledPage.qml</file>
     <file>qml/Information.qml</file>
