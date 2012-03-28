@@ -66,6 +66,7 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     : MuonMainWindow()
 {
     m_view = new QDeclarativeView(this);
+    m_view->setBackgroundRole(QPalette::Background);
     
     KDeclarative kdeclarative;
     kdeclarative.setDeclarativeEngine(m_view->engine());

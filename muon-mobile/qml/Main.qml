@@ -40,19 +40,7 @@ Item {
         contentItem.content=obj
     }
     
-    //sebas's hack :D
-    Rectangle {
-        anchors.fill: parent
-        color: theme.backgroundColor
-        opacity: .2
-        
-        Rectangle {
-            anchors.fill: parent
-            color: theme.textColor
-        }
-    }
-    
-    ToolBar {
+    Item {
         id:toolbar
         z: 10
         height: 50
