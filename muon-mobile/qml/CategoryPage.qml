@@ -79,9 +79,11 @@ Page {
         }
     }
 
+    property int minCellWidth: 130
+    
     GridView {
         id: view
-        cellWidth: 130
+        cellWidth: view.width/Math.floor(view.width/minCellWidth)-1
         cellHeight: 100
         
         anchors {
