@@ -302,3 +302,8 @@ Category* ApplicationProxyModel::filteredCategory() const
 {
     return m_filteredCategory;
 }
+
+bool ApplicationProxyModel::sortingByRelevancy() const
+{
+    return m_sortByRelevancy;
+}

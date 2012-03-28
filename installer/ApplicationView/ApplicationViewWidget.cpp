@@ -114,7 +114,6 @@ void ApplicationViewWidget::setBackend(QApt::Backend *backend)
     m_backend = backend;
     m_proxyModel->setBackend(backend);
     m_treeView->setSortingEnabled(true);
-    m_treeView->sortByColumn(0, Qt::AscendingOrder);
 
     m_crumb->setAssociatedView(this);
 }
@@ -153,6 +152,7 @@ void ApplicationViewWidget::setShouldShowTechnical(bool show)
 
 void ApplicationViewWidget::search(const QString &text)
 {
+    m_proxyModel->sort(m_proxyModel->sortColumn(), Qt::AscendingOrder);
     m_proxyModel->search(text);
 }
 
@@ -193,6 +193,16 @@ void ApplicationViewWidget::onSubViewDestroyed()
 void ApplicationViewWidget::sortComboChanged(int index)
 {
     m_proxyModel->setSortRole(m_sortCombo->itemData(index).toInt());
+
+    switch (index) {
+    case ApplicationModel::SortableRatingRole:
+    case ApplicationModel::RatingPointsRole:
+    case ApplicationModel::PopConRole:
+        m_proxyModel->sort(m_proxyModel->sortColumn(), Qt::DescendingOrder);
+        break;
+    default:
+        m_proxyModel->sort(m_proxyModel->sortColumn(), Qt::AscendingOrder);
+    }
 }
 
 #include "ApplicationViewWidget.moc"
