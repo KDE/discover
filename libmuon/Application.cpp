@@ -31,6 +31,7 @@
 #include <KService>
 #include <KServiceGroup>
 #include <KDebug>
+#include <KToolInvocation>
 
 // QApt includes
 #include <LibQApt/Backend>
@@ -525,7 +526,7 @@ void Application::clearPackage()
     m_package = 0;
 }
 
-QVector<KService::Ptr> Application::executables()
+QVector<KService::Ptr> Application::executables() const
 {
     QVector<KService::Ptr> ret;
     foreach (const QString &desktop, m_package->installedFilesList().filter(".desktop")) {
@@ -545,4 +546,9 @@ QVector<KService::Ptr> Application::executables()
 void Application::emitInstallChanged()
 {
     emit installChanged();
+}
+
+void Application::invokeApplication() const
+{
+    KToolInvocation::startServiceByDesktopPath(executables().first()->desktopEntryPath());
 }

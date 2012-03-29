@@ -96,10 +96,12 @@ public:
     bool canUpgrade();
 
     void clearPackage();
-    QVector<KService::Ptr> executables();
+    QVector<KService::Ptr> executables() const;
     
     /** Used to trigger the installChanged signal from the ApplicationBackend */
     void emitInstallChanged();
+    
+    Q_SCRIPTABLE void invokeApplication() const;
 signals:
     void installChanged();
 
