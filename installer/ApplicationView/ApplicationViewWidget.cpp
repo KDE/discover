@@ -91,6 +91,8 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
 
     connect(m_proxyModel, SIGNAL(invalidated()),
             m_delegate, SLOT(invalidate()));
+    connect(m_proxyModel, SIGNAL(invalidated()),
+            this, SLOT(updateSortCombo()));
 
     m_layout->addWidget(header);
     m_layout->addWidget(m_treeView);
@@ -195,8 +197,14 @@ void ApplicationViewWidget::onSubViewDestroyed()
 void ApplicationViewWidget::sortComboChanged(int index)
 {
     m_proxyModel->setSortRole(m_sortCombo->itemData(index).toInt());
+    int sortRole = m_proxyModel->sortRole();
 
-    switch (m_proxyModel->sortRole()) {
+    if (m_proxyModel->isFilteringBySearch()) {
+        bool sortByRelevancy = (sortRole == -1) ? true : false;
+        m_proxyModel->setSortByRelevancy(sortByRelevancy);
+    }
+
+    switch (sortRole) {
     case ApplicationModel::SortableRatingRole:
     case ApplicationModel::RatingPointsRole:
     case ApplicationModel::PopConRole:
@@ -204,6 +212,22 @@ void ApplicationViewWidget::sortComboChanged(int index)
         break;
     default:
         m_proxyModel->sort(m_proxyModel->sortColumn(), Qt::AscendingOrder);
+    }
+}
+
+void ApplicationViewWidget::updateSortCombo()
+{
+    bool searching = m_proxyModel->isFilteringBySearch();
+    int searchItemIndex = m_sortCombo->findData(-1, Qt::UserRole);
+
+    if (searching && searchItemIndex == -1) {
+        // Add search combobox item for sort by search relevancy
+        m_sortCombo->addItem(i18nc("@item:inlistbox", "By Relevancy"), -1);
+        searchItemIndex = m_sortCombo->findData(-1, Qt::UserRole);
+        m_sortCombo->setCurrentIndex(searchItemIndex);
+    } else if (searchItemIndex != -1) {
+        // Remove relevancy item if we aren't searching anymore
+        m_sortCombo->removeItem(searchItemIndex);
     }
 }
 

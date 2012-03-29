@@ -54,7 +54,9 @@ public:
     void setFiltersFromCategory(Category *category);
     void setShouldShowTechnical(bool show);
     bool shouldShowTechnical() const;
+    void setSortByRelevancy(bool sort);
     bool sortingByRelevancy() const;
+    bool isFilteringBySearch() const;
 
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
     Application *applicationAt(const QModelIndex &index) const;
@@ -75,6 +77,7 @@ private:
     QList<QPair<FilterType, QString> > m_notFilters;
 
     bool m_sortByRelevancy;
+    bool m_filterBySearch;
     bool m_showTechnical;
     Category* m_filteredCategory;
 

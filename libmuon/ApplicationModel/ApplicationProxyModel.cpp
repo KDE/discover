@@ -32,6 +32,7 @@ ApplicationProxyModel::ApplicationProxyModel(QObject *parent)
     , m_backend(0)
     , m_stateFilter((QApt::Package::State)0)
     , m_sortByRelevancy(false)
+    , m_filterBySearch(false)
     , m_showTechnical(false)
     , m_filteredCategory(0)
 {
@@ -56,7 +57,9 @@ void ApplicationProxyModel::search(const QString &searchText)
         m_lastSearch = searchText;
         m_packages = m_backend->search(searchText);
         m_sortByRelevancy = true;
+        m_filterBySearch = true;
     } else {
+        m_filterBySearch = false;
         m_sortByRelevancy = false;
     }
     invalidate();
@@ -250,7 +253,7 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
         }
     }
 
-    if(m_sortByRelevancy) {
+    if(m_filterBySearch) {
         return m_packages.contains(application->package());
     }
 
@@ -303,7 +306,17 @@ Category* ApplicationProxyModel::filteredCategory() const
     return m_filteredCategory;
 }
 
+void ApplicationProxyModel::setSortByRelevancy(bool sort)
+{
+    m_sortByRelevancy = sort;
+}
+
 bool ApplicationProxyModel::sortingByRelevancy() const
 {
     return m_sortByRelevancy;
+}
+
+bool ApplicationProxyModel::isFilteringBySearch() const
+{
+    return m_filterBySearch;
 }

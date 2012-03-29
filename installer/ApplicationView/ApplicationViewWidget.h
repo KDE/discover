@@ -72,6 +72,7 @@ private Q_SLOTS:
     void infoButtonClicked(Application *app);
     void onSubViewDestroyed();
     void sortComboChanged(int index);
+    void updateSortCombo();
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
