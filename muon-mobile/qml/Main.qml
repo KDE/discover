@@ -27,15 +27,14 @@ Item {
         try {
             obj = currentTopLevel.createObject(contentItem)
             console.log("created "+currentTopLevel)
+            if(obj.init)
+                obj.init()
+            
+            contentItem.content=obj
         } catch (e) {
             console.log("error: "+e)
             console.log("comp error: "+currentTopLevel.errorString())
         }
-        
-        if(obj.init)
-            obj.init()
-        
-        contentItem.content=obj
     }
     
     Item {
@@ -55,7 +54,7 @@ Item {
             }
             property list<TopLevelPageData> sectionsModel: [
 //                 TopLevelPageData { icon: "tools-wizard"; text: i18n("Get Software"); component: welcomeComp },
-                TopLevelPageData { icon: "category-show-all"; text: i18n("Browse"); component: browsingComp },
+                TopLevelPageData { icon: "tools-wizard"; text: i18n("Get Software"); component: browsingComp },
                 TopLevelPageData { icon: "applications-other"; text: i18n("Installed"); component: installedComp },
                 TopLevelPageData {
                                 icon: "system-software-update"; text: i18n("Updates"); component: updatesComp
