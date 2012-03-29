@@ -53,7 +53,6 @@ Item {
                 left: parent.left
             }
             property list<TopLevelPageData> sectionsModel: [
-//                 TopLevelPageData { icon: "tools-wizard"; text: i18n("Get Software"); component: welcomeComp },
                 TopLevelPageData { icon: "tools-wizard"; text: i18n("Get Software"); component: browsingComp },
                 TopLevelPageData { icon: "applications-other"; text: i18n("Installed"); component: installedComp },
                 TopLevelPageData {
