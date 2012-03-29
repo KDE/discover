@@ -18,7 +18,7 @@ Item {
         id: info
         anchors.centerIn: parent
         height: parent.height-10
-        width: parent.width-10
+        width: parent.width
         
         ListModel {
             id: noCategoryModel
