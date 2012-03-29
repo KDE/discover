@@ -22,52 +22,62 @@ Page {
             id: field
             anchors {
                 verticalCenter: parent.verticalCenter
-                right: button.left
+                right: buttonsRow.left
                 left: parent.left
                 rightMargin: 5
             }
             placeholderText: i18n("Search...")
             onTextChanged: apps.searchFor(text)
         }
-        MuonToolButton {
-            id: button
-            icon: "view-sort-ascending"
-            anchors.verticalCenter: parent.verticalCenter
+        Row {
+            id: buttonsRow
             anchors.right: parent.right
-            checkable: true
-            checked: sortMenu.visible
-            onClicked: sortMenu.visible=!sortMenu.visible
-            
-            Item {
-                id: sortMenu
-                width: 100
-                height: buttons.height
-                anchors.right: parent.right
-                anchors.top: parent.bottom
-                visible: false
-                Rectangle {
-                    anchors.fill: parent
-                    radius: 10
-                    opacity: 0.4
-                }
+            MuonToolButton {
+                id: button
+                icon: "view-sort-ascending"
+                anchors.verticalCenter: parent.verticalCenter
                 
-                Column {
-                    id: buttons
-                    width: parent.width
+                checkable: true
+                checked: sortMenu.visible
+                onClicked: sortMenu.visible=!sortMenu.visible
+                
+                Item {
+                    id: sortMenu
+                    width: 100
+                    height: buttons.height
+                    anchors.right: parent.right
+                    anchors.top: parent.bottom
+                    visible: false
+                    Rectangle {
+                        anchors.fill: parent
+                        radius: 10
+                        opacity: 0.4
+                    }
                     
-                    Repeater {
-                        model: paramModel
-                        delegate: ToolButton {
-                            width: buttons.width
-                            text: display
-                            onClicked: {
-                                apps.sortRole=role
-                                apps.sortOrder=sorting
+                    Column {
+                        id: buttons
+                        width: parent.width
+                        
+                        Repeater {
+                            model: paramModel
+                            delegate: ToolButton {
+                                width: buttons.width
+                                text: display
+                                onClicked: {
+                                    apps.sortRole=role
+                                    apps.sortOrder=sorting
+                                }
+                                checked: apps.sortRole==role
                             }
-                            checked: apps.sortRole==role
                         }
                     }
                 }
+            }
+            
+            MuonToolButton {
+                id: listViewShown
+                checkable: true
+                icon: "tools-wizard"
             }
         }
     }
@@ -120,5 +130,19 @@ Page {
         anchors.fill: parent
         stack: page.pageStack
         header: parent.category==null ? null : categoryHeaderComponent
+        visible: !listViewShown.checked
+    }
+    
+    ApplicationsGrid {
+        anchors.fill: parent
+        stack: page.pageStack
+        header: parent.category==null ? null : categoryHeaderComponent
+        visible: !apps.visible
+        
+        category: apps.category
+        sortRole: apps.sortRole
+        sortOrder: apps.sortOrder
+        stateFilter: apps.stateFilter
+//         section: apps.section
     }
 }
