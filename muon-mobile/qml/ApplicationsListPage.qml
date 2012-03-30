@@ -1,5 +1,6 @@
 import QtQuick 1.0
 import org.kde.plasma.components 0.1
+import org.kde.qtextracomponents 0.1
 
 Page {
     id: page
@@ -11,60 +12,39 @@ Page {
     
     function searchFor(text) {
         apps.searchFor(text)
-//         field.text = text
-//         field.focus = true
     }
     
     tools: Row {
             id: buttonsRow
             width: 100
             visible: page.status == PageStatus.Active
-            MuonToolButton {
+            MuonMenuToolButton {
                 id: button
                 icon: "view-sort-ascending"
                 anchors.verticalCenter: parent.verticalCenter
-                
-                checkable: true
-                checked: sortMenu.visible
-                onClicked: sortMenu.visible=!sortMenu.visible
-                
-                Item {
-                    id: sortMenu
-                    width: 100
-                    height: buttons.height
-                    anchors.right: parent.right
-                    anchors.top: parent.bottom
-                    visible: false
-                    Rectangle {
-                        anchors.fill: parent
-                        radius: 10
-                        opacity: 0.4
+                model: paramModel
+                delegate: ToolButton {
+                    width: parent.width
+                    text: display
+                    onClicked: {
+                        apps.sortRole=role
+                        apps.sortOrder=sorting
                     }
-                    
-                    Column {
-                        id: buttons
-                        width: parent.width
-                        
-                        Repeater {
-                            model: paramModel
-                            delegate: ToolButton {
-                                width: buttons.width
-                                text: display
-                                onClicked: {
-                                    apps.sortRole=role
-                                    apps.sortOrder=sorting
-                                }
-                                checked: apps.sortRole==role
-                            }
-                        }
-                    }
+                    checked: apps.sortRole==role
                 }
             }
             
-            MuonToolButton {
+            MuonMenuToolButton {
                 id: listViewShown
                 checkable: true
                 icon: "tools-wizard"
+                model: ["list", "grid1", "grid2"]
+                delegate: ToolButton {
+                    width: parent.width
+                    text: modelData
+                    onClicked: page.state=modelData
+                    checked: apps.state==modelData
+                }
             }
         }
     
@@ -131,4 +111,19 @@ Page {
         stateFilter: apps.stateFilter
 //         section: apps.section
     }
+    
+    states: [
+        State {
+            name: "list"
+            PropertyChanges { target: apps; visible: true }
+        },
+        State {
+            name: "grid1"
+            PropertyChanges { target: apps; visible: false }
+        },
+        State {
+            name: "grid2"
+            PropertyChanges { target: apps; visible: false }
+        }
+    ]
 }

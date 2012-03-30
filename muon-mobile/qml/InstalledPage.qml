@@ -58,9 +58,7 @@ Item {
         visible: tools!=null
         
         Behavior on width {
-            PropertyAnimation { 
-                duration: 250
-            }
+            PropertyAnimation { duration: 250 }
         }
     }
     

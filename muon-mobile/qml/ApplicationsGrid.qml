@@ -42,20 +42,6 @@ Item {
                 width: view.cellWidth-5
                 height: view.cellHeight
                 property real contHeight: view.cellHeight*0.7
-//                 Image {
-//                     id: icon
-//                     width: parent.width; height: contHeight
-//                     source: model.application.screenshotUrl(1)
-//                     asynchronous: true
-//                     cache: true
-//                     smooth: true
-//                     fillMode: Image.PreserveAspectFit
-//                     anchors {
-//                         horizontalCenter: parent.horizontalCenter
-//                         top: parent.top
-//                     }
-//                 }
-                
                 QIconItem {
                     id: icon
                     anchors {
@@ -78,52 +64,11 @@ Item {
                     elide: Text.ElideRight
                     text: name
                 }
-//                 Label {
-//                     id: commentLabel
-//                     anchors.bottom: icon.bottom
-//                     anchors.left: icon.right
-//                     anchors.leftMargin: 5
-//                     text: "<em>"+comment+"</em>"
-//                     opacity: delegateArea.containsMouse ? 1 : 0.2
-//                 }
-//                 Rating {
-//                     id: ratingsItem
-//                     anchors {
-//                         right: parent.right
-//                         top: parent.top
-//                     }
-//                     height: contHeight*.5
-//                     rating: model.rating
-//                 }
-                
                 MouseArea {
                     id: delegateArea
                     anchors.fill: parent
                     onClicked: Navigation.openApplication(stack, application)
                     hoverEnabled: true
-                    
-//                     InstallApplicationButton {
-//                         id: installButton
-//                         width: ratingsItem.width
-//                         height: contHeight*0.5
-//                         anchors {
-//                             bottom: parent.bottom
-//                             margins: 5
-//                         }
-//                         
-//                         property bool isVisible: delegateArea.containsMouse && !installButton.canHide
-//                         x: ratingsItem.x
-//                         opacity: isVisible ? 1 : 0
-//                         application: model.application
-//                         preferUpgrade: parentItem.preferUpgrade
-//                         
-//                         Behavior on opacity {
-//                             NumberAnimation {
-//                                 duration: 100
-//                                 easing.type: Easing.InQuad
-//                             }
-//                         }
-//                     }
                 }
             }
         
