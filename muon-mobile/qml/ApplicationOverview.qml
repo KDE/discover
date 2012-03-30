@@ -61,6 +61,7 @@ Item {
                 right: parent.right
                 margins: 5
             }
+            horizontalAlignment: Text.AlignJustify
             wrapMode: Text.WordWrap
             text: application.longDescription
         }
