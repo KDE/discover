@@ -16,6 +16,9 @@ Item {
     property Component currentTopLevel: browsingComp
     
     onCurrentTopLevelChanged: {
+        if(currentTopLevel==null)
+            return
+        
         if(currentTopLevel.status==Component.Error) {
             console.log("status error: "+currentTopLevel.errorString())
         }
@@ -70,7 +73,11 @@ Item {
                     icon: modelData.icon
                     overlayText: modelData.overlay
                     checked: currentTopLevel==modelData.component
-                    onClicked: currentTopLevel=modelData.component
+                    onClicked: {
+                        console.log("fafafafa");
+                        currentTopLevel=null
+                        currentTopLevel=modelData.component;
+                    }
                 }
             }
         }
