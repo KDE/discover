@@ -180,7 +180,7 @@ Page {
         }
         Connections {
             ignoreUnknownSignals: true
-            target: app.appBackend.reviewsBackend()
+            target: app.appBackend ? app.appBackend.reviewsBackend() : null
             onRatingsReady: ratingsTopModel.sortModel()
         }
         delegate: ListItem {

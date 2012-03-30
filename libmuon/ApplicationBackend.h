@@ -113,6 +113,7 @@ Q_SIGNALS:
     void errorSignal(QApt::ErrorCode code, const QVariantMap &details);
     void progress(Transaction *transaction, int progress);
     void transactionAdded(Transaction *transaction);
+    void applicationTransactionAdded(Application *app);
     void transactionCancelled(Application *app);
     void transactionRemoved(Transaction* t);
     void xapianReloaded();

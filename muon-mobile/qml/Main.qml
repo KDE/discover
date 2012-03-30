@@ -26,7 +26,7 @@ Item {
         var obj
         try {
             obj = currentTopLevel.createObject(contentItem)
-            console.log("created "+currentTopLevel)
+//             console.log("created "+currentTopLevel)
             if(obj.init)
                 obj.init()
             
@@ -57,7 +57,7 @@ Item {
                 TopLevelPageData { icon: "applications-other"; text: i18n("Installed"); component: installedComp },
                 TopLevelPageData {
                                 icon: "system-software-update"; text: i18n("Updates"); component: updatesComp
-                                overlay: app.appBackend.updatesCount==0 ? "" : app.appBackend.updatesCount
+                                overlay: !app.appBackend || app.appBackend.updatesCount==0 ? "" : app.appBackend.updatesCount
                 },
                 TopLevelPageData { icon: "document-import"; text: i18n("Sources"); component: sourcesComp }
             ]
@@ -81,23 +81,6 @@ Item {
                 top: parent.top
                 bottom: parent.bottom
                 right: parent.right
-            }
-            
-            MuonToolButton {
-                id: progressButton
-                icon: "download"
-                height: parent.height
-                checkable: true
-                checked: progressBox.visible
-                onClicked: progressBox.visible=!progressBox.visible
-                enabled: progressBox.active
-
-                ProgressView {
-                    id: progressBox
-                    visible: false
-                    anchors.horizontalCenter: progressButton.horizontalCenter
-                    anchors.top: progressButton.bottom
-                }
             }
             
             MuonToolButton {
@@ -132,7 +115,7 @@ Item {
         id: contentItem
         property Item content
         anchors {
-            bottom: parent.bottom
+            bottom: progressBox.top
             top: toolbar.bottom
             left: parent.left
             right: parent.right
@@ -140,5 +123,14 @@ Item {
         }
         
         onContentChanged: content.anchors.fill=contentItem
+    }
+    
+    ProgressView {
+        id: progressBox
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
     }
 }

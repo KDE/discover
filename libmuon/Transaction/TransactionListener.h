@@ -59,11 +59,13 @@ class MUONPRIVATE_EXPORT TransactionListener : public QObject
         void applicationChanged();
         void running(bool isRunning);
         void downloading(bool isDownloading);
+        void cancelled();
 
     private slots:
         void workerEvent(QApt::WorkerEvent event, Transaction *transaction);
         void updateProgress(Transaction*,int);
         void transactionCancelled(Application*);
+        void transactionRemoved(Transaction*);
 
     private:
         void setDownloading(bool);
@@ -75,8 +77,6 @@ class MUONPRIVATE_EXPORT TransactionListener : public QObject
         int m_progress;
         QString m_comment;
         bool m_downloading;
-public slots:
-    void transactionRemoved(Transaction*);
 };
 
 #endif // TRANSACTIONLISTENER_H

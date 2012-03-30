@@ -203,6 +203,7 @@ void TransactionListener::transactionCancelled(Application* app)
         return;
     emit running(false);
     setDownloading(false);
+    emit cancelled();
 }
 
 void TransactionListener::setApplication(Application* app)

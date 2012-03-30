@@ -1,92 +1,83 @@
 import QtQuick 1.1
 import org.kde.plasma.components 0.1
+import org.kde.qtextracomponents 0.1
 import org.kde.muon 1.0
 
-Item {
+ToolBar {
     id: page
     property QtObject backend: app.appBackend
-    property bool active: installedView.count>0 || installingView.count>0
-    width: 300
-    height: contents.height+2*contents.anchors.margins
+    property bool active: transactionsModel.count>0
+    height: active ? contents.height+2*contents.anchors.margins : 0
     
-    Rectangle {
-        id: bg
-        anchors.fill: parent
-        color: "blue"
-        opacity: 0.2
-        radius: 10
-    }
-    
-    onVisibleChanged: opacity=(visible? 1 : 0)
-    
-    Behavior on opacity {
+    Behavior on height {
         NumberAnimation { duration: 250; easing.type: Easing.InOutQuad }
     }
     
-    Column {
+    Connections {
+        id: backendConnections
+        target: backend
+        onApplicationTransactionAdded: transactionsModel.append({'app': app})
+    }
+    
+    ListModel {
+        id: transactionsModel
+    }
+    
+    ListView {
         id: contents
         anchors {
             left: parent.left
             right: parent.right
             top: parent.top
-            margins: 10
-        }
-        add: Transition {
-            NumberAnimation {
-                properties: "y"
-                easing.type: Easing.OutBounce
-            }
+            margins: 3
         }
         
-        MuonToolButton {
-            visible: installedView.count>0
-            anchors.right: parent.right
-            icon: "dialog-close"
-            onClicked: backend.clearLaunchList()
-        }
+        spacing: 3
+        height: 30
+        orientation: ListView.Horizontal
         
-        Label {
-            visible: installedView.count>0
-            text: i18n("Installed:")
-        }
+        model: transactionsModel
         
-        Repeater {
-            id: installedView
-            model: LaunchListModel {
-                id: launchModel
+        delegate: ListItem {
+            width: launcherRow.childrenRect.width+5
+            height: contents.height
+            TransactionListener {
+                id: listener
+                application: model.app
                 backend: page.backend
+                onCancelled: model.remove(index)
             }
             
-            delegate: ListItem {
-                Label {
-                    anchors.fill: parent
-                    text: display
+            Row {
+                id: launcherRow
+                spacing: 2
+                QIconItem { icon: model.app.icon; height: parent.height; width: height }
+                Label { text: model.app.name }
+                Label { text: listener.comment }
+                ToolButton {
+                    iconSource: "dialog-cancel"
+                    visible: listener.isDownloading
+                    onClicked: app.appBackend.cancelTransaction(application)
                 }
-                MuonToolButton {
-                    icon: decoration
-                    anchors.right: parent.right
-                    anchors.verticalCenter: parent.verticalCenter
-                    onClicked: launchModel.invokeApplication(index)
-                }
-            }
-        }
-        
-        Label {
-            text: i18n("Installing:")
-            visible: installingView.count>0
-        }
-        
-        Repeater {
-            id: installingView
-            model: TransactionsModel {
-                backend: page.backend
-            }
-            delegate: ListItem {
-                Label {
-                    anchors.fill: parent
-                    text: display
+                ToolButton {
+                    iconSource: "dialog-open"
+                    visible: model.app.isInstalled && !listener.isActive
+                    onClicked: {
+                        model.app.invokeApplication()
+                        model.remove(index)
+                    }
                 }
             }
         }
+    }
+    
+    ToolButton {
+        anchors {
+            verticalCenter: parent.verticalCenter
+            right: parent.right
+            rightMargin: 5
+        }
+        iconSource: "dialog-close"
+        onClicked: transactionsModel.clear()
     }
 }

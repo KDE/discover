@@ -349,6 +349,7 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
     transaction->setState(QueuedState);
     m_queue.enqueue(transaction);
     emit transactionAdded(transaction);
+    emit applicationTransactionAdded(transaction->application());
 
     if (m_queue.count() == 1) {
         m_currentTransaction = m_queue.head();

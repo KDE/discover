@@ -49,7 +49,6 @@
 #include <ReviewsBackend/ReviewsBackend.h>
 #include <ReviewsBackend/Rating.h>
 #include <ApplicationModel/LaunchListModel.h>
-#include <ApplicationModel/TransactionsModel.h>
 #include <ApplicationModel/ApplicationModel.h>
 
 // Own includes
@@ -80,7 +79,6 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     qmlRegisterType<ReviewsModel>("org.kde.muon", 1, 0, "ReviewsModel");
     qmlRegisterType<ApplicationUpdates>("org.kde.muon", 1, 0, "ApplicationUpdates");
     qmlRegisterType<LaunchListModel>("org.kde.muon", 1, 0, "LaunchListModel");
-    qmlRegisterType<TransactionsModel>("org.kde.muon", 1, 0, "TransactionsModel");
     qmlRegisterType<OriginsBackend>("org.kde.muon", 1, 0, "OriginsBackend");
     qmlRegisterType<ApplicationAddonsModel>("org.kde.muon", 1, 0, "ApplicationAddonsModel");
     qmlRegisterType<ReviewsBackend>();
