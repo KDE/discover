@@ -58,6 +58,7 @@ Q_PROPERTY(bool isTechnical READ isTechnical CONSTANT)
 Q_PROPERTY(bool isInstalled READ isInstalled NOTIFY installChanged)
 Q_PROPERTY(bool canUpgrade READ canUpgrade NOTIFY installChanged)
 Q_PROPERTY(int usageCount READ usageCount CONSTANT)
+Q_PROPERTY(bool canExecute READ canExecute CONSTANT)
 public:
     friend class TransactionListener;
 
@@ -102,6 +103,8 @@ public:
     void emitInstallChanged();
     
     Q_SCRIPTABLE void invokeApplication() const;
+    
+    bool canExecute() const;
 signals:
     void installChanged();
 

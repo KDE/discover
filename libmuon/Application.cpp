@@ -550,5 +550,12 @@ void Application::emitInstallChanged()
 
 void Application::invokeApplication() const
 {
-    KToolInvocation::startServiceByDesktopPath(executables().first()->desktopEntryPath());
+    QVector< KService::Ptr > execs = executables();
+    Q_ASSERT(!execs.isEmpty());
+    KToolInvocation::startServiceByDesktopPath(execs.first()->desktopEntryPath());
+}
+
+bool Application::canExecute() const
+{
+    return !executables().isEmpty();
 }
