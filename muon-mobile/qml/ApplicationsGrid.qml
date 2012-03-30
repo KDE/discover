@@ -2,7 +2,6 @@ import QtQuick 1.1
 import org.kde.plasma.components 0.1
 import org.kde.qtextracomponents 0.1
 import org.kde.muon 1.0
-import "navigation.js" as Navigation
 
 Item {
     id: parentItem
