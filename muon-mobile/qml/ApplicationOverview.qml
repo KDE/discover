@@ -37,6 +37,14 @@ Item {
         }
         
         Button {
+            visible: application.isInstalled
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: i18n("Launch")
+            enabled: application.canExecute
+            onClicked: application.invokeApplication()
+        }
+        
+        Button {
             anchors.horizontalCenter: parent.horizontalCenter
             visible: application.isInstalled && app.appBackend.reviewsBackend().hasCredentials
             text: i18n("Review")
