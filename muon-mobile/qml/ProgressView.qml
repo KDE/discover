@@ -60,7 +60,7 @@ ToolBar {
                     onClicked: app.appBackend.cancelTransaction(application)
                 }
                 ToolButton {
-                    iconSource: "dialog-open"
+                    iconSource: "system-run"
                     visible: model.app.isInstalled && !listener.isActive
                     onClicked: {
                         model.app.invokeApplication()
