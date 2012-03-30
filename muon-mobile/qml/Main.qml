@@ -74,8 +74,8 @@ Item {
                     overlayText: modelData.overlay
                     checked: currentTopLevel==modelData.component
                     onClicked: {
-                        console.log("fafafafa");
-                        currentTopLevel=null
+                        if(currentTopLevel=modelData.component)
+                            currentTopLevel=null
                         currentTopLevel=modelData.component;
                     }
                 }
