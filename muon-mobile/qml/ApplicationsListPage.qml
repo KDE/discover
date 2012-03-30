@@ -122,7 +122,7 @@ Page {
     Component {
         id: flexibleDelegate
         
-        ListItem {
+        Item {
             width: appsGrid.cellWidth-5
             height: appsGrid.cellHeight-5
             property real contHeight: appsGrid.cellHeight*0.7
@@ -167,6 +167,27 @@ Page {
                     fillMode: Image.PreserveAspectFit
                     source: model.application.screenshotUrl(0)
                     width: parent.width; height: contHeight
+                    smooth: true
+                    asynchronous: true
+                    onStatusChanged:  {
+                        if(status==Image.Error) {
+                            sourceSize.width = height
+                            sourceSize.height = height
+                            source="image://icon/"+model.application.icon
+                            smallIcon.visible=false
+                        }
+                    }
+                }
+                Image {
+                    id: smallIcon
+                    anchors {
+                        bottom: screen.bottom
+                        right: screen.right
+                    }
+                    width: 48
+                    height: width
+                    fillMode: Image.PreserveAspectFit
+                    source: "image://icon/"+model.application.icon
                 }
                 Label {
                     anchors {
@@ -182,6 +203,7 @@ Page {
                 }
             }
             MouseArea {
+                id: delegateArea
                 anchors.fill: parent
                 onClicked: Navigation.openApplication(stack, application)
                 hoverEnabled: true
