@@ -56,7 +56,7 @@ Item {
                 left: parent.left
             }
             property list<TopLevelPageData> sectionsModel: [
-                TopLevelPageData { icon: "tools-wizard"; text: i18n("Get Software"); component: browsingComp },
+                TopLevelPageData { icon: "tools-wizard"; text: i18n("Discover"); component: browsingComp },
                 TopLevelPageData { icon: "applications-other"; text: i18n("Installed"); component: installedComp },
                 TopLevelPageData {
                                 icon: "system-software-update"; text: i18n("Updates"); component: updatesComp
