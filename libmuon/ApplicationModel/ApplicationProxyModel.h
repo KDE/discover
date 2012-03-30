@@ -41,7 +41,7 @@ class MUONPRIVATE_EXPORT ApplicationProxyModel : public QSortFilterProxyModel
     Q_OBJECT
     Q_PROPERTY(QAbstractItemModel* sourceModel READ sourceModel WRITE setSourceModel)
     Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical WRITE setShouldShowTechnical)
-    Q_PROPERTY(Category* filteredCategory READ filteredCategory WRITE setFiltersFromCategory)
+    Q_PROPERTY(Category* filteredCategory READ filteredCategory WRITE setFiltersFromCategory NOTIFY categoryChanged)
 public:
     explicit ApplicationProxyModel(QObject *parent=0);
     ~ApplicationProxyModel();
@@ -86,6 +86,7 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     void invalidated();
+    void categoryChanged();
 };
 
 #endif

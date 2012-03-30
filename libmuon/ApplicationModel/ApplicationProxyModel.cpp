@@ -96,9 +96,11 @@ void ApplicationProxyModel::setFiltersFromCategory(Category *category)
         m_orFilters.clear();
         m_notFilters.clear();
     }
+
     m_filteredCategory = category;
     invalidate();
     emit invalidated();
+    emit categoryChanged();
 }
 
 void ApplicationProxyModel::setShouldShowTechnical(bool show)
