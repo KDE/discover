@@ -16,6 +16,10 @@ Item {
     property string section//: view.section
     property alias category: apps.filteredCategory
     property bool preferUpgrade: false
+    property alias delegate: view.delegate
+    property alias cellWidth: view.cellWidth
+    property alias cellHeight: view.cellHeight
+    property int minCellWidth: 200
 
     function searchFor(text) { apps.search(text); apps.sortOrder=Qt.AscendingOrder }
     function stringToRole(role) { return apps.stringToRole(role) }
@@ -26,7 +30,6 @@ Item {
     {
         id: view
         clip: true
-        property int minCellWidth: 200
         cellWidth: view.width/Math.floor(view.width/minCellWidth)-1
         cellHeight: cellWidth/1.618 //tau
         anchors {
@@ -37,40 +40,6 @@ Item {
             leftMargin: parent.width/8
             rightMargin: parent.width/8
         }
-        
-        delegate: ListItem {
-                width: view.cellWidth-5
-                height: view.cellHeight
-                property real contHeight: view.cellHeight*0.7
-                QIconItem {
-                    id: icon
-                    anchors {
-                        horizontalCenter: parent.horizontalCenter
-                        top: parent.top
-                        topMargin: 5
-                    }
-                    icon: model["icon"];
-                    width: parent.width; height: contHeight
-                }
-                Label {
-                    anchors {
-                        top: icon.bottom
-                        left: parent.left
-                        right: parent.right
-                        leftMargin: 5
-                    }
-                    font.pointSize: 13
-                    horizontalAlignment: Text.AlignHCenter
-                    elide: Text.ElideRight
-                    text: name
-                }
-                MouseArea {
-                    id: delegateArea
-                    anchors.fill: parent
-                    onClicked: Navigation.openApplication(stack, application)
-                    hoverEnabled: true
-                }
-            }
         
         model: ApplicationProxyModel {
             id: apps
