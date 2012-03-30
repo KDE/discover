@@ -33,7 +33,7 @@ Item {
             top: parent.top
             right: parent.right
         }
-        width: visible ? parent.width/4 : 0
+        width: visible ? 100 : 0
         visible: tools!=null
         
         Behavior on width {

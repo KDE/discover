@@ -22,10 +22,31 @@ Item {
         height: 30
         z: 0
         
-        tools: Breadcrumbs {
-            id: breadcrumbsItem
+        tools: Item {
             anchors.fill: parent
-            onClicked: Navigation.jumpToIndex(pageStack, breadcrumbsItem, idx)
+            Breadcrumbs {
+                anchors {
+                    left: parent.left
+                    right: searchField.right
+                    top: parent.top
+                    bottom: parent.bottom
+                }
+                id: breadcrumbsItem
+                onClicked: Navigation.jumpToIndex(pageStack, breadcrumbsItem, idx)
+            }
+            
+            TextField {
+                id: searchField
+                anchors {
+                    right: parent.right
+                    verticalCenter: parent.verticalCenter
+                }
+                height: parent.height
+                visible: pageStack.currentPage!=null && pageStack.currentPage.searchFor!=null
+                placeholderText: i18n("Search...")
+                onTextChanged: if(text.length>3) pageStack.currentPage.searchFor(text)
+//                 onAccepted: pageStack.currentPage.searchFor(text) //TODO: uncomment on kde 4.9
+            }
         }
     }
     
@@ -37,7 +58,7 @@ Item {
             top: parent.top
             right: parent.right
         }
-        width: visible ? parent.width/4 : 0
+        width: visible ? tools.childrenRect.width+10 : 0
         visible: tools!=null
         
         Behavior on width {

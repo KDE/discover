@@ -10,28 +10,15 @@ Page {
     property alias section: apps.section
     
     function searchFor(text) {
-        field.text = text
-        field.focus = true
+        apps.searchFor(text)
+//         field.text = text
+//         field.focus = true
     }
     
-    tools: Item {
-        opacity: page.status == PageStatus.Active ? 1 : 0
-        height: field.height
-        
-        TextField {
-            id: field
-            anchors {
-                verticalCenter: parent.verticalCenter
-                right: buttonsRow.left
-                left: parent.left
-                rightMargin: 5
-            }
-            placeholderText: i18n("Search...")
-            onTextChanged: apps.searchFor(text)
-        }
-        Row {
+    tools: Row {
             id: buttonsRow
-            anchors.right: parent.right
+            width: 100
+            visible: page.status == PageStatus.Active
             MuonToolButton {
                 id: button
                 icon: "view-sort-ascending"
@@ -80,7 +67,6 @@ Page {
                 icon: "tools-wizard"
             }
         }
-    }
     
     property list<QtObject> paramModel: [
         QtObject {

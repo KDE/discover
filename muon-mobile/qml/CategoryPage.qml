@@ -10,7 +10,6 @@ Page {
     
     
     function searchFor(text) {
-        console.log("search!! "+text)
         if(category)
             Navigation.openApplicationList(pageStack, category.icon, i18n("Search in '%1'...", category.name), category, text)
         else
@@ -21,14 +20,6 @@ Page {
         var application = app.appBackend.applicationByPackageName(packageName)
         console.log("opening "+packageName + "..."+application)
         Navigation.openApplication(pageStack, application)
-    }
-    
-    tools: TextField {
-        id: searchInput
-        width: 80
-        placeholderText: i18n("Search... ")
-        onTextChanged: searchFor(text)
-        opacity: page.status == PageStatus.Active ? 1 : 0
     }
 
     Component {
