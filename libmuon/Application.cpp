@@ -268,9 +268,14 @@ QString Application::categories()
 KUrl Application::screenshotUrl(QApt::ScreenshotType type)
 {
     QString appUrl;
+    KUrl url;
+
+    // Try to get a screenshot for extras.ubuntu.com packages
     switch (type) {
     case QApt::Thumbnail:
         appUrl = package()->controlField(QLatin1String("Thumbnail-Url"));
+        if (appUrl.isEmpty()) // Fallback, some extras.ubuntu.com don't have thumbnails
+            appUrl = package()->controlField(QLatin1String("Screenshot-Url"));
         break;
     case QApt::Screenshot:
         appUrl = package()->controlField(QLatin1String("Screenshot-Url"));
@@ -279,7 +284,7 @@ KUrl Application::screenshotUrl(QApt::ScreenshotType type)
         break;
     }
 
-    KUrl url;
+    // Otherwise, just check screenshots.debian.net
     if (appUrl.isEmpty()) {
         url = package()->screenshotUrl(type);
     } else {
