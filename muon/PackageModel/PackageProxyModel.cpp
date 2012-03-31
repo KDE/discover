@@ -28,6 +28,7 @@
 
 // Own includes
 #include "PackageModel.h"
+#include "MuonSettings.h"
 
 static const int status_sort_magic = (QApt::Package::Installed
 //                                       | QApt::Package::Outdated
@@ -148,8 +149,10 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
     }
 
     // TODO before 1.4: Configurable
-    if (package->isMultiArchDuplicate())
-        return false;
+    if (!MuonSettings::self()->showMultiArchDupes()) {
+        if (package->isMultiArchDuplicate())
+            return false;
+    }
 
     if (m_useSearchResults)
         return m_searchPackages.contains(package);

@@ -24,5 +24,9 @@
       <label>Whether or not to confirm additional changes.</label>
       <default>true</default>
     </entry>
+    <entry name="ShowMultiArchDupes" type="Bool">
+      <label>Show foreign architecture packages also available natively.</label>
+      <default>false</default>
+    </entry>
   </group>
 </kcfg>

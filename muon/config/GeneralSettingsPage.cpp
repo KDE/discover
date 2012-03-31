@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -37,6 +37,7 @@ GeneralSettingsPage::GeneralSettingsPage(QWidget* parent, QApt::Config *aptConfi
         : SettingsPageBase(parent)
         , m_aptConfig(aptConfig)
         , m_askChangesCheckBox(new QCheckBox(this))
+        , m_multiArchDupesBox(new QCheckBox(this))
         , m_recommendsCheckBox(new QCheckBox(this))
         , m_suggestsCheckBox(new QCheckBox(this))
         , m_untrustedCheckBox(new QCheckBox(this))
@@ -50,9 +51,12 @@ GeneralSettingsPage::GeneralSettingsPage(QWidget* parent, QApt::Config *aptConfi
     setLayout(layout);
 
     m_askChangesCheckBox->setText(i18n("Ask to confirm changes that affect other packages"));
+    m_multiArchDupesBox->setText(i18n("Show foreign-architecture packages that are available natively"));
     m_recommendsCheckBox->setText(i18n("Treat recommended packages as dependencies"));
     m_suggestsCheckBox->setText(i18n("Treat suggested packages as dependencies"));
     m_untrustedCheckBox->setText(i18n("Allow the installation of untrusted packages"));
+
+    m_multiArchDupesBox->setEnabled(aptConfig->architectures().size() > 1);
 
     // Autoclean settings
     QWidget *autoCleanWidget = new QWidget(this);
@@ -75,6 +79,7 @@ GeneralSettingsPage::GeneralSettingsPage(QWidget* parent, QApt::Config *aptConfi
     spacer->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
 
     layout->addRow(m_askChangesCheckBox);
+    layout->addRow(m_multiArchDupesBox);
     layout->addRow(m_recommendsCheckBox);
     layout->addRow(m_suggestsCheckBox);
     layout->addRow(m_untrustedCheckBox);
@@ -83,6 +88,7 @@ GeneralSettingsPage::GeneralSettingsPage(QWidget* parent, QApt::Config *aptConfi
     layout->addRow(spacer);
 
     connect(m_askChangesCheckBox, SIGNAL(clicked()), this, SIGNAL(changed()));
+    connect(m_multiArchDupesBox, SIGNAL(clicked()), this, SIGNAL(changed()));
     connect(m_recommendsCheckBox, SIGNAL(clicked()), this, SLOT(emitAuthChanged()));
     connect(m_suggestsCheckBox, SIGNAL(clicked()), this, SLOT(emitAuthChanged()));
     connect(m_untrustedCheckBox, SIGNAL(clicked()), this, SLOT(emitAuthChanged()));
@@ -106,6 +112,7 @@ void GeneralSettingsPage::loadSettings()
     MuonSettings *settings = MuonSettings::self();
 
     m_askChangesCheckBox->setChecked(settings->askChanges());
+    m_multiArchDupesBox->setChecked(settings->showMultiArchDupes());
     m_recommendsCheckBox->setChecked(m_aptConfig->readEntry("APT::Install-Recommends", true));
     m_suggestsCheckBox->setChecked(m_aptConfig->readEntry("APT::Install-Suggests", false));
     m_untrustedCheckBox->setChecked(m_aptConfig->readEntry("APT::Get::AllowUnauthenticated", false));
@@ -121,6 +128,7 @@ void GeneralSettingsPage::applySettings()
     MuonSettings *settings = MuonSettings::self();
 
     settings->setAskChanges(m_askChangesCheckBox->isChecked());
+    settings->setShowMultiArchDupes(m_multiArchDupesBox->isChecked());
     settings->setUndoStackSize(m_undoStackSpinbox->value());
     settings->writeConfig();
 
