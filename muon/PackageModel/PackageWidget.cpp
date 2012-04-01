@@ -361,6 +361,13 @@ void PackageWidget::startSearch()
     }
 }
 
+void PackageWidget::invalidateFilter()
+{
+    if (m_proxyModel) {
+        m_proxyModel->invalidate();
+    }
+}
+
 bool PackageWidget::confirmEssentialRemoval()
 {
     QString text = i18nc("@label", "Removing this package may break your system. Are you sure you want to remove it?");

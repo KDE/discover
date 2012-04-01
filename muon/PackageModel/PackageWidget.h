@@ -107,6 +107,7 @@ public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void reload();
     void startSearch();
+    void invalidateFilter();
 
 private Q_SLOTS:
     void setupActions();

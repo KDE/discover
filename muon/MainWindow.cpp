@@ -135,6 +135,7 @@ void MainWindow::initObject()
 void MainWindow::loadSettings()
 {
     m_backend->setUndoRedoCacheSize(MuonSettings::self()->undoStackSize());
+    m_managerWidget->invalidateFilter();
 }
 
 void MainWindow::loadSplitterSizes()
