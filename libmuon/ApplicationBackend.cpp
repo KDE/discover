@@ -64,7 +64,7 @@ QVector<Application *> init(QApt::Backend *backend)
     QStringList fileList = appDir.entryList(QStringList("*.desktop"), QDir::Files);
 
     QStringList pkgBlacklist;
-    pkgBlacklist << "kdebase-runtime" << "kdepim-runtime" << "kdelibs5-plugins" << "kdelibs5-data";
+    pkgBlacklist << "kde-runtime" << "kdepim-runtime" << "kdelibs5-plugins" << "kdelibs5-data";
 
     QList<Application *> tempList;
     QSet<QString> packages;
