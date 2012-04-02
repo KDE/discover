@@ -25,7 +25,6 @@ Item {
     ListView
     {
         id: view
-        clip: true
         anchors {
             top: parent.top
             left: parent.left

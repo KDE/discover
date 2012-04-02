@@ -28,7 +28,6 @@ Item {
     GridView
     {
         id: view
-        clip: true
         cellWidth: view.width/Math.floor(view.width/minCellWidth)-1
         cellHeight: cellWidth/1.618 //tau
         anchors {
