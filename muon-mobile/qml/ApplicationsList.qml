@@ -1,26 +1,17 @@
 import QtQuick 1.1
 import org.kde.plasma.components 0.1
 import org.kde.qtextracomponents 0.1
-import org.kde.muon 1.0
 import "navigation.js" as Navigation
 
 Item {
     id: parentItem
     property Item stack
-    property alias sortRole: apps.stringSortRole
-    property alias sortOrder: apps.sortOrder
     property int elemHeight: 65
-    property alias stateFilter: apps.stateFilter
     property alias count: view.count
     property alias header: view.header
     property alias section: view.section
-    property alias category: apps.filteredCategory
     property bool preferUpgrade: false
-
-    function searchFor(text) { apps.search(text); apps.sortOrder=Qt.AscendingOrder }
-    function stringToRole(role) { return apps.stringToRole(role) }
-    function roleToString(role) { return apps.roleToString(role) }
-    function applicationAt(i) { return apps.applicationAt(i) }
+    property alias model: view.model
     
     ListView
     {
@@ -109,14 +100,6 @@ Item {
                     }
                 }
             }
-        
-        model: ApplicationProxyModel {
-            id: apps
-            stringSortRole: "ratingPoints"
-            sortOrder: Qt.DescendingOrder
-            
-            Component.onCompleted: sortModel()
-        }
     }
     
     ScrollBar {

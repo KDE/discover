@@ -65,11 +65,15 @@ Item
             right: parent.right
             bottom: librariesUpdatesLabel.top
         }
+        model: ApplicationProxyModel {
+            sortOrder: Qt.DescendingOrder
+            stateFilter: (1<<9)//Upgradeable
+            stringSortRole: "origin"
+            
+            Component.onCompleted: sortModel()
+        }
         section.property: "origin"
         section.delegate: Label { text: i18n("From %1", section) }
-        stateFilter: (1<<9)//Upgradeable
-        sortRole: "origin"
-        sortOrder: 0
         visible: apps.count>0 && page.state!="updating"
         preferUpgrade: true
     }

@@ -2,18 +2,27 @@ import QtQuick 1.0
 import org.kde.plasma.components 0.1
 import org.kde.qtextracomponents 0.1
 import "navigation.js" as Navigation
+import org.kde.muon 1.0
 
 Page {
     id: page
-    property alias category: appsGrid.category
-    property alias sortRole: appsGrid.sortRole
-    property alias sortOrder: appsGrid.sortOrder
-    property alias stateFilter: appsGrid.stateFilter
+    property alias category: appsModel.filteredCategory
+    property alias sortRole: appsModel.stringSortRole
+    property alias sortOrder: appsModel.sortOrder
+    property alias stateFilter: appsModel.stateFilter
     property alias section: apps.section
     clip: true
     
     function searchFor(text) {
         apps.searchFor(text)
+    }
+    
+    ApplicationProxyModel {
+        id: appsModel
+        stringSortRole: "ratingPoints"
+        sortOrder: Qt.DescendingOrder
+        
+        Component.onCompleted: sortModel()
     }
     
     tools: Row {
@@ -29,10 +38,10 @@ Page {
                     width: parent.width
                     text: display
                     onClicked: {
-                        apps.sortRole=role
-                        apps.sortOrder=sorting
+                        appsModel.stringSortRole=role
+                        appsModel.sortOrder=sorting
                     }
-                    checked: apps.sortRole==role
+                    checked: appsModel.stringSortRole==role
                 }
             }
             
@@ -45,7 +54,7 @@ Page {
                     width: parent.width
                     text: modelData
                     onClicked: page.state=modelData
-                    checked: apps.state==modelData
+                    checked: page.state==modelData
                 }
             }
         }
@@ -100,22 +109,17 @@ Page {
         visible: !listViewShown.checked
         
         header: appsGrid.header
-        category: appsGrid.category
-        sortRole: appsGrid.sortRole
-        sortOrder: appsGrid.sortOrder
-        stateFilter: appsGrid.stateFilter
+        model: appsModel
     }
     
     ApplicationsGrid {
         id: appsGrid
         anchors.fill: parent
-        stack: page.pageStack
+        model: appsModel
         visible: !apps.visible
         header: parent.category==null ? null : categoryHeaderComponent
         
-//         section: apps.section
         delegate: visible ? flexibleDelegate : null
-//         delegate: Rectangle { color: "blue"; width: appsGrid.cellWidth-3; height: appsGrid.cellHeight-3 }
         
         property string delegateType: ""
     }
@@ -159,7 +163,6 @@ Page {
                         source: model.application.screenshotUrl(0)
                         width: parent.width; height: contHeight
                         smooth: true
-                        asynchronous: true
                         onStatusChanged:  {
                             if(status==Image.Error) {
                                 sourceSize.width = height
