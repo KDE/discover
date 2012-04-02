@@ -28,15 +28,28 @@ Item
         minimumValue: 0
         maximumValue: 100
     }
-    TextArea {
-        id: message
-        readOnly: true
-        visible: parent.state=="updating"
+    ScrollBar {
+        id: scroll
+        orientation: Qt.Vertical
+        flickableItem: messageFlickable
+        anchors {
+            top: messageFlickable.top
+            bottom: messageFlickable.bottom
+            right: parent.right
+        }
+    }
+    Flickable {
+        id: messageFlickable
         anchors {
             top: progress.bottom
             right: parent.right
             left: parent.left
             bottom: parent.bottom
+        }
+        TextArea {
+            id: message
+            readOnly: true
+            visible: parent.state=="updating"
         }
     }
     

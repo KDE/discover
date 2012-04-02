@@ -12,9 +12,9 @@ Item {
         orientation: Qt.Vertical
         flickableItem: overviewContentsFlickable
         anchors {
-                top: parent.top
-                right: parent.right
-                bottom: parent.bottom
+            top: overviewContentsFlickable.top
+            bottom: overviewContentsFlickable.bottom
+            right: parent.right
         }
     }
     Flickable {
