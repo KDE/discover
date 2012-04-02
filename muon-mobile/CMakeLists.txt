@@ -19,6 +19,7 @@ kde4_add_executable(muon-installer-qml ${muon_installer_qml_SRCS})
 
 target_link_libraries(muon-installer-qml muonprivate
                                      ${KDE4_KIO_LIBS}
+                                     ${KDE4_PLASMA_LIBS}
                                      kdeclarative
                                      ${QAPT_LIBRARY}
                                      ${QZEITGEIST_LIBRARY}

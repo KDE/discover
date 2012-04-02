@@ -36,6 +36,7 @@
 #include <KActionCollection>
 #include <KAction>
 #include <kdeclarative.h>
+#include <Plasma/Theme>
 
 // QApt includes
 #include <LibQApt/Backend>
@@ -66,6 +67,9 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
 {
     m_view = new QDeclarativeView(this);
     m_view->setBackgroundRole(QPalette::Background);
+    
+    Plasma::Theme::defaultTheme()->setUseGlobalSettings(false); //don't change every plasma theme!
+    Plasma::Theme::defaultTheme()->setThemeName("appdashboard");
     
     KDeclarative kdeclarative;
     kdeclarative.setDeclarativeEngine(m_view->engine());
