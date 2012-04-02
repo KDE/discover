@@ -29,7 +29,7 @@ Item
         maximumValue: 100
     }
     ScrollBar {
-        id: scroll
+        id: messageScroll
         orientation: Qt.Vertical
         flickableItem: messageFlickable
         anchors {
@@ -46,10 +46,14 @@ Item
             left: parent.left
             bottom: parent.bottom
         }
-        TextArea {
+        clip: true
+        contentHeight: message.height
+        
+        Label {
             id: message
-            readOnly: true
-            visible: parent.state=="updating"
+            width: parent.width-messageScroll.width
+            wrapMode: Text.WordWrap
+            visible: page.state=="updating"
         }
     }
     
