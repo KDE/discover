@@ -122,7 +122,7 @@ Page {
     Component {
         id: flexibleDelegate
         
-        Item {
+        ListItem {
             width: appsGrid.cellWidth-5
             height: appsGrid.cellHeight-5
             property real contHeight: appsGrid.cellHeight*0.7
@@ -153,9 +153,14 @@ Page {
                     text: name
                 }
             }
-            Item {
+            Flickable {
+                clip: true
                 visible: appsGrid.delegateType=="screenshot"
                 anchors.fill: parent
+                contentHeight: parent.height*2
+                contentY: delegateArea.containsMouse ? parent.height : 0
+                
+                Behavior on contentY { NumberAnimation { duration: 200 } }
                 
                 Image {
                     id: screen
@@ -174,7 +179,7 @@ Page {
                             sourceSize.width = height
                             sourceSize.height = height
                             source="image://icon/"+model.application.icon
-                            smallIcon.visible=false
+                            smallIcon.visible = false
                         }
                     }
                 }
@@ -191,7 +196,7 @@ Page {
                 }
                 Label {
                     anchors {
-                        bottom: parent.bottom
+                        top: smallIcon.bottom
                         left: parent.left
                         right: parent.right
                         leftMargin: 5
@@ -200,6 +205,53 @@ Page {
                     horizontalAlignment: Text.AlignHCenter
                     elide: Text.ElideRight
                     text: name
+                }
+                Image {
+                    id: smallIconDesc
+                    anchors {
+                        top: descLabel.top
+                        right: parent.right
+                    }
+                    width: 48
+                    height: width
+                    fillMode: Image.PreserveAspectFit
+                    source: "image://icon/"+model.application.icon
+                }
+                Label {
+                    id: descLabel
+                    anchors {
+                        left: parent.left
+                        right: smallIconDesc.left
+                        topMargin: 5
+                    }
+                    horizontalAlignment: Text.AlignHCenter
+                    width: parent.width
+                    y: appsGrid.cellHeight
+                    wrapMode: Text.WordWrap
+                    text: model.application.comment
+                }
+                InstallApplicationButton {
+                    id: installButton
+                    width: parent.width/3
+                    height: 30
+                    anchors {
+                        bottom: parent.bottom
+                        left: parent.left
+                        margins: 5
+                    }
+                    
+                    application: model.application
+                    preferUpgrade: false //TODO: review
+                }
+                Rating {
+                    id: ratingsItem
+                    anchors {
+                        right: parent.right
+                        verticalCenter: installButton.verticalCenter
+                        margins: 5
+                    }
+                    height: installButton.height*0.7
+                    rating: model.rating
                 }
             }
             MouseArea {
