@@ -133,114 +133,115 @@ Page {
             Rectangle { color: "white"; visible: enlarge; anchors.fill: parent; opacity: 0.9 }
             z: enlarge ? 123123 : -123123
             
-            Flickable {
-                id: delegateFlickable
-                width: parent.width
-                height: parent.height
-                contentHeight: appsGrid.delegateType=="icon" ? (appsGrid.cellHeight+descLabel.height+installButton.height) : (appsGrid.cellHeight*2-10)
-                contentY: delegateArea.containsMouse && appsGrid.delegateType!="icon" ? contentHeight/2 : 0
-                interactive: false
-                Behavior on contentY { NumberAnimation { duration: 200 } }
-                
-                Image {
-                    id: screen
-                    anchors {
-                        horizontalCenter: parent.horizontalCenter
-                        top: parent.top
-                        topMargin: 5
-                    }
-                    fillMode: Image.PreserveAspectFit
-                    source: model.application.screenshotUrl(0)
-                    width: parent.width; height: contHeight
-                    smooth: true
-                    asynchronous: true
-                    onStatusChanged:  {
-                        if(status==Image.Error) {
-                            sourceSize.width = height
-                            sourceSize.height = height
-                            source="image://icon/"+model.application.icon
-                            smallIcon.visible = false
-                        }
-                    }
-                }
-                Image {
-                    id: smallIcon
-                    anchors {
-                        bottom: screen.bottom
-                        right: screen.right
-                    }
-                    width: 48
-                    height: width
-                    fillMode: Image.PreserveAspectFit
-                    source: "image://icon/"+model.application.icon
-                }
-                Label {
-                    anchors {
-                        top: smallIcon.bottom
-                        left: parent.left
-                        right: parent.right
-                        leftMargin: 5
-                    }
-                    font.pointSize: 13
-                    horizontalAlignment: Text.AlignHCenter
-                    elide: Text.ElideRight
-                    text: name
-                }
-                Image {
-                    id: smallIconDesc
-                    anchors {
-                        top: descLabel.top
-                        right: parent.right
-                    }
-                    height: width
-                    fillMode: Image.PreserveAspectFit
-                    source: "image://icon/"+model.application.icon
-                    width: appsGrid.delegateType=="icon" ? 0 : 48
-                }
-                Label {
-                    id: descLabel
-                    anchors {
-                        left: parent.left
-                        right: smallIconDesc.left
-                        topMargin: 5
-                    }
-                    horizontalAlignment: Text.AlignHCenter
-                    width: parent.width
-                    y:  appsGrid.delegateType=="icon" ? installButton.y-height : appsGrid.cellHeight
-                    wrapMode: Text.WordWrap
-                    text: model.application.comment
-                    visible: delegateArea.containsMouse
-                }
-                InstallApplicationButton {
-                    id: installButton
-                    width: parent.width/3
-                    height: 30
-                    anchors {
-                        bottom: parent.bottom
-                        left: parent.left
-                        bottomMargin: 20
-                        margins: 10
-                    }
-                    
-                    application: model.application
-                    preferUpgrade: false //TODO: review
-                }
-                Rating {
-                    id: ratingsItem
-                    anchors {
-                        right: parent.right
-                        verticalCenter: installButton.verticalCenter
-                        margins: 10
-                    }
-                    height: installButton.height*0.7
-                    rating: model.rating
-                }
-            }
             MouseArea {
                 id: delegateArea
                 anchors.fill: parent
                 onClicked: Navigation.openApplication(stack, application)
                 hoverEnabled: true
+            
+                Flickable {
+                    id: delegateFlickable
+                    width: parent.width
+                    height: parent.height
+                    contentHeight: appsGrid.delegateType=="icon" ? (appsGrid.cellHeight+descLabel.height+installButton.height) : (appsGrid.cellHeight*2-10)
+                    contentY: delegateArea.containsMouse && appsGrid.delegateType!="icon" ? contentHeight/2 : 0
+                    interactive: false
+                    Behavior on contentY { NumberAnimation { duration: 200 } }
+                    
+                    Image {
+                        id: screen
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                            top: parent.top
+                            topMargin: 5
+                        }
+                        fillMode: Image.PreserveAspectFit
+                        source: model.application.screenshotUrl(0)
+                        width: parent.width; height: contHeight
+                        smooth: true
+                        asynchronous: true
+                        onStatusChanged:  {
+                            if(status==Image.Error) {
+                                sourceSize.width = height
+                                sourceSize.height = height
+                                source="image://icon/"+model.application.icon
+                                smallIcon.visible = false
+                            }
+                        }
+                    }
+                    Image {
+                        id: smallIcon
+                        anchors {
+                            bottom: screen.bottom
+                            right: screen.right
+                        }
+                        width: 48
+                        height: width
+                        fillMode: Image.PreserveAspectFit
+                        source: "image://icon/"+model.application.icon
+                    }
+                    Label {
+                        anchors {
+                            top: smallIcon.bottom
+                            left: parent.left
+                            right: parent.right
+                            leftMargin: 5
+                        }
+                        font.pointSize: 13
+                        horizontalAlignment: Text.AlignHCenter
+                        elide: Text.ElideRight
+                        text: name
+                    }
+                    Image {
+                        id: smallIconDesc
+                        anchors {
+                            top: descLabel.top
+                            right: parent.right
+                        }
+                        height: width
+                        fillMode: Image.PreserveAspectFit
+                        source: "image://icon/"+model.application.icon
+                        width: appsGrid.delegateType=="icon" ? 0 : 48
+                    }
+                    Label {
+                        id: descLabel
+                        anchors {
+                            left: parent.left
+                            right: smallIconDesc.left
+                            topMargin: 5
+                        }
+                        horizontalAlignment: Text.AlignHCenter
+                        width: parent.width
+                        y:  appsGrid.delegateType=="icon" ? installButton.y-height : appsGrid.cellHeight
+                        wrapMode: Text.WordWrap
+                        text: model.application.comment
+                        visible: delegateArea.containsMouse
+                    }
+                    InstallApplicationButton {
+                        id: installButton
+                        width: parent.width/3
+                        height: 30
+                        anchors {
+                            bottom: parent.bottom
+                            left: parent.left
+                            bottomMargin: 20
+                            margins: 10
+                        }
+                        
+                        application: model.application
+                        preferUpgrade: false //TODO: review
+                    }
+                    Rating {
+                        id: ratingsItem
+                        anchors {
+                            right: parent.right
+                            verticalCenter: installButton.verticalCenter
+                            margins: 10
+                        }
+                        height: installButton.height*0.7
+                        rating: model.rating
+                    }
+                }
             }
         }
     }
