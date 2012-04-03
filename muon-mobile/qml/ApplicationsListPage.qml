@@ -130,7 +130,7 @@ Page {
         ListItem {
             clip: true
             property real contHeight: appsGrid.cellHeight*0.7
-            property bool enlarge: appsGrid.delegateType=="icon" && delegateArea.containsMouse
+            property bool enlarge: appsGrid.delegateType=="icon" && delegateArea.containsMousePermanent
             width: appsGrid.cellWidth-5
             height: !enlarge ? appsGrid.cellHeight-5 : delegateFlickable.contentHeight
             Behavior on height { NumberAnimation { duration: 200 } }
@@ -146,13 +146,21 @@ Page {
                 anchors.fill: parent
                 onClicked: Navigation.openApplication(page.pageStack, application)
                 hoverEnabled: true
+                property bool containsMousePermanent: false
+                onEntered: timer.restart()
+                onExited: { timer.stop(); containsMousePermanent=false}
+                Timer {
+                    id: timer
+                    interval: 500
+                    onTriggered: delegateArea.containsMousePermanent=true
+                }
             
                 Flickable {
                     id: delegateFlickable
                     width: parent.width
                     height: parent.height
                     contentHeight: appsGrid.delegateType=="icon" ? (appsGrid.cellHeight+descLabel.height+installButton.height+10) : (appsGrid.cellHeight*2-10)
-                    contentY: delegateArea.containsMouse && appsGrid.delegateType!="icon" ? contentHeight/2 : 0
+                    contentY: delegateArea.containsMousePermanent && appsGrid.delegateType!="icon" ? contentHeight/2 : 0
                     interactive: false
                     Behavior on contentY { NumberAnimation { duration: 200 } }
                     
