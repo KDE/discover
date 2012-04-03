@@ -147,11 +147,11 @@ Page {
                 onClicked: Navigation.openApplication(page.pageStack, application)
                 hoverEnabled: true
                 property bool containsMousePermanent: false
-                onEntered: timer.restart()
+                onPositionChanged: timer.restart()
                 onExited: { timer.stop(); containsMousePermanent=false}
                 Timer {
                     id: timer
-                    interval: 500
+                    interval: 200
                     onTriggered: delegateArea.containsMousePermanent=true
                 }
             
