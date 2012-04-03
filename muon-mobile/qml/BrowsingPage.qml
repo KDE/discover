@@ -70,7 +70,6 @@ Item {
     {
         id: pageStack
         anchors {
-            margins: 10
             left: parent.left
             right: parent.right
             bottom: parent.bottom

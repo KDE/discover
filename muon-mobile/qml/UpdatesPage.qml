@@ -4,8 +4,6 @@ import org.kde.muon 1.0
 
 Item
 {
-    anchors.margins: 10
-    
     id: page
     state: "show"
     ApplicationUpdates {

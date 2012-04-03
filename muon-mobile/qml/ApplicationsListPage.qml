@@ -14,7 +14,7 @@ Page {
     clip: true
     
     function searchFor(text) {
-        apps.searchFor(text)
+        appsModel.search(text)
     }
     
     ApplicationProxyModel {
@@ -140,7 +140,7 @@ Page {
             MouseArea {
                 id: delegateArea
                 anchors.fill: parent
-                onClicked: Navigation.openApplication(stack, application)
+                onClicked: Navigation.openApplication(page.pageStack, application)
                 hoverEnabled: true
             
                 Flickable {

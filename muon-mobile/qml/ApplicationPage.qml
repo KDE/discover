@@ -7,7 +7,6 @@ Page
 {
     id: page
     property QtObject application
-    anchors.margins: 5
     
     Item {
         id: intro
@@ -15,6 +14,7 @@ Page
             top: parent.top
             left: parent.left
             right: parent.right
+            margins: 10
         }
         height: icon.height
         QIconItem {

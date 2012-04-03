@@ -82,14 +82,15 @@ Page {
             left: parent.left
             right: scroll.left
             bottom: parent.bottom
+            leftMargin: scroll.width
         }
         model: cats
         clip: true
         delegate: categoryDelegate
         header: CategoryHeader {
-            anchors.leftMargin: 23
+            anchors.leftMargin: scroll.width
             category: page.category
-            width: parent.width
+            width: parent.width-scroll.width
             height: 100
         }
         footer: topsView
@@ -116,7 +117,7 @@ Page {
         id: topsView
         Item {
             height: Math.min(200, page.height/2)
-            width: view.width
+            width: view.width-scroll.width
             ListView {
                 id: top1
                 interactive: false

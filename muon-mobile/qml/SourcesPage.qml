@@ -101,7 +101,6 @@ Item {
     
     ListView {
         anchors {
-            margins: 10
             top: pageToolBar.bottom
             left: parent.left
             right: parent.right
