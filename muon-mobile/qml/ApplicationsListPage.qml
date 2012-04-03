@@ -202,7 +202,7 @@ Page {
                             right: parent.right
                             leftMargin: 5
                         }
-                        font.pointSize: 13
+                        font.pointSize: descLabel.font.pointSize*1.2
                         horizontalAlignment: Text.AlignHCenter
                         elide: Text.ElideRight
                         text: name
@@ -249,10 +249,11 @@ Page {
                         id: ratingsItem
                         anchors {
                             right: parent.right
+                            left: installButton.right
                             verticalCenter: installButton.verticalCenter
                             margins: 10
                         }
-                        height: installButton.height*0.7
+                        height: Math.min(installButton.height, width/5)
                         rating: model.rating
                     }
                 }
