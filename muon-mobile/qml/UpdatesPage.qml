@@ -52,6 +52,7 @@ Item
             width: parent.width-messageScroll.width
             wrapMode: Text.WordWrap
             visible: page.state=="updating"
+            onTextChanged: messageFlickable.contentY=message.height
         }
     }
     
