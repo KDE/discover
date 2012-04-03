@@ -9,8 +9,6 @@ Item {
         id: pageToolBar
         height: 30
         anchors {
-            leftMargin: 10
-            rightMargin: 10
             top: parent.top
             right: parent.right
             left: parent.left
@@ -99,16 +97,36 @@ Item {
     }
     OriginsBackend { id: origins }
     
+    ScrollBar {
+        id: scroll
+        orientation: Qt.Vertical
+        flickableItem: view
+        stepSize: 40
+        scrollButtonInterval: 50
+        anchors {
+                top: view.top
+                right: parent.right
+                bottom: view.bottom
+        }
+    }
     ListView {
+        id: view
         anchors {
             top: pageToolBar.bottom
             left: parent.left
             right: parent.right
             bottom: parent.bottom
+            rightMargin: scroll.width+3
+            leftMargin: 3
         }
         clip: true
         section.property: "uri"
-        section.delegate: Label { text: section }
+        section.delegate: Label {
+            text: section
+            horizontalAlignment: Text.AlignRight
+            width: parent.width
+            font.bold: true
+        }
         
         model: origins.sources
         
