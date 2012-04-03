@@ -81,16 +81,18 @@ Page {
             top: parent.top
             left: parent.left
             right: scroll.left
-            bottom: top1.top
+            bottom: parent.bottom
         }
         model: cats
         clip: true
         delegate: categoryDelegate
         header: CategoryHeader {
+            anchors.leftMargin: 23
             category: page.category
             width: parent.width
             height: 100
         }
+        footer: topsView
     }
     
     ScrollBar {
@@ -110,93 +112,97 @@ Page {
         id: cats
         displayedCategory: page.category
     }
-    
-    ListView {
-        id: top1
-        clip: true
-        interactive: false
-        anchors {
-            top: top2.top
-            left: parent.left
-            bottom: parent.bottom
-        }
-        width: parent.width/2-10
-        header: Label { text: i18n("<b>Popularity Contest</b>") }
-        model: ApplicationProxyModel {
-            stringSortRole: "popcon"
-            sortOrder: Qt.DescendingOrder
-            filteredCategory: page.category
-            
-            Component.onCompleted: sortModel()
-        }
-        delegate: ListItem {
-                    width: top1.width
-                    height: 30
-                    QIconItem {
-                        id: iconItem
-                        anchors { left: parent.left; verticalCenter: parent.verticalCenter }
-                        height: parent.height*0.9
-                        width: height
-                        icon: model["icon"]
-                    }
-                    Label {
-                        anchors { left: iconItem.right; right: pointsLabel.left; verticalCenter: parent.verticalCenter }
-                        text: name
-                        elide: Text.ElideRight
-                    }
-                    Label {
-                        anchors { right: parent.right; verticalCenter: parent.verticalCenter }
-                        id: pointsLabel
-                        text: i18n("points: %1", popcon)
-                    }
-                    MouseArea { anchors.fill: parent; onClicked: Navigation.openApplication(pageStack, application) }
+    Component {
+        id: topsView
+        Item {
+            height: Math.min(200, page.height/2)
+            width: view.width
+            ListView {
+                id: top1
+                interactive: false
+                anchors {
+                    top: parent.top
+                    left: parent.left
+                    bottom: parent.bottom
                 }
-    }
-    ListView {
-        id: top2
-        clip: true
-        interactive: false
-        height: Math.min(200, parent.height/2)
-        anchors {
-            right: parent.right
-            bottom: parent.bottom
-        }
-        width: parent.width/2-10
-        header: Label { text: i18n("<b>Best Ratings</b>") }
-        model: ApplicationProxyModel {
-            id: ratingsTopModel
-            filteredCategory: page.category
-            stringSortRole: "ratingPoints"
-            sortOrder: Qt.DescendingOrder
-        }
-        Connections {
-            ignoreUnknownSignals: true
-            target: app.appBackend ? app.appBackend.reviewsBackend() : null
-            onRatingsReady: ratingsTopModel.sortModel()
-        }
-        delegate: ListItem {
-                    width: top1.width
-                    height: 30
-                    QIconItem {
-                        id: iconItem
-                        anchors { left: parent.left; verticalCenter: parent.verticalCenter }
-                        height: parent.height*0.9
-                        width: height
-                        icon: model["icon"]
-                    }
-                    Label {
-                        anchors { left: iconItem.right; right: ratingsItem.left; verticalCenter: parent.verticalCenter }
-                        text: name
-                        elide: Text.ElideRight
-                    }
-                    Rating {
-                        id: ratingsItem
-                        anchors { verticalCenter: parent.verticalCenter; right: parent.right }
-                        rating: model.rating
-                        height: 10
-                    }
-                    MouseArea { anchors.fill: parent; onClicked: Navigation.openApplication(pageStack, application) }
+                width: parent.width/2-10
+                header: Label { text: i18n("<b>Popularity Contest</b>") }
+                model: ApplicationProxyModel {
+                    stringSortRole: "popcon"
+                    sortOrder: Qt.DescendingOrder
+                    filteredCategory: page.category
+                    
+                    Component.onCompleted: sortModel()
                 }
+                delegate: ListItem {
+                            width: top1.width
+                            height: 30
+                            QIconItem {
+                                id: iconItem
+                                anchors { left: parent.left; verticalCenter: parent.verticalCenter }
+                                height: parent.height*0.9
+                                width: height
+                                icon: model["icon"]
+                            }
+                            Label {
+                                anchors { left: iconItem.right; right: pointsLabel.left; verticalCenter: parent.verticalCenter }
+                                text: name
+                                elide: Text.ElideRight
+                            }
+                            Label {
+                                anchors { right: parent.right; verticalCenter: parent.verticalCenter }
+                                id: pointsLabel
+                                text: i18n("points: %1", popcon)
+                            }
+                            MouseArea { anchors.fill: parent; onClicked: Navigation.openApplication(pageStack, application) }
+                        }
+            }
+            ListView {
+                id: top2
+                interactive: false
+                height: parent.height
+                anchors {
+                    right: parent.right
+                    bottom: parent.bottom
+                }
+                width: parent.width/2-10
+                header: Label { text: i18n("<b>Best Ratings</b>") }
+                model: ApplicationProxyModel {
+                    id: ratingsTopModel
+                    filteredCategory: page.category
+                    stringSortRole: "ratingPoints"
+                    sortOrder: Qt.DescendingOrder
+                }
+                Connections {
+                    ignoreUnknownSignals: true
+                    target: app.appBackend ? app.appBackend.reviewsBackend() : null
+                    onRatingsReady: ratingsTopModel.sortModel()
+                }
+                delegate: ListItem {
+                            width: top1.width
+                            height: 30
+                            QIconItem {
+                                id: iconItem
+                                anchors { left: parent.left; verticalCenter: parent.verticalCenter }
+                                height: parent.height*0.9
+                                width: height
+                                icon: model["icon"]
+                            }
+                            Label {
+                                anchors { left: iconItem.right; right: ratingsItem.left; verticalCenter: parent.verticalCenter }
+                                text: name
+                                elide: Text.ElideRight
+                            }
+                            Rating {
+                                id: ratingsItem
+                                anchors { verticalCenter: parent.verticalCenter; right: parent.right }
+                                rating: model.rating
+                                height: 10
+                            }
+                            MouseArea { anchors.fill: parent; onClicked: Navigation.openApplication(pageStack, application) }
+                        }
+            }
+        }
     }
 }
     
