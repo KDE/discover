@@ -133,8 +133,12 @@ Page {
             property bool enlarge: appsGrid.delegateType=="icon" && delegateArea.containsMouse
             width: appsGrid.cellWidth-5
             height: !enlarge ? appsGrid.cellHeight-5 : delegateFlickable.contentHeight
+            Behavior on height { NumberAnimation { duration: 200 } }
             
-            Rectangle { color: "white"; visible: enlarge; anchors.fill: parent; opacity: 0.9 }
+            Rectangle {
+                color: "white"; anchors.fill: parent; opacity: enlarge ? 0.9 : 0
+                Behavior on opacity { NumberAnimation { duration: 200 } }
+            }
             z: enlarge ? 123123 : -123123
             
             MouseArea {
@@ -147,7 +151,7 @@ Page {
                     id: delegateFlickable
                     width: parent.width
                     height: parent.height
-                    contentHeight: appsGrid.delegateType=="icon" ? (appsGrid.cellHeight+descLabel.height+installButton.height) : (appsGrid.cellHeight*2-10)
+                    contentHeight: appsGrid.delegateType=="icon" ? (appsGrid.cellHeight+descLabel.height+installButton.height+10) : (appsGrid.cellHeight*2-10)
                     contentY: delegateArea.containsMouse && appsGrid.delegateType!="icon" ? contentHeight/2 : 0
                     interactive: false
                     Behavior on contentY { NumberAnimation { duration: 200 } }
@@ -198,9 +202,9 @@ Page {
                     Image {
                         id: smallIconDesc
                         anchors {
-                            top: descLabel.top
                             right: parent.right
                         }
+                        y: appsGrid.cellHeight+10
                         height: width
                         fillMode: Image.PreserveAspectFit
                         source: "image://icon/"+model.application.icon
@@ -215,10 +219,9 @@ Page {
                         }
                         horizontalAlignment: Text.AlignHCenter
                         width: parent.width
-                        y:  appsGrid.delegateType=="icon" ? installButton.y-height : appsGrid.cellHeight
+                        y:  appsGrid.delegateType=="icon" ? installButton.y-height : appsGrid.cellHeight+smallIconDesc.height/2
                         wrapMode: Text.WordWrap
                         text: model.application.comment
-                        visible: delegateArea.containsMouse
                     }
                     InstallApplicationButton {
                         id: installButton
