@@ -53,7 +53,7 @@ ToolBar {
                 spacing: 2
                 QIconItem { icon: model.app.icon; height: parent.height; width: height }
                 Label { text: model.app.name }
-                Label { text: listener.comment }
+                Label { text: listener.comment; visible: listener.isActive }
                 ToolButton {
                     iconSource: "dialog-cancel"
                     visible: listener.isDownloading
