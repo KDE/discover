@@ -61,7 +61,7 @@ ToolBar {
                 }
                 ToolButton {
                     iconSource: "system-run"
-                    visible: model.app.isInstalled && !listener.isActive
+                    visible: model.app.isInstalled && !listener.isActive && model.app.canExecute
                     onClicked: {
                         model.app.invokeApplication()
                         model.remove(index)
