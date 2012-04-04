@@ -11,6 +11,7 @@ Page {
     property alias sortOrder: appsModel.sortOrder
     property alias stateFilter: appsModel.stateFilter
     property alias section: apps.section
+    property bool preferUpgrade: false
     clip: true
     
     function searchFor(text) {
@@ -49,7 +50,7 @@ Page {
                 id: listViewShown
                 checkable: true
                 icon: "tools-wizard"
-                model: ["list", "grid1", "grid2"]
+                model: ["list", "grid1", "grid2", "grid3"]
                 delegate: ToolButton {
                     width: parent.width
                     text: modelData
@@ -160,7 +161,7 @@ Page {
                     width: parent.width
                     height: parent.height
                     contentHeight: appsGrid.delegateType=="icon" ? (appsGrid.cellHeight+descLabel.height+installButton.height+10) : (appsGrid.cellHeight*2-10)
-                    contentY: delegateArea.containsMousePermanent && appsGrid.delegateType!="icon" ? contentHeight/2 : 0
+                    contentY: delegateArea.containsMousePermanent && appsGrid.delegateType=="screenshot" ? contentHeight/2 : 0
                     interactive: false
                     Behavior on contentY { NumberAnimation { duration: 200 } }
                     
@@ -243,7 +244,7 @@ Page {
                         }
                         
                         application: model.application
-                        preferUpgrade: false //TODO: review
+                        preferUpgrade: page.preferUpgrade
                     }
                     Rating {
                         id: ratingsItem
@@ -276,6 +277,11 @@ Page {
             name: "grid2"
             PropertyChanges { target: apps; visible: false }
             PropertyChanges { target: appsGrid; delegateType: "screenshot" }
+        },
+        State {
+            name: "grid3"
+            PropertyChanges { target: apps; visible: false }
+            PropertyChanges { target: appsGrid; delegateType: "still" }
         }
     ]
 }
