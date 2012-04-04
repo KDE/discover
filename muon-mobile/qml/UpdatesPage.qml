@@ -30,6 +30,7 @@ Item
         id: messageScroll
         orientation: Qt.Vertical
         flickableItem: messageFlickable
+        visible: messageFlickable.visible
         anchors {
             top: messageFlickable.top
             bottom: messageFlickable.bottom
