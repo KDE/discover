@@ -11,15 +11,15 @@ Page {
     
     function searchFor(text) {
         if(category)
-            Navigation.openApplicationList(pageStack, category.icon, i18n("Search in '%1'...", category.name), category, text)
+            Navigation.openApplicationList(category.icon, i18n("Search in '%1'...", category.name), category, text)
         else
-            Navigation.openApplicationList(pageStack, "edit-find", i18n("Search..."), category, text)
+            Navigation.openApplicationList("edit-find", i18n("Search..."), category, text)
     }
     
     function openApplication(packageName) {
         var application = app.appBackend.applicationByPackageName(packageName)
         console.log("opening "+packageName + "..."+application)
-        Navigation.openApplication(pageStack, application)
+        Navigation.openApplication(application)
     }
 
     Component {
@@ -59,10 +59,10 @@ Page {
                     var cat = cats.categoryForIndex(index)
                     switch(categoryType) {
                         case CategoryModel.CategoryType:
-                            Navigation.openApplicationList(pageStack, category.icon, category.name, cat, "")
+                            Navigation.openApplicationList(category.icon, category.name, cat, "")
                             break;
                         case CategoryModel.SubCatType:
-                            Navigation.openCategory(pageStack, category.icon, category.name, cat)
+                            Navigation.openCategory(category.icon, category.name, cat)
                             break;
                     }
                 }
@@ -155,7 +155,7 @@ Page {
                                 id: pointsLabel
                                 text: i18n("points: %1", popcon)
                             }
-                            MouseArea { anchors.fill: parent; onClicked: Navigation.openApplication(pageStack, application) }
+                            MouseArea { anchors.fill: parent; onClicked: Navigation.openApplication(application) }
                         }
             }
             ListView {
@@ -200,7 +200,7 @@ Page {
                                 rating: model.rating
                                 height: 10
                             }
-                            MouseArea { anchors.fill: parent; onClicked: Navigation.openApplication(pageStack, application) }
+                            MouseArea { anchors.fill: parent; onClicked: Navigation.openApplication(application) }
                         }
             }
         }

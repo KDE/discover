@@ -73,7 +73,7 @@ Item {
                 MouseArea {
                     id: delegateArea
                     anchors.fill: parent
-                    onClicked: Navigation.openApplication(stack, application)
+                    onClicked: Navigation.openApplication(application)
                     hoverEnabled: true
                     
                     InstallApplicationButton {

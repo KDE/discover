@@ -2,38 +2,29 @@ import QtQuick 1.0
 import org.kde.plasma.components 0.1
 import org.kde.muon 1.0
 
-Item {
+Page {
     id: page
     
-    ToolBar {
-        id: pageToolBar
-        height: 30
-        anchors {
-            top: parent.top
-            right: parent.right
-            left: parent.left
+    tools: Row {
+        anchors.fill: parent
+        visible: page.visible
+        ToolButton {
+            iconSource: "list-add"
+            text: i18n("Add Source")
+            onClicked: newSourceDialog.open()
+            anchors.verticalCenter: parent.verticalCenter
         }
         
-        tools: Row {
-            anchors.fill: parent
-            ToolButton {
-                iconSource: "list-add"
-                text: i18n("Add Source")
-                onClicked: newSourceDialog.open()
-                anchors.verticalCenter: parent.verticalCenter
-            }
+        Repeater {
+            model: ["software_properties"]
             
-            Repeater {
-                model: ["software_properties"]
-                
-                delegate: MuonToolButton {
-                    property QtObject action: app.getAction(modelData)
-                    height: parent.height
-                    text: action.text
-                    onClicked: action.trigger()
-                    enabled: action.enabled
-                    icon: action.icon
-                }
+            delegate: MuonToolButton {
+                property QtObject action: app.getAction(modelData)
+                height: parent.height
+                text: action.text
+                onClicked: action.trigger()
+                enabled: action.enabled
+                icon: action.icon
             }
         }
     }
@@ -112,10 +103,7 @@ Item {
     ListView {
         id: view
         anchors {
-            top: pageToolBar.bottom
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
+            fill: parent
             rightMargin: scroll.width+3
             leftMargin: 3
         }

@@ -3,9 +3,8 @@ import org.kde.plasma.components 0.1
 
 Item {
     id: bread
-    signal clicked(int idx)
     property alias count: items.count
-    property Item tools: toolbar
+    property Item pageStack: null
     anchors.margins: 5
     
     function currentItem() {
@@ -18,6 +17,14 @@ Item {
     
     function popItem() {
         items.remove(items.count-1)
+    }
+    
+    function doClick(index) {
+        var pos = items.count-index-1 
+        for(; pos>0; --pos) {
+            pageStack.pop(undefined, pos>1)
+            bread.popItem()
+        }
     }
     
     ListView
@@ -34,7 +41,7 @@ Item {
         delegate: ToolButton {
             height: bread.height
             iconSource: decoration
-            onClicked: bread.clicked(items.count-index-1)
+            onClicked: doClick(index)
             text: display ? display : ""
             visible: items.count-index>1
         }

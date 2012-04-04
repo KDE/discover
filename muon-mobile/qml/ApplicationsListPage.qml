@@ -29,7 +29,7 @@ Page {
     tools: Row {
             id: buttonsRow
             width: 100
-            visible: page.status == PageStatus.Active
+            visible: page.visible
             MuonMenuToolButton {
                 id: button
                 icon: "view-sort-ascending"
@@ -145,7 +145,7 @@ Page {
             MouseArea {
                 id: delegateArea
                 anchors.fill: parent
-                onClicked: Navigation.openApplication(page.pageStack, application)
+                onClicked: Navigation.openApplication(application)
                 hoverEnabled: true
                 property bool containsMousePermanent: false
                 onPositionChanged: timer.restart()
