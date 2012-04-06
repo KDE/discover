@@ -400,7 +400,7 @@ void ApplicationWindow::changeView(const QModelIndex &index)
             appView->setStateFilter(stateFilter);
             appView->setOriginFilter(originFilter);
 
-            if (originFilter.contains(QLatin1String("LP-PPA"))) {
+            if (originFilter.contains(QLatin1String("LP-PPA")) || originFilter == "Canonical") {
                 appView->setShouldShowTechnical(true);
             }
         }
