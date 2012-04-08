@@ -125,6 +125,9 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
         if (application->isTechnical()) {
             return false;
         }
+    } else {
+        if (application->package()->isMultiArchDuplicate())
+            return false;
     }
 
     if (m_stateFilter) {
