@@ -169,7 +169,8 @@ void BreadcrumbWidget::onItemActivated(BreadcrumbItem *item)
 
 void BreadcrumbWidget::startSearch()
 {
-    emit search(m_searchEdit->text());
+    if (!m_searchEdit->text().isEmpty())
+        emit search(m_searchEdit->text());
 }
 
 void BreadcrumbWidget::showSearchEdit()
