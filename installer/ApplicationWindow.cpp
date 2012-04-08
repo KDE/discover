@@ -399,7 +399,7 @@ void ApplicationWindow::changeView(const QModelIndex &index)
             appView->setBackend(m_backend);
             appView->setStateFilter(stateFilter);
             appView->setOriginFilter(originFilter);
-            appView->setShouldShowTechnical(true);
+            appView->setCanShowTechnical(true);
         }
         break;
         case CatView: {

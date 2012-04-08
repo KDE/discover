@@ -45,6 +45,7 @@ public:
     void setStateFilter(QApt::Package::State state);
     void setOriginFilter(const QString &origin);
     void setShouldShowTechnical(bool show);
+    void setCanShowTechnical(bool canShow);
 
 private:
     QApt::Backend *m_backend;

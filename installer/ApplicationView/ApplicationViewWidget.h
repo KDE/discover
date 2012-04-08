@@ -27,6 +27,7 @@
 
 #include "AbstractViewBase.h"
 
+class QCheckBox;
 class QIcon;
 class QLabel;
 class QTreeView;
@@ -60,9 +61,11 @@ private:
     ApplicationModel *m_appModel;
     ApplicationProxyModel *m_proxyModel;
     QPair<AbstractViewBase *, Application *> m_currentPair;
+    bool m_canShowTechnical;
 
     QLabel *m_headerIcon;
     QLabel *m_headerLabel;
+    QCheckBox *m_techCheckBox;
     KComboBox *m_sortCombo;
     QTreeView *m_treeView;
     ApplicationDelegate *m_delegate;
@@ -73,6 +76,7 @@ private Q_SLOTS:
     void onSubViewDestroyed();
     void sortComboChanged(int index);
     void updateSortCombo();
+    void techCheckChanged(int state);
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
@@ -83,6 +87,7 @@ public Q_SLOTS:
     void setOriginFilter(const QString &origin);
     void setFiltersFromCategory(Category *category);
     void setShouldShowTechnical(bool show);
+    void setCanShowTechnical(bool canShow);
 
 Q_SIGNALS:
     void switchToSubView(AbstractViewBase *view);

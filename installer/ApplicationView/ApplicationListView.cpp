@@ -80,4 +80,9 @@ void ApplicationListView::setShouldShowTechnical(bool show)
     m_appViewWidget->setShouldShowTechnical(show);
 }
 
+void ApplicationListView::setCanShowTechnical(bool canShow)
+{
+    m_appViewWidget->setCanShowTechnical(canShow);
+}
+
 #include "ApplicationListView.moc"

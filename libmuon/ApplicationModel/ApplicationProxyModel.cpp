@@ -106,6 +106,8 @@ void ApplicationProxyModel::setFiltersFromCategory(Category *category)
 void ApplicationProxyModel::setShouldShowTechnical(bool show)
 {
     m_showTechnical = show;
+    invalidate();
+    emit invalidated();
 }
 
 bool ApplicationProxyModel::shouldShowTechnical() const

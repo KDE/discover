@@ -22,6 +22,7 @@
 
 // Qt includes
 #include <QtCore/QStringBuilder>
+#include <QtGui/QCheckBox>
 #include <QtGui/QLabel>
 #include <QtGui/QTreeView>
 #include <QtGui/QVBoxLayout>
@@ -50,6 +51,7 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
         : AbstractViewBase(parent)
         , m_backend(0)
         , m_appBackend(appBackend)
+        , m_canShowTechnical(false)
         , m_detailsView(0)
 {
     m_searchable = true;
@@ -66,6 +68,15 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
 
     m_headerIcon = new QLabel(header);
     m_headerLabel = new QLabel(header);
+
+    m_techCheckBox = new QCheckBox(header);
+    m_techCheckBox->setText(i18n("Show technical items"));
+    m_techCheckBox->hide();
+    connect(m_techCheckBox, SIGNAL(stateChanged(int)),
+            this, SLOT(techCheckChanged(int)));
+
+    QLabel *sortLabel = new QLabel(header);
+    sortLabel->setText(i18n("Sort:"));
     m_sortCombo = new KComboBox(header);
     m_sortCombo->addItem(i18nc("@item:inlistbox", "By Name"), ApplicationModel::NameRole);
     m_sortCombo->addItem(i18nc("@item:inlistbox", "By Top Rated"), ApplicationModel::SortableRatingRole);
@@ -78,7 +89,9 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
     headerLayout->addWidget(m_headerIcon);
     headerLayout->addWidget(m_headerLabel);
     headerLayout->addStretch();
+    headerLayout->addWidget(sortLabel);
     headerLayout->addWidget(m_sortCombo);
+    headerLayout->addWidget(m_techCheckBox);
 
     m_treeView = new QTreeView(this);
     m_treeView->setAlternatingRowColors(true);
@@ -152,6 +165,15 @@ void ApplicationViewWidget::setFiltersFromCategory(Category *category)
 void ApplicationViewWidget::setShouldShowTechnical(bool show)
 {
     m_proxyModel->setShouldShowTechnical(show);
+}
+
+void ApplicationViewWidget::setCanShowTechnical(bool canShow)
+{
+    m_canShowTechnical = canShow;
+
+    if (canShow) {
+        m_techCheckBox->show();
+    }
 }
 
 void ApplicationViewWidget::search(const QString &text)
@@ -229,6 +251,11 @@ void ApplicationViewWidget::updateSortCombo()
         // Remove relevancy item if we aren't searching anymore
         m_sortCombo->removeItem(searchItemIndex);
     }
+}
+
+void ApplicationViewWidget::techCheckChanged(int state)
+{
+    setShouldShowTechnical(state == Qt::Checked);
 }
 
 #include "ApplicationViewWidget.moc"
