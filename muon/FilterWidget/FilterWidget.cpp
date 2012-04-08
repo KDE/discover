@@ -68,10 +68,10 @@ FilterWidget::FilterWidget(QWidget *parent)
     m_filterBox->addItem(m_originList, KIcon(), i18nc("@title:tab", "By Origin"));
 
     m_archList = new QListView(this);
-    m_archList->hide();
     connect(m_archList, SIGNAL(clicked(QModelIndex)),
             this, SLOT(architectureActivated(QModelIndex)));
     m_listViews.append(m_archList);
+    m_filterBox->addItem(m_archList, KIcon(), i18nc("@title:tab", "By Architecture"));
 
     for (QListView *view : m_listViews) {
         view->setAlternatingRowColors(true);
@@ -120,27 +120,11 @@ void FilterWidget::populateFilters()
 
     ArchitectureFilter *archFilter = new ArchitectureFilter(this, m_backend);
     m_filterModels.append(archFilter);
+    m_archList->setModel(archFilter);
 
     // Populate filter lists
     for (FilterModel *filterModel : m_filterModels) {
         filterModel->populate();
-    }
-
-    // Special-case showing the architecture list, it won't show on single-arch systems
-    if (archFilter->shouldShow()) {
-        m_archList->setModel(archFilter);
-
-        if (m_filterBox->indexOf(m_archList) == -1)
-            m_filterBox->addItem(m_archList, KIcon(), i18nc("@title:tab", "By Architecture"));
-        m_archList->show();
-    } else {
-        m_filterBox->removeItem(m_filterBox->indexOf(m_archList));
-        m_filterModels.remove(m_filterModels.indexOf(archFilter));
-        delete archFilter;
-
-        m_listViews.remove(m_listViews.indexOf(m_archList));
-        delete m_archList;
-        m_archList = 0;
     }
 
     // Set the selected item of each filter list to "All"

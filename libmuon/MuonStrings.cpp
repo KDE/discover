@@ -34,6 +34,7 @@ MuonStrings::MuonStrings(QObject *parent)
     : QObject(parent)
     , m_groupHash(groupHash())
     , m_stateHash(stateHash())
+    , m_archHash(archHash())
 {
 }
 
@@ -214,4 +215,25 @@ QHash<int, QString> MuonStrings::stateHash()
 QString MuonStrings::packageStateName(QApt::Package::State state) const
 {
     return m_stateHash.value(state);
+}
+
+QHash<QString, QString> MuonStrings::archHash()
+{
+    QHash<QString, QString> hash;
+    hash["all"] = i18nc("@item:inlistbox", "Common");
+    hash["i386"] = i18nc("@item:inlistbox CPU architecture", "32-bit");
+    hash["amd64"] = i18nc("@item:inlistbox CPU architecture", "64-bit");
+    hash["powerpc"] = i18nc("@item:inlistbox PU architecture", "Power PC");
+
+    return hash;
+}
+
+QString MuonStrings::archString(const QString &arch) const
+{
+    QString str = m_archHash.value(arch);
+
+    if (str.isEmpty())
+        str = arch;
+
+    return str;
 }

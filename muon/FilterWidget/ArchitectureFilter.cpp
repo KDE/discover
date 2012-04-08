@@ -27,6 +27,9 @@
 // LibQApt includes
 #include <LibQApt/Backend>
 
+// Libmuon includes
+#include "../libmuon/MuonStrings.h"
+
 ArchitectureFilter::ArchitectureFilter(QObject *parent, QApt::Backend *backend)
     : FilterModel(parent)
     , m_backend(backend)
@@ -34,19 +37,10 @@ ArchitectureFilter::ArchitectureFilter(QObject *parent, QApt::Backend *backend)
 {
 }
 
-bool ArchitectureFilter::shouldShow() const
-{
-    return m_shouldShow;
-}
-
 void ArchitectureFilter::populate()
 {
     QStringList archList = m_backend->architectures();
-
-    if (archList.size() < 2) {
-        m_shouldShow = false;
-        return;
-    }
+    archList.prepend("all");
 
     QStandardItem *defaultItem = new QStandardItem;
     defaultItem->setEditable(false);
@@ -57,7 +51,7 @@ void ArchitectureFilter::populate()
     for (const QString &arch : archList) {
         QStandardItem *archItem = new QStandardItem;
         archItem->setEditable(false);
-        archItem->setText(arch);
+        archItem->setText(MuonStrings::global()->archString(arch));
         archItem->setData(arch, Qt::UserRole+1);
         appendRow(archItem);
     }

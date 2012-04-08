@@ -39,13 +39,16 @@ public:
     QString groupName(const QString &name) const;
     QString groupKey(const QString &text) const;
     QString packageStateName(QApt::Package::State state) const;
+    QString archString(const QString &arch) const;
 
 private:
     const QHash<QString, QString> m_groupHash;
     const QHash<int, QString> m_stateHash;
+    const QHash<QString, QString> m_archHash;
 
     QHash<QString, QString> groupHash();
     QHash<int, QString> stateHash();
+    QHash<QString, QString> archHash();
 };
 
 #endif

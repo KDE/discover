@@ -32,7 +32,6 @@ class ArchitectureFilter : public FilterModel
 public:
     ArchitectureFilter(QObject *parent, QApt::Backend *backend);
 
-    bool shouldShow() const;
     void populate();
 
 private:

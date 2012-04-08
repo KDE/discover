@@ -148,7 +148,6 @@ bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
         }
     }
 
-    // TODO before 1.4: Configurable
     if (!MuonSettings::self()->showMultiArchDupes()) {
         if (package->isMultiArchDuplicate())
             return false;
