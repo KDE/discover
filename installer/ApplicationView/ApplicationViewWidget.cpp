@@ -56,8 +56,8 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
     m_appModel = new ApplicationModel(this);
     m_appModel->setBackend(m_appBackend);
     m_proxyModel = new ApplicationProxyModel(this);
-    m_proxyModel->setSourceModel(m_appModel);
     m_proxyModel->setSortRole(ApplicationModel::SortableRatingRole);
+    m_proxyModel->setSourceModel(m_appModel);
 
     QWidget *header = new QWidget(this);
     QHBoxLayout *headerLayout = new QHBoxLayout(header);
