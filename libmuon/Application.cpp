@@ -84,8 +84,8 @@ QString Application::name()
     if (!m_isTechnical)
         return i18n(untranslatedName().toUtf8());
 
-    // Technical packages use the package desc, which is translated by apt
-    return m_package->shortDescription();
+    // Technical packages use the package name, which is untranslatable
+    return m_package->latin1Name();
 }
 
 QString Application::untranslatedName()
@@ -109,11 +109,7 @@ QString Application::comment()
         // Sometimes GenericName is used instead of Comment
         comment = getField("GenericName");
         if (comment.isEmpty()) {
-            if (m_isTechnical) {
-                return package()->name();
-            } else {
-                return package()->shortDescription();
-            }
+            return package()->shortDescription();
         }
     }
 
