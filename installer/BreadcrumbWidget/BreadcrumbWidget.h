@@ -63,6 +63,7 @@ private:
     KHBox *m_breadcrumbArea;
     KLineEdit *m_searchEdit;
     QTimer *m_searchTimer;
+    bool m_manualClear;
 
 public Q_SLOTS:
     void setCurrentItem(BreadcrumbItem *crumb);
@@ -73,6 +74,7 @@ private Q_SLOTS:
     void goForward();
     void onItemActivated(BreadcrumbItem *item);
     void clearCrumbs();
+    void clearClicked();
 
 Q_SIGNALS:
     void itemActivated(BreadcrumbItem *item);

@@ -33,6 +33,7 @@
 
 BreadcrumbWidget::BreadcrumbWidget(QWidget *parent)
     : KHBox(parent)
+    , m_manualClear(false)
 {
     setSpacing(2);
     KGuiItem backButton = KStandardGuiItem::back();
@@ -71,6 +72,7 @@ BreadcrumbWidget::BreadcrumbWidget(QWidget *parent)
     connect(m_forwardButton, SIGNAL(clicked()), this, SLOT(goForward()));
     connect(m_searchTimer, SIGNAL(timeout()), this, SLOT(startSearch()));
     connect(m_searchEdit, SIGNAL(textChanged(QString)), m_searchTimer, SLOT(start()));
+    connect(m_searchEdit, SIGNAL(clearButtonClicked()), this, SLOT(clearClicked()));
 }
 
 BreadcrumbWidget::~BreadcrumbWidget()
@@ -169,8 +171,11 @@ void BreadcrumbWidget::onItemActivated(BreadcrumbItem *item)
 
 void BreadcrumbWidget::startSearch()
 {
-    if (!m_searchEdit->text().isEmpty())
-        emit search(m_searchEdit->text());
+    if (m_searchEdit->text().isEmpty() && !m_manualClear)
+        return;
+
+    emit search(m_searchEdit->text());
+    m_manualClear = false;
 }
 
 void BreadcrumbWidget::showSearchEdit()
@@ -194,6 +199,11 @@ BreadcrumbItem *BreadcrumbWidget::breadcrumbForView(AbstractViewBase *view)
     }
 
     return itemForView;
+}
+
+void BreadcrumbWidget::clearClicked()
+{
+    m_manualClear = true;
 }
 
 #include "BreadcrumbWidget.moc"
