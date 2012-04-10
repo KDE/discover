@@ -50,7 +50,7 @@ class MuonInstallerMainWindow : public MuonMainWindow
 
     signals:
         void appBackendChanged();
-        void openApplicationInternal(const QString& app);
+        void openApplicationInternal(const QString& appname);
 
     private:
         QString m_appToBeOpened;

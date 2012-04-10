@@ -28,8 +28,6 @@ Item {
             var obj = currentTopLevel.createObject(pageStack)
             pageStack.initialPage = obj
 //             console.log("created "+currentTopLevel)
-            
-            pageStack.content=obj
         } catch (e) {
             console.log("error: "+e)
             console.log("comp error: "+currentTopLevel.errorString())
@@ -111,7 +109,7 @@ Item {
             connectionBox.init()
             window.state = "loaded"
         }
-        onOpenApplicationInternal: pageStack.content.openApplication(app)
+        onOpenApplicationInternal: Navigation.openApplication(app.appBackend.applicationByPackageName(appname))
     }
     
     ToolBar {
@@ -170,7 +168,6 @@ Item {
     PageStack {
         id: pageStack
         clip: true
-        property Item content
         toolBar: pageToolBar
         anchors {
             bottom: progressBox.top

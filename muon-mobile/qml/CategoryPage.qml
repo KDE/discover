@@ -15,12 +15,6 @@ Page {
         else
             Navigation.openApplicationList("edit-find", i18n("Search..."), category, text)
     }
-    
-    function openApplication(packageName) {
-        var application = app.appBackend.applicationByPackageName(packageName)
-        console.log("opening "+packageName + "..."+application)
-        Navigation.openApplication(application)
-    }
 
     Component {
         id: categoryDelegate
