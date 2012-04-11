@@ -400,6 +400,9 @@ void ApplicationWindow::changeView(const QModelIndex &index)
             appView->setStateFilter(stateFilter);
             appView->setOriginFilter(originFilter);
             appView->setCanShowTechnical(true);
+
+            if (originFilter != QLatin1String("Ubuntu") && originFilter != QLatin1String("Debian"))
+                appView->setShouldShowTechnical(true);
         }
         break;
         case CatView: {

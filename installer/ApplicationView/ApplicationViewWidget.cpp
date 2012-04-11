@@ -165,6 +165,7 @@ void ApplicationViewWidget::setFiltersFromCategory(Category *category)
 void ApplicationViewWidget::setShouldShowTechnical(bool show)
 {
     m_proxyModel->setShouldShowTechnical(show);
+    m_techCheckBox->setChecked(show);
 }
 
 void ApplicationViewWidget::setCanShowTechnical(bool canShow)
