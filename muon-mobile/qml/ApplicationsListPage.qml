@@ -41,6 +41,7 @@ Page {
                     onClicked: {
                         appsModel.stringSortRole=role
                         appsModel.sortOrder=sorting
+                        button.checked=false
                     }
                     checked: appsModel.stringSortRole==role
                 }
@@ -54,7 +55,10 @@ Page {
                 delegate: ToolButton {
                     width: parent.width
                     text: modelData
-                    onClicked: page.state=modelData
+                    onClicked: {
+                        page.state=modelData
+                        listViewShown.checked=false
+                    }
                     checked: page.state==modelData
                 }
             }

@@ -7,8 +7,7 @@ MuonToolButton {
     property alias model: menuRepeater.model
     
     checkable: true
-    checked: menuItem.visible
-    onClicked: menuItem.visible=!menuItem.visible
+    checked: false
     
     Item {
         id: menuItem
@@ -16,7 +15,7 @@ MuonToolButton {
         height: buttons.height
         anchors.right: parent.right
         anchors.top: parent.bottom
-        visible: false
+        visible: button.checked
         Rectangle {
             anchors.fill: parent
             radius: 10
