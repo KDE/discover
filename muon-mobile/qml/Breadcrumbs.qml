@@ -5,7 +5,6 @@ Item {
     id: bread
     property alias count: items.count
     property Item pageStack: null
-    anchors.margins: 5
     
     function currentItem() {
         return items.count=="" ? null : items.get(items.count-1).display
@@ -31,7 +30,10 @@ Item {
     {
         id: view
         anchors {
-            fill: parent
+            top: parent.top
+            bottom: parent.bottom
+            right: parent.right
+            left: upButton.right
         }
         
         spacing: 10
@@ -52,8 +54,9 @@ Item {
     }
     
     ToolButton {
+        id: upButton
         iconSource: "go-up"
-        anchors.right: parent.right
+        anchors.left: parent.left
         height: parent.height
         visible: items.count>1
         onClicked: popItem(false)
