@@ -15,15 +15,15 @@ Item {
         items.append({"decoration": icon, "display": text})
     }
     
-    function popItem() {
+    function popItem(last) {
         items.remove(items.count-1)
+        pageStack.pop(undefined, last)
     }
     
     function doClick(index) {
-        var pos = items.count-index-1 
+        var pos = items.count-index-1
         for(; pos>0; --pos) {
-            pageStack.pop(undefined, pos>1)
-            bread.popItem()
+            bread.popItem(pos>1)
         }
     }
     
@@ -49,5 +49,13 @@ Item {
         onCountChanged: view.positionViewAtEnd()
         
         ListModel { id: items }
+    }
+    
+    ToolButton {
+        iconSource: "go-up"
+        anchors.right: parent.right
+        height: parent.height
+        visible: items.count>1
+        onClicked: popItem(false)
     }
 }

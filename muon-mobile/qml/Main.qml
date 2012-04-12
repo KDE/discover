@@ -128,7 +128,7 @@ Item {
             Breadcrumbs {
                 anchors {
                     left: parent.left
-                    right: searchField.right
+                    right: searchField.left
                     top: parent.top
                     bottom: parent.bottom
                 }
