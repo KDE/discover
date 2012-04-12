@@ -116,6 +116,7 @@ Item {
             
             asynchronous: true
             fillMode: Image.PreserveAspectFit
+            source: thumbnailsView.model.get(thumbnailsView.currentIndex).large_image_url
             
             onStatusChanged: if(status==Image.Error) {
                 sourceSize.width = sourceSize.height = 200
@@ -130,7 +131,7 @@ Item {
                 PropertyChanges { target: shadow; height: parent.height }
                 PropertyChanges { target: shadow; x: 0 }
                 PropertyChanges { target: shadow; y: 5 }
-                PropertyChanges { target: screenshot; source: application.screenshotUrl(0) }
+                PropertyChanges { target: thumbnailsView; opacity: 1 }
             },
             State { name: "full"
                 PropertyChanges { target: shadowItem; opacity: 0.7 }
@@ -139,7 +140,7 @@ Item {
                 PropertyChanges { target: shadow; height: appInfo.height }
                 PropertyChanges { target: shadow; width: appInfo.width }
                 PropertyChanges { target: shadow; z: 0 }
-                PropertyChanges { target: screenshot; source: application.screenshotUrl(1) }
+                PropertyChanges { target: thumbnailsView; opacity: 0.3 }
             }
         ]
         Behavior on y { NumberAnimation { easing.type: Easing.OutQuad; duration: 500 } }
@@ -149,6 +150,33 @@ Item {
         MouseArea {
             anchors.fill: parent
             onClicked: { shadow.state = shadow.state == "thumbnail" ? "full" : "thumbnail" }
+        }
+        
+        GridView {
+            id: thumbnailsView
+            cellHeight: 45
+            cellWidth: 45
+            interactive: false
+            
+            anchors {
+                fill: shadow
+                bottomMargin: 5
+            }
+            
+            model: ScreenshotsModel {
+                application: appInfo.application
+            }
+            highlight: Rectangle { color: "white"; opacity: 0.5 }
+            
+            delegate: Image {
+                source: small_image_url
+                anchors.top: parent.top
+                height: 40; width: 40
+                fillMode: Image.PreserveAspectFit
+                smooth: true
+                MouseArea { anchors.fill: parent; onClicked: thumbnailsView.currentIndex=index}
+            }
+            Behavior on opacity { NumberAnimation { easing.type: Easing.OutQuad; duration: 500 } }
         }
     }
 }
