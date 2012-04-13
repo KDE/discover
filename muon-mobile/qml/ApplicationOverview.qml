@@ -157,7 +157,8 @@ Item {
             cellHeight: 45
             cellWidth: 45
             interactive: false
-            
+            visible: count>1
+
             anchors {
                 fill: shadow
                 bottomMargin: 5
