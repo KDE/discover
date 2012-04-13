@@ -62,7 +62,7 @@ void ApplicationProxyModel::search(const QString &searchText)
         m_filterBySearch = false;
         m_sortByRelevancy = false;
     }
-    invalidate();
+    invalidateFilter();
     emit invalidated();
 }
 
