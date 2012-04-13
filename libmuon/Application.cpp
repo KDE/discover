@@ -54,7 +54,6 @@ Application::Application(const QString &fileName, QApt::Backend *backend)
         , m_package(0)
         , m_isValid(false)
         , m_isTechnical(false)
-        , m_isExtrasApp(false)
         , m_usageCount(-1)
 {
     m_data = desktopContents();
@@ -65,14 +64,9 @@ Application::Application(QApt::Package *package, QApt::Backend *backend)
         , m_package(package)
         , m_isValid(true)
         , m_isTechnical(true)
-        , m_isExtrasApp(false)
         , m_usageCount(-1)
 {
     m_packageName = m_package->name();
-    if (!m_package->controlField(QLatin1String("Appname")).isEmpty()) {
-        m_isExtrasApp = true;
-        m_isTechnical = false;
-    }
 }
 
 Application::~Application()
@@ -81,11 +75,7 @@ Application::~Application()
 
 QString Application::name()
 {
-    if (!m_isTechnical)
-        return i18n(untranslatedName().toUtf8());
-
-    // Technical packages use the package name, which is untranslatable
-    return m_package->latin1Name();
+    return i18n(untranslatedName().toUtf8());
 }
 
 QString Application::untranslatedName()
@@ -93,10 +83,19 @@ QString Application::untranslatedName()
     QString name = QString::fromUtf8(getField("Name")).trimmed();
     if (name.isEmpty() && package()) {
         // extras.ubuntu.com packages can have this
-        if (m_isExtrasApp)
-            name = m_package->controlField(QLatin1String("Appname"));
-        else
-            name = m_package->latin1Name();
+        name = m_package->controlField(QLatin1String("Appname"));
+
+        if (!name.isEmpty()) {
+            // Graduate to non-technical, since it has Appname
+            m_isTechnical = false;
+            return name;
+        }
+
+        if (m_isTechnical) {
+            return m_package->shortDescription();
+        } else {
+            return m_package->latin1Name();
+        }
     }
 
     return name;
@@ -252,8 +251,12 @@ QString Application::categories()
 
     if (categories.isEmpty()) {
         // extras.ubuntu.com packages can have this field
-        if (m_isExtrasApp)
-            categories = package()->controlField(QLatin1String("Category"));
+        categories = package()->controlField(QLatin1String("Category"));
+
+        if (!categories.isEmpty()) {
+            // Graduate to non-technical, since it has Appname
+            m_isTechnical = false;
+        }
     }
     return categories;
 }
@@ -264,19 +267,17 @@ KUrl Application::screenshotUrl(QApt::ScreenshotType type)
     KUrl url;
 
     // Try to get a screenshot for extras.ubuntu.com packages
-    if (m_isExtrasApp) {
-        switch (type) {
-        case QApt::Thumbnail:
-            appUrl = package()->controlField(QLatin1String("Thumbnail-Url"));
-            if (appUrl.isEmpty()) // Fallback, some extras.ubuntu.com don't have thumbnails
-                appUrl = package()->controlField(QLatin1String("Screenshot-Url"));
-            break;
-        case QApt::Screenshot:
+    switch (type) {
+    case QApt::Thumbnail:
+        appUrl = package()->controlField(QLatin1String("Thumbnail-Url"));
+        if (appUrl.isEmpty()) // Fallback, some extras.ubuntu.com don't have thumbnails
             appUrl = package()->controlField(QLatin1String("Screenshot-Url"));
-            break;
-        default:
-            break;
-        }
+        break;
+    case QApt::Screenshot:
+        appUrl = package()->controlField(QLatin1String("Screenshot-Url"));
+        break;
+    default:
+        break;
     }
 
     // Otherwise, just check screenshots.debian.net
