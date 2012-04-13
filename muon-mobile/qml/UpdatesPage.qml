@@ -47,12 +47,12 @@ Page
         }
         clip: true
         contentHeight: message.height
+        visible: page.state=="updating"
         
         Label {
             id: message
             width: parent.width-messageScroll.width
             wrapMode: Text.WordWrap
-            visible: page.state=="updating"
             onTextChanged: messageFlickable.contentY=message.height
         }
     }
@@ -60,13 +60,13 @@ Page
     ApplicationsList {
         id: apps
         anchors {
-            top: commitButton.bottom
+            top: parent.top
             left: parent.left
             right: parent.right
             bottom: librariesUpdatesLabel.top
         }
         model: ApplicationProxyModel {
-            sortOrder: Qt.DescendingOrder
+            sortOrder: Qt.AscendingOrder
             stateFilter: (1<<9)//Upgradeable
             stringSortRole: "origin"
             
@@ -76,6 +76,7 @@ Page
         section.delegate: Label { text: i18n("From %1", section) }
         visible: apps.count>0 && page.state!="updating"
         preferUpgrade: true
+        clip: true
     }
     Label {
         id: librariesUpdatesLabel
@@ -85,26 +86,25 @@ Page
             bottom: parent.bottom
             bottomMargin: apps.count>0 ? 0 : page.height/2
         }
-        height: app.appBackend.updatesCount==0 ? 0 : 30
-        font.pointSize: 25
+        height: app.appBackend.updatesCount==0 ? 0 : 40
+        font.pixelSize: height*0.8
         text: i18n("%1 system updates", app.appBackend.updatesCount)
         visible: app.appBackend.updatesCount>0 && page.state!="updating"
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
     }
-    Button {
-        id: commitButton
-        anchors {
-            top: parent.top
-            left: parent.left
-            right: parent.right
-        }
-        text: i18n("Upgrade All!")
-        visible: app.appBackend.updatesCount>0 && page.state!="updating"
-        
-        onClicked: {
-            updates.upgradeAll();
-            page.state = "updating"
+    tools: Row {
+        anchors.fill: parent
+        ToolButton {
+            id: commitButton
+            text: i18n("Upgrade All!")
+            iconSource: "system-software-update"
+            visible: app.appBackend.updatesCount>0 && page.state!="updating"
+            
+            onClicked: {
+                updates.upgradeAll();
+                page.state = "updating"
+            }
         }
     }
     
