@@ -121,6 +121,7 @@ private:
 
     bool m_isValid;
     bool m_isTechnical;
+    bool m_isExtrasApp;
     int m_usageCount;
 };
 
