@@ -85,7 +85,7 @@ QString Application::name()
         return i18n(untranslatedName().toUtf8());
 
     // Technical packages use the package name, which is untranslatable
-    return m_package->latin1Name();
+    return untranslatedName();
 }
 
 QString Application::untranslatedName()
@@ -118,7 +118,7 @@ QString Application::comment()
 
 QString Application::packageName() const
 {
-    QString ret = m_isTechnical ? m_packageName : getField("X-AppInstall-Package");
+    QString ret = (m_isTechnical || m_isExtrasApp) ? m_packageName : getField("X-AppInstall-Package");
     if(ret.isEmpty())
         ret = m_packageName;
 
