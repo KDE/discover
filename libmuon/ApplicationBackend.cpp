@@ -79,6 +79,10 @@ QVector<Application *> init(QApt::Backend *backend)
         if(packages.contains(package->name())) {
             continue;
         }
+
+        if (package->isMultiArchDuplicate())
+            continue;
+
         Application *app = new Application(package, backend);
         tempList << app;
     }
