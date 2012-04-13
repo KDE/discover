@@ -16,6 +16,7 @@ Page {
     
     function searchFor(text) {
         appsModel.search(text)
+        state="list"
     }
     
     ApplicationProxyModel {
