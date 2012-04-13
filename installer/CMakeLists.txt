@@ -1,9 +1,3 @@
-if (HAVEKDE4_6_60)
-else (HAVEKDE4_6_60)
-    set(messagewidget_SRCS backports/kmessagewidget.cpp)
-    include_directories(backports)
-endif (HAVEKDE4_6_60)
-
 include_directories(../libmuon)
 
 set(muon_installer_SRCS
@@ -32,8 +26,7 @@ set(muon_installer_SRCS
     ReviewsWidget/ReviewWidget.cpp
     ReviewsWidget/ReviewsWidget.cpp
     ScreenShotOverlay.cpp
-    ViewSwitcher.cpp
-    ${messagewidget_SRCS})
+    ViewSwitcher.cpp)
 
 kde4_add_kcfg_files(muon_installer_SRCS GENERATE_MOC config/MuonInstallerSettings.kcfgc)
 

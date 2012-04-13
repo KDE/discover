@@ -29,7 +29,7 @@
 #include <KAction>
 #include <KActionCollection>
 #include <KDebug>
-#include "kmessagewidget.h"
+#include <KMessageWidget>
 #include <KProcess>
 #include <KStandardDirs>
 #include <Solid/Device>

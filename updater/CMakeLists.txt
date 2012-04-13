@@ -1,9 +1,3 @@
-if (HAVEKDE4_6_60)
-else (HAVEKDE4_6_60)
-    set(messagewidget_SRCS backports/kmessagewidget.cpp)
-    include_directories(backports)
-endif (HAVEKDE4_6_60)
-
 include_directories(../libmuon)
 
 set(muon_updater_SRCS
@@ -15,8 +9,7 @@ set(muon_updater_SRCS
     UpdateModel/UpdateItem.cpp
     UpdateModel/UpdateModel.cpp
     UpdateModel/UpdateDelegate.cpp
-    config/UpdaterSettingsDialog.cpp
-    ${messagewidget_SRCS})
+    config/UpdaterSettingsDialog.cpp)
 
 kde4_add_executable(muon-updater ${muon_updater_SRCS})
 

@@ -32,11 +32,11 @@
 #include <KAction>
 #include <KActionCollection>
 #include <KIcon>
+#include <KMessageWidget>
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
 #include <KService>
 #include <KToolInvocation>
-#include "kmessagewidget.h"
 
 // LibQApt includes
 #include <LibQApt/Backend>
