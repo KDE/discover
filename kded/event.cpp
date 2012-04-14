@@ -194,7 +194,7 @@ void Event::run()
 
 void Event::ignore()
 {
-    m_notifierItem->deleteLater();
+    delete m_notifierItem;
     m_notifierItem = 0;
     notifyClosed();
 }

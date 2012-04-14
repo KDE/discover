@@ -42,6 +42,7 @@ UpdateEvent::~UpdateEvent()
 void UpdateEvent::show(int updates, int securityUpdates)
 {
     if (!updates && !securityUpdates) {
+        Event::ignore();
         return;
     }
 
