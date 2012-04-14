@@ -151,6 +151,9 @@ void ApplicationBackend::reload()
     m_reviewsBackend->stopPendingJobs();
     m_backend->reloadCache();
 
+    foreach(Application* app, m_appList)
+        app->package();
+
     m_isReloading = false;
     emit reloadFinished();
 }
