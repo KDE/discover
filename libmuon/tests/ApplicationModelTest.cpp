@@ -35,18 +35,18 @@ QTEST_KDEMAIN_CORE( ApplicationModelTest )
 ApplicationModelTest::ApplicationModelTest()
 {
     m_backend = new QApt::Backend;
-    if (m_backend->xapianIndexNeedsUpdate()) {
-        m_backend->updateXapianIndex();
-    }
 
     if (KProtocolManager::proxyType() == KProtocolManager::ManualProxy) {
         m_backend->setWorkerProxy(KProtocolManager::proxyFor("http"));
     }
     m_backend->init();
+    if (m_backend->xapianIndexNeedsUpdate()) {
+        m_backend->updateXapianIndex();
+    }
     
     m_appBackend = new ApplicationBackend(this);
     m_appBackend->setBackend(m_backend);
-    QTest::kWaitForSignal(m_appBackend, SIGNAL(appBackendReady()), 5000);
+    QTest::kWaitForSignal(m_appBackend, SIGNAL(appBackendReady()));
 }
 
 ApplicationModelTest::~ApplicationModelTest()
