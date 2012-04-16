@@ -24,22 +24,21 @@
 #include <QObject>
 #include <QStringList>
 #include <QVariantList>
+#include <qdeclarativelist.h>
 
-class Source : public QObject
+class Entry : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(bool isSource READ isSource CONSTANT)
-    Q_PROPERTY(QString uri READ uri CONSTANT)
+    Q_PROPERTY(bool hasSource READ hasSource CONSTANT)
     Q_PROPERTY(QStringList args READ args CONSTANT)
     Q_PROPERTY(QString suite READ suite CONSTANT)
     Q_PROPERTY(QString arch READ arch CONSTANT)
 
     public:
-        bool isSource() const { return m_isSource; }
-        void setSource(bool s) { m_isSource = s; }
+        Entry(QObject* parent) : QObject(parent), m_isSource(false) {}
         
-        QString uri() { return m_uri; }
-        void setUri(const QByteArray& uri) { m_uri = uri; }
+        bool hasSource() const { return m_isSource; }
+        void setSource(bool s) { m_isSource = s; }
         
         QStringList args() const { return m_args; }
         void setArgs(const QStringList& args) { m_args = args; }
@@ -51,10 +50,26 @@ class Source : public QObject
         QString arch() const { return m_arch; }
     private:
         bool m_isSource;
-        QByteArray m_uri;
         QStringList m_args;
         QByteArray m_suite;
         QString m_arch;
+};
+
+class Source : public QObject
+{
+    Q_OBJECT
+    Q_PROPERTY(QString uri READ uri CONSTANT)
+    Q_PROPERTY(QDeclarativeListProperty<Entry> entries READ entries CONSTANT)
+    public:
+        Source(QObject* parent) : QObject(parent) {}
+        QString uri() { return m_uri; }
+        void setUri(const QString& uri) { m_uri = uri; }
+        void addEntry(Entry* entry) { m_entries.append(entry); }
+        QDeclarativeListProperty<Entry> entries();
+    
+    private:
+        QString m_uri;
+        QList<Entry*> m_entries;
 };
 
 class OriginsBackend : public QObject
@@ -65,15 +80,15 @@ class OriginsBackend : public QObject
         explicit OriginsBackend(QObject* parent = 0);
         virtual ~OriginsBackend();
 
-        void load();
         void load(const QString& file);
         QVariantList sourcesVariant() const;
         QList<Source*> sources() const { return m_sources; }
+        Source* sourceForUri(const QString& uri);
 
     public slots:
         void addRepository(const QString& repository);
         void removeRepository(const QString& repository);
-        void initialize();
+        void load();
 
     private slots:
         void additionDone(int processErrorCode);

@@ -93,6 +93,7 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     qmlRegisterType<ApplicationModel>();
     qmlRegisterType<QApt::Backend>();
     qmlRegisterType<Source>();
+    qmlRegisterType<Entry>();
     
     connect(this, SIGNAL(backendReady(QApt::Backend*)), SLOT(setBackend(QApt::Backend*)));
     

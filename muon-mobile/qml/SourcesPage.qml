@@ -92,12 +92,10 @@ Page {
         id: scroll
         orientation: Qt.Vertical
         flickableItem: view
-        stepSize: 40
-        scrollButtonInterval: 50
         anchors {
-                top: view.top
-                right: parent.right
-                bottom: view.bottom
+            top: view.top
+            right: parent.right
+            bottom: view.bottom
         }
     }
     ListView {
@@ -108,23 +106,46 @@ Page {
             leftMargin: 3
         }
         clip: true
-        section.property: "uri"
-        section.delegate: Label {
-            text: section
-            horizontalAlignment: Text.AlignRight
-            width: parent.width
-            font.bold: true
-        }
         
         model: origins.sources
         
         delegate: ListItem {
+            function joinEntriesSuites(source) {
+                var vals = {}
+                for(var i=0; i<source.entries.length; ++i) {
+                    var entry = source.entries[i]
+                    if(vals[entry.suite]==null)
+                        vals[entry.suite]=0
+                    
+                    if(entry.isSource)
+                        vals[entry.suite] += 2
+                    else
+                        vals[entry.suite] += 1
+                }
+                var ret = new Array
+                for(var e in vals) {
+                    if(vals[e]>1)
+                        ret.push(e)
+                    else
+                        ret.push(i18n("%1 (Binary)", e))
+                }
+                
+                return ret.join(", ")
+            }
+            
             Label {
                 anchors {
                     fill: parent
                     leftMargin: removeButton.width+5
                 }
-                text: modelData.isSource ? i18n("%1 (Source)", modelData.suite) : modelData.suite
+                text: modelData.uri
+            }
+            Label {
+                anchors {
+                    bottom: parent.bottom
+                    right: parent.right
+                }
+                text: joinEntriesSuites(modelData)
             }
             ToolButton {
                 id: removeButton

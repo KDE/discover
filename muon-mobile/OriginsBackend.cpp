@@ -33,21 +33,12 @@
 OriginsBackend::OriginsBackend(QObject* parent)
     : QObject(parent)
 {
-    if(!BackendsSingleton::self()->applicationBackend())
-        connect(BackendsSingleton::self(), SIGNAL(initialized()), SLOT(initialize()));
-    else
-        load();
+    QMetaObject::invokeMethod(this, "load", Qt::QueuedConnection);
 }
 
 OriginsBackend::~OriginsBackend()
 {
     qDeleteAll(m_sources);
-}
-
-void OriginsBackend::initialize()
-{
-    connect(BackendsSingleton::self()->applicationBackend(), SIGNAL(reloadFinished()), SIGNAL(originsChanged()));
-    load();
 }
 
 void OriginsBackend::load()
@@ -82,31 +73,46 @@ void OriginsBackend::load(const QString& file)
             line = line.left(comment);
         
         if(!line.isEmpty()) {
-            Source* newSource = new Source;
+            QString architecture;
             int arch = rxArchitecture.indexIn(line);
             if(arch>=0) {
-                newSource->setArch(rxArchitecture.cap(1));
+                architecture = rxArchitecture.cap(1);
                 line.remove(arch, rxArchitecture.matchedLength());
             }
             
             QList<QByteArray> source = line.split(' ');
             if(source.count() < 3) {
-                delete newSource;
                 return;
             }
-            newSource->setSource(source.first().endsWith("deb-src"));
-            newSource->setUri(source[1]);
-            newSource->setSuite(source[2]);
+            QByteArray uri = source[1];
+            Source* newSource = sourceForUri(source[1]);
+            Entry* entry = new Entry(newSource);
+            
+            entry->setArch(architecture);
+            entry->setSource(source.first().endsWith("deb-src"));
+            entry->setSuite(source[2]);
             
             QStringList args;
             foreach(const QByteArray& arg, source.mid(3)) {
                 args += arg;
             }
-            newSource->setArgs(args);
-            m_sources += newSource;
+            newSource->addEntry(entry);
         }
     }
+    
     emit originsChanged();
+}
+
+Source* OriginsBackend::sourceForUri(const QString& uri)
+{
+    foreach(Source* s, m_sources) {
+        if(s->uri()==uri)
+            return s;
+    }
+    Source* s = new Source(this);
+    s->setUri(uri);
+    m_sources += s;
+    return s;
 }
 
 void OriginsBackend::addRepository(const QString& repository)
@@ -164,5 +170,9 @@ QVariantList OriginsBackend::sourcesVariant() const
     return ret;
 }
 
-#include "moc_OriginsBackend.cpp"
+QDeclarativeListProperty<Entry> Source::entries()
+{
+    return QDeclarativeListProperty<Entry>(this, m_entries);
+}
 
+#include "moc_OriginsBackend.cpp"
