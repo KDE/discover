@@ -36,11 +36,12 @@ Item {
             property QtObject ratingInstance: appInfo.application ? app.appBackend.reviewsBackend().ratingForApplication(appInfo.application) : null
             Rating {
                 anchors.horizontalCenter: parent.horizontalCenter
+                visible: overviewContents.ratingInstance!=null
                 rating: overviewContents.ratingInstance.rating()
             }
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: i18n("%1 reviews", overviewContents.ratingInstance.ratingCount())
+                text: i18n("%1 reviews", overviewContents.ratingInstance ? overviewContents.ratingInstance.ratingCount() : 0)
             }
             
             
