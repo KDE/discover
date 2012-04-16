@@ -55,6 +55,7 @@ ApplicationBackend::ApplicationBackend(QObject *parent)
 
 ApplicationBackend::~ApplicationBackend()
 {
+    qDeleteAll(m_appList);
 }
 
 QVector<Application *> init(QApt::Backend *backend)
