@@ -51,6 +51,7 @@ ApplicationModelTest::ApplicationModelTest()
 
 ApplicationModelTest::~ApplicationModelTest()
 {
+    delete m_appBackend;
     delete m_backend;
 }
 
