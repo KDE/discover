@@ -55,7 +55,8 @@ public:
         UsageCountRole,
         PopConRole,
         UntranslatedNameRole,
-        OriginRole
+        OriginRole,
+        CanUpgrade
     };
     explicit ApplicationModel(QObject* parent=0);
     ~ApplicationModel();

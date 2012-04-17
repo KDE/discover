@@ -57,6 +57,7 @@ ApplicationModel::ApplicationModel(QObject *parent)
     roles[PopConRole] = "popcon";
     roles[OriginRole] = "origin";
     roles[UntranslatedNameRole] = "untranslatedName";
+    roles[CanUpgrade] = "canUpgrade";
     setRoleNames(roles);
 }
 
@@ -225,6 +226,8 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role) const
             return m_apps.at(index.row())->origin();
         case UntranslatedNameRole:
             return m_apps.at(index.row())->untranslatedName();
+        case CanUpgrade:
+            return m_apps.at(index.row())->canUpgrade();
     }
 
     return QVariant();
