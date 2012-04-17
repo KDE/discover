@@ -4,6 +4,7 @@ import org.kde.qtextracomponents 0.1
 import org.kde.muon 1.0
 
 Item {
+    id: item
     property alias application: transactions.application
     property bool canHide: parent.state=="idle"
     property bool preferUpgrade: false
@@ -32,7 +33,7 @@ Item {
         states: [
             State {
                 name: "willupgrade"
-                when: application.canUpgrade && preferUpgrade
+                when: application.canUpgrade && item.preferUpgrade
                 PropertyChanges { target: button;  text: i18n("Upgrade") }
             },
             State {
