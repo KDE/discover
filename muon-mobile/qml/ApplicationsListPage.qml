@@ -14,6 +14,8 @@ Page {
     property bool preferUpgrade: false
     clip: true
     
+    function useList() { state="list" }
+    
     function searchFor(text) {
         appsModel.search(text)
         state="list"

@@ -12,7 +12,6 @@ Item {
     //toplevels
     property Component browsingComp: Qt.createComponent("qrc:/qml/BrowsingPage.qml")
     property Component installedComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
-    property Component updatesComp: Qt.createComponent("qrc:/qml/UpdatesPage.qml")
     property Component sourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
     property Component currentTopLevel: browsingComp
     
@@ -51,9 +50,8 @@ Item {
             }
             property list<TopLevelPageData> sectionsModel: [
                 TopLevelPageData { icon: "tools-wizard"; text: i18n("Discover"); component: browsingComp },
-                TopLevelPageData { icon: "applications-other"; text: i18n("Installed"); component: installedComp },
                 TopLevelPageData {
-                                icon: "system-software-update"; text: i18n("Updates"); component: updatesComp
+                                icon: "applications-other"; text: i18n("Installed"); component: installedComp
                                 overlay: !app.appBackend || app.appBackend.updatesCount==0 ? "" : app.appBackend.updatesCount
                 },
                 TopLevelPageData { icon: "document-import"; text: i18n("Sources"); component: sourcesComp }
