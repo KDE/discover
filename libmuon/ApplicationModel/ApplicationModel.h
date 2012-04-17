@@ -85,9 +85,6 @@ private Q_SLOTS:
     void transactionCancelled(Application *app);
     void reloadStarted();
     void reloadFinished();
-
-Q_SIGNALS:
-   void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight);
 };
 
 #endif
