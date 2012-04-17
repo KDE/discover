@@ -81,8 +81,13 @@ void ApplicationProxyModel::setStateFilter(QApt::Package::State state)
 void ApplicationProxyModel::setOriginFilter(const QString &origin)
 {
     m_originFilter = origin;
-    invalidate();
+    invalidateFilter();
     emit invalidated();
+}
+
+QString ApplicationProxyModel::originFilter() const
+{
+    return m_originFilter;
 }
 
 void ApplicationProxyModel::setFiltersFromCategory(Category *category)
