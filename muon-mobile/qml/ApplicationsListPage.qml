@@ -111,8 +111,8 @@ Page {
     ApplicationsList {
         id: apps
         anchors.fill: parent
-        stack: page.pageStack
         visible: !listViewShown.checked
+        preferUpgrade: page.preferUpgrade
         
         header: appsGrid.header
         model: appsModel

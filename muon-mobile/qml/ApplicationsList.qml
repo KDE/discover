@@ -5,7 +5,6 @@ import "navigation.js" as Navigation
 
 Item {
     id: parentItem
-    property Item stack
     property int elemHeight: 65
     property alias count: view.count
     property alias header: view.header
