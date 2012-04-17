@@ -75,16 +75,14 @@ private:
     QVector<Application *> m_apps;
     QHash<Transaction *, int> m_runningTransactions;
 
-public Q_SLOTS:
-    void updateTransactionProgress(Transaction *transaction, int progress);
-    void allDataChanged();
-    void reloadApplications();
-
 private Q_SLOTS:
     void workerEvent(QApt::WorkerEvent event, Transaction *trans);
     void transactionCancelled(Application *app);
     void reloadStarted();
     void reloadFinished();
+    void allDataChanged();
+    void updateTransactionProgress(Transaction *transaction, int progress);
+    void reloadApplications();
 };
 
 #endif
