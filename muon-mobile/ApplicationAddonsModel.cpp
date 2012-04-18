@@ -78,8 +78,11 @@ QVariant ApplicationAddonsModel::data(const QModelIndex& index, int role) const
 
 void ApplicationAddonsModel::discardChanges()
 {
+    //dataChanged should suffice, but it doesn't
+    beginResetModel();
     m_state.clear();
     emit stateChanged();
+    endResetModel();
 }
 
 void ApplicationAddonsModel::applyChanges()

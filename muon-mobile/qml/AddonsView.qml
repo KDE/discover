@@ -51,28 +51,24 @@ ListView
         }
     }
     
-    header: addonsModel.hasChanges && !isInstalling ? buttonsRow : null
-    
-    Component {
-        id: buttonsRow
-        Row {
-            layoutDirection: Qt.RightToLeft
-            anchors {
-                top: parent.top
-                right: parent.right
-            }
-            spacing: 5
-            
-            Button {
-                iconSource: "dialog-ok"
-                text: i18n("Apply")
-                onClicked: addonsModel.applyChanges()
-            }
-            Button {
-                iconSource: "document-revert"
-                text: i18n("Discard")
-                onClicked: addonsModel.discardChanges()
-            }
+    Row {
+        visible: addonsModel.hasChanges && !isInstalling
+        layoutDirection: Qt.RightToLeft
+        anchors {
+            top: parent.top
+            right: parent.right
+        }
+        spacing: 5
+        
+        Button {
+            iconSource: "dialog-ok"
+            text: i18n("Apply")
+            onClicked: addonsModel.applyChanges()
+        }
+        Button {
+            iconSource: "document-revert"
+            text: i18n("Discard")
+            onClicked: addonsModel.discardChanges()
         }
     }
 }
