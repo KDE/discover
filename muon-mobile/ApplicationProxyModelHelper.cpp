@@ -21,6 +21,7 @@
 #include <ApplicationModel/ApplicationModel.h>
 #include "BackendsSingleton.h"
 #include <QDebug>
+#include <LibQApt/Backend>
 
 ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
     : ApplicationProxyModel(parent)
@@ -90,4 +91,10 @@ void ApplicationProxyModelHelper::setStringSortRole_hack(const QString& role)
 QString ApplicationProxyModelHelper::stringSortRole() const
 {
     return roleToString(sortRole());
+}
+
+void ApplicationProxyModelHelper::setOriginHostFilter(const QString& host)
+{
+    QString origin = BackendsSingleton::self()->backend()->originForSite(QUrl(host).host());
+    setOriginFilter(origin);
 }

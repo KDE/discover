@@ -10,6 +10,8 @@ Page {
     property alias sortRole: appsModel.stringSortRole
     property alias sortOrder: appsModel.sortOrder
     property alias stateFilter: appsModel.stateFilter
+    property alias originFilter: appsModel.originFilter
+    property alias originHostFilter: appsModel.originHostFilter //hack to be able to provide the url
     property alias section: apps.section
     property bool preferUpgrade: false
     clip: true

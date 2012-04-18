@@ -4,6 +4,10 @@ function openApplicationList(icon, name, cat, search) {
         obj.searchFor(search)
 }
 
+function openApplicationListSource(uri) {
+    openPage("view-filter", uri, applicationListComp, { originHostFilter: uri })
+}
+
 function openCategory(icon, name, cat) {
     openPage(icon, name, categoryComp, { category: cat })
 }
