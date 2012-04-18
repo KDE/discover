@@ -51,7 +51,10 @@ Page
             id: message
             width: parent.width-messageScroll.width
             wrapMode: Text.WordWrap
-            onTextChanged: messageFlickable.contentY=message.height
+            onTextChanged: {
+                if(message.height>messageFlickable.height)
+                    messageFlickable.contentY=message.height-messageFlickable.height
+            }
         }
     }
 }
