@@ -69,10 +69,9 @@ ReviewsBackend::ReviewsBackend(QObject *parent)
 {
     m_loginBackend = new UbuntuLoginBackend(this);
     connect(m_loginBackend, SIGNAL(connectionStateChanged()), SIGNAL(loginStateChanged()));
+    connect(m_loginBackend, SIGNAL(connectionStateChanged()), SLOT(refreshConsumerKeys()));
     m_oauthInterface = new QOAuth::Interface(this);
-    m_oauthInterface->setConsumerKey(m_loginBackend->consumerKey());
-    m_oauthInterface->setConsumerSecret(m_loginBackend->consumerSecret());
-
+    refreshConsumerKeys();
     fetchRatings();
 }
 
@@ -80,6 +79,14 @@ ReviewsBackend::~ReviewsBackend()
 {
     delete m_ratingsFile;
     qDeleteAll(m_ratings);
+}
+
+void ReviewsBackend::refreshConsumerKeys()
+{
+    if(m_loginBackend->hasCredentials()) {
+        m_oauthInterface->setConsumerKey(m_loginBackend->consumerKey());
+        m_oauthInterface->setConsumerSecret(m_loginBackend->consumerSecret());
+    }
 }
 
 void ReviewsBackend::setAptBackend(QApt::Backend *aptBackend)
