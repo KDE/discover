@@ -22,6 +22,7 @@ Item {
             right: scroll.left
         }
         spacing: 3
+        snapMode: ListView.SnapToItem
         
         delegate: ListItem {
                 width: view.width
