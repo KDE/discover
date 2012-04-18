@@ -22,6 +22,7 @@ Item {
         if(currentTopLevel.status==Component.Error) {
             console.log("status error: "+currentTopLevel.errorString())
         }
+        var old = pageStack.initialPage
         
         try {
             var obj = currentTopLevel.createObject(pageStack)
@@ -31,6 +32,9 @@ Item {
             console.log("error: "+e)
             console.log("comp error: "+currentTopLevel.errorString())
         }
+        
+        if(old)
+            old.destroy()
     }
     
     Item {
