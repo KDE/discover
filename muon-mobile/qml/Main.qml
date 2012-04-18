@@ -159,7 +159,7 @@ Item {
             bottom: breadcrumbsItemBar.bottom
             right: parent.right
         }
-        width: visible ? tools.childrenRect.width : 0
+        width: visible ? tools.childrenRect.width+5 : 0
         visible: tools!=null
         
         Behavior on width { NumberAnimation { duration: 250 } }
