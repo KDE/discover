@@ -1,6 +1,7 @@
 import QtQuick 1.0
 import org.kde.plasma.components 0.1
 import org.kde.muon 1.0
+import "navigation.js" as Navigation
 
 Page {
     id: page
@@ -143,9 +144,19 @@ Page {
             Label {
                 anchors {
                     bottom: parent.bottom
-                    right: parent.right
+                    right: browseOrigin.left
                 }
                 text: joinEntriesSuites(modelData)
+            }
+            ToolButton {
+                id: browseOrigin
+                iconSource: "view-filter"
+                onClicked: Navigation.openApplicationListSource(modelData.uri)
+                anchors {
+                    bottom: parent.bottom
+                    right: parent.right
+                }
+                
             }
             ToolButton {
                 id: removeButton
