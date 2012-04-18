@@ -47,19 +47,20 @@ Item {
             timer.restart()
     }
     
+    property real endOfWindow: 1230
     ParallelAnimation {
         id: destroyAnimation
         NumberAnimation {
             id: fadeoutAnimation
             duration: 500
-            to: 1230
+            to: viewItem.endOfWindow
             property: "anchors.leftMargin"
             easing.type: Easing.InQuad
             onCompleted: target.destroy()
         }
         NumberAnimation {
             duration: 500
-            to: -fadeoutAnimation.to
+            to: -viewItem.endOfWindow
             property: "anchors.rightMargin"
             target: fadeoutAnimation.target
             easing.type: fadeoutAnimation.easing.type
