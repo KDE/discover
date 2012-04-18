@@ -26,7 +26,7 @@
 class ApplicationProxyModelHelper : public ApplicationProxyModel
 {
     Q_OBJECT
-    Q_PROPERTY(int stateFilter READ stateFilter WRITE setStateFilter_hack)
+    Q_PROPERTY(int stateFilter READ stateFilter WRITE setStateFilter_hack NOTIFY stateFilterChanged)
     Q_PROPERTY(int sortRole READ sortRole WRITE setSortRole_hack NOTIFY sortRoleChanged)
     Q_PROPERTY(QString stringSortRole READ stringSortRole WRITE setStringSortRole_hack NOTIFY sortRoleChanged)
     Q_PROPERTY(Qt::SortOrder sortOrder READ sortOrder WRITE setSortOrder_hack NOTIFY sortOrderChanged)
@@ -52,6 +52,7 @@ class ApplicationProxyModelHelper : public ApplicationProxyModel
     signals:
         void sortRoleChanged();
         void sortOrderChanged();
+        void stateFilterChanged();
 
     private:
         QString m_sortRoleString;

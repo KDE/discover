@@ -53,6 +53,7 @@ void ApplicationProxyModelHelper::sortModel()
 void ApplicationProxyModelHelper::setStateFilter_hack(int state)
 {
     setStateFilter((QApt::Package::State) state);
+    emit stateFilterChanged();
 }
 
 Application* ApplicationProxyModelHelper::applicationAt(int row)
