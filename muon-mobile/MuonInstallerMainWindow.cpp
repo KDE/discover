@@ -144,11 +144,6 @@ QApt::Backend* MuonInstallerMainWindow::backend() const
     return BackendsSingleton::self()->backend();
 }
 
-bool MuonInstallerMainWindow::openUrl(const QUrl& url)
-{
-    return QDesktopServices::openUrl(url);
-}
-
 QAction* MuonInstallerMainWindow::getAction(const QString& name)
 {
     return actionCollection()->action(name);

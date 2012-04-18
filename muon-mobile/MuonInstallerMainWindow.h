@@ -37,7 +37,6 @@ class MuonInstallerMainWindow : public MuonMainWindow
 
         ApplicationBackend* appBackend() const;
         QApt::Backend* backend() const;
-        Q_SCRIPTABLE bool openUrl(const QUrl& url);
         Q_SCRIPTABLE QAction* getAction(const QString& name);
         virtual QSize sizeHint() const;
 

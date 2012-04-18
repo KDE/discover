@@ -50,7 +50,7 @@ Item {
                 text: i18n("Homepage")
                 iconSource: "go-home"
                 enabled: application.homepage
-                onClicked: app.openUrl(application.homepage)
+                onClicked: Qt.openUrlExternally(application.homepage)
             }
             
             Button {
