@@ -22,6 +22,7 @@
 #include <ReviewsBackend/ReviewsBackend.h>
 #include <ReviewsBackend/Review.h>
 #include <QDebug>
+#include <KDebug>
 
 ReviewsModel::ReviewsModel(QObject* parent)
     : QAbstractListModel(parent)
@@ -146,6 +147,7 @@ bool ReviewsModel::canFetchMore(const QModelIndex&) const
 void ReviewsModel::markUseful(int row, bool useful)
 {
     Review* r = m_reviews[row];
+    qDebug() << "submitting usefulness" << r->applicationName() << r->id() << useful;
     m_backend->submitUsefulness(r, useful);
 }
 
