@@ -1,6 +1,7 @@
 import QtQuick 1.0
 import org.kde.plasma.components 0.1
 import org.kde.qtextracomponents 0.1
+import "navigation.js" as Navigation
 
 Item {
     property QtObject category
@@ -70,7 +71,7 @@ Item {
                     id: infoArea
                     enabled: modelData.packageName!=""
                     anchors.fill: parent
-                    onClicked: openApplication(modelData.packageName)
+                    onClicked: Navigation.openApplication(app.appBackend.applicationByPackageName(modelData.packageName))
                     hoverEnabled: true
                 }
         }
