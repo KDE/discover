@@ -1,4 +1,4 @@
-import QtQuick 1.0
+import QtQuick 1.1
 import org.kde.plasma.components 0.1
 import org.kde.qtextracomponents 0.1
 import "navigation.js" as Navigation
@@ -184,7 +184,7 @@ Page {
                         fillMode: Image.PreserveAspectFit
                         source: model.application.screenshotUrl(0)
                         width: parent.width; height: contHeight
-                        smooth: true
+                        cache: false
                         onStatusChanged:  {
                             if(status==Image.Error) {
                                 sourceSize.width = height
