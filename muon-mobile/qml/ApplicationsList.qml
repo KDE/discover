@@ -75,27 +75,27 @@ Item {
                     anchors.fill: parent
                     onClicked: Navigation.openApplication(application)
                     hoverEnabled: true
-                    
-                    InstallApplicationButton {
-                        id: installButton
-                        width: ratingsItem.width
+                    Row {
                         height: contHeight*0.5
+                        spacing: 5
                         anchors {
                             bottom: parent.bottom
-                            margins: 5
+                            right: parent.right
+                        }
+                            
+                        Button {
+                            text: i18n("Upgrade")
+                            id: upgradeButton
+                            width: ratingsItem.width
                         }
                         
-                        property bool isVisible: delegateArea.containsMouse && !installButton.canHide
-                        x: ratingsItem.x
-                        opacity: isVisible ? 1 : 0
-                        application: model.application
-                        preferUpgrade: parentItem.preferUpgrade
-                        
-                        Behavior on opacity {
-                            NumberAnimation {
-                                duration: 100
-                                easing.type: Easing.InQuad
-                            }
+                        InstallApplicationButton {
+                            id: installButton
+                            width: ratingsItem.width
+                            height: upgradeButton.height
+    //                         property bool isVisible: delegateArea.containsMouse && !installButton.canHide
+    //                         opacity: isVisible ? 1 : 0
+                            application: model.application
                         }
                     }
                 }
