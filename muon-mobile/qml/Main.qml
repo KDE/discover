@@ -50,6 +50,14 @@ Item {
                 bottom: parent.bottom
                 left: parent.left
             }
+            
+            MuonToolButton {
+                height: toplevelsRow.height
+                icon: "go-up"
+                enabled: breadcrumbsItem.count>1
+                onClicked: breadcrumbsItem.popItem(false)
+            }
+            
             property list<TopLevelPageData> sectionsModel: [
                 TopLevelPageData { icon: "tools-wizard"; text: i18n("Discover"); component: browsingComp },
                 TopLevelPageData {
@@ -87,7 +95,6 @@ Item {
             MuonToolButton {
                 id: usersButton
                 icon: "system-users"
-                visible: window.state=="loaded"
                 height: parent.height
                 checkable: true
                 checked: connectionBox.visible

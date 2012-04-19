@@ -33,7 +33,7 @@ Item {
             top: parent.top
             bottom: parent.bottom
             right: parent.right
-            left: upButton.right
+            left: parent.left
         }
         
         spacing: 10
@@ -51,14 +51,5 @@ Item {
         onCountChanged: view.positionViewAtEnd()
         
         ListModel { id: items }
-    }
-    
-    ToolButton {
-        id: upButton
-        iconSource: "go-up"
-        anchors.left: parent.left
-        height: parent.height
-        visible: items.count>1
-        onClicked: popItem(false)
     }
 }
