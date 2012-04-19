@@ -26,18 +26,18 @@
 #include "MuonInstallerMainWindow.h"
 
 static const char description[] =
-    I18N_NOOP("An application manager");
+    I18N_NOOP("An application discoverer");
 
 static const char version[] = "1.2.95 \"Daring Dalek\"";
 
 int main(int argc, char** argv)
 {
-    KAboutData about("muon-installer", "muon-installer", ki18n("Muon Software Center"), version, ki18n(description),
+    KAboutData about("muon-discover", "muon-discover", ki18n("Muon Discover"), version, ki18n(description),
                      KAboutData::License_GPL, ki18n("©2010, 2011 Jonathan Thomas"), KLocalizedString(), 0);
     about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
     about.addAuthor(ki18n("Aleix Pol Gonzalez"), KLocalizedString(), "aleixpol@blue-systems.com");
     about.setProgramIconName("applications-other");
-    about.setProductName("muon/installer");
+    about.setProductName("muon/discover");
 
     KCmdLineArgs::init(argc, argv, &about);
     KCmdLineOptions options;
@@ -45,7 +45,7 @@ int main(int argc, char** argv)
     KCmdLineArgs::addCmdLineOptions( options );
 
     if (!KUniqueApplication::start()) {
-        fprintf(stderr, "Software Center is already running!\n");
+        fprintf(stderr, "Software Discoverer is already running!\n");
         return 0;
     }
 

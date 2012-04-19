@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Muon Software Center
+Name=Muon Discover
 Name[bs]=Muon softverski centar
 Name[ca]=Centre de programari Muon
 Name[ca@valencia]=Centre de programari Muon
@@ -35,7 +35,7 @@ Name[uk]=Центр програм Muon
 Name[x-test]=xxMuon Software Centerxx
 Name[zh_CN]=Muon 软件中心
 Name[zh_TW]=Muon 軟體中心
-Exec=muon-installer-qml
+Exec=muon-discover
 Icon=applications-other
 Type=Application
 X-DocPath=muon/index.html
