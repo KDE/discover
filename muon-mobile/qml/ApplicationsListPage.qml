@@ -255,8 +255,7 @@ Page {
                         application: model.application
                         preferUpgrade: page.preferUpgrade
                     }
-                    Rating {
-                        id: ratingsItem
+                    Item {
                         anchors {
                             right: parent.right
                             left: installButton.right
@@ -264,14 +263,21 @@ Page {
                             margins: 10
                         }
                         height: Math.min(installButton.height, width/5)
-                        rating: model.rating
+                        Rating {
+                            rating: model.rating
+                            visible: !model.application.canUpgrade
+                        }
+                        Button {
+                            text: i18n("Upgrade")
+                            visible: model.application.canUpgrade
+                        }
                     }
                 }
             }
         }
     }
     
-    state: "grid1"
+    state: "grid2"
     states: [
         State {
             name: "list"
