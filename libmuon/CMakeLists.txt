@@ -82,4 +82,5 @@ file(GLOB muon_QMLS "${CMAKE_CURRENT_SOURCE_DIR}/mobile/qml/*.qml")
 install(TARGETS muonprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES moo.ogg DESTINATION ${DATA_INSTALL_DIR}/libmuon)
 install(FILES ${muon_QMLS} DESTINATION ${DATA_INSTALL_DIR}/libmuon)
+install(FILES categories.xml DESTINATION ${DATA_INSTALL_DIR}/muon-installer)
 
