@@ -121,7 +121,7 @@ Page {
                     bottom: parent.bottom
                 }
                 width: parent.width/2-10
-                header: Label { text: i18n("<b>Popularity Contest</b>") }
+                header: Label { text: i18n("<b>Popularity Contest</b>"); width: parent.width; horizontalAlignment: Text.AlignHCenter }
                 model: ApplicationProxyModel {
                     stringSortRole: "popcon"
                     sortOrder: Qt.DescendingOrder
@@ -161,7 +161,7 @@ Page {
                     bottom: parent.bottom
                 }
                 width: parent.width/2-10
-                header: Label { text: i18n("<b>Best Ratings</b>") }
+                header: Label { text: i18n("<b>Best Ratings</b>"); width: parent.width; horizontalAlignment: Text.AlignHCenter }
                 model: ApplicationProxyModel {
                     id: ratingsTopModel
                     filteredCategory: page.category
