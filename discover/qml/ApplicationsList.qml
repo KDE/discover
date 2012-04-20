@@ -108,8 +108,6 @@ Item {
         id: scroll
         orientation: Qt.Vertical
         flickableItem: view
-        stepSize: 40
-        scrollButtonInterval: 50
         anchors {
                 top: parent.top
                 right: parent.right
