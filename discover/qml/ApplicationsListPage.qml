@@ -137,7 +137,7 @@ Page {
         id: gridComponent
         ApplicationsGrid {
             model: appsModel
-            header: parent.category==null ? null : categoryHeaderComponent
+//             header: parent.category==null ? null : categoryHeaderComponent
             
             delegate: ApplicationsGridDelegate {}
             

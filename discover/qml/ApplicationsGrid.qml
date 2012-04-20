@@ -5,41 +5,44 @@ import org.kde.muon 1.0
 
 Item {
     id: parentItem
-    property int elemHeight: 65
-    property alias count: view.count
-    property alias header: view.header
+//     property alias header: view.header
     property string section//: view.section
-    property alias delegate: view.delegate
-    property alias cellWidth: view.cellWidth
-    property alias cellHeight: view.cellHeight
-    property alias model: view.model
-    property int minCellWidth: 200
+    property alias delegate: gridRepeater.delegate
+//     property Component delegate: null
+    property alias model: gridRepeater.model
     
-    GridView
-    {
-        id: view
-        cellWidth: view.width/Math.floor(view.width/minCellWidth)-1
-        cellHeight: cellWidth/1.618 //tau
-        anchors {
-            top: parent.top
-            left: parent.left
-            bottom: parent.bottom
-            right: scroll.left
-            leftMargin: parent.width/8
-            rightMargin: parent.width/8
+    property real cellWidth: Math.min(300, view.width)
+    property real cellHeight: cellWidth/1.618 //tau
+    
+    Flickable {
+        id: viewFlickable
+        anchors.fill: parent
+        contentHeight: view.height
+        Flow
+        {
+            id: view
+            spacing: 5
+            width: parent.width-2*parent.width/8
+            anchors {
+                top: parent.top
+                horizontalCenter: parent.horizontalCenter
+            }
+            
+            Repeater {
+                id: gridRepeater
+                delegate: Rectangle { color: "red"; width: cellWidth; height: cellHeight }
+            }
         }
     }
     
     ScrollBar {
         id: scroll
         orientation: Qt.Vertical
-        flickableItem: view
-        stepSize: 40
-        scrollButtonInterval: 50
+        flickableItem: viewFlickable
         anchors {
-                top: parent.top
-                right: parent.right
-                bottom: parent.bottom
+            top: parent.top
+            right: parent.right
+            bottom: parent.bottom
         }
     }
 }

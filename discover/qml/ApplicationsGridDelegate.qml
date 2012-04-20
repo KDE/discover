@@ -4,10 +4,8 @@ import QtQuick 1.1
 
 ListItem {
     clip: true
-    property Item appsGrid: view
-    property real contHeight: appsGrid.cellHeight*0.7
-    width: appsGrid.cellWidth-5
-    height: appsGrid.cellHeight-5
+    width: parentItem.cellWidth-5
+    height: parentItem.cellHeight-5
     
     MouseArea {
         id: delegateArea
@@ -27,7 +25,7 @@ ListItem {
             id: delegateFlickable
             width: parent.width
             height: parent.height
-            contentHeight: appsGrid.cellHeight*2-10
+            contentHeight: delegateArea.height
             contentY: delegateArea.containsMousePermanent ? contentHeight/2 : 0
             interactive: false
             Behavior on contentY { NumberAnimation { duration: 200 } }
@@ -41,7 +39,7 @@ ListItem {
                 }
                 fillMode: Image.PreserveAspectFit
                 source: model.application.screenshotUrl(0)
-                width: parent.width; height: contHeight
+                width: parent.width; height: parent.height*0.7
                 cache: false
                 asynchronous: true
                 onStatusChanged:  {
@@ -82,7 +80,7 @@ ListItem {
                     right: parent.right
                     top: appName.bottom
                 }
-                height: cellHeight-5
+                height: delegateFlickable.contentHeight/2
                 sourceComponent: delegateArea.containsMousePermanent ? extraInfoComponent : null
             }
         }
@@ -96,7 +94,7 @@ ListItem {
                 anchors {
                     right: parent.right
                 }
-                y: appsGrid.cellHeight+10
+                y: delegateArea.height+5
                 height: width
                 fillMode: Image.PreserveAspectFit
                 source: "image://icon/"+model.application.icon
@@ -135,6 +133,7 @@ ListItem {
                     left: installButton.right
                     verticalCenter: installButton.verticalCenter
                     margins: 10
+                    topMargin: 20
                 }
                 height: Math.min(installButton.height, width/5)
                 Rating {
