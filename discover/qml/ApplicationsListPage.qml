@@ -12,7 +12,8 @@ Page {
     property alias stateFilter: appsModel.stateFilter
     property alias originFilter: appsModel.originFilter
     property alias originHostFilter: appsModel.originHostFilter //hack to be able to provide the url
-    property alias section: apps.section
+    property string sectionProperty: ""
+    property Component sectionDelegate: null
     property bool preferUpgrade: false
     clip: true
     
@@ -56,7 +57,7 @@ Page {
                 id: listViewShown
                 checkable: true
                 icon: "tools-wizard"
-                model: ["list", "grid1", "grid2", "grid3"]
+                model: ["list", "grid2", "grid3"]
                 delegate: ToolButton {
                     width: parent.width
                     text: modelData
@@ -112,48 +113,50 @@ Page {
         }
     }
     
-    ApplicationsList {
-        id: apps
+    Loader {
+        id: viewLoader
         anchors.fill: parent
-        visible: !listViewShown.checked
-        preferUpgrade: page.preferUpgrade
-        
-        header: appsGrid.header
-        model: appsModel
+        property string delegateType: ""
     }
     
-    ApplicationsGrid {
-        id: appsGrid
-        anchors.fill: parent
-        model: appsModel
-        visible: !apps.visible
-        header: parent.category==null ? null : categoryHeaderComponent
-        
-        delegate: ApplicationsGridDelegate { id: flexibleDelegate }
-        
-        property string delegateType: ""
+    Component {
+        id: listComponent
+        ApplicationsList {
+            id: apps
+            anchors.fill: parent
+            preferUpgrade: page.preferUpgrade
+            
+            header: parent.category==null ? null : categoryHeaderComponent
+            model: appsModel
+        }
+    }
+    
+    Component {
+        id: gridComponent
+        ApplicationsGrid {
+            model: appsModel
+            header: parent.category==null ? null : categoryHeaderComponent
+            
+            delegate: ApplicationsGridDelegate {}
+            
+        }
     }
     
     state: "grid2"
     states: [
         State {
             name: "list"
-            PropertyChanges { target: apps; visible: true }
-        },
-        State {
-            name: "grid1"
-            PropertyChanges { target: apps; visible: false }
-            PropertyChanges { target: appsGrid; delegateType: "icon" }
+            PropertyChanges { target: viewLoader; sourceComponent: listComponent }
         },
         State {
             name: "grid2"
-            PropertyChanges { target: apps; visible: false }
-            PropertyChanges { target: appsGrid; delegateType: "screenshot" }
+            PropertyChanges { target: viewLoader; sourceComponent: gridComponent }
+            PropertyChanges { target: viewLoader; delegateType: "screenshot" }
         },
         State {
             name: "grid3"
-            PropertyChanges { target: apps; visible: false }
-            PropertyChanges { target: appsGrid; delegateType: "still" }
+            PropertyChanges { target: viewLoader; sourceComponent: gridComponent }
+            PropertyChanges { target: viewLoader; delegateType: "still" }
         }
     ]
 }

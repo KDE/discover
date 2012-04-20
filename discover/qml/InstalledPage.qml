@@ -6,8 +6,8 @@ ApplicationsListPage {
     stateFilter: (1<<8)
     sortRole: "canUpgrade"
     sortOrder: 1
-    section.property: "canUpgrade"
-    section.delegate: Label { text: section=="true" ? i18n("Update") : i18n("Installed"); anchors.right: parent.right }
+    sectionProperty: "canUpgrade"
+    sectionDelegate: Label { text: section=="true" ? i18n("Update") : i18n("Installed"); anchors.right: parent.right }
     preferUpgrade: true
     
     UpdatesPage {

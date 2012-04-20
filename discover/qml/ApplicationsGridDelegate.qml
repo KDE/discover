@@ -3,17 +3,10 @@ import QtQuick 1.1
 
 ListItem {
     clip: true
+    property Item appsGrid: view
     property real contHeight: appsGrid.cellHeight*0.7
-    property bool enlarge: appsGrid.delegateType=="icon" && delegateArea.containsMousePermanent
     width: appsGrid.cellWidth-5
-    height: !enlarge ? appsGrid.cellHeight-5 : delegateFlickable.contentHeight
-    Behavior on height { NumberAnimation { duration: 200 } }
-    
-    Rectangle {
-        color: "white"; anchors.fill: parent; opacity: enlarge ? 0.9 : 0
-        Behavior on opacity { NumberAnimation { duration: 200 } }
-    }
-    z: enlarge ? 123123 : -123123
+    height: appsGrid.cellHeight-5
     
     MouseArea {
         id: delegateArea
@@ -33,8 +26,8 @@ ListItem {
             id: delegateFlickable
             width: parent.width
             height: parent.height
-            contentHeight: appsGrid.delegateType=="icon" ? (appsGrid.cellHeight+descLabel.height+installButton.height+10) : (appsGrid.cellHeight*2-10)
-            contentY: delegateArea.containsMousePermanent && appsGrid.delegateType=="screenshot" ? contentHeight/2 : 0
+            contentHeight: appsGrid.cellHeight*2-10
+            contentY: delegateArea.containsMousePermanent ? contentHeight/2 : 0
             interactive: false
             Behavior on contentY { NumberAnimation { duration: 200 } }
             
@@ -49,6 +42,7 @@ ListItem {
                 source: model.application.screenshotUrl(0)
                 width: parent.width; height: contHeight
                 cache: false
+                asynchronous: true
                 onStatusChanged:  {
                     if(status==Image.Error) {
                         sourceSize.width = height
