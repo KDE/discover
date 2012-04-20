@@ -125,8 +125,10 @@ Page {
             id: apps
             anchors.fill: parent
             preferUpgrade: page.preferUpgrade
+            section.property: page.sectionProperty
+            section.delegate: page.sectionDelegate
             
-            header: parent.category==null ? null : categoryHeaderComponent
+            header: page.category==null ? null : categoryHeaderComponent
             model: appsModel
         }
     }
