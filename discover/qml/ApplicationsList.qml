@@ -87,6 +87,8 @@ Item {
                             text: i18n("Upgrade")
                             id: upgradeButton
                             width: ratingsItem.width
+                            visible: model.application.canUpgrade
+                            onClicked: app.appBackend.installApplication(model.application)
                         }
                         
                         InstallApplicationButton {

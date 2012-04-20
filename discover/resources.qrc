@@ -12,6 +12,7 @@
     <file>qml/AddonsView.qml</file>
     <file>qml/ApplicationsList.qml</file>
     <file>qml/ApplicationsGrid.qml</file>
+    <file>qml/ApplicationsGridDelegate.qml</file>
     <file>qml/Breadcrumbs.qml</file>
     <file>qml/InstallApplicationButton.qml</file>
     <file>qml/Rating.qml</file>
