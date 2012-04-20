@@ -28,6 +28,10 @@
 #include <QTimer>
 #include <QGraphicsObject>
 #include <qdeclarative.h>
+#include <QNetworkAccessManager>
+#include <QNetworkDiskCache>
+#include <QDeclarativeNetworkAccessManagerFactory>
+
 // #if !defined(QT_NO_OPENGL)
 //     #include <QGLWidget>
 // #endif
@@ -37,6 +41,7 @@
 #include <KAction>
 #include <kdeclarative.h>
 #include <Plasma/Theme>
+#include <KStandardDirs>
 
 // QApt includes
 #include <LibQApt/Backend>
@@ -61,6 +66,30 @@
 #include "ApplicationAddonsModel.h"
 
 QML_DECLARE_TYPE(ApplicationBackend)
+
+
+class CachedNetworkAccessManager : public QNetworkAccessManager {
+    public:
+        explicit CachedNetworkAccessManager(QObject* parent = 0) : QNetworkAccessManager(parent) {}
+    
+        virtual QNetworkReply* createRequest(Operation op, const QNetworkRequest& request, QIODevice* outgoingData = 0) {
+            QNetworkRequest req(request);
+            req.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::PreferCache);
+            return QNetworkAccessManager::createRequest(op, request, outgoingData);
+        }
+};
+
+class CachedNAMFactory : public QDeclarativeNetworkAccessManagerFactory
+{
+    virtual QNetworkAccessManager* create(QObject* parent) {
+        CachedNetworkAccessManager* ret = new CachedNetworkAccessManager(parent);
+        QString cacheDir = KStandardDirs::locateLocal("cache", "screenshotsCache", true);
+        QNetworkDiskCache* cache = new QNetworkDiskCache(ret);
+        cache->setCacheDirectory(cacheDir);
+        ret->setCache(cache);
+        return ret;
+    }
+};
 
 MuonInstallerMainWindow::MuonInstallerMainWindow()
     : MuonMainWindow()
@@ -96,6 +125,9 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     qmlRegisterType<Entry>();
     
     connect(this, SIGNAL(backendReady(QApt::Backend*)), SLOT(setBackend(QApt::Backend*)));
+    
+    //Here we set up a cache for the screenshots
+    m_view->engine()->setNetworkAccessManagerFactory(new CachedNAMFactory);
     
     m_view->engine()->rootContext()->setContextProperty("app", this);
     m_view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
