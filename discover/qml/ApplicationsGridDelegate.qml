@@ -1,4 +1,5 @@
 import org.kde.plasma.components 0.1
+import "navigation.js" as Navigation
 import QtQuick 1.1
 
 ListItem {
@@ -70,11 +71,26 @@ ListItem {
                     right: parent.right
                     leftMargin: 5
                 }
-                font.pointSize: descLabel.font.pointSize*1.2
+                id: appName
                 horizontalAlignment: Text.AlignHCenter
                 elide: Text.ElideRight
                 text: name
             }
+            Loader {
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    top: appName.bottom
+                }
+                height: cellHeight-5
+                sourceComponent: delegateArea.containsMousePermanent ? extraInfoComponent : null
+            }
+        }
+    }
+    
+    Component {
+        id: extraInfoComponent
+        Item {
             Image {
                 id: smallIconDesc
                 anchors {
@@ -84,7 +100,7 @@ ListItem {
                 height: width
                 fillMode: Image.PreserveAspectFit
                 source: "image://icon/"+model.application.icon
-                width: appsGrid.delegateType=="icon" ? 0 : 48
+                width: 48
             }
             Label {
                 id: descLabel
@@ -95,7 +111,7 @@ ListItem {
                 }
                 horizontalAlignment: Text.AlignHCenter
                 width: parent.width
-                y:  appsGrid.delegateType=="icon" ? installButton.y-height : appsGrid.cellHeight+smallIconDesc.height/2
+                y: installButton.y-height
                 wrapMode: Text.WordWrap
                 text: model.application.comment
             }
