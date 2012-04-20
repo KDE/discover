@@ -20,6 +20,7 @@ Item {
     Button {
         id: button
         visible: parent.state=="idle"
+        width: parent.width
         anchors.fill: parent
         
         onClicked: {
