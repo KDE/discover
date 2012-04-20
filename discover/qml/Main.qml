@@ -53,9 +53,14 @@ Item {
             
             MuonToolButton {
                 height: toplevelsRow.height
-                icon: "go-up"
+                icon: "go-previous"
                 enabled: breadcrumbsItem.count>1
                 onClicked: breadcrumbsItem.popItem(false)
+            }
+            
+            Label {
+                //we add some extra space
+                width: 20
             }
             
             property list<TopLevelPageData> sectionsModel: [
