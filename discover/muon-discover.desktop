@@ -1,5 +1,9 @@
 [Desktop Entry]
 Name=Muon Discover
+Name[nl]=Muon-zoeken
+Name[pt]=Descoberta do Muon
+Name[uk]=Шукач Muon
+Name[x-test]=xxMuon Discoverxx
 Exec=muon-discover
 Icon=applications-other
 Type=Application
