@@ -1,7 +1,10 @@
 [Desktop Entry]
 Name=Muon Discover
+Name[da]=Muon Discover
 Name[nl]=Muon-zoeken
 Name[pt]=Descoberta do Muon
+Name[pt_BR]=Descobridor do Muon
+Name[sv]=Muon upptäckt
 Name[uk]=Шукач Muon
 Name[x-test]=xxMuon Discoverxx
 Exec=muon-discover
