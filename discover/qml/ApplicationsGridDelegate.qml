@@ -131,6 +131,7 @@ ListItem {
                 }
                 height: Math.min(installButton.height, width/5)
                 Rating {
+                    anchors.fill: parent
                     rating: model.rating
                     visible: !model.application.canUpgrade
                 }
