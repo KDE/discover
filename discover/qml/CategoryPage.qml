@@ -122,6 +122,7 @@ Page {
                 delegate: ListItem {
                             width: top1.width
                             height: 30
+                            enabled: true
                             QIconItem {
                                 id: iconItem
                                 anchors { left: parent.left; verticalCenter: parent.verticalCenter }
@@ -139,7 +140,7 @@ Page {
                                 id: pointsLabel
                                 text: i18n("points: %1", popcon)
                             }
-                            MouseArea { anchors.fill: parent; onClicked: Navigation.openApplication(application) }
+                            onClicked: Navigation.openApplication(application)
                         }
             }
             ListView {
@@ -166,6 +167,7 @@ Page {
                 delegate: ListItem {
                             width: top1.width
                             height: 30
+                            enabled: true
                             QIconItem {
                                 id: iconItem
                                 anchors { left: parent.left; verticalCenter: parent.verticalCenter }
@@ -184,7 +186,7 @@ Page {
                                 rating: model.rating
                                 height: 10
                             }
-                            MouseArea { anchors.fill: parent; onClicked: Navigation.openApplication(application) }
+                            onClicked: Navigation.openApplication(application)
                         }
             }
         }

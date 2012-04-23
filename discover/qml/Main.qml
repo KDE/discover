@@ -186,7 +186,6 @@ Item {
             top: breadcrumbsItemBar.bottom
             left: parent.left
             right: parent.right
-            topMargin: 3
         }
     }
     
