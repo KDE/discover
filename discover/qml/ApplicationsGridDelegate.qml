@@ -3,9 +3,10 @@ import "navigation.js" as Navigation
 import QtQuick 1.1
 
 ListItem {
+    id: delegateRoot
     clip: true
-    width: parentItem.cellWidth-5
-    height: parentItem.cellHeight-5
+    width: parentItem.cellWidth
+    height: parentItem.cellHeight
     
     MouseArea {
         id: delegateArea
@@ -25,10 +26,10 @@ ListItem {
             id: delegateFlickable
             width: parent.width
             height: parent.height
-            contentHeight: delegateArea.height
-            contentY: delegateArea.containsMousePermanent ? contentHeight/2 : 0
+            contentHeight: delegateRoot.height*2
+            contentY: delegateArea.containsMousePermanent ? delegateRoot.height : 0
             interactive: false
-            Behavior on contentY { NumberAnimation { duration: 200 } }
+            Behavior on contentY { NumberAnimation { duration: 200; easing.type: Easing.InQuad } }
             
             Image {
                 id: screen
@@ -39,7 +40,7 @@ ListItem {
                 }
                 fillMode: Image.PreserveAspectFit
                 source: model.application.screenshotUrl(0)
-                width: parent.width; height: parent.height*0.7
+                width: parent.width; height: delegateRoot.height*0.7
                 cache: false
                 asynchronous: true
                 onStatusChanged:  {
@@ -54,17 +55,18 @@ ListItem {
             Image {
                 id: smallIcon
                 anchors {
-                    bottom: screen.bottom
                     right: screen.right
                 }
+                y: 5+(delegateArea.containsMousePermanent ? delegateRoot.height : (screen.height-height))
                 width: 48
                 height: width
                 fillMode: Image.PreserveAspectFit
                 source: "image://icon/"+model.application.icon
+                Behavior on y { NumberAnimation { duration: 200; easing.type: Easing.InQuad } }
             }
             Label {
                 anchors {
-                    top: smallIcon.bottom
+                    top: screen.bottom
                     left: parent.left
                     right: parent.right
                     leftMargin: 5
@@ -78,9 +80,9 @@ ListItem {
                 anchors {
                     left: parent.left
                     right: parent.right
-                    top: appName.bottom
+                    bottom: parent.bottom
+                    top: parent.verticalCenter
                 }
-                height: delegateFlickable.contentHeight/2
                 sourceComponent: delegateArea.containsMousePermanent ? extraInfoComponent : null
             }
         }
@@ -89,26 +91,18 @@ ListItem {
     Component {
         id: extraInfoComponent
         Item {
-            Image {
-                id: smallIconDesc
-                anchors {
-                    right: parent.right
-                }
-                y: delegateArea.height+5
-                height: width
-                fillMode: Image.PreserveAspectFit
-                source: "image://icon/"+model.application.icon
-                width: 48
-            }
             Label {
-                id: descLabel
                 anchors {
                     left: parent.left
-                    right: smallIconDesc.left
+                    right: parent.right
+                    top: parent.top
+                    bottom: installButton.top
+                    rightMargin: smallIcon.visible ? 48 : 0
                     topMargin: 5
                 }
+                verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                width: parent.width
+                width: parent.width-48
                 y: installButton.y-height
                 wrapMode: Text.WordWrap
                 text: model.application.comment
