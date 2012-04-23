@@ -13,15 +13,20 @@ Page {
     property alias originFilter: appsModel.originFilter
     property alias originHostFilter: appsModel.originHostFilter //hack to be able to provide the url
     property string sectionProperty: ""
+    property string search: ""
     property Component sectionDelegate: null
     property bool preferUpgrade: false
     clip: true
     
     function useList() { state="list" }
     
-    function searchFor(text) {
-        appsModel.search(text)
+    onSearchChanged: {
+        appsModel.search(search)
         state="list"
+    }
+    
+    function searchFor(text) {
+        search = text
     }
     
     ApplicationProxyModel {

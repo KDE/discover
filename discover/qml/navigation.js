@@ -1,7 +1,5 @@
 function openApplicationList(icon, name, cat, search) {
-    var obj = openPage(icon, name, applicationListComp, { category: cat })
-    if(search)
-        obj.searchFor(search)
+    openPage(icon, name, applicationListComp, { category: cat, search: search })
 }
 
 function openApplicationListSource(uri) {
