@@ -16,7 +16,8 @@ Item {
     
     function popItem(last) {
         items.remove(items.count-1)
-        pageStack.pop(undefined, last)
+        var page = pageStack.pop(undefined, last)
+        page.destroy(1000)
     }
     
     function doClick(index) {
