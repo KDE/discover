@@ -1,4 +1,5 @@
 import org.kde.plasma.components 0.1
+import org.kde.qtextracomponents 0.1
 import "navigation.js" as Navigation
 import QtQuick 1.1
 
@@ -52,7 +53,7 @@ ListItem {
                     }
                 }
             }
-            Image {
+            QIconItem {
                 id: smallIcon
                 anchors {
                     right: screen.right
@@ -60,8 +61,7 @@ ListItem {
                 y: 5+(delegateArea.containsMousePermanent ? delegateRoot.height : (screen.height-height))
                 width: 48
                 height: width
-                fillMode: Image.PreserveAspectFit
-                source: "image://icon/"+model.application.icon
+                icon: model.application.icon
                 Behavior on y { NumberAnimation { duration: 200; easing.type: Easing.InQuad } }
             }
             Label {
