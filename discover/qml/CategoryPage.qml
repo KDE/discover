@@ -87,9 +87,9 @@ Page {
         stepSize: 40
         scrollButtonInterval: 50
         anchors {
-                top: view.top
-                right: parent.right
-                bottom: view.bottom
+            top: view.top
+            right: parent.right
+            bottom: view.bottom
         }
     }
     
@@ -102,92 +102,37 @@ Page {
         Item {
             height: Math.min(200, page.height/2)
             width: view.width-scroll.width
-            ListView {
+            ApplicationsTop {
                 id: top1
-                interactive: false
+                width: parent.width/2-5
                 anchors {
                     top: parent.top
                     left: parent.left
                     bottom: parent.bottom
                 }
-                width: parent.width/2-10
+                sortRole: "popcon"
+                filteredCategory: page.category
                 header: Label { text: i18n("<b>Popularity Contest</b>"); width: top1.width; horizontalAlignment: Text.AlignHCenter }
-                model: ApplicationProxyModel {
-                    stringSortRole: "popcon"
-                    sortOrder: Qt.DescendingOrder
-                    filteredCategory: page.category
-                    
-                    Component.onCompleted: sortModel()
-                }
-                delegate: ListItem {
-                            width: top1.width
-                            height: 30
-                            enabled: true
-                            QIconItem {
-                                id: iconItem
-                                anchors { left: parent.left; verticalCenter: parent.verticalCenter }
-                                height: parent.height*0.9
-                                width: height
-                                icon: model["icon"]
-                            }
-                            Label {
-                                anchors { left: iconItem.right; right: pointsLabel.left; verticalCenter: parent.verticalCenter }
-                                text: name
-                                elide: Text.ElideRight
-                            }
-                            Label {
-                                anchors { right: parent.right; verticalCenter: parent.verticalCenter }
-                                id: pointsLabel
-                                text: i18n("points: %1", popcon)
-                            }
-                            onClicked: Navigation.openApplication(application)
-                        }
+                roleDelegate: Label { property variant model: null; text: i18n("points: %1", model.popcon) }
+                Component.onCompleted: top1.sortModel()
             }
-            ListView {
+            ApplicationsTop {
                 id: top2
                 interactive: false
-                height: parent.height
                 anchors {
+                    top: parent.top
                     right: parent.right
                     bottom: parent.bottom
                 }
-                width: parent.width/2-10
+                width: parent.width/2-5
+                sortRole: "ratingPoints"
                 header: Label { text: i18n("<b>Best Ratings</b>"); width: top2.width; horizontalAlignment: Text.AlignHCenter }
-                model: ApplicationProxyModel {
-                    id: ratingsTopModel
-                    filteredCategory: page.category
-                    stringSortRole: "ratingPoints"
-                    sortOrder: Qt.DescendingOrder
-                }
+                roleDelegate: Rating { property variant model: null; rating: model.rating; height: 10 }
                 Connections {
                     ignoreUnknownSignals: true
                     target: app.appBackend ? app.appBackend.reviewsBackend() : null
-                    onRatingsReady: ratingsTopModel.sortModel()
+                    onRatingsReady: top2.sortModel()
                 }
-                delegate: ListItem {
-                            width: top1.width
-                            height: 30
-                            enabled: true
-                            QIconItem {
-                                id: iconItem
-                                anchors { left: parent.left; verticalCenter: parent.verticalCenter }
-                                height: parent.height*0.9
-                                width: height
-                                icon: model["icon"]
-                            }
-                            Label {
-                                anchors { left: iconItem.right; right: ratingsItem.left; verticalCenter: parent.verticalCenter }
-                                text: name
-                                elide: Text.ElideRight
-                            }
-                            Rating {
-                                id: ratingsItem
-                                anchors { verticalCenter: parent.verticalCenter; right: parent.right }
-                                rating: model.rating
-                                height: 10
-                            }
-                            onClicked: Navigation.openApplication(application)
-                        }
             }
         }
     }
