@@ -3,10 +3,8 @@ import org.kde.plasma.components 0.1
 
 Item {
     id: parentItem
-//     property alias header: view.header
-    property string section//: view.section
+    property Component header: null
     property alias delegate: gridRepeater.delegate
-//     property Component delegate: null
     property alias model: gridRepeater.model
     
     property real cellWidth: Math.min(200, view.width)
@@ -15,14 +13,25 @@ Item {
     Flickable {
         id: viewFlickable
         anchors.fill: parent
-        contentHeight: view.height
+        contentHeight: view.height+headerLoader.height
+        
+        Loader {
+            id: headerLoader
+            sourceComponent: parentItem.header
+            anchors {
+                left: view.left
+                right: view.right
+                top: parent.top
+            }
+        }
+        
         Flow
         {
             id: view
             width: parent.width-2*parent.width/12
             spacing: 5
             anchors {
-                top: parent.top
+                top: headerLoader.bottom
                 horizontalCenter: parent.horizontalCenter
             }
             
