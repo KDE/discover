@@ -5,7 +5,8 @@ function openApplicationList(icon, name, cat, search) {
 }
 
 function openApplicationListSource(uri) {
-    openPage("view-filter", uri, applicationListComp, { originHostFilter: uri })
+    var page = openPage("view-filter", uri, applicationListComp, { originHostFilter: uri })
+    page.useList()
 }
 
 function openCategory(icon, name, cat) {
