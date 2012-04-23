@@ -21,6 +21,7 @@ Page {
         ListItem {
             width: view.cellWidth -10
             height: view.cellHeight -10
+            enabled: true
             Column {
                 anchors.fill: parent
                 spacing: 10
@@ -38,27 +39,16 @@ Page {
                     horizontalAlignment: Text.AlignHCenter
                     wrapMode: Text.WordWrap
                 }
-                
             }
-            Rectangle {
-                anchors.fill: parent
-                color: "white"
-                opacity: itemArea.containsMouse ? 0.3 : 0 
-            }
-            MouseArea {
-                id: itemArea
-                anchors.fill: parent
-                hoverEnabled: true
-                onClicked: {
-                    var cat = cats.categoryForIndex(index)
-                    switch(categoryType) {
-                        case CategoryModel.CategoryType:
-                            Navigation.openApplicationList(category.icon, category.name, cat, "")
-                            break;
-                        case CategoryModel.SubCatType:
-                            Navigation.openCategory(category.icon, category.name, cat)
-                            break;
-                    }
+            onClicked: {
+                var cat = cats.categoryForIndex(index)
+                switch(categoryType) {
+                    case CategoryModel.CategoryType:
+                        Navigation.openApplicationList(category.icon, category.name, cat, "")
+                        break;
+                    case CategoryModel.SubCatType:
+                        Navigation.openCategory(category.icon, category.name, cat)
+                        break;
                 }
             }
         }
