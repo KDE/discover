@@ -11,7 +11,7 @@ Item {
 //     property Component delegate: null
     property alias model: gridRepeater.model
     
-    property real cellWidth: Math.min(300, view.width)
+    property real cellWidth: Math.min(200, view.width)
     property real cellHeight: cellWidth/1.618 //tau
     
     Flickable {
@@ -21,8 +21,8 @@ Item {
         Flow
         {
             id: view
+            width: parent.width-2*parent.width/12
             spacing: 5
-            width: parent.width-2*parent.width/8
             anchors {
                 top: parent.top
                 horizontalCenter: parent.horizontalCenter
@@ -30,7 +30,6 @@ Item {
             
             Repeater {
                 id: gridRepeater
-                delegate: Rectangle { color: "red"; width: cellWidth; height: cellHeight }
             }
         }
     }
