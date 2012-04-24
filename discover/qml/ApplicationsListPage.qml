@@ -143,8 +143,7 @@ Page {
             model: appsModel
             header: page.category==null ? null : categoryHeaderComponent
             
-            delegate: ApplicationsGridDelegate {}
-            
+            delegate: ApplicationsGridDelegate { requireClick: page.state=="grid3" }
         }
     }
     

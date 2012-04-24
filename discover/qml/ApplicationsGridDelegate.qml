@@ -8,19 +8,25 @@ ListItem {
     clip: true
     width: parentItem.cellWidth
     height: parentItem.cellHeight
+    property bool requireClick: false
     
     MouseArea {
         id: delegateArea
         anchors.fill: parent
-        onClicked: Navigation.openApplication(application)
         hoverEnabled: true
-        property bool containsMousePermanent: false
-        onPositionChanged: timer.restart()
-        onExited: { timer.stop(); containsMousePermanent=false}
+        property bool displayDescription: false
+        onPositionChanged: if(!delegateRoot.requireClick) timer.restart()
+        onExited: { if(!delegateRoot.requireClick) timer.stop(); displayDescription=false}
         Timer {
             id: timer
             interval: 200
-            onTriggered: delegateArea.containsMousePermanent=true
+            onTriggered: delegateArea.displayDescription=true
+        }
+        onClicked: {
+            if(delegateRoot.requireClick && !displayDescription) {
+                displayDescription=true
+            } else
+                Navigation.openApplication(application)
         }
     
         Flickable {
@@ -28,7 +34,6 @@ ListItem {
             width: parent.width
             height: parent.height
             contentHeight: delegateRoot.height*2
-            contentY: delegateArea.containsMousePermanent ? delegateRoot.height : 0
             interactive: false
             Behavior on contentY { NumberAnimation { duration: 200; easing.type: Easing.InQuad } }
             
@@ -58,7 +63,6 @@ ListItem {
                 anchors {
                     right: screen.right
                 }
-                y: 5+(delegateArea.containsMousePermanent ? delegateRoot.height : (screen.height-height))
                 width: 48
                 height: width
                 icon: model.application.icon
@@ -77,15 +81,30 @@ ListItem {
                 text: name
             }
             Loader {
+                id: descriptionLoader
                 anchors {
                     left: parent.left
                     right: parent.right
                     bottom: parent.bottom
                     top: parent.verticalCenter
                 }
-                sourceComponent: delegateArea.containsMousePermanent ? extraInfoComponent : null
             }
         }
+        onStateChanged: descriptionLoader.sourceComponent=extraInfoComponent
+        
+        state: "screenshot"
+        states: [
+            State { name: "screenshot"
+                when: !delegateArea.displayDescription
+                PropertyChanges { target: smallIcon; y: 5+screen.height-height }
+                PropertyChanges { target: delegateFlickable; contentY: 0 }
+            },
+            State { name: "description"
+                when: delegateArea.displayDescription
+                PropertyChanges { target: smallIcon; y: 5+delegateRoot.height }
+                PropertyChanges { target: delegateFlickable; contentY: delegateRoot.height }
+            }
+        ]
     }
     
     Component {
