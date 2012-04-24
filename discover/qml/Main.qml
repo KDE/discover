@@ -18,7 +18,7 @@ Item {
     onCurrentTopLevelChanged: {
         if(currentTopLevel==null)
             return
-        
+        searchField.text=""
         if(currentTopLevel.status==Component.Error) {
             console.log("status error: "+currentTopLevel.errorString())
         }
@@ -146,7 +146,7 @@ Item {
                 }
                 id: breadcrumbsItem
                 pageStack: pageStack
-                
+                onPoppedPages: searchField.text=""
                 Component.onCompleted: breadcrumbsItem.pushItem("go-home")
             }
             

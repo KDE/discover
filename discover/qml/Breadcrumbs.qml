@@ -6,6 +6,8 @@ Item {
     property alias count: items.count
     property Item pageStack: null
     
+    signal poppedPages
+    
     function currentItem() {
         return items.count=="" ? null : items.get(items.count-1).display
     }
@@ -18,6 +20,9 @@ Item {
         items.remove(items.count-1)
         var page = pageStack.pop(undefined, last)
         page.destroy(1000)
+        
+        if(last)
+            poppedPages()
     }
     
     function doClick(index) {
