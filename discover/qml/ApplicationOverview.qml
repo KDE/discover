@@ -37,7 +37,7 @@ Item {
             Rating {
                 anchors.horizontalCenter: parent.horizontalCenter
                 visible: overviewContents.ratingInstance!=null
-                rating: overviewContents.ratingInstance.rating()
+                rating: overviewContents.ratingInstance == null ? 0 : overviewContents.ratingInstance.rating()
             }
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
