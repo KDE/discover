@@ -156,12 +156,10 @@ Page {
         State {
             name: "grid2"
             PropertyChanges { target: viewLoader; sourceComponent: gridComponent }
-            PropertyChanges { target: viewLoader; delegateType: "screenshot" }
         },
         State {
             name: "grid3"
             PropertyChanges { target: viewLoader; sourceComponent: gridComponent }
-            PropertyChanges { target: viewLoader; delegateType: "still" }
         }
     ]
 }
