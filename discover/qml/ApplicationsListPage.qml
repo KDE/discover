@@ -16,9 +16,8 @@ Page {
     property string search: ""
     property Component sectionDelegate: null
     property bool preferUpgrade: false
+    property bool preferList: false
     clip: true
-    
-    function useList() { state="list" }
     
     onSearchChanged: {
         appsModel.search(search)
@@ -149,7 +148,7 @@ Page {
         }
     }
     
-    state: "grid2"
+    state: preferList ? "list" : "grid2"
     states: [
         State {
             name: "list"

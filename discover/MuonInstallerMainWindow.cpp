@@ -127,7 +127,7 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     connect(this, SIGNAL(backendReady(QApt::Backend*)), SLOT(setBackend(QApt::Backend*)));
     
     //Here we set up a cache for the screenshots
-    m_view->engine()->setNetworkAccessManagerFactory(new CachedNAMFactory);
+//     m_view->engine()->setNetworkAccessManagerFactory(new CachedNAMFactory);
     
     m_view->engine()->rootContext()->setContextProperty("app", this);
     m_view->setResizeMode(QDeclarativeView::SizeRootObjectToView);

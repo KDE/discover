@@ -9,6 +9,7 @@ ApplicationsListPage {
     sectionProperty: "canUpgrade"
     sectionDelegate: Label { text: section=="true" ? i18n("Update") : i18n("Installed"); anchors.right: parent.right }
     preferUpgrade: true
+    preferList: true
     
     UpdatesPage {
         id: updatesPage
@@ -31,6 +32,5 @@ ApplicationsListPage {
     
     Component.onCompleted: {
         toolbarComponent.createObject(page.tools)
-        useList()
     }
 }
