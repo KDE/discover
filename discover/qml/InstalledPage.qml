@@ -30,7 +30,9 @@ ApplicationsListPage {
         }
     }
     
+    property Item __tools: null
     Component.onCompleted: {
-        toolbarComponent.createObject(page.tools)
+        __tools=toolbarComponent.createObject(page.tools)
     }
+    Component.onDestruction: __tools.destroy()
 }
