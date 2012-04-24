@@ -20,7 +20,7 @@ function openPage(icon, name, component, props) {
     
     var obj
     try {
-        obj = component.createObject(pageStack, props)
+        obj = component.createObject(pageStack.currentPage, props)
         pageStack.push(obj);
         breadcrumbsItem.pushItem(icon, name)
         console.log("opened "+name)
