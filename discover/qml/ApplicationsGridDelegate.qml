@@ -103,7 +103,6 @@ ListItem {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
                 width: parent.width-48
-                y: installButton.y-height
                 wrapMode: Text.WordWrap
                 text: model.application.comment
             }
