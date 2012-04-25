@@ -16,7 +16,7 @@ Row {
         Image {
             height: view.height; width: view.height
             source: "image://icon/rating"
-            opacity: (max/5*index)>rating ? 0.4 : 1
+            opacity: (max/5*index)>rating ? 0.2 : 1
             smooth: true
             cache: true
 
