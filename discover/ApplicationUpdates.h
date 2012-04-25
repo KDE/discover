@@ -39,6 +39,7 @@ class ApplicationUpdates : public QObject
         
     public slots:
         void workerEvent(QApt::WorkerEvent);
+        void errorOccurred(QApt::ErrorCode, const QVariantMap& error);
 };
 
 #endif // APPLICATIONUPDATES_H

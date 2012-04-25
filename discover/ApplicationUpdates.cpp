@@ -31,6 +31,8 @@ ApplicationUpdates::ApplicationUpdates(QObject* parent): QObject(parent)
     QApt::Backend* backend = BackendsSingleton::self()->backend();
     connect(backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)), BackendsSingleton::self()->mainWindow(),
             SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
+    connect(backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)), this,
+            SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
     connect(backend, SIGNAL(commitProgress(QString,int)),
             SIGNAL(progress(QString,int)));
     connect(backend, SIGNAL(downloadMessage(int,QString)), SIGNAL(downloadMessage(int,QString)));
@@ -57,5 +59,16 @@ void ApplicationUpdates::workerEvent(QApt::WorkerEvent e)
         //when it's done, trigger a reload of the whole system
         BackendsSingleton::self()->applicationBackend()->reload();
         emit updatesFinnished();
+    }
+}
+
+void ApplicationUpdates::errorOccurred(QApt::ErrorCode e, const QVariantMap& error)
+{
+    switch(e) {
+        case QApt::AuthError:
+            emit updatesFinnished();
+            break;
+        default:
+            break;
     }
 }
