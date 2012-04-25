@@ -31,8 +31,7 @@ ListItem {
     
         Flickable {
             id: delegateFlickable
-            width: parent.width
-            height: parent.height
+            anchors.fill: parent
             contentHeight: delegateRoot.height*2
             interactive: false
             Behavior on contentY { NumberAnimation { duration: 200; easing.type: Easing.InQuad } }
@@ -75,7 +74,6 @@ ListItem {
                     right: parent.right
                     leftMargin: 5
                 }
-                id: appName
                 horizontalAlignment: Text.AlignHCenter
                 elide: Text.ElideRight
                 text: name
@@ -90,7 +88,10 @@ ListItem {
                 }
             }
         }
-        onStateChanged: descriptionLoader.sourceComponent=extraInfoComponent
+        onStateChanged: {
+            if(state=="description")
+                descriptionLoader.sourceComponent=extraInfoComponent
+        }
         
         state: "screenshot"
         states: [
@@ -121,7 +122,6 @@ ListItem {
                 }
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                width: parent.width-48
                 wrapMode: Text.WordWrap
                 text: model.application.comment
             }
@@ -151,7 +151,7 @@ ListItem {
                 Rating {
                     anchors.fill: parent
                     rating: model.rating
-                    visible: !model.application.canUpgrade
+                    visible: !model.application.canUpgrade && model.rating>=0
                 }
                 Button {
                     text: i18n("Upgrade")
