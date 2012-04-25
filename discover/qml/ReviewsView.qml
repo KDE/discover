@@ -78,8 +78,6 @@ Item
         id: scroll
         orientation: Qt.Vertical
         flickableItem: reviewsView
-        stepSize: 40
-        scrollButtonInterval: 50
         anchors {
             top: reviewsView.top
             right: parent.right

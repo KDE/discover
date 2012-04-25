@@ -42,8 +42,6 @@ ListView
         id: scroll
         orientation: Qt.Vertical
         flickableItem: parent
-        stepSize: 40
-        scrollButtonInterval: 50
         anchors {
             top: parent.top
             right: parent.right
