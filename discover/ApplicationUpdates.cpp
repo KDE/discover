@@ -29,8 +29,6 @@
 ApplicationUpdates::ApplicationUpdates(QObject* parent): QObject(parent)
 {
     QApt::Backend* backend = BackendsSingleton::self()->backend();
-    connect(backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)), BackendsSingleton::self()->mainWindow(),
-            SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
     connect(backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)), this,
             SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
     connect(backend, SIGNAL(commitProgress(QString,int)),
