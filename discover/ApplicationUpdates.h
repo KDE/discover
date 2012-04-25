@@ -29,7 +29,6 @@ class ApplicationUpdates : public QObject
     Q_OBJECT
     public:
         explicit ApplicationUpdates(QObject* parent = 0);
-        Q_SCRIPTABLE void updateApplications(const QList< QObject* >& apps);
         Q_SCRIPTABLE void upgradeAll();
         
     signals:

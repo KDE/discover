@@ -39,14 +39,6 @@ ApplicationUpdates::ApplicationUpdates(QObject* parent): QObject(parent)
             this, SLOT(workerEvent(QApt::WorkerEvent)));
 }
 
-void ApplicationUpdates::updateApplications(const QList< QObject* >& apps)
-{
-    foreach(QObject* app, apps) {
-        qobject_cast<Application*>(app)->package()->setInstall();
-    }
-    BackendsSingleton::self()->backend()->commitChanges();
-}
-
 void ApplicationUpdates::upgradeAll()
 {
     QApt::Backend* backend = BackendsSingleton::self()->backend();
