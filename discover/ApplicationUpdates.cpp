@@ -60,11 +60,12 @@ void ApplicationUpdates::workerEvent(QApt::WorkerEvent e)
     }
 }
 
-void ApplicationUpdates::errorOccurred(QApt::ErrorCode e, const QVariantMap& error)
+void ApplicationUpdates::errorOccurred(QApt::ErrorCode e, const QVariantMap&)
 {
     switch(e) {
         case QApt::AuthError:
             emit updatesFinnished();
+            BackendsSingleton::self()->backend()->undo();
             break;
         default:
             break;
