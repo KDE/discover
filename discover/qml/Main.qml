@@ -91,39 +91,11 @@ Item {
                 }
             }
         }
-        
-        Row {
-            spacing: 5
-            anchors {
-                top: parent.top
-                bottom: parent.bottom
-                right: parent.right
-            }
-            
-            MuonToolButton {
-                id: usersButton
-                icon: "system-users"
-                height: parent.height
-                checkable: true
-                checked: connectionBox.visible
-                onClicked: connectionBox.visible=!connectionBox.visible
-                
-                RatingAndReviewsConnection {
-                    id: connectionBox
-                    visible: false
-                    anchors.right: usersButton.right
-                    anchors.top: usersButton.bottom
-                }
-            }
-        }
     }
     
     Connections {
         target: app
-        onAppBackendChanged: {
-            connectionBox.init()
-            window.state = "loaded"
-        }
+        onAppBackendChanged: window.state = "loaded"
         onOpenApplicationInternal: Navigation.openApplication(app.appBackend.applicationByPackageName(appname))
     }
     
