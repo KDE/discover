@@ -47,7 +47,6 @@ Item
                 }
                 
                 Label {
-                    visible: app.appBackend.reviewsBackend().hasCredentials
                     anchors {
                         right: parent.right
                         bottom: parent.bottom
