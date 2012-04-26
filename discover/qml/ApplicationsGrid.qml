@@ -7,7 +7,7 @@ Item {
     property alias delegate: gridRepeater.delegate
     property alias model: gridRepeater.model
     
-    property real cellWidth: Math.min(200, view.width)
+    property real cellWidth: Math.min(200, view.actualWidth)
     property real cellHeight: cellWidth/1.618 //tau
     
     Flickable {
@@ -28,7 +28,8 @@ Item {
         Flow
         {
             id: view
-            width: parent.width-2*parent.width/12
+            width: Math.floor(actualWidth/cellWidth)*(cellWidth+spacing)
+            property real actualWidth: parent.width-2*parent.width/12
             spacing: 5
             anchors {
                 top: headerLoader.bottom
