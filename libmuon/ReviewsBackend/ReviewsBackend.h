@@ -78,6 +78,7 @@ private:
     QString getLanguage();
     AbstractLoginBackend* m_loginBackend;
     QOAuth::Interface* m_oauthInterface;
+    QList<QPair<QString, QVariantMap> > m_pendingRequests;
 
 private Q_SLOTS:
     void ratingsFetched(KJob *job);
