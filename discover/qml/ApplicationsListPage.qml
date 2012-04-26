@@ -51,6 +51,7 @@ Page {
                     onClicked: {
                         appsModel.stringSortRole=role
                         appsModel.sortOrder=sorting
+                        page.sectionProperty = section
                         button.checked=false
                     }
                     checked: appsModel.stringSortRole==role
@@ -78,26 +79,31 @@ Page {
         QtObject {
             property string display: i18n("Name")
             property string role: "name"
+            property string section: ""
             property variant sorting: Qt.AscendingOrder
         },
         QtObject {
             property string display: i18n("Rating")
             property string role: "sortableRating"
+            property string section: ""
             property variant sorting: Qt.DescendingOrder
         },
         QtObject {
             property string display: i18n("Buzz")
             property string role: "ratingPoints"
+            property string section: ""
             property variant sorting: Qt.DescendingOrder
         },
         QtObject {
             property string display: i18n("Popularity")
             property string role: "popcon"
+            property string section: ""
             property variant sorting: Qt.DescendingOrder
         },
         QtObject {
             property string display: i18n("Origin")
             property string role: "origin"
+            property string section: "origin"
             property variant sorting: Qt.DescendingOrder
         }//,
 //         QtObject {
@@ -130,7 +136,12 @@ Page {
             anchors.fill: parent
             preferUpgrade: page.preferUpgrade
             section.property: page.sectionProperty
-            section.delegate: page.sectionDelegate
+            section.delegate: page.sectionDelegate ? page.sectionDelegate : defaultSectionDelegate
+            
+            Component {
+                id: defaultSectionDelegate
+                Label { text: section; anchors.right: parent.right }
+            }
             
             header: page.category==null ? null : categoryHeaderComponent
             model: appsModel
