@@ -29,7 +29,7 @@ Item {
         {
             id: view
             width: Math.floor(actualWidth/cellWidth)*(cellWidth+spacing)
-            property real actualWidth: parent.width-2*parent.width/12
+            property real actualWidth: parent.width-Math.pow(parent.width/70, 2)
             spacing: 5
             anchors {
                 top: headerLoader.bottom
