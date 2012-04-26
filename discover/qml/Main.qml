@@ -55,7 +55,10 @@ Item {
                 height: toplevelsRow.height
                 icon: "go-previous"
                 enabled: breadcrumbsItem.count>1
-                onClicked: breadcrumbsItem.popItem(false)
+                onClicked: {
+                    breadcrumbsItem.popItem(false)
+                    searchField.text = ""
+                }
             }
             
             Label {
