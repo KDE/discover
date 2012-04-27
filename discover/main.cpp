@@ -36,7 +36,7 @@ int main(int argc, char** argv)
                      KAboutData::License_GPL, ki18n("©2010, 2011 Jonathan Thomas"), KLocalizedString(), 0);
     about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
     about.addAuthor(ki18n("Aleix Pol Gonzalez"), KLocalizedString(), "aleixpol@blue-systems.com");
-    about.setProgramIconName("applications-other");
+    about.setProgramIconName("muondiscover");
     about.setProductName("muon/discover");
 
     KCmdLineArgs::init(argc, argv, &about);
