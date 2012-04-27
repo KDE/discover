@@ -58,6 +58,8 @@ Application::Application(const QString &fileName, QApt::Backend *backend)
         , m_usageCount(-1)
 {
     m_data = desktopContents();
+    m_isTechnical = m_data.value("NoDisplay").toLower() == "true" || !m_data.contains("Exec");
+    m_packageName = getField("X-AppInstall-Package");
 }
 
 Application::Application(QApt::Package *package, QApt::Backend *backend)
@@ -68,7 +70,7 @@ Application::Application(QApt::Package *package, QApt::Backend *backend)
         , m_isExtrasApp(false)
         , m_usageCount(-1)
 {
-    m_packageName = m_package->name();
+    m_packageName = m_package->latin1Name().latin1();
     if (!m_package->controlField(QLatin1String("Appname")).isEmpty()) {
         m_isExtrasApp = true;
         m_isTechnical = false;
@@ -118,12 +120,7 @@ QString Application::comment()
 
 QString Application::packageName() const
 {
-    QString ret = (m_isTechnical || m_isExtrasApp) ? m_packageName : getField("X-AppInstall-Package");
-    if(ret.isEmpty())
-        ret = m_packageName;
-
-    Q_ASSERT(!ret.isEmpty());
-    return ret;
+    return m_packageName;
 }
 
 QApt::Package *Application::package()

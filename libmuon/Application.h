@@ -117,7 +117,7 @@ private:
     QHash<QByteArray, QByteArray> m_data;
     QApt::Backend *m_backend;
     QApt::Package *m_package;
-    QString m_packageName;
+    QByteArray m_packageName;
 
     bool m_isValid;
     bool m_isTechnical;
