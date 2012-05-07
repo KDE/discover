@@ -46,6 +46,10 @@ ListItem {
                 fillMode: Image.PreserveAspectFit
                 source: model.application.screenshotUrl(0)
                 width: parent.width; height: delegateRoot.height*0.7
+                sourceSize {
+                    width: screen.width
+                    height: screen.height
+                }
                 cache: false
                 asynchronous: true
                 onStatusChanged:  {
