@@ -17,6 +17,7 @@ Page {
     property Component sectionDelegate: null
     property bool preferUpgrade: false
     property bool preferList: false
+    property real actualWidth: parent.width-Math.pow(parent.width/70, 2)
     clip: true
     
     onSearchChanged: {
@@ -137,6 +138,7 @@ Page {
             preferUpgrade: page.preferUpgrade
             section.property: page.sectionProperty
             section.delegate: page.sectionDelegate ? page.sectionDelegate : defaultSectionDelegate
+            actualWidth: page.actualWidth
             
             Component {
                 id: defaultSectionDelegate
@@ -153,6 +155,7 @@ Page {
         ApplicationsGrid {
             model: appsModel
             header: page.category==null ? null : categoryHeaderComponent
+            actualWidth: page.actualWidth
             
             delegate: ApplicationsGridDelegate { requireClick: page.state=="grid3" }
         }

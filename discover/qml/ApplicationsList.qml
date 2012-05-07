@@ -11,7 +11,8 @@ Item {
     property alias section: view.section
     property bool preferUpgrade: false
     property alias model: view.model
-    
+    property real actualWidth: width
+
     ListView
     {
         id: view
@@ -25,7 +26,8 @@ Item {
         snapMode: ListView.SnapToItem
         
         delegate: ListItem {
-                width: view.width
+                width: parentItem.actualWidth
+                anchors.horizontalCenter: parent.horizontalCenter
                 property real contHeight: elemHeight*0.7
                 height: elemHeight
                 QIconItem {
