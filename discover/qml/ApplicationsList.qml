@@ -27,7 +27,7 @@ Item {
         
         delegate: ListItem {
                 width: parentItem.actualWidth
-                anchors.horizontalCenter: parent.horizontalCenter
+                x: (view.width-parentItem.actualWidth)/2
                 property real contHeight: elemHeight*0.7
                 height: elemHeight
                 QIconItem {
