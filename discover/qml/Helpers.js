@@ -1,5 +1,4 @@
 function getFeatured(model, data) {
-    console.log("fuuuuuu "+data)
     if(!app.appBackend || data==null)
         return
     
