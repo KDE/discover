@@ -122,10 +122,10 @@ Item {
                 height: width
                 radius: width
                 smooth: true
-                color: dataModel.get(modelData).color
+                color: "black"
                 border.color: "white"
                 border.width: 2
-                opacity: area.containsMouse ? 0.2 : (isCurrent ? 1 : 0.6)
+                opacity: isCurrent ? 1 : 0.2
                 
                 Behavior on opacity { NumberAnimation { duration: 250 } }
                 Behavior on width { NumberAnimation { duration: 250 } }
@@ -133,7 +133,6 @@ Item {
                 MouseArea {
                     id: area
                     anchors.fill: parent
-                    hoverEnabled: true
                     onClicked: current = modelData
                 }
             }

@@ -2,6 +2,7 @@ import QtQuick 1.0
 import org.kde.plasma.components 0.1
 import org.kde.qtextracomponents 0.1
 import "navigation.js" as Navigation
+import "Helpers.js" as Helpers
 
 Item {
     property QtObject category
@@ -20,27 +21,44 @@ Item {
         anchors.centerIn: parent
         height: parent.height-10
         width: parent.width
+        Connections {
+            target: app.appBackend
+            onAppBackendReady: Helpers.getFeatured(noCategoryModel, info.featuredData)
+        }
+        Component.onCompleted: {
+            var xhr = new XMLHttpRequest;
+            xhr.open("GET", "http://jacknjoe.com/api/packages/featured");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    info.featuredData = JSON.parse(xhr.responseText)
+                }
+            }
+            xhr.send();
+        }
+        property variant featuredData: null
+        onFeaturedDataChanged: Helpers.getFeatured(noCategoryModel, info.featuredData)
         
         ListModel {
             id: noCategoryModel
             ListElement { text: "KDE Workspace"; color: "#3333ff"; icon: "kde"; packageName: "" }
-            ListElement { text: "KAlgebra"; color: "#cc77cc"; icon: "kalgebra"; packageName: "kalgebra" }
-            ListElement { text: "Digikam"; color: "#9999ff"; icon: "digikam"; packageName: "digikam" }
-            ListElement { text: "Plasma"; color: "#bd9"; icon: "plasma"; packageName: "" }
         }
         
         ListModel { id: categoryModel }
         
         dataModel: category==null ? noCategoryModel : categoryModel
         
-        delegate: Item {
+        delegate: MouseArea {
                 property QtObject modelData
+                id: infoArea
+                enabled: modelData.package!=""
+                anchors.fill: parent
+                onClicked: Navigation.openApplication(app.appBackend.applicationByPackageName(modelData.packageName))
                 
                 Rectangle {
                     anchors.fill: parent
                     radius: 10
                     color: modelData.color
-                    opacity: infoArea.containsMouse ? 0.7 : 0.3
+                    opacity: 0.3
                     
                     Behavior on opacity { NumberAnimation { duration: 500 } }
                 }
@@ -65,14 +83,6 @@ Item {
                     }
                     width: height
                     icon: modelData.icon
-                }
-                
-                MouseArea {
-                    id: infoArea
-                    enabled: modelData.packageName!=""
-                    anchors.fill: parent
-                    onClicked: Navigation.openApplication(app.appBackend.applicationByPackageName(modelData.packageName))
-                    hoverEnabled: true
                 }
         }
     }
