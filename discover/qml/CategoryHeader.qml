@@ -26,17 +26,20 @@ Item {
             onAppBackendReady: Helpers.getFeatured(noCategoryModel, info.featuredData)
         }
         Component.onCompleted: {
+            if(category)
+                return
+            
             var xhr = new XMLHttpRequest;
             xhr.open("GET", "http://jacknjoe.com/api/packages/featured");
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == XMLHttpRequest.DONE) {
-                    info.featuredData = JSON.parse(xhr.responseText)
+                    featuredData = JSON.parse(xhr.responseText)
                 }
             }
             xhr.send();
         }
         property variant featuredData: null
-        onFeaturedDataChanged: Helpers.getFeatured(noCategoryModel, info.featuredData)
+        onFeaturedDataChanged: Helpers.getFeatured(noCategoryModel, featuredData)
         
         ListModel {
             id: noCategoryModel
