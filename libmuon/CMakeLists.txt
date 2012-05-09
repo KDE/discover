@@ -50,6 +50,7 @@ set(muon_LIB_SRCS
     Transaction/TransactionModel.cpp)
 qt4_add_dbus_interface(muon_LIB_SRCS ReviewsBackend/ubuntu_sso_dbus_interface.xml ubuntu_sso -i "ReviewsBackend/LoginMetaTypes.h")
 
+kde4_add_kcfg_files(muon_LIB_SRCS GENERATE_MOC MuonDataSources.kcfgc)
 kde4_add_library(muonprivate SHARED ${muon_LIB_SRCS})
 
 set_target_properties(muonprivate PROPERTIES

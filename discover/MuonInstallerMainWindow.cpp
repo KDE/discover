@@ -64,6 +64,7 @@
 #include "ApplicationUpdates.h"
 #include "OriginsBackend.h"
 #include "ApplicationAddonsModel.h"
+#include <libmuon/MuonDataSources.h>
 
 QML_DECLARE_TYPE(ApplicationBackend)
 
@@ -198,4 +199,9 @@ void MuonInstallerMainWindow::triggerOpenApplication()
 QSize MuonInstallerMainWindow::sizeHint() const
 {
     return QSize(800, 800);
+}
+
+QUrl MuonInstallerMainWindow::featuredSource() const
+{
+    return MuonDataSources::featuredSource();
 }

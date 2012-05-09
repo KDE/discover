@@ -23,6 +23,7 @@
 
 #include <QtCore/QString>
 #include <QtCore/QVariant>
+#include <KUrl>
 
 #include "libmuonprivate_export.h"
 
@@ -65,7 +66,7 @@ public:
 private:
     QApt::Backend *m_aptBackend;
 
-    QString m_serverBase;
+    KUrl m_serverBase;
     KTemporaryFile *m_ratingsFile;
     KTemporaryFile *m_reviewsFile;
     QHash<QString, Rating *> m_ratings;

@@ -23,6 +23,7 @@
 #include <LibQApt/Globals>
 #include <MuonMainWindow.h>
 
+class QUrl;
 class QDeclarativeView;
 class ApplicationBackend;
 namespace QApt { class Backend; }
@@ -43,6 +44,7 @@ class MuonInstallerMainWindow : public MuonMainWindow
     public slots:
         void setBackend(QApt::Backend* b);
         void openApplication(const QString& app);
+        QUrl featuredSource() const;
 
     private slots:
         void triggerOpenApplication();

@@ -30,7 +30,7 @@ Item {
                 return
             
             var xhr = new XMLHttpRequest;
-            xhr.open("GET", "http://jacknjoe.com/api/packages/featured");
+            xhr.open("GET", app.featuredSource());
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == XMLHttpRequest.DONE) {
                     featuredData = JSON.parse(xhr.responseText)
