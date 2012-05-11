@@ -198,7 +198,7 @@ void MuonInstallerMainWindow::triggerOpenApplication()
 
 QSize MuonInstallerMainWindow::sizeHint() const
 {
-    return QSize(800, 1100);
+    return QSize(800, 900);
 }
 
 QUrl MuonInstallerMainWindow::featuredSource() const

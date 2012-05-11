@@ -14,7 +14,6 @@ Item {
     property Component installedComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
     property Component sourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
     property Component currentTopLevel: browsingComp
-    height: 1000
     
     onCurrentTopLevelChanged: {
         if(currentTopLevel==null)

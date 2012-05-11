@@ -29,12 +29,10 @@ Item {
         property variant featuredData: null
         onFeaturedDataChanged: Helpers.getFeatured(noCategoryModel, featuredData)
         
-        ListModel {
+        dataModel: ListModel {
             id: noCategoryModel
             ListElement { text: "Kubuntu"; color: "#84D1FF"; icon: "kde"; comment: ""; image: "http://www.kubuntu.org/files/12.04-lts-banner.png"; packageName: "" }
         }
-        
-        dataModel: noCategoryModel
         
         delegate: MouseArea {
                 property QtObject modelData
