@@ -44,29 +44,24 @@ Item {
                 onClicked: Navigation.openApplication(app.appBackend.applicationByPackageName(modelData.packageName))
                 clip: true
                 
-                Rectangle {
-                    anchors.fill: parent
-                    radius: 10
-                    color: modelData.color
-                    opacity: 0.3
-                    
-                    Behavior on opacity { NumberAnimation { duration: 500 } }
-                }
                 Flickable {
                     id: flick
                     anchors.fill: parent
                     contentY: 0
                     interactive: false
-                    contentWidth: image.width; contentHeight: image.height
+                    contentX: contentWidth < width ? (contentWidth-width)/2 : 0
+                    contentWidth: Math.ceil(image.width, width); contentHeight: Math.ceil(image.height, height)
                     Behavior on contentY { NumberAnimation { duration: 5000 } }
                     
                     Image {
                         id: image
                         source: modelData.image
+                        anchors.centerIn: parent
                         
                         onStatusChanged: {
-                            if(status==Image.Ready && image.height > flick.height) {
-                                flick.contentY=flick.contentHeight-flick.height
+                            if(status==Image.Ready) {
+                                if(image.height > flick.height)
+                                    flick.contentY=flick.contentHeight-flick.height
                             }
                         }
                     }
