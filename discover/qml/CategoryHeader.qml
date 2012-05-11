@@ -67,37 +67,60 @@ Item {
                     Behavior on opacity { NumberAnimation { duration: 500 } }
                 }
                 Flickable {
+                    id: flick
                     anchors.fill: parent
-                    visible: modelData.image!=null
-                    contentY: contentHeight/2-height/2
-                    contentX: width/2
+                    contentY: 0
                     interactive: false
+                    contentWidth: image.width; contentHeight: image.height
+                    Behavior on contentY { NumberAnimation { duration: 5000 } }
+                    
                     Image {
                         id: image
                         source: modelData.image
+                        
+                        onStatusChanged: {
+                            if(status==Image.Ready) {
+                                flick.contentY=flick.contentHeight-flick.height
+                            }
+                        }
                     }
                 }
-                
-                Label {
-                    anchors.margins: 20
-                    anchors.left: iconItem.right
-                    anchors.verticalCenter: parent.verticalCenter
-                    horizontalAlignment: Text.AlignRight
-                    verticalAlignment: Text.AlignVCenter
-                    text: modelData.text
-                    font.pointSize: info.height/3
-                }
-                
-                QIconItem {
-                    id: iconItem
+                Item {
+                    height: 40
+                    
+                    Rectangle {
+                        anchors.fill: parent
+                        color: "black"
+                        opacity: 0.7
+                    }
+                    
                     anchors {
-                        margins: 5
                         left: parent.left
-                        top: parent.top
+                        right: parent.right
                         bottom: parent.bottom
                     }
-                    width: height
-                    icon: modelData.icon
+                    
+                    QIconItem {
+                        id: iconItem
+                        anchors {
+                            left: parent.left
+                            top: parent.top
+                            bottom: parent.bottom
+                            margins: 3
+                        }
+                        width: height
+                        icon: modelData.icon
+                    }
+                    
+                    Label {
+                        anchors {
+                            left: iconItem.right
+                            verticalCenter: parent.verticalCenter
+                            leftMargin: 10
+                        }
+                        color: "white"
+                        text: i18n("<b>%1</b><br/>%2", modelData.text, modelData.comment)
+                    }
                 }
         }
     }

@@ -9,11 +9,15 @@ function getFeatured(model, data) {
             console.log("application "+ currentData.package+" not found")
             continue
         }
+        var image = currentData.image
+        if(image == null)
+            image = application.screenshotUrl
         model.append({
             "text": application.name,
             "color": "red",
-            "image": currentData.image,
+            "image": image,
             "icon": application.icon,
+            "comment": application.comment,
             "packageName": currentData.package })
     }
 }
