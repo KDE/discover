@@ -71,12 +71,26 @@ Page {
         model: cats
         clip: true
         delegate: categoryDelegate
-        header: CategoryHeader {
-            anchors.leftMargin: scroll.width
-            category: page.category
-            width: parent.width-scroll.width
-            height: page.height/5
+        Component {
+            id: categoryHeader
+            CategoryHeader {
+                anchors.leftMargin: scroll.width
+                category: page.category
+                width: parent.width-scroll.width
+                height: 128
+            }
         }
+        
+        Component {
+            id: featured
+            FeaturedBanner {
+                anchors.leftMargin: scroll.width
+                width: parent.width-scroll.width
+                height: 310
+            }
+        }
+        
+        header: category==null ? featured : categoryHeader
         footer: topsView
     }
     

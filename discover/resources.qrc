@@ -5,6 +5,7 @@
     <file>qml/CategoryPage.qml</file>
     <file>qml/ApplicationsTop.qml</file>
     <file>qml/CategoryHeader.qml</file>
+    <file>qml/FeaturedBanner.qml</file>
     <file>qml/ApplicationsListPage.qml</file>
     <file>qml/ApplicationPage.qml</file>
     <file>qml/ScreenshotsModel.qml</file>
