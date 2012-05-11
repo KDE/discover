@@ -1,12 +1,12 @@
 function getFeatured(model, data) {
-    if(!app.appBackend || data==null)
+    if(!app.appBackend || app.appBackend.isReloading() || data==null)
         return
     
     for(var packageName in data) {
-        var application = app.appBackend.applicationByPackageName(data[packageName].package)
         var currentData = data[packageName]
-        if(!application) {
-            console.log("application "+ currentData.package+" not found")
+        var application = app.appBackend.applicationByPackageName(currentData.package)
+        if(application==null) {
+//             console.log("application "+ currentData.package+" not found")
             continue
         }
         var image = currentData.image

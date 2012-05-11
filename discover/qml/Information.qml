@@ -56,7 +56,6 @@ Item {
             to: viewItem.endOfWindow
             property: "anchors.leftMargin"
             easing.type: Easing.InQuad
-            onCompleted: target.destroy()
         }
         NumberAnimation {
             duration: 500
@@ -82,10 +81,17 @@ Item {
             target: viewItem.currentItem
             easing.type: Easing.InQuad
         }
+        onCompleted: fadeoutAnimation.target.destroy()
     }
     
     function next() {
         viewItem.current = (viewItem.current+1)%dataModel.count
+    }
+    function previous() {
+        var val = viewItem.current-1
+        if(val<0)
+            val = dataModel.count-1
+        viewItem.current = val
     }
     
     MouseArea {
@@ -97,45 +103,5 @@ Item {
         id: timer
         interval: 5000; running: viewItem.visible; repeat: true
         onTriggered: info.next()
-    }
-    
-    Row {
-        id: selectorRow
-        anchors {
-            horizontalCenter: parent.horizontalCenter
-            bottom: parent.bottom
-        }
-        
-        width: 100
-        height: 20
-        spacing: 10
-        z: currentItem ? currentItem.z+2 : 0
-        visible: viewItem.dataModel.count>1
-
-        Repeater {
-            model: viewItem.dataModel.count
-            
-            Rectangle {
-                property bool isCurrent: modelData == current
-                anchors.verticalCenter: parent.verticalCenter
-                width:  isCurrent ? 15 : 10
-                height: width
-                radius: width
-                smooth: true
-                color: "black"
-                border.color: "white"
-                border.width: 2
-                opacity: isCurrent ? 1 : 0.2
-                
-                Behavior on opacity { NumberAnimation { duration: 250 } }
-                Behavior on width { NumberAnimation { duration: 250 } }
-                
-                MouseArea {
-                    id: area
-                    anchors.fill: parent
-                    onClicked: current = modelData
-                }
-            }
-        }
     }
 }

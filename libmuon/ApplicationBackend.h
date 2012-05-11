@@ -66,7 +66,7 @@ public:
     int updatesCount() const;
 
     bool confirmRemoval(Transaction *transaction);
-    bool isReloading() const;
+    Q_SCRIPTABLE bool isReloading() const;
     void markTransaction(Transaction *transaction);
     void addTransaction(Transaction *transaction);
 

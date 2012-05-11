@@ -43,7 +43,7 @@ Item {
         
         ListModel {
             id: noCategoryModel
-            ListElement { text: "KDE Workspace"; color: "#3333ff"; icon: "kde"; packageName: "" }
+            ListElement { text: "Kubuntu"; color: "#84D1FF"; icon: "kde"; comment: ""; image: "http://www.kubuntu.org/files/12.04-lts-banner.png"; packageName: "" }
         }
         
         ListModel { id: categoryModel }
@@ -88,22 +88,33 @@ Item {
                 Item {
                     height: 40
                     
-                    Rectangle {
-                        anchors.fill: parent
-                        color: "black"
-                        opacity: 0.7
-                    }
-                    
                     anchors {
                         left: parent.left
                         right: parent.right
                         bottom: parent.bottom
                     }
                     
+                    Rectangle {
+                        anchors.fill: parent
+                        color: "black"
+                        opacity: 0.7
+                    }
+                    
+                    ToolButton {
+                        id: prevButton
+                        iconSource: "go-previous"
+                        height: parent.height
+                        onClicked: info.previous()
+                        anchors {
+                            top: parent.top
+                            left: parent.left
+                        }
+                    }
+                    
                     QIconItem {
                         id: iconItem
                         anchors {
-                            left: parent.left
+                            left: prevButton.right
                             top: parent.top
                             bottom: parent.bottom
                             margins: 3
@@ -120,6 +131,15 @@ Item {
                         }
                         color: "white"
                         text: i18n("<b>%1</b><br/>%2", modelData.text, modelData.comment)
+                    }
+                    ToolButton {
+                        iconSource: "go-next"
+                        height: parent.height
+                        onClicked: info.next()
+                        anchors {
+                            right: parent.right
+                            top: parent.top
+                        }
                     }
                 }
         }
