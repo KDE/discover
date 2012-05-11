@@ -75,7 +75,7 @@ Page {
             anchors.leftMargin: scroll.width
             category: page.category
             width: parent.width-scroll.width
-            height: 100
+            height: page.height/5
         }
         footer: topsView
     }

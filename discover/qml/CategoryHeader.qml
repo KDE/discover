@@ -56,6 +56,7 @@ Item {
                 enabled: modelData.package!=""
                 anchors.fill: parent
                 onClicked: Navigation.openApplication(app.appBackend.applicationByPackageName(modelData.packageName))
+                clip: true
                 
                 Rectangle {
                     anchors.fill: parent
@@ -64,6 +65,17 @@ Item {
                     opacity: 0.3
                     
                     Behavior on opacity { NumberAnimation { duration: 500 } }
+                }
+                Flickable {
+                    anchors.fill: parent
+                    visible: modelData.image!=null
+                    contentY: contentHeight/2-height/2
+                    contentX: width/2
+                    interactive: false
+                    Image {
+                        id: image
+                        source: modelData.image
+                    }
                 }
                 
                 Label {

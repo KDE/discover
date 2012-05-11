@@ -4,14 +4,16 @@ function getFeatured(model, data) {
     
     for(var packageName in data) {
         var application = app.appBackend.applicationByPackageName(data[packageName].package)
+        var currentData = data[packageName]
         if(!application) {
-            console.log("application "+data[packageName].package+" not found")
+            console.log("application "+ currentData.package+" not found")
             continue
         }
         model.append({
             "text": application.name,
-            "color": "blue",
+            "color": "red",
+            "image": currentData.image,
             "icon": application.icon,
-            "packageName": data[packageName].package })
+            "packageName": currentData.package })
     }
 }
