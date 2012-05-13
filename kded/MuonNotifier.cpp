@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2009-2011 Jonathan Thomas <echidnaman@kubuntu.org>        *
+ *   Copyright © 2009-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *   Copyright © 2009 Harald Sitter <apachelogger@ubuntu.com>              *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
@@ -50,9 +50,9 @@ MuonNotifier::MuonNotifier(QObject* parent, const QList<QVariant>&)
 {
     KAboutData aboutData("muon-notifier", "muon-notifier",
                          ki18n("Muon Notification Daemon"),
-                         "1.3", ki18n("A Notification Daemon for Muon"),
+                         "1.4", ki18n("A Notification Daemon for Muon"),
                          KAboutData::License_GPL,
-                         ki18n("(C) 2009-2011 Jonathan Thomas, (C) 2009 Harald Sitter"),
+                         ki18n("(C) 2009-2012 Jonathan Thomas, (C) 2009 Harald Sitter"),
                          KLocalizedString(), "http://kubuntu.org");
 
     QTimer::singleShot(0, this, SLOT(init()));

@@ -53,7 +53,7 @@ qt4_add_dbus_interface(muon_LIB_SRCS ReviewsBackend/ubuntu_sso_dbus_interface.xm
 kde4_add_library(muonprivate SHARED ${muon_LIB_SRCS})
 
 set_target_properties(muonprivate PROPERTIES
-    VERSION 1.2.95
+    VERSION 1.3.65
     SOVERSION 1
 )
 
