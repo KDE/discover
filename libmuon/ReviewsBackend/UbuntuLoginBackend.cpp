@@ -58,7 +58,7 @@ void UbuntuLoginBackend::login()
 {
     MapString data;
     data["help_text"] = i18n("Log in to the Ubuntu SSO service");
-    data["window_id"] = QString::number(qobject_cast<QApplication*>(qApp)->activeWindow()->winId());
+    data["window_id"] = winId();
     QDBusPendingReply< void > ret = m_interface->login(appname(), data);
 }
 
@@ -66,7 +66,7 @@ void UbuntuLoginBackend::registerAndLogin()
 {
     MapString data;
     data["help_text"] = i18n("Log in to the Ubuntu SSO service");
-    data["window_id"] = QString::number(qobject_cast<QApplication*>(qApp)->activeWindow()->winId());
+    data["window_id"] = winId();
     m_interface->register_hack(appname(), data);
 }
 
@@ -92,6 +92,17 @@ void UbuntuLoginBackend::successfulLogin(const QString& app, const QMap<QString,
 QString UbuntuLoginBackend::appname() const
 {
     return QCoreApplication::instance()->applicationName();
+}
+
+QString UbuntuLoginBackend::winId() const
+{
+    QString windowId;
+    QApplication *app = qobject_cast<QApplication*>(qApp);
+
+    if (app->activeWindow())
+        windowId = QString::number(app->activeWindow()->winId());
+
+    return windowId;
 }
 
 void UbuntuLoginBackend::authorizationDenied(const QString& app)

@@ -32,16 +32,16 @@ class UbuntuLoginBackend : public AbstractLoginBackend
     public:
         UbuntuLoginBackend(QObject* parent=0);
         
-        virtual void login();
-        virtual void registerAndLogin();
-        virtual void logout();
-        virtual QString displayName() const;
-        virtual bool hasCredentials() const;
+        void login();
+        void registerAndLogin();
+        void logout();
+        QString displayName() const;
+        bool hasCredentials() const;
         
-        virtual QByteArray token() const;
-        virtual QByteArray tokenSecret() const;
-        virtual QByteArray consumerKey() const;
-        virtual QByteArray consumerSecret() const;
+        QByteArray token() const;
+        QByteArray tokenSecret() const;
+        QByteArray consumerKey() const;
+        QByteArray consumerSecret() const;
 
     private slots:
         void credentialsError(const QString& app, const MapString& a);
@@ -50,6 +50,7 @@ class UbuntuLoginBackend : public AbstractLoginBackend
 
     private:
         QString appname() const;
+        QString winId() const;
         HackedComUbuntuSsoCredentialsManagementInterface* m_interface;
         MapString m_credentials;
 };
