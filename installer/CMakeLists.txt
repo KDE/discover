@@ -48,5 +48,4 @@ install(TARGETS muon-installer ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 install( PROGRAMS muon-installer.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR} )
 install(FILES muon-installerui.rc  DESTINATION  ${DATA_INSTALL_DIR}/muon-installer)
-install(FILES categories.xml DESTINATION ${DATA_INSTALL_DIR}/muon-installer)
 install(FILES config/muon-installer.kcfg DESTINATION ${KCFG_INSTALL_DIR})

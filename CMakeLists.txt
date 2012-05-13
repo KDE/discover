@@ -46,7 +46,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/HaveQZeitgeist.h.in
 add_subdirectory(libmuon)
 add_subdirectory(muon)
 add_subdirectory(installer)
-add_subdirectory(muon-mobile)
+add_subdirectory(discover)
 add_subdirectory(updater)
 add_subdirectory(kded)
 

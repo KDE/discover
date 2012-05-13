@@ -23,6 +23,7 @@
 
 #include <QtCore/QString>
 #include <QtCore/QVariant>
+#include <KUrl>
 
 #include "libmuonprivate_export.h"
 
@@ -65,7 +66,7 @@ public:
 private:
     QApt::Backend *m_aptBackend;
 
-    QString m_serverBase;
+    KUrl m_serverBase;
     KTemporaryFile *m_ratingsFile;
     KTemporaryFile *m_reviewsFile;
     QHash<QString, Rating *> m_ratings;
@@ -78,6 +79,7 @@ private:
     QString getLanguage();
     AbstractLoginBackend* m_loginBackend;
     QOAuth::Interface* m_oauthInterface;
+    QList<QPair<QString, QVariantMap> > m_pendingRequests;
 
 private Q_SLOTS:
     void ratingsFetched(KJob *job);
@@ -94,6 +96,7 @@ public slots:
                       const QString& review_text, const QString& rating);
     void deleteReview(Review* r);
     void flagReview(Review* r, const QString& reason, const QString &text);
+    void refreshConsumerKeys();
 
 Q_SIGNALS:
     void reviewsReady(Application *app, QList<Review *>);

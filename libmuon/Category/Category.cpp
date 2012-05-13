@@ -167,7 +167,7 @@ bool categoryLessThan(Category *c1, const Category *c2)
 
 QList< Category* > Category::populateCategories()
 {
-    QFile menuFile(KStandardDirs::locate("appdata", "categories.xml"));
+    QFile menuFile(KStandardDirs::locate("data", "muon-installer/categories.xml"));
     QList<Category *> ret;
 
     if (!menuFile.open(QIODevice::ReadOnly)) {

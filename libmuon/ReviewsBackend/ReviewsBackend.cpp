@@ -1,4 +1,4 @@
-/***************************************************************************
+    /***************************************************************************
  *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
@@ -42,6 +42,7 @@
 #include "Review.h"
 #include "AbstractLoginBackend.h"
 #include "UbuntuLoginBackend.h"
+#include "MuonDataSources.h"
 
 static QString getCodename(const QString& value)
 {
@@ -63,16 +64,15 @@ static QString getCodename(const QString& value)
 ReviewsBackend::ReviewsBackend(QObject *parent)
         : QObject(parent)
         , m_aptBackend(0)
-        , m_serverBase("http://reviews.ubuntu.com/reviews/api/1.0/")
+        , m_serverBase(MuonDataSources::rnRSource())
         , m_ratingsFile(0)
         , m_reviewsFile(0)
 {
     m_loginBackend = new UbuntuLoginBackend(this);
     connect(m_loginBackend, SIGNAL(connectionStateChanged()), SIGNAL(loginStateChanged()));
+    connect(m_loginBackend, SIGNAL(connectionStateChanged()), SLOT(refreshConsumerKeys()));
     m_oauthInterface = new QOAuth::Interface(this);
-    m_oauthInterface->setConsumerKey(m_loginBackend->consumerKey());
-    m_oauthInterface->setConsumerSecret(m_loginBackend->consumerSecret());
-
+    refreshConsumerKeys();
     fetchRatings();
 }
 
@@ -80,6 +80,20 @@ ReviewsBackend::~ReviewsBackend()
 {
     delete m_ratingsFile;
     qDeleteAll(m_ratings);
+}
+
+void ReviewsBackend::refreshConsumerKeys()
+{
+    if(m_loginBackend->hasCredentials()) {
+        m_oauthInterface->setConsumerKey(m_loginBackend->consumerKey());
+        m_oauthInterface->setConsumerSecret(m_loginBackend->consumerSecret());
+        
+        QList<QPair<QString, QVariantMap> >::const_iterator it, itEnd;
+        for(it=m_pendingRequests.constBegin(), itEnd=m_pendingRequests.constEnd(); it!=itEnd; ++it) {
+            postInformation(it->first, it->second);
+        }
+        m_pendingRequests.clear();
+    }
 }
 
 void ReviewsBackend::setAptBackend(QApt::Backend *aptBackend)
@@ -102,7 +116,7 @@ void ReviewsBackend::fetchRatings()
     loadRatingsFromFile(KStandardDirs::locateLocal("data", "libmuon/ratings.txt"));
 
     // Try to fetch the latest ratings from the internet
-    KUrl ratingsUrl(m_serverBase % "review-stats/");
+    KUrl ratingsUrl(m_serverBase, "review-stats/");
 
     if (m_ratingsFile) {
         m_ratingsFile->deleteLater();
@@ -206,7 +220,7 @@ void ReviewsBackend::fetchReviews(Application *app, int page)
     // But that could be because the Ubuntu Software Center (which I used to
     // figure it out) is written in python, so you have to go hunting to where
     // a variable was initially initialized with a primitive to figure out its type.
-    KUrl reviewsUrl(m_serverBase % QLatin1String("reviews/filter/") % lang % '/'
+    KUrl reviewsUrl(m_serverBase, QLatin1String("reviews/filter/") % lang % '/'
 		    % origin % '/' % QLatin1String("any") % '/' % version % '/' % packageName
 		    % ';' % appName % '/' % QLatin1String("page") % '/' % QString::number(page));
 
@@ -332,9 +346,14 @@ QByteArray authorization(QOAuth::Interface* oauth, const KUrl& url, AbstractLogi
 
 void ReviewsBackend::postInformation(const QString& path, const QVariantMap& data)
 {
-    KUrl url(m_serverBase);
+    if(!hasCredentials()) {
+        m_pendingRequests += qMakePair(path, data);
+        login();
+        return;
+    }
+    
+    KUrl url(m_serverBase, path);
     url.setScheme("https");
-    url.addPath(path);
     
     KIO::StoredTransferJob* job = KIO::storedHttpPost(QJson::Serializer().serialize(data), url, KIO::Overwrite | KIO::HideProgressInfo);
     job->addMetaData("content-type", "Content-Type: application/json" );

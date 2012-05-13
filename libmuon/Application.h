@@ -60,6 +60,8 @@ Q_PROPERTY(bool isInstalled READ isInstalled NOTIFY installChanged)
 Q_PROPERTY(bool canUpgrade READ canUpgrade NOTIFY installChanged)
 Q_PROPERTY(int usageCount READ usageCount CONSTANT)
 Q_PROPERTY(bool canExecute READ canExecute CONSTANT)
+Q_PROPERTY(QUrl screenshotUrl READ screenshotUrl CONSTANT)
+Q_PROPERTY(QUrl thumbnailUrl READ thumbnailUrl CONSTANT)
 public:
     friend class TransactionListener;
 
@@ -76,8 +78,8 @@ public:
     QString menuPath();
     QString categories();
     QString license();
-    Q_SCRIPTABLE QUrl screenshotUrl() { return screenshotUrl(QApt::Screenshot); }
-    KUrl screenshotUrl(QApt::ScreenshotType type);
+    KUrl screenshotUrl(QApt::ScreenshotType type=QApt::Screenshot);
+    QUrl thumbnailUrl();
     QApt::PackageList addons();
     bool isValid() const;
     bool isTechnical() const;
@@ -117,7 +119,7 @@ private:
     QHash<QByteArray, QByteArray> m_data;
     QApt::Backend *m_backend;
     QApt::Package *m_package;
-    QString m_packageName;
+    QByteArray m_packageName;
 
     bool m_isValid;
     bool m_isTechnical;

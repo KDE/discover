@@ -58,6 +58,8 @@ Application::Application(const QString &fileName, QApt::Backend *backend)
         , m_usageCount(-1)
 {
     m_data = desktopContents();
+    m_isTechnical = m_data.value("NoDisplay").toLower() == "true" || !m_data.contains("Exec");
+    m_packageName = getField("X-AppInstall-Package");
 }
 
 Application::Application(QApt::Package *package, QApt::Backend *backend)
@@ -68,7 +70,7 @@ Application::Application(QApt::Package *package, QApt::Backend *backend)
         , m_isExtrasApp(false)
         , m_usageCount(-1)
 {
-    m_packageName = m_package->name();
+    m_packageName = m_package->latin1Name().latin1();
     if (!m_package->controlField(QLatin1String("Appname")).isEmpty()) {
         m_isExtrasApp = true;
         m_isTechnical = false;
@@ -118,12 +120,7 @@ QString Application::comment()
 
 QString Application::packageName() const
 {
-    QString ret = (m_isTechnical || m_isExtrasApp) ? m_packageName : getField("X-AppInstall-Package");
-    if(ret.isEmpty())
-        ret = m_packageName;
-
-    Q_ASSERT(!ret.isEmpty());
-    return ret;
+    return m_packageName;
 }
 
 QApt::Package *Application::package()
@@ -260,32 +257,18 @@ QString Application::categories()
 
 KUrl Application::screenshotUrl(QApt::ScreenshotType type)
 {
-    QString appUrl;
-    KUrl url;
-
-    // Try to get a screenshot for extras.ubuntu.com packages
-    if (m_isExtrasApp) {
+    QUrl url = package()->screenshotUrl(type);
+    if(url.isEmpty()) {
         switch (type) {
-        case QApt::Thumbnail:
-            appUrl = package()->controlField(QLatin1String("Thumbnail-Url"));
-            if (appUrl.isEmpty()) // Fallback, some extras.ubuntu.com don't have thumbnails
-                appUrl = package()->controlField(QLatin1String("Screenshot-Url"));
-            break;
-        case QApt::Screenshot:
-            appUrl = package()->controlField(QLatin1String("Screenshot-Url"));
-            break;
-        default:
-            break;
+            case QApt::Thumbnail:
+                url = KUrl("http://screenshots.debian.net/thumbnail/"+packageName());
+                break;
+            case QApt::Screenshot:
+            case QApt::UnknownType:
+                url = KUrl("http://screenshots.debian.net/screenshot/"+packageName());
+                break;
         }
     }
-
-    // Otherwise, just check screenshots.debian.net
-    if (appUrl.isEmpty()) {
-        url = package()->screenshotUrl(type);
-    } else {
-        url = KUrl(appUrl);
-    }
-
     return url;
 }
 
@@ -558,4 +541,9 @@ void Application::invokeApplication() const
 bool Application::canExecute() const
 {
     return !executables().isEmpty();
+}
+
+QUrl Application::thumbnailUrl()
+{
+    return screenshotUrl(QApt::Thumbnail);
 }

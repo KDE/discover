@@ -1,0 +1,35 @@
+<!DOCTYPE RCC><RCC version="1.0">
+ <qresource>
+    <file>qml/Main.qml</file>
+    <file>qml/TopLevelPageData.qml</file>
+    <file>qml/CategoryPage.qml</file>
+    <file>qml/ApplicationsTop.qml</file>
+    <file>qml/CategoryHeader.qml</file>
+    <file>qml/FeaturedBanner.qml</file>
+    <file>qml/ApplicationsListPage.qml</file>
+    <file>qml/ApplicationPage.qml</file>
+    <file>qml/ScreenshotsModel.qml</file>
+    <file>qml/ReviewsView.qml</file>
+    <file>qml/ApplicationOverview.qml</file>
+    <file>qml/AddonsView.qml</file>
+    <file>qml/ApplicationsList.qml</file>
+    <file>qml/ApplicationsGrid.qml</file>
+    <file>qml/ApplicationsGridDelegate.qml</file>
+    <file>qml/Breadcrumbs.qml</file>
+    <file>qml/InstallApplicationButton.qml</file>
+    <file>qml/Rating.qml</file>
+    <file>qml/UpdatesPage.qml</file>
+    <file>qml/MuonToolButton.qml</file>
+    <file>qml/MuonMenuToolButton.qml</file>
+    <file>qml/RatingAndReviewsConnection.qml</file>
+    <file>qml/ReviewDialog.qml</file>
+    <file>qml/ProgressView.qml</file>
+    <file>qml/BrowsingPage.qml</file>
+    <file>qml/InstalledPage.qml</file>
+    <file>qml/Information.qml</file>
+    <file>qml/SourcesPage.qml</file>
+
+    <file>qml/navigation.js</file>
+    <file>qml/Helpers.js</file>
+ </qresource>
+</RCC>

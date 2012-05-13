@@ -81,8 +81,13 @@ void ApplicationProxyModel::setStateFilter(QApt::Package::State state)
 void ApplicationProxyModel::setOriginFilter(const QString &origin)
 {
     m_originFilter = origin;
-    invalidate();
+    invalidateFilter();
     emit invalidated();
+}
+
+QString ApplicationProxyModel::originFilter() const
+{
+    return m_originFilter;
 }
 
 void ApplicationProxyModel::setFiltersFromCategory(Category *category)
@@ -290,15 +295,17 @@ bool ApplicationProxyModel::lessThan(const QModelIndex &left, const QModelIndex 
     QVariant leftValue = left.data(sortRole());
     QVariant rightValue = right.data(sortRole());
     
+    bool invert = false;
     //if we're comparing two equal values, we want the model sorted by application name
     if(sortRole()!=ApplicationModel::NameRole && leftValue == rightValue) {
         leftValue = left.data(ApplicationModel::NameRole);
         rightValue = right.data(ApplicationModel::NameRole);
+        invert = (sortOrder()==Qt::DescendingOrder);
     }
     
     if(leftValue.type()==QVariant::String && rightValue.type()==QVariant::String) {
         int comp = QString::localeAwareCompare(leftValue.toString(), rightValue.toString());
-        return comp < 0;
+        return (comp < 0) ^ invert;
     } else
         return QSortFilterProxyModel::lessThan(left, right);
 }
