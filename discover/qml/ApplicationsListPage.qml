@@ -22,7 +22,6 @@ Page {
     
     onSearchChanged: {
         appsModel.search(search)
-        state="list"
     }
     
     function searchFor(text) {
