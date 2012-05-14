@@ -46,6 +46,7 @@ Item {
                     width: 16
                 }
                 Label {
+                    id: nameLabel
                     anchors.top: icon.top
                     anchors.left: icon.right
                     anchors.right: ratingsItem.left
