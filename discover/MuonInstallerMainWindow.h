@@ -36,6 +36,7 @@ class MuonInstallerMainWindow : public MuonMainWindow
     Q_PROPERTY(QApt::Backend* backend READ backend NOTIFY appBackendChanged)
     public:
         explicit MuonInstallerMainWindow();
+        virtual ~MuonInstallerMainWindow();
 
         ApplicationBackend* appBackend() const;
         QApt::Backend* backend() const;
