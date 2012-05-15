@@ -66,7 +66,7 @@ public:
 private:
     QApt::Backend *m_aptBackend;
 
-    KUrl m_serverBase;
+    const KUrl m_serverBase;
     KTemporaryFile *m_ratingsFile;
     KTemporaryFile *m_reviewsFile;
     QHash<QString, Rating *> m_ratings;

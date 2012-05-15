@@ -28,7 +28,6 @@
 #include <KLocale>
 #include <KStandardDirs>
 #include <KTemporaryFile>
-#include <KUrl>
 
 #include <LibQApt/Backend>
 
@@ -303,7 +302,7 @@ void ReviewsBackend::submitUsefulness(Review* r, bool useful)
     QVariantMap data;
     data["useful"] = useful;
     
-    postInformation(QString("/reviews/%1/recommendations/").arg(r->id()), data);
+    postInformation(QString("reviews/%1/recommendations/").arg(r->id()), data);
 }
 
 void ReviewsBackend::submitReview(Application* app, const QString& summary,
@@ -321,12 +320,12 @@ void ReviewsBackend::submitReview(Application* app, const QString& summary,
     data["distroseries"] = getCodename("DISTRIB_CODENAME");
     data["arch_tag"] = app->package()->architecture();
     
-    postInformation("/reviews/", data);
+    postInformation("reviews/", data);
 }
 
 void ReviewsBackend::deleteReview(Review* r)
 {
-    postInformation(QString("/reviews/delete/%1/").arg(r->id()), QVariantMap());
+    postInformation(QString("reviews/delete/%1/").arg(r->id()), QVariantMap());
 }
 
 void ReviewsBackend::flagReview(Review* r, const QString& reason, const QString& text)
@@ -335,7 +334,7 @@ void ReviewsBackend::flagReview(Review* r, const QString& reason, const QString&
     data["reason"] = reason;
     data["text"] = text;
 
-    postInformation(QString("/reviews/%1/flags/").arg(r->id()), data);
+    postInformation(QString("reviews/%1/flags/").arg(r->id()), data);
 }
 
 QByteArray authorization(QOAuth::Interface* oauth, const KUrl& url, AbstractLoginBackend* login)
