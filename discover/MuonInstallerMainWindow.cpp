@@ -153,7 +153,19 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     }
     Q_ASSERT(m_view->errors().isEmpty());
 
+    KConfigGroup window(componentData().config(), "Window");
+    restoreGeometry(window.readEntry<QByteArray>("geometry", QByteArray()));
+    restoreState(window.readEntry<QByteArray>("windowState", QByteArray()));
+    
     setCentralWidget(m_view);
+}
+
+MuonInstallerMainWindow::~MuonInstallerMainWindow()
+{
+    KConfigGroup window(componentData().config(), "Window");
+    window.writeEntry("geometry", saveGeometry());
+    window.writeEntry("windowState", saveState());
+    window.sync();
 }
 
 void MuonInstallerMainWindow::setBackend(QApt::Backend* b)

@@ -1,5 +1,5 @@
 function openApplicationList(icon, name, cat, search) {
-    openPage(icon, name, applicationListComp, { category: cat, search: search })
+    openPage(icon, name, applicationListComp, { category: cat, search: search, preferList: search!="" })
 }
 
 function openApplicationListSource(uri) {

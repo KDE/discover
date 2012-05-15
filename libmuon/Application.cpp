@@ -257,19 +257,7 @@ QString Application::categories()
 
 KUrl Application::screenshotUrl(QApt::ScreenshotType type)
 {
-    QUrl url = package()->screenshotUrl(type);
-    if(url.isEmpty()) {
-        switch (type) {
-            case QApt::Thumbnail:
-                url = KUrl("http://screenshots.debian.net/thumbnail/"+packageName());
-                break;
-            case QApt::Screenshot:
-            case QApt::UnknownType:
-                url = KUrl("http://screenshots.debian.net/screenshot/"+packageName());
-                break;
-        }
-    }
-    return url;
+    return package()->screenshotUrl(type);
 }
 
 QString Application::license()

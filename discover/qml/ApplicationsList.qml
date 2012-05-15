@@ -46,6 +46,7 @@ Item {
                     width: 16
                 }
                 Label {
+                    id: nameLabel
                     anchors.top: icon.top
                     anchors.left: icon.right
                     anchors.right: ratingsItem.left
@@ -56,10 +57,15 @@ Item {
                 }
                 Label {
                     id: commentLabel
-                    anchors.bottom: icon.bottom
-                    anchors.left: icon.right
-                    anchors.leftMargin: 5
-                    text: "<em>"+comment+"</em>"
+                    anchors {
+                        bottom: icon.bottom
+                        left: icon.right
+                        leftMargin: 5
+                        right: nameLabel.right
+                    }
+                    elide: Text.ElideRight
+                    text: comment
+                    font.italic: true
                     opacity: delegateArea.containsMouse ? 1 : 0.2
                 }
                 Rating {
