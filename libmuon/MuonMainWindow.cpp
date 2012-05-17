@@ -49,6 +49,7 @@ MuonMainWindow::MuonMainWindow()
     , m_backend(0)
     , m_powerInhibitor(0)
     , m_canExit(false)
+    , m_isReloading(false)
     , m_actionsDisabled(false)
 {
 }
@@ -224,6 +225,9 @@ void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args
 {
     QString text;
     QString title;
+
+    if (m_isReloading)
+        return;
 
     switch (code) {
     case QApt::InitError: {

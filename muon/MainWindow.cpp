@@ -440,7 +440,10 @@ void MainWindow::reload()
     returnFromPreview();
     m_stack->setCurrentWidget(m_mainWidget);
 
+    m_isReloading = true;
     m_managerWidget->reload();
+    m_isReloading = false;
+
     if (m_reviewWidget) {
         m_reviewWidget->reload();
     }

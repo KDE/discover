@@ -73,6 +73,7 @@ protected:
     QApt::CacheState m_originalState;
     int m_powerInhibitor;
     bool m_canExit;
+    bool m_isReloading;
 
 protected Q_SLOTS:
     virtual void initObject();
