@@ -23,11 +23,13 @@
 // Qt includes
 #include <QtConcurrentRun>
 #include <QtCore/QDir>
+#include <QtCore/QStringBuilder>
 #include <QtCore/QStringList>
 
 // KDE includes
 #include <KLocale>
 #include <KMessageBox>
+#include <KProcess>
 #include <KDebug>
 
 // LibQApt/DebconfKDE includes
@@ -316,6 +318,7 @@ void ApplicationBackend::markTransaction(Transaction *transaction)
     switch (transaction->action()) {
     case InstallApp:
         app->package()->setInstall();
+        markLangpacks(transaction);
         break;
     case RemoveApp:
         app->package()->setRemove();
@@ -344,6 +347,39 @@ void ApplicationBackend::markTransaction(Transaction *transaction)
         }
         ++iter;
     }
+}
+
+void ApplicationBackend::markLangpacks(Transaction *transaction)
+{
+    QString prog = QLatin1String("/usr/bin/check-language-support");
+    if (!QFile::exists(prog))
+        return;
+
+    QString language = KGlobal::locale()->language();
+    QString pkgName = transaction->application()->packageName();
+
+    QStringList args;
+    args << prog << QLatin1String("-l") << language << pkgName;
+
+    KProcess proc;
+    proc.setOutputChannelMode(KProcess::OnlyStdoutChannel);
+    proc.setProgram(args);
+    proc.start();
+    proc.waitForFinished();
+
+    QString res = proc.readAllStandardOutput();
+    res.remove(QString());
+
+    QApt::Package *langPack = nullptr;
+    m_backend->setCompressEvents(true);
+    foreach(const QString &pkg, res.split(' '))
+    {
+        langPack = m_backend->package(pkg);
+
+        if (langPack)
+            langPack->setInstall();
+    }
+    m_backend->setCompressEvents(false);
 }
 
 void ApplicationBackend::addTransaction(Transaction *transaction)

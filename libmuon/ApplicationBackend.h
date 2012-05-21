@@ -68,6 +68,7 @@ public:
     bool confirmRemoval(Transaction *transaction);
     Q_SCRIPTABLE bool isReloading() const;
     void markTransaction(Transaction *transaction);
+    void markLangpacks(Transaction *transaction);
     void addTransaction(Transaction *transaction);
 
 private:
