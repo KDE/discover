@@ -353,7 +353,7 @@ void ApplicationBackend::markTransaction(Transaction *transaction)
 void ApplicationBackend::markLangpacks(Transaction *transaction)
 {
     QString prog = KStandardDirs::findExe("check-language-support");
-    if (!QFile::exists(prog))
+    if (prog.isEmpty())
         return;
 
     QString language = KGlobal::locale()->language();
