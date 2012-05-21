@@ -30,6 +30,7 @@
 #include <KLocale>
 #include <KMessageBox>
 #include <KProcess>
+#include <KStandardDirs>
 #include <KDebug>
 
 // LibQApt/DebconfKDE includes
@@ -351,7 +352,7 @@ void ApplicationBackend::markTransaction(Transaction *transaction)
 
 void ApplicationBackend::markLangpacks(Transaction *transaction)
 {
-    QString prog = QLatin1String("/usr/bin/check-language-support");
+    QString prog = KStandardDirs::findExe("/usr/bin/check-language-support");
     if (!QFile::exists(prog))
         return;
 
