@@ -74,7 +74,6 @@ Page {
         Component {
             id: categoryHeader
             CategoryHeader {
-                anchors.leftMargin: scroll.width
                 category: page.category
                 width: parent.width-scroll.width
                 height: 128
@@ -84,7 +83,6 @@ Page {
         Component {
             id: featured
             FeaturedBanner {
-                anchors.leftMargin: scroll.width
                 width: parent.width-scroll.width
                 height: 310
             }
