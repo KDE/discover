@@ -25,6 +25,7 @@
 #include <QtGui/QPainter>
 
 // KDE
+#include <KColorScheme>
 #include <KIcon>
 #include <KIconLoader>
 
@@ -165,6 +166,7 @@ void PackageDelegate::paintText(QPainter *painter, const QStyleOptionViewItem &o
     int state;
     QString text;
     QPen pen;
+    KColorScheme color(option.palette.currentColorGroup());
 
     switch (index.column()) {
     case 1:
@@ -172,21 +174,21 @@ void PackageDelegate::paintText(QPainter *painter, const QStyleOptionViewItem &o
 
         if (state & QApt::Package::NowBroken) {
             text = MuonStrings::global()->packageStateName(QApt::Package::NowBroken);
-            pen.setColor(Qt::red);
+            pen.setBrush(color.foreground(KColorScheme::NegativeText));
             break;
         }
 
         if (state & QApt::Package::Installed) {
             text = MuonStrings::global()->packageStateName(QApt::Package::Installed);
-            pen.setColor(Qt::darkGreen);
+            pen.setBrush(color.foreground(KColorScheme::PositiveText));
 
             if (state & QApt::Package::Upgradeable) {
                 text = MuonStrings::global()->packageStateName(QApt::Package::Upgradeable);
-                pen.setColor(Qt::darkYellow);
+                pen.setBrush(color.foreground(KColorScheme::LinkText));
             }
         } else {
             text = MuonStrings::global()->packageStateName(QApt::Package::NotInstalled);
-            pen.setColor(Qt::blue);
+            pen.setBrush(color.foreground(KColorScheme::NeutralText));
         }
         break;
     case 2:
@@ -194,42 +196,42 @@ void PackageDelegate::paintText(QPainter *painter, const QStyleOptionViewItem &o
 
         if (state & QApt::Package::ToKeep) {
             text = MuonStrings::global()->packageStateName(QApt::Package::ToKeep);
-            pen.setColor(Qt::blue);
+            pen.setBrush(color.foreground(KColorScheme::NeutralText));
             // No other "To" flag will be set if we are keeping
             break;
         }
 
         if (state & QApt::Package::ToInstall) {
             text = MuonStrings::global()->packageStateName(QApt::Package::ToInstall);
-            pen.setColor(Qt::darkGreen);
+            pen.setBrush(color.foreground(KColorScheme::PositiveText));
         }
 
         if (state & QApt::Package::ToUpgrade) {
             text = MuonStrings::global()->packageStateName(QApt::Package::ToUpgrade);
-            pen.setColor(Qt::darkYellow);
+            pen.setBrush(color.foreground(KColorScheme::LinkText));
             break;
         }
 
         if (state & QApt::Package::ToRemove) {
             text = MuonStrings::global()->packageStateName(QApt::Package::ToRemove);
-            pen.setColor(Qt::red);
+            pen.setBrush(color.foreground(KColorScheme::NegativeText));
         }
 
         if (state & QApt::Package::ToPurge) {
             text = MuonStrings::global()->packageStateName(QApt::Package::ToPurge);
-            pen.setColor(Qt::red);
+            pen.setBrush(color.foreground(KColorScheme::NegativeText));
             break;
         }
 
         if (state & QApt::Package::ToReInstall) {
             text = MuonStrings::global()->packageStateName(QApt::Package::ToReInstall);
-            pen.setColor(Qt::darkGreen);
+            pen.setBrush(color.foreground(KColorScheme::PositiveText));
             break;
         }
 
         if (state & QApt::Package::ToDowngrade) {
             text = MuonStrings::global()->packageStateName(QApt::Package::ToDowngrade);
-            pen.setColor(Qt::darkYellow);
+            pen.setBrush(color.foreground(KColorScheme::LinkText));
             break;
         }
         break;
