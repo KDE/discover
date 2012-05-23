@@ -31,10 +31,10 @@ Information {
     delegate: MouseArea {
             property QtObject modelData: model
             enabled: modelData.package!=""
-            width: parent.width; height: parent.height
+            width: Math.min(image.width, parent.width); height: parent.height
             onClicked: Navigation.openApplication(app.appBackend.applicationByPackageName(modelData.packageName))
             clip: true
-            z: PathView.isCurrentItem ? 1 : -1
+            z: PathView.isCurrentItem && !PathView.view.moving ? 1 : -1
             id: itemDelegate
             
             states: [
@@ -80,7 +80,10 @@ Information {
             
             Flickable {
                 id: flick
-                anchors.fill: parent
+                anchors.centerIn: parent
+                height: parent.height
+                width: parent.width
+                
                 contentY: 0
                 interactive: false
                 contentX: contentWidth < width ? (contentWidth-width)/2 : 0
@@ -96,8 +99,8 @@ Information {
                 height: 40
                 
                 anchors {
-                    left: parent.left
-                    right: parent.right
+                    left: flick.left
+                    right: flick.right
                     bottom: parent.bottom
                 }
                 
