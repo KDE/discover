@@ -12,10 +12,10 @@ PathView {
     
     path: Path {
         startX: delWidth/2; startY: delHeight/2
-        PathLine { x: 2*delWidth; y: delHeight/2 }
-        PathLine { x: 2*delWidth; y: -delHeight }
-        PathLine { x: -2*delWidth; y: -delHeight }
-        PathLine { x: -2*delWidth; y: delHeight/2 }
+        PathLine { x: 3*delWidth; y: delHeight/2 }
+        PathLine { x: 3*delWidth; y: -delHeight }
+        PathLine { x: -3*delWidth; y: -delHeight }
+        PathLine { x: -3*delWidth; y: delHeight/2 }
         PathLine { x: delWidth/2; y: delHeight/2 }
     }
     

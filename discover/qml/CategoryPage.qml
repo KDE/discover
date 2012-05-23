@@ -8,19 +8,19 @@ Page {
     id: page
     property QtObject category
     
-    
     function searchFor(text) {
         if(category)
             Navigation.openApplicationList(category.icon, i18n("Search in '%1'...", category.name), category, text)
         else
             Navigation.openApplicationList("edit-find", i18n("Search..."), category, text)
     }
-
+    
     Component {
         id: categoryDelegate
         ListItem {
-            width: view.cellWidth -10
-            height: view.cellHeight -10
+            property int minCellWidth: 130
+            width: parent.width/Math.ceil(parent.width/minCellWidth)-10
+            height: 100
             enabled: true
             Column {
                 anchors.fill: parent
@@ -41,111 +41,110 @@ Page {
                 }
             }
             onClicked: {
-                var cat = cats.categoryForIndex(index)
                 switch(categoryType) {
                     case CategoryModel.CategoryType:
-                        Navigation.openApplicationList(category.icon, category.name, cat, "")
+                        Navigation.openApplicationList(category.icon, category.name, category, "")
                         break;
                     case CategoryModel.SubCatType:
-                        Navigation.openCategory(category.icon, category.name, cat)
+                        Navigation.openCategory(category.icon, category.name, category)
                         break;
                 }
             }
         }
-    }
-
-    property int minCellWidth: 130
-    
-    GridView {
-        id: view
-        cellWidth: view.width/Math.floor(view.width/minCellWidth)-1
-        cellHeight: 100
-        
-        anchors {
-            top: parent.top
-            left: parent.left
-            right: scroll.left
-            bottom: parent.bottom
-            leftMargin: scroll.width
-        }
-        model: cats
-        clip: true
-        delegate: categoryDelegate
-        Component {
-            id: categoryHeader
-            CategoryHeader {
-                category: page.category
-                width: parent.width-scroll.width
-                height: 128
-            }
-        }
-        
-        Component {
-            id: featured
-            FeaturedBanner {
-                width: parent.width-scroll.width
-                height: 310
-            }
-        }
-        
-        header: category==null ? featured : categoryHeader
-        footer: topsView
     }
     
     ScrollBar {
         id: scroll
         orientation: Qt.Vertical
-        flickableItem: view
+        flickableItem: flick
         anchors {
-            top: view.top
+            top: flick.top
             right: parent.right
-            bottom: view.bottom
+            bottom: flick.bottom
         }
     }
-    
-    CategoryModel {
-        id: cats
-        displayedCategory: page.category
-    }
-    Component {
-        id: topsView
-        Item {
-            height: Math.min(200, page.height/2)
-            width: view.width-scroll.width
-            ApplicationsTop {
-                id: top1
-                width: parent.width/2-5
-                anchors {
-                    top: parent.top
-                    left: parent.left
-                    bottom: parent.bottom
+
+    Flickable {
+        id: flick
+        anchors {
+            fill: parent
+            rightMargin: (scroll.visible ? 2 : 1) *scroll.width
+            leftMargin: scroll.width
+        }
+        contentHeight: conts.height
+        
+        Column {
+            id: conts
+            width: parent.width
+            spacing: 10
+            Loader {
+                width: flick.width
+                Component {
+                    id: categoryHeader
+                    CategoryHeader {
+                        category: page.category
+                        height: 128
+                    }
                 }
-                sortRole: "popcon"
-                filteredCategory: page.category
-                header: Label { text: i18n("<b>Popularity Contest</b>"); width: top1.width; horizontalAlignment: Text.AlignHCenter }
-                roleDelegate: Label { property variant model: null; text: i18n("points: %1", model.popcon) }
-                Component.onCompleted: top1.sortModel()
+                
+                Component {
+                    id: featured
+                    FeaturedBanner {
+                        height: 310
+                        clip: true
+                    }
+                }
+                sourceComponent: category==null ? featured : categoryHeader
             }
-            ApplicationsTop {
-                id: top2
-                interactive: false
-                anchors {
-                    top: parent.top
-                    right: parent.right
-                    bottom: parent.bottom
+            
+            Flow {
+                width: parent.width
+                spacing: 10
+                Repeater {
+                    model: CategoryModel {
+                        displayedCategory: page.category
+                    }
+                    delegate: categoryDelegate
                 }
-                width: parent.width/2-5
-                sortRole: "ratingPoints"
-                filteredCategory: page.category
-                header: Label { text: i18n("<b>Best Ratings</b>"); width: top2.width; horizontalAlignment: Text.AlignHCenter }
-                roleDelegate: Rating { property variant model: null; rating: model.rating; height: 10 }
-                Connections {
-                    ignoreUnknownSignals: true
-                    target: app.appBackend ? app.appBackend.reviewsBackend() : null
-                    onRatingsReady: top2.sortModel()
+            }
+            
+            Item {
+                height: Math.min(200, page.height/2)
+                width: parent.width
+                ApplicationsTop {
+                    id: top1
+                    width: parent.width/2-5
+                    anchors {
+                        top: parent.top
+                        left: parent.left
+                        bottom: parent.bottom
+                    }
+                    sortRole: "popcon"
+                    filteredCategory: page.category
+                    header: Label { text: i18n("<b>Popularity Contest</b>"); width: top1.width; horizontalAlignment: Text.AlignHCenter }
+                    roleDelegate: Label { property variant model: null; text: i18n("points: %1", model.popcon) }
+                    Component.onCompleted: top1.sortModel()
+                }
+                ApplicationsTop {
+                    id: top2
+                    interactive: false
+                    anchors {
+                        top: parent.top
+                        right: parent.right
+                        bottom: parent.bottom
+                    }
+                    width: parent.width/2-5
+                    sortRole: "ratingPoints"
+                    filteredCategory: page.category
+                    header: Label { text: i18n("<b>Best Ratings</b>"); width: top2.width; horizontalAlignment: Text.AlignHCenter }
+                    roleDelegate: Rating { property variant model: null; rating: model.rating; height: 10 }
+                    Connections {
+                        ignoreUnknownSignals: true
+                        target: app.appBackend ? app.appBackend.reviewsBackend() : null
+                        onRatingsReady: top2.sortModel()
+                    }
                 }
             }
         }
     }
 }
-    
