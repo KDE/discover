@@ -180,4 +180,26 @@ QDeclarativeListProperty<Entry> Source::entries()
     return QDeclarativeListProperty<Entry>(this, m_entries);
 }
 
+QString Source::name() const
+{
+    QUrl uri(m_uri);
+    QStringList origins = BackendsSingleton::self()->backend()->originsForHost(uri.host());
+    if(origins.size()==1)
+        return origins.first();
+    else if(origins.size()==0)
+        return QString();
+    else {
+        QString path = uri.path();
+        int firstSlash = path.indexOf('/', 1);
+        int secondSlash = path.indexOf('/', firstSlash+1);
+        QString launchpadifyUri = path.mid(1,secondSlash-1).replace('/', '-');
+        QStringList results = origins.filter(launchpadifyUri, Qt::CaseInsensitive);
+        if(results.isEmpty()) {
+            launchpadifyUri = path.mid(1,firstSlash-1).replace('/', '-');
+            results = origins.filter(launchpadifyUri, Qt::CaseInsensitive);
+        }
+        return results.isEmpty() ? QString() : results.first();
+    }
+}
+
 #include "moc_OriginsBackend.cpp"

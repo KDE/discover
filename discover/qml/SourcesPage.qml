@@ -81,6 +81,7 @@ Page {
                     anchors.left: parent.left
                     anchors.right: parent.right
                     Keys.onEnterPressed: newSourceDialog.accept()
+                    focus: true
                 }
             }
         }
@@ -139,7 +140,7 @@ Page {
                     fill: parent
                     leftMargin: removeButton.width+5
                 }
-                text: modelData.uri
+                text: modelData.name=="" ? modelData.uri : i18n("%1. <em>%2</em>", modelData.name, modelData.uri)
             }
             Label {
                 anchors {
@@ -150,8 +151,9 @@ Page {
             }
             ToolButton {
                 id: browseOrigin
+                enabled: modelData.name!=""
                 iconSource: "view-filter"
-                onClicked: Navigation.openApplicationListSource(modelData.uri)
+                onClicked: Navigation.openApplicationListSource(modelData.name)
                 anchors {
                     bottom: parent.bottom
                     right: parent.right

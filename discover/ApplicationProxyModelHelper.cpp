@@ -93,9 +93,3 @@ QString ApplicationProxyModelHelper::stringSortRole() const
 {
     return roleToString(sortRole());
 }
-
-void ApplicationProxyModelHelper::setOriginHostFilter(const QString& host)
-{
-    QString origin = BackendsSingleton::self()->backend()->originForSite(QUrl(host).host());
-    setOriginFilter(origin);
-}

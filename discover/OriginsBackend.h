@@ -58,6 +58,7 @@ class Entry : public QObject
 class Source : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(QString uri READ uri CONSTANT)
     Q_PROPERTY(QDeclarativeListProperty<Entry> entries READ entries CONSTANT)
     public:
@@ -66,6 +67,7 @@ class Source : public QObject
         void setUri(const QString& uri) { m_uri = uri; }
         void addEntry(Entry* entry) { m_entries.append(entry); }
         QDeclarativeListProperty<Entry> entries();
+        QString name() const;
     
     private:
         QString m_uri;

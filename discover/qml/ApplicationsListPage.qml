@@ -11,7 +11,6 @@ Page {
     property alias sortOrder: appsModel.sortOrder
     property alias stateFilter: appsModel.stateFilter
     property alias originFilter: appsModel.originFilter
-    property alias originHostFilter: appsModel.originHostFilter //hack to be able to provide the url
     property string sectionProperty: ""
     property string search: ""
     property Component sectionDelegate: null

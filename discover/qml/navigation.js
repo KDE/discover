@@ -2,8 +2,8 @@ function openApplicationList(icon, name, cat, search) {
     openPage(icon, name, applicationListComp, { category: cat, search: search, preferList: search!="" })
 }
 
-function openApplicationListSource(uri) {
-    openPage("view-filter", uri, applicationListComp, { originHostFilter: uri, preferList: true })
+function openApplicationListSource(origin) {
+    openPage("view-filter", origin, applicationListComp, { originFilter: origin, preferList: true })
 }
 
 function openCategory(icon, name, cat) {
