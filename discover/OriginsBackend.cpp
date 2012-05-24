@@ -33,7 +33,7 @@
 OriginsBackend::OriginsBackend(QObject* parent)
     : QObject(parent)
 {
-    QMetaObject::invokeMethod(this, "load", Qt::QueuedConnection);
+    load();
 }
 
 OriginsBackend::~OriginsBackend()
@@ -43,6 +43,11 @@ OriginsBackend::~OriginsBackend()
 
 void OriginsBackend::load()
 {
+    if(!BackendsSingleton::self()->backend()) {
+        QMetaObject::invokeMethod(this, "load", Qt::QueuedConnection);
+        return;
+    }
+    
     qDeleteAll(m_sources);
     m_sources.clear();
     //load /etc/apt/sources.list
