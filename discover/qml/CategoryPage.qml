@@ -23,7 +23,8 @@ Page {
             height: 100
             enabled: true
             Column {
-                anchors.fill: parent
+                anchors.centerIn: parent
+                width: parent.width
                 spacing: 10
                 QIconItem {
                     icon: decoration
