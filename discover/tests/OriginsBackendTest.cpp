@@ -48,7 +48,7 @@ void OriginsBackendTest::testLoad()
     OriginsBackend origins;
     origins.load("testsource.list");
     
-    QCOMPARE(origins.sources().size(), 5);
+    QCOMPARE(origins.sources().size(), 4);
     foreach(Source* s, origins.sources()) {
         QVERIFY(!s->uri().isEmpty());
         QVERIFY(!s->uri().contains(']'));
