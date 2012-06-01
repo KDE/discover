@@ -9,7 +9,6 @@ Page {
     property alias category: appsModel.filteredCategory
     property alias sortRole: appsModel.stringSortRole
     property alias sortOrder: appsModel.sortOrder
-    property alias stateFilter: appsModel.stateFilter
     property alias originFilter: appsModel.originFilter
     property alias mimeTypeFilter: appsModel.mimeTypeFilter
     property string sectionProperty: ""

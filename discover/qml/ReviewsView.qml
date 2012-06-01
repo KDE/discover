@@ -69,7 +69,6 @@ Item
         
         model: ReviewsModel {
             id: reviewsModel
-            backend: app.appBackend.reviewsBackend()
         }
     }
     

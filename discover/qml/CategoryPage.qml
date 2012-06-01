@@ -142,11 +142,6 @@ Page {
                     filteredCategory: page.category
                     header: Label { text: i18n("<b>Best Ratings</b>"); width: top2.width; horizontalAlignment: Text.AlignHCenter }
                     roleDelegate: Rating { property variant model: null; rating: model.rating; height: 10 }
-                    Connections {
-                        ignoreUnknownSignals: true
-                        target: app.appBackend ? app.appBackend.reviewsBackend() : null
-                        onRatingsReady: top2.sortModel()
-                    }
                 }
             }
         }

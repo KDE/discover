@@ -26,6 +26,7 @@
 #include <KUrl>
 
 #include "libmuonprivate_export.h"
+#include "AbstractReviewsBackend.h"
 
 namespace QOAuth {
     class Interface;
@@ -43,11 +44,9 @@ class Application;
 class Rating;
 class Review;
 
-class MUONPRIVATE_EXPORT ReviewsBackend : public QObject
+class MUONPRIVATE_EXPORT ReviewsBackend : public AbstractReviewsBackend
 {
     Q_OBJECT
-    Q_PROPERTY(bool hasCredentials READ hasCredentials NOTIFY loginStateChanged)
-    Q_PROPERTY(QString name READ userName NOTIFY loginStateChanged)
 public:
     ReviewsBackend(QObject *parent);
     ~ReviewsBackend();
@@ -92,7 +91,7 @@ public slots:
     void registerAndLogin();
     void logout();
     void submitUsefulness(Review* r, bool useful);
-    void submitReview(Application* app, const QString& summary,
+    void submitReview(AbstractResource* app, const QString& summary,
                       const QString& review_text, const QString& rating);
     void deleteReview(Review* r);
     void flagReview(Review* r, const QString& reason, const QString &text);

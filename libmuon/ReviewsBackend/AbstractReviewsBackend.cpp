@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,27 +18,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef ABSTRACTRESOURCESBACKEND_H
-#define ABSTRACTRESOURCESBACKEND_H
+#include "AbstractReviewsBackend.h"
 
-#include <QObject>
-#include <QVector>
-
-class ReviewsBackend;
-class AbstractResource;
-class AbstractResourcesBackend : public QObject
-{
-    Q_OBJECT
-    Q_PROPERTY(ReviewsBackend* reviewsBackend READ reviewsBackend CONSTANT)
-    public:
-        explicit AbstractResourcesBackend(QObject* parent = 0);
-        virtual QVector<AbstractResource*> allResources() const = 0;
-        virtual QStringList searchPackageName(const QString &searchText) = 0;
-        virtual ReviewsBackend* reviewsBackend() const = 0;
-
-    signals:
-        void reloadStarted();
-        void reloadFinished();
-};
-
-#endif // ABSTRACTRESOURCESBACKEND_H
+AbstractReviewsBackend::AbstractReviewsBackend(QObject* parent)
+    : QObject(parent)
+{}

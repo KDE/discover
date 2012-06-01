@@ -61,7 +61,7 @@ static QString getCodename(const QString& value)
 }
 
 ReviewsBackend::ReviewsBackend(QObject *parent)
-        : QObject(parent)
+        : AbstractReviewsBackend(parent)
         , m_aptBackend(0)
         , m_serverBase(MuonDataSources::rnRSource())
         , m_ratingsFile(0)
@@ -305,9 +305,11 @@ void ReviewsBackend::submitUsefulness(Review* r, bool useful)
     postInformation(QString("reviews/%1/recommendations/").arg(r->id()), data);
 }
 
-void ReviewsBackend::submitReview(Application* app, const QString& summary,
+void ReviewsBackend::submitReview(AbstractResource* application, const QString& summary,
                       const QString& review_text, const QString& rating)
 {
+    Application* app = qobject_cast<Application*>(application);
+    
     QVariantMap data;
     data["app_name"] = app->name();
     data["package_name"] = app->packageName();

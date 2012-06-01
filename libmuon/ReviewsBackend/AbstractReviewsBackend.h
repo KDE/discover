@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,27 +18,39 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef ABSTRACTRESOURCESBACKEND_H
-#define ABSTRACTRESOURCESBACKEND_H
+#ifndef ABSTRACTREVIEWSBACKEND_H
+#define ABSTRACTREVIEWSBACKEND_H
 
 #include <QObject>
-#include <QVector>
 
-class ReviewsBackend;
 class AbstractResource;
-class AbstractResourcesBackend : public QObject
+class Review;
+class AbstractReviewsBackend : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(ReviewsBackend* reviewsBackend READ reviewsBackend CONSTANT)
+    Q_PROPERTY(bool hasCredentials READ hasCredentials NOTIFY loginStateChanged)
+    Q_PROPERTY(QString name READ userName NOTIFY loginStateChanged)
     public:
-        explicit AbstractResourcesBackend(QObject* parent = 0);
-        virtual QVector<AbstractResource*> allResources() const = 0;
-        virtual QStringList searchPackageName(const QString &searchText) = 0;
-        virtual ReviewsBackend* reviewsBackend() const = 0;
+        explicit AbstractReviewsBackend(QObject* parent = 0);
 
-    signals:
-        void reloadStarted();
-        void reloadFinished();
+        virtual QString userName() const = 0;
+        virtual bool hasCredentials() const = 0;
+        
+    public slots:
+        virtual void login() = 0;
+        virtual void registerAndLogin() = 0;
+        virtual void logout() = 0;
+        virtual void submitUsefulness(Review* r, bool useful) = 0;
+        virtual void submitReview(AbstractResource* app, const QString& summary,
+                        const QString& review_text, const QString& rating) = 0;
+        virtual void deleteReview(Review* r) = 0;
+        virtual void flagReview(Review* r, const QString& reason, const QString &text) = 0;
+
+        
+    Q_SIGNALS:
+        void reviewsReady(AbstractResource *app, QList<Review *>);
+        void ratingsReady();
+        void loginStateChanged();
 };
 
-#endif // ABSTRACTRESOURCESBACKEND_H
+#endif // ABSTRACTREVIEWSBACKEND_H

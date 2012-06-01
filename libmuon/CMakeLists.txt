@@ -38,6 +38,7 @@ set(muon_LIB_SRCS
     HistoryView/HistoryProxyModel.cpp
     HistoryView/HistoryView.cpp
     mobile/src/mousecursor.cpp
+    ReviewsBackend/AbstractReviewsBackend.cpp
     ReviewsBackend/Rating.cpp
     ReviewsBackend/Review.cpp
     ReviewsBackend/ReviewsBackend.cpp
