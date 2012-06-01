@@ -66,12 +66,12 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
-    void clear();
     Application *applicationAt(const QModelIndex &index) const;
-    Transaction *transactionAt(const QModelIndex &index) const;
-    QVector<Application *> applications() const;
     
 private:
+    void clear();
+    Transaction *transactionAt(const QModelIndex &index) const;
+    
     ApplicationBackend *m_appBackend;
     QVector<Application *> m_apps;
     QHash<Transaction *, int> m_runningTransactions;

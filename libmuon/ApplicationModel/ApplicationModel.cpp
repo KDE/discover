@@ -292,11 +292,6 @@ Transaction *ApplicationModel::transactionAt(const QModelIndex &index) const
     return transaction;
 }
 
-QVector< Application* > ApplicationModel::applications() const
-{
-    return m_apps;
-}
-
 void ApplicationModel::reloadApplications()
 {
     beginResetModel();
