@@ -44,7 +44,7 @@
 #include "Transaction/Transaction.h"
 
 ApplicationBackend::ApplicationBackend(QObject *parent)
-    : QObject(parent)
+    : AbstractResourcesBackend(parent)
     , m_backend(0)
     , m_reviewsBackend(new ReviewsBackend(this))
     , m_isReloading(false)
@@ -472,6 +472,15 @@ QVector<Application *> ApplicationBackend::applicationList() const
     return m_appList;
 }
 
+QVector<AbstractResource*> ApplicationBackend::allResources() const
+{
+    QVector<AbstractResource*> ret;
+    foreach(Application* app, m_appList) {
+        ret += app;
+    }
+    return ret;
+}
+
 QSet<QString> ApplicationBackend::appOrigins() const
 {
     return m_originList;
@@ -535,4 +544,9 @@ Application* ApplicationBackend::applicationByPackageName(const QString& name) c
             return app;
     }
     return 0;
+}
+
+QStringList ApplicationBackend::searchPackageName(const QString& searchText)
+{
+    return m_backend->searchPackageName(searchText);
 }

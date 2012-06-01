@@ -20,8 +20,8 @@
 #include "BackendsSingleton.h"
 #include "MuonInstallerMainWindow.h"
 #include <LibQApt/Backend>
-#include <ApplicationModel/ApplicationModel.h>
 #include <ApplicationBackend.h>
+#include <resources/ResourcesModel.h>
 
 BackendsSingleton* BackendsSingleton::m_self = 0;
 
@@ -50,11 +50,11 @@ ApplicationBackend* BackendsSingleton::applicationBackend()
     return m_applicationBackend;
 }
 
-ApplicationModel* BackendsSingleton::appsModel()
+ResourcesModel* BackendsSingleton::appsModel()
 {
     if(!m_appsModel) {
-        m_appsModel = new ApplicationModel; 
-        m_appsModel->setBackend(applicationBackend());
+        m_appsModel = new ResourcesModel(this);
+        m_appsModel->addResourcesBackend(applicationBackend());
     }
     return m_appsModel;
 }

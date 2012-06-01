@@ -20,23 +20,18 @@
 #ifndef APPLICATIONPROXYMODELHELPER_H
 #define APPLICATIONPROXYMODELHELPER_H
 
-#include <ApplicationModel/ApplicationProxyModel.h>
+#include <resources/ResourcesProxyModel.h>
 
 
-class ApplicationProxyModelHelper : public ApplicationProxyModel
+class ApplicationProxyModelHelper : public ResourcesProxyModel
 {
     Q_OBJECT
-    Q_PROPERTY(int stateFilter READ stateFilter WRITE setStateFilter_hack NOTIFY stateFilterChanged)
     Q_PROPERTY(int sortRole READ sortRole WRITE setSortRole_hack NOTIFY sortRoleChanged)
     Q_PROPERTY(QString stringSortRole READ stringSortRole WRITE setStringSortRole_hack NOTIFY sortRoleChanged)
     Q_PROPERTY(Qt::SortOrder sortOrder READ sortOrder WRITE setSortOrder_hack NOTIFY sortOrderChanged)
     public:
         void setStateFilter_hack(int state);
         explicit ApplicationProxyModelHelper(QObject* parent = 0);
-        
-        Q_SCRIPTABLE Application* applicationAt(int row);
-        Q_SCRIPTABLE int stringToRole(const QByteArray& strRole) const;
-        Q_SCRIPTABLE QByteArray roleToString(int role) const;
         
         void setSortRole_hack(int role);
         void setSortOrder_hack(Qt::SortOrder order);
@@ -50,9 +45,11 @@ class ApplicationProxyModelHelper : public ApplicationProxyModel
     signals:
         void sortRoleChanged();
         void sortOrderChanged();
-        void stateFilterChanged();
 
     private:
+        int stringToRole(const QByteArray& strRole) const;
+        QByteArray roleToString(int role) const;
+        
         QString m_sortRoleString;
 };
 

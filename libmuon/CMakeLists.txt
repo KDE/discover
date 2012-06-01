@@ -47,7 +47,12 @@ set(muon_LIB_SRCS
     settings/NotifySettingsPage.cpp
     Transaction/Transaction.cpp
     Transaction/TransactionListener.cpp
-    Transaction/TransactionModel.cpp)
+    Transaction/TransactionModel.cpp
+    resources/ResourcesModel.cpp
+    resources/ResourcesProxyModel.cpp
+    resources/AbstractResourcesBackend.cpp
+    resources/AbstractResource.cpp
+)
 qt4_add_dbus_interface(muon_LIB_SRCS ReviewsBackend/ubuntu_sso_dbus_interface.xml ubuntu_sso -i "ReviewsBackend/LoginMetaTypes.h")
 
 kde4_add_kcfg_files(muon_LIB_SRCS GENERATE_MOC MuonDataSources.kcfgc)
@@ -84,4 +89,3 @@ install(TARGETS muonprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES moo.ogg DESTINATION ${DATA_INSTALL_DIR}/libmuon)
 install(FILES ${muon_QMLS} DESTINATION ${DATA_INSTALL_DIR}/libmuon)
 install(FILES categories.xml DESTINATION ${DATA_INSTALL_DIR}/muon-installer)
-

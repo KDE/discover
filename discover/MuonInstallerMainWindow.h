@@ -33,8 +33,6 @@ namespace QApt { class Backend; }
 class MuonInstallerMainWindow : public MuonMainWindow
 {
     Q_OBJECT
-    Q_PROPERTY(ApplicationBackend* appBackend READ appBackend NOTIFY appBackendChanged)
-    Q_PROPERTY(QApt::Backend* backend READ backend NOTIFY appBackendChanged)
     public:
         explicit MuonInstallerMainWindow();
         virtual ~MuonInstallerMainWindow();
@@ -55,7 +53,6 @@ class MuonInstallerMainWindow : public MuonMainWindow
         void triggerOpenApplication();
 
     signals:
-        void appBackendChanged();
         void openApplicationInternal(const QString& appname);
         void listMimeInternal(const QString& mime);
         void listCategoryInternal(Category* c);

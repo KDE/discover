@@ -31,12 +31,13 @@
 #include <LibQApt/Package>
 
 #include "libmuonprivate_export.h"
+#include "resources/AbstractResource.h"
 
 namespace QApt {
     class Backend;
 }
 
-class MUONPRIVATE_EXPORT Application : public QObject
+class MUONPRIVATE_EXPORT Application : public AbstractResource
 {
 Q_OBJECT
 Q_PROPERTY(QString name READ name CONSTANT)
@@ -62,6 +63,7 @@ Q_PROPERTY(int usageCount READ usageCount CONSTANT)
 Q_PROPERTY(bool canExecute READ canExecute CONSTANT)
 Q_PROPERTY(QUrl screenshotUrl READ screenshotUrl CONSTANT)
 Q_PROPERTY(QUrl thumbnailUrl READ thumbnailUrl CONSTANT)
+Q_PROPERTY(QString section READ section CONSTANT)
 public:
     friend class TransactionListener;
 
@@ -108,6 +110,7 @@ public:
     Q_SCRIPTABLE void invokeApplication() const;
     
     bool canExecute() const;
+    QString section();
 signals:
     void installChanged();
 

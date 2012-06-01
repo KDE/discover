@@ -535,3 +535,8 @@ QUrl Application::thumbnailUrl()
 {
     return screenshotUrl(QApt::Thumbnail);
 }
+
+QString Application::section()
+{
+    return package()->section();
+}

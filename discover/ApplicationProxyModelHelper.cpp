@@ -19,12 +19,13 @@
 
 #include "ApplicationProxyModelHelper.h"
 #include <ApplicationModel/ApplicationModel.h>
+#include <resources/ResourcesModel.h>
 #include "BackendsSingleton.h"
 #include <QDebug>
 #include <LibQApt/Backend>
 
 ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
-    : ApplicationProxyModel(parent)
+    : ResourcesProxyModel(parent)
 {
     if(BackendsSingleton::self()->backend())
         init();
@@ -34,7 +35,6 @@ ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
 
 void ApplicationProxyModelHelper::init()
 {
-    setBackend(BackendsSingleton::self()->backend());
     setSourceModel(BackendsSingleton::self()->appsModel());
     
     if(!m_sortRoleString.isEmpty())
@@ -48,17 +48,6 @@ void ApplicationProxyModelHelper::init()
 void ApplicationProxyModelHelper::sortModel()
 {
     QSortFilterProxyModel::sort(sortColumn(), sortOrder());
-}
-
-void ApplicationProxyModelHelper::setStateFilter_hack(int state)
-{
-    setStateFilter((QApt::Package::State) state);
-    emit stateFilterChanged();
-}
-
-Application* ApplicationProxyModelHelper::applicationAt(int row)
-{
-    return ApplicationProxyModel::applicationAt(index(row, 0));
 }
 
 int ApplicationProxyModelHelper::stringToRole(const QByteArray& strRole) const

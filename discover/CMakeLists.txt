@@ -1,6 +1,7 @@
 add_subdirectory(tests)
 add_subdirectory(icons)
 
+
 include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_SOURCE_DIR}/libmuon ${CMAKE_CURRENT_BINARY_DIR}/..)
 
 set(muon_discover_SRCS

@@ -31,6 +31,7 @@
 #include <LibQApt/Package>
 
 #include "libmuonprivate_export.h"
+#include "resources/AbstractResourcesBackend.h"
 
 namespace QApt {
     class Backend;
@@ -45,7 +46,7 @@ class Application;
 class ReviewsBackend;
 class Transaction;
 
-class MUONPRIVATE_EXPORT ApplicationBackend : public QObject
+class MUONPRIVATE_EXPORT ApplicationBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
     Q_PROPERTY(QList<Application*> launchList READ launchList RESET clearLaunchList NOTIFY launchListChanged)
@@ -70,7 +71,9 @@ public:
     void markTransaction(Transaction *transaction);
     void markLangpacks(Transaction *transaction);
     void addTransaction(Transaction *transaction);
-
+    
+    virtual QVector< AbstractResource* > allResources() const;
+    virtual QStringList searchPackageName(const QString& searchText);
 private:
     QApt::Backend *m_backend;
     ReviewsBackend *m_reviewsBackend;
@@ -107,8 +110,6 @@ private Q_SLOTS:
 
 Q_SIGNALS:
     void appBackendReady();
-    void reloadStarted();
-    void reloadFinished();
     void startingFirstTransaction();
     void workerEvent(QApt::WorkerEvent event, Transaction *app);
     void errorSignal(QApt::ErrorCode code, const QVariantMap &details);
