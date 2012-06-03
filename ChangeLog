@@ -34,6 +34,8 @@
 ======
 - Bugfixes:
   * Hide the update notification icon when there are no upgrades available.
+  * Do not respond to errors at all during a cache reload. If we do get one during reload,
+    it's not from us and we may crash trying to handle it. (BKO: #299236)
 
 1.3.1:
 ======
