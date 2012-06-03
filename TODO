@@ -12,3 +12,4 @@ Legend:
 -[MSC] Include addons size in Total size calculation
 -[MSC] When going back from a child breadcrumb, hide the crumb, but still be able to go forward
 -[MPM] Configurable status column colors
+-[MPM] Fix bug where multi-marking doesn't update dl/inst. size in statusbar
