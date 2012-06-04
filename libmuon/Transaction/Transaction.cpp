@@ -20,15 +20,15 @@
 
 #include "Transaction.h"
 
-Transaction::Transaction(Application *app, TransactionAction action)
+Transaction::Transaction(AbstractResource *app, TransactionAction action)
     : m_application(app)
     , m_action(action)
     , m_state(InvalidState)
 {
 }
 
-Transaction::Transaction(Application *app, TransactionAction action,
-                         const QHash<QApt::Package *, QApt::Package::State> &addons)
+Transaction::Transaction(AbstractResource *app, TransactionAction action,
+                         const QHash<QString, bool> &addons)
     : m_application(app)
     , m_action(action)
     , m_state(InvalidState)
@@ -45,7 +45,7 @@ void Transaction::setState(TransactionState state)
     m_state = state;
 }
 
-Application *Transaction::application() const
+AbstractResource *Transaction::application() const
 {
     return m_application;
 }
@@ -60,7 +60,7 @@ TransactionState Transaction::state() const
     return m_state;
 }
 
-QHash<QApt::Package *, QApt::Package::State> Transaction::addons() const
+QHash<QString, bool> Transaction::addons() const
 {
     return m_addons;
 }

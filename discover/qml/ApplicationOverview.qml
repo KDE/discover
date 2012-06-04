@@ -5,7 +5,8 @@ import org.kde.muon 1.0
 
 Item {
     id: appInfo
-    property QtObject application
+    property QtObject application: null
+    property variant reviewsBackend: resourcesModel.backendForResource(application).reviewsBackend
     
     ScrollBar {
         id: scroll
@@ -33,11 +34,11 @@ Item {
             width: parent.width
             spacing: 10
             
-            property QtObject ratingInstance: appInfo.application ? app.appBackend.reviewsBackend().ratingForApplication(appInfo.application) : null
+            property QtObject ratingInstance: appInfo.reviewsBackend.ratingForApplication(appInfo.application)
             Rating {
                 anchors.horizontalCenter: parent.horizontalCenter
                 visible: overviewContents.ratingInstance!=null
-                rating: overviewContents.ratingInstance == null ? 0 : overviewContents.ratingInstance.rating()
+                rating: overviewContents.ratingInstance == null ? 0 : overviewContents.ratingInstance.rating
             }
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -95,7 +96,7 @@ Item {
     ReviewDialog {
         id: reviewDialog
         application: appInfo.application
-        onAccepted: app.appBackend.reviewsBackend().submitReview(appInfo.application, summary, review, rating)
+        onAccepted: appInfo.reviewsBackend.submitReview(appInfo.application, summary, review, rating)
     }
     
     Item {

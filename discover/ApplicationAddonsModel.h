@@ -55,7 +55,7 @@ class ApplicationAddonsModel : public QAbstractListModel
     private:
         Application* m_app;
         QList<QApt::Package*> m_addons;
-        QMap<QString, bool> m_state;
+        QHash<QString, bool> m_state;
 };
 
 #endif // APPLICATIONADDONSMODEL_H

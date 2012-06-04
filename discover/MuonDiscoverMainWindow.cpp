@@ -52,7 +52,7 @@
 #include <Category/CategoryModel.h>
 #include <Category/Category.h>
 #include <Transaction/TransactionListener.h>
-#include <ReviewsBackend/ReviewsBackend.h>
+#include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/Rating.h>
 #include <ApplicationModel/LaunchListModel.h>
 #include <ApplicationModel/ApplicationModel.h>
@@ -116,13 +116,13 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     qmlRegisterType<LaunchListModel>("org.kde.muon", 1, 0, "LaunchListModel");
     qmlRegisterType<OriginsBackend>("org.kde.muon", 1, 0, "OriginsBackend");
     qmlRegisterType<ApplicationAddonsModel>("org.kde.muon", 1, 0, "ApplicationAddonsModel");
-    qmlRegisterType<ReviewsBackend>();
+    qmlRegisterType<AbstractReviewsBackend>();
     qmlRegisterType<Rating>();
     qmlRegisterType<Application>();
+    qmlRegisterType<AbstractResource>();
+    qmlRegisterType<AbstractResourcesBackend>();
     qmlRegisterType<Category>();
-    qmlRegisterType<ApplicationBackend>();
     qmlRegisterType<ResourcesModel>();
-    qmlRegisterType<QApt::Backend>();
     qmlRegisterType<Source>();
     qmlRegisterType<Entry>();
     

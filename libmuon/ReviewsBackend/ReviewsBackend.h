@@ -96,11 +96,6 @@ public slots:
     void deleteReview(Review* r);
     void flagReview(Review* r, const QString& reason, const QString &text);
     void refreshConsumerKeys();
-
-Q_SIGNALS:
-    void reviewsReady(Application *app, QList<Review *>);
-    void ratingsReady();
-    void loginStateChanged();
 };
 
 #endif

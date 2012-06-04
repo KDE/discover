@@ -61,7 +61,7 @@ ToolBar {
             height: contents.height
             TransactionListener {
                 id: listener
-                application: model.app
+                resource: model.app
                 backend: page.backend
                 onCancelled: model.remove(index)
             }

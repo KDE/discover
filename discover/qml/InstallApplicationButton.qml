@@ -5,7 +5,7 @@ import org.kde.muon 1.0
 
 Item {
     id: item
-    property alias application: transactions.application
+    property alias application: transactions.resource
     property bool canHide: parent.state=="idle"
     property bool preferUpgrade: false
     property alias isInstalling: transactions.isActive
@@ -14,7 +14,7 @@ Item {
     
     TransactionListener {
         id: transactions
-        backend: app.appBackend
+        backend: resourcesModel.backendForResource(resource)
     }
     
     Button {
@@ -26,8 +26,8 @@ Item {
         onClicked: {
             switch(state) {
                 case "willupgrade":
-                case "willinstall": app.appBackend.installApplication(application); break;
-                case "willremove":  app.appBackend.removeApplication(application); break;
+                case "willinstall": transactions.backend.installApplication(application); break;
+                case "willremove":  transactions.backend.removeApplication(application); break;
             }
         }
         
@@ -71,7 +71,7 @@ Item {
             anchors.right: parent.right
             iconSource: "dialog-cancel"
             enabled: transactions.isDownloading
-            onClicked: app.appBackend.cancelTransaction(application)
+            onClicked: transactions.backend.cancelTransaction(application)
         }
     }
     

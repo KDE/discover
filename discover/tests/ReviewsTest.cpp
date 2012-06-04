@@ -73,12 +73,13 @@ void ReviewsTest::testReviewsModel()
     Application* app = m_appBackend->applicationByPackageName(application);
     QVERIFY(app);
     model->setResource(app);
-    QTest::kWaitForSignal(model, SIGNAL(rowsInserted(QModelIndex, int, int)), 1000);
+    QTest::kWaitForSignal(model, SIGNAL(rowsInserted(QModelIndex, int, int)));
     
     QModelIndex root;
     while(model->canFetchMore(root)) {
         model->fetchMore(root);
-        QTest::kWaitForSignal(model, SIGNAL(rowsInserted(QModelIndex, int, int)), 1000);
+        bool arrived = QTest::kWaitForSignal(model, SIGNAL(rowsInserted(QModelIndex, int, int)), 2000);
+        QCOMPARE(arrived, model->canFetchMore(root));
     }
     
     delete model;

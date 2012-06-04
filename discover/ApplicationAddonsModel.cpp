@@ -64,7 +64,7 @@ QVariant ApplicationAddonsModel::data(const QModelIndex& index, int role) const
             return m_addons[index.row()]->shortDescription();
         case Qt::CheckStateRole: {
             QApt::Package* p = m_addons[index.row()];
-            QMap<QString, bool>::const_iterator it = m_state.constFind(p->name());
+            QHash<QString, bool>::const_iterator it = m_state.constFind(p->name());
             if(it==m_state.constEnd()) {
                 return p->isInstalled();
             } else {
@@ -88,16 +88,7 @@ void ApplicationAddonsModel::discardChanges()
 void ApplicationAddonsModel::applyChanges()
 {
     ApplicationBackend* appBackend = BackendsSingleton::self()->applicationBackend();
-    QApt::Backend* backend = BackendsSingleton::self()->backend();
-    QHash<QApt::Package*, QApt::Package::State> newStates;
-    QMap<QString, bool>::const_iterator it = m_state.constBegin(), itEnd = m_state.constEnd();
-    for(; it!=itEnd; ++it) {
-        QApt::Package* package = backend->package(it.key());
-        QApt::Package::State state = it.value() ? QApt::Package::ToInstall : QApt::Package::ToRemove;
-        newStates.insert(package, state);
-    }
-    
-    appBackend->installApplication(m_app, newStates);
+    appBackend->installApplication(m_app, m_state);
 }
 
 void ApplicationAddonsModel::changeState(const QString& packageName, bool installed)

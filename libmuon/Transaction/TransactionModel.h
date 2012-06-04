@@ -25,7 +25,7 @@
 
 #include "libmuonprivate_export.h"
 
-class Application;
+class AbstractResource;
 class ApplicationBackend;
 class Transaction;
 class TransactionListener;
@@ -50,7 +50,7 @@ private:
     
 private slots:
     void addTransaction(Transaction *trans);
-    void removeTransaction(Application *app);
+    void removeTransaction(AbstractResource* app);
     void externalUpdate();
     void clear();
 

@@ -181,12 +181,19 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
         return;
     }
 
-    emit workerEvent(event, m_currentTransaction);
-
     // Due to bad design on my part, we can get events from other apps.
     // This is required to ensure that we only handle events for stuff we started
     if (!m_currentTransaction) {
         return;
+    }
+
+    emit workerEvent(event, m_currentTransaction);
+    switch(event) {
+        case QApt::PackageDownloadStarted: transactionsEvent(StartedDownloading, m_currentTransaction); break;
+        case QApt::PackageDownloadFinished: transactionsEvent(FinishedDownloading, m_currentTransaction); break;
+        case QApt::CommitChangesStarted: transactionsEvent(StartedCommitting, m_currentTransaction); break;
+        case QApt::CommitChangesFinished: transactionsEvent(FinishedCommitting, m_currentTransaction); break;
+        default: break;
     }
 
     switch (event) {
@@ -215,16 +222,16 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
 
         Transaction* t = m_queue.dequeue();
         Q_ASSERT(t==m_currentTransaction);
-        transactionRemoved(t);
+        emit transactionRemoved(t);
 
         if (m_currentTransaction->action() == InstallApp) {
-            m_appLaunchList << m_currentTransaction->application();
+            m_appLaunchList << qobject_cast<Application*>(m_currentTransaction->application());
             emit launchListChanged();
         }
 
         m_workerState.first = QApt::InvalidEvent;
         m_workerState.second = 0;
-        m_currentTransaction->application()->emitInstallChanged();
+        qobject_cast<Application*>(m_currentTransaction->application())->emitInstallChanged();
         delete m_currentTransaction;
 
         if (m_queue.isEmpty()) {
@@ -296,8 +303,7 @@ bool ApplicationBackend::confirmRemoval(Transaction *transaction)
 
     // Find changes due to markings
     QApt::PackageList excluded;
-    excluded.append(transaction->application()->package());
-    excluded.append(transaction->addons().keys());
+    excluded.append(qobject_cast<Application*>(transaction->application())->package());
     QApt::StateChanges changes = m_backend->stateChanges(oldCacheState, excluded);
     // Restore cache state, we're only checking at the moment
     m_backend->restoreCacheState(oldCacheState);
@@ -315,7 +321,7 @@ bool ApplicationBackend::confirmRemoval(Transaction *transaction)
 
 void ApplicationBackend::markTransaction(Transaction *transaction)
 {
-    Application *app = transaction->application();
+    Application *app = qobject_cast<Application*>(transaction->application());
 
     switch (transaction->action()) {
     case InstallApp:
@@ -329,24 +335,16 @@ void ApplicationBackend::markTransaction(Transaction *transaction)
         break;
     }
 
-    QHash<QApt::Package *, QApt::Package::State> addons = transaction->addons();
+    QHash< QString, bool > addons = transaction->addons();
     auto iter = addons.constBegin();
 
-    QApt::Package *package = nullptr;
-    QApt::Package::State state;
     while (iter != addons.constEnd()) {
-        package = iter.key();
-        state = iter.value();
-        switch (state) {
-        case QApt::Package::ToInstall:
+        QApt::Package* package = m_backend->package(iter.key());
+        bool state = iter.value();
+        if(state)
             package->setInstall();
-            break;
-        case QApt::Package::ToRemove:
+        else
             package->setRemove();
-            break;
-        default:
-            break;
-        }
         ++iter;
     }
 }
@@ -387,7 +385,7 @@ void ApplicationBackend::markLangpacks(Transaction *transaction)
 void ApplicationBackend::addTransaction(Transaction *transaction)
 {
     if (m_isReloading || !confirmRemoval(transaction)) {
-        emit transactionCancelled(transaction->application());
+        emit transactionCancelled(transaction);
         delete transaction;
         return;
     }
@@ -395,7 +393,6 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
     transaction->setState(QueuedState);
     m_queue.enqueue(transaction);
     emit transactionAdded(transaction);
-    emit applicationTransactionAdded(transaction->application());
 
     if (m_queue.count() == 1) {
         m_currentTransaction = m_queue.head();
@@ -404,7 +401,7 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
     }
 }
 
-void ApplicationBackend::cancelTransaction(Application *app)
+void ApplicationBackend::cancelTransaction(AbstractResource* app)
 {
     disconnect(m_backend, SIGNAL(downloadProgress(int,int,int)),
                this, SLOT(updateDownloadProgress(int)));
@@ -422,13 +419,12 @@ void ApplicationBackend::cancelTransaction(Application *app)
             Transaction* t = *iter;
             transactionRemoved(t);
             m_queue.erase(iter);
+            emit transactionCancelled(t);
             delete t;
             break;
         }
         ++iter;
     }
-
-    emit transactionCancelled(app);
 }
 
 void ApplicationBackend::runNextTransaction()
@@ -440,10 +436,10 @@ void ApplicationBackend::runNextTransaction()
     QApt::CacheState oldCacheState = m_backend->currentCacheState();
     m_backend->saveCacheState();
 
-    Application *app = m_currentTransaction->application();
-
     markTransaction(m_currentTransaction);
 
+    Application *app = qobject_cast<Application*>(m_currentTransaction->application());
+    
     if (app->package()->wouldBreak()) {
         m_backend->restoreCacheState(oldCacheState);
         //TODO Notify of error
@@ -501,8 +497,9 @@ QList<Transaction *> ApplicationBackend::transactions() const
     return m_queue;
 }
 
-void ApplicationBackend::installApplication(Application *app, const QHash<QApt::Package *, QApt::Package::State> &addons)
+void ApplicationBackend::installApplication(AbstractResource* res, const QHash< QString, bool >& addons)
 {
+    Application* app = qobject_cast<Application*>(res);
     TransactionAction action = InvalidAction;
 
     if (app->package()->isInstalled()) {
@@ -511,16 +508,15 @@ void ApplicationBackend::installApplication(Application *app, const QHash<QApt::
         action = InstallApp;
     }
 
-    Transaction *transaction = new Transaction(app, action, addons);
-    addTransaction(transaction);
+    addTransaction(new Transaction(res, action, addons));
 }
 
-void ApplicationBackend::installApplication(Application *app)
+void ApplicationBackend::installApplication(AbstractResource* app)
 {
     addTransaction(new Transaction(app, InstallApp));
 }
 
-void ApplicationBackend::removeApplication(Application *app)
+void ApplicationBackend::removeApplication(AbstractResource* app)
 {
     addTransaction(new Transaction(app, RemoveApp));
 }
@@ -554,4 +550,24 @@ QStringList ApplicationBackend::searchPackageName(const QString& searchText)
         names += package->name();
     }
     return names;
+}
+
+QPair<TransactionStateTransition, Transaction*> ApplicationBackend::currentTransactionState() const
+{
+    QPair< QApt::WorkerEvent, Transaction* > state = workerState();
+    QPair<TransactionStateTransition, Transaction*> ret;
+    switch(state.first) {
+        case QApt::PackageDownloadStarted: ret.first = StartedDownloading; break;
+        case QApt::PackageDownloadFinished: ret.first = FinishedDownloading; break;
+        case QApt::CommitChangesStarted: ret.first = StartedCommitting; break;
+        case QApt::CommitChangesFinished: ret.first = FinishedCommitting; break;
+        default: break;
+    }
+    ret.second = state.second;
+    return ret;
+}
+
+bool ApplicationBackend::providesResouce(AbstractResource* res) const
+{
+    return qobject_cast<Application*>(res);
 }

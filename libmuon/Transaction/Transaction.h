@@ -23,11 +23,9 @@
 
 #include <QtCore/QHash>
 
-#include <LibQApt/Package>
-
 #include "libmuonprivate_export.h"
 
-class Application;
+class AbstractResource;
 
 enum TransactionState {
     InvalidState = 0,
@@ -43,26 +41,28 @@ enum TransactionAction {
     ChangeAddons = 3
 };
 
-class MUONPRIVATE_EXPORT Transaction
+class MUONPRIVATE_EXPORT Transaction : public QObject
 {
+Q_OBJECT
+Q_PROPERTY(AbstractResource* application READ application CONSTANT)
 public:
-    explicit Transaction (Application *app, TransactionAction);
-    explicit Transaction (Application *app, TransactionAction,
-                          const QHash<QApt::Package *, QApt::Package::State> &addons);
+    explicit Transaction (AbstractResource *app, TransactionAction);
+    explicit Transaction (AbstractResource *app, TransactionAction,
+                          const QHash<QString, bool> &addons);
     ~Transaction();
 
     void setState(TransactionState state);
 
-    Application *application() const;
+    AbstractResource *application() const;
     TransactionAction action() const;
     TransactionState state() const;
-    QHash<QApt::Package *, QApt::Package::State> addons() const;
+    QHash<QString, bool> addons() const;
 
 private:
-    Application *m_application;
+    AbstractResource *m_application;
     TransactionAction m_action;
     TransactionState m_state;
-    QHash<QApt::Package *, QApt::Package::State> m_addons;
+    QHash<QString, bool> m_addons;
 };
 
 #endif

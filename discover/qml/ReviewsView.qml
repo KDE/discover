@@ -4,7 +4,7 @@ import org.kde.muon 1.0
 
 Item
 {
-    property alias application: reviewsModel.application
+    property alias application: reviewsModel.resource
     
     ListView {
         id: reviewsView

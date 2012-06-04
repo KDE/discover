@@ -99,6 +99,7 @@ void ReviewsModel::setResource(AbstractResource* app)
                 this, SLOT(addReviews(AbstractResource*,QList<Review*>)));
         }
         m_backend = BackendsSingleton::self()->appsModel()->backendForResource(app)->reviewsBackend();
+        Q_ASSERT(m_backend);
         connect(m_backend, SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
                 this, SLOT(addReviews(AbstractResource*,QList<Review*>)));
 
@@ -128,14 +129,17 @@ void ReviewsModel::fetchMore(const QModelIndex& parent)
 
 void ReviewsModel::addReviews(AbstractResource* app, const QList<Review*>& reviews)
 {
-    m_canFetchMore=!reviews.isEmpty();
-    if(app!=m_app || reviews.isEmpty())
+    if(app!=m_app)
         return;
+    
+    m_canFetchMore=!reviews.isEmpty();
     qDebug() << "reviews arrived..." << m_lastPage << reviews.size();
     
-    beginInsertRows(QModelIndex(), rowCount(), rowCount()+reviews.size()-1);
-    m_reviews += reviews;
-    endInsertRows();
+    if(!reviews.isEmpty()) {
+        beginInsertRows(QModelIndex(), rowCount(), rowCount()+reviews.size()-1);
+        m_reviews += reviews;
+        endInsertRows();
+    }
 }
 
 bool ReviewsModel::canFetchMore(const QModelIndex&) const

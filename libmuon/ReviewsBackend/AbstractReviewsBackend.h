@@ -23,10 +23,13 @@
 
 #include <QObject>
 
+#include "libmuonprivate_export.h"
+
 class Rating;
 class AbstractResource;
 class Review;
-class AbstractReviewsBackend : public QObject
+
+class MUONPRIVATE_EXPORT AbstractReviewsBackend : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool hasCredentials READ hasCredentials NOTIFY loginStateChanged)

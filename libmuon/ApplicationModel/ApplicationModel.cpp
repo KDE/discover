@@ -248,8 +248,8 @@ void ApplicationModel::updateTransactionProgress(Transaction *trans, int progres
     }
     m_runningTransactions[trans] = progress;
 
-    emit dataChanged(index(m_apps.indexOf(trans->application()), 0),
-                         index(m_apps.indexOf(trans->application()), 0));
+    emit dataChanged(index(m_apps.indexOf(qobject_cast<Application*>(trans->application())), 0),
+                         index(m_apps.indexOf(qobject_cast<Application*>(trans->application())), 0));
 }
 
 void ApplicationModel::workerEvent(QApt::WorkerEvent event, Transaction *trans)
@@ -261,7 +261,7 @@ void ApplicationModel::workerEvent(QApt::WorkerEvent event, Transaction *trans)
     }
 
     if (trans != 0) {
-        int app = m_apps.indexOf(trans->application());
+        int app = m_apps.indexOf(qobject_cast<Application*>(trans->application()));
         emit dataChanged(index(app, 0),
                          index(app, 0));
     }

@@ -88,13 +88,13 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
     }
     AbstractResource* resource = resourceAt(index.row());
     switch(role) {
+        case ApplicationRole:
+            return qVariantFromValue<QObject*>(resource);
         case RatingPointsRole:
         case RatingRole:
         case SortableRatingRole:{
-//             Rating* rating = backendForResource(resource)->reviewsBackend()->ratingForApplication(resource);
-            Rating* rating = m_backends[0]->reviewsBackend()->ratingForApplication(resource);
-//             qDebug() << "ffffffff" << rating;
-            return rating ? rating->rating() : -1;
+            Rating* rating = backendForResource(resource)->reviewsBackend()->ratingForApplication(resource);
+            return rating ? rating->property(roleNames().value(role)) : -1;
         }
         default:
             return resource->property(roleNames().value(role));
@@ -163,14 +163,15 @@ QVector< AbstractResourcesBackend* > ResourcesModel::backends() const
 AbstractResourcesBackend* ResourcesModel::backendForResource(AbstractResource* resource) const
 {
     int i=0;
-    for(QVector<QVector<AbstractResource*> >::const_iterator it=m_resources.constBegin();
-        it!=m_resources.constEnd();
-        ++it)
+    foreach(AbstractResourcesBackend* backend, m_backends)
     {
-        if(it->contains(resource))
+        if(backend->providesResouce(resource)) {
+//             qDebug() <<"laaaaaaaaaaa" << m_backends[i];
             return m_backends[i];
+        }
         i++;
     }
+    Q_ASSERT(!resource && "all resources should have a backend");
     return 0;
 }
 

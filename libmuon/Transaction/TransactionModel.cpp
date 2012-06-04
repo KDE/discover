@@ -44,13 +44,11 @@ QVariant TransactionModel::data(const QModelIndex& index, int role) const
 
     switch (role) {
         case ApplicationModel::NameRole:
-            return trans->application()->name();
+            return trans->resource()->name();
         case ApplicationModel::IconRole:
-            return trans->application()->icon();
+            return trans->resource()->icon();
         case ApplicationModel::CommentRole:
-            return trans->application()->comment();
-        case ApplicationModel::StatusRole:
-            return trans->application()->package()->state();
+            return trans->resource()->comment();
         case ApplicationModel::RatingRole:
             return -1;
         case ApplicationModel::ActiveRole:
@@ -64,7 +62,7 @@ QVariant TransactionModel::data(const QModelIndex& index, int role) const
         case Qt::ToolTipRole:
             return QVariant();
         case ApplicationModel::ApplicationRole:
-            return qVariantFromValue<QObject *>(trans->application());
+            return qVariantFromValue<QObject *>(trans->resource());
         default:
             return QVariant();
     }
@@ -103,16 +101,16 @@ void TransactionModel::addTransaction(Transaction *trans)
     beginInsertRows(QModelIndex(), 0, 0);
     TransactionListener *listener = new TransactionListener(this);
     listener->setBackend(m_appBackend);
-    listener->setApplication(trans->application());
+    listener->setResource(trans->application());
     m_transactions.append(listener);
     endInsertRows();
 }
 
-void TransactionModel::removeTransaction(Application *app)
+void TransactionModel::removeTransaction(AbstractResource *app)
 {
     TransactionListener *toRemove = nullptr;
     for (TransactionListener *listener : m_transactions) {
-        if(listener->application() == app) {
+        if(listener->resource() == app) {
             toRemove = listener;
             break;
         }

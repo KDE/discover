@@ -23,32 +23,32 @@
 #define TRANSACTIONLISTENER_H
 
 #include <QObject>
-#include <LibQApt/Globals>
 
 #include "libmuonprivate_export.h"
+#include <resources/AbstractResourcesBackend.h>
 
 class Transaction;
-class Application;
-class ApplicationBackend;
+class AbstractResource;
+class AbstractResourcesBackend;
 
 class MUONPRIVATE_EXPORT TransactionListener : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int progress READ progress NOTIFY progressChanged)
     Q_PROPERTY(QString comment READ comment NOTIFY commentChanged)
-    Q_PROPERTY(Application* application READ application WRITE setApplication NOTIFY applicationChanged)
-    Q_PROPERTY(ApplicationBackend* backend READ backend WRITE setBackend)
+    Q_PROPERTY(AbstractResource* resource READ resource WRITE setResource NOTIFY resourceChanged)
+    Q_PROPERTY(AbstractResourcesBackend* backend READ backend WRITE setBackend)
     Q_PROPERTY(bool isActive READ isActive NOTIFY running)
     Q_PROPERTY(bool isDownloading READ isDownloading NOTIFY downloading)
     public:
         explicit TransactionListener(QObject* parent = 0);
         virtual ~TransactionListener();
-        void setBackend(ApplicationBackend* m_appBackend);
-        void setApplication(Application* app);
+        void setBackend(AbstractResourcesBackend* appBackend);
+        void setResource(AbstractResource* app);
         int progress() const;
         QString comment() const;
-        Application* application() const;
-        ApplicationBackend* backend() const;
+        AbstractResource* resource() const;
+        AbstractResourcesBackend* backend() const;
         void init();
         bool isActive() const;
         bool isDownloading() const;
@@ -56,24 +56,24 @@ class MUONPRIVATE_EXPORT TransactionListener : public QObject
     signals:
         void progressChanged();
         void commentChanged();
-        void applicationChanged();
+        void resourceChanged();
         void running(bool isRunning);
         void downloading(bool isDownloading);
         void cancelled();
 
     private slots:
-        void workerEvent(QApt::WorkerEvent event, Transaction *transaction);
         void updateProgress(Transaction*,int);
-        void transactionCancelled(Application*);
+        void transactionCancelled(Transaction*);
         void transactionRemoved(Transaction*);
+        void workerEvent(TransactionStateTransition, Transaction*);
 
     private:
         void setDownloading(bool);
         void showTransactionState(Transaction* transaction);
         void setStateComment(Transaction* transaction);
         
-        ApplicationBackend* m_appBackend;
-        Application* m_app;
+        AbstractResourcesBackend* m_appBackend;
+        AbstractResource* m_app;
         int m_progress;
         QString m_comment;
         bool m_downloading;

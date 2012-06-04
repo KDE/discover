@@ -22,11 +22,23 @@
 #define ABSTRACTRESOURCESBACKEND_H
 
 #include <QObject>
+#include <QPair>
 #include <QVector>
 
+#include "libmuonprivate_export.h"
+
+enum TransactionStateTransition {
+    StartedDownloading,
+    FinishedDownloading,
+    StartedCommitting,
+    FinishedCommitting
+};
+
+class Transaction;
 class AbstractReviewsBackend;
 class AbstractResource;
-class AbstractResourcesBackend : public QObject
+
+class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(AbstractReviewsBackend* reviewsBackend READ reviewsBackend CONSTANT)
@@ -37,12 +49,21 @@ class AbstractResourcesBackend : public QObject
         virtual QStringList searchPackageName(const QString &searchText) = 0;
         virtual AbstractReviewsBackend* reviewsBackend() const = 0;
         virtual int updatesCount() const = 0;
+        virtual QPair<TransactionStateTransition, Transaction *> currentTransactionState() const = 0;
+        virtual QList<Transaction*> transactions() const = 0;
+        virtual bool providesResouce(AbstractResource* resource) const = 0;
 
     signals:
         void backendReady();
         void reloadStarted();
         void reloadFinished();
         void updatesCountChanged();
+        
+        void progress(Transaction *transaction, int progress);
+        void transactionAdded(Transaction *transaction);
+        void transactionCancelled(Transaction *app);
+        void transactionRemoved(Transaction* t);
+        void transactionsEvent(TransactionStateTransition transition, Transaction* transaction);
 };
 
 #endif // ABSTRACTRESOURCESBACKEND_H

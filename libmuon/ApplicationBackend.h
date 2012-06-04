@@ -49,17 +49,17 @@ class Transaction;
 class MUONPRIVATE_EXPORT ApplicationBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
-    Q_PROPERTY(QList<Application*> launchList READ launchList RESET clearLaunchList NOTIFY launchListChanged)
 public:
     explicit ApplicationBackend(QObject *parent=0);
     ~ApplicationBackend();
 
-    Q_SCRIPTABLE AbstractReviewsBackend *reviewsBackend() const;
+    AbstractReviewsBackend *reviewsBackend() const;
     Q_SCRIPTABLE Application* applicationByPackageName(const QString& name) const;
     QVector<Application *> applicationList() const;
     QSet<QString> appOrigins() const;
     QSet<QString> installedAppOrigins() const;
     QPair<QApt::WorkerEvent, Transaction *> workerState() const;
+    QPair<TransactionStateTransition, Transaction *> currentTransactionState() const;
     QList<Transaction *> transactions() const;
     QList<Application*> launchList() const;
 
@@ -73,6 +73,8 @@ public:
     
     virtual QVector< AbstractResource* > allResources() const;
     virtual QStringList searchPackageName(const QString& searchText);
+    virtual bool providesResouce(AbstractResource* res) const;
+    
 private:
     QApt::Backend *m_backend;
     ReviewsBackend *m_reviewsBackend;
@@ -93,10 +95,10 @@ public Q_SLOTS:
     void reload();
     
     //helper functions
-    void installApplication(Application *app, const QHash<QApt::Package *, QApt::Package::State> &addons);
-    void installApplication(Application *app);
-    void removeApplication(Application *app);
-    void cancelTransaction(Application *app);
+    void installApplication(AbstractResource *app, const QHash<QString, bool> &addons);
+    void installApplication(AbstractResource *app);
+    void removeApplication(AbstractResource *app);
+    void cancelTransaction(AbstractResource *app);
     void clearLaunchList();
 
 private Q_SLOTS:
@@ -111,11 +113,6 @@ Q_SIGNALS:
     void startingFirstTransaction();
     void workerEvent(QApt::WorkerEvent event, Transaction *app);
     void errorSignal(QApt::ErrorCode code, const QVariantMap &details);
-    void progress(Transaction *transaction, int progress);
-    void transactionAdded(Transaction *transaction);
-    void applicationTransactionAdded(Application *app);
-    void transactionCancelled(Application *app);
-    void transactionRemoved(Transaction* t);
     void xapianReloaded();
     void launchListChanged();
 };

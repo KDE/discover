@@ -310,7 +310,7 @@ ApplicationDetailsWidget::~ApplicationDetailsWidget()
 void ApplicationDetailsWidget::setApplication(Application *app)
 {
     m_app = app;
-    m_listener->setApplication(m_app);
+    m_listener->setResource(m_app);
 
     // FIXME: Always keep label size at 48x48, and render the largest size
     // we can up to that point. Otherwise some icons will be blurry
