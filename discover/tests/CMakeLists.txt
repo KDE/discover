@@ -11,4 +11,4 @@ macro(muon_add_unit_test name)
 endmacro(muon_add_unit_test)
 
 muon_add_unit_test(originsbackendtest OriginsBackendTest.cpp ../OriginsBackend.cpp ../BackendsSingleton.cpp)
-muon_add_unit_test(reviewstest ReviewsTest.cpp ../ReviewsModel.cpp ${CMAKE_SOURCE_DIR}/libmuon/tests/modeltest.cpp)
+muon_add_unit_test(reviewstest ReviewsTest.cpp ../ReviewsModel.cpp ../BackendsSingleton.cpp ${CMAKE_SOURCE_DIR}/libmuon/tests/modeltest.cpp)

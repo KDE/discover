@@ -24,17 +24,17 @@
 #include <QObject>
 #include <QVector>
 
-class ReviewsBackend;
+class AbstractReviewsBackend;
 class AbstractResource;
 class AbstractResourcesBackend : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(ReviewsBackend* reviewsBackend READ reviewsBackend CONSTANT)
+    Q_PROPERTY(AbstractReviewsBackend* reviewsBackend READ reviewsBackend CONSTANT)
     public:
         explicit AbstractResourcesBackend(QObject* parent = 0);
         virtual QVector<AbstractResource*> allResources() const = 0;
         virtual QStringList searchPackageName(const QString &searchText) = 0;
-        virtual ReviewsBackend* reviewsBackend() const = 0;
+        virtual AbstractReviewsBackend* reviewsBackend() const = 0;
 
     signals:
         void reloadStarted();

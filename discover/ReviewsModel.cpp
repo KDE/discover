@@ -19,8 +19,11 @@
  ***************************************************************************/
 
 #include "ReviewsModel.h"
-#include <ReviewsBackend/ReviewsBackend.h>
+#include "BackendsSingleton.h"
+#include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/Review.h>
+#include <resources/ResourcesModel.h>
+#include <resources/AbstractResourcesBackend.h>
 #include <QDebug>
 #include <KDebug>
 
@@ -74,37 +77,33 @@ int ReviewsModel::rowCount(const QModelIndex& parent) const
     return m_reviews.count();
 }
 
-Application* ReviewsModel::application() const
+AbstractResource* ReviewsModel::resource() const
 {
     return m_app;
 }
 
-ReviewsBackend* ReviewsModel::backend() const
+AbstractReviewsBackend* ReviewsModel::backend() const
 {
     return m_backend;
 }
 
-void ReviewsModel::setApplication(Application* app)
+void ReviewsModel::setResource(AbstractResource* app)
 {
     if(m_app!=app) {
         reset();
         m_reviews.clear();
 
         m_app = app;
+        if(m_backend) {
+            disconnect(m_backend, SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
+                this, SLOT(addReviews(AbstractResource*,QList<Review*>)));
+        }
+        m_backend = BackendsSingleton::self()->appsModel()->backendForResource(app)->reviewsBackend();
+        connect(m_backend, SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
+                this, SLOT(addReviews(AbstractResource*,QList<Review*>)));
+
         restartFetching();
     }
-}
-
-void ReviewsModel::setBackend(ReviewsBackend* backend)
-{
-    if(m_backend) {
-        disconnect(m_backend, SIGNAL(reviewsReady(Application*,QList<Review*>)),
-            this, SLOT(addReviews(Application*,QList<Review*>)));
-    }
-    m_backend = backend;
-    connect(m_backend, SIGNAL(reviewsReady(Application*,QList<Review*>)),
-            this, SLOT(addReviews(Application*,QList<Review*>)));
-    restartFetching();
 }
 
 void ReviewsModel::restartFetching()
@@ -127,7 +126,7 @@ void ReviewsModel::fetchMore(const QModelIndex& parent)
     qDebug() << "fetching reviews... " << m_lastPage;
 }
 
-void ReviewsModel::addReviews(Application* app, const QList<Review*>& reviews)
+void ReviewsModel::addReviews(AbstractResource* app, const QList<Review*>& reviews)
 {
     m_canFetchMore=!reviews.isEmpty();
     if(app!=m_app || reviews.isEmpty())

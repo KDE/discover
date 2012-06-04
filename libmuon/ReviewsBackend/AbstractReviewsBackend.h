@@ -23,6 +23,7 @@
 
 #include <QObject>
 
+class Rating;
 class AbstractResource;
 class Review;
 class AbstractReviewsBackend : public QObject
@@ -36,6 +37,8 @@ class AbstractReviewsBackend : public QObject
         virtual QString userName() const = 0;
         virtual bool hasCredentials() const = 0;
         
+        Q_SCRIPTABLE virtual Rating *ratingForApplication(AbstractResource *app) const = 0;
+        
     public slots:
         virtual void login() = 0;
         virtual void registerAndLogin() = 0;
@@ -45,6 +48,8 @@ class AbstractReviewsBackend : public QObject
                         const QString& review_text, const QString& rating) = 0;
         virtual void deleteReview(Review* r) = 0;
         virtual void flagReview(Review* r, const QString& reason, const QString &text) = 0;
+        virtual bool isFetching() const = 0;
+        virtual void fetchReviews(AbstractResource* app, int page=1) = 0;
 
         
     Q_SIGNALS:

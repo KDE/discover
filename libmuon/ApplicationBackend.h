@@ -55,7 +55,7 @@ public:
     explicit ApplicationBackend(QObject *parent=0);
     ~ApplicationBackend();
 
-    Q_SCRIPTABLE ReviewsBackend *reviewsBackend() const;
+    Q_SCRIPTABLE AbstractReviewsBackend *reviewsBackend() const;
     Q_SCRIPTABLE Application* applicationByPackageName(const QString& name) const;
     QVector<Application *> applicationList() const;
     QSet<QString> appOrigins() const;

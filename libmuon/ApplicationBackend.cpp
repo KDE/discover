@@ -462,7 +462,7 @@ void ApplicationBackend::clearLaunchList()
     m_appLaunchList.clear();
 }
 
-ReviewsBackend *ApplicationBackend::reviewsBackend() const
+AbstractReviewsBackend *ApplicationBackend::reviewsBackend() const
 {
     return m_reviewsBackend;
 }
@@ -548,5 +548,10 @@ Application* ApplicationBackend::applicationByPackageName(const QString& name) c
 
 QStringList ApplicationBackend::searchPackageName(const QString& searchText)
 {
-    return m_backend->searchPackageName(searchText);
+    QApt::PackageList packages = m_backend->search(searchText);
+    QStringList names;
+    foreach(QApt::Package* package, packages) {
+        names += package->name();
+    }
+    return names;
 }

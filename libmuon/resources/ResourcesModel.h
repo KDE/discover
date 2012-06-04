@@ -66,6 +66,8 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         
         AbstractResource* resourceAt(int row) const;
         QVector< AbstractResourcesBackend* > backends() const;
+        Q_SCRIPTABLE AbstractResourcesBackend* backendForResource(AbstractResource* resource) const;
+
     private:
         QVector< AbstractResourcesBackend* > m_backends;
         QVector< QVector<AbstractResource*> > m_resources;

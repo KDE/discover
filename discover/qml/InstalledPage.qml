@@ -3,7 +3,7 @@ import org.kde.plasma.components 0.1
 
 ApplicationsListPage {
     id: page
-    stateFilter: (1<<8)
+//     stateFilter: (1<<8)
     sortRole: "canUpgrade"
     sortOrder: 1
     sectionProperty: "canUpgrade"
@@ -27,7 +27,7 @@ ApplicationsListPage {
             id: commitButton
             text: i18n("Update All!")
             iconSource: "system-software-update"
-            width: app.appBackend.updatesCount>0 && page.state!="updating" ? commitButton.implicitWidth : 0
+//             width: app.appBackend.updatesCount>0 ? commitButton.implicitWidth : 0
             
             onClicked: {
                 updatesPage.start();

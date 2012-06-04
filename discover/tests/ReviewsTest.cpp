@@ -20,12 +20,14 @@
 
 #include "ReviewsTest.h"
 #include <../ReviewsModel.h>
+#include <../BackendsSingleton.h>
 #include <ReviewsBackend/ReviewsBackend.h>
 #include <ApplicationBackend.h>
 #include <libqapt/backend.h>
 #include <KProtocolManager>
 #include <qtest_kde.h>
 #include <libmuon/tests/modeltest.h>
+#include <Application.h>
 
 QTEST_KDEMAIN_CORE( ReviewsTest )
 
@@ -41,12 +43,7 @@ ReviewsTest::ReviewsTest(QObject* parent): QObject(parent)
     }
     m_backend->init();
     
-    m_appBackend = new ApplicationBackend(this);
-    m_appBackend->setBackend(m_backend);
-    QTest::kWaitForSignal(m_appBackend, SIGNAL(appBackendReady()), 1000);
-    
-    m_revBackend = new ReviewsBackend(this);
-    m_revBackend->setAptBackend(m_backend);
+    BackendsSingleton::self()->applicationBackend();
 }
 
 void ReviewsTest::testReviewsFetch()
@@ -68,11 +65,10 @@ void ReviewsTest::testReviewsModel()
     QFETCH(QString, application);
     ReviewsModel* model = new ReviewsModel(this);
     new ModelTest(model, model);
-    model->setBackend(m_revBackend);
     
     Application* app = m_appBackend->applicationByPackageName(application);
     QVERIFY(app);
-    model->setApplication(app);
+    model->setResource(app);
     QTest::kWaitForSignal(model, SIGNAL(rowsInserted(QModelIndex, int, int)), 1000);
     
     QModelIndex root;

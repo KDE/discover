@@ -117,6 +117,8 @@ bool ResourcesProxyModel::shouldShowTechnical() const
 bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
     QModelIndex idx = sourceModel()->index(sourceRow, 0, sourceParent);
+    if(!idx.isValid())
+        return false;
     
     for(QHash<int, QVariant>::const_iterator it=m_roleFilters.constBegin(), itEnd=m_roleFilters.constEnd(); it!=itEnd; ++it) {
         if(idx.data(it.key())!=it.value())

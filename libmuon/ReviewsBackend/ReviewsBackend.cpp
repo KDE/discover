@@ -100,14 +100,14 @@ void ReviewsBackend::setAptBackend(QApt::Backend *aptBackend)
     m_aptBackend = aptBackend;
 }
 
-void ReviewsBackend::clearReviewCache()
-{
-    foreach (QList<Review *> reviewList, m_reviewsCache) {
-        qDeleteAll(reviewList);
-    }
-
-    m_reviewsCache.clear();
-}
+// void ReviewsBackend::clearReviewCache()
+// {
+//     foreach (QList<Review *> reviewList, m_reviewsCache) {
+//         qDeleteAll(reviewList);
+//     }
+// 
+//     m_reviewsCache.clear();
+// }
 
 void ReviewsBackend::fetchRatings()
 {
@@ -176,7 +176,7 @@ void ReviewsBackend::loadRatingsFromFile(const QString &fileName)
     emit ratingsReady();
 }
 
-Rating *ReviewsBackend::ratingForApplication(Application *app) const
+Rating *ReviewsBackend::ratingForApplication(AbstractResource* app) const
 {
     return m_ratings.value(app->packageName());
 }
@@ -194,8 +194,9 @@ void ReviewsBackend::stopPendingJobs()
     m_jobHash.clear();
 }
 
-void ReviewsBackend::fetchReviews(Application *app, int page)
+void ReviewsBackend::fetchReviews(AbstractResource* res, int page)
 {
+    Application* app = qobject_cast<Application*>(res);
     // Check our cache before fetching from the 'net
     QString hashName = app->package()->latin1Name() + app->untranslatedName();
     

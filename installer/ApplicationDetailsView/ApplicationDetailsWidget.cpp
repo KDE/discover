@@ -319,7 +319,7 @@ void ApplicationDetailsWidget::setApplication(Application *app)
     m_nameLabel->setText(QLatin1Literal("<h1>") % app->name() % QLatin1Literal("</h1>"));
     m_shortDescLabel->setText(app->comment());
 
-    ReviewsBackend *reviewsBackend = m_appBackend->reviewsBackend();
+    ReviewsBackend *reviewsBackend = qobject_cast<ReviewsBackend*>(m_appBackend->reviewsBackend());
     Rating *rating = reviewsBackend->ratingForApplication(app);
     if (rating) {
         m_ratingWidget->setRating(rating->rating());

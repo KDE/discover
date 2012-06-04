@@ -24,13 +24,13 @@
 #include <QModelIndex>
 
 class Review;
-class Application;
-class ReviewsBackend;
+class AbstractResource;
+class AbstractReviewsBackend;
 class ReviewsModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(ReviewsBackend* backend READ backend WRITE setBackend)
-    Q_PROPERTY(Application* application READ application WRITE setApplication)
+    Q_PROPERTY(AbstractReviewsBackend* backend READ backend)
+    Q_PROPERTY(AbstractResource* resource READ resource WRITE setResource)
     public:
         enum Roles {
             ShouldShow=Qt::UserRole+1,
@@ -45,10 +45,9 @@ class ReviewsModel : public QAbstractListModel
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
         virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
 
-        void setBackend(ReviewsBackend* backend);
-        ReviewsBackend* backend() const;
-        void setApplication(Application* app);
-        Application* application() const;
+        AbstractReviewsBackend* backend() const;
+        void setResource(AbstractResource* app);
+        AbstractResource* resource() const;
         virtual void fetchMore(const QModelIndex& parent=QModelIndex());
         virtual bool canFetchMore(const QModelIndex&) const;
 
@@ -58,13 +57,13 @@ class ReviewsModel : public QAbstractListModel
         void markUseful(int row, bool useful);
 
     private slots:
-        void addReviews(Application* app, const QList<Review*>& reviews);
+        void addReviews(AbstractResource* app, const QList<Review*>& reviews);
 
     private:
         void restartFetching();
 
-        Application* m_app;
-        ReviewsBackend* m_backend;
+        AbstractResource* m_app;
+        AbstractReviewsBackend* m_backend;
         QList<Review*> m_reviews;
         int m_lastPage;
         bool m_canFetchMore;

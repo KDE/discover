@@ -139,3 +139,17 @@ QVector< AbstractResourcesBackend* > ResourcesModel::backends() const
 {
     return m_backends;
 }
+
+AbstractResourcesBackend* ResourcesModel::backendForResource(AbstractResource* resource) const
+{
+    int i=0;
+    for(QVector<QVector<AbstractResource*> >::const_iterator it=m_resources.constBegin();
+        it!=m_resources.constEnd();
+        ++it)
+    {
+        if(it->contains(resource))
+            return m_backends[i];
+        i++;
+    }
+    return 0;
+}
