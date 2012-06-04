@@ -25,7 +25,7 @@ Information {
     
     model: ListModel {
         id: noCategoryModel
-        ListElement { text: "Kubuntu"; color: "#84D1FF"; icon: "kde"; comment: ""; image: "http://www.kubuntu.org/files/12.04-lts-banner.png"; packageName: "" }
+//         ListElement { text: "Kubuntu"; color: "#84D1FF"; icon: "kde"; comment: ""; image: "http://www.kubuntu.org/files/12.04-lts-banner.png"; packageName: "" }
     }
     
     delegate: MouseArea {
