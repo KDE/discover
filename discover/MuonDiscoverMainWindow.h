@@ -17,8 +17,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef MUONINSTALLERDECLARATIVEVIEW_H
-#define MUONINSTALLERDECLARATIVEVIEW_H
+#ifndef MUONDISCOVERMAINWINDOW_H
+#define MUONDISCOVERMAINWINDOW_H
 
 #include <QtCore/QUrl>
 
@@ -30,12 +30,12 @@ class QDeclarativeView;
 class ApplicationBackend;
 namespace QApt { class Backend; }
 
-class MuonInstallerMainWindow : public MuonMainWindow
+class MuonDiscoverMainWindow : public MuonMainWindow
 {
     Q_OBJECT
     public:
-        explicit MuonInstallerMainWindow();
-        virtual ~MuonInstallerMainWindow();
+        explicit MuonDiscoverMainWindow();
+        virtual ~MuonDiscoverMainWindow();
 
         ApplicationBackend* appBackend() const;
         QApt::Backend* backend() const;

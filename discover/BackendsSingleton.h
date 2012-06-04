@@ -21,8 +21,9 @@
 #define BACKENDSSINGLETON_H
 #include <LibQApt/Globals>
 
+class QMainWindow;
 class ResourcesModel;
-class MuonInstallerMainWindow;
+class MuonDiscoverMainWindow;
 namespace QApt { class Backend; }
 class ApplicationBackend;
 class ApplicationModel;
@@ -35,12 +36,12 @@ public:
     
     static BackendsSingleton* self();
     
-    void initialize(QApt::Backend* b, MuonInstallerMainWindow* main);
+    void initialize(QApt::Backend* b, MuonDiscoverMainWindow* main);
     
     ResourcesModel* appsModel();
     QApt::Backend* backend();
     ApplicationBackend* applicationBackend();
-    MuonInstallerMainWindow* mainWindow() const;
+    QMainWindow* mainWindow() const;
 
 signals:
     void initialized();
@@ -51,7 +52,7 @@ private:
     QApt::Backend* m_backend;
     QApt::CacheState m_originalState;
     ApplicationBackend* m_applicationBackend;
-    MuonInstallerMainWindow* m_mainWindow;
+    MuonDiscoverMainWindow* m_mainWindow;
 };
 
 #endif // BACKENDSSINGLETON_H

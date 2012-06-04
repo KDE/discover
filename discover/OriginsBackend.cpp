@@ -20,11 +20,11 @@
 
 #include "OriginsBackend.h"
 #include "BackendsSingleton.h"
-#include "MuonInstallerMainWindow.h"
 #include <ApplicationBackend.h>
 #include <QProcess>
 #include <QDebug>
 #include <QDir>
+#include <QMainWindow>
 #include <LibQApt/Backend>
 #include <LibQApt/Config>
 #include <KMessageBox>

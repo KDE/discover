@@ -6,7 +6,7 @@ include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_SOURCE_DIR}/libmuon ${CMAKE_CURR
 
 set(muon_discover_SRCS
     main.cpp
-    MuonInstallerMainWindow.cpp
+    MuonDiscoverMainWindow.cpp
     ApplicationProxyModelHelper.cpp
     BackendsSingleton.cpp
     ReviewsModel.cpp

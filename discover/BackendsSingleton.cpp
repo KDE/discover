@@ -18,7 +18,7 @@
  */
 
 #include "BackendsSingleton.h"
-#include "MuonInstallerMainWindow.h"
+#include "MuonDiscoverMainWindow.h"
 #include <LibQApt/Backend>
 #include <ApplicationBackend.h>
 #include <resources/ResourcesModel.h>
@@ -59,7 +59,7 @@ ResourcesModel* BackendsSingleton::appsModel()
     return m_appsModel;
 }
 
-void BackendsSingleton::initialize(QApt::Backend* b, MuonInstallerMainWindow* main)
+void BackendsSingleton::initialize(QApt::Backend* b, MuonDiscoverMainWindow* main)
 {
     m_backend = b;
     m_mainWindow = main;
@@ -71,7 +71,7 @@ QApt::Backend* BackendsSingleton::backend()
     return m_backend;
 }
 
-MuonInstallerMainWindow* BackendsSingleton::mainWindow() const
+QMainWindow* BackendsSingleton::mainWindow() const
 {
     return m_mainWindow;
 }

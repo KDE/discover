@@ -23,7 +23,7 @@
 #include <KCmdLineArgs>
 #include <KUniqueApplication>
 #include <KStandardDirs>
-#include "MuonInstallerMainWindow.h"
+#include "MuonDiscoverMainWindow.h"
 
 static const char description[] =
     I18N_NOOP("An application discoverer");
@@ -60,7 +60,7 @@ int main(int argc, char** argv)
     app.disableSessionManagement();
     KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
     
-    MuonInstallerMainWindow *mainWindow = new MuonInstallerMainWindow;
+    MuonDiscoverMainWindow *mainWindow = new MuonDiscoverMainWindow;
     if(args->isSet("application"))
         mainWindow->openApplication(args->getOption("application"));
     else if(args->isSet("mime"))

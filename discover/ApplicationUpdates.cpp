@@ -22,7 +22,7 @@
 #include "BackendsSingleton.h"
 #include <Application.h>
 #include <ApplicationBackend.h>
-#include "MuonInstallerMainWindow.h"
+#include "MuonDiscoverMainWindow.h"
 #include <LibQApt/Backend>
 #include <KDebug>
 

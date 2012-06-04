@@ -17,7 +17,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include "MuonInstallerMainWindow.h"
+#include "MuonDiscoverMainWindow.h"
 
 // Qt includes
 #include <QDebug>
@@ -92,7 +92,7 @@ class CachedNAMFactory : public QDeclarativeNetworkAccessManagerFactory
     }
 };
 
-MuonInstallerMainWindow::MuonInstallerMainWindow()
+MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     : MuonMainWindow()
 {
     m_view = new QDeclarativeView(this);
@@ -160,7 +160,7 @@ MuonInstallerMainWindow::MuonInstallerMainWindow()
     setCentralWidget(m_view);
 }
 
-MuonInstallerMainWindow::~MuonInstallerMainWindow()
+MuonDiscoverMainWindow::~MuonDiscoverMainWindow()
 {
     KConfigGroup window(componentData().config(), "Window");
     window.writeEntry("geometry", saveGeometry());
@@ -168,7 +168,7 @@ MuonInstallerMainWindow::~MuonInstallerMainWindow()
     window.sync();
 }
 
-void MuonInstallerMainWindow::setBackend(QApt::Backend* b)
+void MuonDiscoverMainWindow::setBackend(QApt::Backend* b)
 {
     if (!m_view->rootObject())
         return;
@@ -178,43 +178,43 @@ void MuonInstallerMainWindow::setBackend(QApt::Backend* b)
     connect(appBackend(), SIGNAL(appBackendReady()), SLOT(triggerOpenApplication()));
 }
 
-ApplicationBackend* MuonInstallerMainWindow::appBackend() const
+ApplicationBackend* MuonDiscoverMainWindow::appBackend() const
 {
     return BackendsSingleton::self()->applicationBackend();
 }
 
-QApt::Backend* MuonInstallerMainWindow::backend() const
+QApt::Backend* MuonDiscoverMainWindow::backend() const
 {
     return BackendsSingleton::self()->backend();
 }
 
-QAction* MuonInstallerMainWindow::getAction(const QString& name)
+QAction* MuonDiscoverMainWindow::getAction(const QString& name)
 {
     return actionCollection()->action(name);
 }
 
-void MuonInstallerMainWindow::openMimeType(const QString& mime)
+void MuonDiscoverMainWindow::openMimeType(const QString& mime)
 {
     m_view->rootObject()->setProperty("defaultStartup", false);
     m_mimeToBeOpened = mime;
     triggerOpenApplication();
 }
 
-void MuonInstallerMainWindow::openApplication(const QString& app)
+void MuonDiscoverMainWindow::openApplication(const QString& app)
 {
     m_view->rootObject()->setProperty("defaultStartup", false);
     m_appToBeOpened = app;
     triggerOpenApplication();
 }
 
-void MuonInstallerMainWindow::openCategory(const QString& category)
+void MuonDiscoverMainWindow::openCategory(const QString& category)
 {
     m_view->rootObject()->setProperty("defaultStartup", false);
     m_categoryToBeOpened = category;
     triggerOpenApplication();
 }
 
-void MuonInstallerMainWindow::triggerOpenApplication()
+void MuonDiscoverMainWindow::triggerOpenApplication()
 {
     if(m_view->rootObject()->property("state").toString()!="loading") {
         if(!m_appToBeOpened.isEmpty()) {
@@ -231,12 +231,12 @@ void MuonInstallerMainWindow::triggerOpenApplication()
     }
 }
 
-QSize MuonInstallerMainWindow::sizeHint() const
+QSize MuonDiscoverMainWindow::sizeHint() const
 {
     return QSize(800, 900);
 }
 
-QUrl MuonInstallerMainWindow::featuredSource() const
+QUrl MuonDiscoverMainWindow::featuredSource() const
 {
     return MuonDataSources::featuredSource();
 }
