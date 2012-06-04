@@ -32,6 +32,7 @@ class AbstractResourcesBackend;
 class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
     public:
         enum Roles {
             NameRole = Qt::UserRole,
@@ -67,14 +68,18 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         AbstractResource* resourceAt(int row) const;
         QVector< AbstractResourcesBackend* > backends() const;
         Q_SCRIPTABLE AbstractResourcesBackend* backendForResource(AbstractResource* resource) const;
+        int updatesCount() const;
 
-    private:
-        QVector< AbstractResourcesBackend* > m_backends;
-        QVector< QVector<AbstractResource*> > m_resources;
-    
+    signals:
+        void updatesCountChanged();
+
     private slots:
         void cleanCaller();
         void resetCaller();
+        
+    private:
+        QVector< AbstractResourcesBackend* > m_backends;
+        QVector< QVector<AbstractResource*> > m_resources;
 };
 
 #endif // RESOURCESMODEL_H

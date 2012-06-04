@@ -78,13 +78,14 @@ Item {
             Item {
                 //we add some extra space
                 width: 20
+                height: 20
             }
             
             property list<TopLevelPageData> sectionsModel: [
                 TopLevelPageData { icon: "tools-wizard"; text: i18n("Discover"); component: browsingComp },
                 TopLevelPageData {
                                 icon: "applications-other"; text: i18n("Installed"); component: installedComp
-                                overlay: !app.appBackend || app.appBackend.updatesCount==0 ? "" : app.appBackend.updatesCount
+                                overlay: resourcesModel.updatesCount==0 ? "" : resourcesModel.updatesCount
                 },
                 TopLevelPageData { icon: "document-import"; text: i18n("Sources"); component: sourcesComp }
             ]
@@ -101,7 +102,7 @@ Item {
                     onClicked: {
                         Navigation.clearPages()
                         if(currentTopLevel!=modelData.component)
-                            currentTopLevel=modelData.component;
+                            currentTopLevel=modelData.component
                     }
                 }
             }
@@ -123,7 +124,6 @@ Item {
     
     Connections {
         target: app
-        onAppBackendChanged: window.state = "loaded"
         onOpenApplicationInternal: Navigation.openApplication(app.appBackend.applicationByPackageName(appname))
         onListMimeInternal: Navigation.openApplicationMime(mime)
         onListCategoryInternal: Navigation.openApplicationList(c.icon, c.name, c, "")

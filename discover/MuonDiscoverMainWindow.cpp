@@ -56,6 +56,7 @@
 #include <ReviewsBackend/Rating.h>
 #include <ApplicationModel/LaunchListModel.h>
 #include <ApplicationModel/ApplicationModel.h>
+#include <resources/ResourcesModel.h>
 
 // Own includes
 #include "ApplicationProxyModelHelper.h"
@@ -120,7 +121,7 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     qmlRegisterType<Application>();
     qmlRegisterType<Category>();
     qmlRegisterType<ApplicationBackend>();
-    qmlRegisterType<ApplicationModel>();
+    qmlRegisterType<ResourcesModel>();
     qmlRegisterType<QApt::Backend>();
     qmlRegisterType<Source>();
     qmlRegisterType<Entry>();
@@ -130,6 +131,7 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     //Here we set up a cache for the screenshots
 //     m_view->engine()->setNetworkAccessManagerFactory(new CachedNAMFactory);
     
+    m_view->engine()->rootContext()->setContextProperty("resourcesModel", qVariantFromValue<QObject*>(BackendsSingleton::self()->appsModel()));
     m_view->engine()->rootContext()->setContextProperty("app", this);
     m_view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
 // #if !defined(QT_NO_OPENGL)
@@ -175,7 +177,7 @@ void MuonDiscoverMainWindow::setBackend(QApt::Backend* b)
 
     BackendsSingleton::self()->initialize(b, this);
     appBackend(); //here we force the retrieval of the appbackend to get ratings
-    connect(appBackend(), SIGNAL(appBackendReady()), SLOT(triggerOpenApplication()));
+    connect(appBackend(), SIGNAL(backendReady()), SLOT(triggerOpenApplication()));
 }
 
 ApplicationBackend* MuonDiscoverMainWindow::appBackend() const

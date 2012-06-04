@@ -30,15 +30,19 @@ class AbstractResourcesBackend : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(AbstractReviewsBackend* reviewsBackend READ reviewsBackend CONSTANT)
+    Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
     public:
         explicit AbstractResourcesBackend(QObject* parent = 0);
         virtual QVector<AbstractResource*> allResources() const = 0;
         virtual QStringList searchPackageName(const QString &searchText) = 0;
         virtual AbstractReviewsBackend* reviewsBackend() const = 0;
+        virtual int updatesCount() const = 0;
 
     signals:
+        void backendReady();
         void reloadStarted();
         void reloadFinished();
+        void updatesCountChanged();
 };
 
 #endif // ABSTRACTRESOURCESBACKEND_H

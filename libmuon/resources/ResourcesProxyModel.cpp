@@ -33,6 +33,7 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     , m_filterBySearch(false)
     , m_filteredCategory(0)
 {
+    setShouldShowTechnical(false);
 }
 
 ResourcesProxyModel::~ResourcesProxyModel()
@@ -124,11 +125,6 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
         if(idx.data(it.key())!=it.value())
             return false;
     }
-    AbstractResource *application = static_cast<ResourcesModel *>(sourceModel())->resourceAt(idx.row());
-    //We have a package as internal pointer
-    if (!application) {
-        return false;
-    }
 
     //TODO: we shouldn't even add those to the Model
 //     if (application->package()->isMultiArchDuplicate())
@@ -194,7 +190,7 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
                 QString wildcard = filter->second;
                 wildcard.remove('*');
 
-                if (idx.data(ResourcesModel::PackageNameRole).toString().contains(wildcard)) {
+                if (!idx.data(ResourcesModel::PackageNameRole).toString().contains(wildcard)) {
                     andConditionsMet = false;
                 }
             }
@@ -204,10 +200,10 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
             default:
                 break;
             }
-        }
 
-        if (!andConditionsMet) {
-            return false;
+            if (!andConditionsMet) {
+                return false;
+            }
         }
     }
 

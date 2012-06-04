@@ -22,6 +22,9 @@
 
 #include "resources/AbstractResourcesBackend.h"
 #include "AbstractResource.h"
+#include <ReviewsBackend/Rating.h>
+#include <ReviewsBackend/AbstractReviewsBackend.h>
+#include <QDebug>
 
 ResourcesModel::ResourcesModel(QObject* parent)
     : QAbstractListModel(parent)
@@ -61,8 +64,10 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* resources)
     m_resources.append(newResources);
     endInsertRows();
     
+    connect(resources, SIGNAL(backendReady()), SLOT(resetCaller()));
     connect(resources, SIGNAL(reloadStarted()), SLOT(cleanCaller()));
     connect(resources, SIGNAL(reloadFinished()), SLOT(resetCaller()));
+    connect(resources, SIGNAL(updatesCountChanged()), SIGNAL(updatesCountChanged()));
 }
 
 AbstractResource* ResourcesModel::resourceAt(int row) const
@@ -82,7 +87,18 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
         return QVariant();
     }
     AbstractResource* resource = resourceAt(index.row());
-    return resource->property(roleNames().value(role));
+    switch(role) {
+        case RatingPointsRole:
+        case RatingRole:
+        case SortableRatingRole:{
+//             Rating* rating = backendForResource(resource)->reviewsBackend()->ratingForApplication(resource);
+            Rating* rating = m_backends[0]->reviewsBackend()->ratingForApplication(resource);
+//             qDebug() << "ffffffff" << rating;
+            return rating ? rating->rating() : -1;
+        }
+        default:
+            return resource->property(roleNames().value(role));
+    }
 }
 
 int ResourcesModel::rowCount(const QModelIndex& parent) const
@@ -130,9 +146,13 @@ void ResourcesModel::resetCaller()
         before+= it->size();
     }
     
-    beginInsertRows(QModelIndex(), before, before+backendsResources->count());
-    *backendsResources = backend->allResources();
-    endInsertRows();
+    QVector< AbstractResource* > res = backend->allResources();
+    if(res.size()!=0) {
+        beginInsertRows(QModelIndex(), before, before+backendsResources->count());
+        *backendsResources = res;
+        endInsertRows();
+        emit updatesCountChanged();
+    }
 }
 
 QVector< AbstractResourcesBackend* > ResourcesModel::backends() const
@@ -152,4 +172,13 @@ AbstractResourcesBackend* ResourcesModel::backendForResource(AbstractResource* r
         i++;
     }
     return 0;
+}
+
+int ResourcesModel::updatesCount() const
+{
+    int ret = 0;
+    foreach(AbstractResourcesBackend* backend, m_backends) {
+        ret += backend->updatesCount();
+    }
+    return ret;
 }

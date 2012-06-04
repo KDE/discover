@@ -120,7 +120,7 @@ void ApplicationWindow::initObject()
             this, SLOT(workerEvent(QApt::WorkerEvent)));
     connect(m_appBackend, SIGNAL(errorSignal(QApt::ErrorCode,QVariantMap)),
             this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
-    connect(m_appBackend, SIGNAL(appBackendReady()),
+    connect(m_appBackend, SIGNAL(backendReady()),
             this, SLOT(populateViews()));
     connect(m_appBackend, SIGNAL(reloadStarted()),
             this, SLOT(removeProgressItem()));

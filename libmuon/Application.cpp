@@ -540,3 +540,8 @@ QString Application::section()
 {
     return package()->section();
 }
+
+int Application::popularityContest() const
+{
+    return getField("X-AppInstall-Popcon").toInt();
+}

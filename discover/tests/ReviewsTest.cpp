@@ -34,16 +34,20 @@ QTEST_KDEMAIN_CORE( ReviewsTest )
 ReviewsTest::ReviewsTest(QObject* parent): QObject(parent)
 {
     m_backend = new QApt::Backend;
-    if (m_backend->xapianIndexNeedsUpdate()) {
-        m_backend->updateXapianIndex();
-    }
+//     if (m_backend->xapianIndexNeedsUpdate()) {
+//         m_backend->updateXapianIndex();
+//     }
 
     if (KProtocolManager::proxyType() == KProtocolManager::ManualProxy) {
         m_backend->setWorkerProxy(KProtocolManager::proxyFor("http"));
     }
     m_backend->init();
     
-    BackendsSingleton::self()->applicationBackend();
+    BackendsSingleton::self()->initialize(m_backend, 0);
+    
+    m_appBackend = BackendsSingleton::self()->applicationBackend();
+    QTest::kWaitForSignal(m_appBackend, SIGNAL(backendReady()));
+    m_revBackend = m_appBackend->reviewsBackend();
 }
 
 void ReviewsTest::testReviewsFetch()

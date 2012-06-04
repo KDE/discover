@@ -29,6 +29,9 @@
 class MUONPRIVATE_EXPORT Rating : public QObject
 {
 Q_OBJECT
+Q_PROPERTY(double sortableRating READ sortableRating CONSTANT)
+Q_PROPERTY(int rating READ rating CONSTANT)
+Q_PROPERTY(int ratingPoints READ ratingPoints CONSTANT)
 public:
     explicit Rating(const QVariantMap &data);
     ~Rating();

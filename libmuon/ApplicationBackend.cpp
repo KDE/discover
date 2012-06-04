@@ -53,7 +53,7 @@ ApplicationBackend::ApplicationBackend(QObject *parent)
     m_watcher = new QFutureWatcher<QVector<Application*> >(this);
     connect(m_watcher, SIGNAL(finished()), this, SLOT(setApplications()));
     connect(this, SIGNAL(reloadFinished()), SIGNAL(updatesCountChanged()));
-    connect(this, SIGNAL(appBackendReady()), SIGNAL(updatesCountChanged()));
+    connect(this, SIGNAL(backendReady()), SIGNAL(updatesCountChanged()));
 }
 
 ApplicationBackend::~ApplicationBackend()
@@ -140,8 +140,8 @@ void ApplicationBackend::setApplications()
 
     m_originList.remove(QString());
     m_instOriginList.remove(QString());
-
-    emit appBackendReady();
+    emit backendReady();
+    emit reloadFinished();
 }
 
 void ApplicationBackend::reload()

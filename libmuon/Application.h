@@ -64,6 +64,7 @@ Q_PROPERTY(bool canExecute READ canExecute CONSTANT)
 Q_PROPERTY(QUrl screenshotUrl READ screenshotUrl CONSTANT)
 Q_PROPERTY(QUrl thumbnailUrl READ thumbnailUrl CONSTANT)
 Q_PROPERTY(QString section READ section CONSTANT)
+Q_PROPERTY(int popcon READ popularityContest CONSTANT)
 public:
     friend class TransactionListener;
 
@@ -111,6 +112,8 @@ public:
     
     bool canExecute() const;
     QString section();
+    int popularityContest() const;
+
 signals:
     void installChanged();
 

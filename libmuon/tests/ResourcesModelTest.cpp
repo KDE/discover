@@ -45,7 +45,7 @@ ResourcesModelTest::ResourcesModelTest()
     
     m_appBackend = new ApplicationBackend(this);
     m_appBackend->setBackend(m_backend);
-    QTest::kWaitForSignal(m_appBackend, SIGNAL(appBackendReady()));
+    QTest::kWaitForSignal(m_appBackend, SIGNAL(backendReady()));
 }
 
 ResourcesModelTest::~ResourcesModelTest()

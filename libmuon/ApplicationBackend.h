@@ -50,7 +50,6 @@ class MUONPRIVATE_EXPORT ApplicationBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
     Q_PROPERTY(QList<Application*> launchList READ launchList RESET clearLaunchList NOTIFY launchListChanged)
-    Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
 public:
     explicit ApplicationBackend(QObject *parent=0);
     ~ApplicationBackend();
@@ -109,7 +108,6 @@ private Q_SLOTS:
     void updateCommitProgress(const QString &text, int percentage);
 
 Q_SIGNALS:
-    void appBackendReady();
     void startingFirstTransaction();
     void workerEvent(QApt::WorkerEvent event, Transaction *app);
     void errorSignal(QApt::ErrorCode code, const QVariantMap &details);
@@ -120,7 +118,6 @@ Q_SIGNALS:
     void transactionRemoved(Transaction* t);
     void xapianReloaded();
     void launchListChanged();
-    void updatesCountChanged();
 };
 
 #endif
