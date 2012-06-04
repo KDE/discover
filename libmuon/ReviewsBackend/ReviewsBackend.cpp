@@ -232,7 +232,6 @@ void ReviewsBackend::fetchReviews(AbstractResource* res, int page)
     m_reviewsFile = new KTemporaryFile();
     m_reviewsFile->open();
 
-    qDebug() << "aaaaaaaaaa" << reviewsUrl;
     KIO::FileCopyJob *getJob = KIO::file_copy(reviewsUrl,
                                m_reviewsFile->fileName(), -1,
                                KIO::Overwrite | KIO::HideProgressInfo);
