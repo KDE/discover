@@ -112,12 +112,12 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
 
     connect(m_delegate, SIGNAL(infoButtonClicked(Application*)),
             this, SLOT(infoButtonClicked(Application*)));
-    connect(m_delegate, SIGNAL(installButtonClicked(Application*)),
-            m_appBackend, SLOT(installApplication(Application*)));
-    connect(m_delegate, SIGNAL(removeButtonClicked(Application*)),
-            m_appBackend, SLOT(removeApplication(Application*)));
-    connect(m_delegate, SIGNAL(cancelButtonClicked(Application*)),
-            m_appBackend, SLOT(cancelTransaction(Application*)));
+    connect(m_delegate, SIGNAL(installButtonClicked(AbstractResource*)),
+            m_appBackend, SLOT(installApplication(AbstractResource*)));
+    connect(m_delegate, SIGNAL(removeButtonClicked(AbstractResource*)),
+            m_appBackend, SLOT(removeApplication(AbstractResource*)));
+    connect(m_delegate, SIGNAL(cancelButtonClicked(AbstractResource*)),
+            m_appBackend, SLOT(cancelTransaction(AbstractResource*)));
     connect(m_appBackend, SIGNAL(reloadFinished()),
             m_proxyModel, SLOT(refreshSearch()));
 }
@@ -196,14 +196,14 @@ void ApplicationViewWidget::infoButtonClicked(Application *app)
     m_detailsView->setApplication(app);
     m_currentPair.first = m_detailsView;
 
-    connect(m_detailsView, SIGNAL(installButtonClicked(Application*)),
-            m_appBackend, SLOT(installApplication(Application*)));
-    connect(m_detailsView, SIGNAL(installButtonClicked(Application*,QHash<QApt::Package*,QApt::Package::State>)),
-            m_appBackend, SLOT(installApplication(Application*,QHash<QApt::Package*,QApt::Package::State>)));
-    connect(m_detailsView, SIGNAL(removeButtonClicked(Application*)),
-            m_appBackend, SLOT(removeApplication(Application*)));
-    connect(m_detailsView, SIGNAL(cancelButtonClicked(Application*)),
-            m_appBackend, SLOT(cancelTransaction(Application*)));
+    connect(m_detailsView, SIGNAL(installButtonClicked(AbstractResource*)),
+            m_appBackend, SLOT(installApplication(AbstractResource*)));
+    connect(m_detailsView, SIGNAL(installButtonClicked(AbstractResource*,QHash<QString,bool>)),
+            m_appBackend, SLOT(installApplication(AbstractResource*,QHash<QString,bool>)));
+    connect(m_detailsView, SIGNAL(removeButtonClicked(AbstractResource*)),
+            m_appBackend, SLOT(removeApplication(AbstractResource*)));
+    connect(m_detailsView, SIGNAL(cancelButtonClicked(AbstractResource*)),
+            m_appBackend, SLOT(cancelTransaction(AbstractResource*)));
     connect(m_detailsView, SIGNAL(destroyed(QObject*)),
             this, SLOT(onSubViewDestroyed()));
 

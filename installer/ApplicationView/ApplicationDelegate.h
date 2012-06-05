@@ -26,6 +26,7 @@
 #include <KExtendableItemDelegate>
 #include <KIcon>
 
+class AbstractResource;
 class KIconLoader;
 class KRatingPainter;
 
@@ -69,9 +70,9 @@ public Q_SLOTS:
 Q_SIGNALS:
     void showExtendItem(const QModelIndex &index);
     void infoButtonClicked(Application *app);
-    void installButtonClicked(Application *app);
-    void removeButtonClicked(Application *app);
-    void cancelButtonClicked(Application *app);
+    void installButtonClicked(AbstractResource *app);
+    void removeButtonClicked(AbstractResource *app);
+    void cancelButtonClicked(AbstractResource *app);
 };
 
 #endif

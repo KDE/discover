@@ -25,6 +25,7 @@
 
 #include "../AbstractViewBase.h"
 
+class AbstractResource;
 class Application;
 class ApplicationBackend;
 class ApplicationDetailsWidget;
@@ -42,11 +43,11 @@ private:
     ApplicationDetailsWidget *m_detailsWidget;
 
 Q_SIGNALS:
-    void installButtonClicked(Application *);
-    void installButtonClicked(Application *,
-                              const QHash<QApt::Package *, QApt::Package::State> &addons);
-    void removeButtonClicked(Application *);
-    void cancelButtonClicked(Application *);
+    void installButtonClicked(AbstractResource *);
+    void installButtonClicked(AbstractResource *,
+                              const QHash<QString, bool> &addons);
+    void removeButtonClicked(AbstractResource *);
+    void cancelButtonClicked(AbstractResource *);
 
 };
 

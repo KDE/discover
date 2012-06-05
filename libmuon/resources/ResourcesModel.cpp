@@ -160,16 +160,26 @@ QVector< AbstractResourcesBackend* > ResourcesModel::backends() const
     return m_backends;
 }
 
+AbstractResource* ResourcesModel::applicationByPackageName(const QString& name)
+{
+    foreach(AbstractResourcesBackend* backend, m_backends)
+    {
+        AbstractResource* res = backend->resourceByPackageName(name);
+        if(res) {
+            return res;
+        }
+    }
+    return 0;
+}
+
+
 AbstractResourcesBackend* ResourcesModel::backendForResource(AbstractResource* resource) const
 {
-    int i=0;
     foreach(AbstractResourcesBackend* backend, m_backends)
     {
         if(backend->providesResouce(resource)) {
-//             qDebug() <<"laaaaaaaaaaa" << m_backends[i];
-            return m_backends[i];
+            return backend;
         }
-        i++;
     }
     Q_ASSERT(!resource && "all resources should have a backend");
     return 0;

@@ -52,6 +52,7 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
         virtual QPair<TransactionStateTransition, Transaction *> currentTransactionState() const = 0;
         virtual QList<Transaction*> transactions() const = 0;
         virtual bool providesResouce(AbstractResource* resource) const = 0;
+        virtual AbstractResource* resourceByPackageName(const QString& name) const = 0;
 
     signals:
         void backendReady();
@@ -59,7 +60,7 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
         void reloadFinished();
         void updatesCountChanged();
         
-        void progress(Transaction *transaction, int progress);
+        void transactionProgressed(Transaction *transaction, int progress);
         void transactionAdded(Transaction *transaction);
         void transactionCancelled(Transaction *app);
         void transactionRemoved(Transaction* t);

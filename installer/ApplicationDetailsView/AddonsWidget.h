@@ -46,7 +46,7 @@ private:
     ApplicationBackend *m_appBackend;
     QStandardItemModel *m_addonsModel;
     QApt::PackageList m_availableAddons;
-    QHash<QApt::Package *, QApt::Package::State> m_changedAddons;
+    QHash<QString, bool> m_changedAddons;
 
     QToolButton *m_expandButton;
     QWidget *m_addonsWidget;
@@ -65,7 +65,7 @@ private Q_SLOTS:
     void emitApplyButtonClicked();
 
 Q_SIGNALS:
-    void applyButtonClicked(QHash<QApt::Package *, QApt::Package::State> addons);
+    void applyButtonClicked(const QHash<QString, bool>& addons);
 };
 
 #endif

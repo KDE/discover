@@ -284,14 +284,14 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error, const QVariantMap 
 
 void ApplicationBackend::updateDownloadProgress(int percentage)
 {
-    emit progress(m_currentTransaction, percentage);
+    emit transactionProgressed(m_currentTransaction, percentage);
 }
 
 void ApplicationBackend::updateCommitProgress(const QString &text, int percentage)
 {
     Q_UNUSED(text);
 
-    emit progress(m_currentTransaction, percentage);
+    emit transactionProgressed(m_currentTransaction, percentage);
 }
 
 bool ApplicationBackend::confirmRemoval(Transaction *transaction)
@@ -533,7 +533,7 @@ int ApplicationBackend::updatesCount() const
     return count;
 }
 
-Application* ApplicationBackend::applicationByPackageName(const QString& name) const
+AbstractResource* ApplicationBackend::resourceByPackageName(const QString& name) const
 {
     foreach(Application* app, m_appList) {
         if(app->packageName()==name)

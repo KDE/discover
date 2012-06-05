@@ -54,7 +54,7 @@ public:
     ~ApplicationBackend();
 
     AbstractReviewsBackend *reviewsBackend() const;
-    Q_SCRIPTABLE Application* applicationByPackageName(const QString& name) const;
+    Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name) const;
     QVector<Application *> applicationList() const;
     QSet<QString> appOrigins() const;
     QSet<QString> installedAppOrigins() const;

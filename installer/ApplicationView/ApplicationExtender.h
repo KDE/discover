@@ -52,7 +52,7 @@ private:
 
 private Q_SLOTS:
     void workerEvent(QApt::WorkerEvent event, Transaction *transaction);
-    void transactionCancelled(Application *app);
+    void transactionCancelled(Transaction *app);
     void emitInfoButtonClicked();
     void emitRemoveButtonClicked();
     void emitInstallButtonClicked();
@@ -60,9 +60,9 @@ private Q_SLOTS:
 
 Q_SIGNALS:
     void infoButtonClicked(Application *app);
-    void removeButtonClicked(Application *app);
-    void installButtonClicked(Application *app);
-    void cancelButtonClicked(Application *app);
+    void removeButtonClicked(AbstractResource *app);
+    void installButtonClicked(AbstractResource *app);
+    void cancelButtonClicked(AbstractResource *app);
 };
 
 #endif

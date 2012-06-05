@@ -78,7 +78,7 @@ private:
 
 private Q_SLOTS:
     void workerEvent(QApt::WorkerEvent event, Transaction *trans);
-    void transactionCancelled(Application *app);
+    void transactionCancelled(Transaction *trans);
     void reloadStarted();
     void reloadFinished();
     void allDataChanged();

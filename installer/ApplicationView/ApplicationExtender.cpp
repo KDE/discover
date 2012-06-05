@@ -73,8 +73,8 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, Appl
 
     connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent,Transaction*)),
             this, SLOT(workerEvent(QApt::WorkerEvent,Transaction*)));
-    connect(m_appBackend, SIGNAL(transactionCancelled(Application*)),
-            this, SLOT(transactionCancelled(Application*)));
+    connect(m_appBackend, SIGNAL(transactionCancelled(Transaction*)),
+            this, SLOT(transactionCancelled(Transaction*)));
 
     // Catch already-begun downloads. If the state is something else, we won't
     // care because we won't handle it
@@ -112,13 +112,14 @@ void ApplicationExtender::workerEvent(QApt::WorkerEvent event, Transaction *tran
     }
 }
 
-void ApplicationExtender::transactionCancelled(Application *app)
+void ApplicationExtender::transactionCancelled(Transaction* trans)
 {
+    AbstractResource* app = trans->application();
     if (m_app == app) {
         m_cancelButton->hide();
         m_actionButton->show();
         m_actionButton->setEnabled(true);
-        if (app->package()->isInstalled()) {
+        if (m_app->package()->isInstalled()) {
             m_actionButton->setIcon(KIcon("edit-delete"));
             m_actionButton->setText(i18n("Remove"));
         } else {

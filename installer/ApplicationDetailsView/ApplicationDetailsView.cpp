@@ -42,14 +42,14 @@ ApplicationDetailsView::ApplicationDetailsView(QWidget *parent, ApplicationBacke
 
     m_crumb->setAssociatedView(this);
 
-    connect(m_detailsWidget, SIGNAL(installButtonClicked(Application*)),
-            this, SIGNAL(installButtonClicked(Application*)));
-    connect(m_detailsWidget, SIGNAL(installButtonClicked(Application*,QHash<QApt::Package*,QApt::Package::State>)),
-            this, SIGNAL(installButtonClicked(Application*,QHash<QApt::Package*,QApt::Package::State>)));
-    connect(m_detailsWidget, SIGNAL(removeButtonClicked(Application*)),
-            this, SIGNAL(removeButtonClicked(Application*)));
-    connect(m_detailsWidget, SIGNAL(cancelButtonClicked(Application*)),
-            this, SIGNAL(cancelButtonClicked(Application*)));
+    connect(m_detailsWidget, SIGNAL(installButtonClicked(AbstractResource*)),
+            this, SIGNAL(installButtonClicked(AbstractResource*)));
+    connect(m_detailsWidget, SIGNAL(installButtonClicked(AbstractResource*,QHash<QString,bool>)),
+            this, SIGNAL(installButtonClicked(AbstractResource*,QHash<QString,bool>)));
+    connect(m_detailsWidget, SIGNAL(removeButtonClicked(AbstractResource*)),
+            this, SIGNAL(removeButtonClicked(AbstractResource*)));
+    connect(m_detailsWidget, SIGNAL(cancelButtonClicked(AbstractResource*)),
+            this, SIGNAL(cancelButtonClicked(AbstractResource*)));
 }
 
 ApplicationDetailsView::~ApplicationDetailsView()

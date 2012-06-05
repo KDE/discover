@@ -112,7 +112,7 @@ void TransactionListener::workerEvent(TransactionStateTransition event, Transact
     case StartedDownloading:
         m_comment = i18nc("@info:status", "Downloading");
         m_progress = 0;
-        connect(m_appBackend, SIGNAL(progress(Transaction*,int)),
+        connect(m_appBackend, SIGNAL(transactionProgressed(Transaction*,int)),
                 this, SLOT(updateProgress(Transaction*,int)));
         emit running(true);
         emit commentChanged();
@@ -120,18 +120,18 @@ void TransactionListener::workerEvent(TransactionStateTransition event, Transact
         setDownloading(true);
         break;
     case FinishedDownloading:
-        disconnect(m_appBackend, SIGNAL(progress(Transaction*,int)),
+        disconnect(m_appBackend, SIGNAL(transactionProgressed(Transaction*,int)),
                    this, SLOT(updateProgress(Transaction*,int)));
         setDownloading(false);
         break;
     case StartedCommitting:
         setStateComment(transaction);
-        connect(m_appBackend, SIGNAL(progress(Transaction*,int)),
+        connect(m_appBackend, SIGNAL(transactionProgressed(Transaction*,int)),
                 this, SLOT(updateProgress(Transaction*,int)));
         break;
     case FinishedCommitting:
         emit running(false);
-        disconnect(m_appBackend, SIGNAL(progress(Transaction*,int)),
+        disconnect(m_appBackend, SIGNAL(transactionProgressed(Transaction*,int)),
                    this, SLOT(updateProgress(Transaction*,int)));
         break;
     }

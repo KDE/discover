@@ -45,6 +45,7 @@ class KRatingWidget;
 class KTemporaryFile;
 
 class AddonsWidget;
+class AbstractResource;
 class Application;
 class ClickableLabel;
 class Review;
@@ -102,8 +103,8 @@ private Q_SLOTS:
     void cancelButtonClicked();
     void populateAddons();
     void fetchReviews(int page);
-    void populateReviews(Application *app, const QList<Review *> &reviews);
-    void addonsApplyButtonClicked(const QHash<QApt::Package *, QApt::Package::State> &changedAddons);
+    void populateReviews(AbstractResource* app, const QList< Review* >& reviews);
+    void addonsApplyButtonClicked(const QHash< QString, bool >& changedAddons);
     void progressCommentChanged();
     void progressChanged();
     void updateActionButton();
@@ -113,10 +114,10 @@ public slots:
     void applicationDownloadingChanged(bool downloading);
 
 Q_SIGNALS:
-    void installButtonClicked(Application *app);
-    void installButtonClicked(Application *app, const QHash<QApt::Package *, QApt::Package::State> &);
-    void removeButtonClicked(Application *app);
-    void cancelButtonClicked(Application *app);
+    void installButtonClicked(AbstractResource *app);
+    void installButtonClicked(AbstractResource *app, const QHash<QString, bool> &);
+    void removeButtonClicked(AbstractResource *app);
+    void cancelButtonClicked(AbstractResource *app);
 };
 
 #endif

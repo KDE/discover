@@ -222,8 +222,9 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     m_screenshotView->show();
 
     m_addonsWidget = new AddonsWidget(widget, m_appBackend);
-    connect(m_addonsWidget, SIGNAL(applyButtonClicked(QHash<QApt::Package*,QApt::Package::State>)),
-            this, SLOT(addonsApplyButtonClicked(QHash<QApt::Package*,QApt::Package::State>)));
+
+    connect(m_addonsWidget, SIGNAL(applyButtonClicked(QHash<QString,bool>)),
+            this, SLOT(addonsApplyButtonClicked(QHash<QString,bool>)));
     connect(m_appBackend, SIGNAL(reloadFinished()), this, SLOT(populateAddons()));
     m_addonsWidget->hide();
 
@@ -391,8 +392,8 @@ void ApplicationDetailsWidget::setApplication(Application *app)
     }
 
     // Fetch reviews
-    connect(reviewsBackend, SIGNAL(reviewsReady(Application*,QList<Review*>)),
-	    this, SLOT(populateReviews(Application*,QList<Review*>)));
+    connect(reviewsBackend, SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
+	    this, SLOT(populateReviews(AbstractResource*,QList<Review*>)));
     fetchReviews(1);
 
     fetchScreenshot(QApt::Thumbnail);
@@ -504,7 +505,7 @@ void ApplicationDetailsWidget::fetchReviews(int page)
 
 }
 
-void ApplicationDetailsWidget::populateReviews(Application *app, const QList<Review *> &reviews)
+void ApplicationDetailsWidget::populateReviews(AbstractResource *app, const QList<Review *> &reviews)
 {
     if (app != m_app) {
         return;
@@ -513,8 +514,7 @@ void ApplicationDetailsWidget::populateReviews(Application *app, const QList<Rev
     m_reviewsWidget->addReviews(reviews);
 }
 
-void ApplicationDetailsWidget::addonsApplyButtonClicked(const QHash<QApt::Package *,
-                                                        QApt::Package::State> &changedAddons)
+void ApplicationDetailsWidget::addonsApplyButtonClicked(const QHash<QString, bool> &changedAddons)
 {
     emit installButtonClicked(m_app, changedAddons);
 

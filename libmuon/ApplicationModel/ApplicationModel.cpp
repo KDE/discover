@@ -68,12 +68,12 @@ ApplicationModel::~ApplicationModel()
 void ApplicationModel::setBackend(ApplicationBackend* backend)
 {
     if(m_appBackend) {
-        disconnect(m_appBackend, SIGNAL(progress(Transaction*,int)),
+        disconnect(m_appBackend, SIGNAL(transactionProgressed(Transaction*,int)),
                     this, SLOT(updateTransactionProgress(Transaction*,int)));
         disconnect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent,Transaction*)),
                 this, SLOT(workerEvent(QApt::WorkerEvent,Transaction*)));
-        disconnect(m_appBackend, SIGNAL(transactionCancelled(Application*)),
-                this, SLOT(transactionCancelled(Application*)));
+        disconnect(m_appBackend, SIGNAL(transactionCancelled(Transaction*)),
+                this, SLOT(transactionCancelled(Transaction*)));
         disconnect(m_appBackend->reviewsBackend(), SIGNAL(ratingsReady()), this, SLOT(allDataChanged()));
         disconnect(m_appBackend, SIGNAL(reloadStarted()), this, SLOT(reloadStarted()));
         disconnect(m_appBackend, SIGNAL(reloadFinished()), this, SLOT(reloadFinished()));
@@ -83,12 +83,12 @@ void ApplicationModel::setBackend(ApplicationBackend* backend)
     m_appBackend = backend;
     reloadApplications();
 
-    connect(m_appBackend, SIGNAL(progress(Transaction*,int)),
+    connect(m_appBackend, SIGNAL(transactionProgressed(Transaction*,int)),
                 this, SLOT(updateTransactionProgress(Transaction*,int)));
     connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent,Transaction*)),
             this, SLOT(workerEvent(QApt::WorkerEvent,Transaction*)));
-    connect(m_appBackend, SIGNAL(transactionCancelled(Application*)),
-            this, SLOT(transactionCancelled(Application*)));
+    connect(m_appBackend, SIGNAL(transactionCancelled(Transaction*)),
+            this, SLOT(transactionCancelled(Transaction*)));
     connect(m_appBackend->reviewsBackend(), SIGNAL(ratingsReady()), SLOT(allDataChanged()));
     connect(m_appBackend, SIGNAL(reloadStarted()), this, SLOT(reloadStarted()));
     connect(m_appBackend, SIGNAL(reloadFinished()), this, SLOT(reloadFinished()));
@@ -267,10 +267,10 @@ void ApplicationModel::workerEvent(QApt::WorkerEvent event, Transaction *trans)
     }
 }
 
-void ApplicationModel::transactionCancelled(Application *application)
+void ApplicationModel::transactionCancelled(Transaction *trans)
 {
-    emit dataChanged(index(m_apps.indexOf(application), 0),
-                     index(m_apps.indexOf(application), 0));
+    QModelIndex idx = index(m_apps.indexOf(qobject_cast<Application*>(trans->application())), 0);
+    emit dataChanged(idx, idx);
 }
 
 Application *ApplicationModel::applicationAt(const QModelIndex &index) const

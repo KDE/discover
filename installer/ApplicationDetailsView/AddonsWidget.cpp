@@ -34,6 +34,8 @@
 #include "Application.h"
 #include "ApplicationBackend.h"
 
+//TODO: Port to the ApplicationAddonsModel?
+
 AddonsWidget::AddonsWidget(QWidget *parent, ApplicationBackend *appBackend)
         : KVBox(parent)
         , m_appBackend(appBackend)
@@ -201,12 +203,10 @@ void AddonsWidget::addonStateChanged(const QModelIndex &left, const QModelIndex 
     if (addon->isInstalled()) {
         switch (item->checkState()) {
         case Qt::Checked:
-            if (m_changedAddons.contains(addon)) {
-                m_changedAddons.remove(addon);
-            }
+            m_changedAddons.remove(addonName);
             break;
         case Qt::Unchecked:
-            m_changedAddons[addon] = QApt::Package::ToRemove;
+            m_changedAddons[addonName] = false;
             break;
         default:
             break;
@@ -214,12 +214,10 @@ void AddonsWidget::addonStateChanged(const QModelIndex &left, const QModelIndex 
     } else {
         switch (item->checkState()) {
         case Qt::Checked:
-            m_changedAddons[addon] = QApt::Package::ToInstall;
+            m_changedAddons[addonName] = true;
             break;
         case Qt::Unchecked:
-            if (m_changedAddons.contains(addon)) {
-                m_changedAddons.remove(addon);
-            }
+            m_changedAddons.remove(addonName);
             break;
         default:
             break;

@@ -80,7 +80,7 @@ int TransactionModel::rowCount(const QModelIndex &parent) const
 void TransactionModel::setBackend(ApplicationBackend* appBackend)
 {
     m_appBackend = appBackend;
-    connect(m_appBackend, SIGNAL(progress(Transaction*,int)), this, SLOT(externalUpdate()));
+    connect(m_appBackend, SIGNAL(transactionProgressed(Transaction*,int)), this, SLOT(externalUpdate()));
     connect(m_appBackend, SIGNAL(transactionAdded(Transaction*)), this, SLOT(addTransaction(Transaction*)));
     connect(m_appBackend, SIGNAL(transactionCancelled(Application*)),
             this, SLOT(removeTransaction(Application*)));
