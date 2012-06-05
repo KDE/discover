@@ -25,6 +25,7 @@
 #include <QVector>
 
 #include "libmuonprivate_export.h"
+#include "AbstractResourcesBackend.h"
 
 class AbstractResource;
 class AbstractResourcesBackend;
@@ -39,7 +40,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
             IconRole,
             CommentRole,
             ActionRole,
-            StatusRole,
+            StateRole,
             RatingRole,
             RatingPointsRole,
             SortableRatingRole,
@@ -73,6 +74,13 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
 
     signals:
         void updatesCountChanged();
+
+        //Transactions forwarding
+        void transactionProgressed(Transaction *transaction, int progress);
+        void transactionAdded(Transaction *transaction);
+        void transactionCancelled(Transaction *transaction);
+        void transactionRemoved(Transaction* transaction);
+        void transactionsEvent(TransactionStateTransition transition, Transaction* transaction);
 
     private slots:
         void cleanCaller();

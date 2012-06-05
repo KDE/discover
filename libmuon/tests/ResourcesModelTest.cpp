@@ -28,6 +28,8 @@
 #include "modeltest.h"
 #include <Application.h>
 #include <resources/ResourcesModel.h>
+#include <resources/ResourcesProxyModel.h>
+#include <Category/Category.h>
 
 QTEST_KDEMAIN_CORE( ResourcesModelTest )
 
@@ -46,24 +48,24 @@ ResourcesModelTest::ResourcesModelTest()
     m_appBackend = new ApplicationBackend(this);
     m_appBackend->setBackend(m_backend);
     QTest::kWaitForSignal(m_appBackend, SIGNAL(backendReady()));
+    
+    m_model = new ResourcesModel(this);
+    m_model->addResourcesBackend(m_appBackend);
+    new ModelTest(m_model, m_model);
 }
 
 ResourcesModelTest::~ResourcesModelTest()
 {
-    delete m_appBackend;
     delete m_backend;
 }
 
 void ResourcesModelTest::testReload()
 {
-    ResourcesModel* model = new ResourcesModel(this);
-    model->addResourcesBackend(m_appBackend);
-    
     QVector<AbstractResource*> apps = m_appBackend->allResources();
-    QCOMPARE(apps.count(), model->rowCount());
+    QCOMPARE(apps.count(), m_model->rowCount());
     
     QVector<QVariant> appNames(apps.size());
-    for(int i=0; i<model->rowCount(); ++i) {
+    for(int i=0; i<m_model->rowCount(); ++i) {
         AbstractResource* app = apps[i];
         appNames[i]=app->property("packageName");
     }
@@ -73,11 +75,22 @@ void ResourcesModelTest::testReload()
     QCOMPARE(apps, m_appBackend->allResources() );
     
     QVERIFY(!apps.isEmpty());
-    QCOMPARE(apps.count(), model->rowCount());
+    QCOMPARE(apps.count(), m_model->rowCount());
     
-    for(int i=0; i<model->rowCount(); ++i) {
+    for(int i=0; i<m_model->rowCount(); ++i) {
         AbstractResource* app = apps[i];
         QCOMPARE(appNames[i], app->property("packageName"));
-//         QCOMPARE(model->data(model->index(i), ResourcesModel::NameRole).toString(), app->name());
+//         QCOMPARE(m_model->data(m_model->index(i), ResourcesModel::NameRole).toString(), app->name());
+    }
+}
+
+void ResourcesModelTest::testCategories()
+{
+    ResourcesProxyModel* proxy = new ResourcesProxyModel(m_model);
+    proxy->setSourceModel(m_model);
+    QList<Category*> categories = Category::populateCategories();
+    foreach(Category* cat, categories) {
+        proxy->setFiltersFromCategory(cat);
+        qDebug() << "fuuuuuu" << proxy->rowCount() << cat->name();
     }
 }

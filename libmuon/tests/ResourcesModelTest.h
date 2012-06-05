@@ -18,11 +18,12 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef CMAKECMAKECONDITIONTEST_H
-#define CMAKECMAKECONDITIONTEST_H
+#ifndef RESOURCESMODELTEST_H
+#define RESOURCESMODELTEST_H
 
 #include <QtTest/QtTest>
 
+class ResourcesModel;
 class ApplicationBackend;
 namespace QApt { class Backend; }
 
@@ -35,10 +36,12 @@ class ResourcesModelTest : public QObject
 
     private slots:
         void testReload();
+        void testCategories();
 
     private:
         QApt::Backend* m_backend;
         ApplicationBackend* m_appBackend;
+        ResourcesModel* m_model;
 };
 
 #endif

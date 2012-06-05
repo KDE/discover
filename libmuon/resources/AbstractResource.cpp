@@ -28,3 +28,6 @@ bool AbstractResource::canExecute() const
 {
     return false;
 }
+
+void AbstractResource::invokeApplication() const
+{}

@@ -32,6 +32,7 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     , m_sortByRelevancy(false)
     , m_filterBySearch(false)
     , m_filteredCategory(0)
+    , m_stateFilter(AbstractResource::Broken)
 {
     setShouldShowTechnical(false);
 }
@@ -115,6 +116,28 @@ bool ResourcesProxyModel::shouldShowTechnical() const
     return !m_roleFilters.contains(ResourcesModel::IsTechnicalRole);
 }
 
+bool shouldFilter(const QModelIndex& idx, const QPair<FilterType, QString>& filter)
+{
+    bool ret = true;
+    switch (filter.first) {
+        case CategoryFilter:
+            ret = idx.data(ResourcesModel::CategoryRole).toString().contains(filter.second);
+            break;
+        case PkgSectionFilter:
+            ret = idx.data(ResourcesModel::SectionRole).toString() == filter.second;
+            break;
+        case PkgWildcardFilter: {
+            QString wildcard = filter.second;
+            wildcard.remove('*');
+            ret = idx.data(ResourcesModel::PackageNameRole).toString().contains(wildcard);
+        }   break;
+        case PkgNameFilter: // Only useful in the not filters
+        case InvalidFilter:
+            break;
+    }
+    return ret;
+}
+
 bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
     QModelIndex idx = sourceModel()->index(sourceRow, 0, sourceParent);
@@ -133,36 +156,9 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
     if (!m_orFilters.isEmpty()) {
         // Set a boolean value to true when any of the conditions are found.
         // It is set to false by default so that if none are found, we return false
-        auto filter = m_orFilters.constBegin();
         bool foundOrCondition = false;
-        while (filter != m_orFilters.constEnd()) {
-            switch (filter->first) {
-            case CategoryFilter:
-                if (idx.data(ResourcesModel::CategoryRole).toString().contains(filter->second)) {
-                    foundOrCondition = true;
-                }
-                break;
-            case PkgSectionFilter:
-                if (idx.data(ResourcesModel::SectionRole).toString() == filter->second) {
-                    foundOrCondition = true;
-                }
-                break;
-            case PkgWildcardFilter: {
-                QString wildcard = filter->second;
-                wildcard.remove('*');
-
-                if (idx.data(ResourcesModel::PackageNameRole).toString().contains(wildcard)) {
-                    foundOrCondition = true;
-                }
-                break;
-            }
-            case PkgNameFilter: // Only useful in the not filters
-            case InvalidFilter:
-            default:
-                break;
-            }
-
-            ++filter;
+        for (QList<QPair<FilterType, QString> >::const_iterator filter = m_orFilters.constBegin(); filter != m_orFilters.constEnd() && !foundOrCondition; ++filter) {
+            foundOrCondition = shouldFilter(idx, *filter);
         }
 
         if (!foundOrCondition) {
@@ -172,75 +168,29 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
 
     if (!m_andFilters.isEmpty()) {
         // Set a boolean value to false when any conditions fail to meet
-        auto filter = m_andFilters.constBegin();
         bool andConditionsMet = true;
-        for (; filter != m_andFilters.constEnd() && andConditionsMet; ++filter) {
-            switch (filter->first) {
-            case CategoryFilter:
-                if (!idx.data(ResourcesModel::CategoryRole).toString().contains(filter->second)) {
-                    andConditionsMet = false;
-                }
-                break;
-            case PkgSectionFilter:
-                if (!(idx.data(ResourcesModel::SectionRole).toString() == filter->second)) {
-                    andConditionsMet = false;
-                }
-                break;
-            case PkgWildcardFilter: {
-                QString wildcard = filter->second;
-                wildcard.remove('*');
-
-                if (!idx.data(ResourcesModel::PackageNameRole).toString().contains(wildcard)) {
-                    andConditionsMet = false;
-                }
-            }
-                break;
-            case PkgNameFilter: // Only useful in the not filters
-            case InvalidFilter:
-            default:
-                break;
-            }
-
-            if (!andConditionsMet) {
-                return false;
-            }
+        for (QList<QPair<FilterType, QString> >::const_iterator filter = m_andFilters.constBegin(); filter != m_andFilters.constEnd() && andConditionsMet; ++filter) {
+            andConditionsMet = shouldFilter(idx, *filter);
+        }
+        
+        if (!andConditionsMet) {
+            return false;
         }
     }
 
     if (!m_notFilters.isEmpty()) {
-        auto filter = m_notFilters.constBegin();
-        while (filter != m_notFilters.constEnd()) {
+        for(QList<QPair<FilterType, QString> >::const_iterator filter = m_notFilters.constBegin(); filter != m_notFilters.constEnd(); ++filter) {
+            bool value = true;
             switch (filter->first) {
-            case CategoryFilter:
-                if (idx.data(ResourcesModel::CategoryRole).toString().contains(filter->second)) {
-                    return false;
-                }
-                break;
-            case PkgSectionFilter:
-                if (idx.data(ResourcesModel::SectionRole).toString() == filter->second) {
-                    return false;
-                }
-                break;
-            case PkgWildcardFilter: {
-                QString wildcard = filter->second;
-                wildcard.remove('*');
-
-                if (idx.data(ResourcesModel::PackageNameRole).toString().contains(wildcard)) {
-                    return false;
-                }
-            }
-                break;
             case PkgNameFilter:
-                if (idx.data(ResourcesModel::PackageNameRole) == filter->second) {
-                    return false;
-                }
+                value = idx.data(ResourcesModel::PackageNameRole) == filter->second;
                 break;
-            case InvalidFilter:
             default:
+                value = !shouldFilter(idx, *filter);
                 break;
             }
-
-            ++filter;
+            if(!value)
+                return false;
         }
     }
 
@@ -298,4 +248,14 @@ bool ResourcesProxyModel::sortingByRelevancy() const
 bool ResourcesProxyModel::isFilteringBySearch() const
 {
     return m_filterBySearch;
+}
+
+void ResourcesProxyModel::setStateFilter(AbstractResource::State s)
+{
+    m_stateFilter = s;
+}
+
+AbstractResource::State ResourcesProxyModel::stateFilter() const
+{
+    return m_stateFilter;
 }

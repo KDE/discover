@@ -15,15 +15,14 @@ ToolBar {
     
     Connections {
         id: backendConnections
-        target: backend
-        
-        onApplicationTransactionAdded: {
-            if(transactionsModel.appAt(app)<0)
-                transactionsModel.append({'app': app})
+        target: resourcesModel
+        onTransactionAdded: {
+            if(transactionsModel.appAt(transaction.application)<0)
+                transactionsModel.append({'app': transaction.application})
         }
-        
-        onCancelTransaction: {
-            var id = transactionsModel.appAt(app)
+
+        onTransactionCancelled: {
+            var id = transactionsModel.appAt(transaction.application)
             if(id>=0)
                 transactionsModel.remove(id)
         }

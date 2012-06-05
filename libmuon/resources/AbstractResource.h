@@ -33,7 +33,16 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString comment READ comment CONSTANT)
     Q_PROPERTY(QString icon READ icon CONSTANT)
     Q_PROPERTY(bool canExecute READ canExecute CONSTANT)
+    Q_PROPERTY(State state READ state NOTIFY stateChanged)
     public:
+        enum State {
+            Broken,
+            None,
+            Installed,
+            Upgradeable
+        };
+        Q_ENUMS(State)
+        
         explicit AbstractResource(QObject* parent = 0);
         
         ///used as internal identification of a resource
@@ -51,6 +60,14 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         ///@returns whether invokeApplication makes something
         /// false if not overriden
         virtual bool canExecute() const;
+        
+        ///executes the resource, if applies.
+        virtual Q_SCRIPTABLE void invokeApplication() const;
+        
+        virtual State state() = 0;
+
+    signals:
+        void stateChanged();
 };
 
 #endif // ABSTRACTRESOURCE_H

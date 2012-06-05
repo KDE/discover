@@ -127,7 +127,7 @@ QApt::Package *Application::package()
 {
     if (!m_package && m_backend) {
         m_package = m_backend->package(packageName());
-        emit installChanged();
+        emit stateChanged();
     }
 
     // Packages removed from archive will remain in app-install-data until the
@@ -514,9 +514,9 @@ QVector<KService::Ptr> Application::executables() const
     return ret;
 }
 
-void Application::emitInstallChanged()
+void Application::emitStateChanged()
 {
-    emit installChanged();
+    emit stateChanged();
 }
 
 void Application::invokeApplication() const
@@ -544,4 +544,14 @@ QString Application::section()
 int Application::popularityContest() const
 {
     return getField("X-AppInstall-Popcon").toInt();
+}
+
+AbstractResource::State Application::state()
+{
+    State ret = None;
+    int s = package()->state();
+    if(s & QApt::Package::Upgradeable) s = Upgradeable;
+    else if(s & QApt::Package::Installed) s = Installed;
+    
+    return ret;
 }

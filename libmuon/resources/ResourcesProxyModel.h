@@ -31,6 +31,7 @@
 #include <Category/Category.h>
 
 #include "libmuonprivate_export.h"
+#include "AbstractResource.h"
 
 namespace QApt {
     class Backend;
@@ -47,6 +48,7 @@ class MUONPRIVATE_EXPORT ResourcesProxyModel : public QSortFilterProxyModel
     Q_PROPERTY(QString originFilter READ originFilter WRITE setOriginFilter)
     Q_PROPERTY(bool isShowingTechnical READ shouldShowTechnical WRITE setShouldShowTechnical)
     Q_PROPERTY(bool isSortingByRelevancy READ sortingByRelevancy WRITE setSortByRelevancy)
+    Q_PROPERTY(AbstractResource::State stateFilter READ stateFilter WRITE setStateFilter)
 public:
     explicit ResourcesProxyModel(QObject *parent=0);
     ~ResourcesProxyModel();
@@ -60,6 +62,8 @@ public:
     void setSortByRelevancy(bool sort);
     bool sortingByRelevancy() const;
     bool isFilteringBySearch() const;
+    void setStateFilter(AbstractResource::State s);
+    AbstractResource::State stateFilter() const;
 
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
     Category* filteredCategory() const;
@@ -78,6 +82,7 @@ private:
     bool m_sortByRelevancy;
     bool m_filterBySearch;
     Category* m_filteredCategory;
+    AbstractResource::State m_stateFilter;
 
 public Q_SLOTS:
     void refreshSearch();

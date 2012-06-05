@@ -34,7 +34,7 @@ ResourcesModel::ResourcesModel(QObject* parent)
     roles[IconRole] = "icon";
     roles[CommentRole] = "comment";
     roles[ActionRole] = "action";
-    roles[StatusRole] = "status";
+    roles[StateRole] = "state";
     roles[RatingRole] = "rating";
     roles[RatingPointsRole] = "ratingPoints";
     roles[SortableRatingRole] = "sortableRating";
@@ -68,6 +68,13 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* resources)
     connect(resources, SIGNAL(reloadStarted()), SLOT(cleanCaller()));
     connect(resources, SIGNAL(reloadFinished()), SLOT(resetCaller()));
     connect(resources, SIGNAL(updatesCountChanged()), SIGNAL(updatesCountChanged()));
+    
+    connect(resources, SIGNAL(transactionAdded(Transaction*)), SIGNAL(transactionAdded(Transaction*)));
+    connect(resources, SIGNAL(transactionCancelled(Transaction*)), SIGNAL(transactionCancelled(Transaction*)));
+    connect(resources, SIGNAL(transactionProgressed(Transaction*,int)), SIGNAL(transactionProgressed(Transaction*,int)));
+    connect(resources, SIGNAL(transactionRemoved(Transaction*)), SIGNAL(transactionRemoved(Transaction*)));
+    connect(resources, SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)), SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)));
+    
 }
 
 AbstractResource* ResourcesModel::resourceAt(int row) const
@@ -126,7 +133,7 @@ void ResourcesModel::cleanCaller()
         before+= it->size();
     }
     
-    beginRemoveRows(QModelIndex(), before, before+backendsResources->count());
+    beginRemoveRows(QModelIndex(), before, before+backendsResources->count()-1);
     backendsResources->clear();
     endRemoveRows();
 }
@@ -135,20 +142,21 @@ void ResourcesModel::resetCaller()
 {
     AbstractResourcesBackend* backend = qobject_cast<AbstractResourcesBackend*>(sender());
     Q_ASSERT(backend);
-    int pos = m_backends.indexOf(backend);
-    Q_ASSERT(pos>=0);
-    QVector<AbstractResource*>* backendsResources = &m_resources[pos];
-    int before = 0;
-    for(QVector<QVector<AbstractResource*> >::const_iterator it=m_resources.constBegin();
-        it!=m_resources.constEnd() && it!=backendsResources;
-        ++it)
-    {
-        before+= it->size();
-    }
     
     QVector< AbstractResource* > res = backend->allResources();
     if(res.size()!=0) {
-        beginInsertRows(QModelIndex(), before, before+backendsResources->count());
+        int pos = m_backends.indexOf(backend);
+        Q_ASSERT(pos>=0);
+        QVector<AbstractResource*>* backendsResources = &m_resources[pos];
+        int before = 0;
+        for(QVector<QVector<AbstractResource*> >::const_iterator it=m_resources.constBegin();
+            it!=m_resources.constEnd() && it!=backendsResources;
+            ++it)
+        {
+            before+= it->size();
+        }
+        
+        beginInsertRows(QModelIndex(), before, before+res.size()-1);
         *backendsResources = res;
         endInsertRows();
         emit updatesCountChanged();

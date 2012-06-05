@@ -43,18 +43,18 @@ Q_OBJECT
 Q_PROPERTY(QString untranslatedName READ untranslatedName CONSTANT)
 Q_PROPERTY(QString mimetypes READ mimetypes CONSTANT)
 Q_PROPERTY(QString menuPath READ menuPath CONSTANT)
-Q_PROPERTY(QString categories READ categories CONSTANT)
+Q_PROPERTY(QString category READ categories CONSTANT)
 Q_PROPERTY(QString homepage READ homepage CONSTANT)
 Q_PROPERTY(QString longDescription READ longDescription CONSTANT)
 Q_PROPERTY(QString license READ license CONSTANT)
 Q_PROPERTY(QString installedVersion READ installedVersion CONSTANT)
 Q_PROPERTY(QString availableVersion READ availableVersion CONSTANT)
-Q_PROPERTY(QString sizeDescription READ sizeDescription NOTIFY installChanged)
+Q_PROPERTY(QString sizeDescription READ sizeDescription NOTIFY stateChanged)
 Q_PROPERTY(QString origin READ origin CONSTANT)
 Q_PROPERTY(bool isValid READ isValid CONSTANT)
 Q_PROPERTY(bool isTechnical READ isTechnical CONSTANT)
-Q_PROPERTY(bool isInstalled READ isInstalled NOTIFY installChanged)
-Q_PROPERTY(bool canUpgrade READ canUpgrade NOTIFY installChanged)
+Q_PROPERTY(bool isInstalled READ isInstalled NOTIFY stateChanged)
+Q_PROPERTY(bool canUpgrade READ canUpgrade NOTIFY stateChanged)
 Q_PROPERTY(int usageCount READ usageCount CONSTANT)
 Q_PROPERTY(QUrl screenshotUrl READ screenshotUrl CONSTANT)
 Q_PROPERTY(QUrl thumbnailUrl READ thumbnailUrl CONSTANT)
@@ -100,17 +100,19 @@ public:
     void clearPackage();
     QVector<KService::Ptr> executables() const;
     
-    /** Used to trigger the installChanged signal from the ApplicationBackend */
-    void emitInstallChanged();
+    /** Used to trigger the stateChanged signal from the ApplicationBackend */
+    void emitStateChanged();
     
-    Q_SCRIPTABLE void invokeApplication() const;
+    void invokeApplication() const;
     
     bool canExecute() const;
     QString section();
     int popularityContest() const;
+    
+    virtual State state();
 
 signals:
-    void installChanged();
+    void stateChanged();
 
 private:
     void populateZeitgeistInfo();
