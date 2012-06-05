@@ -37,7 +37,7 @@ class MUONPRIVATE_EXPORT TransactionListener : public QObject
     Q_PROPERTY(int progress READ progress NOTIFY progressChanged)
     Q_PROPERTY(QString comment READ comment NOTIFY commentChanged)
     Q_PROPERTY(AbstractResource* resource READ resource WRITE setResource NOTIFY resourceChanged)
-    Q_PROPERTY(AbstractResourcesBackend* backend READ backend WRITE setBackend)
+    Q_PROPERTY(AbstractResourcesBackend* backend READ backend WRITE setBackend) //TODO: port to ResourcesModel
     Q_PROPERTY(bool isActive READ isActive NOTIFY running)
     Q_PROPERTY(bool isDownloading READ isDownloading NOTIFY downloading)
     public:

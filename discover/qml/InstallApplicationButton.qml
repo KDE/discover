@@ -26,8 +26,8 @@ Item {
         onClicked: {
             switch(state) {
                 case "willupgrade":
-                case "willinstall": transactions.backend.installApplication(application); break;
-                case "willremove":  transactions.backend.removeApplication(application); break;
+                case "willinstall": resourcesModel.installApplication(application); break;
+                case "willremove":  resourcesModel.removeApplication(application); break;
             }
         }
         
@@ -71,7 +71,7 @@ Item {
             anchors.right: parent.right
             iconSource: "dialog-cancel"
             enabled: transactions.isDownloading
-            onClicked: transactions.backend.cancelTransaction(application)
+            onClicked: resourcesModel.cancelTransaction(application)
         }
     }
     

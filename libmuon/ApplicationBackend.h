@@ -75,6 +75,10 @@ public:
     virtual QStringList searchPackageName(const QString& searchText);
     virtual bool providesResouce(AbstractResource* res) const;
     
+    void installApplication(AbstractResource *app, const QHash<QString, bool> &addons);
+    void installApplication(AbstractResource *app);
+    void removeApplication(AbstractResource *app);
+    void cancelTransaction(AbstractResource *app);
 private:
     QApt::Backend *m_backend;
     ReviewsBackend *m_reviewsBackend;
@@ -95,10 +99,6 @@ public Q_SLOTS:
     void reload();
     
     //helper functions
-    void installApplication(AbstractResource *app, const QHash<QString, bool> &addons);
-    void installApplication(AbstractResource *app);
-    void removeApplication(AbstractResource *app);
-    void cancelTransaction(AbstractResource *app);
     void clearLaunchList();
 
 private Q_SLOTS:

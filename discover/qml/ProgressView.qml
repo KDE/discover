@@ -5,7 +5,6 @@ import org.kde.muon 1.0
 
 ToolBar {
     id: page
-    property QtObject backend: resourcesModel
     property bool active: transactionsModel.count>0
     height: active ? contents.height+2*contents.anchors.margins : 0
     
@@ -61,7 +60,7 @@ ToolBar {
             TransactionListener {
                 id: listener
                 resource: model.app
-                backend: page.backend
+                backend: resourcesModel.backendForResource(model.app)
                 onCancelled: model.remove(index)
             }
             
@@ -74,7 +73,7 @@ ToolBar {
                 ToolButton {
                     iconSource: "dialog-cancel"
                     visible: listener.isDownloading
-                    onClicked: app.appBackend.cancelTransaction(application)
+                    onClicked: resourcesModel.cancelTransaction(application)
                 }
                 ToolButton {
                     iconSource: "system-run"

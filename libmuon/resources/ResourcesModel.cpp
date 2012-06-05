@@ -24,6 +24,7 @@
 #include "AbstractResource.h"
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
+#include <Transaction/Transaction.h>
 #include <QDebug>
 
 ResourcesModel::ResourcesModel(QObject* parent)
@@ -104,6 +105,8 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
             return rating ? rating->property(roleNames().value(role)) : -1;
         }
         default:
+            if(resource->metaObject()->indexOfProperty(roleNames().value(role)) < 0)
+                qDebug() << "heyy!" << roleNames().value(role);
             return resource->property(roleNames().value(role));
     }
 }
@@ -200,4 +203,22 @@ int ResourcesModel::updatesCount() const
         ret += backend->updatesCount();
     }
     return ret;
+}
+
+void ResourcesModel::installApplication(AbstractResource* app)
+{
+    AbstractResourcesBackend* backend = backendForResource(app);
+    backend->installApplication(app);
+}
+
+void ResourcesModel::removeApplication(AbstractResource* app)
+{
+    AbstractResourcesBackend* backend = backendForResource(app);
+    backend->removeApplication(app);
+}
+
+void ResourcesModel::cancelTransaction(AbstractResource* app)
+{
+    AbstractResourcesBackend* backend = backendForResource(app);
+    backend->cancelTransaction(app);
 }

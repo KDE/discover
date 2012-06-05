@@ -26,6 +26,8 @@
 #include <LibQApt/Backend>
 #include <KDebug>
 
+// FIXME: Only supports APT
+
 ApplicationUpdates::ApplicationUpdates(QObject* parent): QObject(parent)
 {
     QApt::Backend* backend = BackendsSingleton::self()->backend();
@@ -63,7 +65,6 @@ void ApplicationUpdates::errorOccurred(QApt::ErrorCode e, const QVariantMap&)
     switch(e) {
         case QApt::AuthError:
             emit updatesFinnished();
-            BackendsSingleton::self()->backend()->undo();
             break;
         default:
             break;

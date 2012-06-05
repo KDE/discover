@@ -54,6 +54,12 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
         virtual bool providesResouce(AbstractResource* resource) const = 0;
         virtual AbstractResource* resourceByPackageName(const QString& name) const = 0;
 
+    public slots:
+        virtual void installApplication(AbstractResource *app, const QHash<QString, bool> &addons) = 0;
+        virtual void installApplication(AbstractResource *app) = 0;
+        virtual void removeApplication(AbstractResource *app) = 0;
+        virtual void cancelTransaction(AbstractResource *app) = 0;
+
     signals:
         void backendReady();
         void reloadStarted();

@@ -1,10 +1,10 @@
 function getFeatured(model, data) {
-    if(!app.appBackend || app.appBackend.isReloading() || data==null)
+    if(data==null)
         return
     
     for(var packageName in data) {
         var currentData = data[packageName]
-        var application = app.appBackend.applicationByPackageName(currentData.package)
+        var application = resourcesModel.applicationByPackageName(currentData.package)
         if(application==null) {
 //             console.log("application "+ currentData.package+" not found")
             continue

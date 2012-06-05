@@ -66,11 +66,17 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         
         void addResourcesBackend(AbstractResourcesBackend* resources);
         
-        AbstractResource* applicationByPackageName(const QString& name);
         AbstractResource* resourceAt(int row) const;
         QVector< AbstractResourcesBackend* > backends() const;
-        Q_SCRIPTABLE AbstractResourcesBackend* backendForResource(AbstractResource* resource) const;
         int updatesCount() const;
+        
+        Q_SCRIPTABLE AbstractResource* applicationByPackageName(const QString& name);
+        Q_SCRIPTABLE AbstractResourcesBackend* backendForResource(AbstractResource* resource) const;
+        
+    public slots:
+        void installApplication(AbstractResource* app);
+        void removeApplication(AbstractResource* app);
+        void cancelTransaction(AbstractResource* app);
 
     signals:
         void updatesCountChanged();

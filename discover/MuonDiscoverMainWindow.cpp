@@ -52,6 +52,7 @@
 #include <Category/CategoryModel.h>
 #include <Category/Category.h>
 #include <Transaction/TransactionListener.h>
+#include <Transaction/Transaction.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/Rating.h>
 #include <ApplicationModel/LaunchListModel.h>
@@ -67,7 +68,8 @@
 #include "ApplicationAddonsModel.h"
 #include <libmuon/MuonDataSources.h>
 
-QML_DECLARE_TYPE(ApplicationBackend)
+QML_DECLARE_TYPE(ResourcesModel)
+QML_DECLARE_TYPE(AbstractResourcesBackend)
 
 
 class CachedNetworkAccessManager : public QNetworkAccessManager {
@@ -125,13 +127,14 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     qmlRegisterType<ResourcesModel>();
     qmlRegisterType<Source>();
     qmlRegisterType<Entry>();
+    qmlRegisterType<Transaction>();
     
     connect(this, SIGNAL(backendReady(QApt::Backend*)), SLOT(setBackend(QApt::Backend*)));
     
     //Here we set up a cache for the screenshots
 //     m_view->engine()->setNetworkAccessManagerFactory(new CachedNAMFactory);
     
-    m_view->engine()->rootContext()->setContextProperty("resourcesModel", qVariantFromValue<QObject*>(BackendsSingleton::self()->appsModel()));
+    m_view->engine()->rootContext()->setContextProperty("resourcesModel", qVariantFromValue<ResourcesModel*>(BackendsSingleton::self()->appsModel()));
     m_view->engine()->rootContext()->setContextProperty("app", this);
     m_view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
 // #if !defined(QT_NO_OPENGL)
@@ -175,6 +178,7 @@ void MuonDiscoverMainWindow::setBackend(QApt::Backend* b)
     if (!m_view->rootObject())
         return;
 
+    connect(b, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)), SLOT(discardAuthError(QApt::ErrorCode,QVariantMap)));
     BackendsSingleton::self()->initialize(b, this);
     appBackend(); //here we force the retrieval of the appbackend to get ratings
     connect(appBackend(), SIGNAL(backendReady()), SLOT(triggerOpenApplication()));

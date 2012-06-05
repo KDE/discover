@@ -25,6 +25,8 @@
 #include <QDebug>
 #include <LibQApt/Backend>
 
+// FIXME: Only supports APT
+
 ApplicationAddonsModel::ApplicationAddonsModel(QObject* parent)
     : QAbstractListModel(parent)
     , m_app(0)
