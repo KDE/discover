@@ -3,7 +3,7 @@ import org.kde.plasma.components 0.1
 
 ApplicationsListPage {
     id: page
-//     stateFilter: (1<<8)
+    stateFilter: 2
     sortRole: "canUpgrade"
     sortOrder: 1
     sectionProperty: "canUpgrade"

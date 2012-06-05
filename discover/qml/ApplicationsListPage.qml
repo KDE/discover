@@ -11,6 +11,7 @@ Page {
     property alias sortOrder: appsModel.sortOrder
     property alias originFilter: appsModel.originFilter
     property alias mimeTypeFilter: appsModel.mimeTypeFilter
+    property alias stateFilter: appsModel.stateFilter
     property string sectionProperty: ""
     property string search: ""
     property Component sectionDelegate: null

@@ -550,8 +550,8 @@ AbstractResource::State Application::state()
 {
     State ret = None;
     int s = package()->state();
-    if(s & QApt::Package::Upgradeable) s = Upgradeable;
-    else if(s & QApt::Package::Installed) s = Installed;
+    if(s & QApt::Package::Upgradeable) ret = Upgradeable;
+    else if(s & QApt::Package::Installed) ret = Installed;
     
     return ret;
 }

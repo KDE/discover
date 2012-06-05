@@ -152,43 +152,32 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
     //TODO: we shouldn't even add those to the Model
 //     if (application->package()->isMultiArchDuplicate())
 //         return false;
+    
+    if(idx.data(ResourcesModel::StateRole).toInt()<m_stateFilter)
+        return false;
 
     if (!m_orFilters.isEmpty()) {
-        // Set a boolean value to true when any of the conditions are found.
-        // It is set to false by default so that if none are found, we return false
-        bool foundOrCondition = false;
-        for (QList<QPair<FilterType, QString> >::const_iterator filter = m_orFilters.constBegin(); filter != m_orFilters.constEnd() && !foundOrCondition; ++filter) {
-            foundOrCondition = shouldFilter(idx, *filter);
-        }
-
-        if (!foundOrCondition) {
-            return false;
+        for (QList<QPair<FilterType, QString> >::const_iterator filter = m_orFilters.constBegin(); filter != m_orFilters.constEnd(); ++filter) {
+            if(shouldFilter(idx, *filter))
+                break;
         }
     }
 
     if (!m_andFilters.isEmpty()) {
-        // Set a boolean value to false when any conditions fail to meet
-        bool andConditionsMet = true;
-        for (QList<QPair<FilterType, QString> >::const_iterator filter = m_andFilters.constBegin(); filter != m_andFilters.constEnd() && andConditionsMet; ++filter) {
-            andConditionsMet = shouldFilter(idx, *filter);
-        }
-        
-        if (!andConditionsMet) {
-            return false;
+        for (QList<QPair<FilterType, QString> >::const_iterator filter = m_andFilters.constBegin(); filter != m_andFilters.constEnd(); ++filter) {
+            if(!shouldFilter(idx, *filter))
+                return false;
         }
     }
 
     if (!m_notFilters.isEmpty()) {
         for(QList<QPair<FilterType, QString> >::const_iterator filter = m_notFilters.constBegin(); filter != m_notFilters.constEnd(); ++filter) {
             bool value = true;
-            switch (filter->first) {
-            case PkgNameFilter:
+            if(filter->first==PkgNameFilter)
                 value = idx.data(ResourcesModel::PackageNameRole) == filter->second;
-                break;
-            default:
+            else
                 value = !shouldFilter(idx, *filter);
-                break;
-            }
+            
             if(!value)
                 return false;
         }
