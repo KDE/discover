@@ -27,7 +27,7 @@ ApplicationsListPage {
             id: commitButton
             text: i18n("Update All!")
             iconSource: "system-software-update"
-//             width: app.appBackend.updatesCount>0 ? commitButton.implicitWidth : 0
+            width: resourcesModel.updatesCount>0 ? commitButton.implicitWidth : 0
             
             onClicked: {
                 updatesPage.start();

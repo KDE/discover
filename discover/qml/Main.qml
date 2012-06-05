@@ -124,7 +124,7 @@ Item {
     
     Connections {
         target: app
-        onOpenApplicationInternal: Navigation.openApplication(app.appBackend.applicationByPackageName(appname))
+        onOpenApplicationInternal: Navigation.openApplication(resourcesModel.resourceByPackageName(appname))
         onListMimeInternal: Navigation.openApplicationMime(mime)
         onListCategoryInternal: Navigation.openApplicationList(c.icon, c.name, c, "")
     }

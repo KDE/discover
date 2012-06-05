@@ -5,7 +5,7 @@ import org.kde.muon 1.0
 
 ToolBar {
     id: page
-    property QtObject backend: app.appBackend
+    property QtObject backend: resourcesModel
     property bool active: transactionsModel.count>0
     height: active ? contents.height+2*contents.anchors.margins : 0
     

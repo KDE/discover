@@ -70,7 +70,7 @@ void ReviewsTest::testReviewsModel()
     ReviewsModel* model = new ReviewsModel(this);
     new ModelTest(model, model);
     
-    Application* app = m_appBackend->applicationByPackageName(application);
+    AbstractResource* app = m_appBackend->resourceByPackageName(application);
     QVERIFY(app);
     model->setResource(app);
     QTest::kWaitForSignal(model, SIGNAL(rowsInserted(QModelIndex, int, int)));

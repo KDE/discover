@@ -6,10 +6,6 @@ import "Helpers.js" as Helpers
 
 Information {
     id: info
-    Connections {
-        target: app.appBackend
-        onAppBackendReady: Helpers.getFeatured(noCategoryModel, info.featuredData)
-    }
     Component.onCompleted: {
         var xhr = new XMLHttpRequest;
         xhr.open("GET", app.featuredSource());
@@ -32,7 +28,8 @@ Information {
             property QtObject modelData: model
             enabled: modelData.package!=""
             width: Math.min(image.width, parent.width); height: parent.height
-            onClicked: Navigation.openApplication(app.appBackend.applicationByPackageName(modelData.packageName))
+            onClicked: Navigation.openApplication(resourcesModel.resourceByPackageName(modelData.packageName))
+            
             clip: true
             z: PathView.isCurrentItem && !PathView.view.moving ? 1 : -1
             id: itemDelegate

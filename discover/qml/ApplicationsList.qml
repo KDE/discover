@@ -150,7 +150,7 @@ Item {
                             id: upgradeButton
                             width: ratingsItem.width
                             visible: model.application.canUpgrade
-                            onClicked: app.appBackend.installApplication(model.application)
+                            onClicked: resourcesModel.backendForResource(model.application).installApplication(model.application)
                         }
                         
                         InstallApplicationButton {
