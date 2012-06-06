@@ -82,6 +82,9 @@ void OCSBackend::loadContents(Attica::BaseJob* job)
                                                                               Attica::Provider::Alphabetical, 0, 100);
         connect(jobContents, SIGNAL(finished(Attica::BaseJob*)), SLOT(loadContents(Attica::BaseJob*)));
         jobContents->start();
+    } else {
+        qDebug() << "done!!";
+        emit backendReady();
     }
 }
 

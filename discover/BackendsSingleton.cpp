@@ -57,7 +57,7 @@ ResourcesModel* BackendsSingleton::appsModel()
 {
     if(!m_appsModel) {
         m_appsModel = new ResourcesModel(this);
-        m_appsModel->addResourcesBackend(ocsBackend());
+//         m_appsModel->addResourcesBackend(ocsBackend());
     }
     return m_appsModel;
 }
