@@ -19,6 +19,7 @@
 
 #include "BackendsSingleton.h"
 #include "MuonDiscoverMainWindow.h"
+#include "OCSBackend/OCSBackend.h"
 #include <LibQApt/Backend>
 #include <ApplicationBackend.h>
 #include <resources/ResourcesModel.h>
@@ -38,6 +39,7 @@ BackendsSingleton::BackendsSingleton()
     , m_backend(0)
     , m_applicationBackend(0)
     , m_mainWindow(0)
+    , m_ocsBackend(0)
 {}
 
 ApplicationBackend* BackendsSingleton::applicationBackend()
@@ -55,8 +57,17 @@ ResourcesModel* BackendsSingleton::appsModel()
 {
     if(!m_appsModel) {
         m_appsModel = new ResourcesModel(this);
+        m_appsModel->addResourcesBackend(ocsBackend());
     }
     return m_appsModel;
+}
+
+AbstractResourcesBackend* BackendsSingleton::ocsBackend()
+{
+    if(!m_ocsBackend) {
+        m_ocsBackend = new OCSBackend(this);
+    }
+    return m_ocsBackend;
 }
 
 void BackendsSingleton::initialize(QApt::Backend* b, MuonDiscoverMainWindow* main)

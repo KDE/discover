@@ -1,7 +1,6 @@
 add_subdirectory(tests)
 add_subdirectory(icons)
 
-
 include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_SOURCE_DIR}/libmuon ${CMAKE_CURRENT_BINARY_DIR}/..)
 
 set(muon_discover_SRCS
@@ -13,6 +12,8 @@ set(muon_discover_SRCS
     ApplicationUpdates.cpp
     OriginsBackend.cpp
     ApplicationAddonsModel.cpp
+    OCSBackend/OCSBackend.cpp
+    OCSBackend/OCSResource.cpp
 )
 
 qt4_add_resources(muon_discover_SRCS resources.qrc)
@@ -26,7 +27,9 @@ target_link_libraries(muon-discover muonprivate
                                      ${QAPT_LIBRARY}
                                      ${QZEITGEIST_LIBRARY}
                                      ${QT_QTOPENGL_LIBRARY}
-                                     ${QT_QTDECLARATIVE_LIBRARY})
+                                     ${QT_QTDECLARATIVE_LIBRARY}
+                                     attica
+)
 
 install(TARGETS muon-discover ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
