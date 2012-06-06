@@ -55,7 +55,12 @@ MuonNotifier::MuonNotifier(QObject* parent, const QList<QVariant>&)
                          ki18n("(C) 2009-2012 Jonathan Thomas, (C) 2009 Harald Sitter"),
                          KLocalizedString(), "http://kubuntu.org");
 
-    QTimer::singleShot(0, this, SLOT(init()));
+    // Lazy init to not cause excessive load when starting kded.
+    // Also wait 2 minutes before actually starting the init as update
+    // notifications are not immediately relevant after login and there is already
+    // enough stuff going on without us. 2 minutes seems like a fair time as
+    // the system should have calmed down by then.
+    QTimer::singleShot(1000*60*2 /* 2 minutes to start */, this, SLOT(init()));
 }
 
 MuonNotifier::~MuonNotifier()
