@@ -141,7 +141,6 @@ void ApplicationBackend::setApplications()
     m_originList.remove(QString());
     m_instOriginList.remove(QString());
     emit backendReady();
-    emit reloadFinished();
 }
 
 void ApplicationBackend::reload()
