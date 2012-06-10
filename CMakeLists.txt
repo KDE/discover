@@ -17,9 +17,6 @@ include( FindPkgConfig )
 
 OPTION (ENABLE_QZEITGEIST "QZeitgeist support for App usage statistics" ON)
 
-# Used to determine whether system or backported KMessageWidget is used
-macro_ensure_version("4.6.60" ${KDE_VERSION} HAVEKDE4_6_60)
-
 if (QZEITGEIST_INCLUDE_DIR)
     MESSAGE(STATUS "Found QZEITGEIST:")
     if (ENABLE_QZEITGEIST)
