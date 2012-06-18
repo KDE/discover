@@ -360,7 +360,7 @@ void ApplicationBackend::markLangpacks(Transaction *transaction)
     QString pkgName = transaction->application()->packageName();
 
     QStringList args;
-    args << prog << QLatin1String("-l") << language << pkgName;
+    args << prog << QLatin1String("-l") << language << QLatin1String("-p") << pkgName;
 
     KProcess proc;
     proc.setOutputChannelMode(KProcess::OnlyStdoutChannel);
@@ -375,7 +375,7 @@ void ApplicationBackend::markLangpacks(Transaction *transaction)
     m_backend->setCompressEvents(true);
     foreach(const QString &pkg, res.split(' '))
     {
-        langPack = m_backend->package(pkg);
+        langPack = m_backend->package(pkg.trimmed());
 
         if (langPack)
             langPack->setInstall();
