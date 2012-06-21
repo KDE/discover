@@ -79,14 +79,13 @@ double dampenedRating(const QVector<int> &ratings, double power = 0.1)
     return sum_scores + 3;
 }
 
+///TODO: improve API
 Rating::Rating(const QVariantMap &data)
 {
     m_packageName = data.value("package_name").toString();
     m_appName = data.value("app_name").toString();
     m_ratingCount = data.value("ratings_total").toULongLong();
-
-    QString ratingString = data.value("ratings_average").toString();
-    m_rating = ratingString.toDouble() * 2;
+    m_rating = data.value("ratings_average").toDouble() * 2;
     
     m_sortableRating = 0;
     m_ratingPoints = 0;

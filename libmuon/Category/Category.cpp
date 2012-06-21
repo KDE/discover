@@ -25,6 +25,7 @@
 #include <KLocale>
 #include <KStandardDirs>
 #include <QFile>
+#include <QDebug>
 
 Category::Category(const QDomNode &data, CategoryChildPolicy policy)
         : m_iconString("applications-other")

@@ -34,6 +34,8 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString icon READ icon CONSTANT)
     Q_PROPERTY(bool canExecute READ canExecute CONSTANT)
     Q_PROPERTY(State state READ state NOTIFY stateChanged)
+    Q_PROPERTY(QString category READ categories CONSTANT)
+    Q_PROPERTY(bool isTechnical READ isTechnical CONSTANT)
     public:
         enum State {
             Broken,
@@ -65,6 +67,10 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         virtual Q_SCRIPTABLE void invokeApplication() const;
         
         virtual State state() = 0;
+        
+        virtual QString categories() = 0;
+        
+        virtual bool isTechnical() const;
 
     signals:
         void stateChanged();

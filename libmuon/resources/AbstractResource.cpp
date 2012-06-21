@@ -31,3 +31,8 @@ bool AbstractResource::canExecute() const
 
 void AbstractResource::invokeApplication() const
 {}
+
+bool AbstractResource::isTechnical() const
+{
+    return false;
+}

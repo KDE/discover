@@ -44,12 +44,13 @@ public:
     QApt::Backend* backend();
     ApplicationBackend* applicationBackend();
     QMainWindow* mainWindow() const;
-    AbstractResourcesBackend* ocsBackend();
 
 signals:
     void initialized();
     
 private:
+    AbstractResourcesBackend* ocsBackend();
+    
     static BackendsSingleton* m_self;
     ResourcesModel* m_appsModel;
     QApt::Backend* m_backend;

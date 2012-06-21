@@ -14,6 +14,9 @@ set(muon_discover_SRCS
     ApplicationAddonsModel.cpp
     OCSBackend/OCSBackend.cpp
     OCSBackend/OCSResource.cpp
+    KNSBackend/KNSBackend.cpp
+    KNSBackend/KNSResource.cpp
+    KNSBackend/KNSReviews.cpp
 )
 
 qt4_add_resources(muon_discover_SRCS resources.qrc)
@@ -28,6 +31,7 @@ target_link_libraries(muon-discover muonprivate
                                      ${QZEITGEIST_LIBRARY}
                                      ${QT_QTOPENGL_LIBRARY}
                                      ${QT_QTDECLARATIVE_LIBRARY}
+                                     ${KDE4_KNEWSTUFF3_LIBS}
                                      attica
 )
 

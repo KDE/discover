@@ -18,43 +18,33 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "OCSResource.h"
+#include "KNSBackendTest.h"
+#include <KNSBackend/KNSBackend.h>
+#include <resources/AbstractResource.h>
+#include <resources/ResourcesModel.h>
 
-OCSResource::OCSResource(const Attica::Content& content, QObject* parent)
-    : AbstractResource(parent)
-    , m_content(content)
+#include <qtest_kde.h>
+
+QTEST_KDEMAIN_CORE( KNSBackendTest )
+
+KNSBackendTest::KNSBackendTest(QObject* parent)
+    : QObject(parent)
 {
-
 }
 
-QString OCSResource::name()
+void KNSBackendTest::testRetrieval()
 {
-    return m_content.name();
-}
-
-QString OCSResource::comment()
-{
-    QList< Attica::Icon > icons = m_content.icons();
+    ResourcesModel model;
+    m_backend = new KNSBackend("comic.knsrc", this);
+    model.addResourcesBackend(m_backend);
+    QTest::kWaitForSignal(m_backend, SIGNAL(backendReady()));
     
-    return icons.isEmpty() ? "" : icons.first().url().toString();
-}
-
-QString OCSResource::packageName() const
-{
-    return m_content.id();
-}
-
-QString OCSResource::icon() const
-{
-    return QString();
-}
-
-AbstractResource::State OCSResource::state()
-{
-    return None;
-}
-
-QString OCSResource::categories()
-{
-    return QString("ocs");
+    QVector<AbstractResource*> resources = m_backend->allResources();
+    QVERIFY(!resources.isEmpty());
+    QCOMPARE(resources.count(), model.rowCount());
+    
+    foreach(AbstractResource* res, resources) {
+        QVERIFY(!res->name().isEmpty());
+        QVERIFY(!res->categories().isEmpty());
+    }
 }

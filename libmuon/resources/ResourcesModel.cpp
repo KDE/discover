@@ -58,6 +58,7 @@ ResourcesModel::ResourcesModel(QObject* parent)
 
 void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* resources)
 {
+    Q_ASSERT(!m_backends.contains(resources));
     QVector<AbstractResource*> newResources = resources->allResources();
     int current = rowCount();
     beginInsertRows(QModelIndex(), current, current+newResources.size());
@@ -81,7 +82,7 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* resources)
 AbstractResource* ResourcesModel::resourceAt(int row) const
 {
     for(QVector<QVector<AbstractResource*> >::const_iterator it=m_resources.constBegin(); it!=m_resources.constEnd(); ++it) {
-        if(it->size()<row)
+        if(it->size()<=row)
             row -= it->size();
         else
             return it->at(row);
@@ -101,12 +102,12 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
         case RatingPointsRole:
         case RatingRole:
         case SortableRatingRole:{
-            Rating* rating = backendForResource(resource)->reviewsBackend()->ratingForApplication(resource);
-            return rating ? rating->property(roleNames().value(role)) : -1;
+//             Rating* rating = backendForResource(resource)->reviewsBackend()->ratingForApplication(resource);
+            return /*rating ? rating->property(roleNames().value(role)) :*/ -1;
         }
         default:
-            if(resource->metaObject()->indexOfProperty(roleNames().value(role)) < 0)
-                qDebug() << "heyy!" << roleNames().value(role);
+//             if(resource->metaObject()->indexOfProperty(roleNames().value(role)) < 0)
+//                 qDebug() << "heyy!" << roleNames().value(role);
             return resource->property(roleNames().value(role));
     }
 }

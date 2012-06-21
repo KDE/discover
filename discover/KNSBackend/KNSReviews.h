@@ -18,43 +18,29 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "OCSResource.h"
+#ifndef KNSREVIEWS_H
+#define KNSREVIEWS_H
 
-OCSResource::OCSResource(const Attica::Content& content, QObject* parent)
-    : AbstractResource(parent)
-    , m_content(content)
+#include <ReviewsBackend/AbstractReviewsBackend.h>
+
+class KNSReviews : public AbstractReviewsBackend
 {
-
-}
-
-QString OCSResource::name()
-{
-    return m_content.name();
-}
-
-QString OCSResource::comment()
-{
-    QList< Attica::Icon > icons = m_content.icons();
+Q_OBJECT
+public:
+    explicit KNSReviews(QObject* parent = 0);
     
-    return icons.isEmpty() ? "" : icons.first().url().toString();
-}
+    virtual void fetchReviews(AbstractResource* app, int page = 1);
+    virtual bool isFetching() const;
+    virtual void flagReview(Review* r, const QString& reason, const QString& text);
+    virtual void deleteReview(Review* r);
+    virtual void submitReview(AbstractResource* app, const QString& summary, const QString& review_text, const QString& rating);
+    virtual void submitUsefulness(Review* r, bool useful);
+    virtual void logout();
+    virtual void registerAndLogin();
+    virtual void login();
+    virtual Rating* ratingForApplication(AbstractResource* app) const;
+    virtual bool hasCredentials() const;
+    virtual QString userName() const;
+};
 
-QString OCSResource::packageName() const
-{
-    return m_content.id();
-}
-
-QString OCSResource::icon() const
-{
-    return QString();
-}
-
-AbstractResource::State OCSResource::state()
-{
-    return None;
-}
-
-QString OCSResource::categories()
-{
-    return QString("ocs");
-}
+#endif // KNSREVIEWS_H

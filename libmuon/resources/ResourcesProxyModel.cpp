@@ -121,6 +121,7 @@ bool shouldFilter(const QModelIndex& idx, const QPair<FilterType, QString>& filt
     bool ret = true;
     switch (filter.first) {
         case CategoryFilter:
+            qDebug() << "fffffffffffff" << idx.data(ResourcesModel::CategoryRole).toString() << filter.second;
             ret = idx.data(ResourcesModel::CategoryRole).toString().contains(filter.second);
             break;
         case PkgSectionFilter:
@@ -145,8 +146,9 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
         return false;
     
     for(QHash<int, QVariant>::const_iterator it=m_roleFilters.constBegin(), itEnd=m_roleFilters.constEnd(); it!=itEnd; ++it) {
-        if(idx.data(it.key())!=it.value())
+        if(idx.data(it.key())!=it.value()) {
             return false;
+        }
     }
 
     //TODO: we shouldn't even add those to the Model
@@ -157,10 +159,15 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
         return false;
 
     if (!m_orFilters.isEmpty()) {
+        bool orValue = false;
         for (QList<QPair<FilterType, QString> >::const_iterator filter = m_orFilters.constBegin(); filter != m_orFilters.constEnd(); ++filter) {
-            if(shouldFilter(idx, *filter))
+            if(shouldFilter(idx, *filter)) {
+                orValue = true;
                 break;
+            }
         }
+        if(!orValue)
+            return false;
     }
 
     if (!m_andFilters.isEmpty()) {

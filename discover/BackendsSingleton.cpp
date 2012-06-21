@@ -20,6 +20,7 @@
 #include "BackendsSingleton.h"
 #include "MuonDiscoverMainWindow.h"
 #include "OCSBackend/OCSBackend.h"
+#include "KNSBackend/KNSBackend.h"
 #include <LibQApt/Backend>
 #include <ApplicationBackend.h>
 #include <resources/ResourcesModel.h>
@@ -47,7 +48,7 @@ ApplicationBackend* BackendsSingleton::applicationBackend()
     if(m_backend && !m_applicationBackend) {
         m_applicationBackend = new ApplicationBackend;
         m_applicationBackend->setBackend(m_backend);
-        appsModel()->addResourcesBackend(applicationBackend());
+//         appsModel()->addResourcesBackend(applicationBackend());
     }
     
     return m_applicationBackend;
@@ -58,6 +59,7 @@ ResourcesModel* BackendsSingleton::appsModel()
     if(!m_appsModel) {
         m_appsModel = new ResourcesModel(this);
 //         m_appsModel->addResourcesBackend(ocsBackend());
+        m_appsModel->addResourcesBackend(new KNSBackend("comic.knsrc", this));
     }
     return m_appsModel;
 }

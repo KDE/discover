@@ -18,43 +18,27 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "OCSResource.h"
+#ifndef KNSRESOURCE_H
+#define KNSRESOURCE_H
 
-OCSResource::OCSResource(const Attica::Content& content, QObject* parent)
-    : AbstractResource(parent)
-    , m_content(content)
+#include <libmuon/resources/AbstractResource.h>
+#include <knewstuff3/entry.h>
+
+class KNSResource : public AbstractResource
 {
+Q_OBJECT
+public:
+    explicit KNSResource(const KNS3::Entry& entry, QObject* parent = 0);
 
-}
+    virtual AbstractResource::State state();
+    virtual QString icon() const;
+    virtual QString comment();
+    virtual QString name();
+    virtual QString packageName() const;
+    virtual QString categories();
 
-QString OCSResource::name()
-{
-    return m_content.name();
-}
+private:
+    KNS3::Entry m_entry;
+};
 
-QString OCSResource::comment()
-{
-    QList< Attica::Icon > icons = m_content.icons();
-    
-    return icons.isEmpty() ? "" : icons.first().url().toString();
-}
-
-QString OCSResource::packageName() const
-{
-    return m_content.id();
-}
-
-QString OCSResource::icon() const
-{
-    return QString();
-}
-
-AbstractResource::State OCSResource::state()
-{
-    return None;
-}
-
-QString OCSResource::categories()
-{
-    return QString("ocs");
-}
+#endif // KNSRESOURCE_H

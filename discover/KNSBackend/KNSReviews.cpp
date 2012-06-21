@@ -18,43 +18,81 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "OCSResource.h"
+#include "KNSReviews.h"
+#include <ReviewsBackend/Rating.h>
+#include <resources/AbstractResource.h>
 
-OCSResource::OCSResource(const Attica::Content& content, QObject* parent)
-    : AbstractResource(parent)
-    , m_content(content)
+//Big TODO: all this class
+//Figure out how to do it? attica for the rescue?
+
+KNSReviews::KNSReviews(QObject* parent)
+    : AbstractReviewsBackend(parent)
+{
+}
+
+void KNSReviews::fetchReviews(AbstractResource* app, int page)
 {
 
 }
 
-QString OCSResource::name()
+bool KNSReviews::isFetching() const
 {
-    return m_content.name();
+    return false;
 }
 
-QString OCSResource::comment()
+void KNSReviews::flagReview(Review* r, const QString& reason, const QString& text)
 {
-    QList< Attica::Icon > icons = m_content.icons();
-    
-    return icons.isEmpty() ? "" : icons.first().url().toString();
+
 }
 
-QString OCSResource::packageName() const
+void KNSReviews::deleteReview(Review* r)
 {
-    return m_content.id();
+
 }
 
-QString OCSResource::icon() const
+void KNSReviews::submitReview(AbstractResource* app, const QString& summary, const QString& review_text, const QString& rating)
 {
-    return QString();
+
 }
 
-AbstractResource::State OCSResource::state()
+void KNSReviews::submitUsefulness(Review* r, bool useful)
 {
-    return None;
+
 }
 
-QString OCSResource::categories()
+void KNSReviews::logout()
 {
-    return QString("ocs");
+
 }
+
+void KNSReviews::registerAndLogin()
+{
+
+}
+
+void KNSReviews::login()
+{
+
+}
+
+Rating* KNSReviews::ratingForApplication(AbstractResource* app) const
+{
+    QVariantMap data;
+    data["package_name"] = app->packageName();
+    data["app_name"] = app->name();
+    data["ratings_total"] = 0;
+    data["ratings_average"] = 0;
+    data["histogram"] = "";
+    return new Rating(data);
+}
+
+bool KNSReviews::hasCredentials() const
+{
+    return false;
+}
+
+QString KNSReviews::userName() const
+{
+    return "little joe";
+}
+

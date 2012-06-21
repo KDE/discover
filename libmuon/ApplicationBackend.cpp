@@ -408,21 +408,20 @@ void ApplicationBackend::cancelTransaction(AbstractResource* app)
                this, SLOT(updateCommitProgress(QString,int)));
     QQueue<Transaction *>::iterator iter = m_queue.begin();
 
-    while (iter != m_queue.end()) {
-        if ((*iter)->application() == app) {
-            if ((*iter)->state() == RunningState) {
+    for (; iter != m_queue.end(); ++iter) {
+        Transaction* t = *iter;
+        if (t->application() == app) {
+            if (t->state() == RunningState) {
                 m_backend->cancelDownload();
                 m_backend->undo();
             }
 
-            Transaction* t = *iter;
-            transactionRemoved(t);
             m_queue.erase(iter);
+            emit transactionRemoved(t);
             emit transactionCancelled(t);
             delete t;
             break;
         }
-        ++iter;
     }
 }
 

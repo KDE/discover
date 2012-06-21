@@ -552,4 +552,14 @@
     </Include>
   </Menu>
 
+  <Menu>
+    <Name>Comics</Name>
+    <Icon>comic</Icon>
+    <Include>
+      <And>
+        <Category>Comics</Category>
+      </And>
+    </Include>
+  </Menu>
+
 </Menu>

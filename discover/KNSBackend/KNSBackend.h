@@ -18,43 +18,42 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "OCSResource.h"
+#ifndef KNSBACKEND_H
+#define KNSBACKEND_H
 
-OCSResource::OCSResource(const Attica::Content& content, QObject* parent)
-    : AbstractResource(parent)
-    , m_content(content)
+#include <libmuon/resources/AbstractResourcesBackend.h>
+#include <knewstuff3/entry.h>
+
+class KNSReviews;
+namespace KNS3 { class DownloadManager; }
+
+class KNSBackend : public AbstractResourcesBackend
 {
-
-}
-
-QString OCSResource::name()
-{
-    return m_content.name();
-}
-
-QString OCSResource::comment()
-{
-    QList< Attica::Icon > icons = m_content.icons();
+Q_OBJECT
+public:
+    explicit KNSBackend(const QString& configName, QObject* parent = 0);
     
-    return icons.isEmpty() ? "" : icons.first().url().toString();
-}
+    virtual void cancelTransaction(AbstractResource* app);
+    virtual void removeApplication(AbstractResource* app);
+    virtual void installApplication(AbstractResource* app);
+    virtual void installApplication(AbstractResource* app, const QHash< QString, bool >& addons);
+    virtual AbstractResource* resourceByPackageName(const QString& name) const;
+    virtual bool providesResouce(AbstractResource* resource) const;
+    virtual QList< Transaction* > transactions() const;
+    virtual QPair< TransactionStateTransition, Transaction* > currentTransactionState() const;
+    virtual int updatesCount() const;
+    virtual AbstractReviewsBackend* reviewsBackend() const;
+    virtual QStringList searchPackageName(const QString& searchText);
+    virtual QVector< AbstractResource* > allResources() const;
 
-QString OCSResource::packageName() const
-{
-    return m_content.id();
-}
+public slots:
+    void receivedEntries(const KNS3::Entry::List& entry);
 
-QString OCSResource::icon() const
-{
-    return QString();
-}
+private:
+    KNS3::DownloadManager* m_manager;
+    QHash<QString, AbstractResource*> m_resourcesByName;
+    int m_page;
+    KNSReviews* m_reviews;
+};
 
-AbstractResource::State OCSResource::state()
-{
-    return None;
-}
-
-QString OCSResource::categories()
-{
-    return QString("ocs");
-}
+#endif // KNSBACKEND_H
