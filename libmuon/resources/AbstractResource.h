@@ -41,6 +41,8 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QUrl thumbnailUrl READ thumbnailUrl CONSTANT)
     Q_PROPERTY(bool canUpgrade READ canUpgrade NOTIFY stateChanged)
     Q_PROPERTY(bool isInstalled READ isInstalled NOTIFY stateChanged)
+    Q_PROPERTY(QString license READ license CONSTANT)
+    Q_PROPERTY(QString longDescription READ longDescription CONSTANT)
     public:
         enum State {
             Broken,
@@ -69,7 +71,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         virtual bool canExecute() const;
         
         ///executes the resource, if applies.
-        virtual Q_SCRIPTABLE void invokeApplication() const;
+        Q_SCRIPTABLE virtual void invokeApplication() const;
         
         virtual State state() = 0;
         
@@ -81,6 +83,10 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         virtual bool isTechnical() const;
 
         virtual QUrl thumbnailUrl() = 0;
+        
+        virtual QString license() = 0;
+        
+        virtual QString longDescription() const = 0;
         
         bool canUpgrade();
         bool isInstalled();

@@ -42,6 +42,8 @@ public:
     virtual QString categories();
     virtual QUrl homepage() const;
     virtual QUrl thumbnailUrl();
+    virtual QString license();
+    virtual QString longDescription() const;
 
     Attica::Content& content();
     void setEntry(const KNS3::Entry& entry);

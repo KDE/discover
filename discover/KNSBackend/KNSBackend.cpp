@@ -129,7 +129,6 @@ void KNSBackend::receivedEntries(const KNS3::Entry::List& entries)
     
     foreach(const KNS3::Entry& entry, entries) {
         KNSResource* r = qobject_cast<KNSResource*>(m_resourcesByName.value(entry.id()));
-        r->setStatus(entry.status());
         r->setEntry(entry);
     }
     ++m_page;

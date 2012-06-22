@@ -39,6 +39,8 @@ class OCSResource : public AbstractResource
         virtual QUrl homepage() const;
         virtual QUrl thumbnailUrl();
 
+        virtual QString license() { return QString(); }
+        virtual QString longDescription() const { return QString(); }
     private:
         Attica::Content m_content;
 };

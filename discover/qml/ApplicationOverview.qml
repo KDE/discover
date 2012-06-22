@@ -50,7 +50,7 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: i18n("Homepage")
                 iconSource: "go-home"
-                enabled: application.homepage
+                enabled: application.homepage!=""
                 onClicked: Qt.openUrlExternally(application.homepage)
             }
             

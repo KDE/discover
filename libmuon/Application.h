@@ -43,8 +43,6 @@ Q_OBJECT
 Q_PROPERTY(QString untranslatedName READ untranslatedName CONSTANT)
 Q_PROPERTY(QString mimetypes READ mimetypes CONSTANT)
 Q_PROPERTY(QString menuPath READ menuPath CONSTANT)
-Q_PROPERTY(QString longDescription READ longDescription CONSTANT)
-Q_PROPERTY(QString license READ license CONSTANT)
 Q_PROPERTY(QString installedVersion READ installedVersion CONSTANT)
 Q_PROPERTY(QString availableVersion READ availableVersion CONSTANT)
 Q_PROPERTY(QString sizeDescription READ sizeDescription NOTIFY stateChanged)

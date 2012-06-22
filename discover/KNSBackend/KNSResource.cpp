@@ -106,8 +106,15 @@ Attica::Content& KNSResource::content()
     return m_content;
 }
 
+QString KNSResource::longDescription() const
+{
+    //TODO: Translate the weird tags this uses to html or something
+    return m_content.description();
+}
+
 void KNSResource::setEntry(const KNS3::Entry& entry)
 {
+    setStatus(entry.status());
     delete m_entry;
     m_entry = new KNS3::Entry(entry);
 }
@@ -115,4 +122,9 @@ void KNSResource::setEntry(const KNS3::Entry& entry)
 KNS3::Entry* KNSResource::entry() const
 {
     return m_entry;
+}
+
+QString KNSResource::license()
+{
+    return m_content.licenseName();
 }
