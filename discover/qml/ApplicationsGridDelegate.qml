@@ -54,11 +54,19 @@ ListItem {
                 asynchronous: true
                 onStatusChanged:  {
                     if(status==Image.Error) {
-                        sourceSize.width = height
-                        sourceSize.height = height
-                        source="image://icon/"+model.application.icon
-                        smallIcon.visible = false
+                        fallbackToIcon()
                     }
+                }
+                Component.onCompleted: {
+                    if(model.application.thumbnailUrl=="")
+                        fallbackToIcon();
+                }
+                
+                function fallbackToIcon() {
+                    sourceSize.width = height
+                    sourceSize.height = height
+                    source="image://icon/"+model.application.icon
+                    smallIcon.visible = false
                 }
             }
             QIconItem {
