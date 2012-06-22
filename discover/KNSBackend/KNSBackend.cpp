@@ -21,6 +21,7 @@
 #include "KNSBackend.h"
 #include "KNSResource.h"
 #include "KNSReviews.h"
+#include <Transaction/Transaction.h>
 #include <knewstuff3/downloadmanager.h>
 #include <QDebug>
 #include <QFileInfo>
@@ -142,16 +143,22 @@ void KNSBackend::cancelTransaction(AbstractResource* app)
 
 void KNSBackend::removeApplication(AbstractResource* app)
 {
+    Transaction* t = new Transaction(app, RemoveApp);
+    emit transactionAdded(t);
     KNSResource* r = qobject_cast<KNSResource*>(app);
     Q_ASSERT(r->entry());
     m_manager->uninstallEntry(*r->entry());
+    emit transactionRemoved(t);
 }
 
 void KNSBackend::installApplication(AbstractResource* app)
 {
+    Transaction* t = new Transaction(app, InstallApp);
+    emit transactionAdded(t);
     KNSResource* r = qobject_cast<KNSResource*>(app);
     Q_ASSERT(r->entry());
     m_manager->installEntry(*r->entry());
+    emit transactionRemoved(t);
 }
 
 void KNSBackend::installApplication(AbstractResource* app, const QHash< QString, bool >& addons)
@@ -196,7 +203,12 @@ AbstractReviewsBackend* KNSBackend::reviewsBackend() const
 
 QStringList KNSBackend::searchPackageName(const QString& searchText)
 {
-    return QStringList(m_resourcesByName.keys()).filter(searchText);
+    QStringList ret;
+    foreach(AbstractResource* r, m_resourcesByName) {
+        if(r->name().contains(searchText) || r->comment().contains(searchText))
+            ret += r->packageName();
+    }
+    return ret;
 }
 
 QVector< AbstractResource* > KNSBackend::allResources() const

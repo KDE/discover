@@ -90,6 +90,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         
         bool canUpgrade();
         bool isInstalled();
+
     signals:
         void stateChanged();
 };
