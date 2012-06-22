@@ -128,7 +128,9 @@ void KNSBackend::receivedEntries(const KNS3::Entry::List& entries)
     }
     
     foreach(const KNS3::Entry& entry, entries) {
-        qobject_cast<KNSResource*>(m_resourcesByName.value(entry.id()))->setStatus(entry.status());
+        KNSResource* r = qobject_cast<KNSResource*>(m_resourcesByName.value(entry.id()));
+        r->setStatus(entry.status());
+        r->setEntry(entry);
     }
     ++m_page;
     m_manager->search(m_page);
@@ -136,22 +138,26 @@ void KNSBackend::receivedEntries(const KNS3::Entry::List& entries)
 
 void KNSBackend::cancelTransaction(AbstractResource* app)
 {
-
+    qWarning("KNS transaction cancelling unsupported");
 }
 
 void KNSBackend::removeApplication(AbstractResource* app)
 {
-
+    KNSResource* r = qobject_cast<KNSResource*>(app);
+    Q_ASSERT(r->entry());
+    m_manager->uninstallEntry(*r->entry());
 }
 
 void KNSBackend::installApplication(AbstractResource* app)
 {
-
+    KNSResource* r = qobject_cast<KNSResource*>(app);
+    Q_ASSERT(r->entry());
+    m_manager->installEntry(*r->entry());
 }
 
 void KNSBackend::installApplication(AbstractResource* app, const QHash< QString, bool >& addons)
 {
-
+    installApplication(app);
 }
 
 AbstractResource* KNSBackend::resourceByPackageName(const QString& name) const

@@ -26,11 +26,17 @@ KNSResource::KNSResource(const Attica::Content& c, const QString& category, QObj
     , m_status(KNS3::Entry::Downloadable)
     , m_content(c)
     , m_category(category)
+    , m_entry(0)
 {
     if(!m_content.icons().isEmpty())
         m_icon = KUrl(m_content.icons().first().url()).prettyUrl();
     else
         m_icon = "kate";
+}
+
+KNSResource::~KNSResource()
+{
+    delete m_entry;
 }
 
 AbstractResource::State KNSResource::state()
@@ -98,4 +104,15 @@ QUrl KNSResource::thumbnailUrl()
 Attica::Content& KNSResource::content()
 {
     return m_content;
+}
+
+void KNSResource::setEntry(const KNS3::Entry& entry)
+{
+    delete m_entry;
+    m_entry = new KNS3::Entry(entry);
+}
+
+KNS3::Entry* KNSResource::entry() const
+{
+    return m_entry;
 }

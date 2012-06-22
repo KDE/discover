@@ -30,6 +30,7 @@ class KNSResource : public AbstractResource
 Q_OBJECT
 public:
     explicit KNSResource(const Attica::Content& entry, const QString& category, QObject* parent = 0);
+    virtual ~KNSResource();
 
     void setStatus(KNS3::Entry::Status status);
 
@@ -41,13 +42,17 @@ public:
     virtual QString categories();
     virtual QUrl homepage() const;
     virtual QUrl thumbnailUrl();
+
     Attica::Content& content();
+    void setEntry(const KNS3::Entry& entry);
+    KNS3::Entry* entry() const;
 
 private:
     KNS3::Entry::Status m_status;
     Attica::Content m_content;
     QString m_category;
     QString m_icon;
+    KNS3::Entry* m_entry;
 };
 
 #endif // KNSRESOURCE_H
