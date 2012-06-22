@@ -43,7 +43,6 @@ Q_OBJECT
 Q_PROPERTY(QString untranslatedName READ untranslatedName CONSTANT)
 Q_PROPERTY(QString mimetypes READ mimetypes CONSTANT)
 Q_PROPERTY(QString menuPath READ menuPath CONSTANT)
-Q_PROPERTY(QString homepage READ homepage CONSTANT)
 Q_PROPERTY(QString longDescription READ longDescription CONSTANT)
 Q_PROPERTY(QString license READ license CONSTANT)
 Q_PROPERTY(QString installedVersion READ installedVersion CONSTANT)
@@ -51,13 +50,10 @@ Q_PROPERTY(QString availableVersion READ availableVersion CONSTANT)
 Q_PROPERTY(QString sizeDescription READ sizeDescription NOTIFY stateChanged)
 Q_PROPERTY(QString origin READ origin CONSTANT)
 Q_PROPERTY(bool isValid READ isValid CONSTANT)
-Q_PROPERTY(bool isInstalled READ isInstalled NOTIFY stateChanged)
-Q_PROPERTY(bool canUpgrade READ canUpgrade NOTIFY stateChanged)
 Q_PROPERTY(int usageCount READ usageCount CONSTANT)
-Q_PROPERTY(QUrl screenshotUrl READ screenshotUrl CONSTANT)
-Q_PROPERTY(QUrl thumbnailUrl READ thumbnailUrl CONSTANT)
 Q_PROPERTY(QString section READ section CONSTANT)
 Q_PROPERTY(int popcon READ popularityContest CONSTANT)
+Q_PROPERTY(QUrl screenshotUrl READ screenshotUrl CONSTANT)
 public:
     friend class TransactionListener;
 
@@ -74,7 +70,7 @@ public:
     QString menuPath();
     QString categories();
     QString license();
-    KUrl screenshotUrl(QApt::ScreenshotType type=QApt::Screenshot);
+    QUrl screenshotUrl(QApt::ScreenshotType type=QApt::Screenshot);
     QUrl thumbnailUrl();
     QApt::PackageList addons();
     bool isValid() const;
@@ -86,14 +82,12 @@ public:
     Q_SCRIPTABLE QHash<QByteArray, QByteArray> desktopContents();
 
     //QApt::Package forwarding
-    bool isInstalled() const;
-    QString homepage() const;
+    QUrl homepage() const;
     QString longDescription() const;
     QString installedVersion() const;
     QString availableVersion() const;
     QString sizeDescription();
     QString origin() const;
-    bool canUpgrade();
 
     void clearPackage();
     QVector<KService::Ptr> executables() const;

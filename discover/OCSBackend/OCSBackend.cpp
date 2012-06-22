@@ -50,7 +50,7 @@ void OCSBackend::providersLoaded()
             return;
         }
         
-        Attica::ListJob< Attica::Category >* job= m_provider.requestCategories();
+        Attica::ListJob< Attica::Category >* job = m_provider.requestCategories();
         connect(job, SIGNAL(finished(Attica::BaseJob*)), SLOT(categoriesLoaded(Attica::BaseJob*)));
         job->start();
     }

@@ -58,3 +58,13 @@ QString OCSResource::categories()
 {
     return QString("ocs");
 }
+
+QUrl OCSResource::homepage() const
+{
+    return QString();
+}
+
+QUrl OCSResource::thumbnailUrl()
+{
+    return QUrl();
+}

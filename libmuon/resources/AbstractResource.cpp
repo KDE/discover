@@ -36,3 +36,13 @@ bool AbstractResource::isTechnical() const
 {
     return false;
 }
+
+bool AbstractResource::canUpgrade()
+{
+    return state() == Upgradeable;
+}
+
+bool AbstractResource::isInstalled()
+{
+    return state() >= Installed;
+}

@@ -22,25 +22,40 @@
 #define KNSREVIEWS_H
 
 #include <ReviewsBackend/AbstractReviewsBackend.h>
+#include <QMap>
+#include <attica/content.h>
+
+class KNSBackend;
+class QUrl;
+namespace Attica {
+class Provider;
+class ProviderManager;
+class BaseJob;
+}
 
 class KNSReviews : public AbstractReviewsBackend
 {
-Q_OBJECT
-public:
-    explicit KNSReviews(QObject* parent = 0);
-    
-    virtual void fetchReviews(AbstractResource* app, int page = 1);
-    virtual bool isFetching() const;
-    virtual void flagReview(Review* r, const QString& reason, const QString& text);
-    virtual void deleteReview(Review* r);
-    virtual void submitReview(AbstractResource* app, const QString& summary, const QString& review_text, const QString& rating);
-    virtual void submitUsefulness(Review* r, bool useful);
-    virtual void logout();
-    virtual void registerAndLogin();
-    virtual void login();
-    virtual Rating* ratingForApplication(AbstractResource* app) const;
-    virtual bool hasCredentials() const;
-    virtual QString userName() const;
+    Q_OBJECT
+    public:
+        explicit KNSReviews(KNSBackend* backend, QObject* parent = 0);
+
+        virtual void fetchReviews(AbstractResource* app, int page = 1);
+        virtual bool isFetching() const;
+        virtual void flagReview(Review* r, const QString& reason, const QString& text);
+        virtual void deleteReview(Review* r);
+        virtual void submitReview(AbstractResource* app, const QString& summary, const QString& review_text, const QString& rating);
+        virtual void submitUsefulness(Review* r, bool useful);
+        virtual void logout();
+        virtual void registerAndLogin();
+        virtual void login();
+        virtual Rating* ratingForApplication(AbstractResource* app) const;
+        virtual bool hasCredentials() const;
+        virtual QString userName() const;
+
+    private:
+        KNSBackend* m_backend;
+
+        int m_fetching;
 };
 
 #endif // KNSREVIEWS_H

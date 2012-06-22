@@ -23,15 +23,22 @@
 
 #include <libmuon/resources/AbstractResourcesBackend.h>
 #include <knewstuff3/entry.h>
+#include <attica/category.h>
+#include <attica/provider.h>
 
 class KNSReviews;
 namespace KNS3 { class DownloadManager; }
+namespace Attica {
+    class ProviderManager;
+    class BaseJob;
+}
 
 class KNSBackend : public AbstractResourcesBackend
 {
 Q_OBJECT
 public:
     explicit KNSBackend(const QString& configName, QObject* parent = 0);
+    virtual ~KNSBackend();
     
     virtual void cancelTransaction(AbstractResource* app);
     virtual void removeApplication(AbstractResource* app);
@@ -46,14 +53,24 @@ public:
     virtual QStringList searchPackageName(const QString& searchText);
     virtual QVector< AbstractResource* > allResources() const;
 
+    bool isFetching() const;
+
 public slots:
     void receivedEntries(const KNS3::Entry::List& entry);
+    void startFetchingCategories();
+    void categoriesLoaded(Attica::BaseJob*);
+    void receivedContents(Attica::BaseJob*);
 
 private:
     KNS3::DownloadManager* m_manager;
+    Attica::ProviderManager* m_atticaManager;
     QHash<QString, AbstractResource*> m_resourcesByName;
     int m_page;
     KNSReviews* m_reviews;
+    Attica::Provider m_provider;
+    QMap<QString, Attica::Category> m_categories;
+    QString m_name;
+    bool m_fetching;
 };
 
 #endif // KNSBACKEND_H

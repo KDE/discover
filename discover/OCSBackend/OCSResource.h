@@ -36,6 +36,8 @@ class OCSResource : public AbstractResource
         virtual QString packageName() const;
         virtual State state();
         virtual QString categories();
+        virtual QUrl homepage() const;
+        virtual QUrl thumbnailUrl();
 
     private:
         Attica::Content m_content;

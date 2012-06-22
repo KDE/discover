@@ -557,7 +557,7 @@
     <Icon>comic</Icon>
     <Include>
       <And>
-        <Category>Comics</Category>
+        <Category>comic.knsrc</Category>
       </And>
     </Include>
   </Menu>

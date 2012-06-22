@@ -414,7 +414,7 @@ void ApplicationDetailsWidget::fetchScreenshot(QApt::ScreenshotType screenshotTy
     case QApt::Thumbnail: {
         QObject *object = m_screenshotView->rootObject();
         if (object) {
-            object->setProperty("source", m_app->screenshotUrl(QApt::Thumbnail).pathOrUrl());
+            object->setProperty("source", KUrl(m_app->screenshotUrl(QApt::Thumbnail)).pathOrUrl());
         }
         break;
     }

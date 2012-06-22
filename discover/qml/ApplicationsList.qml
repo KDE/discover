@@ -34,7 +34,7 @@ Item {
                 height: nameLabel.font.pixelSize*3
                 QIconItem {
                     id: icon
-                    icon: model["icon"]; width: contHeight; height: contHeight
+                    icon: model.icon; width: contHeight; height: contHeight
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.left: parent.left
                 }
@@ -42,7 +42,7 @@ Item {
                 QIconItem {
                     anchors.right: icon.right
                     anchors.bottom: icon.bottom
-//                     visible: installed && !(view.model.stateFilter&(1<<8))
+                    visible: model.installed
                     icon: "dialog-ok"
                     height: 16
                     width: 16

@@ -42,7 +42,7 @@ ResourcesModel::ResourcesModel(QObject* parent)
     roles[ActiveRole] = "active";
     roles[ProgressRole] = "progress";
     roles[ProgressTextRole] = "progressText";
-    roles[InstalledRole] = "installed";
+    roles[InstalledRole] = "isInstalled";
     roles[ApplicationRole] = "application";
     roles[UsageCountRole] = "usageCount";
     roles[PopConRole] = "popcon";
@@ -106,8 +106,8 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
             return /*rating ? rating->property(roleNames().value(role)) :*/ -1;
         }
         default:
-//             if(resource->metaObject()->indexOfProperty(roleNames().value(role)) < 0)
-//                 qDebug() << "heyy!" << roleNames().value(role);
+            if(resource->metaObject()->indexOfProperty(roleNames().value(role)) < 0)
+                qDebug() << "heyy!" << roleNames().value(role);
             return resource->property(roleNames().value(role));
     }
 }

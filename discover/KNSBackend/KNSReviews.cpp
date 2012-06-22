@@ -19,25 +19,45 @@
  ***************************************************************************/
 
 #include "KNSReviews.h"
+#include "KNSBackend.h"
+#include "KNSResource.h"
 #include <ReviewsBackend/Rating.h>
 #include <resources/AbstractResource.h>
+#include <attica/provider.h>
+#include <attica/providermanager.h>
+#include <attica/content.h>
 
-//Big TODO: all this class
-//Figure out how to do it? attica for the rescue?
-
-KNSReviews::KNSReviews(QObject* parent)
+KNSReviews::KNSReviews(KNSBackend* backend, QObject* parent)
     : AbstractReviewsBackend(parent)
+    , m_backend(backend)
+    , m_fetching(0)
 {
+    if(!m_backend->isFetching())
+        connect(m_backend, SIGNAL(backendReady()), SIGNAL(ratingsReady()));
+    else
+        QMetaObject::invokeMethod(this, "ratingsReady", Qt::QueuedConnection);
+}
+
+Rating* KNSReviews::ratingForApplication(AbstractResource* app) const
+{
+    Attica::Content c = qobject_cast<KNSResource*>(m_backend->resourceByPackageName(app->packageName()))->content();
+    QVariantMap data;
+    data["package_name"] = app->packageName();
+    data["app_name"] = app->name();
+    data["ratings_total"] = c.numberOfComments();
+    data["ratings_average"] = c.rating();
+    data["histogram"] = "";
+    return new Rating(data);
 }
 
 void KNSReviews::fetchReviews(AbstractResource* app, int page)
 {
-
+    emit reviewsReady(app, QList<Review*>());
 }
 
 bool KNSReviews::isFetching() const
 {
-    return false;
+    return m_backend->isFetching();
 }
 
 void KNSReviews::flagReview(Review* r, const QString& reason, const QString& text)
@@ -75,17 +95,6 @@ void KNSReviews::login()
 
 }
 
-Rating* KNSReviews::ratingForApplication(AbstractResource* app) const
-{
-    QVariantMap data;
-    data["package_name"] = app->packageName();
-    data["app_name"] = app->name();
-    data["ratings_total"] = 0;
-    data["ratings_average"] = 0;
-    data["histogram"] = "";
-    return new Rating(data);
-}
-
 bool KNSReviews::hasCredentials() const
 {
     return false;
@@ -95,4 +104,3 @@ QString KNSReviews::userName() const
 {
     return "little joe";
 }
-

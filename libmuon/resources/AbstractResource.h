@@ -22,6 +22,7 @@
 #define ABSTRACTRESOURCE_H
 
 #include <QtCore/QObject>
+#include <QUrl>
 
 #include "libmuonprivate_export.h"
 
@@ -36,6 +37,10 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
     Q_PROPERTY(State state READ state NOTIFY stateChanged)
     Q_PROPERTY(QString category READ categories CONSTANT)
     Q_PROPERTY(bool isTechnical READ isTechnical CONSTANT)
+    Q_PROPERTY(QUrl homepage READ homepage CONSTANT)
+    Q_PROPERTY(QUrl thumbnailUrl READ thumbnailUrl CONSTANT)
+    Q_PROPERTY(bool canUpgrade READ canUpgrade NOTIFY stateChanged)
+    Q_PROPERTY(bool isInstalled READ isInstalled NOTIFY stateChanged)
     public:
         enum State {
             Broken,
@@ -70,8 +75,15 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         
         virtual QString categories() = 0;
         
+        ///@returns a URL that points to the content
+        virtual QUrl homepage() const = 0;
+        
         virtual bool isTechnical() const;
 
+        virtual QUrl thumbnailUrl() = 0;
+        
+        bool canUpgrade();
+        bool isInstalled();
     signals:
         void stateChanged();
 };

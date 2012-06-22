@@ -23,12 +23,15 @@
 
 #include <libmuon/resources/AbstractResource.h>
 #include <knewstuff3/entry.h>
+#include <attica/content.h>
 
 class KNSResource : public AbstractResource
 {
 Q_OBJECT
 public:
-    explicit KNSResource(const KNS3::Entry& entry, QObject* parent = 0);
+    explicit KNSResource(const Attica::Content& entry, const QString& category, QObject* parent = 0);
+
+    void setStatus(KNS3::Entry::Status status);
 
     virtual AbstractResource::State state();
     virtual QString icon() const;
@@ -36,9 +39,15 @@ public:
     virtual QString name();
     virtual QString packageName() const;
     virtual QString categories();
+    virtual QUrl homepage() const;
+    virtual QUrl thumbnailUrl();
+    Attica::Content& content();
 
 private:
-    KNS3::Entry m_entry;
+    KNS3::Entry::Status m_status;
+    Attica::Content m_content;
+    QString m_category;
+    QString m_icon;
 };
 
 #endif // KNSRESOURCE_H

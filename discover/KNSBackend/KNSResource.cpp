@@ -21,14 +21,21 @@
 #include "KNSResource.h"
 #include <QDebug>
 
-KNSResource::KNSResource(const KNS3::Entry& entry, QObject* parent)
+KNSResource::KNSResource(const Attica::Content& c, const QString& category, QObject* parent)
     : AbstractResource(parent)
-    , m_entry(entry)
-{}
+    , m_status(KNS3::Entry::Downloadable)
+    , m_content(c)
+    , m_category(category)
+{
+    if(!m_content.icons().isEmpty())
+        m_icon = KUrl(m_content.icons().first().url()).prettyUrl();
+    else
+        m_icon = "kate";
+}
 
 AbstractResource::State KNSResource::state()
 {
-    switch(m_entry.status()) {
+    switch(m_status) {
         case KNS3::Entry::Invalid:
             return Broken;
         case KNS3::Entry::Downloadable:
@@ -45,27 +52,50 @@ AbstractResource::State KNSResource::state()
     return None;
 }
 
+void KNSResource::setStatus(KNS3::Entry::Status status)
+{
+    if(status!=m_status) {
+        m_status = status;
+        emit stateChanged();
+    }
+}
+
 QString KNSResource::icon() const
 {
-    return "kate";
+    return m_icon;
 }
 
 QString KNSResource::comment()
 {
-    return m_entry.summary();
+    return m_content.summary();
 }
 
 QString KNSResource::name()
 {
-    return m_entry.name();
+    return m_content.name();
 }
 
 QString KNSResource::packageName() const
 {
-    return m_entry.id();
+    return m_content.id();
 }
 
 QString KNSResource::categories()
 {
-    return "Comics";
+    return m_category;
+}
+
+QUrl KNSResource::homepage() const
+{
+    return m_content.detailpage();
+}
+
+QUrl KNSResource::thumbnailUrl()
+{
+    return m_content.previewPicture();
+}
+
+Attica::Content& KNSResource::content()
+{
+    return m_content;
 }

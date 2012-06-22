@@ -255,7 +255,7 @@ QString Application::categories()
     return categories;
 }
 
-KUrl Application::screenshotUrl(QApt::ScreenshotType type)
+QUrl Application::screenshotUrl(QApt::ScreenshotType type)
 {
     return package()->screenshotUrl(type);
 }
@@ -346,12 +346,7 @@ QByteArray Application::getField(const QByteArray &field) const
     return m_data.value(field);
 }
 
-bool Application::isInstalled() const
-{
-    return m_package && m_package->isInstalled();
-}
-
-QString Application::homepage() const
+QUrl Application::homepage() const
 {
     if(!m_package) return QString();
     return m_package->homepage();
@@ -379,12 +374,6 @@ QString Application::installedVersion() const
 {
     if(!m_package) return QString();
     return m_package->installedVersion();
-}
-
-bool Application::canUpgrade()
-{
-    QApt::Package* p = package();
-    return p && p->state()&QApt::Package::Upgradeable;
 }
 
 QString Application::sizeDescription()
