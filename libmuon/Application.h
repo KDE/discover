@@ -40,18 +40,11 @@ namespace QApt {
 class MUONPRIVATE_EXPORT Application : public AbstractResource
 {
 Q_OBJECT
-Q_PROPERTY(QString untranslatedName READ untranslatedName CONSTANT)
 Q_PROPERTY(QString mimetypes READ mimetypes CONSTANT)
 Q_PROPERTY(QString menuPath READ menuPath CONSTANT)
-Q_PROPERTY(QString installedVersion READ installedVersion CONSTANT)
-Q_PROPERTY(QString availableVersion READ availableVersion CONSTANT)
-Q_PROPERTY(QString sizeDescription READ sizeDescription NOTIFY stateChanged)
-Q_PROPERTY(QString origin READ origin CONSTANT)
-Q_PROPERTY(bool isValid READ isValid CONSTANT)
 Q_PROPERTY(int usageCount READ usageCount CONSTANT)
 Q_PROPERTY(QString section READ section CONSTANT)
 Q_PROPERTY(int popcon READ popularityContest CONSTANT)
-Q_PROPERTY(QUrl screenshotUrl READ screenshotUrl CONSTANT)
 public:
     friend class TransactionListener;
 
@@ -78,8 +71,8 @@ public:
     int usageCount();
     QString packageName() const;
 
-    Q_SCRIPTABLE QByteArray getField(const QByteArray &field) const;
-    Q_SCRIPTABLE QHash<QByteArray, QByteArray> desktopContents();
+    QByteArray getField(const QByteArray &field) const;
+    QHash<QByteArray, QByteArray> desktopContents();
 
     //QApt::Package forwarding
     QUrl homepage() const;
@@ -102,9 +95,6 @@ public:
     int popularityContest() const;
     
     virtual State state();
-
-signals:
-    void stateChanged();
 
 private:
     void populateZeitgeistInfo();

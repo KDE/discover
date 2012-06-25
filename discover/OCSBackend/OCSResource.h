@@ -39,10 +39,15 @@ class OCSResource : public AbstractResource
         virtual QUrl homepage() const;
         virtual QUrl thumbnailUrl();
         virtual QUrl screenshotUrl();
+        virtual QString sizeDescription();
+        virtual QString availableVersion() const;
+        virtual QString installedVersion() const;
 
         virtual QString license() { return QString(); }
         virtual QString longDescription() const { return QString(); }
         virtual QList<PackageState> addonsInformation() { return QList<PackageState>(); }
+        virtual QString origin() const;
+
     private:
         Attica::Content m_content;
 };

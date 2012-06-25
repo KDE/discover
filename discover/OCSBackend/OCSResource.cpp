@@ -19,6 +19,8 @@
  ***************************************************************************/
 
 #include "OCSResource.h"
+#include <KLocale>
+#include <KGlobal>
 
 OCSResource::OCSResource(const Attica::Content& content, QObject* parent)
     : AbstractResource(parent)
@@ -73,3 +75,25 @@ QUrl OCSResource::screenshotUrl()
 {
     return m_content.previewPicture();
 }
+
+QString OCSResource::origin() const
+{
+    return m_content.detailpage().host();
+}
+
+QString OCSResource::availableVersion() const
+{
+    return m_content.version();
+}
+
+QString OCSResource::installedVersion() const
+{
+    return QString("unknown");
+}
+
+QString OCSResource::sizeDescription()
+{
+    return KGlobal::locale()->formatByteSize(m_content.downloadUrlDescription(0).size());
+}
+
+

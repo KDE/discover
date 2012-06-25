@@ -20,6 +20,8 @@
 
 #include "KNSResource.h"
 #include <QDebug>
+#include <KGlobal>
+#include <KLocale>
 
 KNSResource::KNSResource(const Attica::Content& c, const QString& category, const QString& icon, QObject* parent)
     : AbstractResource(parent)
@@ -128,4 +130,24 @@ KNS3::Entry* KNSResource::entry() const
 QString KNSResource::license()
 {
     return m_content.licenseName();
+}
+
+QString KNSResource::sizeDescription()
+{
+    return KGlobal::locale()->formatByteSize(m_content.downloadUrlDescription(0).size());
+}
+
+QString KNSResource::installedVersion() const
+{
+    return m_entry->version();
+}
+
+QString KNSResource::availableVersion() const
+{
+    return m_content.version();
+}
+
+QString KNSResource::origin() const
+{
+    return m_entry->providerId();
 }

@@ -45,6 +45,10 @@ class MUONPRIVATE_EXPORT          AbstractResource : public QObject
     Q_PROPERTY(bool isInstalled READ isInstalled NOTIFY stateChanged)
     Q_PROPERTY(QString license READ license CONSTANT)
     Q_PROPERTY(QString longDescription READ longDescription CONSTANT)
+    Q_PROPERTY(QString origin READ origin CONSTANT)
+    Q_PROPERTY(QString sizeDescription READ sizeDescription NOTIFY stateChanged)
+    Q_PROPERTY(QString installedVersion READ installedVersion CONSTANT)
+    Q_PROPERTY(QString availableVersion READ availableVersion CONSTANT)
     public:
         enum State {
             Broken,
@@ -87,9 +91,14 @@ class MUONPRIVATE_EXPORT          AbstractResource : public QObject
         virtual QUrl thumbnailUrl() = 0;
         virtual QUrl screenshotUrl() = 0;
         
+        virtual QString sizeDescription() = 0;
         virtual QString license() = 0;
         
+        virtual QString installedVersion() const = 0;
+        virtual QString availableVersion() const = 0;
         virtual QString longDescription() const = 0;
+        
+        virtual QString origin() const = 0;
         
         bool canUpgrade();
         bool isInstalled();

@@ -28,7 +28,7 @@ Information {
             property QtObject modelData: model
             enabled: modelData.package!=""
             width: Math.min(image.width, parent.width); height: parent.height
-            onClicked: Navigation.openApplication(resourcesModel.resourceByPackageName(modelData.packageName))
+            onClicked: Navigation.openApplication(resourcesModel.applicationByPackageName(modelData.packageName))
             
             clip: true
             z: PathView.isCurrentItem && !PathView.view.moving ? 1 : -1
