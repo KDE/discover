@@ -66,5 +66,10 @@ QUrl OCSResource::homepage() const
 
 QUrl OCSResource::thumbnailUrl()
 {
-    return QUrl();
+    return m_content.smallPreviewPicture();
+}
+
+QUrl OCSResource::screenshotUrl()
+{
+    return m_content.previewPicture();
 }

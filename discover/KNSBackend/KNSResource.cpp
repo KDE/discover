@@ -94,6 +94,11 @@ QUrl KNSResource::homepage() const
 
 QUrl KNSResource::thumbnailUrl()
 {
+    return m_content.smallPreviewPicture();
+}
+
+QUrl KNSResource::screenshotUrl()
+{
     return m_content.previewPicture();
 }
 

@@ -27,7 +27,7 @@
 #include "libmuonprivate_export.h"
 #include "PackageState.h"
 
-class MUONPRIVATE_EXPORT AbstractResource : public QObject
+class MUONPRIVATE_EXPORT          AbstractResource : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ name CONSTANT)
@@ -40,6 +40,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
     Q_PROPERTY(bool isTechnical READ isTechnical CONSTANT)
     Q_PROPERTY(QUrl homepage READ homepage CONSTANT)
     Q_PROPERTY(QUrl thumbnailUrl READ thumbnailUrl CONSTANT)
+    Q_PROPERTY(QUrl screenshotUrl READ screenshotUrl CONSTANT)
     Q_PROPERTY(bool canUpgrade READ canUpgrade NOTIFY stateChanged)
     Q_PROPERTY(bool isInstalled READ isInstalled NOTIFY stateChanged)
     Q_PROPERTY(QString license READ license CONSTANT)
@@ -84,6 +85,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         virtual bool isTechnical() const;
 
         virtual QUrl thumbnailUrl() = 0;
+        virtual QUrl screenshotUrl() = 0;
         
         virtual QString license() = 0;
         

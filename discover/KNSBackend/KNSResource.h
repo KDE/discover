@@ -42,6 +42,7 @@ public:
     virtual QString categories();
     virtual QUrl homepage() const;
     virtual QUrl thumbnailUrl();
+    virtual QUrl screenshotUrl();
     virtual QString license();
     virtual QString longDescription() const;
     virtual QList<PackageState> addonsInformation() { return QList<PackageState>(); }

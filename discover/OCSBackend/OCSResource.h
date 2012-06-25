@@ -38,6 +38,7 @@ class OCSResource : public AbstractResource
         virtual QString categories();
         virtual QUrl homepage() const;
         virtual QUrl thumbnailUrl();
+        virtual QUrl screenshotUrl();
 
         virtual QString license() { return QString(); }
         virtual QString longDescription() const { return QString(); }

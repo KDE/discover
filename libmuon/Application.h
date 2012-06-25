@@ -68,7 +68,8 @@ public:
     QString menuPath();
     QString categories();
     QString license();
-    QUrl screenshotUrl(QApt::ScreenshotType type=QApt::Screenshot);
+    QUrl screenshotUrl() { return screenshotUrl(QApt::Screenshot); }
+    QUrl screenshotUrl(QApt::ScreenshotType type);
     QUrl thumbnailUrl();
     QApt::PackageList addons();
     virtual QList< PackageState > addonsInformation();
