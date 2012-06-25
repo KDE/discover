@@ -56,7 +56,7 @@ KNSBackend::KNSBackend(const QString& configName, QObject* parent)
     
     m_manager = new KNS3::DownloadManager(m_name, this);
     connect(m_manager, SIGNAL(searchResult(KNS3::Entry::List)), SLOT(receivedEntries(KNS3::Entry::List)));
-    
+    connect(m_manager, SIGNAL(entryStatusChanged(KNS3::Entry)), SLOT(statusChanged(KNS3::Entry)));
     connect(m_reviews, SIGNAL(ratingsReady()), SLOT(fillEntries()));
 }
 
@@ -134,6 +134,15 @@ void KNSBackend::receivedEntries(const KNS3::Entry::List& entries)
     }
     ++m_page;
     m_manager->search(m_page);
+}
+
+void KNSBackend::statusChanged(const KNS3::Entry& entry)
+{
+    KNSResource* r = qobject_cast<KNSResource*>(m_resourcesByName.value(entry.id()));
+    if(r)
+        r->setEntry(entry);
+    else
+        kWarning() << "unknown entry changed" << entry.id() << entry.name();
 }
 
 void KNSBackend::cancelTransaction(AbstractResource* app)

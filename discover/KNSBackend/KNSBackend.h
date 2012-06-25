@@ -60,6 +60,7 @@ public slots:
     void startFetchingCategories();
     void categoriesLoaded(Attica::BaseJob*);
     void receivedContents(Attica::BaseJob*);
+    void statusChanged(const KNS3::Entry& entry);
 
 private:
     KNS3::DownloadManager* m_manager;
