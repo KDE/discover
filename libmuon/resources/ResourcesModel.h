@@ -92,6 +92,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
     private slots:
         void cleanCaller();
         void resetCaller();
+        void updateCaller();
         
     private:
         QVector< AbstractResourcesBackend* > m_backends;

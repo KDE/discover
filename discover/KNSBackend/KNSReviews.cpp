@@ -123,7 +123,6 @@ void KNSReviews::registerAndLogin()
 
 void KNSReviews::login()
 {
-
 }
 
 bool KNSReviews::hasCredentials() const

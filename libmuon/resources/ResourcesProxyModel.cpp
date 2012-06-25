@@ -121,7 +121,6 @@ bool shouldFilter(const QModelIndex& idx, const QPair<FilterType, QString>& filt
     bool ret = true;
     switch (filter.first) {
         case CategoryFilter:
-            qDebug() << "fffffffffffff" << idx.data(ResourcesModel::CategoryRole).toString() << filter.second;
             ret = idx.data(ResourcesModel::CategoryRole).toString().contains(filter.second);
             break;
         case PkgSectionFilter:

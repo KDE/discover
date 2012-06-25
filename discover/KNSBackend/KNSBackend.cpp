@@ -57,7 +57,6 @@ KNSBackend::KNSBackend(const QString& configName, QObject* parent)
     m_manager = new KNS3::DownloadManager(m_name, this);
     connect(m_manager, SIGNAL(searchResult(KNS3::Entry::List)), SLOT(receivedEntries(KNS3::Entry::List)));
     connect(m_manager, SIGNAL(entryStatusChanged(KNS3::Entry)), SLOT(statusChanged(KNS3::Entry)));
-    connect(m_reviews, SIGNAL(ratingsReady()), SLOT(fillEntries()));
 }
 
 KNSBackend::~KNSBackend()

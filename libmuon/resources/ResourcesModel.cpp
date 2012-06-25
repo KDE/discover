@@ -70,6 +70,7 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* resources)
     connect(resources, SIGNAL(reloadStarted()), SLOT(cleanCaller()));
     connect(resources, SIGNAL(reloadFinished()), SLOT(resetCaller()));
     connect(resources, SIGNAL(updatesCountChanged()), SIGNAL(updatesCountChanged()));
+    connect(resources, SIGNAL(allDataChanged()), SLOT(updateCaller()));
     
     connect(resources, SIGNAL(transactionAdded(Transaction*)), SIGNAL(transactionAdded(Transaction*)));
     connect(resources, SIGNAL(transactionCancelled(Transaction*)), SIGNAL(transactionCancelled(Transaction*)));
@@ -102,8 +103,8 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
         case RatingPointsRole:
         case RatingRole:
         case SortableRatingRole:{
-//             Rating* rating = backendForResource(resource)->reviewsBackend()->ratingForApplication(resource);
-            return /*rating ? rating->property(roleNames().value(role)) :*/ -1;
+            Rating* rating = backendForResource(resource)->reviewsBackend()->ratingForApplication(resource);
+            return rating ? rating->property(roleNames().value(role)) : -1;
         }
         default:
             if(resource->metaObject()->indexOfProperty(roleNames().value(role)) < 0)
@@ -165,6 +166,22 @@ void ResourcesModel::resetCaller()
         endInsertRows();
         emit updatesCountChanged();
     }
+}
+
+void ResourcesModel::updateCaller()
+{
+    AbstractResourcesBackend* backend = qobject_cast<AbstractResourcesBackend*>(sender());
+    int pos = m_backends.indexOf(backend);
+    QVector<AbstractResource*>* backendsResources = &m_resources[pos];
+    int before = 0;
+    for(QVector<QVector<AbstractResource*> >::const_iterator it=m_resources.constBegin();
+        it!=m_resources.constEnd() && it!=backendsResources;
+        ++it)
+    {
+        before+= it->size();
+    }
+    
+    emit dataChanged(index(before), index(before+backendsResources->size()-1));
 }
 
 QVector< AbstractResourcesBackend* > ResourcesModel::backends() const

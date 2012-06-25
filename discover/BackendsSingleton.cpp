@@ -48,7 +48,7 @@ ApplicationBackend* BackendsSingleton::applicationBackend()
     if(m_backend && !m_applicationBackend) {
         m_applicationBackend = new ApplicationBackend;
         m_applicationBackend->setBackend(m_backend);
-//         appsModel()->addResourcesBackend(applicationBackend());
+        appsModel()->addResourcesBackend(applicationBackend());
     }
     
     return m_applicationBackend;

@@ -16,6 +16,7 @@ ListView {
     model: ApplicationProxyModel {
         id: appsModel
         sortOrder: Qt.DescendingOrder
+        onRowsInserted: sortModel()
     }
     delegate: ListItem {
                 width: view.width

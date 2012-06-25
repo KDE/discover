@@ -54,6 +54,7 @@ ApplicationBackend::ApplicationBackend(QObject *parent)
     connect(m_watcher, SIGNAL(finished()), this, SLOT(setApplications()));
     connect(this, SIGNAL(reloadFinished()), SIGNAL(updatesCountChanged()));
     connect(this, SIGNAL(backendReady()), SIGNAL(updatesCountChanged()));
+    connect(m_reviewsBackend, SIGNAL(ratingsReady()), SIGNAL(allDataChanged()));
 }
 
 ApplicationBackend::~ApplicationBackend()

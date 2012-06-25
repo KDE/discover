@@ -42,7 +42,7 @@ Item {
                 QIconItem {
                     anchors.right: icon.right
                     anchors.bottom: icon.bottom
-                    visible: model.installed
+                    visible: model.isInstalled
                     icon: "dialog-ok"
                     height: 16
                     width: 16
