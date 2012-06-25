@@ -41,6 +41,7 @@ class OCSResource : public AbstractResource
 
         virtual QString license() { return QString(); }
         virtual QString longDescription() const { return QString(); }
+        virtual QList<PackageState> addonsInformation() { return QList<PackageState>(); }
     private:
         Attica::Content m_content;
 };

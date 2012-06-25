@@ -25,6 +25,7 @@
 #include <QUrl>
 
 #include "libmuonprivate_export.h"
+#include "PackageState.h"
 
 class MUONPRIVATE_EXPORT AbstractResource : public QObject
 {
@@ -90,6 +91,8 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         
         bool canUpgrade();
         bool isInstalled();
+        
+        virtual QList<PackageState> addonsInformation() = 0;
 
     signals:
         void stateChanged();

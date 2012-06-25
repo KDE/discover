@@ -22,21 +22,21 @@
 #define APPLICATIONADDONSMODEL_H
 
 #include <QAbstractListModel>
+#include <resources/PackageState.h>
 
-namespace QApt { class Package; }
-class Application;
+class AbstractResource;
 
 class ApplicationAddonsModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(Application* application READ application WRITE setApplication)
+    Q_PROPERTY(AbstractResource* application READ application WRITE setApplication)
     Q_PROPERTY(bool hasChanges READ hasChanges NOTIFY stateChanged)
     Q_PROPERTY(bool isEmpty READ isEmpty NOTIFY applicationChanged)
     public:
         explicit ApplicationAddonsModel(QObject* parent = 0);
         
-        Application* application() const;
-        void setApplication(Application* app);
+        AbstractResource* application() const;
+        void setApplication(AbstractResource* app);
         bool hasChanges() const;
         
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
@@ -53,8 +53,8 @@ class ApplicationAddonsModel : public QAbstractListModel
         void applicationChanged();
 
     private:
-        Application* m_app;
-        QList<QApt::Package*> m_addons;
+        AbstractResource* m_app;
+        QList<PackageState> m_initial;
         QHash<QString, bool> m_state;
 };
 

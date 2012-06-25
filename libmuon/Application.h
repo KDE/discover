@@ -71,6 +71,7 @@ public:
     QUrl screenshotUrl(QApt::ScreenshotType type=QApt::Screenshot);
     QUrl thumbnailUrl();
     QApt::PackageList addons();
+    virtual QList< PackageState > addonsInformation();
     bool isValid() const;
     bool isTechnical() const;
     int usageCount();

@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include "Application.h"
+#include "resources/PackageState.h"
 
 // Qt includes
 #include <QtCore/QFile>
@@ -329,6 +330,16 @@ QApt::PackageList Application::addons()
     }
 
     return addons;
+}
+
+QList<PackageState> Application::addonsInformation()
+{
+    QList<PackageState> ret;
+    QApt::PackageList pkgs = addons();
+    foreach(QApt::Package* p, pkgs) {
+        ret += PackageState(p->name(), p->shortDescription(), p->isInstalled());
+    }
+    return ret;
 }
 
 bool Application::isValid() const

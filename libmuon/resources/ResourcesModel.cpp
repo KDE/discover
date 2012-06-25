@@ -208,18 +208,20 @@ int ResourcesModel::updatesCount() const
 
 void ResourcesModel::installApplication(AbstractResource* app)
 {
-    AbstractResourcesBackend* backend = backendForResource(app);
-    backend->installApplication(app);
+    backendForResource(app)->installApplication(app);
+}
+
+void ResourcesModel::installApplication(AbstractResource* app, const QHash< QString, bool >& state)
+{
+    backendForResource(app)->installApplication(app, state);
 }
 
 void ResourcesModel::removeApplication(AbstractResource* app)
 {
-    AbstractResourcesBackend* backend = backendForResource(app);
-    backend->removeApplication(app);
+    backendForResource(app)->removeApplication(app);
 }
 
 void ResourcesModel::cancelTransaction(AbstractResource* app)
 {
-    AbstractResourcesBackend* backend = backendForResource(app);
-    backend->cancelTransaction(app);
+    backendForResource(app)->cancelTransaction(app);
 }

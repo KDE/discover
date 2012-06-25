@@ -18,44 +18,25 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef KNSRESOURCE_H
-#define KNSRESOURCE_H
+#include "PackageState.h"
 
-#include <libmuon/resources/AbstractResource.h>
-#include <knewstuff3/entry.h>
-#include <attica/content.h>
+PackageState::PackageState(const QString& name, const QString& description, bool installed)
+    : m_name(name)
+    , m_description(description)
+    , m_installed(installed)
+{}
 
-class KNSResource : public AbstractResource
+QString PackageState::name() const
 {
-Q_OBJECT
-public:
-    explicit KNSResource(const Attica::Content& entry, const QString& category, QObject* parent = 0);
-    virtual ~KNSResource();
+    return m_name;
+}
 
-    void setStatus(KNS3::Entry::Status status);
+QString PackageState::description() const
+{
+    return m_description;
+}
 
-    virtual AbstractResource::State state();
-    virtual QString icon() const;
-    virtual QString comment();
-    virtual QString name();
-    virtual QString packageName() const;
-    virtual QString categories();
-    virtual QUrl homepage() const;
-    virtual QUrl thumbnailUrl();
-    virtual QString license();
-    virtual QString longDescription() const;
-    virtual QList<PackageState> addonsInformation() { return QList<PackageState>(); }
-
-    Attica::Content& content();
-    void setEntry(const KNS3::Entry& entry);
-    KNS3::Entry* entry() const;
-
-private:
-    KNS3::Entry::Status m_status;
-    Attica::Content m_content;
-    QString m_category;
-    QString m_icon;
-    KNS3::Entry* m_entry;
-};
-
-#endif // KNSRESOURCE_H
+bool PackageState::isInstalled() const
+{
+    return m_installed;
+}

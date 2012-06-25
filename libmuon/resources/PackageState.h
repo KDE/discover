@@ -18,44 +18,30 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef KNSRESOURCE_H
-#define KNSRESOURCE_H
+#ifndef PACKAGESTATE_H
+#define PACKAGESTATE_H
 
-#include <libmuon/resources/AbstractResource.h>
-#include <knewstuff3/entry.h>
-#include <attica/content.h>
+#include <QString>
+#include "libmuonprivate_export.h"
 
-class KNSResource : public AbstractResource
+/**
+ * The @class PackageState will be used to expose resources related to an @class AbstractResource.
+ * 
+ * @see ApplicationAddonsModel
+ */
+class MUONPRIVATE_EXPORT PackageState
 {
-Q_OBJECT
-public:
-    explicit KNSResource(const Attica::Content& entry, const QString& category, QObject* parent = 0);
-    virtual ~KNSResource();
-
-    void setStatus(KNS3::Entry::Status status);
-
-    virtual AbstractResource::State state();
-    virtual QString icon() const;
-    virtual QString comment();
-    virtual QString name();
-    virtual QString packageName() const;
-    virtual QString categories();
-    virtual QUrl homepage() const;
-    virtual QUrl thumbnailUrl();
-    virtual QString license();
-    virtual QString longDescription() const;
-    virtual QList<PackageState> addonsInformation() { return QList<PackageState>(); }
-
-    Attica::Content& content();
-    void setEntry(const KNS3::Entry& entry);
-    KNS3::Entry* entry() const;
-
-private:
-    KNS3::Entry::Status m_status;
-    Attica::Content m_content;
-    QString m_category;
-    QString m_icon;
-    KNS3::Entry* m_entry;
+    public:
+        PackageState(const QString& name, const QString& description, bool installed);
+        
+        QString name() const;
+        QString description() const;
+        bool isInstalled() const;
+        
+    private:
+        QString m_name;
+        QString m_description;
+        bool m_installed;
 };
 
-#endif // KNSRESOURCE_H
+#endif // PACKAGESTATE_H

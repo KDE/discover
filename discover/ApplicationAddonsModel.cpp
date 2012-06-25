@@ -22,8 +22,9 @@
 #include "BackendsSingleton.h"
 #include <Application.h>
 #include <ApplicationBackend.h>
+#include <resources/ResourcesModel.h>
+#include <resources/PackageState.h>
 #include <QDebug>
-#include <LibQApt/Backend>
 
 // FIXME: Only supports APT
 
@@ -32,11 +33,11 @@ ApplicationAddonsModel::ApplicationAddonsModel(QObject* parent)
     , m_app(0)
 {}
 
-void ApplicationAddonsModel::setApplication(Application* app)
+void ApplicationAddonsModel::setApplication(AbstractResource* app)
 {
     discardChanges();
     m_app = app;
-    m_addons = m_app->addons();
+    m_initial = m_app->addonsInformation();
     
     QHash<int, QByteArray> roles = roleNames();
     roles.insert(Qt::CheckStateRole, "checked");
@@ -44,31 +45,30 @@ void ApplicationAddonsModel::setApplication(Application* app)
     emit applicationChanged();
 }
 
-Application* ApplicationAddonsModel::application() const
+AbstractResource* ApplicationAddonsModel::application() const
 {
     return m_app;
 }
 
 int ApplicationAddonsModel::rowCount(const QModelIndex& parent) const
 {
-    return parent.isValid()? 0 : m_addons.size();
+    return parent.isValid()? 0 : m_initial.size();
 }
 
 QVariant ApplicationAddonsModel::data(const QModelIndex& index, int role) const
 {
-    if(!index.isValid() || index.row()>=m_addons.size())
+    if(!index.isValid() || index.row()>=m_initial.size())
         return QVariant();
     
     switch(role) {
         case Qt::DisplayRole:
-            return m_addons[index.row()]->name();
+            return m_initial[index.row()].name();
         case Qt::ToolTipRole:
-            return m_addons[index.row()]->shortDescription();
+            return m_initial[index.row()].description();
         case Qt::CheckStateRole: {
-            QApt::Package* p = m_addons[index.row()];
-            QHash<QString, bool>::const_iterator it = m_state.constFind(p->name());
+            QHash<QString, bool>::const_iterator it = m_state.constFind(m_initial[index.row()].name());
             if(it==m_state.constEnd()) {
-                return p->isInstalled();
+                return m_initial[index.row()].isInstalled();
             } else {
                 return it.value();
             }
@@ -89,13 +89,18 @@ void ApplicationAddonsModel::discardChanges()
 
 void ApplicationAddonsModel::applyChanges()
 {
-    ApplicationBackend* appBackend = BackendsSingleton::self()->applicationBackend();
-    appBackend->installApplication(m_app, m_state);
+    BackendsSingleton::self()->appsModel()->installApplication(m_app, m_state);
 }
 
 void ApplicationAddonsModel::changeState(const QString& packageName, bool installed)
 {
-    bool restored = BackendsSingleton::self()->backend()->package(packageName)->isInstalled()==installed;
+    QList<PackageState>::const_iterator it=m_initial.constBegin(), itEnd=m_initial.constEnd();
+    for(; it!=itEnd; ++it) {
+        if(it->name()==packageName)
+            break;
+    }
+    
+    bool restored = it->isInstalled()==installed;
     if(restored)
         m_state.remove(packageName);
     else
@@ -110,5 +115,5 @@ bool ApplicationAddonsModel::hasChanges() const
 
 bool ApplicationAddonsModel::isEmpty() const
 {
-    return m_addons.isEmpty();
+    return m_initial.isEmpty();
 }

@@ -74,6 +74,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         Q_SCRIPTABLE AbstractResourcesBackend* backendForResource(AbstractResource* resource) const;
         
     public slots:
+        void installApplication(AbstractResource* app, const QHash<QString, bool>& state);
         void installApplication(AbstractResource* app);
         void removeApplication(AbstractResource* app);
         void cancelTransaction(AbstractResource* app);
