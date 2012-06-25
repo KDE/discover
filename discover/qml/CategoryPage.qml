@@ -60,9 +60,9 @@ Page {
         orientation: Qt.Vertical
         flickableItem: flick
         anchors {
-            top: flick.top
-            right: parent.right
-            bottom: flick.bottom
+            top: parent.top
+            right: parent.right 
+            bottom: parent.bottom
         }
     }
 
@@ -82,7 +82,7 @@ Page {
             width: parent.width
             spacing: 10
             Loader {
-                width: flick.width
+                width: parent.width
                 Component {
                     id: categoryHeader
                     CategoryHeader {
