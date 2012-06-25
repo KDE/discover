@@ -554,7 +554,7 @@
 
   <Menu>
     <Name>Comics</Name>
-    <Icon>comic</Icon>
+    <Icon>face-smile-big</Icon>
     <Include>
       <And>
         <Category>comic.knsrc</Category>

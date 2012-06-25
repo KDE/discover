@@ -37,7 +37,7 @@ class KNSBackend : public AbstractResourcesBackend
 {
 Q_OBJECT
 public:
-    explicit KNSBackend(const QString& configName, QObject* parent = 0);
+    explicit KNSBackend(const QString& configName, const QString& iconName, QObject* parent = 0);
     virtual ~KNSBackend();
     
     virtual void cancelTransaction(AbstractResource* app);
@@ -73,6 +73,7 @@ private:
     QMap<QString, Attica::Category> m_categories;
     QString m_name;
     bool m_fetching;
+    QString m_iconName;
 };
 
 #endif // KNSBACKEND_H

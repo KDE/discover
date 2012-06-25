@@ -32,10 +32,11 @@
 #include <KDebug>
 #include <kconfig.h>
 
-KNSBackend::KNSBackend(const QString& configName, QObject* parent)
+KNSBackend::KNSBackend(const QString& configName, const QString& iconName, QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_reviews(new KNSReviews(this))
     , m_fetching(true)
+    , m_iconName(iconName)
 {
     m_name = KStandardDirs::locate("config", configName);
     KConfig conf(m_name);
@@ -111,8 +112,9 @@ void KNSBackend::receivedContents(Attica::BaseJob* job)
         m_manager->search();
         return;
     }
+    QString filename = QFileInfo(m_name).fileName();
     foreach(const Attica::Content& c, contents) {
-        m_resourcesByName.insert(c.id(), new KNSResource(c, QFileInfo(m_name).fileName(), this));
+        m_resourcesByName.insert(c.id(), new KNSResource(c, filename, m_iconName, this));
     }
     m_page++;
     Attica::ListJob<Attica::Content>* jj =

@@ -21,18 +21,14 @@
 #include "KNSResource.h"
 #include <QDebug>
 
-KNSResource::KNSResource(const Attica::Content& c, const QString& category, QObject* parent)
+KNSResource::KNSResource(const Attica::Content& c, const QString& category, const QString& icon, QObject* parent)
     : AbstractResource(parent)
     , m_status(KNS3::Entry::Downloadable)
     , m_content(c)
     , m_category(category)
     , m_entry(0)
-{
-    if(!m_content.icons().isEmpty())
-        m_icon = KUrl(m_content.icons().first().url()).prettyUrl();
-    else
-        m_icon = "kate";
-}
+    , m_icon(icon)
+{}
 
 KNSResource::~KNSResource()
 {
