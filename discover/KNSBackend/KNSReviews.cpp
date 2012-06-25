@@ -22,13 +22,17 @@
 #include "KNSBackend.h"
 #include "KNSResource.h"
 #include <ReviewsBackend/Rating.h>
+#include <ReviewsBackend/Review.h>
 #include <resources/AbstractResource.h>
 #include <attica/provider.h>
 #include <attica/providermanager.h>
 #include <attica/content.h>
+#include <QDebug>
 
-KNSReviews::KNSReviews(KNSBackend* backend, QObject* parent)
-    : AbstractReviewsBackend(parent)
+Q_DECLARE_METATYPE(AbstractResource*);
+
+KNSReviews::KNSReviews(KNSBackend* backend)
+    : AbstractReviewsBackend(backend)
     , m_backend(backend)
     , m_fetching(0)
 {
@@ -52,7 +56,34 @@ Rating* KNSReviews::ratingForApplication(AbstractResource* app) const
 
 void KNSReviews::fetchReviews(AbstractResource* app, int page)
 {
-    emit reviewsReady(app, QList<Review*>());
+    if(!m_backend->provider()->hasCommentService()) {
+        emit reviewsReady(app, QList<Review*>());
+        return;
+    }
+    
+    Attica::ListJob< Attica::Comment >* job =
+        m_backend->provider()->requestComments(Attica::Comment::ContentComment, app->packageName(), "0", page, 10);
+    job->setProperty("app", qVariantFromValue<AbstractResource*>(app));
+    connect(job, SIGNAL(finished(Attica::BaseJob*)), SLOT(commentsReceived(Attica::BaseJob*)));
+    job->start();
+}
+
+void KNSReviews::commentsReceived(Attica::BaseJob* j)
+{
+    Attica::ListJob<Attica::Comment>* job = static_cast<Attica::ListJob<Attica::Comment>*>(j);
+    Attica::Comment::List comments = job->itemList();
+    
+    QList<Review*> reviews;
+    AbstractResource* app = job->property("app").value<AbstractResource*>();
+    foreach(const Attica::Comment& comment, comments) {
+        //TODO: language lookup?
+        Review* r = new Review(app->name(), app->packageName(), "en", comment.subject(), comment.text(), comment.user(),
+            comment.date(), true, comment.id().toInt(), comment.score()/10, 0, 0, QString()
+        );
+        reviews += r;
+    }
+    
+    emit reviewsReady(app, reviews);
 }
 
 bool KNSReviews::isFetching() const
@@ -97,7 +128,7 @@ void KNSReviews::login()
 
 bool KNSReviews::hasCredentials() const
 {
-    return false;
+    return m_backend->provider()->hasCredentials();
 }
 
 QString KNSReviews::userName() const

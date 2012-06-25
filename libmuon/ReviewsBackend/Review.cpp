@@ -49,6 +49,24 @@ Review::Review(const QVariantMap &data)
     m_usefulnessFavorable = data.value("usefulness_favorable").toInt();
 }
 
+Review::Review(const QString& name, const QString& pkgName, const QString& language, const QString& summary,
+               const QString& reviewText, const QString& userName, const QDateTime& date, bool show, quint64 id,
+               int rating, int usefulTotal, int usefulFavorable, const QString& packageVersion)
+    : m_appName(name)
+    , m_creationDate(date)
+    , m_shouldShow(show)
+    , m_id(id)
+    , m_language(language)
+    , m_packageName(pkgName)
+    , m_rating(rating)
+    , m_reviewText(reviewText)
+    , m_reviewer(userName)
+    , m_usefulnessTotal(usefulTotal)
+    , m_usefulnessFavorable(usefulFavorable)
+    , m_summary(summary)
+    , m_packageVersion(packageVersion)
+{}
+
 Review::~Review()
 {
 }

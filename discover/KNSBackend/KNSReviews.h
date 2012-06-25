@@ -37,7 +37,7 @@ class KNSReviews : public AbstractReviewsBackend
 {
     Q_OBJECT
     public:
-        explicit KNSReviews(KNSBackend* backend, QObject* parent = 0);
+        explicit KNSReviews(KNSBackend* backend);
 
         virtual void fetchReviews(AbstractResource* app, int page = 1);
         virtual bool isFetching() const;
@@ -51,6 +51,9 @@ class KNSReviews : public AbstractReviewsBackend
         virtual Rating* ratingForApplication(AbstractResource* app) const;
         virtual bool hasCredentials() const;
         virtual QString userName() const;
+
+    public slots:
+        void commentsReceived(Attica::BaseJob* job);
 
     private:
         KNSBackend* m_backend;

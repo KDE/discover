@@ -54,6 +54,7 @@ public:
     virtual QVector< AbstractResource* > allResources() const;
 
     bool isFetching() const;
+    Attica::Provider* provider() { return &m_provider; }
 
 public slots:
     void receivedEntries(const KNS3::Entry::List& entry);
