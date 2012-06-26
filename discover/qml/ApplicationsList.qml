@@ -5,7 +5,6 @@ import "navigation.js" as Navigation
 
 Item {
     id: parentItem
-    property int elemHeight: 65
     property alias count: view.count
     property alias header: view.header
     property alias section: view.section
@@ -28,62 +27,64 @@ Item {
         delegate: ListItem {
                 width: parentItem.actualWidth
                 x: (view.width-parentItem.actualWidth)/2
-                property real contHeight: elemHeight*0.7
-                height: elemHeight
-                QIconItem {
-                    id: icon
-                    icon: model["icon"]; width: contHeight; height: contHeight
-                    anchors.verticalCenter: parent.verticalCenter
-                    anchors.left: parent.left
-                }
-                
-                QIconItem {
-                    anchors.right: icon.right
-                    anchors.bottom: icon.bottom
-                    visible: installed && !(view.model.stateFilter&(1<<8))
-                    icon: "dialog-ok"
-                    height: 16
-                    width: 16
-                }
-                Label {
-                    id: nameLabel
-                    anchors.top: icon.top
-                    anchors.left: icon.right
-                    anchors.right: ratingsItem.left
-                    anchors.leftMargin: 5
-                    font.pointSize: commentLabel.font.pointSize*1.7
-                    elide: Text.ElideRight
-                    text: name
-                }
-                Label {
-                    id: commentLabel
-                    anchors {
-                        bottom: icon.bottom
-                        left: icon.right
-                        leftMargin: 5
-                        right: nameLabel.right
-                    }
-                    elide: Text.ElideRight
-                    text: comment
-                    font.italic: true
-                    opacity: delegateArea.containsMouse ? 1 : 0.2
-                }
-                Rating {
-                    id: ratingsItem
-                    anchors {
-                        right: parent.right
-                        top: parent.top
-                    }
-                    height: contHeight*.5
-                    rating: model.rating
-                }
+                property real contHeight: height*0.8
+                height: nameLabel.font.pixelSize*3
                 
                 MouseArea {
                     id: delegateArea
                     anchors.fill: parent
                     onClicked: Navigation.openApplication(application)
                     hoverEnabled: true
+                    QIconItem {
+                        id: icon
+                        icon: model["icon"]; width: contHeight; height: contHeight
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.left: parent.left
+                    }
+                    
+                    QIconItem {
+                        anchors.right: icon.right
+                        anchors.bottom: icon.bottom
+                        visible: installed && !(view.model.stateFilter&(1<<8))
+                        icon: "dialog-ok"
+                        height: 16
+                        width: 16
+                    }
+                    Label {
+                        id: nameLabel
+                        anchors.top: icon.top
+                        anchors.left: icon.right
+                        anchors.right: ratingsItem.left
+                        anchors.leftMargin: 5
+                        font.pointSize: commentLabel.font.pointSize*1.7
+                        elide: Text.ElideRight
+                        text: name
+                    }
+                    Label {
+                        id: commentLabel
+                        anchors {
+                            bottom: icon.bottom
+                            left: icon.right
+                            leftMargin: 5
+                            right: actionsRow.left
+                        }
+                        elide: Text.ElideRight
+                        text: comment
+                        font.italic: true
+                        opacity: delegateArea.containsMouse ? 1 : 0.2
+                    }
+                    Rating {
+                        id: ratingsItem
+                        anchors {
+                            right: parent.right
+                            top: parent.top
+                        }
+                        height: contHeight*.4
+                        rating: model.rating
+                    }
+                    
                     Row {
+                        id: actionsRow
                         height: contHeight*0.5
                         spacing: 5
                         anchors {
