@@ -18,40 +18,43 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef OCSRESOURCE_H
-#define OCSRESOURCE_H
+#ifndef SCREENSHOTSMODEL_H
+#define SCREENSHOTSMODEL_H
 
-#include <resources/AbstractResource.h>
-#include <attica/content.h>
+#include <QModelIndex>
+#include <QUrl>
 
-class OCSResource : public AbstractResource
+class AbstractResource;
+
+class ScreenshotsModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(AbstractResource* application READ resource WRITE setResource)
+    Q_PROPERTY(int count READ count NOTIFY countChanged)
     public:
-        explicit OCSResource(const Attica::Content& content, QObject* parent = 0);
+        enum Roles { ThumbnailUrl=Qt::UserRole+1, ScreenshotUrl };
         
-        virtual QString name();
-        virtual QString comment();
-        virtual QString icon() const;
-        virtual QString packageName() const;
-        virtual State state();
-        virtual QString categories();
-        virtual QUrl homepage() const;
-        virtual QUrl thumbnailUrl();
-        virtual QUrl screenshotUrl();
-        virtual QString sizeDescription();
-        virtual QString availableVersion() const;
-        virtual QString installedVersion() const;
-        virtual QString origin() const;
-        virtual QString section();
-        virtual void fetchScreenshots();
+        ScreenshotsModel(QObject* parent = 0);
 
-        virtual QString license() { return QString(); }
-        virtual QString longDescription() const { return QString(); }
-        virtual QList<PackageState> addonsInformation() { return QList<PackageState>(); }
+        AbstractResource* resource() const;
+        void setResource(AbstractResource* res);
+
+        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
+        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
+        Q_SCRIPTABLE QUrl screenshotAt(int row) const;
+        int count() const;
+
+    private slots:
+        void screenshotsFetched(const QList<QUrl>& thumbnails, const QList<QUrl>& screenshots);
+
+    signals:
+        void countChanged();
 
     private:
-        Attica::Content m_content;
+        AbstractResource* m_resource;
+        QList<QUrl> m_thumbnails;
+        QList<QUrl> m_screenshots;
+
 };
 
-#endif // OCSRESOURCE_H
+#endif // SCREENSHOTSMODEL_H

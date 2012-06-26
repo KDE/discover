@@ -66,6 +66,7 @@
 #include "ApplicationUpdates.h"
 #include "OriginsBackend.h"
 #include "ApplicationAddonsModel.h"
+#include "ScreenshotsModel.h"
 #include <libmuon/MuonDataSources.h>
 
 QML_DECLARE_TYPE(ResourcesModel)
@@ -118,6 +119,7 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     qmlRegisterType<LaunchListModel>("org.kde.muon", 1, 0, "LaunchListModel");
     qmlRegisterType<OriginsBackend>("org.kde.muon", 1, 0, "OriginsBackend");
     qmlRegisterType<ApplicationAddonsModel>("org.kde.muon", 1, 0, "ApplicationAddonsModel");
+    qmlRegisterType<ScreenshotsModel>("org.kde.muon", 1, 0, "ScreenshotsModel");
     qmlRegisterType<AbstractReviewsBackend>();
     qmlRegisterType<Rating>();
     qmlRegisterType<Application>();

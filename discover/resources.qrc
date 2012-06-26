@@ -8,7 +8,6 @@
     <file>qml/FeaturedBanner.qml</file>
     <file>qml/ApplicationsListPage.qml</file>
     <file>qml/ApplicationPage.qml</file>
-    <file>qml/ScreenshotsModel.qml</file>
     <file>qml/ReviewsView.qml</file>
     <file>qml/ApplicationOverview.qml</file>
     <file>qml/AddonsView.qml</file>

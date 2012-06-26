@@ -33,6 +33,7 @@
 #include "libmuonprivate_export.h"
 #include "resources/AbstractResource.h"
 
+class KJob;
 namespace QApt {
     class Backend;
 }
@@ -93,6 +94,7 @@ public:
     int popularityContest() const;
     
     virtual State state();
+    virtual void fetchScreenshots();
 
 private:
     void populateZeitgeistInfo();

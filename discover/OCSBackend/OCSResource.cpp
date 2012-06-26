@@ -101,3 +101,16 @@ QString OCSResource::section()
     return m_content.downloadUrlDescription(0).category();
 }
 
+void OCSResource::fetchScreenshots()
+{
+    QList<QUrl> thumbnails, screenshots;
+    for(int i=0; i<=3; i++) {
+        QString number = QString::number(i);
+        QString last = m_content.previewPicture(number);
+        if(!last.isEmpty()) {
+            thumbnails += QUrl(m_content.smallPreviewPicture(number));
+            screenshots += QUrl(last);
+        }
+    }
+    emit screenshotsFetched(thumbnails, screenshots);
+}

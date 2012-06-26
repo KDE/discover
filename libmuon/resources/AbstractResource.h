@@ -113,8 +113,15 @@ class MUONPRIVATE_EXPORT          AbstractResource : public QObject
         
         virtual QList<PackageState> addonsInformation() = 0;
 
+    public slots:
+        virtual void fetchScreenshots();
+
     signals:
         void stateChanged();
+        
+        ///response to the fetchScreenshots method
+        ///@p thumbnails and @p screenshots should have the same number of elements
+        void screenshotsFetched(const QList<QUrl>& thumbnails, const QList<QUrl>& screenshots);
 };
 
 #endif // ABSTRACTRESOURCE_H

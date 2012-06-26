@@ -25,6 +25,7 @@
 #include <QtCore/QFile>
 #include <QtCore/QVector>
 #include <QtCore/QStringList>
+#include <QThread>
 
 // KDE includes
 #include <KIconLoader>
@@ -33,10 +34,16 @@
 #include <KServiceGroup>
 #include <KDebug>
 #include <KToolInvocation>
+#include <KIO/Job>
+#include <KIO/NetAccess>
+#include <KStandardDirs>
 
 // QApt includes
 #include <LibQApt/Backend>
 #include <LibQApt/Config>
+
+//QJSON includes
+#include <qjson/parser.h>
 
 //QtZeitgeist includes
 #include "HaveQZeitgeist.h"
@@ -554,4 +561,31 @@ AbstractResource::State Application::state()
     else if(s & QApt::Package::Installed) ret = Installed;
     
     return ret;
+}
+
+void Application::fetchScreenshots()
+{
+    QString dest = KStandardDirs::locate("tmp", "screenshots."+m_packageName);
+    
+    //TODO: Make async
+    bool ret = KIO::NetAccess::download(KUrl("http://screenshots.debian.net/json/package/"+m_packageName), dest, 0);
+    if(ret) {
+        QFile f(dest);
+        f.open(QIODevice::ReadOnly);
+        
+        QJson::Parser p;
+        bool ok;
+        QVariantMap values = p.parse(&f, &ok).toMap();
+        Q_ASSERT(ok);
+        QVariantList screenshots = values["screenshots"].toList();
+        
+        QList<QUrl> thumbnailUrls, screenshotUrls;
+        foreach(const QVariant& screenshot, screenshots) {
+            QVariantMap s = screenshot.toMap();
+            thumbnailUrls += s["small_image_url"].toUrl();
+            screenshotUrls += s["large_image_url"].toUrl();
+        }
+        emit screenshotsFetched(thumbnailUrls, screenshotUrls);
+    } else
+        emit screenshotsFetched(QList<QUrl>() << thumbnailUrl(), QList<QUrl>() << screenshotUrl());
 }

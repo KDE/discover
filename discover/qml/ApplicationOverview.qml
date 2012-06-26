@@ -118,7 +118,7 @@ Item {
             
             asynchronous: true
             fillMode: Image.PreserveAspectFit
-            source: thumbnailsView.model.get(thumbnailsView.currentIndex).large_image_url
+            source: thumbnailsView.currentIndex>=0 ? screenshotsModel.screenshotAt(thumbnailsView.currentIndex) : "image://icon/image-missing"
             
             onStatusChanged: if(status==Image.Error) {
                 sourceSize.width = sourceSize.height = 200
@@ -159,14 +159,17 @@ Item {
             cellHeight: 45
             cellWidth: 45
             interactive: false
-            visible: count>1
+            visible: screenshotsModel.count>1
 
             anchors {
                 fill: shadow
                 bottomMargin: 5
             }
             
+            onCountChanged: currentIndex=0
+            
             model: ScreenshotsModel {
+                id: screenshotsModel
                 application: appInfo.application
             }
             highlight: Rectangle { color: "white"; opacity: 0.5 }
