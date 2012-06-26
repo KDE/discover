@@ -96,4 +96,8 @@ QString OCSResource::sizeDescription()
     return KGlobal::locale()->formatByteSize(m_content.downloadUrlDescription(0).size());
 }
 
+QString OCSResource::section()
+{
+    return m_content.downloadUrlDescription(0).category();
+}
 

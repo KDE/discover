@@ -28,8 +28,8 @@ KNSResource::KNSResource(const Attica::Content& c, const QString& category, cons
     , m_status(KNS3::Entry::Downloadable)
     , m_content(c)
     , m_category(category)
-    , m_entry(0)
     , m_icon(icon)
+    , m_entry(0)
 {}
 
 KNSResource::~KNSResource()
@@ -150,4 +150,9 @@ QString KNSResource::availableVersion() const
 QString KNSResource::origin() const
 {
     return m_entry->providerId();
+}
+
+QString KNSResource::section()
+{
+    return m_content.downloadUrlDescription(0).category();
 }

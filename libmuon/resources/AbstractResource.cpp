@@ -46,3 +46,8 @@ bool AbstractResource::isInstalled()
 {
     return state() >= Installed;
 }
+
+int AbstractResource::popularityContest() const
+{
+    return -1;
+}
