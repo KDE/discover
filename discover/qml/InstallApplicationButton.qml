@@ -35,7 +35,7 @@ Item {
             State {
                 name: "willupgrade"
                 when: application.canUpgrade && item.preferUpgrade
-                PropertyChanges { target: button;  text: i18n("Upgrade") }
+                PropertyChanges { target: button;  text: i18n("Update") }
             },
             State {
                 name: "willinstall"

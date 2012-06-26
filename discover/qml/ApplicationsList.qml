@@ -92,7 +92,7 @@ Item {
                         }
                             
                         Button {
-                            text: i18n("Upgrade")
+                            text: i18n("Update")
                             id: upgradeButton
                             width: ratingsItem.width
                             visible: model.application.canUpgrade

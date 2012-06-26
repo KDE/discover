@@ -158,7 +158,7 @@ ListItem {
                     visible: !model.application.canUpgrade && model.rating>=0
                 }
                 Button {
-                    text: i18n("Upgrade")
+                    text: i18n("Update")
                     visible: model.application.canUpgrade
                 }
             }

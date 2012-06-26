@@ -19,7 +19,7 @@ ApplicationsListPage {
         id: toolbarComponent
         ToolButton {
             id: commitButton
-            text: i18n("Upgrade All!")
+            text: i18n("Update All!")
             iconSource: "system-software-update"
             width: app.appBackend.updatesCount>0 && page.state!="updating" ? commitButton.implicitWidth : 0
             
