@@ -71,6 +71,7 @@ Page {
             fill: parent
             rightMargin: (scroll.visible ? 2 : 1) *scroll.width
             leftMargin: scroll.width
+            bottomMargin: 10
         }
         contentHeight: conts.height
         
