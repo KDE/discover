@@ -16,11 +16,29 @@ ToolBar {
     Connections {
         id: backendConnections
         target: backend
-        onApplicationTransactionAdded: transactionsModel.append({'app': app})
+        
+        onApplicationTransactionAdded: {
+            if(transactionsModel.appAt(app)<0)
+                transactionsModel.append({'app': app})
+        }
+        
+        onCancelTransaction: {
+            var id = transactionsModel.appAt(app)
+            if(id>=0)
+                transactionsModel.remove(id)
+        }
     }
     
     ListModel {
         id: transactionsModel
+        function appAt(app) {
+            for(var i=0; i<transactionsModel.count; i++) {
+                if(transactionsModel.get(i).app==app) {
+                    return i
+                }
+            }
+            return -1
+        }
     }
     
     ListView {
