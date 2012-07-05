@@ -331,7 +331,7 @@ void ApplicationBackend::markTransaction(Transaction *transaction)
     QHash<QApt::Package *, QApt::Package::State> addons = transaction->addons();
     auto iter = addons.constBegin();
 
-    QApt::Package *package;
+    QApt::Package *package = nullptr;
     QApt::Package::State state;
     while (iter != addons.constEnd()) {
         package = iter.key();

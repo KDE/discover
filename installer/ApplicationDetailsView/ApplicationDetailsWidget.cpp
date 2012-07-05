@@ -224,6 +224,7 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     m_addonsWidget = new AddonsWidget(widget, m_appBackend);
     connect(m_addonsWidget, SIGNAL(applyButtonClicked(QHash<QApt::Package*,QApt::Package::State>)),
             this, SLOT(addonsApplyButtonClicked(QHash<QApt::Package*,QApt::Package::State>)));
+    connect(m_appBackend, SIGNAL(reloadFinished()), this, SLOT(populateAddons()));
     m_addonsWidget->hide();
 
     // Technical details
@@ -487,8 +488,8 @@ void ApplicationDetailsWidget::populateAddons()
 {
     QApt::PackageList addons = m_app->addons();
 
+    m_addonsWidget->setAddons(addons);
     if (!addons.isEmpty()) {
-        m_addonsWidget->setAddons(addons);
         m_addonsWidget->show();
     }
 }

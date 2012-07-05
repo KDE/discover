@@ -58,6 +58,7 @@ public Q_SLOTS:
     void repaintViewport();
 
 private Q_SLOTS:
+    void clearAddons();
     void populateModel();
     void expandButtonClicked();
     void addonStateChanged(const QModelIndex &left, const QModelIndex &right);

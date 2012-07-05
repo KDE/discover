@@ -94,18 +94,27 @@ AddonsWidget::AddonsWidget(QWidget *parent, ApplicationBackend *appBackend)
 
     addonsLayout->addWidget(m_addonsView);
     addonsLayout->addWidget(addonsButtonBox);
+
+    connect(m_addonsModel, SIGNAL(dataChanged(QModelIndex,QModelIndex)),
+            this, SLOT(addonStateChanged(QModelIndex,QModelIndex)));
+    // Clear addons when a reload starts
+    connect(m_appBackend, SIGNAL(reloadStarted()), this, SLOT(clearAddons()));
 }
 
 AddonsWidget::~AddonsWidget()
 {
 }
 
+void AddonsWidget::clearAddons()
+{
+    m_changedAddons.clear();
+    m_availableAddons.clear();
+    m_addonsModel->clear();
+}
+
 void AddonsWidget::setAddons(QApt::PackageList addons)
 {
     m_availableAddons = addons;
-
-    connect(m_addonsModel, SIGNAL(dataChanged(QModelIndex,QModelIndex)),
-                this, SLOT(addonStateChanged(QModelIndex,QModelIndex)));
 
     populateModel();
 }
@@ -125,6 +134,9 @@ void AddonsWidget::populateModel()
         Application *addonApp = 0;
 
         foreach (Application *app, m_appBackend->applicationList()) {
+            if (!app->package())
+                continue;
+
             if (app->package()->latin1Name() == addon->latin1Name()) {
                 addonApp = app;
                 break;
