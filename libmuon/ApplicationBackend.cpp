@@ -297,6 +297,7 @@ bool ApplicationBackend::confirmRemoval(Transaction *transaction)
     // Find changes due to markings
     QApt::PackageList excluded;
     excluded.append(transaction->application()->package());
+    excluded.append(transaction->addons().keys());
     QApt::StateChanges changes = m_backend->stateChanges(oldCacheState, excluded);
     // Restore cache state, we're only checking at the moment
     m_backend->restoreCacheState(oldCacheState);
