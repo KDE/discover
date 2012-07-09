@@ -7,6 +7,7 @@ import "navigation.js" as Navigation
 Page {
     id: page
     property QtObject category
+    property real actualWidth: parent.width-Math.pow(parent.width/70, 2)
     
     function searchFor(text) {
         if(category)
@@ -68,11 +69,12 @@ Page {
     Flickable {
         id: flick
         anchors {
-            fill: parent
-            rightMargin: (scroll.visible ? 2 : 1) *scroll.width
-            leftMargin: scroll.width
+            horizontalCenter: parent.horizontalCenter
+            top: parent.top
+            bottom: parent.bottom
             bottomMargin: 10
         }
+        width: page.actualWidth
         contentHeight: conts.height
         
         Column {
