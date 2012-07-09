@@ -22,12 +22,13 @@ Item {
         if(currentTopLevel.status==Component.Error) {
             console.log("status error: "+currentTopLevel.errorString())
         }
-        if(pageStack.initialPage)
-            pageStack.initialPage.destroy()
+        while(pageStack.depth>1) {
+            pageStack.pop().destroy(1000)
+        }
         
         try {
             var obj = currentTopLevel.createObject(pageStack)
-            pageStack.initialPage = obj
+            pageStack.push(obj)
 //             console.log("created "+currentTopLevel)
         } catch (e) {
             console.log("error: "+e)
@@ -61,7 +62,7 @@ Item {
                 }
             }
             
-            Label {
+            Item {
                 //we add some extra space
                 width: 20
             }
@@ -91,6 +92,19 @@ Item {
                 }
             }
         }
+        
+        TextField {
+            id: searchField
+            anchors {
+                right: parent.right
+                rightMargin: 10
+                verticalCenter: parent.verticalCenter
+            }
+            visible: pageStack.currentPage!=null && pageStack.currentPage.searchFor!=null
+            placeholderText: i18n("Search...")
+            onTextChanged: if(text.length>3) pageStack.currentPage.searchFor(text)
+//             onAccepted: pageStack.currentPage.searchFor(text) //TODO: uncomment on kde 4.9
+        }
     }
     
     Connections {
@@ -107,47 +121,27 @@ Item {
             right: pageToolBar.left
             rightMargin: pageToolBar.visible ? 10 : 0
         }
-        z: 0
-        height: 30
+        height: breadcrumbsItem.count<=1 ? 0 : 30
         
-        tools: Item {
-            anchors.fill: parent
-            Breadcrumbs {
-                anchors {
-                    left: parent.left
-                    right: searchField.left
-                    top: parent.top
-                    bottom: parent.bottom
-                }
+        tools: Breadcrumbs {
                 id: breadcrumbsItem
+                anchors.fill: parent
                 pageStack: pageStack
                 onPoppedPages: searchField.text=""
                 Component.onCompleted: breadcrumbsItem.pushItem("go-home")
             }
-            
-            TextField {
-                id: searchField
-                anchors {
-                    right: parent.right
-                    verticalCenter: parent.verticalCenter
-                }
-                visible: pageStack.currentPage!=null && pageStack.currentPage.searchFor!=null
-                placeholderText: i18n("Search...")
-                onTextChanged: if(text.length>3) pageStack.currentPage.searchFor(text)
-//                 onAccepted: pageStack.currentPage.searchFor(text) //TODO: uncomment on kde 4.9
-            }
-        }
+        Behavior on height { NumberAnimation { duration: 250 } }
     }
     
     ToolBar {
         id: pageToolBar
         anchors {
             top: toolbar.bottom
-            bottom: breadcrumbsItemBar.bottom
             right: parent.right
         }
-        width: visible ? tools.childrenRect.width+5 : 0
-        visible: tools!=null
+        height: 30
+        width: tools!=null ? tools.childrenRect.width+5 : 0
+        visible: width>0
         
         Behavior on width { NumberAnimation { duration: 250 } }
     }
@@ -158,7 +152,7 @@ Item {
         toolBar: pageToolBar
         anchors {
             bottom: progressBox.top
-            top: breadcrumbsItemBar.bottom
+            top: pageToolBar.bottom
             left: parent.left
             right: parent.right
         }
