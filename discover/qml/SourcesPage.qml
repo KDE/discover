@@ -5,6 +5,8 @@ import "navigation.js" as Navigation
 
 Page {
     id: page
+    clip: true
+    property real actualWidth: parent.width-Math.pow(parent.width/70, 2)
     
     tools: Row {
         anchors.fill: parent
@@ -103,11 +105,11 @@ Page {
     ListView {
         id: view
         anchors {
-            fill: parent
-            rightMargin: scroll.width+3
-            leftMargin: 3
+            top: parent.top
+            bottom: parent.bottom
+            horizontalCenter: parent.horizontalCenter
         }
-        clip: true
+        width: parent.actualWidth
         
         model: origins.sources
         
