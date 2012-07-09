@@ -80,6 +80,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         void cancelTransaction(AbstractResource* app);
 
     signals:
+        void backendsChanged();
         void updatesCountChanged();
 
         //Transactions forwarding

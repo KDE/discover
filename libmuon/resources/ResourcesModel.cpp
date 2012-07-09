@@ -78,6 +78,7 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* resources)
     connect(resources, SIGNAL(transactionRemoved(Transaction*)), SIGNAL(transactionRemoved(Transaction*)));
     connect(resources, SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)), SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)));
     
+    emit backendsChanged();
 }
 
 AbstractResource* ResourcesModel::resourceAt(int row) const
