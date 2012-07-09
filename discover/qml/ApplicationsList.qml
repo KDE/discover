@@ -26,7 +26,7 @@ Item {
         
         delegate: ListItem {
                 width: parentItem.actualWidth
-                x: (view.width-parentItem.actualWidth)/2
+                x: (view.width-actualWidth)/2
                 property real contHeight: height*0.8
                 height: nameLabel.font.pixelSize*3
                 

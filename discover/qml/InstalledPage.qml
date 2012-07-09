@@ -7,7 +7,13 @@ ApplicationsListPage {
     sortRole: "canUpgrade"
     sortOrder: 1
     sectionProperty: "canUpgrade"
-    sectionDelegate: Label { text: section=="true" ? i18n("Update") : i18n("Installed"); anchors.right: parent.right }
+    sectionDelegate: Label {
+        text: section=="true" ? i18n("Update") : i18n("Installed")
+        anchors {
+            right: parent.right
+            rightMargin: page.proposedMargin
+        }
+    }
     preferUpgrade: true
     preferList: true
     
