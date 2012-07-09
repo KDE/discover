@@ -568,6 +568,7 @@ void Application::fetchScreenshots()
     QString dest = KStandardDirs::locate("tmp", "screenshots."+m_packageName);
     
     //TODO: Make async
+    bool done = false;
     bool ret = KIO::NetAccess::download(KUrl("http://screenshots.debian.net/json/package/"+m_packageName), dest, 0);
     if(ret) {
         QFile f(dest);
@@ -576,16 +577,19 @@ void Application::fetchScreenshots()
         QJson::Parser p;
         bool ok;
         QVariantMap values = p.parse(&f, &ok).toMap();
-        Q_ASSERT(ok);
-        QVariantList screenshots = values["screenshots"].toList();
-        
-        QList<QUrl> thumbnailUrls, screenshotUrls;
-        foreach(const QVariant& screenshot, screenshots) {
-            QVariantMap s = screenshot.toMap();
-            thumbnailUrls += s["small_image_url"].toUrl();
-            screenshotUrls += s["large_image_url"].toUrl();
+        if(!ok) {
+            QVariantList screenshots = values["screenshots"].toList();
+            
+            QList<QUrl> thumbnailUrls, screenshotUrls;
+            foreach(const QVariant& screenshot, screenshots) {
+                QVariantMap s = screenshot.toMap();
+                thumbnailUrls += s["small_image_url"].toUrl();
+                screenshotUrls += s["large_image_url"].toUrl();
+            }
+            emit screenshotsFetched(thumbnailUrls, screenshotUrls);
+            done = true;
         }
-        emit screenshotsFetched(thumbnailUrls, screenshotUrls);
-    } else
+    }
+    if(!done)
         emit screenshotsFetched(QList<QUrl>() << thumbnailUrl(), QList<QUrl>() << screenshotUrl());
 }
