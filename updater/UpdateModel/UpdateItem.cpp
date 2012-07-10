@@ -124,6 +124,19 @@ QString UpdateItem::name() const
     return QString();
 }
 
+QString UpdateItem::version() const
+{
+    switch (type()) {
+    case ApplicationItem:
+        return m_app->package()->availableVersion();
+    case CategoryItem:
+    default:
+        break;
+    }
+
+    return QString();
+}
+
 KIcon UpdateItem::icon() const
 {
     switch (type()) {

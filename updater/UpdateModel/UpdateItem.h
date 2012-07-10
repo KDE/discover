@@ -58,6 +58,7 @@ public:
 
     Application *app() const;
     QString name() const;
+    QString version() const;
     KIcon icon() const;
     qint64 size() const;
     Qt::CheckState checked() const;

@@ -52,6 +52,12 @@ public:
     void addItem(UpdateItem *item);
     bool setData(const QModelIndex &index, const QVariant &value, int role);
 
+    enum Columns {
+        NameColumn = 0,
+        VersionColumn,
+        SizeColumn
+    };
+
 private:
     UpdateItem *m_rootItem;
 

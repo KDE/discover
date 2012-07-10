@@ -61,15 +61,16 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
     switch (role) {
     case Qt::DisplayRole:
         switch (column) {
-        case 0:
+        case NameColumn:
             return item->name();
-        case 1:
+        case VersionColumn:
+            return item->version();
+        case SizeColumn:
             return KGlobal::locale()->formatByteSize(item->size());
         }
-            return QVariant();
         return QVariant();
     case Qt::DecorationRole:
-        if (column == 0) {
+        if (column == NameColumn) {
             return item->icon().pixmap(ICON_SIZE, ICON_SIZE);
         }
     case Qt::FontRole: {
@@ -81,7 +82,7 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         return font;
     }
     case Qt::CheckStateRole:
-        if (column == 0) {
+        if (column == NameColumn) {
             return item->checked();
         }
         return QVariant();
@@ -98,9 +99,11 @@ QVariant UpdateModel::headerData(int section, Qt::Orientation orientation,
     if (orientation == Qt::Horizontal && role == Qt::DisplayRole)
     {
         switch (section) {
-        case 0:
+        case NameColumn:
             return i18nc("@label Column label", "Updates");
-        case 1:
+        case VersionColumn:
+            return i18nc("@label Column label", "Version");
+        case SizeColumn:
             return i18nc("@label Column label", "Download Size");
         }
     }
@@ -118,7 +121,7 @@ Qt::ItemFlags UpdateModel::flags(const QModelIndex &index) const
 
 QModelIndex UpdateModel::index(int row, int column, const QModelIndex &index) const
 {
-    if (index.isValid() && (index.column() != 0 && index.column() != 1)) {
+    if (index.isValid() && (index.column() < 0 && index.column() > 2)) {
         return QModelIndex();
     }
 
@@ -157,7 +160,7 @@ int UpdateModel::rowCount(const QModelIndex &parent) const
 int UpdateModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return 2;
+    return 3;
 }
 
 void UpdateModel::clear()
