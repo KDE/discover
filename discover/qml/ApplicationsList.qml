@@ -23,8 +23,11 @@ Item {
         }
         spacing: 3
         snapMode: ListView.SnapToItem
+        currentIndex: -1
+        focus: true
         
         delegate: ListItem {
+                checked: view.currentIndex==index
                 width: parentItem.actualWidth
                 x: (view.width-actualWidth)/2
                 property real contHeight: height*0.8
@@ -33,7 +36,10 @@ Item {
                 MouseArea {
                     id: delegateArea
                     anchors.fill: parent
-                    onClicked: Navigation.openApplication(application)
+                    onClicked: {
+                        view.currentIndex = index
+                        Navigation.openApplication(application)
+                    }
                     hoverEnabled: true
                     QIconItem {
                         id: icon

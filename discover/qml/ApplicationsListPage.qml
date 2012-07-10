@@ -127,6 +127,7 @@ Page {
         id: viewLoader
         anchors.fill: parent
         property string delegateType: ""
+        focus: true
     }
     
     Component {
