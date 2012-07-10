@@ -1,10 +1,14 @@
 import QtQuick 1.1
 import org.kde.plasma.components 0.1
+import org.kde.plasma.core 0.1 as PlasmaCore
 import org.kde.muon 1.0
 
 Page
 {
     id: page
+    property real actualWidth: width-Math.pow(width/70, 2)
+    property real sideMargin: (width-actualWidth)/2
+    
     function start() { updates.upgradeAll() }
     ApplicationUpdates {
         id: updates
@@ -20,6 +24,8 @@ Page
             right: parent.right
             left: parent.left
             top: parent.top
+            rightMargin: sideMargin
+            leftMargin: sideMargin
         }
         
         minimumValue: 0
@@ -36,6 +42,15 @@ Page
             right: parent.right
         }
     }
+    PlasmaCore.FrameSvgItem {
+        id: base
+        anchors {
+            fill: messageFlickable
+            margins: -5
+        }
+        imagePath: "widgets/lineedit"
+        prefix: "base"
+    }
     Flickable {
         id: messageFlickable
         anchors {
@@ -43,6 +58,10 @@ Page
             right: parent.right
             left: parent.left
             bottom: parent.bottom
+            rightMargin: sideMargin
+            leftMargin: sideMargin
+            topMargin: 10
+            bottomMargin: 10
         }
         clip: true
         contentHeight: message.height
