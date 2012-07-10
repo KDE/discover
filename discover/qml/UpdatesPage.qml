@@ -18,6 +18,8 @@ Page
         
         onUpdatesFinnished: pageStack.pop()
     }
+    onVisibleChanged: window.navigationEnabled=!visible
+
     ProgressBar {
         id: progress
         anchors {

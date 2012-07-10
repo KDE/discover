@@ -14,6 +14,7 @@ Item {
     property Component installedComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
     property Component sourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
     property Component currentTopLevel: browsingComp
+    property bool navigationEnabled: true
     
     onCurrentTopLevelChanged: {
         if(currentTopLevel==null)
@@ -55,7 +56,7 @@ Item {
             MuonToolButton {
                 height: toplevelsRow.height
                 icon: "go-previous"
-                enabled: breadcrumbsItem.count>1
+                enabled: window.navigationEnabled && breadcrumbsItem.count>1
                 onClicked: {
                     breadcrumbsItem.popItem(false)
                     searchField.text = ""
@@ -84,6 +85,7 @@ Item {
                     icon: modelData.icon
                     overlayText: modelData.overlay
                     checked: currentTopLevel==modelData.component
+                    enabled: window.navigationEnabled
                     onClicked: {
                         Navigation.clearPages()
                         if(currentTopLevel!=modelData.component)
