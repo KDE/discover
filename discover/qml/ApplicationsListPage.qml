@@ -16,8 +16,8 @@ Page {
     property Component sectionDelegate: null
     property bool preferUpgrade: false
     property bool preferList: false
-    property real actualWidth: parent.width-Math.pow(parent.width/70, 2)
-    property real proposedMargin: (parent.width-actualWidth)/2
+    property real actualWidth: width-Math.pow(width/70, 2)
+    property real proposedMargin: (width-actualWidth)/2
     clip: true
     
     onSearchChanged: {

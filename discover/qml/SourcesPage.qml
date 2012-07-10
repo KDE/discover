@@ -6,7 +6,7 @@ import "navigation.js" as Navigation
 Page {
     id: page
     clip: true
-    property real actualWidth: parent.width-Math.pow(parent.width/70, 2)
+    property real actualWidth: width-Math.pow(width/70, 2)
     
     tools: Row {
         anchors.fill: parent
