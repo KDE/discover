@@ -194,6 +194,12 @@ QAction* MuonInstallerMainWindow::getAction(const QString& name)
     return actionCollection()->action(name);
 }
 
+void MuonInstallerMainWindow::openMimeType(const QString& mime)
+{
+    m_mimeToBeOpened = mime;
+    triggerOpenApplication();
+}
+
 void MuonInstallerMainWindow::openApplication(const QString& app)
 {
     m_appToBeOpened = app;
@@ -202,9 +208,14 @@ void MuonInstallerMainWindow::openApplication(const QString& app)
 
 void MuonInstallerMainWindow::triggerOpenApplication()
 {
-    if(!m_appToBeOpened.isEmpty() && m_view->rootObject()->property("state").toString()!="loading") {
-        emit openApplicationInternal(m_appToBeOpened);
-        m_appToBeOpened.clear();
+    if(m_view->rootObject()->property("state").toString()!="loading") {
+        if(!m_appToBeOpened.isEmpty()) {
+            emit openApplicationInternal(m_appToBeOpened);
+            m_appToBeOpened.clear();
+        } else if(!m_mimeToBeOpened.isEmpty()) {
+            emit listMimeInternal(m_mimeToBeOpened);
+            m_mimeToBeOpened.clear();
+        }
     }
 }
 

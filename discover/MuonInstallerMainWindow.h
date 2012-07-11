@@ -47,6 +47,7 @@ class MuonInstallerMainWindow : public MuonMainWindow
         void setBackend(QApt::Backend* b);
         void openApplication(const QString& app);
         QUrl featuredSource() const;
+        void openMimeType(const QString& mime);
 
     private slots:
         void triggerOpenApplication();
@@ -54,9 +55,11 @@ class MuonInstallerMainWindow : public MuonMainWindow
     signals:
         void appBackendChanged();
         void openApplicationInternal(const QString& appname);
+        void listMimeInternal(const QString& mime);
 
     private:
         QString m_appToBeOpened;
+        QString m_mimeToBeOpened;
         QDeclarativeView* m_view;
 };
 

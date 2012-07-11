@@ -42,6 +42,7 @@ int main(int argc, char** argv)
     KCmdLineArgs::init(argc, argv, &about);
     KCmdLineOptions options;
     options.add("application <name>", ki18n("Directly open the specified application by its package name."));
+    options.add("mime <name>", ki18n("Open with a program that can deal with the given mimetype."));
     KCmdLineArgs::addCmdLineOptions( options );
 
     if (!KUniqueApplication::start()) {
@@ -61,6 +62,8 @@ int main(int argc, char** argv)
     MuonInstallerMainWindow *mainWindow = new MuonInstallerMainWindow;
     if(args->isSet("application"))
         mainWindow->openApplication(args->getOption("application"));
+    else if(args->isSet("mime"))
+        mainWindow->openMimeType(args->getOption("mime"));
     mainWindow->show();
 
     return app.exec();

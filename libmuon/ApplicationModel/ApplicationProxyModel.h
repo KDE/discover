@@ -43,6 +43,7 @@ class MUONPRIVATE_EXPORT ApplicationProxyModel : public QSortFilterProxyModel
     Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical WRITE setShouldShowTechnical)
     Q_PROPERTY(Category* filteredCategory READ filteredCategory WRITE setFiltersFromCategory NOTIFY categoryChanged)
     Q_PROPERTY(QString originFilter READ originFilter WRITE setOriginFilter)
+    Q_PROPERTY(QString mimeTypeFilter READ mimeTypeFilter WRITE setMimeTypeFilter)
 public:
     explicit ApplicationProxyModel(QObject *parent=0);
     ~ApplicationProxyModel();
@@ -53,6 +54,8 @@ public:
     QApt::Package::State stateFilter() const;
     void setOriginFilter(const QString &origin);
     QString originFilter() const;
+    void setMimeTypeFilter(const QString &mime);
+    QString mimeTypeFilter() const;
     void setFiltersFromCategory(Category *category);
     void setShouldShowTechnical(bool show);
     bool shouldShowTechnical() const;
@@ -82,6 +85,7 @@ private:
     bool m_filterBySearch;
     bool m_showTechnical;
     Category* m_filteredCategory;
+    QString m_mimeTypeFilter;
 
 public Q_SLOTS:
     void refreshSearch();

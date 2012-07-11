@@ -113,6 +113,7 @@ Item {
         target: app
         onAppBackendChanged: window.state = "loaded"
         onOpenApplicationInternal: Navigation.openApplication(app.appBackend.applicationByPackageName(appname))
+        onListMimeInternal: Navigation.openApplicationMime(mime)
     }
     
     ToolBar {

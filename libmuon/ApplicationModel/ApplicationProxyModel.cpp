@@ -144,9 +144,14 @@ bool ApplicationProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &s
     }
 
     if (!m_originFilter.isEmpty()) {
-        if (application->package()->origin() != m_originFilter) {
+        if (application->origin() != m_originFilter) {
             return false;
         }
+    }
+
+    if(!m_mimeTypeFilter.isEmpty()) {
+        if(!application->getField("MimeType").contains(m_mimeTypeFilter.toLatin1()))
+            return false;
     }
 
     if (!m_orFilters.isEmpty()) {
@@ -333,4 +338,14 @@ bool ApplicationProxyModel::sortingByRelevancy() const
 bool ApplicationProxyModel::isFilteringBySearch() const
 {
     return m_filterBySearch;
+}
+
+QString ApplicationProxyModel::mimeTypeFilter() const
+{
+    return m_mimeTypeFilter;
+}
+
+void ApplicationProxyModel::setMimeTypeFilter(const QString& mime)
+{
+    m_mimeTypeFilter = mime;
 }
