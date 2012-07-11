@@ -48,7 +48,7 @@ Page {
                         Navigation.openApplicationList(category.icon, category.name, category, "")
                         break;
                     case CategoryModel.SubCatType:
-                        Navigation.openCategory(category.icon, category.name, category)
+                        Navigation.openCategory(category)
                         break;
                 }
             }

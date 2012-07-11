@@ -52,6 +52,7 @@ public:
     Q_PROPERTY(bool hasSubCategories READ hasSubCategories CONSTANT)
     Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical CONSTANT)
     explicit Category(const QDomNode &node, CategoryChildPolicy type = CanHaveChildren);
+    explicit Category(const QString& name, QObject* parent = 0);
     ~Category();
 
     QString name() const;

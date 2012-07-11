@@ -43,6 +43,7 @@ int main(int argc, char** argv)
     KCmdLineOptions options;
     options.add("application <name>", ki18n("Directly open the specified application by its package name."));
     options.add("mime <name>", ki18n("Open with a program that can deal with the given mimetype."));
+    options.add("category <name>", ki18n("Display a list of entries with a category."));
     KCmdLineArgs::addCmdLineOptions( options );
 
     if (!KUniqueApplication::start()) {
@@ -64,6 +65,8 @@ int main(int argc, char** argv)
         mainWindow->openApplication(args->getOption("application"));
     else if(args->isSet("mime"))
         mainWindow->openMimeType(args->getOption("mime"));
+    else if(args->isSet("category"))
+        mainWindow->openCategory(args->getOption("category"));
     mainWindow->show();
 
     return app.exec();

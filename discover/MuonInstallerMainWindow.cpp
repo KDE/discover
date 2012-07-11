@@ -206,6 +206,12 @@ void MuonInstallerMainWindow::openApplication(const QString& app)
     triggerOpenApplication();
 }
 
+void MuonInstallerMainWindow::openCategory(const QString& category)
+{
+    m_categoryToBeOpened = category;
+    triggerOpenApplication();
+}
+
 void MuonInstallerMainWindow::triggerOpenApplication()
 {
     if(m_view->rootObject()->property("state").toString()!="loading") {
@@ -214,6 +220,10 @@ void MuonInstallerMainWindow::triggerOpenApplication()
             m_appToBeOpened.clear();
         } else if(!m_mimeToBeOpened.isEmpty()) {
             emit listMimeInternal(m_mimeToBeOpened);
+            m_mimeToBeOpened.clear();
+        } else if(!m_categoryToBeOpened.isEmpty()) {
+            Category* c = new Category(m_categoryToBeOpened, this);
+            emit listCategoryInternal(c);
             m_mimeToBeOpened.clear();
         }
     }

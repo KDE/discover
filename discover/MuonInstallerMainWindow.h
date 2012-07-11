@@ -25,6 +25,7 @@
 #include <LibQApt/Globals>
 #include <MuonMainWindow.h>
 
+class Category;
 class QDeclarativeView;
 class ApplicationBackend;
 namespace QApt { class Backend; }
@@ -48,6 +49,7 @@ class MuonInstallerMainWindow : public MuonMainWindow
         void openApplication(const QString& app);
         QUrl featuredSource() const;
         void openMimeType(const QString& mime);
+        void openCategory(const QString& category);
 
     private slots:
         void triggerOpenApplication();
@@ -56,10 +58,12 @@ class MuonInstallerMainWindow : public MuonMainWindow
         void appBackendChanged();
         void openApplicationInternal(const QString& appname);
         void listMimeInternal(const QString& mime);
+        void listCategoryInternal(Category* c);
 
     private:
         QString m_appToBeOpened;
         QString m_mimeToBeOpened;
+        QString m_categoryToBeOpened;
         QDeclarativeView* m_view;
 };
 

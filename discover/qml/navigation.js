@@ -10,8 +10,8 @@ function openApplicationMime(mime) {
     openPage("document-open-data", mime, applicationListComp, { mimeTypeFilter: mime })
 }
 
-function openCategory(icon, name, cat) {
-    openPage(icon, name, categoryComp, { category: cat })
+function openCategory(cat) {
+    openPage(cat.icon, cat.name, categoryComp, { category: cat })
 }
 
 function openApplication(app) {

@@ -35,6 +35,17 @@ Category::Category(const QDomNode &data, CategoryChildPolicy policy)
     parseData(data);
 }
 
+Category::Category(const QString& name, QObject* parent)
+        : QObject(parent)
+        , m_name(name)
+        , m_iconString("applications-other")
+        , m_hasSubCategories(false)
+        , m_showTechnical(false)
+        , m_policy(NoChildren)
+{
+    m_andFilters.append(qMakePair(CategoryFilter, name));
+}
+
 Category::~Category()
 {}
 
