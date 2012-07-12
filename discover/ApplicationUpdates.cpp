@@ -24,7 +24,7 @@
 #include <ApplicationBackend.h>
 #include "MuonInstallerMainWindow.h"
 #include <LibQApt/Backend>
-#include <QDebug>
+#include <KDebug>
 
 ApplicationUpdates::ApplicationUpdates(QObject* parent): QObject(parent)
 {
@@ -42,17 +42,15 @@ ApplicationUpdates::ApplicationUpdates(QObject* parent): QObject(parent)
 void ApplicationUpdates::upgradeAll()
 {
     QApt::Backend* backend = BackendsSingleton::self()->backend();
-    QApt::PackageList packages = backend->upgradeablePackages();
-    foreach(QApt::Package* p, packages) {
-        p->setInstall();
-    }
+    backend->saveCacheState();
+    backend->markPackagesForUpgrade();
     backend->commitChanges();
 }
 
 void ApplicationUpdates::workerEvent(QApt::WorkerEvent e)
 {
     if(e==QApt::CommitChangesFinished) {
-        qDebug() << "updates done. Reloading...";
+        kDebug() << "updates done. Reloading...";
         
         //when it's done, trigger a reload of the whole system
         BackendsSingleton::self()->applicationBackend()->reload();
