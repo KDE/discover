@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Install More...
+Exec=muon-discover --category @category
+Icon=muondiscover
+Type=Application
+NoDisplay=true

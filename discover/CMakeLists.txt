@@ -29,4 +29,5 @@ target_link_libraries(muon-discover muonprivate
 
 install(TARGETS muon-discover ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
-install(PROGRAMS muon-discover.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
+install(PROGRAMS muon-discover.desktop muon-discover-category.desktop
+    DESTINATION ${XDG_APPS_INSTALL_DIR} )
