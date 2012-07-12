@@ -196,18 +196,21 @@ QAction* MuonInstallerMainWindow::getAction(const QString& name)
 
 void MuonInstallerMainWindow::openMimeType(const QString& mime)
 {
+    m_view->rootObject()->setProperty("defaultStartup", false);
     m_mimeToBeOpened = mime;
     triggerOpenApplication();
 }
 
 void MuonInstallerMainWindow::openApplication(const QString& app)
 {
+    m_view->rootObject()->setProperty("defaultStartup", false);
     m_appToBeOpened = app;
     triggerOpenApplication();
 }
 
 void MuonInstallerMainWindow::openCategory(const QString& category)
 {
+    m_view->rootObject()->setProperty("defaultStartup", false);
     m_categoryToBeOpened = category;
     triggerOpenApplication();
 }

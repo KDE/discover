@@ -13,8 +13,20 @@ Item {
     property Component browsingComp: Qt.createComponent("qrc:/qml/BrowsingPage.qml")
     property Component installedComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
     property Component sourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
-    property Component currentTopLevel: browsingComp
+    property Component currentTopLevel: defaultStartup ? browsingComp : loadingComponent
+    property bool defaultStartup: true
     property bool navigationEnabled: true
+    
+    Component {
+        id: loadingComponent
+        Page {
+            Label {
+                text: i18n("Loading...")
+                font.pointSize: 52
+                anchors.centerIn: parent
+            }
+        }
+    }
     
     onCurrentTopLevelChanged: {
         if(currentTopLevel==null)
