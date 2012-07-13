@@ -50,7 +50,7 @@ Item {
                     QIconItem {
                         anchors.right: icon.right
                         anchors.bottom: icon.bottom
-                        visible: isInstalled && !(view.model.stateFilter&(1<<8))
+                        visible: isInstalled && view.model.stateFilter!=2
                         icon: "dialog-ok"
                         height: 16
                         width: 16
