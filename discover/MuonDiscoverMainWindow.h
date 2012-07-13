@@ -25,6 +25,7 @@
 #include <LibQApt/Globals>
 #include <MuonMainWindow.h>
 
+class AbstractResource;
 class Category;
 class QDeclarativeView;
 class ApplicationBackend;
@@ -37,8 +38,6 @@ class MuonDiscoverMainWindow : public MuonMainWindow
         explicit MuonDiscoverMainWindow();
         virtual ~MuonDiscoverMainWindow();
 
-        ApplicationBackend* appBackend() const;
-        QApt::Backend* backend() const;
         Q_SCRIPTABLE QAction* getAction(const QString& name);
         virtual QSize sizeHint() const;
 
@@ -53,14 +52,12 @@ class MuonDiscoverMainWindow : public MuonMainWindow
         void triggerOpenApplication();
 
     signals:
-        void openApplicationInternal(const QString& appname);
+        void openApplicationInternal(AbstractResource* app);
         void listMimeInternal(const QString& mime);
         void listCategoryInternal(Category* c);
 
     private:
         QString m_appToBeOpened;
-        QString m_mimeToBeOpened;
-        QString m_categoryToBeOpened;
         QDeclarativeView* m_view;
 };
 

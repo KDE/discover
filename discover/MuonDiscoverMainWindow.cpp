@@ -181,18 +181,7 @@ void MuonDiscoverMainWindow::setBackend(QApt::Backend* b)
         return;
 
     BackendsSingleton::self()->initialize(b, this);
-    appBackend(); //here we force the retrieval of the appbackend to get ratings
-    connect(appBackend(), SIGNAL(backendReady()), SLOT(triggerOpenApplication()));
-}
-
-ApplicationBackend* MuonDiscoverMainWindow::appBackend() const
-{
-    return BackendsSingleton::self()->applicationBackend();
-}
-
-QApt::Backend* MuonDiscoverMainWindow::backend() const
-{
-    return BackendsSingleton::self()->backend();
+    BackendsSingleton::self()->applicationBackend(); //here we force the retrieval of the appbackend to get ratings
 }
 
 QAction* MuonDiscoverMainWindow::getAction(const QString& name)
@@ -202,9 +191,13 @@ QAction* MuonDiscoverMainWindow::getAction(const QString& name)
 
 void MuonDiscoverMainWindow::openMimeType(const QString& mime)
 {
-    m_view->rootObject()->setProperty("defaultStartup", false);
-    m_mimeToBeOpened = mime;
-    triggerOpenApplication();
+    emit listMimeInternal(mime);
+}
+
+void MuonDiscoverMainWindow::openCategory(const QString& category)
+{
+    Category* c = new Category(category, this);
+    emit listCategoryInternal(c);
 }
 
 void MuonDiscoverMainWindow::openApplication(const QString& app)
@@ -212,29 +205,17 @@ void MuonDiscoverMainWindow::openApplication(const QString& app)
     m_view->rootObject()->setProperty("defaultStartup", false);
     m_appToBeOpened = app;
     triggerOpenApplication();
-}
-
-void MuonDiscoverMainWindow::openCategory(const QString& category)
-{
-    m_view->rootObject()->setProperty("defaultStartup", false);
-    m_categoryToBeOpened = category;
-    triggerOpenApplication();
+    if(!m_appToBeOpened.isEmpty())
+        connect(BackendsSingleton::self()->appsModel(), SIGNAL(rowsInserted(QModelIndex, int, int)), SLOT(triggerOpenApplication()));
 }
 
 void MuonDiscoverMainWindow::triggerOpenApplication()
 {
-    if(m_view->rootObject()->property("state").toString()!="loading") {
-        if(!m_appToBeOpened.isEmpty()) {
-            emit openApplicationInternal(m_appToBeOpened);
-            m_appToBeOpened.clear();
-        } else if(!m_mimeToBeOpened.isEmpty()) {
-            emit listMimeInternal(m_mimeToBeOpened);
-            m_mimeToBeOpened.clear();
-        } else if(!m_categoryToBeOpened.isEmpty()) {
-            Category* c = new Category(m_categoryToBeOpened, this);
-            emit listCategoryInternal(c);
-            m_mimeToBeOpened.clear();
-        }
+    AbstractResource* app = BackendsSingleton::self()->appsModel()->applicationByPackageName(m_appToBeOpened);
+    if(app) {
+        emit openApplicationInternal(app);
+        m_appToBeOpened.clear();
+        disconnect(BackendsSingleton::self()->appsModel(), SIGNAL(rowsInserted(QModelIndex, int, int)), this, SLOT(triggerOpenApplication()));
     }
 }
 

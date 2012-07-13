@@ -64,6 +64,7 @@ void ApplicationUpdates::errorOccurred(QApt::ErrorCode e, const QVariantMap&)
 {
     switch(e) {
         case QApt::AuthError:
+            BackendsSingleton::self()->backend()->undo();
             emit updatesFinnished();
             break;
         default:

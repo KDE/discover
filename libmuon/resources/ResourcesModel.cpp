@@ -53,6 +53,7 @@ ResourcesModel::ResourcesModel(QObject* parent)
     roles[IsTechnicalRole] = "isTechnical";
     roles[CategoryRole] = "category";
     roles[SectionRole] = "section";
+    roles[MimeTypes] = "mimetypes";
     setRoleNames(roles);
 }
 
@@ -109,7 +110,7 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
         }
         default:
             if(resource->metaObject()->indexOfProperty(roleNames().value(role)) < 0)
-                qDebug() << "heyy!" << roleNames().value(role);
+                qDebug() << "unknown role:" << role << roleNames().value(role);
             return resource->property(roleNames().value(role));
     }
 }

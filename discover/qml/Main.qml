@@ -4,7 +4,6 @@ import "navigation.js" as Navigation
 
 Item {
     id: window
-    state: "loading" //changed onAppBackendChanged
     property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
     property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
     property Component categoryComp: Qt.createComponent("qrc:/qml/CategoryPage.qml")
@@ -124,7 +123,7 @@ Item {
     
     Connections {
         target: app
-        onOpenApplicationInternal: Navigation.openApplication(resourcesModel.resourceByPackageName(appname))
+        onOpenApplicationInternal: Navigation.openApplication(app)
         onListMimeInternal: Navigation.openApplicationMime(mime)
         onListCategoryInternal: Navigation.openApplicationList(c.icon, c.name, c, "")
     }
