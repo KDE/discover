@@ -57,7 +57,8 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
             PackageNameRole,
             IsTechnicalRole,
             CategoryRole,
-            SectionRole
+            SectionRole,
+            MimeTypes
         };
         explicit ResourcesModel(QObject* parent=0);
         

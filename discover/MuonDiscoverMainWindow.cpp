@@ -180,7 +180,6 @@ void MuonDiscoverMainWindow::setBackend(QApt::Backend* b)
     if (!m_view->rootObject())
         return;
 
-    connect(b, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)), SLOT(discardAuthError(QApt::ErrorCode,QVariantMap)));
     BackendsSingleton::self()->initialize(b, this);
     appBackend(); //here we force the retrieval of the appbackend to get ratings
     connect(appBackend(), SIGNAL(backendReady()), SLOT(triggerOpenApplication()));

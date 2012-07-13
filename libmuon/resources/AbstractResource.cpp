@@ -56,3 +56,8 @@ void AbstractResource::fetchScreenshots()
 {
     emit screenshotsFetched(QList<QUrl>() << thumbnailUrl(), QList<QUrl>() << screenshotUrl());
 }
+
+QString AbstractResource::mimetypes() const
+{
+    return QString();
+}

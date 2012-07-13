@@ -27,7 +27,7 @@
 #include "libmuonprivate_export.h"
 #include "PackageState.h"
 
-class MUONPRIVATE_EXPORT          AbstractResource : public QObject
+class MUONPRIVATE_EXPORT AbstractResource : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ name CONSTANT)
@@ -51,6 +51,7 @@ class MUONPRIVATE_EXPORT          AbstractResource : public QObject
     Q_PROPERTY(QString availableVersion READ availableVersion CONSTANT)
     Q_PROPERTY(QString section READ section CONSTANT)
     Q_PROPERTY(int popcon READ popularityContest CONSTANT)
+    Q_PROPERTY(QString mimetypes READ mimetypes CONSTANT)
     public:
         enum State {
             Broken,
@@ -102,6 +103,9 @@ class MUONPRIVATE_EXPORT          AbstractResource : public QObject
         
         virtual QString origin() const = 0;
         virtual QString section() = 0;
+        
+        ///@returns what kind of mime types the resource can consume
+        virtual QString mimetypes() const;
         
         /** Popularity rating by Ubuntu.
          * Maybe we should deprecate? we don't really have a scale for this

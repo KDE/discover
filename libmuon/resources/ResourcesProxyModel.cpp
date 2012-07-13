@@ -156,6 +156,9 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
     
     if(idx.data(ResourcesModel::StateRole).toInt()<m_stateFilter)
         return false;
+    if(!m_filteredMimeType.isEmpty() && !idx.data(ResourcesModel::MimeTypes).toString().contains(m_filteredMimeType)) {
+        return false;
+    }
 
     if (!m_orFilters.isEmpty()) {
         bool orValue = false;
@@ -248,9 +251,20 @@ bool ResourcesProxyModel::isFilteringBySearch() const
 void ResourcesProxyModel::setStateFilter(AbstractResource::State s)
 {
     m_stateFilter = s;
+    emit stateFilterChanged();
 }
 
 AbstractResource::State ResourcesProxyModel::stateFilter() const
 {
     return m_stateFilter;
+}
+
+QString ResourcesProxyModel::mimeTypeFilter() const
+{
+    return m_filteredMimeType;
+}
+
+void ResourcesProxyModel::setMimeTypeFilter(const QString& mime)
+{
+    m_filteredMimeType = mime;
 }
