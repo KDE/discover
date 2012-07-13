@@ -19,34 +19,35 @@
  ***************************************************************************/
 
 #include "ApplicationUpdates.h"
-#include "BackendsSingleton.h"
 #include <Application.h>
 #include <ApplicationBackend.h>
-#include "MuonDiscoverMainWindow.h"
 #include <LibQApt/Backend>
 #include <KDebug>
+#include <QIcon>
 
 // FIXME: Only supports APT
 
-ApplicationUpdates::ApplicationUpdates(QObject* parent): QObject(parent)
+ApplicationUpdates::ApplicationUpdates(QApt::Backend* backend, ApplicationBackend* parent)
+    : AbstractBackendUpdater(parent)
+    , m_aptBackend(backend)
+    , m_appBackend(parent)
 {
-    QApt::Backend* backend = BackendsSingleton::self()->backend();
+    Q_ASSERT(backend);
     connect(backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)), this,
             SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
     connect(backend, SIGNAL(commitProgress(QString,int)),
-            SIGNAL(progress(QString,int)));
-    connect(backend, SIGNAL(downloadMessage(int,QString)), SIGNAL(downloadMessage(int,QString)));
-    connect(backend, SIGNAL(debInstallMessage(QString)), SIGNAL(installMessage(QString)));
+            SLOT(progress(QString,int)));
+    connect(backend, SIGNAL(downloadMessage(int,QString)), SLOT(downloadMessage(int,QString)));
+    connect(backend, SIGNAL(debInstallMessage(QString)), SLOT(installMessage(QString)));
     connect(backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
             this, SLOT(workerEvent(QApt::WorkerEvent)));
 }
 
-void ApplicationUpdates::upgradeAll()
+void ApplicationUpdates::start()
 {
-    QApt::Backend* backend = BackendsSingleton::self()->backend();
-    backend->saveCacheState();
-    backend->markPackagesForUpgrade();
-    backend->commitChanges();
+    m_aptBackend->saveCacheState();
+    m_aptBackend->markPackagesForUpgrade();
+    m_aptBackend->commitChanges();
 }
 
 void ApplicationUpdates::workerEvent(QApt::WorkerEvent e)
@@ -55,7 +56,7 @@ void ApplicationUpdates::workerEvent(QApt::WorkerEvent e)
         kDebug() << "updates done. Reloading...";
         
         //when it's done, trigger a reload of the whole system
-        BackendsSingleton::self()->applicationBackend()->reload();
+        m_appBackend->reload();
         emit updatesFinnished();
     }
 }
@@ -64,10 +65,36 @@ void ApplicationUpdates::errorOccurred(QApt::ErrorCode e, const QVariantMap&)
 {
     switch(e) {
         case QApt::AuthError:
-            BackendsSingleton::self()->backend()->undo();
-            emit updatesFinnished();
+            m_aptBackend->undo();
             break;
         default:
             break;
     }
+    emit updatesFinnished();
+}
+
+bool ApplicationUpdates::hasUpdates() const
+{
+    return m_appBackend->updatesCount()>0;
+}
+
+qreal ApplicationUpdates::progress() const
+{
+    return m_progress;
+}
+
+void ApplicationUpdates::progress(const QString& msg, int percentage)
+{
+    m_progress = qreal(percentage)/100;
+    emit message(QIcon(), msg);
+}
+
+void ApplicationUpdates::downloadMessage(int flag, const QString& msg)
+{
+    emit message(QIcon::fromTheme("download"), msg);
+}
+
+void ApplicationUpdates::installMessage(const QString& msg)
+{
+    emit message(QIcon(), msg);
 }

@@ -55,6 +55,7 @@ public:
 
     bool isFetching() const;
     Attica::Provider* provider() { return &m_provider; }
+    QList<AbstractResource*> upgradeablePackages();
 
 public slots:
     void receivedEntries(const KNS3::Entry::List& entry);

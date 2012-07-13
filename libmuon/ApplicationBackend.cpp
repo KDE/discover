@@ -42,6 +42,7 @@
 #include "Application.h"
 #include "ReviewsBackend/ReviewsBackend.h"
 #include "Transaction/Transaction.h"
+#include "ApplicationModel/ApplicationUpdates.h"
 
 ApplicationBackend::ApplicationBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
@@ -49,6 +50,7 @@ ApplicationBackend::ApplicationBackend(QObject *parent)
     , m_reviewsBackend(new ReviewsBackend(this))
     , m_isReloading(false)
     , m_currentTransaction(0)
+    , m_backendUpdater(0)
 {
     m_watcher = new QFutureWatcher<QVector<Application*> >(this);
     connect(m_watcher, SIGNAL(finished()), this, SLOT(setApplications()));
@@ -122,6 +124,8 @@ void ApplicationBackend::setBackend(QApt::Backend *backend)
             this, SLOT(workerEvent(QApt::WorkerEvent)));
     connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)),
             this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
+    
+    m_backendUpdater = new ApplicationUpdates(m_backend, this);
 }
 
 void ApplicationBackend::setApplications()
@@ -569,4 +573,10 @@ QPair<TransactionStateTransition, Transaction*> ApplicationBackend::currentTrans
 bool ApplicationBackend::providesResouce(AbstractResource* res) const
 {
     return qobject_cast<Application*>(res);
+}
+
+AbstractBackendUpdater* ApplicationBackend::backendUpdater() const
+{
+    Q_ASSERT(m_backendUpdater);
+    return m_backendUpdater;
 }

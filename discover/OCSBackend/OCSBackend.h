@@ -45,6 +45,7 @@ class OCSBackend : public AbstractResourcesBackend
         virtual QStringList searchPackageName(const QString& searchText);
         virtual QList< Transaction* > transactions() const { return QList<Transaction*>(); }
         virtual int updatesCount() const { return 0; }
+        virtual AbstractBackendUpdater* backendUpdater() const { return 0; }
 
     private slots:
         void providersLoaded();

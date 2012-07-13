@@ -206,6 +206,16 @@ int KNSBackend::updatesCount() const
     return ret;
 }
 
+QList<AbstractResource*> KNSBackend::upgradeablePackages()
+{
+    QList<AbstractResource*> ret;
+    foreach(AbstractResource* r, m_resourcesByName) {
+        if(r->state()==AbstractResource::Upgradeable)
+            ret+=r;
+    }
+    return ret;
+}
+
 AbstractReviewsBackend* KNSBackend::reviewsBackend() const
 {
     return m_reviews;

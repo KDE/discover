@@ -30,6 +30,7 @@ set(muon_LIB_SRCS
     ApplicationModel/ApplicationModel.cpp
     ApplicationModel/ApplicationProxyModel.cpp
     ApplicationModel/LaunchListModel.cpp
+    ApplicationModel/ApplicationUpdates.cpp
     ChangesDialog.cpp
     MuonMainWindow.cpp
     MuonStrings.cpp
@@ -54,6 +55,8 @@ set(muon_LIB_SRCS
     resources/AbstractResourcesBackend.cpp
     resources/AbstractResource.cpp
     resources/PackageState.cpp
+    resources/AbstractBackendUpdater.cpp
+    resources/ResourcesUpdatesModel.cpp
 )
 qt4_add_dbus_interface(muon_LIB_SRCS ReviewsBackend/ubuntu_sso_dbus_interface.xml ubuntu_sso -i "ReviewsBackend/LoginMetaTypes.h")
 

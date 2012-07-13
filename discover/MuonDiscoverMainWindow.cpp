@@ -58,12 +58,12 @@
 #include <ApplicationModel/LaunchListModel.h>
 #include <ApplicationModel/ApplicationModel.h>
 #include <resources/ResourcesModel.h>
+#include <resources/ResourcesUpdatesModel.h>
 
 // Own includes
 #include "ApplicationProxyModelHelper.h"
 #include "BackendsSingleton.h"
 #include "ReviewsModel.h"
-#include "ApplicationUpdates.h"
 #include "OriginsBackend.h"
 #include "ApplicationAddonsModel.h"
 #include "ScreenshotsModel.h"
@@ -115,11 +115,11 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     qmlRegisterType<ApplicationProxyModelHelper>("org.kde.muon", 1, 0, "ApplicationProxyModel");
     qmlRegisterType<TransactionListener>("org.kde.muon", 1, 0, "TransactionListener");
     qmlRegisterType<ReviewsModel>("org.kde.muon", 1, 0, "ReviewsModel");
-    qmlRegisterType<ApplicationUpdates>("org.kde.muon", 1, 0, "ApplicationUpdates");
     qmlRegisterType<LaunchListModel>("org.kde.muon", 1, 0, "LaunchListModel");
     qmlRegisterType<OriginsBackend>("org.kde.muon", 1, 0, "OriginsBackend");
     qmlRegisterType<ApplicationAddonsModel>("org.kde.muon", 1, 0, "ApplicationAddonsModel");
     qmlRegisterType<ScreenshotsModel>("org.kde.muon", 1, 0, "ScreenshotsModel");
+    qmlRegisterType<ResourcesUpdatesModel>("org.kde.muon", 1, 0, "ResourcesUpdatesModel");
     qmlRegisterType<AbstractReviewsBackend>();
     qmlRegisterType<Rating>();
     qmlRegisterType<Application>();

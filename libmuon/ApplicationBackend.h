@@ -79,6 +79,8 @@ public:
     void installApplication(AbstractResource *app);
     void removeApplication(AbstractResource *app);
     void cancelTransaction(AbstractResource *app);
+    
+    virtual AbstractBackendUpdater* backendUpdater() const;
 private:
     QApt::Backend *m_backend;
     ReviewsBackend *m_reviewsBackend;
@@ -94,6 +96,7 @@ private:
     QPair<QApt::WorkerEvent, Transaction *> m_workerState;
 
     DebconfKde::DebconfGui *m_debconfGui;
+    AbstractBackendUpdater* m_backendUpdater;
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void reload();

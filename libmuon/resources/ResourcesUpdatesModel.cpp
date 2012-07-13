@@ -18,28 +18,56 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONUPDATES_H
-#define APPLICATIONUPDATES_H
-#include <QObject>
-#include <LibQApt/Globals>
+#include "ResourcesUpdatesModel.h"
+#include "ResourcesModel.h"
+#include "AbstractBackendUpdater.h"
 
-class Application;
-class ApplicationUpdates : public QObject
+ResourcesUpdatesModel::ResourcesUpdatesModel(QObject* parent)
+    : QStandardItemModel(parent)
+    , m_resources(0)
 {
-    Q_OBJECT
-    public:
-        explicit ApplicationUpdates(QObject* parent = 0);
-        Q_SCRIPTABLE void upgradeAll();
-        
-    signals:
-        void progress(const QString& text, int percentage);
-        void downloadMessage(int code, const QString& msg);
-        void installMessage(const QString& msg);
-        void updatesFinnished();
-        
-    public slots:
-        void workerEvent(QApt::WorkerEvent);
-        void errorOccurred(QApt::ErrorCode, const QVariantMap& error);
-};
+}
 
-#endif // APPLICATIONUPDATES_H
+ResourcesModel* ResourcesUpdatesModel::resourcesModel() const
+{
+    return m_resources;
+}
+
+void ResourcesUpdatesModel::setResourcesModel(ResourcesModel* model)
+{
+    m_resources = model;
+    QVector< AbstractResourcesBackend* > backends = model->backends();
+    foreach(AbstractResourcesBackend* b, backends) {
+        AbstractBackendUpdater* updater = b->backendUpdater();
+        if(updater->hasUpdates()) {
+            connect(updater, SIGNAL(progressChanged(qreal)), SIGNAL(progressChanged()));
+            connect(updater, SIGNAL(message(QIcon,QString)), SLOT(message(QIcon,QString)));
+            m_updaters += updater;
+        }
+    }
+    
+    if(m_updaters.isEmpty())
+        emit updatesFinnished();
+}
+
+qreal ResourcesUpdatesModel::progress() const
+{
+    qreal total = 0;
+    foreach(AbstractBackendUpdater* updater, m_updaters) {
+        total += updater->progress();
+    }
+    return total / m_updaters.count();
+}
+
+void ResourcesUpdatesModel::message(const QIcon& icon, const QString& msg)
+{
+    QStandardItem* item = new QStandardItem(icon, msg);
+    appendRow(item);
+}
+
+void ResourcesUpdatesModel::updateAll()
+{
+    Q_ASSERT(m_resources);
+    foreach(AbstractBackendUpdater* upd, m_updaters)
+        upd->start();
+}

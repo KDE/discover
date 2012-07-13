@@ -9,12 +9,9 @@ Page
     property real actualWidth: width-Math.pow(width/70, 2)
     property real sideMargin: (width-actualWidth)/2
     
-    function start() { updates.upgradeAll() }
-    ApplicationUpdates {
-        id: updates
-        onProgress: { progress.value=percentage; message.text+=text+'\n' }
-        onDownloadMessage: { message.text+=msg+'\n' }
-        onInstallMessage: { message.text+=msg+'\n' }
+    function start() { updatesModel.updateAll() }
+    ResourcesUpdatesModel {
+        id: updatesModel
         
         onUpdatesFinnished: pageStack.pop()
     }
@@ -29,7 +26,7 @@ Page
             rightMargin: sideMargin
             leftMargin: sideMargin
         }
-        
+        value: updatesModel.progress*100
         minimumValue: 0
         maximumValue: 100
     }
@@ -53,7 +50,7 @@ Page
         imagePath: "widgets/lineedit"
         prefix: "base"
     }
-    Flickable {
+    ListView {
         id: messageFlickable
         anchors {
             top: progress.bottom
@@ -66,16 +63,7 @@ Page
             bottomMargin: 10
         }
         clip: true
-        contentHeight: message.height
-        
-        Label {
-            id: message
-            width: parent.width-messageScroll.width
-            wrapMode: Text.WordWrap
-            onTextChanged: {
-                if(message.height>messageFlickable.height)
-                    messageFlickable.contentY=message.height-messageFlickable.height
-            }
-        }
+        model: updatesModel
+        delegate: Label { text: display }
     }
 }

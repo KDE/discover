@@ -37,6 +37,7 @@ enum TransactionStateTransition {
 class Transaction;
 class AbstractReviewsBackend;
 class AbstractResource;
+class AbstractBackendUpdater;
 
 class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
 {
@@ -48,6 +49,7 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
         virtual QVector<AbstractResource*> allResources() const = 0;
         virtual QStringList searchPackageName(const QString &searchText) = 0;
         virtual AbstractReviewsBackend* reviewsBackend() const = 0;
+        virtual AbstractBackendUpdater* backendUpdater() const = 0;
         virtual int updatesCount() const = 0;
         virtual QPair<TransactionStateTransition, Transaction *> currentTransactionState() const = 0;
         virtual QList<Transaction*> transactions() const = 0;
