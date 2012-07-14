@@ -75,7 +75,7 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         }
     case Qt::FontRole: {
         QFont font;
-        if ((item->type() == UpdateItem::CategoryItem) && column == 1) {
+        if ((item->type() == UpdateItem::ItemType::CategoryItem) && column == 1) {
             font.setBold(true);
             return font;
         }
@@ -226,15 +226,15 @@ bool UpdateModel::setData(const QModelIndex &index, const QVariant &value, int r
     if (role == Qt::CheckStateRole) {
         UpdateItem *item = static_cast<UpdateItem*>(index.internalPointer());
         bool newValue = value.toBool();
-        int type = item->type();
+        UpdateItem::ItemType type = item->type();
 
         QList<Application *> apps;
-        if (type == UpdateItem::CategoryItem) {
+        if (type == UpdateItem::ItemType::CategoryItem) {
             // Collect items to (un)check
             foreach (UpdateItem *child, item->children()) {
                 apps << child->app();
             }
-        } else if (type == UpdateItem::ApplicationItem) {
+        } else if (type == UpdateItem::ItemType::ApplicationItem) {
             apps << item->app();
         }
 

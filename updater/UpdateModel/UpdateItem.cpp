@@ -27,6 +27,7 @@
 UpdateItem::UpdateItem()
     : m_app(0)
     , m_parent(0)
+    , m_type(ItemType::RootItem)
 {
 }
 
@@ -34,6 +35,7 @@ UpdateItem::UpdateItem(const QString &categoryName,
                        const KIcon &categoryIcon)
     : m_app(0)
     , m_parent(0)
+    , m_type(ItemType::CategoryItem)
     , m_categoryName(categoryName)
     , m_categoryIcon(categoryIcon)
 {
@@ -42,6 +44,7 @@ UpdateItem::UpdateItem(const QString &categoryName,
 UpdateItem::UpdateItem(Application *app, UpdateItem *parent)
     : m_app(app)
     , m_parent(parent)
+    , m_type(ItemType::ApplicationItem)
 {
 }
 
@@ -101,6 +104,12 @@ int UpdateItem::row() const
     return 0;
 }
 
+void UpdateItem::sort()
+{
+    qSort(m_children.begin(), m_children.end(),
+          [](UpdateItem *a, UpdateItem *b) { return a->name() < b->name(); });
+}
+
 Application *UpdateItem::app() const
 {
     return m_app;
@@ -109,9 +118,9 @@ Application *UpdateItem::app() const
 QString UpdateItem::name() const
 {
     switch (type()) {
-    case CategoryItem:
+    case ItemType::CategoryItem:
         return m_categoryName;
-    case ApplicationItem:
+    case ItemType::ApplicationItem:
         if (m_app->package()->isForeignArch()) {
             return QString(m_app->name() % QLatin1String(" (")
                     % m_app->package()->architecture() % ')');
@@ -127,9 +136,9 @@ QString UpdateItem::name() const
 QString UpdateItem::version() const
 {
     switch (type()) {
-    case ApplicationItem:
+    case ItemType::ApplicationItem:
         return m_app->package()->availableVersion();
-    case CategoryItem:
+    case ItemType::CategoryItem:
     default:
         break;
     }
@@ -140,9 +149,9 @@ QString UpdateItem::version() const
 KIcon UpdateItem::icon() const
 {
     switch (type()) {
-    case CategoryItem:
+    case ItemType::CategoryItem:
         return m_categoryIcon;
-    case ApplicationItem:
+    case ItemType::ApplicationItem:
         return KIcon(m_app->icon());
     default:
         return KIcon();
@@ -153,12 +162,12 @@ KIcon UpdateItem::icon() const
 
 qint64 UpdateItem::size() const
 {
-    int itemType = type();
+    ItemType itemType = type();
     int size = 0;
 
-    if (itemType == ApplicationItem) {
+    if (itemType == ItemType::ApplicationItem) {
         size = m_app->package()->downloadSize();
-    } else if (itemType == CategoryItem) {
+    } else if (itemType == ItemType::CategoryItem) {
         foreach (UpdateItem *item, m_children) {
             if (item->app()->package()->state() & QApt::Package::ToUpgrade) {
                 size += item->size();
@@ -171,11 +180,11 @@ qint64 UpdateItem::size() const
 
 Qt::CheckState UpdateItem::checked() const
 {
-    int itemType = type();
+    ItemType itemType = type();
     Qt::CheckState checkState = Qt::Unchecked;
 
     switch (itemType) {
-    case CategoryItem: {
+    case ItemType::CategoryItem: {
         int checkedCount = 0;
         int uncheckedCount = 0;
 
@@ -196,9 +205,12 @@ Qt::CheckState UpdateItem::checked() const
         }
         break;
     }
-    case ApplicationItem:
+    case ItemType::ApplicationItem:
         (app()->package()->state() & QApt::Package::ToUpgrade) ?
                     checkState = Qt::Checked : checkState = Qt::Unchecked;
+        break;
+    case ItemType::RootItem:
+    case ItemType::InvalidItem:
         break;
     }
 
@@ -207,14 +219,5 @@ Qt::CheckState UpdateItem::checked() const
 
 UpdateItem::ItemType UpdateItem::type() const
 {
-    if (!m_parent) {
-        return RootItem;
-    }
-
-    // We now know we have a parent
-    if (parent()->parent() == 0) {
-        return CategoryItem;
-    } else {
-        return ApplicationItem;
-    }
+    return m_type;
 }
