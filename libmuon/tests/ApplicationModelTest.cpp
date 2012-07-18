@@ -74,11 +74,11 @@ void ApplicationModelTest::testReload()
         appNames[i]=app->packageName();
         QVERIFY(app->isValid());
         
-        app->fetchScreenshots();
+//         app->fetchScreenshots();
     }
     
     m_appBackend->reload();
-//     m_appBackend->updatesCount();
+    m_appBackend->updatesCount();
     QCOMPARE(apps, m_appBackend->applicationList() );
     
     QVERIFY(!apps.isEmpty());
