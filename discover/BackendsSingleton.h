@@ -21,7 +21,6 @@
 #define BACKENDSSINGLETON_H
 #include <LibQApt/Globals>
 
-class OCSBackend;
 class AbstractResourcesBackend;
 class QMainWindow;
 class ResourcesModel;
@@ -49,15 +48,12 @@ signals:
     void initialized();
     
 private:
-    AbstractResourcesBackend* ocsBackend();
-    
     static BackendsSingleton* m_self;
     ResourcesModel* m_appsModel;
     QApt::Backend* m_backend;
     QApt::CacheState m_originalState;
     ApplicationBackend* m_applicationBackend;
     MuonDiscoverMainWindow* m_mainWindow;
-    OCSBackend* m_ocsBackend;
 };
 
 #endif // BACKENDSSINGLETON_H

@@ -12,8 +12,6 @@ set(muon_discover_SRCS
     OriginsBackend.cpp
     ApplicationAddonsModel.cpp
     ScreenshotsModel.cpp
-    OCSBackend/OCSBackend.cpp
-    OCSBackend/OCSResource.cpp
     KNSBackend/KNSBackend.cpp
     KNSBackend/KNSResource.cpp
     KNSBackend/KNSReviews.cpp

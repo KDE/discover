@@ -19,7 +19,6 @@
 
 #include "BackendsSingleton.h"
 #include "MuonDiscoverMainWindow.h"
-#include "OCSBackend/OCSBackend.h"
 #include "KNSBackend/KNSBackend.h"
 #include <LibQApt/Backend>
 #include <ApplicationBackend.h>
@@ -40,7 +39,6 @@ BackendsSingleton::BackendsSingleton()
     , m_backend(0)
     , m_applicationBackend(0)
     , m_mainWindow(0)
-    , m_ocsBackend(0)
 {}
 
 ApplicationBackend* BackendsSingleton::applicationBackend()
@@ -62,14 +60,6 @@ ResourcesModel* BackendsSingleton::appsModel()
 //         m_appsModel->addResourcesBackend(new KNSBackend("comic.knsrc", "face-smile-big", this));
     }
     return m_appsModel;
-}
-
-AbstractResourcesBackend* BackendsSingleton::ocsBackend()
-{
-    if(!m_ocsBackend) {
-        m_ocsBackend = new OCSBackend(this);
-    }
-    return m_ocsBackend;
 }
 
 void BackendsSingleton::initialize(QApt::Backend* b, MuonDiscoverMainWindow* main)
