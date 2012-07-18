@@ -35,7 +35,7 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
 void KNSBackendTest::testRetrieval()
 {
     ResourcesModel model;
-    m_backend = new KNSBackend("comic.knsrc", this);
+    m_backend = new KNSBackend("comic.knsrc", "face-smile-big", this);
     model.addResourcesBackend(m_backend);
     QTest::kWaitForSignal(m_backend, SIGNAL(backendReady()));
     

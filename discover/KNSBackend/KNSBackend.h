@@ -52,6 +52,7 @@ public:
     virtual AbstractReviewsBackend* reviewsBackend() const;
     virtual QStringList searchPackageName(const QString& searchText);
     virtual QVector< AbstractResource* > allResources() const;
+    virtual AbstractBackendUpdater* backendUpdater() const { return 0; } //TODO: implement
 
     bool isFetching() const;
     Attica::Provider* provider() { return &m_provider; }
