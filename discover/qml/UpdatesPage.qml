@@ -12,7 +12,7 @@ Page
     function start() { updatesModel.updateAll() }
     ResourcesUpdatesModel {
         id: updatesModel
-        
+        resources: resourcesModel
         onUpdatesFinnished: pageStack.pop()
     }
     onVisibleChanged: window.navigationEnabled=!visible

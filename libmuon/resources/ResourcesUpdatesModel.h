@@ -30,7 +30,7 @@ class ResourcesModel;
 class MUONPRIVATE_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 {
     Q_OBJECT
-    Q_PROPERTY(ResourcesModel* resourcesModel READ resourcesModel WRITE setResourcesModel)
+    Q_PROPERTY(ResourcesModel* resources READ resourcesModel WRITE setResourcesModel)
     Q_PROPERTY(qreal progress READ progress NOTIFY progressChanged);
     public:
         explicit ResourcesUpdatesModel(QObject* parent = 0);

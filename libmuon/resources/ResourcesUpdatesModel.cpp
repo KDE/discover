@@ -35,6 +35,7 @@ ResourcesModel* ResourcesUpdatesModel::resourcesModel() const
 
 void ResourcesUpdatesModel::setResourcesModel(ResourcesModel* model)
 {
+    Q_ASSERT(model);
     m_resources = model;
     QVector< AbstractResourcesBackend* > backends = model->backends();
     foreach(AbstractResourcesBackend* b, backends) {
