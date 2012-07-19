@@ -149,10 +149,6 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
             return false;
         }
     }
-
-    //TODO: we shouldn't even add those to the Model
-//     if (application->package()->isMultiArchDuplicate())
-//         return false;
     
     if(idx.data(ResourcesModel::StateRole).toInt()<m_stateFilter)
         return false;
@@ -183,11 +179,11 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
         for(QList<QPair<FilterType, QString> >::const_iterator filter = m_notFilters.constBegin(); filter != m_notFilters.constEnd(); ++filter) {
             bool value = true;
             if(filter->first==PkgNameFilter)
-                value = idx.data(ResourcesModel::PackageNameRole) == filter->second;
+                value = idx.data(ResourcesModel::PackageNameRole).toString() == filter->second;
             else
-                value = !shouldFilter(idx, *filter);
+                value = shouldFilter(idx, *filter);
             
-            if(!value)
+            if(value)
                 return false;
         }
     }
