@@ -34,7 +34,7 @@ Page {
         id: appsModel
         stringSortRole: "ratingPoints"
         sortOrder: Qt.DescendingOrder
-        shouldShowTechnical: page.shouldShowTechnical
+        isShowingTechnical: page.shouldShowTechnical
         
         Component.onCompleted: sortModel()
     }
