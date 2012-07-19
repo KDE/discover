@@ -21,6 +21,7 @@
 #include "ResourcesUpdatesModel.h"
 #include "ResourcesModel.h"
 #include "AbstractBackendUpdater.h"
+#include <QDebug>
 
 ResourcesUpdatesModel::ResourcesUpdatesModel(QObject* parent)
     : QStandardItemModel(parent)
@@ -37,18 +38,17 @@ void ResourcesUpdatesModel::setResourcesModel(ResourcesModel* model)
 {
     Q_ASSERT(model);
     m_resources = model;
+    m_updaters.clear();
     QVector< AbstractResourcesBackend* > backends = model->backends();
     foreach(AbstractResourcesBackend* b, backends) {
         AbstractBackendUpdater* updater = b->backendUpdater();
-        if(updater->hasUpdates()) {
+        if(updater && updater->hasUpdates()) {
             connect(updater, SIGNAL(progressChanged(qreal)), SIGNAL(progressChanged()));
             connect(updater, SIGNAL(message(QIcon,QString)), SLOT(message(QIcon,QString)));
+            connect(updater, SIGNAL(updatesFinnished()), SLOT(updaterFinished()));
             m_updaters += updater;
         }
     }
-    
-    if(m_updaters.isEmpty())
-        emit updatesFinnished();
 }
 
 qreal ResourcesUpdatesModel::progress() const
@@ -57,6 +57,7 @@ qreal ResourcesUpdatesModel::progress() const
     foreach(AbstractBackendUpdater* updater, m_updaters) {
         total += updater->progress();
     }
+    qDebug() << "fuuuuuuuu" << total << m_updaters.count();
     return total / m_updaters.count();
 }
 
@@ -69,6 +70,17 @@ void ResourcesUpdatesModel::message(const QIcon& icon, const QString& msg)
 void ResourcesUpdatesModel::updateAll()
 {
     Q_ASSERT(m_resources);
-    foreach(AbstractBackendUpdater* upd, m_updaters)
+    m_finishedUpdaters = 0;
+    
+    if(m_updaters.isEmpty())
+        emit updatesFinnished();
+    else foreach(AbstractBackendUpdater* upd, m_updaters)
         upd->start();
+}
+
+void ResourcesUpdatesModel::updaterFinished()
+{
+    m_finishedUpdaters++;
+    if(m_finishedUpdaters==m_updaters.size())
+        emit updatesFinnished();
 }

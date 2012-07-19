@@ -47,9 +47,11 @@ class MUONPRIVATE_EXPORT ResourcesUpdatesModel : public QStandardItemModel
     private:
         ResourcesModel* m_resources;
         QVector<AbstractBackendUpdater*> m_updaters;
+        int m_finishedUpdaters;
 
     private slots:
         void message(const QIcon& icon, const QString& msg);
+        void updaterFinished();
 };
 
 #endif // RESOURCESUPDATESMODEL_H
