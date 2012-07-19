@@ -87,6 +87,7 @@ void ApplicationUpdates::progress(const QString& msg, int percentage)
 {
     m_progress = qreal(percentage)/100;
     emit message(QIcon(), msg);
+    emit progressChanged(m_progress);
 }
 
 void ApplicationUpdates::downloadMessage(int flag, const QString& msg)
