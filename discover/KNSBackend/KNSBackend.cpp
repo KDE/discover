@@ -21,6 +21,7 @@
 #include "KNSBackend.h"
 #include "KNSResource.h"
 #include "KNSReviews.h"
+#include "KNSUpdater.h"
 #include <Transaction/Transaction.h>
 #include <knewstuff3/downloadmanager.h>
 #include <QDebug>
@@ -37,6 +38,7 @@ KNSBackend::KNSBackend(const QString& configName, const QString& iconName, QObje
     , m_reviews(new KNSReviews(this))
     , m_fetching(true)
     , m_iconName(iconName)
+    , m_updater(new KNSUpdater(this))
 {
     m_name = KStandardDirs::locate("config", configName);
     KConfig conf(m_name);
@@ -239,4 +241,9 @@ QVector< AbstractResource* > KNSBackend::allResources() const
 bool KNSBackend::isFetching() const
 {
     return m_fetching;
+}
+
+AbstractBackendUpdater* KNSBackend::backendUpdater() const
+{
+    return m_updater;
 }

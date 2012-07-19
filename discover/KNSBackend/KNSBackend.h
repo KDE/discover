@@ -26,6 +26,7 @@
 #include <attica/category.h>
 #include <attica/provider.h>
 
+class KNSUpdater;
 class KNSReviews;
 namespace KNS3 { class DownloadManager; }
 namespace Attica {
@@ -52,7 +53,7 @@ public:
     virtual AbstractReviewsBackend* reviewsBackend() const;
     virtual QStringList searchPackageName(const QString& searchText);
     virtual QVector< AbstractResource* > allResources() const;
-    virtual AbstractBackendUpdater* backendUpdater() const { return 0; } //TODO: implement
+    virtual AbstractBackendUpdater* backendUpdater() const;
 
     bool isFetching() const;
     Attica::Provider* provider() { return &m_provider; }
@@ -76,6 +77,7 @@ private:
     QString m_name;
     bool m_fetching;
     QString m_iconName;
+    KNSUpdater* m_updater;
 };
 
 #endif // KNSBACKEND_H
