@@ -12,6 +12,7 @@ Page {
     property alias originFilter: appsModel.originFilter
     property alias mimeTypeFilter: appsModel.mimeTypeFilter
     property alias stateFilter: appsModel.stateFilter
+    property bool shouldShowTechnical: category ? category.shouldShowTechnical: false
     property string sectionProperty: ""
     property string search: ""
     property Component sectionDelegate: null
@@ -33,6 +34,7 @@ Page {
         id: appsModel
         stringSortRole: "ratingPoints"
         sortOrder: Qt.DescendingOrder
+        shouldShowTechnical: page.shouldShowTechnical
         
         Component.onCompleted: sortModel()
     }
