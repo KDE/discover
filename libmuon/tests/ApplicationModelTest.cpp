@@ -73,7 +73,7 @@ void ApplicationModelTest::testReload()
         QCOMPARE(model->data(model->index(i), ApplicationModel::NameRole).toString(), app->name());
         appNames[i]=app->packageName();
         QVERIFY(app->isValid());
-        
+        QVERIFY(m_backend->package(app->packageName()));
 //         app->fetchScreenshots();
     }
     
