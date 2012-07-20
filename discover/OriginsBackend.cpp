@@ -43,18 +43,19 @@ OriginsBackend::~OriginsBackend()
 
 void OriginsBackend::load()
 {
-    if(!BackendsSingleton::self()->backend()) {
-        QMetaObject::invokeMethod(this, "load", Qt::QueuedConnection);
+    QApt::Backend* backend = BackendsSingleton::self()->backend();
+    if(!backend) {
+        connect(BackendsSingleton::self(), SIGNAL(initialized()), SLOT(load()));
         return;
     }
     
     qDeleteAll(m_sources);
     m_sources.clear();
     //load /etc/apt/sources.list
-    load(BackendsSingleton::self()->backend()->config()->findFile("Dir::Etc::sourcelist"));
+    load(backend->config()->findFile("Dir::Etc::sourcelist"));
     
     //load /etc/apt/sources.list.d/*.list
-    QDir d(BackendsSingleton::self()->backend()->config()->findDirectory("Dir::Etc::sourceparts"));
+    QDir d(backend->config()->findDirectory("Dir::Etc::sourceparts"));
     foreach(const QString& file, d.entryList(QStringList() << "*.list")) {
         load(d.filePath(file));
     }
@@ -141,7 +142,7 @@ void OriginsBackend::removeRepository(const QString& repository)
 void OriginsBackend::additionDone(int processErrorCode)
 {
     if(processErrorCode==0) {
-        BackendsSingleton::self()->applicationBackend(), SLOT(reload());
+        BackendsSingleton::self()->applicationBackend()->reload();
         load();
     } else {
         QProcess* p = qobject_cast<QProcess*>(sender());
@@ -155,7 +156,7 @@ void OriginsBackend::additionDone(int processErrorCode)
 void OriginsBackend::removalDone(int processErrorCode)
 {
     if(processErrorCode==0) {
-        BackendsSingleton::self()->applicationBackend(), SLOT(reload());
+        BackendsSingleton::self()->applicationBackend()->reload();
         load();
     } else {
         QProcess* p = qobject_cast<QProcess*>(sender());
