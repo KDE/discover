@@ -139,15 +139,15 @@ void ApplicationBackend::setApplications()
     for (Application *app : m_appList) {
         app->setParent(this);
         pkg = app->package();
-        if (pkg->isInstalled()) {
+        if (pkg->isInstalled())
             m_instOriginList << pkg->origin();
-        }
-
-        m_originList << pkg->origin();
+        else
+            m_originList << pkg->origin();
     }
 
     m_originList.remove(QString());
     m_instOriginList.remove(QString());
+    m_originList += m_instOriginList;
     emit backendReady();
 }
 
