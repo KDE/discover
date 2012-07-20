@@ -19,12 +19,11 @@
  ***************************************************************************/
 
 #include "ReviewsModel.h"
-#include "BackendsSingleton.h"
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/Review.h>
 #include <resources/ResourcesModel.h>
 #include <resources/AbstractResourcesBackend.h>
-#include <QDebug>
+#include <resources/AbstractResource.h>
 #include <KDebug>
 
 ReviewsModel::ReviewsModel(QObject* parent)
@@ -98,7 +97,7 @@ void ReviewsModel::setResource(AbstractResource* app)
             disconnect(m_backend, SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
                 this, SLOT(addReviews(AbstractResource*,QList<Review*>)));
         }
-        m_backend = BackendsSingleton::self()->appsModel()->backendForResource(app)->reviewsBackend();
+        m_backend = app->backend()->reviewsBackend();
         Q_ASSERT(m_backend);
         connect(m_backend, SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
                 this, SLOT(addReviews(AbstractResource*,QList<Review*>)));

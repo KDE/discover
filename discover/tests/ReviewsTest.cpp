@@ -20,7 +20,6 @@
 
 #include "ReviewsTest.h"
 #include <../ReviewsModel.h>
-#include <../BackendsSingleton.h>
 #include <ReviewsBackend/ReviewsBackend.h>
 #include <ApplicationBackend.h>
 #include <libqapt/backend.h>
@@ -43,9 +42,8 @@ ReviewsTest::ReviewsTest(QObject* parent): QObject(parent)
     }
     m_backend->init();
     
-    BackendsSingleton::self()->initialize(m_backend, 0);
-    
-    m_appBackend = BackendsSingleton::self()->applicationBackend();
+    m_appBackend = new ApplicationBackend;
+    m_appBackend->setBackend(m_backend);
     QTest::kWaitForSignal(m_appBackend, SIGNAL(backendReady()));
     m_revBackend = m_appBackend->reviewsBackend();
 }
