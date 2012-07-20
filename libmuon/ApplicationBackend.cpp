@@ -64,7 +64,7 @@ ApplicationBackend::~ApplicationBackend()
     qDeleteAll(m_appList);
 }
 
-QVector<Application *> init(ApplicationBackend *appbackend)
+QVector<Application *> init(QApt::Backend *backend, QThread* thread)
 {
     QVector<Application *> appList;
     QDir appDir("/usr/share/app-install/desktop/");
@@ -76,12 +76,12 @@ QVector<Application *> init(ApplicationBackend *appbackend)
     QList<Application *> tempList;
     QSet<QString> packages;
     foreach(const QString &fileName, fileList) {
-        Application *app = new Application(appDir.filePath(fileName), appbackend);
+        Application *app = new Application(appDir.filePath(fileName), backend);
         packages.insert(app->packageName());
         tempList << app;
     }
 
-    foreach (QApt::Package *package, appbackend->backend()->availablePackages()) {
+    foreach (QApt::Package *package, backend->availablePackages()) {
         //Don't create applications twice
         if(packages.contains(package->name())) {
             continue;
@@ -90,7 +90,7 @@ QVector<Application *> init(ApplicationBackend *appbackend)
         if (package->isMultiArchDuplicate())
             continue;
 
-        Application *app = new Application(package, appbackend);
+        Application *app = new Application(package, backend);
         tempList << app;
     }
 
@@ -104,7 +104,9 @@ QVector<Application *> init(ApplicationBackend *appbackend)
             }
         }
 
-        if(!added)
+        if(added)
+            app->moveToThread(thread);
+        else
             delete app;
     }
 
@@ -117,7 +119,7 @@ void ApplicationBackend::setBackend(QApt::Backend *backend)
     m_backend->setUndoRedoCacheSize(1);
     m_reviewsBackend->setAptBackend(m_backend);
 
-    QFuture<QVector<Application*> > future = QtConcurrent::run(init, this);
+    QFuture<QVector<Application*> > future = QtConcurrent::run(init, m_backend, QThread::currentThread());
     m_watcher->setFuture(future);
 
     connect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
@@ -135,6 +137,7 @@ void ApplicationBackend::setApplications()
     // Populate origin lists
     QApt::Package *pkg;
     for (Application *app : m_appList) {
+        app->setParent(this);
         pkg = app->package();
         if (pkg->isInstalled()) {
             m_instOriginList << pkg->origin();

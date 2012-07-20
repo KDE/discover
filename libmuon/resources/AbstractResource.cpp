@@ -23,9 +23,7 @@
 
 AbstractResource::AbstractResource(AbstractResourcesBackend* parent)
     : QObject(parent)
-{
-    Q_ASSERT(parent);
-}
+{}
 
 bool AbstractResource::canExecute() const
 {

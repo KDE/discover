@@ -33,7 +33,6 @@
 #include "libmuonprivate_export.h"
 #include "resources/AbstractResource.h"
 
-class ApplicationBackend;
 class KJob;
 namespace QApt {
     class Backend;
@@ -48,8 +47,8 @@ Q_OBJECT
 public:
     friend class TransactionListener;
 
-    explicit Application(const QString &fileName, ApplicationBackend *backend);
-    explicit Application(QApt::Package *package, ApplicationBackend *backend);
+    explicit Application(const QString &fileName, QApt::Backend *backend);
+    explicit Application(QApt::Package *package, QApt::Backend *backend);
     ~Application();
 
     QString name();

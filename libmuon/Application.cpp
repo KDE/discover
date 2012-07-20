@@ -57,10 +57,10 @@
 #include <QtZeitgeist/QtZeitgeist>
 #endif
 
-Application::Application(const QString &fileName, ApplicationBackend *appbackend)
-        : AbstractResource(appbackend)
+Application::Application(const QString& fileName, QApt::Backend* backend)
+        : AbstractResource(0)
         , m_fileName(fileName)
-        , m_backend(appbackend->backend())
+        , m_backend(backend)
         , m_package(0)
         , m_isValid(false)
         , m_isTechnical(false)
@@ -72,9 +72,9 @@ Application::Application(const QString &fileName, ApplicationBackend *appbackend
     m_packageName = getField("X-AppInstall-Package");
 }
 
-Application::Application(QApt::Package *package, ApplicationBackend *appbackend)
-        : AbstractResource(appbackend)
-        , m_backend(appbackend->backend())
+Application::Application(QApt::Package* package, QApt::Backend* backend)
+        : AbstractResource(0)
+        , m_backend(backend)
         , m_package(package)
         , m_isValid(true)
         , m_isTechnical(true)
