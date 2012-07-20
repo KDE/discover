@@ -67,6 +67,7 @@
 #include "OriginsBackend.h"
 #include "ApplicationAddonsModel.h"
 #include "ScreenshotsModel.h"
+#include "KNSBackend/KNSBackend.h"
 #include <libmuon/MuonDataSources.h>
 
 QML_DECLARE_TYPE(ResourcesModel)
@@ -135,8 +136,8 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     
     //Here we set up a cache for the screenshots
 //     m_view->engine()->setNetworkAccessManagerFactory(new CachedNAMFactory);
-    
-    m_view->engine()->rootContext()->setContextProperty("resourcesModel", qVariantFromValue<ResourcesModel*>(BackendsSingleton::self()->appsModel()));
+    ResourcesModel* resourcesModel = BackendsSingleton::self()->appsModel();
+    m_view->engine()->rootContext()->setContextProperty("resourcesModel", qVariantFromValue<ResourcesModel*>(resourcesModel));
     m_view->engine()->rootContext()->setContextProperty("app", this);
     m_view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
 // #if !defined(QT_NO_OPENGL)
@@ -165,6 +166,7 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     restoreState(window.readEntry<QByteArray>("windowState", QByteArray()));
     
     setCentralWidget(m_view);
+    resourcesModel->addResourcesBackend(new KNSBackend("comic.knsrc", "face-smile-big", this));
 }
 
 MuonDiscoverMainWindow::~MuonDiscoverMainWindow()
@@ -181,7 +183,9 @@ void MuonDiscoverMainWindow::setBackend(QApt::Backend* b)
         return;
 
     BackendsSingleton::self()->initialize(b, this);
-    BackendsSingleton::self()->applicationBackend(); //here we force the retrieval of the appbackend to get ratings
+    ApplicationBackend* applicationBackend = new ApplicationBackend(this);
+    applicationBackend->setBackend(m_backend);
+    BackendsSingleton::self()->appsModel()->addResourcesBackend(applicationBackend);
 }
 
 QAction* MuonDiscoverMainWindow::getAction(const QString& name)

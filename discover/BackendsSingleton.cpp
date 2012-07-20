@@ -19,8 +19,6 @@
 
 #include "BackendsSingleton.h"
 #include "MuonDiscoverMainWindow.h"
-#include "KNSBackend/KNSBackend.h"
-#include <LibQApt/Backend>
 #include <ApplicationBackend.h>
 #include <resources/ResourcesModel.h>
 
@@ -41,22 +39,10 @@ BackendsSingleton::BackendsSingleton()
     , m_mainWindow(0)
 {}
 
-ApplicationBackend* BackendsSingleton::applicationBackend()
-{
-    if(m_backend && !m_applicationBackend) {
-        m_applicationBackend = new ApplicationBackend;
-        m_applicationBackend->setBackend(m_backend);
-        appsModel()->addResourcesBackend(applicationBackend());
-    }
-    
-    return m_applicationBackend;
-}
-
 ResourcesModel* BackendsSingleton::appsModel()
 {
     if(!m_appsModel) {
         m_appsModel = new ResourcesModel(this);
-//         m_appsModel->addResourcesBackend(new KNSBackend("comic.knsrc", "face-smile-big", this));
     }
     return m_appsModel;
 }
@@ -78,3 +64,12 @@ QMainWindow* BackendsSingleton::mainWindow() const
     return m_mainWindow;
 }
 
+ApplicationBackend* BackendsSingleton::applicationBackend()
+{
+    foreach(AbstractResourcesBackend* b, m_appsModel->backends()) {
+        ApplicationBackend* appbackend = qobject_cast<ApplicationBackend*>(b);
+        if(qobject_cast<ApplicationBackend*>(b))
+            return appbackend;
+    }
+    return 0;
+}
