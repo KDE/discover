@@ -57,7 +57,6 @@ qreal ResourcesUpdatesModel::progress() const
     foreach(AbstractBackendUpdater* updater, m_updaters) {
         total += updater->progress();
     }
-    qDebug() << "fuuuuuuuu" << total << m_updaters.count();
     return total / m_updaters.count();
 }
 
