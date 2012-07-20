@@ -19,10 +19,13 @@
  ***************************************************************************/
 
 #include "AbstractResource.h"
+#include "AbstractResourcesBackend.h"
 
-AbstractResource::AbstractResource(QObject* parent)
+AbstractResource::AbstractResource(AbstractResourcesBackend* parent)
     : QObject(parent)
-{}
+{
+    Q_ASSERT(parent);
+}
 
 bool AbstractResource::canExecute() const
 {
@@ -60,4 +63,9 @@ void AbstractResource::fetchScreenshots()
 QString AbstractResource::mimetypes() const
 {
     return QString();
+}
+
+AbstractResourcesBackend* AbstractResource::backend() const
+{
+    return static_cast<AbstractResourcesBackend*>(parent());
 }

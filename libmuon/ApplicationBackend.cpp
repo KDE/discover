@@ -64,7 +64,7 @@ ApplicationBackend::~ApplicationBackend()
     qDeleteAll(m_appList);
 }
 
-QVector<Application *> init(QApt::Backend *backend)
+QVector<Application *> init(ApplicationBackend *appbackend)
 {
     QVector<Application *> appList;
     QDir appDir("/usr/share/app-install/desktop/");
@@ -76,12 +76,12 @@ QVector<Application *> init(QApt::Backend *backend)
     QList<Application *> tempList;
     QSet<QString> packages;
     foreach(const QString &fileName, fileList) {
-        Application *app = new Application(appDir.filePath(fileName), backend);
+        Application *app = new Application(appDir.filePath(fileName), appbackend);
         packages.insert(app->packageName());
         tempList << app;
     }
 
-    foreach (QApt::Package *package, backend->availablePackages()) {
+    foreach (QApt::Package *package, appbackend->backend()->availablePackages()) {
         //Don't create applications twice
         if(packages.contains(package->name())) {
             continue;
@@ -90,7 +90,7 @@ QVector<Application *> init(QApt::Backend *backend)
         if (package->isMultiArchDuplicate())
             continue;
 
-        Application *app = new Application(package, backend);
+        Application *app = new Application(package, appbackend);
         tempList << app;
     }
 
@@ -117,7 +117,7 @@ void ApplicationBackend::setBackend(QApt::Backend *backend)
     m_backend->setUndoRedoCacheSize(1);
     m_reviewsBackend->setAptBackend(m_backend);
 
-    QFuture<QVector<Application*> > future = QtConcurrent::run(init, backend);
+    QFuture<QVector<Application*> > future = QtConcurrent::run(init, this);
     m_watcher->setFuture(future);
 
     connect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
@@ -454,6 +454,11 @@ void ApplicationBackend::runNextTransaction()
 QList<Application*> ApplicationBackend::launchList() const
 {
     return m_appLaunchList;
+}
+
+QApt::Backend* ApplicationBackend::backend() const
+{
+    return m_backend;
 }
 
 void ApplicationBackend::clearLaunchList()

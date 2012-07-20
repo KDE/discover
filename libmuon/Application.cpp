@@ -20,6 +20,7 @@
 
 #include "Application.h"
 #include "resources/PackageState.h"
+#include "ApplicationBackend.h"
 
 // Qt includes
 #include <QtCore/QFile>
@@ -56,9 +57,10 @@
 #include <QtZeitgeist/QtZeitgeist>
 #endif
 
-Application::Application(const QString &fileName, QApt::Backend *backend)
-        : m_fileName(fileName)
-        , m_backend(backend)
+Application::Application(const QString &fileName, ApplicationBackend *appbackend)
+        : AbstractResource(appbackend)
+        , m_fileName(fileName)
+        , m_backend(appbackend->backend())
         , m_package(0)
         , m_isValid(false)
         , m_isTechnical(false)
@@ -70,8 +72,9 @@ Application::Application(const QString &fileName, QApt::Backend *backend)
     m_packageName = getField("X-AppInstall-Package");
 }
 
-Application::Application(QApt::Package *package, QApt::Backend *backend)
-        : m_backend(backend)
+Application::Application(QApt::Package *package, ApplicationBackend *appbackend)
+        : AbstractResource(appbackend)
+        , m_backend(appbackend->backend())
         , m_package(package)
         , m_isValid(true)
         , m_isTechnical(true)

@@ -27,6 +27,7 @@
 #include "libmuonprivate_export.h"
 #include "PackageState.h"
 
+class AbstractResourcesBackend;
 class MUONPRIVATE_EXPORT AbstractResource : public QObject
 {
     Q_OBJECT
@@ -61,7 +62,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         };
         Q_ENUMS(State)
         
-        explicit AbstractResource(QObject* parent = 0);
+        explicit AbstractResource(AbstractResourcesBackend* parent);
         
         ///used as internal identification of a resource
         virtual QString packageName() const = 0;
@@ -112,11 +113,12 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
          */
         virtual int popularityContest() const;
         
-        bool canUpgrade();
-        bool isInstalled();
-        
         virtual QList<PackageState> addonsInformation() = 0;
 
+        bool canUpgrade();
+        bool isInstalled();
+
+        AbstractResourcesBackend* backend() const;
     public slots:
         virtual void fetchScreenshots();
 

@@ -62,6 +62,7 @@ public:
     QPair<TransactionStateTransition, Transaction *> currentTransactionState() const;
     QList<Transaction *> transactions() const;
     QList<Application*> launchList() const;
+    QApt::Backend* backend() const;
 
     int updatesCount() const;
 

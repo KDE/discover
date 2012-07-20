@@ -25,11 +25,12 @@
 #include <knewstuff3/entry.h>
 #include <attica/content.h>
 
+class KNSBackend;
 class KNSResource : public AbstractResource
 {
 Q_OBJECT
 public:
-    explicit KNSResource(const Attica::Content& c, const QString& category, const QString& icon, QObject* parent = 0);
+    explicit KNSResource(const Attica::Content& c, const QString& category, const QString& icon, KNSBackend* parent);
     virtual ~KNSResource();
 
     void setStatus(KNS3::Entry::Status status);

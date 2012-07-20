@@ -19,11 +19,12 @@
  ***************************************************************************/
 
 #include "KNSResource.h"
+#include "KNSBackend.h"
 #include <QDebug>
 #include <KGlobal>
 #include <KLocale>
 
-KNSResource::KNSResource(const Attica::Content& c, const QString& category, const QString& icon, QObject* parent)
+KNSResource::KNSResource(const Attica::Content& c, const QString& category, const QString& icon, KNSBackend* parent)
     : AbstractResource(parent)
     , m_status(KNS3::Entry::Downloadable)
     , m_content(c)
