@@ -68,11 +68,12 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         case SizeColumn:
             return KGlobal::locale()->formatByteSize(item->size());
         }
-        return QVariant();
+        break;
     case Qt::DecorationRole:
         if (column == NameColumn) {
             return item->icon().pixmap(ICON_SIZE, ICON_SIZE);
         }
+        break;
     case Qt::FontRole: {
         QFont font;
         if ((item->type() == UpdateItem::ItemType::CategoryItem) && column == 1) {
@@ -85,9 +86,9 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         if (column == NameColumn) {
             return item->checked();
         }
-        return QVariant();
+        break;
     default:
-        return QVariant();
+        break;
     }
 
     return QVariant();
