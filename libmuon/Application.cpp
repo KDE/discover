@@ -507,7 +507,7 @@ QVector<KService::Ptr> Application::executables() const
     foreach (const QString &desktop, m_package->installedFilesList().filter(".desktop")) {
         // we create a new KService because findByDestopPath
         // might fail because the Sycoca database is not up to date yet.
-        KService::Ptr service(new KService(desktop));
+        KService::Ptr service = KService::serviceByStorageId(desktop);
         if (service->isApplication() &&
             !service->noDisplay() &&
             !service->exec().isEmpty())
