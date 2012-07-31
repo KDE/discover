@@ -30,16 +30,16 @@ Page
         minimumValue: 0
         maximumValue: 100
     }
-//     ScrollBar {
-//         orientation: Qt.Vertical
-//         flickableItem: messageFlickable
-//         anchors {
-//             top: parent.top
-//             bottom: parent.bottom
-//             right: parent.right
-//         }
-//         enabled: false
-//     }
+    ScrollBar {
+        orientation: Qt.Vertical
+        flickableItem: messageFlickable
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+            right: parent.right
+        }
+        interactive: false //TODO: Remove this line when ScrollBar has been fixed
+    }
     PlasmaCore.FrameSvgItem {
         id: base
         anchors {
