@@ -443,22 +443,15 @@ void Application::populateZeitgeistInfo()
 {
     m_usageCount = -1;
 #ifdef HAVE_QZEITGEIST
-    QString desktopFile;
+    QVector< KService::Ptr > exes = executables();
+    if(exes.isEmpty())
+        return;
 
-    foreach (const QString &desktop, package()->installedFilesList().filter(".desktop")) {
-        KService::Ptr service = KService::serviceByDesktopPath(desktop);
-        if (!service) {
-            continue;
-        }
+    KService::Ptr service = exes.first();
+    if(!service)
+        return;
 
-        if (service->isApplication() &&
-            !service->noDisplay() &&
-            !service->exec().isEmpty())
-        {
-            desktopFile = desktop.split('/').last();
-            break;
-        }
-    }
+    QString desktopFile = service->path();
 
     QtZeitgeist::init();
 
