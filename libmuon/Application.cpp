@@ -38,6 +38,7 @@
 #include <KIO/Job>
 #include <KIO/NetAccess>
 #include <KStandardDirs>
+#include <KConfigGroup>
 
 // QApt includes
 #include <LibQApt/Backend>
@@ -61,13 +62,13 @@ Application::Application(const QString& fileName, QApt::Backend* backend)
         : AbstractResource(0)
         , m_backend(backend)
         , m_package(0)
-        , m_isValid(false)
+        , m_isValid(true)
         , m_isTechnical(false)
         , m_isExtrasApp(false)
         , m_usageCount(-1)
 {
     m_data = desktopContents(fileName);
-    m_isTechnical = m_data.value("NoDisplay").toLower() == "true" || !m_data.contains("Exec");
+    m_isTechnical = getField("NoDisplay").toLower() == "true" || !hasField("Exec");
     m_packageName = getField("X-AppInstall-Package");
 }
 
@@ -155,13 +156,7 @@ QApt::Package *Application::package()
 
 QString Application::icon() const
 {
-    QString icon = getField("Icon");
-
-    if (icon.isEmpty()) {
-        icon = QLatin1String("applications-other");
-    }
-
-    return icon;
+    return getField("Icon", "applications-other");
 }
 
 QString Application::mimetypes() const
@@ -367,9 +362,19 @@ bool Application::isTechnical() const
     return m_isTechnical;
 }
 
-QByteArray Application::getField(const QByteArray &field) const
+QByteArray Application::getField(const char* field, const QByteArray& defaultvalue) const
 {
-    return m_data.value(field);
+    if(m_data) {
+        KConfigGroup group = m_data->group("Desktop Entry");
+        return group.readEntry(field, defaultvalue);
+    } else
+        return defaultvalue;
+
+}
+
+bool Application::hasField(const char* field) const
+{
+    return m_data && m_data->group("Desktop Entry").hasKey(field);
 }
 
 QUrl Application::homepage() const
@@ -414,39 +419,9 @@ QString Application::sizeDescription()
     }
 }
 
-QHash<QByteArray, QByteArray> Application::desktopContents(const QString& filename)
+KSharedConfigPtr Application::desktopContents(const QString& filename)
 {
-    QHash<QByteArray, QByteArray> contents;
-
-    QFile file(filename);
-    if (!file.open(QFile::ReadOnly)) {
-        return contents;
-    }
-
-    while(!file.atEnd()) {
-        QByteArray line = file.readLine();
-        line.chop(1);
-        
-        if (line.isEmpty() || line.startsWith('#')) {
-            continue;
-        }
-
-        // Looking for a group heading.
-        m_isValid = m_isValid || (line.startsWith('[') && line.contains(']'));
-
-        int eqpos = line.indexOf('=');
-
-        if (eqpos >= 0) {
-            QByteArray aKey = line.left(eqpos);
-
-            if (!contents.contains(aKey)) {
-                QByteArray aValue = line.mid(eqpos+1);
-                contents[aKey] = aValue;
-            }
-        }
-    }
-
-    return contents;
+    return KSharedConfig::openConfig(filename, KConfig::SimpleConfig);
 }
 
 void Application::populateZeitgeistInfo()

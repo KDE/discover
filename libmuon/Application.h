@@ -70,8 +70,8 @@ public:
     int usageCount();
     QString packageName() const;
 
-    QByteArray getField(const QByteArray &field) const;
-    QHash<QByteArray, QByteArray> desktopContents(const QString& filename);
+    QByteArray getField(const char* field, const QByteArray& defaultvalue = QByteArray()) const;
+    KSharedConfigPtr desktopContents(const QString& filename);
 
     //QApt::Package forwarding
     QUrl homepage() const;
@@ -99,8 +99,9 @@ public:
 private:
     void populateZeitgeistInfo();
     QVector<QPair<QString, QString> > locateApplication(const QString &_relPath, const QString &menuId) const;
+    bool hasField(const char* field) const;
 
-    QHash<QByteArray, QByteArray> m_data;
+    KSharedConfigPtr m_data;
     QApt::Backend *m_backend;
     QApt::Package *m_package;
     QByteArray m_packageName;
