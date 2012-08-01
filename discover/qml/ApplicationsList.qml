@@ -24,7 +24,6 @@ Item {
         spacing: 3
         snapMode: ListView.SnapToItem
         currentIndex: -1
-        focus: true
         
         delegate: ListItem {
                 checked: view.currentIndex==index

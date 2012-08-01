@@ -71,7 +71,7 @@ public:
     QString packageName() const;
 
     QByteArray getField(const QByteArray &field) const;
-    QHash<QByteArray, QByteArray> desktopContents();
+    QHash<QByteArray, QByteArray> desktopContents(const QString& filename);
 
     //QApt::Package forwarding
     QUrl homepage() const;
@@ -100,7 +100,6 @@ private:
     void populateZeitgeistInfo();
     QVector<QPair<QString, QString> > locateApplication(const QString &_relPath, const QString &menuId) const;
 
-    QString m_fileName;
     QHash<QByteArray, QByteArray> m_data;
     QApt::Backend *m_backend;
     QApt::Package *m_package;

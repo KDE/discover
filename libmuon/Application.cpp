@@ -59,7 +59,6 @@
 
 Application::Application(const QString& fileName, QApt::Backend* backend)
         : AbstractResource(0)
-        , m_fileName(fileName)
         , m_backend(backend)
         , m_package(0)
         , m_isValid(false)
@@ -67,7 +66,7 @@ Application::Application(const QString& fileName, QApt::Backend* backend)
         , m_isExtrasApp(false)
         , m_usageCount(-1)
 {
-    m_data = desktopContents();
+    m_data = desktopContents(fileName);
     m_isTechnical = m_data.value("NoDisplay").toLower() == "true" || !m_data.contains("Exec");
     m_packageName = getField("X-AppInstall-Package");
 }
@@ -149,7 +148,6 @@ QApt::Package *Application::package()
     // next refresh, so we can have valid .desktops with no package
     if (!m_package) {
         m_isValid = false;
-        // kDebug() << m_fileName;
     }
 
     return m_package;
@@ -177,8 +175,11 @@ QString Application::menuPath()
     QString arrow(QString::fromUtf8(" ➜ "));
 
     // Take the file name and remove the .desktop ending
-    QString desktopName = m_fileName.split('/').last().split(':').first();
-    KService::Ptr service = KService::serviceByDesktopName(desktopName);
+    QVector<KService::Ptr> execs = executables();
+    if(execs.isEmpty())
+        return path;
+
+    KService::Ptr service = execs.first();
     QVector<QPair<QString, QString> > ret;
 
     if (service) {
@@ -413,11 +414,11 @@ QString Application::sizeDescription()
     }
 }
 
-QHash<QByteArray, QByteArray> Application::desktopContents()
+QHash<QByteArray, QByteArray> Application::desktopContents(const QString& filename)
 {
     QHash<QByteArray, QByteArray> contents;
 
-    QFile file(m_fileName);
+    QFile file(filename);
     if (!file.open(QFile::ReadOnly)) {
         return contents;
     }
@@ -452,22 +453,15 @@ void Application::populateZeitgeistInfo()
 {
     m_usageCount = -1;
 #ifdef HAVE_QZEITGEIST
-    QString desktopFile;
+    QVector< KService::Ptr > exes = executables();
+    if(exes.isEmpty())
+        return;
 
-    foreach (const QString &desktop, package()->installedFilesList().filter(".desktop")) {
-        KService::Ptr service = KService::serviceByDesktopPath(desktop);
-        if (!service) {
-            continue;
-        }
+    KService::Ptr service = exes.first();
+    if(!service)
+        return;
 
-        if (service->isApplication() &&
-            !service->noDisplay() &&
-            !service->exec().isEmpty())
-        {
-            desktopFile = desktop.split('/').last();
-            break;
-        }
-    }
+    QString desktopFile = service->path();
 
     QtZeitgeist::init();
 
@@ -517,7 +511,7 @@ QVector<KService::Ptr> Application::executables() const
     foreach (const QString &desktop, m_package->installedFilesList().filter(".desktop")) {
         // we create a new KService because findByDestopPath
         // might fail because the Sycoca database is not up to date yet.
-        KService::Ptr service(new KService(desktop));
+        KService::Ptr service = KService::serviceByStorageId(desktop);
         if (service->isApplication() &&
             !service->noDisplay() &&
             !service->exec().isEmpty())

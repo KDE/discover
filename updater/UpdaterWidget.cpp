@@ -217,19 +217,23 @@ void UpdaterWidget::populateUpdateModel()
         m_upgradeableApps.append(app);
     }
 
+    // Add populated items to the model
     if (securityItem->childCount()) {
+        securityItem->sort();
         m_updateModel->addItem(securityItem);
     } else {
         delete securityItem;
     }
 
     if (appItem->childCount()) {
+        appItem->sort();
         m_updateModel->addItem(appItem);
     } else {
         delete appItem;
     }
 
     if (systemItem->childCount()) {
+        systemItem->sort();
         m_updateModel->addItem(systemItem);
     } else {
         delete systemItem;

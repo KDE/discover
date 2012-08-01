@@ -68,14 +68,15 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         case SizeColumn:
             return KGlobal::locale()->formatByteSize(item->size());
         }
-        return QVariant();
+        break;
     case Qt::DecorationRole:
         if (column == NameColumn) {
             return item->icon().pixmap(ICON_SIZE, ICON_SIZE);
         }
+        break;
     case Qt::FontRole: {
         QFont font;
-        if ((item->type() == UpdateItem::CategoryItem) && column == 1) {
+        if ((item->type() == UpdateItem::ItemType::CategoryItem) && column == 1) {
             font.setBold(true);
             return font;
         }
@@ -85,9 +86,9 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         if (column == NameColumn) {
             return item->checked();
         }
-        return QVariant();
+        break;
     default:
-        return QVariant();
+        break;
     }
 
     return QVariant();
@@ -226,15 +227,15 @@ bool UpdateModel::setData(const QModelIndex &index, const QVariant &value, int r
     if (role == Qt::CheckStateRole) {
         UpdateItem *item = static_cast<UpdateItem*>(index.internalPointer());
         bool newValue = value.toBool();
-        int type = item->type();
+        UpdateItem::ItemType type = item->type();
 
         QList<Application *> apps;
-        if (type == UpdateItem::CategoryItem) {
+        if (type == UpdateItem::ItemType::CategoryItem) {
             // Collect items to (un)check
             foreach (UpdateItem *child, item->children()) {
                 apps << child->app();
             }
-        } else if (type == UpdateItem::ApplicationItem) {
+        } else if (type == UpdateItem::ItemType::ApplicationItem) {
             apps << item->app();
         }
 

@@ -32,7 +32,7 @@ class Application;
 class UpdateItem
 {
 public:
-    enum ItemType {
+    enum class ItemType : quint8 {
         InvalidItem = 0,
         RootItem,
         CategoryItem,
@@ -55,6 +55,7 @@ public:
     UpdateItem *child(int row) const;
     int childCount() const;
     int row() const;
+    void sort();
 
     Application *app() const;
     QString name() const;
@@ -68,6 +69,7 @@ private:
     Application *m_app;
 
     UpdateItem *m_parent;
+    ItemType m_type;
     QList<UpdateItem *> m_children;
     QString m_categoryName;
     KIcon m_categoryIcon;
