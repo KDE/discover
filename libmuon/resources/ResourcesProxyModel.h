@@ -26,8 +26,6 @@
 #include <QtCore/QString>
 #include <QStringList>
 
-#include <LibQApt/Package>
-
 #include <Category/Category.h>
 
 #include "libmuonprivate_export.h"
