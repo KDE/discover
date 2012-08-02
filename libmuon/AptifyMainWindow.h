@@ -25,8 +25,8 @@
 #include <QObject>
 #include <LibQApt/Globals>
 
+class KXmlGuiWindow;
 class KActionCollection;
-class MuonMainWindow;
 namespace QApt {
 class Backend;
 }
@@ -88,7 +88,7 @@ class AptifyMainWindow : public QObject
 
     private:
         bool m_actionsDisabled;
-        MuonMainWindow* m_mainWindow;
+        KXmlGuiWindow* m_mainWindow;
 };
 
 #endif // APTIFYMAINWINDOW_H

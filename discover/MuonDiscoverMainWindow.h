@@ -21,17 +21,15 @@
 #define MUONDISCOVERMAINWINDOW_H
 
 #include <QtCore/QUrl>
+#include <KXmlGuiWindow>
 
-#include <LibQApt/Globals>
-#include <MuonMainWindow.h>
-
+class AptifyMainWindow;
 class AbstractResource;
 class Category;
 class QDeclarativeView;
-class ApplicationBackend;
 namespace QApt { class Backend; }
 
-class MuonDiscoverMainWindow : public MuonMainWindow
+class MuonDiscoverMainWindow : public KXmlGuiWindow
 {
     Q_OBJECT
     public:
@@ -59,6 +57,9 @@ class MuonDiscoverMainWindow : public MuonMainWindow
     private:
         QString m_appToBeOpened;
         QDeclarativeView* m_view;
+#ifdef QAPT_ENABLED
+        AptifyMainWindow* m_aptify;
+#endif
 };
 
 #endif // MUONINSTALLERDECLARATIVEVIEW_H

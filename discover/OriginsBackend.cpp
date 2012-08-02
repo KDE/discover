@@ -30,6 +30,16 @@
 #include <KMessageBox>
 #include <KLocalizedString>
 
+static ApplicationBackend* applicationBackend()
+{
+    foreach(AbstractResourcesBackend* b, BackendsSingleton::self()->appsModel()->backends()) {
+        ApplicationBackend* appbackend = qobject_cast<ApplicationBackend*>(b);
+        if(qobject_cast<ApplicationBackend*>(b))
+            return appbackend;
+    }
+    return 0;
+}
+
 OriginsBackend::OriginsBackend(QObject* parent)
     : QObject(parent)
 {
@@ -142,7 +152,7 @@ void OriginsBackend::removeRepository(const QString& repository)
 void OriginsBackend::additionDone(int processErrorCode)
 {
     if(processErrorCode==0) {
-        BackendsSingleton::self()->applicationBackend()->reload();
+        applicationBackend()->reload();
         load();
     } else {
         QProcess* p = qobject_cast<QProcess*>(sender());
@@ -156,7 +166,7 @@ void OriginsBackend::additionDone(int processErrorCode)
 void OriginsBackend::removalDone(int processErrorCode)
 {
     if(processErrorCode==0) {
-        BackendsSingleton::self()->applicationBackend()->reload();
+        applicationBackend()->reload();
         load();
     } else {
         QProcess* p = qobject_cast<QProcess*>(sender());

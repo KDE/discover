@@ -20,13 +20,10 @@
 
 #include "ApplicationAddonsModel.h"
 #include "BackendsSingleton.h"
-#include <Application.h>
-#include <ApplicationBackend.h>
 #include <resources/ResourcesModel.h>
 #include <resources/PackageState.h>
+#include <resources/AbstractResource.h>
 #include <QDebug>
-
-// FIXME: Only supports APT
 
 ApplicationAddonsModel::ApplicationAddonsModel(QObject* parent)
     : QAbstractListModel(parent)

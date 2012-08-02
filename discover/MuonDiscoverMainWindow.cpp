@@ -43,27 +43,26 @@
 #include <Plasma/Theme>
 #include <KStandardDirs>
 
-// QApt includes
-#include <LibQApt/Backend>
-
 // Libmuon includes
-#include <Application.h>
-#include <ApplicationBackend.h>
-#include <Category/CategoryModel.h>
-#include <Category/Category.h>
-#include <Transaction/TransactionListener.h>
-#include <Transaction/Transaction.h>
-#include <ReviewsBackend/AbstractReviewsBackend.h>
-#include <ReviewsBackend/Rating.h>
-#include <ApplicationModel/LaunchListModel.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesUpdatesModel.h>
+#include <Category/CategoryModel.h>
+#include <Transaction/TransactionListener.h>
+#include <Transaction/Transaction.h>
+#include <ReviewsBackend/Rating.h>
+#include <resources/ResourcesModel.h>
+#include <resources/ResourcesUpdatesModel.h>
+#include <ReviewsBackend/AbstractReviewsBackend.h>
+
+#ifdef QAPT_ENABLED
+#include <AptifyMainWindow.h>
+#include "OriginsBackend.h"
+#endif
 
 // Own includes
 #include "ApplicationProxyModelHelper.h"
 #include "BackendsSingleton.h"
 #include "ReviewsModel.h"
-#include "OriginsBackend.h"
 #include "ApplicationAddonsModel.h"
 #include "ScreenshotsModel.h"
 #include "KNSBackend/KNSBackend.h"
@@ -97,7 +96,10 @@ class CachedNAMFactory : public QDeclarativeNetworkAccessManagerFactory
 };
 
 MuonDiscoverMainWindow::MuonDiscoverMainWindow()
-    : MuonMainWindow()
+    : KXmlGuiWindow(0)
+#ifdef QAPT_ENABLED
+    , m_aptify(new AptifyMainWindow(this))
+#endif
 {
     m_view = new QDeclarativeView(this);
     m_view->setBackgroundRole(QPalette::Background);
@@ -115,23 +117,21 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     qmlRegisterType<ApplicationProxyModelHelper>("org.kde.muon", 1, 0, "ApplicationProxyModel");
     qmlRegisterType<TransactionListener>("org.kde.muon", 1, 0, "TransactionListener");
     qmlRegisterType<ReviewsModel>("org.kde.muon", 1, 0, "ReviewsModel");
-    qmlRegisterType<LaunchListModel>("org.kde.muon", 1, 0, "LaunchListModel");
-    qmlRegisterType<OriginsBackend>("org.kde.muon", 1, 0, "OriginsBackend");
     qmlRegisterType<ApplicationAddonsModel>("org.kde.muon", 1, 0, "ApplicationAddonsModel");
     qmlRegisterType<ScreenshotsModel>("org.kde.muon", 1, 0, "ScreenshotsModel");
     qmlRegisterType<ResourcesUpdatesModel>("org.kde.muon", 1, 0, "ResourcesUpdatesModel");
-    qmlRegisterType<AbstractReviewsBackend>();
     qmlRegisterType<Rating>();
-    qmlRegisterType<Application>();
     qmlRegisterType<AbstractResource>();
     qmlRegisterType<AbstractResourcesBackend>();
+    qmlRegisterType<AbstractReviewsBackend>();
     qmlRegisterType<Category>();
     qmlRegisterType<ResourcesModel>();
+    qmlRegisterType<Transaction>();
+#ifdef QAPT_ENABLED
+    qmlRegisterType<OriginsBackend>("org.kde.muon", 1, 0, "OriginsBackend");
     qmlRegisterType<Source>();
     qmlRegisterType<Entry>();
-    qmlRegisterType<Transaction>();
-    
-    connect(this, SIGNAL(backendReady(QApt::Backend*)), SLOT(setBackend(QApt::Backend*)));
+#endif
     
     //Here we set up a cache for the screenshots
 //     m_view->engine()->setNetworkAccessManagerFactory(new CachedNAMFactory);
@@ -142,8 +142,13 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
 // #if !defined(QT_NO_OPENGL)
 //     m_view->setViewport(new QGLWidget);
 // #endif
-    QTimer::singleShot(10, this, SLOT(initObject()));
-    setupActions();
+    
+#ifdef QAPT_ENABLED
+    QTimer::singleShot(10, m_aptify, SLOT(initObject()));
+    m_aptify->setupActions();
+    connect(m_aptify, SIGNAL(backendReady(QApt::Backend*)), SLOT(setBackend(QApt::Backend*)));
+#endif
+    
     m_view->setSource(QUrl("qrc:/qml/Main.qml"));
     if(!m_view->errors().isEmpty()) {
         QString errors;
@@ -151,8 +156,9 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
         for (const QDeclarativeError &error : m_view->errors()) {
             errors.append(error.toString() + QLatin1String("\n\n"));
         }
-
-        initializationErrors(errors);
+#ifdef QAPT_ENABLED
+        m_aptify->initializationErrors(errors);
+#endif
         qDebug() << "errors: " << m_view->errors();
     }
     Q_ASSERT(m_view->errors().isEmpty());
@@ -178,10 +184,7 @@ void MuonDiscoverMainWindow::setBackend(QApt::Backend* b)
     if (!m_view->rootObject())
         return;
 
-    BackendsSingleton::self()->initialize(b, this);
-    ApplicationBackend* applicationBackend = new ApplicationBackend(this);
-    applicationBackend->setBackend(b);
-    BackendsSingleton::self()->appsModel()->addResourcesBackend(applicationBackend);
+    BackendsSingleton::self()->initialize(b);
 }
 
 QAction* MuonDiscoverMainWindow::getAction(const QString& name)

@@ -25,25 +25,13 @@ ENDMACRO(QT4_ADD_DBUS_INTERFACE)
 add_subdirectory(tests)
 
 set(muon_LIB_SRCS
-    AptifyMainWindow.cpp
-    Application.cpp
-    ApplicationBackend.cpp
-    ApplicationModel/LaunchListModel.cpp
-    ApplicationModel/ApplicationUpdates.cpp
-    ChangesDialog.cpp
-    MuonMainWindow.cpp
-    MuonStrings.cpp
     Category/Category.cpp
     Category/CategoryModel.cpp
-    HistoryView/HistoryProxyModel.cpp
-    HistoryView/HistoryView.cpp
     mobile/src/mousecursor.cpp
     ReviewsBackend/AbstractReviewsBackend.cpp
     ReviewsBackend/Rating.cpp
     ReviewsBackend/Review.cpp
-    ReviewsBackend/ReviewsBackend.cpp
     ReviewsBackend/AbstractLoginBackend.cpp
-    ReviewsBackend/UbuntuLoginBackend.cpp
     settings/SettingsPageBase.cpp
     settings/NotifySettingsPage.cpp
     Transaction/Transaction.cpp
@@ -57,7 +45,20 @@ set(muon_LIB_SRCS
     resources/AbstractBackendUpdater.cpp
     resources/ResourcesUpdatesModel.cpp
 )
-qt4_add_dbus_interface(muon_LIB_SRCS ReviewsBackend/ubuntu_sso_dbus_interface.xml ubuntu_sso -i "ReviewsBackend/LoginMetaTypes.h")
+if(QAPT_FOUND)
+    set(muon_LIB_SRCS ${muon_LIB_SRCS}
+        Application.cpp
+        ApplicationBackend.cpp
+        ChangesDialog.cpp
+        MuonStrings.cpp
+        AptifyMainWindow.cpp
+        HistoryView/HistoryProxyModel.cpp
+        HistoryView/HistoryView.cpp
+        ReviewsBackend/ReviewsBackend.cpp #TODO: rename to AptReviewsBackend
+        ReviewsBackend/UbuntuLoginBackend.cpp
+    )
+    qt4_add_dbus_interface(muon_LIB_SRCS ReviewsBackend/ubuntu_sso_dbus_interface.xml ubuntu_sso -i "ReviewsBackend/LoginMetaTypes.h")
+endif(QAPT_FOUND)
 
 kde4_add_kcfg_files(muon_LIB_SRCS GENERATE_MOC MuonDataSources.kcfgc)
 kde4_add_library(muonprivate SHARED ${muon_LIB_SRCS})

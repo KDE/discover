@@ -19,8 +19,11 @@
 
 #include "BackendsSingleton.h"
 #include "MuonDiscoverMainWindow.h"
-#include <ApplicationBackend.h>
 #include <resources/ResourcesModel.h>
+
+#ifdef QAPT_ENABLED
+#include <ApplicationBackend.h>
+#endif
 
 BackendsSingleton* BackendsSingleton::m_self = 0;
 
@@ -35,8 +38,6 @@ BackendsSingleton* BackendsSingleton::self()
 BackendsSingleton::BackendsSingleton()
     : m_appsModel(0)
     , m_backend(0)
-    , m_applicationBackend(0)
-    , m_mainWindow(0)
 {}
 
 ResourcesModel* BackendsSingleton::appsModel()
@@ -47,29 +48,18 @@ ResourcesModel* BackendsSingleton::appsModel()
     return m_appsModel;
 }
 
-void BackendsSingleton::initialize(QApt::Backend* b, MuonDiscoverMainWindow* main)
+void BackendsSingleton::initialize(QApt::Backend* b)
 {
     m_backend = b;
-    m_mainWindow = main;
+#ifdef QAPT_ENABLED
+    ApplicationBackend* applicationBackend = new ApplicationBackend(this);
+    applicationBackend->setBackend(b);
+    BackendsSingleton::self()->appsModel()->addResourcesBackend(applicationBackend);
+#endif
     emit initialized();
 }
 
 QApt::Backend* BackendsSingleton::backend()
 {
     return m_backend;
-}
-
-QMainWindow* BackendsSingleton::mainWindow() const
-{
-    return m_mainWindow;
-}
-
-ApplicationBackend* BackendsSingleton::applicationBackend()
-{
-    foreach(AbstractResourcesBackend* b, m_appsModel->backends()) {
-        ApplicationBackend* appbackend = qobject_cast<ApplicationBackend*>(b);
-        if(qobject_cast<ApplicationBackend*>(b))
-            return appbackend;
-    }
-    return 0;
 }

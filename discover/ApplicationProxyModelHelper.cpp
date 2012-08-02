@@ -21,15 +21,11 @@
 #include <resources/ResourcesModel.h>
 #include "BackendsSingleton.h"
 #include <QDebug>
-#include <LibQApt/Backend>
 
 ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
     : ResourcesProxyModel(parent)
 {
-    if(BackendsSingleton::self()->backend())
-        init();
-    else
-        connect(BackendsSingleton::self(), SIGNAL(initialized()), SLOT(init()));
+    init();
 }
 
 void ApplicationProxyModelHelper::init()

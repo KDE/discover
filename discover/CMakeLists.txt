@@ -9,7 +9,6 @@ set(muon_discover_SRCS
     ApplicationProxyModelHelper.cpp
     BackendsSingleton.cpp
     ReviewsModel.cpp
-    OriginsBackend.cpp
     ApplicationAddonsModel.cpp
     ScreenshotsModel.cpp
     KNSBackend/KNSBackend.cpp
@@ -17,6 +16,12 @@ set(muon_discover_SRCS
     KNSBackend/KNSReviews.cpp
     KNSBackend/KNSUpdater.cpp
 )
+
+if(QAPT_FOUND)
+    set(muon_discover_SRCS ${muon_discover_SRCS}
+        OriginsBackend.cpp
+    )
+endif(QAPT_FOUND)
 
 qt4_add_resources(muon_discover_SRCS resources.qrc)
 

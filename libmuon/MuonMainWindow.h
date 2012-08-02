@@ -29,7 +29,6 @@
 #include <KLocale>
 
 // LibQApt includes
-#include <LibQApt/Globals>
 
 #include "libmuonprivate_export.h"
 
@@ -64,7 +63,7 @@ class MUONPRIVATE_EXPORT MuonMainWindow : public KXmlGuiWindow
         void setActionsEnabled(bool enabled = true);
         
     Q_SIGNALS:
-        void backendReady(QApt::Backend *backend);
+        void backendReady(QApt::Backend*);
         void shouldConnect(bool isConnected);
 
     protected slots:
