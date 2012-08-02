@@ -84,8 +84,8 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* resources)
 
 AbstractResource* ResourcesModel::resourceAt(int row) const
 {
-    for(QVector<QVector<AbstractResource*> >::const_iterator it=m_resources.constBegin(); it!=m_resources.constEnd(); ++it) {
-        if(it->size()<=row)
+    for (auto it = m_resources.constBegin(); it != m_resources.constEnd(); ++it) {
+        if (it->size()<=row)
             row -= it->size();
         else
             return it->at(row);
@@ -98,6 +98,7 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
     if (!index.isValid()) {
         return QVariant();
     }
+
     AbstractResource* resource = resourceAt(index.row());
     switch(role) {
         case ApplicationRole:
@@ -133,8 +134,8 @@ void ResourcesModel::cleanCaller()
     Q_ASSERT(pos>=0);
     QVector<AbstractResource*>* backendsResources = &m_resources[pos];
     int before = 0;
-    for(QVector<QVector<AbstractResource*> >::const_iterator it=m_resources.constBegin();
-        it!=m_resources.constEnd() && it!=backendsResources;
+    for(auto it = m_resources.constBegin();
+        it != m_resources.constEnd() && it != backendsResources;
         ++it)
     {
         before+= it->size();
@@ -151,16 +152,17 @@ void ResourcesModel::resetCaller()
     Q_ASSERT(backend);
     
     QVector< AbstractResource* > res = backend->allResources();
-    if(res.size()!=0) {
+
+    if(!res.isEmpty()) {
         int pos = m_backends.indexOf(backend);
         Q_ASSERT(pos>=0);
         QVector<AbstractResource*>* backendsResources = &m_resources[pos];
         int before = 0;
-        for(QVector<QVector<AbstractResource*> >::const_iterator it=m_resources.constBegin();
-            it!=m_resources.constEnd() && it!=backendsResources;
+        for(auto it=m_resources.constBegin();
+            it != m_resources.constEnd() && it !=backendsResources;
             ++it)
         {
-            before+= it->size();
+            before += it->size();
         }
         
         beginInsertRows(QModelIndex(), before, before+res.size()-1);
@@ -219,9 +221,11 @@ AbstractResourcesBackend* ResourcesModel::backendForResource(AbstractResource* r
 int ResourcesModel::updatesCount() const
 {
     int ret = 0;
+
     foreach(AbstractResourcesBackend* backend, m_backends) {
         ret += backend->updatesCount();
     }
+
     return ret;
 }
 
