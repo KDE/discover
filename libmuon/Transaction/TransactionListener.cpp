@@ -20,7 +20,7 @@
  ***************************************************************************/
 
 #include "TransactionListener.h"
-#include "ApplicationBackend.h"
+#include "resources/AbstractResourcesBackend.h"
 #include "Transaction.h"
 
 #include <KLocalizedString>
