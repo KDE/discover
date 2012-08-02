@@ -25,6 +25,7 @@ ENDMACRO(QT4_ADD_DBUS_INTERFACE)
 add_subdirectory(tests)
 
 set(muon_LIB_SRCS
+    AptifyMainWindow.cpp
     Application.cpp
     ApplicationBackend.cpp
     ApplicationModel/LaunchListModel.cpp

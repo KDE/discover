@@ -152,10 +152,7 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
             errors.append(error.toString() + QLatin1String("\n\n"));
         }
 
-        QVariantMap args;
-        args["ErrorText"] = errors;
-        args["FromWorker"] = false;
-        errorOccurred(QApt::InitError, args);
+        initializationErrors(errors);
         qDebug() << "errors: " << m_view->errors();
     }
     Q_ASSERT(m_view->errors().isEmpty());
@@ -183,7 +180,7 @@ void MuonDiscoverMainWindow::setBackend(QApt::Backend* b)
 
     BackendsSingleton::self()->initialize(b, this);
     ApplicationBackend* applicationBackend = new ApplicationBackend(this);
-    applicationBackend->setBackend(m_backend);
+    applicationBackend->setBackend(b);
     BackendsSingleton::self()->appsModel()->addResourcesBackend(applicationBackend);
 }
 

@@ -497,14 +497,9 @@ void MainWindow::setActionsEnabled(bool enabled)
 
     m_applyAction->setEnabled(changesPending);
 
-    m_undoAction->setEnabled(!m_backend->isUndoStackEmpty());
-    m_redoAction->setEnabled(!m_backend->isRedoStackEmpty());
-    m_revertAction->setEnabled(!m_backend->isUndoStackEmpty());
-
     m_loadSelectionsAction->setEnabled(true);
     m_saveSelectionsAction->setEnabled(changesPending);
     m_saveInstalledAction->setEnabled(true);
-    m_softwarePropertiesAction->setEnabled(true);
 }
 
 void MainWindow::editSettings()

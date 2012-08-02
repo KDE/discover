@@ -260,9 +260,6 @@ void MainWindow::setActionsEnabled(bool enabled)
     m_downloadListAction->setEnabled(isConnected());
 
     m_applyAction->setEnabled(m_backend->areChangesMarked());
-    m_undoAction->setEnabled(!m_backend->isUndoStackEmpty());
-    m_redoAction->setEnabled(!m_backend->isRedoStackEmpty());
-    m_revertAction->setEnabled(!m_backend->isUndoStackEmpty());
     m_updaterWidget->setEnabled(true);
 }
 

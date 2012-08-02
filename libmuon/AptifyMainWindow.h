@@ -1,4 +1,5 @@
 /***************************************************************************
+ *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
@@ -18,79 +19,76 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MUONMAINWINDOW_H
-#define MUONMAINWINDOW_H
+#ifndef APTIFYMAINWINDOW_H
+#define APTIFYMAINWINDOW_H
 
-// Qt includes
-#include <QtCore/QVariantMap>
-
-// KDE includes
-#include <KXmlGuiWindow>
-#include <KLocale>
-
-// LibQApt includes
+#include <QObject>
 #include <LibQApt/Globals>
 
-#include "libmuonprivate_export.h"
-
-class KAction;
-
-namespace QApt
-{
-    class Backend;
+class KActionCollection;
+class MuonMainWindow;
+namespace QApt {
+class Backend;
 }
 
-/**
- * This class serves as a shared Main Window implementation that connects
- * all the various backend bits so that they don't have to be reimplemented
- * in things like an update-centric GUI, etc.
- *
- * @short Main window class
- * @author Jonathan Thomas <echidnaman@kubuntu.org>
- * @version 0.1
- */
-class MUONPRIVATE_EXPORT MuonMainWindow : public KXmlGuiWindow
+class KAction;
+class AptifyMainWindow : public QObject
 {
     Q_OBJECT
+    friend class MuonMainWindow;
     public:
-        MuonMainWindow();
-        virtual ~MuonMainWindow();
-
-        QSize sizeHint() const;
-        void setupActions();
-        void initializationErrors(const QString& errors);
-        bool isConnected();
-        virtual void revertChanges();
-        void setActionsEnabled(bool enabled = true);
+        explicit AptifyMainWindow(MuonMainWindow* parent = 0);
         
-    Q_SIGNALS:
-        void backendReady(QApt::Backend *backend);
-        void shouldConnect(bool isConnected);
+    protected:
+        QApt::Backend *m_backend;
+        QList<QVariantMap> m_warningStack;
+        QList<QVariantMap> m_errorStack;
 
-    protected slots:
-        void initObject();
+        QApt::CacheState m_originalState;
+        int m_powerInhibitor;
+        bool m_canExit;
+        bool m_isReloading;
+        void setActionsEnabled(bool enabled = true);
+        bool isConnected() const;
+        KActionCollection* actionCollection();
+        void initializationErrors(const QString& errors);
+
+    protected Q_SLOTS:
+        virtual void initObject();
+        virtual void slotQuit();
+        virtual bool queryExit();
+        virtual void setupActions();
+        virtual void checkForUpdates();
         virtual void workerEvent(QApt::WorkerEvent event);
         virtual void errorOccurred(QApt::ErrorCode code, const QVariantMap &args);
         virtual void warningOccurred(QApt::WarningCode warning, const QVariantMap &args);
         virtual void questionOccurred(QApt::WorkerQuestion question, const QVariantMap &details);
         virtual void showQueuedWarnings();
         virtual void showQueuedErrors();
+        virtual void reload();
+        void networkChanged();
+        bool saveSelections();
+        bool saveInstalledPackagesList();
+        void loadSelections();
+        bool createDownloadList();
         void downloadPackagesFromList();
+        void loadArchives();
+        void undo();
+        void redo();
+        void revertChanges();
 
-    public slots:
+    public Q_SLOTS:
         void runSourcesEditor(bool update = false);
         void sourcesEditorFinished(int reload);
         void easterEggTriggered();
 
-    protected:
-        AptifyMainWindow* m_aptify;
-        QApt::Backend*& m_backend;
-        bool& m_canExit;
-        bool& m_isReloading;
-        QApt::CacheState& m_originalState;
-        QList<QVariantMap>& m_warningStack;
-        QList<QVariantMap>& m_errorStack;
+    Q_SIGNALS:
+        void backendReady(QApt::Backend *backend);
+        void shouldConnect(bool isConnected);
+
+    private:
+        bool m_actionsDisabled;
+        MuonMainWindow* m_mainWindow;
 };
 
-#endif
-
+#endif // APTIFYMAINWINDOW_H
