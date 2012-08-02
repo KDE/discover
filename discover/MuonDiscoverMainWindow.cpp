@@ -215,7 +215,7 @@ void MuonDiscoverMainWindow::openApplication(const QString& app)
 
 void MuonDiscoverMainWindow::triggerOpenApplication()
 {
-    AbstractResource* app = BackendsSingleton::self()->appsModel()->applicationByPackageName(m_appToBeOpened);
+    AbstractResource* app = BackendsSingleton::self()->appsModel()->resourceByPackageName(m_appToBeOpened);
     if(app) {
         emit openApplicationInternal(app);
         m_appToBeOpened.clear();

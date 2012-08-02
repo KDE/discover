@@ -193,7 +193,7 @@ QVector< AbstractResourcesBackend* > ResourcesModel::backends() const
     return m_backends;
 }
 
-AbstractResource* ResourcesModel::applicationByPackageName(const QString& name)
+AbstractResource* ResourcesModel::resourceByPackageName(const QString& name)
 {
     foreach(AbstractResourcesBackend* backend, m_backends)
     {

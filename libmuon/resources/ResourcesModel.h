@@ -71,7 +71,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         QVector< AbstractResourcesBackend* > backends() const;
         int updatesCount() const;
         
-        Q_SCRIPTABLE AbstractResource* applicationByPackageName(const QString& name);
+        Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name);
         Q_SCRIPTABLE AbstractResourcesBackend* backendForResource(AbstractResource* resource) const;
         
     public slots:
