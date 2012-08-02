@@ -56,7 +56,6 @@
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/Rating.h>
 #include <ApplicationModel/LaunchListModel.h>
-#include <ApplicationModel/ApplicationModel.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesUpdatesModel.h>
 

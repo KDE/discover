@@ -27,8 +27,6 @@ add_subdirectory(tests)
 set(muon_LIB_SRCS
     Application.cpp
     ApplicationBackend.cpp
-    ApplicationModel/ApplicationModel.cpp
-    ApplicationModel/ApplicationProxyModel.cpp
     ApplicationModel/LaunchListModel.cpp
     ApplicationModel/ApplicationUpdates.cpp
     ChangesDialog.cpp

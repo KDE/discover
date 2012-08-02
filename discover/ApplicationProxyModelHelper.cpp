@@ -18,7 +18,6 @@
  */
 
 #include "ApplicationProxyModelHelper.h"
-#include <ApplicationModel/ApplicationModel.h>
 #include <resources/ResourcesModel.h>
 #include "BackendsSingleton.h"
 #include <QDebug>
