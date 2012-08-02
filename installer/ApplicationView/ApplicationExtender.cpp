@@ -70,8 +70,8 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, AbstractResource *app,
     layout->addWidget(m_actionButton);
     layout->addWidget(m_cancelButton);
 
-    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent,Transaction*)),
-            this, SLOT(workerEvent(QApt::WorkerEvent,Transaction*)));
+    connect(m_appBackend, SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)),
+            this, SLOT(workerEvent(TransactionStateTransition,Transaction*)));
     connect(m_appBackend, SIGNAL(transactionCancelled(Transaction*)),
             this, SLOT(transactionCancelled(Transaction*)));
 
