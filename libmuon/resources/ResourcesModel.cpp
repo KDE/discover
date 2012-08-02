@@ -44,7 +44,6 @@ ResourcesModel::ResourcesModel(QObject* parent)
     roles[ProgressTextRole] = "progressText";
     roles[InstalledRole] = "isInstalled";
     roles[ApplicationRole] = "application";
-    roles[UsageCountRole] = "usageCount";
     roles[PopConRole] = "popcon";
     roles[OriginRole] = "origin";
     roles[UntranslatedNameRole] = "untranslatedName";

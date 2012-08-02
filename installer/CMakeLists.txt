@@ -38,10 +38,6 @@ target_link_libraries(muon-installer muonprivate
                                      ${qjson_LIBRARIES}
                                      ${QT_QTDECLARATIVE_LIBRARY})
 
-if (ENABLE_QZEITGEIST)
-    target_link_libraries(muon-installer ${QZEITGEIST_LIBRARY})
-endif (ENABLE_QZEITGEIST)
-
 install(TARGETS muon-installer ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### install files ###############

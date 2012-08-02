@@ -32,9 +32,9 @@
 #include <KLocale>
 
 // Libmuon includes
-#include <ApplicationBackend.h>
 #include <Category/Category.h>
 #include <Transaction/Transaction.h>
+#include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>
 
@@ -169,17 +169,17 @@ void ApplicationViewWidget::search(const QString &text)
     m_proxyModel->search(text);
 }
 
-void ApplicationViewWidget::infoButtonClicked(Application *app)
+void ApplicationViewWidget::infoButtonClicked(AbstractResource *resource)
 {
     // Check to see if a view for this app already exists
-    if (m_currentPair.second == app) {
+    if (m_currentPair.second == resource) {
         emit switchToSubView(m_currentPair.first);
         return;
     }
 
     // Create one if not
-    m_detailsView = new ApplicationDetailsView(this, (ApplicationBackend*)m_backend); // FIXME: Port DetailsView to resources... gulp.
-    m_detailsView->setApplication(app);
+    m_detailsView = new ApplicationDetailsView(this, m_backend);
+    m_detailsView->setResource(resource);
     m_currentPair.first = m_detailsView;
 
     connect(m_detailsView, SIGNAL(installButtonClicked(AbstractResource*)),
@@ -244,5 +244,3 @@ void ApplicationViewWidget::techCheckChanged(int state)
 {
     setShouldShowTechnical(state == Qt::Checked);
 }
-
-#include "ApplicationViewWidget.moc"

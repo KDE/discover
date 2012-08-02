@@ -6,7 +6,6 @@ set(KDE_MIN_VERSION "4.7.0")
 find_package(KDE4 ${KDE_MIN_VERSION} REQUIRED)
 find_package(QApt REQUIRED)
 find_package(DebconfKDE REQUIRED)
-find_package(QZeitgeist)
 find_package(QtOAuth REQUIRED)
 find_package(QCA2 REQUIRED) #required by QtOAuth
 find_package(QJSON REQUIRED)
@@ -15,26 +14,9 @@ include (KDE4Defaults)
 
 include( FindPkgConfig )
 
-OPTION (ENABLE_QZEITGEIST "QZeitgeist support for App usage statistics" ON)
-
-if (QZEITGEIST_INCLUDE_DIR)
-    MESSAGE(STATUS "Found QZEITGEIST:")
-    if (ENABLE_QZEITGEIST)
-        set(HAVE_QZEITGEIST TRUE)
-    endif (ENABLE_QZEITGEIST)
-else (QZEITGEIST_INCLUDE_DIR)
-    set(ENABLE_QZEITGEIST FALSE)
-endif (QZEITGEIST_INCLUDE_DIR)
-
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 
-macro_log_feature(HAVE_QZEITGEIST "LibQZeitgeist" "Qt wrapper around the Zeitgeist DBus event logging service"
-                  "http://launchpad.net/zeitgeist/" FALSE "" "Used for application usage counting")
-
 include_directories(${KDE4_INCLUDES} ${QT_INCLUDES} ${QAPT_INCLUDE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${QCA2_INCLUDE_DIR})
-
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/HaveQZeitgeist.h.in
-               ${CMAKE_CURRENT_BINARY_DIR}/HaveQZeitgeist.h)
 
 add_subdirectory(libmuon)
 add_subdirectory(muon)

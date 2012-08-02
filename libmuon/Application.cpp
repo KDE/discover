@@ -65,7 +65,6 @@ Application::Application(const QString& fileName, QApt::Backend* backend)
         , m_isValid(true)
         , m_isTechnical(false)
         , m_isExtrasApp(false)
-        , m_usageCount(-1)
 {
     m_data = desktopContents(fileName);
     m_isTechnical = getField("NoDisplay").toLower() == "true" || !hasField("Exec");
@@ -79,7 +78,6 @@ Application::Application(QApt::Package* package, QApt::Backend* backend)
         , m_isValid(true)
         , m_isTechnical(true)
         , m_isExtrasApp(false)
-        , m_usageCount(-1)
 {
     m_packageName = m_package->latin1Name().latin1();
     
@@ -90,10 +88,6 @@ Application::Application(QApt::Package* package, QApt::Backend* backend)
         m_isExtrasApp = true;
         m_isTechnical = false;
     }
-}
-
-Application::~Application()
-{
 }
 
 QString Application::name()
@@ -422,57 +416,6 @@ QString Application::sizeDescription()
 KSharedConfigPtr Application::desktopContents(const QString& filename)
 {
     return KSharedConfig::openConfig(filename, KConfig::SimpleConfig);
-}
-
-void Application::populateZeitgeistInfo()
-{
-    m_usageCount = -1;
-#ifdef HAVE_QZEITGEIST
-    QVector< KService::Ptr > exes = executables();
-    if(exes.isEmpty())
-        return;
-
-    KService::Ptr service = exes.first();
-    if(!service)
-        return;
-
-    QString desktopFile = service->path();
-
-    QtZeitgeist::init();
-
-    // Prepare the Zeitgeist query
-    QtZeitgeist::DataModel::EventList eventListTemplate;
-
-    QtZeitgeist::DataModel::Event event1;
-    event1.setActor("application://" + desktopFile);
-    event1.setInterpretation(QtZeitgeist::Interpretation::Event::ZGModifyEvent);
-    event1.setManifestation(QtZeitgeist::Manifestation::Event::ZGUserActivity);
-
-    QtZeitgeist::DataModel::Event event2;
-    event2.setActor("application://" + desktopFile);
-    event2.setInterpretation(QtZeitgeist::Interpretation::Event::ZGCreateEvent);
-    event2.setManifestation(QtZeitgeist::Manifestation::Event::ZGUserActivity);
-
-    eventListTemplate << event1 << event2;
-
-    QtZeitgeist::Log log;
-    QDBusPendingReply<QtZeitgeist::DataModel::EventIdList> reply = log.findEventIds(QtZeitgeist::DataModel::TimeRange::always(),
-                                                                                    eventListTemplate,
-                                                                                    QtZeitgeist::Log::Any,
-                                                                                    0, QtZeitgeist::Log::MostRecentEvents);
-    reply.waitForFinished();
-
-    if (reply.isValid()) {
-        m_usageCount = reply.value().size();
-    }
-#endif // HAVE_QZEITGEIST
-}
-
-int Application::usageCount()
-{
-    if(m_usageCount<0)
-        populateZeitgeistInfo();
-    return m_usageCount;
 }
 
 void Application::clearPackage()

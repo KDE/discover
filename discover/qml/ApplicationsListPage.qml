@@ -108,12 +108,7 @@ Page {
             property string role: "origin"
             property string section: "origin"
             property variant sorting: Qt.DescendingOrder
-        }//,
-//         QtObject {
-//             property string display: i18n("Usage")
-//             property string role: "usageCount"
-//             property variant sorting: Qt.DescendingOrder
-//         }
+        }
     ]
     
     Component {

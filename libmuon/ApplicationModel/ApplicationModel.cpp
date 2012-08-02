@@ -53,7 +53,6 @@ ApplicationModel::ApplicationModel(QObject *parent)
     roles[ProgressTextRole] = "progressText";
     roles[InstalledRole] = "installed";
     roles[ApplicationRole] = "application";
-    roles[UsageCountRole] = "usageCount";
     roles[PopConRole] = "popcon";
     roles[OriginRole] = "origin";
     roles[UntranslatedNameRole] = "untranslatedName";
@@ -218,8 +217,6 @@ QVariant ApplicationModel::data(const QModelIndex &index, int role) const
             return QVariant();
         case ApplicationRole:
             return qVariantFromValue<QObject*>(m_apps.at(index.row()));
-        case UsageCountRole:
-            return m_apps.at(index.row())->usageCount();
         case PopConRole:
             return m_apps.at(index.row())->popularityContest();
         case OriginRole:

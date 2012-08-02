@@ -26,18 +26,16 @@
 #include "../AbstractViewBase.h"
 
 class AbstractResource;
-class Application;
-class ApplicationBackend;
+class AbstractResourcesBackend;
 class ApplicationDetailsWidget;
 
 class ApplicationDetailsView : public AbstractViewBase
 {
     Q_OBJECT
 public:
-    ApplicationDetailsView(QWidget *parent, ApplicationBackend *backend);
-    ~ApplicationDetailsView();
+    ApplicationDetailsView(QWidget *parent, AbstractResourcesBackend *backend);
 
-    void setApplication(Application *app);
+    void setResource(AbstractResource *resource);
 
 private:
     ApplicationDetailsWidget *m_detailsWidget;

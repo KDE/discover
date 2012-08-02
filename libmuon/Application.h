@@ -43,13 +43,11 @@ class MUONPRIVATE_EXPORT Application : public AbstractResource
 Q_OBJECT
 // Q_PROPERTY(QString mimetypes READ mimetypes CONSTANT)
 // Q_PROPERTY(QString menuPath READ menuPath CONSTANT)
-// Q_PROPERTY(int usageCount READ usageCount CONSTANT)
 public:
     friend class TransactionListener;
 
     explicit Application(const QString &fileName, QApt::Backend *backend);
     explicit Application(QApt::Package *package, QApt::Backend *backend);
-    ~Application();
 
     QString name();
     QString untranslatedName();
@@ -67,7 +65,6 @@ public:
     virtual QList< PackageState > addonsInformation();
     bool isValid() const;
     bool isTechnical() const;
-    int usageCount();
     QString packageName() const;
 
     QByteArray getField(const char* field, const QByteArray& defaultvalue = QByteArray()) const;
@@ -97,7 +94,6 @@ public:
     virtual void fetchScreenshots();
 
 private:
-    void populateZeitgeistInfo();
     QVector<QPair<QString, QString> > locateApplication(const QString &_relPath, const QString &menuId) const;
     bool hasField(const char* field) const;
 
@@ -109,7 +105,6 @@ private:
     bool m_isValid;
     bool m_isTechnical;
     bool m_isExtrasApp;
-    int m_usageCount;
 };
 
 #endif

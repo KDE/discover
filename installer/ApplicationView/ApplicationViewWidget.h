@@ -34,8 +34,6 @@ class QTreeView;
 
 class KComboBox;
 
-class Application;
-class ApplicationBackend;
 class ApplicationDelegate;
 class ApplicationDetailsView;
 class ResourcesModel;
@@ -54,7 +52,7 @@ private:
     AbstractResourcesBackend *m_backend;
     ResourcesModel *m_appModel;
     ResourcesProxyModel *m_proxyModel;
-    QPair<AbstractViewBase *, Application *> m_currentPair;
+    QPair<AbstractViewBase *, AbstractResource *> m_currentPair;
     bool m_canShowTechnical;
 
     QLabel *m_headerIcon;
@@ -66,7 +64,7 @@ private:
     ApplicationDetailsView *m_detailsView;
 
 private Q_SLOTS:
-    void infoButtonClicked(Application *app);
+    void infoButtonClicked(AbstractResource *resource);
     void onSubViewDestroyed();
     void sortComboChanged(int index);
     void updateSortCombo();

@@ -56,20 +56,14 @@
 #include <KDebug>
 #include <Nepomuk/KRatingWidget>
 
-// LibQApt includes
-#include <LibQApt/Package>
-
-// QZeitgeist includes
-#include "HaveQZeitgeist.h"
-
 // Libmuon includes
-#include <Application.h>
 #include <MuonStrings.h>
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/Review.h>
 #include <ReviewsBackend/ReviewsBackend.h>
 #include <Transaction/TransactionListener.h>
-#include "../../libmuon/mobile/src/mousecursor.h"
+#include <mobile/src/mousecursor.h>
+#include <resources/AbstractResource.h>
 
 // std includes
 #include <math.h>
@@ -82,9 +76,19 @@
 
 #define BLUR_RADIUS 15
 
-ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationBackend *backend)
+enum class ScreenshotType : quint8
+{
+       /// An unknown/invalid type
+       UnknownType = 0,
+       /// A smaller thumbnail of the screenshot
+       Thumbnail   = 1,
+       /// The full screenshot
+       Screenshot  = 2
+};
+
+ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, AbstractResourcesBackend *backend)
     : QScrollArea(parent)
-    , m_appBackend(backend)
+    , m_backend(backend)
     , m_screenshotFile(0)
 {
     qmlRegisterType<QGraphicsDropShadowEffect>("Effects",1,0,"DropShadow");
@@ -159,14 +163,13 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     actionButtonWidget->setFrameShape(QFrame::StyledPanel);
 
     m_statusLabel = new QLabel(actionButtonWidget);
-    m_usageLabel = new QLabel(actionButtonWidget);
 
     QWidget *actionButtonSpacer = new QWidget(actionButtonWidget);
     actionButtonSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
     m_actionButton = new QPushButton(actionButtonWidget);
     connect(m_actionButton, SIGNAL(clicked()), this, SLOT(actionButtonClicked()));
-    connect(m_appBackend, SIGNAL(reloadFinished()), this, SLOT(updateActionButton()));
+    connect(m_backend, SIGNAL(reloadFinished()), this, SLOT(updateActionButton()));
 
     m_progressBar = new QProgressBar(actionButtonWidget);
     m_progressBar->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Preferred);
@@ -180,7 +183,6 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(cancelButtonClicked()));
 
     actionButtonLayout->addWidget(m_statusLabel);
-    actionButtonLayout->addWidget(m_usageLabel);
     actionButtonLayout->addWidget(actionButtonSpacer);
     actionButtonLayout->addWidget(m_actionButton);
     actionButtonLayout->addWidget(m_progressBar);
@@ -221,7 +223,7 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     bodyLayout->addWidget(m_screenshotView);
     m_screenshotView->show();
 
-    m_addonsWidget = new AddonsWidget(widget, m_appBackend);
+    m_addonsWidget = new AddonsWidget(widget, m_backend);
 
     connect(m_addonsWidget, SIGNAL(applyButtonClicked(QHash<QString,bool>)),
             this, SLOT(addonsApplyButtonClicked(QHash<QString,bool>)));
@@ -292,7 +294,7 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
     layout->addWidget(verticalSpacer);
     
     m_listener = new TransactionListener(this);
-    m_listener->setBackend(m_appBackend);
+    m_listener->setBackend(m_backend);
 
     connect(m_listener, SIGNAL(progressChanged()), SLOT(progressChanged()));
     connect(m_listener, SIGNAL(commentChanged()), SLOT(progressCommentChanged()));
@@ -307,20 +309,20 @@ ApplicationDetailsWidget::~ApplicationDetailsWidget()
     delete m_screenshotFile;
 }
 
-void ApplicationDetailsWidget::setApplication(Application *app)
+void ApplicationDetailsWidget::setResource(AbstractResource *resource)
 {
-    m_app = app;
-    m_listener->setResource(m_app);
+    m_resource = resource;
+    m_listener->setResource(m_resource);
 
     // FIXME: Always keep label size at 48x48, and render the largest size
     // we can up to that point. Otherwise some icons will be blurry
-    m_iconLabel->setPixmap(KIcon(app->icon()).pixmap(48,48));
+    m_iconLabel->setPixmap(KIcon(resource->icon()).pixmap(48,48));
 
-    m_nameLabel->setText(QLatin1Literal("<h1>") % app->name() % QLatin1Literal("</h1>"));
-    m_shortDescLabel->setText(app->comment());
+    m_nameLabel->setText(QLatin1Literal("<h1>") % resource->name() % QLatin1Literal("</h1>"));
+    m_shortDescLabel->setText(resource->comment());
 
-    ReviewsBackend *reviewsBackend = qobject_cast<ReviewsBackend*>(m_appBackend->reviewsBackend());
-    Rating *rating = reviewsBackend->ratingForApplication(app);
+    ReviewsBackend *reviewsBackend = qobject_cast<ReviewsBackend*>(m_backend->reviewsBackend());
+    Rating *rating = reviewsBackend->ratingForApplication(resource);
     if (rating) {
         m_ratingWidget->setRating(rating->rating());
         m_ratingCountLabel->setText(i18ncp("@label The number of ratings the app has",
@@ -330,75 +332,71 @@ void ApplicationDetailsWidget::setApplication(Application *app)
         m_ratingWidget->hide();
         m_ratingCountLabel->hide();
     }
-
-#ifdef HAVE_QZEITGEIST
-    m_usageLabel->setText(i18ncp("@label The number of times an app has been used",
-                                  "Used one time", "(Used %1 times)", app->usageCount()));
-#else
-    m_usageLabel->hide();
-#endif
     
-    QString menuPathString = app->menuPath();
-    if (!menuPathString.isEmpty()) {
-        m_menuPathLabel->setText(menuPathString);
-    } else {
-        m_menuPathWidget->hide();
-    }
+    // FIXME: Port to Resources
+//    QString menuPathString = resource->menuPath();
+//    if (!menuPathString.isEmpty()) {
+//        m_menuPathLabel->setText(menuPathString);
+//    } else {
+//        m_menuPathWidget->hide();
+//    }
 
     updateActionButton();
 
-    m_longDescLabel->setText(app->package()->longDescription());
+    m_longDescLabel->setText(resource->longDescription());
 
-    m_addonsWidget->setResource(app);
+    m_addonsWidget->setResource(resource);
 
-    QString homepageUrl = app->package()->homepage();
+    QUrl homepageUrl = resource->homepage();
     if (!homepageUrl.isEmpty()) {
         QString websiteString = i18nc("@label visible text for an app's URL", "Website");
-        m_websiteLabel->setText(QLatin1Literal("<a href=\"") % homepageUrl % "\">" %
-                                websiteString % QLatin1Literal("</a>"));
-        m_websiteLabel->setToolTip(homepageUrl);
+        m_websiteLabel->setText(QLatin1String("<a href=\"") % homepageUrl.toString() % "\">" %
+                                websiteString % QLatin1String("</a>"));
+        m_websiteLabel->setToolTip(homepageUrl.toString());
     } else {
         m_websiteLabel->hide();
     }
 
-    if (!app->package()->isInstalled()) {
-        m_size->setText(i18nc("@info app size", "%1 to download, %2 on disk",
-                              KGlobal::locale()->formatByteSize(app->package()->downloadSize()),
-                              KGlobal::locale()->formatByteSize(app->package()->availableInstalledSize())));
+    // FIXME: Needs support in AsbtractResource
+//    if (!resource->isInstalled()) {
+//        m_size->setText(i18nc("@info app size", "%1 to download, %2 on disk",
+//                              KGlobal::locale()->formatByteSize(resource->package()->downloadSize()),
+//                              KGlobal::locale()->formatByteSize(resource->package()->availableInstalledSize())));
+//    } else {
+//        m_size->setText(i18nc("@info app size", "%1 on disk",
+//                              KGlobal::locale()->formatByteSize(resource->package()->currentInstalledSize())));
+//    }
+
+    if (!resource->isInstalled()) {
+         m_version->setText(resource->name() % ' ' %
+                            resource->availableVersion());
     } else {
-        m_size->setText(i18nc("@info app size", "%1 on disk",
-                              KGlobal::locale()->formatByteSize(app->package()->currentInstalledSize())));
+         m_version->setText(resource->name() % ' ' %
+                            resource->installedVersion());
     }
 
-    if (!app->package()->isInstalled()) {
-         m_version->setText(app->package()->latin1Name() % ' ' %
-                            app->package()->availableVersion());
-    } else {
-         m_version->setText(app->package()->latin1Name() % ' ' %
-                            app->package()->installedVersion());
-    }
+    m_license->setText(resource->license());
 
-    m_license->setText(app->license());
-
-    if (app->package()->isSupported()) {
-        m_support->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
-                                 "Canonical provides critical updates for %1 until %2",
-                                 app->name(), app->package()->supportedUntil()));
-    } else {
-        m_support->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
-                                 "Canonical does not provide updates for %1. Some updates "
-                                 "may be provided by the Ubuntu community", app->name()));
-    }
+    // FIXME: Port to Resources
+//    if (resource->isSupported()) {
+//        m_support->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
+//                                 "Canonical provides critical updates for %1 until %2",
+//                                 resource->name(), resource->supportedUntil()));
+//    } else {
+//        m_support->setText(i18nc("@info Tells how long Canonical, Ltd. will support a package",
+//                                 "Canonical does not provide updates for %1. Some updates "
+//                                 "may be provided by the Ubuntu community", resource->name()));
+//    }
 
     // Fetch reviews
     connect(reviewsBackend, SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
 	    this, SLOT(populateReviews(AbstractResource*,QList<Review*>)));
     fetchReviews(1);
 
-    fetchScreenshot(QApt::Thumbnail);
+    fetchScreenshot(ScreenshotType::Thumbnail);
 }
 
-void ApplicationDetailsWidget::fetchScreenshot(QApt::ScreenshotType screenshotType)
+void ApplicationDetailsWidget::fetchScreenshot(ScreenshotType screenshotType)
 {
     if (m_screenshotFile) {
         m_screenshotFile->deleteLater();
@@ -410,21 +408,21 @@ void ApplicationDetailsWidget::fetchScreenshot(QApt::ScreenshotType screenshotTy
     m_screenshotFile->open();
 
     switch (screenshotType) {
-    case QApt::Thumbnail: {
+    case ScreenshotType::Thumbnail: {
         QObject *object = m_screenshotView->rootObject();
         if (object) {
-            object->setProperty("source", KUrl(m_app->screenshotUrl(QApt::Thumbnail)).pathOrUrl());
+            object->setProperty("source", KUrl(m_resource->thumbnailUrl()).pathOrUrl());
         }
         break;
     }
-    case QApt::Screenshot: {
-        KIO::FileCopyJob *getJob = KIO::file_copy(m_app->screenshotUrl(screenshotType),
+    case ScreenshotType::Screenshot: {
+        KIO::FileCopyJob *getJob = KIO::file_copy(m_resource->screenshotUrl(),
                                m_screenshotFile->fileName(), -1, KIO::Overwrite | KIO::HideProgressInfo);
         connect(getJob, SIGNAL(result(KJob*)),
             this, SLOT(screenshotFetched(KJob*)));
         break;
     }
-    case QApt::UnknownType:
+    case ScreenshotType::UnknownType:
     default:
         break;
     }
@@ -458,7 +456,7 @@ void ApplicationDetailsWidget::screenshotLabelClicked()
 {
     QObject *item = m_screenshotView->rootObject();
     disconnect(item, SIGNAL(thumbnailClicked()), this, SLOT(screenshotLabelClicked()));
-    fetchScreenshot(QApt::Screenshot);
+    fetchScreenshot(ScreenshotType::Screenshot);
 }
 
 void ApplicationDetailsWidget::actionButtonClicked()
@@ -469,16 +467,16 @@ void ApplicationDetailsWidget::actionButtonClicked()
     m_progressBar->setFormat(i18nc("@info:status Progress text when waiting", "Waiting"));
 
     // TODO: update packages
-    if (m_app->package()->isInstalled()) {
-        emit removeButtonClicked(m_app);
+    if (m_resource->isInstalled()) {
+        emit removeButtonClicked(m_resource);
     } else {
-        emit installButtonClicked(m_app);
+        emit installButtonClicked(m_resource);
     }
 }
 
 void ApplicationDetailsWidget::cancelButtonClicked()
 {
-    emit cancelButtonClicked(m_app);
+    emit cancelButtonClicked(m_resource);
 
     m_progressBar->hide();
     m_actionButton->show();
@@ -486,17 +484,17 @@ void ApplicationDetailsWidget::cancelButtonClicked()
 
 void ApplicationDetailsWidget::fetchReviews(int page)
 {
-    if (!m_app) {
+    if (!m_resource) {
 	return;
     }
 
-    m_appBackend->reviewsBackend()->fetchReviews(m_app, page);
+    m_backend->reviewsBackend()->fetchReviews(m_resource, page);
 
 }
 
 void ApplicationDetailsWidget::populateReviews(AbstractResource *app, const QList<Review *> &reviews)
 {
-    if (app != m_app) {
+    if (app != m_resource) {
         return;
     }
 
@@ -505,7 +503,7 @@ void ApplicationDetailsWidget::populateReviews(AbstractResource *app, const QLis
 
 void ApplicationDetailsWidget::addonsApplyButtonClicked(const QHash<QString, bool> &changedAddons)
 {
-    emit installButtonClicked(m_app, changedAddons);
+    emit installButtonClicked(m_resource, changedAddons);
 
     m_actionButton->hide();
     m_progressBar->show();
@@ -536,10 +534,10 @@ void ApplicationDetailsWidget::progressCommentChanged()
 
 void ApplicationDetailsWidget::updateActionButton()
 {
-    if (!m_app)
+    if (!m_resource)
         return;
 
-    if (!m_app->package()->isInstalled()) {
+    if (!m_resource->isInstalled()) {
         m_statusLabel->setText(MuonStrings::global()->packageStateName(QApt::Package::NotInstalled));
         m_actionButton->setText(i18nc("@action", "Install"));
         m_actionButton->setIcon(KIcon("download"));
@@ -550,5 +548,3 @@ void ApplicationDetailsWidget::updateActionButton()
         m_actionButton->setIcon(KIcon("edit-delete"));
     }
 }
-
-#include "ApplicationDetailsWidget.moc"

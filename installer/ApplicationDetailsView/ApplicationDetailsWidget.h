@@ -24,14 +24,9 @@
 // Qt includes
 #include <QtGui/QScrollArea>
 
-// LibQApt includes
-#include <LibQApt/Globals>
-
 // Libmuon includes
-#include <ApplicationBackend.h>
 #include <Transaction/Transaction.h>
 
-class TransactionListener;
 class QDeclarativeView;
 class QGraphicsBlurEffect;
 class QLabel;
@@ -46,24 +41,27 @@ class KTemporaryFile;
 
 class AddonsWidget;
 class AbstractResource;
-class Application;
+class AbstractResourcesBackend;
 class ClickableLabel;
+class TransactionListener;
 class Review;
 class ReviewsWidget;
+
+enum class ScreenshotType : quint8;
 
 // Widget for showing details about a single application
 class ApplicationDetailsWidget : public QScrollArea
 {
     Q_OBJECT
 public:
-    explicit ApplicationDetailsWidget(QWidget *parent, ApplicationBackend *backend);
+    explicit ApplicationDetailsWidget(QWidget *parent, AbstractResourcesBackend *backend);
     ~ApplicationDetailsWidget();
 
-    void setApplication(Application *app);
+    void setResource(AbstractResource *resource);
 
 private:
-    Application *m_app;
-    ApplicationBackend *m_appBackend;
+    AbstractResource *m_resource;
+    AbstractResourcesBackend *m_backend;
 
     QLabel *m_iconLabel;
     QLabel *m_nameLabel;
@@ -73,7 +71,6 @@ private:
     QWidget *m_menuPathWidget;
     QLabel *m_menuPathLabel;
     QLabel *m_statusLabel;
-    QLabel *m_usageLabel;
     QPushButton *m_actionButton;
     QProgressBar *m_progressBar;
     QPushButton *m_cancelButton;
@@ -95,7 +92,7 @@ private:
     TransactionListener* m_listener;
 
 private Q_SLOTS:
-    void fetchScreenshot(QApt::ScreenshotType screenshotType);
+    void fetchScreenshot(ScreenshotType screenshotType);
     void screenshotFetched(KJob *job);
     void overlayClosed();
     void screenshotLabelClicked();

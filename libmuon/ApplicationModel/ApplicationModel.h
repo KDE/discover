@@ -52,7 +52,6 @@ public:
         ProgressTextRole,
         InstalledRole,
         ApplicationRole,
-        UsageCountRole,
         PopConRole,
         UntranslatedNameRole,
         OriginRole,

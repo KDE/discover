@@ -27,13 +27,13 @@
 #include <KIcon>
 
 // Libmuon includes
-#include <Application.h>
+#include <resources/AbstractResource.h>
 
 // Own includes
 #include "ApplicationDetailsWidget.h"
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
 
-ApplicationDetailsView::ApplicationDetailsView(QWidget *parent, ApplicationBackend *backend)
+ApplicationDetailsView::ApplicationDetailsView(QWidget *parent, AbstractResourcesBackend *backend)
     : AbstractViewBase(parent)
 {
     m_detailsWidget = new ApplicationDetailsWidget(this, backend);
@@ -52,16 +52,10 @@ ApplicationDetailsView::ApplicationDetailsView(QWidget *parent, ApplicationBacke
             this, SIGNAL(cancelButtonClicked(AbstractResource*)));
 }
 
-ApplicationDetailsView::~ApplicationDetailsView()
+void ApplicationDetailsView::setResource(AbstractResource *resource)
 {
+    m_detailsWidget->setResource(resource);
+
+    m_crumb->setText(resource->name());
+    m_crumb->setIcon(KIcon(resource->icon()));
 }
-
-void ApplicationDetailsView::setApplication(Application *app)
-{
-    m_detailsWidget->setApplication(app);
-
-    m_crumb->setText(app->name());
-    m_crumb->setIcon(KIcon(app->icon()));
-}
-
-#include "ApplicationDetailsView.moc"
