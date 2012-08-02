@@ -20,8 +20,6 @@
 
 #include "Review.h"
 
-#include <LibQApt/Package>
-
 Review::Review(const QVariantMap &data)
 {
     m_appName = data.value("app_name").toString();
