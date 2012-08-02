@@ -28,8 +28,8 @@
 
 TransactionListener::TransactionListener(QObject* parent)
     : QObject(parent)
-    , m_appBackend(0)
-    , m_app(0)
+    , m_backend(0)
+    , m_resource(0)
     , m_progress(0)
     , m_downloading(false)
 {}
@@ -37,45 +37,45 @@ TransactionListener::TransactionListener(QObject* parent)
 TransactionListener::~TransactionListener()
 {}
 
-void TransactionListener::setBackend(AbstractResourcesBackend* appBackend)
+void TransactionListener::setBackend(AbstractResourcesBackend* backend)
 {
-    if(m_appBackend) {
-        disconnect(m_appBackend, SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)),
+    if(m_backend) {
+        disconnect(m_backend, SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)),
                 this, SLOT(workerEvent(TransactionStateTransition,Transaction*)));
-        disconnect(m_appBackend, SIGNAL(transactionCancelled(Transaction*)),
+        disconnect(m_backend, SIGNAL(transactionCancelled(Transaction*)),
                 this, SLOT(transactionCancelled(Transaction*)));
-        disconnect(m_appBackend, SIGNAL(transactionRemoved(Transaction*)),
+        disconnect(m_backend, SIGNAL(transactionRemoved(Transaction*)),
                 this, SLOT(transactionRemoved(Transaction*)));
     }
     
-    m_appBackend = appBackend;
-    if(appBackend) {
+    m_backend = backend;
+    if(backend) {
         // Catch already-begun downloads. If the state is something else, we won't
         // care because we won't handle it
         init();
         
-        connect(m_appBackend, SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)),
+        connect(m_backend, SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)),
                 this, SLOT(workerEvent(TransactionStateTransition,Transaction*)));
-        connect(m_appBackend, SIGNAL(transactionCancelled(Transaction*)),
+        connect(m_backend, SIGNAL(transactionCancelled(Transaction*)),
                 this, SLOT(transactionCancelled(Transaction*)));
-        connect(m_appBackend, SIGNAL(transactionRemoved(Transaction*)),
+        connect(m_backend, SIGNAL(transactionRemoved(Transaction*)),
                     this, SLOT(transactionRemoved(Transaction*)));
     }
 }
 
 void TransactionListener::init()
 {
-    if(!m_appBackend)
+    if(!m_backend)
         return;
     
-    QPair<TransactionStateTransition, Transaction *> workerState = m_appBackend->currentTransactionState();
+    QPair<TransactionStateTransition, Transaction *> workerState = m_backend->currentTransactionState();
     if(!workerState.second)
         return;
 
     workerEvent(workerState.first, workerState.second);
 
-    foreach (Transaction *transaction, m_appBackend->transactions()) {
-        if (transaction->resource() == m_app) {
+    foreach (Transaction *transaction, m_backend->transactions()) {
+        if (transaction->resource() == m_resource) {
             emit running(true);
             kDebug() << transaction->state();
             showTransactionState(transaction);
@@ -85,11 +85,11 @@ void TransactionListener::init()
 
 bool TransactionListener::isActive() const
 {
-    if(!m_appBackend)
+    if(!m_backend)
         return false;
 
-    foreach (Transaction *transaction, m_appBackend->transactions()) {
-        if (transaction->resource() == m_app) {
+    foreach (Transaction *transaction, m_backend->transactions()) {
+        if (transaction->resource() == m_resource) {
             return transaction->state()!=TransactionState::DoneState;
         }
     }
@@ -98,13 +98,13 @@ bool TransactionListener::isActive() const
 
 bool TransactionListener::isDownloading() const
 {
-    return m_appBackend && m_downloading;
+    return m_backend && m_downloading;
 }
 
 void TransactionListener::workerEvent(TransactionStateTransition event, Transaction *transaction)
 {
     Q_ASSERT(transaction);
-    if (m_app != transaction->resource()) {
+    if (m_resource != transaction->resource()) {
         return;
     }
 
@@ -112,7 +112,7 @@ void TransactionListener::workerEvent(TransactionStateTransition event, Transact
     case StartedDownloading:
         m_comment = i18nc("@info:status", "Downloading");
         m_progress = 0;
-        connect(m_appBackend, SIGNAL(transactionProgressed(Transaction*,int)),
+        connect(m_backend, SIGNAL(transactionProgressed(Transaction*,int)),
                 this, SLOT(updateProgress(Transaction*,int)));
         emit running(true);
         emit commentChanged();
@@ -120,18 +120,18 @@ void TransactionListener::workerEvent(TransactionStateTransition event, Transact
         setDownloading(true);
         break;
     case FinishedDownloading:
-        disconnect(m_appBackend, SIGNAL(transactionProgressed(Transaction*,int)),
+        disconnect(m_backend, SIGNAL(transactionProgressed(Transaction*,int)),
                    this, SLOT(updateProgress(Transaction*,int)));
         setDownloading(false);
         break;
     case StartedCommitting:
         setStateComment(transaction);
-        connect(m_appBackend, SIGNAL(transactionProgressed(Transaction*,int)),
+        connect(m_backend, SIGNAL(transactionProgressed(Transaction*,int)),
                 this, SLOT(updateProgress(Transaction*,int)));
         break;
     case FinishedCommitting:
         emit running(false);
-        disconnect(m_appBackend, SIGNAL(transactionProgressed(Transaction*,int)),
+        disconnect(m_backend, SIGNAL(transactionProgressed(Transaction*,int)),
                    this, SLOT(updateProgress(Transaction*,int)));
         break;
     }
@@ -139,7 +139,7 @@ void TransactionListener::workerEvent(TransactionStateTransition event, Transact
 
 void TransactionListener::updateProgress(Transaction *transaction, int percentage)
 {
-    if (m_app == transaction->resource()) {
+    if (m_resource == transaction->resource()) {
         m_progress = percentage;
         emit progressChanged();
 
@@ -204,7 +204,7 @@ int TransactionListener::progress() const
 
 void TransactionListener::transactionCancelled(Transaction* t)
 {
-    if(t->resource()!=m_app)
+    if(t->resource()!=m_resource)
         return;
     emit running(false);
     setDownloading(false);
@@ -213,19 +213,19 @@ void TransactionListener::transactionCancelled(Transaction* t)
 
 void TransactionListener::setResource(AbstractResource* app)
 {
-    m_app = app;
+    m_resource = app;
     init();
     emit resourceChanged();
 }
 
 AbstractResource* TransactionListener::resource() const
 {
-    return m_app;
+    return m_resource;
 }
 
 AbstractResourcesBackend* TransactionListener::backend() const
 {
-    return m_appBackend;
+    return m_backend;
 }
 
 void TransactionListener::setDownloading(bool b)
@@ -236,7 +236,7 @@ void TransactionListener::setDownloading(bool b)
 
 void TransactionListener::transactionRemoved(Transaction* t)
 {
-    if(t && t->resource()==m_app) {
+    if(t && t->resource()==m_resource) {
         emit running(false);
     }
 }

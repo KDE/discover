@@ -43,7 +43,7 @@ class MUONPRIVATE_EXPORT TransactionListener : public QObject
     public:
         explicit TransactionListener(QObject* parent = 0);
         virtual ~TransactionListener();
-        void setBackend(AbstractResourcesBackend* appBackend);
+        void setBackend(AbstractResourcesBackend* backend);
         void setResource(AbstractResource* app);
         int progress() const;
         QString comment() const;
@@ -72,8 +72,8 @@ class MUONPRIVATE_EXPORT TransactionListener : public QObject
         void showTransactionState(Transaction* transaction);
         void setStateComment(Transaction* transaction);
         
-        AbstractResourcesBackend* m_appBackend;
-        AbstractResource* m_app;
+        AbstractResourcesBackend* m_backend;
+        AbstractResource* m_resource;
         int m_progress;
         QString m_comment;
         bool m_downloading;
