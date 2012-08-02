@@ -52,7 +52,7 @@
 #define UNIVERSAL_PADDING 4
 #define MAIN_ICON_SIZE 32
 
-ApplicationDelegate::ApplicationDelegate(QAbstractItemView *parent, ApplicationBackend *backend)
+ApplicationDelegate::ApplicationDelegate(QAbstractItemView *parent, AbstractResourcesBackend *backend)
   : KExtendableItemDelegate(parent),
     m_appBackend(backend),
     m_extender(0),

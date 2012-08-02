@@ -28,11 +28,10 @@
 #include <KLocale>
 #include <KStandardGuiItem>
 
-#include <LibQApt/Package>
+#include <resources/AbstractResource.h>
+#include <resources/AbstractResourcesBackend.h>
 
-#include "Application.h"
-
-ApplicationExtender::ApplicationExtender(QWidget *parent, AbstractResource *app, ApplicationBackend *backend)
+ApplicationExtender::ApplicationExtender(QWidget *parent, AbstractResource *app, AbstractResourcesBackend *backend)
     : QWidget(parent)
     , m_resource(app)
     , m_appBackend(backend)
@@ -78,12 +77,8 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, AbstractResource *app,
 
     // Catch already-begun downloads. If the state is something else, we won't
     // care because we won't handle it
-    QPair<QApt::WorkerEvent, Transaction *> workerState = m_appBackend->workerState();
+    QPair<TransactionStateTransition, Transaction *> workerState = m_appBackend->currentTransactionState();
     workerEvent(workerState.first, workerState.second);
-}
-
-ApplicationExtender::~ApplicationExtender()
-{
 }
 
 void ApplicationExtender::setShowInfoButton(bool show)
@@ -91,19 +86,19 @@ void ApplicationExtender::setShowInfoButton(bool show)
     show ? m_infoButton->show() : m_infoButton->hide();
 }
 
-void ApplicationExtender::workerEvent(QApt::WorkerEvent event, Transaction *transaction)
+void ApplicationExtender::workerEvent(TransactionStateTransition workerEvent, Transaction *transaction)
 {
     if (!transaction || !m_appBackend->transactions().contains(transaction)
         || m_resource != transaction->resource()) {
         return;
     }
 
-    switch (event) {
-    case QApt::PackageDownloadStarted:
+    switch (workerEvent) {
+    case StartedDownloading:
         m_actionButton->hide();
         m_cancelButton->show();
         break;
-    case QApt::CommitChangesStarted:
+    case StartedCommitting:
         m_cancelButton->hide();
         m_actionButton->hide();
         break;

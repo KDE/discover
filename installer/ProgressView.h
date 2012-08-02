@@ -23,17 +23,16 @@
 
 #include <KVBox>
 
-class ApplicationBackend;
+class AbstractResourcesBackend;
 class TransactionModel;
 
 class ProgressView : public KVBox
 {
     Q_OBJECT
 public:
-    explicit ProgressView(QWidget *parent, ApplicationBackend *backend);
+    explicit ProgressView(QWidget *parent, AbstractResourcesBackend *backend);
 
 private:
-    ApplicationBackend *m_appBackend;
     TransactionModel *m_progressModel;
     
 signals:

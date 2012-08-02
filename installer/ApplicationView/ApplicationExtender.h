@@ -23,35 +23,31 @@
 
 #include <QtGui/QWidget>
 
-#include <LibQApt/Globals>
-
-#include "ApplicationBackend.h"
+#include "resources/AbstractResourcesBackend.h"
 #include "Transaction/Transaction.h"
 
 class QProgressBar;
 class QPushButton;
 
-class Application;
-class ApplicationBackend;
+class AbstractResourcesBackend;
 
 class ApplicationExtender : public QWidget
 {
     Q_OBJECT
 public:
-    ApplicationExtender(QWidget *parent, AbstractResource *app, ApplicationBackend *backend);
-    ~ApplicationExtender();
+    ApplicationExtender(QWidget *parent, AbstractResource *app, AbstractResourcesBackend *backend);
 
     void setShowInfoButton(bool show);
 
 private:
     AbstractResource *m_resource;
-    ApplicationBackend *m_appBackend;
+    AbstractResourcesBackend *m_appBackend;
     QPushButton *m_infoButton;
     QPushButton *m_actionButton;
     QPushButton *m_cancelButton;
 
 private Q_SLOTS:
-    void workerEvent(QApt::WorkerEvent event, Transaction *transaction);
+    void workerEvent(TransactionStateTransition workerEvent, Transaction *transaction);
     void transactionCancelled(Transaction *trans);
     void emitInfoButtonClicked();
     void emitRemoveButtonClicked();

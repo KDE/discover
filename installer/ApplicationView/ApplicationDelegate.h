@@ -30,8 +30,7 @@ class AbstractResource;
 class KIconLoader;
 class KRatingPainter;
 
-class Application;
-class ApplicationBackend;
+class AbstractResourcesBackend;
 class ApplicationExtender;
 
 /**
@@ -41,7 +40,7 @@ class ApplicationDelegate: public KExtendableItemDelegate
 {
     Q_OBJECT
 public:
-    ApplicationDelegate(QAbstractItemView *parent, ApplicationBackend *backend);
+    ApplicationDelegate(QAbstractItemView *parent, AbstractResourcesBackend *backend);
 
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
@@ -52,7 +51,7 @@ public:
     void setShowInfoButton(bool show);
 
 private:
-    ApplicationBackend *m_appBackend;
+    AbstractResourcesBackend *m_appBackend;
 
     QSize   m_buttonSize;
     QPersistentModelIndex m_oldIndex;

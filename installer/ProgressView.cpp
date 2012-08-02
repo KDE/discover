@@ -31,27 +31,26 @@
 
 #include "ApplicationView/ApplicationDelegate.h"
 
-ProgressView::ProgressView(QWidget *parent, ApplicationBackend *backend)
+ProgressView::ProgressView(QWidget *parent, AbstractResourcesBackend *backend)
     : KVBox(parent)
-    , m_appBackend(backend)
 {
     QLabel *headerLabel = new QLabel(this);
     headerLabel->setText(i18nc("@info", "<title>In Progress</title>"));
     headerLabel->setAlignment(Qt::AlignLeft);
 
     m_progressModel = new TransactionModel(this);
-    m_progressModel->setBackend(m_appBackend);
-    m_progressModel->addTransactions(m_appBackend->transactions());
+    m_progressModel->setBackend(backend);
+    m_progressModel->addTransactions(backend->transactions());
 
     QListView *listView = new QListView(this);
     listView->setAlternatingRowColors(true);
-    ApplicationDelegate *delegate = new ApplicationDelegate(listView, m_appBackend);
+    ApplicationDelegate *delegate = new ApplicationDelegate(listView, backend);
     delegate->setShowInfoButton(false);
     listView->setItemDelegate(delegate);
     listView->setModel(m_progressModel);
 
-    connect(delegate, SIGNAL(cancelButtonClicked(Application*)),
-            m_appBackend, SLOT(cancelTransaction(Application*)));
+    connect(delegate, SIGNAL(cancelButtonClicked(AbstractResource*)),
+            backend, SLOT(cancelTransaction(AbstractResource*)));
     connect(m_progressModel, SIGNAL(lastTransactionCancelled()),
             this, SIGNAL(lastTransactionCancelled()));
 }
