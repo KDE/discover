@@ -75,7 +75,7 @@ void TransactionListener::init()
     workerEvent(workerState.first, workerState.second);
 
     foreach (Transaction *transaction, m_appBackend->transactions()) {
-        if (transaction->application() == m_app) {
+        if (transaction->resource() == m_app) {
             emit running(true);
             kDebug() << transaction->state();
             showTransactionState(transaction);
@@ -89,7 +89,7 @@ bool TransactionListener::isActive() const
         return false;
 
     foreach (Transaction *transaction, m_appBackend->transactions()) {
-        if (transaction->application() == m_app) {
+        if (transaction->resource() == m_app) {
             return transaction->state()!=TransactionState::DoneState;
         }
     }
@@ -104,7 +104,7 @@ bool TransactionListener::isDownloading() const
 void TransactionListener::workerEvent(TransactionStateTransition event, Transaction *transaction)
 {
     Q_ASSERT(transaction);
-    if (m_app != transaction->application()) {
+    if (m_app != transaction->resource()) {
         return;
     }
 
@@ -139,7 +139,7 @@ void TransactionListener::workerEvent(TransactionStateTransition event, Transact
 
 void TransactionListener::updateProgress(Transaction *transaction, int percentage)
 {
-    if (m_app == transaction->application()) {
+    if (m_app == transaction->resource()) {
         m_progress = percentage;
         emit progressChanged();
 
@@ -204,7 +204,7 @@ int TransactionListener::progress() const
 
 void TransactionListener::transactionCancelled(Transaction* t)
 {
-    if(t->application()!=m_app)
+    if(t->resource()!=m_app)
         return;
     emit running(false);
     setDownloading(false);
@@ -236,7 +236,7 @@ void TransactionListener::setDownloading(bool b)
 
 void TransactionListener::transactionRemoved(Transaction* t)
 {
-    if(t && t->application()==m_app) {
+    if(t && t->resource()==m_app) {
         emit running(false);
     }
 }

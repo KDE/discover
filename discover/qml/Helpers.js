@@ -4,20 +4,20 @@ function getFeatured(model, data) {
     
     for(var packageName in data) {
         var currentData = data[packageName]
-        var application = resourcesModel.applicationByPackageName(currentData.package)
-        if(application==null) {
-//             console.log("application "+ currentData.package+" not found")
+        var resource = resourcesModel.resourceByPackageName(currentData.package)
+        if(resource==null) {
+//             console.log("resource "+ currentData.package+" not found")
             continue
         }
         var image = currentData.image
         if(image == null)
-            image = application.screenshotUrl
+            image = resource.screenshotUrl
         model.append({
-            "text": application.name,
+            "text": resource.name,
             "color": "red",
             "image": image,
-            "icon": application.icon,
-            "comment": application.comment,
+            "icon": resource.icon,
+            "comment": resource.comment,
             "packageName": currentData.package })
     }
 }

@@ -95,13 +95,13 @@ void TransactionModel::addTransactions(const QList<Transaction *> &transList)
 
 void TransactionModel::addTransaction(Transaction *trans)
 {
-    if (!trans || !trans->application())
+    if (!trans || !trans->resource())
         return;
 
     beginInsertRows(QModelIndex(), 0, 0);
     TransactionListener *listener = new TransactionListener(this);
     listener->setBackend(m_appBackend);
-    listener->setResource(trans->application());
+    listener->setResource(trans->resource());
     m_transactions.append(listener);
     endInsertRows();
 }

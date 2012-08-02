@@ -16,12 +16,12 @@ ToolBar {
         id: backendConnections
         target: resourcesModel
         onTransactionAdded: {
-            if(transactionsModel.appAt(transaction.application)<0)
-                transactionsModel.append({'app': transaction.application})
+            if(transactionsModel.appAt(transaction.resource)<0)
+                transactionsModel.append({'app': transaction.resource})
         }
 
         onTransactionCancelled: {
-            var id = transactionsModel.appAt(transaction.application)
+            var id = transactionsModel.appAt(transaction.resource)
             if(id>=0)
                 transactionsModel.remove(id)
         }

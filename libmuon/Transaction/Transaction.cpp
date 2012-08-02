@@ -45,7 +45,7 @@ void Transaction::setState(TransactionState state)
     m_state = state;
 }
 
-AbstractResource *Transaction::application() const
+AbstractResource *Transaction::resource() const
 {
     return m_application;
 }

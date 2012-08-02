@@ -248,8 +248,8 @@ void ApplicationModel::updateTransactionProgress(Transaction *trans, int progres
     }
     m_runningTransactions[trans] = progress;
 
-    emit dataChanged(index(m_apps.indexOf(qobject_cast<Application*>(trans->application())), 0),
-                         index(m_apps.indexOf(qobject_cast<Application*>(trans->application())), 0));
+    emit dataChanged(index(m_apps.indexOf(qobject_cast<Application*>(trans->resource())), 0),
+                         index(m_apps.indexOf(qobject_cast<Application*>(trans->resource())), 0));
 }
 
 void ApplicationModel::workerEvent(QApt::WorkerEvent event, Transaction *trans)
@@ -261,7 +261,7 @@ void ApplicationModel::workerEvent(QApt::WorkerEvent event, Transaction *trans)
     }
 
     if (trans != 0) {
-        int app = m_apps.indexOf(qobject_cast<Application*>(trans->application()));
+        int app = m_apps.indexOf(qobject_cast<Application*>(trans->resource()));
         emit dataChanged(index(app, 0),
                          index(app, 0));
     }
@@ -269,7 +269,7 @@ void ApplicationModel::workerEvent(QApt::WorkerEvent event, Transaction *trans)
 
 void ApplicationModel::transactionCancelled(Transaction *trans)
 {
-    QModelIndex idx = index(m_apps.indexOf(qobject_cast<Application*>(trans->application())), 0);
+    QModelIndex idx = index(m_apps.indexOf(qobject_cast<Application*>(trans->resource())), 0);
     emit dataChanged(idx, idx);
 }
 
@@ -284,7 +284,7 @@ Transaction *ApplicationModel::transactionAt(const QModelIndex &index) const
 
     Application *app = applicationAt(index);
     foreach (Transaction *trns, m_appBackend->transactions()) {
-        if (trns->application() == app) {
+        if (trns->resource() == app) {
             transaction = trns;
         }
     }

@@ -232,13 +232,13 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
         emit transactionRemoved(t);
 
         if (m_currentTransaction->action() == InstallApp) {
-            m_appLaunchList << qobject_cast<Application*>(m_currentTransaction->application());
+            m_appLaunchList << qobject_cast<Application*>(m_currentTransaction->resource());
             emit launchListChanged();
         }
 
         m_workerState.first = QApt::InvalidEvent;
         m_workerState.second = 0;
-        qobject_cast<Application*>(m_currentTransaction->application())->emitStateChanged();
+        qobject_cast<Application*>(m_currentTransaction->resource())->emitStateChanged();
         delete m_currentTransaction;
 
         if (m_queue.isEmpty()) {
@@ -273,7 +273,7 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error, const QVariantMap 
         // Handled in transactionCancelled()
         return;
     default:
-        cancelTransaction(m_currentTransaction->application());
+        cancelTransaction(m_currentTransaction->resource());
         m_backend->undo();
         break;
     }
@@ -310,7 +310,7 @@ bool ApplicationBackend::confirmRemoval(Transaction *transaction)
 
     // Find changes due to markings
     QApt::PackageList excluded;
-    excluded.append(qobject_cast<Application*>(transaction->application())->package());
+    excluded.append(qobject_cast<Application*>(transaction->resource())->package());
     QApt::StateChanges changes = m_backend->stateChanges(oldCacheState, excluded);
     // Restore cache state, we're only checking at the moment
     m_backend->restoreCacheState(oldCacheState);
@@ -328,7 +328,7 @@ bool ApplicationBackend::confirmRemoval(Transaction *transaction)
 
 void ApplicationBackend::markTransaction(Transaction *transaction)
 {
-    Application *app = qobject_cast<Application*>(transaction->application());
+    Application *app = qobject_cast<Application*>(transaction->resource());
 
     switch (transaction->action()) {
     case InstallApp:
@@ -363,7 +363,7 @@ void ApplicationBackend::markLangpacks(Transaction *transaction)
         return;
 
     QString language = KGlobal::locale()->language();
-    QString pkgName = transaction->application()->packageName();
+    QString pkgName = transaction->resource()->packageName();
 
     QStringList args;
     args << prog << QLatin1String("-l") << language << QLatin1String("-p") << pkgName;
@@ -418,7 +418,7 @@ void ApplicationBackend::cancelTransaction(AbstractResource* app)
 
     for (; iter != m_queue.end(); ++iter) {
         Transaction* t = *iter;
-        if (t->application() == app) {
+        if (t->resource() == app) {
             if (t->state() == RunningState) {
                 m_backend->cancelDownload();
                 m_backend->undo();
@@ -444,7 +444,7 @@ void ApplicationBackend::runNextTransaction()
 
     markTransaction(m_currentTransaction);
 
-    Application *app = qobject_cast<Application*>(m_currentTransaction->application());
+    Application *app = qobject_cast<Application*>(m_currentTransaction->resource());
     
     if (app->package()->wouldBreak()) {
         m_backend->restoreCacheState(oldCacheState);

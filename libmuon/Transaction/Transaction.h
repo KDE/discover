@@ -44,7 +44,7 @@ enum TransactionAction {
 class MUONPRIVATE_EXPORT Transaction : public QObject
 {
 Q_OBJECT
-Q_PROPERTY(AbstractResource* application READ application CONSTANT)
+Q_PROPERTY(AbstractResource* resource READ resource CONSTANT)
 public:
     explicit Transaction (AbstractResource *app, TransactionAction);
     explicit Transaction (AbstractResource *app, TransactionAction,
@@ -53,7 +53,7 @@ public:
 
     void setState(TransactionState state);
 
-    AbstractResource *application() const;
+    AbstractResource *resource() const;
     TransactionAction action() const;
     TransactionState state() const;
     QHash<QString, bool> addons() const;
