@@ -47,7 +47,7 @@
 #include <LibQApt/DebFile>
 
 
-AptifyMainWindow::AptifyMainWindow(MuonMainWindow* parent)
+AptifyMainWindow::AptifyMainWindow(KXmlGuiWindow* parent)
     : QObject(parent)
     , m_backend(0)
     , m_powerInhibitor(0)
@@ -128,7 +128,7 @@ bool AptifyMainWindow::queryExit()
 
 void AptifyMainWindow::setupActions()
 {
-    KAction *quitAction = KStandardAction::quit(m_mainWindow, SLOT(slotQuit()), m_mainWindow->actionCollection());
+    KAction *quitAction = KStandardAction::quit(this, SLOT(slotQuit()), m_mainWindow->actionCollection());
     m_mainWindow->actionCollection()->addAction("quit", quitAction);
 
     KAction* updateAction = m_mainWindow->actionCollection()->addAction("update");
@@ -139,7 +139,7 @@ void AptifyMainWindow::setupActions()
     if (!isConnected()) {
         updateAction->setDisabled(true);
     }
-    connect(m_mainWindow, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
+    connect(this, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
 
 
     KAction* undoAction = KStandardAction::undo(this, SLOT(undo()), actionCollection());

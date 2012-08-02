@@ -21,6 +21,7 @@
 #include "OriginsBackend.h"
 #include "BackendsSingleton.h"
 #include <ApplicationBackend.h>
+#include <resources/ResourcesModel.h>
 #include <QProcess>
 #include <QDebug>
 #include <QDir>
@@ -159,7 +160,7 @@ void OriginsBackend::additionDone(int processErrorCode)
         Q_ASSERT(p);
         QByteArray errorMessage = p->readAllStandardOutput();
         if(errorMessage.isEmpty())
-            KMessageBox::error(BackendsSingleton::self()->mainWindow(), errorMessage, i18n("Adding Origins..."));
+            KMessageBox::error(0, errorMessage, i18n("Adding Origins..."));
     }
 }
 
@@ -173,7 +174,7 @@ void OriginsBackend::removalDone(int processErrorCode)
         Q_ASSERT(p);
         QByteArray errorMessage = p->readAllStandardOutput();
         if(errorMessage.isEmpty())
-            KMessageBox::error(BackendsSingleton::self()->mainWindow(), errorMessage, i18n("Removing Origins..."));
+            KMessageBox::error(0, errorMessage, i18n("Removing Origins..."));
     }
 }
 

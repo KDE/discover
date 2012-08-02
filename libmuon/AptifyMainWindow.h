@@ -25,6 +25,8 @@
 #include <QObject>
 #include <LibQApt/Globals>
 
+#include "libmuonprivate_export.h"
+
 class KXmlGuiWindow;
 class KActionCollection;
 namespace QApt {
@@ -32,13 +34,15 @@ class Backend;
 }
 
 class KAction;
-class AptifyMainWindow : public QObject
+class KXmlGuiWindow;
+class MUONPRIVATE_EXPORT AptifyMainWindow : public QObject
 {
     Q_OBJECT
     friend class MuonMainWindow;
     public:
-        explicit AptifyMainWindow(MuonMainWindow* parent = 0);
-        
+        explicit AptifyMainWindow(KXmlGuiWindow* parent = 0);
+        void initializationErrors(const QString& errors);
+
     protected:
         QApt::Backend *m_backend;
         QList<QVariantMap> m_warningStack;
@@ -51,13 +55,11 @@ class AptifyMainWindow : public QObject
         void setActionsEnabled(bool enabled = true);
         bool isConnected() const;
         KActionCollection* actionCollection();
-        void initializationErrors(const QString& errors);
 
     protected Q_SLOTS:
         virtual void initObject();
         virtual void slotQuit();
         virtual bool queryExit();
-        virtual void setupActions();
         virtual void checkForUpdates();
         virtual void workerEvent(QApt::WorkerEvent event);
         virtual void errorOccurred(QApt::ErrorCode code, const QVariantMap &args);
@@ -76,11 +78,12 @@ class AptifyMainWindow : public QObject
         void undo();
         void redo();
         void revertChanges();
-
-    public Q_SLOTS:
         void runSourcesEditor(bool update = false);
         void sourcesEditorFinished(int reload);
         void easterEggTriggered();
+
+    public slots:
+        virtual void setupActions();
 
     Q_SIGNALS:
         void backendReady(QApt::Backend *backend);

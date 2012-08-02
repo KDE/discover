@@ -23,6 +23,7 @@
 
 // Own includes
 #include "../libmuon/MuonMainWindow.h"
+#include <LibQApt/Globals>
 
 class QSplitter;
 class QStackedWidget;

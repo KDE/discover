@@ -29,10 +29,12 @@
 #include <KLocale>
 
 // LibQApt includes
+#include <LibQApt/Globals>
 
 #include "libmuonprivate_export.h"
 
 class KAction;
+class AptifyMainWindow;
 
 namespace QApt
 {
@@ -92,4 +94,3 @@ class MUONPRIVATE_EXPORT MuonMainWindow : public KXmlGuiWindow
 };
 
 #endif
-

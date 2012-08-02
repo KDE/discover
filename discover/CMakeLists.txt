@@ -21,6 +21,7 @@ if(QAPT_FOUND)
     set(muon_discover_SRCS ${muon_discover_SRCS}
         OriginsBackend.cpp
     )
+    add_definitions(-DQAPT_ENABLED)
 endif(QAPT_FOUND)
 
 qt4_add_resources(muon_discover_SRCS resources.qrc)
