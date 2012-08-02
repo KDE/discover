@@ -26,7 +26,7 @@
 #include <KLocalizedString>
 #include <KDebug>
 
-#include <ApplicationBackend.h>
+#include <resources/AbstractResourcesBackend.h>
 #include <Transaction/TransactionModel.h>
 
 #include "ApplicationView/ApplicationDelegate.h"

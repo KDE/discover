@@ -41,8 +41,8 @@
 #include <LibQApt/Backend>
 
 //Libmuon includes
+#include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
-#include <Application.h>
 
 // Own includes
 #include "ApplicationExtender.h"
