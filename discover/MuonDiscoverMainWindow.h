@@ -23,7 +23,7 @@
 #include <QtCore/QUrl>
 #include <KXmlGuiWindow>
 
-class AptifyMainWindow;
+class QAptIntegration;
 class AbstractResource;
 class Category;
 class QDeclarativeView;
@@ -58,7 +58,7 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
         QString m_appToBeOpened;
         QDeclarativeView* m_view;
 #ifdef QAPT_ENABLED
-        AptifyMainWindow* m_aptify;
+        QAptIntegration* m_aptify;
 #endif
 };
 

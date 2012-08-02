@@ -19,8 +19,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APTIFYMAINWINDOW_H
-#define APTIFYMAINWINDOW_H
+#ifndef QAPTINTEGRATION_H
+#define QAPTINTEGRATION_H
 
 #include <QObject>
 #include <LibQApt/Globals>
@@ -35,12 +35,12 @@ class Backend;
 
 class KAction;
 class KXmlGuiWindow;
-class MUONPRIVATE_EXPORT AptifyMainWindow : public QObject
+class MUONPRIVATE_EXPORT QAptIntegration : public QObject
 {
     Q_OBJECT
     friend class MuonMainWindow;
     public:
-        explicit AptifyMainWindow(KXmlGuiWindow* parent = 0);
+        explicit QAptIntegration(KXmlGuiWindow* parent = 0);
         void initializationErrors(const QString& errors);
 
     protected:
@@ -94,4 +94,4 @@ class MUONPRIVATE_EXPORT AptifyMainWindow : public QObject
         KXmlGuiWindow* m_mainWindow;
 };
 
-#endif // APTIFYMAINWINDOW_H
+#endif // QAPTINTEGRATION_H

@@ -51,7 +51,9 @@ if(QAPT_FOUND)
         ApplicationBackend.cpp
         ChangesDialog.cpp
         MuonStrings.cpp
-        AptifyMainWindow.cpp
+        QAptIntegration.cpp
+        MuonMainWindow.cpp
+        ApplicationModel/ApplicationUpdates.cpp
         HistoryView/HistoryProxyModel.cpp
         HistoryView/HistoryView.cpp
         ReviewsBackend/ReviewsBackend.cpp #TODO: rename to AptReviewsBackend

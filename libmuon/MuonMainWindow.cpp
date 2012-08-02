@@ -19,11 +19,11 @@
  ***************************************************************************/
 
 #include "MuonMainWindow.h"
-#include "AptifyMainWindow.h"
+#include "QAptIntegration.h"
 
 MuonMainWindow::MuonMainWindow()
     : KXmlGuiWindow(0)
-    , m_aptify(new AptifyMainWindow(this))
+    , m_aptify(new QAptIntegration(this))
     , m_backend(m_aptify->m_backend)
     , m_canExit(m_aptify->m_canExit)
     , m_isReloading(m_aptify->m_isReloading)

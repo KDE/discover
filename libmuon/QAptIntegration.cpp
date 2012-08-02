@@ -18,7 +18,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "AptifyMainWindow.h"
+#include "QAptIntegration.h"
 #include "MuonMainWindow.h"
 
 // Qt includes
@@ -47,7 +47,7 @@
 #include <LibQApt/DebFile>
 
 
-AptifyMainWindow::AptifyMainWindow(KXmlGuiWindow* parent)
+QAptIntegration::QAptIntegration(KXmlGuiWindow* parent)
     : QObject(parent)
     , m_backend(0)
     , m_powerInhibitor(0)
@@ -58,7 +58,7 @@ AptifyMainWindow::AptifyMainWindow(KXmlGuiWindow* parent)
 {
 }
 
-void AptifyMainWindow::initObject()
+void QAptIntegration::initObject()
 {
     m_backend = new QApt::Backend;
     connect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
@@ -87,12 +87,12 @@ void AptifyMainWindow::initObject()
     connect(Solid::Networking::notifier(), SIGNAL(statusChanged(Solid::Networking::Status)), this, SLOT(networkChanged()));
 }
 
-void AptifyMainWindow::slotQuit()
+void QAptIntegration::slotQuit()
 {
     KApplication::instance()->quit();
 }
 
-bool AptifyMainWindow::queryExit()
+bool QAptIntegration::queryExit()
 {
     // We don't want to quit during the middle of a commit
     if (!m_canExit) {
@@ -126,7 +126,7 @@ bool AptifyMainWindow::queryExit()
     return true;
 }
 
-void AptifyMainWindow::setupActions()
+void QAptIntegration::setupActions()
 {
     KAction *quitAction = KStandardAction::quit(this, SLOT(slotQuit()), m_mainWindow->actionCollection());
     m_mainWindow->actionCollection()->addAction("quit", quitAction);
@@ -162,11 +162,11 @@ void AptifyMainWindow::setupActions()
     connect(shortcut, SIGNAL(activated()), this, SLOT(easterEggTriggered()));
 }
 
-void AptifyMainWindow::checkForUpdates()
+void QAptIntegration::checkForUpdates()
 {
 }
 
-void AptifyMainWindow::workerEvent(QApt::WorkerEvent event)
+void QAptIntegration::workerEvent(QApt::WorkerEvent event)
 {
     switch (event) {
     case QApt::CacheUpdateStarted:
@@ -190,7 +190,7 @@ void AptifyMainWindow::workerEvent(QApt::WorkerEvent event)
     }
 }
 
-void AptifyMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &args)
+void QAptIntegration::errorOccurred(QApt::ErrorCode code, const QVariantMap &args)
 {
     QString text;
     QString title;
@@ -285,7 +285,7 @@ void AptifyMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap &ar
     m_canExit = true; // If we were committing changes, we aren't anymore
 }
 
-void AptifyMainWindow::warningOccurred(QApt::WarningCode warning, const QVariantMap &args)
+void QAptIntegration::warningOccurred(QApt::WarningCode warning, const QVariantMap &args)
 {
     switch (warning) {
     case QApt::SizeMismatchWarning: {
@@ -305,7 +305,7 @@ void AptifyMainWindow::warningOccurred(QApt::WarningCode warning, const QVariant
     }
 }
 
-void AptifyMainWindow::questionOccurred(QApt::WorkerQuestion code, const QVariantMap &args)
+void QAptIntegration::questionOccurred(QApt::WorkerQuestion code, const QVariantMap &args)
 {
     QVariantMap response;
 
@@ -386,7 +386,7 @@ void AptifyMainWindow::questionOccurred(QApt::WorkerQuestion code, const QVarian
     }
 }
 
-void AptifyMainWindow::showQueuedWarnings()
+void QAptIntegration::showQueuedWarnings()
 {
     QString details;
     QString text = i18nc("@label", "Unable to download the following packages:");
@@ -401,7 +401,7 @@ void AptifyMainWindow::showQueuedWarnings()
     KMessageBox::detailedError(m_mainWindow, text, details, title);
 }
 
-void AptifyMainWindow::showQueuedErrors()
+void QAptIntegration::showQueuedErrors()
 {
     QString details;
     QString text = i18ncp("@label", "An error occurred while applying changes:",
@@ -418,11 +418,11 @@ void AptifyMainWindow::showQueuedErrors()
     m_canExit = true;
 }
 
-void AptifyMainWindow::reload()
+void QAptIntegration::reload()
 {
 }
 
-bool AptifyMainWindow::saveSelections()
+bool QAptIntegration::saveSelections()
 {
     QString filename;
 
@@ -447,7 +447,7 @@ bool AptifyMainWindow::saveSelections()
     return true;
 }
 
-bool AptifyMainWindow::saveInstalledPackagesList()
+bool QAptIntegration::saveInstalledPackagesList()
 {
     QString filename;
 
@@ -472,7 +472,7 @@ bool AptifyMainWindow::saveInstalledPackagesList()
     return true;
 }
 
-bool AptifyMainWindow::createDownloadList()
+bool QAptIntegration::createDownloadList()
 {
     QString filename;
     filename = KFileDialog::getSaveFileName(QString(), QString(), m_mainWindow,
@@ -496,7 +496,7 @@ bool AptifyMainWindow::createDownloadList()
     return true;
 }
 
-void AptifyMainWindow::downloadPackagesFromList()
+void QAptIntegration::downloadPackagesFromList()
 {
     QString filename = KFileDialog::getOpenFileName(QString(), QString(),
                                                     m_mainWindow, i18nc("@title:window", "Open File"));
@@ -511,7 +511,7 @@ void AptifyMainWindow::downloadPackagesFromList()
     m_backend->downloadArchives(filename, dirName % QLatin1String("/packages"));
 }
 
-void AptifyMainWindow::loadSelections()
+void QAptIntegration::loadSelections()
 {
     QString filename = KFileDialog::getOpenFileName(QString(), QString(),
                                                     m_mainWindow, i18nc("@title:window", "Open File"));
@@ -530,7 +530,7 @@ void AptifyMainWindow::loadSelections()
     }
 }
 
-void AptifyMainWindow::loadArchives()
+void QAptIntegration::loadArchives()
 {
     QString dirName;
 
@@ -573,22 +573,22 @@ void AptifyMainWindow::loadArchives()
     }
 }
 
-void AptifyMainWindow::undo()
+void QAptIntegration::undo()
 {
     m_backend->undo();
 }
 
-void AptifyMainWindow::redo()
+void QAptIntegration::redo()
 {
     m_backend->redo();
 }
 
-void AptifyMainWindow::revertChanges()
+void QAptIntegration::revertChanges()
 {
     m_backend->restoreCacheState(m_originalState);
 }
 
-void AptifyMainWindow::runSourcesEditor(bool update)
+void QAptIntegration::runSourcesEditor(bool update)
 {
     KProcess *proc = new KProcess(this);
     QStringList arguments;
@@ -611,7 +611,7 @@ void AptifyMainWindow::runSourcesEditor(bool update)
             this, SLOT(sourcesEditorFinished(int)));
 }
 
-void AptifyMainWindow::sourcesEditorFinished(int reload)
+void QAptIntegration::sourcesEditorFinished(int reload)
 {
     m_mainWindow->find(m_mainWindow->effectiveWinId())->setEnabled(true);
     if (reload == 1) {
@@ -619,7 +619,7 @@ void AptifyMainWindow::sourcesEditorFinished(int reload)
     }
 }
 
-void AptifyMainWindow::easterEggTriggered()
+void QAptIntegration::easterEggTriggered()
 {
     KDialog *dialog = new KDialog(m_mainWindow);
     KVBox *widget = new KVBox(dialog);
@@ -644,14 +644,14 @@ void AptifyMainWindow::easterEggTriggered()
     music->play();
 }
 
-bool AptifyMainWindow::isConnected() const {
+bool QAptIntegration::isConnected() const {
     int status = Solid::Networking::status();
     bool connected = ((status == Solid::Networking::Connected) ||
                       (status == Solid::Networking::Unknown));
     return connected;
 }
 
-void AptifyMainWindow::networkChanged()
+void QAptIntegration::networkChanged()
 {
     if (m_actionsDisabled) {
         return;
@@ -660,7 +660,7 @@ void AptifyMainWindow::networkChanged()
     emit shouldConnect(isConnected());
 }
 
-void AptifyMainWindow::setActionsEnabled(bool enabled)
+void QAptIntegration::setActionsEnabled(bool enabled)
 {
     m_actionsDisabled = !enabled;
     for (int i = 0; i < actionCollection()->count(); ++i) {
@@ -675,18 +675,15 @@ void AptifyMainWindow::setActionsEnabled(bool enabled)
     }
 }
 
-KActionCollection* AptifyMainWindow::actionCollection()
+KActionCollection* QAptIntegration::actionCollection()
 {
     return m_mainWindow->actionCollection();
 }
 
-void AptifyMainWindow::initializationErrors(const QString& errors)
+void QAptIntegration::initializationErrors(const QString& errors)
 {
     QVariantMap args;
     args["ErrorText"] = errors;
     args["FromWorker"] = false;
     errorOccurred(QApt::InitError, args);
 }
-
-
-#include "AptifyMainWindow.moc"

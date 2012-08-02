@@ -34,7 +34,7 @@
 #include "libmuonprivate_export.h"
 
 class KAction;
-class AptifyMainWindow;
+class QAptIntegration;
 
 namespace QApt
 {
@@ -84,7 +84,7 @@ class MUONPRIVATE_EXPORT MuonMainWindow : public KXmlGuiWindow
         void easterEggTriggered();
 
     protected:
-        AptifyMainWindow* m_aptify;
+        QAptIntegration* m_aptify;
         QApt::Backend*& m_backend;
         bool& m_canExit;
         bool& m_isReloading;

@@ -55,7 +55,7 @@
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 
 #ifdef QAPT_ENABLED
-#include <AptifyMainWindow.h>
+#include <QAptIntegration.h>
 #include "OriginsBackend.h"
 #endif
 
@@ -98,7 +98,7 @@ class CachedNAMFactory : public QDeclarativeNetworkAccessManagerFactory
 MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     : KXmlGuiWindow(0)
 #ifdef QAPT_ENABLED
-    , m_aptify(new AptifyMainWindow(this))
+    , m_aptify(new QAptIntegration(this))
 #endif
 {
     m_view = new QDeclarativeView(this);
