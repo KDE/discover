@@ -269,7 +269,6 @@ void ApplicationWindow::populateViews()
     m_viewHash[installedItem->index()] = 0;
 
     parentItem = availableItem;
-    kDebug() << originNames.size();
     foreach(const QString &originName, originNames) {
         QString originLabel = m_backend->originLabel(originName);
         QStandardItem *viewItem = new QStandardItem;
@@ -407,9 +406,6 @@ void ApplicationWindow::changeView(const QModelIndex &index)
         break;
         case CatView: {
             view = new AvailableView(this, m_appBackend);
-
-            AvailableView *availableView = static_cast<AvailableView *>(view);
-            availableView->setBackend(m_backend);
         }
             break;
         case History:

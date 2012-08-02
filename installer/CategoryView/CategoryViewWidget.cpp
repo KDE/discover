@@ -29,23 +29,19 @@
 #include <KIcon>
 #include <KLocale>
 
-// LibQApt includes
-#include <LibQApt/Backend>
-
 // Libmuon includes
-#include <ApplicationBackend.h>
 #include <Category/Category.h>
 #include <Category/CategoryModel.h>
+#include <resources/AbstractResourcesBackend.h>
 
 // Own includes
 #include "../ApplicationView/ApplicationViewWidget.h"
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
 #include "CategoryView.h"
 
-CategoryViewWidget::CategoryViewWidget(QWidget *parent, ApplicationBackend *appBackend)
+CategoryViewWidget::CategoryViewWidget(QWidget *parent, AbstractResourcesBackend *backend)
     : AbstractViewBase(parent)
-    , m_backend(0)
-    , m_appBackend(appBackend)
+    , m_backend(backend)
     , m_searchView(0)
 {
     m_searchable = true;
@@ -57,15 +53,6 @@ CategoryViewWidget::CategoryViewWidget(QWidget *parent, ApplicationBackend *appB
 
     connect(m_categoryView, SIGNAL(activated(QModelIndex)),
            this, SLOT(onIndexActivated(QModelIndex)));
-}
-
-CategoryViewWidget::~CategoryViewWidget()
-{
-}
-
-void CategoryViewWidget::setBackend(QApt::Backend *backend)
-{
-    m_backend = backend;
 }
 
 void CategoryViewWidget::setCategories(const QList<Category *> &categoryList,
@@ -99,7 +86,7 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
 
     switch (index.data(CategoryModel::CategoryTypeRole).toInt()) {
     case CategoryModel::CategoryType: { // Displays the apps in a category
-        m_subView = new ApplicationViewWidget(this, m_appBackend);
+        m_subView = new ApplicationViewWidget(this, m_backend);
 
         ApplicationViewWidget *appView = static_cast<ApplicationViewWidget *>(m_subView);
         appView->setFiltersFromCategory(category);
@@ -109,10 +96,9 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
     }
         break;
     case CategoryModel::SubCatType: { // Displays the subcategories of a category
-        m_subView = new CategoryViewWidget(this, m_appBackend);
+        m_subView = new CategoryViewWidget(this, m_backend);
 
         CategoryViewWidget *subCatView = static_cast<CategoryViewWidget *>(m_subView);
-        subCatView->setBackend(m_backend);
         subCatView->setCategories(category->subCategories(), category->name(),
                                   KIcon(category->icon()));
     }
@@ -138,7 +124,7 @@ void CategoryViewWidget::search(const QString &text)
     }
 
     if (!m_searchView) {
-        m_searchView = new ApplicationViewWidget(this, m_appBackend);
+        m_searchView = new ApplicationViewWidget(this, m_backend);
         m_searchView->setTitle(i18nc("@label", "Search Results"));
         m_searchView->setIcon(KIcon("applications-other"));
 
@@ -168,5 +154,3 @@ void CategoryViewWidget::onSearchViewDestroyed()
 {
     m_searchView = 0;
 }
-
-#include "CategoryViewWidget.moc"

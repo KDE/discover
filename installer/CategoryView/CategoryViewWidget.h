@@ -31,39 +31,31 @@ class QIcon;
 class QStandardItemModel;
 class QString;
 
-class ApplicationBackend;
-class ApplicationViewWidget;
+class AbstractResourcesBackend;
 class Category;
 class CategoryView;
 
-namespace QApt {
-    class Backend;
-}
+class ApplicationViewWidget;
 
 class CategoryViewWidget : public AbstractViewBase
 {
     Q_OBJECT
 public:
-    CategoryViewWidget(QWidget *parent, ApplicationBackend *appBackend);
-    ~CategoryViewWidget();
+    CategoryViewWidget(QWidget *parent, AbstractResourcesBackend *backend);
 
     void setCategories(const QList<Category *> &categoryList,
                        const QString &rootText,
                        const QIcon &rootIcon);
-    virtual void search(const QString &text);
+    void search(const QString &text);
 
 private:
-    QApt::Backend *m_backend;
-    ApplicationBackend *m_appBackend;
+    AbstractResourcesBackend *m_backend;
     CategoryModel *m_categoryModel;
     QHash<QModelIndex, AbstractViewBase *> m_subViewHash;
 
     CategoryView *m_categoryView;
     AbstractViewBase *m_subView;
     ApplicationViewWidget *m_searchView;
-
-public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
 
 private Q_SLOTS:
     void onIndexActivated(const QModelIndex &index);

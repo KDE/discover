@@ -29,22 +29,18 @@
 #include <KLocale>
 #include <KStandardDirs>
 
-// LibQApt includes
-#include <LibQApt/Backend>
-
 // Own includes
 #include <Category/Category.h>
 #include "ApplicationBackend.h"
 #include "BreadcrumbWidget/BreadcrumbWidget.h"
 #include "CategoryView/CategoryViewWidget.h"
 
-AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)
+AvailableView::AvailableView(QWidget *parent, ApplicationBackend *backend)
         : AbstractViewContainer(parent)
-        , m_backend(0)
-        , m_appBackend(appBackend)
+        , m_backend(backend)
 {
 
-    m_categoryViewWidget = new CategoryViewWidget(m_viewStack, m_appBackend);
+    m_categoryViewWidget = new CategoryViewWidget(m_viewStack, m_backend);
 
     QString rootName = i18n("Get Software");
     KIcon rootIcon = KIcon("applications-other");
@@ -54,23 +50,10 @@ AvailableView::AvailableView(QWidget *parent, ApplicationBackend *appBackend)
     m_viewStack->addWidget(m_categoryViewWidget);
     m_viewStack->setCurrentWidget(m_categoryViewWidget);
 
-    connect(m_appBackend, SIGNAL(xapianReloaded()),
+    connect(m_backend, SIGNAL(xapianReloaded()),
             m_breadcrumbWidget, SLOT(startSearch()));
     connect(m_categoryViewWidget, SIGNAL(registerNewSubView(AbstractViewBase*)),
             this, SLOT(registerNewSubView(AbstractViewBase*)));
     connect(m_categoryViewWidget, SIGNAL(switchToSubView(AbstractViewBase*)),
             this, SLOT(switchToSubView(AbstractViewBase*)));
 }
-
-AvailableView::~AvailableView()
-{
-}
-
-void AvailableView::setBackend(QApt::Backend *backend)
-{
-    m_backend = backend;
-
-    m_categoryViewWidget->setBackend(backend);
-}
-
-#include "AvailableView.moc"

@@ -28,25 +28,16 @@ class ApplicationBackend;
 class Category;
 class CategoryViewWidget;
 
-namespace QApt {
-    class Backend;
-}
-
 class AvailableView : public AbstractViewContainer
 {
     Q_OBJECT
 public:
-    AvailableView(QWidget *parent, ApplicationBackend *m_appBackend);
-    ~AvailableView();
+    AvailableView(QWidget *parent, ApplicationBackend *backend);
 
 private:
-    QApt::Backend *m_backend;
-    ApplicationBackend *m_appBackend;
+    ApplicationBackend *m_backend;
 
     CategoryViewWidget *m_categoryViewWidget;
-
-public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
 };
 
 #endif

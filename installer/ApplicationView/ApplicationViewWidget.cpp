@@ -29,9 +29,9 @@
 
 // KDE includes
 #include <KComboBox>
+#include <KLocale>
 
 // Libmuon includes
-#include <Application.h>
 #include <ApplicationBackend.h>
 #include <Category/Category.h>
 #include <Transaction/Transaction.h>
@@ -43,15 +43,15 @@
 #include "../ApplicationDetailsView/ApplicationDetailsView.h"
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
 
-ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend *appBackend)
+ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, AbstractResourcesBackend *backend)
         : AbstractViewBase(parent)
-        , m_appBackend(appBackend)
+        , m_backend(backend)
         , m_canShowTechnical(false)
         , m_detailsView(0)
 {
     m_searchable = true;
     m_appModel = new ResourcesModel(this);
-    m_appModel->addResourcesBackend(appBackend);
+    m_appModel->addResourcesBackend(backend); // FIXME: Won't do for multiple backend types
     m_proxyModel = new ResourcesProxyModel(this);
     m_proxyModel->setSortRole(ResourcesModel::SortableRatingRole);
     m_proxyModel->setSourceModel(m_appModel);
@@ -94,7 +94,7 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
     m_treeView->setRootIsDecorated(false);
 
     m_treeView->setModel(m_proxyModel);
-    m_delegate = new ApplicationDelegate(m_treeView, m_appBackend);
+    m_delegate = new ApplicationDelegate(m_treeView, m_backend);
     m_treeView->setItemDelegate(m_delegate);
 
     connect(m_proxyModel, SIGNAL(invalidated()),
@@ -108,12 +108,12 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
     connect(m_delegate, SIGNAL(infoButtonClicked(AbstractResource*)),
             this, SLOT(infoButtonClicked(AbstractResource*)));
     connect(m_delegate, SIGNAL(installButtonClicked(AbstractResource*)),
-            m_appBackend, SLOT(installApplication(AbstractResource*)));
+            m_backend, SLOT(installApplication(AbstractResource*)));
     connect(m_delegate, SIGNAL(removeButtonClicked(AbstractResource*)),
-            m_appBackend, SLOT(removeApplication(AbstractResource*)));
+            m_backend, SLOT(removeApplication(AbstractResource*)));
     connect(m_delegate, SIGNAL(cancelButtonClicked(AbstractResource*)),
-            m_appBackend, SLOT(cancelTransaction(AbstractResource*)));
-    connect(m_appBackend, SIGNAL(reloadFinished()),
+            m_backend, SLOT(cancelTransaction(AbstractResource*)));
+    connect(m_backend, SIGNAL(reloadFinished()),
             m_proxyModel, SLOT(refreshSearch()));
 
     m_treeView->setSortingEnabled(true);
@@ -178,18 +178,18 @@ void ApplicationViewWidget::infoButtonClicked(Application *app)
     }
 
     // Create one if not
-    m_detailsView = new ApplicationDetailsView(this, m_appBackend);
+    m_detailsView = new ApplicationDetailsView(this, (ApplicationBackend*)m_backend); // FIXME: Port DetailsView to resources... gulp.
     m_detailsView->setApplication(app);
     m_currentPair.first = m_detailsView;
 
     connect(m_detailsView, SIGNAL(installButtonClicked(AbstractResource*)),
-            m_appBackend, SLOT(installApplication(AbstractResource*)));
+            m_backend, SLOT(installApplication(AbstractResource*)));
     connect(m_detailsView, SIGNAL(installButtonClicked(AbstractResource*,QHash<QString,bool>)),
-            m_appBackend, SLOT(installApplication(AbstractResource*,QHash<QString,bool>)));
+            m_backend, SLOT(installApplication(AbstractResource*,QHash<QString,bool>)));
     connect(m_detailsView, SIGNAL(removeButtonClicked(AbstractResource*)),
-            m_appBackend, SLOT(removeApplication(AbstractResource*)));
+            m_backend, SLOT(removeApplication(AbstractResource*)));
     connect(m_detailsView, SIGNAL(cancelButtonClicked(AbstractResource*)),
-            m_appBackend, SLOT(cancelTransaction(AbstractResource*)));
+            m_backend, SLOT(cancelTransaction(AbstractResource*)));
     connect(m_detailsView, SIGNAL(destroyed(QObject*)),
             this, SLOT(onSubViewDestroyed()));
 

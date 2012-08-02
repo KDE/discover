@@ -46,12 +46,12 @@ class ApplicationViewWidget : public AbstractViewBase
 {
     Q_OBJECT
 public:
-    ApplicationViewWidget(QWidget *parent, ApplicationBackend *appBackend);
+    ApplicationViewWidget(QWidget *parent, AbstractResourcesBackend *backend);
 
     void search(const QString &text);
 
 private:
-    ApplicationBackend *m_appBackend;
+    AbstractResourcesBackend *m_backend;
     ResourcesModel *m_appModel;
     ResourcesProxyModel *m_proxyModel;
     QPair<AbstractViewBase *, Application *> m_currentPair;
