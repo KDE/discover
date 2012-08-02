@@ -30,17 +30,13 @@
 // KDE includes
 #include <KComboBox>
 
-// LibQApt includes
-#include <LibQApt/Backend>
-#include <LibQApt/Package>
-
 // Libmuon includes
 #include <Application.h>
 #include <ApplicationBackend.h>
-#include <ApplicationModel/ApplicationModel.h>
-#include <ApplicationModel/ApplicationProxyModel.h>
 #include <Category/Category.h>
 #include <Transaction/Transaction.h>
+#include <resources/ResourcesModel.h>
+#include <resources/ResourcesProxyModel.h>
 
 // Own includes
 #include "ApplicationDelegate.h"
@@ -49,16 +45,15 @@
 
 ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend *appBackend)
         : AbstractViewBase(parent)
-        , m_backend(0)
         , m_appBackend(appBackend)
         , m_canShowTechnical(false)
         , m_detailsView(0)
 {
     m_searchable = true;
-    m_appModel = new ApplicationModel(this);
-    m_appModel->setBackend(m_appBackend);
-    m_proxyModel = new ApplicationProxyModel(this);
-    m_proxyModel->setSortRole(ApplicationModel::SortableRatingRole);
+    m_appModel = new ResourcesModel(this);
+    m_appModel->addResourcesBackend(appBackend);
+    m_proxyModel = new ResourcesProxyModel(this);
+    m_proxyModel->setSortRole(ResourcesModel::SortableRatingRole);
     m_proxyModel->setSourceModel(m_appModel);
 
     QWidget *header = new QWidget(this);
@@ -78,10 +73,10 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
     QLabel *sortLabel = new QLabel(header);
     sortLabel->setText(i18n("Sort:"));
     m_sortCombo = new KComboBox(header);
-    m_sortCombo->addItem(i18nc("@item:inlistbox", "By Name"), ApplicationModel::NameRole);
-    m_sortCombo->addItem(i18nc("@item:inlistbox", "By Top Rated"), ApplicationModel::SortableRatingRole);
-    m_sortCombo->addItem(i18nc("@item:inlistbox", "By Most Buzz"), ApplicationModel::RatingPointsRole);
-    m_sortCombo->addItem(i18nc("@item:inlistbox", "By Most Used"), ApplicationModel::PopConRole);
+    m_sortCombo->addItem(i18nc("@item:inlistbox", "By Name"), ResourcesModel::NameRole);
+    m_sortCombo->addItem(i18nc("@item:inlistbox", "By Top Rated"), ResourcesModel::SortableRatingRole);
+    m_sortCombo->addItem(i18nc("@item:inlistbox", "By Most Buzz"), ResourcesModel::RatingPointsRole);
+    m_sortCombo->addItem(i18nc("@item:inlistbox", "By Most Used"), ResourcesModel::PopConRole);
     m_sortCombo->setCurrentIndex(1); // Top Rated index
     connect(m_sortCombo, SIGNAL(currentIndexChanged(int)),
             this, SLOT(sortComboChanged(int)));
@@ -110,8 +105,8 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
     m_layout->addWidget(header);
     m_layout->addWidget(m_treeView);
 
-    connect(m_delegate, SIGNAL(infoButtonClicked(Application*)),
-            this, SLOT(infoButtonClicked(Application*)));
+    connect(m_delegate, SIGNAL(infoButtonClicked(AbstractResource*)),
+            this, SLOT(infoButtonClicked(AbstractResource*)));
     connect(m_delegate, SIGNAL(installButtonClicked(AbstractResource*)),
             m_appBackend, SLOT(installApplication(AbstractResource*)));
     connect(m_delegate, SIGNAL(removeButtonClicked(AbstractResource*)),
@@ -120,16 +115,7 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, ApplicationBackend
             m_appBackend, SLOT(cancelTransaction(AbstractResource*)));
     connect(m_appBackend, SIGNAL(reloadFinished()),
             m_proxyModel, SLOT(refreshSearch()));
-}
 
-ApplicationViewWidget::~ApplicationViewWidget()
-{
-}
-
-void ApplicationViewWidget::setBackend(QApt::Backend *backend)
-{
-    m_backend = backend;
-    m_proxyModel->setBackend(backend);
     m_treeView->setSortingEnabled(true);
 
     m_crumb->setAssociatedView(this);
@@ -147,7 +133,7 @@ void ApplicationViewWidget::setIcon(const QIcon &icon)
     m_headerIcon->setPixmap(icon.pixmap(24,24));
 }
 
-void ApplicationViewWidget::setStateFilter(QApt::Package::State state)
+void ApplicationViewWidget::setStateFilter(AbstractResource::State state)
 {
     m_proxyModel->setStateFilter(state);
 }
@@ -228,9 +214,9 @@ void ApplicationViewWidget::sortComboChanged(int index)
     }
 
     switch (sortRole) {
-    case ApplicationModel::SortableRatingRole:
-    case ApplicationModel::RatingPointsRole:
-    case ApplicationModel::PopConRole:
+    case ResourcesModel::SortableRatingRole:
+    case ResourcesModel::RatingPointsRole:
+    case ResourcesModel::PopConRole:
         m_proxyModel->sort(m_proxyModel->sortColumn(), Qt::DescendingOrder);
         break;
     default:

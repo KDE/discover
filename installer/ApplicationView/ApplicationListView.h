@@ -23,7 +23,7 @@
 
 #include <QModelIndex>
 
-#include <LibQApt/Package>
+#include <resources/AbstractResource.h>
 
 #include "AbstractViewContainer.h"
 
@@ -42,7 +42,7 @@ public:
                         const QModelIndex &index);
     ~ApplicationListView();
 
-    void setStateFilter(QApt::Package::State state);
+    void setStateFilter(AbstractResource::State state);
     void setOriginFilter(const QString &origin);
     void setShouldShowTechnical(bool show);
     void setCanShowTechnical(bool canShow);

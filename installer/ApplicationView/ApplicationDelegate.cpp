@@ -41,8 +41,7 @@
 #include <LibQApt/Backend>
 
 //Libmuon includes
-#include <ApplicationModel/ApplicationModel.h>
-#include <ApplicationModel/ApplicationProxyModel.h>
+#include <resources/ResourcesModel.h>
 #include <Application.h>
 
 // Own includes
@@ -121,10 +120,10 @@ void ApplicationDelegate::paint(QPainter *painter,
     rect.setTop(rect.top() + ((calcItemHeight(option) - m_buttonSize.height()) / 2));
     rect.setSize(m_buttonSize); // the width and height sizes of the button
 
-    bool transactionActive = index.data(ApplicationModel::ActiveRole).toBool();
+    bool transactionActive = index.data(ResourcesModel::ActiveRole).toBool();
 
     if (!transactionActive) {
-        int rating = index.data(ApplicationModel::RatingRole).toInt();
+        int rating = index.data(ResourcesModel::RatingRole).toInt();
         if (rating != -1) {
             m_ratingPainter->paint(painter, rect, rating);
         }
@@ -133,8 +132,8 @@ void ApplicationDelegate::paint(QPainter *painter,
         progressBarOption.rect = rect;
         progressBarOption.minimum = 0;
         progressBarOption.maximum = 100;
-        progressBarOption.progress = index.data(ApplicationModel::ProgressRole).toInt();
-        progressBarOption.text = index.data(ApplicationModel::ProgressTextRole).toString();
+        progressBarOption.progress = index.data(ResourcesModel::ProgressRole).toInt();
+        progressBarOption.text = index.data(ResourcesModel::ProgressTextRole).toString();
         progressBarOption.textVisible = true;
         KApplication::style()->drawControl(QStyle::CE_ProgressBar, &progressBarOption, painter);
     }
@@ -161,7 +160,7 @@ void ApplicationDelegate::paint(QPainter *painter,
     p.translate(-option.rect.topLeft());
 
     // Main icon
-    KIcon icon(index.data(ApplicationModel::IconRole).toString());
+    KIcon icon(index.data(ResourcesModel::IconRole).toString());
 
     int iconSize = calcItemHeight(option) - 2 * UNIVERSAL_PADDING;
     icon.paint(&p,
@@ -172,7 +171,7 @@ void ApplicationDelegate::paint(QPainter *painter,
                Qt::AlignCenter,
                iconMode);
 
-    if (index.data(ApplicationModel::InstalledRole).toBool()) {
+    if (index.data(ResourcesModel::InstalledRole).toBool()) {
         p.drawPixmap(leftCount, top + rect.height() - m_emblem.height()/2, m_emblem);
     }
 
@@ -199,7 +198,7 @@ void ApplicationDelegate::paint(QPainter *painter,
                textWidth,
                topTextHeight + UNIVERSAL_PADDING,
                Qt::AlignVCenter | Qt::AlignLeft,
-               index.data(ApplicationModel::NameRole).toString());
+               index.data(ResourcesModel::NameRole).toString());
 
     // draw the bottom line
     iconSize = topTextHeight + UNIVERSAL_PADDING;
@@ -216,7 +215,7 @@ void ApplicationDelegate::paint(QPainter *painter,
                textWidth - iconSize,
                QFontInfo(local_option_normal.font).pixelSize() + UNIVERSAL_PADDING,
                Qt::AlignTop | Qt::AlignLeft,
-               index.data(ApplicationModel::CommentRole).toString());
+               index.data(ResourcesModel::CommentRole).toString());
     p.setOpacity(opa);
 
     painter->drawPixmap(option.rect.topLeft(), pixmap);
@@ -268,8 +267,8 @@ void ApplicationDelegate::itemActivated(QModelIndex index)
     }
 
     if (isExtended(m_oldIndex)) {
-        disconnect(m_extender, SIGNAL(infoButtonClicked(Application*)),
-                   this, SIGNAL(infoButtonClicked(Application*)));
+        disconnect(m_extender, SIGNAL(infoButtonClicked(AbstractResource*)),
+                   this, SIGNAL(infoButtonClicked(AbstractResource*)));
         disconnect(m_extender, SIGNAL(installButtonClicked(AbstractResource*)),
                    this, SIGNAL(installButtonClicked(AbstractResource*)));
         disconnect(m_extender, SIGNAL(removeButtonClicked(AbstractResource*)),
@@ -282,14 +281,14 @@ void ApplicationDelegate::itemActivated(QModelIndex index)
         m_extender = 0;
     }
 
-    QVariant appVarient = static_cast<const QAbstractItemModel*>(index.model())->data(index, ApplicationModel::ApplicationRole);
-    Application *app = qobject_cast<Application*>(appVarient.value<QObject*>());
+    QVariant appVarient = static_cast<const QAbstractItemModel*>(index.model())->data(index, ResourcesModel::ApplicationRole);
+    AbstractResource *app = qobject_cast<AbstractResource*>(appVarient.value<QObject*>());
 
     QTreeView *view = static_cast<QTreeView*>(parent());
     m_extender = new ApplicationExtender(view, app, m_appBackend);
     m_extender->setShowInfoButton(m_showInfoButton);
-    connect(m_extender, SIGNAL(infoButtonClicked(Application*)),
-            this, SIGNAL(infoButtonClicked(Application*)));
+    connect(m_extender, SIGNAL(infoButtonClicked(AbstractResource*)),
+            this, SIGNAL(infoButtonClicked(AbstractResource*)));
     connect(m_extender, SIGNAL(installButtonClicked(AbstractResource*)),
             this, SIGNAL(installButtonClicked(AbstractResource*)));
     connect(m_extender, SIGNAL(removeButtonClicked(AbstractResource*)),

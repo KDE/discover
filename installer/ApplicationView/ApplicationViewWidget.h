@@ -23,7 +23,7 @@
 
 #include <QtCore/QPair>
 
-#include <LibQApt/Package>
+#include <resources/AbstractResource.h>
 
 #include "AbstractViewBase.h"
 
@@ -38,28 +38,22 @@ class Application;
 class ApplicationBackend;
 class ApplicationDelegate;
 class ApplicationDetailsView;
-class ApplicationModel;
-class ApplicationProxyModel;
+class ResourcesModel;
+class ResourcesProxyModel;
 class Category;
-
-namespace QApt {
-    class Backend;
-}
 
 class ApplicationViewWidget : public AbstractViewBase
 {
     Q_OBJECT
 public:
     ApplicationViewWidget(QWidget *parent, ApplicationBackend *appBackend);
-    ~ApplicationViewWidget();
 
-    virtual void search(const QString &text);
+    void search(const QString &text);
 
 private:
-    QApt::Backend *m_backend;
     ApplicationBackend *m_appBackend;
-    ApplicationModel *m_appModel;
-    ApplicationProxyModel *m_proxyModel;
+    ResourcesModel *m_appModel;
+    ResourcesProxyModel *m_proxyModel;
     QPair<AbstractViewBase *, Application *> m_currentPair;
     bool m_canShowTechnical;
 
@@ -79,11 +73,9 @@ private Q_SLOTS:
     void techCheckChanged(int state);
 
 public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
-
     void setTitle(const QString &title);
     void setIcon(const QIcon &icon);
-    void setStateFilter(QApt::Package::State state);
+    void setStateFilter(AbstractResource::State state);
     void setOriginFilter(const QString &origin);
     void setFiltersFromCategory(Category *category);
     void setShouldShowTechnical(bool show);

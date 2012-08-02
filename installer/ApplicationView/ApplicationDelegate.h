@@ -69,7 +69,7 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     void showExtendItem(const QModelIndex &index);
-    void infoButtonClicked(Application *app);
+    void infoButtonClicked(AbstractResource *app);
     void installButtonClicked(AbstractResource *app);
     void removeButtonClicked(AbstractResource *app);
     void cancelButtonClicked(AbstractResource *app);

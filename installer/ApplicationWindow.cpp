@@ -392,7 +392,7 @@ void ApplicationWindow::changeView(const QModelIndex &index)
         switch (index.data(ViewTypeRole).toInt()) {
         case AppView: {
             QString originFilter = index.data(OriginFilterRole).toString();
-            QApt::Package::State stateFilter = (QApt::Package::State)index.data(StateFilterRole).toInt();
+            AbstractResource::State stateFilter = (AbstractResource::State)index.data(StateFilterRole).toInt();
 
             view = new ApplicationListView(this, m_appBackend, index);
             ApplicationListView *appView = static_cast<ApplicationListView *>(view);

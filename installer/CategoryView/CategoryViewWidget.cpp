@@ -102,7 +102,6 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
         m_subView = new ApplicationViewWidget(this, m_appBackend);
 
         ApplicationViewWidget *appView = static_cast<ApplicationViewWidget *>(m_subView);
-        appView->setBackend(m_backend);
         appView->setFiltersFromCategory(category);
         appView->setTitle(category->name());
         appView->setIcon(KIcon(category->icon()));
@@ -140,7 +139,6 @@ void CategoryViewWidget::search(const QString &text)
 
     if (!m_searchView) {
         m_searchView = new ApplicationViewWidget(this, m_appBackend);
-        m_searchView->setBackend(m_backend);
         m_searchView->setTitle(i18nc("@label", "Search Results"));
         m_searchView->setIcon(KIcon("applications-other"));
 

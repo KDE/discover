@@ -61,11 +61,9 @@ ApplicationListView::~ApplicationListView()
 void ApplicationListView::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
-
-    m_appViewWidget->setBackend(backend);
 }
 
-void ApplicationListView::setStateFilter(QApt::Package::State state)
+void ApplicationListView::setStateFilter(AbstractResource::State state)
 {
     m_appViewWidget->setStateFilter(state);
 }

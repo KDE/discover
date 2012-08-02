@@ -32,9 +32,9 @@
 
 #include "Application.h"
 
-ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, ApplicationBackend *backend)
+ApplicationExtender::ApplicationExtender(QWidget *parent, AbstractResource *app, ApplicationBackend *backend)
     : QWidget(parent)
-    , m_app(app)
+    , m_resource(app)
     , m_appBackend(backend)
 {
     QHBoxLayout *layout = new QHBoxLayout(this);
@@ -49,7 +49,7 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, Application *app, Appl
 
     m_actionButton = new QPushButton(this);
 
-    if (app->package()->isInstalled()) {
+    if (app->isInstalled()) {
         m_actionButton->setIcon(KIcon("edit-delete"));
         m_actionButton->setText(i18n("Remove"));
         connect(m_actionButton, SIGNAL(clicked()), this, SLOT(emitRemoveButtonClicked()));
@@ -94,7 +94,7 @@ void ApplicationExtender::setShowInfoButton(bool show)
 void ApplicationExtender::workerEvent(QApt::WorkerEvent event, Transaction *transaction)
 {
     if (!transaction || !m_appBackend->transactions().contains(transaction)
-        || m_app != transaction->application()) {
+        || m_resource != transaction->resource()) {
         return;
     }
 
@@ -114,12 +114,12 @@ void ApplicationExtender::workerEvent(QApt::WorkerEvent event, Transaction *tran
 
 void ApplicationExtender::transactionCancelled(Transaction* trans)
 {
-    AbstractResource* app = trans->application();
-    if (m_app == app) {
+    AbstractResource* resource = trans->resource();
+    if (m_resource == resource) {
         m_cancelButton->hide();
         m_actionButton->show();
         m_actionButton->setEnabled(true);
-        if (m_app->package()->isInstalled()) {
+        if (m_resource->isInstalled()) {
             m_actionButton->setIcon(KIcon("edit-delete"));
             m_actionButton->setText(i18n("Remove"));
         } else {
@@ -131,24 +131,22 @@ void ApplicationExtender::transactionCancelled(Transaction* trans)
 
 void ApplicationExtender::emitInfoButtonClicked()
 {
-    emit infoButtonClicked(m_app);
+    emit infoButtonClicked(m_resource);
 }
 
 void ApplicationExtender::emitRemoveButtonClicked()
 {
     m_actionButton->setEnabled(false);
-    emit removeButtonClicked(m_app);
+    emit removeButtonClicked(m_resource);
 }
 
 void ApplicationExtender::emitInstallButtonClicked()
 {
     m_actionButton->setEnabled(false);
-    emit installButtonClicked(m_app);
+    emit installButtonClicked(m_resource);
 }
 
 void ApplicationExtender::emitCancelButtonClicked()
 {
-    emit cancelButtonClicked(m_app);
+    emit cancelButtonClicked(m_resource);
 }
-
-#include "ApplicationExtender.moc"
