@@ -101,7 +101,6 @@ private Q_SLOTS:
     void screenshotLabelClicked();
     void actionButtonClicked();
     void cancelButtonClicked();
-    void populateAddons();
     void fetchReviews(int page);
     void populateReviews(AbstractResource* app, const QList< Review* >& reviews);
     void addonsApplyButtonClicked(const QHash< QString, bool >& changedAddons);

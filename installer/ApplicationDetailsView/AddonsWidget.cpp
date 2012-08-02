@@ -20,6 +20,7 @@
 
 #include "AddonsWidget.h"
 
+// Qt includes
 #include <QtCore/QStringBuilder>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QLabel>
@@ -28,17 +29,19 @@
 #include <QtGui/QStandardItemModel>
 #include <QtGui/QToolButton>
 
+// KDE includes
 #include <KIcon>
 #include <KLocale>
 
-#include "Application.h"
-#include "ApplicationBackend.h"
+// Libmuon includes
+#include <resources/AbstractResourcesBackend.h>
+#include <resources/AbstractResource.h>
 
 //TODO: Port to the ApplicationAddonsModel?
 
-AddonsWidget::AddonsWidget(QWidget *parent, ApplicationBackend *appBackend)
+AddonsWidget::AddonsWidget(QWidget *parent, AbstractResourcesBackend *backend)
         : KVBox(parent)
-        , m_appBackend(appBackend)
+        , m_backend(backend)
 {
     QWidget *headerWidget = new QWidget(this);
     QHBoxLayout *headerLayout = new QHBoxLayout(headerWidget);
@@ -100,11 +103,8 @@ AddonsWidget::AddonsWidget(QWidget *parent, ApplicationBackend *appBackend)
     connect(m_addonsModel, SIGNAL(dataChanged(QModelIndex,QModelIndex)),
             this, SLOT(addonStateChanged(QModelIndex,QModelIndex)));
     // Clear addons when a reload starts
-    connect(m_appBackend, SIGNAL(reloadStarted()), this, SLOT(clearAddons()));
-}
-
-AddonsWidget::~AddonsWidget()
-{
+    connect(backend, SIGNAL(reloadStarted()), this, SLOT(clearAddons()));
+    connect(backend, SIGNAL(reloadFinished()), this, SLOT(populateModel()));
 }
 
 void AddonsWidget::clearAddons()
@@ -114,9 +114,9 @@ void AddonsWidget::clearAddons()
     m_addonsModel->clear();
 }
 
-void AddonsWidget::setAddons(QApt::PackageList addons)
+void AddonsWidget::setResource(AbstractResource *resource)
 {
-    m_availableAddons = addons;
+    m_availableAddons = resource->addonsInformation();
 
     populateModel();
 }
@@ -131,35 +131,35 @@ void AddonsWidget::populateModel()
 {
     m_addonsModel->clear();
 
-    foreach (QApt::Package *addon, m_availableAddons) {
+    for (const PackageState &addon : m_availableAddons) {
         // Check if we have an application for the addon
-        Application *addonApp = 0;
+        AbstractResource *addonResource = 0;
 
-        foreach (Application *app, m_appBackend->applicationList()) {
-            if (!app->package())
+        for (AbstractResource *resource : m_backend->allResources()) {
+            if (!resource)
                 continue;
 
-            if (app->package()->latin1Name() == addon->latin1Name()) {
-                addonApp = app;
+            if (resource->name() == addon.name()) {
+                addonResource = resource;
                 break;
             }
         }
 
         QStandardItem *addonItem = new QStandardItem;
-        addonItem->setData(addon->latin1Name());
-        QString packageName = QLatin1Literal(" (") % addon->latin1Name() % ')';
-        if (addonApp) {
-            addonItem->setText(addonApp->name() % packageName);
-            addonItem->setIcon(KIcon(addonApp->icon()));
+        addonItem->setData(addon.name());
+        QString resourceName = QLatin1Literal(" (") % addon.name() % ')';
+        if (addonResource) {
+            addonItem->setText(addonResource->name() % resourceName);
+            addonItem->setIcon(KIcon(addonResource->icon()));
         } else {
-            addonItem->setText(addon->shortDescription() % packageName);
+            addonItem->setText(addon.description() % resourceName);
             addonItem->setIcon(KIcon("applications-other"));
         }
 
         addonItem->setEditable(false);
         addonItem->setCheckable(true);
 
-        if (addon->isInstalled()) {
+        if (addon.isInstalled()) {
             addonItem->setCheckState(Qt::Checked);
         } else {
             addonItem->setCheckState(Qt::Unchecked);
@@ -187,18 +187,17 @@ void AddonsWidget::addonStateChanged(const QModelIndex &left, const QModelIndex 
 {
     Q_UNUSED(right);
     QStandardItem *item = m_addonsModel->itemFromIndex(left);
-    QApt::Package *addon = 0;
+    PackageState *addon = nullptr;
 
     QString addonName = item->data().toString();
-    foreach(QApt::Package *pkg, m_availableAddons) {
-        if (pkg->latin1Name() == addonName) {
-            addon = pkg;
+    for (PackageState state : m_availableAddons) {
+        if (state.name() == addonName) {
+            addon = &state;
         }
     }
 
-    if (!addon) {
+    if (!addon)
         return;
-    }
 
     if (addon->isInstalled()) {
         switch (item->checkState()) {

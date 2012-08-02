@@ -21,9 +21,11 @@
 #ifndef ADDONSWIDGET_H
 #define ADDONSWIDGET_H
 
+#include <QtCore/QHash>
+
 #include <KVBox>
 
-#include <LibQApt/Package>
+#include <resources/PackageState.h>
 
 class QListView;
 class QModelIndex;
@@ -31,21 +33,21 @@ class QPushButton;
 class QStandardItemModel;
 class QToolButton;
 
-class ApplicationBackend;
+class AbstractResource;
+class AbstractResourcesBackend;
 
 class AddonsWidget : public KVBox
 {
     Q_OBJECT
 public:
-    AddonsWidget(QWidget *parent, ApplicationBackend *appBackend);
-    ~AddonsWidget();
+    AddonsWidget(QWidget *parent, AbstractResourcesBackend *backend);
 
-    void setAddons(QApt::PackageList addons);
+    void setResource(AbstractResource *resource);
 
 private:
-    ApplicationBackend *m_appBackend;
+    AbstractResourcesBackend *m_backend;
     QStandardItemModel *m_addonsModel;
-    QApt::PackageList m_availableAddons;
+    QList<PackageState> m_availableAddons;
     QHash<QString, bool> m_changedAddons;
 
     QToolButton *m_expandButton;

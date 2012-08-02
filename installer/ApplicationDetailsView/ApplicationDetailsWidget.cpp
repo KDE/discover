@@ -225,7 +225,6 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, ApplicationB
 
     connect(m_addonsWidget, SIGNAL(applyButtonClicked(QHash<QString,bool>)),
             this, SLOT(addonsApplyButtonClicked(QHash<QString,bool>)));
-    connect(m_appBackend, SIGNAL(reloadFinished()), this, SLOT(populateAddons()));
     m_addonsWidget->hide();
 
     // Technical details
@@ -350,7 +349,7 @@ void ApplicationDetailsWidget::setApplication(Application *app)
 
     m_longDescLabel->setText(app->package()->longDescription());
 
-    populateAddons();
+    m_addonsWidget->setResource(app);
 
     QString homepageUrl = app->package()->homepage();
     if (!homepageUrl.isEmpty()) {
@@ -483,16 +482,6 @@ void ApplicationDetailsWidget::cancelButtonClicked()
 
     m_progressBar->hide();
     m_actionButton->show();
-}
-
-void ApplicationDetailsWidget::populateAddons()
-{
-    QApt::PackageList addons = m_app->addons();
-
-    m_addonsWidget->setAddons(addons);
-    if (!addons.isEmpty()) {
-        m_addonsWidget->show();
-    }
 }
 
 void ApplicationDetailsWidget::fetchReviews(int page)
