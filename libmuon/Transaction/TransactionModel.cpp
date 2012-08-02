@@ -20,12 +20,9 @@
 
 #include "TransactionModel.h"
 
-#include <KDebug>
-
 // Own includes
-#include "Application.h"
-#include "ApplicationBackend.h"
-#include "ApplicationModel/ApplicationModel.h"
+#include "resources/AbstractResource.h"
+#include "resources/ResourcesModel.h"
 #include "TransactionListener.h"
 #include "Transaction.h"
 
@@ -43,25 +40,25 @@ QVariant TransactionModel::data(const QModelIndex& index, int role) const
     TransactionListener *trans = m_transactions.at(index.row());
 
     switch (role) {
-        case ApplicationModel::NameRole:
+        case ResourcesModel::NameRole:
             return trans->resource()->name();
-        case ApplicationModel::IconRole:
+        case ResourcesModel::IconRole:
             return trans->resource()->icon();
-        case ApplicationModel::CommentRole:
+        case ResourcesModel::CommentRole:
             return trans->resource()->comment();
-        case ApplicationModel::RatingRole:
+        case ResourcesModel::RatingRole:
             return -1;
-        case ApplicationModel::ActiveRole:
+        case ResourcesModel::ActiveRole:
             return true;
-        case ApplicationModel::ProgressRole:
+        case ResourcesModel::ProgressRole:
             return trans->progress();
-        case ApplicationModel::ProgressTextRole:
+        case ResourcesModel::ProgressTextRole:
             return trans->comment();
-        case ApplicationModel::InstalledRole:
+        case ResourcesModel::InstalledRole:
             return false;
         case Qt::ToolTipRole:
             return QVariant();
-        case ApplicationModel::ApplicationRole:
+        case ResourcesModel::ApplicationRole:
             return qVariantFromValue<QObject *>(trans->resource());
         default:
             return QVariant();
@@ -77,13 +74,13 @@ int TransactionModel::rowCount(const QModelIndex &parent) const
     return m_transactions.size();
 }
 
-void TransactionModel::setBackend(ApplicationBackend* appBackend)
+void TransactionModel::setBackend(AbstractResourcesBackend* backend)
 {
-    m_appBackend = appBackend;
+    m_appBackend = backend;
     connect(m_appBackend, SIGNAL(transactionProgressed(Transaction*,int)), this, SLOT(externalUpdate()));
     connect(m_appBackend, SIGNAL(transactionAdded(Transaction*)), this, SLOT(addTransaction(Transaction*)));
-    connect(m_appBackend, SIGNAL(transactionCancelled(Application*)),
-            this, SLOT(removeTransaction(Application*)));
+    connect(m_appBackend, SIGNAL(transactionCancelled(Transaction*)),
+            this, SLOT(removeTransaction(Transaction*)));
 }
 
 void TransactionModel::addTransactions(const QList<Transaction *> &transList)
@@ -106,11 +103,11 @@ void TransactionModel::addTransaction(Transaction *trans)
     endInsertRows();
 }
 
-void TransactionModel::removeTransaction(AbstractResource *app)
+void TransactionModel::removeTransaction(Transaction *trans)
 {
     TransactionListener *toRemove = nullptr;
     for (TransactionListener *listener : m_transactions) {
-        if(listener->resource() == app) {
+        if(listener->resource() == trans->resource()) {
             toRemove = listener;
             break;
         }

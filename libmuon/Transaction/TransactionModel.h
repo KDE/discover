@@ -26,7 +26,7 @@
 #include "libmuonprivate_export.h"
 
 class AbstractResource;
-class ApplicationBackend;
+class AbstractResourcesBackend;
 class Transaction;
 class TransactionListener;
 
@@ -39,18 +39,18 @@ public:
     QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
 
-    void setBackend(ApplicationBackend* appBackend);
+    void setBackend(AbstractResourcesBackend *backend);
     void addTransactions(const QList<Transaction *> &trans);
 
 private:
-    ApplicationBackend *m_appBackend;
+    AbstractResourcesBackend *m_appBackend;
     QList<TransactionListener *> m_transactions;
 
     void removeTransaction(TransactionListener *listener);
     
 private slots:
     void addTransaction(Transaction *trans);
-    void removeTransaction(AbstractResource* app);
+    void removeTransaction(Transaction *trans);
     void externalUpdate();
     void clear();
 
