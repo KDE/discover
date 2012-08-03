@@ -139,7 +139,7 @@ void AddonsWidget::populateModel()
             if (!resource)
                 continue;
 
-            if (resource->name() == addon.name()) {
+            if (resource->packageName() == addon.name()) {
                 addonResource = resource;
                 break;
             }
@@ -147,7 +147,7 @@ void AddonsWidget::populateModel()
 
         QStandardItem *addonItem = new QStandardItem;
         addonItem->setData(addon.name());
-        QString resourceName = QLatin1Literal(" (") % addon.name() % ')';
+        QString resourceName = QLatin1String(" (") % addon.name() % ')';
         if (addonResource) {
             addonItem->setText(addonResource->name() % resourceName);
             addonItem->setIcon(KIcon(addonResource->icon()));

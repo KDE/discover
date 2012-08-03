@@ -57,6 +57,7 @@
 #include <Nepomuk/KRatingWidget>
 
 // Libmuon includes
+#include <Application.h>
 #include <MuonStrings.h>
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/Review.h>
@@ -314,6 +315,8 @@ void ApplicationDetailsWidget::setResource(AbstractResource *resource)
     m_resource = resource;
     m_listener->setResource(m_resource);
 
+    Application *app = qobject_cast<Application *>(resource);
+
     // FIXME: Always keep label size at 48x48, and render the largest size
     // we can up to that point. Otherwise some icons will be blurry
     m_iconLabel->setPixmap(KIcon(resource->icon()).pixmap(48,48));
@@ -333,19 +336,23 @@ void ApplicationDetailsWidget::setResource(AbstractResource *resource)
         m_ratingCountLabel->hide();
     }
     
-    // FIXME: Port to Resources
-//    QString menuPathString = resource->menuPath();
-//    if (!menuPathString.isEmpty()) {
-//        m_menuPathLabel->setText(menuPathString);
-//    } else {
-//        m_menuPathWidget->hide();
-//    }
+    if (app) {
+        QString menuPathString = app->menuPath();
+        if (!menuPathString.isEmpty()) {
+            m_menuPathLabel->setText(menuPathString);
+        } else {
+            m_menuPathWidget->hide();
+        }
+    } else {
+        m_menuPathWidget->hide();
+    }
 
     updateActionButton();
 
     m_longDescLabel->setText(resource->longDescription());
 
     m_addonsWidget->setResource(resource);
+    m_addonsWidget->setVisible(resource->addonsInformation().count());
 
     QUrl homepageUrl = resource->homepage();
     if (!homepageUrl.isEmpty()) {
@@ -357,15 +364,7 @@ void ApplicationDetailsWidget::setResource(AbstractResource *resource)
         m_websiteLabel->hide();
     }
 
-    // FIXME: Needs support in AsbtractResource
-//    if (!resource->isInstalled()) {
-//        m_size->setText(i18nc("@info app size", "%1 to download, %2 on disk",
-//                              KGlobal::locale()->formatByteSize(resource->package()->downloadSize()),
-//                              KGlobal::locale()->formatByteSize(resource->package()->availableInstalledSize())));
-//    } else {
-//        m_size->setText(i18nc("@info app size", "%1 on disk",
-//                              KGlobal::locale()->formatByteSize(resource->package()->currentInstalledSize())));
-//    }
+    m_size->setText(resource->sizeDescription());
 
     if (!resource->isInstalled()) {
          m_version->setText(resource->name() % ' ' %
