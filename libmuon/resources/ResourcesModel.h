@@ -67,6 +67,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         void addResourcesBackend(AbstractResourcesBackend* resources);
         
         AbstractResource* resourceAt(int row) const;
+        QModelIndex resourceIndex(AbstractResource* res) const;
         QVector< AbstractResourcesBackend* > backends() const;
         int updatesCount() const;
         
@@ -78,6 +79,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         void installApplication(AbstractResource* app);
         void removeApplication(AbstractResource* app);
         void cancelTransaction(AbstractResource* app);
+        void transactionChanged(Transaction* t);
 
     signals:
         void backendsChanged();

@@ -78,6 +78,10 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* resources)
     connect(resources, SIGNAL(transactionRemoved(Transaction*)), SIGNAL(transactionRemoved(Transaction*)));
     connect(resources, SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)), SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)));
     
+    connect(this, SIGNAL(transactionAdded(Transaction*)), SLOT(transactionChanged(Transaction*)));
+    connect(this, SIGNAL(transactionRemoved(Transaction*)), SLOT(transactionChanged(Transaction*)));
+    connect(this, SIGNAL(transactionCancelled(Transaction*)), SLOT(transactionChanged(Transaction*)));
+
     emit backendsChanged();
 }
 
@@ -92,6 +96,24 @@ AbstractResource* ResourcesModel::resourceAt(int row) const
     return 0;
 }
 
+QModelIndex ResourcesModel::resourceIndex(AbstractResource* res) const
+{
+    AbstractResourcesBackend* backend = res->backend();
+    int row = 0, backends = m_backends.count();
+    for(int i=0; i<backends; i++) {
+        if(m_backends[i]!=backend)
+            row += m_resources[i].size();
+        else {
+            int pos = m_resources[i].indexOf(res);
+            Q_ASSERT(pos>0);
+            row += pos;
+        }
+    }
+
+    Q_ASSERT(row);
+    return index(row);
+}
+
 QVariant ResourcesModel::data(const QModelIndex& index, int role) const
 {
     if (!index.isValid()) {
@@ -100,6 +122,11 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
 
     AbstractResource* resource = resourceAt(index.row());
     switch(role) {
+        case ActiveRole: {
+            //TODO: Maybe move to AbstractResource?
+            Transaction* t = resource->backend()->currentTransactionState().second;
+            return t && t->resource() == resource;
+        }
         case ApplicationRole:
             return qVariantFromValue<QObject*>(resource);
         case RatingPointsRole:
@@ -246,4 +273,10 @@ void ResourcesModel::removeApplication(AbstractResource* app)
 void ResourcesModel::cancelTransaction(AbstractResource* app)
 {
     backendForResource(app)->cancelTransaction(app);
+}
+
+void ResourcesModel::transactionChanged(Transaction* t)
+{
+    QModelIndex idx = resourceIndex(t->resource());
+    dataChanged(idx, idx);
 }
