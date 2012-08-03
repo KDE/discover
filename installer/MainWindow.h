@@ -50,8 +50,6 @@ public:
     MainWindow();
     ~MainWindow();
 
-    ApplicationBackend *appBackend() const;
-
 private:
     ApplicationBackend *m_appBackend;
     QSplitter *m_mainWidget;

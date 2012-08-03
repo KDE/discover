@@ -478,11 +478,6 @@ void MainWindow::sourcesEditorFinished(int reload)
     MuonMainWindow::sourcesEditorFinished(reload);
 }
 
-ApplicationBackend *MainWindow::appBackend() const
-{
-    return m_appBackend;
-}
-
 void MainWindow::showLauncherMessage()
 {
     clearMessageActions();
