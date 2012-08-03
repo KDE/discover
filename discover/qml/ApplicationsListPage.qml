@@ -24,6 +24,7 @@ Page {
     
     onSearchChanged: {
         appsModel.search(search)
+        appsModel.sortOrder = Qt.AscendingOrder
     }
     
     function searchFor(text) {
