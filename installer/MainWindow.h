@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,8 +18,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONWINDOW_H
-#define APPLICATIONWINDOW_H
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
 // Own includes
 #include "../libmuon/MuonMainWindow.h"
@@ -67,12 +67,12 @@ enum ViewType {
     Progress
 };
 
-class ApplicationWindow : public MuonMainWindow
+class MainWindow : public MuonMainWindow
 {
     Q_OBJECT
 public:
-    ApplicationWindow();
-    ~ApplicationWindow();
+    MainWindow();
+    ~MainWindow();
 
     ApplicationBackend *appBackend() const;
 

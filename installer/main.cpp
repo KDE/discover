@@ -18,7 +18,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "ApplicationWindow.h"
+#include "MainWindow.h"
 
 #include <KAboutData>
 #include <KCmdLineArgs>
@@ -55,7 +55,7 @@ int main(int argc, char **argv)
     KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
     app.disableSessionManagement();
 
-    ApplicationWindow *mainWindow = new ApplicationWindow;
+    MainWindow *mainWindow = new MainWindow;
     mainWindow->show();
 
     return app.exec();

@@ -18,7 +18,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "ApplicationWindow.h"
+#include "MainWindow.h"
 
 // Qt includes
 #include <QStandardItemModel>
@@ -54,7 +54,7 @@
 #include "ViewSwitcher.h"
 #include "MuonInstallerSettings.h"
 
-ApplicationWindow::ApplicationWindow()
+MainWindow::MainWindow()
     : MuonMainWindow()
     , m_launcherMessage(nullptr)
     , m_appLauncher(nullptr)
@@ -64,12 +64,12 @@ ApplicationWindow::ApplicationWindow()
     QTimer::singleShot(10, this, SLOT(initObject()));
 }
 
-ApplicationWindow::~ApplicationWindow()
+MainWindow::~MainWindow()
 {
     MuonInstallerSettings::self()->writeConfig();
 }
 
-void ApplicationWindow::initGUI()
+void MainWindow::initGUI()
 {
     m_mainWidget = new QSplitter(this);
     m_mainWidget->setOrientation(Qt::Horizontal);
@@ -111,7 +111,7 @@ void ApplicationWindow::initGUI()
     setupGUI((StandardWindowOption)(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
 }
 
-void ApplicationWindow::initObject()
+void MainWindow::initObject()
 {
     m_appBackend = new ApplicationBackend(this);
     connect(this, SIGNAL(backendReady(QApt::Backend*)),
@@ -140,7 +140,7 @@ void ApplicationWindow::initObject()
     setActionsEnabled();
 }
 
-void ApplicationWindow::loadSplitterSizes()
+void MainWindow::loadSplitterSizes()
 {
     QList<int> sizes = MuonInstallerSettings::self()->splitterSizes();
 
@@ -150,13 +150,13 @@ void ApplicationWindow::loadSplitterSizes()
     m_mainWidget->setSizes(sizes);
 }
 
-void ApplicationWindow::saveSplitterSizes()
+void MainWindow::saveSplitterSizes()
 {
     MuonInstallerSettings::self()->setSplitterSizes(m_mainWidget->sizes());
     MuonInstallerSettings::self()->writeConfig();
 }
 
-void ApplicationWindow::setupActions()
+void MainWindow::setupActions()
 {
     MuonMainWindow::setupActions();
 
@@ -171,7 +171,7 @@ void ApplicationWindow::setupActions()
     connect(m_saveSelectionsAction, SIGNAL(triggered()), this, SLOT(saveSelections()));
 }
 
-void ApplicationWindow::setActionsEnabled(bool enabled)
+void MainWindow::setActionsEnabled(bool enabled)
 {
     MuonMainWindow::setActionsEnabled(enabled);
     if (!enabled) {
@@ -182,7 +182,7 @@ void ApplicationWindow::setActionsEnabled(bool enabled)
     m_saveSelectionsAction->setEnabled(m_backend->areChangesMarked());
 }
 
-void ApplicationWindow::clearViews()
+void MainWindow::clearViews()
 {
     m_canExit = false; // APT is reloading at this point
     foreach (QWidget *widget, m_viewHash) {
@@ -192,12 +192,12 @@ void ApplicationWindow::clearViews()
     m_viewModel->clear();
 }
 
-void ApplicationWindow::checkForUpdates()
+void MainWindow::checkForUpdates()
 {
     m_backend->updateCache();
 }
 
-void ApplicationWindow::workerEvent(QApt::WorkerEvent event)
+void MainWindow::workerEvent(QApt::WorkerEvent event)
 {
     MuonMainWindow::workerEvent(event);
  
@@ -218,7 +218,7 @@ void ApplicationWindow::workerEvent(QApt::WorkerEvent event)
     }
 }
 
-void ApplicationWindow::populateViews()
+void MainWindow::populateViews()
 {
     m_canExit = true; // APT is done reloading at this point
     QStringList originNames = m_appBackend->appOrigins().toList();
@@ -382,7 +382,7 @@ void ApplicationWindow::populateViews()
     selectFirstRow(m_viewSwitcher);
 }
 
-void ApplicationWindow::changeView(const QModelIndex &index)
+void MainWindow::changeView(const QModelIndex &index)
 {
     QWidget *view = m_viewHash.value(index);
 
@@ -433,20 +433,20 @@ void ApplicationWindow::changeView(const QModelIndex &index)
     m_viewHash[index] = view;
 }
 
-void ApplicationWindow::selectFirstRow(const QAbstractItemView *itemView)
+void MainWindow::selectFirstRow(const QAbstractItemView *itemView)
 {
     QModelIndex firstRow = itemView->model()->index(0, 0);
     itemView->selectionModel()->select(firstRow, QItemSelectionModel::Select);
     changeView(firstRow);
 }
 
-void ApplicationWindow::runSourcesEditor()
+void MainWindow::runSourcesEditor()
 {
     // Let QApt Batch handle the update GUI
     MuonMainWindow::runSourcesEditor(true);
 }
 
-void ApplicationWindow::sourcesEditorFinished(int reload)
+void MainWindow::sourcesEditorFinished(int reload)
 {
     m_appBackend->reload();
     clearViews();
@@ -454,12 +454,12 @@ void ApplicationWindow::sourcesEditorFinished(int reload)
     MuonMainWindow::sourcesEditorFinished(reload);
 }
 
-ApplicationBackend *ApplicationWindow::appBackend() const
+ApplicationBackend *MainWindow::appBackend() const
 {
     return m_appBackend;
 }
 
-void ApplicationWindow::showLauncherMessage()
+void MainWindow::showLauncherMessage()
 {
     clearMessageActions();
 
@@ -497,14 +497,14 @@ void ApplicationWindow::showLauncherMessage()
     }
 }
 
-void ApplicationWindow::launchSingleApp()
+void MainWindow::launchSingleApp()
 {
     KToolInvocation::startServiceByDesktopPath(m_launchableApps.first()->desktopEntryPath());
     m_launcherMessage->animatedHide();
     m_launcherMessage->removeAction(m_launcherMessage->actions().first());
 }
 
-void ApplicationWindow::showAppLauncher()
+void MainWindow::showAppLauncher()
 {
     if (!m_appLauncher && !m_launchableApps.isEmpty()) {
         m_appLauncher = new ApplicationLauncher(m_appBackend);
@@ -518,19 +518,19 @@ void ApplicationWindow::showAppLauncher()
     m_launcherMessage->animatedHide();
 }
 
-void ApplicationWindow::onAppLauncherClosed()
+void MainWindow::onAppLauncherClosed()
 {
     m_appLauncher = 0;
 }
 
-void ApplicationWindow::clearMessageActions()
+void MainWindow::clearMessageActions()
 {
     foreach (QAction *action, m_launcherMessage->actions()) {
         m_launcherMessage->removeAction(action);
     }
 }
 
-void ApplicationWindow::addProgressItem()
+void MainWindow::addProgressItem()
 {
     QStandardItem *parentItem = m_viewModel->invisibleRootItem();
 
@@ -547,7 +547,7 @@ void ApplicationWindow::addProgressItem()
     m_viewHash[m_progressItem->index()] = 0;
 }
 
-void ApplicationWindow::removeProgressItem()
+void MainWindow::removeProgressItem()
 {
     if (!m_progressItem)
         return;
@@ -560,5 +560,3 @@ void ApplicationWindow::removeProgressItem()
     m_viewModel->removeRow(m_viewModel->indexFromItem(m_progressItem).row());
     m_progressItem = nullptr;
 }
-
-#include "ApplicationWindow.moc"

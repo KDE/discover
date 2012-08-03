@@ -2,8 +2,8 @@ include_directories(../libmuon)
 
 set(muon_installer_SRCS
     main.cpp
+    MainWindow.cpp
     ApplicationLauncher.cpp
-    ApplicationWindow.cpp
     ApplicationView/ApplicationDelegate.cpp
     ApplicationView/ApplicationExtender.cpp
     ApplicationView/ApplicationListView.cpp
