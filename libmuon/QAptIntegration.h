@@ -52,7 +52,6 @@ class MUONPRIVATE_EXPORT QAptIntegration : public QObject
         int m_powerInhibitor;
         bool m_canExit;
         bool m_isReloading;
-        void setActionsEnabled(bool enabled = true);
         bool isConnected() const;
         KActionCollection* actionCollection();
 
@@ -81,6 +80,7 @@ class MUONPRIVATE_EXPORT QAptIntegration : public QObject
         void runSourcesEditor(bool update = false);
         void sourcesEditorFinished(int reload);
         void easterEggTriggered();
+        void setActionsEnabled(bool enabled = true);
 
     public slots:
         virtual void setupActions();

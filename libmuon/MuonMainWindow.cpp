@@ -123,3 +123,28 @@ void MuonMainWindow::sourcesEditorFinished(int reload)
 {
     m_aptify->sourcesEditorFinished(reload);
 }
+
+bool MuonMainWindow::createDownloadList()
+{
+    return m_aptify->createDownloadList();
+}
+
+void MuonMainWindow::loadSelections()
+{
+    m_aptify->loadSelections();
+}
+
+bool MuonMainWindow::saveInstalledPackagesList()
+{
+    return m_aptify->saveInstalledPackagesList();
+}
+
+bool MuonMainWindow::saveSelections()
+{
+    return m_aptify->saveSelections();
+}
+
+void MuonMainWindow::loadArchives()
+{
+    m_aptify->loadArchives();
+}

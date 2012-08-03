@@ -77,6 +77,11 @@ class MUONPRIVATE_EXPORT MuonMainWindow : public KXmlGuiWindow
         virtual void showQueuedWarnings();
         virtual void showQueuedErrors();
         void downloadPackagesFromList();
+        bool saveSelections();
+        bool saveInstalledPackagesList();
+        void loadSelections();
+        bool createDownloadList();
+        void loadArchives();
 
     public slots:
         void runSourcesEditor(bool update = false);
