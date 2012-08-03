@@ -37,7 +37,6 @@ class KMessageWidget;
 class KService;
 class KVBox;
 
-class Application;
 class ApplicationBackend;
 class ApplicationLauncher;
 class ProgressView;

@@ -288,7 +288,7 @@ void MainWindow::populateViews()
     installedItem->setIcon(KIcon("computer"));
     installedItem->setText(i18nc("@item:inlistbox Parent item for installed software", "Installed Software"));
     installedItem->setData(AppView, ViewTypeRole);
-    installedItem->setData(QApt::Package::Installed, StateFilterRole);
+    installedItem->setData(AbstractResource::State::Installed, StateFilterRole);
     parentItem->appendRow(installedItem);
     m_viewHash[installedItem->index()] = 0;
 
