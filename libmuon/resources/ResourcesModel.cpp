@@ -135,10 +135,16 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
             Rating* rating = backendForResource(resource)->reviewsBackend()->ratingForApplication(resource);
             return rating ? rating->property(roleNames().value(role)) : -1;
         }
-        default:
-            if(resource->metaObject()->indexOfProperty(roleNames().value(role)) < 0)
-                qDebug() << "unknown role:" << role << roleNames().value(role);
-            return resource->property(roleNames().value(role));
+        default: {
+            QByteArray roleText = roleNames().value(role);
+            if(roleText.isEmpty())
+                return QVariant();
+            else if(resource->metaObject()->indexOfProperty(roleText) < 0) {
+                qDebug() << "unknown role:" << role << roleText;
+                return QVariant();
+            } else
+                return resource->property(roleNames().value(role));
+        }
     }
 }
 
