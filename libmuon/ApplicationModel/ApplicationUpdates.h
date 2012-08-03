@@ -31,12 +31,12 @@ class ApplicationUpdates : public AbstractBackendUpdater
 {
     Q_OBJECT
     public:
-        explicit ApplicationUpdates(QApt::Backend* b, ApplicationBackend* parent);
+        explicit ApplicationUpdates(ApplicationBackend* parent);
         
         virtual bool hasUpdates() const;
         virtual qreal progress() const;
         virtual void start();
-        
+        void setBackend(QApt::Backend* b);
     public slots:
         void workerEvent(QApt::WorkerEvent);
         void errorOccurred(QApt::ErrorCode, const QVariantMap& error);

@@ -36,15 +36,16 @@
 namespace QApt {
     class Backend;
 }
-
 namespace DebconfKde
 {
     class DebconfGui;
 }
 
 class Application;
+class ApplicationUpdates;
 class ReviewsBackend;
 class Transaction;
+class KXmlGuiWindow;
 
 class MUONPRIVATE_EXPORT ApplicationBackend : public AbstractResourcesBackend
 {
@@ -82,6 +83,7 @@ public:
     void cancelTransaction(AbstractResource *app);
     
     virtual AbstractBackendUpdater* backendUpdater() const;
+    void integrateMainWindow(KXmlGuiWindow* w);
 private:
     QApt::Backend *m_backend;
     ReviewsBackend *m_reviewsBackend;
@@ -97,7 +99,7 @@ private:
     QPair<QApt::WorkerEvent, Transaction *> m_workerState;
 
     DebconfKde::DebconfGui *m_debconfGui;
-    AbstractBackendUpdater* m_backendUpdater;
+    ApplicationUpdates* m_backendUpdater;
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void reload();

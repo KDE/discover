@@ -25,6 +25,7 @@
 #include <QtCore/QDir>
 #include <QtCore/QStringBuilder>
 #include <QtCore/QStringList>
+#include <QTimer>
 
 // KDE includes
 #include <KLocale>
@@ -43,6 +44,7 @@
 #include "ReviewsBackend/ReviewsBackend.h"
 #include "Transaction/Transaction.h"
 #include "ApplicationModel/ApplicationUpdates.h"
+#include "QAptIntegration.h"
 
 ApplicationBackend::ApplicationBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
@@ -50,7 +52,7 @@ ApplicationBackend::ApplicationBackend(QObject *parent)
     , m_reviewsBackend(new ReviewsBackend(this))
     , m_isReloading(false)
     , m_currentTransaction(0)
-    , m_backendUpdater(0)
+    , m_backendUpdater(new ApplicationUpdates(this))
 {
     m_watcher = new QFutureWatcher<QVector<Application*> >(this);
     connect(m_watcher, SIGNAL(finished()), this, SLOT(setApplications()));
@@ -118,6 +120,7 @@ void ApplicationBackend::setBackend(QApt::Backend *backend)
     m_backend = backend;
     m_backend->setUndoRedoCacheSize(1);
     m_reviewsBackend->setAptBackend(m_backend);
+    m_backendUpdater->setBackend(m_backend);
 
     QFuture<QVector<Application*> > future = QtConcurrent::run(init, m_backend, QThread::currentThread());
     m_watcher->setFuture(future);
@@ -126,8 +129,6 @@ void ApplicationBackend::setBackend(QApt::Backend *backend)
             this, SLOT(workerEvent(QApt::WorkerEvent)));
     connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)),
             this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
-    
-    m_backendUpdater = new ApplicationUpdates(m_backend, this);
 }
 
 void ApplicationBackend::setApplications()
@@ -585,6 +586,13 @@ bool ApplicationBackend::providesResouce(AbstractResource* res) const
 
 AbstractBackendUpdater* ApplicationBackend::backendUpdater() const
 {
-    Q_ASSERT(m_backendUpdater);
     return m_backendUpdater;
+}
+
+void ApplicationBackend::integrateMainWindow(KXmlGuiWindow* w)
+{
+    QAptIntegration* aptify = new QAptIntegration(w);
+    QTimer::singleShot(10, aptify, SLOT(initObject()));
+    aptify->setupActions();
+    connect(aptify, SIGNAL(backendReady(QApt::Backend*)), this, SLOT(setBackend(QApt::Backend*)));
 }

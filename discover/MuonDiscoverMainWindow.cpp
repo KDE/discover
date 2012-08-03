@@ -56,7 +56,6 @@
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 
 #ifdef QAPT_ENABLED
-#include <QAptIntegration.h>
 #include "OriginsBackend.h"
 #endif
 
@@ -129,11 +128,6 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     qmlRegisterType<OriginsBackend>("org.kde.muon", 1, 0, "OriginsBackend");
     qmlRegisterType<Source>();
     qmlRegisterType<Entry>();
-    
-    QAptIntegration* aptify = new QAptIntegration(this);
-    QTimer::singleShot(10, aptify, SLOT(initObject()));
-    aptify->setupActions();
-    connect(aptify, SIGNAL(backendReady(QApt::Backend*)), SLOT(setBackend(QApt::Backend*)));
 #endif
     
     //Here we set up a cache for the screenshots
@@ -166,7 +160,7 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     restoreState(window.readEntry<QByteArray>("windowState", QByteArray()));
     
     setCentralWidget(m_view);
-    resourcesModel->addResourcesBackend(new KNSBackend("comic.knsrc", "face-smile-big", this));
+    BackendsSingleton::self()->initialize(this);
 }
 
 MuonDiscoverMainWindow::~MuonDiscoverMainWindow()
@@ -175,14 +169,6 @@ MuonDiscoverMainWindow::~MuonDiscoverMainWindow()
     window.writeEntry("geometry", saveGeometry());
     window.writeEntry("windowState", saveState());
     window.sync();
-}
-
-void MuonDiscoverMainWindow::setBackend(QApt::Backend* b)
-{
-    if (!m_view->rootObject())
-        return;
-
-    BackendsSingleton::self()->initialize(b);
 }
 
 QAction* MuonDiscoverMainWindow::getAction(const QString& name)

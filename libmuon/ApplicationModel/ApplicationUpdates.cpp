@@ -25,14 +25,16 @@
 #include <KDebug>
 #include <QIcon>
 
-// FIXME: Only supports APT
-
-ApplicationUpdates::ApplicationUpdates(QApt::Backend* backend, ApplicationBackend* parent)
+ApplicationUpdates::ApplicationUpdates(ApplicationBackend* parent)
     : AbstractBackendUpdater(parent)
-    , m_aptBackend(backend)
+    , m_aptBackend(0)
     , m_appBackend(parent)
 {
-    Q_ASSERT(backend);
+}
+
+void ApplicationUpdates::setBackend(QApt::Backend* backend)
+{
+    Q_ASSERT(!m_aptBackend || m_aptBackend==backend);
     connect(backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)), this,
             SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
     connect(backend, SIGNAL(commitProgress(QString,int)),

@@ -37,7 +37,7 @@ public:
     
     static BackendsSingleton* self();
     
-    void initialize(QApt::Backend* b);
+    void initialize(MuonDiscoverMainWindow* w);
     
     ResourcesModel* appsModel();
 

@@ -19,10 +19,13 @@
 
 #include "BackendsSingleton.h"
 #include "MuonDiscoverMainWindow.h"
+#include "KNSBackend/KNSBackend.h"
 #include <resources/ResourcesModel.h>
 
 #ifdef QAPT_ENABLED
 #include <ApplicationBackend.h>
+#include <QAptIntegration.h>
+#include <QTimer>
 #endif
 
 BackendsSingleton* BackendsSingleton::m_self = 0;
@@ -47,9 +50,18 @@ ResourcesModel* BackendsSingleton::appsModel()
     return m_appsModel;
 }
 
-void BackendsSingleton::initialize(QApt::Backend* b)
+void BackendsSingleton::initialize(MuonDiscoverMainWindow* w)
 {
+    QList<AbstractResourcesBackend*> backends;
+    backends += new KNSBackend("comic.knsrc", "face-smile-big", this);
+    
+#ifdef QAPT_ENABLED
     ApplicationBackend* applicationBackend = new ApplicationBackend(this);
-    applicationBackend->setBackend(b);
-    BackendsSingleton::self()->appsModel()->addResourcesBackend(applicationBackend);
+    applicationBackend->integrateMainWindow(w);
+    backends += applicationBackend;
+#endif
+    
+    foreach(AbstractResourcesBackend* b, backends) {
+        appsModel()->addResourcesBackend(b);
+    }
 }

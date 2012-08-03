@@ -54,19 +54,19 @@ OriginsBackend::~OriginsBackend()
 
 void OriginsBackend::load()
 {
-    ApplicationBackend* appbackend = applicationBackend();
-    if(!appbackend) {
-        connect(BackendsSingleton::self()->appsModel(), SIGNAL(backendsChanged()), SLOT(load()));
+    QApt::Backend* backend = applicationBackend()->backend();
+    if(!backend) {
+        connect(applicationBackend(), SIGNAL(backendReady()), SLOT(load()));
         return;
     }
     
     qDeleteAll(m_sources);
     m_sources.clear();
     //load /etc/apt/sources.list
-    load(appbackend->backend()->config()->findFile("Dir::Etc::sourcelist"));
+    load(backend->config()->findFile("Dir::Etc::sourcelist"));
     
     //load /etc/apt/sources.list.d/*.list
-    QDir d(appbackend->backend()->config()->findDirectory("Dir::Etc::sourceparts"));
+    QDir d(backend->config()->findDirectory("Dir::Etc::sourceparts"));
     foreach(const QString& file, d.entryList(QStringList() << "*.list")) {
         load(d.filePath(file));
     }

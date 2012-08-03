@@ -27,7 +27,6 @@ class QAptIntegration;
 class AbstractResource;
 class Category;
 class QDeclarativeView;
-namespace QApt { class Backend; }
 
 class MuonDiscoverMainWindow : public KXmlGuiWindow
 {
@@ -40,7 +39,6 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
         virtual QSize sizeHint() const;
 
     public slots:
-        void setBackend(QApt::Backend* b);
         void openApplication(const QString& app);
         QUrl featuredSource() const;
         void openMimeType(const QString& mime);
