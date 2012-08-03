@@ -61,14 +61,10 @@ public:
     QUrl screenshotUrl() { return screenshotUrl(QApt::Screenshot); }
     QUrl screenshotUrl(QApt::ScreenshotType type);
     QUrl thumbnailUrl();
-    QApt::PackageList addons();
     virtual QList< PackageState > addonsInformation();
     bool isValid() const;
     bool isTechnical() const;
     QString packageName() const;
-
-    QByteArray getField(const char* field, const QByteArray& defaultvalue = QByteArray()) const;
-    KSharedConfigPtr desktopContents(const QString& filename);
 
     //QApt::Package forwarding
     QUrl homepage() const;
@@ -94,9 +90,6 @@ public:
     virtual void fetchScreenshots();
 
 private:
-    QVector<QPair<QString, QString> > locateApplication(const QString &_relPath, const QString &menuId) const;
-    bool hasField(const char* field) const;
-
     KSharedConfigPtr m_data;
     QApt::Backend *m_backend;
     QApt::Package *m_package;
@@ -105,6 +98,12 @@ private:
     bool m_isValid;
     bool m_isTechnical;
     bool m_isExtrasApp;
+
+    QByteArray getField(const char* field, const QByteArray& defaultvalue = QByteArray()) const;
+    KSharedConfigPtr desktopContents(const QString& filename);
+    QApt::PackageList addons();
+    QVector<QPair<QString, QString> > locateApplication(const QString &_relPath, const QString &menuId) const;
+    bool hasField(const char* field) const;
 };
 
 #endif
