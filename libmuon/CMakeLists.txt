@@ -53,6 +53,7 @@ if(QAPT_FOUND)
         MuonStrings.cpp
         QAptIntegration.cpp
         MuonMainWindow.cpp
+        ApplicationModel/LaunchListModel.cpp
         ApplicationModel/ApplicationUpdates.cpp
         HistoryView/HistoryProxyModel.cpp
         HistoryView/HistoryView.cpp
