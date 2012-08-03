@@ -40,15 +40,10 @@ public:
     void initialize(QApt::Backend* b);
     
     ResourcesModel* appsModel();
-    QApt::Backend* backend();
 
-signals:
-    void initialized();
-    
 private:
     static BackendsSingleton* m_self;
     ResourcesModel* m_appsModel;
-    QApt::Backend* m_backend;
 };
 
 #endif // BACKENDSSINGLETON_H

@@ -54,19 +54,19 @@ OriginsBackend::~OriginsBackend()
 
 void OriginsBackend::load()
 {
-    QApt::Backend* backend = BackendsSingleton::self()->backend();
-    if(!backend) {
-        connect(BackendsSingleton::self(), SIGNAL(initialized()), SLOT(load()));
+    ApplicationBackend* appbackend = applicationBackend();
+    if(!appbackend) {
+        connect(BackendsSingleton::self()->appsModel(), SIGNAL(backendsChanged()), SLOT(load()));
         return;
     }
     
     qDeleteAll(m_sources);
     m_sources.clear();
     //load /etc/apt/sources.list
-    load(backend->config()->findFile("Dir::Etc::sourcelist"));
+    load(appbackend->backend()->config()->findFile("Dir::Etc::sourcelist"));
     
     //load /etc/apt/sources.list.d/*.list
-    QDir d(backend->config()->findDirectory("Dir::Etc::sourceparts"));
+    QDir d(appbackend->backend()->config()->findDirectory("Dir::Etc::sourceparts"));
     foreach(const QString& file, d.entryList(QStringList() << "*.list")) {
         load(d.filePath(file));
     }
@@ -195,7 +195,7 @@ QDeclarativeListProperty<Entry> Source::entries()
 QString Source::name() const
 {
     QUrl uri(m_uri);
-    QStringList origins = BackendsSingleton::self()->backend()->originsForHost(uri.host());
+    QStringList origins = applicationBackend()->backend()->originsForHost(uri.host());
     if(origins.size()==1)
         return origins.first();
     else if(origins.size()==0)

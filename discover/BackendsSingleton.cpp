@@ -37,7 +37,6 @@ BackendsSingleton* BackendsSingleton::self()
 
 BackendsSingleton::BackendsSingleton()
     : m_appsModel(0)
-    , m_backend(0)
 {}
 
 ResourcesModel* BackendsSingleton::appsModel()
@@ -50,16 +49,7 @@ ResourcesModel* BackendsSingleton::appsModel()
 
 void BackendsSingleton::initialize(QApt::Backend* b)
 {
-    m_backend = b;
-#ifdef QAPT_ENABLED
     ApplicationBackend* applicationBackend = new ApplicationBackend(this);
     applicationBackend->setBackend(b);
     BackendsSingleton::self()->appsModel()->addResourcesBackend(applicationBackend);
-#endif
-    emit initialized();
-}
-
-QApt::Backend* BackendsSingleton::backend()
-{
-    return m_backend;
 }
