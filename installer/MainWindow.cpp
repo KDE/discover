@@ -54,6 +54,30 @@
 #include "ViewSwitcher.h"
 #include "MuonInstallerSettings.h"
 
+enum ViewModelRole {
+    /// A role for storing ViewType
+    ViewTypeRole = Qt::UserRole + 1,
+    /// A role for storing origin filter data
+    OriginFilterRole = Qt::UserRole + 2,
+    /// A role for storing state filter data
+    StateFilterRole = Qt::UserRole + 3
+};
+
+enum ViewType {
+    /// An invalid value
+    InvalidView = 0,
+    /// A simple ApplicationView that is filterable by status or origin
+    AppView,
+    /// An ApplicationView that has a Categorical homepage
+    CatView,
+    /// A CategoryView showing subcategories
+    SubCatView,
+    /// A view for showing history
+    History,
+    /// A view for showing in-progress transactions
+    Progress
+};
+
 MainWindow::MainWindow()
     : MuonMainWindow()
     , m_launcherMessage(nullptr)
