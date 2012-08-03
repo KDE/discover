@@ -366,7 +366,7 @@ void MainWindow::populateViews()
         QStandardItem *viewItem = new QStandardItem;
         viewItem->setEditable(false);
         viewItem->setText(originLabel);
-        viewItem->setData(QApt::Package::Installed, StateFilterRole);
+        viewItem->setData(AbstractResource::State::Installed, StateFilterRole);
         viewItem->setData(originName, OriginFilterRole);
         viewItem->setData(AppView, ViewTypeRole);
 
