@@ -27,20 +27,15 @@
 
 #include "AbstractViewContainer.h"
 
-class ApplicationBackend;
+class AbstractResourcesBackend;
 class ApplicationViewWidget;
-
-namespace QApt {
-    class Backend;
-}
 
 class ApplicationListView : public AbstractViewContainer
 {
     Q_OBJECT
 public:
-    ApplicationListView(QWidget *parent, ApplicationBackend *m_appBackend,
+    ApplicationListView(QWidget *parent, AbstractResourcesBackend *backend,
                         const QModelIndex &index);
-    ~ApplicationListView();
 
     void setStateFilter(AbstractResource::State state);
     void setOriginFilter(const QString &origin);
@@ -48,13 +43,9 @@ public:
     void setCanShowTechnical(bool canShow);
 
 private:
-    QApt::Backend *m_backend;
-    ApplicationBackend *m_appBackend;
+    AbstractResourcesBackend *m_backend;
 
     ApplicationViewWidget *m_appViewWidget;
-
-public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
 };
 
 #endif

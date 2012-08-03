@@ -27,20 +27,18 @@
 #include <KCategorizedSortFilterProxyModel>
 #include <KIcon>
 #include <KLocale>
-#include <KStandardDirs>
 
 // Own includes
 #include <Category/Category.h>
-#include "ApplicationBackend.h"
+#include <resources/AbstractResourcesBackend.h>
 #include "BreadcrumbWidget/BreadcrumbWidget.h"
 #include "CategoryView/CategoryViewWidget.h"
 
-AvailableView::AvailableView(QWidget *parent, ApplicationBackend *backend)
+AvailableView::AvailableView(QWidget *parent, AbstractResourcesBackend *backend)
         : AbstractViewContainer(parent)
-        , m_backend(backend)
 {
 
-    m_categoryViewWidget = new CategoryViewWidget(m_viewStack, m_backend);
+    m_categoryViewWidget = new CategoryViewWidget(m_viewStack, backend);
 
     QString rootName = i18n("Get Software");
     KIcon rootIcon = KIcon("applications-other");
@@ -50,7 +48,7 @@ AvailableView::AvailableView(QWidget *parent, ApplicationBackend *backend)
     m_viewStack->addWidget(m_categoryViewWidget);
     m_viewStack->setCurrentWidget(m_categoryViewWidget);
 
-    connect(m_backend, SIGNAL(xapianReloaded()),
+    connect(backend, SIGNAL(searchInvalidated()),
             m_breadcrumbWidget, SLOT(startSearch()));
     connect(m_categoryViewWidget, SIGNAL(registerNewSubView(AbstractViewBase*)),
             this, SLOT(registerNewSubView(AbstractViewBase*)));

@@ -395,7 +395,6 @@ void ApplicationWindow::changeView(const QModelIndex &index)
 
             view = new ApplicationListView(this, m_appBackend, index);
             ApplicationListView *appView = static_cast<ApplicationListView *>(view);
-            appView->setBackend(m_backend);
             appView->setStateFilter(stateFilter);
             appView->setOriginFilter(originFilter);
             appView->setCanShowTechnical(true);

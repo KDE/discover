@@ -68,6 +68,7 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
         void reloadFinished();
         void updatesCountChanged();
         void allDataChanged();
+        void searchInvalidated();
         
         void transactionProgressed(Transaction *transaction, int progress);
         void transactionAdded(Transaction *transaction);

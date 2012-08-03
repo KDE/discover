@@ -28,17 +28,18 @@
 // KDE includes
 #include <KSeparator>
 
+// Libmuon includes
+#include <resources/AbstractResourcesBackend.h>
+
 // Own includes
-#include "ApplicationBackend.h"
 #include "ApplicationViewWidget.h"
 
-ApplicationListView::ApplicationListView(QWidget *parent, ApplicationBackend *appBackend,
+ApplicationListView::ApplicationListView(QWidget *parent, AbstractResourcesBackend *backend,
                                          const QModelIndex &index)
         : AbstractViewContainer(parent)
-        , m_backend(0)
-        , m_appBackend(appBackend)
+        , m_backend(backend)
 {
-    m_appViewWidget = new ApplicationViewWidget(this, appBackend);
+    m_appViewWidget = new ApplicationViewWidget(this, backend);
     m_appViewWidget->setTitle(index.data(Qt::DisplayRole).toString());
     m_appViewWidget->setIcon(index.data(Qt::DecorationRole).value<QIcon>());
     m_breadcrumbWidget->setRootItem(m_appViewWidget->breadcrumbItem());
@@ -46,21 +47,12 @@ ApplicationListView::ApplicationListView(QWidget *parent, ApplicationBackend *ap
     m_viewStack->addWidget(m_appViewWidget);
     m_viewStack->setCurrentWidget(m_appViewWidget);
 
-    connect(appBackend, SIGNAL(xapianReloaded()),
+    connect(backend, SIGNAL(searchInvalidated()),
             m_breadcrumbWidget, SLOT(startSearch()));
     connect(m_appViewWidget, SIGNAL(registerNewSubView(AbstractViewBase*)),
             this, SLOT(registerNewSubView(AbstractViewBase*)));
     connect(m_appViewWidget, SIGNAL(switchToSubView(AbstractViewBase*)),
             this, SLOT(switchToSubView(AbstractViewBase*)));
-}
-
-ApplicationListView::~ApplicationListView()
-{
-}
-
-void ApplicationListView::setBackend(QApt::Backend *backend)
-{
-    m_backend = backend;
 }
 
 void ApplicationListView::setStateFilter(AbstractResource::State state)
@@ -82,5 +74,3 @@ void ApplicationListView::setCanShowTechnical(bool canShow)
 {
     m_appViewWidget->setCanShowTechnical(canShow);
 }
-
-#include "ApplicationListView.moc"

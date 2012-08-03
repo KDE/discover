@@ -23,20 +23,16 @@
 
 #include "AbstractViewContainer.h"
 
-class AbstractViewBase;
-class ApplicationBackend;
-class Category;
+class AbstractResourcesBackend;
 class CategoryViewWidget;
 
 class AvailableView : public AbstractViewContainer
 {
     Q_OBJECT
 public:
-    AvailableView(QWidget *parent, ApplicationBackend *backend);
+    AvailableView(QWidget *parent, AbstractResourcesBackend *backend);
 
 private:
-    ApplicationBackend *m_backend;
-
     CategoryViewWidget *m_categoryViewWidget;
 };
 

@@ -117,7 +117,6 @@ Q_SIGNALS:
     void startingFirstTransaction();
     void workerEvent(QApt::WorkerEvent event, Transaction *app);
     void errorSignal(QApt::ErrorCode code, const QVariantMap &details);
-    void xapianReloaded();
     void launchListChanged();
 };
 

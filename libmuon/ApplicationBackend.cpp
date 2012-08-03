@@ -179,7 +179,7 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
     m_workerState.first = event;
 
     if (event == QApt::XapianUpdateFinished && !isReloading()) {
-        emit xapianReloaded();
+        emit searchInvalidated();
     }
 
     if (!m_queue.isEmpty()) {
