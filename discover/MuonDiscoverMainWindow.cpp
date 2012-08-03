@@ -42,6 +42,7 @@
 #include <kdeclarative.h>
 #include <Plasma/Theme>
 #include <KStandardDirs>
+#include <KMessageBox>
 
 // Libmuon includes
 #include <resources/ResourcesModel.h>
@@ -97,9 +98,6 @@ class CachedNAMFactory : public QDeclarativeNetworkAccessManagerFactory
 
 MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     : KXmlGuiWindow(0)
-#ifdef QAPT_ENABLED
-    , m_aptify(new QAptIntegration(this))
-#endif
 {
     m_view = new QDeclarativeView(this);
     m_view->setBackgroundRole(QPalette::Background);
@@ -131,6 +129,11 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     qmlRegisterType<OriginsBackend>("org.kde.muon", 1, 0, "OriginsBackend");
     qmlRegisterType<Source>();
     qmlRegisterType<Entry>();
+    
+    QAptIntegration* aptify = new QAptIntegration(this);
+    QTimer::singleShot(10, aptify, SLOT(initObject()));
+    aptify->setupActions();
+    connect(aptify, SIGNAL(backendReady(QApt::Backend*)), SLOT(setBackend(QApt::Backend*)));
 #endif
     
     //Here we set up a cache for the screenshots
@@ -143,23 +146,18 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
 //     m_view->setViewport(new QGLWidget);
 // #endif
     
-#ifdef QAPT_ENABLED
-    QTimer::singleShot(10, m_aptify, SLOT(initObject()));
-    m_aptify->setupActions();
-    connect(m_aptify, SIGNAL(backendReady(QApt::Backend*)), SLOT(setBackend(QApt::Backend*)));
-#endif
-    
     m_view->setSource(QUrl("qrc:/qml/Main.qml"));
     if(!m_view->errors().isEmpty()) {
         QString errors;
 
         for (const QDeclarativeError &error : m_view->errors()) {
-            errors.append(error.toString() + QLatin1String("\n\n"));
+            errors.append(error.toString() + QLatin1String("\n"));
         }
-#ifdef QAPT_ENABLED
-        m_aptify->initializationErrors(errors);
-#endif
+        KMessageBox::detailedSorry(this,
+            i18n("Found some errors while setting up the GUI, the application can't proceed."),
+            errors, i18n("Initialization error"));
         qDebug() << "errors: " << m_view->errors();
+        exit(-1);
     }
     Q_ASSERT(m_view->errors().isEmpty());
 

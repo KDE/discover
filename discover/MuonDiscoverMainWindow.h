@@ -57,9 +57,6 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
     private:
         QString m_appToBeOpened;
         QDeclarativeView* m_view;
-#ifdef QAPT_ENABLED
-        QAptIntegration* m_aptify;
-#endif
 };
 
 #endif // MUONINSTALLERDECLARATIVEVIEW_H
