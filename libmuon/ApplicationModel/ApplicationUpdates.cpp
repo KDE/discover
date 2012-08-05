@@ -35,44 +35,18 @@ ApplicationUpdates::ApplicationUpdates(ApplicationBackend* parent)
 void ApplicationUpdates::setBackend(QApt::Backend* backend)
 {
     Q_ASSERT(!m_aptBackend || m_aptBackend==backend);
-    connect(backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)), this,
-            SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
-    connect(backend, SIGNAL(commitProgress(QString,int)),
-            SLOT(progress(QString,int)));
-    connect(backend, SIGNAL(downloadMessage(int,QString)), SLOT(downloadMessage(int,QString)));
-    connect(backend, SIGNAL(debInstallMessage(QString)), SLOT(installMessage(QString)));
-    connect(backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
-            this, SLOT(workerEvent(QApt::WorkerEvent)));
+    m_aptBackend = backend;
 }
 
 void ApplicationUpdates::start()
 {
+    connect(m_aptBackend, SIGNAL(commitProgress(QString,int)),
+            SLOT(progress(QString,int)));
+    connect(m_aptBackend, SIGNAL(downloadMessage(int,QString)), SLOT(downloadMessage(int,QString)));
+
     m_aptBackend->saveCacheState();
     m_aptBackend->markPackagesForUpgrade();
     m_aptBackend->commitChanges();
-}
-
-void ApplicationUpdates::workerEvent(QApt::WorkerEvent e)
-{
-    if(e==QApt::CommitChangesFinished) {
-        kDebug() << "updates done. Reloading...";
-        
-        //when it's done, trigger a reload of the whole system
-        m_appBackend->reload();
-        emit updatesFinnished();
-    }
-}
-
-void ApplicationUpdates::errorOccurred(QApt::ErrorCode e, const QVariantMap&)
-{
-    switch(e) {
-        case QApt::AuthError:
-            m_aptBackend->undo();
-            break;
-        default:
-            break;
-    }
-    emit updatesFinnished();
 }
 
 bool ApplicationUpdates::hasUpdates() const
@@ -94,6 +68,7 @@ void ApplicationUpdates::progress(const QString& msg, int percentage)
 
 void ApplicationUpdates::downloadMessage(int flag, const QString& msg)
 {
+    Q_UNUSED(flag)
     emit message(QIcon::fromTheme("download"), msg);
 }
 

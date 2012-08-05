@@ -38,8 +38,6 @@ class ApplicationUpdates : public AbstractBackendUpdater
         virtual void start();
         void setBackend(QApt::Backend* b);
     public slots:
-        void workerEvent(QApt::WorkerEvent);
-        void errorOccurred(QApt::ErrorCode, const QVariantMap& error);
         void progress(const QString& message, int percentage);
         void downloadMessage(int flag, const QString& message);
         void installMessage(const QString& message);
