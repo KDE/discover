@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,30 +18,32 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONLISTVIEW_H
-#define APPLICATIONLISTVIEW_H
+#ifndef RESOURCEDETAILSVIEW_H
+#define RESOURCEDETAILSVIEW_H
 
-#include <QModelIndex>
+#include "../AbstractViewBase.h"
 
-#include <resources/AbstractResource.h>
+class AbstractResource;
+class ResourceDetailsWidget;
 
-#include "AbstractViewContainer.h"
-
-class ApplicationViewWidget;
-
-class ApplicationListView : public AbstractViewContainer
+class ResourceDetailsView : public AbstractViewBase
 {
     Q_OBJECT
 public:
-    ApplicationListView(QWidget *parent, const QModelIndex &index);
+    ResourceDetailsView(QWidget *parent);
 
-    void setStateFilter(AbstractResource::State state);
-    void setOriginFilter(const QString &origin);
-    void setShouldShowTechnical(bool show);
-    void setCanShowTechnical(bool canShow);
+    void setResource(AbstractResource *resource);
 
 private:
-    ApplicationViewWidget *m_appViewWidget;
+    ResourceDetailsWidget *m_detailsWidget;
+
+Q_SIGNALS:
+    void installButtonClicked(AbstractResource *);
+    void installButtonClicked(AbstractResource *,
+                              const QHash<QString, bool> &addons);
+    void removeButtonClicked(AbstractResource *);
+    void cancelButtonClicked(AbstractResource *);
+
 };
 
 #endif

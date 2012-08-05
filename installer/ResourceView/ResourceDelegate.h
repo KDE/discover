@@ -1,7 +1,7 @@
 /*
  *   Copyright (C) 2007 Ivan Cukic <ivan.cukic+kde@gmail.com>
  *   Copyright (C) 2008 Daniel Nicoletti <dantti85-pk@yahoo.com.br>
- *   Copyright (C) 2010 Jonathan Thomas <echidnaman@kubuntu.org>
+ *   Copyright (C) 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library/Lesser General Public License
@@ -19,8 +19,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef APPLICATIONDELEGATE_H
-#define APPLICATIONDELEGATE_H
+#ifndef RESOURCEDELEGATE_H
+#define RESOURCEDELEGATE_H
 
 // KDE includes
 #include <KExtendableItemDelegate>
@@ -30,16 +30,16 @@ class AbstractResource;
 class KIconLoader;
 class KRatingPainter;
 
-class ApplicationExtender;
+class ResourceExtender;
 
 /**
  * Delegate for displaying the applications
  */
-class ApplicationDelegate: public KExtendableItemDelegate
+class ResourceDelegate: public KExtendableItemDelegate
 {
     Q_OBJECT
 public:
-    ApplicationDelegate(QAbstractItemView *parent);
+    ResourceDelegate(QAbstractItemView *parent);
 
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
     QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const;
@@ -52,7 +52,7 @@ public:
 private:
     QSize   m_buttonSize;
     QPersistentModelIndex m_oldIndex;
-    ApplicationExtender *m_extender;
+    ResourceExtender *m_extender;
     KRatingPainter *m_ratingPainter;
     QPixmap m_emblem;
     bool m_showInfoButton;

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -34,7 +34,7 @@ class QString;
 class Category;
 class CategoryView;
 
-class ApplicationViewWidget;
+class ResourceViewWidget;
 
 class CategoryViewWidget : public AbstractViewBase
 {
@@ -53,7 +53,7 @@ private:\
 
     CategoryView *m_categoryView;
     AbstractViewBase *m_subView;
-    ApplicationViewWidget *m_searchView;
+    ResourceViewWidget *m_searchView;
 
 private Q_SLOTS:
     void onIndexActivated(const QModelIndex &index);

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,7 +18,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "ApplicationExtender.h"
+#include "ResourceExtender.h"
 
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QPushButton>
@@ -31,7 +31,7 @@
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
 
-ApplicationExtender::ApplicationExtender(QWidget *parent, AbstractResource *app)
+ResourceExtender::ResourceExtender(QWidget *parent, AbstractResource *app)
     : QWidget(parent)
     , m_resource(app)
 {
@@ -81,12 +81,12 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, AbstractResource *app)
     workerEvent(workerState.first, workerState.second);
 }
 
-void ApplicationExtender::setShowInfoButton(bool show)
+void ResourceExtender::setShowInfoButton(bool show)
 {
     show ? m_infoButton->show() : m_infoButton->hide();
 }
 
-void ApplicationExtender::workerEvent(TransactionStateTransition workerEvent, Transaction *transaction)
+void ResourceExtender::workerEvent(TransactionStateTransition workerEvent, Transaction *transaction)
 {
     if (!transaction || !m_resource->backend()->transactions().contains(transaction)
         || m_resource != transaction->resource()) {
@@ -107,7 +107,7 @@ void ApplicationExtender::workerEvent(TransactionStateTransition workerEvent, Tr
     }
 }
 
-void ApplicationExtender::transactionCancelled(Transaction* trans)
+void ResourceExtender::transactionCancelled(Transaction* trans)
 {
     AbstractResource* resource = trans->resource();
     if (m_resource == resource) {
@@ -124,26 +124,26 @@ void ApplicationExtender::transactionCancelled(Transaction* trans)
     }
 }
 
-void ApplicationExtender::emitInfoButtonClicked()
+void ResourceExtender::emitInfoButtonClicked()
 {
     emit infoButtonClicked(m_resource);
 }
 
-void ApplicationExtender::removeButtonClicked()
+void ResourceExtender::removeButtonClicked()
 {
     m_actionButton->setEnabled(false);
     ResourcesModel *resourcesModel = ResourcesModel::global();
     resourcesModel->removeApplication(m_resource);
 }
 
-void ApplicationExtender::installButtonClicked()
+void ResourceExtender::installButtonClicked()
 {
     m_actionButton->setEnabled(false);
     ResourcesModel *resourcesModel = ResourcesModel::global();
     resourcesModel->installApplication(m_resource);
 }
 
-void ApplicationExtender::cancelButtonClicked()
+void ResourceExtender::cancelButtonClicked()
 {
     ResourcesModel *resourcesModel = ResourcesModel::global();
     resourcesModel->cancelTransaction(m_resource);

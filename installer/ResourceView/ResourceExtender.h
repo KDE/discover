@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -29,11 +29,11 @@
 class QProgressBar;
 class QPushButton;
 
-class ApplicationExtender : public QWidget
+class ResourceExtender : public QWidget
 {
     Q_OBJECT
 public:
-    ApplicationExtender(QWidget *parent, AbstractResource *app);
+    ResourceExtender(QWidget *parent, AbstractResource *app);
 
     void setShowInfoButton(bool show);
 

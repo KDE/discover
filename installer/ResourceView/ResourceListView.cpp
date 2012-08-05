@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,8 +18,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "ApplicationListView.h"
-#include "../BreadcrumbWidget/BreadcrumbWidget.h"
+#include "ResourceListView.h"
 
 // Qt includes
 #include <QtGui/QIcon>
@@ -32,12 +31,13 @@
 #include <resources/ResourcesModel.h>
 
 // Own includes
-#include "ApplicationViewWidget.h"
+#include "BreadcrumbWidget/BreadcrumbWidget.h"
+#include "ResourceViewWidget.h"
 
-ApplicationListView::ApplicationListView(QWidget *parent, const QModelIndex &index)
+ResourceListView::ResourceListView(QWidget *parent, const QModelIndex &index)
         : AbstractViewContainer(parent)
 {
-    m_appViewWidget = new ApplicationViewWidget(this);
+    m_appViewWidget = new ResourceViewWidget(this);
     m_appViewWidget->setTitle(index.data(Qt::DisplayRole).toString());
     m_appViewWidget->setIcon(index.data(Qt::DecorationRole).value<QIcon>());
     m_breadcrumbWidget->setRootItem(m_appViewWidget->breadcrumbItem());
@@ -54,22 +54,22 @@ ApplicationListView::ApplicationListView(QWidget *parent, const QModelIndex &ind
             this, SLOT(switchToSubView(AbstractViewBase*)));
 }
 
-void ApplicationListView::setStateFilter(AbstractResource::State state)
+void ResourceListView::setStateFilter(AbstractResource::State state)
 {
     m_appViewWidget->setStateFilter(state);
 }
 
-void ApplicationListView::setOriginFilter(const QString &origin)
+void ResourceListView::setOriginFilter(const QString &origin)
 {
     m_appViewWidget->setOriginFilter(origin);
 }
 
-void ApplicationListView::setShouldShowTechnical(bool show)
+void ResourceListView::setShouldShowTechnical(bool show)
 {
     m_appViewWidget->setShouldShowTechnical(show);
 }
 
-void ApplicationListView::setCanShowTechnical(bool canShow)
+void ResourceListView::setCanShowTechnical(bool canShow)
 {
     m_appViewWidget->setCanShowTechnical(canShow);
 }

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -49,12 +49,12 @@ class ReviewsWidget;
 enum class ScreenshotType : quint8;
 
 // Widget for showing details about a single application
-class ApplicationDetailsWidget : public QScrollArea
+class ResourceDetailsWidget : public QScrollArea
 {
     Q_OBJECT
 public:
-    explicit ApplicationDetailsWidget(QWidget *parent);
-    ~ApplicationDetailsWidget();
+    explicit ResourceDetailsWidget(QWidget *parent);
+    ~ResourceDetailsWidget();
 
     void setResource(AbstractResource *resource);
 

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -34,8 +34,8 @@
 #include <Category/CategoryModel.h>
 
 // Own includes
-#include "../ApplicationView/ApplicationViewWidget.h"
-#include "../BreadcrumbWidget/BreadcrumbItem.h"
+#include "ResourceView/ResourceViewWidget.h"
+#include "BreadcrumbWidget/BreadcrumbItem.h"
 #include "CategoryView.h"
 
 CategoryViewWidget::CategoryViewWidget(QWidget *parent)
@@ -84,9 +84,9 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
 
     switch (index.data(CategoryModel::CategoryTypeRole).toInt()) {
     case CategoryModel::CategoryType: { // Displays the apps in a category
-        m_subView = new ApplicationViewWidget(this);
+        m_subView = new ResourceViewWidget(this);
 
-        ApplicationViewWidget *appView = static_cast<ApplicationViewWidget *>(m_subView);
+        ResourceViewWidget *appView = static_cast<ResourceViewWidget *>(m_subView);
         appView->setFiltersFromCategory(category);
         appView->setTitle(category->name());
         appView->setIcon(KIcon(category->icon()));
@@ -122,7 +122,7 @@ void CategoryViewWidget::search(const QString &text)
     }
 
     if (!m_searchView) {
-        m_searchView = new ApplicationViewWidget(this);
+        m_searchView = new ResourceViewWidget(this);
         m_searchView->setTitle(i18nc("@label", "Search Results"));
         m_searchView->setIcon(KIcon("applications-other"));
 

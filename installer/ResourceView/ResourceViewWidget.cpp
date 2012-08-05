@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,7 +18,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "ApplicationViewWidget.h"
+#include "ResourceViewWidget.h"
 
 // Qt includes
 #include <QtCore/QStringBuilder>
@@ -39,11 +39,11 @@
 #include <resources/ResourcesProxyModel.h>
 
 // Own includes
-#include "ApplicationDelegate.h"
-#include "../ApplicationDetailsView/ApplicationDetailsView.h"
-#include "../BreadcrumbWidget/BreadcrumbItem.h"
+#include "ResourceDelegate.h"
+#include "ResourceDetailsView/ResourceDetailsView.h"
+#include "BreadcrumbWidget/BreadcrumbItem.h"
 
-ApplicationViewWidget::ApplicationViewWidget(QWidget *parent)
+ResourceViewWidget::ResourceViewWidget(QWidget *parent)
         : AbstractViewBase(parent)
         , m_canShowTechnical(false)
         , m_detailsView(0)
@@ -92,7 +92,7 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent)
     m_treeView->setRootIsDecorated(false);
 
     m_treeView->setModel(m_proxyModel);
-    m_delegate = new ApplicationDelegate(m_treeView);
+    m_delegate = new ResourceDelegate(m_treeView);
     m_treeView->setItemDelegate(m_delegate);
 
     connect(m_proxyModel, SIGNAL(invalidated()),
@@ -111,40 +111,40 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent)
     m_crumb->setAssociatedView(this);
 }
 
-void ApplicationViewWidget::setTitle(const QString &title)
+void ResourceViewWidget::setTitle(const QString &title)
 {
     m_crumb->setText(title);
     m_headerLabel->setText(QLatin1String("<h2>") % title % "</h2>");
 }
 
-void ApplicationViewWidget::setIcon(const QIcon &icon)
+void ResourceViewWidget::setIcon(const QIcon &icon)
 {
     m_crumb->setIcon(icon);
     m_headerIcon->setPixmap(icon.pixmap(24,24));
 }
 
-void ApplicationViewWidget::setStateFilter(AbstractResource::State state)
+void ResourceViewWidget::setStateFilter(AbstractResource::State state)
 {
     m_proxyModel->setStateFilter(state);
 }
 
-void ApplicationViewWidget::setOriginFilter(const QString &origin)
+void ResourceViewWidget::setOriginFilter(const QString &origin)
 {
     m_proxyModel->setOriginFilter(origin);
 }
 
-void ApplicationViewWidget::setFiltersFromCategory(Category *category)
+void ResourceViewWidget::setFiltersFromCategory(Category *category)
 {
     m_proxyModel->setFiltersFromCategory(category);
 }
 
-void ApplicationViewWidget::setShouldShowTechnical(bool show)
+void ResourceViewWidget::setShouldShowTechnical(bool show)
 {
     m_proxyModel->setShouldShowTechnical(show);
     m_techCheckBox->setChecked(show);
 }
 
-void ApplicationViewWidget::setCanShowTechnical(bool canShow)
+void ResourceViewWidget::setCanShowTechnical(bool canShow)
 {
     m_canShowTechnical = canShow;
 
@@ -153,13 +153,13 @@ void ApplicationViewWidget::setCanShowTechnical(bool canShow)
     }
 }
 
-void ApplicationViewWidget::search(const QString &text)
+void ResourceViewWidget::search(const QString &text)
 {
     m_proxyModel->sort(m_proxyModel->sortColumn(), Qt::AscendingOrder);
     m_proxyModel->search(text);
 }
 
-void ApplicationViewWidget::infoButtonClicked(AbstractResource *resource)
+void ResourceViewWidget::infoButtonClicked(AbstractResource *resource)
 {
     // Check to see if a view for this app already exists
     if (m_currentPair.second == resource) {
@@ -168,7 +168,7 @@ void ApplicationViewWidget::infoButtonClicked(AbstractResource *resource)
     }
 
     // Create one if not
-    m_detailsView = new ApplicationDetailsView(this);
+    m_detailsView = new ResourceDetailsView(this);
     m_detailsView->setResource(resource);
     m_currentPair.first = m_detailsView;
 
@@ -179,13 +179,13 @@ void ApplicationViewWidget::infoButtonClicked(AbstractResource *resource)
     emit registerNewSubView(m_detailsView);
 }
 
-void ApplicationViewWidget::onSubViewDestroyed()
+void ResourceViewWidget::onSubViewDestroyed()
 {
     m_currentPair.first = 0;
     m_currentPair.second = 0;
 }
 
-void ApplicationViewWidget::sortComboChanged(int index)
+void ResourceViewWidget::sortComboChanged(int index)
 {
     m_proxyModel->setSortRole(m_sortCombo->itemData(index).toInt());
     int sortRole = m_proxyModel->sortRole();
@@ -206,7 +206,7 @@ void ApplicationViewWidget::sortComboChanged(int index)
     }
 }
 
-void ApplicationViewWidget::updateSortCombo()
+void ResourceViewWidget::updateSortCombo()
 {
     bool searching = m_proxyModel->isFilteringBySearch();
     int searchItemIndex = m_sortCombo->findData(-1, Qt::UserRole);
@@ -222,7 +222,7 @@ void ApplicationViewWidget::updateSortCombo()
     }
 }
 
-void ApplicationViewWidget::techCheckChanged(int state)
+void ResourceViewWidget::techCheckChanged(int state)
 {
     setShouldShowTechnical(state == Qt::Checked);
 }

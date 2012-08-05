@@ -4,13 +4,13 @@ set(muon_installer_SRCS
     main.cpp
     MainWindow.cpp
     ApplicationLauncher.cpp
-    ApplicationView/ApplicationDelegate.cpp
-    ApplicationView/ApplicationExtender.cpp
-    ApplicationView/ApplicationListView.cpp
-    ApplicationView/ApplicationViewWidget.cpp
-    ApplicationDetailsView/ApplicationDetailsWidget.cpp
-    ApplicationDetailsView/ApplicationDetailsView.cpp
-    ApplicationDetailsView/AddonsWidget.cpp
+    ResourceView/ResourceDelegate.cpp
+    ResourceView/ResourceExtender.cpp
+    ResourceView/ResourceListView.cpp
+    ResourceView/ResourceViewWidget.cpp
+    ResourceDetailsView/ResourceDetailsWidget.cpp
+    ResourceDetailsView/ResourceDetailsView.cpp
+    ResourceDetailsView/AddonsWidget.cpp
     AbstractViewBase.cpp
     AbstractViewContainer.cpp
     AvailableView.cpp

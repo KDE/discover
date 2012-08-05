@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2011,2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,32 +18,55 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONDETAILSVIEW_H
-#define APPLICATIONDETAILSVIEW_H
+#ifndef ADDONSWIDGET_H
+#define ADDONSWIDGET_H
 
-#include "../AbstractViewBase.h"
+#include <QtCore/QHash>
+
+#include <KVBox>
+
+#include <resources/PackageState.h>
+
+class QListView;
+class QModelIndex;
+class QPushButton;
+class QStandardItemModel;
+class QToolButton;
 
 class AbstractResource;
-class ApplicationDetailsWidget;
 
-class ApplicationDetailsView : public AbstractViewBase
+class AddonsWidget : public KVBox
 {
     Q_OBJECT
 public:
-    ApplicationDetailsView(QWidget *parent);
+    AddonsWidget(QWidget *parent);
 
     void setResource(AbstractResource *resource);
 
 private:
-    ApplicationDetailsWidget *m_detailsWidget;
+    AbstractResource *m_resource;
+    QStandardItemModel *m_addonsModel;
+    QList<PackageState> m_availableAddons;
+    QHash<QString, bool> m_changedAddons;
+
+    QToolButton *m_expandButton;
+    QWidget *m_addonsWidget;
+    QListView *m_addonsView;
+    QPushButton *m_addonsRevertButton;
+    QPushButton *m_addonsApplyButton;
+
+public Q_SLOTS:
+    void repaintViewport();
+
+private Q_SLOTS:
+    void clearAddons();
+    void populateModel();
+    void expandButtonClicked();
+    void addonStateChanged(const QModelIndex &left, const QModelIndex &right);
+    void emitApplyButtonClicked();
 
 Q_SIGNALS:
-    void installButtonClicked(AbstractResource *);
-    void installButtonClicked(AbstractResource *,
-                              const QHash<QString, bool> &addons);
-    void removeButtonClicked(AbstractResource *);
-    void cancelButtonClicked(AbstractResource *);
-
+    void applyButtonClicked();
 };
 
 #endif

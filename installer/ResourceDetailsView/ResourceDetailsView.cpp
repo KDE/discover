@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,7 +18,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "ApplicationDetailsView.h"
+#include "ResourceDetailsView.h"
 
 // Qt includes
 #include <QtGui/QVBoxLayout>
@@ -30,13 +30,13 @@
 #include <resources/AbstractResource.h>
 
 // Own includes
-#include "ApplicationDetailsWidget.h"
+#include "ResourceDetailsWidget.h"
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
 
-ApplicationDetailsView::ApplicationDetailsView(QWidget *parent)
+ResourceDetailsView::ResourceDetailsView(QWidget *parent)
     : AbstractViewBase(parent)
 {
-    m_detailsWidget = new ApplicationDetailsWidget(this);
+    m_detailsWidget = new ResourceDetailsWidget(this);
 
     m_layout->addWidget(m_detailsWidget);
 
@@ -52,7 +52,7 @@ ApplicationDetailsView::ApplicationDetailsView(QWidget *parent)
             this, SIGNAL(cancelButtonClicked(AbstractResource*)));
 }
 
-void ApplicationDetailsView::setResource(AbstractResource *resource)
+void ResourceDetailsView::setResource(AbstractResource *resource)
 {
     m_detailsWidget->setResource(resource);
 

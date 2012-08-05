@@ -30,7 +30,7 @@
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>
 
-#include "ApplicationView/ApplicationDelegate.h"
+#include "ResourceView/ResourceDelegate.h"
 
 ProgressView::ProgressView(QWidget *parent)
     : KVBox(parent)
@@ -47,7 +47,7 @@ ProgressView::ProgressView(QWidget *parent)
     QListView *listView = new QListView(this);
     listView->setAlternatingRowColors(true);
 
-    ApplicationDelegate *delegate = new ApplicationDelegate(listView);
+    ResourceDelegate *delegate = new ResourceDelegate(listView);
     delegate->setShowInfoButton(false);
     connect(proxyModel, SIGNAL(invalidated()), delegate, SLOT(invalidate()));
     listView->setItemDelegate(delegate);

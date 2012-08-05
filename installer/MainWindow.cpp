@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -49,7 +49,7 @@
 
 // Own includes
 #include "ApplicationLauncher.h"
-#include "ApplicationView/ApplicationListView.h"
+#include "ResourceView/ResourceListView.h"
 #include "AvailableView.h"
 #include "ProgressView.h"
 #include "ViewSwitcher.h"
@@ -435,8 +435,8 @@ void MainWindow::changeView(const QModelIndex &index)
             QString originFilter = index.data(OriginFilterRole).toString();
             AbstractResource::State stateFilter = (AbstractResource::State)index.data(StateFilterRole).toInt();
 
-            view = new ApplicationListView(this, index);
-            ApplicationListView *appView = static_cast<ApplicationListView *>(view);
+            view = new ResourceListView(this, index);
+            ResourceListView *appView = static_cast<ResourceListView *>(view);
             appView->setStateFilter(stateFilter);
             appView->setOriginFilter(originFilter);
             appView->setCanShowTechnical(true);

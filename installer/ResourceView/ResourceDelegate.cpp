@@ -1,7 +1,7 @@
 /*
  *   Copyright (C) 2007 Ivan Cukic <ivan.cukic+kde@gmail.com>
  *   Copyright (C) 2008 Daniel Nicoletti <dantti85-pk@yahoo.com.br>
- *   Copyright (C) 2010 Jonathan Thomas <echidnaman@kubuntu.org>
+ *   Copyright (C) 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library/Lesser General Public License
@@ -19,7 +19,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include "ApplicationDelegate.h"
+#include "ResourceDelegate.h"
 
 // Qt includes
 #include <QApplication>
@@ -45,14 +45,14 @@
 #include <resources/ResourcesModel.h>
 
 // Own includes
-#include "ApplicationExtender.h"
+#include "ResourceExtender.h"
 
 #define FAV_ICON_SIZE 24
 #define EMBLEM_ICON_SIZE 8
 #define UNIVERSAL_PADDING 4
 #define MAIN_ICON_SIZE 32
 
-ApplicationDelegate::ApplicationDelegate(QAbstractItemView *parent)
+ResourceDelegate::ResourceDelegate(QAbstractItemView *parent)
   : KExtendableItemDelegate(parent),
     m_extender(0),
     m_showInfoButton(true)
@@ -74,7 +74,7 @@ ApplicationDelegate::ApplicationDelegate(QAbstractItemView *parent)
     m_ratingPainter = new KRatingPainter;
 }
 
-void ApplicationDelegate::paint(QPainter *painter,
+void ResourceDelegate::paint(QPainter *painter,
                         const QStyleOptionViewItem &option,
                         const QModelIndex &index) const
 {
@@ -220,7 +220,7 @@ void ApplicationDelegate::paint(QPainter *painter,
     painter->drawPixmap(option.rect.topLeft(), pixmap);
 }
 
-int ApplicationDelegate::calcItemHeight(const QStyleOptionViewItem &option) const
+int ResourceDelegate::calcItemHeight(const QStyleOptionViewItem &option) const
 {
     // Painting main column
     QStyleOptionViewItem local_option_title(option);
@@ -232,7 +232,7 @@ int ApplicationDelegate::calcItemHeight(const QStyleOptionViewItem &option) cons
     return textHeight + 3 * UNIVERSAL_PADDING;
 }
 
-bool ApplicationDelegate::editorEvent(QEvent *event,
+bool ResourceDelegate::editorEvent(QEvent *event,
                                     QAbstractItemModel *model,
                                     const QStyleOptionViewItem &option,
                                     const QModelIndex &index)
@@ -245,7 +245,7 @@ bool ApplicationDelegate::editorEvent(QEvent *event,
     return KExtendableItemDelegate::editorEvent(event, model, option, index);
 }
 
-QSize ApplicationDelegate::sizeHint(const QStyleOptionViewItem &option,
+QSize ResourceDelegate::sizeHint(const QStyleOptionViewItem &option,
         const QModelIndex &index ) const
 {
     int width = (index.column() == 0) ? index.data(Qt::SizeHintRole).toSize().width() : FAV_ICON_SIZE + 2 * UNIVERSAL_PADDING;
@@ -259,7 +259,7 @@ QSize ApplicationDelegate::sizeHint(const QStyleOptionViewItem &option,
     return ret;
 }
 
-void ApplicationDelegate::itemActivated(QModelIndex index)
+void ResourceDelegate::itemActivated(QModelIndex index)
 {
     if ((index == m_oldIndex && isExtended(index))) {
         return;
@@ -278,7 +278,7 @@ void ApplicationDelegate::itemActivated(QModelIndex index)
     AbstractResource *app = qobject_cast<AbstractResource*>(appVarient.value<QObject*>());
 
     QTreeView *view = static_cast<QTreeView*>(parent());
-    m_extender = new ApplicationExtender(view, app);
+    m_extender = new ResourceExtender(view, app);
     m_extender->setShowInfoButton(m_showInfoButton);
     connect(m_extender, SIGNAL(infoButtonClicked(AbstractResource*)),
             this, SIGNAL(infoButtonClicked(AbstractResource*)));
@@ -287,15 +287,13 @@ void ApplicationDelegate::itemActivated(QModelIndex index)
     m_oldIndex = index;
 }
 
-void ApplicationDelegate::invalidate()
+void ResourceDelegate::invalidate()
 {
     // If only contractAll was a Q_SLOT...
     contractAll();
 }
 
-void ApplicationDelegate::setShowInfoButton(bool show)
+void ResourceDelegate::setShowInfoButton(bool show)
 {
     m_showInfoButton = show;
 }
-
-#include "ApplicationDelegate.moc"

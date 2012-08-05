@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,8 +18,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONVIEWWIDGET_H
-#define APPLICATIONVIEWWIDGET_H
+#ifndef RESOURCEVIEWWIDGET_H
+#define RESOURCEVIEWWIDGET_H
 
 #include <QtCore/QPair>
 
@@ -34,17 +34,17 @@ class QTreeView;
 
 class KComboBox;
 
-class ApplicationDelegate;
-class ApplicationDetailsView;
+class ResourceDelegate;
+class ResourceDetailsView;
 class ResourcesModel;
 class ResourcesProxyModel;
 class Category;
 
-class ApplicationViewWidget : public AbstractViewBase
+class ResourceViewWidget : public AbstractViewBase
 {
     Q_OBJECT
 public:
-    ApplicationViewWidget(QWidget *parent);
+    ResourceViewWidget(QWidget *parent);
 
     void search(const QString &text);
 
@@ -59,8 +59,8 @@ private:
     QCheckBox *m_techCheckBox;
     KComboBox *m_sortCombo;
     QTreeView *m_treeView;
-    ApplicationDelegate *m_delegate;
-    ApplicationDetailsView *m_detailsView;
+    ResourceDelegate *m_delegate;
+    ResourceDetailsView *m_detailsView;
 
 private Q_SLOTS:
     void infoButtonClicked(AbstractResource *resource);

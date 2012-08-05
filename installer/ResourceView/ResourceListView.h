@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,55 +18,30 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef ADDONSWIDGET_H
-#define ADDONSWIDGET_H
+#ifndef RESOURCELISTVIEW_H
+#define RESOURCELISTVIEW_H
 
-#include <QtCore/QHash>
+#include <QModelIndex>
 
-#include <KVBox>
+#include <resources/AbstractResource.h>
 
-#include <resources/PackageState.h>
+#include "AbstractViewContainer.h"
 
-class QListView;
-class QModelIndex;
-class QPushButton;
-class QStandardItemModel;
-class QToolButton;
+class ResourceViewWidget;
 
-class AbstractResource;
-
-class AddonsWidget : public KVBox
+class ResourceListView : public AbstractViewContainer
 {
     Q_OBJECT
 public:
-    AddonsWidget(QWidget *parent);
+    ResourceListView(QWidget *parent, const QModelIndex &index);
 
-    void setResource(AbstractResource *resource);
+    void setStateFilter(AbstractResource::State state);
+    void setOriginFilter(const QString &origin);
+    void setShouldShowTechnical(bool show);
+    void setCanShowTechnical(bool canShow);
 
 private:
-    AbstractResource *m_resource;
-    QStandardItemModel *m_addonsModel;
-    QList<PackageState> m_availableAddons;
-    QHash<QString, bool> m_changedAddons;
-
-    QToolButton *m_expandButton;
-    QWidget *m_addonsWidget;
-    QListView *m_addonsView;
-    QPushButton *m_addonsRevertButton;
-    QPushButton *m_addonsApplyButton;
-
-public Q_SLOTS:
-    void repaintViewport();
-
-private Q_SLOTS:
-    void clearAddons();
-    void populateModel();
-    void expandButtonClicked();
-    void addonStateChanged(const QModelIndex &left, const QModelIndex &right);
-    void emitApplyButtonClicked();
-
-Q_SIGNALS:
-    void applyButtonClicked();
+    ResourceViewWidget *m_appViewWidget;
 };
 
 #endif

@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
- *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>                *
+ *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
+ *   Copyright © 2012      Aleix Pol Gonzalez <aleixpol@blue-systems.com>  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -19,7 +19,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "ApplicationDetailsWidget.h"
+#include "ResourceDetailsWidget.h"
 
 // Qt includes
 #include <QApplication>
@@ -87,7 +87,7 @@ enum class ScreenshotType : quint8
        Screenshot  = 2
 };
 
-ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent)
+ResourceDetailsWidget::ResourceDetailsWidget(QWidget *parent)
     : QScrollArea(parent)
     , m_screenshotFile(0)
 {
@@ -302,12 +302,12 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent)
     setWidget(widget);
 }
 
-ApplicationDetailsWidget::~ApplicationDetailsWidget()
+ResourceDetailsWidget::~ResourceDetailsWidget()
 {
     delete m_screenshotFile;
 }
 
-void ApplicationDetailsWidget::setResource(AbstractResource *resource)
+void ResourceDetailsWidget::setResource(AbstractResource *resource)
 {
     m_resource = resource;
     m_listener->setResource(m_resource);
@@ -395,7 +395,7 @@ void ApplicationDetailsWidget::setResource(AbstractResource *resource)
     fetchScreenshot(ScreenshotType::Thumbnail);
 }
 
-void ApplicationDetailsWidget::fetchScreenshot(ScreenshotType screenshotType)
+void ResourceDetailsWidget::fetchScreenshot(ScreenshotType screenshotType)
 {
     if (m_screenshotFile) {
         m_screenshotFile->deleteLater();
@@ -427,7 +427,7 @@ void ApplicationDetailsWidget::fetchScreenshot(ScreenshotType screenshotType)
     }
 }
 
-void ApplicationDetailsWidget::screenshotFetched(KJob *job)
+void ResourceDetailsWidget::screenshotFetched(KJob *job)
 {
     if (job->error()) {
         return;
@@ -440,7 +440,7 @@ void ApplicationDetailsWidget::screenshotFetched(KJob *job)
     connect(overlay, SIGNAL(destroyed(QObject*)), this, SLOT(overlayClosed()));
 }
 
-void ApplicationDetailsWidget::overlayClosed()
+void ResourceDetailsWidget::overlayClosed()
 {
     QObject *item = m_screenshotView->rootObject();
     connect(item, SIGNAL(thumbnailClicked()), this, SLOT(screenshotLabelClicked()));
@@ -451,14 +451,14 @@ void ApplicationDetailsWidget::overlayClosed()
     unsetCursor();
 }
 
-void ApplicationDetailsWidget::screenshotLabelClicked()
+void ResourceDetailsWidget::screenshotLabelClicked()
 {
     QObject *item = m_screenshotView->rootObject();
     disconnect(item, SIGNAL(thumbnailClicked()), this, SLOT(screenshotLabelClicked()));
     fetchScreenshot(ScreenshotType::Screenshot);
 }
 
-void ApplicationDetailsWidget::actionButtonClicked()
+void ResourceDetailsWidget::actionButtonClicked()
 {
     m_actionButton->hide();
     m_progressBar->show();
@@ -473,7 +473,7 @@ void ApplicationDetailsWidget::actionButtonClicked()
     }
 }
 
-void ApplicationDetailsWidget::cancelButtonClicked()
+void ResourceDetailsWidget::cancelButtonClicked()
 {
     emit cancelButtonClicked(m_resource);
 
@@ -481,7 +481,7 @@ void ApplicationDetailsWidget::cancelButtonClicked()
     m_actionButton->show();
 }
 
-void ApplicationDetailsWidget::fetchReviews(int page)
+void ResourceDetailsWidget::fetchReviews(int page)
 {
     if (!m_resource) {
 	return;
@@ -491,7 +491,7 @@ void ApplicationDetailsWidget::fetchReviews(int page)
 
 }
 
-void ApplicationDetailsWidget::populateReviews(AbstractResource *app, const QList<Review *> &reviews)
+void ResourceDetailsWidget::populateReviews(AbstractResource *app, const QList<Review *> &reviews)
 {
     if (app != m_resource) {
         return;
@@ -500,7 +500,7 @@ void ApplicationDetailsWidget::populateReviews(AbstractResource *app, const QLis
     m_reviewsWidget->addReviews(reviews);
 }
 
-void ApplicationDetailsWidget::addonsApplyButtonClicked()
+void ResourceDetailsWidget::addonsApplyButtonClicked()
 {
     m_actionButton->hide();
     m_progressBar->show();
@@ -508,28 +508,28 @@ void ApplicationDetailsWidget::addonsApplyButtonClicked()
     m_progressBar->setFormat(i18nc("@info:status Progress text when waiting", "Waiting"));
 }
 
-void ApplicationDetailsWidget::applicationRunningChanged(bool running)
+void ResourceDetailsWidget::applicationRunningChanged(bool running)
 {
     m_actionButton->setVisible(!running);
     m_progressBar->setVisible(running);
 }
 
-void ApplicationDetailsWidget::applicationDownloadingChanged(bool downloading)
+void ResourceDetailsWidget::applicationDownloadingChanged(bool downloading)
 {
     m_cancelButton->setVisible(downloading);
 }
 
-void ApplicationDetailsWidget::progressChanged()
+void ResourceDetailsWidget::progressChanged()
 {
     m_progressBar->setValue(m_listener->progress());
 }
 
-void ApplicationDetailsWidget::progressCommentChanged()
+void ResourceDetailsWidget::progressCommentChanged()
 {
     m_progressBar->setFormat(m_listener->comment());
 }
 
-void ApplicationDetailsWidget::updateActionButton()
+void ResourceDetailsWidget::updateActionButton()
 {
     if (!m_resource)
         return;
