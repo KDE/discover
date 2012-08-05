@@ -459,11 +459,6 @@ bool Application::canExecute() const
     return !executables().isEmpty();
 }
 
-QUrl Application::thumbnailUrl()
-{
-    return screenshotUrl(QApt::Thumbnail);
-}
-
 QString Application::section()
 {
     return package()->section();
