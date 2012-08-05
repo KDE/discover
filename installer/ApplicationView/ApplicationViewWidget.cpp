@@ -50,8 +50,7 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, AbstractResourcesB
         , m_detailsView(0)
 {
     m_searchable = true;
-    m_appModel = new ResourcesModel(this);
-    m_appModel->addResourcesBackend(backend); // FIXME: Won't do for multiple backend types
+    m_appModel = ResourcesModel::global();
     m_proxyModel = new ResourcesProxyModel(this);
     m_proxyModel->setSortRole(ResourcesModel::SortableRatingRole);
     m_proxyModel->setSourceModel(m_appModel);

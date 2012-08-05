@@ -45,6 +45,7 @@
 #include <Application.h>
 #include <ApplicationBackend.h>
 #include <HistoryView/HistoryView.h>
+#include <resources/ResourcesModel.h>
 
 // Own includes
 #include "ApplicationLauncher.h"
@@ -137,6 +138,9 @@ void MainWindow::initGUI()
 
 void MainWindow::initObject()
 {
+    ResourcesModel *resourcesModel = ResourcesModel::global();
+
+    // Create APT backend
     m_appBackend = new ApplicationBackend(this);
     connect(this, SIGNAL(backendReady(QApt::Backend*)),
             m_appBackend, SLOT(setBackend(QApt::Backend*)));
@@ -160,6 +164,13 @@ void MainWindow::initObject()
                this, SLOT(workerEvent(QApt::WorkerEvent)));
     disconnect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)),
                this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
+
+    // Other backends
+//    QList<AbstractResourcesBackend*> backends;
+
+//    for (AbstractResourcesBackend *backend : backends) {
+//        resourcesModel->addResourcesBackend(backend);
+//    }
 
     setActionsEnabled();
 }
@@ -244,6 +255,8 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
 
 void MainWindow::populateViews()
 {
+    ResourcesModel *resourcesModel = ResourcesModel::global();
+    resourcesModel->addResourcesBackend(m_appBackend);
     m_canExit = true; // APT is done reloading at this point
     QStringList originNames = m_appBackend->appOrigins().toList();
     QStringList originLabels;
