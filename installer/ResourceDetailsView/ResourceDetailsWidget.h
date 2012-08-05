@@ -106,12 +106,6 @@ private Q_SLOTS:
 public slots:
     void applicationRunningChanged(bool running);
     void applicationDownloadingChanged(bool downloading);
-
-Q_SIGNALS:
-    void installButtonClicked(AbstractResource *app);
-    void installButtonClicked(AbstractResource *app, const QHash<QString, bool> &);
-    void removeButtonClicked(AbstractResource *app);
-    void cancelButtonClicked(AbstractResource *app);
 };
 
 #endif

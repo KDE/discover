@@ -61,7 +61,7 @@
 #include <MuonStrings.h>
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/Review.h>
-#include <ReviewsBackend/ReviewsBackend.h>
+#include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <Transaction/TransactionListener.h>
 #include <mobile/src/mousecursor.h>
 #include <resources/AbstractResource.h>
@@ -322,7 +322,7 @@ void ResourceDetailsWidget::setResource(AbstractResource *resource)
     m_nameLabel->setText(QLatin1Literal("<h1>") % resource->name() % QLatin1Literal("</h1>"));
     m_shortDescLabel->setText(resource->comment());
 
-    ReviewsBackend *reviewsBackend = qobject_cast<ReviewsBackend*>(resource->backend()->reviewsBackend());
+    AbstractReviewsBackend *reviewsBackend = resource->backend()->reviewsBackend();
     Rating *rating = reviewsBackend->ratingForApplication(resource);
     if (rating) {
         m_ratingWidget->setRating(rating->rating());
@@ -465,17 +465,19 @@ void ResourceDetailsWidget::actionButtonClicked()
     m_progressBar->setValue(0);
     m_progressBar->setFormat(i18nc("@info:status Progress text when waiting", "Waiting"));
 
+    AbstractResourcesBackend *backend = m_resource->backend();
     // TODO: update packages
     if (m_resource->isInstalled()) {
-        emit removeButtonClicked(m_resource);
+        backend->removeApplication(m_resource);
     } else {
-        emit installButtonClicked(m_resource);
+        backend->installApplication(m_resource);
     }
 }
 
 void ResourceDetailsWidget::cancelButtonClicked()
 {
-    emit cancelButtonClicked(m_resource);
+    AbstractResourcesBackend *backend = m_resource->backend();
+    backend->cancelTransaction(m_resource);
 
     m_progressBar->hide();
     m_actionButton->show();

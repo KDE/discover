@@ -44,6 +44,7 @@
 // Libmuon includes
 #include <ApplicationBackend/Application.h>
 #include <ApplicationBackend/ApplicationBackend.h>
+#include <KNSBackend/KNSBackend.h>
 #include <HistoryView/HistoryView.h>
 #include <resources/ResourcesModel.h>
 
@@ -171,11 +172,13 @@ void MainWindow::initObject()
                this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
 
     // Other backends
-//    QList<AbstractResourcesBackend*> backends;
+    QList<AbstractResourcesBackend*> backends;
 
-//    for (AbstractResourcesBackend *backend : backends) {
-//        resourcesModel->addResourcesBackend(backend);
-//    }
+    backends += new KNSBackend("comic.knsrc", "face-smile-big", this);
+
+    for (AbstractResourcesBackend *backend : backends) {
+        resourcesModel->addResourcesBackend(backend);
+    }
 
     setActionsEnabled();
 }
