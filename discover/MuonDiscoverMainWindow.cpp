@@ -65,7 +65,6 @@
 #include "ReviewsModel.h"
 #include "ApplicationAddonsModel.h"
 #include "ScreenshotsModel.h"
-#include "KNSBackend/KNSBackend.h"
 #include <libmuon/MuonDataSources.h>
 
 QML_DECLARE_TYPE(ResourcesModel)

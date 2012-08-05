@@ -19,13 +19,16 @@
 
 #include "BackendsSingleton.h"
 #include "MuonDiscoverMainWindow.h"
-#include "KNSBackend/KNSBackend.h"
 #include <resources/ResourcesModel.h>
 
 #ifdef QAPT_ENABLED
 #include <ApplicationBackend/ApplicationBackend.h>
 #include <QAptIntegration.h>
 #include <QTimer>
+#endif
+
+#ifdef ATTICA_ENABLED
+#include <KNSBackend/KNSBackend.h>
 #endif
 
 BackendsSingleton* BackendsSingleton::m_self = 0;
@@ -53,8 +56,11 @@ ResourcesModel* BackendsSingleton::appsModel()
 void BackendsSingleton::initialize(MuonDiscoverMainWindow* w)
 {
     QList<AbstractResourcesBackend*> backends;
+
+#ifdef ATTICA_ENABLED
     backends += new KNSBackend("comic.knsrc", "face-smile-big", this);
     backends += new KNSBackend("plasmoids.knsrc", "plasma", this);
+#endif
     
 #ifdef QAPT_ENABLED
     ApplicationBackend* applicationBackend = new ApplicationBackend(this);

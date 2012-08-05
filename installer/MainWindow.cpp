@@ -44,9 +44,12 @@
 // Libmuon includes
 #include <ApplicationBackend/Application.h>
 #include <ApplicationBackend/ApplicationBackend.h>
-#include <KNSBackend/KNSBackend.h>
 #include <HistoryView/HistoryView.h>
 #include <resources/ResourcesModel.h>
+
+#ifdef ATTICA_ENABLED
+#include <KNSBackend/KNSBackend.h>
+#endif
 
 // Own includes
 #include "ApplicationLauncher.h"
@@ -174,8 +177,12 @@ void MainWindow::initObject()
     // Other backends
     QList<AbstractResourcesBackend*> backends;
 
+#ifdef ATTICA_ENABLED
     backends += new KNSBackend("comic.knsrc", "face-smile-big", this);
     backends += new KNSBackend("plasmoids.knsrc", "plasma", this);
+#else
+    qDebug() << "ya dun goofed.";
+#endif
 
     for (AbstractResourcesBackend *backend : backends) {
         resourcesModel->addResourcesBackend(backend);

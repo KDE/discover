@@ -43,11 +43,8 @@ set(muon_LIB_SRCS
     resources/PackageState.cpp
     resources/AbstractBackendUpdater.cpp
     resources/ResourcesUpdatesModel.cpp
-    KNSBackend/KNSBackend.cpp
-    KNSBackend/KNSResource.cpp
-    KNSBackend/KNSReviews.cpp
-    KNSBackend/KNSUpdater.cpp
 )
+
 if(QAPT_FOUND)
     set(muon_LIB_SRCS ${muon_LIB_SRCS}
         ApplicationBackend/Application.cpp
@@ -65,6 +62,15 @@ if(QAPT_FOUND)
     )
     qt4_add_dbus_interface(muon_LIB_SRCS ReviewsBackend/ubuntu_sso_dbus_interface.xml ubuntu_sso -i "ReviewsBackend/LoginMetaTypes.h")
 endif(QAPT_FOUND)
+
+if(LIBATTICA_FOUND)
+    set(muon_LIB_SRCS ${muon_LIB_SRCS}
+        KNSBackend/KNSBackend.cpp
+        KNSBackend/KNSResource.cpp
+        KNSBackend/KNSReviews.cpp
+        KNSBackend/KNSUpdater.cpp
+    )
+endif(LIBATTICA_FOUND)
 
 kde4_add_kcfg_files(muon_LIB_SRCS GENERATE_MOC MuonDataSources.kcfgc)
 kde4_add_library(muonprivate SHARED ${muon_LIB_SRCS})
@@ -89,12 +95,11 @@ target_link_libraries(muonprivate
     ${qjson_LIBRARIES}
     ${QTOAUTH_LIBRARY}
     ${KDE4_KNEWSTUFF3_LIBS}
-    attica
 )
-    
-if (ENABLE_QZEITGEIST)
-    target_link_libraries(muonprivate ${QZEITGEIST_LIBRARY})
-endif (ENABLE_QZEITGEIST)
+
+if(LIBATTICA_FOUND)
+    target_link_libraries(muonprivate ${LIBATTICA_LIBRARIES})
+endif(LIBATTICA_FOUND)
 
 file(GLOB muon_QMLS "${CMAKE_CURRENT_SOURCE_DIR}/mobile/qml/*.qml")
 

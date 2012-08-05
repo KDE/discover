@@ -20,6 +20,10 @@ if(QAPT_FOUND)
     add_definitions(-DQAPT_ENABLED)
 endif(QAPT_FOUND)
 
+if (LIBATTICA_FOUND)
+    add_definitions(-DATTICA_ENABLED)
+endif (LIBATTICA_FOUND)
+
 qt4_add_resources(muon_discover_SRCS resources.qrc)
 
 kde4_add_executable(muon-discover ${muon_discover_SRCS})
@@ -29,7 +33,6 @@ target_link_libraries(muon-discover muonprivate
                                      ${KDE4_PLASMA_LIBS}
                                      kdeclarative
                                      ${QAPT_LIBRARY}
-                                     ${QZEITGEIST_LIBRARY}
                                      ${QT_QTOPENGL_LIBRARY}
                                      ${QT_QTDECLARATIVE_LIBRARY}
 )

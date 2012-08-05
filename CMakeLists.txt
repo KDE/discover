@@ -6,10 +6,10 @@ set(KDE_MIN_VERSION "4.7.0")
 find_package(KDE4 ${KDE_MIN_VERSION} REQUIRED)
 find_package(QApt QUIET)
 find_package(DebconfKDE QUIET)
-find_package(QZeitgeist QUIET)
 find_package(QtOAuth REQUIRED)
 find_package(QCA2 REQUIRED) #required by QtOAuth
 find_package(QJSON REQUIRED)
+find_package(LibAttica QUIET)
 
 include (KDE4Defaults)
 
@@ -27,5 +27,11 @@ if(QAPT_FOUND)
     add_subdirectory(kded)
 endif(QAPT_FOUND)
 add_subdirectory(discover)
+
+macro_log_feature(QAPT_FOUND "LibQApt" "Qt wrapper around the libapt-pkg library"
+                  "http://www.kde.org" FALSE "" "Required to build the APT backend")
+
+macro_log_feature(LIBATTICA_FOUND "LibAttica" "Qt library that implements the Open Collaboration Services API"
+                  "http://www.kde.org" FALSE "" "Required to build the KNewStuff3 backend")
 
 macro_display_feature_log()
