@@ -29,7 +29,7 @@
 #include <attica/content.h>
 #include <QDebug>
 
-Q_DECLARE_METATYPE(AbstractResource*);
+Q_DECLARE_METATYPE(AbstractResource*)
 
 KNSReviews::KNSReviews(KNSBackend* backend)
     : AbstractReviewsBackend(backend)
