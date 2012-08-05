@@ -21,19 +21,16 @@
 #ifndef APPLICATIONDETAILSVIEW_H
 #define APPLICATIONDETAILSVIEW_H
 
-#include <LibQApt/Package>
-
 #include "../AbstractViewBase.h"
 
 class AbstractResource;
-class AbstractResourcesBackend;
 class ApplicationDetailsWidget;
 
 class ApplicationDetailsView : public AbstractViewBase
 {
     Q_OBJECT
 public:
-    ApplicationDetailsView(QWidget *parent, AbstractResourcesBackend *backend);
+    ApplicationDetailsView(QWidget *parent);
 
     void setResource(AbstractResource *resource);
 

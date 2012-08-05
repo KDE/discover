@@ -32,16 +32,14 @@
 // Libmuon includes
 #include <Category/Category.h>
 #include <Category/CategoryModel.h>
-#include <resources/AbstractResourcesBackend.h>
 
 // Own includes
 #include "../ApplicationView/ApplicationViewWidget.h"
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
 #include "CategoryView.h"
 
-CategoryViewWidget::CategoryViewWidget(QWidget *parent, AbstractResourcesBackend *backend)
+CategoryViewWidget::CategoryViewWidget(QWidget *parent)
     : AbstractViewBase(parent)
-    , m_backend(backend)
     , m_searchView(0)
 {
     m_searchable = true;
@@ -86,7 +84,7 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
 
     switch (index.data(CategoryModel::CategoryTypeRole).toInt()) {
     case CategoryModel::CategoryType: { // Displays the apps in a category
-        m_subView = new ApplicationViewWidget(this, m_backend);
+        m_subView = new ApplicationViewWidget(this);
 
         ApplicationViewWidget *appView = static_cast<ApplicationViewWidget *>(m_subView);
         appView->setFiltersFromCategory(category);
@@ -96,7 +94,7 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
     }
         break;
     case CategoryModel::SubCatType: { // Displays the subcategories of a category
-        m_subView = new CategoryViewWidget(this, m_backend);
+        m_subView = new CategoryViewWidget(this);
 
         CategoryViewWidget *subCatView = static_cast<CategoryViewWidget *>(m_subView);
         subCatView->setCategories(category->subCategories(), category->name(),
@@ -124,7 +122,7 @@ void CategoryViewWidget::search(const QString &text)
     }
 
     if (!m_searchView) {
-        m_searchView = new ApplicationViewWidget(this, m_backend);
+        m_searchView = new ApplicationViewWidget(this);
         m_searchView->setTitle(i18nc("@label", "Search Results"));
         m_searchView->setIcon(KIcon("applications-other"));
 

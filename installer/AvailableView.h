@@ -30,7 +30,7 @@ class AvailableView : public AbstractViewContainer
 {
     Q_OBJECT
 public:
-    AvailableView(QWidget *parent, AbstractResourcesBackend *backend);
+    AvailableView(QWidget *parent);
 
 private:
     CategoryViewWidget *m_categoryViewWidget;

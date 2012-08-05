@@ -80,6 +80,7 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* resources)
     connect(resources, SIGNAL(reloadFinished()), SLOT(resetCaller()));
     connect(resources, SIGNAL(updatesCountChanged()), SIGNAL(updatesCountChanged()));
     connect(resources, SIGNAL(allDataChanged()), SLOT(updateCaller()));
+    connect(resources, SIGNAL(searchInvalidated()), SIGNAL(searchInvalidated()));
     
     connect(resources, SIGNAL(transactionAdded(Transaction*)), SIGNAL(transactionAdded(Transaction*)));
     connect(resources, SIGNAL(transactionCancelled(Transaction*)), SIGNAL(transactionCancelled(Transaction*)));

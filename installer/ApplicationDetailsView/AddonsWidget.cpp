@@ -36,12 +36,13 @@
 // Libmuon includes
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/AbstractResource.h>
+#include <resources/ResourcesModel.h>
 
 //TODO: Port to the ApplicationAddonsModel?
 
-AddonsWidget::AddonsWidget(QWidget *parent, AbstractResourcesBackend *backend)
+AddonsWidget::AddonsWidget(QWidget *parent)
         : KVBox(parent)
-        , m_backend(backend)
+        , m_resource(nullptr)
 {
     QWidget *headerWidget = new QWidget(this);
     QHBoxLayout *headerLayout = new QHBoxLayout(headerWidget);
@@ -102,13 +103,11 @@ AddonsWidget::AddonsWidget(QWidget *parent, AbstractResourcesBackend *backend)
 
     connect(m_addonsModel, SIGNAL(dataChanged(QModelIndex,QModelIndex)),
             this, SLOT(addonStateChanged(QModelIndex,QModelIndex)));
-    // Clear addons when a reload starts
-    connect(backend, SIGNAL(reloadStarted()), this, SLOT(clearAddons()));
-    connect(backend, SIGNAL(reloadFinished()), this, SLOT(populateModel()));
 }
 
 void AddonsWidget::clearAddons()
 {
+    m_resource = nullptr;
     m_changedAddons.clear();
     m_availableAddons.clear();
     m_addonsModel->clear();
@@ -116,7 +115,10 @@ void AddonsWidget::clearAddons()
 
 void AddonsWidget::setResource(AbstractResource *resource)
 {
-    m_availableAddons = resource->addonsInformation();
+    m_resource = resource;
+
+    // Clear addons when a reload starts
+    connect(m_resource->backend(), SIGNAL(reloadStarted()), this, SLOT(clearAddons()));
 
     populateModel();
 }
@@ -131,11 +133,13 @@ void AddonsWidget::populateModel()
 {
     m_addonsModel->clear();
 
+    m_availableAddons = m_resource->addonsInformation();
+
     for (const PackageState &addon : m_availableAddons) {
         // Check if we have an application for the addon
         AbstractResource *addonResource = 0;
 
-        for (AbstractResource *resource : m_backend->allResources()) {
+        for (AbstractResource *resource : m_resource->backend()->allResources()) {
             if (!resource)
                 continue;
 
@@ -229,7 +233,10 @@ void AddonsWidget::addonStateChanged(const QModelIndex &left, const QModelIndex 
 
 void AddonsWidget::emitApplyButtonClicked()
 {
-    emit applyButtonClicked(m_changedAddons);
+    ResourcesModel *resourcesModel = ResourcesModel::global();
+    resourcesModel->installApplication(m_resource, m_changedAddons);
+
+    emit applyButtonClicked();
 }
 
 

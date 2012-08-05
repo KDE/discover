@@ -43,9 +43,8 @@
 #include "../ApplicationDetailsView/ApplicationDetailsView.h"
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
 
-ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, AbstractResourcesBackend *backend)
+ApplicationViewWidget::ApplicationViewWidget(QWidget *parent)
         : AbstractViewBase(parent)
-        , m_backend(backend)
         , m_canShowTechnical(false)
         , m_detailsView(0)
 {
@@ -169,18 +168,10 @@ void ApplicationViewWidget::infoButtonClicked(AbstractResource *resource)
     }
 
     // Create one if not
-    m_detailsView = new ApplicationDetailsView(this, m_backend);
+    m_detailsView = new ApplicationDetailsView(this);
     m_detailsView->setResource(resource);
     m_currentPair.first = m_detailsView;
 
-    connect(m_detailsView, SIGNAL(installButtonClicked(AbstractResource*)),
-            m_backend, SLOT(installApplication(AbstractResource*)));
-    connect(m_detailsView, SIGNAL(installButtonClicked(AbstractResource*,QHash<QString,bool>)),
-            m_backend, SLOT(installApplication(AbstractResource*,QHash<QString,bool>)));
-    connect(m_detailsView, SIGNAL(removeButtonClicked(AbstractResource*)),
-            m_backend, SLOT(removeApplication(AbstractResource*)));
-    connect(m_detailsView, SIGNAL(cancelButtonClicked(AbstractResource*)),
-            m_backend, SLOT(cancelTransaction(AbstractResource*)));
     connect(m_detailsView, SIGNAL(destroyed(QObject*)),
             this, SLOT(onSubViewDestroyed()));
 

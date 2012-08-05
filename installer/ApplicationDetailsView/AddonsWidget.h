@@ -34,18 +34,17 @@ class QStandardItemModel;
 class QToolButton;
 
 class AbstractResource;
-class AbstractResourcesBackend;
 
 class AddonsWidget : public KVBox
 {
     Q_OBJECT
 public:
-    AddonsWidget(QWidget *parent, AbstractResourcesBackend *backend);
+    AddonsWidget(QWidget *parent);
 
     void setResource(AbstractResource *resource);
 
 private:
-    AbstractResourcesBackend *m_backend;
+    AbstractResource *m_resource;
     QStandardItemModel *m_addonsModel;
     QList<PackageState> m_availableAddons;
     QHash<QString, bool> m_changedAddons;
@@ -67,7 +66,7 @@ private Q_SLOTS:
     void emitApplyButtonClicked();
 
 Q_SIGNALS:
-    void applyButtonClicked(const QHash<QString, bool>& addons);
+    void applyButtonClicked();
 };
 
 #endif

@@ -30,15 +30,15 @@
 
 // Own includes
 #include <Category/Category.h>
-#include <resources/AbstractResourcesBackend.h>
+#include <resources/ResourcesModel.h>
 #include "BreadcrumbWidget/BreadcrumbWidget.h"
 #include "CategoryView/CategoryViewWidget.h"
 
-AvailableView::AvailableView(QWidget *parent, AbstractResourcesBackend *backend)
+AvailableView::AvailableView(QWidget *parent)
         : AbstractViewContainer(parent)
 {
 
-    m_categoryViewWidget = new CategoryViewWidget(m_viewStack, backend);
+    m_categoryViewWidget = new CategoryViewWidget(m_viewStack);
 
     QString rootName = i18n("Get Software");
     KIcon rootIcon = KIcon("applications-other");
@@ -48,7 +48,8 @@ AvailableView::AvailableView(QWidget *parent, AbstractResourcesBackend *backend)
     m_viewStack->addWidget(m_categoryViewWidget);
     m_viewStack->setCurrentWidget(m_categoryViewWidget);
 
-    connect(backend, SIGNAL(searchInvalidated()),
+    ResourcesModel *resourcesModel = ResourcesModel::global();
+    connect(resourcesModel, SIGNAL(searchInvalidated()),
             m_breadcrumbWidget, SLOT(startSearch()));
     connect(m_categoryViewWidget, SIGNAL(registerNewSubView(AbstractViewBase*)),
             this, SLOT(registerNewSubView(AbstractViewBase*)));

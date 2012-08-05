@@ -41,7 +41,6 @@ class KTemporaryFile;
 
 class AddonsWidget;
 class AbstractResource;
-class AbstractResourcesBackend;
 class ClickableLabel;
 class TransactionListener;
 class Review;
@@ -54,14 +53,13 @@ class ApplicationDetailsWidget : public QScrollArea
 {
     Q_OBJECT
 public:
-    explicit ApplicationDetailsWidget(QWidget *parent, AbstractResourcesBackend *backend);
+    explicit ApplicationDetailsWidget(QWidget *parent);
     ~ApplicationDetailsWidget();
 
     void setResource(AbstractResource *resource);
 
 private:
     AbstractResource *m_resource;
-    AbstractResourcesBackend *m_backend;
 
     QLabel *m_iconLabel;
     QLabel *m_nameLabel;
@@ -100,7 +98,7 @@ private Q_SLOTS:
     void cancelButtonClicked();
     void fetchReviews(int page);
     void populateReviews(AbstractResource* app, const QList< Review* >& reviews);
-    void addonsApplyButtonClicked(const QHash< QString, bool >& changedAddons);
+    void addonsApplyButtonClicked();
     void progressCommentChanged();
     void progressChanged();
     void updateActionButton();

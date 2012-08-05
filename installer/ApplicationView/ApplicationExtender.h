@@ -29,8 +29,6 @@
 class QProgressBar;
 class QPushButton;
 
-class AbstractResourcesBackend;
-
 class ApplicationExtender : public QWidget
 {
     Q_OBJECT

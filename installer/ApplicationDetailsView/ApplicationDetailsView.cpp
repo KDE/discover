@@ -33,10 +33,10 @@
 #include "ApplicationDetailsWidget.h"
 #include "../BreadcrumbWidget/BreadcrumbItem.h"
 
-ApplicationDetailsView::ApplicationDetailsView(QWidget *parent, AbstractResourcesBackend *backend)
+ApplicationDetailsView::ApplicationDetailsView(QWidget *parent)
     : AbstractViewBase(parent)
 {
-    m_detailsWidget = new ApplicationDetailsWidget(this, backend);
+    m_detailsWidget = new ApplicationDetailsWidget(this);
 
     m_layout->addWidget(m_detailsWidget);
 

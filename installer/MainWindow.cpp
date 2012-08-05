@@ -435,7 +435,7 @@ void MainWindow::changeView(const QModelIndex &index)
             QString originFilter = index.data(OriginFilterRole).toString();
             AbstractResource::State stateFilter = (AbstractResource::State)index.data(StateFilterRole).toInt();
 
-            view = new ApplicationListView(this, m_appBackend, index);
+            view = new ApplicationListView(this, index);
             ApplicationListView *appView = static_cast<ApplicationListView *>(view);
             appView->setStateFilter(stateFilter);
             appView->setOriginFilter(originFilter);
@@ -446,7 +446,7 @@ void MainWindow::changeView(const QModelIndex &index)
         }
         break;
         case CatView:
-            view = new AvailableView(this, m_appBackend);
+            view = new AvailableView(this);
             break;
         case History:
             view = new HistoryView(this);

@@ -29,17 +29,15 @@
 #include <KSeparator>
 
 // Libmuon includes
-#include <resources/AbstractResourcesBackend.h>
+#include <resources/ResourcesModel.h>
 
 // Own includes
 #include "ApplicationViewWidget.h"
 
-ApplicationListView::ApplicationListView(QWidget *parent, AbstractResourcesBackend *backend,
-                                         const QModelIndex &index)
+ApplicationListView::ApplicationListView(QWidget *parent, const QModelIndex &index)
         : AbstractViewContainer(parent)
-        , m_backend(backend)
 {
-    m_appViewWidget = new ApplicationViewWidget(this, backend);
+    m_appViewWidget = new ApplicationViewWidget(this);
     m_appViewWidget->setTitle(index.data(Qt::DisplayRole).toString());
     m_appViewWidget->setIcon(index.data(Qt::DecorationRole).value<QIcon>());
     m_breadcrumbWidget->setRootItem(m_appViewWidget->breadcrumbItem());
@@ -47,7 +45,8 @@ ApplicationListView::ApplicationListView(QWidget *parent, AbstractResourcesBacke
     m_viewStack->addWidget(m_appViewWidget);
     m_viewStack->setCurrentWidget(m_appViewWidget);
 
-    connect(backend, SIGNAL(searchInvalidated()),
+    ResourcesModel *resourcesModel = ResourcesModel::global();
+    connect(resourcesModel, SIGNAL(searchInvalidated()),
             m_breadcrumbWidget, SLOT(startSearch()));
     connect(m_appViewWidget, SIGNAL(registerNewSubView(AbstractViewBase*)),
             this, SLOT(registerNewSubView(AbstractViewBase*)));

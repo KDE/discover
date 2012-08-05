@@ -87,9 +87,8 @@ enum class ScreenshotType : quint8
        Screenshot  = 2
 };
 
-ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, AbstractResourcesBackend *backend)
+ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent)
     : QScrollArea(parent)
-    , m_backend(backend)
     , m_screenshotFile(0)
 {
     qmlRegisterType<QGraphicsDropShadowEffect>("Effects",1,0,"DropShadow");
@@ -170,7 +169,6 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, AbstractReso
 
     m_actionButton = new QPushButton(actionButtonWidget);
     connect(m_actionButton, SIGNAL(clicked()), this, SLOT(actionButtonClicked()));
-    connect(m_backend, SIGNAL(reloadFinished()), this, SLOT(updateActionButton()));
 
     m_progressBar = new QProgressBar(actionButtonWidget);
     m_progressBar->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Preferred);
@@ -224,11 +222,11 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, AbstractReso
     bodyLayout->addWidget(m_screenshotView);
     m_screenshotView->show();
 
-    m_addonsWidget = new AddonsWidget(widget, m_backend);
-
-    connect(m_addonsWidget, SIGNAL(applyButtonClicked(QHash<QString,bool>)),
-            this, SLOT(addonsApplyButtonClicked(QHash<QString,bool>)));
+    m_addonsWidget = new AddonsWidget(widget);
     m_addonsWidget->hide();
+
+    connect(m_addonsWidget, SIGNAL(applyButtonClicked()),
+            this, SLOT(addonsApplyButtonClicked()));
 
     // Technical details
     QWidget *detailsWidget = new QWidget(widget);
@@ -295,7 +293,6 @@ ApplicationDetailsWidget::ApplicationDetailsWidget(QWidget *parent, AbstractReso
     layout->addWidget(verticalSpacer);
     
     m_listener = new TransactionListener(this);
-    m_listener->setBackend(m_backend);
 
     connect(m_listener, SIGNAL(progressChanged()), SLOT(progressChanged()));
     connect(m_listener, SIGNAL(commentChanged()), SLOT(progressCommentChanged()));
@@ -314,6 +311,7 @@ void ApplicationDetailsWidget::setResource(AbstractResource *resource)
 {
     m_resource = resource;
     m_listener->setResource(m_resource);
+    m_listener->setBackend(m_resource->backend());
 
     Application *app = qobject_cast<Application *>(resource);
 
@@ -324,7 +322,7 @@ void ApplicationDetailsWidget::setResource(AbstractResource *resource)
     m_nameLabel->setText(QLatin1Literal("<h1>") % resource->name() % QLatin1Literal("</h1>"));
     m_shortDescLabel->setText(resource->comment());
 
-    ReviewsBackend *reviewsBackend = qobject_cast<ReviewsBackend*>(m_backend->reviewsBackend());
+    ReviewsBackend *reviewsBackend = qobject_cast<ReviewsBackend*>(resource->backend()->reviewsBackend());
     Rating *rating = reviewsBackend->ratingForApplication(resource);
     if (rating) {
         m_ratingWidget->setRating(rating->rating());
@@ -347,6 +345,8 @@ void ApplicationDetailsWidget::setResource(AbstractResource *resource)
         m_menuPathWidget->hide();
     }
 
+    connect(resource->backend(), SIGNAL(reloadFinished()),
+            this, SLOT(updateActionButton()));
     updateActionButton();
 
     m_longDescLabel->setText(resource->longDescription());
@@ -487,7 +487,7 @@ void ApplicationDetailsWidget::fetchReviews(int page)
 	return;
     }
 
-    m_backend->reviewsBackend()->fetchReviews(m_resource, page);
+    m_resource->backend()->reviewsBackend()->fetchReviews(m_resource, page);
 
 }
 
@@ -500,10 +500,8 @@ void ApplicationDetailsWidget::populateReviews(AbstractResource *app, const QLis
     m_reviewsWidget->addReviews(reviews);
 }
 
-void ApplicationDetailsWidget::addonsApplyButtonClicked(const QHash<QString, bool> &changedAddons)
+void ApplicationDetailsWidget::addonsApplyButtonClicked()
 {
-    emit installButtonClicked(m_resource, changedAddons);
-
     m_actionButton->hide();
     m_progressBar->show();
     m_progressBar->setValue(0);
@@ -546,4 +544,6 @@ void ApplicationDetailsWidget::updateActionButton()
         m_actionButton->setText(i18nc("@action", "Remove"));
         m_actionButton->setIcon(KIcon("edit-delete"));
     }
+
+    m_addonsWidget->setResource(m_resource);
 }

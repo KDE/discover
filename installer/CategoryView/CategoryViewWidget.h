@@ -31,7 +31,6 @@ class QIcon;
 class QStandardItemModel;
 class QString;
 
-class AbstractResourcesBackend;
 class Category;
 class CategoryView;
 
@@ -41,15 +40,14 @@ class CategoryViewWidget : public AbstractViewBase
 {
     Q_OBJECT
 public:
-    CategoryViewWidget(QWidget *parent, AbstractResourcesBackend *backend);
+    CategoryViewWidget(QWidget *parent);
 
     void setCategories(const QList<Category *> &categoryList,
                        const QString &rootText,
                        const QIcon &rootIcon);
     void search(const QString &text);
 
-private:
-    AbstractResourcesBackend *m_backend;
+private:\
     CategoryModel *m_categoryModel;
     QHash<QModelIndex, AbstractViewBase *> m_subViewHash;
 

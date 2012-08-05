@@ -85,6 +85,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
     signals:
         void backendsChanged();
         void updatesCountChanged();
+        void searchInvalidated();
 
         //Transactions forwarding
         void transactionProgressed(Transaction *transaction, int progress);
