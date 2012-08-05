@@ -175,6 +175,7 @@ void MainWindow::initObject()
     QList<AbstractResourcesBackend*> backends;
 
     backends += new KNSBackend("comic.knsrc", "face-smile-big", this);
+    backends += new KNSBackend("plasmoids.knsrc", "plasma", this);
 
     for (AbstractResourcesBackend *backend : backends) {
         resourcesModel->addResourcesBackend(backend);

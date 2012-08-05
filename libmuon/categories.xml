@@ -559,4 +559,14 @@
     </Include>
   </Menu>
 
+  <Menu>
+    <Name>Plasma Desktop Widgets</Name>
+    <Icon>plasma</Icon>
+    <Include>
+      <And>
+        <Category>plasmoids.knsrc</Category>
+      </And>
+    </Include>
+  </Menu>
+
 </Menu>

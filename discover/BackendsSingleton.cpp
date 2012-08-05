@@ -54,6 +54,7 @@ void BackendsSingleton::initialize(MuonDiscoverMainWindow* w)
 {
     QList<AbstractResourcesBackend*> backends;
     backends += new KNSBackend("comic.knsrc", "face-smile-big", this);
+    backends += new KNSBackend("plasmoids.knsrc", "plasma", this);
     
 #ifdef QAPT_ENABLED
     ApplicationBackend* applicationBackend = new ApplicationBackend(this);
