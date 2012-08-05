@@ -75,9 +75,11 @@ Application::Application(QApt::Package *package, QApt::Backend *backend)
     if (m_package->architecture() != m_backend->nativeArchitecture())
         m_packageName.append(QByteArray(":") + m_package->architecture().toLatin1());
 
-    if (!m_package->controlField(QLatin1String("Appname")).isEmpty()) {
-        m_isExtrasApp = true;
-        m_isTechnical = false;
+    if (m_package->origin() == QLatin1String("LP-PPA-app-review-board")) {
+        if (!m_package->controlField(QLatin1String("Appname")).isEmpty()) {
+            m_isExtrasApp = true;
+            m_isTechnical = false;
+        }
     }
 }
 
