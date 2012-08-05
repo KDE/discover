@@ -47,17 +47,6 @@
 //QJSON includes
 #include <qjson/parser.h>
 
-//QtZeitgeist includes
-#include "HaveQZeitgeist.h"
-#ifdef HAVE_QZEITGEIST
-#include <QtZeitgeist/DataModel/Event>
-#include <QtZeitgeist/DataModel/TimeRange>
-#include <QtZeitgeist/Log>
-#include <QtZeitgeist/Interpretation>
-#include <QtZeitgeist/Manifestation>
-#include <QtZeitgeist/QtZeitgeist>
-#endif
-
 Application::Application(const QString& fileName, QApt::Backend* backend)
         : AbstractResource(0)
         , m_backend(backend)
