@@ -93,7 +93,7 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, AbstractResourcesB
     m_treeView->setRootIsDecorated(false);
 
     m_treeView->setModel(m_proxyModel);
-    m_delegate = new ApplicationDelegate(m_treeView, m_backend);
+    m_delegate = new ApplicationDelegate(m_treeView);
     m_treeView->setItemDelegate(m_delegate);
 
     connect(m_proxyModel, SIGNAL(invalidated()),
@@ -106,14 +106,6 @@ ApplicationViewWidget::ApplicationViewWidget(QWidget *parent, AbstractResourcesB
 
     connect(m_delegate, SIGNAL(infoButtonClicked(AbstractResource*)),
             this, SLOT(infoButtonClicked(AbstractResource*)));
-    connect(m_delegate, SIGNAL(installButtonClicked(AbstractResource*)),
-            m_backend, SLOT(installApplication(AbstractResource*)));
-    connect(m_delegate, SIGNAL(removeButtonClicked(AbstractResource*)),
-            m_backend, SLOT(removeApplication(AbstractResource*)));
-    connect(m_delegate, SIGNAL(cancelButtonClicked(AbstractResource*)),
-            m_backend, SLOT(cancelTransaction(AbstractResource*)));
-    connect(m_backend, SIGNAL(reloadFinished()),
-            m_proxyModel, SLOT(refreshSearch()));
 
     m_treeView->setSortingEnabled(true);
 

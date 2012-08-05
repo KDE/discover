@@ -65,6 +65,7 @@ private:
     QStandardItem *m_progressItem;
 
     QVector<KService::Ptr> m_launchableApps;
+    int m_transactionCount;
 
 private Q_SLOTS:
     void initGUI();
@@ -86,6 +87,8 @@ private Q_SLOTS:
     void showAppLauncher();
     void onAppLauncherClosed();
     void clearMessageActions();
+    void transactionAdded();
+    void transactionRemoved();
     void addProgressItem();
     void removeProgressItem();
 };

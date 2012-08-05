@@ -27,30 +27,29 @@
 #include <KDebug>
 
 #include <resources/AbstractResourcesBackend.h>
-#include <Transaction/TransactionModel.h>
+#include <resources/ResourcesModel.h>
+#include <resources/ResourcesProxyModel.h>
 
 #include "ApplicationView/ApplicationDelegate.h"
 
-ProgressView::ProgressView(QWidget *parent, AbstractResourcesBackend *backend)
+ProgressView::ProgressView(QWidget *parent)
     : KVBox(parent)
 {
     QLabel *headerLabel = new QLabel(this);
     headerLabel->setText(i18nc("@info", "<title>In Progress</title>"));
     headerLabel->setAlignment(Qt::AlignLeft);
 
-    m_progressModel = new TransactionModel(this);
-    m_progressModel->setBackend(backend);
-    m_progressModel->addTransactions(backend->transactions());
+    ResourcesModel *model = ResourcesModel::global();
+    ResourcesProxyModel *proxyModel = new ResourcesProxyModel(this);
+    proxyModel->setFilterActive(true);
+    proxyModel->setSourceModel(model);
 
     QListView *listView = new QListView(this);
     listView->setAlternatingRowColors(true);
-    ApplicationDelegate *delegate = new ApplicationDelegate(listView, backend);
-    delegate->setShowInfoButton(false);
-    listView->setItemDelegate(delegate);
-    listView->setModel(m_progressModel);
 
-    connect(delegate, SIGNAL(cancelButtonClicked(AbstractResource*)),
-            backend, SLOT(cancelTransaction(AbstractResource*)));
-    connect(m_progressModel, SIGNAL(lastTransactionCancelled()),
-            this, SIGNAL(lastTransactionCancelled()));
+    ApplicationDelegate *delegate = new ApplicationDelegate(listView);
+    delegate->setShowInfoButton(false);
+    connect(proxyModel, SIGNAL(invalidated()), delegate, SLOT(invalidate()));
+    listView->setItemDelegate(delegate);
+    listView->setModel(proxyModel);
 }

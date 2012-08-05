@@ -50,7 +50,6 @@ class MUONPRIVATE_EXPORT ResourcesProxyModel : public QSortFilterProxyModel
     Q_PROPERTY(QString mimeTypeFilter READ mimeTypeFilter WRITE setMimeTypeFilter)
 public:
     explicit ResourcesProxyModel(QObject *parent=0);
-    ~ResourcesProxyModel();
 
     Q_SCRIPTABLE void search(const QString &text);
     void setOriginFilter(const QString &origin);
@@ -62,6 +61,7 @@ public:
     bool sortingByRelevancy() const;
     bool isFilteringBySearch() const;
     void setStateFilter(AbstractResource::State s);
+    void setFilterActive(bool filter);
     AbstractResource::State stateFilter() const;
 
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
@@ -82,6 +82,7 @@ private:
     QHash<int, QVariant> m_roleFilters;
 
     bool m_sortByRelevancy;
+    bool m_filterActive;
     bool m_filterBySearch;
     Category* m_filteredCategory;
     AbstractResource::State m_stateFilter;

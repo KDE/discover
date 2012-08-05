@@ -52,9 +52,8 @@
 #define UNIVERSAL_PADDING 4
 #define MAIN_ICON_SIZE 32
 
-ApplicationDelegate::ApplicationDelegate(QAbstractItemView *parent, AbstractResourcesBackend *backend)
+ApplicationDelegate::ApplicationDelegate(QAbstractItemView *parent)
   : KExtendableItemDelegate(parent),
-    m_appBackend(backend),
     m_extender(0),
     m_showInfoButton(true)
 {
@@ -269,12 +268,6 @@ void ApplicationDelegate::itemActivated(QModelIndex index)
     if (isExtended(m_oldIndex)) {
         disconnect(m_extender, SIGNAL(infoButtonClicked(AbstractResource*)),
                    this, SIGNAL(infoButtonClicked(AbstractResource*)));
-        disconnect(m_extender, SIGNAL(installButtonClicked(AbstractResource*)),
-                   this, SIGNAL(installButtonClicked(AbstractResource*)));
-        disconnect(m_extender, SIGNAL(removeButtonClicked(AbstractResource*)),
-                   this, SIGNAL(removeButtonClicked(AbstractResource*)));
-        disconnect(m_extender, SIGNAL(cancelButtonClicked(AbstractResource*)),
-                   this, SIGNAL(cancelButtonClicked(AbstractResource*)));
         contractItem(m_oldIndex);
 
         m_extender->deleteLater();
@@ -285,16 +278,10 @@ void ApplicationDelegate::itemActivated(QModelIndex index)
     AbstractResource *app = qobject_cast<AbstractResource*>(appVarient.value<QObject*>());
 
     QTreeView *view = static_cast<QTreeView*>(parent());
-    m_extender = new ApplicationExtender(view, app, m_appBackend);
+    m_extender = new ApplicationExtender(view, app);
     m_extender->setShowInfoButton(m_showInfoButton);
     connect(m_extender, SIGNAL(infoButtonClicked(AbstractResource*)),
             this, SIGNAL(infoButtonClicked(AbstractResource*)));
-    connect(m_extender, SIGNAL(installButtonClicked(AbstractResource*)),
-            this, SIGNAL(installButtonClicked(AbstractResource*)));
-    connect(m_extender, SIGNAL(removeButtonClicked(AbstractResource*)),
-            this, SIGNAL(removeButtonClicked(AbstractResource*)));
-    connect(m_extender, SIGNAL(cancelButtonClicked(AbstractResource*)),
-            this, SIGNAL(cancelButtonClicked(AbstractResource*)));
 
     extendItem(m_extender, index);
     m_oldIndex = index;

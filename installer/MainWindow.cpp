@@ -84,6 +84,7 @@ MainWindow::MainWindow()
     , m_launcherMessage(nullptr)
     , m_appLauncher(nullptr)
     , m_progressItem(nullptr)
+    , m_transactionCount(0)
 {
     initGUI();
     QTimer::singleShot(10, this, SLOT(initObject()));
@@ -139,6 +140,10 @@ void MainWindow::initGUI()
 void MainWindow::initObject()
 {
     ResourcesModel *resourcesModel = ResourcesModel::global();
+    connect(resourcesModel, SIGNAL(transactionAdded(Transaction*)),
+            this, SLOT(transactionAdded()));
+    connect(resourcesModel, SIGNAL(transactionRemoved(Transaction*)),
+            this, SLOT(transactionRemoved()));
 
     // Create APT backend
     m_appBackend = new ApplicationBackend(this);
@@ -440,18 +445,14 @@ void MainWindow::changeView(const QModelIndex &index)
                 appView->setShouldShowTechnical(true);
         }
         break;
-        case CatView: {
+        case CatView:
             view = new AvailableView(this, m_appBackend);
-        }
             break;
         case History:
             view = new HistoryView(this);
             break;
-        case Progress: {
-            view = new ProgressView(this, m_appBackend);
-            ProgressView *pView = (ProgressView *)view;
-            connect(pView, SIGNAL(lastTransactionCancelled()), this, SLOT(removeProgressItem()));
-        }
+        case Progress:
+            view = new ProgressView(this);
         case InvalidView:
         default:
             break;
@@ -560,6 +561,20 @@ void MainWindow::clearMessageActions()
     foreach (QAction *action, m_launcherMessage->actions()) {
         m_launcherMessage->removeAction(action);
     }
+}
+
+void MainWindow::transactionAdded()
+{
+    m_transactionCount++;
+}
+
+void MainWindow::transactionRemoved()
+{
+    if (m_transactionCount)
+        m_transactionCount--;
+
+    if (!m_transactionCount)
+        removeProgressItem();
 }
 
 void MainWindow::addProgressItem()

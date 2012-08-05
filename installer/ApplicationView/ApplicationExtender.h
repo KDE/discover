@@ -35,13 +35,12 @@ class ApplicationExtender : public QWidget
 {
     Q_OBJECT
 public:
-    ApplicationExtender(QWidget *parent, AbstractResource *app, AbstractResourcesBackend *backend);
+    ApplicationExtender(QWidget *parent, AbstractResource *app);
 
     void setShowInfoButton(bool show);
 
 private:
     AbstractResource *m_resource;
-    AbstractResourcesBackend *m_appBackend;
     QPushButton *m_infoButton;
     QPushButton *m_actionButton;
     QPushButton *m_cancelButton;
@@ -50,15 +49,12 @@ private Q_SLOTS:
     void workerEvent(TransactionStateTransition workerEvent, Transaction *transaction);
     void transactionCancelled(Transaction *trans);
     void emitInfoButtonClicked();
-    void emitRemoveButtonClicked();
-    void emitInstallButtonClicked();
-    void emitCancelButtonClicked();
+    void removeButtonClicked();
+    void installButtonClicked();
+    void cancelButtonClicked();
 
 Q_SIGNALS:
     void infoButtonClicked(AbstractResource *resource);
-    void removeButtonClicked(AbstractResource *resource);
-    void installButtonClicked(AbstractResource *resource);
-    void cancelButtonClicked(AbstractResource *resource);
 };
 
 #endif

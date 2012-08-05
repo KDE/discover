@@ -29,12 +29,11 @@
 #include <KStandardGuiItem>
 
 #include <resources/AbstractResource.h>
-#include <resources/AbstractResourcesBackend.h>
+#include <resources/ResourcesModel.h>
 
-ApplicationExtender::ApplicationExtender(QWidget *parent, AbstractResource *app, AbstractResourcesBackend *backend)
+ApplicationExtender::ApplicationExtender(QWidget *parent, AbstractResource *app)
     : QWidget(parent)
     , m_resource(app)
-    , m_appBackend(backend)
 {
     QHBoxLayout *layout = new QHBoxLayout(this);
     setLayout(layout);
@@ -51,11 +50,11 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, AbstractResource *app,
     if (app->isInstalled()) {
         m_actionButton->setIcon(KIcon("edit-delete"));
         m_actionButton->setText(i18n("Remove"));
-        connect(m_actionButton, SIGNAL(clicked()), this, SLOT(emitRemoveButtonClicked()));
+        connect(m_actionButton, SIGNAL(clicked()), this, SLOT(removeButtonClicked()));
     } else {
         m_actionButton->setIcon(KIcon("download"));
         m_actionButton->setText(i18n("Install"));
-        connect(m_actionButton, SIGNAL(clicked()), this, SLOT(emitInstallButtonClicked()));
+        connect(m_actionButton, SIGNAL(clicked()), this, SLOT(installButtonClicked()));
     }
 
     m_cancelButton = new QPushButton(this);
@@ -63,21 +62,22 @@ ApplicationExtender::ApplicationExtender(QWidget *parent, AbstractResource *app,
     m_cancelButton->setIcon(cancelButton.icon());
     m_cancelButton->setToolTip(cancelButton.toolTip());
     m_cancelButton->hide();
-    connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(emitCancelButtonClicked()));
+    connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(cancelButtonClicked()));
 
     layout->addWidget(m_infoButton);
     layout->addWidget(buttonSpacer);
     layout->addWidget(m_actionButton);
     layout->addWidget(m_cancelButton);
 
-    connect(m_appBackend, SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)),
+    ResourcesModel *resourcesModel = ResourcesModel::global();
+    connect(resourcesModel, SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)),
             this, SLOT(workerEvent(TransactionStateTransition,Transaction*)));
-    connect(m_appBackend, SIGNAL(transactionCancelled(Transaction*)),
+    connect(resourcesModel, SIGNAL(transactionCancelled(Transaction*)),
             this, SLOT(transactionCancelled(Transaction*)));
 
     // Catch already-begun downloads. If the state is something else, we won't
     // care because we won't handle it
-    QPair<TransactionStateTransition, Transaction *> workerState = m_appBackend->currentTransactionState();
+    QPair<TransactionStateTransition, Transaction *> workerState = app->backend()->currentTransactionState();
     workerEvent(workerState.first, workerState.second);
 }
 
@@ -88,7 +88,7 @@ void ApplicationExtender::setShowInfoButton(bool show)
 
 void ApplicationExtender::workerEvent(TransactionStateTransition workerEvent, Transaction *transaction)
 {
-    if (!transaction || !m_appBackend->transactions().contains(transaction)
+    if (!transaction || !m_resource->backend()->transactions().contains(transaction)
         || m_resource != transaction->resource()) {
         return;
     }
@@ -129,19 +129,22 @@ void ApplicationExtender::emitInfoButtonClicked()
     emit infoButtonClicked(m_resource);
 }
 
-void ApplicationExtender::emitRemoveButtonClicked()
+void ApplicationExtender::removeButtonClicked()
 {
     m_actionButton->setEnabled(false);
-    emit removeButtonClicked(m_resource);
+    ResourcesModel *resourcesModel = ResourcesModel::global();
+    resourcesModel->removeApplication(m_resource);
 }
 
-void ApplicationExtender::emitInstallButtonClicked()
+void ApplicationExtender::installButtonClicked()
 {
     m_actionButton->setEnabled(false);
-    emit installButtonClicked(m_resource);
+    ResourcesModel *resourcesModel = ResourcesModel::global();
+    resourcesModel->installApplication(m_resource);
 }
 
-void ApplicationExtender::emitCancelButtonClicked()
+void ApplicationExtender::cancelButtonClicked()
 {
-    emit cancelButtonClicked(m_resource);
+    ResourcesModel *resourcesModel = ResourcesModel::global();
+    resourcesModel->cancelTransaction(m_resource);
 }

@@ -30,15 +30,12 @@
 ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
     , m_sortByRelevancy(false)
+    , m_filterActive(false)
     , m_filterBySearch(false)
     , m_filteredCategory(0)
     , m_stateFilter(AbstractResource::Broken)
 {
     setShouldShowTechnical(false);
-}
-
-ResourcesProxyModel::~ResourcesProxyModel()
-{
 }
 
 void ResourcesProxyModel::search(const QString &searchText)
@@ -142,6 +139,9 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
 {
     QModelIndex idx = sourceModel()->index(sourceRow, 0, sourceParent);
     if(!idx.isValid())
+        return false;
+
+    if (m_filterActive && !idx.data(ResourcesModel::ActiveRole).toBool())
         return false;
     
     for(QHash<int, QVariant>::const_iterator it=m_roleFilters.constBegin(), itEnd=m_roleFilters.constEnd(); it!=itEnd; ++it) {
@@ -263,4 +263,9 @@ QString ResourcesProxyModel::mimeTypeFilter() const
 void ResourcesProxyModel::setMimeTypeFilter(const QString& mime)
 {
     m_filteredMimeType = mime;
+}
+
+void ResourcesProxyModel::setFilterActive(bool filter)
+{
+    m_filterActive = filter;
 }
