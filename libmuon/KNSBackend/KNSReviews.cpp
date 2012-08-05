@@ -44,7 +44,15 @@ KNSReviews::KNSReviews(KNSBackend* backend)
 
 Rating* KNSReviews::ratingForApplication(AbstractResource* app) const
 {
-    Attica::Content c = qobject_cast<KNSResource*>(m_backend->resourceByPackageName(app->packageName()))->content();
+    KNSResource *resource = nullptr;
+    resource = qobject_cast<KNSResource*>(m_backend->resourceByPackageName(app->packageName()));
+    if (!resource)
+    {
+        qDebug() << app->packageName() << "<= couldn't find resource";
+        return nullptr;
+    }
+
+    Attica::Content c = resource->content();
     QVariantMap data;
     data["package_name"] = app->packageName();
     data["app_name"] = app->name();
