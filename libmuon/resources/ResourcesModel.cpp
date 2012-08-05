@@ -20,12 +20,21 @@
 
 #include "ResourcesModel.h"
 
+#include <KGlobal>
+
 #include "resources/AbstractResourcesBackend.h"
 #include "AbstractResource.h"
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <Transaction/Transaction.h>
 #include <QDebug>
+
+K_GLOBAL_STATIC_WITH_ARGS(ResourcesModel, globalResourcesModel, (0))
+
+ResourcesModel *ResourcesModel::global()
+{
+    return globalResourcesModel;
+}
 
 ResourcesModel::ResourcesModel(QObject* parent)
     : QAbstractListModel(parent)

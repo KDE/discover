@@ -60,6 +60,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
             MimeTypes
         };
         explicit ResourcesModel(QObject* parent=0);
+        static ResourcesModel* global();
         
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
         virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
