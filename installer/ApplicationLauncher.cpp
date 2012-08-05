@@ -19,9 +19,10 @@
  ***************************************************************************/
 
 #include "ApplicationLauncher.h"
-#include <ApplicationModel/LaunchListModel.h>
-#include <Application.h>
-#include <ApplicationBackend.h>
+
+#include <ApplicationBackend/LaunchListModel.h>
+#include <ApplicationBackend/Application.h>
+#include <ApplicationBackend/ApplicationBackend.h>
 
 #include <QtCore/QStringBuilder>
 #include <QtGui/QLabel>

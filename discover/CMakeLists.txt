@@ -11,10 +11,6 @@ set(muon_discover_SRCS
     ReviewsModel.cpp
     ApplicationAddonsModel.cpp
     ScreenshotsModel.cpp
-    KNSBackend/KNSBackend.cpp
-    KNSBackend/KNSResource.cpp
-    KNSBackend/KNSReviews.cpp
-    KNSBackend/KNSUpdater.cpp
 )
 
 if(QAPT_FOUND)
@@ -36,8 +32,6 @@ target_link_libraries(muon-discover muonprivate
                                      ${QZEITGEIST_LIBRARY}
                                      ${QT_QTOPENGL_LIBRARY}
                                      ${QT_QTDECLARATIVE_LIBRARY}
-                                     ${KDE4_KNEWSTUFF3_LIBS}
-                                     attica
 )
 
 install(TARGETS muon-discover ${INSTALL_TARGETS_DEFAULT_ARGS} )

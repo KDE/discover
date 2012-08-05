@@ -21,10 +21,12 @@
 #ifndef KNSBACKEND_H
 #define KNSBACKEND_H
 
-#include <libmuon/resources/AbstractResourcesBackend.h>
+#include <resources/AbstractResourcesBackend.h>
 #include <knewstuff3/entry.h>
 #include <attica/category.h>
 #include <attica/provider.h>
+
+#include "libmuonprivate_export.h"
 
 class KNSUpdater;
 class KNSReviews;
@@ -34,7 +36,7 @@ namespace Attica {
     class BaseJob;
 }
 
-class KNSBackend : public AbstractResourcesBackend
+class MUONPRIVATE_EXPORT KNSBackend : public AbstractResourcesBackend
 {
 Q_OBJECT
 public:

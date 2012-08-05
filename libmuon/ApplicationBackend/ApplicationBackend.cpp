@@ -39,11 +39,11 @@
 #include <DebconfGui.h>
 
 // Own includes
-#include "../libmuon/ChangesDialog.h"
+#include "ChangesDialog.h"
 #include "Application.h"
 #include "ReviewsBackend/ReviewsBackend.h"
 #include "Transaction/Transaction.h"
-#include "ApplicationModel/ApplicationUpdates.h"
+#include "ApplicationUpdates.h"
 #include "QAptIntegration.h"
 
 ApplicationBackend::ApplicationBackend(QObject *parent)

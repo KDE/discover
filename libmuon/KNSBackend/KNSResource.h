@@ -21,12 +21,14 @@
 #ifndef KNSRESOURCE_H
 #define KNSRESOURCE_H
 
-#include <libmuon/resources/AbstractResource.h>
+#include <resources/AbstractResource.h>
 #include <knewstuff3/entry.h>
 #include <attica/content.h>
 
+#include "libmuonprivate_export.h"
+
 class KNSBackend;
-class KNSResource : public AbstractResource
+class MUONPRIVATE_EXPORT KNSResource : public AbstractResource
 {
 Q_OBJECT
 public:

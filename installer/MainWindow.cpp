@@ -42,8 +42,8 @@
 #include <LibQApt/Backend>
 
 // Libmuon includes
-#include <Application.h>
-#include <ApplicationBackend.h>
+#include <ApplicationBackend/Application.h>
+#include <ApplicationBackend/ApplicationBackend.h>
 #include <HistoryView/HistoryView.h>
 #include <resources/ResourcesModel.h>
 

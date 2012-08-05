@@ -21,12 +21,12 @@
 #include "ReviewsTest.h"
 #include <../ReviewsModel.h>
 #include <ReviewsBackend/ReviewsBackend.h>
-#include <ApplicationBackend.h>
+#include <ApplicationBackend/ApplicationBackend.h>
 #include <libqapt/backend.h>
 #include <KProtocolManager>
 #include <qtest_kde.h>
 #include <libmuon/tests/modeltest.h>
-#include <Application.h>
+#include <ApplicationBackend/Application.h>
 
 QTEST_KDEMAIN_CORE( ReviewsTest )
 

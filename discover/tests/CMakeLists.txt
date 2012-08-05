@@ -2,7 +2,7 @@ include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_SOURCE_DIR}/libmuon ..)
 
 macro(muon_add_unit_test name)
     kde4_add_unit_test(${name} ${ARGN}
-        ../KNSBackend/KNSBackend.cpp ../KNSBackend/KNSResource.cpp ../KNSBackend/KNSReviews.cpp ../KNSBackend/KNSUpdater.cpp
+        ../../libmuon/KNSBackend/KNSBackend.cpp ../../libmuon/KNSBackend/KNSResource.cpp ../../libmuon/KNSBackend/KNSReviews.cpp ../../libmuon/KNSBackend/KNSUpdater.cpp
 
         ../OriginsBackend.cpp ../BackendsSingleton.cpp
         ../ReviewsModel.cpp)

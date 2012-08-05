@@ -23,7 +23,7 @@
 #include <resources/ResourcesModel.h>
 
 #ifdef QAPT_ENABLED
-#include <ApplicationBackend.h>
+#include <ApplicationBackend/ApplicationBackend.h>
 #include <QAptIntegration.h>
 #include <QTimer>
 #endif

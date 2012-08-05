@@ -20,7 +20,7 @@
 
 #include "OriginsBackend.h"
 #include "BackendsSingleton.h"
-#include <ApplicationBackend.h>
+#include <ApplicationBackend/ApplicationBackend.h>
 #include <resources/ResourcesModel.h>
 #include <QProcess>
 #include <QDebug>

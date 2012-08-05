@@ -43,17 +43,21 @@ set(muon_LIB_SRCS
     resources/PackageState.cpp
     resources/AbstractBackendUpdater.cpp
     resources/ResourcesUpdatesModel.cpp
+    KNSBackend/KNSBackend.cpp
+    KNSBackend/KNSResource.cpp
+    KNSBackend/KNSReviews.cpp
+    KNSBackend/KNSUpdater.cpp
 )
 if(QAPT_FOUND)
     set(muon_LIB_SRCS ${muon_LIB_SRCS}
-        Application.cpp
-        ApplicationBackend.cpp
+        ApplicationBackend/Application.cpp
+        ApplicationBackend/ApplicationBackend.cpp
         ChangesDialog.cpp
         MuonStrings.cpp
         QAptIntegration.cpp
         MuonMainWindow.cpp
-        ApplicationModel/LaunchListModel.cpp
-        ApplicationModel/ApplicationUpdates.cpp
+        ApplicationBackend/LaunchListModel.cpp
+        ApplicationBackend/ApplicationUpdates.cpp
         HistoryView/HistoryProxyModel.cpp
         HistoryView/HistoryView.cpp
         ReviewsBackend/ReviewsBackend.cpp #TODO: rename to AptReviewsBackend
@@ -84,6 +88,8 @@ target_link_libraries(muonprivate
     ${QAPT_LIBRARY}
     ${qjson_LIBRARIES}
     ${QTOAUTH_LIBRARY}
+    ${KDE4_KNEWSTUFF3_LIBS}
+    attica
 )
     
 if (ENABLE_QZEITGEIST)

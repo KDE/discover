@@ -19,14 +19,14 @@
  ***************************************************************************/
 
 #include "ResourcesModelTest.h"
-#include <ApplicationBackend.h>
+#include <ApplicationBackend/ApplicationBackend.h>
 #include <QStringList>
 #include <LibQApt/Backend>
 #include <KProtocolManager>
 #include <qtest_kde.h>
 
 #include "modeltest.h"
-#include <Application.h>
+#include <ApplicationBackend/Application.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>
 #include <Category/Category.h>

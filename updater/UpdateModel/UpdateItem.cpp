@@ -22,7 +22,7 @@
 
 #include <QtCore/QStringBuilder>
 
-#include <Application.h>
+#include <ApplicationBackend/Application.h>
 
 UpdateItem::UpdateItem()
     : m_app(0)

@@ -57,7 +57,7 @@
 #include <Nepomuk/KRatingWidget>
 
 // Libmuon includes
-#include <Application.h>
+#include <ApplicationBackend/Application.h>
 #include <MuonStrings.h>
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/Review.h>

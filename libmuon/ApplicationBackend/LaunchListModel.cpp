@@ -20,8 +20,8 @@
  ***************************************************************************/
 
 #include "LaunchListModel.h"
-#include <Application.h>
-#include <ApplicationBackend.h>
+#include "Application.h"
+#include "ApplicationBackend.h"
 #include <QStringBuilder>
 #include <QDebug>
 #include <KIcon>

@@ -41,7 +41,7 @@
 #include <LibQApt/Backend>
 
 // Libmuon includes
-#include <Application.h>
+#include <ApplicationBackend/Application.h>
 #include <ChangesDialog.h>
 
 // Own includes

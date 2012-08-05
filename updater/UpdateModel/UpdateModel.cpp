@@ -30,7 +30,7 @@
 #include <KDebug>
 
 // Libmuon includes
-#include <Application.h>
+#include <ApplicationBackend/Application.h>
 
 // Own includes
 #include "UpdateItem.h"

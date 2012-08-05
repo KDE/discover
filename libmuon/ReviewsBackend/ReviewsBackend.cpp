@@ -36,7 +36,7 @@
 
 #include <QtOAuth/interface.h>
 
-#include "../Application.h"
+#include <ApplicationBackend/Application.h>
 #include "Rating.h"
 #include "Review.h"
 #include "AbstractLoginBackend.h"

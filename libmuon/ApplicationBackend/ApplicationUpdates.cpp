@@ -19,8 +19,9 @@
  ***************************************************************************/
 
 #include "ApplicationUpdates.h"
-#include <Application.h>
-#include <ApplicationBackend.h>
+
+#include "Application.h"
+#include "ApplicationBackend.h"
 #include <LibQApt/Backend>
 #include <KDebug>
 #include <QIcon>
