@@ -36,14 +36,6 @@ public:
 
 private:
     ResourceDetailsWidget *m_detailsWidget;
-
-Q_SIGNALS:
-    void installButtonClicked(AbstractResource *);
-    void installButtonClicked(AbstractResource *,
-                              const QHash<QString, bool> &addons);
-    void removeButtonClicked(AbstractResource *);
-    void cancelButtonClicked(AbstractResource *);
-
 };
 
 #endif

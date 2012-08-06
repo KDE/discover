@@ -41,15 +41,6 @@ ResourceDetailsView::ResourceDetailsView(QWidget *parent)
     m_layout->addWidget(m_detailsWidget);
 
     m_crumb->setAssociatedView(this);
-
-    connect(m_detailsWidget, SIGNAL(installButtonClicked(AbstractResource*)),
-            this, SIGNAL(installButtonClicked(AbstractResource*)));
-    connect(m_detailsWidget, SIGNAL(installButtonClicked(AbstractResource*,QHash<QString,bool>)),
-            this, SIGNAL(installButtonClicked(AbstractResource*,QHash<QString,bool>)));
-    connect(m_detailsWidget, SIGNAL(removeButtonClicked(AbstractResource*)),
-            this, SIGNAL(removeButtonClicked(AbstractResource*)));
-    connect(m_detailsWidget, SIGNAL(cancelButtonClicked(AbstractResource*)),
-            this, SIGNAL(cancelButtonClicked(AbstractResource*)));
 }
 
 void ResourceDetailsView::setResource(AbstractResource *resource)
