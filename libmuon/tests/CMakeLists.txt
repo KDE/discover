@@ -10,4 +10,6 @@ macro(libmuon_add_unit_test name)
     )
 endmacro(libmuon_add_unit_test)
 
-libmuon_add_unit_test(resourcesmodeltest ResourcesModelTest.cpp modeltest.cpp)
+if(QAPT_ENABLED)
+    libmuon_add_unit_test(resourcesmodeltest ResourcesModelTest.cpp modeltest.cpp)
+endif(QAPT_ENABLED)
