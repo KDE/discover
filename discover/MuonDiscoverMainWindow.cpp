@@ -57,11 +57,15 @@
 
 #ifdef QAPT_ENABLED
 #include "OriginsBackend.h"
+#include <ApplicationBackend/ApplicationBackend.h>
+#endif
+
+#ifdef ATTICA_ENABLED
+#include <KNSBackend/KNSBackend.h>
 #endif
 
 // Own includes
 #include "ApplicationProxyModelHelper.h"
-#include "BackendsSingleton.h"
 #include "ReviewsModel.h"
 #include "ApplicationAddonsModel.h"
 #include "ScreenshotsModel.h"
@@ -131,8 +135,8 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     
     //Here we set up a cache for the screenshots
 //     m_view->engine()->setNetworkAccessManagerFactory(new CachedNAMFactory);
-    ResourcesModel* resourcesModel = BackendsSingleton::self()->appsModel();
-    m_view->engine()->rootContext()->setContextProperty("resourcesModel", qVariantFromValue<ResourcesModel*>(resourcesModel));
+    m_view->engine()->rootContext()->setContextProperty("resourcesModel",
+                                                        qVariantFromValue<ResourcesModel*>(ResourcesModel::global()));
     m_view->engine()->rootContext()->setContextProperty("app", this);
     m_view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
 // #if !defined(QT_NO_OPENGL)
@@ -159,7 +163,28 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     restoreState(window.readEntry<QByteArray>("windowState", QByteArray()));
     
     setCentralWidget(m_view);
-    BackendsSingleton::self()->initialize(this);
+    initialize(this);
+}
+
+void MuonDiscoverMainWindow::initialize(KXmlGuiWindow* w)
+{
+    QList<AbstractResourcesBackend*> backends;
+
+#ifdef ATTICA_ENABLED
+    backends += new KNSBackend("comic.knsrc", "face-smile-big", w);
+    backends += new KNSBackend("plasmoids.knsrc", "plasma", w);
+#endif
+    
+#ifdef QAPT_ENABLED
+    ApplicationBackend* applicationBackend = new ApplicationBackend(w);
+    applicationBackend->integrateMainWindow(w);
+    backends += applicationBackend;
+#endif
+    
+    ResourcesModel* m = ResourcesModel::global();
+    foreach(AbstractResourcesBackend* b, backends) {
+        m->addResourcesBackend(b);
+    }
 }
 
 MuonDiscoverMainWindow::~MuonDiscoverMainWindow()
@@ -192,16 +217,16 @@ void MuonDiscoverMainWindow::openApplication(const QString& app)
     m_appToBeOpened = app;
     triggerOpenApplication();
     if(!m_appToBeOpened.isEmpty())
-        connect(BackendsSingleton::self()->appsModel(), SIGNAL(rowsInserted(QModelIndex, int, int)), SLOT(triggerOpenApplication()));
+        connect(ResourcesModel::global(), SIGNAL(rowsInserted(QModelIndex, int, int)), SLOT(triggerOpenApplication()));
 }
 
 void MuonDiscoverMainWindow::triggerOpenApplication()
 {
-    AbstractResource* app = BackendsSingleton::self()->appsModel()->resourceByPackageName(m_appToBeOpened);
+    AbstractResource* app = ResourcesModel::global()->resourceByPackageName(m_appToBeOpened);
     if(app) {
         emit openApplicationInternal(app);
         m_appToBeOpened.clear();
-        disconnect(BackendsSingleton::self()->appsModel(), SIGNAL(rowsInserted(QModelIndex, int, int)), this, SLOT(triggerOpenApplication()));
+        disconnect(ResourcesModel::global(), SIGNAL(rowsInserted(QModelIndex, int, int)), this, SLOT(triggerOpenApplication()));
     }
 }
 

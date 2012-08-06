@@ -7,7 +7,6 @@ set(muon_discover_SRCS
     main.cpp
     MuonDiscoverMainWindow.cpp
     ApplicationProxyModelHelper.cpp
-    BackendsSingleton.cpp
     ReviewsModel.cpp
     ApplicationAddonsModel.cpp
     ScreenshotsModel.cpp

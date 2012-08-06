@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include "ApplicationAddonsModel.h"
-#include "BackendsSingleton.h"
 #include <resources/ResourcesModel.h>
 #include <resources/PackageState.h>
 #include <resources/AbstractResource.h>
@@ -86,7 +85,7 @@ void ApplicationAddonsModel::discardChanges()
 
 void ApplicationAddonsModel::applyChanges()
 {
-    BackendsSingleton::self()->appsModel()->installApplication(m_app, m_state);
+    ResourcesModel::global()->installApplication(m_app, m_state);
 }
 
 void ApplicationAddonsModel::changeState(const QString& packageName, bool installed)

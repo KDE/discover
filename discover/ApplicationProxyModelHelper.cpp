@@ -19,7 +19,6 @@
 
 #include "ApplicationProxyModelHelper.h"
 #include <resources/ResourcesModel.h>
-#include "BackendsSingleton.h"
 #include <QDebug>
 
 ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
@@ -30,12 +29,12 @@ ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
 
 void ApplicationProxyModelHelper::init()
 {
-    setSourceModel(BackendsSingleton::self()->appsModel());
+    setSourceModel(ResourcesModel::global());
     
     if(!m_sortRoleString.isEmpty())
         setStringSortRole_hack(m_sortRoleString);
     
-    connect(BackendsSingleton::self()->appsModel(), SIGNAL(modelReset()),
+    connect(ResourcesModel::global(), SIGNAL(modelReset()),
             SLOT(sortModel()));
     sortModel();
 }

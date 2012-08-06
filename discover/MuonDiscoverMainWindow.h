@@ -37,6 +37,8 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
 
         Q_SCRIPTABLE QAction* getAction(const QString& name);
         virtual QSize sizeHint() const;
+        
+        static void initialize(KXmlGuiWindow* w);
 
     public slots:
         void openApplication(const QString& app);
