@@ -44,8 +44,7 @@ KNSReviews::KNSReviews(KNSBackend* backend)
 
 Rating* KNSReviews::ratingForApplication(AbstractResource* app) const
 {
-    KNSResource *resource = nullptr;
-    resource = qobject_cast<KNSResource*>(m_backend->resourceByPackageName(app->packageName()));
+    KNSResource *resource = qobject_cast<KNSResource*>(m_backend->resourceByPackageName(app->packageName()));
     if (!resource)
     {
         qDebug() << app->packageName() << "<= couldn't find resource";
