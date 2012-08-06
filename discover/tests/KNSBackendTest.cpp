@@ -22,6 +22,8 @@
 #include <KNSBackend/KNSBackend.h>
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
+#include <ReviewsBackend/AbstractReviewsBackend.h>
+#include <ReviewsBackend/Rating.h>
 
 #include <qtest_kde.h>
 
@@ -29,22 +31,46 @@ QTEST_KDEMAIN_CORE( KNSBackendTest )
 
 KNSBackendTest::KNSBackendTest(QObject* parent)
     : QObject(parent)
+    , m_r(0)
 {
+    ResourcesModel* model = ResourcesModel::global();
+//     m_backend = new KNSBackend("comic.knsrc", "face-smile-big", this);
+    m_backend = new KNSBackend("plasmoids.knsrc", "plasma", this);
+    model->addResourcesBackend(m_backend);
+    QTest::kWaitForSignal(m_backend, SIGNAL(backendReady()));
+    connect(m_backend->reviewsBackend(), SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
+            SLOT(reviewsArrived(AbstractResource*,QList<Review*>)));
 }
 
 void KNSBackendTest::testRetrieval()
 {
-    ResourcesModel model;
-    m_backend = new KNSBackend("comic.knsrc", "face-smile-big", this);
-    model.addResourcesBackend(m_backend);
-    QTest::kWaitForSignal(m_backend, SIGNAL(backendReady()));
-    
+    ResourcesModel* model = ResourcesModel::global();
     QVector<AbstractResource*> resources = m_backend->allResources();
     QVERIFY(!resources.isEmpty());
-    QCOMPARE(resources.count(), model.rowCount());
+    QCOMPARE(resources.count(), model->rowCount());
     
     foreach(AbstractResource* res, resources) {
         QVERIFY(!res->name().isEmpty());
         QVERIFY(!res->categories().isEmpty());
     }
+}
+
+void KNSBackendTest::testReviews()
+{
+    QVector<AbstractResource*> resources = m_backend->allResources();
+    AbstractReviewsBackend* rev = m_backend->reviewsBackend();
+    foreach(AbstractResource* res, resources) {
+        Rating* r = rev->ratingForApplication(res);
+        QVERIFY(r);
+        QCOMPARE(r->packageName(), res->packageName());
+        QVERIFY(r->rating()>0 && r->rating()<=10);
+//         rev->fetchReviews(res);
+//         QTest::kWaitForSignal(rev, SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)));
+    }
+}
+
+void KNSBackendTest::reviewsArrived(AbstractResource* r, const QList< Review* >& revs)
+{
+    m_r = r;
+    m_revs = revs;
 }

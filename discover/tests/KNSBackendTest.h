@@ -23,6 +23,8 @@
 
 #include <QtCore/QObject>
 
+class AbstractResource;
+class Review;
 class KNSBackend;
 
 class KNSBackendTest : public QObject
@@ -33,9 +35,15 @@ class KNSBackendTest : public QObject
 
     private slots:
         void testRetrieval();
+        void testReviews();
+
+    public slots:
+        void reviewsArrived(AbstractResource *r, const QList<Review *>& revs);
 
     private:
         KNSBackend* m_backend;
+        AbstractResource* m_r;
+        QList<Review*> m_revs;
 };
 
 #endif // KNSBACKENDTEST_H
