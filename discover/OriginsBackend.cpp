@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include "OriginsBackend.h"
-#include "BackendsSingleton.h"
 #include <ApplicationBackend/ApplicationBackend.h>
 #include <resources/ResourcesModel.h>
 #include <QProcess>
@@ -33,7 +32,7 @@
 
 static ApplicationBackend* applicationBackend()
 {
-    foreach(AbstractResourcesBackend* b, BackendsSingleton::self()->appsModel()->backends()) {
+    foreach(AbstractResourcesBackend* b, ResourcesModel::global()->backends()) {
         ApplicationBackend* appbackend = qobject_cast<ApplicationBackend*>(b);
         if(qobject_cast<ApplicationBackend*>(b))
             return appbackend;

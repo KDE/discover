@@ -19,6 +19,8 @@
  ***************************************************************************/
 
 #include "OriginsBackendTest.h"
+#include <ApplicationBackend/ApplicationBackend.h>
+#include <resources/ResourcesModel.h>
 #include <QtTest/QtTest>
 
 QTEST_MAIN( OriginsBackendTest )
@@ -26,6 +28,8 @@ QTEST_MAIN( OriginsBackendTest )
 OriginsBackendTest::OriginsBackendTest(QObject* parent)
     : QObject(parent)
 {
+    ApplicationBackend* appBackend = new ApplicationBackend(this);
+    ResourcesModel::global()->addResourcesBackend(appBackend);
 }
 
 void OriginsBackendTest::testLoad()
