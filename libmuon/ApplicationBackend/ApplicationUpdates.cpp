@@ -22,6 +22,7 @@
 
 #include "Application.h"
 #include "ApplicationBackend.h"
+#include <ChangesDialog.h>
 #include <LibQApt/Backend>
 #include <KDebug>
 #include <QIcon>
@@ -41,12 +42,19 @@ void ApplicationUpdates::setBackend(QApt::Backend* backend)
 
 void ApplicationUpdates::start()
 {
-    connect(m_aptBackend, SIGNAL(commitProgress(QString,int)),
-            SLOT(progress(QString,int)));
-    connect(m_aptBackend, SIGNAL(downloadMessage(int,QString)), SLOT(downloadMessage(int,QString)));
-
     m_aptBackend->saveCacheState();
-    m_aptBackend->markPackagesForUpgrade();
+    QApt::CacheState cache = m_aptBackend->currentCacheState();
+    m_aptBackend->markPackagesForDistUpgrade();
+    QHash<QApt::Package::State, QApt::PackageList> changes = m_aptBackend->stateChanges(cache, QApt::PackageList());
+    if(!changes.isEmpty()) {
+        ChangesDialog d(0, changes);
+        if(!d.exec()) {
+            emit updatesFinnished();
+        }
+    }
+    
+    connect(m_aptBackend, SIGNAL(commitProgress(QString,int)), SLOT(progress(QString,int)));
+    connect(m_aptBackend, SIGNAL(downloadMessage(int,QString)), SLOT(downloadMessage(int,QString)));
     m_aptBackend->commitChanges();
 }
 
