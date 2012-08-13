@@ -563,9 +563,10 @@
     <Name>Plasma Desktop Widgets</Name>
     <Icon>plasma</Icon>
     <Include>
-      <And>
+      <Or>
         <Category>plasmoids.knsrc</Category>
-      </And>
+        <PkgWildcard>plasma-widget-*</PkgWildcard>
+      </Or>
     </Include>
   </Menu>
 
