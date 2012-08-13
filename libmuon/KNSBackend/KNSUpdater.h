@@ -33,6 +33,7 @@ class KNSUpdater : public AbstractBackendUpdater
         virtual bool hasUpdates() const;
         virtual qreal progress() const;
         virtual void start();
+        virtual long unsigned int remainingTime() const;
 
     private:
         KNSBackend* m_backend;

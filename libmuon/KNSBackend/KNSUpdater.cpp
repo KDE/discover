@@ -45,3 +45,7 @@ qreal KNSUpdater::progress() const
     return hasUpdates() ? 0 : 1;
 }
 
+long unsigned int KNSUpdater::remainingTime() const
+{
+    return 0;
+}

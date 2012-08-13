@@ -32,17 +32,20 @@ class MUONPRIVATE_EXPORT ResourcesUpdatesModel : public QStandardItemModel
     Q_OBJECT
     Q_PROPERTY(ResourcesModel* resources READ resourcesModel WRITE setResourcesModel)
     Q_PROPERTY(qreal progress READ progress NOTIFY progressChanged);
+    Q_PROPERTY(QString remainingTime READ remainingTime NOTIFY etaChanged)
     public:
         explicit ResourcesUpdatesModel(QObject* parent = 0);
         
         void setResourcesModel(ResourcesModel* model);
         ResourcesModel* resourcesModel() const;
         qreal progress() const;
+        QString remainingTime() const;
         Q_SCRIPTABLE void updateAll();
 
     signals:
         void progressChanged();
         void updatesFinnished();
+        void etaChanged();
 
     private:
         ResourcesModel* m_resources;

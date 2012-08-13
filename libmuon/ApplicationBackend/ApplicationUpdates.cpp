@@ -22,6 +22,7 @@
 
 #include "Application.h"
 #include "ApplicationBackend.h"
+#include <ChangesDialog.h>
 #include <LibQApt/Backend>
 #include <KDebug>
 #include <QIcon>
@@ -30,8 +31,7 @@ ApplicationUpdates::ApplicationUpdates(ApplicationBackend* parent)
     : AbstractBackendUpdater(parent)
     , m_aptBackend(0)
     , m_appBackend(parent)
-{
-}
+{}
 
 void ApplicationUpdates::setBackend(QApt::Backend* backend)
 {
@@ -41,12 +41,22 @@ void ApplicationUpdates::setBackend(QApt::Backend* backend)
 
 void ApplicationUpdates::start()
 {
-    connect(m_aptBackend, SIGNAL(commitProgress(QString,int)),
-            SLOT(progress(QString,int)));
-    connect(m_aptBackend, SIGNAL(downloadMessage(int,QString)), SLOT(downloadMessage(int,QString)));
-
     m_aptBackend->saveCacheState();
-    m_aptBackend->markPackagesForUpgrade();
+    QApt::CacheState cache = m_aptBackend->currentCacheState();
+    m_aptBackend->markPackagesForDistUpgrade();
+    QHash<QApt::Package::State, QApt::PackageList> changes = m_aptBackend->stateChanges(cache, QApt::PackageList());
+    changes.remove(QApt::Package::ToUpgrade);
+    if(!changes.isEmpty()) {
+        ChangesDialog d(0, changes);
+        if(d.exec()==QDialog::Rejected) {
+            emit updatesFinnished();
+            return;
+        }
+    }
+    
+    connect(m_aptBackend, SIGNAL(downloadMessage(int,QString)), SLOT(downloadMessage(int,QString)));
+    connect(m_aptBackend, SIGNAL(downloadProgress(int,int,int)), SLOT(downloadProgress(int,int,int)));
+    connect(m_aptBackend, SIGNAL(commitProgress(QString,int)), SLOT(commitProgress(QString,int)));
     m_aptBackend->commitChanges();
 }
 
@@ -60,9 +70,10 @@ qreal ApplicationUpdates::progress() const
     return m_progress;
 }
 
-void ApplicationUpdates::progress(const QString& msg, int percentage)
+void ApplicationUpdates::commitProgress(const QString& msg, int percentage)
 {
-    m_progress = qreal(percentage)/100;
+    //NOTE: We consider half the process to download and half to install
+    m_progress = .5+qreal(percentage)/200;
     emit message(QIcon(), msg);
     emit progressChanged(m_progress);
 }
@@ -76,4 +87,23 @@ void ApplicationUpdates::downloadMessage(int flag, const QString& msg)
 void ApplicationUpdates::installMessage(const QString& msg)
 {
     emit message(QIcon(), msg);
+}
+
+void ApplicationUpdates::workerEvent(QApt::WorkerEvent event)
+{
+    if(event==QApt::CommitChangesFinished)
+        emit updatesFinnished();
+}
+
+void ApplicationUpdates::downloadProgress(int percentage, int speed, int ETA)
+{
+    m_progress = qreal(percentage)/200;
+    emit progressChanged(m_progress);
+    m_eta = ETA;
+    emit remainingTimeChanged();
+}
+
+long unsigned int ApplicationUpdates::remainingTime() const
+{
+    return m_eta;
 }

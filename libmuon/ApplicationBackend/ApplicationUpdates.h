@@ -37,15 +37,20 @@ class ApplicationUpdates : public AbstractBackendUpdater
         virtual qreal progress() const;
         virtual void start();
         void setBackend(QApt::Backend* b);
+        virtual long unsigned int remainingTime() const;
+
     public slots:
-        void progress(const QString& message, int percentage);
+        void commitProgress(const QString& message, int percentage);
         void downloadMessage(int flag, const QString& message);
         void installMessage(const QString& message);
+        void workerEvent(QApt::WorkerEvent event);
+        void downloadProgress(int percentage, int speed, int ETA);
 
     private:
         QApt::Backend* m_aptBackend;
         ApplicationBackend* m_appBackend;
         qreal m_progress;
+        long unsigned int m_eta;
 };
 
 #endif // APPLICATIONUPDATES_H
