@@ -54,8 +54,9 @@ void ApplicationUpdates::start()
         }
     }
     
-    connect(m_aptBackend, SIGNAL(commitProgress(QString,int)), SLOT(progress(QString,int)));
     connect(m_aptBackend, SIGNAL(downloadMessage(int,QString)), SLOT(downloadMessage(int,QString)));
+    connect(m_aptBackend, SIGNAL(downloadProgress(int,int,int)), SLOT(downloadProgress(int,int,int)));
+    connect(m_aptBackend, SIGNAL(commitProgress(QString,int)), SLOT(commitProgress(QString,int)));
     m_aptBackend->commitChanges();
 }
 
@@ -69,9 +70,10 @@ qreal ApplicationUpdates::progress() const
     return m_progress;
 }
 
-void ApplicationUpdates::progress(const QString& msg, int percentage)
+void ApplicationUpdates::commitProgress(const QString& msg, int percentage)
 {
-    m_progress = qreal(percentage)/100;
+    //NOTE: We consider half the process to download and half to install
+    m_progress = .5+qreal(percentage)/200;
     emit message(QIcon(), msg);
     emit progressChanged(m_progress);
 }
@@ -91,4 +93,10 @@ void ApplicationUpdates::workerEvent(QApt::WorkerEvent event)
 {
     if(event==QApt::CommitChangesFinished)
         emit updatesFinnished();
+}
+
+void ApplicationUpdates::downloadProgress(int percentage, int speed, int ETA)
+{
+    m_progress = qreal(percentage)/200;
+    emit progressChanged(m_progress);
 }
