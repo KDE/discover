@@ -13,7 +13,7 @@ Page
     ResourcesUpdatesModel {
         id: updatesModel
         resources: resourcesModel
-        onUpdatesFinnished: pageStack.pop()
+        onUpdatesFinnished: page.pageStack.pop()
     }
     onVisibleChanged: window.navigationEnabled=!visible
 
