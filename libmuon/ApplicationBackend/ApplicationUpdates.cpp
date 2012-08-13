@@ -85,3 +85,9 @@ void ApplicationUpdates::installMessage(const QString& msg)
 {
     emit message(QIcon(), msg);
 }
+
+void ApplicationUpdates::workerEvent(QApt::WorkerEvent event)
+{
+    if(event==QApt::CommitChangesFinished)
+        emit updatesFinnished();
+}

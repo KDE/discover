@@ -41,6 +41,7 @@ class ApplicationUpdates : public AbstractBackendUpdater
         void progress(const QString& message, int percentage);
         void downloadMessage(int flag, const QString& message);
         void installMessage(const QString& message);
+        void workerEvent(QApt::WorkerEvent event);
 
     private:
         QApt::Backend* m_aptBackend;
