@@ -29,6 +29,14 @@ Page
         value: updatesModel.progress*100
         minimumValue: 0
         maximumValue: 100
+        
+        Label {
+            anchors.fill: parent
+            text: updatesModel.remainingTime
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            visible: text!=""
+        }
     }
     ScrollBar {
         orientation: Qt.Vertical
