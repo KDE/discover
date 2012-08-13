@@ -45,6 +45,7 @@ void ApplicationUpdates::start()
     QApt::CacheState cache = m_aptBackend->currentCacheState();
     m_aptBackend->markPackagesForDistUpgrade();
     QHash<QApt::Package::State, QApt::PackageList> changes = m_aptBackend->stateChanges(cache, QApt::PackageList());
+    changes.remove(QApt::Package::ToUpgrade);
     if(!changes.isEmpty()) {
         ChangesDialog d(0, changes);
         if(d.exec()==QDialog::Rejected) {
