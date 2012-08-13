@@ -31,8 +31,7 @@ ApplicationUpdates::ApplicationUpdates(ApplicationBackend* parent)
     : AbstractBackendUpdater(parent)
     , m_aptBackend(0)
     , m_appBackend(parent)
-{
-}
+{}
 
 void ApplicationUpdates::setBackend(QApt::Backend* backend)
 {
@@ -48,8 +47,9 @@ void ApplicationUpdates::start()
     QHash<QApt::Package::State, QApt::PackageList> changes = m_aptBackend->stateChanges(cache, QApt::PackageList());
     if(!changes.isEmpty()) {
         ChangesDialog d(0, changes);
-        if(!d.exec()) {
+        if(d.exec()==QDialog::Rejected) {
             emit updatesFinnished();
+            return;
         }
     }
     
