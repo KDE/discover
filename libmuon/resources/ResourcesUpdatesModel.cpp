@@ -22,6 +22,9 @@
 #include "ResourcesModel.h"
 #include "AbstractBackendUpdater.h"
 #include <QDebug>
+#include <KLocalizedString>
+#include <KGlobal>
+#include <KLocale>
 
 ResourcesUpdatesModel::ResourcesUpdatesModel(QObject* parent)
     : QStandardItemModel(parent)
@@ -46,6 +49,7 @@ void ResourcesUpdatesModel::setResourcesModel(ResourcesModel* model)
             connect(updater, SIGNAL(progressChanged(qreal)), SIGNAL(progressChanged()));
             connect(updater, SIGNAL(message(QIcon,QString)), SLOT(message(QIcon,QString)));
             connect(updater, SIGNAL(updatesFinnished()), SLOT(updaterFinished()));
+            connect(updater, SIGNAL(remainingTimeChanged()), SIGNAL(etaChanged()));
             m_updaters += updater;
         }
     }
@@ -82,4 +86,14 @@ void ResourcesUpdatesModel::updaterFinished()
     m_finishedUpdaters++;
     if(m_finishedUpdaters==m_updaters.size())
         emit updatesFinnished();
+}
+
+QString ResourcesUpdatesModel::remainingTime() const
+{
+    long unsigned int maxEta = 0;
+    foreach(AbstractBackendUpdater* upd, m_updaters) {
+        maxEta = qMax(maxEta, upd->remainingTime());
+    }
+    return i18nc("@item:intext Remaining time", "%1 remaining",
+                              KGlobal::locale()->prettyFormatDuration(maxEta));
 }

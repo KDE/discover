@@ -99,4 +99,11 @@ void ApplicationUpdates::downloadProgress(int percentage, int speed, int ETA)
 {
     m_progress = qreal(percentage)/200;
     emit progressChanged(m_progress);
+    m_eta = ETA;
+    emit remainingTimeChanged();
+}
+
+long unsigned int ApplicationUpdates::remainingTime() const
+{
+    return m_eta;
 }

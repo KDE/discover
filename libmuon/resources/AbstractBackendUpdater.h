@@ -34,11 +34,15 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
         virtual void start() = 0;
         virtual bool hasUpdates() const = 0;
         virtual qreal progress() const = 0;
+        
+        /** proposed ETA in milliseconds */
+        virtual long unsigned int remainingTime() const = 0;
 
     signals:
         void progressChanged(qreal progress);
         void message(const QIcon& icon, const QString& msg);
         void updatesFinnished();
+        void remainingTimeChanged();
 };
 
 #endif // ABSTRACTBACKENDUPDATER_H
