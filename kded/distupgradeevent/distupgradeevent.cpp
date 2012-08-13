@@ -37,7 +37,7 @@ bool DistUpgradeEvent::upgradeAvailable()
 {
     QString checkerFile = KStandardDirs::locate("data", "muon-notifier/releasechecker");
     KProcess checkerProcess;
-    checkerProcess.setProgram(QStringList() << "/usr/bin/python" << checkerFile);
+    checkerProcess.setProgram(QStringList() << "/usr/bin/python3" << checkerFile);
 
     if (checkerProcess.execute() == 0) {
         return true;
@@ -66,8 +66,7 @@ void DistUpgradeEvent::show()
 
 void DistUpgradeEvent::run()
 {
-    KProcess::startDetached(QStringList() << "python"
-                            << "/usr/share/pyshared/UpdateManager/DistUpgradeFetcherKDE.py");
+    KProcess::startDetached(QStringList() << "/usr/bin/kubuntu-devel-release-upgrade");
     Event::run();
 }
 

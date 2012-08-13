@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+#! /usr/bin/python3
 
 # releasechecker.py
 #
@@ -24,7 +23,7 @@
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import sys, time
-sys.path.insert(0, '/usr/lib/update-notifier')
+sys.path.insert(0, '/usr/lib/python3/dist-packages/')
 
 from UpdateManager.Core.MetaRelease import MetaReleaseCore
 
