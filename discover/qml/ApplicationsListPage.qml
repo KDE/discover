@@ -20,6 +20,7 @@ Page {
     property bool preferList: false
     property real actualWidth: width-Math.pow(width/70, 2)
     property real proposedMargin: (width-actualWidth)/2
+    property Component header: category==null ? null : categoryHeaderComponent
     clip: true
     
     onSearchChanged: {
@@ -148,7 +149,7 @@ Page {
                 }
             }
             
-            header: page.category==null ? null : categoryHeaderComponent
+            header: page.header
             model: appsModel
         }
     }
@@ -157,7 +158,7 @@ Page {
         id: gridComponent
         ApplicationsGrid {
             model: appsModel
-            header: page.category==null ? null : categoryHeaderComponent
+            header: page.header
             actualWidth: page.actualWidth
             
             delegate: ApplicationsGridDelegate {}
