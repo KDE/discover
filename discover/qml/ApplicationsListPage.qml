@@ -66,7 +66,7 @@ Page {
                 id: listViewShown
                 checkable: true
                 icon: "tools-wizard"
-                model: ["list", "grid2", "grid3"]
+                model: ["list", "grid2"]
                 delegate: ToolButton {
                     width: parent.width
                     text: modelData
@@ -125,7 +125,6 @@ Page {
     Loader {
         id: viewLoader
         anchors.fill: parent
-        property string delegateType: ""
     }
     
     Component {
@@ -161,7 +160,7 @@ Page {
             header: page.category==null ? null : categoryHeaderComponent
             actualWidth: page.actualWidth
             
-            delegate: ApplicationsGridDelegate { requireClick: page.state=="grid3" }
+            delegate: ApplicationsGridDelegate {}
         }
     }
     
@@ -173,10 +172,6 @@ Page {
         },
         State {
             name: "grid2"
-            PropertyChanges { target: viewLoader; sourceComponent: gridComponent }
-        },
-        State {
-            name: "grid3"
             PropertyChanges { target: viewLoader; sourceComponent: gridComponent }
         }
     ]
