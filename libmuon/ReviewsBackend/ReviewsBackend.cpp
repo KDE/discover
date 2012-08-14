@@ -28,6 +28,7 @@
 #include <KLocale>
 #include <KStandardDirs>
 #include <KTemporaryFile>
+#include <KFilterDev>
 
 #include <LibQApt/Backend>
 
@@ -143,16 +144,14 @@ void ReviewsBackend::ratingsFetched(KJob *job)
 
 void ReviewsBackend::loadRatingsFromFile(const QString &fileName)
 {
-    QFile file(fileName);
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    QIODevice* dev = KFilterDev::deviceForFile(fileName, "application/x-gzip");
 
     QJson::Parser parser;
-    QByteArray json = file.readAll();
-
     bool ok = false;
-    QVariant ratings = parser.parse(json, &ok);
+    QVariant ratings = parser.parse(dev, &ok);
 
     if (!ok) {
+        qDebug() << "error while parsing ratings: " << fileName;
         return;
     }
 
