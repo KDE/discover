@@ -79,7 +79,7 @@ Page
             width: messageFlickable.width
         }
         onContentHeightChanged: {
-            if(!userScrolled && count>0 && !moving) {
+            if(!userScrolled && contentHeight>height && !moving) {
                 contentY = contentHeight - height + anchors.topMargin/2
             }
         }
