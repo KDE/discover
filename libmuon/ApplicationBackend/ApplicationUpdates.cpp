@@ -31,6 +31,7 @@ ApplicationUpdates::ApplicationUpdates(ApplicationBackend* parent)
     : AbstractBackendUpdater(parent)
     , m_aptBackend(0)
     , m_appBackend(parent)
+    , m_eta(0)
 {}
 
 void ApplicationUpdates::setBackend(QApt::Backend* backend)
