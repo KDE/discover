@@ -60,7 +60,7 @@ ToolBar {
             TransactionListener {
                 id: listener
                 resource: model.app
-                backend: resourcesModel.backendForResource(model.app)
+                backend: model.app.backend
                 onCancelled: model.remove(index)
             }
             

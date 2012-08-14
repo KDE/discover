@@ -142,7 +142,7 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
         case RatingPointsRole:
         case RatingRole:
         case SortableRatingRole:{
-            Rating* rating = backendForResource(resource)->reviewsBackend()->ratingForApplication(resource);
+            Rating* rating = resource->backend()->reviewsBackend()->ratingForApplication(resource);
             return rating ? rating->property(roleNames().value(role)) : -1;
         }
         default: {
@@ -247,19 +247,6 @@ AbstractResource* ResourcesModel::resourceByPackageName(const QString& name)
     return 0;
 }
 
-
-AbstractResourcesBackend* ResourcesModel::backendForResource(AbstractResource* resource) const
-{
-    foreach(AbstractResourcesBackend* backend, m_backends)
-    {
-        if(backend->providesResouce(resource)) {
-            return backend;
-        }
-    }
-    Q_ASSERT(!resource && "all resources should have a backend");
-    return 0;
-}
-
 int ResourcesModel::updatesCount() const
 {
     int ret = 0;
@@ -273,22 +260,22 @@ int ResourcesModel::updatesCount() const
 
 void ResourcesModel::installApplication(AbstractResource* app)
 {
-    backendForResource(app)->installApplication(app);
+    app->backend()->installApplication(app);
 }
 
 void ResourcesModel::installApplication(AbstractResource* app, const QHash< QString, bool >& state)
 {
-    backendForResource(app)->installApplication(app, state);
+    app->backend()->installApplication(app, state);
 }
 
 void ResourcesModel::removeApplication(AbstractResource* app)
 {
-    backendForResource(app)->removeApplication(app);
+    app->backend()->removeApplication(app);
 }
 
 void ResourcesModel::cancelTransaction(AbstractResource* app)
 {
-    backendForResource(app)->cancelTransaction(app);
+    app->backend()->cancelTransaction(app);
 }
 
 void ResourcesModel::transactionChanged(Transaction* t)

@@ -6,7 +6,7 @@ import org.kde.muon 1.0
 Item {
     id: appInfo
     property QtObject application: null
-    property variant reviewsBackend: resourcesModel.backendForResource(application).reviewsBackend
+    property variant reviewsBackend: application.backend.reviewsBackend
     
     ScrollBar {
         id: scroll
