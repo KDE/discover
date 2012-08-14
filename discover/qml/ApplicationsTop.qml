@@ -21,7 +21,7 @@ ListView {
     }
     header: Label {
         text: ListView.view.title
-        width: top2.width
+        width: parent.width
         horizontalAlignment: Text.AlignHCenter
         font.weight: Font.Bold
     }
