@@ -125,22 +125,20 @@ Page {
                     }
                     sortRole: "popcon"
                     filteredCategory: page.category
-                    header: Label { text: i18n("<b>Popularity Contest</b>"); width: top1.width; horizontalAlignment: Text.AlignHCenter }
+                    title: i18n("Popularity Contest")
                     roleDelegate: Label { property variant model: null; text: i18n("points: %1", model.popcon) }
-                    Component.onCompleted: top1.sortModel()
                 }
                 ApplicationsTop {
                     id: top2
-                    interactive: false
+                    width: parent.width/2-5
                     anchors {
                         top: parent.top
                         right: parent.right
                         bottom: parent.bottom
                     }
-                    width: parent.width/2-5
                     sortRole: "ratingPoints"
                     filteredCategory: page.category
-                    header: Label { text: i18n("<b>Best Ratings</b>"); width: top2.width; horizontalAlignment: Text.AlignHCenter }
+                    title: i18n("Best Ratings")
                     roleDelegate: Rating { property variant model: null; rating: model.rating; height: 10 }
                 }
             }

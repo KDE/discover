@@ -9,6 +9,7 @@ ListView {
     property alias sortRole: appsModel.stringSortRole
     property alias filteredCategory: appsModel.filteredCategory
     property Component roleDelegate: null
+    property string title: ""
     
     function sortModel() { appsModel.sortModel() }
     
@@ -17,6 +18,12 @@ ListView {
         id: appsModel
         sortOrder: Qt.DescendingOrder
         onRowsInserted: sortModel()
+    }
+    header: Label {
+        text: ListView.view.title
+        width: top2.width
+        horizontalAlignment: Text.AlignHCenter
+        font.weight: Font.Bold
     }
     delegate: ListItem {
                 width: view.width
