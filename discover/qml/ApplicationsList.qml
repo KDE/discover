@@ -11,6 +11,7 @@ Item {
     property bool preferUpgrade: false
     property alias model: view.model
     property real actualWidth: width
+    property real proposedMargin: (view.width-actualWidth)/2
 
     ListView
     {
@@ -28,7 +29,7 @@ Item {
         delegate: ListItem {
                 checked: view.currentIndex==index
                 width: parentItem.actualWidth
-                x: (view.width-actualWidth)/2
+                x: parentItem.proposedMargin
                 property real contHeight: height*0.8
                 height: nameLabel.font.pixelSize*3
                 MouseArea {
