@@ -76,7 +76,7 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         break;
     case Qt::FontRole: {
         QFont font;
-        if ((item->type() == UpdateItem::ItemType::CategoryItem) && column == 1) {
+        if ((item->type() == UpdateItem::ItemType::CategoryItem) && column == SizeColumn) {
             font.setBold(true);
             return font;
         }
