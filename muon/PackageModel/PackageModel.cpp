@@ -104,6 +104,13 @@ void PackageModel::clear()
     endRemoveRows();
 }
 
+void PackageModel::externalDataChanged()
+{
+    // A package being changed means that any number of other packages can have
+    // changed, so say everything changed to trigger refreshes.
+    emit dataChanged(index(0, 0), index(m_packages.size() - 1, 0));
+}
+
 QApt::Package *PackageModel::packageAt(const QModelIndex &index) const
 {
     return m_packages.at(index.row());
