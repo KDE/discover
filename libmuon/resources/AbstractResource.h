@@ -53,6 +53,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString section READ section CONSTANT)
     Q_PROPERTY(int popcon READ popularityContest CONSTANT)
     Q_PROPERTY(QString mimetypes READ mimetypes CONSTANT)
+    Q_PROPERTY(AbstractResourcesBackend* backend READ backend CONSTANT)
     public:
         enum State {
             Broken,

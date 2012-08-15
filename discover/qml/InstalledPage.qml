@@ -17,8 +17,9 @@ ApplicationsListPage {
     preferUpgrade: true
     preferList: true
     
-    UpdatesPage {
+    Component {
         id: updatesPage
+        UpdatesPage {}
     }
     
     Component {

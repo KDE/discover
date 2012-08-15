@@ -94,6 +94,9 @@ QString ResourcesUpdatesModel::remainingTime() const
     foreach(AbstractBackendUpdater* upd, m_updaters) {
         maxEta = qMax(maxEta, upd->remainingTime());
     }
-    return i18nc("@item:intext Remaining time", "%1 remaining",
-                              KGlobal::locale()->prettyFormatDuration(maxEta));
+    if(maxEta==0)
+        return QString();
+    else
+        return i18nc("@item:intext Remaining time", "%1 remaining",
+                                KGlobal::locale()->prettyFormatDuration(maxEta));
 }

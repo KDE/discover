@@ -73,7 +73,6 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         int updatesCount() const;
         
         Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name);
-        Q_SCRIPTABLE AbstractResourcesBackend* backendForResource(AbstractResource* resource) const;
         
     public slots:
         void installApplication(AbstractResource* app, const QHash<QString, bool>& state);

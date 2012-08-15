@@ -20,6 +20,7 @@ Page {
     property bool preferList: false
     property real actualWidth: width-Math.pow(width/70, 2)
     property real proposedMargin: (width-actualWidth)/2
+    property Component header: category==null ? null : categoryHeaderComponent
     clip: true
     
     onSearchChanged: {
@@ -66,7 +67,7 @@ Page {
                 id: listViewShown
                 checkable: true
                 icon: "tools-wizard"
-                model: ["list", "grid2", "grid3"]
+                model: ["list", "grid2"]
                 delegate: ToolButton {
                     width: parent.width
                     text: modelData
@@ -125,7 +126,6 @@ Page {
     Loader {
         id: viewLoader
         anchors.fill: parent
-        property string delegateType: ""
     }
     
     Component {
@@ -149,7 +149,7 @@ Page {
                 }
             }
             
-            header: page.category==null ? null : categoryHeaderComponent
+            header: page.header
             model: appsModel
         }
     }
@@ -158,10 +158,10 @@ Page {
         id: gridComponent
         ApplicationsGrid {
             model: appsModel
-            header: page.category==null ? null : categoryHeaderComponent
+            header: page.header
             actualWidth: page.actualWidth
             
-            delegate: ApplicationsGridDelegate { requireClick: page.state=="grid3" }
+            delegate: ApplicationsGridDelegate {}
         }
     }
     
@@ -173,10 +173,6 @@ Page {
         },
         State {
             name: "grid2"
-            PropertyChanges { target: viewLoader; sourceComponent: gridComponent }
-        },
-        State {
-            name: "grid3"
             PropertyChanges { target: viewLoader; sourceComponent: gridComponent }
         }
     ]

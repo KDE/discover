@@ -14,7 +14,7 @@ Item {
     
     TransactionListener {
         id: transactions
-        backend: resourcesModel.backendForResource(resource)
+        backend: resource.backend
     }
     
     Button {
