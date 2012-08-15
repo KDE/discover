@@ -52,6 +52,9 @@ public:
 
 private:
     QApt::PackageList m_packages;
+
+public slots:
+    void externalDataChanged();
 };
 
 #endif

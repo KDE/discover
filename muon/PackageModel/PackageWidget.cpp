@@ -227,6 +227,7 @@ void PackageWidget::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
     connect(m_backend, SIGNAL(packageChanged()), m_detailsWidget, SLOT(refreshTabs()));
+    connect(m_backend, SIGNAL(packageChanged()), m_model, SLOT(externalDataChanged()));
 
     m_detailsWidget->setBackend(backend);
     m_proxyModel->setBackend(m_backend);
