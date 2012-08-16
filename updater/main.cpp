@@ -30,12 +30,12 @@
 static const char description[] =
     I18N_NOOP("An update manager");
 
-static const char version[] = "1.3.80 \"Energetic Elemental\"";
+static const char version[] = "1.4.0";
 
 int main(int argc, char **argv)
 {
     KAboutData about("muon-updater", "muon-updater", ki18n("Muon Update Manager"), version, ki18n(description),
-                     KAboutData::License_GPL, ki18n("©2010, 2011 Jonathan Thomas"), KLocalizedString(), 0);
+                     KAboutData::License_GPL, ki18n("©2010-2012 Jonathan Thomas"), KLocalizedString(), 0);
     about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
     about.setProgramIconName("system-software-update");
     about.setProductName("muon/updater");

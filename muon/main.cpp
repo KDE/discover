@@ -29,12 +29,12 @@
 static const char description[] =
     I18N_NOOP("A package manager");
 
-static const char version[] = "1.3.80 \"Energetic Elemental\"";
+static const char version[] = "1.4.0";
 
 int main(int argc, char **argv)
 {
     KAboutData about("muon", 0, ki18n("Muon Package Manager"), version, ki18n(description),
-                     KAboutData::License_GPL, ki18n("© 2009-2011 Jonathan Thomas"), KLocalizedString(), 0);
+                     KAboutData::License_GPL, ki18n("© 2009-2012 Jonathan Thomas"), KLocalizedString(), 0);
     about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
     about.setProductName("muon/muon");
 
