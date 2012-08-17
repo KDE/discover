@@ -39,12 +39,13 @@ class ApplicationUpdates : public AbstractBackendUpdater
         void setBackend(QApt::Backend* b);
         virtual long unsigned int remainingTime() const;
 
-    public slots:
+    private slots:
         void commitProgress(const QString& message, int percentage);
         void downloadMessage(int flag, const QString& message);
         void installMessage(const QString& message);
         void workerEvent(QApt::WorkerEvent event);
         void downloadProgress(int percentage, int speed, int ETA);
+        void cleanup();
 
     private:
         QApt::Backend* m_aptBackend;

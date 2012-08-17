@@ -32,7 +32,14 @@ ApplicationUpdates::ApplicationUpdates(ApplicationBackend* parent)
     , m_aptBackend(0)
     , m_appBackend(parent)
     , m_eta(0)
-{}
+{
+    connect(this, SIGNAL(updatesFinnished()), SLOT(cleanup()));
+}
+
+void ApplicationUpdates::cleanup()
+{
+    disconnect(m_aptBackend);
+}
 
 void ApplicationUpdates::setBackend(QApt::Backend* backend)
 {
@@ -58,6 +65,7 @@ void ApplicationUpdates::start()
     connect(m_aptBackend, SIGNAL(downloadMessage(int,QString)), SLOT(downloadMessage(int,QString)));
     connect(m_aptBackend, SIGNAL(downloadProgress(int,int,int)), SLOT(downloadProgress(int,int,int)));
     connect(m_aptBackend, SIGNAL(commitProgress(QString,int)), SLOT(commitProgress(QString,int)));
+    connect(m_aptBackend, SIGNAL(workerEvent(QApt::WorkerEvent)), SLOT(workerEvent(QApt::WorkerEvent)));
     m_aptBackend->commitChanges();
 }
 
@@ -92,8 +100,10 @@ void ApplicationUpdates::installMessage(const QString& msg)
 
 void ApplicationUpdates::workerEvent(QApt::WorkerEvent event)
 {
-    if(event==QApt::CommitChangesFinished)
+    if(event==QApt::CommitChangesFinished) {
+        m_appBackend->reload();
         emit updatesFinnished();
+    }
 }
 
 void ApplicationUpdates::downloadProgress(int percentage, int speed, int ETA)
