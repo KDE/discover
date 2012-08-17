@@ -101,7 +101,6 @@ void ApplicationUpdates::installMessage(const QString& msg)
 void ApplicationUpdates::workerEvent(QApt::WorkerEvent event)
 {
     if(event==QApt::CommitChangesFinished) {
-        m_appBackend->reload();
         emit updatesFinnished();
     }
 }
