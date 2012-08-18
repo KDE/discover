@@ -31,8 +31,8 @@ ApplicationsListPage {
             width: resourcesModel.updatesCount>0 ? commitButton.implicitWidth : 0
             
             onClicked: {
-                pageStack.push(updatesPage)
-                updatesPage.start()
+                var page = pageStack.push(updatesPage)
+                page.start()
             }
         }
     }
