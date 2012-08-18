@@ -61,14 +61,7 @@ QAptIntegration::QAptIntegration(KXmlGuiWindow* parent)
 void QAptIntegration::initObject()
 {
     m_backend = new QApt::Backend;
-    connect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
-            this, SLOT(workerEvent(QApt::WorkerEvent)));
-    connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)),
-            this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
-    connect(m_backend, SIGNAL(warningOccurred(QApt::WarningCode,QVariantMap)),
-            this, SLOT(warningOccurred(QApt::WarningCode,QVariantMap)));
-    connect(m_backend, SIGNAL(questionOccurred(QApt::WorkerQuestion,QVariantMap)),
-            this, SLOT(questionOccurred(QApt::WorkerQuestion,QVariantMap)));
+
     connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
     m_backend->init();
     m_originalState = m_backend->currentCacheState();
@@ -131,16 +124,6 @@ void QAptIntegration::setupActions()
     KAction *quitAction = KStandardAction::quit(this, SLOT(slotQuit()), m_mainWindow->actionCollection());
     m_mainWindow->actionCollection()->addAction("quit", quitAction);
 
-    KAction* updateAction = m_mainWindow->actionCollection()->addAction("update");
-    updateAction->setIcon(KIcon("system-software-update"));
-    updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
-    updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
-    connect(updateAction, SIGNAL(triggered()), this, SLOT(checkForUpdates()));
-    if (!isConnected()) {
-        updateAction->setDisabled(true);
-    }
-    connect(this, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
-
 
     KAction* undoAction = KStandardAction::undo(this, SLOT(undo()), actionCollection());
     actionCollection()->addAction("undo", undoAction);
@@ -153,17 +136,8 @@ void QAptIntegration::setupActions()
     revertAction->setText(i18nc("@action Reverts all potential changes to the cache", "Unmark All"));
     connect(revertAction, SIGNAL(triggered()), this, SLOT(revertChanges()));
 
-    KAction* softwarePropertiesAction = actionCollection()->addAction("software_properties");
-    softwarePropertiesAction->setIcon(KIcon("configure"));
-    softwarePropertiesAction->setText(i18nc("@action Opens the software sources configuration dialog", "Configure Software Sources"));
-    connect(softwarePropertiesAction, SIGNAL(triggered()), this, SLOT(runSourcesEditor()));
-
     QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_M), m_mainWindow);
     connect(shortcut, SIGNAL(activated()), this, SLOT(easterEggTriggered()));
-}
-
-void QAptIntegration::checkForUpdates()
-{
 }
 
 void QAptIntegration::workerEvent(QApt::WorkerEvent event)
@@ -586,37 +560,6 @@ void QAptIntegration::redo()
 void QAptIntegration::revertChanges()
 {
     m_backend->restoreCacheState(m_originalState);
-}
-
-void QAptIntegration::runSourcesEditor(bool update)
-{
-    KProcess *proc = new KProcess(this);
-    QStringList arguments;
-    int winID = m_mainWindow->effectiveWinId();
-
-    QString editor = "software-properties-kde";
-
-    if (!update) {
-        editor.append(QLatin1Literal(" --dont-update --attach ") % QString::number(winID)); //krazy:exclude=spelling;
-    } else {
-        editor.append(QLatin1Literal(" --attach ") % QString::number(winID));
-    }
-
-    arguments << "/usr/bin/kdesudo" << editor;
-
-    proc->setProgram(arguments);
-    m_mainWindow->find(winID)->setEnabled(false);
-    proc->start();
-    connect(proc, SIGNAL(finished(int,QProcess::ExitStatus)),
-            this, SLOT(sourcesEditorFinished(int)));
-}
-
-void QAptIntegration::sourcesEditorFinished(int reload)
-{
-    m_mainWindow->find(m_mainWindow->effectiveWinId())->setEnabled(true);
-    if (reload == 1) {
-        checkForUpdates();
-    }
 }
 
 void QAptIntegration::easterEggTriggered()

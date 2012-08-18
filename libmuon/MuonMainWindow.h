@@ -55,7 +55,6 @@ class MUONPRIVATE_EXPORT MuonMainWindow : public KXmlGuiWindow
     Q_OBJECT
     public:
         MuonMainWindow();
-        virtual ~MuonMainWindow();
 
         QSize sizeHint() const;
         void setupActions();
@@ -70,12 +69,14 @@ class MUONPRIVATE_EXPORT MuonMainWindow : public KXmlGuiWindow
 
     protected slots:
         void initObject();
+        bool queryExit();
         virtual void workerEvent(QApt::WorkerEvent event);
         virtual void errorOccurred(QApt::ErrorCode code, const QVariantMap &args);
         virtual void warningOccurred(QApt::WarningCode warning, const QVariantMap &args);
         virtual void questionOccurred(QApt::WorkerQuestion question, const QVariantMap &details);
         virtual void showQueuedWarnings();
         virtual void showQueuedErrors();
+        virtual void checkForUpdates() = 0;
         void downloadPackagesFromList();
         bool saveSelections();
         bool saveInstalledPackagesList();
@@ -87,6 +88,9 @@ class MUONPRIVATE_EXPORT MuonMainWindow : public KXmlGuiWindow
         void runSourcesEditor(bool update = false);
         void sourcesEditorFinished(int reload);
         void easterEggTriggered();
+
+    private slots:
+        void onBackendReady();
 
     protected:
         QAptIntegration* m_aptify;

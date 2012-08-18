@@ -19,6 +19,19 @@
  ***************************************************************************/
 
 #include "MuonMainWindow.h"
+
+// Qt includes
+#include <QtCore/QStringBuilder>
+
+// KDE includes
+#include <KAction>
+#include <KActionCollection>
+#include <KProcess>
+
+// LibQApt includes
+#include <LibQApt/Backend>
+
+// Own includes
 #include "QAptIntegration.h"
 
 MuonMainWindow::MuonMainWindow()
@@ -32,11 +45,25 @@ MuonMainWindow::MuonMainWindow()
     , m_errorStack(m_aptify->m_errorStack)
 {
     connect(m_aptify, SIGNAL(backendReady(QApt::Backend*)), SIGNAL(backendReady(QApt::Backend*)));
+    connect(m_aptify, SIGNAL(backendReady(QApt::Backend*)), SLOT(onBackendReady()));
     connect(m_aptify, SIGNAL(shouldConnect(bool)), SIGNAL(shouldConnect(bool)));
 }
 
-MuonMainWindow::~MuonMainWindow()
+bool MuonMainWindow::queryExit()
 {
+    return m_aptify->queryExit();
+}
+
+void MuonMainWindow::onBackendReady()
+{
+    connect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
+            this, SLOT(workerEvent(QApt::WorkerEvent)));
+    connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)),
+            this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
+    connect(m_backend, SIGNAL(warningOccurred(QApt::WarningCode,QVariantMap)),
+            this, SLOT(warningOccurred(QApt::WarningCode,QVariantMap)));
+    connect(m_backend, SIGNAL(questionOccurred(QApt::WorkerQuestion,QVariantMap)),
+            this, SLOT(questionOccurred(QApt::WorkerQuestion,QVariantMap)));
 }
 
 QSize MuonMainWindow::sizeHint() const
@@ -47,6 +74,21 @@ QSize MuonMainWindow::sizeHint() const
 void MuonMainWindow::setupActions()
 {
     m_aptify->setupActions();
+
+    KAction* updateAction = actionCollection()->addAction("update");
+    updateAction->setIcon(KIcon("system-software-update"));
+    updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
+    updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
+    connect(updateAction, SIGNAL(triggered()), this, SLOT(checkForUpdates()));
+    if (!isConnected()) {
+        updateAction->setDisabled(true);
+    }
+    connect(this, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
+
+    KAction* softwarePropertiesAction = actionCollection()->addAction("software_properties");
+    softwarePropertiesAction->setIcon(KIcon("configure"));
+    softwarePropertiesAction->setText(i18nc("@action Opens the software sources configuration dialog", "Configure Software Sources"));
+    connect(softwarePropertiesAction, SIGNAL(triggered()), this, SLOT(runSourcesEditor()));
 }
 
 void MuonMainWindow::initializationErrors(const QString& errors)
@@ -116,12 +158,33 @@ void MuonMainWindow::easterEggTriggered()
 
 void MuonMainWindow::runSourcesEditor(bool update)
 {
-    m_aptify->runSourcesEditor(update);
+    KProcess *proc = new KProcess(this);
+    QStringList arguments;
+    int winID = effectiveWinId();
+
+    QString editor = "software-properties-kde";
+
+    if (!update) {
+        editor.append(QLatin1String(" --dont-update --attach ") % QString::number(winID)); //krazy:exclude=spelling;
+    } else {
+        editor.append(QLatin1String(" --attach ") % QString::number(winID));
+    }
+
+    arguments << "/usr/bin/kdesudo" << editor;
+
+    proc->setProgram(arguments);
+    find(winID)->setEnabled(false);
+    proc->start();
+    connect(proc, SIGNAL(finished(int,QProcess::ExitStatus)),
+            this, SLOT(sourcesEditorFinished(int)));
 }
 
 void MuonMainWindow::sourcesEditorFinished(int reload)
 {
-    m_aptify->sourcesEditorFinished(reload);
+    find(effectiveWinId())->setEnabled(true);
+    if (reload == 1) {
+        checkForUpdates();
+    }
 }
 
 bool MuonMainWindow::createDownloadList()
