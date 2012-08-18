@@ -22,7 +22,7 @@ endif(QAPT_FOUND)
 option(LIBATTICA_ENABLED "Enable KNS backend" ON)
 if (LIBATTICA_FOUND AND LIBATTICA_ENABLED)
     add_definitions(-DATTICA_ENABLED)
-endif (LIBATTICA_FOUND)
+endif (LIBATTICA_FOUND AND LIBATTICA_ENABLED)
 
 qt4_add_resources(muon_discover_SRCS resources.qrc)
 
