@@ -62,7 +62,6 @@ void QAptIntegration::initObject()
 {
     m_backend = new QApt::Backend;
 
-    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
     m_backend->init();
     m_originalState = m_backend->currentCacheState();
 

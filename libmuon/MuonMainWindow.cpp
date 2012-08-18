@@ -64,6 +64,7 @@ void MuonMainWindow::onBackendReady()
             this, SLOT(warningOccurred(QApt::WarningCode,QVariantMap)));
     connect(m_backend, SIGNAL(questionOccurred(QApt::WorkerQuestion,QVariantMap)),
             this, SLOT(questionOccurred(QApt::WorkerQuestion,QVariantMap)));
+    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
 }
 
 QSize MuonMainWindow::sizeHint() const
