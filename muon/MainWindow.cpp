@@ -337,8 +337,10 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
             m_errorStack.clear();
         }
 
-        m_downloadWidget->deleteLater();
-        m_downloadWidget = 0;
+        if (m_downloadWidget) {
+            m_downloadWidget->deleteLater();
+            m_downloadWidget = 0;
+        }
         break;
     case QApt::PackageDownloadStarted:
         if (m_downloadWidget) {
