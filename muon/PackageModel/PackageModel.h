@@ -38,7 +38,6 @@ public:
         SupportRole = Qt::UserRole + 5
     };
     explicit PackageModel(QObject *parent = 0);
-    ~PackageModel();
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     int columnCount(const QModelIndex &parent = QModelIndex()) const;

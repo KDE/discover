@@ -31,10 +31,6 @@ PackageModel::PackageModel(QObject *parent)
 {
 }
 
-PackageModel::~PackageModel()
-{
-}
-
 int PackageModel::rowCount(const QModelIndex & /*parent*/) const
 {
     return m_packages.size();
