@@ -55,12 +55,12 @@
 
 MainWindow::MainWindow()
     : MuonMainWindow()
-    , m_stack(0)
-    , m_settingsDialog(0)
-    , m_historyDialog(0)
-    , m_reviewWidget(0)
-    , m_downloadWidget(0)
-    , m_commitWidget(0)
+    , m_stack(nullptr)
+    , m_settingsDialog(nullptr)
+    , m_historyDialog(nullptr)
+    , m_reviewWidget(nullptr)
+    , m_downloadWidget(nullptr)
+    , m_commitWidget(nullptr)
 
 {
     initGUI();
@@ -339,7 +339,7 @@ void MainWindow::workerEvent(QApt::WorkerEvent event)
 
         if (m_downloadWidget) {
             m_downloadWidget->deleteLater();
-            m_downloadWidget = 0;
+            m_downloadWidget = nullptr;
         }
         break;
     case QApt::PackageDownloadStarted:
@@ -395,7 +395,7 @@ void MainWindow::returnFromPreview()
     m_stack->setCurrentWidget(m_mainWidget);
     if (m_reviewWidget) {
         m_reviewWidget->deleteLater();
-        m_reviewWidget = 0;
+        m_reviewWidget = nullptr;
     }
 
     m_previewAction->setIcon(KIcon("document-preview-archive"));
@@ -460,11 +460,11 @@ void MainWindow::reload()
     // No need to keep these around in memory.
     if (m_downloadWidget) {
         m_downloadWidget->deleteLater();
-        m_downloadWidget = 0;
+        m_downloadWidget = nullptr;
     }
     if (m_commitWidget) {
         m_commitWidget->deleteLater();
-        m_commitWidget = 0;
+        m_commitWidget = nullptr;
     }
 
     if (m_backend->xapianIndexNeedsUpdate()) {
@@ -519,7 +519,7 @@ void MainWindow::editSettings()
 void MainWindow::closeSettingsDialog()
 {
     m_settingsDialog->deleteLater();
-    m_settingsDialog = 0;
+    m_settingsDialog = nullptr;
 }
 
 void MainWindow::showHistoryDialog()
@@ -549,7 +549,7 @@ void MainWindow::closeHistoryDialog()
                               "HistoryDialog");
     m_historyDialog->saveDialogSize(dialogConfig, KConfigBase::Persistent);
     m_historyDialog->deleteLater();
-    m_historyDialog = 0;
+    m_historyDialog = nullptr;
 }
 
 void MainWindow::revertChanges()
