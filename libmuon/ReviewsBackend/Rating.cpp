@@ -23,6 +23,23 @@
 #include <QDebug>
 #include <qmath.h>
 
+inline double fastPow(double a, double b) {
+    union {
+        double d;
+        int x[2];
+    } u = { a };
+
+#if Q_BYTE_ORDER == Q_LITTLE_ENDIAN
+    u.x[1] = (int)(b * (u.x[1] - 1072632447) + 1072632447);
+    u.x[0] = 0;
+#else
+    u.x[1] = 0;
+    u.x[0] = (int)(b * (u.x[1] - 1072632447) + 1072632447);
+#endif
+
+    return u.d;
+}
+
 // Converted from a Ruby example, returns an inverse normal distribution
 double pnormaldist(double qn)
 {
@@ -41,7 +58,7 @@ double pnormaldist(double qn)
     w1 = b[0];
 
     for(int i = 1; i < 11; i++)
-        w1 += b[i] * qPow(w3,i);
+        w1 += b[i] * fastPow(w3,i);
 
     if(qn > 0.5)
         return qSqrt(w1*w3);
