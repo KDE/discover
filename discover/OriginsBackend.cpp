@@ -78,14 +78,20 @@ void OriginsBackend::load(const QString& file)
     
     if(!f.open(QFile::Text|QFile::ReadOnly))
         return;
-    
     //skip comments and empty lines
-    QRegExp rxComment("(\\s*#.)|(\\s+$)");
+    QRegExp rxComment("(\\s*#\\s*)|(^\\s+$)");
     QRegExp rxArchitecture("\\[(.+)\\] ");
     while(!f.atEnd()) {
         QByteArray line = f.readLine();
         int comment = rxComment.indexIn(line);
-        if(comment>=0)
+        bool enabled = true;
+        if(comment==0) {
+            line = line.mid(rxComment.matchedLength());
+            if(!line.startsWith("deb")) {
+                continue;
+            }
+            enabled = false;
+        } else if(comment>0)
             line = line.left(comment);
         
         if(!line.isEmpty()) {
@@ -120,6 +126,7 @@ void OriginsBackend::load(const QString& file)
             entry->setArch(architecture);
             entry->setSource(source.first().endsWith("deb-src"));
             entry->setSuite(source[2]);
+            entry->setEnabled(enabled);
             
             QStringList args;
             foreach(const QByteArray& arg, source.mid(3)) {
@@ -195,6 +202,16 @@ QVariantList OriginsBackend::sourcesVariant() const
     QVariantList ret;
     foreach(QObject* source, m_sources) {
         ret += qVariantFromValue<QObject*>(source);
+    }
+    return ret;
+}
+
+
+bool Source::enabled() const
+{
+    bool ret = false;
+    foreach(Entry* e, m_entries) {
+        ret |= e->isEnabled();
     }
     return ret;
 }

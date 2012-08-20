@@ -33,6 +33,7 @@ class Entry : public QObject
     Q_PROPERTY(QStringList args READ args CONSTANT)
     Q_PROPERTY(QString suite READ suite CONSTANT)
     Q_PROPERTY(QString arch READ arch CONSTANT)
+    Q_PROPERTY(bool enabled READ isEnabled CONSTANT)
 
     public:
         Entry(QObject* parent) : QObject(parent), m_isSource(false) {}
@@ -48,7 +49,11 @@ class Entry : public QObject
         
         void setArch(const QString& arch) { m_arch = arch; }
         QString arch() const { return m_arch; }
+        
+        void setEnabled(bool enabled) { m_enabled = enabled; }
+        bool isEnabled() const { return m_enabled; }
     private:
+        bool m_enabled;
         bool m_isSource;
         QStringList m_args;
         QByteArray m_suite;
@@ -60,6 +65,7 @@ class Source : public QObject
     Q_OBJECT
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(QString uri READ uri CONSTANT)
+    Q_PROPERTY(bool enabled READ enabled CONSTANT)
     Q_PROPERTY(QDeclarativeListProperty<Entry> entries READ entries CONSTANT)
     public:
         Source(QObject* parent) : QObject(parent) {}
@@ -68,7 +74,7 @@ class Source : public QObject
         void addEntry(Entry* entry) { m_entries.append(entry); }
         QDeclarativeListProperty<Entry> entries();
         QString name() const;
-    
+        bool enabled() const;
     private:
         QString m_uri;
         QList<Entry*> m_entries;

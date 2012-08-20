@@ -140,12 +140,22 @@ Page {
             enabled: browseOrigin.enabled
             onClicked: Navigation.openApplicationListSource(modelData.name)
             
+            CheckBox {
+                id: enabledBox
+                enabled: false //TODO: implement the application of this change
+                anchors {
+                    left: parent.left
+                    top: parent.top
+                }
+                checked: modelData.enabled
+            }
             Label {
                 anchors {
                     top: parent.top
                     bottom: parent.bottom
-                    left: parent.left
+                    left: enabledBox.right
                     right: suitesLabel.left
+                    leftMargin: 5
                 }
                 elide: Text.ElideRight
                 text: modelData.name=="" ? modelData.uri : i18n("%1. %2", modelData.name, modelData.uri)
