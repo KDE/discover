@@ -250,6 +250,9 @@ void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
             runNextTransaction();
         }
     }   break;
+    case QApt::CacheUpdateFinished:
+        reload();
+        break;
     default:
         break;
     }
