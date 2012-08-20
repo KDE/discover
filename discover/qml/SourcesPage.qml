@@ -137,7 +137,8 @@ Page {
                 
                 return ret.join(", ")
             }
-            enabled: true
+            enabled: browseOrigin.enabled
+            onClicked: Navigation.openApplicationListSource(modelData.name)
             
             Label {
                 anchors {
@@ -174,7 +175,6 @@ Page {
                 iconSource: "edit-delete"
                 onClicked: origins.removeRepository(modelData.uri)
             }
-            onClicked: Navigation.openApplicationListSource(modelData.name)
         }
     }
 }
