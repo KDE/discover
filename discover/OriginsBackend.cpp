@@ -100,8 +100,21 @@ void OriginsBackend::load(const QString& file)
             if(source.count() < 3) {
                 return;
             }
-            QByteArray uri = source[1];
-            Source* newSource = sourceForUri(source[1]);
+            QByteArray uri;
+            int opened = 0;
+            for(int i=1; i<source.count(); i++) {
+                if(source[i].contains('['))
+                    ++opened;
+                else if(source[i].contains(']'))
+                    --opened;
+                if(!uri.isEmpty())
+                    uri += ' ';
+                uri += source[i];
+                if(opened==0)
+                    break;
+            }
+            
+            Source* newSource = sourceForUri(uri);
             Entry* entry = new Entry(newSource);
             
             entry->setArch(architecture);
@@ -152,8 +165,8 @@ void OriginsBackend::removeRepository(const QString& repository)
 void OriginsBackend::additionDone(int processErrorCode)
 {
     if(processErrorCode==0) {
-        applicationBackend()->reload();
         load();
+        applicationBackend()->reload();
     } else {
         QProcess* p = qobject_cast<QProcess*>(sender());
         Q_ASSERT(p);
@@ -166,8 +179,8 @@ void OriginsBackend::additionDone(int processErrorCode)
 void OriginsBackend::removalDone(int processErrorCode)
 {
     if(processErrorCode==0) {
-        applicationBackend()->reload();
         load();
+        applicationBackend()->reload();
     } else {
         QProcess* p = qobject_cast<QProcess*>(sender());
         Q_ASSERT(p);

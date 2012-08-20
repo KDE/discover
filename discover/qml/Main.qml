@@ -35,7 +35,9 @@ Item {
             console.log("status error: "+currentTopLevel.errorString())
         }
         while(pageStack.depth>1) {
-            pageStack.pop().destroy(1000)
+            var obj = pageStack.pop()
+            if(obj)
+                obj.destroy(1000)
         }
         
         try {

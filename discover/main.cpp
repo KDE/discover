@@ -28,12 +28,12 @@
 static const char description[] =
     I18N_NOOP("An application discoverer");
 
-static const char version[] = "1.2.95 \"Daring Dalek\"";
+static const char version[] = "1.4.0";
 
 int main(int argc, char** argv)
 {
     KAboutData about("muon-discover", "muon-discover", ki18n("Muon Discover"), version, ki18n(description),
-                     KAboutData::License_GPL, ki18n("©2010, 2011 Jonathan Thomas"), KLocalizedString(), 0);
+                     KAboutData::License_GPL, ki18n("©2010-2012 Jonathan Thomas"), KLocalizedString(), 0);
     about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
     about.addAuthor(ki18n("Aleix Pol Gonzalez"), KLocalizedString(), "aleixpol@blue-systems.com");
     about.setProgramIconName("muondiscover");

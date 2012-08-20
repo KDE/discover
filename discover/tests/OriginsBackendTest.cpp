@@ -42,6 +42,8 @@ void OriginsBackendTest::testLoad()
     f.write("deb http://nonus.debian.org/debian-non-US stable/non-US main contrib non-free\n");
     f.write("deb http://ftp.de.debian.org/debian-non-US unstable/binary-$(ARCH)/\n");
     f.write("deb [arch=i386,amd64] http://ftp.de.debian.org/debian-non-US unstable\n");
+    f.write("# deb http://ftp.de.debian.org/debian-non-US unstable/binary-$(ARCH)/\n");
+    f.write("deb cdrom:[Kubuntu 11.10 _Oneiric Ocelot_ - Release amd64 (20111012)]/ dists/oneiric/main/binary-i386/");
     f.write("#hola companys!\n");
     f.write("       #com anem?\n");
     f.write("       \n");
@@ -52,10 +54,10 @@ void OriginsBackendTest::testLoad()
     OriginsBackend origins;
     origins.load("testsource.list");
     
-    QCOMPARE(origins.sources().size(), 4);
+    QCOMPARE(origins.sources().size(), 5);
     foreach(Source* s, origins.sources()) {
         QVERIFY(!s->uri().isEmpty());
-        QVERIFY(!s->uri().contains(']'));
+        QVERIFY(s->uri().contains('[') == s->uri().contains(']'));
     }
     
     QFile::remove("testsource.list");

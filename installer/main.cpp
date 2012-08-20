@@ -30,12 +30,12 @@
 static const char description[] =
     I18N_NOOP("An application manager");
 
-static const char version[] = "1.3.80 \"Energetic Elemental\"";
+static const char version[] = "1.4.0";
 
 int main(int argc, char **argv)
 {
     KAboutData about("muon-installer", "muon-installer", ki18n("Muon Software Center"), version, ki18n(description),
-                     KAboutData::License_GPL, ki18n("©2010, 2011 Jonathan Thomas"), KLocalizedString(), 0);
+                     KAboutData::License_GPL, ki18n("©2010-2012 Jonathan Thomas"), KLocalizedString(), 0);
     about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
     about.setProgramIconName("applications-other");
     about.setProductName("muon/installer");
