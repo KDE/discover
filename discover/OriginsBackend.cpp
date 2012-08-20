@@ -154,8 +154,8 @@ void OriginsBackend::removeRepository(const QString& repository)
 void OriginsBackend::additionDone(int processErrorCode)
 {
     if(processErrorCode==0) {
-        BackendsSingleton::self()->applicationBackend(), SLOT(reload());
         load();
+        BackendsSingleton::self()->applicationBackend()->reload();
     } else {
         QProcess* p = qobject_cast<QProcess*>(sender());
         Q_ASSERT(p);
@@ -168,8 +168,8 @@ void OriginsBackend::additionDone(int processErrorCode)
 void OriginsBackend::removalDone(int processErrorCode)
 {
     if(processErrorCode==0) {
-        BackendsSingleton::self()->applicationBackend(), SLOT(reload());
         load();
+        BackendsSingleton::self()->applicationBackend()->reload();
     } else {
         QProcess* p = qobject_cast<QProcess*>(sender());
         Q_ASSERT(p);
