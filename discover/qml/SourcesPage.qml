@@ -32,6 +32,7 @@ Page {
         }
     }
     
+    
     CommonDialog {
         id: newSourceDialog
         onClickedOutside: reviewDialog.close()
@@ -136,15 +137,20 @@ Page {
                 
                 return ret.join(", ")
             }
+            enabled: true
             
             Label {
                 anchors {
-                    fill: parent
-                    leftMargin: removeButton.width+5
+                    top: parent.top
+                    bottom: parent.bottom
+                    left: removeButton.right
+                    right: suitesLabel.left
                 }
-                text: modelData.name=="" ? modelData.uri : i18n("%1. <em>%2</em>", modelData.name, modelData.uri)
+                elide: Text.ElideRight
+                text: modelData.name=="" ? modelData.uri : i18n("%1. %2", modelData.name, modelData.uri)
             }
             Label {
+                id: suitesLabel
                 anchors {
                     bottom: parent.bottom
                     right: browseOrigin.left
@@ -168,6 +174,7 @@ Page {
                 iconSource: "list-remove"
                 onClicked: origins.removeRepository(modelData.uri)
             }
+            onClicked: Navigation.openApplicationListSource(modelData.name)
         }
     }
 }
