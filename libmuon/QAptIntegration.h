@@ -59,6 +59,7 @@ class MUONPRIVATE_EXPORT QAptIntegration : public QObject
         virtual void initObject();
         virtual void slotQuit();
         virtual bool queryExit();
+        virtual void checkForUpdates();
         virtual void workerEvent(QApt::WorkerEvent event);
         virtual void errorOccurred(QApt::ErrorCode code, const QVariantMap &args);
         virtual void warningOccurred(QApt::WarningCode warning, const QVariantMap &args);
@@ -76,6 +77,8 @@ class MUONPRIVATE_EXPORT QAptIntegration : public QObject
         void undo();
         void redo();
         void revertChanges();
+        void runSourcesEditor(bool update = false);
+        void sourcesEditorFinished(int reload);
         void easterEggTriggered();
         void setActionsEnabled(bool enabled = true);
 
