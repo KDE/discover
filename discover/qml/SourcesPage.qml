@@ -143,7 +143,7 @@ Page {
                 anchors {
                     top: parent.top
                     bottom: parent.bottom
-                    left: removeButton.right
+                    left: parent.left
                     right: suitesLabel.left
                 }
                 elide: Text.ElideRight
@@ -164,14 +164,14 @@ Page {
                 onClicked: Navigation.openApplicationListSource(modelData.name)
                 anchors {
                     bottom: parent.bottom
-                    right: parent.right
+                    right: removeButton.left
                 }
                 
             }
             ToolButton {
                 id: removeButton
-                anchors.left: parent.left
-                iconSource: "list-remove"
+                anchors.right: parent.right
+                iconSource: "edit-delete"
                 onClicked: origins.removeRepository(modelData.uri)
             }
             onClicked: Navigation.openApplicationListSource(modelData.name)
