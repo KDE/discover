@@ -103,6 +103,7 @@ private:
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void reload();
+    void updateCache();
     
     //helper functions
     void clearLaunchList();

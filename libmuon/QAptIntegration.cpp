@@ -135,7 +135,7 @@ void QAptIntegration::setupActions()
     updateAction->setIcon(KIcon("system-software-update"));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
-    connect(updateAction, SIGNAL(triggered()), this, SLOT(checkForUpdates()));
+    connect(updateAction, SIGNAL(triggered()), SIGNAL(checkForUpdates()));
     if (!isConnected()) {
         updateAction->setDisabled(true);
     }
@@ -160,10 +160,6 @@ void QAptIntegration::setupActions()
 
     QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_M), m_mainWindow);
     connect(shortcut, SIGNAL(activated()), this, SLOT(easterEggTriggered()));
-}
-
-void QAptIntegration::checkForUpdates()
-{
 }
 
 void QAptIntegration::workerEvent(QApt::WorkerEvent event)
@@ -615,7 +611,7 @@ void QAptIntegration::sourcesEditorFinished(int reload)
 {
     m_mainWindow->find(m_mainWindow->effectiveWinId())->setEnabled(true);
     if (reload == 1) {
-        checkForUpdates();
+        emit checkForUpdates();
     }
 }
 

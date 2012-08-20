@@ -74,7 +74,6 @@ private Q_SLOTS:
     void saveSplitterSizes();
     void setupActions();
     void clearViews();
-    void checkForUpdates();
     void setActionsEnabled(bool enabled = true);
     void workerEvent(QApt::WorkerEvent event);
     void populateViews();

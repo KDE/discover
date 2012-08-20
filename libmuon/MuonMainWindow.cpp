@@ -20,6 +20,7 @@
 
 #include "MuonMainWindow.h"
 #include "QAptIntegration.h"
+#include <LibQApt/Backend>
 
 MuonMainWindow::MuonMainWindow()
     : KXmlGuiWindow(0)
@@ -33,6 +34,7 @@ MuonMainWindow::MuonMainWindow()
 {
     connect(m_aptify, SIGNAL(backendReady(QApt::Backend*)), SIGNAL(backendReady(QApt::Backend*)));
     connect(m_aptify, SIGNAL(shouldConnect(bool)), SIGNAL(shouldConnect(bool)));
+    connect(m_aptify, SIGNAL(checkForUpdates()), SLOT(checkForUpdates()));
 }
 
 MuonMainWindow::~MuonMainWindow()
@@ -147,4 +149,9 @@ bool MuonMainWindow::saveSelections()
 void MuonMainWindow::loadArchives()
 {
     m_aptify->loadArchives();
+}
+
+void MuonMainWindow::checkForUpdates()
+{
+    m_backend->updateCache();
 }

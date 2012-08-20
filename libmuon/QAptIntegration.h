@@ -59,7 +59,6 @@ class MUONPRIVATE_EXPORT QAptIntegration : public QObject
         virtual void initObject();
         virtual void slotQuit();
         virtual bool queryExit();
-        virtual void checkForUpdates();
         virtual void workerEvent(QApt::WorkerEvent event);
         virtual void errorOccurred(QApt::ErrorCode code, const QVariantMap &args);
         virtual void warningOccurred(QApt::WarningCode warning, const QVariantMap &args);
@@ -88,6 +87,7 @@ class MUONPRIVATE_EXPORT QAptIntegration : public QObject
     Q_SIGNALS:
         void backendReady(QApt::Backend *backend);
         void shouldConnect(bool isConnected);
+        void checkForUpdates();
 
     private:
         bool m_actionsDisabled;

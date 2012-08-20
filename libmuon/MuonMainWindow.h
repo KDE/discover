@@ -87,6 +87,7 @@ class MUONPRIVATE_EXPORT MuonMainWindow : public KXmlGuiWindow
         void runSourcesEditor(bool update = false);
         void sourcesEditorFinished(int reload);
         void easterEggTriggered();
+        virtual void checkForUpdates();
 
     protected:
         QAptIntegration* m_aptify;

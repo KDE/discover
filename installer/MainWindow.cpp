@@ -243,11 +243,6 @@ void MainWindow::clearViews()
     m_viewModel->clear();
 }
 
-void MainWindow::checkForUpdates()
-{
-    m_backend->updateCache();
-}
-
 void MainWindow::workerEvent(QApt::WorkerEvent event)
 {
     MuonMainWindow::workerEvent(event);

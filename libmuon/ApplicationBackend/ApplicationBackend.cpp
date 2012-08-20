@@ -597,4 +597,10 @@ void ApplicationBackend::integrateMainWindow(KXmlGuiWindow* w)
     QTimer::singleShot(10, aptify, SLOT(initObject()));
     aptify->setupActions();
     connect(aptify, SIGNAL(backendReady(QApt::Backend*)), this, SLOT(setBackend(QApt::Backend*)));
+    connect(aptify, SIGNAL(checkForUpdates()), SLOT(updateCache()));
+}
+
+void ApplicationBackend::updateCache()
+{
+    m_backend->updateCache();
 }
