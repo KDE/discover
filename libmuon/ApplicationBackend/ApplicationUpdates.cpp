@@ -66,6 +66,7 @@ void ApplicationUpdates::start()
     connect(m_aptBackend, SIGNAL(downloadProgress(int,int,int)), SLOT(downloadProgress(int,int,int)));
     connect(m_aptBackend, SIGNAL(commitProgress(QString,int)), SLOT(commitProgress(QString,int)));
     connect(m_aptBackend, SIGNAL(workerEvent(QApt::WorkerEvent)), SLOT(workerEvent(QApt::WorkerEvent)));
+    connect(m_aptBackend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)), SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
     m_aptBackend->commitChanges();
 }
 
@@ -103,6 +104,11 @@ void ApplicationUpdates::workerEvent(QApt::WorkerEvent event)
     if(event==QApt::CommitChangesFinished) {
         emit updatesFinnished();
     }
+}
+
+void ApplicationUpdates::errorOccurred(QApt::ErrorCode err, const QVariantMap& values)
+{
+    emit updatesFinnished();
 }
 
 void ApplicationUpdates::downloadProgress(int percentage, int speed, int ETA)

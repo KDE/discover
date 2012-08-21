@@ -46,6 +46,7 @@ class ApplicationUpdates : public AbstractBackendUpdater
         void workerEvent(QApt::WorkerEvent event);
         void downloadProgress(int percentage, int speed, int ETA);
         void cleanup();
+        void errorOccurred(QApt::ErrorCode err, const QVariantMap& values);
 
     private:
         QApt::Backend* m_aptBackend;
