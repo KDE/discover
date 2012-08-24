@@ -55,7 +55,6 @@ class MUONPRIVATE_EXPORT MuonMainWindow : public KXmlGuiWindow
     Q_OBJECT
     public:
         MuonMainWindow();
-        virtual ~MuonMainWindow();
 
         QSize sizeHint() const;
         void setupActions();
@@ -70,6 +69,7 @@ class MUONPRIVATE_EXPORT MuonMainWindow : public KXmlGuiWindow
 
     protected slots:
         void initObject();
+        bool queryExit();
         virtual void workerEvent(QApt::WorkerEvent event);
         virtual void errorOccurred(QApt::ErrorCode code, const QVariantMap &args);
         virtual void warningOccurred(QApt::WarningCode warning, const QVariantMap &args);

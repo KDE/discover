@@ -58,7 +58,7 @@ class MUONPRIVATE_EXPORT QAptIntegration : public QObject
     protected Q_SLOTS:
         virtual void initObject();
         virtual void slotQuit();
-        virtual bool queryExit();
+        bool queryExit();
         virtual void workerEvent(QApt::WorkerEvent event);
         virtual void errorOccurred(QApt::ErrorCode code, const QVariantMap &args);
         virtual void warningOccurred(QApt::WarningCode warning, const QVariantMap &args);
