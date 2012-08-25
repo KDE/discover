@@ -60,7 +60,6 @@ public:
         PurgedAction = 5
     };
     HistoryView(QWidget *parent);
-    ~HistoryView();
 
     QSize sizeHint() const;
 

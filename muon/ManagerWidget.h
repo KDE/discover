@@ -36,7 +36,6 @@ class ManagerWidget : public PackageWidget
     Q_OBJECT
 public:
     explicit ManagerWidget(QWidget *parent);
-    ~ManagerWidget();
 
 public Q_SLOTS:
     void reload();

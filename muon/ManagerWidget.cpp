@@ -52,10 +52,6 @@ ManagerWidget::ManagerWidget(QWidget *parent)
     showSearchEdit();
 }
 
-ManagerWidget::~ManagerWidget()
-{
-}
-
 void ManagerWidget::reload()
 {
     PackageWidget::reload();

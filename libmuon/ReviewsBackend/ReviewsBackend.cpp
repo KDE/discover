@@ -197,7 +197,7 @@ void ReviewsBackend::fetchReviews(AbstractResource* res, int page)
 {
     Application* app = qobject_cast<Application*>(res);
     // Check our cache before fetching from the 'net
-    QString hashName = app->package()->latin1Name() + app->untranslatedName();
+    QString hashName = app->package()->name() + app->untranslatedName();
     
     QList<Review*> revs = m_reviewsCache.value(hashName);
     if (revs.size()>(page*10)) { //there are 10 reviews per page
@@ -209,7 +209,7 @@ void ReviewsBackend::fetchReviews(AbstractResource* res, int page)
     QString origin = app->package()->origin().toLower();
 
     QString version = QLatin1String("any");
-    QString packageName = app->package()->latin1Name();
+    QString packageName = app->package()->name();
     QString appName = app->name();
     // Replace spaces with %2B for the url
     appName.replace(' ', QLatin1String("%2B"));
@@ -277,7 +277,7 @@ void ReviewsBackend::reviewsFetched(KJob *job)
     if (!app)
         return;
 
-    m_reviewsCache[app->package()->latin1Name() + app->name()].append(reviewsList);
+    m_reviewsCache[app->package()->name() + app->name()].append(reviewsList);
 
     emit reviewsReady(app, reviewsList);
 }

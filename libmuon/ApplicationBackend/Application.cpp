@@ -68,7 +68,7 @@ Application::Application(QApt::Package* package, QApt::Backend* backend)
         , m_isTechnical(true)
         , m_isExtrasApp(false)
 {
-    m_packageName = m_package->latin1Name().latin1();
+    m_packageName = m_package->name().latin1();
     
     if (m_package->architecture() != m_backend->nativeArchitecture())
         m_packageName.append(QByteArray(":") + m_package->architecture().toLatin1());
@@ -98,7 +98,7 @@ QString Application::untranslatedName()
         if (m_isExtrasApp)
             name = m_package->controlField(QLatin1String("Appname"));
         else
-            name = m_package->latin1Name();
+            name = m_package->name();
     }
 
     return name;
@@ -308,7 +308,7 @@ QApt::PackageList Application::addons()
         bool shouldShow = true;
         QApt::Package *package = m_backend->package(addon);
 
-        if (!package || package->section().contains("lib") || addons.contains(package)) {
+        if (!package || QString(package->section()).contains("lib") || addons.contains(package)) {
             continue;
         }
 

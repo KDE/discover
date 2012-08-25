@@ -104,9 +104,8 @@ HistoryView::HistoryView(QWidget *parent)
     actionHash[RemovedAction] = i18nc("@status describes a past-tense action", "Removed");
     actionHash[PurgedAction] = i18nc("@status describes a past-tense action", "Purged");
 
-    QDateTime weekAgoTime = QDateTime::currentDateTime().addDays(-7);
-    foreach (QApt::HistoryItem *item, m_history->historyItems()) {
-        QDateTime startDateTime = item->startDate();
+    for (const QApt::HistoryItem &item : m_history->historyItems()) {
+        QDateTime startDateTime = item.startDate();
         QString formattedTime = KGlobal::locale()->formatTime(startDateTime.time());
         QString category;
 
@@ -132,7 +131,7 @@ HistoryView::HistoryView(QWidget *parent)
             parentItem = m_categoryHash.value(category);
         }
 
-        foreach (const QString &package, item->installedPackages()) {
+        foreach (const QString &package, item.installedPackages()) {
             QStandardItem *historyItem = new QStandardItem;
             historyItem->setEditable(false);
             historyItem->setIcon(itemIcon);
@@ -147,7 +146,7 @@ HistoryView::HistoryView(QWidget *parent)
             parentItem->appendRow(historyItem);
         }
 
-        foreach (const QString &package, item->upgradedPackages()) {
+        foreach (const QString &package, item.upgradedPackages()) {
             QStandardItem *historyItem = new QStandardItem;
             historyItem->setEditable(false);
             historyItem->setIcon(itemIcon);
@@ -162,7 +161,7 @@ HistoryView::HistoryView(QWidget *parent)
             parentItem->appendRow(historyItem);
         }
 
-        foreach (const QString &package, item->downgradedPackages()) {
+        foreach (const QString &package, item.downgradedPackages()) {
             QStandardItem *historyItem = new QStandardItem;
             historyItem->setEditable(false);
             historyItem->setIcon(itemIcon);
@@ -177,7 +176,7 @@ HistoryView::HistoryView(QWidget *parent)
             parentItem->appendRow(historyItem);
         }
 
-        foreach (const QString &package, item->removedPackages()) {
+        foreach (const QString &package, item.removedPackages()) {
             QStandardItem *historyItem = new QStandardItem;
             historyItem->setEditable(false);
             historyItem->setIcon(itemIcon);
@@ -192,7 +191,7 @@ HistoryView::HistoryView(QWidget *parent)
             parentItem->appendRow(historyItem);
         }
 
-        foreach (const QString &package, item->purgedPackages()) {
+        foreach (const QString &package, item.purgedPackages()) {
             QStandardItem *historyItem = new QStandardItem;
             historyItem->setEditable(false);
             historyItem->setIcon(itemIcon);
@@ -218,10 +217,6 @@ HistoryView::HistoryView(QWidget *parent)
     m_historyView->setModel(m_proxyModel);
 
     setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
-}
-
-HistoryView::~HistoryView()
-{
 }
 
 QSize HistoryView::sizeHint() const

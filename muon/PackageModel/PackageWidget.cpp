@@ -60,7 +60,7 @@
 
 bool packageNameLessThan(QApt::Package *p1, QApt::Package *p2)
 {
-     return p1->latin1Name() < p2->latin1Name();
+     return p1->name() < p2->name();
 }
 
 QApt::PackageList sortPackages(QApt::PackageList list)
@@ -612,7 +612,7 @@ void PackageWidget::showBrokenReason(QApt::Package *package)
     QHash<int, QHash<QString, QVariantMap> > failedReasons = package->brokenReason();
     QString reason;
     QString dialogText = i18nc("@label", "The \"%1\" package could not be marked for installation or upgrade:",
-                               package->latin1Name());
+                               package->name());
     dialogText += '\n';
     QString title = i18nc("@title:window", "Unable to Mark Package");
 
@@ -639,7 +639,7 @@ QString PackageWidget::digestReason(QApt::Package *pkg, QApt::BrokenReason failT
         reason = i18nc("@label", "The \"%1\" package has no available version, but exists in the database.\n"
                        "\tThis typically means that the package was mentioned in a dependency and "
                        "never uploaded, has been obsoleted, or is not available from the currently-enabled "
-                       "repositories.", pkg->latin1Name());
+                       "repositories.", pkg->name());
         break;
     }
     case QApt::WrongCandidateVersion: {

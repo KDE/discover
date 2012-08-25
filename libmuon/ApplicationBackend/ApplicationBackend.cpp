@@ -100,7 +100,7 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
         bool added = false;
         QApt::Package *pkg = app->package();
         if (app->isValid()) {
-            if ((pkg) && !pkgBlacklist.contains(pkg->latin1Name())) {
+            if ((pkg) && !pkgBlacklist.contains(pkg->name())) {
                 appList << app;
                 added = true;
             }
