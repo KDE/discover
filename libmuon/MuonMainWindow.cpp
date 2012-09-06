@@ -37,8 +37,9 @@ MuonMainWindow::MuonMainWindow()
     connect(m_aptify, SIGNAL(checkForUpdates()), SLOT(checkForUpdates()));
 }
 
-MuonMainWindow::~MuonMainWindow()
+bool MuonMainWindow::queryExit()
 {
+    return m_aptify->queryExit();
 }
 
 QSize MuonMainWindow::sizeHint() const
