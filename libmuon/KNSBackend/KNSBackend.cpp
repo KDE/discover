@@ -109,7 +109,6 @@ void KNSBackend::receivedContents(Attica::BaseJob* job)
     
     if(contents.isEmpty()) {
         m_fetching = false;
-        emit backendReady();
         m_page = 0;
         m_manager->search();
         return;
@@ -128,6 +127,7 @@ void KNSBackend::receivedContents(Attica::BaseJob* job)
 void KNSBackend::receivedEntries(const KNS3::Entry::List& entries)
 {
     if(entries.isEmpty()) {
+        emit backendReady();
         return;
     }
     
