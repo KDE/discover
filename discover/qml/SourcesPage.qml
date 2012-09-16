@@ -40,7 +40,7 @@ Page {
         buttons: Row {
             spacing: 5
             Button {
-                text: i18n("Ok")
+                text: i18n("OK")
                 iconSource: "dialog-ok"
                 enabled: repository.text!=""
                 onClicked: newSourceDialog.accept()
