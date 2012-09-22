@@ -168,6 +168,7 @@ void MainWindow::saveSplitterSizes()
 
 void MainWindow::setupActions()
 {
+    MuonMainWindow::setupActions();
     m_actions->setupActions();
 
     m_loadSelectionsAction = actionCollection()->addAction("open_markings");
