@@ -62,10 +62,11 @@ void ApplicationUpdates::start()
         }
     }
     
+    // FIXME: Transactify
     connect(m_aptBackend, SIGNAL(downloadMessage(int,QString)), SLOT(downloadMessage(int,QString)));
     connect(m_aptBackend, SIGNAL(downloadProgress(int,int,int)), SLOT(downloadProgress(int,int,int)));
     connect(m_aptBackend, SIGNAL(commitProgress(QString,int)), SLOT(commitProgress(QString,int)));
-    connect(m_aptBackend, SIGNAL(workerEvent(QApt::WorkerEvent)), SLOT(workerEvent(QApt::WorkerEvent)));
+    //connect(m_aptBackend, SIGNAL(workerEvent(QApt::WorkerEvent)), SLOT(workerEvent(QApt::WorkerEvent)));
     m_aptBackend->commitChanges();
 }
 
@@ -98,12 +99,13 @@ void ApplicationUpdates::installMessage(const QString& msg)
     emit message(QIcon(), msg);
 }
 
-void ApplicationUpdates::workerEvent(QApt::WorkerEvent event)
-{
-    if(event==QApt::CommitChangesFinished) {
-        emit updatesFinnished();
-    }
-}
+// FIXME
+//void ApplicationUpdates::workerEvent(QApt::WorkerEvent event)
+//{
+//    if(event==QApt::CommitChangesFinished) {
+//        emit updatesFinnished();
+//    }
+//}
 
 void ApplicationUpdates::downloadProgress(int percentage, int speed, int ETA)
 {

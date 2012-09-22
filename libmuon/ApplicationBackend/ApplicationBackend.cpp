@@ -177,86 +177,87 @@ bool ApplicationBackend::isReloading() const
     return m_isReloading;
 }
 
-void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
-{
-    m_workerState.first = event;
+// FIXME
+//void ApplicationBackend::workerEvent(QApt::WorkerEvent event)
+//{
+//    m_workerState.first = event;
 
-    if (event == QApt::XapianUpdateFinished && !isReloading()) {
-        emit searchInvalidated();
-    }
+//    if (event == QApt::XapianUpdateFinished && !isReloading()) {
+//        emit searchInvalidated();
+//    }
 
-    if (!m_queue.isEmpty()) {
-        m_workerState.second = m_currentTransaction;
-    } else {
-        return;
-    }
+//    if (!m_queue.isEmpty()) {
+//        m_workerState.second = m_currentTransaction;
+//    } else {
+//        return;
+//    }
 
-    // Due to bad design on my part, we can get events from other apps.
-    // This is required to ensure that we only handle events for stuff we started
-    if (!m_currentTransaction) {
-        return;
-    }
+//    // Due to bad design on my part, we can get events from other apps.
+//    // This is required to ensure that we only handle events for stuff we started
+//    if (!m_currentTransaction) {
+//        return;
+//    }
 
-    emit workerEvent(event, m_currentTransaction);
-    switch(event) {
-        case QApt::PackageDownloadStarted: transactionsEvent(StartedDownloading, m_currentTransaction); break;
-        case QApt::PackageDownloadFinished: transactionsEvent(FinishedDownloading, m_currentTransaction); break;
-        case QApt::CommitChangesStarted: transactionsEvent(StartedCommitting, m_currentTransaction); break;
-        case QApt::CommitChangesFinished: transactionsEvent(FinishedCommitting, m_currentTransaction); break;
-        default: break;
-    }
+//    emit workerEvent(event, m_currentTransaction);
+//    switch(event) {
+//        case QApt::PackageDownloadStarted: transactionsEvent(StartedDownloading, m_currentTransaction); break;
+//        case QApt::PackageDownloadFinished: transactionsEvent(FinishedDownloading, m_currentTransaction); break;
+//        case QApt::CommitChangesStarted: transactionsEvent(StartedCommitting, m_currentTransaction); break;
+//        case QApt::CommitChangesFinished: transactionsEvent(FinishedCommitting, m_currentTransaction); break;
+//        default: break;
+//    }
 
-    switch (event) {
-    case QApt::PackageDownloadStarted:
-        m_currentTransaction->setState(RunningState);
-        connect(m_backend, SIGNAL(downloadProgress(int,int,int)),
-                this, SLOT(updateDownloadProgress(int)));
-        break;
-    case QApt::PackageDownloadFinished:
-        disconnect(m_backend, SIGNAL(downloadProgress(int,int,int)),
-                   this, SLOT(updateDownloadProgress(int)));
-        break;
-    case QApt::CommitChangesStarted:
-        m_debconfGui = new DebconfKde::DebconfGui("/tmp/qapt-sock");
-        m_currentTransaction->setState(RunningState);
-        connect(m_backend, SIGNAL(commitProgress(QString,int)),
-                this, SLOT(updateCommitProgress(QString,int)));
-        m_debconfGui->connect(m_debconfGui, SIGNAL(activated()), m_debconfGui, SLOT(show()));
-        m_debconfGui->connect(m_debconfGui, SIGNAL(deactivated()), m_debconfGui, SLOT(hide()));
-        break;
-    case QApt::CommitChangesFinished: {
-        disconnect(m_backend, SIGNAL(commitProgress(QString,int)),
-                   this, SLOT(updateCommitProgress(QString,int)));
+//    switch (event) {
+//    case QApt::PackageDownloadStarted:
+//        m_currentTransaction->setState(RunningState);
+//        connect(m_backend, SIGNAL(downloadProgress(int,int,int)),
+//                this, SLOT(updateDownloadProgress(int)));
+//        break;
+//    case QApt::PackageDownloadFinished:
+//        disconnect(m_backend, SIGNAL(downloadProgress(int,int,int)),
+//                   this, SLOT(updateDownloadProgress(int)));
+//        break;
+//    case QApt::CommitChangesStarted:
+//        m_debconfGui = new DebconfKde::DebconfGui("/tmp/qapt-sock");
+//        m_currentTransaction->setState(RunningState);
+//        connect(m_backend, SIGNAL(commitProgress(QString,int)),
+//                this, SLOT(updateCommitProgress(QString,int)));
+//        m_debconfGui->connect(m_debconfGui, SIGNAL(activated()), m_debconfGui, SLOT(show()));
+//        m_debconfGui->connect(m_debconfGui, SIGNAL(deactivated()), m_debconfGui, SLOT(hide()));
+//        break;
+//    case QApt::CommitChangesFinished: {
+//        disconnect(m_backend, SIGNAL(commitProgress(QString,int)),
+//                   this, SLOT(updateCommitProgress(QString,int)));
 
-        m_currentTransaction->setState(DoneState);
+//        m_currentTransaction->setState(DoneState);
 
-        Transaction* t = m_queue.dequeue();
-        Q_ASSERT(t==m_currentTransaction);
-        emit transactionRemoved(t);
+//        Transaction* t = m_queue.dequeue();
+//        Q_ASSERT(t==m_currentTransaction);
+//        emit transactionRemoved(t);
 
-        if (m_currentTransaction->action() == InstallApp) {
-            m_appLaunchList << qobject_cast<Application*>(m_currentTransaction->resource());
-            emit launchListChanged();
-        }
+//        if (m_currentTransaction->action() == InstallApp) {
+//            m_appLaunchList << qobject_cast<Application*>(m_currentTransaction->resource());
+//            emit launchListChanged();
+//        }
 
-        m_workerState.first = QApt::InvalidEvent;
-        m_workerState.second = 0;
-        qobject_cast<Application*>(m_currentTransaction->resource())->emitStateChanged();
-        delete m_currentTransaction;
+//        m_workerState.first = QApt::InvalidEvent;
+//        m_workerState.second = 0;
+//        qobject_cast<Application*>(m_currentTransaction->resource())->emitStateChanged();
+//        delete m_currentTransaction;
 
-        if (m_queue.isEmpty()) {
-            reload();
-        } else {
-            runNextTransaction();
-        }
-    }   break;
-    case QApt::CacheUpdateFinished:
-        reload();
-        break;
-    default:
-        break;
-    }
-}
+//        if (m_queue.isEmpty()) {
+//            reload();
+//        } else {
+//            runNextTransaction();
+//        }
+//    }   break;
+//    case QApt::CacheUpdateFinished:
+//        reload();
+//        break;
+//    default:
+//        break;
+//    }
+//}
 
 void ApplicationBackend::errorOccurred(QApt::ErrorCode error, const QVariantMap &details)
 {
@@ -275,9 +276,6 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error, const QVariantMap 
     // Undo marking if an AuthError is encountered, since our install/remove
     // buttons do both marking and committing
     switch (error) {
-    case QApt::UserCancelError:
-        // Handled in transactionCancelled()
-        return;
     default:
         cancelTransaction(m_currentTransaction->resource());
         m_backend->undo();
@@ -286,7 +284,7 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error, const QVariantMap 
 
     // Reset worker state on failure
     if (m_workerState.second) {
-        m_workerState.first = QApt::InvalidEvent;
+        m_workerState.first = QApt::SetupStatus;
         m_workerState.second = 0;
     }
 
@@ -426,7 +424,8 @@ void ApplicationBackend::cancelTransaction(AbstractResource* app)
         Transaction* t = *iter;
         if (t->resource() == app) {
             if (t->state() == RunningState) {
-                m_backend->cancelDownload();
+                // FIXME: cancel transaction
+                //m_backend->cancelDownload();
                 m_backend->undo();
             }
 
@@ -504,7 +503,7 @@ QSet<QString> ApplicationBackend::installedAppOrigins() const
     return m_instOriginList;
 }
 
-QPair<QApt::WorkerEvent, Transaction *> ApplicationBackend::workerState() const
+QPair<QApt::TransactionStatus, Transaction *> ApplicationBackend::workerState() const
 {
     return m_workerState;
 }
@@ -571,16 +570,17 @@ QStringList ApplicationBackend::searchPackageName(const QString& searchText)
 
 QPair<TransactionStateTransition, Transaction*> ApplicationBackend::currentTransactionState() const
 {
-    QPair< QApt::WorkerEvent, Transaction* > state = workerState();
+    QPair< QApt::TransactionStatus, Transaction* > state = workerState();
     QPair<TransactionStateTransition, Transaction*> ret;
-    switch(state.first) {
-        case QApt::PackageDownloadStarted: ret.first = StartedDownloading; break;
-        case QApt::PackageDownloadFinished: ret.first = FinishedDownloading; break;
-        case QApt::CommitChangesStarted: ret.first = StartedCommitting; break;
-        case QApt::CommitChangesFinished: ret.first = FinishedCommitting; break;
-        default: break;
-    }
-    ret.second = state.second;
+    // FIXME: port
+//    switch(state.first) {
+//        case QApt::PackageDownloadStarted: ret.first = StartedDownloading; break;
+//        case QApt::PackageDownloadFinished: ret.first = FinishedDownloading; break;
+//        case QApt::CommitChangesStarted: ret.first = StartedCommitting; break;
+//        case QApt::CommitChangesFinished: ret.first = FinishedCommitting; break;
+//        default: break;
+//    }
+//    ret.second = state.second;
     return ret;
 }
 

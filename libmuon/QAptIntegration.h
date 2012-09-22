@@ -45,8 +45,6 @@ class MUONPRIVATE_EXPORT QAptIntegration : public QObject
 
     protected:
         QApt::Backend *m_backend;
-        QList<QVariantMap> m_warningStack;
-        QList<QVariantMap> m_errorStack;
 
         QApt::CacheState m_originalState;
         int m_powerInhibitor;
@@ -59,12 +57,9 @@ class MUONPRIVATE_EXPORT QAptIntegration : public QObject
         virtual void initObject();
         virtual void slotQuit();
         bool queryExit();
-        virtual void workerEvent(QApt::WorkerEvent event);
-        virtual void errorOccurred(QApt::ErrorCode code, const QVariantMap &args);
-        virtual void warningOccurred(QApt::WarningCode warning, const QVariantMap &args);
-        virtual void questionOccurred(QApt::WorkerQuestion question, const QVariantMap &details);
-        virtual void showQueuedWarnings();
-        virtual void showQueuedErrors();
+        //virtual void workerEvent(QApt::WorkerEvent event);
+        virtual void errorOccurred(QApt::ErrorCode code);
+        //virtual void questionOccurred(QApt::WorkerQuestion question, const QVariantMap &details);
         virtual void reload();
         void networkChanged();
         bool saveSelections();

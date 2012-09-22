@@ -70,12 +70,7 @@ class MUONPRIVATE_EXPORT MuonMainWindow : public KXmlGuiWindow
     protected slots:
         void initObject();
         bool queryExit();
-        virtual void workerEvent(QApt::WorkerEvent event);
-        virtual void errorOccurred(QApt::ErrorCode code, const QVariantMap &args);
-        virtual void warningOccurred(QApt::WarningCode warning, const QVariantMap &args);
-        virtual void questionOccurred(QApt::WorkerQuestion question, const QVariantMap &details);
-        virtual void showQueuedWarnings();
-        virtual void showQueuedErrors();
+        virtual void errorOccurred(QApt::ErrorCode code);
         void downloadPackagesFromList();
         bool saveSelections();
         bool saveInstalledPackagesList();
@@ -95,8 +90,6 @@ class MUONPRIVATE_EXPORT MuonMainWindow : public KXmlGuiWindow
         bool& m_canExit;
         bool& m_isReloading;
         QApt::CacheState& m_originalState;
-        QList<QVariantMap>& m_warningStack;
-        QList<QVariantMap>& m_errorStack;
 };
 
 #endif

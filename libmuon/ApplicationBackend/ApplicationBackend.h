@@ -59,7 +59,7 @@ public:
     QVector<Application *> applicationList() const;
     QSet<QString> appOrigins() const;
     QSet<QString> installedAppOrigins() const;
-    QPair<QApt::WorkerEvent, Transaction *> workerState() const;
+    QPair<QApt::TransactionStatus, Transaction *> workerState() const;
     QPair<TransactionStateTransition, Transaction *> currentTransactionState() const;
     QList<Transaction *> transactions() const;
     QList<Application*> launchList() const;
@@ -73,16 +73,16 @@ public:
     void markLangpacks(Transaction *transaction);
     void addTransaction(Transaction *transaction);
     
-    virtual QVector< AbstractResource* > allResources() const;
-    virtual QStringList searchPackageName(const QString& searchText);
-    virtual bool providesResouce(AbstractResource* res) const;
+    QVector< AbstractResource* > allResources() const;
+    QStringList searchPackageName(const QString& searchText);
+    bool providesResouce(AbstractResource* res) const;
     
     void installApplication(AbstractResource *app, const QHash<QString, bool> &addons);
     void installApplication(AbstractResource *app);
     void removeApplication(AbstractResource *app);
     void cancelTransaction(AbstractResource *app);
     
-    virtual AbstractBackendUpdater* backendUpdater() const;
+    AbstractBackendUpdater* backendUpdater() const;
     void integrateMainWindow(KXmlGuiWindow* w);
 private:
     QApt::Backend *m_backend;
@@ -96,7 +96,7 @@ private:
     QList<Application*> m_appLaunchList;
     QQueue<Transaction *> m_queue;
     Transaction *m_currentTransaction;
-    QPair<QApt::WorkerEvent, Transaction *> m_workerState;
+    QPair<QApt::TransactionStatus, Transaction *> m_workerState;
 
     DebconfKde::DebconfGui *m_debconfGui;
     ApplicationUpdates* m_backendUpdater;
@@ -111,14 +111,14 @@ public Q_SLOTS:
 private Q_SLOTS:
     void setApplications();
     void runNextTransaction();
-    void workerEvent(QApt::WorkerEvent event);
+    //void workerEvent(QApt::WorkerEvent event);
     void errorOccurred(QApt::ErrorCode error, const QVariantMap &details);
     void updateDownloadProgress(int percentage);
     void updateCommitProgress(const QString &text, int percentage);
 
 Q_SIGNALS:
     void startingFirstTransaction();
-    void workerEvent(QApt::WorkerEvent event, Transaction *app);
+    //void workerEvent(QApt::WorkerEvent event, Transaction *app);
     void errorSignal(QApt::ErrorCode code, const QVariantMap &details);
     void launchListChanged();
 };

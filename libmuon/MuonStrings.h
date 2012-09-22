@@ -27,12 +27,15 @@
 
 #include "libmuonprivate_export.h"
 
+namespace QApt {
+    class Transaction;
+}
+
 class MUONPRIVATE_EXPORT MuonStrings : public QObject
 {
     Q_OBJECT
 public:
     explicit MuonStrings(QObject *parent);
-    ~MuonStrings();
 
     static MuonStrings* global();
 
@@ -40,6 +43,8 @@ public:
     QString groupKey(const QString &text) const;
     QString packageStateName(QApt::Package::State state) const;
     QString archString(const QString &arch) const;
+    QString errorTitle(QApt::ErrorCode error) const;
+    QString errorText(QApt::ErrorCode error, QApt::Transaction *trans) const;
 
 private:
     const QHash<QString, QString> m_groupHash;

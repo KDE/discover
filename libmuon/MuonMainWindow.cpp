@@ -29,8 +29,6 @@ MuonMainWindow::MuonMainWindow()
     , m_canExit(m_aptify->m_canExit)
     , m_isReloading(m_aptify->m_isReloading)
     , m_originalState(m_aptify->m_originalState)
-    , m_warningStack(m_aptify->m_warningStack)
-    , m_errorStack(m_aptify->m_errorStack)
 {
     connect(m_aptify, SIGNAL(backendReady(QApt::Backend*)), SIGNAL(backendReady(QApt::Backend*)));
     connect(m_aptify, SIGNAL(shouldConnect(bool)), SIGNAL(shouldConnect(bool)));
@@ -77,34 +75,9 @@ void MuonMainWindow::initObject()
     m_aptify->initObject();
 }
 
-void MuonMainWindow::workerEvent(QApt::WorkerEvent event)
+void MuonMainWindow::errorOccurred(QApt::ErrorCode code)
 {
-    m_aptify->workerEvent(event);
-}
-
-void MuonMainWindow::showQueuedErrors()
-{
-    m_aptify->showQueuedErrors();
-}
-
-void MuonMainWindow::showQueuedWarnings()
-{
-    m_aptify->showQueuedWarnings();
-}
-
-void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap& args)
-{
-    m_aptify->errorOccurred(code, args);
-}
-
-void MuonMainWindow::questionOccurred(QApt::WorkerQuestion question, const QVariantMap& details)
-{
-    m_aptify->questionOccurred(question, details);
-}
-
-void MuonMainWindow::warningOccurred(QApt::WarningCode warning, const QVariantMap& args)
-{
-    m_aptify->warningOccurred(warning, args);
+    m_aptify->errorOccurred(code);
 }
 
 void MuonMainWindow::downloadPackagesFromList()
