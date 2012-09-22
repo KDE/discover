@@ -126,12 +126,11 @@ void DownloadWidget::updateDownloadProgress(int percentage, int speed, int ETA)
 
 void DownloadWidget::updatePackageDownloadProgress(const QString &name, int percentage, const QString &URI, double size, int flag)
 {
-    m_downloadModel->updatePackageDetails(name, percentage, URI, size, flag);
+    // FIXME
+    //m_downloadModel->updatePackageDetails(name, percentage, URI, size, flag);
 }
 
 void DownloadWidget::cancelButtonPressed()
 {
     emit cancelDownload();
 }
-
-#include "DownloadWidget.moc"
