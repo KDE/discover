@@ -22,11 +22,11 @@ include_directories(${KDE4_INCLUDES} ${QT_INCLUDES} ${QAPT_INCLUDE_DIR} ${CMAKE_
 add_subdirectory(libmuon)
 if(QAPT_FOUND)
     add_subdirectory(muon)
-    add_subdirectory(installer)
-    add_subdirectory(updater)
+    #add_subdirectory(installer)
+    #add_subdirectory(updater)
     add_subdirectory(kded)
 endif(QAPT_FOUND)
-add_subdirectory(discover)
+#add_subdirectory(discover)
 
 macro_log_feature(QAPT_FOUND "LibQApt" "Qt wrapper around the libapt-pkg library"
                   "http://www.kde.org" FALSE "" "Required to build the APT backend")

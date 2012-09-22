@@ -126,10 +126,6 @@ void DownloadWidget::updateDownloadProgress(int percentage, int speed, int ETA)
 
 void DownloadWidget::updatePackageDownloadProgress(const QString &name, int percentage, const QString &URI, double size, int flag)
 {
-    if (flag != QApt::DownloadFetch) {
-        return;
-    }
-
     m_downloadModel->updatePackageDetails(name, percentage, URI, size, flag);
 }
 

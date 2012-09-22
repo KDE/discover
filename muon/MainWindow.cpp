@@ -286,17 +286,16 @@ void MainWindow::downloadPackagesFromList()
     MuonMainWindow::downloadPackagesFromList();
 }
 
-void MainWindow::errorOccurred(QApt::ErrorCode error, const QVariantMap &details)
+void MainWindow::errorOccurred(QApt::ErrorCode error)
 {
-    Q_UNUSED(details);
-
-    MuonMainWindow::errorOccurred(error, details);
+    MuonMainWindow::errorOccurred(error);
 
     switch(error) {
-    case QApt::UserCancelError:
-        if (m_downloadWidget) {
-            m_downloadWidget->clear();
-        }
+    // FIXME: react to user cancel
+//    case QApt::UserCancelError:
+//        if (m_downloadWidget) {
+//            m_downloadWidget->clear();
+//        }
     case QApt::AuthError:
     case QApt::LockError:
         m_managerWidget->setEnabled(true);
@@ -308,71 +307,71 @@ void MainWindow::errorOccurred(QApt::ErrorCode error, const QVariantMap &details
     }
 }
 
-void MainWindow::workerEvent(QApt::WorkerEvent event)
-{
-    MuonMainWindow::workerEvent(event);
+//void MainWindow::workerEvent(QApt::WorkerEvent event)
+//{
+//    MuonMainWindow::workerEvent(event);
 
-    switch (event) {
-    case QApt::CacheUpdateStarted:
-        if (m_downloadWidget) {
-            m_downloadWidget->setHeaderText(i18nc("@info", "<title>Updating software sources</title>"));
-            m_stack->setCurrentWidget(m_downloadWidget);
-            connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
-        }
-        break;
-    case QApt::CacheUpdateFinished:
-    case QApt::CommitChangesFinished:
-        if (m_backend) {
-            reload();
-            setActionsEnabled();
-        }
-    case QApt::PackageDownloadFinished:
-        returnFromPreview();
-        if (m_warningStack.size() > 0) {
-            showQueuedWarnings();
-            m_warningStack.clear();
-        }
-        if (m_errorStack.size() > 0) {
-            showQueuedErrors();
-            m_errorStack.clear();
-        }
+//    switch (event) {
+//    case QApt::CacheUpdateStarted:
+//        if (m_downloadWidget) {
+//            m_downloadWidget->setHeaderText(i18nc("@info", "<title>Updating software sources</title>"));
+//            m_stack->setCurrentWidget(m_downloadWidget);
+//            connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
+//        }
+//        break;
+//    case QApt::CacheUpdateFinished:
+//    case QApt::CommitChangesFinished:
+//        if (m_backend) {
+//            reload();
+//            setActionsEnabled();
+//        }
+//    case QApt::PackageDownloadFinished:
+//        returnFromPreview();
+//        if (m_warningStack.size() > 0) {
+//            showQueuedWarnings();
+//            m_warningStack.clear();
+//        }
+//        if (m_errorStack.size() > 0) {
+//            showQueuedErrors();
+//            m_errorStack.clear();
+//        }
 
-        if (m_downloadWidget) {
-            m_downloadWidget->deleteLater();
-            m_downloadWidget = nullptr;
-        }
-        break;
-    case QApt::PackageDownloadStarted:
-        if (m_downloadWidget) {
-            m_downloadWidget->setHeaderText(i18nc("@info", "<title>Downloading Packages</title>"));
-            m_stack->setCurrentWidget(m_downloadWidget);
-            connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
-        }
-        QApplication::restoreOverrideCursor();
-        break;
-    case QApt::CommitChangesStarted:
-        if (m_commitWidget) {
-            m_commitWidget->setHeaderText(i18nc("@info", "<title>Committing Changes</title>"));
-            m_stack->setCurrentWidget(m_commitWidget);
-        }
-        QApplication::restoreOverrideCursor();
-        break;
-    case QApt::XapianUpdateStarted:
-        m_statusWidget->showXapianProgress();
-        connect(m_backend, SIGNAL(xapianUpdateProgress(int)),
-                m_statusWidget, SLOT(updateXapianProgress(int)));
-        break;
-    case QApt::XapianUpdateFinished:
-        m_managerWidget->startSearch();
-        disconnect(m_backend, SIGNAL(xapianUpdateProgress(int)),
-                   m_statusWidget, SLOT(updateXapianProgress(int)));
-        m_statusWidget->hideXapianProgress();
-        break;
-    case QApt::InvalidEvent:
-    default:
-        break;
-    }
-}
+//        if (m_downloadWidget) {
+//            m_downloadWidget->deleteLater();
+//            m_downloadWidget = nullptr;
+//        }
+//        break;
+//    case QApt::PackageDownloadStarted:
+//        if (m_downloadWidget) {
+//            m_downloadWidget->setHeaderText(i18nc("@info", "<title>Downloading Packages</title>"));
+//            m_stack->setCurrentWidget(m_downloadWidget);
+//            connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
+//        }
+//        QApplication::restoreOverrideCursor();
+//        break;
+//    case QApt::CommitChangesStarted:
+//        if (m_commitWidget) {
+//            m_commitWidget->setHeaderText(i18nc("@info", "<title>Committing Changes</title>"));
+//            m_stack->setCurrentWidget(m_commitWidget);
+//        }
+//        QApplication::restoreOverrideCursor();
+//        break;
+//    case QApt::XapianUpdateStarted:
+//        m_statusWidget->showXapianProgress();
+//        connect(m_backend, SIGNAL(xapianUpdateProgress(int)),
+//                m_statusWidget, SLOT(updateXapianProgress(int)));
+//        break;
+//    case QApt::XapianUpdateFinished:
+//        m_managerWidget->startSearch();
+//        disconnect(m_backend, SIGNAL(xapianUpdateProgress(int)),
+//                   m_statusWidget, SLOT(updateXapianProgress(int)));
+//        m_statusWidget->hideXapianProgress();
+//        break;
+//    case QApt::InvalidEvent:
+//    default:
+//        break;
+//    }
+//}
 
 void MainWindow::previewChanges()
 {
