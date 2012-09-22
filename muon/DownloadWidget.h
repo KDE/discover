@@ -32,12 +32,17 @@ class QPushButton;
 class DownloadDelegate;
 class DownloadModel;
 
+namespace QApt {
+    class Transaction;
+}
+
 class DownloadWidget : public QWidget
 {
     Q_OBJECT
 public:
     explicit DownloadWidget(QWidget *parent);
-    ~DownloadWidget();
+
+    void setTransaction(QApt::Transaction *trans);
 
 private:
     QLabel *m_headerLabel;

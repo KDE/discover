@@ -36,7 +36,8 @@
 #include <KLocale>
 
 // LibQApt includes
-#include <LibQApt/Globals>
+#include <LibQApt/DownloadProgress>
+#include <LibQApt/Transaction>
 
 #include "DownloadModel/DownloadDelegate.h"
 #include "DownloadModel/DownloadModel.h"
@@ -79,10 +80,6 @@ DownloadWidget::DownloadWidget(QWidget *parent)
     connect(m_downloadModel, SIGNAL(rowsInserted(QModelIndex,int,int)), m_downloadView, SLOT(scrollToBottom()));
 }
 
-DownloadWidget::~DownloadWidget()
-{
-}
-
 void DownloadWidget::clear()
 {
     m_downloadModel->clear();
@@ -116,7 +113,7 @@ void DownloadWidget::updateDownloadProgress(int percentage, int speed, int ETA)
     QString label = downloadSpeed;
 
     if (!label.isEmpty() && !timeRemaining.isEmpty()) {
-        label.append(QLatin1Literal(" - ") % timeRemaining);
+        label.append(QLatin1String(" - ") % timeRemaining);
     } else {
         label = timeRemaining;
     }

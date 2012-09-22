@@ -99,7 +99,7 @@ class CachedNAMFactory : public QDeclarativeNetworkAccessManagerFactory
 };
 
 MuonDiscoverMainWindow::MuonDiscoverMainWindow()
-    : KXmlGuiWindow(0)
+    : MuonMainWindow()
 {
     m_view = new QDeclarativeView(this);
     m_view->setBackgroundRole(QPalette::Background);

@@ -115,6 +115,7 @@ private Q_SLOTS:
     void errorOccurred(QApt::ErrorCode error, const QVariantMap &details);
     void updateDownloadProgress(int percentage);
     void updateCommitProgress(const QString &text, int percentage);
+    void initBackend();
 
 Q_SIGNALS:
     void startingFirstTransaction();

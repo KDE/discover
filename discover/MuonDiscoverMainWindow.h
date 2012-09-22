@@ -21,14 +21,15 @@
 #define MUONDISCOVERMAINWINDOW_H
 
 #include <QtCore/QUrl>
-#include <KXmlGuiWindow>
+
+#include "MuonMainWindow.h"
 
 class QAptIntegration;
 class AbstractResource;
 class Category;
 class QDeclarativeView;
 
-class MuonDiscoverMainWindow : public KXmlGuiWindow
+class MuonDiscoverMainWindow : public MuonMainWindow
 {
     Q_OBJECT
     public:

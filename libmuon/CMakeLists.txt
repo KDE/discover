@@ -51,7 +51,7 @@ if(QAPT_FOUND)
         ApplicationBackend/ApplicationBackend.cpp
         ChangesDialog.cpp
         MuonStrings.cpp
-        QAptIntegration.cpp
+        QAptActions.cpp
         MuonMainWindow.cpp
         ApplicationBackend/LaunchListModel.cpp
         ApplicationBackend/ApplicationUpdates.cpp
@@ -60,6 +60,7 @@ if(QAPT_FOUND)
         ReviewsBackend/ReviewsBackend.cpp #TODO: rename to AptReviewsBackend
         ReviewsBackend/UbuntuLoginBackend.cpp
     )
+    add_definitions(-DQAPT_ENABLED)
     qt4_add_dbus_interface(muon_LIB_SRCS ReviewsBackend/ubuntu_sso_dbus_interface.xml ubuntu_sso -i "ReviewsBackend/LoginMetaTypes.h")
 endif(QAPT_FOUND)
 

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2012 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,61 +18,60 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MUONMAINWINDOW_H
-#define MUONMAINWINDOW_H
+#ifndef QAPTACTIONS_H
+#define QAPTACTIONS_H
 
-// Qt includes
-#include <QtCore/QVariantMap>
+#include <QtCore/QObject>
 
-// KDE includes
-#include <KXmlGuiWindow>
-#include <KLocale>
+#include <LibQApt/Globals>
 
 #include "libmuonprivate_export.h"
 
-class KAction;
+class KActionCollection;
+class KXmlGuiWindow;
 
-#ifdef QAPT_ENABLED
-class QAptActions;
-#endif
+namespace QApt {
+    class Backend;
+}
 
-/**
- * This class serves as a shared Main Window implementation that connects
- * all the various backend bits so that they don't have to be reimplemented
- * in things like an update-centric GUI, etc.
- *
- * @short Main window class
- * @author Jonathan Thomas <echidnaman@kubuntu.org>
- * @version 0.1
- */
-class MUONPRIVATE_EXPORT MuonMainWindow : public KXmlGuiWindow
+class MUONPRIVATE_EXPORT QAptActions : public QObject
 {
     Q_OBJECT
 public:
-    MuonMainWindow();
+    QAptActions(KXmlGuiWindow *parent, QApt::Backend *backend);
 
-    QSize sizeHint() const;
-    void setupActions();
-    bool isConnected();
-    void setActionsEnabled(bool enabled = true);
-
-Q_SIGNALS:
+    bool isConnected() const;
+    
+signals:
+    void checkForUpdates();
     void shouldConnect(bool isConnected);
-
-protected slots:
-    bool queryExit();
-
+    void changesReverted();
+    
 public slots:
-    void easterEggTriggered();
+    void setupActions();
+    void setActionsEnabled(bool enabled = true);
+    void networkChanged();
 
-protected:
-//#ifdef QAPT_ENABLED
-    QAptActions *m_actions;
-//#endif
-    bool m_canExit;
+    // KAction slots
+    bool saveSelections();
+    bool saveInstalledPackagesList();
+    void loadSelections();
+    bool createDownloadList();
+    void downloadPackagesFromList();
+    void loadArchives();
+    void undo();
+    void redo();
+    void revertChanges();
+    void runSourcesEditor(bool update = false);
+    void sourcesEditorFinished(int reload);
 
-private slots:
-    void setCanExit(bool canExit);
+private:
+    QApt::Backend *m_backend;
+    QApt::CacheState m_originalState;
+    bool m_actionsDisabled;
+    KXmlGuiWindow* m_mainWindow;
+
+    KActionCollection* actionCollection();
 };
 
-#endif
+#endif // QAPTACTIONS_H

@@ -38,6 +38,10 @@ class DownloadWidget;
 class CommitWidget;
 class StatusWidget;
 
+namespace QApt {
+    class Backend;
+}
+
 /**
  * This class serves as the main window for Muon.  It handles the
  * menus, toolbars, and status bars.
@@ -53,6 +57,8 @@ public:
     ~MainWindow();
 
 private:
+    QApt::Backend *m_backend;
+
     QStackedWidget *m_stack;
     QSplitter *m_mainWidget;
     KAction *m_safeUpgradeAction;
@@ -105,6 +111,9 @@ public Q_SLOTS:
     void closeSettingsDialog();
     void showHistoryDialog();
     void closeHistoryDialog();
+
+signals:
+    void backendReady(QApt::Backend *backend);
 };
 
 #endif

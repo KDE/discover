@@ -52,6 +52,7 @@
 #include "MuonSettings.h"
 #include "StatusWidget.h"
 #include "config/ManagerSettingsDialog.h"
+#include "../libmuon/QAptActions.h"
 
 MainWindow::MainWindow()
     : MuonMainWindow()
@@ -113,6 +114,11 @@ void MainWindow::initGUI()
     m_stack->addWidget(m_mainWidget);
     m_stack->setCurrentWidget(m_mainWidget);
 
+    m_backend = new QApt::Backend(this);
+
+    m_actions = new QAptActions(this, m_backend);
+    connect(m_actions, SIGNAL(changesReverted()),
+            this, SLOT(revertChanges()));
     setupActions();
 
     m_statusWidget = new StatusWidget(centralWidget);
@@ -123,12 +129,18 @@ void MainWindow::initGUI()
 
 void MainWindow::initObject()
 {
-    MuonMainWindow::initObject();
+    m_backend->init();
+    m_canExit = true;
 
+    if (m_backend->xapianIndexNeedsUpdate()) {
+        m_backend->updateXapianIndex();
+    }
+
+    emit backendReady(m_backend);
+
+    // Set up GUI
     loadSettings();
-
-    setActionsEnabled(); //Get initial enabled/disabled state
-
+    m_actions->setActionsEnabled();
     m_managerWidget->setFocus();
 }
 
@@ -156,41 +168,41 @@ void MainWindow::saveSplitterSizes()
 
 void MainWindow::setupActions()
 {
-    MuonMainWindow::setupActions();
+    m_actions->setupActions();
 
     m_loadSelectionsAction = actionCollection()->addAction("open_markings");
     m_loadSelectionsAction->setIcon(KIcon("document-open"));
     m_loadSelectionsAction->setText(i18nc("@action", "Read Markings..."));
-    connect(m_loadSelectionsAction, SIGNAL(triggered()), this, SLOT(loadSelections()));
+    connect(m_loadSelectionsAction, SIGNAL(triggered()), m_actions, SLOT(loadSelections()));
 
     m_saveSelectionsAction = actionCollection()->addAction("save_markings");
     m_saveSelectionsAction->setIcon(KIcon("document-save-as"));
     m_saveSelectionsAction->setText(i18nc("@action", "Save Markings As..."));
-    connect(m_saveSelectionsAction, SIGNAL(triggered()), this, SLOT(saveSelections()));
+    connect(m_saveSelectionsAction, SIGNAL(triggered()), m_actions, SLOT(saveSelections()));
 
     m_createDownloadListAction = actionCollection()->addAction("save_download_list");
     m_createDownloadListAction->setIcon(KIcon("document-save-as"));
     m_createDownloadListAction->setText(i18nc("@action", "Save Package Download List..."));
-    connect(m_createDownloadListAction, SIGNAL(triggered()), this, SLOT(createDownloadList()));
+    connect(m_createDownloadListAction, SIGNAL(triggered()), m_actions, SLOT(createDownloadList()));
 
     m_downloadListAction = actionCollection()->addAction("download_from_list");
     m_downloadListAction->setIcon(KIcon("download"));
     m_downloadListAction->setText(i18nc("@action", "Download Packages From List..."));
-    connect(m_downloadListAction, SIGNAL(triggered()), this, SLOT(downloadPackagesFromList()));
-    if (!isConnected()) {
+    connect(m_downloadListAction, SIGNAL(triggered()), m_actions, SLOT(downloadPackagesFromList()));
+    if (!m_actions->isConnected()) {
         m_downloadListAction->setDisabled(false);
     }
-    connect(this, SIGNAL(shouldConnect(bool)), m_downloadListAction, SLOT(setEnabled(bool)));
+    connect(m_actions, SIGNAL(shouldConnect(bool)), m_downloadListAction, SLOT(setEnabled(bool)));
 
     m_loadArchivesAction = actionCollection()->addAction("load_archives");
     m_loadArchivesAction->setIcon(KIcon("document-open"));
     m_loadArchivesAction->setText(i18nc("@action", "Add Downloaded Packages"));
-    connect(m_loadArchivesAction, SIGNAL(triggered()), this, SLOT(loadArchives()));
+    connect(m_loadArchivesAction, SIGNAL(triggered()), m_actions, SLOT(loadArchives()));
 
     m_saveInstalledAction = actionCollection()->addAction("save_package_list");
     m_saveInstalledAction->setIcon(KIcon("document-save-as"));
     m_saveInstalledAction->setText(i18nc("@action", "Save Installed Packages List..."));
-    connect(m_saveInstalledAction, SIGNAL(triggered()), this, SLOT(saveInstalledPackagesList()));
+    connect(m_saveInstalledAction, SIGNAL(triggered()), m_actions, SLOT(saveInstalledPackagesList()));
 
     m_safeUpgradeAction = actionCollection()->addAction("safeupgrade");
     m_safeUpgradeAction->setIcon(KIcon("go-up"));
@@ -283,12 +295,14 @@ void MainWindow::checkForUpdates()
 void MainWindow::downloadPackagesFromList()
 {
     initDownloadWidget();
-    MuonMainWindow::downloadPackagesFromList();
+    // FIXME: transactify
+    //MuonMainWindow::downloadPackagesFromList();
 }
 
 void MainWindow::errorOccurred(QApt::ErrorCode error)
 {
-    MuonMainWindow::errorOccurred(error);
+    // FIXME: transactify
+    //MuonMainWindow::errorOccurred(error);
 
     switch(error) {
     // FIXME: react to user cancel
@@ -441,14 +455,14 @@ void MainWindow::reload()
     returnFromPreview();
     m_stack->setCurrentWidget(m_mainWidget);
 
-    m_isReloading = true;
     m_managerWidget->reload();
-    m_isReloading = false;
 
     if (m_reviewWidget) {
         m_reviewWidget->reload();
     }
-    m_originalState = m_backend->currentCacheState();
+
+    // FIXME
+    //m_originalState = m_backend->currentCacheState();
 
     m_filterBox->reload();
 
@@ -475,7 +489,7 @@ void MainWindow::reload()
 
 void MainWindow::setActionsEnabled(bool enabled)
 {
-    MuonMainWindow::setActionsEnabled(enabled);
+    m_actions->setActionsEnabled(enabled);
     if (!enabled) {
         return;
     }
@@ -494,7 +508,7 @@ void MainWindow::setActionsEnabled(bool enabled)
         m_previewAction->setEnabled(changesPending);
     }
 
-    m_downloadListAction->setEnabled(isConnected());
+    m_downloadListAction->setEnabled(m_actions->isConnected());
 
     m_applyAction->setEnabled(changesPending);
 
@@ -553,11 +567,7 @@ void MainWindow::closeHistoryDialog()
 
 void MainWindow::revertChanges()
 {
-    MuonMainWindow::revertChanges();
-
     if (m_reviewWidget) {
         returnFromPreview();
     }
 }
-
-#include "MainWindow.moc"

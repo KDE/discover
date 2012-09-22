@@ -44,7 +44,7 @@
 #include "ReviewsBackend/ReviewsBackend.h"
 #include "Transaction/Transaction.h"
 #include "ApplicationUpdates.h"
-#include "QAptIntegration.h"
+#include "QAptActions.h"
 
 ApplicationBackend::ApplicationBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
@@ -124,11 +124,6 @@ void ApplicationBackend::setBackend(QApt::Backend *backend)
 
     QFuture<QVector<Application*> > future = QtConcurrent::run(init, m_backend, QThread::currentThread());
     m_watcher->setFuture(future);
-
-    connect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
-            this, SLOT(workerEvent(QApt::WorkerEvent)));
-    connect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)),
-            this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
 }
 
 void ApplicationBackend::setApplications()
@@ -596,14 +591,28 @@ AbstractBackendUpdater* ApplicationBackend::backendUpdater() const
 
 void ApplicationBackend::integrateMainWindow(KXmlGuiWindow* w)
 {
-    QAptIntegration* aptify = new QAptIntegration(w);
-    QTimer::singleShot(10, aptify, SLOT(initObject()));
+    m_backend = new QApt::Backend(this);
+    QAptActions* aptify = new QAptActions(w, m_backend);
+    QTimer::singleShot(10, this, SLOT(initBackend()));
+
+    // FIXME: QApt::Backend not being initialized, figure out how to do this for muon-discover
     aptify->setupActions();
-    connect(aptify, SIGNAL(backendReady(QApt::Backend*)), this, SLOT(setBackend(QApt::Backend*)));
     connect(aptify, SIGNAL(checkForUpdates()), SLOT(updateCache()));
 }
 
 void ApplicationBackend::updateCache()
 {
     m_backend->updateCache();
+}
+
+void ApplicationBackend::initBackend()
+{
+    m_backend->init();
+
+    if (m_backend->xapianIndexNeedsUpdate()) {
+        // FIXME: transaction
+        m_backend->updateXapianIndex();
+    }
+
+    setBackend(m_backend);
 }
