@@ -41,6 +41,7 @@ public:
     QAptActions(KXmlGuiWindow *parent, QApt::Backend *backend);
 
     bool isConnected() const;
+    void setOriginalState(QApt::CacheState state);
     
 signals:
     void checkForUpdates();

@@ -27,6 +27,7 @@
 #include <QtGui/QPushButton>
 #include <QtGui/QTreeView>
 #include <QtGui/QVBoxLayout>
+#include <QDebug>
 
 // KDE includes
 #include <KIcon>
@@ -48,6 +49,7 @@ TransactionWidget::TransactionWidget(QWidget *parent)
     , m_lastRealProgress(0)
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
+    layout->setMargin(0);
     setLayout(layout);
 
     m_headerLabel = new QLabel(this);
@@ -69,17 +71,19 @@ TransactionWidget::TransactionWidget(QWidget *parent)
     m_downloadView->header()->setResizeMode(1, QHeaderView::Stretch);
     m_downloadView->hide();
 
-    m_debconfGui = new DebconfKde::DebconfGui(m_trans->debconfPipe(), this);
-    layout->addWidget(m_debconfGui);
-    m_debconfGui->connect(m_debconfGui, SIGNAL(activated()), m_debconfGui, SLOT(show()));
-    m_debconfGui->connect(m_debconfGui, SIGNAL(deactivated()), m_debconfGui, SLOT(hide()));
-    m_debconfGui->hide();
+    // FIXME: m_trans is null...
+//    m_debconfGui = new DebconfKde::DebconfGui(m_trans->debconfPipe(), this);
+//    layout->addWidget(m_debconfGui);
+//    m_debconfGui->connect(m_debconfGui, SIGNAL(activated()), m_debconfGui, SLOT(show()));
+//    m_debconfGui->connect(m_debconfGui, SIGNAL(deactivated()), m_debconfGui, SLOT(hide()));
+//    m_debconfGui->hide();
 
     m_statusLabel = new QLabel(this);
     layout->addWidget(m_statusLabel);
 
     QWidget *hbox = new QWidget(this);
     QHBoxLayout *hboxLayout = new QHBoxLayout(hbox);
+    hboxLayout->setMargin(0);
     hbox->setLayout(hboxLayout);
     layout->addWidget(hbox);
     m_totalProgress = new QProgressBar(hbox);
@@ -89,7 +93,6 @@ TransactionWidget::TransactionWidget(QWidget *parent)
     m_cancelButton->setText(i18nc("@action:button Cancels the download", "Cancel"));
     m_cancelButton->setIcon(KIcon("dialog-cancel"));
     hboxLayout->addWidget(m_cancelButton);
-    connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(cancelButtonPressed()));
     connect(m_downloadModel, SIGNAL(rowsInserted(QModelIndex,int,int)), m_downloadView, SLOT(scrollToBottom()));
 }
 
@@ -99,7 +102,7 @@ void TransactionWidget::setTransaction(QApt::Transaction *trans)
 
     // Connect the transaction all up to our slots
     connect(m_trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
-            this, SLOT(transactionStatusChanged(QApt::TransactionStatus)));
+            this, SLOT(statusChanged(QApt::TransactionStatus)));
     connect(m_trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
             this, SLOT(transactionErrorOccurred(QApt::ErrorCode)));
     connect(m_trans, SIGNAL(cancellableChanged(bool)),
@@ -117,6 +120,7 @@ void TransactionWidget::setTransaction(QApt::Transaction *trans)
 
     // Connect us to the transaction
     connect(m_cancelButton, SIGNAL(clicked()), m_trans, SLOT(cancel()));
+    statusChanged(m_trans->status());
 }
 
 void TransactionWidget::statusChanged(QApt::TransactionStatus status)
@@ -192,6 +196,9 @@ void TransactionWidget::statusChanged(QApt::TransactionStatus status)
 
 void TransactionWidget::transactionErrorOccurred(QApt::ErrorCode error)
 {
+    if (error == QApt::Success)
+        return;
+
     MuonStrings *muonStrings = MuonStrings::global();
 
     QString title = muonStrings->errorTitle(error);
@@ -205,6 +212,7 @@ void TransactionWidget::transactionErrorOccurred(QApt::ErrorCode error)
         break;
     default:
         KMessageBox::error(this, text, title);
+        qDebug() << "error type:" << error;
         break;
     }
 }

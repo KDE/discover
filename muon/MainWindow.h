@@ -34,12 +34,12 @@ class ManagerSettingsDialog;
 class FilterWidget;
 class ManagerWidget;
 class ReviewWidget;
-class DownloadWidget;
-class CommitWidget;
+class TransactionWidget;
 class StatusWidget;
 
 namespace QApt {
     class Backend;
+    class Transaction;
 }
 
 /**
@@ -58,6 +58,7 @@ public:
 
 private:
     QApt::Backend *m_backend;
+    QApt::Transaction *m_trans;
 
     QStackedWidget *m_stack;
     QSplitter *m_mainWidget;
@@ -79,8 +80,7 @@ private:
     FilterWidget *m_filterBox;
     ManagerWidget *m_managerWidget;
     ReviewWidget *m_reviewWidget;
-    DownloadWidget *m_downloadWidget;
-    CommitWidget *m_commitWidget;
+    TransactionWidget *m_transWidget;
     StatusWidget *m_statusWidget;
 
 private Q_SLOTS:
@@ -95,13 +95,12 @@ private Q_SLOTS:
     void markAutoRemove();
     void checkForUpdates();
     void downloadPackagesFromList();
-    //void workerEvent(QApt::WorkerEvent event);
+    void transactionStatusChanged(QApt::TransactionStatus status);
     void errorOccurred(QApt::ErrorCode error);
     void previewChanges();
     void returnFromPreview();
     void startCommit();
-    void initDownloadWidget();
-    void initCommitWidget();
+    void initTransactionWidget();
     void reload();
     void setActionsEnabled(bool enabled = true);
 
@@ -111,6 +110,8 @@ public Q_SLOTS:
     void closeSettingsDialog();
     void showHistoryDialog();
     void closeHistoryDialog();
+
+    void setupTransaction(QApt::Transaction *trans);
 
 signals:
     void backendReady(QApt::Backend *backend);

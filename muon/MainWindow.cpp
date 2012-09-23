@@ -24,6 +24,7 @@
 #include <QApplication>
 #include <QtCore/QStringBuilder>
 #include <QtCore/QTimer>
+#include <QtCore/QUuid>
 #include <QtGui/QSplitter>
 #include <QtGui/QStackedWidget>
 #include <QtGui/QToolBox>
@@ -35,17 +36,18 @@
 #include <KFileDialog>
 #include <KLocale>
 #include <KMessageBox>
+#include <KProtocolManager>
 #include <KStandardAction>
 #include <KStatusBar>
 
 // LibQApt includes
 #include <LibQApt/Backend>
 #include <LibQApt/Config>
+#include <LibQApt/Transaction>
 
 // Own includes
 #include "../libmuon/HistoryView/HistoryView.h"
-#include "CommitWidget.h"
-#include "DownloadWidget.h"
+#include "TransactionWidget.h"
 #include "FilterWidget/FilterWidget.h"
 #include "ManagerWidget.h"
 #include "ReviewWidget.h"
@@ -56,12 +58,10 @@
 
 MainWindow::MainWindow()
     : MuonMainWindow()
-    , m_stack(nullptr)
     , m_settingsDialog(nullptr)
     , m_historyDialog(nullptr)
     , m_reviewWidget(nullptr)
-    , m_downloadWidget(nullptr)
-    , m_commitWidget(nullptr)
+    , m_transWidget(nullptr)
 
 {
     initGUI();
@@ -119,6 +119,8 @@ void MainWindow::initGUI()
     m_actions = new QAptActions(this, m_backend);
     connect(m_actions, SIGNAL(changesReverted()),
             this, SLOT(revertChanges()));
+    connect(m_actions, SIGNAL(checkForUpdates()),
+            this, SLOT(checkForUpdates()));
     setupActions();
 
     m_statusWidget = new StatusWidget(centralWidget);
@@ -289,14 +291,18 @@ void MainWindow::checkForUpdates()
 {
     setActionsEnabled(false);
     m_managerWidget->setEnabled(false);
-    initDownloadWidget();
-    m_backend->updateCache();
+
+    initTransactionWidget();
+    m_trans = m_backend->updateCache();
+    setupTransaction(m_trans);
+
+    m_trans->run();
 }
 
 void MainWindow::downloadPackagesFromList()
 {
-    initDownloadWidget();
     // FIXME: transactify
+    initTransactionWidget();
     //MuonMainWindow::downloadPackagesFromList();
 }
 
@@ -322,6 +328,30 @@ void MainWindow::errorOccurred(QApt::ErrorCode error)
     }
 }
 
+void MainWindow::transactionStatusChanged(QApt::TransactionStatus status)
+{
+    // FIXME: better support for transactions that do/don't need reloads
+    switch (status) {
+    case QApt::RunningStatus:
+    case QApt::WaitingStatus:
+        QApplication::restoreOverrideCursor();
+        if (m_trans->role() != QApt::UpdateXapianRole)
+            m_stack->setCurrentWidget(m_transWidget);
+        break;
+    case QApt::FinishedStatus:
+        if (m_trans->role() != QApt::UpdateXapianRole) {
+            reload();
+            setActionsEnabled();
+        }
+
+        m_trans->deleteLater();
+        m_trans = nullptr;
+        break;
+    default:
+        break;
+    }
+}
+
 //void MainWindow::workerEvent(QApt::WorkerEvent event)
 //{
 //    switch (event) {
@@ -340,14 +370,6 @@ void MainWindow::errorOccurred(QApt::ErrorCode error)
 //        }
 //    case QApt::PackageDownloadFinished:
 //        returnFromPreview();
-//        if (m_warningStack.size() > 0) {
-//            showQueuedWarnings();
-//            m_warningStack.clear();
-//        }
-//        if (m_errorStack.size() > 0) {
-//            showQueuedErrors();
-//            m_errorStack.clear();
-//        }
 
 //        if (m_downloadWidget) {
 //            m_downloadWidget->deleteLater();
@@ -421,30 +443,19 @@ void MainWindow::startCommit()
     setActionsEnabled(false);
     m_managerWidget->setEnabled(false);
     QApplication::setOverrideCursor(Qt::WaitCursor);
-    initDownloadWidget();
-    initCommitWidget();
-    m_backend->commitChanges();
+
+    initTransactionWidget();
+    m_trans = m_backend->commitChanges();
+    setupTransaction(m_trans);
+
+    m_trans->run();
 }
 
-void MainWindow::initDownloadWidget()
+void MainWindow::initTransactionWidget()
 {
-    if (!m_downloadWidget) {
-        m_downloadWidget = new DownloadWidget(this);
-        m_stack->addWidget(m_downloadWidget);
-        connect(m_backend, SIGNAL(downloadProgress(int,int,int)),
-                m_downloadWidget, SLOT(updateDownloadProgress(int,int,int)));
-        connect(m_backend, SIGNAL(packageDownloadProgress(QString,int,QString,double,int)),
-                m_downloadWidget, SLOT(updatePackageDownloadProgress(QString,int,QString,double,int)));
-    }
-}
-
-void MainWindow::initCommitWidget()
-{
-    if (!m_commitWidget) {
-        m_commitWidget = new CommitWidget(this);
-        m_stack->addWidget(m_commitWidget);
-        connect(m_backend, SIGNAL(commitProgress(QString,int)),
-                m_commitWidget, SLOT(updateCommitProgress(QString,int)));
+    if (!m_transWidget) {
+        m_transWidget = new TransactionWidget(this);
+        m_stack->addWidget(m_transWidget);
     }
 }
 
@@ -454,34 +465,31 @@ void MainWindow::reload()
     returnFromPreview();
     m_stack->setCurrentWidget(m_mainWidget);
 
+    // No need to keep these around in memory.
+    if (m_transWidget) {
+        m_transWidget->deleteLater();
+        m_transWidget = nullptr;
+    }
+
+    // Reload the QApt Backend
     m_managerWidget->reload();
 
+    // Maybe reload the xapian index
+    if (m_backend->xapianIndexNeedsUpdate()) {
+        m_backend->updateXapianIndex();
+    }
+
+    // Reload other widgets
     if (m_reviewWidget) {
         m_reviewWidget->reload();
     }
 
-    // FIXME
-    //m_originalState = m_backend->currentCacheState();
-
     m_filterBox->reload();
 
+    m_actions->setOriginalState(m_backend->currentCacheState());
     m_statusWidget->updateStatus();
     setActionsEnabled();
     m_managerWidget->setEnabled(true);
-
-    // No need to keep these around in memory.
-    if (m_downloadWidget) {
-        m_downloadWidget->deleteLater();
-        m_downloadWidget = nullptr;
-    }
-    if (m_commitWidget) {
-        m_commitWidget->deleteLater();
-        m_commitWidget = nullptr;
-    }
-
-    if (m_backend->xapianIndexNeedsUpdate()) {
-        m_backend->updateXapianIndex();
-    }
 
     m_canExit = true;
 }
@@ -569,4 +577,23 @@ void MainWindow::revertChanges()
     if (m_reviewWidget) {
         returnFromPreview();
     }
+}
+
+void MainWindow::setupTransaction(QApt::Transaction *trans)
+{
+    // Provide proxy/locale to the transaction
+    if (KProtocolManager::proxyType() == KProtocolManager::ManualProxy) {
+        trans->setProxy(KProtocolManager::proxyFor("http"));
+    }
+
+    trans->setLocale(QLatin1String(setlocale(LC_MESSAGES, 0)));
+
+    QString pipe = QLatin1String("/tmp/") + QUuid::createUuid().toString();
+    pipe.remove('{').remove('}').remove('-');
+
+    trans->setDebconfPipe(pipe);
+    m_transWidget->setTransaction(m_trans);
+
+    connect(m_trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
+            this, SLOT(transactionStatusChanged(QApt::TransactionStatus)));
 }

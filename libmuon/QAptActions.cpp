@@ -102,6 +102,7 @@ bool QAptActions::isConnected() const {
     return connected;
 }
 
+
 void QAptActions::networkChanged()
 {
     if (m_actionsDisabled)
@@ -311,4 +312,9 @@ void QAptActions::sourcesEditorFinished(int reload)
 KActionCollection* QAptActions::actionCollection()
 {
     return m_mainWindow->actionCollection();
+}
+
+void QAptActions::setOriginalState(QApt::CacheState state)
+{
+    m_originalState = state;
 }
