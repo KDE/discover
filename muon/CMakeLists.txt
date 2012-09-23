@@ -31,6 +31,7 @@ set(muon_SRCS
     PackageModel/PackageDelegate.cpp
     PackageModel/PackageWidget.cpp
     StatusWidget.cpp
+    TransactionWidget.cpp
     config/ManagerSettingsDialog.cpp
     config/GeneralSettingsPage.cpp)
 

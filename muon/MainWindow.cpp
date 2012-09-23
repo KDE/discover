@@ -324,8 +324,6 @@ void MainWindow::errorOccurred(QApt::ErrorCode error)
 
 //void MainWindow::workerEvent(QApt::WorkerEvent event)
 //{
-//    MuonMainWindow::workerEvent(event);
-
 //    switch (event) {
 //    case QApt::CacheUpdateStarted:
 //        if (m_downloadWidget) {
