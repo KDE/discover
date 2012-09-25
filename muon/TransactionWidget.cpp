@@ -73,8 +73,9 @@ TransactionWidget::TransactionWidget(QWidget *parent)
     m_downloadView->header()->setResizeMode(1, QHeaderView::Stretch);
     m_downloadView->hide();
 
-    m_pipe = QLatin1String("/tmp/") + QUuid::createUuid().toString();
-    m_pipe.remove('{').remove('}').remove('-');
+    QString uuid = QUuid::createUuid().toString();
+    uuid.remove('{').remove('}').remove('-');
+    m_pipe = QLatin1String("/tmp/qapt-sock-") + uuid;
 
     m_debconfGui = new DebconfKde::DebconfGui(m_pipe, this);
     layout->addWidget(m_debconfGui);
