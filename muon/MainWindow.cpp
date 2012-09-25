@@ -24,7 +24,6 @@
 #include <QApplication>
 #include <QtCore/QStringBuilder>
 #include <QtCore/QTimer>
-#include <QtCore/QUuid>
 #include <QtGui/QSplitter>
 #include <QtGui/QStackedWidget>
 #include <QtGui/QToolBox>
@@ -570,10 +569,7 @@ void MainWindow::setupTransaction(QApt::Transaction *trans)
 
     trans->setLocale(QLatin1String(setlocale(LC_MESSAGES, 0)));
 
-    QString pipe = QLatin1String("/tmp/") + QUuid::createUuid().toString();
-    pipe.remove('{').remove('}').remove('-');
-
-    trans->setDebconfPipe(pipe);
+    trans->setDebconfPipe(m_transWidget->pipe());
     m_transWidget->setTransaction(m_trans);
 
     connect(m_trans, SIGNAL(statusChanged(QApt::TransactionStatus)),

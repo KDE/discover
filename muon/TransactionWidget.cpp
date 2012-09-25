@@ -21,6 +21,7 @@
 #include "TransactionWidget.h"
 
 // Qt includes
+#include <QtCore/QUuid>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QProgressBar>
@@ -72,12 +73,14 @@ TransactionWidget::TransactionWidget(QWidget *parent)
     m_downloadView->header()->setResizeMode(1, QHeaderView::Stretch);
     m_downloadView->hide();
 
-    // FIXME: m_trans is null...
-//    m_debconfGui = new DebconfKde::DebconfGui(m_trans->debconfPipe(), this);
-//    layout->addWidget(m_debconfGui);
-//    m_debconfGui->connect(m_debconfGui, SIGNAL(activated()), m_debconfGui, SLOT(show()));
-//    m_debconfGui->connect(m_debconfGui, SIGNAL(deactivated()), m_debconfGui, SLOT(hide()));
-//    m_debconfGui->hide();
+    m_pipe = QLatin1String("/tmp/") + QUuid::createUuid().toString();
+    m_pipe.remove('{').remove('}').remove('-');
+
+    m_debconfGui = new DebconfKde::DebconfGui(m_pipe, this);
+    layout->addWidget(m_debconfGui);
+    m_debconfGui->connect(m_debconfGui, SIGNAL(activated()), m_debconfGui, SLOT(show()));
+    m_debconfGui->connect(m_debconfGui, SIGNAL(deactivated()), m_debconfGui, SLOT(hide()));
+    m_debconfGui->hide();
 
     m_statusLabel = new QLabel(this);
     layout->addWidget(m_statusLabel);
@@ -95,6 +98,11 @@ TransactionWidget::TransactionWidget(QWidget *parent)
     m_cancelButton->setIcon(KIcon("dialog-cancel"));
     hboxLayout->addWidget(m_cancelButton);
     connect(m_downloadModel, SIGNAL(rowsInserted(QModelIndex,int,int)), m_downloadView, SLOT(scrollToBottom()));
+}
+
+QString TransactionWidget::pipe() const
+{
+    return m_pipe;
 }
 
 void TransactionWidget::setTransaction(QApt::Transaction *trans)

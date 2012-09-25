@@ -48,11 +48,13 @@ class TransactionWidget : public QWidget
 public:
     explicit TransactionWidget(QWidget *parent = 0);
 
+    QString pipe() const;
     void setTransaction(QApt::Transaction *trans);
     
 private:
     QApt::Transaction *m_trans;
     int m_lastRealProgress;
+    QString m_pipe;
 
     QLabel *m_headerLabel;
     QTreeView *m_downloadView;
