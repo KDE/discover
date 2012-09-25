@@ -95,6 +95,8 @@ void MainWindow::initGUI()
     m_mainWidget->setOrientation(Qt::Horizontal);
     connect(m_mainWidget, SIGNAL(splitterMoved(int,int)), this, SLOT(saveSplitterSizes()));
 
+    m_transWidget = new TransactionWidget(this);
+
     m_filterBox = new FilterWidget(m_stack);
     connect(this, SIGNAL(backendReady(QApt::Backend*)),
             m_filterBox, SLOT(setBackend(QApt::Backend*)));
@@ -111,6 +113,7 @@ void MainWindow::initGUI()
     m_mainWidget->addWidget(m_managerWidget);
     loadSplitterSizes();
 
+    m_stack->addWidget(m_transWidget);
     m_stack->addWidget(m_mainWidget);
     m_stack->setCurrentWidget(m_mainWidget);
 
@@ -292,7 +295,7 @@ void MainWindow::checkForUpdates()
     setActionsEnabled(false);
     m_managerWidget->setEnabled(false);
 
-    initTransactionWidget();
+    m_stack->setCurrentWidget(m_transWidget);
     m_trans = m_backend->updateCache();
     setupTransaction(m_trans);
 
@@ -302,7 +305,7 @@ void MainWindow::checkForUpdates()
 void MainWindow::downloadPackagesFromList()
 {
     // FIXME: transactify
-    initTransactionWidget();
+    m_stack->setCurrentWidget(m_transWidget);
     //MuonMainWindow::downloadPackagesFromList();
 }
 
@@ -444,19 +447,11 @@ void MainWindow::startCommit()
     m_managerWidget->setEnabled(false);
     QApplication::setOverrideCursor(Qt::WaitCursor);
 
-    initTransactionWidget();
+    m_stack->setCurrentWidget(m_transWidget);
     m_trans = m_backend->commitChanges();
     setupTransaction(m_trans);
 
     m_trans->run();
-}
-
-void MainWindow::initTransactionWidget()
-{
-    if (!m_transWidget) {
-        m_transWidget = new TransactionWidget(this);
-        m_stack->addWidget(m_transWidget);
-    }
 }
 
 void MainWindow::reload()
@@ -464,12 +459,6 @@ void MainWindow::reload()
     m_canExit = false;
     returnFromPreview();
     m_stack->setCurrentWidget(m_mainWidget);
-
-    // No need to keep these around in memory.
-    if (m_transWidget) {
-        m_transWidget->deleteLater();
-        m_transWidget = nullptr;
-    }
 
     // Reload the QApt Backend
     m_managerWidget->reload();

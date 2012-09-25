@@ -100,7 +100,6 @@ private Q_SLOTS:
     void previewChanges();
     void returnFromPreview();
     void startCommit();
-    void initTransactionWidget();
     void reload();
     void setActionsEnabled(bool enabled = true);
 

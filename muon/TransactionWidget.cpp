@@ -54,6 +54,7 @@ TransactionWidget::TransactionWidget(QWidget *parent)
 
     m_headerLabel = new QLabel(this);
     layout->addWidget(m_headerLabel);
+    layout->addStretch();
 
     m_downloadModel = new DownloadModel(this);
     m_downloadDelegate = new DownloadDelegate(this);
