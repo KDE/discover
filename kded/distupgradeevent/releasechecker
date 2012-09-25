@@ -30,15 +30,19 @@ from UpdateManager.Core.MetaRelease import MetaReleaseCore
 if __name__ == "__main__":
     """ check for updates, if there are any say so """
     #FIXME: implement command line options for MetaReleaseCore args
-    metaRelease = MetaReleaseCore(False, False)
-    while metaRelease.downloading:
-        time.sleep(1)
-    new_dist = metaRelease.new_dist
+    try:
+        metaRelease = MetaReleaseCore(False, False)
+        while metaRelease.downloading:
+            time.sleep(1)
+        new_dist = metaRelease.new_dist
 
-    if new_dist is not None:
-        print("we haz an release")
-        sys.exit(0)
-    else:
-        print("No new release at this moment")
-        sys.exit(1)
+        if new_dist is not None:
+            print("we haz an release")
+            sys.exit(0)
+        else:
+            print("No new release at this moment")
+            sys.exit(1)
+    except Exception, e:
+            print("Error: %s" % e)
+            sys.exit(1)
 
