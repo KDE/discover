@@ -165,7 +165,8 @@ void TransactionWidget::statusChanged(QApt::TransactionStatus status)
         m_statusLabel->clear();
         break;
     case QApt::LoadingCacheStatus:
-        m_statusLabel->setText("Loading software list");
+        m_statusLabel->clear();
+        m_headerLabel->setText("Loading Software List");
         break;
     case QApt::DownloadingStatus:
         m_downloadView->show();
