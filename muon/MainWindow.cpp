@@ -311,20 +311,13 @@ void MainWindow::downloadPackagesFromList()
 
 void MainWindow::errorOccurred(QApt::ErrorCode error)
 {
-    // FIXME: transactify
-    //MuonMainWindow::errorOccurred(error);
-
     switch(error) {
-    // FIXME: react to user cancel
-//    case QApt::UserCancelError:
-//        if (m_downloadWidget) {
-//            m_downloadWidget->clear();
-//        }
     case QApt::AuthError:
     case QApt::LockError:
         m_managerWidget->setEnabled(true);
         QApplication::restoreOverrideCursor();
         returnFromPreview();
+        setActionsEnabled();
         break;
     default:
         break;
@@ -585,4 +578,6 @@ void MainWindow::setupTransaction(QApt::Transaction *trans)
 
     connect(m_trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
             this, SLOT(transactionStatusChanged(QApt::TransactionStatus)));
+    connect(m_trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
+            this, SLOT(errorOccurred(QApt::ErrorCode)));
 }
