@@ -7,7 +7,6 @@ set(muon_SRCS
     MainWindow.cpp
     ManagerWidget.cpp
     ReviewWidget.cpp
-    CommitWidget.cpp
     DetailsTabs/DetailsTab.cpp
     DetailsTabs/MainTab.cpp
     DetailsTabs/ChangelogTab.cpp
@@ -18,7 +17,6 @@ set(muon_SRCS
     DetailsWidget.cpp
     DownloadModel/DownloadModel.cpp
     DownloadModel/DownloadDelegate.cpp
-    DownloadWidget.cpp
     FilterWidget/ArchitectureFilter.cpp
     FilterWidget/CategoryFilter.cpp
     FilterWidget/FilterModel.cpp
