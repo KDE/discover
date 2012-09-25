@@ -68,7 +68,7 @@ private:
 private slots:
     void statusChanged(QApt::TransactionStatus status);
     void transactionErrorOccurred(QApt::ErrorCode error);
-    void provideMedium(const QString &medium, const QString &label);
+    void provideMedium(const QString &label, const QString &medium);
     void untrustedPrompt(const QStringList &untrustedPackages);
     void updateProgress(int progress);
 };

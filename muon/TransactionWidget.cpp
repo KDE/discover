@@ -228,7 +228,7 @@ void TransactionWidget::transactionErrorOccurred(QApt::ErrorCode error)
     }
 }
 
-void TransactionWidget::provideMedium(const QString &medium, const QString &label)
+void TransactionWidget::provideMedium(const QString &label, const QString &medium)
 {
     QString title = i18nc("@title:window", "Media Change Required");
     QString text = i18nc("@label", "Please insert %1 into <filename>%2</filename>",
