@@ -142,7 +142,7 @@ void MainWindow::initObject()
 
     // Set up GUI
     loadSettings();
-    m_actions->setActionsEnabled();
+    setActionsEnabled();
     m_managerWidget->setFocus();
 }
 
