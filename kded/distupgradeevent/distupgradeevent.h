@@ -30,14 +30,11 @@ class DistUpgradeEvent : public Event
 public:
     DistUpgradeEvent(QObject* parent, QString name);
 
-    virtual ~DistUpgradeEvent();
-
 public slots:
     void show();
 
 private slots:
     void run();
-    bool upgradeAvailable();
 };
 
 #endif
