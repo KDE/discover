@@ -64,15 +64,13 @@ protected slots:
 
 public slots:
     void easterEggTriggered();
+    void setCanExit(bool canExit);
 
 protected:
 #ifdef QAPT_ENABLED
     QAptActions *m_actions;
 #endif
     bool m_canExit;
-
-private slots:
-    void setCanExit(bool canExit);
 };
 
 #endif

@@ -45,6 +45,7 @@
 #include "Transaction/Transaction.h"
 #include "ApplicationUpdates.h"
 #include "QAptActions.h"
+#include "MuonMainWindow.h"
 
 ApplicationBackend::ApplicationBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
@@ -145,10 +146,15 @@ void ApplicationBackend::setApplications()
     m_instOriginList.remove(QString());
     m_originList += m_instOriginList;
     emit backendReady();
+
+    if (m_aptify)
+        m_aptify->setCanExit(true);
 }
 
 void ApplicationBackend::reload()
 {
+    if (m_aptify)
+        m_aptify->setCanExit(false);
     emit reloadStarted();
     m_isReloading = true;
     foreach(Application* app, m_appList)
@@ -162,6 +168,8 @@ void ApplicationBackend::reload()
         app->package();
 
     m_isReloading = false;
+    if (m_aptify)
+        m_aptify->setCanExit(true);
     emit reloadFinished();
     emit searchInvalidated();
     emit updatesCountChanged();
@@ -589,15 +597,14 @@ AbstractBackendUpdater* ApplicationBackend::backendUpdater() const
     return m_backendUpdater;
 }
 
-void ApplicationBackend::integrateMainWindow(KXmlGuiWindow* w)
+void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
 {
     m_backend = new QApt::Backend(this);
-    QAptActions* aptify = new QAptActions(w, m_backend);
+    m_aptify = new QAptActions(w, m_backend);
     QTimer::singleShot(10, this, SLOT(initBackend()));
 
-    // FIXME: QApt::Backend not being initialized, figure out how to do this for muon-discover
-    aptify->setupActions();
-    connect(aptify, SIGNAL(checkForUpdates()), SLOT(updateCache()));
+    m_aptify->setupActions();
+    connect(m_aptify, SIGNAL(checkForUpdates()), SLOT(updateCache()));
 }
 
 void ApplicationBackend::updateCache()
@@ -607,6 +614,8 @@ void ApplicationBackend::updateCache()
 
 void ApplicationBackend::initBackend()
 {
+    if (m_aptify)
+        m_aptify->setCanExit(false);
     m_backend->init();
 
     if (m_backend->xapianIndexNeedsUpdate()) {

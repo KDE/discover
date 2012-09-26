@@ -39,7 +39,10 @@
 #include <LibQApt/Backend>
 #include <LibQApt/DebFile>
 
-QAptActions::QAptActions(KXmlGuiWindow *parent, QApt::Backend *backend)
+// Own includes
+#include "MuonMainWindow.h"
+
+QAptActions::QAptActions(MuonMainWindow *parent, QApt::Backend *backend)
     : QObject(parent)
     , m_backend(backend)
     , m_actionsDisabled(false)
@@ -317,4 +320,9 @@ KActionCollection* QAptActions::actionCollection()
 void QAptActions::setOriginalState(QApt::CacheState state)
 {
     m_originalState = state;
+}
+
+void QAptActions::setCanExit(bool canExit)
+{
+    m_mainWindow->setCanExit(canExit);
 }

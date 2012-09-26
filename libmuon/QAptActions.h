@@ -28,20 +28,22 @@
 #include "libmuonprivate_export.h"
 
 class KActionCollection;
-class KXmlGuiWindow;
 
 namespace QApt {
     class Backend;
 }
 
+class MuonMainWindow;
+
 class MUONPRIVATE_EXPORT QAptActions : public QObject
 {
     Q_OBJECT
 public:
-    QAptActions(KXmlGuiWindow *parent, QApt::Backend *backend);
+    QAptActions(MuonMainWindow *parent, QApt::Backend *backend);
 
     bool isConnected() const;
     void setOriginalState(QApt::CacheState state);
+    void setCanExit(bool canExit);
     
 signals:
     void checkForUpdates();
@@ -70,7 +72,7 @@ private:
     QApt::Backend *m_backend;
     QApt::CacheState m_originalState;
     bool m_actionsDisabled;
-    KXmlGuiWindow* m_mainWindow;
+    MuonMainWindow* m_mainWindow;
 
     KActionCollection* actionCollection();
 };

@@ -164,21 +164,21 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     restoreState(window.readEntry<QByteArray>("windowState", QByteArray()));
     
     setCentralWidget(m_view);
-    initialize(this);
+    initialize();
 }
 
-void MuonDiscoverMainWindow::initialize(KXmlGuiWindow* w)
+void MuonDiscoverMainWindow::initialize()
 {
     QList<AbstractResourcesBackend*> backends;
 
 #ifdef ATTICA_ENABLED
-    backends += new KNSBackend("comic.knsrc", "face-smile-big", w);
-    backends += new KNSBackend("plasmoids.knsrc", "plasma", w);
+    backends += new KNSBackend("comic.knsrc", "face-smile-big", this);
+    backends += new KNSBackend("plasmoids.knsrc", "plasma", this);
 #endif
     
 #ifdef QAPT_ENABLED
-    ApplicationBackend* applicationBackend = new ApplicationBackend(w);
-    applicationBackend->integrateMainWindow(w);
+    ApplicationBackend* applicationBackend = new ApplicationBackend(this);
+    applicationBackend->integrateMainWindow(this);
     backends += applicationBackend;
 #endif
     
