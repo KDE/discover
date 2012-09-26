@@ -26,23 +26,20 @@ import sys, time
 sys.path.insert(0, '/usr/lib/python3/dist-packages/')
 
 from UpdateManager.Core.MetaRelease import MetaReleaseCore
+from UpdateManager.Core.utils import init_proxy
 
 if __name__ == "__main__":
     """ check for updates, if there are any say so """
-    #FIXME: implement command line options for MetaReleaseCore args
-    try:
-        metaRelease = MetaReleaseCore(False, False)
-        while metaRelease.downloading:
-            time.sleep(1)
-        new_dist = metaRelease.new_dist
 
-        if new_dist is not None:
-            print("we haz an release")
-            sys.exit(0)
-        else:
-            print("No new release at this moment")
-            sys.exit(1)
-    except Exception, e:
-            print("Error: %s" % e)
-            sys.exit(1)
+    init_proxy()
+    #FIXME: implement command line options for MetaReleaseCore args
+    metaRelease = MetaReleaseCore(False, False)
+    while metaRelease.downloading:
+        time.sleep(0.5)
+    new_dist = metaRelease.new_dist
+
+    if new_dist is not None:
+        sys.exit(0)
+    else:
+        sys.exit(1)
 
