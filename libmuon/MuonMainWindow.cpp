@@ -35,7 +35,7 @@
 
 MuonMainWindow::MuonMainWindow()
     : KXmlGuiWindow(0)
-    , m_canExit(true)
+    , m_canExit(false)
 {
 }
 

@@ -93,6 +93,8 @@ void MainWindow::initGUI()
     m_mainWidget = new QSplitter(this);
     m_mainWidget->setOrientation(Qt::Horizontal);
     connect(m_mainWidget, SIGNAL(splitterMoved(int,int)), this, SLOT(saveSplitterSizes()));
+    connect(m_managerWidget, SIGNAL(doneSortingPackages(bool)),
+            this, SLOT(setCanExit(bool)));
 
     m_transWidget = new TransactionWidget(this);
 
@@ -134,7 +136,6 @@ void MainWindow::initGUI()
 void MainWindow::initObject()
 {
     m_backend->init();
-    m_canExit = true;
 
     if (m_backend->xapianIndexNeedsUpdate()) {
         m_backend->updateXapianIndex();

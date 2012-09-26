@@ -66,9 +66,9 @@ public slots:
     void easterEggTriggered();
 
 protected:
-//#ifdef QAPT_ENABLED
+#ifdef QAPT_ENABLED
     QAptActions *m_actions;
-//#endif
+#endif
     bool m_canExit;
 
 private slots:
