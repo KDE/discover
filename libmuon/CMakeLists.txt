@@ -27,6 +27,7 @@ add_subdirectory(tests)
 set(muon_LIB_SRCS
     Category/Category.cpp
     Category/CategoryModel.cpp
+    MuonMainWindow.cpp
     mobile/src/mousecursor.cpp
     ReviewsBackend/AbstractReviewsBackend.cpp
     ReviewsBackend/Rating.cpp
@@ -52,7 +53,6 @@ if(QAPT_FOUND)
         ChangesDialog.cpp
         MuonStrings.cpp
         QAptActions.cpp
-        MuonMainWindow.cpp
         ApplicationBackend/LaunchListModel.cpp
         ApplicationBackend/ApplicationUpdates.cpp
         HistoryView/HistoryProxyModel.cpp
@@ -101,6 +101,10 @@ target_link_libraries(muonprivate
 if(LIBATTICA_FOUND)
     target_link_libraries(muonprivate ${LIBATTICA_LIBRARIES})
 endif(LIBATTICA_FOUND)
+
+if(QAPT_FOUND)
+    target_link_libraries(muonprivate ${QAPT_LIBRARY})
+endif(QAPT_FOUND)
 
 file(GLOB muon_QMLS "${CMAKE_CURRENT_SOURCE_DIR}/mobile/qml/*.qml")
 
