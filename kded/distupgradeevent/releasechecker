@@ -39,6 +39,7 @@ if __name__ == "__main__":
     new_dist = metaRelease.new_dist
 
     if new_dist is not None:
+        print("Found a release")
         sys.exit(0)
     else:
         sys.exit(1)

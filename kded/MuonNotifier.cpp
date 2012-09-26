@@ -30,6 +30,8 @@
 #include <KDirWatch>
 #include <KLocalizedString>
 #include <KPluginFactory>
+#include <KProcess>
+#include <KStandardDirs>
 
 // Own includes
 #include "distupgradeevent/distupgradeevent.h"
@@ -45,8 +47,9 @@ K_EXPORT_PLUGIN(MuonNotifierFactory("muon-notifier"))
 
 MuonNotifier::MuonNotifier(QObject* parent, const QList<QVariant>&)
         : KDEDModule(parent)
-        , m_distUpgradeEvent(0)
-        , m_configWatcher(0)
+        , m_distUpgradeEvent(nullptr)
+        , m_configWatcher(nullptr)
+        , m_checkerProcess(nullptr)
 {
     KAboutData aboutData("muon-notifier", "muon-notifier",
                          ki18n("Muon Notification Daemon"),
@@ -65,6 +68,7 @@ MuonNotifier::MuonNotifier(QObject* parent, const QList<QVariant>&)
 
 MuonNotifier::~MuonNotifier()
 {
+    delete m_checkerProcess;
 }
 
 void MuonNotifier::init()
@@ -102,7 +106,21 @@ void MuonNotifier::init()
 
 void MuonNotifier::distUpgradeEvent()
 {
-    m_distUpgradeEvent->show();
+    QString checkerFile = KStandardDirs::locate("data", "muon-notifier/releasechecker");
+    m_checkerProcess = new KProcess(this);
+    connect(m_checkerProcess, SIGNAL(finished(int)),
+            this, SLOT(checkUpgradeFinished(int)));
+    m_checkerProcess->setProgram(QStringList() << "/usr/bin/python3" << checkerFile);
+    m_checkerProcess->start();
+}
+
+void MuonNotifier::checkUpgradeFinished(int exitStatus)
+{
+    if (exitStatus == 0)
+        m_distUpgradeEvent->show();
+
+    m_checkerProcess->deleteLater();
+    m_checkerProcess = nullptr;
 }
 
 void MuonNotifier::updateEvent()
@@ -111,5 +129,3 @@ void MuonNotifier::updateEvent()
         m_updateEvent->getUpdateInfo();
     }
 }
-
-#include "MuonNotifier.moc"

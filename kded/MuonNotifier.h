@@ -25,6 +25,8 @@
 // KDE includes
 #include <KDEDModule>
 
+class KProcess;
+
 class DistUpgradeEvent;
 class UpdateEvent;
 
@@ -36,19 +38,20 @@ class MuonNotifier
     Q_OBJECT
 public:
     MuonNotifier(QObject* parent, const QList<QVariant>&);
-
-    virtual ~MuonNotifier();
+    ~MuonNotifier();
 
 private Q_SLOTS:
     void init();
     void distUpgradeEvent();
     void updateEvent();
+    void checkUpgradeFinished(int exitStatus);
 
 private:
     DistUpgradeEvent *m_distUpgradeEvent;
     UpdateEvent *m_updateEvent;
 
     ConfigWatcher* m_configWatcher;
+    KProcess *m_checkerProcess;
 };
 
 #endif
