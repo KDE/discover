@@ -96,6 +96,13 @@ void MainWindow::initGUI()
     mainLayout->addWidget(m_updaterWidget);
     mainLayout->addWidget(m_changelogWidget);
 
+    m_backend = new QApt::Backend(this);
+    m_actions = new QAptActions(this, m_backend);
+    connect(m_actions, SIGNAL(changesReverted()),
+            this, SLOT(revertChanges()));
+    connect(m_actions, SIGNAL(checkForUpdates()),
+            this, SLOT(checkForUpdates()));
+
     setupActions();
 
     mainWidget->setLayout(mainLayout);
@@ -113,13 +120,9 @@ void MainWindow::initObject()
     }
 
     emit backendReady(m_backend);
+    m_canExit = true;
 
     setActionsEnabled(); //Get initial enabled/disabled state
-
-    connect(m_backend, SIGNAL(downloadProgress(int,int,int)),
-            m_progressWidget, SLOT(updateDownloadProgress(int,int,int)));
-    connect(m_backend, SIGNAL(commitProgress(QString,int)),
-            m_progressWidget, SLOT(updateCommitProgress(QString,int)));
 }
 
 void MainWindow::setupActions()
