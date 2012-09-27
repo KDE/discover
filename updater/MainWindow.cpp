@@ -40,6 +40,7 @@
 
 // Own includes
 #include "../libmuon/HistoryView/HistoryView.h"
+#include "../libmuon/QAptActions.h"
 #include "ChangelogWidget.h"
 #include "ProgressWidget.h"
 #include "config/UpdaterSettingsDialog.h"
@@ -105,7 +106,14 @@ void MainWindow::initGUI()
 
 void MainWindow::initObject()
 {
-    MuonMainWindow::initObject();
+    m_backend->init();
+
+    if (m_backend->xapianIndexNeedsUpdate()) {
+        m_backend->updateXapianIndex();
+    }
+
+    emit backendReady(m_backend);
+
     setActionsEnabled(); //Get initial enabled/disabled state
 
     connect(m_backend, SIGNAL(downloadProgress(int,int,int)),
@@ -117,6 +125,7 @@ void MainWindow::initObject()
 void MainWindow::setupActions()
 {
     MuonMainWindow::setupActions();
+    m_actions->setupActions();
 
     m_createDownloadListAction = actionCollection()->addAction("save_download_list");
     m_createDownloadListAction->setIcon(KIcon("document-save-as"));
@@ -127,10 +136,10 @@ void MainWindow::setupActions()
     m_downloadListAction->setIcon(KIcon("download"));
     m_downloadListAction->setText(i18nc("@action", "Download Packages From List..."));
     connect(m_downloadListAction, SIGNAL(triggered()), this, SLOT(downloadPackagesFromList()));
-    if (!isConnected()) {
+    if (!m_actions->isConnected()) {
         m_downloadListAction->setDisabled(false);
     }
-    connect(this, SIGNAL(shouldConnect(bool)), m_downloadListAction, SLOT(setEnabled(bool)));
+    connect(m_actions, SIGNAL(shouldConnect(bool)), m_downloadListAction, SLOT(setEnabled(bool)));
 
     m_loadArchivesAction = actionCollection()->addAction("load_archives");
     m_loadArchivesAction->setIcon(KIcon("document-open"));
@@ -160,64 +169,55 @@ void MainWindow::setupActions()
     setupGUI((StandardWindowOption)(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
 }
 
-void MainWindow::workerEvent(QApt::WorkerEvent event)
+//void MainWindow::workerEvent(QApt::WorkerEvent event)
+//{
+//    MuonMainWindow::workerEvent(event);
+
+//    switch (event) {
+//    case QApt::CacheUpdateStarted:
+//        m_progressWidget->show();
+//        m_progressWidget->setHeaderText(i18nc("@info", "<title>Updating software sources</title>"));
+//        connect(m_progressWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
+//        break;
+//    case QApt::CacheUpdateFinished:
+//    case QApt::CommitChangesFinished:
+//        if (m_backend) {
+//            m_progressWidget->animatedHide();
+//            m_updaterWidget->setEnabled(true);
+//            m_updaterWidget->setCurrentIndex(0);
+//            reload();
+//            setActionsEnabled();
+//        }
+//    case QApt::PackageDownloadFinished:
+//        if (m_warningStack.size() > 0) {
+//            showQueuedWarnings();
+//            m_warningStack.clear();
+//        }
+//        if (m_errorStack.size() > 0) {
+//            showQueuedErrors();
+//            m_errorStack.clear();
+//        }
+//        break;
+//    case QApt::PackageDownloadStarted:
+//        m_progressWidget->show();
+//        m_progressWidget->setHeaderText(i18nc("@info", "<title>Downloading Updates</title>"));
+//        connect(m_progressWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
+//        QApplication::restoreOverrideCursor();
+//        break;
+//    case QApt::CommitChangesStarted:
+//        m_progressWidget->setHeaderText(i18nc("@info", "<title>Installing Updates</title>"));
+//        m_progressWidget->hideCancelButton();
+//        QApplication::restoreOverrideCursor();
+//        break;
+//    default:
+//        break;
+//    }
+//}
+
+void MainWindow::errorOccurred(QApt::ErrorCode error)
 {
-    MuonMainWindow::workerEvent(event);
-
-    switch (event) {
-    case QApt::CacheUpdateStarted:
-        m_progressWidget->show();
-        m_progressWidget->setHeaderText(i18nc("@info", "<title>Updating software sources</title>"));
-        connect(m_progressWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
-        break;
-    case QApt::CacheUpdateFinished:
-    case QApt::CommitChangesFinished:
-        if (m_backend) {
-            m_progressWidget->animatedHide();
-            m_updaterWidget->setEnabled(true);
-            m_updaterWidget->setCurrentIndex(0);
-            reload();
-            setActionsEnabled();
-        }
-    case QApt::PackageDownloadFinished:
-        if (m_warningStack.size() > 0) {
-            showQueuedWarnings();
-            m_warningStack.clear();
-        }
-        if (m_errorStack.size() > 0) {
-            showQueuedErrors();
-            m_errorStack.clear();
-        }
-        break;
-    case QApt::PackageDownloadStarted:
-        m_progressWidget->show();
-        m_progressWidget->setHeaderText(i18nc("@info", "<title>Downloading Updates</title>"));
-        connect(m_progressWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
-        QApplication::restoreOverrideCursor();
-        break;
-    case QApt::CommitChangesStarted:
-        m_progressWidget->setHeaderText(i18nc("@info", "<title>Installing Updates</title>"));
-        m_progressWidget->hideCancelButton();
-        QApplication::restoreOverrideCursor();
-        break;
-    default:
-        break;
-    }
-}
-
-void MainWindow::errorOccurred(QApt::ErrorCode error, const QVariantMap &args)
-{
-    MuonMainWindow::errorOccurred(error, args);
-
     switch (error) {
-    case QApt::UserCancelError:
-        if (m_backend) {
-            m_progressWidget->animatedHide();
-            m_updaterWidget->setEnabled(true);
-            setActionsEnabled();
-        }
-        QApplication::restoreOverrideCursor();
-        break;
+    case QApt::LockError:
     case QApt::AuthError:
         m_updaterWidget->setEnabled(true);
         setActionsEnabled();
@@ -234,13 +234,11 @@ void MainWindow::reload()
 
     disconnect(m_updaterWidget, SIGNAL(packageChanged(QApt::Package*)),
                m_changelogWidget, SLOT(setPackage(QApt::Package*)));
-    m_isReloading = false;
 
     m_updaterWidget->reload();
 
     connect(m_updaterWidget, SIGNAL(packageChanged(QApt::Package*)),
             m_changelogWidget, SLOT(setPackage(QApt::Package*)));
-    m_isReloading = true;
 
     m_changelogWidget->setPackage(0);
     QApplication::restoreOverrideCursor();
@@ -252,12 +250,12 @@ void MainWindow::reload()
 
 void MainWindow::setActionsEnabled(bool enabled)
 {
-    MuonMainWindow::setActionsEnabled(enabled);
+    m_actions->setActionsEnabled(enabled);
     if (!enabled) {
         return;
     }
 
-    m_downloadListAction->setEnabled(isConnected());
+    m_downloadListAction->setEnabled(m_actions->isConnected());
 
     m_applyAction->setEnabled(m_backend->areChangesMarked());
     m_updaterWidget->setEnabled(true);

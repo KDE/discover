@@ -21,6 +21,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+// LibQApt includes
+#include <LibQApt/Globals>
+
 // Own includes
 #include "../libmuon/MuonMainWindow.h"
 
@@ -28,6 +31,11 @@ class KAction;
 class KDialog;
 class KMessageWidget;
 class KProcess;
+
+namespace QApt {
+    class Backend;
+    class Transaction;
+}
 
 class ChangelogWidget;
 class ProgressWidget;
@@ -41,6 +49,9 @@ public:
     MainWindow();
 
 private:
+    QApt::Backend *m_backend;
+    QApt::Transaction *m_trans;
+
     ProgressWidget *m_progressWidget;
     UpdaterWidget *m_updaterWidget;
     ChangelogWidget *m_changelogWidget;
@@ -61,8 +72,7 @@ private Q_SLOTS:
     void initGUI();
     void initObject();
     void setupActions();
-    void workerEvent(QApt::WorkerEvent event);
-    void errorOccurred(QApt::ErrorCode error, const QVariantMap &args);
+    void errorOccurred(QApt::ErrorCode error);
     void reload();
     void setActionsEnabled(bool enabled = true);
     void checkForUpdates();
@@ -76,6 +86,9 @@ private Q_SLOTS:
     void checkDistUpgrade();
     void checkerFinished(int res);
     void launchDistUpgrade();
+
+Q_SIGNALS:
+    void backendReady(QApt::Backend *backend);
 };
 
 #endif // MAINWINDOW_H
