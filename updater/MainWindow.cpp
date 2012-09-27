@@ -174,8 +174,6 @@ void MainWindow::setupActions()
 
 //void MainWindow::workerEvent(QApt::WorkerEvent event)
 //{
-//    MuonMainWindow::workerEvent(event);
-
 //    switch (event) {
 //    case QApt::CacheUpdateStarted:
 //        m_progressWidget->show();
@@ -190,17 +188,7 @@ void MainWindow::setupActions()
 //            m_updaterWidget->setCurrentIndex(0);
 //            reload();
 //            setActionsEnabled();
-//        }
-//    case QApt::PackageDownloadFinished:
-//        if (m_warningStack.size() > 0) {
-//            showQueuedWarnings();
-//            m_warningStack.clear();
-//        }
-//        if (m_errorStack.size() > 0) {
-//            showQueuedErrors();
-//            m_errorStack.clear();
-//        }
-//        break;
+//        };
 //    case QApt::PackageDownloadStarted:
 //        m_progressWidget->show();
 //        m_progressWidget->setHeaderText(i18nc("@info", "<title>Downloading Updates</title>"));
@@ -372,6 +360,9 @@ void MainWindow::checkerFinished(int res)
     if (res == 0) {
         m_distUpgradeMessage->show();
     }
+
+    m_checkerProcess->deleteLater();
+    m_checkerProcess = nullptr;
 }
 
 void MainWindow::launchDistUpgrade()
