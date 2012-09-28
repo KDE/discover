@@ -89,16 +89,17 @@ ChangelogWidget::ChangelogWidget(QWidget *parent)
 
     int finalHeight = sizeHint().height();
 
-    QPropertyAnimation *anim1 = new QPropertyAnimation(this, "maximumSize", this);
+    QPropertyAnimation *anim1 = new QPropertyAnimation(this, "maximumHeight", this);
     anim1->setDuration(500);
     anim1->setEasingCurve(QEasingCurve::OutQuart);
-    anim1->setStartValue(QSize(QWIDGETSIZE_MAX, 0));
-    anim1->setEndValue(QSize(QWIDGETSIZE_MAX, finalHeight));
-    QPropertyAnimation *anim2 = new QPropertyAnimation(this, "minimumSize", this);
+    anim1->setStartValue(0);
+    anim1->setEndValue(finalHeight);
+
+    QPropertyAnimation *anim2 = new QPropertyAnimation(this, "minimumHeight", this);
     anim2->setDuration(500);
     anim2->setEasingCurve(QEasingCurve::OutQuart);
-    anim2->setStartValue(QSize(QWIDGETSIZE_MAX, 0));
-    anim2->setEndValue(QSize(QWIDGETSIZE_MAX, finalHeight));
+    anim2->setStartValue(0);
+    anim2->setEndValue(finalHeight);
 
     m_expandWidget = new QParallelAnimationGroup(this);
     m_expandWidget->addAnimation(anim1);
