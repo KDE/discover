@@ -23,19 +23,30 @@
 
 #include <QtGui/QWidget>
 
+#include <LibQApt/Globals>
+
 class QLabel;
 class QParallelAnimationGroup;
 class QPushButton;
 class QProgressBar;
 
+namespace QApt {
+    class Transaction;
+}
+
 class ProgressWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ProgressWidget(QWidget *parent = 0);
+    ProgressWidget(QWidget *parent);
+
+    void setTransaction(QApt::Transaction *trans);
 
 private:
-    QLabel *m_statusLabel;
+    QApt::Transaction *m_trans;
+    int m_lastRealProgress;
+
+    QLabel *m_headerLabel;
     QProgressBar *m_progressBar;
     QPushButton *m_cancelButton;
     QLabel *m_detailsLabel;
@@ -44,17 +55,17 @@ private:
     QParallelAnimationGroup *m_expandWidget;
 
 public Q_SLOTS:
-    void setCommitProgress(int percentage);
-    void updateDownloadProgress(int percentage, int speed, int ETA);
-    void updateCommitProgress(const QString &message, int percentage);
-    void setHeaderText(const QString &text);
-
     void show();
     void animatedHide();
-    void hideCancelButton();
 
-Q_SIGNALS:
-    void cancelDownload();
+private Q_SLOTS:
+    void statusChanged(QApt::TransactionStatus status);
+    void transactionErrorOccurred(QApt::ErrorCode error);
+    void provideMedium(const QString &label, const QString &medium);
+    void untrustedPrompt(const QStringList &untrustedPackages);
+    void updateProgress(int progress);
+    void downloadSpeedChanged(quint64 speed);
+    void etaChanged(quint64 ETA);
 };
 
 #endif // PROGRESSWIDGET_H

@@ -224,7 +224,6 @@ void TransactionWidget::transactionErrorOccurred(QApt::ErrorCode error)
         break;
     default:
         KMessageBox::error(this, text, title);
-        qDebug() << "error type:" << error;
         break;
     }
 }

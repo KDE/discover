@@ -98,8 +98,6 @@ void MainWindow::initGUI()
 
     m_backend = new QApt::Backend(this);
     m_actions = new QAptActions(this, m_backend);
-    connect(m_actions, SIGNAL(changesReverted()),
-            this, SLOT(revertChanges()));
     connect(m_actions, SIGNAL(checkForUpdates()),
             this, SLOT(checkForUpdates()));
 
@@ -130,15 +128,25 @@ void MainWindow::setupActions()
     MuonMainWindow::setupActions();
     m_actions->setupActions();
 
+    m_loadSelectionsAction = actionCollection()->addAction("open_markings");
+    m_loadSelectionsAction->setIcon(KIcon("document-open"));
+    m_loadSelectionsAction->setText(i18nc("@action", "Read Markings..."));
+    connect(m_loadSelectionsAction, SIGNAL(triggered()), m_actions, SLOT(loadSelections()));
+
+    m_saveSelectionsAction = actionCollection()->addAction("save_markings");
+    m_saveSelectionsAction->setIcon(KIcon("document-save-as"));
+    m_saveSelectionsAction->setText(i18nc("@action", "Save Markings As..."));
+    connect(m_saveSelectionsAction, SIGNAL(triggered()), m_actions, SLOT(saveSelections()));
+
     m_createDownloadListAction = actionCollection()->addAction("save_download_list");
     m_createDownloadListAction->setIcon(KIcon("document-save-as"));
     m_createDownloadListAction->setText(i18nc("@action", "Save Package Download List..."));
-    connect(m_createDownloadListAction, SIGNAL(triggered()), this, SLOT(createDownloadList()));
+    connect(m_createDownloadListAction, SIGNAL(triggered()), m_actions, SLOT(createDownloadList()));
 
     m_downloadListAction = actionCollection()->addAction("download_from_list");
     m_downloadListAction->setIcon(KIcon("download"));
     m_downloadListAction->setText(i18nc("@action", "Download Packages From List..."));
-    connect(m_downloadListAction, SIGNAL(triggered()), this, SLOT(downloadPackagesFromList()));
+    connect(m_downloadListAction, SIGNAL(triggered()), m_actions, SLOT(downloadPackagesFromList()));
     if (!m_actions->isConnected()) {
         m_downloadListAction->setDisabled(false);
     }
@@ -147,7 +155,7 @@ void MainWindow::setupActions()
     m_loadArchivesAction = actionCollection()->addAction("load_archives");
     m_loadArchivesAction->setIcon(KIcon("document-open"));
     m_loadArchivesAction->setText(i18nc("@action", "Add Downloaded Packages"));
-    connect(m_loadArchivesAction, SIGNAL(triggered()), this, SLOT(loadArchives()));
+    connect(m_loadArchivesAction, SIGNAL(triggered()), m_actions, SLOT(loadArchives()));
 
     m_applyAction = actionCollection()->addAction("apply");
     m_applyAction->setIcon(KIcon("dialog-ok-apply"));
