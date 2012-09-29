@@ -72,7 +72,7 @@ ProgressWidget::ProgressWidget(QWidget *parent)
 
     setLayout(mainLayout);
 
-    int finalHeight = sizeHint().height();
+    int finalHeight = sizeHint().height() + 20;
 
     QPropertyAnimation *anim1 = new QPropertyAnimation(this, "maximumHeight", this);
     anim1->setDuration(500);
@@ -177,7 +177,7 @@ void ProgressWidget::statusChanged(QApt::TransactionStatus status)
         break;
     case QApt::CommittingStatus:
         m_headerLabel->setText(i18nc("@info Status information, widget title",
-                                     "<title>Committing Changes</title>"));
+                                     "<title>Applying Changes</title>"));
         m_detailsLabel->clear();
         break;
     case QApt::FinishedStatus:

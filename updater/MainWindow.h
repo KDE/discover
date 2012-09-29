@@ -51,6 +51,7 @@ public:
 private:
     QApt::Backend *m_backend;
     QApt::Transaction *m_trans;
+    QString m_pipe;
 
     ProgressWidget *m_progressWidget;
     UpdaterWidget *m_updaterWidget;
@@ -74,11 +75,13 @@ private Q_SLOTS:
     void initGUI();
     void initObject();
     void setupActions();
+    void transactionStatusChanged(QApt::TransactionStatus status);
     void errorOccurred(QApt::ErrorCode error);
     void reload();
     void setActionsEnabled(bool enabled = true);
     void checkForUpdates();
     void startCommit();
+    void setupTransaction(QApt::Transaction *trans);
     void editSettings();
     void closeSettingsDialog();
     void showHistoryDialog();

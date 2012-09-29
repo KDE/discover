@@ -31,12 +31,14 @@
 #include <KDebug>
 #include <KMessageWidget>
 #include <KProcess>
+#include <KProtocolManager>
 #include <KStandardDirs>
 #include <Solid/Device>
 #include <Solid/AcAdapter>
 
 // LibQApt includes
 #include <LibQApt/Backend>
+#include <LibQApt/Transaction>
 
 // Own includes
 #include "../libmuon/HistoryView/HistoryView.h"
@@ -180,38 +182,29 @@ void MainWindow::setupActions()
     setupGUI((StandardWindowOption)(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
 }
 
-//void MainWindow::workerEvent(QApt::WorkerEvent event)
-//{
-//    switch (event) {
-//    case QApt::CacheUpdateStarted:
-//        m_progressWidget->show();
-//        m_progressWidget->setHeaderText(i18nc("@info", "<title>Updating software sources</title>"));
-//        connect(m_progressWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
-//        break;
-//    case QApt::CacheUpdateFinished:
-//    case QApt::CommitChangesFinished:
-//        if (m_backend) {
-//            m_progressWidget->animatedHide();
-//            m_updaterWidget->setEnabled(true);
-//            m_updaterWidget->setCurrentIndex(0);
-//            reload();
-//            setActionsEnabled();
-//        };
-//    case QApt::PackageDownloadStarted:
-//        m_progressWidget->show();
-//        m_progressWidget->setHeaderText(i18nc("@info", "<title>Downloading Updates</title>"));
-//        connect(m_progressWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
-//        QApplication::restoreOverrideCursor();
-//        break;
-//    case QApt::CommitChangesStarted:
-//        m_progressWidget->setHeaderText(i18nc("@info", "<title>Installing Updates</title>"));
-//        m_progressWidget->hideCancelButton();
-//        QApplication::restoreOverrideCursor();
-//        break;
-//    default:
-//        break;
-//    }
-//}
+void MainWindow::transactionStatusChanged(QApt::TransactionStatus status)
+{
+    // FIXME: better support for transactions that do/don't need reloads
+    switch (status) {
+    case QApt::RunningStatus:
+    case QApt::WaitingStatus:
+        QApplication::restoreOverrideCursor();
+        m_progressWidget->show();
+        break;
+    case QApt::FinishedStatus:
+        m_progressWidget->animatedHide();
+        m_updaterWidget->setEnabled(true);
+        m_updaterWidget->setCurrentIndex(0);
+        reload();
+        setActionsEnabled();
+
+        m_trans->deleteLater();
+        m_trans = nullptr;
+        break;
+    default:
+        break;
+    }
+}
 
 void MainWindow::errorOccurred(QApt::ErrorCode error)
 {
@@ -267,7 +260,10 @@ void MainWindow::checkForUpdates()
     QApplication::setOverrideCursor(Qt::WaitCursor);
     m_changelogWidget->animatedHide();
     m_changelogWidget->stopPendingJobs();
-    m_backend->updateCache();
+
+    m_trans = m_backend->updateCache();
+    setupTransaction(m_trans);
+    m_trans->run();
 }
 
 void MainWindow::startCommit()
@@ -277,7 +273,27 @@ void MainWindow::startCommit()
     QApplication::setOverrideCursor(Qt::WaitCursor);
     m_changelogWidget->animatedHide();
     m_changelogWidget->stopPendingJobs();
-    m_backend->commitChanges();
+
+    m_trans = m_backend->commitChanges();
+    setupTransaction(m_trans);
+    m_trans->run();
+}
+
+void MainWindow::setupTransaction(QApt::Transaction *trans)
+{
+    // Provide proxy/locale to the transaction
+    if (KProtocolManager::proxyType() == KProtocolManager::ManualProxy) {
+        trans->setProxy(KProtocolManager::proxyFor("http"));
+    }
+
+    trans->setLocale(QLatin1String(setlocale(LC_MESSAGES, 0)));
+
+    m_progressWidget->setTransaction(m_trans);
+
+    connect(m_trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
+            this, SLOT(transactionStatusChanged(QApt::TransactionStatus)));
+    connect(m_trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
+            this, SLOT(errorOccurred(QApt::ErrorCode)));
 }
 
 void MainWindow::editSettings()
