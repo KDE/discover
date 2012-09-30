@@ -20,25 +20,43 @@
 
 #include "ApplicationUpdates.h"
 
+// Qt includes
+#include <QIcon>
+
+// KDE includes
+#include <KProtocolManager>
+
+// LibQApt includes
+#include <LibQApt/Backend>
+#include <LibQApt/Transaction>
+
+// Own includes
 #include "Application.h"
 #include "ApplicationBackend.h"
-#include <ChangesDialog.h>
-#include <LibQApt/Backend>
-#include <KDebug>
-#include <QIcon>
+#include "ChangesDialog.h"
 
 ApplicationUpdates::ApplicationUpdates(ApplicationBackend* parent)
     : AbstractBackendUpdater(parent)
-    , m_aptBackend(0)
+    , m_aptBackend(nullptr)
     , m_appBackend(parent)
+    , m_lastRealProgress(0)
     , m_eta(0)
 {
-    connect(this, SIGNAL(updatesFinnished()), SLOT(cleanup()));
 }
 
-void ApplicationUpdates::cleanup()
+bool ApplicationUpdates::hasUpdates() const
 {
-    disconnect(m_aptBackend);
+    return m_appBackend->updatesCount()>0;
+}
+
+qreal ApplicationUpdates::progress() const
+{
+    return m_lastRealProgress;
+}
+
+long unsigned int ApplicationUpdates::remainingTime() const
+{
+    return m_eta;
 }
 
 void ApplicationUpdates::setBackend(QApt::Backend* backend)
@@ -50,10 +68,14 @@ void ApplicationUpdates::setBackend(QApt::Backend* backend)
 void ApplicationUpdates::start()
 {
     m_aptBackend->saveCacheState();
+
+    // Take the current cache state to compare for changes later
     QApt::CacheState cache = m_aptBackend->currentCacheState();
     m_aptBackend->markPackagesForDistUpgrade();
-    QHash<QApt::Package::State, QApt::PackageList> changes = m_aptBackend->stateChanges(cache, QApt::PackageList());
+    auto changes = m_aptBackend->stateChanges(cache, QApt::PackageList());
     changes.remove(QApt::Package::ToUpgrade);
+
+    // Confirm additional changes beyond upgrading the files
     if(!changes.isEmpty()) {
         ChangesDialog d(0, changes);
         if(d.exec()==QDialog::Rejected) {
@@ -61,37 +83,28 @@ void ApplicationUpdates::start()
             return;
         }
     }
-    
-    // FIXME: Transactify
-    connect(m_aptBackend, SIGNAL(downloadMessage(int,QString)), SLOT(downloadMessage(int,QString)));
-    connect(m_aptBackend, SIGNAL(downloadProgress(int,int,int)), SLOT(downloadProgress(int,int,int)));
-    connect(m_aptBackend, SIGNAL(commitProgress(QString,int)), SLOT(commitProgress(QString,int)));
-    //connect(m_aptBackend, SIGNAL(workerEvent(QApt::WorkerEvent)), SLOT(workerEvent(QApt::WorkerEvent)));
-    m_aptBackend->commitChanges();
+
+    // Create and run the transaction
+    m_trans = m_aptBackend->commitChanges();
+    setupTransaction(m_trans);
+    m_trans->run();
 }
 
-bool ApplicationUpdates::hasUpdates() const
+void ApplicationUpdates::progressChanged(int progress)
 {
-    return m_appBackend->updatesCount()>0;
+    if (progress > 100)
+        return;
+
+    if (progress > m_lastRealProgress) {
+        m_lastRealProgress = progress;
+        emit progressChanged((qreal)progress);
+    }
 }
 
-qreal ApplicationUpdates::progress() const
+void ApplicationUpdates::etaChanged(quint64 eta)
 {
-    return m_progress;
-}
-
-void ApplicationUpdates::commitProgress(const QString& msg, int percentage)
-{
-    //NOTE: We consider half the process to download and half to install
-    m_progress = .5+qreal(percentage)/200;
-    emit message(QIcon(), msg);
-    emit progressChanged(m_progress);
-}
-
-void ApplicationUpdates::downloadMessage(int flag, const QString& msg)
-{
-    Q_UNUSED(flag)
-    emit message(QIcon::fromTheme("download"), msg);
+    m_eta = eta;
+    emit remainingTimeChanged();
 }
 
 void ApplicationUpdates::installMessage(const QString& msg)
@@ -99,23 +112,34 @@ void ApplicationUpdates::installMessage(const QString& msg)
     emit message(QIcon(), msg);
 }
 
-// FIXME
-//void ApplicationUpdates::workerEvent(QApt::WorkerEvent event)
-//{
-//    if(event==QApt::CommitChangesFinished) {
-//        emit updatesFinnished();
-//    }
-//}
-
-void ApplicationUpdates::downloadProgress(int percentage, int speed, int ETA)
+void ApplicationUpdates::transactionStatusChanged(QApt::TransactionStatus status)
 {
-    m_progress = qreal(percentage)/200;
-    emit progressChanged(m_progress);
-    m_eta = ETA;
-    emit remainingTimeChanged();
+    if (status == QApt::FinishedStatus) {
+        emit updatesFinnished();
+        m_lastRealProgress = 0;
+    }
 }
 
-long unsigned int ApplicationUpdates::remainingTime() const
+void ApplicationUpdates::errorOccurred(QApt::ErrorCode error)
 {
-    return m_eta;
+    emit errorSignal(error, m_trans->errorDetails());
+}
+
+void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
+{
+    // Provide proxy/locale to the transaction
+    if (KProtocolManager::proxyType() == KProtocolManager::ManualProxy) {
+        trans->setProxy(KProtocolManager::proxyFor("http"));
+    }
+
+    trans->setLocale(QLatin1String(setlocale(LC_MESSAGES, 0)));
+
+    connect(m_trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
+            this, SLOT(transactionStatusChanged(QApt::TransactionStatus)));
+    connect(m_trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
+            this, SLOT(errorOccurred(QApt::ErrorCode)));
+    connect(m_trans, SIGNAL(progressChanged(int)),
+            this, SLOT(progressChanged(int)));
+    connect(m_trans, SIGNAL(statusDetailsChanged(QString)),
+            this, SLOT(installMessage(QString)));
 }

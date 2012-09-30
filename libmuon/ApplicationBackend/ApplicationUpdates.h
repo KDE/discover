@@ -32,6 +32,7 @@
 
 namespace QApt {
     class Backend;
+    class Transaction;
 }
 
 class ApplicationBackend;
@@ -48,20 +49,23 @@ public:
     void setBackend(QApt::Backend* b);
     long unsigned int remainingTime() const;
 
-private slots:
-    void commitProgress(const QString& message, int percentage);
-    void downloadMessage(int flag, const QString& message);
-    void installMessage(const QString& message);
-    // FIXME
-    //void workerEvent(QApt::WorkerEvent event);
-    void downloadProgress(int percentage, int speed, int ETA);
-    void cleanup();
-
 private:
     QApt::Backend* m_aptBackend;
+    QApt::Transaction *m_trans;
     ApplicationBackend* m_appBackend;
-    qreal m_progress;
+    int m_lastRealProgress;
     long unsigned int m_eta;
+
+private slots:
+    void transactionStatusChanged(QApt::TransactionStatus status);
+    void errorOccurred(QApt::ErrorCode error);
+    void progressChanged(int progress);
+    void etaChanged(quint64 eta);
+    void installMessage(const QString& message);
+    void setupTransaction(QApt::Transaction *trans);
+
+signals:
+    void errorSignal(QApt::ErrorCode error, QString details);
 };
 
 #endif // APPLICATIONUPDATES_H
