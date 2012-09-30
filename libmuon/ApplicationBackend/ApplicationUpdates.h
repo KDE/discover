@@ -20,39 +20,48 @@
 
 #ifndef APPLICATIONUPDATES_H
 #define APPLICATIONUPDATES_H
-#include <QObject>
-#include <LibQApt/Globals>
-#include <resources/AbstractBackendUpdater.h>
 
-namespace QApt { class Backend; }
+// Qt includes
+#include <QtCore/QObject>
+
+// LibQApt includes
+#include <LibQApt/Globals>
+
+// Own includes
+#include "resources/AbstractBackendUpdater.h"
+
+namespace QApt {
+    class Backend;
+}
 
 class ApplicationBackend;
+
 class ApplicationUpdates : public AbstractBackendUpdater
 {
     Q_OBJECT
-    public:
-        explicit ApplicationUpdates(ApplicationBackend* parent);
-        
-        bool hasUpdates() const;
-        qreal progress() const;
-        void start();
-        void setBackend(QApt::Backend* b);
-        long unsigned int remainingTime() const;
+public:
+    explicit ApplicationUpdates(ApplicationBackend* parent);
 
-    private slots:
-        void commitProgress(const QString& message, int percentage);
-        void downloadMessage(int flag, const QString& message);
-        void installMessage(const QString& message);
-        // FIXME
-        //void workerEvent(QApt::WorkerEvent event);
-        void downloadProgress(int percentage, int speed, int ETA);
-        void cleanup();
+    bool hasUpdates() const;
+    qreal progress() const;
+    void start();
+    void setBackend(QApt::Backend* b);
+    long unsigned int remainingTime() const;
 
-    private:
-        QApt::Backend* m_aptBackend;
-        ApplicationBackend* m_appBackend;
-        qreal m_progress;
-        long unsigned int m_eta;
+private slots:
+    void commitProgress(const QString& message, int percentage);
+    void downloadMessage(int flag, const QString& message);
+    void installMessage(const QString& message);
+    // FIXME
+    //void workerEvent(QApt::WorkerEvent event);
+    void downloadProgress(int percentage, int speed, int ETA);
+    void cleanup();
+
+private:
+    QApt::Backend* m_aptBackend;
+    ApplicationBackend* m_appBackend;
+    qreal m_progress;
+    long unsigned int m_eta;
 };
 
 #endif // APPLICATIONUPDATES_H
