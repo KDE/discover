@@ -34,9 +34,6 @@ TransactionListener::TransactionListener(QObject* parent)
     , m_downloading(false)
 {}
 
-TransactionListener::~TransactionListener()
-{}
-
 void TransactionListener::setBackend(AbstractResourcesBackend* backend)
 {
     if(m_backend) {
