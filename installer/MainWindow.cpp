@@ -46,6 +46,7 @@
 #include <ApplicationBackend/ApplicationBackend.h>
 #include <HistoryView/HistoryView.h>
 #include <resources/ResourcesModel.h>
+#include <QAptActions.h>
 
 #ifdef ATTICA_ENABLED
 #include <KNSBackend/KNSBackend.h>
@@ -137,6 +138,8 @@ void MainWindow::initGUI()
     m_viewModel = new QStandardItemModel(this);
     m_viewSwitcher->setModel(m_viewModel);
 
+    m_backend = new QApt::Backend(this);
+    m_actions = new QAptActions(this, m_backend);
     setupActions();
     setupGUI((StandardWindowOption)(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
 }
@@ -151,10 +154,6 @@ void MainWindow::initObject()
 
     // Create APT backend
     m_appBackend = new ApplicationBackend(this);
-    connect(this, SIGNAL(backendReady(QApt::Backend*)),
-            m_appBackend, SLOT(setBackend(QApt::Backend*)));
-    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent,Transaction*)),
-            this, SLOT(workerEvent(QApt::WorkerEvent)));
     connect(m_appBackend, SIGNAL(errorSignal(QApt::ErrorCode,QVariantMap)),
             this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
     connect(m_appBackend, SIGNAL(backendReady()),
@@ -166,11 +165,14 @@ void MainWindow::initObject()
     connect(m_appBackend, SIGNAL(startingFirstTransaction()),
             this, SLOT(addProgressItem()));
 
-    MuonMainWindow::initObject();
+    m_backend->init();
+    if (m_backend->xapianIndexNeedsUpdate()) {
+        m_backend->updateXapianIndex();
+    }
+    m_appBackend->setBackend(m_backend);
+
     // Our modified ApplicationBackend provides us events in a way that
     // makes queuing things while committing possible
-    disconnect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
-               this, SLOT(workerEvent(QApt::WorkerEvent)));
     disconnect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)),
                this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
 
@@ -180,8 +182,6 @@ void MainWindow::initObject()
 #ifdef ATTICA_ENABLED
     backends += new KNSBackend("comic.knsrc", "face-smile-big", this);
     backends += new KNSBackend("plasmoids.knsrc", "plasma", this);
-#else
-    qDebug() << "ya dun goofed.";
 #endif
 
     for (AbstractResourcesBackend *backend : backends) {
@@ -210,6 +210,7 @@ void MainWindow::saveSplitterSizes()
 void MainWindow::setupActions()
 {
     MuonMainWindow::setupActions();
+    m_actions->setupActions();
 
     m_loadSelectionsAction = actionCollection()->addAction("open_markings");
     m_loadSelectionsAction->setIcon(KIcon("document-open"));
@@ -224,7 +225,7 @@ void MainWindow::setupActions()
 
 void MainWindow::setActionsEnabled(bool enabled)
 {
-    MuonMainWindow::setActionsEnabled(enabled);
+    m_actions->setActionsEnabled(enabled);
     if (!enabled) {
         return;
     }
@@ -241,27 +242,6 @@ void MainWindow::clearViews()
     }
     m_viewHash.clear();
     m_viewModel->clear();
-}
-
-void MainWindow::workerEvent(QApt::WorkerEvent event)
-{
-    MuonMainWindow::workerEvent(event);
- 
-    switch (event) {
-    case QApt::CommitChangesFinished:
-        if (m_warningStack.size() > 0) {
-            showQueuedWarnings();
-            m_warningStack.clear();
-        }
-        if (m_errorStack.size() > 0) {
-            showQueuedErrors();
-            m_errorStack.clear();
-        }
-        break;
-    case QApt::InvalidEvent:
-    default:
-        break;
-    }
 }
 
 void MainWindow::populateViews()
@@ -487,7 +467,8 @@ void MainWindow::selectFirstRow(const QAbstractItemView *itemView)
 void MainWindow::runSourcesEditor()
 {
     // Let QApt Batch handle the update GUI
-    MuonMainWindow::runSourcesEditor(true);
+    // FIXME?
+    //MuonMainWindow::runSourcesEditor(true);
 }
 
 void MainWindow::sourcesEditorFinished(int reload)
@@ -495,7 +476,8 @@ void MainWindow::sourcesEditorFinished(int reload)
     m_appBackend->reload();
     clearViews();
     populateViews();
-    MuonMainWindow::sourcesEditorFinished(reload);
+    // FIXME?
+    //MuonMainWindow::sourcesEditorFinished(reload);
 }
 
 void MainWindow::showLauncherMessage()

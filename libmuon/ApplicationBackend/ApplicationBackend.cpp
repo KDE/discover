@@ -54,6 +54,7 @@ ApplicationBackend::ApplicationBackend(QObject *parent)
     , m_isReloading(false)
     , m_currentTransaction(0)
     , m_backendUpdater(new ApplicationUpdates(this))
+    , m_aptify(nullptr)
 {
     m_watcher = new QFutureWatcher<QVector<Application*> >(this);
     connect(m_watcher, SIGNAL(finished()), this, SLOT(setApplications()));

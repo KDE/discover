@@ -21,9 +21,14 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+// KDE includes
+#include <KService>
+
+// LibQApt includes
+#include <LibQApt/Backend>
+
 // Own includes
 #include "../libmuon/MuonMainWindow.h"
-#include <KService>
 
 class QAbstractItemView;
 class QModelIndex;
@@ -64,6 +69,7 @@ private:
     ProgressView *m_progressView;
     QStandardItem *m_progressItem;
 
+    QApt::Backend *m_backend;
     QVector<KService::Ptr> m_launchableApps;
     int m_transactionCount;
 
@@ -75,7 +81,6 @@ private Q_SLOTS:
     void setupActions();
     void clearViews();
     void setActionsEnabled(bool enabled = true);
-    void workerEvent(QApt::WorkerEvent event);
     void populateViews();
     void changeView(const QModelIndex &index);
     void selectFirstRow(const QAbstractItemView *itemView);
