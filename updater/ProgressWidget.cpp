@@ -183,6 +183,7 @@ void ProgressWidget::statusChanged(QApt::TransactionStatus status)
     case QApt::FinishedStatus:
         m_headerLabel->setText(i18nc("@info Status information, widget title",
                                      "<title>Finished</title>"));
+        m_lastRealProgress = 0;
     }
 }
 

@@ -203,6 +203,7 @@ void TransactionWidget::statusChanged(QApt::TransactionStatus status)
         m_downloadModel->clear();
         m_headerLabel->setText(i18nc("@info Status information, widget title",
                                      "<title>Finished</title>"));
+        m_lastRealProgress = 0;
     }
 }
 
