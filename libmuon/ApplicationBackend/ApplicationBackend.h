@@ -35,6 +35,7 @@
 
 namespace QApt {
     class Backend;
+    class Transaction;
 }
 namespace DebconfKde
 {
@@ -60,7 +61,6 @@ public:
     QVector<Application *> applicationList() const;
     QSet<QString> appOrigins() const;
     QSet<QString> installedAppOrigins() const;
-    QPair<QApt::TransactionStatus, Transaction *> workerState() const;
     QPair<TransactionStateTransition, Transaction *> currentTransactionState() const;
     QList<Transaction *> transactions() const;
     QList<Application*> launchList() const;
@@ -95,9 +95,10 @@ private:
     QSet<QString> m_originList;
     QSet<QString> m_instOriginList;
     QList<Application*> m_appLaunchList;
-    QQueue<Transaction *> m_queue;
+
+    // Transactions
+    QHash<Transaction *, QApt::Transaction *> m_transQueue;
     Transaction *m_currentTransaction;
-    QPair<QApt::TransactionStatus, Transaction *> m_workerState;
 
     DebconfKde::DebconfGui *m_debconfGui;
     ApplicationUpdates* m_backendUpdater;
@@ -112,17 +113,17 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void setApplications();
-    void runNextTransaction();
+    void aptTransactionsChanged(QString active);
+    void transactionEvent(QApt::TransactionStatus status);
     //void workerEvent(QApt::WorkerEvent event);
-    void errorOccurred(QApt::ErrorCode error, const QVariantMap &details);
+    void errorOccurred(QApt::ErrorCode error);
     void updateDownloadProgress(int percentage);
     void updateCommitProgress(const QString &text, int percentage);
     void initBackend();
 
 Q_SIGNALS:
     void startingFirstTransaction();
-    //void workerEvent(QApt::WorkerEvent event, Transaction *app);
-    void errorSignal(QApt::ErrorCode code, const QVariantMap &details);
+    void errorSignal(QApt::ErrorCode code, const QString &details);
     void launchListChanged();
 };
 
