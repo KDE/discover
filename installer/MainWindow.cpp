@@ -154,8 +154,6 @@ void MainWindow::initObject()
 
     // Create APT backend
     m_appBackend = new ApplicationBackend(this);
-    connect(m_appBackend, SIGNAL(errorSignal(QApt::ErrorCode,QVariantMap)),
-            this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
     connect(m_appBackend, SIGNAL(backendReady()),
             this, SLOT(populateViews()));
     connect(m_appBackend, SIGNAL(reloadStarted()),
@@ -170,11 +168,6 @@ void MainWindow::initObject()
         m_backend->updateXapianIndex();
     }
     m_appBackend->setBackend(m_backend);
-
-    // Our modified ApplicationBackend provides us events in a way that
-    // makes queuing things while committing possible
-    disconnect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)),
-               this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
 
     // Other backends
     QList<AbstractResourcesBackend*> backends;
@@ -211,27 +204,11 @@ void MainWindow::setupActions()
 {
     MuonMainWindow::setupActions();
     m_actions->setupActions();
-
-    m_loadSelectionsAction = actionCollection()->addAction("open_markings");
-    m_loadSelectionsAction->setIcon(KIcon("document-open"));
-    m_loadSelectionsAction->setText(i18nc("@action", "Read Markings..."));
-    connect(m_loadSelectionsAction, SIGNAL(triggered()), this, SLOT(loadSelections()));
-
-    m_saveSelectionsAction = actionCollection()->addAction("save_markings");
-    m_saveSelectionsAction->setIcon(KIcon("document-save-as"));
-    m_saveSelectionsAction->setText(i18nc("@action", "Save Markings As..."));
-    connect(m_saveSelectionsAction, SIGNAL(triggered()), this, SLOT(saveSelections()));
 }
 
 void MainWindow::setActionsEnabled(bool enabled)
 {
     m_actions->setActionsEnabled(enabled);
-    if (!enabled) {
-        return;
-    }
-
-    m_loadSelectionsAction->setEnabled(true);
-    m_saveSelectionsAction->setEnabled(m_backend->areChangesMarked());
 }
 
 void MainWindow::clearViews()
