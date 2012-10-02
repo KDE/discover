@@ -117,9 +117,9 @@ private Q_SLOTS:
     void transactionEvent(QApt::TransactionStatus status);
     //void workerEvent(QApt::WorkerEvent event);
     void errorOccurred(QApt::ErrorCode error);
-    void updateDownloadProgress(int percentage);
-    void updateCommitProgress(const QString &text, int percentage);
+    void updateProgress(int percentage);
     void initBackend();
+    void setupTransaction(QApt::Transaction *trans);
 
 Q_SIGNALS:
     void startingFirstTransaction();

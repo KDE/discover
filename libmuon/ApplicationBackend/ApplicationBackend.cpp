@@ -25,12 +25,14 @@
 #include <QtCore/QDir>
 #include <QtCore/QStringBuilder>
 #include <QtCore/QStringList>
+#include <QtCore/QUuid>
 #include <QTimer>
 
 // KDE includes
 #include <KLocale>
 #include <KMessageBox>
 #include <KProcess>
+#include <KProtocolManager>
 #include <KStandardDirs>
 #include <KDebug>
 
@@ -207,8 +209,7 @@ void ApplicationBackend::transactionEvent(QApt::TransactionStatus status)
         transactionsEvent(StartedCommitting, m_currentTransaction);
 
         // Set up debconf
-        // FIXME: hardcoded debconf path/won't work
-        m_debconfGui = new DebconfKde::DebconfGui("/tmp/qapt-sock");
+        m_debconfGui = new DebconfKde::DebconfGui(iter.value()->debconfPipe());
         m_debconfGui->connect(m_debconfGui, SIGNAL(activated()), m_debconfGui, SLOT(show()));
         m_debconfGui->connect(m_debconfGui, SIGNAL(deactivated()), m_debconfGui, SLOT(hide()));
         break;
@@ -232,33 +233,14 @@ void ApplicationBackend::transactionEvent(QApt::TransactionStatus status)
 
 void ApplicationBackend::errorOccurred(QApt::ErrorCode error)
 {
-    if (m_transQueue.isEmpty()) {
-        // FIXME
-        //emit errorSignal(error, details);
+    if (m_transQueue.isEmpty()) // Shouldn't happen
         return;
-    }
 
-    // Undo marking if an AuthError is encountered, since our install/remove
-    // buttons do both marking and committing
-    switch (error) {
-    default:
-        cancelTransaction(m_currentTransaction->resource());
-        m_backend->undo();
-        break;
-    }
-
-    //emit errorSignal(error, details);
+    emit errorSignal(error, m_transQueue.value(m_currentTransaction)->errorDetails());
 }
 
-void ApplicationBackend::updateDownloadProgress(int percentage)
+void ApplicationBackend::updateProgress(int percentage)
 {
-    emit transactionProgressed(m_currentTransaction, percentage);
-}
-
-void ApplicationBackend::updateCommitProgress(const QString &text, int percentage)
-{
-    Q_UNUSED(text);
-
     emit transactionProgressed(m_currentTransaction, percentage);
 }
 
@@ -352,22 +334,27 @@ void ApplicationBackend::markLangpacks(Transaction *transaction)
 
 void ApplicationBackend::addTransaction(Transaction *transaction)
 {
-    // FIXME
-//    if (m_isReloading || !confirmRemoval(transaction)) {
-//        emit transactionCancelled(transaction);
-//        delete transaction;
-//        return;
-//    }
+    QApt::CacheState oldCacheState = m_backend->currentCacheState();
+    m_backend->saveCacheState();
 
-//    transaction->setState(QueuedState);
-//    m_queue.enqueue(transaction);
-//    emit transactionAdded(transaction);
+    markTransaction(transaction);
 
-//    if (m_queue.count() == 1) {
-//        m_currentTransaction = m_queue.head();
-//        runNextTransaction();
-//        emit startingFirstTransaction();
-//    }
+    Application *app = qobject_cast<Application*>(m_currentTransaction->resource());
+
+    if (app->package()->wouldBreak()) {
+        m_backend->restoreCacheState(oldCacheState);
+        //TODO Notify of error
+    }
+
+    m_backend->commitChanges();
+    m_backend->undo(); // Undo temporary simulation marking
+    emit transactionAdded(transaction);
+
+    if (m_transQueue.count() == 1) {
+        //m_currentTransaction = m_queue.head();
+        //runNextTransaction();
+        emit startingFirstTransaction();
+    }
 }
 
 void ApplicationBackend::cancelTransaction(AbstractResource* app)
@@ -378,12 +365,12 @@ void ApplicationBackend::cancelTransaction(AbstractResource* app)
 
         if (t->resource() == app) {
             if (t->state() == RunningState) {
-                // FIXME: cancel transaction
                 aptTrans->cancel();
             }
             break;
         }
     }
+    // Emitting the cancellation occurs when the QApt trans is finished
 }
 
 void ApplicationBackend::aptTransactionsChanged(QString active)
@@ -404,6 +391,10 @@ void ApplicationBackend::aptTransactionsChanged(QString active)
         return;
 
     m_currentTransaction = iter.key();
+    connect(trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
+            this, SLOT(transactionEvent(QApt::TransactionStatus)));
+    connect(trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
+            this, SLOT(errorOccurred(QApt::ErrorCode)));
 }
 
 //void ApplicationBackend::runNextTransaction()
@@ -538,6 +529,9 @@ QPair<TransactionStateTransition, Transaction*> ApplicationBackend::currentTrans
     QPair<TransactionStateTransition, Transaction*> ret;
     ret.second = m_currentTransaction;
 
+    if (!m_currentTransaction)
+        return ret;
+
     QApt::Transaction *trans = m_transQueue.value(m_currentTransaction);
 
     switch (trans->status()) {
@@ -592,4 +586,26 @@ void ApplicationBackend::initBackend()
     }
 
     setBackend(m_backend);
+}
+
+void ApplicationBackend::setupTransaction(QApt::Transaction *trans)
+{
+    // Provide proxy/locale to the transaction
+    if (KProtocolManager::proxyType() == KProtocolManager::ManualProxy) {
+        trans->setProxy(KProtocolManager::proxyFor("http"));
+    }
+
+    trans->setLocale(QLatin1String(setlocale(LC_MESSAGES, 0)));
+
+    // Debconf
+    QString uuid = QUuid::createUuid().toString();
+    uuid.remove('{').remove('}').remove('-');
+    trans->setDebconfPipe(QLatin1String("/tmp/qapt-sock-") + uuid);
+
+    connect(trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
+            this, SLOT(transactionStatusChanged(QApt::TransactionStatus)));
+    connect(trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
+            this, SLOT(errorOccurred(QApt::ErrorCode)));
+    connect(trans, SIGNAL(progressChanged(int)),
+            this, SLOT(updateProgress(int)));
 }
