@@ -162,6 +162,8 @@ void MainWindow::initObject()
             this, SLOT(showLauncherMessage()));
     connect(m_appBackend, SIGNAL(startingFirstTransaction()),
             this, SLOT(addProgressItem()));
+    connect(m_appBackend, SIGNAL(sourcesEditorFinished()),
+            this, SLOT(sourcesEditorFinished()));
 
     m_backend->init();
     if (m_backend->xapianIndexNeedsUpdate()) {
@@ -448,13 +450,11 @@ void MainWindow::runSourcesEditor()
     //MuonMainWindow::runSourcesEditor(true);
 }
 
-void MainWindow::sourcesEditorFinished(int reload)
+void MainWindow::sourcesEditorFinished()
 {
-    m_appBackend->reload();
     clearViews();
     populateViews();
-    // FIXME?
-    //MuonMainWindow::sourcesEditorFinished(reload);
+    find(effectiveWinId())->setEnabled(true);
 }
 
 void MainWindow::showLauncherMessage()

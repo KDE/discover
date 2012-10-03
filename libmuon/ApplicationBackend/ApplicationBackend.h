@@ -106,7 +106,6 @@ private:
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void reload();
-    void updateCache();
     
     //helper functions
     void clearLaunchList();
@@ -120,11 +119,13 @@ private Q_SLOTS:
     void updateProgress(int percentage);
     void initBackend();
     void setupTransaction(QApt::Transaction *trans);
+    void sourcesEditorClosed();
 
 Q_SIGNALS:
     void startingFirstTransaction();
     void errorSignal(QApt::ErrorCode code, const QString &details);
     void launchListChanged();
+    void sourcesEditorFinished();
 };
 
 #endif

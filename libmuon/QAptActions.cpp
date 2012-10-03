@@ -47,6 +47,7 @@ QAptActions::QAptActions(MuonMainWindow *parent, QApt::Backend *backend)
     , m_backend(backend)
     , m_actionsDisabled(false)
     , m_mainWindow(parent)
+    , m_reloadWhenEditorFinished(false)
 {
     connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
     connect(Solid::Networking::notifier(), SIGNAL(statusChanged(Solid::Networking::Status)),
@@ -281,7 +282,7 @@ void QAptActions::revertChanges()
     emit changesReverted();
 }
 
-void QAptActions::runSourcesEditor(bool update)
+void QAptActions::runSourcesEditor()
 {
     KProcess *proc = new KProcess(this);
     QStringList arguments;
@@ -289,7 +290,7 @@ void QAptActions::runSourcesEditor(bool update)
 
     QString editor = "software-properties-kde";
 
-    if (!update) {
+    if (m_reloadWhenEditorFinished) {
         editor.append(QLatin1String(" --dont-update --attach ") % QString::number(winID)); //krazy:exclude=spelling;
     } else {
         editor.append(QLatin1String(" --attach ") % QString::number(winID));
@@ -307,9 +308,11 @@ void QAptActions::runSourcesEditor(bool update)
 void QAptActions::sourcesEditorFinished(int reload)
 {
     m_mainWindow->find(m_mainWindow->effectiveWinId())->setEnabled(true);
-    if (reload == 1) {
+    if (m_reloadWhenEditorFinished && reload) {
         emit checkForUpdates();
     }
+
+    emit sourcesEditorClosed();
 }
 
 KActionCollection* QAptActions::actionCollection()
@@ -325,4 +328,9 @@ void QAptActions::setOriginalState(QApt::CacheState state)
 void QAptActions::setCanExit(bool canExit)
 {
     m_mainWindow->setCanExit(canExit);
+}
+
+void QAptActions::setReloadWhenEditorFinished(bool reload)
+{
+    m_reloadWhenEditorFinished = reload;
 }

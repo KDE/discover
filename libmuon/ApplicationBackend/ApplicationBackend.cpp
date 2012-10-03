@@ -565,19 +565,15 @@ void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
     QTimer::singleShot(10, this, SLOT(initBackend()));
 
     m_aptify->setupActions();
-    connect(m_aptify, SIGNAL(checkForUpdates()), SLOT(updateCache()));
-}
-
-void ApplicationBackend::updateCache()
-{
-    // FIXME: transaction
-    m_backend->updateCache();
+    connect(m_aptify, SIGNAL(sourcesEditorFinished()), SLOT(reload()));
 }
 
 void ApplicationBackend::initBackend()
 {
-    if (m_aptify)
+    if (m_aptify) {
         m_aptify->setCanExit(false);
+        m_aptify->setReloadWhenEditorFinished(true);
+    }
     m_backend->init();
 
     if (m_backend->xapianIndexNeedsUpdate()) {
@@ -608,4 +604,10 @@ void ApplicationBackend::setupTransaction(QApt::Transaction *trans)
             this, SLOT(errorOccurred(QApt::ErrorCode)));
     connect(trans, SIGNAL(progressChanged(int)),
             this, SLOT(updateProgress(int)));
+}
+
+void ApplicationBackend::sourcesEditorClosed()
+{
+    reload();
+    emit sourcesEditorFinished();
 }

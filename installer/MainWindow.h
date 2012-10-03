@@ -85,7 +85,7 @@ private Q_SLOTS:
     void changeView(const QModelIndex &index);
     void selectFirstRow(const QAbstractItemView *itemView);
     void runSourcesEditor();
-    void sourcesEditorFinished(int reload);
+    void sourcesEditorFinished();
     void showLauncherMessage();
     void launchSingleApp();
     void showAppLauncher();

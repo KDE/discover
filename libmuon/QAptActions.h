@@ -44,11 +44,13 @@ public:
     bool isConnected() const;
     void setOriginalState(QApt::CacheState state);
     void setCanExit(bool canExit);
+    void setReloadWhenEditorFinished(bool reload);
     
 signals:
     void checkForUpdates();
     void shouldConnect(bool isConnected);
     void changesReverted();
+    void sourcesEditorClosed();
     
 public slots:
     void setupActions();
@@ -65,7 +67,7 @@ public slots:
     void undo();
     void redo();
     void revertChanges();
-    void runSourcesEditor(bool update = false);
+    void runSourcesEditor();
     void sourcesEditorFinished(int reload);
 
 private:
@@ -73,6 +75,7 @@ private:
     QApt::CacheState m_originalState;
     bool m_actionsDisabled;
     MuonMainWindow* m_mainWindow;
+    bool m_reloadWhenEditorFinished;
 
     KActionCollection* actionCollection();
 };
