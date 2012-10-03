@@ -156,16 +156,16 @@ ListItem {
                     right: parent.right
                     left: installButton.right
                     verticalCenter: installButton.verticalCenter
-                    margins: 10
-                    topMargin: 20
                 }
-                height: Math.min(installButton.height, width/5)
+                height: installButton.height
                 Rating {
-                    anchors.fill: parent
+                    anchors.centerIn: parent
+                    height: parent.height*0.7
                     rating: model.rating
                     visible: !model.application.canUpgrade && model.rating>=0
                 }
                 Button {
+                    anchors.fill: parent
                     text: i18n("Update")
                     visible: model.application.canUpgrade
                 }
