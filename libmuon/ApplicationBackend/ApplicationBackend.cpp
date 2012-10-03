@@ -169,7 +169,6 @@ void ApplicationBackend::reload()
     m_isReloading = false;
     emit reloadFinished();
     emit searchInvalidated();
-    emit updatesCountChanged();
 }
 
 bool ApplicationBackend::isReloading() const
