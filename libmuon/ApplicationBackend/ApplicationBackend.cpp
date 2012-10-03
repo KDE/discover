@@ -177,7 +177,6 @@ void ApplicationBackend::reload()
         m_aptify->setCanExit(true);
     emit reloadFinished();
     emit searchInvalidated();
-    emit updatesCountChanged();
 }
 
 bool ApplicationBackend::isReloading() const
