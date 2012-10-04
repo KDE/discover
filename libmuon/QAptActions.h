@@ -31,6 +31,7 @@ class KActionCollection;
 
 namespace QApt {
     class Backend;
+    class Transaction;
 }
 
 class MuonMainWindow;
@@ -51,6 +52,7 @@ signals:
     void shouldConnect(bool isConnected);
     void changesReverted();
     void sourcesEditorClosed();
+    void downloadArchives(QApt::Transaction *trans);
     
 public slots:
     void setupActions();

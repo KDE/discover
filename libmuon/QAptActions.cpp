@@ -38,6 +38,7 @@
 // LibQApt includes
 #include <LibQApt/Backend>
 #include <LibQApt/DebFile>
+#include <LibQApt/Transaction>
 
 // Own includes
 #include "MuonMainWindow.h"
@@ -201,7 +202,10 @@ void QAptActions::downloadPackagesFromList()
     QString dirName = filename.left(filename.lastIndexOf('/'));
 
     setActionsEnabled(false);
-    m_backend->downloadArchives(filename, dirName % QLatin1String("/packages"));
+    QApt::Transaction *trans = m_backend->downloadArchives(filename, dirName % QLatin1String("/packages"));
+
+    if (trans)
+        emit downloadArchives(trans);
 }
 
 void QAptActions::loadSelections()

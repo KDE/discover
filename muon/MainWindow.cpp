@@ -121,6 +121,7 @@ void MainWindow::initGUI()
     m_backend = new QApt::Backend(this);
 
     m_actions = new QAptActions(this, m_backend);
+    m_actions->setReloadWhenEditorFinished(true);
     connect(m_actions, SIGNAL(changesReverted()),
             this, SLOT(revertChanges()));
     connect(m_actions, SIGNAL(checkForUpdates()),
@@ -195,6 +196,8 @@ void MainWindow::setupActions()
     m_downloadListAction->setIcon(KIcon("download"));
     m_downloadListAction->setText(i18nc("@action", "Download Packages From List..."));
     connect(m_downloadListAction, SIGNAL(triggered()), m_actions, SLOT(downloadPackagesFromList()));
+    connect(m_actions, SIGNAL(downloadArchives(QApt::Transaction*)),
+            this, SLOT(downloadArchives(QApt::Transaction*)));
     if (!m_actions->isConnected()) {
         m_downloadListAction->setDisabled(false);
     }
@@ -302,13 +305,6 @@ void MainWindow::checkForUpdates()
     m_trans->run();
 }
 
-void MainWindow::downloadPackagesFromList()
-{
-    // FIXME: transactify
-    m_stack->setCurrentWidget(m_transWidget);
-    //MuonMainWindow::downloadPackagesFromList();
-}
-
 void MainWindow::errorOccurred(QApt::ErrorCode error)
 {
     switch(error) {
@@ -351,42 +347,6 @@ void MainWindow::transactionStatusChanged(QApt::TransactionStatus status)
 //void MainWindow::workerEvent(QApt::WorkerEvent event)
 //{
 //    switch (event) {
-//    case QApt::CacheUpdateStarted:
-//        if (m_downloadWidget) {
-//            m_downloadWidget->setHeaderText(i18nc("@info", "<title>Updating software sources</title>"));
-//            m_stack->setCurrentWidget(m_downloadWidget);
-//            connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
-//        }
-//        break;
-//    case QApt::CacheUpdateFinished:
-//    case QApt::CommitChangesFinished:
-//        if (m_backend) {
-//            reload();
-//            setActionsEnabled();
-//        }
-//    case QApt::PackageDownloadFinished:
-//        returnFromPreview();
-
-//        if (m_downloadWidget) {
-//            m_downloadWidget->deleteLater();
-//            m_downloadWidget = nullptr;
-//        }
-//        break;
-//    case QApt::PackageDownloadStarted:
-//        if (m_downloadWidget) {
-//            m_downloadWidget->setHeaderText(i18nc("@info", "<title>Downloading Packages</title>"));
-//            m_stack->setCurrentWidget(m_downloadWidget);
-//            connect(m_downloadWidget, SIGNAL(cancelDownload()), m_backend, SLOT(cancelDownload()));
-//        }
-//        QApplication::restoreOverrideCursor();
-//        break;
-//    case QApt::CommitChangesStarted:
-//        if (m_commitWidget) {
-//            m_commitWidget->setHeaderText(i18nc("@info", "<title>Committing Changes</title>"));
-//            m_stack->setCurrentWidget(m_commitWidget);
-//        }
-//        QApplication::restoreOverrideCursor();
-//        break;
 //    case QApt::XapianUpdateStarted:
 //        m_statusWidget->showXapianProgress();
 //        connect(m_backend, SIGNAL(xapianUpdateProgress(int)),
@@ -503,7 +463,22 @@ void MainWindow::setActionsEnabled(bool enabled)
 
     m_loadSelectionsAction->setEnabled(true);
     m_saveSelectionsAction->setEnabled(changesPending);
+    m_createDownloadListAction->setEnabled(changesPending);
     m_saveInstalledAction->setEnabled(true);
+}
+
+void MainWindow::downloadArchives(QApt::Transaction *trans)
+{
+    if (!trans) {
+        // Shouldn't happen...
+        delete trans;
+        return;
+    }
+
+    m_stack->setCurrentWidget(m_transWidget);
+    m_trans = trans;
+    setupTransaction(trans);
+    trans->run();
 }
 
 void MainWindow::editSettings()

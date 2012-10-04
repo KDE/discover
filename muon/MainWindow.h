@@ -94,7 +94,6 @@ private Q_SLOTS:
     void markDistUpgrade();
     void markAutoRemove();
     void checkForUpdates();
-    void downloadPackagesFromList();
     void transactionStatusChanged(QApt::TransactionStatus status);
     void errorOccurred(QApt::ErrorCode error);
     void previewChanges();
@@ -102,6 +101,7 @@ private Q_SLOTS:
     void startCommit();
     void reload();
     void setActionsEnabled(bool enabled = true);
+    void downloadArchives(QApt::Transaction *trans);
 
 public Q_SLOTS:
     void revertChanges();
