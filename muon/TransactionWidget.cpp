@@ -55,7 +55,11 @@ TransactionWidget::TransactionWidget(QWidget *parent)
 
     m_headerLabel = new QLabel(this);
     layout->addWidget(m_headerLabel);
-    layout->addStretch();
+
+    m_spacer = new QWidget(this);
+    m_spacer->hide();
+    m_spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    layout->addWidget(m_spacer);
 
     m_downloadModel = new DownloadModel(this);
     m_downloadDelegate = new DownloadDelegate(this);
@@ -196,10 +200,14 @@ void TransactionWidget::statusChanged(QApt::TransactionStatus status)
         break;
     case QApt::CommittingStatus:
         m_downloadView->hide();
+        m_spacer->show();
+
         m_headerLabel->setText(i18nc("@info Status information, widget title",
                                      "<title>Committing Changes</title>"));
         break;
     case QApt::FinishedStatus:
+        m_spacer->hide();
+        m_downloadView->hide();
         m_downloadModel->clear();
         m_headerLabel->setText(i18nc("@info Status information, widget title",
                                      "<title>Finished</title>"));

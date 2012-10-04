@@ -57,6 +57,7 @@ private:
     QString m_pipe;
 
     QLabel *m_headerLabel;
+    QWidget *m_spacer;
     QTreeView *m_downloadView;
     DownloadModel *m_downloadModel;
     DownloadDelegate *m_downloadDelegate;
