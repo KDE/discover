@@ -184,6 +184,32 @@ bool ApplicationBackend::isReloading() const
     return m_isReloading;
 }
 
+void ApplicationBackend::aptTransactionsChanged(QString active)
+{
+    // Find the newly-active QApt transaction in our list
+    QApt::Transaction *trans = nullptr;
+    auto list = m_transQueue.values();
+
+    for (QApt::Transaction *t : list) {
+        if (t->transactionId() == active) {
+            trans = t;
+            break;
+        }
+    }
+
+    if (!trans || m_transQueue.key(trans) == m_currentTransaction)
+        return;
+
+    qDebug() << m_transQueue.key(trans) << "nu current transaction";
+    m_currentTransaction = m_transQueue.key(trans);
+    connect(trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
+            this, SLOT(transactionEvent(QApt::TransactionStatus)));
+    connect(trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
+            this, SLOT(errorOccurred(QApt::ErrorCode)));
+    connect(trans, SIGNAL(progressChanged(int)),
+            this, SLOT(updateProgress(int)));
+}
+
 void ApplicationBackend::transactionEvent(QApt::TransactionStatus status)
 {
     // FIXME: Handle xapian finished, emit searchInvalidated
@@ -216,6 +242,7 @@ void ApplicationBackend::transactionEvent(QApt::TransactionStatus status)
         m_debconfGui->connect(m_debconfGui, SIGNAL(deactivated()), m_debconfGui, SLOT(hide()));
         break;
     case QApt::FinishedStatus:
+        qDebug() << "QApt Transaction finished!";
         transactionsEvent(FinishedCommitting, m_currentTransaction);
         m_currentTransaction->setState(DoneState);
 
@@ -385,32 +412,6 @@ void ApplicationBackend::cancelTransaction(AbstractResource* app)
         }
     }
     // Emitting the cancellation occurs when the QApt trans is finished
-}
-
-void ApplicationBackend::aptTransactionsChanged(QString active)
-{
-    // Find the newly-active QApt transaction in our list
-    QApt::Transaction *trans = nullptr;
-    auto list = m_transQueue.values();
-
-    for (QApt::Transaction *t : list) {
-        if (t->transactionId() == active) {
-            trans = t;
-            break;
-        }
-    }
-
-    if (!trans || m_transQueue.key(trans) == m_currentTransaction)
-        return;
-
-    qDebug() << m_transQueue.key(trans) << "nu current transaction";
-    m_currentTransaction = m_transQueue.key(trans);
-    connect(trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
-            this, SLOT(transactionEvent(QApt::TransactionStatus)));
-    connect(trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
-            this, SLOT(errorOccurred(QApt::ErrorCode)));
-    connect(trans, SIGNAL(progressChanged(int)),
-            this, SLOT(updateProgress(int)));
 }
 
 //void ApplicationBackend::runNextTransaction()
