@@ -242,11 +242,16 @@ void ApplicationBackend::transactionEvent(QApt::TransactionStatus status)
         m_debconfGui->connect(m_debconfGui, SIGNAL(deactivated()), m_debconfGui, SLOT(hide()));
         break;
     case QApt::FinishedStatus:
-        qDebug() << "QApt Transaction finished!";
         transactionsEvent(FinishedCommitting, m_currentTransaction);
         m_currentTransaction->setState(DoneState);
 
-        iter.value()->deleteLater();
+        // Clean up manually created debconf pipe
+        QApt::Transaction *trans = iter.value();
+        if (!trans->debconfPipe().isEmpty())
+            QFile::remove(trans->debconfPipe());
+
+        // Cleanup
+        trans->deleteLater();
         emit transactionRemoved(m_currentTransaction);
         m_transQueue.remove(iter.key());
 
