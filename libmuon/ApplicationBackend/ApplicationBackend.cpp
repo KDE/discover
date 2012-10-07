@@ -438,11 +438,6 @@ AbstractReviewsBackend *ApplicationBackend::reviewsBackend() const
     return m_reviewsBackend;
 }
 
-QVector<Application *> ApplicationBackend::applicationList() const
-{
-    return m_appList;
-}
-
 QVector<AbstractResource*> ApplicationBackend::allResources() const
 {
     QVector<AbstractResource*> ret;

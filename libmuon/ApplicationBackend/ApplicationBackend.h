@@ -58,7 +58,6 @@ public:
 
     AbstractReviewsBackend *reviewsBackend() const;
     Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name) const;
-    QVector<Application *> applicationList() const;
     QSet<QString> appOrigins() const;
     QSet<QString> installedAppOrigins() const;
     QPair<TransactionStateTransition, Transaction *> currentTransactionState() const;
@@ -114,7 +113,6 @@ private Q_SLOTS:
     void setApplications();
     void aptTransactionsChanged(QString active);
     void transactionEvent(QApt::TransactionStatus status);
-    //void workerEvent(QApt::WorkerEvent event);
     void errorOccurred(QApt::ErrorCode error);
     void updateProgress(int percentage);
     void initBackend();
