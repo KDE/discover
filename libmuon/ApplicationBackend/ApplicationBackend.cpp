@@ -346,7 +346,9 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
     }
 
     QApt::Transaction *aptTrans = m_backend->commitChanges();
+    setupTransaction(aptTrans);
     m_transQueue.insert(transaction, aptTrans);
+    aptTrans->run();
     m_backend->restoreCacheState(oldCacheState); // Undo temporary simulation marking
     emit transactionAdded(transaction);
 
@@ -386,7 +388,7 @@ void ApplicationBackend::aptTransactionsChanged(QString active)
         ++iter;
     }
 
-    if (!trans)
+    if (iter == m_transQueue.constEnd())
         return;
 
     m_currentTransaction = iter.key();
@@ -394,6 +396,8 @@ void ApplicationBackend::aptTransactionsChanged(QString active)
             this, SLOT(transactionEvent(QApt::TransactionStatus)));
     connect(trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
             this, SLOT(errorOccurred(QApt::ErrorCode)));
+    connect(trans, SIGNAL(progressChanged(int)),
+            this, SLOT(updateProgress(int)));
 }
 
 //void ApplicationBackend::runNextTransaction()
@@ -485,7 +489,7 @@ int ApplicationBackend::updatesCount() const
 {
     if(m_isReloading)
         return 0;
-    
+
     int count = 0;
     foreach(Application* app, m_appList) {
         count += app->canUpgrade();
@@ -585,13 +589,6 @@ void ApplicationBackend::setupTransaction(QApt::Transaction *trans)
     QString uuid = QUuid::createUuid().toString();
     uuid.remove('{').remove('}').remove('-');
     trans->setDebconfPipe(QLatin1String("/tmp/qapt-sock-") + uuid);
-
-    connect(trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
-            this, SLOT(transactionStatusChanged(QApt::TransactionStatus)));
-    connect(trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
-            this, SLOT(errorOccurred(QApt::ErrorCode)));
-    connect(trans, SIGNAL(progressChanged(int)),
-            this, SLOT(updateProgress(int)));
 }
 
 void ApplicationBackend::sourcesEditorClosed()
