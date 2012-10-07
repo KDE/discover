@@ -332,6 +332,16 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
     // Find changes due to markings
     QApt::PackageList excluded;
     excluded.append(qobject_cast<Application*>(transaction->resource())->package());
+
+    // Exclude addons being marked
+    auto iter = transaction->addons().constBegin();
+    while (iter != transaction->addons().constEnd()) {
+        QApt::Package *addon = m_backend->package(iter.key());
+        if (addon)
+            excluded.append(addon);
+        ++iter;
+    }
+
     QApt::StateChanges changes = m_backend->stateChanges(oldCacheState, excluded);
 
     if (!confirmRemoval(changes)) {
