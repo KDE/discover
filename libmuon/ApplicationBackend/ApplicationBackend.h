@@ -67,7 +67,7 @@ public:
 
     int updatesCount() const;
 
-    bool confirmRemoval(Transaction *transaction);
+    bool confirmRemoval(QApt::StateChanges changes);
     Q_SCRIPTABLE bool isReloading() const;
     void markTransaction(Transaction *transaction);
     void markLangpacks(Transaction *transaction);

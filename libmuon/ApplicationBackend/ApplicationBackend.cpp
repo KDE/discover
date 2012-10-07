@@ -243,20 +243,8 @@ void ApplicationBackend::updateProgress(int percentage)
     emit transactionProgressed(m_currentTransaction, percentage);
 }
 
-bool ApplicationBackend::confirmRemoval(Transaction *transaction)
+bool ApplicationBackend::confirmRemoval(QApt::StateChanges changes)
 {
-    QApt::CacheState oldCacheState = m_backend->currentCacheState();
-
-    // Simulate transaction
-    markTransaction(transaction);
-
-    // Find changes due to markings
-    QApt::PackageList excluded;
-    excluded.append(qobject_cast<Application*>(transaction->resource())->package());
-    QApt::StateChanges changes = m_backend->stateChanges(oldCacheState, excluded);
-    // Restore cache state, we're only checking at the moment
-    m_backend->restoreCacheState(oldCacheState);
-
     if (changes[QApt::Package::ToRemove].isEmpty()) {
         return true;
     }
@@ -338,20 +326,32 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
 
     markTransaction(transaction);
 
-    Application *app = qobject_cast<Application*>(m_currentTransaction->resource());
+    // Find changes due to markings
+    QApt::PackageList excluded;
+    excluded.append(qobject_cast<Application*>(transaction->resource())->package());
+    QApt::StateChanges changes = m_backend->stateChanges(oldCacheState, excluded);
+
+    if (!confirmRemoval(changes)) {
+        m_backend->restoreCacheState(oldCacheState);
+        emit transactionCancelled(transaction);
+        delete transaction;
+        return;
+    }
+
+    Application *app = qobject_cast<Application*>(transaction->resource());
 
     if (app->package()->wouldBreak()) {
         m_backend->restoreCacheState(oldCacheState);
         //TODO Notify of error
     }
 
-    m_backend->commitChanges();
-    m_backend->undo(); // Undo temporary simulation marking
+    QApt::Transaction *aptTrans = m_backend->commitChanges();
+    m_transQueue.insert(transaction, aptTrans);
+    m_backend->restoreCacheState(oldCacheState); // Undo temporary simulation marking
     emit transactionAdded(transaction);
 
     if (m_transQueue.count() == 1) {
-        //m_currentTransaction = m_queue.head();
-        //runNextTransaction();
+        m_currentTransaction = transaction;
         emit startingFirstTransaction();
     }
 }
@@ -466,13 +466,7 @@ QList<Transaction *> ApplicationBackend::transactions() const
 void ApplicationBackend::installApplication(AbstractResource* res, const QHash< QString, bool >& addons)
 {
     Application* app = qobject_cast<Application*>(res);
-    TransactionAction action = InvalidAction;
-
-    if (app->package()->isInstalled()) {
-        action = ChangeAddons;
-    } else {
-        action = InstallApp;
-    }
+    TransactionAction action = app->package()->isInstalled() ? ChangeAddons : InstallApp;
 
     addTransaction(new Transaction(res, action, addons));
 }
