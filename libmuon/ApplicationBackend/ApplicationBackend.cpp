@@ -393,6 +393,7 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
     emit transactionAdded(transaction);
 
     if (m_transQueue.count() == 1) {
+        aptTransactionsChanged(aptTrans->transactionId());
         m_currentTransaction = transaction;
         emit startingFirstTransaction();
     }
