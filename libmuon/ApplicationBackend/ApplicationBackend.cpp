@@ -603,7 +603,10 @@ void ApplicationBackend::setupTransaction(QApt::Transaction *trans)
     // Debconf
     QString uuid = QUuid::createUuid().toString();
     uuid.remove('{').remove('}').remove('-');
-    trans->setDebconfPipe(QLatin1String("/tmp/qapt-sock-") + uuid);
+    QFile pipe(QLatin1String("/tmp/qapt-sock-") + uuid);
+    pipe.open(QFile::ReadWrite);
+    pipe.close();
+    trans->setDebconfPipe(pipe.fileName());
 }
 
 void ApplicationBackend::sourcesEditorClosed()
