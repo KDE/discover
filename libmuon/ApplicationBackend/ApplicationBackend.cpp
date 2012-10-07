@@ -189,6 +189,9 @@ void ApplicationBackend::transactionEvent(QApt::TransactionStatus status)
     // FIXME: Handle xapian finished, emit searchInvalidated
 
     auto iter = m_transQueue.find(m_currentTransaction);
+    if (iter == m_transQueue.end())
+        return;
+
     switch (status) {
     case QApt::SetupStatus:
     case QApt::AuthenticationStatus:
@@ -218,7 +221,7 @@ void ApplicationBackend::transactionEvent(QApt::TransactionStatus status)
 
         iter.value()->deleteLater();
         emit transactionRemoved(m_currentTransaction);
-        m_transQueue.erase(iter);
+        m_transQueue.remove(iter.key());
 
         qobject_cast<Application*>(m_currentTransaction->resource())->emitStateChanged();
         delete m_currentTransaction;
@@ -378,20 +381,20 @@ void ApplicationBackend::aptTransactionsChanged(QString active)
 {
     // Find the newly-active QApt transaction in our list
     QApt::Transaction *trans = nullptr;
-    auto iter = m_transQueue.constBegin();
+    auto list = m_transQueue.values();
 
-    while (iter != m_transQueue.constEnd()) {
-        trans = iter.value();
-
-        if (trans->transactionId() == active)
+    for (QApt::Transaction *t : list) {
+        if (t->transactionId() == active) {
+            trans = t;
             break;
-        ++iter;
+        }
     }
 
-    if (iter == m_transQueue.constEnd())
+    if (!trans || m_transQueue.key(trans) == m_currentTransaction)
         return;
 
-    m_currentTransaction = iter.key();
+    qDebug() << m_transQueue.key(trans) << "nu current transaction";
+    m_currentTransaction = m_transQueue.key(trans);
     connect(trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
             this, SLOT(transactionEvent(QApt::TransactionStatus)));
     connect(trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
@@ -521,10 +524,10 @@ QPair<TransactionStateTransition, Transaction*> ApplicationBackend::currentTrans
     QPair<TransactionStateTransition, Transaction*> ret;
     ret.second = m_currentTransaction;
 
-    if (!m_currentTransaction)
-        return ret;
-
     QApt::Transaction *trans = m_transQueue.value(m_currentTransaction);
+
+    if (!m_currentTransaction || !trans)
+        return ret;
 
     switch (trans->status()) {
     case QApt::DownloadingStatus:

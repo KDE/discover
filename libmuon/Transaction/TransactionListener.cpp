@@ -74,7 +74,6 @@ void TransactionListener::init()
     foreach (Transaction *transaction, m_backend->transactions()) {
         if (transaction->resource() == m_resource) {
             emit running(true);
-            kDebug() << transaction->state();
             showTransactionState(transaction);
         }
     }

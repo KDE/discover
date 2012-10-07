@@ -145,6 +145,11 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
             Rating* rating = resource->backend()->reviewsBackend()->ratingForApplication(resource);
             return rating ? rating->property(roleNames().value(role)) : -1;
         }
+        case Qt::DecorationRole:
+        case Qt::DisplayRole:
+        case Qt::StatusTipRole:
+        case Qt::ToolTipRole:
+            return QVariant();
         default: {
             QByteArray roleText = roleNames().value(role);
             if(roleText.isEmpty())
