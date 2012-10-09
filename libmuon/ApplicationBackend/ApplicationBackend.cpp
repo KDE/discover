@@ -200,7 +200,6 @@ void ApplicationBackend::aptTransactionsChanged(QString active)
     if (!trans || m_transQueue.key(trans) == m_currentTransaction)
         return;
 
-    qDebug() << m_transQueue.key(trans) << "nu current transaction";
     m_currentTransaction = m_transQueue.key(trans);
     connect(trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
             this, SLOT(transactionEvent(QApt::TransactionStatus)));
@@ -208,6 +207,7 @@ void ApplicationBackend::aptTransactionsChanged(QString active)
             this, SLOT(errorOccurred(QApt::ErrorCode)));
     connect(trans, SIGNAL(progressChanged(int)),
             this, SLOT(updateProgress(int)));
+    // FIXME: untrusted packages, conf file prompt, media change
 }
 
 void ApplicationBackend::transactionEvent(QApt::TransactionStatus status)
@@ -224,6 +224,7 @@ void ApplicationBackend::transactionEvent(QApt::TransactionStatus status)
     case QApt::WaitingStatus:
     case QApt::WaitingLockStatus:
     case QApt::WaitingMediumStatus:
+    case QApt::WaitingConfigFilePromptStatus:
     case QApt::LoadingCacheStatus:
         break;
     case QApt::RunningStatus:

@@ -110,6 +110,8 @@ void ProgressWidget::setTransaction(QApt::Transaction *trans)
             this, SLOT(updateProgress(int)));
     connect(m_trans, SIGNAL(downloadSpeedChanged(quint64)),
             this, SLOT(downloadSpeedChanged(quint64)));
+    connect(m_trans, SIGNAL(configFileConflict(QString,QString)),
+            this, SLOT(configFileConflict(QString,QString)));
 
     // Connect us to the transaction
     connect(m_cancelButton, SIGNAL(clicked()), m_trans, SLOT(cancel()));
@@ -150,6 +152,13 @@ void ProgressWidget::statusChanged(QApt::TransactionStatus status)
                                      "Waiting for required medium"));
         m_progressBar->setMaximum(0);
         break;
+    case QApt::WaitingConfigFilePromptStatus:
+        m_headerLabel->setText(i18nc("@info Status information, widget title",
+                                     "<title>Waiting</title>"));
+        m_detailsLabel->setText(i18nc("@info Status info",
+                                     "Waiting for configuration file"));
+        m_progressBar->setMaximum(0);
+        break;
     case QApt::RunningStatus:
         m_progressBar->setMaximum(100);
         m_headerLabel->clear();
@@ -161,6 +170,7 @@ void ProgressWidget::statusChanged(QApt::TransactionStatus status)
                                      "<title>Loading Software List</title>"));
         break;
     case QApt::DownloadingStatus:
+        m_progressBar->setMaximum(100);
         switch (m_trans->role()) {
         case QApt::UpdateCacheRole:
             m_headerLabel->setText(i18nc("@info Status information, widget title",
@@ -176,6 +186,7 @@ void ProgressWidget::statusChanged(QApt::TransactionStatus status)
         }
         break;
     case QApt::CommittingStatus:
+        m_progressBar->setMaximum(100);
         m_headerLabel->setText(i18nc("@info Status information, widget title",
                                      "<title>Applying Changes</title>"));
         m_detailsLabel->clear();
@@ -184,6 +195,7 @@ void ProgressWidget::statusChanged(QApt::TransactionStatus status)
         m_headerLabel->setText(i18nc("@info Status information, widget title",
                                      "<title>Finished</title>"));
         m_lastRealProgress = 0;
+        break;
     }
 }
 
@@ -237,6 +249,26 @@ void ProgressWidget::untrustedPrompt(const QStringList &untrustedPackages)
 
     bool installUntrusted = (result == KMessageBox::Continue);
     m_trans->replyUntrustedPrompt(installUntrusted);
+}
+
+void ProgressWidget::configFileConflict(const QString &currentPath, const QString &newPath)
+{
+    QString title = i18nc("@title:window", "Configuration File Changed");
+    QString text = i18nc("@label Notifies a config file change",
+                         "A new version of the configuration file "
+                         "<filename>%1</filename> is available, but your version has "
+                         "been modified. Would you like to keep your current version "
+                         "or install the new version?", currentPath);
+
+    KGuiItem useNew(i18nc("@action Use the new config file", "Use New Version"));
+    KGuiItem useOld(i18nc("@action Keep the old config file", "Keep Old Version"));
+
+    // TODO: diff current and new paths
+    Q_UNUSED(newPath)
+
+    int ret = KMessageBox::questionYesNo(this, text, title, useNew, useOld);
+
+    m_trans->resolveConfigFileConflict(currentPath, (ret == KMessageBox::Yes));
 }
 
 void ProgressWidget::updateProgress(int progress)

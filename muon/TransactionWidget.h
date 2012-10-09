@@ -71,6 +71,7 @@ private slots:
     void transactionErrorOccurred(QApt::ErrorCode error);
     void provideMedium(const QString &label, const QString &medium);
     void untrustedPrompt(const QStringList &untrustedPackages);
+    void configFileConflict(const QString &currentPath, const QString &newPath);
     void updateProgress(int progress);
 };
 

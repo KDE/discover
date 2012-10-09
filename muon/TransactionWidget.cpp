@@ -172,6 +172,13 @@ void TransactionWidget::statusChanged(QApt::TransactionStatus status)
                                      "Waiting for required medium"));
         m_totalProgress->setMaximum(0);
         break;
+    case QApt::WaitingConfigFilePromptStatus:
+        m_headerLabel->setText(i18nc("@info Status information, widget title",
+                                     "<title>Waiting</title>"));
+        m_statusLabel->setText(i18nc("@info Status info",
+                                     "Waiting for configuration file"));
+        m_totalProgress->setMaximum(0);
+        break;
     case QApt::RunningStatus:
         m_totalProgress->setMaximum(100);
         m_headerLabel->clear();
@@ -183,6 +190,7 @@ void TransactionWidget::statusChanged(QApt::TransactionStatus status)
                                      "<title>Loading Software List</title>"));
         break;
     case QApt::DownloadingStatus:
+        m_totalProgress->setMaximum(100);
         m_downloadView->show();
         switch (m_trans->role()) {
         case QApt::UpdateCacheRole:
@@ -199,6 +207,7 @@ void TransactionWidget::statusChanged(QApt::TransactionStatus status)
         }
         break;
     case QApt::CommittingStatus:
+        m_totalProgress->setMaximum(100);
         m_downloadView->hide();
         m_spacer->show();
 
@@ -265,6 +274,26 @@ void TransactionWidget::untrustedPrompt(const QStringList &untrustedPackages)
 
     bool installUntrusted = (result == KMessageBox::Continue);
     m_trans->replyUntrustedPrompt(installUntrusted);
+}
+
+void TransactionWidget::configFileConflict(const QString &currentPath, const QString &newPath)
+{
+    QString title = i18nc("@title:window", "Configuration File Changed");
+    QString text = i18nc("@label Notifies a config file change",
+                         "A new version of the configuration file "
+                         "<filename>%1</filename> is available, but your version has "
+                         "been modified. Would you like to keep your current version "
+                         "or install the new version?", currentPath);
+
+    KGuiItem useNew(i18nc("@action Use the new config file", "Use New Version"));
+    KGuiItem useOld(i18nc("@action Keep the old config file", "Keep Old Version"));
+
+    // TODO: diff current and new paths
+    Q_UNUSED(newPath)
+
+    int ret = KMessageBox::questionYesNo(this, text, title, useNew, useOld);
+
+    m_trans->resolveConfigFileConflict(currentPath, (ret == KMessageBox::Yes));
 }
 
 void TransactionWidget::updateProgress(int progress)
