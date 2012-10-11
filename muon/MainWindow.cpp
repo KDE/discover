@@ -46,6 +46,7 @@
 
 // Own includes
 #include "../libmuon/HistoryView/HistoryView.h"
+#include "../libmuon/MuonStrings.h"
 #include "TransactionWidget.h"
 #include "FilterWidget/FilterWidget.h"
 #include "ManagerWidget.h"
@@ -136,7 +137,8 @@ void MainWindow::initGUI()
 
 void MainWindow::initObject()
 {
-    m_backend->init();
+    if (!m_backend->init())
+        initError();
 
     if (m_backend->xapianIndexNeedsUpdate()) {
         m_backend->updateXapianIndex();
@@ -148,6 +150,19 @@ void MainWindow::initObject()
     loadSettings();
     setActionsEnabled();
     m_managerWidget->setFocus();
+}
+
+void MainWindow::initError()
+{
+    QString details = m_backend->initErrorMessage();
+
+    MuonStrings *muonStrings = MuonStrings::global();
+
+    QString title = muonStrings->errorTitle(QApt::InitError);
+    QString text = muonStrings->errorText(QApt::InitError, nullptr);
+
+    KMessageBox::detailedError(this, text, details, title);
+    exit(-1);
 }
 
 void MainWindow::loadSettings()

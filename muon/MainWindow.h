@@ -104,6 +104,7 @@ private Q_SLOTS:
     void downloadArchives(QApt::Transaction *trans);
 
 public Q_SLOTS:
+    void initError();
     void revertChanges();
     void editSettings();
     void closeSettingsDialog();
