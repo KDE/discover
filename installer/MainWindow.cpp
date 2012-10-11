@@ -32,6 +32,7 @@
 #include <KAction>
 #include <KActionCollection>
 #include <KIcon>
+#include <KMessageBox>
 #include <KMessageWidget>
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
@@ -42,6 +43,7 @@
 #include <LibQApt/Backend>
 
 // Libmuon includes
+#include "MuonStrings.h"
 #include <ApplicationBackend/Application.h>
 #include <ApplicationBackend/ApplicationBackend.h>
 #include <HistoryView/HistoryView.h>
@@ -165,10 +167,13 @@ void MainWindow::initObject()
     connect(m_appBackend, SIGNAL(sourcesEditorFinished()),
             this, SLOT(sourcesEditorFinished()));
 
-    m_backend->init();
-    if (m_backend->xapianIndexNeedsUpdate()) {
+    if (!m_backend->init())
+        initError();
+
+    if (m_backend->xapianIndexNeedsUpdate())
+        // FIXME: port to QApt2
         m_backend->updateXapianIndex();
-    }
+
     m_appBackend->setBackend(m_backend);
 
     // Other backends
@@ -185,6 +190,20 @@ void MainWindow::initObject()
 
     setActionsEnabled();
 }
+
+void MainWindow::initError()
+{
+    QString details = m_backend->initErrorMessage();
+
+    MuonStrings *muonStrings = MuonStrings::global();
+
+    QString title = muonStrings->errorTitle(QApt::InitError);
+    QString text = muonStrings->errorText(QApt::InitError, nullptr);
+
+    KMessageBox::detailedError(this, text, details, title);
+    exit(-1);
+}
+
 
 void MainWindow::loadSplitterSizes()
 {

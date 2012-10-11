@@ -29,6 +29,7 @@
 #include <KAction>
 #include <KActionCollection>
 #include <KDebug>
+#include <KMessageBox>
 #include <KMessageWidget>
 #include <KProcess>
 #include <KProtocolManager>
@@ -42,6 +43,7 @@
 
 // Own includes
 #include "../libmuon/HistoryView/HistoryView.h"
+#include "../libmuon/MuonStrings.h"
 #include "../libmuon/QAptActions.h"
 #include "ChangelogWidget.h"
 #include "ProgressWidget.h"
@@ -113,7 +115,8 @@ void MainWindow::initGUI()
 
 void MainWindow::initObject()
 {
-    m_backend->init();
+    if (!m_backend->init())
+        initError();
 
     if (m_backend->xapianIndexNeedsUpdate()) {
         m_backend->updateXapianIndex();
@@ -123,6 +126,19 @@ void MainWindow::initObject()
     m_canExit = true;
 
     setActionsEnabled(); //Get initial enabled/disabled state
+}
+
+void MainWindow::initError()
+{
+    QString details = m_backend->initErrorMessage();
+
+    MuonStrings *muonStrings = MuonStrings::global();
+
+    QString title = muonStrings->errorTitle(QApt::InitError);
+    QString text = muonStrings->errorText(QApt::InitError, nullptr);
+
+    KMessageBox::detailedError(this, text, details, title);
+    exit(-1);
 }
 
 void MainWindow::setupActions()

@@ -76,6 +76,7 @@ private:
 private Q_SLOTS:
     void initGUI();
     void initObject();
+    void initError();
     void loadSplitterSizes();
     void saveSplitterSizes();
     void setupActions();

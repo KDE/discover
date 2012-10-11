@@ -42,6 +42,7 @@
 #include <DebconfGui.h>
 
 // Own includes
+#include "MuonStrings.h"
 #include "ChangesDialog.h"
 #include "Application.h"
 #include "ReviewsBackend/ReviewsBackend.h"
@@ -167,7 +168,9 @@ void ApplicationBackend::reload()
     qDeleteAll(m_transQueue);
     m_transQueue.clear();
     m_reviewsBackend->stopPendingJobs();
-    m_backend->reloadCache();
+
+    if (!m_backend->reloadCache())
+        initError();
 
     foreach(Application* app, m_appList)
         app->package();
@@ -587,14 +590,28 @@ void ApplicationBackend::initBackend()
         m_aptify->setCanExit(false);
         m_aptify->setReloadWhenEditorFinished(true);
     }
-    m_backend->init();
 
+    if (!m_backend->init())
+        initError();
     if (m_backend->xapianIndexNeedsUpdate()) {
         // FIXME: transaction
         m_backend->updateXapianIndex();
     }
 
     setBackend(m_backend);
+}
+
+void ApplicationBackend::initError()
+{
+    QString details = m_backend->initErrorMessage();
+
+    MuonStrings *muonStrings = MuonStrings::global();
+
+    QString title = muonStrings->errorTitle(QApt::InitError);
+    QString text = muonStrings->errorText(QApt::InitError, nullptr);
+
+    KMessageBox::detailedError(nullptr, text, details, title);
+    exit(-1);
 }
 
 void ApplicationBackend::setupTransaction(QApt::Transaction *trans)
