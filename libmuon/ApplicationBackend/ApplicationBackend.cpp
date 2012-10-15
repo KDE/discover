@@ -626,7 +626,7 @@ void ApplicationBackend::setupTransaction(QApt::Transaction *trans)
     // Debconf
     QString uuid = QUuid::createUuid().toString();
     uuid.remove('{').remove('}').remove('-');
-    QFile pipe(QLatin1String("/tmp/qapt-sock-") + uuid);
+    QFile pipe(QDir::tempPath() % QLatin1String("/qapt-sock-") % uuid);
     pipe.open(QFile::ReadWrite);
     pipe.close();
     trans->setDebconfPipe(pipe.fileName());
