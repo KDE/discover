@@ -50,10 +50,10 @@ QVariant PackageModel::data(const QModelIndex &index, int role) const
     switch (role) {
     case NameRole:
         if (package->isForeignArch()) {
-            return QString(package->latin1Name() % QLatin1String(" (")
+            return QString(package->name() % QLatin1String(" (")
                     % package->architecture() % ')');
         }
-        return package->latin1Name();
+        return package->name();
     case IconRole:
         return KIcon("application-x-deb");
     case DescriptionRole:

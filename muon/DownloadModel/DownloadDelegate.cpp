@@ -39,10 +39,6 @@ DownloadDelegate::DownloadDelegate(QObject *parent)
 {
 }
 
-DownloadDelegate::~DownloadDelegate()
-{
-}
-
 void DownloadDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const
 {
     switch (index.column()) {
@@ -63,22 +59,7 @@ void DownloadDelegate::paint(QPainter* painter, const QStyleOptionViewItem& opti
         }
         case 3: {
             int percentage = index.data(DownloadModel::PercentRole).toInt();
-            int status = index.data(DownloadModel::StatusRole).toInt();
-            QString text;
-
-            switch (status) {
-                case QApt::DownloadFetch:
-                    break;
-                case QApt::HitFetch:
-                    text = i18nc("@info:status Progress text when done", "Done");
-                    break;
-                case QApt::IgnoredFetch:
-                    text = i18nc("@info:status Progress text when a download is ignored", "Ignored");
-                    break;
-                default:
-                    text = QString::number(percentage) + '%';
-                    break;
-            }
+            QString text = QString::number(percentage) + '%';
 
             if (percentage == 100) {
                 text = i18nc("@info:status Progress text when done", "Done");
@@ -119,5 +100,3 @@ void DownloadDelegate::paintText(QPainter *painter, const QStyleOptionViewItem &
     painter->setPen(option.palette.color(QPalette::Text));
     painter->drawText(x + m_spacing, y, fontMetrics.elidedText(text, option.textElideMode, width));
 }
-
-#include "DownloadDelegate.moc"

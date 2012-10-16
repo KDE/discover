@@ -30,20 +30,20 @@ DownloadModel::DownloadModel(QObject *parent)
 
 QVariant DownloadModel::data(const QModelIndex& index, int role) const
 {
-    if (!index.isValid() || index.row() > m_packageList.size() || index.row() < 0) {
+    if (!index.isValid() || index.row() > m_itemList.size() || index.row() < 0) {
         return QVariant();
     }
 
-    PackageDetails details = m_packageList.at(index.row());
+    QApt::DownloadProgress details = m_itemList.at(index.row());
     switch (role) {
     case NameRole:
-        return QVariant(details.name);
+        return QVariant(details.shortDescription());
     case PercentRole:
-        return QVariant(details.percentage);
+        return QVariant(details.progress());
     case URIRole:
-        return QVariant(details.URI);
+        return QVariant(details.uri());
     case SizeRole:
-        return QVariant(details.size);
+        return QVariant(details.fileSize());
     default:
         return QVariant();
     }
@@ -70,21 +70,17 @@ QVariant DownloadModel::headerData(int section, Qt::Orientation orientation, int
     }
 }
 
-void DownloadModel::updatePackageDetails(const QString &package, int percentage,
-                                         const QString &URI, double size, int status)
+void DownloadModel::updateDetails(const QApt::DownloadProgress &details)
 {
     bool newPackage = true;
-    for (int i = 0; i < m_packageList.size(); ++i) {
+    for (int i = 0; i < m_itemList.size(); ++i) {
         // URI should be unique
-        if (m_packageList.at(i).URI != URI) {
+        if (m_itemList.at(i).uri() != details.uri()) {
             continue;
         }
 
         newPackage = false;
-        m_packageList[i].name = package;
-        m_packageList[i].percentage = percentage;
-        m_packageList[i].size = size;
-        m_packageList[i].status = status;
+        m_itemList[i] = details;
         // If we get more than 10 columns we'll have to bump this.
         // ... but that's really not likely...
         emit dataChanged(index(i, 0), index(i, 9));
@@ -92,14 +88,8 @@ void DownloadModel::updatePackageDetails(const QString &package, int percentage,
     }
 
     if (newPackage) {
-        beginInsertRows(QModelIndex(), m_packageList.count(), m_packageList.count());
-        PackageDetails details;
-        details.name = package;
-        details.percentage = percentage;
-        details.URI = URI;
-        details.size = size;
-        details.status = status;
-        m_packageList.append(details);
+        beginInsertRows(QModelIndex(), m_itemList.count(), m_itemList.count());
+        m_itemList.append(details);
         endInsertRows();
     }
 
@@ -108,17 +98,15 @@ void DownloadModel::updatePackageDetails(const QString &package, int percentage,
 
 void DownloadModel::clear()
 {
-    m_packageList.clear();
+    m_itemList.clear();
 }
 
 int DownloadModel::rowCount(const QModelIndex& /*parent*/) const
 {
-    return m_packageList.size();
+    return m_itemList.size();
 }
 
 int DownloadModel::columnCount(const QModelIndex& /*parent*/) const
 {
     return 4;
 }
-
-#include "DownloadModel.moc"

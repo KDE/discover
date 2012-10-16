@@ -32,6 +32,7 @@
 #include <KAction>
 #include <KActionCollection>
 #include <KIcon>
+#include <KMessageBox>
 #include <KMessageWidget>
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
@@ -42,10 +43,12 @@
 #include <LibQApt/Backend>
 
 // Libmuon includes
+#include "MuonStrings.h"
 #include <ApplicationBackend/Application.h>
 #include <ApplicationBackend/ApplicationBackend.h>
 #include <HistoryView/HistoryView.h>
 #include <resources/ResourcesModel.h>
+#include <QAptActions.h>
 
 #ifdef ATTICA_ENABLED
 #include <KNSBackend/KNSBackend.h>
@@ -137,6 +140,8 @@ void MainWindow::initGUI()
     m_viewModel = new QStandardItemModel(this);
     m_viewSwitcher->setModel(m_viewModel);
 
+    m_backend = new QApt::Backend(this);
+    m_actions = new QAptActions(this, m_backend);
     setupActions();
     setupGUI((StandardWindowOption)(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
 }
@@ -151,12 +156,6 @@ void MainWindow::initObject()
 
     // Create APT backend
     m_appBackend = new ApplicationBackend(this);
-    connect(this, SIGNAL(backendReady(QApt::Backend*)),
-            m_appBackend, SLOT(setBackend(QApt::Backend*)));
-    connect(m_appBackend, SIGNAL(workerEvent(QApt::WorkerEvent,Transaction*)),
-            this, SLOT(workerEvent(QApt::WorkerEvent)));
-    connect(m_appBackend, SIGNAL(errorSignal(QApt::ErrorCode,QVariantMap)),
-            this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
     connect(m_appBackend, SIGNAL(backendReady()),
             this, SLOT(populateViews()));
     connect(m_appBackend, SIGNAL(reloadStarted()),
@@ -165,14 +164,17 @@ void MainWindow::initObject()
             this, SLOT(showLauncherMessage()));
     connect(m_appBackend, SIGNAL(startingFirstTransaction()),
             this, SLOT(addProgressItem()));
+    connect(m_appBackend, SIGNAL(sourcesEditorFinished()),
+            this, SLOT(sourcesEditorFinished()));
 
-    MuonMainWindow::initObject();
-    // Our modified ApplicationBackend provides us events in a way that
-    // makes queuing things while committing possible
-    disconnect(m_backend, SIGNAL(workerEvent(QApt::WorkerEvent)),
-               this, SLOT(workerEvent(QApt::WorkerEvent)));
-    disconnect(m_backend, SIGNAL(errorOccurred(QApt::ErrorCode,QVariantMap)),
-               this, SLOT(errorOccurred(QApt::ErrorCode,QVariantMap)));
+    if (!m_backend->init())
+        initError();
+
+    if (m_backend->xapianIndexNeedsUpdate())
+        // FIXME: port to QApt2
+        m_backend->updateXapianIndex();
+
+    m_appBackend->setBackend(m_backend);
 
     // Other backends
     QList<AbstractResourcesBackend*> backends;
@@ -180,8 +182,6 @@ void MainWindow::initObject()
 #ifdef ATTICA_ENABLED
     backends += new KNSBackend("comic.knsrc", "face-smile-big", this);
     backends += new KNSBackend("plasmoids.knsrc", "plasma", this);
-#else
-    qDebug() << "ya dun goofed.";
 #endif
 
     for (AbstractResourcesBackend *backend : backends) {
@@ -190,6 +190,20 @@ void MainWindow::initObject()
 
     setActionsEnabled();
 }
+
+void MainWindow::initError()
+{
+    QString details = m_backend->initErrorMessage();
+
+    MuonStrings *muonStrings = MuonStrings::global();
+
+    QString title = muonStrings->errorTitle(QApt::InitError);
+    QString text = muonStrings->errorText(QApt::InitError, nullptr);
+
+    KMessageBox::detailedError(this, text, details, title);
+    exit(-1);
+}
+
 
 void MainWindow::loadSplitterSizes()
 {
@@ -210,27 +224,12 @@ void MainWindow::saveSplitterSizes()
 void MainWindow::setupActions()
 {
     MuonMainWindow::setupActions();
-
-    m_loadSelectionsAction = actionCollection()->addAction("open_markings");
-    m_loadSelectionsAction->setIcon(KIcon("document-open"));
-    m_loadSelectionsAction->setText(i18nc("@action", "Read Markings..."));
-    connect(m_loadSelectionsAction, SIGNAL(triggered()), this, SLOT(loadSelections()));
-
-    m_saveSelectionsAction = actionCollection()->addAction("save_markings");
-    m_saveSelectionsAction->setIcon(KIcon("document-save-as"));
-    m_saveSelectionsAction->setText(i18nc("@action", "Save Markings As..."));
-    connect(m_saveSelectionsAction, SIGNAL(triggered()), this, SLOT(saveSelections()));
+    m_actions->setupActions();
 }
 
 void MainWindow::setActionsEnabled(bool enabled)
 {
-    MuonMainWindow::setActionsEnabled(enabled);
-    if (!enabled) {
-        return;
-    }
-
-    m_loadSelectionsAction->setEnabled(true);
-    m_saveSelectionsAction->setEnabled(m_backend->areChangesMarked());
+    m_actions->setActionsEnabled(enabled);
 }
 
 void MainWindow::clearViews()
@@ -241,27 +240,6 @@ void MainWindow::clearViews()
     }
     m_viewHash.clear();
     m_viewModel->clear();
-}
-
-void MainWindow::workerEvent(QApt::WorkerEvent event)
-{
-    MuonMainWindow::workerEvent(event);
- 
-    switch (event) {
-    case QApt::CommitChangesFinished:
-        if (m_warningStack.size() > 0) {
-            showQueuedWarnings();
-            m_warningStack.clear();
-        }
-        if (m_errorStack.size() > 0) {
-            showQueuedErrors();
-            m_errorStack.clear();
-        }
-        break;
-    case QApt::InvalidEvent:
-    default:
-        break;
-    }
 }
 
 void MainWindow::populateViews()
@@ -487,15 +465,15 @@ void MainWindow::selectFirstRow(const QAbstractItemView *itemView)
 void MainWindow::runSourcesEditor()
 {
     // Let QApt Batch handle the update GUI
-    MuonMainWindow::runSourcesEditor(true);
+    // FIXME?
+    //MuonMainWindow::runSourcesEditor(true);
 }
 
-void MainWindow::sourcesEditorFinished(int reload)
+void MainWindow::sourcesEditorFinished()
 {
-    m_appBackend->reload();
     clearViews();
     populateViews();
-    MuonMainWindow::sourcesEditorFinished(reload);
+    find(effectiveWinId())->setEnabled(true);
 }
 
 void MainWindow::showLauncherMessage()

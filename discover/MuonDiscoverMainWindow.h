@@ -21,24 +21,25 @@
 #define MUONDISCOVERMAINWINDOW_H
 
 #include <QtCore/QUrl>
-#include <KXmlGuiWindow>
+
+#include "MuonMainWindow.h"
 
 class QAptIntegration;
 class AbstractResource;
 class Category;
 class QDeclarativeView;
 
-class MuonDiscoverMainWindow : public KXmlGuiWindow
+class MuonDiscoverMainWindow : public MuonMainWindow
 {
     Q_OBJECT
     public:
         explicit MuonDiscoverMainWindow();
-        virtual ~MuonDiscoverMainWindow();
+        ~MuonDiscoverMainWindow();
 
         Q_SCRIPTABLE QAction* getAction(const QString& name);
-        virtual QSize sizeHint() const;
+        QSize sizeHint() const;
         
-        static void initialize(KXmlGuiWindow* w);
+        void initialize();
 
     public slots:
         void openApplication(const QString& app);

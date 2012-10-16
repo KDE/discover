@@ -35,6 +35,7 @@
 
 namespace QApt {
     class Backend;
+    class Transaction;
 }
 namespace DebconfKde
 {
@@ -45,7 +46,8 @@ class Application;
 class ApplicationUpdates;
 class ReviewsBackend;
 class Transaction;
-class KXmlGuiWindow;
+class MuonMainWindow;
+class QAptActions;
 
 class MUONPRIVATE_EXPORT ApplicationBackend : public AbstractResourcesBackend
 {
@@ -56,10 +58,8 @@ public:
 
     AbstractReviewsBackend *reviewsBackend() const;
     Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name) const;
-    QVector<Application *> applicationList() const;
     QSet<QString> appOrigins() const;
     QSet<QString> installedAppOrigins() const;
-    QPair<QApt::WorkerEvent, Transaction *> workerState() const;
     QPair<TransactionStateTransition, Transaction *> currentTransactionState() const;
     QList<Transaction *> transactions() const;
     QList<Application*> launchList() const;
@@ -67,23 +67,23 @@ public:
 
     int updatesCount() const;
 
-    bool confirmRemoval(Transaction *transaction);
+    bool confirmRemoval(QApt::StateChanges changes);
     Q_SCRIPTABLE bool isReloading() const;
     void markTransaction(Transaction *transaction);
     void markLangpacks(Transaction *transaction);
     void addTransaction(Transaction *transaction);
     
-    virtual QVector< AbstractResource* > allResources() const;
-    virtual QStringList searchPackageName(const QString& searchText);
-    virtual bool providesResouce(AbstractResource* res) const;
+    QVector< AbstractResource* > allResources() const;
+    QStringList searchPackageName(const QString& searchText);
+    bool providesResouce(AbstractResource* res) const;
     
     void installApplication(AbstractResource *app, const QHash<QString, bool> &addons);
     void installApplication(AbstractResource *app);
     void removeApplication(AbstractResource *app);
     void cancelTransaction(AbstractResource *app);
     
-    virtual AbstractBackendUpdater* backendUpdater() const;
-    void integrateMainWindow(KXmlGuiWindow* w);
+    AbstractBackendUpdater* backendUpdater() const;
+    void integrateMainWindow(MuonMainWindow *w);
 private:
     QApt::Backend *m_backend;
     ReviewsBackend *m_reviewsBackend;
@@ -94,33 +94,37 @@ private:
     QSet<QString> m_originList;
     QSet<QString> m_instOriginList;
     QList<Application*> m_appLaunchList;
-    QQueue<Transaction *> m_queue;
+
+    // Transactions
+    QHash<Transaction *, QApt::Transaction *> m_transQueue;
     Transaction *m_currentTransaction;
-    QPair<QApt::WorkerEvent, Transaction *> m_workerState;
 
     DebconfKde::DebconfGui *m_debconfGui;
     ApplicationUpdates* m_backendUpdater;
+    QAptActions *m_aptify;
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
+    void initError();
     void reload();
-    void updateCache();
     
     //helper functions
     void clearLaunchList();
 
 private Q_SLOTS:
     void setApplications();
-    void runNextTransaction();
-    void workerEvent(QApt::WorkerEvent event);
-    void errorOccurred(QApt::ErrorCode error, const QVariantMap &details);
-    void updateDownloadProgress(int percentage);
-    void updateCommitProgress(const QString &text, int percentage);
+    void aptTransactionsChanged(QString active);
+    void transactionEvent(QApt::TransactionStatus status);
+    void errorOccurred(QApt::ErrorCode error);
+    void updateProgress(int percentage);
+    void initBackend();
+    void setupTransaction(QApt::Transaction *trans);
+    void sourcesEditorClosed();
 
 Q_SIGNALS:
     void startingFirstTransaction();
-    void workerEvent(QApt::WorkerEvent event, Transaction *app);
-    void errorSignal(QApt::ErrorCode code, const QVariantMap &details);
+    void errorSignal(QApt::ErrorCode code, const QString &details);
     void launchListChanged();
+    void sourcesEditorFinished();
 };
 
 #endif

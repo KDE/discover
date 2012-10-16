@@ -19,27 +19,29 @@
  ***************************************************************************/
 
 #include "MuonMainWindow.h"
-#include "QAptIntegration.h"
-#include <LibQApt/Backend>
+
+// Qt includes
+#include <QtGui/QLabel>
+#include <QtGui/QShortcut>
+
+// KDE includes
+#include <KActionCollection>
+#include <KApplication>
+#include <KDialog>
+#include <KStandardAction>
+#include <KStandardDirs>
+#include <KVBox>
+#include <Phonon/MediaObject>
 
 MuonMainWindow::MuonMainWindow()
     : KXmlGuiWindow(0)
-    , m_aptify(new QAptIntegration(this))
-    , m_backend(m_aptify->m_backend)
-    , m_canExit(m_aptify->m_canExit)
-    , m_isReloading(m_aptify->m_isReloading)
-    , m_originalState(m_aptify->m_originalState)
-    , m_warningStack(m_aptify->m_warningStack)
-    , m_errorStack(m_aptify->m_errorStack)
+    , m_canExit(false)
 {
-    connect(m_aptify, SIGNAL(backendReady(QApt::Backend*)), SIGNAL(backendReady(QApt::Backend*)));
-    connect(m_aptify, SIGNAL(shouldConnect(bool)), SIGNAL(shouldConnect(bool)));
-    connect(m_aptify, SIGNAL(checkForUpdates()), SLOT(checkForUpdates()));
 }
 
 bool MuonMainWindow::queryExit()
 {
-    return m_aptify->queryExit();
+    return m_canExit;
 }
 
 QSize MuonMainWindow::sizeHint() const
@@ -49,110 +51,40 @@ QSize MuonMainWindow::sizeHint() const
 
 void MuonMainWindow::setupActions()
 {
-    m_aptify->setupActions();
-}
+    KAction *quitAction = KStandardAction::quit(KApplication::instance(),
+                                                SLOT(quit()), actionCollection());
+    actionCollection()->addAction("quit", quitAction);
 
-void MuonMainWindow::initializationErrors(const QString& errors)
-{
-    m_aptify->initializationErrors(errors);
-}
-
-bool MuonMainWindow::isConnected()
-{
-    return m_aptify->isConnected();
-}
-
-void MuonMainWindow::revertChanges()
-{
-    return m_aptify->revertChanges();
-}
-
-void MuonMainWindow::setActionsEnabled(bool enabled)
-{
-    m_aptify->setActionsEnabled(enabled);
-}
-
-void MuonMainWindow::initObject()
-{
-    m_aptify->initObject();
-}
-
-void MuonMainWindow::workerEvent(QApt::WorkerEvent event)
-{
-    m_aptify->workerEvent(event);
-}
-
-void MuonMainWindow::showQueuedErrors()
-{
-    m_aptify->showQueuedErrors();
-}
-
-void MuonMainWindow::showQueuedWarnings()
-{
-    m_aptify->showQueuedWarnings();
-}
-
-void MuonMainWindow::errorOccurred(QApt::ErrorCode code, const QVariantMap& args)
-{
-    m_aptify->errorOccurred(code, args);
-}
-
-void MuonMainWindow::questionOccurred(QApt::WorkerQuestion question, const QVariantMap& details)
-{
-    m_aptify->questionOccurred(question, details);
-}
-
-void MuonMainWindow::warningOccurred(QApt::WarningCode warning, const QVariantMap& args)
-{
-    m_aptify->warningOccurred(warning, args);
-}
-
-void MuonMainWindow::downloadPackagesFromList()
-{
-    m_aptify->downloadPackagesFromList();
+    QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_M), this);
+    connect(shortcut, SIGNAL(activated()), this, SLOT(easterEggTriggered()));
 }
 
 void MuonMainWindow::easterEggTriggered()
 {
-    m_aptify->easterEggTriggered();
+    KDialog *dialog = new KDialog(this);
+    KVBox *widget = new KVBox(dialog);
+    QLabel *label = new QLabel(widget);
+    label->setText(i18nc("@label Easter Egg", "This Muon has super cow powers"));
+    QLabel *moo = new QLabel(widget);
+    moo->setFont(QFont("monospace"));
+    moo->setText("             (__)\n"
+                 "             (oo)\n"
+                 "    /---------\\/\n"
+                 "   / | Muuu!!||\n"
+                 "  *  ||------||\n"
+                 "     ^^      ^^\n");
+
+    dialog->setMainWidget(widget);
+    dialog->show();
+
+    QString mooFile = KStandardDirs::locate("data", "libmuon/moo.ogg");
+    Phonon::MediaObject *music =
+        Phonon::createPlayer(Phonon::MusicCategory,
+                             Phonon::MediaSource(mooFile));
+    music->play();
 }
 
-void MuonMainWindow::runSourcesEditor(bool update)
+void MuonMainWindow::setCanExit(bool canExit)
 {
-    m_aptify->runSourcesEditor(update);
-}
-
-void MuonMainWindow::sourcesEditorFinished(int reload)
-{
-    m_aptify->sourcesEditorFinished(reload);
-}
-
-bool MuonMainWindow::createDownloadList()
-{
-    return m_aptify->createDownloadList();
-}
-
-void MuonMainWindow::loadSelections()
-{
-    m_aptify->loadSelections();
-}
-
-bool MuonMainWindow::saveInstalledPackagesList()
-{
-    return m_aptify->saveInstalledPackagesList();
-}
-
-bool MuonMainWindow::saveSelections()
-{
-    return m_aptify->saveSelections();
-}
-
-void MuonMainWindow::loadArchives()
-{
-    m_aptify->loadArchives();
-}
-
-void MuonMainWindow::checkForUpdates()
-{
-    m_backend->updateCache();
+    m_canExit = canExit;
 }

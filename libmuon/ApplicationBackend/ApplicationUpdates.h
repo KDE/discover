@@ -20,39 +20,52 @@
 
 #ifndef APPLICATIONUPDATES_H
 #define APPLICATIONUPDATES_H
-#include <QObject>
-#include <LibQApt/Globals>
-#include <resources/AbstractBackendUpdater.h>
 
-namespace QApt { class Backend; }
+// Qt includes
+#include <QtCore/QObject>
+
+// LibQApt includes
+#include <LibQApt/Globals>
+
+// Own includes
+#include "resources/AbstractBackendUpdater.h"
+
+namespace QApt {
+    class Backend;
+    class Transaction;
+}
 
 class ApplicationBackend;
+
 class ApplicationUpdates : public AbstractBackendUpdater
 {
     Q_OBJECT
-    public:
-        explicit ApplicationUpdates(ApplicationBackend* parent);
-        
-        virtual bool hasUpdates() const;
-        virtual qreal progress() const;
-        virtual void start();
-        void setBackend(QApt::Backend* b);
-        virtual long unsigned int remainingTime() const;
+public:
+    explicit ApplicationUpdates(ApplicationBackend* parent);
 
-    private slots:
-        void commitProgress(const QString& message, int percentage);
-        void downloadMessage(int flag, const QString& message);
-        void installMessage(const QString& message);
-        void workerEvent(QApt::WorkerEvent event);
-        void downloadProgress(int percentage, int speed, int ETA);
-        void cleanup();
-        void errorOccurred(QApt::ErrorCode err, const QVariantMap& values);
+    bool hasUpdates() const;
+    qreal progress() const;
+    void start();
+    void setBackend(QApt::Backend* b);
+    long unsigned int remainingTime() const;
 
-    private:
-        QApt::Backend* m_aptBackend;
-        ApplicationBackend* m_appBackend;
-        qreal m_progress;
-        long unsigned int m_eta;
+private:
+    QApt::Backend* m_aptBackend;
+    QApt::Transaction *m_trans;
+    ApplicationBackend* m_appBackend;
+    int m_lastRealProgress;
+    long unsigned int m_eta;
+
+private slots:
+    void transactionStatusChanged(QApt::TransactionStatus status);
+    void errorOccurred(QApt::ErrorCode error);
+    void progressChanged(int progress);
+    void etaChanged(quint64 eta);
+    void installMessage(const QString& message);
+    void setupTransaction(QApt::Transaction *trans);
+
+signals:
+    void errorSignal(QApt::ErrorCode error, QString details);
 };
 
 #endif // APPLICATIONUPDATES_H

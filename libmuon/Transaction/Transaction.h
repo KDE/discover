@@ -49,7 +49,6 @@ public:
     explicit Transaction (AbstractResource *app, TransactionAction);
     explicit Transaction (AbstractResource *app, TransactionAction,
                           const QHash<QString, bool> &addons);
-    ~Transaction();
 
     void setState(TransactionState state);
 

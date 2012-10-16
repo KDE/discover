@@ -1,11 +1,12 @@
 add_subdirectory(icons)
 
+add_definitions(-DQAPT_ENABLED)
+
 set(muon_SRCS
     main.cpp
     MainWindow.cpp
     ManagerWidget.cpp
     ReviewWidget.cpp
-    CommitWidget.cpp
     DetailsTabs/DetailsTab.cpp
     DetailsTabs/MainTab.cpp
     DetailsTabs/ChangelogTab.cpp
@@ -16,7 +17,6 @@ set(muon_SRCS
     DetailsWidget.cpp
     DownloadModel/DownloadModel.cpp
     DownloadModel/DownloadDelegate.cpp
-    DownloadWidget.cpp
     FilterWidget/ArchitectureFilter.cpp
     FilterWidget/CategoryFilter.cpp
     FilterWidget/FilterModel.cpp
@@ -29,6 +29,7 @@ set(muon_SRCS
     PackageModel/PackageDelegate.cpp
     PackageModel/PackageWidget.cpp
     StatusWidget.cpp
+    TransactionWidget.cpp
     config/ManagerSettingsDialog.cpp
     config/GeneralSettingsPage.cpp)
 

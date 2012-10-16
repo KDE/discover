@@ -28,10 +28,9 @@ class DownloadDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
 public:
-    explicit DownloadDelegate(QObject *parent = 0);
-    ~DownloadDelegate();
+    DownloadDelegate(QObject *parent);
 
-    virtual void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
 private:
     int m_spacing;

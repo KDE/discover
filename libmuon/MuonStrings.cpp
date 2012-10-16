@@ -23,6 +23,8 @@
 #include <KGlobal>
 #include <KLocale>
 
+#include <LibQApt/Transaction>
+
 K_GLOBAL_STATIC_WITH_ARGS(MuonStrings, globalMuonStrings, (0))
 
 MuonStrings *MuonStrings::global()
@@ -35,10 +37,6 @@ MuonStrings::MuonStrings(QObject *parent)
     , m_groupHash(groupHash())
     , m_stateHash(stateHash())
     , m_archHash(archHash())
-{
-}
-
-MuonStrings::~MuonStrings()
 {
 }
 
@@ -236,4 +234,82 @@ QString MuonStrings::archString(const QString &arch) const
         str = arch;
 
     return str;
+}
+
+QString MuonStrings::errorTitle(QApt::ErrorCode error) const
+{
+    switch (error) {
+    case QApt::InitError:
+        return i18nc("@title:window", "Initialization Error");
+    case QApt::LockError:
+        return i18nc("@title:window", "Unable to Obtain Package System Lock");
+    case QApt::DiskSpaceError:
+        return i18nc("@title:window", "Low Disk Space");
+    case QApt::FetchError:
+    case QApt::CommitError:
+        return i18nc("@title:window", "Failed to Apply Changes");
+    case QApt::AuthError:
+        return i18nc("@title:window", "Authentication error");
+    case QApt::WorkerDisappeared:
+        return i18nc("@title:window", "Unexpected Error");
+    case QApt::UntrustedError:
+        return i18nc("@title:window", "Untrusted Packages");
+    case QApt::UnknownError:
+    default:
+        return i18nc("@title:window", "Unknown Error");
+    }
+}
+
+QString MuonStrings::errorText(QApt::ErrorCode error, QApt::Transaction *trans) const
+{
+    QString text;
+
+    switch (error) {
+    case QApt::InitError:
+        text = i18nc("@label", "The package system could not be initialized, your "
+                               "configuration may be broken.");
+        break;
+    case QApt::LockError:
+        text = i18nc("@label",
+                     "Another application seems to be using the package "
+                     "system at this time. You must close all other package "
+                     "managers before you will be able to install or remove "
+                     "any packages.");
+        break;
+    case QApt::DiskSpaceError:
+        text = i18nc("@label",
+                     "You do not have enough disk space in the directory "
+                     "at %1 to continue with this operation.", trans->errorDetails());
+        break;
+    case QApt::FetchError:
+        text = i18nc("@label", "Could not download packages");
+        break;
+    case QApt::CommitError:
+        text = i18nc("@label", "An error occurred while applying changes:");
+        break;
+    case QApt::AuthError:
+        text = i18nc("@label",
+                     "This operation cannot continue since proper "
+                     "authorization was not provided");
+        break;
+    case QApt::WorkerDisappeared:
+        text = i18nc("@label", "It appears that the QApt worker has either crashed "
+                     "or disappeared. Please report a bug to the QApt maintainers");
+        break;
+    case QApt::UntrustedError:
+        text = i18ncp("@label",
+                      "The following package has not been verified by its author. "
+                      "Downloading untrusted packages has been disallowed "
+                      "by your current configuration.",
+                      "The following packages have not been verified by "
+                      "their authors. "
+                      "Downloading untrusted packages has "
+                      "been disallowed by your current configuration.",
+                      trans->untrustedPackages().size());
+        break;
+    default:
+        break;
+    }
+
+    return text;
 }

@@ -117,15 +117,15 @@ void PackageProxyModel::setArchFilter(const QString &arch)
 
 bool PackageProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
-    //Our "main"-method
+    // Our "main"-method
     QApt::Package *package = static_cast<PackageModel *>(sourceModel())->packageAt(sourceModel()->index(sourceRow, 1, sourceParent));
-    //We have a package as internal pointer
+    // We have a package as internal pointer
     if (!package) {
         return false;
     }
 
     if (!m_groupFilter.isEmpty()) {
-        if (!package->section().contains(m_groupFilter)) {
+        if (!QString(package->section()).contains(m_groupFilter)) {
             return false;
         }
     }

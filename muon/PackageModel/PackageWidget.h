@@ -138,6 +138,7 @@ private Q_SLOTS:
 
 Q_SIGNALS:
     void packageChanged();
+    void doneSortingPackages(bool sorting);
 };
 
 #endif

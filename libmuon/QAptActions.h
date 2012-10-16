@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2012 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,42 +18,68 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MUONSTRINGS_H
-#define MUONSTRINGS_H
+#ifndef QAPTACTIONS_H
+#define QAPTACTIONS_H
 
-#include <QtCore/QHash>
+#include <QtCore/QObject>
 
-#include <LibQApt/Package>
+#include <LibQApt/Globals>
 
 #include "libmuonprivate_export.h"
 
+class KActionCollection;
+
 namespace QApt {
+    class Backend;
     class Transaction;
 }
 
-class MUONPRIVATE_EXPORT MuonStrings : public QObject
+class MuonMainWindow;
+
+class MUONPRIVATE_EXPORT QAptActions : public QObject
 {
     Q_OBJECT
 public:
-    explicit MuonStrings(QObject *parent);
+    QAptActions(MuonMainWindow *parent, QApt::Backend *backend);
 
-    static MuonStrings* global();
+    bool isConnected() const;
+    void setOriginalState(QApt::CacheState state);
+    void setCanExit(bool canExit);
+    void setReloadWhenEditorFinished(bool reload);
+    
+signals:
+    void checkForUpdates();
+    void shouldConnect(bool isConnected);
+    void changesReverted();
+    void sourcesEditorClosed();
+    void downloadArchives(QApt::Transaction *trans);
+    
+public slots:
+    void setupActions();
+    void setActionsEnabled(bool enabled = true);
+    void networkChanged();
 
-    QString groupName(const QString &name) const;
-    QString groupKey(const QString &text) const;
-    QString packageStateName(QApt::Package::State state) const;
-    QString archString(const QString &arch) const;
-    QString errorTitle(QApt::ErrorCode error) const;
-    QString errorText(QApt::ErrorCode error, QApt::Transaction *trans) const;
+    // KAction slots
+    bool saveSelections();
+    bool saveInstalledPackagesList();
+    void loadSelections();
+    bool createDownloadList();
+    void downloadPackagesFromList();
+    void loadArchives();
+    void undo();
+    void redo();
+    void revertChanges();
+    void runSourcesEditor();
+    void sourcesEditorFinished(int reload);
 
 private:
-    const QHash<QString, QString> m_groupHash;
-    const QHash<int, QString> m_stateHash;
-    const QHash<QString, QString> m_archHash;
+    QApt::Backend *m_backend;
+    QApt::CacheState m_originalState;
+    bool m_actionsDisabled;
+    MuonMainWindow* m_mainWindow;
+    bool m_reloadWhenEditorFinished;
 
-    QHash<QString, QString> groupHash();
-    QHash<int, QString> stateHash();
-    QHash<QString, QString> archHash();
+    KActionCollection* actionCollection();
 };
 
-#endif
+#endif // QAPTACTIONS_H

@@ -28,18 +28,13 @@
 #include <KXmlGuiWindow>
 #include <KLocale>
 
-// LibQApt includes
-#include <LibQApt/Globals>
-
 #include "libmuonprivate_export.h"
 
 class KAction;
-class QAptIntegration;
 
-namespace QApt
-{
-    class Backend;
-}
+#ifdef QAPT_ENABLED
+class QAptActions;
+#endif
 
 /**
  * This class serves as a shared Main Window implementation that connects
@@ -53,50 +48,29 @@ namespace QApt
 class MUONPRIVATE_EXPORT MuonMainWindow : public KXmlGuiWindow
 {
     Q_OBJECT
-    public:
-        MuonMainWindow();
+public:
+    MuonMainWindow();
 
-        QSize sizeHint() const;
-        void setupActions();
-        void initializationErrors(const QString& errors);
-        bool isConnected();
-        virtual void revertChanges();
-        void setActionsEnabled(bool enabled = true);
-        
-    Q_SIGNALS:
-        void backendReady(QApt::Backend*);
-        void shouldConnect(bool isConnected);
+    QSize sizeHint() const;
+    void setupActions();
+    bool isConnected();
+    void setActionsEnabled(bool enabled = true);
 
-    protected slots:
-        void initObject();
-        bool queryExit();
-        virtual void workerEvent(QApt::WorkerEvent event);
-        virtual void errorOccurred(QApt::ErrorCode code, const QVariantMap &args);
-        virtual void warningOccurred(QApt::WarningCode warning, const QVariantMap &args);
-        virtual void questionOccurred(QApt::WorkerQuestion question, const QVariantMap &details);
-        virtual void showQueuedWarnings();
-        virtual void showQueuedErrors();
-        void downloadPackagesFromList();
-        bool saveSelections();
-        bool saveInstalledPackagesList();
-        void loadSelections();
-        bool createDownloadList();
-        void loadArchives();
+Q_SIGNALS:
+    void shouldConnect(bool isConnected);
 
-    public slots:
-        void runSourcesEditor(bool update = false);
-        void sourcesEditorFinished(int reload);
-        void easterEggTriggered();
-        virtual void checkForUpdates();
+protected slots:
+    bool queryExit();
 
-    protected:
-        QAptIntegration* m_aptify;
-        QApt::Backend*& m_backend;
-        bool& m_canExit;
-        bool& m_isReloading;
-        QApt::CacheState& m_originalState;
-        QList<QVariantMap>& m_warningStack;
-        QList<QVariantMap>& m_errorStack;
+public slots:
+    void easterEggTriggered();
+    void setCanExit(bool canExit);
+
+protected:
+#ifdef QAPT_ENABLED
+    QAptActions *m_actions;
+#endif
+    bool m_canExit;
 };
 
 #endif

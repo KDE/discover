@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2012 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,80 +18,101 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "ProgressWidget.h"
+#include "TransactionWidget.h"
 
 // Qt includes
-#include <QtCore/QParallelAnimationGroup>
-#include <QtCore/QPropertyAnimation>
+#include <QtCore/QDir>
 #include <QtCore/QStringBuilder>
+#include <QtCore/QUuid>
+#include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QProgressBar>
 #include <QtGui/QPushButton>
+#include <QtGui/QTreeView>
 #include <QtGui/QVBoxLayout>
+#include <QDebug>
 
 // KDE includes
-#include <KGlobal>
 #include <KIcon>
 #include <KLocale>
 #include <KMessageBox>
 
 // LibQApt includes
 #include <LibQApt/Transaction>
+#include <DebconfGui.h>
 
 // Own includes
-#include "MuonStrings.h"
+#include "../libmuon/MuonStrings.h"
+#include "DownloadModel/DownloadDelegate.h"
+#include "DownloadModel/DownloadModel.h"
 
-ProgressWidget::ProgressWidget(QWidget *parent)
+TransactionWidget::TransactionWidget(QWidget *parent)
     : QWidget(parent)
     , m_trans(nullptr)
     , m_lastRealProgress(0)
-    , m_show(false)
 {
-    QVBoxLayout *mainLayout = new QVBoxLayout(this);
-    mainLayout->setMargin(0);
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    layout->setMargin(0);
+    setLayout(layout);
 
     m_headerLabel = new QLabel(this);
-    m_progressBar = new QProgressBar(this);
+    layout->addWidget(m_headerLabel);
 
-    QWidget *widget = new QWidget(this);
-    QHBoxLayout *layout = new QHBoxLayout(widget);
-    widget->setLayout(layout);
+    m_spacer = new QWidget(this);
+    m_spacer->hide();
+    m_spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    layout->addWidget(m_spacer);
 
-    m_cancelButton = new QPushButton(widget);
+    m_downloadModel = new DownloadModel(this);
+    m_downloadDelegate = new DownloadDelegate(this);
+
+    m_downloadView = new QTreeView(this);
+    layout->addWidget(m_downloadView);
+    m_downloadView->setModel(m_downloadModel);
+    m_downloadView->setRootIsDecorated(false);
+    m_downloadView->setUniformRowHeights(true);
+    m_downloadView->setItemDelegate(m_downloadDelegate);
+    m_downloadView->setSelectionMode(QAbstractItemView::NoSelection);
+    m_downloadView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+    m_downloadView->header()->setStretchLastSection(false);
+    m_downloadView->header()->setResizeMode(1, QHeaderView::Stretch);
+    m_downloadView->hide();
+
+    QString uuid = QUuid::createUuid().toString();
+    uuid.remove('{').remove('}').remove('-');
+    m_pipe = QDir::tempPath() % QLatin1String("/qapt-sock-") % uuid;
+
+    m_debconfGui = new DebconfKde::DebconfGui(m_pipe, this);
+    layout->addWidget(m_debconfGui);
+    m_debconfGui->connect(m_debconfGui, SIGNAL(activated()), m_debconfGui, SLOT(show()));
+    m_debconfGui->connect(m_debconfGui, SIGNAL(deactivated()), m_debconfGui, SLOT(hide()));
+    m_debconfGui->hide();
+
+    m_statusLabel = new QLabel(this);
+    layout->addWidget(m_statusLabel);
+
+    QWidget *hbox = new QWidget(this);
+    QHBoxLayout *hboxLayout = new QHBoxLayout(hbox);
+    hboxLayout->setMargin(0);
+    hbox->setLayout(hboxLayout);
+    layout->addWidget(hbox);
+    m_totalProgress = new QProgressBar(hbox);
+    hboxLayout->addWidget(m_totalProgress);
+
+    m_cancelButton = new QPushButton(hbox);
     m_cancelButton->setText(i18nc("@action:button Cancels the download", "Cancel"));
     m_cancelButton->setIcon(KIcon("dialog-cancel"));
-
-    layout->addWidget(m_progressBar);
-    layout->addWidget(m_cancelButton);
-
-    m_detailsLabel = new QLabel(this);
-
-    mainLayout->addWidget(m_headerLabel);
-    mainLayout->addWidget(widget);
-    mainLayout->addWidget(m_detailsLabel);
-
-    setLayout(mainLayout);
-
-    int finalHeight = sizeHint().height() + 20;
-
-    QPropertyAnimation *anim1 = new QPropertyAnimation(this, "maximumHeight", this);
-    anim1->setDuration(500);
-    anim1->setEasingCurve(QEasingCurve::OutQuart);
-    anim1->setStartValue(0);
-    anim1->setEndValue(finalHeight);
-
-    QPropertyAnimation *anim2 = new QPropertyAnimation(this, "minimumHeight", this);
-    anim2->setDuration(500);
-    anim2->setEasingCurve(QEasingCurve::OutQuart);
-    anim2->setStartValue(0);
-    anim2->setEndValue(finalHeight);
-
-    m_expandWidget = new QParallelAnimationGroup(this);
-    m_expandWidget->addAnimation(anim1);
-    m_expandWidget->addAnimation(anim2);
+    hboxLayout->addWidget(m_cancelButton);
+    connect(m_downloadModel, SIGNAL(rowsInserted(QModelIndex,int,int)), m_downloadView, SLOT(scrollToBottom()));
 }
 
-void ProgressWidget::setTransaction(QApt::Transaction *trans)
+QString TransactionWidget::pipe() const
+{
+    return m_pipe;
+}
+
+void TransactionWidget::setTransaction(QApt::Transaction *trans)
 {
     m_trans = trans;
 
@@ -108,69 +129,71 @@ void ProgressWidget::setTransaction(QApt::Transaction *trans)
             this, SLOT(untrustedPrompt(QStringList)));
     connect(m_trans, SIGNAL(progressChanged(int)),
             this, SLOT(updateProgress(int)));
-    connect(m_trans, SIGNAL(downloadSpeedChanged(quint64)),
-            this, SLOT(downloadSpeedChanged(quint64)));
-    connect(m_trans, SIGNAL(configFileConflict(QString,QString)),
-            this, SLOT(configFileConflict(QString,QString)));
+    connect(m_trans, SIGNAL(statusDetailsChanged(QString)),
+            m_statusLabel, SLOT(setText(QString)));
+    connect(m_trans, SIGNAL(downloadProgressChanged(QApt::DownloadProgress)),
+            m_downloadModel, SLOT(updateDetails(QApt::DownloadProgress)));
 
     // Connect us to the transaction
     connect(m_cancelButton, SIGNAL(clicked()), m_trans, SLOT(cancel()));
     statusChanged(m_trans->status());
 }
 
-void ProgressWidget::statusChanged(QApt::TransactionStatus status)
+void TransactionWidget::statusChanged(QApt::TransactionStatus status)
 {
     switch (status) {
     case QApt::SetupStatus:
-        m_headerLabel->setText(i18nc("@info Status info, widget title",
+        m_headerLabel->setText(i18nc("@info Status information, widget title",
                                      "<title>Starting</title>"));
-        m_progressBar->setMaximum(0);
+        m_statusLabel->setText(i18nc("@info Status info",
+                                     "Waiting for service to start"));
+        m_totalProgress->setMaximum(0);
         break;
     case QApt::AuthenticationStatus:
-        m_headerLabel->setText(i18nc("@info Status info, widget title",
-                                     "<title>Waiting for Authentication</title>"));
-        m_progressBar->setMaximum(0);
+        m_statusLabel->setText(i18nc("@info Status info",
+                                     "Waiting for authentication"));
         break;
     case QApt::WaitingStatus:
         m_headerLabel->setText(i18nc("@info Status information, widget title",
                                      "<title>Waiting</title>"));
-        m_detailsLabel->setText(i18nc("@info Status info",
+        m_statusLabel->setText(i18nc("@info Status info",
                                      "Waiting for other transactions to finish"));
-        m_progressBar->setMaximum(0);
+        m_totalProgress->setMaximum(0);
         break;
     case QApt::WaitingLockStatus:
         m_headerLabel->setText(i18nc("@info Status information, widget title",
                                      "<title>Waiting</title>"));
-        m_detailsLabel->setText(i18nc("@info Status info",
-                                      "Waiting for other software managers to quit"));
-        m_progressBar->setMaximum(0);
+        m_statusLabel->setText(i18nc("@info Status info",
+                                     "Waiting for other software managers to quit"));
+        m_totalProgress->setMaximum(0);
         break;
     case QApt::WaitingMediumStatus:
         m_headerLabel->setText(i18nc("@info Status information, widget title",
                                      "<title>Waiting</title>"));
-        m_detailsLabel->setText(i18nc("@info Status info",
+        m_statusLabel->setText(i18nc("@info Status info",
                                      "Waiting for required medium"));
-        m_progressBar->setMaximum(0);
+        m_totalProgress->setMaximum(0);
         break;
     case QApt::WaitingConfigFilePromptStatus:
         m_headerLabel->setText(i18nc("@info Status information, widget title",
                                      "<title>Waiting</title>"));
-        m_detailsLabel->setText(i18nc("@info Status info",
+        m_statusLabel->setText(i18nc("@info Status info",
                                      "Waiting for configuration file"));
-        m_progressBar->setMaximum(0);
+        m_totalProgress->setMaximum(0);
         break;
     case QApt::RunningStatus:
-        m_progressBar->setMaximum(100);
+        m_totalProgress->setMaximum(100);
         m_headerLabel->clear();
-        m_detailsLabel->clear();
+        m_statusLabel->clear();
         break;
     case QApt::LoadingCacheStatus:
-        m_detailsLabel->clear();
+        m_statusLabel->clear();
         m_headerLabel->setText(i18nc("@info Status info",
                                      "<title>Loading Software List</title>"));
         break;
     case QApt::DownloadingStatus:
-        m_progressBar->setMaximum(100);
+        m_totalProgress->setMaximum(100);
+        m_downloadView->show();
         switch (m_trans->role()) {
         case QApt::UpdateCacheRole:
             m_headerLabel->setText(i18nc("@info Status information, widget title",
@@ -186,20 +209,24 @@ void ProgressWidget::statusChanged(QApt::TransactionStatus status)
         }
         break;
     case QApt::CommittingStatus:
-        m_progressBar->setMaximum(100);
+        m_totalProgress->setMaximum(100);
+        m_downloadView->hide();
+        m_spacer->show();
+
         m_headerLabel->setText(i18nc("@info Status information, widget title",
-                                     "<title>Applying Changes</title>"));
-        m_detailsLabel->clear();
+                                     "<title>Committing Changes</title>"));
         break;
     case QApt::FinishedStatus:
+        m_spacer->hide();
+        m_downloadView->hide();
+        m_downloadModel->clear();
         m_headerLabel->setText(i18nc("@info Status information, widget title",
                                      "<title>Finished</title>"));
         m_lastRealProgress = 0;
-        break;
     }
 }
 
-void ProgressWidget::transactionErrorOccurred(QApt::ErrorCode error)
+void TransactionWidget::transactionErrorOccurred(QApt::ErrorCode error)
 {
     if (error == QApt::Success)
         return;
@@ -221,7 +248,7 @@ void ProgressWidget::transactionErrorOccurred(QApt::ErrorCode error)
     }
 }
 
-void ProgressWidget::provideMedium(const QString &label, const QString &medium)
+void TransactionWidget::provideMedium(const QString &label, const QString &medium)
 {
     QString title = i18nc("@title:window", "Media Change Required");
     QString text = i18nc("@label", "Please insert %1 into <filename>%2</filename>",
@@ -231,7 +258,7 @@ void ProgressWidget::provideMedium(const QString &label, const QString &medium)
     m_trans->provideMedium(medium);
 }
 
-void ProgressWidget::untrustedPrompt(const QStringList &untrustedPackages)
+void TransactionWidget::untrustedPrompt(const QStringList &untrustedPackages)
 {
     QString title = i18nc("@title:window", "Warning - Unverified Software");
     QString text = i18ncp("@label",
@@ -251,7 +278,7 @@ void ProgressWidget::untrustedPrompt(const QStringList &untrustedPackages)
     m_trans->replyUntrustedPrompt(installUntrusted);
 }
 
-void ProgressWidget::configFileConflict(const QString &currentPath, const QString &newPath)
+void TransactionWidget::configFileConflict(const QString &currentPath, const QString &newPath)
 {
     QString title = i18nc("@title:window", "Configuration File Changed");
     QString text = i18nc("@label Notifies a config file change",
@@ -271,60 +298,13 @@ void ProgressWidget::configFileConflict(const QString &currentPath, const QStrin
     m_trans->resolveConfigFileConflict(currentPath, (ret == KMessageBox::Yes));
 }
 
-void ProgressWidget::updateProgress(int progress)
+void TransactionWidget::updateProgress(int progress)
 {
     if (progress > 100) {
-        m_progressBar->setMaximum(0);
+        m_totalProgress->setMaximum(0);
     } else if (progress > m_lastRealProgress) {
-        m_progressBar->setMaximum(100);
-        m_progressBar->setValue(progress);
+        m_totalProgress->setMaximum(100);
+        m_totalProgress->setValue(progress);
         m_lastRealProgress = progress;
     }
-}
-
-void ProgressWidget::downloadSpeedChanged(quint64 speed)
-{
-    QString downloadSpeed = i18nc("@label Download rate", "Download rate: %1/s",
-                              KGlobal::locale()->formatByteSize(speed));
-    m_detailsLabel->setText(downloadSpeed);
-}
-
-void ProgressWidget::etaChanged(quint64 ETA)
-{
-    QString label = m_detailsLabel->text();
-
-    QString timeRemaining;
-    // Ignore ETA if it's larger than 2 days.
-    if (ETA && ETA < 2 * 24 * 60 * 60) {
-        timeRemaining = i18nc("@item:intext Remaining time", "%1 remaining",
-                              KGlobal::locale()->prettyFormatDuration(ETA * 1000));
-    }
-
-    if (!timeRemaining.isEmpty()) {
-        label.append(QLatin1String(" - ") % timeRemaining);
-        m_detailsLabel->setText(label);
-    }
-}
-
-void ProgressWidget::show()
-{
-    QWidget::show();
-
-    if (!m_show) {
-        m_show = true;
-        // Disconnect from previous animatedHide(), else we'll hide once we finish showing
-        disconnect(m_expandWidget, SIGNAL(finished()), this, SLOT(hide()));
-        m_expandWidget->setDirection(QAbstractAnimation::Forward);
-        m_expandWidget->start();
-    }
-}
-
-void ProgressWidget::animatedHide()
-{
-    m_show = false;
-
-    m_expandWidget->setDirection(QAbstractAnimation::Backward);
-    m_expandWidget->start();
-    connect(m_expandWidget, SIGNAL(finished()), this, SLOT(hide()));
-    connect(m_expandWidget, SIGNAL(finished()), m_cancelButton, SLOT(show()));
 }

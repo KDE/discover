@@ -36,10 +36,6 @@ Transaction::Transaction(AbstractResource *app, TransactionAction action,
 {
 }
 
-Transaction::~Transaction()
-{
-}
-
 void Transaction::setState(TransactionState state)
 {
     m_state = state;

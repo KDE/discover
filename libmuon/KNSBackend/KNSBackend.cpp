@@ -69,6 +69,9 @@ KNSBackend::~KNSBackend()
 
 void KNSBackend::startFetchingCategories()
 {
+    if (m_atticaManager->providers().isEmpty())
+        return;
+
     m_provider = m_atticaManager->providers().first();
 
     Attica::ListJob<Attica::Category>* job = m_provider.requestCategories();

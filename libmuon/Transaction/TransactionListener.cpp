@@ -34,9 +34,6 @@ TransactionListener::TransactionListener(QObject* parent)
     , m_downloading(false)
 {}
 
-TransactionListener::~TransactionListener()
-{}
-
 void TransactionListener::setBackend(AbstractResourcesBackend* backend)
 {
     if(m_backend) {
@@ -77,7 +74,6 @@ void TransactionListener::init()
     foreach (Transaction *transaction, m_backend->transactions()) {
         if (transaction->resource() == m_resource) {
             emit running(true);
-            kDebug() << transaction->state();
             showTransactionState(transaction);
         }
     }

@@ -24,17 +24,7 @@
 #include <QtCore/QVector>
 #include <QModelIndex>
 
-class PackageDetails
-{
-public:
-    PackageDetails()
-    : percentage(0), size(0), status(0) {};
-    QString name;
-    int percentage;
-    QString URI;
-    double size;
-    int status;
-};
+#include <LibQApt/DownloadProgress>
 
 class DownloadModel : public QAbstractListModel
 {
@@ -50,21 +40,20 @@ public:
     };
 
     explicit DownloadModel(QObject *parent = 0);
-    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
-    virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const;
-    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const;
-    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
+    QVariant headerData(int section, Qt::Orientation orientation, int role) const;
+    int columnCount(const QModelIndex &parent = QModelIndex()) const;
+    int rowCount(const QModelIndex &parent = QModelIndex()) const;
 
 public Q_SLOTS:
-    void updatePackageDetails(const QString &package, int percentage, const QString &URI,
-                              double size, int flag);
+    void updateDetails(const QApt::DownloadProgress &details);
     void clear();
 
 Q_SIGNALS:
     void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight);
 
 private:
-    QVector<PackageDetails> m_packageList;
+    QVector<QApt::DownloadProgress> m_itemList;
 };
 
 #endif // DOWNLOADMODEL_H

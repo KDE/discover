@@ -34,9 +34,13 @@ class ManagerSettingsDialog;
 class FilterWidget;
 class ManagerWidget;
 class ReviewWidget;
-class DownloadWidget;
-class CommitWidget;
+class TransactionWidget;
 class StatusWidget;
+
+namespace QApt {
+    class Backend;
+    class Transaction;
+}
 
 /**
  * This class serves as the main window for Muon.  It handles the
@@ -53,6 +57,9 @@ public:
     ~MainWindow();
 
 private:
+    QApt::Backend *m_backend;
+    QApt::Transaction *m_trans;
+
     QStackedWidget *m_stack;
     QSplitter *m_mainWidget;
     KAction *m_safeUpgradeAction;
@@ -73,8 +80,7 @@ private:
     FilterWidget *m_filterBox;
     ManagerWidget *m_managerWidget;
     ReviewWidget *m_reviewWidget;
-    DownloadWidget *m_downloadWidget;
-    CommitWidget *m_commitWidget;
+    TransactionWidget *m_transWidget;
     StatusWidget *m_statusWidget;
 
 private Q_SLOTS:
@@ -88,23 +94,27 @@ private Q_SLOTS:
     void markDistUpgrade();
     void markAutoRemove();
     void checkForUpdates();
-    void downloadPackagesFromList();
-    void workerEvent(QApt::WorkerEvent event);
-    void errorOccurred(QApt::ErrorCode error, const QVariantMap &details);
+    void transactionStatusChanged(QApt::TransactionStatus status);
+    void errorOccurred(QApt::ErrorCode error);
     void previewChanges();
     void returnFromPreview();
     void startCommit();
-    void initDownloadWidget();
-    void initCommitWidget();
     void reload();
     void setActionsEnabled(bool enabled = true);
+    void downloadArchives(QApt::Transaction *trans);
 
 public Q_SLOTS:
+    void initError();
     void revertChanges();
     void editSettings();
     void closeSettingsDialog();
     void showHistoryDialog();
     void closeHistoryDialog();
+
+    void setupTransaction(QApt::Transaction *trans);
+
+signals:
+    void backendReady(QApt::Backend *backend);
 };
 
 #endif

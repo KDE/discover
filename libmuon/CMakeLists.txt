@@ -27,6 +27,7 @@ add_subdirectory(tests)
 set(muon_LIB_SRCS
     Category/Category.cpp
     Category/CategoryModel.cpp
+    MuonMainWindow.cpp
     mobile/src/mousecursor.cpp
     ReviewsBackend/AbstractReviewsBackend.cpp
     ReviewsBackend/Rating.cpp
@@ -51,8 +52,7 @@ if(QAPT_FOUND)
         ApplicationBackend/ApplicationBackend.cpp
         ChangesDialog.cpp
         MuonStrings.cpp
-        QAptIntegration.cpp
-        MuonMainWindow.cpp
+        QAptActions.cpp
         ApplicationBackend/LaunchListModel.cpp
         ApplicationBackend/ApplicationUpdates.cpp
         HistoryView/HistoryProxyModel.cpp
@@ -60,6 +60,7 @@ if(QAPT_FOUND)
         ReviewsBackend/ReviewsBackend.cpp #TODO: rename to AptReviewsBackend
         ReviewsBackend/UbuntuLoginBackend.cpp
     )
+    add_definitions(-DQAPT_ENABLED)
     qt4_add_dbus_interface(muon_LIB_SRCS ReviewsBackend/ubuntu_sso_dbus_interface.xml ubuntu_sso -i "ReviewsBackend/LoginMetaTypes.h")
 endif(QAPT_FOUND)
 
@@ -100,6 +101,10 @@ target_link_libraries(muonprivate
 if(LIBATTICA_FOUND)
     target_link_libraries(muonprivate ${LIBATTICA_LIBRARIES})
 endif(LIBATTICA_FOUND)
+
+if(QAPT_FOUND)
+    target_link_libraries(muonprivate ${QAPT_LIBRARY})
+endif(QAPT_FOUND)
 
 file(GLOB muon_QMLS "${CMAKE_CURRENT_SOURCE_DIR}/mobile/qml/*.qml")
 

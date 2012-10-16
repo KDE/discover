@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2012 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,39 +18,61 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef COMMITWIDGET_H
-#define COMMITWIDGET_H
+#ifndef TRANSACTIONWIDGET_H
+#define TRANSACTIONWIDGET_H
 
 #include <QtGui/QWidget>
 
+#include <LibQApt/Globals>
+
 class QLabel;
 class QProgressBar;
+class QPushButton;
+class QTreeView;
+
+namespace QApt {
+    class Transaction;
+}
 
 namespace DebconfKde
 {
     class DebconfGui;
 }
 
-class CommitWidget : public QWidget
+class DownloadModel;
+class DownloadDelegate;
+
+class TransactionWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit CommitWidget(QWidget *parent = 0);
-    ~CommitWidget();
+    explicit TransactionWidget(QWidget *parent = 0);
 
-    void setHeaderText(const QString &text);
-    void setLabelText(const QString &text);
-    void setProgress(int percentage);
-    void clear();
-
+    QString pipe() const;
+    void setTransaction(QApt::Transaction *trans);
+    
 private:
-    QLabel *m_headerLabel;
-    DebconfKde::DebconfGui *m_debconfGui;
-    QLabel *m_commitLabel;
-    QProgressBar *m_progressBar;
+    QApt::Transaction *m_trans;
+    int m_lastRealProgress;
+    QString m_pipe;
 
-public Q_SLOTS:
-    void updateCommitProgress(const QString &message, int percentage);
+    QLabel *m_headerLabel;
+    QWidget *m_spacer;
+    QTreeView *m_downloadView;
+    DownloadModel *m_downloadModel;
+    DownloadDelegate *m_downloadDelegate;
+    DebconfKde::DebconfGui *m_debconfGui;
+    QProgressBar *m_totalProgress;
+    QLabel *m_statusLabel;
+    QPushButton *m_cancelButton;
+
+private slots:
+    void statusChanged(QApt::TransactionStatus status);
+    void transactionErrorOccurred(QApt::ErrorCode error);
+    void provideMedium(const QString &label, const QString &medium);
+    void untrustedPrompt(const QStringList &untrustedPackages);
+    void configFileConflict(const QString &currentPath, const QString &newPath);
+    void updateProgress(int progress);
 };
 
-#endif
+#endif // TRANSACTIONWIDGET_H

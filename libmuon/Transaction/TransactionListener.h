@@ -42,7 +42,6 @@ class MUONPRIVATE_EXPORT TransactionListener : public QObject
     Q_PROPERTY(bool isDownloading READ isDownloading NOTIFY downloading)
     public:
         explicit TransactionListener(QObject* parent = 0);
-        virtual ~TransactionListener();
         void setBackend(AbstractResourcesBackend* backend);
         void setResource(AbstractResource* app);
         int progress() const;
