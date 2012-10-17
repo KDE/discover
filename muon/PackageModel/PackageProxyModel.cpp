@@ -30,16 +30,16 @@
 #include "PackageModel.h"
 #include "MuonSettings.h"
 
-static const int status_sort_magic = (QApt::Package::Installed
-//                                       | QApt::Package::Outdated
-                                      | QApt::Package::New);
+constexpr int status_sort_magic = (QApt::Package::Installed |
+                                   QApt::Package::New);
+
 bool packageStatusLessThan(QApt::Package *p1, QApt::Package *p2)
 {
     return (p1->state() & (status_sort_magic))  <
            (p2->state() & (status_sort_magic));
 }
 
-static const int requested_sort_magic = (QApt::Package::ToInstall
+constexpr int requested_sort_magic = (QApt::Package::ToInstall
                                          | QApt::Package::ToRemove
                                          | QApt::Package::ToKeep);
 
