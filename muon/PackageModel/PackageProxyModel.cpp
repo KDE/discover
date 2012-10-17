@@ -58,10 +58,6 @@ PackageProxyModel::PackageProxyModel(QObject *parent)
 {
 }
 
-PackageProxyModel::~PackageProxyModel()
-{
-}
-
 void PackageProxyModel::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
@@ -187,11 +183,7 @@ bool PackageProxyModel::lessThan(const QModelIndex &left, const QModelIndex &rig
               // This is expensive for very large datasets. It takes about 3 seconds with 30,000 packages
               // The order in m_packages is based on relevancy when returned by m_backend->search()
               // Use this order to determine less than
-              if (m_searchPackages.indexOf(leftPackage) < m_searchPackages.indexOf(rightPackage)) {
-                  return false;
-              } else {
-                  return true;
-              }
+              return (m_searchPackages.indexOf(leftPackage) > m_searchPackages.indexOf(rightPackage));
           } else {
               QString leftString = left.data(PackageModel::NameRole).toString();
               QString rightString = right.data(PackageModel::NameRole).toString();
