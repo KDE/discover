@@ -61,15 +61,15 @@ void ChangelogTab::clear()
 {
     DetailsTab::clear();
 
-    // Clean up old jobs
-    auto i = m_jobFilenames.constBegin();
-    while (i != m_jobFilenames.constEnd()) {
-        KJob *getJob = i.key();
-        disconnect(getJob, SIGNAL(result(KJob*)),
-                   this, SLOT(changelogFetched(KJob*)));
-        ++i;
+    // Delete any KJobs lying around. We could get stale package pointers if the jobs
+    // finish during a cache reload
+    auto iter = m_jobFilenames.constBegin();
+    while (iter != m_jobFilenames.constEnd()) {
+        iter.key()->deleteLater();
+        ++iter;
     }
-    m_jobFilenames.clear(); // We don't delete the KJob pointers, they delete themselves
+
+    m_jobFilenames.clear();
 }
 
 void ChangelogTab::changelogFetched(KJob *job)
@@ -98,6 +98,7 @@ void ChangelogTab::changelogFetched(KJob *job)
     }
 
     changelogFile.remove();
+    job->deleteLater();
 }
 
 void ChangelogTab::fetchChangelog()
@@ -120,9 +121,8 @@ void ChangelogTab::fetchChangelog()
     KIO::FileCopyJob *getJob = KIO::file_copy(m_package->changelogUrl(),
                                filename, -1,
                                KIO::Overwrite | KIO::HideProgressInfo);
+    getJob->setAutoDelete(false);
     m_jobFilenames.insert(getJob, filename);
     connect(getJob, SIGNAL(result(KJob*)),
             this, SLOT(changelogFetched(KJob*)));
 }
-
-#include "ChangelogTab.moc"

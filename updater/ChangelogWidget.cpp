@@ -142,12 +142,12 @@ void ChangelogWidget::animatedHide()
 
 void ChangelogWidget::stopPendingJobs()
 {
+    // Delete any KJobs lying around. We could get stale package pointers if the jobs
+    // finish during a cache reload
     auto iter = m_jobHash.constBegin();
     while (iter != m_jobHash.constEnd()) {
-        KJob *getJob = iter.key();
-        disconnect(getJob, SIGNAL(result(KJob*)),
-                   this, SLOT(changelogFetched(KJob*)));
-        iter++;
+        iter.key()->deleteLater();
+        ++iter;
     }
 
     m_jobHash.clear();
@@ -156,6 +156,7 @@ void ChangelogWidget::stopPendingJobs()
 void ChangelogWidget::changelogFetched(KJob *job)
 {
     if (!m_package) {
+        job->deleteLater();
         m_jobHash.remove(job);
         return;
     }
@@ -189,6 +190,7 @@ void ChangelogWidget::changelogFetched(KJob *job)
     }
 
     changelogFile.remove();
+    job->deleteLater();
 }
 
 void ChangelogWidget::fetchChangelog()
@@ -208,7 +210,7 @@ void ChangelogWidget::fetchChangelog()
     KIO::FileCopyJob *getJob = KIO::file_copy(m_package->changelogUrl(),
                                filename, -1,
                                KIO::Overwrite | KIO::HideProgressInfo);
-
+    getJob->setAutoDelete(false);
     m_jobHash[getJob] = filename;
     connect(getJob, SIGNAL(result(KJob*)),
             this, SLOT(changelogFetched(KJob*)));
