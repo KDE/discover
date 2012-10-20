@@ -266,7 +266,7 @@ void TransactionWidget::untrustedPrompt(const QStringList &untrustedPackages)
                           "<warning>Installing unverified software represents a "
                           "security risk, as the presence of unverifiable software "
                           "can be a sign of tampering.</warning> Do you wish to continue?",
-                          "The following pieces of software cannot be authenticated. "
+                          "The following pieces of software cannot be verified. "
                           "<warning>Installing unverified software represents a "
                           "security risk, as the presence of unverifiable software "
                           "can be a sign of tampering.</warning> Do you wish to continue?",
