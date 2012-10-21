@@ -78,7 +78,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         virtual QString icon() const = 0;
         
         ///@returns whether invokeApplication makes something
-        /// false if not overriden
+        /// false if not overridden
         virtual bool canExecute() const;
         
         ///executes the resource, if applies.
