@@ -74,7 +74,6 @@ ResourceViewWidget::ResourceViewWidget(QWidget *parent)
     m_sortCombo->addItem(i18nc("@item:inlistbox", "By Name"), ResourcesModel::NameRole);
     m_sortCombo->addItem(i18nc("@item:inlistbox", "By Top Rated"), ResourcesModel::SortableRatingRole);
     m_sortCombo->addItem(i18nc("@item:inlistbox", "By Most Buzz"), ResourcesModel::RatingPointsRole);
-    m_sortCombo->addItem(i18nc("@item:inlistbox", "By Most Used"), ResourcesModel::PopConRole);
     m_sortCombo->setCurrentIndex(1); // Top Rated index
     connect(m_sortCombo, SIGNAL(currentIndexChanged(int)),
             this, SLOT(sortComboChanged(int)));
@@ -198,7 +197,6 @@ void ResourceViewWidget::sortComboChanged(int index)
     switch (sortRole) {
     case ResourcesModel::SortableRatingRole:
     case ResourcesModel::RatingPointsRole:
-    case ResourcesModel::PopConRole:
         m_proxyModel->sort(m_proxyModel->sortColumn(), Qt::DescendingOrder);
         break;
     default:
