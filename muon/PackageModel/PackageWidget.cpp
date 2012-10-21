@@ -551,11 +551,6 @@ void PackageWidget::setPackagesKeep()
     actOnPackages(QApt::Package::ToKeep);
 }
 
-bool PackageWidget::setLocked(QApt::Package *package, bool lock)
-{
-   return m_backend->setPackagePinned(package, lock);
-}
-
 void PackageWidget::setPackagesLocked(bool lock)
 {
     const QApt::PackageList packages = selectedPackages();
@@ -564,9 +559,12 @@ void PackageWidget::setPackagesLocked(bool lock)
         return;
 
     for (QApt::Package *package : packages) {
-        bool locked = setLocked(package, lock);
-        if (!locked) {
-            // TODO: report error
+        if (!m_backend->setPackagePinned(package, lock)) {
+            QString title = i18nc("@title:window", "Failed to Lock Package");
+            QString text = i18nc("@info Error text", "The package %1 could not"
+                                 "be locked. Failed to write lock file.",
+                                 package->name());
+            KMessageBox::error(this, text, title);
         }
     }
 

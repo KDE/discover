@@ -132,7 +132,6 @@ private Q_SLOTS:
     void setPackagesPurge();
     void setKeep(QApt::Package *package);
     void setPackagesKeep();
-    bool setLocked(QApt::Package *package, bool lock);
     void setPackagesLocked(bool lock);
     void showBrokenReason(QApt::Package *package);
 
