@@ -51,7 +51,7 @@ signals:
     void checkForUpdates();
     void shouldConnect(bool isConnected);
     void changesReverted();
-    void sourcesEditorClosed();
+    void sourcesEditorClosed(bool reload);
     void downloadArchives(QApt::Transaction *trans);
     
 public slots:
@@ -70,7 +70,7 @@ public slots:
     void redo();
     void revertChanges();
     void runSourcesEditor();
-    void sourcesEditorFinished(int reload);
+    void sourcesEditorFinished(int exitStatus);
 
 private:
     QApt::Backend *m_backend;

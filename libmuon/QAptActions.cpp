@@ -309,14 +309,15 @@ void QAptActions::runSourcesEditor()
             this, SLOT(sourcesEditorFinished(int)));
 }
 
-void QAptActions::sourcesEditorFinished(int reload)
+void QAptActions::sourcesEditorFinished(int exitStatus)
 {
+    bool reload = (exitStatus == 0);
     m_mainWindow->find(m_mainWindow->effectiveWinId())->setEnabled(true);
     if (m_reloadWhenEditorFinished && reload) {
         emit checkForUpdates();
     }
 
-    emit sourcesEditorClosed();
+    emit sourcesEditorClosed(reload);
 }
 
 KActionCollection* QAptActions::actionCollection()
