@@ -110,6 +110,8 @@ void ProgressWidget::setTransaction(QApt::Transaction *trans)
             this, SLOT(updateProgress(int)));
     connect(m_trans, SIGNAL(downloadSpeedChanged(quint64)),
             this, SLOT(downloadSpeedChanged(quint64)));
+    connect(m_trans, SIGNAL(downloadETAChanged(quint64)),
+            this, SLOT(etaChanged(quint64)));
     connect(m_trans, SIGNAL(configFileConflict(QString,QString)),
             this, SLOT(configFileConflict(QString,QString)));
 
