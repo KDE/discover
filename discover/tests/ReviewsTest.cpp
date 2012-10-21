@@ -33,13 +33,6 @@ QTEST_KDEMAIN_CORE( ReviewsTest )
 ReviewsTest::ReviewsTest(QObject* parent): QObject(parent)
 {
     m_backend = new QApt::Backend;
-//     if (m_backend->xapianIndexNeedsUpdate()) {
-//         m_backend->updateXapianIndex();
-//     }
-
-    if (KProtocolManager::proxyType() == KProtocolManager::ManualProxy) {
-        m_backend->setWorkerProxy(KProtocolManager::proxyFor("http"));
-    }
     m_backend->init();
     
     m_appBackend = new ApplicationBackend;
@@ -71,12 +64,12 @@ void ReviewsTest::testReviewsModel()
     AbstractResource* app = m_appBackend->resourceByPackageName(application);
     QVERIFY(app);
     model->setResource(app);
-    QTest::kWaitForSignal(model, SIGNAL(rowsInserted(QModelIndex, int, int)));
+    QTest::kWaitForSignal(model, SIGNAL(rowsInserted(QModelIndex,int,int)));
     
     QModelIndex root;
     while(model->canFetchMore(root)) {
         model->fetchMore(root);
-        bool arrived = QTest::kWaitForSignal(model, SIGNAL(rowsInserted(QModelIndex, int, int)), 2000);
+        bool arrived = QTest::kWaitForSignal(model, SIGNAL(rowsInserted(QModelIndex,int,int)), 2000);
         QCOMPARE(arrived, model->canFetchMore(root));
     }
     

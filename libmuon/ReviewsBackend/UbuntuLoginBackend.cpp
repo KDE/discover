@@ -49,7 +49,7 @@ UbuntuLoginBackend::UbuntuLoginBackend(QObject* parent)
     m_interface = new HackedComUbuntuSsoCredentialsManagementInterface( "com.ubuntu.sso", "/com/ubuntu/sso/credentials", QDBusConnection::sessionBus(), this);
     connect(m_interface, SIGNAL(CredentialsError(QString,MapString)), SLOT(credentialsError(QString,MapString)));
     connect(m_interface, SIGNAL(AuthorizationDenied(QString)), SLOT(authorizationDenied(QString)));
-    connect(m_interface, SIGNAL(CredentialsFound(QString, MapString)), this, SLOT(successfulLogin(QString, MapString)));
+    connect(m_interface, SIGNAL(CredentialsFound(QString,MapString)), this, SLOT(successfulLogin(QString,MapString)));
     
     m_interface->find_credentials(appname(), MapString());
 }
