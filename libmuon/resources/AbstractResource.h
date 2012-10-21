@@ -51,7 +51,6 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString installedVersion READ installedVersion CONSTANT)
     Q_PROPERTY(QString availableVersion READ availableVersion CONSTANT)
     Q_PROPERTY(QString section READ section CONSTANT)
-    Q_PROPERTY(int popcon READ popularityContest CONSTANT)
     Q_PROPERTY(QString mimetypes READ mimetypes CONSTANT)
     Q_PROPERTY(AbstractResourcesBackend* backend READ backend CONSTANT)
     public:
@@ -108,11 +107,6 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         
         ///@returns what kind of mime types the resource can consume
         virtual QString mimetypes() const;
-        
-        /** Popularity rating by Ubuntu.
-         * Maybe we should deprecate? we don't really have a scale for this
-         */
-        virtual int popularityContest() const;
         
         virtual QList<PackageState> addonsInformation() = 0;
 

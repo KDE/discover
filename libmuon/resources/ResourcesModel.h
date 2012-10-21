@@ -49,7 +49,6 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
             ProgressTextRole,
             InstalledRole,
             ApplicationRole,
-            PopConRole,
             UntranslatedNameRole,
             OriginRole,
             CanUpgrade,

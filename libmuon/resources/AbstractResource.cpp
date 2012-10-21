@@ -48,11 +48,6 @@ bool AbstractResource::isInstalled()
     return state() >= Installed;
 }
 
-int AbstractResource::popularityContest() const
-{
-    return -1;
-}
-
 void AbstractResource::fetchScreenshots()
 {
     emit screenshotsFetched(QList<QUrl>() << thumbnailUrl(), QList<QUrl>() << screenshotUrl());
