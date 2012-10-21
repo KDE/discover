@@ -18,8 +18,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONEXTENDER_H
-#define APPLICATIONEXTENDER_H
+#ifndef RESOURCEEXTENDER_H
+#define RESOURCEEXTENDER_H
 
 #include <QtGui/QWidget>
 

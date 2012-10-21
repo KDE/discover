@@ -45,14 +45,13 @@
 #include <KMessageBox>
 
 // Libmuon includes
+#include <libmuon/MuonDataSources.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesUpdatesModel.h>
 #include <Category/CategoryModel.h>
 #include <Transaction/TransactionListener.h>
 #include <Transaction/Transaction.h>
 #include <ReviewsBackend/Rating.h>
-#include <resources/ResourcesModel.h>
-#include <resources/ResourcesUpdatesModel.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 
 #ifdef QAPT_ENABLED
@@ -69,7 +68,6 @@
 #include "ReviewsModel.h"
 #include "ApplicationAddonsModel.h"
 #include "ScreenshotsModel.h"
-#include <libmuon/MuonDataSources.h>
 
 QML_DECLARE_TYPE(ResourcesModel)
 QML_DECLARE_TYPE(AbstractResourcesBackend)

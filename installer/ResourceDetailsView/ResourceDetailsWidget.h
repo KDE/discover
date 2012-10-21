@@ -18,8 +18,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPLICATIONDETAILSWIDGET_H
-#define APPLICATIONDETAILSWIDGET_H
+#ifndef RESOURCEDETAILSWIDGET_H
+#define RESOURCEDETAILSWIDGET_H
 
 // Qt includes
 #include <QtGui/QScrollArea>
