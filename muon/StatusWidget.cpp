@@ -68,19 +68,23 @@ StatusWidget::StatusWidget(QWidget *parent)
     topLayout->addWidget(m_xapianProgress);
 }
 
-StatusWidget::~StatusWidget()
-{
-}
-
 void StatusWidget::setBackend(QApt::Backend *backend)
 {
     m_backend = backend;
-    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(updateStatus()));
+    connect(m_backend, SIGNAL(packageChanged()),
+            this, SLOT(updateStatus()));
+    connect(m_backend, SIGNAL(xapianUpdateStarted()),
+            this, SLOT(showXapianProgress()));
+    connect(m_backend, SIGNAL(xapianUpdateProgress(int)),
+            this, SLOT(updateXapianProgress(int)));
     updateStatus();
 }
 
 void StatusWidget::updateStatus()
 {
+    if (m_backend->xapianIndexNeedsUpdate())
+        m_backend->updateXapianIndex();
+
     int upgradeable = m_backend->packageCount(QApt::Package::Upgradeable);
     bool showChanges = m_backend->areChangesMarked();
 
@@ -152,6 +156,3 @@ void StatusWidget::updateXapianProgress(int percentage)
     m_xapianProgress->setValue(percentage);
     m_xapianTimeout->start();
 }
-
-#include "StatusWidget.moc"
-

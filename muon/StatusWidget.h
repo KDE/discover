@@ -37,7 +37,6 @@ class StatusWidget : public QWidget
     Q_OBJECT
 public:
     StatusWidget(QWidget *parent);
-    ~StatusWidget();
 
 private:
     QApt::Backend *m_backend;
@@ -50,9 +49,11 @@ private:
 
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
+    void updateStatus();
+
+private Q_SLOTS:
     void showXapianProgress();
     void hideXapianProgress();
-    void updateStatus();
     void updateXapianProgress(int percentage);
 };
 

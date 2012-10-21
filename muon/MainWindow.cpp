@@ -140,10 +140,6 @@ void MainWindow::initObject()
     if (!m_backend->init())
         initError();
 
-    if (m_backend->xapianIndexNeedsUpdate()) {
-        m_backend->updateXapianIndex();
-    }
-
     emit backendReady(m_backend);
 
     // Set up GUI
@@ -342,14 +338,11 @@ void MainWindow::transactionStatusChanged(QApt::TransactionStatus status)
     case QApt::RunningStatus:
     case QApt::WaitingStatus:
         QApplication::restoreOverrideCursor();
-        if (m_trans->role() != QApt::UpdateXapianRole)
-            m_stack->setCurrentWidget(m_transWidget);
+        m_stack->setCurrentWidget(m_transWidget);
         break;
     case QApt::FinishedStatus:
-        if (m_trans->role() != QApt::UpdateXapianRole) {
-            reload();
-            setActionsEnabled();
-        }
+        reload();
+        setActionsEnabled();
 
         m_trans->deleteLater();
         m_trans = nullptr;
@@ -358,26 +351,6 @@ void MainWindow::transactionStatusChanged(QApt::TransactionStatus status)
         break;
     }
 }
-
-//void MainWindow::workerEvent(QApt::WorkerEvent event)
-//{
-//    switch (event) {
-//    case QApt::XapianUpdateStarted:
-//        m_statusWidget->showXapianProgress();
-//        connect(m_backend, SIGNAL(xapianUpdateProgress(int)),
-//                m_statusWidget, SLOT(updateXapianProgress(int)));
-//        break;
-//    case QApt::XapianUpdateFinished:
-//        m_managerWidget->startSearch();
-//        disconnect(m_backend, SIGNAL(xapianUpdateProgress(int)),
-//                   m_statusWidget, SLOT(updateXapianProgress(int)));
-//        m_statusWidget->hideXapianProgress();
-//        break;
-//    case QApt::InvalidEvent:
-//    default:
-//        break;
-//    }
-//}
 
 void MainWindow::previewChanges()
 {
@@ -430,11 +403,6 @@ void MainWindow::reload()
 
     // Reload the QApt Backend
     m_managerWidget->reload();
-
-    // Maybe reload the xapian index
-    if (m_backend->xapianIndexNeedsUpdate()) {
-        m_backend->updateXapianIndex();
-    }
 
     // Reload other widgets
     if (m_reviewWidget) {
