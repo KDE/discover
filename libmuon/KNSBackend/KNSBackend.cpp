@@ -153,6 +153,8 @@ void KNSBackend::statusChanged(const KNS3::Entry& entry)
 
 void KNSBackend::cancelTransaction(AbstractResource* app)
 {
+    Q_UNUSED(app)
+
     qWarning("KNS transaction cancelling unsupported");
 }
 
