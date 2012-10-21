@@ -87,7 +87,7 @@ void OriginsBackend::load(const QString& file)
         bool enabled = true;
         if(comment==0) {
             line = line.mid(rxComment.matchedLength());
-            if(!line.startsWith("deb")) {
+            if(!line.startsWith(QByteArray("deb"))) {
                 continue;
             }
             enabled = false;
@@ -124,7 +124,7 @@ void OriginsBackend::load(const QString& file)
             Entry* entry = new Entry(newSource);
             
             entry->setArch(architecture);
-            entry->setSource(source.first().endsWith("deb-src"));
+            entry->setSource(source.first().endsWith(QByteArray("deb-src")));
             entry->setSuite(source[2]);
             entry->setEnabled(enabled);
             
