@@ -452,12 +452,6 @@ QString Application::section()
 {
     return package()->section();
 }
-
-int Application::popularityContest() const
-{
-    return getField("X-AppInstall-Popcon").toInt();
-}
-
 AbstractResource::State Application::state()
 {
     State ret = None;

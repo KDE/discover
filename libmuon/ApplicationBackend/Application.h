@@ -83,7 +83,6 @@ public:
     
     bool canExecute() const;
     QString section();
-    int popularityContest() const;
     
     virtual State state();
     virtual void fetchScreenshots();
