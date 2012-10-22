@@ -561,7 +561,7 @@ void PackageWidget::setPackagesLocked(bool lock)
     for (QApt::Package *package : packages) {
         if (!m_backend->setPackagePinned(package, lock)) {
             QString title = i18nc("@title:window", "Failed to Lock Package");
-            QString text = i18nc("@info Error text", "The package %1 could not"
+            QString text = i18nc("@info Error text", "The package %1 could not "
                                  "be locked. Failed to write lock file.",
                                  package->name());
             KMessageBox::error(this, text, title);
