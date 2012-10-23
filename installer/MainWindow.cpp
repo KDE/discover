@@ -171,7 +171,6 @@ void MainWindow::initObject()
         initError();
 
     if (m_backend->xapianIndexNeedsUpdate())
-        // FIXME: port to QApt2
         m_backend->updateXapianIndex();
 
     m_appBackend->setBackend(m_backend);
