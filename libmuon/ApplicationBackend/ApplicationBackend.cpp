@@ -131,6 +131,8 @@ void ApplicationBackend::setBackend(QApt::Backend *backend)
     m_watcher->setFuture(future);
     connect(m_backend, SIGNAL(transactionQueueChanged(QString,QStringList)),
             this, SLOT(aptTransactionsChanged(QString)));
+    connect(m_backend, SIGNAL(xapianUpdateFinished()),
+            this, SIGNAL(searchInvalidated()));
 }
 
 void ApplicationBackend::setApplications()
@@ -215,8 +217,6 @@ void ApplicationBackend::aptTransactionsChanged(QString active)
 
 void ApplicationBackend::transactionEvent(QApt::TransactionStatus status)
 {
-    // FIXME: Handle xapian finished, emit searchInvalidated
-
     auto iter = m_transQueue.find(m_currentTransaction);
     if (iter == m_transQueue.end())
         return;
