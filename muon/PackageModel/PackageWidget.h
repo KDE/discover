@@ -59,7 +59,6 @@ public:
     };
 
     PackageWidget(QWidget *parent);
-    ~PackageWidget();
 
     void setPackagesType(int type);
     void setHeaderText(const QString &text);

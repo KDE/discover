@@ -148,10 +148,6 @@ PackageWidget::PackageWidget(QWidget *parent)
     splitter->addWidget(bottomVBox);
 }
 
-PackageWidget::~PackageWidget()
-{
-}
-
 void PackageWidget::setupActions()
 {
     m_installAction = new KAction(this);
@@ -277,7 +273,7 @@ void PackageWidget::contextMenuRequested(const QPoint &pos)
     menu.addSeparator();
     menu.addAction(m_lockAction);
 
-    const QModelIndexList selected = m_packageView->currentSelection();
+    const QModelIndexList selected = m_packageView->selectionModel()->selectedIndexes();
 
     if (!selected.size()) {
         return;

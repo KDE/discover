@@ -33,15 +33,6 @@ PackageView::PackageView(QWidget *parent)
     header()->setStretchLastSection(false);
 }
 
-PackageView::~PackageView()
-{
-}
-
-QModelIndexList PackageView::currentSelection() const
-{
-    return selectedIndexes();
-}
-
 void PackageView::currentChanged(const QModelIndex &current, const QModelIndex &previous)
 {
     if (previous.row() != -1 && current.isValid()) {
@@ -70,5 +61,3 @@ void PackageView::updateView()
     reset();
     setCurrentIndex(oldIndex);
 }
-
-#include "PackageView.moc"
