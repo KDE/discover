@@ -119,6 +119,7 @@ Item {
             asynchronous: true
             fillMode: Image.PreserveAspectFit
             source: thumbnailsView.currentIndex>=0 ? screenshotsModel.screenshotAt(thumbnailsView.currentIndex) : "image://icon/image-missing"
+            smooth: true
             
             onStatusChanged: if(status==Image.Error) {
                 sourceSize.width = sourceSize.height = 200
@@ -145,9 +146,13 @@ Item {
                 PropertyChanges { target: thumbnailsView; opacity: 0.3 }
             }
         ]
-        Behavior on y { NumberAnimation { easing.type: Easing.OutQuad; duration: 500 } }
-        Behavior on width { NumberAnimation { easing.type: Easing.OutQuad; duration: 500 } }
-        Behavior on height { NumberAnimation { easing.type: Easing.OutQuad; duration: 500 } }
+        transitions: Transition {
+            SequentialAnimation {
+                PropertyAction { target: screenshot; property: "smooth"; value: false }
+                NumberAnimation { properties: "y,width,height"; easing.type: Easing.OutQuad; duration: 500 }
+                PropertyAction { target: screenshot; property: "smooth"; value: true }
+            }
+        }
         
         MouseArea {
             anchors.fill: parent
