@@ -101,11 +101,17 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
         tempList << app;
     }
 
+    // To be added an Application must have a package that:
+    // a) exists
+    // b) is not on the blacklist
+    // c) if not downloadable, then it must already be installed
+    int uninstallable = (QApt::Package::NotInstalled | QApt::Package::NotDownloadable);
     for (Application *app : tempList) {
         bool added = false;
         QApt::Package *pkg = app->package();
         if (app->isValid()) {
-            if ((pkg) && !pkgBlacklist.contains(pkg->name())) {
+            if ((pkg) && !pkgBlacklist.contains(pkg->name())
+                    && !(pkg->state() & uninstallable)) {
                 appList << app;
                 added = true;
             }
