@@ -79,8 +79,7 @@ Page
     }
     
     TabGroup {
-        id: currentView
-        currentTab: tabs.currentTab
+        currentTab: tabs.currentTab.tab
         anchors {
             top: tabs.bottom
             left: parent.left
