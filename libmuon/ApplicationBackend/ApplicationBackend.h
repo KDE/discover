@@ -75,7 +75,6 @@ public:
     
     QVector< AbstractResource* > allResources() const;
     QStringList searchPackageName(const QString& searchText);
-    bool providesResouce(AbstractResource* res) const;
     
     void installApplication(AbstractResource *app, const QHash<QString, bool> &addons);
     void installApplication(AbstractResource *app);

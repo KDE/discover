@@ -48,7 +48,6 @@ public:
     virtual void installApplication(AbstractResource* app);
     virtual void installApplication(AbstractResource* app, const QHash< QString, bool >& addons);
     virtual AbstractResource* resourceByPackageName(const QString& name) const;
-    virtual bool providesResouce(AbstractResource* resource) const;
     virtual QList< Transaction* > transactions() const;
     virtual QPair< TransactionStateTransition, Transaction* > currentTransactionState() const;
     virtual int updatesCount() const;

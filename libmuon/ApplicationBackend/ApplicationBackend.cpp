@@ -571,11 +571,6 @@ QPair<TransactionStateTransition, Transaction*> ApplicationBackend::currentTrans
     return ret;
 }
 
-bool ApplicationBackend::providesResouce(AbstractResource* res) const
-{
-    return qobject_cast<Application*>(res);
-}
-
 AbstractBackendUpdater* ApplicationBackend::backendUpdater() const
 {
     return m_backendUpdater;

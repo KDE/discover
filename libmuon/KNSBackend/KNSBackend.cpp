@@ -188,11 +188,6 @@ AbstractResource* KNSBackend::resourceByPackageName(const QString& name) const
     return m_resourcesByName[name];
 }
 
-bool KNSBackend::providesResouce(AbstractResource* resource) const
-{
-    return qobject_cast<KNSResource*>(resource);
-}
-
 QList<Transaction*> KNSBackend::transactions() const
 {
     return QList<Transaction*>();
