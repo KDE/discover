@@ -570,4 +570,14 @@
     </Include>
   </Menu>
 
+  <Menu>
+    <Name>Wallpapers</Name>
+    <Icon>plasma</Icon>
+    <Include>
+      <Or>
+        <Category>plasma/wallpapers</Category>
+      </Or>
+    </Include>
+  </Menu>
+
 </Menu>

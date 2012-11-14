@@ -73,6 +73,13 @@ if(LIBATTICA_FOUND)
     )
 endif(LIBATTICA_FOUND)
 
+if(BODEGA_FOUND)
+    set(muon_LIB_SRCS ${muon_LIB_SRCS}
+        BodegaBackend/BodegaBackend.cpp
+        BodegaBackend/BodegaResource.cpp
+    )
+endif(BODEGA_FOUND)
+
 kde4_add_kcfg_files(muon_LIB_SRCS GENERATE_MOC MuonDataSources.kcfgc)
 kde4_add_library(muonprivate SHARED ${muon_LIB_SRCS})
 
@@ -105,6 +112,10 @@ endif(LIBATTICA_FOUND)
 if(QAPT_FOUND)
     target_link_libraries(muonprivate ${QAPT_LIBRARY})
 endif(QAPT_FOUND)
+
+if(BODEGA_FOUND)
+    target_link_libraries(muonprivate ${BODEGA_LIBRARIES})
+endif(BODEGA_FOUND)
 
 file(GLOB muon_QMLS "${CMAKE_CURRENT_SOURCE_DIR}/mobile/qml/*.qml")
 

@@ -53,6 +53,7 @@
 #include <Transaction/Transaction.h>
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
+#include <BodegaBackend/BodegaBackend.h>
 
 #ifdef QAPT_ENABLED
 #include "OriginsBackend.h"
@@ -169,6 +170,7 @@ void MuonDiscoverMainWindow::initialize()
 {
     QList<AbstractResourcesBackend*> backends;
 
+    backends += new BodegaBackend("wallpapers", "plasma", this);
 #ifdef ATTICA_ENABLED
     backends += new KNSBackend("comic.knsrc", "face-smile-big", this);
     backends += new KNSBackend("plasmoids.knsrc", "plasma", this);
