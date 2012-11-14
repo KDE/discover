@@ -23,6 +23,7 @@
 
 #include <resources/AbstractResourcesBackend.h>
 #include "libmuonprivate_export.h"
+#include <Transaction/Transaction.h>
 #include <QHash>
 
 class BodegaResource;
@@ -58,8 +59,11 @@ public slots:
     void dataReceived(Bodega::NetworkJob*);
 
 private:
+    void createTransaction(Bodega::NetworkJob* install, BodegaResource* res, TransactionAction InstallApp);
+
     Bodega::Session* m_session;
     QHash<QString, AbstractResource*> m_resourcesByName;
+    QList<Transaction*> m_transactions;
 };
 
 #endif // BODEGABACKEND_H

@@ -53,6 +53,8 @@ class BodegaResource : public AbstractResource
         virtual QUrl screenshotUrl();
         virtual QUrl thumbnailUrl();
 
+        QString assetId() const {return m_info.id; }
+
     private:
         Bodega::AssetInfo m_info;
 };

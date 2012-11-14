@@ -20,6 +20,7 @@
 
 #include "BodegaBackend.h"
 #include "BodegaResource.h"
+#include <Transaction/Transaction.h>
 #include <bodega/session.h>
 #include <bodega/listballotsjob.h>
 #include <bodega/channelsjob.h>
@@ -124,12 +125,45 @@ AbstractBackendUpdater* BodegaBackend::backendUpdater() const
 { return 0; }
 
 void BodegaBackend::installApplication(AbstractResource* app, const QHash< QString, bool >& addons)
-{}
+{
+    BodegaResource* res = qobject_cast<BodegaResource*>(app);
+    createTransaction(m_session->install(m_session->assetOperations(res->assetId())), InstallApp);
+}
 
 void BodegaBackend::removeApplication(AbstractResource* app)
-{}
+{
+    BodegaResource* res = qobject_cast<BodegaResource*>(app);
+    createTransaction(m_session->uninstall(m_session->assetOperations(res->assetId())), RemoveApp);
+}
 
-void BodegaBackend::cancelTransaction(AbstractResource* app) {}
+void BodegaBackend::createTransaction(Bodega::NetworkJob* job, BodegaResource* res, TransactionAction action)
+{
+    Transaction* t = new Transaction(res, action);
+    emit transactionAdded(t);
+    t->setProperty("job", qVariantFromValue<QObject*>(job));
+    m_transactions.append(t);
+    connect(job, SIGNAL(jobFinished(Bodega::NetworkJob*)), SLOT(removeTransaction(Bodega::NetworkJob*)));
+}
+
+void BodegaBackend::removeTransaction(Bodega::NetworkJob* job)
+{
+    foreach(Transaction* t, m_transactions) {
+        if(t->property("job").value<QObject*>() == job) {
+            emit transactionRemoved(t);
+            m_transactions.removeAll(t);
+            return;
+        }
+    }
+}
+
+void BodegaBackend::cancelTransaction(AbstractResource* app)
+{
+    foreach(Transaction* t, m_transactions) {
+        if(t->resource() == app) {
+            Bodega::NetworkJob* job = qobject_cast<Bodega::NetworkJob*>(t->property("job").value<QObject*>());
+        }
+    }
+}
 
 QPair< TransactionStateTransition, Transaction* > BodegaBackend::currentTransactionState() const
 { return qMakePair<TransactionStateTransition, Transaction*>(FinishedDownloading, 0); }
