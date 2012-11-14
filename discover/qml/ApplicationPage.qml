@@ -94,6 +94,7 @@ Page
         TabButton {
             tab: reviewsView
             text: i18n("Reviews")
+            visible: reviewsView.hasReviews
         }
     }
     

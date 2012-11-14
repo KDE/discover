@@ -98,11 +98,12 @@ void ReviewsModel::setResource(AbstractResource* app)
                 this, SLOT(addReviews(AbstractResource*,QList<Review*>)));
         }
         m_backend = app->backend()->reviewsBackend();
-        Q_ASSERT(m_backend);
-        connect(m_backend, SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
-                this, SLOT(addReviews(AbstractResource*,QList<Review*>)));
+        if(m_backend) {
+            connect(m_backend, SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
+                    this, SLOT(addReviews(AbstractResource*,QList<Review*>)));
 
-        restartFetching();
+            restartFetching();
+        }
     }
 }
 

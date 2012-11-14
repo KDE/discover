@@ -53,7 +53,7 @@ Item {
             width: parent.width
             spacing: 10
             
-            property QtObject ratingInstance: appInfo.reviewsBackend.ratingForApplication(appInfo.application)
+            property QtObject ratingInstance: appInfo.reviewsBackend!=null ? appInfo.reviewsBackend.ratingForApplication(appInfo.application) : null
             Rating {
                 anchors.horizontalCenter: parent.horizontalCenter
                 visible: overviewContents.ratingInstance!=null

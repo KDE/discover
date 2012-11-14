@@ -140,8 +140,9 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
             return qVariantFromValue<QObject*>(resource);
         case RatingPointsRole:
         case RatingRole:
-        case SortableRatingRole:{
-            Rating* rating = resource->backend()->reviewsBackend()->ratingForApplication(resource);
+        case SortableRatingRole: {
+            AbstractReviewsBackend* ratings = resource->backend()->reviewsBackend();
+            Rating* rating = ratings ? ratings->ratingForApplication(resource) : 0;
             return rating ? rating->property(roleNames().value(role)) : -1;
         }
         case Qt::DecorationRole:

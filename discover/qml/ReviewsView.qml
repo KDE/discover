@@ -5,6 +5,7 @@ import org.kde.muon 1.0
 Item
 {
     property alias application: reviewsModel.resource
+    property bool hasReviews: reviewsView.count>0
     
     ListView {
         id: reviewsView
