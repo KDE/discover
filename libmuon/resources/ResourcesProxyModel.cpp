@@ -82,6 +82,9 @@ QString ResourcesProxyModel::originFilter() const
 
 void ResourcesProxyModel::setFiltersFromCategory(Category *category)
 {
+    if(category==m_filteredCategory)
+        return;
+
     if(category) {
         m_andFilters = category->andFilters();
         m_orFilters = category->orFilters();
