@@ -19,12 +19,20 @@
  ***************************************************************************/
 
 #include "BodegaResource.h"
+#include "BodegaBackend.h"
+#include <bodega/session.h>
+#include <bodega/assetoperations.h>
 #include <QDebug>
 
 BodegaResource::BodegaResource(const Bodega::AssetInfo& info, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
     , m_info(info)
 {}
+
+BodegaBackend* BodegaResource::backend() const
+{
+    return qobject_cast<BodegaBackend*>(parent());
+}
 
 QUrl BodegaResource::screenshotUrl()
 {
@@ -36,4 +44,16 @@ QUrl BodegaResource::screenshotUrl()
 QUrl BodegaResource::thumbnailUrl()
 {
     return m_info.images.value(Bodega::ImagePreviews);
+}
+
+AbstractResource::State BodegaResource::state()
+{
+    Bodega::Session* session = backend()->session();
+    Bodega::AssetOperations* ops = session->assetOperations(m_info.id);
+    if(!ops->isReady())
+        return AbstractResource::Broken;
+    else if(ops->isInstalled())
+        return AbstractResource::Installed;
+    else
+        return AbstractResource::None;
 }

@@ -24,6 +24,7 @@
 #include <resources/AbstractResource.h>
 #include <bodega/globals.h>
 
+class BodegaBackend;
 namespace Bodega {
     class AssetInfo;
 }
@@ -37,7 +38,6 @@ class BodegaResource : public AbstractResource
         virtual QList< PackageState > addonsInformation() { return QList<PackageState>(); }
         virtual QUrl homepage() const { return QUrl(); }
         virtual QString longDescription() const { return QString(); }
-        virtual State state() { return AbstractResource::None; }
         virtual QString icon() const { return "preferences-desktop-wallpaper"; }
         virtual QString section() { return "123"; }
         virtual QString installedVersion() const { return "only"; }
@@ -52,10 +52,12 @@ class BodegaResource : public AbstractResource
         virtual QString license() { return m_info.license; }
         virtual QUrl screenshotUrl();
         virtual QUrl thumbnailUrl();
+        virtual State state();
 
         QString assetId() const {return m_info.id; }
 
     private:
+        BodegaBackend* backend() const;
         Bodega::AssetInfo m_info;
 };
 

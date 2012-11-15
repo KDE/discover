@@ -53,6 +53,7 @@ public:
 
     QList<AbstractResource*> upgradeablePackages();
 
+    Bodega::Session* session() const { return m_session; }
 public slots:
     void channelsRetrieved(Bodega::NetworkJob*);
     void resetResources();
