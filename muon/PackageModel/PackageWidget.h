@@ -99,6 +99,8 @@ private:
     void checkChanges();
     QApt::PackageList selectedPackages();
     QString digestReason(QApt::Package *pkg,
+                         const QApt::MarkingErrorInfo &info);
+    QString digestReason(QApt::Package *pkg,
                          QApt::BrokenReason failType,
                          QHash<QString, QVariantMap> failReason);
 

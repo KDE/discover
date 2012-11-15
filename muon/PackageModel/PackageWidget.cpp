@@ -46,6 +46,7 @@
 
 // LibQApt includes
 #include <LibQApt/Backend>
+#include <LibQApt/MarkingErrorInfo>
 
 // Own includes
 #include "../libmuon/ChangesDialog.h"
@@ -605,118 +606,51 @@ QApt::PackageList PackageWidget::selectedPackages()
 
 void PackageWidget::showBrokenReason(QApt::Package *package)
 {
-    QHash<int, QHash<QString, QVariantMap> > failedReasons = package->brokenReason();
-    QString reason;
+    QList<QApt::MarkingErrorInfo> failedReasons = package->brokenReason();
     QString dialogText = i18nc("@label", "The \"%1\" package could not be marked for installation or upgrade:",
                                package->name());
     dialogText += '\n';
     QString title = i18nc("@title:window", "Unable to Mark Package");
 
-    auto reasonIter = failedReasons.constBegin();
-    while (reasonIter != failedReasons.constEnd()) {
-        QApt::BrokenReason failType = (QApt::BrokenReason)reasonIter.key();
-        QHash<QString, QVariantMap> failReason = reasonIter.value();
-        dialogText += digestReason(package, failType, failReason);
-
-        reasonIter++;
-    }
+    for (const QApt::MarkingErrorInfo &reason : failedReasons)
+        dialogText += digestReason(package, reason);
 
     KMessageBox::information(this, dialogText, title);
 }
 
-QString PackageWidget::digestReason(QApt::Package *pkg, QApt::BrokenReason failType, QHash<QString, QVariantMap> failReason)
+QString PackageWidget::digestReason(QApt::Package *pkg, const QApt::MarkingErrorInfo &info)
 {
-    auto packageIter = failReason.constBegin();
     QString reason;
+    QString relation = pkgCache::DepType(info.errorInfo().dependencyType());
 
-    switch (failType) {
-    case QApt::ParentNotInstallable: {
-        reason += '\t';
-        reason = i18nc("@label", "The \"%1\" package has no available version, but exists in the database.\n"
-                       "\tThis typically means that the package was mentioned in a dependency and "
-                       "never uploaded, has been obsoleted, or is not available from the currently-enabled "
-                       "repositories.", pkg->name());
+    reason += '\t';
+
+    switch (info.errorType()) {
+    case QApt::ParentNotInstallable:
+        reason += i18nc("@label", "The \"%1\" package has no available version, but exists in the database.\n"
+                        "\tThis typically means that the package was mentioned in a dependency and "
+                        "never uploaded, has been obsoleted, or is not available from the currently-enabled "
+                        "repositories.", pkg->name());
         break;
-    }
-    case QApt::WrongCandidateVersion: {
-        while (packageIter != failReason.constEnd()) {
-            QString package = packageIter.key();
-            QString relation = packageIter.value()["Relation"].toString();
-            QString requiredVersion = packageIter.value()["RequiredVersion"].toString();
-            QString candidateVersion = packageIter.value()["CandidateVersion"].toString();
-            bool isFirstOr = !packageIter.value()["IsFirstOr"].toBool();
-
-            if (isFirstOr) {
-                reason += '\t';
-                reason += i18nc("@label Example: Depends: libqapt 0.1, but 0.2 is to be installed",
-                                "%1: %2 %3, but %4 is to be installed",
-                                relation, package, requiredVersion, candidateVersion);
-                reason += '\n';
-            } else {
-                reason += '\t';
-                reason += QString(i18nc("@label Example: or libqapt 0.1, but 0.2 is to be installed",
-                                        "or %1 %2, but %3 is to be installed",
-                                        package, requiredVersion, candidateVersion));
-                reason += '\n';
-            }
-            packageIter++;
-        }
-
-        return reason;
+    case QApt::WrongCandidateVersion:
+        reason += i18nc("@label Example: Depends: libqapt 0.1, but 0.2 is to be installed",
+                        "%1: %2 %3, but %4 is to be installed",
+                        relation, pkg->name(), info.errorInfo().packageVersion(),
+                        pkg->availableVersion());
         break;
-    }
-    case QApt::DepNotInstallable: {
-        while (packageIter != failReason.constEnd()) {
-            QString package = packageIter.key();
-            QString relation = packageIter.value()["Relation"].toString();
-            bool isFirstOr = !packageIter.value()["IsFirstOr"].toBool();
-
-            if (isFirstOr) {
-                reason += '\t';
-                reason += i18nc("@label Example: Depends: libqapt, but is not installable",
-                                "%1: %2, but it is not installable",
-                                relation, package);
-                reason += '\n';
-            } else {
-                reason += '\t';
-                reason += QString(i18nc("@label Example: or libqapt, but is not installable",
-                                        "or %1, but is not installable",
-                                        package));
-                reason += '\n';
-            }
-            packageIter++;
-        }
-
-        return reason;
+    case QApt::DepNotInstallable:
+        reason += i18nc("@label Example: Depends: libqapt, but is not installable",
+                        "%1: %2, but it is not installable",
+                        relation, pkg->name());
         break;
-    }
     case QApt::VirtualPackage:
-        while (packageIter != failReason.constEnd()) {
-            QString package = packageIter.key();
-            QString relation = packageIter.value()["Relation"].toString();
-            bool isFirstOr = !packageIter.value()["IsFirstOr"].toBool();
-
-            if (isFirstOr) {
-                reason += '\t';
-                reason += i18nc("@label Example: Depends: libqapt, but it is a virtual package",
-                                "%1: %2, but it is a virtual package",
-                                relation, package);
-                reason += '\n';
-            } else {
-                reason += '\t';
-                reason += QString(i18nc("@label Example: or libqapt, but it is a virtual package",
-                                        "or %1, but it is a virtual package",
-                                        package));
-                reason += '\n';
-            }
-            packageIter++;
-        }
-
-        return reason;
-        break;
-    default:
+        reason += i18nc("@label Example: Depends: libqapt, but it is a virtual package",
+                        "%1: %2, but it is a virtual package",
+                        relation, pkg->name());
         break;
     }
+
+    reason += '\n';
 
     return reason;
 }
