@@ -58,9 +58,10 @@ public slots:
     void channelsRetrieved(Bodega::NetworkJob*);
     void resetResources();
     void dataReceived(Bodega::NetworkJob*);
+    void removeTransaction(Bodega::NetworkJob* job);
 
 private:
-    void createTransaction(Bodega::NetworkJob* install, BodegaResource* res, TransactionAction InstallApp);
+    void createTransaction(Bodega::NetworkJob* job, BodegaResource* res, TransactionAction action);
 
     Bodega::Session* m_session;
     QHash<QString, AbstractResource*> m_resourcesByName;

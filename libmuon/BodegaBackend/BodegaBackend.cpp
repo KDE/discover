@@ -151,7 +151,7 @@ void BodegaBackend::removeTransaction(Bodega::NetworkJob* job)
         if(t->property("job").value<QObject*>() == job) {
             emit transactionRemoved(t);
             m_transactions.removeAll(t);
-            return;
+            break;
         }
     }
 }
@@ -161,6 +161,11 @@ void BodegaBackend::cancelTransaction(AbstractResource* app)
     foreach(Transaction* t, m_transactions) {
         if(t->resource() == app) {
             Bodega::NetworkJob* job = qobject_cast<Bodega::NetworkJob*>(t->property("job").value<QObject*>());
+            job->reply()->abort();
+            m_transactions.removeAll(t);
+            emit transactionCancelled(t);
+            delete t;
+            break;
         }
     }
 }
@@ -172,6 +177,14 @@ QList< Transaction* > BodegaBackend::transactions() const { return QList< Transa
 
 AbstractReviewsBackend* BodegaBackend::reviewsBackend() const { return 0; }
 
-int BodegaBackend::updatesCount() const { return 0; }
+int BodegaBackend::updatesCount() const { return upgradeablePackages().count(); }
 
-QList< AbstractResource* > BodegaBackend::upgradeablePackages() { return QList<AbstractResource*>(); }
+QList<AbstractResource*> BodegaBackend::upgradeablePackages()
+{
+    QList<AbstractResource*> ret;
+    foreach(AbstractResource* res, m_resourcesByName) {
+        if(res->state()==AbstractResource::Upgradeable)
+            ret += res;
+    }
+    return ret;
+}
