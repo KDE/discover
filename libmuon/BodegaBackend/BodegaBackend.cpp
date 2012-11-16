@@ -195,10 +195,10 @@ AbstractReviewsBackend* BodegaBackend::reviewsBackend() const { return 0; }
 
 int BodegaBackend::updatesCount() const { return upgradeablePackages().count(); }
 
-QList<AbstractResource*> BodegaBackend::upgradeablePackages()
+QList<AbstractResource*> BodegaBackend::upgradeablePackages() const
 {
     QList<AbstractResource*> ret;
-    foreach(AbstractResource* res, m_resourcesByName) {
+    foreach(AbstractResource* res, m_resourcesByName.values()) {
         if(res->state()==AbstractResource::Upgradeable)
             ret += res;
     }

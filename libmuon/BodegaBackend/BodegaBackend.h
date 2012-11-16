@@ -52,7 +52,7 @@ public:
     virtual QVector< AbstractResource* > allResources() const;
     virtual AbstractBackendUpdater* backendUpdater() const;
 
-    QList<AbstractResource*> upgradeablePackages();
+    QList<AbstractResource*> upgradeablePackages() const;
 
     Bodega::Session* session() const { return m_session; }
     QString icon() const { return m_icon; }
