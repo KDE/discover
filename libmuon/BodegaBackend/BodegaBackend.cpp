@@ -65,8 +65,9 @@ BodegaBackend::BodegaBackend(const QString& channel, const QString& iconName, QO
     m_session->setPassword(credentials["password"].toString());
     m_session->setBaseUrl(QUrl("http://addons.makeplaylive.com:3000"));
     m_session->setStoreId("VIVALDI-1");
-    Bodega::SignOnJob* job = m_session->signOn();
     connect(m_session, SIGNAL(authenticated(bool)), SLOT(resetResources()));
+
+    m_session->signOn();
 }
 
 BodegaBackend::~BodegaBackend()
