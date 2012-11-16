@@ -57,3 +57,8 @@ AbstractResource::State BodegaResource::state()
     else
         return AbstractResource::None;
 }
+
+QString BodegaResource::icon() const
+{
+    return backend()->icon();
+}

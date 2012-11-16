@@ -37,7 +37,7 @@ class MUONPRIVATE_EXPORT BodegaBackend : public AbstractResourcesBackend
 {
 Q_OBJECT
 public:
-    explicit BodegaBackend(const QString& catalog, const QString& iconName, QObject* parent = 0);
+    explicit BodegaBackend(const QString& channel, const QString& iconName, QObject* parent = 0);
     virtual ~BodegaBackend();
     
     virtual void cancelTransaction(AbstractResource* app);
@@ -55,6 +55,7 @@ public:
     QList<AbstractResource*> upgradeablePackages();
 
     Bodega::Session* session() const { return m_session; }
+    QString icon() const { return m_icon; }
 public slots:
     void channelsRetrieved(Bodega::NetworkJob*);
     void resetResources();
@@ -67,6 +68,8 @@ private:
     Bodega::Session* m_session;
     QHash<QString, AbstractResource*> m_resourcesByName;
     QList<Transaction*> m_transactions;
+    QString m_channel;
+    QString m_icon;
 };
 
 #endif // BODEGABACKEND_H

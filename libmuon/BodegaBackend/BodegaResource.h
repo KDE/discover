@@ -38,7 +38,6 @@ class BodegaResource : public AbstractResource
         virtual QList< PackageState > addonsInformation() { return QList<PackageState>(); }
         virtual QUrl homepage() const { return QUrl(); }
         virtual QString longDescription() const { return QString(); }
-        virtual QString icon() const { return "preferences-desktop-wallpaper"; }
         virtual QString section() { return "123"; }
         virtual QString installedVersion() const { return "only"; }
         virtual QString sizeDescription() { return "33GiB"; }
@@ -53,6 +52,7 @@ class BodegaResource : public AbstractResource
         virtual QUrl screenshotUrl();
         virtual QUrl thumbnailUrl();
         virtual State state();
+        virtual QString icon() const;
 
         QString assetId() const {return m_info.id; }
 

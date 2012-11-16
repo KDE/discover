@@ -54,8 +54,10 @@ QVariantHash retrieveCredentials()
     return QVariantHash();
 }
 
-BodegaBackend::BodegaBackend(const QString& catalog, const QString& iconName, QObject* parent)
+BodegaBackend::BodegaBackend(const QString& channel, const QString& iconName, QObject* parent)
     : AbstractResourcesBackend(parent)
+    , m_channel(channel)
+    , m_icon(iconName)
 {
     m_session = new Bodega::Session(this);
     QVariantHash credentials = retrieveCredentials();
@@ -86,7 +88,7 @@ void BodegaBackend::channelsRetrieved(Bodega::NetworkJob* job)
     QList<Bodega::ChannelInfo> channels = ballotsJob->channels();
     
     foreach(const Bodega::ChannelInfo& c, channels) {
-        if(c.name == "Wallpapers") {
+        if(c.name == m_channel) {
             Bodega::ChannelsJob* wallpapersChannel = m_session->channels(c.id);
             connect(wallpapersChannel, SIGNAL(jobFinished(Bodega::NetworkJob*)), SLOT(dataReceived(Bodega::NetworkJob*)));
         }
