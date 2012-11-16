@@ -25,6 +25,8 @@
 #include <bodega/listballotsjob.h>
 #include <bodega/channelsjob.h>
 #include <bodega/signonjob.h>
+#include <bodega/installjob.h>
+#include <bodega/uninstalljob.h>
 #include <kwallet.h>
 #include <KDebug>
 #include <QDebug>
@@ -127,25 +129,32 @@ AbstractBackendUpdater* BodegaBackend::backendUpdater() const
 void BodegaBackend::installApplication(AbstractResource* app, const QHash< QString, bool >& addons)
 {
     BodegaResource* res = qobject_cast<BodegaResource*>(app);
-    createTransaction(m_session->install(m_session->assetOperations(res->assetId())), InstallApp);
-}
-
-void BodegaBackend::removeApplication(AbstractResource* app)
-{
-    BodegaResource* res = qobject_cast<BodegaResource*>(app);
-    createTransaction(m_session->uninstall(m_session->assetOperations(res->assetId())), RemoveApp);
-}
-
-void BodegaBackend::createTransaction(Bodega::NetworkJob* job, BodegaResource* res, TransactionAction action)
-{
-    Transaction* t = new Transaction(res, action);
+    Bodega::InstallJob* job = m_session->install(m_session->assetOperations(res->assetId()));
+    
+    Transaction* t = new Transaction(res, InstallApp);
     emit transactionAdded(t);
     t->setProperty("job", qVariantFromValue<QObject*>(job));
     m_transactions.append(t);
     connect(job, SIGNAL(jobFinished(Bodega::NetworkJob*)), SLOT(removeTransaction(Bodega::NetworkJob*)));
 }
 
-void BodegaBackend::removeTransaction(Bodega::NetworkJob* job)
+void BodegaBackend::removeApplication(AbstractResource* app)
+{
+    BodegaResource* res = qobject_cast<BodegaResource*>(app);
+    Bodega::UninstallJob* job = m_session->uninstall(m_session->assetOperations(res->assetId()));
+    
+    Transaction* t = new Transaction(res, RemoveApp);
+    emit transactionAdded(t);
+    t->setProperty("job", qVariantFromValue<QObject*>(job));
+    m_transactions.append(t);
+    connect(job, SIGNAL(jobFinished(Bodega::UninstallJob*)), SLOT(removeTransaction(Bodega::UninstallJob*)));
+}
+
+void BodegaBackend::removeTransaction(Bodega::NetworkJob* job) { removeTransactionGeneric(job); }
+
+void BodegaBackend::removeTransaction(Bodega::UninstallJob* job) { removeTransactionGeneric(job); }
+
+void BodegaBackend::removeTransactionGeneric(QObject* job)
 {
     foreach(Transaction* t, m_transactions) {
         if(t->property("job").value<QObject*>() == job) {
@@ -170,10 +179,14 @@ void BodegaBackend::cancelTransaction(AbstractResource* app)
     }
 }
 
-QPair< TransactionStateTransition, Transaction* > BodegaBackend::currentTransactionState() const
-{ return qMakePair<TransactionStateTransition, Transaction*>(FinishedDownloading, 0); }
+QPair< TransactionStateTransition, Transaction* > BodegaBackend::currentTransactionState() const {
+    Transaction* t = 0;
+    if(!m_transactions.isEmpty())
+        t = m_transactions.first();
+    return qMakePair<TransactionStateTransition, Transaction*>(FinishedDownloading, t);
+}
 
-QList< Transaction* > BodegaBackend::transactions() const { return QList< Transaction* >(); }
+QList< Transaction* > BodegaBackend::transactions() const { return m_transactions; }
 
 AbstractReviewsBackend* BodegaBackend::reviewsBackend() const { return 0; }
 

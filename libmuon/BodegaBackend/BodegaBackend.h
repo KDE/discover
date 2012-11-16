@@ -30,6 +30,7 @@ class BodegaResource;
 namespace Bodega {
     class Session;
     class NetworkJob;
+    class UninstallJob;
 }
 
 class MUONPRIVATE_EXPORT BodegaBackend : public AbstractResourcesBackend
@@ -59,10 +60,10 @@ public slots:
     void resetResources();
     void dataReceived(Bodega::NetworkJob*);
     void removeTransaction(Bodega::NetworkJob* job);
+    void removeTransaction(Bodega::UninstallJob* job);
+    void removeTransactionGeneric(QObject* job);
 
 private:
-    void createTransaction(Bodega::NetworkJob* job, BodegaResource* res, TransactionAction action);
-
     Bodega::Session* m_session;
     QHash<QString, AbstractResource*> m_resourcesByName;
     QList<Transaction*> m_transactions;
