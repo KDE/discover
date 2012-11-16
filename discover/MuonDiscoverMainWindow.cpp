@@ -170,7 +170,7 @@ void MuonDiscoverMainWindow::initialize()
 {
     QList<AbstractResourcesBackend*> backends;
 
-    backends += new BodegaBackend("wallpapers", "plasma", this);
+    backends += new BodegaBackend("Wallpapers", "preferences-desktop-wallpaper", this);
 #ifdef ATTICA_ENABLED
     backends += new KNSBackend("comic.knsrc", "face-smile-big", this);
     backends += new KNSBackend("plasmoids.knsrc", "plasma", this);
