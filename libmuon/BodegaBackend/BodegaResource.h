@@ -27,6 +27,7 @@
 class BodegaBackend;
 namespace Bodega {
     class AssetInfo;
+    class AssetOperations;
 }
 
 class BodegaResource : public AbstractResource
@@ -54,11 +55,13 @@ class BodegaResource : public AbstractResource
         virtual State state();
         virtual QString icon() const;
 
-        QString assetId() const {return m_info.id; }
+        QString assetId() const { return m_info.id; }
+        Bodega::AssetOperations* assetOperations();
 
     private:
         BodegaBackend* backend() const;
         Bodega::AssetInfo m_info;
+        Bodega::AssetOperations* m_assetOperations;
 };
 
 #endif // BODEGARESOURCE_H

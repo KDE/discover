@@ -43,6 +43,7 @@ public:
     virtual void cancelTransaction(AbstractResource* app);
     virtual void removeApplication(AbstractResource* app);
     virtual void installApplication(AbstractResource* app, const QHash< QString, bool >& addons);
+    virtual void installApplication(AbstractResource* app) { installApplication(app, QHash<QString,bool>()); }
     virtual AbstractResource* resourceByPackageName(const QString& name) const;
     virtual QList< Transaction* > transactions() const;
     virtual QPair< TransactionStateTransition, Transaction* > currentTransactionState() const;
@@ -56,6 +57,7 @@ public:
 
     Bodega::Session* session() const { return m_session; }
     QString icon() const { return m_icon; }
+
 public slots:
     void channelsRetrieved(Bodega::NetworkJob*);
     void resetResources();
