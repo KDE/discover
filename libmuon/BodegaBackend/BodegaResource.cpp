@@ -29,6 +29,7 @@ BodegaResource::BodegaResource(const Bodega::AssetInfo& info, AbstractResourcesB
     , m_info(info)
     , m_assetOperations(0)
 {
+    
 }
 
 BodegaBackend* BodegaResource::backend() const
@@ -53,16 +54,7 @@ AbstractResource::State BodegaResource::state()
     Bodega::AssetOperations* ops = assetOperations();
     if(!ops->isReady())
         return AbstractResource::Broken;
-    
-    State ret = AbstractResource::Broken;
-    qDebug() << "shhhhh" << name() << ops->assetInfo().filename;
-    bool shoo=ops->isInstalled();
-    qDebug() << "laaaaaa" << shoo;
-    if(ops->isInstalled())
-        ret = AbstractResource::Installed;
-    else
-        ret = AbstractResource::None;
-    return ret;
+    return ops->isInstalled() ? AbstractResource::Installed : AbstractResource::None;
 }
 
 QString BodegaResource::icon() const
@@ -75,7 +67,7 @@ Bodega::AssetOperations* BodegaResource::assetOperations()
     if(!m_assetOperations) {
         Bodega::Session* session = backend()->session();
         m_assetOperations = session->assetOperations(m_info.id);
-        connect(m_assetOperations, SIGNAL(ready()), SIGNAL(stateChanged()));
+        connect(m_assetOperations, SIGNAL(installedChanged()), SIGNAL(stateChanged()));
     }
     return m_assetOperations;
 }
