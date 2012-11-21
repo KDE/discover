@@ -288,3 +288,13 @@ void ResourcesModel::transactionChanged(Transaction* t)
     QModelIndex idx = resourceIndex(t->resource());
     dataChanged(idx, idx);
 }
+
+QMap<int, QVariant> ResourcesModel::itemData(const QModelIndex& index) const
+{
+    QMap<int, QVariant> ret;
+    QHash<int, QByteArray> names = roleNames();
+    for(QHash<int, QByteArray>::const_iterator it=names.constBegin(), itEnd=names.constEnd(); it!=itEnd; ++it) {
+        ret.insert(it.key(), data(index, it.key()));
+    }
+    return ret;
+}

@@ -70,6 +70,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         QModelIndex resourceIndex(AbstractResource* res) const;
         QVector< AbstractResourcesBackend* > backends() const;
         int updatesCount() const;
+        virtual QMap< int, QVariant > itemData(const QModelIndex& index) const;
         
         Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name);
         

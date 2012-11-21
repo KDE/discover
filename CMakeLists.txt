@@ -27,6 +27,7 @@ if(QAPT_FOUND)
     add_subdirectory(kded)
 endif(QAPT_FOUND)
 add_subdirectory(discover)
+add_subdirectory(exporter)
 
 macro_log_feature(QAPT_FOUND "LibQApt" "Qt wrapper around the libapt-pkg library"
                   "http://www.kde.org" FALSE "" "Required to build the APT backend")
