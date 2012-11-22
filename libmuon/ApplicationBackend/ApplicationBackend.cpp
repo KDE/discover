@@ -115,13 +115,12 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
                     && (pkg->state() & QApt::Package::NotDownloadable))
                ) {
                 appList << app;
+                app->moveToThread(thread);
                 added = true;
             }
         }
 
-        if(added)
-            app->moveToThread(thread);
-        else
+        if(!added)
             delete app;
     }
 
