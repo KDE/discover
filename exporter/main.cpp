@@ -54,6 +54,7 @@ int main(int argc, char** argv)
 
     MuonExporter exp;
     exp.setExportPath(args->url(0));
+    QObject::connect(&exp, SIGNAL(exportDone()), &app, SLOT(quit()));
 
     return app.exec();
 }

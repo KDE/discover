@@ -26,7 +26,6 @@
 class MuonExporter : public QObject
 {
     Q_OBJECT
-    void exportModel();
     public:
         explicit MuonExporter();
         ~MuonExporter();
@@ -36,10 +35,15 @@ class MuonExporter : public QObject
 
     public slots:
         void backendReady();
+        void exportModel();
+
+    signals:
+        void exportDone();
 
     private:
         KUrl m_path;
         int m_backendsToInitialize;
+        QTimer* m_startExportingTimer;
 };
 
 #endif // MUONEXPORTER_H

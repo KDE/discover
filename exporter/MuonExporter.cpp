@@ -23,6 +23,7 @@
 #include <qjson/serializer.h>
 #include <QFile>
 #include <QDebug>
+#include <QTimer>
 
 #ifdef QAPT_ENABLED
 #include <ApplicationBackend/ApplicationBackend.h>
@@ -35,6 +36,10 @@
 MuonExporter::MuonExporter()
     : QObject(0)
 {
+    m_startExportingTimer = new QTimer(this);
+    m_startExportingTimer->setInterval(200);
+    m_startExportingTimer->setSingleShot(true);
+    connect(m_startExportingTimer, SIGNAL(timeout()), SLOT(exportModel()));
     initialize();
 }
 
@@ -52,7 +57,7 @@ void MuonExporter::initialize()
     
 #ifdef QAPT_ENABLED
     ApplicationBackend* applicationBackend = new ApplicationBackend(this);
-    applicationBackend->integrateMainWindow(this);
+    applicationBackend->initializeAptBackend();
     backends += applicationBackend;
 #endif
     
@@ -72,14 +77,18 @@ void MuonExporter::setExportPath(const KUrl& url)
 void MuonExporter::backendReady()
 {
     m_backendsToInitialize--;
-    if(m_backendsToInitialize==0)
-        exportModel();
+    if(m_backendsToInitialize==0) {
+        m_startExportingTimer->start();
+        connect(ResourcesModel::global(), SIGNAL(rowsInserted(QModelIndex,int,int)), m_startExportingTimer, SLOT(start()));
+    }
 }
 
-QVariantMap itemDataToMap(const QMap<int, QVariant>& data, const QHash< int, QByteArray >& names)
+QVariantMap itemDataToMap(const QMap<int, QVariant>& data, const QHash<int, QByteArray>& names)
 {
     QVariantMap ret;
-    for(QMap<int, QVariant>::const_iterator it = data.constBegin(), itEnd=data.constEnd(); it!=itEnd; ++it) {
+    for(auto it = data.constBegin(), itEnd=data.constEnd(); it!=itEnd; ++it) {
+        if(it->isNull() || it->canConvert<QObject*>())
+            continue;
         ret.insert(names.value(it.key()), it.value());
     }
     return ret;
@@ -94,11 +103,10 @@ void MuonExporter::exportModel()
     for(int i = 0; i<m->rowCount(); i++) {
         QModelIndex idx = m->index(i, 0);
         data += itemDataToMap(m->itemData(idx), names);
-        qDebug() << "fuuu" << i << data.last();
     }
     qDebug() << "found items: " << data.count();
     QFile f(m_path.toLocalFile());
-    if(f.open(QIODevice::WriteOnly)) {
+    if(f.open(QIODevice::WriteOnly|QIODevice::Text)) {
         bool ok=true;
         QJson::Serializer s;
         s.serialize(data, &f, &ok);
@@ -107,4 +115,5 @@ void MuonExporter::exportModel()
     } else {
         qWarning() << "Could not write to " << m_path;
     }
+    emit exportDone();
 }
