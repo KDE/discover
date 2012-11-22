@@ -106,21 +106,21 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
     // a) exists
     // b) is not on the blacklist
     // c) if not downloadable, then it must already be installed
-    int uninstallable = (QApt::Package::NotInstalled | QApt::Package::NotDownloadable);
     for (Application *app : tempList) {
         bool added = false;
         QApt::Package *pkg = app->package();
         if (app->isValid()) {
             if ((pkg) && !pkgBlacklist.contains(pkg->name())
-                    && !(pkg->state() & uninstallable)) {
+                    && !((pkg->state() & QApt::Package::NotInstalled)
+                    && (pkg->state() & QApt::Package::NotDownloadable))
+               ) {
                 appList << app;
+                app->moveToThread(thread);
                 added = true;
             }
         }
 
-        if(added)
-            app->moveToThread(thread);
-        else
+        if(!added)
             delete app;
     }
 
