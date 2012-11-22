@@ -83,6 +83,8 @@ public:
     
     AbstractBackendUpdater* backendUpdater() const;
     void integrateMainWindow(MuonMainWindow *w);
+    void initializeAptBackend();
+
 private:
     QApt::Backend *m_backend;
     ReviewsBackend *m_reviewsBackend;
@@ -101,9 +103,9 @@ private:
     DebconfKde::DebconfGui *m_debconfGui;
     ApplicationUpdates* m_backendUpdater;
     QAptActions *m_aptify;
+
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
-    void initError();
     void reload();
     
     //helper functions
@@ -118,6 +120,7 @@ private Q_SLOTS:
     void initBackend();
     void setupTransaction(QApt::Transaction *trans);
     void sourcesEditorClosed();
+    void initError();
 
 Q_SIGNALS:
     void startingFirstTransaction();

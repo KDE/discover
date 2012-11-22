@@ -578,12 +578,17 @@ AbstractBackendUpdater* ApplicationBackend::backendUpdater() const
 
 void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
 {
-    m_backend = new QApt::Backend(this);
-    m_aptify = new QAptActions(w, m_backend);
-    QTimer::singleShot(10, this, SLOT(initBackend()));
+    initializeAptBackend();
 
+    m_aptify = new QAptActions(w, m_backend);
     m_aptify->setupActions();
     connect(m_aptify, SIGNAL(sourcesEditorFinished()), SLOT(reload()));
+}
+
+void ApplicationBackend::initializeAptBackend()
+{
+    m_backend = new QApt::Backend(this);
+    QTimer::singleShot(10, this, SLOT(initBackend()));
 }
 
 void ApplicationBackend::initBackend()
