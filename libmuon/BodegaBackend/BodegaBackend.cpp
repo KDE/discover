@@ -177,10 +177,10 @@ void BodegaBackend::removeTransactionGeneric(QObject* job)
             emit transactionRemoved(t);
             m_transactions.removeAll(t);
             emit transactionsEvent(FinishedCommitting, t);
-            return;
+            delete t;
+            break;
         }
     }
-    qDebug() << "WTFFFF";
 }
 
 void BodegaBackend::cancelTransaction(AbstractResource* app)
