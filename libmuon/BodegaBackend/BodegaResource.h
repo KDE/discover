@@ -43,7 +43,7 @@ class BodegaResource : public AbstractResource
         virtual QString installedVersion() const { return "only"; }
         virtual QString sizeDescription() { return "33GiB"; }
         virtual QString origin() const { return "fuuu"; }
-        virtual QString categories() { return "plasma/wallpapers"; }
+        virtual QString categories();
         
         virtual QString name() { return m_info.name; }
         virtual QString availableVersion() const { return m_info.version; }

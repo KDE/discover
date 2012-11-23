@@ -575,7 +575,7 @@
     <Icon>plasma</Icon>
     <Include>
       <Or>
-        <Category>plasma/wallpapers</Category>
+        <Category>application/x-desktop-wallpaper</Category>
       </Or>
     </Include>
   </Menu>

@@ -71,3 +71,8 @@ Bodega::AssetOperations* BodegaResource::assetOperations()
     }
     return m_assetOperations;
 }
+
+QString BodegaResource::categories()
+{
+    return assetOperations()->assetTags().value("mimetype");
+}
