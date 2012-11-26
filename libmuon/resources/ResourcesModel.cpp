@@ -135,9 +135,16 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
     AbstractResource* resource = resourceAt(index.row());
     switch(role) {
         case ActiveRole: {
-            //TODO: Maybe move to AbstractResource?
-            Transaction* t = resource->backend()->currentTransactionState().second;
-            return t && t->resource() == resource;
+            Transaction* t = nullptr;
+
+            for (Transaction *trans : resource->backend()->transactions()) {
+                if (trans->resource() == resource) {
+                    t = trans;
+                    break;
+                }
+            }
+
+            return (t != nullptr);
         }
         case ApplicationRole:
             return qVariantFromValue<QObject*>(resource);

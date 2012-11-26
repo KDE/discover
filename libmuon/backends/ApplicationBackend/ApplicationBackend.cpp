@@ -112,10 +112,7 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
         bool added = false;
         QApt::Package *pkg = app->package();
         if (app->isValid()) {
-            if ((pkg) && !pkgBlacklist.contains(pkg->name())
-                    && !((pkg->state() & QApt::Package::NotInstalled)
-                    && (pkg->state() & QApt::Package::NotDownloadable))
-               ) {
+            if ((pkg) && !pkgBlacklist.contains(pkg->name())) {
                 appList << app;
                 app->moveToThread(thread);
                 added = true;
@@ -578,11 +575,10 @@ AbstractBackendUpdater* ApplicationBackend::backendUpdater() const
     return m_backendUpdater;
 }
 
-void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
+void ApplicationBackend::integrateMainWindow(QAptActions* w)
 {
-    m_aptify = new QAptActions(w);
+    m_aptify = w;
     m_aptify->setBackend(m_backend);
-    m_aptify->setupActions();
     connect(m_aptify, SIGNAL(sourcesEditorFinished()), SLOT(reload()));
 }
 

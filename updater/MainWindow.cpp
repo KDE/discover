@@ -101,7 +101,6 @@ void MainWindow::initGUI()
     mainLayout->addWidget(m_changelogWidget);
 
     m_backend = new QApt::Backend(this);
-    m_actions = new QAptActions(this);
     m_actions->setBackend(m_backend);
     connect(m_actions, SIGNAL(checkForUpdates()),
             this, SLOT(checkForUpdates()));
@@ -145,7 +144,6 @@ void MainWindow::initError()
 void MainWindow::setupActions()
 {
     MuonMainWindow::setupActions();
-    m_actions->setupActions();
 
     m_loadSelectionsAction = actionCollection()->addAction("open_markings");
     m_loadSelectionsAction->setIcon(KIcon("document-open"));
