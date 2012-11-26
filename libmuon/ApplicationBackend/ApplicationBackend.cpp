@@ -53,7 +53,7 @@
 
 ApplicationBackend::ApplicationBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
-    , m_backend(nullptr)
+    , m_backend(new QApt::Backend(this))
     , m_reviewsBackend(new ReviewsBackend(this))
     , m_isReloading(false)
     , m_currentTransaction(nullptr)
@@ -66,6 +66,8 @@ ApplicationBackend::ApplicationBackend(QObject *parent)
     connect(this, SIGNAL(backendReady()), SIGNAL(updatesCountChanged()));
     connect(m_reviewsBackend, SIGNAL(ratingsReady()), SIGNAL(allDataChanged()));
     connect(m_backendUpdater, SIGNAL(updatesFinnished()), SLOT(reload()));
+    
+    QTimer::singleShot(10, this, SLOT(initBackend()));
 }
 
 ApplicationBackend::~ApplicationBackend()
@@ -578,18 +580,10 @@ AbstractBackendUpdater* ApplicationBackend::backendUpdater() const
 
 void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
 {
-    initializeAptBackend();
-
     m_aptify = new QAptActions(w);
     m_aptify->setBackend(m_backend);
     m_aptify->setupActions();
     connect(m_aptify, SIGNAL(sourcesEditorFinished()), SLOT(reload()));
-}
-
-void ApplicationBackend::initializeAptBackend()
-{
-    m_backend = new QApt::Backend(this);
-    QTimer::singleShot(10, this, SLOT(initBackend()));
 }
 
 void ApplicationBackend::initBackend()

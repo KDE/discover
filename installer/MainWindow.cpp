@@ -156,7 +156,6 @@ void MainWindow::initObject()
 
     // Create APT backend
     m_appBackend = new ApplicationBackend(this);
-    m_appBackend->initializeAptBackend();
     m_actions->setBackend(m_appBackend->backend());
     connect(m_appBackend, SIGNAL(backendReady()),
             this, SLOT(populateViews()));

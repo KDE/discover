@@ -56,9 +56,7 @@ void MuonExporter::initialize()
 #endif
     
 #ifdef QAPT_ENABLED
-    ApplicationBackend* applicationBackend = new ApplicationBackend(this);
-    applicationBackend->initializeAptBackend();
-    backends += applicationBackend;
+    backends += new ApplicationBackend(this);
 #endif
     
     m_backendsToInitialize = backends.count();

@@ -83,7 +83,6 @@ public:
     
     AbstractBackendUpdater* backendUpdater() const;
     void integrateMainWindow(MuonMainWindow *w);
-    void initializeAptBackend();
 
 private:
     void setBackend(QApt::Backend *backend);
