@@ -53,6 +53,8 @@
 #include <Transaction/Transaction.h>
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
+#include <MuonBackendsFactory.h>
+#include <backends/ApplicationBackend/ApplicationBackend.h>
 
 #ifdef QAPT_ENABLED
 #include "OriginsBackend.h"
@@ -99,7 +101,6 @@ class CachedNAMFactory : public QDeclarativeNetworkAccessManagerFactory
 MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     : MuonMainWindow()
 {
-    setupActions();
     m_view = new QDeclarativeView(this);
     m_view->setBackgroundRole(QPalette::Background);
     
@@ -163,28 +164,19 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     
     setCentralWidget(m_view);
     initialize();
+    setupActions();
 }
 
 void MuonDiscoverMainWindow::initialize()
 {
-    QList<AbstractResourcesBackend*> backends;
-
-#ifdef ATTICA_ENABLED
-    backends += new KNSBackend("comic.knsrc", "face-smile-big", this);
-    backends += new KNSBackend("plasmoids.knsrc", "plasma", this);
-#endif
-    
-#ifdef QAPT_ENABLED
-    ApplicationBackend* applicationBackend = new ApplicationBackend(this);
-    applicationBackend->integrateMainWindow(this);
-    backends += applicationBackend;
-#else
-    m_canExit = true;
-#endif
+    MuonBackendsFactory factory;
+    QList<AbstractResourcesBackend*> backends = factory.allBackends();
     
     ResourcesModel* m = ResourcesModel::global();
     foreach(AbstractResourcesBackend* b, backends) {
         m->addResourcesBackend(b);
+        if(ApplicationBackend* ab = qobject_cast<ApplicationBackend*>(b))
+            ab->integrateMainWindow(this);  //TODO: remove that
     }
 }
 
