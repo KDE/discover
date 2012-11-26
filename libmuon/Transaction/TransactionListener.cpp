@@ -209,9 +209,11 @@ void TransactionListener::transactionCancelled(Transaction* t)
 
 void TransactionListener::setResource(AbstractResource* app)
 {
-    m_resource = app;
-    init();
-    emit resourceChanged();
+    if(m_resource!=app) {
+        m_resource = app;
+        init();
+        emit resourceChanged();
+    }
 }
 
 AbstractResource* TransactionListener::resource() const
