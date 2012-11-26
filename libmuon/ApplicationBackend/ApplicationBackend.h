@@ -86,6 +86,8 @@ public:
     void initializeAptBackend();
 
 private:
+    void setBackend(QApt::Backend *backend);
+    
     QApt::Backend *m_backend;
     ReviewsBackend *m_reviewsBackend;
     bool m_isReloading;
@@ -105,7 +107,6 @@ private:
     QAptActions *m_aptify;
 
 public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
     void reload();
     
     //helper functions

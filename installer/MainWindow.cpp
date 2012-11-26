@@ -88,6 +88,7 @@ enum ViewType {
 
 MainWindow::MainWindow()
     : MuonMainWindow()
+    , m_appBackend(nullptr)
     , m_launcherMessage(nullptr)
     , m_appLauncher(nullptr)
     , m_progressItem(nullptr)
@@ -140,8 +141,7 @@ void MainWindow::initGUI()
     m_viewModel = new QStandardItemModel(this);
     m_viewSwitcher->setModel(m_viewModel);
 
-    m_backend = new QApt::Backend(this);
-    m_actions = new QAptActions(this, m_backend);
+    m_actions = new QAptActions(this);
     setupActions();
     setupGUI((StandardWindowOption)(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
 }
@@ -156,6 +156,8 @@ void MainWindow::initObject()
 
     // Create APT backend
     m_appBackend = new ApplicationBackend(this);
+    m_appBackend->initializeAptBackend();
+    m_actions->setBackend(m_appBackend->backend());
     connect(m_appBackend, SIGNAL(backendReady()),
             this, SLOT(populateViews()));
     connect(m_appBackend, SIGNAL(reloadStarted()),
@@ -166,14 +168,6 @@ void MainWindow::initObject()
             this, SLOT(addProgressItem()));
     connect(m_appBackend, SIGNAL(sourcesEditorFinished()),
             this, SLOT(sourcesEditorFinished()));
-
-    if (!m_backend->init())
-        initError();
-
-    if (m_backend->xapianIndexNeedsUpdate())
-        m_backend->updateXapianIndex();
-
-    m_appBackend->setBackend(m_backend);
 
     // Other backends
     QList<AbstractResourcesBackend*> backends;
@@ -187,22 +181,8 @@ void MainWindow::initObject()
         resourcesModel->addResourcesBackend(backend);
     }
 
-    setActionsEnabled();
+    setActionsEnabled(true);
 }
-
-void MainWindow::initError()
-{
-    QString details = m_backend->initErrorMessage();
-
-    MuonStrings *muonStrings = MuonStrings::global();
-
-    QString title = muonStrings->errorTitle(QApt::InitError);
-    QString text = muonStrings->errorText(QApt::InitError, nullptr);
-
-    KMessageBox::detailedError(this, text, details, title);
-    exit(-1);
-}
-
 
 void MainWindow::loadSplitterSizes()
 {
@@ -220,20 +200,9 @@ void MainWindow::saveSplitterSizes()
     MuonInstallerSettings::self()->writeConfig();
 }
 
-void MainWindow::setupActions()
-{
-    MuonMainWindow::setupActions();
-    m_actions->setupActions();
-}
-
-void MainWindow::setActionsEnabled(bool enabled)
-{
-    m_actions->setActionsEnabled(enabled);
-}
-
 void MainWindow::clearViews()
 {
-    m_canExit = false; // APT is reloading at this point
+    setCanExit(false); // APT is reloading at this point
     foreach (QWidget *widget, m_viewHash) {
         delete widget;
     }
@@ -245,11 +214,12 @@ void MainWindow::populateViews()
 {
     ResourcesModel *resourcesModel = ResourcesModel::global();
     resourcesModel->addResourcesBackend(m_appBackend);
-    m_canExit = true; // APT is done reloading at this point
+    setCanExit(true); // APT is done reloading at this point
     QStringList originNames = m_appBackend->appOrigins().toList();
     QStringList originLabels;
+    QApt::Backend* backend = m_appBackend->backend();
     foreach (const QString &originName, originNames) {
-        originLabels << m_backend->originLabel(originName);
+        originLabels << backend->originLabel(originName);
     }
 
     if (originNames.contains("Ubuntu")) {
@@ -295,7 +265,7 @@ void MainWindow::populateViews()
 
     parentItem = availableItem;
     foreach(const QString &originName, originNames) {
-        QString originLabel = m_backend->originLabel(originName);
+        QString originLabel = backend->originLabel(originName);
         QStandardItem *viewItem = new QStandardItem;
         viewItem->setEditable(false);
         viewItem->setText(originLabel);
@@ -335,7 +305,7 @@ void MainWindow::populateViews()
     QStringList instOriginNames = m_appBackend->installedAppOrigins().toList();
     QStringList instOriginLabels;
     foreach (const QString &originName, instOriginNames) {
-        instOriginLabels << m_backend->originLabel(originName);
+        instOriginLabels << backend->originLabel(originName);
     }
 
     if (instOriginNames.contains("Ubuntu")) {
@@ -363,7 +333,7 @@ void MainWindow::populateViews()
     parentItem = installedItem;
     foreach(const QString & originName, instOriginNames) {
         // We must spread the word of Origin. Hallowed are the Ori! ;P
-        QString originLabel = m_backend->originLabel(originName);
+        QString originLabel = backend->originLabel(originName);
         QStandardItem *viewItem = new QStandardItem;
         viewItem->setEditable(false);
         viewItem->setText(originLabel);

@@ -580,7 +580,8 @@ void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
 {
     initializeAptBackend();
 
-    m_aptify = new QAptActions(w, m_backend);
+    m_aptify = new QAptActions(w);
+    m_aptify->setBackend(m_backend);
     m_aptify->setupActions();
     connect(m_aptify, SIGNAL(sourcesEditorFinished()), SLOT(reload()));
 }

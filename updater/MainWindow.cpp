@@ -101,7 +101,8 @@ void MainWindow::initGUI()
     mainLayout->addWidget(m_changelogWidget);
 
     m_backend = new QApt::Backend(this);
-    m_actions = new QAptActions(this, m_backend);
+    m_actions = new QAptActions(this);
+    m_actions->setBackend(m_backend);
     connect(m_actions, SIGNAL(checkForUpdates()),
             this, SLOT(checkForUpdates()));
 
@@ -123,7 +124,7 @@ void MainWindow::initObject()
     }
 
     emit backendReady(m_backend);
-    m_canExit = true;
+    setCanExit(true);
 
     setActionsEnabled(); //Get initial enabled/disabled state
 }
@@ -237,7 +238,7 @@ void MainWindow::errorOccurred(QApt::ErrorCode error)
 
 void MainWindow::reload()
 {
-    m_canExit = false;
+    setCanExit(false);
     m_changelogWidget->stopPendingJobs();
 
     disconnect(m_updaterWidget, SIGNAL(packageChanged(QApt::Package*)),
@@ -253,7 +254,7 @@ void MainWindow::reload()
 
     checkPlugState();
 
-    m_canExit = true;
+    setCanExit(true);
 }
 
 void MainWindow::setActionsEnabled(bool enabled)

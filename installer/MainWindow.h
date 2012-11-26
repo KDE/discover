@@ -69,19 +69,15 @@ private:
     ProgressView *m_progressView;
     QStandardItem *m_progressItem;
 
-    QApt::Backend *m_backend;
     QVector<KService::Ptr> m_launchableApps;
     int m_transactionCount;
 
 private Q_SLOTS:
     void initGUI();
     void initObject();
-    void initError();
     void loadSplitterSizes();
     void saveSplitterSizes();
-    void setupActions();
     void clearViews();
-    void setActionsEnabled(bool enabled = true);
     void populateViews();
     void changeView(const QModelIndex &index);
     void selectFirstRow(const QAbstractItemView *itemView);

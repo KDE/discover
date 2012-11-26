@@ -40,7 +40,7 @@ class MUONPRIVATE_EXPORT QAptActions : public QObject
 {
     Q_OBJECT
 public:
-    QAptActions(MuonMainWindow *parent, QApt::Backend *backend);
+    QAptActions(MuonMainWindow *parent);
 
     bool isConnected() const;
     void setOriginalState(QApt::CacheState state);
@@ -55,6 +55,7 @@ signals:
     void downloadArchives(QApt::Transaction *trans);
     
 public slots:
+    void setBackend(QApt::Backend *backend);
     void setupActions();
     void setActionsEnabled(bool enabled = true);
     void networkChanged();

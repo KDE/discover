@@ -43,16 +43,21 @@
 // Own includes
 #include "MuonMainWindow.h"
 
-QAptActions::QAptActions(MuonMainWindow *parent, QApt::Backend *backend)
+QAptActions::QAptActions(MuonMainWindow *parent)
     : QObject(parent)
-    , m_backend(backend)
+    , m_backend(0)
     , m_actionsDisabled(false)
     , m_mainWindow(parent)
     , m_reloadWhenEditorFinished(false)
 {
-    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
     connect(Solid::Networking::notifier(), SIGNAL(statusChanged(Solid::Networking::Status)),
             this, SLOT(networkChanged()));
+}
+
+void QAptActions::setBackend(QApt::Backend* backend)
+{
+    m_backend = backend;
+    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
 }
 
 void QAptActions::setupActions()
