@@ -139,6 +139,8 @@ void ApplicationBackend::setBackend(QApt::Backend *backend)
             this, SLOT(aptTransactionsChanged(QString)));
     connect(m_backend, SIGNAL(xapianUpdateFinished()),
             this, SIGNAL(searchInvalidated()));
+    if(m_aptify)
+        m_aptify->setCanExit(true);
 }
 
 void ApplicationBackend::setApplications()
@@ -579,6 +581,7 @@ void ApplicationBackend::integrateMainWindow(QAptActions* w)
 {
     m_aptify = w;
     m_aptify->setBackend(m_backend);
+    m_aptify->setCanExit(false);
     connect(m_aptify, SIGNAL(sourcesEditorFinished()), SLOT(reload()));
 }
 

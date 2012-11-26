@@ -212,7 +212,6 @@ void MainWindow::populateViews()
 {
     ResourcesModel *resourcesModel = ResourcesModel::global();
     resourcesModel->addResourcesBackend(m_appBackend);
-    setCanExit(true); // APT is done reloading at this point
     QStringList originNames = m_appBackend->appOrigins().toList();
     QStringList originLabels;
     QApt::Backend* backend = m_appBackend->backend();
