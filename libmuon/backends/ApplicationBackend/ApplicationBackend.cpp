@@ -45,7 +45,7 @@
 #include "MuonStrings.h"
 #include "ChangesDialog.h"
 #include "Application.h"
-#include "ReviewsBackend/ReviewsBackend.h"
+#include "ReviewsBackend.h"
 #include "Transaction/Transaction.h"
 #include "ApplicationUpdates.h"
 #include "QAptActions.h"

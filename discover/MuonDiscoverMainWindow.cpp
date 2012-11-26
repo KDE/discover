@@ -56,11 +56,11 @@
 
 #ifdef QAPT_ENABLED
 #include "OriginsBackend.h"
-#include <ApplicationBackend/ApplicationBackend.h>
+#include <backends/ApplicationBackend/ApplicationBackend.h>
 #endif
 
 #ifdef ATTICA_ENABLED
-#include <KNSBackend/KNSBackend.h>
+#include <backends/KNSBackend/KNSBackend.h>
 #endif
 
 // Own includes

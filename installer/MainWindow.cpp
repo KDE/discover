@@ -44,14 +44,14 @@
 
 // Libmuon includes
 #include "MuonStrings.h"
-#include <ApplicationBackend/Application.h>
-#include <ApplicationBackend/ApplicationBackend.h>
+#include <backends/ApplicationBackend/Application.h>
+#include <backends/ApplicationBackend/ApplicationBackend.h>
 #include <HistoryView/HistoryView.h>
 #include <resources/ResourcesModel.h>
 #include <QAptActions.h>
 
 #ifdef ATTICA_ENABLED
-#include <KNSBackend/KNSBackend.h>
+#include <backends/KNSBackend/KNSBackend.h>
 #endif
 
 // Own includes

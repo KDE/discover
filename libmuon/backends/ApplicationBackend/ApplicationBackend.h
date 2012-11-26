@@ -30,7 +30,7 @@
 
 #include <LibQApt/Package>
 
-#include "libmuonprivate_export.h"
+#include <libmuonprivate_export.h>
 #include "resources/AbstractResourcesBackend.h"
 
 namespace QApt {

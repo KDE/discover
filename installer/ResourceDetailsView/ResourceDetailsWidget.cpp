@@ -57,7 +57,7 @@
 #include <Nepomuk/KRatingWidget>
 
 // Libmuon includes
-#include <ApplicationBackend/Application.h>
+#include <resources/AbstractResource.h>
 #include <MuonStrings.h>
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/Review.h>
@@ -313,7 +313,7 @@ void ResourceDetailsWidget::setResource(AbstractResource *resource)
     m_listener->setResource(m_resource);
     m_listener->setBackend(m_resource->backend());
 
-    Application *app = qobject_cast<Application *>(resource);
+    AbstractResource *app = qobject_cast<AbstractResource*>(resource);
 
     // FIXME: Always keep label size at 48x48, and render the largest size
     // we can up to that point. Otherwise some icons will be blurry
@@ -335,7 +335,7 @@ void ResourceDetailsWidget::setResource(AbstractResource *resource)
     }
     
     if (app) {
-        QString menuPathString = app->menuPath();
+        QString menuPathString = app->property("menuPath").toString();
         if (!menuPathString.isEmpty()) {
             m_menuPathLabel->setText(menuPathString);
         } else {

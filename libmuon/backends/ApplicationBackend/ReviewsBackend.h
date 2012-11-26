@@ -26,7 +26,7 @@
 #include <KUrl>
 
 #include "libmuonprivate_export.h"
-#include "AbstractReviewsBackend.h"
+#include <ReviewsBackend/AbstractReviewsBackend.h>
 
 namespace QOAuth {
     class Interface;

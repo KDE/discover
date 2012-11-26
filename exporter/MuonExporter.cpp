@@ -26,11 +26,11 @@
 #include <QTimer>
 
 #ifdef QAPT_ENABLED
-#include <ApplicationBackend/ApplicationBackend.h>
+#include <backends/ApplicationBackend/ApplicationBackend.h>
 #endif
 
 #ifdef ATTICA_ENABLED
-#include <KNSBackend/KNSBackend.h>
+#include <backends/KNSBackend/KNSBackend.h>
 #endif
 
 MuonExporter::MuonExporter()

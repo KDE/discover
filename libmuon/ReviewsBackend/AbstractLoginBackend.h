@@ -22,8 +22,9 @@
 #define ABSTRACTLOGINBACKEND_H
 
 #include <QObject>
+#include "libmuonprivate_export.h"
 
-class AbstractLoginBackend : public QObject
+class MUONPRIVATE_EXPORT AbstractLoginBackend : public QObject
 {
     Q_OBJECT
     public:

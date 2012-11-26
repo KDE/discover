@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "OriginsBackend.h"
-#include <ApplicationBackend/ApplicationBackend.h>
+#include <backends/ApplicationBackend/ApplicationBackend.h>
 #include <resources/ResourcesModel.h>
 #include <QProcess>
 #include <QDebug>

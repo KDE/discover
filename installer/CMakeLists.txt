@@ -38,7 +38,7 @@ kde4_add_kcfg_files(muon_installer_SRCS GENERATE_MOC config/MuonInstallerSetting
 
 kde4_add_executable(muon-installer ${muon_installer_SRCS})
 
-target_link_libraries(muon-installer muonprivate
+target_link_libraries(muon-installer muonprivate muon-appsbackend muon-knsbackend
                                      ${KDE4_KIO_LIBS}
                                      ${QAPT_LIBRARY}
                                      ${qjson_LIBRARIES}

@@ -37,12 +37,12 @@
 
 #include <QtOAuth/interface.h>
 
-#include <ApplicationBackend/Application.h>
-#include "Rating.h"
-#include "Review.h"
-#include "AbstractLoginBackend.h"
+#include <Application.h>
+#include <ReviewsBackend/Rating.h>
+#include <ReviewsBackend/Review.h>
+#include <ReviewsBackend/AbstractLoginBackend.h>
 #include "UbuntuLoginBackend.h"
-#include "MuonDataSources.h"
+#include <MuonDataSources.h>
 
 static QString getCodename(const QString& value)
 {
