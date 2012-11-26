@@ -141,7 +141,6 @@ void MainWindow::initGUI()
     m_viewModel = new QStandardItemModel(this);
     m_viewSwitcher->setModel(m_viewModel);
 
-    m_actions = new QAptActions(this);
     setupActions();
     setupGUI((StandardWindowOption)(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
 }

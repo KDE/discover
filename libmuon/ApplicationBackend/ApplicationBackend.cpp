@@ -575,11 +575,10 @@ AbstractBackendUpdater* ApplicationBackend::backendUpdater() const
     return m_backendUpdater;
 }
 
-void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
+void ApplicationBackend::integrateMainWindow(QAptActions* w)
 {
-    m_aptify = new QAptActions(w);
+    m_aptify = w;
     m_aptify->setBackend(m_backend);
-    m_aptify->setupActions();
     connect(m_aptify, SIGNAL(sourcesEditorFinished()), SLOT(reload()));
 }
 

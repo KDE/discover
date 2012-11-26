@@ -41,7 +41,7 @@ MuonMainWindow::MuonMainWindow()
     : KXmlGuiWindow(0)
     , m_canExit(false)
 #ifdef QAPT_ENABLED
-    , m_actions(nullptr)
+    , m_actions(new QAptActions(this))
 #endif
 {
 }

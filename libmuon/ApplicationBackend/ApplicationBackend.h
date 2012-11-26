@@ -82,7 +82,7 @@ public:
     void cancelTransaction(AbstractResource *app);
     
     AbstractBackendUpdater* backendUpdater() const;
-    void integrateMainWindow(MuonMainWindow *w);
+    void integrateMainWindow(QAptActions* w);
 
 private:
     void setBackend(QApt::Backend *backend);

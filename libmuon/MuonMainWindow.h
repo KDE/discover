@@ -71,7 +71,7 @@ private:
 
 protected:
 #ifdef QAPT_ENABLED
-    QAptActions *m_actions;
+    QAptActions * const  m_actions;
 #endif
 };
 

@@ -176,7 +176,7 @@ void MuonDiscoverMainWindow::initialize()
     
 #ifdef QAPT_ENABLED
     ApplicationBackend* applicationBackend = new ApplicationBackend(this);
-    applicationBackend->integrateMainWindow(this);
+    applicationBackend->integrateMainWindow(m_actions);
     backends += applicationBackend;
 #else
     m_canExit = true;

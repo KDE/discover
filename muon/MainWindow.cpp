@@ -121,7 +121,6 @@ void MainWindow::initGUI()
 
     m_backend = new QApt::Backend(this);
 
-    m_actions = new QAptActions(this);
     m_actions->setBackend(m_backend);
     m_actions->setReloadWhenEditorFinished(true);
     connect(m_actions, SIGNAL(changesReverted()),
