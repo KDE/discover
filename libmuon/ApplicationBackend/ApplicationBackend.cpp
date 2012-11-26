@@ -112,10 +112,7 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
         bool added = false;
         QApt::Package *pkg = app->package();
         if (app->isValid()) {
-            if ((pkg) && !pkgBlacklist.contains(pkg->name())
-                    && !((pkg->state() & QApt::Package::NotInstalled)
-                    && (pkg->state() & QApt::Package::NotDownloadable))
-               ) {
+            if ((pkg) && !pkgBlacklist.contains(pkg->name())) {
                 appList << app;
                 app->moveToThread(thread);
                 added = true;
