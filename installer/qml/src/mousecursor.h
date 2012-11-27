@@ -24,9 +24,7 @@
 
 #include <QtDeclarative/QDeclarativeItem>
 
-#include "../../libmuonprivate_export.h"
-
-class MUONPRIVATE_EXPORT MouseCursor : public QDeclarativeItem
+class MouseCursor : public QDeclarativeItem
 {
     Q_OBJECT
     Q_PROPERTY(Qt::CursorShape shape READ cursorShape WRITE setCursorShape NOTIFY cursorShapeChanged)
