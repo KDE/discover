@@ -34,13 +34,12 @@ set_target_properties(muonprivate PROPERTIES
 
 target_link_libraries(muonprivate
     ${QT_QTXML_LIBRARY}
+    ${QT_QTGUI_LIBRARY}
     ${QT_QTDECLARATIVE_LIBRARY}
+    ${KDE4_KDECORE_LIBS}
     ${KDE4_KDEUI_LIBS}
     ${KDE4_PHONON_LIBS}
 )
-if(QAPT_FOUND)
-    target_link_libraries(muonprivate ${QAPT_LIBRARY})
-endif(QAPT_FOUND)
 
 file(GLOB muon_QMLS "${CMAKE_CURRENT_SOURCE_DIR}/mobile/qml/*.qml")
 
