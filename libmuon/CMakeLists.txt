@@ -24,10 +24,6 @@ set(muon_LIB_SRCS
     MuonBackendsFactory.cpp
 )
 
-if(QAPT_FOUND)
-    add_definitions(-DQAPT_ENABLED)
-endif(QAPT_FOUND)
-
 kde4_add_kcfg_files(muon_LIB_SRCS GENERATE_MOC MuonDataSources.kcfgc)
 kde4_add_library(muonprivate SHARED ${muon_LIB_SRCS})
 

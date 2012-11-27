@@ -23,7 +23,6 @@ MACRO(QT4_ADD_DBUS_INTERFACE _sources _interface _basename)
 ENDMACRO(QT4_ADD_DBUS_INTERFACE)
 
 include_directories(. ${CMAKE_SOURCE_DIR}/libmuonapt)
-add_definitions(-DQAPT_ENABLED)
 
 set(appsbackend_SRCS
     ApplicationBackend.cpp
