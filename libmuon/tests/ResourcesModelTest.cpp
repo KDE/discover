@@ -19,34 +19,25 @@
  ***************************************************************************/
 
 #include "ResourcesModelTest.h"
-#include <ApplicationBackend/ApplicationBackend.h>
 #include <QStringList>
 #include <LibQApt/Backend>
 #include <KProtocolManager>
 #include <qtest_kde.h>
 
 #include "modeltest.h"
-#include <ApplicationBackend/Application.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>
 #include <Category/Category.h>
+#include <MuonBackendsFactory.h>
+#include <backends/ApplicationBackend/ApplicationBackend.h>
 
 QTEST_KDEMAIN_CORE( ResourcesModelTest )
 
 ResourcesModelTest::ResourcesModelTest()
 {
-    m_backend = new QApt::Backend;
-
-    if (KProtocolManager::proxyType() == KProtocolManager::ManualProxy) {
-        m_backend->setWorkerProxy(KProtocolManager::proxyFor("http"));
-    }
-    m_backend->init();
-    if (m_backend->xapianIndexNeedsUpdate()) {
-        m_backend->updateXapianIndex();
-    }
-    
-    m_appBackend = new ApplicationBackend(this);
-    m_appBackend->setBackend(m_backend);
+    MuonBackendsFactory f;
+    m_appBackend = qobject_cast<ApplicationBackend*>(f.backend("appsbackend"));
+    QVERIFY(m_appBackend); //TODO: test all backends
     QTest::kWaitForSignal(m_appBackend, SIGNAL(backendReady()));
     
     m_model = new ResourcesModel(this);

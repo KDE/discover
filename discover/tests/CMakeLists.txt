@@ -6,7 +6,7 @@ macro(muon_add_unit_test name)
         muonprivate
         
         ${QT_QTTEST_LIBRARY} ${QT_QTCORE_LIBRARY}
-        ${KDE4_KNEWSTUFF3_LIBS} ${KDE4_KIO_LIBS} ${QAPT_LIBRARY} attica
+        ${KDE4_KNEWSTUFF3_LIBS} ${KDE4_KIO_LIBS} ${QAPT_LIBRARY} attica muon-appsbackend
     )
 endmacro(muon_add_unit_test)
 
@@ -15,4 +15,3 @@ if(QAPT_FOUND)
     muon_add_unit_test(originsbackendtest OriginsBackendTest.cpp ../OriginsBackend.cpp)
     muon_add_unit_test(reviewstest ReviewsTest.cpp ${CMAKE_SOURCE_DIR}/libmuon/tests/modeltest.cpp ../ReviewsModel.cpp)
 endif(QAPT_FOUND)
-muon_add_unit_test(knsbackendtest KNSBackendTest.cpp )

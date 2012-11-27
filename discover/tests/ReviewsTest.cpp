@@ -20,23 +20,18 @@
 
 #include "ReviewsTest.h"
 #include <../ReviewsModel.h>
-#include <ReviewsBackend/ReviewsBackend.h>
-#include <ApplicationBackend/ApplicationBackend.h>
 #include <libqapt/backend.h>
 #include <KProtocolManager>
 #include <qtest_kde.h>
 #include <libmuon/tests/modeltest.h>
-#include <ApplicationBackend/Application.h>
+#include <backends/ApplicationBackend/ApplicationBackend.h>
+#include <ReviewsBackend/AbstractReviewsBackend.h>
 
 QTEST_KDEMAIN_CORE( ReviewsTest )
 
 ReviewsTest::ReviewsTest(QObject* parent): QObject(parent)
 {
-    m_backend = new QApt::Backend;
-    m_backend->init();
-    
     m_appBackend = new ApplicationBackend;
-    m_appBackend->setBackend(m_backend);
     QTest::kWaitForSignal(m_appBackend, SIGNAL(backendReady()));
     m_revBackend = m_appBackend->reviewsBackend();
 }

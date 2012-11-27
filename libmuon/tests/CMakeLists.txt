@@ -6,10 +6,8 @@ macro(libmuon_add_unit_test name)
         muonprivate
         
         ${QT_QTTEST_LIBRARY} ${QT_QTCORE_LIBRARY}
-        ${KDE4_KIO_LIBS} ${QAPT_LIBRARY}
+        ${KDE4_KIO_LIBS} ${QAPT_LIBRARY} muon-appsbackend
     )
 endmacro(libmuon_add_unit_test)
 
-if(QAPT_ENABLED)
-    libmuon_add_unit_test(resourcesmodeltest ResourcesModelTest.cpp modeltest.cpp)
-endif(QAPT_ENABLED)
+libmuon_add_unit_test(resourcesmodeltest ResourcesModelTest.cpp modeltest.cpp)
