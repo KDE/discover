@@ -46,7 +46,6 @@ class Application;
 class ApplicationUpdates;
 class ReviewsBackend;
 class Transaction;
-class MuonMainWindow;
 class QAptActions;
 
 class MUONPRIVATE_EXPORT ApplicationBackend : public AbstractResourcesBackend
@@ -82,7 +81,7 @@ public:
     void cancelTransaction(AbstractResource *app);
     
     AbstractBackendUpdater* backendUpdater() const;
-    void integrateMainWindow(QAptActions* w);
+    void integrateMainWindow(MuonMainWindow* w);
 
 private:
     void setBackend(QApt::Backend *backend);
@@ -103,7 +102,7 @@ private:
 
     DebconfKde::DebconfGui *m_debconfGui;
     ApplicationUpdates* m_backendUpdater;
-    QAptActions *m_aptify;
+    MuonMainWindow *m_aptify;
 
 public Q_SLOTS:
     void reload();

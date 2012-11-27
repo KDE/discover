@@ -32,7 +32,7 @@
 #include <KStandardGuiItem>
 
 // Own includes
-#include "../libmuon/MuonStrings.h"
+#include "../libmuonapt/MuonStrings.h"
 
 ChangesDialog::ChangesDialog(QWidget *parent, const QApt::StateChanges &changes)
     : QDialog(parent)

@@ -38,6 +38,7 @@ class Transaction;
 class AbstractReviewsBackend;
 class AbstractResource;
 class AbstractBackendUpdater;
+class MuonMainWindow;
 
 class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
 {
@@ -54,6 +55,7 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
         virtual QPair<TransactionStateTransition, Transaction *> currentTransactionState() const = 0;
         virtual QList<Transaction*> transactions() const = 0;
         virtual AbstractResource* resourceByPackageName(const QString& name) const = 0;
+        virtual void integrateMainWindow(MuonMainWindow* w);
 
     public slots:
         virtual void installApplication(AbstractResource *app, const QHash<QString, bool> &addons) = 0;

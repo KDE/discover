@@ -42,9 +42,9 @@
 #include <LibQApt/Transaction>
 
 // Own includes
-#include "../libmuon/HistoryView/HistoryView.h"
-#include "../libmuon/MuonStrings.h"
-#include "../libmuon/QAptActions.h"
+#include "../libmuonapt/HistoryView/HistoryView.h"
+#include "../libmuonapt/MuonStrings.h"
+#include "../libmuonapt/QAptActions.h"
 #include "ChangelogWidget.h"
 #include "ProgressWidget.h"
 #include "config/UpdaterSettingsDialog.h"
@@ -101,9 +101,9 @@ void MainWindow::initGUI()
     mainLayout->addWidget(m_changelogWidget);
 
     m_backend = new QApt::Backend(this);
-    m_actions->setBackend(m_backend);
-    connect(m_actions, SIGNAL(checkForUpdates()),
-            this, SLOT(checkForUpdates()));
+    QAptActions* actions = QAptActions::self();
+    actions->setBackend(m_backend);
+    connect(actions, SIGNAL(checkForUpdates()), this, SLOT(checkForUpdates()));
 
     setupActions();
 
@@ -144,35 +144,6 @@ void MainWindow::initError()
 void MainWindow::setupActions()
 {
     MuonMainWindow::setupActions();
-
-    m_loadSelectionsAction = actionCollection()->addAction("open_markings");
-    m_loadSelectionsAction->setIcon(KIcon("document-open"));
-    m_loadSelectionsAction->setText(i18nc("@action", "Read Markings..."));
-    connect(m_loadSelectionsAction, SIGNAL(triggered()), m_actions, SLOT(loadSelections()));
-
-    m_saveSelectionsAction = actionCollection()->addAction("save_markings");
-    m_saveSelectionsAction->setIcon(KIcon("document-save-as"));
-    m_saveSelectionsAction->setText(i18nc("@action", "Save Markings As..."));
-    connect(m_saveSelectionsAction, SIGNAL(triggered()), m_actions, SLOT(saveSelections()));
-
-    m_createDownloadListAction = actionCollection()->addAction("save_download_list");
-    m_createDownloadListAction->setIcon(KIcon("document-save-as"));
-    m_createDownloadListAction->setText(i18nc("@action", "Save Package Download List..."));
-    connect(m_createDownloadListAction, SIGNAL(triggered()), m_actions, SLOT(createDownloadList()));
-
-    m_downloadListAction = actionCollection()->addAction("download_from_list");
-    m_downloadListAction->setIcon(KIcon("download"));
-    m_downloadListAction->setText(i18nc("@action", "Download Packages From List..."));
-    connect(m_downloadListAction, SIGNAL(triggered()), m_actions, SLOT(downloadPackagesFromList()));
-    if (!m_actions->isConnected()) {
-        m_downloadListAction->setDisabled(false);
-    }
-    connect(m_actions, SIGNAL(shouldConnect(bool)), m_downloadListAction, SLOT(setEnabled(bool)));
-
-    m_loadArchivesAction = actionCollection()->addAction("load_archives");
-    m_loadArchivesAction->setIcon(KIcon("document-open"));
-    m_loadArchivesAction->setText(i18nc("@action", "Add Downloaded Packages"));
-    connect(m_loadArchivesAction, SIGNAL(triggered()), m_actions, SLOT(loadArchives()));
 
     m_applyAction = actionCollection()->addAction("apply");
     m_applyAction->setIcon(KIcon("dialog-ok-apply"));
@@ -257,12 +228,10 @@ void MainWindow::reload()
 
 void MainWindow::setActionsEnabled(bool enabled)
 {
-    m_actions->setActionsEnabled(enabled);
+    QAptActions::self()->setActionsEnabled(enabled);
     if (!enabled) {
         return;
     }
-
-    m_downloadListAction->setEnabled(m_actions->isConnected());
 
     m_applyAction->setEnabled(m_backend->areChangesMarked());
     m_updaterWidget->setEnabled(true);

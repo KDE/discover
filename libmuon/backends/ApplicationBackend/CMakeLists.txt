@@ -22,7 +22,7 @@ MACRO(QT4_ADD_DBUS_INTERFACE _sources _interface _basename)
 
 ENDMACRO(QT4_ADD_DBUS_INTERFACE)
 
-include_directories(.)
+include_directories(. ${CMAKE_SOURCE_DIR}/libmuonapt)
 add_definitions(-DQAPT_ENABLED)
 
 set(appsbackend_SRCS
@@ -39,6 +39,6 @@ qt4_add_dbus_interface(appsbackend_SRCS ubuntu_sso_dbus_interface.xml ubuntu_sso
 kde4_add_plugin(muon-appsbackend SHARED ${appsbackend_SRCS})
 target_link_libraries(muon-appsbackend ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTDBUS_LIBRARY}
     ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} ${DEBCONF_KDE_LIB}
-    ${qjson_LIBRARIES} ${QTOAUTH_LIBRARY} ${QAPT_LIBRARY} muonprivate
+    ${qjson_LIBRARIES} ${QTOAUTH_LIBRARY} ${QAPT_LIBRARY} muonprivate muonapt
 )
 install(TARGETS muon-appsbackend ${INSTALL_TARGETS_DEFAULT_ARGS} )

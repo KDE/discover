@@ -29,3 +29,6 @@ void AbstractResourcesBackend::installApplication(AbstractResource* app)
 {
     installApplication(app, QHash<QString, bool>());
 }
+
+void AbstractResourcesBackend::integrateMainWindow(MuonMainWindow*)
+{}

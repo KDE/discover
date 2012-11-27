@@ -53,7 +53,6 @@ public:
 
     QSize sizeHint() const;
     bool isConnected();
-    void setActionsEnabled(bool enabled = true);
 
 Q_SIGNALS:
     void shouldConnect(bool isConnected);
@@ -68,11 +67,6 @@ public slots:
 
 private:
     bool m_canExit;
-
-protected:
-#ifdef QAPT_ENABLED
-    QAptActions * const  m_actions;
-#endif
 };
 
 #endif

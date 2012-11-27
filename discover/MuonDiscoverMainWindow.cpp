@@ -175,8 +175,7 @@ void MuonDiscoverMainWindow::initialize()
     ResourcesModel* m = ResourcesModel::global();
     foreach(AbstractResourcesBackend* b, backends) {
         m->addResourcesBackend(b);
-        if(ApplicationBackend* ab = qobject_cast<ApplicationBackend*>(b))
-            ab->integrateMainWindow(m_actions);  //TODO: remove that
+        b->integrateMainWindow(this);
     }
 }
 

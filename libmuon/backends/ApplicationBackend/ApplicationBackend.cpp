@@ -41,15 +41,18 @@
 #include <LibQApt/Transaction>
 #include <DebconfGui.h>
 
-// Own includes
+//libmuonapt includes
 #include "MuonStrings.h"
 #include "ChangesDialog.h"
+#include "QAptActions.h"
+
+// Own includes
 #include "Application.h"
 #include "ReviewsBackend.h"
 #include "Transaction/Transaction.h"
 #include "ApplicationUpdates.h"
-#include "QAptActions.h"
 #include "MuonMainWindow.h"
+#include <../libmuonapt/QAptActions.h>
 
 ApplicationBackend::ApplicationBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
@@ -577,10 +580,12 @@ AbstractBackendUpdater* ApplicationBackend::backendUpdater() const
     return m_backendUpdater;
 }
 
-void ApplicationBackend::integrateMainWindow(QAptActions* w)
+void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
 {
     m_aptify = w;
-    m_aptify->setBackend(m_backend);
+    QAptActions* apt = QAptActions::self();
+    apt->setBackend(m_backend);
+    apt->setMainWindow(w);
     m_aptify->setCanExit(false);
     connect(m_aptify, SIGNAL(sourcesEditorFinished()), SLOT(reload()));
 }
@@ -589,7 +594,7 @@ void ApplicationBackend::initBackend()
 {
     if (m_aptify) {
         m_aptify->setCanExit(false);
-        m_aptify->setReloadWhenEditorFinished(true);
+        QAptActions::self()->setReloadWhenEditorFinished(true);
     }
 
     if (!m_backend->init())

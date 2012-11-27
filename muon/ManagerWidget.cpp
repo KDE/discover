@@ -36,7 +36,7 @@
 #include <LibQApt/Backend>
 
 // Own includes
-#include "../libmuon/MuonStrings.h"
+#include "../libmuonapt/MuonStrings.h"
 #include "DetailsWidget.h"
 #include "PackageModel/PackageModel.h"
 #include "PackageModel/PackageProxyModel.h"

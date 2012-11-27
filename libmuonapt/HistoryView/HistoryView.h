@@ -25,7 +25,7 @@
 
 #include <KVBox>
 
-#include "../libmuonprivate_export.h"
+#include "../libmuonapt_export.h"
 
 class QStandardItem;
 class QStandardItemModel;
@@ -41,7 +41,7 @@ namespace QApt {
 
 class HistoryProxyModel;
 
-class MUONPRIVATE_EXPORT HistoryView : public KVBox
+class MUONAPT_EXPORT HistoryView : public KVBox
 {
     Q_OBJECT
 public:

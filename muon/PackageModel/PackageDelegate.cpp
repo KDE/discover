@@ -30,7 +30,7 @@
 #include <KIconLoader>
 
 // Own
-#include "../libmuon/MuonStrings.h"
+#include "../libmuonapt/MuonStrings.h"
 #include "PackageModel.h"
 
 PackageDelegate::PackageDelegate(QObject *parent)

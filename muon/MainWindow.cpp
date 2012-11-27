@@ -45,8 +45,8 @@
 #include <LibQApt/Transaction>
 
 // Own includes
-#include "../libmuon/HistoryView/HistoryView.h"
-#include "../libmuon/MuonStrings.h"
+#include "../libmuonapt/HistoryView/HistoryView.h"
+#include "../libmuonapt/MuonStrings.h"
 #include "TransactionWidget.h"
 #include "FilterWidget/FilterWidget.h"
 #include "ManagerWidget.h"
@@ -54,7 +54,7 @@
 #include "MuonSettings.h"
 #include "StatusWidget.h"
 #include "config/ManagerSettingsDialog.h"
-#include "../libmuon/QAptActions.h"
+#include "../libmuonapt/QAptActions.h"
 
 MainWindow::MainWindow()
     : MuonMainWindow()
@@ -120,13 +120,11 @@ void MainWindow::initGUI()
     m_stack->setCurrentWidget(m_mainWidget);
 
     m_backend = new QApt::Backend(this);
+    QAptActions* actions = QAptActions::self();
 
-    m_actions->setBackend(m_backend);
-    m_actions->setReloadWhenEditorFinished(true);
-    connect(m_actions, SIGNAL(changesReverted()),
-            this, SLOT(revertChanges()));
-    connect(m_actions, SIGNAL(checkForUpdates()),
-            this, SLOT(checkForUpdates()));
+    actions->setBackend(m_backend);
+    connect(actions, SIGNAL(changesReverted()), this, SLOT(revertChanges()));
+    connect(actions, SIGNAL(checkForUpdates()), this, SLOT(checkForUpdates()));
     setupActions();
 
     m_statusWidget = new StatusWidget(centralWidget);
@@ -186,43 +184,6 @@ void MainWindow::saveSplitterSizes()
 void MainWindow::setupActions()
 {
     MuonMainWindow::setupActions();
-    m_actions->setupActions();
-
-    m_loadSelectionsAction = actionCollection()->addAction("open_markings");
-    m_loadSelectionsAction->setIcon(KIcon("document-open"));
-    m_loadSelectionsAction->setText(i18nc("@action", "Read Markings..."));
-    connect(m_loadSelectionsAction, SIGNAL(triggered()), m_actions, SLOT(loadSelections()));
-
-    m_saveSelectionsAction = actionCollection()->addAction("save_markings");
-    m_saveSelectionsAction->setIcon(KIcon("document-save-as"));
-    m_saveSelectionsAction->setText(i18nc("@action", "Save Markings As..."));
-    connect(m_saveSelectionsAction, SIGNAL(triggered()), m_actions, SLOT(saveSelections()));
-
-    m_createDownloadListAction = actionCollection()->addAction("save_download_list");
-    m_createDownloadListAction->setIcon(KIcon("document-save-as"));
-    m_createDownloadListAction->setText(i18nc("@action", "Save Package Download List..."));
-    connect(m_createDownloadListAction, SIGNAL(triggered()), m_actions, SLOT(createDownloadList()));
-
-    m_downloadListAction = actionCollection()->addAction("download_from_list");
-    m_downloadListAction->setIcon(KIcon("download"));
-    m_downloadListAction->setText(i18nc("@action", "Download Packages From List..."));
-    connect(m_downloadListAction, SIGNAL(triggered()), m_actions, SLOT(downloadPackagesFromList()));
-    connect(m_actions, SIGNAL(downloadArchives(QApt::Transaction*)),
-            this, SLOT(downloadArchives(QApt::Transaction*)));
-    if (!m_actions->isConnected()) {
-        m_downloadListAction->setDisabled(false);
-    }
-    connect(m_actions, SIGNAL(shouldConnect(bool)), m_downloadListAction, SLOT(setEnabled(bool)));
-
-    m_loadArchivesAction = actionCollection()->addAction("load_archives");
-    m_loadArchivesAction->setIcon(KIcon("document-open"));
-    m_loadArchivesAction->setText(i18nc("@action", "Add Downloaded Packages"));
-    connect(m_loadArchivesAction, SIGNAL(triggered()), m_actions, SLOT(loadArchives()));
-
-    m_saveInstalledAction = actionCollection()->addAction("save_package_list");
-    m_saveInstalledAction->setIcon(KIcon("document-save-as"));
-    m_saveInstalledAction->setText(i18nc("@action", "Save Installed Packages List..."));
-    connect(m_saveInstalledAction, SIGNAL(triggered()), m_actions, SLOT(saveInstalledPackagesList()));
 
     m_safeUpgradeAction = actionCollection()->addAction("safeupgrade");
     m_safeUpgradeAction->setIcon(KIcon("go-up"));
@@ -411,7 +372,7 @@ void MainWindow::reload()
 
     m_filterBox->reload();
 
-    m_actions->setOriginalState(m_backend->currentCacheState());
+    QAptActions::self()->setOriginalState(m_backend->currentCacheState());
     m_statusWidget->updateStatus();
     setActionsEnabled();
     m_managerWidget->setEnabled(true);
@@ -421,7 +382,7 @@ void MainWindow::reload()
 
 void MainWindow::setActionsEnabled(bool enabled)
 {
-    m_actions->setActionsEnabled(enabled);
+    QAptActions::self()->setActionsEnabled(enabled);
     if (!enabled) {
         return;
     }
@@ -430,6 +391,7 @@ void MainWindow::setActionsEnabled(bool enabled)
     bool changesPending = m_backend->areChangesMarked();
     int autoRemoveable = m_backend->packageCount(QApt::Package::IsGarbage);
 
+    m_applyAction->setEnabled(changesPending);
     m_safeUpgradeAction->setEnabled(upgradeable > 0);
     m_distUpgradeAction->setEnabled(upgradeable > 0);
     m_autoRemoveAction->setEnabled(autoRemoveable > 0);
@@ -439,15 +401,6 @@ void MainWindow::setActionsEnabled(bool enabled)
     } else {
         m_previewAction->setEnabled(changesPending);
     }
-
-    m_downloadListAction->setEnabled(m_actions->isConnected());
-
-    m_applyAction->setEnabled(changesPending);
-
-    m_loadSelectionsAction->setEnabled(true);
-    m_saveSelectionsAction->setEnabled(changesPending);
-    m_createDownloadListAction->setEnabled(changesPending);
-    m_saveInstalledAction->setEnabled(true);
 }
 
 void MainWindow::downloadArchives(QApt::Transaction *trans)

@@ -25,13 +25,6 @@ set(muon_LIB_SRCS
 )
 
 if(QAPT_FOUND)
-    set(muon_LIB_SRCS ${muon_LIB_SRCS}
-        ChangesDialog.cpp
-        MuonStrings.cpp
-        QAptActions.cpp
-        HistoryView/HistoryProxyModel.cpp
-        HistoryView/HistoryView.cpp
-    )
     add_definitions(-DQAPT_ENABLED)
 endif(QAPT_FOUND)
 
@@ -44,12 +37,10 @@ set_target_properties(muonprivate PROPERTIES
 )
 
 target_link_libraries(muonprivate
+    ${QT_QTXML_LIBRARY}
     ${QT_QTDECLARATIVE_LIBRARY}
     ${KDE4_KDEUI_LIBS}
-    ${KDE4_KIO_LIBS}
     ${KDE4_PHONON_LIBS}
-    ${KDE4_SOLID_LIBS}
-    ${QAPT_LIBRARY}
 )
 if(QAPT_FOUND)
     target_link_libraries(muonprivate ${QAPT_LIBRARY})

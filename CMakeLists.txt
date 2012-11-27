@@ -25,6 +25,7 @@ include_directories(${KDE4_INCLUDES} ${QT_INCLUDES} ${QAPT_INCLUDE_DIR}
                     ${CMAKE_SOURCE_DIR}/libmuon ${CMAKE_BINARY_DIR}/libmuon)
 
 add_subdirectory(libmuon)
+add_subdirectory(libmuonapt)
 if(QAPT_FOUND)
     add_subdirectory(muon)
     add_subdirectory(installer)

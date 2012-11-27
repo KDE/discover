@@ -31,7 +31,7 @@
 #include <LibQApt/Backend>
 
 // Own includes
-#include "../libmuon/MuonStrings.h"
+#include "../libmuonapt/MuonStrings.h"
 
 CategoryFilter::CategoryFilter(QObject *parent, QApt::Backend *backend)
     : FilterModel(parent)

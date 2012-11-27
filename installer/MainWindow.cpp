@@ -42,13 +42,16 @@
 // LibQApt includes
 #include <LibQApt/Backend>
 
-// Libmuon includes
+//libmuonapt includes
 #include "MuonStrings.h"
+#include <HistoryView/HistoryView.h>
+#include <QAptActions.h>
+
+// Libmuon includes
 #include <backends/ApplicationBackend/Application.h>
 #include <backends/ApplicationBackend/ApplicationBackend.h>
-#include <HistoryView/HistoryView.h>
 #include <resources/ResourcesModel.h>
-#include <QAptActions.h>
+
 
 #ifdef ATTICA_ENABLED
 #include <backends/KNSBackend/KNSBackend.h>
@@ -142,7 +145,7 @@ void MainWindow::initGUI()
     m_viewSwitcher->setModel(m_viewModel);
 
     setupActions();
-    setupGUI((StandardWindowOption)(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
+    setupGUI(StandardWindowOption(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
 }
 
 void MainWindow::initObject()
@@ -155,10 +158,9 @@ void MainWindow::initObject()
 
     // Create APT backend
     m_appBackend = new ApplicationBackend(this);
-    m_actions->setBackend(m_appBackend->backend());
     connect(m_appBackend, SIGNAL(backendReady()),
             this, SLOT(populateViews()));
-    connect(m_appBackend, SIGNAL(reloadStarted()),
+    connect(m_appBackend, SIGNAL(reloadStarted()), //TODO: use ResourcesModel signals
             this, SLOT(removeProgressItem()));
     connect(m_appBackend, SIGNAL(reloadFinished()),
             this, SLOT(showLauncherMessage()));
@@ -175,11 +177,11 @@ void MainWindow::initObject()
     backends += new KNSBackend("plasmoids.knsrc", "plasma", this);
 #endif
 
+    //TODO: should add the appBackend here too
     for (AbstractResourcesBackend *backend : backends) {
         resourcesModel->addResourcesBackend(backend);
+        backend->integrateMainWindow(this);
     }
-
-    setActionsEnabled(true);
 }
 
 void MainWindow::loadSplitterSizes()
@@ -212,6 +214,7 @@ void MainWindow::populateViews()
 {
     ResourcesModel *resourcesModel = ResourcesModel::global();
     resourcesModel->addResourcesBackend(m_appBackend);
+    m_appBackend->integrateMainWindow(this);
     QStringList originNames = m_appBackend->appOrigins().toList();
     QStringList originLabels;
     QApt::Backend* backend = m_appBackend->backend();

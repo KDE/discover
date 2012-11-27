@@ -42,7 +42,9 @@
 
 // Libmuon includes
 #include <backends/ApplicationBackend/Application.h>
-#include <ChangesDialog.h>
+
+//libmuonapt includes
+#include "../libmuonapt/ChangesDialog.h"
 
 // Own includes
 #include "UpdateModel/UpdateModel.h"

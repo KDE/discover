@@ -1,4 +1,4 @@
-include_directories(../libmuon)
+include_directories(../libmuon ../libmuonapt/)
 
 add_definitions(-DQAPT_ENABLED)
 

@@ -43,21 +43,38 @@
 // Own includes
 #include "MuonMainWindow.h"
 
-QAptActions::QAptActions(MuonMainWindow *parent)
-    : QObject(parent)
+QAptActions::QAptActions()
+    : QObject(0)
     , m_backend(0)
     , m_actionsDisabled(false)
-    , m_mainWindow(parent)
+    , m_mainWindow(0)
     , m_reloadWhenEditorFinished(false)
 {
     connect(Solid::Networking::notifier(), SIGNAL(statusChanged(Solid::Networking::Status)),
             this, SLOT(networkChanged()));
 }
 
+QAptActions* QAptActions::self()
+{
+    static QWeakPointer<QAptActions> self;
+    if(!self) {
+        self = new QAptActions;
+    }
+    return self.data();
+}
+
+void QAptActions::setMainWindow(KXmlGuiWindow* w)
+{
+    setParent(w);
+    m_mainWindow = w;
+    setupActions();
+}
+
 void QAptActions::setBackend(QApt::Backend* backend)
 {
     m_backend = backend;
     connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
+    setReloadWhenEditorFinished(true);
 }
 
 void QAptActions::setupActions()
@@ -88,6 +105,42 @@ void QAptActions::setupActions()
     softwarePropertiesAction->setIcon(KIcon("configure"));
     softwarePropertiesAction->setText(i18nc("@action Opens the software sources configuration dialog", "Configure Software Sources"));
     connect(softwarePropertiesAction, SIGNAL(triggered()), this, SLOT(runSourcesEditor()));
+    
+    KAction* loadSelectionsAction = actionCollection()->addAction("open_markings");
+    loadSelectionsAction->setIcon(KIcon("document-open"));
+    loadSelectionsAction->setText(i18nc("@action", "Read Markings..."));
+    connect(loadSelectionsAction, SIGNAL(triggered()), this, SLOT(loadSelections()));
+
+    KAction* saveSelectionsAction = actionCollection()->addAction("save_markings");
+    saveSelectionsAction->setIcon(KIcon("document-save-as"));
+    saveSelectionsAction->setText(i18nc("@action", "Save Markings As..."));
+    connect(saveSelectionsAction, SIGNAL(triggered()), this, SLOT(saveSelections()));
+
+    KAction* createDownloadListAction = actionCollection()->addAction("save_download_list");
+    createDownloadListAction->setIcon(KIcon("document-save-as"));
+    createDownloadListAction->setText(i18nc("@action", "Save Package Download List..."));
+    connect(createDownloadListAction, SIGNAL(triggered()), this, SLOT(createDownloadList()));
+
+    KAction* downloadListAction = actionCollection()->addAction("download_from_list");
+    downloadListAction->setIcon(KIcon("download"));
+    downloadListAction->setText(i18nc("@action", "Download Packages From List..."));
+    connect(downloadListAction, SIGNAL(triggered()), this, SLOT(downloadPackagesFromList()));
+    if (!isConnected()) {
+        downloadListAction->setDisabled(false);
+    }
+    connect(this, SIGNAL(shouldConnect(bool)), downloadListAction, SLOT(setEnabled(bool)));
+
+    KAction* loadArchivesAction = actionCollection()->addAction("load_archives");
+    loadArchivesAction->setIcon(KIcon("document-open"));
+    loadArchivesAction->setText(i18nc("@action", "Add Downloaded Packages"));
+    connect(loadArchivesAction, SIGNAL(triggered()), this, SLOT(loadArchives()));
+    
+    KAction* saveInstalledAction = actionCollection()->addAction("save_package_list");
+    saveInstalledAction->setIcon(KIcon("document-save-as"));
+    saveInstalledAction->setText(i18nc("@action", "Save Installed Packages List..."));
+    connect(saveInstalledAction, SIGNAL(triggered()), this, SLOT(saveInstalledPackagesList()));
+    
+    setActionsEnabled(true);
 }
 
 void QAptActions::setActionsEnabled(bool enabled)
@@ -103,6 +156,14 @@ void QAptActions::setActionsEnabled(bool enabled)
         actionCollection()->action("redo")->setEnabled(!m_backend->isRedoStackEmpty());
         actionCollection()->action("revert")->setEnabled(!m_backend->isUndoStackEmpty());
     }
+    
+    actionCollection()->action("save_download_list")->setEnabled(isConnected());
+
+    bool changesPending = m_backend->areChangesMarked();
+    actionCollection()->action("open_markings")->setEnabled(true);
+    actionCollection()->action("save_markings")->setEnabled(changesPending);
+    actionCollection()->action("save_download_list")->setEnabled(changesPending);
+    actionCollection()->action("save_package_list")->setEnabled(true);
 }
 
 bool QAptActions::isConnected() const {
@@ -333,11 +394,6 @@ KActionCollection* QAptActions::actionCollection()
 void QAptActions::setOriginalState(QApt::CacheState state)
 {
     m_originalState = state;
-}
-
-void QAptActions::setCanExit(bool canExit)
-{
-    m_mainWindow->setCanExit(canExit);
 }
 
 void QAptActions::setReloadWhenEditorFinished(bool reload)

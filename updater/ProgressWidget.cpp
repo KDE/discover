@@ -38,8 +38,7 @@
 // LibQApt includes
 #include <LibQApt/Transaction>
 
-// Own includes
-#include "MuonStrings.h"
+#include "../libmuonapt/MuonStrings.h"
 
 ProgressWidget::ProgressWidget(QWidget *parent)
     : QWidget(parent)

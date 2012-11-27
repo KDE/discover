@@ -27,6 +27,7 @@
 
 #include "libmuonprivate_export.h"
 
+class KXmlGuiWindow;
 class KActionCollection;
 
 namespace QApt {
@@ -34,17 +35,15 @@ namespace QApt {
     class Transaction;
 }
 
-class MuonMainWindow;
-
 class MUONPRIVATE_EXPORT QAptActions : public QObject
 {
     Q_OBJECT
 public:
-    QAptActions(MuonMainWindow *parent);
+    static QAptActions* self();
+    void setMainWindow(KXmlGuiWindow *parent);
 
     bool isConnected() const;
     void setOriginalState(QApt::CacheState state);
-    void setCanExit(bool canExit);
     void setReloadWhenEditorFinished(bool reload);
     
 signals:
@@ -74,10 +73,13 @@ public slots:
     void sourcesEditorFinished(int exitStatus);
 
 private:
+    void setCanExit(bool canExit);
+    QAptActions();
+    
     QApt::Backend *m_backend;
     QApt::CacheState m_originalState;
     bool m_actionsDisabled;
-    MuonMainWindow* m_mainWindow;
+    KXmlGuiWindow* m_mainWindow;
     bool m_reloadWhenEditorFinished;
 
     KActionCollection* actionCollection();

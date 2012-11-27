@@ -28,7 +28,7 @@
 #include <LibQApt/Backend>
 
 // Libmuon includes
-#include "../libmuon/MuonStrings.h"
+#include "../libmuonapt/MuonStrings.h"
 
 ArchitectureFilter::ArchitectureFilter(QObject *parent, QApt::Backend *backend)
     : FilterModel(parent)
