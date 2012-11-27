@@ -28,9 +28,7 @@ BodegaResource::BodegaResource(const Bodega::AssetInfo& info, AbstractResourcesB
     : AbstractResource(parent)
     , m_info(info)
     , m_assetOperations(0)
-{
-    
-}
+{}
 
 BodegaBackend* BodegaResource::backend() const
 {
