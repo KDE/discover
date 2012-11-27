@@ -1,7 +1,5 @@
 add_subdirectory(icons)
 
-add_definitions(-DQAPT_ENABLED)
-
 set(muon_SRCS
     main.cpp
     MainWindow.cpp

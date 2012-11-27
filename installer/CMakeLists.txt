@@ -1,7 +1,5 @@
 include_directories(../libmuon ../libmuonapt/)
 
-add_definitions(-DQAPT_ENABLED)
-
 if (LIBATTICA_FOUND)
     add_definitions(-DATTICA_ENABLED)
 endif (LIBATTICA_FOUND)

@@ -25,6 +25,7 @@
 #include <QDebug>
 #include <QDir>
 #include <QMainWindow>
+#include <qdeclarative.h>
 #include <LibQApt/Backend>
 #include <LibQApt/Config>
 #include <KMessageBox>
@@ -43,6 +44,8 @@ static ApplicationBackend* applicationBackend()
 OriginsBackend::OriginsBackend(QObject* parent)
     : QObject(parent)
 {
+    qmlRegisterType<Source>();
+    qmlRegisterType<Entry>();
     load();
 }
 

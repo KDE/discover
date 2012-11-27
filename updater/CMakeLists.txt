@@ -1,7 +1,5 @@
 include_directories(../libmuon)
 
-add_definitions(-DQAPT_ENABLED)
-
 set(muon_updater_SRCS
     main.cpp
     MainWindow.cpp

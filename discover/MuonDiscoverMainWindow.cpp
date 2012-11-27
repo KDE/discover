@@ -129,8 +129,6 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     qmlRegisterType<Transaction>();
 #ifdef QAPT_ENABLED
     qmlRegisterType<OriginsBackend>("org.kde.muon", 1, 0, "OriginsBackend");
-    qmlRegisterType<Source>();
-    qmlRegisterType<Entry>();
 #endif
     
     //Here we set up a cache for the screenshots
