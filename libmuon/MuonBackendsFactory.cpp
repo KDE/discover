@@ -20,30 +20,61 @@
 
 #include "MuonBackendsFactory.h"
 #include "resources/AbstractResourcesBackend.h"
-#include <KStandardDirs>
+#include "resources/ResourcesModel.h"
+#include <KServiceTypeTrader>
+#include <KDebug>
 #include <QPluginLoader>
+#include <kplugininfo.h>
 
 MuonBackendsFactory::MuonBackendsFactory()
 {}
 
-AbstractResourcesBackend* MuonBackendsFactory::backend(const QString& name)
+AbstractResourcesBackend* MuonBackendsFactory::backend(const QString& pluginname)
 {
-    QString plugin = KGlobal::dirs()->findResource("module", "muon-"+name);
-    return backendForPath(plugin);
+    QString query = QString("[X-KDE-PluginInfo-Name]=='%1'").arg( pluginname );
+    KService::List serviceList = KServiceTypeTrader::self()->query( "Muon/Backend", query );
+    if(!serviceList.isEmpty()) {
+        return backendForPlugin(KPluginInfo(serviceList.first()));
+    } else {
+        qWarning() << "Couldn't find the backend: " << pluginname;
+    }
+    return 0;
 }
 
 QList<AbstractResourcesBackend*> MuonBackendsFactory::allBackends()
 {
+    KService::List serviceList = KServiceTypeTrader::self() ->query("Muon/Backend");
+    KPluginInfo::List infoList = KPluginInfo::fromServices( serviceList );
+    
     QList<AbstractResourcesBackend*> ret;
-    QStringList plugins = KGlobal::dirs()->findAllResources("module", "muon-*");
-    foreach(const QString& plugin, plugins) {
-        ret += backendForPath(plugin);
+    foreach(const KPluginInfo& plugin, infoList) {
+        AbstractResourcesBackend* b = backendForPlugin(plugin);
+        if(b) {
+            ret += b;
+        } else {
+            qDebug() << "couldn't load " << plugin.name();
+        }
     }
+
+    if(ret.isEmpty())
+        qWarning() << "Didn't find any muon backend!";
     return ret;
 }
 
-AbstractResourcesBackend* MuonBackendsFactory::backendForPath(const QString& path)
+AbstractResourcesBackend* MuonBackendsFactory::backendForPlugin(const KPluginInfo& info)
 {
-    QPluginLoader loader(path);
-    return qobject_cast<AbstractResourcesBackend*>(loader.instance());
+    return backendForName(info.name());
+}
+
+AbstractResourcesBackend* MuonBackendsFactory::backendForName(const QString& pluginId)
+{
+    QString str_error;
+    AbstractResourcesBackend* obj = KServiceTypeTrader::createInstanceFromQuery<AbstractResourcesBackend>(
+        QLatin1String( "Muon/Backend" ), QString::fromLatin1( "[X-KDE-PluginInfo-Name]=='%1'" ).arg( pluginId ),
+        ResourcesModel::global(), QVariantList(), &str_error );
+    
+    if(!obj) {
+        qDebug() << "error when loading the plugin" << str_error;
+    }
+    return obj;
 }

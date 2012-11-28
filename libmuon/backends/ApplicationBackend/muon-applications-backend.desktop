@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=Muon/Backend
+Exec=blubb
+Icon=applications-other
+Comment=Install and browse applications in APT
+Name=Applications Backend
+GenericName=APT Support
+X-KDE-Library=muon-appsbackend
+X-KDE-PluginInfo-Name=muon-appsbackend
+X-KDE-PluginInfo-License=GPL

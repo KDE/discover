@@ -78,4 +78,6 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
         void transactionsEvent(TransactionStateTransition transition, Transaction* transaction);
 };
 
+Q_DECLARE_INTERFACE( AbstractResourcesBackend, "org.kde.muon.AbstractResourcesBackend" )
+
 #endif // ABSTRACTRESOURCESBACKEND_H

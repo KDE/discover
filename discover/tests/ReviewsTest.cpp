@@ -31,7 +31,7 @@ QTEST_KDEMAIN_CORE( ReviewsTest )
 
 ReviewsTest::ReviewsTest(QObject* parent): QObject(parent)
 {
-    m_appBackend = new ApplicationBackend;
+    m_appBackend = new ApplicationBackend(0, QVariantList());
     QTest::kWaitForSignal(m_appBackend, SIGNAL(backendReady()));
     m_revBackend = m_appBackend->reviewsBackend();
 }

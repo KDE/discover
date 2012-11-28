@@ -157,7 +157,7 @@ void MainWindow::initObject()
             this, SLOT(transactionRemoved()));
 
     // Create APT backend
-    m_appBackend = new ApplicationBackend(this);
+    m_appBackend = new ApplicationBackend(this, QVariantList());
     connect(m_appBackend, SIGNAL(backendReady()),
             this, SLOT(populateViews()));
     connect(m_appBackend, SIGNAL(reloadStarted()), //TODO: use ResourcesModel signals

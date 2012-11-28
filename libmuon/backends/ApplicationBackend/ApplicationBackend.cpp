@@ -35,6 +35,7 @@
 #include <KProtocolManager>
 #include <KStandardDirs>
 #include <KDebug>
+#include <KAboutData>
 
 // LibQApt/DebconfKDE includes
 #include <LibQApt/Backend>
@@ -54,7 +55,10 @@
 #include "MuonMainWindow.h"
 #include <../libmuonapt/QAptActions.h>
 
-ApplicationBackend::ApplicationBackend(QObject *parent)
+K_PLUGIN_FACTORY(MuonAppsBackendFactory, registerPlugin<ApplicationBackend>(); )
+K_EXPORT_PLUGIN(MuonAppsBackendFactory(KAboutData("muon-appsbackend","muon-appsbackend",ki18n("Applications Backend"),"0.1",ki18n("Applications in your system"), KAboutData::License_GPL)))
+
+ApplicationBackend::ApplicationBackend(QObject* parent, const QVariantList& )
     : AbstractResourcesBackend(parent)
     , m_backend(new QApt::Backend(this))
     , m_reviewsBackend(new ReviewsBackend(this))

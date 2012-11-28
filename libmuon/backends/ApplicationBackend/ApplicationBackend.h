@@ -51,8 +51,9 @@ class QAptActions;
 class MUONPRIVATE_EXPORT ApplicationBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
+    Q_INTERFACES(AbstractResourcesBackend)
 public:
-    explicit ApplicationBackend(QObject *parent=0);
+    explicit ApplicationBackend(QObject *parent, const QVariantList& args);
     ~ApplicationBackend();
 
     AbstractReviewsBackend *reviewsBackend() const;

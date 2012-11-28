@@ -23,6 +23,7 @@
 #include <QList>
 #include "libmuonprivate_export.h"
 
+class KPluginInfo;
 class AbstractResourcesBackend;
 class MUONPRIVATE_EXPORT MuonBackendsFactory
 {
@@ -33,7 +34,8 @@ public:
     QList<AbstractResourcesBackend*> allBackends();
     
 private:
-    AbstractResourcesBackend* backendForPath(const QString& path);
+    AbstractResourcesBackend* backendForPlugin(const KPluginInfo& info);
+    AbstractResourcesBackend* backendForName(const QString& name);
 };
 
 #endif // MUONBACKENDSFACTORY_H
