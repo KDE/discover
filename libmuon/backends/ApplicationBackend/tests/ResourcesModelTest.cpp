@@ -20,7 +20,6 @@
 
 #include "ResourcesModelTest.h"
 #include <QStringList>
-#include <LibQApt/Backend>
 #include <KProtocolManager>
 #include <qtest_kde.h>
 

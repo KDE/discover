@@ -20,7 +20,7 @@
 
 #include "ScreenshotsModel.h"
 #include <resources/AbstractResource.h>
-#include <tests/modeltest.h>
+// #include <tests/modeltest.h>
 #include <KDebug>
 
 ScreenshotsModel::ScreenshotsModel(QObject* parent)

@@ -20,6 +20,7 @@
 #include "MuonExporter.h"
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/ResourcesModel.h>
+#include <MuonBackendsFactory.h>
 #include <qjson/serializer.h>
 #include <QFile>
 #include <QDebug>
@@ -48,16 +49,8 @@ MuonExporter::~MuonExporter()
 
 void MuonExporter::initialize()
 {
-    QList<AbstractResourcesBackend*> backends;
-
-#ifdef ATTICA_ENABLED
-    backends += new KNSBackend("comic.knsrc", "face-smile-big", this);
-    backends += new KNSBackend("plasmoids.knsrc", "plasma", this);
-#endif
-    
-#ifdef QAPT_ENABLED
-    backends += new ApplicationBackend(this, QVariantList());
-#endif
+    MuonBackendsFactory f;
+    QList<AbstractResourcesBackend*> backends = f.allBackends();
     
     m_backendsToInitialize = backends.count();
     ResourcesModel* m = ResourcesModel::global();

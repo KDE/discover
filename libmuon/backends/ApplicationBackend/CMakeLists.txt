@@ -24,6 +24,8 @@ ENDMACRO(QT4_ADD_DBUS_INTERFACE)
 
 include_directories(. ${CMAKE_SOURCE_DIR}/libmuonapt)
 
+add_subdirectory(tests)
+
 set(appsbackend_SRCS
     ApplicationBackend.cpp
     Application.cpp

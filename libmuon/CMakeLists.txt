@@ -1,5 +1,5 @@
 add_subdirectory(backends)
-add_subdirectory(tests)
+
 
 set(muon_LIB_SRCS
     Category/Category.cpp

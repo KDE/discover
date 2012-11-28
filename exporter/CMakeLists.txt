@@ -11,6 +11,6 @@ endif (LIBATTICA_FOUND AND LIBATTICA_ENABLED)
 
 kde4_add_executable(muon-exporter main.cpp MuonExporter.cpp)
 
-target_link_libraries(muon-exporter muonprivate muon-appsbackend muon-knsbackend
+target_link_libraries(muon-exporter muonprivate
     ${KDE4_KDEUI_LIBRARY} ${QJSON_LIBRARIES})
 

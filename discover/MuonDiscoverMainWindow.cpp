@@ -54,15 +54,9 @@
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <MuonBackendsFactory.h>
-#include <backends/ApplicationBackend/ApplicationBackend.h>
 
 #ifdef QAPT_ENABLED
 #include "OriginsBackend.h"
-#include <backends/ApplicationBackend/ApplicationBackend.h>
-#endif
-
-#ifdef ATTICA_ENABLED
-#include <backends/KNSBackend/KNSBackend.h>
 #endif
 
 // Own includes
