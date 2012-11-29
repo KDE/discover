@@ -42,7 +42,6 @@ class ReviewsTest : public QObject
         void testReviewsModel();
 
     private:
-        QApt::Backend* m_backend;
         AbstractReviewsBackend* m_revBackend;
         ApplicationBackend* m_appBackend;
 
