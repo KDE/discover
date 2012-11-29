@@ -3,3 +3,6 @@ Type=ServiceType
 X-KDE-ServiceType=Muon/Backend
 X-KDE-Derived=KPluginInfo
 Name=Muon Backend
+
+[PropertyDef::X-Muon-Arguments]
+Type=QStringList
