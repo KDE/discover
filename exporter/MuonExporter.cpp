@@ -88,9 +88,13 @@ QVariantMap itemDataToMap(const AbstractResource* res)
     int propsCount = res->metaObject()->propertyCount();
     for(int i = 0; i<propsCount; i++) {
         QMetaProperty prop = res->metaObject()->property(i);
-        QVariant val = res->property(prop.name());
-        if(val.isNull() || val.canConvert<QObject*>())
+        if(prop.type() == QVariant::UserType)
             continue;
+        QVariant val = res->property(prop.name());
+        
+        if(val.isNull())
+            continue;
+        
         ret.insert(prop.name(), val);
     }
     return ret;
