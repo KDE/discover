@@ -53,10 +53,14 @@ void MuonExporter::initialize()
     QList<AbstractResourcesBackend*> backends = f.allBackends();
     
     m_backendsToInitialize = backends.count();
-    ResourcesModel* m = ResourcesModel::global();
-    foreach(AbstractResourcesBackend* b, backends) {
-        connect(b, SIGNAL(backendReady()), SLOT(backendReady()));
-        m->addResourcesBackend(b);
+    if(m_backendsToInitialize>0) {
+        ResourcesModel* m = ResourcesModel::global();
+        foreach(AbstractResourcesBackend* b, backends) {
+            connect(b, SIGNAL(backendReady()), SLOT(backendReady()));
+            m->addResourcesBackend(b);
+        }
+    } else {
+        m_startExportingTimer->start();
     }
 }
 
