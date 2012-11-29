@@ -20,6 +20,7 @@
 #include "MuonExporter.h"
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/ResourcesModel.h>
+#include <resources/AbstractResource.h>
 #include <qjson/serializer.h>
 #include <QFile>
 #include <QDebug>
@@ -81,13 +82,16 @@ void MuonExporter::backendReady()
     }
 }
 
-QVariantMap itemDataToMap(const QMap<int, QVariant>& data, const QHash<int, QByteArray>& names)
+QVariantMap itemDataToMap(const AbstractResource* res)
 {
     QVariantMap ret;
-    for(auto it = data.constBegin(), itEnd=data.constEnd(); it!=itEnd; ++it) {
-        if(it->isNull() || it->canConvert<QObject*>())
+    int propsCount = res->metaObject()->propertyCount();
+    for(int i = 0; i<propsCount; i++) {
+        QMetaProperty prop = res->metaObject()->property(i);
+        QVariant val = res->property(prop.name());
+        if(val.isNull() || val.canConvert<QObject*>())
             continue;
-        ret.insert(names.value(it.key()), it.value());
+        ret.insert(prop.name(), val);
     }
     return ret;
 }
@@ -96,11 +100,12 @@ void MuonExporter::exportModel()
 {
     QVariantList data;
     ResourcesModel* m = ResourcesModel::global();
-    QHash< int, QByteArray > names = m->roleNames();
     
     for(int i = 0; i<m->rowCount(); i++) {
         QModelIndex idx = m->index(i, 0);
-        data += itemDataToMap(m->itemData(idx), names);
+        AbstractResource* res = qobject_cast<AbstractResource*>(m->data(idx, ResourcesModel::ApplicationRole).value<QObject*>());
+        Q_ASSERT(res);
+        data += itemDataToMap(res);
     }
     qDebug() << "found items: " << data.count();
     QFile f(m_path.toLocalFile());
