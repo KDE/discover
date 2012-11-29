@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=Muon/Backend
+Exec=blubb
+Icon=face-smile-big
+Name=Comics
+GenericName=Comics
+Comment=Install comic stripes to be used from the comics plasmoid
+X-KDE-Library=muon-knsbackend
+X-KDE-PluginInfo-Name=muon-knsbackend-comics
+X-KDE-PluginInfo-License=GPL
+X-Muon-Arguments=comic.knsrc

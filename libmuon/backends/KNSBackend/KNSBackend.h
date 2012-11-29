@@ -40,7 +40,7 @@ class MUONPRIVATE_EXPORT KNSBackend : public AbstractResourcesBackend
 {
 Q_OBJECT
 public:
-    explicit KNSBackend(const QString& configName, const QString& iconName, QObject* parent = 0);
+    explicit KNSBackend(QObject* parent, const QVariantList& args);
     virtual ~KNSBackend();
     
     virtual void cancelTransaction(AbstractResource* app);

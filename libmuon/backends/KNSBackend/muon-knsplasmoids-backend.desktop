@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=Muon/Backend
+Exec=blubb
+Icon=plasma
+Name=Plasmoids
+GenericName=Plasmoids
+Comment=Install plasmoids and raise the power of your workspace!
+X-KDE-Library=muon-knsbackend
+X-KDE-PluginInfo-Name=muon-knsbackend-plasmoids
+X-KDE-PluginInfo-License=GPL
+X-Muon-Arguments=plasmoids.knsrc

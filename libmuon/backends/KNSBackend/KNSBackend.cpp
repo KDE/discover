@@ -23,24 +23,36 @@
 #include "KNSReviews.h"
 #include "KNSUpdater.h"
 #include <Transaction/Transaction.h>
-#include <knewstuff3/downloadmanager.h>
+
 #include <QDebug>
 #include <QFileInfo>
+
 #include <attica/content.h>
 #include <attica/providermanager.h>
+
+#include <knewstuff3/downloadmanager.h>
 #include <KStandardDirs>
 #include <KConfigGroup>
 #include <KDebug>
-#include <kconfig.h>
+#include <KConfig>
+#include <KPluginFactory>
+#include <KLocalizedString>
+#include <KAboutData>
 
-KNSBackend::KNSBackend(const QString& configName, const QString& iconName, QObject* parent)
+K_PLUGIN_FACTORY(MuonKNSBackendFactory, registerPlugin<KNSBackend>(); )
+K_EXPORT_PLUGIN(MuonKNSBackendFactory(KAboutData("muon-knsbackend","muon-knsbackend",ki18n("KNewStuff Backend"),"0.1",ki18n("Install KNewStuff data in your system"), KAboutData::License_GPL)))
+
+KNSBackend::KNSBackend(QObject* parent, const QVariantList& args)
     : AbstractResourcesBackend(parent)
     , m_reviews(new KNSReviews(this))
     , m_fetching(true)
-    , m_iconName(iconName)
     , m_updater(new KNSUpdater(this))
 {
-    m_name = KStandardDirs::locate("config", configName);
+    const QVariantMap info = args.first().toMap();
+    
+    m_iconName = info.value("Icon").toString();
+    m_name = KStandardDirs::locate("config", info.value("X-Muon-Arguments").toString());
+    Q_ASSERT(!m_name.isEmpty());
     KConfig conf(m_name);
     KConfigGroup group;
     if (conf.hasGroup("KNewStuff3")) {
@@ -178,7 +190,7 @@ void KNSBackend::installApplication(AbstractResource* app)
     emit transactionRemoved(t);
 }
 
-void KNSBackend::installApplication(AbstractResource* app, const QHash< QString, bool >& addons)
+void KNSBackend::installApplication(AbstractResource* app, const QHash< QString, bool >&)
 {
     installApplication(app);
 }
