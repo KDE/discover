@@ -35,7 +35,7 @@ public:
     
 private:
     AbstractResourcesBackend* backendForPlugin(const KPluginInfo& info);
-    AbstractResourcesBackend* backendForName(const QString& name);
+    AbstractResourcesBackend* backendForName(const KPluginInfo& info);
 };
 
 #endif // MUONBACKENDSFACTORY_H

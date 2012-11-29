@@ -61,20 +61,23 @@ QList<AbstractResourcesBackend*> MuonBackendsFactory::allBackends()
     return ret;
 }
 
+
 AbstractResourcesBackend* MuonBackendsFactory::backendForPlugin(const KPluginInfo& info)
 {
-    return backendForName(info.name());
-}
-
-AbstractResourcesBackend* MuonBackendsFactory::backendForName(const QString& pluginId)
-{
+    qDebug() << "fuuuuuuu" << info.property("[X-Muon-Arguments]").toString();
+    QVariantMap args;
+    foreach(const QString& prop, info.config().keyList()) {
+        args[prop] = info.property(prop);
+    }
+    
     QString str_error;
     AbstractResourcesBackend* obj = KServiceTypeTrader::createInstanceFromQuery<AbstractResourcesBackend>(
-        QLatin1String( "Muon/Backend" ), QString::fromLatin1( "[X-KDE-PluginInfo-Name]=='%1'" ).arg( pluginId ),
-        ResourcesModel::global(), QVariantList(), &str_error );
+        QLatin1String( "Muon/Backend" ), QString::fromLatin1( "[X-KDE-PluginInfo-Name]=='%1'" ).arg( info.pluginName() ),
+        ResourcesModel::global(), QVariantList() << args, &str_error );
     
     if(!obj) {
-        qDebug() << "error when loading the plugin" << str_error;
+        qDebug() << "error when loading the plugin" << info.name() << "because" << str_error;
     }
     return obj;
 }
+
