@@ -151,7 +151,7 @@ void QAptActions::setActionsEnabled(bool enabled)
     }
     actionCollection()->action("update")->setEnabled(isConnected() && enabled);
 
-    if(enabled) {
+    if(enabled && m_backend) {
         actionCollection()->action("undo")->setEnabled(!m_backend->isUndoStackEmpty());
         actionCollection()->action("redo")->setEnabled(!m_backend->isRedoStackEmpty());
         actionCollection()->action("revert")->setEnabled(!m_backend->isUndoStackEmpty());
@@ -159,7 +159,7 @@ void QAptActions::setActionsEnabled(bool enabled)
     
     actionCollection()->action("save_download_list")->setEnabled(isConnected());
 
-    bool changesPending = m_backend->areChangesMarked();
+    bool changesPending = m_backend && m_backend->areChangesMarked();
     actionCollection()->action("open_markings")->setEnabled(true);
     actionCollection()->action("save_markings")->setEnabled(changesPending);
     actionCollection()->action("save_download_list")->setEnabled(changesPending);

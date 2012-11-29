@@ -101,10 +101,9 @@ void MainWindow::initGUI()
     mainLayout->addWidget(m_changelogWidget);
 
     m_backend = new QApt::Backend(this);
-    QAptActions* actions = QAptActions::self();
-    actions->setBackend(m_backend);
+    QAptActions *actions = QAptActions::self();
+    actions->setMainWindow(this);
     connect(actions, SIGNAL(checkForUpdates()), this, SLOT(checkForUpdates()));
-
     setupActions();
 
     mainWidget->setLayout(mainLayout);
@@ -123,6 +122,7 @@ void MainWindow::initObject()
     }
 
     emit backendReady(m_backend);
+    QAptActions::self()->setBackend(m_backend);
     setCanExit(true);
 
     setActionsEnabled(); //Get initial enabled/disabled state
@@ -229,7 +229,7 @@ void MainWindow::reload()
 void MainWindow::setActionsEnabled(bool enabled)
 {
     QAptActions::self()->setActionsEnabled(enabled);
-    if (!enabled) {
+    if (!enabled || !m_backend) {
         return;
     }
 

@@ -122,7 +122,7 @@ void MainWindow::initGUI()
     m_backend = new QApt::Backend(this);
     QAptActions* actions = QAptActions::self();
 
-    actions->setBackend(m_backend);
+    actions->setMainWindow(this);
     connect(actions, SIGNAL(changesReverted()), this, SLOT(revertChanges()));
     connect(actions, SIGNAL(checkForUpdates()), this, SLOT(checkForUpdates()));
     setupActions();
@@ -139,6 +139,7 @@ void MainWindow::initObject()
         initError();
 
     emit backendReady(m_backend);
+    QAptActions::self()->setBackend(m_backend);
 
     // Set up GUI
     loadSettings();
@@ -383,7 +384,7 @@ void MainWindow::reload()
 void MainWindow::setActionsEnabled(bool enabled)
 {
     QAptActions::self()->setActionsEnabled(enabled);
-    if (!enabled) {
+    if (!enabled || !m_backend) {
         return;
     }
 
