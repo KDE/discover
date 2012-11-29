@@ -179,7 +179,7 @@ void MuonDiscoverMainWindow::initialize()
     applicationBackend->integrateMainWindow(m_actions);
     backends += applicationBackend;
 #else
-    m_canExit = true;
+    setCanExit(true);
 #endif
     
     ResourcesModel* m = ResourcesModel::global();

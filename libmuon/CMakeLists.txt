@@ -45,7 +45,6 @@ set(muon_LIB_SRCS
     resources/ResourcesUpdatesModel.cpp
 )
 
-add_definitions(-DQAPT_ENABLED)
 if(QAPT_FOUND)
     set(muon_LIB_SRCS ${muon_LIB_SRCS}
         ApplicationBackend/Application.cpp
