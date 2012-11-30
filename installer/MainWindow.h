@@ -24,9 +24,6 @@
 // KDE includes
 #include <KService>
 
-// LibQApt includes
-#include <LibQApt/Backend>
-
 // Own includes
 #include "../libmuon/MuonMainWindow.h"
 
