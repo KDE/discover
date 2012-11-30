@@ -39,6 +39,7 @@ namespace Attica {
 class MUONPRIVATE_EXPORT KNSBackend : public AbstractResourcesBackend
 {
 Q_OBJECT
+Q_INTERFACES(AbstractResourcesBackend)
 public:
     explicit KNSBackend(QObject* parent, const QVariantList& args);
     virtual ~KNSBackend();

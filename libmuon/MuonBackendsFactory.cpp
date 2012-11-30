@@ -44,15 +44,16 @@ AbstractResourcesBackend* MuonBackendsFactory::backend(const QString& pluginname
 QList<AbstractResourcesBackend*> MuonBackendsFactory::allBackends()
 {
     KService::List serviceList = KServiceTypeTrader::self() ->query("Muon/Backend");
-    KPluginInfo::List infoList = KPluginInfo::fromServices( serviceList );
     
     QList<AbstractResourcesBackend*> ret;
-    foreach(const KPluginInfo& plugin, infoList) {
-        AbstractResourcesBackend* b = backendForPlugin(plugin);
+    foreach(const KService::Ptr& plugin, serviceList) {
+        KPluginInfo info(plugin);
+        
+        AbstractResourcesBackend* b = backendForPlugin(info);
         if(b) {
             ret += b;
         } else {
-            qDebug() << "couldn't load " << plugin.name();
+            qDebug() << "couldn't load " << info.name();
         }
     }
 
@@ -64,9 +65,8 @@ QList<AbstractResourcesBackend*> MuonBackendsFactory::allBackends()
 
 AbstractResourcesBackend* MuonBackendsFactory::backendForPlugin(const KPluginInfo& info)
 {
-    qDebug() << "fuuuuuuu" << info.property("[X-Muon-Arguments]").toString();
     QVariantMap args;
-    foreach(const QString& prop, info.config().keyList()) {
+    foreach(const QString& prop, info.service()->propertyNames()) {
         args[prop] = info.property(prop);
     }
     
