@@ -75,6 +75,8 @@ void QAptActions::setBackend(QApt::Backend* backend)
     m_backend = backend;
     connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
     setReloadWhenEditorFinished(true);
+    // Some actions need an initialized backend to be able to set their enabled state
+    setActionsEnabled(true);
 }
 
 void QAptActions::setupActions()
@@ -139,8 +141,6 @@ void QAptActions::setupActions()
     saveInstalledAction->setIcon(KIcon("document-save-as"));
     saveInstalledAction->setText(i18nc("@action", "Save Installed Packages List..."));
     connect(saveInstalledAction, SIGNAL(triggered()), this, SLOT(saveInstalledPackagesList()));
-    
-    setActionsEnabled(true);
 }
 
 void QAptActions::setActionsEnabled(bool enabled)
@@ -149,17 +149,19 @@ void QAptActions::setActionsEnabled(bool enabled)
     for (int i = 0; i < actionCollection()->count(); ++i) {
         actionCollection()->action(i)->setEnabled(enabled);
     }
+
+    if (!enabled)
+        return;
+
     actionCollection()->action("update")->setEnabled(isConnected() && enabled);
 
-    if(enabled && m_backend) {
-        actionCollection()->action("undo")->setEnabled(!m_backend->isUndoStackEmpty());
-        actionCollection()->action("redo")->setEnabled(!m_backend->isRedoStackEmpty());
-        actionCollection()->action("revert")->setEnabled(!m_backend->isUndoStackEmpty());
-    }
+    actionCollection()->action("undo")->setEnabled(!m_backend->isUndoStackEmpty());
+    actionCollection()->action("redo")->setEnabled(!m_backend->isRedoStackEmpty());
+    actionCollection()->action("revert")->setEnabled(!m_backend->isUndoStackEmpty());
     
     actionCollection()->action("save_download_list")->setEnabled(isConnected());
 
-    bool changesPending = m_backend && m_backend->areChangesMarked();
+    bool changesPending = m_backend->areChangesMarked();
     actionCollection()->action("open_markings")->setEnabled(true);
     actionCollection()->action("save_markings")->setEnabled(changesPending);
     actionCollection()->action("save_download_list")->setEnabled(changesPending);

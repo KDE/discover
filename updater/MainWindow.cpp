@@ -229,7 +229,7 @@ void MainWindow::reload()
 void MainWindow::setActionsEnabled(bool enabled)
 {
     QAptActions::self()->setActionsEnabled(enabled);
-    if (!enabled || !m_backend) {
+    if (!enabled) {
         return;
     }
 
