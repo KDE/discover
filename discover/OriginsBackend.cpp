@@ -31,12 +31,11 @@
 #include <KMessageBox>
 #include <KLocalizedString>
 
-static ApplicationBackend* applicationBackend()
+static QObject* applicationBackend()
 {
     foreach(AbstractResourcesBackend* b, ResourcesModel::global()->backends()) {
-        ApplicationBackend* appbackend = qobject_cast<ApplicationBackend*>(b);
-        if(qobject_cast<ApplicationBackend*>(b))
-            return appbackend;
+        if(QByteArray(b->metaObject()->className())=="ApplicationBackend")
+            return b;
     }
     return 0;
 }
@@ -56,7 +55,7 @@ OriginsBackend::~OriginsBackend()
 
 void OriginsBackend::load()
 {
-    QApt::Backend* backend = applicationBackend()->backend();
+    QApt::Backend* backend = qobject_cast<QApt::Backend*>(applicationBackend()->property("backend").value<QObject*>());
     if(!backend) {
         connect(applicationBackend(), SIGNAL(backendReady()), SLOT(load()));
         return;
@@ -176,7 +175,7 @@ void OriginsBackend::additionDone(int processErrorCode)
 {
     if(processErrorCode==0) {
         load();
-        applicationBackend()->reload();
+        QMetaObject::invokeMethod(applicationBackend(), "reload");
     } else {
         QProcess* p = qobject_cast<QProcess*>(sender());
         Q_ASSERT(p);
@@ -190,7 +189,7 @@ void OriginsBackend::removalDone(int processErrorCode)
 {
     if(processErrorCode==0) {
         load();
-        applicationBackend()->reload();
+        QMetaObject::invokeMethod(applicationBackend(), "reload");
     } else {
         QProcess* p = qobject_cast<QProcess*>(sender());
         Q_ASSERT(p);
@@ -227,7 +226,8 @@ QDeclarativeListProperty<Entry> Source::entries()
 QString Source::name() const
 {
     QUrl uri(m_uri);
-    QStringList origins = applicationBackend()->backend()->originsForHost(uri.host());
+    QApt::Backend* backend = qobject_cast<QApt::Backend*>(applicationBackend()->property("backend").value<QObject*>());
+    QStringList origins = backend->originsForHost(uri.host());
     if(origins.size()==1)
         return origins.first();
     else if(origins.size()==0)
