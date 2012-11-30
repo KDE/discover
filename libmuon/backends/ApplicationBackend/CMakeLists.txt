@@ -42,5 +42,5 @@ target_link_libraries(muon-appsbackend ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} 
     ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} ${DEBCONF_KDE_LIB}
     ${qjson_LIBRARIES} ${QTOAUTH_LIBRARY} ${QAPT_LIBRARY} muonprivate muonapt
 )
-install(TARGETS muon-appsbackend ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS muon-appsbackend DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES muon-applications-backend.desktop DESTINATION ${SERVICES_INSTALL_DIR})
