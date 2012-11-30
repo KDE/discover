@@ -299,11 +299,12 @@ void ApplicationBackend::updateProgress(int percentage)
 
 bool ApplicationBackend::confirmRemoval(QApt::StateChanges changes)
 {
-    if (changes[QApt::Package::ToRemove].isEmpty()) {
+    const QApt::PackageList removeList = changes.value(QApt::Package::ToRemove);
+    if (removeList.isEmpty())
         return true;
-    }
-    QHash<QApt::Package::State, QApt::PackageList> removals;
-    removals[QApt::Package::ToRemove] = changes[QApt::Package::ToRemove];
+
+    QApt::StateChanges removals;
+    removals[QApt::Package::ToRemove] = removeList;
 
     ChangesDialog *dialog = new ChangesDialog(0, removals);
 

@@ -63,7 +63,6 @@
 #include <ReviewsBackend/Review.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <Transaction/TransactionListener.h>
-#include <mobile/src/mousecursor.h>
 #include <resources/AbstractResource.h>
 
 // std includes
@@ -72,6 +71,7 @@
 // Own includes
 #include "AddonsWidget.h"
 #include "ClickableLabel.h"
+#include "qml/src/mousecursor.h"
 #include "ReviewsWidget/ReviewsWidget.h"
 #include "ScreenShotOverlay.h"
 
