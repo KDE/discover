@@ -23,7 +23,7 @@
 #include <libqapt/backend.h>
 #include <KProtocolManager>
 #include <qtest_kde.h>
-#include <libmuon/tests/modeltest.h>
+#include <libmuon/backends/ApplicationBackend/tests/modeltest.h>
 #include <backends/ApplicationBackend/ApplicationBackend.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 
