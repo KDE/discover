@@ -26,14 +26,6 @@
 #include <QDebug>
 #include <QTimer>
 
-#ifdef QAPT_ENABLED
-#include <backends/ApplicationBackend/ApplicationBackend.h>
-#endif
-
-#ifdef ATTICA_ENABLED
-#include <backends/KNSBackend/KNSBackend.h>
-#endif
-
 MuonExporter::MuonExporter()
     : QObject(0)
 {

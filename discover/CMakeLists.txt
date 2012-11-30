@@ -19,11 +19,6 @@ if(QAPT_FOUND)
     add_definitions(-DQAPT_ENABLED)
 endif(QAPT_FOUND)
 
-option(LIBATTICA_ENABLED "Enable KNS backend" ON)
-if (LIBATTICA_FOUND AND LIBATTICA_ENABLED)
-    add_definitions(-DATTICA_ENABLED)
-endif (LIBATTICA_FOUND AND LIBATTICA_ENABLED)
-
 qt4_add_resources(muon_discover_SRCS resources.qrc)
 
 kde4_add_executable(muon-discover ${muon_discover_SRCS})
