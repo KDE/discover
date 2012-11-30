@@ -51,6 +51,7 @@
 #include <backends/ApplicationBackend/Application.h>
 #include <backends/ApplicationBackend/ApplicationBackend.h>
 #include <resources/ResourcesModel.h>
+#include <MuonBackendsFactory.h>
 
 
 #ifdef ATTICA_ENABLED
@@ -156,31 +157,28 @@ void MainWindow::initObject()
     connect(resourcesModel, SIGNAL(transactionRemoved(Transaction*)),
             this, SLOT(transactionRemoved()));
 
-    // Create APT backend
-    m_appBackend = new ApplicationBackend(this, QVariantList());
-    connect(m_appBackend, SIGNAL(backendReady()),
-            this, SLOT(populateViews()));
-    connect(m_appBackend, SIGNAL(reloadStarted()), //TODO: use ResourcesModel signals
-            this, SLOT(removeProgressItem()));
-    connect(m_appBackend, SIGNAL(reloadFinished()),
-            this, SLOT(showLauncherMessage()));
-    connect(m_appBackend, SIGNAL(startingFirstTransaction()),
-            this, SLOT(addProgressItem()));
-    connect(m_appBackend, SIGNAL(sourcesEditorFinished()),
-            this, SLOT(sourcesEditorFinished()));
-
     // Other backends
-    QList<AbstractResourcesBackend*> backends;
-
-#ifdef ATTICA_ENABLED
-    backends += new KNSBackend("comic.knsrc", "face-smile-big", this);
-    backends += new KNSBackend("plasmoids.knsrc", "plasma", this);
-#endif
+    MuonBackendsFactory f;
+    QList<AbstractResourcesBackend*> backends = f.allBackends();
 
     //TODO: should add the appBackend here too
     for (AbstractResourcesBackend *backend : backends) {
         resourcesModel->addResourcesBackend(backend);
         backend->integrateMainWindow(this);
+        
+        if(ApplicationBackend* apps = qobject_cast<ApplicationBackend*>(backend)) {
+            m_appBackend = apps;
+            connect(m_appBackend, SIGNAL(backendReady()),
+                    this, SLOT(populateViews()));
+            connect(m_appBackend, SIGNAL(reloadStarted()), //TODO: use ResourcesModel signals
+                    this, SLOT(removeProgressItem()));
+            connect(m_appBackend, SIGNAL(reloadFinished()),
+                    this, SLOT(showLauncherMessage()));
+            connect(m_appBackend, SIGNAL(startingFirstTransaction()),
+                    this, SLOT(addProgressItem()));
+            connect(m_appBackend, SIGNAL(sourcesEditorFinished()),
+                    this, SLOT(sourcesEditorFinished()));
+        }
     }
 }
 
