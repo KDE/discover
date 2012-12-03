@@ -121,6 +121,7 @@ void TransactionListener::workerEvent(TransactionStateTransition event, Transact
         setDownloading(false);
         break;
     case StartedCommitting:
+        emit running(true);
         setStateComment(transaction);
         connect(m_backend, SIGNAL(transactionProgressed(Transaction*,int)),
                 this, SLOT(updateProgress(Transaction*,int)));
@@ -173,7 +174,6 @@ void TransactionListener::setStateComment(Transaction* transaction)
         case InstallApp:
             m_comment = i18nc("@info:status", "Installing");
             emit commentChanged();
-            emit running(true);
             break;
         case ChangeAddons:
             m_comment = i18nc("@info:status", "Changing Addons");

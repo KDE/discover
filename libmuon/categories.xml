@@ -570,4 +570,14 @@
     </Include>
   </Menu>
 
+  <Menu>
+    <Name>Wallpapers</Name>
+    <Icon>plasma</Icon>
+    <Include>
+      <Or>
+        <Category>application/x-desktop-wallpaper</Category>
+      </Or>
+    </Include>
+  </Menu>
+
 </Menu>

@@ -24,6 +24,13 @@ set(muon_LIB_SRCS
 )
 
 
+if(BODEGA_FOUND)
+    set(muon_LIB_SRCS ${muon_LIB_SRCS}
+        BodegaBackend/BodegaBackend.cpp
+        BodegaBackend/BodegaResource.cpp
+    )
+endif(BODEGA_FOUND)
+
 kde4_add_kcfg_files(muon_LIB_SRCS GENERATE_MOC MuonDataSources.kcfgc)
 kde4_add_library(muonprivate SHARED ${muon_LIB_SRCS})
 
