@@ -29,7 +29,12 @@
 #include <bodega/uninstalljob.h>
 #include <kwallet.h>
 #include <KDebug>
+#include <KAboutData>
+#include <KPluginFactory>
 #include <QDebug>
+
+K_PLUGIN_FACTORY(MuonBodegaBackendFactory, registerPlugin<BodegaBackend>(); )
+K_EXPORT_PLUGIN(MuonBodegaBackendFactory(KAboutData("muon-bodegabackend","muon-bodegabackend",ki18n("Bodega Backend"),"0.1",ki18n("Install Bodegadata in your system"), KAboutData::License_GPL)))
 
 //copypaste ftw
 QVariantHash retrieveCredentials()
@@ -54,11 +59,15 @@ QVariantHash retrieveCredentials()
     return QVariantHash();
 }
 
-BodegaBackend::BodegaBackend(const QString& channel, const QString& iconName, QObject* parent)
+BodegaBackend::BodegaBackend(QObject* parent, const QVariantList& args)
+// BodegaBackend::BodegaBackend(const QString& channel, const QString& iconName, QObject* parent)
     : AbstractResourcesBackend(parent)
-    , m_channel(channel)
-    , m_icon(iconName)
 {
+    const QVariantMap info = args.first().toMap();
+    
+    m_icon = info.value("Icon").toString();
+    m_channel = info.value("X-Muon-Arguments").toString();
+    
     m_session = new Bodega::Session(this);
     QVariantHash credentials = retrieveCredentials();
     m_session->setUserName(credentials["username"].toString());

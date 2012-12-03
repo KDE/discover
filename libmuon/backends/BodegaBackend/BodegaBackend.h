@@ -25,6 +25,7 @@
 #include "libmuonprivate_export.h"
 #include <Transaction/Transaction.h>
 #include <QHash>
+#include <QVariantList>
 
 class BodegaResource;
 namespace Bodega {
@@ -36,8 +37,9 @@ namespace Bodega {
 class MUONPRIVATE_EXPORT BodegaBackend : public AbstractResourcesBackend
 {
 Q_OBJECT
+Q_INTERFACES(AbstractResourcesBackend)
 public:
-    explicit BodegaBackend(const QString& channel, const QString& iconName, QObject* parent = 0);
+    explicit BodegaBackend(QObject* parent, const QVariantList& args);
     virtual ~BodegaBackend();
     
     virtual void cancelTransaction(AbstractResource* app);

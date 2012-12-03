@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=Muon/Backend
+Exec=blubb
+Icon=preferences-desktop-wallpaper
+Name=Bodega Wallpapers
+GenericName=Wallpapers
+Comment=Install new, awesome wallpapers for your KDE!
+X-KDE-Library=muon-bodegabackend
+X-KDE-PluginInfo-Name=muon-bodegabackend-wallpapers
+X-KDE-PluginInfo-License=GPL
+
+#channel name
+X-Muon-Arguments=Wallpapers
