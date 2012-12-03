@@ -85,8 +85,6 @@ public:
     void integrateMainWindow(MuonMainWindow* w);
 
 private:
-    void setBackend(QApt::Backend *backend);
-    
     QApt::Backend *m_backend;
     ReviewsBackend *m_reviewsBackend;
     bool m_isReloading;
@@ -104,6 +102,7 @@ private:
     DebconfKde::DebconfGui *m_debconfGui;
     ApplicationUpdates* m_backendUpdater;
     MuonMainWindow *m_aptify;
+    bool m_aptBackendInitialized;
 
 public Q_SLOTS:
     void reload();
@@ -127,6 +126,7 @@ Q_SIGNALS:
     void errorSignal(QApt::ErrorCode code, const QString &details);
     void launchListChanged();
     void sourcesEditorFinished();
+    void aptBackendInitialized(QApt::Backend* backend);
 };
 
 #endif

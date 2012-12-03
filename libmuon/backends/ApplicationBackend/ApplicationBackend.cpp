@@ -65,6 +65,7 @@ ApplicationBackend::ApplicationBackend(QObject* parent, const QVariantList& )
     , m_currentTransaction(nullptr)
     , m_backendUpdater(new ApplicationUpdates(this))
     , m_aptify(nullptr)
+    , m_aptBackendInitialized(false)
 {
     m_watcher = new QFutureWatcher<QVector<Application*> >(this);
     connect(m_watcher, SIGNAL(finished()), this, SLOT(setApplications()));
@@ -130,23 +131,6 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
     }
 
     return appList;
-}
-
-void ApplicationBackend::setBackend(QApt::Backend *backend)
-{
-    m_backend = backend;
-    m_backend->setUndoRedoCacheSize(1);
-    m_reviewsBackend->setAptBackend(m_backend);
-    m_backendUpdater->setBackend(m_backend);
-
-    QFuture<QVector<Application*> > future = QtConcurrent::run(init, m_backend, QThread::currentThread());
-    m_watcher->setFuture(future);
-    connect(m_backend, SIGNAL(transactionQueueChanged(QString,QStringList)),
-            this, SLOT(aptTransactionsChanged(QString)));
-    connect(m_backend, SIGNAL(xapianUpdateFinished()),
-            this, SIGNAL(searchInvalidated()));
-    if(m_aptify)
-        m_aptify->setCanExit(true);
 }
 
 void ApplicationBackend::setApplications()
@@ -588,9 +572,11 @@ void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
 {
     m_aptify = w;
     QAptActions* apt = QAptActions::self();
-    apt->setBackend(m_backend);
     apt->setMainWindow(w);
-    m_aptify->setCanExit(false);
+    if(m_aptBackendInitialized)
+        apt->setBackend(m_backend);
+    else
+        connect(this, SIGNAL(aptBackendInitialized(QApt::Backend*)), apt, SLOT(setBackend(QApt::Backend*)));
     connect(m_aptify, SIGNAL(sourcesEditorFinished()), SLOT(reload()));
 }
 
@@ -607,8 +593,21 @@ void ApplicationBackend::initBackend()
         // FIXME: transaction
         m_backend->updateXapianIndex();
     }
+    m_aptBackendInitialized = true;
+    emit aptBackendInitialized(m_backend);
 
-    setBackend(m_backend);
+    m_backend->setUndoRedoCacheSize(1);
+    m_reviewsBackend->setAptBackend(m_backend);
+    m_backendUpdater->setBackend(m_backend);
+
+    QFuture<QVector<Application*> > future = QtConcurrent::run(init, m_backend, QThread::currentThread());
+    m_watcher->setFuture(future);
+    connect(m_backend, SIGNAL(transactionQueueChanged(QString,QStringList)),
+            this, SLOT(aptTransactionsChanged(QString)));
+    connect(m_backend, SIGNAL(xapianUpdateFinished()),
+            this, SIGNAL(searchInvalidated()));
+    if(m_aptify)
+        m_aptify->setCanExit(true);
 }
 
 void ApplicationBackend::initError()
