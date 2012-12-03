@@ -6,7 +6,7 @@ macro(muon_add_unit_test name)
         muonprivate
         
         ${QT_QTTEST_LIBRARY} ${QT_QTCORE_LIBRARY}
-        ${KDE4_KNEWSTUFF3_LIBS} ${KDE4_KIO_LIBS} ${QAPT_LIBRARY} attica muon-appsbackend
+        ${KDE4_KNEWSTUFF3_LIBS} ${KDE4_KIO_LIBS} ${QAPT_LIBRARY} attica
     )
 endmacro(muon_add_unit_test)
 
