@@ -26,12 +26,14 @@
 #include <libmuon/backends/ApplicationBackend/tests/modeltest.h>
 #include <backends/ApplicationBackend/ApplicationBackend.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
+#include <MuonBackendsFactory.h>
 
 QTEST_KDEMAIN_CORE( ReviewsTest )
 
 ReviewsTest::ReviewsTest(QObject* parent): QObject(parent)
 {
-    m_appBackend = new ApplicationBackend(0, QVariantList());
+    MuonBackendsFactory f;
+    m_appBackend = f.backend("muon-appsbackend");
     QTest::kWaitForSignal(m_appBackend, SIGNAL(backendReady()));
     m_revBackend = m_appBackend->reviewsBackend();
 }

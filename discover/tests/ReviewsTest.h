@@ -23,7 +23,7 @@
 
 #include <QtCore/QObject>
 
-class ApplicationBackend;
+class AbstractResourcesBackend;
 class AbstractReviewsBackend;
 namespace QApt {
 class Backend;
@@ -43,7 +43,7 @@ class ReviewsTest : public QObject
 
     private:
         AbstractReviewsBackend* m_revBackend;
-        ApplicationBackend* m_appBackend;
+        AbstractResourcesBackend* m_appBackend;
 
 };
 
