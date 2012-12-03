@@ -39,17 +39,13 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
             NameRole = Qt::UserRole,
             IconRole,
             CommentRole,
-            ActionRole,
             StateRole,
             RatingRole,
             RatingPointsRole,
             SortableRatingRole,
             ActiveRole,
-            ProgressRole,
-            ProgressTextRole,
             InstalledRole,
             ApplicationRole,
-            UntranslatedNameRole,
             OriginRole,
             CanUpgrade,
             PackageNameRole,
@@ -70,6 +66,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         QModelIndex resourceIndex(AbstractResource* res) const;
         QVector< AbstractResourcesBackend* > backends() const;
         int updatesCount() const;
+        virtual QMap< int, QVariant > itemData(const QModelIndex& index) const;
         
         Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name);
         

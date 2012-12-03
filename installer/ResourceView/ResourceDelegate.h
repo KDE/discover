@@ -26,6 +26,7 @@
 #include <KExtendableItemDelegate>
 #include <KIcon>
 
+class TransactionListener;
 class AbstractResource;
 class KIconLoader;
 class KRatingPainter;
@@ -56,6 +57,7 @@ private:
     KRatingPainter *m_ratingPainter;
     QPixmap m_emblem;
     bool m_showInfoButton;
+    TransactionListener* m_transactionListener;
 
     int calcItemHeight(const QStyleOptionViewItem &option) const;
 

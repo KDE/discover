@@ -33,9 +33,16 @@
 #include <KVBox>
 #include <Phonon/MediaObject>
 
+#ifdef QAPT_ENABLED
+#include <QAptActions.h>
+#endif
+
 MuonMainWindow::MuonMainWindow()
     : KXmlGuiWindow(0)
     , m_canExit(false)
+#ifdef QAPT_ENABLED
+    , m_actions(new QAptActions(this))
+#endif
 {
 }
 
@@ -57,6 +64,9 @@ void MuonMainWindow::setupActions()
 
     QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_M), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(easterEggTriggered()));
+#ifdef QAPT_ENABLED
+    m_actions->setupActions();
+#endif
 }
 
 void MuonMainWindow::easterEggTriggered()
@@ -87,4 +97,11 @@ void MuonMainWindow::easterEggTriggered()
 void MuonMainWindow::setCanExit(bool canExit)
 {
     m_canExit = canExit;
+}
+
+void MuonMainWindow::setActionsEnabled(bool enabled)
+{
+#ifdef QAPT_ENABLED
+    m_actions->setActionsEnabled(enabled);
+#endif
 }

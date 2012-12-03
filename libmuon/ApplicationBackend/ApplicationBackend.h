@@ -82,8 +82,11 @@ public:
     void cancelTransaction(AbstractResource *app);
     
     AbstractBackendUpdater* backendUpdater() const;
-    void integrateMainWindow(MuonMainWindow *w);
+    void integrateMainWindow(QAptActions* w);
+
 private:
+    void setBackend(QApt::Backend *backend);
+    
     QApt::Backend *m_backend;
     ReviewsBackend *m_reviewsBackend;
     bool m_isReloading;
@@ -101,9 +104,8 @@ private:
     DebconfKde::DebconfGui *m_debconfGui;
     ApplicationUpdates* m_backendUpdater;
     QAptActions *m_aptify;
+
 public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
-    void initError();
     void reload();
     
     //helper functions
@@ -118,6 +120,7 @@ private Q_SLOTS:
     void initBackend();
     void setupTransaction(QApt::Transaction *trans);
     void sourcesEditorClosed();
+    void initError();
 
 Q_SIGNALS:
     void startingFirstTransaction();

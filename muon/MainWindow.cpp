@@ -121,7 +121,7 @@ void MainWindow::initGUI()
 
     m_backend = new QApt::Backend(this);
 
-    m_actions = new QAptActions(this, m_backend);
+    m_actions->setBackend(m_backend);
     m_actions->setReloadWhenEditorFinished(true);
     connect(m_actions, SIGNAL(changesReverted()),
             this, SLOT(revertChanges()));
@@ -397,7 +397,7 @@ void MainWindow::startCommit()
 
 void MainWindow::reload()
 {
-    m_canExit = false;
+    setCanExit(false);
     returnFromPreview();
     m_stack->setCurrentWidget(m_mainWidget);
 
@@ -416,7 +416,7 @@ void MainWindow::reload()
     setActionsEnabled();
     m_managerWidget->setEnabled(true);
 
-    m_canExit = true;
+    setCanExit(true);
 }
 
 void MainWindow::setActionsEnabled(bool enabled)

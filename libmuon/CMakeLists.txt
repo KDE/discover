@@ -28,7 +28,6 @@ set(muon_LIB_SRCS
     Category/Category.cpp
     Category/CategoryModel.cpp
     MuonMainWindow.cpp
-    mobile/src/mousecursor.cpp
     ReviewsBackend/AbstractReviewsBackend.cpp
     ReviewsBackend/Rating.cpp
     ReviewsBackend/Review.cpp
@@ -94,7 +93,6 @@ endif()
 
 target_link_libraries(muonprivate
     ${DEBCONF_KDE_LIB}
-    ${QT_QTDECLARATIVE_LIBRARY}
     ${KDE4_KDEUI_LIBS}
     ${KDE4_KIO_LIBS}
     ${KDE4_PHONON_LIBS}
@@ -117,9 +115,6 @@ if(BODEGA_FOUND)
     target_link_libraries(muonprivate ${BODEGA_LIBRARIES})
 endif(BODEGA_FOUND)
 
-file(GLOB muon_QMLS "${CMAKE_CURRENT_SOURCE_DIR}/mobile/qml/*.qml")
-
 install(TARGETS muonprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES moo.ogg DESTINATION ${DATA_INSTALL_DIR}/libmuon)
-install(FILES ${muon_QMLS} DESTINATION ${DATA_INSTALL_DIR}/libmuon)
 install(FILES categories.xml DESTINATION ${DATA_INSTALL_DIR}/muon-installer)

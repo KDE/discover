@@ -53,7 +53,7 @@
 
 ApplicationBackend::ApplicationBackend(QObject *parent)
     : AbstractResourcesBackend(parent)
-    , m_backend(nullptr)
+    , m_backend(new QApt::Backend(this))
     , m_reviewsBackend(new ReviewsBackend(this))
     , m_isReloading(false)
     , m_currentTransaction(nullptr)
@@ -66,6 +66,8 @@ ApplicationBackend::ApplicationBackend(QObject *parent)
     connect(this, SIGNAL(backendReady()), SIGNAL(updatesCountChanged()));
     connect(m_reviewsBackend, SIGNAL(ratingsReady()), SIGNAL(allDataChanged()));
     connect(m_backendUpdater, SIGNAL(updatesFinnished()), SLOT(reload()));
+    
+    QTimer::singleShot(10, this, SLOT(initBackend()));
 }
 
 ApplicationBackend::~ApplicationBackend()
@@ -106,21 +108,18 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
     // a) exists
     // b) is not on the blacklist
     // c) if not downloadable, then it must already be installed
-    int uninstallable = (QApt::Package::NotInstalled | QApt::Package::NotDownloadable);
     for (Application *app : tempList) {
         bool added = false;
         QApt::Package *pkg = app->package();
         if (app->isValid()) {
-            if ((pkg) && !pkgBlacklist.contains(pkg->name())
-                    && !(pkg->state() & uninstallable)) {
+            if ((pkg) && !pkgBlacklist.contains(pkg->name())) {
                 appList << app;
+                app->moveToThread(thread);
                 added = true;
             }
         }
 
-        if(added)
-            app->moveToThread(thread);
-        else
+        if(!added)
             delete app;
     }
 
@@ -291,11 +290,12 @@ void ApplicationBackend::updateProgress(int percentage)
 
 bool ApplicationBackend::confirmRemoval(QApt::StateChanges changes)
 {
-    if (changes[QApt::Package::ToRemove].isEmpty()) {
+    const QApt::PackageList removeList = changes.value(QApt::Package::ToRemove);
+    if (removeList.isEmpty())
         return true;
-    }
-    QHash<QApt::Package::State, QApt::PackageList> removals;
-    removals[QApt::Package::ToRemove] = changes[QApt::Package::ToRemove];
+
+    QApt::StateChanges removals;
+    removals[QApt::Package::ToRemove] = removeList;
 
     ChangesDialog *dialog = new ChangesDialog(0, removals);
 
@@ -576,13 +576,10 @@ AbstractBackendUpdater* ApplicationBackend::backendUpdater() const
     return m_backendUpdater;
 }
 
-void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
+void ApplicationBackend::integrateMainWindow(QAptActions* w)
 {
-    m_backend = new QApt::Backend(this);
-    m_aptify = new QAptActions(w, m_backend);
-    QTimer::singleShot(10, this, SLOT(initBackend()));
-
-    m_aptify->setupActions();
+    m_aptify = w;
+    m_aptify->setBackend(m_backend);
     connect(m_aptify, SIGNAL(sourcesEditorFinished()), SLOT(reload()));
 }
 

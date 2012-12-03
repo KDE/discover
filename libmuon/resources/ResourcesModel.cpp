@@ -43,24 +43,22 @@ ResourcesModel::ResourcesModel(QObject* parent)
     roles[NameRole] = "name";
     roles[IconRole] = "icon";
     roles[CommentRole] = "comment";
-    roles[ActionRole] = "action";
     roles[StateRole] = "state";
     roles[RatingRole] = "rating";
     roles[RatingPointsRole] = "ratingPoints";
     roles[SortableRatingRole] = "sortableRating";
     roles[ActiveRole] = "active";
-    roles[ProgressRole] = "progress";
-    roles[ProgressTextRole] = "progressText";
     roles[InstalledRole] = "isInstalled";
     roles[ApplicationRole] = "application";
     roles[OriginRole] = "origin";
-    roles[UntranslatedNameRole] = "untranslatedName";
     roles[CanUpgrade] = "canUpgrade";
     roles[PackageNameRole] = "packageName";
     roles[IsTechnicalRole] = "isTechnical";
     roles[CategoryRole] = "category";
     roles[SectionRole] = "section";
     roles[MimeTypes] = "mimetypes";
+    roles.remove(Qt::EditRole);
+    roles.remove(Qt::WhatsThisRole);
     setRoleNames(roles);
 }
 
@@ -68,11 +66,16 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* resources)
 {
     Q_ASSERT(!m_backends.contains(resources));
     QVector<AbstractResource*> newResources = resources->allResources();
-    int current = rowCount();
-    beginInsertRows(QModelIndex(), current, current+newResources.size());
-    m_backends += resources;
-    m_resources.append(newResources);
-    endInsertRows();
+    if(!newResources.isEmpty()) {
+        int current = rowCount();
+        beginInsertRows(QModelIndex(), current, current+newResources.size());
+        m_backends += resources;
+        m_resources.append(newResources);
+        endInsertRows();
+    } else {
+        m_backends += resources;
+        m_resources.append(newResources);
+    }
     
     connect(resources, SIGNAL(backendReady()), SLOT(resetCaller()));
     connect(resources, SIGNAL(reloadStarted()), SLOT(cleanCaller()));
@@ -132,9 +135,16 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
     AbstractResource* resource = resourceAt(index.row());
     switch(role) {
         case ActiveRole: {
-            //TODO: Maybe move to AbstractResource?
-            Transaction* t = resource->backend()->currentTransactionState().second;
-            return t && t->resource() == resource;
+            Transaction* t = nullptr;
+
+            for (Transaction *trans : resource->backend()->transactions()) {
+                if (trans->resource() == resource) {
+                    t = trans;
+                    break;
+                }
+            }
+
+            return (t != nullptr);
         }
         case ApplicationRole:
             return qVariantFromValue<QObject*>(resource);
@@ -287,4 +297,14 @@ void ResourcesModel::transactionChanged(Transaction* t)
 {
     QModelIndex idx = resourceIndex(t->resource());
     dataChanged(idx, idx);
+}
+
+QMap<int, QVariant> ResourcesModel::itemData(const QModelIndex& index) const
+{
+    QMap<int, QVariant> ret;
+    QHash<int, QByteArray> names = roleNames();
+    for(QHash<int, QByteArray>::const_iterator it=names.constBegin(), itEnd=names.constEnd(); it!=itEnd; ++it) {
+        ret.insert(it.key(), data(index, it.key()));
+    }
+    return ret;
 }

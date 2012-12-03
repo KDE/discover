@@ -417,11 +417,12 @@ void Application::clearPackage()
 QVector<KService::Ptr> Application::executables() const
 {
     QVector<KService::Ptr> ret;
-    foreach (const QString &desktop, m_package->installedFilesList().filter(".desktop")) {
+    foreach (const QString &desktop, m_package->installedFilesList().filter(QRegExp(".+\\.desktop$", Qt::CaseSensitive))) {
         // we create a new KService because findByDestopPath
         // might fail because the Sycoca database is not up to date yet.
         KService::Ptr service = KService::serviceByStorageId(desktop);
-        if (service->isApplication() &&
+        if (service &&
+            service->isApplication() &&
             !service->noDisplay() &&
             !service->exec().isEmpty())
         {
