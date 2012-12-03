@@ -5,7 +5,7 @@ macro(muon_add_unit_test name)
     target_link_libraries(${name}
         muonprivate
         
-        ${QT_QTTEST_LIBRARY} ${QT_QTCORE_LIBRARY}
+        ${QT_QTTEST_LIBRARY} ${QT_QTCORE_LIBRARY} ${QT_QTDECLARATIVE_LIBRARY}
         ${KDE4_KNEWSTUFF3_LIBS} ${KDE4_KIO_LIBS} ${QAPT_LIBRARY} attica
     )
 endmacro(muon_add_unit_test)
