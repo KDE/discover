@@ -53,7 +53,6 @@
 #include "Transaction/Transaction.h"
 #include "ApplicationUpdates.h"
 #include "MuonMainWindow.h"
-#include <../libmuonapt/QAptActions.h>
 
 K_PLUGIN_FACTORY(MuonAppsBackendFactory, registerPlugin<ApplicationBackend>(); )
 K_EXPORT_PLUGIN(MuonAppsBackendFactory(KAboutData("muon-appsbackend","muon-appsbackend",ki18n("Applications Backend"),"0.1",ki18n("Applications in your system"), KAboutData::License_GPL)))
