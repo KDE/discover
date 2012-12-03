@@ -210,9 +210,6 @@ void MainWindow::clearViews()
 
 void MainWindow::populateViews()
 {
-    ResourcesModel *resourcesModel = ResourcesModel::global();
-    resourcesModel->addResourcesBackend(m_appBackend);
-    m_appBackend->integrateMainWindow(this);
     QStringList originNames = m_appBackend->appOrigins().toList();
     QStringList originLabels;
     QApt::Backend* backend = m_appBackend->backend();
