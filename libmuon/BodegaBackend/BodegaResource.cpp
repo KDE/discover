@@ -44,7 +44,7 @@ QUrl BodegaResource::screenshotUrl()
 
 QUrl BodegaResource::thumbnailUrl()
 {
-    return m_info.images.value(Bodega::ImagePreviews);
+    return m_info.images.value(Bodega::ImageMedium);
 }
 
 AbstractResource::State BodegaResource::state()
