@@ -22,6 +22,7 @@
 
 #include "MuonMainWindow.h"
 #include <KUrl>
+#include <QSet>
 
 class MuonExporter : public QObject
 {
@@ -44,6 +45,7 @@ class MuonExporter : public QObject
         KUrl m_path;
         int m_backendsToInitialize;
         QTimer* m_startExportingTimer;
+        QSet<QString> m_exculdedProperties;
 };
 
 #endif // MUONEXPORTER_H
