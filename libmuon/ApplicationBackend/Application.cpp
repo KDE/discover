@@ -21,6 +21,7 @@
 #include "Application.h"
 #include "resources/PackageState.h"
 #include "ApplicationBackend.h"
+#include <MuonDataSources.h>
 
 // Qt includes
 #include <QtCore/QFile>
@@ -252,9 +253,22 @@ QString Application::categories()
     return categories;
 }
 
-QUrl Application::screenshotUrl(QApt::ScreenshotType type)
+QUrl Application::thumbnailUrl()
 {
-    return package()->screenshotUrl(type);
+    QUrl url(package()->controlField(QLatin1String("Thumbnail-Url")));
+    if(m_sourceHasScreenshot) {
+        url = KUrl(MuonDataSources::screenshotsSource(), "thumbnail/"+packageName());
+    }
+    return url;
+}
+
+QUrl Application::screenshotUrl()
+{
+    QUrl url(package()->controlField(QLatin1String("Screenshot-Url")));
+    if(m_sourceHasScreenshot) {
+        url = KUrl(MuonDataSources::screenshotsSource(), "screenshot/"+packageName());
+    }
+    return url;
 }
 
 QString Application::license()
