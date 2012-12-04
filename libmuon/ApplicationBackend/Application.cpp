@@ -487,12 +487,13 @@ void Application::fetchScreenshots()
     bool ret = KIO::NetAccess::download(KUrl(MuonDataSources::screenshotsSource(), "/json/package/"+m_packageName), dest, 0);
     if(ret) {
         QFile f(dest);
-        f.open(QIODevice::ReadOnly);
+        bool b = f.open(QIODevice::ReadOnly);
+        Q_ASSERT(b);
         
         QJson::Parser p;
         bool ok;
         QVariantMap values = p.parse(&f, &ok).toMap();
-        if(!ok) {
+        if(ok) {
             QVariantList screenshots = values["screenshots"].toList();
             
             QList<QUrl> thumbnailUrls, screenshotUrls;
