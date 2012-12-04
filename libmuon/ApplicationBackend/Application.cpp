@@ -54,6 +54,7 @@ Application::Application(const QString& fileName, QApt::Backend* backend)
         , m_isValid(true)
         , m_isTechnical(false)
         , m_isExtrasApp(false)
+        , m_sourceHasScreenshot(true)
 {
     m_data = desktopContents(fileName);
     m_isTechnical = getField("NoDisplay").toLower() == "true" || !hasField("Exec");
@@ -492,4 +493,9 @@ void Application::fetchScreenshots()
     }
     if(!done)
         emit screenshotsFetched(QList<QUrl>() << thumbnailUrl(), QList<QUrl>() << screenshotUrl());
+}
+
+void Application::setHasScreenshot(bool has)
+{
+    m_sourceHasScreenshot = has;
 }

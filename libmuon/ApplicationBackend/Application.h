@@ -73,6 +73,9 @@ public:
     QString sizeDescription();
     QString origin() const;
 
+    bool hasScreenshot() const { return m_sourceHasScreenshot; }
+    void setHasScreenshot(bool has);
+    
     void clearPackage();
     QVector<KService::Ptr> executables() const;
     
@@ -96,6 +99,7 @@ private:
     bool m_isValid;
     bool m_isTechnical;
     bool m_isExtrasApp;
+    bool m_sourceHasScreenshot;
 
     QByteArray getField(const char* field, const QByteArray& defaultvalue = QByteArray()) const;
     KSharedConfigPtr desktopContents(const QString& filename);
