@@ -45,9 +45,7 @@ ResourcesModelTest::ResourcesModelTest()
 }
 
 ResourcesModelTest::~ResourcesModelTest()
-{
-    delete m_backend;
-}
+{}
 
 void ResourcesModelTest::testReload()
 {

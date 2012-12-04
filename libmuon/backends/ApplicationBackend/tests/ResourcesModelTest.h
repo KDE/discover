@@ -39,7 +39,6 @@ class ResourcesModelTest : public QObject
         void testCategories();
 
     private:
-        QApt::Backend* m_backend;
         ApplicationBackend* m_appBackend;
         ResourcesModel* m_model;
 };
