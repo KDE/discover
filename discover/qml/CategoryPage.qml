@@ -139,10 +139,10 @@ Page {
                         left: parent.left
                         bottom: parent.bottom
                     }
-                    sortRole: "popcon"
+                    sortRole: "sortableRating"
                     filteredCategory: page.category
                     title: i18n("Popularity Contest")
-                    roleDelegate: Label { property variant model; text: i18n("points: %1", model.popcon) }
+                    roleDelegate: Label { property variant model; text: i18n("points: %1", model.sortableRating.toFixed(2)) }
                 }
                 ApplicationsTop {
                     width: parent.width/2-5
