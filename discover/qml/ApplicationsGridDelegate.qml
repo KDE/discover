@@ -62,7 +62,6 @@ ListItem {
                     top: parent.top
                     topMargin: 5
                 }
-                fillMode: Image.PreserveAspectFit
                 source: model.application.thumbnailUrl
                 height: delegateRoot.height*0.7
                 sourceSize {
