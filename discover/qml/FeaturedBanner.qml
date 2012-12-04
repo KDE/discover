@@ -20,12 +20,7 @@ Information {
     onFeaturedDataChanged: Helpers.getFeatured(noCategoryModel, featuredData)
     Connections {
         target: resourcesModel
-        onRowsInserted: {
-            //TODO: Inefficient?
-            if(info.featuredData!=null) {
-                Helpers.getFeatured(noCategoryModel, featuredData)
-            }
-        }
+        onRowsInserted: Helpers.initFeatured(noCategoryModel)
     }
     
     model: ListModel {
