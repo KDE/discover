@@ -23,11 +23,11 @@ function getFeatured(model, data) {
     for(var packageName in data) {
         var currentData = data[packageName]
         model.append({
-            "text": currentData.packageName,
+            "text": currentData.package,
             "color": "red",
             "image": currentData.image,
             "icon": "kde",
-            "comment": "",
+            "comment": "&nbsp;",
             "packageName": currentData.package
         })
     }
