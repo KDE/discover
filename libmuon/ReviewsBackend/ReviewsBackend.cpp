@@ -79,7 +79,6 @@ ReviewsBackend::ReviewsBackend(QObject *parent)
 ReviewsBackend::~ReviewsBackend()
 {
     delete m_ratingsFile;
-    qDeleteAll(m_ratings);
 }
 
 void ReviewsBackend::refreshConsumerKeys()
@@ -170,6 +169,7 @@ void ReviewsBackend::loadRatingsFromFile(const QString &fileName)
             delete rating;
             continue;
         }
+        rating->setParent(this);
         m_ratings[rating->packageName()] = rating;
     }
     emit ratingsReady();
