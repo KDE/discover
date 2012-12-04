@@ -72,8 +72,8 @@ ReviewsBackend::ReviewsBackend(QObject *parent)
     connect(m_loginBackend, SIGNAL(connectionStateChanged()), SIGNAL(loginStateChanged()));
     connect(m_loginBackend, SIGNAL(connectionStateChanged()), SLOT(refreshConsumerKeys()));
     m_oauthInterface = new QOAuth::Interface(this);
-    refreshConsumerKeys();
-    fetchRatings();
+    
+    QMetaObject::invokeMethod(this, "fetchRatings", Qt::QueuedConnection);
 }
 
 ReviewsBackend::~ReviewsBackend()
@@ -111,6 +111,7 @@ void ReviewsBackend::setAptBackend(QApt::Backend *aptBackend)
 
 void ReviewsBackend::fetchRatings()
 {
+    refreshConsumerKeys();
     // First, load our old ratings cache in case we don't have net connectivity
     loadRatingsFromFile(KStandardDirs::locateLocal("data", "libmuon/ratings.txt"));
 
