@@ -480,12 +480,13 @@ AbstractResource::State Application::state()
 
 void Application::fetchScreenshots()
 {
-    QString dest = KStandardDirs::locate("tmp", "screenshots."+m_packageName);
-    
-    //TODO: Make async
     bool done = false;
-    bool ret = KIO::NetAccess::download(KUrl(MuonDataSources::screenshotsSource(), "/json/package/"+m_packageName), dest, 0);
-    if(ret) {
+    
+    QString dest = KStandardDirs::locate("tmp", "screenshots."+m_packageName);
+    //TODO: Make async
+    KUrl packageUrl(MuonDataSources::screenshotsSource(), "/json/package/"+m_packageName);
+    bool downloadDescriptor = m_sourceHasScreenshot && KIO::NetAccess::download(packageUrl, dest, 0);
+    if(downloadDescriptor) {
         QFile f(dest);
         bool b = f.open(QIODevice::ReadOnly);
         Q_ASSERT(b);
@@ -506,8 +507,14 @@ void Application::fetchScreenshots()
             done = true;
         }
     }
-    if(!done)
-        emit screenshotsFetched(QList<QUrl>() << thumbnailUrl(), QList<QUrl>() << screenshotUrl());
+    if(!done) {
+        QList<QUrl> thumbnails, screenshots;
+        if(!thumbnailUrl().isEmpty()) {
+            thumbnails += thumbnailUrl();
+            screenshots += screenshotUrl();
+        }
+        emit screenshotsFetched(thumbnails, screenshots);
+    }
 }
 
 void Application::setHasScreenshot(bool has)
