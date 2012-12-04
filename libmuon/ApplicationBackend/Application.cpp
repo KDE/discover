@@ -273,10 +273,10 @@ QUrl Application::screenshotUrl()
 
 QString Application::license()
 {
-    if (package()->component() == "main" ||
-        package()->component() == "universe") {
+    QString component = package()->component();
+    if (component == "main" || component == "universe") {
         return i18nc("@info license", "Open Source");
-    } else if (package()->component() == "restricted") {
+    } else if (component == "restricted") {
         return i18nc("@info license", "Proprietary");
     } else {
         return i18nc("@info license", "Unknown");
