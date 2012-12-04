@@ -34,6 +34,7 @@
 #include <KProcess>
 #include <KProtocolManager>
 #include <KStandardDirs>
+#include <KIO/Job>
 #include <KDebug>
 #include <KAboutData>
 
@@ -41,6 +42,7 @@
 #include <LibQApt/Backend>
 #include <LibQApt/Transaction>
 #include <DebconfGui.h>
+#include <qjson/parser.h>
 
 //libmuonapt includes
 #include "MuonStrings.h"
@@ -53,6 +55,7 @@
 #include "Transaction/Transaction.h"
 #include "ApplicationUpdates.h"
 #include "MuonMainWindow.h"
+#include <MuonDataSources.h>
 
 K_PLUGIN_FACTORY(MuonAppsBackendFactory, registerPlugin<ApplicationBackend>(); )
 K_EXPORT_PLUGIN(MuonAppsBackendFactory(KAboutData("muon-appsbackend","muon-appsbackend",ki18n("Applications Backend"),"0.1",ki18n("Applications in your system"), KAboutData::License_GPL)))
@@ -138,10 +141,9 @@ void ApplicationBackend::setApplications()
     m_appList = m_watcher->future().result();
 
     // Populate origin lists
-    QApt::Package *pkg;
     for (Application *app : m_appList) {
         app->setParent(this);
-        pkg = app->package();
+        QApt::Package* pkg = app->package();
         if (pkg->isInstalled())
             m_instOriginList << pkg->origin();
         else
@@ -152,6 +154,9 @@ void ApplicationBackend::setApplications()
     m_instOriginList.remove(QString());
     m_originList += m_instOriginList;
     emit backendReady();
+    
+    KIO::StoredTransferJob* job = KIO::storedGet(KUrl(MuonDataSources::screenshotsSource(), "/json/packages"),KIO::NoReload, KIO::DefaultFlags|KIO::HideProgressInfo);
+    connect(job, SIGNAL(finished(KJob*)), SLOT(initAvailablePackages(KJob*)));
 
     if (m_aptify)
         m_aptify->setCanExit(true);
@@ -645,4 +650,28 @@ void ApplicationBackend::sourcesEditorClosed()
 {
     reload();
     emit sourcesEditorFinished();
+}
+
+void ApplicationBackend::initAvailablePackages(KJob* j)
+{
+    KIO::StoredTransferJob* job = qobject_cast<KIO::StoredTransferJob*>(j);
+    Q_ASSERT(job);
+    
+    bool ok=false;
+    QJson::Parser p;
+    QVariantList data = p.parse(job->data(), &ok).toMap().value("packages").toList();
+    if(!ok)
+        kWarning() << "errors!" << p.errorString();
+    else {
+        Q_ASSERT(!m_appList.isEmpty());
+        QSet<QString> packages;
+        foreach(const QVariant& v, data) {
+            packages += v.toMap().value("name").toString();
+        }
+        Q_ASSERT(packages.count()==data.count());
+        for(Application* a : m_appList) {
+            a->setHasScreenshot(packages.contains(a->packageName()));
+        }
+        qDebug(".");
+    }
 }

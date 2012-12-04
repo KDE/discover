@@ -73,7 +73,6 @@ private:
     QHash<QString, QList<Review *> > m_reviewsCache;
     QHash<KJob *, Application *> m_jobHash;
 
-    void fetchRatings();
     void loadRatingsFromFile(const QString &fileName);
     QString getLanguage();
     AbstractLoginBackend* m_loginBackend;
@@ -85,6 +84,7 @@ private Q_SLOTS:
     void reviewsFetched(KJob *job);
     void informationPosted(KJob* job);
     void postInformation(const QString& path, const QVariantMap& data);
+    void fetchRatings();
 
 public slots:
     void login();

@@ -37,8 +37,7 @@ namespace QApt {
     class Backend;
     class Transaction;
 }
-namespace DebconfKde
-{
+namespace DebconfKde {
     class DebconfGui;
 }
 
@@ -47,6 +46,7 @@ class ApplicationUpdates;
 class ReviewsBackend;
 class Transaction;
 class QAptActions;
+class KJob;
 
 class MUONPRIVATE_EXPORT ApplicationBackend : public AbstractResourcesBackend
 {
@@ -109,6 +109,7 @@ public Q_SLOTS:
     
     //helper functions
     void clearLaunchList();
+    void initAvailablePackages(KJob*);
 
 private Q_SLOTS:
     void setApplications();

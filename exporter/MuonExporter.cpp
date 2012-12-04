@@ -35,6 +35,9 @@ MuonExporter::MuonExporter()
     m_startExportingTimer->setSingleShot(true);
     connect(m_startExportingTimer, SIGNAL(timeout()), SLOT(exportModel()));
     initialize();
+    
+    m_exculdedProperties += "executables";
+    m_exculdedProperties += "canExecute";
 }
 
 MuonExporter::~MuonExporter()
@@ -71,13 +74,13 @@ void MuonExporter::backendReady()
     }
 }
 
-QVariantMap itemDataToMap(const AbstractResource* res)
+QVariantMap itemDataToMap(const AbstractResource* res, const QSet<QString>& excluded)
 {
     QVariantMap ret;
     int propsCount = res->metaObject()->propertyCount();
     for(int i = 0; i<propsCount; i++) {
         QMetaProperty prop = res->metaObject()->property(i);
-        if(prop.type() == QVariant::UserType)
+        if(prop.type() == QVariant::UserType || excluded.contains(prop.name()))
             continue;
         QVariant val = res->property(prop.name());
         
@@ -98,7 +101,7 @@ void MuonExporter::exportModel()
         QModelIndex idx = m->index(i, 0);
         AbstractResource* res = qobject_cast<AbstractResource*>(m->data(idx, ResourcesModel::ApplicationRole).value<QObject*>());
         Q_ASSERT(res);
-        data += itemDataToMap(res);
+        data += itemDataToMap(res, m_exculdedProperties);
     }
     qDebug() << "found items: " << data.count();
     QFile f(m_path.toLocalFile());

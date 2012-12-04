@@ -58,8 +58,8 @@ public:
     QString menuPath();
     QString categories();
     QString license();
-    QUrl screenshotUrl() { return screenshotUrl(QApt::Screenshot); }
-    QUrl thumbnailUrl() { return screenshotUrl(QApt::Thumbnail); }
+    QUrl screenshotUrl();
+    QUrl thumbnailUrl();
     virtual QList< PackageState > addonsInformation();
     bool isValid() const;
     bool isTechnical() const;
@@ -73,6 +73,9 @@ public:
     QString sizeDescription();
     QString origin() const;
 
+    bool hasScreenshot() const { return m_sourceHasScreenshot; }
+    void setHasScreenshot(bool has);
+    
     void clearPackage();
     QVector<KService::Ptr> executables() const;
     
@@ -96,10 +99,10 @@ private:
     bool m_isValid;
     bool m_isTechnical;
     bool m_isExtrasApp;
+    bool m_sourceHasScreenshot;
 
     QByteArray getField(const char* field, const QByteArray& defaultvalue = QByteArray()) const;
     KSharedConfigPtr desktopContents(const QString& filename);
-    QUrl screenshotUrl(QApt::ScreenshotType type);
     QApt::PackageList addons();
     QVector<QPair<QString, QString> > locateApplication(const QString &_relPath, const QString &menuId) const;
     bool hasField(const char* field) const;

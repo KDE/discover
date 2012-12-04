@@ -21,6 +21,7 @@
 #include "Application.h"
 #include "resources/PackageState.h"
 #include "ApplicationBackend.h"
+#include <MuonDataSources.h>
 
 // Qt includes
 #include <QtCore/QFile>
@@ -54,6 +55,7 @@ Application::Application(const QString& fileName, QApt::Backend* backend)
         , m_isValid(true)
         , m_isTechnical(false)
         , m_isExtrasApp(false)
+        , m_sourceHasScreenshot(true)
 {
     m_data = desktopContents(fileName);
     m_isTechnical = getField("NoDisplay").toLower() == "true" || !hasField("Exec");
@@ -251,17 +253,30 @@ QString Application::categories()
     return categories;
 }
 
-QUrl Application::screenshotUrl(QApt::ScreenshotType type)
+QUrl Application::thumbnailUrl()
 {
-    return package()->screenshotUrl(type);
+    QUrl url(package()->controlField(QLatin1String("Thumbnail-Url")));
+    if(m_sourceHasScreenshot) {
+        url = KUrl(MuonDataSources::screenshotsSource(), "thumbnail/"+packageName());
+    }
+    return url;
+}
+
+QUrl Application::screenshotUrl()
+{
+    QUrl url(package()->controlField(QLatin1String("Screenshot-Url")));
+    if(m_sourceHasScreenshot) {
+        url = KUrl(MuonDataSources::screenshotsSource(), "screenshot/"+packageName());
+    }
+    return url;
 }
 
 QString Application::license()
 {
-    if (package()->component() == "main" ||
-        package()->component() == "universe") {
+    QString component = package()->component();
+    if (component == "main" || component == "universe") {
         return i18nc("@info license", "Open Source");
-    } else if (package()->component() == "restricted") {
+    } else if (component == "restricted") {
         return i18nc("@info license", "Proprietary");
     } else {
         return i18nc("@info license", "Unknown");
@@ -465,19 +480,21 @@ AbstractResource::State Application::state()
 
 void Application::fetchScreenshots()
 {
-    QString dest = KStandardDirs::locate("tmp", "screenshots."+m_packageName);
-    
-    //TODO: Make async
     bool done = false;
-    bool ret = KIO::NetAccess::download(KUrl("http://screenshots.debian.net/json/package/"+m_packageName), dest, 0);
-    if(ret) {
+    
+    QString dest = KStandardDirs::locate("tmp", "screenshots."+m_packageName);
+    //TODO: Make async
+    KUrl packageUrl(MuonDataSources::screenshotsSource(), "/json/package/"+m_packageName);
+    bool downloadDescriptor = m_sourceHasScreenshot && KIO::NetAccess::download(packageUrl, dest, 0);
+    if(downloadDescriptor) {
         QFile f(dest);
-        f.open(QIODevice::ReadOnly);
+        bool b = f.open(QIODevice::ReadOnly);
+        Q_ASSERT(b);
         
         QJson::Parser p;
         bool ok;
         QVariantMap values = p.parse(&f, &ok).toMap();
-        if(!ok) {
+        if(ok) {
             QVariantList screenshots = values["screenshots"].toList();
             
             QList<QUrl> thumbnailUrls, screenshotUrls;
@@ -490,6 +507,17 @@ void Application::fetchScreenshots()
             done = true;
         }
     }
-    if(!done)
-        emit screenshotsFetched(QList<QUrl>() << thumbnailUrl(), QList<QUrl>() << screenshotUrl());
+    if(!done) {
+        QList<QUrl> thumbnails, screenshots;
+        if(!thumbnailUrl().isEmpty()) {
+            thumbnails += thumbnailUrl();
+            screenshots += screenshotUrl();
+        }
+        emit screenshotsFetched(thumbnails, screenshots);
+    }
+}
+
+void Application::setHasScreenshot(bool has)
+{
+    m_sourceHasScreenshot = has;
 }

@@ -62,11 +62,10 @@ ListItem {
                     top: parent.top
                     topMargin: 5
                 }
-                fillMode: Image.PreserveAspectFit
                 source: model.application.thumbnailUrl
-                width: parent.width; height: delegateRoot.height*0.7
+                height: delegateRoot.height*0.7
                 sourceSize {
-                    width: screen.width
+                    width: parent.width
                     height: screen.height
                 }
                 cache: false
@@ -81,17 +80,23 @@ ListItem {
                         fallbackToIcon();
                 }
                 
-                function fallbackToIcon() {
-                    sourceSize.width = height
-                    sourceSize.height = height
-                    source="image://icon/"+model.application.icon
-                    smallIcon.visible = false
-                }
+                function fallbackToIcon() { state = "fallback" }
+                state: "normal"
+                states: [
+                    State { name: "normal" },
+                    State { name: "fallback"
+                        PropertyChanges { target: screen; smooth: true }
+                        PropertyChanges { target: screen; source: "image://icon/"+model.application.icon}
+                        PropertyChanges { target: screen; sourceSize.width: screen.height }
+                        PropertyChanges { target: smallIcon; visible: false }
+                    }
+                ]
             }
             QIconItem {
                 id: smallIcon
                 anchors {
-                    right: screen.right
+                    right: parent.right
+                    rightMargin: 5
                 }
                 width: 48
                 height: width

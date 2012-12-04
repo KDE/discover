@@ -88,17 +88,15 @@ Page {
     Flickable {
         id: flick
         anchors {
-            horizontalCenter: parent.horizontalCenter
-            top: parent.top
-            bottom: parent.bottom
+            fill: parent
             bottomMargin: 10
         }
-        width: page.actualWidth
         contentHeight: conts.height
         
         Column {
             id: conts
-            width: parent.width
+            width: page.actualWidth
+            anchors.horizontalCenter: parent.horizontalCenter
             spacing: 10
             Loader {
                 width: parent.width
@@ -141,10 +139,10 @@ Page {
                         left: parent.left
                         bottom: parent.bottom
                     }
-                    sortRole: "popcon"
+                    sortRole: "sortableRating"
                     filteredCategory: page.category
                     title: i18n("Popularity Contest")
-                    roleDelegate: Label { property variant model; text: i18n("points: %1", model.popcon) }
+                    roleDelegate: Label { property variant model; text: i18n("points: %1", model.sortableRating.toFixed(2)) }
                 }
                 ApplicationsTop {
                     width: parent.width/2-5

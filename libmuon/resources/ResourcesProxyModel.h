@@ -82,7 +82,6 @@ private:
     QHash<int, QVariant> m_roleFilters;
 
     bool m_sortByRelevancy;
-    bool m_filterActive;
     bool m_filterBySearch;
     Category* m_filteredCategory;
     AbstractResource::State m_stateFilter;

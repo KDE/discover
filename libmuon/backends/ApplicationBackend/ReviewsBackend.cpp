@@ -72,14 +72,13 @@ ReviewsBackend::ReviewsBackend(QObject *parent)
     connect(m_loginBackend, SIGNAL(connectionStateChanged()), SIGNAL(loginStateChanged()));
     connect(m_loginBackend, SIGNAL(connectionStateChanged()), SLOT(refreshConsumerKeys()));
     m_oauthInterface = new QOAuth::Interface(this);
-    refreshConsumerKeys();
-    fetchRatings();
+    
+    QMetaObject::invokeMethod(this, "fetchRatings", Qt::QueuedConnection);
 }
 
 ReviewsBackend::~ReviewsBackend()
 {
     delete m_ratingsFile;
-    qDeleteAll(m_ratings);
 }
 
 void ReviewsBackend::refreshConsumerKeys()
@@ -112,11 +111,10 @@ void ReviewsBackend::setAptBackend(QApt::Backend *aptBackend)
 
 void ReviewsBackend::fetchRatings()
 {
+    refreshConsumerKeys();
     // First, load our old ratings cache in case we don't have net connectivity
     loadRatingsFromFile(KStandardDirs::locateLocal("data", "libmuon/ratings.txt"));
 
-    // Try to fetch the latest ratings from the internet
-    KUrl ratingsUrl(m_serverBase, "review-stats/");
 
     if (m_ratingsFile) {
         m_ratingsFile->deleteLater();
@@ -126,6 +124,8 @@ void ReviewsBackend::fetchRatings()
     m_ratingsFile = new KTemporaryFile();
     m_ratingsFile->open();
 
+    // Try to fetch the latest ratings from the internet
+    KUrl ratingsUrl(m_serverBase, "review-stats/");
     KIO::FileCopyJob *getJob = KIO::file_copy(ratingsUrl,
                                m_ratingsFile->fileName(), -1,
                                KIO::Overwrite | KIO::HideProgressInfo);
@@ -170,6 +170,7 @@ void ReviewsBackend::loadRatingsFromFile(const QString &fileName)
             delete rating;
             continue;
         }
+        rating->setParent(this);
         m_ratings[rating->packageName()] = rating;
     }
     emit ratingsReady();

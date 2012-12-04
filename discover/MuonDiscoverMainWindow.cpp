@@ -95,6 +95,7 @@ class CachedNAMFactory : public QDeclarativeNetworkAccessManagerFactory
 MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     : MuonMainWindow()
 {
+    initialize();
     m_view = new QDeclarativeView(this);
     m_view->setBackgroundRole(QPalette::Background);
     
@@ -155,7 +156,6 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     restoreState(window.readEntry<QByteArray>("windowState", QByteArray()));
     
     setCentralWidget(m_view);
-    initialize();
     setupActions();
 }
 
