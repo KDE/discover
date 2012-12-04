@@ -88,17 +88,15 @@ Page {
     Flickable {
         id: flick
         anchors {
-            horizontalCenter: parent.horizontalCenter
-            top: parent.top
-            bottom: parent.bottom
+            fill: parent
             bottomMargin: 10
         }
-        width: page.actualWidth
         contentHeight: conts.height
         
         Column {
             id: conts
-            width: parent.width
+            width: page.actualWidth
+            anchors.horizontalCenter: parent.horizontalCenter
             spacing: 10
             Loader {
                 width: parent.width
