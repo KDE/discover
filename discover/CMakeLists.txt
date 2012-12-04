@@ -24,6 +24,10 @@ if (LIBATTICA_FOUND AND LIBATTICA_ENABLED)
     add_definitions(-DATTICA_ENABLED)
 endif (LIBATTICA_FOUND AND LIBATTICA_ENABLED)
 
+if(BODEGA_FOUND)
+    add_definitions(-DBODEGA_ENABLED)
+endif(BODEGA_FOUND)
+
 qt4_add_resources(muon_discover_SRCS resources.qrc)
 
 kde4_add_executable(muon-discover ${muon_discover_SRCS})
