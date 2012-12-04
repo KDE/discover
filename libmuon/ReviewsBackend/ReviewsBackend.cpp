@@ -115,8 +115,6 @@ void ReviewsBackend::fetchRatings()
     // First, load our old ratings cache in case we don't have net connectivity
     loadRatingsFromFile(KStandardDirs::locateLocal("data", "libmuon/ratings.txt"));
 
-    // Try to fetch the latest ratings from the internet
-    KUrl ratingsUrl(m_serverBase, "review-stats/");
 
     if (m_ratingsFile) {
         m_ratingsFile->deleteLater();
@@ -126,6 +124,8 @@ void ReviewsBackend::fetchRatings()
     m_ratingsFile = new KTemporaryFile();
     m_ratingsFile->open();
 
+    // Try to fetch the latest ratings from the internet
+    KUrl ratingsUrl(m_serverBase, "review-stats/");
     KIO::FileCopyJob *getJob = KIO::file_copy(ratingsUrl,
                                m_ratingsFile->fileName(), -1,
                                KIO::Overwrite | KIO::HideProgressInfo);

@@ -149,10 +149,9 @@ void ApplicationBackend::setApplications()
     m_appList = m_watcher->future().result();
 
     // Populate origin lists
-    QApt::Package *pkg;
     for (Application *app : m_appList) {
         app->setParent(this);
-        pkg = app->package();
+        QApt::Package* pkg = app->package();
         if (pkg->isInstalled())
             m_instOriginList << pkg->origin();
         else
