@@ -484,7 +484,7 @@ void Application::fetchScreenshots()
     
     //TODO: Make async
     bool done = false;
-    bool ret = KIO::NetAccess::download(KUrl("http://screenshots.debian.net/json/package/"+m_packageName), dest, 0);
+    bool ret = KIO::NetAccess::download(KUrl(MuonDataSources::screenshotsSource(), "/json/package/"+m_packageName), dest, 0);
     if(ret) {
         QFile f(dest);
         f.open(QIODevice::ReadOnly);
