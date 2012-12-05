@@ -548,6 +548,6 @@ void MainWindow::removeProgressItem()
             progressView->deleteLater();
 
     m_viewHash.remove(m_progressItem->index());
-    m_viewModel->removeRow(m_viewModel->indexFromItem(m_progressItem).row());
+    m_viewModel->removeRow(m_progressItem->row());
     m_progressItem = nullptr;
 }
