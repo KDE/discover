@@ -29,6 +29,7 @@
 #include <QtCore/QVector>
 
 #include <LibQApt/Package>
+#include <LibQApt/Backend>
 
 #include <libmuonprivate_export.h>
 #include "resources/AbstractResourcesBackend.h"
@@ -52,6 +53,7 @@ class MUONPRIVATE_EXPORT ApplicationBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
     Q_INTERFACES(AbstractResourcesBackend)
+    Q_PROPERTY(QObject* backend READ backend)
 public:
     explicit ApplicationBackend(QObject *parent, const QVariantList& args);
     ~ApplicationBackend();
