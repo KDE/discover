@@ -3,7 +3,7 @@ function initFeatured(model) {
         var data = model.get(row)
         var appl = resourcesModel.resourceByPackageName(data.packageName)
         if(appl==null) {
-            console.log("application ", packageName, " not found")
+            console.log("application ", data.packageName, " not found")
             continue
         }
         if(data.image==null)
