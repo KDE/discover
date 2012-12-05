@@ -211,11 +211,6 @@ void MainWindow::clearViews()
 void MainWindow::populateViews()
 {
     QStringList originNames = m_appBackend->appOrigins().toList();
-    QStringList originLabels;
-    QApt::Backend* backend = m_appBackend->backend();
-    foreach (const QString &originName, originNames) {
-        originLabels << backend->originLabel(originName);
-    }
 
     if (originNames.contains("Ubuntu")) {
         int index = originNames.indexOf("Ubuntu");
@@ -259,6 +254,7 @@ void MainWindow::populateViews()
     m_viewHash[installedItem->index()] = 0;
 
     parentItem = availableItem;
+    QApt::Backend* backend = m_appBackend->backend();
     foreach(const QString &originName, originNames) {
         QString originLabel = backend->originLabel(originName);
         QStandardItem *viewItem = new QStandardItem;
