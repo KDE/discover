@@ -27,6 +27,7 @@
 // Own includes
 #include "../libmuon/MuonMainWindow.h"
 
+class AbstractResourcesBackend;
 class LaunchListModel;
 class QAbstractItemView;
 class QModelIndex;
@@ -53,7 +54,7 @@ public:
     ~MainWindow();
 
 private:
-    ApplicationBackend *m_appBackend;
+    AbstractResourcesBackend *m_appBackend;
     QSplitter *m_mainWidget;
     QStackedWidget *m_viewStack;
     QWidget *m_busyWidget;

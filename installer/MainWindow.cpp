@@ -43,12 +43,9 @@
 #include <LibQApt/Backend>
 
 //libmuonapt includes
-#include "MuonStrings.h"
 #include <HistoryView/HistoryView.h>
 
 // Libmuon includes
-#include <backends/ApplicationBackend/Application.h>
-#include <backends/ApplicationBackend/ApplicationBackend.h>
 #include <resources/ResourcesModel.h>
 #include <MuonBackendsFactory.h>
 
@@ -152,7 +149,6 @@ void MainWindow::initObject()
     connect(resourcesModel, SIGNAL(transactionRemoved(Transaction*)),
             this, SLOT(transactionRemoved()));
 
-    // Other backends
     MuonBackendsFactory f;
     QList<AbstractResourcesBackend*> backends = f.allBackends();
 
@@ -161,8 +157,8 @@ void MainWindow::initObject()
         resourcesModel->addResourcesBackend(backend);
         backend->integrateMainWindow(this);
         
-        if(ApplicationBackend* apps = qobject_cast<ApplicationBackend*>(backend)) {
-            m_appBackend = apps;
+        if(backend->metaObject()->className()==QLatin1String("ApplicationBackend")) {
+            m_appBackend = backend;
             connect(m_appBackend, SIGNAL(backendReady()),
                     this, SLOT(populateViews()));
             connect(m_appBackend, SIGNAL(reloadStarted()), //TODO: use ResourcesModel signals
@@ -293,7 +289,7 @@ void MainWindow::populateViews()
     
     QPair< QStringList, QStringList > origins = fetchOrigins();
     QStringList originNames = origins.first;
-    QApt::Backend* backend = m_appBackend->backend();
+    QApt::Backend* backend = qobject_cast<QApt::Backend*>(m_appBackend->property("backend").value<QObject*>());
     foreach(const QString &originName, originNames) {
         availableItem->appendRow(createOriginItem(originName, backend->originLabel(originName)));
     }
