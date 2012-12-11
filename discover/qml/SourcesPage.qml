@@ -1,6 +1,7 @@
 import QtQuick 1.0
 import org.kde.plasma.components 0.1
 import org.kde.muon 1.0
+import org.kde.muonapt 1.0
 import "navigation.js" as Navigation
 
 Page {
