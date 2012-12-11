@@ -19,14 +19,14 @@
  ***************************************************************************/
 
 #include "ReviewsTest.h"
+#include "modeltest.h"
 #include <ReviewsBackend/ReviewsModel.h>
 #include <libqapt/backend.h>
 #include <KProtocolManager>
 #include <qtest_kde.h>
-#include <libmuon/backends/ApplicationBackend/tests/modeltest.h>
-#include <backends/ApplicationBackend/ApplicationBackend.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <MuonBackendsFactory.h>
+#include <resources/AbstractResourcesBackend.h>
 
 QTEST_KDEMAIN_CORE( ReviewsTest )
 

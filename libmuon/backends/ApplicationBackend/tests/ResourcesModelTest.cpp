@@ -24,11 +24,11 @@
 #include <qtest_kde.h>
 
 #include "modeltest.h"
+#include <ApplicationBackend.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>
 #include <Category/Category.h>
 #include <MuonBackendsFactory.h>
-#include <backends/ApplicationBackend/ApplicationBackend.h>
 
 QTEST_KDEMAIN_CORE( ResourcesModelTest )
 

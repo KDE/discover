@@ -1,7 +1,7 @@
 include_directories(..)
 
 macro(libmuon_add_unit_test name)
-    kde4_add_unit_test(${name} ${ARGN})
+    kde4_add_unit_test(${name}  modeltest.cpp ${ARGN})
     target_link_libraries(${name}
         muonprivate
         
@@ -10,4 +10,5 @@ macro(libmuon_add_unit_test name)
     )
 endmacro(libmuon_add_unit_test)
 
-libmuon_add_unit_test(resourcesmodeltest ResourcesModelTest.cpp modeltest.cpp)
+libmuon_add_unit_test(resourcesmodeltest ResourcesModelTest.cpp)
+libmuon_add_unit_test(reviewstest ReviewsTest.cpp)
