@@ -76,6 +76,7 @@ Page {
                         appsModel.stringSortRole=role
                         appsModel.sortOrder=sorting
                         page.sectionProperty = section
+                        page.sectionDelegate = null
                         button.checked=false
                     }
                     checked: appsModel.stringSortRole==role
