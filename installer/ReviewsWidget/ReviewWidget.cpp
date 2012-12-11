@@ -28,8 +28,6 @@
 #include <KLocale>
 #include <Nepomuk/KRatingWidget>
 
-#include <LibQApt/Package>
-
 #include <ReviewsBackend/Review.h>
 #include <resources/AbstractResource.h>
 
@@ -77,6 +75,40 @@ ReviewWidget::~ReviewWidget()
 {
 }
 
+static int compareVersion(const QString& a, const QString& b)
+{
+    if(a==b)
+        return 0;
+    QStringList verA = a.split('.');
+    QStringList verB = b.split('.');
+    while(!verA.isEmpty() && !verB.isEmpty()) {
+        QString curA = verA.takeFirst(), curB = verB.takeFirst();
+        int diff = curB.compare(curA);
+        if(diff!=0)
+            return diff;
+    }
+    return verB.size()-verA.size();
+}
+
+static QString upstreamVersion(const QString& ver)
+{
+    QString ret = ver;
+    
+    int idx = ret.indexOf(':');
+    if(idx>=0)
+        ret= ret.mid(idx+1);
+    
+    idx = ret.indexOf('-');
+    if(idx>=0)
+        ret= ret.left(idx);
+    
+    idx = ret.indexOf('+');
+    if(idx>=0)
+        ret= ret.left(idx);
+    
+    return ret;
+}
+
 void ReviewWidget::setReview(Review *review)
 {
     if (!review->package())
@@ -94,9 +126,10 @@ void ReviewWidget::setReview(Review *review)
 
     m_reviewLabel->setText(review->reviewText());
 
-    const QString reviewUpstream = QApt::Package::upstreamVersion(review->packageVersion());
-    const QString currentUpstream = QApt::Package::upstreamVersion(review->package()->installedVersion());
-    int res = QApt::Package::compareVersion(reviewUpstream, currentUpstream);
+    const QString reviewUpstream = upstreamVersion(review->packageVersion());
+    const QString currentUpstream = upstreamVersion(review->package()->installedVersion());
+
+    int res = compareVersion(reviewUpstream, currentUpstream);
 
     if (res < 0) {
         m_versionLabel->setText(QLatin1Literal("<i>") %
