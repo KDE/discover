@@ -53,11 +53,6 @@
 #include <resources/ResourcesModel.h>
 #include <MuonBackendsFactory.h>
 
-
-#ifdef ATTICA_ENABLED
-#include <backends/KNSBackend/KNSBackend.h>
-#endif
-
 // Own includes
 #include "ApplicationLauncher.h"
 #include "ResourceView/ResourceListView.h"

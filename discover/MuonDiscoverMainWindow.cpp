@@ -56,10 +56,6 @@
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <MuonBackendsFactory.h>
 
-#ifdef QAPT_ENABLED
-#include "OriginsBackend.h"
-#endif
-
 class CachedNetworkAccessManager : public QNetworkAccessManager {
     public:
         explicit CachedNetworkAccessManager(QObject* parent = 0) : QNetworkAccessManager(parent) {}
@@ -100,10 +96,6 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     kdeclarative.initialize();
     //binds things like kconfig and icons
     kdeclarative.setupBindings();
-    
-#ifdef QAPT_ENABLED
-    qmlRegisterType<OriginsBackend>("org.kde.muon", 1, 0, "OriginsBackend");
-#endif
     
     //Here we set up a cache for the screenshots
 //     m_view->engine()->setNetworkAccessManagerFactory(new CachedNAMFactory);

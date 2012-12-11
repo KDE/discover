@@ -1,9 +1,5 @@
 include_directories(../libmuon ../libmuonapt/)
 
-if (LIBATTICA_FOUND)
-    add_definitions(-DATTICA_ENABLED)
-endif (LIBATTICA_FOUND)
-
 set(muon_installer_SRCS
     main.cpp
     MainWindow.cpp
