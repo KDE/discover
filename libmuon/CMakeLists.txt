@@ -23,6 +23,7 @@ MACRO(QT4_ADD_DBUS_INTERFACE _sources _interface _basename)
 ENDMACRO(QT4_ADD_DBUS_INTERFACE)
 
 add_subdirectory(tests)
+add_subdirectory(declarative)
 
 set(muon_LIB_SRCS
     Category/Category.cpp
@@ -32,6 +33,7 @@ set(muon_LIB_SRCS
     ReviewsBackend/Rating.cpp
     ReviewsBackend/Review.cpp
     ReviewsBackend/AbstractLoginBackend.cpp
+    ReviewsBackend/ReviewsModel.cpp
     settings/SettingsPageBase.cpp
     settings/NotifySettingsPage.cpp
     Transaction/Transaction.cpp
@@ -43,6 +45,8 @@ set(muon_LIB_SRCS
     resources/PackageState.cpp
     resources/AbstractBackendUpdater.cpp
     resources/ResourcesUpdatesModel.cpp
+    ScreenshotsModel.cpp
+    ApplicationAddonsModel.cpp
 )
 
 if(QAPT_FOUND)

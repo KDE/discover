@@ -49,6 +49,7 @@
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesUpdatesModel.h>
 #include <Category/CategoryModel.h>
+#include <Category/Category.h>
 #include <Transaction/TransactionListener.h>
 #include <Transaction/Transaction.h>
 #include <ReviewsBackend/Rating.h>
@@ -65,16 +66,6 @@
 #ifdef ATTICA_ENABLED
 #include <KNSBackend/KNSBackend.h>
 #endif
-
-// Own includes
-#include "ApplicationProxyModelHelper.h"
-#include "ReviewsModel.h"
-#include "ApplicationAddonsModel.h"
-#include "ScreenshotsModel.h"
-
-QML_DECLARE_TYPE(ResourcesModel)
-QML_DECLARE_TYPE(AbstractResourcesBackend)
-
 
 class CachedNetworkAccessManager : public QNetworkAccessManager {
     public:
@@ -99,6 +90,8 @@ class CachedNAMFactory : public QDeclarativeNetworkAccessManagerFactory
     }
 };
 
+QML_DECLARE_TYPE(ResourcesModel);
+
 MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     : MuonMainWindow()
 {
@@ -116,20 +109,6 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     //binds things like kconfig and icons
     kdeclarative.setupBindings();
     
-    qmlRegisterType<CategoryModel>("org.kde.muon", 1, 0, "CategoryModel");
-    qmlRegisterType<ApplicationProxyModelHelper>("org.kde.muon", 1, 0, "ApplicationProxyModel");
-    qmlRegisterType<TransactionListener>("org.kde.muon", 1, 0, "TransactionListener");
-    qmlRegisterType<ReviewsModel>("org.kde.muon", 1, 0, "ReviewsModel");
-    qmlRegisterType<ApplicationAddonsModel>("org.kde.muon", 1, 0, "ApplicationAddonsModel");
-    qmlRegisterType<ScreenshotsModel>("org.kde.muon", 1, 0, "ScreenshotsModel");
-    qmlRegisterType<ResourcesUpdatesModel>("org.kde.muon", 1, 0, "ResourcesUpdatesModel");
-    qmlRegisterType<Rating>();
-    qmlRegisterType<AbstractResource>();
-    qmlRegisterType<AbstractResourcesBackend>();
-    qmlRegisterType<AbstractReviewsBackend>();
-    qmlRegisterType<Category>();
-    qmlRegisterType<ResourcesModel>();
-    qmlRegisterType<Transaction>();
 #ifdef QAPT_ENABLED
     qmlRegisterType<OriginsBackend>("org.kde.muon", 1, 0, "OriginsBackend");
     qmlRegisterType<Source>();

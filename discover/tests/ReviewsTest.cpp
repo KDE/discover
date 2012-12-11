@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "ReviewsTest.h"
-#include <../ReviewsModel.h>
+#include <ReviewsBackend/ReviewsModel.h>
 #include <ReviewsBackend/ReviewsBackend.h>
 #include <ApplicationBackend/ApplicationBackend.h>
 #include <libqapt/backend.h>
