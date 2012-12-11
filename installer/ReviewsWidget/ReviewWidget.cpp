@@ -31,6 +31,7 @@
 #include <LibQApt/Package>
 
 #include <ReviewsBackend/Review.h>
+#include <resources/AbstractResource.h>
 
 ReviewWidget::ReviewWidget(QWidget *parent)
         : KVBox(parent)
@@ -94,8 +95,7 @@ void ReviewWidget::setReview(Review *review)
     m_reviewLabel->setText(review->reviewText());
 
     const QString reviewUpstream = QApt::Package::upstreamVersion(review->packageVersion());
-    const QString currentUpstream = review->package()->upstreamVersion();
-
+    const QString currentUpstream = QApt::Package::upstreamVersion(review->package()->installedVersion());
     int res = QApt::Package::compareVersion(reviewUpstream, currentUpstream);
 
     if (res < 0) {

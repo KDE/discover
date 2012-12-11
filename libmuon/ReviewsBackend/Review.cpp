@@ -19,8 +19,10 @@
  ***************************************************************************/
 
 #include "Review.h"
+#include <resources/ResourcesModel.h>
 
 Review::Review(const QVariantMap &data)
+    : m_package(nullptr)
 {
     m_appName = data.value("app_name").toString();
     m_packageName = data.value("package_name").toString();
@@ -144,12 +146,10 @@ int Review::usefulnessFavorable() const
     return m_usefulnessFavorable;
 }
 
-QApt::Package *Review::package() const
+AbstractResource *Review::package()
 {
+    if(!m_package) {
+        m_package = ResourcesModel::global()->resourceByPackageName(m_packageName);
+    }
     return m_package;
-}
-
-void Review::setPackage(QApt::Package *package)
-{
-    m_package = package;
 }

@@ -26,9 +26,7 @@
 
 #include "libmuonprivate_export.h"
 
-namespace QApt {
-    class Package;
-}
+class AbstractResource;
 
 class MUONPRIVATE_EXPORT Review
 {
@@ -56,9 +54,7 @@ public:
     int rating() const;
     int usefulnessTotal() const;
     int usefulnessFavorable() const;
-    QApt::Package *package() const;
-
-    void setPackage(QApt::Package *package);
+    AbstractResource *package();
 
 private:
     QString m_appName;
@@ -75,7 +71,7 @@ private:
     QString m_summary;
     QString m_packageVersion;
 
-    QApt::Package *m_package;
+    AbstractResource *m_package;
 };
 
 #endif
