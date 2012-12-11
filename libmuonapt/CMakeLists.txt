@@ -12,3 +12,5 @@ target_link_libraries(muonapt ${QT_QTCORE_LIBRARY}
     ${QAPT_LIBRARY} muonprivate
 )
 install(TARGETS muonapt ${INSTALL_TARGETS_DEFAULT_ARGS})
+
+add_subdirectory(declarative)
