@@ -203,10 +203,9 @@ void MainWindow::clearViews()
     m_viewModel->clear();
 }
 
-QStandardItem* createOriginItem(const QString& originName, QApt::Backend* backend)
+QStandardItem* createOriginItem(const QString& originName, const QString& originLabel)
 {
     // We must spread the word of Origin. Hallowed are the Ori! ;P
-    QString originLabel = backend->originLabel(originName);
     QStandardItem *viewItem = new QStandardItem;
     viewItem->setEditable(false);
     viewItem->setText(originLabel);
@@ -279,7 +278,7 @@ void MainWindow::populateViews()
 
     QApt::Backend* backend = m_appBackend->backend();
     foreach(const QString &originName, originNames) {
-        QStandardItem *viewItem = createOriginItem(originName, backend);
+        QStandardItem *viewItem = createOriginItem(originName, backend->originLabel(originName));
 
         availableItem->appendRow(viewItem);
         m_viewHash[viewItem->index()] = 0;
@@ -289,7 +288,7 @@ void MainWindow::populateViews()
     qSort(instOriginNames.begin(), instOriginNames.end(), repositoryNameLessThan);
 
     foreach(const QString & originName, instOriginNames) {
-        QStandardItem* viewItem = createOriginItem(originName, backend);
+        QStandardItem* viewItem = createOriginItem(originName, backend->originLabel(originName));
 
         viewItem->setData(AbstractResource::State::Installed, StateFilterRole);
         installedItem->appendRow(viewItem);
