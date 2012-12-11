@@ -5,7 +5,7 @@ ApplicationsListPage {
     id: page
     stateFilter: 2
     sortRole: "canUpgrade"
-    sortOrder: 1
+    sortOrder: Qt.AscendingOrder
     sectionProperty: "canUpgrade"
     sectionDelegate: Label {
         text: section=="true" ? i18n("Update") : i18n("Installed")
