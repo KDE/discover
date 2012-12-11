@@ -101,7 +101,7 @@ void ReviewWidget::setReview(Review *review)
     if (res < 0) {
         m_versionLabel->setText(QLatin1Literal("<i>") %
                                 i18nc("@label", "This review was written for an older version "
-                                                "(Version: %1)", review->packageVersion()) %
+                                                "(Version: %1)", reviewUpstream) %
                                 QLatin1Literal("</i>"));
         m_versionLabel->show();
     }
