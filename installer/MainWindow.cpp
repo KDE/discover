@@ -203,40 +203,67 @@ void MainWindow::clearViews()
     m_viewModel->clear();
 }
 
+QStandardItem* createOriginItem(const QString& originName, QApt::Backend* backend)
+{
+    // We must spread the word of Origin. Hallowed are the Ori! ;P
+    QString originLabel = backend->originLabel(originName);
+    QStandardItem *viewItem = new QStandardItem;
+    viewItem->setEditable(false);
+    viewItem->setText(originLabel);
+    viewItem->setData(originName, OriginFilterRole);
+    viewItem->setData(AppView, ViewTypeRole);
+
+    if (originName == "Ubuntu") {
+        viewItem->setText(i18nc("@item:inlistbox", "Provided by Kubuntu"));
+        viewItem->setIcon(KIcon("ubuntu-logo"));
+    }
+
+    if (originName == "Debian") {
+        viewItem->setText(i18nc("@item:inlistbox", "Provided by Debian"));
+        viewItem->setIcon(KIcon("emblem-debian"));
+    }
+
+    if (originName == "Canonical") {
+        viewItem->setText(i18nc("@item:inlistbox The name of the repository provided by Canonical, Ltd. ",
+                                "Canonical Partners"));
+        viewItem->setIcon(KIcon("partner"));
+    }
+
+    if (originName.startsWith(QLatin1String("LP-PPA"))) {
+        viewItem->setIcon(KIcon("user-identity"));
+
+        if (originName == QLatin1String("LP-PPA-app-review-board")) {
+            viewItem->setText(i18nc("@item:inlistbox An independent software source",
+                                    "Independent"));
+            viewItem->setIcon(KIcon("system-users"));
+        } else
+            viewItem->setIcon(KIcon("user-identity"));
+    }
+    return viewItem;
+}
+
+bool repositoryNameLessThan(const QString& a, const QString& b)
+{
+    static QStringList prioritary(QStringList() << "Debian" << "Ubuntu" << "Canonical" << "LP-PPA-app-review-board");
+    int idxA = prioritary.indexOf(a);
+    int idxB = prioritary.indexOf(b);
+    if(idxA == idxB)
+        return a<b;
+    else if(idxB == -1)
+        return true;
+    else if(idxA == -1)
+        return false;
+    else
+        return idxA<idxB;
+}
+
 void MainWindow::populateViews()
 {
-    QStringList originNames = m_appBackend->appOrigins().toList();
-
-    if (originNames.contains("Ubuntu")) {
-        int index = originNames.indexOf("Ubuntu");
-        originNames.move(index, 0); // Move to front of the list
-
-        if (originNames.contains("Canonical")) {
-            int index = originNames.indexOf("Canonical");
-            if (originNames.size() >= 2)
-                originNames.move(index, 1); // Move to 2nd spot
-        }
-
-        if (originNames.contains("LP-PPA-app-review-board")) {
-            int index = originNames.indexOf("LP-PPA-app-review-board");
-            if (originNames.size() >= 3)
-                originNames.move(index, 2); // Move to third spot
-        }
-    }
-
-    if (originNames.contains("Debian")) {
-        int index = originNames.indexOf("Debian");
-        originNames.move(index, 0); // Move to front of the list
-    }
-
-    QStandardItem *parentItem = m_viewModel->invisibleRootItem();
-
     QStandardItem *availableItem = new QStandardItem;
     availableItem->setEditable(false);
     availableItem->setIcon(KIcon("applications-other").pixmap(32,32));
     availableItem->setText(i18nc("@item:inlistbox Parent item for available software", "Get Software"));
     availableItem->setData(CatView, ViewTypeRole);
-    parentItem->appendRow(availableItem);
     m_viewHash[availableItem->index()] = 0;
 
     QStandardItem *installedItem = new QStandardItem;
@@ -245,121 +272,40 @@ void MainWindow::populateViews()
     installedItem->setText(i18nc("@item:inlistbox Parent item for installed software", "Installed Software"));
     installedItem->setData(AppView, ViewTypeRole);
     installedItem->setData(AbstractResource::State::Installed, StateFilterRole);
-    parentItem->appendRow(installedItem);
     m_viewHash[installedItem->index()] = 0;
+    
+    QStringList originNames = m_appBackend->appOrigins().toList();
+    qSort(originNames.begin(), originNames.end(), repositoryNameLessThan);
 
-    parentItem = availableItem;
     QApt::Backend* backend = m_appBackend->backend();
     foreach(const QString &originName, originNames) {
-        QString originLabel = backend->originLabel(originName);
-        QStandardItem *viewItem = new QStandardItem;
-        viewItem->setEditable(false);
-        viewItem->setText(originLabel);
-        viewItem->setData(originName, OriginFilterRole);
-        viewItem->setData(AppView, ViewTypeRole);
-
-        if (originName == "Ubuntu") {
-            viewItem->setText(i18nc("@item:inlistbox", "Provided by Kubuntu"));
-            viewItem->setIcon(KIcon("ubuntu-logo"));
-        }
-
-        if (originName == "Debian") {
-            viewItem->setText(i18nc("@item:inlistbox", "Provided by Debian"));
-            viewItem->setIcon(KIcon("emblem-debian"));
-        }
-
-        if (originName == "Canonical") {
-            viewItem->setText(i18nc("@item:inlistbox The name of the repository provided by Canonical, Ltd. ",
-                                    "Canonical Partners"));
-            viewItem->setIcon(KIcon("partner"));
-        }
-
-        if (originName.startsWith(QLatin1String("LP-PPA"))) {
-            viewItem->setIcon(KIcon("user-identity"));
-
-            if (originName == QLatin1String("LP-PPA-app-review-board")) {
-                viewItem->setText(i18nc("@item:inlistbox An independent software source",
-                                        "Independent"));
-                viewItem->setIcon(KIcon("system-users"));
-            }
-        }
+        QStandardItem *viewItem = createOriginItem(originName, backend);
 
         availableItem->appendRow(viewItem);
         m_viewHash[viewItem->index()] = 0;
     }
 
     QStringList instOriginNames = m_appBackend->installedAppOrigins().toList();
-    QStringList instOriginLabels;
-    foreach (const QString &originName, instOriginNames) {
-        instOriginLabels << backend->originLabel(originName);
-    }
+    qSort(instOriginNames.begin(), instOriginNames.end(), repositoryNameLessThan);
 
-    if (instOriginNames.contains("Ubuntu")) {
-        int index = instOriginNames.indexOf("Ubuntu");
-        instOriginNames.move(index, 0); // Move to front of the list
-
-        if (instOriginNames.contains("Canonical")) {
-            int index = instOriginNames.indexOf("Canonical");
-            if (originNames.size() >= 2)
-                instOriginNames.move(index, 1); // Move to 2nd spot
-        }
-
-        if (instOriginNames.contains("LP-PPA-app-review-board")) {
-            int index = instOriginNames.indexOf("LP-PPA-app-review-board");
-            if (originNames.size() >= 3)
-                originNames.move(index, 2); // Move to third spot
-        }
-    }
-
-    if (instOriginNames.contains("Debian")) {
-        int index = instOriginNames.indexOf("Debian");
-        instOriginNames.move(index, 0); // Move to front of the list
-    }
-
-    parentItem = installedItem;
     foreach(const QString & originName, instOriginNames) {
-        // We must spread the word of Origin. Hallowed are the Ori! ;P
-        QString originLabel = backend->originLabel(originName);
-        QStandardItem *viewItem = new QStandardItem;
-        viewItem->setEditable(false);
-        viewItem->setText(originLabel);
+        QStandardItem* viewItem = createOriginItem(originName, backend);
+
         viewItem->setData(AbstractResource::State::Installed, StateFilterRole);
-        viewItem->setData(originName, OriginFilterRole);
-        viewItem->setData(AppView, ViewTypeRole);
-
-        if (originName == "Ubuntu") {
-            viewItem->setText(i18nc("@item:inlistbox", "Provided by Kubuntu"));
-            viewItem->setIcon(KIcon("ubuntu-logo"));
-        }
-
-        if (originName == "Canonical") {
-            viewItem->setText(i18nc("@item:inlistbox The name of the repository provided by Canonical, Ltd. ",
-                                    "Canonical Partners"));
-            viewItem->setIcon(KIcon("partner"));
-        }
-
-        if (originName.startsWith(QLatin1String("LP-PPA"))) {
-            if (originName == QLatin1String("LP-PPA-app-review-board")) {
-                viewItem->setText(i18nc("@item:inlistbox An independent software source",
-                                        "Independent"));
-            }
-            viewItem->setIcon(KIcon("user-identity"));
-        }
-
         installedItem->appendRow(viewItem);
         m_viewHash[viewItem->index()] = 0;
     }
-
-    parentItem = m_viewModel->invisibleRootItem();
 
     QStandardItem *historyItem = new QStandardItem;
     historyItem->setEditable(false);
     historyItem->setIcon(KIcon("view-history").pixmap(32,32));
     historyItem->setText(i18nc("@item:inlistbox Item for showing the history view", "History"));
     historyItem->setData(History, ViewTypeRole);
-    parentItem->appendRow(historyItem);
     m_viewHash[historyItem->index()] = 0;
 
+    m_viewModel->appendRow(availableItem);
+    m_viewModel->appendRow(installedItem);
+    m_viewModel->appendRow(historyItem);
     selectFirstRow(m_viewSwitcher);
 }
 
