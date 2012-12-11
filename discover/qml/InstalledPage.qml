@@ -8,7 +8,9 @@ ApplicationsListPage {
     sortOrder: Qt.AscendingOrder
     sectionProperty: "canUpgrade"
     sectionDelegate: Label {
-        text: section=="true" ? i18n("Update") : i18n("Installed")
+        text: (section=="true" ? i18n("Update") :
+               section=="false" ? i18n("Installed") :
+               section)
         anchors {
             right: parent.right
             rightMargin: page.proposedMargin
