@@ -1,5 +1,5 @@
 add_subdirectory(backends)
-
+add_subdirectory(declarative)
 
 set(muon_LIB_SRCS
     Category/Category.cpp
@@ -9,6 +9,7 @@ set(muon_LIB_SRCS
     ReviewsBackend/Rating.cpp
     ReviewsBackend/Review.cpp
     ReviewsBackend/AbstractLoginBackend.cpp
+    ReviewsBackend/ReviewsModel.cpp
     settings/SettingsPageBase.cpp
     settings/NotifySettingsPage.cpp
     Transaction/Transaction.cpp
@@ -21,6 +22,8 @@ set(muon_LIB_SRCS
     resources/AbstractBackendUpdater.cpp
     resources/ResourcesUpdatesModel.cpp
     MuonBackendsFactory.cpp
+    ScreenshotsModel.cpp
+    ApplicationAddonsModel.cpp
 )
 
 kde4_add_kcfg_files(muon_LIB_SRCS GENERATE_MOC MuonDataSources.kcfgc)

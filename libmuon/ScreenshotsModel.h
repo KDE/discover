@@ -23,10 +23,11 @@
 
 #include <QModelIndex>
 #include <QUrl>
+#include "libmuonprivate_export.h"
 
 class AbstractResource;
 
-class ScreenshotsModel : public QAbstractListModel
+class MUONPRIVATE_EXPORT ScreenshotsModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(AbstractResource* application READ resource WRITE setResource)

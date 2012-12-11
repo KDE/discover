@@ -18,56 +18,46 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef REVIEWSMODEL_H
-#define REVIEWSMODEL_H
+#ifndef APPLICATIONADDONSMODEL_H
+#define APPLICATIONADDONSMODEL_H
 
-#include <QModelIndex>
+#include <QAbstractListModel>
+#include <resources/PackageState.h>
 
-class Review;
+#include "libmuonprivate_export.h"
+
 class AbstractResource;
-class AbstractReviewsBackend;
-class ReviewsModel : public QAbstractListModel
+
+class MUONPRIVATE_EXPORT ApplicationAddonsModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(AbstractReviewsBackend* backend READ backend)
-    Q_PROPERTY(AbstractResource* resource READ resource WRITE setResource)
+    Q_PROPERTY(AbstractResource* application READ application WRITE setApplication)
+    Q_PROPERTY(bool hasChanges READ hasChanges NOTIFY stateChanged)
+    Q_PROPERTY(bool isEmpty READ isEmpty NOTIFY applicationChanged)
     public:
-        enum Roles {
-            ShouldShow=Qt::UserRole+1,
-            Reviewer,
-            CreationDate,
-            UsefulnessTotal,
-            UsefulnessFavorable,
-            Rating,
-            Summary
-        };
-        explicit ReviewsModel(QObject* parent = 0);
+        explicit ApplicationAddonsModel(QObject* parent = 0);
+        
+        AbstractResource* application() const;
+        void setApplication(AbstractResource* app);
+        bool hasChanges() const;
+        
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
         virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
-
-        AbstractReviewsBackend* backend() const;
-        void setResource(AbstractResource* app);
-        AbstractResource* resource() const;
-        virtual void fetchMore(const QModelIndex& parent=QModelIndex());
-        virtual bool canFetchMore(const QModelIndex&) const;
+        bool isEmpty() const;
 
     public slots:
-        void deleteReview(int row);
-        void flagReview(int row, const QString& reason, const QString& text);
-        void markUseful(int row, bool useful);
+        void discardChanges();
+        void applyChanges();
+        void changeState(const QString& packageName, bool installed);
 
-    private slots:
-        void addReviews(AbstractResource* app, const QList<Review*>& reviews);
+    signals:
+        void stateChanged();
+        void applicationChanged();
 
     private:
-        void restartFetching();
-
         AbstractResource* m_app;
-        AbstractReviewsBackend* m_backend;
-        QList<Review*> m_reviews;
-        int m_lastPage;
-        bool m_canFetchMore;
+        QList<PackageState> m_initial;
+        QHash<QString, bool> m_state;
 };
 
-#endif // REVIEWSMODEL_H
-
+#endif // APPLICATIONADDONSMODEL_H

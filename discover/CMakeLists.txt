@@ -6,10 +6,6 @@ include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/..)
 set(muon_discover_SRCS
     main.cpp
     MuonDiscoverMainWindow.cpp
-    ApplicationProxyModelHelper.cpp
-    ReviewsModel.cpp
-    ApplicationAddonsModel.cpp
-    ScreenshotsModel.cpp
 )
 
 if(QAPT_FOUND)

@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "ReviewsTest.h"
-#include <../ReviewsModel.h>
+#include <ReviewsBackend/ReviewsModel.h>
 #include <libqapt/backend.h>
 #include <KProtocolManager>
 #include <qtest_kde.h>
