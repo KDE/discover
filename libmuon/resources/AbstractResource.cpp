@@ -20,6 +20,7 @@
 
 #include "AbstractResource.h"
 #include "AbstractResourcesBackend.h"
+#include <KLocalizedString>
 
 AbstractResource::AbstractResource(AbstractResourcesBackend* parent)
     : QObject(parent)
@@ -61,4 +62,15 @@ QString AbstractResource::mimetypes() const
 AbstractResourcesBackend* AbstractResource::backend() const
 {
     return static_cast<AbstractResourcesBackend*>(parent());
+}
+
+QString AbstractResource::status()
+{
+    switch(state()) {
+        case Broken: return i18n("Broken");
+        case None: return i18n("Available");
+        case Installed: return i18n("Installed");
+        case Upgradeable: return i18n("Upgradeable");
+    }
+    return QString();
 }

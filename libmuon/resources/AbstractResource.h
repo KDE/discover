@@ -37,6 +37,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString icon READ icon CONSTANT)
     Q_PROPERTY(bool canExecute READ canExecute CONSTANT)
     Q_PROPERTY(State state READ state NOTIFY stateChanged)
+    Q_PROPERTY(QString status READ status NOTIFY stateChanged)
     Q_PROPERTY(QString category READ categories CONSTANT)
     Q_PROPERTY(bool isTechnical READ isTechnical CONSTANT)
     Q_PROPERTY(QUrl homepage READ homepage CONSTANT)
@@ -112,6 +113,10 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
 
         bool canUpgrade();
         bool isInstalled();
+        
+        ///@returns a user-readable explaination of the resource status
+        ///by default, it will specify what state() is returning
+        virtual QString status();
 
         AbstractResourcesBackend* backend() const;
     public slots:

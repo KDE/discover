@@ -536,13 +536,12 @@ void ResourceDetailsWidget::updateActionButton()
     if (!m_resource)
         return;
 
+    m_statusLabel->setText(m_resource->status());
     if (!m_resource->isInstalled()) {
-        m_statusLabel->setText(MuonStrings::global()->packageStateName(QApt::Package::NotInstalled));
         m_actionButton->setText(i18nc("@action", "Install"));
         m_actionButton->setIcon(KIcon("download"));
         m_actionButton->show();
     } else {
-        m_statusLabel->setText(MuonStrings::global()->packageStateName(QApt::Package::Installed));
         m_actionButton->setText(i18nc("@action", "Remove"));
         m_actionButton->setIcon(KIcon("edit-delete"));
     }
