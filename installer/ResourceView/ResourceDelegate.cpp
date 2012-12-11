@@ -37,9 +37,6 @@
 #include <Nepomuk/KRatingPainter>
 #include <KDebug>
 
-// LibQApt includes
-#include <LibQApt/Backend>
-
 //Libmuon includes
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>

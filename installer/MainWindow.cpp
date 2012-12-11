@@ -45,7 +45,6 @@
 //libmuonapt includes
 #include "MuonStrings.h"
 #include <HistoryView/HistoryView.h>
-#include <QAptActions.h>
 
 // Libmuon includes
 #include <backends/ApplicationBackend/Application.h>
