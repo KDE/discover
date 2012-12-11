@@ -263,7 +263,6 @@ void MainWindow::populateViews()
     availableItem->setIcon(KIcon("applications-other").pixmap(32,32));
     availableItem->setText(i18nc("@item:inlistbox Parent item for available software", "Get Software"));
     availableItem->setData(CatView, ViewTypeRole);
-    m_viewHash[availableItem->index()] = 0;
 
     QStandardItem *installedItem = new QStandardItem;
     installedItem->setEditable(false);
@@ -271,7 +270,6 @@ void MainWindow::populateViews()
     installedItem->setText(i18nc("@item:inlistbox Parent item for installed software", "Installed Software"));
     installedItem->setData(AppView, ViewTypeRole);
     installedItem->setData(AbstractResource::State::Installed, StateFilterRole);
-    m_viewHash[installedItem->index()] = 0;
     
     QStringList originNames = m_appBackend->appOrigins().toList();
     qSort(originNames.begin(), originNames.end(), repositoryNameLessThan);
@@ -281,7 +279,6 @@ void MainWindow::populateViews()
         QStandardItem *viewItem = createOriginItem(originName, backend->originLabel(originName));
 
         availableItem->appendRow(viewItem);
-        m_viewHash[viewItem->index()] = 0;
     }
 
     QStringList instOriginNames = m_appBackend->installedAppOrigins().toList();
@@ -292,7 +289,6 @@ void MainWindow::populateViews()
 
         viewItem->setData(AbstractResource::State::Installed, StateFilterRole);
         installedItem->appendRow(viewItem);
-        m_viewHash[viewItem->index()] = 0;
     }
 
     QStandardItem *historyItem = new QStandardItem;
@@ -300,7 +296,6 @@ void MainWindow::populateViews()
     historyItem->setIcon(KIcon("view-history").pixmap(32,32));
     historyItem->setText(i18nc("@item:inlistbox Item for showing the history view", "History"));
     historyItem->setData(History, ViewTypeRole);
-    m_viewHash[historyItem->index()] = 0;
 
     m_viewModel->appendRow(availableItem);
     m_viewModel->appendRow(installedItem);
@@ -483,11 +478,10 @@ void MainWindow::removeProgressItem()
     if (!m_progressItem)
         return;
 
-    QObject *progressView = m_viewHash[m_progressItem->index()];
+    QObject *progressView = m_viewHash.take(m_progressItem->index());
     if (progressView)
             progressView->deleteLater();
 
-    m_viewHash.remove(m_progressItem->index());
     m_viewModel->removeRow(m_progressItem->row());
     m_progressItem = nullptr;
 }
