@@ -139,20 +139,9 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
 void ApplicationBackend::setApplications()
 {
     m_appList = m_watcher->future().result();
-
-    // Populate origin lists
-    for (Application *app : m_appList) {
+    for (Application* app : m_appList)
         app->setParent(this);
-        QApt::Package* pkg = app->package();
-        if (pkg->isInstalled())
-            m_instOriginList << pkg->origin();
-        else
-            m_originList << pkg->origin();
-    }
 
-    m_originList.remove(QString());
-    m_instOriginList.remove(QString());
-    m_originList += m_instOriginList;
     emit backendReady();
     
     KIO::StoredTransferJob* job = KIO::storedGet(KUrl(MuonDataSources::screenshotsSource(), "/json/packages"),KIO::NoReload, KIO::DefaultFlags|KIO::HideProgressInfo);
@@ -478,16 +467,6 @@ QVector<AbstractResource*> ApplicationBackend::allResources() const
         ret += app;
     }
     return ret;
-}
-
-QSet<QString> ApplicationBackend::appOrigins() const
-{
-    return m_originList;
-}
-
-QSet<QString> ApplicationBackend::installedAppOrigins() const
-{
-    return m_instOriginList;
 }
 
 QList<Transaction *> ApplicationBackend::transactions() const

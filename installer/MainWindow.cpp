@@ -245,13 +245,31 @@ bool repositoryNameLessThan(const QString& a, const QString& b)
 {
     static QStringList prioritary(QStringList() << "Debian" << "Ubuntu" << "Canonical" << "LP-PPA-app-review-board");
     int idxA = prioritary.indexOf(a), idxB = prioritary.indexOf(b);
-    
     if(idxA == idxB)
         return a<b;
     else if((idxB == -1) ^ (idxA == -1))
         return idxB == -1;
     else
         return idxA<idxB;
+}
+
+QPair<QSet<QString>, QSet<QString> > fetchOrigins()
+{
+    QSet<QString> originList, instOriginList;
+    
+    ResourcesModel *resourcesModel = ResourcesModel::global();
+    for(int i=0; i<resourcesModel->rowCount(); i++) {
+        AbstractResource* app = resourcesModel->resourceAt(i);
+        if (app->isInstalled())
+            instOriginList << app->origin();
+        else
+            originList << app->origin();
+    }
+
+    originList.remove(QString());
+    instOriginList.remove(QString());
+    originList += instOriginList;
+    return qMakePair(originList, instOriginList);
 }
 
 void MainWindow::populateViews()
@@ -269,7 +287,8 @@ void MainWindow::populateViews()
     installedItem->setData(AppView, ViewTypeRole);
     installedItem->setData(AbstractResource::State::Installed, StateFilterRole);
     
-    QStringList originNames = m_appBackend->appOrigins().toList();
+    QPair< QSet< QString >, QSet< QString > > origins = fetchOrigins();
+    QStringList originNames = origins.first.toList();
     qSort(originNames.begin(), originNames.end(), repositoryNameLessThan);
 
     QApt::Backend* backend = m_appBackend->backend();
@@ -279,7 +298,7 @@ void MainWindow::populateViews()
         availableItem->appendRow(viewItem);
     }
 
-    QStringList instOriginNames = m_appBackend->installedAppOrigins().toList();
+    QStringList instOriginNames = origins.second.toList();
     qSort(instOriginNames.begin(), instOriginNames.end(), repositoryNameLessThan);
 
     foreach(const QString & originName, instOriginNames) {

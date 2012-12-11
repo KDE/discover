@@ -60,8 +60,6 @@ public:
 
     AbstractReviewsBackend *reviewsBackend() const;
     Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name) const;
-    QSet<QString> appOrigins() const;
-    QSet<QString> installedAppOrigins() const;
     QPair<TransactionStateTransition, Transaction *> currentTransactionState() const;
     QList<Transaction *> transactions() const;
     QList<Application*> launchList() const;
@@ -93,8 +91,6 @@ private:
 
     QFutureWatcher<QVector<Application*> >* m_watcher;
     QVector<Application *> m_appList;
-    QSet<QString> m_originList;
-    QSet<QString> m_instOriginList;
     QList<Application*> m_appLaunchList;
 
     // Transactions
