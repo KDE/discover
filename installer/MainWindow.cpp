@@ -244,14 +244,12 @@ QStandardItem* createOriginItem(const QString& originName, const QString& origin
 bool repositoryNameLessThan(const QString& a, const QString& b)
 {
     static QStringList prioritary(QStringList() << "Debian" << "Ubuntu" << "Canonical" << "LP-PPA-app-review-board");
-    int idxA = prioritary.indexOf(a);
-    int idxB = prioritary.indexOf(b);
+    int idxA = prioritary.indexOf(a), idxB = prioritary.indexOf(b);
+    
     if(idxA == idxB)
         return a<b;
-    else if(idxB == -1)
-        return true;
-    else if(idxA == -1)
-        return false;
+    else if((idxB == -1) ^ (idxA == -1))
+        return idxB == -1;
     else
         return idxA<idxB;
 }
