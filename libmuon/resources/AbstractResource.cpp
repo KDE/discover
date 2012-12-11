@@ -51,7 +51,13 @@ bool AbstractResource::isInstalled()
 
 void AbstractResource::fetchScreenshots()
 {
-    emit screenshotsFetched(QList<QUrl>() << thumbnailUrl(), QList<QUrl>() << screenshotUrl());
+    QList<QUrl> thumbs, screens;
+    QUrl thumbnail = thumbnailUrl();
+    if(!thumbnail.isEmpty()) {
+        thumbs << thumbnail;
+        screens << screenshotUrl();
+    }
+    emit screenshotsFetched(thumbs, screens);
 }
 
 QString AbstractResource::mimetypes() const
