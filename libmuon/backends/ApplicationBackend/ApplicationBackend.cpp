@@ -439,19 +439,9 @@ void ApplicationBackend::cancelTransaction(AbstractResource* app)
 //    m_backend->undo(); // Undo temporary simulation marking
 //}
 
-QList<Application*> ApplicationBackend::launchList() const
-{
-    return m_appLaunchList;
-}
-
 QApt::Backend* ApplicationBackend::backend() const
 {
     return m_backend;
-}
-
-void ApplicationBackend::clearLaunchList()
-{
-    m_appLaunchList.clear();
 }
 
 AbstractReviewsBackend *ApplicationBackend::reviewsBackend() const

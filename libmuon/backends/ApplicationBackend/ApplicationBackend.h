@@ -62,7 +62,6 @@ public:
     Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name) const;
     QPair<TransactionStateTransition, Transaction *> currentTransactionState() const;
     QList<Transaction *> transactions() const;
-    QList<Application*> launchList() const;
     QApt::Backend* backend() const;
 
     int updatesCount() const;
@@ -91,7 +90,6 @@ private:
 
     QFutureWatcher<QVector<Application*> >* m_watcher;
     QVector<Application *> m_appList;
-    QList<Application*> m_appLaunchList;
 
     // Transactions
     QHash<Transaction *, QApt::Transaction *> m_transQueue;
@@ -106,7 +104,6 @@ public Q_SLOTS:
     void reload();
     
     //helper functions
-    void clearLaunchList();
     void initAvailablePackages(KJob*);
 
 private Q_SLOTS:
@@ -123,7 +120,6 @@ private Q_SLOTS:
 Q_SIGNALS:
     void startingFirstTransaction();
     void errorSignal(QApt::ErrorCode code, const QString &details);
-    void launchListChanged();
     void sourcesEditorFinished();
     void aptBackendInitialized(QApt::Backend* backend);
 };

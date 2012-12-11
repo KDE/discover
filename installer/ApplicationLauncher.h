@@ -35,7 +35,7 @@ class ApplicationLauncher : public QDialog
 {
     Q_OBJECT
 public:
-    explicit ApplicationLauncher(ApplicationBackend* backend, QWidget* parent = 0);
+    explicit ApplicationLauncher(LaunchListModel* backend, QWidget* parent = 0);
     ~ApplicationLauncher();
 
 private:

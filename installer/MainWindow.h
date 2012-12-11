@@ -27,6 +27,7 @@
 // Own includes
 #include "../libmuon/MuonMainWindow.h"
 
+class LaunchListModel;
 class QAbstractItemView;
 class QModelIndex;
 class QSplitter;
@@ -66,8 +67,8 @@ private:
     ProgressView *m_progressView;
     QStandardItem *m_progressItem;
 
-    QVector<KService::Ptr> m_launchableApps;
     int m_transactionCount;
+    LaunchListModel* m_launches;
 
 private Q_SLOTS:
     void initGUI();

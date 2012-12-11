@@ -58,6 +58,7 @@
 #include "AvailableView.h"
 #include "ProgressView.h"
 #include "ViewSwitcher.h"
+#include "LaunchListModel.h"
 #include "MuonInstallerSettings.h"
 
 enum ViewModelRole {
@@ -252,22 +253,26 @@ bool repositoryNameLessThan(const QString& a, const QString& b)
         return idxA<idxB;
 }
 
-QPair<QSet<QString>, QSet<QString> > fetchOrigins()
+QPair<QStringList, QStringList> fetchOrigins()
 {
-    QSet<QString> originList, instOriginList;
+    QSet<QString> originSet, instOriginSet;
     
     ResourcesModel *resourcesModel = ResourcesModel::global();
     for(int i=0; i<resourcesModel->rowCount(); i++) {
         AbstractResource* app = resourcesModel->resourceAt(i);
         if (app->isInstalled())
-            instOriginList << app->origin();
+            instOriginSet << app->origin();
         else
-            originList << app->origin();
+            originSet << app->origin();
     }
 
-    originList.remove(QString());
-    instOriginList.remove(QString());
-    originList += instOriginList;
+    originSet.remove(QString());
+    instOriginSet.remove(QString());
+    originSet += instOriginSet;
+    
+    QStringList originList=originSet.toList(), instOriginList=instOriginSet.toList();
+    qSort(originList.begin(), originList.end(), repositoryNameLessThan);
+    qSort(instOriginList.begin(), instOriginList.end(), repositoryNameLessThan);
     return qMakePair(originList, instOriginList);
 }
 
@@ -286,20 +291,14 @@ void MainWindow::populateViews()
     installedItem->setData(AppView, ViewTypeRole);
     installedItem->setData(AbstractResource::State::Installed, StateFilterRole);
     
-    QPair< QSet< QString >, QSet< QString > > origins = fetchOrigins();
-    QStringList originNames = origins.first.toList();
-    qSort(originNames.begin(), originNames.end(), repositoryNameLessThan);
-
+    QPair< QStringList, QStringList > origins = fetchOrigins();
+    QStringList originNames = origins.first;
     QApt::Backend* backend = m_appBackend->backend();
     foreach(const QString &originName, originNames) {
-        QStandardItem *viewItem = createOriginItem(originName, backend->originLabel(originName));
-
-        availableItem->appendRow(viewItem);
+        availableItem->appendRow(createOriginItem(originName, backend->originLabel(originName)));
     }
 
-    QStringList instOriginNames = origins.second.toList();
-    qSort(instOriginNames.begin(), instOriginNames.end(), repositoryNameLessThan);
-
+    QStringList instOriginNames = origins.second;
     foreach(const QString & originName, instOriginNames) {
         QStandardItem* viewItem = createOriginItem(originName, backend->originLabel(originName));
 
@@ -391,21 +390,8 @@ void MainWindow::showLauncherMessage()
 {
     clearMessageActions();
 
-    QVector<KService::Ptr> apps;
-    foreach (Application *app, m_appBackend->launchList()) {
-        app->clearPackage();
-        app->package(); // Regenerate package
-        if (!app->isInstalled()) {
-            continue;
-        }
-        apps << app->executables();
-    }
-
-    m_appBackend->clearLaunchList();
-    m_launchableApps = apps;
-
-    if (apps.size() == 1) {
-        KService::Ptr service = apps.first();
+    if (m_launches->rowCount()==1) {
+        KService::Ptr service = m_launches->serviceAt(0);
         QString name = service->genericName().isEmpty() ?
                        service->property("Name").toString() :
                        service->property("Name").toString() % QLatin1Literal(" - ") % service->genericName();
@@ -416,7 +402,7 @@ void MainWindow::showLauncherMessage()
 
         m_launcherMessage->addAction(launchAction);
         m_launcherMessage->animatedShow();
-    } else if (apps.size() > 1) {
+    } else if (m_launches->rowCount() > 1) {
         m_launcherMessage->setText(i18nc("@info", "Applications successfully installed."));
         KAction *launchAction = new KAction(i18nc("@action", "Run New Applications..."), this);
         connect(launchAction, SIGNAL(activated()), this, SLOT(showAppLauncher()));
@@ -427,15 +413,15 @@ void MainWindow::showLauncherMessage()
 
 void MainWindow::launchSingleApp()
 {
-    KToolInvocation::startServiceByDesktopPath(m_launchableApps.first()->desktopEntryPath());
+    m_launches->invokeApplication(0);
     m_launcherMessage->animatedHide();
     m_launcherMessage->removeAction(m_launcherMessage->actions().first());
 }
 
 void MainWindow::showAppLauncher()
 {
-    if (!m_appLauncher && !m_launchableApps.isEmpty()) {
-        m_appLauncher = new ApplicationLauncher(m_appBackend);
+    if (!m_appLauncher && !m_launches->rowCount()==0) {
+        m_appLauncher = new ApplicationLauncher(m_launches);
         connect(m_appLauncher, SIGNAL(destroyed(QObject*)),
             this, SLOT(onAppLauncherClosed()));
         connect(m_appLauncher, SIGNAL(finished(int)),

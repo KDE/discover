@@ -65,6 +65,11 @@ QString AbstractResource::mimetypes() const
     return QString();
 }
 
+QStringList AbstractResource::executables() const
+{
+    return QStringList();
+}
+
 AbstractResourcesBackend* AbstractResource::backend() const
 {
     return static_cast<AbstractResourcesBackend*>(parent());

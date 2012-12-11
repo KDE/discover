@@ -30,7 +30,6 @@ set(appsbackend_SRCS
     ApplicationBackend.cpp
     Application.cpp
     ApplicationUpdates.cpp
-    LaunchListModel.cpp
     ReviewsBackend.cpp #TODO: rename to AptReviewsBackend
     UbuntuLoginBackend.cpp
 )

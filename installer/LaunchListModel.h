@@ -23,26 +23,22 @@
 
 #include "libmuonprivate_export.h"
 #include <QStandardItemModel>
+#include <KService>
 
-class Application;
+class AbstractResource;
+class Transaction;
 class ApplicationBackend;
 class MUONPRIVATE_EXPORT LaunchListModel : public QStandardItemModel
 {
     Q_OBJECT
-    Q_PROPERTY(ApplicationBackend* backend READ backend WRITE setBackend)
     public:
         explicit LaunchListModel(QObject* parent = 0);
-        void setBackend(ApplicationBackend* backend);
-        ApplicationBackend* backend() const { return m_backend; }
+        void addApplication(AbstractResource* a);
+        KService::Ptr serviceAt(int row) const;
 
     public slots:
         void invokeApplication(int row) const;
-
-    private slots:
-        void resetApplications();
-
-    private:
-        ApplicationBackend* m_backend;
+        void transactionFinished(Transaction* t);
 };
 
 #endif // LAUNCHLISTMODEL_H

@@ -77,7 +77,8 @@ public:
     void setHasScreenshot(bool has);
     
     void clearPackage();
-    QVector<KService::Ptr> executables() const;
+    QVector<KService::Ptr> findExecutables() const;
+    virtual QStringList executables() const;
     
     /** Used to trigger the stateChanged signal from the ApplicationBackend */
     void emitStateChanged();

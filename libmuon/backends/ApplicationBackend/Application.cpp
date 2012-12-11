@@ -157,7 +157,7 @@ QString Application::menuPath()
     QString arrow(QString::fromUtf8(" ➜ "));
 
     // Take the file name and remove the .desktop ending
-    QVector<KService::Ptr> execs = executables();
+    QVector<KService::Ptr> execs = findExecutables();
     if(execs.isEmpty())
         return path;
 
@@ -429,7 +429,7 @@ void Application::clearPackage()
     m_package = 0;
 }
 
-QVector<KService::Ptr> Application::executables() const
+QVector<KService::Ptr> Application::findExecutables() const
 {
     QVector<KService::Ptr> ret;
     foreach (const QString &desktop, m_package->installedFilesList().filter(QRegExp(".+\\.desktop$", Qt::CaseSensitive))) {
@@ -454,14 +454,14 @@ void Application::emitStateChanged()
 
 void Application::invokeApplication() const
 {
-    QVector< KService::Ptr > execs = executables();
+    QVector< KService::Ptr > execs = findExecutables();
     Q_ASSERT(!execs.isEmpty());
     KToolInvocation::startServiceByDesktopPath(execs.first()->desktopEntryPath());
 }
 
 bool Application::canExecute() const
 {
-    return !executables().isEmpty();
+    return !findExecutables().isEmpty();
 }
 
 QString Application::section()
@@ -520,4 +520,14 @@ void Application::fetchScreenshots()
 void Application::setHasScreenshot(bool has)
 {
     m_sourceHasScreenshot = has;
+}
+
+QStringList Application::executables() const
+{
+    QStringList ret;
+    QVector<KService::Ptr> exes = findExecutables();
+    foreach(KService::Ptr exe, exes) {
+        ret += exe->desktopEntryPath();
+    }
+    return ret;
 }

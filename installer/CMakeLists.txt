@@ -27,7 +27,9 @@ set(muon_installer_SRCS
     ReviewsWidget/ReviewWidget.cpp
     ReviewsWidget/ReviewsWidget.cpp
     ScreenShotOverlay.cpp
-    ViewSwitcher.cpp)
+    ViewSwitcher.cpp
+    LaunchListModel.cpp
+)
 
 kde4_add_kcfg_files(muon_installer_SRCS GENERATE_MOC config/MuonInstallerSettings.kcfgc)
 

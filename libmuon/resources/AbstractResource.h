@@ -110,6 +110,8 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         virtual QString mimetypes() const;
         
         virtual QList<PackageState> addonsInformation() = 0;
+        
+        virtual QStringList executables() const;
 
         bool canUpgrade();
         bool isInstalled();

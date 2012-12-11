@@ -20,8 +20,10 @@
  ***************************************************************************/
 
 #include "LaunchListModel.h"
-#include "Application.h"
-#include "ApplicationBackend.h"
+#include <Transaction/Transaction.h>
+#include <resources/AbstractResource.h>
+#include <resources/AbstractResourcesBackend.h>
+#include <resources/ResourcesModel.h>
 #include <QStringBuilder>
 #include <QDebug>
 #include <KIcon>
@@ -30,35 +32,29 @@
 
 LaunchListModel::LaunchListModel(QObject* parent)
     : QStandardItemModel(parent)
-    , m_backend(0)
-{}
-
-void LaunchListModel::setBackend(ApplicationBackend* backend)
 {
-    if(m_backend)
-        disconnect(m_backend, SIGNAL(launchListChanged()), this, SLOT(resetApplications()));
-    m_backend = backend;
-    if(m_backend) {
-        connect(m_backend, SIGNAL(launchListChanged()), this, SLOT(resetApplications()));
-        resetApplications();
-    }
+    connect(ResourcesModel::global(), SIGNAL(transactionRemoved(Transaction*)), SLOT(transactionFinished(Transaction*)));
 }
 
-void LaunchListModel::resetApplications()
+void LaunchListModel::transactionFinished(Transaction* t)
 {
-    clear();
+    if(t->resource()->canExecute() && t->state()==DoneState && t->action()==InstallApp)
+        addApplication(t->resource());
+}
+
+void LaunchListModel::addApplication(AbstractResource* app)
+{
     QList<QStandardItem*> items;
-    foreach (Application *app, m_backend->launchList()) {
-        QVector<KService::Ptr> execs = app->executables();
-        foreach (KService::Ptr service, execs) {
-            QString name = service->genericName().isEmpty() ?
-                        service->property("Name").toString() :
-                        service->property("Name").toString() % QLatin1Literal(" - ") % service->genericName();
-            QStandardItem *item = new QStandardItem(name);
-            item->setIcon(KIcon(service->icon()));
-            item->setData(service->desktopEntryPath(), Qt::UserRole);
-            items += item;
-        }
+    QStringList execs = app->executables();
+    foreach (const QString& exec, execs) {
+        KService::Ptr service = KService::serviceByDesktopPath(exec);
+        QString name = service->genericName().isEmpty() ?
+                    service->property("Name").toString() :
+                    service->property("Name").toString() % QLatin1Literal(" - ") % service->genericName();
+        QStandardItem *item = new QStandardItem(name);
+        item->setIcon(KIcon(service->icon()));
+        item->setData(service->desktopEntryPath(), Qt::UserRole);
+        items += item;
     }
     if(!items.isEmpty())
         invisibleRootItem()->appendRows(items);
@@ -67,4 +63,9 @@ void LaunchListModel::resetApplications()
 void LaunchListModel::invokeApplication(int row) const
 {
     KToolInvocation::startServiceByDesktopPath(index(row, 0).data(Qt::UserRole).toString());
+}
+
+KService::Ptr LaunchListModel::serviceAt(int row) const
+{
+    return KService::serviceByDesktopPath(index(row, 0).data(Qt::UserRole).toString());
 }

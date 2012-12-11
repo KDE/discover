@@ -20,9 +20,7 @@
 
 #include "ApplicationLauncher.h"
 
-#include <backends/ApplicationBackend/LaunchListModel.h>
-#include <backends/ApplicationBackend/Application.h>
-#include <backends/ApplicationBackend/ApplicationBackend.h>
+#include "LaunchListModel.h"
 
 #include <QtCore/QStringBuilder>
 #include <QtGui/QLabel>
@@ -37,8 +35,9 @@
 #include <KService>
 #include <KStandardGuiItem>
 
-ApplicationLauncher::ApplicationLauncher(ApplicationBackend* backend, QWidget* parent)
+ApplicationLauncher::ApplicationLauncher(LaunchListModel* model, QWidget* parent)
     : QDialog(parent)
+    , m_model(model)
 {
     QVBoxLayout *layout = new QVBoxLayout(this);
     setLayout(layout);
@@ -46,7 +45,7 @@ ApplicationLauncher::ApplicationLauncher(ApplicationBackend* backend, QWidget* p
     QLabel *label = new QLabel(this);
     label->setText(i18np("The following application was just installed, click on it to launch:",
                          "The following applications were just installed, click on them to launch:",
-                         backend->launchList().size()));
+                         model->rowCount()));
 
     QListView *appView = new QListView(this);
     appView->setIconSize(QSize(32, 32));
@@ -71,8 +70,6 @@ ApplicationLauncher::ApplicationLauncher(ApplicationBackend* backend, QWidget* p
     bottomLayout->addWidget(bottomSpacer);
     bottomLayout->addWidget(closeButton);
 
-    m_model = new LaunchListModel(this);
-    m_model->setBackend(backend);
     appView->setModel(m_model);
 
     layout->addWidget(label);
