@@ -48,7 +48,9 @@ void KNSBackend::initManager(KConfigGroup& group)
 {
     if(!m_atticaManager) {
         m_atticaManager = QSharedPointer<Attica::ProviderManager>(new Attica::ProviderManager);
-        m_atticaManager->addProviderFileToDefaultProviders(group.readEntry("ProvidersUrl", QString()));
+        QString entry = group.readEntry("ProvidersUrl", QString());
+        if(!m_atticaManager->defaultProviderFiles().contains(entry))
+            m_atticaManager->addProviderFileToDefaultProviders(entry);
         m_atticaManager->loadDefaultProviders();
     }
 }
