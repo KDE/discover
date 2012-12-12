@@ -28,6 +28,7 @@
 
 #include "libmuonprivate_export.h"
 
+class KConfigGroup;
 class KNSUpdater;
 class KNSReviews;
 namespace KNS3 { class DownloadManager; }
@@ -69,8 +70,10 @@ public slots:
     void statusChanged(const KNS3::Entry& entry);
 
 private:
+    static void initManager(KConfigGroup& group);
+    static QSharedPointer<Attica::ProviderManager> m_atticaManager;
+    
     KNS3::DownloadManager* m_manager;
-    Attica::ProviderManager* m_atticaManager;
     QHash<QString, AbstractResource*> m_resourcesByName;
     int m_page;
     KNSReviews* m_reviews;

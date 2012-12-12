@@ -42,8 +42,20 @@
 K_PLUGIN_FACTORY(MuonKNSBackendFactory, registerPlugin<KNSBackend>(); )
 K_EXPORT_PLUGIN(MuonKNSBackendFactory(KAboutData("muon-knsbackend","muon-knsbackend",ki18n("KNewStuff Backend"),"0.1",ki18n("Install KNewStuff data in your system"), KAboutData::License_GPL)))
 
+QSharedPointer<Attica::ProviderManager> KNSBackend::m_atticaManager;
+
+void KNSBackend::initManager(KConfigGroup& group)
+{
+    if(!m_atticaManager) {
+        m_atticaManager = QSharedPointer<Attica::ProviderManager>(new Attica::ProviderManager);
+        m_atticaManager->addProviderFileToDefaultProviders(group.readEntry("ProvidersUrl", QString()));
+        m_atticaManager->loadDefaultProviders();
+    }
+}
+
 KNSBackend::KNSBackend(QObject* parent, const QVariantList& args)
     : AbstractResourcesBackend(parent)
+    , m_page(0)
     , m_reviews(new KNSReviews(this))
     , m_fetching(true)
     , m_updater(new KNSUpdater(this))
@@ -59,11 +71,8 @@ KNSBackend::KNSBackend(QObject* parent, const QVariantList& args)
         group = conf.group("KNewStuff3");
     }
     QStringList cats = group.readEntry("Categories", QStringList());
-    m_atticaManager = new Attica::ProviderManager;
-    m_atticaManager->addProviderFileToDefaultProviders(group.readEntry("ProvidersUrl", QString()));
-    m_atticaManager->loadDefaultProviders();
-    connect(m_atticaManager, SIGNAL(defaultProvidersLoaded()), SLOT(startFetchingCategories()));
-    m_page = 0;
+    initManager(group);
+    connect(m_atticaManager.data(), SIGNAL(defaultProvidersLoaded()), SLOT(startFetchingCategories()));
     
     foreach(const QString& c, cats) {
         m_categories.insert(c, Attica::Category());
@@ -72,11 +81,12 @@ KNSBackend::KNSBackend(QObject* parent, const QVariantList& args)
     m_manager = new KNS3::DownloadManager(m_name, this);
     connect(m_manager, SIGNAL(searchResult(KNS3::Entry::List)), SLOT(receivedEntries(KNS3::Entry::List)));
     connect(m_manager, SIGNAL(entryStatusChanged(KNS3::Entry)), SLOT(statusChanged(KNS3::Entry)));
+    
+    startFetchingCategories();
 }
 
 KNSBackend::~KNSBackend()
 {
-    delete m_atticaManager;
 }
 
 void KNSBackend::startFetchingCategories()
