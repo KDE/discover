@@ -82,7 +82,7 @@ bool UbuntuLoginBackend::hasCredentials() const
 
 void UbuntuLoginBackend::successfulLogin(const QString& app, const QMap<QString,QString>& credentials)
 {
-    qDebug() << "logged in" << appname() << app << credentials;
+//     qDebug() << "logged in" << appname() << app << credentials;
     if(app==appname()) {
         m_credentials = credentials;
         emit connectionStateChanged();
