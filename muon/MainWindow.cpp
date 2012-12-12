@@ -136,7 +136,7 @@ void MainWindow::initGUI()
 void MainWindow::initObject()
 {
     if (!m_backend->init())
-        initError();
+        QAptActions::self()->initError();
 
     emit backendReady(m_backend);
     QAptActions::self()->setBackend(m_backend);
@@ -145,19 +145,6 @@ void MainWindow::initObject()
     loadSettings();
     setActionsEnabled();
     m_managerWidget->setFocus();
-}
-
-void MainWindow::initError()
-{
-    QString details = m_backend->initErrorMessage();
-
-    MuonStrings *muonStrings = MuonStrings::global();
-
-    QString title = muonStrings->errorTitle(QApt::InitError);
-    QString text = muonStrings->errorText(QApt::InitError, nullptr);
-
-    KMessageBox::detailedError(this, text, details, title);
-    exit(-1);
 }
 
 void MainWindow::loadSettings()

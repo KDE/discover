@@ -164,7 +164,7 @@ void ApplicationBackend::reload()
     m_reviewsBackend->stopPendingJobs();
 
     if (!m_backend->reloadCache())
-        initError();
+        QAptActions::self()->initError();
 
     foreach(Application* app, m_appList)
         app->package();
@@ -562,7 +562,7 @@ void ApplicationBackend::initBackend()
     }
 
     if (!m_backend->init())
-        initError();
+        QAptActions::self()->initError();
     if (m_backend->xapianIndexNeedsUpdate()) {
         // FIXME: transaction
         m_backend->updateXapianIndex();
@@ -582,19 +582,6 @@ void ApplicationBackend::initBackend()
             this, SIGNAL(searchInvalidated()));
     if(m_aptify)
         m_aptify->setCanExit(true);
-}
-
-void ApplicationBackend::initError()
-{
-    QString details = m_backend->initErrorMessage();
-
-    MuonStrings *muonStrings = MuonStrings::global();
-
-    QString title = muonStrings->errorTitle(QApt::InitError);
-    QString text = muonStrings->errorText(QApt::InitError, nullptr);
-
-    KMessageBox::detailedError(nullptr, text, details, title);
-    exit(-1);
 }
 
 void ApplicationBackend::setupTransaction(QApt::Transaction *trans)

@@ -115,7 +115,7 @@ void MainWindow::initGUI()
 void MainWindow::initObject()
 {
     if (!m_backend->init())
-        initError();
+        QAptActions::self()->initError();
 
     if (m_backend->xapianIndexNeedsUpdate()) {
         m_backend->updateXapianIndex();
@@ -126,19 +126,6 @@ void MainWindow::initObject()
     setCanExit(true);
 
     setActionsEnabled(); //Get initial enabled/disabled state
-}
-
-void MainWindow::initError()
-{
-    QString details = m_backend->initErrorMessage();
-
-    MuonStrings *muonStrings = MuonStrings::global();
-
-    QString title = muonStrings->errorTitle(QApt::InitError);
-    QString text = muonStrings->errorText(QApt::InitError, nullptr);
-
-    KMessageBox::detailedError(this, text, details, title);
-    exit(-1);
 }
 
 void MainWindow::setupActions()
@@ -350,7 +337,7 @@ void MainWindow::checkPlugState()
 
 void MainWindow::updatePlugState(bool plugged)
 {
-    plugged ? m_powerMessage->hide() : m_powerMessage->show();
+    m_powerMessage->setVisible(!plugged);
 }
 
 void MainWindow::checkDistUpgrade()

@@ -74,7 +74,6 @@ private:
 private Q_SLOTS:
     void initGUI();
     void initObject();
-    void initError();
     void setupActions();
     void transactionStatusChanged(QApt::TransactionStatus status);
     void errorOccurred(QApt::ErrorCode error);

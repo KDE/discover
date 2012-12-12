@@ -45,6 +45,7 @@ public:
     bool isConnected() const;
     void setOriginalState(QApt::CacheState state);
     void setReloadWhenEditorFinished(bool reload);
+    void initError();
     
 signals:
     void checkForUpdates();
@@ -73,7 +74,6 @@ public slots:
     void sourcesEditorFinished(int exitStatus);
 
 private:
-    void setCanExit(bool canExit);
     QAptActions();
     
     QApt::Backend *m_backend;

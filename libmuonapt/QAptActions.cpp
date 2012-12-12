@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include "QAptActions.h"
+#include "MuonStrings.h"
 
 // Qt includes
 #include <QtCore/QDir>
@@ -401,4 +402,17 @@ void QAptActions::setOriginalState(QApt::CacheState state)
 void QAptActions::setReloadWhenEditorFinished(bool reload)
 {
     m_reloadWhenEditorFinished = reload;
+}
+
+void QAptActions::initError()
+{
+    QString details = m_backend->initErrorMessage();
+
+    MuonStrings *muonStrings = MuonStrings::global();
+
+    QString title = muonStrings->errorTitle(QApt::InitError);
+    QString text = muonStrings->errorText(QApt::InitError, nullptr);
+
+    KMessageBox::detailedError(m_mainWindow, text, details, title);
+    exit(-1);
 }
