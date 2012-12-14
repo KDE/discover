@@ -15,6 +15,8 @@ ListModel
     
     function fetchSource(source)
     {
+        if(source=="")
+            return
         var xhr = new XMLHttpRequest;
         xhr.open("GET", source);
         xhr.onreadystatechange = function() {
@@ -44,6 +46,10 @@ ListModel
         }
     }
 
+    function alternateIfNull(valueA, valueB)
+    {
+        return valueA!=null ? valueA : valueB;
+    }
 
     function getFeatured(data) {
         if(data==null)
@@ -52,12 +58,13 @@ ListModel
         for(var packageName in data) {
             var currentData = data[packageName]
             model.append({
-                "text": currentData.package,
-                "color": "red",
+                "text": alternateIfNull(currentData.text, currentData.package),
+                "color": alternateIfNull(currentData.color, "red"),
                 "image": currentData.image,
-                "icon": "kde",
-                "comment": "&nbsp;",
-                "packageName": currentData.package
+                "icon": alternateIfNull(currentData.icon, "kde"),
+                "comment": alternateIfNull(currentData.comment, "&nbsp;"),
+                "packageName": currentData.package,
+                "url": currentData.url
             })
         }
         initFeatured()
