@@ -26,8 +26,8 @@
     <file>qml/InstalledPage.qml</file>
     <file>qml/Information.qml</file>
     <file>qml/SourcesPage.qml</file>
+    <file>qml/FeaturedModel.qml</file>
 
     <file>qml/navigation.js</file>
-    <file>qml/Helpers.js</file>
  </qresource>
 </RCC>

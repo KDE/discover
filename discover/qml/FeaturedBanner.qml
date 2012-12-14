@@ -2,31 +2,10 @@ import QtQuick 1.0
 import org.kde.plasma.components 0.1
 import org.kde.qtextracomponents 0.1
 import "navigation.js" as Navigation
-import "Helpers.js" as Helpers
 
 Information {
     id: info
-    Component.onCompleted: {
-        var xhr = new XMLHttpRequest;
-        xhr.open("GET", app.featuredSource());
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == XMLHttpRequest.DONE) {
-                featuredData = JSON.parse(xhr.responseText)
-            }
-        }
-        xhr.send();
-    }
-    property variant featuredData: null
-    onFeaturedDataChanged: Helpers.getFeatured(noCategoryModel, featuredData)
-    Connections {
-        target: resourcesModel
-        onRowsInserted: Helpers.initFeatured(noCategoryModel)
-    }
-    
-    model: ListModel {
-        id: noCategoryModel
-//         ListElement { text: "Kubuntu"; color: "#84D1FF"; icon: "kde"; comment: ""; image: "http://www.kubuntu.org/files/12.04-lts-banner.png"; packageName: "" }
-    }
+    model: FeaturedModel {}
     
     delegate: MouseArea {
             property QtObject modelData: model
