@@ -2,30 +2,36 @@ import QtQuick 1.1
 
 ListModel
 {
-    id: featuredModel
+    id: model
     Component.onCompleted: {
+        fetchSource(app.prioritaryFeaturedSource())
+        fetchSource(app.featuredSource())
+    }
+    
+    property variant fu: Connections {
+        target: resourcesModel
+        onRowsInserted: initFeatured()
+    }
+    
+    function fetchSource(source)
+    {
         var xhr = new XMLHttpRequest;
-        xhr.open("GET", app.featuredSource());
+        xhr.open("GET", source);
         xhr.onreadystatechange = function() {
             if (xhr.readyState == XMLHttpRequest.DONE) {
-                getFeatured(featuredModel, JSON.parse(xhr.responseText))
+                getFeatured(JSON.parse(xhr.responseText))
             }
         }
         xhr.send();
     }
     
-    property variant fu: Connections {
-        target: resourcesModel
-        onRowsInserted: initFeatured(featuredModel)
-    }
-    
-    function initFeatured(model) {
+    function initFeatured() {
         for(var row=0; row<model.count; row++) {
             var data = model.get(row)
             if(data.packageName) {
                 var appl = resourcesModel.resourceByPackageName(data.packageName)
                 if(appl==null) {
-                    console.log("application ", packageName, " not found")
+//                     console.log("application ", data.packageName, " not found")
                     continue
                 }
                 if(data.image==null)
@@ -39,7 +45,7 @@ ListModel
     }
 
 
-    function getFeatured(model, data) {
+    function getFeatured(data) {
         if(data==null)
             return
         

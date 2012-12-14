@@ -7,6 +7,7 @@
   <group name="muon">
     <entry name="RnRSource" type="Url"><default>http://reviews.ubuntu.com/reviews/api/1.0/</default><label>Server from which ratings and reviews are pulled.</label></entry>
     <entry name="FeaturedSource" type="Url"><default>http://jacknjoe.com/api/packages/featured</default><label>Location of the featured applications data.</label></entry>
+    <entry name="PrioritaryFeaturedSource" type="Url"><default>file:///tmp/cosa.json</default><label>Same as featured source but meant for data that will be easily initialized, preferrably all local.</label></entry>
     <entry name="ScreenshotsSource" type="Url"><default>http://screenshots.debian.net/</default><label>Where we pull our screenshots from.</label></entry>
   </group>
 </kcfg>

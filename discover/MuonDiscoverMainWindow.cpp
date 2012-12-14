@@ -226,3 +226,8 @@ QUrl MuonDiscoverMainWindow::featuredSource() const
 {
     return MuonDataSources::featuredSource();
 }
+
+QUrl MuonDiscoverMainWindow::prioritaryFeaturedSource() const
+{
+    return MuonDataSources::prioritaryFeaturedSource();
+}
