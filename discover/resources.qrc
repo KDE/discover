@@ -27,6 +27,8 @@
     <file>qml/Information.qml</file>
     <file>qml/SourcesPage.qml</file>
     <file>qml/FeaturedModel.qml</file>
+    <file>qml/DefaultBanner.qml</file>
+    <file>qml/FeaturedImage.qml</file>
 
     <file>qml/navigation.js</file>
  </qresource>

@@ -1,6 +1,14 @@
 [
     {
         "icon": "kde",
+        "image": "file:///home/aleix/projects/muon/discover/qml/DefaultBanner.qml",
+        "text": "KDE",
+        "comment": "Awesomeness!",
+        "url": "http://kde.org",
+        "color": "blue"
+    },
+    {
+        "icon": "kde",
         "image": "http://kde.org/images/teaser/jointhegame.gif",
         "text": "Support KDE",
         "comment": "Join the Game!",
