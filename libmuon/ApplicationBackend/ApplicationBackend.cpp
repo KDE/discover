@@ -585,7 +585,7 @@ void ApplicationBackend::integrateMainWindow(QAptActions* w)
 {
     m_aptify = w;
     m_aptify->setBackend(m_backend);
-    connect(m_aptify, SIGNAL(sourcesEditorFinished()), SLOT(reload()));
+    connect(m_aptify, SIGNAL(sourcesEditorClosed(bool)), SLOT(reload()));
 }
 
 void ApplicationBackend::initBackend()
