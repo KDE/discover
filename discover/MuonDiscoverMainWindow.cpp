@@ -194,3 +194,8 @@ QUrl MuonDiscoverMainWindow::featuredSource() const
 {
     return MuonDataSources::featuredSource();
 }
+
+QUrl MuonDiscoverMainWindow::prioritaryFeaturedSource() const
+{
+    return QUrl::fromLocalFile(KGlobal::dirs()->findResource("appdata", "featured.json"));
+}
