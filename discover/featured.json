@@ -1,7 +1,7 @@
 [
     {
         "icon": "kde",
-        "image": "file:///home/aleix/projects/muon/discover/qml/DefaultBanner.qml",
+        "image": "qrc:/qml/DefaultBanner.qml",
         "text": "KDE",
         "comment": "Awesomeness!",
         "url": "http://kde.org",
