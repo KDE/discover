@@ -28,7 +28,6 @@
 #include <KIcon>
 #include <KService>
 #include <KToolInvocation>
-#include <KDebug>
 
 // Libmuon includes
 #include <Transaction/Transaction.h>
