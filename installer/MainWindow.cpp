@@ -85,6 +85,7 @@ enum ViewType {
 MainWindow::MainWindow()
     : MuonMainWindow()
     , m_appBackend(nullptr)
+    , m_launches(nullptr)
     , m_launcherMessage(nullptr)
     , m_appLauncher(nullptr)
     , m_progressItem(nullptr)
@@ -148,6 +149,8 @@ void MainWindow::initObject()
             this, SLOT(transactionAdded()));
     connect(resourcesModel, SIGNAL(transactionRemoved(Transaction*)),
             this, SLOT(transactionRemoved()));
+
+    m_launches = new LaunchListModel(this);
 
     MuonBackendsFactory f;
     QList<AbstractResourcesBackend*> backends = f.allBackends();

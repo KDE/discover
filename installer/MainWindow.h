@@ -63,13 +63,13 @@ private:
     QHash<QModelIndex, QWidget *> m_viewHash;
     KAction *m_loadSelectionsAction;
     KAction *m_saveSelectionsAction;
+    LaunchListModel *m_launches;
     KMessageWidget *m_launcherMessage;
     ApplicationLauncher *m_appLauncher;
     ProgressView *m_progressView;
     QStandardItem *m_progressItem;
 
     int m_transactionCount;
-    LaunchListModel* m_launches;
 
 private Q_SLOTS:
     void initGUI();

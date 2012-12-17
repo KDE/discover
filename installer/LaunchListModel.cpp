@@ -28,6 +28,7 @@
 #include <KIcon>
 #include <KService>
 #include <KToolInvocation>
+#include <KDebug>
 
 // Libmuon includes
 #include <Transaction/Transaction.h>
@@ -50,11 +51,12 @@ void LaunchListModel::addApplication(AbstractResource* app)
 {
     QList<QStandardItem*> items;
     QStringList execs = app->executables();
+
     foreach (const QString& exec, execs) {
-        KService::Ptr service = KService::serviceByDesktopPath(exec);
+        KService::Ptr service = KService::serviceByStorageId(exec);
         QString name = service->genericName().isEmpty() ?
                     service->property("Name").toString() :
-                    service->property("Name").toString() % QLatin1Literal(" - ") % service->genericName();
+                    service->property("Name").toString() % QLatin1String(" - ") % service->genericName();
         QStandardItem *item = new QStandardItem(name);
         item->setIcon(KIcon(service->icon()));
         item->setData(service->desktopEntryPath(), Qt::UserRole);
@@ -71,5 +73,5 @@ void LaunchListModel::invokeApplication(int row) const
 
 KService::Ptr LaunchListModel::serviceAt(int row) const
 {
-    return KService::serviceByDesktopPath(index(row, 0).data(Qt::UserRole).toString());
+    return KService::serviceByStorageId(index(row, 0).data(Qt::UserRole).toString());
 }
