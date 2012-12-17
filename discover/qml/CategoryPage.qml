@@ -90,6 +90,7 @@ Page {
         anchors {
             fill: parent
             bottomMargin: 10
+            rightMargin: scroll.width
         }
         contentHeight: conts.height
         
