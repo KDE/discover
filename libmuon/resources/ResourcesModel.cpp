@@ -31,7 +31,7 @@
 
 static const KCatalogLoader loader("libmuon");
 
-K_GLOBAL_STATIC_WITH_ARGS(ResourcesModel, globalResourcesModel, (0))
+K_GLOBAL_STATIC(ResourcesModel, globalResourcesModel)
 
 ResourcesModel *ResourcesModel::global()
 {
