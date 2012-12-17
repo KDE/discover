@@ -30,8 +30,6 @@ ListView {
     property Component roleDelegate: null
     property string title: ""
     
-    function sortModel() { appsModel.sortModel() }
-    
     interactive: false
     model: ApplicationProxyModel {
         id: appsModel
@@ -45,7 +43,7 @@ ListView {
         font.weight: Font.Bold
     }
     delegate: ListItem {
-                width: view.width
+                width: ListView.view.width
                 height: 30
                 enabled: true
                 QIconItem {
@@ -53,9 +51,10 @@ ListView {
                     anchors { left: parent.left; verticalCenter: parent.verticalCenter }
                     height: parent.height*0.9
                     width: height
-                    icon: model["icon"]
+                    icon: model.icon
                 }
                 Label {
+                    id: nameLabel
                     anchors { left: iconItem.right; right: pointsLabel.left; verticalCenter: parent.verticalCenter }
                     text: name
                     elide: Text.ElideRight
