@@ -37,7 +37,7 @@ Page {
     
     Component {
         id: categoryDelegate
-        ListItem {
+        GridItem {
             property int minCellWidth: 130
             width: parent.width/Math.ceil(parent.width/minCellWidth)-10
             height: 100

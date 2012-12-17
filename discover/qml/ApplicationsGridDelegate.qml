@@ -22,7 +22,7 @@ import org.kde.qtextracomponents 0.1
 import "navigation.js" as Navigation
 import QtQuick 1.1
 
-ListItem {
+GridItem {
     id: delegateRoot
     clip: true
     width: parentItem.cellWidth

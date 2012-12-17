@@ -29,6 +29,7 @@
     <file>qml/FeaturedModel.qml</file>
     <file>qml/DefaultBanner.qml</file>
     <file>qml/FeaturedImage.qml</file>
+    <file>qml/GridItem.qml</file>
 
     <file>qml/navigation.js</file>
  </qresource>
