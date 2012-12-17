@@ -27,7 +27,7 @@
 
 class AbstractResource;
 class Transaction;
-class ApplicationBackend;
+
 class MUONPRIVATE_EXPORT LaunchListModel : public QStandardItemModel
 {
     Q_OBJECT

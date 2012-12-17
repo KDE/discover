@@ -20,15 +20,19 @@
  ***************************************************************************/
 
 #include "LaunchListModel.h"
-#include <Transaction/Transaction.h>
-#include <resources/AbstractResource.h>
-#include <resources/AbstractResourcesBackend.h>
-#include <resources/ResourcesModel.h>
+
+// Qt includes
 #include <QStringBuilder>
-#include <QDebug>
+
+// KDE includes
 #include <KIcon>
 #include <KService>
 #include <KToolInvocation>
+
+// Libmuon includes
+#include <Transaction/Transaction.h>
+#include <resources/AbstractResource.h>
+#include <resources/ResourcesModel.h>
 
 LaunchListModel::LaunchListModel(QObject* parent)
     : QStandardItemModel(parent)
