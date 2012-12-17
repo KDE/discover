@@ -5,8 +5,8 @@ Flickable {
     
     contentY: 0
     interactive: false
-    contentX: contentWidth < width ? (contentWidth-width)/2 : 0
-    contentWidth: Math.ceil(image.width, width); contentHeight: Math.ceil(image.height, height)
+    contentWidth: Math.max(image.width, width)
+    contentHeight: Math.max(image.height, height)
     
     states: [
         State {
@@ -52,5 +52,6 @@ Flickable {
     Image {
         id: image
         source: modelData.image
+        x: -(image.width-flick.width)/2
     }
 }
