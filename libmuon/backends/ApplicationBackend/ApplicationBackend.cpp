@@ -57,6 +57,8 @@
 #include "MuonMainWindow.h"
 #include <MuonDataSources.h>
 
+static const KCatalogLoader loader("app-install-data");
+
 K_PLUGIN_FACTORY(MuonAppsBackendFactory, registerPlugin<ApplicationBackend>(); )
 K_EXPORT_PLUGIN(MuonAppsBackendFactory(KAboutData("muon-appsbackend","muon-appsbackend",ki18n("Applications Backend"),"0.1",ki18n("Applications in your system"), KAboutData::License_GPL)))
 
@@ -70,6 +72,8 @@ ApplicationBackend::ApplicationBackend(QObject* parent, const QVariantList& )
     , m_aptify(nullptr)
     , m_aptBackendInitialized(false)
 {
+    KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
+    
     m_watcher = new QFutureWatcher<QVector<Application*> >(this);
     connect(m_watcher, SIGNAL(finished()), this, SLOT(setApplications()));
     connect(this, SIGNAL(reloadFinished()), SIGNAL(updatesCountChanged()));

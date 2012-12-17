@@ -45,11 +45,6 @@ int main(int argc, char** argv)
     KCmdLineArgs::addCmdLineOptions( options );
 
     KApplication app;
-    // Translations
-    KGlobal::locale()->insertCatalog("app-install-data");
-    KGlobal::locale()->insertCatalog("libmuon");
-    // Needed for KIcon compatibility w/ application icons from app-install-data
-    KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
     KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
 
     MuonExporter exp;

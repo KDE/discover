@@ -29,6 +29,8 @@
 #include <Transaction/Transaction.h>
 #include <QDebug>
 
+static const KCatalogLoader loader("libmuon");
+
 K_GLOBAL_STATIC_WITH_ARGS(ResourcesModel, globalResourcesModel, (0))
 
 ResourcesModel *ResourcesModel::global()

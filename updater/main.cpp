@@ -49,10 +49,8 @@ int main(int argc, char **argv)
 
     KUniqueApplication app;
     app.disableSessionManagement();
-    // Translations
-    KGlobal::locale()->insertCatalog("app-install-data");
-    KGlobal::locale()->insertCatalog("libmuon");
-    // Needed for KIcon compatibility w/ application icons from app-install-data
+    
+    // Needed because for the moment the ApplicationBackend is not instanciated
     KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
 
     MainWindow *mainWindow = new MainWindow;
