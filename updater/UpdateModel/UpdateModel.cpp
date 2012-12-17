@@ -29,9 +29,6 @@
 #include <KLocale>
 #include <KDebug>
 
-// Libmuon includes
-#include <backends/ApplicationBackend/Application.h>
-
 // Own includes
 #include "UpdateItem.h"
 
@@ -229,7 +226,7 @@ bool UpdateModel::setData(const QModelIndex &index, const QVariant &value, int r
         bool newValue = value.toBool();
         UpdateItem::ItemType type = item->type();
 
-        QList<Application *> apps;
+        QList<AbstractResource *> apps;
         if (type == UpdateItem::ItemType::CategoryItem) {
             // Collect items to (un)check
             foreach (UpdateItem *child, item->children()) {

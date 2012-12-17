@@ -27,6 +27,7 @@
 // Own includes
 #include "../libmuon/MuonMainWindow.h"
 
+class AbstractResourcesBackend;
 class KAction;
 class KDialog;
 class KMessageWidget;
@@ -49,7 +50,7 @@ public:
     MainWindow();
 
 private:
-    QApt::Backend *m_backend;
+    QApt::Backend* backend() const;
     QApt::Transaction *m_trans;
     QString m_pipe;
 
@@ -70,16 +71,16 @@ private:
     KAction *m_historyAction;
 
     KProcess *m_checkerProcess;
+    AbstractResourcesBackend* m_apps;
 
 private Q_SLOTS:
     void initGUI();
-    void initObject();
+    void initBackend();
     void setupActions();
     void transactionStatusChanged(QApt::TransactionStatus status);
     void errorOccurred(QApt::ErrorCode error);
     void reload();
     void setActionsEnabled(bool enabled = true);
-    void checkForUpdates();
     void startCommit();
     void setupTransaction(QApt::Transaction *trans);
     void editSettings();

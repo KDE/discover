@@ -42,6 +42,8 @@
 #include <LibQApt/Transaction>
 
 // Own includes
+#include <MuonBackendsFactory.h>
+#include <resources/AbstractResourcesBackend.h>
 #include "../libmuonapt/HistoryView/HistoryView.h"
 #include "../libmuonapt/MuonStrings.h"
 #include "../libmuonapt/QAptActions.h"
@@ -57,7 +59,10 @@ MainWindow::MainWindow()
     , m_checkerProcess(nullptr)
 {
     initGUI();
-    QTimer::singleShot(10, this, SLOT(initObject()));
+    
+    MuonBackendsFactory f;
+    m_apps = f.backend("muon-appsbackend");
+    connect(m_apps, SIGNAL(backendReady()), SLOT(initBackend()));
 }
 
 void MainWindow::initGUI()
@@ -84,13 +89,9 @@ void MainWindow::initGUI()
     m_progressWidget->hide();
 
     m_updaterWidget = new UpdaterWidget(mainWidget);
-    connect(this, SIGNAL(backendReady(QApt::Backend*)),
-            m_updaterWidget, SLOT(setBackend(QApt::Backend*)));
 
     m_changelogWidget = new ChangelogWidget(this);
     m_changelogWidget->hide();
-    connect(this, SIGNAL(backendReady(QApt::Backend*)),
-            m_changelogWidget, SLOT(setBackend(QApt::Backend*)));
     connect(m_updaterWidget, SIGNAL(packageChanged(QApt::Package*)),
             m_changelogWidget, SLOT(setPackage(QApt::Package*)));
 
@@ -100,32 +101,14 @@ void MainWindow::initGUI()
     mainLayout->addWidget(m_updaterWidget);
     mainLayout->addWidget(m_changelogWidget);
 
-    m_backend = new QApt::Backend(this);
     QAptActions *actions = QAptActions::self();
     actions->setMainWindow(this);
-    connect(actions, SIGNAL(checkForUpdates()), this, SLOT(checkForUpdates()));
     setupActions();
 
     mainWidget->setLayout(mainLayout);
     setCentralWidget(mainWidget);
 
     checkDistUpgrade();
-}
-
-void MainWindow::initObject()
-{
-    if (!m_backend->init())
-        QAptActions::self()->initError();
-
-    if (m_backend->xapianIndexNeedsUpdate()) {
-        m_backend->updateXapianIndex();
-    }
-
-    emit backendReady(m_backend);
-    QAptActions::self()->setBackend(m_backend);
-    setCanExit(true);
-
-    setActionsEnabled(); //Get initial enabled/disabled state
 }
 
 void MainWindow::setupActions()
@@ -153,6 +136,13 @@ void MainWindow::setupActions()
     setActionsEnabled(false);
 
     setupGUI((StandardWindowOption)(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
+}
+
+void MainWindow::initBackend()
+{
+    m_updaterWidget->setBackend(m_apps);
+    m_changelogWidget->setBackend(backend());
+    m_apps->integrateMainWindow(this);
 }
 
 void MainWindow::transactionStatusChanged(QApt::TransactionStatus status)
@@ -220,19 +210,7 @@ void MainWindow::setActionsEnabled(bool enabled)
         return;
     }
 
-    m_applyAction->setEnabled(m_backend->areChangesMarked());
-    m_updaterWidget->setEnabled(true);
-}
-
-void MainWindow::checkForUpdates()
-{
-    setActionsEnabled(false);
-    m_updaterWidget->setEnabled(false);
-    QApplication::setOverrideCursor(Qt::WaitCursor);
-    m_changelogWidget->animatedHide();
-    m_changelogWidget->stopPendingJobs();
-
-    m_trans = m_backend->updateCache();
+    m_applyAction->setEnabled(backend()->updateCache());
     setupTransaction(m_trans);
     m_trans->run();
 }
@@ -245,7 +223,7 @@ void MainWindow::startCommit()
     m_changelogWidget->animatedHide();
     m_changelogWidget->stopPendingJobs();
 
-    m_trans = m_backend->commitChanges();
+    m_trans = backend()->commitChanges();
     setupTransaction(m_trans);
     m_trans->run();
 }
@@ -364,4 +342,9 @@ void MainWindow::launchDistUpgrade()
 {
     KProcess::startDetached(QStringList() << "python"
                             << "/usr/share/pyshared/UpdateManager/DistUpgradeFetcherKDE.py");
+}
+
+QApt::Backend* MainWindow::backend() const
+{
+    return qobject_cast<QApt::Backend*>(m_apps->property("backend").value<QObject*>());
 }

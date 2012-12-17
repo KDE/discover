@@ -27,8 +27,11 @@
 
 #include <KIcon>
 
-class Application;
+namespace QApt {
+class Package;
+}
 
+class AbstractResource;
 class UpdateItem
 {
 public:
@@ -42,7 +45,7 @@ public:
     UpdateItem();
     UpdateItem(const QString &categoryName,
                const KIcon &categoryIcon);
-    explicit UpdateItem(Application *app, UpdateItem *parent = 0);
+    explicit UpdateItem(AbstractResource *app, UpdateItem *parent = 0);
 
     ~UpdateItem();
 
@@ -57,7 +60,7 @@ public:
     int row() const;
     void sort();
 
-    Application *app() const;
+    AbstractResource *app() const;
     QString name() const;
     QString version() const;
     KIcon icon() const;
@@ -66,7 +69,8 @@ public:
     ItemType type() const;
 
 private:
-    Application *m_app;
+    QApt::Package* retrievePackage() const;
+    AbstractResource *m_app;
 
     UpdateItem *m_parent;
     ItemType m_type;

@@ -41,7 +41,8 @@
 #include <LibQApt/Backend>
 
 // Libmuon includes
-#include <backends/ApplicationBackend/Application.h>
+#include <resources/AbstractResourcesBackend.h>
+#include <resources/AbstractResource.h>
 
 //libmuonapt includes
 #include "../libmuonapt/ChangesDialog.h"
@@ -65,8 +66,8 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
 
     m_updateModel = new UpdateModel(page1);
 
-    connect(m_updateModel, SIGNAL(checkApps(QList<Application*>,bool)),
-            this, SLOT(checkApps(QList<Application*>,bool)));
+    connect(m_updateModel, SIGNAL(checkApps(QList<AbstractResource*>,bool)),
+            this, SLOT(checkApps(QList<AbstractResource*>,bool)));
 
     m_updateView = new QTreeView(page1);
     m_updateView->setAlternatingRowColors(true);
@@ -117,9 +118,10 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     setCurrentWidget(page1);
 }
 
-void UpdaterWidget::setBackend(QApt::Backend *backend)
+void UpdaterWidget::setBackend(AbstractResourcesBackend *backend)
 {
-    m_backend = backend;
+    m_appsBackend = backend;
+    m_backend = qobject_cast<QApt::Backend*>(backend->property("backend").value<QObject*>());
     connect(m_backend, SIGNAL(packageChanged()),
             m_updateModel, SLOT(packageChanged()));
 
@@ -137,9 +139,7 @@ void UpdaterWidget::reload()
 
 void UpdaterWidget::populateUpdateModel()
 {
-    QApt::PackageList upgradeList = m_backend->upgradeablePackages();
-
-    if (upgradeList.isEmpty()) {
+    if (m_appsBackend->updatesCount()==0) {
         QApplication::restoreOverrideCursor();
         m_busyWidget->stop();
         checkUpToDate();
@@ -154,69 +154,35 @@ void UpdaterWidget::populateUpdateModel()
 
     UpdateItem *systemItem = new UpdateItem(i18nc("@item:inlistbox", "System Updates"),
                                              KIcon("applications-system"));
-
-    QDir appDir("/usr/share/app-install/desktop/");
-    QStringList fileList = appDir.entryList(QDir::Files);
-
-    foreach(const QString &fileName, fileList) {
-        if (fileName.endsWith(QLatin1String(".menu"))) // Skip non-desktop files that can slip in
-            continue;
-        Application *app = new Application("/usr/share/app-install/desktop/" + fileName, m_backend);
-        QApt::Package *package = app->package();
-        if (!package || !upgradeList.contains(package)) {
-            delete app;
-            continue;
-        }
-        int state = package->state();
-
-        if (!(state & QApt::Package::Upgradeable)) {
-            delete app;
-            continue;
-        }
-
-        UpdateItem *updateItem = new UpdateItem(app);
-
-        // Set update type
-        bool securityFound = false;
-        for (const QString &archive : package->archives()) {
-            if (archive.contains(QLatin1String("security"))) {
-                securityFound = true;
-                break;
+    
+    QVector<AbstractResource*> resources = m_appsBackend->allResources();
+    foreach(AbstractResource* res, resources) {
+        if(res->state()==AbstractResource::Upgradeable) {
+            UpdateItem *updateItem = new UpdateItem(res);
+            QApt::Package* package = retrievePackage(res);
+            
+            bool securityFound = false;
+            for (const QString &archive : package->archives()) {
+                if (archive.contains(QLatin1String("security"))) {
+                    securityFound = true;
+                    break;
+                }
+            }
+            
+            if(!res->isTechnical()) {
+                if (securityFound) {
+                    securityItem->appendChild(updateItem);
+                } else {
+                    appItem->appendChild(updateItem);
+                }
+            } else {
+                if (securityFound) {
+                    securityItem->appendChild(updateItem);
+                } else {
+                    systemItem->appendChild(updateItem);
+                }
             }
         }
-
-        if (securityFound) {
-            securityItem->appendChild(updateItem);
-        } else {
-            appItem->appendChild(updateItem);
-        }
-
-        m_upgradeableApps.append(app);
-
-        upgradeList.removeAll(package);
-    }
-
-    // Remaining packages in the upgrade list aren't applications
-    foreach (QApt::Package *package, upgradeList) {
-        Application *app = new Application(package, m_backend);
-        UpdateItem *updateItem = new UpdateItem(app);
-
-        // Set update type
-        bool securityFound = false;
-        for (const QString &archive : package->archives()) {
-            if (archive.contains(QLatin1String("security"))) {
-                securityFound = true;
-                break;
-            }
-        }
-
-        if (securityFound) {
-            securityItem->appendChild(updateItem);
-        } else {
-            systemItem->appendChild(updateItem);
-        }
-
-        m_upgradeableApps.append(app);
     }
 
     // Add populated items to the model
@@ -252,11 +218,11 @@ void UpdaterWidget::populateUpdateModel()
     checkUpToDate();
 }
 
-void UpdaterWidget::checkApps(QList<Application *> apps, bool checked)
+void UpdaterWidget::checkApps(QList<AbstractResource*> apps, bool checked)
 {
     QApt::PackageList list;
-    foreach (Application *app, apps) {
-        list << app->package();
+    foreach (AbstractResource *app, apps) {
+        list << retrievePackage(app);
     }
 
     QApt::Package::State action = checked ? QApt::Package::ToInstall : QApt::Package::ToKeep;
@@ -303,8 +269,7 @@ void UpdaterWidget::selectionChanged(const QItemSelection &selected,
         return;
     }
 
-    Application *app = m_updateModel->itemFromIndex(indexes.first())->app();
-    package = app ? app->package() : 0;
+    package = retrievePackage(m_updateModel->itemFromIndex(indexes.first())->app());
 
     emit packageChanged(package);
 }
@@ -377,4 +342,9 @@ void UpdaterWidget::checkUpToDate()
                                         "to check."));
         }
     }
+}
+
+QApt::Package* UpdaterWidget::retrievePackage(AbstractResource* res)
+{
+    return res ? m_backend->package(res->packageName()) : 0;
 }

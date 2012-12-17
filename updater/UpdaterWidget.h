@@ -27,6 +27,8 @@
 #include <LibQApt/Globals>
 #include <LibQApt/Package>
 
+class AbstractResource;
+class AbstractResourcesBackend;
 class QItemSelection;
 class QLabel;
 class QStandardItemModel;
@@ -38,7 +40,6 @@ namespace QApt {
     class Backend;
 }
 
-class Application;
 class UpdateModel;
 
 class UpdaterWidget : public QStackedWidget
@@ -48,24 +49,26 @@ public:
     explicit UpdaterWidget(QWidget *parent = 0);
 
 private:
+    QApt::Package* retrievePackage(AbstractResource* res);
+
     QApt::Backend *m_backend;
     QApt::CacheState m_oldCacheState;
     UpdateModel *m_updateModel;
-    QList<Application *> m_upgradeableApps;
 
     QTreeView *m_updateView;
     KPixmapSequenceOverlayPainter *m_busyWidget;
     QLabel *m_updateStatusIcon;
     QLabel *m_notifyTitle;
     QLabel *m_notifyDesc;
+    AbstractResourcesBackend* m_appsBackend;
 
 public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
+    void setBackend(AbstractResourcesBackend* backend);
     void reload();
 
 private Q_SLOTS:
     void populateUpdateModel();
-    void checkApps(QList<Application *> apps, bool checked);
+    void checkApps(QList<AbstractResource*> apps, bool checked);
     void checkChanges(const QHash<QApt::Package::State, QApt::PackageList> &removals);
     void selectionChanged(const QItemSelection &selected,
                           const QItemSelection &deselected);

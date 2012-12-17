@@ -19,10 +19,13 @@
  ***************************************************************************/
 
 #include "UpdateItem.h"
+#include <resources/AbstractResource.h>
+#include <resources/AbstractResourcesBackend.h>
 
 #include <QtCore/QStringBuilder>
-
-#include <backends/ApplicationBackend/Application.h>
+#include <KLocalizedString>
+#include <LibQApt/Package>
+#include <LibQApt/Backend>
 
 UpdateItem::UpdateItem()
     : m_app(0)
@@ -41,7 +44,7 @@ UpdateItem::UpdateItem(const QString &categoryName,
 {
 }
 
-UpdateItem::UpdateItem(Application *app, UpdateItem *parent)
+UpdateItem::UpdateItem(AbstractResource *app, UpdateItem *parent)
     : m_app(app)
     , m_parent(parent)
     , m_type(ItemType::ApplicationItem)
@@ -50,7 +53,6 @@ UpdateItem::UpdateItem(Application *app, UpdateItem *parent)
 
 UpdateItem::~UpdateItem()
 {
-    delete m_app;
     qDeleteAll(m_children);
 }
 
@@ -110,7 +112,7 @@ void UpdateItem::sort()
           [](UpdateItem *a, UpdateItem *b) { return a->name() < b->name(); });
 }
 
-Application *UpdateItem::app() const
+AbstractResource *UpdateItem::app() const
 {
     return m_app;
 }
@@ -120,12 +122,12 @@ QString UpdateItem::name() const
     switch (type()) {
     case ItemType::CategoryItem:
         return m_categoryName;
-    case ItemType::ApplicationItem:
-        if (m_app->package()->isForeignArch()) {
-            return QString(m_app->name() % QLatin1String(" (")
-                    % m_app->package()->architecture() % ')');
+    case ItemType::ApplicationItem: {
+        QApt::Package* p = retrievePackage();
+        if (p->isForeignArch()) {
+            return i18n("%1 (%2)", m_app->name(), p->architecture());
         }
-        return m_app->name();
+    }   return m_app->name();
     default:
         break;
     }
@@ -137,7 +139,7 @@ QString UpdateItem::version() const
 {
     switch (type()) {
     case ItemType::ApplicationItem:
-        return m_app->package()->availableVersion();
+        return m_app->availableVersion();
     case ItemType::CategoryItem:
     default:
         break;
@@ -166,10 +168,10 @@ qint64 UpdateItem::size() const
     int size = 0;
 
     if (itemType == ItemType::ApplicationItem) {
-        size = m_app->package()->downloadSize();
+        size = retrievePackage()->downloadSize();
     } else if (itemType == ItemType::CategoryItem) {
         foreach (UpdateItem *item, m_children) {
-            if (item->app()->package()->state() & QApt::Package::ToUpgrade) {
+            if (item->app()->state() & AbstractResource::Upgradeable) {
                 size += item->size();
             }
         }
@@ -189,7 +191,7 @@ Qt::CheckState UpdateItem::checked() const
         int uncheckedCount = 0;
 
         foreach (UpdateItem *child, m_children) {
-            (child->app()->package()->state() & QApt::Package::ToUpgrade) ?
+            (child->app()->state() & AbstractResource::Upgradeable) ?
                         checkedCount++ : uncheckedCount++;
         }
 
@@ -206,7 +208,7 @@ Qt::CheckState UpdateItem::checked() const
         break;
     }
     case ItemType::ApplicationItem:
-        (app()->package()->state() & QApt::Package::ToUpgrade) ?
+        (app()->state() & AbstractResource::Upgradeable) ?
                     checkState = Qt::Checked : checkState = Qt::Unchecked;
         break;
     case ItemType::RootItem:
@@ -220,4 +222,10 @@ Qt::CheckState UpdateItem::checked() const
 UpdateItem::ItemType UpdateItem::type() const
 {
     return m_type;
+}
+
+QApt::Package* UpdateItem::retrievePackage() const
+{
+    QApt::Backend* backend = qobject_cast<QApt::Backend*>(m_app->backend()->property("backend").value<QObject*>());
+    return backend->package(m_app->packageName());
 }

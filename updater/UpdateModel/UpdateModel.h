@@ -23,7 +23,7 @@
 
 #include <QtCore/QAbstractItemModel>
 
-class Application;
+class AbstractResource;
 class UpdateItem;
 
 class UpdateModel : public QAbstractItemModel
@@ -65,7 +65,7 @@ public Q_SLOTS:
     void packageChanged();
 
 Q_SIGNALS:
-    void checkApps(QList<Application *> apps, bool checked);
+    void checkApps(QList<AbstractResource*> apps, bool checked);
 };
 
 #endif // UPDATEMODEL_H
