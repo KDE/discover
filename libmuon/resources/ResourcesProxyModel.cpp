@@ -266,7 +266,7 @@ void ResourcesProxyModel::setMimeTypeFilter(const QString& mime)
 
 void ResourcesProxyModel::setFilterActive(bool filter)
 {
-    if(!filter)
+    if(filter)
         m_roleFilters.insert(ResourcesModel::ActiveRole, true);
     else
         m_roleFilters.remove(ResourcesModel::ActiveRole);
