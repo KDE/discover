@@ -36,7 +36,7 @@ public:
     void addApplication(AbstractResource* a);
 
 public slots:
-    void invokeApplication(const QModelIndex &idx);
+    void invokeApplication(const QModelIndex &idx) const;
     void invokeApplication(int row) const;
     void transactionFinished(Transaction* t);
 };
