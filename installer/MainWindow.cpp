@@ -394,11 +394,12 @@ void MainWindow::showLauncherMessage()
     clearMessageActions();
 
     if (m_launches->rowCount()==1) {
-        KService::Ptr service = m_launches->serviceAt(0);
-        QString name = m_launches->nameFromService(service);
+        QModelIndex index = m_launches->index(0, 0);
+        QString name = index.data().toString();
         m_launcherMessage->setText(i18nc("@info", "%1 was successfully installed.", name));
 
-        KAction *launchAction = new KAction(KIcon(service->icon()), i18nc("@action", "Start"), this);
+        KIcon launchIcon = KIcon(index.data(Qt::DecorationRole).value<QIcon>());
+        KAction *launchAction = new KAction(launchIcon, i18nc("@action", "Start"), this);
         connect(launchAction, SIGNAL(activated()), this, SLOT(launchSingleApp()));
 
         m_launcherMessage->addAction(launchAction);

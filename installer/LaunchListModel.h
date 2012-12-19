@@ -23,7 +23,6 @@
 
 #include "libmuonprivate_export.h"
 #include <QStandardItemModel>
-#include <KService>
 
 class AbstractResource;
 class Transaction;
@@ -35,8 +34,6 @@ public:
     explicit LaunchListModel(QObject* parent = nullptr);
 
     void addApplication(AbstractResource* a);
-    KService::Ptr serviceAt(int row) const;
-    QString nameFromService(KService::Ptr service);
 
 public slots:
     void invokeApplication(int row) const;

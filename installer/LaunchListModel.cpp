@@ -51,9 +51,13 @@ void LaunchListModel::addApplication(AbstractResource* app)
     QList<QStandardItem*> items;
     QStringList execs = app->executables();
 
-    foreach (const QString& exec, execs) {
+    for (const QString& exec : execs) {
         KService::Ptr service = KService::serviceByStorageId(exec);
-        QString name = nameFromService(service);
+
+        QString name = service->property("Name").toString();
+        if (!service->genericName().isEmpty())
+            name += QLatin1String(" - ") % service->genericName();
+
         QStandardItem *item = new QStandardItem(name);
         item->setIcon(KIcon(service->icon()));
         item->setData(service->desktopEntryPath(), Qt::UserRole);
@@ -66,19 +70,4 @@ void LaunchListModel::addApplication(AbstractResource* app)
 void LaunchListModel::invokeApplication(int row) const
 {
     KToolInvocation::startServiceByDesktopPath(index(row, 0).data(Qt::UserRole).toString());
-}
-
-KService::Ptr LaunchListModel::serviceAt(int row) const
-{
-    return KService::serviceByStorageId(index(row, 0).data(Qt::UserRole).toString());
-}
-
-QString LaunchListModel::nameFromService(KService::Ptr service)
-{
-    QString name = service->property("Name").toString();
-
-    if (!service->genericName().isEmpty())
-        name += QLatin1String(" - ") % service->genericName();
-
-    return name;
 }
