@@ -67,7 +67,12 @@ void LaunchListModel::addApplication(AbstractResource* app)
         invisibleRootItem()->appendRows(items);
 }
 
+void LaunchListModel::invokeApplication(const QModelIndex &idx)
+{
+    KToolInvocation::startServiceByDesktopPath(idx.data(Qt::UserRole).toString());
+}
+
 void LaunchListModel::invokeApplication(int row) const
 {
-    KToolInvocation::startServiceByDesktopPath(index(row, 0).data(Qt::UserRole).toString());
+    invokeApplication(index(row, 0));
 }

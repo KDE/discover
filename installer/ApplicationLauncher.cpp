@@ -1,6 +1,6 @@
 /***************************************************************************
  *   Copyright © 2010 by Daniel Nicoletti <dantti85-pk@yahoo.com.br>       *
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -47,7 +47,7 @@ ApplicationLauncher::ApplicationLauncher(LaunchListModel* model, QWidget* parent
     QListView *appView = new QListView(this);
     appView->setIconSize(QSize(32, 32));
     connect(appView, SIGNAL(activated(QModelIndex)),
-            this, SLOT(onAppClicked(QModelIndex)));
+            m_model, SLOT(invokeApplication(QModelIndex)));
 
     QWidget *bottomBox = new QWidget(this);
     QHBoxLayout *bottomLayout = new QHBoxLayout(bottomBox);
@@ -72,9 +72,4 @@ ApplicationLauncher::ApplicationLauncher(LaunchListModel* model, QWidget* parent
     layout->addWidget(label);
     layout->addWidget(appView);
     layout->addWidget(bottomBox);
-}
-
-void ApplicationLauncher::onAppClicked(const QModelIndex &index)
-{
-    m_model->invokeApplication(index.row());
 }
