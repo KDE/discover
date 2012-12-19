@@ -3,6 +3,14 @@ Type=ServiceType
 X-KDE-ServiceType=Muon/Backend
 X-KDE-Derived=KPluginInfo
 Name=Muon Backend
+Name[cs]=Podpůrná vrstva Muon
+Name[et]=Muoni taustaprogramm
+Name[ga]=Inneall Muon
+Name[pt]=Infra-Estrutura do Muon
+Name[pt_BR]=Infraestrutura do Muon
+Name[sk]=Muon Backend
+Name[uk]=Модуль Muon
+Name[x-test]=xxMuon Backendxx
 
 [PropertyDef::X-Muon-Arguments]
 Type=QStringList
