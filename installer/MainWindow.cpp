@@ -395,9 +395,7 @@ void MainWindow::showLauncherMessage()
 
     if (m_launches->rowCount()==1) {
         KService::Ptr service = m_launches->serviceAt(0);
-        QString name = service->genericName().isEmpty() ?
-                       service->property("Name").toString() :
-                       service->property("Name").toString() % QLatin1Literal(" - ") % service->genericName();
+        QString name = m_launches->nameFromService(service);
         m_launcherMessage->setText(i18nc("@info", "%1 was successfully installed.", name));
 
         KAction *launchAction = new KAction(KIcon(service->icon()), i18nc("@action", "Start"), this);

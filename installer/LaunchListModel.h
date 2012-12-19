@@ -31,14 +31,16 @@ class Transaction;
 class MUONPRIVATE_EXPORT LaunchListModel : public QStandardItemModel
 {
     Q_OBJECT
-    public:
-        explicit LaunchListModel(QObject* parent = 0);
-        void addApplication(AbstractResource* a);
-        KService::Ptr serviceAt(int row) const;
+public:
+    explicit LaunchListModel(QObject* parent = nullptr);
 
-    public slots:
-        void invokeApplication(int row) const;
-        void transactionFinished(Transaction* t);
+    void addApplication(AbstractResource* a);
+    KService::Ptr serviceAt(int row) const;
+    QString nameFromService(KService::Ptr service);
+
+public slots:
+    void invokeApplication(int row) const;
+    void transactionFinished(Transaction* t);
 };
 
 #endif // LAUNCHLISTMODEL_H
