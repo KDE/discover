@@ -23,11 +23,8 @@
 
 #include <QtGui/QDialog>
 
-class ApplicationBackend;
-class Application;
 class LaunchListModel;
 class QModelIndex;
-class QStandardItemModel;
 
 class KService;
 
@@ -35,8 +32,7 @@ class ApplicationLauncher : public QDialog
 {
     Q_OBJECT
 public:
-    explicit ApplicationLauncher(LaunchListModel* backend, QWidget* parent = 0);
-    ~ApplicationLauncher();
+    explicit ApplicationLauncher(LaunchListModel* backend, QWidget* parent = nullptr);
 
 private:
     LaunchListModel *m_model;

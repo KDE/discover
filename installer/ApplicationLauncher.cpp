@@ -29,10 +29,7 @@
 #include <QtGui/QStandardItemModel>
 #include <QtGui/QVBoxLayout>
 
-#include <KConfigGroup>
-#include <KIcon>
 #include <KLocale>
-#include <KService>
 #include <KStandardGuiItem>
 
 ApplicationLauncher::ApplicationLauncher(LaunchListModel* model, QWidget* parent)
@@ -77,13 +74,7 @@ ApplicationLauncher::ApplicationLauncher(LaunchListModel* model, QWidget* parent
     layout->addWidget(bottomBox);
 }
 
-ApplicationLauncher::~ApplicationLauncher()
-{
-}
-
 void ApplicationLauncher::onAppClicked(const QModelIndex &index)
 {
     m_model->invokeApplication(index.row());
 }
-
-#include "ApplicationLauncher.moc"
