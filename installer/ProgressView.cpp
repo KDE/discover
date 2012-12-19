@@ -24,9 +24,7 @@
 #include <QtGui/QListView>
 
 #include <KLocalizedString>
-#include <KDebug>
 
-#include <resources/AbstractResourcesBackend.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>
 
