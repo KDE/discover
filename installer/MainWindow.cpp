@@ -44,6 +44,7 @@
 
 //libmuonapt includes
 #include <HistoryView/HistoryView.h>
+#include "../libmuonapt/QAptActions.h"
 
 // Libmuon includes
 #include <resources/ResourcesModel.h>
@@ -137,6 +138,9 @@ void MainWindow::initGUI()
 
     m_viewModel = new QStandardItemModel(this);
     m_viewSwitcher->setModel(m_viewModel);
+
+    QAptActions *actions = QAptActions::self();
+    actions->setMainWindow(this);
 
     setupActions();
     setupGUI(StandardWindowOption(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
