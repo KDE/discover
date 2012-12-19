@@ -58,11 +58,11 @@ MainWindow::MainWindow()
     , m_historyDialog(nullptr)
     , m_checkerProcess(nullptr)
 {
-    initGUI();
-    
     MuonBackendsFactory f;
     m_apps = f.backend("muon-appsbackend");
     connect(m_apps, SIGNAL(backendReady()), SLOT(initBackend()));
+
+    initGUI();
 }
 
 void MainWindow::initGUI()
@@ -101,10 +101,8 @@ void MainWindow::initGUI()
     mainLayout->addWidget(m_updaterWidget);
     mainLayout->addWidget(m_changelogWidget);
 
-    QAptActions *actions = QAptActions::self();
-    actions->setMainWindow(this);
+    m_apps->integrateMainWindow(this);
     setupActions();
-
     mainWidget->setLayout(mainLayout);
     setCentralWidget(mainWidget);
 
@@ -142,7 +140,8 @@ void MainWindow::initBackend()
 {
     m_updaterWidget->setBackend(m_apps);
     m_changelogWidget->setBackend(backend());
-    m_apps->integrateMainWindow(this);
+
+    setActionsEnabled();
 }
 
 void MainWindow::transactionStatusChanged(QApt::TransactionStatus status)
@@ -210,7 +209,19 @@ void MainWindow::setActionsEnabled(bool enabled)
         return;
     }
 
-    m_applyAction->setEnabled(backend()->updateCache());
+    m_applyAction->setEnabled(backend()->areChangesMarked());
+    m_updaterWidget->setEnabled(true);
+}
+
+void MainWindow::checkForUpdates()
+{
+    setActionsEnabled(false);
+    m_updaterWidget->setEnabled(false);
+    QApplication::setOverrideCursor(Qt::WaitCursor);
+    m_changelogWidget->animatedHide();
+    m_changelogWidget->stopPendingJobs();
+
+    m_trans = backend()->updateCache();
     setupTransaction(m_trans);
     m_trans->run();
 }

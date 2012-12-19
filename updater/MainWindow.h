@@ -81,6 +81,7 @@ private Q_SLOTS:
     void errorOccurred(QApt::ErrorCode error);
     void reload();
     void setActionsEnabled(bool enabled = true);
+    void checkForUpdates();
     void startCommit();
     void setupTransaction(QApt::Transaction *trans);
     void editSettings();
