@@ -145,10 +145,18 @@ void CategoryViewWidget::search(const QString &text)
 
 void CategoryViewWidget::onSubViewDestroyed()
 {
-    m_subViewHash.remove(m_subViewHash.key(m_subView));
+    auto iter = m_subViewHash.begin();
+    while (iter != m_subViewHash.end()) {
+        auto prev = iter;
+        if (prev.value() == m_subView) {
+            m_subViewHash.erase(prev);
+            break; // Found our subview, guaranteed to be only one since we don't use insertMulti
+        }
+        ++iter;
+    }
 }
 
 void CategoryViewWidget::onSearchViewDestroyed()
 {
-    m_searchView = 0;
+    m_searchView = nullptr;
 }
