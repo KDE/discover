@@ -47,13 +47,7 @@
 // Libmuon includes
 #include <libmuon/MuonDataSources.h>
 #include <resources/ResourcesModel.h>
-#include <resources/ResourcesUpdatesModel.h>
-#include <Category/CategoryModel.h>
 #include <Category/Category.h>
-#include <Transaction/TransactionListener.h>
-#include <Transaction/Transaction.h>
-#include <ReviewsBackend/Rating.h>
-#include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <MuonBackendsFactory.h>
 
 class CachedNetworkAccessManager : public QNetworkAccessManager {
