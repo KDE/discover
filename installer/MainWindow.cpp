@@ -111,7 +111,7 @@ void MainWindow::initGUI()
     // Set up the navigational sidebar on the right
     m_viewSwitcher = new ViewSwitcher(this);
     connect(m_viewSwitcher, SIGNAL(activated(QModelIndex)),
-           this, SLOT(changeView(QModelIndex)));
+            this, SLOT(changeView(QModelIndex)));
     m_mainWidget->addWidget(m_viewSwitcher);
 
     // Set up the main pane
@@ -341,7 +341,7 @@ void MainWindow::changeView(const QModelIndex &index)
             if (originFilter != QLatin1String("Ubuntu") && originFilter != QLatin1String("Debian"))
                 appView->setShouldShowTechnical(true);
         }
-        break;
+            break;
         case CatView:
             view = new AvailableView(this);
             break;
@@ -418,9 +418,9 @@ void MainWindow::showAppLauncher()
     if (!m_appLauncher && !m_launches->rowCount()==0) {
         m_appLauncher = new ApplicationLauncher(m_launches);
         connect(m_appLauncher, SIGNAL(destroyed(QObject*)),
-            this, SLOT(onAppLauncherClosed()));
+                this, SLOT(onAppLauncherClosed()));
         connect(m_appLauncher, SIGNAL(finished(int)),
-            this, SLOT(onAppLauncherClosed()));
+                this, SLOT(onAppLauncherClosed()));
         m_appLauncher->setWindowTitle(i18nc("@title:window", "Installation Complete"));
         m_appLauncher->show();
     }
@@ -477,7 +477,7 @@ void MainWindow::removeProgressItem()
 
     QObject *progressView = m_viewHash.take(m_progressItem->index());
     if (progressView)
-            progressView->deleteLater();
+        progressView->deleteLater();
 
     m_viewModel->removeRow(m_progressItem->row());
     m_progressItem = nullptr;
