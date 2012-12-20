@@ -89,6 +89,7 @@ void MainWindow::initGUI()
     m_progressWidget->hide();
 
     m_updaterWidget = new UpdaterWidget(mainWidget);
+    m_updaterWidget->setEnabled(false);
 
     m_changelogWidget = new ChangelogWidget(this);
     m_changelogWidget->hide();
@@ -112,6 +113,8 @@ void MainWindow::initGUI()
 void MainWindow::setupActions()
 {
     MuonMainWindow::setupActions();
+
+    connect(QAptActions::self(), SIGNAL(checkForUpdates()), this, SLOT(checkForUpdates()));
 
     m_applyAction = actionCollection()->addAction("apply");
     m_applyAction->setIcon(KIcon("dialog-ok-apply"));
@@ -139,6 +142,7 @@ void MainWindow::setupActions()
 void MainWindow::initBackend()
 {
     m_updaterWidget->setBackend(m_apps);
+    m_updaterWidget->setEnabled(true);
     m_changelogWidget->setBackend(backend());
 
     setActionsEnabled();
