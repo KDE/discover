@@ -177,11 +177,14 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
 
 int ResourcesModel::rowCount(const QModelIndex& parent) const
 {
-    if(parent.isValid()) return 0;
+    if(parent.isValid())
+        return 0; // Not the root element, and children don't have subchildren
+
+    // The root element parents all resources from all backends
     int ret = 0;
-    foreach(const QVector<AbstractResource*>& resources, m_resources) {
+    for (const QVector<AbstractResource*>& resources : m_resources)
         ret += resources.size();
-    }
+
     return ret;
 }
 
@@ -237,7 +240,7 @@ void ResourcesModel::updateCaller()
     int pos = m_backends.indexOf(backend);
     QVector<AbstractResource*>* backendsResources = &m_resources[pos];
     int before = 0;
-    for(QVector<QVector<AbstractResource*> >::const_iterator it=m_resources.constBegin();
+    for(auto it=m_resources.constBegin();
         it!=m_resources.constEnd() && it!=backendsResources;
         ++it)
     {
