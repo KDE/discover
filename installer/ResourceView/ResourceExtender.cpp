@@ -88,7 +88,8 @@ void ResourceExtender::setShowInfoButton(bool show)
 
 void ResourceExtender::workerEvent(TransactionStateTransition workerEvent, Transaction *transaction)
 {
-    if (!transaction || !m_resource->backend()->transactions().contains(transaction)
+    // FIXME trans refactor porting: connect to resource's transaction's cancellable signal
+    if (!transaction /*|| !m_resource->backend()->transactions().contains(transaction)*/
         || m_resource != transaction->resource()) {
         return;
     }

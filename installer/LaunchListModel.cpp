@@ -42,7 +42,7 @@ LaunchListModel::LaunchListModel(QObject* parent)
 
 void LaunchListModel::transactionFinished(Transaction* t)
 {
-    if(t->resource()->canExecute() && t->state()==DoneState && t->action()==InstallApp)
+    if(t->resource()->canExecute() && t->status() == DoneStatus && t->role() == InstallRole)
         addApplication(t->resource());
 }
 
