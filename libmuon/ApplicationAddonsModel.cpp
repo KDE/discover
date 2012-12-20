@@ -62,12 +62,13 @@ QVariant ApplicationAddonsModel::data(const QModelIndex& index, int role) const
         case Qt::ToolTipRole:
             return m_initial[index.row()].description();
         case Qt::CheckStateRole: {
-            QHash<QString, bool>::const_iterator it = m_state.constFind(m_initial[index.row()].name());
-            if(it==m_state.constEnd()) {
-                return m_initial[index.row()].isInstalled();
-            } else {
-                return it.value();
-            }
+        // FIXME: Port to AddonList
+//            QHash<QString, bool>::const_iterator it = m_state.constFind(m_initial[index.row()].name());
+//            if(it==m_state.constEnd()) {
+//                return m_initial[index.row()].isInstalled();
+//            } else {
+//                return it.value();
+//            }
         }
     }
     
@@ -97,10 +98,11 @@ void ApplicationAddonsModel::changeState(const QString& packageName, bool instal
     }
     
     bool restored = it->isInstalled()==installed;
-    if(restored)
-        m_state.remove(packageName);
-    else
-        m_state.insert(packageName, installed);
+    // FIXME AddonList, add appropriate functionality
+//    if(restored)
+//        m_state.remove(packageName);
+//    else
+//        m_state.insert(packageName, installed);
     emit stateChanged();
 }
 

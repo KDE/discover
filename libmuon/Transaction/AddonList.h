@@ -24,17 +24,21 @@
 #include <QStringList>
 #include <QtCore/QVector>
 
-class AddonList
+#include "libmuonprivate_export.h"
+
+class MUONPRIVATE_EXPORT AddonList
 {
 public:
     AddonList();
     AddonList(const AddonList &other);
 
+    bool isEmpty() const;
     QStringList addonsToInstall() const;
     QStringList addonsToRemove() const;
 
     void setAddonsToInstall(const QStringList &list);
     void setAddonsToRemove(const QStringList &list);
+    void clear();
 
 private:
     QVector<QStringList> m_list;

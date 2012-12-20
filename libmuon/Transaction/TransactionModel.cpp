@@ -46,7 +46,7 @@ QVariant TransactionModel::data(const QModelIndex &index, int role) const
     if (!index.isValid())
         return QVariant();
 
-    Transaction2 *trans = transactionFromIndex(index);
+    Transaction *trans = transactionFromIndex(index);
     switch (role) {
     case TransactionRoleRole:
         return trans->role();
@@ -74,6 +74,8 @@ QVariant TransactionModel::data(const QModelIndex &index, int role) const
                 return i18nc("@info:status", "Changing Addons");
             }
             break;
+        case DoneStatus:
+            return i18nc("@info:status", "Done");
         }
         break;
     }
@@ -81,15 +83,15 @@ QVariant TransactionModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-Transaction2 *TransactionModel::transactionFromIndex(const QModelIndex &index) const
+Transaction *TransactionModel::transactionFromIndex(const QModelIndex &index) const
 {
     if (index.isValid())
-        return static_cast<Transaction2 *>(index.internalPointer());
+        return static_cast<Transaction *>(index.internalPointer());
 
     return nullptr;
 }
 
-void TransactionModel::addTransaction(Transaction2 *trans)
+void TransactionModel::addTransaction(Transaction *trans)
 {
     if (m_transactions.contains(trans))
         return;

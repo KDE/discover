@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2012 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -21,47 +21,74 @@
 #ifndef TRANSACTION_H
 #define TRANSACTION_H
 
-#include <QtCore/QHash>
+// Qt includes
+#include <QtCore/QObject>
+
+// Own includes
+#include "AddonList.h"
 
 #include "libmuonprivate_export.h"
 
 class AbstractResource;
 
-enum TransactionState {
-    InvalidState = 0,
-    QueuedState = 1,
-    RunningState = 2,
-    DoneState = 3
+enum TransactionStatus {
+    /// Not queued, newly created
+    SetupStatus = 0,
+    /// Queued, but not yet run
+    QueuedStatus,
+    /// Transaction is in the downloading phase
+    DownloadingStatus,
+    /// Transaction is doing an installation/removal
+    CommittingStatus,
+    /// Transaction is done
+    DoneStatus
 };
 
-enum TransactionAction {
-    InvalidAction = 0,
-    InstallApp = 1,
-    RemoveApp = 2,
-    ChangeAddons = 3
+enum TransactionRole {
+    InstallRole = 0,
+    RemoveRole,
+    ChangeAddonsRole
 };
 
 class MUONPRIVATE_EXPORT Transaction : public QObject
 {
-Q_OBJECT
-Q_PROPERTY(AbstractResource* resource READ resource CONSTANT)
-public:
-    explicit Transaction (AbstractResource *app, TransactionAction);
-    explicit Transaction (AbstractResource *app, TransactionAction,
-                          const QHash<QString, bool> &addons);
+    Q_OBJECT
 
-    void setState(TransactionState state);
+    Q_PROPERTY(AbstractResource* resource READ resource CONSTANT)
+    Q_PROPERTY(TransactionRole role READ role CONSTANT)
+    Q_PROPERTY(TransactionStatus status READ status NOTIFY statusChanged)
+    Q_PROPERTY(bool isCancellable READ isCancellable NOTIFY cancellableChanged)
+    Q_PROPERTY(int progress READ progress NOTIFY progressChanged)
+
+public:
+    Transaction(QObject *parent, AbstractResource *resource,
+                 TransactionRole role);
+    Transaction(QObject *parent, AbstractResource *resource,
+                 TransactionRole role, AddonList addons);
 
     AbstractResource *resource() const;
-    TransactionAction action() const;
-    TransactionState state() const;
-    QHash<QString, bool> addons() const;
+    TransactionRole role() const;
+    TransactionStatus status() const;
+    AddonList addons() const;
+    bool isCancellable() const;
+    int progress() const;
+
+    void setStatus(TransactionStatus status);
+    void setCancellable(bool isCancellable);
+    void setProgress(int progress);
 
 private:
-    AbstractResource *m_application;
-    TransactionAction m_action;
-    TransactionState m_state;
-    QHash<QString, bool> m_addons;
+    AbstractResource *m_resource;
+    TransactionRole m_role;
+    TransactionStatus m_status;
+    AddonList m_addons;
+    bool m_isCancellable;
+    int m_progress;
+
+signals:
+    void statusChanged(TransactionStatus status);
+    void cancellableChanged(bool cancellable);
+    void progressChanged(int progress);
 };
 
-#endif
+#endif // TRANSACTION_H

@@ -23,9 +23,11 @@
 
 #include <QAbstractListModel>
 
-#include "Transaction2.h"
+#include "Transaction.h"
 
-class TransactionModel : public QAbstractListModel
+#include "libmuonprivate_export.h"
+
+class MUONPRIVATE_EXPORT TransactionModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
@@ -43,12 +45,12 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
-    Transaction2 *transactionFromIndex(const QModelIndex &index) const;
+    Transaction *transactionFromIndex(const QModelIndex &index) const;
 
-    void addTransaction(Transaction2 *trans);
+    void addTransaction(Transaction *trans);
 
 private:
-    QVector<Transaction2 *> m_transactions;
+    QList<Transaction *> m_transactions;
     
 signals:
     

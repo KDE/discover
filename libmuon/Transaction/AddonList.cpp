@@ -35,6 +35,11 @@ AddonList::AddonList(const AddonList &other)
 {
 }
 
+bool AddonList::isEmpty() const
+{
+    return m_list.at(ToInstall).isEmpty() && m_list.at(ToRemove).isEmpty();
+}
+
 QStringList AddonList::addonsToInstall() const
 {
     return m_list.at(ToInstall);
@@ -53,4 +58,10 @@ void AddonList::setAddonsToInstall(const QStringList &list)
 void AddonList::setAddonsToRemove(const QStringList &list)
 {
     m_list[ToRemove] = list;
+}
+
+void AddonList::clear()
+{
+    m_list[ToInstall].clear();
+    m_list[ToRemove].clear();
 }

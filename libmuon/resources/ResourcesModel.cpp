@@ -139,12 +139,13 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
         case ActiveRole: {
             Transaction* t = nullptr;
 
-            for (Transaction *trans : resource->backend()->transactions()) {
-                if (trans->resource() == resource) {
-                    t = trans;
-                    break;
-                }
-            }
+            // FIXME: trans porting
+//            for (Transaction *trans : resource->backend()->transactions()) {
+//                if (trans->resource() == resource) {
+//                    t = trans;
+//                    break;
+//                }
+//            }
 
             return (t != nullptr);
         }
@@ -283,9 +284,9 @@ void ResourcesModel::installApplication(AbstractResource* app)
     app->backend()->installApplication(app);
 }
 
-void ResourcesModel::installApplication(AbstractResource* app, const QHash< QString, bool >& state)
+void ResourcesModel::installApplication(AbstractResource* app, AddonList addons)
 {
-    app->backend()->installApplication(app, state);
+    app->backend()->installApplication(app, addons);
 }
 
 void ResourcesModel::removeApplication(AbstractResource* app)
