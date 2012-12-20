@@ -375,13 +375,6 @@ void MainWindow::selectFirstRow(const QAbstractItemView *itemView)
     changeView(firstRow);
 }
 
-void MainWindow::runSourcesEditor()
-{
-    // Let QApt Batch handle the update GUI
-    // FIXME?
-    //MuonMainWindow::runSourcesEditor(true);
-}
-
 void MainWindow::sourcesEditorFinished()
 {
     clearViews();
