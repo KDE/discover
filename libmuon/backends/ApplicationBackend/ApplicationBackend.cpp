@@ -517,30 +517,6 @@ QStringList ApplicationBackend::searchPackageName(const QString& searchText)
     return names;
 }
 
-QPair<TransactionStateTransition, Transaction*> ApplicationBackend::currentTransactionState() const
-{
-    QPair<TransactionStateTransition, Transaction*> ret;
-    ret.second = m_currentTransaction;
-
-    QApt::Transaction *trans = m_transQueue.value(m_currentTransaction);
-
-    if (!m_currentTransaction || !trans)
-        return ret;
-
-    switch (trans->status()) {
-    case QApt::DownloadingStatus:
-        ret.first = StartedDownloading;
-        break;
-    case QApt::CommittingStatus:
-        ret.first = StartedCommitting;
-        break;
-    default:
-        break;
-    }
-
-    return ret;
-}
-
 AbstractBackendUpdater* ApplicationBackend::backendUpdater() const
 {
     return m_backendUpdater;

@@ -52,7 +52,6 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
         virtual AbstractReviewsBackend* reviewsBackend() const = 0;
         virtual AbstractBackendUpdater* backendUpdater() const = 0;
         virtual int updatesCount() const = 0;
-        virtual QPair<TransactionStateTransition, Transaction *> currentTransactionState() const = 0;
         virtual QList<Transaction*> transactions() const = 0;
         virtual AbstractResource* resourceByPackageName(const QString& name) const = 0;
         virtual void integrateMainWindow(MuonMainWindow* w);

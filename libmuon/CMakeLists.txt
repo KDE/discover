@@ -16,7 +16,6 @@ set(muon_LIB_SRCS
     Transaction/Transaction.cpp
     Transaction/Transaction2.cpp
     Transaction/TransactionModel.cpp
-    Transaction/TransactionListener.cpp
     resources/ResourcesModel.cpp
     resources/ResourcesProxyModel.cpp
     resources/AbstractResourcesBackend.cpp

@@ -87,7 +87,6 @@ private:
     QPropertyAnimation *m_fadeBlur;
 
     KTemporaryFile *m_screenshotFile;
-    TransactionListener* m_listener;
 
 private Q_SLOTS:
     void fetchScreenshot(ScreenshotType screenshotType);

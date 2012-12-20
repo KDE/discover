@@ -60,7 +60,6 @@ public:
 
     AbstractReviewsBackend *reviewsBackend() const;
     Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name) const;
-    QPair<TransactionStateTransition, Transaction *> currentTransactionState() const;
     QList<Transaction *> transactions() const;
     QApt::Backend* backend() const;
 

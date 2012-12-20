@@ -40,7 +40,6 @@
 //Libmuon includes
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
-#include <Transaction/TransactionListener.h>
 
 // Own includes
 #include "ResourceExtender.h"
@@ -53,8 +52,7 @@
 ResourceDelegate::ResourceDelegate(QAbstractItemView *parent)
   : KExtendableItemDelegate(parent),
     m_extender(0),
-    m_showInfoButton(true),
-    m_transactionListener(new TransactionListener(this))
+    m_showInfoButton(true)
 {
     // To get sizing.
     QPushButton button, button2;
@@ -127,13 +125,13 @@ void ResourceDelegate::paint(QPainter *painter,
         }
     } else {
         AbstractResource* res = qobject_cast<AbstractResource*>( index.data(ResourcesModel::ApplicationRole).value<QObject*>());
-        m_transactionListener->setResource(res);
+        //m_transactionListener->setResource(res);
         QStyleOptionProgressBar progressBarOption;
         progressBarOption.rect = rect;
         progressBarOption.minimum = 0;
         progressBarOption.maximum = 100;
-        progressBarOption.progress = m_transactionListener->progress();
-        progressBarOption.text = m_transactionListener->comment();
+        progressBarOption.progress = 0;// FIXME m_transactionListener->progress();
+        progressBarOption.text = QString();// FIXME m_transactionListener->comment();
         progressBarOption.textVisible = true;
         KApplication::style()->drawControl(QStyle::CE_ProgressBar, &progressBarOption, painter);
     }

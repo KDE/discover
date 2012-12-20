@@ -77,8 +77,8 @@ ResourceExtender::ResourceExtender(QWidget *parent, AbstractResource *app)
 
     // Catch already-begun downloads. If the state is something else, we won't
     // care because we won't handle it
-    QPair<TransactionStateTransition, Transaction *> workerState = app->backend()->currentTransactionState();
-    workerEvent(workerState.first, workerState.second);
+//    QPair<TransactionStateTransition, Transaction *> workerState = app->backend()->currentTransactionState();
+//    workerEvent(workerState.first, workerState.second);
 }
 
 void ResourceExtender::setShowInfoButton(bool show)
