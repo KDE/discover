@@ -47,7 +47,7 @@ public:
                        const QIcon &rootIcon);
     void search(const QString &text);
 
-private:\
+private:
     CategoryModel *m_categoryModel;
     QHash<QModelIndex, AbstractViewBase *> m_subViewHash;
 
@@ -59,10 +59,6 @@ private Q_SLOTS:
     void onIndexActivated(const QModelIndex &index);
     void onSubViewDestroyed();
     void onSearchViewDestroyed();
-
-Q_SIGNALS:
-    void switchToSubView(AbstractViewBase *view);
-    void registerNewSubView(AbstractViewBase *view);
 };
 
 #endif

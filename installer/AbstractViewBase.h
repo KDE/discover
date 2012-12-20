@@ -32,7 +32,6 @@ class AbstractViewBase : public QWidget
     Q_OBJECT
 public:
     AbstractViewBase(QWidget *parent);
-    ~AbstractViewBase();
 
     BreadcrumbItem *breadcrumbItem();
     bool isSearchable();
@@ -44,7 +43,8 @@ protected:
     bool m_searchable;
 
 Q_SIGNALS:
-    void subviewCreated(AbstractViewBase *view);
+    void switchToSubView(AbstractViewBase *view);
+    void registerNewSubView(AbstractViewBase *view);
 };
 
 #endif

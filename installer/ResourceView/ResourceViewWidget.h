@@ -77,10 +77,6 @@ public Q_SLOTS:
     void setFiltersFromCategory(Category *category);
     void setShouldShowTechnical(bool show);
     void setCanShowTechnical(bool canShow);
-
-Q_SIGNALS:
-    void switchToSubView(AbstractViewBase *view);
-    void registerNewSubView(AbstractViewBase *view);
 };
 
 #endif

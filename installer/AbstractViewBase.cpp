@@ -37,10 +37,6 @@ AbstractViewBase::AbstractViewBase(QWidget *parent)
     m_crumb = new BreadcrumbItem(this);
 }
 
-AbstractViewBase::~AbstractViewBase()
-{
-}
-
 void AbstractViewBase::search(const QString &text)
 {
     Q_UNUSED(text);
@@ -55,5 +51,3 @@ bool AbstractViewBase::isSearchable()
 {
     return m_searchable;
 }
-
-#include "AbstractViewBase.moc"
