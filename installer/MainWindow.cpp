@@ -63,9 +63,9 @@ enum ViewModelRole {
     /// A role for storing ViewType
     ViewTypeRole = Qt::UserRole + 1,
     /// A role for storing origin filter data
-    OriginFilterRole = Qt::UserRole + 2,
+    OriginFilterRole,
     /// A role for storing state filter data
-    StateFilterRole = Qt::UserRole + 3
+    StateFilterRole
 };
 
 enum ViewType {
