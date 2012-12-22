@@ -85,6 +85,7 @@ GenericName[zh_CN]=软件包管理器
 GenericName[zh_TW]=套件管理器
 Categories=Qt;KDE;System;
 X-KDE-Keywords=program,software,repository,archive,package,install,remove,update,deb
+X-KDE-Keywords[bs]=program,software,repository,archive,package,install,remove,update,deb
 X-KDE-Keywords[ca]=programa,programari,repositori,arxiu,paquet,instal·la,suprimeix,actualitza,deb
 X-KDE-Keywords[ca@valencia]=programa,programari,repositori,arxiu,paquet,instal·lació,supressió,actualització,deb
 X-KDE-Keywords[cs]=program,software,úložiště,archiv,balíček,instalovat,odstranit,aktualizovat,deb
