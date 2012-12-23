@@ -1,6 +1,5 @@
 [Desktop Entry]
 Name=Muon Discover
-Name[bs]=Muon otkrivač
 Name[cs]=Muon Discover
 Name[da]=Muon Discover
 Name[el]=Muon Discover
@@ -37,7 +36,6 @@ Icon=muondiscover
 Type=Application
 X-DocPath=muon/index.html
 GenericName=Software Center
-GenericName[bs]=Softverski centar
 GenericName[ca]=Centre de programari
 GenericName[ca@valencia]=Centre de programari
 GenericName[cs]=Centrum softwaru

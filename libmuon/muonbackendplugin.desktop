@@ -4,6 +4,7 @@ X-KDE-ServiceType=Muon/Backend
 X-KDE-Derived=KPluginInfo
 Name=Muon Backend
 Name[cs]=Podpůrná vrstva Muon
+Name[da]=Muon-motor
 Name[et]=Muoni taustaprogramm
 Name[ga]=Inneall Muon
 Name[hu]=Muon modul
