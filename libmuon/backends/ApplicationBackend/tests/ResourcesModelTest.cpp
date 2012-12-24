@@ -35,7 +35,7 @@ QTEST_KDEMAIN_CORE( ResourcesModelTest )
 ResourcesModelTest::ResourcesModelTest()
 {
     MuonBackendsFactory f;
-    m_appBackend = qobject_cast<ApplicationBackend*>(f.backend("appsbackend"));
+    m_appBackend = qobject_cast<ApplicationBackend*>(f.backend("muon-appsbackend"));
     QVERIFY(m_appBackend); //TODO: test all backends
     QTest::kWaitForSignal(m_appBackend, SIGNAL(backendReady()));
     
