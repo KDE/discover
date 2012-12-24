@@ -34,14 +34,14 @@ QTEST_KDEMAIN_CORE( ApplicationBackendTest )
 
 ApplicationBackendTest::ApplicationBackendTest()
 {
+    ResourcesModel* m = ResourcesModel::global();
+    new ModelTest(m,m);
+
     MuonBackendsFactory f;
     m_appBackend = f.backend("muon-appsbackend");
+    m->addResourcesBackend(m_appBackend);
     QVERIFY(m_appBackend); //TODO: test all backends
     QTest::kWaitForSignal(m_appBackend, SIGNAL(backendReady()));
-    
-    m_model = new ResourcesModel(this);
-    m_model->addResourcesBackend(m_appBackend);
-    new ModelTest(m_model, m_model);
 }
 
 ApplicationBackendTest::~ApplicationBackendTest()
@@ -49,11 +49,12 @@ ApplicationBackendTest::~ApplicationBackendTest()
 
 void ApplicationBackendTest::testReload()
 {
+    ResourcesModel* model = ResourcesModel::global();
     QVector<AbstractResource*> apps = m_appBackend->allResources();
-    QCOMPARE(apps.count(), m_model->rowCount());
+    QCOMPARE(apps.count(), model->rowCount());
     
     QVector<QVariant> appNames(apps.size());
-    for(int i=0; i<m_model->rowCount(); ++i) {
+    for(int i=0; i<model->rowCount(); ++i) {
         AbstractResource* app = apps[i];
         appNames[i]=app->property("packageName");
     }
@@ -64,9 +65,9 @@ void ApplicationBackendTest::testReload()
     QCOMPARE(apps, m_appBackend->allResources() );
     
     QVERIFY(!apps.isEmpty());
-    QCOMPARE(apps.count(), m_model->rowCount());
+    QCOMPARE(apps.count(), model->rowCount());
     
-    for(int i=0; i<m_model->rowCount(); ++i) {
+    for(int i=0; i<model->rowCount(); ++i) {
         AbstractResource* app = apps[i];
         QCOMPARE(appNames[i], app->property("packageName"));
 //         QCOMPARE(m_model->data(m_model->index(i), ResourcesModel::NameRole).toString(), app->name());
@@ -75,8 +76,9 @@ void ApplicationBackendTest::testReload()
 
 void ApplicationBackendTest::testCategories()
 {
-    ResourcesProxyModel* proxy = new ResourcesProxyModel(m_model);
-    proxy->setSourceModel(m_model);
+    ResourcesModel* m = ResourcesModel::global();
+    ResourcesProxyModel* proxy = new ResourcesProxyModel(m);
+    proxy->setSourceModel(m);
     QList<Category*> categories = Category::populateCategories();
     foreach(Category* cat, categories) {
         proxy->setFiltersFromCategory(cat);

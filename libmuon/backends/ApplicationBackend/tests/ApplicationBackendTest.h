@@ -23,10 +23,7 @@
 
 #include <QtTest/QtTest>
 
-class ResourcesModel;
-class ApplicationBackend;
-namespace QApt { class Backend; }
-
+class AbstractResourcesBackend;
 class ApplicationBackendTest : public QObject
 {
     Q_OBJECT
@@ -39,8 +36,7 @@ class ApplicationBackendTest : public QObject
         void testCategories();
 
     private:
-        ApplicationBackend* m_appBackend;
-        ResourcesModel* m_model;
+        AbstractResourcesBackend* m_appBackend;
 };
 
 #endif
