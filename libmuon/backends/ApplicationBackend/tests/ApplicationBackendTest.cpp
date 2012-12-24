@@ -18,7 +18,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "ResourcesModelTest.h"
+#include "ApplicationBackendTest.h"
 #include <QStringList>
 #include <KProtocolManager>
 #include <qtest_kde.h>
@@ -30,9 +30,9 @@
 #include <Category/Category.h>
 #include <MuonBackendsFactory.h>
 
-QTEST_KDEMAIN_CORE( ResourcesModelTest )
+QTEST_KDEMAIN_CORE( ApplicationBackendTest )
 
-ResourcesModelTest::ResourcesModelTest()
+ApplicationBackendTest::ApplicationBackendTest()
 {
     MuonBackendsFactory f;
     m_appBackend = qobject_cast<ApplicationBackend*>(f.backend("muon-appsbackend"));
@@ -44,10 +44,10 @@ ResourcesModelTest::ResourcesModelTest()
     new ModelTest(m_model, m_model);
 }
 
-ResourcesModelTest::~ResourcesModelTest()
+ApplicationBackendTest::~ApplicationBackendTest()
 {}
 
-void ResourcesModelTest::testReload()
+void ApplicationBackendTest::testReload()
 {
     QVector<AbstractResource*> apps = m_appBackend->allResources();
     QCOMPARE(apps.count(), m_model->rowCount());
@@ -72,7 +72,7 @@ void ResourcesModelTest::testReload()
     }
 }
 
-void ResourcesModelTest::testCategories()
+void ApplicationBackendTest::testCategories()
 {
     ResourcesProxyModel* proxy = new ResourcesProxyModel(m_model);
     proxy->setSourceModel(m_model);

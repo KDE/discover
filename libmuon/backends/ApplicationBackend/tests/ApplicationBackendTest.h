@@ -27,12 +27,12 @@ class ResourcesModel;
 class ApplicationBackend;
 namespace QApt { class Backend; }
 
-class ResourcesModelTest : public QObject
+class ApplicationBackendTest : public QObject
 {
     Q_OBJECT
     public:
-        ResourcesModelTest();
-        virtual ~ResourcesModelTest();
+        ApplicationBackendTest();
+        virtual ~ApplicationBackendTest();
 
     private slots:
         void testReload();

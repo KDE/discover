@@ -10,5 +10,5 @@ macro(libmuon_add_unit_test name)
     )
 endmacro(libmuon_add_unit_test)
 
-libmuon_add_unit_test(resourcesmodeltest ResourcesModelTest.cpp)
+libmuon_add_unit_test(applicationbackendtest ApplicationBackendTest.cpp)
 libmuon_add_unit_test(reviewstest ReviewsTest.cpp)
