@@ -9,3 +9,5 @@ endif(QAPT_FOUND)
 if(BODEGA_FOUND)
     add_subdirectory(BodegaBackend)
 endif(BODEGA_FOUND)
+
+add_subdirectory(PackageKitBackend)

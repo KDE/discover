@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=Muon/Backend
+Exec=blubb
+Icon=applications-other
+Comment=Install and browse applications in PackageKit
+Name=PackageKit Support
+GenericName=Applications Backend
+X-KDE-Library=muon-pkbackend
+X-KDE-PluginInfo-Name=muon-pkbackend
+X-KDE-PluginInfo-License=GPL
