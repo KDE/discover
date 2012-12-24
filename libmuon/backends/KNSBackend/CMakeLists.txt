@@ -1,3 +1,5 @@
+add_subdirectory(tests)
+
 set(knsbackend_SRCS
     KNSBackend.cpp
     KNSResource.cpp

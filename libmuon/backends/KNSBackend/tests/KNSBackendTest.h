@@ -23,9 +23,9 @@
 
 #include <QtCore/QObject>
 
+class AbstractResourcesBackend;
 class AbstractResource;
 class Review;
-class KNSBackend;
 
 class KNSBackendTest : public QObject
 {
@@ -41,7 +41,7 @@ class KNSBackendTest : public QObject
         void reviewsArrived(AbstractResource *r, const QList<Review *>& revs);
 
     private:
-        KNSBackend* m_backend;
+        AbstractResourcesBackend* m_backend;
         AbstractResource* m_r;
         QList<Review*> m_revs;
 };

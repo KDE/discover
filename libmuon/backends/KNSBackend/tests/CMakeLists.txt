@@ -1,3 +1,5 @@
+include_directories(..)
+
 kde4_add_unit_test(knsbackendtest KNSBackendTest.cpp)
 target_link_libraries(knsbackendtest
     muonprivate
