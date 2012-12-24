@@ -632,6 +632,5 @@ void ApplicationBackend::initAvailablePackages(KJob* j)
         for(Application* a : m_appList) {
             a->setHasScreenshot(packages.contains(a->packageName()));
         }
-        qDebug(".");
     }
 }
