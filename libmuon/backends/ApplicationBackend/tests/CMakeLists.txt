@@ -6,8 +6,7 @@ macro(libmuon_add_unit_test name)
         muonprivate
         
         ${QT_QTTEST_LIBRARY} ${QT_QTCORE_LIBRARY}
-        ${KDE4_KIO_LIBS} ${QAPT_LIBRARY} muon-appsbackend
-    )
+        ${KDE4_KIO_LIBS} ${QAPT_LIBRARY})
 endmacro(libmuon_add_unit_test)
 
 libmuon_add_unit_test(applicationbackendtest ApplicationBackendTest.cpp)

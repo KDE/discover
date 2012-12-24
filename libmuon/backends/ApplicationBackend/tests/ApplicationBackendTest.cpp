@@ -35,7 +35,7 @@ QTEST_KDEMAIN_CORE( ApplicationBackendTest )
 ApplicationBackendTest::ApplicationBackendTest()
 {
     MuonBackendsFactory f;
-    m_appBackend = qobject_cast<ApplicationBackend*>(f.backend("muon-appsbackend"));
+    m_appBackend = f.backend("muon-appsbackend");
     QVERIFY(m_appBackend); //TODO: test all backends
     QTest::kWaitForSignal(m_appBackend, SIGNAL(backendReady()));
     
@@ -58,7 +58,8 @@ void ApplicationBackendTest::testReload()
         appNames[i]=app->property("packageName");
     }
     
-    m_appBackend->reload();
+    bool b = QMetaObject::invokeMethod(m_appBackend, "reload");
+    Q_ASSERT(b);
     m_appBackend->updatesCount();
     QCOMPARE(apps, m_appBackend->allResources() );
     
