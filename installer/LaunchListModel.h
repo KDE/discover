@@ -31,7 +31,6 @@
 
 class AbstractResource;
 
-
 class MUONPRIVATE_EXPORT LaunchListModel : public QStandardItemModel
 {
     Q_OBJECT
