@@ -29,13 +29,6 @@
 
 #include "libmuonprivate_export.h"
 
-enum TransactionStateTransition {
-    StartedDownloading,
-    FinishedDownloading,
-    StartedCommitting,
-    FinishedCommitting
-};
-
 class Transaction;
 class AbstractReviewsBackend;
 class AbstractResource;
