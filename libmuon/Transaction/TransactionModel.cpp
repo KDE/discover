@@ -93,10 +93,12 @@ QVariant TransactionModel::data(const QModelIndex &index, int role) const
 
 Transaction *TransactionModel::transactionFromIndex(const QModelIndex &index) const
 {
-    if (index.isValid())
-        return static_cast<Transaction *>(index.internalPointer());
+    Transaction *trans = nullptr;
 
-    return nullptr;
+    if (index.row() < m_transactions.size())
+        trans = m_transactions.at(index.row());
+
+    return trans;
 }
 
 Transaction *TransactionModel::transactionFromResource(AbstractResource *resource) const
@@ -155,7 +157,31 @@ void TransactionModel::addTransaction(Transaction *trans)
 
 void TransactionModel::removeTransaction(Transaction *trans)
 {
+    QModelIndex toRemove = indexOf(trans);
 
+    removeRow(toRemove.row());
+
+    if (!m_transactions.size())
+        emit lastTransactionFinished();
+}
+
+bool TransactionModel::removeRows(int row, int count, const QModelIndex &parent)
+{
+    Q_UNUSED(count);
+
+    bool success = false;
+
+    if (!parent.isValid()) {
+        QModelIndex child = index(row);
+        Transaction *trans = transactionFromIndex(child);
+
+        beginRemoveRows(parent, row, row);
+        m_transactions.removeAll(trans);
+        endRemoveRows();
+        success = true;
+    }
+
+    return success;
 }
 
 void TransactionModel::transactionChanged()

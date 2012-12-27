@@ -53,6 +53,7 @@
 #include "Application.h"
 #include "ReviewsBackend.h"
 #include "Transaction/Transaction.h"
+#include "Transaction/TransactionModel.h"
 #include "ApplicationUpdates.h"
 #include "MuonMainWindow.h"
 #include <MuonDataSources.h>
@@ -217,6 +218,8 @@ void ApplicationBackend::transactionEvent(QApt::TransactionStatus status)
     if (iter == m_transQueue.end())
         return;
 
+    TransactionModel *transModel = TransactionModel::global();
+
     switch (status) {
     case QApt::SetupStatus:
     case QApt::AuthenticationStatus:
@@ -250,12 +253,10 @@ void ApplicationBackend::transactionEvent(QApt::TransactionStatus status)
 
         // Cleanup
         trans->deleteLater();
-        // FIXME: trans porting
-        //emit transactionRemoved(m_currentTransaction);
+        transModel->removeTransaction(m_currentTransaction);
         m_transQueue.remove(iter.key());
 
         qobject_cast<Application*>(m_currentTransaction->resource())->emitStateChanged();
-        // FIXME: remove from trans model
         delete m_currentTransaction;
         m_currentTransaction = nullptr;
 
@@ -389,6 +390,7 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
         return;
     }
 
+    TransactionModel *transModel = TransactionModel::global();
     Application *app = qobject_cast<Application*>(transaction->resource());
 
     if (app->package()->wouldBreak()) {
@@ -398,6 +400,7 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
 
     QApt::Transaction *aptTrans = m_backend->commitChanges();
     setupTransaction(aptTrans);
+    transModel->addTransaction(transaction);
     m_transQueue.insert(transaction, aptTrans);
     aptTrans->run();
     m_backend->restoreCacheState(oldCacheState); // Undo temporary simulation marking
@@ -520,7 +523,6 @@ void ApplicationBackend::initBackend()
     if (!m_backend->init())
         QAptActions::self()->initError();
     if (m_backend->xapianIndexNeedsUpdate()) {
-        // FIXME: transaction
         m_backend->updateXapianIndex();
     }
     m_aptBackendInitialized = true;

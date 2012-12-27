@@ -45,6 +45,7 @@ public:
     // Reimplemented from QAbstractListModel
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
+    bool removeRows(int row, int count, const QModelIndex &parent);
 
     Transaction *transactionFromIndex(const QModelIndex &index) const;
     Transaction *transactionFromResource(AbstractResource *resource) const;
