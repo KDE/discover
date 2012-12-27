@@ -53,6 +53,7 @@ public:
     QModelIndex indexOf(AbstractResource *res) const;
 
     void addTransaction(Transaction *trans);
+    void cancelTransaction(Transaction *trans);
     void removeTransaction(Transaction *trans);
 
 private:
@@ -61,6 +62,8 @@ private:
 signals:
     void startingFirstTransaction();
     void lastTransactionFinished();
+    void transactionAdded(Transaction *trans);
+    void transactionCancelled(Transaction *trans);
     
 public slots:
     

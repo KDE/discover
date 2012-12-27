@@ -82,13 +82,6 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         void updatesCountChanged();
         void searchInvalidated();
 
-        //Transactions forwarding
-        void transactionProgressed(Transaction *transaction, int progress);
-        void transactionAdded(Transaction *transaction);
-        void transactionCancelled(Transaction *transaction);
-        void transactionRemoved(Transaction* transaction);
-        void transactionsEvent(TransactionStateTransition transition, Transaction* transaction);
-
     private slots:
         void cleanCaller();
         void resetCaller();

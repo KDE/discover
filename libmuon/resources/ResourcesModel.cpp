@@ -87,12 +87,6 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
     connect(backend, SIGNAL(allDataChanged()), SLOT(updateCaller()));
     connect(backend, SIGNAL(searchInvalidated()), SIGNAL(searchInvalidated()));
     
-    connect(backend, SIGNAL(transactionAdded(Transaction*)), SIGNAL(transactionAdded(Transaction*)));
-    connect(backend, SIGNAL(transactionCancelled(Transaction*)), SIGNAL(transactionCancelled(Transaction*)));
-    connect(backend, SIGNAL(transactionProgressed(Transaction*,int)), SIGNAL(transactionProgressed(Transaction*,int)));
-    connect(backend, SIGNAL(transactionRemoved(Transaction*)), SIGNAL(transactionRemoved(Transaction*)));
-    connect(backend, SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)), SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)));
-    
     connect(this, SIGNAL(transactionAdded(Transaction*)), SLOT(transactionChanged(Transaction*)));
     connect(this, SIGNAL(transactionRemoved(Transaction*)), SLOT(transactionChanged(Transaction*)));
     connect(this, SIGNAL(transactionCancelled(Transaction*)), SLOT(transactionChanged(Transaction*)));

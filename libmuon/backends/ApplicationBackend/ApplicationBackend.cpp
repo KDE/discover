@@ -234,6 +234,7 @@ void ApplicationBackend::transactionEvent(QApt::TransactionStatus status)
         break;
     case QApt::DownloadingStatus:
         m_currentTransaction->setStatus(DownloadingStatus);
+        m_currentTransaction->setCancellable(false);
         break;
     case QApt::CommittingStatus:
         m_currentTransaction->setStatus(CommittingStatus);
@@ -383,14 +384,14 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
 
     QApt::StateChanges changes = m_backend->stateChanges(oldCacheState, excluded);
 
+    TransactionModel *transModel = TransactionModel::global();
     if (!confirmRemoval(changes)) {
         m_backend->restoreCacheState(oldCacheState);
-        // FIXME: trans porting, cancel the transaction
-        delete transaction;
+        transModel->cancelTransaction(transaction);
+        transaction->deleteLater();
         return;
     }
 
-    TransactionModel *transModel = TransactionModel::global();
     Application *app = qobject_cast<Application*>(transaction->resource());
 
     if (app->package()->wouldBreak()) {

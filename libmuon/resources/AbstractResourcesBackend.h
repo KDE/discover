@@ -70,11 +70,6 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
         void updatesCountChanged();
         void allDataChanged();
         void searchInvalidated();
-        
-//        void transactionProgressed(Transaction *transaction, int progress);
-//        void transactionAdded(Transaction *transaction);
-//        void transactionCancelled(Transaction *app);
-//        void transactionRemoved(Transaction* t);
 };
 
 Q_DECLARE_INTERFACE( AbstractResourcesBackend, "org.kde.muon.AbstractResourcesBackend" )

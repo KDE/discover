@@ -30,6 +30,7 @@
 
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
+#include "Transaction/TransactionModel.h"
 
 ResourceExtender::ResourceExtender(QWidget *parent, AbstractResource *app)
     : QWidget(parent)
@@ -69,59 +70,51 @@ ResourceExtender::ResourceExtender(QWidget *parent, AbstractResource *app)
     layout->addWidget(m_actionButton);
     layout->addWidget(m_cancelButton);
 
-    ResourcesModel *resourcesModel = ResourcesModel::global();
-    connect(resourcesModel, SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)),
-            this, SLOT(workerEvent(TransactionStateTransition,Transaction*)));
-    connect(resourcesModel, SIGNAL(transactionCancelled(Transaction*)),
-            this, SLOT(transactionCancelled(Transaction*)));
+    // Catch already-begun transactions
+    TransactionModel *transModel = TransactionModel::global();
+    setupTransaction(transModel->transactionFromResource(app));
 
-    // Catch already-begun downloads. If the state is something else, we won't
-    // care because we won't handle it
-//    QPair<TransactionStateTransition, Transaction *> workerState = app->backend()->currentTransactionState();
-//    workerEvent(workerState.first, workerState.second);
+    connect(transModel, SIGNAL(transactionAdded(Transaction*)),
+            this, SLOT(setupTransaction(Transaction*)));
+    connect(transModel, SIGNAL(transactionCancelled(Transaction*)),
+            this, SLOT(transactionCancelled(Transaction*)));
 }
 
 void ResourceExtender::setShowInfoButton(bool show)
 {
-    show ? m_infoButton->show() : m_infoButton->hide();
+    m_infoButton->setVisible(show);
 }
 
-void ResourceExtender::workerEvent(TransactionStateTransition workerEvent, Transaction *transaction)
+void ResourceExtender::setupTransaction(Transaction *trans)
 {
-    // FIXME trans refactor porting: connect to resource's transaction's cancellable signal
-    if (!transaction /*|| !m_resource->backend()->transactions().contains(transaction)*/
-        || m_resource != transaction->resource()) {
+    if (!trans || m_resource != trans->resource())
         return;
-    }
 
-    switch (workerEvent) {
-    case StartedDownloading:
-        m_actionButton->hide();
-        m_cancelButton->show();
-        break;
-    case StartedCommitting:
-        m_cancelButton->hide();
-        m_actionButton->hide();
-        break;
-    default:
-        break;
-    }
+    // Transaction already started, so no action can be taken
+    m_actionButton->hide();
+    m_cancelButton->setVisible(trans->isCancellable());
+
+    // Listen to future changes with the transaction
+    connect(trans, SIGNAL(cancellableChanged(bool)),
+            m_cancelButton, SLOT(setVisible(bool)));
 }
 
 void ResourceExtender::transactionCancelled(Transaction* trans)
 {
     AbstractResource* resource = trans->resource();
-    if (m_resource == resource) {
-        m_cancelButton->hide();
-        m_actionButton->show();
-        m_actionButton->setEnabled(true);
-        if (m_resource->isInstalled()) {
-            m_actionButton->setIcon(KIcon("edit-delete"));
-            m_actionButton->setText(i18n("Remove"));
-        } else {
-            m_actionButton->setIcon(KIcon("download"));
-            m_actionButton->setText(i18n("Install"));
-        }
+    if (m_resource != resource)
+        return;
+
+    // Reset UI to its pre-transaction state
+    m_cancelButton->hide();
+    m_actionButton->show();
+    m_actionButton->setEnabled(true);
+    if (m_resource->isInstalled()) {
+        m_actionButton->setIcon(KIcon("edit-delete"));
+        m_actionButton->setText(i18n("Remove"));
+    } else {
+        m_actionButton->setIcon(KIcon("download"));
+        m_actionButton->setText(i18n("Install"));
     }
 }
 

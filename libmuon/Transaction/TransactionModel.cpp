@@ -153,6 +153,14 @@ void TransactionModel::addTransaction(Transaction *trans)
     beginInsertRows(QModelIndex(), before, before + 1);
     m_transactions.append(trans);
     endInsertRows();
+    emit transactionAdded(trans);
+}
+
+void TransactionModel::cancelTransaction(Transaction *trans)
+{
+    removeTransaction(trans);
+
+    emit transactionCancelled(trans);
 }
 
 void TransactionModel::removeTransaction(Transaction *trans)
