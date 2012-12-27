@@ -63,6 +63,9 @@ ResourcesModel::ResourcesModel(QObject* parent)
     roles.remove(Qt::EditRole);
     roles.remove(Qt::WhatsThisRole);
     setRoleNames(roles);
+
+    connect(TransactionModel::global(), SIGNAL(dataChanged(QModelIndex,QModelIndex)),
+            this, SLOT(transactionChanged(QModelIndex)));
 }
 
 void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
@@ -86,10 +89,6 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
     connect(backend, SIGNAL(updatesCountChanged()), SIGNAL(updatesCountChanged()));
     connect(backend, SIGNAL(allDataChanged()), SLOT(updateCaller()));
     connect(backend, SIGNAL(searchInvalidated()), SIGNAL(searchInvalidated()));
-    
-    connect(this, SIGNAL(transactionAdded(Transaction*)), SLOT(transactionChanged(Transaction*)));
-    connect(this, SIGNAL(transactionRemoved(Transaction*)), SLOT(transactionChanged(Transaction*)));
-    connect(this, SIGNAL(transactionCancelled(Transaction*)), SLOT(transactionChanged(Transaction*)));
 
     emit backendsChanged();
 }
@@ -286,9 +285,10 @@ void ResourcesModel::cancelTransaction(AbstractResource* app)
     app->backend()->cancelTransaction(app);
 }
 
-void ResourcesModel::transactionChanged(Transaction* t)
+void ResourcesModel::transactionChanged(QModelIndex tIndex)
 {
-    QModelIndex idx = resourceIndex(t->resource());
+    Transaction *trans = TransactionModel::global()->transactionFromIndex(tIndex);
+    QModelIndex idx = resourceIndex(trans->resource());
     dataChanged(idx, idx);
 }
 

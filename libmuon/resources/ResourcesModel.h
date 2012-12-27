@@ -75,7 +75,6 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         void installApplication(AbstractResource* app);
         void removeApplication(AbstractResource* app);
         void cancelTransaction(AbstractResource* app);
-        void transactionChanged(Transaction* t);
 
     signals:
         void backendsChanged();
@@ -86,6 +85,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         void cleanCaller();
         void resetCaller();
         void updateCaller();
+        void transactionChanged(QModelIndex tIndex);
         
     private:
         QVector< AbstractResourcesBackend* > m_backends;
