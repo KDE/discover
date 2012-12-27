@@ -43,7 +43,6 @@ public slots:
     void invokeApplication(const QModelIndex &idx) const;
     void invokeApplication(int row) const;
 
-
 private slots:
     void watchTransaction(Transaction *trans);
     void transactionStatusChanged(TransactionStatus status);
@@ -51,4 +50,3 @@ private slots:
 };
 
 #endif // LAUNCHLISTMODEL_H
-
