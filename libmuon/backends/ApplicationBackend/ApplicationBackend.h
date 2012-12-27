@@ -115,7 +115,6 @@ private Q_SLOTS:
     void sourcesEditorClosed();
 
 Q_SIGNALS:
-    void startingFirstTransaction();
     void errorSignal(QApt::ErrorCode code, const QString &details);
     void sourcesEditorFinished();
     void aptBackendInitialized(QApt::Backend* backend);

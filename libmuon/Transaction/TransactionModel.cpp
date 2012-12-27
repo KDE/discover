@@ -24,7 +24,15 @@
 #include <QtCore/QMetaProperty>
 
 // KDE includes
+#include <KGlobal>
 #include <KLocale>
+
+K_GLOBAL_STATIC(TransactionModel, globalTransactionModel)
+
+TransactionModel *TransactionModel::global()
+{
+    return globalTransactionModel;
+}
 
 TransactionModel::TransactionModel(QObject *parent)
     : QAbstractListModel(parent)
@@ -91,10 +99,40 @@ Transaction *TransactionModel::transactionFromIndex(const QModelIndex &index) co
     return nullptr;
 }
 
+Transaction *TransactionModel::transactionFromResource(AbstractResource *resource) const
+{
+    Transaction *ret = nullptr;
+
+    for (Transaction *trans : m_transactions) {
+        if (trans->resource() == resource) {
+            ret = trans;
+            break;
+        }
+    }
+
+    return ret;
+}
+
+QModelIndex TransactionModel::indexOf(Transaction *trans) const
+{
+    int row = m_transactions.indexOf(trans);
+    return index(row);
+}
+
+QModelIndex TransactionModel::indexOf(AbstractResource *res) const
+{
+    Transaction *trans = transactionFromResource(res);
+
+    return indexOf(trans);
+}
+
 void TransactionModel::addTransaction(Transaction *trans)
 {
     if (m_transactions.contains(trans))
         return;
+
+    if (m_transactions.isEmpty())
+        emit startingFirstTransaction();
 
     // Connect all notify signals to our transactionChanged slot
     const QMetaObject *meta = trans->metaObject();
@@ -108,10 +146,21 @@ void TransactionModel::addTransaction(Transaction *trans)
         const QMetaMethod notifySlot = metaObject()->method(metaObject()->indexOfSlot("transactionChanged()"));
         connect(trans, notifySignal, this, notifySlot);
     }
+
+    int before = m_transactions.size();
+    beginInsertRows(QModelIndex(), before, before + 1);
+    m_transactions.append(trans);
+    endInsertRows();
+}
+
+void TransactionModel::removeTransaction(Transaction *trans)
+{
+
 }
 
 void TransactionModel::transactionChanged()
 {
-    // FIXME: determine which trans changed via sender(), find index, give proper bounds to dataChanged
-    emit dataChanged(QModelIndex(), QModelIndex());
+    Transaction *trans = qobject_cast<Transaction *>(sender());
+    QModelIndex transIdx = indexOf(trans);
+    emit dataChanged(transIdx, transIdx);
 }

@@ -22,11 +22,12 @@
 
 #include <KGlobal>
 
-#include "resources/AbstractResourcesBackend.h"
 #include "AbstractResource.h"
+#include "resources/AbstractResourcesBackend.h"
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <Transaction/Transaction.h>
+#include "Transaction/TransactionModel.h"
 #include <QDebug>
 
 static const KCatalogLoader loader("libmuon");
@@ -64,33 +65,33 @@ ResourcesModel::ResourcesModel(QObject* parent)
     setRoleNames(roles);
 }
 
-void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* resources)
+void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
 {
-    Q_ASSERT(!m_backends.contains(resources));
-    QVector<AbstractResource*> newResources = resources->allResources();
+    Q_ASSERT(!m_backends.contains(backend));
+    QVector<AbstractResource*> newResources = backend->allResources();
     if(!newResources.isEmpty()) {
         int current = rowCount();
         beginInsertRows(QModelIndex(), current, current+newResources.size());
-        m_backends += resources;
+        m_backends += backend;
         m_resources.append(newResources);
         endInsertRows();
     } else {
-        m_backends += resources;
+        m_backends += backend;
         m_resources.append(newResources);
     }
     
-    connect(resources, SIGNAL(backendReady()), SLOT(resetCaller()));
-    connect(resources, SIGNAL(reloadStarted()), SLOT(cleanCaller()));
-    connect(resources, SIGNAL(reloadFinished()), SLOT(resetCaller()));
-    connect(resources, SIGNAL(updatesCountChanged()), SIGNAL(updatesCountChanged()));
-    connect(resources, SIGNAL(allDataChanged()), SLOT(updateCaller()));
-    connect(resources, SIGNAL(searchInvalidated()), SIGNAL(searchInvalidated()));
+    connect(backend, SIGNAL(backendReady()), SLOT(resetCaller()));
+    connect(backend, SIGNAL(reloadStarted()), SLOT(cleanCaller()));
+    connect(backend, SIGNAL(reloadFinished()), SLOT(resetCaller()));
+    connect(backend, SIGNAL(updatesCountChanged()), SIGNAL(updatesCountChanged()));
+    connect(backend, SIGNAL(allDataChanged()), SLOT(updateCaller()));
+    connect(backend, SIGNAL(searchInvalidated()), SIGNAL(searchInvalidated()));
     
-    connect(resources, SIGNAL(transactionAdded(Transaction*)), SIGNAL(transactionAdded(Transaction*)));
-    connect(resources, SIGNAL(transactionCancelled(Transaction*)), SIGNAL(transactionCancelled(Transaction*)));
-    connect(resources, SIGNAL(transactionProgressed(Transaction*,int)), SIGNAL(transactionProgressed(Transaction*,int)));
-    connect(resources, SIGNAL(transactionRemoved(Transaction*)), SIGNAL(transactionRemoved(Transaction*)));
-    connect(resources, SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)), SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)));
+    connect(backend, SIGNAL(transactionAdded(Transaction*)), SIGNAL(transactionAdded(Transaction*)));
+    connect(backend, SIGNAL(transactionCancelled(Transaction*)), SIGNAL(transactionCancelled(Transaction*)));
+    connect(backend, SIGNAL(transactionProgressed(Transaction*,int)), SIGNAL(transactionProgressed(Transaction*,int)));
+    connect(backend, SIGNAL(transactionRemoved(Transaction*)), SIGNAL(transactionRemoved(Transaction*)));
+    connect(backend, SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)), SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)));
     
     connect(this, SIGNAL(transactionAdded(Transaction*)), SLOT(transactionChanged(Transaction*)));
     connect(this, SIGNAL(transactionRemoved(Transaction*)), SLOT(transactionChanged(Transaction*)));
@@ -137,15 +138,7 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
     AbstractResource* resource = resourceAt(index.row());
     switch(role) {
         case ActiveRole: {
-            Transaction* t = nullptr;
-
-            // FIXME: trans porting
-//            for (Transaction *trans : resource->backend()->transactions()) {
-//                if (trans->resource() == resource) {
-//                    t = trans;
-//                    break;
-//                }
-//            }
+            Transaction* t = TransactionModel::global()->transactionFromResource(resource);
 
             return (t != nullptr);
         }

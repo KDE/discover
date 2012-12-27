@@ -60,7 +60,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
         virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
         
-        void addResourcesBackend(AbstractResourcesBackend* resources);
+        void addResourcesBackend(AbstractResourcesBackend* backend);
         
         AbstractResource* resourceAt(int row) const;
         QModelIndex resourceIndex(AbstractResource* res) const;

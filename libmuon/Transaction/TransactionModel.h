@@ -40,19 +40,26 @@ public:
     };
 
     explicit TransactionModel(QObject *parent = 0);
+    static TransactionModel *global();
 
     // Reimplemented from QAbstractListModel
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
     Transaction *transactionFromIndex(const QModelIndex &index) const;
+    Transaction *transactionFromResource(AbstractResource *resource) const;
+    QModelIndex indexOf(Transaction *trans) const;
+    QModelIndex indexOf(AbstractResource *res) const;
 
     void addTransaction(Transaction *trans);
+    void removeTransaction(Transaction *trans);
 
 private:
     QList<Transaction *> m_transactions;
     
 signals:
+    void startingFirstTransaction();
+    void lastTransactionFinished();
     
 public slots:
     
