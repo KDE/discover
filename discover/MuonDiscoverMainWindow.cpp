@@ -155,6 +155,13 @@ QAction* MuonDiscoverMainWindow::getAction(const QString& name)
     return actionCollection()->action(name);
 }
 
+void MuonDiscoverMainWindow::openMode(const QByteArray& mode)
+{
+    QGraphicsObject* obj = m_view->rootObject();
+    QVariant modeComp = obj->property(mode+"Comp");
+    obj->setProperty("currentTopLevel", modeComp);
+}
+
 void MuonDiscoverMainWindow::openMimeType(const QString& mime)
 {
     emit listMimeInternal(mime);

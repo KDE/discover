@@ -47,6 +47,7 @@ class MuonDiscoverMainWindow : public MuonMainWindow
         QUrl featuredSource() const;
         void openMimeType(const QString& mime);
         void openCategory(const QString& category);
+        void openMode(const QByteArray& mode);
 
     private slots:
         void triggerOpenApplication();
