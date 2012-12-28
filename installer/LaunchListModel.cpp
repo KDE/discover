@@ -42,8 +42,8 @@ LaunchListModel::LaunchListModel(QObject* parent)
 
 void LaunchListModel::watchTransaction(Transaction *trans)
 {
-    connect(trans, SIGNAL(statusChanged(TransactionStatus)),
-            this, SLOT(transactionStatusChanged(TransactionStatus)));
+    connect(trans, SIGNAL(statusChanged(Transaction::Status)),
+            this, SLOT(transactionStatusChanged(Transaction::Status)));
 }
 
 void LaunchListModel::transactionStatusChanged(Transaction::Status status)
