@@ -21,13 +21,13 @@
 #include "Transaction.h"
 
 Transaction::Transaction(QObject *parent, AbstractResource *resource,
-                           TransactionRole role)
+                         Role role)
     : Transaction(parent, resource, role, AddonList())
 {
 }
 
 Transaction::Transaction(QObject *parent, AbstractResource *resource,
-                           TransactionRole role, AddonList addons)
+                         Role role, AddonList addons)
     : QObject(parent)
     , m_resource(resource)
     , m_role(role)
@@ -43,12 +43,12 @@ AbstractResource *Transaction::resource() const
     return m_resource;
 }
 
-TransactionRole Transaction::role() const
+Transaction::Role Transaction::role() const
 {
     return m_role;
 }
 
-TransactionStatus Transaction::status() const
+Transaction::Status Transaction::status() const
 {
     return m_status;
 }
@@ -68,7 +68,7 @@ int Transaction::progress() const
     return m_progress;
 }
 
-void Transaction::setStatus(TransactionStatus status)
+void Transaction::setStatus(Status status)
 {
     m_status = status;
     emit statusChanged(m_status);

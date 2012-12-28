@@ -47,6 +47,7 @@
 // Libmuon includes
 #include <libmuon/MuonDataSources.h>
 #include <resources/ResourcesModel.h>
+#include <Transaction/TransactionModel.h>
 #include <Category/Category.h>
 #include <MuonBackendsFactory.h>
 
@@ -73,7 +74,8 @@ class CachedNAMFactory : public QDeclarativeNetworkAccessManagerFactory
     }
 };
 
-QML_DECLARE_TYPE(ResourcesModel);
+QML_DECLARE_TYPE(ResourcesModel)
+QML_DECLARE_TYPE(TransactionModel)
 
 MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     : MuonMainWindow()
@@ -95,6 +97,8 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
 //     m_view->engine()->setNetworkAccessManagerFactory(new CachedNAMFactory);
     m_view->engine()->rootContext()->setContextProperty("resourcesModel",
                                                         qVariantFromValue<ResourcesModel*>(ResourcesModel::global()));
+    m_view->engine()->rootContext()->setContextProperty("transactionModel",
+                                                        qVariantFromValue<TransactionModel*>(TransactionModel::global()));
     m_view->engine()->rootContext()->setContextProperty("app", this);
     m_view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
 // #if !defined(QT_NO_OPENGL)

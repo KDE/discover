@@ -14,6 +14,7 @@ set(muon_LIB_SRCS
     settings/NotifySettingsPage.cpp
     Transaction/AddonList.cpp
     Transaction/Transaction.cpp
+    Transaction/TransactionListener.cpp
     Transaction/TransactionModel.cpp
     resources/ResourcesModel.cpp
     resources/ResourcesProxyModel.cpp

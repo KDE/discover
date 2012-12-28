@@ -21,6 +21,7 @@
 #include "ApplicationProxyModelHelper.h"
 #include <Category/CategoryModel.h>
 #include <Category/Category.h>
+#include <Transaction/TransactionListener.h>
 #include <Transaction/TransactionModel.h>
 #include <Transaction/Transaction.h>
 #include <resources/ResourcesUpdatesModel.h>
@@ -39,7 +40,8 @@ QML_DECLARE_TYPE(AbstractResourcesBackend)
 void MuonDeclarativePlugin::registerTypes(const char* uri)
 {
     qmlRegisterType<CategoryModel>("org.kde.muon", 1, 0, "CategoryModel");
-    //qmlRegisterType<TransactionModel>("org.kde.muon", 1, 0, "TransactionModel");
+    qmlRegisterType<TransactionListener>("org.kde.muon", 1, 0, "TransactionListener");
+    qmlRegisterType<TransactionModel>("org.kde.muon", 1, 0, "TransactionModel");
     qmlRegisterType<ResourcesUpdatesModel>("org.kde.muon", 1, 0, "ResourcesUpdatesModel");
     
     qmlRegisterType<ReviewsModel>("org.kde.muon", 1, 0, "ReviewsModel");

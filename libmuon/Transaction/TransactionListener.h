@@ -1,5 +1,6 @@
 /***************************************************************************
- *   Copyright © 2012 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,79 +19,46 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef TRANSACTION_H
-#define TRANSACTION_H
+#ifndef TRANSACTIONLISTENER_H
+#define TRANSACTIONLISTENER_H
 
-// Qt includes
 #include <QtCore/QObject>
 
-// Own includes
-#include "AddonList.h"
-
+#include "Transaction.h"
 #include "libmuonprivate_export.h"
 
 class AbstractResource;
 
-class MUONPRIVATE_EXPORT Transaction : public QObject
+class MUONPRIVATE_EXPORT TransactionListener : public QObject
 {
     Q_OBJECT
-
-    Q_PROPERTY(AbstractResource* resource READ resource CONSTANT)
-    Q_PROPERTY(Role role READ role CONSTANT)
-    Q_PROPERTY(Status status READ status NOTIFY statusChanged)
+    Q_PROPERTY(AbstractResource* resource READ resource WRITE setResource NOTIFY resourceChanged)
     Q_PROPERTY(bool isCancellable READ isCancellable NOTIFY cancellableChanged)
-    Q_PROPERTY(int progress READ progress NOTIFY progressChanged)
-
+    Q_PROPERTY(bool isActive READ isActive NOTIFY running)
+    Q_PROPERTY(QString statusText READ statusText NOTIFY statusTextChanged)
 public:
-    enum Status {
-        /// Not queued, newly created
-        SetupStatus = 0,
-        /// Queued, but not yet run
-        QueuedStatus,
-        /// Transaction is in the downloading phase
-        DownloadingStatus,
-        /// Transaction is doing an installation/removal
-        CommittingStatus,
-        /// Transaction is done
-        DoneStatus
-    };
-    Q_ENUMS(Status)
-
-    enum Role {
-        InstallRole = 0,
-        RemoveRole,
-        ChangeAddonsRole
-    };
-    Q_ENUMS(Role)
-
-    Transaction(QObject *parent, AbstractResource *resource,
-                 Transaction::Role role);
-    Transaction(QObject *parent, AbstractResource *resource,
-                 Transaction::Role role, AddonList addons);
-
+    explicit TransactionListener(QObject *parent = nullptr);
+    
     AbstractResource *resource() const;
-    Role role() const;
-    Status status() const;
-    AddonList addons() const;
     bool isCancellable() const;
-    int progress() const;
+    bool isActive() const;
+    QString statusText() const;
 
-    void setStatus(Status status);
-    void setCancellable(bool isCancellable);
-    void setProgress(int progress);
+    void setResource(AbstractResource* resource);
 
 private:
     AbstractResource *m_resource;
-    Role m_role;
-    Status m_status;
-    AddonList m_addons;
-    bool m_isCancellable;
-    int m_progress;
+    Transaction *m_transaction;
+
+private slots:
+    void transactionAdded(Transaction *trans);
+    void transactionStatusChanged(Transaction::Status status);
 
 signals:
-    void statusChanged(Transaction::Status status);
-    void cancellableChanged(bool cancellable);
-    void progressChanged(int progress);
+    void resourceChanged();
+    void cancellableChanged();
+    void running();
+    void statusTextChanged();
 };
 
-#endif // TRANSACTION_H
+#endif // TRANSACTIONLISTENER_H

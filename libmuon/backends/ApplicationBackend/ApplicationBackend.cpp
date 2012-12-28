@@ -230,14 +230,14 @@ void ApplicationBackend::transactionEvent(QApt::TransactionStatus status)
     case QApt::LoadingCacheStatus:
         break;
     case QApt::RunningStatus:
-        m_currentTransaction->setStatus(QueuedStatus);
+        m_currentTransaction->setStatus(Transaction::QueuedStatus);
         break;
     case QApt::DownloadingStatus:
-        m_currentTransaction->setStatus(DownloadingStatus);
+        m_currentTransaction->setStatus(Transaction::DownloadingStatus);
         m_currentTransaction->setCancellable(false);
         break;
     case QApt::CommittingStatus:
-        m_currentTransaction->setStatus(CommittingStatus);
+        m_currentTransaction->setStatus(Transaction::CommittingStatus);
 
         // Set up debconf
         m_debconfGui = new DebconfKde::DebconfGui(iter.value()->debconfPipe());
@@ -245,7 +245,7 @@ void ApplicationBackend::transactionEvent(QApt::TransactionStatus status)
         m_debconfGui->connect(m_debconfGui, SIGNAL(deactivated()), m_debconfGui, SLOT(hide()));
         break;
     case QApt::FinishedStatus:
-        m_currentTransaction->setStatus(DoneStatus);
+        m_currentTransaction->setStatus(Transaction::DoneStatus);
 
         // Clean up manually created debconf pipe
         QApt::Transaction *trans = iter.value();
@@ -299,11 +299,11 @@ void ApplicationBackend::markTransaction(Transaction *transaction)
     Application *app = qobject_cast<Application*>(transaction->resource());
 
     switch (transaction->role()) {
-    case InstallRole:
+    case Transaction::InstallRole:
         app->package()->setInstall();
         markLangpacks(transaction);
         break;
-    case RemoveRole:
+    case Transaction::RemoveRole:
         app->package()->setRemove();
         break;
     default:
@@ -451,19 +451,19 @@ QVector<AbstractResource*> ApplicationBackend::allResources() const
 void ApplicationBackend::installApplication(AbstractResource* res, AddonList addons)
 {
     Application* app = qobject_cast<Application*>(res);
-    TransactionRole role = app->package()->isInstalled() ? ChangeAddonsRole : InstallRole;
+    Transaction::Role role = app->package()->isInstalled() ? Transaction::ChangeAddonsRole : Transaction::InstallRole;
 
     addTransaction(new Transaction(this, res, role, addons));
 }
 
 void ApplicationBackend::installApplication(AbstractResource* app)
 {
-    addTransaction(new Transaction(this, app, InstallRole));
+    addTransaction(new Transaction(this, app, Transaction::InstallRole));
 }
 
 void ApplicationBackend::removeApplication(AbstractResource* app)
 {
-    addTransaction(new Transaction(this, app, RemoveRole));
+    addTransaction(new Transaction(this, app, Transaction::RemoveRole));
 }
 
 int ApplicationBackend::updatesCount() const

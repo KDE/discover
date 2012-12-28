@@ -191,7 +191,7 @@ void KNSBackend::cancelTransaction(AbstractResource* app)
 
 void KNSBackend::removeApplication(AbstractResource* app)
 {
-    Transaction* t = new Transaction(this, app, RemoveRole);
+    Transaction* t = new Transaction(this, app, Transaction::RemoveRole);
     TransactionModel *transModel = TransactionModel::global();
     transModel->addTransaction(t);
     KNSResource* r = qobject_cast<KNSResource*>(app);
@@ -202,7 +202,7 @@ void KNSBackend::removeApplication(AbstractResource* app)
 
 void KNSBackend::installApplication(AbstractResource* app)
 {
-    Transaction* t = new Transaction(this, app, InstallRole);
+    Transaction* t = new Transaction(this, app, Transaction::InstallRole);
     TransactionModel *transModel = TransactionModel::global();
     transModel->addTransaction(t);
     KNSResource* r = qobject_cast<KNSResource*>(app);

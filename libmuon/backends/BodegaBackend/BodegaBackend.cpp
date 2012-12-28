@@ -146,11 +146,11 @@ void BodegaBackend::installApplication(AbstractResource* app, AddonList addons)
     Q_ASSERT(m_transactions.count()==0);
     Q_ASSERT(addons.isEmpty());
     BodegaResource* res = qobject_cast<BodegaResource*>(app);
-    Transaction* t = new Transaction(this, res, InstallRole);
+    Transaction* t = new Transaction(this, res, Transaction::InstallRole);
     TransactionModel *transModel = TransactionModel::global();
     transModel->addTransaction(t);
     m_transactions.append(t);
-    t->setStatus(CommittingStatus);
+    t->setStatus(Transaction::CommittingStatus);
     
     Bodega::InstallJob* job = m_session->install(res->assetOperations());
     t->setProperty("job", qVariantFromValue<QObject*>(job));
@@ -161,11 +161,11 @@ void BodegaBackend::removeApplication(AbstractResource* app)
 {
     Q_ASSERT(m_transactions.count()==0);
     BodegaResource* res = qobject_cast<BodegaResource*>(app);
-    Transaction* t = new Transaction(this, res, RemoveRole);
+    Transaction* t = new Transaction(this, res, Transaction::RemoveRole);
     TransactionModel *transModel = TransactionModel::global();
     transModel->addTransaction(t);
     m_transactions.append(t);
-    t->setStatus(CommittingStatus);
+    t->setStatus(Transaction::CommittingStatus);
     
     Bodega::UninstallJob* job = m_session->uninstall(res->assetOperations());
     t->setProperty("job", qVariantFromValue<QObject*>(job));
@@ -186,7 +186,7 @@ void BodegaBackend::removeTransactionGeneric(QObject* job)
     TransactionModel *transModel = TransactionModel::global();
     foreach(Transaction* t, m_transactions) {
         if(t->property("job").value<QObject*>() == job) {
-            t->setStatus(DoneStatus);
+            t->setStatus(Transaction::DoneStatus);
             transModel->removeTransaction(t);
             m_transactions.removeAll(t);
             delete t;

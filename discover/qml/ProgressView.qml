@@ -8,38 +8,11 @@ ToolBar {
     id: page
     property bool active: transactionsModel.count>0
     height: active ? contents.height+2*contents.anchors.margins : 0
-    
+
     Behavior on height {
         NumberAnimation { duration: 250; easing.type: Easing.InOutQuad }
     }
-    
-    Connections {
-        id: backendConnections
-        target: resourcesModel
-        onTransactionAdded: {
-            if(transactionsModel.appAt(transaction.resource)<0)
-                transactionsModel.append({'app': transaction.resource})
-        }
 
-        onTransactionCancelled: {
-            var id = transactionsModel.appAt(transaction.resource)
-            if(id>=0)
-                transactionsModel.remove(id)
-        }
-    }
-    
-    ListModel {
-        id: transactionsModel
-        function appAt(app) {
-            for(var i=0; i<transactionsModel.count; i++) {
-                if(transactionsModel.get(i).app==app) {
-                    return i
-                }
-            }
-            return -1
-        }
-    }
-    
     ListView {
         id: contents
         anchors {
@@ -48,13 +21,13 @@ ToolBar {
             top: parent.top
             margins: 3
         }
-        
+
         spacing: 3
         height: 30
         orientation: ListView.Horizontal
-        
-        model: transactionsModel
-        
+
+        model: transactionModel
+
         delegate: ListItem {
             width: launcherRow.childrenRect.width+5
             height: contents.height
@@ -63,19 +36,17 @@ ToolBar {
             TransactionListener {
                 id: listener
                 resource: model.app
-                backend: model.app.backend
-                onCancelled: model.remove(index)
             }
-            
+
             Row {
                 id: launcherRow
                 spacing: 2
                 QIconItem { icon: model.app.icon; height: parent.height; width: height }
                 Label { text: model.app.name }
-                Label { text: listener.comment; visible: listener.isActive }
+                Label { text: listener.statusText; visible: listener.isActive }
                 ToolButton {
                     iconSource: "dialog-cancel"
-                    visible: listener.isDownloading
+                    visible: listener.isCancellable
                     onClicked: resourcesModel.cancelTransaction(application)
                 }
                 ToolButton {
@@ -97,6 +68,6 @@ ToolBar {
             rightMargin: 5
         }
         iconSource: "dialog-close"
-        onClicked: transactionsModel.clear()
+        onClicked: transactionModel.clear()
     }
 }

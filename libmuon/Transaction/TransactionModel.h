@@ -48,7 +48,7 @@ public:
     bool removeRows(int row, int count, const QModelIndex &parent);
 
     Transaction *transactionFromIndex(const QModelIndex &index) const;
-    Transaction *transactionFromResource(AbstractResource *resource) const;
+    Q_SCRIPTABLE Transaction *transactionFromResource(AbstractResource *resource) const;
     QModelIndex indexOf(Transaction *trans) const;
     QModelIndex indexOf(AbstractResource *res) const;
 

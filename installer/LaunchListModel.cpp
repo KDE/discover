@@ -46,17 +46,20 @@ void LaunchListModel::watchTransaction(Transaction *trans)
             this, SLOT(transactionStatusChanged(TransactionStatus)));
 }
 
-void LaunchListModel::transactionStatusChanged(TransactionStatus status)
+void LaunchListModel::transactionStatusChanged(Transaction::Status status)
 {
     Transaction *trans = qobject_cast<Transaction *>(sender());
 
-    if (status == DoneStatus)
+    if (status == Transaction::DoneStatus)
         transactionFinished(trans);
 }
 
 void LaunchListModel::transactionFinished(Transaction* trans)
 {
-    if(trans->resource()->canExecute() && trans->status() == DoneStatus && trans->role() == InstallRole)
+    bool doneInstall = trans->status() == Transaction::DoneStatus &&
+                       trans->role() == Transaction::InstallRole;
+
+    if(trans->resource()->canExecute() && doneInstall)
         addApplication(trans->resource());
 }
 

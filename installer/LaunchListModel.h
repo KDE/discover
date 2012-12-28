@@ -45,7 +45,7 @@ public slots:
 
 private slots:
     void watchTransaction(Transaction *trans);
-    void transactionStatusChanged(TransactionStatus status);
+    void transactionStatusChanged(Transaction::Status status);
     void transactionFinished(Transaction *trans);
 };
 

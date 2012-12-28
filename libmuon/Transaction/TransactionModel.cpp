@@ -37,6 +37,12 @@ TransactionModel *TransactionModel::global()
 TransactionModel::TransactionModel(QObject *parent)
     : QAbstractListModel(parent)
 {
+    auto roles = roleNames();
+    roles[TransactionRoleRole] = "transaction";
+    roles[TransactionStatusRole] = "status";
+    roles[CancellableRole] = "cancellable";
+    roles[ProgressRole] = "progress";
+    roles[StatusTextRole] = "statusText";
 }
 
 int TransactionModel::rowCount(const QModelIndex &parent) const
@@ -66,23 +72,23 @@ QVariant TransactionModel::data(const QModelIndex &index, int role) const
         return trans->progress();
     case StatusTextRole:
         switch (trans->status()) {
-        case SetupStatus:
+        case Transaction::SetupStatus:
             return i18nc("@info:status", "Starting");
-        case QueuedStatus:
+        case Transaction::QueuedStatus:
             return i18nc("@info:status", "Waiting");
-        case DownloadingStatus:
+        case Transaction::DownloadingStatus:
             return i18nc("@info:status", "Downloading");
-        case CommittingStatus:
+        case Transaction::CommittingStatus:
             switch (trans->role()) {
-            case InstallRole:
+            case Transaction::InstallRole:
                 return i18nc("@info:status", "Installing");
-            case RemoveRole:
+            case Transaction::RemoveRole:
                 return i18nc("@info:status", "Removing");
-            case ChangeAddonsRole:
+            case Transaction::ChangeAddonsRole:
                 return i18nc("@info:status", "Changing Addons");
             }
             break;
-        case DoneStatus:
+        case Transaction::DoneStatus:
             return i18nc("@info:status", "Done");
         }
         break;
