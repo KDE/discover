@@ -27,6 +27,9 @@
 #include <KGlobal>
 #include <KLocale>
 
+// Own includes
+#include "resources/AbstractResource.h"
+
 K_GLOBAL_STATIC(TransactionModel, globalTransactionModel)
 
 TransactionModel *TransactionModel::global()
@@ -43,6 +46,9 @@ TransactionModel::TransactionModel(QObject *parent)
     roles[CancellableRole] = "cancellable";
     roles[ProgressRole] = "progress";
     roles[StatusTextRole] = "statusText";
+    roles[ResourceRole] = "resource";
+
+    setRoleNames(roles);
 }
 
 int TransactionModel::rowCount(const QModelIndex &parent) const
@@ -92,6 +98,9 @@ QVariant TransactionModel::data(const QModelIndex &index, int role) const
             return i18nc("@info:status", "Done");
         }
         break;
+    case ResourceRole:
+
+        return qVariantFromValue<QObject*>(trans->resource());
     }
 
     return QVariant();

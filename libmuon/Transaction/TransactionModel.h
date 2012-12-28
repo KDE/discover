@@ -36,7 +36,8 @@ public:
         TransactionStatusRole,
         CancellableRole,
         ProgressRole,
-        StatusTextRole
+        StatusTextRole,
+        ResourceRole
     };
 
     explicit TransactionModel(QObject *parent = 0);

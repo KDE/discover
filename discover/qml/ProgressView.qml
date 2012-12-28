@@ -32,17 +32,17 @@ ToolBar {
             width: launcherRow.childrenRect.width+5
             height: contents.height
             enabled: true
-            onClicked: Navigation.openApplication(model.app)
+            onClicked: Navigation.openApplication(model.resource)
             TransactionListener {
                 id: listener
-                resource: model.app
+                resource: model.resource
             }
 
             Row {
                 id: launcherRow
                 spacing: 2
-                QIconItem { icon: model.app.icon; height: parent.height; width: height }
-                Label { text: model.app.name }
+                QIconItem { icon: model.resource.icon; height: parent.height; width: height }
+                Label { text: model.resource.name }
                 Label { text: listener.statusText; visible: listener.isActive }
                 ToolButton {
                     iconSource: "dialog-cancel"
@@ -51,9 +51,9 @@ ToolBar {
                 }
                 ToolButton {
                     iconSource: "system-run"
-                    visible: model.app.isInstalled && !listener.isActive && model.app.canExecute
+                    visible: model.resource.isInstalled && !listener.isActive && model.resource.canExecute
                     onClicked: {
-                        model.app.invokeApplication()
+                        model.resource.invokeApplication()
                         model.remove(index)
                     }
                 }
