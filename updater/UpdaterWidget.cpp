@@ -28,6 +28,7 @@
 #include <QtGui/QLabel>
 #include <QtGui/QTreeView>
 #include <QtGui/QVBoxLayout>
+#include <qaction.h>
 
 // KDE includes
 #include <KIcon>
@@ -36,6 +37,7 @@
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
 #include <KDebug>
+#include <KMessageWidget>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -63,6 +65,18 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     page1Layout->setMargin(0);
     page1Layout->setSpacing(0);
     page1->setLayout(page1Layout);
+
+    QString text = i18nc("@label", "<em>Some packages were not marked for update.</em><p/>"
+                            "The update of these packages need some others to be installed or removed.<p/>"
+                            "Do you want to update those too?");
+    QAction* action = new QAction(KIcon("dialog-ok-apply"), i18n("Mark All"), this);
+    connect(action, SIGNAL(triggered(bool)), SLOT(markAllPackagesForUpgrade()));
+    m_upgradesWidget = new KMessageWidget(this);
+    m_upgradesWidget->setText(text);
+    m_upgradesWidget->addAction(action);
+    m_upgradesWidget->setCloseButtonVisible(true);
+    m_upgradesWidget->setVisible(false);
+    page1Layout->addWidget(m_upgradesWidget);
 
     m_updateModel = new UpdateModel(page1);
 
@@ -279,30 +293,21 @@ void UpdaterWidget::checkAllMarked()
     QApt::PackageList upgradeable = m_backend->upgradeablePackages();
     int markedCount = m_backend->packageCount(QApt::Package::ToUpgrade);
 
-    if (markedCount < upgradeable.count())
-    {
-        QString text = i18nc("@label", "Not all packages could be marked for upgrade. "
-                             "The available upgrades may require new packages to "
-                             "be installed or removed. Do you want to mark upgrades "
-                             "that may require the installation or removal of additional "
-                             "packages?");
-        QString title = i18nc("@title:window", "Unable to Mark Upgrades");
-        KGuiItem markUpgrades(i18nc("@action", "Mark Upgrades"));
+    m_upgradesWidget->setVisible(markedCount < upgradeable.count());
+}
 
-        int res = KMessageBox::questionYesNo(this, text, title, markUpgrades);
+void UpdaterWidget::markAllPackagesForUpgrade()
+{
+    QApt::PackageList upgradeable = m_backend->upgradeablePackages();
 
-        if (res != KMessageBox::Yes)
-            return;
+    // Mark dist upgrade
+    m_oldCacheState = m_backend->currentCacheState();
+    m_backend->saveCacheState();
+    m_backend->markPackagesForDistUpgrade();
 
-        // Mark dist upgrade
-        m_oldCacheState = m_backend->currentCacheState();
-        m_backend->saveCacheState();
-        m_backend->markPackagesForDistUpgrade();
+    checkChanges(m_backend->stateChanges(m_oldCacheState, upgradeable));
 
-        // Show user packages to be installed/removed
-        auto changes = m_backend->stateChanges(m_oldCacheState, upgradeable);
-        checkChanges(changes);
-    }
+    m_upgradesWidget->hide();
 }
 
 void UpdaterWidget::checkUpToDate()
