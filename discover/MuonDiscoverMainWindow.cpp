@@ -155,10 +155,34 @@ QAction* MuonDiscoverMainWindow::getAction(const QString& name)
     return actionCollection()->action(name);
 }
 
-void MuonDiscoverMainWindow::openMode(const QByteArray& mode)
+QStringList MuonDiscoverMainWindow::modes() const
 {
+    QStringList ret;
     QGraphicsObject* obj = m_view->rootObject();
-    QVariant modeComp = obj->property(mode+"Comp");
+    for(int i = obj->metaObject()->propertyOffset(); i<obj->metaObject()->propertyCount(); i++) {
+        QMetaProperty p = obj->metaObject()->property(i);
+        QByteArray name = p.name();
+        if(name.startsWith("top") && name.endsWith("Comp")) {
+            name = name.mid(3);
+            name = name.left(name.length()-4);
+            name[0] = name[0] - 'A' + 'a';
+            ret += name;
+        }
+    }
+    return ret;
+}
+
+void MuonDiscoverMainWindow::openMode(const QByteArray& _mode)
+{
+    if(!modes().contains(_mode))
+        kWarning() << "unknown mode" << _mode;
+    
+    QByteArray mode = _mode;
+    if(mode[0]>'Z')
+        mode[0] = mode[0]-'a'+'A';
+    QGraphicsObject* obj = m_view->rootObject();
+    QByteArray propertyName = "top"+mode+"Comp";
+    QVariant modeComp = obj->property(propertyName);
     obj->setProperty("currentTopLevel", modeComp);
 }
 

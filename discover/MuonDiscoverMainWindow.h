@@ -40,6 +40,7 @@ class MuonDiscoverMainWindow : public MuonMainWindow
         QSize sizeHint() const;
         
         void initialize();
+        QStringList modes() const;
 
     public slots:
         void openApplication(const QString& app);

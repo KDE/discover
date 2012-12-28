@@ -9,10 +9,10 @@ Item {
     property Component categoryComp: Qt.createComponent("qrc:/qml/CategoryPage.qml")
     
     //toplevels
-    property Component browsingComp: Qt.createComponent("qrc:/qml/BrowsingPage.qml")
-    property Component installedComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
-    property Component sourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
-    property Component currentTopLevel: defaultStartup ? browsingComp : loadingComponent
+    property Component topBrowsingComp: Qt.createComponent("qrc:/qml/BrowsingPage.qml")
+    property Component topInstalledComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
+    property Component topSourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
+    property Component currentTopLevel: defaultStartup ? topBrowsingComp : loadingComponent
     property bool defaultStartup: true
     property bool navigationEnabled: true
     
@@ -83,12 +83,12 @@ Item {
             }
             
             property list<TopLevelPageData> sectionsModel: [
-                TopLevelPageData { icon: "tools-wizard"; text: i18n("Discover"); component: browsingComp },
+                TopLevelPageData { icon: "tools-wizard"; text: i18n("Discover"); component: topBrowsingComp },
                 TopLevelPageData {
-                                icon: "applications-other"; text: i18n("Installed"); component: installedComp
+                                icon: "applications-other"; text: i18n("Installed"); component: topInstalledComp
                                 overlay: resourcesModel.updatesCount==0 ? "" : resourcesModel.updatesCount
                 },
-                TopLevelPageData { icon: "document-import"; text: i18n("Sources"); component: sourcesComp }
+                TopLevelPageData { icon: "document-import"; text: i18n("Sources"); component: topSourcesComp }
             ]
             Repeater {
                 model: toplevelsRow.sectionsModel
