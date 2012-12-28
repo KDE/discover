@@ -6,7 +6,7 @@ import "navigation.js" as Navigation
 
 ToolBar {
     id: page
-    property bool active: transactionsModel.count>0
+    property bool active: transactionModel.count>0
     height: active ? contents.height+2*contents.anchors.margins : 0
 
     Behavior on height {
