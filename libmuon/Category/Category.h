@@ -59,6 +59,7 @@ public:
     static QList<Category*> populateCategories();
 
 private:
+    static void addSubcategory(QList<Category*>& list, Category* cat);
     static QList<Category*> loadCategoriesFile(const QString& path);
 
     explicit Category(const QDomNode& data, bool canHaveChildren, QObject* parent = 0);

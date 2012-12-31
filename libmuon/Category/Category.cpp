@@ -193,8 +193,37 @@ QList<Category*> Category::populateCategories()
     QList<Category*> ret;
     QStringList files = KGlobal::dirs()->findAllResources("data", "libmuon/categories/*.xml");
     for(const QString& file : files) {
-        ret += loadCategoriesFile(file);
+        QList<Category*> cats = loadCategoriesFile(file);
+        if(ret.isEmpty())
+            ret += cats;
+        else {
+            for(Category* c : cats)
+                addSubcategory(ret, c);
+        }
     }
     qSort(ret.begin(), ret.end(), categoryLessThan);
     return ret;
+}
+
+//TODO: maybe it would be interesting to apply some rules to a said backend...
+void Category::addSubcategory(QList< Category* >& list, Category* newcat)
+{
+    for(Category* c : list) {
+        if(c->name() == newcat->name()) {
+            if(c->icon() != newcat->icon() || c->shouldShowTechnical() != newcat->shouldShowTechnical()) {
+                qWarning() << "the following categories seem to be the same but they're not entirely"
+                    << c->name() << newcat->name();
+                break;
+            } else {
+                c->m_andFilters += newcat->andFilters();
+                c->m_orFilters += newcat->orFilters();
+                c->m_notFilters += newcat->notFilters();
+                for(Category* nc : newcat->subCategories())
+                    addSubcategory(c->m_subCategories, nc);
+                delete newcat;
+                return;
+            }
+        }
+    }
+    list << newcat;
 }
