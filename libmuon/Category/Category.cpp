@@ -24,8 +24,8 @@
 
 #include <KLocale>
 #include <KStandardDirs>
+#include <KDebug>
 #include <QFile>
-#include <QDebug>
 
 Category::Category(const QDomNode& data, bool canHaveChildren, QObject* parent)
         : QObject(parent)
@@ -174,7 +174,7 @@ QList< Category* > Category::loadCategoriesFile(const QString& path)
     int line;
     bool correct = menuDocument.setContent(&menuFile, &error, &line);
     if(!correct)
-        qDebug() << "error while parsing the categories file:" << error << " at line: " << line;
+        kWarning() << "error while parsing the categories file:" << error << " at: " << path << ":" << line;
 
     QDomElement root = menuDocument.documentElement();
 
@@ -210,12 +210,14 @@ void Category::addSubcategory(QList< Category* >& list, Category* newcat)
 {
     for(Category* c : list) {
         if(c->name() == newcat->name()) {
-            if(c->icon() != newcat->icon() || c->shouldShowTechnical() != newcat->shouldShowTechnical()) {
-                qWarning() << "the following categories seem to be the same but they're not entirely"
+            if(c->icon() != newcat->icon()
+                || c->shouldShowTechnical() != newcat->shouldShowTechnical()
+                || c->m_andFilters != newcat->andFilters())
+            {
+                kWarning() << "the following categories seem to be the same but they're not entirely"
                     << c->name() << newcat->name();
                 break;
             } else {
-                c->m_andFilters += newcat->andFilters();
                 c->m_orFilters += newcat->orFilters();
                 c->m_notFilters += newcat->notFilters();
                 for(Category* nc : newcat->subCategories())
