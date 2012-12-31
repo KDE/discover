@@ -30,7 +30,10 @@ function openApplicationMime(mime) {
 }
 
 function openCategory(cat) {
-    openPage(cat.icon, cat.name, categoryComp, { category: cat })
+    if(cat.hasSubCategories)
+        openPage(cat.icon, cat.name, categoryComp, { category: cat })
+    else
+        openApplicationList(cat.icon, cat.name, cat, "")
 }
 
 function openApplication(app) {

@@ -127,7 +127,7 @@ Item {
         target: app
         onOpenApplicationInternal: Navigation.openApplication(app)
         onListMimeInternal: Navigation.openApplicationMime(mime)
-        onListCategoryInternal: Navigation.openApplicationList(c.icon, c.name, c, "")
+        onListCategoryInternal: Navigation.openCategory(c)
     }
     
     ToolBar {

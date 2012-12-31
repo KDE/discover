@@ -61,16 +61,7 @@ Page {
                     wrapMode: Text.WordWrap
                 }
             }
-            onClicked: {
-                switch(categoryType) {
-                    case CategoryModel.CategoryType:
-                        Navigation.openApplicationList(category.icon, category.name, category, "")
-                        break;
-                    case CategoryModel.SubCatType:
-                        Navigation.openCategory(category)
-                        break;
-                }
-            }
+            onClicked: Navigation.openCategory(category)
         }
     }
     
