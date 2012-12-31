@@ -37,15 +37,12 @@ CategoryModel::CategoryModel(QObject* parent)
     setRoleNames(names);
 }
 
-void CategoryModel::setCategories(const QList<Category *> &categoryList,
-                                  const QString &rootName)
+void CategoryModel::setCategories(const QList<Category *> &categoryList, const QString &rootName)
 {
     invisibleRootItem()->removeRows(0, invisibleRootItem()->rowCount());
     qDeleteAll(m_categoryList);
     m_categoryList = categoryList;
     foreach (Category *category, m_categoryList) {
-        if(!category->parent())
-            category->setParent(this);
         QStandardItem *categoryItem = new QStandardItem;
         categoryItem->setText(category->name());
         categoryItem->setIcon(KIcon(category->icon()));
@@ -70,7 +67,10 @@ Category* CategoryModel::categoryForIndex(int row)
 
 void CategoryModel::populateCategories(const QString& rootName)
 {
-    setCategories(Category::populateCategories(), rootName);
+    static QList<Category*> cats;
+    if(cats.isEmpty())
+        cats = Category::populateCategories();
+    setCategories(cats, rootName);
 }
 
 void CategoryModel::setSubcategories(Category* c)
