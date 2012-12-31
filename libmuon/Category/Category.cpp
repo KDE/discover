@@ -193,8 +193,6 @@ QList< Category* > Category::loadCategoriesFile(const QString& path)
 
         node = node.nextSibling();
     }
-
-    qSort(ret.begin(), ret.end(), categoryLessThan);
     return ret;
 }
 
@@ -205,5 +203,6 @@ QList<Category*> Category::populateCategories()
     for(const QString& file : files) {
         ret += loadCategoriesFile(file);
     }
+    qSort(ret.begin(), ret.end(), categoryLessThan);
     return ret;
 }
