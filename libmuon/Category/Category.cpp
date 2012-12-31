@@ -27,24 +27,14 @@
 #include <QFile>
 #include <QDebug>
 
-Category::Category(const QDomNode &data, CategoryChildPolicy policy)
-        : m_iconString("applications-other")
-        , m_hasSubCategories(false)
-        , m_showTechnical(false)
-        , m_policy(policy)
-{
-    parseData(data);
-}
-
-Category::Category(const QString& name, QObject* parent)
+Category::Category(const QDomNode& node, CategoryChildPolicy type, QObject* parent)
         : QObject(parent)
-        , m_name(name)
         , m_iconString("applications-other")
         , m_hasSubCategories(false)
         , m_showTechnical(false)
-        , m_policy(NoChildren)
+        , m_policy(type)
 {
-    m_andFilters.append(qMakePair(CategoryFilter, name));
+    parseData(node);
 }
 
 Category::~Category()
@@ -71,7 +61,7 @@ void Category::parseData(const QDomNode &data)
             m_showTechnical = true;
         } else if (tempElement.tagName() == QLatin1String("Menu")) {
             if (m_policy == CanHaveChildren) {
-                Category *subCategory = new Category(node);
+                Category *subCategory = new Category(node, CanHaveChildren);
                 subCategory->setParent(this);
                 m_subCategories << subCategory;
                 m_hasSubCategories = true;
@@ -177,7 +167,7 @@ bool categoryLessThan(Category *c1, const Category *c2)
     return (QString::localeAwareCompare(c1->name(), c2->name()) < 0);
 }
 
-QList< Category* > Category::populateCategories()
+QList<Category*> Category::populateCategories()
 {
     QFile menuFile(KStandardDirs::locate("data", "muon-installer/categories.xml"));
     QList<Category *> ret;
@@ -190,14 +180,16 @@ QList< Category* > Category::populateCategories()
     QDomDocument menuDocument;
     QString error;
     int line;
-    menuDocument.setContent(&menuFile, &error, &line);
+    bool correct = menuDocument.setContent(&menuFile, &error, &line);
+    if(!correct)
+        qDebug() << "error while parsing the categories file:" << error << " at line: " << line;
 
     QDomElement root = menuDocument.documentElement();
 
     QDomNode node = root.firstChild();
     while(!node.isNull())
     {
-        ret << new Category(node);
+        ret << new Category(node, CanHaveChildren);
 
         node = node.nextSibling();
     }

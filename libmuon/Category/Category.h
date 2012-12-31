@@ -51,8 +51,6 @@ public:
     Q_PROPERTY(QString icon READ icon CONSTANT)
     Q_PROPERTY(bool hasSubCategories READ hasSubCategories CONSTANT)
     Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical CONSTANT)
-    explicit Category(const QDomNode &node, CategoryChildPolicy type = CanHaveChildren);
-    explicit Category(const QString& name, QObject* parent = 0);
     ~Category();
 
     QString name() const;
@@ -67,6 +65,8 @@ public:
     static QList<Category*> populateCategories();
 
 private:
+    explicit Category(const QDomNode &node, CategoryChildPolicy type, QObject* parent = 0);
+
     QString m_name;
     QString m_iconString;
     QList<QPair<FilterType, QString> > m_andFilters;
