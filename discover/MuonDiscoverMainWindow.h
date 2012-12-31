@@ -56,7 +56,7 @@ class MuonDiscoverMainWindow : public MuonMainWindow
     signals:
         void openApplicationInternal(AbstractResource* app);
         void listMimeInternal(const QString& mime);
-        void listCategoryInternal(Category* c);
+        void listCategoryInternal(const QString& name);
 
     private:
         QString m_appToBeOpened;

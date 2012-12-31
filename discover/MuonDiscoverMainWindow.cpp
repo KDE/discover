@@ -193,8 +193,7 @@ void MuonDiscoverMainWindow::openMimeType(const QString& mime)
 
 void MuonDiscoverMainWindow::openCategory(const QString& category)
 {
-    Category* c = new Category(category, this);
-    emit listCategoryInternal(c);
+    emit listCategoryInternal(category);
 }
 
 void MuonDiscoverMainWindow::openApplication(const QString& app)

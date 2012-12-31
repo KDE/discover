@@ -29,6 +29,12 @@ function openApplicationMime(mime) {
     openPage("document-open-data", mime, applicationListComp, { mimeTypeFilter: mime })
 }
 
+function openCategoryByName(catname) {
+    currentTopLevel = topBrowsingComp
+    clearPages()
+    openCategory(pageStack.currentPage.categories.findCategoryByName(catname))
+}
+
 function openCategory(cat) {
     if(cat.hasSubCategories)
         openPage(cat.icon, cat.name, categoryComp, { category: cat })
@@ -41,9 +47,8 @@ function openApplication(app) {
 }
 
 function openPage(icon, name, component, props) {
-    if(breadcrumbsItem.currentItem()==name || pageStack.busy)
+    if(breadcrumbsItem.currentItem()==name)
         return
-    
     var obj
     try {
         obj = component.createObject(pageStack.currentPage, props)

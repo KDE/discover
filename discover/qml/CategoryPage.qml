@@ -27,6 +27,7 @@ Page {
     id: page
     property QtObject category
     property real actualWidth: width-Math.pow(width/70, 2)
+    property alias categories: categoryModel
     
     function searchFor(text) {
         if(category)
@@ -115,6 +116,7 @@ Page {
                 spacing: 10
                 Repeater {
                     model: CategoryModel {
+                        id: categoryModel
                         displayedCategory: page.category
                     }
                     delegate: categoryDelegate
