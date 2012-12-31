@@ -65,6 +65,8 @@ public:
     static QList<Category*> populateCategories();
 
 private:
+    static QList<Category*> loadCategoriesFile(const QString& path);
+
     explicit Category(const QDomNode &node, CategoryChildPolicy type, QObject* parent = 0);
 
     QString m_name;

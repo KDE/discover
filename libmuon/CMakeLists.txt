@@ -45,7 +45,6 @@ target_link_libraries(muonprivate
 
 install(TARGETS muonprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES moo.ogg DESTINATION ${DATA_INSTALL_DIR}/libmuon)
-install(FILES categories.xml DESTINATION ${DATA_INSTALL_DIR}/muon-installer)
 
 install(FILES
     muonbackendplugin.desktop

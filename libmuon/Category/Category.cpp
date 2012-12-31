@@ -167,9 +167,9 @@ bool categoryLessThan(Category *c1, const Category *c2)
     return (QString::localeAwareCompare(c1->name(), c2->name()) < 0);
 }
 
-QList<Category*> Category::populateCategories()
+QList< Category* > Category::loadCategoriesFile(const QString& path)
 {
-    QFile menuFile(KStandardDirs::locate("data", "muon-installer/categories.xml"));
+    QFile menuFile(path);
     QList<Category *> ret;
 
     if (!menuFile.open(QIODevice::ReadOnly)) {
@@ -195,6 +195,15 @@ QList<Category*> Category::populateCategories()
     }
 
     qSort(ret.begin(), ret.end(), categoryLessThan);
-    
+    return ret;
+}
+
+QList<Category*> Category::populateCategories()
+{
+    QList<Category*> ret;
+    QStringList files = KGlobal::dirs()->findAllResources("data", "libmuon/categories/*.xml");
+    for(const QString& file : files) {
+        ret += loadCategoriesFile(file);
+    }
     return ret;
 }
