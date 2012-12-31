@@ -65,12 +65,12 @@ Category* CategoryModel::categoryForIndex(int row)
     return m_categoryList.at(row);
 }
 
-void CategoryModel::populateCategories(const QString& rootName)
+QList<Category*> CategoryModel::populateCategories()
 {
     static QList<Category*> cats;
     if(cats.isEmpty())
         cats = Category::populateCategories();
-    setCategories(cats, rootName);
+    return cats;
 }
 
 void CategoryModel::setSubcategories(Category* c)
@@ -79,10 +79,36 @@ void CategoryModel::setSubcategories(Category* c)
     if(c)
         setCategories(c->subCategories(), c->name());
     else
-        populateCategories(QString());
+        setCategories(populateCategories(), QString());
 }
 
 Category* CategoryModel::displayedCategory() const
 {
     return m_currentCategory;
+}
+
+static Category* recFindCategory(Category* root, const QString& name)
+{
+    if(root->name()==name)
+        return root;
+    else if(root->hasSubCategories()) {
+        QList<Category*> subs = root->subCategories();
+        for(Category* c : subs) {
+            Category* ret = recFindCategory(c, name);
+            if(ret)
+                return ret;
+        }
+    }
+    return 0;
+}
+
+Category* CategoryModel::findCategoryByName(const QString& name)
+{
+    QList<Category*> cats = populateCategories();
+    for(Category* cat : cats) {
+        Category* ret = recFindCategory(cat, name);
+        if(ret)
+            return ret;
+    }
+    return 0;
 }

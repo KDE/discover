@@ -57,8 +57,9 @@ class MUONPRIVATE_EXPORT CategoryModel : public QStandardItemModel
         void setSubcategories(Category* c);
         Category* displayedCategory() const;
 
+        Q_SCRIPTABLE static Category* findCategoryByName(const QString& name);
     private:
-        void populateCategories(const QString& rootName);
+        static QList<Category*> populateCategories();
 
         QList<Category*> m_categoryList;
         Category* m_currentCategory;
