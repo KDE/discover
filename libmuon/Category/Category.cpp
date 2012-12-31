@@ -27,45 +27,39 @@
 #include <QFile>
 #include <QDebug>
 
-Category::Category(const QDomNode& node, CategoryChildPolicy type, QObject* parent)
+Category::Category(const QDomNode& data, bool canHaveChildren, QObject* parent)
         : QObject(parent)
         , m_iconString("applications-other")
-        , m_hasSubCategories(false)
         , m_showTechnical(false)
-        , m_policy(type)
 {
-    parseData(node);
+    parseData(data, canHaveChildren);
 }
 
 Category::~Category()
 {}
 
-void Category::parseData(const QDomNode &data)
+void Category::parseData(const QDomNode& data, bool canHaveChildren)
 {
+    if(canHaveChildren) {
+        m_name = i18nc("@label The label used for viewing all members of this category", "All");
+    }
     QDomNode node = data.firstChild();
     while(!node.isNull())
     {
         QDomElement tempElement = node.toElement();
 
-        if (tempElement.tagName() == QLatin1String("Name")) {
-            if (m_policy == CanHaveChildren) {
+        if (canHaveChildren) {
+            if (tempElement.tagName() == QLatin1String("Name")) {
                 m_name = i18nc("Category", tempElement.text().toUtf8());
-            } else {
-                m_name = i18nc("@label The label used for viewing all members of this category", "All");
+            } else if (tempElement.tagName() == QLatin1String("Menu")) {
+                m_subCategories << new Category(node, true, this);
             }
-        } else if (tempElement.tagName() == QLatin1String("Icon")) {
-            if (!tempElement.text().isEmpty()) {
-                m_iconString = tempElement.text();
-            }
+        }
+        
+        if (tempElement.tagName() == QLatin1String("Icon") && tempElement.hasChildNodes()) {
+            m_iconString = tempElement.text();
         } else if (tempElement.tagName() == QLatin1String("ShowTechnical")) {
             m_showTechnical = true;
-        } else if (tempElement.tagName() == QLatin1String("Menu")) {
-            if (m_policy == CanHaveChildren) {
-                Category *subCategory = new Category(node, CanHaveChildren);
-                subCategory->setParent(this);
-                m_subCategories << subCategory;
-                m_hasSubCategories = true;
-            }
         } else if (tempElement.tagName() == QLatin1String("Include")) {
             parseIncludes(tempElement);
         }
@@ -73,10 +67,8 @@ void Category::parseData(const QDomNode &data)
         node = node.nextSibling();
     }
 
-    if (m_hasSubCategories) {
-        Category *allSubCategory = new Category(data, NoChildren);
-        allSubCategory->setParent(this);
-        m_subCategories << allSubCategory;
+    if (!m_subCategories.isEmpty()) {
+        m_subCategories << new Category(data, false, this);
     }
 }
 
@@ -149,7 +141,7 @@ QList<QPair<FilterType, QString> > Category::notFilters() const
 
 bool Category::hasSubCategories() const
 {
-    return m_hasSubCategories;
+    return !m_subCategories.isEmpty();
 }
 
 bool Category::shouldShowTechnical() const
@@ -189,7 +181,7 @@ QList< Category* > Category::loadCategoriesFile(const QString& path)
     QDomNode node = root.firstChild();
     while(!node.isNull())
     {
-        ret << new Category(node, CanHaveChildren);
+        ret << new Category(node, true, nullptr);
 
         node = node.nextSibling();
     }
