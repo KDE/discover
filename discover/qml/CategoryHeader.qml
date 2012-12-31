@@ -40,8 +40,10 @@ Item {
         anchors {
             verticalCenter: parent.verticalCenter
             left: iconItem.right
+            right: parent.right
             leftMargin: 50
         }
+        elide: Text.ElideRight
         font.pixelSize: parent.height*0.5
         text: category.name
     }
