@@ -52,13 +52,14 @@ class MUONPRIVATE_EXPORT CategoryModel : public QStandardItemModel
         explicit CategoryModel(QObject* parent = 0);
 
         void setCategories(const QList<Category *> &categoryList, const QString &rootName);
-        Q_SCRIPTABLE Category* categoryForIndex(int row);
+        Category* categoryForIndex(int row);
 
-        Q_SCRIPTABLE void populateCategories(const QString& rootName);
         void setSubcategories(Category* c);
         Category* displayedCategory() const;
 
     private:
+        void populateCategories(const QString& rootName);
+
         QList<Category*> m_categoryList;
         Category* m_currentCategory;
 };
