@@ -25,7 +25,7 @@
 class MuonDeclarativePlugin : public QDeclarativeExtensionPlugin
 {
     public:
-        virtual void registerTypes(const char* uri);
+        virtual void registerTypes(const char*);
 };
 
 Q_EXPORT_PLUGIN2(muondeclarativeplugin, MuonDeclarativePlugin);

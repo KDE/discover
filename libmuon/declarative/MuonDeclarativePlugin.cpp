@@ -36,7 +36,7 @@
 QML_DECLARE_TYPE(ResourcesModel)
 QML_DECLARE_TYPE(AbstractResourcesBackend)
 
-void MuonDeclarativePlugin::registerTypes(const char* uri)
+void MuonDeclarativePlugin::registerTypes(const char*)
 {
     qmlRegisterType<CategoryModel>("org.kde.muon", 1, 0, "CategoryModel");
     qmlRegisterType<TransactionListener>("org.kde.muon", 1, 0, "TransactionListener");
