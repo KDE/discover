@@ -174,6 +174,11 @@ void UpdaterWidget::populateUpdateModel()
         if(res->state()==AbstractResource::Upgradeable) {
             UpdateItem *updateItem = new UpdateItem(res);
             QApt::Package* package = retrievePackage(res);
+
+            if (!package) {
+                kDebug() << "No package:" << res->name();
+                continue;
+            }
             
             bool securityFound = false;
             for (const QString &archive : package->archives()) {
