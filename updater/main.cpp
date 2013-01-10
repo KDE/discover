@@ -49,9 +49,6 @@ int main(int argc, char **argv)
 
     KUniqueApplication app;
     app.disableSessionManagement();
-    
-    // Needed because for the moment the ApplicationBackend is not instanciated
-    KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
 
     MainWindow *mainWindow = new MainWindow;
     mainWindow->show();
