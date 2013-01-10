@@ -21,7 +21,7 @@
 #ifndef CHANGELOGWIDGET_H
 #define CHANGELOGWIDGET_H
 
-#include <QtCore/QHash>
+#include <QtCore/QSet>
 #include <QtGui/QWidget>
 
 class QParallelAnimationGroup;
@@ -45,7 +45,7 @@ public:
 
 private:
     QApt::Package *m_package;
-    QHash<KJob *, QString> m_jobHash;
+    QSet<KJob *> m_jobHash;
     QString m_jobFileName;
     bool m_show;
 
