@@ -143,7 +143,6 @@ void MainWindow::initBackend()
 {
     m_updaterWidget->setBackend(m_apps);
     m_updaterWidget->setEnabled(true);
-    m_changelogWidget->setBackend(backend());
 
     setActionsEnabled();
 }

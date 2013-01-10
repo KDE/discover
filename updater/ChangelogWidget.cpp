@@ -45,7 +45,6 @@
 
 ChangelogWidget::ChangelogWidget(QWidget *parent)
         : QWidget(parent)
-        , m_backend(0)
         , m_package(0)
         , m_show(false)
 {
@@ -104,11 +103,6 @@ ChangelogWidget::ChangelogWidget(QWidget *parent)
     m_expandWidget = new QParallelAnimationGroup(this);
     m_expandWidget->addAnimation(anim1);
     m_expandWidget->addAnimation(anim2);
-}
-
-void ChangelogWidget::setBackend(QApt::Backend *backend)
-{
-    m_backend = backend;
 }
 
 void ChangelogWidget::setPackage(QApt::Package *package)

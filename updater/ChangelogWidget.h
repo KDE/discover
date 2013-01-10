@@ -44,7 +44,6 @@ public:
     explicit ChangelogWidget(QWidget *parent = 0);
 
 private:
-    QApt::Backend *m_backend;
     QApt::Package *m_package;
     QHash<KJob *, QString> m_jobHash;
     QString m_jobFileName;
@@ -57,7 +56,6 @@ private:
     QString buildDescription(const QApt::Changelog &log);
 
 public Q_SLOTS:
-    void setBackend(QApt::Backend *backend);
     void setPackage(QApt::Package *package);
     void show();
     void animatedHide();
