@@ -79,7 +79,7 @@ private Q_SLOTS:
     void markAllPackagesForUpgrade();
 
 signals:
-    void packageChanged(QApt::Package *Package);
+    void selectedPackageChanged(QApt::Package *Package);
 };
 
 #endif // UPDATERWIDGET_H

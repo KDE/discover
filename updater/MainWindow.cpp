@@ -93,7 +93,7 @@ void MainWindow::initGUI()
 
     m_changelogWidget = new ChangelogWidget(this);
     m_changelogWidget->hide();
-    connect(m_updaterWidget, SIGNAL(packageChanged(QApt::Package*)),
+    connect(m_updaterWidget, SIGNAL(selectedPackageChanged(QApt::Package*)),
             m_changelogWidget, SLOT(setPackage(QApt::Package*)));
 
     mainLayout->addWidget(m_powerMessage);
@@ -189,12 +189,12 @@ void MainWindow::reload()
     setCanExit(false);
     m_changelogWidget->stopPendingJobs();
 
-    disconnect(m_updaterWidget, SIGNAL(packageChanged(QApt::Package*)),
+    disconnect(m_updaterWidget, SIGNAL(selectedPackageChanged(QApt::Package*)),
                m_changelogWidget, SLOT(setPackage(QApt::Package*)));
 
     m_updaterWidget->reload();
 
-    connect(m_updaterWidget, SIGNAL(packageChanged(QApt::Package*)),
+    connect(m_updaterWidget, SIGNAL(selectedPackageChanged(QApt::Package*)),
             m_changelogWidget, SLOT(setPackage(QApt::Package*)));
 
     m_changelogWidget->setPackage(0);

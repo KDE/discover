@@ -145,7 +145,7 @@ void UpdaterWidget::setBackend(AbstractResourcesBackend *backend)
 void UpdaterWidget::reload()
 {
     m_updateModel->clear();
-    m_backend->reloadCache();
+    QMetaObject::invokeMethod(m_appsBackend, "reload");
 
     setCurrentIndex(0);
     populateUpdateModel();
@@ -284,13 +284,13 @@ void UpdaterWidget::selectionChanged(const QItemSelection &selected,
     QApt::Package *package = 0;
 
     if (indexes.isEmpty()) {
-        emit packageChanged(package);
+        emit selectedPackageChanged(package);
         return;
     }
 
     package = retrievePackage(m_updateModel->itemFromIndex(indexes.first())->app());
 
-    emit packageChanged(package);
+    emit selectedPackageChanged(package);
 }
 
 void UpdaterWidget::checkAllMarked()
