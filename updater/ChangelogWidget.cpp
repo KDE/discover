@@ -166,7 +166,7 @@ void ChangelogWidget::changelogFetched(KJob *j)
         }
     }
     else {
-        m_changelogBrowser->setHtml(buildDescription(QApt::Changelog(job->data(), m_package->sourcePackage())));
+        m_changelogBrowser->setHtml(buildDescription(job->data(), m_package->sourcePackage()));
     }
 
     m_busyWidget->stop();
@@ -187,8 +187,9 @@ void ChangelogWidget::fetchChangelog()
             this, SLOT(changelogFetched(KJob*)));
 }
 
-QString ChangelogWidget::buildDescription(const QApt::Changelog &changelog)
+QString ChangelogWidget::buildDescription(const QByteArray& data, const QString& source)
 {
+    QApt::Changelog changelog(data, source);
     QString description;
 
     QApt::ChangelogEntryList entries = changelog.newEntriesSince(m_package->installedVersion());

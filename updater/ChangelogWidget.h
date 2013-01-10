@@ -31,11 +31,7 @@ class KPixmapSequenceOverlayPainter;
 class KTemporaryFile;
 class KTextBrowser;
 
-namespace QApt {
-    class Backend;
-    class Changelog;
-    class Package;
-}
+namespace QApt { class Package; }
 
 class ChangelogWidget : public QWidget
 {
@@ -53,7 +49,7 @@ private:
     KTextBrowser *m_changelogBrowser;
     KPixmapSequenceOverlayPainter *m_busyWidget;
 
-    QString buildDescription(const QApt::Changelog &log);
+    QString buildDescription(const QByteArray& data, const QString& source);
 
 public Q_SLOTS:
     void setPackage(QApt::Package *package);

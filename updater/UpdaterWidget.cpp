@@ -283,12 +283,9 @@ void UpdaterWidget::selectionChanged(const QItemSelection &selected,
     QModelIndexList indexes = selected.indexes();
     QApt::Package *package = 0;
 
-    if (indexes.isEmpty()) {
-        emit selectedPackageChanged(package);
-        return;
+    if (!indexes.isEmpty()) {
+        package = retrievePackage(m_updateModel->itemFromIndex(indexes.first())->app());
     }
-
-    package = retrievePackage(m_updateModel->itemFromIndex(indexes.first())->app());
 
     emit selectedPackageChanged(package);
 }
