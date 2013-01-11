@@ -1,5 +1,5 @@
 /*
- *   Copyright (C) 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
+ *   Copyright (C) 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library/Lesser General Public License
@@ -17,21 +17,32 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 1.0
-import org.kde.muon.discover 1.0
-import "navigation.js" as Navigation
+#include "DiscoverAction.h"
+#include <KXmlGuiWindow>
+#include <KActionCollection>
+#include <QDebug>
 
-DiscoverAction {
-    property string overlay
-    property Component component
-    mainWindow: app
-    checkable: true
-    checked: window.currentTopLevel==component
-    enabled: window.navigationEnabled
+DiscoverAction::DiscoverAction(QObject* parent)
+    : KAction(parent)
+{}
 
-    onTriggered: {
-        Navigation.clearPages()
-        if(window.currentTopLevel!=component)
-            window.currentTopLevel=component
-    }
+void DiscoverAction::setIconName(const QString& name)
+{
+    setIcon(KIcon(name));
+}
+
+QString DiscoverAction::iconName() const
+{
+    return icon().themeName();
+}
+
+KXmlGuiWindow* DiscoverAction::mainWindow() const
+{
+    return qobject_cast<KXmlGuiWindow*>(KAction::parentWidget());
+}
+
+void DiscoverAction::setMainWindow(KXmlGuiWindow* w)
+{
+    qDebug() << "........" << objectName() << this;
+    w->actionCollection()->addAction(objectName(), this);
 }

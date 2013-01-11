@@ -18,6 +18,7 @@
  */
 
 #include "MuonDiscoverMainWindow.h"
+#include "DiscoverAction.h"
 
 // Qt includes
 #include <QDebug>
@@ -27,6 +28,8 @@
 #include <QDesktopServices>
 #include <QTimer>
 #include <QGraphicsObject>
+#include <QToolButton>
+#include <QLayout>
 #include <qdeclarative.h>
 #include <QNetworkAccessManager>
 #include <QNetworkDiskCache>
@@ -43,6 +46,12 @@
 #include <Plasma/Theme>
 #include <KStandardDirs>
 #include <KMessageBox>
+#include <KToolBar>
+#include <KLineEdit>
+#include <KMenu>
+#include <KMenuBar>
+#include <KXMLGUIFactory>
+#include <KToolBarPopupAction>
 
 // Libmuon includes
 #include <libmuon/MuonDataSources.h>
@@ -56,37 +65,14 @@
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <MuonBackendsFactory.h>
 
-class CachedNetworkAccessManager : public QNetworkAccessManager {
-    public:
-        explicit CachedNetworkAccessManager(QObject* parent = 0) : QNetworkAccessManager(parent) {}
-    
-        virtual QNetworkReply* createRequest(Operation op, const QNetworkRequest& request, QIODevice* outgoingData = 0) {
-            QNetworkRequest req(request);
-            req.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::PreferCache);
-            return QNetworkAccessManager::createRequest(op, request, outgoingData);
-        }
-};
-
-class CachedNAMFactory : public QDeclarativeNetworkAccessManagerFactory
-{
-    virtual QNetworkAccessManager* create(QObject* parent) {
-        CachedNetworkAccessManager* ret = new CachedNetworkAccessManager(parent);
-        QString cacheDir = KStandardDirs::locateLocal("cache", "screenshotsCache", true);
-        QNetworkDiskCache* cache = new QNetworkDiskCache(ret);
-        cache->setCacheDirectory(cacheDir);
-        ret->setCache(cache);
-        return ret;
-    }
-};
-
-QML_DECLARE_TYPE(ResourcesModel);
+Q_DECLARE_METATYPE(ResourcesModel*);
 
 MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     : MuonMainWindow()
 {
     initialize();
     m_view = new QDeclarativeView(this);
-    m_view->setBackgroundRole(QPalette::Background);
+    m_view->setBackgroundRole(QPalette::AlternateBase);
     
     Plasma::Theme::defaultTheme()->setUseGlobalSettings(false); //don't change every plasma theme!
     Plasma::Theme::defaultTheme()->setThemeName("appdashboard");
@@ -97,15 +83,17 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     //binds things like kconfig and icons
     kdeclarative.setupBindings();
     
+    qmlRegisterType<DiscoverAction>("org.kde.muon.discover", 1, 0, "DiscoverAction");
+    qmlRegisterType<KXmlGuiWindow>();
+    
+    m_searchText = new KLineEdit;
+    m_searchText->setPlaceholderText(i18n("Search..."));
+    
     //Here we set up a cache for the screenshots
-//     m_view->engine()->setNetworkAccessManagerFactory(new CachedNAMFactory);
     m_view->engine()->rootContext()->setContextProperty("resourcesModel",
                                                         qVariantFromValue<ResourcesModel*>(ResourcesModel::global()));
     m_view->engine()->rootContext()->setContextProperty("app", this);
     m_view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
-// #if !defined(QT_NO_OPENGL)
-//     m_view->setViewport(new QGLWidget);
-// #endif
     
     m_view->setSource(QUrl("qrc:/qml/Main.qml"));
     if(!m_view->errors().isEmpty()) {
@@ -228,4 +216,33 @@ QUrl MuonDiscoverMainWindow::featuredSource() const
 QUrl MuonDiscoverMainWindow::prioritaryFeaturedSource() const
 {
     return QUrl::fromLocalFile(KGlobal::dirs()->findResource("appdata", "featured.json"));
+}
+
+void MuonDiscoverMainWindow::setupActions()
+{
+    setupGUI(StandardWindowOption(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
+    MuonMainWindow::setupActions();
+
+    menuBar()->setVisible(false);
+
+    QToolBar* t = toolBar();
+    QMenu* configMenu = new QMenu(this);
+    configMenu->addMenu(helpMenu());
+    configMenu->addMenu(qobject_cast<QMenu*>(factory()->container("settings", this)));
+    
+    KToolBarPopupAction* configureButton = new KToolBarPopupAction(KIcon("configure"), i18n("Configure"), t);
+    configureButton->setMenu(configMenu);
+    configureButton->setDelayed(false);
+    
+    QWidget* wideWidget = new QWidget(t);
+    t->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+    
+    t->addWidget(wideWidget);
+    t->addWidget(m_searchText);
+    t->addAction(configureButton);
+}
+
+QObject* MuonDiscoverMainWindow::searchWidget() const
+{
+    return m_searchText;
 }

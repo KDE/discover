@@ -5,6 +5,7 @@ include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/..)
 set(muon_discover_SRCS
     main.cpp
     MuonDiscoverMainWindow.cpp
+    DiscoverAction.cpp
 )
 
 qt4_add_resources(muon_discover_SRCS resources.qrc)
@@ -25,3 +26,4 @@ install(TARGETS muon-discover ${INSTALL_TARGETS_DEFAULT_ARGS} )
 install(PROGRAMS muon-discover.desktop muon-discover-category.desktop
     DESTINATION ${XDG_APPS_INSTALL_DIR} )
 install(FILES featured.json DESTINATION ${DATA_INSTALL_DIR}/muon-discover)
+install(FILES muon-discoverui.rc  DESTINATION  ${DATA_INSTALL_DIR}/muon-discover)
