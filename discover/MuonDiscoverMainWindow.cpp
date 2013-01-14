@@ -232,7 +232,8 @@ void MuonDiscoverMainWindow::setupActions()
     configMenu->addMenu(qobject_cast<QMenu*>(factory()->container("settings", this)));
     configMenu->addMenu(helpMenu());
     
-    KToolBarPopupAction* configureButton = new KToolBarPopupAction(KIcon("configure"), i18n("Configure"), t);
+    KToolBarPopupAction* configureButton = new KToolBarPopupAction(KIcon("configure"), i18n("Menu"), t);
+    configureButton->setToolTip(i18n("Configure and learn about Muon Discover"));
     configureButton->setMenu(configMenu);
     configureButton->setDelayed(false);
     
