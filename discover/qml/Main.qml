@@ -101,7 +101,6 @@ Item {
                     checked: currentTopLevel==modelData.component
                     enabled: window.navigationEnabled
                     onClicked: {
-                        Navigation.clearPages()
                         if(currentTopLevel!=modelData.component)
                             currentTopLevel=modelData.component
                     }
@@ -173,6 +172,11 @@ Item {
             left: parent.left
             right: parent.right
             topMargin: Math.max(breadcrumbsItemBar.height, pageToolBar.height)
+        }
+        onDepthChanged: {
+            if(depth==1) {
+                breadcrumbsItem.removeAllItems()
+            }
         }
     }
     

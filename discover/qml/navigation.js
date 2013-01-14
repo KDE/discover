@@ -31,7 +31,6 @@ function openApplicationMime(mime) {
 
 function openCategoryByName(catname) {
     currentTopLevel = topBrowsingComp
-    clearPages()
     openCategory(pageStack.currentPage.categories.findCategoryByName(catname))
 }
 
@@ -60,9 +59,4 @@ function openPage(icon, name, component, props) {
         console.log("comp error: "+component.errorString())
     }
     return obj
-}
-
-function clearPages()
-{
-    breadcrumbsItem.doClick(0)
 }

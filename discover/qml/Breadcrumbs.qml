@@ -51,6 +51,13 @@ Item {
         }
     }
     
+    function removeAllItems() {
+        var pos = items.count-1
+        for(; pos>0; --pos) {
+            items.remove(items.count-1)
+        }
+    }
+    
     ListView
     {
         id: view
