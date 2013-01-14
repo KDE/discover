@@ -24,6 +24,10 @@ NativeScrollBar {
     id: scroll
     property QtObject flickableItem: null
 
+    onFlickableItemChanged: {
+        flickableItem.boundsBehavior=Flickable.StopAtBounds
+    }
+
     orientation: Qt.Vertical
     minimum: 0
     maximum: flickableItem.contentHeight-flickableItem.height

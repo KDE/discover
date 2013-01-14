@@ -27,7 +27,7 @@ Item {
     property QtObject application: null
     property variant reviewsBackend: application.backend.reviewsBackend
     
-    ScrollBar {
+    NativeScrollBar {
         id: scroll
         orientation: Qt.Vertical
         flickableItem: overviewContentsFlickable

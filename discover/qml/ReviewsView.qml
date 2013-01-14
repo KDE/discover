@@ -73,7 +73,7 @@ Item
         }
     }
     
-    ScrollBar {
+    NativeScrollBar {
         id: scroll
         orientation: Qt.Vertical
         flickableItem: reviewsView
