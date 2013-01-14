@@ -29,6 +29,7 @@ class DiscoverAction : public KAction
     Q_OBJECT
     Q_PROPERTY(QString iconName READ iconName WRITE setIconName)
     Q_PROPERTY(KXmlGuiWindow* mainWindow READ mainWindow WRITE setMainWindow)
+    Q_PROPERTY(QAction::Priority priority READ priority WRITE setPriority)
     public:
         explicit DiscoverAction(QObject* parent = 0);
         

@@ -78,6 +78,7 @@ Item {
             breadcrumbsItem.popItem(false)
             window.clearSearch()
         }
+        priority: "LowPriority"
     }
     TopLevelPageData {
         iconName: "tools-wizard"
