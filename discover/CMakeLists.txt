@@ -5,7 +5,9 @@ include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/..)
 set(muon_discover_SRCS
     main.cpp
     MuonDiscoverMainWindow.cpp
+
     DiscoverAction.cpp
+    NativeScrollBar.cpp
 )
 
 qt4_add_resources(muon_discover_SRCS resources.qrc)
