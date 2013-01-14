@@ -42,7 +42,7 @@ Item {
         
         try {
             var obj = currentTopLevel.createObject(pageStack)
-            pageStack.push(obj)
+            pageStack.replace(obj)
 //             console.log("created "+currentTopLevel)
         } catch (e) {
             console.log("error: "+e)
