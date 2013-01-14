@@ -56,11 +56,13 @@ Information {
                 ToolButton {
                     id: prevButton
                     iconSource: "go-previous"
-                    height: parent.height
+                    height: parent.height*0.9
+                    width: height
                     onClicked: info.previous()
                     anchors {
-                        top: parent.top
+                        verticalCenter: parent.verticalCenter
                         left: parent.left
+                        leftMargin: 3
                     }
                 }
                 
@@ -87,11 +89,13 @@ Information {
                 }
                 ToolButton {
                     iconSource: "go-next"
-                    height: parent.height
+                    height: parent.height*0.9
+                    width: height
                     onClicked: info.next()
                     anchors {
                         right: parent.right
-                        top: parent.top
+                        verticalCenter: parent.verticalCenter
+                        rightMargin: 3
                     }
                 }
             }
