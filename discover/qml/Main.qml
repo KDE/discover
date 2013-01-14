@@ -144,7 +144,7 @@ Item {
         toolBar: pageToolBar
         anchors {
             bottom: progressBox.top
-            top: toolbar.bottom
+            top: parent.top
             left: parent.left
             right: parent.right
             topMargin: Math.max(breadcrumbsItemBar.height, pageToolBar.height)
