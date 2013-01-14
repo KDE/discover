@@ -43,6 +43,5 @@ KXmlGuiWindow* DiscoverAction::mainWindow() const
 
 void DiscoverAction::setMainWindow(KXmlGuiWindow* w)
 {
-    qDebug() << "........" << objectName() << this;
     w->actionCollection()->addAction(objectName(), this);
 }

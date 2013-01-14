@@ -19,6 +19,7 @@
 
 #include "MuonDiscoverMainWindow.h"
 #include "DiscoverAction.h"
+#include "NativeScrollBar.h"
 
 // Qt includes
 #include <QDebug>
@@ -84,6 +85,7 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     kdeclarative.setupBindings();
     
     qmlRegisterType<DiscoverAction>("org.kde.muon.discover", 1, 0, "DiscoverAction");
+    qmlRegisterType<NativeScrollBar>("org.kde.muon.discover", 1, 0, "NativeScrollBar");
     qmlRegisterType<KXmlGuiWindow>();
     
     m_searchText = new KLineEdit;
@@ -227,8 +229,8 @@ void MuonDiscoverMainWindow::setupActions()
 
     QToolBar* t = toolBar();
     QMenu* configMenu = new QMenu(this);
-    configMenu->addMenu(helpMenu());
     configMenu->addMenu(qobject_cast<QMenu*>(factory()->container("settings", this)));
+    configMenu->addMenu(helpMenu());
     
     KToolBarPopupAction* configureButton = new KToolBarPopupAction(KIcon("configure"), i18n("Configure"), t);
     configureButton->setMenu(configMenu);
