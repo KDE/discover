@@ -9,6 +9,7 @@ Name[el]=Σύστημα υποστήριξης Muon
 Name[es]=Motor de Muon
 Name[et]=Muoni taustaprogramm
 Name[ga]=Inneall Muon
+Name[gl]=Infraestrutura de Muon
 Name[hu]=Muon modul
 Name[nb]=Bakgrunnsmotor for Muon
 Name[nl]=Backend van Muon
@@ -25,6 +26,7 @@ Name[sr@latin]=Pozadina Muona
 Name[sv]=Muon-gränssnitt
 Name[uk]=Модуль Muon
 Name[x-test]=xxMuon Backendxx
+Name[zh_CN]=Muon 后端
 
 [PropertyDef::X-Muon-Arguments]
 Type=QStringList

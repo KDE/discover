@@ -132,7 +132,7 @@ Item {
             top: parent.top
             right: parent.right
         }
-        height: 30
+        height: visible ? 30 : 0
         width: tools!=null ? tools.childrenRect.width+5 : 0
         visible: width>0
         
@@ -144,9 +144,10 @@ Item {
         toolBar: pageToolBar
         anchors {
             bottom: progressBox.top
-            top: pageToolBar.bottom
+            top: toolbar.bottom
             left: parent.left
             right: parent.right
+            topMargin: Math.max(breadcrumbsItemBar.height, pageToolBar.height)
         }
     }
     
