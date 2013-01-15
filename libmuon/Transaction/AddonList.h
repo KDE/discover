@@ -38,6 +38,8 @@ public:
 
     void setAddonsToInstall(const QStringList &list);
     void setAddonsToRemove(const QStringList &list);
+    void addAddon(const QString &addon, bool toInstall);
+    void removeAddon(const QString &addon);
     void clear();
 
 private:

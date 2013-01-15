@@ -60,6 +60,21 @@ void AddonList::setAddonsToRemove(const QStringList &list)
     m_list[ToRemove] = list;
 }
 
+void AddonList::addAddon(const QString &addon, bool toInstall)
+{
+    if (toInstall)
+        m_list[ToInstall].append(addon);
+    else
+        m_list[ToRemove].append(addon);
+}
+
+void AddonList::removeAddon(const QString &addon)
+{
+    for (QStringList &list : m_list) {
+        list.removeAll(addon);
+    }
+}
+
 void AddonList::clear()
 {
     m_list[ToInstall].clear();

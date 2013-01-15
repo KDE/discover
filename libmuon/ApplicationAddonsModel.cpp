@@ -91,18 +91,19 @@ void ApplicationAddonsModel::applyChanges()
 
 void ApplicationAddonsModel::changeState(const QString& packageName, bool installed)
 {
-    QList<PackageState>::const_iterator it=m_initial.constBegin(), itEnd=m_initial.constEnd();
-    for(; it!=itEnd; ++it) {
+    auto it = m_initial.constBegin();
+    for(; it != m_initial.constEnd(); ++it) {
         if(it->name()==packageName)
             break;
     }
     
     bool restored = it->isInstalled()==installed;
-    // FIXME AddonList, add appropriate functionality
-//    if(restored)
-//        m_state.remove(packageName);
-//    else
-//        m_state.insert(packageName, installed);
+
+    if(restored)
+        m_state.removeAddon(packageName);
+    else
+        m_state.addAddon(packageName, installed);
+
     emit stateChanged();
 }
 
