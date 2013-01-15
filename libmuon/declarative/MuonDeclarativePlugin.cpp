@@ -41,7 +41,7 @@ void MuonDeclarativePlugin::registerTypes(const char* uri)
 {
     qmlRegisterType<CategoryModel>("org.kde.muon", 1, 0, "CategoryModel");
     qmlRegisterType<TransactionListener>("org.kde.muon", 1, 0, "TransactionListener");
-    qmlRegisterType<TransactionModel>("org.kde.muon", 1, 0, "TransactionModel");
+    qmlRegisterType<TransactionModel>();
     qmlRegisterType<ResourcesUpdatesModel>("org.kde.muon", 1, 0, "ResourcesUpdatesModel");
     
     qmlRegisterType<ReviewsModel>("org.kde.muon", 1, 0, "ReviewsModel");
