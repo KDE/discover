@@ -20,6 +20,8 @@
 
 #include "Transaction.h"
 
+#include "TransactionModel.h"
+
 Transaction::Transaction(QObject *parent, AbstractResource *resource,
                          Role role)
     : Transaction(parent, resource, role, AddonList())
@@ -84,4 +86,12 @@ void Transaction::setProgress(int progress)
 {
     m_progress = progress;
     emit progressChanged(m_progress);
+}
+
+void Transaction::cancel()
+{
+    if (!m_isCancellable)
+        return;
+
+    TransactionModel::global()->cancelTransaction(this);
 }

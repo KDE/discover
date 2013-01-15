@@ -78,6 +78,7 @@ public:
     void setStatus(Status status);
     void setCancellable(bool isCancellable);
     void setProgress(int progress);
+    void cancel();
 
 private:
     AbstractResource *m_resource;

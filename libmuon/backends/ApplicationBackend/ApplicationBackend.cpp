@@ -384,10 +384,9 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
 
     QApt::StateChanges changes = m_backend->stateChanges(oldCacheState, excluded);
 
-    TransactionModel *transModel = TransactionModel::global();
     if (!confirmRemoval(changes)) {
         m_backend->restoreCacheState(oldCacheState);
-        transModel->cancelTransaction(transaction);
+        transaction->cancel();
         transaction->deleteLater();
         return;
     }
@@ -401,7 +400,7 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
 
     QApt::Transaction *aptTrans = m_backend->commitChanges();
     setupTransaction(aptTrans);
-    transModel->addTransaction(transaction);
+    TransactionModel::global()->addTransaction(transaction);
     m_transQueue.insert(transaction, aptTrans);
     aptTrans->run();
     m_backend->restoreCacheState(oldCacheState); // Undo temporary simulation marking
