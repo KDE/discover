@@ -26,7 +26,7 @@ NativeScrollBar::NativeScrollBar(QDeclarativeItem* parent)
 {
     m_scrollBar = new QScrollBar;
     m_scrollBar->setAttribute(Qt::WA_NoSystemBackground);
-    connect(m_scrollBar, SIGNAL(valueChanged(int)), SIGNAL(valueChanged(int)));
+    connect(m_scrollBar, SIGNAL(sliderMoved(int)), SIGNAL(valueChanged(int)));
     m_proxy = new QGraphicsProxyWidget(this);
     m_proxy->setWidget(m_scrollBar);
 
@@ -46,9 +46,9 @@ void NativeScrollBar::geometryChanged(const QRectF& newGeometry, const QRectF& o
 
 int NativeScrollBar::minimum() const { return m_scrollBar->minimum(); }
 int NativeScrollBar::maximum() const { return m_scrollBar->maximum(); }
-int NativeScrollBar::value() const { return m_scrollBar->value(); }
 Qt::Orientation NativeScrollBar::orientation() const { return m_scrollBar->orientation(); }
-void NativeScrollBar::setMaximum(int max) { m_scrollBar->setMaximum(max); }
-void NativeScrollBar::setMinimum(int min) { m_scrollBar->setMinimum(min); }
-void NativeScrollBar::setValue(int val) { m_scrollBar->setValue(val); }
+int NativeScrollBar::value() const { return m_scrollBar->value(); }
+void NativeScrollBar::setMaximum(int max) { m_scrollBar->setMaximum(max); emit maximumChanged(); }
+void NativeScrollBar::setMinimum(int min) { m_scrollBar->setMinimum(min); emit minimumChanged(); }
 void NativeScrollBar::setOrientation(Qt::Orientation orientation) { m_scrollBar->setOrientation(orientation); }
+void NativeScrollBar::setValue(int val) { m_scrollBar->setValue(val); }

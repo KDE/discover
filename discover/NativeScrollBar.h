@@ -22,12 +22,13 @@
 
 #include <QtDeclarative/QDeclarativeItem>
 
+class QPropertyAnimation;
 class QScrollBar;
 class NativeScrollBar : public QDeclarativeItem
 {
     Q_OBJECT
-    Q_PROPERTY(int maximum READ maximum WRITE setMaximum)
-    Q_PROPERTY(int minimum READ minimum WRITE setMinimum)
+    Q_PROPERTY(int maximum READ maximum WRITE setMaximum NOTIFY maximumChanged)
+    Q_PROPERTY(int minimum READ minimum WRITE setMinimum NOTIFY minimumChanged)
     Q_PROPERTY(int value READ value WRITE setValue NOTIFY valueChanged)
     Q_PROPERTY(Qt::Orientation orientation READ orientation WRITE setOrientation)
     public:
@@ -50,6 +51,8 @@ class NativeScrollBar : public QDeclarativeItem
 
     Q_SIGNALS:
         void valueChanged(int value);
+        void maximumChanged();
+        void minimumChanged();
 
     private:
         QScrollBar* m_scrollBar;

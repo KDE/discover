@@ -24,18 +24,22 @@ NativeScrollBar {
     id: scroll
     property QtObject flickableItem: null
 
-    onFlickableItemChanged: {
-        flickableItem.boundsBehavior=Flickable.StopAtBounds
-    }
-
     orientation: Qt.Vertical
     minimum: 0
-    maximum: flickableItem.contentHeight-flickableItem.height
+    maximum: Math.max(flickableItem.contentHeight-flickableItem.height, 0)
+    opacity: maximum!=minimum ? 1 : 0
 
     onValueChanged: flickableItem.contentY=value
+    onFlickableItemChanged: flickableItem.boundsBehavior=Flickable.StopAtBounds
+
+    Behavior on opacity { NumberAnimation { easing.type: Easing.OutQuad; duration: 500 } }
 
     Connections {
         target: scroll.flickableItem
-        onMovementEnded: scroll.value=flickableItem.contentY
+        onContentYChanged: {
+            if(flickableItem.movingVertically) {
+                scroll.value=flickableItem.contentY
+            }
+        }
     }
 }
