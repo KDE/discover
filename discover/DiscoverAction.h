@@ -30,6 +30,7 @@ class DiscoverAction : public KAction
     Q_PROPERTY(QString iconName READ iconName WRITE setIconName)
     Q_PROPERTY(KXmlGuiWindow* mainWindow READ mainWindow WRITE setMainWindow)
     Q_PROPERTY(QAction::Priority priority READ priority WRITE setPriority)
+    Q_PROPERTY(QString actionsGroup READ actionsGroup WRITE setActionsGroup)
     public:
         explicit DiscoverAction(QObject* parent = 0);
         
@@ -38,6 +39,12 @@ class DiscoverAction : public KAction
         
         KXmlGuiWindow* mainWindow() const;
         void setMainWindow(KXmlGuiWindow* w);
+        
+        QString actionsGroup() const;
+        void setActionsGroup(const QString& name);
+
+    private:
+        QActionGroup* m_actionsGroup;
 };
 
 #endif // DISCOVERACTION_H
