@@ -55,17 +55,20 @@ Item {
         while(pageStack.depth>1) {
             var obj = pageStack.pop()
             if(obj)
-                obj.destroy(1000)
+                obj.destroy(2000)
         }
-        
-        try {
-            var obj = currentTopLevel.createObject(pageStack)
-            pageStack.push(obj)
-//             console.log("created "+currentTopLevel)
-        } catch (e) {
-            console.log("error: "+e)
-            console.log("comp error: "+currentTopLevel.errorString())
+        var page = Navigation.rootPagesCache[currentTopLevel]
+        if(page == undefined) {
+            try {
+                page = currentTopLevel.createObject(pageStack)
+                Navigation.rootPagesCache[currentTopLevel] = page
+                console.log("created ", currentTopLevel, Navigation.rootPagesCache[currentTopLevel])
+            } catch (e) {
+                console.log("error: "+e)
+                console.log("comp error: "+currentTopLevel.errorString())
+            }
         }
+        pageStack.replace(page)
     }
     
     DiscoverAction {
@@ -149,6 +152,11 @@ Item {
             left: parent.left
             right: parent.right
             topMargin: Math.max(breadcrumbsItemBar.height, pageToolBar.height)
+        }
+        onDepthChanged: {
+            if(depth==1) {
+                breadcrumbsItem.removeAllItems()
+            }
         }
     }
     

@@ -17,6 +17,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+var rootPagesCache = {}
+
 function openApplicationList(icon, name, cat, search) {
     openPage(icon, name, applicationListComp, { category: cat, search: search, preferList: search!="" })
 }
@@ -31,7 +33,6 @@ function openApplicationMime(mime) {
 
 function openCategoryByName(catname) {
     currentTopLevel = topBrowsingComp
-    clearPages()
     openCategory(pageStack.currentPage.categories.findCategoryByName(catname))
 }
 
@@ -60,9 +61,4 @@ function openPage(icon, name, component, props) {
         console.log("comp error: "+component.errorString())
     }
     return obj
-}
-
-function clearPages()
-{
-    breadcrumbsItem.doClick(0)
 }

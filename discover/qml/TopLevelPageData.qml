@@ -30,7 +30,6 @@ DiscoverAction {
     enabled: window.navigationEnabled
 
     onTriggered: {
-        Navigation.clearPages()
         if(window.currentTopLevel!=component)
             window.currentTopLevel=component
     }
