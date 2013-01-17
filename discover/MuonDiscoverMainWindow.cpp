@@ -76,7 +76,7 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     m_view->setBackgroundRole(QPalette::AlternateBase);
     
     Plasma::Theme::defaultTheme()->setUseGlobalSettings(false); //don't change every plasma theme!
-    Plasma::Theme::defaultTheme()->setThemeName("appdashboard");
+    Plasma::Theme::defaultTheme()->setThemeName("muon-contenttheme");
     
     KDeclarative kdeclarative;
     kdeclarative.setDeclarativeEngine(m_view->engine());
