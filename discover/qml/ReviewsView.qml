@@ -38,11 +38,11 @@ Item
                 Label {
                     anchors {
                         left: parent.left
-                        right: parent.right
+                        right: rating.left
                     }
                     
                     id: content
-                    text: i18n("<b>%1</b> by %2<p/>%3<br/>%4", summary, reviewer,
+                    text: i18n("<p style='margin: 0 0 0 0'><b>%1</b> by %2</p><p style='margin: 0 0 0 0'>%3</p><p style='margin: 0 0 0 0'>%4</p>", summary, reviewer,
                             display, usefulnessToString(usefulnessFavorable, usefulnessTotal))
                     wrapMode: Text.WordWrap
                 }
@@ -60,6 +60,7 @@ Item
                 }
                 
                 Rating {
+                    id: rating
                     anchors.top: parent.top
                     anchors.right: parent.right
                     rating: model["rating"]
