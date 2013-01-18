@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import org.kde.plasma.components 0.1
+import org.kde.plasma.extras 0.1
 import org.kde.muon 1.0
 
 Item
@@ -17,7 +18,7 @@ Item
         visible: reviewsView.count>0
         spacing: 5
         
-        header: Label { text: i18n("<b>Reviews:</b>") }
+        header: Heading { text: i18n("<b>Reviews:</b>") }
         
         delegate: ListItem {
             visible: model["shouldShow"]
