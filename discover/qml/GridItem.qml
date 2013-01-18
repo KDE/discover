@@ -29,8 +29,10 @@ Item {
 
     //this defines if the item will emit clicked and look pressed on mouse down
     property alias enabled: itemMouse.enabled
+    property alias containsMouse: itemMouse.containsMouse
     signal clicked
     signal pressAndHold
+    signal positionChanged
 
     property bool checked: false
     property bool sectionDelegate: false
@@ -83,6 +85,7 @@ Item {
         onPressed: if (changeBackgroundOnPress) background.prefix = "pressed"
         onReleased: if (changeBackgroundOnPress) background.prefix = "normal"
         onCanceled: if (changeBackgroundOnPress) background.prefix = "normal"
+        onPositionChanged: listItem.positionChanged()
     }
 
     Item {
