@@ -27,6 +27,7 @@ NativeScrollBar {
     orientation: Qt.Vertical
     minimum: 0
     maximum: Math.max(flickableItem.contentHeight-flickableItem.height, 0)
+    pageStep: flickableItem.height
     opacity: maximum!=minimum ? 1 : 0
 
     onValueChanged: flickableItem.contentY=value

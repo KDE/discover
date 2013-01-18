@@ -46,9 +46,11 @@ void NativeScrollBar::geometryChanged(const QRectF& newGeometry, const QRectF& o
 
 int NativeScrollBar::minimum() const { return m_scrollBar->minimum(); }
 int NativeScrollBar::maximum() const { return m_scrollBar->maximum(); }
+int NativeScrollBar::pageStep() const { return m_scrollBar->pageStep(); }
 Qt::Orientation NativeScrollBar::orientation() const { return m_scrollBar->orientation(); }
 int NativeScrollBar::value() const { return m_scrollBar->value(); }
 void NativeScrollBar::setMaximum(int max) { m_scrollBar->setMaximum(max); emit maximumChanged(); }
 void NativeScrollBar::setMinimum(int min) { m_scrollBar->setMinimum(min); emit minimumChanged(); }
+void NativeScrollBar::setPageStep(int pageStep) { m_scrollBar->setPageStep(pageStep); emit pageStepChanged(); }
 void NativeScrollBar::setOrientation(Qt::Orientation orientation) { m_scrollBar->setOrientation(orientation); }
 void NativeScrollBar::setValue(int val) { m_scrollBar->setValue(val); }

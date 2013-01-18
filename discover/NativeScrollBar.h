@@ -29,6 +29,7 @@ class NativeScrollBar : public QDeclarativeItem
     Q_OBJECT
     Q_PROPERTY(int maximum READ maximum WRITE setMaximum NOTIFY maximumChanged)
     Q_PROPERTY(int minimum READ minimum WRITE setMinimum NOTIFY minimumChanged)
+    Q_PROPERTY(int pageStep READ pageStep WRITE setPageStep NOTIFY pageStepChanged)
     Q_PROPERTY(int value READ value WRITE setValue NOTIFY valueChanged)
     Q_PROPERTY(Qt::Orientation orientation READ orientation WRITE setOrientation)
     public:
@@ -40,6 +41,9 @@ class NativeScrollBar : public QDeclarativeItem
 
         int minimum() const;
         void setMinimum(int min);
+
+        int pageStep() const;
+        void setPageStep(int pageStep);
 
         int value() const;
         void setValue(int val);
@@ -53,6 +57,7 @@ class NativeScrollBar : public QDeclarativeItem
         void valueChanged(int value);
         void maximumChanged();
         void minimumChanged();
+        void pageStepChanged();
 
     private:
         QScrollBar* m_scrollBar;
