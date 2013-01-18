@@ -59,10 +59,9 @@ class MUONPRIVATE_EXPORT ReviewsModel : public QAbstractListModel
 
     private slots:
         void addReviews(AbstractResource* app, const QList<Review*>& reviews);
-
-    private:
         void restartFetching();
 
+    private:
         AbstractResource* m_app;
         AbstractReviewsBackend* m_backend;
         QList<Review*> m_reviews;
