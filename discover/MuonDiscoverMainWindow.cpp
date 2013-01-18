@@ -74,9 +74,10 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     initialize();
     m_view = new QDeclarativeView(this);
     m_view->setBackgroundRole(QPalette::AlternateBase);
+    qreal bgGrayness = m_view->backgroundBrush().color().blackF();
     
     Plasma::Theme::defaultTheme()->setUseGlobalSettings(false); //don't change every plasma theme!
-    Plasma::Theme::defaultTheme()->setThemeName("muon-contenttheme");
+    Plasma::Theme::defaultTheme()->setThemeName(bgGrayness>0.5 ? "muon-contenttheme" : "oxygen");
     
     KDeclarative kdeclarative;
     kdeclarative.setDeclarativeEngine(m_view->engine());
