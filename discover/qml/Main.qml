@@ -62,7 +62,7 @@ Item {
             try {
                 page = currentTopLevel.createObject(pageStack)
                 Navigation.rootPagesCache[currentTopLevel] = page
-                console.log("created ", currentTopLevel, Navigation.rootPagesCache[currentTopLevel])
+//                 console.log("created ", currentTopLevel, Navigation.rootPagesCache[currentTopLevel])
             } catch (e) {
                 console.log("error: "+e)
                 console.log("comp error: "+currentTopLevel.errorString())
