@@ -91,9 +91,8 @@ Item {
     }
     TopLevelPageData {
         iconName: "applications-other"
-        text: i18n("Installed")
+        text: resourcesModel.updatesCount==0 ? i18n("Installed") : i18np("Installed (%1 update)", "Installed (%1 updates)", resourcesModel.updatesCount)
         component: topInstalledComp
-        overlay: resourcesModel.updatesCount==0 ? "" : resourcesModel.updatesCount
         objectName: "installed"
     }
     TopLevelPageData {
