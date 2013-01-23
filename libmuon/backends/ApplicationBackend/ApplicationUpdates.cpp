@@ -77,7 +77,7 @@ void ApplicationUpdates::start()
 
     // Confirm additional changes beyond upgrading the files
     if(!changes.isEmpty()) {
-        ChangesDialog d(0, changes);
+        ChangesDialog d(m_appBackend->mainWindow(), changes);
         if(d.exec()==QDialog::Rejected) {
             emit updatesFinnished();
             return;
@@ -85,9 +85,7 @@ void ApplicationUpdates::start()
     }
 
     // Create and run the transaction
-    m_trans = m_aptBackend->commitChanges();
-    setupTransaction(m_trans);
-    m_trans->run();
+    setupTransaction(m_aptBackend->commitChanges());
 }
 
 void ApplicationUpdates::progressChanged(int progress)
@@ -127,12 +125,14 @@ void ApplicationUpdates::errorOccurred(QApt::ErrorCode error)
 
 void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
 {
+    Q_ASSERT(!m_trans);
     // Provide proxy/locale to the transaction
     if (KProtocolManager::proxyType() == KProtocolManager::ManualProxy) {
         trans->setProxy(KProtocolManager::proxyFor("http"));
     }
 
     trans->setLocale(QLatin1String(setlocale(LC_MESSAGES, 0)));
+    m_trans = trans;
 
     connect(m_trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
             this, SLOT(transactionStatusChanged(QApt::TransactionStatus)));
@@ -142,4 +142,5 @@ void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
             this, SLOT(progressChanged(int)));
     connect(m_trans, SIGNAL(statusDetailsChanged(QString)),
             this, SLOT(installMessage(QString)));
+    m_trans->run();
 }

@@ -21,7 +21,7 @@
 #include "KNSBackend.h"
 #include "KNSResource.h"
 #include "KNSReviews.h"
-#include "KNSUpdater.h"
+#include <resources/StandardBackendUpdater.h>
 #include <Transaction/Transaction.h>
 
 #include <QDebug>
@@ -60,7 +60,7 @@ KNSBackend::KNSBackend(QObject* parent, const QVariantList& args)
     , m_page(0)
     , m_reviews(new KNSReviews(this))
     , m_fetching(true)
-    , m_updater(new KNSUpdater(this))
+    , m_updater(new StandardBackendUpdater(this))
 {
     const QVariantMap info = args.first().toMap();
     
@@ -232,7 +232,7 @@ int KNSBackend::updatesCount() const
     return ret;
 }
 
-QList<AbstractResource*> KNSBackend::upgradeablePackages()
+QList<AbstractResource*> KNSBackend::upgradeablePackages() const
 {
     QList<AbstractResource*> ret;
     foreach(AbstractResource* r, m_resourcesByName) {

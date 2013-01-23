@@ -71,6 +71,11 @@ void QAptActions::setMainWindow(KXmlGuiWindow* w)
     setupActions();
 }
 
+KXmlGuiWindow* QAptActions::mainWindow() const
+{
+    return m_mainWindow;
+}
+
 void QAptActions::setBackend(QApt::Backend* backend)
 {
     m_backend = backend;

@@ -136,8 +136,7 @@ void UpdaterWidget::setBackend(AbstractResourcesBackend *backend)
 {
     m_appsBackend = backend;
     m_backend = qobject_cast<QApt::Backend*>(backend->property("backend").value<QObject*>());
-    connect(m_backend, SIGNAL(packageChanged()),
-            m_updateModel, SLOT(packageChanged()));
+    connect(m_backend, SIGNAL(packageChanged()), m_updateModel, SLOT(packageChanged()));
 
     populateUpdateModel();
 }
@@ -169,37 +168,35 @@ void UpdaterWidget::populateUpdateModel()
     UpdateItem *systemItem = new UpdateItem(i18nc("@item:inlistbox", "System Updates"),
                                              KIcon("applications-system"));
     
-    QVector<AbstractResource*> resources = m_appsBackend->allResources();
+    QList<AbstractResource*> resources = m_appsBackend->upgradeablePackages();
     foreach(AbstractResource* res, resources) {
-        if(res->state()==AbstractResource::Upgradeable) {
-            UpdateItem *updateItem = new UpdateItem(res);
-            QApt::Package* package = retrievePackage(res);
+        UpdateItem *updateItem = new UpdateItem(res);
+        QApt::Package* package = retrievePackage(res);
 
-            if (!package) {
-                kDebug() << "No package:" << res->name();
-                continue;
+        if (!package) {
+            kDebug() << "No package:" << res->name();
+            continue;
+        }
+        
+        bool securityFound = false;
+        for (const QString &archive : package->archives()) {
+            if (archive.contains(QLatin1String("security"))) {
+                securityFound = true;
+                break;
             }
-            
-            bool securityFound = false;
-            for (const QString &archive : package->archives()) {
-                if (archive.contains(QLatin1String("security"))) {
-                    securityFound = true;
-                    break;
-                }
-            }
-            
-            if(!res->isTechnical()) {
-                if (securityFound) {
-                    securityItem->appendChild(updateItem);
-                } else {
-                    appItem->appendChild(updateItem);
-                }
+        }
+        
+        if(!res->isTechnical()) {
+            if (securityFound) {
+                securityItem->appendChild(updateItem);
             } else {
-                if (securityFound) {
-                    securityItem->appendChild(updateItem);
-                } else {
-                    systemItem->appendChild(updateItem);
-                }
+                appItem->appendChild(updateItem);
+            }
+        } else {
+            if (securityFound) {
+                securityItem->appendChild(updateItem);
+            } else {
+                systemItem->appendChild(updateItem);
             }
         }
     }
@@ -237,16 +234,9 @@ void UpdaterWidget::populateUpdateModel()
     checkUpToDate();
 }
 
-void UpdaterWidget::checkApps(QList<AbstractResource*> apps, bool checked)
+void UpdaterWidget::checkApps(const QList<AbstractResource*>& apps, bool checked)
 {
-    QApt::PackageList list;
-    foreach (AbstractResource *app, apps) {
-        list << retrievePackage(app);
-    }
-
-    QApt::Package::State action = checked ? QApt::Package::ToInstall : QApt::Package::ToKeep;
-
-    if (list.size() > 1) {
+    if (apps.size() > 1) {
         QApplication::setOverrideCursor(Qt::WaitCursor);
     }
 
@@ -254,25 +244,7 @@ void UpdaterWidget::checkApps(QList<AbstractResource*> apps, bool checked)
     m_backend->saveCacheState();
     m_backend->markPackages(list, action);
 
-    // Check for removals
-    auto changes = m_backend->stateChanges(m_oldCacheState, list);
-
-    checkChanges(changes);
-
     QApplication::restoreOverrideCursor();
-}
-
-void UpdaterWidget::checkChanges(const QHash<QApt::Package::State, QApt::PackageList> &changes)
-{
-    if (changes.isEmpty()) {
-        return;
-    }
-
-    ChangesDialog *dialog = new ChangesDialog(this, changes);
-    int res = dialog->exec();
-
-    if (res != QDialog::Accepted)
-        m_backend->restoreCacheState(m_oldCacheState);
 }
 
 void UpdaterWidget::selectionChanged(const QItemSelection &selected,
@@ -314,7 +286,7 @@ void UpdaterWidget::markAllPackagesForUpgrade()
 
 void UpdaterWidget::checkUpToDate()
 {
-    if(m_backend->upgradeablePackages().isEmpty()) {
+    if(m_appsBackend->upgradeablePackages().isEmpty()) {
         setCurrentIndex(1);
         QDateTime lastUpdate = m_backend->timeCacheLastUpdated();
 

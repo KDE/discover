@@ -41,6 +41,7 @@ class MUONPRIVATE_EXPORT QAptActions : public QObject
 public:
     static QAptActions* self();
     void setMainWindow(KXmlGuiWindow *parent);
+    KXmlGuiWindow* mainWindow() const;
 
     bool isConnected() const;
     void setOriginalState(QApt::CacheState state);

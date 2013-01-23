@@ -70,7 +70,7 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void populateUpdateModel();
-    void checkApps(QList<AbstractResource*> apps, bool checked);
+    void checkApps(const QList< AbstractResource* >& apps, bool checked);
     void checkChanges(const QHash<QApt::Package::State, QApt::PackageList> &removals);
     void selectionChanged(const QItemSelection &selected,
                           const QItemSelection &deselected);

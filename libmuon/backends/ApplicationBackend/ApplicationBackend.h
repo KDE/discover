@@ -82,6 +82,8 @@ public:
     
     AbstractBackendUpdater* backendUpdater() const;
     void integrateMainWindow(MuonMainWindow* w);
+    QWidget* mainWindow() const;
+    virtual QList<AbstractResource*> upgradeablePackages() const;
 
 private:
     QApt::Backend *m_backend;

@@ -558,6 +558,11 @@ void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
     connect(apt, SIGNAL(sourcesEditorClosed(bool)), SLOT(reload()));
 }
 
+QWidget* ApplicationBackend::mainWindow() const
+{
+    return QAptActions::self()->mainWindow();
+}
+
 void ApplicationBackend::initBackend()
 {
     if (m_aptify) {
@@ -633,4 +638,14 @@ void ApplicationBackend::initAvailablePackages(KJob* j)
             a->setHasScreenshot(packages.contains(a->packageName()));
         }
     }
+}
+
+QList< AbstractResource* > ApplicationBackend::upgradeablePackages() const
+{
+    QList<AbstractResource*> ret;
+    foreach(AbstractResource* r, m_appList) {
+        if(r->state()==AbstractResource::Upgradeable)
+            ret+=r;
+    }
+    return ret;
 }

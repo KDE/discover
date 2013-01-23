@@ -23,6 +23,7 @@
 
 // Qt includes
 #include <QtCore/QObject>
+#include <QPointer>
 
 // LibQApt includes
 #include <LibQApt/Globals>
@@ -51,7 +52,7 @@ public:
 
 private:
     QApt::Backend* m_aptBackend;
-    QApt::Transaction *m_trans;
+    QPointer<QApt::Transaction> m_trans;
     ApplicationBackend* m_appBackend;
     int m_lastRealProgress;
     long unsigned int m_eta;
@@ -65,7 +66,7 @@ private slots:
     void setupTransaction(QApt::Transaction *trans);
 
 signals:
-    void errorSignal(QApt::ErrorCode error, QString details);
+    void errorSignal(QApt::ErrorCode error, const QString& details);
 };
 
 #endif // APPLICATIONUPDATES_H

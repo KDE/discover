@@ -65,7 +65,7 @@ public Q_SLOTS:
     void packageChanged();
 
 Q_SIGNALS:
-    void checkApps(QList<AbstractResource*> apps, bool checked);
+    void checkApps(const QList<AbstractResource*>& apps, bool checked);
 };
 
 #endif // UPDATEMODEL_H

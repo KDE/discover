@@ -37,13 +37,10 @@
 #include <Solid/Device>
 #include <Solid/AcAdapter>
 
-// LibQApt includes
-#include <LibQApt/Backend>
-#include <LibQApt/Transaction>
-
 // Own includes
 #include <MuonBackendsFactory.h>
 #include <resources/AbstractResourcesBackend.h>
+#include <resources/AbstractBackendUpdater.h>
 #include "../libmuonapt/HistoryView/HistoryView.h"
 #include "../libmuonapt/MuonStrings.h"
 #include "../libmuonapt/QAptActions.h"
@@ -58,11 +55,16 @@ MainWindow::MainWindow()
     , m_historyDialog(nullptr)
     , m_checkerProcess(nullptr)
 {
+    //FIXME: load all backends!
     MuonBackendsFactory f;
     m_apps = f.backend("muon-appsbackend");
+    m_updater = m_apps->backendUpdater();
     connect(m_apps, SIGNAL(backendReady()), SLOT(initBackend()));
 
     initGUI();
+    
+    connect(m_updater, SIGNAL(progressChanged(qreal)), SLOT(progress(qreal)));
+    connect(m_updater, SIGNAL(updatesFinnished()), SLOT(updatesFinished()));
 }
 
 void MainWindow::initGUI()
@@ -147,41 +149,20 @@ void MainWindow::initBackend()
     setActionsEnabled();
 }
 
-void MainWindow::transactionStatusChanged(QApt::TransactionStatus status)
+void MainWindow::progress(qreal p)
 {
-    // FIXME: better support for transactions that do/don't need reloads
-    switch (status) {
-    case QApt::RunningStatus:
-    case QApt::WaitingStatus:
+    if(p!=0 && p!=1) {
         QApplication::restoreOverrideCursor();
         m_progressWidget->show();
-        break;
-    case QApt::FinishedStatus:
-        m_progressWidget->animatedHide();
-        m_updaterWidget->setEnabled(true);
-        m_updaterWidget->setCurrentIndex(0);
-        reload();
-        setActionsEnabled();
-
-        m_trans->deleteLater();
-        m_trans = nullptr;
-        break;
-    default:
-        break;
     }
 }
 
-void MainWindow::errorOccurred(QApt::ErrorCode error)
+void MainWindow::updatesFinished()
 {
-    switch (error) {
-    case QApt::LockError:
-    case QApt::AuthError:
-        m_updaterWidget->setEnabled(true);
-        setActionsEnabled();
-        QApplication::restoreOverrideCursor();
-    default:
-        break;
-    }
+    m_progressWidget->animatedHide();
+    m_updaterWidget->setEnabled(true);
+    m_updaterWidget->setCurrentIndex(0);
+    setActionsEnabled();
 }
 
 void MainWindow::reload()
@@ -212,7 +193,7 @@ void MainWindow::setActionsEnabled(bool enabled)
         return;
     }
 
-    m_applyAction->setEnabled(backend()->areChangesMarked());
+    m_applyAction->setEnabled(m_updater->hasUpdates());
     m_updaterWidget->setEnabled(true);
 }
 
@@ -224,9 +205,7 @@ void MainWindow::checkForUpdates()
     m_changelogWidget->animatedHide();
     m_changelogWidget->stopPendingJobs();
 
-    m_trans = backend()->updateCache();
-    setupTransaction(m_trans);
-    m_trans->run();
+    reload();
 }
 
 void MainWindow::startCommit()
@@ -237,26 +216,7 @@ void MainWindow::startCommit()
     m_changelogWidget->animatedHide();
     m_changelogWidget->stopPendingJobs();
 
-    m_trans = backend()->commitChanges();
-    setupTransaction(m_trans);
-    m_trans->run();
-}
-
-void MainWindow::setupTransaction(QApt::Transaction *trans)
-{
-    // Provide proxy/locale to the transaction
-    if (KProtocolManager::proxyType() == KProtocolManager::ManualProxy) {
-        trans->setProxy(KProtocolManager::proxyFor("http"));
-    }
-
-    trans->setLocale(QLatin1String(setlocale(LC_MESSAGES, 0)));
-
-    m_progressWidget->setTransaction(m_trans);
-
-    connect(m_trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
-            this, SLOT(transactionStatusChanged(QApt::TransactionStatus)));
-    connect(m_trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
-            this, SLOT(errorOccurred(QApt::ErrorCode)));
+    m_updater->start();
 }
 
 void MainWindow::editSettings()
@@ -356,9 +316,4 @@ void MainWindow::launchDistUpgrade()
 {
     KProcess::startDetached(QStringList() << "python"
                             << "/usr/share/pyshared/UpdateManager/DistUpgradeFetcherKDE.py");
-}
-
-QApt::Backend* MainWindow::backend() const
-{
-    return qobject_cast<QApt::Backend*>(m_apps->property("backend").value<QObject*>());
 }

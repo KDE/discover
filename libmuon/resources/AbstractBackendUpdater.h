@@ -31,7 +31,11 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
     Q_PROPERTY(qreal progress READ progress NOTIFY progressChanged)
     public:
         explicit AbstractBackendUpdater(QObject* parent = 0);
+        
+        virtual void prepare() = 0;
         virtual void start() = 0;
+        virtual void cleanup() = 0;
+        
         virtual bool hasUpdates() const = 0;
         virtual qreal progress() const = 0;
         
