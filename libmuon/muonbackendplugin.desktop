@@ -28,6 +28,7 @@ Name[sv]=Muon-gränssnitt
 Name[uk]=Модуль Muon
 Name[x-test]=xxMuon Backendxx
 Name[zh_CN]=Muon 后端
+Name[zh_TW]=Muon 後端介面
 
 [PropertyDef::X-Muon-Arguments]
 Type=QStringList
