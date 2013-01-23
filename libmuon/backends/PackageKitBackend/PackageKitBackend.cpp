@@ -22,19 +22,30 @@
 #include "PackageKitResource.h"
 #include <resources/AbstractResource.h>
 #include <QStringList>
+#include <QDebug>
 #include <PackageKit/packagekit-qt2/Transaction>
 
-PackageKitBackend::PackageKitBackend(QObject* parent): AbstractResourcesBackend(parent)
+#include <KPluginFactory>
+#include <KLocalizedString>
+#include <KAboutData>
+
+K_PLUGIN_FACTORY(MuonPackageKitBackendFactory, registerPlugin<PackageKitBackend>(); )
+K_EXPORT_PLUGIN(MuonPackageKitBackendFactory(KAboutData("muon-pkbackend","muon-pkbackend",ki18n("PackageKit Backend"),"0.1",ki18n("Install PackageKit data in your system"), KAboutData::License_GPL)))
+
+PackageKitBackend::PackageKitBackend(QObject* parent, const QVariantList& args)
+	: AbstractResourcesBackend(parent)
 {
-    refreshCache();
+    populateCache();
+    emit backendReady();
 }
 
-void PackageKitBackend::refreshCache()
+void PackageKitBackend::populateCache()
 {
+    emit reloadStarted();
     PackageKit::Transaction* t = new PackageKit::Transaction(this);
-    t->refreshCache(false);
-    connect(t, SIGNAL(package(PackageKit::Package)),
-               SLOT(addPackage(PackageKit::Package)));
+    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SIGNAL(reloadFinished()));
+    connect(t, SIGNAL(package(PackageKit::Package)), SLOT(addPackage(PackageKit::Package)));
+    t->getPackages();
 }
 
 void PackageKitBackend::addPackage(const PackageKit::Package& p)

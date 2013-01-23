@@ -23,12 +23,14 @@
 
 #include <resources/AbstractResourcesBackend.h>
 #include <PackageKit/packagekit-qt2/package.h>
+#include <QVariantList>
 
 class PackageKitBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
+    Q_INTERFACES(AbstractResourcesBackend)
     public:
-        explicit PackageKitBackend(QObject* parent = 0);
+        explicit PackageKitBackend(QObject* parent, const QVariantList& args);
         
         virtual AbstractBackendUpdater* backendUpdater() const;
         virtual AbstractReviewsBackend* reviewsBackend() const;
@@ -49,7 +51,7 @@ class PackageKitBackend : public AbstractResourcesBackend
         void addPackage(const PackageKit::Package& p);
 
     private:
-        void refreshCache();
+        void populateCache();
 
         QVector<AbstractResource*> m_packages;
 };
