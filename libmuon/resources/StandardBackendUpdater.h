@@ -22,6 +22,7 @@
 
 #include "libmuonprivate_export.h"
 #include <resources/AbstractBackendUpdater.h>
+#include <QSet>
 
 class AbstractResourcesBackend;
 
@@ -35,9 +36,19 @@ class MUONPRIVATE_EXPORT StandardBackendUpdater : public AbstractBackendUpdater
         virtual qreal progress() const;
         virtual void start();
         virtual long unsigned int remainingTime() const;
+        
+        virtual QList< AbstractResource* > toUpdate() const;
+        virtual void addResources(QList< AbstractResource* > apps);
+        virtual void removeResources(QList< AbstractResource* > apps);
+        virtual void prepare();
+        virtual void cleanup();
+        virtual bool isAllMarked() const;
+        virtual QDateTime lastUpdate() const;
 
     private:
+        QSet<AbstractResource*> m_toUpgrade;
         AbstractResourcesBackend* m_backend;
+        int m_preparedSize;
 };
 
 #endif // STANDARDBACKENDUPDATER_H

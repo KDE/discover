@@ -85,3 +85,8 @@ QString AbstractResource::status()
     }
     return QString();
 }
+
+bool AbstractResource::isSecure() const
+{
+    return false;
+}

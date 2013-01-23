@@ -55,6 +55,8 @@ public:
     virtual QString origin() const;
     virtual QString section();
     virtual void fetchScreenshots();
+    virtual int downloadSize();
+    virtual void fetchChangelog();
 
     Attica::Content& content();
     void setEntry(const KNS3::Entry& entry);

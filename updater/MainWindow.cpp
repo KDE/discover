@@ -95,8 +95,8 @@ void MainWindow::initGUI()
 
     m_changelogWidget = new ChangelogWidget(this);
     m_changelogWidget->hide();
-    connect(m_updaterWidget, SIGNAL(selectedPackageChanged(QApt::Package*)),
-            m_changelogWidget, SLOT(setPackage(QApt::Package*)));
+    connect(m_updaterWidget, SIGNAL(selectedResourceChanged(AbstractResource*)),
+            m_changelogWidget, SLOT(setResource(AbstractResource*)));
 
     mainLayout->addWidget(m_powerMessage);
     mainLayout->addWidget(m_distUpgradeMessage);
@@ -168,17 +168,16 @@ void MainWindow::updatesFinished()
 void MainWindow::reload()
 {
     setCanExit(false);
-    m_changelogWidget->stopPendingJobs();
 
-    disconnect(m_updaterWidget, SIGNAL(selectedPackageChanged(QApt::Package*)),
-               m_changelogWidget, SLOT(setPackage(QApt::Package*)));
+    disconnect(m_updaterWidget, SIGNAL(selectedResourceChanged(AbstractResource*)),
+               m_changelogWidget, SLOT(setResource(AbstractResource*)));
 
     m_updaterWidget->reload();
 
-    connect(m_updaterWidget, SIGNAL(selectedPackageChanged(QApt::Package*)),
-            m_changelogWidget, SLOT(setPackage(QApt::Package*)));
+    connect(m_updaterWidget, SIGNAL(selectedResourceChanged(AbstractResource*)),
+            m_changelogWidget, SLOT(setResource(AbstractResource*)));
 
-    m_changelogWidget->setPackage(0);
+    m_changelogWidget->setResource(0);
     QApplication::restoreOverrideCursor();
 
     checkPlugState();
@@ -203,7 +202,6 @@ void MainWindow::checkForUpdates()
     m_updaterWidget->setEnabled(false);
     QApplication::setOverrideCursor(Qt::WaitCursor);
     m_changelogWidget->animatedHide();
-    m_changelogWidget->stopPendingJobs();
 
     reload();
 }
@@ -214,7 +212,6 @@ void MainWindow::startCommit()
     m_updaterWidget->setEnabled(false);
     QApplication::setOverrideCursor(Qt::WaitCursor);
     m_changelogWidget->animatedHide();
-    m_changelogWidget->stopPendingJobs();
 
     m_updater->start();
 }

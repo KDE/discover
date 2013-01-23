@@ -39,12 +39,10 @@
 #include <KDebug>
 #include <KMessageWidget>
 
-// LibQApt includes
-#include <LibQApt/Backend>
-
 // Libmuon includes
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/AbstractResource.h>
+#include <resources/AbstractBackendUpdater.h>
 
 //libmuonapt includes
 #include "../libmuonapt/ChangesDialog.h"
@@ -135,8 +133,6 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
 void UpdaterWidget::setBackend(AbstractResourcesBackend *backend)
 {
     m_appsBackend = backend;
-    m_backend = qobject_cast<QApt::Backend*>(backend->property("backend").value<QObject*>());
-    connect(m_backend, SIGNAL(packageChanged()), m_updateModel, SLOT(packageChanged()));
 
     populateUpdateModel();
 }
@@ -158,77 +154,15 @@ void UpdaterWidget::populateUpdateModel()
         checkUpToDate();
         return;
     }
-
-    UpdateItem *securityItem = new UpdateItem(i18nc("@item:inlistbox", "Important Security Updates"),
-                                              KIcon("security-medium"));
-
-    UpdateItem *appItem = new UpdateItem(i18nc("@item:inlistbox", "Application Updates"),
-                                          KIcon("applications-other"));
-
-    UpdateItem *systemItem = new UpdateItem(i18nc("@item:inlistbox", "System Updates"),
-                                             KIcon("applications-system"));
-    
-    QList<AbstractResource*> resources = m_appsBackend->upgradeablePackages();
-    foreach(AbstractResource* res, resources) {
-        UpdateItem *updateItem = new UpdateItem(res);
-        QApt::Package* package = retrievePackage(res);
-
-        if (!package) {
-            kDebug() << "No package:" << res->name();
-            continue;
-        }
-        
-        bool securityFound = false;
-        for (const QString &archive : package->archives()) {
-            if (archive.contains(QLatin1String("security"))) {
-                securityFound = true;
-                break;
-            }
-        }
-        
-        if(!res->isTechnical()) {
-            if (securityFound) {
-                securityItem->appendChild(updateItem);
-            } else {
-                appItem->appendChild(updateItem);
-            }
-        } else {
-            if (securityFound) {
-                securityItem->appendChild(updateItem);
-            } else {
-                systemItem->appendChild(updateItem);
-            }
-        }
-    }
-
-    // Add populated items to the model
-    if (securityItem->childCount()) {
-        securityItem->sort();
-        m_updateModel->addItem(securityItem);
-    } else {
-        delete securityItem;
-    }
-
-    if (appItem->childCount()) {
-        appItem->sort();
-        m_updateModel->addItem(appItem);
-    } else {
-        delete appItem;
-    }
-
-    if (systemItem->childCount()) {
-        systemItem->sort();
-        m_updateModel->addItem(systemItem);
-    } else {
-        delete systemItem;
-    }
+    AbstractBackendUpdater* updater = m_appsBackend->backendUpdater();
+    updater->prepare();
+    m_updateModel->addResources(updater->toUpdate());
 
     m_updateView->expand(m_updateModel->index(0,0)); // Expand apps category
     m_updateView->resizeColumnToContents(0);
     m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
     m_busyWidget->stop();
     QApplication::restoreOverrideCursor();
-    m_backend->markPackagesForUpgrade();
 
     checkAllMarked();
     checkUpToDate();
@@ -239,11 +173,10 @@ void UpdaterWidget::checkApps(const QList<AbstractResource*>& apps, bool checked
     if (apps.size() > 1) {
         QApplication::setOverrideCursor(Qt::WaitCursor);
     }
-
-    m_oldCacheState = m_backend->currentCacheState();
-    m_backend->saveCacheState();
-    m_backend->markPackages(list, action);
-
+    if(checked)
+        m_appsBackend->backendUpdater()->addResources(apps);
+    else
+        m_appsBackend->backendUpdater()->removeResources(apps);
     QApplication::restoreOverrideCursor();
 }
 
@@ -253,34 +186,23 @@ void UpdaterWidget::selectionChanged(const QItemSelection &selected,
     Q_UNUSED(deselected);
 
     QModelIndexList indexes = selected.indexes();
-    QApt::Package *package = 0;
+    AbstractResource *res = 0;
 
     if (!indexes.isEmpty()) {
-        package = retrievePackage(m_updateModel->itemFromIndex(indexes.first())->app());
+        res = m_updateModel->itemFromIndex(indexes.first())->app();
     }
 
-    emit selectedPackageChanged(package);
+    emit selectedResourceChanged(res);
 }
 
 void UpdaterWidget::checkAllMarked()
 {
-    QApt::PackageList upgradeable = m_backend->upgradeablePackages();
-    int markedCount = m_backend->packageCount(QApt::Package::ToUpgrade);
-
-    m_upgradesWidget->setVisible(markedCount < upgradeable.count());
+    m_upgradesWidget->setVisible(m_appsBackend->backendUpdater()->isAllMarked());
 }
 
 void UpdaterWidget::markAllPackagesForUpgrade()
 {
-    QApt::PackageList upgradeable = m_backend->upgradeablePackages();
-
-    // Mark dist upgrade
-    m_oldCacheState = m_backend->currentCacheState();
-    m_backend->saveCacheState();
-    m_backend->markPackagesForDistUpgrade();
-
-    checkChanges(m_backend->stateChanges(m_oldCacheState, upgradeable));
-
+    m_appsBackend->backendUpdater()->prepare();
     m_upgradesWidget->hide();
 }
 
@@ -288,7 +210,7 @@ void UpdaterWidget::checkUpToDate()
 {
     if(m_appsBackend->upgradeablePackages().isEmpty()) {
         setCurrentIndex(1);
-        QDateTime lastUpdate = m_backend->timeCacheLastUpdated();
+        QDateTime lastUpdate = m_appsBackend->backendUpdater()->lastUpdate();
 
         // Unknown time since last update
         if (!lastUpdate.isValid()) {
@@ -323,7 +245,3 @@ void UpdaterWidget::checkUpToDate()
     }
 }
 
-QApt::Package* UpdaterWidget::retrievePackage(AbstractResource* res)
-{
-    return res ? m_backend->package(res->packageName()) : 0;
-}

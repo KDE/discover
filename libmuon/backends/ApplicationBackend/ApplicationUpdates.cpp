@@ -65,27 +65,67 @@ void ApplicationUpdates::setBackend(QApt::Backend* backend)
     m_aptBackend = backend;
 }
 
+QList<AbstractResource*> ApplicationUpdates::toUpdate() const
+{
+    QList<AbstractResource*> ret;
+    auto changes = m_aptBackend->stateChanges(m_updatesCache, QApt::PackageList());
+    for(auto pkgList : changes.values()) {
+        for(auto it : pkgList)
+            ret += m_appBackend->resourceByPackageName(it->name());
+    }
+    return ret;
+}
+
+void ApplicationUpdates::prepare()
+{
+    m_updatesCache = m_aptBackend->currentCacheState();
+
+    m_aptBackend->markPackagesForDistUpgrade();
+}
+
 void ApplicationUpdates::start()
 {
-    m_aptBackend->saveCacheState();
-
-    // Take the current cache state to compare for changes later
-    QApt::CacheState cache = m_aptBackend->currentCacheState();
-    m_aptBackend->markPackagesForDistUpgrade();
-    auto changes = m_aptBackend->stateChanges(cache, QApt::PackageList());
+    auto changes = m_aptBackend->stateChanges(m_updatesCache, QApt::PackageList());
     changes.remove(QApt::Package::ToUpgrade);
-
+    
     // Confirm additional changes beyond upgrading the files
     if(!changes.isEmpty()) {
         ChangesDialog d(m_appBackend->mainWindow(), changes);
         if(d.exec()==QDialog::Rejected) {
-            emit updatesFinnished();
+            cleanup();
             return;
         }
     }
 
     // Create and run the transaction
     setupTransaction(m_aptBackend->commitChanges());
+}
+
+void ApplicationUpdates::cleanup()
+{
+    emit updatesFinnished();
+}
+
+void ApplicationUpdates::addResources(QList< AbstractResource* > apps)
+{
+    QList<QApt::Package*> packages;
+    foreach(AbstractResource* res, apps) {
+        Application* app = qobject_cast<Application*>(res);
+        Q_ASSERT(app);
+        packages += app->package();
+    }
+    m_aptBackend->markPackages(packages, QApt::Package::ToUpgrade);
+}
+
+void ApplicationUpdates::removeResources(QList< AbstractResource* > apps)
+{
+    QList<QApt::Package*> packages;
+    foreach(AbstractResource* res, apps) {
+        Application* app = qobject_cast<Application*>(res);
+        Q_ASSERT(app);
+        packages += app->package();
+    }
+    m_aptBackend->markPackages(packages, QApt::Package::ToUpgrade);
 }
 
 void ApplicationUpdates::progressChanged(int progress)
@@ -120,27 +160,39 @@ void ApplicationUpdates::transactionStatusChanged(QApt::TransactionStatus status
 
 void ApplicationUpdates::errorOccurred(QApt::ErrorCode error)
 {
-    emit errorSignal(error, m_trans->errorDetails());
+    QApt::Transaction* trans = qobject_cast<QApt::Transaction*>(sender());
+    emit errorSignal(error, trans->errorDetails());
 }
 
 void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
 {
-    Q_ASSERT(!m_trans);
     // Provide proxy/locale to the transaction
     if (KProtocolManager::proxyType() == KProtocolManager::ManualProxy) {
         trans->setProxy(KProtocolManager::proxyFor("http"));
     }
 
     trans->setLocale(QLatin1String(setlocale(LC_MESSAGES, 0)));
-    m_trans = trans;
+    trans = trans;
 
-    connect(m_trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
+    connect(trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
             this, SLOT(transactionStatusChanged(QApt::TransactionStatus)));
-    connect(m_trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
+    connect(trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
             this, SLOT(errorOccurred(QApt::ErrorCode)));
-    connect(m_trans, SIGNAL(progressChanged(int)),
+    connect(trans, SIGNAL(progressChanged(int)),
             this, SLOT(progressChanged(int)));
-    connect(m_trans, SIGNAL(statusDetailsChanged(QString)),
+    connect(trans, SIGNAL(statusDetailsChanged(QString)),
             this, SLOT(installMessage(QString)));
-    m_trans->run();
+    trans->run();
+}
+
+bool ApplicationUpdates::isAllMarked() const
+{
+    QApt::PackageList upgradeable = m_aptBackend->upgradeablePackages();
+    int markedCount = m_aptBackend->packageCount(QApt::Package::ToUpgrade);
+    return markedCount < upgradeable.count();
+}
+
+QDateTime ApplicationUpdates::lastUpdate() const
+{
+    return m_aptBackend->timeCacheLastUpdated();
 }

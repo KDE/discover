@@ -23,10 +23,6 @@
 
 #include <QtGui/QStackedWidget>
 
-// LibQApt includes
-#include <LibQApt/Globals>
-#include <LibQApt/Package>
-
 class KMessageWidget;
 class AbstractResource;
 class AbstractResourcesBackend;
@@ -36,11 +32,6 @@ class QStandardItemModel;
 class QTreeView;
 
 class KPixmapSequenceOverlayPainter;
-
-namespace QApt {
-    class Backend;
-}
-
 class UpdateModel;
 
 class UpdaterWidget : public QStackedWidget
@@ -50,10 +41,6 @@ public:
     explicit UpdaterWidget(QWidget *parent = 0);
 
 private:
-    QApt::Package* retrievePackage(AbstractResource* res);
-
-    QApt::Backend *m_backend;
-    QApt::CacheState m_oldCacheState;
     UpdateModel *m_updateModel;
 
     QTreeView *m_updateView;
@@ -70,16 +57,15 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void populateUpdateModel();
-    void checkApps(const QList< AbstractResource* >& apps, bool checked);
-    void checkChanges(const QHash<QApt::Package::State, QApt::PackageList> &removals);
     void selectionChanged(const QItemSelection &selected,
                           const QItemSelection &deselected);
     void checkAllMarked();
     void checkUpToDate();
     void markAllPackagesForUpgrade();
+    void checkApps(const QList<AbstractResource*>& apps, bool checked);
 
 signals:
-    void selectedPackageChanged(QApt::Package *Package);
+    void selectedResourceChanged(AbstractResource* res);
 };
 
 #endif // UPDATERWIDGET_H

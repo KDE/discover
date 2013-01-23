@@ -133,9 +133,14 @@ QString KNSResource::license()
     return m_content.licenseName();
 }
 
+int KNSResource::downloadSize()
+{
+    return m_content.downloadUrlDescription(0).size();
+}
+
 QString KNSResource::sizeDescription()
 {
-    return KGlobal::locale()->formatByteSize(m_content.downloadUrlDescription(0).size());
+    return KGlobal::locale()->formatByteSize(downloadSize());
 }
 
 QString KNSResource::installedVersion() const
@@ -170,4 +175,9 @@ void KNSResource::fetchScreenshots()
         }
     }
     emit screenshotsFetched(thumbnails, screenshots);
+}
+
+void KNSResource::fetchChangelog()
+{
+    emit changelogFetched(m_content.changelog());
 }

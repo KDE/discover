@@ -49,13 +49,20 @@ public:
     void start();
     void setBackend(QApt::Backend* b);
     long unsigned int remainingTime() const;
+    virtual void addResources(QList< AbstractResource* > apps);
+    virtual void removeResources(QList< AbstractResource* > apps);
+    virtual void cleanup();
+    virtual void prepare();
+    virtual QList<AbstractResource*> toUpdate() const;
+    virtual bool isAllMarked() const;
+    virtual QDateTime lastUpdate() const;
 
 private:
     QApt::Backend* m_aptBackend;
-    QPointer<QApt::Transaction> m_trans;
     ApplicationBackend* m_appBackend;
     int m_lastRealProgress;
     long unsigned int m_eta;
+    QApt::CacheState m_updatesCache;
 
 private slots:
     void transactionStatusChanged(QApt::TransactionStatus status);

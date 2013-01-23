@@ -24,7 +24,9 @@
 #include <QObject>
 #include "libmuonprivate_export.h"
 
+class QDateTime;
 class QIcon;
+class AbstractResource;
 class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
 {
     Q_OBJECT
@@ -41,6 +43,12 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
         
         /** proposed ETA in milliseconds */
         virtual long unsigned int remainingTime() const = 0;
+        
+        virtual void removeResources(QList<AbstractResource*> apps) = 0;
+        virtual void addResources(QList<AbstractResource*> apps) = 0;
+        virtual QList<AbstractResource*> toUpdate() const = 0;
+        virtual bool isAllMarked() const = 0;
+        virtual QDateTime lastUpdate() const = 0;
 
     signals:
         void progressChanged(qreal progress);
@@ -50,3 +58,4 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
 };
 
 #endif // ABSTRACTBACKENDUPDATER_H
+

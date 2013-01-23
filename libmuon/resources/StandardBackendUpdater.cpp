@@ -20,6 +20,7 @@
 #include <resources/StandardBackendUpdater.h>
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/AbstractResource.h>
+#include <QDateTime>
 
 StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend* parent)
     : AbstractBackendUpdater(parent)
@@ -33,8 +34,7 @@ bool StandardBackendUpdater::hasUpdates() const
 
 void StandardBackendUpdater::start()
 {
-    QList< AbstractResource* > resources = m_backend->upgradeablePackages();
-    foreach(AbstractResource* res, resources) {
+    foreach(AbstractResource* res, m_toUpgrade) {
         m_backend->installApplication(res);
     }
     //TODO: do that when all resources have been notified as installed by the backend
@@ -49,4 +49,40 @@ qreal StandardBackendUpdater::progress() const
 long unsigned int StandardBackendUpdater::remainingTime() const
 {
     return 0;
+}
+
+void StandardBackendUpdater::prepare()
+{
+    m_toUpgrade = m_backend->upgradeablePackages().toSet();
+}
+
+void StandardBackendUpdater::addResources(QList<AbstractResource*> apps)
+{
+    m_toUpgrade += apps.toSet();
+}
+
+void StandardBackendUpdater::removeResources(QList< AbstractResource* > apps)
+{
+    m_toUpgrade -= apps.toSet();
+}
+
+void StandardBackendUpdater::cleanup()
+{
+    m_toUpgrade.clear();
+}
+
+QList<AbstractResource*> StandardBackendUpdater::toUpdate() const
+{
+    return m_toUpgrade.toList();
+}
+
+bool StandardBackendUpdater::isAllMarked() const
+{
+    //Maybe we should make this smarter...
+    return m_preparedSize<=m_toUpgrade.size();
+}
+
+QDateTime StandardBackendUpdater::lastUpdate() const
+{
+    return QDateTime();
 }
