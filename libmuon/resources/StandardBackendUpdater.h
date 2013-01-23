@@ -17,18 +17,19 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef KNSUPDATER_H
-#define KNSUPDATER_H
+#ifndef STANDARDBACKENDUPDATER_H
+#define STANDARDBACKENDUPDATER_H
 
+#include "libmuonprivate_export.h"
 #include <resources/AbstractBackendUpdater.h>
 
-class KNSBackend;
+class AbstractResourcesBackend;
 
-class KNSUpdater : public AbstractBackendUpdater
+class MUONPRIVATE_EXPORT StandardBackendUpdater : public AbstractBackendUpdater
 {
     Q_OBJECT
     public:
-        explicit KNSUpdater(KNSBackend* parent = 0);
+        explicit StandardBackendUpdater(AbstractResourcesBackend* parent = 0);
 
         virtual bool hasUpdates() const;
         virtual qreal progress() const;
@@ -36,8 +37,8 @@ class KNSUpdater : public AbstractBackendUpdater
         virtual long unsigned int remainingTime() const;
 
     private:
-        KNSBackend* m_backend;
+        AbstractResourcesBackend* m_backend;
 };
 
-#endif // KNSUPDATER_H
+#endif // STANDARDBACKENDUPDATER_H
 

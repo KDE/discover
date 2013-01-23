@@ -17,35 +17,36 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include "KNSUpdater.h"
-#include "KNSBackend.h"
+#include <resources/StandardBackendUpdater.h>
+#include <resources/AbstractResourcesBackend.h>
 #include <resources/AbstractResource.h>
 
-KNSUpdater::KNSUpdater(KNSBackend* parent)
+StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend* parent)
     : AbstractBackendUpdater(parent)
     , m_backend(parent)
 {}
 
-bool KNSUpdater::hasUpdates() const
+bool StandardBackendUpdater::hasUpdates() const
 {
     return m_backend->updatesCount() > 0;
 }
 
-void KNSUpdater::start()
+void StandardBackendUpdater::start()
 {
     QList< AbstractResource* > resources = m_backend->upgradeablePackages();
     foreach(AbstractResource* res, resources) {
         m_backend->installApplication(res);
     }
+    //TODO: do that when all resources have been notified as installed by the backend
     emit updatesFinnished();
 }
 
-qreal KNSUpdater::progress() const
+qreal StandardBackendUpdater::progress() const
 {
     return hasUpdates() ? 0 : 1;
 }
 
-long unsigned int KNSUpdater::remainingTime() const
+long unsigned int StandardBackendUpdater::remainingTime() const
 {
     return 0;
 }
