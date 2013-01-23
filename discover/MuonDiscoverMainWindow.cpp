@@ -133,7 +133,8 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
 void MuonDiscoverMainWindow::initialize()
 {
     MuonBackendsFactory factory;
-    QList<AbstractResourcesBackend*> backends = factory.allBackends();
+    QList<AbstractResourcesBackend*> backends/* = factory.allBackends()*/;
+	backends += factory.backend("muon-pkbackend");
     
     ResourcesModel* m = ResourcesModel::global();
     foreach(AbstractResourcesBackend* b, backends) {
