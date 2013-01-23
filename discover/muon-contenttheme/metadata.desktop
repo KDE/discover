@@ -1,0 +1,19 @@
+[Desktop Entry]
+Name=Application dashboard
+Comment=Intended as Application dashboard default
+
+NoDisplay=true
+
+X-KDE-PluginInfo-Author=Aleix Pol Gonzalez
+X-KDE-PluginInfo-Email=aleixpol@kde.org
+X-KDE-PluginInfo-Name=muon-contenttheme
+X-KDE-PluginInfo-Version=0.1
+X-KDE-PluginInfo-Website=http://kde.org
+X-KDE-PluginInfo-Category=
+X-KDE-PluginInfo-Depends=
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-EnabledByDefault=true
+
+[Settings]
+UseNativeWidgetStyle=true
+FallbackTheme=appdashboard
