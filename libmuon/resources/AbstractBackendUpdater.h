@@ -31,8 +31,8 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(qreal progress READ progress NOTIFY progressChanged)
-    Q_PROPERTY(bool cancelable READ isCancelable NOTIFY cancelableChanged)
-    Q_PROPERTY(bool progressing READ isProgressing NOTIFY progressingChanged)
+    Q_PROPERTY(bool isCancelable READ isCancelable NOTIFY cancelableChanged)
+    Q_PROPERTY(bool isProgressing READ isProgressing NOTIFY progressingChanged)
     Q_PROPERTY(QString statusMessage READ statusMessage NOTIFY statusMessageChanged)
     Q_PROPERTY(QString statusDetail READ statusDetail NOTIFY statusDetailChanged)
     public:
