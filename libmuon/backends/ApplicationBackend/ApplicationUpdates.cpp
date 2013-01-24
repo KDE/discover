@@ -25,15 +25,16 @@
 
 // KDE includes
 #include <KProtocolManager>
-
-// LibQApt includes
-#include <LibQApt/Backend>
-#include <LibQApt/Transaction>
+#include <KMessageBox>
+#include <KXmlGuiWindow>
 
 // Own includes
 #include "Application.h"
 #include "ApplicationBackend.h"
 #include "ChangesDialog.h"
+#include <MuonStrings.h>
+#include <QAptActions.h>
+#include <LibQApt/Transaction>
 
 ApplicationUpdates::ApplicationUpdates(ApplicationBackend* parent)
     : AbstractBackendUpdater(parent)
@@ -70,8 +71,13 @@ QList<AbstractResource*> ApplicationUpdates::toUpdate() const
     QList<AbstractResource*> ret;
     auto changes = m_aptBackend->stateChanges(m_updatesCache, QApt::PackageList());
     for(auto pkgList : changes.values()) {
-        for(auto it : pkgList)
-            ret += m_appBackend->resourceByPackageName(it->name());
+        for(QApt::Package* it : pkgList) {
+            AbstractResource* res = m_appBackend->resourceByPackageName(it->name());
+            if(!res) //If we couldn't find it by its name, try with 
+                res = m_appBackend->resourceByPackageName(QString("%1:%2").arg(it->name()).arg(it->architecture()));
+            Q_ASSERT(res);
+            ret += res;
+        }
     }
     return ret;
 }
@@ -106,7 +112,7 @@ void ApplicationUpdates::cleanup()
     emit updatesFinnished();
 }
 
-void ApplicationUpdates::addResources(QList< AbstractResource* > apps)
+void ApplicationUpdates::addResources(const QList<AbstractResource*>& apps)
 {
     QList<QApt::Package*> packages;
     foreach(AbstractResource* res, apps) {
@@ -117,7 +123,7 @@ void ApplicationUpdates::addResources(QList< AbstractResource* > apps)
     m_aptBackend->markPackages(packages, QApt::Package::ToUpgrade);
 }
 
-void ApplicationUpdates::removeResources(QList< AbstractResource* > apps)
+void ApplicationUpdates::removeResources(const QList<AbstractResource*>& apps)
 {
     QList<QApt::Package*> packages;
     foreach(AbstractResource* res, apps) {
@@ -153,15 +159,13 @@ void ApplicationUpdates::installMessage(const QString& msg)
 void ApplicationUpdates::transactionStatusChanged(QApt::TransactionStatus status)
 {
     if (status == QApt::FinishedStatus) {
-        emit updatesFinnished();
         m_lastRealProgress = 0;
     }
 }
 
 void ApplicationUpdates::errorOccurred(QApt::ErrorCode error)
 {
-    QApt::Transaction* trans = qobject_cast<QApt::Transaction*>(sender());
-    emit errorSignal(error, trans->errorDetails());
+    QAptActions::self()->displayTransactionError(error, m_trans);
 }
 
 void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
@@ -172,17 +176,25 @@ void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
     }
 
     trans->setLocale(QLatin1String(setlocale(LC_MESSAGES, 0)));
-    trans = trans;
 
     connect(trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
-            this, SLOT(transactionStatusChanged(QApt::TransactionStatus)));
+            SLOT(transactionStatusChanged(QApt::TransactionStatus)));
     connect(trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
-            this, SLOT(errorOccurred(QApt::ErrorCode)));
-    connect(trans, SIGNAL(progressChanged(int)),
-            this, SLOT(progressChanged(int)));
-    connect(trans, SIGNAL(statusDetailsChanged(QString)),
-            this, SLOT(installMessage(QString)));
+            SLOT(errorOccurred(QApt::ErrorCode)));
+    connect(trans, SIGNAL(progressChanged(int)), SLOT(progressChanged(int)));
+    connect(trans, SIGNAL(statusDetailsChanged(QString)), SLOT(installMessage(QString)));
+    connect(trans, SIGNAL(cancellableChanged(bool)), SIGNAL(cancelableChanged(bool)));
+    connect(trans, SIGNAL(finished(QApt::ExitStatus)), SIGNAL(updatesFinnished()));
+    connect(trans, SIGNAL(finished(QApt::ExitStatus)), SLOT(deleteLater()));
+    connect(trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
+            this, SLOT(statusChanged(QApt::TransactionStatus)));
+    connect(trans, SIGNAL(mediumRequired(QString,QString)),
+            this, SLOT(provideMedium(QString,QString)));
+    connect(trans, SIGNAL(promptUntrusted(QStringList)),
+            this, SLOT(untrustedPrompt(QStringList)));
     trans->run();
+    
+    m_trans = trans;
 }
 
 bool ApplicationUpdates::isAllMarked() const
@@ -195,4 +207,179 @@ bool ApplicationUpdates::isAllMarked() const
 QDateTime ApplicationUpdates::lastUpdate() const
 {
     return m_aptBackend->timeCacheLastUpdated();
+}
+
+bool ApplicationUpdates::isCancelable() const
+{
+    return m_trans && m_trans->isCancellable();
+}
+
+bool ApplicationUpdates::isProgressing() const
+{
+    return m_progressing;
+}
+
+void ApplicationUpdates::provideMedium(const QString &label, const QString &medium)
+{
+    QString title = i18nc("@title:window", "Media Change Required");
+    QString text = i18nc("@label", "Please insert %1 into <filename>%2</filename>",
+                         label, medium);
+
+    KMessageBox::information(QAptActions::self()->mainWindow(), text, title);
+    m_trans->provideMedium(medium);
+}
+
+void ApplicationUpdates::untrustedPrompt(const QStringList &untrustedPackages)
+{
+    QString title = i18nc("@title:window", "Warning - Unverified Software");
+    QString text = i18ncp("@label",
+                          "The following piece of software cannot be verified. "
+                          "<warning>Installing unverified software represents a "
+                          "security risk, as the presence of unverifiable software "
+                          "can be a sign of tampering.</warning> Do you wish to continue?",
+                          "The following pieces of software cannot be verified. "
+                          "<warning>Installing unverified software represents a "
+                          "security risk, as the presence of unverifiable software "
+                          "can be a sign of tampering.</warning> Do you wish to continue?",
+                          untrustedPackages.size());
+    int result = KMessageBox::warningContinueCancelList(QAptActions::self()->mainWindow(), 
+                                                        text, untrustedPackages, title);
+
+    bool installUntrusted = (result == KMessageBox::Continue);
+    m_trans->replyUntrustedPrompt(installUntrusted);
+}
+
+void ApplicationUpdates::configFileConflict(const QString &currentPath, const QString &newPath)
+{
+    QString title = i18nc("@title:window", "Configuration File Changed");
+    QString text = i18nc("@label Notifies a config file change",
+                         "A new version of the configuration file "
+                         "<filename>%1</filename> is available, but your version has "
+                         "been modified. Would you like to keep your current version "
+                         "or install the new version?", currentPath);
+
+    KGuiItem useNew(i18nc("@action Use the new config file", "Use New Version"));
+    KGuiItem useOld(i18nc("@action Keep the old config file", "Keep Old Version"));
+
+    // TODO: diff current and new paths
+    Q_UNUSED(newPath)
+
+    int ret = KMessageBox::questionYesNo(QAptActions::self()->mainWindow(), text, title, useNew, useOld);
+
+    m_trans->resolveConfigFileConflict(currentPath, (ret == KMessageBox::Yes));
+}
+
+void ApplicationUpdates::statusChanged(QApt::TransactionStatus status)
+{
+    switch (status) {
+        case QApt::SetupStatus:
+            setStatusMessage(i18nc("@info Status info, widget title",
+                                        "<title>Starting</title>"));
+            setProgressing(false);
+            break;
+        case QApt::AuthenticationStatus:
+            setStatusMessage(i18nc("@info Status info, widget title",
+                                        "<title>Waiting for Authentication</title>"));
+            setProgressing(false);
+            break;
+        case QApt::WaitingStatus:
+            setStatusMessage(i18nc("@info Status information, widget title",
+                                        "<title>Waiting</title>"));
+            setStatusDetail(i18nc("@info Status info",
+                                        "Waiting for other transactions to finish"));
+            setProgressing(false);
+            break;
+        case QApt::WaitingLockStatus:
+            setStatusMessage(i18nc("@info Status information, widget title",
+                                        "<title>Waiting</title>"));
+            setStatusDetail(i18nc("@info Status info",
+                                        "Waiting for other software managers to quit"));
+            setProgressing(false);
+            break;
+        case QApt::WaitingMediumStatus:
+            setStatusMessage(i18nc("@info Status information, widget title",
+                                        "<title>Waiting</title>"));
+            setStatusDetail(i18nc("@info Status info",
+                                        "Waiting for required medium"));
+            setProgressing(false);
+            break;
+        case QApt::WaitingConfigFilePromptStatus:
+            setStatusMessage(i18nc("@info Status information, widget title",
+                                        "<title>Waiting</title>"));
+            setStatusDetail(i18nc("@info Status info",
+                                        "Waiting for configuration file"));
+            setProgressing(false);
+            break;
+        case QApt::RunningStatus:
+            setProgressing(true);
+            setStatusMessage(QString());
+            setStatusDetail(QString());
+            break;
+        case QApt::LoadingCacheStatus:
+            setStatusDetail(QString());
+            setStatusMessage(i18nc("@info Status info",
+                                        "<title>Loading Software List</title>"));
+            break;
+        case QApt::DownloadingStatus:
+            setProgressing(true);
+            switch (m_trans->role()) {
+                case QApt::UpdateCacheRole:
+                    setStatusMessage(i18nc("@info Status information, widget title",
+                                                "<title>Updating software sources</title>"));
+                    break;
+                case QApt::DownloadArchivesRole:
+                case QApt::CommitChangesRole:
+                    setStatusMessage(i18nc("@info Status information, widget title",
+                                                "<title>Downloading Packages</title>"));
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case QApt::CommittingStatus:
+            setProgressing(true);
+            setStatusMessage(i18nc("@info Status information, widget title",
+                                        "<title>Applying Changes</title>"));
+            setStatusDetail(QString());
+            break;
+        case QApt::FinishedStatus:
+            setStatusMessage(i18nc("@info Status information, widget title",
+                                        "<title>Finished</title>"));
+            m_lastRealProgress = 0;
+            break;
+    }
+}
+
+void ApplicationUpdates::setProgressing(bool progressing)
+{
+    if(progressing!=m_progressing) {
+        m_progressing = progressing;
+        emit progressingChanged(progressing);
+    }
+}
+
+void ApplicationUpdates::setStatusDetail(const QString& msg)
+{
+    if(m_statusDetail!=msg) {
+        m_statusDetail = msg;
+        emit statusDetailChanged(msg);
+    }
+}
+
+void ApplicationUpdates::setStatusMessage(const QString& msg)
+{
+    if(m_statusMessage!=msg) {
+        m_statusMessage = msg;
+        emit statusMessageChanged(msg);
+    }
+}
+
+QString ApplicationUpdates::statusDetail() const
+{
+    return m_statusDetail;
+}
+
+QString ApplicationUpdates::statusMessage() const
+{
+    return m_statusMessage;
 }

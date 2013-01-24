@@ -270,7 +270,7 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error)
     if (m_transQueue.isEmpty()) // Shouldn't happen
         return;
 
-    emit errorSignal(error, m_transQueue.value(m_currentTransaction)->errorDetails());
+    QAptActions::self()->displayTransactionError(error, m_transQueue.value(m_currentTransaction));
 }
 
 void ApplicationBackend::updateProgress(int percentage)

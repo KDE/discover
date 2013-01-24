@@ -86,9 +86,11 @@ Application::Application(QApt::Package* package, QApt::Backend* backend)
 
 QString Application::name()
 {
-    QString name = untranslatedName();
+    QString name;
     if (!m_isTechnical)
         name = i18n(untranslatedName().toUtf8());
+    else
+        name = untranslatedName();
 
     if(m_package->isForeignArch())
         name = i18n("%1 (%2)", name, m_package->architecture());

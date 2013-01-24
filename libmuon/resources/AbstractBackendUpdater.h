@@ -31,6 +31,10 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(qreal progress READ progress NOTIFY progressChanged)
+    Q_PROPERTY(bool cancelable READ isCancelable NOTIFY cancelableChanged)
+    Q_PROPERTY(bool progressing READ isProgressing NOTIFY progressingChanged)
+    Q_PROPERTY(QString statusMessage READ statusMessage NOTIFY statusMessageChanged)
+    Q_PROPERTY(QString statusDetail READ statusDetail NOTIFY statusDetailChanged)
     public:
         explicit AbstractBackendUpdater(QObject* parent = 0);
         
@@ -44,17 +48,26 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
         /** proposed ETA in milliseconds */
         virtual long unsigned int remainingTime() const = 0;
         
-        virtual void removeResources(QList<AbstractResource*> apps) = 0;
-        virtual void addResources(QList<AbstractResource*> apps) = 0;
+        virtual void removeResources(const QList<AbstractResource*>& apps) = 0;
+        virtual void addResources(const QList<AbstractResource*>& apps) = 0;
         virtual QList<AbstractResource*> toUpdate() const = 0;
-        virtual bool isAllMarked() const = 0;
         virtual QDateTime lastUpdate() const = 0;
+        virtual bool isAllMarked() const = 0;
+        virtual bool isCancelable() const = 0;
+        virtual bool isProgressing() const = 0;
+        
+        virtual QString statusMessage() const = 0;
+        virtual QString statusDetail() const = 0;
 
     signals:
         void progressChanged(qreal progress);
         void message(const QIcon& icon, const QString& msg);
         void updatesFinnished();
         void remainingTimeChanged();
+        void cancelableChanged(bool cancelable);
+        void progressingChanged(bool progressing);
+        void statusDetailChanged(const QString& msg);
+        void statusMessageChanged(const QString& msg);
 };
 
 #endif // ABSTRACTBACKENDUPDATER_H

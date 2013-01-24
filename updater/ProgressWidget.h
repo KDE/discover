@@ -23,16 +23,11 @@
 
 #include <QtGui/QWidget>
 
-#include <LibQApt/Globals>
-
+class AbstractBackendUpdater;
 class QLabel;
 class QParallelAnimationGroup;
 class QPushButton;
 class QProgressBar;
-
-namespace QApt {
-    class Transaction;
-}
 
 class ProgressWidget : public QWidget
 {
@@ -40,11 +35,11 @@ class ProgressWidget : public QWidget
 public:
     ProgressWidget(QWidget *parent);
 
-    void setTransaction(QApt::Transaction *trans);
+    void setTransaction(AbstractBackendUpdater *trans);
 
 private:
-    QApt::Transaction *m_trans;
-    int m_lastRealProgress;
+    AbstractBackendUpdater *m_updater;
+    qreal m_lastRealProgress;
 
     QLabel *m_headerLabel;
     QProgressBar *m_progressBar;
@@ -59,14 +54,9 @@ public Q_SLOTS:
     void animatedHide();
 
 private Q_SLOTS:
-    void statusChanged(QApt::TransactionStatus status);
-    void transactionErrorOccurred(QApt::ErrorCode error);
-    void provideMedium(const QString &label, const QString &medium);
-    void untrustedPrompt(const QStringList &untrustedPackages);
-    void configFileConflict(const QString &currentPath, const QString &newPath);
-    void updateProgress(int progress);
+    void updateProgress(qreal progress);
     void downloadSpeedChanged(quint64 speed);
-    void etaChanged(quint64 ETA);
+    void etaChanged();
 };
 
 #endif // PROGRESSWIDGET_H

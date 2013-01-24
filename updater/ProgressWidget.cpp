@@ -35,14 +35,12 @@
 #include <KLocale>
 #include <KMessageBox>
 
-// LibQApt includes
-#include <LibQApt/Transaction>
-
 #include "../libmuonapt/MuonStrings.h"
+#include <resources/AbstractBackendUpdater.h>
 
 ProgressWidget::ProgressWidget(QWidget *parent)
     : QWidget(parent)
-    , m_trans(nullptr)
+    , m_updater(nullptr)
     , m_lastRealProgress(0)
     , m_show(false)
 {
@@ -90,195 +88,38 @@ ProgressWidget::ProgressWidget(QWidget *parent)
     m_expandWidget->addAnimation(anim2);
 }
 
-void ProgressWidget::setTransaction(QApt::Transaction *trans)
+void ProgressWidget::setTransaction(AbstractBackendUpdater* trans)
 {
-    m_trans = trans;
+    m_updater = trans;
 
     // Connect the transaction all up to our slots
-    connect(m_trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
-            this, SLOT(statusChanged(QApt::TransactionStatus)));
-    connect(m_trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
-            this, SLOT(transactionErrorOccurred(QApt::ErrorCode)));
-    connect(m_trans, SIGNAL(cancellableChanged(bool)),
-            m_cancelButton, SLOT(setVisible(bool)));
-    connect(m_trans, SIGNAL(mediumRequired(QString,QString)),
-            this, SLOT(provideMedium(QString,QString)));
-    connect(m_trans, SIGNAL(promptUntrusted(QStringList)),
-            this, SLOT(untrustedPrompt(QStringList)));
-    connect(m_trans, SIGNAL(progressChanged(int)),
+    connect(m_updater, SIGNAL(progressChanged(qreal)),
             this, SLOT(updateProgress(int)));
-    connect(m_trans, SIGNAL(downloadSpeedChanged(quint64)),
+    connect(m_updater, SIGNAL(downloadSpeedChanged(quint64)),
             this, SLOT(downloadSpeedChanged(quint64)));
-    connect(m_trans, SIGNAL(downloadETAChanged(quint64)),
-            this, SLOT(etaChanged(quint64)));
-    connect(m_trans, SIGNAL(configFileConflict(QString,QString)),
+    connect(m_updater, SIGNAL(remainingTimeChanged()), SLOT(etaChanged()));
+    connect(m_updater, SIGNAL(configFileConflict(QString,QString)),
             this, SLOT(configFileConflict(QString,QString)));
+    connect(m_updater, SIGNAL(cancelableChanged(bool)),
+            m_cancelButton, SLOT(setVisible(bool)));
+    connect(m_updater, SIGNAL(statusMessageChanged(QString)),
+            m_headerLabel, SLOT(setText(QString)));
+    connect(m_updater, SIGNAL(statusDetailChanged(QString)),
+            m_detailsLabel, SLOT(setText(QString)));
 
-    // Connect us to the transaction
-    connect(m_cancelButton, SIGNAL(clicked()), m_trans, SLOT(cancel()));
-    statusChanged(m_trans->status());
+    m_headerLabel->setText(m_updater->statusMessage());
+    m_detailsLabel->setText(m_updater->statusDetail());
+    
+    connect(m_cancelButton, SIGNAL(clicked()), m_updater, SLOT(cancel()));
 }
 
-void ProgressWidget::statusChanged(QApt::TransactionStatus status)
-{
-    switch (status) {
-    case QApt::SetupStatus:
-        m_headerLabel->setText(i18nc("@info Status info, widget title",
-                                     "<title>Starting</title>"));
-        m_progressBar->setMaximum(0);
-        break;
-    case QApt::AuthenticationStatus:
-        m_headerLabel->setText(i18nc("@info Status info, widget title",
-                                     "<title>Waiting for Authentication</title>"));
-        m_progressBar->setMaximum(0);
-        break;
-    case QApt::WaitingStatus:
-        m_headerLabel->setText(i18nc("@info Status information, widget title",
-                                     "<title>Waiting</title>"));
-        m_detailsLabel->setText(i18nc("@info Status info",
-                                     "Waiting for other transactions to finish"));
-        m_progressBar->setMaximum(0);
-        break;
-    case QApt::WaitingLockStatus:
-        m_headerLabel->setText(i18nc("@info Status information, widget title",
-                                     "<title>Waiting</title>"));
-        m_detailsLabel->setText(i18nc("@info Status info",
-                                      "Waiting for other software managers to quit"));
-        m_progressBar->setMaximum(0);
-        break;
-    case QApt::WaitingMediumStatus:
-        m_headerLabel->setText(i18nc("@info Status information, widget title",
-                                     "<title>Waiting</title>"));
-        m_detailsLabel->setText(i18nc("@info Status info",
-                                     "Waiting for required medium"));
-        m_progressBar->setMaximum(0);
-        break;
-    case QApt::WaitingConfigFilePromptStatus:
-        m_headerLabel->setText(i18nc("@info Status information, widget title",
-                                     "<title>Waiting</title>"));
-        m_detailsLabel->setText(i18nc("@info Status info",
-                                     "Waiting for configuration file"));
-        m_progressBar->setMaximum(0);
-        break;
-    case QApt::RunningStatus:
-        m_progressBar->setMaximum(100);
-        m_headerLabel->clear();
-        m_detailsLabel->clear();
-        break;
-    case QApt::LoadingCacheStatus:
-        m_detailsLabel->clear();
-        m_headerLabel->setText(i18nc("@info Status info",
-                                     "<title>Loading Software List</title>"));
-        break;
-    case QApt::DownloadingStatus:
-        m_progressBar->setMaximum(100);
-        switch (m_trans->role()) {
-        case QApt::UpdateCacheRole:
-            m_headerLabel->setText(i18nc("@info Status information, widget title",
-                                         "<title>Updating software sources</title>"));
-            break;
-        case QApt::DownloadArchivesRole:
-        case QApt::CommitChangesRole:
-            m_headerLabel->setText(i18nc("@info Status information, widget title",
-                                         "<title>Downloading Packages</title>"));
-            break;
-        default:
-            break;
-        }
-        break;
-    case QApt::CommittingStatus:
-        m_progressBar->setMaximum(100);
-        m_headerLabel->setText(i18nc("@info Status information, widget title",
-                                     "<title>Applying Changes</title>"));
-        m_detailsLabel->clear();
-        break;
-    case QApt::FinishedStatus:
-        m_headerLabel->setText(i18nc("@info Status information, widget title",
-                                     "<title>Finished</title>"));
-        m_lastRealProgress = 0;
-        break;
-    }
-}
-
-void ProgressWidget::transactionErrorOccurred(QApt::ErrorCode error)
-{
-    if (error == QApt::Success)
-        return;
-
-    MuonStrings *muonStrings = MuonStrings::global();
-
-    QString title = muonStrings->errorTitle(error);
-    QString text = muonStrings->errorText(error, m_trans);
-
-    switch (error) {
-    case QApt::InitError:
-    case QApt::FetchError:
-    case QApt::CommitError:
-        KMessageBox::detailedError(this, text, m_trans->errorDetails(), title);
-        break;
-    default:
-        KMessageBox::error(this, text, title);
-        break;
-    }
-}
-
-void ProgressWidget::provideMedium(const QString &label, const QString &medium)
-{
-    QString title = i18nc("@title:window", "Media Change Required");
-    QString text = i18nc("@label", "Please insert %1 into <filename>%2</filename>",
-                         label, medium);
-
-    KMessageBox::information(this, text, title);
-    m_trans->provideMedium(medium);
-}
-
-void ProgressWidget::untrustedPrompt(const QStringList &untrustedPackages)
-{
-    QString title = i18nc("@title:window", "Warning - Unverified Software");
-    QString text = i18ncp("@label",
-                          "The following piece of software cannot be verified. "
-                          "<warning>Installing unverified software represents a "
-                          "security risk, as the presence of unverifiable software "
-                          "can be a sign of tampering.</warning> Do you wish to continue?",
-                          "The following pieces of software cannot be verified. "
-                          "<warning>Installing unverified software represents a "
-                          "security risk, as the presence of unverifiable software "
-                          "can be a sign of tampering.</warning> Do you wish to continue?",
-                          untrustedPackages.size());
-    int result = KMessageBox::warningContinueCancelList(this, text,
-                                                    untrustedPackages, title);
-
-    bool installUntrusted = (result == KMessageBox::Continue);
-    m_trans->replyUntrustedPrompt(installUntrusted);
-}
-
-void ProgressWidget::configFileConflict(const QString &currentPath, const QString &newPath)
-{
-    QString title = i18nc("@title:window", "Configuration File Changed");
-    QString text = i18nc("@label Notifies a config file change",
-                         "A new version of the configuration file "
-                         "<filename>%1</filename> is available, but your version has "
-                         "been modified. Would you like to keep your current version "
-                         "or install the new version?", currentPath);
-
-    KGuiItem useNew(i18nc("@action Use the new config file", "Use New Version"));
-    KGuiItem useOld(i18nc("@action Keep the old config file", "Keep Old Version"));
-
-    // TODO: diff current and new paths
-    Q_UNUSED(newPath)
-
-    int ret = KMessageBox::questionYesNo(this, text, title, useNew, useOld);
-
-    m_trans->resolveConfigFileConflict(currentPath, (ret == KMessageBox::Yes));
-}
-
-void ProgressWidget::updateProgress(int progress)
+void ProgressWidget::updateProgress(qreal progress)
 {
     if (progress > 100) {
         m_progressBar->setMaximum(0);
     } else if (progress > m_lastRealProgress) {
         m_progressBar->setMaximum(100);
-        m_progressBar->setValue(progress);
+        m_progressBar->setValue(progress*100);
         m_lastRealProgress = progress;
     }
 }
@@ -290,9 +131,9 @@ void ProgressWidget::downloadSpeedChanged(quint64 speed)
     m_detailsLabel->setText(downloadSpeed);
 }
 
-void ProgressWidget::etaChanged(quint64 ETA)
+void ProgressWidget::etaChanged()
 {
-    QString label = m_detailsLabel->text();
+    long unsigned int ETA = m_updater->remainingTime();
 
     QString timeRemaining;
     // Ignore ETA if it's larger than 2 days.
@@ -302,8 +143,7 @@ void ProgressWidget::etaChanged(quint64 ETA)
     }
 
     if (!timeRemaining.isEmpty()) {
-        label.append(QLatin1String(" - ") % timeRemaining);
-        m_detailsLabel->setText(label);
+        m_detailsLabel->setText(i18n("%1 - %2", m_detailsLabel->text(), timeRemaining));
     }
 }
 

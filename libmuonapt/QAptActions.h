@@ -47,6 +47,7 @@ public:
     void setOriginalState(QApt::CacheState state);
     void setReloadWhenEditorFinished(bool reload);
     void initError();
+    void displayTransactionError(QApt::ErrorCode error, QApt::Transaction* trans);
     
 signals:
     void checkForUpdates();

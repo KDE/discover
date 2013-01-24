@@ -37,13 +37,17 @@ class MUONPRIVATE_EXPORT StandardBackendUpdater : public AbstractBackendUpdater
         virtual void start();
         virtual long unsigned int remainingTime() const;
         
-        virtual QList< AbstractResource* > toUpdate() const;
-        virtual void addResources(QList< AbstractResource* > apps);
-        virtual void removeResources(QList< AbstractResource* > apps);
+        virtual QList<AbstractResource*> toUpdate() const;
+        virtual void addResources(const QList<AbstractResource*>& apps);
+        virtual void removeResources(const QList<AbstractResource*>& apps);
         virtual void prepare();
         virtual void cleanup();
         virtual bool isAllMarked() const;
         virtual QDateTime lastUpdate() const;
+        virtual bool isCancelable() const;
+        virtual bool isProgressing() const;
+        virtual QString statusDetail() const;
+        virtual QString statusMessage() const;
 
     private:
         QSet<AbstractResource*> m_toUpgrade;

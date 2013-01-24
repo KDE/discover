@@ -421,3 +421,25 @@ void QAptActions::initError()
     KMessageBox::detailedError(m_mainWindow, text, details, title);
     exit(-1);
 }
+
+void QAptActions::displayTransactionError(QApt::ErrorCode error, QApt::Transaction* trans)
+{
+    if (error == QApt::Success)
+        return;
+
+    MuonStrings *muonStrings = MuonStrings::global();
+
+    QString title = muonStrings->errorTitle(error);
+    QString text = muonStrings->errorText(error, trans);
+
+    switch (error) {
+        case QApt::InitError:
+        case QApt::FetchError:
+        case QApt::CommitError:
+            KMessageBox::detailedError(QAptActions::self()->mainWindow(), text, trans->errorDetails(), title);
+            break;
+        default:
+            KMessageBox::error(QAptActions::self()->mainWindow(), text, title);
+            break;
+    }
+}

@@ -43,7 +43,7 @@ void StandardBackendUpdater::start()
 
 qreal StandardBackendUpdater::progress() const
 {
-    return hasUpdates() ? 0 : 1;
+    return hasUpdates() ? 0 : 100;
 }
 
 long unsigned int StandardBackendUpdater::remainingTime() const
@@ -56,12 +56,12 @@ void StandardBackendUpdater::prepare()
     m_toUpgrade = m_backend->upgradeablePackages().toSet();
 }
 
-void StandardBackendUpdater::addResources(QList<AbstractResource*> apps)
+void StandardBackendUpdater::addResources(const QList< AbstractResource* >& apps)
 {
     m_toUpgrade += apps.toSet();
 }
 
-void StandardBackendUpdater::removeResources(QList< AbstractResource* > apps)
+void StandardBackendUpdater::removeResources(const QList< AbstractResource* >& apps)
 {
     m_toUpgrade -= apps.toSet();
 }
@@ -86,3 +86,25 @@ QDateTime StandardBackendUpdater::lastUpdate() const
 {
     return QDateTime();
 }
+
+bool StandardBackendUpdater::isCancelable() const
+{
+    //We don't really know when we can cancel, so we never let
+    return false;
+}
+
+bool StandardBackendUpdater::isProgressing() const
+{
+    return false;
+}
+
+QString StandardBackendUpdater::statusDetail() const
+{
+    return QString();
+}
+
+QString StandardBackendUpdater::statusMessage() const
+{
+    return QString();
+}
+

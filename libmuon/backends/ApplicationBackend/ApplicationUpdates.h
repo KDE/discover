@@ -49,20 +49,30 @@ public:
     void start();
     void setBackend(QApt::Backend* b);
     long unsigned int remainingTime() const;
-    virtual void addResources(QList< AbstractResource* > apps);
-    virtual void removeResources(QList< AbstractResource* > apps);
+    virtual void addResources(const QList<AbstractResource*>& apps);
+    virtual void removeResources(const QList<AbstractResource*>& apps);
     virtual void cleanup();
     virtual void prepare();
     virtual QList<AbstractResource*> toUpdate() const;
     virtual bool isAllMarked() const;
     virtual QDateTime lastUpdate() const;
+    virtual bool isCancelable() const;
+    virtual bool isProgressing() const;
+    virtual QString statusDetail() const;
+    virtual QString statusMessage() const;
 
 private:
+    void setProgressing(bool progressing);
+    
+    QPointer<QApt::Transaction> m_trans;
     QApt::Backend* m_aptBackend;
     ApplicationBackend* m_appBackend;
     int m_lastRealProgress;
     long unsigned int m_eta;
     QApt::CacheState m_updatesCache;
+    bool m_progressing;
+    QString m_statusMessage;
+    QString m_statusDetail;
 
 private slots:
     void transactionStatusChanged(QApt::TransactionStatus status);
@@ -71,9 +81,12 @@ private slots:
     void etaChanged(quint64 eta);
     void installMessage(const QString& message);
     void setupTransaction(QApt::Transaction *trans);
-
-signals:
-    void errorSignal(QApt::ErrorCode error, const QString& details);
+    void provideMedium(const QString &label, const QString &medium);
+    void untrustedPrompt(const QStringList &untrustedPackages);
+    void configFileConflict(const QString &currentPath, const QString &newPath);
+    void statusChanged(QApt::TransactionStatus status);
+    void setStatusMessage(const QString& msg);
+    void setStatusDetail(const QString& msg);
 };
 
 #endif // APPLICATIONUPDATES_H
