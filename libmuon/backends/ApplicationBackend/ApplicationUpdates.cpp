@@ -122,7 +122,7 @@ void ApplicationUpdates::addResources(const QList<AbstractResource*>& apps)
         Q_ASSERT(app);
         packages += app->package();
     }
-    m_aptBackend->markPackages(packages, QApt::Package::ToUpgrade);
+    m_aptBackend->markPackages(packages, QApt::Package::ToInstall);
 }
 
 void ApplicationUpdates::removeResources(const QList<AbstractResource*>& apps)
@@ -133,7 +133,7 @@ void ApplicationUpdates::removeResources(const QList<AbstractResource*>& apps)
         Q_ASSERT(app);
         packages += app->package();
     }
-    m_aptBackend->markPackages(packages, QApt::Package::ToUpgrade);
+    m_aptBackend->markPackages(packages, QApt::Package::ToKeep);
 }
 
 void ApplicationUpdates::progressChanged(int progress)
