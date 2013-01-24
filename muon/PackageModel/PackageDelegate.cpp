@@ -44,10 +44,6 @@ PackageDelegate::PackageDelegate(QObject *parent)
     m_iconSize = KIconLoader::SizeSmallMedium;
 }
 
-PackageDelegate::~PackageDelegate()
-{
-}
-
 void PackageDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     if (!index.isValid()) {
@@ -284,5 +280,3 @@ int PackageDelegate::calcItemHeight(const QStyleOptionViewItem &option) const
     int textHeight = QFontInfo(name_item.font).pixelSize() + QFontInfo(description_item.font).pixelSize();
     return qMax(textHeight, m_iconSize) + 2 * m_spacing;
 }
-
-#include "PackageDelegate.moc"
