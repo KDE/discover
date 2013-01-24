@@ -72,8 +72,6 @@ void QAptActions::setMainWindow(MuonMainWindow* w)
     m_mainWindow = w;
     connect(m_mainWindow, SIGNAL(actionsEnabledChanged(bool)), SLOT(setActionsEnabledInternal(bool)));
     setupActions();
-    if(m_backend)
-        connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabledInternal(bool)), Qt::UniqueConnection);
 }
 
 MuonMainWindow* QAptActions::mainWindow() const
@@ -84,8 +82,7 @@ MuonMainWindow* QAptActions::mainWindow() const
 void QAptActions::setBackend(QApt::Backend* backend)
 {
     m_backend = backend;
-    if(m_mainWindow)
-        connect(m_backend, SIGNAL(packageChanged()), m_mainWindow, SLOT(setActionsEnabled()), Qt::UniqueConnection);
+    connect(m_backend, SIGNAL(packageChanged()), SLOT(setActionsEnabled()));
     
     setReloadWhenEditorFinished(true);
     // Some actions need an initialized backend to be able to set their enabled state
