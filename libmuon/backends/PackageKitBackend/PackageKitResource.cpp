@@ -99,12 +99,12 @@ QString PackageKitResource::section()
 
 QUrl PackageKitResource::screenshotUrl()
 {
-    return KUrl(MuonDataSources::screenshotsSource(), "screenshot/"+packageName());
+    return KUrl(MuonDataSources::screenshotsSource(), "screenshot/"+name());
 }
 
 QUrl PackageKitResource::thumbnailUrl()
 {
-    return KUrl(MuonDataSources::screenshotsSource(), "thumbnail/"+packageName());
+    return KUrl(MuonDataSources::screenshotsSource(), "thumbnail/"+name());
 }
 
 AbstractResource::State PackageKitResource::state()
