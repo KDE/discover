@@ -26,15 +26,17 @@
 // KDE includes
 #include <KProtocolManager>
 #include <KMessageBox>
-#include <KXmlGuiWindow>
 
 // Own includes
-#include "Application.h"
-#include "ApplicationBackend.h"
-#include "ChangesDialog.h"
+#include <LibQApt/Transaction>
+
+#include <MuonMainWindow.h>
+#include <ChangesDialog.h>
 #include <MuonStrings.h>
 #include <QAptActions.h>
-#include <LibQApt/Transaction>
+
+#include "Application.h"
+#include "ApplicationBackend.h"
 
 ApplicationUpdates::ApplicationUpdates(ApplicationBackend* parent)
     : AbstractBackendUpdater(parent)
