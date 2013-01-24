@@ -22,6 +22,9 @@
 #include "BodegaBackend.h"
 #include <bodega/session.h>
 #include <bodega/assetoperations.h>
+#include <KLocalizedString>
+#include <KGlobal>
+#include <KLocale>
 #include <QDebug>
 
 BodegaResource::BodegaResource(const Bodega::AssetInfo& info, AbstractResourcesBackend* parent)
@@ -83,6 +86,23 @@ int BodegaResource::downloadSize()
 
 void BodegaResource::fetchChangelog()
 {
-    //TODO
-    emit changelogFetched(QString());
+    Bodega::ChangeLog log = assetOperations()->changeLog();
+    QString description;
+    
+    for(QMap<QString, Bodega::ChangeLog::Entry>::const_iterator it=log.entries.constBegin(), itEnd=log.entries.constEnd();
+        it!=itEnd; ++it)
+    {
+        description += i18nc("@info:label Refers to a software version, Ex: Version 1.2.1:", "Version %1:", it.key());
+
+        QString issueDate = KGlobal::locale()->formatDateTime(QDateTime(it->timestamp), KLocale::ShortDate);
+        description += QLatin1String("<p>") +
+                       i18nc("@info:label", "This update was issued on %1", issueDate) +
+                       QLatin1String("</p>");
+
+        QString updateText = it->changes;
+        updateText.replace('\n', QLatin1String("<br/>"));
+        description += QLatin1String("<p><pre>") + updateText + QLatin1String("</pre></p>");
+    }
+    
+    emit changelogFetched(description);
 }
