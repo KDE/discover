@@ -23,6 +23,7 @@
 // Qt includes
 #include <QStandardItemModel>
 #include <QtCore/QDir>
+#include <QDateTime>
 #include <QtGui/QApplication>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
@@ -43,9 +44,6 @@
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/AbstractResource.h>
 #include <resources/AbstractBackendUpdater.h>
-
-//libmuonapt includes
-#include "../libmuonapt/ChangesDialog.h"
 
 // Own includes
 #include "UpdateModel/UpdateModel.h"
@@ -133,17 +131,20 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
 void UpdaterWidget::setBackend(AbstractResourcesBackend *backend)
 {
     m_appsBackend = backend;
+    connect(m_appsBackend, SIGNAL(reloadStarted()), m_busyWidget, SLOT(start()));
+    connect(m_appsBackend, SIGNAL(reloadFinished()), SLOT(populateUpdateModel()));
 
     populateUpdateModel();
+    setEnabled(true);
 }
 
 void UpdaterWidget::reload()
 {
+    setEnabled(false);
     m_updateModel->clear();
     QMetaObject::invokeMethod(m_appsBackend, "reload");
 
-    setCurrentIndex(0);
-    populateUpdateModel();
+    setCurrentIndex(-1);
 }
 
 void UpdaterWidget::populateUpdateModel()
@@ -166,6 +167,7 @@ void UpdaterWidget::populateUpdateModel()
 
     checkAllMarked();
     checkUpToDate();
+    setEnabled(true);
 }
 
 void UpdaterWidget::checkApps(const QList<AbstractResource*>& apps, bool checked)

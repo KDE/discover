@@ -135,14 +135,13 @@ void MainWindow::setupActions()
 void MainWindow::initBackend()
 {
     m_updaterWidget->setBackend(m_apps);
-    m_updaterWidget->setEnabled(true);
 
     setActionsEnabled();
 }
 
 void MainWindow::progress(qreal p)
 {
-    if(p!=0 && p!=1) {
+    if(p!=0 && p!=100) {
         QApplication::restoreOverrideCursor();
         m_progressWidget->show();
     }
@@ -151,7 +150,6 @@ void MainWindow::progress(qreal p)
 void MainWindow::updatesFinished()
 {
     m_progressWidget->animatedHide();
-    m_updaterWidget->setEnabled(true);
     m_updaterWidget->setCurrentIndex(0);
     setActionsEnabled();
 }
@@ -190,7 +188,6 @@ void MainWindow::setActionsEnabled(bool enabled)
 void MainWindow::checkForUpdates()
 {
     setActionsEnabled(false);
-    m_updaterWidget->setEnabled(false);
     QApplication::setOverrideCursor(Qt::WaitCursor);
     m_changelogWidget->animatedHide();
 
