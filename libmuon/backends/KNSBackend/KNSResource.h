@@ -49,7 +49,6 @@ public:
     virtual QString license();
     virtual QString longDescription() const;
     virtual QList<PackageState> addonsInformation() { return QList<PackageState>(); }
-    virtual QString sizeDescription();
     virtual QString availableVersion() const;
     virtual QString installedVersion() const;
     virtual QString origin() const;

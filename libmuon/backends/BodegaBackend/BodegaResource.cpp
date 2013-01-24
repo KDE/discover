@@ -74,3 +74,15 @@ QString BodegaResource::categories()
 {
     return assetOperations()->assetTags().value("mimetype");
 }
+
+int BodegaResource::downloadSize()
+{
+    //TODO
+    return 0;
+}
+
+void BodegaResource::fetchChangelog()
+{
+    //TODO
+    emit changelogFetched(QString());
+}

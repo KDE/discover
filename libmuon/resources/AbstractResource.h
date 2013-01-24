@@ -97,7 +97,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         virtual QUrl screenshotUrl() = 0;
         
         virtual int downloadSize() = 0;
-        virtual QString sizeDescription() = 0;
+        virtual QString sizeDescription();
         virtual QString license() = 0;
         
         virtual QString installedVersion() const = 0;
