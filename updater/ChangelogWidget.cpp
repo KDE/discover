@@ -105,9 +105,11 @@ ChangelogWidget::ChangelogWidget(QWidget *parent)
 void ChangelogWidget::setResource(AbstractResource* package)
 {
     m_package = package;
-    connect(m_package, SIGNAL(changelogFetched(QString)), SLOT(changelogFetched(QString)));
-
-    package ? fetchChangelog() : animatedHide();
+    if(m_package) {
+        connect(m_package, SIGNAL(changelogFetched(QString)), SLOT(changelogFetched(QString)));
+        fetchChangelog();
+    } else
+        animatedHide();
 }
 
 void ChangelogWidget::show()
