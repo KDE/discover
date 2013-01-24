@@ -48,7 +48,6 @@ private:
     UpdaterWidget *m_updaterWidget;
     ChangelogWidget *m_changelogWidget;
     UpdaterSettingsDialog *m_settingsDialog;
-    KDialog *m_historyDialog;
     KMessageWidget *m_powerMessage;
     KMessageWidget *m_distUpgradeMessage;
 
@@ -58,7 +57,6 @@ private:
     KAction *m_createDownloadListAction;
     KAction *m_downloadListAction;
     KAction *m_loadArchivesAction;
-    KAction *m_historyAction;
 
     KProcess *m_checkerProcess;
     AbstractResourcesBackend* m_apps;
@@ -73,8 +71,6 @@ private Q_SLOTS:
     void startCommit();
     void editSettings();
     void closeSettingsDialog();
-    void showHistoryDialog();
-    void closeHistoryDialog();
     void checkPlugState();
     void updatePlugState(bool plugged);
     void checkDistUpgrade();

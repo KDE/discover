@@ -35,7 +35,6 @@
 #include <KLocale>
 #include <KMessageBox>
 
-#include "../libmuonapt/MuonStrings.h"
 #include <resources/AbstractBackendUpdater.h>
 
 ProgressWidget::ProgressWidget(QWidget *parent)

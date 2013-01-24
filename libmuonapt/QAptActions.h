@@ -27,6 +27,7 @@
 
 #include "libmuonprivate_export.h"
 
+class KDialog;
 class KXmlGuiWindow;
 class KActionCollection;
 
@@ -74,6 +75,10 @@ public slots:
     void revertChanges();
     void runSourcesEditor();
     void sourcesEditorFinished(int exitStatus);
+    void showHistoryDialog();
+
+private slots:
+    void closeHistoryDialog();
 
 private:
     QAptActions();
@@ -83,6 +88,7 @@ private:
     bool m_actionsDisabled;
     KXmlGuiWindow* m_mainWindow;
     bool m_reloadWhenEditorFinished;
+    KDialog* m_historyDialog;
 
     KActionCollection* actionCollection();
 };

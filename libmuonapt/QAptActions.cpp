@@ -20,6 +20,7 @@
 
 #include "QAptActions.h"
 #include "MuonStrings.h"
+#include "HistoryView/HistoryView.h"
 
 // Qt includes
 #include <QtCore/QDir>
@@ -45,11 +46,12 @@
 #include "MuonMainWindow.h"
 
 QAptActions::QAptActions()
-    : QObject(0)
-    , m_backend(0)
+    : QObject(nullptr)
+    , m_backend(nullptr)
     , m_actionsDisabled(false)
-    , m_mainWindow(0)
+    , m_mainWindow(nullptr)
     , m_reloadWhenEditorFinished(false)
+    , m_historyDialog(nullptr)
 {
     connect(Solid::Networking::notifier(), SIGNAL(statusChanged(Solid::Networking::Status)),
             this, SLOT(networkChanged()));
@@ -147,6 +149,12 @@ void QAptActions::setupActions()
     saveInstalledAction->setIcon(KIcon("document-save-as"));
     saveInstalledAction->setText(i18nc("@action", "Save Installed Packages List..."));
     connect(saveInstalledAction, SIGNAL(triggered()), this, SLOT(saveInstalledPackagesList()));
+    
+    KAction* historyAction = actionCollection()->addAction("history");
+    historyAction->setIcon(KIcon("view-history"));
+    historyAction->setText(i18nc("@action::inmenu", "History..."));
+    historyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_H));
+    connect(historyAction, SIGNAL(triggered()), this, SLOT(showHistoryDialog()));
 }
 
 void QAptActions::setActionsEnabled(bool enabled)
@@ -442,4 +450,33 @@ void QAptActions::displayTransactionError(QApt::ErrorCode error, QApt::Transacti
             KMessageBox::error(QAptActions::self()->mainWindow(), text, title);
             break;
     }
+}
+
+void QAptActions::showHistoryDialog()
+{
+    if (!m_historyDialog) {
+        m_historyDialog = new KDialog(mainWindow());
+
+        KConfigGroup dialogConfig(KSharedConfig::openConfig("muonrc"),
+                                  "HistoryDialog");
+        m_historyDialog->restoreDialogSize(dialogConfig);
+
+        connect(m_historyDialog, SIGNAL(finished()), SLOT(closeHistoryDialog()));
+        HistoryView *historyView = new HistoryView(m_historyDialog);
+        m_historyDialog->setMainWidget(historyView);
+        m_historyDialog->setWindowTitle(i18nc("@title:window", "Package History"));
+        m_historyDialog->setWindowIcon(KIcon("view-history"));
+        m_historyDialog->setButtons(KDialog::Close);
+        m_historyDialog->show();
+    } else {
+        m_historyDialog->raise();
+    }
+}
+
+void QAptActions::closeHistoryDialog()
+{
+    KConfigGroup dialogConfig(KSharedConfig::openConfig("muonrc"), "HistoryDialog");
+    m_historyDialog->saveDialogSize(dialogConfig, KConfigBase::Persistent);
+    m_historyDialog->deleteLater();
+    m_historyDialog = nullptr;
 }
