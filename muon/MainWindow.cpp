@@ -198,6 +198,16 @@ void MainWindow::setupActions()
     m_applyAction->setText(i18nc("@action Applys the changes a user has made", "Apply Changes"));
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
 
+    KAction* updateAction = actionCollection()->addAction("update");
+    updateAction->setIcon(KIcon("system-software-update"));
+    updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
+    updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
+    connect(updateAction, SIGNAL(triggered()), SIGNAL(checkForUpdates()));
+    if (!isConnected()) {
+        updateAction->setDisabled(true);
+    }
+    connect(this, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
+
     KStandardAction::preferences(this, SLOT(editSettings()), actionCollection());
 
     setActionsEnabled(false);
@@ -362,7 +372,7 @@ void MainWindow::reload()
 
 void MainWindow::setActionsEnabled(bool enabled)
 {
-    QAptActions::self()->setActionsEnabled(enabled);
+    MuonMainWindow::setActionsEnabled(enabled);
     if (!enabled) {
         return;
     }

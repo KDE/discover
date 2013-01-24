@@ -23,6 +23,7 @@
 // Qt includes
 #include <QtGui/QLabel>
 #include <QtGui/QShortcut>
+#include <QtGui/QAction>
 
 // KDE includes
 #include <KActionCollection>
@@ -31,6 +32,7 @@
 #include <KStandardAction>
 #include <KStandardDirs>
 #include <KVBox>
+#include <Solid/Networking>
 #include <Phonon/MediaObject>
 
 MuonMainWindow::MuonMainWindow()
@@ -86,4 +88,21 @@ void MuonMainWindow::easterEggTriggered()
 void MuonMainWindow::setCanExit(bool canExit)
 {
     m_canExit = canExit;
+}
+
+void MuonMainWindow::setActionsEnabled(bool enabled)
+{
+    for (int i = 0; i < actionCollection()->count(); ++i) {
+        actionCollection()->action(i)->setEnabled(enabled);
+    }
+    if(enabled)
+        emit actionsEnabledChanged(enabled);
+}
+
+bool MuonMainWindow::isConnected() const
+{
+    int status = Solid::Networking::status();
+    bool connected = ((status == Solid::Networking::Connected) ||
+                      (status == Solid::Networking::Unknown));
+    return connected;
 }

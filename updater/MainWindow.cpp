@@ -41,7 +41,6 @@
 #include <MuonBackendsFactory.h>
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/AbstractBackendUpdater.h>
-#include "../libmuonapt/QAptActions.h"
 #include "ChangelogWidget.h"
 #include "ProgressWidget.h"
 #include "config/UpdaterSettingsDialog.h"
@@ -107,13 +106,22 @@ void MainWindow::initGUI()
     setCentralWidget(mainWidget);
 
     checkDistUpgrade();
+    connect(m_apps, SIGNAL(reloadStarted()), m_changelogWidget, SLOT(animatedHide()));
 }
 
 void MainWindow::setupActions()
 {
     MuonMainWindow::setupActions();
 
-    connect(QAptActions::self(), SIGNAL(checkForUpdates()), this, SLOT(checkForUpdates()));
+    KAction* updateAction = actionCollection()->addAction("update");
+    updateAction->setIcon(KIcon("system-software-update"));
+    updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
+    updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
+    connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
+    if (!isConnected()) {
+        updateAction->setDisabled(true);
+    }
+    connect(this, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
 
     m_applyAction = actionCollection()->addAction("apply");
     m_applyAction->setIcon(KIcon("dialog-ok-apply"));
@@ -157,6 +165,8 @@ void MainWindow::updatesFinished()
 void MainWindow::reload()
 {
     setCanExit(false);
+    setActionsEnabled(false);
+    QApplication::setOverrideCursor(Qt::WaitCursor);
 
     disconnect(m_updaterWidget, SIGNAL(selectedResourceChanged(AbstractResource*)),
                m_changelogWidget, SLOT(setResource(AbstractResource*)));
@@ -176,7 +186,7 @@ void MainWindow::reload()
 
 void MainWindow::setActionsEnabled(bool enabled)
 {
-    QAptActions::self()->setActionsEnabled(enabled);
+    MuonMainWindow::setActionsEnabled(enabled);
     if (!enabled) {
         return;
     }
@@ -187,10 +197,6 @@ void MainWindow::setActionsEnabled(bool enabled)
 
 void MainWindow::checkForUpdates()
 {
-    setActionsEnabled(false);
-    QApplication::setOverrideCursor(Qt::WaitCursor);
-    m_changelogWidget->animatedHide();
-
     reload();
 }
 

@@ -13,7 +13,7 @@ set(muon_updater_SRCS
 
 kde4_add_executable(muon-updater ${muon_updater_SRCS})
 
-target_link_libraries(muon-updater muonprivate muonapt
+target_link_libraries(muon-updater muonprivate
                                    ${KDE4_KIO_LIBS}
                                    ${KDE4_SOLID_LIBS})
 

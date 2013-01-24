@@ -66,14 +66,17 @@ QAptActions* QAptActions::self()
     return self.data();
 }
 
-void QAptActions::setMainWindow(KXmlGuiWindow* w)
+void QAptActions::setMainWindow(MuonMainWindow* w)
 {
     setParent(w);
     m_mainWindow = w;
+    connect(m_mainWindow, SIGNAL(actionsEnabledChanged(bool)), SLOT(setActionsEnabledInternal(bool)));
     setupActions();
+    if(m_backend)
+        connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabledInternal(bool)), Qt::UniqueConnection);
 }
 
-KXmlGuiWindow* QAptActions::mainWindow() const
+MuonMainWindow* QAptActions::mainWindow() const
 {
     return m_mainWindow;
 }
@@ -81,7 +84,9 @@ KXmlGuiWindow* QAptActions::mainWindow() const
 void QAptActions::setBackend(QApt::Backend* backend)
 {
     m_backend = backend;
-    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
+    if(m_mainWindow)
+        connect(m_backend, SIGNAL(packageChanged()), m_mainWindow, SLOT(setActionsEnabled()), Qt::UniqueConnection);
+    
     setReloadWhenEditorFinished(true);
     // Some actions need an initialized backend to be able to set their enabled state
     setActionsEnabled(true);
@@ -89,17 +94,6 @@ void QAptActions::setBackend(QApt::Backend* backend)
 
 void QAptActions::setupActions()
 {
-    KAction* updateAction = m_mainWindow->actionCollection()->addAction("update");
-    updateAction->setIcon(KIcon("system-software-update"));
-    updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
-    updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
-    connect(updateAction, SIGNAL(triggered()), SIGNAL(checkForUpdates()));
-    if (!isConnected()) {
-        updateAction->setDisabled(true);
-    }
-    connect(this, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
-
-
     KAction* undoAction = KStandardAction::undo(this, SLOT(undo()), actionCollection());
     actionCollection()->addAction("undo", undoAction);
 
@@ -157,13 +151,9 @@ void QAptActions::setupActions()
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showHistoryDialog()));
 }
 
-void QAptActions::setActionsEnabled(bool enabled)
+void QAptActions::setActionsEnabledInternal(bool enabled)
 {
     m_actionsDisabled = !enabled;
-    for (int i = 0; i < actionCollection()->count(); ++i) {
-        actionCollection()->action(i)->setEnabled(enabled);
-    }
-
     if (!enabled)
         return;
 
@@ -188,7 +178,6 @@ bool QAptActions::isConnected() const {
                       (status == Solid::Networking::Unknown));
     return connected;
 }
-
 
 void QAptActions::networkChanged()
 {
@@ -396,7 +385,7 @@ void QAptActions::sourcesEditorFinished(int exitStatus)
     bool reload = (exitStatus == 0);
     m_mainWindow->find(m_mainWindow->effectiveWinId())->setEnabled(true);
     if (m_reloadWhenEditorFinished && reload) {
-        emit checkForUpdates();
+        actionCollection()->action("update")->trigger();
     }
 
     emit sourcesEditorClosed(reload);
@@ -479,4 +468,12 @@ void QAptActions::closeHistoryDialog()
     m_historyDialog->saveDialogSize(dialogConfig, KConfigBase::Persistent);
     m_historyDialog->deleteLater();
     m_historyDialog = nullptr;
+}
+
+void QAptActions::setActionsEnabled(bool enabled)
+{
+    if(m_mainWindow)
+        m_mainWindow->setActionsEnabled(enabled);
+    else
+        setActionsEnabledInternal(enabled);
 }

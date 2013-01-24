@@ -60,13 +60,13 @@ private:
 
     KProcess *m_checkerProcess;
     AbstractResourcesBackend* m_apps;
+    virtual void setActionsEnabled(bool enabled = true);
 
 private Q_SLOTS:
     void initGUI();
     void initBackend();
     void setupActions();
     void reload();
-    void setActionsEnabled(bool enabled = true);
     void checkForUpdates();
     void startCommit();
     void editSettings();
