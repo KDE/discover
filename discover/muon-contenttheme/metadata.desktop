@@ -1,6 +1,20 @@
 [Desktop Entry]
 Name=Application dashboard
+Name[cs]=Pracovní plocha aplikace
+Name[nl]=Toepassingendashboard
+Name[pt]=Painel da aplicação
+Name[sk]=Aplikačná prístrojová doska
+Name[sv]=Instrumentpanel för program
+Name[uk]=Панель приладів програм
+Name[x-test]=xxApplication dashboardxx
 Comment=Intended as Application dashboard default
+Comment[cs]=Zamýšleno jako výchozí pracovní plocha aplikace
+Comment[nl]=Bedoelt als standaard in het toepassingendashboard
+Comment[pt]=Pretendido como predefinição do painel da aplicação
+Comment[sk]=Určené ako predvolená prístrojová doska aplikácie
+Comment[sv]=Avsett som förvald instrumentpanel för program
+Comment[uk]=Призначено бути типовою панеллю приладів програм
+Comment[x-test]=xxIntended as Application dashboard defaultxx
 
 NoDisplay=true
 
