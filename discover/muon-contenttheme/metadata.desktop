@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Application dashboard
 Name[cs]=Pracovní plocha aplikace
+Name[da]=Programinstrumentbræt
 Name[de]=Anwendungs-Dashboard
 Name[nl]=Toepassingendashboard
 Name[pt]=Painel da aplicação
@@ -13,6 +14,7 @@ Name[x-test]=xxApplication dashboardxx
 Name[zh_TW]=應用程式控制面板
 Comment=Intended as Application dashboard default
 Comment[cs]=Zamýšleno jako výchozí pracovní plocha aplikace
+Comment[da]=Tiltænkt som standard for programinstrumentbræt
 Comment[nl]=Bedoelt als standaard in het toepassingendashboard
 Comment[pt]=Pretendido como predefinição do painel da aplicação
 Comment[pt_BR]=Pretende ser o painel padrão do aplicativo
