@@ -20,12 +20,22 @@
 #include <resources/StandardBackendUpdater.h>
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/AbstractResource.h>
+#include "ResourcesModel.h"
+#include <Transaction/Transaction.h>
 #include <QDateTime>
+#include <QDebug>
+#include <QTimer>
 
 StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend* parent)
     : AbstractBackendUpdater(parent)
     , m_backend(parent)
-{}
+    , m_preparedSize(0)
+    , m_settingUp(false)
+{
+    connect(parent,
+            SIGNAL(transactionRemoved(Transaction*)),
+            SLOT(transactionRemoved(Transaction*)));
+}
 
 bool StandardBackendUpdater::hasUpdates() const
 {
@@ -34,11 +44,25 @@ bool StandardBackendUpdater::hasUpdates() const
 
 void StandardBackendUpdater::start()
 {
+    m_settingUp = true;
+    emit progressChanged(10);
     foreach(AbstractResource* res, m_toUpgrade) {
+        m_pendingResources += res;
         m_backend->installApplication(res);
     }
-    //TODO: do that when all resources have been notified as installed by the backend
-    emit updatesFinnished();
+
+    if(m_pendingResources.isEmpty()) {
+        emit updatesFinnished();
+    }
+    m_settingUp = false;
+}
+
+void StandardBackendUpdater::transactionRemoved(Transaction* t)
+{
+    bool found = m_pendingResources.remove(t->resource());
+    if(found && !m_settingUp && m_pendingResources.isEmpty()) {
+        emit updatesFinnished();
+    }
 }
 
 qreal StandardBackendUpdater::progress() const
@@ -54,6 +78,7 @@ long unsigned int StandardBackendUpdater::remainingTime() const
 void StandardBackendUpdater::prepare()
 {
     m_toUpgrade = m_backend->upgradeablePackages().toSet();
+    m_preparedSize = m_toUpgrade.size();
 }
 
 void StandardBackendUpdater::addResources(const QList< AbstractResource* >& apps)

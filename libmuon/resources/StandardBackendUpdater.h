@@ -22,6 +22,7 @@
 
 #include "libmuonprivate_export.h"
 #include <resources/AbstractBackendUpdater.h>
+#include "AbstractResourcesBackend.h"
 #include <QSet>
 
 class AbstractResourcesBackend;
@@ -49,10 +50,15 @@ class MUONPRIVATE_EXPORT StandardBackendUpdater : public AbstractBackendUpdater
         virtual QString statusDetail() const;
         virtual QString statusMessage() const;
 
+    public slots:
+        void transactionRemoved(Transaction* t);
+
     private:
         QSet<AbstractResource*> m_toUpgrade;
         AbstractResourcesBackend* m_backend;
         int m_preparedSize;
+        QSet<AbstractResource*> m_pendingResources;
+        bool m_settingUp;
 };
 
 #endif // STANDARDBACKENDUPDATER_H
