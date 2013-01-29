@@ -1,6 +1,7 @@
 set(dummybackend_SRCS
     DummyResource.cpp
     DummyBackend.cpp
+    DummyReviewsBackend.cpp
 )
 
 kde4_add_plugin(muon-dummybackend SHARED ${dummybackend_SRCS})

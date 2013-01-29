@@ -18,41 +18,35 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef DUMMYRESOURCE_H
-#define DUMMYRESOURCE_H
+#ifndef DUMMYREVIEWSBACKEND_H
+#define DUMMYREVIEWSBACKEND_H
 
-#include <resources/AbstractResource.h>
+#include <ReviewsBackend/AbstractReviewsBackend.h>
+#include <QMap>
 
-class DummyResource : public AbstractResource
+class DummyBackend;
+class DummyReviewsBackend : public AbstractReviewsBackend
 {
 Q_OBJECT
 public:
-    explicit DummyResource(const QString& name, AbstractResourcesBackend* parent);
+    explicit DummyReviewsBackend(DummyBackend* parent = 0);
 
-    virtual QList<PackageState> addonsInformation();
-    virtual QString section();
-    virtual QString origin() const;
-    virtual QString longDescription() const;
-    virtual QString availableVersion() const;
-    virtual QString installedVersion() const;
-    virtual QString license();
-    virtual int downloadSize();
-    virtual QUrl screenshotUrl();
-    virtual QUrl thumbnailUrl();
-    virtual QUrl homepage() const;
-    virtual QString categories();
-    virtual AbstractResource::State state();
-    virtual QString icon() const;
-    virtual QString comment();
-    virtual QString name();
-    virtual QString packageName() const;
-    virtual void fetchChangelog();
-    virtual bool isTechnical() const { return false; }
-    void setState(State state);
+    virtual QString userName() const { return "dummy"; }
+    virtual void login() {}
+    virtual void logout() {}
+    virtual void registerAndLogin() {}
 
-public:
-    QString m_name;
-    AbstractResource::State m_state;
+    virtual Rating* ratingForApplication(AbstractResource* app) const;
+    virtual bool hasCredentials() const { return false; }
+    virtual void deleteReview(Review*) {}
+    virtual void fetchReviews(AbstractResource* app, int page = 1);
+    virtual bool isFetching() const { return false; }
+    virtual void submitReview(AbstractResource*, const QString&, const QString&, const QString&) {}
+    virtual void flagReview(Review*, const QString&, const QString&) {}
+    virtual void submitUsefulness(Review*, bool) {}
+
+private:
+    QMap<AbstractResource*, Rating*> m_ratings;
 };
 
-#endif // DUMMYRESOURCE_H
+#endif // DUMMYREVIEWSBACKEND_H

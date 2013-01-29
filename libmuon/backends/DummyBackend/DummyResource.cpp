@@ -116,3 +116,8 @@ QString DummyResource::sizeDescription()
     return QString::number(downloadSize());
 }
 
+void DummyResource::setState(AbstractResource::State state)
+{
+    m_state = state;
+    emit stateChanged();
+}

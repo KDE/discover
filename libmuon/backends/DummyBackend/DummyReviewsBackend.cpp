@@ -18,41 +18,33 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef DUMMYRESOURCE_H
-#define DUMMYRESOURCE_H
-
+#include "DummyReviewsBackend.h"
+#include "DummyBackend.h"
+#include <ReviewsBackend/Review.h>
+#include <ReviewsBackend/Rating.h>
 #include <resources/AbstractResource.h>
 
-class DummyResource : public AbstractResource
+DummyReviewsBackend::DummyReviewsBackend(DummyBackend* parent)
+    : AbstractReviewsBackend(parent)
 {
-Q_OBJECT
-public:
-    explicit DummyResource(const QString& name, AbstractResourcesBackend* parent);
+    foreach(AbstractResource* app, parent->allResources()) {
+        Rating* rating = new Rating(app->packageName(), app->name(), 3, 4, "1,2,3,4,5");
+        m_ratings.insert(app, rating);
+    }
+    emit ratingsReady();
+}
 
-    virtual QList<PackageState> addonsInformation();
-    virtual QString section();
-    virtual QString origin() const;
-    virtual QString longDescription() const;
-    virtual QString availableVersion() const;
-    virtual QString installedVersion() const;
-    virtual QString license();
-    virtual int downloadSize();
-    virtual QUrl screenshotUrl();
-    virtual QUrl thumbnailUrl();
-    virtual QUrl homepage() const;
-    virtual QString categories();
-    virtual AbstractResource::State state();
-    virtual QString icon() const;
-    virtual QString comment();
-    virtual QString name();
-    virtual QString packageName() const;
-    virtual void fetchChangelog();
-    virtual bool isTechnical() const { return false; }
-    void setState(State state);
+void DummyReviewsBackend::fetchReviews(AbstractResource* app, int page)
+{
+    QList<Review*> review;
+    for(int i=0; i<33; i++) {
+        review += new Review(app->name(), app->packageName(), "en_US", "good morning", "the morning is very good", "dummy",
+                             QDateTime(), true, page+i, i%5, 1, 1, app->packageName());
+    }
+    emit reviewsReady(app, review);
+}
 
-public:
-    QString m_name;
-    AbstractResource::State m_state;
-};
-
-#endif // DUMMYRESOURCE_H
+Rating* DummyReviewsBackend::ratingForApplication(AbstractResource* app) const
+{
+    return m_ratings[app];
+}

@@ -20,6 +20,9 @@
 
 #include "DummyBackend.h"
 #include "DummyResource.h"
+#include "DummyReviewsBackend.h"
+#include <resources/StandardBackendUpdater.h>
+#include <Transaction/Transaction.h>
 
 #include <KAboutData>
 #include <KLocalizedString>
@@ -31,7 +34,7 @@ K_EXPORT_PLUGIN(MuonDummyBackendFactory(KAboutData("muon-dummybackend","muon-dum
 
 DummyBackend::DummyBackend(QObject* parent, const QVariantList&)
     : AbstractResourcesBackend(parent)
-    , m_updater(0)
+    , m_updater(new StandardBackendUpdater(this))
 {
     for(int i=0; i<32; i++) {
         QString name = "alalala"+QString::number(i);
@@ -41,6 +44,7 @@ DummyBackend::DummyBackend(QObject* parent, const QVariantList&)
     }
     
     QMetaObject::invokeMethod(this, "backendReady", Qt::QueuedConnection);
+    m_reviews = new DummyReviewsBackend(this);
 }
 
 QVector<AbstractResource*> DummyBackend::allResources() const
@@ -65,7 +69,6 @@ QList<AbstractResource*> DummyBackend::upgradeablePackages() const
         if(res->state()==AbstractResource::Upgradeable)
             updates += res;
     }
-    qDebug() << "falalala" << updates;
     return updates;
 }
 
@@ -91,7 +94,7 @@ AbstractBackendUpdater* DummyBackend::backendUpdater() const
 
 AbstractReviewsBackend* DummyBackend::reviewsBackend() const
 {
-    return 0;
+    return m_reviews;
 }
 
 QPair<TransactionStateTransition, Transaction*> DummyBackend::currentTransactionState() const
@@ -111,12 +114,20 @@ void DummyBackend::installApplication(AbstractResource* app, const QHash< QStrin
 
 void DummyBackend::installApplication(AbstractResource* app)
 {
+    Transaction* t = new Transaction(app, InstallApp);
+    emit transactionAdded(t);
     qobject_cast<DummyResource*>(app)->setState(AbstractResource::Installed);
+    emit transactionRemoved(t);
+    t->deleteLater();
 }
 
 void DummyBackend::removeApplication(AbstractResource* app)
 {
+    Transaction* t = new Transaction(app, RemoveApp);
+    emit transactionAdded(t);
     qobject_cast<DummyResource*>(app)->setState(AbstractResource::None);
+    emit transactionRemoved(t);
+    t->deleteLater();
 }
 
 void DummyBackend::cancelTransaction(AbstractResource*)

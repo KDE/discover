@@ -50,6 +50,7 @@ public:
 private:
     QHash<QString, DummyResource*> m_resources;
     AbstractBackendUpdater* m_updater;
+    AbstractReviewsBackend* m_reviews;
 };
 
 #endif // DUMMYBACKEND_H
