@@ -203,7 +203,7 @@ bool ApplicationUpdates::isAllMarked() const
 {
     QApt::PackageList upgradeable = m_aptBackend->upgradeablePackages();
     int markedCount = m_aptBackend->packageCount(QApt::Package::ToUpgrade);
-    return markedCount < upgradeable.count();
+    return markedCount >= upgradeable.count();
 }
 
 QDateTime ApplicationUpdates::lastUpdate() const

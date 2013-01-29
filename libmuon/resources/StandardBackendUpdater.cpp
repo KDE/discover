@@ -79,7 +79,7 @@ QList<AbstractResource*> StandardBackendUpdater::toUpdate() const
 bool StandardBackendUpdater::isAllMarked() const
 {
     //Maybe we should make this smarter...
-    return m_preparedSize<=m_toUpgrade.size();
+    return m_preparedSize>=m_toUpgrade.size();
 }
 
 QDateTime StandardBackendUpdater::lastUpdate() const
