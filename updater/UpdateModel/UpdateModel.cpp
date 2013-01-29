@@ -275,12 +275,14 @@ void UpdateModel::addResources(const QList< AbstractResource* >& resources)
     // Add populated items to the model
     if (securityItem->childCount()) {
         securityItem->sort();
+        addItem(securityItem);
     } else {
         delete securityItem;
     }
 
     if (appItem->childCount()) {
         appItem->sort();
+        addItem(appItem);
     } else {
         delete appItem;
     }
