@@ -34,6 +34,7 @@ Q_PROPERTY(int rating READ rating CONSTANT)
 Q_PROPERTY(int ratingPoints READ ratingPoints CONSTANT)
 public:
     explicit Rating(const QVariantMap &data);
+    explicit Rating(const QString& packageName, const QString& appName, int ratingCount, int rating, const QString& histogram);
     ~Rating();
 
     QString packageName() const;
