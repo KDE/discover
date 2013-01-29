@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,41 +18,35 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef RATING_H
-#define RATING_H
+#ifndef DUMMYREVIEWSBACKEND_H
+#define DUMMYREVIEWSBACKEND_H
 
-#include <QtCore/QObject>
-#include <QtCore/QVariant>
+#include <ReviewsBackend/AbstractReviewsBackend.h>
+#include <QMap>
 
-#include "libmuonprivate_export.h"
-
-class MUONPRIVATE_EXPORT Rating : public QObject
+class DummyBackend;
+class DummyReviewsBackend : public AbstractReviewsBackend
 {
 Q_OBJECT
-Q_PROPERTY(double sortableRating READ sortableRating CONSTANT)
-Q_PROPERTY(int rating READ rating CONSTANT)
-Q_PROPERTY(int ratingPoints READ ratingPoints CONSTANT)
 public:
-    explicit Rating(const QVariantMap &data);
-    explicit Rating(const QString& packageName, const QString& appName, int ratingCount, int rating, const QString& histogram);
-    ~Rating();
+    explicit DummyReviewsBackend(DummyBackend* parent = 0);
 
-    QString packageName() const;
-    QString applicationName() const;
-    Q_SCRIPTABLE quint64 ratingCount() const;
-    // 0.0 - 10.0 ranged rating multiplied by two and rounded for KRating*
-    Q_SCRIPTABLE int rating() const;
-    int ratingPoints() const;
-    // Returns a dampened rating calculated with the Wilson Score Interval algorithm
-    double sortableRating() const;
+    virtual QString userName() const { return "dummy"; }
+    virtual void login() {}
+    virtual void logout() {}
+    virtual void registerAndLogin() {}
+
+    virtual Rating* ratingForApplication(AbstractResource* app) const;
+    virtual bool hasCredentials() const { return false; }
+    virtual void deleteReview(Review*) {}
+    virtual void fetchReviews(AbstractResource* app, int page = 1);
+    virtual bool isFetching() const { return false; }
+    virtual void submitReview(AbstractResource*, const QString&, const QString&, const QString&) {}
+    virtual void flagReview(Review*, const QString&, const QString&) {}
+    virtual void submitUsefulness(Review*, bool) {}
 
 private:
-    QString m_packageName;
-    QString m_appName;
-    quint64 m_ratingCount;
-    int m_rating;
-    int m_ratingPoints;
-    double m_sortableRating;
+    QMap<AbstractResource*, Rating*> m_ratings;
 };
 
-#endif
+#endif // DUMMYREVIEWSBACKEND_H

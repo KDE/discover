@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,41 +18,33 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef RATING_H
-#define RATING_H
+#include "DummyReviewsBackend.h"
+#include "DummyBackend.h"
+#include <ReviewsBackend/Review.h>
+#include <ReviewsBackend/Rating.h>
+#include <resources/AbstractResource.h>
 
-#include <QtCore/QObject>
-#include <QtCore/QVariant>
-
-#include "libmuonprivate_export.h"
-
-class MUONPRIVATE_EXPORT Rating : public QObject
+DummyReviewsBackend::DummyReviewsBackend(DummyBackend* parent)
+    : AbstractReviewsBackend(parent)
 {
-Q_OBJECT
-Q_PROPERTY(double sortableRating READ sortableRating CONSTANT)
-Q_PROPERTY(int rating READ rating CONSTANT)
-Q_PROPERTY(int ratingPoints READ ratingPoints CONSTANT)
-public:
-    explicit Rating(const QVariantMap &data);
-    explicit Rating(const QString& packageName, const QString& appName, int ratingCount, int rating, const QString& histogram);
-    ~Rating();
+    foreach(AbstractResource* app, parent->allResources()) {
+        Rating* rating = new Rating(app->packageName(), app->name(), 3, 4, "1,2,3,4,5");
+        m_ratings.insert(app, rating);
+    }
+    emit ratingsReady();
+}
 
-    QString packageName() const;
-    QString applicationName() const;
-    Q_SCRIPTABLE quint64 ratingCount() const;
-    // 0.0 - 10.0 ranged rating multiplied by two and rounded for KRating*
-    Q_SCRIPTABLE int rating() const;
-    int ratingPoints() const;
-    // Returns a dampened rating calculated with the Wilson Score Interval algorithm
-    double sortableRating() const;
+void DummyReviewsBackend::fetchReviews(AbstractResource* app, int page)
+{
+    QList<Review*> review;
+    for(int i=0; i<33; i++) {
+        review += new Review(app->name(), app->packageName(), "en_US", "good morning", "the morning is very good", "dummy",
+                             QDateTime(), true, page+i, i%5, 1, 1, app->packageName());
+    }
+    emit reviewsReady(app, review);
+}
 
-private:
-    QString m_packageName;
-    QString m_appName;
-    quint64 m_ratingCount;
-    int m_rating;
-    int m_ratingPoints;
-    double m_sortableRating;
-};
-
-#endif
+Rating* DummyReviewsBackend::ratingForApplication(AbstractResource* app) const
+{
+    return m_ratings[app];
+}
