@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=Muon/Backend
+Exec=blubb
+Icon=kalarm
+Name=Dummy
+GenericName=Dummy
+Comment=It's some dummy backend for testing purposes
+X-KDE-Library=muon-dummybackend
+X-KDE-PluginInfo-Name=muon-dummybackend
+X-KDE-PluginInfo-License=GPL

@@ -9,3 +9,8 @@ endif(QAPT_FOUND)
 if(BODEGA_FOUND)
     add_subdirectory(BodegaBackend)
 endif(BODEGA_FOUND)
+
+OPTION(BUILD_DummyBackend "Build the DummyBackend" "OFF")
+if(BUILD_DummyBackend)
+    add_subdirectory(DummyBackend)
+endif(BUILD_DummyBackend)
