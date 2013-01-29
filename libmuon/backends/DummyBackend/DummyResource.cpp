@@ -111,9 +111,9 @@ AbstractResource::State DummyResource::state()
     return m_state;
 }
 
-QString DummyResource::sizeDescription()
+void DummyResource::fetchChangelog()
 {
-    return QString::number(downloadSize());
+    emit changelogFetched(QString());
 }
 
 void DummyResource::setState(AbstractResource::State state)
