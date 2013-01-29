@@ -56,11 +56,10 @@ MainWindow::MainWindow()
     m_apps = f.backend("muon-appsbackend");
     m_updater = m_apps->backendUpdater();
     connect(m_apps, SIGNAL(backendReady()), SLOT(initBackend()));
-
-    initGUI();
-    
     connect(m_updater, SIGNAL(progressChanged(qreal)), SLOT(progress(qreal)));
     connect(m_updater, SIGNAL(updatesFinnished()), SLOT(updatesFinished()));
+
+    initGUI();
 }
 
 void MainWindow::initGUI()
