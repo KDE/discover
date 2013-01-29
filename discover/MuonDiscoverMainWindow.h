@@ -21,9 +21,11 @@
 #define MUONDISCOVERMAINWINDOW_H
 
 #include <QtCore/QUrl>
+#include <KAction>
 
 #include "MuonMainWindow.h"
 
+class KLineEdit;
 class QAptIntegration;
 class AbstractResource;
 class Category;
@@ -32,6 +34,7 @@ class QDeclarativeView;
 class MuonDiscoverMainWindow : public MuonMainWindow
 {
     Q_OBJECT
+    Q_PROPERTY(QObject* searchWidget READ searchWidget CONSTANT)
     public:
         explicit MuonDiscoverMainWindow();
         ~MuonDiscoverMainWindow();
@@ -41,6 +44,8 @@ class MuonDiscoverMainWindow : public MuonMainWindow
         
         void initialize();
         QStringList modes() const;
+        void setupActions();
+        QObject* searchWidget() const;
 
     public slots:
         void openApplication(const QString& app);
@@ -61,6 +66,7 @@ class MuonDiscoverMainWindow : public MuonMainWindow
     private:
         QString m_appToBeOpened;
         QDeclarativeView* m_view;
+        KLineEdit* m_searchText;
 };
 
 #endif // MUONINSTALLERDECLARATIVEVIEW_H

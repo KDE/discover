@@ -66,10 +66,11 @@ Page {
         }
     }
     
-    ScrollBar {
+    NativeScrollBar {
         id: scroll
         orientation: Qt.Vertical
         flickableItem: flick
+
         anchors {
             top: parent.top
             right: parent.right 

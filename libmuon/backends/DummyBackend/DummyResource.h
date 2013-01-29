@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
+ *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,40 +18,43 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "MainWindow.h"
+#ifndef DUMMYRESOURCE_H
+#define DUMMYRESOURCE_H
 
-#include <KUniqueApplication>
-#include <KAboutData>
-#include <KCmdLineArgs>
-#include <KStandardDirs>
+#include <resources/AbstractResource.h>
 
-#include <stdio.h>
-
-static const char description[] =
-    I18N_NOOP("An update manager");
-
-static const char version[] = "1.9.80";
-
-int main(int argc, char **argv)
+class DummyResource : public AbstractResource
 {
-    KAboutData about("muon-updater", "muon-updater", ki18n("Muon Update Manager"), version, ki18n(description),
-                     KAboutData::License_GPL, ki18n("©2010-2012 Jonathan Thomas"), KLocalizedString(), 0);
-    about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
-    about.setProgramIconName("system-software-update");
-    about.setProductName("muon/updater");
+Q_OBJECT
+public:
+    explicit DummyResource(const QString& name, AbstractResourcesBackend* parent);
 
-    KCmdLineArgs::init(argc, argv, &about);
-
-    if (!KUniqueApplication::start()) {
-        fprintf(stderr, "Update Manager is already running!\n");
-        return 0;
+    virtual QList<PackageState> addonsInformation();
+    virtual QString section();
+    virtual QString origin() const;
+    virtual QString longDescription() const;
+    virtual QString availableVersion() const;
+    virtual QString installedVersion() const;
+    virtual QString license();
+    virtual int downloadSize();
+    virtual QUrl screenshotUrl();
+    virtual QUrl thumbnailUrl();
+    virtual QUrl homepage() const;
+    virtual QString categories();
+    virtual AbstractResource::State state();
+    virtual QString icon() const;
+    virtual QString comment();
+    virtual QString name();
+    virtual QString packageName() const;
+    virtual QString sizeDescription();
+    void setState(State state) {
+        m_state = state;
+        emit stateChanged();
     }
 
-    KUniqueApplication app;
-    app.disableSessionManagement();
+public:
+    QString m_name;
+    AbstractResource::State m_state;
+};
 
-    MainWindow *mainWindow = new MainWindow;
-    mainWindow->show();
-
-    return app.exec();
-}
+#endif // DUMMYRESOURCE_H

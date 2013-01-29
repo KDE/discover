@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
+ *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,40 +18,38 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "MainWindow.h"
+#ifndef DUMMYBACKEND_H
+#define DUMMYBACKEND_H
 
-#include <KUniqueApplication>
-#include <KAboutData>
-#include <KCmdLineArgs>
-#include <KStandardDirs>
+#include <resources/AbstractResourcesBackend.h>
+#include <QVariantList>
 
-#include <stdio.h>
-
-static const char description[] =
-    I18N_NOOP("An update manager");
-
-static const char version[] = "1.9.80";
-
-int main(int argc, char **argv)
+class DummyResource;
+class DummyBackend : public AbstractResourcesBackend
 {
-    KAboutData about("muon-updater", "muon-updater", ki18n("Muon Update Manager"), version, ki18n(description),
-                     KAboutData::License_GPL, ki18n("©2010-2012 Jonathan Thomas"), KLocalizedString(), 0);
-    about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
-    about.setProgramIconName("system-software-update");
-    about.setProductName("muon/updater");
+Q_OBJECT
+Q_INTERFACES(AbstractResourcesBackend)
+public:
+    explicit DummyBackend(QObject* parent, const QVariantList& args);
 
-    KCmdLineArgs::init(argc, argv, &about);
+    virtual QList<AbstractResource*> upgradeablePackages() const;
+    virtual AbstractResource* resourceByPackageName(const QString& name) const;
+    virtual QList<Transaction*> transactions() const;
+    virtual QPair< TransactionStateTransition, Transaction* > currentTransactionState() const;
+    virtual int updatesCount() const;
+    virtual AbstractBackendUpdater* backendUpdater() const;
+    virtual AbstractReviewsBackend* reviewsBackend() const;
+    virtual QStringList searchPackageName(const QString& searchText);
+    virtual QVector<AbstractResource*> allResources() const;
 
-    if (!KUniqueApplication::start()) {
-        fprintf(stderr, "Update Manager is already running!\n");
-        return 0;
-    }
+    virtual void cancelTransaction(AbstractResource* app);
+    virtual void installApplication(AbstractResource* app);
+    virtual void installApplication(AbstractResource* app, const QHash< QString, bool >& addons);
+    virtual void removeApplication(AbstractResource* app);
 
-    KUniqueApplication app;
-    app.disableSessionManagement();
+private:
+    QHash<QString, DummyResource*> m_resources;
+    AbstractBackendUpdater* m_updater;
+};
 
-    MainWindow *mainWindow = new MainWindow;
-    mainWindow->show();
-
-    return app.exec();
-}
+#endif // DUMMYBACKEND_H

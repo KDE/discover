@@ -30,7 +30,6 @@ class PackageDelegate: public QAbstractItemDelegate
     Q_OBJECT
 public:
     explicit PackageDelegate(QObject *parent = 0);
-    ~PackageDelegate();
 
 protected:
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;

@@ -38,7 +38,7 @@ ListView
         }
     }
     
-    ScrollBar {
+    NativeScrollBar {
         id: scroll
         orientation: Qt.Vertical
         flickableItem: parent
