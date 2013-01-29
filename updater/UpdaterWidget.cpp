@@ -133,6 +133,7 @@ void UpdaterWidget::setBackend(AbstractResourcesBackend *backend)
     m_appsBackend = backend;
     connect(m_appsBackend, SIGNAL(reloadStarted()), m_busyWidget, SLOT(start()));
     connect(m_appsBackend, SIGNAL(reloadFinished()), SLOT(populateUpdateModel()));
+    connect(m_appsBackend->backendUpdater(), SIGNAL(updatesFinnished()), SLOT(populateUpdateModel()));
 
     populateUpdateModel();
     setEnabled(true);
@@ -199,7 +200,7 @@ void UpdaterWidget::selectionChanged(const QItemSelection &selected,
 
 void UpdaterWidget::checkAllMarked()
 {
-    m_upgradesWidget->setVisible(m_appsBackend->backendUpdater()->isAllMarked());
+    m_upgradesWidget->setVisible(!m_appsBackend->backendUpdater()->isAllMarked());
 }
 
 void UpdaterWidget::markAllPackagesForUpgrade()
