@@ -66,8 +66,7 @@ qreal ResourcesUpdatesModel::progress() const
 
 void ResourcesUpdatesModel::message(const QIcon& icon, const QString& msg)
 {
-    QStandardItem* item = new QStandardItem(icon, msg);
-    appendRow(item);
+    appendRow(new QStandardItem(icon, msg));
 }
 
 void ResourcesUpdatesModel::updateAll()
@@ -77,8 +76,10 @@ void ResourcesUpdatesModel::updateAll()
     
     if(m_updaters.isEmpty())
         emit updatesFinnished();
-    else foreach(AbstractBackendUpdater* upd, m_updaters)
+    else foreach(AbstractBackendUpdater* upd, m_updaters) {
+        upd->prepare();
         upd->start();
+    }
 }
 
 void ResourcesUpdatesModel::updaterFinished()
