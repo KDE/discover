@@ -41,7 +41,6 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
         
         virtual void prepare() = 0;
         virtual void start() = 0;
-        virtual void cleanup() = 0;
         
         virtual bool hasUpdates() const = 0;
         virtual qreal progress() const = 0;
