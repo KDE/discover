@@ -33,10 +33,12 @@ StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend* parent)
     , m_backend(parent)
     , m_preparedSize(0)
     , m_settingUp(false)
+    , m_lastUpdate(QDateTime())
 {
     connect(parent,
             SIGNAL(transactionRemoved(Transaction*)),
             SLOT(transactionRemoved(Transaction*)));
+    connect(this, SIGNAL(updatesFinnished()), SLOT(cleanup()));
 }
 
 bool StandardBackendUpdater::hasUpdates() const
@@ -91,6 +93,7 @@ long unsigned int StandardBackendUpdater::remainingTime() const
 
 void StandardBackendUpdater::prepare()
 {
+    m_lastUpdate = QDateTime::currentDateTime();
     m_toUpgrade = m_backend->upgradeablePackages().toSet();
     m_preparedSize = m_toUpgrade.size();
 }
@@ -107,6 +110,7 @@ void StandardBackendUpdater::removeResources(const QList< AbstractResource* >& a
 
 void StandardBackendUpdater::cleanup()
 {
+    m_lastUpdate = QDateTime::currentDateTime();
     m_toUpgrade.clear();
 }
 
@@ -123,7 +127,7 @@ bool StandardBackendUpdater::isAllMarked() const
 
 QDateTime StandardBackendUpdater::lastUpdate() const
 {
-    return QDateTime();
+    return m_lastUpdate;
 }
 
 bool StandardBackendUpdater::isCancelable() const

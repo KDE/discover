@@ -24,6 +24,7 @@
 #include <resources/AbstractBackendUpdater.h>
 #include "AbstractResourcesBackend.h"
 #include <QSet>
+#include <QDateTime>
 
 class AbstractResourcesBackend;
 
@@ -42,7 +43,6 @@ class MUONPRIVATE_EXPORT StandardBackendUpdater : public AbstractBackendUpdater
         virtual void addResources(const QList<AbstractResource*>& apps);
         virtual void removeResources(const QList<AbstractResource*>& apps);
         virtual void prepare();
-        virtual void cleanup();
         virtual bool isAllMarked() const;
         virtual QDateTime lastUpdate() const;
         virtual bool isCancelable() const;
@@ -55,6 +55,7 @@ class MUONPRIVATE_EXPORT StandardBackendUpdater : public AbstractBackendUpdater
 
     public slots:
         void transactionRemoved(Transaction* t);
+        void cleanup();
 
     private:
         QSet<AbstractResource*> m_toUpgrade;
@@ -64,6 +65,7 @@ class MUONPRIVATE_EXPORT StandardBackendUpdater : public AbstractBackendUpdater
         bool m_settingUp;
         QString m_statusMessage;
         qreal m_progress;
+        QDateTime m_lastUpdate;
 };
 
 #endif // STANDARDBACKENDUPDATER_H
