@@ -22,6 +22,7 @@
 #include <resources/AbstractResource.h>
 #include "ResourcesModel.h"
 #include <Transaction/Transaction.h>
+#include <KLocalizedString>
 #include <QDateTime>
 #include <QDebug>
 #include <QTimer>
@@ -45,7 +46,7 @@ bool StandardBackendUpdater::hasUpdates() const
 void StandardBackendUpdater::start()
 {
     m_settingUp = true;
-    emit progressChanged(10);
+    setProgress(10);
     foreach(AbstractResource* res, m_toUpgrade) {
         m_pendingResources += res;
         m_backend->installApplication(res);
@@ -60,14 +61,26 @@ void StandardBackendUpdater::start()
 void StandardBackendUpdater::transactionRemoved(Transaction* t)
 {
     bool found = m_pendingResources.remove(t->resource());
-    if(found && !m_settingUp && m_pendingResources.isEmpty()) {
-        emit updatesFinnished();
+    if(found && !m_settingUp) {
+        setStatusMessage(i18n("%1 has been updated", t->resource()->name()));
+        qreal p = 1-(qreal(m_pendingResources.size())/m_toUpgrade.size());
+        setProgress(100*p);
+        if(m_pendingResources.isEmpty())
+            emit updatesFinnished();
     }
 }
 
 qreal StandardBackendUpdater::progress() const
 {
-    return hasUpdates() ? 0 : 100;
+    return m_progress;
+}
+
+void StandardBackendUpdater::setProgress(qreal p)
+{
+    if(p>m_progress) {
+        m_progress = p;
+        emit progressChanged(p);
+    }
 }
 
 long unsigned int StandardBackendUpdater::remainingTime() const
@@ -128,8 +141,14 @@ QString StandardBackendUpdater::statusDetail() const
     return QString();
 }
 
+void StandardBackendUpdater::setStatusMessage(const QString& message)
+{
+    m_statusMessage = message;
+    emit statusMessageChanged(message);
+}
+
 QString StandardBackendUpdater::statusMessage() const
 {
-    return QString();
+    return m_statusMessage;
 }
 

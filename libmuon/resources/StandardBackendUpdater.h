@@ -49,6 +49,8 @@ class MUONPRIVATE_EXPORT StandardBackendUpdater : public AbstractBackendUpdater
         virtual bool isProgressing() const;
         virtual QString statusDetail() const;
         virtual QString statusMessage() const;
+        void setStatusMessage(const QString& message);
+        void setProgress(qreal p);
 
     public slots:
         void transactionRemoved(Transaction* t);
@@ -59,6 +61,8 @@ class MUONPRIVATE_EXPORT StandardBackendUpdater : public AbstractBackendUpdater
         int m_preparedSize;
         QSet<AbstractResource*> m_pendingResources;
         bool m_settingUp;
+        QString m_statusMessage;
+        qreal m_progress;
 };
 
 #endif // STANDARDBACKENDUPDATER_H
