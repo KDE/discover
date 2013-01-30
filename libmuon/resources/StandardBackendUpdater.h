@@ -49,6 +49,7 @@ class MUONPRIVATE_EXPORT StandardBackendUpdater : public AbstractBackendUpdater
         virtual bool isProgressing() const;
         virtual QString statusDetail() const;
         virtual QString statusMessage() const;
+        virtual quint64 downloadSpeed() const;
         void setStatusMessage(const QString& message);
         void setProgress(qreal p);
 

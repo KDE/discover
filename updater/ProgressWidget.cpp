@@ -93,12 +93,10 @@ void ProgressWidget::setTransaction(AbstractBackendUpdater* trans)
 
     // Connect the transaction all up to our slots
     connect(m_updater, SIGNAL(progressChanged(qreal)),
-            this, SLOT(updateProgress(int)));
+            this, SLOT(updateProgress(qreal)));
     connect(m_updater, SIGNAL(downloadSpeedChanged(quint64)),
             this, SLOT(downloadSpeedChanged(quint64)));
     connect(m_updater, SIGNAL(remainingTimeChanged()), SLOT(etaChanged()));
-    connect(m_updater, SIGNAL(configFileConflict(QString,QString)),
-            this, SLOT(configFileConflict(QString,QString)));
     connect(m_updater, SIGNAL(cancelableChanged(bool)),
             m_cancelButton, SLOT(setVisible(bool)));
     connect(m_updater, SIGNAL(statusMessageChanged(QString)),
@@ -118,7 +116,7 @@ void ProgressWidget::updateProgress(qreal progress)
         m_progressBar->setMaximum(0);
     } else if (progress > m_lastRealProgress) {
         m_progressBar->setMaximum(100);
-        m_progressBar->setValue(progress*100);
+        m_progressBar->setValue(progress);
         m_lastRealProgress = progress;
     }
 }

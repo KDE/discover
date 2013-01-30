@@ -26,6 +26,7 @@
 #include <QDateTime>
 #include <QDebug>
 #include <QTimer>
+#include <QIcon>
 
 StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend* parent)
     : AbstractBackendUpdater(parent)
@@ -141,14 +142,20 @@ QString StandardBackendUpdater::statusDetail() const
     return QString();
 }
 
-void StandardBackendUpdater::setStatusMessage(const QString& message)
+void StandardBackendUpdater::setStatusMessage(const QString& msg)
 {
-    m_statusMessage = message;
-    emit statusMessageChanged(message);
+    m_statusMessage = msg;
+    emit message(QIcon(), msg);
+    emit statusMessageChanged(msg);
 }
 
 QString StandardBackendUpdater::statusMessage() const
 {
     return m_statusMessage;
+}
+
+quint64 StandardBackendUpdater::downloadSpeed() const
+{
+    return 0;
 }
 

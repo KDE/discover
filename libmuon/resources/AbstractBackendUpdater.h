@@ -35,6 +35,7 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
     Q_PROPERTY(bool isProgressing READ isProgressing NOTIFY progressingChanged)
     Q_PROPERTY(QString statusMessage READ statusMessage NOTIFY statusMessageChanged)
     Q_PROPERTY(QString statusDetail READ statusDetail NOTIFY statusDetailChanged)
+    Q_PROPERTY(quint64 downloadSpeed READ downloadSpeed NOTIFY downloadSpeedChanged)
     public:
         explicit AbstractBackendUpdater(QObject* parent = 0);
         
@@ -58,6 +59,11 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
         
         virtual QString statusMessage() const = 0;
         virtual QString statusDetail() const = 0;
+        virtual quint64 downloadSpeed() const = 0;
+
+    public slots:
+        ///must be implemented if ever isCancelable is true
+        virtual void cancel();
 
     signals:
         void progressChanged(qreal progress);
@@ -68,6 +74,7 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
         void progressingChanged(bool progressing);
         void statusDetailChanged(const QString& msg);
         void statusMessageChanged(const QString& msg);
+        void downloadSpeedChanged(quint64);
 };
 
 #endif // ABSTRACTBACKENDUPDATER_H

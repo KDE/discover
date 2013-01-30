@@ -83,6 +83,7 @@ void MainWindow::initGUI()
                                         "A new version of Kubuntu is available."));
 
     m_progressWidget = new ProgressWidget(mainWidget);
+    m_progressWidget->setTransaction(m_updater);
     m_progressWidget->hide();
 
     m_updaterWidget = new UpdaterWidget(mainWidget);

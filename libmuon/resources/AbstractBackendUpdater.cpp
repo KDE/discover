@@ -23,3 +23,9 @@
 AbstractBackendUpdater::AbstractBackendUpdater(QObject* parent)
     : QObject(parent)
 {}
+
+void AbstractBackendUpdater::cancel()
+{
+    Q_ASSERT(isCancelable() && "only call cancel when cancelable");
+    Q_ASSERT(false && "if it can be cancelled, then ::cancel() must be implemented");
+}
