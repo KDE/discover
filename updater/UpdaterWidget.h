@@ -54,6 +54,7 @@ private:
 public Q_SLOTS:
     void setBackend(AbstractResourcesBackend* backend);
     void reload();
+    void invalidateView();
 
 private Q_SLOTS:
     void populateUpdateModel();

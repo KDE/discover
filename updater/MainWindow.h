@@ -66,7 +66,6 @@ private Q_SLOTS:
     void initGUI();
     void initBackend();
     void setupActions();
-    void reload();
     void checkForUpdates();
     void startCommit();
     void editSettings();
@@ -76,8 +75,10 @@ private Q_SLOTS:
     void checkDistUpgrade();
     void checkerFinished(int res);
     void launchDistUpgrade();
-    void progress(qreal);
+    void progressingChanged(bool active);
     void updatesFinished();
+    void startedReloading();
+    void finishedReloading();
 };
 
 #endif // MAINWINDOW_H

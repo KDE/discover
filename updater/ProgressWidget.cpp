@@ -24,6 +24,7 @@
 #include <QtCore/QParallelAnimationGroup>
 #include <QtCore/QPropertyAnimation>
 #include <QtCore/QStringBuilder>
+#include <QDebug>
 #include <QtGui/QLabel>
 #include <QtGui/QProgressBar>
 #include <QtGui/QPushButton>
@@ -103,16 +104,24 @@ void ProgressWidget::setTransaction(AbstractBackendUpdater* trans)
             m_headerLabel, SLOT(setText(QString)));
     connect(m_updater, SIGNAL(statusDetailChanged(QString)),
             m_detailsLabel, SLOT(setText(QString)));
+    connect(m_updater, SIGNAL(progressingChanged(bool)),
+            SLOT(updateIsProgressing(bool)));
 
     m_headerLabel->setText(m_updater->statusMessage());
     m_detailsLabel->setText(m_updater->statusDetail());
     
+    m_cancelButton->setEnabled(m_updater->isCancelable());
     connect(m_cancelButton, SIGNAL(clicked()), m_updater, SLOT(cancel()));
+}
+
+void ProgressWidget::updateIsProgressing(bool active)
+{
+    m_progressBar->setMaximum(active ? 100 : 0);
 }
 
 void ProgressWidget::updateProgress(qreal progress)
 {
-    if (progress > 100) {
+    if (progress > 100 || progress<0) {
         m_progressBar->setMaximum(0);
     } else if (progress > m_lastRealProgress) {
         m_progressBar->setMaximum(100);
@@ -132,16 +141,13 @@ void ProgressWidget::etaChanged()
 {
     long unsigned int ETA = m_updater->remainingTime();
 
-    QString timeRemaining;
     // Ignore ETA if it's larger than 2 days.
     if (ETA && ETA < 2 * 24 * 60 * 60) {
-        timeRemaining = i18nc("@item:intext Remaining time", "%1 remaining",
+        QString timeRemaining = i18nc("@item:intext Remaining time", "%1 remaining",
                               KGlobal::locale()->prettyFormatDuration(ETA * 1000));
-    }
-
-    if (!timeRemaining.isEmpty()) {
         m_detailsLabel->setText(i18n("%1 - %2", m_detailsLabel->text(), timeRemaining));
-    }
+    } else
+        m_detailsLabel->clear();
 }
 
 void ProgressWidget::show()

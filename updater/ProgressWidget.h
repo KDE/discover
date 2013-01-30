@@ -52,6 +52,7 @@ private:
 public Q_SLOTS:
     void show();
     void animatedHide();
+    void updateIsProgressing(bool active);
 
 private Q_SLOTS:
     void updateProgress(qreal progress);

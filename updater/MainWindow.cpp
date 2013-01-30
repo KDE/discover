@@ -53,10 +53,10 @@ MainWindow::MainWindow()
 {
     //FIXME: load all backends!
     MuonBackendsFactory f;
-    m_apps = f.backend("muon-appsbackend");
+    m_apps = f.backend("muon-dummybackend");
     m_updater = m_apps->backendUpdater();
     connect(m_apps, SIGNAL(backendReady()), SLOT(initBackend()));
-    connect(m_updater, SIGNAL(progressChanged(qreal)), SLOT(progress(qreal)));
+    connect(m_updater, SIGNAL(progressingChanged(bool)), SLOT(progressingChanged(bool)));
     connect(m_updater, SIGNAL(updatesFinnished()), SLOT(updatesFinished()));
 
     initGUI();
@@ -106,7 +106,8 @@ void MainWindow::initGUI()
     setCentralWidget(mainWidget);
 
     checkDistUpgrade();
-    connect(m_apps, SIGNAL(reloadStarted()), m_changelogWidget, SLOT(animatedHide()));
+    connect(m_apps, SIGNAL(reloadStarted()), SLOT(startedReloading()));
+    connect(m_apps, SIGNAL(reloadFinished()), SLOT(finishedReloading()));
 }
 
 void MainWindow::setupActions()
@@ -137,7 +138,7 @@ void MainWindow::setupActions()
 
     setActionsEnabled(false);
 
-    setupGUI((StandardWindowOption)(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
+    setupGUI(StandardWindowOption(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
 }
 
 void MainWindow::initBackend()
@@ -147,12 +148,11 @@ void MainWindow::initBackend()
     setActionsEnabled();
 }
 
-void MainWindow::progress(qreal p)
+void MainWindow::progressingChanged(bool active)
 {
-    if(p!=0 && p!=100) {
-        QApplication::restoreOverrideCursor();
-        m_progressWidget->show();
-    }
+    QApplication::restoreOverrideCursor();
+    m_progressWidget->setVisible(active);
+    m_updaterWidget->setVisible(!active);
 }
 
 void MainWindow::updatesFinished()
@@ -162,25 +162,18 @@ void MainWindow::updatesFinished()
     setActionsEnabled();
 }
 
-void MainWindow::reload()
+void MainWindow::startedReloading()
 {
     setCanExit(false);
     setActionsEnabled(false);
     QApplication::setOverrideCursor(Qt::WaitCursor);
-
-    disconnect(m_updaterWidget, SIGNAL(selectedResourceChanged(AbstractResource*)),
-               m_changelogWidget, SLOT(setResource(AbstractResource*)));
-
-    m_updaterWidget->reload();
-
-    connect(m_updaterWidget, SIGNAL(selectedResourceChanged(AbstractResource*)),
-            m_changelogWidget, SLOT(setResource(AbstractResource*)));
-
     m_changelogWidget->setResource(0);
+}
+
+void MainWindow::finishedReloading()
+{
     QApplication::restoreOverrideCursor();
-
     checkPlugState();
-
     setCanExit(true);
 }
 
@@ -197,7 +190,7 @@ void MainWindow::setActionsEnabled(bool enabled)
 
 void MainWindow::checkForUpdates()
 {
-    reload();
+    m_updaterWidget->reload();
 }
 
 void MainWindow::startCommit()

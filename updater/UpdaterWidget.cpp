@@ -132,6 +132,7 @@ void UpdaterWidget::setBackend(AbstractResourcesBackend *backend)
 {
     m_appsBackend = backend;
     connect(m_appsBackend, SIGNAL(reloadStarted()), m_busyWidget, SLOT(start()));
+    connect(m_appsBackend, SIGNAL(reloadStarted()), SLOT(invalidateView()));
     connect(m_appsBackend, SIGNAL(reloadFinished()), SLOT(populateUpdateModel()));
     connect(m_appsBackend->backendUpdater(), SIGNAL(updatesFinnished()), SLOT(populateUpdateModel()));
 
@@ -141,10 +142,13 @@ void UpdaterWidget::setBackend(AbstractResourcesBackend *backend)
 
 void UpdaterWidget::reload()
 {
-    setEnabled(false);
-    m_updateModel->clear();
     QMetaObject::invokeMethod(m_appsBackend, "reload");
+}
 
+void UpdaterWidget::invalidateView()
+{
+    m_updateModel->clear();
+    setEnabled(false);
     setCurrentIndex(-1);
 }
 

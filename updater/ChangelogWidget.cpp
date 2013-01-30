@@ -104,8 +104,14 @@ ChangelogWidget::ChangelogWidget(QWidget *parent)
 
 void ChangelogWidget::setResource(AbstractResource* package)
 {
+    if (m_package==package)
+        return;
+
+    if(m_package)
+        disconnect(m_package, SIGNAL(changelogFetched(QString)), this, SLOT(changelogFetched(QString)));
+
     m_package = package;
-    if(m_package) {
+    if (m_package) {
         connect(m_package, SIGNAL(changelogFetched(QString)), SLOT(changelogFetched(QString)));
         fetchChangelog();
     } else
