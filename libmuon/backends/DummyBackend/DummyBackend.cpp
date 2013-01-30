@@ -21,6 +21,7 @@
 #include "DummyBackend.h"
 #include "DummyResource.h"
 #include "DummyReviewsBackend.h"
+#include "DummyTransaction.h"
 #include <resources/StandardBackendUpdater.h>
 #include <Transaction/Transaction.h>
 
@@ -28,6 +29,7 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 #include <QDebug>
+#include <QThread>
 
 K_PLUGIN_FACTORY(MuonDummyBackendFactory, registerPlugin<DummyBackend>(); )
 K_EXPORT_PLUGIN(MuonDummyBackendFactory(KAboutData("muon-dummybackend","muon-dummybackend",ki18n("Dummy Backend"),"0.1",ki18n("Dummy backend to test muon frontends"), KAboutData::License_GPL)))
@@ -114,21 +116,26 @@ void DummyBackend::installApplication(AbstractResource* app, const QHash< QStrin
 
 void DummyBackend::installApplication(AbstractResource* app)
 {
-    Transaction* t = new Transaction(app, InstallApp);
-    emit transactionAdded(t);
-    qobject_cast<DummyResource*>(app)->setState(AbstractResource::Installed);
-    emit transactionRemoved(t);
-    t->deleteLater();
+    addTransaction(new DummyTransaction(qobject_cast<DummyResource*>(app), InstallApp));
 }
 
 void DummyBackend::removeApplication(AbstractResource* app)
 {
-    Transaction* t = new Transaction(app, RemoveApp);
-    emit transactionAdded(t);
-    qobject_cast<DummyResource*>(app)->setState(AbstractResource::None);
-    emit transactionRemoved(t);
-    t->deleteLater();
+    addTransaction(new DummyTransaction(qobject_cast<DummyResource*>(app), RemoveApp));
 }
 
 void DummyBackend::cancelTransaction(AbstractResource*)
 {}
+
+void DummyBackend::addTransaction(Transaction* t)
+{
+    Q_ASSERT(!m_transactions.contains(t));
+    m_transactions.append(t);
+    emit transactionAdded(t);
+}
+
+void DummyBackend::removeTransaction(Transaction* t)
+{
+    m_transactions.removeAll(t);
+    emit transactionRemoved(t);
+}

@@ -18,42 +18,23 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef DUMMYBACKEND_H
-#define DUMMYBACKEND_H
+#ifndef DUMMYTRANSACTION_H
+#define DUMMYTRANSACTION_H
 
-#include <resources/AbstractResourcesBackend.h>
-#include <QVariantList>
+#include <Transaction/Transaction.h>
 
 class DummyResource;
-class DummyBackend : public AbstractResourcesBackend
+class DummyTransaction : public Transaction
 {
-Q_OBJECT
-Q_INTERFACES(AbstractResourcesBackend)
-public:
-    explicit DummyBackend(QObject* parent, const QVariantList& args);
+    Q_OBJECT
+    public:
+        explicit DummyTransaction(DummyResource* app, TransactionAction action);
 
-    virtual QList<AbstractResource*> upgradeablePackages() const;
-    virtual AbstractResource* resourceByPackageName(const QString& name) const;
-    virtual QList<Transaction*> transactions() const;
-    virtual QPair< TransactionStateTransition, Transaction* > currentTransactionState() const;
-    virtual int updatesCount() const;
-    virtual AbstractBackendUpdater* backendUpdater() const;
-    virtual AbstractReviewsBackend* reviewsBackend() const;
-    virtual QStringList searchPackageName(const QString& searchText);
-    virtual QVector<AbstractResource*> allResources() const;
+    private slots:
+        void finishTransaction();
 
-    virtual void cancelTransaction(AbstractResource* app);
-    virtual void installApplication(AbstractResource* app);
-    virtual void installApplication(AbstractResource* app, const QHash< QString, bool >& addons);
-    virtual void removeApplication(AbstractResource* app);
-    void addTransaction(Transaction* t);
-    void removeTransaction(Transaction* t);
-
-private:
-    QHash<QString, DummyResource*> m_resources;
-    AbstractBackendUpdater* m_updater;
-    AbstractReviewsBackend* m_reviews;
-    QList<Transaction*> m_transactions;
+    private:
+        DummyResource* m_app;
 };
 
-#endif // DUMMYBACKEND_H
+#endif // DUMMYTRANSACTION_H

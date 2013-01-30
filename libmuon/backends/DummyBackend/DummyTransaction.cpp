@@ -18,42 +18,35 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef DUMMYBACKEND_H
-#define DUMMYBACKEND_H
+#include "DummyTransaction.h"
+#include "DummyBackend.h"
+#include "DummyResource.h"
+#include <QTimer>
+#include <KRandom>
 
-#include <resources/AbstractResourcesBackend.h>
-#include <QVariantList>
-
-class DummyResource;
-class DummyBackend : public AbstractResourcesBackend
+DummyTransaction::DummyTransaction(DummyResource* app, TransactionAction action)
+    : Transaction(app, action)
+    , m_app(app)
 {
-Q_OBJECT
-Q_INTERFACES(AbstractResourcesBackend)
-public:
-    explicit DummyBackend(QObject* parent, const QVariantList& args);
+    QTimer::singleShot(KRandom::random()%2000, this, SLOT(finishTransaction()));
+}
 
-    virtual QList<AbstractResource*> upgradeablePackages() const;
-    virtual AbstractResource* resourceByPackageName(const QString& name) const;
-    virtual QList<Transaction*> transactions() const;
-    virtual QPair< TransactionStateTransition, Transaction* > currentTransactionState() const;
-    virtual int updatesCount() const;
-    virtual AbstractBackendUpdater* backendUpdater() const;
-    virtual AbstractReviewsBackend* reviewsBackend() const;
-    virtual QStringList searchPackageName(const QString& searchText);
-    virtual QVector<AbstractResource*> allResources() const;
-
-    virtual void cancelTransaction(AbstractResource* app);
-    virtual void installApplication(AbstractResource* app);
-    virtual void installApplication(AbstractResource* app, const QHash< QString, bool >& addons);
-    virtual void removeApplication(AbstractResource* app);
-    void addTransaction(Transaction* t);
-    void removeTransaction(Transaction* t);
-
-private:
-    QHash<QString, DummyResource*> m_resources;
-    AbstractBackendUpdater* m_updater;
-    AbstractReviewsBackend* m_reviews;
-    QList<Transaction*> m_transactions;
-};
-
-#endif // DUMMYBACKEND_H
+void DummyTransaction::finishTransaction()
+{
+    AbstractResource::State newState;
+    switch(action()) {
+    case InstallApp:
+    case ChangeAddons:
+        newState = AbstractResource::Installed;
+        break;
+    case RemoveApp:
+        newState = AbstractResource::None;
+        break;
+    case InvalidAction:
+        newState = AbstractResource::Broken;
+        break;
+    }
+    m_app->setState(newState);
+    qobject_cast<DummyBackend*>(m_app->backend())->removeTransaction(this);
+    deleteLater();
+}
