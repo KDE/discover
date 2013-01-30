@@ -48,8 +48,9 @@ bool StandardBackendUpdater::hasUpdates() const
 
 void StandardBackendUpdater::start()
 {
+    emit progressingChanged(true);
     m_settingUp = true;
-    setProgress(10);
+    setProgress(-1);
     foreach(AbstractResource* res, m_toUpgrade) {
         m_pendingResources += res;
         m_backend->installApplication(res);
@@ -57,6 +58,7 @@ void StandardBackendUpdater::start()
 
     if(m_pendingResources.isEmpty()) {
         emit updatesFinnished();
+        emit progressingChanged(false);
     }
     m_settingUp = false;
 }
@@ -68,8 +70,10 @@ void StandardBackendUpdater::transactionRemoved(Transaction* t)
         setStatusMessage(i18n("%1 has been updated", t->resource()->name()));
         qreal p = 1-(qreal(m_pendingResources.size())/m_toUpgrade.size());
         setProgress(100*p);
-        if(m_pendingResources.isEmpty())
+        if(m_pendingResources.isEmpty()) {
             emit updatesFinnished();
+            emit progressingChanged(false);
+        }
     }
 }
 
@@ -80,7 +84,7 @@ qreal StandardBackendUpdater::progress() const
 
 void StandardBackendUpdater::setProgress(qreal p)
 {
-    if(p>m_progress) {
+    if(p>m_progress || p<0) {
         m_progress = p;
         emit progressChanged(p);
     }
@@ -138,7 +142,7 @@ bool StandardBackendUpdater::isCancelable() const
 
 bool StandardBackendUpdater::isProgressing() const
 {
-    return false;
+    return m_settingUp || !m_pendingResources.isEmpty();
 }
 
 QString StandardBackendUpdater::statusDetail() const
