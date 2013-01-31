@@ -91,6 +91,7 @@ BodegaBackend::BodegaBackend(QObject* parent, const QVariantList& args)
     m_session->setStoreId("VIVALDI-1");
     connect(m_session, SIGNAL(authenticated(bool)), SLOT(resetResources()));
     m_session->signOn();
+    connect(this, SIGNAL(transactionRemoved(Transaction*)), SIGNAL(updatesCountChanged()));
 }
 
 BodegaBackend::~BodegaBackend()

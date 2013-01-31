@@ -47,6 +47,7 @@ DummyBackend::DummyBackend(QObject* parent, const QVariantList&)
     
     QMetaObject::invokeMethod(this, "backendReady", Qt::QueuedConnection);
     m_reviews = new DummyReviewsBackend(this);
+    connect(this, SIGNAL(transactionRemoved(Transaction*)), SIGNAL(updatesCountChanged()));
 }
 
 QVector<AbstractResource*> DummyBackend::allResources() const
