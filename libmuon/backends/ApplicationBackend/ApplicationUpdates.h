@@ -52,7 +52,6 @@ public:
     virtual void addResources(const QList<AbstractResource*>& apps);
     virtual void removeResources(const QList<AbstractResource*>& apps);
     virtual void cleanup();
-    virtual void prepare();
     virtual QList<AbstractResource*> toUpdate() const;
     virtual bool isAllMarked() const;
     virtual QDateTime lastUpdate() const;
@@ -60,6 +59,9 @@ public:
     virtual bool isProgressing() const;
     virtual QString statusDetail() const;
     virtual QString statusMessage() const;
+    virtual void cancel();
+    virtual quint64 downloadSpeed() const;
+    void prepare();
 
 private:
     void setProgressing(bool progressing);
@@ -77,7 +79,7 @@ private:
 private slots:
     void transactionStatusChanged(QApt::TransactionStatus status);
     void errorOccurred(QApt::ErrorCode error);
-    void progressChanged(int progress);
+    void setProgress(int progress);
     void etaChanged(quint64 eta);
     void installMessage(const QString& message);
     void setupTransaction(QApt::Transaction *trans);
