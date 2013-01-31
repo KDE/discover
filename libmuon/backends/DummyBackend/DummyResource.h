@@ -46,7 +46,7 @@ public:
     virtual QString comment();
     virtual QString name();
     virtual QString packageName() const;
-    virtual void fetchChangelog();
+    QString sizeDescription();
     virtual bool isTechnical() const { return false; }
     void setState(State state);
 
