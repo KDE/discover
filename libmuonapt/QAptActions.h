@@ -80,6 +80,9 @@ public slots:
 private slots:
     void closeHistoryDialog();
     void setActionsEnabledInternal(bool enabled);
+    void checkDistUpgrade();
+    void launchDistUpgrade();
+    void checkerFinished(int res);
 
 private:
     QAptActions();

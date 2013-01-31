@@ -25,6 +25,7 @@
 // Qt includes
 #include <QtCore/QDir>
 #include <QtCore/QStringBuilder>
+#include <QDebug>
 
 // KDE includes
 #include <KAction>
@@ -36,6 +37,7 @@
 #include <KStandardAction>
 #include <KXmlGuiWindow>
 #include <Solid/Networking>
+#include <KStandardDirs>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -146,6 +148,16 @@ void QAptActions::setupActions()
     historyAction->setText(i18nc("@action::inmenu", "History..."));
     historyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_H));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showHistoryDialog()));
+
+    KAction *distUpgradeAction = actionCollection()->addAction("dist-upgrade");
+    distUpgradeAction->setIcon(KIcon("system-software-update"));
+    distUpgradeAction->setText(i18nc("@action", "Upgrade"));
+    distUpgradeAction->setPriority(QAction::HighPriority);
+    distUpgradeAction->setWhatsThis(i18nc("Notification when a new version of Kubuntu is available",
+                                        "A new version of Kubuntu is available."));
+    distUpgradeAction->setEnabled(false);
+    connect(distUpgradeAction, SIGNAL(triggered(bool)), SLOT(launchDistUpgrade()));
+    checkDistUpgrade();
 }
 
 void QAptActions::setActionsEnabledInternal(bool enabled)
@@ -163,10 +175,10 @@ void QAptActions::setActionsEnabledInternal(bool enabled)
     actionCollection()->action("save_download_list")->setEnabled(isConnected());
 
     bool changesPending = m_backend->areChangesMarked();
-    actionCollection()->action("open_markings")->setEnabled(true);
     actionCollection()->action("save_markings")->setEnabled(changesPending);
     actionCollection()->action("save_download_list")->setEnabled(changesPending);
-    actionCollection()->action("save_package_list")->setEnabled(true);
+    actionCollection()->action("dist-upgrade")->setEnabled(false);
+    checkDistUpgrade();
 }
 
 bool QAptActions::isConnected() const {
@@ -473,4 +485,32 @@ void QAptActions::setActionsEnabled(bool enabled)
         m_mainWindow->setActionsEnabled(enabled);
     else
         setActionsEnabledInternal(enabled);
+}
+
+void QAptActions::launchDistUpgrade()
+{
+    KProcess::startDetached(QStringList() << "python"
+                            << "/usr/share/pyshared/UpdateManager/DistUpgradeFetcherKDE.py");
+}
+
+void QAptActions::checkDistUpgrade()
+{
+    if(!QFile::exists("/usr/share/pyshared/UpdateManager/DistUpgradeFetcherKDE.py")) {
+        qWarning() << "Couldn't find the /usr/share/pyshared/UpdateManager/DistUpgradeFetcherKDE.py file";
+    }
+    QString checkerFile = KStandardDirs::locate("data", "muon-notifier/releasechecker");
+    if(checkerFile.isEmpty()) {
+        qWarning() << "Couldn't find the releasechecker script";
+    }
+
+    KProcess* checkerProcess = new KProcess(this);
+    checkerProcess->setProgram(QStringList() << "/usr/bin/python" << checkerFile);
+    connect(checkerProcess, SIGNAL(finished(int)), this, SLOT(checkerFinished(int)));
+    connect(checkerProcess, SIGNAL(finished(int)), checkerProcess, SLOT(deleteLater()));
+    checkerProcess->start();
+}
+
+void QAptActions::checkerFinished(int res)
+{
+    QAptActions::self()->actionCollection()->action("dist-upgrade")->setEnabled(res == 0);
 }

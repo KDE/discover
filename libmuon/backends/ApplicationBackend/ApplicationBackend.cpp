@@ -567,15 +567,6 @@ void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
     updateAction->setEnabled(w->isConnected());
     connect(updateAction, SIGNAL(triggered()), SLOT(reload()));
     connect(w, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
-    
-    KAction *distUpgradeAction = w->actionCollection()->addAction("dist-upgrade");
-    distUpgradeAction->setIcon(KIcon("system-software-update"));
-    distUpgradeAction->setText(i18nc("@action", "Upgrade"));
-    distUpgradeAction->setWhatsThis(i18nc("Notification when a new version of Kubuntu is available",
-                                        "A new version of Kubuntu is available."));
-    distUpgradeAction->setEnabled(false);
-    connect(distUpgradeAction, SIGNAL(triggered(bool)), SLOT(launchDistUpgrade()));
-    checkDistUpgrade();
 }
 
 QWidget* ApplicationBackend::mainWindow() const
@@ -668,26 +659,4 @@ QList< AbstractResource* > ApplicationBackend::upgradeablePackages() const
             ret+=r;
     }
     return ret;
-}
-
-void ApplicationBackend::launchDistUpgrade()
-{
-    KProcess::startDetached(QStringList() << "python"
-                            << "/usr/share/pyshared/UpdateManager/DistUpgradeFetcherKDE.py");
-}
-
-void ApplicationBackend::checkDistUpgrade()
-{
-    QString checkerFile = KStandardDirs::locate("data", "muon-notifier/releasechecker");
-
-    KProcess* checkerProcess = new KProcess(this);
-    checkerProcess->setProgram(QStringList() << "/usr/bin/python" << checkerFile);
-    connect(checkerProcess, SIGNAL(finished(int)), this, SLOT(checkerFinished(int)));
-    connect(checkerProcess, SIGNAL(finished(int)), checkerProcess, SLOT(deleteLater()));
-    checkerProcess->start();
-}
-
-void ApplicationBackend::checkerFinished(int res)
-{
-    QAptActions::self()->actionCollection()->action("dist-upgrade")->setEnabled(res == 0);
 }

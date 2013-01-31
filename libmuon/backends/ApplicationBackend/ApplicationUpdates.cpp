@@ -22,10 +22,12 @@
 
 // Qt includes
 #include <QIcon>
+#include <QAction>
 
 // KDE includes
 #include <KProtocolManager>
 #include <KMessageBox>
+#include <KActionCollection>
 
 // Own includes
 #include <LibQApt/Transaction>
@@ -406,4 +408,13 @@ void ApplicationUpdates::cancel()
 quint64 ApplicationUpdates::downloadSpeed() const
 {
     return m_trans->downloadSpeed();
+}
+
+QList<QAction*> ApplicationUpdates::messageActions() const
+{
+    QList<QAction*> ret;
+    ret += QAptActions::self()->actionCollection()->action("update");
+    ret += QAptActions::self()->actionCollection()->action("dist-upgrade");
+    Q_ASSERT(!ret.contains(nullptr));
+    return ret;
 }

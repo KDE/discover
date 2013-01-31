@@ -62,6 +62,7 @@ public:
     virtual void cancel();
     virtual quint64 downloadSpeed() const;
     void prepare();
+    virtual QList<QAction*> messageActions() const;
 
 private:
     void setProgressing(bool progressing);
