@@ -83,6 +83,7 @@ ChangesDialog::ChangesDialog(QWidget *parent, const QApt::StateChanges &changes)
     packageView->setModel(m_model);
     addPackages(changes);
     packageView->expandAll();
+    packageView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     layout->addWidget(headerLabel);
     layout->addWidget(label);
@@ -94,23 +95,14 @@ void ChangesDialog::addPackages(const QApt::StateChanges &changes)
 {
     for (auto i = changes.constBegin(); i != changes.constEnd(); ++i) {
         QStandardItem *root = new QStandardItem;
-        root->setText(MuonStrings::global()->packageStateName(i.key()));
-        root->setEditable(false);
+        root->setText(MuonStrings::global()->packageChangeStateName(i.key()));
 
         QFont font = root->font();
         font.setBold(true);
         root->setFont(font);
 
-        const QApt::PackageList packages = i.value();
-
-        QStandardItem *item = 0;
-        for (QApt::Package *package : packages) {
-            item = new QStandardItem;
-            item->setText(package->name());
-            item->setEditable(false);
-            item->setIcon(KIcon("muon"));
-
-            root->appendRow(item);
+        for (QApt::Package *package : *i) {
+            root->appendRow(new QStandardItem(KIcon("muon"), package->name()));
         }
 
         m_model->appendRow(root);
@@ -120,14 +112,8 @@ void ChangesDialog::addPackages(const QApt::StateChanges &changes)
 int ChangesDialog::countChanges(const QApt::StateChanges &changes)
 {
     int count = 0;
-    auto iter = changes.constBegin();
-
-    while (iter != changes.constEnd()) {
-        const QApt::PackageList packages = iter.value();
-        count += packages.size();
-
-        ++iter;
+    foreach (const QApt::PackageList& pkgs, changes) {
+        count += pkgs.size();
     }
-
     return count;
 }

@@ -22,6 +22,7 @@
 
 #include <KGlobal>
 #include <KLocale>
+#include <QDebug>
 
 #include <LibQApt/Transaction>
 
@@ -196,9 +197,9 @@ QHash<int, QString> MuonStrings::stateHash()
     hash[QApt::Package::NowBroken] = i18nc("@info:status Package state", "Broken");
     hash[QApt::Package::ResidualConfig] = i18nc("@info:status Package state", "Residual Configuration");
     hash[QApt::Package::IsGarbage] = i18nc("@info:status Package state", "Installed (auto-removable)");
+    hash[QApt::Package::NewInstall] = i18nc("@info:status Requested action", "Install");
     hash[QApt::Package::ToKeep] = i18nc("@info:status Package state", "No Change");
     hash[QApt::Package::ToInstall] = i18nc("@info:status Requested action", "Install");
-    hash[QApt::Package::NewInstall] = i18nc("@info:status Requested action", "Install");
     hash[QApt::Package::ToUpgrade] = i18nc("@info:status Requested action", "Upgrade");
     hash[QApt::Package::ToRemove] = i18nc("@info:status Requested action", "Remove");
     hash[QApt::Package::ToPurge] = i18nc("@info:status Requested action", "Purge");
@@ -213,6 +214,14 @@ QHash<int, QString> MuonStrings::stateHash()
 QString MuonStrings::packageStateName(QApt::Package::State state) const
 {
     return m_stateHash.value(state);
+}
+
+QString MuonStrings::packageChangeStateName(QApt::Package::State state) const
+{
+    return m_stateHash.value(state & (QApt::Package::ToKeep | QApt::Package::ToInstall
+                                    | QApt::Package::ToUpgrade | QApt::Package::ToRemove
+                                    | QApt::Package::ToPurge | QApt::Package::ToReInstall
+                                    | QApt::Package::ToDowngrade));
 }
 
 QHash<QString, QString> MuonStrings::archHash()

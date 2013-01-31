@@ -287,7 +287,7 @@ bool ApplicationBackend::confirmRemoval(QApt::StateChanges changes)
     QApt::StateChanges removals;
     removals[QApt::Package::ToRemove] = removeList;
 
-    QPointer<ChangesDialog> dialog = new ChangesDialog(0, removals);
+    QPointer<ChangesDialog> dialog = new ChangesDialog(mainWindow(), removals);
     bool ret = dialog->exec() == QDialog::Accepted;
     delete dialog;
     return ret;
