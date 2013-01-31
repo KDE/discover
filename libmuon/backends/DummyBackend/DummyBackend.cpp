@@ -106,7 +106,7 @@ QPair<TransactionStateTransition, Transaction*> DummyBackend::currentTransaction
 
 QList<Transaction*> DummyBackend::transactions() const
 {
-    return QList<Transaction*>();
+    return m_transactions;
 }
 
 void DummyBackend::installApplication(AbstractResource* app, const QHash< QString, bool >&)

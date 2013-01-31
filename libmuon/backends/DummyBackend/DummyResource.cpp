@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include "DummyResource.h"
+#include <QDesktopServices>
 
 DummyResource::DummyResource(const QString& name, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
@@ -120,4 +121,9 @@ void DummyResource::setState(AbstractResource::State state)
 {
     m_state = state;
     emit stateChanged();
+}
+void DummyResource::invokeApplication() const
+{
+    QDesktopServices d;
+    d.openUrl(QUrl("https://projects.kde.org/projects/extragear/sysadmin/muon"));
 }
