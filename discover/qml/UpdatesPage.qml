@@ -31,12 +31,13 @@ Page
             rightMargin: sideMargin
             leftMargin: sideMargin
         }
-        value: updatesModel.progress*100
+        value: updatesModel.progress
         minimumValue: 0
         maximumValue: 100
+        indeterminate: updatesModel.progress==-1
         
         Label {
-            anchors.fill: parent
+            anchors.centerIn: parent
             text: updatesModel.remainingTime
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
