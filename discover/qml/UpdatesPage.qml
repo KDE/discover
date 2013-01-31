@@ -16,6 +16,11 @@ Page
         onUpdatesFinnished: page.pageStack.pop()
     }
     onVisibleChanged: window.navigationEnabled=!visible
+    Binding {
+        target: progressBox
+        property: "enabled"
+        value: !page.visible
+    }
 
     ProgressBar {
         id: progress

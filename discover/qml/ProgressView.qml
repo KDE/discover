@@ -7,6 +7,7 @@ import "navigation.js" as Navigation
 ToolBar {
     id: page
     property bool active: transactionsModel.count>0
+    property bool enabled: true
     height: active ? contents.height+2*contents.anchors.margins : 0
     
     Behavior on height {
@@ -17,7 +18,7 @@ ToolBar {
         id: backendConnections
         target: resourcesModel
         onTransactionAdded: {
-            if(transactionsModel.appAt(transaction.resource)<0)
+            if(page.enabled && transactionsModel.appAt(transaction.resource)<0)
                 transactionsModel.append({'app': transaction.resource})
         }
 
