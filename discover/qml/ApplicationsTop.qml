@@ -29,7 +29,7 @@ ListView {
     property alias filteredCategory: appsModel.filteredCategory
     property Component roleDelegate: null
     property string title: ""
-    
+
     interactive: false
     model: ApplicationProxyModel {
         id: appsModel
@@ -41,10 +41,11 @@ ListView {
         width: parent.width
         horizontalAlignment: Text.AlignHCenter
         font.weight: Font.Bold
+        height: paintedHeight*1.5
     }
     delegate: ListItem {
                 width: ListView.view.width
-                height: 30
+                height: (view.height-nameLabel.paintedHeight*1.5-view.spacing*5)/5
                 enabled: true
                 QIconItem {
                     id: iconItem
@@ -55,7 +56,12 @@ ListView {
                 }
                 Label {
                     id: nameLabel
-                    anchors { left: iconItem.right; right: pointsLabel.left; verticalCenter: parent.verticalCenter }
+                    anchors {
+                        left: iconItem.right
+                        right: pointsLabel.left
+                        verticalCenter: parent.verticalCenter
+                        leftMargin: 5
+                    }
                     text: name
                     elide: Text.ElideRight
                 }
