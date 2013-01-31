@@ -37,6 +37,8 @@
 #include <KIO/Job>
 #include <KDebug>
 #include <KAboutData>
+#include <KAction>
+#include <KActionCollection>
 
 // LibQApt/DebconfKDE includes
 #include <LibQApt/Backend>
@@ -557,6 +559,23 @@ void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
     else
         connect(this, SIGNAL(aptBackendInitialized(QApt::Backend*)), apt, SLOT(setBackend(QApt::Backend*)));
     connect(apt, SIGNAL(sourcesEditorClosed(bool)), SLOT(reload()));
+
+    KAction* updateAction = w->actionCollection()->addAction("update");
+    updateAction->setIcon(KIcon("system-software-update"));
+    updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
+    updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
+    updateAction->setEnabled(w->isConnected());
+    connect(updateAction, SIGNAL(triggered()), SLOT(reload()));
+    connect(w, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
+    
+    KAction *distUpgradeAction = w->actionCollection()->addAction("dist-upgrade");
+    distUpgradeAction->setIcon(KIcon("system-software-update"));
+    distUpgradeAction->setText(i18nc("@action", "Upgrade"));
+    distUpgradeAction->setWhatsThis(i18nc("Notification when a new version of Kubuntu is available",
+                                        "A new version of Kubuntu is available."));
+    distUpgradeAction->setEnabled(false);
+    connect(distUpgradeAction, SIGNAL(triggered(bool)), SLOT(launchDistUpgrade()));
+    checkDistUpgrade();
 }
 
 QWidget* ApplicationBackend::mainWindow() const
@@ -649,4 +668,26 @@ QList< AbstractResource* > ApplicationBackend::upgradeablePackages() const
             ret+=r;
     }
     return ret;
+}
+
+void ApplicationBackend::launchDistUpgrade()
+{
+    KProcess::startDetached(QStringList() << "python"
+                            << "/usr/share/pyshared/UpdateManager/DistUpgradeFetcherKDE.py");
+}
+
+void ApplicationBackend::checkDistUpgrade()
+{
+    QString checkerFile = KStandardDirs::locate("data", "muon-notifier/releasechecker");
+
+    KProcess* checkerProcess = new KProcess(this);
+    checkerProcess->setProgram(QStringList() << "/usr/bin/python" << checkerFile);
+    connect(checkerProcess, SIGNAL(finished(int)), this, SLOT(checkerFinished(int)));
+    connect(checkerProcess, SIGNAL(finished(int)), checkerProcess, SLOT(deleteLater()));
+    checkerProcess->start();
+}
+
+void ApplicationBackend::checkerFinished(int res)
+{
+    QAptActions::self()->actionCollection()->action("dist-upgrade")->setEnabled(res == 0);
 }

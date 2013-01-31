@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,55 +18,20 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#include "KActionMessageWidget.h"
+#include <QAction>
 
-// Own includes
-#include "../libmuon/MuonMainWindow.h"
-
-class AbstractBackendUpdater;
-class AbstractResourcesBackend;
-class KAction;
-class KDialog;
-class KMessageWidget;
-class KProcess;
-class ChangelogWidget;
-class ProgressWidget;
-class UpdaterSettingsDialog;
-class UpdaterWidget;
-
-class MainWindow : public MuonMainWindow
+KActionMessageWidget::KActionMessageWidget(QAction* action, QWidget* parent)
+    : KMessageWidget(parent)
+    , m_action(action)
 {
-    Q_OBJECT
-public:
-    MainWindow();
+    setText(action->whatsThis());
+    addAction(action);
+    reconsiderVisibility();
+    connect(action, SIGNAL(changed()), SLOT(reconsiderVisibility()));
+}
 
-private:
-    AbstractBackendUpdater* m_updater;
-
-    ProgressWidget *m_progressWidget;
-    UpdaterWidget *m_updaterWidget;
-    ChangelogWidget *m_changelogWidget;
-    UpdaterSettingsDialog *m_settingsDialog;
-    KMessageWidget *m_powerMessage;
-    KAction *m_applyAction;
-
-    AbstractResourcesBackend* m_apps;
-    virtual void setActionsEnabled(bool enabled = true);
-
-private Q_SLOTS:
-    void initGUI();
-    void initBackend();
-    void setupActions();
-    void startCommit();
-    void editSettings();
-    void closeSettingsDialog();
-    void checkPlugState();
-    void updatePlugState(bool plugged);
-    void progressingChanged(bool active);
-    void updatesFinished();
-    void startedReloading();
-    void finishedReloading();
-};
-
-#endif // MAINWINDOW_H
+void KActionMessageWidget::reconsiderVisibility()
+{
+    setVisible(m_action->isEnabled());
+}

@@ -49,6 +49,7 @@ public:
     void setReloadWhenEditorFinished(bool reload);
     void initError();
     void displayTransactionError(QApt::ErrorCode error, QApt::Transaction* trans);
+    KActionCollection* actionCollection();
     
 signals:
     void shouldConnect(bool isConnected);
@@ -89,8 +90,6 @@ private:
     MuonMainWindow* m_mainWindow;
     bool m_reloadWhenEditorFinished;
     KDialog* m_historyDialog;
-
-    KActionCollection* actionCollection();
 };
 
 #endif // QAPTACTIONS_H

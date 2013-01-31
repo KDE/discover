@@ -23,6 +23,7 @@
 #include "ResourcesModel.h"
 #include <Transaction/Transaction.h>
 #include <KLocalizedString>
+#include <KAction>
 #include <QDateTime>
 #include <QDebug>
 #include <QTimer>
@@ -167,3 +168,7 @@ quint64 StandardBackendUpdater::downloadSpeed() const
     return 0;
 }
 
+QList<QAction*> StandardBackendUpdater::messageActions() const
+{
+    return QList<QAction*>();
+}

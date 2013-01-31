@@ -140,11 +140,6 @@ void UpdaterWidget::setBackend(AbstractResourcesBackend *backend)
     setEnabled(true);
 }
 
-void UpdaterWidget::reload()
-{
-    QMetaObject::invokeMethod(m_appsBackend, "reload");
-}
-
 void UpdaterWidget::invalidateView()
 {
     m_updateModel->clear();

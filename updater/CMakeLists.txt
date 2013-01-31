@@ -6,6 +6,7 @@ set(muon_updater_SRCS
     ChangelogWidget.cpp
     ProgressWidget.cpp
     UpdaterWidget.cpp
+    KActionMessageWidget.cpp
     UpdateModel/UpdateItem.cpp
     UpdateModel/UpdateModel.cpp
     UpdateModel/UpdateDelegate.cpp

@@ -24,6 +24,7 @@
 #include <QObject>
 #include "libmuonprivate_export.h"
 
+class QAction;
 class QDateTime;
 class QIcon;
 class AbstractResource;
@@ -59,6 +60,8 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
         virtual QString statusMessage() const = 0;
         virtual QString statusDetail() const = 0;
         virtual quint64 downloadSpeed() const = 0;
+
+        virtual QList<QAction*> messageActions() const = 0;
 
     public slots:
         ///must be implemented if ever isCancelable is true

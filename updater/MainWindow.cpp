@@ -36,6 +36,7 @@
 #include <KStandardDirs>
 #include <Solid/Device>
 #include <Solid/AcAdapter>
+#include <KToolBar>
 
 // Own includes
 #include <MuonBackendsFactory.h>
@@ -45,11 +46,11 @@
 #include "ProgressWidget.h"
 #include "config/UpdaterSettingsDialog.h"
 #include "UpdaterWidget.h"
+#include "KActionMessageWidget.h"
 
 MainWindow::MainWindow()
     : MuonMainWindow()
     , m_settingsDialog(nullptr)
-    , m_checkerProcess(nullptr)
 {
     //FIXME: load all backends!
     MuonBackendsFactory f;
@@ -65,6 +66,7 @@ MainWindow::MainWindow()
 void MainWindow::initGUI()
 {
     setWindowTitle(i18nc("@title:window", "Software Updates"));
+    m_apps->integrateMainWindow(this);
 
     QWidget *mainWidget = new QWidget(this);
     QVBoxLayout *mainLayout = new QVBoxLayout(mainWidget);
@@ -75,12 +77,6 @@ void MainWindow::initGUI()
     m_powerMessage->hide();
     m_powerMessage->setMessageType(KMessageWidget::Warning);
     checkPlugState();
-
-    m_distUpgradeMessage = new KMessageWidget(mainWidget);
-    m_distUpgradeMessage->hide();
-    m_distUpgradeMessage->setMessageType(KMessageWidget::Information);
-    m_distUpgradeMessage->setText(i18nc("Notification when a new version of Kubuntu is available",
-                                        "A new version of Kubuntu is available."));
 
     m_progressWidget = new ProgressWidget(mainWidget);
     m_progressWidget->setTransaction(m_updater);
@@ -95,17 +91,15 @@ void MainWindow::initGUI()
             m_changelogWidget, SLOT(setResource(AbstractResource*)));
 
     mainLayout->addWidget(m_powerMessage);
-    mainLayout->addWidget(m_distUpgradeMessage);
+//     mainLayout->addWidget(m_distUpgradeMessage);
     mainLayout->addWidget(m_progressWidget);
     mainLayout->addWidget(m_updaterWidget);
     mainLayout->addWidget(m_changelogWidget);
 
-    m_apps->integrateMainWindow(this);
-    setupActions();
     mainWidget->setLayout(mainLayout);
     setCentralWidget(mainWidget);
+    setupActions();
 
-    checkDistUpgrade();
     connect(m_apps, SIGNAL(reloadStarted()), SLOT(startedReloading()));
     connect(m_apps, SIGNAL(reloadFinished()), SLOT(finishedReloading()));
 }
@@ -114,16 +108,6 @@ void MainWindow::setupActions()
 {
     MuonMainWindow::setupActions();
 
-    KAction* updateAction = actionCollection()->addAction("update");
-    updateAction->setIcon(KIcon("system-software-update"));
-    updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
-    updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
-    connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
-    if (!isConnected()) {
-        updateAction->setDisabled(true);
-    }
-    connect(this, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
-
     m_applyAction = actionCollection()->addAction("apply");
     m_applyAction->setIcon(KIcon("dialog-ok-apply"));
     m_applyAction->setText(i18nc("@action Downloads and installs updates", "Install Updates"));
@@ -131,14 +115,18 @@ void MainWindow::setupActions()
 
     KStandardAction::preferences(this, SLOT(editSettings()), actionCollection());
 
-    KAction *distUpgradeAction = new KAction(KIcon("system-software-update"), i18nc("@action", "Upgrade"), this);
-    connect(distUpgradeAction, SIGNAL(activated()), this, SLOT(launchDistUpgrade()));
-
-    m_distUpgradeMessage->addAction(distUpgradeAction);
-
     setActionsEnabled(false);
 
     setupGUI(StandardWindowOption(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
+
+    foreach (QAction* action, m_updater->messageActions()) {
+        if (action->priority()==QAction::HighPriority) {
+            KActionMessageWidget* w = new KActionMessageWidget(action, centralWidget());
+            qobject_cast<QBoxLayout*>(centralWidget()->layout())->insertWidget(1, w);
+        } else {
+            toolBar("mainToolBar")->addAction(action);
+        }
+    }
 }
 
 void MainWindow::initBackend()
@@ -186,11 +174,6 @@ void MainWindow::setActionsEnabled(bool enabled)
 
     m_applyAction->setEnabled(m_updater->hasUpdates());
     m_updaterWidget->setEnabled(true);
-}
-
-void MainWindow::checkForUpdates()
-{
-    m_updaterWidget->reload();
 }
 
 void MainWindow::startCommit()
@@ -244,31 +227,4 @@ void MainWindow::checkPlugState()
 void MainWindow::updatePlugState(bool plugged)
 {
     m_powerMessage->setVisible(!plugged);
-}
-
-void MainWindow::checkDistUpgrade()
-{
-    QString checkerFile = KStandardDirs::locate("data", "muon-notifier/releasechecker");
-
-    //TODO: Port to backends
-    m_checkerProcess = new KProcess(this);
-    m_checkerProcess->setProgram(QStringList() << "/usr/bin/python" << checkerFile);
-    connect(m_checkerProcess, SIGNAL(finished(int)), this, SLOT(checkerFinished(int)));
-    m_checkerProcess->start();
-}
-
-void MainWindow::checkerFinished(int res)
-{
-    if (res == 0) {
-        m_distUpgradeMessage->show();
-    }
-
-    m_checkerProcess->deleteLater();
-    m_checkerProcess = nullptr;
-}
-
-void MainWindow::launchDistUpgrade()
-{
-    KProcess::startDetached(QStringList() << "python"
-                            << "/usr/share/pyshared/UpdateManager/DistUpgradeFetcherKDE.py");
 }
