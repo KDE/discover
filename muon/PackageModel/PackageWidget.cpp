@@ -46,6 +46,7 @@
 
 // LibQApt includes
 #include <LibQApt/Backend>
+#include <LibQApt/DependencyInfo>
 #include <LibQApt/MarkingErrorInfo>
 
 // Own includes
@@ -621,7 +622,7 @@ void PackageWidget::showBrokenReason(QApt::Package *package)
 QString PackageWidget::digestReason(QApt::Package *pkg, const QApt::MarkingErrorInfo &info)
 {
     QString reason;
-    QString relation = pkgCache::DepType(info.errorInfo().dependencyType());
+    QString relation = QApt::DependencyInfo::typeName(info.errorInfo().dependencyType());
 
     reason += '\t';
 
@@ -647,6 +648,8 @@ QString PackageWidget::digestReason(QApt::Package *pkg, const QApt::MarkingError
         reason += i18nc("@label Example: Depends: libqapt, but it is a virtual package",
                         "%1: %2, but it is a virtual package",
                         relation, pkg->name());
+        break;
+    default:
         break;
     }
 

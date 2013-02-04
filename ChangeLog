@@ -2,8 +2,12 @@
 ======
 - Features:
   * Added a KNewStuff backend, adding categories for Plasma Widgets and Plasma Comics.
+  * Added a Bodega resource backend to Muon Discover and the Muon Software Center.
+  * The QApt backend is now optional for Muon Discover, and other backends can be used
+    on platforms other than Debian-based linux distributions.
   * Miscellaenous improvements/polish for Muon Discover
   * Port to LibQApt2.
+  * User interface consistency improvements for Muon Discover, integrating better with KDE.
 - Bugfixes:
   * Prevent changelog fetch jobs from being processed during a cache reload, by manually
     controlling the lifetime of the KJobs and deleting them before we start reloading.
@@ -17,7 +21,7 @@
     Applications if their data had not been removed from app-install-data. (BKO: #309283)
 - Optimizations:
   * Improve startup time by 2% by using a fast integer-to-power approximation when
-    calculating the normal distribution for an application Rating.
+    calculating the normal distribution for an application rating.
 
 1.4.0
 ======

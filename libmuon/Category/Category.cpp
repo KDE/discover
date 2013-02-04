@@ -24,58 +24,42 @@
 
 #include <KLocale>
 #include <KStandardDirs>
+#include <KDebug>
 #include <QFile>
-#include <QDebug>
 
-Category::Category(const QDomNode &data, CategoryChildPolicy policy)
-        : m_iconString("applications-other")
-        , m_hasSubCategories(false)
-        , m_showTechnical(false)
-        , m_policy(policy)
-{
-    parseData(data);
-}
-
-Category::Category(const QString& name, QObject* parent)
+Category::Category(const QDomNode& data, bool canHaveChildren, QObject* parent)
         : QObject(parent)
-        , m_name(name)
         , m_iconString("applications-other")
-        , m_hasSubCategories(false)
         , m_showTechnical(false)
-        , m_policy(NoChildren)
 {
-    m_andFilters.append(qMakePair(CategoryFilter, name));
+    parseData(data, canHaveChildren);
 }
 
 Category::~Category()
 {}
 
-void Category::parseData(const QDomNode &data)
+void Category::parseData(const QDomNode& data, bool canHaveChildren)
 {
+    if(canHaveChildren) {
+        m_name = i18nc("@label The label used for viewing all members of this category", "All");
+    }
     QDomNode node = data.firstChild();
     while(!node.isNull())
     {
         QDomElement tempElement = node.toElement();
 
-        if (tempElement.tagName() == QLatin1String("Name")) {
-            if (m_policy == CanHaveChildren) {
+        if (canHaveChildren) {
+            if (tempElement.tagName() == QLatin1String("Name")) {
                 m_name = i18nc("Category", tempElement.text().toUtf8());
-            } else {
-                m_name = i18nc("@label The label used for viewing all members of this category", "All");
+            } else if (tempElement.tagName() == QLatin1String("Menu")) {
+                m_subCategories << new Category(node, true, this);
             }
-        } else if (tempElement.tagName() == QLatin1String("Icon")) {
-            if (!tempElement.text().isEmpty()) {
-                m_iconString = tempElement.text();
-            }
+        }
+        
+        if (tempElement.tagName() == QLatin1String("Icon") && tempElement.hasChildNodes()) {
+            m_iconString = tempElement.text();
         } else if (tempElement.tagName() == QLatin1String("ShowTechnical")) {
             m_showTechnical = true;
-        } else if (tempElement.tagName() == QLatin1String("Menu")) {
-            if (m_policy == CanHaveChildren) {
-                Category *subCategory = new Category(node);
-                subCategory->setParent(this);
-                m_subCategories << subCategory;
-                m_hasSubCategories = true;
-            }
         } else if (tempElement.tagName() == QLatin1String("Include")) {
             parseIncludes(tempElement);
         }
@@ -83,10 +67,8 @@ void Category::parseData(const QDomNode &data)
         node = node.nextSibling();
     }
 
-    if (m_hasSubCategories) {
-        Category *allSubCategory = new Category(data, NoChildren);
-        allSubCategory->setParent(this);
-        m_subCategories << allSubCategory;
+    if (!m_subCategories.isEmpty()) {
+        m_subCategories << new Category(data, false, this);
     }
 }
 
@@ -159,7 +141,7 @@ QList<QPair<FilterType, QString> > Category::notFilters() const
 
 bool Category::hasSubCategories() const
 {
-    return m_hasSubCategories;
+    return !m_subCategories.isEmpty();
 }
 
 bool Category::shouldShowTechnical() const
@@ -177,9 +159,9 @@ bool categoryLessThan(Category *c1, const Category *c2)
     return (QString::localeAwareCompare(c1->name(), c2->name()) < 0);
 }
 
-QList< Category* > Category::populateCategories()
+QList< Category* > Category::loadCategoriesFile(const QString& path)
 {
-    QFile menuFile(KStandardDirs::locate("data", "muon-installer/categories.xml"));
+    QFile menuFile(path);
     QList<Category *> ret;
 
     if (!menuFile.open(QIODevice::ReadOnly)) {
@@ -190,19 +172,60 @@ QList< Category* > Category::populateCategories()
     QDomDocument menuDocument;
     QString error;
     int line;
-    menuDocument.setContent(&menuFile, &error, &line);
+    bool correct = menuDocument.setContent(&menuFile, &error, &line);
+    if(!correct)
+        kWarning() << "error while parsing the categories file:" << error << " at: " << path << ":" << line;
 
     QDomElement root = menuDocument.documentElement();
 
     QDomNode node = root.firstChild();
     while(!node.isNull())
     {
-        ret << new Category(node);
+        ret << new Category(node, true, nullptr);
 
         node = node.nextSibling();
     }
-
-    qSort(ret.begin(), ret.end(), categoryLessThan);
-    
     return ret;
+}
+
+QList<Category*> Category::populateCategories()
+{
+    QList<Category*> ret;
+    QStringList files = KGlobal::dirs()->findAllResources("data", "libmuon/categories/*.xml");
+    for(const QString& file : files) {
+        QList<Category*> cats = loadCategoriesFile(file);
+        if(ret.isEmpty())
+            ret += cats;
+        else {
+            for(Category* c : cats)
+                addSubcategory(ret, c);
+        }
+    }
+    qSort(ret.begin(), ret.end(), categoryLessThan);
+    return ret;
+}
+
+//TODO: maybe it would be interesting to apply some rules to a said backend...
+void Category::addSubcategory(QList< Category* >& list, Category* newcat)
+{
+    for(Category* c : list) {
+        if(c->name() == newcat->name()) {
+            if(c->icon() != newcat->icon()
+                || c->shouldShowTechnical() != newcat->shouldShowTechnical()
+                || c->m_andFilters != newcat->andFilters())
+            {
+                kWarning() << "the following categories seem to be the same but they're not entirely"
+                    << c->name() << newcat->name();
+                break;
+            } else {
+                c->m_orFilters += newcat->orFilters();
+                c->m_notFilters += newcat->notFilters();
+                for(Category* nc : newcat->subCategories())
+                    addSubcategory(c->m_subCategories, nc);
+                delete newcat;
+                return;
+            }
+        }
+    }
+    list << newcat;
 }

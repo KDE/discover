@@ -48,7 +48,9 @@ QList<AbstractResourcesBackend*> MuonBackendsFactory::allBackends()
     QList<AbstractResourcesBackend*> ret;
     foreach(const KService::Ptr& plugin, serviceList) {
         KPluginInfo info(plugin);
-        
+        if(info.name()=="muon-dummybackend")
+            continue;
+
         AbstractResourcesBackend* b = backendForPlugin(info);
         if(b) {
             ret += b;

@@ -37,12 +37,6 @@ enum FilterType {
     PkgNameFilter = 4
 };
 
-enum CategoryChildPolicy {
-    InvalidPolicy = 0,
-    CanHaveChildren = 1,
-    NoChildren = 2
-};
-
 class MUONPRIVATE_EXPORT Category : public QObject
 {
 Q_OBJECT
@@ -51,8 +45,6 @@ public:
     Q_PROPERTY(QString icon READ icon CONSTANT)
     Q_PROPERTY(bool hasSubCategories READ hasSubCategories CONSTANT)
     Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical CONSTANT)
-    explicit Category(const QDomNode &node, CategoryChildPolicy type = CanHaveChildren);
-    explicit Category(const QString& name, QObject* parent = 0);
     ~Category();
 
     QString name() const;
@@ -67,17 +59,20 @@ public:
     static QList<Category*> populateCategories();
 
 private:
+    static void addSubcategory(QList<Category*>& list, Category* cat);
+    static QList<Category*> loadCategoriesFile(const QString& path);
+
+    explicit Category(const QDomNode& data, bool canHaveChildren, QObject* parent = 0);
+
     QString m_name;
     QString m_iconString;
     QList<QPair<FilterType, QString> > m_andFilters;
     QList<QPair<FilterType, QString> > m_orFilters;
     QList<QPair<FilterType, QString> > m_notFilters;
-    bool m_hasSubCategories;
     bool m_showTechnical;
     QList<Category *> m_subCategories;
-    CategoryChildPolicy m_policy;
 
-    void parseData(const QDomNode &data);
+    void parseData(const QDomNode &data, bool canHaveChildren);
     QList<QPair<FilterType, QString> > parseIncludes(const QDomNode &data);
 };
 

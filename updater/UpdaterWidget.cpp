@@ -28,6 +28,7 @@
 #include <QtGui/QLabel>
 #include <QtGui/QTreeView>
 #include <QtGui/QVBoxLayout>
+#include <qaction.h>
 
 // KDE includes
 #include <KIcon>
@@ -36,6 +37,7 @@
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
 #include <KDebug>
+#include <KMessageWidget>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -64,6 +66,18 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     page1Layout->setSpacing(0);
     page1->setLayout(page1Layout);
 
+    QString text = i18nc("@label", "<em>Some packages were not marked for update.</em><p/>"
+                            "The update of these packages need some others to be installed or removed.<p/>"
+                            "Do you want to update those too?");
+    QAction* action = new QAction(KIcon("dialog-ok-apply"), i18n("Mark All"), this);
+    connect(action, SIGNAL(triggered(bool)), SLOT(markAllPackagesForUpgrade()));
+    m_upgradesWidget = new KMessageWidget(this);
+    m_upgradesWidget->setText(text);
+    m_upgradesWidget->addAction(action);
+    m_upgradesWidget->setCloseButtonVisible(true);
+    m_upgradesWidget->setVisible(false);
+    page1Layout->addWidget(m_upgradesWidget);
+
     m_updateModel = new UpdateModel(page1);
 
     connect(m_updateModel, SIGNAL(checkApps(QList<AbstractResource*>,bool)),
@@ -71,11 +85,11 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
 
     m_updateView = new QTreeView(page1);
     m_updateView->setAlternatingRowColors(true);
+    m_updateView->setModel(m_updateModel);
     m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
     m_updateView->header()->setResizeMode(1, QHeaderView::ResizeToContents);
     m_updateView->header()->setResizeMode(2, QHeaderView::ResizeToContents);
     m_updateView->header()->setStretchLastSection(false);
-    m_updateView->setModel(m_updateModel);
     connect(m_updateView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged(QItemSelection,QItemSelection)));
     page1Layout->addWidget(m_updateView);
@@ -131,7 +145,7 @@ void UpdaterWidget::setBackend(AbstractResourcesBackend *backend)
 void UpdaterWidget::reload()
 {
     m_updateModel->clear();
-    m_backend->reloadCache();
+    QMetaObject::invokeMethod(m_appsBackend, "reload");
 
     setCurrentIndex(0);
     populateUpdateModel();
@@ -160,6 +174,11 @@ void UpdaterWidget::populateUpdateModel()
         if(res->state()==AbstractResource::Upgradeable) {
             UpdateItem *updateItem = new UpdateItem(res);
             QApt::Package* package = retrievePackage(res);
+
+            if (!package) {
+                kDebug() << "No package:" << res->name();
+                continue;
+            }
             
             bool securityFound = false;
             for (const QString &archive : package->archives()) {
@@ -264,14 +283,11 @@ void UpdaterWidget::selectionChanged(const QItemSelection &selected,
     QModelIndexList indexes = selected.indexes();
     QApt::Package *package = 0;
 
-    if (indexes.isEmpty()) {
-        emit packageChanged(package);
-        return;
+    if (!indexes.isEmpty()) {
+        package = retrievePackage(m_updateModel->itemFromIndex(indexes.first())->app());
     }
 
-    package = retrievePackage(m_updateModel->itemFromIndex(indexes.first())->app());
-
-    emit packageChanged(package);
+    emit selectedPackageChanged(package);
 }
 
 void UpdaterWidget::checkAllMarked()
@@ -279,30 +295,21 @@ void UpdaterWidget::checkAllMarked()
     QApt::PackageList upgradeable = m_backend->upgradeablePackages();
     int markedCount = m_backend->packageCount(QApt::Package::ToUpgrade);
 
-    if (markedCount < upgradeable.count())
-    {
-        QString text = i18nc("@label", "Not all packages could be marked for upgrade. "
-                             "The available upgrades may require new packages to "
-                             "be installed or removed. Do you want to mark upgrades "
-                             "that may require the installation or removal of additional "
-                             "packages?");
-        QString title = i18nc("@title:window", "Unable to Mark Upgrades");
-        KGuiItem markUpgrades(i18nc("@action", "Mark Upgrades"));
+    m_upgradesWidget->setVisible(markedCount < upgradeable.count());
+}
 
-        int res = KMessageBox::questionYesNo(this, text, title, markUpgrades);
+void UpdaterWidget::markAllPackagesForUpgrade()
+{
+    QApt::PackageList upgradeable = m_backend->upgradeablePackages();
 
-        if (res != KMessageBox::Yes)
-            return;
+    // Mark dist upgrade
+    m_oldCacheState = m_backend->currentCacheState();
+    m_backend->saveCacheState();
+    m_backend->markPackagesForDistUpgrade();
 
-        // Mark dist upgrade
-        m_oldCacheState = m_backend->currentCacheState();
-        m_backend->saveCacheState();
-        m_backend->markPackagesForDistUpgrade();
+    checkChanges(m_backend->stateChanges(m_oldCacheState, upgradeable));
 
-        // Show user packages to be installed/removed
-        auto changes = m_backend->stateChanges(m_oldCacheState, upgradeable);
-        checkChanges(changes);
-    }
+    m_upgradesWidget->hide();
 }
 
 void UpdaterWidget::checkUpToDate()

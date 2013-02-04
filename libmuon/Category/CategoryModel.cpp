@@ -37,15 +37,12 @@ CategoryModel::CategoryModel(QObject* parent)
     setRoleNames(names);
 }
 
-void CategoryModel::setCategories(const QList<Category *> &categoryList,
-                                  const QString &rootName)
+void CategoryModel::setCategories(const QList<Category *> &categoryList, const QString &rootName)
 {
     invisibleRootItem()->removeRows(0, invisibleRootItem()->rowCount());
     qDeleteAll(m_categoryList);
     m_categoryList = categoryList;
     foreach (Category *category, m_categoryList) {
-        if(!category->parent())
-            category->setParent(this);
         QStandardItem *categoryItem = new QStandardItem;
         categoryItem->setText(category->name());
         categoryItem->setIcon(KIcon(category->icon()));
@@ -68,9 +65,12 @@ Category* CategoryModel::categoryForIndex(int row)
     return m_categoryList.at(row);
 }
 
-void CategoryModel::populateCategories(const QString& rootName)
+QList<Category*> CategoryModel::populateCategories()
 {
-    setCategories(Category::populateCategories(), rootName);
+    static QList<Category*> cats;
+    if(cats.isEmpty())
+        cats = Category::populateCategories();
+    return cats;
 }
 
 void CategoryModel::setSubcategories(Category* c)
@@ -79,10 +79,36 @@ void CategoryModel::setSubcategories(Category* c)
     if(c)
         setCategories(c->subCategories(), c->name());
     else
-        populateCategories(QString());
+        setCategories(populateCategories(), QString());
 }
 
 Category* CategoryModel::displayedCategory() const
 {
     return m_currentCategory;
+}
+
+static Category* recFindCategory(Category* root, const QString& name)
+{
+    if(root->name()==name)
+        return root;
+    else if(root->hasSubCategories()) {
+        QList<Category*> subs = root->subCategories();
+        for(Category* c : subs) {
+            Category* ret = recFindCategory(c, name);
+            if(ret)
+                return ret;
+        }
+    }
+    return 0;
+}
+
+Category* CategoryModel::findCategoryByName(const QString& name)
+{
+    QList<Category*> cats = populateCategories();
+    for(Category* cat : cats) {
+        Category* ret = recFindCategory(cat, name);
+        if(ret)
+            return ret;
+    }
+    return 0;
 }

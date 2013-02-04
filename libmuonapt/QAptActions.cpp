@@ -148,7 +148,11 @@ void QAptActions::setActionsEnabled(bool enabled)
 {
     m_actionsDisabled = !enabled;
     for (int i = 0; i < actionCollection()->count(); ++i) {
-        actionCollection()->action(i)->setEnabled(enabled);
+        QAction* a=actionCollection()->action(i);
+        //FIXME: Better solution? (en/dis)abling all actions at once is dangerous...
+        //We should make it happen only for actions provided by QApt
+        if(QByteArray(a->metaObject()->className())!="DiscoverAction")
+            a->setEnabled(enabled);
     }
 
     if (!enabled)

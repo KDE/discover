@@ -1,0 +1,11 @@
+<Menu>
+  <Menu>
+    <Name>Comics</Name>
+    <Icon>face-smile-big</Icon>
+    <Include>
+      <And>
+        <Category>comic.knsrc</Category>
+      </And>
+    </Include>
+  </Menu>
+</Menu>

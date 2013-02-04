@@ -28,7 +28,7 @@
 static const char description[] =
     I18N_NOOP("An application discoverer");
 
-static const char version[] = "1.9.65";
+static const char version[] = "1.9.80";
 
 int main(int argc, char** argv)
 {
@@ -44,6 +44,8 @@ int main(int argc, char** argv)
     options.add("application <name>", ki18n("Directly open the specified application by its package name."));
     options.add("mime <name>", ki18n("Open with a program that can deal with the given mimetype."));
     options.add("category <name>", ki18n("Display a list of entries with a category."));
+    options.add("mode <name>", ki18n("Open Muon Discover in a said mode. Modes correspond to the toolbar buttons."));
+    options.add("listmodes", ki18n("List all the available modes and output them on stdout."));
     KCmdLineArgs::addCmdLineOptions( options );
 
     if (!KUniqueApplication::start()) {
@@ -62,6 +64,14 @@ int main(int argc, char** argv)
         mainWindow->openMimeType(args->getOption("mime"));
     else if(args->isSet("category"))
         mainWindow->openCategory(args->getOption("category"));
+    else if(args->isSet("mode"))
+        mainWindow->openMode(args->getOption("mode").toLocal8Bit());
+    else if(args->isSet("listmodes")) {
+        fprintf(stdout, "%s", qPrintable(i18n("Available modes:\n")));
+        foreach(const QString& mode, mainWindow->modes())
+            fprintf(stdout, " * %s\n", qPrintable(mode));
+        return 0;
+    }
     mainWindow->show();
 
     return app.exec();

@@ -18,10 +18,20 @@
  */
 
 import QtQuick 1.0
+import org.kde.muon.discover 1.0
+import "navigation.js" as Navigation
 
-QtObject {
-    property string icon
-    property string text
+DiscoverAction {
     property string overlay
     property Component component
+    mainWindow: app
+    checkable: true
+    checked: window.currentTopLevel==component
+    enabled: window.navigationEnabled
+    actionsGroup: "topLevelPagesGroup"
+
+    onTriggered: {
+        if(window.currentTopLevel!=component)
+            window.currentTopLevel=component
+    }
 }

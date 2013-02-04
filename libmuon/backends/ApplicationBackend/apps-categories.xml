@@ -550,32 +550,11 @@
   </Menu>
 
   <Menu>
-    <Name>Comics</Name>
-    <Icon>face-smile-big</Icon>
-    <Include>
-      <And>
-        <Category>comic.knsrc</Category>
-      </And>
-    </Include>
-  </Menu>
-
-  <Menu>
     <Name>Plasma Desktop Widgets</Name>
     <Icon>plasma</Icon>
     <Include>
       <Or>
-        <Category>plasmoids.knsrc</Category>
         <PkgWildcard>plasma-widget-*</PkgWildcard>
-      </Or>
-    </Include>
-  </Menu>
-
-  <Menu>
-    <Name>Wallpapers</Name>
-    <Icon>plasma</Icon>
-    <Include>
-      <Or>
-        <Category>application/x-desktop-wallpaper</Category>
       </Or>
     </Include>
   </Menu>

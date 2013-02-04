@@ -1,0 +1,11 @@
+<Menu>
+  <Menu>
+    <Name>Plasma Desktop Widgets</Name>
+    <Icon>plasma</Icon>
+    <Include>
+      <Or>
+        <Category>plasmoids.knsrc</Category>
+      </Or>
+    </Include>
+  </Menu>
+</Menu>

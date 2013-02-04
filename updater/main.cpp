@@ -30,7 +30,7 @@
 static const char description[] =
     I18N_NOOP("An update manager");
 
-static const char version[] = "1.9.65";
+static const char version[] = "1.9.80";
 
 int main(int argc, char **argv)
 {
@@ -49,9 +49,6 @@ int main(int argc, char **argv)
 
     KUniqueApplication app;
     app.disableSessionManagement();
-    
-    // Needed because for the moment the ApplicationBackend is not instanciated
-    KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
 
     MainWindow *mainWindow = new MainWindow;
     mainWindow->show();

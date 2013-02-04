@@ -94,7 +94,7 @@ Page {
     }
     OriginsBackend { id: origins }
     
-    ScrollBar {
+    NativeScrollBar {
         id: scroll
         orientation: Qt.Vertical
         flickableItem: view

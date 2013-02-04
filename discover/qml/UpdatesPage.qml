@@ -38,7 +38,7 @@ Page
             visible: text!=""
         }
     }
-    ScrollBar {
+    NativeScrollBar {
         orientation: Qt.Vertical
         flickableItem: messageFlickable
         anchors {
@@ -46,7 +46,6 @@ Page
             bottom: parent.bottom
             right: parent.right
         }
-        interactive: false //TODO: Remove this line when ScrollBar has been fixed
     }
     PlasmaCore.FrameSvgItem {
         id: base

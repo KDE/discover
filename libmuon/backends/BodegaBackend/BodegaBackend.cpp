@@ -31,32 +31,47 @@
 #include <KDebug>
 #include <KAboutData>
 #include <KPluginFactory>
+#include <KPasswordDialog>
 #include <QDebug>
 
 K_PLUGIN_FACTORY(MuonBodegaBackendFactory, registerPlugin<BodegaBackend>(); )
-K_EXPORT_PLUGIN(MuonBodegaBackendFactory(KAboutData("muon-bodegabackend","muon-bodegabackend",ki18n("Bodega Backend"),"0.1",ki18n("Install Bodegadata in your system"), KAboutData::License_GPL)))
+K_EXPORT_PLUGIN(MuonBodegaBackendFactory(KAboutData("muon-bodegabackend","muon-bodegabackend",ki18n("Bodega Backend"),"0.1",ki18n("Install Bodega data in your system"), KAboutData::License_GPL)))
 
-//copypaste ftw
-QVariantHash retrieveCredentials()
+QMap<QString,QString> retrieveCredentials()
 {
+    QMap<QString,QString> ret;
     KWallet::Wallet *wallet = KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(), 0, KWallet::Wallet::Synchronous);
-    if (wallet && wallet->isOpen() && wallet->setFolder("MakePlayLive")) {
+    if (wallet && wallet->isOpen()) {
+        bool folderExists = wallet->setFolder("MakePlayLive");
+        if (folderExists) {
+            QMap<QString, QString> map;
 
-        QMap<QString, QString> map;
+            if (wallet->readMap("credentials", map) == 0 && map.contains("username") && map.contains("password")) {
+                ret["username"] = map.value("username");
+                ret["password"] = map.value("password");
+            } else {
+                kWarning() << "Unable to read credentials from wallet";
+            }
+        }
 
-        if (wallet->readMap("credentials", map) == 0) {
-            QVariantHash hash;
-            hash["username"] = map["username"];
-            hash["password"] = map["password"];
-            return hash;
-        } else {
-            kWarning() << "Unable to write credentials to wallet";
+        if (ret.isEmpty()) {
+            QPointer<KPasswordDialog> dialog(new KPasswordDialog(0, KPasswordDialog::ShowKeepPassword|KPasswordDialog::ShowUsernameLine));
+            dialog->setPrompt(i18n("Enter MakePlayLive credentials"));
+            dialog->exec();
+            ret["username"] = dialog->username();
+            ret["password"] = dialog->password();
+            if(dialog->keepPassword()) {
+                folderExists = (folderExists || wallet->createFolder("MakePlayLive")) &&
+                               wallet->setFolder("MakePlayLive") &&
+                               wallet->writeMap("credentials", ret)==0;
+            }
+            delete dialog;
         }
     } else {
         kWarning() << "Unable to open wallet";
     }
 
-    return QVariantHash();
+    return ret;
 }
 
 BodegaBackend::BodegaBackend(QObject* parent, const QVariantList& args)
@@ -69,13 +84,12 @@ BodegaBackend::BodegaBackend(QObject* parent, const QVariantList& args)
     m_channel = info.value("X-Muon-Arguments").toString();
     
     m_session = new Bodega::Session(this);
-    QVariantHash credentials = retrieveCredentials();
-    m_session->setUserName(credentials["username"].toString());
-    m_session->setPassword(credentials["password"].toString());
+    QMap<QString,QString> credentials = retrieveCredentials();
+    m_session->setUserName(credentials["username"]);
+    m_session->setPassword(credentials["password"]);
     m_session->setBaseUrl(QUrl("http://addons.makeplaylive.com:3000"));
     m_session->setStoreId("VIVALDI-1");
     connect(m_session, SIGNAL(authenticated(bool)), SLOT(resetResources()));
-
     m_session->signOn();
 }
 

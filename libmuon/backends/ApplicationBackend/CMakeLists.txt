@@ -43,3 +43,4 @@ target_link_libraries(muon-appsbackend ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} 
 )
 install(TARGETS muon-appsbackend DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES muon-applications-backend.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+install(FILES apps-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)

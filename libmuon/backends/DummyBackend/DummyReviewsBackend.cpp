@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,29 +18,33 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef RESOURCESMODELTEST_H
-#define RESOURCESMODELTEST_H
+#include "DummyReviewsBackend.h"
+#include "DummyBackend.h"
+#include <ReviewsBackend/Review.h>
+#include <ReviewsBackend/Rating.h>
+#include <resources/AbstractResource.h>
 
-#include <QtTest/QtTest>
-
-class ResourcesModel;
-class ApplicationBackend;
-namespace QApt { class Backend; }
-
-class ResourcesModelTest : public QObject
+DummyReviewsBackend::DummyReviewsBackend(DummyBackend* parent)
+    : AbstractReviewsBackend(parent)
 {
-    Q_OBJECT
-    public:
-        ResourcesModelTest();
-        virtual ~ResourcesModelTest();
+    foreach(AbstractResource* app, parent->allResources()) {
+        Rating* rating = new Rating(app->packageName(), app->name(), 3, 4, "1,2,3,4,5");
+        m_ratings.insert(app, rating);
+    }
+    emit ratingsReady();
+}
 
-    private slots:
-        void testReload();
-        void testCategories();
+void DummyReviewsBackend::fetchReviews(AbstractResource* app, int page)
+{
+    QList<Review*> review;
+    for(int i=0; i<33; i++) {
+        review += new Review(app->name(), app->packageName(), "en_US", "good morning", "the morning is very good", "dummy",
+                             QDateTime(), true, page+i, i%5, 1, 1, app->packageName());
+    }
+    emit reviewsReady(app, review);
+}
 
-    private:
-        ApplicationBackend* m_appBackend;
-        ResourcesModel* m_model;
-};
-
-#endif
+Rating* DummyReviewsBackend::ratingForApplication(AbstractResource* app) const
+{
+    return m_ratings[app];
+}

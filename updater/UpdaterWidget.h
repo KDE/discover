@@ -27,6 +27,7 @@
 #include <LibQApt/Globals>
 #include <LibQApt/Package>
 
+class KMessageWidget;
 class AbstractResource;
 class AbstractResourcesBackend;
 class QItemSelection;
@@ -61,6 +62,7 @@ private:
     QLabel *m_notifyTitle;
     QLabel *m_notifyDesc;
     AbstractResourcesBackend* m_appsBackend;
+    KMessageWidget* m_upgradesWidget;
 
 public Q_SLOTS:
     void setBackend(AbstractResourcesBackend* backend);
@@ -74,9 +76,10 @@ private Q_SLOTS:
                           const QItemSelection &deselected);
     void checkAllMarked();
     void checkUpToDate();
+    void markAllPackagesForUpgrade();
 
 signals:
-    void packageChanged(QApt::Package *Package);
+    void selectedPackageChanged(QApt::Package *Package);
 };
 
 #endif // UPDATERWIDGET_H

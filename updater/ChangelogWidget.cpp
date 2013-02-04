@@ -45,7 +45,6 @@
 
 ChangelogWidget::ChangelogWidget(QWidget *parent)
         : QWidget(parent)
-        , m_backend(0)
         , m_package(0)
         , m_show(false)
 {
@@ -106,11 +105,6 @@ ChangelogWidget::ChangelogWidget(QWidget *parent)
     m_expandWidget->addAnimation(anim2);
 }
 
-void ChangelogWidget::setBackend(QApt::Backend *backend)
-{
-    m_backend = backend;
-}
-
 void ChangelogWidget::setPackage(QApt::Package *package)
 {
     m_package = package;
@@ -144,30 +138,25 @@ void ChangelogWidget::stopPendingJobs()
 {
     // Delete any KJobs lying around. We could get stale package pointers if the jobs
     // finish during a cache reload
-    auto iter = m_jobHash.constBegin();
-    while (iter != m_jobHash.constEnd()) {
-        iter.key()->deleteLater();
-        ++iter;
+    foreach (KJob* j, m_jobHash) {
+        j->deleteLater();
     }
 
     m_jobHash.clear();
 }
 
-void ChangelogWidget::changelogFetched(KJob *job)
+void ChangelogWidget::changelogFetched(KJob *j)
 {
-    if (!m_package) {
-        job->deleteLater();
-        m_jobHash.remove(job);
+    m_jobHash.remove(j);
+    KIO::StoredTransferJob* job = qobject_cast<KIO::StoredTransferJob*>(j);
+    if (!m_package || !job) {
         return;
     }
 
     // Work around http://bugreports.qt.nokia.com/browse/QTBUG-2533 by forcibly resetting the CharFormat
-    QTextCharFormat format;
-    m_changelogBrowser->setCurrentCharFormat(format);
-    QFile changelogFile(m_jobHash[job]);
-    m_jobHash.remove(job);
+    m_changelogBrowser->setCurrentCharFormat(QTextCharFormat());
 
-    if (job->error() || !changelogFile.open(QFile::ReadOnly)) {
+    if (job->error()) {
         if (m_package->origin() == QLatin1String("Ubuntu")) {
             m_changelogBrowser->setText(i18nc("@info/rich", "The list of changes is not yet available. "
                                             "Please use <link url='%1'>Launchpad</link> instead.",
@@ -177,20 +166,13 @@ void ChangelogWidget::changelogFetched(KJob *job)
         }
     }
     else {
-        QTextStream stream(&changelogFile);
-        const QApt::Changelog log(stream.readAll(), m_package->sourcePackage());
-        QString description = buildDescription(log);
-
-        m_changelogBrowser->setHtml(description);
+        m_changelogBrowser->setHtml(buildDescription(job->data(), m_package->sourcePackage()));
     }
 
     m_busyWidget->stop();
     if (!m_show) {
         animatedHide();
     }
-
-    changelogFile.remove();
-    job->deleteLater();
 }
 
 void ChangelogWidget::fetchChangelog()
@@ -199,25 +181,15 @@ void ChangelogWidget::fetchChangelog()
     m_changelogBrowser->clear();
     m_busyWidget->start();
 
-    KTemporaryFile *changelogFile = new KTemporaryFile;
-    changelogFile->setAutoRemove(false);
-    changelogFile->setPrefix("muon");
-    changelogFile->setSuffix(".txt");
-    changelogFile->open();
-    QString filename = changelogFile->fileName();
-    delete changelogFile;
-
-    KIO::FileCopyJob *getJob = KIO::file_copy(m_package->changelogUrl(),
-                               filename, -1,
-                               KIO::Overwrite | KIO::HideProgressInfo);
-    getJob->setAutoDelete(false);
-    m_jobHash[getJob] = filename;
+    KIO::StoredTransferJob* getJob = KIO::storedGet(m_package->changelogUrl(), KIO::NoReload, KIO::HideProgressInfo);
+    m_jobHash.insert(getJob);
     connect(getJob, SIGNAL(result(KJob*)),
             this, SLOT(changelogFetched(KJob*)));
 }
 
-QString ChangelogWidget::buildDescription(const QApt::Changelog &changelog)
+QString ChangelogWidget::buildDescription(const QByteArray& data, const QString& source)
 {
+    QApt::Changelog changelog(data, source);
     QString description;
 
     QApt::ChangelogEntryList entries = changelog.newEntriesSince(m_package->installedVersion());
