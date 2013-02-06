@@ -24,6 +24,20 @@
 #include <resources/AbstractResourcesBackend.h>
 #include <PackageKit/packagekit-qt2/package.h>
 #include <QVariantList>
+#include <QStringList>
+
+struct ApplicationData
+{
+    QString pkgname;
+    QString id;
+    QHash<QString, QString> name;
+    QHash<QString, QString> summary;
+    QString icon;
+    QString url;
+    QHash<QString, QStringList> keywords;
+    QStringList appcategories;
+    QStringList mimetypes;
+};
 
 class PackageKitBackend : public AbstractResourcesBackend
 {
@@ -40,7 +54,8 @@ class PackageKitBackend : public AbstractResourcesBackend
         virtual QStringList searchPackageName(const QString& searchText);
         virtual int updatesCount() const;
         
-        virtual void installApplication(AbstractResource* app, const QHash< QString, bool >& addons);
+        virtual void installApplication(AbstractResource* app) { installApplication(app, QHash<QString, bool>()); }
+        virtual void installApplication(AbstractResource* app, const QHash<QString, bool>& addons);
         virtual void removeApplication(AbstractResource* app);
         virtual void cancelTransaction(AbstractResource* app);
         
@@ -54,6 +69,7 @@ class PackageKitBackend : public AbstractResourcesBackend
         void populateCache();
 
         QVector<AbstractResource*> m_packages;
+        QHash<QString, ApplicationData> m_appdata;
 };
 
 #endif // PACKAGEKITBACKEND_H

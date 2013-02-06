@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,41 +18,25 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef PACKAGEKITRESOURCE_H
-#define PACKAGEKITRESOURCE_H
+#ifndef APPPACKAGEKITRESOURCE_H
+#define APPPACKAGEKITRESOURCE_H
 
-#include <resources/AbstractResource.h>
-#include <PackageKit/packagekit-qt2/Package>
+#include "PackageKitResource.h"
+#include "PackageKitBackend.h"
 
-class PackageKitResource : public AbstractResource
+class AppPackageKitResource : public PackageKitResource
 {
     Q_OBJECT
     public:
-        explicit PackageKitResource(const PackageKit::Package& p, AbstractResourcesBackend* parent);
-        virtual QString packageName() const;
-        virtual QString name();
-        virtual QString comment();
-        virtual QString longDescription() const;
-        virtual QString sizeDescription();
-        virtual QUrl homepage() const;
-        virtual QString icon() const;
-        virtual QStringList categories();
-        virtual QString license();
-        virtual QString origin() const;
-        virtual QString section();
+        explicit AppPackageKitResource(const PackageKit::Package& p, const ApplicationData& data, AbstractResourcesBackend* parent);
         virtual bool isTechnical() const;
-        
-        virtual QList<PackageState> addonsInformation();
-        virtual State state();
-        
-        virtual QUrl screenshotUrl();
-        virtual QUrl thumbnailUrl();
-        
-        virtual QString installedVersion() const;
-        virtual QString availableVersion() const;
+        virtual QString name();
+        virtual QString icon() const;
+        virtual QStringList mimetypes() const;
+        virtual QStringList categories();
 
     private:
-        PackageKit::Package m_package;
+        ApplicationData m_appdata;
 };
 
-#endif // PACKAGEKITRESOURCE_H
+#endif // APPPACKAGEKITRESOURCE_H

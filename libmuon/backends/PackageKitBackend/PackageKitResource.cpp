@@ -23,12 +23,12 @@
 #include <KGlobal>
 #include <KLocale>
 
-//FIXME: Add support for appstream
-
 PackageKitResource::PackageKitResource(const PackageKit::Package& p, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
     , m_package(p)
-{}
+{
+    setObjectName(p.id());
+}
 
 QString PackageKitResource::name()
 {
@@ -37,7 +37,7 @@ QString PackageKitResource::name()
 
 QString PackageKitResource::packageName() const
 {
-    return m_package.id();
+    return m_package.name();
 }
 
 QString PackageKitResource::comment()
@@ -99,12 +99,12 @@ QString PackageKitResource::section()
 
 QUrl PackageKitResource::screenshotUrl()
 {
-    return KUrl(MuonDataSources::screenshotsSource(), "screenshot/"+name());
+    return KUrl(MuonDataSources::screenshotsSource(), "screenshot/"+packageName());
 }
 
 QUrl PackageKitResource::thumbnailUrl()
 {
-    return KUrl(MuonDataSources::screenshotsSource(), "thumbnail/"+name());
+    return KUrl(MuonDataSources::screenshotsSource(), "thumbnail/"+packageName());
 }
 
 AbstractResource::State PackageKitResource::state()
@@ -122,4 +122,9 @@ AbstractResource::State PackageKitResource::state()
     return Broken;
 }
 
-QString PackageKitResource::categories() { return QString(); }
+QStringList PackageKitResource::categories() { return QStringList(); }
+
+bool PackageKitResource::isTechnical() const
+{
+    return true;
+}

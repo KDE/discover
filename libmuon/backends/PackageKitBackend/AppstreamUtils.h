@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,41 +18,13 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef PACKAGEKITRESOURCE_H
-#define PACKAGEKITRESOURCE_H
+#ifndef APPSTREAMUTILS_H
+#define APPSTREAMUTILS_H
+#include "PackageKitBackend.h"
 
-#include <resources/AbstractResource.h>
-#include <PackageKit/packagekit-qt2/Package>
-
-class PackageKitResource : public AbstractResource
+namespace AppstreamUtils
 {
-    Q_OBJECT
-    public:
-        explicit PackageKitResource(const PackageKit::Package& p, AbstractResourcesBackend* parent);
-        virtual QString packageName() const;
-        virtual QString name();
-        virtual QString comment();
-        virtual QString longDescription() const;
-        virtual QString sizeDescription();
-        virtual QUrl homepage() const;
-        virtual QString icon() const;
-        virtual QStringList categories();
-        virtual QString license();
-        virtual QString origin() const;
-        virtual QString section();
-        virtual bool isTechnical() const;
-        
-        virtual QList<PackageState> addonsInformation();
-        virtual State state();
-        
-        virtual QUrl screenshotUrl();
-        virtual QUrl thumbnailUrl();
-        
-        virtual QString installedVersion() const;
-        virtual QString availableVersion() const;
-
-    private:
-        PackageKit::Package m_package;
+    QHash<QString, ApplicationData> fetchAppData(const QString& path);
 };
 
-#endif // PACKAGEKITRESOURCE_H
+#endif // APPSTREAMUTILS_H

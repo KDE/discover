@@ -3,6 +3,8 @@ pkg_check_modules(QPACKAGEKIT2 REQUIRED packagekit-qt2>=0.6.17)
 set(pkbackend_SRCS
     PackageKitBackend.cpp
     PackageKitResource.cpp
+    AppPackageKitResource.cpp
+    AppstreamUtils.cpp
 )
 
 kde4_add_plugin(muon-pkbackend SHARED ${pkbackend_SRCS})

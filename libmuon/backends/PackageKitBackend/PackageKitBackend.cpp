@@ -20,6 +20,8 @@
 
 #include "PackageKitBackend.h"
 #include "PackageKitResource.h"
+#include "AppPackageKitResource.h"
+#include "AppstreamUtils.h"
 #include <resources/AbstractResource.h>
 #include <QStringList>
 #include <QDebug>
@@ -32,7 +34,7 @@
 K_PLUGIN_FACTORY(MuonPackageKitBackendFactory, registerPlugin<PackageKitBackend>(); )
 K_EXPORT_PLUGIN(MuonPackageKitBackendFactory(KAboutData("muon-pkbackend","muon-pkbackend",ki18n("PackageKit Backend"),"0.1",ki18n("Install PackageKit data in your system"), KAboutData::License_GPL)))
 
-PackageKitBackend::PackageKitBackend(QObject* parent, const QVariantList& args)
+PackageKitBackend::PackageKitBackend(QObject* parent, const QVariantList&)
 	: AbstractResourcesBackend(parent)
 {
     populateCache();
@@ -46,11 +48,19 @@ void PackageKitBackend::populateCache()
     connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SIGNAL(reloadFinished()));
     connect(t, SIGNAL(package(PackageKit::Package)), SLOT(addPackage(PackageKit::Package)));
     t->getPackages();
+
+    m_appdata = AppstreamUtils::fetchAppData("/tmp/appdata.xml");
 }
 
 void PackageKitBackend::addPackage(const PackageKit::Package& p)
 {
-    m_packages += new PackageKitResource(p, this);
+    PackageKitResource* newResource = 0;
+    QHash<QString, ApplicationData>::const_iterator it = m_appdata.constFind(p.name());
+    if(it!=m_appdata.constEnd())
+        newResource = new AppPackageKitResource(p, *it, this);
+    else
+        newResource = new PackageKitResource(p, this);
+    m_packages += newResource;
 }
 
 QVector<AbstractResource*> PackageKitBackend::allResources() const
@@ -95,8 +105,9 @@ int PackageKitBackend::updatesCount() const
 AbstractReviewsBackend* PackageKitBackend::reviewsBackend() const { return 0; }
 AbstractBackendUpdater* PackageKitBackend::backendUpdater() const { return 0; }
 QList< Transaction* > PackageKitBackend::transactions() const { return QList<Transaction*>(); }
-void PackageKitBackend::cancelTransaction(AbstractResource* app) {}
-void PackageKitBackend::installApplication(AbstractResource* app, const QHash< QString, bool >& addons) {}
-void PackageKitBackend::removeApplication(AbstractResource* app) {}
+void PackageKitBackend::cancelTransaction(AbstractResource* ) {}
 QPair<TransactionStateTransition, Transaction*> PackageKitBackend::currentTransactionState() const
 { return qMakePair<TransactionStateTransition, Transaction*>(FinishedCommitting, nullptr); }
+void PackageKitBackend::installApplication(AbstractResource* , const QHash< QString, bool >& ) { }
+void PackageKitBackend::removeApplication(AbstractResource* ) { }
+
