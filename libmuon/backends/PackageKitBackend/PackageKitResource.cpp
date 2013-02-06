@@ -22,6 +22,7 @@
 #include <MuonDataSources.h>
 #include <KGlobal>
 #include <KLocale>
+#include <PackageKit/packagekit-qt2/Transaction>
 
 PackageKitResource::PackageKitResource(const PackageKit::Package& p, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
@@ -62,6 +63,7 @@ QString PackageKitResource::icon() const
 
 QString PackageKitResource::license()
 {
+    fetchDetails();
     return m_package.license();
 }
 
@@ -122,9 +124,34 @@ AbstractResource::State PackageKitResource::state()
     return Broken;
 }
 
-QStringList PackageKitResource::categories() { return QStringList(); }
+void PackageKitResource::updatePackage(const PackageKit::Package& p)
+{
+    m_package = p;
+}
+
+QStringList PackageKitResource::categories()
+{
+    return QStringList();
+}
 
 bool PackageKitResource::isTechnical() const
 {
     return true;
+}
+
+void PackageKitResource::fetchDetails()
+{
+    if(m_package.hasDetails())
+        return;
+
+    PackageKit::Transaction* transaction = new PackageKit::Transaction(this);
+    transaction->getDetails(m_package);
+    connect(transaction, SIGNAL(package(PackageKit::Package)), SLOT(updatePackage(PackageKit::Package)));
+    connect(transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SIGNAL(licenseChanged()));
+    connect(transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), transaction, SLOT(deleteLater()));
+}
+
+PackageKit::Package PackageKitResource::package() const
+{
+    return m_package;
 }

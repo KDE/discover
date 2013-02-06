@@ -27,6 +27,7 @@
 class PackageKitResource : public AbstractResource
 {
     Q_OBJECT
+    Q_PROPERTY(QString license READ license NOTIFY licenseChanged)
     public:
         explicit PackageKitResource(const PackageKit::Package& p, AbstractResourcesBackend* parent);
         virtual QString packageName() const;
@@ -50,8 +51,16 @@ class PackageKitResource : public AbstractResource
         
         virtual QString installedVersion() const;
         virtual QString availableVersion() const;
+        PackageKit::Package package() const;
+
+    public slots:
+        void updatePackage(const PackageKit::Package& p);
+
+    signals:
+        void licenseChanged();
 
     private:
+        void fetchDetails();
         PackageKit::Package m_package;
 };
 
