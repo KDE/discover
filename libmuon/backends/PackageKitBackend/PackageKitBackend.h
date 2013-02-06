@@ -54,7 +54,7 @@ class PackageKitBackend : public AbstractResourcesBackend
         virtual QStringList searchPackageName(const QString& searchText);
         virtual int updatesCount() const;
         
-        virtual void installApplication(AbstractResource* app) { installApplication(app, QHash<QString, bool>()); }
+        virtual void installApplication(AbstractResource* app);
         virtual void installApplication(AbstractResource* app, const QHash<QString, bool>& addons);
         virtual void removeApplication(AbstractResource* app);
         virtual void cancelTransaction(AbstractResource* app);
@@ -64,12 +64,14 @@ class PackageKitBackend : public AbstractResourcesBackend
 
     public slots:
         void addPackage(const PackageKit::Package& p);
+        void removeTransaction(Transaction* t);
 
     private:
         void populateCache();
 
         QVector<AbstractResource*> m_packages;
         QHash<QString, ApplicationData> m_appdata;
+        QList<Transaction*> m_transactions;
 };
 
 #endif // PACKAGEKITBACKEND_H

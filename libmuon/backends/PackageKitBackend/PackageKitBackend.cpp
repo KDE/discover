@@ -22,6 +22,7 @@
 #include "PackageKitResource.h"
 #include "AppPackageKitResource.h"
 #include "AppstreamUtils.h"
+#include "PKTransaction.h"
 #include <resources/AbstractResource.h>
 #include <QStringList>
 #include <QDebug>
@@ -46,6 +47,7 @@ void PackageKitBackend::populateCache()
     emit reloadStarted();
     PackageKit::Transaction* t = new PackageKit::Transaction(this);
     connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SIGNAL(reloadFinished()));
+    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), t, SLOT(deleteLater()));
     connect(t, SIGNAL(package(PackageKit::Package)), SLOT(addPackage(PackageKit::Package)));
     t->getPackages();
 
@@ -72,7 +74,7 @@ AbstractResource* PackageKitBackend::resourceByPackageName(const QString& name) 
 {
     AbstractResource* ret = 0;
     for(AbstractResource* res : m_packages) {
-        if(res->name()==name) {
+        if(res->name()==name || res->packageName()==name) {
             ret = res;
             break;
         }
@@ -101,13 +103,47 @@ int PackageKitBackend::updatesCount() const
     return ret;
 }
 
+void PackageKitBackend::removeTransaction(Transaction* t)
+{
+    m_transactions.removeAll(t);
+    emit transactionRemoved(t);
+}
+
+void PackageKitBackend::installApplication(AbstractResource* app, const QHash<QString, bool>& )
+{
+    installApplication(app);
+}
+
+void PackageKitBackend::installApplication(AbstractResource* app)
+{
+    PackageKit::Transaction* installTransaction = new PackageKit::Transaction(this);
+    installTransaction->installPackage(qobject_cast<PackageKitResource*>(app)->package());
+    PKTransaction* t = new PKTransaction(app, InstallApp, installTransaction);
+    emit transactionAdded(t);
+}
+
+void PackageKitBackend::cancelTransaction(AbstractResource* app)
+{
+    foreach(Transaction* t, m_transactions) {
+        PKTransaction* pkt = qobject_cast<PKTransaction*>(t);
+        if(pkt->resource() == app && pkt->transaction()->allowCancel()) {
+            pkt->transaction()->cancel();
+            break;
+        }
+    }
+}
+
+void PackageKitBackend::removeApplication(AbstractResource* app)
+{
+    PackageKit::Transaction* removeTransaction = new PackageKit::Transaction(this);
+    removeTransaction->installPackage(qobject_cast<PackageKitResource*>(app)->package());
+    PKTransaction* t = new PKTransaction(app, RemoveApp, removeTransaction);
+    emit transactionAdded(t);
+}
+
 //TODO
 AbstractReviewsBackend* PackageKitBackend::reviewsBackend() const { return 0; }
 AbstractBackendUpdater* PackageKitBackend::backendUpdater() const { return 0; }
 QList< Transaction* > PackageKitBackend::transactions() const { return QList<Transaction*>(); }
-void PackageKitBackend::cancelTransaction(AbstractResource* ) {}
 QPair<TransactionStateTransition, Transaction*> PackageKitBackend::currentTransactionState() const
 { return qMakePair<TransactionStateTransition, Transaction*>(FinishedCommitting, nullptr); }
-void PackageKitBackend::installApplication(AbstractResource* , const QHash< QString, bool >& ) { }
-void PackageKitBackend::removeApplication(AbstractResource* ) { }
-
