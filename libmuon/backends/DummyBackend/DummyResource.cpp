@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include "DummyResource.h"
+#include <QStringList>
 
 DummyResource::DummyResource(const QString& name, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
@@ -36,9 +37,9 @@ QString DummyResource::availableVersion() const
     return "3.0";
 }
 
-QString DummyResource::categories()
+QStringList DummyResource::categories()
 {
-    return "dummy";
+    return QStringList("dummy");
 }
 
 QString DummyResource::comment()

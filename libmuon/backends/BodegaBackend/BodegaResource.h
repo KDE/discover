@@ -42,7 +42,7 @@ class BodegaResource : public AbstractResource
         virtual QString sizeDescription() { return "33GiB"; }
         virtual QString origin() const { return "fuuu"; }
         
-        virtual QString categories();
+        virtual QStringList categories();
         virtual QList<PackageState> addonsInformation() { return QList<PackageState>(); }
         virtual QString name() { return m_info.name; }
         virtual QString availableVersion() const { return m_info.version; }

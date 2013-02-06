@@ -38,7 +38,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
     Q_PROPERTY(bool canExecute READ canExecute CONSTANT)
     Q_PROPERTY(State state READ state NOTIFY stateChanged)
     Q_PROPERTY(QString status READ status NOTIFY stateChanged)
-    Q_PROPERTY(QString category READ categories CONSTANT)
+    Q_PROPERTY(QStringList category READ categories CONSTANT)
     Q_PROPERTY(bool isTechnical READ isTechnical CONSTANT)
     Q_PROPERTY(QUrl homepage READ homepage CONSTANT)
     Q_PROPERTY(QUrl thumbnailUrl READ thumbnailUrl CONSTANT)
@@ -52,7 +52,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString installedVersion READ installedVersion CONSTANT)
     Q_PROPERTY(QString availableVersion READ availableVersion CONSTANT)
     Q_PROPERTY(QString section READ section CONSTANT)
-    Q_PROPERTY(QString mimetypes READ mimetypes CONSTANT)
+    Q_PROPERTY(QStringList mimetypes READ mimetypes CONSTANT)
     Q_PROPERTY(AbstractResourcesBackend* backend READ backend CONSTANT)
     public:
         enum State {
@@ -86,7 +86,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         
         virtual State state() = 0;
         
-        virtual QString categories() = 0;
+        virtual QStringList categories() = 0;
         
         ///@returns a URL that points to the content
         virtual QUrl homepage() const = 0;
@@ -107,7 +107,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         virtual QString section() = 0;
         
         ///@returns what kind of mime types the resource can consume
-        virtual QString mimetypes() const;
+        virtual QStringList mimetypes() const;
         
         virtual QList<PackageState> addonsInformation() = 0;
         

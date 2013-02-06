@@ -41,7 +41,6 @@ namespace QApt {
 class MUONPRIVATE_EXPORT Application : public AbstractResource
 {
 Q_OBJECT
-// Q_PROPERTY(QString mimetypes READ mimetypes CONSTANT)
 Q_PROPERTY(QString menuPath READ menuPath CONSTANT)
 public:
     friend class TransactionListener;

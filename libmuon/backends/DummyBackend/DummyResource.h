@@ -40,7 +40,7 @@ public:
     virtual QUrl screenshotUrl();
     virtual QUrl thumbnailUrl();
     virtual QUrl homepage() const;
-    virtual QString categories();
+    virtual QStringList categories();
     virtual AbstractResource::State state();
     virtual QString icon() const;
     virtual QString comment();

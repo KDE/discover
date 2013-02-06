@@ -85,9 +85,9 @@ QString KNSResource::packageName() const
     return m_content.id();
 }
 
-QString KNSResource::categories()
+QStringList KNSResource::categories()
 {
-    return m_category;
+    return QStringList(m_category);
 }
 
 QUrl KNSResource::homepage() const

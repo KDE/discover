@@ -42,7 +42,7 @@ public:
     virtual QString comment();
     virtual QString name();
     virtual QString packageName() const;
-    virtual QString categories();
+    virtual QStringList categories();
     virtual QUrl homepage() const;
     virtual QUrl thumbnailUrl();
     virtual QUrl screenshotUrl();
