@@ -34,6 +34,8 @@ class AppPackageKitResource : public PackageKitResource
         virtual QString icon() const;
         virtual QStringList mimetypes() const;
         virtual QStringList categories();
+        virtual QString longDescription() const;
+        virtual QUrl homepage() const;
 
     private:
         ApplicationData m_appdata;

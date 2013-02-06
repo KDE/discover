@@ -38,6 +38,14 @@ QString AppPackageKitResource::name()
     return ret;
 }
 
+QString AppPackageKitResource::longDescription() const
+{
+    QString ret = m_appdata.summary.value(KGlobal::locale()->language());
+    if(ret.isEmpty()) ret = m_appdata.summary.value(QString());
+    if(ret.isEmpty()) ret = PackageKitResource::longDescription();
+    return ret;
+}
+
 QString AppPackageKitResource::icon() const
 {
     return m_appdata.icon;
@@ -51,6 +59,11 @@ QStringList AppPackageKitResource::mimetypes() const
 QStringList AppPackageKitResource::categories()
 {
     return m_appdata.appcategories;
+}
+
+QUrl AppPackageKitResource::homepage() const
+{
+    return m_appdata.url.isEmpty() ? PackageKitResource::homepage() : m_appdata.url;
 }
 
 bool AppPackageKitResource::isTechnical() const
