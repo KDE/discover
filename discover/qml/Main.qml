@@ -68,7 +68,7 @@ Item {
                 console.log("comp error: "+currentTopLevel.errorString())
             }
         }
-        pageStack.replace(page)
+        pageStack.replace(page, {}, window.status!=Component.Ready)
     }
     
     DiscoverAction {
