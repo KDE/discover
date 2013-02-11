@@ -218,10 +218,11 @@ QString MuonStrings::packageStateName(QApt::Package::State state) const
 
 QString MuonStrings::packageChangeStateName(QApt::Package::State state) const
 {
-    return m_stateHash.value(state & (QApt::Package::ToKeep | QApt::Package::ToInstall
+    int ns = state & (QApt::Package::ToKeep | QApt::Package::ToInstall | QApt::Package::ToReInstall | QApt::Package::NewInstall
                                     | QApt::Package::ToUpgrade | QApt::Package::ToRemove
                                     | QApt::Package::ToPurge | QApt::Package::ToReInstall
-                                    | QApt::Package::ToDowngrade));
+                                    | QApt::Package::ToDowngrade);
+    return m_stateHash.value(ns);
 }
 
 QHash<QString, QString> MuonStrings::archHash()
