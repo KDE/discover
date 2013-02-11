@@ -162,6 +162,7 @@ void MainWindow::finishedReloading()
 {
     QApplication::restoreOverrideCursor();
     checkPlugState();
+    setActionsEnabled(true);
     setCanExit(true);
 }
 
@@ -173,7 +174,6 @@ void MainWindow::setActionsEnabled(bool enabled)
     }
 
     m_applyAction->setEnabled(m_updater->hasUpdates());
-    m_updaterWidget->setEnabled(true);
 }
 
 void MainWindow::startCommit()

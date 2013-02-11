@@ -149,6 +149,7 @@ void UpdaterWidget::invalidateView()
 
 void UpdaterWidget::populateUpdateModel()
 {
+    setEnabled(true);
     if (m_appsBackend->updatesCount()==0) {
         QApplication::restoreOverrideCursor();
         m_busyWidget->stop();
@@ -167,7 +168,6 @@ void UpdaterWidget::populateUpdateModel()
 
     checkAllMarked();
     checkUpToDate();
-    setEnabled(true);
 }
 
 void UpdaterWidget::checkApps(const QList<AbstractResource*>& apps, bool checked)
