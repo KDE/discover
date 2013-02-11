@@ -97,9 +97,6 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
     QDir appDir("/usr/share/app-install/desktop/");
     QStringList fileList = appDir.entryList(QStringList("*.desktop"), QDir::Files);
 
-    QStringList pkgBlacklist;
-    pkgBlacklist << "kde-runtime" << "kdepim-runtime" << "kdelibs5-plugins" << "kdelibs5-data";
-
     QList<Application *> tempList;
     QSet<QString> packages;
     foreach(const QString &fileName, fileList) {
@@ -127,12 +124,10 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
     for (Application *app : tempList) {
         bool added = false;
         QApt::Package *pkg = app->package();
-        if (app->isValid()) {
-            if ((pkg) && !pkgBlacklist.contains(pkg->name())) {
-                appList << app;
-                app->moveToThread(thread);
-                added = true;
-            }
+        if (app->isValid() && pkg) {
+            appList << app;
+            app->moveToThread(thread);
+            added = true;
         }
 
         if(!added)
