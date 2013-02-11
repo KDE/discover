@@ -565,9 +565,12 @@ void Application::processChangelog(KJob* j)
     if (!m_package || !job) {
         return;
     }
-    
+
     QString changelog;
-    if (j->error()!=0) {
+    if(j->error()==0)
+        changelog = buildDescription(job->data(), m_package->sourcePackage());
+
+    if (changelog.isEmpty()) {
         if (m_package->origin() == QLatin1String("Ubuntu")) {
             changelog = i18nc("@info/rich", "The list of changes is not yet available. "
                                             "Please use <link url='%1'>Launchpad</link> instead.",
@@ -575,8 +578,7 @@ void Application::processChangelog(KJob* j)
         } else {
             changelog = i18nc("@info", "The list of changes is not yet available.");
         }
-    } else
-        changelog = buildDescription(job->data(), m_package->sourcePackage());
+    }
     emit changelogFetched(changelog);
 }
 
