@@ -190,6 +190,7 @@ QList< Category* > Category::loadCategoriesFile(const QString& path)
 
 QList<Category*> Category::populateCategories()
 {
+    // FIXME: Should only populate categories for plugins that have successfully been loaded
     QList<Category*> ret;
     QStringList files = KGlobal::dirs()->findAllResources("data", "libmuon/categories/*.xml");
     for(const QString& file : files) {

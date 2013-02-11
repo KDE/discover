@@ -41,6 +41,7 @@ public:
     virtual AbstractReviewsBackend* reviewsBackend() const;
     virtual QStringList searchPackageName(const QString& searchText);
     virtual QVector<AbstractResource*> allResources() const;
+    virtual bool isValid() const { return true; } // No external file dependencies that could cause runtime errors
 
     virtual void cancelTransaction(AbstractResource* app);
     virtual void installApplication(AbstractResource* app);

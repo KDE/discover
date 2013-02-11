@@ -185,6 +185,13 @@ bool ApplicationBackend::isReloading() const
     return m_isReloading;
 }
 
+bool ApplicationBackend::isValid() const
+{
+    // ApplicationBackend will force an application quit if it is invalid, so
+    // if it has not done that, the backend is valid.
+    return true;
+}
+
 void ApplicationBackend::aptTransactionsChanged(QString active)
 {
     // Find the newly-active QApt transaction in our list

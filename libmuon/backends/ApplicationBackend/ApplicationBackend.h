@@ -58,6 +58,7 @@ public:
     explicit ApplicationBackend(QObject *parent, const QVariantList& args);
     ~ApplicationBackend();
 
+    bool isValid() const;
     AbstractReviewsBackend *reviewsBackend() const;
     Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name) const;
     QPair<TransactionStateTransition, Transaction *> currentTransactionState() const;
