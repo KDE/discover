@@ -180,6 +180,7 @@ void ApplicationUpdates::errorOccurred(QApt::ErrorCode error)
 
 void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
 {
+    Q_ASSERT(trans);
     // Provide proxy/locale to the transaction
     if (KProtocolManager::proxyType() == KProtocolManager::ManualProxy) {
         trans->setProxy(KProtocolManager::proxyFor("http"));
@@ -195,7 +196,7 @@ void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
     connect(trans, SIGNAL(statusDetailsChanged(QString)), SLOT(installMessage(QString)));
     connect(trans, SIGNAL(cancellableChanged(bool)), SIGNAL(cancelableChanged(bool)));
     connect(trans, SIGNAL(finished(QApt::ExitStatus)), SIGNAL(updatesFinnished()));
-    connect(trans, SIGNAL(finished(QApt::ExitStatus)), SLOT(deleteLater()));
+    connect(trans, SIGNAL(finished(QApt::ExitStatus)), trans, SLOT(deleteLater()));
     connect(trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
             this, SLOT(statusChanged(QApt::TransactionStatus)));
     connect(trans, SIGNAL(mediumRequired(QString,QString)),
