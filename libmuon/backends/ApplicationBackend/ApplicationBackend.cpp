@@ -560,7 +560,7 @@ void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     updateAction->setEnabled(w->isConnected());
-    connect(updateAction, SIGNAL(triggered()), SLOT(reload()));
+    connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
     connect(w, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
 }
 
@@ -654,4 +654,15 @@ QList< AbstractResource* > ApplicationBackend::upgradeablePackages() const
             ret+=r;
     }
     return ret;
+}
+
+void ApplicationBackend::checkForUpdates()
+{
+    QAptActions::self()->setActionsEnabled(false);
+    QApt::Transaction* transaction = backend()->updateCache();
+    setupTransaction(transaction);
+    connect(transaction, SIGNAL(finished(QApt::ExitStatus)), SLOT(reload()));
+    connect(transaction, SIGNAL(finished(QApt::ExitStatus)), transaction, SLOT(deleteLater()));
+    transaction->run();
+
 }

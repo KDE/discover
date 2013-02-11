@@ -117,6 +117,7 @@ private Q_SLOTS:
     void initBackend();
     void setupTransaction(QApt::Transaction *trans);
     void sourcesEditorClosed();
+    void checkForUpdates();
 
 Q_SIGNALS:
     void startingFirstTransaction();
