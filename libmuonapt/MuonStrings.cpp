@@ -28,6 +28,8 @@
 
 K_GLOBAL_STATIC_WITH_ARGS(MuonStrings, globalMuonStrings, (0))
 
+using namespace QApt;
+
 MuonStrings *MuonStrings::global()
 {
     return globalMuonStrings;
@@ -191,37 +193,37 @@ QString MuonStrings::groupKey(const QString &text) const
 QHash<int, QString> MuonStrings::stateHash()
 {
     QHash<int, QString> hash;
-    hash[QApt::Package::NotInstalled] = i18nc("@info:status Package state" , "Not Installed");
-    hash[QApt::Package::Installed] = i18nc("@info:status Package state", "Installed");
-    hash[QApt::Package::Upgradeable] = i18nc("@info:status Package state", "Upgradeable");
-    hash[QApt::Package::NowBroken] = i18nc("@info:status Package state", "Broken");
-    hash[QApt::Package::ResidualConfig] = i18nc("@info:status Package state", "Residual Configuration");
-    hash[QApt::Package::IsGarbage] = i18nc("@info:status Package state", "Installed (auto-removable)");
-    hash[QApt::Package::NewInstall] = i18nc("@info:status Requested action", "Install");
-    hash[QApt::Package::ToKeep] = i18nc("@info:status Package state", "No Change");
-    hash[QApt::Package::ToInstall] = i18nc("@info:status Requested action", "Install");
-    hash[QApt::Package::ToUpgrade] = i18nc("@info:status Requested action", "Upgrade");
-    hash[QApt::Package::ToRemove] = i18nc("@info:status Requested action", "Remove");
-    hash[QApt::Package::ToPurge] = i18nc("@info:status Requested action", "Purge");
-    hash[QApt::Package::ToReInstall] = i18nc("@info:status Requested action", "Reinstall");
-    hash[QApt::Package::ToDowngrade] = i18nc("@info:status Requested action", "Downgrade");
-    hash[QApt::Package::IsPinned] = i18nc("@info:status Package locked at a certain version",
+    hash[Package::NotInstalled] = i18nc("@info:status Package state" , "Not Installed");
+    hash[Package::Installed] = i18nc("@info:status Package state", "Installed");
+    hash[Package::Upgradeable] = i18nc("@info:status Package state", "Upgradeable");
+    hash[Package::NowBroken] = i18nc("@info:status Package state", "Broken");
+    hash[Package::ResidualConfig] = i18nc("@info:status Package state", "Residual Configuration");
+    hash[Package::IsGarbage] = i18nc("@info:status Package state", "Installed (auto-removable)");
+    hash[Package::NewInstall] = i18nc("@info:status Requested action", "Install");
+    hash[Package::ToKeep] = i18nc("@info:status Package state", "No Change");
+    hash[Package::ToInstall] = i18nc("@info:status Requested action", "Install");
+    hash[Package::ToUpgrade] = i18nc("@info:status Requested action", "Upgrade");
+    hash[Package::ToRemove] = i18nc("@info:status Requested action", "Remove");
+    hash[Package::ToPurge] = i18nc("@info:status Requested action", "Purge");
+    hash[Package::ToReInstall] = i18nc("@info:status Requested action", "Reinstall");
+    hash[Package::ToDowngrade] = i18nc("@info:status Requested action", "Downgrade");
+    hash[Package::IsPinned] = i18nc("@info:status Package locked at a certain version",
                                           "Locked");
 
     return hash;
 }
 
-QString MuonStrings::packageStateName(QApt::Package::State state) const
+QString MuonStrings::packageStateName(Package::State state) const
 {
     return m_stateHash.value(state);
 }
 
-QString MuonStrings::packageChangeStateName(QApt::Package::State state) const
+QString MuonStrings::packageChangeStateName(Package::State state) const
 {
-    int ns = state & (QApt::Package::ToKeep | QApt::Package::ToInstall | QApt::Package::ToReInstall | QApt::Package::NewInstall
-                                    | QApt::Package::ToUpgrade | QApt::Package::ToRemove
-                                    | QApt::Package::ToPurge | QApt::Package::ToReInstall
-                                    | QApt::Package::ToDowngrade);
+    int ns = state & (Package::ToKeep | Package::ToInstall | Package::ToReInstall | Package::NewInstall
+                                    | Package::ToUpgrade | Package::ToRemove
+                                    | Package::ToPurge | Package::ToReInstall
+                                    | Package::ToDowngrade);
     return m_stateHash.value(ns);
 }
 
@@ -246,67 +248,67 @@ QString MuonStrings::archString(const QString &arch) const
     return str;
 }
 
-QString MuonStrings::errorTitle(QApt::ErrorCode error) const
+QString MuonStrings::errorTitle(ErrorCode error) const
 {
     switch (error) {
-    case QApt::InitError:
+    case InitError:
         return i18nc("@title:window", "Initialization Error");
-    case QApt::LockError:
+    case LockError:
         return i18nc("@title:window", "Unable to Obtain Package System Lock");
-    case QApt::DiskSpaceError:
+    case DiskSpaceError:
         return i18nc("@title:window", "Low Disk Space");
-    case QApt::FetchError:
-    case QApt::CommitError:
+    case FetchError:
+    case CommitError:
         return i18nc("@title:window", "Failed to Apply Changes");
-    case QApt::AuthError:
+    case AuthError:
         return i18nc("@title:window", "Authentication error");
-    case QApt::WorkerDisappeared:
+    case WorkerDisappeared:
         return i18nc("@title:window", "Unexpected Error");
-    case QApt::UntrustedError:
+    case UntrustedError:
         return i18nc("@title:window", "Untrusted Packages");
-    case QApt::UnknownError:
+    case UnknownError:
     default:
         return i18nc("@title:window", "Unknown Error");
     }
 }
 
-QString MuonStrings::errorText(QApt::ErrorCode error, QApt::Transaction *trans) const
+QString MuonStrings::errorText(ErrorCode error, Transaction *trans) const
 {
     QString text;
 
     switch (error) {
-    case QApt::InitError:
+    case InitError:
         text = i18nc("@label", "The package system could not be initialized, your "
                                "configuration may be broken.");
         break;
-    case QApt::LockError:
+    case LockError:
         text = i18nc("@label",
                      "Another application seems to be using the package "
                      "system at this time. You must close all other package "
                      "managers before you will be able to install or remove "
                      "any packages.");
         break;
-    case QApt::DiskSpaceError:
+    case DiskSpaceError:
         text = i18nc("@label",
                      "You do not have enough disk space in the directory "
                      "at %1 to continue with this operation.", trans->errorDetails());
         break;
-    case QApt::FetchError:
+    case FetchError:
         text = i18nc("@label", "Could not download packages");
         break;
-    case QApt::CommitError:
+    case CommitError:
         text = i18nc("@label", "An error occurred while applying changes:");
         break;
-    case QApt::AuthError:
+    case AuthError:
         text = i18nc("@label",
                      "This operation cannot continue since proper "
                      "authorization was not provided");
         break;
-    case QApt::WorkerDisappeared:
+    case WorkerDisappeared:
         text = i18nc("@label", "It appears that the QApt worker has either crashed "
                      "or disappeared. Please report a bug to the QApt maintainers");
         break;
-    case QApt::UntrustedError:
+    case UntrustedError:
         text = i18ncp("@label",
                       "The following package has not been verified by its author. "
                       "Downloading untrusted packages has been disallowed "
