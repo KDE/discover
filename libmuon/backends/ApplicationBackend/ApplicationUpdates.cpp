@@ -206,8 +206,8 @@ void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
     connect(trans, SIGNAL(downloadSpeedChanged(quint64)),
             this, SIGNAL(downloadSpeedChanged(quint64)));
     trans->run();
-    
     m_trans = trans;
+    setProgressing(true);
 }
 
 bool ApplicationUpdates::isAllMarked() const
@@ -403,6 +403,7 @@ QString ApplicationUpdates::statusMessage() const
 
 void ApplicationUpdates::cancel()
 {
+    Q_ASSERT(m_trans->isCancellable());
     m_trans->cancel();
 }
 
