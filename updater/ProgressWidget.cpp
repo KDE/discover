@@ -99,7 +99,7 @@ void ProgressWidget::setTransaction(AbstractBackendUpdater* trans)
             this, SLOT(downloadSpeedChanged(quint64)));
     connect(m_updater, SIGNAL(remainingTimeChanged()), SLOT(etaChanged()));
     connect(m_updater, SIGNAL(cancelableChanged(bool)),
-            m_cancelButton, SLOT(setVisible(bool)));
+            m_cancelButton, SLOT(setEnabled(bool)));
     connect(m_updater, SIGNAL(statusMessageChanged(QString)),
             m_headerLabel, SLOT(setText(QString)));
     connect(m_updater, SIGNAL(statusDetailChanged(QString)),
