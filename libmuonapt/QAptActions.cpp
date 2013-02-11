@@ -490,13 +490,13 @@ void QAptActions::setActionsEnabled(bool enabled)
 void QAptActions::launchDistUpgrade()
 {
     KProcess::startDetached(QStringList() << "python"
-                            << "/usr/share/pyshared/UpdateManager/DistUpgradeFetcherKDE.py");
+                            << "/usr/lib/python3/dist-packages/DistUpgrade/DistUpgradeFetcherKDE.py");
 }
 
 void QAptActions::checkDistUpgrade()
 {
-    if(!QFile::exists("/usr/share/pyshared/UpdateManager/DistUpgradeFetcherKDE.py")) {
-        qWarning() << "Couldn't find the /usr/share/pyshared/UpdateManager/DistUpgradeFetcherKDE.py file";
+    if(!QFile::exists("/usr/lib/python3/dist-packages/DistUpgrade/DistUpgradeFetcherKDE.py")) {
+        qWarning() << "Couldn't find the /usr/lib/python3/dist-packages/DistUpgrade/DistUpgradeFetcherKDE.py file";
     }
     QString checkerFile = KStandardDirs::locate("data", "muon-notifier/releasechecker");
     if(checkerFile.isEmpty()) {
