@@ -54,6 +54,7 @@ public:
     virtual QStringList searchPackageName(const QString& searchText);
     virtual QVector< AbstractResource* > allResources() const;
     virtual AbstractBackendUpdater* backendUpdater() const;
+    virtual bool isValid() const { return true; } // No external file dependencies that could cause runtime errors
 
     QList<AbstractResource*> upgradeablePackages() const;
 
