@@ -24,6 +24,7 @@
 #include <QStandardItemModel>
 #include "libmuonprivate_export.h"
 
+class AbstractResourcesBackend;
 class AbstractResource;
 class QAction;
 class AbstractBackendUpdater;
@@ -78,6 +79,7 @@ class MUONPRIVATE_EXPORT ResourcesUpdatesModel : public QStandardItemModel
     private slots:
         void message(const QIcon& icon, const QString& msg);
         void updaterFinished();
+        void addNewBackends();
 };
 
 #endif // RESOURCESUPDATESMODEL_H

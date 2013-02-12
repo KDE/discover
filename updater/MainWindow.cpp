@@ -103,7 +103,7 @@ void MainWindow::initGUI()
 
 //     connect(m_updater, SIGNAL(reloadStarted()), SLOT(startedReloading()));
     connect(m, SIGNAL(backendsChanged()), SLOT(finishedReloading()));
-    initBackend();
+    connect(m, SIGNAL(allInitialized()), SLOT(initBackend()));
 }
 
 void MainWindow::setupActions()

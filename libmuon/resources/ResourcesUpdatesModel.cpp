@@ -41,10 +41,16 @@ void ResourcesUpdatesModel::setResourcesModel(ResourcesModel* model)
     Q_ASSERT(model);
     m_resources = model;
     m_updaters.clear();
-    QVector< AbstractResourcesBackend* > backends = model->backends();
+    addNewBackends();
+    connect(model, SIGNAL(backendsChanged()), SLOT(addNewBackends()));
+}
+
+void ResourcesUpdatesModel::addNewBackends()
+{
+    QVector<AbstractResourcesBackend*> backends = ResourcesModel::global()->backends();
     foreach(AbstractResourcesBackend* b, backends) {
         AbstractBackendUpdater* updater = b->backendUpdater();
-        if(updater && updater->hasUpdates()) {
+        if(updater && !m_updaters.contains(updater)) {
             connect(updater, SIGNAL(progressChanged(qreal)), SIGNAL(progressChanged()));
             connect(updater, SIGNAL(message(QIcon,QString)), SLOT(message(QIcon,QString)));
             connect(updater, SIGNAL(updatesFinnished()), SLOT(updaterFinished()));
