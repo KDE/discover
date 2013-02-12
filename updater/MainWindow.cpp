@@ -39,9 +39,10 @@
 #include <KToolBar>
 
 // Own includes
-#include <MuonBackendsFactory.h>
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/AbstractBackendUpdater.h>
+#include <resources/ResourcesModel.h>
+#include <resources/ResourcesUpdatesModel.h>
 #include "ChangelogWidget.h"
 #include "ProgressWidget.h"
 #include "config/UpdaterSettingsDialog.h"
@@ -52,12 +53,10 @@ MainWindow::MainWindow()
     : MuonMainWindow()
     , m_settingsDialog(nullptr)
 {
-    //FIXME: load all backends!
-    MuonBackendsFactory f;
-    m_apps = f.backend("muon-dummybackend");
-    m_updater = m_apps->backendUpdater();
-    connect(m_apps, SIGNAL(backendReady()), SLOT(initBackend()));
-    connect(m_updater, SIGNAL(progressingChanged(bool)), SLOT(progressingChanged(bool)));
+    ResourcesModel::global()->registerBackendByName("muon-dummybackend");
+    
+    m_updater = new ResourcesUpdatesModel(this);
+    connect(m_updater, SIGNAL(progressingChanged()), SLOT(progressingChanged()));
     connect(m_updater, SIGNAL(updatesFinnished()), SLOT(updatesFinished()));
 
     initGUI();
@@ -65,8 +64,10 @@ MainWindow::MainWindow()
 
 void MainWindow::initGUI()
 {
+    ResourcesModel* m = ResourcesModel::global();
     setWindowTitle(i18nc("@title:window", "Software Updates"));
-    m_apps->integrateMainWindow(this);
+    for(AbstractResourcesBackend* b : m->backends())
+        b->integrateMainWindow(this);
 
     QWidget *mainWidget = new QWidget(this);
     QVBoxLayout *mainLayout = new QVBoxLayout(mainWidget);
@@ -100,8 +101,9 @@ void MainWindow::initGUI()
     setCentralWidget(mainWidget);
     setupActions();
 
-    connect(m_apps, SIGNAL(reloadStarted()), SLOT(startedReloading()));
-    connect(m_apps, SIGNAL(reloadFinished()), SLOT(finishedReloading()));
+//     connect(m_updater, SIGNAL(reloadStarted()), SLOT(startedReloading()));
+    connect(m, SIGNAL(backendsChanged()), SLOT(finishedReloading()));
+    initBackend();
 }
 
 void MainWindow::setupActions()
@@ -131,13 +133,14 @@ void MainWindow::setupActions()
 
 void MainWindow::initBackend()
 {
-    m_updaterWidget->setBackend(m_apps);
+    m_updaterWidget->setBackend(m_updater);
 
     setActionsEnabled();
 }
 
-void MainWindow::progressingChanged(bool active)
+void MainWindow::progressingChanged()
 {
+    bool active = m_updater->isProgressing();
     QApplication::restoreOverrideCursor();
     m_progressWidget->setVisible(active);
     m_updaterWidget->setVisible(!active);
@@ -183,7 +186,7 @@ void MainWindow::startCommit()
     QApplication::setOverrideCursor(Qt::WaitCursor);
     m_changelogWidget->animatedHide();
 
-    m_updater->start();
+    m_updater->updateAll();
 }
 
 void MainWindow::editSettings()

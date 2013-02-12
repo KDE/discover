@@ -23,6 +23,7 @@
 
 #include <QtGui/QStackedWidget>
 
+class ResourcesUpdatesModel;
 class KMessageWidget;
 class AbstractResource;
 class AbstractResourcesBackend;
@@ -48,12 +49,12 @@ private:
     QLabel *m_updateStatusIcon;
     QLabel *m_notifyTitle;
     QLabel *m_notifyDesc;
-    AbstractResourcesBackend* m_appsBackend;
+    ResourcesUpdatesModel* m_updatesBackends;
     KMessageWidget* m_upgradesWidget;
 
 public Q_SLOTS:
-    void setBackend(AbstractResourcesBackend* backend);
-    void invalidateView();
+    void setBackend(ResourcesUpdatesModel* backend);
+    void activityChanged();
 
 private Q_SLOTS:
     void populateUpdateModel();

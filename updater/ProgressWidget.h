@@ -23,7 +23,7 @@
 
 #include <QtGui/QWidget>
 
-class AbstractBackendUpdater;
+class ResourcesUpdatesModel;
 class QLabel;
 class QParallelAnimationGroup;
 class QPushButton;
@@ -35,10 +35,10 @@ class ProgressWidget : public QWidget
 public:
     ProgressWidget(QWidget *parent);
 
-    void setTransaction(AbstractBackendUpdater *trans);
+    void setTransaction(ResourcesUpdatesModel* updates);
 
 private:
-    AbstractBackendUpdater *m_updater;
+    ResourcesUpdatesModel* m_updater;
     qreal m_lastRealProgress;
 
     QLabel *m_headerLabel;
@@ -52,12 +52,13 @@ private:
 public Q_SLOTS:
     void show();
     void animatedHide();
-    void updateIsProgressing(bool active);
 
 private Q_SLOTS:
-    void updateProgress(qreal progress);
-    void downloadSpeedChanged(quint64 speed);
+    void updateProgress();
+    void downloadSpeedChanged();
     void etaChanged();
+    void cancelChanged();
+    void updateIsProgressing();
 };
 
 #endif // PROGRESSWIDGET_H

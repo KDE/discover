@@ -37,6 +37,7 @@
 #include <KMessageBox>
 
 #include <resources/AbstractBackendUpdater.h>
+#include <resources/ResourcesUpdatesModel.h>
 
 ProgressWidget::ProgressWidget(QWidget *parent)
     : QWidget(parent)
@@ -88,39 +89,39 @@ ProgressWidget::ProgressWidget(QWidget *parent)
     m_expandWidget->addAnimation(anim2);
 }
 
-void ProgressWidget::setTransaction(AbstractBackendUpdater* trans)
+void ProgressWidget::setTransaction(ResourcesUpdatesModel* updates)
 {
-    m_updater = trans;
+    m_updater = updates;
 
     // Connect the transaction all up to our slots
-    connect(m_updater, SIGNAL(progressChanged(qreal)),
-            this, SLOT(updateProgress(qreal)));
-    connect(m_updater, SIGNAL(downloadSpeedChanged(quint64)),
-            this, SLOT(downloadSpeedChanged(quint64)));
-    connect(m_updater, SIGNAL(remainingTimeChanged()), SLOT(etaChanged()));
-    connect(m_updater, SIGNAL(cancelableChanged(bool)),
-            m_cancelButton, SLOT(setEnabled(bool)));
+    connect(m_updater, SIGNAL(progressChanged()),
+            this, SLOT(updateProgress()));
+    connect(m_updater, SIGNAL(downloadSpeedChanged()),
+            this, SLOT(downloadSpeedChanged()));
+    connect(m_updater, SIGNAL(etaChanged()), SLOT(etaChanged()));
+    connect(m_updater, SIGNAL(cancelableChanged()), SLOT(cancelChanged()));
     connect(m_updater, SIGNAL(statusMessageChanged(QString)),
             m_headerLabel, SLOT(setText(QString)));
     connect(m_updater, SIGNAL(statusDetailChanged(QString)),
             m_detailsLabel, SLOT(setText(QString)));
-    connect(m_updater, SIGNAL(progressingChanged(bool)),
-            SLOT(updateIsProgressing(bool)));
+    connect(m_updater, SIGNAL(progressingChanged()),
+            SLOT(updateIsProgressing()));
 
-    m_headerLabel->setText(m_updater->statusMessage());
-    m_detailsLabel->setText(m_updater->statusDetail());
+//     m_headerLabel->setText(m_updater->statusMessage());
+//     m_detailsLabel->setText(m_updater->statusDetail());
     
-    m_cancelButton->setEnabled(m_updater->isCancelable());
+    cancelChanged();
     connect(m_cancelButton, SIGNAL(clicked()), m_updater, SLOT(cancel()));
 }
 
-void ProgressWidget::updateIsProgressing(bool active)
+void ProgressWidget::updateIsProgressing()
 {
-    m_progressBar->setMaximum(active ? 100 : 0);
+    m_progressBar->setMaximum(m_updater->isProgressing() ? 100 : 0);
 }
 
-void ProgressWidget::updateProgress(qreal progress)
+void ProgressWidget::updateProgress()
 {
+    qreal progress = m_updater->progress();
     if (progress > 100 || progress<0) {
         m_progressBar->setMaximum(0);
     } else if (progress > m_lastRealProgress) {
@@ -130,8 +131,9 @@ void ProgressWidget::updateProgress(qreal progress)
     }
 }
 
-void ProgressWidget::downloadSpeedChanged(quint64 speed)
+void ProgressWidget::downloadSpeedChanged()
 {
+    quint64 speed = m_updater->downloadSpeed();
     QString downloadSpeed = i18nc("@label Download rate", "Download rate: %1/s",
                               KGlobal::locale()->formatByteSize(speed));
     m_detailsLabel->setText(downloadSpeed);
@@ -139,15 +141,7 @@ void ProgressWidget::downloadSpeedChanged(quint64 speed)
 
 void ProgressWidget::etaChanged()
 {
-    long unsigned int ETA = m_updater->remainingTime();
-
-    // Ignore ETA if it's larger than 2 days.
-    if (ETA && ETA < 2 * 24 * 60 * 60) {
-        QString timeRemaining = i18nc("@item:intext Remaining time", "%1 remaining",
-                              KGlobal::locale()->prettyFormatDuration(ETA * 1000));
-        m_detailsLabel->setText(i18n("%1 - %2", m_detailsLabel->text(), timeRemaining));
-    } else
-        m_detailsLabel->clear();
+    m_detailsLabel->setText(m_updater->remainingTime());
 }
 
 void ProgressWidget::show()
@@ -171,4 +165,9 @@ void ProgressWidget::animatedHide()
     m_expandWidget->start();
     connect(m_expandWidget, SIGNAL(finished()), this, SLOT(hide()));
     connect(m_expandWidget, SIGNAL(finished()), m_cancelButton, SLOT(show()));
+}
+
+void ProgressWidget::cancelChanged()
+{
+    m_cancelButton->setEnabled(m_updater->isCancelable());
 }

@@ -44,6 +44,7 @@
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/AbstractResource.h>
 #include <resources/AbstractBackendUpdater.h>
+#include <resources/ResourcesUpdatesModel.h>
 
 // Own includes
 #include "UpdateModel/UpdateModel.h"
@@ -128,43 +129,43 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     setCurrentWidget(page1);
 }
 
-void UpdaterWidget::setBackend(AbstractResourcesBackend *backend)
+void UpdaterWidget::setBackend(ResourcesUpdatesModel *updates)
 {
-    m_appsBackend = backend;
-    connect(m_appsBackend, SIGNAL(reloadStarted()), m_busyWidget, SLOT(start()));
-    connect(m_appsBackend, SIGNAL(reloadStarted()), SLOT(invalidateView()));
-    connect(m_appsBackend, SIGNAL(reloadFinished()), SLOT(populateUpdateModel()));
-    connect(m_appsBackend->backendUpdater(), SIGNAL(updatesFinnished()), SLOT(populateUpdateModel()));
+    m_updatesBackends = updates;
+    connect(m_updatesBackends, SIGNAL(progressingChanged()), SLOT(activityChanged()));
+    connect(m_updatesBackends, SIGNAL(updatesFinnished()), SLOT(populateUpdateModel()));
 
     populateUpdateModel();
     setEnabled(true);
 }
 
-void UpdaterWidget::invalidateView()
+void UpdaterWidget::activityChanged()
 {
-    m_updateModel->clear();
-    setEnabled(false);
-    setCurrentIndex(-1);
+    if(m_updatesBackends->isProgressing()) {
+        m_busyWidget->start();
+        setEnabled(false);
+        setCurrentIndex(-1);
+    } else {
+        populateUpdateModel();
+    }
 }
 
 void UpdaterWidget::populateUpdateModel()
 {
+    m_busyWidget->stop();
+    QApplication::restoreOverrideCursor();
     setEnabled(true);
-    if (m_appsBackend->updatesCount()==0) {
-        QApplication::restoreOverrideCursor();
-        m_busyWidget->stop();
+    if (!m_updatesBackends->hasUpdates()) {
         checkUpToDate();
         return;
     }
-    AbstractBackendUpdater* updater = m_appsBackend->backendUpdater();
-    updater->prepare();
-    m_updateModel->addResources(updater->toUpdate());
+    m_updatesBackends->prepare();
+    m_updateModel->clear();
+    m_updateModel->addResources(m_updatesBackends->toUpdate());
 
     m_updateView->expand(m_updateModel->index(0,0)); // Expand apps category
     m_updateView->resizeColumnToContents(0);
     m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
-    m_busyWidget->stop();
-    QApplication::restoreOverrideCursor();
 
     checkAllMarked();
     checkUpToDate();
@@ -176,9 +177,9 @@ void UpdaterWidget::checkApps(const QList<AbstractResource*>& apps, bool checked
         QApplication::setOverrideCursor(Qt::WaitCursor);
     }
     if(checked)
-        m_appsBackend->backendUpdater()->addResources(apps);
+        m_updatesBackends->addResources(apps);
     else
-        m_appsBackend->backendUpdater()->removeResources(apps);
+        m_updatesBackends->removeResources(apps);
     QApplication::restoreOverrideCursor();
 }
 
@@ -199,20 +200,20 @@ void UpdaterWidget::selectionChanged(const QItemSelection &selected,
 
 void UpdaterWidget::checkAllMarked()
 {
-    m_upgradesWidget->setVisible(!m_appsBackend->backendUpdater()->isAllMarked());
+    m_upgradesWidget->setVisible(!m_updatesBackends->isAllMarked());
 }
 
 void UpdaterWidget::markAllPackagesForUpgrade()
 {
-    m_appsBackend->backendUpdater()->prepare();
+    m_updatesBackends->prepare();
     m_upgradesWidget->hide();
 }
 
 void UpdaterWidget::checkUpToDate()
 {
-    if(m_appsBackend->upgradeablePackages().isEmpty()) {
+    if(!m_updatesBackends->hasUpdates()) {
         setCurrentIndex(1);
-        QDateTime lastUpdate = m_appsBackend->backendUpdater()->lastUpdate();
+        QDateTime lastUpdate = m_updatesBackends->lastUpdate();
 
         // Unknown time since last update
         if (!lastUpdate.isValid()) {

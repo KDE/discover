@@ -24,8 +24,7 @@
 // Own includes
 #include "../libmuon/MuonMainWindow.h"
 
-class AbstractBackendUpdater;
-class AbstractResourcesBackend;
+class ResourcesUpdatesModel;
 class KAction;
 class KDialog;
 class KMessageWidget;
@@ -42,7 +41,7 @@ public:
     MainWindow();
 
 private:
-    AbstractBackendUpdater* m_updater;
+    ResourcesUpdatesModel* m_updater;
 
     ProgressWidget *m_progressWidget;
     UpdaterWidget *m_updaterWidget;
@@ -51,7 +50,6 @@ private:
     KMessageWidget *m_powerMessage;
     KAction *m_applyAction;
 
-    AbstractResourcesBackend* m_apps;
     virtual void setActionsEnabled(bool enabled = true);
 
 private Q_SLOTS:
@@ -63,7 +61,7 @@ private Q_SLOTS:
     void closeSettingsDialog();
     void checkPlugState();
     void updatePlugState(bool plugged);
-    void progressingChanged(bool active);
+    void progressingChanged();
     void updatesFinished();
     void startedReloading();
     void finishedReloading();
