@@ -21,20 +21,19 @@
 #include "ResourcesUpdatesModel.h"
 #include "ResourcesModel.h"
 #include "AbstractBackendUpdater.h"
+#include "AbstractResource.h"
 #include <QDebug>
+#include <QDateTime>
 #include <KLocalizedString>
 #include <KGlobal>
 #include <KLocale>
+#include <KDebug>
 
 ResourcesUpdatesModel::ResourcesUpdatesModel(QObject* parent)
     : QStandardItemModel(parent)
     , m_resources(0)
 {
-}
-
-ResourcesModel* ResourcesUpdatesModel::resourcesModel() const
-{
-    return m_resources;
+    setResourcesModel(ResourcesModel::global());
 }
 
 void ResourcesUpdatesModel::setResourcesModel(ResourcesModel* model)
@@ -50,6 +49,8 @@ void ResourcesUpdatesModel::setResourcesModel(ResourcesModel* model)
             connect(updater, SIGNAL(message(QIcon,QString)), SLOT(message(QIcon,QString)));
             connect(updater, SIGNAL(updatesFinnished()), SLOT(updaterFinished()));
             connect(updater, SIGNAL(remainingTimeChanged()), SIGNAL(etaChanged()));
+            connect(updater, SIGNAL(downloadSpeedChanged(quint64)), SIGNAL(downloadSpeedChanged()));
+            connect(updater, SIGNAL(progressingChanged(bool)), SIGNAL(progressingChanged()));
             m_updaters += updater;
         }
     }
@@ -69,6 +70,13 @@ void ResourcesUpdatesModel::message(const QIcon& icon, const QString& msg)
     appendRow(new QStandardItem(icon, msg));
 }
 
+void ResourcesUpdatesModel::prepare()
+{
+    foreach(AbstractBackendUpdater* upd, m_updaters) {
+        upd->prepare();
+    }
+}
+
 void ResourcesUpdatesModel::updateAll()
 {
     Q_ASSERT(m_resources);
@@ -77,7 +85,6 @@ void ResourcesUpdatesModel::updateAll()
     if(m_updaters.isEmpty())
         emit updatesFinnished();
     else foreach(AbstractBackendUpdater* upd, m_updaters) {
-        upd->prepare();
         upd->start();
     }
 }
@@ -95,9 +102,120 @@ QString ResourcesUpdatesModel::remainingTime() const
     foreach(AbstractBackendUpdater* upd, m_updaters) {
         maxEta = qMax(maxEta, upd->remainingTime());
     }
-    if(maxEta==0)
+
+    // Ignore ETA if it's larger than 2 days.
+    if(maxEta==0 && maxEta < 2 * 24 * 60 * 60)
         return QString();
     else
         return i18nc("@item:intext Remaining time", "%1 remaining",
                                 KGlobal::locale()->prettyFormatDuration(maxEta));
+}
+
+QList<QAction*> ResourcesUpdatesModel::messageActions() const
+{
+    QList<QAction*> ret;
+    foreach(AbstractBackendUpdater* upd, m_updaters) {
+        ret += upd->messageActions();
+    }
+    return ret;
+}
+
+bool ResourcesUpdatesModel::hasUpdates() const
+{
+    bool ret = false;
+    foreach(AbstractBackendUpdater* upd, m_updaters) {
+        ret |= upd->hasUpdates();
+    }
+    return ret;
+}
+
+quint64 ResourcesUpdatesModel::downloadSpeed() const
+{
+    quint64 ret = 0;
+    foreach(AbstractBackendUpdater* upd, m_updaters) {
+        ret += upd->downloadSpeed();
+    }
+    return ret;
+}
+
+bool ResourcesUpdatesModel::isCancelable() const
+{
+    bool cancelable = false;
+    foreach(AbstractBackendUpdater* upd, m_updaters) {
+        cancelable |= upd->isCancelable();
+    }
+    return cancelable;
+}
+
+bool ResourcesUpdatesModel::isProgressing() const
+{
+    bool progressing = false;
+    foreach(AbstractBackendUpdater* upd, m_updaters) {
+        progressing |= upd->isProgressing();
+    }
+    return progressing;
+}
+
+bool ResourcesUpdatesModel::isAllMarked() const
+{
+    bool allmarked = false;
+    foreach(AbstractBackendUpdater* upd, m_updaters) {
+        allmarked |= upd->isAllMarked();
+    }
+    return allmarked;
+}
+
+QList<AbstractResource*> ResourcesUpdatesModel::toUpdate() const
+{
+    QList<AbstractResource*> ret;
+    foreach(AbstractBackendUpdater* upd, m_updaters) {
+        ret += upd->toUpdate();
+    }
+    return ret;
+}
+
+void ResourcesUpdatesModel::addResources(const QList<AbstractResource*>& resources)
+{
+    QMap<AbstractResourcesBackend*, QList<AbstractResource*> > sortedResources;
+    foreach(AbstractResource* res, resources) {
+        sortedResources[res->backend()] += res;
+    }
+
+    for(auto it=sortedResources.constBegin(), itEnd=sortedResources.constEnd(); it!=itEnd; ++it) {
+        it.key()->backendUpdater()->addResources(*it);
+    }
+}
+
+void ResourcesUpdatesModel::removeResources(const QList< AbstractResource* >& resources)
+{
+    QMap<AbstractResourcesBackend*, QList<AbstractResource*> > sortedResources;
+    foreach(AbstractResource* res, resources) {
+        sortedResources[res->backend()] += res;
+    }
+
+    for(auto it=sortedResources.constBegin(), itEnd=sortedResources.constEnd(); it!=itEnd; ++it) {
+        it.key()->backendUpdater()->removeResources(*it);
+    }
+}
+
+QDateTime ResourcesUpdatesModel::lastUpdate() const
+{
+    QDateTime ret;
+    foreach(AbstractBackendUpdater* upd, m_updaters) {
+        QDateTime current = upd->lastUpdate();
+        if(!ret.isValid() || (current.isValid() && current>ret)) {
+            ret = current;
+        }
+    }
+    return ret;
+}
+
+void ResourcesUpdatesModel::cancel()
+{
+    foreach(AbstractBackendUpdater* upd, m_updaters) {
+        if(upd->isCancelable())
+            upd->cancel();
+        else
+            kWarning() << "tried to cancel " << upd->metaObject()->className() << "which is not cancelable";
+    }
 }

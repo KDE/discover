@@ -24,30 +24,53 @@
 #include <QStandardItemModel>
 #include "libmuonprivate_export.h"
 
+class AbstractResource;
+class QAction;
 class AbstractBackendUpdater;
 class ResourcesModel;
 
 class MUONPRIVATE_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 {
     Q_OBJECT
-    Q_PROPERTY(ResourcesModel* resources READ resourcesModel WRITE setResourcesModel)
     Q_PROPERTY(qreal progress READ progress NOTIFY progressChanged);
     Q_PROPERTY(QString remainingTime READ remainingTime NOTIFY etaChanged)
+    Q_PROPERTY(quint64 downloadSpeed READ downloadSpeed NOTIFY downloadSpeedChanged)
+    Q_PROPERTY(bool isCancelable READ isCancelable NOTIFY cancelableChanged)
+    Q_PROPERTY(bool isProgressing READ isProgressing NOTIFY progressingChanged)
     public:
         explicit ResourcesUpdatesModel(QObject* parent = 0);
         
-        void setResourcesModel(ResourcesModel* model);
-        ResourcesModel* resourcesModel() const;
         qreal progress() const;
         QString remainingTime() const;
+        QList<QAction*> messageActions() const;
+        bool hasUpdates() const;
+        quint64 downloadSpeed() const;
+        Q_SCRIPTABLE void prepare();
         Q_SCRIPTABLE void updateAll();
 
+        ///checks if any of them is cancelable
+        bool isCancelable() const;
+        bool isProgressing() const;
+        bool isAllMarked() const;
+        QList<AbstractResource*> toUpdate() const;
+        QDateTime lastUpdate() const;
+        void addResources(const QList<AbstractResource*>& resources);
+        void removeResources(const QList<AbstractResource*>& resources);
+
     signals:
+        void downloadSpeedChanged();
         void progressChanged();
         void updatesFinnished();
         void etaChanged();
+        void cancelableChanged();
+        void progressingChanged();
+
+    public slots:
+        void cancel();
 
     private:
+        void setResourcesModel(ResourcesModel* model);
+
         ResourcesModel* m_resources;
         QVector<AbstractBackendUpdater*> m_updaters;
         int m_finishedUpdaters;

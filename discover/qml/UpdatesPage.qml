@@ -9,10 +9,12 @@ Page
     property real actualWidth: width-Math.pow(width/70, 2)
     property real sideMargin: (width-actualWidth)/2
     
-    function start() { updatesModel.updateAll() }
+    function start() {
+        updatesModel.prepare()
+        updatesModel.updateAll()
+    }
     ResourcesUpdatesModel {
         id: updatesModel
-        resources: resourcesModel
         onUpdatesFinnished: page.pageStack.pop()
     }
     onVisibleChanged: window.navigationEnabled=!visible
