@@ -42,10 +42,11 @@ PKTransaction::PKTransaction(AbstractResource* app, TransactionAction action, Pa
 
 void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
 {
-    qDebug() << "........" << exit << runtime << m_trans->error();
     qobject_cast<PackageKitBackend*>(resource()->backend())->removeTransaction(this);
-    deleteLater();
-    m_trans->deleteLater();
+    PackageKit::Transaction* t = new PackageKit::Transaction(resource());
+    t->resolve(resource()->packageName(), PackageKit::Transaction::FilterNone);
+    connect(t, SIGNAL(package(PackageKit::Package)), resource(), SLOT(updatePackage(PackageKit::Package)));
+    connect(t, SIGNAL(package(PackageKit::Package)), t, SLOT(deleteLater()));
 }
 
 PackageKit::Transaction* PKTransaction::transaction()
