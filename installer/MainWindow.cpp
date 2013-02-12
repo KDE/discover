@@ -48,7 +48,6 @@
 
 // Libmuon includes
 #include <resources/ResourcesModel.h>
-#include <MuonBackendsFactory.h>
 
 // Own includes
 #include "ApplicationLauncher.h"
@@ -156,12 +155,11 @@ void MainWindow::initObject()
 
     m_launches = new LaunchListModel(this);
 
-    MuonBackendsFactory f;
-    QList<AbstractResourcesBackend*> backends = f.allBackends();
+    resourcesModel->registerAllBackends();
+    QVector<AbstractResourcesBackend*> backends = resourcesModel->backends();
 
     //TODO: should add the appBackend here too
     for (AbstractResourcesBackend *backend : backends) {
-        resourcesModel->addResourcesBackend(backend);
         backend->integrateMainWindow(this);
         
         if(backend->metaObject()->className()==QLatin1String("ApplicationBackend")) {

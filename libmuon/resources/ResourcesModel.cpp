@@ -21,12 +21,14 @@
 #include "ResourcesModel.h"
 
 #include <KGlobal>
+#include <KDebug>
 
 #include "resources/AbstractResourcesBackend.h"
 #include "AbstractResource.h"
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <Transaction/Transaction.h>
+#include <MuonBackendsFactory.h>
 #include <QDebug>
 
 static const KCatalogLoader loader("libmuon");
@@ -40,6 +42,7 @@ ResourcesModel *ResourcesModel::global()
 
 ResourcesModel::ResourcesModel(QObject* parent)
     : QAbstractListModel(parent)
+    , m_initializingBackends(0)
 {
     QHash< int, QByteArray > roles = roleNames();
     roles[NameRole] = "name";
@@ -190,6 +193,7 @@ int ResourcesModel::rowCount(const QModelIndex& parent) const
 
 void ResourcesModel::cleanCaller()
 {
+    m_initializingBackends++;
     AbstractResourcesBackend* backend = qobject_cast<AbstractResourcesBackend*>(sender());
     Q_ASSERT(backend);
     int pos = m_backends.indexOf(backend);
@@ -232,6 +236,9 @@ void ResourcesModel::resetCaller()
         endInsertRows();
         emit updatesCountChanged();
     }
+    m_initializingBackends--;
+    if(m_initializingBackends==0)
+        emit allInitialized();
 }
 
 void ResourcesModel::updateCaller()
@@ -312,4 +319,26 @@ QMap<int, QVariant> ResourcesModel::itemData(const QModelIndex& index) const
         ret.insert(it.key(), data(index, it.key()));
     }
     return ret;
+}
+
+void ResourcesModel::registerAllBackends()
+{
+    MuonBackendsFactory f;
+    m_initializingBackends += f.backendsCount();
+    if(m_initializingBackends==0) {
+        kWarning() << "Couldn't find any backends";
+        emit allInitialized();
+    } else {
+        QList<AbstractResourcesBackend*> backends = f.allBackends();
+        foreach(AbstractResourcesBackend* b, backends) {
+            addResourcesBackend(b);
+        }
+    }
+}
+
+void ResourcesModel::registerBackendByName(const QString& name)
+{
+    MuonBackendsFactory f;
+    addResourcesBackend(f.backend(name));
+    m_initializingBackends++;
 }

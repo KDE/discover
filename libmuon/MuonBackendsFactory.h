@@ -32,10 +32,10 @@ public:
     
     AbstractResourcesBackend* backend(const QString& name);
     QList<AbstractResourcesBackend*> allBackends();
+    int backendsCount() const;
     
 private:
     AbstractResourcesBackend* backendForPlugin(const KPluginInfo& info);
-    AbstractResourcesBackend* backendForName(const KPluginInfo& info);
 };
 
 #endif // MUONBACKENDSFACTORY_H
