@@ -126,7 +126,9 @@ AbstractResource::State PackageKitResource::state()
 
 void PackageKitResource::updatePackage(const PackageKit::Package& p)
 {
-    bool changeState = p.state()!=state();
+    if(p.info()==PackageKit::Package::UnknownInfo)
+        kWarning() << "Received unknown Package::info() for " << p.name();
+    bool changeState = p.info()!=m_package.info();
     m_package = p;
     if(changeState) {
         emit stateChanged();
