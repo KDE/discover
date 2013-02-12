@@ -157,8 +157,10 @@ void ApplicationUpdates::setProgress(int progress)
 
 void ApplicationUpdates::etaChanged(quint64 eta)
 {
-    m_eta = eta;
-    emit remainingTimeChanged();
+    if(m_eta != eta) {
+        m_eta = eta;
+        emit remainingTimeChanged();
+    }
 }
 
 void ApplicationUpdates::installMessage(const QString& msg)
