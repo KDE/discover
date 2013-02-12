@@ -20,7 +20,10 @@
 
 #include "PKTransaction.h"
 #include "PackageKitBackend.h"
+#include "PackageKitResource.h"
 #include <resources/AbstractResource.h>
+#include <KMessageBox>
+#include <KLocalizedString>
 #include <PackageKit/packagekit-qt2/Transaction>
 #include <QDebug>
 
@@ -28,7 +31,13 @@ PKTransaction::PKTransaction(AbstractResource* app, TransactionAction action, Pa
     : Transaction(app, action)
     , m_trans(pktrans)
 {
+    m_trans->setParent(this);
     connect(pktrans, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(cleanup(PackageKit::Transaction::Exit,uint)));
+    connect(pktrans, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(errorFound(PackageKit::Transaction::Error,QString)));
+    connect(pktrans, SIGNAL(mediaChangeRequired(PackageKit::Transaction::MediaType,QString,QString)),
+            SLOT(mediaChange(PackageKit::Transaction::MediaType,QString,QString)));
+    connect(pktrans, SIGNAL(requireRestart(PackageKit::Package::Restart,PackageKit::Package)),
+            SLOT(requireRestard(PackageKit::Package::Restart,PackageKit::Package)));
 }
 
 void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
@@ -42,4 +51,19 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
 PackageKit::Transaction* PKTransaction::transaction()
 {
     return m_trans;
+}
+
+void PKTransaction::errorFound(PackageKit::Transaction::Error err, const QString& error)
+{
+    KMessageBox::error(0, error, i18n("Found error %1", err));
+}
+
+void PKTransaction::mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text)
+{
+    KMessageBox::information(0, text, i18n("Media Change requested: %1", type));
+}
+
+void PKTransaction::requireRestard(PackageKit::Package::Restart restart, const PackageKit::Package& p)
+{
+    KMessageBox::information(0, i18n("A change by '%1' suggests your system to be rebooted.", p.name()));
 }

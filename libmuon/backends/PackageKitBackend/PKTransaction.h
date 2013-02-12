@@ -27,13 +27,18 @@
 class PKTransaction : public Transaction
 {
     Q_OBJECT
-    PackageKit::Transaction* m_trans;
     public:
         explicit PKTransaction(AbstractResource* app, TransactionAction action, PackageKit::Transaction* pktrans);
         PackageKit::Transaction* transaction();
 
     private slots:
         void cleanup(PackageKit::Transaction::Exit, uint);
+        void errorFound(PackageKit::Transaction::Error err, const QString& error);
+        void mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text);
+        void requireRestard(PackageKit::Package::Restart restart, const PackageKit::Package& p);
+
+    private:
+        PackageKit::Transaction* m_trans;
 };
 
 #endif // PKTRANSACTION_H
