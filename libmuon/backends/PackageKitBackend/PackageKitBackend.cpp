@@ -31,6 +31,7 @@
 #include <KPluginFactory>
 #include <KLocalizedString>
 #include <KAboutData>
+#include <KDebug>
 
 K_PLUGIN_FACTORY(MuonPackageKitBackendFactory, registerPlugin<PackageKitBackend>(); )
 K_EXPORT_PLUGIN(MuonPackageKitBackendFactory(KAboutData("muon-pkbackend","muon-pkbackend",ki18n("PackageKit Backend"),"0.1",ki18n("Install PackageKit data in your system"), KAboutData::License_GPL)))
@@ -86,7 +87,7 @@ QStringList PackageKitBackend::searchPackageName(const QString& searchText)
 {
     QStringList ret;
     for(AbstractResource* res : m_packages) {
-        if(res->name().contains(searchText))
+        if(res->name().contains(searchText, Qt::CaseInsensitive))
             ret += res->packageName();
     }
     return ret;
@@ -105,7 +106,9 @@ int PackageKitBackend::updatesCount() const
 
 void PackageKitBackend::removeTransaction(Transaction* t)
 {
-    m_transactions.removeAll(t);
+    qDebug() << "done" << t->resource()->packageName() << m_transactions.size();
+    int count = m_transactions.removeAll(t);
+    Q_ASSERT(count==1);
     emit transactionRemoved(t);
 }
 
@@ -119,15 +122,22 @@ void PackageKitBackend::installApplication(AbstractResource* app)
     PackageKit::Transaction* installTransaction = new PackageKit::Transaction(this);
     installTransaction->installPackage(qobject_cast<PackageKitResource*>(app)->package());
     PKTransaction* t = new PKTransaction(app, InstallApp, installTransaction);
+    m_transactions.append(t);
     emit transactionAdded(t);
+    emit transactionsEvent(StartedCommitting, t);
 }
 
 void PackageKitBackend::cancelTransaction(AbstractResource* app)
 {
     foreach(Transaction* t, m_transactions) {
         PKTransaction* pkt = qobject_cast<PKTransaction*>(t);
-        if(pkt->resource() == app && pkt->transaction()->allowCancel()) {
-            pkt->transaction()->cancel();
+        if(pkt->resource() == app) {
+            if(pkt->transaction()->allowCancel()) {
+                pkt->transaction()->cancel();
+                removeTransaction(t);
+                emit transactionCancelled(t);
+            } else
+                kWarning() << "trying to cancel a non-cancellable transaction: " << app->name();
             break;
         }
     }
@@ -136,14 +146,27 @@ void PackageKitBackend::cancelTransaction(AbstractResource* app)
 void PackageKitBackend::removeApplication(AbstractResource* app)
 {
     PackageKit::Transaction* removeTransaction = new PackageKit::Transaction(this);
-    removeTransaction->installPackage(qobject_cast<PackageKitResource*>(app)->package());
+    removeTransaction->removePackage(qobject_cast<PackageKitResource*>(app)->package());
     PKTransaction* t = new PKTransaction(app, RemoveApp, removeTransaction);
+    m_transactions.append(t);
     emit transactionAdded(t);
+    emit transactionsEvent(FinishedCommitting, t);
+    qDebug() << "remove" << app->packageName();
+}
+
+QPair<TransactionStateTransition, Transaction*> PackageKitBackend::currentTransactionState() const
+{
+    if(m_transactions.isEmpty())
+        return qMakePair<TransactionStateTransition, Transaction*>(FinishedCommitting, nullptr);
+    else
+        return qMakePair<TransactionStateTransition, Transaction*>(StartedCommitting, m_transactions.first());
+}
+
+QList<Transaction*> PackageKitBackend::transactions() const
+{
+    return m_transactions;
 }
 
 //TODO
 AbstractReviewsBackend* PackageKitBackend::reviewsBackend() const { return 0; }
 AbstractBackendUpdater* PackageKitBackend::backendUpdater() const { return 0; }
-QList< Transaction* > PackageKitBackend::transactions() const { return QList<Transaction*>(); }
-QPair<TransactionStateTransition, Transaction*> PackageKitBackend::currentTransactionState() const
-{ return qMakePair<TransactionStateTransition, Transaction*>(FinishedCommitting, nullptr); }

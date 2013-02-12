@@ -126,7 +126,11 @@ AbstractResource::State PackageKitResource::state()
 
 void PackageKitResource::updatePackage(const PackageKit::Package& p)
 {
+    bool changeState = p.state()!=state();
     m_package = p;
+    if(changeState) {
+        emit stateChanged();
+    }
 }
 
 QStringList PackageKitResource::categories()
