@@ -36,6 +36,9 @@ class AppPackageKitResource : public PackageKitResource
         virtual QStringList categories();
         virtual QString longDescription() const;
         virtual QUrl homepage() const;
+        virtual bool canExecute() const { return true; }
+        virtual QStringList executables() const;
+        virtual void invokeApplication() const;
 
     private:
         ApplicationData m_appdata;

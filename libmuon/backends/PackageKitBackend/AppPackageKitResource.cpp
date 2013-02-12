@@ -21,6 +21,8 @@
 #include "AppPackageKitResource.h"
 #include <KGlobal>
 #include <KLocale>
+#include <KStandardDirs>
+#include <KToolInvocation>
 #include <QDebug>
 
 AppPackageKitResource::AppPackageKitResource(const PackageKit::Package& p,
@@ -69,4 +71,20 @@ QUrl AppPackageKitResource::homepage() const
 bool AppPackageKitResource::isTechnical() const
 {
     return false;
+}
+
+QStringList AppPackageKitResource::executables() const
+{
+    QString desktopFile = KGlobal::dirs()->findResource("xdgdata-apps", m_appdata.id);
+    QStringList ret;
+    if(!desktopFile.isEmpty())
+        ret += desktopFile;
+    return ret;
+}
+
+void AppPackageKitResource::invokeApplication() const
+{
+    QStringList exes = executables();
+    if(!exes.isEmpty())
+        KToolInvocation::startServiceByDesktopPath(exes.first());
 }
