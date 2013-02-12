@@ -60,8 +60,6 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
         virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
         
-        void addResourcesBackend(AbstractResourcesBackend* resources);
-        
         AbstractResource* resourceAt(int row) const;
         QModelIndex resourceIndex(AbstractResource* res) const;
         QVector< AbstractResourcesBackend* > backends() const;
@@ -69,7 +67,10 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         virtual QMap< int, QVariant > itemData(const QModelIndex& index) const;
         
         Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name);
-        
+
+        void registerBackendByName(const QString& name);
+        void registerAllBackends();
+
     public slots:
         void installApplication(AbstractResource* app, const QHash<QString, bool>& state);
         void installApplication(AbstractResource* app);
@@ -78,6 +79,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         void transactionChanged(Transaction* t);
 
     signals:
+        void allInitialized();
         void backendsChanged();
         void updatesCountChanged();
         void searchInvalidated();
@@ -95,8 +97,11 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         void updateCaller();
         
     private:
+        void addResourcesBackend(AbstractResourcesBackend* resources);
+
         QVector< AbstractResourcesBackend* > m_backends;
         QVector< QVector<AbstractResource*> > m_resources;
+        int m_initializingBackends;
 };
 
 #endif // RESOURCESMODEL_H

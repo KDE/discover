@@ -64,7 +64,6 @@
 #include <Transaction/Transaction.h>
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
-#include <MuonBackendsFactory.h>
 
 Q_DECLARE_METATYPE(ResourcesModel*);
 
@@ -123,12 +122,10 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
 
 void MuonDiscoverMainWindow::initialize()
 {
-    MuonBackendsFactory factory;
-    QList<AbstractResourcesBackend*> backends = factory.allBackends();
-    
     ResourcesModel* m = ResourcesModel::global();
+    m->registerAllBackends();
+    QVector<AbstractResourcesBackend*> backends = m->backends();
     foreach(AbstractResourcesBackend* b, backends) {
-        m->addResourcesBackend(b);
         b->integrateMainWindow(this);
     }
 }
