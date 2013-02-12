@@ -49,8 +49,8 @@ bool StandardBackendUpdater::hasUpdates() const
 
 void StandardBackendUpdater::start()
 {
-    emit progressingChanged(true);
     m_settingUp = true;
+    emit progressingChanged(true);
     setProgress(-1);
     foreach(AbstractResource* res, m_toUpgrade) {
         m_pendingResources += res;
