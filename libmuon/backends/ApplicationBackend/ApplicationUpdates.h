@@ -63,6 +63,7 @@ public:
     virtual quint64 downloadSpeed() const;
     void prepare();
     virtual QList<QAction*> messageActions() const;
+    void setupTransaction(QApt::Transaction *trans);
 
 private:
     void setProgressing(bool progressing);
@@ -83,7 +84,6 @@ private slots:
     void setProgress(int progress);
     void etaChanged(quint64 eta);
     void installMessage(const QString& message);
-    void setupTransaction(QApt::Transaction *trans);
     void provideMedium(const QString &label, const QString &medium);
     void untrustedPrompt(const QStringList &untrustedPackages);
     void configFileConflict(const QString &currentPath, const QString &newPath);

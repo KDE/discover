@@ -660,7 +660,7 @@ void ApplicationBackend::checkForUpdates()
 {
     QAptActions::self()->setActionsEnabled(false);
     QApt::Transaction* transaction = backend()->updateCache();
-    setupTransaction(transaction);
+    m_backendUpdater->setupTransaction(transaction);
     connect(transaction, SIGNAL(finished(QApt::ExitStatus)), SLOT(reload()));
     connect(transaction, SIGNAL(finished(QApt::ExitStatus)), transaction, SLOT(deleteLater()));
     transaction->run();
