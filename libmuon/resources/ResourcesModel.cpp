@@ -31,16 +31,19 @@
 
 static const KCatalogLoader loader("libmuon");
 
-K_GLOBAL_STATIC(ResourcesModel, globalResourcesModel)
+ResourcesModel *ResourcesModel::s_self = nullptr;
 
 ResourcesModel *ResourcesModel::global()
 {
-    return globalResourcesModel;
+    return s_self;
 }
 
 ResourcesModel::ResourcesModel(QObject* parent)
     : QAbstractListModel(parent)
 {
+    if (!s_self)
+        s_self = this;
+
     QHash< int, QByteArray > roles = roleNames();
     roles[NameRole] = "name";
     roles[IconRole] = "icon";

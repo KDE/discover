@@ -97,6 +97,8 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
     private:
         QVector< AbstractResourcesBackend* > m_backends;
         QVector< QVector<AbstractResource*> > m_resources;
+
+        static ResourcesModel* s_self;
 };
 
 #endif // RESOURCESMODEL_H
