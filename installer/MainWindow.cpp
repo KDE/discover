@@ -148,7 +148,10 @@ void MainWindow::initGUI()
 
 void MainWindow::initObject()
 {
-    ResourcesModel *resourcesModel = ResourcesModel::global();
+    // Initialize singleton ResourcesModel instance. It will live in the main thread
+    // and all future calls to ResourcesModel::global() will refer to it.
+    Q_ASSERT(ResourcesModel::global() == nullptr);
+    ResourcesModel *resourcesModel = new ResourcesModel(this);
     connect(resourcesModel, SIGNAL(transactionAdded(Transaction*)),
             this, SLOT(transactionAdded()));
     connect(resourcesModel, SIGNAL(transactionRemoved(Transaction*)),

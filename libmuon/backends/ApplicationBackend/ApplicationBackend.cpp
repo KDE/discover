@@ -591,8 +591,6 @@ void ApplicationBackend::initBackend()
             this, SLOT(aptTransactionsChanged(QString)));
     connect(m_backend, SIGNAL(xapianUpdateFinished()),
             this, SIGNAL(searchInvalidated()));
-    if(m_aptify)
-        m_aptify->setCanExit(true);
 }
 
 void ApplicationBackend::setupTransaction(QApt::Transaction *trans)
