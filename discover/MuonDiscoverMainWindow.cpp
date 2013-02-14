@@ -125,7 +125,6 @@ void MuonDiscoverMainWindow::initialize()
 {
     // Initialize singleton ResourcesModel instance. It will live in the main thread
     // and all future calls to ResourcesModel::global() will refer to it.
-    Q_ASSERT(ResourcesModel::global() == nullptr);
     ResourcesModel *m = new ResourcesModel(this);
 
     MuonBackendsFactory factory;

@@ -28,6 +28,8 @@
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <Transaction/Transaction.h>
 #include <QDebug>
+#include <QCoreApplication>
+#include <QThread>
 
 static const KCatalogLoader loader("libmuon");
 
@@ -41,8 +43,9 @@ ResourcesModel *ResourcesModel::global()
 ResourcesModel::ResourcesModel(QObject* parent)
     : QAbstractListModel(parent)
 {
-    if (!s_self)
-        s_self = this;
+    Q_ASSERT(!s_self);
+    Q_ASSERT(QCoreApplication::instance()->thread()==QThread::currentThread());
+    s_self = this;
 
     QHash< int, QByteArray > roles = roleNames();
     roles[NameRole] = "name";
