@@ -39,7 +39,6 @@ StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend* parent)
     connect(parent,
             SIGNAL(transactionRemoved(Transaction*)),
             SLOT(transactionRemoved(Transaction*)));
-    connect(this, SIGNAL(updatesFinnished()), SLOT(cleanup()));
 }
 
 bool StandardBackendUpdater::hasUpdates() const
@@ -58,8 +57,8 @@ void StandardBackendUpdater::start()
     }
 
     if(m_pendingResources.isEmpty()) {
-        emit updatesFinnished();
         emit progressingChanged(false);
+        cleanup();
     }
     m_settingUp = false;
 }
@@ -72,8 +71,8 @@ void StandardBackendUpdater::transactionRemoved(Transaction* t)
         qreal p = 1-(qreal(m_pendingResources.size())/m_toUpgrade.size());
         setProgress(100*p);
         if(m_pendingResources.isEmpty()) {
-            emit updatesFinnished();
             emit progressingChanged(false);
+            cleanup();
         }
     }
 }

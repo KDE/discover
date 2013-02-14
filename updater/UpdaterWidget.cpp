@@ -133,7 +133,6 @@ void UpdaterWidget::setBackend(ResourcesUpdatesModel *updates)
 {
     m_updatesBackends = updates;
     connect(m_updatesBackends, SIGNAL(progressingChanged()), SLOT(activityChanged()));
-    connect(m_updatesBackends, SIGNAL(updatesFinnished()), SLOT(populateUpdateModel()));
 
     populateUpdateModel();
     setEnabled(true);

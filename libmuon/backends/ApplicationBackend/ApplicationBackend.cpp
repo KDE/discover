@@ -81,7 +81,6 @@ ApplicationBackend::ApplicationBackend(QObject* parent, const QVariantList& )
     connect(this, SIGNAL(reloadFinished()), SIGNAL(updatesCountChanged()));
     connect(this, SIGNAL(backendReady()), SIGNAL(updatesCountChanged()));
     connect(m_reviewsBackend, SIGNAL(ratingsReady()), SIGNAL(allDataChanged()));
-    connect(m_backendUpdater, SIGNAL(updatesFinnished()), SLOT(reload()));
     
     QTimer::singleShot(10, this, SLOT(initBackend()));
 }

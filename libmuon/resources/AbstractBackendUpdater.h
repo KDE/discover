@@ -70,7 +70,6 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
     signals:
         void progressChanged(qreal progress);
         void message(const QIcon& icon, const QString& msg);
-        void updatesFinnished();
         void remainingTimeChanged();
         void cancelableChanged(bool cancelable);
         void progressingChanged(bool progressing);

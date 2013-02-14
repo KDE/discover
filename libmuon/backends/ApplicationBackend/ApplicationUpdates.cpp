@@ -46,6 +46,7 @@ ApplicationUpdates::ApplicationUpdates(ApplicationBackend* parent)
     , m_appBackend(parent)
     , m_lastRealProgress(0)
     , m_eta(0)
+    , m_progressing(false)
 {
 }
 
@@ -119,7 +120,6 @@ void ApplicationUpdates::start()
 void ApplicationUpdates::cleanup()
 {
     setProgressing(false);
-    emit updatesFinnished();
 }
 
 void ApplicationUpdates::addResources(const QList<AbstractResource*>& apps)
@@ -197,7 +197,7 @@ void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
     connect(trans, SIGNAL(progressChanged(int)), SLOT(setProgress(int)));
     connect(trans, SIGNAL(statusDetailsChanged(QString)), SLOT(installMessage(QString)));
     connect(trans, SIGNAL(cancellableChanged(bool)), SIGNAL(cancelableChanged(bool)));
-    connect(trans, SIGNAL(finished(QApt::ExitStatus)), SIGNAL(updatesFinnished()));
+    connect(trans, SIGNAL(finished(QApt::ExitStatus)), SLOT(transactionFinished(QApt::ExitStatus)));
     connect(trans, SIGNAL(finished(QApt::ExitStatus)), trans, SLOT(deleteLater()));
     connect(trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
             this, SLOT(statusChanged(QApt::TransactionStatus)));
@@ -361,7 +361,6 @@ void ApplicationUpdates::statusChanged(QApt::TransactionStatus status)
             break;
         case QApt::FinishedStatus:
             setProgress(100);
-            setProgressing(false);
             setStatusMessage(i18nc("@info Status information, widget title",
                                         "<title>Finished</title>"));
             m_lastRealProgress = 0;
@@ -421,4 +420,10 @@ QList<QAction*> ApplicationUpdates::messageActions() const
     ret += QAptActions::self()->actionCollection()->action("dist-upgrade");
     Q_ASSERT(!ret.contains(nullptr));
     return ret;
+}
+
+void ApplicationUpdates::transactionFinished(QApt::ExitStatus status)
+{
+    m_appBackend->reload();
+    setProgressing(false);
 }

@@ -61,7 +61,6 @@ class MUONPRIVATE_EXPORT ResourcesUpdatesModel : public QStandardItemModel
     signals:
         void downloadSpeedChanged();
         void progressChanged();
-        void updatesFinnished();
         void etaChanged();
         void cancelableChanged();
         void progressingChanged();

@@ -90,6 +90,7 @@ private slots:
     void statusChanged(QApt::TransactionStatus status);
     void setStatusMessage(const QString& msg);
     void setStatusDetail(const QString& msg);
+    void transactionFinished(QApt::ExitStatus status);
 };
 
 #endif // APPLICATIONUPDATES_H

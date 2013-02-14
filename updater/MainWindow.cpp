@@ -58,7 +58,6 @@ MainWindow::MainWindow()
     
     m_updater = new ResourcesUpdatesModel(this);
     connect(m_updater, SIGNAL(progressingChanged()), SLOT(progressingChanged()));
-    connect(m_updater, SIGNAL(updatesFinnished()), SLOT(updatesFinished()));
 
     initGUI();
 }
@@ -143,6 +142,8 @@ void MainWindow::progressingChanged()
 {
     bool active = m_updater->isProgressing();
     QApplication::restoreOverrideCursor();
+    if(!active)
+        updatesFinished();
     m_progressWidget->setVisible(active);
     m_updaterWidget->setVisible(!active);
 }

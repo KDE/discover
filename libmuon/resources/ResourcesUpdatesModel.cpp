@@ -53,7 +53,6 @@ void ResourcesUpdatesModel::addNewBackends()
         if(updater && !m_updaters.contains(updater)) {
             connect(updater, SIGNAL(progressChanged(qreal)), SIGNAL(progressChanged()));
             connect(updater, SIGNAL(message(QIcon,QString)), SLOT(message(QIcon,QString)));
-            connect(updater, SIGNAL(updatesFinnished()), SLOT(updaterFinished()));
             connect(updater, SIGNAL(remainingTimeChanged()), SIGNAL(etaChanged()));
             connect(updater, SIGNAL(downloadSpeedChanged(quint64)), SIGNAL(downloadSpeedChanged()));
             connect(updater, SIGNAL(progressingChanged(bool)), SIGNAL(progressingChanged()));
@@ -89,7 +88,7 @@ void ResourcesUpdatesModel::updateAll()
     m_finishedUpdaters = 0;
     
     if(m_updaters.isEmpty())
-        emit updatesFinnished();
+        emit progressingChanged();
     else foreach(AbstractBackendUpdater* upd, m_updaters) {
         upd->start();
     }
@@ -99,7 +98,7 @@ void ResourcesUpdatesModel::updaterFinished()
 {
     m_finishedUpdaters++;
     if(m_finishedUpdaters==m_updaters.size())
-        emit updatesFinnished();
+        emit progressingChanged();
 }
 
 QString ResourcesUpdatesModel::remainingTime() const
