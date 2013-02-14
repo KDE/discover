@@ -559,7 +559,6 @@ void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
         apt->setBackend(m_backend);
     else
         connect(this, SIGNAL(aptBackendInitialized(QApt::Backend*)), apt, SLOT(setBackend(QApt::Backend*)));
-    connect(apt, SIGNAL(sourcesEditorClosed(bool)), SLOT(reload()));
 
     KAction* updateAction = w->actionCollection()->addAction("update");
     updateAction->setIcon(KIcon("system-software-update"));
@@ -665,7 +664,6 @@ void ApplicationBackend::checkForUpdates()
     QAptActions::self()->setActionsEnabled(false);
     QApt::Transaction* transaction = backend()->updateCache();
     m_backendUpdater->setupTransaction(transaction);
-    connect(transaction, SIGNAL(finished(QApt::ExitStatus)), SLOT(reload()));
     connect(transaction, SIGNAL(finished(QApt::ExitStatus)), transaction, SLOT(deleteLater()));
     transaction->run();
 
