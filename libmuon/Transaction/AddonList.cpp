@@ -18,80 +18,65 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "Transaction.h"
+#include "AddonList.h"
 
-#include "TransactionModel.h"
+enum {
+    ToInstall = 0,
+    ToRemove
+};
 
-Transaction::Transaction(QObject *parent, AbstractResource *resource,
-                         Role role)
-    : Transaction(parent, resource, role, AddonList())
+AddonList::AddonList()
+    : m_list(2)
 {
 }
 
-Transaction::Transaction(QObject *parent, AbstractResource *resource,
-                         Role role, AddonList addons)
-    : QObject(parent)
-    , m_resource(resource)
-    , m_role(role)
-    , m_status(SetupStatus)
-    , m_addons(addons)
-    , m_isCancellable(true)
-    , m_progress(0)
+AddonList::AddonList(const AddonList &other)
+    : m_list(other.m_list)
 {
 }
 
-AbstractResource *Transaction::resource() const
+bool AddonList::isEmpty() const
 {
-    return m_resource;
+    return m_list.at(ToInstall).isEmpty() && m_list.at(ToRemove).isEmpty();
 }
 
-Transaction::Role Transaction::role() const
+QStringList AddonList::addonsToInstall() const
 {
-    return m_role;
+    return m_list.at(ToInstall);
 }
 
-Transaction::Status Transaction::status() const
+QStringList AddonList::addonsToRemove() const
 {
-    return m_status;
+    return m_list.at(ToRemove);
 }
 
-AddonList Transaction::addons() const
+void AddonList::setAddonsToInstall(const QStringList &list)
 {
-    return m_addons;
+    m_list[ToInstall] = list;
 }
 
-bool Transaction::isCancellable() const
+void AddonList::setAddonsToRemove(const QStringList &list)
 {
-    return m_isCancellable;
+    m_list[ToRemove] = list;
 }
 
-int Transaction::progress() const
+void AddonList::addAddon(const QString &addon, bool toInstall)
 {
-    return m_progress;
+    if (toInstall)
+        m_list[ToInstall].append(addon);
+    else
+        m_list[ToRemove].append(addon);
 }
 
-void Transaction::setStatus(Status status)
+void AddonList::removeAddon(const QString &addon)
 {
-    m_status = status;
-    emit statusChanged(m_status);
+    for (QStringList &list : m_list) {
+        list.removeAll(addon);
+    }
 }
 
-void Transaction::setCancellable(bool isCancellable)
+void AddonList::clear()
 {
-    m_isCancellable = isCancellable;
-    emit cancellableChanged(m_isCancellable);
-}
-
-void Transaction::setProgress(int progress)
-{
-    m_progress = progress;
-    emit progressChanged(m_progress);
-}
-
-void Transaction::cancel()
-{
-    if (!m_isCancellable)
-        return;
-
-    TransactionModel::global()->cancelTransaction(this);
+    m_list[ToInstall].clear();
+    m_list[ToRemove].clear();
 }

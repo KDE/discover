@@ -60,7 +60,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
         virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
         
-        void addResourcesBackend(AbstractResourcesBackend* resources);
+        void addResourcesBackend(AbstractResourcesBackend* backend);
         
         AbstractResource* resourceAt(int row) const;
         QModelIndex resourceIndex(AbstractResource* res) const;
@@ -73,28 +73,21 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         void integrateMainWindow(MuonMainWindow* w);
 
     public slots:
-        void installApplication(AbstractResource* app, const QHash<QString, bool>& state);
+        void installApplication(AbstractResource* app, AddonList addons);
         void installApplication(AbstractResource* app);
         void removeApplication(AbstractResource* app);
         void cancelTransaction(AbstractResource* app);
-        void transactionChanged(Transaction* t);
 
     signals:
         void backendsChanged();
         void updatesCountChanged();
         void searchInvalidated();
 
-        //Transactions forwarding
-        void transactionProgressed(Transaction *transaction, int progress);
-        void transactionAdded(Transaction *transaction);
-        void transactionCancelled(Transaction *transaction);
-        void transactionRemoved(Transaction* transaction);
-        void transactionsEvent(TransactionStateTransition transition, Transaction* transaction);
-
     private slots:
         void cleanCaller();
         void resetCaller();
         void updateCaller();
+        void transactionChanged(QModelIndex tIndex);
 
     private:
         explicit ResourcesModel(QObject* parent=0);

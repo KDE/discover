@@ -47,8 +47,9 @@
 #include "../libmuonapt/QAptActions.h"
 
 // Libmuon includes
-#include <resources/ResourcesModel.h>
 #include <MuonBackendsFactory.h>
+#include <Transaction/TransactionModel.h>
+#include <resources/ResourcesModel.h>
 
 // Own includes
 #include "ApplicationLauncher.h"
@@ -63,9 +64,9 @@ enum ViewModelRole {
     /// A role for storing ViewType
     ViewTypeRole = Qt::UserRole + 1,
     /// A role for storing origin filter data
-    OriginFilterRole = Qt::UserRole + 2,
+    OriginFilterRole,
     /// A role for storing state filter data
-    StateFilterRole = Qt::UserRole + 3
+    StateFilterRole
 };
 
 enum ViewType {
@@ -90,7 +91,6 @@ MainWindow::MainWindow()
     , m_launcherMessage(nullptr)
     , m_appLauncher(nullptr)
     , m_progressItem(nullptr)
-    , m_transactionCount(0)
 {
     initGUI();
     QTimer::singleShot(10, this, SLOT(initObject()));
@@ -148,12 +148,13 @@ void MainWindow::initGUI()
 
 void MainWindow::initObject()
 {
-    ResourcesModel* resourcesModel = ResourcesModel::global();
-    connect(resourcesModel, SIGNAL(transactionAdded(Transaction*)),
-            this, SLOT(transactionAdded()));
-    connect(resourcesModel, SIGNAL(transactionRemoved(Transaction*)),
-            this, SLOT(transactionRemoved()));
+    ResourcesModel *resourcesModel = ResourcesModel::global();
 
+    TransactionModel *transModel = TransactionModel::global();
+    connect(transModel, SIGNAL(startingFirstTransaction()),
+            this, SLOT(addProgressItem()));
+    connect(transModel, SIGNAL(lastTransactionFinished()),
+            this, SLOT(removeProgressItem()));
     m_launches = new LaunchListModel(this);
 
     MuonBackendsFactory f;
@@ -167,12 +168,8 @@ void MainWindow::initObject()
             m_appBackend = backend;
             connect(m_appBackend, SIGNAL(backendReady()),
                     this, SLOT(populateViews()));
-            connect(m_appBackend, SIGNAL(reloadStarted()), //TODO: use ResourcesModel signals
-                    this, SLOT(removeProgressItem()));
             connect(m_appBackend, SIGNAL(reloadFinished()),
                     this, SLOT(showLauncherMessage()));
-            connect(m_appBackend, SIGNAL(startingFirstTransaction()),
-                    this, SLOT(addProgressItem()));
             connect(m_appBackend, SIGNAL(sourcesEditorFinished()),
                     this, SLOT(sourcesEditorFinished()));
         }
@@ -437,20 +434,6 @@ void MainWindow::clearMessageActions()
     foreach (QAction *action, m_launcherMessage->actions()) {
         m_launcherMessage->removeAction(action);
     }
-}
-
-void MainWindow::transactionAdded()
-{
-    m_transactionCount++;
-}
-
-void MainWindow::transactionRemoved()
-{
-    if (m_transactionCount)
-        m_transactionCount--;
-
-    if (!m_transactionCount)
-        removeProgressItem();
 }
 
 void MainWindow::addProgressItem()

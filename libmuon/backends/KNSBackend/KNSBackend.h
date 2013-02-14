@@ -21,10 +21,16 @@
 #ifndef KNSBACKEND_H
 #define KNSBACKEND_H
 
-#include <resources/AbstractResourcesBackend.h>
+// KDE includes
 #include <knewstuff3/entry.h>
+
+// Attica includes
 #include <attica/category.h>
 #include <attica/provider.h>
+
+// Libmuon includes
+#include <resources/AbstractResourcesBackend.h>
+#include "Transaction/AddonList.h"
 
 #include "libmuonprivate_export.h"
 
@@ -48,10 +54,8 @@ public:
     virtual void cancelTransaction(AbstractResource* app);
     virtual void removeApplication(AbstractResource* app);
     virtual void installApplication(AbstractResource* app);
-    virtual void installApplication(AbstractResource* app, const QHash< QString, bool >& addons);
+    virtual void installApplication(AbstractResource* app, AddonList addons);
     virtual AbstractResource* resourceByPackageName(const QString& name) const;
-    virtual QList< Transaction* > transactions() const;
-    virtual QPair< TransactionStateTransition, Transaction* > currentTransactionState() const;
     virtual int updatesCount() const;
     virtual AbstractReviewsBackend* reviewsBackend() const;
     virtual QStringList searchPackageName(const QString& searchText);

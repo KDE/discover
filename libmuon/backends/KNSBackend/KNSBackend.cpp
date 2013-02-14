@@ -18,18 +18,15 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "KNSBackend.h"
-#include "KNSResource.h"
-#include "KNSReviews.h"
-#include "KNSUpdater.h"
-#include <Transaction/Transaction.h>
-
+// Qt includes
 #include <QDebug>
 #include <QFileInfo>
 
+// Attica includes
 #include <attica/content.h>
 #include <attica/providermanager.h>
 
+// KDE includes
 #include <knewstuff3/downloadmanager.h>
 #include <KStandardDirs>
 #include <KConfigGroup>
@@ -38,6 +35,16 @@
 #include <KPluginFactory>
 #include <KLocalizedString>
 #include <KAboutData>
+
+// Libmuon includes
+#include "Transaction/Transaction.h"
+#include "Transaction/TransactionModel.h"
+
+// Own includes
+#include "KNSBackend.h"
+#include "KNSResource.h"
+#include "KNSReviews.h"
+#include "KNSUpdater.h"
 
 K_PLUGIN_FACTORY(MuonKNSBackendFactory, registerPlugin<KNSBackend>(); )
 K_EXPORT_PLUGIN(MuonKNSBackendFactory(KAboutData("muon-knsbackend","muon-knsbackend",ki18n("KNewStuff Backend"),"0.1",ki18n("Install KNewStuff data in your system"), KAboutData::License_GPL)))
@@ -197,25 +204,27 @@ void KNSBackend::cancelTransaction(AbstractResource* app)
 
 void KNSBackend::removeApplication(AbstractResource* app)
 {
-    Transaction* t = new Transaction(app, RemoveApp);
-    emit transactionAdded(t);
+    Transaction* t = new Transaction(this, app, Transaction::RemoveRole);
+    TransactionModel *transModel = TransactionModel::global();
+    transModel->addTransaction(t);
     KNSResource* r = qobject_cast<KNSResource*>(app);
     Q_ASSERT(r->entry());
     m_manager->uninstallEntry(*r->entry());
-    emit transactionRemoved(t);
+    transModel->removeTransaction(t);
 }
 
 void KNSBackend::installApplication(AbstractResource* app)
 {
-    Transaction* t = new Transaction(app, InstallApp);
-    emit transactionAdded(t);
+    Transaction* t = new Transaction(this, app, Transaction::InstallRole);
+    TransactionModel *transModel = TransactionModel::global();
+    transModel->addTransaction(t);
     KNSResource* r = qobject_cast<KNSResource*>(app);
     Q_ASSERT(r->entry());
     m_manager->installEntry(*r->entry());
-    emit transactionRemoved(t);
+    transModel->removeTransaction(t);
 }
 
-void KNSBackend::installApplication(AbstractResource* app, const QHash< QString, bool >&)
+void KNSBackend::installApplication(AbstractResource* app, AddonList)
 {
     installApplication(app);
 }
@@ -223,16 +232,6 @@ void KNSBackend::installApplication(AbstractResource* app, const QHash< QString,
 AbstractResource* KNSBackend::resourceByPackageName(const QString& name) const
 {
     return m_resourcesByName[name];
-}
-
-QList<Transaction*> KNSBackend::transactions() const
-{
-    return QList<Transaction*>();
-}
-
-QPair<TransactionStateTransition, Transaction*> KNSBackend::currentTransactionState() const
-{
-    return QPair<TransactionStateTransition, Transaction*>(FinishedCommitting, 0);
 }
 
 int KNSBackend::updatesCount() const

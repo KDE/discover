@@ -37,10 +37,10 @@
 #include <Nepomuk/KRatingPainter>
 #include <KDebug>
 
-//Libmuon includes
+// Libmuon includes
+#include <Transaction/TransactionModel.h>
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
-#include <Transaction/TransactionListener.h>
 
 // Own includes
 #include "ResourceExtender.h"
@@ -53,8 +53,7 @@
 ResourceDelegate::ResourceDelegate(QAbstractItemView *parent)
   : KExtendableItemDelegate(parent),
     m_extender(0),
-    m_showInfoButton(true),
-    m_transactionListener(new TransactionListener(this))
+    m_showInfoButton(true)
 {
     // To get sizing.
     QPushButton button, button2;
@@ -126,14 +125,16 @@ void ResourceDelegate::paint(QPainter *painter,
             m_ratingPainter->paint(painter, rect, rating);
         }
     } else {
+        TransactionModel *transModel = TransactionModel::global();
         AbstractResource* res = qobject_cast<AbstractResource*>( index.data(ResourcesModel::ApplicationRole).value<QObject*>());
-        m_transactionListener->setResource(res);
+        Transaction *trans = transModel->transactionFromResource(res);
+        QModelIndex transIndex = transModel->indexOf(trans);
         QStyleOptionProgressBar progressBarOption;
         progressBarOption.rect = rect;
         progressBarOption.minimum = 0;
         progressBarOption.maximum = 100;
-        progressBarOption.progress = m_transactionListener->progress();
-        progressBarOption.text = m_transactionListener->comment();
+        progressBarOption.progress = transIndex.data(TransactionModel::ProgressRole).toInt();
+        progressBarOption.text = transIndex.data(TransactionModel::StatusTextRole).toString();
         progressBarOption.textVisible = true;
         KApplication::style()->drawControl(QStyle::CE_ProgressBar, &progressBarOption, painter);
     }

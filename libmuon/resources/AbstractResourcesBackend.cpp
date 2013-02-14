@@ -27,7 +27,7 @@ AbstractResourcesBackend::AbstractResourcesBackend(QObject* parent)
 
 void AbstractResourcesBackend::installApplication(AbstractResource* app)
 {
-    installApplication(app, QHash<QString, bool>());
+    installApplication(app, AddonList());
 }
 
 void AbstractResourcesBackend::integrateMainWindow(MuonMainWindow*)

@@ -22,6 +22,7 @@
 #include <Category/CategoryModel.h>
 #include <Category/Category.h>
 #include <Transaction/TransactionListener.h>
+#include <Transaction/TransactionModel.h>
 #include <Transaction/Transaction.h>
 #include <resources/ResourcesUpdatesModel.h>
 #include <resources/AbstractResource.h>
@@ -40,6 +41,7 @@ void MuonDeclarativePlugin::registerTypes(const char*)
 {
     qmlRegisterType<CategoryModel>("org.kde.muon", 1, 0, "CategoryModel");
     qmlRegisterType<TransactionListener>("org.kde.muon", 1, 0, "TransactionListener");
+    qmlRegisterType<TransactionModel>();
     qmlRegisterType<ResourcesUpdatesModel>("org.kde.muon", 1, 0, "ResourcesUpdatesModel");
     
     qmlRegisterType<ReviewsModel>("org.kde.muon", 1, 0, "ReviewsModel");
