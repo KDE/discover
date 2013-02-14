@@ -148,7 +148,7 @@ void MainWindow::initGUI()
 
 void MainWindow::initObject()
 {
-    ResourcesModel *resourcesModel = new ResourcesModel(this);
+    ResourcesModel* resourcesModel = ResourcesModel::global();
     connect(resourcesModel, SIGNAL(transactionAdded(Transaction*)),
             this, SLOT(transactionAdded()));
     connect(resourcesModel, SIGNAL(transactionRemoved(Transaction*)),
@@ -162,7 +162,6 @@ void MainWindow::initObject()
     //TODO: should add the appBackend here too
     for (AbstractResourcesBackend *backend : backends) {
         resourcesModel->addResourcesBackend(backend);
-        backend->integrateMainWindow(this);
         
         if(backend->metaObject()->className()==QLatin1String("ApplicationBackend")) {
             m_appBackend = backend;
@@ -178,6 +177,7 @@ void MainWindow::initObject()
                     this, SLOT(sourcesEditorFinished()));
         }
     }
+    resourcesModel->integrateMainWindow(this);
 }
 
 void MainWindow::loadSplitterSizes()

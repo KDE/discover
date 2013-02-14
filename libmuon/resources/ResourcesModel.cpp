@@ -27,6 +27,7 @@
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <Transaction/Transaction.h>
+#include <MuonMainWindow.h>
 #include <QDebug>
 #include <QCoreApplication>
 #include <QThread>
@@ -37,15 +38,17 @@ ResourcesModel *ResourcesModel::s_self = nullptr;
 
 ResourcesModel *ResourcesModel::global()
 {
+    if(!s_self)
+        s_self = new ResourcesModel;
     return s_self;
 }
 
 ResourcesModel::ResourcesModel(QObject* parent)
     : QAbstractListModel(parent)
+    , m_mainwindow(0)
 {
     Q_ASSERT(!s_self);
     Q_ASSERT(QCoreApplication::instance()->thread()==QThread::currentThread());
-    s_self = this;
 
     QHash< int, QByteArray > roles = roleNames();
     roles[NameRole] = "name";
@@ -70,6 +73,11 @@ ResourcesModel::ResourcesModel(QObject* parent)
     setRoleNames(roles);
 }
 
+ResourcesModel::~ResourcesModel()
+{
+    qDeleteAll(m_backends);
+}
+
 void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* resources)
 {
     Q_ASSERT(!m_backends.contains(resources));
@@ -84,6 +92,8 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* resources)
         m_backends += resources;
         m_resources.append(newResources);
     }
+    if(m_mainwindow)
+        resources->integrateMainWindow(m_mainwindow);
     
     connect(resources, SIGNAL(backendReady()), SLOT(resetCaller()));
     connect(resources, SIGNAL(reloadStarted()), SLOT(cleanCaller()));
@@ -318,4 +328,14 @@ QMap<int, QVariant> ResourcesModel::itemData(const QModelIndex& index) const
         ret.insert(it.key(), data(index, it.key()));
     }
     return ret;
+}
+
+void ResourcesModel::integrateMainWindow(MuonMainWindow* w)
+{
+    Q_ASSERT(w->thread()==thread());
+    m_mainwindow = w;
+    setParent(w);
+    foreach(AbstractResourcesBackend* b, m_backends) {
+        b->integrateMainWindow(w);
+    }
 }
