@@ -91,7 +91,14 @@ AbstractResourcesBackend* MuonBackendsFactory::backendForPlugin(const KPluginInf
     
     if(!obj) {
         qDebug() << "error when loading the plugin" << info.name() << "because" << str_error;
+    } else if (!obj->isValid()) {
+        qDebug() << "Error initializing Muon Backend.";
+
+        // Clean up invalid plugin as we will not load it
+        delete obj;
+        obj = nullptr;
     }
+
     return obj;
 }
 

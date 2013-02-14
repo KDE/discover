@@ -36,7 +36,7 @@ K_EXPORT_PLUGIN(MuonDummyBackendFactory(KAboutData("muon-dummybackend","muon-dum
 
 DummyBackend::DummyBackend(QObject* parent, const QVariantList&)
     : AbstractResourcesBackend(parent)
-    , m_updater(new StandardBackendUpdater(this))
+    , m_updater(0)
 {
     for(int i=0; i<32; i++) {
         QString name = "alalala"+QString::number(i);

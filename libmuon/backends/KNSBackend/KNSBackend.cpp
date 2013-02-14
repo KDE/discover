@@ -57,6 +57,7 @@ void KNSBackend::initManager(KConfigGroup& group)
 
 KNSBackend::KNSBackend(QObject* parent, const QVariantList& args)
     : AbstractResourcesBackend(parent)
+    , m_isValid(true)
     , m_page(0)
     , m_reviews(new KNSReviews(this))
     , m_fetching(true)
@@ -69,9 +70,16 @@ KNSBackend::KNSBackend(QObject* parent, const QVariantList& args)
     Q_ASSERT(!m_name.isEmpty());
     KConfig conf(m_name);
     KConfigGroup group;
-    if (conf.hasGroup("KNewStuff3")) {
+
+    if (conf.hasGroup("KNewStuff3"))
         group = conf.group("KNewStuff3");
+
+    if (!group.isValid()) {
+        m_isValid = false;
+        kWarning() << "Config group not found! Check your KNS3 installation.";
+        return;
     }
+
     QStringList cats = group.readEntry("Categories", QStringList());
     initManager(group);
     connect(m_atticaManager.data(), SIGNAL(defaultProvidersLoaded()), SLOT(startFetchingCategories()));
@@ -90,6 +98,11 @@ KNSBackend::KNSBackend(QObject* parent, const QVariantList& args)
 
 KNSBackend::~KNSBackend()
 {
+}
+
+bool KNSBackend::isValid() const
+{
+    return m_isValid;
 }
 
 void KNSBackend::startFetchingCategories()

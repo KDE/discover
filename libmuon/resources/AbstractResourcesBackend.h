@@ -47,6 +47,7 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
     public:
         explicit AbstractResourcesBackend(QObject* parent = 0);
+        virtual bool isValid() const = 0;
         virtual QVector<AbstractResource*> allResources() const = 0;
         virtual QStringList searchPackageName(const QString &searchText) = 0;
         virtual AbstractReviewsBackend* reviewsBackend() const = 0;

@@ -122,7 +122,11 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
 
 void MuonDiscoverMainWindow::initialize()
 {
-    ResourcesModel* m = ResourcesModel::global();
+    // Initialize singleton ResourcesModel instance. It will live in the main thread
+    // and all future calls to ResourcesModel::global() will refer to it.
+    Q_ASSERT(ResourcesModel::global() == nullptr);
+    ResourcesModel *m = new ResourcesModel(this);
+
     m->registerAllBackends();
     QVector<AbstractResourcesBackend*> backends = m->backends();
     foreach(AbstractResourcesBackend* b, backends) {
