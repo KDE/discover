@@ -147,10 +147,7 @@ void MainWindow::initGUI()
 
 void MainWindow::initObject()
 {
-    // Initialize singleton ResourcesModel instance. It will live in the main thread
-    // and all future calls to ResourcesModel::global() will refer to it.
-    Q_ASSERT(ResourcesModel::global() == nullptr);
-    ResourcesModel *resourcesModel = new ResourcesModel(this);
+    ResourcesModel* resourcesModel = ResourcesModel::global();
     connect(resourcesModel, SIGNAL(transactionAdded(Transaction*)),
             this, SLOT(transactionAdded()));
     connect(resourcesModel, SIGNAL(transactionRemoved(Transaction*)),
@@ -163,8 +160,6 @@ void MainWindow::initObject()
 
     //TODO: should add the appBackend here too
     for (AbstractResourcesBackend *backend : backends) {
-        backend->integrateMainWindow(this);
-        
         if(backend->metaObject()->className()==QLatin1String("ApplicationBackend")) {
             m_appBackend = backend;
             connect(m_appBackend, SIGNAL(backendReady()),
@@ -179,6 +174,7 @@ void MainWindow::initObject()
                     this, SLOT(sourcesEditorFinished()));
         }
     }
+    resourcesModel->integrateMainWindow(this);
 }
 
 void MainWindow::loadSplitterSizes()

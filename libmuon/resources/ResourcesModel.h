@@ -54,8 +54,8 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
             SectionRole,
             MimeTypes
         };
-        explicit ResourcesModel(QObject* parent=0);
         static ResourcesModel* global();
+        virtual ~ResourcesModel();
         
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
         virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
@@ -70,6 +70,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
 
         void registerBackendByName(const QString& name);
         void registerAllBackends();
+        void integrateMainWindow(MuonMainWindow* w);
 
     public slots:
         void installApplication(AbstractResource* app, const QHash<QString, bool>& state);
@@ -95,13 +96,15 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         void cleanCaller();
         void resetCaller();
         void updateCaller();
-        
+
     private:
+        explicit ResourcesModel(QObject* parent=0);
         void addResourcesBackend(AbstractResourcesBackend* resources);
 
         QVector< AbstractResourcesBackend* > m_backends;
         QVector< QVector<AbstractResource*> > m_resources;
         int m_initializingBackends;
+        MuonMainWindow* m_mainwindow;
 
         static ResourcesModel* s_self;
 };

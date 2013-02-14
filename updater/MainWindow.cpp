@@ -53,7 +53,7 @@ MainWindow::MainWindow()
     : MuonMainWindow()
     , m_settingsDialog(nullptr)
 {
-    ResourcesModel *m = new ResourcesModel(this);
+    ResourcesModel *m = ResourcesModel::global();
     m->registerBackendByName("muon-dummybackend");
     
     m_updater = new ResourcesUpdatesModel(this);
