@@ -31,6 +31,7 @@
 #include <KPluginFactory>
 #include <QDebug>
 #include <QThread>
+#include <QTimer>
 
 K_PLUGIN_FACTORY(MuonDummyBackendFactory, registerPlugin<DummyBackend>(); )
 K_EXPORT_PLUGIN(MuonDummyBackendFactory(KAboutData("muon-dummybackend","muon-dummybackend",ki18n("Dummy Backend"),"0.1",ki18n("Dummy backend to test muon frontends"), KAboutData::License_GPL)))
@@ -47,8 +48,14 @@ DummyBackend::DummyBackend(QObject* parent, const QVariantList&)
         connect(res, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));
     }
     
-    QMetaObject::invokeMethod(this, "backendReady", Qt::QueuedConnection);
+    QTimer::singleShot(0, this, SIGNAL(backendReady()));
     m_reviews = new DummyReviewsBackend(this);
+    
+    connect(this, SIGNAL(transactionRemoved(Transaction*)), SIGNAL(updatesCountChanged()));
+    
+    //simulate a random reload
+    QTimer::singleShot(1000, this, SIGNAL(reloadStarted()));
+    QTimer::singleShot(1500, this, SIGNAL(reloadFinished()));
 }
 
 QVector<AbstractResource*> DummyBackend::allResources() const
