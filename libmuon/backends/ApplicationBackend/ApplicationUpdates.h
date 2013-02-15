@@ -51,7 +51,6 @@ public:
     long unsigned int remainingTime() const;
     virtual void addResources(const QList<AbstractResource*>& apps);
     virtual void removeResources(const QList<AbstractResource*>& apps);
-    virtual void cleanup();
     virtual QList<AbstractResource*> toUpdate() const;
     virtual bool isAllMarked() const;
     virtual QDateTime lastUpdate() const;

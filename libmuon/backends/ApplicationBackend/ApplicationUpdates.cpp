@@ -89,8 +89,8 @@ QList<AbstractResource*> ApplicationUpdates::toUpdate() const
 
 void ApplicationUpdates::prepare()
 {
+    m_aptBackend->markPackages(m_aptBackend->markedPackages(), QApt::Package::ToKeep);
     m_updatesCache = m_aptBackend->currentCacheState();
-
     m_aptBackend->markPackagesForDistUpgrade();
 }
 
@@ -108,18 +108,13 @@ void ApplicationUpdates::start()
     if(!changes.isEmpty()) {
         ChangesDialog d(m_appBackend->mainWindow(), changes);
         if(d.exec()==QDialog::Rejected) {
-            cleanup();
+            setProgressing(false);
             return;
         }
     }
 
     // Create and run the transaction
     setupTransaction(m_aptBackend->commitChanges());
-}
-
-void ApplicationUpdates::cleanup()
-{
-    setProgressing(false);
 }
 
 void ApplicationUpdates::addResources(const QList<AbstractResource*>& apps)
@@ -373,6 +368,11 @@ void ApplicationUpdates::setProgressing(bool progressing)
     if(progressing!=m_progressing) {
         m_progressing = progressing;
         emit progressingChanged(progressing);
+
+        if(m_progressing)
+            setProgress(-1);
+        else
+            m_aptBackend->markPackages(m_aptBackend->markedPackages(), QApt::Package::ToKeep);
     }
 }
 
