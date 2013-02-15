@@ -62,7 +62,6 @@ private Q_SLOTS:
     void checkPlugState();
     void updatePlugState(bool plugged);
     void progressingChanged();
-    void updatesFinished();
     void startedReloading();
     void finishedReloading();
 };

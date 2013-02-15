@@ -142,17 +142,13 @@ void MainWindow::progressingChanged()
 {
     bool active = m_updater->isProgressing();
     QApplication::restoreOverrideCursor();
-    if(!active)
-        updatesFinished();
+    if(!active) {
+        m_progressWidget->animatedHide();
+        m_updaterWidget->setCurrentIndex(0);
+    }
     m_progressWidget->setVisible(active);
     m_updaterWidget->setVisible(!active);
-}
-
-void MainWindow::updatesFinished()
-{
-    m_progressWidget->animatedHide();
-    m_updaterWidget->setCurrentIndex(0);
-    setActionsEnabled();
+    setActionsEnabled(!active);
 }
 
 void MainWindow::startedReloading()
