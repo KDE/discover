@@ -28,7 +28,7 @@ class DummyTransaction : public Transaction
 {
     Q_OBJECT
     public:
-        explicit DummyTransaction(DummyResource* app, TransactionAction action);
+        explicit DummyTransaction(DummyResource* app, Role role);
 
     private slots:
         void finishTransaction();

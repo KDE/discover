@@ -34,8 +34,6 @@ public:
 
     virtual QList<AbstractResource*> upgradeablePackages() const;
     virtual AbstractResource* resourceByPackageName(const QString& name) const;
-    virtual QList<Transaction*> transactions() const;
-    virtual QPair< TransactionStateTransition, Transaction* > currentTransactionState() const;
     virtual int updatesCount() const;
     virtual AbstractBackendUpdater* backendUpdater() const;
     virtual AbstractReviewsBackend* reviewsBackend() const;
@@ -45,16 +43,13 @@ public:
 
     virtual void cancelTransaction(AbstractResource* app);
     virtual void installApplication(AbstractResource* app);
-    virtual void installApplication(AbstractResource* app, const QHash< QString, bool >& addons);
+    virtual void installApplication(AbstractResource* app, AddonList addons);
     virtual void removeApplication(AbstractResource* app);
-    void addTransaction(Transaction* t);
-    void removeTransaction(Transaction* t);
 
 private:
     QHash<QString, DummyResource*> m_resources;
     AbstractBackendUpdater* m_updater;
     AbstractReviewsBackend* m_reviews;
-    QList<Transaction*> m_transactions;
 };
 
 #endif // DUMMYBACKEND_H

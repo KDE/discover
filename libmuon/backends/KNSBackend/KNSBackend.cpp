@@ -44,6 +44,7 @@
 #include "KNSBackend.h"
 #include "KNSResource.h"
 #include "KNSReviews.h"
+#include <resources/StandardBackendUpdater.h>
 
 K_PLUGIN_FACTORY(MuonKNSBackendFactory, registerPlugin<KNSBackend>(); )
 K_EXPORT_PLUGIN(MuonKNSBackendFactory(KAboutData("muon-knsbackend","muon-knsbackend",ki18n("KNewStuff Backend"),"0.1",ki18n("Install KNewStuff data in your system"), KAboutData::License_GPL)))

@@ -21,11 +21,12 @@
 #include "DummyTransaction.h"
 #include "DummyBackend.h"
 #include "DummyResource.h"
+#include <Transaction/TransactionModel.h>
 #include <QTimer>
 #include <KRandom>
 
-DummyTransaction::DummyTransaction(DummyResource* app, TransactionAction action)
-    : Transaction(app, action)
+DummyTransaction::DummyTransaction(DummyResource* app, Role action)
+    : Transaction(app->backend(), app, action)
     , m_app(app)
 {
     QTimer::singleShot(KRandom::random()%2000, this, SLOT(finishTransaction()));
@@ -34,19 +35,16 @@ DummyTransaction::DummyTransaction(DummyResource* app, TransactionAction action)
 void DummyTransaction::finishTransaction()
 {
     AbstractResource::State newState;
-    switch(action()) {
-    case InstallApp:
-    case ChangeAddons:
+    switch(role()) {
+    case InstallRole:
+    case ChangeAddonsRole:
         newState = AbstractResource::Installed;
         break;
-    case RemoveApp:
+    case RemoveRole:
         newState = AbstractResource::None;
-        break;
-    case InvalidAction:
-        newState = AbstractResource::Broken;
         break;
     }
     m_app->setState(newState);
-    qobject_cast<DummyBackend*>(m_app->backend())->removeTransaction(this);
+    TransactionModel::global()->removeTransaction(this);
     deleteLater();
 }
