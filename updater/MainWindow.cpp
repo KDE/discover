@@ -54,7 +54,7 @@ MainWindow::MainWindow()
     , m_settingsDialog(nullptr)
 {
     ResourcesModel *m = ResourcesModel::global();
-    m->registerBackendByName("muon-dummybackend");
+    m->registerAllBackends();
     
     m_updater = new ResourcesUpdatesModel(this);
     connect(m_updater, SIGNAL(progressingChanged()), SLOT(progressingChanged()));
@@ -79,8 +79,7 @@ void MainWindow::initGUI()
     m_powerMessage->setMessageType(KMessageWidget::Warning);
     checkPlugState();
 
-    m_progressWidget = new ProgressWidget(mainWidget);
-    m_progressWidget->setTransaction(m_updater);
+    m_progressWidget = new ProgressWidget(m_updater, mainWidget);
     m_progressWidget->hide();
 
     m_updaterWidget = new UpdaterWidget(mainWidget);

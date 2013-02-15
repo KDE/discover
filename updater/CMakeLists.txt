@@ -12,6 +12,8 @@ set(muon_updater_SRCS
     UpdateModel/UpdateDelegate.cpp
     config/UpdaterSettingsDialog.cpp)
 
+kde4_add_ui_files(muon_updater_SRCS ProgressWidget.ui)
+
 kde4_add_executable(muon-updater ${muon_updater_SRCS})
 
 target_link_libraries(muon-updater muonprivate

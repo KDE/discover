@@ -38,38 +38,16 @@
 
 #include <resources/AbstractBackendUpdater.h>
 #include <resources/ResourcesUpdatesModel.h>
+#include "ui_ProgressWidget.h"
 
-ProgressWidget::ProgressWidget(QWidget *parent)
+ProgressWidget::ProgressWidget(ResourcesUpdatesModel* updates, QWidget *parent)
     : QWidget(parent)
-    , m_updater(nullptr)
+    , m_updater(updates)
     , m_lastRealProgress(0)
     , m_show(false)
+    , m_ui(new Ui::ProgressWidget)
 {
-    QVBoxLayout *mainLayout = new QVBoxLayout(this);
-    mainLayout->setMargin(0);
-
-    m_headerLabel = new QLabel(this);
-    m_progressBar = new QProgressBar(this);
-
-    QWidget *widget = new QWidget(this);
-    QHBoxLayout *layout = new QHBoxLayout(widget);
-    widget->setLayout(layout);
-
-    m_cancelButton = new QPushButton(widget);
-    m_cancelButton->setText(i18nc("@action:button Cancels the download", "Cancel"));
-    m_cancelButton->setIcon(KIcon("dialog-cancel"));
-
-    layout->addWidget(m_progressBar);
-    layout->addWidget(m_cancelButton);
-
-    m_detailsLabel = new QLabel(this);
-
-    mainLayout->addWidget(m_headerLabel);
-    mainLayout->addWidget(widget);
-    mainLayout->addWidget(m_detailsLabel);
-
-    setLayout(mainLayout);
-
+    m_ui->setupUi(this);
     int finalHeight = sizeHint().height() + 20;
 
     QPropertyAnimation *anim1 = new QPropertyAnimation(this, "maximumHeight", this);
@@ -87,11 +65,6 @@ ProgressWidget::ProgressWidget(QWidget *parent)
     m_expandWidget = new QParallelAnimationGroup(this);
     m_expandWidget->addAnimation(anim1);
     m_expandWidget->addAnimation(anim2);
-}
-
-void ProgressWidget::setTransaction(ResourcesUpdatesModel* updates)
-{
-    m_updater = updates;
 
     // Connect the transaction all up to our slots
     connect(m_updater, SIGNAL(progressChanged()),
@@ -101,32 +74,34 @@ void ProgressWidget::setTransaction(ResourcesUpdatesModel* updates)
     connect(m_updater, SIGNAL(etaChanged()), SLOT(etaChanged()));
     connect(m_updater, SIGNAL(cancelableChanged()), SLOT(cancelChanged()));
     connect(m_updater, SIGNAL(statusMessageChanged(QString)),
-            m_headerLabel, SLOT(setText(QString)));
+            m_ui->header, SLOT(setText(QString)));
     connect(m_updater, SIGNAL(statusDetailChanged(QString)),
-            m_detailsLabel, SLOT(setText(QString)));
+            m_ui->details, SLOT(setText(QString)));
     connect(m_updater, SIGNAL(progressingChanged()),
             SLOT(updateIsProgressing()));
-
-//     m_headerLabel->setText(m_updater->statusMessage());
-//     m_detailsLabel->setText(m_updater->statusDetail());
     
     cancelChanged();
-    connect(m_cancelButton, SIGNAL(clicked()), m_updater, SLOT(cancel()));
+    connect(m_ui->cancel, SIGNAL(clicked()), m_updater, SLOT(cancel()));
+}
+
+ProgressWidget::~ProgressWidget()
+{
+    delete m_ui;
 }
 
 void ProgressWidget::updateIsProgressing()
 {
-    m_progressBar->setMaximum(m_updater->isProgressing() ? 100 : 0);
+    m_ui->progress->setMaximum(m_updater->isProgressing() ? 100 : 0);
 }
 
 void ProgressWidget::updateProgress()
 {
     qreal progress = m_updater->progress();
     if (progress > 100 || progress<0) {
-        m_progressBar->setMaximum(0);
+        m_ui->progress->setMaximum(0);
     } else if (progress > m_lastRealProgress) {
-        m_progressBar->setMaximum(100);
-        m_progressBar->setValue(progress);
+        m_ui->progress->setMaximum(100);
+        m_ui->progress->setValue(progress);
         m_lastRealProgress = progress;
     }
 }
@@ -134,14 +109,17 @@ void ProgressWidget::updateProgress()
 void ProgressWidget::downloadSpeedChanged()
 {
     quint64 speed = m_updater->downloadSpeed();
-    QString downloadSpeed = i18nc("@label Download rate", "Download rate: %1/s",
-                              KGlobal::locale()->formatByteSize(speed));
-    m_detailsLabel->setText(downloadSpeed);
+    if(speed>0) {
+        QString downloadSpeed = i18nc("@label Download rate", "Download rate: %1/s",
+                                KGlobal::locale()->formatByteSize(speed));
+        m_ui->downloadSpeed->setText(downloadSpeed);
+    } else
+        m_ui->downloadSpeed->clear();
 }
 
 void ProgressWidget::etaChanged()
 {
-    m_detailsLabel->setText(m_updater->remainingTime());
+    m_ui->details->setText(m_updater->remainingTime());
 }
 
 void ProgressWidget::show()
@@ -164,10 +142,10 @@ void ProgressWidget::animatedHide()
     m_expandWidget->setDirection(QAbstractAnimation::Backward);
     m_expandWidget->start();
     connect(m_expandWidget, SIGNAL(finished()), this, SLOT(hide()));
-    connect(m_expandWidget, SIGNAL(finished()), m_cancelButton, SLOT(show()));
+    connect(m_expandWidget, SIGNAL(finished()), m_ui->cancel, SLOT(show()));
 }
 
 void ProgressWidget::cancelChanged()
 {
-    m_cancelButton->setEnabled(m_updater->isCancelable());
+    m_ui->cancel->setEnabled(m_updater->isCancelable());
 }

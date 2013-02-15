@@ -29,25 +29,22 @@ class QParallelAnimationGroup;
 class QPushButton;
 class QProgressBar;
 
+namespace Ui { class ProgressWidget; }
+
 class ProgressWidget : public QWidget
 {
     Q_OBJECT
 public:
-    ProgressWidget(QWidget *parent);
-
-    void setTransaction(ResourcesUpdatesModel* updates);
+    ProgressWidget(ResourcesUpdatesModel* updates, QWidget *parent);
+    virtual ~ProgressWidget();
 
 private:
     ResourcesUpdatesModel* m_updater;
     qreal m_lastRealProgress;
-
-    QLabel *m_headerLabel;
-    QProgressBar *m_progressBar;
-    QPushButton *m_cancelButton;
-    QLabel *m_detailsLabel;
     bool m_show;
 
     QParallelAnimationGroup *m_expandWidget;
+    Ui::ProgressWidget* m_ui;
 
 public Q_SLOTS:
     void show();

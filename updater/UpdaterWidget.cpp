@@ -45,6 +45,7 @@
 #include <resources/AbstractResource.h>
 #include <resources/AbstractBackendUpdater.h>
 #include <resources/ResourcesUpdatesModel.h>
+// #include <resources/ResourcesModel.h>
 
 // Own includes
 #include "UpdateModel/UpdateModel.h"
@@ -133,6 +134,7 @@ void UpdaterWidget::setBackend(ResourcesUpdatesModel *updates)
 {
     m_updatesBackends = updates;
     connect(m_updatesBackends, SIGNAL(progressingChanged()), SLOT(activityChanged()));
+//     connect(ResourcesModel::global(), SIGNAL(allInitialized()), SLOT(populateUpdateModel()));
 
     populateUpdateModel();
     setEnabled(true);
