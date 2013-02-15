@@ -24,6 +24,7 @@
 DummyResource::DummyResource(const QString& name, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
     , m_name(name)
+    , m_state(State::Broken)
 {
 }
 
