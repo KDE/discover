@@ -64,6 +64,8 @@ class MUONPRIVATE_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         void etaChanged();
         void cancelableChanged();
         void progressingChanged();
+        void statusMessageChanged(const QString& message);
+        void statusDetailChanged(const QString& msg);
 
     public slots:
         void cancel();
@@ -76,7 +78,7 @@ class MUONPRIVATE_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         int m_finishedUpdaters;
 
     private slots:
-        void message(const QIcon& icon, const QString& msg);
+        void message(const QString& msg);
         void updaterFinished();
         void addNewBackends();
 };

@@ -154,7 +154,6 @@ QString StandardBackendUpdater::statusDetail() const
 void StandardBackendUpdater::setStatusMessage(const QString& msg)
 {
     m_statusMessage = msg;
-    emit message(QIcon(), msg);
     emit statusMessageChanged(msg);
 }
 

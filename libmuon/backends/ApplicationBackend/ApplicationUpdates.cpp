@@ -164,7 +164,7 @@ void ApplicationUpdates::etaChanged(quint64 eta)
 
 void ApplicationUpdates::installMessage(const QString& msg)
 {
-    emit message(QIcon(), msg);
+    setStatusMessage(msg);
 }
 
 void ApplicationUpdates::transactionStatusChanged(QApt::TransactionStatus status)

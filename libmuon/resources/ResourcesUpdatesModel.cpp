@@ -52,7 +52,8 @@ void ResourcesUpdatesModel::addNewBackends()
         AbstractBackendUpdater* updater = b->backendUpdater();
         if(updater && !m_updaters.contains(updater)) {
             connect(updater, SIGNAL(progressChanged(qreal)), SIGNAL(progressChanged()));
-            connect(updater, SIGNAL(message(QIcon,QString)), SLOT(message(QIcon,QString)));
+            connect(updater, SIGNAL(statusMessageChanged(QString)), SIGNAL(statusMessageChanged(QString)));
+            connect(updater, SIGNAL(statusDetailChanged(QString)), SLOT(message(QString)));
             connect(updater, SIGNAL(remainingTimeChanged()), SIGNAL(etaChanged()));
             connect(updater, SIGNAL(downloadSpeedChanged(quint64)), SIGNAL(downloadSpeedChanged()));
             connect(updater, SIGNAL(progressingChanged(bool)), SIGNAL(progressingChanged()));
@@ -70,9 +71,10 @@ qreal ResourcesUpdatesModel::progress() const
     return total / m_updaters.count();
 }
 
-void ResourcesUpdatesModel::message(const QIcon& icon, const QString& msg)
+void ResourcesUpdatesModel::message(const QString& msg)
 {
-    appendRow(new QStandardItem(icon, msg));
+    appendRow(new QStandardItem(msg));
+    emit statusDetailChanged(msg);
 }
 
 void ResourcesUpdatesModel::prepare()
