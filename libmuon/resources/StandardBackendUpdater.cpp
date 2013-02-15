@@ -55,12 +55,12 @@ void StandardBackendUpdater::start()
         m_pendingResources += res;
         m_backend->installApplication(res);
     }
+    m_settingUp = false;
 
     if(m_pendingResources.isEmpty()) {
         emit progressingChanged(false);
         cleanup();
     }
-    m_settingUp = false;
 }
 
 void StandardBackendUpdater::transactionRemoved(Transaction* t)
@@ -71,8 +71,8 @@ void StandardBackendUpdater::transactionRemoved(Transaction* t)
         qreal p = 1-(qreal(m_pendingResources.size())/m_toUpgrade.size());
         setProgress(100*p);
         if(m_pendingResources.isEmpty()) {
-            emit progressingChanged(false);
             cleanup();
+            emit progressingChanged(false);
         }
     }
 }
