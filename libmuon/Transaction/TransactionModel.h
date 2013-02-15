@@ -1,6 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
- *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2012 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -19,46 +18,59 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef TRANSACTIONLISTENER_H
-#define TRANSACTIONLISTENER_H
+#ifndef TRANSACTIONMODEL_H
+#define TRANSACTIONMODEL_H
 
-#include <QtCore/QObject>
+#include <QAbstractListModel>
 
 #include "Transaction.h"
+
 #include "libmuonprivate_export.h"
 
-class AbstractResource;
-
-class MUONPRIVATE_EXPORT TransactionListener : public QObject
+class MUONPRIVATE_EXPORT TransactionModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(AbstractResource* resource READ resource WRITE setResource NOTIFY resourceChanged)
-    Q_PROPERTY(bool isCancellable READ isCancellable NOTIFY cancellableChanged)
-    Q_PROPERTY(bool isActive READ isActive NOTIFY running)
-    Q_PROPERTY(QString statusText READ statusText NOTIFY statusTextChanged)
 public:
-    explicit TransactionListener(QObject *parent = nullptr);
-    
-    AbstractResource *resource() const;
-    bool isCancellable() const;
-    bool isActive() const;
-    QString statusText() const;
+    enum Roles {
+        TransactionRoleRole = Qt::UserRole,
+        TransactionStatusRole,
+        CancellableRole,
+        ProgressRole,
+        StatusTextRole,
+        ResourceRole
+    };
 
-    void setResource(AbstractResource* resource);
+    explicit TransactionModel(QObject *parent = 0);
+    static TransactionModel *global();
+
+    // Reimplemented from QAbstractListModel
+    int rowCount(const QModelIndex &parent = QModelIndex()) const;
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
+    bool removeRows(int row, int count, const QModelIndex &parent);
+
+    Transaction *transactionFromIndex(const QModelIndex &index) const;
+    Q_SCRIPTABLE Transaction *transactionFromResource(AbstractResource *resource) const;
+    QModelIndex indexOf(Transaction *trans) const;
+    QModelIndex indexOf(AbstractResource *res) const;
+
+    void addTransaction(Transaction *trans);
+    void cancelTransaction(Transaction *trans);
+    void removeTransaction(Transaction *trans);
 
 private:
-    AbstractResource *m_resource;
-    Transaction *m_transaction;
+    QList<Transaction *> m_transactions;
+    
+signals:
+    void startingFirstTransaction();
+    void lastTransactionFinished();
+    void transactionAdded(Transaction *trans);
+    void transactionCancelled(Transaction *trans);
+    
+public slots:
+    
 
 private slots:
-    void transactionAdded(Transaction *trans);
-    void transactionStatusChanged(Transaction::Status status);
-
-signals:
-    void resourceChanged();
-    void cancellableChanged();
-    void running();
-    void statusTextChanged();
+    void transactionChanged();
 };
 
-#endif // TRANSACTIONLISTENER_H
+#endif // TRANSACTIONMODEL_H

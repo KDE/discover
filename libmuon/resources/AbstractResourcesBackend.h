@@ -21,18 +21,13 @@
 #ifndef ABSTRACTRESOURCESBACKEND_H
 #define ABSTRACTRESOURCESBACKEND_H
 
-#include <QObject>
-#include <QPair>
-#include <QVector>
+#include <QtCore/QObject>
+#include <QtCore/QPair>
+#include <QtCore/QVector>
+
+#include "Transaction/AddonList.h"
 
 #include "libmuonprivate_export.h"
-
-enum TransactionStateTransition {
-    StartedDownloading,
-    FinishedDownloading,
-    StartedCommitting,
-    FinishedCommitting
-};
 
 class Transaction;
 class AbstractReviewsBackend;
@@ -53,14 +48,12 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
         virtual AbstractReviewsBackend* reviewsBackend() const = 0;
         virtual AbstractBackendUpdater* backendUpdater() const = 0;
         virtual int updatesCount() const = 0;
-        virtual QPair<TransactionStateTransition, Transaction *> currentTransactionState() const = 0;
-        virtual QList<Transaction*> transactions() const = 0;
         virtual AbstractResource* resourceByPackageName(const QString& name) const = 0;
         virtual QList<AbstractResource*> upgradeablePackages() const = 0;
         virtual void integrateMainWindow(MuonMainWindow* w);
 
     public slots:
-        virtual void installApplication(AbstractResource *app, const QHash<QString, bool> &addons) = 0;
+        virtual void installApplication(AbstractResource *app, AddonList addons) = 0;
         virtual void installApplication(AbstractResource *app);
         virtual void removeApplication(AbstractResource *app) = 0;
         virtual void cancelTransaction(AbstractResource *app) = 0;
@@ -72,12 +65,6 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
         void updatesCountChanged();
         void allDataChanged();
         void searchInvalidated();
-        
-        void transactionProgressed(Transaction *transaction, int progress);
-        void transactionAdded(Transaction *transaction);
-        void transactionCancelled(Transaction *app);
-        void transactionRemoved(Transaction* t);
-        void transactionsEvent(TransactionStateTransition transition, Transaction* transaction);
 };
 
 Q_DECLARE_INTERFACE( AbstractResourcesBackend, "org.kde.muon.AbstractResourcesBackend" )

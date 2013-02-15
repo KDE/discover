@@ -18,80 +18,32 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "Transaction.h"
+#ifndef ADDONLIST_H
+#define ADDONLIST_H
 
-#include "TransactionModel.h"
+#include <QStringList>
+#include <QtCore/QVector>
 
-Transaction::Transaction(QObject *parent, AbstractResource *resource,
-                         Role role)
-    : Transaction(parent, resource, role, AddonList())
+#include "libmuonprivate_export.h"
+
+class MUONPRIVATE_EXPORT AddonList
 {
-}
+public:
+    AddonList();
+    AddonList(const AddonList &other);
 
-Transaction::Transaction(QObject *parent, AbstractResource *resource,
-                         Role role, AddonList addons)
-    : QObject(parent)
-    , m_resource(resource)
-    , m_role(role)
-    , m_status(SetupStatus)
-    , m_addons(addons)
-    , m_isCancellable(true)
-    , m_progress(0)
-{
-}
+    bool isEmpty() const;
+    QStringList addonsToInstall() const;
+    QStringList addonsToRemove() const;
 
-AbstractResource *Transaction::resource() const
-{
-    return m_resource;
-}
+    void setAddonsToInstall(const QStringList &list);
+    void setAddonsToRemove(const QStringList &list);
+    void addAddon(const QString &addon, bool toInstall);
+    void removeAddon(const QString &addon);
+    void clear();
 
-Transaction::Role Transaction::role() const
-{
-    return m_role;
-}
+private:
+    QVector<QStringList> m_list;
+};
 
-Transaction::Status Transaction::status() const
-{
-    return m_status;
-}
-
-AddonList Transaction::addons() const
-{
-    return m_addons;
-}
-
-bool Transaction::isCancellable() const
-{
-    return m_isCancellable;
-}
-
-int Transaction::progress() const
-{
-    return m_progress;
-}
-
-void Transaction::setStatus(Status status)
-{
-    m_status = status;
-    emit statusChanged(m_status);
-}
-
-void Transaction::setCancellable(bool isCancellable)
-{
-    m_isCancellable = isCancellable;
-    emit cancellableChanged(m_isCancellable);
-}
-
-void Transaction::setProgress(int progress)
-{
-    m_progress = progress;
-    emit progressChanged(m_progress);
-}
-
-void Transaction::cancel()
-{
-    if (!m_isCancellable)
-        return;
-
-    TransactionModel::global()->cancelTransaction(this);
-}
+#endif // ADDONLIST_H

@@ -44,8 +44,6 @@ Q_OBJECT
 // Q_PROPERTY(QString mimetypes READ mimetypes CONSTANT)
 Q_PROPERTY(QString menuPath READ menuPath CONSTANT)
 public:
-    friend class TransactionListener;
-
     explicit Application(const QString &fileName, QApt::Backend *backend);
     explicit Application(QApt::Package *package, QApt::Backend *backend);
 

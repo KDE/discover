@@ -23,6 +23,7 @@
 
 #include <QAbstractListModel>
 #include <resources/PackageState.h>
+#include "Transaction/AddonList.h"
 
 #include "libmuonprivate_export.h"
 
@@ -57,7 +58,7 @@ class MUONPRIVATE_EXPORT ApplicationAddonsModel : public QAbstractListModel
     private:
         AbstractResource* m_app;
         QList<PackageState> m_initial;
-        QHash<QString, bool> m_state;
+        AddonList m_state;
 };
 
 #endif // APPLICATIONADDONSMODEL_H

@@ -85,7 +85,8 @@ void QAptActions::setBackend(QApt::Backend* backend)
 {
     m_backend = backend;
     connect(m_backend, SIGNAL(packageChanged()), SLOT(setActionsEnabled()));
-    
+    setOriginalState(m_backend->currentCacheState());
+
     setReloadWhenEditorFinished(true);
     // Some actions need an initialized backend to be able to set their enabled state
     setActionsEnabled(true);

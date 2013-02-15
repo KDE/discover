@@ -20,221 +20,77 @@
  ***************************************************************************/
 
 #include "TransactionListener.h"
-#include "resources/AbstractResourcesBackend.h"
-#include "Transaction.h"
 
-#include <KLocalizedString>
-#include <KDebug>
+// Own includes
+#include "TransactionModel.h"
 
-TransactionListener::TransactionListener(QObject* parent)
+TransactionListener::TransactionListener(QObject *parent)
     : QObject(parent)
-    , m_backend(0)
-    , m_resource(0)
-    , m_progress(0)
-    , m_downloading(false)
-{}
-
-void TransactionListener::setBackend(AbstractResourcesBackend* backend)
+    , m_resource(nullptr)
+    , m_transaction(nullptr)
 {
-    if(m_backend) {
-        disconnect(m_backend, SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)),
-                this, SLOT(workerEvent(TransactionStateTransition,Transaction*)));
-        disconnect(m_backend, SIGNAL(transactionCancelled(Transaction*)),
-                this, SLOT(transactionCancelled(Transaction*)));
-        disconnect(m_backend, SIGNAL(transactionRemoved(Transaction*)),
-                this, SLOT(transactionRemoved(Transaction*)));
-    }
-    
-    m_backend = backend;
-    if(backend) {
-        // Catch already-begun downloads. If the state is something else, we won't
-        // care because we won't handle it
-        init();
-        
-        connect(m_backend, SIGNAL(transactionsEvent(TransactionStateTransition,Transaction*)),
-                this, SLOT(workerEvent(TransactionStateTransition,Transaction*)));
-        connect(m_backend, SIGNAL(transactionCancelled(Transaction*)),
-                this, SLOT(transactionCancelled(Transaction*)));
-        connect(m_backend, SIGNAL(transactionRemoved(Transaction*)),
-                    this, SLOT(transactionRemoved(Transaction*)));
-    }
+    connect(TransactionModel::global(), SIGNAL(transactionAdded(Transaction*)),
+            this, SLOT(transactionAdded(Transaction*)));
 }
 
-void TransactionListener::init()
-{
-    if(!m_backend)
-        return;
-    
-    QPair<TransactionStateTransition, Transaction *> workerState = m_backend->currentTransactionState();
-    if(!workerState.second)
-        return;
-
-    workerEvent(workerState.first, workerState.second);
-
-    foreach (Transaction *transaction, m_backend->transactions()) {
-        if (transaction->resource() == m_resource) {
-            emit running(true);
-            showTransactionState(transaction);
-        }
-    }
-}
-
-bool TransactionListener::isActive() const
-{
-    if(!m_backend)
-        return false;
-
-    foreach (Transaction *transaction, m_backend->transactions()) {
-        if (transaction->resource() == m_resource) {
-            return transaction->state()!=TransactionState::DoneState;
-        }
-    }
-    return false;
-}
-
-bool TransactionListener::isDownloading() const
-{
-    return m_backend && m_downloading;
-}
-
-void TransactionListener::workerEvent(TransactionStateTransition event, Transaction *transaction)
-{
-    Q_ASSERT(transaction);
-    if (m_resource != transaction->resource()) {
-        return;
-    }
-
-    switch (event) {
-    case StartedDownloading:
-        m_comment = i18nc("@info:status", "Downloading");
-        m_progress = 0;
-        connect(m_backend, SIGNAL(transactionProgressed(Transaction*,int)),
-                this, SLOT(updateProgress(Transaction*,int)));
-        emit running(true);
-        emit commentChanged();
-        emit progressChanged();
-        setDownloading(true);
-        break;
-    case FinishedDownloading:
-        disconnect(m_backend, SIGNAL(transactionProgressed(Transaction*,int)),
-                   this, SLOT(updateProgress(Transaction*,int)));
-        setDownloading(false);
-        break;
-    case StartedCommitting:
-        emit running(true);
-        setStateComment(transaction);
-        connect(m_backend, SIGNAL(transactionProgressed(Transaction*,int)),
-                this, SLOT(updateProgress(Transaction*,int)));
-        break;
-    case FinishedCommitting:
-        emit running(false);
-        disconnect(m_backend, SIGNAL(transactionProgressed(Transaction*,int)),
-                   this, SLOT(updateProgress(Transaction*,int)));
-        break;
-    }
-}
-
-void TransactionListener::updateProgress(Transaction *transaction, int percentage)
-{
-    if (m_resource == transaction->resource()) {
-        m_progress = percentage;
-        emit progressChanged();
-
-        if (percentage == 100) {
-            m_comment = i18nc("@info:status Progress text when done", "Done");
-            emit commentChanged();
-        }
-    }
-}
-
-void TransactionListener::showTransactionState(Transaction *transaction)
-{
-    switch (transaction->state()) {
-        case QueuedState:
-            m_comment = i18nc("@info:status Progress text when waiting", "Waiting");
-            emit commentChanged();
-            break;
-        case RunningState:
-            setStateComment(transaction);
-            break;
-        case DoneState:
-            m_comment = i18nc("@info:status Progress text when done", "Done");
-            m_progress = 100;
-            emit progressChanged();
-            emit commentChanged();
-            break;
-        default:
-            break;
-    }
-}
-
-void TransactionListener::setStateComment(Transaction* transaction)
-{
-    switch(transaction->action()) {
-        case InstallApp:
-            m_comment = i18nc("@info:status", "Installing");
-            emit commentChanged();
-            break;
-        case ChangeAddons:
-            m_comment = i18nc("@info:status", "Changing Addons");
-            emit commentChanged();
-            break;
-        case RemoveApp:
-            m_comment = i18nc("@info:status", "Removing");
-            emit commentChanged();
-            break;
-        default:
-            break;
-    }
-}
-
-QString TransactionListener::comment() const
-{
-    return m_comment;
-}
-
-int TransactionListener::progress() const
-{
-    return m_progress;
-}
-
-void TransactionListener::transactionCancelled(Transaction* t)
-{
-    if(t->resource()!=m_resource)
-        return;
-    emit running(false);
-    setDownloading(false);
-    emit cancelled();
-}
-
-void TransactionListener::setResource(AbstractResource* app)
-{
-    if(m_resource!=app) {
-        m_resource = app;
-        init();
-        emit resourceChanged();
-    }
-}
-
-AbstractResource* TransactionListener::resource() const
+AbstractResource *TransactionListener::resource() const
 {
     return m_resource;
 }
 
-AbstractResourcesBackend* TransactionListener::backend() const
+bool TransactionListener::isCancellable() const
 {
-    return m_backend;
+    return m_transaction ? m_transaction->isCancellable() : false;
 }
 
-void TransactionListener::setDownloading(bool b)
+bool TransactionListener::isActive() const
 {
-    m_downloading = b;
-    emit downloading(b);
+    return m_transaction ? m_transaction->status() != Transaction::SetupStatus : false;
 }
 
-void TransactionListener::transactionRemoved(Transaction* t)
+QString TransactionListener::statusText() const
 {
-    if(t && t->resource()==m_resource) {
-        emit running(false);
+    QModelIndex index = TransactionModel::global()->indexOf(m_resource);
+
+    return index.data(TransactionModel::StatusTextRole).toString();
+}
+
+void TransactionListener::setResource(AbstractResource *resource)
+{
+    m_resource = resource;
+
+    // Catch already-started transactions
+    Transaction *trans = TransactionModel::global()->transactionFromResource(resource);
+    if (trans)
+        transactionAdded(trans);
+
+    emit resourceChanged();
+}
+
+void TransactionListener::transactionAdded(Transaction *trans)
+{
+    if (trans->resource() != m_resource)
+        return;
+
+    m_transaction = trans;
+    connect(m_transaction, SIGNAL(cancellableChanged(bool)),
+            this, SIGNAL(cancellableChanged()));
+    connect(m_transaction, SIGNAL(statusChanged(Transaction::Status)),
+            this, SLOT(transactionStatusChanged(Transaction::Status)));
+}
+
+void TransactionListener::transactionStatusChanged(Transaction::Status status)
+{
+    switch (status) {
+    case Transaction::DoneStatus:
+        m_transaction = nullptr;
+        break;
+    case Transaction::QueuedStatus:
+        emit running();
+        break;
+    default:
+        break;
     }
+
+    emit statusTextChanged();
 }
