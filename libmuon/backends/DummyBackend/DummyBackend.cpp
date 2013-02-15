@@ -22,6 +22,7 @@
 #include "DummyResource.h"
 #include "DummyReviewsBackend.h"
 #include <Transaction/Transaction.h>
+#include <Transaction/TransactionModel.h>
 
 #include <KAboutData>
 #include <KLocalizedString>
@@ -96,36 +97,33 @@ AbstractReviewsBackend* DummyBackend::reviewsBackend() const
     return m_reviews;
 }
 
-QPair<TransactionStateTransition, Transaction*> DummyBackend::currentTransactionState() const
-{
-    return QPair<TransactionStateTransition, Transaction*>(FinishedCommitting, 0);
-}
-
 QList<Transaction*> DummyBackend::transactions() const
 {
     return QList<Transaction*>();
 }
 
-void DummyBackend::installApplication(AbstractResource* app, const QHash< QString, bool >&)
+void DummyBackend::installApplication(AbstractResource* app, AddonList )
 {
     installApplication(app);
 }
 
 void DummyBackend::installApplication(AbstractResource* app)
 {
-    Transaction* t = new Transaction(app, InstallApp);
-    emit transactionAdded(t);
+    Transaction* t = new Transaction(this, app, Transaction::InstallRole);
+	TransactionModel *transModel = TransactionModel::global();
+	transModel->addTransaction(t);
     qobject_cast<DummyResource*>(app)->setState(AbstractResource::Installed);
-    emit transactionRemoved(t);
+	transModel->removeTransaction(t);
     t->deleteLater();
 }
 
 void DummyBackend::removeApplication(AbstractResource* app)
 {
-    Transaction* t = new Transaction(app, RemoveApp);
-    emit transactionAdded(t);
+    Transaction* t = new Transaction(this, app, Transaction::RemoveRole);
+	TransactionModel *transModel = TransactionModel::global();
+    transModel->addTransaction(t);
     qobject_cast<DummyResource*>(app)->setState(AbstractResource::None);
-    emit transactionRemoved(t);
+    transModel->removeTransaction(t);
     t->deleteLater();
 }
 
