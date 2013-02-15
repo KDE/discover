@@ -97,6 +97,10 @@ void ApplicationUpdates::prepare()
 void ApplicationUpdates::start()
 {
     auto changes = m_aptBackend->stateChanges(m_updatesCache, QApt::PackageList());
+    if(changes.isEmpty()) {
+        setProgressing(false);
+        return;
+    }
     for(auto it=changes.begin(); it!=changes.end(); ) {
         if(it.key()&QApt::Package::ToUpgrade) {
             it = changes.erase(it);
