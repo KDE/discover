@@ -143,7 +143,6 @@ void MainWindow::progressingChanged()
     bool active = m_updater->isProgressing();
     QApplication::restoreOverrideCursor();
     if(!active) {
-        m_progressWidget->animatedHide();
         m_updaterWidget->setCurrentIndex(0);
     }
     m_progressWidget->setVisible(active);
