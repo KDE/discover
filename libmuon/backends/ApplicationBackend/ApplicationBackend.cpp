@@ -661,10 +661,8 @@ QList< AbstractResource* > ApplicationBackend::upgradeablePackages() const
 
 void ApplicationBackend::checkForUpdates()
 {
-    QAptActions::self()->setActionsEnabled(false);
     QApt::Transaction* transaction = backend()->updateCache();
     m_backendUpdater->setupTransaction(transaction);
-    connect(transaction, SIGNAL(finished(QApt::ExitStatus)), transaction, SLOT(deleteLater()));
     transaction->run();
 
 }
