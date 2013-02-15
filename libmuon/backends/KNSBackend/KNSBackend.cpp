@@ -98,7 +98,6 @@ KNSBackend::KNSBackend(QObject* parent, const QVariantList& args)
     m_manager = new KNS3::DownloadManager(m_name, this);
     connect(m_manager, SIGNAL(searchResult(KNS3::Entry::List)), SLOT(receivedEntries(KNS3::Entry::List)));
     connect(m_manager, SIGNAL(entryStatusChanged(KNS3::Entry)), SLOT(statusChanged(KNS3::Entry)));
-    connect(this, SIGNAL(transactionRemoved(Transaction*)), SIGNAL(updatesCountChanged()));
     
     startFetchingCategories();
 }
@@ -163,7 +162,9 @@ void KNSBackend::receivedContents(Attica::BaseJob* job)
     }
     QString filename = QFileInfo(m_name).fileName();
     foreach(const Attica::Content& c, contents) {
-        m_resourcesByName.insert(c.id(), new KNSResource(c, filename, m_iconName, this));
+        KNSResource* r = new KNSResource(c, filename, m_iconName, this);
+        m_resourcesByName.insert(c.id(), r);
+        connect(r, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));
     }
     m_page++;
     Attica::ListJob<Attica::Content>* jj =
