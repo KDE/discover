@@ -22,6 +22,7 @@
 #include <resources/AbstractResource.h>
 #include "ResourcesModel.h"
 #include <Transaction/Transaction.h>
+#include <Transaction/TransactionModel.h>
 #include <KLocalizedString>
 #include <KAction>
 #include <QDateTime>
@@ -36,7 +37,7 @@ StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend* parent)
     , m_settingUp(false)
     , m_lastUpdate(QDateTime())
 {
-    connect(parent,
+    connect(TransactionModel::global(),
             SIGNAL(transactionRemoved(Transaction*)),
             SLOT(transactionRemoved(Transaction*)));
 }
@@ -65,7 +66,7 @@ void StandardBackendUpdater::start()
 
 void StandardBackendUpdater::transactionRemoved(Transaction* t)
 {
-    bool found = m_pendingResources.remove(t->resource());
+    bool found = t->resource()->backend()==m_backend && m_pendingResources.remove(t->resource());
     if(found && !m_settingUp) {
         setStatusMessage(i18n("%1 has been updated", t->resource()->name()));
         qreal p = 1-(qreal(m_pendingResources.size())/m_toUpgrade.size());

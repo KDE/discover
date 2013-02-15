@@ -44,11 +44,11 @@ DummyBackend::DummyBackend(QObject* parent, const QVariantList&)
         DummyResource* res = new DummyResource(name, this);
         res->setState(AbstractResource::State(1+(i%3)));
         m_resources.insert(name, res);
+        connect(res, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));
     }
     
     QMetaObject::invokeMethod(this, "backendReady", Qt::QueuedConnection);
     m_reviews = new DummyReviewsBackend(this);
-    connect(this, SIGNAL(transactionRemoved(Transaction*)), SIGNAL(updatesCountChanged()));
 }
 
 QVector<AbstractResource*> DummyBackend::allResources() const
