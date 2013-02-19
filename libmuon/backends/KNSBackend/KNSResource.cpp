@@ -110,8 +110,9 @@ Attica::Content& KNSResource::content()
 
 QString KNSResource::longDescription() const
 {
-    //TODO: Translate the weird tags this uses to html or something
-    return m_content.description();
+    QString ret = m_content.description();
+    ret = ret.replace('\r', QString());
+    return ret;
 }
 
 void KNSResource::setEntry(const KNS3::Entry& entry)
