@@ -219,8 +219,11 @@ bool ResourcesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &r
     if(leftValue.type()==QVariant::String && rightValue.type()==QVariant::String) {
         int comp = QString::localeAwareCompare(leftValue.toString(), rightValue.toString());
         return (comp < 0) ^ invert;
-    } else
+    } else if(sortRole() == ResourcesModel::CanUpgrade) {
+        return leftValue.toBool();
+    } else {
         return QSortFilterProxyModel::lessThan(left, right);
+    }
 }
 
 Category* ResourcesProxyModel::filteredCategory() const
