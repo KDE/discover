@@ -3,16 +3,17 @@ import org.kde.plasma.components 0.1
 
 MuonToolButton {
     id: button
-    property alias delegate: menuRepeater.delegate
-    property alias model: menuRepeater.model
+    property alias delegate: menuItem.delegate
+    property alias model: menuItem.model
     
     checkable: true
     checked: false
     
-    Item {
+    ListView {
         id: menuItem
         width: 100
-        height: buttons.height
+        height: button.height*count
+        clip: true
         anchors.right: parent.right
         anchors.top: parent.bottom
         visible: button.checked
@@ -20,15 +21,7 @@ MuonToolButton {
             anchors.fill: parent
             radius: 10
             opacity: 0.4
-        }
-        
-        Column {
-            id: buttons
-            width: parent.width
-            
-            Repeater {
-                id: menuRepeater
-            }
+            z: -33
         }
     }
 }
