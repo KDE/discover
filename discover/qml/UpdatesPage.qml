@@ -31,7 +31,7 @@ Page
         maximumValue: 100
         
         Label {
-            anchors.fill: parent
+            anchors.centerIn: parent
             text: updatesModel.remainingTime
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
