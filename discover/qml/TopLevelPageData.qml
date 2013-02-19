@@ -27,7 +27,7 @@ DiscoverAction {
     mainWindow: app
     checkable: true
     checked: window.currentTopLevel==component
-    enabled: window.navigationEnabled
+    enabled: window.navigationEnabled && component && component.status == Component.Ready
     actionsGroup: "topLevelPagesGroup"
 
     onTriggered: {
