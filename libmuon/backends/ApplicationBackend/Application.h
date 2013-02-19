@@ -70,6 +70,7 @@ public:
     QString availableVersion() const;
     QString sizeDescription();
     QString origin() const;
+    int downloadSize();
 
     bool hasScreenshot() const { return m_sourceHasScreenshot; }
     void setHasScreenshot(bool has);
@@ -88,8 +89,16 @@ public:
     
     virtual State state();
     virtual void fetchScreenshots();
+    virtual void fetchChangelog();
+    
+    bool isSecure() const;
+
+private slots:
+    void processChangelog(KJob*);
 
 private:
+    QString buildDescription(const QByteArray& data, const QString& source);
+    
     KSharedConfigPtr m_data;
     QApt::Backend *m_backend;
     QApt::Package *m_package;

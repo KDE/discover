@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,45 +18,20 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef CHANGELOGWIDGET_H
-#define CHANGELOGWIDGET_H
+#include "KActionMessageWidget.h"
+#include <QAction>
 
-#include <QtCore/QSet>
-#include <QtGui/QWidget>
-
-class AbstractResource;
-class QParallelAnimationGroup;
-
-class KJob;
-class KPixmapSequenceOverlayPainter;
-class KTemporaryFile;
-class KTextBrowser;
-
-class ChangelogWidget : public QWidget
+KActionMessageWidget::KActionMessageWidget(QAction* action, QWidget* parent)
+    : KMessageWidget(parent)
+    , m_action(action)
 {
-    Q_OBJECT
-public:
-    explicit ChangelogWidget(QWidget *parent = 0);
+    setText(action->whatsThis());
+    addAction(action);
+    reconsiderVisibility();
+    connect(action, SIGNAL(changed()), SLOT(reconsiderVisibility()));
+}
 
-private:
-    AbstractResource *m_package;
-    QString m_jobFileName;
-    bool m_show;
-
-    QParallelAnimationGroup *m_expandWidget;
-    KTextBrowser *m_changelogBrowser;
-    KPixmapSequenceOverlayPainter *m_busyWidget;
-
-    QString buildDescription(const QByteArray& data, const QString& source);
-
-public Q_SLOTS:
-    void setResource(AbstractResource *package);
-    void show();
-    void animatedHide();
-
-private Q_SLOTS:
-    void fetchChangelog();
-    void changelogFetched(const QString& changelog);
-};
-
-#endif
+void KActionMessageWidget::reconsiderVisibility()
+{
+    setVisible(m_action->isEnabled());
+}

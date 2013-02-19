@@ -47,7 +47,6 @@
 #include "../libmuonapt/QAptActions.h"
 
 // Libmuon includes
-#include <MuonBackendsFactory.h>
 #include <Transaction/TransactionModel.h>
 #include <resources/ResourcesModel.h>
 
@@ -157,13 +156,11 @@ void MainWindow::initObject()
             this, SLOT(removeProgressItem()));
     m_launches = new LaunchListModel(this);
 
-    MuonBackendsFactory f;
-    QList<AbstractResourcesBackend*> backends = f.allBackends();
+    resourcesModel->registerAllBackends();
+    QVector<AbstractResourcesBackend*> backends = resourcesModel->backends();
 
     //TODO: should add the appBackend here too
     for (AbstractResourcesBackend *backend : backends) {
-        resourcesModel->addResourcesBackend(backend);
-        
         if(backend->metaObject()->className()==QLatin1String("ApplicationBackend")) {
             m_appBackend = backend;
             connect(m_appBackend, SIGNAL(backendReady()),

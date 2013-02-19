@@ -49,6 +49,7 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
         virtual AbstractBackendUpdater* backendUpdater() const = 0;
         virtual int updatesCount() const = 0;
         virtual AbstractResource* resourceByPackageName(const QString& name) const = 0;
+        virtual QList<AbstractResource*> upgradeablePackages() const = 0;
         virtual void integrateMainWindow(MuonMainWindow* w);
 
     public slots:

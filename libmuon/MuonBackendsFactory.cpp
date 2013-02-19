@@ -64,6 +64,18 @@ QList<AbstractResourcesBackend*> MuonBackendsFactory::allBackends()
     return ret;
 }
 
+int MuonBackendsFactory::backendsCount() const
+{
+    int ret = 0;
+    KService::List serviceList = KServiceTypeTrader::self() ->query("Muon/Backend");
+    
+    foreach(const KService::Ptr& plugin, serviceList) {
+        KPluginInfo info(plugin);
+        if(info.name()!="muon-dummybackend")
+            ret++;
+    }
+    return ret;
+}
 
 AbstractResourcesBackend* MuonBackendsFactory::backendForPlugin(const KPluginInfo& info)
 {

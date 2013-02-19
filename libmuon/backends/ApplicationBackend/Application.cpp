@@ -44,6 +44,7 @@
 // QApt includes
 #include <LibQApt/Backend>
 #include <LibQApt/Config>
+#include <LibQApt/Changelog>
 
 //QJSON includes
 #include <qjson/parser.h>
@@ -85,11 +86,15 @@ Application::Application(QApt::Package* package, QApt::Backend* backend)
 
 QString Application::name()
 {
+    QString name;
     if (!m_isTechnical)
-        return i18n(untranslatedName().toUtf8());
+        name = i18n(untranslatedName().toUtf8());
+    else
+        name = untranslatedName();
 
-    // Technical packages use the package name, which is untranslatable
-    return untranslatedName();
+    if(m_package->isForeignArch())
+        name = i18n("%1 (%2)", name, m_package->architecture());
+    return name;
 }
 
 QString Application::untranslatedName()
@@ -419,6 +424,11 @@ QString Application::sizeDescription()
     }
 }
 
+int Application::downloadSize()
+{
+    return m_package->downloadSize();
+}
+
 KSharedConfigPtr Application::desktopContents(const QString& filename)
 {
     return KSharedConfig::openConfig(filename, KConfig::SimpleConfig);
@@ -530,4 +540,72 @@ QStringList Application::executables() const
         ret += exe->desktopEntryPath();
     }
     return ret;
+}
+
+bool Application::isSecure() const
+{
+    for (const QString &archive : m_package->archives()) {
+        if (archive.contains(QLatin1String("security"))) {
+            return true;
+        }
+    }
+    return false;
+}
+
+void Application::fetchChangelog()
+{
+    KIO::StoredTransferJob* getJob = KIO::storedGet(m_package->changelogUrl(), KIO::NoReload, KIO::HideProgressInfo);
+    connect(getJob, SIGNAL(result(KJob*)),
+            this, SLOT(processChangelog(KJob*)));
+}
+
+void Application::processChangelog(KJob* j)
+{
+    KIO::StoredTransferJob* job = qobject_cast<KIO::StoredTransferJob*>(j);
+    if (!m_package || !job) {
+        return;
+    }
+
+    QString changelog;
+    if(j->error()==0)
+        changelog = buildDescription(job->data(), m_package->sourcePackage());
+
+    if (changelog.isEmpty()) {
+        if (m_package->origin() == QLatin1String("Ubuntu")) {
+            changelog = i18nc("@info/rich", "The list of changes is not yet available. "
+                                            "Please use <link url='%1'>Launchpad</link> instead.",
+                                            QString("http://launchpad.net/ubuntu/+source/" + m_package->sourcePackage()));
+        } else {
+            changelog = i18nc("@info", "The list of changes is not yet available.");
+        }
+    }
+    emit changelogFetched(changelog);
+}
+
+QString Application::buildDescription(const QByteArray& data, const QString& source)
+{
+    QApt::Changelog changelog(data, source);
+    QString description;
+
+    QApt::ChangelogEntryList entries = changelog.newEntriesSince(m_package->installedVersion());
+
+    if (entries.size() < 1) {
+        return description;
+    }
+
+    foreach(const QApt::ChangelogEntry &entry, entries) {
+        description += i18nc("@info:label Refers to a software version, Ex: Version 1.2.1:",
+                             "Version %1:", entry.version());
+
+        QString issueDate = KGlobal::locale()->formatDateTime(entry.issueDateTime(), KLocale::ShortDate);
+        description += QLatin1String("<p>") +
+                       i18nc("@info:label", "This update was issued on %1", issueDate) +
+                       QLatin1String("</p>");
+
+        QString updateText = entry.description();
+        updateText.replace('\n', QLatin1String("<br/>"));
+        description += QLatin1String("<p><pre>") + updateText + QLatin1String("</pre></p>");
+    }
+
+    return description;
 }

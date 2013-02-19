@@ -24,8 +24,6 @@
 
 #include <QtCore/QStringBuilder>
 #include <KLocalizedString>
-#include <LibQApt/Package>
-#include <LibQApt/Backend>
 
 UpdateItem::UpdateItem()
     : m_app(0)
@@ -122,12 +120,8 @@ QString UpdateItem::name() const
     switch (type()) {
     case ItemType::CategoryItem:
         return m_categoryName;
-    case ItemType::ApplicationItem: {
-        QApt::Package* p = retrievePackage();
-        if (p->isForeignArch()) {
-            return i18n("%1 (%2)", m_app->name(), p->architecture());
-        }
-    }   return m_app->name();
+    case ItemType::ApplicationItem:
+        return m_app->name();
     default:
         break;
     }
@@ -168,7 +162,7 @@ qint64 UpdateItem::size() const
     int size = 0;
 
     if (itemType == ItemType::ApplicationItem) {
-        size = retrievePackage()->downloadSize();
+        size = m_app->downloadSize();
     } else if (itemType == ItemType::CategoryItem) {
         foreach (UpdateItem *item, m_children) {
             if (item->app()->state() & AbstractResource::Upgradeable) {
@@ -222,10 +216,4 @@ Qt::CheckState UpdateItem::checked() const
 UpdateItem::ItemType UpdateItem::type() const
 {
     return m_type;
-}
-
-QApt::Package* UpdateItem::retrievePackage() const
-{
-    QApt::Backend* backend = qobject_cast<QApt::Backend*>(m_app->backend()->property("backend").value<QObject*>());
-    return backend->package(m_app->packageName());
 }

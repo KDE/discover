@@ -81,6 +81,8 @@ public:
     
     AbstractBackendUpdater* backendUpdater() const;
     void integrateMainWindow(MuonMainWindow* w);
+    QWidget* mainWindow() const;
+    virtual QList<AbstractResource*> upgradeablePackages() const;
 
 private:
     QApt::Backend *m_backend;
@@ -114,9 +116,10 @@ private Q_SLOTS:
     void initBackend();
     void setupTransaction(QApt::Transaction *trans);
     void sourcesEditorClosed();
+    void checkForUpdates();
 
 Q_SIGNALS:
-    void errorSignal(QApt::ErrorCode code, const QString &details);
+	void startingFirstTransaction();
     void sourcesEditorFinished();
     void aptBackendInitialized(QApt::Backend* backend);
 };

@@ -35,15 +35,14 @@ class MuonExporter : public QObject
         void setExportPath(const KUrl& url);
 
     public slots:
-        void backendReady();
         void exportModel();
+        void allBackendsInitialized();
 
     signals:
         void exportDone();
 
     private:
         KUrl m_path;
-        int m_backendsToInitialize;
         QTimer* m_startExportingTimer;
         QSet<QString> m_exculdedProperties;
 };

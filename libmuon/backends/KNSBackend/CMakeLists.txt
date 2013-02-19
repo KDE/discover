@@ -4,7 +4,6 @@ set(knsbackend_SRCS
     KNSBackend.cpp
     KNSResource.cpp
     KNSReviews.cpp
-    KNSUpdater.cpp
 )
 
 kde4_add_plugin(muon-knsbackend SHARED ${knsbackend_SRCS})

@@ -44,7 +44,7 @@
 #include "KNSBackend.h"
 #include "KNSResource.h"
 #include "KNSReviews.h"
-#include "KNSUpdater.h"
+#include <resources/StandardBackendUpdater.h>
 
 K_PLUGIN_FACTORY(MuonKNSBackendFactory, registerPlugin<KNSBackend>(); )
 K_EXPORT_PLUGIN(MuonKNSBackendFactory(KAboutData("muon-knsbackend","muon-knsbackend",ki18n("KNewStuff Backend"),"0.1",ki18n("Install KNewStuff data in your system"), KAboutData::License_GPL)))
@@ -68,7 +68,7 @@ KNSBackend::KNSBackend(QObject* parent, const QVariantList& args)
     , m_page(0)
     , m_reviews(new KNSReviews(this))
     , m_fetching(true)
-    , m_updater(new KNSUpdater(this))
+    , m_updater(new StandardBackendUpdater(this))
 {
     const QVariantMap info = args.first().toMap();
     
@@ -162,7 +162,9 @@ void KNSBackend::receivedContents(Attica::BaseJob* job)
     }
     QString filename = QFileInfo(m_name).fileName();
     foreach(const Attica::Content& c, contents) {
-        m_resourcesByName.insert(c.id(), new KNSResource(c, filename, m_iconName, this));
+        KNSResource* r = new KNSResource(c, filename, m_iconName, this);
+        m_resourcesByName.insert(c.id(), r);
+        connect(r, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));
     }
     m_page++;
     Attica::ListJob<Attica::Content>* jj =
@@ -244,7 +246,7 @@ int KNSBackend::updatesCount() const
     return ret;
 }
 
-QList<AbstractResource*> KNSBackend::upgradeablePackages()
+QList<AbstractResource*> KNSBackend::upgradeablePackages() const
 {
     QList<AbstractResource*> ret;
     foreach(AbstractResource* r, m_resourcesByName) {

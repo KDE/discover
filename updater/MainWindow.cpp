@@ -36,38 +36,38 @@
 #include <KStandardDirs>
 #include <Solid/Device>
 #include <Solid/AcAdapter>
-
-// LibQApt includes
-#include <LibQApt/Backend>
-#include <LibQApt/Transaction>
+#include <KToolBar>
 
 // Own includes
-#include <MuonBackendsFactory.h>
 #include <resources/AbstractResourcesBackend.h>
-#include "../libmuonapt/HistoryView/HistoryView.h"
-#include "../libmuonapt/MuonStrings.h"
-#include "../libmuonapt/QAptActions.h"
+#include <resources/AbstractBackendUpdater.h>
+#include <resources/ResourcesModel.h>
+#include <resources/ResourcesUpdatesModel.h>
 #include "ChangelogWidget.h"
 #include "ProgressWidget.h"
 #include "config/UpdaterSettingsDialog.h"
 #include "UpdaterWidget.h"
+#include "KActionMessageWidget.h"
 
 MainWindow::MainWindow()
     : MuonMainWindow()
     , m_settingsDialog(nullptr)
-    , m_historyDialog(nullptr)
-    , m_checkerProcess(nullptr)
 {
-    MuonBackendsFactory f;
-    m_apps = f.backend("muon-appsbackend");
-    connect(m_apps, SIGNAL(backendReady()), SLOT(initBackend()));
+    ResourcesModel *m = ResourcesModel::global();
+    m->registerAllBackends();
+    
+    m_updater = new ResourcesUpdatesModel(this);
+    connect(m_updater, SIGNAL(progressingChanged()), SLOT(progressingChanged()));
 
     initGUI();
 }
 
 void MainWindow::initGUI()
 {
+    ResourcesModel* m = ResourcesModel::global();
     setWindowTitle(i18nc("@title:window", "Software Updates"));
+    for(AbstractResourcesBackend* b : m->backends())
+        b->integrateMainWindow(this);
 
     QWidget *mainWidget = new QWidget(this);
     QVBoxLayout *mainLayout = new QVBoxLayout(mainWidget);
@@ -79,13 +79,7 @@ void MainWindow::initGUI()
     m_powerMessage->setMessageType(KMessageWidget::Warning);
     checkPlugState();
 
-    m_distUpgradeMessage = new KMessageWidget(mainWidget);
-    m_distUpgradeMessage->hide();
-    m_distUpgradeMessage->setMessageType(KMessageWidget::Information);
-    m_distUpgradeMessage->setText(i18nc("Notification when a new version of Kubuntu is available",
-                                        "A new version of Kubuntu is available."));
-
-    m_progressWidget = new ProgressWidget(mainWidget);
+    m_progressWidget = new ProgressWidget(m_updater, mainWidget);
     m_progressWidget->hide();
 
     m_updaterWidget = new UpdaterWidget(mainWidget);
@@ -93,28 +87,27 @@ void MainWindow::initGUI()
 
     m_changelogWidget = new ChangelogWidget(this);
     m_changelogWidget->hide();
-    connect(m_updaterWidget, SIGNAL(selectedPackageChanged(QApt::Package*)),
-            m_changelogWidget, SLOT(setPackage(QApt::Package*)));
+    connect(m_updaterWidget, SIGNAL(selectedResourceChanged(AbstractResource*)),
+            m_changelogWidget, SLOT(setResource(AbstractResource*)));
 
     mainLayout->addWidget(m_powerMessage);
-    mainLayout->addWidget(m_distUpgradeMessage);
+//     mainLayout->addWidget(m_distUpgradeMessage);
     mainLayout->addWidget(m_progressWidget);
     mainLayout->addWidget(m_updaterWidget);
     mainLayout->addWidget(m_changelogWidget);
 
-    m_apps->integrateMainWindow(this);
-    setupActions();
     mainWidget->setLayout(mainLayout);
     setCentralWidget(mainWidget);
+    setupActions();
 
-    checkDistUpgrade();
+//     connect(m_updater, SIGNAL(reloadStarted()), SLOT(startedReloading()));
+    connect(m, SIGNAL(backendsChanged()), SLOT(finishedReloading()));
+    connect(m, SIGNAL(allInitialized()), SLOT(initBackend()));
 }
 
 void MainWindow::setupActions()
 {
     MuonMainWindow::setupActions();
-
-    connect(QAptActions::self(), SIGNAL(checkForUpdates()), this, SLOT(checkForUpdates()));
 
     m_applyAction = actionCollection()->addAction("apply");
     m_applyAction->setIcon(KIcon("dialog-ok-apply"));
@@ -123,110 +116,63 @@ void MainWindow::setupActions()
 
     KStandardAction::preferences(this, SLOT(editSettings()), actionCollection());
 
-    m_historyAction = actionCollection()->addAction("history");
-    m_historyAction->setIcon(KIcon("view-history"));
-    m_historyAction->setText(i18nc("@action::inmenu", "History..."));
-    m_historyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_H));
-    connect(m_historyAction, SIGNAL(triggered()), this, SLOT(showHistoryDialog()));
-
-    KAction *distUpgradeAction = new KAction(KIcon("system-software-update"), i18nc("@action", "Upgrade"), this);
-    connect(distUpgradeAction, SIGNAL(activated()), this, SLOT(launchDistUpgrade()));
-
-    m_distUpgradeMessage->addAction(distUpgradeAction);
-
     setActionsEnabled(false);
 
-    setupGUI((StandardWindowOption)(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
+    setupGUI(StandardWindowOption(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
+
+    foreach (QAction* action, m_updater->messageActions()) {
+        if (action->priority()==QAction::HighPriority) {
+            KActionMessageWidget* w = new KActionMessageWidget(action, centralWidget());
+            qobject_cast<QBoxLayout*>(centralWidget()->layout())->insertWidget(1, w);
+        } else {
+            toolBar("mainToolBar")->addAction(action);
+        }
+    }
 }
 
 void MainWindow::initBackend()
 {
-    m_updaterWidget->setBackend(m_apps);
-    m_updaterWidget->setEnabled(true);
+    m_updaterWidget->setBackend(m_updater);
 
     setActionsEnabled();
 }
 
-void MainWindow::transactionStatusChanged(QApt::TransactionStatus status)
+void MainWindow::progressingChanged()
 {
-    // FIXME: better support for transactions that do/don't need reloads
-    switch (status) {
-    case QApt::RunningStatus:
-    case QApt::WaitingStatus:
-        QApplication::restoreOverrideCursor();
-        m_progressWidget->show();
-        break;
-    case QApt::FinishedStatus:
-        m_progressWidget->animatedHide();
-        m_updaterWidget->setEnabled(true);
+    bool active = m_updater->isProgressing();
+    QApplication::restoreOverrideCursor();
+    if(!active) {
         m_updaterWidget->setCurrentIndex(0);
-        reload();
-        setActionsEnabled();
-
-        m_trans->deleteLater();
-        m_trans = nullptr;
-        break;
-    default:
-        break;
     }
+    m_progressWidget->setVisible(active);
+    m_updaterWidget->setVisible(!active);
+    setActionsEnabled(!active);
 }
 
-void MainWindow::errorOccurred(QApt::ErrorCode error)
-{
-    switch (error) {
-    case QApt::LockError:
-    case QApt::AuthError:
-        m_updaterWidget->setEnabled(true);
-        setActionsEnabled();
-        QApplication::restoreOverrideCursor();
-    default:
-        break;
-    }
-}
-
-void MainWindow::reload()
+void MainWindow::startedReloading()
 {
     setCanExit(false);
-    m_changelogWidget->stopPendingJobs();
+    setActionsEnabled(false);
+    QApplication::setOverrideCursor(Qt::WaitCursor);
+    m_changelogWidget->setResource(0);
+}
 
-    disconnect(m_updaterWidget, SIGNAL(selectedPackageChanged(QApt::Package*)),
-               m_changelogWidget, SLOT(setPackage(QApt::Package*)));
-
-    m_updaterWidget->reload();
-
-    connect(m_updaterWidget, SIGNAL(selectedPackageChanged(QApt::Package*)),
-            m_changelogWidget, SLOT(setPackage(QApt::Package*)));
-
-    m_changelogWidget->setPackage(0);
+void MainWindow::finishedReloading()
+{
     QApplication::restoreOverrideCursor();
-
     checkPlugState();
-
+    setActionsEnabled(true);
     setCanExit(true);
 }
 
 void MainWindow::setActionsEnabled(bool enabled)
 {
-    QAptActions::self()->setActionsEnabled(enabled);
+    MuonMainWindow::setActionsEnabled(enabled);
     if (!enabled) {
         return;
     }
 
-    m_applyAction->setEnabled(backend()->areChangesMarked());
-    m_updaterWidget->setEnabled(true);
-}
-
-void MainWindow::checkForUpdates()
-{
-    setActionsEnabled(false);
-    m_updaterWidget->setEnabled(false);
-    QApplication::setOverrideCursor(Qt::WaitCursor);
-    m_changelogWidget->animatedHide();
-    m_changelogWidget->stopPendingJobs();
-
-    m_trans = backend()->updateCache();
-    setupTransaction(m_trans);
-    m_trans->run();
+    m_applyAction->setEnabled(m_updater->hasUpdates());
 }
 
 void MainWindow::startCommit()
@@ -235,28 +181,8 @@ void MainWindow::startCommit()
     m_updaterWidget->setEnabled(false);
     QApplication::setOverrideCursor(Qt::WaitCursor);
     m_changelogWidget->animatedHide();
-    m_changelogWidget->stopPendingJobs();
 
-    m_trans = backend()->commitChanges();
-    setupTransaction(m_trans);
-    m_trans->run();
-}
-
-void MainWindow::setupTransaction(QApt::Transaction *trans)
-{
-    // Provide proxy/locale to the transaction
-    if (KProtocolManager::proxyType() == KProtocolManager::ManualProxy) {
-        trans->setProxy(KProtocolManager::proxyFor("http"));
-    }
-
-    trans->setLocale(QLatin1String(setlocale(LC_MESSAGES, 0)));
-
-    m_progressWidget->setTransaction(m_trans);
-
-    connect(m_trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
-            this, SLOT(transactionStatusChanged(QApt::TransactionStatus)));
-    connect(m_trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
-            this, SLOT(errorOccurred(QApt::ErrorCode)));
+    m_updater->updateAll();
 }
 
 void MainWindow::editSettings()
@@ -274,36 +200,6 @@ void MainWindow::closeSettingsDialog()
 {
     m_settingsDialog->deleteLater();
     m_settingsDialog = nullptr;
-}
-
-void MainWindow::showHistoryDialog()
-{
-    if (!m_historyDialog) {
-        m_historyDialog = new KDialog(this);
-
-        KConfigGroup dialogConfig(KSharedConfig::openConfig("muonrc"),
-                                  "HistoryDialog");
-        m_historyDialog->restoreDialogSize(dialogConfig);
-
-        connect(m_historyDialog, SIGNAL(finished()), SLOT(closeHistoryDialog()));
-        HistoryView *historyView = new HistoryView(m_historyDialog);
-        m_historyDialog->setMainWidget(historyView);
-        m_historyDialog->setWindowTitle(i18nc("@title:window", "Package History"));
-        m_historyDialog->setWindowIcon(KIcon("view-history"));
-        m_historyDialog->setButtons(KDialog::Close);
-        m_historyDialog->show();
-    } else {
-        m_historyDialog->raise();
-    }
-}
-
-void MainWindow::closeHistoryDialog()
-{
-    KConfigGroup dialogConfig(KSharedConfig::openConfig("muonrc"),
-                              "HistoryDialog");
-    m_historyDialog->saveDialogSize(dialogConfig, KConfigBase::Persistent);
-    m_historyDialog->deleteLater();
-    m_historyDialog = nullptr;
 }
 
 void MainWindow::checkPlugState()
@@ -330,35 +226,4 @@ void MainWindow::checkPlugState()
 void MainWindow::updatePlugState(bool plugged)
 {
     m_powerMessage->setVisible(!plugged);
-}
-
-void MainWindow::checkDistUpgrade()
-{
-    QString checkerFile = KStandardDirs::locate("data", "muon-notifier/releasechecker");
-
-    m_checkerProcess = new KProcess(this);
-    m_checkerProcess->setProgram(QStringList() << "/usr/bin/python" << checkerFile);
-    connect(m_checkerProcess, SIGNAL(finished(int)), this, SLOT(checkerFinished(int)));
-    m_checkerProcess->start();
-}
-
-void MainWindow::checkerFinished(int res)
-{
-    if (res == 0) {
-        m_distUpgradeMessage->show();
-    }
-
-    m_checkerProcess->deleteLater();
-    m_checkerProcess = nullptr;
-}
-
-void MainWindow::launchDistUpgrade()
-{
-    KProcess::startDetached(QStringList() << "python"
-                            << "/usr/share/pyshared/UpdateManager/DistUpgradeFetcherKDE.py");
-}
-
-QApt::Backend* MainWindow::backend() const
-{
-    return qobject_cast<QApt::Backend*>(m_apps->property("backend").value<QObject*>());
 }

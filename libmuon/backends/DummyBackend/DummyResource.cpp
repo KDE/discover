@@ -19,10 +19,12 @@
  ***************************************************************************/
 
 #include "DummyResource.h"
+#include <QDesktopServices>
 
 DummyResource::DummyResource(const QString& name, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
     , m_name(name)
+    , m_state(State::Broken)
 {
 }
 
@@ -111,13 +113,18 @@ AbstractResource::State DummyResource::state()
     return m_state;
 }
 
-QString DummyResource::sizeDescription()
+void DummyResource::fetchChangelog()
 {
-    return QString::number(downloadSize());
+    emit changelogFetched(QString());
 }
 
 void DummyResource::setState(AbstractResource::State state)
 {
     m_state = state;
     emit stateChanged();
+}
+void DummyResource::invokeApplication() const
+{
+    QDesktopServices d;
+    d.openUrl(QUrl("https://projects.kde.org/projects/extragear/sysadmin/muon"));
 }

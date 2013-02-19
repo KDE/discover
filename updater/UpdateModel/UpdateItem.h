@@ -27,10 +27,6 @@
 
 #include <KIcon>
 
-namespace QApt {
-class Package;
-}
-
 class AbstractResource;
 class UpdateItem
 {
@@ -69,7 +65,6 @@ public:
     ItemType type() const;
 
 private:
-    QApt::Package* retrievePackage() const;
     AbstractResource *m_app;
 
     UpdateItem *m_parent;

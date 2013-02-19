@@ -34,7 +34,6 @@ public:
 
     virtual QList<AbstractResource*> upgradeablePackages() const;
     virtual AbstractResource* resourceByPackageName(const QString& name) const;
-    virtual QList<Transaction*> transactions() const;
     virtual int updatesCount() const;
     virtual AbstractBackendUpdater* backendUpdater() const;
     virtual AbstractReviewsBackend* reviewsBackend() const;

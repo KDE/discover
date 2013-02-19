@@ -20,10 +20,12 @@
 
 #include "QAptActions.h"
 #include "MuonStrings.h"
+#include "HistoryView/HistoryView.h"
 
 // Qt includes
 #include <QtCore/QDir>
 #include <QtCore/QStringBuilder>
+#include <QDebug>
 
 // KDE includes
 #include <KAction>
@@ -35,6 +37,7 @@
 #include <KStandardAction>
 #include <KXmlGuiWindow>
 #include <Solid/Networking>
+#include <KStandardDirs>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -45,11 +48,12 @@
 #include "MuonMainWindow.h"
 
 QAptActions::QAptActions()
-    : QObject(0)
-    , m_backend(0)
+    : QObject(nullptr)
+    , m_backend(nullptr)
     , m_actionsDisabled(false)
-    , m_mainWindow(0)
+    , m_mainWindow(nullptr)
     , m_reloadWhenEditorFinished(false)
+    , m_historyDialog(nullptr)
 {
     connect(Solid::Networking::notifier(), SIGNAL(statusChanged(Solid::Networking::Status)),
             this, SLOT(networkChanged()));
@@ -64,19 +68,25 @@ QAptActions* QAptActions::self()
     return self.data();
 }
 
-void QAptActions::setMainWindow(KXmlGuiWindow* w)
+void QAptActions::setMainWindow(MuonMainWindow* w)
 {
     setParent(w);
     m_mainWindow = w;
+    connect(m_mainWindow, SIGNAL(actionsEnabledChanged(bool)), SLOT(setActionsEnabledInternal(bool)));
     setupActions();
+}
+
+MuonMainWindow* QAptActions::mainWindow() const
+{
+    return m_mainWindow;
 }
 
 void QAptActions::setBackend(QApt::Backend* backend)
 {
     m_backend = backend;
-    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
-
+    connect(m_backend, SIGNAL(packageChanged()), SLOT(setActionsEnabled()));
     setOriginalState(m_backend->currentCacheState());
+
     setReloadWhenEditorFinished(true);
     // Some actions need an initialized backend to be able to set their enabled state
     setActionsEnabled(true);
@@ -84,17 +94,6 @@ void QAptActions::setBackend(QApt::Backend* backend)
 
 void QAptActions::setupActions()
 {
-    KAction* updateAction = m_mainWindow->actionCollection()->addAction("update");
-    updateAction->setIcon(KIcon("system-software-update"));
-    updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
-    updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
-    connect(updateAction, SIGNAL(triggered()), SIGNAL(checkForUpdates()));
-    if (!isConnected()) {
-        updateAction->setDisabled(true);
-    }
-    connect(this, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
-
-
     KAction* undoAction = KStandardAction::undo(this, SLOT(undo()), actionCollection());
     actionCollection()->addAction("undo", undoAction);
 
@@ -144,35 +143,43 @@ void QAptActions::setupActions()
     saveInstalledAction->setIcon(KIcon("document-save-as"));
     saveInstalledAction->setText(i18nc("@action", "Save Installed Packages List..."));
     connect(saveInstalledAction, SIGNAL(triggered()), this, SLOT(saveInstalledPackagesList()));
+    
+    KAction* historyAction = actionCollection()->addAction("history");
+    historyAction->setIcon(KIcon("view-history"));
+    historyAction->setText(i18nc("@action::inmenu", "History..."));
+    historyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_H));
+    connect(historyAction, SIGNAL(triggered()), this, SLOT(showHistoryDialog()));
+
+    KAction *distUpgradeAction = actionCollection()->addAction("dist-upgrade");
+    distUpgradeAction->setIcon(KIcon("system-software-update"));
+    distUpgradeAction->setText(i18nc("@action", "Upgrade"));
+    distUpgradeAction->setPriority(QAction::HighPriority);
+    distUpgradeAction->setWhatsThis(i18nc("Notification when a new version of Kubuntu is available",
+                                        "A new version of Kubuntu is available."));
+    distUpgradeAction->setEnabled(false);
+    connect(distUpgradeAction, SIGNAL(triggered(bool)), SLOT(launchDistUpgrade()));
+    checkDistUpgrade();
 }
 
-void QAptActions::setActionsEnabled(bool enabled)
+void QAptActions::setActionsEnabledInternal(bool enabled)
 {
     m_actionsDisabled = !enabled;
-    for (int i = 0; i < actionCollection()->count(); ++i) {
-        QAction* a=actionCollection()->action(i);
-        //FIXME: Better solution? (en/dis)abling all actions at once is dangerous...
-        //We should make it happen only for actions provided by QApt
-        if(QByteArray(a->metaObject()->className())!="DiscoverAction")
-            a->setEnabled(enabled);
-    }
-
     if (!enabled)
         return;
 
     actionCollection()->action("update")->setEnabled(isConnected() && enabled);
 
-    actionCollection()->action("undo")->setEnabled(!m_backend->isUndoStackEmpty());
-    actionCollection()->action("redo")->setEnabled(!m_backend->isRedoStackEmpty());
-    actionCollection()->action("revert")->setEnabled(!m_backend->isUndoStackEmpty());
+    actionCollection()->action("undo")->setEnabled(m_backend && !m_backend->isUndoStackEmpty());
+    actionCollection()->action("redo")->setEnabled(m_backend && !m_backend->isRedoStackEmpty());
+    actionCollection()->action("revert")->setEnabled(m_backend && !m_backend->isUndoStackEmpty());
     
     actionCollection()->action("save_download_list")->setEnabled(isConnected());
 
-    bool changesPending = m_backend->areChangesMarked();
-    actionCollection()->action("open_markings")->setEnabled(true);
+    bool changesPending = m_backend && m_backend->areChangesMarked();
     actionCollection()->action("save_markings")->setEnabled(changesPending);
     actionCollection()->action("save_download_list")->setEnabled(changesPending);
-    actionCollection()->action("save_package_list")->setEnabled(true);
+    actionCollection()->action("dist-upgrade")->setEnabled(false);
+    checkDistUpgrade();
 }
 
 bool QAptActions::isConnected() const {
@@ -181,7 +188,6 @@ bool QAptActions::isConnected() const {
                       (status == Solid::Networking::Unknown));
     return connected;
 }
-
 
 void QAptActions::networkChanged()
 {
@@ -389,7 +395,7 @@ void QAptActions::sourcesEditorFinished(int exitStatus)
     bool reload = (exitStatus == 0);
     m_mainWindow->find(m_mainWindow->effectiveWinId())->setEnabled(true);
     if (m_reloadWhenEditorFinished && reload) {
-        emit checkForUpdates();
+        actionCollection()->action("update")->trigger();
     }
 
     emit sourcesEditorClosed(reload);
@@ -421,4 +427,91 @@ void QAptActions::initError()
 
     KMessageBox::detailedError(m_mainWindow, text, details, title);
     exit(-1);
+}
+
+void QAptActions::displayTransactionError(QApt::ErrorCode error, QApt::Transaction* trans)
+{
+    if (error == QApt::Success)
+        return;
+
+    MuonStrings *muonStrings = MuonStrings::global();
+
+    QString title = muonStrings->errorTitle(error);
+    QString text = muonStrings->errorText(error, trans);
+
+    switch (error) {
+        case QApt::InitError:
+        case QApt::FetchError:
+        case QApt::CommitError:
+            KMessageBox::detailedError(QAptActions::self()->mainWindow(), text, trans->errorDetails(), title);
+            break;
+        default:
+            KMessageBox::error(QAptActions::self()->mainWindow(), text, title);
+            break;
+    }
+}
+
+void QAptActions::showHistoryDialog()
+{
+    if (!m_historyDialog) {
+        m_historyDialog = new KDialog(mainWindow());
+
+        KConfigGroup dialogConfig(KSharedConfig::openConfig("muonrc"),
+                                  "HistoryDialog");
+        m_historyDialog->restoreDialogSize(dialogConfig);
+
+        connect(m_historyDialog, SIGNAL(finished()), SLOT(closeHistoryDialog()));
+        HistoryView *historyView = new HistoryView(m_historyDialog);
+        m_historyDialog->setMainWidget(historyView);
+        m_historyDialog->setWindowTitle(i18nc("@title:window", "Package History"));
+        m_historyDialog->setWindowIcon(KIcon("view-history"));
+        m_historyDialog->setButtons(KDialog::Close);
+        m_historyDialog->show();
+    } else {
+        m_historyDialog->raise();
+    }
+}
+
+void QAptActions::closeHistoryDialog()
+{
+    KConfigGroup dialogConfig(KSharedConfig::openConfig("muonrc"), "HistoryDialog");
+    m_historyDialog->saveDialogSize(dialogConfig, KConfigBase::Persistent);
+    m_historyDialog->deleteLater();
+    m_historyDialog = nullptr;
+}
+
+void QAptActions::setActionsEnabled(bool enabled)
+{
+    if(m_mainWindow)
+        m_mainWindow->setActionsEnabled(enabled);
+    else
+        setActionsEnabledInternal(enabled);
+}
+
+void QAptActions::launchDistUpgrade()
+{
+    KProcess::startDetached(QStringList() << "python"
+                            << "/usr/lib/python3/dist-packages/DistUpgrade/DistUpgradeFetcherKDE.py");
+}
+
+void QAptActions::checkDistUpgrade()
+{
+    if(!QFile::exists("/usr/lib/python3/dist-packages/DistUpgrade/DistUpgradeFetcherKDE.py")) {
+        qWarning() << "Couldn't find the /usr/lib/python3/dist-packages/DistUpgrade/DistUpgradeFetcherKDE.py file";
+    }
+    QString checkerFile = KStandardDirs::locate("data", "muon-notifier/releasechecker");
+    if(checkerFile.isEmpty()) {
+        qWarning() << "Couldn't find the releasechecker script";
+    }
+
+    KProcess* checkerProcess = new KProcess(this);
+    checkerProcess->setProgram(QStringList() << "/usr/bin/python" << checkerFile);
+    connect(checkerProcess, SIGNAL(finished(int)), this, SLOT(checkerFinished(int)));
+    connect(checkerProcess, SIGNAL(finished(int)), checkerProcess, SLOT(deleteLater()));
+    checkerProcess->start();
+}
+
+void QAptActions::checkerFinished(int res)
+{
+    QAptActions::self()->actionCollection()->action("dist-upgrade")->setEnabled(res == 0);
 }

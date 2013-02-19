@@ -31,6 +31,7 @@
 
 // Own includes
 #include "UpdateItem.h"
+#include <resources/AbstractResource.h>
 
 #define ICON_SIZE KIconLoader::SizeSmallMedium
 
@@ -247,4 +248,49 @@ void UpdateModel::packageChanged()
 {
     // We don't know what changed or not, so say everything changed
     emit dataChanged(index(0, 0), QModelIndex());
+}
+
+void UpdateModel::addResources(const QList< AbstractResource* >& resources)
+{
+    UpdateItem *securityItem = new UpdateItem(i18nc("@item:inlistbox", "Important Security Updates"),
+                                              KIcon("security-medium"));
+
+    UpdateItem *appItem = new UpdateItem(i18nc("@item:inlistbox", "Application Updates"),
+                                          KIcon("applications-other"));
+
+    UpdateItem *systemItem = new UpdateItem(i18nc("@item:inlistbox", "System Updates"),
+                                             KIcon("applications-system"));
+
+    foreach(AbstractResource* res, resources) {
+        UpdateItem *updateItem = new UpdateItem(res);
+        if (res->isSecure()) {
+            securityItem->appendChild(updateItem);
+        } else if(!res->isTechnical()) {
+            appItem->appendChild(updateItem);
+        } else {
+            systemItem->appendChild(updateItem);
+        }
+    }
+
+    // Add populated items to the model
+    if (securityItem->childCount()) {
+        securityItem->sort();
+        addItem(securityItem);
+    } else {
+        delete securityItem;
+    }
+
+    if (appItem->childCount()) {
+        appItem->sort();
+        addItem(appItem);
+    } else {
+        delete appItem;
+    }
+
+    if (systemItem->childCount()) {
+        systemItem->sort();
+        addItem(systemItem);
+    } else {
+        delete systemItem;
+    }
 }

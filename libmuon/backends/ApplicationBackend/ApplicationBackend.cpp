@@ -37,6 +37,8 @@
 #include <KIO/Job>
 #include <KDebug>
 #include <KAboutData>
+#include <KAction>
+#include <KActionCollection>
 
 // LibQApt/DebconfKDE includes
 #include <LibQApt/Backend>
@@ -80,7 +82,6 @@ ApplicationBackend::ApplicationBackend(QObject* parent, const QVariantList& )
     connect(this, SIGNAL(reloadFinished()), SIGNAL(updatesCountChanged()));
     connect(this, SIGNAL(backendReady()), SIGNAL(updatesCountChanged()));
     connect(m_reviewsBackend, SIGNAL(ratingsReady()), SIGNAL(allDataChanged()));
-    connect(m_backendUpdater, SIGNAL(updatesFinnished()), SLOT(reload()));
     
     QTimer::singleShot(10, this, SLOT(initBackend()));
 }
@@ -95,9 +96,6 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
     QVector<Application *> appList;
     QDir appDir("/usr/share/app-install/desktop/");
     QStringList fileList = appDir.entryList(QStringList("*.desktop"), QDir::Files);
-
-    QStringList pkgBlacklist;
-    pkgBlacklist << "kde-runtime" << "kdepim-runtime" << "kdelibs5-plugins" << "kdelibs5-data";
 
     QList<Application *> tempList;
     QSet<QString> packages;
@@ -126,12 +124,10 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
     for (Application *app : tempList) {
         bool added = false;
         QApt::Package *pkg = app->package();
-        if (app->isValid()) {
-            if ((pkg) && !pkgBlacklist.contains(pkg->name())) {
-                appList << app;
-                app->moveToThread(thread);
-                added = true;
-            }
+        if (app->isValid() && pkg) {
+            appList << app;
+            app->moveToThread(thread);
+            added = true;
         }
 
         if(!added)
@@ -279,7 +275,7 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error)
     if (m_transQueue.isEmpty()) // Shouldn't happen
         return;
 
-    emit errorSignal(error, m_transQueue.value(m_currentTransaction)->errorDetails());
+    QAptActions::self()->displayTransactionError(error, m_transQueue.value(m_currentTransaction));
 }
 
 void ApplicationBackend::updateProgress(int percentage)
@@ -296,9 +292,10 @@ bool ApplicationBackend::confirmRemoval(QApt::StateChanges changes)
     QApt::StateChanges removals;
     removals[QApt::Package::ToRemove] = removeList;
 
-    ChangesDialog *dialog = new ChangesDialog(0, removals);
-
-    return (dialog->exec() == QDialog::Accepted);
+    QPointer<ChangesDialog> dialog = new ChangesDialog(mainWindow(), removals);
+    bool ret = dialog->exec() == QDialog::Accepted;
+    delete dialog;
+    return ret;
 }
 
 void ApplicationBackend::markTransaction(Transaction *transaction)
@@ -517,7 +514,19 @@ void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
         apt->setBackend(m_backend);
     else
         connect(this, SIGNAL(aptBackendInitialized(QApt::Backend*)), apt, SLOT(setBackend(QApt::Backend*)));
-    connect(apt, SIGNAL(sourcesEditorClosed(bool)), SLOT(reload()));
+
+    KAction* updateAction = w->actionCollection()->addAction("update");
+    updateAction->setIcon(KIcon("system-software-update"));
+    updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
+    updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
+    updateAction->setEnabled(w->isConnected());
+    connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
+    connect(w, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
+}
+
+QWidget* ApplicationBackend::mainWindow() const
+{
+    return QAptActions::self()->mainWindow();
 }
 
 void ApplicationBackend::initBackend()
@@ -592,4 +601,22 @@ void ApplicationBackend::initAvailablePackages(KJob* j)
             a->setHasScreenshot(packages.contains(a->packageName()));
         }
     }
+}
+
+QList< AbstractResource* > ApplicationBackend::upgradeablePackages() const
+{
+    QList<AbstractResource*> ret;
+    foreach(AbstractResource* r, m_appList) {
+        if(r->state()==AbstractResource::Upgradeable)
+            ret+=r;
+    }
+    return ret;
+}
+
+void ApplicationBackend::checkForUpdates()
+{
+    QApt::Transaction* transaction = backend()->updateCache();
+    m_backendUpdater->setupTransaction(transaction);
+    transaction->run();
+
 }

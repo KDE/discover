@@ -65,9 +65,7 @@ signals:
     void lastTransactionFinished();
     void transactionAdded(Transaction *trans);
     void transactionCancelled(Transaction *trans);
-    
-public slots:
-    
+    void transactionRemoved(Transaction* trans);
 
 private slots:
     void transactionChanged();

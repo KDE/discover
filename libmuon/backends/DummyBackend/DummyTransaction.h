@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,45 +18,23 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef CHANGELOGWIDGET_H
-#define CHANGELOGWIDGET_H
+#ifndef DUMMYTRANSACTION_H
+#define DUMMYTRANSACTION_H
 
-#include <QtCore/QSet>
-#include <QtGui/QWidget>
+#include <Transaction/Transaction.h>
 
-class AbstractResource;
-class QParallelAnimationGroup;
-
-class KJob;
-class KPixmapSequenceOverlayPainter;
-class KTemporaryFile;
-class KTextBrowser;
-
-class ChangelogWidget : public QWidget
+class DummyResource;
+class DummyTransaction : public Transaction
 {
     Q_OBJECT
-public:
-    explicit ChangelogWidget(QWidget *parent = 0);
+    public:
+        explicit DummyTransaction(DummyResource* app, Role role);
 
-private:
-    AbstractResource *m_package;
-    QString m_jobFileName;
-    bool m_show;
+    private slots:
+        void finishTransaction();
 
-    QParallelAnimationGroup *m_expandWidget;
-    KTextBrowser *m_changelogBrowser;
-    KPixmapSequenceOverlayPainter *m_busyWidget;
-
-    QString buildDescription(const QByteArray& data, const QString& source);
-
-public Q_SLOTS:
-    void setResource(AbstractResource *package);
-    void show();
-    void animatedHide();
-
-private Q_SLOTS:
-    void fetchChangelog();
-    void changelogFetched(const QString& changelog);
+    private:
+        DummyResource* m_app;
 };
 
-#endif
+#endif // DUMMYTRANSACTION_H

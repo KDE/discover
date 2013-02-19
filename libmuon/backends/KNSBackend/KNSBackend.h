@@ -35,7 +35,6 @@
 #include "libmuonprivate_export.h"
 
 class KConfigGroup;
-class KNSUpdater;
 class KNSReviews;
 namespace KNS3 { class DownloadManager; }
 namespace Attica {
@@ -65,7 +64,7 @@ public:
     bool isValid() const;
     bool isFetching() const;
     Attica::Provider* provider() { return &m_provider; }
-    QList<AbstractResource*> upgradeablePackages();
+    QList<AbstractResource*> upgradeablePackages() const;
 
 public slots:
     void receivedEntries(const KNS3::Entry::List& entry);
@@ -88,7 +87,7 @@ private:
     QString m_name;
     bool m_fetching;
     QString m_iconName;
-    KNSUpdater* m_updater;
+    AbstractBackendUpdater* m_updater;
 };
 
 #endif // KNSBACKEND_H

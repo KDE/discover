@@ -21,8 +21,6 @@
 #include "KNSResource.h"
 #include "KNSBackend.h"
 #include <QDebug>
-#include <KGlobal>
-#include <KLocale>
 
 KNSResource::KNSResource(const Attica::Content& c, const QString& category, const QString& icon, KNSBackend* parent)
     : AbstractResource(parent)
@@ -133,9 +131,9 @@ QString KNSResource::license()
     return m_content.licenseName();
 }
 
-QString KNSResource::sizeDescription()
+int KNSResource::downloadSize()
 {
-    return KGlobal::locale()->formatByteSize(m_content.downloadUrlDescription(0).size());
+    return m_content.downloadUrlDescription(0).size();
 }
 
 QString KNSResource::installedVersion() const
@@ -170,4 +168,9 @@ void KNSResource::fetchScreenshots()
         }
     }
     emit screenshotsFetched(thumbnails, screenshots);
+}
+
+void KNSResource::fetchChangelog()
+{
+    emit changelogFetched(m_content.changelog());
 }

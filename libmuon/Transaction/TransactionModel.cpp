@@ -201,6 +201,7 @@ bool TransactionModel::removeRows(int row, int count, const QModelIndex &parent)
         beginRemoveRows(parent, row, row);
         m_transactions.removeAll(trans);
         endRemoveRows();
+        emit transactionRemoved(trans);
         success = true;
     }
 

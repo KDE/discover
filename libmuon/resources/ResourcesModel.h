@@ -60,8 +60,6 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
         virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
         
-        void addResourcesBackend(AbstractResourcesBackend* backend);
-        
         AbstractResource* resourceAt(int row) const;
         QModelIndex resourceIndex(AbstractResource* res) const;
         QVector< AbstractResourcesBackend* > backends() const;
@@ -69,7 +67,9 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         virtual QMap< int, QVariant > itemData(const QModelIndex& index) const;
         
         Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name);
-        
+
+        void registerBackendByName(const QString& name);
+        void registerAllBackends();
         void integrateMainWindow(MuonMainWindow* w);
 
     public slots:
@@ -79,6 +79,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         void cancelTransaction(AbstractResource* app);
 
     signals:
+        void allInitialized();
         void backendsChanged();
         void updatesCountChanged();
         void searchInvalidated();
@@ -91,9 +92,11 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
 
     private:
         explicit ResourcesModel(QObject* parent=0);
+        void addResourcesBackend(AbstractResourcesBackend* resources);
 
         QVector< AbstractResourcesBackend* > m_backends;
         QVector< QVector<AbstractResource*> > m_resources;
+        int m_initializingBackends;
         MuonMainWindow* m_mainwindow;
 
         static ResourcesModel* s_self;

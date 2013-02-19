@@ -24,25 +24,58 @@
 #include <QObject>
 #include "libmuonprivate_export.h"
 
+class QAction;
+class QDateTime;
 class QIcon;
+class AbstractResource;
 class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(qreal progress READ progress NOTIFY progressChanged)
+    Q_PROPERTY(bool isCancelable READ isCancelable NOTIFY cancelableChanged)
+    Q_PROPERTY(bool isProgressing READ isProgressing NOTIFY progressingChanged)
+    Q_PROPERTY(QString statusMessage READ statusMessage NOTIFY statusMessageChanged)
+    Q_PROPERTY(QString statusDetail READ statusDetail NOTIFY statusDetailChanged)
+    Q_PROPERTY(quint64 downloadSpeed READ downloadSpeed NOTIFY downloadSpeedChanged)
     public:
         explicit AbstractBackendUpdater(QObject* parent = 0);
+        
+        virtual void prepare() = 0;
         virtual void start() = 0;
+        
         virtual bool hasUpdates() const = 0;
         virtual qreal progress() const = 0;
         
         /** proposed ETA in milliseconds */
         virtual long unsigned int remainingTime() const = 0;
+        
+        virtual void removeResources(const QList<AbstractResource*>& apps) = 0;
+        virtual void addResources(const QList<AbstractResource*>& apps) = 0;
+        virtual QList<AbstractResource*> toUpdate() const = 0;
+        virtual QDateTime lastUpdate() const = 0;
+        virtual bool isAllMarked() const = 0;
+        virtual bool isCancelable() const = 0;
+        virtual bool isProgressing() const = 0;
+        
+        virtual QString statusMessage() const = 0;
+        virtual QString statusDetail() const = 0;
+        virtual quint64 downloadSpeed() const = 0;
+
+        virtual QList<QAction*> messageActions() const = 0;
+
+    public slots:
+        ///must be implemented if ever isCancelable is true
+        virtual void cancel();
 
     signals:
         void progressChanged(qreal progress);
-        void message(const QIcon& icon, const QString& msg);
-        void updatesFinnished();
         void remainingTimeChanged();
+        void cancelableChanged(bool cancelable);
+        void progressingChanged(bool progressing);
+        void statusDetailChanged(const QString& msg);
+        void statusMessageChanged(const QString& msg);
+        void downloadSpeedChanged(quint64);
 };
 
 #endif // ABSTRACTBACKENDUPDATER_H
+

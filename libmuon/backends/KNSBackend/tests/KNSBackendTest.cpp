@@ -24,7 +24,6 @@
 #include <resources/ResourcesModel.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/Rating.h>
-#include <MuonBackendsFactory.h>
 
 #include <qtest_kde.h>
 
@@ -36,9 +35,7 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
 {
     ResourcesModel* model = ResourcesModel::global();
 
-    MuonBackendsFactory f;
-    m_backend = f.backend("muon-knsbackend-plasmoids");
-    model->addResourcesBackend(m_backend);
+    model->registerBackendByName("muon-knsbackend-plasmoids");
     QTest::kWaitForSignal(m_backend, SIGNAL(backendReady()));
     connect(m_backend->reviewsBackend(), SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
             SLOT(reviewsArrived(AbstractResource*,QList<Review*>)));

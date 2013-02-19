@@ -23,6 +23,7 @@
 // Qt includes
 #include <QStandardItemModel>
 #include <QtCore/QDir>
+#include <QDateTime>
 #include <QtGui/QApplication>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
@@ -39,15 +40,12 @@
 #include <KDebug>
 #include <KMessageWidget>
 
-// LibQApt includes
-#include <LibQApt/Backend>
-
 // Libmuon includes
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/AbstractResource.h>
-
-//libmuonapt includes
-#include "../libmuonapt/ChangesDialog.h"
+#include <resources/AbstractBackendUpdater.h>
+#include <resources/ResourcesUpdatesModel.h>
+// #include <resources/ResourcesModel.h>
 
 // Own includes
 #include "UpdateModel/UpdateModel.h"
@@ -132,147 +130,58 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     setCurrentWidget(page1);
 }
 
-void UpdaterWidget::setBackend(AbstractResourcesBackend *backend)
+void UpdaterWidget::setBackend(ResourcesUpdatesModel *updates)
 {
-    m_appsBackend = backend;
-    m_backend = qobject_cast<QApt::Backend*>(backend->property("backend").value<QObject*>());
-    connect(m_backend, SIGNAL(packageChanged()),
-            m_updateModel, SLOT(packageChanged()));
+    m_updatesBackends = updates;
+    connect(m_updatesBackends, SIGNAL(progressingChanged()), SLOT(activityChanged()));
+//     connect(ResourcesModel::global(), SIGNAL(allInitialized()), SLOT(populateUpdateModel()));
 
     populateUpdateModel();
+    setEnabled(true);
 }
 
-void UpdaterWidget::reload()
+void UpdaterWidget::activityChanged()
 {
-    m_updateModel->clear();
-    QMetaObject::invokeMethod(m_appsBackend, "reload");
-
-    setCurrentIndex(0);
-    populateUpdateModel();
+    if(m_updatesBackends->isProgressing()) {
+        m_busyWidget->start();
+        setEnabled(false);
+        setCurrentIndex(-1);
+    } else {
+        populateUpdateModel();
+    }
 }
 
 void UpdaterWidget::populateUpdateModel()
 {
-    if (m_appsBackend->updatesCount()==0) {
-        QApplication::restoreOverrideCursor();
-        m_busyWidget->stop();
+    m_busyWidget->stop();
+    QApplication::restoreOverrideCursor();
+    setEnabled(true);
+    if (!m_updatesBackends->hasUpdates()) {
         checkUpToDate();
         return;
     }
-
-    UpdateItem *securityItem = new UpdateItem(i18nc("@item:inlistbox", "Important Security Updates"),
-                                              KIcon("security-medium"));
-
-    UpdateItem *appItem = new UpdateItem(i18nc("@item:inlistbox", "Application Updates"),
-                                          KIcon("applications-other"));
-
-    UpdateItem *systemItem = new UpdateItem(i18nc("@item:inlistbox", "System Updates"),
-                                             KIcon("applications-system"));
-    
-    QVector<AbstractResource*> resources = m_appsBackend->allResources();
-    foreach(AbstractResource* res, resources) {
-        if(res->state()==AbstractResource::Upgradeable) {
-            UpdateItem *updateItem = new UpdateItem(res);
-            QApt::Package* package = retrievePackage(res);
-
-            if (!package) {
-                kDebug() << "No package:" << res->name();
-                continue;
-            }
-            
-            bool securityFound = false;
-            for (const QString &archive : package->archives()) {
-                if (archive.contains(QLatin1String("security"))) {
-                    securityFound = true;
-                    break;
-                }
-            }
-            
-            if(!res->isTechnical()) {
-                if (securityFound) {
-                    securityItem->appendChild(updateItem);
-                } else {
-                    appItem->appendChild(updateItem);
-                }
-            } else {
-                if (securityFound) {
-                    securityItem->appendChild(updateItem);
-                } else {
-                    systemItem->appendChild(updateItem);
-                }
-            }
-        }
-    }
-
-    // Add populated items to the model
-    if (securityItem->childCount()) {
-        securityItem->sort();
-        m_updateModel->addItem(securityItem);
-    } else {
-        delete securityItem;
-    }
-
-    if (appItem->childCount()) {
-        appItem->sort();
-        m_updateModel->addItem(appItem);
-    } else {
-        delete appItem;
-    }
-
-    if (systemItem->childCount()) {
-        systemItem->sort();
-        m_updateModel->addItem(systemItem);
-    } else {
-        delete systemItem;
-    }
+    m_updatesBackends->prepare();
+    m_updateModel->clear();
+    m_updateModel->addResources(m_updatesBackends->toUpdate());
 
     m_updateView->expand(m_updateModel->index(0,0)); // Expand apps category
     m_updateView->resizeColumnToContents(0);
     m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
-    m_busyWidget->stop();
-    QApplication::restoreOverrideCursor();
-    m_backend->markPackagesForUpgrade();
 
     checkAllMarked();
     checkUpToDate();
 }
 
-void UpdaterWidget::checkApps(QList<AbstractResource*> apps, bool checked)
+void UpdaterWidget::checkApps(const QList<AbstractResource*>& apps, bool checked)
 {
-    QApt::PackageList list;
-    foreach (AbstractResource *app, apps) {
-        list << retrievePackage(app);
-    }
-
-    QApt::Package::State action = checked ? QApt::Package::ToInstall : QApt::Package::ToKeep;
-
-    if (list.size() > 1) {
+    if (apps.size() > 1) {
         QApplication::setOverrideCursor(Qt::WaitCursor);
     }
-
-    m_oldCacheState = m_backend->currentCacheState();
-    m_backend->saveCacheState();
-    m_backend->markPackages(list, action);
-
-    // Check for removals
-    auto changes = m_backend->stateChanges(m_oldCacheState, list);
-
-    checkChanges(changes);
-
+    if(checked)
+        m_updatesBackends->addResources(apps);
+    else
+        m_updatesBackends->removeResources(apps);
     QApplication::restoreOverrideCursor();
-}
-
-void UpdaterWidget::checkChanges(const QHash<QApt::Package::State, QApt::PackageList> &changes)
-{
-    if (changes.isEmpty()) {
-        return;
-    }
-
-    ChangesDialog *dialog = new ChangesDialog(this, changes);
-    int res = dialog->exec();
-
-    if (res != QDialog::Accepted)
-        m_backend->restoreCacheState(m_oldCacheState);
 }
 
 void UpdaterWidget::selectionChanged(const QItemSelection &selected,
@@ -281,42 +190,31 @@ void UpdaterWidget::selectionChanged(const QItemSelection &selected,
     Q_UNUSED(deselected);
 
     QModelIndexList indexes = selected.indexes();
-    QApt::Package *package = 0;
+    AbstractResource *res = 0;
 
     if (!indexes.isEmpty()) {
-        package = retrievePackage(m_updateModel->itemFromIndex(indexes.first())->app());
+        res = m_updateModel->itemFromIndex(indexes.first())->app();
     }
 
-    emit selectedPackageChanged(package);
+    emit selectedResourceChanged(res);
 }
 
 void UpdaterWidget::checkAllMarked()
 {
-    QApt::PackageList upgradeable = m_backend->upgradeablePackages();
-    int markedCount = m_backend->packageCount(QApt::Package::ToUpgrade);
-
-    m_upgradesWidget->setVisible(markedCount < upgradeable.count());
+    m_upgradesWidget->setVisible(!m_updatesBackends->isAllMarked());
 }
 
 void UpdaterWidget::markAllPackagesForUpgrade()
 {
-    QApt::PackageList upgradeable = m_backend->upgradeablePackages();
-
-    // Mark dist upgrade
-    m_oldCacheState = m_backend->currentCacheState();
-    m_backend->saveCacheState();
-    m_backend->markPackagesForDistUpgrade();
-
-    checkChanges(m_backend->stateChanges(m_oldCacheState, upgradeable));
-
+    m_updatesBackends->prepare();
     m_upgradesWidget->hide();
 }
 
 void UpdaterWidget::checkUpToDate()
 {
-    if(m_backend->upgradeablePackages().isEmpty()) {
+    if(!m_updatesBackends->hasUpdates()) {
         setCurrentIndex(1);
-        QDateTime lastUpdate = m_backend->timeCacheLastUpdated();
+        QDateTime lastUpdate = m_updatesBackends->lastUpdate();
 
         // Unknown time since last update
         if (!lastUpdate.isValid()) {
@@ -351,7 +249,3 @@ void UpdaterWidget::checkUpToDate()
     }
 }
 
-QApt::Package* UpdaterWidget::retrievePackage(AbstractResource* res)
-{
-    return res ? m_backend->package(res->packageName()) : 0;
-}

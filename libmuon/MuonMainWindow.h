@@ -48,10 +48,11 @@ public:
     MuonMainWindow();
 
     QSize sizeHint() const;
-    bool isConnected();
+    bool isConnected() const;
 
 Q_SIGNALS:
     void shouldConnect(bool isConnected);
+    void actionsEnabledChanged(bool enabled);
 
 protected slots:
     bool queryExit();
@@ -60,6 +61,7 @@ protected slots:
 public slots:
     void easterEggTriggered();
     void setCanExit(bool canExit);
+    virtual void setActionsEnabled(bool enabled=true);
 
 private:
     bool m_canExit;

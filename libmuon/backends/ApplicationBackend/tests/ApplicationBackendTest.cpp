@@ -37,9 +37,7 @@ ApplicationBackendTest::ApplicationBackendTest()
     ResourcesModel* m = ResourcesModel::global();
     new ModelTest(m,m);
 
-    MuonBackendsFactory f;
-    m_appBackend = f.backend("muon-appsbackend");
-    m->addResourcesBackend(m_appBackend);
+    m->registerBackendByName("muon-appsbackend");
     QVERIFY(m_appBackend); //TODO: test all backends
     QTest::kWaitForSignal(m_appBackend, SIGNAL(backendReady()));
 }

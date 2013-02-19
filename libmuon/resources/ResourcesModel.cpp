@@ -21,12 +21,14 @@
 #include "ResourcesModel.h"
 
 #include <KGlobal>
+#include <KDebug>
 
 #include "AbstractResource.h"
 #include "resources/AbstractResourcesBackend.h"
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <Transaction/Transaction.h>
+#include <MuonBackendsFactory.h>
 #include <MuonMainWindow.h>
 #include "Transaction/TransactionModel.h"
 #include <QDebug>
@@ -46,6 +48,7 @@ ResourcesModel *ResourcesModel::global()
 
 ResourcesModel::ResourcesModel(QObject* parent)
     : QAbstractListModel(parent)
+    , m_initializingBackends(0)
     , m_mainwindow(0)
 {
     Q_ASSERT(!s_self);
@@ -193,6 +196,7 @@ int ResourcesModel::rowCount(const QModelIndex& parent) const
 
 void ResourcesModel::cleanCaller()
 {
+    m_initializingBackends++;
     AbstractResourcesBackend* backend = qobject_cast<AbstractResourcesBackend*>(sender());
     Q_ASSERT(backend);
     int pos = m_backends.indexOf(backend);
@@ -235,6 +239,9 @@ void ResourcesModel::resetCaller()
         endInsertRows();
         emit updatesCountChanged();
     }
+    m_initializingBackends--;
+    if(m_initializingBackends==0)
+        emit allInitialized();
 }
 
 void ResourcesModel::updateCaller()
@@ -318,6 +325,28 @@ QMap<int, QVariant> ResourcesModel::itemData(const QModelIndex& index) const
     return ret;
 }
 
+void ResourcesModel::registerAllBackends()
+{
+    MuonBackendsFactory f;
+    m_initializingBackends += f.backendsCount();
+    if(m_initializingBackends==0) {
+        kWarning() << "Couldn't find any backends";
+        emit allInitialized();
+    } else {
+        QList<AbstractResourcesBackend*> backends = f.allBackends();
+        foreach(AbstractResourcesBackend* b, backends) {
+            addResourcesBackend(b);
+        }
+    }
+}
+
+void ResourcesModel::registerBackendByName(const QString& name)
+{
+    MuonBackendsFactory f;
+    addResourcesBackend(f.backend(name));
+    m_initializingBackends++;
+}
+
 void ResourcesModel::integrateMainWindow(MuonMainWindow* w)
 {
     Q_ASSERT(w->thread()==thread());
@@ -327,3 +356,4 @@ void ResourcesModel::integrateMainWindow(MuonMainWindow* w)
         b->integrateMainWindow(w);
     }
 }
+

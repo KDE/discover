@@ -59,7 +59,6 @@
 #include <resources/ResourcesModel.h>
 #include <Transaction/TransactionModel.h>
 #include <Category/Category.h>
-#include <MuonBackendsFactory.h>
 
 Q_DECLARE_METATYPE(ResourcesModel*)
 Q_DECLARE_METATYPE(TransactionModel*)
@@ -123,12 +122,7 @@ void MuonDiscoverMainWindow::initialize()
 {
     ResourcesModel *m = ResourcesModel::global();
 
-    MuonBackendsFactory factory;
-    QList<AbstractResourcesBackend*> backends = factory.allBackends();
-
-    foreach(AbstractResourcesBackend* b, backends) {
-        m->addResourcesBackend(b);
-    }
+    m->registerAllBackends();
     m->integrateMainWindow(this);
 }
 
