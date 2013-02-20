@@ -542,7 +542,7 @@ QStringList Application::executables() const
     return ret;
 }
 
-bool Application::isSecure() const
+bool Application::isFromSecureOrigin() const
 {
     for (const QString &archive : m_package->archives()) {
         if (archive.contains(QLatin1String("security"))) {

@@ -91,7 +91,7 @@ public:
     virtual void fetchScreenshots();
     virtual void fetchChangelog();
     
-    bool isSecure() const;
+    bool isFromSecureOrigin() const;
 
 private slots:
     void processChangelog(KJob*);

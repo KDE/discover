@@ -263,7 +263,7 @@ void UpdateModel::addResources(const QList< AbstractResource* >& resources)
 
     foreach(AbstractResource* res, resources) {
         UpdateItem *updateItem = new UpdateItem(res);
-        if (res->isSecure()) {
+        if (res->isFromSecureOrigin()) {
             securityItem->appendChild(updateItem);
         } else if(!res->isTechnical()) {
             appItem->appendChild(updateItem);

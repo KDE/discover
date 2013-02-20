@@ -111,7 +111,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         virtual QString mimetypes() const;
         
         virtual QList<PackageState> addonsInformation() = 0;
-        bool isSecure() const;
+        bool isFromSecureOrigin() const;
         
         virtual QStringList executables() const;
 

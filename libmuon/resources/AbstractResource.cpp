@@ -88,7 +88,7 @@ QString AbstractResource::status()
     return QString();
 }
 
-bool AbstractResource::isSecure() const
+bool AbstractResource::isFromSecureOrigin() const
 {
     return false;
 }
