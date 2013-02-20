@@ -83,7 +83,7 @@ ResourcesModel::ResourcesModel(QObject* parent, bool load)
 }
 
 ResourcesModel::ResourcesModel(const QString& backendName, QObject* parent)
-    : ResourcesModel(parent)
+    : ResourcesModel(parent, false)
 {
     Q_ASSERT(!s_self);
     s_self = this;
