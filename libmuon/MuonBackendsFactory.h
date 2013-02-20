@@ -20,8 +20,8 @@
 
 #ifndef MUONBACKENDSFACTORY_H
 #define MUONBACKENDSFACTORY_H
-#include <QList>
 #include "libmuonprivate_export.h"
+#include <QList>
 
 class KPluginInfo;
 class AbstractResourcesBackend;
@@ -30,12 +30,13 @@ class MUONPRIVATE_EXPORT MuonBackendsFactory
 public:
     MuonBackendsFactory();
     
-    AbstractResourcesBackend* backend(const QString& name);
-    QList<AbstractResourcesBackend*> allBackends();
+    AbstractResourcesBackend* backend(const QString& name) const;
+    QList<AbstractResourcesBackend*> allBackends() const;
     int backendsCount() const;
     
 private:
-    AbstractResourcesBackend* backendForPlugin(const KPluginInfo& info);
+    AbstractResourcesBackend* backendForPlugin(const KPluginInfo& info) const;
+    QSet<QString> fetchBackendsWhitelist() const;
 };
 
 #endif // MUONBACKENDSFACTORY_H

@@ -41,7 +41,9 @@ int main(int argc, char **argv)
     about.setProductName("muon/updater");
 
     KCmdLineArgs::init(argc, argv, &about);
-
+    KCmdLineOptions options;
+    options.add("backends <names>", ki18n("List all the backends we'll want to have loaded, separed by coma ','."));
+    KCmdLineArgs::addCmdLineOptions( options );
     if (!KUniqueApplication::start()) {
         fprintf(stderr, "Update Manager is already running!\n");
         return 0;
@@ -49,6 +51,7 @@ int main(int argc, char **argv)
 
     KUniqueApplication app;
     app.disableSessionManagement();
+    KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
 
     MainWindow *mainWindow = new MainWindow;
     mainWindow->show();

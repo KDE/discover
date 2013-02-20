@@ -46,6 +46,7 @@ int main(int argc, char** argv)
     options.add("category <name>", ki18n("Display a list of entries with a category."));
     options.add("mode <name>", ki18n("Open Muon Discover in a said mode. Modes correspond to the toolbar buttons."));
     options.add("listmodes", ki18n("List all the available modes and output them on stdout."));
+    options.add("backends <names>", ki18n("List all the backends we'll want to have loaded, separed by coma ','."));
     KCmdLineArgs::addCmdLineOptions( options );
 
     if (!KUniqueApplication::start()) {
