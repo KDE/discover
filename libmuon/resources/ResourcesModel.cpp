@@ -46,7 +46,7 @@ ResourcesModel *ResourcesModel::global()
     return s_self;
 }
 
-ResourcesModel::ResourcesModel(QObject* parent)
+ResourcesModel::ResourcesModel(QObject* parent, bool load)
     : QAbstractListModel(parent)
     , m_initializingBackends(0)
     , m_mainwindow(0)
@@ -78,6 +78,16 @@ ResourcesModel::ResourcesModel(QObject* parent)
 
     connect(TransactionModel::global(), SIGNAL(dataChanged(QModelIndex,QModelIndex)),
             this, SLOT(transactionChanged(QModelIndex)));
+    if(load)
+        QMetaObject::invokeMethod(this, "registerAllBackends", Qt::QueuedConnection);
+}
+
+ResourcesModel::ResourcesModel(const QString& backendName, QObject* parent)
+    : ResourcesModel(parent)
+{
+    Q_ASSERT(!s_self);
+    s_self = this;
+    registerBackendByName(backendName);
 }
 
 ResourcesModel::~ResourcesModel()
@@ -308,7 +318,7 @@ void ResourcesModel::cancelTransaction(AbstractResource* app)
     app->backend()->cancelTransaction(app);
 }
 
-void ResourcesModel::transactionChanged(QModelIndex tIndex)
+void ResourcesModel::transactionChanged(const QModelIndex& tIndex)
 {
     Transaction *trans = TransactionModel::global()->transactionFromIndex(tIndex);
     QModelIndex idx = resourceIndex(trans->resource());

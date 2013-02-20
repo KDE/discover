@@ -156,7 +156,6 @@ void MainWindow::initObject()
             this, SLOT(removeProgressItem()));
     m_launches = new LaunchListModel(this);
 
-    resourcesModel->registerAllBackends();
     QVector<AbstractResourcesBackend*> backends = resourcesModel->backends();
 
     //TODO: should add the appBackend here too

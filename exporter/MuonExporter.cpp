@@ -33,7 +33,6 @@ MuonExporter::MuonExporter()
     m_startExportingTimer->setInterval(200);
     m_startExportingTimer->setSingleShot(true);
     connect(m_startExportingTimer, SIGNAL(timeout()), SLOT(exportModel()));
-    initialize();
     
     m_exculdedProperties += "executables";
     m_exculdedProperties += "canExecute";
@@ -42,12 +41,6 @@ MuonExporter::MuonExporter()
 
 MuonExporter::~MuonExporter()
 {}
-
-void MuonExporter::initialize()
-{
-    ResourcesModel* m = ResourcesModel::global();
-    m->registerAllBackends();
-}
 
 void MuonExporter::allBackendsInitialized()
 {

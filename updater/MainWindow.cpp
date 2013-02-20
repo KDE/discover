@@ -53,9 +53,6 @@ MainWindow::MainWindow()
     : MuonMainWindow()
     , m_settingsDialog(nullptr)
 {
-    ResourcesModel *m = ResourcesModel::global();
-    m->registerAllBackends();
-    
     m_updater = new ResourcesUpdatesModel(this);
     connect(m_updater, SIGNAL(progressingChanged()), SLOT(progressingChanged()));
 

@@ -27,7 +27,7 @@ QTEST_MAIN( OriginsBackendTest )
 OriginsBackendTest::OriginsBackendTest(QObject* parent)
     : QObject(parent)
 {
-    ResourcesModel::global()->registerBackendByName("appsbackend");
+    new ResourcesModel("appsbackend", this);
 }
 
 void OriginsBackendTest::testLoad()

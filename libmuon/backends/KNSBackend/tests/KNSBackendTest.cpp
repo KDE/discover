@@ -33,10 +33,9 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
     : QObject(parent)
     , m_r(0)
 {
-    ResourcesModel* model = ResourcesModel::global();
-
-    model->registerBackendByName("muon-knsbackend-plasmoids");
-    QTest::kWaitForSignal(m_backend, SIGNAL(backendReady()));
+    ResourcesModel* model = new ResourcesModel("muon-knsbackend-plasmoids", this);
+    m_backend = model->backends().first();
+    QTest::kWaitForSignal(model, SIGNAL(allInitialized()));
     connect(m_backend->reviewsBackend(), SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
             SLOT(reviewsArrived(AbstractResource*,QList<Review*>)));
 }

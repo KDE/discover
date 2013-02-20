@@ -121,8 +121,6 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
 void MuonDiscoverMainWindow::initialize()
 {
     ResourcesModel *m = ResourcesModel::global();
-
-    m->registerAllBackends();
     m->integrateMainWindow(this);
 }
 

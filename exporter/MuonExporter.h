@@ -31,7 +31,6 @@ class MuonExporter : public QObject
         explicit MuonExporter();
         ~MuonExporter();
 
-        void initialize();
         void setExportPath(const KUrl& url);
 
     public slots:

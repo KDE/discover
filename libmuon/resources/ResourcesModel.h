@@ -54,6 +54,10 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
             SectionRole,
             MimeTypes
         };
+        /** This constructor should be only used by unit tests.
+         *  @p backendName defines what backend will be loaded when the backend is constructed.
+         */
+        ResourcesModel(const QString& backendName, QObject* parent = 0);
         static ResourcesModel* global();
         virtual ~ResourcesModel();
         
@@ -68,8 +72,6 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         
         Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name);
 
-        void registerBackendByName(const QString& name);
-        void registerAllBackends();
         void integrateMainWindow(MuonMainWindow* w);
 
     public slots:
@@ -88,11 +90,14 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         void cleanCaller();
         void resetCaller();
         void updateCaller();
-        void transactionChanged(QModelIndex tIndex);
+        void transactionChanged(const QModelIndex& tIndex);
+        void registerAllBackends();
 
     private:
-        explicit ResourcesModel(QObject* parent=0);
+        ///@p initialize tells if all backends load will be triggered on construction
+        explicit ResourcesModel(QObject* parent=0, bool initialize = true);
         void addResourcesBackend(AbstractResourcesBackend* resources);
+        void registerBackendByName(const QString& name);
 
         QVector< AbstractResourcesBackend* > m_backends;
         QVector< QVector<AbstractResource*> > m_resources;
