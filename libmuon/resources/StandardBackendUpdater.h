@@ -51,7 +51,7 @@ class MUONPRIVATE_EXPORT StandardBackendUpdater : public AbstractBackendUpdater
         virtual QString statusMessage() const;
         virtual quint64 downloadSpeed() const;
         virtual QList<QAction*> messageActions() const;
-        void setStatusMessage(const QString& message);
+        void setStatusDetail(const QString& message);
         void setProgress(qreal p);
 
     public slots:
@@ -64,7 +64,7 @@ class MUONPRIVATE_EXPORT StandardBackendUpdater : public AbstractBackendUpdater
         int m_preparedSize;
         QSet<AbstractResource*> m_pendingResources;
         bool m_settingUp;
-        QString m_statusMessage;
+        QString m_statusDetail;
         qreal m_progress;
         QDateTime m_lastUpdate;
 };
