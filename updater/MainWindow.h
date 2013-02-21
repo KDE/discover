@@ -56,7 +56,7 @@ private Q_SLOTS:
     void initGUI();
     void initBackend();
     void setupActions();
-    void startCommit();
+    void setupBackendsActions();
     void editSettings();
     void closeSettingsDialog();
     void checkPlugState();

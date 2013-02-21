@@ -61,10 +61,9 @@ MainWindow::MainWindow()
 
 void MainWindow::initGUI()
 {
-    ResourcesModel* m = ResourcesModel::global();
     setWindowTitle(i18nc("@title:window", "Software Updates"));
-    for(AbstractResourcesBackend* b : m->backends())
-        b->integrateMainWindow(this);
+    ResourcesModel* m = ResourcesModel::global();
+    m->integrateMainWindow(this);
 
     QWidget *mainWidget = new QWidget(this);
     QVBoxLayout *mainLayout = new QVBoxLayout(mainWidget);
@@ -109,14 +108,25 @@ void MainWindow::setupActions()
     m_applyAction = actionCollection()->addAction("apply");
     m_applyAction->setIcon(KIcon("dialog-ok-apply"));
     m_applyAction->setText(i18nc("@action Downloads and installs updates", "Install Updates"));
-    connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
+    connect(m_applyAction, SIGNAL(triggered()), m_updater, SLOT(updateAll()));
 
     KStandardAction::preferences(this, SLOT(editSettings()), actionCollection());
 
     setActionsEnabled(false);
 
     setupGUI(StandardWindowOption(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
+}
 
+void MainWindow::initBackend()
+{
+    m_updaterWidget->setBackend(m_updater);
+    setupBackendsActions();
+
+    setActionsEnabled();
+}
+
+void MainWindow::setupBackendsActions()
+{
     foreach (QAction* action, m_updater->messageActions()) {
         if (action->priority()==QAction::HighPriority) {
             KActionMessageWidget* w = new KActionMessageWidget(action, centralWidget());
@@ -125,13 +135,6 @@ void MainWindow::setupActions()
             toolBar("mainToolBar")->addAction(action);
         }
     }
-}
-
-void MainWindow::initBackend()
-{
-    m_updaterWidget->setBackend(m_updater);
-
-    setActionsEnabled();
 }
 
 void MainWindow::progressingChanged()
@@ -170,16 +173,6 @@ void MainWindow::setActionsEnabled(bool enabled)
     }
 
     m_applyAction->setEnabled(m_updater->hasUpdates());
-}
-
-void MainWindow::startCommit()
-{
-    setActionsEnabled(false);
-    m_updaterWidget->setEnabled(false);
-    QApplication::setOverrideCursor(Qt::WaitCursor);
-    m_changelogWidget->animatedHide();
-
-    m_updater->updateAll();
 }
 
 void MainWindow::editSettings()

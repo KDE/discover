@@ -47,7 +47,6 @@ class MUONPRIVATE_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         bool hasUpdates() const;
         quint64 downloadSpeed() const;
         Q_SCRIPTABLE void prepare();
-        Q_SCRIPTABLE void updateAll();
 
         ///checks if any of them is cancelable
         bool isCancelable() const;
@@ -69,6 +68,7 @@ class MUONPRIVATE_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 
     public slots:
         void cancel();
+        void updateAll();
 
     private:
         void setResourcesModel(ResourcesModel* model);
