@@ -28,6 +28,7 @@
 #include <KProtocolManager>
 #include <KMessageBox>
 #include <KActionCollection>
+#include <KDebug>
 
 // Own includes
 #include <LibQApt/Transaction>
@@ -98,6 +99,7 @@ void ApplicationUpdates::start()
 {
     auto changes = m_aptBackend->stateChanges(m_updatesCache, QApt::PackageList());
     if(changes.isEmpty()) {
+        kWarning() << "couldn't find any apt updates";
         setProgressing(false);
         return;
     }
@@ -167,16 +169,12 @@ void ApplicationUpdates::installMessage(const QString& msg)
     setStatusMessage(msg);
 }
 
-void ApplicationUpdates::transactionStatusChanged(QApt::TransactionStatus status)
-{
-    if (status == QApt::FinishedStatus) {
-        m_lastRealProgress = 0;
-    }
-}
-
 void ApplicationUpdates::errorOccurred(QApt::ErrorCode error)
 {
-    QAptActions::self()->displayTransactionError(error, m_trans);
+    if(error!=QApt::Success) {
+        QAptActions::self()->displayTransactionError(error, m_trans);
+        setProgressing(false);
+    }
 }
 
 void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
@@ -196,7 +194,6 @@ void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
     connect(trans, SIGNAL(progressChanged(int)), SLOT(setProgress(int)));
     connect(trans, SIGNAL(statusDetailsChanged(QString)), SLOT(installMessage(QString)));
     connect(trans, SIGNAL(cancellableChanged(bool)), SIGNAL(cancelableChanged(bool)));
-    connect(trans, SIGNAL(finished(QApt::ExitStatus)), SLOT(transactionFinished(QApt::ExitStatus)));
     connect(trans, SIGNAL(finished(QApt::ExitStatus)), trans, SLOT(deleteLater()));
     connect(trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
             this, SLOT(statusChanged(QApt::TransactionStatus)));
@@ -428,6 +425,7 @@ QList<QAction*> ApplicationUpdates::messageActions() const
 
 void ApplicationUpdates::transactionFinished(QApt::ExitStatus status)
 {
+    m_lastRealProgress = 0;
     m_appBackend->reload();
     setProgressing(false);
 }

@@ -78,7 +78,6 @@ private:
     QString m_statusDetail;
 
 private slots:
-    void transactionStatusChanged(QApt::TransactionStatus status);
     void errorOccurred(QApt::ErrorCode error);
     void setProgress(int progress);
     void etaChanged(quint64 eta);
