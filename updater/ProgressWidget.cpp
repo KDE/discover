@@ -66,6 +66,11 @@ ProgressWidget::ProgressWidget(ResourcesUpdatesModel* updates, QWidget *parent)
     m_expandWidget->addAnimation(anim1);
     m_expandWidget->addAnimation(anim2);
 
+    QFont f;
+    f.setPointSizeF(f.pointSizeF()*1.5);
+    f.setBold(true);
+    m_ui->header->setFont(f);
+
     // Connect the transaction all up to our slots
     connect(m_updater, SIGNAL(progressChanged()),
             this, SLOT(updateProgress()));
