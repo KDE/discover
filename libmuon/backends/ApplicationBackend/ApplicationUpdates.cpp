@@ -187,8 +187,6 @@ void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
 
     trans->setLocale(QLatin1String(setlocale(LC_MESSAGES, 0)));
 
-    connect(trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
-            SLOT(transactionStatusChanged(QApt::TransactionStatus)));
     connect(trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
             SLOT(errorOccurred(QApt::ErrorCode)));
     connect(trans, SIGNAL(progressChanged(int)), SLOT(setProgress(int)));
