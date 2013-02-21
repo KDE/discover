@@ -41,7 +41,6 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
         explicit AbstractBackendUpdater(QObject* parent = 0);
         
         virtual void prepare() = 0;
-        virtual void start() = 0;
         
         virtual bool hasUpdates() const = 0;
         virtual qreal progress() const = 0;
@@ -61,11 +60,14 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
         virtual QString statusDetail() const = 0;
         virtual quint64 downloadSpeed() const = 0;
 
+        /** in muon-updater, actions with HighPriority will be shown in a KMessageWidget, the
+         rest will be on the toolbar */
         virtual QList<QAction*> messageActions() const = 0;
 
     public slots:
         ///must be implemented if ever isCancelable is true
         virtual void cancel();
+        virtual void start() = 0;
 
     signals:
         void progressChanged(qreal progress);
