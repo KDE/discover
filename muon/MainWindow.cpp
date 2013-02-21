@@ -122,7 +122,6 @@ void MainWindow::initGUI()
 
     actions->setMainWindow(this);
     connect(actions, SIGNAL(changesReverted()), this, SLOT(revertChanges()));
-    connect(actions, SIGNAL(checkForUpdates()), this, SLOT(checkForUpdates()));
     setupActions();
 
     m_statusWidget = new StatusWidget(centralWidget);
@@ -202,7 +201,7 @@ void MainWindow::setupActions()
     updateAction->setIcon(KIcon("system-software-update"));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
-    connect(updateAction, SIGNAL(triggered()), SIGNAL(checkForUpdates()));
+    connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
     if (!isConnected()) {
         updateAction->setDisabled(true);
     }
