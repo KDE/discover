@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 
     KCmdLineArgs::init(argc, argv, &about);
     KCmdLineOptions options;
-    options.add("backends <names>", ki18n("List all the backends we'll want to have loaded, separed by coma ','."));
+    options.add("backends <names>", ki18n("List all the backends we'll want to have loaded, separated by coma ','."));
     KCmdLineArgs::addCmdLineOptions( options );
     if (!KUniqueApplication::start()) {
         fprintf(stderr, "Update Manager is already running!\n");
