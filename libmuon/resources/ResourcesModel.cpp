@@ -173,7 +173,7 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
                 qDebug() << "unknown role:" << role << roleText;
                 return QVariant();
             } else
-                return resource->property(roleNames().value(role));
+                return resource->property(roleText);
         }
     }
 }
