@@ -51,8 +51,6 @@ DummyBackend::DummyBackend(QObject* parent, const QVariantList&)
     QTimer::singleShot(0, this, SIGNAL(backendReady()));
     m_reviews = new DummyReviewsBackend(this);
     
-    connect(this, SIGNAL(transactionRemoved(Transaction*)), SIGNAL(updatesCountChanged()));
-    
     //simulate a random reload
     QTimer::singleShot(1000, this, SIGNAL(reloadStarted()));
     QTimer::singleShot(1500, this, SIGNAL(reloadFinished()));
