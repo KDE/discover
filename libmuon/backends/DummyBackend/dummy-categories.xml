@@ -2,5 +2,8 @@
   <Menu>
     <Name>dummy</Name>
     <Icon>kalarm</Icon>
+    <Include>
+        <Category>dummy</Category>
+    </Include>
   </Menu>
 </Menu>
