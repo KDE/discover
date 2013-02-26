@@ -120,6 +120,7 @@ void MainWindow::setupActions()
     m_applyAction->setIcon(KIcon("dialog-ok-apply"));
     m_applyAction->setText(i18nc("@action Downloads and installs updates", "Install Updates"));
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
+    m_applyAction->setEnabled(false);
 
     KStandardAction::preferences(this, SLOT(editSettings()), actionCollection());
 
