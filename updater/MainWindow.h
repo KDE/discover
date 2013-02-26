@@ -62,12 +62,7 @@ private:
     KMessageWidget *m_powerMessage;
     KMessageWidget *m_distUpgradeMessage;
 
-    KAction *m_loadSelectionsAction;
-    KAction *m_saveSelectionsAction;
     KAction *m_applyAction;
-    KAction *m_createDownloadListAction;
-    KAction *m_downloadListAction;
-    KAction *m_loadArchivesAction;
     KAction *m_historyAction;
 
     KProcess *m_checkerProcess;
