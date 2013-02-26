@@ -28,6 +28,7 @@
 #include "libmuonprivate_export.h"
 
 class KXmlGuiWindow;
+class KAction;
 class KActionCollection;
 
 namespace QApt {
@@ -81,6 +82,7 @@ private:
     bool m_actionsDisabled;
     KXmlGuiWindow* m_mainWindow;
     bool m_reloadWhenEditorFinished;
+    QList<KAction *> m_actions;
 
     KActionCollection* actionCollection();
 };

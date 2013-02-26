@@ -93,38 +93,46 @@ void QAptActions::setupActions()
         updateAction->setDisabled(true);
     }
     connect(this, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
+    m_actions.append(updateAction);
 
 
     KAction* undoAction = KStandardAction::undo(this, SLOT(undo()), actionCollection());
     actionCollection()->addAction("undo", undoAction);
+    m_actions.append(undoAction);
 
     KAction* redoAction = KStandardAction::redo(this, SLOT(redo()), actionCollection());
     actionCollection()->addAction("redo", redoAction);
+    m_actions.append(redoAction);
 
     KAction* revertAction = actionCollection()->addAction("revert");
     revertAction->setIcon(KIcon("document-revert"));
     revertAction->setText(i18nc("@action Reverts all potential changes to the cache", "Unmark All"));
     connect(revertAction, SIGNAL(triggered()), this, SLOT(revertChanges()));
+    m_actions.append(revertAction);
 
     KAction* softwarePropertiesAction = actionCollection()->addAction("software_properties");
     softwarePropertiesAction->setIcon(KIcon("configure"));
     softwarePropertiesAction->setText(i18nc("@action Opens the software sources configuration dialog", "Configure Software Sources"));
     connect(softwarePropertiesAction, SIGNAL(triggered()), this, SLOT(runSourcesEditor()));
+    m_actions.append(softwarePropertiesAction);
     
     KAction* loadSelectionsAction = actionCollection()->addAction("open_markings");
     loadSelectionsAction->setIcon(KIcon("document-open"));
     loadSelectionsAction->setText(i18nc("@action", "Read Markings..."));
     connect(loadSelectionsAction, SIGNAL(triggered()), this, SLOT(loadSelections()));
+    m_actions.append(loadSelectionsAction);
 
     KAction* saveSelectionsAction = actionCollection()->addAction("save_markings");
     saveSelectionsAction->setIcon(KIcon("document-save-as"));
     saveSelectionsAction->setText(i18nc("@action", "Save Markings As..."));
     connect(saveSelectionsAction, SIGNAL(triggered()), this, SLOT(saveSelections()));
+    m_actions.append(saveSelectionsAction);
 
     KAction* createDownloadListAction = actionCollection()->addAction("save_download_list");
     createDownloadListAction->setIcon(KIcon("document-save-as"));
     createDownloadListAction->setText(i18nc("@action", "Save Package Download List..."));
     connect(createDownloadListAction, SIGNAL(triggered()), this, SLOT(createDownloadList()));
+    m_actions.append(createDownloadListAction);
 
     KAction* downloadListAction = actionCollection()->addAction("download_from_list");
     downloadListAction->setIcon(KIcon("download"));
@@ -134,27 +142,27 @@ void QAptActions::setupActions()
         downloadListAction->setDisabled(false);
     }
     connect(this, SIGNAL(shouldConnect(bool)), downloadListAction, SLOT(setEnabled(bool)));
+    m_actions.append(downloadListAction);
 
     KAction* loadArchivesAction = actionCollection()->addAction("load_archives");
     loadArchivesAction->setIcon(KIcon("document-open"));
     loadArchivesAction->setText(i18nc("@action", "Add Downloaded Packages"));
     connect(loadArchivesAction, SIGNAL(triggered()), this, SLOT(loadArchives()));
+    m_actions.append(loadArchivesAction);
     
     KAction* saveInstalledAction = actionCollection()->addAction("save_package_list");
     saveInstalledAction->setIcon(KIcon("document-save-as"));
     saveInstalledAction->setText(i18nc("@action", "Save Installed Packages List..."));
     connect(saveInstalledAction, SIGNAL(triggered()), this, SLOT(saveInstalledPackagesList()));
+    m_actions.append(saveInstalledAction);
 }
 
 void QAptActions::setActionsEnabled(bool enabled)
 {
     m_actionsDisabled = !enabled;
-    for (int i = 0; i < actionCollection()->count(); ++i) {
-        QAction* a=actionCollection()->action(i);
-        //FIXME: Better solution? (en/dis)abling all actions at once is dangerous...
-        //We should make it happen only for actions provided by QApt
-        if(QByteArray(a->metaObject()->className())!="DiscoverAction")
-            a->setEnabled(enabled);
+
+    for (KAction *action : m_actions) {
+        action->setEnabled(enabled);
     }
 
     if (!enabled)
