@@ -34,7 +34,7 @@ class MUONPRIVATE_EXPORT TransactionListener : public QObject
     Q_OBJECT
     Q_PROPERTY(AbstractResource* resource READ resource WRITE setResource NOTIFY resourceChanged)
     Q_PROPERTY(bool isCancellable READ isCancellable NOTIFY cancellableChanged)
-    Q_PROPERTY(bool isActive READ isActive NOTIFY running)
+    Q_PROPERTY(bool isActive READ isActive NOTIFY runningChanged)
     Q_PROPERTY(QString statusText READ statusText NOTIFY statusTextChanged)
 public:
     explicit TransactionListener(QObject *parent = nullptr);
@@ -47,18 +47,23 @@ public:
     void setResource(AbstractResource* resource);
 
 private:
+    void setTransaction(Transaction *trans);
+
     AbstractResource *m_resource;
     Transaction *m_transaction;
 
 private slots:
     void transactionAdded(Transaction *trans);
+    void transactionRemoved(Transaction* trans);
+    void transactionCancelled(Transaction* trans);
     void transactionStatusChanged(Transaction::Status status);
 
 signals:
     void resourceChanged();
     void cancellableChanged();
-    void running();
+    void runningChanged();
     void statusTextChanged();
+    void cancelled();
 };
 
 #endif // TRANSACTIONLISTENER_H

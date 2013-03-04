@@ -31,6 +31,10 @@ TransactionListener::TransactionListener(QObject *parent)
 {
     connect(TransactionModel::global(), SIGNAL(transactionAdded(Transaction*)),
             this, SLOT(transactionAdded(Transaction*)));
+    connect(TransactionModel::global(), SIGNAL(transactionRemoved(Transaction*)),
+            this, SLOT(transactionRemoved(Transaction*)));
+    connect(TransactionModel::global(), SIGNAL(transactionCancelled(Transaction*)),
+            this, SLOT(transactionCancelled(Transaction*)));
 }
 
 AbstractResource *TransactionListener::resource() const
@@ -40,12 +44,12 @@ AbstractResource *TransactionListener::resource() const
 
 bool TransactionListener::isCancellable() const
 {
-    return m_transaction ? m_transaction->isCancellable() : false;
+    return m_transaction && m_transaction->isCancellable();
 }
 
 bool TransactionListener::isActive() const
 {
-    return m_transaction ? m_transaction->status() != Transaction::SetupStatus : false;
+    return m_transaction && m_transaction->status() != Transaction::SetupStatus;
 }
 
 QString TransactionListener::statusText() const
@@ -60,9 +64,7 @@ void TransactionListener::setResource(AbstractResource *resource)
     m_resource = resource;
 
     // Catch already-started transactions
-    Transaction *trans = TransactionModel::global()->transactionFromResource(resource);
-    if (trans)
-        transactionAdded(trans);
+    setTransaction(TransactionModel::global()->transactionFromResource(resource));
 
     emit resourceChanged();
 }
@@ -72,25 +74,50 @@ void TransactionListener::transactionAdded(Transaction *trans)
     if (trans->resource() != m_resource)
         return;
 
+    setTransaction(trans);
+}
+
+void TransactionListener::setTransaction(Transaction* trans)
+{
+    Q_ASSERT(!trans || trans->resource()==m_resource);
+    if(m_transaction) {
+        disconnect(m_transaction, 0, this, 0);
+    }
     m_transaction = trans;
-    connect(m_transaction, SIGNAL(cancellableChanged(bool)),
-            this, SIGNAL(cancellableChanged()));
-    connect(m_transaction, SIGNAL(statusChanged(Transaction::Status)),
-            this, SLOT(transactionStatusChanged(Transaction::Status)));
+    if(m_transaction) {
+        connect(m_transaction, SIGNAL(cancellableChanged(bool)),
+                this, SIGNAL(cancellableChanged()));
+        connect(m_transaction, SIGNAL(statusChanged(Transaction::Status)),
+                this, SLOT(transactionStatusChanged(Transaction::Status)));
+    }
+    emit cancellableChanged();
+    emit runningChanged();
+    emit statusTextChanged();
 }
 
 void TransactionListener::transactionStatusChanged(Transaction::Status status)
 {
     switch (status) {
     case Transaction::DoneStatus:
-        m_transaction = nullptr;
+        setTransaction(nullptr);
         break;
     case Transaction::QueuedStatus:
-        emit running();
+        emit runningChanged();
         break;
     default:
         break;
     }
 
     emit statusTextChanged();
+}
+
+void TransactionListener::transactionRemoved(Transaction* trans)
+{
+    setTransaction(nullptr);
+}
+
+void TransactionListener::transactionCancelled(Transaction* trans)
+{
+    setTransaction(nullptr);
+    emit cancelled();
 }
