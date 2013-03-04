@@ -6,14 +6,39 @@ import "navigation.js" as Navigation
 
 ToolBar {
     id: page
-    property bool enabled: true
-    property bool active: transactionModel.count>0
+    property bool active: progressModel.count>0
     height: active ? contents.height+2*contents.anchors.margins : 0
-
+    
     Behavior on height {
         NumberAnimation { duration: 250; easing.type: Easing.InOutQuad }
     }
+    
+    Connections {
+        target: transactionModel
+        onTransactionAdded: {
+            if(progressModel.appAt(trans.resource)<0)
+                progressModel.append({'app': trans.resource})
+        }
 
+        onTransactionCancelled: {
+            var id = progressModel.appAt(trans.resource)
+            if(id>=0)
+                progressModel.remove(id)
+        }
+    }
+    
+    ListModel {
+        id: progressModel
+        function appAt(app) {
+            for(var i=0; i<progressModel.count; i++) {
+                if(progressModel.get(i).app==app) {
+                    return i
+                }
+            }
+            return -1
+        }
+    }
+    
     ListView {
         id: contents
         anchors {
@@ -22,53 +47,54 @@ ToolBar {
             top: parent.top
             margins: 3
         }
-
+        
         spacing: 3
         height: 30
         orientation: ListView.Horizontal
-
-        model: transactionModel
-
+        
+        model: progressModel
+        
         delegate: ListItem {
             width: launcherRow.childrenRect.width+5
             height: contents.height
             enabled: true
-            onClicked: Navigation.openApplication(model.resource)
+            onClicked: Navigation.openApplication(model.app)
             TransactionListener {
                 id: listener
-                resource: model.resource
+                resource: model.app
+                onCancelled: model.remove(index)
             }
-
+            
             Row {
                 id: launcherRow
                 spacing: 2
-                QIconItem { icon: model.resource.icon; height: parent.height; width: height }
-                Label { text: model.resource.name }
+                QIconItem { icon: model.app.icon; height: parent.height; width: height }
+                Label { text: model.app.name }
                 Label { text: listener.statusText; visible: listener.isActive }
                 ToolButton {
                     iconSource: "dialog-cancel"
                     visible: listener.isCancellable
-                    onClicked: resourcesModel.cancelTransaction(application)
+                    onClicked: resourcesModel.cancelTransaction(app)
                 }
                 ToolButton {
                     iconSource: "system-run"
-                    visible: model.resource.isInstalled && !listener.isActive && model.resource.canExecute
+                    visible: model.app.isInstalled && !listener.isActive && model.app.canExecute
                     onClicked: {
-                        model.resource.invokeApplication()
+                        model.app.invokeApplication()
                         model.remove(index)
                     }
                 }
             }
         }
     }
-    
     ToolButton {
         anchors {
             verticalCenter: parent.verticalCenter
             right: parent.right
             rightMargin: 5
         }
+        height: Math.min(implicitHeight, parent.height)
         iconSource: "dialog-close"
-        onClicked: transactionModel.clear()
+        onClicked: progressModel.clear()
     }
 }
