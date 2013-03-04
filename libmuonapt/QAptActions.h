@@ -29,6 +29,8 @@
 
 class MuonMainWindow;
 class KDialog;
+class KXmlGuiWindow;
+class KAction;
 class KActionCollection;
 
 namespace QApt {
@@ -92,7 +94,10 @@ private:
     bool m_actionsDisabled;
     MuonMainWindow* m_mainWindow;
     bool m_reloadWhenEditorFinished;
+    
     KDialog* m_historyDialog;
+    QList<KAction *> m_actions;
+
 };
 
 #endif // QAPTACTIONS_H
