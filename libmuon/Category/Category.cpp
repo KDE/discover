@@ -66,8 +66,7 @@ void Category::parseData(const QString& path, const QDomNode& data, bool canHave
             m_showTechnical = true;
         } else if (tempElement.tagName() == QLatin1String("Include")) {
             parseIncludes(tempElement);
-        } else if(tempElement.tagName() != QLatin1String("Name"))
-            kWarning() << "Couldn't process the element:" << tempElement.tagName() << "at" << QString("%1:%2").arg(path).arg(tempElement.lineNumber());
+        }
     }
 
     if (!m_subCategories.isEmpty()) {
