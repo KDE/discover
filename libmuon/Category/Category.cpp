@@ -40,7 +40,7 @@ Category::~Category()
 
 void Category::parseData(const QDomNode& data, bool canHaveChildren)
 {
-    if(canHaveChildren) {
+    if(!canHaveChildren) {
         m_name = i18nc("@label The label used for viewing all members of this category", "All");
     }
     QDomNode node = data.firstChild();
