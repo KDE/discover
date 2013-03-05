@@ -122,6 +122,7 @@ Item {
                             width: ratingsItem.width
                             visible: model.application.canUpgrade
                             onClicked: resourcesModel.installApplication(model.application)
+                            enabled: !installButton.isActive
                         }
                         
                         InstallApplicationButton {
