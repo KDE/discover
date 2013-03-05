@@ -8,6 +8,7 @@ Item {
     property alias application: listener.resource
     property bool canHide: parent.state=="idle"
     property bool preferUpgrade: false
+    property alias isActive: listener.isActive
     width: 100
     height: 30
     

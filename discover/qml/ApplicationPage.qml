@@ -116,7 +116,7 @@ Page
         AddonsView {
             id:addonsView
             application: page.application
-            isInstalling: installButton.isInstalling
+            isInstalling: installButton.isActive
         }
         
         ReviewsView {
