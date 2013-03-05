@@ -137,6 +137,8 @@ void MainWindow::initObject()
 
     emit backendReady(m_backend);
     QAptActions::self()->setBackend(m_backend);
+    connect(m_backend, SIGNAL(packageChanged()),
+            this, SLOT(setActionsEnabled()));
 
     // Set up GUI
     loadSettings();

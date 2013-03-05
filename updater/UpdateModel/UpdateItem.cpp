@@ -29,6 +29,7 @@ UpdateItem::UpdateItem()
     : m_app(0)
     , m_parent(0)
     , m_type(ItemType::RootItem)
+    , m_checkState(Qt::Unchecked)
 {
 }
 
@@ -37,6 +38,7 @@ UpdateItem::UpdateItem(const QString &categoryName,
     : m_app(0)
     , m_parent(0)
     , m_type(ItemType::CategoryItem)
+    , m_checkState(Qt::Unchecked)
     , m_categoryName(categoryName)
     , m_categoryIcon(categoryIcon)
 {
@@ -46,6 +48,7 @@ UpdateItem::UpdateItem(AbstractResource *app, UpdateItem *parent)
     : m_app(app)
     , m_parent(parent)
     , m_type(ItemType::ApplicationItem)
+    , m_checkState(Qt::Unchecked)
 {
 }
 
@@ -185,7 +188,7 @@ Qt::CheckState UpdateItem::checked() const
         int uncheckedCount = 0;
 
         foreach (UpdateItem *child, m_children) {
-            (child->app()->state() & AbstractResource::Upgradeable) ?
+            (child->checked() == Qt::Checked) ?
                         checkedCount++ : uncheckedCount++;
         }
 
@@ -202,8 +205,7 @@ Qt::CheckState UpdateItem::checked() const
         break;
     }
     case ItemType::ApplicationItem:
-        (app()->state() & AbstractResource::Upgradeable) ?
-                    checkState = Qt::Checked : checkState = Qt::Unchecked;
+        return m_checkState;
         break;
     case ItemType::RootItem:
     case ItemType::InvalidItem:
@@ -211,6 +213,12 @@ Qt::CheckState UpdateItem::checked() const
     }
 
     return checkState;
+}
+
+void UpdateItem::setChecked(bool checked)
+{
+    if (type() == ItemType::ApplicationItem || type() == ItemType::CategoryItem)
+        m_checkState = (checked) ? Qt::Checked : Qt::Unchecked;
 }
 
 UpdateItem::ItemType UpdateItem::type() const

@@ -26,6 +26,10 @@
 class AbstractResource;
 class UpdateItem;
 
+namespace QApt {
+    class Package;
+}
+
 class UpdateModel : public QAbstractItemModel
 {
     Q_OBJECT

@@ -35,8 +35,5 @@
         <Action name="quit" />
         <Separator/>
         <Action name="update" />
-        <Separator/>
-        <Action name="undo" />
-        <Action name="redo" />
     </ToolBar>
 </gui>

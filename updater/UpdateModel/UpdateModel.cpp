@@ -237,6 +237,7 @@ bool UpdateModel::setData(const QModelIndex &index, const QVariant &value, int r
             apps << item->app();
         }
 
+        item->setChecked(newValue);
         emit checkApps(apps, newValue);
         return true;
     }
