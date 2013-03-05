@@ -33,7 +33,7 @@ Transaction::Transaction(QObject *parent, AbstractResource *resource,
     : QObject(parent)
     , m_resource(resource)
     , m_role(role)
-    , m_status(SetupStatus)
+    , m_status(CommittingStatus)
     , m_addons(addons)
     , m_isCancellable(true)
     , m_progress(0)
