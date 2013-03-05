@@ -24,6 +24,7 @@
 ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
     : ResourcesProxyModel(parent)
 {
+    setDynamicSortFilter(true);
     init();
 }
 
