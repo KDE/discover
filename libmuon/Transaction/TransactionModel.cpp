@@ -133,7 +133,9 @@ Transaction *TransactionModel::transactionFromResource(AbstractResource *resourc
 QModelIndex TransactionModel::indexOf(Transaction *trans) const
 {
     int row = m_transactions.indexOf(trans);
-    return index(row);
+    QModelIndex ret = index(row);
+    Q_ASSERT(!trans || ret.isValid());
+    return ret;
 }
 
 QModelIndex TransactionModel::indexOf(AbstractResource *res) const
