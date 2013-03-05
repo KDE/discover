@@ -76,8 +76,8 @@ ResourcesModel::ResourcesModel(QObject* parent, bool load)
     roles.remove(Qt::WhatsThisRole);
     setRoleNames(roles);
 
-    connect(TransactionModel::global(), SIGNAL(dataChanged(QModelIndex,QModelIndex)),
-            this, SLOT(transactionChanged(QModelIndex)));
+    connect(TransactionModel::global(), SIGNAL(transactionAdded(Transaction*)), SLOT(resourceChangedByTransaction(Transaction*)));
+    connect(TransactionModel::global(), SIGNAL(transactionRemoved(Transaction*)), SLOT(resourceChangedByTransaction(Transaction*)));
     if(load)
         QMetaObject::invokeMethod(this, "registerAllBackends", Qt::QueuedConnection);
 }
@@ -318,13 +318,6 @@ void ResourcesModel::cancelTransaction(AbstractResource* app)
     app->backend()->cancelTransaction(app);
 }
 
-void ResourcesModel::transactionChanged(const QModelIndex& tIndex)
-{
-    Transaction *trans = TransactionModel::global()->transactionFromIndex(tIndex);
-    QModelIndex idx = resourceIndex(trans->resource());
-    dataChanged(idx, idx);
-}
-
 QMap<int, QVariant> ResourcesModel::itemData(const QModelIndex& index) const
 {
     QMap<int, QVariant> ret;
@@ -367,3 +360,9 @@ void ResourcesModel::integrateMainWindow(MuonMainWindow* w)
     }
 }
 
+void ResourcesModel::resourceChangedByTransaction(Transaction* t)
+{
+    QModelIndex idx = resourceIndex(t->resource());
+    if(idx.isValid())
+        dataChanged(idx, idx);
+}

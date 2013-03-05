@@ -90,8 +90,8 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         void cleanCaller();
         void resetCaller();
         void updateCaller();
-        void transactionChanged(const QModelIndex& tIndex);
         void registerAllBackends();
+        void resourceChangedByTransaction(Transaction* t);
 
     private:
         ///@p initialize tells if all backends load will be triggered on construction
