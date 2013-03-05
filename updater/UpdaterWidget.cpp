@@ -232,6 +232,7 @@ void UpdaterWidget::populateUpdateModel()
     m_busyWidget->stop();
     QApplication::restoreOverrideCursor();
     m_backend->markPackagesForUpgrade();
+    m_updateModel->updateCheckStates();
 
     checkAllMarked();
     checkUpToDate();
@@ -258,6 +259,9 @@ void UpdaterWidget::checkApps(QList<AbstractResource*> apps, bool checked)
     auto changes = m_backend->stateChanges(m_oldCacheState, list);
 
     checkChanges(changes);
+
+    // Update check values
+    m_updateModel->updateCheckStates();
 
     QApplication::restoreOverrideCursor();
 }
@@ -307,6 +311,7 @@ void UpdaterWidget::markAllPackagesForUpgrade()
     m_backend->saveCacheState();
     m_backend->markPackagesForDistUpgrade();
 
+    m_updateModel->updateCheckStates();
     checkChanges(m_backend->stateChanges(m_oldCacheState, upgradeable));
 
     m_upgradesWidget->hide();

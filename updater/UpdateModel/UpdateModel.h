@@ -26,6 +26,10 @@
 class AbstractResource;
 class UpdateItem;
 
+namespace QApt {
+    class Package;
+}
+
 class UpdateModel : public QAbstractItemModel
 {
     Q_OBJECT
@@ -51,6 +55,7 @@ public:
 
     void addItem(UpdateItem *item);
     bool setData(const QModelIndex &index, const QVariant &value, int role);
+    void updateCheckStates();
 
     enum Columns {
         NameColumn = 0,

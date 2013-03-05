@@ -29,6 +29,9 @@
 #include <KLocale>
 #include <KDebug>
 
+// LibQApt includes
+#include <LibQApt/Package>
+
 // Own includes
 #include "UpdateItem.h"
 
@@ -212,6 +215,21 @@ UpdateItem* UpdateModel::itemFromIndex(const QModelIndex &index) const
      return m_rootItem;
 }
 
+void UpdateModel::updateCheckStates()
+{
+    for (UpdateItem *item : m_rootItem->children()) {
+        for (UpdateItem *subItem : item->children()) {
+            QApt::Package *pkg = subItem->retrievePackage();
+            if (!pkg)
+                continue;
+
+            subItem->setChecked(pkg->state() & QApt::Package::ToInstall);
+        }
+    }
+
+    packageChanged();
+}
+
 void UpdateModel::addItem(UpdateItem *item)
 {
     beginInsertRows(QModelIndex(), m_rootItem->childCount(), m_rootItem->childCount());
@@ -236,6 +254,7 @@ bool UpdateModel::setData(const QModelIndex &index, const QVariant &value, int r
             apps << item->app();
         }
 
+        item->setChecked(newValue);
         emit checkApps(apps, newValue);
         return true;
     }
