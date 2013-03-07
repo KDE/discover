@@ -207,7 +207,7 @@ ResourceDetailsWidget::ResourceDetailsWidget(QWidget *parent)
     m_screenshotView->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     m_screenshotView->setMinimumSize(170, 130);
     m_screenshotView->rootContext()->setContextProperty("view", m_screenshotView);
-    m_screenshotView->setSource(KStandardDirs::locate("data", QLatin1String("libmuon/ThumbnailView.qml")));
+    m_screenshotView->setSource(KStandardDirs::locate("data", QLatin1String("muon-installer/ThumbnailView.qml")));
     QObject *item = m_screenshotView->rootObject();
     connect(item, SIGNAL(thumbnailClicked()), this, SLOT(screenshotLabelClicked()));
 
