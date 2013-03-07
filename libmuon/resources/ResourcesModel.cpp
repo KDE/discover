@@ -159,11 +159,8 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
 
     AbstractResource* resource = resourceAt(index.row());
     switch(role) {
-        case ActiveRole: {
-            Transaction* t = TransactionModel::global()->transactionFromResource(resource);
-
-            return (t != nullptr);
-        }
+        case ActiveRole:
+            return TransactionModel::global()->transactionFromResource(resource) != nullptr;
         case ApplicationRole:
             return qVariantFromValue<QObject*>(resource);
         case RatingPointsRole:
@@ -180,9 +177,8 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
             return QVariant();
         default: {
             QByteArray roleText = roleNames().value(role);
-            if(roleText.isEmpty())
-                return QVariant();
-            else if(resource->metaObject()->indexOfProperty(roleText) < 0) {
+            Q_ASSERT(!roleText.isEmpty());
+            if(resource->metaObject()->indexOfProperty(roleText) < 0) {
                 qDebug() << "unknown role:" << role << roleText;
                 return QVariant();
             } else

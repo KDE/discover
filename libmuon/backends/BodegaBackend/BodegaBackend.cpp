@@ -76,7 +76,6 @@ QMap<QString,QString> retrieveCredentials()
 }
 
 BodegaBackend::BodegaBackend(QObject* parent, const QVariantList& args)
-// BodegaBackend::BodegaBackend(const QString& channel, const QString& iconName, QObject* parent)
     : AbstractResourcesBackend(parent)
 {
     const QVariantMap info = args.first().toMap();
