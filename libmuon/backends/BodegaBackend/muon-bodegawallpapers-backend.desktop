@@ -96,7 +96,7 @@ Comment[uk]=Встановіть нові чудові шпалери для в�
 Comment[x-test]=xxInstall new, awesome wallpapers for your KDE!xx
 Comment[zh_TW]=為您的 KDE 安裝新的、美美的桌布！
 X-KDE-Library=muon-bodegabackend
-X-KDE-PluginInfo-Name=muon-bodegabackend-wallpapers
+X-KDE-PluginInfo-Name=muon-bodegawallpapers-backend
 X-KDE-PluginInfo-License=GPL
 
 #channel name
