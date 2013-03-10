@@ -1,4 +1,4 @@
-2.0 (as of alpha 1)
+2.0 (as of RC)
 ======
 - Features:
   * Added a KNewStuff backend, adding categories for Plasma Widgets and Plasma Comics.
@@ -19,9 +19,11 @@
   * Fixed a bug where applications that had been removed from the archive, but could
     still be referenced locally by APT despite not being installed would show up as
     Applications if their data had not been removed from app-install-data. (BKO: #309283)
+  * Fix the display of KNS services' description. Remove \r characters that would break
+    the layout.
 - Optimizations:
   * Improve startup time by 2% by using a fast integer-to-power approximation when
-    calculating the normal distribution for an application rating.
+    calculating the normal distribution for an application rating. [MSC]
 
 1.4.0
 ======
