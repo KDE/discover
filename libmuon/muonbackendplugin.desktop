@@ -3,7 +3,13 @@ Type=ServiceType
 X-KDE-ServiceType=Muon/Backend
 X-KDE-Derived=KPluginInfo
 Name=Muon Backend
+Name[fi]=Muon-taustaosa
+Name[fr]=Moteur de Muon
+Name[nb]=Bakgrunnsmotor for Muon
+Name[nl]=Backend van Muon
 Name[tr]=Muon Arkaucu
+Name[uk]=Модуль Muon
+Name[x-test]=xxMuon Backendxx
 
 [PropertyDef::X-Muon-Arguments]
 Type=QStringList
