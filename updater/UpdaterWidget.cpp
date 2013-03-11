@@ -145,10 +145,11 @@ void UpdaterWidget::setBackend(AbstractResourcesBackend *backend)
 void UpdaterWidget::reload()
 {
     m_updateModel->clear();
-    QMetaObject::invokeMethod(m_appsBackend, "reload");
+    QMetaObject::invokeMethod(m_appsBackend, "reload", Qt::QueuedConnection);
 
     setCurrentIndex(0);
-    populateUpdateModel();
+    connect(m_appsBackend, SIGNAL(reloadFinished()),
+            this, SLOT(populateUpdateModel()));
 }
 
 void UpdaterWidget::populateUpdateModel()
