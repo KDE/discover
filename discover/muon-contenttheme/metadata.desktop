@@ -1,18 +1,28 @@
 [Desktop Entry]
 Name=Application dashboard
+Name[ca]=Tauler d'aplicacions
 Name[fi]=Sovelluskojelauta
 Name[fr]=Tableau de bord des applications
+Name[kk]=Қолданбаның аспаптар панелі
 Name[nl]=Dashboard van toepassing
+Name[pt]=Painel da aplicação
+Name[sk]=Aplikačná prístrojová doska
 Name[tr]=Uygulama paneli
 Name[uk]=Панель приладів програм
 Name[x-test]=xxApplication dashboardxx
+Name[zh_TW]=應用程式資訊看板
 Comment=Intended as Application dashboard default
+Comment[ca]=Proposat com a tauler d'aplicacions per defecte
 Comment[fi]=Tarkoitettu oletussovelluskojelaudaksi
 Comment[fr]=Prévu comme tableau de bord par défaut des applications
+Comment[kk]=Қолданбаның аспаптар панелі болуға бағытталған
 Comment[nl]=Bedoeld als standaard dashboard van toepassing
+Comment[pt]=Pretendido como predefinição do painel da aplicação
+Comment[sk]=Určené ako predvolená prístrojová doska aplikácie
 Comment[tr]=Uygulama paneli varsayılanı olarak amaçlandı
 Comment[uk]=Призначено бути типовою панеллю приладів програм
 Comment[x-test]=xxIntended as Application dashboard defaultxx
+Comment[zh_TW]=做為應用程式資訊看板預設值
 
 NoDisplay=true
 
