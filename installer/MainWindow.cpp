@@ -312,6 +312,8 @@ void MainWindow::populateViews()
     m_viewModel->appendRow(installedItem);
     m_viewModel->appendRow(historyItem);
     selectFirstRow(m_viewSwitcher);
+
+    emit viewsPopulated();
 }
 
 void MainWindow::changeView(const QModelIndex &index)
@@ -460,4 +462,26 @@ void MainWindow::removeProgressItem()
 
     m_viewModel->removeRow(m_progressItem->row());
     m_progressItem = nullptr;
+}
+
+void MainWindow::openApplication(const QString &app)
+{
+    setEnabled(false);
+    m_appToBeOpened = app;
+    triggerOpenApplication();
+    if(!m_appToBeOpened.isEmpty())
+        connect(this, SIGNAL(viewsPopulated()), SLOT(triggerOpenApplication()));
+}
+
+void MainWindow::triggerOpenApplication()
+{
+    AbstractResource* app = ResourcesModel::global()->resourceByPackageName(m_appToBeOpened);
+    if(app) {
+        AvailableView *view = qobject_cast<AvailableView *>(m_viewStack->currentWidget());
+        view->setResource(app);
+
+        m_appToBeOpened.clear();
+        disconnect(this, SIGNAL(viewsPopulated()), this, SLOT(triggerOpenApplication()));
+        setEnabled(true);
+    }
 }

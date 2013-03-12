@@ -41,6 +41,10 @@ int main(int argc, char **argv)
     about.setProductName("muon/installer");
 
     KCmdLineArgs::init(argc, argv, &about);
+    KCmdLineOptions options;
+    options.add("application <name>", ki18n("")); // FIXME Undocumented due to string freeze, fix for 2.1.
+    options.add("backends <names>", ki18n(""));
+    KCmdLineArgs::addCmdLineOptions(options);
 
     if (!KUniqueApplication::start()) {
         fprintf(stderr, "Software Center is already running!\n");
@@ -55,7 +59,13 @@ int main(int argc, char **argv)
     KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
     app.disableSessionManagement();
 
+    KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
+
     MainWindow *mainWindow = new MainWindow;
+
+    if(args->isSet("application"))
+        mainWindow->openApplication(args->getOption("application"));
+
     mainWindow->show();
 
     return app.exec();
