@@ -42,8 +42,8 @@ int main(int argc, char **argv)
 
     KCmdLineArgs::init(argc, argv, &about);
     KCmdLineOptions options;
-    options.add("application <name>", ki18n("")); // FIXME Undocumented due to string freeze, fix for 2.1.
-    options.add("backends <names>", ki18n(""));
+    options.add("application <name>", KLocalizedString()); // FIXME Undocumented due to string freeze, fix for 2.1.
+    options.add("backends <names>", KLocalizedString());
     KCmdLineArgs::addCmdLineOptions(options);
 
     if (!KUniqueApplication::start()) {
