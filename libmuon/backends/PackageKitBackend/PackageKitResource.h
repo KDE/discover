@@ -34,7 +34,6 @@ class PackageKitResource : public AbstractResource
         virtual QString name();
         virtual QString comment();
         virtual QString longDescription() const;
-        virtual QString sizeDescription();
         virtual QUrl homepage() const;
         virtual QString icon() const;
         virtual QStringList categories();
@@ -42,6 +41,8 @@ class PackageKitResource : public AbstractResource
         virtual QString origin() const;
         virtual QString section();
         virtual bool isTechnical() const;
+        virtual int downloadSize();
+        virtual void fetchChangelog();
         
         virtual QList<PackageState> addonsInformation();
         virtual State state();

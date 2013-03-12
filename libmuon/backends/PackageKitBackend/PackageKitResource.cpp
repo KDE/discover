@@ -82,9 +82,9 @@ QString PackageKitResource::installedVersion() const
     return m_package.version();
 }
 
-QString PackageKitResource::sizeDescription()
+int PackageKitResource::downloadSize()
 {
-    return KGlobal::locale()->formatByteSize(m_package.size());
+    return m_package.size();
 }
 
 QString PackageKitResource::origin() const
@@ -160,4 +160,10 @@ void PackageKitResource::fetchDetails()
 PackageKit::Package PackageKitResource::package() const
 {
     return m_package;
+}
+
+void PackageKitResource::fetchChangelog()
+{
+    //TODO: implement
+    emit changelogFetched(QString());
 }

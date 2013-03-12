@@ -24,6 +24,8 @@
 #include "AppstreamUtils.h"
 #include "PKTransaction.h"
 #include <resources/AbstractResource.h>
+#include <resources/StandardBackendUpdater.h>
+#include <Transaction/TransactionModel.h>
 #include <QStringList>
 #include <QDebug>
 #include <PackageKit/packagekit-qt2/Transaction>
@@ -37,7 +39,8 @@ K_PLUGIN_FACTORY(MuonPackageKitBackendFactory, registerPlugin<PackageKitBackend>
 K_EXPORT_PLUGIN(MuonPackageKitBackendFactory(KAboutData("muon-pkbackend","muon-pkbackend",ki18n("PackageKit Backend"),"0.1",ki18n("Install PackageKit data in your system"), KAboutData::License_GPL)))
 
 PackageKitBackend::PackageKitBackend(QObject* parent, const QVariantList&)
-	: AbstractResourcesBackend(parent)
+    : AbstractResourcesBackend(parent)
+    , m_updater(new StandardBackendUpdater(this))
 {
     populateCache();
     emit backendReady();
@@ -109,10 +112,10 @@ void PackageKitBackend::removeTransaction(Transaction* t)
     qDebug() << "done" << t->resource()->packageName() << m_transactions.size();
     int count = m_transactions.removeAll(t);
     Q_ASSERT(count==1);
-    emit transactionRemoved(t);
+    TransactionModel::global()->removeTransaction(t);
 }
 
-void PackageKitBackend::installApplication(AbstractResource* app, const QHash<QString, bool>& )
+void PackageKitBackend::installApplication(AbstractResource* app, AddonList )
 {
     installApplication(app);
 }
@@ -121,10 +124,9 @@ void PackageKitBackend::installApplication(AbstractResource* app)
 {
     PackageKit::Transaction* installTransaction = new PackageKit::Transaction(this);
     installTransaction->installPackage(qobject_cast<PackageKitResource*>(app)->package());
-    PKTransaction* t = new PKTransaction(app, InstallApp, installTransaction);
+    PKTransaction* t = new PKTransaction(app, Transaction::InstallRole, installTransaction);
     m_transactions.append(t);
-    emit transactionAdded(t);
-    emit transactionsEvent(StartedCommitting, t);
+    TransactionModel::global()->addTransaction(t);
 }
 
 void PackageKitBackend::cancelTransaction(AbstractResource* app)
@@ -135,7 +137,7 @@ void PackageKitBackend::cancelTransaction(AbstractResource* app)
             if(pkt->transaction()->allowCancel()) {
                 pkt->transaction()->cancel();
                 removeTransaction(t);
-                emit transactionCancelled(t);
+                TransactionModel::global()->cancelTransaction(t);
             } else
                 kWarning() << "trying to cancel a non-cancellable transaction: " << app->name();
             break;
@@ -147,26 +149,27 @@ void PackageKitBackend::removeApplication(AbstractResource* app)
 {
     PackageKit::Transaction* removeTransaction = new PackageKit::Transaction(this);
     removeTransaction->removePackage(qobject_cast<PackageKitResource*>(app)->package());
-    PKTransaction* t = new PKTransaction(app, RemoveApp, removeTransaction);
+    PKTransaction* t = new PKTransaction(app, Transaction::RemoveRole, removeTransaction);
     m_transactions.append(t);
-    emit transactionAdded(t);
-    emit transactionsEvent(FinishedCommitting, t);
+    TransactionModel::global()->addTransaction(t);
     qDebug() << "remove" << app->packageName();
 }
 
-QPair<TransactionStateTransition, Transaction*> PackageKitBackend::currentTransactionState() const
+QList<AbstractResource*> PackageKitBackend::upgradeablePackages() const
 {
-    if(m_transactions.isEmpty())
-        return qMakePair<TransactionStateTransition, Transaction*>(FinishedCommitting, nullptr);
-    else
-        return qMakePair<TransactionStateTransition, Transaction*>(StartedCommitting, m_transactions.first());
+    QList<AbstractResource*> ret;
+    for(AbstractResource* res : m_packages) {
+        if(res->state() == AbstractResource::Upgradeable) {
+            ret+=res;
+        }
+    }
+    return ret;
 }
 
-QList<Transaction*> PackageKitBackend::transactions() const
+AbstractBackendUpdater* PackageKitBackend::backendUpdater() const
 {
-    return m_transactions;
+    return m_updater;
 }
 
 //TODO
 AbstractReviewsBackend* PackageKitBackend::reviewsBackend() const { return 0; }
-AbstractBackendUpdater* PackageKitBackend::backendUpdater() const { return 0; }

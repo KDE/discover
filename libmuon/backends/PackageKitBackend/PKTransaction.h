@@ -28,7 +28,7 @@ class PKTransaction : public Transaction
 {
     Q_OBJECT
     public:
-        explicit PKTransaction(AbstractResource* app, TransactionAction action, PackageKit::Transaction* pktrans);
+        explicit PKTransaction(AbstractResource* app, Transaction::Role role, PackageKit::Transaction* pktrans);
         PackageKit::Transaction* transaction();
 
     private slots:

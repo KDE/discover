@@ -27,8 +27,8 @@
 #include <PackageKit/packagekit-qt2/Transaction>
 #include <QDebug>
 
-PKTransaction::PKTransaction(AbstractResource* app, TransactionAction action, PackageKit::Transaction* pktrans)
-    : Transaction(app, action)
+PKTransaction::PKTransaction(AbstractResource* app, Transaction::Role role, PackageKit::Transaction* pktrans)
+    : Transaction(app, app, role)
     , m_trans(pktrans)
 {
     m_trans->setParent(this);
