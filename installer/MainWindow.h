@@ -53,8 +53,11 @@ public:
     MainWindow();
     ~MainWindow();
 
+    void openApplication(const QString &app);
+
 private:
     AbstractResourcesBackend *m_appBackend;
+    QString m_appToBeOpened;
     QSplitter *m_mainWidget;
     QStackedWidget *m_viewStack;
     QWidget *m_busyWidget;
@@ -90,6 +93,10 @@ private Q_SLOTS:
     void transactionRemoved();
     void addProgressItem();
     void removeProgressItem();
+    void triggerOpenApplication();
+
+signals:
+    void viewsPopulated();
 };
 
 #endif
