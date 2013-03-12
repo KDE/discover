@@ -24,13 +24,12 @@
 
 #include <QtCore/QStringBuilder>
 #include <KLocalizedString>
-#include <LibQApt/Package>
-#include <LibQApt/Backend>
 
 UpdateItem::UpdateItem()
     : m_app(0)
     , m_parent(0)
     , m_type(ItemType::RootItem)
+    , m_checkState(Qt::Unchecked)
 {
 }
 
@@ -39,6 +38,7 @@ UpdateItem::UpdateItem(const QString &categoryName,
     : m_app(0)
     , m_parent(0)
     , m_type(ItemType::CategoryItem)
+    , m_checkState(Qt::Unchecked)
     , m_categoryName(categoryName)
     , m_categoryIcon(categoryIcon)
 {
@@ -48,6 +48,7 @@ UpdateItem::UpdateItem(AbstractResource *app, UpdateItem *parent)
     : m_app(app)
     , m_parent(parent)
     , m_type(ItemType::ApplicationItem)
+    , m_checkState(Qt::Unchecked)
 {
 }
 
@@ -122,12 +123,8 @@ QString UpdateItem::name() const
     switch (type()) {
     case ItemType::CategoryItem:
         return m_categoryName;
-    case ItemType::ApplicationItem: {
-        QApt::Package* p = retrievePackage();
-        if (p->isForeignArch()) {
-            return i18n("%1 (%2)", m_app->name(), p->architecture());
-        }
-    }   return m_app->name();
+    case ItemType::ApplicationItem:
+        return m_app->name();
     default:
         break;
     }
@@ -168,7 +165,7 @@ qint64 UpdateItem::size() const
     int size = 0;
 
     if (itemType == ItemType::ApplicationItem) {
-        size = retrievePackage()->downloadSize();
+        size = m_app->downloadSize();
     } else if (itemType == ItemType::CategoryItem) {
         foreach (UpdateItem *item, m_children) {
             if (item->app()->state() & AbstractResource::Upgradeable) {
@@ -191,7 +188,7 @@ Qt::CheckState UpdateItem::checked() const
         int uncheckedCount = 0;
 
         foreach (UpdateItem *child, m_children) {
-            (child->app()->state() & AbstractResource::Upgradeable) ?
+            (child->checked() == Qt::Checked) ?
                         checkedCount++ : uncheckedCount++;
         }
 
@@ -208,8 +205,7 @@ Qt::CheckState UpdateItem::checked() const
         break;
     }
     case ItemType::ApplicationItem:
-        (app()->state() & AbstractResource::Upgradeable) ?
-                    checkState = Qt::Checked : checkState = Qt::Unchecked;
+        return m_checkState;
         break;
     case ItemType::RootItem:
     case ItemType::InvalidItem:
@@ -219,13 +215,13 @@ Qt::CheckState UpdateItem::checked() const
     return checkState;
 }
 
+void UpdateItem::setChecked(bool checked)
+{
+    if (type() == ItemType::ApplicationItem || type() == ItemType::CategoryItem)
+        m_checkState = (checked) ? Qt::Checked : Qt::Unchecked;
+}
+
 UpdateItem::ItemType UpdateItem::type() const
 {
     return m_type;
-}
-
-QApt::Package* UpdateItem::retrievePackage() const
-{
-    QApt::Backend* backend = qobject_cast<QApt::Backend*>(m_app->backend()->property("backend").value<QObject*>());
-    return backend->package(m_app->packageName());
 }

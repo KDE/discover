@@ -22,60 +22,48 @@
 #ifndef TRANSACTIONLISTENER_H
 #define TRANSACTIONLISTENER_H
 
-#include <QObject>
+#include <QtCore/QObject>
 
+#include "Transaction.h"
 #include "libmuonprivate_export.h"
-#include <resources/AbstractResourcesBackend.h>
 
-class Transaction;
 class AbstractResource;
-class AbstractResourcesBackend;
 
 class MUONPRIVATE_EXPORT TransactionListener : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(int progress READ progress NOTIFY progressChanged)
-    Q_PROPERTY(QString comment READ comment NOTIFY commentChanged)
     Q_PROPERTY(AbstractResource* resource READ resource WRITE setResource NOTIFY resourceChanged)
-    Q_PROPERTY(AbstractResourcesBackend* backend READ backend WRITE setBackend) //TODO: port to ResourcesModel
-    Q_PROPERTY(bool isActive READ isActive NOTIFY running)
-    Q_PROPERTY(bool isDownloading READ isDownloading NOTIFY downloading)
-    public:
-        explicit TransactionListener(QObject* parent = 0);
-        void setBackend(AbstractResourcesBackend* backend);
-        void setResource(AbstractResource* app);
-        int progress() const;
-        QString comment() const;
-        AbstractResource* resource() const;
-        AbstractResourcesBackend* backend() const;
-        void init();
-        bool isActive() const;
-        bool isDownloading() const;
+    Q_PROPERTY(bool isCancellable READ isCancellable NOTIFY cancellableChanged)
+    Q_PROPERTY(bool isActive READ isActive NOTIFY runningChanged)
+    Q_PROPERTY(QString statusText READ statusText NOTIFY statusTextChanged)
+public:
+    explicit TransactionListener(QObject *parent = nullptr);
+    
+    AbstractResource *resource() const;
+    bool isCancellable() const;
+    bool isActive() const;
+    QString statusText() const;
 
-    signals:
-        void progressChanged();
-        void commentChanged();
-        void resourceChanged();
-        void running(bool isRunning);
-        void downloading(bool isDownloading);
-        void cancelled();
+    void setResource(AbstractResource* resource);
 
-    private slots:
-        void updateProgress(Transaction*,int);
-        void transactionCancelled(Transaction*);
-        void transactionRemoved(Transaction*);
-        void workerEvent(TransactionStateTransition, Transaction*);
+private:
+    void setTransaction(Transaction *trans);
 
-    private:
-        void setDownloading(bool);
-        void showTransactionState(Transaction* transaction);
-        void setStateComment(Transaction* transaction);
-        
-        AbstractResourcesBackend* m_backend;
-        AbstractResource* m_resource;
-        int m_progress;
-        QString m_comment;
-        bool m_downloading;
+    AbstractResource *m_resource;
+    Transaction *m_transaction;
+
+private slots:
+    void transactionAdded(Transaction *trans);
+    void transactionRemoved(Transaction* trans);
+    void transactionCancelled(Transaction* trans);
+    void transactionStatusChanged(Transaction::Status status);
+
+signals:
+    void resourceChanged();
+    void cancellableChanged();
+    void runningChanged();
+    void statusTextChanged();
+    void cancelled();
 };
 
 #endif // TRANSACTIONLISTENER_H

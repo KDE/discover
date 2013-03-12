@@ -23,16 +23,13 @@
 import QtQuick 1.0
 import org.kde.plasma.core 0.1 as PlasmaCore
 
-Item {
+MouseArea {
     id: listItem
     default property alias content: paddingItem.data
 
     //this defines if the item will emit clicked and look pressed on mouse down
-    property alias enabled: itemMouse.enabled
-    property alias containsMouse: itemMouse.containsMouse
-    signal clicked
-    signal pressAndHold
-    signal positionChanged
+    property alias enabled: listItem.enabled
+    property alias containsMouse: listItem.containsMouse
 
     property bool checked: false
     property bool sectionDelegate: false
@@ -42,6 +39,11 @@ Item {
 
     property int implicitHeight: paddingItem.childrenRect.height + background.margins.top + background.margins.bottom
 
+    property bool changeBackgroundOnPress: !listItem.checked && !listItem.sectionDelegate
+    hoverEnabled: true
+    onPressed: if (changeBackgroundOnPress) background.prefix = "pressed"
+    onReleased: if (changeBackgroundOnPress) background.prefix = "normal"
+    onCanceled: if (changeBackgroundOnPress) background.prefix = "normal"
 
     Connections {
         target: listItem
@@ -55,7 +57,7 @@ Item {
         prefix: "normal"
 
         anchors.fill: parent
-        opacity: itemMouse.containsMouse && !itemMouse.pressed ? 0.5 : 1
+        opacity: listItem.containsMouse && !listItem.pressed ? 0.5 : 1
         Component.onCompleted: {
             prefix = (listItem.sectionDelegate ? "section" : (listItem.checked ? "pressed" : "normal"))
         }
@@ -70,22 +72,7 @@ Item {
             top: parent.top
         }
         height: naturalSize.height
-        visible: listItem.sectionDelegate || (typeof(index) != "undefined" && index > 0 && !listItem.checked && !itemMouse.pressed)
-    }
-
-    MouseArea {
-        id: itemMouse
-        property bool changeBackgroundOnPress: !listItem.checked && !listItem.sectionDelegate
-        anchors.fill: background
-        enabled: false
-        hoverEnabled: true
-
-        onClicked: listItem.clicked()
-        onPressAndHold: listItem.pressAndHold()
-        onPressed: if (changeBackgroundOnPress) background.prefix = "pressed"
-        onReleased: if (changeBackgroundOnPress) background.prefix = "normal"
-        onCanceled: if (changeBackgroundOnPress) background.prefix = "normal"
-        onPositionChanged: listItem.positionChanged()
+        visible: listItem.sectionDelegate || (typeof(index) != "undefined" && index > 0 && !listItem.checked && !listItem.pressed)
     }
 
     Item {

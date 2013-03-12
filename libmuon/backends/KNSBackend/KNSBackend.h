@@ -21,15 +21,20 @@
 #ifndef KNSBACKEND_H
 #define KNSBACKEND_H
 
-#include <resources/AbstractResourcesBackend.h>
+// KDE includes
 #include <knewstuff3/entry.h>
+
+// Attica includes
 #include <attica/category.h>
 #include <attica/provider.h>
+
+// Libmuon includes
+#include <resources/AbstractResourcesBackend.h>
+#include "Transaction/AddonList.h"
 
 #include "libmuonprivate_export.h"
 
 class KConfigGroup;
-class KNSUpdater;
 class KNSReviews;
 namespace KNS3 { class DownloadManager; }
 namespace Attica {
@@ -48,19 +53,18 @@ public:
     virtual void cancelTransaction(AbstractResource* app);
     virtual void removeApplication(AbstractResource* app);
     virtual void installApplication(AbstractResource* app);
-    virtual void installApplication(AbstractResource* app, const QHash< QString, bool >& addons);
+    virtual void installApplication(AbstractResource* app, AddonList addons);
     virtual AbstractResource* resourceByPackageName(const QString& name) const;
-    virtual QList< Transaction* > transactions() const;
-    virtual QPair< TransactionStateTransition, Transaction* > currentTransactionState() const;
     virtual int updatesCount() const;
     virtual AbstractReviewsBackend* reviewsBackend() const;
     virtual QStringList searchPackageName(const QString& searchText);
     virtual QVector< AbstractResource* > allResources() const;
     virtual AbstractBackendUpdater* backendUpdater() const;
 
+    bool isValid() const;
     bool isFetching() const;
     Attica::Provider* provider() { return &m_provider; }
-    QList<AbstractResource*> upgradeablePackages();
+    QList<AbstractResource*> upgradeablePackages() const;
 
 public slots:
     void receivedEntries(const KNS3::Entry::List& entry);
@@ -73,6 +77,7 @@ private:
     static void initManager(KConfigGroup& group);
     static QSharedPointer<Attica::ProviderManager> m_atticaManager;
     
+    bool m_isValid;
     KNS3::DownloadManager* m_manager;
     QHash<QString, AbstractResource*> m_resourcesByName;
     int m_page;
@@ -82,7 +87,7 @@ private:
     QString m_name;
     bool m_fetching;
     QString m_iconName;
-    KNSUpdater* m_updater;
+    AbstractBackendUpdater* m_updater;
 };
 
 #endif // KNSBACKEND_H

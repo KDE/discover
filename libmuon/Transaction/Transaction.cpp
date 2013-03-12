@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2012 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -20,43 +20,84 @@
 
 #include "Transaction.h"
 
-Transaction::Transaction(AbstractResource *app, TransactionAction action)
-    : m_application(app)
-    , m_action(action)
-    , m_state(InvalidState)
+#include "TransactionModel.h"
+
+Transaction::Transaction(QObject *parent, AbstractResource *resource,
+                         Role role)
+    : Transaction(parent, resource, role, AddonList())
 {
 }
 
-Transaction::Transaction(AbstractResource *app, TransactionAction action,
-                         const QHash<QString, bool> &addons)
-    : m_application(app)
-    , m_action(action)
-    , m_state(InvalidState)
+Transaction::Transaction(QObject *parent, AbstractResource *resource,
+                         Role role, AddonList addons)
+    : QObject(parent)
+    , m_resource(resource)
+    , m_role(role)
+    , m_status(CommittingStatus)
     , m_addons(addons)
+    , m_isCancellable(true)
+    , m_progress(0)
 {
-}
-
-void Transaction::setState(TransactionState state)
-{
-    m_state = state;
 }
 
 AbstractResource *Transaction::resource() const
 {
-    return m_application;
+    return m_resource;
 }
 
-TransactionAction Transaction::action() const
+Transaction::Role Transaction::role() const
 {
-    return m_action;
+    return m_role;
 }
 
-TransactionState Transaction::state() const
+Transaction::Status Transaction::status() const
 {
-    return m_state;
+    return m_status;
 }
 
-QHash<QString, bool> Transaction::addons() const
+AddonList Transaction::addons() const
 {
     return m_addons;
+}
+
+bool Transaction::isCancellable() const
+{
+    return m_isCancellable;
+}
+
+int Transaction::progress() const
+{
+    return m_progress;
+}
+
+void Transaction::setStatus(Status status)
+{
+    if(m_status != status) {
+        m_status = status;
+        emit statusChanged(m_status);
+    }
+}
+
+void Transaction::setCancellable(bool isCancellable)
+{
+    if(m_isCancellable != isCancellable) {
+        m_isCancellable = isCancellable;
+        emit cancellableChanged(m_isCancellable);
+    }
+}
+
+void Transaction::setProgress(int progress)
+{
+    if(m_progress != progress) {
+        m_progress = progress;
+        emit progressChanged(m_progress);
+    }
+}
+
+void Transaction::cancel()
+{
+    if (!m_isCancellable)
+        return;
+
+    TransactionModel::global()->cancelTransaction(this);
 }

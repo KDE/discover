@@ -30,20 +30,37 @@
 #include <KToolInvocation>
 
 // Libmuon includes
-#include <Transaction/Transaction.h>
-#include <resources/AbstractResource.h>
-#include <resources/ResourcesModel.h>
+#include "Transaction/TransactionModel.h"
+#include "resources/AbstractResource.h"
 
 LaunchListModel::LaunchListModel(QObject* parent)
     : QStandardItemModel(parent)
 {
-    connect(ResourcesModel::global(), SIGNAL(transactionRemoved(Transaction*)), SLOT(transactionFinished(Transaction*)));
+    connect(TransactionModel::global(), SIGNAL(transactionAdded(Transaction*)),
+            this, SLOT(watchTransaction(Transaction*)));
 }
 
-void LaunchListModel::transactionFinished(Transaction* t)
+void LaunchListModel::watchTransaction(Transaction *trans)
 {
-    if(t->resource()->canExecute() && t->state()==DoneState && t->action()==InstallApp)
-        addApplication(t->resource());
+    connect(trans, SIGNAL(statusChanged(Transaction::Status)),
+            this, SLOT(transactionStatusChanged(Transaction::Status)));
+}
+
+void LaunchListModel::transactionStatusChanged(Transaction::Status status)
+{
+    Transaction *trans = qobject_cast<Transaction *>(sender());
+
+    if (status == Transaction::DoneStatus)
+        transactionFinished(trans);
+}
+
+void LaunchListModel::transactionFinished(Transaction* trans)
+{
+    bool doneInstall = trans->status() == Transaction::DoneStatus &&
+                       trans->role() == Transaction::InstallRole;
+
+    if(trans->resource()->canExecute() && doneInstall)
+        addApplication(trans->resource());
 }
 
 void LaunchListModel::addApplication(AbstractResource* app)

@@ -54,13 +54,15 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
             SectionRole,
             MimeTypes
         };
-        explicit ResourcesModel(QObject* parent=0);
+        /** This constructor should be only used by unit tests.
+         *  @p backendName defines what backend will be loaded when the backend is constructed.
+         */
+        ResourcesModel(const QString& backendName, QObject* parent = 0);
         static ResourcesModel* global();
+        virtual ~ResourcesModel();
         
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
         virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
-        
-        void addResourcesBackend(AbstractResourcesBackend* resources);
         
         AbstractResource* resourceAt(int row) const;
         QModelIndex resourceIndex(AbstractResource* res) const;
@@ -69,34 +71,40 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         virtual QMap< int, QVariant > itemData(const QModelIndex& index) const;
         
         Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name);
-        
+
+        void integrateMainWindow(MuonMainWindow* w);
+
     public slots:
-        void installApplication(AbstractResource* app, const QHash<QString, bool>& state);
+        void installApplication(AbstractResource* app, AddonList addons);
         void installApplication(AbstractResource* app);
         void removeApplication(AbstractResource* app);
         void cancelTransaction(AbstractResource* app);
-        void transactionChanged(Transaction* t);
 
     signals:
+        void allInitialized();
         void backendsChanged();
         void updatesCountChanged();
         void searchInvalidated();
-
-        //Transactions forwarding
-        void transactionProgressed(Transaction *transaction, int progress);
-        void transactionAdded(Transaction *transaction);
-        void transactionCancelled(Transaction *transaction);
-        void transactionRemoved(Transaction* transaction);
-        void transactionsEvent(TransactionStateTransition transition, Transaction* transaction);
 
     private slots:
         void cleanCaller();
         void resetCaller();
         void updateCaller();
-        
+        void registerAllBackends();
+        void resourceChangedByTransaction(Transaction* t);
+
     private:
+        ///@p initialize tells if all backends load will be triggered on construction
+        explicit ResourcesModel(QObject* parent=0, bool initialize = true);
+        void addResourcesBackend(AbstractResourcesBackend* resources);
+        void registerBackendByName(const QString& name);
+
         QVector< AbstractResourcesBackend* > m_backends;
         QVector< QVector<AbstractResource*> > m_resources;
+        int m_initializingBackends;
+        MuonMainWindow* m_mainwindow;
+
+        static ResourcesModel* s_self;
 };
 
 #endif // RESOURCESMODEL_H

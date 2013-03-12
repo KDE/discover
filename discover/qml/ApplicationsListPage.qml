@@ -63,14 +63,18 @@ Page {
     tools: Row {
             id: buttonsRow
             width: 100
+            height: theme.defaultFont.pointSize*2
             visible: page.visible
+            spacing: 3
             MuonMenuToolButton {
                 id: button
                 icon: "view-sort-ascending"
                 anchors.verticalCenter: parent.verticalCenter
                 model: paramModel
+                minimumHeight: parent.height
                 delegate: ToolButton {
                     width: parent.width
+                    height: button.height
                     text: display
                     onClicked: {
                         appsModel.stringSortRole=role
@@ -85,11 +89,13 @@ Page {
             
             MuonMenuToolButton {
                 id: listViewShown
-                checkable: true
                 icon: "tools-wizard"
                 model: ["list", "grid2"]
+                minimumHeight: parent.height
+                anchors.verticalCenter: parent.verticalCenter
                 delegate: ToolButton {
                     width: parent.width
+                    height: listViewShown.height
                     text: modelData
                     onClicked: {
                         page.state=modelData

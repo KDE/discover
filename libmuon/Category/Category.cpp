@@ -27,32 +27,36 @@
 #include <KDebug>
 #include <QFile>
 
-Category::Category(const QDomNode& data, bool canHaveChildren, QObject* parent)
+Category::Category(QObject* parent)
         : QObject(parent)
         , m_iconString("applications-other")
         , m_showTechnical(false)
-{
-    parseData(data, canHaveChildren);
-}
+{}
 
 Category::~Category()
 {}
 
-void Category::parseData(const QDomNode& data, bool canHaveChildren)
+void Category::parseData(const QString& path, const QDomNode& data, bool canHaveChildren)
 {
-    if(canHaveChildren) {
+    if(!canHaveChildren) {
         m_name = i18nc("@label The label used for viewing all members of this category", "All");
     }
-    QDomNode node = data.firstChild();
-    while(!node.isNull())
+
+    for(QDomNode node = data.firstChild(); !node.isNull(); node = node.nextSibling())
     {
+        if(!node.isElement()) {
+            if(!node.isComment())
+                kWarning() << "unknown node found at " << QString("%1:%2").arg(path).arg(node.lineNumber());
+            continue;
+        }
         QDomElement tempElement = node.toElement();
 
         if (canHaveChildren) {
             if (tempElement.tagName() == QLatin1String("Name")) {
                 m_name = i18nc("Category", tempElement.text().toUtf8());
             } else if (tempElement.tagName() == QLatin1String("Menu")) {
-                m_subCategories << new Category(node, true, this);
+                m_subCategories << new Category(this);
+                m_subCategories.last()->parseData(path, node, true);
             }
         }
         
@@ -63,12 +67,11 @@ void Category::parseData(const QDomNode& data, bool canHaveChildren)
         } else if (tempElement.tagName() == QLatin1String("Include")) {
             parseIncludes(tempElement);
         }
-
-        node = node.nextSibling();
     }
 
     if (!m_subCategories.isEmpty()) {
-        m_subCategories << new Category(data, false, this);
+        m_subCategories << new Category(this);
+        m_subCategories.last()->parseData(path, data, false);
     }
 }
 
@@ -181,7 +184,8 @@ QList< Category* > Category::loadCategoriesFile(const QString& path)
     QDomNode node = root.firstChild();
     while(!node.isNull())
     {
-        ret << new Category(node, true, nullptr);
+        ret << new Category(nullptr);
+        ret.last()->parseData(path, node, true);
 
         node = node.nextSibling();
     }
@@ -190,6 +194,7 @@ QList< Category* > Category::loadCategoriesFile(const QString& path)
 
 QList<Category*> Category::populateCategories()
 {
+    // FIXME: Should only populate categories for plugins that have successfully been loaded
     QList<Category*> ret;
     QStringList files = KGlobal::dirs()->findAllResources("data", "libmuon/categories/*.xml");
     for(const QString& file : files) {

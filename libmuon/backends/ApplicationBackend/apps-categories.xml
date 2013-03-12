@@ -14,7 +14,7 @@
 
   <Menu>
     <Name>Accessibility</Name>
-    <Icon>preferences-desktop-accessibility</Icon>s
+    <Icon>preferences-desktop-accessibility</Icon>
     <Include>
       <And>
         <Category>Accessibility</Category>
@@ -50,7 +50,6 @@
 
     <Menu>
       <Name>Graphic Interface Design</Name>
-      <Icon></Icon>
       <Include>
         <And>
           <Category>GUIDesigner</Category>
@@ -73,7 +72,6 @@
 
     <Menu>
       <Name>IDEs</Name>
-      <Icon></Icon>
       <Include>
         <And>
           <Category>IDE</Category>
@@ -106,7 +104,6 @@
 
     <Menu>
       <Name>Perl</Name>
-      <Icon></Icon>
       <Include>
         <Or>
           <PkgSection>perl</PkgSection>
@@ -119,7 +116,6 @@
 
     <Menu>
       <Name>Profiling</Name>
-      <Icon></Icon>
       <Include>
         <Or>
           <Category>Profiling</Category>
@@ -192,7 +188,6 @@
     </Include>
     <Menu>
       <Name>Astronomy</Name>
-      <Icon></Icon>
       <Include>
         <And>
           <Category>Astronomy</Category>
@@ -201,7 +196,6 @@
     </Menu>
     <Menu>
       <Name>Biology</Name>
-      <Icon></Icon>
       <Include>
         <And>
           <Category>Biology</Category>
@@ -248,7 +242,6 @@
     </Menu>
     <Menu>
       <Name>Geography</Name>
-      <Icon></Icon>
       <Include>
         <And>
           <Category>Geography</Category>
@@ -257,7 +250,6 @@
     </Menu>
     <Menu>
       <Name>Geology</Name>
-      <Icon></Icon>
       <Include>
         <Or>
           <Category>Geology</Category>
@@ -397,7 +389,6 @@
     </Include>
     <Menu>
       <Name>3D</Name>
-      <Icon></Icon>
       <Include>
         <And>
           <Category>3DGraphics</Category>

@@ -38,7 +38,8 @@
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
 
-//TODO: Port to the ApplicationAddonsModel?
+//FIXME: Port to the ApplicationAddonsModel, use QAbstractItemView::setIndexWidget
+//       so we can still use our widget as a "delegate"
 
 AddonsWidget::AddonsWidget(QWidget *parent)
         : KVBox(parent)
@@ -234,10 +235,7 @@ void AddonsWidget::addonStateChanged(const QModelIndex &left, const QModelIndex 
 void AddonsWidget::emitApplyButtonClicked()
 {
     ResourcesModel *resourcesModel = ResourcesModel::global();
-    resourcesModel->installApplication(m_resource, m_changedAddons);
+    //resourcesModel->installApplication(m_resource, m_changedAddons);
 
     emit applyButtonClicked();
 }
-
-
-#include "AddonsWidget.moc"

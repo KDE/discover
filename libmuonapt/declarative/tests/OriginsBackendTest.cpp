@@ -20,7 +20,6 @@
 
 #include "OriginsBackendTest.h"
 #include <resources/ResourcesModel.h>
-#include <MuonBackendsFactory.h>
 #include <QtTest/QtTest>
 
 QTEST_MAIN( OriginsBackendTest )
@@ -28,8 +27,7 @@ QTEST_MAIN( OriginsBackendTest )
 OriginsBackendTest::OriginsBackendTest(QObject* parent)
     : QObject(parent)
 {
-    MuonBackendsFactory f;
-    ResourcesModel::global()->addResourcesBackend(f.backend("appsbackend"));
+    new ResourcesModel("appsbackend", this);
 }
 
 void OriginsBackendTest::testLoad()

@@ -20,7 +20,6 @@
 #include "MuonExporter.h"
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/ResourcesModel.h>
-#include <MuonBackendsFactory.h>
 #include <resources/AbstractResource.h>
 #include <qjson/serializer.h>
 #include <QFile>
@@ -34,44 +33,24 @@ MuonExporter::MuonExporter()
     m_startExportingTimer->setInterval(200);
     m_startExportingTimer->setSingleShot(true);
     connect(m_startExportingTimer, SIGNAL(timeout()), SLOT(exportModel()));
-    initialize();
     
     m_exculdedProperties += "executables";
     m_exculdedProperties += "canExecute";
+    connect(ResourcesModel::global(), SIGNAL(allInitialized()), SLOT(allBackendsInitialized()));
 }
 
 MuonExporter::~MuonExporter()
 {}
 
-void MuonExporter::initialize()
+void MuonExporter::allBackendsInitialized()
 {
-    MuonBackendsFactory f;
-    QList<AbstractResourcesBackend*> backends = f.allBackends();
-    
-    m_backendsToInitialize = backends.count();
-    if(m_backendsToInitialize>0) {
-        ResourcesModel* m = ResourcesModel::global();
-        foreach(AbstractResourcesBackend* b, backends) {
-            connect(b, SIGNAL(backendReady()), SLOT(backendReady()));
-            m->addResourcesBackend(b);
-        }
-    } else {
-        m_startExportingTimer->start();
-    }
+    m_startExportingTimer->start();
+    connect(ResourcesModel::global(), SIGNAL(rowsInserted(QModelIndex,int,int)), m_startExportingTimer, SLOT(start()));
 }
 
 void MuonExporter::setExportPath(const KUrl& url)
 {
     m_path = url;
-}
-
-void MuonExporter::backendReady()
-{
-    m_backendsToInitialize--;
-    if(m_backendsToInitialize==0) {
-        m_startExportingTimer->start();
-        connect(ResourcesModel::global(), SIGNAL(rowsInserted(QModelIndex,int,int)), m_startExportingTimer, SLOT(start()));
-    }
 }
 
 QVariantMap itemDataToMap(const AbstractResource* res, const QSet<QString>& excluded)

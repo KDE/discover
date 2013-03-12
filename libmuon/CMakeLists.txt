@@ -12,8 +12,10 @@ set(muon_LIB_SRCS
     ReviewsBackend/ReviewsModel.cpp
     settings/SettingsPageBase.cpp
     settings/NotifySettingsPage.cpp
+    Transaction/AddonList.cpp
     Transaction/Transaction.cpp
     Transaction/TransactionListener.cpp
+    Transaction/TransactionModel.cpp
     resources/ResourcesModel.cpp
     resources/ResourcesProxyModel.cpp
     resources/AbstractResourcesBackend.cpp
@@ -21,6 +23,7 @@ set(muon_LIB_SRCS
     resources/PackageState.cpp
     resources/AbstractBackendUpdater.cpp
     resources/ResourcesUpdatesModel.cpp
+    resources/StandardBackendUpdater.cpp
     MuonBackendsFactory.cpp
     ScreenshotsModel.cpp
     ApplicationAddonsModel.cpp
@@ -41,6 +44,7 @@ target_link_libraries(muonprivate
     ${KDE4_KDECORE_LIBS}
     ${KDE4_KDEUI_LIBS}
     ${KDE4_PHONON_LIBS}
+    ${KDE4_SOLID_LIBS} 
 )
 
 install(TARGETS muonprivate ${INSTALL_TARGETS_DEFAULT_ARGS})

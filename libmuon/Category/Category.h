@@ -62,7 +62,7 @@ private:
     static void addSubcategory(QList<Category*>& list, Category* cat);
     static QList<Category*> loadCategoriesFile(const QString& path);
 
-    explicit Category(const QDomNode& data, bool canHaveChildren, QObject* parent = 0);
+    explicit Category(QObject* parent = 0);
 
     QString m_name;
     QString m_iconString;
@@ -72,7 +72,7 @@ private:
     bool m_showTechnical;
     QList<Category *> m_subCategories;
 
-    void parseData(const QDomNode &data, bool canHaveChildren);
+    void parseData(const QString& path, const QDomNode& data, bool canHaveChildren);
     QList<QPair<FilterType, QString> > parseIncludes(const QDomNode &data);
 };
 

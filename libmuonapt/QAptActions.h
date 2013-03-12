@@ -27,7 +27,10 @@
 
 #include "libmuonprivate_export.h"
 
+class MuonMainWindow;
+class KDialog;
 class KXmlGuiWindow;
+class KAction;
 class KActionCollection;
 
 namespace QApt {
@@ -40,15 +43,17 @@ class MUONPRIVATE_EXPORT QAptActions : public QObject
     Q_OBJECT
 public:
     static QAptActions* self();
-    void setMainWindow(KXmlGuiWindow *parent);
+    void setMainWindow(MuonMainWindow* w);
+    MuonMainWindow* mainWindow() const;
 
     bool isConnected() const;
     void setOriginalState(QApt::CacheState state);
     void setReloadWhenEditorFinished(bool reload);
     void initError();
+    void displayTransactionError(QApt::ErrorCode error, QApt::Transaction* trans);
+    KActionCollection* actionCollection();
     
 signals:
-    void checkForUpdates();
     void shouldConnect(bool isConnected);
     void changesReverted();
     void sourcesEditorClosed(bool reload);
@@ -57,7 +62,6 @@ signals:
 public slots:
     void setBackend(QApt::Backend *backend);
     void setupActions();
-    void setActionsEnabled(bool enabled = true);
     void networkChanged();
 
     // KAction slots
@@ -72,6 +76,15 @@ public slots:
     void revertChanges();
     void runSourcesEditor();
     void sourcesEditorFinished(int exitStatus);
+    void showHistoryDialog();
+    void setActionsEnabled(bool enabled = true);
+
+private slots:
+    void closeHistoryDialog();
+    void setActionsEnabledInternal(bool enabled);
+    void checkDistUpgrade();
+    void launchDistUpgrade();
+    void checkerFinished(int res);
 
 private:
     QAptActions();
@@ -79,10 +92,12 @@ private:
     QApt::Backend *m_backend;
     QApt::CacheState m_originalState;
     bool m_actionsDisabled;
-    KXmlGuiWindow* m_mainWindow;
+    MuonMainWindow* m_mainWindow;
     bool m_reloadWhenEditorFinished;
+    
+    KDialog* m_historyDialog;
+    QList<KAction *> m_actions;
 
-    KActionCollection* actionCollection();
 };
 
 #endif // QAPTACTIONS_H

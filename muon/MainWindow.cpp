@@ -45,7 +45,6 @@
 #include <LibQApt/Transaction>
 
 // Own includes
-#include "../libmuonapt/HistoryView/HistoryView.h"
 #include "../libmuonapt/MuonStrings.h"
 #include "TransactionWidget.h"
 #include "FilterWidget/FilterWidget.h"
@@ -59,7 +58,6 @@
 MainWindow::MainWindow()
     : MuonMainWindow()
     , m_settingsDialog(nullptr)
-    , m_historyDialog(nullptr)
     , m_reviewWidget(nullptr)
     , m_transWidget(nullptr)
 
@@ -124,7 +122,6 @@ void MainWindow::initGUI()
 
     actions->setMainWindow(this);
     connect(actions, SIGNAL(changesReverted()), this, SLOT(revertChanges()));
-    connect(actions, SIGNAL(checkForUpdates()), this, SLOT(checkForUpdates()));
     setupActions();
 
     m_statusWidget = new StatusWidget(centralWidget);
@@ -140,6 +137,8 @@ void MainWindow::initObject()
 
     emit backendReady(m_backend);
     QAptActions::self()->setBackend(m_backend);
+    connect(m_backend, SIGNAL(packageChanged()),
+            this, SLOT(setActionsEnabled()));
 
     // Set up GUI
     loadSettings();
@@ -200,13 +199,17 @@ void MainWindow::setupActions()
     m_applyAction->setText(i18nc("@action Applys the changes a user has made", "Apply Changes"));
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
 
-    KStandardAction::preferences(this, SLOT(editSettings()), actionCollection());
+    KAction* updateAction = actionCollection()->addAction("update");
+    updateAction->setIcon(KIcon("system-software-update"));
+    updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
+    updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
+    connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
+    if (!isConnected()) {
+        updateAction->setDisabled(true);
+    }
+    connect(this, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
 
-    m_historyAction = actionCollection()->addAction("history");
-    m_historyAction->setIcon(KIcon("view-history"));
-    m_historyAction->setText(i18nc("@action::inmenu", "History..."));
-    m_historyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_H));
-    connect(m_historyAction, SIGNAL(triggered()), this, SLOT(showHistoryDialog()));
+    KStandardAction::preferences(this, SLOT(editSettings()), actionCollection());
 
     setActionsEnabled(false);
 
@@ -370,7 +373,7 @@ void MainWindow::reload()
 
 void MainWindow::setActionsEnabled(bool enabled)
 {
-    QAptActions::self()->setActionsEnabled(enabled);
+    MuonMainWindow::setActionsEnabled(enabled);
     if (!enabled) {
         return;
     }
@@ -421,36 +424,6 @@ void MainWindow::closeSettingsDialog()
 {
     m_settingsDialog->deleteLater();
     m_settingsDialog = nullptr;
-}
-
-void MainWindow::showHistoryDialog()
-{
-    if (!m_historyDialog) {
-        m_historyDialog = new KDialog(this);
-
-        KConfigGroup dialogConfig(KSharedConfig::openConfig("muonrc"),
-                                  "HistoryDialog");
-        m_historyDialog->restoreDialogSize(dialogConfig);
-
-        connect(m_historyDialog, SIGNAL(finished()), SLOT(closeHistoryDialog()));
-        HistoryView *historyView = new HistoryView(m_historyDialog);
-        m_historyDialog->setMainWidget(historyView);
-        m_historyDialog->setWindowTitle(i18nc("@title:window", "Package History"));
-        m_historyDialog->setWindowIcon(KIcon("view-history"));
-        m_historyDialog->setButtons(KDialog::Close);
-        m_historyDialog->show();
-    } else {
-        m_historyDialog->raise();
-    }
-}
-
-void MainWindow::closeHistoryDialog()
-{
-    KConfigGroup dialogConfig(KSharedConfig::openConfig("muonrc"),
-                              "HistoryDialog");
-    m_historyDialog->saveDialogSize(dialogConfig, KConfigBase::Persistent);
-    m_historyDialog->deleteLater();
-    m_historyDialog = nullptr;
 }
 
 void MainWindow::revertChanges()

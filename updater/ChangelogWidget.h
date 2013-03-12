@@ -24,14 +24,13 @@
 #include <QtCore/QSet>
 #include <QtGui/QWidget>
 
+class AbstractResource;
 class QParallelAnimationGroup;
 
 class KJob;
 class KPixmapSequenceOverlayPainter;
 class KTemporaryFile;
 class KTextBrowser;
-
-namespace QApt { class Package; }
 
 class ChangelogWidget : public QWidget
 {
@@ -40,8 +39,7 @@ public:
     explicit ChangelogWidget(QWidget *parent = 0);
 
 private:
-    QApt::Package *m_package;
-    QSet<KJob *> m_jobHash;
+    AbstractResource *m_package;
     QString m_jobFileName;
     bool m_show;
 
@@ -52,14 +50,13 @@ private:
     QString buildDescription(const QByteArray& data, const QString& source);
 
 public Q_SLOTS:
-    void setPackage(QApt::Package *package);
+    void setResource(AbstractResource *package);
     void show();
     void animatedHide();
-    void stopPendingJobs();
 
 private Q_SLOTS:
     void fetchChangelog();
-    void changelogFetched(KJob *job);
+    void changelogFetched(const QString& changelog);
 };
 
 #endif

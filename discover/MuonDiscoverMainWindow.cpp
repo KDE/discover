@@ -57,16 +57,11 @@
 // Libmuon includes
 #include <libmuon/MuonDataSources.h>
 #include <resources/ResourcesModel.h>
-#include <resources/ResourcesUpdatesModel.h>
-#include <Category/CategoryModel.h>
+#include <Transaction/TransactionModel.h>
 #include <Category/Category.h>
-#include <Transaction/TransactionListener.h>
-#include <Transaction/Transaction.h>
-#include <ReviewsBackend/Rating.h>
-#include <ReviewsBackend/AbstractReviewsBackend.h>
-#include <MuonBackendsFactory.h>
 
-Q_DECLARE_METATYPE(ResourcesModel*);
+Q_DECLARE_METATYPE(ResourcesModel*)
+Q_DECLARE_METATYPE(TransactionModel*)
 
 MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     : MuonMainWindow()
@@ -95,6 +90,8 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     //Here we set up a cache for the screenshots
     m_view->engine()->rootContext()->setContextProperty("resourcesModel",
                                                         qVariantFromValue<ResourcesModel*>(ResourcesModel::global()));
+    m_view->engine()->rootContext()->setContextProperty("transactionModel",
+                                                        qVariantFromValue<TransactionModel*>(TransactionModel::global()));
     m_view->engine()->rootContext()->setContextProperty("app", this);
     m_view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
     
@@ -123,15 +120,8 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
 
 void MuonDiscoverMainWindow::initialize()
 {
-    MuonBackendsFactory factory;
-    QList<AbstractResourcesBackend*> backends/* = factory.allBackends()*/;
-	backends += factory.backend("muon-pkbackend");
-    
-    ResourcesModel* m = ResourcesModel::global();
-    foreach(AbstractResourcesBackend* b, backends) {
-        m->addResourcesBackend(b);
-        b->integrateMainWindow(this);
-    }
+    ResourcesModel *m = ResourcesModel::global();
+    m->integrateMainWindow(this);
 }
 
 MuonDiscoverMainWindow::~MuonDiscoverMainWindow()

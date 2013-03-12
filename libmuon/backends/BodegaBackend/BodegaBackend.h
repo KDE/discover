@@ -23,6 +23,7 @@
 
 #include <resources/AbstractResourcesBackend.h>
 #include "libmuonprivate_export.h"
+#include <Transaction/AddonList.h>
 #include <Transaction/Transaction.h>
 #include <QHash>
 #include <QVariantList>
@@ -44,16 +45,15 @@ public:
     
     virtual void cancelTransaction(AbstractResource* app);
     virtual void removeApplication(AbstractResource* app);
-    virtual void installApplication(AbstractResource* app, const QHash< QString, bool >& addons);
-    virtual void installApplication(AbstractResource* app) { installApplication(app, QHash<QString,bool>()); }
+    virtual void installApplication(AbstractResource* app, AddonList addons);
+    virtual void installApplication(AbstractResource* app) { installApplication(app, AddonList()); }
     virtual AbstractResource* resourceByPackageName(const QString& name) const;
-    virtual QList< Transaction* > transactions() const;
-    virtual QPair< TransactionStateTransition, Transaction* > currentTransactionState() const;
     virtual int updatesCount() const;
     virtual AbstractReviewsBackend* reviewsBackend() const;
     virtual QStringList searchPackageName(const QString& searchText);
     virtual QVector< AbstractResource* > allResources() const;
     virtual AbstractBackendUpdater* backendUpdater() const;
+    virtual bool isValid() const { return true; } // No external file dependencies that could cause runtime errors
 
     QList<AbstractResource*> upgradeablePackages() const;
 

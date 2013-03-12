@@ -67,7 +67,6 @@ private:
     KAction *m_autoRemoveAction;
     KAction *m_previewAction;
     KAction *m_applyAction;
-    KAction *m_historyAction;
     KAction *m_saveInstalledAction;
     KAction *m_saveSelectionsAction;
     KAction *m_loadSelectionsAction;
@@ -107,8 +106,6 @@ public Q_SLOTS:
     void revertChanges();
     void editSettings();
     void closeSettingsDialog();
-    void showHistoryDialog();
-    void closeHistoryDialog();
 
     void setupTransaction(QApt::Transaction *trans);
 

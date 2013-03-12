@@ -23,50 +23,39 @@
 
 #include <QtGui/QWidget>
 
-#include <LibQApt/Globals>
-
+class ResourcesUpdatesModel;
 class QLabel;
 class QParallelAnimationGroup;
 class QPushButton;
 class QProgressBar;
 
-namespace QApt {
-    class Transaction;
-}
+namespace Ui { class ProgressWidget; }
 
 class ProgressWidget : public QWidget
 {
     Q_OBJECT
 public:
-    ProgressWidget(QWidget *parent);
-
-    void setTransaction(QApt::Transaction *trans);
+    ProgressWidget(ResourcesUpdatesModel* updates, QWidget *parent);
+    virtual ~ProgressWidget();
 
 private:
-    QApt::Transaction *m_trans;
-    int m_lastRealProgress;
-
-    QLabel *m_headerLabel;
-    QProgressBar *m_progressBar;
-    QPushButton *m_cancelButton;
-    QLabel *m_detailsLabel;
+    ResourcesUpdatesModel* m_updater;
+    qreal m_lastRealProgress;
     bool m_show;
 
     QParallelAnimationGroup *m_expandWidget;
+    Ui::ProgressWidget* m_ui;
 
 public Q_SLOTS:
     void show();
     void animatedHide();
 
 private Q_SLOTS:
-    void statusChanged(QApt::TransactionStatus status);
-    void transactionErrorOccurred(QApt::ErrorCode error);
-    void provideMedium(const QString &label, const QString &medium);
-    void untrustedPrompt(const QStringList &untrustedPackages);
-    void configFileConflict(const QString &currentPath, const QString &newPath);
-    void updateProgress(int progress);
-    void downloadSpeedChanged(quint64 speed);
-    void etaChanged(quint64 ETA);
+    void updateProgress();
+    void downloadSpeedChanged();
+    void etaChanged();
+    void cancelChanged();
+    void updateIsProgressing();
 };
 
 #endif // PROGRESSWIDGET_H

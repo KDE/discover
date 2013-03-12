@@ -9,13 +9,20 @@ Page
     property real actualWidth: width-Math.pow(width/70, 2)
     property real sideMargin: (width-actualWidth)/2
     
-    function start() { updatesModel.updateAll() }
+    function start() {
+        updatesModel.prepare()
+        updatesModel.updateAll()
+    }
     ResourcesUpdatesModel {
         id: updatesModel
-        resources: resourcesModel
-        onUpdatesFinnished: page.pageStack.pop()
+        onProgressingChanged: if(!progressing) page.pageStack.pop()
     }
     onVisibleChanged: window.navigationEnabled=!visible
+    Binding {
+        target: progressBox
+        property: "enabled"
+        value: !page.visible
+    }
 
     ProgressBar {
         id: progress
@@ -26,12 +33,13 @@ Page
             rightMargin: sideMargin
             leftMargin: sideMargin
         }
-        value: updatesModel.progress*100
+        value: updatesModel.progress
         minimumValue: 0
         maximumValue: 100
+        indeterminate: updatesModel.progress==-1
         
         Label {
-            anchors.fill: parent
+            anchors.centerIn: parent
             text: updatesModel.remainingTime
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter

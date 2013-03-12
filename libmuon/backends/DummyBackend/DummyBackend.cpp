@@ -21,29 +21,39 @@
 #include "DummyBackend.h"
 #include "DummyResource.h"
 #include "DummyReviewsBackend.h"
+#include "DummyTransaction.h"
+#include <resources/StandardBackendUpdater.h>
 #include <Transaction/Transaction.h>
+#include <Transaction/TransactionModel.h>
 
 #include <KAboutData>
 #include <KLocalizedString>
 #include <KPluginFactory>
 #include <QDebug>
+#include <QThread>
+#include <QTimer>
 
 K_PLUGIN_FACTORY(MuonDummyBackendFactory, registerPlugin<DummyBackend>(); )
 K_EXPORT_PLUGIN(MuonDummyBackendFactory(KAboutData("muon-dummybackend","muon-dummybackend",ki18n("Dummy Backend"),"0.1",ki18n("Dummy backend to test muon frontends"), KAboutData::License_GPL)))
 
 DummyBackend::DummyBackend(QObject* parent, const QVariantList&)
     : AbstractResourcesBackend(parent)
-    , m_updater(0)
+    , m_updater(new StandardBackendUpdater(this))
 {
     for(int i=0; i<32; i++) {
         QString name = "alalala"+QString::number(i);
         DummyResource* res = new DummyResource(name, this);
         res->setState(AbstractResource::State(1+(i%3)));
         m_resources.insert(name, res);
+        connect(res, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));
     }
     
-    QMetaObject::invokeMethod(this, "backendReady", Qt::QueuedConnection);
+    QTimer::singleShot(0, this, SIGNAL(backendReady()));
     m_reviews = new DummyReviewsBackend(this);
+    
+//     //simulate a random reload
+//     QTimer::singleShot(1000, this, SIGNAL(reloadStarted()));
+//     QTimer::singleShot(1500, this, SIGNAL(reloadFinished()));
 }
 
 QVector<AbstractResource*> DummyBackend::allResources() const
@@ -96,38 +106,23 @@ AbstractReviewsBackend* DummyBackend::reviewsBackend() const
     return m_reviews;
 }
 
-QPair<TransactionStateTransition, Transaction*> DummyBackend::currentTransactionState() const
-{
-    return QPair<TransactionStateTransition, Transaction*>(FinishedCommitting, 0);
-}
-
-QList<Transaction*> DummyBackend::transactions() const
-{
-    return QList<Transaction*>();
-}
-
-void DummyBackend::installApplication(AbstractResource* app, const QHash< QString, bool >&)
+void DummyBackend::installApplication(AbstractResource* app, AddonList )
 {
     installApplication(app);
 }
 
 void DummyBackend::installApplication(AbstractResource* app)
 {
-    Transaction* t = new Transaction(app, InstallApp);
-    emit transactionAdded(t);
-    qobject_cast<DummyResource*>(app)->setState(AbstractResource::Installed);
-    emit transactionRemoved(t);
-    t->deleteLater();
+	TransactionModel *transModel = TransactionModel::global();
+	transModel->addTransaction(new DummyTransaction(qobject_cast<DummyResource*>(app), Transaction::InstallRole));
 }
 
 void DummyBackend::removeApplication(AbstractResource* app)
 {
-    Transaction* t = new Transaction(app, RemoveApp);
-    emit transactionAdded(t);
-    qobject_cast<DummyResource*>(app)->setState(AbstractResource::None);
-    emit transactionRemoved(t);
-    t->deleteLater();
+	TransactionModel *transModel = TransactionModel::global();
+	transModel->addTransaction(new DummyTransaction(qobject_cast<DummyResource*>(app), Transaction::RemoveRole));
 }
 
 void DummyBackend::cancelTransaction(AbstractResource*)
 {}
+

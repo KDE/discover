@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include "ChangelogWidget.h"
+#include <resources/AbstractResource.h>
 
 // Qt includes
 #include <QtCore/QParallelAnimationGroup>
@@ -38,10 +39,6 @@
 #include <KTemporaryFile>
 #include <KTextBrowser>
 #include <KDebug>
-
-// LibQApt includes
-#include <LibQApt/Backend>
-#include <LibQApt/Changelog>
 
 ChangelogWidget::ChangelogWidget(QWidget *parent)
         : QWidget(parent)
@@ -105,11 +102,20 @@ ChangelogWidget::ChangelogWidget(QWidget *parent)
     m_expandWidget->addAnimation(anim2);
 }
 
-void ChangelogWidget::setPackage(QApt::Package *package)
+void ChangelogWidget::setResource(AbstractResource* package)
 {
-    m_package = package;
+    if (m_package==package)
+        return;
 
-    package ? fetchChangelog() : animatedHide();
+    if(m_package)
+        disconnect(m_package, SIGNAL(changelogFetched(QString)), this, SLOT(changelogFetched(QString)));
+
+    m_package = package;
+    if (m_package) {
+        connect(m_package, SIGNAL(changelogFetched(QString)), SLOT(changelogFetched(QString)));
+        fetchChangelog();
+    } else
+        animatedHide();
 }
 
 void ChangelogWidget::show()
@@ -134,39 +140,12 @@ void ChangelogWidget::animatedHide()
     connect(m_expandWidget, SIGNAL(finished()), this, SLOT(hide()));
 }
 
-void ChangelogWidget::stopPendingJobs()
+void ChangelogWidget::changelogFetched(const QString& changelog)
 {
-    // Delete any KJobs lying around. We could get stale package pointers if the jobs
-    // finish during a cache reload
-    foreach (KJob* j, m_jobHash) {
-        j->deleteLater();
-    }
-
-    m_jobHash.clear();
-}
-
-void ChangelogWidget::changelogFetched(KJob *j)
-{
-    m_jobHash.remove(j);
-    KIO::StoredTransferJob* job = qobject_cast<KIO::StoredTransferJob*>(j);
-    if (!m_package || !job) {
-        return;
-    }
-
-    // Work around http://bugreports.qt.nokia.com/browse/QTBUG-2533 by forcibly resetting the CharFormat
-    m_changelogBrowser->setCurrentCharFormat(QTextCharFormat());
-
-    if (job->error()) {
-        if (m_package->origin() == QLatin1String("Ubuntu")) {
-            m_changelogBrowser->setText(i18nc("@info/rich", "The list of changes is not yet available. "
-                                            "Please use <link url='%1'>Launchpad</link> instead.",
-                                            QString("http://launchpad.net/ubuntu/+source/" + m_package->sourcePackage())));
-        } else {
-            m_changelogBrowser->setText(i18nc("@info", "The list of changes is not yet available."));
-        }
-    }
-    else {
-        m_changelogBrowser->setHtml(buildDescription(job->data(), m_package->sourcePackage()));
+    if (m_package) {
+        // Work around http://bugreports.qt.nokia.com/browse/QTBUG-2533 by forcibly resetting the CharFormat
+        m_changelogBrowser->setCurrentCharFormat(QTextCharFormat());
+        m_changelogBrowser->setHtml(changelog);
     }
 
     m_busyWidget->stop();
@@ -180,39 +159,5 @@ void ChangelogWidget::fetchChangelog()
     show();
     m_changelogBrowser->clear();
     m_busyWidget->start();
-
-    KIO::StoredTransferJob* getJob = KIO::storedGet(m_package->changelogUrl(), KIO::NoReload, KIO::HideProgressInfo);
-    m_jobHash.insert(getJob);
-    connect(getJob, SIGNAL(result(KJob*)),
-            this, SLOT(changelogFetched(KJob*)));
-}
-
-QString ChangelogWidget::buildDescription(const QByteArray& data, const QString& source)
-{
-    QApt::Changelog changelog(data, source);
-    QString description;
-
-    QApt::ChangelogEntryList entries = changelog.newEntriesSince(m_package->installedVersion());
-
-    if (entries.size() < 1) {
-        return description;
-    }
-
-    foreach(const QApt::ChangelogEntry &entry, entries) {
-        description += i18nc("@info:label Refers to a software version, Ex: Version 1.2.1:",
-                             "Version %1:", entry.version());
-
-        QString issueDate = KGlobal::locale()->formatDateTime(entry.issueDateTime(), KLocale::ShortDate);
-        description += QLatin1String("<p>") %
-                       i18nc("@info:label", "This update was issued on %1", issueDate) %
-                       QLatin1String("</p>");
-
-        QString updateText = entry.description();
-        updateText.replace('\n', QLatin1String("<br/>"));
-        description += QLatin1String("<p><pre>") %
-                       updateText %
-                       QLatin1String("</pre></p>");
-    }
-
-    return description;
+    m_package->fetchChangelog();
 }

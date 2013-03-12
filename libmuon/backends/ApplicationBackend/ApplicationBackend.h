@@ -58,10 +58,9 @@ public:
     explicit ApplicationBackend(QObject *parent, const QVariantList& args);
     ~ApplicationBackend();
 
+    bool isValid() const;
     AbstractReviewsBackend *reviewsBackend() const;
     Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name) const;
-    QPair<TransactionStateTransition, Transaction *> currentTransactionState() const;
-    QList<Transaction *> transactions() const;
     QApt::Backend* backend() const;
 
     int updatesCount() const;
@@ -75,13 +74,15 @@ public:
     QVector< AbstractResource* > allResources() const;
     QStringList searchPackageName(const QString& searchText);
     
-    void installApplication(AbstractResource *app, const QHash<QString, bool> &addons);
+    void installApplication(AbstractResource *app, AddonList addons);
     void installApplication(AbstractResource *app);
     void removeApplication(AbstractResource *app);
     void cancelTransaction(AbstractResource *app);
     
     AbstractBackendUpdater* backendUpdater() const;
     void integrateMainWindow(MuonMainWindow* w);
+    QWidget* mainWindow() const;
+    virtual QList<AbstractResource*> upgradeablePackages() const;
 
 private:
     QApt::Backend *m_backend;
@@ -115,10 +116,10 @@ private Q_SLOTS:
     void initBackend();
     void setupTransaction(QApt::Transaction *trans);
     void sourcesEditorClosed();
+    void checkForUpdates();
 
 Q_SIGNALS:
-    void startingFirstTransaction();
-    void errorSignal(QApt::ErrorCode code, const QString &details);
+	void startingFirstTransaction();
     void sourcesEditorFinished();
     void aptBackendInitialized(QApt::Backend* backend);
 };

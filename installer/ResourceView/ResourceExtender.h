@@ -44,7 +44,7 @@ private:
     QPushButton *m_cancelButton;
 
 private Q_SLOTS:
-    void workerEvent(TransactionStateTransition workerEvent, Transaction *transaction);
+    void setupTransaction(Transaction *trans);
     void transactionCancelled(Transaction *trans);
     void emitInfoButtonClicked();
     void removeButtonClicked();

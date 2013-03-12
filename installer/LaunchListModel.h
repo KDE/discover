@@ -22,10 +22,14 @@
 #define LAUNCHLISTMODEL_H
 
 #include "libmuonprivate_export.h"
+
+// Qt includes
 #include <QStandardItemModel>
 
+// Libmuon includes
+#include "Transaction/Transaction.h"
+
 class AbstractResource;
-class Transaction;
 
 class MUONPRIVATE_EXPORT LaunchListModel : public QStandardItemModel
 {
@@ -38,8 +42,11 @@ public:
 public slots:
     void invokeApplication(const QModelIndex &idx) const;
     void invokeApplication(int row) const;
-    void transactionFinished(Transaction* t);
+
+private slots:
+    void watchTransaction(Transaction *trans);
+    void transactionStatusChanged(Transaction::Status status);
+    void transactionFinished(Transaction *trans);
 };
 
 #endif // LAUNCHLISTMODEL_H
-

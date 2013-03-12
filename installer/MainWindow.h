@@ -69,8 +69,6 @@ private:
     ProgressView *m_progressView;
     QStandardItem *m_progressItem;
 
-    int m_transactionCount;
-
 private Q_SLOTS:
     void initGUI();
     void initObject();
@@ -86,8 +84,6 @@ private Q_SLOTS:
     void showAppLauncher();
     void onAppLauncherClosed();
     void clearMessageActions();
-    void transactionAdded();
-    void transactionRemoved();
     void addProgressItem();
     void removeProgressItem();
 };

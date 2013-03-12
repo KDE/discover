@@ -39,7 +39,6 @@ class BodegaResource : public AbstractResource
         virtual QUrl homepage() const { return QUrl(); }
         virtual QString section() { return "123"; }
         virtual QString installedVersion() const { return "only"; }
-        virtual QString sizeDescription() { return "33GiB"; }
         virtual QString origin() const { return "fuuu"; }
         
         virtual QStringList categories();
@@ -50,6 +49,8 @@ class BodegaResource : public AbstractResource
         virtual QString longDescription() const { return m_info.description; }
         virtual QString packageName() const { return m_info.id; }
         virtual QString license() { return m_info.license; }
+        virtual int downloadSize();
+        virtual void fetchChangelog();
         virtual QUrl screenshotUrl();
         virtual QUrl thumbnailUrl();
         virtual State state();

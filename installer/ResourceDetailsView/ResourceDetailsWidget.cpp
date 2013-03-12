@@ -58,11 +58,11 @@
 
 // Libmuon includes
 #include <resources/AbstractResource.h>
+#include <resources/AbstractResourcesBackend.h>
 #include <MuonStrings.h>
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/Review.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
-#include <Transaction/TransactionListener.h>
 #include <resources/AbstractResource.h>
 
 // std includes
@@ -207,7 +207,7 @@ ResourceDetailsWidget::ResourceDetailsWidget(QWidget *parent)
     m_screenshotView->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     m_screenshotView->setMinimumSize(170, 130);
     m_screenshotView->rootContext()->setContextProperty("view", m_screenshotView);
-    m_screenshotView->setSource(KStandardDirs::locate("data", QLatin1String("libmuon/ThumbnailView.qml")));
+    m_screenshotView->setSource(KStandardDirs::locate("data", QLatin1String("muon-installer/ThumbnailView.qml")));
     QObject *item = m_screenshotView->rootObject();
     connect(item, SIGNAL(thumbnailClicked()), this, SLOT(screenshotLabelClicked()));
 
@@ -291,13 +291,12 @@ ResourceDetailsWidget::ResourceDetailsWidget(QWidget *parent)
     layout->addWidget(detailsWidget);
     layout->addWidget(m_reviewsWidget);
     layout->addWidget(verticalSpacer);
-    
-    m_listener = new TransactionListener(this);
 
-    connect(m_listener, SIGNAL(progressChanged()), SLOT(progressChanged()));
-    connect(m_listener, SIGNAL(commentChanged()), SLOT(progressCommentChanged()));
-    connect(m_listener, SIGNAL(running(bool)), SLOT(applicationRunningChanged(bool)));
-    connect(m_listener, SIGNAL(downloading(bool)), SLOT(applicationDownloadingChanged(bool)));
+    // FIXME
+//    connect(m_listener, SIGNAL(progressChanged()), SLOT(progressChanged()));
+//    connect(m_listener, SIGNAL(commentChanged()), SLOT(progressCommentChanged()));
+//    connect(m_listener, SIGNAL(running(bool)), SLOT(applicationRunningChanged(bool)));
+//    connect(m_listener, SIGNAL(downloading(bool)), SLOT(applicationDownloadingChanged(bool)));
 
     setWidget(widget);
 }
@@ -310,8 +309,7 @@ ResourceDetailsWidget::~ResourceDetailsWidget()
 void ResourceDetailsWidget::setResource(AbstractResource *resource)
 {
     m_resource = resource;
-    m_listener->setResource(m_resource);
-    m_listener->setBackend(m_resource->backend());
+//    m_listener->setResource(m_resource);
 
     AbstractResource *app = qobject_cast<AbstractResource*>(resource);
 
@@ -523,12 +521,14 @@ void ResourceDetailsWidget::applicationDownloadingChanged(bool downloading)
 
 void ResourceDetailsWidget::progressChanged()
 {
-    m_progressBar->setValue(m_listener->progress());
+    // FIXME
+    //m_progressBar->setValue(m_listener->progress());
 }
 
 void ResourceDetailsWidget::progressCommentChanged()
 {
-    m_progressBar->setFormat(m_listener->comment());
+    // FIMXE
+    //m_progressBar->setFormat(m_listener->comment());
 }
 
 void ResourceDetailsWidget::updateActionButton()

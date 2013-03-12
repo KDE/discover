@@ -96,7 +96,8 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         virtual QUrl thumbnailUrl() = 0;
         virtual QUrl screenshotUrl() = 0;
         
-        virtual QString sizeDescription() = 0;
+        virtual int downloadSize() = 0;
+        virtual QString sizeDescription();
         virtual QString license() = 0;
         
         virtual QString installedVersion() const = 0;
@@ -110,6 +111,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         virtual QStringList mimetypes() const;
         
         virtual QList<PackageState> addonsInformation() = 0;
+        bool isFromSecureOrigin() const;
         
         virtual QStringList executables() const;
 
@@ -121,8 +123,10 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         virtual QString status();
 
         AbstractResourcesBackend* backend() const;
+
     public slots:
         virtual void fetchScreenshots();
+        virtual void fetchChangelog() = 0;
 
     signals:
         void stateChanged();
@@ -130,6 +134,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         ///response to the fetchScreenshots method
         ///@p thumbnails and @p screenshots should have the same number of elements
         void screenshotsFetched(const QList<QUrl>& thumbnails, const QList<QUrl>& screenshots);
+        void changelogFetched(const QString& changelog);
 };
 
 #endif // ABSTRACTRESOURCE_H

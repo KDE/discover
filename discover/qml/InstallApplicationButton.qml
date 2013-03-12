@@ -5,22 +5,21 @@ import org.kde.muon 1.0
 
 Item {
     id: item
-    property alias application: transactions.resource
+    property alias application: listener.resource
     property bool canHide: parent.state=="idle"
     property bool preferUpgrade: false
-    property alias isInstalling: transactions.isActive
+    property alias isActive: listener.isActive
     width: 100
     height: 30
     
     TransactionListener {
-        id: transactions
-        backend: resource.backend
+        id: listener
     }
     
     Button {
         id: button
         visible: parent.state=="idle"
-        width: parent.width
+        minimumWidth: parent.width
         anchors.fill: parent
         
         onClicked: {
@@ -62,7 +61,7 @@ Item {
                 left: parent.left
                 right: workingCancelButton.left
             }
-            text: transactions.comment
+            text: listener.statusText
         }
         
         Button {
@@ -70,7 +69,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             iconSource: "dialog-cancel"
-            enabled: transactions.isDownloading
+            enabled: listener.isCancellable
             onClicked: resourcesModel.cancelTransaction(application)
         }
     }
@@ -78,11 +77,11 @@ Item {
     states: [
         State {
             name: "idle"
-            when: !transactions.isActive
+            when: !listener.isActive
         },
         State {
             name: "working"
-            when: transactions.isActive
+            when: listener.isActive
         }
     ]
 }

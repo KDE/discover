@@ -6,7 +6,7 @@ import "navigation.js" as Navigation
 
 ToolBar {
     id: page
-    property bool active: transactionsModel.count>0
+    property bool active: progressModel.count>0
     height: active ? contents.height+2*contents.anchors.margins : 0
     
     Behavior on height {
@@ -14,25 +14,24 @@ ToolBar {
     }
     
     Connections {
-        id: backendConnections
-        target: resourcesModel
+        target: transactionModel
         onTransactionAdded: {
-            if(transactionsModel.appAt(transaction.resource)<0)
-                transactionsModel.append({'app': transaction.resource})
+            if(progressModel.appAt(trans.resource)<0)
+                progressModel.append({'app': trans.resource})
         }
 
         onTransactionCancelled: {
-            var id = transactionsModel.appAt(transaction.resource)
+            var id = progressModel.appAt(trans.resource)
             if(id>=0)
-                transactionsModel.remove(id)
+                progressModel.remove(id)
         }
     }
     
     ListModel {
-        id: transactionsModel
+        id: progressModel
         function appAt(app) {
-            for(var i=0; i<transactionsModel.count; i++) {
-                if(transactionsModel.get(i).app==app) {
+            for(var i=0; i<progressModel.count; i++) {
+                if(progressModel.get(i).app==app) {
                     return i
                 }
             }
@@ -53,7 +52,7 @@ ToolBar {
         height: 30
         orientation: ListView.Horizontal
         
-        model: transactionsModel
+        model: progressModel
         
         delegate: ListItem {
             width: launcherRow.childrenRect.width+5
@@ -63,7 +62,6 @@ ToolBar {
             TransactionListener {
                 id: listener
                 resource: model.app
-                backend: model.app.backend
                 onCancelled: model.remove(index)
             }
             
@@ -72,11 +70,11 @@ ToolBar {
                 spacing: 2
                 QIconItem { icon: model.app.icon; height: parent.height; width: height }
                 Label { text: model.app.name }
-                Label { text: listener.comment; visible: listener.isActive }
+                Label { text: listener.statusText; visible: listener.isActive }
                 ToolButton {
                     iconSource: "dialog-cancel"
-                    visible: listener.isDownloading
-                    onClicked: resourcesModel.cancelTransaction(application)
+                    visible: listener.isCancellable
+                    onClicked: resourcesModel.cancelTransaction(app)
                 }
                 ToolButton {
                     iconSource: "system-run"
@@ -89,14 +87,14 @@ ToolBar {
             }
         }
     }
-    
     ToolButton {
         anchors {
             verticalCenter: parent.verticalCenter
             right: parent.right
             rightMargin: 5
         }
+        height: Math.min(implicitHeight, parent.height)
         iconSource: "dialog-close"
-        onClicked: transactionsModel.clear()
+        onClicked: progressModel.clear()
     }
 }
