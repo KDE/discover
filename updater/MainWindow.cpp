@@ -1,5 +1,6 @@
 /***************************************************************************
  *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -71,23 +72,16 @@ void MainWindow::initGUI()
     m_powerMessage = new KMessageWidget(mainWidget);
     m_powerMessage->setText(i18nc("@info Warning to plug in laptop before updating",
                                   "It is safer to plug in the power adapter before updating."));
-    m_powerMessage->hide();
     m_powerMessage->setMessageType(KMessageWidget::Warning);
     checkPlugState();
 
     m_progressWidget = new ProgressWidget(m_updater, mainWidget);
-    m_progressWidget->hide();
-
     m_updaterWidget = new UpdaterWidget(mainWidget);
-    m_updaterWidget->setEnabled(false);
-
     m_changelogWidget = new ChangelogWidget(this);
-    m_changelogWidget->hide();
     connect(m_updaterWidget, SIGNAL(selectedResourceChanged(AbstractResource*)),
             m_changelogWidget, SLOT(setResource(AbstractResource*)));
 
     mainLayout->addWidget(m_powerMessage);
-//     mainLayout->addWidget(m_distUpgradeMessage);
     mainLayout->addWidget(m_progressWidget);
     mainLayout->addWidget(m_updaterWidget);
     mainLayout->addWidget(m_changelogWidget);
@@ -95,8 +89,8 @@ void MainWindow::initGUI()
     mainWidget->setLayout(mainLayout);
     setCentralWidget(mainWidget);
     setupActions();
+    progressingChanged();
 
-//     connect(m_updater, SIGNAL(reloadStarted()), SLOT(startedReloading()));
     connect(m, SIGNAL(backendsChanged()), SLOT(finishedReloading()));
     connect(m, SIGNAL(allInitialized()), SLOT(initBackend()));
 }
@@ -140,11 +134,12 @@ void MainWindow::setupBackendsActions()
 
 void MainWindow::progressingChanged()
 {
-    bool active = m_updater->isProgressing();
     QApplication::restoreOverrideCursor();
-    if(!active) {
-        m_updaterWidget->setCurrentIndex(0);
-    }
+    m_updaterWidget->setCurrentIndex(0);
+    m_changelogWidget->setResource(nullptr);
+    m_changelogWidget->hide();
+
+    bool active = m_updater->isProgressing();
     m_progressWidget->setVisible(active);
     m_updaterWidget->setVisible(!active);
     setActionsEnabled(!active);
@@ -169,11 +164,7 @@ void MainWindow::finishedReloading()
 void MainWindow::setActionsEnabled(bool enabled)
 {
     MuonMainWindow::setActionsEnabled(enabled);
-    if (!enabled) {
-        return;
-    }
-
-    m_applyAction->setEnabled(m_updater->hasUpdates());
+    m_applyAction->setEnabled(enabled && m_updater->hasUpdates());
 }
 
 void MainWindow::editSettings()
@@ -197,13 +188,7 @@ void MainWindow::checkPlugState()
 {
     const QList<Solid::Device> acAdapters = Solid::Device::listFromType(Solid::DeviceInterface::AcAdapter);
 
-    if (acAdapters.isEmpty()) {
-        updatePlugState(true);
-        return;
-    }
-    
-    bool isPlugged = false;
-
+    bool isPlugged = acAdapters.isEmpty();
     for(Solid::Device device_ac : acAdapters) {
         Solid::AcAdapter* acAdapter = device_ac.as<Solid::AcAdapter>();
         isPlugged |= acAdapter->isPlugged();
