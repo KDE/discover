@@ -91,7 +91,6 @@ void MainWindow::initGUI()
     setupActions();
     progressingChanged();
 
-    connect(m, SIGNAL(backendsChanged()), SLOT(finishedReloading()));
     connect(m, SIGNAL(allInitialized()), SLOT(initBackend()));
 }
 
@@ -143,22 +142,7 @@ void MainWindow::progressingChanged()
     m_progressWidget->setVisible(active);
     m_updaterWidget->setVisible(!active);
     setActionsEnabled(!active);
-}
-
-void MainWindow::startedReloading()
-{
-    setCanExit(false);
-    setActionsEnabled(false);
-    QApplication::setOverrideCursor(Qt::WaitCursor);
-    m_changelogWidget->setResource(0);
-}
-
-void MainWindow::finishedReloading()
-{
-    QApplication::restoreOverrideCursor();
-    checkPlugState();
-    setActionsEnabled(true);
-    setCanExit(true);
+    setCanExit(!active);
 }
 
 void MainWindow::setActionsEnabled(bool enabled)

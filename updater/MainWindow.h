@@ -62,8 +62,6 @@ private Q_SLOTS:
     void checkPlugState();
     void updatePlugState(bool plugged);
     void progressingChanged();
-    void startedReloading();
-    void finishedReloading();
 };
 
 #endif // MAINWINDOW_H
