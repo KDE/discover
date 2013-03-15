@@ -506,7 +506,7 @@ void QAptActions::setActionsEnabled(bool enabled)
 
 void QAptActions::launchDistUpgrade()
 {
-    KProcess::startDetached(QStringList() << "python"
+    KProcess::startDetached(QStringList() << "python3"
                             << "/usr/lib/python3/dist-packages/DistUpgrade/DistUpgradeFetcherKDE.py");
 }
 
@@ -521,7 +521,7 @@ void QAptActions::checkDistUpgrade()
     }
 
     KProcess* checkerProcess = new KProcess(this);
-    checkerProcess->setProgram(QStringList() << "/usr/bin/python" << checkerFile);
+    checkerProcess->setProgram(QStringList() << "/usr/bin/python3" << checkerFile);
     connect(checkerProcess, SIGNAL(finished(int)), this, SLOT(checkerFinished(int)));
     connect(checkerProcess, SIGNAL(finished(int)), checkerProcess, SLOT(deleteLater()));
     checkerProcess->start();
