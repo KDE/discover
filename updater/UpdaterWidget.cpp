@@ -80,6 +80,10 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     m_markallWidget->setVisible(false);
     page1Layout->addWidget(m_markallWidget);
 
+    ChangelogWidget* changelogWidget = new ChangelogWidget(this);
+    changelogWidget->hide();
+    connect(this, SIGNAL(selectedResourceChanged(AbstractResource*)),
+            changelogWidget, SLOT(setResource(AbstractResource*)));
 
     m_updateView = new QTreeView(page1);
     m_updateView->setAlternatingRowColors(true);

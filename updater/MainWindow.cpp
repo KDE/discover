@@ -44,7 +44,6 @@
 #include <resources/AbstractBackendUpdater.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesUpdatesModel.h>
-#include "ChangelogWidget.h"
 #include "ProgressWidget.h"
 #include "config/UpdaterSettingsDialog.h"
 #include "UpdaterWidget.h"
@@ -77,14 +76,10 @@ void MainWindow::initGUI()
 
     m_progressWidget = new ProgressWidget(m_updater, mainWidget);
     m_updaterWidget = new UpdaterWidget(mainWidget);
-    m_changelogWidget = new ChangelogWidget(this);
-    connect(m_updaterWidget, SIGNAL(selectedResourceChanged(AbstractResource*)),
-            m_changelogWidget, SLOT(setResource(AbstractResource*)));
 
     mainLayout->addWidget(m_powerMessage);
     mainLayout->addWidget(m_progressWidget);
     mainLayout->addWidget(m_updaterWidget);
-    mainLayout->addWidget(m_changelogWidget);
 
     mainWidget->setLayout(mainLayout);
     setCentralWidget(mainWidget);
@@ -135,8 +130,6 @@ void MainWindow::progressingChanged()
 {
     QApplication::restoreOverrideCursor();
     m_updaterWidget->setCurrentIndex(0);
-    m_changelogWidget->setResource(nullptr);
-    m_changelogWidget->hide();
 
     bool active = m_updater->isProgressing();
     m_progressWidget->setVisible(active);
