@@ -48,6 +48,7 @@ private:
     UpdaterSettingsDialog *m_settingsDialog;
     KMessageWidget *m_powerMessage;
     KAction *m_applyAction;
+    QMenu* m_moreMenu;
 
     virtual void setActionsEnabled(bool enabled = true);
 

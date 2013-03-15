@@ -30,6 +30,7 @@
 #include <QtGui/QTreeView>
 #include <QtGui/QVBoxLayout>
 #include <qaction.h>
+#include <QPushButton>
 
 // KDE includes
 #include <KIcon>
@@ -51,6 +52,7 @@
 #include "UpdateModel/UpdateModel.h"
 #include "UpdateModel/UpdateItem.h"
 #include "UpdateModel/UpdateDelegate.h"
+#include "ChangelogWidget.h"
 #include "ui_UpdaterWidgetNoUpdates.h"
 
 UpdaterWidget::UpdaterWidget(QWidget *parent) :
@@ -78,14 +80,17 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     m_markallWidget->addAction(action);
     m_markallWidget->setCloseButtonVisible(true);
     m_markallWidget->setVisible(false);
-    page1Layout->addWidget(m_markallWidget);
 
     ChangelogWidget* changelogWidget = new ChangelogWidget(this);
     changelogWidget->hide();
     connect(this, SIGNAL(selectedResourceChanged(AbstractResource*)),
             changelogWidget, SLOT(setResource(AbstractResource*)));
 
+    QPushButton* showMore = new QPushButton(i18n("Show More/Less..."), page1);
+    showMore->setCheckable(true);
+
     m_updateView = new QTreeView(page1);
+    m_updateView->setVisible(false);
     m_updateView->setAlternatingRowColors(true);
     m_updateView->setModel(m_updateModel);
     m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
@@ -94,7 +99,13 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     m_updateView->header()->setStretchLastSection(false);
     connect(m_updateView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged(QItemSelection,QItemSelection)));
+    connect(showMore, SIGNAL(clicked(bool)), m_updateView, SLOT(setVisible(bool)));
+
+    page1Layout->addWidget(m_markallWidget);
+    page1Layout->addWidget(new QLabel(i18n("213213123 GiB need to be downloaded")));
+    page1Layout->addWidget(showMore);
     page1Layout->addWidget(m_updateView);
+    page1Layout->addWidget(changelogWidget);
 
     m_busyWidget = new KPixmapSequenceOverlayPainter(page1);
     m_busyWidget->setSequence(KPixmapSequence("process-working", KIconLoader::SizeSmallMedium));

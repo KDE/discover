@@ -25,6 +25,9 @@
 #include <QtCore/QTimer>
 #include <QtGui/QApplication>
 #include <QtGui/QVBoxLayout>
+#include <QPushButton>
+#include <QToolButton>
+#include <QMenu>
 
 // KDE includes
 #include <KAction>
@@ -38,6 +41,7 @@
 #include <Solid/Device>
 #include <Solid/AcAdapter>
 #include <KToolBar>
+#include <KMenuBar>
 
 // Own includes
 #include <resources/AbstractResourcesBackend.h>
@@ -48,6 +52,7 @@
 #include "config/UpdaterSettingsDialog.h"
 #include "UpdaterWidget.h"
 #include "KActionMessageWidget.h"
+#include "ui_UpdaterCentralWidget.h"
 
 MainWindow::MainWindow()
     : MuonMainWindow()
@@ -56,6 +61,7 @@ MainWindow::MainWindow()
     m_updater = new ResourcesUpdatesModel(this);
     connect(m_updater, SIGNAL(progressingChanged()), SLOT(progressingChanged()));
 
+    setupActions();
     initGUI();
 }
 
@@ -77,13 +83,20 @@ void MainWindow::initGUI()
     m_progressWidget = new ProgressWidget(m_updater, mainWidget);
     m_updaterWidget = new UpdaterWidget(mainWidget);
 
+    Ui::UpdaterButtons buttonsUi;
+    QWidget* buttons = new QWidget(this);
+    buttonsUi.setupUi(buttons);
+    buttonsUi.more->setMenu(m_moreMenu);
+    buttonsUi.apply->setDefaultAction(m_applyAction);
+    buttonsUi.quit->setDefaultAction(action("quit"));
+
     mainLayout->addWidget(m_powerMessage);
     mainLayout->addWidget(m_progressWidget);
     mainLayout->addWidget(m_updaterWidget);
+    mainLayout->addWidget(buttons);
 
     mainWidget->setLayout(mainLayout);
     setCentralWidget(mainWidget);
-    setupActions();
     progressingChanged();
 
     connect(m, SIGNAL(allInitialized()), SLOT(initBackend()));
@@ -103,7 +116,19 @@ void MainWindow::setupActions()
 
     setActionsEnabled(false);
 
-    setupGUI(StandardWindowOption(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
+//     setupGUI(StandardWindowOption(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
+    setupGUI(StandardWindowOption((KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar) & ~KXmlGuiWindow::ToolBar));
+
+    m_moreMenu = new QMenu(this);
+    m_moreMenu->addAction(actionCollection()->action("options_configure"));
+    m_moreMenu->addAction(actionCollection()->action("options_configure_keybinding"));
+    m_moreMenu->addSeparator();
+    m_moreMenu->addAction(actionCollection()->action("help_contents"));
+    m_moreMenu->addAction(actionCollection()->action("help_about_app"));
+    m_moreMenu->addAction(actionCollection()->action("help_about_kde"));
+    m_moreMenu->addAction(actionCollection()->action("help_report_bug"));
+    foreach(QAction* action, actionCollection()->actions())
+        qDebug() << "........" << action->objectName();
 }
 
 void MainWindow::initBackend()
@@ -121,7 +146,7 @@ void MainWindow::setupBackendsActions()
             KActionMessageWidget* w = new KActionMessageWidget(action, centralWidget());
             qobject_cast<QBoxLayout*>(centralWidget()->layout())->insertWidget(1, w);
         } else {
-            toolBar("mainToolBar")->addAction(action);
+            m_moreMenu->insertAction(action, m_moreMenu->actions().first());
         }
     }
 }
