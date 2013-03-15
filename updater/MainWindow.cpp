@@ -100,6 +100,8 @@ void MainWindow::initGUI()
     progressingChanged();
 
     connect(m, SIGNAL(allInitialized()), SLOT(initBackend()));
+    menuBar()->setVisible(false);
+    toolBar()->setVisible(false);
 }
 
 void MainWindow::setupActions()

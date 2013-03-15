@@ -47,6 +47,7 @@ public:
     virtual ~UpdaterWidget();
 
 private:
+    void initializeDescription();
     UpdateModel *m_updateModel;
 
     QTreeView *m_updateView;
@@ -54,9 +55,11 @@ private:
     ResourcesUpdatesModel* m_updatesBackends;
     KMessageWidget* m_markallWidget;
     Ui::UpdaterWidgetNoUpdates* m_ui;
+    QLabel* m_descriptionLabel;
 
 public Q_SLOTS:
     void setBackend(ResourcesUpdatesModel* backend);
+    void toggleUpdateVisibility();
 
 private Q_SLOTS:
     void populateUpdateModel();

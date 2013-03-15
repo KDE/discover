@@ -86,8 +86,8 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     connect(this, SIGNAL(selectedResourceChanged(AbstractResource*)),
             changelogWidget, SLOT(setResource(AbstractResource*)));
 
-    QPushButton* showMore = new QPushButton(i18n("Show More/Less..."), page1);
-    showMore->setCheckable(true);
+    m_descriptionLabel = new QLabel(this);
+    connect(m_descriptionLabel, SIGNAL(linkActivated(QString)), SLOT(toggleUpdateVisibility()));
 
     m_updateView = new QTreeView(page1);
     m_updateView->setVisible(false);
@@ -99,11 +99,9 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     m_updateView->header()->setStretchLastSection(false);
     connect(m_updateView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged(QItemSelection,QItemSelection)));
-    connect(showMore, SIGNAL(clicked(bool)), m_updateView, SLOT(setVisible(bool)));
 
     page1Layout->addWidget(m_markallWidget);
-    page1Layout->addWidget(new QLabel(i18n("213213123 GiB need to be downloaded")));
-    page1Layout->addWidget(showMore);
+    page1Layout->addWidget(m_descriptionLabel);
     page1Layout->addWidget(m_updateView);
     page1Layout->addWidget(changelogWidget);
 
@@ -126,6 +124,7 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
 
     QApplication::setOverrideCursor(Qt::WaitCursor);
     m_busyWidget->start();
+    initializeDescription();
 }
 
 UpdaterWidget::~UpdaterWidget()
@@ -251,3 +250,15 @@ void UpdaterWidget::checkUpToDate()
     }
 }
 
+void UpdaterWidget::toggleUpdateVisibility()
+{
+    m_updateView->setVisible(!m_updateView->isVisible());
+}
+
+void UpdaterWidget::initializeDescription()
+{
+    if(m_updateView->isVisible())
+        m_descriptionLabel->setText(i18n("123 GiB of updates. <a href='fuuu'>Hide package list</a>"));
+    else
+        m_descriptionLabel->setText(i18n("123 GiB of updates. <a href='fuuu'>Show package list</a>"));
+}
