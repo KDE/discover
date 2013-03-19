@@ -122,7 +122,7 @@ Qt::ItemFlags UpdateModel::flags(const QModelIndex &index) const
 
 QModelIndex UpdateModel::index(int row, int column, const QModelIndex &index) const
 {
-    if (index.isValid() && (index.column() < 0 && index.column() > 2)) {
+    if (!index.isValid() || index.column() < 0 || index.column() > 2) {
         return QModelIndex();
     }
 
