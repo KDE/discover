@@ -374,6 +374,11 @@ void MainWindow::setActionsEnabled(bool enabled)
 {
     QAptActions::self()->setActionsEnabled(enabled);
     if (!enabled) {
+        m_applyAction->setEnabled(false);
+        m_safeUpgradeAction->setEnabled(false);
+        m_distUpgradeAction->setEnabled(false);
+        m_autoRemoveAction->setEnabled(false);
+        m_previewAction->setEnabled(false);
         return;
     }
 
