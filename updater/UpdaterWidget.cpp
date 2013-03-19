@@ -82,6 +82,8 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
 
     connect(m_updateModel, SIGNAL(checkApps(QList<AbstractResource*>,bool)),
             this, SLOT(checkApps(QList<AbstractResource*>,bool)));
+    connect(m_appsBackend, SIGNAL(reloadFinished()),
+            this, SLOT(populateUpdateModel()));
 
     m_updateView = new QTreeView(page1);
     m_updateView->setAlternatingRowColors(true);
@@ -148,8 +150,6 @@ void UpdaterWidget::reload()
     QMetaObject::invokeMethod(m_appsBackend, "reload", Qt::QueuedConnection);
 
     setCurrentIndex(0);
-    connect(m_appsBackend, SIGNAL(reloadFinished()),
-            this, SLOT(populateUpdateModel()));
 }
 
 void UpdaterWidget::populateUpdateModel()
