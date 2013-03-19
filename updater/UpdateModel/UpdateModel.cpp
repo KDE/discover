@@ -121,7 +121,7 @@ Qt::ItemFlags UpdateModel::flags(const QModelIndex &index) const
 QModelIndex UpdateModel::index(int row, int column, const QModelIndex &index) const
 {
     // Bounds checks
-    if (!m_rootItem || row < 0 || column < 0 || column >= 2 ||
+    if (!m_rootItem || row < 0 || column < 0 || column > 3 ||
         (index.isValid() && index.column() != 0)) {
         return QModelIndex();
     }
@@ -152,6 +152,9 @@ QModelIndex UpdateModel::parent(const QModelIndex &index) const
 
 int UpdateModel::rowCount(const QModelIndex &parent) const
 {
+    if (parent.isValid() && parent.column() != 0)
+        return 0;
+
     UpdateItem *parentItem = itemFromIndex(parent);
 
     return parentItem->childCount();
