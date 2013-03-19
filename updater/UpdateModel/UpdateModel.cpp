@@ -122,14 +122,15 @@ Qt::ItemFlags UpdateModel::flags(const QModelIndex &index) const
 
 QModelIndex UpdateModel::index(int row, int column, const QModelIndex &index) const
 {
-    if (!index.isValid() || index.column() < 0 || index.column() > 2) {
+    // Bounds checks
+    if (!m_rootItem || row < 0 || column < 0 || column >= 2 ||
+        (index.isValid() && index.column() != 0)) {
         return QModelIndex();
     }
 
     if (UpdateItem *parent = itemFromIndex(index)) {
-        if (UpdateItem *childItem = parent->child(row)) {
+        if (UpdateItem *childItem = parent->child(row))
             return createIndex(row, column, childItem);
-        }
     }
 
     return QModelIndex();
@@ -141,7 +142,7 @@ QModelIndex UpdateModel::parent(const QModelIndex &index) const
         return QModelIndex();
     }
 
-    UpdateItem *childItem = static_cast<UpdateItem*>(index.internalPointer());
+    UpdateItem *childItem = itemFromIndex(index);
     UpdateItem *parentItem = childItem->parent();
 
     if (parentItem == m_rootItem) {
@@ -212,7 +213,7 @@ UpdateItem* UpdateModel::itemFromIndex(const QModelIndex &index) const
 {
     if (index.isValid())
          return static_cast<UpdateItem*>(index.internalPointer());
-     return m_rootItem;
+    return m_rootItem;
 }
 
 void UpdateModel::updateCheckStates()
