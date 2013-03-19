@@ -204,12 +204,14 @@ void MainWindow::reload()
     checkPlugState();
 
     setCanExit(true);
+    setActionsEnabled();
 }
 
 void MainWindow::setActionsEnabled(bool enabled)
 {
     QAptActions::self()->setActionsEnabled(enabled);
     if (!enabled) {
+        m_applyAction->setEnabled(false);
         return;
     }
 
