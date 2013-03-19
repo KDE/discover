@@ -169,7 +169,8 @@ int UpdateModel::columnCount(const QModelIndex &parent) const
 void UpdateModel::clear()
 {
     beginResetModel();
-    removeItem(QModelIndex());
+    delete m_rootItem;
+    m_rootItem = new UpdateItem();
     endResetModel();
 }
 
@@ -190,13 +191,16 @@ bool UpdateModel::removeItem(const QModelIndex &index)
 
 bool UpdateModel::removeRows(int position, int rows, const QModelIndex &index)
 {
-    bool success = false;
-    if (UpdateItem *parent = itemFromIndex(index)) {
-        beginRemoveRows(index, position, position + rows - 1);
-        success = parent->removeChildren(position, rows);
-        endRemoveRows();
-    }
-    return success;
+    if (!m_rootItem)
+        return false;
+
+    UpdateItem *item = index.isValid() ? itemFromIndex(index)
+                                       : m_rootItem;
+    beginRemoveRows(index, position, position + rows - 1);
+    item->removeChildren(position, rows);
+    endRemoveRows();
+
+    return true;
 }
 
 QModelIndexList UpdateModel::collectItems(const QModelIndex &parent) const
