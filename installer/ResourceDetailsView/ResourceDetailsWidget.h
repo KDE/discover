@@ -60,6 +60,7 @@ public:
 
 private:
     AbstractResource *m_resource;
+    TransactionListener *m_listener;
 
     QLabel *m_iconLabel;
     QLabel *m_nameLabel;
@@ -103,8 +104,8 @@ private Q_SLOTS:
     void updateActionButton();
 
 public slots:
-    void applicationRunningChanged(bool running);
-    void applicationDownloadingChanged(bool downloading);
+    void applicationRunningChanged();
+    void cancellableChanged();
 };
 
 #endif
