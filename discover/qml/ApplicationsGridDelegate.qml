@@ -17,6 +17,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+import org.kde.plasma.core 0.1
 import org.kde.plasma.components 0.1
 import org.kde.qtextracomponents 0.1
 import "navigation.js" as Navigation
@@ -94,7 +95,7 @@ GridItem {
                 }
             ]
         }
-        QIconItem {
+        IconItem {
             id: smallIcon
             anchors {
                 right: parent.right
@@ -102,7 +103,7 @@ GridItem {
             }
             width: 48
             height: width
-            icon: model.application.icon
+            source: model.application.icon
             Behavior on y { NumberAnimation { duration: 200; easing.type: Easing.InQuad } }
         }
         Label {
