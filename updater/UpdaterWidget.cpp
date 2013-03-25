@@ -86,11 +86,11 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     connect(this, SIGNAL(selectedResourceChanged(AbstractResource*)),
             changelogWidget, SLOT(setResource(AbstractResource*)));
 
-    m_descriptionLabel = new QLabel(this);
-    connect(m_descriptionLabel, SIGNAL(linkActivated(QString)), SLOT(toggleUpdateVisibility()));
+    QLabel* descriptionLabel = new QLabel(this);
+    descriptionLabel->setText(i18n("<p><b>New software is available for your computer</b></p><p>Click 'Install Updates' to keep your system up-to-date and safe</p>"));
+    descriptionLabel->setMinimumHeight(descriptionLabel->fontMetrics().height()*4);
 
     m_updateView = new QTreeView(page1);
-    m_updateView->setVisible(false);
     m_updateView->setAlternatingRowColors(true);
     m_updateView->setModel(m_updateModel);
     m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
@@ -101,7 +101,7 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
             this, SLOT(selectionChanged(QItemSelection,QItemSelection)));
 
     page1Layout->addWidget(m_markallWidget);
-    page1Layout->addWidget(m_descriptionLabel);
+    page1Layout->addWidget(descriptionLabel);
     page1Layout->addWidget(m_updateView);
     page1Layout->addWidget(changelogWidget);
 
@@ -124,7 +124,6 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
 
     QApplication::setOverrideCursor(Qt::WaitCursor);
     m_busyWidget->start();
-    initializeDescription();
 }
 
 UpdaterWidget::~UpdaterWidget()
@@ -247,18 +246,4 @@ void UpdaterWidget::checkUpToDate()
                                         "to check."));
         }
     }
-}
-
-void UpdaterWidget::toggleUpdateVisibility()
-{
-    m_updateView->setVisible(!m_updateView->isVisible());
-    initializeDescription();
-}
-
-void UpdaterWidget::initializeDescription()
-{
-    if(m_updateView->isVisible())
-        m_descriptionLabel->setText(i18n("123 GiB of updates. <a href='fuuu'>Hide package list</a>"));
-    else
-        m_descriptionLabel->setText(i18n("123 GiB of updates. <a href='fuuu'>Show package list</a>"));
 }
