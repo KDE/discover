@@ -54,7 +54,6 @@ public:
     UpdateItem *child(int row) const;
     int childCount() const;
     int row() const;
-    void setChecked(bool checked);
     void sort();
 
     AbstractResource *app() const;
@@ -70,7 +69,6 @@ private:
 
     UpdateItem *m_parent;
     ItemType m_type;
-    Qt::CheckState m_checkState;
     QList<UpdateItem *> m_children;
     QString m_categoryName;
     KIcon m_categoryIcon;

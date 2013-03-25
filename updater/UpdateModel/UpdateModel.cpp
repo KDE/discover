@@ -34,8 +34,6 @@
 #include "UpdateItem.h"
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesUpdatesModel.h>
-#include <resources/AbstractResourcesBackend.h>
-#include <resources/AbstractBackendUpdater.h>
 
 #define ICON_SIZE KIconLoader::SizeSmallMedium
 
@@ -50,11 +48,6 @@ UpdateModel::UpdateModel(QObject *parent)
 UpdateModel::~UpdateModel()
 {
     delete m_rootItem;
-}
-
-static bool isMarked(AbstractResource* res)
-{
-    return res->backend()->backendUpdater()->toUpdate().contains(res);
 }
 
 QVariant UpdateModel::data(const QModelIndex &index, int role) const
@@ -92,16 +85,7 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
     }
     case Qt::CheckStateRole:
         if (column == NameColumn) {
-            if(item->type() == UpdateItem::ItemType::CategoryItem) {
-                int checkedCount = 0;
-                foreach(UpdateItem* child, item->children()) {
-                    checkedCount += isMarked(child->app());
-                }
-                return checkedCount==0 ? Qt::Unchecked : 
-                       checkedCount==item->childCount() ? Qt::Checked : Qt::PartiallyChecked;
-            } else {
-                return isMarked(item->app()) ? Qt::Checked : Qt::Unchecked;
-            }
+            return item->checked();
         }
         break;
     default:
