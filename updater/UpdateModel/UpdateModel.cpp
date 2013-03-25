@@ -246,6 +246,12 @@ bool UpdateModel::setData(const QModelIndex &index, const QVariant &value, int r
         }
 
         item->setChecked(newValue);
+        dataChanged(index, index);
+        if (type == UpdateItem::ItemType::ApplicationItem) {
+            QModelIndex parentIndex = index.parent();
+            dataChanged(parentIndex, parentIndex);
+        }
+
         emit checkApps(apps, newValue);
         return true;
     }

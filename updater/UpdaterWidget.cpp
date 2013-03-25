@@ -80,7 +80,6 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     m_markallWidget->setVisible(false);
     page1Layout->addWidget(m_markallWidget);
 
-
     m_updateView = new QTreeView(page1);
     m_updateView->setAlternatingRowColors(true);
     m_updateView->setModel(m_updateModel);

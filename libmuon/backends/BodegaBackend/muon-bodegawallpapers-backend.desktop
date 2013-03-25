@@ -13,8 +13,6 @@ Name[es]=Fondos de escritorio de Bodega
 Name[et]=Bodega taustapildid
 Name[fi]=Bodega-taustakuvat
 Name[fr]=Papiers peints de Bodega
-Name[gl]=Fondos de escritorio Bodega
-Name[hu]=Bodega háttérképek
 Name[it]=Sfondi Bodega
 Name[kk]=Bodega тұсқағаздары
 Name[mr]=बोडेगा वॉलपेपर्स
@@ -23,14 +21,6 @@ Name[nl]=Bodega-bureaubladachtergronden
 Name[pl]=Tapety Bodega
 Name[pt]=Papéis de Parede do Bodega
 Name[pt_BR]=Papéis de parede do Bodega
-Name[ro]=Tapete Bodega
-Name[ru]=Обои Bodega
-Name[sk]=Tapety Bodega
-Name[sl]=Ozadja Bodega
-Name[sr]=Бодегини тапети
-Name[sr@ijekavian]=Бодегини тапети
-Name[sr@ijekavianlatin]=Bodegini tapeti
-Name[sr@latin]=Bodegini tapeti
 Name[sv]=Bodega skrivbordsunderlägg
 Name[tr]=Bodega Duvar Kağıtları
 Name[uk]=Шпалери Bodega
@@ -46,8 +36,11 @@ GenericName[es]=Fondos de escritorio
 GenericName[et]=Taustapildid
 GenericName[fi]=Taustakuvat
 GenericName[fr]=Papiers peints
+<<<<<<< HEAD
 GenericName[gl]=Fondos de escritorio
 GenericName[hu]=Háttérképek
+=======
+>>>>>>> 2.0
 GenericName[it]=Sfondi
 GenericName[kk]=Тұсқағаздар
 GenericName[mr]=वॉलपेपर्स
@@ -56,6 +49,7 @@ GenericName[nl]=Bureaubladachtergronden
 GenericName[pl]=Tapety
 GenericName[pt]=Papéis de Parede
 GenericName[pt_BR]=Papéis de parede
+<<<<<<< HEAD
 GenericName[ro]=Tapete
 GenericName[ru]=Обои
 GenericName[sk]=Tapety
@@ -64,6 +58,11 @@ GenericName[sr]=Тапети
 GenericName[sr@ijekavian]=Тапети
 GenericName[sr@ijekavianlatin]=Tapeti
 GenericName[sr@latin]=Tapeti
+=======
+GenericName[ru]=Обои
+GenericName[sk]=Tapety
+GenericName[sl]=Ozadja namizja
+>>>>>>> 2.0
 GenericName[sv]=Skrivbordsunderlägg
 GenericName[tr]=Duvar Kağıtları
 GenericName[uk]=Шпалери
@@ -79,8 +78,11 @@ Comment[es]=¡Instale nuevos y geniales fondos de escritorio en su KDE!
 Comment[et]=KDE uue vaimustava taustapildi paigaldamine
 Comment[fi]=Asenna uusia ja mahtavia taustakuvia KDE:hesi!
 Comment[fr]=Installez de nouveaux et magnifiques papiers peints !
+<<<<<<< HEAD
 Comment[gl]=Instalar novos e xeniais fondos de escritorio para a túa KDE!
 Comment[hu]=Telepítsen új, lélegzetelállító háttérképeket asztalához!
+=======
+>>>>>>> 2.0
 Comment[it]=Installa nuovi, strabilianti sfondi per il tuo KDE!
 Comment[kk]=kDE-ге жаңа, ғажайып тұсқағаздарды орнатыңыз!
 Comment[mr]=तुमच्या केडीई करिता नवीन वॉलपेपर्स प्रतिष्ठापीत करा!
@@ -89,6 +91,7 @@ Comment[nl]=Installeer nieuwe, geweldige bureaubladachtergronden voor uw KDE!
 Comment[pl]=Zainstaluj nowe, wspaniałe tapety dla twojego KDE!
 Comment[pt]=Instalar papéis de parede novos e espectaculares para o seu KDE!
 Comment[pt_BR]=Instalar papéis de parede novos e incríveis para o seu KDE!
+<<<<<<< HEAD
 Comment[ro]=Instalați tapete noi și minunate pentru KDE!
 Comment[ru]=Новые замечательные обои для KDE!
 Comment[sk]=Nainštalujte nové, úžasné tapety pre vaše KDE!
@@ -97,6 +100,11 @@ Comment[sr]=Инсталирајте нове, фантастичне тапет
 Comment[sr@ijekavian]=Инсталирајте нове, фантастичне тапете
 Comment[sr@ijekavianlatin]=Instalirajte nove, fantastične tapete
 Comment[sr@latin]=Instalirajte nove, fantastične tapete
+=======
+Comment[ru]=Новые замечательные обои для KDE!
+Comment[sk]=Nainštalujte nové, úžasné tapety pre vaše KDE!
+Comment[sl]=Namestite nova, čudovita ozadja namizja za vaš KDE!
+>>>>>>> 2.0
 Comment[sv]=Installera nya fantastiska skrivbordsunderlägg för KDE.
 Comment[tr]=KDE'niz için yeni harika duvar kağıtları yükleyin!
 Comment[uk]=Встановіть нові чудові шпалери для вашого KDE!

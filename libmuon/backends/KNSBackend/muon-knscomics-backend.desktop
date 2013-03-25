@@ -13,8 +13,6 @@ Name[es]=Cómics
 Name[et]=Koomiksid
 Name[fi]=Sarjakuvat
 Name[fr]=Bandes dessinées
-Name[gl]=Cómics
-Name[hu]=Képregények
 Name[it]=Fumetti
 Name[kk]=Комикс
 Name[mr]=कॉमिक्स
@@ -23,14 +21,6 @@ Name[nl]=Stripverhalen
 Name[pl]=Komiksy
 Name[pt]=Banda Desenhada
 Name[pt_BR]=Tirinhas
-Name[ro]=Benzi desenate
-Name[ru]=Комиксы
-Name[sk]=Komikx
-Name[sl]=Stripi
-Name[sr]=Стрипови
-Name[sr@ijekavian]=Стрипови
-Name[sr@ijekavianlatin]=Stripovi
-Name[sr@latin]=Stripovi
 Name[sv]=Serier
 Name[tr]=Çizgi Romanlar
 Name[uk]=Комікси
@@ -46,8 +36,11 @@ GenericName[es]=Cómics
 GenericName[et]=Koomiksid
 GenericName[fi]=Sarjakuvat
 GenericName[fr]=Bandes dessinées
+<<<<<<< HEAD
 GenericName[gl]=Cómics
 GenericName[hu]=Képregények
+=======
+>>>>>>> 2.0
 GenericName[it]=Fumetti
 GenericName[kk]=Комикс
 GenericName[mr]=कॉमिक्स
@@ -56,6 +49,7 @@ GenericName[nl]=Stripverhalen
 GenericName[pl]=Komiksy
 GenericName[pt]=Banda Desenhada
 GenericName[pt_BR]=Tirinhas
+<<<<<<< HEAD
 GenericName[ro]=Benzi desenate
 GenericName[ru]=Комиксы
 GenericName[sk]=Komikx
@@ -64,6 +58,11 @@ GenericName[sr]=Стрипови
 GenericName[sr@ijekavian]=Стрипови
 GenericName[sr@ijekavianlatin]=Stripovi
 GenericName[sr@latin]=Stripovi
+=======
+GenericName[ru]=Комиксы
+GenericName[sk]=Komikx
+GenericName[sl]=Stripi
+>>>>>>> 2.0
 GenericName[sv]=Serier
 GenericName[tr]=Çizgi Romanlar
 GenericName[uk]=Комікси
@@ -81,8 +80,11 @@ Comment[es]=Instalar tiras de cómic para usar en el plasmoide de cómics
 Comment[et]=Koomiksite paigaldamine koomiksite plasmoidi tarbeks
 Comment[fi]=Asenna sarjakuvaplasmoidin käyttämiä sarjakuvastrippejä
 Comment[fr]=Installez des bandes dessinées à utiliser depuis le composant graphique « Bandes dessinées »
+<<<<<<< HEAD
 Comment[gl]=Instalar as tiras de cómics para usar no plasmoid de cómic
 Comment[hu]=Képregények telepítése a képregény plazmoidhoz
+=======
+>>>>>>> 2.0
 Comment[it]=Installa strisce di fumetti da usare col plasmoide dei fumetti
 Comment[kk]=Комикс плазмоидтер қолданатын комикстерді орнату
 Comment[mr]=कॉमिक्स प्लाज्मोइड मध्ये वापरल्या जाणाऱ्या कॉमिक स्ट्रीप्स प्रतिष्ठापीत करा
@@ -91,6 +93,7 @@ Comment[nl]=Installeer stripverhalen om te worden gebruikt vanaf de plasmoid voo
 Comment[pl]=Zainstaluj komiksy, które można przeglądać z plazmoidu komiksów
 Comment[pt]=Instalar as bandas desenhadas a usar no plasmóide de bandas desenhadas
 Comment[pt_BR]=Instalar as tirinhas para serem usadas no plasmoide de tirinhas
+<<<<<<< HEAD
 Comment[ro]=Instalează benzi desenate pentru a fi folosite de către plasmoidul de benzi desenate
 Comment[ru]=Комиксы, которые будут использованы в виджете «Комиксы»
 Comment[sk]=Nainštalujte komiksové pruhy na použitie pre komiksový plazmoid
@@ -99,6 +102,11 @@ Comment[sr]=Инсталирајте стрипове за читање кроз
 Comment[sr@ijekavian]=Инсталирајте стрипове за читање кроз плазмоид стрипова
 Comment[sr@ijekavianlatin]=Instalirajte stripove za čitanje kroz plazmoid stripova
 Comment[sr@latin]=Instalirajte stripove za čitanje kroz plazmoid stripova
+=======
+Comment[ru]=Комиксы, которые будут использованы в виджете «Комиксы»
+Comment[sk]=Nainštalujte komiksové pruhy na použitie pre komiksový plazmoid
+Comment[sl]=Namestite stripe, ki jih lahko uporabite z vašim plasmoidom za stripe
+>>>>>>> 2.0
 Comment[sv]=Installera serier att använda med serie-plasmoiden
 Comment[tr]=Çizgi Romanları plasmoid'inde kullanılmak üzere çizgi roman şeritleri indirin
 Comment[uk]=Встановіть стрічки коміксів, які буде використано у плазмоїді коміксів
