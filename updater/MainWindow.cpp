@@ -91,8 +91,8 @@ void MainWindow::initGUI()
     buttonsUi.quit->setDefaultAction(action("quit"));
 
     mainLayout->addWidget(m_powerMessage);
-    mainLayout->addWidget(m_progressWidget);
     mainLayout->addWidget(m_updaterWidget);
+    mainLayout->addWidget(m_progressWidget);
     mainLayout->addWidget(buttons);
 
     mainWidget->setLayout(mainLayout);
@@ -160,7 +160,7 @@ void MainWindow::progressingChanged()
 
     bool active = m_updater->isProgressing();
     m_progressWidget->setVisible(active);
-    m_updaterWidget->setVisible(!active);
+//     m_updaterWidget->setVisible(!active);
     setActionsEnabled(!active);
     setCanExit(!active);
 }
