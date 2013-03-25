@@ -32,7 +32,6 @@
 // Own includes
 #include "UpdateItem.h"
 #include <resources/AbstractResource.h>
-#include <backends/ApplicationBackend/tests/modeltest.h>
 
 #define ICON_SIZE KIconLoader::SizeSmallMedium
 
@@ -40,7 +39,6 @@
 UpdateModel::UpdateModel(QObject *parent) :
     QAbstractItemModel(parent)
 {
-    ModelTest(this, this);
     m_rootItem = new UpdateItem();
 }
 
