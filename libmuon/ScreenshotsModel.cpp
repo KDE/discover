@@ -58,6 +58,9 @@ void ScreenshotsModel::screenshotsFetched(const QList< QUrl >& thumbnails, const
 {
     Q_ASSERT(thumbnails.count()==screenshots.count());
     
+    if (m_thumbnails.size() == 0)
+        return;
+    
     beginInsertRows(QModelIndex(), m_thumbnails.size(), m_thumbnails.size()+thumbnails.size()-1);
     m_thumbnails += thumbnails;
     m_screenshots += screenshots;
