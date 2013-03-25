@@ -125,12 +125,13 @@ void MainWindow::setupActions()
     m_moreMenu->addAction(actionCollection()->action("options_configure"));
     m_moreMenu->addAction(actionCollection()->action("options_configure_keybinding"));
     m_moreMenu->addSeparator();
-    m_moreMenu->addAction(actionCollection()->action("help_contents"));
+    m_advancedMenu = new QMenu(i18n("Advanced..."), m_moreMenu);
+    m_advancedMenu->setEnabled(false);
+    m_moreMenu->addMenu(m_advancedMenu);
+    m_moreMenu->addSeparator();
     m_moreMenu->addAction(actionCollection()->action("help_about_app"));
     m_moreMenu->addAction(actionCollection()->action("help_about_kde"));
     m_moreMenu->addAction(actionCollection()->action("help_report_bug"));
-    foreach(QAction* action, actionCollection()->actions())
-        qDebug() << "........" << action->objectName();
 }
 
 void MainWindow::initBackend()
@@ -144,11 +145,18 @@ void MainWindow::initBackend()
 void MainWindow::setupBackendsActions()
 {
     foreach (QAction* action, m_updater->messageActions()) {
-        if (action->priority()==QAction::HighPriority) {
-            KActionMessageWidget* w = new KActionMessageWidget(action, centralWidget());
-            qobject_cast<QBoxLayout*>(centralWidget()->layout())->insertWidget(1, w);
-        } else {
-            m_moreMenu->insertAction(action, m_moreMenu->actions().first());
+        switch(action->priority()) {
+            case QAction::HighPriority: {
+                KActionMessageWidget* w = new KActionMessageWidget(action, centralWidget());
+                qobject_cast<QBoxLayout*>(centralWidget()->layout())->insertWidget(1, w);
+            }   break;
+            case QAction::NormalPriority:
+                m_moreMenu->insertAction(m_moreMenu->actions().first(), action);
+                break;
+            case QAction::LowPriority:
+            default:
+                m_advancedMenu->addAction(action);
+                break;
         }
     }
 }

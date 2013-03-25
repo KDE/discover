@@ -60,8 +60,10 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
         virtual QString statusDetail() const = 0;
         virtual quint64 downloadSpeed() const = 0;
 
-        /** in muon-updater, actions with HighPriority will be shown in a KMessageWidget, the
-         rest will be on the toolbar */
+        /** in muon-updater, actions with HighPriority will be shown in a KMessageWidget,
+         *  normal priority will go right on top of the more menu, low priority will go
+         *  to the advanced menu
+         */
         virtual QList<QAction*> messageActions() const = 0;
 
     public slots:

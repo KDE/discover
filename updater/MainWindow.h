@@ -49,6 +49,7 @@ private:
     KMessageWidget *m_powerMessage;
     KAction *m_applyAction;
     QMenu* m_moreMenu;
+    QMenu* m_advancedMenu;
 
     virtual void setActionsEnabled(bool enabled = true);
 
