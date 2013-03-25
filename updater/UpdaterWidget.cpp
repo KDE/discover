@@ -252,6 +252,7 @@ void UpdaterWidget::checkUpToDate()
 void UpdaterWidget::toggleUpdateVisibility()
 {
     m_updateView->setVisible(!m_updateView->isVisible());
+    initializeDescription();
 }
 
 void UpdaterWidget::initializeDescription()
