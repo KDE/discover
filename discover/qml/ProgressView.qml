@@ -6,7 +6,7 @@ import "navigation.js" as Navigation
 
 ToolBar {
     id: page
-    property bool active: progressModel.count>0
+    property bool active: enabled && progressModel.count>0
     height: active ? contents.height+2*contents.anchors.margins : 0
     
     Behavior on height {
@@ -16,7 +16,7 @@ ToolBar {
     Connections {
         target: transactionModel
         onTransactionAdded: {
-            if(progressModel.appAt(trans.resource)<0)
+            if(page.enabled && progressModel.appAt(trans.resource)<0)
                 progressModel.append({'app': trans.resource})
         }
 
