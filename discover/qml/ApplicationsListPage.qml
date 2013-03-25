@@ -90,21 +90,32 @@ Page {
             MuonMenuToolButton {
                 id: listViewShown
                 icon: "tools-wizard"
-                model: ["list", "grid2"]
+                model: viewModel
                 minimumHeight: parent.height
                 anchors.verticalCenter: parent.verticalCenter
                 delegate: ToolButton {
                     width: parent.width
                     height: listViewShown.height
-                    text: modelData
+                    text: modelData.display
                     onClicked: {
-                        page.state=modelData
+                        page.state=modelData.type
                         listViewShown.checked=false
                     }
-                    checked: page.state==modelData
+                    checked: page.state==modelData.type
                 }
             }
         }
+        
+    property list<QtObject> viewModel: [
+        QtObject {
+            property string display: i18n("List")
+            property string type: "list"
+        },
+        QtObject {
+            property string display: i18n("Grid")
+            property string type: "grid2"
+        }
+    ]
     
     property list<QtObject> paramModel: [
         QtObject {
