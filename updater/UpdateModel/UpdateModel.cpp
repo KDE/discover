@@ -22,6 +22,7 @@
 
 // Qt includes
 #include <QtGui/QFont>
+#include <QApplication>
 
 // KDE includes
 #include <KGlobal>
@@ -32,12 +33,16 @@
 // Own includes
 #include "UpdateItem.h"
 #include <resources/AbstractResource.h>
+#include <resources/ResourcesUpdatesModel.h>
+#include <resources/AbstractResourcesBackend.h>
+#include <resources/AbstractBackendUpdater.h>
 
 #define ICON_SIZE KIconLoader::SizeSmallMedium
 
 
-UpdateModel::UpdateModel(QObject *parent) :
-    QAbstractItemModel(parent)
+UpdateModel::UpdateModel(QObject *parent)
+    : QAbstractItemModel(parent)
+    , m_updates(nullptr)
 {
     m_rootItem = new UpdateItem();
 }
@@ -45,6 +50,11 @@ UpdateModel::UpdateModel(QObject *parent) :
 UpdateModel::~UpdateModel()
 {
     delete m_rootItem;
+}
+
+static bool isMarked(AbstractResource* res)
+{
+    return res->backend()->backendUpdater()->toUpdate().contains(res);
 }
 
 QVariant UpdateModel::data(const QModelIndex &index, int role) const
@@ -82,7 +92,16 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
     }
     case Qt::CheckStateRole:
         if (column == NameColumn) {
-            return item->checked();
+            if(item->type() == UpdateItem::ItemType::CategoryItem) {
+                int checkedCount = 0;
+                foreach(UpdateItem* child, item->children()) {
+                    checkedCount += isMarked(child->app());
+                }
+                return checkedCount==0 ? Qt::Unchecked : 
+                       checkedCount==item->childCount() ? Qt::Checked : Qt::PartiallyChecked;
+            } else {
+                return isMarked(item->app()) ? Qt::Checked : Qt::Unchecked;
+            }
         }
         break;
     default:
@@ -90,6 +109,18 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
     }
 
     return QVariant();
+}
+
+void UpdateModel::checkResources(const QList<AbstractResource*>& resource, bool checked)
+{
+    if (resource.size() > 1) {
+        QApplication::setOverrideCursor(Qt::WaitCursor);
+    }
+    if(checked)
+        m_updates->addResources(resource);
+    else
+        m_updates->removeResources(resource);
+    QApplication::restoreOverrideCursor();
 }
 
 QVariant UpdateModel::headerData(int section, Qt::Orientation orientation,
@@ -228,10 +259,10 @@ void UpdateModel::addItem(UpdateItem *item)
     endInsertRows();
 }
 
-bool UpdateModel::setData(const QModelIndex &index, const QVariant &value, int role)
+bool UpdateModel::setData(const QModelIndex &idx, const QVariant &value, int role)
 {
     if (role == Qt::CheckStateRole) {
-        UpdateItem *item = static_cast<UpdateItem*>(index.internalPointer());
+        UpdateItem *item = static_cast<UpdateItem*>(idx.internalPointer());
         bool newValue = value.toBool();
         UpdateItem::ItemType type = item->type();
 
@@ -245,14 +276,15 @@ bool UpdateModel::setData(const QModelIndex &index, const QVariant &value, int r
             apps << item->app();
         }
 
-        item->setChecked(newValue);
-        dataChanged(index, index);
+        checkResources(apps, newValue);
+        dataChanged(idx, idx);
         if (type == UpdateItem::ItemType::ApplicationItem) {
-            QModelIndex parentIndex = index.parent();
-            dataChanged(parentIndex, parentIndex);
+            QModelIndex parentIndex = idx.parent();
+            emit dataChanged(parentIndex, parentIndex);
+        } else {
+            emit dataChanged(index(0,0, idx), index(item->childCount()-1, 0, idx));
         }
 
-        emit checkApps(apps, newValue);
         return true;
     }
 
@@ -308,4 +340,9 @@ void UpdateModel::addResources(const QList< AbstractResource* >& resources)
     } else {
         delete systemItem;
     }
+}
+
+void UpdateModel::setBackend(ResourcesUpdatesModel* updates)
+{
+    m_updates = updates;
 }

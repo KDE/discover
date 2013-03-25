@@ -58,8 +58,6 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
 {
     setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
     m_updateModel = new UpdateModel(this);
-    connect(m_updateModel, SIGNAL(checkApps(QList<AbstractResource*>,bool)),
-            this, SLOT(checkApps(QList<AbstractResource*>,bool)));
 
     // First page (update view)
     QWidget *page1 = new QWidget(this);
@@ -120,6 +118,7 @@ UpdaterWidget::~UpdaterWidget()
 void UpdaterWidget::setBackend(ResourcesUpdatesModel *updates)
 {
     m_updatesBackends = updates;
+    m_updateModel->setBackend(updates);
     connect(m_updatesBackends, SIGNAL(progressingChanged()), SLOT(activityChanged()));
 
     populateUpdateModel();
@@ -156,18 +155,6 @@ void UpdaterWidget::populateUpdateModel()
 
     checkAllMarked();
     checkUpToDate();
-}
-
-void UpdaterWidget::checkApps(const QList<AbstractResource*>& apps, bool checked)
-{
-    if (apps.size() > 1) {
-        QApplication::setOverrideCursor(Qt::WaitCursor);
-    }
-    if(checked)
-        m_updatesBackends->addResources(apps);
-    else
-        m_updatesBackends->removeResources(apps);
-    QApplication::restoreOverrideCursor();
 }
 
 void UpdaterWidget::selectionChanged(const QItemSelection &selected,

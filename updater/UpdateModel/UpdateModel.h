@@ -23,6 +23,7 @@
 
 #include <QtCore/QAbstractItemModel>
 
+class ResourcesUpdatesModel;
 class AbstractResource;
 class UpdateItem;
 
@@ -55,6 +56,7 @@ public:
 
     bool setData(const QModelIndex &index, const QVariant &value, int role);
     void addResources(const QList<AbstractResource*>& res);
+    void checkResources(const QList< AbstractResource* >& resource, bool checked);
 
     enum Columns {
         NameColumn = 0,
@@ -69,12 +71,11 @@ private:
     UpdateItem* m_systemItem;
     UpdateItem* m_appItem;
     UpdateItem* m_securityItem;
+    ResourcesUpdatesModel* m_updates;
 
 public Q_SLOTS:
     void packageChanged();
-
-Q_SIGNALS:
-    void checkApps(const QList<AbstractResource*>& apps, bool checked);
+    void setBackend(ResourcesUpdatesModel* updates);
 };
 
 #endif // UPDATEMODEL_H
