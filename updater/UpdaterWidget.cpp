@@ -162,8 +162,7 @@ void UpdaterWidget::populateUpdateModel()
         return;
     }
     m_updatesBackends->prepare();
-    m_updateModel->clear();
-    m_updateModel->addResources(m_updatesBackends->toUpdate());
+    m_updateModel->setResources(m_updatesBackends->toUpdate());
 
     m_updateView->expand(m_updateModel->index(0,0)); // Expand apps category
     m_updateView->resizeColumnToContents(0);

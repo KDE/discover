@@ -47,14 +47,9 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
 
-    void clear();
-    bool removeItem(const QModelIndex &index);
-    bool removeRows(int position, int rows, const QModelIndex &index);
-    QModelIndexList collectItems(const QModelIndex &parent) const;
-    UpdateItem *itemFromIndex(const QModelIndex &index) const;
-
     bool setData(const QModelIndex &index, const QVariant &value, int role);
-    void addResources(const QList<AbstractResource*>& res);
+    void setResources(const QList<AbstractResource*>& res);
+    UpdateItem *itemFromIndex(const QModelIndex &index) const;
 
     enum Columns {
         NameColumn = 0,
@@ -64,11 +59,7 @@ public:
 
 private:
     void addResource(AbstractResource* res);
-    void addItem(UpdateItem *item);
     UpdateItem *m_rootItem;
-    UpdateItem* m_systemItem;
-    UpdateItem* m_appItem;
-    UpdateItem* m_securityItem;
 
 public Q_SLOTS:
     void packageChanged();

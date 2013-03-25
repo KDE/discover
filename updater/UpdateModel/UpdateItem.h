@@ -56,6 +56,7 @@ public:
     int row() const;
     void setChecked(bool checked);
     void sort();
+    bool isEmpty() const;
 
     AbstractResource *app() const;
     QString name() const;

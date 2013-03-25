@@ -69,8 +69,10 @@ void UpdateItem::setParent(UpdateItem *parent)
 
 void UpdateItem::appendChild(UpdateItem *child)
 {
-    child->setParent(this);
-    m_children.append(child);
+    if(!m_children.contains(child)) {
+        child->setParent(this);
+        m_children.append(child);
+    }
 }
 
 bool UpdateItem::removeChildren(int position, int count)
@@ -97,6 +99,11 @@ UpdateItem *UpdateItem::child(int row) const
 int UpdateItem::childCount() const
 {
     return m_children.count();
+}
+
+bool UpdateItem::isEmpty() const
+{
+    return m_children.isEmpty();
 }
 
 int UpdateItem::row() const

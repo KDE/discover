@@ -32,6 +32,7 @@
 // Own includes
 #include "UpdateItem.h"
 #include <resources/AbstractResource.h>
+#include <backends/ApplicationBackend/tests/modeltest.h>
 
 #define ICON_SIZE KIconLoader::SizeSmallMedium
 
@@ -39,6 +40,7 @@
 UpdateModel::UpdateModel(QObject *parent) :
     QAbstractItemModel(parent)
 {
+    ModelTest(this, this);
     m_rootItem = new UpdateItem();
 }
 
@@ -153,7 +155,7 @@ int UpdateModel::rowCount(const QModelIndex &parent) const
 {
     UpdateItem *parentItem = itemFromIndex(parent);
 
-    return parentItem->childCount();
+    return parentItem ? parentItem->childCount() : 0;
 }
 
 int UpdateModel::columnCount(const QModelIndex &parent) const
@@ -162,62 +164,11 @@ int UpdateModel::columnCount(const QModelIndex &parent) const
     return 3;
 }
 
-void UpdateModel::clear()
-{
-    beginResetModel();
-    removeItem(QModelIndex());
-    endResetModel();
-}
-
-bool UpdateModel::removeItem(const QModelIndex &index)
-{
-    QModelIndexList indexes;
-    if (rowCount(index) > 0) {
-        indexes = collectItems(index);
-    }
-    indexes.append(index);
-
-    foreach (const QModelIndex &itemToRemove, indexes) {
-        if (!removeRow(itemToRemove.row(), itemToRemove.parent()))
-            return false;
-    }
-    return true;
-}
-
-bool UpdateModel::removeRows(int position, int rows, const QModelIndex &index)
-{
-    bool success = false;
-    if (UpdateItem *parent = itemFromIndex(index)) {
-        beginRemoveRows(index, position, position + rows - 1);
-        success = parent->removeChildren(position, rows);
-        endRemoveRows();
-    }
-    return success;
-}
-
-QModelIndexList UpdateModel::collectItems(const QModelIndex &parent) const
-{
-    QModelIndexList list;
-    for (int i = rowCount(parent) - 1; i >= 0 ; --i) {
-        const QModelIndex &next = index(i, 0, parent);
-        list += collectItems(next);
-        list.append(next);
-    }
-    return list;
-}
-
 UpdateItem* UpdateModel::itemFromIndex(const QModelIndex &index) const
 {
     if (index.isValid())
          return static_cast<UpdateItem*>(index.internalPointer());
      return m_rootItem;
-}
-
-void UpdateModel::addItem(UpdateItem *item)
-{
-    beginInsertRows(QModelIndex(), m_rootItem->childCount(), m_rootItem->childCount());
-    m_rootItem->appendChild(item);
-    endInsertRows();
 }
 
 bool UpdateModel::setData(const QModelIndex &index, const QVariant &value, int role)
@@ -251,8 +202,12 @@ void UpdateModel::packageChanged()
     emit dataChanged(index(0, 0), QModelIndex());
 }
 
-void UpdateModel::addResources(const QList< AbstractResource* >& resources)
+void UpdateModel::setResources(const QList< AbstractResource* >& resources)
 {
+    beginResetModel();
+    delete m_rootItem;
+    m_rootItem = new UpdateItem;
+
     UpdateItem *securityItem = new UpdateItem(i18nc("@item:inlistbox", "Important Security Updates"),
                                               KIcon("security-medium"));
 
@@ -276,22 +231,23 @@ void UpdateModel::addResources(const QList< AbstractResource* >& resources)
     // Add populated items to the model
     if (securityItem->childCount()) {
         securityItem->sort();
-        addItem(securityItem);
+        m_rootItem->appendChild(securityItem);
     } else {
         delete securityItem;
     }
 
     if (appItem->childCount()) {
         appItem->sort();
-        addItem(appItem);
+        m_rootItem->appendChild(appItem);
     } else {
         delete appItem;
     }
 
     if (systemItem->childCount()) {
         systemItem->sort();
-        addItem(systemItem);
+        m_rootItem->appendChild(systemItem);
     } else {
         delete systemItem;
     }
+    endResetModel();
 }
