@@ -17,12 +17,9 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QToolButton" name="more">
+      <widget class="QPushButton" name="more">
        <property name="text">
         <string>More...</string>
-       </property>
-       <property name="popupMode">
-        <enum>QToolButton::InstantPopup</enum>
        </property>
       </widget>
      </item>
