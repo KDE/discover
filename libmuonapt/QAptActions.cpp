@@ -109,6 +109,7 @@ void QAptActions::setupActions()
     m_actions.append(revertAction);
 
     KAction* softwarePropertiesAction = actionCollection()->addAction("software_properties");
+    softwarePropertiesAction->setPriority(QAction::LowPriority);
     softwarePropertiesAction->setIcon(KIcon("configure"));
     softwarePropertiesAction->setText(i18nc("@action Opens the software sources configuration dialog", "Configure Software Sources"));
     connect(softwarePropertiesAction, SIGNAL(triggered()), this, SLOT(runSourcesEditor()));
@@ -127,12 +128,14 @@ void QAptActions::setupActions()
     m_actions.append(saveSelectionsAction);
 
     KAction* createDownloadListAction = actionCollection()->addAction("save_download_list");
+    createDownloadListAction->setPriority(QAction::LowPriority);
     createDownloadListAction->setIcon(KIcon("document-save-as"));
     createDownloadListAction->setText(i18nc("@action", "Save Package Download List..."));
     connect(createDownloadListAction, SIGNAL(triggered()), this, SLOT(createDownloadList()));
     m_actions.append(createDownloadListAction);
 
     KAction* downloadListAction = actionCollection()->addAction("download_from_list");
+    downloadListAction->setPriority(QAction::LowPriority);
     downloadListAction->setIcon(KIcon("download"));
     downloadListAction->setText(i18nc("@action", "Download Packages From List..."));
     connect(downloadListAction, SIGNAL(triggered()), this, SLOT(downloadPackagesFromList()));
@@ -143,17 +146,20 @@ void QAptActions::setupActions()
     m_actions.append(downloadListAction);
 
     KAction* loadArchivesAction = actionCollection()->addAction("load_archives");
+    loadArchivesAction->setPriority(QAction::LowPriority);
     loadArchivesAction->setIcon(KIcon("document-open"));
     loadArchivesAction->setText(i18nc("@action", "Add Downloaded Packages"));
     connect(loadArchivesAction, SIGNAL(triggered()), this, SLOT(loadArchives()));
     m_actions.append(loadArchivesAction);
     
     KAction* saveInstalledAction = actionCollection()->addAction("save_package_list");
+    saveInstalledAction->setPriority(QAction::LowPriority);
     saveInstalledAction->setIcon(KIcon("document-save-as"));
     saveInstalledAction->setText(i18nc("@action", "Save Installed Packages List..."));
     connect(saveInstalledAction, SIGNAL(triggered()), this, SLOT(saveInstalledPackagesList()));
     
     KAction* historyAction = actionCollection()->addAction("history");
+    historyAction->setPriority(QAction::LowPriority);
     historyAction->setIcon(KIcon("view-history"));
     historyAction->setText(i18nc("@action::inmenu", "History..."));
     historyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_H));

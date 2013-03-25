@@ -416,8 +416,18 @@ quint64 ApplicationUpdates::downloadSpeed() const
 QList<QAction*> ApplicationUpdates::messageActions() const
 {
     QList<QAction*> ret;
-    ret += QAptActions::self()->actionCollection()->action("update");
+    //high priority
     ret += QAptActions::self()->actionCollection()->action("dist-upgrade");
+
+    //normal priority
+    ret += QAptActions::self()->actionCollection()->action("update");
+
+    //low priority
+    ret += QAptActions::self()->actionCollection()->action("software_properties");
+    ret += QAptActions::self()->actionCollection()->action("load_archives");
+    ret += QAptActions::self()->actionCollection()->action("save_package_list");
+    ret += QAptActions::self()->actionCollection()->action("download_from_list");
+    ret += QAptActions::self()->actionCollection()->action("history");
     Q_ASSERT(!ret.contains(nullptr));
     return ret;
 }
