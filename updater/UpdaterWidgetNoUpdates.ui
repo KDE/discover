@@ -23,6 +23,13 @@
       <enum>QFrame::Sunken</enum>
      </property>
      <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="1">
+       <widget class="QLabel" name="notifyDesc">
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="0" rowspan="2">
        <widget class="QLabel" name="updateStatusIcon">
         <property name="alignment">
@@ -32,9 +39,6 @@
       </item>
       <item row="0" column="1">
        <widget class="QLabel" name="notifyTitle">
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
         <property name="alignment">
          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
         </property>
@@ -42,9 +46,6 @@
       </item>
       <item row="1" column="1">
        <widget class="QLabel" name="notifyDesc">
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
         </property>

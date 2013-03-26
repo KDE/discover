@@ -65,6 +65,7 @@ private Q_SLOTS:
     void checkAllMarked();
     void checkUpToDate();
     void markAllPackagesForUpgrade();
+
     void activityChanged();
 
 signals:

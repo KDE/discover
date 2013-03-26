@@ -45,10 +45,11 @@ private:
 
     ProgressWidget *m_progressWidget;
     UpdaterWidget *m_updaterWidget;
-    ChangelogWidget *m_changelogWidget;
     UpdaterSettingsDialog *m_settingsDialog;
     KMessageWidget *m_powerMessage;
     KAction *m_applyAction;
+    QMenu* m_moreMenu;
+    QMenu* m_advancedMenu;
 
     virtual void setActionsEnabled(bool enabled = true);
 

@@ -30,6 +30,7 @@
 #include <QtGui/QTreeView>
 #include <QtGui/QVBoxLayout>
 #include <qaction.h>
+#include <QPushButton>
 
 // KDE includes
 #include <KIcon>
@@ -51,6 +52,7 @@
 #include "UpdateModel/UpdateModel.h"
 #include "UpdateModel/UpdateItem.h"
 #include "UpdateModel/UpdateDelegate.h"
+#include "ChangelogWidget.h"
 #include "ui_UpdaterWidgetNoUpdates.h"
 
 UpdaterWidget::UpdaterWidget(QWidget *parent) :
@@ -76,7 +78,15 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     m_markallWidget->addAction(action);
     m_markallWidget->setCloseButtonVisible(true);
     m_markallWidget->setVisible(false);
-    page1Layout->addWidget(m_markallWidget);
+
+    ChangelogWidget* changelogWidget = new ChangelogWidget(this);
+    changelogWidget->hide();
+    connect(this, SIGNAL(selectedResourceChanged(AbstractResource*)),
+            changelogWidget, SLOT(setResource(AbstractResource*)));
+
+    QLabel* descriptionLabel = new QLabel(this);
+    descriptionLabel->setText(i18n("<p><b>New software is available for your computer</b></p><p>Click 'Install Updates' to keep your system up-to-date and safe</p>"));
+    descriptionLabel->setMinimumHeight(descriptionLabel->fontMetrics().height()*4);
 
     m_updateView = new QTreeView(page1);
     m_updateView->setAlternatingRowColors(true);
@@ -87,7 +97,11 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     m_updateView->header()->setStretchLastSection(false);
     connect(m_updateView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged(QItemSelection,QItemSelection)));
+
+    page1Layout->addWidget(m_markallWidget);
+    page1Layout->addWidget(descriptionLabel);
     page1Layout->addWidget(m_updateView);
+    page1Layout->addWidget(changelogWidget);
 
     m_busyWidget = new KPixmapSequenceOverlayPainter(page1);
     m_busyWidget->setSequence(KPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
@@ -146,8 +160,7 @@ void UpdaterWidget::populateUpdateModel()
         return;
     }
     m_updatesBackends->prepare();
-    m_updateModel->clear();
-    m_updateModel->addResources(m_updatesBackends->toUpdate());
+    m_updateModel->setResources(m_updatesBackends->toUpdate());
 
     m_updateView->expand(m_updateModel->index(0,0)); // Expand apps category
     m_updateView->resizeColumnToContents(0);
@@ -221,4 +234,3 @@ void UpdaterWidget::checkUpToDate()
         }
     }
 }
-

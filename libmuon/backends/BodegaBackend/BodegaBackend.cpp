@@ -38,12 +38,12 @@
 K_PLUGIN_FACTORY(MuonBodegaBackendFactory, registerPlugin<BodegaBackend>(); )
 K_EXPORT_PLUGIN(MuonBodegaBackendFactory(KAboutData("muon-bodegabackend","muon-bodegabackend",ki18n("Bodega Backend"),"0.1",ki18n("Install Bodega data in your system"), KAboutData::License_GPL)))
 
-QMap<QString,QString> retrieveCredentials()
+QMap<QString,QString> retrieveCredentials(const QString& folderName)
 {
     QMap<QString,QString> ret;
     KWallet::Wallet *wallet = KWallet::Wallet::openWallet(KWallet::Wallet::NetworkWallet(), 0, KWallet::Wallet::Synchronous);
     if (wallet && wallet->isOpen()) {
-        bool folderExists = wallet->setFolder("MakePlayLive");
+        bool folderExists = wallet->setFolder(folderName);
         if (folderExists) {
             QMap<QString, QString> map;
 
@@ -57,13 +57,13 @@ QMap<QString,QString> retrieveCredentials()
 
         if (ret.isEmpty()) {
             QPointer<KPasswordDialog> dialog(new KPasswordDialog(0, KPasswordDialog::ShowKeepPassword|KPasswordDialog::ShowUsernameLine));
-            dialog->setPrompt(i18n("Enter MakePlayLive credentials"));
+            dialog->setPrompt(i18n("Enter %1 credentials", folderName));
             dialog->exec();
             ret["username"] = dialog->username();
             ret["password"] = dialog->password();
             if(dialog->keepPassword()) {
-                folderExists = (folderExists || wallet->createFolder("MakePlayLive")) &&
-                               wallet->setFolder("MakePlayLive") &&
+                folderExists = (folderExists || wallet->createFolder(folderName)) &&
+                               wallet->setFolder(folderName) &&
                                wallet->writeMap("credentials", ret)==0;
             }
             delete dialog;
@@ -81,17 +81,19 @@ BodegaBackend::BodegaBackend(QObject* parent, const QVariantList& args)
     const QVariantMap info = args.first().toMap();
     
     m_icon = info.value("Icon").toString();
-    m_channel = info.value("X-Muon-Arguments").toString();
+    QUrl url = info.value("X-Muon-Arguments").toString();
+    m_channel = url.queryItemValue("channel");
+    QString storeId = url.queryItemValue("storeId");
+    QMap<QString,QString> credentials = retrieveCredentials(url.queryItemValue("credentials"));
+    url.setQueryItems(QList<QPair<QString,QString> >());
     
     m_session = new Bodega::Session(this);
-    QMap<QString,QString> credentials = retrieveCredentials();
     m_session->setUserName(credentials["username"]);
     m_session->setPassword(credentials["password"]);
-    m_session->setBaseUrl(QUrl("http://addons.makeplaylive.com:3000"));
-    m_session->setStoreId("VIVALDI-1");
+    m_session->setBaseUrl(url);
+    m_session->setStoreId(storeId);
     connect(m_session, SIGNAL(authenticated(bool)), SLOT(resetResources()));
     m_session->signOn();
-    connect(this, SIGNAL(transactionRemoved(Transaction*)), SIGNAL(updatesCountChanged()));
 }
 
 BodegaBackend::~BodegaBackend()

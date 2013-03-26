@@ -55,6 +55,7 @@ public:
     int childCount() const;
     int row() const;
     void sort();
+    bool isEmpty() const;
 
     AbstractResource *app() const;
     QString name() const;

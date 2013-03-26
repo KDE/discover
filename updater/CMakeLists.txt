@@ -13,6 +13,7 @@ set(muon_updater_SRCS
     config/UpdaterSettingsDialog.cpp)
 
 kde4_add_ui_files(muon_updater_SRCS ProgressWidget.ui
+                                    UpdaterCentralWidget.ui
                                     UpdaterWidgetNoUpdates.ui
 )
 
