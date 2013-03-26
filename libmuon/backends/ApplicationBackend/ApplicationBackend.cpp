@@ -477,6 +477,8 @@ int ApplicationBackend::updatesCount() const
 
     int count = 0;
     foreach(Application* app, m_appList) {
+        if (!app)
+            continue;
         count += app->canUpgrade();
     }
     return count;
