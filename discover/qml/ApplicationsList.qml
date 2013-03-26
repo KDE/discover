@@ -18,6 +18,7 @@
  */
 
 import QtQuick 1.1
+import org.kde.plasma.core 0.1
 import org.kde.plasma.components 0.1
 import org.kde.qtextracomponents 0.1
 import "navigation.js" as Navigation
@@ -59,18 +60,20 @@ Item {
                         Navigation.openApplication(application)
                     }
                     hoverEnabled: true
-                    QIconItem {
+                    IconItem {
                         id: icon
-                        icon: model.icon; width: contHeight; height: contHeight
+                        source: model.icon
+                        width: contHeight
+                        height: contHeight
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.left: parent.left
                     }
                     
-                    QIconItem {
+                    IconItem {
                         anchors.right: icon.right
                         anchors.bottom: icon.bottom
                         visible: isInstalled && view.model.stateFilter!=2
-                        icon: "dialog-ok"
+                        source: "dialog-ok"
                         height: 16
                         width: 16
                     }

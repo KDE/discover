@@ -22,6 +22,7 @@
 
 // Qt includes
 #include <QtGui/QFont>
+#include <QApplication>
 
 // KDE includes
 #include <KGlobal>
@@ -32,12 +33,14 @@
 // Own includes
 #include "UpdateItem.h"
 #include <resources/AbstractResource.h>
+#include <resources/ResourcesUpdatesModel.h>
 
 #define ICON_SIZE KIconLoader::SizeSmallMedium
 
 
-UpdateModel::UpdateModel(QObject *parent) :
-    QAbstractItemModel(parent)
+UpdateModel::UpdateModel(QObject *parent)
+    : QAbstractItemModel(parent)
+    , m_updates(nullptr)
 {
     m_rootItem = new UpdateItem();
 }
@@ -92,6 +95,18 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
+void UpdateModel::checkResources(const QList<AbstractResource*>& resource, bool checked)
+{
+    if (resource.size() > 1) {
+        QApplication::setOverrideCursor(Qt::WaitCursor);
+    }
+    if(checked)
+        m_updates->addResources(resource);
+    else
+        m_updates->removeResources(resource);
+    QApplication::restoreOverrideCursor();
+}
+
 QVariant UpdateModel::headerData(int section, Qt::Orientation orientation,
                                 int role) const
 {
@@ -120,14 +135,15 @@ Qt::ItemFlags UpdateModel::flags(const QModelIndex &index) const
 
 QModelIndex UpdateModel::index(int row, int column, const QModelIndex &index) const
 {
-    if (index.isValid() && (index.column() < 0 && index.column() > 2)) {
+    // Bounds checks
+    if (!m_rootItem || row < 0 || column < 0 || column > 3 ||
+        (index.isValid() && index.column() != 0)) {
         return QModelIndex();
     }
 
     if (UpdateItem *parent = itemFromIndex(index)) {
-        if (UpdateItem *childItem = parent->child(row)) {
+        if (UpdateItem *childItem = parent->child(row))
             return createIndex(row, column, childItem);
-        }
     }
 
     return QModelIndex();
@@ -139,7 +155,7 @@ QModelIndex UpdateModel::parent(const QModelIndex &index) const
         return QModelIndex();
     }
 
-    UpdateItem *childItem = static_cast<UpdateItem*>(index.internalPointer());
+    UpdateItem *childItem = itemFromIndex(index);
     UpdateItem *parentItem = childItem->parent();
 
     if (parentItem == m_rootItem) {
@@ -151,6 +167,9 @@ QModelIndex UpdateModel::parent(const QModelIndex &index) const
 
 int UpdateModel::rowCount(const QModelIndex &parent) const
 {
+    if (parent.isValid() && parent.column() != 0)
+        return 0;
+
     UpdateItem *parentItem = itemFromIndex(parent);
 
     return parentItem ? parentItem->childCount() : 0;
@@ -166,13 +185,13 @@ UpdateItem* UpdateModel::itemFromIndex(const QModelIndex &index) const
 {
     if (index.isValid())
          return static_cast<UpdateItem*>(index.internalPointer());
-     return m_rootItem;
+    return m_rootItem;
 }
 
-bool UpdateModel::setData(const QModelIndex &index, const QVariant &value, int role)
+bool UpdateModel::setData(const QModelIndex &idx, const QVariant &value, int role)
 {
     if (role == Qt::CheckStateRole) {
-        UpdateItem *item = static_cast<UpdateItem*>(index.internalPointer());
+        UpdateItem *item = static_cast<UpdateItem*>(idx.internalPointer());
         bool newValue = value.toBool();
         UpdateItem::ItemType type = item->type();
 
@@ -186,8 +205,15 @@ bool UpdateModel::setData(const QModelIndex &index, const QVariant &value, int r
             apps << item->app();
         }
 
-        item->setChecked(newValue);
-        emit checkApps(apps, newValue);
+        checkResources(apps, newValue);
+        dataChanged(idx, idx);
+        if (type == UpdateItem::ItemType::ApplicationItem) {
+            QModelIndex parentIndex = idx.parent();
+            emit dataChanged(parentIndex, parentIndex);
+        } else {
+            emit dataChanged(index(0,0, idx), index(item->childCount()-1, 0, idx));
+        }
+
         return true;
     }
 
@@ -248,4 +274,9 @@ void UpdateModel::setResources(const QList< AbstractResource* >& resources)
         delete systemItem;
     }
     endResetModel();
+}
+
+void UpdateModel::setBackend(ResourcesUpdatesModel* updates)
+{
+    m_updates = updates;
 }

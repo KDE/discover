@@ -21,6 +21,7 @@ import QtQuick 1.1
 import org.kde.plasma.components 0.1
 import org.kde.qtextracomponents 0.1
 import "navigation.js" as Navigation
+import org.kde.muon.discover 1.0
 import org.kde.muon 1.0
 
 Page {
@@ -59,6 +60,13 @@ Page {
         
         Component.onCompleted: sortModel()
     }
+
+    function changeSorting(role, sorting, section) {
+        appsModel.stringSortRole = role
+        appsModel.sortOrder=sorting
+        page.sectionProperty = section
+        page.sectionDelegate = role=="canUpgrade" ? installedSectionDelegate : defaultSectionDelegate
+    }
     
     tools: Row {
             id: buttonsRow
@@ -66,78 +74,94 @@ Page {
             height: theme.defaultFont.pointSize*2
             visible: page.visible
             spacing: 3
-            MuonMenuToolButton {
-                id: button
+
+            MuonToolButton {
+                id: sortButton
                 icon: "view-sort-ascending"
-                anchors.verticalCenter: parent.verticalCenter
-                model: paramModel
-                minimumHeight: parent.height
-                delegate: ToolButton {
-                    width: parent.width
-                    height: button.height
-                    text: display
-                    onClicked: {
-                        appsModel.stringSortRole=role
-                        appsModel.sortOrder=sorting
-                        page.sectionProperty = section
-                        page.sectionDelegate = null
-                        button.checked=false
+                onClicked: menu.open()
+
+                ActionGroup { id: sortActionGroup }
+                Menu {
+                    id: menu
+                    MenuItem {
+                        id: nameItem
+                        text: i18n("Name")
+                        onClicked: page.changeSorting("name", Qt.AscendingOrder, "")
+                        checked: appsModel.stringSortRole=="name"
+                        checkable: true
+                        Component.onCompleted: sortActionGroup.addAction(nameItem)
                     }
-                    checked: appsModel.stringSortRole==role
+                    MenuItem {
+                        id: ratingItem
+                        text: i18n("Rating")
+                        onClicked: page.changeSorting("sortableRating", Qt.DescendingOrder, "")
+                        checked: appsModel.stringSortRole=="sortableRating"
+                        checkable: true
+                        Component.onCompleted: sortActionGroup.addAction(ratingItem)
+                    }
+                    MenuItem {
+                        id: buzzItem
+                        text: i18n("Buzz")
+                        onClicked: page.changeSorting("ratingPoints", Qt.DescendingOrder, "")
+                        checked: appsModel.stringSortRole=="ratingPoints"
+                        checkable: true
+                        Component.onCompleted: sortActionGroup.addAction(buzzItem)
+                    }
+                    MenuItem {
+                        id: popularityItem
+                        text: i18n("Popularity")
+                        onClicked: page.changeSorting("popcon", Qt.DescendingOrder, "")
+                        checked: appsModel.stringSortRole=="popcon"
+                        checkable: true
+                        Component.onCompleted: sortActionGroup.addAction(popularityItem)
+                    }
+                    MenuItem {
+                        id: originItem
+                        text: i18n("Origin")
+                        onClicked: page.changeSorting("origin", Qt.DescendingOrder, "origin")
+                        checked: appsModel.stringSortRole=="origin"
+                        checkable: true
+                        Component.onCompleted: sortActionGroup.addAction(originItem)
+                    }
+                    MenuItem {
+                        id: installedItem
+                        text: i18n("Installed")
+                        onClicked: page.changeSorting("canUpgrade", Qt.DescendingOrder, "canUpgrade")
+                        checked: appsModel.stringSortRole=="canUpgrade"
+                        checkable: true
+                        Component.onCompleted: sortActionGroup.addAction(installedItem)
+                    }
                 }
             }
-            
-            MuonMenuToolButton {
+
+            ActionGroup { id: shownActionGroup }
+            MuonToolButton {
                 id: listViewShown
                 icon: "tools-wizard"
-                model: ["list", "grid2"]
-                minimumHeight: parent.height
-                anchors.verticalCenter: parent.verticalCenter
-                delegate: ToolButton {
-                    width: parent.width
-                    height: listViewShown.height
-                    text: modelData
-                    onClicked: {
-                        page.state=modelData
-                        listViewShown.checked=false
+                onClicked: shownMenu.open()
+                Menu {
+                    id: shownMenu
+                    MenuItem {
+                        id: itemList
+                        property string type: "list"
+                        text: i18n("List")
+                        checkable: true
+                        checked: page.state==type
+                        onClicked: page.state=type
+                        Component.onCompleted: shownActionGroup.addAction(itemList)
                     }
-                    checked: page.state==modelData
+                    MenuItem {
+                        id: itemGrid
+                        property string type: "grid2"
+                        text: i18n("Grid")
+                        checkable: true
+                        checked: page.state==type
+                        onClicked: page.state=type
+                        Component.onCompleted: shownActionGroup.addAction(itemGrid)
+                    }
                 }
             }
         }
-    
-    property list<QtObject> paramModel: [
-        QtObject {
-            property string display: i18n("Name")
-            property string role: "name"
-            property string section: ""
-            property variant sorting: Qt.AscendingOrder
-        },
-        QtObject {
-            property string display: i18n("Rating")
-            property string role: "sortableRating"
-            property string section: ""
-            property variant sorting: Qt.DescendingOrder
-        },
-        QtObject {
-            property string display: i18n("Buzz")
-            property string role: "ratingPoints"
-            property string section: ""
-            property variant sorting: Qt.DescendingOrder
-        },
-        QtObject {
-            property string display: i18n("Popularity")
-            property string role: "popcon"
-            property string section: ""
-            property variant sorting: Qt.DescendingOrder
-        },
-        QtObject {
-            property string display: i18n("Origin")
-            property string role: "origin"
-            property string section: "origin"
-            property variant sorting: Qt.DescendingOrder
-        }
-    ]
     
     Component {
         id: categoryHeaderComponent
@@ -161,22 +185,35 @@ Page {
             anchors.fill: parent
             preferUpgrade: page.preferUpgrade
             section.property: page.sectionProperty
-            section.delegate: page.sectionDelegate ? page.sectionDelegate : defaultSectionDelegate
+            section.delegate: page.sectionDelegate
             actualWidth: page.actualWidth
-            
-            Component {
-                id: defaultSectionDelegate
-                Label {
-                    text: section
-                    anchors {
-                        right: parent.right
-                        rightMargin: apps.proposedMargin
-                    }
-                }
-            }
             
             header: page.header
             model: appsModel
+        }
+    }
+    
+    Component {
+        id: defaultSectionDelegate
+        Label {
+            text: section
+            anchors {
+                right: parent.right
+                rightMargin: apps.proposedMargin
+            }
+        }
+    }
+    
+    Component {
+        id: installedSectionDelegate
+        Label {
+            text: (section=="true" ? i18n("Update") :
+                section=="false" ? i18n("Installed") :
+                section)
+            anchors {
+                right: parent.right
+                rightMargin: page.proposedMargin
+            }
         }
     }
     

@@ -65,7 +65,7 @@ private Q_SLOTS:
     void checkAllMarked();
     void checkUpToDate();
     void markAllPackagesForUpgrade();
-    void checkApps(const QList<AbstractResource*>& apps, bool checked);
+
     void activityChanged();
 
 signals:

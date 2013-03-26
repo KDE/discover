@@ -20,6 +20,7 @@
 #include "MuonDiscoverMainWindow.h"
 #include "DiscoverAction.h"
 #include "NativeScrollBar.h"
+#include "MuonActionGroup.h"
 
 // Qt includes
 #include <QDebug>
@@ -82,7 +83,9 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     
     qmlRegisterType<DiscoverAction>("org.kde.muon.discover", 1, 0, "DiscoverAction");
     qmlRegisterType<NativeScrollBar>("org.kde.muon.discover", 1, 0, "NativeScrollBar");
+    qmlRegisterType<MuonActionGroup>("org.kde.muon.discover", 1, 0, "ActionGroup");
     qmlRegisterType<KXmlGuiWindow>();
+    qmlRegisterType<QActionGroup>();
     
     m_searchText = new KLineEdit;
     m_searchText->setPlaceholderText(i18n("Search..."));

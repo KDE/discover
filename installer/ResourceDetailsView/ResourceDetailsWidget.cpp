@@ -74,6 +74,7 @@
 #include "qml/src/mousecursor.h"
 #include "ReviewsWidget/ReviewsWidget.h"
 #include "ScreenShotOverlay.h"
+#include "Transaction/TransactionListener.h"
 
 #define BLUR_RADIUS 15
 
@@ -292,11 +293,12 @@ ResourceDetailsWidget::ResourceDetailsWidget(QWidget *parent)
     layout->addWidget(m_reviewsWidget);
     layout->addWidget(verticalSpacer);
 
+    m_listener = new TransactionListener(this);
     // FIXME
 //    connect(m_listener, SIGNAL(progressChanged()), SLOT(progressChanged()));
-//    connect(m_listener, SIGNAL(commentChanged()), SLOT(progressCommentChanged()));
-//    connect(m_listener, SIGNAL(running(bool)), SLOT(applicationRunningChanged(bool)));
-//    connect(m_listener, SIGNAL(downloading(bool)), SLOT(applicationDownloadingChanged(bool)));
+    connect(m_listener, SIGNAL(statusTextChanged()), SLOT(progressCommentChanged()));
+    connect(m_listener, SIGNAL(runningChanged()), SLOT(applicationRunningChanged()));
+    connect(m_listener, SIGNAL(cancellableChanged()), SLOT(cancellableChanged()));
 
     setWidget(widget);
 }
@@ -309,7 +311,7 @@ ResourceDetailsWidget::~ResourceDetailsWidget()
 void ResourceDetailsWidget::setResource(AbstractResource *resource)
 {
     m_resource = resource;
-//    m_listener->setResource(m_resource);
+    m_listener->setResource(m_resource);
 
     AbstractResource *app = qobject_cast<AbstractResource*>(resource);
 
@@ -483,19 +485,16 @@ void ResourceDetailsWidget::cancelButtonClicked()
 
 void ResourceDetailsWidget::fetchReviews(int page)
 {
-    if (!m_resource) {
-	return;
-    }
+    if (!m_resource)
+        return;
 
     m_resource->backend()->reviewsBackend()->fetchReviews(m_resource, page);
-
 }
 
 void ResourceDetailsWidget::populateReviews(AbstractResource *app, const QList<Review *> &reviews)
 {
-    if (app != m_resource) {
+    if (app != m_resource)
         return;
-    }
 
     m_reviewsWidget->addReviews(reviews);
 }
@@ -508,15 +507,16 @@ void ResourceDetailsWidget::addonsApplyButtonClicked()
     m_progressBar->setFormat(i18nc("@info:status Progress text when waiting", "Waiting"));
 }
 
-void ResourceDetailsWidget::applicationRunningChanged(bool running)
+void ResourceDetailsWidget::applicationRunningChanged()
 {
+    bool running = m_listener->isActive();
     m_actionButton->setVisible(!running);
     m_progressBar->setVisible(running);
 }
 
-void ResourceDetailsWidget::applicationDownloadingChanged(bool downloading)
+void ResourceDetailsWidget::cancellableChanged()
 {
-    m_cancelButton->setVisible(downloading);
+    m_cancelButton->setVisible(m_listener->isCancellable());
 }
 
 void ResourceDetailsWidget::progressChanged()
@@ -527,8 +527,7 @@ void ResourceDetailsWidget::progressChanged()
 
 void ResourceDetailsWidget::progressCommentChanged()
 {
-    // FIMXE
-    //m_progressBar->setFormat(m_listener->comment());
+    m_progressBar->setFormat(m_listener->statusText());
 }
 
 void ResourceDetailsWidget::updateActionButton()
