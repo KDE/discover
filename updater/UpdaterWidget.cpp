@@ -82,8 +82,6 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
 
     connect(m_updateModel, SIGNAL(checkApps(QList<AbstractResource*>,bool)),
             this, SLOT(checkApps(QList<AbstractResource*>,bool)));
-    connect(m_appsBackend, SIGNAL(reloadFinished()),
-            this, SLOT(populateUpdateModel()));
 
     m_updateView = new QTreeView(page1);
     m_updateView->setAlternatingRowColors(true);
@@ -137,6 +135,8 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
 void UpdaterWidget::setBackend(AbstractResourcesBackend *backend)
 {
     m_appsBackend = backend;
+    connect(m_appsBackend, SIGNAL(reloadFinished()),
+            this, SLOT(populateUpdateModel()));
     m_backend = qobject_cast<QApt::Backend*>(backend->property("backend").value<QObject*>());
     connect(m_backend, SIGNAL(packageChanged()),
             m_updateModel, SLOT(packageChanged()));
