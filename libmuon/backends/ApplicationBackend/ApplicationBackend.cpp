@@ -500,7 +500,7 @@ int ApplicationBackend::updatesCount() const
 
     int count = 0;
     foreach(Application* app, m_appList) {
-        if (!app)
+        if (!app->package())
             continue;
         count += app->canUpgrade();
     }
