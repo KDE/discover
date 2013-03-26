@@ -4,18 +4,6 @@ import org.kde.plasma.components 0.1
 ApplicationsListPage {
     id: page
     stateFilter: 2
-    sortRole: "canUpgrade"
-    sortOrder: Qt.AscendingOrder
-    sectionProperty: "canUpgrade"
-    sectionDelegate: Label {
-        text: (section=="true" ? i18n("Update") :
-               section=="false" ? i18n("Installed") :
-               section)
-        anchors {
-            right: parent.right
-            rightMargin: page.proposedMargin
-        }
-    }
     preferUpgrade: true
     preferList: true
     
@@ -41,5 +29,6 @@ ApplicationsListPage {
     
     Component.onCompleted: {
         toolbarComponent.createObject(page.tools)
+        page.changeSorting("canUpgrade", Qt.AscendingOrder, "canUpgrade")
     }
 }
