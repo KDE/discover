@@ -77,4 +77,4 @@ X-KDE-PluginInfo-Name=muon-bodegawallpapers-backend
 X-KDE-PluginInfo-License=GPL
 
 #channel name
-X-Muon-Arguments=Wallpapers
+X-Muon-Arguments=http://addons.makeplaylive.com:3000/?channel=Wallpapers&credentials=MakePlayLive&storeId=VIVALDI-1
