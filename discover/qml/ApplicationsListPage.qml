@@ -78,8 +78,6 @@ Page {
             MuonToolButton {
                 id: sortButton
                 icon: "view-sort-ascending"
-                anchors.verticalCenter: parent.verticalCenter
-                minimumHeight: parent.height
                 onClicked: menu.open()
 
                 ActionGroup { id: sortActionGroup }
@@ -140,8 +138,6 @@ Page {
             MuonToolButton {
                 id: listViewShown
                 icon: "tools-wizard"
-                minimumHeight: parent.height
-                anchors.verticalCenter: parent.verticalCenter
                 onClicked: shownMenu.open()
                 Menu {
                     id: shownMenu
