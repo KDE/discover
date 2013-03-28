@@ -193,6 +193,7 @@ GridItem {
                     anchors.fill: parent
                     text: i18n("Update")
                     visible: model.application.canUpgrade
+                    onClicked: resourcesModel.installApplication(model.application)
                 }
             }
         }
