@@ -128,6 +128,7 @@ void ResourceDelegate::paint(QPainter *painter,
     } else {
         AbstractResource* res = qobject_cast<AbstractResource*>( index.data(ResourcesModel::ApplicationRole).value<QObject*>());
         m_transactionListener->setResource(res);
+        m_transactionListener->setBackend(res->backend());
         QStyleOptionProgressBar progressBarOption;
         progressBarOption.rect = rect;
         progressBarOption.minimum = 0;
