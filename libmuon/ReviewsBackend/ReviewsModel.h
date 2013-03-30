@@ -32,6 +32,7 @@ class MUONPRIVATE_EXPORT ReviewsModel : public QAbstractListModel
     Q_OBJECT
     Q_PROPERTY(AbstractReviewsBackend* backend READ backend)
     Q_PROPERTY(AbstractResource* resource READ resource WRITE setResource)
+    Q_ENUMS(UserChoice);
     public:
         enum Roles {
             ShouldShow=Qt::UserRole+1,
@@ -39,8 +40,14 @@ class MUONPRIVATE_EXPORT ReviewsModel : public QAbstractListModel
             CreationDate,
             UsefulnessTotal,
             UsefulnessFavorable,
+            UsefulChoice,
             Rating,
             Summary
+        };
+        enum UserChoice {
+            None,
+            Yes,
+            No
         };
         explicit ReviewsModel(QObject* parent = 0);
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;

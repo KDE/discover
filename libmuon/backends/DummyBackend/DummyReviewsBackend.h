@@ -43,7 +43,7 @@ public:
     virtual bool isFetching() const { return false; }
     virtual void submitReview(AbstractResource*, const QString&, const QString&, const QString&) {}
     virtual void flagReview(Review*, const QString&, const QString&) {}
-    virtual void submitUsefulness(Review*, bool) {}
+    virtual void submitUsefulness(Review*, bool);
 
 private slots:
     void initialize();

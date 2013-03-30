@@ -39,6 +39,7 @@ ReviewsModel::ReviewsModel(QObject* parent)
     roles.insert(CreationDate, "date");
     roles.insert(UsefulnessTotal, "usefulnessTotal");
     roles.insert(UsefulnessFavorable, "usefulnessFavorable");
+    roles.insert(UsefulChoice, "usefulChoice");
     roles.insert(Rating, "rating");
     roles.insert(Summary, "summary");
     setRoleNames(roles);
@@ -61,6 +62,8 @@ QVariant ReviewsModel::data(const QModelIndex& index, int role) const
             return m_reviews.at(index.row())->usefulnessTotal();
         case UsefulnessFavorable:
             return m_reviews.at(index.row())->usefulnessFavorable();
+        case UsefulChoice:
+            return m_reviews.at(index.row())->usefulChoice();
         case Rating:
             return m_reviews.at(index.row())->rating();
         case Summary:
@@ -150,8 +153,11 @@ bool ReviewsModel::canFetchMore(const QModelIndex&) const
 void ReviewsModel::markUseful(int row, bool useful)
 {
     Review* r = m_reviews[row];
+    r->setUsefulChoice(useful ? Yes : No);
     qDebug() << "submitting usefulness" << r->applicationName() << r->id() << useful;
     m_backend->submitUsefulness(r, useful);
+    const QModelIndex ind = index(row, 0, QModelIndex());
+    emit dataChanged(ind, ind);
 }
 
 void ReviewsModel::deleteReview(int row)

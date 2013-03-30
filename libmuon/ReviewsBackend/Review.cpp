@@ -63,6 +63,7 @@ Review::Review(const QString& name, const QString& pkgName, const QString& langu
     , m_reviewer(userName)
     , m_usefulnessTotal(usefulTotal)
     , m_usefulnessFavorable(usefulFavorable)
+    , m_usefulChoice(ReviewsModel::None)
     , m_summary(summary)
     , m_packageVersion(packageVersion)
 {}
@@ -144,6 +145,16 @@ int Review::usefulnessTotal() const
 int Review::usefulnessFavorable() const
 {
     return m_usefulnessFavorable;
+}
+
+ReviewsModel::UserChoice Review::usefulChoice() const
+{
+    return m_usefulChoice;
+}
+
+void Review::setUsefulChoice(ReviewsModel::UserChoice useful)
+{
+    m_usefulChoice = useful;
 }
 
 AbstractResource *Review::package()

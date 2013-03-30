@@ -56,7 +56,15 @@ Item
                     }
                     opacity: delegateArea.containsMouse ? 1 : 0.2
                     
-                    text: i18n("<em>Useful? <a href='true'>Yes</a>/<a href='false'>No</a></em>")
+                    text: {
+                        if (usefulChoice == ReviewsModel.Yes) {
+                            i18n("<em>Useful? <a href='true'><b>Yes</b></a>/<a href='false'>No</a></em>")
+                        } else if (usefulChoice == ReviewsModel.No) {
+                            i18n("<em>Useful? <a href='true'>Yes</a>/<a href='false'><b>No</b></a></em>")
+                        } else {
+                            i18n("<em>Useful? <a href='true'>Yes</a>/<a href='false'>No</a></em>")
+                        }
+                    }
                     onLinkActivated: reviewsModel.markUseful(index, link=='true')
                 }
                 
