@@ -54,3 +54,7 @@ void DummyReviewsBackend::initialize()
     }
     emit ratingsReady();
 }
+
+void DummyReviewsBackend::submitUsefulness(Review* r, bool useful)
+{
+}
