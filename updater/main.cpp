@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
+ *   Copyright © 2010-2013 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -30,12 +30,12 @@
 static const char description[] =
     I18N_NOOP("An update manager");
 
-static const char version[] = "1.9.97";
+static const char version[] = "2.0.0";
 
 int main(int argc, char **argv)
 {
     KAboutData about("muon-updater", "muon-updater", ki18n("Muon Update Manager"), version, ki18n(description),
-                     KAboutData::License_GPL, ki18n("©2010-2012 Jonathan Thomas"), KLocalizedString(), 0);
+                     KAboutData::License_GPL, ki18n("©2010-2013 Jonathan Thomas"), KLocalizedString(), 0);
     about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
     about.setProgramIconName("system-software-update");
     about.setProductName("muon/updater");
