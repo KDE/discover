@@ -4,6 +4,7 @@ ServiceTypes=Muon/Backend
 Exec=blubb
 Icon=face-smile-big
 Name=Comics
+Name[bs]=Strip
 Name[ca]=Còmics
 Name[cs]=Komiksy
 Name[da]=Tegneserier
@@ -37,6 +38,7 @@ Name[uk]=Комікси
 Name[x-test]=xxComicsxx
 Name[zh_TW]=漫畫
 GenericName=Comics
+GenericName[bs]=Strip
 GenericName[ca]=Còmics
 GenericName[cs]=Komiksy
 GenericName[da]=Tegneserier
@@ -79,6 +81,7 @@ GenericName[zh_TW]=漫畫
 =======
 >>>>>>> 2.0
 Comment=Install comic stripes to be used from the comics plasmoid
+Comment[bs]=Intaliranje stripa za plazmoid s strip pričama
 Comment[ca]=Instal·la tires còmiques per utilitzar des del plasmoide de còmics
 Comment[da]=Installér tegneseriestriber til brug fra tegneserie-plasmoiden
 Comment[de]=Installation von Comics, die vom gleichnamigen Plasmoid benutzt werden
