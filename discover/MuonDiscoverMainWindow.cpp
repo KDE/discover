@@ -35,6 +35,7 @@
 #include <QNetworkAccessManager>
 #include <QNetworkDiskCache>
 #include <QDeclarativeNetworkAccessManagerFactory>
+#include <KToolBarSpacerAction>
 
 // #if !defined(QT_NO_OPENGL)
 //     #include <QGLWidget>
@@ -243,10 +244,7 @@ void MuonDiscoverMainWindow::setupActions()
     configureButton->setDelayed(false);
     configureButton->setPriority(QAction::LowPriority);
     
-    QWidget* wideWidget = new QWidget(t);
-    t->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-    
-    t->addWidget(wideWidget);
+    t->addAction(new KToolBarSpacerAction(t));
     t->addWidget(m_searchText);
     t->addAction(configureButton);
 }

@@ -17,19 +17,16 @@ Item {
     property bool defaultStartup: true
     property bool navigationEnabled: true
     
-    //text search
-    property bool searchVisible: pageStack.currentPage!=null && pageStack.currentPage.searchFor!=null
-    
     Binding {
         target: app.searchWidget
-        property: "visible"
-        value: window.searchVisible
+        property: "enabled"
+        value: pageStack.currentPage!=null && pageStack.currentPage.searchFor!=null
     }
     function clearSearch() { app.searchWidget.text="" }
     Connections {
         target: app.searchWidget
         onTextChanged: {
-            if(app.searchWidget.text.length>3)
+            if(app.searchWidget.text.length>2)
                 pageStack.currentPage.searchFor(app.searchWidget.text)
         }
     }
