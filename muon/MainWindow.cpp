@@ -118,6 +118,9 @@ void MainWindow::initGUI()
     m_stack->setCurrentWidget(m_mainWidget);
 
     m_backend = new QApt::Backend(this);
+    QApt::FrontendCaps caps = (QApt::FrontendCaps)(QApt::DebconfCap | QApt::MediumPromptCap |
+                               QApt::ConfigPromptCap | QApt::UntrustedPromptCap);
+    m_backend->setFrontendCaps(caps);
     QAptActions* actions = QAptActions::self();
 
     actions->setMainWindow(this);
