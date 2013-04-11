@@ -432,6 +432,7 @@ void ApplicationUpdates::reloadFinished()
 
 void ApplicationUpdates::calculateUpdates()
 {
+    m_toUpdate.clear();
     auto changes = m_aptBackend->stateChanges(m_updatesCache, QApt::PackageList());
     for(auto pkgList : changes.values()) {
         for(QApt::Package* it : pkgList) {
