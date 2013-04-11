@@ -49,6 +49,8 @@ ApplicationUpdates::ApplicationUpdates(ApplicationBackend* parent)
     , m_eta(0)
     , m_progressing(false)
 {
+    connect(m_appBackend, SIGNAL(reloadFinished()),
+            this, SLOT(calculateUpdates()));
 }
 
 bool ApplicationUpdates::hasUpdates() const
@@ -74,18 +76,7 @@ void ApplicationUpdates::setBackend(QApt::Backend* backend)
 
 QList<AbstractResource*> ApplicationUpdates::toUpdate() const
 {
-    QList<AbstractResource*> ret;
-    auto changes = m_aptBackend->stateChanges(m_updatesCache, QApt::PackageList());
-    for(auto pkgList : changes.values()) {
-        for(QApt::Package* it : pkgList) {
-            AbstractResource* res = m_appBackend->resourceByPackageName(it->name());
-            if(!res) //If we couldn't find it by its name, try with
-                res = m_appBackend->resourceByPackageName(QString("%1:%2").arg(it->name()).arg(it->architecture()));
-            Q_ASSERT(res);
-            ret += res;
-        }
-    }
-    return ret;
+    return m_toUpdate;
 }
 
 void ApplicationUpdates::prepare()
@@ -93,6 +84,7 @@ void ApplicationUpdates::prepare()
     m_aptBackend->markPackages(m_aptBackend->markedPackages(), QApt::Package::ToKeep);
     m_updatesCache = m_aptBackend->currentCacheState();
     m_aptBackend->markPackagesForDistUpgrade();
+    calculateUpdates();
 }
 
 void ApplicationUpdates::start()
@@ -437,4 +429,18 @@ void ApplicationUpdates::transactionFinished(QApt::ExitStatus status)
     m_lastRealProgress = 0;
     m_appBackend->reload();
     setProgressing(false);
+}
+
+void ApplicationUpdates::calculateUpdates()
+{
+    auto changes = m_aptBackend->stateChanges(m_updatesCache, QApt::PackageList());
+    for(auto pkgList : changes.values()) {
+        for(QApt::Package* it : pkgList) {
+            AbstractResource* res = m_appBackend->resourceByPackageName(it->name());
+            if(!res) //If we couldn't find it by its name, try with
+                res = m_appBackend->resourceByPackageName(QString("%1:%2").arg(it->name()).arg(it->architecture()));
+            Q_ASSERT(res);
+            m_toUpdate += res;
+        }
+    }
 }
