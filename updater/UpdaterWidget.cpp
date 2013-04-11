@@ -142,11 +142,13 @@ void UpdaterWidget::setBackend(ResourcesUpdatesModel *updates)
 void UpdaterWidget::activityChanged()
 {
     if(m_updatesBackends->isProgressing()) {
+        m_updateView->hide();
         m_busyWidget->start();
         setEnabled(false);
         setCurrentIndex(-1);
     } else {
         populateUpdateModel();
+        m_updateView->show();
     }
 }
 

@@ -50,7 +50,7 @@ ApplicationUpdates::ApplicationUpdates(ApplicationBackend* parent)
     , m_progressing(false)
 {
     connect(m_appBackend, SIGNAL(reloadFinished()),
-            this, SLOT(calculateUpdates()));
+            this, SLOT(reloadFinished()));
 }
 
 bool ApplicationUpdates::hasUpdates() const
@@ -72,6 +72,10 @@ void ApplicationUpdates::setBackend(QApt::Backend* backend)
 {
     Q_ASSERT(!m_aptBackend || m_aptBackend==backend);
     m_aptBackend = backend;
+    // FIXME: Debconf support was lost during the port
+    QApt::FrontendCaps caps = (QApt::FrontendCaps)(QApt::MediumPromptCap |
+                               QApt::ConfigPromptCap | QApt::UntrustedPromptCap);
+    m_aptBackend->setFrontendCaps(caps);
 }
 
 QList<AbstractResource*> ApplicationUpdates::toUpdate() const
@@ -112,7 +116,10 @@ void ApplicationUpdates::start()
     }
 
     // Create and run the transaction
-    setupTransaction(m_aptBackend->commitChanges());
+    m_trans = m_aptBackend->commitChanges();
+    setupTransaction(m_trans);
+    m_trans->run();
+    setProgressing(true);
 }
 
 void ApplicationUpdates::addResources(const QList<AbstractResource*>& apps)
@@ -185,7 +192,6 @@ void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
     connect(trans, SIGNAL(statusDetailsChanged(QString)), SLOT(installMessage(QString)));
     connect(trans, SIGNAL(cancellableChanged(bool)), SIGNAL(cancelableChanged(bool)));
     connect(trans, SIGNAL(finished(QApt::ExitStatus)), trans, SLOT(deleteLater()));
-    connect(trans, SIGNAL(finished(QApt::ExitStatus)), SLOT(transactionFinished(QApt::ExitStatus)));
     connect(trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
             this, SLOT(statusChanged(QApt::TransactionStatus)));
     connect(trans, SIGNAL(mediumRequired(QString,QString)),
@@ -194,9 +200,6 @@ void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
             this, SLOT(untrustedPrompt(QStringList)));
     connect(trans, SIGNAL(downloadSpeedChanged(quint64)),
             this, SIGNAL(downloadSpeedChanged(quint64)));
-    trans->run();
-    m_trans = trans;
-    setProgressing(true);
 }
 
 bool ApplicationUpdates::isAllMarked() const
@@ -316,16 +319,13 @@ void ApplicationUpdates::statusChanged(QApt::TransactionStatus status)
         case QApt::RunningStatus:
             setStatusMessage(QString());
             setStatusDetail(QString());
-            setProgress(-1);
             break;
         case QApt::LoadingCacheStatus:
             setStatusDetail(QString());
             setStatusMessage(i18nc("@info Status info",
                                         "Loading Software List"));
-            setProgress(-1);
             break;
         case QApt::DownloadingStatus:
-            setProgress(-1);
             switch (m_trans->role()) {
                 case QApt::UpdateCacheRole:
                     setStatusMessage(i18nc("@info Status information, widget title",
@@ -341,7 +341,6 @@ void ApplicationUpdates::statusChanged(QApt::TransactionStatus status)
             }
             break;
         case QApt::CommittingStatus:
-            setProgress(-1);
             setStatusMessage(i18nc("@info Status information, widget title",
                                         "Applying Changes"));
             setStatusDetail(QString());
@@ -351,6 +350,7 @@ void ApplicationUpdates::statusChanged(QApt::TransactionStatus status)
             setStatusMessage(i18nc("@info Status information, widget title",
                                         "Finished"));
             m_lastRealProgress = 0;
+            m_appBackend->reload();
             break;
     }
 }
@@ -424,10 +424,9 @@ QList<QAction*> ApplicationUpdates::messageActions() const
     return ret;
 }
 
-void ApplicationUpdates::transactionFinished(QApt::ExitStatus status)
+void ApplicationUpdates::reloadFinished()
 {
-    m_lastRealProgress = 0;
-    m_appBackend->reload();
+    calculateUpdates();
     setProgressing(false);
 }
 
