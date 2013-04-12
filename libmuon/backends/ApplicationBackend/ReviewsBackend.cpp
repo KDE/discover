@@ -66,7 +66,6 @@ ReviewsBackend::ReviewsBackend(QObject *parent)
         , m_aptBackend(0)
         , m_serverBase(MuonDataSources::rnRSource())
         , m_ratingsFile(0)
-        , m_reviewsFile(0)
 {
     m_loginBackend = new UbuntuLoginBackend(this);
     connect(m_loginBackend, SIGNAL(connectionStateChanged()), SIGNAL(loginStateChanged()));
@@ -224,37 +223,23 @@ void ReviewsBackend::fetchReviews(AbstractResource* res, int page)
             % origin % '/' % QLatin1String("any") % '/' % version % '/' % packageName
             % ';' % appName % '/' % QLatin1String("page") % '/' % QString::number(page));
 
-    if (m_reviewsFile) {
-        m_reviewsFile->deleteLater();
-        m_reviewsFile = 0;
-    }
-
-    m_reviewsFile = new KTemporaryFile();
-    m_reviewsFile->open();
-
-    KIO::FileCopyJob *getJob = KIO::file_copy(reviewsUrl,
-                               m_reviewsFile->fileName(), -1,
-                               KIO::Overwrite | KIO::HideProgressInfo);
+    KIO::StoredTransferJob* getJob = KIO::storedGet(reviewsUrl, KIO::NoReload, KIO::Overwrite | KIO::HideProgressInfo);
     m_jobHash[getJob] = app;
     connect(getJob, SIGNAL(result(KJob*)),
             this, SLOT(reviewsFetched(KJob*)));
 }
 
-void ReviewsBackend::reviewsFetched(KJob *job)
+void ReviewsBackend::reviewsFetched(KJob *j)
 {
+    KIO::StoredTransferJob* job = qobject_cast<KIO::StoredTransferJob*>(j);
     if (job->error()) {
         m_jobHash.remove(job);
         return;
     }
 
-    QFile file(m_reviewsFile->fileName());
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-
     QJson::Parser parser;
-    QByteArray json = file.readAll();
-
     bool ok = false;
-    QVariant reviews = parser.parse(json, &ok);
+    QVariant reviews = parser.parse(job->data(), &ok);
 
     if (!ok) {
         m_jobHash.remove(job);
