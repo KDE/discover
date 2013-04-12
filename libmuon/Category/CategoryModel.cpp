@@ -60,7 +60,7 @@ void CategoryModel::setCategories(const QList<Category *> &categoryList, const Q
     }
 }
 
-Category* CategoryModel::categoryForIndex(int row)
+Category* CategoryModel::categoryForRow(int row)
 {
     return m_categoryList.at(row);
 }
@@ -73,7 +73,7 @@ QList<Category*> CategoryModel::populateCategories()
     return cats;
 }
 
-void CategoryModel::setSubcategories(Category* c)
+void CategoryModel::setDisplayedCategory(Category* c)
 {
     m_currentCategory = c;
     if(c)

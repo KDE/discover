@@ -41,9 +41,7 @@ AvailableView::AvailableView(QWidget *parent)
 
     m_categoryViewWidget = new CategoryViewWidget(m_viewStack);
 
-    QString rootName = i18n("Get Software");
-    KIcon rootIcon = KIcon("applications-other");
-    m_categoryViewWidget->setCategories(Category::populateCategories(), rootName, rootIcon);
+    m_categoryViewWidget->setDisplayedCategory(nullptr);
     m_breadcrumbWidget->setRootItem(m_categoryViewWidget->breadcrumbItem());
 
     m_viewStack->addWidget(m_categoryViewWidget);

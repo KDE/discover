@@ -53,19 +53,18 @@ CategoryViewWidget::CategoryViewWidget(QWidget *parent)
            this, SLOT(onIndexActivated(QModelIndex)));
 }
 
-void CategoryViewWidget::setCategories(const QList<Category *> &categoryList,
-                                       const QString &rootName,
-                                       const QIcon &icon)
+
+void CategoryViewWidget::setDisplayedCategory(Category* c)
 {
-    m_categoryModel->setCategories(categoryList, rootName);
+    m_categoryModel->setDisplayedCategory(c);
 
     KCategorizedSortFilterProxyModel *proxy = new KCategorizedSortFilterProxyModel(this);
     proxy->setSourceModel(m_categoryModel);
     proxy->setCategorizedModel(true);
     m_categoryView->setModel(proxy);
 
-    m_crumb->setText(rootName);
-    m_crumb->setIcon(icon);
+    m_crumb->setText(c ? c->name() : i18n("Get Software"));
+    m_crumb->setIcon(KIcon(c ? c->icon() : "applications-other"));
     m_crumb->setAssociatedView(this);
 }
 
@@ -80,7 +79,7 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
     }
 
     // Otherwise we have to create a new view
-    Category *category = m_categoryModel->categoryForIndex(index.row());
+    Category *category = m_categoryModel->categoryForRow(index.row());
 
     switch (index.data(CategoryModel::CategoryTypeRole).toInt()) {
     case CategoryModel::CategoryType: { // Displays the apps in a category
@@ -97,8 +96,7 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
         m_subView = new CategoryViewWidget(this);
 
         CategoryViewWidget *subCatView = static_cast<CategoryViewWidget *>(m_subView);
-        subCatView->setCategories(category->subCategories(), category->name(),
-                                  KIcon(category->icon()));
+        subCatView->setDisplayedCategory(category);
     }
         break;
     }

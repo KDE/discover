@@ -90,9 +90,9 @@ void ApplicationBackendTest::testCategories()
     ResourcesProxyModel* proxy = new ResourcesProxyModel(m);
     proxy->setSourceModel(m);
     CategoryModel* categoryModel = new CategoryModel(proxy);
-    categoryModel->setSubcategories(nullptr);
-    QList<Category*> categories = Category::populateCategories();
-    foreach(Category* cat, categories) {
+    categoryModel->setDisplayedCategory(nullptr);
+    for(int i=0; i<categoryModel->rowCount(); ++i) {
+        Category* cat = categoryModel->categoryForRow(i);
         proxy->setFiltersFromCategory(cat);
         qDebug() << "fuuuuuu" << proxy->rowCount() << cat->name();
     }
