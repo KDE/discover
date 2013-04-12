@@ -224,6 +224,27 @@ void ReviewsBackend::fetchReviews(AbstractResource* res, int page)
             this, SLOT(reviewsFetched(KJob*)));
 }
 
+static Review* constructReview(const QVariantMap& data)
+{
+    QString reviewUsername = data.value("reviewer_username").toString();
+    QString reviewDisplayName = data.value("reviewer_displayname").toString();
+    QString reviewer = reviewDisplayName.isEmpty() ? reviewUsername : reviewDisplayName;
+    return new Review(
+        data.value("app_name").toString(),
+        data.value("package_name").toString(),
+        data.value("language").toString(),
+        data.value("summary").toString(),
+        data.value("review_text").toString(),
+        reviewer,
+        QDateTime::fromString(data.value("date_created").toString(), "yyyy-MM-dd HH:mm:ss"),
+        !data.value("hide").toBool(),
+        data.value("id").toULongLong(),
+        data.value("rating").toInt() * 2,
+        data.value("usefulness_total").toInt(),
+        data.value("usefulness_favorable").toInt(),
+        data.value("version").toString());
+}
+
 void ReviewsBackend::reviewsFetched(KJob *j)
 {
     KIO::StoredTransferJob* job = qobject_cast<KIO::StoredTransferJob*>(j);
@@ -242,8 +263,7 @@ void ReviewsBackend::reviewsFetched(KJob *j)
 
     QList<Review *> reviewsList;
     foreach (const QVariant &data, reviews.toList()) {
-        Review *review = new Review(data.toMap());
-        reviewsList << review;
+        reviewsList << constructReview(data.toMap());
     }
 
     m_reviewsCache[app->package()->name() + app->name()].append(reviewsList);

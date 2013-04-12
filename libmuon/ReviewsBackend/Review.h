@@ -32,7 +32,6 @@ class AbstractResource;
 class MUONPRIVATE_EXPORT Review
 {
 public:
-    explicit Review(const QVariantMap &data);
     Review(const QString& name, const QString& pkgName, const QString& language, const QString& summary,
                const QString& reviewText, const QString& userName, const QDateTime& date, bool show, quint64 id,
                int rating, int usefulTotal, int usefulFavorable, const QString& packageVersion);
