@@ -49,7 +49,7 @@ void ReviewsTest::testReviewsFetch()
 void ReviewsTest::testReviewsModel_data()
 {
     QTest::addColumn<QString>( "application" );
-    QTest::newRow( "kate" ) << "kate";
+    QTest::newRow( "python" ) << "python";
     QTest::newRow( "gedit" ) << "gedit";
 }
 
@@ -62,7 +62,7 @@ void ReviewsTest::testReviewsModel()
     AbstractResource* app = m_appBackend->resourceByPackageName(application);
     QVERIFY(app);
     model->setResource(app);
-    QTest::kWaitForSignal(model, SIGNAL(rowsInserted(QModelIndex,int,int)));
+    QTest::kWaitForSignal(model, SIGNAL(rowsInserted(QModelIndex,int,int)), 2000);
     
     QModelIndex root;
     while(model->canFetchMore(root)) {

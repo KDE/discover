@@ -28,6 +28,7 @@
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>
 #include <Category/Category.h>
+#include <Category/CategoryModel.h>
 #include <MuonBackendsFactory.h>
 
 QTEST_KDEMAIN_CORE( ApplicationBackendTest )
@@ -88,6 +89,8 @@ void ApplicationBackendTest::testCategories()
     ResourcesModel* m = ResourcesModel::global();
     ResourcesProxyModel* proxy = new ResourcesProxyModel(m);
     proxy->setSourceModel(m);
+    CategoryModel* categoryModel = new CategoryModel(proxy);
+    categoryModel->setSubcategories(nullptr);
     QList<Category*> categories = Category::populateCategories();
     foreach(Category* cat, categories) {
         proxy->setFiltersFromCategory(cat);
