@@ -27,13 +27,14 @@
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <MuonBackendsFactory.h>
 #include <resources/AbstractResourcesBackend.h>
+#include <resources/ResourcesModel.h>
 
 QTEST_KDEMAIN_CORE( ReviewsTest )
 
 ReviewsTest::ReviewsTest(QObject* parent): QObject(parent)
 {
-    MuonBackendsFactory f;
-    m_appBackend = f.backend("muon-appsbackend");
+    ResourcesModel* m = new ResourcesModel("muon-appsbackend", this);
+    m_appBackend = m->backends().first();
     QTest::kWaitForSignal(m_appBackend, SIGNAL(backendReady()));
     m_revBackend = m_appBackend->reviewsBackend();
 }
