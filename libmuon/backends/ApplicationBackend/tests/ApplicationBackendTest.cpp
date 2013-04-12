@@ -32,11 +32,23 @@
 
 QTEST_KDEMAIN_CORE( ApplicationBackendTest )
 
+AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
+{
+    QVector<AbstractResourcesBackend*> backends = m->backends();
+    foreach(AbstractResourcesBackend* backend, backends) {
+        if(backend->metaObject()->className()==name) {
+            return backend;
+        }
+    }
+    return nullptr;
+}
+
 ApplicationBackendTest::ApplicationBackendTest()
 {
     ResourcesModel* m = new ResourcesModel("muon-appsbackend", this);
     new ModelTest(m,m);
 
+    m_appBackend = backendByName(m, "ApplicationBackend");
     QVERIFY(m_appBackend); //TODO: test all backends
     QTest::kWaitForSignal(m_appBackend, SIGNAL(backendReady()));
 }
