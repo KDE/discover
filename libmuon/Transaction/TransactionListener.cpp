@@ -113,11 +113,15 @@ void TransactionListener::transactionStatusChanged(Transaction::Status status)
 
 void TransactionListener::transactionRemoved(Transaction* trans)
 {
-    setTransaction(nullptr);
+    if(m_transaction == trans) {
+        setTransaction(nullptr);
+    }
 }
 
 void TransactionListener::transactionCancelled(Transaction* trans)
 {
-    setTransaction(nullptr);
+    if(m_transaction == trans) {
+        setTransaction(nullptr);
+    }
     emit cancelled();
 }
