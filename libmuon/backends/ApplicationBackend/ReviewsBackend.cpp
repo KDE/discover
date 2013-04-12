@@ -182,14 +182,9 @@ Rating *ReviewsBackend::ratingForApplication(AbstractResource* app) const
 
 void ReviewsBackend::stopPendingJobs()
 {
-    auto iter = m_jobHash.constBegin();
-    while (iter != m_jobHash.constEnd()) {
-        KJob *getJob = iter.key();
-        disconnect(getJob, SIGNAL(result(KJob*)),
-                   this, SLOT(changelogFetched(KJob*)));
-        iter++;
+    for(auto it = m_jobHash.constBegin(); it != m_jobHash.constEnd(); ++it) {
+        disconnect(it.key(), SIGNAL(result(KJob*)), this, SLOT(changelogFetched(KJob*)));
     }
-
     m_jobHash.clear();
 }
 
@@ -232,8 +227,8 @@ void ReviewsBackend::fetchReviews(AbstractResource* res, int page)
 void ReviewsBackend::reviewsFetched(KJob *j)
 {
     KIO::StoredTransferJob* job = qobject_cast<KIO::StoredTransferJob*>(j);
+    Application *app = m_jobHash.take(job);
     if (job->error()) {
-        m_jobHash.remove(job);
         return;
     }
 
@@ -241,8 +236,7 @@ void ReviewsBackend::reviewsFetched(KJob *j)
     bool ok = false;
     QVariant reviews = parser.parse(job->data(), &ok);
 
-    if (!ok) {
-        m_jobHash.remove(job);
+    if (!ok || !app) {
         return;
     }
 
@@ -251,12 +245,6 @@ void ReviewsBackend::reviewsFetched(KJob *j)
         Review *review = new Review(data.toMap());
         reviewsList << review;
     }
-
-    Application *app = m_jobHash.value(job);
-    m_jobHash.remove(job);
-
-    if (!app)
-        return;
 
     m_reviewsCache[app->package()->name() + app->name()].append(reviewsList);
 
