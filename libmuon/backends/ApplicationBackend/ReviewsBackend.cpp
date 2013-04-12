@@ -221,8 +221,8 @@ void ReviewsBackend::fetchReviews(AbstractResource* res, int page)
     // figure it out) is written in python, so you have to go hunting to where
     // a variable was initially initialized with a primitive to figure out its type.
     KUrl reviewsUrl(m_serverBase, QLatin1String("reviews/filter/") % lang % '/'
-		    % origin % '/' % QLatin1String("any") % '/' % version % '/' % packageName
-		    % ';' % appName % '/' % QLatin1String("page") % '/' % QString::number(page));
+            % origin % '/' % QLatin1String("any") % '/' % version % '/' % packageName
+            % ';' % appName % '/' % QLatin1String("page") % '/' % QString::number(page));
 
     if (m_reviewsFile) {
         m_reviewsFile->deleteLater();
