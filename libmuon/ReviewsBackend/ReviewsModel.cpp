@@ -92,14 +92,15 @@ AbstractReviewsBackend* ReviewsModel::backend() const
 void ReviewsModel::setResource(AbstractResource* app)
 {
     if(m_app!=app) {
-        reset();
+        beginResetModel();
         m_reviews.clear();
+        endResetModel();
 
-        m_app = app;
         if(m_backend) {
             disconnect(m_backend, SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
                 this, SLOT(addReviews(AbstractResource*,QList<Review*>)));
         }
+        m_app = app;
         m_backend = app->backend()->reviewsBackend();
         if(m_backend) {
             connect(m_backend, SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
