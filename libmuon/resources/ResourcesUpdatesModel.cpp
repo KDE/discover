@@ -92,8 +92,11 @@ void ResourcesUpdatesModel::updateAll()
     
     if(m_updaters.isEmpty())
         emit progressingChanged();
-    else foreach(AbstractBackendUpdater* upd, m_updaters) {
-        QMetaObject::invokeMethod(upd, "start", Qt::QueuedConnection);
+    else {
+        for (AbstractBackendUpdater* upd : m_updaters) {
+            if (upd->hasUpdates())
+                QMetaObject::invokeMethod(upd, "start", Qt::QueuedConnection);
+        }
     }
 }
 
