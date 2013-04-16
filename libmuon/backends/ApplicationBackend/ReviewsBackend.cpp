@@ -65,7 +65,6 @@ ReviewsBackend::ReviewsBackend(QObject *parent)
         : AbstractReviewsBackend(parent)
         , m_aptBackend(0)
         , m_serverBase(MuonDataSources::rnRSource())
-        , m_ratingsFile(0)
 {
     m_loginBackend = new UbuntuLoginBackend(this);
     connect(m_loginBackend, SIGNAL(connectionStateChanged()), SIGNAL(loginStateChanged()));
@@ -76,9 +75,7 @@ ReviewsBackend::ReviewsBackend(QObject *parent)
 }
 
 ReviewsBackend::~ReviewsBackend()
-{
-    delete m_ratingsFile;
-}
+{}
 
 void ReviewsBackend::refreshConsumerKeys()
 {
@@ -110,26 +107,18 @@ void ReviewsBackend::setAptBackend(QApt::Backend *aptBackend)
 
 void ReviewsBackend::fetchRatings()
 {
+    QString ratingsCache = KStandardDirs::locateLocal("data", "libmuon/ratings.txt");
     refreshConsumerKeys();
+
     // First, load our old ratings cache in case we don't have net connectivity
-    loadRatingsFromFile(KStandardDirs::locateLocal("data", "libmuon/ratings.txt"));
-
-
-    if (m_ratingsFile) {
-        m_ratingsFile->deleteLater();
-        m_ratingsFile = 0;
-    }
-
-    m_ratingsFile = new KTemporaryFile();
-    m_ratingsFile->open();
+    loadRatingsFromFile();
 
     // Try to fetch the latest ratings from the internet
     KUrl ratingsUrl(m_serverBase, "review-stats/");
     KIO::FileCopyJob *getJob = KIO::file_copy(ratingsUrl,
-                               m_ratingsFile->fileName(), -1,
+                               ratingsCache, -1,
                                KIO::Overwrite | KIO::HideProgressInfo);
-    connect(getJob, SIGNAL(result(KJob*)),
-            this, SLOT(ratingsFetched(KJob*)));
+    connect(getJob, SIGNAL(result(KJob*)), SLOT(ratingsFetched(KJob*)));
 }
 
 void ReviewsBackend::ratingsFetched(KJob *job)
@@ -138,27 +127,21 @@ void ReviewsBackend::ratingsFetched(KJob *job)
         return;
     }
 
-    loadRatingsFromFile(m_ratingsFile->fileName());
+    loadRatingsFromFile();
 }
 
-void ReviewsBackend::loadRatingsFromFile(const QString &fileName)
+void ReviewsBackend::loadRatingsFromFile()
 {
-    QIODevice* dev = KFilterDev::deviceForFile(fileName, "application/x-gzip");
+    QString ratingsCache = KStandardDirs::locateLocal("data", "libmuon/ratings.txt");
+    QIODevice* dev = KFilterDev::deviceForFile(ratingsCache, "application/x-gzip");
 
     QJson::Parser parser;
     bool ok = false;
     QVariant ratings = parser.parse(dev, &ok);
 
     if (!ok) {
-        qDebug() << "error while parsing ratings: " << fileName;
+        qDebug() << "error while parsing ratings: " << ratingsCache;
         return;
-    }
-
-    // Replace old ratings cache
-    QString ratingsCache = KStandardDirs::locateLocal("data", "libmuon/ratings.txt", true);
-    if (fileName != ratingsCache) {
-        QFile::remove(ratingsCache);
-        QFile::copy(fileName, ratingsCache);
     }
 
     qDeleteAll(m_ratings);
