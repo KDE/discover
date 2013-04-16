@@ -41,7 +41,7 @@ TransactionModel::TransactionModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     auto roles = roleNames();
-    roles[TransactionRoleRole] = "transaction";
+    roles[TransactionRoleRole] = "transactionRole";
     roles[TransactionStatusRole] = "status";
     roles[CancellableRole] = "cancellable";
     roles[ProgressRole] = "progress";
