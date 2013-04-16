@@ -155,6 +155,7 @@ void TransactionModel::addTransaction(Transaction *trans)
 
     // Connect all notify signals to our transactionChanged slot
     const QMetaObject *meta = trans->metaObject();
+    const QMetaMethod notifySlot = metaObject()->method(metaObject()->indexOfSlot("transactionChanged()"));
     for (int i = 0; i < meta->propertyCount(); ++i) {
         QMetaProperty prop = meta->property(i);
 
@@ -162,7 +163,6 @@ void TransactionModel::addTransaction(Transaction *trans)
             continue;
 
         const QMetaMethod notifySignal = prop.notifySignal();
-        const QMetaMethod notifySlot = metaObject()->method(metaObject()->indexOfSlot("transactionChanged()"));
         connect(trans, notifySignal, this, notifySlot);
     }
 
