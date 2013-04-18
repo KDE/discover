@@ -474,6 +474,9 @@ void MainWindow::openApplication(const QString &app)
 
 void MainWindow::triggerOpenApplication()
 {
+    if (!ResourcesModel::global())
+        return;
+
     AbstractResource* app = ResourcesModel::global()->resourceByPackageName(m_appToBeOpened);
     if(app) {
         AvailableView *view = qobject_cast<AvailableView *>(m_viewStack->currentWidget());
