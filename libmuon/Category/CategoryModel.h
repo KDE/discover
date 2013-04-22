@@ -33,7 +33,6 @@ class MUONPRIVATE_EXPORT CategoryModel : public QStandardItemModel
     Q_PROPERTY(Category* displayedCategory READ displayedCategory WRITE setDisplayedCategory)
     public:
         enum CategoryModelRole {
-            CategoryTypeRole = Qt::UserRole + 1,
             AndOrFilterRole = Qt::UserRole + 2,
             NotFilterRole = Qt::UserRole + 3,
             CategoryRole

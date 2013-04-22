@@ -81,8 +81,7 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
     // Otherwise we have to create a new view
     Category *category = m_categoryModel->categoryForRow(index.row());
 
-    switch (index.data(CategoryModel::CategoryTypeRole).toInt()) {
-    case CategoryModel::CategoryType: { // Displays the apps in a category
+    if(!category->hasSubCategories()) {
         m_subView = new ResourceViewWidget(this);
 
         ResourceViewWidget *appView = static_cast<ResourceViewWidget *>(m_subView);
@@ -90,15 +89,11 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
         appView->setTitle(category->name());
         appView->setIcon(KIcon(category->icon()));
         appView->setShouldShowTechnical(category->shouldShowTechnical());
-    }
-        break;
-    case CategoryModel::SubCatType: { // Displays the subcategories of a category
+    } else {
         m_subView = new CategoryViewWidget(this);
 
         CategoryViewWidget *subCatView = static_cast<CategoryViewWidget *>(m_subView);
         subCatView->setDisplayedCategory(category);
-    }
-        break;
     }
 
     // Forward on to parent so that they can handle adding subviews to breadcrumb,

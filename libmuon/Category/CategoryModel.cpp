@@ -30,7 +30,6 @@ CategoryModel::CategoryModel(QObject* parent)
     : QStandardItemModel(parent)
 {
     QHash< int, QByteArray > names = roleNames();
-    names[CategoryTypeRole] = "categoryType";
     names[AndOrFilterRole] = "andOrFilter";
     names[NotFilterRole] = "notFilter";
     names[CategoryRole] = "category";
@@ -49,12 +48,6 @@ void CategoryModel::setCategories(const QList<Category *> &categoryList, const Q
         categoryItem->setEditable(false);
         categoryItem->setData(rootName, KCategorizedSortFilterProxyModel::CategoryDisplayRole);
         categoryItem->setData(qVariantFromValue<QObject*>(category), CategoryRole);
-
-        if (category->hasSubCategories()) {
-            categoryItem->setData(SubCatType, CategoryTypeRole);
-        } else {
-            categoryItem->setData(CategoryType, CategoryTypeRole);
-        }
 
         appendRow(categoryItem);
     }
