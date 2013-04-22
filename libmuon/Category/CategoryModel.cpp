@@ -30,8 +30,6 @@ CategoryModel::CategoryModel(QObject* parent)
     : QStandardItemModel(parent)
 {
     QHash< int, QByteArray > names = roleNames();
-    names[AndOrFilterRole] = "andOrFilter";
-    names[NotFilterRole] = "notFilter";
     names[CategoryRole] = "category";
     setRoleNames(names);
 }
