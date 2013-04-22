@@ -30,11 +30,11 @@
 class QDomNode;
 
 enum FilterType {
-    InvalidFilter = 0,
-    CategoryFilter = 1,
-    PkgSectionFilter = 2,
-    PkgWildcardFilter = 3,
-    PkgNameFilter = 4
+    InvalidFilter,
+    CategoryFilter,
+    PkgSectionFilter,
+    PkgWildcardFilter,
+    PkgNameFilter
 };
 
 class MUONPRIVATE_EXPORT Category : public QObject
