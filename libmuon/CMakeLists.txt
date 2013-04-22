@@ -4,6 +4,7 @@ add_subdirectory(declarative)
 set(muon_LIB_SRCS
     Category/Category.cpp
     Category/CategoryModel.cpp
+    Category/CategoriesReader.cpp
     MuonMainWindow.cpp
     ReviewsBackend/AbstractReviewsBackend.cpp
     ReviewsBackend/Rating.cpp

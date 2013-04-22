@@ -21,6 +21,7 @@
 // Own includes
 #include "CategoryModel.h"
 #include "Category.h"
+#include "CategoriesReader.h"
 
 // KDE includes
 #include <KIcon>
@@ -59,8 +60,10 @@ Category* CategoryModel::categoryForRow(int row)
 QList<Category*> CategoryModel::populateCategories()
 {
     static QList<Category*> cats;
-    if(cats.isEmpty())
-        cats = Category::populateCategories();
+    if(cats.isEmpty()) {
+        CategoriesReader reader;
+        cats = reader.populateCategories();
+    }
     return cats;
 }
 

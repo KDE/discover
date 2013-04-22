@@ -45,6 +45,7 @@ public:
     Q_PROPERTY(QString icon READ icon CONSTANT)
     Q_PROPERTY(bool hasSubCategories READ hasSubCategories CONSTANT)
     Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical CONSTANT)
+    explicit Category(QObject* parent = 0);
     ~Category();
 
     QString name() const;
@@ -55,15 +56,11 @@ public:
     bool hasSubCategories() const;
     bool shouldShowTechnical() const;
     QList<Category *> subCategories() const;
-    
-    static QList<Category*> populateCategories();
+
+    static void addSubcategory(QList<Category*>& list, Category* cat);
+    void parseData(const QString& path, const QDomNode& data, bool canHaveChildren);
 
 private:
-    static void addSubcategory(QList<Category*>& list, Category* cat);
-    static QList<Category*> loadCategoriesFile(const QString& path);
-
-    explicit Category(QObject* parent = 0);
-
     QString m_name;
     QString m_iconString;
     QList<QPair<FilterType, QString> > m_andFilters;
@@ -72,7 +69,6 @@ private:
     bool m_showTechnical;
     QList<Category *> m_subCategories;
 
-    void parseData(const QString& path, const QDomNode& data, bool canHaveChildren);
     QList<QPair<FilterType, QString> > parseIncludes(const QDomNode &data);
 };
 
