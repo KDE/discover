@@ -22,6 +22,7 @@
 
 #include <KDebug>
 #include <KProcess>
+#include <KStandardDirs>
 
 DistUpgradeEvent::DistUpgradeEvent(QObject* parent, QString name)
         : Event(parent, name)
@@ -44,6 +45,15 @@ void DistUpgradeEvent::show()
 
 void DistUpgradeEvent::run()
 {
-    KProcess::startDetached(QStringList() << "/usr/bin/kubuntu-devel-release-upgrade");
+    KProcess *proc = new KProcess(this);
+    QStringList arguments;
+    QString kdesudo = KStandardDirs::findExe("kdesudo");
+    QString upgrader = QString("do-release-upgrade -m desktop -f DistUpgradeViewKDE");
+
+    arguments << kdesudo << upgrader;
+    proc->setProgram(arguments);
+    proc->start();
+
+    connect(proc, SIGNAL(finished(int)), proc, SLOT(deleteLater()));
     Event::run();
 }

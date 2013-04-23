@@ -357,8 +357,16 @@ void MainWindow::checkerFinished(int res)
 
 void MainWindow::launchDistUpgrade()
 {
-    KProcess::startDetached(QStringList() << "python"
-                            << "/usr/share/pyshared/UpdateManager/DistUpgradeFetcherKDE.py");
+    KProcess *proc = new KProcess(this);
+    QStringList arguments;
+    QString kdesudo = KStandardDirs::findExe("kdesudo");
+    QString upgrader = QString("do-release-upgrade -m desktop -f DistUpgradeViewKDE");
+
+    arguments << kdesudo << upgrader;
+    proc->setProgram(arguments);
+    proc->start();
+
+    connect(proc, SIGNAL(finished(int)), proc, SLOT(deleteLater()));
 }
 
 QApt::Backend* MainWindow::backend() const
