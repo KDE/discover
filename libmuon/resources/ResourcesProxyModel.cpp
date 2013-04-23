@@ -143,6 +143,10 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
     if(!idx.isValid())
         return false;
 
+    if(m_filterBySearch && !m_searchResults.contains(idx.data(ResourcesModel::PackageNameRole).toString())) {
+        return false;
+    }
+
     for(QHash<int, QVariant>::const_iterator it=m_roleFilters.constBegin(), itEnd=m_roleFilters.constEnd(); it!=itEnd; ++it) {
         if(idx.data(it.key())!=it.value()) {
             return false;
@@ -185,10 +189,6 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
             if(value)
                 return false;
         }
-    }
-
-    if(m_filterBySearch) {
-        return m_searchResults.contains(idx.data(ResourcesModel::PackageNameRole).toString());
     }
 
     return true;
