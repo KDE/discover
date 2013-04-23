@@ -86,12 +86,12 @@ AbstractResource* DummyBackend::resourceByPackageName(const QString& name) const
     return m_resources.value(name);
 }
 
-QStringList DummyBackend::searchPackageName(const QString& searchText)
+QList<AbstractResource*> DummyBackend::searchPackageName(const QString& searchText)
 {
-    QStringList ret;
+    QList<AbstractResource*> ret;
     foreach(AbstractResource* r, m_resources) {
         if(r->name().contains(searchText) || r->comment().contains(searchText))
-            ret += r->packageName();
+            ret += r;
     }
     return ret;
 }

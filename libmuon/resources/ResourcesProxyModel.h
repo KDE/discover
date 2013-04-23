@@ -75,7 +75,7 @@ protected:
 
 private:
     QString m_lastSearch;
-    QStringList m_searchResults;
+    QList<AbstractResource*> m_searchResults;
     QList<QPair<FilterType, QString> > m_andFilters;
     QList<QPair<FilterType, QString> > m_orFilters;
     QList<QPair<FilterType, QString> > m_notFilters;

@@ -57,7 +57,7 @@ public:
     virtual AbstractResource* resourceByPackageName(const QString& name) const;
     virtual int updatesCount() const;
     virtual AbstractReviewsBackend* reviewsBackend() const;
-    virtual QStringList searchPackageName(const QString& searchText);
+    virtual QList<AbstractResource*> searchPackageName(const QString& searchText);
     virtual QVector< AbstractResource* > allResources() const;
     virtual AbstractBackendUpdater* backendUpdater() const;
 

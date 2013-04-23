@@ -140,11 +140,11 @@ QVector<AbstractResource*> BodegaBackend::allResources() const
     return m_resourcesByName.values().toVector();
 }
 
-QStringList BodegaBackend::searchPackageName(const QString& searchText){
-    QStringList ret;
+QList<AbstractResource*> BodegaBackend::searchPackageName(const QString& searchText){
+    QList<AbstractResource*> ret;
     foreach(AbstractResource* r, m_resourcesByName) {
         if(r->name().contains(searchText) || r->comment().contains(searchText))
-            ret += r->packageName();
+            ret += r;
     }
     return ret;
 }
