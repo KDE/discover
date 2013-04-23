@@ -395,7 +395,8 @@ void QAptActions::runSourcesEditor()
     QStringList arguments;
     int winID = m_mainWindow->effectiveWinId();
 
-    QString editor = "software-properties-kde";
+    QString kdesudo = KStandardDirs::findExe("kdesudo");
+    QString editor = KStandardDirs::findExe("software-properties-kde");
 
     if (m_reloadWhenEditorFinished) {
         editor.append(QLatin1String(" --dont-update --attach ") % QString::number(winID)); //krazy:exclude=spelling;
@@ -403,7 +404,7 @@ void QAptActions::runSourcesEditor()
         editor.append(QLatin1String(" --attach ") % QString::number(winID));
     }
 
-    arguments << "/usr/bin/kdesudo" << editor;
+    arguments << kdesudo << editor;
 
     proc->setProgram(arguments);
     m_mainWindow->find(winID)->setEnabled(false);
