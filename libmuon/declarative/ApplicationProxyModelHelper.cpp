@@ -33,7 +33,6 @@ void ApplicationProxyModelHelper::componentComplete()
     if(!m_sortRoleString.isEmpty())
         setStringSortRole_hack(m_sortRoleString);
     setSearch(lastSearch());
-    sortModel();
     setDynamicSortFilter(true);
 }
 
