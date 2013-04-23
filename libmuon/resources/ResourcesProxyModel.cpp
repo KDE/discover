@@ -194,13 +194,18 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
 bool ResourcesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
 {
     if (m_sortByRelevancy) {
-        AbstractResource* leftPackageName = qobject_cast<AbstractResource*>(left.data(ResourcesModel::ApplicationRole).value<QObject*>());
-        AbstractResource* rightPackageName = qobject_cast<AbstractResource*>(right.data(ResourcesModel::ApplicationRole).value<QObject*>());
+        AbstractResource* leftPackage = qobject_cast<AbstractResource*>(left.data(ResourcesModel::ApplicationRole).value<QObject*>());
+        AbstractResource* rightPackage = qobject_cast<AbstractResource*>(right.data(ResourcesModel::ApplicationRole).value<QObject*>());
 
         // This is expensive for very large datasets. It takes about 3 seconds with 30,000 packages
         // The order in m_packages is based on relevancy when returned by m_backend->search()
         // Use this order to determine less than
-        return m_searchResults.indexOf(leftPackageName) < m_searchResults.indexOf(rightPackageName);
+        for(AbstractResource* res : m_searchResults) {
+            if(res == leftPackage)
+                return true;
+            else if(res == rightPackage)
+                return false;
+        }
     }
     QVariant leftValue = left.data(sortRole());
     QVariant rightValue = right.data(sortRole());
