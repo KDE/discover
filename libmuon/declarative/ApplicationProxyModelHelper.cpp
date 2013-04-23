@@ -24,20 +24,17 @@
 ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
     : ResourcesProxyModel(parent)
 {
-    setDynamicSortFilter(true);
-    init();
 }
 
-void ApplicationProxyModelHelper::init()
+void ApplicationProxyModelHelper::componentComplete()
 {
     setSourceModel(ResourcesModel::global());
     
     if(!m_sortRoleString.isEmpty())
         setStringSortRole_hack(m_sortRoleString);
     
-    connect(ResourcesModel::global(), SIGNAL(modelReset()),
-            SLOT(sortModel()));
     sortModel();
+    setDynamicSortFilter(true);
 }
 
 void ApplicationProxyModelHelper::sortModel()
