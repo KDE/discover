@@ -131,6 +131,8 @@ bool shouldFilter(const QModelIndex& idx, const QPair<FilterType, QString>& filt
             ret = idx.data(ResourcesModel::PackageNameRole).toString().contains(wildcard);
         }   break;
         case PkgNameFilter: // Only useful in the not filters
+            ret = idx.data(ResourcesModel::PackageNameRole).toString() == filter.second;
+            break;
         case InvalidFilter:
             break;
     }
@@ -180,13 +182,7 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
 
     if (!m_notFilters.isEmpty()) {
         for(QList<QPair<FilterType, QString> >::const_iterator filter = m_notFilters.constBegin(); filter != m_notFilters.constEnd(); ++filter) {
-            bool value = true;
-            if(filter->first==PkgNameFilter)
-                value = idx.data(ResourcesModel::PackageNameRole).toString() == filter->second;
-            else
-                value = shouldFilter(idx, *filter);
-            
-            if(value)
+            if(shouldFilter(idx, *filter))
                 return false;
         }
     }
