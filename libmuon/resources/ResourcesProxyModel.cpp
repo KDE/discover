@@ -37,14 +37,17 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     setShouldShowTechnical(false);
 }
 
-void ResourcesProxyModel::search(const QString &searchText)
+void ResourcesProxyModel::setSearch(const QString &searchText)
 {
-    // 1-character searches are painfully slow. >= 2 chars are fine, though
     m_searchResults.clear();
+    m_lastSearch = searchText;
+    ResourcesModel* model = qobject_cast<ResourcesModel*>(sourceModel());
+    if(!model) {
+        return;
+    }
+
+    // 1-character searches are painfully slow. >= 2 chars are fine, though
     if (searchText.size() > 1) {
-        m_lastSearch = searchText;
-        
-        ResourcesModel* model = qobject_cast<ResourcesModel*>(sourceModel());
         QVector< AbstractResourcesBackend* > backends= model->backends();
         foreach(AbstractResourcesBackend* backend, backends)
             m_searchResults += backend->searchPackageName(searchText);
@@ -58,9 +61,9 @@ void ResourcesProxyModel::search(const QString &searchText)
     emit invalidated();
 }
 
-void ResourcesProxyModel::refreshSearch()
+QString ResourcesProxyModel::lastSearch() const
 {
-    search(m_lastSearch);
+    return m_lastSearch;
 }
 
 void ResourcesProxyModel::setOriginFilter(const QString &origin)

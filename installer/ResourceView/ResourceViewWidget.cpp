@@ -154,7 +154,7 @@ void ResourceViewWidget::setCanShowTechnical(bool canShow)
 void ResourceViewWidget::search(const QString &text)
 {
     m_proxyModel->sort(m_proxyModel->sortColumn(), Qt::AscendingOrder);
-    m_proxyModel->search(text);
+    m_proxyModel->setSearch(text);
 }
 
 void ResourceViewWidget::infoButtonClicked(AbstractResource *resource)

@@ -32,9 +32,9 @@ Page {
     property alias originFilter: appsModel.originFilter
     property alias mimeTypeFilter: appsModel.mimeTypeFilter
     property alias stateFilter: appsModel.stateFilter
+    property alias search: appsModel.search
     property bool shouldShowTechnical: category ? category.shouldShowTechnical: false
     property string sectionProperty: ""
-    property string search: ""
     property Component sectionDelegate: null
     property bool preferUpgrade: false
     property bool preferList: false
@@ -43,13 +43,10 @@ Page {
     property Component header: category==null ? null : categoryHeaderComponent
     clip: true
     
-    onSearchChanged: {
-        appsModel.search(search)
-        appsModel.sortOrder = Qt.AscendingOrder
-    }
+    onSearchChanged: appsModel.sortOrder = Qt.AscendingOrder
     
     function searchFor(text) {
-        search = text
+        appsModel.search = text
     }
     
     ApplicationProxyModel {
