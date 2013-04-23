@@ -36,7 +36,6 @@ class KComboBox;
 
 class ResourceDelegate;
 class ResourceDetailsView;
-class ResourcesModel;
 class ResourcesProxyModel;
 class Category;
 
@@ -49,7 +48,6 @@ public:
     void search(const QString &text);
 
 private:
-    ResourcesModel *m_appModel;
     ResourcesProxyModel *m_proxyModel;
     QPair<AbstractViewBase *, AbstractResource *> m_currentPair;
     bool m_canShowTechnical;

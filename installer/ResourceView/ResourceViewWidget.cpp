@@ -49,10 +49,9 @@ ResourceViewWidget::ResourceViewWidget(QWidget *parent)
         , m_detailsView(0)
 {
     m_searchable = true;
-    m_appModel = ResourcesModel::global();
     m_proxyModel = new ResourcesProxyModel(this);
     m_proxyModel->setSortRole(ResourcesModel::SortableRatingRole);
-    m_proxyModel->setSourceModel(m_appModel);
+    m_proxyModel->setSourceModel(ResourcesModel::global());
 
     QWidget *header = new QWidget(this);
     QHBoxLayout *headerLayout = new QHBoxLayout(header);
