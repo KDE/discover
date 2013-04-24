@@ -25,10 +25,14 @@ Item {
     function clearSearch() { app.searchWidget.text="" }
     Connections {
         target: app.searchWidget
-        onTextChanged: {
-            if(app.searchWidget.text.length>2)
-                pageStack.currentPage.searchFor(app.searchWidget.text)
-        }
+        onTextChanged: searchTimer.running = true
+    }
+    Timer {
+        id: searchTimer
+        running: false
+        repeat: false
+        interval: 200
+        onTriggered: { pageStack.currentPage.searchFor(app.searchWidget.text) }
     }
     
     Component {
