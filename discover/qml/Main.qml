@@ -26,6 +26,9 @@ Item {
     Connections {
         target: app.searchWidget
         onTextChanged: searchTimer.running = true
+        onEditingFinished: if(app.searchWidget.text == "" && backAction.enabled) {
+            backAction.trigger()
+        }
     }
     Timer {
         id: searchTimer
@@ -73,6 +76,7 @@ Item {
     }
     
     DiscoverAction {
+        id: backAction
         objectName: "back"
         iconName: "go-previous"
         enabled: window.navigationEnabled && breadcrumbsItem.count>1
