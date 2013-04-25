@@ -79,10 +79,10 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     m_markallWidget->setCloseButtonVisible(true);
     m_markallWidget->setVisible(false);
 
-    ChangelogWidget* changelogWidget = new ChangelogWidget(this);
-    changelogWidget->hide();
+    m_changelogWidget = new ChangelogWidget(this);
+    m_changelogWidget->hide();
     connect(this, SIGNAL(selectedResourceChanged(AbstractResource*)),
-            changelogWidget, SLOT(setResource(AbstractResource*)));
+            m_changelogWidget, SLOT(setResource(AbstractResource*)));
 
     QLabel* descriptionLabel = new QLabel(this);
     descriptionLabel->setText(i18n("<p><b>New software is available for your computer</b></p><p>Click 'Install Updates' to keep your system up-to-date and safe</p>"));
@@ -101,7 +101,7 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     page1Layout->addWidget(m_markallWidget);
     page1Layout->addWidget(descriptionLabel);
     page1Layout->addWidget(m_updateView);
-    page1Layout->addWidget(changelogWidget);
+    page1Layout->addWidget(m_changelogWidget);
 
     m_busyWidget = new KPixmapSequenceOverlayPainter(page1);
     m_busyWidget->setSequence(KPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
@@ -143,6 +143,7 @@ void UpdaterWidget::activityChanged()
 {
     if(m_updatesBackends->isProgressing()) {
         m_updateView->hide();
+        m_changelogWidget->hide();
         m_busyWidget->start();
         setEnabled(false);
         setCurrentIndex(-1);

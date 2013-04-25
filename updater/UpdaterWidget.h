@@ -31,6 +31,7 @@ class QItemSelection;
 class QLabel;
 class QStandardItemModel;
 class QTreeView;
+class ChangelogWidget;
 
 class KPixmapSequenceOverlayPainter;
 class UpdateModel;
@@ -50,6 +51,7 @@ private:
     UpdateModel *m_updateModel;
 
     QTreeView *m_updateView;
+    ChangelogWidget *m_changelogWidget;
     KPixmapSequenceOverlayPainter *m_busyWidget;
     ResourcesUpdatesModel* m_updatesBackends;
     KMessageWidget* m_markallWidget;
