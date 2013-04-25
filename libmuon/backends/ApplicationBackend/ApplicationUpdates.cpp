@@ -342,6 +342,7 @@ void ApplicationUpdates::statusChanged(QApt::TransactionStatus status)
             }
             break;
         case QApt::CommittingStatus:
+            emit downloadSpeedChanged(-1);
             setStatusMessage(i18nc("@info Status information, widget title",
                                         "Applying Changes"));
             setStatusDetail(QString());

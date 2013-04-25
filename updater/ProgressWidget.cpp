@@ -118,8 +118,11 @@ void ProgressWidget::downloadSpeedChanged()
         QString downloadSpeed = i18nc("@label Download rate", "Download rate: %1/s",
                                 KGlobal::locale()->formatByteSize(speed));
         m_ui->downloadSpeed->setText(downloadSpeed);
-    } else
+        m_ui->downloadSpeed->show();
+    } else {
         m_ui->downloadSpeed->clear();
+        m_ui->downloadSpeed->hide();
+    }
 }
 
 void ProgressWidget::etaChanged()
