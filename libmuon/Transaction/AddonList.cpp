@@ -20,63 +20,59 @@
 
 #include "AddonList.h"
 
-enum {
-    ToInstall = 0,
-    ToRemove
-};
-
 AddonList::AddonList()
-    : m_list(2)
-{
-}
+{}
 
 AddonList::AddonList(const AddonList &other)
-    : m_list(other.m_list)
+    : m_toInstall(other.m_toInstall)
+    , m_toRemove(other.m_toRemove)
 {
 }
 
 bool AddonList::isEmpty() const
 {
-    return m_list.at(ToInstall).isEmpty() && m_list.at(ToRemove).isEmpty();
+    return m_toInstall.isEmpty() && m_toRemove.isEmpty();
 }
 
 QStringList AddonList::addonsToInstall() const
 {
-    return m_list.at(ToInstall);
+    return m_toInstall;
 }
 
 QStringList AddonList::addonsToRemove() const
 {
-    return m_list.at(ToRemove);
-}
-
-void AddonList::setAddonsToInstall(const QStringList &list)
-{
-    m_list[ToInstall] = list;
-}
-
-void AddonList::setAddonsToRemove(const QStringList &list)
-{
-    m_list[ToRemove] = list;
+    return m_toRemove;
 }
 
 void AddonList::addAddon(const QString &addon, bool toInstall)
 {
-    if (toInstall)
-        m_list[ToInstall].append(addon);
-    else
-        m_list[ToRemove].append(addon);
+    if (toInstall) {
+        m_toInstall.append(addon);
+        m_toRemove.removeAll(addon);
+    } else {
+        m_toInstall.removeAll(addon);
+        m_toRemove.append(addon);
+    }
 }
 
-void AddonList::removeAddon(const QString &addon)
+void AddonList::resetAddon(const QString &addon)
 {
-    for (QStringList &list : m_list) {
-        list.removeAll(addon);
-    }
+    m_toInstall.removeAll(addon);
+    m_toRemove.removeAll(addon);
 }
 
 void AddonList::clear()
 {
-    m_list[ToInstall].clear();
-    m_list[ToRemove].clear();
+    m_toInstall.clear();
+    m_toRemove.clear();
+}
+
+AddonList::State AddonList::addonState(const QString& addonName) const
+{
+    if(m_toInstall.contains(addonName))
+        return ToInstall;
+    else if(m_toRemove.contains(addonName))
+        return ToRemove;
+    else
+        return None;
 }
