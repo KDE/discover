@@ -29,21 +29,26 @@
 class MUONPRIVATE_EXPORT AddonList
 {
 public:
+    enum State {
+        None,
+        ToInstall,
+        ToRemove
+    };
     AddonList();
     AddonList(const AddonList &other);
 
     bool isEmpty() const;
     QStringList addonsToInstall() const;
     QStringList addonsToRemove() const;
+    State addonState(const QString& addonName) const;
 
-    void setAddonsToInstall(const QStringList &list);
-    void setAddonsToRemove(const QStringList &list);
     void addAddon(const QString &addon, bool toInstall);
-    void removeAddon(const QString &addon);
+    void resetAddon(const QString &addon);
     void clear();
 
 private:
-    QVector<QStringList> m_list;
+    QStringList m_toInstall;
+    QStringList m_toRemove;
 };
 
 #endif // ADDONLIST_H

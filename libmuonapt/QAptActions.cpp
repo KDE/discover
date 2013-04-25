@@ -35,6 +35,7 @@
 #include <KMessageBox>
 #include <KProcess>
 #include <KStandardAction>
+#include <KStandardDirs>
 #include <KXmlGuiWindow>
 #include <Solid/Networking>
 #include <KStandardDirs>
