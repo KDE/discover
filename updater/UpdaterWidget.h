@@ -80,6 +80,7 @@ private Q_SLOTS:
 
 signals:
     void selectedPackageChanged(QApt::Package *Package);
+    void modelPopulated();
 };
 
 #endif // UPDATERWIDGET_H

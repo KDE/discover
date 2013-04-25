@@ -90,6 +90,8 @@ void MainWindow::initGUI()
 
     m_updaterWidget = new UpdaterWidget(mainWidget);
     m_updaterWidget->setEnabled(false);
+    connect(m_updaterWidget, SIGNAL(modelPopulated()),
+            this, SLOT(setActionsEnabled()));
 
     m_changelogWidget = new ChangelogWidget(this);
     m_changelogWidget->hide();

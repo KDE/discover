@@ -237,6 +237,7 @@ void UpdaterWidget::populateUpdateModel()
 
     checkAllMarked();
     checkUpToDate();
+    emit modelPopulated();
 }
 
 void UpdaterWidget::checkApps(QList<AbstractResource*> apps, bool checked)
@@ -316,6 +317,7 @@ void UpdaterWidget::markAllPackagesForUpgrade()
     checkChanges(m_backend->stateChanges(m_oldCacheState, upgradeable));
 
     m_upgradesWidget->hide();
+    emit modelPopulated();
 }
 
 void UpdaterWidget::checkUpToDate()
