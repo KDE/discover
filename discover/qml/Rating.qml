@@ -1,4 +1,5 @@
 import QtQuick 1.1
+import org.kde.plasma.core 0.1
 import org.kde.plasma.components 0.1
 
 Row {
@@ -12,12 +13,10 @@ Row {
     
     Component {
         id: del
-        Image {
+        IconItem {
             height: view.height; width: view.height
-            source: "image://icon/rating"
+            source: "rating"
             opacity: (max/5*index)>rating ? 0.2 : 1
-            smooth: true
-            cache: true
 
             MouseArea {
                 enabled: editable
