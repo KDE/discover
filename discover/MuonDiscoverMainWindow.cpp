@@ -89,7 +89,9 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     qmlRegisterType<QActionGroup>();
     
     m_searchText = new KLineEdit;
-    m_searchText->setPlaceholderText(i18n("Search..."));
+    m_searchText->setClickMessage(i18n("Search..."));
+    
+    actionCollection()->addAction("search", KStandardAction::find(m_searchText, SLOT(setFocus()), this));
     
     //Here we set up a cache for the screenshots
     m_view->engine()->rootContext()->setContextProperty("resourcesModel",
