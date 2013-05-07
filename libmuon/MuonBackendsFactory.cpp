@@ -38,7 +38,12 @@ AbstractResourcesBackend* MuonBackendsFactory::backend(const QString& name) cons
     if(!serviceList.isEmpty()) {
         return backendForPlugin(KPluginInfo(serviceList.first()));
     } else {
-        qWarning() << "Couldn't find the backend: " << name;
+        KService::List serviceList = KServiceTypeTrader::self()->query("Muon/Backend");
+        QStringList backends;
+        foreach(const KService::Ptr& ptr, serviceList) {
+            backends += KPluginInfo(ptr).pluginName();
+        }
+        qWarning() << "Couldn't find the backend: " << name << "among" << backends;
     }
     return 0;
 }
