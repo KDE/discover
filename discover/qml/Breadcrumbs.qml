@@ -68,16 +68,18 @@ Item {
             left: parent.left
         }
         
-        spacing: 10
+        spacing: 0
         model: items
         layoutDirection: Qt.LeftToRight
         orientation: ListView.Horizontal
         delegate: ToolButton {
+            flat: false
             height: bread.height
             iconSource: decoration
             onClicked: doClick(index)
             text: display ? display : ""
-            visible: items.count-index>1
+            checked: items.count-index<=1
+            checkable: checked
         }
         
         onCountChanged: view.positionViewAtEnd()
