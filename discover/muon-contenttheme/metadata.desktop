@@ -79,4 +79,4 @@ X-KDE-PluginInfo-EnabledByDefault=true
 
 [Settings]
 UseNativeWidgetStyle=true
-FallbackTheme=appdashboard
+FallbackTheme=default
