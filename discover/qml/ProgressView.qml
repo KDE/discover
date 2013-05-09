@@ -94,7 +94,7 @@ ToolBar {
             rightMargin: 5
         }
         height: Math.min(implicitHeight, parent.height)
-        iconSource: "dialog-close"
+        iconSource: "window-close"
         onClicked: progressModel.clear()
     }
 }
