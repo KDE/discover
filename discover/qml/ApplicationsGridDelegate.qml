@@ -66,10 +66,8 @@ GridItem {
             }
             source: model.application.thumbnailUrl
             height: delegateRoot.height*0.7
-            sourceSize {
-                width: parent.width
-                height: screen.height
-            }
+            fillMode: Image.PreserveAspectFit
+            smooth: true
             cache: false
             asynchronous: true
             onStatusChanged:  {
@@ -89,8 +87,7 @@ GridItem {
                 State { name: "fallback"
                     PropertyChanges { target: screen; smooth: true }
                     PropertyChanges { target: screen; source: "image://icon/"+model.application.icon}
-                    PropertyChanges { target: screen; sourceSize.width: screen.height }
-                    PropertyChanges { target: smallIcon; visible: false }
+                    PropertyChanges { target: smallIcon; width: 0 }
                 }
             ]
         }
