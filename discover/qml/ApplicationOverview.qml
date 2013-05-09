@@ -42,7 +42,7 @@ Item {
         width: 2*parent.width/3
         anchors {
             top: parent.top
-            right: parent.right
+            right: scroll.left
             bottom: parent.bottom
         }
         contentHeight: overviewContents.childrenRect.height
