@@ -93,12 +93,12 @@ QString DummyResource::packageName() const
 
 QUrl DummyResource::screenshotUrl()
 {
-    return QUrl();
+    return QUrl("http://www.kde.org/stuff/clipart/klogo-official-oxygen-128x128.png");
 }
 
 QUrl DummyResource::thumbnailUrl()
 {
-    return QUrl();
+    return QUrl("http://www.kde.org/stuff/clipart/klogo-official-oxygen-128x128.png");
 }
 
 QString DummyResource::section()
