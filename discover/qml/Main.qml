@@ -104,7 +104,7 @@ Item {
         shortcut: "Alt+I"
     }
     TopLevelPageData {
-        iconName: "document-import"
+        iconName: "repository"
         text: i18n("Sources")
         component: topSourcesComp
         objectName: "sources"
