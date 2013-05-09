@@ -44,7 +44,6 @@ Item {
             top: parent.top
             right: parent.right
             bottom: parent.bottom
-            margins: 10
         }
         contentHeight: overviewContents.childrenRect.height
         Column {

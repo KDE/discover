@@ -105,7 +105,8 @@ Page
             left: parent.left
             right: parent.right
             bottom: parent.bottom
-            margins: 10
+            topMargin: 10
+            leftMargin: 10
         }
         
         ApplicationOverview {
