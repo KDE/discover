@@ -94,7 +94,7 @@ ToolBar {
                 width: parent.width*(listener.progress/100)
                 color: theme.textColor
                 height: 1
-                visible: transactionModel.isActive
+                visible: listener.isActive
             }
         }
     }
