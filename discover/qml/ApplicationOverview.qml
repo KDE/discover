@@ -142,6 +142,14 @@ Item {
                 source="image://icon/image-missing"
             }
         }
+        BusyIndicator {
+            id: busy
+            width: 128
+            height: 128
+            anchors.centerIn: parent
+            running: visible
+            visible: screenshot.status == Image.Loading
+        }
         
         states: [
             State { name: "thumbnail"
