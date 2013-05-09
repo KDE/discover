@@ -35,6 +35,9 @@ ScreenshotsModel::ScreenshotsModel(QObject* parent)
 
 void ScreenshotsModel::setResource(AbstractResource* res)
 {
+    if(res == m_resource)
+        return;
+
     if(m_resource) {
         disconnect(m_resource, SIGNAL(screenshotsFetched(QList<QUrl>,QList<QUrl>)), this,
                                 SLOT(screenshotsFetched(QList<QUrl>,QList<QUrl>)));
@@ -57,6 +60,8 @@ AbstractResource* ScreenshotsModel::resource() const
 void ScreenshotsModel::screenshotsFetched(const QList< QUrl >& thumbnails, const QList< QUrl >& screenshots)
 {
     Q_ASSERT(thumbnails.count()==screenshots.count());
+    if (thumbnails.size() == 0)
+        return;
     
     if (m_thumbnails.size() == 0)
         return;

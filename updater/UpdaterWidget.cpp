@@ -171,6 +171,7 @@ void UpdaterWidget::populateUpdateModel()
 
     checkAllMarked();
     checkUpToDate();
+    emit modelPopulated();
 }
 
 void UpdaterWidget::selectionChanged(const QItemSelection &selected,
@@ -197,6 +198,7 @@ void UpdaterWidget::markAllPackagesForUpgrade()
 {
     m_updatesBackends->prepare();
     m_markallWidget->hide();
+    emit modelPopulated();
 }
 
 void UpdaterWidget::checkUpToDate()

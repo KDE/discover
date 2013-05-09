@@ -82,6 +82,9 @@ void MainWindow::initGUI()
 
     m_progressWidget = new ProgressWidget(m_updater, mainWidget);
     m_updaterWidget = new UpdaterWidget(mainWidget);
+    m_updaterWidget->setEnabled(false);
+    connect(m_updaterWidget, SIGNAL(modelPopulated()),
+            this, SLOT(setActionsEnabled()));
 
     Ui::UpdaterButtons buttonsUi;
     QWidget* buttons = new QWidget(this);

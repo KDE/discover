@@ -72,6 +72,7 @@ private Q_SLOTS:
 
 signals:
     void selectedResourceChanged(AbstractResource* res);
+    void modelPopulated();
 };
 
 #endif // UPDATERWIDGET_H
