@@ -31,6 +31,7 @@ class DummyTransaction : public Transaction
         explicit DummyTransaction(DummyResource* app, Role role);
 
     private slots:
+        void iterateTransaction();
         void finishTransaction();
 
     private:
