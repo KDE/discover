@@ -3,49 +3,56 @@ import org.kde.plasma.components 0.1
 import org.kde.muon 1.0
 
 Item {
-    id: item
     property alias application: listener.resource
-    property bool canHide: parent.state=="idle"
-    property bool preferUpgrade: false
     property alias isActive: listener.isActive
-    width: 100
-    height: 30
-    
+    property real maximumWidth: button.implicitWidth*2
+    property Component additionalItem: null
+    height: button.implicitHeight
+
     TransactionListener {
         id: listener
     }
     
     Button {
         id: button
+        anchors {
+            bottom: parent.bottom
+            right: parent.right
+        }
         visible: parent.state=="idle"
-        minimumWidth: parent.width
-        anchors.fill: parent
+        text: application.isInstalled ? i18n("Install") : i18n("Remove")
+        width: Math.min(parent.width/2, implicitWidth)
         
         onClicked: {
-            switch(state) {
-                case "willupgrade":
-                case "willinstall": resourcesModel.installApplication(application); break;
-                case "willremove":  resourcesModel.removeApplication(application); break;
-            }
+            if(application.isInstalled)
+                resourcesModel.removeApplication(application);
+            else
+                resourcesModel.installApplication(application);
         }
-        
-        states: [
-            State {
-                name: "willupgrade"
-                when: application.canUpgrade && item.preferUpgrade
-                PropertyChanges { target: button;  text: i18n("Update") }
-            },
-            State {
-                name: "willinstall"
-                when: !application.isInstalled
-                PropertyChanges { target: button;  text: i18n("Install") }
-            },
-            State {
-                name: "willremove"
-                when: application.isInstalled
-                PropertyChanges { target: button;  text: i18n("Remove") }
-            }
-        ]
+    }
+    Component {
+        id: updateButton
+        Button {
+            text: i18n("Update")
+            onClicked: resourcesModel.installApplication(application)
+        }
+    }
+    
+    Loader {
+        visible: parent.state=="idle"
+        anchors {
+            verticalCenter: button.verticalCenter
+            right: button.left
+            left: parent.left
+            rightMargin: 5
+        }
+        width: Math.min(parent.width/2, implicitWidth)
+        sourceComponent: application.canUpgrade ? updateButton : additionalItem
+    
+        Rectangle {
+            anchors.fill: parent
+            color: "red"
+        }
     }
     
     Item {

@@ -56,6 +56,7 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 visible: overviewContents.ratingInstance!=null
                 rating: overviewContents.ratingInstance == null ? 0 : overviewContents.ratingInstance.rating
+                width: 150
             }
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter

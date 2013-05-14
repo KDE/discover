@@ -4,7 +4,6 @@ import org.kde.plasma.components 0.1
 ApplicationsListPage {
     id: page
     stateFilter: 2
-    preferUpgrade: true
     preferList: true
     
     Component {

@@ -27,7 +27,6 @@ Item {
     property alias count: view.count
     property alias header: view.header
     property alias section: view.section
-    property bool preferUpgrade: false
     property alias model: view.model
     property real actualWidth: width
     property real proposedMargin: (view.width-actualWidth)/2
@@ -92,7 +91,7 @@ Item {
                             bottom: icon.bottom
                             left: icon.right
                             leftMargin: 5
-                            right: actionsRow.left
+                            right: installButton.left
                         }
                         elide: Text.ElideRight
                         text: comment
@@ -109,32 +108,16 @@ Item {
                         rating: model.rating
                     }
                     
-                    Row {
-                        id: actionsRow
-                        height: contHeight*0.5
-                        spacing: 5
+                    InstallApplicationButton {
+                        id: installButton
                         anchors {
                             bottom: parent.bottom
                             right: parent.right
                         }
-                            
-                        Button {
-                            text: i18n("Update")
-                            id: upgradeButton
-                            width: ratingsItem.width
-                            visible: model.application.canUpgrade
-                            onClicked: resourcesModel.installApplication(model.application)
-                            enabled: !installButton.isActive
-                        }
-                        
-                        InstallApplicationButton {
-                            id: installButton
-                            width: ratingsItem.width
-                            height: upgradeButton.height
-    //                         property bool isVisible: delegateArea.containsMouse && !installButton.canHide
-    //                         opacity: isVisible ? 1 : 0
-                            application: model.application
-                        }
+                        width: ratingsItem.width*2
+//                         property bool isVisible: delegateArea.containsMouse && !installButton.canHide
+//                         opacity: isVisible ? 1 : 0
+                        application: model.application
                     }
                 }
             }

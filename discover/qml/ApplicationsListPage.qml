@@ -35,7 +35,6 @@ Page {
     property bool shouldShowTechnical: category ? category.shouldShowTechnical: false
     property string sectionProperty: ""
     property Component sectionDelegate: null
-    property bool preferUpgrade: false
     property bool preferList: false
     property real actualWidth: width-Math.pow(width/70, 2)
     property real proposedMargin: (width-actualWidth)/2
@@ -179,7 +178,6 @@ Page {
         ApplicationsList {
             id: apps
             anchors.fill: parent
-            preferUpgrade: page.preferUpgrade
             section.property: page.sectionProperty
             section.delegate: page.sectionDelegate
             actualWidth: page.actualWidth
