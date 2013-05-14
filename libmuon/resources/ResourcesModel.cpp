@@ -142,13 +142,12 @@ QModelIndex ResourcesModel::resourceIndex(AbstractResource* res) const
             row += m_resources[i].size();
         else {
             int pos = m_resources[i].indexOf(res);
-            Q_ASSERT(pos>0);
-            row += pos;
+            Q_ASSERT(pos>=0);
+            return index(row+pos);
         }
     }
 
-    Q_ASSERT(row);
-    return index(row);
+    return QModelIndex();
 }
 
 QVariant ResourcesModel::data(const QModelIndex& index, int role) const
