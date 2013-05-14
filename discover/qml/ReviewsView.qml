@@ -74,6 +74,7 @@ Item
                     anchors.right: parent.right
                     rating: model["rating"]
                     height: content.font.pixelSize
+                    layoutDirection: Qt.RightToLeft
                 }
             }
         }

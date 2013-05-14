@@ -149,7 +149,12 @@ Page {
                     sortRole: "ratingPoints"
                     filteredCategory: page.category
                     title: i18n("Best Ratings")
-                    roleDelegate: Rating { property variant model; rating: model.rating; height: 10 }
+                    roleDelegate: Rating {
+                        property variant model
+                        rating: model.rating
+                        height: 12
+                        layoutDirection: Qt.RightToLeft
+                    }
                 }
             }
         }
