@@ -76,7 +76,7 @@ Information {
                 margins: 3
             }
             width: height
-            source: titleBar.modelData.icon
+            source: titleBar.modelData ? titleBar.modelData.icon : "kde"
         }
         
         Label {
@@ -86,7 +86,7 @@ Information {
                 leftMargin: 10
             }
             color: "white"
-            text: i18n("<b>%1</b><br/>%2", titleBar.modelData.text, titleBar.modelData.comment)
+            text: titleBar.modelData ? i18n("<b>%1</b><br/>%2", titleBar.modelData.text, titleBar.modelData.comment) : ""
         }
         ToolButton {
             iconSource: "go-next"
