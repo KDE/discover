@@ -29,11 +29,9 @@ Row {
         }
     }
     
-//     Rectangle { width: 1; height: 10; color: "red" }
     Repeater {
         id: theRepeater
         model: 5
         delegate: del
     }
-//     Rectangle { width: 1; height: 10; color: "red" }
 }
