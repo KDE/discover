@@ -264,7 +264,7 @@ QStringList KNSBackend::searchPackageName(const QString& searchText)
 {
     QStringList ret;
     foreach(AbstractResource* r, m_resourcesByName) {
-        if(r->name().contains(searchText) || r->comment().contains(searchText))
+        if(r->name().contains(searchText, Qt::CaseInsensitive) || r->comment().contains(searchText, Qt::CaseInsensitive))
             ret += r->packageName();
     }
     return ret;
