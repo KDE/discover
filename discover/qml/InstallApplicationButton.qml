@@ -48,11 +48,6 @@ Item {
         }
         width: Math.min(parent.width/2, implicitWidth)
         sourceComponent: application.canUpgrade ? updateButton : additionalItem
-    
-        Rectangle {
-            anchors.fill: parent
-            color: "red"
-        }
     }
     
     Item {
