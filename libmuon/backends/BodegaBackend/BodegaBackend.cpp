@@ -143,7 +143,7 @@ QVector<AbstractResource*> BodegaBackend::allResources() const
 QList<AbstractResource*> BodegaBackend::searchPackageName(const QString& searchText){
     QList<AbstractResource*> ret;
     foreach(AbstractResource* r, m_resourcesByName) {
-        if(r->name().contains(searchText) || r->comment().contains(searchText))
+        if(r->name().contains(searchText, Qt::CaseInsensitive) || r->comment().contains(searchText, Qt::CaseInsensitive))
             ret += r;
     }
     return ret;

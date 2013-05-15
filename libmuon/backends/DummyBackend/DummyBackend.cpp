@@ -90,7 +90,7 @@ QList<AbstractResource*> DummyBackend::searchPackageName(const QString& searchTe
 {
     QList<AbstractResource*> ret;
     foreach(AbstractResource* r, m_resources) {
-        if(r->name().contains(searchText) || r->comment().contains(searchText))
+        if(r->name().contains(searchText, Qt::CaseInsensitive) || r->comment().contains(searchText, Qt::CaseInsensitive))
             ret += r;
     }
     return ret;
