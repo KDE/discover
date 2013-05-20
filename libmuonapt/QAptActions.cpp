@@ -85,7 +85,11 @@ MuonMainWindow* QAptActions::mainWindow() const
 void QAptActions::setBackend(QApt::Backend* backend)
 {
     m_backend = backend;
-    connect(m_backend, SIGNAL(packageChanged()), SLOT(setActionsEnabled()));
+    if (!m_backend->init())
+        initError();
+
+    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
+
     setOriginalState(m_backend->currentCacheState());
 
     setReloadWhenEditorFinished(true);
