@@ -43,6 +43,7 @@ public:
     static QAptActions* self();
     void setMainWindow(KXmlGuiWindow *parent);
 
+    bool reloadWhenSourcesEditorFinished() const;
     bool isConnected() const;
     void setOriginalState(QApt::CacheState state);
     void setReloadWhenEditorFinished(bool reload);

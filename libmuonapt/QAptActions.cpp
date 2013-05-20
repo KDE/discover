@@ -184,6 +184,11 @@ void QAptActions::setActionsEnabled(bool enabled)
     actionCollection()->action("save_package_list")->setEnabled(true);
 }
 
+bool QAptActions::reloadWhenSourcesEditorFinished() const
+{
+    return m_reloadWhenEditorFinished;
+}
+
 bool QAptActions::isConnected() const {
     int status = Solid::Networking::status();
     bool connected = ((status == Solid::Networking::Connected) ||
@@ -396,7 +401,7 @@ void QAptActions::runSourcesEditor()
 
 void QAptActions::sourcesEditorFinished(int exitStatus)
 {
-    bool reload = (exitStatus == 0);
+    bool reload = (exitStatus != 0);
     m_mainWindow->find(m_mainWindow->effectiveWinId())->setEnabled(true);
     if (m_reloadWhenEditorFinished && reload) {
         emit checkForUpdates();

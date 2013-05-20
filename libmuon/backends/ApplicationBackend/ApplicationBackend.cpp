@@ -562,7 +562,9 @@ void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
         apt->setBackend(m_backend);
     else
         connect(this, SIGNAL(aptBackendInitialized(QApt::Backend*)), apt, SLOT(setBackend(QApt::Backend*)));
-    connect(apt, SIGNAL(sourcesEditorClosed(bool)), SLOT(reload()));
+
+    if (apt->reloadWhenSourcesEditorFinished())
+        connect(apt, SIGNAL(sourcesEditorClosed(bool)), SLOT(reload()));
 }
 
 void ApplicationBackend::initBackend()
