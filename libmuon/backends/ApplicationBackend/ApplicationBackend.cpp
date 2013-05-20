@@ -515,8 +515,6 @@ void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
     QAptActions* apt = QAptActions::self();
     apt->setMainWindow(w);
     if(!m_aptBackendInitialized)
-        apt->setBackend(m_backend);
-    else
         connect(this, SIGNAL(aptBackendInitialized(QApt::Backend*)), apt, SLOT(setBackend(QApt::Backend*)));
 
     KAction* updateAction = w->actionCollection()->addAction("update");
