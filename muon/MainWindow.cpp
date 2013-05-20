@@ -135,11 +135,8 @@ void MainWindow::initGUI()
 
 void MainWindow::initObject()
 {
-    if (!m_backend->init())
-        QAptActions::self()->initError();
-
-    emit backendReady(m_backend);
     QAptActions::self()->setBackend(m_backend);
+    emit backendReady(m_backend);
     connect(m_backend, SIGNAL(packageChanged()),
             this, SLOT(setActionsEnabled()));
 

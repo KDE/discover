@@ -558,7 +558,7 @@ void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
     m_aptify = w;
     QAptActions* apt = QAptActions::self();
     apt->setMainWindow(w);
-    if(m_aptBackendInitialized)
+    if(!m_aptBackendInitialized)
         apt->setBackend(m_backend);
     else
         connect(this, SIGNAL(aptBackendInitialized(QApt::Backend*)), apt, SLOT(setBackend(QApt::Backend*)));
@@ -574,12 +574,11 @@ void ApplicationBackend::initBackend()
         QAptActions::self()->setReloadWhenEditorFinished(true);
     }
 
-    if (!m_backend->init())
-        QAptActions::self()->initError();
-    if (m_backend->xapianIndexNeedsUpdate()) {
-        // FIXME: transaction
+
+    QAptActions::self()->setBackend(m_backend);
+    if (m_backend->xapianIndexNeedsUpdate())
         m_backend->updateXapianIndex();
-    }
+
     m_aptBackendInitialized = true;
     emit aptBackendInitialized(m_backend);
 
