@@ -516,7 +516,8 @@ void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
     apt->setMainWindow(w);
     if(!m_aptBackendInitialized)
         connect(this, SIGNAL(aptBackendInitialized(QApt::Backend*)), apt, SLOT(setBackend(QApt::Backend*)));
-
+    if (apt->reloadWhenSourcesEditorFinished())
+        connect(apt, SIGNAL(sourcesEditorClosed(bool)), SLOT(reload()));
     KAction* updateAction = w->actionCollection()->addAction("update");
     updateAction->setIcon(KIcon("system-software-update"));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));

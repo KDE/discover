@@ -214,6 +214,11 @@ bool QAptActions::reloadWhenSourcesEditorFinished() const
     return m_reloadWhenEditorFinished;
 }
 
+bool QAptActions::reloadWhenSourcesEditorFinished() const
+{
+    return m_reloadWhenEditorFinished;
+}
+
 bool QAptActions::isConnected() const {
     int status = Solid::Networking::status();
     bool connected = ((status == Solid::Networking::Connected) ||
