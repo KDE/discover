@@ -42,11 +42,10 @@ Item {
         visible: parent.state=="idle"
         anchors {
             verticalCenter: button.verticalCenter
-            right: button.left
             left: parent.left
             rightMargin: 5
         }
-        width: Math.min(parent.width/2, implicitWidth)
+        width: Math.min(parent.width/2-5, button.implicitWidth)
         sourceComponent: application.canUpgrade ? updateButton : additionalItem
     }
     
