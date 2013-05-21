@@ -25,8 +25,6 @@ import QtQuick 1.1
 GridItem {
     id: delegateRoot
     clip: true
-    width: parentItem.cellWidth
-    height: parentItem.cellHeight
     property bool requireClick: false
     property bool displayDescription: false
     enabled: true

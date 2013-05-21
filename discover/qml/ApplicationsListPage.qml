@@ -213,12 +213,17 @@ Page {
     
     Component {
         id: gridComponent
-        ApplicationsGrid {
+        ScrolledAwesomeGrid {
+            id: theGrid
             model: appsModel
             header: page.header
             actualWidth: page.actualWidth
+            minCellWidth: 200
             
-            delegate: ApplicationsGridDelegate {}
+            delegate: ApplicationsGridDelegate {
+                height: width/1.618 //tau
+                width: theGrid.cellWidth
+            }
         }
     }
     

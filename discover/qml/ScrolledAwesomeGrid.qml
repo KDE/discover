@@ -21,50 +21,27 @@ import QtQuick 1.1
 import org.kde.plasma.components 0.1
 
 Item {
-    id: parentItem
-    property Component header: null
+    property alias header: gridRepeater.header
+    property alias footer: gridRepeater.footer
     property alias delegate: gridRepeater.delegate
     property alias model: gridRepeater.model
+    property alias actualWidth: gridRepeater.actualWidth
+    property alias cellWidth: gridRepeater.cellWidth
+    property alias minCellWidth: gridRepeater.minCellWidth
     
-    property real actualWidth: width
-    property real cellWidth: Math.min(200, actualWidth)
-    property real cellHeight: cellWidth/1.618 //tau
-    
-    Flickable {
-        id: viewFlickable
-        anchors.fill: parent
-        contentHeight: view.height+headerLoader.height
-        
-        Loader {
-            id: headerLoader
-            sourceComponent: parentItem.header
-            anchors {
-                left: view.left
-                right: view.right
-                top: parent.top
-            }
+    AwesomeGrid {
+        id: gridRepeater
+        anchors {
+            fill: parent
+            rightMargin: scroll.width
         }
-        
-        Flow
-        {
-            id: view
-            width: Math.floor(actualWidth/cellWidth)*(cellWidth+spacing)
-            spacing: 5
-            anchors {
-                top: headerLoader.bottom
-                horizontalCenter: parent.horizontalCenter
-            }
-            
-            Repeater {
-                id: gridRepeater
-            }
-        }
+        header: parentItem.header
     }
     
     NativeScrollBar {
         id: scroll
         orientation: Qt.Vertical
-        flickableItem: viewFlickable
+        flickableItem: gridRepeater
         anchors {
             top: parent.top
             right: parent.right

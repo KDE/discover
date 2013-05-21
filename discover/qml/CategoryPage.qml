@@ -28,9 +28,6 @@ Page {
     property QtObject category
     property real actualWidth: width-Math.pow(width/70, 2)
     property alias categories: categoryModel
-    property int columnCount: Math.floor(dataFlow.width/minCellWidth)
-    property real cellWidth: (dataFlow.width-(columnCount-1)*(dataFlow.spacing))/columnCount
-    property int minCellWidth: 130
     
     function searchFor(text) {
         if(category)
@@ -42,7 +39,7 @@ Page {
     Component {
         id: categoryDelegate
         GridItem {
-            width: page.cellWidth
+            width: flick.cellWidth
             height: 100
             enabled: true
             Column {
@@ -68,98 +65,66 @@ Page {
         }
     }
     
-    NativeScrollBar {
-        id: scroll
-        orientation: Qt.Vertical
-        flickableItem: flick
-
-        anchors {
-            top: parent.top
-            right: parent.right 
-            bottom: parent.bottom
+    Component {
+        id: categoryHeader
+        CategoryHeader {
+            category: page.category
+            height: 128
         }
     }
-
-    Flickable {
+    
+    Component {
+        id: featured
+        FeaturedBanner {
+            height: 310
+            clip: true
+        }
+    }
+    ScrolledAwesomeGrid {
         id: flick
         anchors {
             fill: parent
             bottomMargin: 10
-            rightMargin: scroll.width
         }
-        contentHeight: conts.height
-        
-        Column {
-            id: conts
-            width: page.actualWidth
-            anchors.horizontalCenter: parent.horizontalCenter
-            spacing: 10
-            Loader {
-                width: parent.width
-                Component {
-                    id: categoryHeader
-                    CategoryHeader {
-                        category: page.category
-                        height: 128
-                    }
-                }
-                
-                Component {
-                    id: featured
-                    FeaturedBanner {
-                        height: 310
-                        clip: true
-                    }
-                }
-                sourceComponent: category==null ? featured : categoryHeader
-            }
-            
-            Flow {
-                id: dataFlow
-                width: parent.width
-                spacing: 10
-                Repeater {
-                    model: CategoryModel {
-                        id: categoryModel
-                        displayedCategory: page.category
-                    }
-                    delegate: categoryDelegate
-                }
-            }
-            
-            Item {
-                height: Math.min(200, page.height/2)
-                width: parent.width
-                ApplicationsTop {
-                    width: parent.width/2-5
-                    anchors {
-                        top: parent.top
-                        left: parent.left
-                        bottom: parent.bottom
-                    }
-                    sortRole: "sortableRating"
-                    filteredCategory: page.category
-                    title: i18n("Popularity Contest")
-                    roleDelegate: Label { property variant model; text: i18n("points: %1", model.sortableRating.toFixed(2)) }
-                }
-                ApplicationsTop {
-                    width: parent.width/2-5
-                    anchors {
-                        top: parent.top
-                        right: parent.right
-                        bottom: parent.bottom
-                    }
-                    sortRole: "ratingPoints"
-                    filteredCategory: page.category
-                    title: i18n("Best Ratings")
-                    roleDelegate: Rating {
-                        property variant model
-                        rating: model.rating
-                        height: 12
-                        layoutDirection: Qt.RightToLeft
-                    }
-                }
-            }
+        model: CategoryModel {
+            id: categoryModel
+            displayedCategory: page.category
         }
+        actualWidth: page.actualWidth
+        delegate: categoryDelegate
+        header: category==null ? featured : categoryHeader
+        footer: Item {
+                    height: Math.min(200, page.height/2)
+                    width: parent.width
+                    ApplicationsTop {
+                        width: parent.width/2-5
+                        anchors {
+                            top: parent.top
+                            left: parent.left
+                            bottom: parent.bottom
+                        }
+                        sortRole: "sortableRating"
+                        filteredCategory: page.category
+                        title: i18n("Popularity Contest")
+                        roleDelegate: Label { property variant model; text: i18n("points: %1", model.sortableRating.toFixed(2)) }
+                    }
+                    ApplicationsTop {
+                        width: parent.width/2-5
+                        anchors {
+                            top: parent.top
+                            right: parent.right
+                            bottom: parent.bottom
+                        }
+                        sortRole: "ratingPoints"
+                        filteredCategory: page.category
+                        title: i18n("Best Ratings")
+                        roleDelegate: Rating {
+                            property variant model
+                            rating: model.rating
+                            height: 12
+                            layoutDirection: Qt.RightToLeft
+                        }
+                    }
+                }
     }
 }
