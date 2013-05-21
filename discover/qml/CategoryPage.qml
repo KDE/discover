@@ -28,6 +28,9 @@ Page {
     property QtObject category
     property real actualWidth: width-Math.pow(width/70, 2)
     property alias categories: categoryModel
+    property int columnCount: Math.floor(dataFlow.width/minCellWidth)
+    property real cellWidth: (dataFlow.width-(columnCount-1)*(dataFlow.spacing))/columnCount
+    property int minCellWidth: 130
     
     function searchFor(text) {
         if(category)
@@ -39,8 +42,7 @@ Page {
     Component {
         id: categoryDelegate
         GridItem {
-            property int minCellWidth: 130
-            width: parent.width/Math.ceil(parent.width/minCellWidth)-10
+            width: page.cellWidth
             height: 100
             enabled: true
             Column {
@@ -113,6 +115,7 @@ Page {
             }
             
             Flow {
+                id: dataFlow
                 width: parent.width
                 spacing: 10
                 Repeater {
