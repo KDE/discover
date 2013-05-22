@@ -20,8 +20,8 @@
 import QtQuick 1.1
 
 Flickable {
-    property int columnCount: Math.floor(dataFlow.width/minCellWidth)
-    property real cellWidth: (dataFlow.width-(columnCount-1)*(dataFlow.spacing))/columnCount
+    property int columnCount: Math.max(Math.floor(dataFlow.width/minCellWidth), 1)
+    property real cellWidth: (dataFlow.width-(columnCount-1)*dataFlow.spacing)/columnCount
     property int minCellWidth: 130
     property alias actualWidth: conts.width
     property alias header: headerLoader.sourceComponent
