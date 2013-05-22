@@ -32,6 +32,7 @@ class MUONPRIVATE_EXPORT ReviewsModel : public QAbstractListModel
     Q_OBJECT
     Q_PROPERTY(AbstractReviewsBackend* backend READ backend)
     Q_PROPERTY(AbstractResource* resource READ resource WRITE setResource)
+    Q_PROPERTY(int count READ rowCount NOTIFY rowsChanged)
     Q_ENUMS(UserChoice);
     public:
         enum Roles {
@@ -67,6 +68,9 @@ class MUONPRIVATE_EXPORT ReviewsModel : public QAbstractListModel
     private slots:
         void addReviews(AbstractResource* app, const QList<Review*>& reviews);
         void restartFetching();
+
+    signals:
+        void rowsChanged();
 
     private:
         AbstractResource* m_app;

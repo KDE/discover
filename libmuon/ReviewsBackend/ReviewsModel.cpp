@@ -108,6 +108,7 @@ void ReviewsModel::setResource(AbstractResource* app)
 
             QMetaObject::invokeMethod(this, "restartFetching", Qt::QueuedConnection);
         }
+        emit rowsChanged();
     }
 }
 
@@ -119,6 +120,7 @@ void ReviewsModel::restartFetching()
     m_canFetchMore=true;
     m_lastPage = 0;
     fetchMore();
+    emit rowsChanged();
 }
 
 void ReviewsModel::fetchMore(const QModelIndex& parent)
@@ -143,6 +145,7 @@ void ReviewsModel::addReviews(AbstractResource* app, const QList<Review*>& revie
         beginInsertRows(QModelIndex(), rowCount(), rowCount()+reviews.size()-1);
         m_reviews += reviews;
         endInsertRows();
+        emit rowsChanged();
     }
 }
 
