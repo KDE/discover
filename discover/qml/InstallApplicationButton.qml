@@ -20,7 +20,7 @@ Item {
             right: parent.right
         }
         visible: parent.state=="idle"
-        text: application.isInstalled ? i18n("Install") : i18n("Remove")
+        text: !application.isInstalled ? i18n("Install") : i18n("Remove")
         width: Math.min(parent.width/2, implicitWidth)
         
         onClicked: {
