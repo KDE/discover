@@ -47,12 +47,17 @@ GridItem {
             displayDescription=false
         }
     }
+    onDisplayDescriptionChanged: {
+        if(delegateRoot.displayDescription)
+            descriptionLoader.sourceComponent=extraInfoComponent
+    }
 
     Flickable {
         id: delegateFlickable
         anchors.fill: parent
         contentHeight: delegateRoot.height*2
         interactive: false
+        contentY: delegateRoot.displayDescription ? delegateRoot.height : 0
         Behavior on contentY { NumberAnimation { duration: 200; easing.type: Easing.InQuad } }
         
         Image {
@@ -78,16 +83,11 @@ GridItem {
                     fallbackToIcon();
             }
             
-            function fallbackToIcon() { state = "fallback" }
-            state: "normal"
-            states: [
-                State { name: "normal" },
-                State { name: "fallback"
-                    PropertyChanges { target: screen; smooth: true }
-                    PropertyChanges { target: screen; source: "image://icon/"+model.application.icon}
-                    PropertyChanges { target: smallIcon; width: 0 }
-                }
-            ]
+            function fallbackToIcon() {
+                screen.smooth = true
+                screen.source = "image://icon/"+model.application.icon
+                smallIcon.width = 0
+            }
         }
         IconItem {
             id: smallIcon
@@ -95,6 +95,7 @@ GridItem {
                 right: parent.right
                 rightMargin: 5
             }
+            y: 5+(delegateRoot.displayDescription ? delegateRoot.height : screen.height-height )
             width: 48
             height: width
             source: model.application.icon
@@ -122,24 +123,6 @@ GridItem {
             }
         }
     }
-    onStateChanged: {
-        if(state=="description")
-            descriptionLoader.sourceComponent=extraInfoComponent
-    }
-    
-    state: "screenshot"
-    states: [
-        State { name: "screenshot"
-            when: !delegateRoot.displayDescription
-            PropertyChanges { target: smallIcon; y: 5+screen.height-height }
-            PropertyChanges { target: delegateFlickable; contentY: 0 }
-        },
-        State { name: "description"
-            when: delegateRoot.displayDescription
-            PropertyChanges { target: smallIcon; y: 5+delegateRoot.height }
-            PropertyChanges { target: delegateFlickable; contentY: delegateRoot.height }
-        }
-    ]
     
     Component {
         id: extraInfoComponent
