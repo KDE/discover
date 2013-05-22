@@ -89,7 +89,7 @@ GridItem {
                 smallIcon.width = 0
             }
         }
-        IconItem {
+        Image {
             id: smallIcon
             anchors {
                 right: parent.right
@@ -98,7 +98,9 @@ GridItem {
             y: 5+(delegateRoot.displayDescription ? delegateRoot.height : screen.height-height )
             width: 48
             height: width
-            source: model.application.icon
+            smooth: true
+            asynchronous: true
+            source: "image://icon/"+model.application.icon
             Behavior on y { NumberAnimation { duration: 200; easing.type: Easing.InQuad } }
         }
         Label {
