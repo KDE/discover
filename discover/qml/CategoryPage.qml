@@ -122,7 +122,6 @@ Page {
                             property variant model
                             rating: model.rating
                             height: 12
-                            layoutDirection: Qt.RightToLeft
                         }
                     }
                 }
