@@ -164,7 +164,8 @@ Page {
             id: categoryHeader
             category: page.category
             height: 100
-            width: parent.width
+            width: page.actualWidth
+            proposedMargin: viewLoader.sourceComponent == listComponent ? page.proposedMargin : 0
         }
     }
     
