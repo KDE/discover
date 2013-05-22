@@ -47,6 +47,10 @@ function openApplication(app) {
     openPage(app.icon, app.name, applicationComp, { application: app })
 }
 
+function openReviews(app, reviews) {
+    openPage("rating", i18n("Ratings for %1", app.name), reviewsComp, { model: reviews })
+}
+
 function openPage(icon, name, component, props) {
     if(breadcrumbsItem.currentItem()==name)
         return

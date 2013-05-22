@@ -94,11 +94,6 @@ Page
             text: i18n("Add-ons")
             visible: !addonsView.isEmpty //TODO: probably should be enabled: instead
         }
-        TabButton {
-            tab: reviewsView
-            text: i18n("Reviews")
-            visible: reviewsView.hasReviews
-        }
     }
     
     TabGroup {
@@ -121,11 +116,6 @@ Page
             id:addonsView
             application: page.application
             isInstalling: installButton.isActive
-        }
-        
-        ReviewsView {
-            id: reviewsView
-            application: page.application
         }
     }
 }

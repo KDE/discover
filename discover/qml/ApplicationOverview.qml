@@ -19,7 +19,9 @@
 
 import QtQuick 1.1
 import org.kde.plasma.components 0.1
+import org.kde.plasma.extras 0.1
 import org.kde.muon 1.0
+import "navigation.js" as Navigation
 
 Item {
     id: appInfo
@@ -58,11 +60,6 @@ Item {
                 rating: overviewContents.ratingInstance == null ? 0 : overviewContents.ratingInstance.rating
                 width: 150
             }
-            Label {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: i18n("%1 reviews", overviewContents.ratingInstance ? overviewContents.ratingInstance.ratingCount() : 0)
-            }
-            
             
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -107,6 +104,30 @@ Item {
                 horizontalAlignment: Text.AlignJustify
                 wrapMode: Text.WordWrap
                 text: application.longDescription
+            }
+            ListView {
+                width: parent.width
+                height: 123
+                spacing: 5
+                visible: count>0
+                clip: true
+                interactive: false
+                
+                header: Heading { text: i18n("Comments") }
+                delegate: ReviewDelegate {
+                    onMarkUseful: reviewsModel.markUseful(index, useful)
+                }
+                
+                model: ReviewsModel {
+                    id: reviewsModel
+                    resource: application
+                }
+            }
+            Button {
+                visible: reviewsModel.count>0
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: i18n("More comments (%1)...", overviewContents.ratingInstance ? overviewContents.ratingInstance.ratingCount() : 0)
+                onClicked: Navigation.openReviews(application, reviewsModel)
             }
         }
     }

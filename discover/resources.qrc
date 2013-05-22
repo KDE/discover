@@ -8,7 +8,7 @@
     <file>qml/FeaturedBanner.qml</file>
     <file>qml/ApplicationsListPage.qml</file>
     <file>qml/ApplicationPage.qml</file>
-    <file>qml/ReviewsView.qml</file>
+    <file>qml/ReviewsPage.qml</file>
     <file>qml/ApplicationOverview.qml</file>
     <file>qml/AddonsView.qml</file>
     <file>qml/ApplicationsList.qml</file>
@@ -31,6 +31,7 @@
     <file>qml/GridItem.qml</file>
     <file>qml/NativeScrollBar.qml</file>
     <file>qml/AwesomeGrid.qml</file>
+    <file>qml/ReviewDelegate.qml</file>
     <file>qml/ScrolledAwesomeGrid.qml</file>
 
     <file>qml/navigation.js</file>
