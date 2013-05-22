@@ -32,35 +32,20 @@ MouseArea {
     property alias containsMouse: listItem.containsMouse
 
     property bool checked: false
-    property bool sectionDelegate: false
 
     width: parent ? parent.width : childrenRect.width
     height: paddingItem.childrenRect.height + background.margins.top + background.margins.bottom
 
-    property int implicitHeight: paddingItem.childrenRect.height + background.margins.top + background.margins.bottom
-
-    property bool changeBackgroundOnPress: !listItem.checked && !listItem.sectionDelegate
+    property bool changeBackgroundOnPress: !listItem.checked
     hoverEnabled: true
-    onPressed: if (changeBackgroundOnPress) background.prefix = "pressed"
-    onReleased: if (changeBackgroundOnPress) background.prefix = "normal"
-    onCanceled: if (changeBackgroundOnPress) background.prefix = "normal"
-
-    Connections {
-        target: listItem
-        onCheckedChanged: background.prefix = (listItem.checked ? "pressed" : "normal")
-        onSectionDelegateChanged: background.prefix = (listItem.sectionDelegate ? "section" : "normal")
-    }
 
     PlasmaCore.FrameSvgItem {
         id : background
         imagePath: "widgets/listitem"
-        prefix: "normal"
+        prefix: (listItem.checked || listItem.pressed) ? "pressed" : "normal"
 
         anchors.fill: parent
         opacity: listItem.containsMouse && !listItem.pressed ? 0.5 : 1
-        Component.onCompleted: {
-            prefix = (listItem.sectionDelegate ? "section" : (listItem.checked ? "pressed" : "normal"))
-        }
         Behavior on opacity { NumberAnimation { duration: 200 } }
     }
     PlasmaCore.SvgItem {
