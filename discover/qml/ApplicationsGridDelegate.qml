@@ -64,20 +64,17 @@ GridItem {
                 top: parent.top
                 topMargin: 5
             }
-            source: model.application.thumbnailUrl
+            property bool hasThumbnail: model.application.thumbnailUrl!=""
+            source: hasThumbnail ? model.application.thumbnailUrl : "image://icon/"+model.application.icon
             height: delegateRoot.height*0.7
             fillMode: Image.PreserveAspectFit
-            smooth: true
+            smooth: false
             cache: false
             asynchronous: true
             onStatusChanged:  {
                 if(status==Image.Error) {
-                    fallbackToIcon()
+                    hasThumbnail=false
                 }
-            }
-            Component.onCompleted: {
-                if(model.application.thumbnailUrl=="")
-                    fallbackToIcon();
             }
             
             function fallbackToIcon() { state = "fallback" }
@@ -85,6 +82,7 @@ GridItem {
             states: [
                 State { name: "normal" },
                 State { name: "fallback"
+                    when: model.application.thumbnailUrl==""
                     PropertyChanges { target: screen; smooth: true }
                     PropertyChanges { target: screen; source: "image://icon/"+model.application.icon}
                     PropertyChanges { target: smallIcon; width: 0 }
