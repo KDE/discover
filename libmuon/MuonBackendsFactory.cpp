@@ -53,7 +53,7 @@ QStringList MuonBackendsFactory::allBackendNames() const
     QStringList ret;
     KService::List serviceList = KServiceTypeTrader::self()->query("Muon/Backend");
     foreach(const KService::Ptr& service, serviceList) {
-        ret += service->property("X-KDE-PluginInfo-Name").toString()';
+        ret += service->property("X-KDE-PluginInfo-Name").toString();
     }
     return ret;
 }
