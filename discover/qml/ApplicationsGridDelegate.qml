@@ -92,6 +92,7 @@ GridItem {
             smooth: true
             asynchronous: true
             source: "image://icon/"+model.application.icon
+            visible: screen.hasThumbnail
             Behavior on y { NumberAnimation { duration: 200; easing.type: Easing.InQuad } }
         }
         Label {
