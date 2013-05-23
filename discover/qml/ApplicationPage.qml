@@ -35,6 +35,7 @@ Page
             right: parent.right
             margins: 10
         }
+        clip: true
         height: icon.height
         QIconItem {
             id: icon

@@ -119,6 +119,7 @@ GridItem {
                 bottom: parent.bottom
                 top: parent.verticalCenter
             }
+            clip: true
         }
     }
     onStateChanged: {
