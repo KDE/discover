@@ -70,7 +70,10 @@ QString KNSResource::icon() const
 
 QString KNSResource::comment()
 {
-    return m_content.summary();
+    QString s = m_content.summary();
+    if(s.isEmpty())
+        s = longDescription();
+    return s;
 }
 
 QString KNSResource::name()
