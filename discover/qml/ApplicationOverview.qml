@@ -84,7 +84,7 @@ Item {
                         topMargin: 5
                     }
                     
-                    Text {
+                    Heading {
                         text: application.name
                         width: parent.width
                         font.bold: true
