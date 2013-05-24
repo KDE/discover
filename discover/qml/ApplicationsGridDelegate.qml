@@ -143,6 +143,7 @@ GridItem {
                     bottom: parent.bottom
                     left: parent.left
                     right: parent.right
+                    bottomMargin: 5
                 }
                 application: model.application
                 additionalItem: Rating {
