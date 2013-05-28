@@ -56,7 +56,7 @@ protected:
 private:
     class Private;
     Private * d;
-    Q_PRIVATE_SLOT(d, void __k__showMuon(bool, QPoint));
+    Q_PRIVATE_SLOT(d, void __k__showMuon());
 };
 
 #endif //ABSTRACTKDEDMODULE_H

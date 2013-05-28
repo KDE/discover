@@ -25,6 +25,8 @@
 #include <KStatusNotifierItem>
 #include <KLocale>
 #include <KRun>
+#include <KMenu>
+#include <KIcon>
 
 class AbstractKDEDModule::Private
 {
@@ -33,7 +35,7 @@ public:
       : name(n), systemUpToDate(true), updateType(AbstractKDEDModule::NormalUpdate), statusNotifier(0) {}
     ~Private() {}
     
-    void __k__showMuon(bool active, const QPoint &);
+    void __k__showMuon();
     
     QString name;
     bool systemUpToDate;
@@ -54,7 +56,9 @@ AbstractKDEDModule::AbstractKDEDModule(const QString &name, QObject * parent)
     
     d->statusNotifier = new KStatusNotifierItem("org.kde.muon." + d->name, this);
     d->statusNotifier->setTitle(i18n("%1 update notifier", d->name));
-    connect(d->statusNotifier, SIGNAL(activateRequested(bool, QPoint)), SLOT(__k__showMuon(bool, QPoint)));
+    d->statusNotifier->setStandardActionsEnabled(false);//TODO: Add a "Quit" button to close the KDEModule
+    d->statusNotifier->contextMenu()->addAction(KIcon("muondiscover"), i18n("Open Muon..."), this, SLOT(__k__showMuon()));
+    connect(d->statusNotifier, SIGNAL(activateRequested(bool, QPoint)), SLOT(__k__showMuon()));
 }
 
 AbstractKDEDModule::~AbstractKDEDModule()
@@ -62,7 +66,7 @@ AbstractKDEDModule::~AbstractKDEDModule()
     delete d;
 }
 
-void AbstractKDEDModule::Private::__k__showMuon(bool active, const QPoint& )
+void AbstractKDEDModule::Private::__k__showMuon()
 {
     QProcess::execute("muon-updater");//TODO: Move to KRun
 }
