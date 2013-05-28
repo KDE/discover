@@ -25,6 +25,7 @@ set(muon_LIB_SRCS
     resources/AbstractBackendUpdater.cpp
     resources/ResourcesUpdatesModel.cpp
     resources/StandardBackendUpdater.cpp
+    resources/AbstractKDEDModule.cpp
     MuonBackendsFactory.cpp
     ScreenshotsModel.cpp
     ApplicationAddonsModel.cpp
