@@ -47,18 +47,25 @@ AbstractKDEDModule::AbstractKDEDModule(const QString &name, QObject * parent)
   : KDEDModule(parent),
     d(new Private(name))
 {
-    if (!QDBusConnection::systemBus().registerService("org.kde.muon." + d->name)) {
-        qWarning() << "Cannot register service on session bus";
-    }
-    if (!QDBusConnection::sessionBus().registerObject("/", this, QDBusConnection::ExportAllContents)) {
-        qWarning() << "Cannot register on session bus";
-    }
-    
     d->statusNotifier = new KStatusNotifierItem("org.kde.muon." + d->name, this);
     d->statusNotifier->setTitle(i18n("%1 update notifier", d->name));
     d->statusNotifier->setIconByName("muondiscover");
     d->statusNotifier->setStandardActionsEnabled(false);//TODO: Add a "Quit" button to close the KDEModule
+    d->statusNotifier->contextMenu()->clear();
+    d->statusNotifier->contextMenu()->addTitle(KIcon("svn-update"), i18n("Muon %1 update notifier", name));
+    d->statusNotifier->contextMenu()->setIcon(KIcon("muondiscover"));
     d->statusNotifier->contextMenu()->addAction(KIcon("muondiscover"), i18n("Open Muon..."), this, SLOT(__k__showMuon()));
+    
+    if (!QDBusConnection::sessionBus().registerService("org.kde.muon." + d->name)) {
+        d->statusNotifier->showMessage(i18n("DBus failure"), i18n("Cannot register service on system bus!"), "muondiscover");
+        qWarning() << "Cannot register service on session bus";
+    }
+    //TODO: Probably don't export so much (don't export KDED stuff etc)
+    if (!QDBusConnection::sessionBus().registerObject("/", this, QDBusConnection::ExportAllContents)) {
+        d->statusNotifier->showMessage(i18n("DBus failure"), i18n("Cannot register object on system bus!"), "muondiscover");
+        qWarning() << "Cannot register on session bus";
+    }
+    
     connect(d->statusNotifier, SIGNAL(activateRequested(bool, QPoint)), SLOT(__k__showMuon()));
 }
 
@@ -85,8 +92,16 @@ AbstractKDEDModule::UpdateType AbstractKDEDModule::updateType() const
 void AbstractKDEDModule::setSystemUpToDate(bool systemUpToDate)
 {
     d->systemUpToDate = systemUpToDate;
-    if (!systemUpToDate)
+    if (!systemUpToDate) {
         emit systemUpdateNeeded();
+        //TODO: Better message strings
+        d->statusNotifier->showMessage(i18n("System update available!"), i18n("The system is not up-to-date!"), "svn-update", 2000);
+        d->statusNotifier->setOverlayIconByName("svn-update");
+        d->statusNotifier->setStatus(KStatusNotifierItem::Active);
+    } else {
+        d->statusNotifier->setOverlayIconByName(QString());
+        d->statusNotifier->setStatus(KStatusNotifierItem::Passive);
+    }
 }
 
 void AbstractKDEDModule::setUpdateType(UpdateType updateType)

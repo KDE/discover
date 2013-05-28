@@ -27,6 +27,7 @@
 class MUONPRIVATE_EXPORT AbstractKDEDModule : public KDEDModule
 {
     Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface", "org.kde.muon")
     Q_PROPERTY(bool systemUpToDate READ isSystemUpToDate WRITE setSystemUpToDate);
     Q_PROPERTY(UpdateType updateType READ updateType WRITE setUpdateType);
 public:    
