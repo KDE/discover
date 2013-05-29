@@ -24,6 +24,7 @@
 #include <KUniqueApplication>
 #include <KStandardDirs>
 #include "MuonDiscoverMainWindow.h"
+#include <MuonBackendsFactory.h>
 
 static const char description[] =
     I18N_NOOP("An application discoverer");
@@ -45,7 +46,8 @@ int main(int argc, char** argv)
     options.add("mime <name>", ki18n("Open with a program that can deal with the given mimetype."));
     options.add("category <name>", ki18n("Display a list of entries with a category."));
     options.add("mode <name>", ki18n("Open Muon Discover in a said mode. Modes correspond to the toolbar buttons."));
-    options.add("listmodes", ki18n("List all the available modes and output them on stdout."));
+    options.add("listmodes", ki18n("List all the available modes."));
+    options.add("listbackends", ki18n("List all the available backends."));
     options.add("backends <names>", ki18n("List all the backends we'll want to have loaded, separated by coma ','."));
     KCmdLineArgs::addCmdLineOptions( options );
 
@@ -71,6 +73,12 @@ int main(int argc, char** argv)
         fprintf(stdout, "%s", qPrintable(i18n("Available modes:\n")));
         foreach(const QString& mode, mainWindow->modes())
             fprintf(stdout, " * %s\n", qPrintable(mode));
+        return 0;
+    } else if(args->isSet("listbackends")) {
+        fprintf(stdout, "%s", qPrintable(i18n("Available backends:\n")));
+        MuonBackendsFactory f;
+        foreach(const QString& name, f.allBackendNames())
+            fprintf(stdout, " * %s\n", qPrintable(name));
         return 0;
     }
     mainWindow->show();

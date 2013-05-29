@@ -67,26 +67,17 @@ GridItem {
                 top: parent.top
                 topMargin: 5
             }
-            source: model.application.thumbnailUrl
+            property bool hasThumbnail: model.application.thumbnailUrl!=""
+            source: hasThumbnail ? model.application.thumbnailUrl : "image://icon/"+model.application.icon
             height: delegateRoot.height*0.7
             fillMode: Image.PreserveAspectFit
-            smooth: true
+            smooth: false
             cache: false
             asynchronous: true
             onStatusChanged:  {
                 if(status==Image.Error) {
-                    fallbackToIcon()
+                    hasThumbnail=false
                 }
-            }
-            Component.onCompleted: {
-                if(model.application.thumbnailUrl=="")
-                    fallbackToIcon();
-            }
-            
-            function fallbackToIcon() {
-                screen.smooth = true
-                screen.source = "image://icon/"+model.application.icon
-                smallIcon.width = 0
             }
         }
         Image {
@@ -101,6 +92,7 @@ GridItem {
             smooth: true
             asynchronous: true
             source: "image://icon/"+model.application.icon
+            visible: screen.hasThumbnail
             Behavior on y { NumberAnimation { duration: 200; easing.type: Easing.InQuad } }
         }
         Label {
@@ -123,6 +115,7 @@ GridItem {
                 top: parent.verticalCenter
                 bottomMargin: 10
             }
+            clip: true
         }
     }
     
@@ -150,6 +143,7 @@ GridItem {
                     bottom: parent.bottom
                     left: parent.left
                     right: parent.right
+                    bottomMargin: 5
                 }
                 application: model.application
                 additionalItem: Rating {
