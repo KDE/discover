@@ -21,6 +21,7 @@ import QtQuick 1.1
 import org.kde.plasma.core 0.1
 import org.kde.plasma.components 0.1
 import org.kde.plasma.extras 0.1
+import org.kde.qtextracomponents 0.1
 import org.kde.muon 1.0
 import "navigation.js" as Navigation
 
@@ -57,21 +58,23 @@ Item {
             property QtObject ratingInstance: appInfo.reviewsBackend!=null ? appInfo.reviewsBackend.ratingForApplication(appInfo.application) : null
             
             Item {
-                id: intro
                 anchors {
                     left: parent.left
                     right: parent.right
                     margins: 10
                 }
-                height: Math.max(icon.height, header.height)+10
+                height: header.height
                 IconItem {
                     id: icon
-                    anchors.top: parent.top
-                    anchors.left: parent.left
+                    anchors {
+                        top: header.top
+                        left: parent.left
+                        bottom: header.bottom
+                    }
                     width: height
-                    height: header.height
                     
                     source: application.icon
+                    clip: true
                 }
                 
                 Column {
@@ -81,7 +84,6 @@ Item {
                         left: icon.right
                         right: parent.right
                         leftMargin: 5
-                        topMargin: 5
                     }
                     
                     Heading {
@@ -97,28 +99,24 @@ Item {
                         text: application.comment
                         wrapMode: Text.WordWrap
                     }
-                    Rating {
-                        visible: overviewContents.ratingInstance!=null
-                        rating: overviewContents.ratingInstance == null ? 0 : overviewContents.ratingInstance.rating
-                        width: 100
-                    }
-                }
-                
-                Row {
-                    anchors {
-                        right: parent.right
-                        verticalCenter: parent.verticalCenter
-                    }
-                    spacing: 5
-                    InstallApplicationButton {
-                        id: installButton
-                        width: maximumWidth
-                        application: appInfo.application
-                    }
-                    Button {
-                        visible: application.isInstalled && application.canExecute
-                        text: i18n("Launch")
-                        onClicked: application.invokeApplication()
+                    Row {
+                        spacing: 5
+                        Rating {
+                            visible: overviewContents.ratingInstance!=null
+                            rating: overviewContents.ratingInstance == null ? 
+                                                        0 : overviewContents.ratingInstance.rating
+                            width: 120
+                        }
+                        InstallApplicationButton {
+                            id: installButton
+                            width: maximumWidth
+                            application: appInfo.application
+                            additionalItem: Button {
+                                visible: application.isInstalled && application.canExecute
+                                text: i18n("Launch")
+                                onClicked: application.invokeApplication()
+                            }
+                        }
                     }
                 }
             }
@@ -191,6 +189,7 @@ Item {
             margins: 5
         }
         Label {
+            clip: true
             width: parent.width
             text: i18n(  "<b>Total Size:</b> %1<br/>"
                         +"<b>Version:</b> %2 %3<br/>"
