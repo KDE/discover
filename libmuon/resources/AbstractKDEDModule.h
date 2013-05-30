@@ -27,8 +27,8 @@
 class MUONPRIVATE_EXPORT AbstractKDEDModule : public KDEDModule
 {
     Q_OBJECT
-    Q_PROPERTY(bool systemUpToDate READ isSystemUpToDate WRITE setSystemUpToDate);
-    Q_PROPERTY(UpdateType updateType READ updateType WRITE setUpdateType);
+    Q_PROPERTY(bool systemUpToDate READ isSystemUpToDate WRITE setSystemUpToDate)
+    Q_PROPERTY(int updateType READ updateType WRITE setUpdateType)
 public:    
     enum UpdateType {
         NormalUpdate = 0,
@@ -38,20 +38,20 @@ public:
     virtual ~AbstractKDEDModule();
 
     bool isSystemUpToDate() const;
-    UpdateType updateType() const;
+    int updateType() const;
 
 public slots:
-    virtual void configurationChanged() = 0;
-    virtual void recheckSystemUpdateNeeded() = 0;
+    virtual Q_SCRIPTABLE void configurationChanged() = 0;
+    virtual Q_SCRIPTABLE void recheckSystemUpdateNeeded() = 0;
 
 signals:
-    void systemUpdateNeeded();
+    Q_SCRIPTABLE void systemUpdateNeeded();
 
 protected:
     AbstractKDEDModule(const QString &name, const QString &iconName, QObject * parent);
     
     void setSystemUpToDate(bool systemUpToDate);
-    void setUpdateType(UpdateType updateType);
+    void setUpdateType(int updateType);
     
 private:
     class Private;
@@ -59,5 +59,6 @@ private:
     Q_PRIVATE_SLOT(d, void __k__showMuon());
     Q_PRIVATE_SLOT(d, void __k__quit());
 };
+
 
 #endif //ABSTRACTKDEDMODULE_H
