@@ -26,6 +26,7 @@
 class DummyNotifier : public AbstractKDEDModule
 {
     Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface", "org.kde.muon.dummy")
 public:
     DummyNotifier(QObject* parent, const QVariantList &);
     virtual ~DummyNotifier();

@@ -27,7 +27,6 @@
 class MUONPRIVATE_EXPORT AbstractKDEDModule : public KDEDModule
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.kde.muon")
     Q_PROPERTY(bool systemUpToDate READ isSystemUpToDate WRITE setSystemUpToDate);
     Q_PROPERTY(UpdateType updateType READ updateType WRITE setUpdateType);
 public:    
@@ -49,7 +48,7 @@ signals:
     void systemUpdateNeeded();
 
 protected:
-    AbstractKDEDModule(const QString &name, QObject * parent);
+    AbstractKDEDModule(const QString &name, const QString &iconName, QObject * parent);
     
     void setSystemUpToDate(bool systemUpToDate);
     void setUpdateType(UpdateType updateType);
@@ -58,6 +57,7 @@ private:
     class Private;
     Private * d;
     Q_PRIVATE_SLOT(d, void __k__showMuon());
+    Q_PRIVATE_SLOT(d, void __k__quit());
 };
 
 #endif //ABSTRACTKDEDMODULE_H

@@ -27,7 +27,7 @@ K_PLUGIN_FACTORY(MuonDummyNotifierFactory,
 K_EXPORT_PLUGIN(MuonDummyNotifierFactory("muon-dummy-notifier"))
 
 DummyNotifier::DummyNotifier(QObject* parent, const QVariantList &)
-  : AbstractKDEDModule("dummy", parent)
+  : AbstractKDEDModule("dummy", "muondiscover", parent)
 {
 
 }
