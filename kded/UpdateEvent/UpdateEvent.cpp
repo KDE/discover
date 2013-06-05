@@ -35,6 +35,10 @@ UpdateEvent::UpdateEvent(QObject* parent, const QString &name)
 {
 }
 
+UpdateEvent::~UpdateEvent()
+{
+}
+
 void UpdateEvent::show(int updates, int securityUpdates)
 {
     if (!updates && !securityUpdates) {

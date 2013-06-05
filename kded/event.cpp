@@ -44,6 +44,7 @@ Event::Event(QObject* parent, const QString &name)
 
 Event::~Event()
 {
+    delete m_notifierItem;
 }
 
 bool Event::readHiddenConfig()
@@ -129,6 +130,7 @@ void Event::show(const QString &icon, const QString &text, const QStringList &ac
 
     if (m_useTrayIcon) {
         m_active = true;
+        delete m_notifierItem;
         m_notifierItem = new KStatusNotifierItem(this);
         m_notifierItem->setIconByName(icon);
         if (!tTipIcon.isEmpty()) {
@@ -191,14 +193,14 @@ void Event::update(const QString &icon, const QString &text, const QString &tTip
 void Event::run()
 {
     delete m_notifierItem;
-    m_notifierItem = 0;
+    m_notifierItem = nullptr;
     notifyClosed();
 }
 
 void Event::ignore()
 {
     delete m_notifierItem;
-    m_notifierItem = 0;
+    m_notifierItem = nullptr;
     notifyClosed();
 }
 
