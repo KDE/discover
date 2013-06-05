@@ -219,5 +219,3 @@ void Event::reloadConfig()
     m_hidden = readHiddenConfig();
     readNotifyConfig();
 }
-
-#include "event.moc"

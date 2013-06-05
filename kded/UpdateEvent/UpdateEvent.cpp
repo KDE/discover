@@ -152,5 +152,3 @@ void UpdateEvent::parseUpdateInfo()
 
     // ';' not found, apt-check broke :("
 }
-
-#include "UpdateEvent.moc"
