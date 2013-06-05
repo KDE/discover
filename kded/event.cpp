@@ -33,7 +33,7 @@ Event::Event(QObject* parent, const QString &name)
         : QObject(parent)
         , m_name(name)
         , m_hidden(false)
-        , m_notifierItem(0)
+        , m_notifierItem(nullptr)
         , m_active(false)
         , m_verbose(false)
 {
@@ -104,7 +104,7 @@ void Event::show(const QString &icon, const QString &text, const QStringList &ac
         }
 
         m_active = true;
-        KNotification *notify = new KNotification(m_name, 0, flag);
+        KNotification *notify = new KNotification(m_name, nullptr, flag);
         notify->setComponentData(KComponentData("muon-notifier"));
 
         KIcon notifyIcon(icon);
@@ -164,7 +164,7 @@ void Event::show(const QString &icon, const QString &text, const QStringList &ac
         contextMenu->addAction(hideAction);
 
         m_notifierItem->setContextMenu(contextMenu);
-        m_notifierItem->setAssociatedWidget(NULL);
+        m_notifierItem->setAssociatedWidget(nullptr);
 
         connect(m_notifierItem, SIGNAL(activateRequested(bool,QPoint)), this, SLOT(run()));
     }
