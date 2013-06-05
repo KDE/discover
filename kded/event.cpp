@@ -85,11 +85,14 @@ bool Event::isHidden() const
     return m_hidden;
 }
 
-void Event::show(const QString &icon, const QString &text, const QStringList &actions, const QString &tTipIcon)
+void Event::show(const QString &icon, const QString &text, const QStringList &actions,
+                 const QString &tTipIcon, const QString &actionIcon)
 {
     if (m_active || m_hidden) {
         return;
     }
+
+    QString aIcon = actionIcon.isEmpty() ? icon : actionIcon;
 
     if (m_useKNotify) {
         KNotification::NotificationFlag flag;
@@ -143,7 +146,7 @@ void Event::show(const QString &icon, const QString &text, const QStringList &ac
         contextMenu->addTitle(KIcon("applications-system"), i18n("System Notification"));
 
         QAction *runAction = contextMenu->addAction(actions.at(0));
-        runAction->setIcon(KIcon(icon));
+        runAction->setIcon(KIcon(aIcon));
         connect(runAction, SIGNAL(triggered()), this, SLOT(run()));
         contextMenu->addAction(runAction);
 
