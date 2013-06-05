@@ -34,10 +34,6 @@ ConfigWatcher::ConfigWatcher(QObject* parent)
     dbus.registerService("org.kubuntu.MuonNotifier");
 }
 
-ConfigWatcher::~ConfigWatcher()
-{
-}
-
 void ConfigWatcher::reloadConfig()
 {
     emit reloadConfigCalled();
