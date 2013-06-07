@@ -38,7 +38,6 @@
 #include <KStandardDirs>
 #include <KXmlGuiWindow>
 #include <Solid/Networking>
-#include <KStandardDirs>
 
 // LibQApt includes
 #include <LibQApt/Backend>

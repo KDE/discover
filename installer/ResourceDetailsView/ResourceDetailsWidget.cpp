@@ -63,7 +63,6 @@
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/Review.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
-#include <resources/AbstractResource.h>
 
 // std includes
 #include <math.h>
