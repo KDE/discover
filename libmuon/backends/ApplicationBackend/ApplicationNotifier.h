@@ -17,49 +17,39 @@
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
-#ifndef ABSTRACTKDEDMODULE_H
-#define ABSTRACTKDEDMODULE_H
+#ifndef APPLICATIONNOTIFIER_H
+#define APPLICATIONNOTIFIER_H
 
-#include <KDEDModule>
+#include <resources/AbstractKDEDModule.h>
+#include <QVariantList>
 
-#include "libmuonprivate_export.h"
+class DistUpgradeEvent;
+class UpdateEvent;
+class KProcess;
+class QProcess;
 
-class MUONPRIVATE_EXPORT AbstractKDEDModule : public KDEDModule
+class ApplicationNotifier : public AbstractKDEDModule
 {
     Q_OBJECT
-    Q_PROPERTY(bool systemUpToDate READ isSystemUpToDate WRITE setSystemUpToDate)
-    Q_PROPERTY(int updateType READ updateType WRITE setUpdateType)
-public:    
-    enum UpdateType {
-        NormalUpdate = 0,
-        SecurityUpdate = 1
-    };
-    Q_ENUMS(UpdateType);
-    virtual ~AbstractKDEDModule();
-
-    bool isSystemUpToDate() const;
-    int updateType() const;
-
-public slots:
-    virtual Q_SCRIPTABLE void configurationChanged() = 0;
-    virtual Q_SCRIPTABLE void recheckSystemUpdateNeeded() = 0;
-
-signals:
-    Q_SCRIPTABLE void systemUpdateNeeded();
-
-protected:
-    AbstractKDEDModule(const QString &name, const QString &iconName, QObject * parent);
+    Q_CLASSINFO("D-Bus Interface", "org.kde.muon.application")
+public:
+    ApplicationNotifier(QObject* parent, const QVariantList &);
+    virtual ~ApplicationNotifier();
     
-    //FIXME: PRobably make the updateType another parameter here?
-    void setSystemUpToDate(bool systemUpToDate, bool showNotification = true);
-    void setUpdateType(int updateType);
+public slots:
+    virtual void configurationChanged();
+    virtual void recheckSystemUpdateNeeded();
+    
+private slots:
+    void checkUpgradeFinished(int exitStatus);
+    void distUpgradeEvent();
+    void init();
+    void parseUpdateInfo();
     
 private:
-    class Private;
-    Private * d;
-    Q_PRIVATE_SLOT(d, void __k__showMuon());
-    Q_PRIVATE_SLOT(d, void __k__quit());
+    KProcess *m_checkerProcess;
+    QProcess *m_updateCheckerProcess;
+    bool m_checkingForUpdates;
 };
 
-
-#endif //ABSTRACTKDEDMODULE_H
+#endif

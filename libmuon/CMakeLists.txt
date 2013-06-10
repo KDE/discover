@@ -51,6 +51,7 @@ target_link_libraries(muonprivate
 
 install(TARGETS muonprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES moo.ogg DESTINATION ${DATA_INSTALL_DIR}/libmuon)
+install(FILES resources/muonabstractnotifier.notifyrc DESTINATION ${DATA_INSTALL_DIR}/muonabstractnotifier)
 
 install(FILES
     muonbackendplugin.desktop
