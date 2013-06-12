@@ -30,6 +30,7 @@
 #include <QtGui/QTreeView>
 #include <QtGui/QVBoxLayout>
 #include <qaction.h>
+#include <QPushButton>
 
 // KDE includes
 #include <KIcon>
@@ -51,11 +52,14 @@
 #include "UpdateModel/UpdateModel.h"
 #include "UpdateModel/UpdateItem.h"
 #include "UpdateModel/UpdateDelegate.h"
+#include "ChangelogWidget.h"
+#include "ui_UpdaterWidgetNoUpdates.h"
 
 UpdaterWidget::UpdaterWidget(QWidget *parent) :
     QStackedWidget(parent)
 {
     setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
+    m_updateModel = new UpdateModel(this);
 
     // First page (update view)
     QWidget *page1 = new QWidget(this);
@@ -69,17 +73,20 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
                             "Do you want to update those too?");
     QAction* action = new QAction(KIcon("dialog-ok-apply"), i18n("Mark All"), this);
     connect(action, SIGNAL(triggered(bool)), SLOT(markAllPackagesForUpgrade()));
-    m_upgradesWidget = new KMessageWidget(this);
-    m_upgradesWidget->setText(text);
-    m_upgradesWidget->addAction(action);
-    m_upgradesWidget->setCloseButtonVisible(true);
-    m_upgradesWidget->setVisible(false);
-    page1Layout->addWidget(m_upgradesWidget);
+    m_markallWidget = new KMessageWidget(this);
+    m_markallWidget->setText(text);
+    m_markallWidget->addAction(action);
+    m_markallWidget->setCloseButtonVisible(true);
+    m_markallWidget->setVisible(false);
 
-    m_updateModel = new UpdateModel(page1);
+    m_changelogWidget = new ChangelogWidget(this);
+    m_changelogWidget->hide();
+    connect(this, SIGNAL(selectedResourceChanged(AbstractResource*)),
+            m_changelogWidget, SLOT(setResource(AbstractResource*)));
 
-    connect(m_updateModel, SIGNAL(checkApps(QList<AbstractResource*>,bool)),
-            this, SLOT(checkApps(QList<AbstractResource*>,bool)));
+    QLabel* descriptionLabel = new QLabel(this);
+    descriptionLabel->setText(i18n("<p><b>New software is available for your computer</b></p><p>Click 'Install Updates' to keep your system up-to-date and safe</p>"));
+    descriptionLabel->setMinimumHeight(descriptionLabel->fontMetrics().height()*4);
 
     m_updateView = new QTreeView(page1);
     m_updateView->setAlternatingRowColors(true);
@@ -90,51 +97,43 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     m_updateView->header()->setStretchLastSection(false);
     connect(m_updateView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged(QItemSelection,QItemSelection)));
+
+    page1Layout->addWidget(m_markallWidget);
+    page1Layout->addWidget(descriptionLabel);
     page1Layout->addWidget(m_updateView);
+    page1Layout->addWidget(m_changelogWidget);
 
     m_busyWidget = new KPixmapSequenceOverlayPainter(page1);
     m_busyWidget->setSequence(KPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
     m_busyWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     m_busyWidget->setWidget(m_updateView->viewport());
 
-    QApplication::setOverrideCursor(Qt::WaitCursor);
-
-    m_busyWidget->start();
-
     UpdateDelegate *delegate = new UpdateDelegate(m_updateView);
     m_updateView->setItemDelegate(delegate);
 
     // Second page (If no updates, show when last check or warn about lack of updates)
-    QFrame *page2 = new QFrame(this);
-    page2->setFrameShape(QFrame::StyledPanel);
-    page2->setFrameShadow(QFrame::Sunken);
-    page2->setBackgroundRole(QPalette::Base);
-    QGridLayout *page2Layout = new QGridLayout(page2);
-    page2->setLayout(page2Layout);
-
-    m_updateStatusIcon = new QLabel(page2);
-    m_notifyTitle = new QLabel(page2);
-    m_notifyTitle->setAlignment(Qt::AlignLeft | Qt::AlignBottom);
-    m_notifyDesc = new QLabel(page2);
-    m_notifyDesc->setAlignment(Qt::AlignLeft | Qt::AlignTop);
-
-    page2Layout->setColumnStretch(0, 1);
-    page2Layout->addWidget(m_updateStatusIcon, 0, 1, 0, 1);
-    page2Layout->addWidget(m_notifyTitle, 0, 2);
-    page2Layout->addWidget(m_notifyDesc, 1, 2);
-    page2Layout->setColumnStretch(3, 1);
-
+    QWidget *page2 = new QWidget(this);
+    m_ui = new Ui::UpdaterWidgetNoUpdates;
+    m_ui->setupUi(page2);
 
     addWidget(page1);
     addWidget(page2);
     setCurrentWidget(page1);
+
+    QApplication::setOverrideCursor(Qt::WaitCursor);
+    m_busyWidget->start();
+}
+
+UpdaterWidget::~UpdaterWidget()
+{
+    delete m_ui;
 }
 
 void UpdaterWidget::setBackend(ResourcesUpdatesModel *updates)
 {
     m_updatesBackends = updates;
+    m_updateModel->setBackend(updates);
     connect(m_updatesBackends, SIGNAL(progressingChanged()), SLOT(activityChanged()));
-//     connect(ResourcesModel::global(), SIGNAL(allInitialized()), SLOT(populateUpdateModel()));
 
     populateUpdateModel();
     setEnabled(true);
@@ -143,11 +142,14 @@ void UpdaterWidget::setBackend(ResourcesUpdatesModel *updates)
 void UpdaterWidget::activityChanged()
 {
     if(m_updatesBackends->isProgressing()) {
+        m_updateView->hide();
+        m_changelogWidget->hide();
         m_busyWidget->start();
         setEnabled(false);
         setCurrentIndex(-1);
     } else {
         populateUpdateModel();
+        m_updateView->show();
     }
 }
 
@@ -161,8 +163,7 @@ void UpdaterWidget::populateUpdateModel()
         return;
     }
     m_updatesBackends->prepare();
-    m_updateModel->clear();
-    m_updateModel->addResources(m_updatesBackends->toUpdate());
+    m_updateModel->setResources(m_updatesBackends->toUpdate());
 
     m_updateView->expand(m_updateModel->index(0,0)); // Expand apps category
     m_updateView->resizeColumnToContents(0);
@@ -170,18 +171,7 @@ void UpdaterWidget::populateUpdateModel()
 
     checkAllMarked();
     checkUpToDate();
-}
-
-void UpdaterWidget::checkApps(const QList<AbstractResource*>& apps, bool checked)
-{
-    if (apps.size() > 1) {
-        QApplication::setOverrideCursor(Qt::WaitCursor);
-    }
-    if(checked)
-        m_updatesBackends->addResources(apps);
-    else
-        m_updatesBackends->removeResources(apps);
-    QApplication::restoreOverrideCursor();
+    emit modelPopulated();
 }
 
 void UpdaterWidget::selectionChanged(const QItemSelection &selected,
@@ -201,13 +191,14 @@ void UpdaterWidget::selectionChanged(const QItemSelection &selected,
 
 void UpdaterWidget::checkAllMarked()
 {
-    m_upgradesWidget->setVisible(!m_updatesBackends->isAllMarked());
+    m_markallWidget->setVisible(!m_updatesBackends->isAllMarked());
 }
 
 void UpdaterWidget::markAllPackagesForUpgrade()
 {
     m_updatesBackends->prepare();
-    m_upgradesWidget->hide();
+    m_markallWidget->hide();
+    emit modelPopulated();
 }
 
 void UpdaterWidget::checkUpToDate()
@@ -218,10 +209,10 @@ void UpdaterWidget::checkUpToDate()
 
         // Unknown time since last update
         if (!lastUpdate.isValid()) {
-            m_updateStatusIcon->setPixmap(KIcon("security-medium").pixmap(128, 128));
-            m_notifyTitle->setText(i18nc("@info",
+            m_ui->updateStatusIcon->setPixmap(KIcon("security-medium").pixmap(128, 128));
+            m_ui->notifyTitle->setText(i18nc("@info",
                                          "It is unknown when the last check for updates was."));
-            m_notifyDesc->setText(i18nc("@info", "Please click <interface>Check for Updates</interface> "
+            m_ui->notifyDesc->setText(i18nc("@info", "Please click <interface>Check for Updates</interface> "
                                         "to check."));
             return;
         }
@@ -231,21 +222,20 @@ void UpdaterWidget::checkUpToDate()
         qint64 week = 1000 * 60 * 60 * 24 * 7;
 
         if (msecSinceUpdate < day) {
-            m_updateStatusIcon->setPixmap(KIcon("security-high").pixmap(128, 128));
-            m_notifyTitle->setText(i18nc("@info", "The software on this computer is up to date."));
-            m_notifyDesc->setText(i18nc("@info", "Last checked %1 ago.",
+            m_ui->updateStatusIcon->setPixmap(KIcon("security-high").pixmap(128, 128));
+            m_ui->notifyTitle->setText(i18nc("@info", "The software on this computer is up to date."));
+            m_ui->notifyDesc->setText(i18nc("@info", "Last checked %1 ago.",
                                         KGlobal::locale()->prettyFormatDuration(msecSinceUpdate)));
         } else if (msecSinceUpdate < week) {
-            m_updateStatusIcon->setPixmap(KIcon("security-medium").pixmap(128, 128));
-            m_notifyTitle->setText(i18nc("@info", "No updates are available."));
-            m_notifyDesc->setText(i18nc("@info", "Last checked %1 ago.",
+            m_ui->updateStatusIcon->setPixmap(KIcon("security-medium").pixmap(128, 128));
+            m_ui->notifyTitle->setText(i18nc("@info", "No updates are available."));
+            m_ui->notifyDesc->setText(i18nc("@info", "Last checked %1 ago.",
                                         KGlobal::locale()->prettyFormatDuration(msecSinceUpdate)));
         } else {
-            m_updateStatusIcon->setPixmap(KIcon("security-low").pixmap(128, 128));
-            m_notifyTitle->setText("The last check for updates was over a week ago.");
-            m_notifyDesc->setText(i18nc("@info", "Please click <interface>Check for Updates</interface> "
+            m_ui->updateStatusIcon->setPixmap(KIcon("security-low").pixmap(128, 128));
+            m_ui->notifyTitle->setText("The last check for updates was over a week ago.");
+            m_ui->notifyDesc->setText(i18nc("@info", "Please click <interface>Check for Updates</interface> "
                                         "to check."));
         }
     }
 }
-

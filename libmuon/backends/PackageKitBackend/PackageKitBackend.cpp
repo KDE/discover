@@ -20,9 +20,9 @@
 
 #include "PackageKitBackend.h"
 #include "PackageKitResource.h"
-#include "AppPackageKitResource.h"
-#include "AppstreamUtils.h"
-#include "PKTransaction.h"
+//#include "AppPackageKitResource.h"
+//#include "AppstreamUtils.h"
+//#include "PKTransaction.h"
 #include <resources/AbstractResource.h>
 #include <resources/StandardBackendUpdater.h>
 #include <Transaction/TransactionModel.h>
@@ -43,34 +43,45 @@ PackageKitBackend::PackageKitBackend(QObject* parent, const QVariantList&)
     , m_updater(new StandardBackendUpdater(this))
 {
     populateCache();
-    emit backendReady();
 }
 
 void PackageKitBackend::populateCache()
 {
-    emit reloadStarted();
+    //emit reloadStarted();
+    m_packages += new PackageKitResource("foo", PackageKit::Transaction::InfoInstalled, "summ", this);
     PackageKit::Transaction* t = new PackageKit::Transaction(this);
-    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SIGNAL(reloadFinished()));
-    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), t, SLOT(deleteLater()));
-    connect(t, SIGNAL(package(PackageKit::Package)), SLOT(addPackage(PackageKit::Package)));
+    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(finished(PackageKit::Transaction::Exit,uint)));
+    connect(t, SIGNAL(destroy()), t, SLOT(deleteLater()));
+    connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackage(PackageKit::Transaction::Info, QString, QString)));
+    kDebug() << "Get all packages";
     t->getPackages();
 
-    m_appdata = AppstreamUtils::fetchAppData("/tmp/appdata.xml");
+    //m_appdata = AppstreamUtils::fetchAppData("/tmp/appdata.xml");
 }
 
-void PackageKitBackend::addPackage(const PackageKit::Package& p)
+void PackageKitBackend::finished(PackageKit::Transaction::Exit,uint)
+{
+    kDebug() << "FINISHED";
+    //emit reloadFinished();
+    emit backendReady();
+}
+
+void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
     PackageKitResource* newResource = 0;
-    QHash<QString, ApplicationData>::const_iterator it = m_appdata.constFind(p.name());
-    if(it!=m_appdata.constEnd())
-        newResource = new AppPackageKitResource(p, *it, this);
-    else
-        newResource = new PackageKitResource(p, this);
+    kDebug() << "Add new package" << packageId;
+    //QHash<QString, ApplicationData>::const_iterator it = m_appdata.constFind(p.name());
+    //if(it!=m_appdata.constEnd())
+    //    newResource = new AppPackageKitResource(p, *it, this);
+    //else
+        newResource = new PackageKitResource(packageId, info, summary, this);
     m_packages += newResource;
 }
 
 QVector<AbstractResource*> PackageKitBackend::allResources() const
 {
+    kDebug() << "All resources" << m_packages.count();
+    qDebug() << "All resources" << m_packages.count();
     return m_packages;
 }
 
@@ -109,29 +120,29 @@ int PackageKitBackend::updatesCount() const
 
 void PackageKitBackend::removeTransaction(Transaction* t)
 {
-    qDebug() << "done" << t->resource()->packageName() << m_transactions.size();
+    /*qDebug() << "done" << t->resource()->packageName() << m_transactions.size();
     int count = m_transactions.removeAll(t);
     Q_ASSERT(count==1);
-    TransactionModel::global()->removeTransaction(t);
+    TransactionModel::global()->removeTransaction(t);*/
 }
 
 void PackageKitBackend::installApplication(AbstractResource* app, AddonList )
 {
-    installApplication(app);
+    //installApplication(app);
 }
 
 void PackageKitBackend::installApplication(AbstractResource* app)
 {
-    PackageKit::Transaction* installTransaction = new PackageKit::Transaction(this);
+    /*PackageKit::Transaction* installTransaction = new PackageKit::Transaction(this);
     installTransaction->installPackage(qobject_cast<PackageKitResource*>(app)->package());
     PKTransaction* t = new PKTransaction(app, Transaction::InstallRole, installTransaction);
     m_transactions.append(t);
-    TransactionModel::global()->addTransaction(t);
+    TransactionModel::global()->addTransaction(t);*/
 }
 
 void PackageKitBackend::cancelTransaction(AbstractResource* app)
 {
-    foreach(Transaction* t, m_transactions) {
+    /*foreach(Transaction* t, m_transactions) {
         PKTransaction* pkt = qobject_cast<PKTransaction*>(t);
         if(pkt->resource() == app) {
             if(pkt->transaction()->allowCancel()) {
@@ -142,17 +153,17 @@ void PackageKitBackend::cancelTransaction(AbstractResource* app)
                 kWarning() << "trying to cancel a non-cancellable transaction: " << app->name();
             break;
         }
-    }
+    }*/
 }
 
 void PackageKitBackend::removeApplication(AbstractResource* app)
 {
-    PackageKit::Transaction* removeTransaction = new PackageKit::Transaction(this);
+    /*PackageKit::Transaction* removeTransaction = new PackageKit::Transaction(this);
     removeTransaction->removePackage(qobject_cast<PackageKitResource*>(app)->package());
     PKTransaction* t = new PKTransaction(app, Transaction::RemoveRole, removeTransaction);
     m_transactions.append(t);
     TransactionModel::global()->addTransaction(t);
-    qDebug() << "remove" << app->packageName();
+    qDebug() << "remove" << app->packageName();*/
 }
 
 QList<AbstractResource*> PackageKitBackend::upgradeablePackages() const

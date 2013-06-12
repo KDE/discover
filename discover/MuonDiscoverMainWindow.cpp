@@ -20,6 +20,7 @@
 #include "MuonDiscoverMainWindow.h"
 #include "DiscoverAction.h"
 #include "NativeScrollBar.h"
+#include "MuonActionGroup.h"
 
 // Qt includes
 #include <QDebug>
@@ -35,6 +36,7 @@
 #include <QNetworkAccessManager>
 #include <QNetworkDiskCache>
 #include <QDeclarativeNetworkAccessManagerFactory>
+#include <KToolBarSpacerAction>
 
 // #if !defined(QT_NO_OPENGL)
 //     #include <QGLWidget>
@@ -82,10 +84,14 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     
     qmlRegisterType<DiscoverAction>("org.kde.muon.discover", 1, 0, "DiscoverAction");
     qmlRegisterType<NativeScrollBar>("org.kde.muon.discover", 1, 0, "NativeScrollBar");
+    qmlRegisterType<MuonActionGroup>("org.kde.muon.discover", 1, 0, "ActionGroup");
     qmlRegisterType<KXmlGuiWindow>();
+    qmlRegisterType<QActionGroup>();
     
     m_searchText = new KLineEdit;
-    m_searchText->setPlaceholderText(i18n("Search..."));
+    m_searchText->setClickMessage(i18n("Search..."));
+    
+    actionCollection()->addAction("search", KStandardAction::find(m_searchText, SLOT(setFocus()), this));
     
     //Here we set up a cache for the screenshots
     m_view->engine()->rootContext()->setContextProperty("resourcesModel",
@@ -230,10 +236,7 @@ void MuonDiscoverMainWindow::setupActions()
     configureButton->setDelayed(false);
     configureButton->setPriority(QAction::LowPriority);
     
-    QWidget* wideWidget = new QWidget(t);
-    t->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-    
-    t->addWidget(wideWidget);
+    t->addAction(new KToolBarSpacerAction(t));
     t->addWidget(m_searchText);
     t->addAction(configureButton);
 }

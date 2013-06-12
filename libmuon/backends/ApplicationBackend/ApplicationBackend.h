@@ -72,7 +72,7 @@ public:
     void addTransaction(Transaction *transaction);
     
     QVector< AbstractResource* > allResources() const;
-    QStringList searchPackageName(const QString& searchText);
+    QList<AbstractResource*> searchPackageName(const QString& searchText);
     
     void installApplication(AbstractResource *app, AddonList addons);
     void installApplication(AbstractResource *app);

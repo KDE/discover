@@ -23,13 +23,23 @@
 #include "DummyResource.h"
 #include <Transaction/TransactionModel.h>
 #include <QTimer>
+#include <QDebug>
 #include <KRandom>
 
 DummyTransaction::DummyTransaction(DummyResource* app, Role action)
     : Transaction(app->backend(), app, action)
     , m_app(app)
 {
-    QTimer::singleShot(KRandom::random()%2000, this, SLOT(finishTransaction()));
+    iterateTransaction();
+}
+
+void DummyTransaction::iterateTransaction()
+{
+    if(progress()<100) {
+        setProgress(progress()+10);
+        QTimer::singleShot(/*KRandom::random()%*/200, this, SLOT(iterateTransaction()));
+    } else
+        finishTransaction();
 }
 
 void DummyTransaction::finishTransaction()

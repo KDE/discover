@@ -39,6 +39,7 @@ ReviewsModel::ReviewsModel(QObject* parent)
     roles.insert(CreationDate, "date");
     roles.insert(UsefulnessTotal, "usefulnessTotal");
     roles.insert(UsefulnessFavorable, "usefulnessFavorable");
+    roles.insert(UsefulChoice, "usefulChoice");
     roles.insert(Rating, "rating");
     roles.insert(Summary, "summary");
     setRoleNames(roles);
@@ -61,6 +62,8 @@ QVariant ReviewsModel::data(const QModelIndex& index, int role) const
             return m_reviews.at(index.row())->usefulnessTotal();
         case UsefulnessFavorable:
             return m_reviews.at(index.row())->usefulnessFavorable();
+        case UsefulChoice:
+            return m_reviews.at(index.row())->usefulChoice();
         case Rating:
             return m_reviews.at(index.row())->rating();
         case Summary:
@@ -89,14 +92,15 @@ AbstractReviewsBackend* ReviewsModel::backend() const
 void ReviewsModel::setResource(AbstractResource* app)
 {
     if(m_app!=app) {
-        reset();
+        beginResetModel();
         m_reviews.clear();
+        endResetModel();
 
-        m_app = app;
         if(m_backend) {
             disconnect(m_backend, SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
                 this, SLOT(addReviews(AbstractResource*,QList<Review*>)));
         }
+        m_app = app;
         m_backend = app->backend()->reviewsBackend();
         if(m_backend) {
             connect(m_backend, SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
@@ -104,6 +108,7 @@ void ReviewsModel::setResource(AbstractResource* app)
 
             QMetaObject::invokeMethod(this, "restartFetching", Qt::QueuedConnection);
         }
+        emit rowsChanged();
     }
 }
 
@@ -115,6 +120,7 @@ void ReviewsModel::restartFetching()
     m_canFetchMore=true;
     m_lastPage = 0;
     fetchMore();
+    emit rowsChanged();
 }
 
 void ReviewsModel::fetchMore(const QModelIndex& parent)
@@ -139,6 +145,7 @@ void ReviewsModel::addReviews(AbstractResource* app, const QList<Review*>& revie
         beginInsertRows(QModelIndex(), rowCount(), rowCount()+reviews.size()-1);
         m_reviews += reviews;
         endInsertRows();
+        emit rowsChanged();
     }
 }
 
@@ -150,8 +157,11 @@ bool ReviewsModel::canFetchMore(const QModelIndex&) const
 void ReviewsModel::markUseful(int row, bool useful)
 {
     Review* r = m_reviews[row];
+    r->setUsefulChoice(useful ? Yes : No);
     qDebug() << "submitting usefulness" << r->applicationName() << r->id() << useful;
     m_backend->submitUsefulness(r, useful);
+    const QModelIndex ind = index(row, 0, QModelIndex());
+    emit dataChanged(ind, ind);
 }
 
 void ReviewsModel::deleteReview(int row)

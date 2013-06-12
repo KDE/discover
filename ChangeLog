@@ -1,4 +1,4 @@
-2.0 (as of alpha 1)
+2.0
 ======
 - Features:
   * Added a KNewStuff backend, adding categories for Plasma Widgets and Plasma Comics.
@@ -6,7 +6,7 @@
   * The QApt backend is now optional for Muon Discover, and other backends can be used
     on platforms other than Debian-based linux distributions.
   * Miscellaenous improvements/polish for Muon Discover
-  * Port to LibQApt2.
+  * Port QApt backend plugin to LibQApt2.
   * User interface consistency improvements for Muon Discover, integrating better with KDE.
 - Bugfixes:
   * Prevent changelog fetch jobs from being processed during a cache reload, by manually
@@ -14,14 +14,16 @@
     (BKO: #301161)
   * Fix a bug in the transaction advancement system. (Fixed by switching to QApt2)
     (BKO: #299131)
-  * Reparent Application objects created in a separate thread by QConcurrent, fixing
+  * Reparent Application objects created in a separate thread by QtConcurrent, fixing
     a crash when reloading the ApplicationBackend. (BKO: #306536)
   * Fixed a bug where applications that had been removed from the archive, but could
     still be referenced locally by APT despite not being installed would show up as
     Applications if their data had not been removed from app-install-data. (BKO: #309283)
+  * Fix the display of KNS services' description. Remove \r characters that would break
+    the layout.
 - Optimizations:
   * Improve startup time by 2% by using a fast integer-to-power approximation when
-    calculating the normal distribution for an application rating.
+    calculating the normal distribution for an application rating. [MSC]
 
 1.4.0
 ======

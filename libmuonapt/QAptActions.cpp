@@ -35,6 +35,7 @@
 #include <KMessageBox>
 #include <KProcess>
 #include <KStandardAction>
+#include <KStandardDirs>
 #include <KXmlGuiWindow>
 #include <Solid/Networking>
 #include <KStandardDirs>
@@ -84,7 +85,11 @@ MuonMainWindow* QAptActions::mainWindow() const
 void QAptActions::setBackend(QApt::Backend* backend)
 {
     m_backend = backend;
-    connect(m_backend, SIGNAL(packageChanged()), SLOT(setActionsEnabled()));
+    if (!m_backend->init())
+        initError();
+
+    connect(m_backend, SIGNAL(packageChanged()), this, SLOT(setActionsEnabled()));
+
     setOriginalState(m_backend->currentCacheState());
 
     setReloadWhenEditorFinished(true);
@@ -109,6 +114,7 @@ void QAptActions::setupActions()
     m_actions.append(revertAction);
 
     KAction* softwarePropertiesAction = actionCollection()->addAction("software_properties");
+    softwarePropertiesAction->setPriority(QAction::LowPriority);
     softwarePropertiesAction->setIcon(KIcon("configure"));
     softwarePropertiesAction->setText(i18nc("@action Opens the software sources configuration dialog", "Configure Software Sources"));
     connect(softwarePropertiesAction, SIGNAL(triggered()), this, SLOT(runSourcesEditor()));
@@ -127,12 +133,14 @@ void QAptActions::setupActions()
     m_actions.append(saveSelectionsAction);
 
     KAction* createDownloadListAction = actionCollection()->addAction("save_download_list");
+    createDownloadListAction->setPriority(QAction::LowPriority);
     createDownloadListAction->setIcon(KIcon("document-save-as"));
     createDownloadListAction->setText(i18nc("@action", "Save Package Download List..."));
     connect(createDownloadListAction, SIGNAL(triggered()), this, SLOT(createDownloadList()));
     m_actions.append(createDownloadListAction);
 
     KAction* downloadListAction = actionCollection()->addAction("download_from_list");
+    downloadListAction->setPriority(QAction::LowPriority);
     downloadListAction->setIcon(KIcon("download"));
     downloadListAction->setText(i18nc("@action", "Download Packages From List..."));
     connect(downloadListAction, SIGNAL(triggered()), this, SLOT(downloadPackagesFromList()));
@@ -143,17 +151,20 @@ void QAptActions::setupActions()
     m_actions.append(downloadListAction);
 
     KAction* loadArchivesAction = actionCollection()->addAction("load_archives");
+    loadArchivesAction->setPriority(QAction::LowPriority);
     loadArchivesAction->setIcon(KIcon("document-open"));
     loadArchivesAction->setText(i18nc("@action", "Add Downloaded Packages"));
     connect(loadArchivesAction, SIGNAL(triggered()), this, SLOT(loadArchives()));
     m_actions.append(loadArchivesAction);
     
     KAction* saveInstalledAction = actionCollection()->addAction("save_package_list");
+    saveInstalledAction->setPriority(QAction::LowPriority);
     saveInstalledAction->setIcon(KIcon("document-save-as"));
     saveInstalledAction->setText(i18nc("@action", "Save Installed Packages List..."));
     connect(saveInstalledAction, SIGNAL(triggered()), this, SLOT(saveInstalledPackagesList()));
     
     KAction* historyAction = actionCollection()->addAction("history");
+    historyAction->setPriority(QAction::LowPriority);
     historyAction->setIcon(KIcon("view-history"));
     historyAction->setText(i18nc("@action::inmenu", "History..."));
     historyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_H));
@@ -196,6 +207,11 @@ void QAptActions::setActionsEnabledInternal(bool enabled)
     actionCollection()->action("save_download_list")->setEnabled(changesPending);
     actionCollection()->action("dist-upgrade")->setEnabled(false);
     checkDistUpgrade();
+}
+
+bool QAptActions::reloadWhenSourcesEditorFinished() const
+{
+    return m_reloadWhenEditorFinished;
 }
 
 bool QAptActions::isConnected() const {
@@ -389,7 +405,8 @@ void QAptActions::runSourcesEditor()
     QStringList arguments;
     int winID = m_mainWindow->effectiveWinId();
 
-    QString editor = "software-properties-kde";
+    QString kdesudo = KStandardDirs::findExe("kdesudo");
+    QString editor = KStandardDirs::findExe("software-properties-kde");
 
     if (m_reloadWhenEditorFinished) {
         editor.append(QLatin1String(" --dont-update --attach ") % QString::number(winID)); //krazy:exclude=spelling;
@@ -397,7 +414,7 @@ void QAptActions::runSourcesEditor()
         editor.append(QLatin1String(" --attach ") % QString::number(winID));
     }
 
-    arguments << "/usr/bin/kdesudo" << editor;
+    arguments << kdesudo << editor;
 
     proc->setProgram(arguments);
     m_mainWindow->find(winID)->setEnabled(false);
@@ -408,7 +425,7 @@ void QAptActions::runSourcesEditor()
 
 void QAptActions::sourcesEditorFinished(int exitStatus)
 {
-    bool reload = (exitStatus == 0);
+    bool reload = (exitStatus != 0);
     m_mainWindow->find(m_mainWindow->effectiveWinId())->setEnabled(true);
     if (m_reloadWhenEditorFinished && reload) {
         actionCollection()->action("update")->trigger();
@@ -506,8 +523,16 @@ void QAptActions::setActionsEnabled(bool enabled)
 
 void QAptActions::launchDistUpgrade()
 {
-    KProcess::startDetached(QStringList() << "python"
-                            << "/usr/lib/python3/dist-packages/DistUpgrade/DistUpgradeFetcherKDE.py");
+    KProcess *proc = new KProcess(this);
+    QStringList arguments;
+    QString kdesudo = KStandardDirs::findExe("kdesudo");
+    QString upgrader = QString("do-release-upgrade -m desktop -f DistUpgradeViewKDE");
+
+    arguments << kdesudo << upgrader;
+    proc->setProgram(arguments);
+    proc->start();
+
+    connect(proc, SIGNAL(finished(int)), proc, SLOT(deleteLater()));
 }
 
 void QAptActions::checkDistUpgrade()
@@ -521,7 +546,7 @@ void QAptActions::checkDistUpgrade()
     }
 
     KProcess* checkerProcess = new KProcess(this);
-    checkerProcess->setProgram(QStringList() << "/usr/bin/python" << checkerFile);
+    checkerProcess->setProgram(QStringList() << "/usr/bin/python3" << checkerFile);
     connect(checkerProcess, SIGNAL(finished(int)), this, SLOT(checkerFinished(int)));
     connect(checkerProcess, SIGNAL(finished(int)), checkerProcess, SLOT(deleteLater()));
     checkerProcess->start();

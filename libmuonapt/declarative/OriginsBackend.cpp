@@ -60,83 +60,17 @@ void OriginsBackend::load()
         return;
     }
     
-    qDeleteAll(m_sources);
-    m_sources.clear();
-    //load /etc/apt/sources.list
-    load(backend->config()->findFile("Dir::Etc::sourcelist"));
-    
-    //load /etc/apt/sources.list.d/*.list
-    QDir d(backend->config()->findDirectory("Dir::Etc::sourceparts"));
-    foreach(const QString& file, d.entryList(QStringList() << "*.list")) {
-        load(d.filePath(file));
-    }
-}
+    m_sourcesList.reload();
 
-void OriginsBackend::load(const QString& file)
-{
-    Q_ASSERT(QFile::exists(file));
-    QFile f(file);
-    
-    if(!f.open(QFile::Text|QFile::ReadOnly))
-        return;
-    //skip comments and empty lines
-    QRegExp rxComment("(\\s*#\\s*)|(^\\s+$)");
-    QRegExp rxArchitecture("\\[(.+)\\] ");
-    while(!f.atEnd()) {
-        QByteArray line = f.readLine();
-        int comment = rxComment.indexIn(line);
-        bool enabled = true;
-        if(comment==0) {
-            line = line.mid(rxComment.matchedLength());
-            if(!line.startsWith(QByteArray("deb"))) {
-                continue;
-            }
-            enabled = false;
-        } else if(comment>0)
-            line = line.left(comment);
-        
-        if(!line.isEmpty()) {
-            QString architecture;
-            int arch = rxArchitecture.indexIn(line);
-            if(arch>=0) {
-                architecture = rxArchitecture.cap(1);
-                line.remove(arch, rxArchitecture.matchedLength());
-            }
-            
-            QList<QByteArray> source = line.split(' ');
-            if(source.count() < 3) {
-                return;
-            }
-            QByteArray uri;
-            int opened = 0;
-            for(int i=1; i<source.count(); i++) {
-                if(source[i].contains('['))
-                    ++opened;
-                else if(source[i].contains(']'))
-                    --opened;
-                if(!uri.isEmpty())
-                    uri += ' ';
-                uri += source[i];
-                if(opened==0)
-                    break;
-            }
-            
-            Source* newSource = sourceForUri(uri);
-            Entry* entry = new Entry(newSource);
-            
-            entry->setArch(architecture);
-            entry->setSource(source.first().endsWith(QByteArray("deb-src")));
-            entry->setSuite(source[2]);
-            entry->setEnabled(enabled);
-            
-            QStringList args;
-            foreach(const QByteArray& arg, source.mid(3)) {
-                args += arg;
-            }
-            newSource->addEntry(entry);
-        }
+    for (const QApt::SourceEntry &sEntry : m_sourcesList.entries()) {
+        if (!sEntry.isValid())
+            continue;
+
+        Source* newSource = sourceForUri(sEntry.uri());
+        Entry* entry = new Entry(this, sEntry);
+        newSource->addEntry(entry);
     }
-    
+
     emit originsChanged();
 }
 

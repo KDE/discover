@@ -22,49 +22,59 @@
 #include <MuonDataSources.h>
 #include <KGlobal>
 #include <KLocale>
-#include <PackageKit/packagekit-qt2/Transaction>
+#include <PackageKit/packagekit-qt2/Daemon>
 
-PackageKitResource::PackageKitResource(const PackageKit::Package& p, AbstractResourcesBackend* parent)
+PackageKitResource::PackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
-    , m_package(p)
+    , m_packageId(packageId)
+    , m_info(info)
+    , m_summary(summary)
 {
-    setObjectName(p.id());
+    setObjectName(m_packageId);
 }
 
 QString PackageKitResource::name()
 {
-    return m_package.name();
+    //return PackageKit::Daemon::global()->packageName(m_packageId);
+    return m_packageId;
 }
 
 QString PackageKitResource::packageName() const
 {
-    return m_package.name();
+    return m_packageId;
+    //return PackageKit::Daemon::global()->packageName(m_packageId);
 }
 
 QString PackageKitResource::comment()
 {
-    return m_package.description();
+    return QString();
+    //return m_package.description();
 }
 
 QString PackageKitResource::longDescription() const
 {
-    return m_package.changelog();
+    return QString();
+    //return m_package.changelog();
 }
 
 QUrl PackageKitResource::homepage() const
 {
-    return QUrl(m_package.url());
+    return QString();
+    //return QUrl(m_package.url());
 }
 
 QString PackageKitResource::icon() const
 {
-    return m_package.iconPath();
+    return "muon-discover";
+    //return PackageKit::Daemon::global()->packageIcon(m_packageId);
+    //return m_package.iconPath();
 }
 
 QString PackageKitResource::license()
 {
-    fetchDetails();
-    return m_package.license();
+    return QString();
+    //fetchDetails();
+    //return m_package.license();
 }
 
 QList<PackageState> PackageKitResource::addonsInformation()
@@ -74,17 +84,20 @@ QList<PackageState> PackageKitResource::addonsInformation()
 
 QString PackageKitResource::availableVersion() const
 {
-    return m_package.version();
+    return "0.1";
+    //return PackageKit::Daemon::global()->packageVersion(m_packageId);
 }
 
 QString PackageKitResource::installedVersion() const
 {
-    return m_package.version();
+    return "0.1";
+    //return PackageKit::Daemon::global()->packageVersion(m_packageId);
 }
 
 int PackageKitResource::downloadSize()
 {
-    return m_package.size();
+    return 0;
+    //return m_package.size();
 }
 
 QString PackageKitResource::origin() const
@@ -95,8 +108,9 @@ QString PackageKitResource::origin() const
 
 QString PackageKitResource::section()
 {
+    return "PK";
     //FIXME
-    return QString::number(m_package.group());
+    //return QString::number(m_package.group());
 }
 
 QUrl PackageKitResource::screenshotUrl()
@@ -111,7 +125,7 @@ QUrl PackageKitResource::thumbnailUrl()
 
 AbstractResource::State PackageKitResource::state()
 {
-    if(m_package.hasUpdateDetails())
+    /*if(m_package.hasUpdateDetails())
         return Upgradeable;
     else {
         PackageKit::Package::Info info = m_package.info();
@@ -120,11 +134,11 @@ AbstractResource::State PackageKitResource::state()
         } else if(info & PackageKit::Package::InfoAvailable) {
             return None;
         }
-    }
-    return Broken;
+    }*/
+    return Installed;//Broken;
 }
 
-void PackageKitResource::updatePackage(const PackageKit::Package& p)
+/*void PackageKitResource::updatePackage(const PackageKit::Package& p)
 {
     if(p.info()==PackageKit::Package::UnknownInfo)
         kWarning() << "Received unknown Package::info() for " << p.name();
@@ -133,34 +147,34 @@ void PackageKitResource::updatePackage(const PackageKit::Package& p)
     if(changeState) {
         emit stateChanged();
     }
-}
+}*/
 
 QStringList PackageKitResource::categories()
 {
-    return QStringList();
+    return QStringList() << "System";
 }
 
 bool PackageKitResource::isTechnical() const
 {
-    return true;
+    return false;
 }
 
 void PackageKitResource::fetchDetails()
 {
-    if(m_package.hasDetails())
+    /*if(m_package.hasDetails())
         return;
 
     PackageKit::Transaction* transaction = new PackageKit::Transaction(this);
     transaction->getDetails(m_package);
     connect(transaction, SIGNAL(package(PackageKit::Package)), SLOT(updatePackage(PackageKit::Package)));
     connect(transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SIGNAL(licenseChanged()));
-    connect(transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), transaction, SLOT(deleteLater()));
+    connect(transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), transaction, SLOT(deleteLater()));*/
 }
 
-PackageKit::Package PackageKitResource::package() const
+/*PackageKit::Package PackageKitResource::package() const
 {
     return m_package;
-}
+}*/
 
 void PackageKitResource::fetchChangelog()
 {

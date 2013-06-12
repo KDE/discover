@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010-2013 Jonathan Thomas <echidnaman@kubuntu.org>        *
+ *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,40 +18,18 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "MainWindow.h"
+#ifndef CATEGORIESREADER_H
+#define CATEGORIESREADER_H
+#include <QList>
 
-#include <KUniqueApplication>
-#include <KAboutData>
-#include <KCmdLineArgs>
-
-#include <stdio.h>
-
-static const char description[] =
-    I18N_NOOP("A package manager");
-
-static const char version[] = "2.0.0";
-
-int main(int argc, char **argv)
+class Category;
+class CategoriesReader
 {
-    KAboutData about("muon", 0, ki18n("Muon Package Manager"), version, ki18n(description),
-                     KAboutData::License_GPL, ki18n("© 2009-2013 Jonathan Thomas"), KLocalizedString(), 0);
-    about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
-    about.setProductName("muon/muon");
+    public:
+        QList<Category*> populateCategories();
 
-    KCmdLineArgs::init(argc, argv, &about);
+    private:
+        QList<Category*> loadCategoriesFile(const QString& path);
+};
 
-    if (!KUniqueApplication::start()) {
-        fprintf(stderr, "Muon is already running!\n");
-        return 0;
-    }
-
-    KUniqueApplication app;
-    app.disableSessionManagement();
-    // Libmuon translations
-    KGlobal::locale()->insertCatalog("libmuon");
-
-    MainWindow *mainWindow = new MainWindow;
-    mainWindow->show();
-
-    return app.exec();
-}
+#endif // CATEGORIESREADER_H

@@ -76,6 +76,7 @@ private:
     bool m_progressing;
     QString m_statusMessage;
     QString m_statusDetail;
+    QList<AbstractResource*> m_toUpdate;
 
 private slots:
     void errorOccurred(QApt::ErrorCode error);
@@ -88,7 +89,8 @@ private slots:
     void statusChanged(QApt::TransactionStatus status);
     void setStatusMessage(const QString& msg);
     void setStatusDetail(const QString& msg);
-    void transactionFinished(QApt::ExitStatus status);
+    void reloadFinished();
+    void calculateUpdates();
 };
 
 #endif // APPLICATIONUPDATES_H

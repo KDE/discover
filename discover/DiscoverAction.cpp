@@ -76,3 +76,13 @@ void DiscoverAction::setActionsGroup(const QString& name)
         m_actionsGroup->addAction(this);
     }
 }
+
+void DiscoverAction::setShortcutString(const QString& str)
+{
+    setShortcut(str);
+}
+
+QString DiscoverAction::stringShortcut() const
+{
+    return KAction::shortcut().toString();
+}

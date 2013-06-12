@@ -1,3 +1,23 @@
+/***************************************************************************
+ *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or         *
+ *   modify it under the terms of the GNU General Public License as        *
+ *   published by the Free Software Foundation; either version 2 of        *
+ *   the License or (at your option) version 3 or any later version        *
+ *   accepted by the membership of KDE e.V. (or its successor approved     *
+ *   by the membership of KDE e.V.), which shall act as a proxy            *
+ *   defined in Section 14 of version 3 of the license.                    *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
+ ***************************************************************************/
+
 import QtQuick 1.1
 import org.kde.plasma.components 0.1
 import org.kde.muon.discover 1.0
@@ -17,21 +37,25 @@ Item {
     property bool defaultStartup: true
     property bool navigationEnabled: true
     
-    //text search
-    property bool searchVisible: pageStack.currentPage!=null && pageStack.currentPage.searchFor!=null
-    
     Binding {
         target: app.searchWidget
-        property: "visible"
-        value: window.searchVisible
+        property: "enabled"
+        value: pageStack.currentPage!=null && pageStack.currentPage.searchFor!=null
     }
     function clearSearch() { app.searchWidget.text="" }
     Connections {
         target: app.searchWidget
-        onTextChanged: {
-            if(app.searchWidget.text.length>3)
-                pageStack.currentPage.searchFor(app.searchWidget.text)
+        onTextChanged: searchTimer.running = true
+        onEditingFinished: if(app.searchWidget.text == "" && backAction.enabled) {
+            backAction.trigger()
         }
+    }
+    Timer {
+        id: searchTimer
+        running: false
+        repeat: false
+        interval: 200
+        onTriggered: { pageStack.currentPage.searchFor(app.searchWidget.text) }
     }
     
     Component {
@@ -72,34 +96,39 @@ Item {
     }
     
     DiscoverAction {
+        id: backAction
         objectName: "back"
         iconName: "go-previous"
         enabled: window.navigationEnabled && breadcrumbsItem.count>1
         mainWindow: app
         text: i18n("Back")
+        priority: "LowPriority"
+        shortcut: "Alt+Up"
         onTriggered: {
             breadcrumbsItem.popItem(false)
             window.clearSearch()
         }
-        priority: "LowPriority"
     }
     TopLevelPageData {
         iconName: "tools-wizard"
         text: i18n("Discover")
         component: topBrowsingComp
         objectName: "discover"
+        shortcut: "Alt+D"
     }
     TopLevelPageData {
         iconName: "applications-other"
         text: resourcesModel.updatesCount==0 ? i18n("Installed") : i18np("Installed (%1 update)", "Installed (%1 updates)", resourcesModel.updatesCount)
         component: topInstalledComp
         objectName: "installed"
+        shortcut: "Alt+I"
     }
     TopLevelPageData {
-        iconName: "document-import"
+        iconName: "repository"
         text: i18n("Sources")
         component: topSourcesComp
         objectName: "sources"
+        shortcut: "Alt+S"
     }
     
     Connections {

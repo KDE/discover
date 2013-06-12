@@ -36,6 +36,7 @@ class MUONPRIVATE_EXPORT TransactionListener : public QObject
     Q_PROPERTY(bool isCancellable READ isCancellable NOTIFY cancellableChanged)
     Q_PROPERTY(bool isActive READ isActive NOTIFY runningChanged)
     Q_PROPERTY(QString statusText READ statusText NOTIFY statusTextChanged)
+    Q_PROPERTY(int progress READ progress NOTIFY progressChanged)
 public:
     explicit TransactionListener(QObject *parent = nullptr);
     
@@ -43,6 +44,7 @@ public:
     bool isCancellable() const;
     bool isActive() const;
     QString statusText() const;
+    int progress() const;
 
     void setResource(AbstractResource* resource);
 
@@ -64,6 +66,7 @@ signals:
     void runningChanged();
     void statusTextChanged();
     void cancelled();
+    void progressChanged();
 };
 
 #endif // TRANSACTIONLISTENER_H

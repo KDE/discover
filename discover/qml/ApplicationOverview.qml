@@ -19,7 +19,6 @@
 
 import QtQuick 1.1
 import org.kde.plasma.components 0.1
-import org.kde.qtextracomponents 0.1
 import org.kde.muon 1.0
 
 Item {
@@ -43,9 +42,8 @@ Item {
         width: 2*parent.width/3
         anchors {
             top: parent.top
-            right: parent.right
+            right: scroll.left
             bottom: parent.bottom
-            margins: 10
         }
         contentHeight: overviewContents.childrenRect.height
         Column {
@@ -58,6 +56,7 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 visible: overviewContents.ratingInstance!=null
                 rating: overviewContents.ratingInstance == null ? 0 : overviewContents.ratingInstance.rating
+                width: 150
             }
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -143,6 +142,14 @@ Item {
                 sourceSize.width = sourceSize.height = 200
                 source="image://icon/image-missing"
             }
+        }
+        BusyIndicator {
+            id: busy
+            width: 128
+            height: 128
+            anchors.centerIn: parent
+            running: visible
+            visible: screenshot.status == Image.Loading
         }
         
         states: [

@@ -18,8 +18,8 @@
  */
 
 import QtQuick 1.1
+import org.kde.plasma.core 0.1
 import org.kde.plasma.components 0.1
-import org.kde.qtextracomponents 0.1
 import "navigation.js" as Navigation
 
 Item {
@@ -27,7 +27,6 @@ Item {
     property alias count: view.count
     property alias header: view.header
     property alias section: view.section
-    property bool preferUpgrade: false
     property alias model: view.model
     property real actualWidth: width
     property real proposedMargin: (view.width-actualWidth)/2
@@ -59,18 +58,20 @@ Item {
                         Navigation.openApplication(application)
                     }
                     hoverEnabled: true
-                    QIconItem {
+                    IconItem {
                         id: icon
-                        icon: model.icon; width: contHeight; height: contHeight
+                        source: model.icon
+                        width: contHeight
+                        height: contHeight
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.left: parent.left
                     }
                     
-                    QIconItem {
+                    IconItem {
                         anchors.right: icon.right
                         anchors.bottom: icon.bottom
                         visible: isInstalled && view.model.stateFilter!=2
-                        icon: "dialog-ok"
+                        source: "dialog-ok"
                         height: 16
                         width: 16
                     }
@@ -90,7 +91,7 @@ Item {
                             bottom: icon.bottom
                             left: icon.right
                             leftMargin: 5
-                            right: actionsRow.left
+                            right: installButton.left
                         }
                         elide: Text.ElideRight
                         text: comment
@@ -107,32 +108,16 @@ Item {
                         rating: model.rating
                     }
                     
-                    Row {
-                        id: actionsRow
-                        height: contHeight*0.5
-                        spacing: 5
+                    InstallApplicationButton {
+                        id: installButton
                         anchors {
                             bottom: parent.bottom
                             right: parent.right
                         }
-                            
-                        Button {
-                            text: i18n("Update")
-                            id: upgradeButton
-                            width: ratingsItem.width
-                            visible: model.application.canUpgrade
-                            onClicked: resourcesModel.installApplication(model.application)
-                            enabled: !installButton.isActive
-                        }
-                        
-                        InstallApplicationButton {
-                            id: installButton
-                            width: ratingsItem.width
-                            height: upgradeButton.height
-    //                         property bool isVisible: delegateArea.containsMouse && !installButton.canHide
-    //                         opacity: isVisible ? 1 : 0
-                            application: model.application
-                        }
+                        width: ratingsItem.width*2
+//                         property bool isVisible: delegateArea.containsMouse && !installButton.canHide
+//                         opacity: isVisible ? 1 : 0
+                        application: model.application
                     }
                 }
             }

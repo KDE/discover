@@ -46,6 +46,7 @@ public:
     void setMainWindow(MuonMainWindow* w);
     MuonMainWindow* mainWindow() const;
 
+    bool reloadWhenSourcesEditorFinished() const;
     bool isConnected() const;
     void setOriginalState(QApt::CacheState state);
     void setReloadWhenEditorFinished(bool reload);

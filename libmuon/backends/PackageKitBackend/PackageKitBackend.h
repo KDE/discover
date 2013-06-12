@@ -22,9 +22,9 @@
 #define PACKAGEKITBACKEND_H
 
 #include <resources/AbstractResourcesBackend.h>
-#include <PackageKit/packagekit-qt2/package.h>
 #include <QVariantList>
 #include <QStringList>
+#include <PackageKit/packagekit-qt2/Transaction>
 
 class StandardBackendUpdater;
 struct ApplicationData
@@ -63,8 +63,9 @@ class PackageKitBackend : public AbstractResourcesBackend
         virtual QList<AbstractResource*> upgradeablePackages() const;
         
     public slots:
-        void addPackage(const PackageKit::Package& p);
+        void addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
         void removeTransaction(Transaction* t);
+        void finished(PackageKit::Transaction::Exit,uint);
 
     private:
         void populateCache();

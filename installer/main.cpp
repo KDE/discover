@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010-2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
+ *   Copyright © 2010-2013 Jonathan Thomas <echidnaman@kubuntu.org>        *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -30,7 +30,7 @@
 static const char description[] =
     I18N_NOOP("An application manager");
 
-static const char version[] = "1.9.80";
+static const char version[] = "2.0.0";
 
 int main(int argc, char **argv)
 {
@@ -41,6 +41,10 @@ int main(int argc, char **argv)
     about.setProductName("muon/installer");
 
     KCmdLineArgs::init(argc, argv, &about);
+    KCmdLineOptions options;
+    options.add("application <name>", KLocalizedString()); // FIXME Undocumented due to string freeze, fix for 2.1.
+    options.add("backends <names>", KLocalizedString());
+    KCmdLineArgs::addCmdLineOptions(options);
 
     if (!KUniqueApplication::start()) {
         fprintf(stderr, "Software Center is already running!\n");
@@ -55,7 +59,13 @@ int main(int argc, char **argv)
     KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
     app.disableSessionManagement();
 
+    KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
+
     MainWindow *mainWindow = new MainWindow;
+
+    if(args->isSet("application"))
+        mainWindow->openApplication(args->getOption("application"));
+
     mainWindow->show();
 
     return app.exec();

@@ -18,8 +18,8 @@
  */
 
 import QtQuick 1.1
+import org.kde.plasma.core 0.1
 import org.kde.plasma.components 0.1
-import org.kde.qtextracomponents 0.1
 import org.kde.muon 1.0
 
 Page
@@ -35,15 +35,16 @@ Page
             right: parent.right
             margins: 10
         }
+        clip: true
         height: icon.height
-        QIconItem {
+        IconItem {
             id: icon
             anchors.top: parent.top
             anchors.left: parent.left
             width: 40
             height: 40
             
-            icon: application.icon
+            source: application.icon
         }
         
         Column {
@@ -68,8 +69,11 @@ Page
         
         InstallApplicationButton {
             id: installButton
-            anchors.right: parent.right
-            anchors.verticalCenter: parent.verticalCenter
+            anchors {
+                right: parent.right
+                verticalCenter: parent.verticalCenter
+            }
+            width: maximumWidth
             application: page.application
         }
     }
@@ -105,7 +109,8 @@ Page
             left: parent.left
             right: parent.right
             bottom: parent.bottom
-            margins: 10
+            topMargin: 10
+            leftMargin: 10
         }
         
         ApplicationOverview {

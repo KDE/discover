@@ -23,8 +23,10 @@
 
 #include "AbstractViewContainer.h"
 
+class AbstractResource;
 class AbstractResourcesBackend;
 class CategoryViewWidget;
+class ResourceDetailsView;
 
 class AvailableView : public AbstractViewContainer
 {
@@ -32,8 +34,13 @@ class AvailableView : public AbstractViewContainer
 public:
     AvailableView(QWidget *parent);
 
+    void setResource(AbstractResource *res);
+
 private:
     CategoryViewWidget *m_categoryViewWidget;
+    QPair<AbstractViewBase *, AbstractResource *> m_currentPair;
+
+    ResourceDetailsView *m_detailsView;
 };
 
 #endif

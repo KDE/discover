@@ -89,10 +89,13 @@ void TransactionListener::setTransaction(Transaction* trans)
                 this, SIGNAL(cancellableChanged()));
         connect(m_transaction, SIGNAL(statusChanged(Transaction::Status)),
                 this, SLOT(transactionStatusChanged(Transaction::Status)));
+        connect(m_transaction, SIGNAL(progressChanged(int)),
+                this, SIGNAL(progressChanged()));
     }
     emit cancellableChanged();
     emit runningChanged();
     emit statusTextChanged();
+    emit progressChanged();
 }
 
 void TransactionListener::transactionStatusChanged(Transaction::Status status)
@@ -113,11 +116,20 @@ void TransactionListener::transactionStatusChanged(Transaction::Status status)
 
 void TransactionListener::transactionRemoved(Transaction* trans)
 {
-    setTransaction(nullptr);
+    if(m_transaction == trans) {
+        setTransaction(nullptr);
+    }
 }
 
 void TransactionListener::transactionCancelled(Transaction* trans)
 {
-    setTransaction(nullptr);
+    if(m_transaction == trans) {
+        setTransaction(nullptr);
+    }
     emit cancelled();
+}
+
+int TransactionListener::progress() const
+{
+    return m_transaction ? m_transaction->progress() : 0;
 }

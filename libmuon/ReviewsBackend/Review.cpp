@@ -21,34 +21,6 @@
 #include "Review.h"
 #include <resources/ResourcesModel.h>
 
-Review::Review(const QVariantMap &data)
-    : m_package(nullptr)
-{
-    m_appName = data.value("app_name").toString();
-    m_packageName = data.value("package_name").toString();
-    m_packageVersion = data.value("version").toString();
-    m_language = data.value("language").toString();
-    m_summary = data.value("summary").toString();
-    m_reviewText = data.value("review_text").toString();
-
-    QString reviewUsername = data.value("reviewer_username").toString();
-    QString reviewDisplayName = data.value("reviewer_displayname").toString();
-    if (!reviewDisplayName.isEmpty()) {
-        m_reviewer = reviewDisplayName;
-    } else {
-        m_reviewer = reviewUsername;
-    }
-
-    QString creationDate = data.value("date_created").toString();
-    m_creationDate = QDateTime::fromString(creationDate, "yyyy-MM-dd HH:mm:ss");
-
-    m_shouldShow = !data.value("hide").toBool();
-    m_id = data.value("id").toULongLong();
-    m_rating = data.value("rating").toInt() * 2;
-    m_usefulnessTotal = data.value("usefulness_total").toInt();
-    m_usefulnessFavorable = data.value("usefulness_favorable").toInt();
-}
-
 Review::Review(const QString& name, const QString& pkgName, const QString& language, const QString& summary,
                const QString& reviewText, const QString& userName, const QDateTime& date, bool show, quint64 id,
                int rating, int usefulTotal, int usefulFavorable, const QString& packageVersion)
@@ -63,8 +35,10 @@ Review::Review(const QString& name, const QString& pkgName, const QString& langu
     , m_reviewer(userName)
     , m_usefulnessTotal(usefulTotal)
     , m_usefulnessFavorable(usefulFavorable)
+    , m_usefulChoice(ReviewsModel::None)
     , m_summary(summary)
     , m_packageVersion(packageVersion)
+    , m_package(nullptr)
 {}
 
 Review::~Review()
@@ -144,6 +118,16 @@ int Review::usefulnessTotal() const
 int Review::usefulnessFavorable() const
 {
     return m_usefulnessFavorable;
+}
+
+ReviewsModel::UserChoice Review::usefulChoice() const
+{
+    return m_usefulChoice;
+}
+
+void Review::setUsefulChoice(ReviewsModel::UserChoice useful)
+{
+    m_usefulChoice = useful;
 }
 
 AbstractResource *Review::package()

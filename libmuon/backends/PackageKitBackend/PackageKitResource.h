@@ -22,14 +22,14 @@
 #define PACKAGEKITRESOURCE_H
 
 #include <resources/AbstractResource.h>
-#include <PackageKit/packagekit-qt2/Package>
+#include <PackageKit/packagekit-qt2/Transaction>
 
 class PackageKitResource : public AbstractResource
 {
     Q_OBJECT
     Q_PROPERTY(QString license READ license NOTIFY licenseChanged)
     public:
-        explicit PackageKitResource(const PackageKit::Package& p, AbstractResourcesBackend* parent);
+        explicit PackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, AbstractResourcesBackend* parent);
         virtual QString packageName() const;
         virtual QString name();
         virtual QString comment();
@@ -52,17 +52,19 @@ class PackageKitResource : public AbstractResource
         
         virtual QString installedVersion() const;
         virtual QString availableVersion() const;
-        PackageKit::Package package() const;
+        //PackageKit::Package package() const;
 
-    public slots:
-        void updatePackage(const PackageKit::Package& p);
+    //public slots:
+    //    void updatePackage(const PackageKit::Package& p);
 
     signals:
         void licenseChanged();
 
     private:
         void fetchDetails();
-        PackageKit::Package m_package;
+        QString m_packageId;
+        PackageKit::Transaction::Info m_info;
+        QString m_summary;
 };
 
 #endif // PACKAGEKITRESOURCE_H

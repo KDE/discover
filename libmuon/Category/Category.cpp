@@ -157,59 +157,6 @@ QList<Category *> Category::subCategories() const
     return m_subCategories;
 }
 
-bool categoryLessThan(Category *c1, const Category *c2)
-{
-    return (QString::localeAwareCompare(c1->name(), c2->name()) < 0);
-}
-
-QList< Category* > Category::loadCategoriesFile(const QString& path)
-{
-    QFile menuFile(path);
-    QList<Category *> ret;
-
-    if (!menuFile.open(QIODevice::ReadOnly)) {
-        // Broken install or broken FS
-        return ret;
-    }
-
-    QDomDocument menuDocument;
-    QString error;
-    int line;
-    bool correct = menuDocument.setContent(&menuFile, &error, &line);
-    if(!correct)
-        kWarning() << "error while parsing the categories file:" << error << " at: " << path << ":" << line;
-
-    QDomElement root = menuDocument.documentElement();
-
-    QDomNode node = root.firstChild();
-    while(!node.isNull())
-    {
-        ret << new Category(nullptr);
-        ret.last()->parseData(path, node, true);
-
-        node = node.nextSibling();
-    }
-    return ret;
-}
-
-QList<Category*> Category::populateCategories()
-{
-    // FIXME: Should only populate categories for plugins that have successfully been loaded
-    QList<Category*> ret;
-    QStringList files = KGlobal::dirs()->findAllResources("data", "libmuon/categories/*.xml");
-    for(const QString& file : files) {
-        QList<Category*> cats = loadCategoriesFile(file);
-        if(ret.isEmpty())
-            ret += cats;
-        else {
-            for(Category* c : cats)
-                addSubcategory(ret, c);
-        }
-    }
-    qSort(ret.begin(), ret.end(), categoryLessThan);
-    return ret;
-}
-
 //TODO: maybe it would be interesting to apply some rules to a said backend...
 void Category::addSubcategory(QList< Category* >& list, Category* newcat)
 {

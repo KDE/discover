@@ -65,8 +65,6 @@ ReviewsBackend::ReviewsBackend(QObject *parent)
         : AbstractReviewsBackend(parent)
         , m_aptBackend(0)
         , m_serverBase(MuonDataSources::rnRSource())
-        , m_ratingsFile(0)
-        , m_reviewsFile(0)
 {
     m_loginBackend = new UbuntuLoginBackend(this);
     connect(m_loginBackend, SIGNAL(connectionStateChanged()), SIGNAL(loginStateChanged()));
@@ -77,9 +75,7 @@ ReviewsBackend::ReviewsBackend(QObject *parent)
 }
 
 ReviewsBackend::~ReviewsBackend()
-{
-    delete m_ratingsFile;
-}
+{}
 
 void ReviewsBackend::refreshConsumerKeys()
 {
@@ -111,26 +107,18 @@ void ReviewsBackend::setAptBackend(QApt::Backend *aptBackend)
 
 void ReviewsBackend::fetchRatings()
 {
+    QString ratingsCache = KStandardDirs::locateLocal("data", "libmuon/ratings.txt");
     refreshConsumerKeys();
+
     // First, load our old ratings cache in case we don't have net connectivity
-    loadRatingsFromFile(KStandardDirs::locateLocal("data", "libmuon/ratings.txt"));
-
-
-    if (m_ratingsFile) {
-        m_ratingsFile->deleteLater();
-        m_ratingsFile = 0;
-    }
-
-    m_ratingsFile = new KTemporaryFile();
-    m_ratingsFile->open();
+    loadRatingsFromFile();
 
     // Try to fetch the latest ratings from the internet
     KUrl ratingsUrl(m_serverBase, "review-stats/");
     KIO::FileCopyJob *getJob = KIO::file_copy(ratingsUrl,
-                               m_ratingsFile->fileName(), -1,
+                               ratingsCache, -1,
                                KIO::Overwrite | KIO::HideProgressInfo);
-    connect(getJob, SIGNAL(result(KJob*)),
-            this, SLOT(ratingsFetched(KJob*)));
+    connect(getJob, SIGNAL(result(KJob*)), SLOT(ratingsFetched(KJob*)));
 }
 
 void ReviewsBackend::ratingsFetched(KJob *job)
@@ -139,27 +127,21 @@ void ReviewsBackend::ratingsFetched(KJob *job)
         return;
     }
 
-    loadRatingsFromFile(m_ratingsFile->fileName());
+    loadRatingsFromFile();
 }
 
-void ReviewsBackend::loadRatingsFromFile(const QString &fileName)
+void ReviewsBackend::loadRatingsFromFile()
 {
-    QIODevice* dev = KFilterDev::deviceForFile(fileName, "application/x-gzip");
+    QString ratingsCache = KStandardDirs::locateLocal("data", "libmuon/ratings.txt");
+    QIODevice* dev = KFilterDev::deviceForFile(ratingsCache, "application/x-gzip");
 
     QJson::Parser parser;
     bool ok = false;
     QVariant ratings = parser.parse(dev, &ok);
 
     if (!ok) {
-        qDebug() << "error while parsing ratings: " << fileName;
+        qDebug() << "error while parsing ratings: " << ratingsCache;
         return;
-    }
-
-    // Replace old ratings cache
-    QString ratingsCache = KStandardDirs::locateLocal("data", "libmuon/ratings.txt", true);
-    if (fileName != ratingsCache) {
-        QFile::remove(ratingsCache);
-        QFile::copy(fileName, ratingsCache);
     }
 
     qDeleteAll(m_ratings);
@@ -183,14 +165,9 @@ Rating *ReviewsBackend::ratingForApplication(AbstractResource* app) const
 
 void ReviewsBackend::stopPendingJobs()
 {
-    auto iter = m_jobHash.constBegin();
-    while (iter != m_jobHash.constEnd()) {
-        KJob *getJob = iter.key();
-        disconnect(getJob, SIGNAL(result(KJob*)),
-                   this, SLOT(changelogFetched(KJob*)));
-        iter++;
+    for(auto it = m_jobHash.constBegin(); it != m_jobHash.constEnd(); ++it) {
+        disconnect(it.key(), SIGNAL(result(KJob*)), this, SLOT(changelogFetched(KJob*)));
     }
-
     m_jobHash.clear();
 }
 
@@ -221,57 +198,56 @@ void ReviewsBackend::fetchReviews(AbstractResource* res, int page)
     // figure it out) is written in python, so you have to go hunting to where
     // a variable was initially initialized with a primitive to figure out its type.
     KUrl reviewsUrl(m_serverBase, QLatin1String("reviews/filter/") % lang % '/'
-		    % origin % '/' % QLatin1String("any") % '/' % version % '/' % packageName
-		    % ';' % appName % '/' % QLatin1String("page") % '/' % QString::number(page));
+            % origin % '/' % QLatin1String("any") % '/' % version % '/' % packageName
+            % ';' % appName % '/' % QLatin1String("page") % '/' % QString::number(page));
 
-    if (m_reviewsFile) {
-        m_reviewsFile->deleteLater();
-        m_reviewsFile = 0;
-    }
-
-    m_reviewsFile = new KTemporaryFile();
-    m_reviewsFile->open();
-
-    KIO::FileCopyJob *getJob = KIO::file_copy(reviewsUrl,
-                               m_reviewsFile->fileName(), -1,
-                               KIO::Overwrite | KIO::HideProgressInfo);
+    KIO::StoredTransferJob* getJob = KIO::storedGet(reviewsUrl, KIO::NoReload, KIO::Overwrite | KIO::HideProgressInfo);
     m_jobHash[getJob] = app;
     connect(getJob, SIGNAL(result(KJob*)),
             this, SLOT(reviewsFetched(KJob*)));
 }
 
-void ReviewsBackend::reviewsFetched(KJob *job)
+static Review* constructReview(const QVariantMap& data)
 {
+    QString reviewUsername = data.value("reviewer_username").toString();
+    QString reviewDisplayName = data.value("reviewer_displayname").toString();
+    QString reviewer = reviewDisplayName.isEmpty() ? reviewUsername : reviewDisplayName;
+    return new Review(
+        data.value("app_name").toString(),
+        data.value("package_name").toString(),
+        data.value("language").toString(),
+        data.value("summary").toString(),
+        data.value("review_text").toString(),
+        reviewer,
+        QDateTime::fromString(data.value("date_created").toString(), "yyyy-MM-dd HH:mm:ss"),
+        !data.value("hide").toBool(),
+        data.value("id").toULongLong(),
+        data.value("rating").toInt() * 2,
+        data.value("usefulness_total").toInt(),
+        data.value("usefulness_favorable").toInt(),
+        data.value("version").toString());
+}
+
+void ReviewsBackend::reviewsFetched(KJob *j)
+{
+    KIO::StoredTransferJob* job = qobject_cast<KIO::StoredTransferJob*>(j);
+    Application *app = m_jobHash.take(job);
     if (job->error()) {
-        m_jobHash.remove(job);
         return;
     }
 
-    QFile file(m_reviewsFile->fileName());
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
-
     QJson::Parser parser;
-    QByteArray json = file.readAll();
-
     bool ok = false;
-    QVariant reviews = parser.parse(json, &ok);
+    QVariant reviews = parser.parse(job->data(), &ok);
 
-    if (!ok) {
-        m_jobHash.remove(job);
+    if (!ok || !app) {
         return;
     }
 
     QList<Review *> reviewsList;
     foreach (const QVariant &data, reviews.toList()) {
-        Review *review = new Review(data.toMap());
-        reviewsList << review;
+        reviewsList << constructReview(data.toMap());
     }
-
-    Application *app = m_jobHash.value(job);
-    m_jobHash.remove(job);
-
-    if (!app)
-        return;
 
     m_reviewsCache[app->package()->name() + app->name()].append(reviewsList);
 

@@ -4,9 +4,9 @@ include_directories(${QPACKAGEKIT2_INCLUDEDIR})
 set(pkbackend_SRCS
     PackageKitBackend.cpp
     PackageKitResource.cpp
-    AppPackageKitResource.cpp
+    #AppPackageKitResource.cpp
     AppstreamUtils.cpp
-    PKTransaction.cpp
+    #PKTransaction.cpp
 )
 
 kde4_add_plugin(muon-pkbackend SHARED ${pkbackend_SRCS})

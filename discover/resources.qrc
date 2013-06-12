@@ -12,7 +12,6 @@
     <file>qml/ApplicationOverview.qml</file>
     <file>qml/AddonsView.qml</file>
     <file>qml/ApplicationsList.qml</file>
-    <file>qml/ApplicationsGrid.qml</file>
     <file>qml/ApplicationsGridDelegate.qml</file>
     <file>qml/Breadcrumbs.qml</file>
     <file>qml/InstallApplicationButton.qml</file>
@@ -31,6 +30,8 @@
     <file>qml/FeaturedImage.qml</file>
     <file>qml/GridItem.qml</file>
     <file>qml/NativeScrollBar.qml</file>
+    <file>qml/AwesomeGrid.qml</file>
+    <file>qml/ScrolledAwesomeGrid.qml</file>
 
     <file>qml/navigation.js</file>
  </qresource>

@@ -15,7 +15,7 @@ Page
     }
     ResourcesUpdatesModel {
         id: updatesModel
-        onProgressingChanged: if(!progressing) page.pageStack.pop()
+        onProgressingChanged: if(!isProgressing) page.pageStack.pop()
     }
     onVisibleChanged: window.navigationEnabled=!visible
     Binding {

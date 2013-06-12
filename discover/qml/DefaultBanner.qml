@@ -1,12 +1,12 @@
 import QtQuick 1.1
+import org.kde.plasma.core 0.1
 import org.kde.plasma.components 0.1
-import org.kde.qtextracomponents 0.1
 
 Item
 {
-    QIconItem {
+    IconItem {
         id: icon
-        icon: "kde"
+        source: "kde"
         y: 30
         width: 200
         height: 200

@@ -24,6 +24,7 @@
 #include <QtCore/QDateTime>
 #include <QtCore/QVariant>
 
+#include "ReviewsModel.h"
 #include "libmuonprivate_export.h"
 
 class AbstractResource;
@@ -31,7 +32,6 @@ class AbstractResource;
 class MUONPRIVATE_EXPORT Review
 {
 public:
-    explicit Review(const QVariantMap &data);
     Review(const QString& name, const QString& pkgName, const QString& language, const QString& summary,
                const QString& reviewText, const QString& userName, const QDateTime& date, bool show, quint64 id,
                int rating, int usefulTotal, int usefulFavorable, const QString& packageVersion);
@@ -54,6 +54,8 @@ public:
     int rating() const;
     int usefulnessTotal() const;
     int usefulnessFavorable() const;
+    ReviewsModel::UserChoice usefulChoice() const;
+    void setUsefulChoice(ReviewsModel::UserChoice useful);
     AbstractResource *package();
 
 private:
@@ -68,6 +70,7 @@ private:
     QString m_reviewer;
     int m_usefulnessTotal;
     int m_usefulnessFavorable;
+    ReviewsModel::UserChoice m_usefulChoice;
     QString m_summary;
     QString m_packageVersion;
 

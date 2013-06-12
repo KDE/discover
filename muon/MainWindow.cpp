@@ -118,6 +118,9 @@ void MainWindow::initGUI()
     m_stack->setCurrentWidget(m_mainWidget);
 
     m_backend = new QApt::Backend(this);
+    QApt::FrontendCaps caps = (QApt::FrontendCaps)(QApt::DebconfCap | QApt::MediumPromptCap |
+                               QApt::ConfigPromptCap | QApt::UntrustedPromptCap);
+    m_backend->setFrontendCaps(caps);
     QAptActions* actions = QAptActions::self();
 
     actions->setMainWindow(this);
@@ -132,11 +135,8 @@ void MainWindow::initGUI()
 
 void MainWindow::initObject()
 {
-    if (!m_backend->init())
-        QAptActions::self()->initError();
-
-    emit backendReady(m_backend);
     QAptActions::self()->setBackend(m_backend);
+    emit backendReady(m_backend);
     connect(m_backend, SIGNAL(packageChanged()),
             this, SLOT(setActionsEnabled()));
 
@@ -375,6 +375,11 @@ void MainWindow::setActionsEnabled(bool enabled)
 {
     MuonMainWindow::setActionsEnabled(enabled);
     if (!enabled) {
+        m_applyAction->setEnabled(false);
+        m_safeUpgradeAction->setEnabled(false);
+        m_distUpgradeAction->setEnabled(false);
+        m_autoRemoveAction->setEnabled(false);
+        m_previewAction->setEnabled(false);
         return;
     }
 

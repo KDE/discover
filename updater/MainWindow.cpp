@@ -1,5 +1,6 @@
 /***************************************************************************
  *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -24,6 +25,9 @@
 #include <QtCore/QTimer>
 #include <QtGui/QApplication>
 #include <QtGui/QVBoxLayout>
+#include <QPushButton>
+#include <QToolButton>
+#include <QMenu>
 
 // KDE includes
 #include <KAction>
@@ -37,17 +41,18 @@
 #include <Solid/Device>
 #include <Solid/AcAdapter>
 #include <KToolBar>
+#include <KMenuBar>
 
 // Own includes
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/AbstractBackendUpdater.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesUpdatesModel.h>
-#include "ChangelogWidget.h"
 #include "ProgressWidget.h"
 #include "config/UpdaterSettingsDialog.h"
 #include "UpdaterWidget.h"
 #include "KActionMessageWidget.h"
+#include "ui_UpdaterCentralWidget.h"
 
 MainWindow::MainWindow()
     : MuonMainWindow()
@@ -56,6 +61,7 @@ MainWindow::MainWindow()
     m_updater = new ResourcesUpdatesModel(this);
     connect(m_updater, SIGNAL(progressingChanged()), SLOT(progressingChanged()));
 
+    setupActions();
     initGUI();
 }
 
@@ -71,34 +77,34 @@ void MainWindow::initGUI()
     m_powerMessage = new KMessageWidget(mainWidget);
     m_powerMessage->setText(i18nc("@info Warning to plug in laptop before updating",
                                   "It is safer to plug in the power adapter before updating."));
-    m_powerMessage->hide();
     m_powerMessage->setMessageType(KMessageWidget::Warning);
     checkPlugState();
 
     m_progressWidget = new ProgressWidget(m_updater, mainWidget);
-    m_progressWidget->hide();
-
     m_updaterWidget = new UpdaterWidget(mainWidget);
     m_updaterWidget->setEnabled(false);
+    connect(m_updaterWidget, SIGNAL(modelPopulated()),
+            this, SLOT(setActionsEnabled()));
 
-    m_changelogWidget = new ChangelogWidget(this);
-    m_changelogWidget->hide();
-    connect(m_updaterWidget, SIGNAL(selectedResourceChanged(AbstractResource*)),
-            m_changelogWidget, SLOT(setResource(AbstractResource*)));
+    Ui::UpdaterButtons buttonsUi;
+    QWidget* buttons = new QWidget(this);
+    buttonsUi.setupUi(buttons);
+    buttonsUi.more->setMenu(m_moreMenu);
+    buttonsUi.apply->setDefaultAction(m_applyAction);
+    buttonsUi.quit->setDefaultAction(action("quit"));
 
     mainLayout->addWidget(m_powerMessage);
-//     mainLayout->addWidget(m_distUpgradeMessage);
-    mainLayout->addWidget(m_progressWidget);
     mainLayout->addWidget(m_updaterWidget);
-    mainLayout->addWidget(m_changelogWidget);
+    mainLayout->addWidget(m_progressWidget);
+    mainLayout->addWidget(buttons);
 
     mainWidget->setLayout(mainLayout);
     setCentralWidget(mainWidget);
-    setupActions();
+    progressingChanged();
 
-//     connect(m_updater, SIGNAL(reloadStarted()), SLOT(startedReloading()));
-    connect(m, SIGNAL(backendsChanged()), SLOT(finishedReloading()));
     connect(m, SIGNAL(allInitialized()), SLOT(initBackend()));
+    menuBar()->setVisible(false);
+    toolBar()->setVisible(false);
 }
 
 void MainWindow::setupActions()
@@ -115,7 +121,20 @@ void MainWindow::setupActions()
 
     setActionsEnabled(false);
 
-    setupGUI(StandardWindowOption(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
+//     setupGUI(StandardWindowOption(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
+    setupGUI(StandardWindowOption((KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar) & ~KXmlGuiWindow::ToolBar));
+
+    m_moreMenu = new QMenu(this);
+    m_moreMenu->addAction(actionCollection()->action("options_configure"));
+    m_moreMenu->addAction(actionCollection()->action("options_configure_keybinding"));
+    m_moreMenu->addSeparator();
+    m_advancedMenu = new QMenu(i18n("Advanced..."), m_moreMenu);
+    m_advancedMenu->setEnabled(false);
+    m_moreMenu->addMenu(m_advancedMenu);
+    m_moreMenu->addSeparator();
+    m_moreMenu->addAction(actionCollection()->action("help_about_app"));
+    m_moreMenu->addAction(actionCollection()->action("help_about_kde"));
+    m_moreMenu->addAction(actionCollection()->action("help_report_bug"));
 }
 
 void MainWindow::initBackend()
@@ -129,51 +148,38 @@ void MainWindow::initBackend()
 void MainWindow::setupBackendsActions()
 {
     foreach (QAction* action, m_updater->messageActions()) {
-        if (action->priority()==QAction::HighPriority) {
-            KActionMessageWidget* w = new KActionMessageWidget(action, centralWidget());
-            qobject_cast<QBoxLayout*>(centralWidget()->layout())->insertWidget(1, w);
-        } else {
-            toolBar("mainToolBar")->addAction(action);
+        switch(action->priority()) {
+            case QAction::HighPriority: {
+                KActionMessageWidget* w = new KActionMessageWidget(action, centralWidget());
+                qobject_cast<QBoxLayout*>(centralWidget()->layout())->insertWidget(1, w);
+            }   break;
+            case QAction::NormalPriority:
+                m_moreMenu->insertAction(m_moreMenu->actions().first(), action);
+                break;
+            case QAction::LowPriority:
+            default:
+                m_advancedMenu->addAction(action);
+                break;
         }
     }
 }
 
 void MainWindow::progressingChanged()
 {
+    QApplication::restoreOverrideCursor();
+    m_updaterWidget->setCurrentIndex(0);
+
     bool active = m_updater->isProgressing();
-    QApplication::restoreOverrideCursor();
-    if(!active) {
-        m_updaterWidget->setCurrentIndex(0);
-    }
     m_progressWidget->setVisible(active);
-    m_updaterWidget->setVisible(!active);
+//     m_updaterWidget->setVisible(!active);
     setActionsEnabled(!active);
-}
-
-void MainWindow::startedReloading()
-{
-    setCanExit(false);
-    setActionsEnabled(false);
-    QApplication::setOverrideCursor(Qt::WaitCursor);
-    m_changelogWidget->setResource(0);
-}
-
-void MainWindow::finishedReloading()
-{
-    QApplication::restoreOverrideCursor();
-    checkPlugState();
-    setActionsEnabled(true);
-    setCanExit(true);
+    setCanExit(!active);
 }
 
 void MainWindow::setActionsEnabled(bool enabled)
 {
     MuonMainWindow::setActionsEnabled(enabled);
-    if (!enabled) {
-        return;
-    }
-
-    m_applyAction->setEnabled(m_updater->hasUpdates());
+    m_applyAction->setEnabled(enabled && m_updater->hasUpdates());
 }
 
 void MainWindow::editSettings()
@@ -197,13 +203,7 @@ void MainWindow::checkPlugState()
 {
     const QList<Solid::Device> acAdapters = Solid::Device::listFromType(Solid::DeviceInterface::AcAdapter);
 
-    if (acAdapters.isEmpty()) {
-        updatePlugState(true);
-        return;
-    }
-    
-    bool isPlugged = false;
-
+    bool isPlugged = acAdapters.isEmpty();
     for(Solid::Device device_ac : acAdapters) {
         Solid::AcAdapter* acAdapter = device_ac.as<Solid::AcAdapter>();
         isPlugged |= acAdapter->isPlugged();

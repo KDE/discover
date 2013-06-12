@@ -48,10 +48,12 @@ class MUONPRIVATE_EXPORT ResourcesProxyModel : public QSortFilterProxyModel
     Q_PROPERTY(bool isSortingByRelevancy READ sortingByRelevancy WRITE setSortByRelevancy)
     Q_PROPERTY(AbstractResource::State stateFilter READ stateFilter WRITE setStateFilter NOTIFY stateFilterChanged)
     Q_PROPERTY(QString mimeTypeFilter READ mimeTypeFilter WRITE setMimeTypeFilter)
+    Q_PROPERTY(QString search READ lastSearch WRITE setSearch)
 public:
     explicit ResourcesProxyModel(QObject *parent=0);
 
-    Q_SCRIPTABLE void search(const QString &text);
+    void setSearch(const QString &text);
+    QString lastSearch() const;
     void setOriginFilter(const QString &origin);
     QString originFilter() const;
     void setFiltersFromCategory(Category *category);
@@ -75,7 +77,7 @@ protected:
 
 private:
     QString m_lastSearch;
-    QStringList m_searchResults;
+    QList<AbstractResource*> m_searchResults;
     QList<QPair<FilterType, QString> > m_andFilters;
     QList<QPair<FilterType, QString> > m_orFilters;
     QList<QPair<FilterType, QString> > m_notFilters;
@@ -86,9 +88,6 @@ private:
     Category* m_filteredCategory;
     AbstractResource::State m_stateFilter;
     QString m_filteredMimeType;
-
-public Q_SLOTS:
-    void refreshSearch();
 
 Q_SIGNALS:
     void invalidated();

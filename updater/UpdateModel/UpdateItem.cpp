@@ -21,6 +21,7 @@
 #include "UpdateItem.h"
 #include <resources/AbstractResource.h>
 #include <resources/AbstractResourcesBackend.h>
+#include <resources/AbstractBackendUpdater.h>
 
 #include <QtCore/QStringBuilder>
 #include <KLocalizedString>
@@ -29,7 +30,6 @@ UpdateItem::UpdateItem()
     : m_app(0)
     , m_parent(0)
     , m_type(ItemType::RootItem)
-    , m_checkState(Qt::Unchecked)
 {
 }
 
@@ -38,7 +38,6 @@ UpdateItem::UpdateItem(const QString &categoryName,
     : m_app(0)
     , m_parent(0)
     , m_type(ItemType::CategoryItem)
-    , m_checkState(Qt::Unchecked)
     , m_categoryName(categoryName)
     , m_categoryIcon(categoryIcon)
 {
@@ -48,7 +47,6 @@ UpdateItem::UpdateItem(AbstractResource *app, UpdateItem *parent)
     : m_app(app)
     , m_parent(parent)
     , m_type(ItemType::ApplicationItem)
-    , m_checkState(Qt::Unchecked)
 {
 }
 
@@ -69,8 +67,10 @@ void UpdateItem::setParent(UpdateItem *parent)
 
 void UpdateItem::appendChild(UpdateItem *child)
 {
-    child->setParent(this);
-    m_children.append(child);
+    if(!m_children.contains(child)) {
+        child->setParent(this);
+        m_children.append(child);
+    }
 }
 
 bool UpdateItem::removeChildren(int position, int count)
@@ -97,6 +97,11 @@ UpdateItem *UpdateItem::child(int row) const
 int UpdateItem::childCount() const
 {
     return m_children.count();
+}
+
+bool UpdateItem::isEmpty() const
+{
+    return m_children.isEmpty();
 }
 
 int UpdateItem::row() const
@@ -168,57 +173,40 @@ qint64 UpdateItem::size() const
         size = m_app->downloadSize();
     } else if (itemType == ItemType::CategoryItem) {
         foreach (UpdateItem *item, m_children) {
-            if (item->app()->state() & AbstractResource::Upgradeable) {
-                size += item->size();
-            }
+            size += item->app()->downloadSize();
         }
     }
 
     return size;
 }
+static bool isMarked(AbstractResource* res)
+{
+    return res->backend()->backendUpdater()->toUpdate().contains(res);
+}
 
 Qt::CheckState UpdateItem::checked() const
 {
-    ItemType itemType = type();
-    Qt::CheckState checkState = Qt::Unchecked;
+    Qt::CheckState ret = Qt::Unchecked;
 
-    switch (itemType) {
+    switch (type()) {
     case ItemType::CategoryItem: {
         int checkedCount = 0;
-        int uncheckedCount = 0;
-
-        foreach (UpdateItem *child, m_children) {
-            (child->checked() == Qt::Checked) ?
-                        checkedCount++ : uncheckedCount++;
+        foreach(UpdateItem* child, children()) {
+            checkedCount += isMarked(child->app());
         }
-
-        if (checkedCount && uncheckedCount) {
-            checkState = Qt::PartiallyChecked;
-            break;
-        }
-
-        if ((checkedCount && !uncheckedCount)) {
-            checkState = Qt::Checked;
-        } else {
-            checkState = Qt::Unchecked;
-        }
-        break;
-    }
+        ret = checkedCount==0 ? Qt::Unchecked : 
+              checkedCount==childCount() ? Qt::Checked : Qt::PartiallyChecked;
+    }   break;
     case ItemType::ApplicationItem:
-        return m_checkState;
+        Q_ASSERT(app());
+        ret = isMarked(app()) ? Qt::Checked : Qt::Unchecked;
         break;
     case ItemType::RootItem:
     case ItemType::InvalidItem:
         break;
     }
 
-    return checkState;
-}
-
-void UpdateItem::setChecked(bool checked)
-{
-    if (type() == ItemType::ApplicationItem || type() == ItemType::CategoryItem)
-        m_checkState = (checked) ? Qt::Checked : Qt::Unchecked;
+    return ret;
 }
 
 UpdateItem::ItemType UpdateItem::type() const

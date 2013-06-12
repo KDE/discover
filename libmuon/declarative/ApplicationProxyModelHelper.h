@@ -21,11 +21,12 @@
 #define APPLICATIONPROXYMODELHELPER_H
 
 #include <resources/ResourcesProxyModel.h>
+#include <QDeclarativeParserStatus>
 
-
-class ApplicationProxyModelHelper : public ResourcesProxyModel
+class ApplicationProxyModelHelper : public ResourcesProxyModel, public QDeclarativeParserStatus
 {
     Q_OBJECT
+    Q_INTERFACES(QDeclarativeParserStatus)
     Q_PROPERTY(int sortRole READ sortRole WRITE setSortRole_hack NOTIFY sortRoleChanged)
     Q_PROPERTY(QString stringSortRole READ stringSortRole WRITE setStringSortRole_hack NOTIFY sortRoleChanged)
     Q_PROPERTY(Qt::SortOrder sortOrder READ sortOrder WRITE setSortOrder_hack NOTIFY sortOrderChanged)
@@ -38,8 +39,10 @@ class ApplicationProxyModelHelper : public ResourcesProxyModel
         void setStringSortRole_hack(const QString& role);
         QString stringSortRole() const;
 
+        virtual void classBegin() {}
+        virtual void componentComplete();
+
     public slots:
-        void init();
         void sortModel();
 
     signals:

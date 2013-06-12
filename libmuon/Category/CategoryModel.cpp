@@ -21,6 +21,7 @@
 // Own includes
 #include "CategoryModel.h"
 #include "Category.h"
+#include "CategoriesReader.h"
 
 // KDE includes
 #include <KIcon>
@@ -30,9 +31,6 @@ CategoryModel::CategoryModel(QObject* parent)
     : QStandardItemModel(parent)
 {
     QHash< int, QByteArray > names = roleNames();
-    names[CategoryTypeRole] = "categoryType";
-    names[AndOrFilterRole] = "andOrFilter";
-    names[NotFilterRole] = "notFilter";
     names[CategoryRole] = "category";
     setRoleNames(names);
 }
@@ -50,17 +48,11 @@ void CategoryModel::setCategories(const QList<Category *> &categoryList, const Q
         categoryItem->setData(rootName, KCategorizedSortFilterProxyModel::CategoryDisplayRole);
         categoryItem->setData(qVariantFromValue<QObject*>(category), CategoryRole);
 
-        if (category->hasSubCategories()) {
-            categoryItem->setData(SubCatType, CategoryTypeRole);
-        } else {
-            categoryItem->setData(CategoryType, CategoryTypeRole);
-        }
-
         appendRow(categoryItem);
     }
 }
 
-Category* CategoryModel::categoryForIndex(int row)
+Category* CategoryModel::categoryForRow(int row)
 {
     return m_categoryList.at(row);
 }
@@ -68,12 +60,14 @@ Category* CategoryModel::categoryForIndex(int row)
 QList<Category*> CategoryModel::populateCategories()
 {
     static QList<Category*> cats;
-    if(cats.isEmpty())
-        cats = Category::populateCategories();
+    if(cats.isEmpty()) {
+        CategoriesReader reader;
+        cats = reader.populateCategories();
+    }
     return cats;
 }
 
-void CategoryModel::setSubcategories(Category* c)
+void CategoryModel::setDisplayedCategory(Category* c)
 {
     m_currentCategory = c;
     if(c)

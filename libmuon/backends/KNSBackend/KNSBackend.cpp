@@ -261,12 +261,12 @@ AbstractReviewsBackend* KNSBackend::reviewsBackend() const
     return m_reviews;
 }
 
-QStringList KNSBackend::searchPackageName(const QString& searchText)
+QList<AbstractResource*> KNSBackend::searchPackageName(const QString& searchText)
 {
-    QStringList ret;
+    QList<AbstractResource*> ret;
     foreach(AbstractResource* r, m_resourcesByName) {
-        if(r->name().contains(searchText) || r->comment().contains(searchText))
-            ret += r->packageName();
+        if(r->name().contains(searchText, Qt::CaseInsensitive) || r->comment().contains(searchText, Qt::CaseInsensitive))
+            ret += r;
     }
     return ret;
 }

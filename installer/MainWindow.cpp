@@ -92,7 +92,15 @@ MainWindow::MainWindow()
     , m_progressItem(nullptr)
 {
     initGUI();
-    QTimer::singleShot(10, this, SLOT(initObject()));
+
+    TransactionModel *transModel = TransactionModel::global();
+    connect(transModel, SIGNAL(startingFirstTransaction()), SLOT(addProgressItem()));
+    connect(transModel, SIGNAL(lastTransactionFinished()), SLOT(removeProgressItem()));
+    m_launches = new LaunchListModel(this);
+
+    ResourcesModel* resourcesModel = ResourcesModel::global();
+    resourcesModel->integrateMainWindow(this);
+    connect(resourcesModel, SIGNAL(backendsChanged()), SLOT(initObject()));
 }
 
 MainWindow::~MainWindow()
@@ -149,28 +157,18 @@ void MainWindow::initObject()
 {
     ResourcesModel *resourcesModel = ResourcesModel::global();
 
-    TransactionModel *transModel = TransactionModel::global();
-    connect(transModel, SIGNAL(startingFirstTransaction()),
-            this, SLOT(addProgressItem()));
-    connect(transModel, SIGNAL(lastTransactionFinished()),
-            this, SLOT(removeProgressItem()));
-    m_launches = new LaunchListModel(this);
-
     QVector<AbstractResourcesBackend*> backends = resourcesModel->backends();
-
-    //TODO: should add the appBackend here too
     for (AbstractResourcesBackend *backend : backends) {
-        if(backend->metaObject()->className()==QLatin1String("ApplicationBackend")) {
+        if(!m_appBackend &&
+            backend->metaObject()->className()==QLatin1String("ApplicationBackend"))
+        {
             m_appBackend = backend;
-            connect(m_appBackend, SIGNAL(backendReady()),
-                    this, SLOT(populateViews()));
-            connect(m_appBackend, SIGNAL(reloadFinished()),
-                    this, SLOT(showLauncherMessage()));
-            connect(m_appBackend, SIGNAL(sourcesEditorFinished()),
-                    this, SLOT(sourcesEditorFinished()));
+            connect(m_appBackend, SIGNAL(backendReady()), SLOT(populateViews()));
+            connect(m_appBackend, SIGNAL(reloadFinished()), SLOT(showLauncherMessage()));
+            connect(m_appBackend, SIGNAL(sourcesEditorFinished()), SLOT(sourcesEditorFinished()));
+            populateViews();
         }
     }
-    resourcesModel->integrateMainWindow(this);
 }
 
 void MainWindow::loadSplitterSizes()
@@ -274,6 +272,7 @@ QPair<QStringList, QStringList> fetchOrigins()
 
 void MainWindow::populateViews()
 {
+    m_viewModel->clear();
     QStandardItem *availableItem = new QStandardItem;
     availableItem->setEditable(false);
     availableItem->setIcon(KIcon("applications-other").pixmap(32,32));
@@ -312,6 +311,8 @@ void MainWindow::populateViews()
     m_viewModel->appendRow(installedItem);
     m_viewModel->appendRow(historyItem);
     selectFirstRow(m_viewSwitcher);
+
+    emit viewsPopulated();
 }
 
 void MainWindow::changeView(const QModelIndex &index)
@@ -460,4 +461,29 @@ void MainWindow::removeProgressItem()
 
     m_viewModel->removeRow(m_progressItem->row());
     m_progressItem = nullptr;
+}
+
+void MainWindow::openApplication(const QString &app)
+{
+    setEnabled(false);
+    m_appToBeOpened = app;
+    triggerOpenApplication();
+    if(!m_appToBeOpened.isEmpty())
+        connect(this, SIGNAL(viewsPopulated()), SLOT(triggerOpenApplication()));
+}
+
+void MainWindow::triggerOpenApplication()
+{
+    if (!ResourcesModel::global())
+        return;
+
+    AbstractResource* app = ResourcesModel::global()->resourceByPackageName(m_appToBeOpened);
+    if(app) {
+        AvailableView *view = qobject_cast<AvailableView *>(m_viewStack->currentWidget());
+        view->setResource(app);
+
+        m_appToBeOpened.clear();
+        disconnect(this, SIGNAL(viewsPopulated()), this, SLOT(triggerOpenApplication()));
+        setEnabled(true);
+    }
 }

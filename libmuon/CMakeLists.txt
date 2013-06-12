@@ -4,6 +4,7 @@ add_subdirectory(declarative)
 set(muon_LIB_SRCS
     Category/Category.cpp
     Category/CategoryModel.cpp
+    Category/CategoriesReader.cpp
     MuonMainWindow.cpp
     ReviewsBackend/AbstractReviewsBackend.cpp
     ReviewsBackend/Rating.cpp
@@ -33,7 +34,7 @@ kde4_add_kcfg_files(muon_LIB_SRCS GENERATE_MOC MuonDataSources.kcfgc)
 kde4_add_library(muonprivate SHARED ${muon_LIB_SRCS})
 
 set_target_properties(muonprivate PROPERTIES
-    VERSION 1.3.65
+    VERSION 1.9.97
     SOVERSION 1
 )
 

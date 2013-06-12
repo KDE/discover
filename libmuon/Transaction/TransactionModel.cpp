@@ -41,7 +41,7 @@ TransactionModel::TransactionModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     auto roles = roleNames();
-    roles[TransactionRoleRole] = "transaction";
+    roles[TransactionRoleRole] = "transactionRole";
     roles[TransactionStatusRole] = "status";
     roles[CancellableRole] = "cancellable";
     roles[ProgressRole] = "progress";
@@ -155,6 +155,7 @@ void TransactionModel::addTransaction(Transaction *trans)
 
     // Connect all notify signals to our transactionChanged slot
     const QMetaObject *meta = trans->metaObject();
+    const QMetaMethod notifySlot = metaObject()->method(metaObject()->indexOfSlot("transactionChanged()"));
     for (int i = 0; i < meta->propertyCount(); ++i) {
         QMetaProperty prop = meta->property(i);
 
@@ -162,7 +163,6 @@ void TransactionModel::addTransaction(Transaction *trans)
             continue;
 
         const QMetaMethod notifySignal = prop.notifySignal();
-        const QMetaMethod notifySlot = metaObject()->method(metaObject()->indexOfSlot("transactionChanged()"));
         connect(trans, notifySignal, this, notifySlot);
     }
 
@@ -182,32 +182,27 @@ void TransactionModel::cancelTransaction(Transaction *trans)
 
 void TransactionModel::removeTransaction(Transaction *trans)
 {
-    QModelIndex toRemove = indexOf(trans);
-
-    removeRow(toRemove.row());
-
-    if (!m_transactions.size())
-        emit lastTransactionFinished();
+    removeRow(indexOf(trans).row());
 }
 
 bool TransactionModel::removeRows(int row, int count, const QModelIndex &parent)
 {
-    Q_UNUSED(count);
+    if(parent.isValid())
+        return false;
 
-    bool success = false;
-
-    if (!parent.isValid()) {
+    for(; count>0; ++row, --count) {
         QModelIndex child = index(row);
         Transaction *trans = transactionFromIndex(child);
 
         beginRemoveRows(parent, row, row);
-        m_transactions.removeAll(trans);
+        int c = m_transactions.removeAll(trans);
+        Q_ASSERT(c==1);
         endRemoveRows();
         emit transactionRemoved(trans);
-        success = true;
     }
-
-    return success;
+    if (m_transactions.isEmpty())
+        emit lastTransactionFinished();
+    return true;
 }
 
 void TransactionModel::transactionChanged()

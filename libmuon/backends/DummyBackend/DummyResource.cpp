@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "DummyResource.h"
-#include <QStringList>
+#include <krandom.h>
 #include <QDesktopServices>
 
 DummyResource::DummyResource(const QString& name, AbstractResourcesBackend* parent)
@@ -27,6 +27,8 @@ DummyResource::DummyResource(const QString& name, AbstractResourcesBackend* pare
     , m_name(name)
     , m_state(State::Broken)
 {
+    if(KRandom::random() % 2)
+        m_screenshot = QUrl("http://www.kde.org/stuff/clipart/klogo-official-oxygen-128x128.png");
 }
 
 QList<PackageState> DummyResource::addonsInformation()
@@ -96,12 +98,12 @@ QString DummyResource::packageName() const
 
 QUrl DummyResource::screenshotUrl()
 {
-    return QUrl();
+    return m_screenshot;
 }
 
 QUrl DummyResource::thumbnailUrl()
 {
-    return QUrl();
+    return m_screenshot;
 }
 
 QString DummyResource::section()
@@ -116,7 +118,7 @@ AbstractResource::State DummyResource::state()
 
 void DummyResource::fetchChangelog()
 {
-    emit changelogFetched(QString());
+    emit changelogFetched(QString(" Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
 }
 
 void DummyResource::setState(AbstractResource::State state)

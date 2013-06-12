@@ -31,30 +31,34 @@ class QItemSelection;
 class QLabel;
 class QStandardItemModel;
 class QTreeView;
+class ChangelogWidget;
 
 class KPixmapSequenceOverlayPainter;
 class UpdateModel;
+
+namespace Ui {
+    class UpdaterWidgetNoUpdates;
+}
 
 class UpdaterWidget : public QStackedWidget
 {
     Q_OBJECT
 public:
     explicit UpdaterWidget(QWidget *parent = 0);
+    virtual ~UpdaterWidget();
 
 private:
     UpdateModel *m_updateModel;
 
     QTreeView *m_updateView;
+    ChangelogWidget *m_changelogWidget;
     KPixmapSequenceOverlayPainter *m_busyWidget;
-    QLabel *m_updateStatusIcon;
-    QLabel *m_notifyTitle;
-    QLabel *m_notifyDesc;
     ResourcesUpdatesModel* m_updatesBackends;
-    KMessageWidget* m_upgradesWidget;
+    KMessageWidget* m_markallWidget;
+    Ui::UpdaterWidgetNoUpdates* m_ui;
 
 public Q_SLOTS:
     void setBackend(ResourcesUpdatesModel* backend);
-    void activityChanged();
 
 private Q_SLOTS:
     void populateUpdateModel();
@@ -63,10 +67,12 @@ private Q_SLOTS:
     void checkAllMarked();
     void checkUpToDate();
     void markAllPackagesForUpgrade();
-    void checkApps(const QList<AbstractResource*>& apps, bool checked);
+
+    void activityChanged();
 
 signals:
     void selectedResourceChanged(AbstractResource* res);
+    void modelPopulated();
 };
 
 #endif // UPDATERWIDGET_H

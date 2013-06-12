@@ -491,14 +491,17 @@ AbstractResource* ApplicationBackend::resourceByPackageName(const QString& name)
     return 0;
 }
 
-QStringList ApplicationBackend::searchPackageName(const QString& searchText)
+QList<AbstractResource*> ApplicationBackend::searchPackageName(const QString& searchText)
 {
-    QApt::PackageList packages = m_backend->search(searchText);
-    QStringList names;
-    foreach(QApt::Package* package, packages) {
-        names += package->name();
+    QSet<QApt::Package*> packages = m_backend->search(searchText).toSet();
+
+    QList<AbstractResource*> resources;
+    foreach(Application* a, m_appList) {
+        if(packages.contains(a->package())) {
+            resources += a;
+        }
     }
-    return names;
+    return resources;
 }
 
 AbstractBackendUpdater* ApplicationBackend::backendUpdater() const
@@ -511,11 +514,10 @@ void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
     m_aptify = w;
     QAptActions* apt = QAptActions::self();
     apt->setMainWindow(w);
-    if(m_aptBackendInitialized)
-        apt->setBackend(m_backend);
-    else
+    if(!m_aptBackendInitialized)
         connect(this, SIGNAL(aptBackendInitialized(QApt::Backend*)), apt, SLOT(setBackend(QApt::Backend*)));
-
+    if (apt->reloadWhenSourcesEditorFinished())
+        connect(apt, SIGNAL(sourcesEditorClosed(bool)), SLOT(reload()));
     KAction* updateAction = w->actionCollection()->addAction("update");
     updateAction->setIcon(KIcon("system-software-update"));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
@@ -537,11 +539,10 @@ void ApplicationBackend::initBackend()
         QAptActions::self()->setReloadWhenEditorFinished(true);
     }
 
-    if (!m_backend->init())
-        QAptActions::self()->initError();
-    if (m_backend->xapianIndexNeedsUpdate()) {
+    QAptActions::self()->setBackend(m_backend);
+    if (m_backend->xapianIndexNeedsUpdate())
         m_backend->updateXapianIndex();
-    }
+
     m_aptBackendInitialized = true;
     emit aptBackendInitialized(m_backend);
 

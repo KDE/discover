@@ -23,6 +23,7 @@
 #include "libmuonprivate_export.h"
 #include <QList>
 
+class QStringList;
 class KPluginInfo;
 class AbstractResourcesBackend;
 class MUONPRIVATE_EXPORT MuonBackendsFactory
@@ -32,6 +33,7 @@ public:
     
     AbstractResourcesBackend* backend(const QString& name) const;
     QList<AbstractResourcesBackend*> allBackends() const;
+    QStringList allBackendNames() const;
     int backendsCount() const;
     
 private:

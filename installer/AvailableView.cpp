@@ -33,6 +33,7 @@
 #include <resources/ResourcesModel.h>
 #include "BreadcrumbWidget/BreadcrumbWidget.h"
 #include "CategoryView/CategoryViewWidget.h"
+#include "ResourceDetailsView/ResourceDetailsView.h"
 
 AvailableView::AvailableView(QWidget *parent)
         : AbstractViewContainer(parent)
@@ -40,9 +41,7 @@ AvailableView::AvailableView(QWidget *parent)
 
     m_categoryViewWidget = new CategoryViewWidget(m_viewStack);
 
-    QString rootName = i18n("Get Software");
-    KIcon rootIcon = KIcon("applications-other");
-    m_categoryViewWidget->setCategories(Category::populateCategories(), rootName, rootIcon);
+    m_categoryViewWidget->setDisplayedCategory(nullptr);
     m_breadcrumbWidget->setRootItem(m_categoryViewWidget->breadcrumbItem());
 
     m_viewStack->addWidget(m_categoryViewWidget);
@@ -55,4 +54,24 @@ AvailableView::AvailableView(QWidget *parent)
             this, SLOT(registerNewSubView(AbstractViewBase*)));
     connect(m_categoryViewWidget, SIGNAL(switchToSubView(AbstractViewBase*)),
             this, SLOT(switchToSubView(AbstractViewBase*)));
+}
+
+void AvailableView::setResource(AbstractResource *res)
+{
+    // Check to see if a view for this app already exists
+    if (m_currentPair.second == res) {
+        QMetaObject::invokeMethod(this, "switchToSubView", Q_ARG(AbstractViewBase*, m_currentPair.first));
+        return;
+    }
+
+    // Create one if not
+    m_detailsView = new ResourceDetailsView(this);
+    m_detailsView->setResource(res);
+    m_currentPair.first = m_detailsView;
+
+    connect(m_detailsView, SIGNAL(destroyed(QObject*)),
+            this, SLOT(onSubViewDestroyed()));
+
+    // Tell our parent that we can exist, so that they can forward it
+    QMetaObject::invokeMethod(this, "registerNewSubView", Q_ARG(AbstractViewBase*, m_detailsView));
 }

@@ -42,9 +42,7 @@ class CategoryViewWidget : public AbstractViewBase
 public:
     CategoryViewWidget(QWidget *parent);
 
-    void setCategories(const QList<Category *> &categoryList,
-                       const QString &rootText,
-                       const QIcon &rootIcon);
+    void setDisplayedCategory(Category* c);
     void search(const QString &text);
 
 private:

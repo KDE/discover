@@ -37,14 +37,17 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     setShouldShowTechnical(false);
 }
 
-void ResourcesProxyModel::search(const QString &searchText)
+void ResourcesProxyModel::setSearch(const QString &searchText)
 {
-    // 1-character searches are painfully slow. >= 2 chars are fine, though
     m_searchResults.clear();
+    m_lastSearch = searchText;
+    ResourcesModel* model = qobject_cast<ResourcesModel*>(sourceModel());
+    if(!model) {
+        return;
+    }
+
+    // 1-character searches are painfully slow. >= 2 chars are fine, though
     if (searchText.size() > 1) {
-        m_lastSearch = searchText;
-        
-        ResourcesModel* model = qobject_cast<ResourcesModel*>(sourceModel());
         QVector< AbstractResourcesBackend* > backends= model->backends();
         foreach(AbstractResourcesBackend* backend, backends)
             m_searchResults += backend->searchPackageName(searchText);
@@ -58,9 +61,9 @@ void ResourcesProxyModel::search(const QString &searchText)
     emit invalidated();
 }
 
-void ResourcesProxyModel::refreshSearch()
+QString ResourcesProxyModel::lastSearch() const
 {
-    search(m_lastSearch);
+    return m_lastSearch;
 }
 
 void ResourcesProxyModel::setOriginFilter(const QString &origin)
@@ -115,22 +118,24 @@ bool ResourcesProxyModel::shouldShowTechnical() const
     return !m_roleFilters.contains(ResourcesModel::IsTechnicalRole);
 }
 
-bool shouldFilter(const QModelIndex& idx, const QPair<FilterType, QString>& filter)
+bool shouldFilter(AbstractResource* res, const QPair<FilterType, QString>& filter)
 {
     bool ret = true;
     switch (filter.first) {
         case CategoryFilter:
-            ret = idx.data(ResourcesModel::CategoryRole).toStringList().contains(filter.second);
+            ret = res->categories().contains(filter.second);
             break;
         case PkgSectionFilter:
-            ret = idx.data(ResourcesModel::SectionRole).toString() == filter.second;
+            ret = res->section() == filter.second;
             break;
         case PkgWildcardFilter: {
             QString wildcard = filter.second;
             wildcard.remove('*');
-            ret = idx.data(ResourcesModel::PackageNameRole).toString().contains(wildcard);
+            ret = res->packageName().contains(wildcard);
         }   break;
         case PkgNameFilter: // Only useful in the not filters
+            ret = res->packageName() == filter.second;
+            break;
         case InvalidFilter:
             break;
     }
@@ -139,26 +144,31 @@ bool shouldFilter(const QModelIndex& idx, const QPair<FilterType, QString>& filt
 
 bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
-    QModelIndex idx = sourceModel()->index(sourceRow, 0, sourceParent);
-    if(!idx.isValid())
+    AbstractResource* res = qobject_cast<AbstractResource*>(sourceModel()->index(sourceRow, 0, sourceParent).data(ResourcesModel::ApplicationRole).value<QObject*>());
+    if(!res)
         return false;
 
+    if(m_filterBySearch && !m_searchResults.contains(res)) {
+        return false;
+    }
+
     for(QHash<int, QVariant>::const_iterator it=m_roleFilters.constBegin(), itEnd=m_roleFilters.constEnd(); it!=itEnd; ++it) {
-        if(idx.data(it.key())!=it.value()) {
+        if(res->property(roleNames().value(it.key()))!=it.value()) {
             return false;
         }
     }
-    
-    if(idx.data(ResourcesModel::StateRole).toInt()<m_stateFilter)
+
+    if(res->state() < m_stateFilter)
         return false;
-    if(!m_filteredMimeType.isEmpty() && !idx.data(ResourcesModel::MimeTypes).toString().contains(m_filteredMimeType)) {
+
+    if(!m_filteredMimeType.isEmpty() && res->mimetypes().contains(m_filteredMimeType)) {
         return false;
     }
 
     if (!m_orFilters.isEmpty()) {
         bool orValue = false;
         for (QList<QPair<FilterType, QString> >::const_iterator filter = m_orFilters.constBegin(); filter != m_orFilters.constEnd(); ++filter) {
-            if(shouldFilter(idx, *filter)) {
+            if(shouldFilter(res, *filter)) {
                 orValue = true;
                 break;
             }
@@ -169,26 +179,16 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
 
     if (!m_andFilters.isEmpty()) {
         for (QList<QPair<FilterType, QString> >::const_iterator filter = m_andFilters.constBegin(); filter != m_andFilters.constEnd(); ++filter) {
-            if(!shouldFilter(idx, *filter))
+            if(!shouldFilter(res, *filter))
                 return false;
         }
     }
 
     if (!m_notFilters.isEmpty()) {
         for(QList<QPair<FilterType, QString> >::const_iterator filter = m_notFilters.constBegin(); filter != m_notFilters.constEnd(); ++filter) {
-            bool value = true;
-            if(filter->first==PkgNameFilter)
-                value = idx.data(ResourcesModel::PackageNameRole).toString() == filter->second;
-            else
-                value = shouldFilter(idx, *filter);
-            
-            if(value)
+            if(shouldFilter(res, *filter))
                 return false;
         }
-    }
-
-    if(m_filterBySearch) {
-        return m_searchResults.contains(idx.data(ResourcesModel::PackageNameRole).toString());
     }
 
     return true;
@@ -197,13 +197,18 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
 bool ResourcesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
 {
     if (m_sortByRelevancy) {
-        QString leftPackageName = left.data(ResourcesModel::PackageNameRole).toString();
-        QString rightPackageName = right.data(ResourcesModel::PackageNameRole).toString();
+        AbstractResource* leftPackage = qobject_cast<AbstractResource*>(left.data(ResourcesModel::ApplicationRole).value<QObject*>());
+        AbstractResource* rightPackage = qobject_cast<AbstractResource*>(right.data(ResourcesModel::ApplicationRole).value<QObject*>());
 
         // This is expensive for very large datasets. It takes about 3 seconds with 30,000 packages
         // The order in m_packages is based on relevancy when returned by m_backend->search()
         // Use this order to determine less than
-        return m_searchResults.indexOf(leftPackageName) < m_searchResults.indexOf(rightPackageName);
+        for(AbstractResource* res : m_searchResults) {
+            if(res == leftPackage)
+                return true;
+            else if(res == rightPackage)
+                return false;
+        }
     }
     QVariant leftValue = left.data(sortRole());
     QVariant rightValue = right.data(sortRole());

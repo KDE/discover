@@ -1,6 +1,6 @@
 import QtQuick 1.0
+import org.kde.plasma.core 0.1
 import org.kde.plasma.components 0.1
-import org.kde.qtextracomponents 0.1
 import "navigation.js" as Navigation
 
 Information {
@@ -36,68 +36,68 @@ Information {
                 width: info.width
                 height: info.height
             }
-            
-            Item {
-                id: titleBar
-                height: 40
-                
-                anchors {
-                    left: flick.left
-                    right: flick.right
-                    bottom: parent.bottom
-                }
-                
-                Rectangle {
-                    anchors.fill: parent
-                    color: "black"
-                    opacity: 0.7
-                }
-                
-                ToolButton {
-                    id: prevButton
-                    iconSource: "go-previous"
-                    height: parent.height*0.9
-                    width: height
-                    onClicked: info.previous()
-                    anchors {
-                        verticalCenter: parent.verticalCenter
-                        left: parent.left
-                        leftMargin: 3
-                    }
-                }
-                
-                QIconItem {
-                    id: iconItem
-                    anchors {
-                        left: prevButton.right
-                        top: parent.top
-                        bottom: parent.bottom
-                        margins: 3
-                    }
-                    width: height
-                    icon: modelData.icon
-                }
-                
-                Label {
-                    anchors {
-                        left: iconItem.right
-                        verticalCenter: parent.verticalCenter
-                        leftMargin: 10
-                    }
-                    color: "white"
-                    text: i18n("<b>%1</b><br/>%2", modelData.text, modelData.comment)
-                }
-                ToolButton {
-                    iconSource: "go-next"
-                    height: parent.height*0.9
-                    width: height
-                    onClicked: info.next()
-                    anchors {
-                        right: parent.right
-                        verticalCenter: parent.verticalCenter
-                        rightMargin: 3
-                    }
-                }
+        }
+    Item {
+        id: titleBar
+        height: 40
+        z: 23
+        property variant modelData: info.model.get(Math.min(info.currentIndex, info.model.count))
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+        
+        Rectangle {
+            anchors.fill: parent
+            color: "black"
+            opacity: 0.7
+        }
+        
+        ToolButton {
+            id: prevButton
+            iconSource: "go-previous"
+            height: parent.height*0.9
+            width: height
+            onClicked: info.previous()
+            anchors {
+                verticalCenter: parent.verticalCenter
+                left: parent.left
+                leftMargin: 3
             }
+        }
+        
+        IconItem {
+            id: iconItem
+            anchors {
+                left: prevButton.right
+                top: parent.top
+                bottom: parent.bottom
+                margins: 3
+            }
+            width: height
+            source: titleBar.modelData ? titleBar.modelData.icon : "kde"
+        }
+        
+        Label {
+            anchors {
+                left: iconItem.right
+                verticalCenter: parent.verticalCenter
+                leftMargin: 10
+            }
+            color: "white"
+            text: titleBar.modelData ? i18n("<b>%1</b><br/>%2", titleBar.modelData.text, titleBar.modelData.comment) : ""
+        }
+        ToolButton {
+            iconSource: "go-next"
+            height: parent.height*0.9
+            width: height
+            onClicked: info.next()
+            anchors {
+                right: parent.right
+                verticalCenter: parent.verticalCenter
+                rightMargin: 3
+            }
+        }
     }
 }

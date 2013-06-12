@@ -1,12 +1,12 @@
 import QtQuick 1.1
+import org.kde.plasma.core 0.1
 import org.kde.plasma.components 0.1
-import org.kde.qtextracomponents 0.1
 import org.kde.muon 1.0
 import "navigation.js" as Navigation
 
 ToolBar {
     id: page
-    property bool active: progressModel.count>0
+    property bool active: enabled && progressModel.count>0
     height: active ? contents.height+2*contents.anchors.margins : 0
     
     Behavior on height {
@@ -16,7 +16,7 @@ ToolBar {
     Connections {
         target: transactionModel
         onTransactionAdded: {
-            if(progressModel.appAt(trans.resource)<0)
+            if(page.enabled && progressModel.appAt(trans.resource)<0)
                 progressModel.append({'app': trans.resource})
         }
 
@@ -68,7 +68,7 @@ ToolBar {
             Row {
                 id: launcherRow
                 spacing: 2
-                QIconItem { icon: model.app.icon; height: parent.height; width: height }
+                IconItem { source: model.app.icon; height: parent.height*0.95; width: height }
                 Label { text: model.app.name }
                 Label { text: listener.statusText; visible: listener.isActive }
                 ToolButton {
@@ -85,6 +85,17 @@ ToolBar {
                     }
                 }
             }
+            Rectangle {
+                anchors {
+                    bottom: parent.bottom
+                    left: parent.left
+                    bottomMargin: -3
+                }
+                width: parent.width*(listener.progress/100)
+                color: theme.textColor
+                height: 1
+                visible: listener.isActive
+            }
         }
     }
     ToolButton {
@@ -94,7 +105,7 @@ ToolBar {
             rightMargin: 5
         }
         height: Math.min(implicitHeight, parent.height)
-        iconSource: "dialog-close"
+        iconSource: "window-close"
         onClicked: progressModel.clear()
     }
 }

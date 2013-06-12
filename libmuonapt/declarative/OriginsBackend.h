@@ -25,6 +25,7 @@
 #include <QStringList>
 #include <QVariantList>
 #include <qdeclarativelist.h>
+#include <LibQApt/SourcesList>
 
 class Entry : public QObject
 {
@@ -32,32 +33,26 @@ class Entry : public QObject
     Q_PROPERTY(bool hasSource READ hasSource CONSTANT)
     Q_PROPERTY(QStringList args READ args CONSTANT)
     Q_PROPERTY(QString suite READ suite CONSTANT)
-    Q_PROPERTY(QString arch READ arch CONSTANT)
+    Q_PROPERTY(QStringList arches READ arches CONSTANT)
     Q_PROPERTY(bool enabled READ isEnabled CONSTANT)
 
     public:
-        Entry(QObject* parent) : QObject(parent), m_isSource(false) {}
+        Entry(QObject* parent, const QApt::SourceEntry &entry)
+            : QObject(parent)
+            , m_entry(entry) {}
         
-        bool hasSource() const { return m_isSource; }
-        void setSource(bool s) { m_isSource = s; }
+        bool hasSource() const { return m_entry.type() == QLatin1String("deb-src"); }
         
-        QStringList args() const { return m_args; }
-        void setArgs(const QStringList& args) { m_args = args; }
+        QStringList args() const { return m_entry.components(); }
         
-        QString suite() const { return m_suite; }
-        void setSuite(const QByteArray& suite) { m_suite = suite; }
+        QString suite() const { return m_entry.dist(); }
         
-        void setArch(const QString& arch) { m_arch = arch; }
-        QString arch() const { return m_arch; }
+        QStringList arches() const { return m_entry.architectures(); }
         
-        void setEnabled(bool enabled) { m_enabled = enabled; }
-        bool isEnabled() const { return m_enabled; }
+        void setEnabled(bool enabled) { m_entry.setEnabled(enabled); }
+        bool isEnabled() const { return m_entry.isEnabled(); }
     private:
-        bool m_enabled;
-        bool m_isSource;
-        QStringList m_args;
-        QByteArray m_suite;
-        QString m_arch;
+        QApt::SourceEntry m_entry;
 };
 
 class Source : public QObject
@@ -83,12 +78,11 @@ class Source : public QObject
 class OriginsBackend : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QVariantList sources READ sourcesVariant NOTIFY originsChanged);
+    Q_PROPERTY(QVariantList sources READ sourcesVariant NOTIFY originsChanged)
     public:
         explicit OriginsBackend(QObject* parent = 0);
         virtual ~OriginsBackend();
 
-        void load(const QString& file);
         QVariantList sourcesVariant() const;
         QList<Source*> sources() const { return m_sources; }
         Source* sourceForUri(const QString& uri);
@@ -106,6 +100,7 @@ class OriginsBackend : public QObject
         void originsChanged();
 
     private:
+        QApt::SourcesList m_sourcesList;
         QList<Source*> m_sources;
 };
 

@@ -30,13 +30,10 @@ class Category;
 class MUONPRIVATE_EXPORT CategoryModel : public QStandardItemModel
 {
     Q_OBJECT
-    Q_PROPERTY(Category* displayedCategory READ displayedCategory WRITE setSubcategories)
+    Q_PROPERTY(Category* displayedCategory READ displayedCategory WRITE setDisplayedCategory)
     public:
         enum CategoryModelRole {
-            CategoryTypeRole = Qt::UserRole + 1,
-            AndOrFilterRole = Qt::UserRole + 2,
-            NotFilterRole = Qt::UserRole + 3,
-            CategoryRole
+            CategoryRole = Qt::UserRole + 1
         };
 
         enum CatViewType {
@@ -51,14 +48,14 @@ class MUONPRIVATE_EXPORT CategoryModel : public QStandardItemModel
 
         explicit CategoryModel(QObject* parent = 0);
 
-        void setCategories(const QList<Category *> &categoryList, const QString &rootName);
-        Category* categoryForIndex(int row);
+        Category* categoryForRow(int row);
 
-        void setSubcategories(Category* c);
+        void setDisplayedCategory(Category* c);
         Category* displayedCategory() const;
 
         Q_SCRIPTABLE static Category* findCategoryByName(const QString& name);
     private:
+        void setCategories(const QList<Category *> &categoryList, const QString &rootName);
         static QList<Category*> populateCategories();
 
         QList<Category*> m_categoryList;
