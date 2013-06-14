@@ -35,7 +35,7 @@ class PKTransaction : public Transaction
         void cleanup(PackageKit::Transaction::Exit, uint);
         void errorFound(PackageKit::Transaction::Error err, const QString& error);
         void mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text);
-        void requireRestard(PackageKit::Package::Restart restart, const PackageKit::Package& p);
+        void requireRestard(PackageKit::Transaction::Restart restart, const QString& p);
 
     private:
         PackageKit::Transaction* m_trans;

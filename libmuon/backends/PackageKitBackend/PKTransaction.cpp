@@ -25,7 +25,7 @@
 #include <KMessageBox>
 #include <KLocalizedString>
 #include <PackageKit/packagekit-qt2/Transaction>
-#include <QDebug>
+#include <KDebug>
 
 PKTransaction::PKTransaction(AbstractResource* app, Transaction::Role role, PackageKit::Transaction* pktrans)
     : Transaction(app, app, role)
@@ -36,17 +36,18 @@ PKTransaction::PKTransaction(AbstractResource* app, Transaction::Role role, Pack
     connect(pktrans, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(errorFound(PackageKit::Transaction::Error,QString)));
     connect(pktrans, SIGNAL(mediaChangeRequired(PackageKit::Transaction::MediaType,QString,QString)),
             SLOT(mediaChange(PackageKit::Transaction::MediaType,QString,QString)));
-    connect(pktrans, SIGNAL(requireRestart(PackageKit::Package::Restart,PackageKit::Package)),
-            SLOT(requireRestard(PackageKit::Package::Restart,PackageKit::Package)));
+    connect(pktrans, SIGNAL(requireRestart(PackageKit::Transaction::Restart,QString)),
+            SLOT(requireRestard(PackageKit::Transaction::Restart,QString)));
 }
 
 void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
 {
+    kDebug();
     qobject_cast<PackageKitBackend*>(resource()->backend())->removeTransaction(this);
     PackageKit::Transaction* t = new PackageKit::Transaction(resource());
     t->resolve(resource()->packageName(), PackageKit::Transaction::FilterNone);
-    connect(t, SIGNAL(package(PackageKit::Package)), resource(), SLOT(updatePackage(PackageKit::Package)));
-    connect(t, SIGNAL(package(PackageKit::Package)), t, SLOT(deleteLater()));
+    connect(t, SIGNAL(package(PackageKit::Transaction::Info,QString,QString)), resource(), SLOT(updatePackage(PackageKit::Transaction::Info, QString,QString)));
+    connect(t, SIGNAL(destroy()), t, SLOT(deleteLater()));
 }
 
 PackageKit::Transaction* PKTransaction::transaction()
@@ -64,7 +65,7 @@ void PKTransaction::mediaChange(PackageKit::Transaction::MediaType media, const 
     KMessageBox::information(0, text, i18n("Media Change requested: %1", type));
 }
 
-void PKTransaction::requireRestard(PackageKit::Package::Restart restart, const PackageKit::Package& p)
+void PKTransaction::requireRestard(PackageKit::Transaction::Restart restart, const QString& p)
 {
-    KMessageBox::information(0, i18n("A change by '%1' suggests your system to be rebooted.", p.name()));
+    KMessageBox::information(0, i18n("A change by '%1' suggests your system to be rebooted.", p));//FIXME: Display proper name
 }

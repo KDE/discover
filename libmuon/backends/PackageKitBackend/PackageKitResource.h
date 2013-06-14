@@ -32,6 +32,7 @@ class PackageKitResource : public AbstractResource
         explicit PackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, AbstractResourcesBackend* parent);
         virtual QString packageName() const;
         virtual QString name();
+        QString packageId() const;
         virtual QString comment();
         virtual QString longDescription() const;
         virtual QUrl homepage() const;

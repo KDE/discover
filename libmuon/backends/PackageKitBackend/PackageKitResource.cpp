@@ -47,6 +47,11 @@ QString PackageKitResource::packageName() const
     return m_name;
 }
 
+QString PackageKitResource::packageId() const
+{
+    return m_packageId;
+}
+
 QString PackageKitResource::comment()
 {
     fetchDetails();
