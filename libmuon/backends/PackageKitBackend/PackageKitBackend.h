@@ -52,7 +52,7 @@ class PackageKitBackend : public AbstractResourcesBackend
         
         virtual QVector< AbstractResource* > allResources() const;
         virtual AbstractResource* resourceByPackageName(const QString& name) const;
-        virtual QStringList searchPackageName(const QString& searchText);
+        virtual QList<AbstractResource*> searchPackageName(const QString& searchText);
         virtual int updatesCount() const;
         
         virtual void installApplication(AbstractResource* app);
@@ -65,7 +65,6 @@ class PackageKitBackend : public AbstractResourcesBackend
     public slots:
         void addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
         void removeTransaction(Transaction* t);
-        void finished(PackageKit::Transaction::Exit,uint);
 
     private:
         void populateCache();

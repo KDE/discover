@@ -28,7 +28,7 @@ class AppPackageKitResource : public PackageKitResource
 {
     Q_OBJECT
     public:
-        explicit AppPackageKitResource(const PackageKit::Package& p, const ApplicationData& data, AbstractResourcesBackend* parent);
+        explicit AppPackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, const ApplicationData& data, AbstractResourcesBackend* parent);
         virtual bool isTechnical() const;
         virtual QString name();
         virtual QString icon() const;

@@ -86,7 +86,7 @@ QHash<QString, ApplicationData> AppstreamUtils::fetchAppData(const QString& path
 {
     QHash<QString, ApplicationData> ret;
     QFile f(path);
-    if(!f.open(QIODevice::ReadOnly)) {
+    if (!f.open(QIODevice::ReadOnly)) {
         qWarning() << "couldn't open" << path;
         return ret;
     }

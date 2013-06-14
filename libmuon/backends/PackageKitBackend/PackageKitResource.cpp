@@ -29,52 +29,51 @@ PackageKitResource::PackageKitResource(const QString &packageId, PackageKit::Tra
     , m_packageId(packageId)
     , m_info(info)
     , m_summary(summary)
+    , m_size(0)
+    , m_name(PackageKit::Daemon::global()->packageName(m_packageId))
+    , m_icon(PackageKit::Daemon::global()->packageIcon(m_packageId))
 {
     setObjectName(m_packageId);
+    kDebug() << "Created" << m_packageId;
 }
 
 QString PackageKitResource::name()
 {
-    //return PackageKit::Daemon::global()->packageName(m_packageId);
-    return m_packageId;
+    return m_name;
 }
 
 QString PackageKitResource::packageName() const
 {
-    return m_packageId;
-    //return PackageKit::Daemon::global()->packageName(m_packageId);
+    return m_name;
 }
 
 QString PackageKitResource::comment()
 {
-    return QString();
-    //return m_package.description();
+    fetchDetails();
+    return m_summary;
 }
 
 QString PackageKitResource::longDescription() const
 {
-    return QString();
-    //return m_package.changelog();
+    fetchDetails();
+    return m_detail;
 }
 
 QUrl PackageKitResource::homepage() const
 {
-    return QString();
-    //return QUrl(m_package.url());
+    fetchDetails();
+    return m_url;
 }
 
 QString PackageKitResource::icon() const
 {
-    return "muon-discover";
-    //return PackageKit::Daemon::global()->packageIcon(m_packageId);
-    //return m_package.iconPath();
+    return m_icon;
 }
 
 QString PackageKitResource::license()
 {
-    return QString();
-    //fetchDetails();
-    //return m_package.license();
+    fetchDetails();
+    return m_license;
 }
 
 QList<PackageState> PackageKitResource::addonsInformation()
@@ -84,20 +83,18 @@ QList<PackageState> PackageKitResource::addonsInformation()
 
 QString PackageKitResource::availableVersion() const
 {
-    return "0.1";
-    //return PackageKit::Daemon::global()->packageVersion(m_packageId);
+    return PackageKit::Daemon::global()->packageVersion(m_packageId);//TODO: One of those needs to be different
 }
 
 QString PackageKitResource::installedVersion() const
 {
-    return "0.1";
-    //return PackageKit::Daemon::global()->packageVersion(m_packageId);
+    return PackageKit::Daemon::global()->packageVersion(m_packageId);
 }
 
 int PackageKitResource::downloadSize()
 {
-    return 0;
-    //return m_package.size();
+    fetchDetails();
+    return m_size;
 }
 
 QString PackageKitResource::origin() const
@@ -108,9 +105,7 @@ QString PackageKitResource::origin() const
 
 QString PackageKitResource::section()
 {
-    return "PK";
-    //FIXME
-    //return QString::number(m_package.group());
+    return QString();
 }
 
 QUrl PackageKitResource::screenshotUrl()
@@ -125,50 +120,175 @@ QUrl PackageKitResource::thumbnailUrl()
 
 AbstractResource::State PackageKitResource::state()
 {
-    /*if(m_package.hasUpdateDetails())
+    if (availableVersion() != installedVersion())
         return Upgradeable;
-    else {
-        PackageKit::Package::Info info = m_package.info();
-        if(info & PackageKit::Package::InfoInstalled) {
+    switch(m_info) {
+        case PackageKit::Transaction::InfoInstalled:
             return Installed;
-        } else if(info & PackageKit::Package::InfoAvailable) {
+        case PackageKit::Transaction::InfoAvailable:
             return None;
-        }
-    }*/
-    return Installed;//Broken;
+        default:
+            break;
+    };
+    return Broken;
 }
 
-/*void PackageKitResource::updatePackage(const PackageKit::Package& p)
+void PackageKitResource::updatePackage(PackageKit::Transaction::Info info, const QString &packageId, QString)
 {
-    if(p.info()==PackageKit::Package::UnknownInfo)
-        kWarning() << "Received unknown Package::info() for " << p.name();
-    bool changeState = p.info()!=m_package.info();
-    m_package = p;
-    if(changeState) {
+    if (packageId != m_packageId)
+        return;
+    if (info == PackageKit::Transaction::InfoUnknown)
+        kWarning() << "Received unknown Package::info() for " << name();
+    bool changeState = (info != m_info);
+    m_info = info;
+    if (changeState) {
         emit stateChanged();
     }
-}*/
+}
 
 QStringList PackageKitResource::categories()
 {
-    return QStringList() << "System";
+    fetchDetails();
+    QStringList categories;
+    switch (m_group) {
+        case PackageKit::Transaction::GroupUnknown:
+            categories << "Unknown";
+            break;
+        case PackageKit::Transaction::GroupAccessibility:
+            categories << "Accessibility";
+            break;
+        case PackageKit::Transaction::GroupAccessories:
+            categories << "Utility";
+            break;
+        case PackageKit::Transaction::GroupAdminTools:
+            categories << "System";
+            break;
+        case PackageKit::Transaction::GroupCommunication:
+            categories << "Chat";
+            break;
+        case PackageKit::Transaction::GroupDesktopGnome:
+            categories << "Unknown";
+            break;
+        case PackageKit::Transaction::GroupDesktopKde:
+            categories << "Unknown";
+            break;
+        case PackageKit::Transaction::GroupDesktopOther:
+            categories << "Unknown";
+            break;
+        case PackageKit::Transaction::GroupDesktopXfce:
+            categories << "Unknown";
+            break;
+        case PackageKit::Transaction::GroupEducation:
+            categories << "Science";
+            break;
+        case PackageKit::Transaction::GroupFonts:
+            categories << "Fonts";
+            break;
+        case PackageKit::Transaction::GroupGames:
+            categories << "Games";
+            break;
+        case PackageKit::Transaction::GroupGraphics:
+            categories << "Graphics";
+            break;
+        case PackageKit::Transaction::GroupInternet:
+            categories << "Internet";
+            break;
+        case PackageKit::Transaction::GroupLegacy:
+            categories << "Unknown";
+            break;
+        case PackageKit::Transaction::GroupLocalization:
+            categories << "Localization";
+            break;
+        case PackageKit::Transaction::GroupMaps:
+            categories << "Geography";
+            break;
+        case PackageKit::Transaction::GroupMultimedia:
+            categories << "Multimedia";
+            break;
+        case PackageKit::Transaction::GroupNetwork:
+            categories << "Network";
+            break;
+        case PackageKit::Transaction::GroupOffice:
+            categories << "Office";
+            break;
+        case PackageKit::Transaction::GroupOther:
+            categories << "Unknown";
+            break;
+        case PackageKit::Transaction::GroupPowerManagement:
+            categories << "System";
+            break;
+        case PackageKit::Transaction::GroupProgramming:
+            categories << "Development";
+            break;
+        case PackageKit::Transaction::GroupPublishing:
+            categories << "Publishing";
+            break;
+        case PackageKit::Transaction::GroupRepos:
+            categories << "System";
+            break;
+        case PackageKit::Transaction::GroupSecurity:
+            categories << "System";
+            break;
+        case PackageKit::Transaction::GroupServers:
+            categories << "System";
+            break;
+        case PackageKit::Transaction::GroupSystem:
+            categories << "System";
+            break;
+        case PackageKit::Transaction::GroupVirtualization:
+            categories << "System";
+            break;
+        case PackageKit::Transaction::GroupScience:
+            categories << "Science";
+            break;
+        case PackageKit::Transaction::GroupDocumentation:
+            categories << "System";
+            break;
+        case PackageKit::Transaction::GroupElectronics:
+            categories << "System";
+            break;
+        case PackageKit::Transaction::GroupCollections:
+            categories << "System";
+            break;
+        case PackageKit::Transaction::GroupVendor:
+            categories << "System";
+            break;
+        case PackageKit::Transaction::GroupNewest:
+            categories << "System";
+            break;
+    };
+    return categories;
 }
 
 bool PackageKitResource::isTechnical() const
 {
-    return false;
+    return true;
 }
 
-void PackageKitResource::fetchDetails()
+void PackageKitResource::fetchDetails() const
 {
-    /*if(m_package.hasDetails())
+    if (m_size > 0)
         return;
+    PackageKit::Transaction* transaction = new PackageKit::Transaction(nullptr);//We cannot use this here because of the const method
+    transaction->getDetails(m_packageId);
+    connect(transaction, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(updatePackage(PackageKit::Transaction::Info, QString, QString)));
+    connect(transaction, SIGNAL(details(QString, QString, PackageKit::Transaction::Group, QString, QString, qulonglong)), SLOT(details(QString, QString, PackageKit::Transaction::Group, QString, QString, qulonglong)));
+    connect(transaction, SIGNAL(destroy()), transaction, SLOT(deleteLater()));
+}
 
-    PackageKit::Transaction* transaction = new PackageKit::Transaction(this);
-    transaction->getDetails(m_package);
-    connect(transaction, SIGNAL(package(PackageKit::Package)), SLOT(updatePackage(PackageKit::Package)));
-    connect(transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SIGNAL(licenseChanged()));
-    connect(transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), transaction, SLOT(deleteLater()));*/
+void PackageKitResource::details(const QString &packageId, const QString &license, PackageKit::Transaction::Group group, const QString &detail, const QString &url, qulonglong size)
+{
+    if (packageId != m_packageId)
+        return;
+    kDebug() << "Got details for" << m_packageId;
+    bool newLicense = (license != m_license);
+    m_license = license;
+    m_group = group;
+    m_detail = detail;
+    m_url = url;
+    m_size = size;
+    if (newLicense)
+        emit licenseChanged();
 }
 
 /*PackageKit::Package PackageKitResource::package() const

@@ -25,10 +25,12 @@
 #include <KToolInvocation>
 #include <QDebug>
 
-AppPackageKitResource::AppPackageKitResource(const PackageKit::Package& p,
+AppPackageKitResource::AppPackageKitResource(const QString &packageId, 
+                                             PackageKit::Transaction::Info info, 
+                                             const QString &summary,
                                              const ApplicationData& data,
                                              AbstractResourcesBackend* parent)
-    : PackageKitResource(p, parent)
+    : PackageKitResource(packageId, info, summary, parent)
     , m_appdata(data)
 {}
 

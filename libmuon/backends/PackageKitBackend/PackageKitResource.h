@@ -54,17 +54,25 @@ class PackageKitResource : public AbstractResource
         virtual QString availableVersion() const;
         //PackageKit::Package package() const;
 
-    //public slots:
-    //    void updatePackage(const PackageKit::Package& p);
+    public slots:
+        void updatePackage(PackageKit::Transaction::Info info, const QString &packageId, QString);
+        void details(const QString &packageId, const QString &license, PackageKit::Transaction::Group group, const QString &detail, const QString &url, qulonglong size);
 
     signals:
         void licenseChanged();
 
     private:
-        void fetchDetails();
+        void fetchDetails() const;
         QString m_packageId;
         PackageKit::Transaction::Info m_info;
         QString m_summary;
+        QString m_license;
+        PackageKit::Transaction::Group m_group;
+        QString m_detail;
+        QString m_url;
+        qulonglong m_size;
+        QString m_name;
+        QString m_icon;
 };
 
 #endif // PACKAGEKITRESOURCE_H

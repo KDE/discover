@@ -20,8 +20,8 @@
 
 #include "PackageKitBackend.h"
 #include "PackageKitResource.h"
-//#include "AppPackageKitResource.h"
-//#include "AppstreamUtils.h"
+#include "AppPackageKitResource.h"
+#include "AppstreamUtils.h"
 //#include "PKTransaction.h"
 #include <resources/AbstractResource.h>
 #include <resources/StandardBackendUpdater.h>
@@ -29,6 +29,7 @@
 #include <QStringList>
 #include <QDebug>
 #include <PackageKit/packagekit-qt2/Transaction>
+#include <PackageKit/packagekit-qt2/Daemon>
 
 #include <KPluginFactory>
 #include <KLocalizedString>
@@ -43,45 +44,36 @@ PackageKitBackend::PackageKitBackend(QObject* parent, const QVariantList&)
     , m_updater(new StandardBackendUpdater(this))
 {
     populateCache();
+    emit backendReady();
 }
 
 void PackageKitBackend::populateCache()
 {
-    //emit reloadStarted();
-    m_packages += new PackageKitResource("foo", PackageKit::Transaction::InfoInstalled, "summ", this);
+    emit reloadStarted();
     PackageKit::Transaction* t = new PackageKit::Transaction(this);
-    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(finished(PackageKit::Transaction::Exit,uint)));
+    
+    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SIGNAL(reloadFinished()));
     connect(t, SIGNAL(destroy()), t, SLOT(deleteLater()));
     connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackage(PackageKit::Transaction::Info, QString, QString)));
-    kDebug() << "Get all packages";
+    
     t->getPackages();
-
-    //m_appdata = AppstreamUtils::fetchAppData("/tmp/appdata.xml");
-}
-
-void PackageKitBackend::finished(PackageKit::Transaction::Exit,uint)
-{
-    kDebug() << "FINISHED";
-    //emit reloadFinished();
-    emit backendReady();
+    
+    m_appdata = AppstreamUtils::fetchAppData("/home/boom1992/appdata.xml");
 }
 
 void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
     PackageKitResource* newResource = 0;
-    kDebug() << "Add new package" << packageId;
-    //QHash<QString, ApplicationData>::const_iterator it = m_appdata.constFind(p.name());
-    //if(it!=m_appdata.constEnd())
-    //    newResource = new AppPackageKitResource(p, *it, this);
-    //else
+    QHash<QString, ApplicationData>::const_iterator it = m_appdata.constFind(PackageKit::Daemon::global()->packageName(packageId));
+    if(it!=m_appdata.constEnd())
+        newResource = new AppPackageKitResource(packageId, info, summary, *it, this);
+    else
         newResource = new PackageKitResource(packageId, info, summary, this);
     m_packages += newResource;
 }
 
 QVector<AbstractResource*> PackageKitBackend::allResources() const
 {
-    kDebug() << "All resources" << m_packages.count();
-    qDebug() << "All resources" << m_packages.count();
     return m_packages;
 }
 
@@ -97,12 +89,12 @@ AbstractResource* PackageKitBackend::resourceByPackageName(const QString& name) 
     return ret;
 }
 
-QStringList PackageKitBackend::searchPackageName(const QString& searchText)
+QList<AbstractResource*> PackageKitBackend::searchPackageName(const QString& searchText)
 {
-    QStringList ret;
+    QList<AbstractResource*> ret;
     for(AbstractResource* res : m_packages) {
         if(res->name().contains(searchText, Qt::CaseInsensitive))
-            ret += res->packageName();
+            ret += res;
     }
     return ret;
 }
