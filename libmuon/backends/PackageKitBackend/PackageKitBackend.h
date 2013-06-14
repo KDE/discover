@@ -64,12 +64,16 @@ class PackageKitBackend : public AbstractResourcesBackend
         
     public slots:
         void addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
+        void addUpdate(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
         void removeTransaction(Transaction* t);
+        
+    private slots:
+        void populateUpgradeablePackages();
 
     private:
         void populateCache();
 
-        QVector<AbstractResource*> m_packages;
+        QHash<QString, AbstractResource*> m_packages;
         QHash<QString, ApplicationData> m_appdata;
         QList<Transaction*> m_transactions;
         StandardBackendUpdater* m_updater;

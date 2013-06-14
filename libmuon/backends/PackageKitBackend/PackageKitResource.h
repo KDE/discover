@@ -58,6 +58,7 @@ class PackageKitResource : public AbstractResource
     public slots:
         void updatePackage(PackageKit::Transaction::Info info, const QString &packageId, QString);
         void details(const QString &packageId, const QString &license, PackageKit::Transaction::Group group, const QString &detail, const QString &url, qulonglong size);
+        void setAvailableVersion(const QString &ver);
 
     signals:
         void licenseChanged();
@@ -74,6 +75,8 @@ class PackageKitResource : public AbstractResource
         qulonglong m_size;
         QString m_name;
         QString m_icon;
+        QString m_availableVersion;
+        QString m_installedVersion;
 };
 
 #endif // PACKAGEKITRESOURCE_H

@@ -52,7 +52,7 @@ void PackageKitBackend::populateCache()
     emit reloadStarted();
     PackageKit::Transaction* t = new PackageKit::Transaction(this);
     
-    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SIGNAL(reloadFinished()));
+    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(populateUpgradeablePackages()));
     connect(t, SIGNAL(destroy()), t, SLOT(deleteLater()));
     connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackage(PackageKit::Transaction::Info, QString, QString)));
     
@@ -65,35 +65,47 @@ void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QSt
 {
     PackageKitResource* newResource = 0;
     QHash<QString, ApplicationData>::const_iterator it = m_appdata.constFind(PackageKit::Daemon::global()->packageName(packageId));
-    if(it!=m_appdata.constEnd())
+    if (it!=m_appdata.constEnd())
         newResource = new AppPackageKitResource(packageId, info, summary, *it, this);
     else
         newResource = new PackageKitResource(packageId, info, summary, this);
-    m_packages += newResource;
+    if (m_packages[PackageKit::Daemon::global()->packageName(packageId)])
+        kWarning() << "Somehow we detected another package here, overwriting:" << packageId;
+    m_packages[PackageKit::Daemon::global()->packageName(packageId)] = newResource;
+}
+
+void PackageKitBackend::populateUpgradeablePackages()
+{
+    PackageKit::Transaction* t = new PackageKit::Transaction(this);//TODO: we need to call this once we have all transactions done again, also we need to reset old availableVersions then
+    
+    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SIGNAL(reloadFinished()));
+    connect(t, SIGNAL(destroy()), t, SLOT(deleteLater()));
+    connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addUpdate(PackageKit::Transaction::Info, QString, QString)));
+    
+    t->getUpdates(PackageKit::Transaction::FilterArch);
+}
+
+void PackageKitBackend::addUpdate(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
+{
+    PackageKitResource * res = qobject_cast<PackageKitResource*>(m_packages[PackageKit::Daemon::global()->packageName(packageId)]);
+    res->setAvailableVersion(PackageKit::Daemon::global()->packageVersion(packageId));
 }
 
 QVector<AbstractResource*> PackageKitBackend::allResources() const
 {
-    return m_packages;
+    return m_packages.values().toVector();
 }
 
 AbstractResource* PackageKitBackend::resourceByPackageName(const QString& name) const
 {
-    AbstractResource* ret = 0;
-    for(AbstractResource* res : m_packages) {
-        if(res->name()==name || res->packageName()==name) {
-            ret = res;
-            break;
-        }
-    }
-    return ret;
+    return m_packages[name];
 }
 
 QList<AbstractResource*> PackageKitBackend::searchPackageName(const QString& searchText)
 {
     QList<AbstractResource*> ret;
-    for(AbstractResource* res : m_packages) {
-        if(res->name().contains(searchText, Qt::CaseInsensitive))
+    for(AbstractResource* res : m_packages.values()) {//TODO: Port to hash
+        if (res->name().contains(searchText, Qt::CaseInsensitive))
             ret += res;
     }
     return ret;
@@ -102,7 +114,7 @@ QList<AbstractResource*> PackageKitBackend::searchPackageName(const QString& sea
 int PackageKitBackend::updatesCount() const
 {
     int ret = 0;
-    for(AbstractResource* res : m_packages) {
+    for(AbstractResource* res : m_packages.values()) {
         if(res->state() == AbstractResource::Upgradeable) {
             ret++;
         }
@@ -163,8 +175,8 @@ QList<AbstractResource*> PackageKitBackend::upgradeablePackages() const
 {
     //TODO: We need to set the available version as well for each package I guess
     QList<AbstractResource*> ret;
-    for(AbstractResource* res : m_packages) {
-        if(res->state() == AbstractResource::Upgradeable) {
+    for(AbstractResource* res : m_packages.values()) {
+        if (res->state() == AbstractResource::Upgradeable) {
             ret+=res;
         }
     }

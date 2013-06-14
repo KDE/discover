@@ -32,6 +32,8 @@ PackageKitResource::PackageKitResource(const QString &packageId, PackageKit::Tra
     , m_size(0)
     , m_name(PackageKit::Daemon::global()->packageName(m_packageId))
     , m_icon(PackageKit::Daemon::global()->packageIcon(m_packageId))
+    , m_availableVersion(PackageKit::Daemon::global()->packageVersion(m_packageId))
+    , m_installedVersion(PackageKit::Daemon::global()->packageVersion(m_packageId))
 {
     setObjectName(m_packageId);
     kDebug() << "Created" << m_packageId;
@@ -88,12 +90,17 @@ QList<PackageState> PackageKitResource::addonsInformation()
 
 QString PackageKitResource::availableVersion() const
 {
-    return PackageKit::Daemon::global()->packageVersion(m_packageId);//TODO: One of those needs to be different
+    return m_availableVersion;
+}
+
+void PackageKitResource::setAvailableVersion(const QString &ver)
+{
+    m_availableVersion = ver;
 }
 
 QString PackageKitResource::installedVersion() const
 {
-    return PackageKit::Daemon::global()->packageVersion(m_packageId);
+    return m_installedVersion;
 }
 
 int PackageKitResource::downloadSize()
