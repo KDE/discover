@@ -203,9 +203,13 @@ void UpdaterWidget::markAllPackagesForUpgrade()
 
 void UpdaterWidget::checkUpToDate()
 {
-    if(!m_updatesBackends->hasUpdates()) {
+    QDateTime lastUpdate = m_updatesBackends->lastUpdate();
+    qint64 msecSinceUpdate = lastUpdate.msecsTo(QDateTime::currentDateTime());
+    qint64 day = 1000 * 60 * 60 * 24;
+    qint64 week = 1000 * 60 * 60 * 24 * 7;
+
+    if(!m_updatesBackends->hasUpdates() || msecSinceUpdate > week) {
         setCurrentIndex(1);
-        QDateTime lastUpdate = m_updatesBackends->lastUpdate();
 
         // Unknown time since last update
         if (!lastUpdate.isValid()) {
@@ -216,10 +220,6 @@ void UpdaterWidget::checkUpToDate()
                                         "to check."));
             return;
         }
-
-        qint64 msecSinceUpdate = lastUpdate.msecsTo(QDateTime::currentDateTime());
-        qint64 day = 1000 * 60 * 60 * 24;
-        qint64 week = 1000 * 60 * 60 * 24 * 7;
 
         if (msecSinceUpdate < day) {
             m_ui->updateStatusIcon->setPixmap(KIcon("security-high").pixmap(128, 128));
