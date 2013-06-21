@@ -22,6 +22,7 @@
 #include "PackageKitBackend.h"
 #include "PackageKitResource.h"
 #include <resources/AbstractResource.h>
+#include <Transaction/TransactionModel.h>
 #include <KMessageBox>
 #include <KLocalizedString>
 #include <PackageKit/packagekit-qt2/Transaction>
@@ -32,20 +33,41 @@ PKTransaction::PKTransaction(AbstractResource* app, Transaction::Role role, Pack
     , m_trans(pktrans)
 {
     m_trans->setParent(this);
+    setCancellable(pktrans->allowCancel());
     connect(pktrans, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(cleanup(PackageKit::Transaction::Exit,uint)));
     connect(pktrans, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(errorFound(PackageKit::Transaction::Error,QString)));
     connect(pktrans, SIGNAL(mediaChangeRequired(PackageKit::Transaction::MediaType,QString,QString)),
             SLOT(mediaChange(PackageKit::Transaction::MediaType,QString,QString)));
     connect(pktrans, SIGNAL(requireRestart(PackageKit::Transaction::Restart,QString)),
             SLOT(requireRestard(PackageKit::Transaction::Restart,QString)));
+    connect(pktrans, SIGNAL(itemProgress(QString, PackageKit::Transaction::Status, uint)), SLOT(progressChanged(QString, PackageKit::Transaction::Status, uint)));
+}
+
+void PKTransaction::progressChanged(const QString &id, PackageKit::Transaction::Status status, uint percentage)
+{
+    if (id != qobject_cast<PackageKitResource*>(resource())->availablePackageId() ||
+        id != qobject_cast<PackageKitResource*>(resource())->installedPackageId())
+        return;
+    kDebug() << "Progress" << percentage << "state" << status;
+    setProgress(percentage);
+    //FIXME ALso set status and optimize the casts
+}
+
+void PKTransaction::cancel()
+{
+    m_trans->cancel();
 }
 
 void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
 {
-    kDebug();
-    qobject_cast<PackageKitBackend*>(resource()->backend())->removeTransaction(this);
+    if (exit == PackageKit::Transaction::ExitCancelled) {
+        TransactionModel::global()->cancelTransaction(this);
+        deleteLater();
+    } else {
+        qobject_cast<PackageKitBackend*>(resource()->backend())->removeTransaction(this);
+    }
     PackageKit::Transaction* t = new PackageKit::Transaction(resource());
-    t->resolve(resource()->packageName(), PackageKit::Transaction::FilterNone);
+    t->resolve(resource()->packageName(), PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
     connect(t, SIGNAL(package(PackageKit::Transaction::Info,QString,QString)), resource(), SLOT(addPackageId(PackageKit::Transaction::Info, QString,QString)));
     connect(t, SIGNAL(destroy()), t, SLOT(deleteLater()));
 }

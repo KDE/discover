@@ -30,12 +30,15 @@ class PKTransaction : public Transaction
     public:
         explicit PKTransaction(AbstractResource* app, Transaction::Role role, PackageKit::Transaction* pktrans);
         PackageKit::Transaction* transaction();
+        
+        virtual void cancel();
 
     private slots:
         void cleanup(PackageKit::Transaction::Exit, uint);
         void errorFound(PackageKit::Transaction::Error err, const QString& error);
         void mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text);
         void requireRestard(PackageKit::Transaction::Restart restart, const QString& p);
+        void progressChanged(const QString&, PackageKit::Transaction::Status, uint);
 
     private:
         PackageKit::Transaction* m_trans;

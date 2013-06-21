@@ -29,6 +29,7 @@
 #include <QStringList>
 #include <QDebug>
 #include <QTimer>
+#include <QTimerEvent>
 #include <PackageKit/packagekit-qt2/Transaction>
 #include <PackageKit/packagekit-qt2/Daemon>
 
@@ -48,7 +49,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent, const QVariantList&)
     populateInstalledCache();
     emit backendReady();
     
-    //QTimer::singleShot(40000, this, SLOT(updateDatabase()));
+    startTimer(60 * 60 * 1000);//Update database every 60 minutes
 }
 
 PackageKitBackend::~PackageKitBackend()
@@ -130,6 +131,11 @@ void PackageKitBackend::finishRefresh()
     emit reloadFinished();
 }
 
+void PackageKitBackend::timerEvent(QTimerEvent * event)
+{
+    updateDatabase();
+}
+
 void PackageKitBackend::updateDatabase()
 {
     kDebug() << "UPDATE CALLED";
@@ -138,8 +144,8 @@ void PackageKitBackend::updateDatabase()
     } else {
         m_refresher->reset();
     }
-    connect(m_refresher, SIGNAL(changed()), SLOT(populateInstalledCache()));
-    connect(m_refresher, SIGNAL(destroy()), m_refresher, SLOT(deleteLater()));
+    connect(m_refresher, SIGNAL(changed()), SLOT(populateInstalledCache()), Qt::UniqueConnection);
+    //connect(m_refresher, SIGNAL(destroy()), m_refresher, SLOT(deleteLater()));
 
     m_refresher->refreshCache(false);
 }
@@ -204,8 +210,9 @@ void PackageKitBackend::cancelTransaction(AbstractResource* app)
         if (pkt->resource() == app) {
             if (pkt->transaction()->allowCancel()) {
                 pkt->transaction()->cancel();
-                removeTransaction(t);
-                TransactionModel::global()->cancelTransaction(t);
+                int count = m_transactions.removeAll(t);
+                Q_ASSERT(count==1);
+                //TransactionModel::global()->cancelTransaction(t);
             } else {
                 kWarning() << "trying to cancel a non-cancellable transaction: " << app->name();
             }

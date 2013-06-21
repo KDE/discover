@@ -161,6 +161,7 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
     } else {
         m_availablePackageId = packageId;
         if (m_installedPackageId == m_availablePackageId) { //This case will happen when we have a package installed and remove it
+            kDebug() << "Caught the case";
             m_info = info;
             m_installedPackageId = QString();
             m_installedVersion = QString();
@@ -171,6 +172,7 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
         m_summary = summary;
     
     if (changeState) {
+        kDebug() << "State changed" << m_info;
         emit stateChanged();
     }
 }

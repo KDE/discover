@@ -27,6 +27,7 @@
 #include <QStringList>
 #include <PackageKit/packagekit-qt2/Transaction>
 
+class QTimerEvent;
 class StandardBackendUpdater;
 struct ApplicationData
 {
@@ -66,6 +67,9 @@ class PackageKitBackend : public AbstractResourcesBackend
         
     public slots:
         void removeTransaction(Transaction* t);
+        
+    protected:
+        virtual void timerEvent(QTimerEvent * event);
         
     private slots:
         void populateNewestCache();
