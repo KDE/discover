@@ -32,14 +32,14 @@ public:
     virtual QList<PackageState> addonsInformation();
     virtual QString section();
     virtual QString origin() const;
-    virtual QString longDescription() const;
+    virtual QString longDescription();
     virtual QString availableVersion() const;
     virtual QString installedVersion() const;
     virtual QString license();
     virtual int downloadSize();
     virtual QUrl screenshotUrl();
     virtual QUrl thumbnailUrl();
-    virtual QUrl homepage() const;
+    virtual QUrl homepage();
     virtual QStringList categories();
     virtual AbstractResource::State state();
     virtual QString icon() const;

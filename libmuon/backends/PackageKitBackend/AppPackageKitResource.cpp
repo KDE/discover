@@ -42,7 +42,7 @@ QString AppPackageKitResource::name()
     return ret;
 }
 
-QString AppPackageKitResource::longDescription() const
+QString AppPackageKitResource::longDescription()
 {
     QString ret = m_appdata.summary.value(KGlobal::locale()->language());
     if(ret.isEmpty()) ret = m_appdata.summary.value(QString());
@@ -65,7 +65,7 @@ QStringList AppPackageKitResource::categories()
     return m_appdata.appcategories;
 }
 
-QUrl AppPackageKitResource::homepage() const
+QUrl AppPackageKitResource::homepage()
 {
     return m_appdata.url.isEmpty() ? PackageKitResource::homepage() : m_appdata.url;
 }

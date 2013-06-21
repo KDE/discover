@@ -21,6 +21,7 @@
 #ifndef PACKAGEKITBACKEND_H
 #define PACKAGEKITBACKEND_H
 
+#include "PackageKitResource.h"
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
 #include <QStringList>
@@ -46,6 +47,7 @@ class PackageKitBackend : public AbstractResourcesBackend
     Q_INTERFACES(AbstractResourcesBackend)
     public:
         explicit PackageKitBackend(QObject* parent, const QVariantList& args);
+        ~PackageKitBackend();
         
         virtual AbstractBackendUpdater* backendUpdater() const;
         virtual AbstractReviewsBackend* reviewsBackend() const;
@@ -63,20 +65,25 @@ class PackageKitBackend : public AbstractResourcesBackend
         virtual QList<AbstractResource*> upgradeablePackages() const;
         
     public slots:
-        void addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
-        void addUpdate(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
         void removeTransaction(Transaction* t);
         
     private slots:
-        void populateUpgradeablePackages();
+        void populateNewestCache();
+        void populateInstalledCache();
+        void finishRefresh();
+        void updateDatabase();
+        void addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
+        void addNewest(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
 
     private:
-        void populateCache();
 
         QHash<QString, AbstractResource*> m_packages;
+        QHash<QString, AbstractResource*> m_updatingPackages;
         QHash<QString, ApplicationData> m_appdata;
         QList<Transaction*> m_transactions;
         StandardBackendUpdater* m_updater;
+        QList<PackageKitResource*> m_upgradeablePackages;
+        PackageKit::Transaction * m_refresher;
 };
 
 #endif // PACKAGEKITBACKEND_H

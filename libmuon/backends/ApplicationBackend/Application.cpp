@@ -383,7 +383,7 @@ bool Application::hasField(const char* field) const
     return m_data && m_data->group("Desktop Entry").hasKey(field);
 }
 
-QUrl Application::homepage() const
+QUrl Application::homepage()
 {
     if(!m_package) return QString();
     return m_package->homepage();
@@ -395,7 +395,7 @@ QString Application::origin() const
     return m_package->origin();
 }
 
-QString Application::longDescription() const
+QString Application::longDescription()
 {
     if(!m_package) return QString();
     return m_package->longDescription();

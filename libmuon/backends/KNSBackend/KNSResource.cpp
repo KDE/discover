@@ -91,7 +91,7 @@ QStringList KNSResource::categories()
     return QStringList(m_category);
 }
 
-QUrl KNSResource::homepage() const
+QUrl KNSResource::homepage()
 {
     return m_content.detailpage();
 }
@@ -111,7 +111,7 @@ Attica::Content& KNSResource::content()
     return m_content;
 }
 
-QString KNSResource::longDescription() const
+QString KNSResource::longDescription()
 {
     QString ret = m_content.description();
     ret = ret.replace('\r', QString());

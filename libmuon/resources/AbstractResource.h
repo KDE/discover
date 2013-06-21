@@ -89,7 +89,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         virtual QStringList categories() = 0;
         
         ///@returns a URL that points to the content
-        virtual QUrl homepage() const = 0;
+        virtual QUrl homepage() = 0;
         
         virtual bool isTechnical() const;
 
@@ -102,7 +102,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         
         virtual QString installedVersion() const = 0;
         virtual QString availableVersion() const = 0;
-        virtual QString longDescription() const = 0;
+        virtual QString longDescription() = 0;
         
         virtual QString origin() const = 0;
         virtual QString section() = 0;

@@ -56,7 +56,7 @@ int DummyResource::downloadSize()
     return 123;
 }
 
-QUrl DummyResource::homepage() const
+QUrl DummyResource::homepage()
 {
     return QUrl("http://kde.org");
 }
@@ -76,7 +76,7 @@ QString DummyResource::license()
     return "GPL";
 }
 
-QString DummyResource::longDescription() const
+QString DummyResource::longDescription()
 {
     return "aaaaaaaaaaaaaa aaaaaaaaa aaaaaaaaaa";
 }

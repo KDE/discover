@@ -63,8 +63,8 @@ public:
     QString packageName() const;
 
     //QApt::Package forwarding
-    QUrl homepage() const;
-    QString longDescription() const;
+    QUrl homepage();
+    QString longDescription();
     QString installedVersion() const;
     QString availableVersion() const;
     QString sizeDescription();

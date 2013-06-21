@@ -28,6 +28,7 @@
 #include <Transaction/TransactionModel.h>
 #include <QStringList>
 #include <QDebug>
+#include <QTimer>
 #include <PackageKit/packagekit-qt2/Transaction>
 #include <PackageKit/packagekit-qt2/Daemon>
 
@@ -42,53 +43,105 @@ K_EXPORT_PLUGIN(MuonPackageKitBackendFactory(KAboutData("muon-pkbackend","muon-p
 PackageKitBackend::PackageKitBackend(QObject* parent, const QVariantList&)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
+    , m_refresher(0)
 {
-    populateCache();
+    populateInstalledCache();
     emit backendReady();
+    
+    //QTimer::singleShot(40000, this, SLOT(updateDatabase()));
 }
 
-void PackageKitBackend::populateCache()
+PackageKitBackend::~PackageKitBackend()
 {
-    emit reloadStarted();
-    PackageKit::Transaction* t = new PackageKit::Transaction(this);
+}
+
+void PackageKitBackend::populateInstalledCache()
+{
+    kDebug() << "CALLEED";
+    m_updatingPackages = m_packages;
     
-    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(populateUpgradeablePackages()));
-    connect(t, SIGNAL(destroy()), t, SLOT(deleteLater()));
+    if (m_refresher) {
+        disconnect(m_refresher, SIGNAL(changed()), this, SLOT(populateInstalledCache()));
+    }
+    
+    PackageKit::Transaction * t = new PackageKit::Transaction(this);
+    
+    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(populateNewestCache()));
     connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackage(PackageKit::Transaction::Info, QString, QString)));
+    connect(t, SIGNAL(destroy()), t, SLOT(deleteLater()));
     
-    t->getPackages(PackageKit::Transaction::FilterArch);
+    t->getPackages(PackageKit::Transaction::FilterInstalled | PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
     
     m_appdata = AppstreamUtils::fetchAppData("/home/boom1992/appdata.xml");
 }
 
 void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
+    kDebug() << "ADd package" << packageId;
     PackageKitResource* newResource = 0;
     QHash<QString, ApplicationData>::const_iterator it = m_appdata.constFind(PackageKit::Daemon::global()->packageName(packageId));
     if (it!=m_appdata.constEnd())
         newResource = new AppPackageKitResource(packageId, info, summary, *it, this);
     else
         newResource = new PackageKitResource(packageId, info, summary, this);
-    if (m_packages[PackageKit::Daemon::global()->packageName(packageId)])
-        kWarning() << "Somehow we detected another package here, overwriting:" << packageId;
-    m_packages[PackageKit::Daemon::global()->packageName(packageId)] = newResource;
+    if (m_updatingPackages[PackageKit::Daemon::global()->packageName(packageId)]) {
+        qobject_cast<PackageKitResource*>(m_updatingPackages[PackageKit::Daemon::global()->packageName(packageId)])->addPackageId(info, packageId, summary);
+    } else {
+        m_updatingPackages[PackageKit::Daemon::global()->packageName(packageId)] = newResource;
+    }
 }
 
-void PackageKitBackend::populateUpgradeablePackages()
+void PackageKitBackend::populateNewestCache()
 {
-    PackageKit::Transaction* t = new PackageKit::Transaction(this);//TODO: we need to call this once we have all transactions done again, also we need to reset old availableVersions then
+    /*for (PackageKitResource * res : m_upgradeablePackages) {
+        res->setAvailableVersion(res->installedVersion());
+    }
+    m_upgradeablePackages.clear();
+    */
+    kDebug() << "NEWEST CALLED";
+    PackageKit::Transaction * t = new PackageKit::Transaction(this);
     
-    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SIGNAL(reloadFinished()));
     connect(t, SIGNAL(destroy()), t, SLOT(deleteLater()));
-    connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addUpdate(PackageKit::Transaction::Info, QString, QString)));
+    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(finishRefresh()));
+    connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addNewest(PackageKit::Transaction::Info, QString, QString)));
+    //connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(updateDatabase()));
     
-    t->getUpdates(PackageKit::Transaction::FilterArch);
+    t->getPackages(PackageKit::Transaction::FilterNewest | PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
 }
 
-void PackageKitBackend::addUpdate(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
+void PackageKitBackend::addNewest(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
-    PackageKitResource * res = qobject_cast<PackageKitResource*>(m_packages[PackageKit::Daemon::global()->packageName(packageId)]);
-    res->setAvailableVersion(PackageKit::Daemon::global()->packageVersion(packageId));
+    if (m_updatingPackages[PackageKit::Daemon::global()->packageName(packageId)]) {
+        PackageKitResource * res = qobject_cast<PackageKitResource*>(m_updatingPackages[PackageKit::Daemon::global()->packageName(packageId)]);
+        res->addPackageId(info, packageId, summary);
+    } else {
+        addPackage(info, packageId, summary);
+    }
+    //res->setAvailableVersion(PackageKit::Daemon::global()->packageVersion(packageId));
+    //m_upgradeablePackages << res;
+}
+
+void PackageKitBackend::finishRefresh()
+{
+    emit reloadStarted();
+    
+    m_packages = m_updatingPackages;
+    
+    emit reloadFinished();
+}
+
+void PackageKitBackend::updateDatabase()
+{
+    kDebug() << "UPDATE CALLED";
+    if (!m_refresher) {
+        m_refresher = new PackageKit::Transaction(this);
+    } else {
+        m_refresher->reset();
+    }
+    connect(m_refresher, SIGNAL(changed()), SLOT(populateInstalledCache()));
+    connect(m_refresher, SIGNAL(destroy()), m_refresher, SLOT(deleteLater()));
+
+    m_refresher->refreshCache(false);
 }
 
 QVector<AbstractResource*> PackageKitBackend::allResources() const
@@ -104,7 +157,7 @@ AbstractResource* PackageKitBackend::resourceByPackageName(const QString& name) 
 QList<AbstractResource*> PackageKitBackend::searchPackageName(const QString& searchText)
 {
     QList<AbstractResource*> ret;
-    for(AbstractResource* res : m_packages.values()) {//TODO: Port to hash
+    for(AbstractResource* res : m_packages.values()) {
         if (res->name().contains(searchText, Qt::CaseInsensitive))
             ret += res;
     }
@@ -115,7 +168,7 @@ int PackageKitBackend::updatesCount() const
 {
     int ret = 0;
     for(AbstractResource* res : m_packages.values()) {
-        if(res->state() == AbstractResource::Upgradeable) {
+        if (res->state() == AbstractResource::Upgradeable && !res->isTechnical()) {
             ret++;
         }
     }
@@ -126,7 +179,7 @@ void PackageKitBackend::removeTransaction(Transaction* t)
 {
     qDebug() << "done" << t->resource()->packageName() << m_transactions.size();
     int count = m_transactions.removeAll(t);
-    //Q_ASSERT(count==1);
+    Q_ASSERT(count==1);
     TransactionModel::global()->removeTransaction(t);
 }
 
@@ -138,7 +191,7 @@ void PackageKitBackend::installApplication(AbstractResource* app, AddonList )
 void PackageKitBackend::installApplication(AbstractResource* app)
 {
     PackageKit::Transaction* installTransaction = new PackageKit::Transaction(this);
-    installTransaction->installPackage(qobject_cast<PackageKitResource*>(app)->packageId());
+    installTransaction->installPackage(qobject_cast<PackageKitResource*>(app)->availablePackageId());
     PKTransaction* t = new PKTransaction(app, Transaction::InstallRole, installTransaction);
     m_transactions.append(t);
     TransactionModel::global()->addTransaction(t);
@@ -153,8 +206,9 @@ void PackageKitBackend::cancelTransaction(AbstractResource* app)
                 pkt->transaction()->cancel();
                 removeTransaction(t);
                 TransactionModel::global()->cancelTransaction(t);
-            } else
+            } else {
                 kWarning() << "trying to cancel a non-cancellable transaction: " << app->name();
+            }
             break;
         }
     }
@@ -164,7 +218,7 @@ void PackageKitBackend::removeApplication(AbstractResource* app)
 {
     kDebug() << "Trigger";
     PackageKit::Transaction* removeTransaction = new PackageKit::Transaction(this);
-    removeTransaction->removePackage(qobject_cast<PackageKitResource*>(app)->packageId());
+    removeTransaction->removePackage(qobject_cast<PackageKitResource*>(app)->installedPackageId());
     PKTransaction* t = new PKTransaction(app, Transaction::RemoveRole, removeTransaction);
     m_transactions.append(t);
     TransactionModel::global()->addTransaction(t);
@@ -173,7 +227,6 @@ void PackageKitBackend::removeApplication(AbstractResource* app)
 
 QList<AbstractResource*> PackageKitBackend::upgradeablePackages() const
 {
-    //TODO: We need to set the available version as well for each package I guess
     QList<AbstractResource*> ret;
     for(AbstractResource* res : m_packages.values()) {
         if (res->state() == AbstractResource::Upgradeable) {
@@ -185,7 +238,7 @@ QList<AbstractResource*> PackageKitBackend::upgradeablePackages() const
 
 AbstractBackendUpdater* PackageKitBackend::backendUpdater() const
 {
-    return m_updater;
+    return m_updater;//TODO Do a real updater
 }
 
 //TODO

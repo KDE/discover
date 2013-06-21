@@ -36,7 +36,7 @@ class BodegaResource : public AbstractResource
     public:
         explicit BodegaResource(const Bodega::AssetInfo& info, AbstractResourcesBackend* parent);
         
-        virtual QUrl homepage() const { return QUrl(); }
+        virtual QUrl homepage() { return QUrl(); }
         virtual QString section() { return "123"; }
         virtual QString installedVersion() const { return "only"; }
         virtual QString origin() const { return "fuuu"; }
@@ -46,7 +46,7 @@ class BodegaResource : public AbstractResource
         virtual QString name() { return m_info.name; }
         virtual QString availableVersion() const { return m_info.version; }
         virtual QString comment() { return m_info.description; } //TODO: figure out difference. add author
-        virtual QString longDescription() const { return m_info.description; }
+        virtual QString longDescription() { return m_info.description; }
         virtual QString packageName() const { return m_info.id; }
         virtual QString license() { return m_info.license; }
         virtual int downloadSize();

@@ -46,7 +46,7 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     qobject_cast<PackageKitBackend*>(resource()->backend())->removeTransaction(this);
     PackageKit::Transaction* t = new PackageKit::Transaction(resource());
     t->resolve(resource()->packageName(), PackageKit::Transaction::FilterNone);
-    connect(t, SIGNAL(package(PackageKit::Transaction::Info,QString,QString)), resource(), SLOT(updatePackage(PackageKit::Transaction::Info, QString,QString)));
+    connect(t, SIGNAL(package(PackageKit::Transaction::Info,QString,QString)), resource(), SLOT(addPackageId(PackageKit::Transaction::Info, QString,QString)));
     connect(t, SIGNAL(destroy()), t, SLOT(deleteLater()));
 }
 

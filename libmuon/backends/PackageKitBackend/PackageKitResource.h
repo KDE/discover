@@ -32,10 +32,9 @@ class PackageKitResource : public AbstractResource
         explicit PackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, AbstractResourcesBackend* parent);
         virtual QString packageName() const;
         virtual QString name();
-        QString packageId() const;
         virtual QString comment();
-        virtual QString longDescription() const;
-        virtual QUrl homepage() const;
+        virtual QString longDescription();
+        virtual QUrl homepage();
         virtual QString icon() const;
         virtual QStringList categories();
         virtual QString license();
@@ -53,19 +52,22 @@ class PackageKitResource : public AbstractResource
         
         virtual QString installedVersion() const;
         virtual QString availableVersion() const;
-        //PackageKit::Package package() const;
+        QString installedPackageId() const;
+        QString availablePackageId() const;
 
     public slots:
-        void updatePackage(PackageKit::Transaction::Info info, const QString &packageId, QString);
+        void addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
         void details(const QString &packageId, const QString &license, PackageKit::Transaction::Group group, const QString &detail, const QString &url, qulonglong size);
-        void setAvailableVersion(const QString &ver);
 
     signals:
         void licenseChanged();
 
+    private slots:
+        void fetchDetails();
+        
     private:
-        void fetchDetails() const;
-        QString m_packageId;
+        QString m_installedPackageId;
+        QString m_availablePackageId;
         PackageKit::Transaction::Info m_info;
         QString m_summary;
         QString m_license;
@@ -77,6 +79,7 @@ class PackageKitResource : public AbstractResource
         QString m_icon;
         QString m_availableVersion;
         QString m_installedVersion;
+        bool m_gotDetails;
 };
 
 #endif // PACKAGEKITRESOURCE_H

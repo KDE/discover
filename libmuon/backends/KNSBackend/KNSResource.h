@@ -43,11 +43,11 @@ public:
     virtual QString name();
     virtual QString packageName() const;
     virtual QStringList categories();
-    virtual QUrl homepage() const;
+    virtual QUrl homepage();
     virtual QUrl thumbnailUrl();
     virtual QUrl screenshotUrl();
     virtual QString license();
-    virtual QString longDescription() const;
+    virtual QString longDescription();
     virtual QList<PackageState> addonsInformation() { return QList<PackageState>(); }
     virtual QString availableVersion() const;
     virtual QString installedVersion() const;
