@@ -127,6 +127,8 @@ void TransactionWidget::setTransaction(QApt::Transaction *trans)
             this, SLOT(provideMedium(QString,QString)));
     connect(m_trans, SIGNAL(promptUntrusted(QStringList)),
             this, SLOT(untrustedPrompt(QStringList)));
+    connect(m_trans, SIGNAL(configFileConflict(QString,QString)),
+            this, SLOT(configFileConflict(QString,QString)));
     connect(m_trans, SIGNAL(progressChanged(int)),
             this, SLOT(updateProgress(int)));
     connect(m_trans, SIGNAL(statusDetailsChanged(QString)),

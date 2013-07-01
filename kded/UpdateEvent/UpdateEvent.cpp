@@ -97,7 +97,7 @@ void UpdateEvent::show(int updates, int securityUpdates)
                      "Never show again");
 
     if (!m_active) {
-        Event::show(icon, text, actions, tTipIcon);
+        Event::show(icon, text, actions, tTipIcon, "system-software-update");
     } else {
         Event::update(icon, text, tTipIcon);
     }
@@ -152,5 +152,3 @@ void UpdateEvent::parseUpdateInfo()
 
     // ';' not found, apt-check broke :("
 }
-
-#include "UpdateEvent.moc"

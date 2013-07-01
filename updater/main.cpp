@@ -30,7 +30,7 @@
 static const char description[] =
     I18N_NOOP("An update manager");
 
-static const char version[] = "2.0.0";
+static const char version[] = "2.0.65";
 
 int main(int argc, char **argv)
 {

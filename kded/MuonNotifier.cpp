@@ -53,7 +53,7 @@ MuonNotifier::MuonNotifier(QObject* parent, const QList<QVariant>&)
 {
     KAboutData aboutData("muon-notifier", "muon-notifier",
                          ki18n("Muon Notification Daemon"),
-                         "2.0", ki18n("A Notification Daemon for Muon"),
+                         "2.1", ki18n("A Notification Daemon for Muon"),
                          KAboutData::License_GPL,
                          ki18n("(C) 2009-2012 Jonathan Thomas, (C) 2009 Harald Sitter"),
                          KLocalizedString(), "http://kubuntu.org");
