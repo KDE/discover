@@ -92,16 +92,16 @@ QHash<QString, ApplicationData> AppstreamUtils::fetchAppData(const QString& path
     }
 
     QXmlStreamReader reader(&f);
-    while(!reader.atEnd()) {
+    while (!reader.atEnd()) {
         reader.readNext();
-        if(reader.isStartElement() && reader.name()=="application") {
+        if (reader.isStartElement() && reader.name() == "application") {
             ApplicationData app = readApplication(&reader);
             ret.insert(app.pkgname, app);
         }
     }
-    qDebug() << "ueeeeee" << ret.size();
+    qDebug() << "got a number of appstream datasets:" << ret.size();
 
-    if(reader.hasError()) {
+    if (reader.hasError()) {
         qWarning() << "error found while parsing" << path << ":" << reader.errorString();
     }
     return ret;

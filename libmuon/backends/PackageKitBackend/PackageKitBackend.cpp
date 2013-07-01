@@ -1,5 +1,6 @@
 /***************************************************************************
  *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2013 Lukas Appelhans <l.appelhans@gmx.de>                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -58,7 +59,7 @@ PackageKitBackend::~PackageKitBackend()
 
 void PackageKitBackend::populateInstalledCache()
 {
-    kDebug() << "CALLEED";
+    kDebug() << "Starting to populate the installed packages cache";
     m_updatingPackages = m_packages;
     
     if (m_refresher) {
@@ -73,12 +74,11 @@ void PackageKitBackend::populateInstalledCache()
     
     t->getPackages(PackageKit::Transaction::FilterInstalled | PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
     
-    m_appdata = AppstreamUtils::fetchAppData("/home/boom1992/appdata.xml");
+    m_appdata = AppstreamUtils::fetchAppData("/home/boom1992/appdata.xml");//FIXME: Change path
 }
 
 void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
-    kDebug() << "ADd package" << packageId;
     PackageKitResource* newResource = 0;
     QHash<QString, ApplicationData>::const_iterator it = m_appdata.constFind(PackageKit::Daemon::global()->packageName(packageId));
     if (it!=m_appdata.constEnd())
@@ -94,18 +94,12 @@ void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QSt
 
 void PackageKitBackend::populateNewestCache()
 {
-    /*for (PackageKitResource * res : m_upgradeablePackages) {
-        res->setAvailableVersion(res->installedVersion());
-    }
-    m_upgradeablePackages.clear();
-    */
-    kDebug() << "NEWEST CALLED";
+    kDebug() << "Starting to populate the cache with newest packages";
     PackageKit::Transaction * t = new PackageKit::Transaction(this);
     
     connect(t, SIGNAL(destroy()), t, SLOT(deleteLater()));
     connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(finishRefresh()));
     connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addNewest(PackageKit::Transaction::Info, QString, QString)));
-    //connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(updateDatabase()));
     
     t->getPackages(PackageKit::Transaction::FilterNewest | PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
 }
@@ -118,8 +112,6 @@ void PackageKitBackend::addNewest(PackageKit::Transaction::Info info, const QStr
     } else {
         addPackage(info, packageId, summary);
     }
-    //res->setAvailableVersion(PackageKit::Daemon::global()->packageVersion(packageId));
-    //m_upgradeablePackages << res;
 }
 
 void PackageKitBackend::finishRefresh()
@@ -138,7 +130,7 @@ void PackageKitBackend::timerEvent(QTimerEvent * event)
 
 void PackageKitBackend::updateDatabase()
 {
-    kDebug() << "UPDATE CALLED";
+    kDebug() << "Starting to update the package cache";
     if (!m_refresher) {
         m_refresher = new PackageKit::Transaction(this);
     } else {
@@ -183,7 +175,7 @@ int PackageKitBackend::updatesCount() const
 
 void PackageKitBackend::removeTransaction(Transaction* t)
 {
-    qDebug() << "done" << t->resource()->packageName() << m_transactions.size();
+    qDebug() << "Remove transaction:" << t->resource()->packageName() << "with" << m_transactions.size() << "transactions running";
     int count = m_transactions.removeAll(t);
     Q_ASSERT(count==1);
     TransactionModel::global()->removeTransaction(t);
@@ -223,13 +215,12 @@ void PackageKitBackend::cancelTransaction(AbstractResource* app)
 
 void PackageKitBackend::removeApplication(AbstractResource* app)
 {
-    kDebug() << "Trigger";
+    kDebug() << "Starting to remove" << app->name();
     PackageKit::Transaction* removeTransaction = new PackageKit::Transaction(this);
     removeTransaction->removePackage(qobject_cast<PackageKitResource*>(app)->installedPackageId());
     PKTransaction* t = new PKTransaction(app, Transaction::RemoveRole, removeTransaction);
     m_transactions.append(t);
     TransactionModel::global()->addTransaction(t);
-    qDebug() << "remove" << app->packageName();
 }
 
 QList<AbstractResource*> PackageKitBackend::upgradeablePackages() const

@@ -45,12 +45,13 @@ PKTransaction::PKTransaction(AbstractResource* app, Transaction::Role role, Pack
 
 void PKTransaction::progressChanged(const QString &id, PackageKit::Transaction::Status status, uint percentage)
 {
-    if (id != qobject_cast<PackageKitResource*>(resource())->availablePackageId() ||
-        id != qobject_cast<PackageKitResource*>(resource())->installedPackageId())
+    PackageKitResource * res = qobject_cast<PackageKitResource*>(resource());
+    if (id != res->availablePackageId() ||
+        id != res->installedPackageId())
         return;
     kDebug() << "Progress" << percentage << "state" << status;
     setProgress(percentage);
-    //FIXME ALso set status and optimize the casts
+    //FIXME Also set status
 }
 
 void PKTransaction::cancel()
@@ -79,7 +80,7 @@ PackageKit::Transaction* PKTransaction::transaction()
 
 void PKTransaction::errorFound(PackageKit::Transaction::Error err, const QString& error)
 {
-    KMessageBox::error(0, error, i18n("Found error %1", err));
+    KMessageBox::error(0, error, i18n("Found error %1", err));//FIXME: Check the enum on what error it was?!
 }
 
 void PKTransaction::mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text)

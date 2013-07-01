@@ -1,5 +1,6 @@
 /***************************************************************************
  *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2013 Lukas Appelhans <l.appelhans@gmx.de>                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -150,7 +151,6 @@ AbstractResource::State PackageKitResource::state()
 
 void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
-    kDebug() << "Add another packageid" << packageId;
     if (info == PackageKit::Transaction::InfoUnknown)
         kWarning() << "Received unknown Package::info() for " << name();
     bool changeState = (info != m_info);
@@ -161,7 +161,7 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
     } else {
         m_availablePackageId = packageId;
         if (m_installedPackageId == m_availablePackageId) { //This case will happen when we have a package installed and remove it
-            kDebug() << "Caught the case";
+            kDebug() << "Caught the case of adding a package id which was previously installed and now is not anymore";
             m_info = info;
             m_installedPackageId = QString();
             m_installedVersion = QString();
@@ -304,7 +304,7 @@ void PackageKitResource::fetchDetails()
     if (m_gotDetails)
         return;
     m_gotDetails = true;
-    PackageKit::Transaction* transaction = new PackageKit::Transaction(nullptr);//We cannot use this here because of the const method
+    PackageKit::Transaction* transaction = new PackageKit::Transaction(this);
     transaction->getDetails(m_availablePackageId);
     connect(transaction, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackageId(PackageKit::Transaction::Info, QString, QString)));
     connect(transaction, SIGNAL(details(QString, QString, PackageKit::Transaction::Group, QString, QString, qulonglong)), SLOT(details(QString, QString, PackageKit::Transaction::Group, QString, QString, qulonglong)));
@@ -325,11 +325,6 @@ void PackageKitResource::details(const QString &packageId, const QString &licens
     if (newLicense)
         emit licenseChanged();
 }
-
-/*PackageKit::Package PackageKitResource::package() const
-{
-    return m_package;
-}*/
 
 void PackageKitResource::fetchChangelog()
 {
