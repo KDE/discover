@@ -28,6 +28,14 @@
 #include "PackageState.h"
 
 class AbstractResourcesBackend;
+
+/**
+ * \class AbstractResource  AbstractResource.h "AbstractResource.h"
+ *
+ * \brief This is the base class of all resources.
+ * 
+ * Each backend must reimplement its own resource class which needs to derive from this one.
+ */
 class MUONPRIVATE_EXPORT AbstractResource : public QObject
 {
     Q_OBJECT
@@ -55,14 +63,32 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString mimetypes READ mimetypes CONSTANT)
     Q_PROPERTY(AbstractResourcesBackend* backend READ backend CONSTANT)
     public:
+        /**
+         * This describes the state of the resource
+         */
         enum State {
+            /**
+             * When the resource is somehow broken
+             */
             Broken,
+            /**
+             * This means that the resource is neither installed nor broken
+             */
             None,
+            /**
+             * The resource is installed and up-to-date
+             */
             Installed,
+            /**
+             * The resource is installed and an update is available
+             */
             Upgradeable
         };
         Q_ENUMS(State)
         
+        /**
+         * Constructs the AbstractResource with its corresponding backend
+         */
         explicit AbstractResource(AbstractResourcesBackend* parent);
         
         ///used as internal identification of a resource

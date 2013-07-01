@@ -31,6 +31,14 @@
 
 class AbstractResource;
 
+/**
+ * \class Transaction  Transaction.h "Transaction.h"
+ *
+ * \brief This is the base class of all transactions.
+ * 
+ * When there are transactions running inside Muon, the backends should
+ * provide the corresponding Transaction objects with proper information.
+ */
 class MUONPRIVATE_EXPORT Transaction : public QObject
 {
     Q_OBJECT
@@ -57,8 +65,11 @@ public:
     Q_ENUMS(Status)
 
     enum Role {
+        ///The transaction is going to install a resource
         InstallRole = 0,
+        ///The transaction is going to remove a resource
         RemoveRole,
+        ///The transaction is going to change the addons of a resource
         ChangeAddonsRole
     };
     Q_ENUMS(Role)
@@ -68,16 +79,49 @@ public:
     Transaction(QObject *parent, AbstractResource *resource,
                  Transaction::Role role, AddonList addons);
 
+    /**
+     * @returns the AbstractResource which this transaction works with
+     */
     AbstractResource *resource() const;
+    /**
+     * @returns the role which this transaction executes
+     */
     Role role() const;
+    /**
+     * @returns the current status
+     */
     Status status() const;
+    /**
+     * @returns the addons which this transaction works on
+     */
     AddonList addons() const;
+    /**
+     * @returns true when the transaction can be cancelled
+     */
     bool isCancellable() const;
+    /**
+     * @returns a percentage of how much the transaction is already done
+     */
     int progress() const;
 
+    /**
+     * Sets the status of the transaction
+     * @param status the new status
+     */
     void setStatus(Status status);
+    /**
+     * Sets whether the transaction can be cancelled or not
+     * @param isCancellable should be true if the transaction can be cancelled
+     */
     void setCancellable(bool isCancellable);
+    /**
+     * Sets the progress of the transaction
+     * @param progress this should be a percentage of how much of the transaction is already done
+     */
     void setProgress(int progress);
+    /**
+     * Cancels the transaction
+     */
     void cancel();
 
 private:
@@ -89,8 +133,17 @@ private:
     int m_progress;
 
 signals:
+    /**
+     * This gets emitted when the status of the transaction changed
+     */
     void statusChanged(Transaction::Status status);
+    /**
+     * This gets emitted when the ability to cancel the transaction or not changed
+     */
     void cancellableChanged(bool cancellable);
+    /**
+     * This gets emitted when the transaction changed the percentage of how much of it is already done
+     */
     void progressChanged(int progress);
 };
 
