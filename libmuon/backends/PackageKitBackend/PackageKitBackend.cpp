@@ -60,6 +60,17 @@ PackageKitBackend::~PackageKitBackend()
 void PackageKitBackend::populateInstalledCache()
 {
     kDebug() << "Starting to populate the installed packages cache";
+    m_appdata = AppstreamUtils::fetchAppData("/home/lukas/appdata.xml");//FIXME: Change path
+    
+    emit reloadStarted();
+    
+    foreach (const ApplicationData &data, m_appdata.values()) {
+        if (!data.pkgname.isEmpty())
+            m_packages[data.pkgname] = new AppPackageKitResource(QString(), PackageKit::Transaction::InfoUnknown, QString(), data, this);
+    }
+    
+    emit reloadFinished();
+    
     m_updatingPackages = m_packages;
     
     if (m_refresher) {
@@ -74,20 +85,19 @@ void PackageKitBackend::populateInstalledCache()
     
     t->getPackages(PackageKit::Transaction::FilterInstalled | PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
     
-    m_appdata = AppstreamUtils::fetchAppData("/home/boom1992/appdata.xml");//FIXME: Change path
 }
 
 void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
-    PackageKitResource* newResource = 0;
-    QHash<QString, ApplicationData>::const_iterator it = m_appdata.constFind(PackageKit::Daemon::global()->packageName(packageId));
-    if (it!=m_appdata.constEnd())
-        newResource = new AppPackageKitResource(packageId, info, summary, *it, this);
-    else
-        newResource = new PackageKitResource(packageId, info, summary, this);
     if (m_updatingPackages[PackageKit::Daemon::global()->packageName(packageId)]) {
         qobject_cast<PackageKitResource*>(m_updatingPackages[PackageKit::Daemon::global()->packageName(packageId)])->addPackageId(info, packageId, summary);
     } else {
+        PackageKitResource* newResource = 0;
+        QHash<QString, ApplicationData>::const_iterator it = m_appdata.constFind(PackageKit::Daemon::global()->packageName(packageId));
+        if (it!=m_appdata.constEnd())
+            newResource = new AppPackageKitResource(packageId, info, summary, *it, this);
+        else
+            newResource = new PackageKitResource(packageId, info, summary, this);
         m_updatingPackages[PackageKit::Daemon::global()->packageName(packageId)] = newResource;
     }
 }
@@ -116,6 +126,7 @@ void PackageKitBackend::addNewest(PackageKit::Transaction::Info info, const QStr
 
 void PackageKitBackend::finishRefresh()
 {
+    kDebug() << "Finished the refresh and resetting packages" << m_updatingPackages.count();
     emit reloadStarted();
     
     m_packages = m_updatingPackages;

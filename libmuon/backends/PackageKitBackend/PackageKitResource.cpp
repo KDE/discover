@@ -31,15 +31,18 @@ PackageKitResource::PackageKitResource(const QString &packageId, PackageKit::Tra
     , m_info(info)
     , m_summary(summary)
     , m_size(0)
-    , m_name(PackageKit::Daemon::global()->packageName(m_availablePackageId))
-    , m_icon(PackageKit::Daemon::global()->packageIcon(m_availablePackageId))
-    , m_availableVersion(PackageKit::Daemon::global()->packageVersion(m_availablePackageId))
     , m_gotDetails(false)
 {
-    if (info == PackageKit::Transaction::InfoInstalled) {
+    addPackageId(info, packageId, summary);
+    /*if (info == PackageKit::Transaction::InfoInstalled) {
         m_installedPackageId = packageId;
         m_installedVersion = PackageKit::Daemon::global()->packageVersion(m_availablePackageId);
     }
+    if (!m_availablePackageId.isEmpty()) {
+        m_name = PackageKit::Daemon::global()->packageName(m_availablePackageId);
+        m_icon = PackageKit::Daemon::global()->packageIcon(m_availablePackageId);
+        m_availableVersion = PackageKit::Daemon::global()->packageVersion(m_availablePackageId);
+    }*/
     setObjectName(m_availablePackageId);
 }
 
@@ -136,7 +139,7 @@ QUrl PackageKitResource::thumbnailUrl()
 
 AbstractResource::State PackageKitResource::state()
 {
-    if (availableVersion() != installedVersion() && !installedVersion().isEmpty())
+    if (availableVersion() != installedVersion() && !installedVersion().isEmpty() && !availableVersion().isEmpty())
         return Upgradeable;
     switch(m_info) {
         case PackageKit::Transaction::InfoInstalled:
@@ -151,9 +154,18 @@ AbstractResource::State PackageKitResource::state()
 
 void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
+    kDebug() << "Add packageId for" << packageId;
     if (info == PackageKit::Transaction::InfoUnknown)
         kWarning() << "Received unknown Package::info() for " << name();
     bool changeState = (info != m_info);
+
+    if (m_availablePackageId.isEmpty()) {
+        m_name = PackageKit::Daemon::global()->packageName(packageId);
+        m_icon = PackageKit::Daemon::global()->packageIcon(packageId);
+        m_availablePackageId = packageId;
+        m_availableVersion = PackageKit::Daemon::global()->packageVersion(packageId);
+        m_info = info;
+    }
     if (info == PackageKit::Transaction::InfoInstalled) {
         m_installedPackageId = packageId;
         m_info = info;
@@ -301,9 +313,11 @@ bool PackageKitResource::isTechnical() const
 
 void PackageKitResource::fetchDetails()
 {
-    if (m_gotDetails)
+    kDebug() << "Try to fetch details for" << m_availablePackageId << name();
+    if (m_gotDetails || m_availablePackageId.isEmpty())
         return;
     m_gotDetails = true;
+    kDebug() << "Fetch details for" << m_availablePackageId;
     PackageKit::Transaction* transaction = new PackageKit::Transaction(this);
     transaction->getDetails(m_availablePackageId);
     connect(transaction, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackageId(PackageKit::Transaction::Info, QString, QString)));

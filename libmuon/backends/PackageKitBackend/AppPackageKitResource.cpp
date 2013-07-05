@@ -38,6 +38,7 @@ QString AppPackageKitResource::name()
 {
     QString ret = m_appdata.name.value(KGlobal::locale()->language());
     if(ret.isEmpty()) ret = m_appdata.name.value(QString());
+    if(ret.isEmpty()) ret = m_appdata.pkgname;
     if(ret.isEmpty()) ret = PackageKitResource::name();
     return ret;
 }
