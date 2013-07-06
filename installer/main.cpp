@@ -32,6 +32,7 @@ static const char description[] =
 
 static const char version[] = "2.0.65";
 
+
 int main(int argc, char **argv)
 {
     KAboutData about("muon-installer", "muon-installer", ki18n("Muon Software Center"), version, ki18n(description),

@@ -47,7 +47,6 @@ GenericName[es]=Plasmoides
 GenericName[et]=Plasmoidid
 GenericName[fi]=Plasmoidit
 GenericName[fr]=Composants graphiques
-GenericName[gl]=Plasmoids
 GenericName[hu]=Plazmoidok
 GenericName[it]=Plasmoidi
 GenericName[kk]=Плазмоидтер
@@ -79,7 +78,11 @@ Comment[es]=¡Instale plasmoides y aumente la potencia de su espacio de trabajo!
 Comment[et]=Plasmoidide paigaldamine ja töölauale võlu juurde andmine
 Comment[fi]=Asenna plasmoideja ja lisää työtilasi tehoa!
 Comment[fr]=Installez des composants graphiques et mettez au premier plan la puissance de votre espace de travail !
+<<<<<<< HEAD
 Comment[gl]=Instala plasmoids e dálle pulo ao teu entorno de traballo!
+=======
+Comment[gl]=Instale plasmoides e aumente as posibilidades do espazo de traballo!
+>>>>>>> 2.0
 Comment[hu]=Telepítsen plazmoidokat, hogy a legtöbbet hozhassa ki asztali környezetéből!
 Comment[it]=Installa plasmoidi e aumenta la potenza del tuo spazio di lavoro!
 Comment[kk]=Плазмоидтерді орнатып жұмыс орынның қуаттылығын жетілдір!
