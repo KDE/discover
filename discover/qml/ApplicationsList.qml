@@ -96,6 +96,8 @@ Item {
                         text: comment
                         font.italic: true
                         opacity: delegateArea.containsMouse ? 1 : 0.2
+                        maximumLineCount: 1
+                        clip: true
                     }
                     Rating {
                         id: ratingsItem
