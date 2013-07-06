@@ -154,7 +154,8 @@ AbstractResource::State PackageKitResource::state()
 
 void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
-    kDebug() << "Add packageId for" << packageId;
+    if (packageId.startsWith("kdevelop"))
+        kDebug() << "Add packageId for" << packageId << name();
     if (info == PackageKit::Transaction::InfoUnknown)
         kWarning() << "Received unknown Package::info() for " << name();
     bool changeState = (info != m_info);
@@ -172,19 +173,19 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
         m_installedVersion = PackageKit::Daemon::global()->packageVersion(packageId);
     } else {
         m_availablePackageId = packageId;
-        if (m_installedPackageId == m_availablePackageId) { //This case will happen when we have a package installed and remove it
+        m_availableVersion = PackageKit::Daemon::global()->packageVersion(packageId);
+        if (m_installedVersion == m_availableVersion && info != PackageKit::Transaction::InfoInstalled) { //This case will happen when we have a package installed and remove it
             kDebug() << "Caught the case of adding a package id which was previously installed and now is not anymore";
             m_info = info;
             m_installedPackageId = QString();
             m_installedVersion = QString();
         }
-        m_availableVersion = PackageKit::Daemon::global()->packageVersion(packageId);
     }
     if (m_summary.isEmpty())
         m_summary = summary;
     
     if (changeState) {
-        kDebug() << "State changed" << m_info;
+        //kDebug() << "State changed" << m_info;
         emit stateChanged();
     }
 }
@@ -314,8 +315,9 @@ bool PackageKitResource::isTechnical() const
 void PackageKitResource::fetchDetails()
 {
     kDebug() << "Try to fetch details for" << m_availablePackageId << name();
-    if (m_gotDetails || m_availablePackageId.isEmpty())
+    if ((m_gotDetails && (m_size != 0 || m_time.elapsed() < 10000)) || m_availablePackageId.isEmpty())
         return;
+    m_time.restart();
     m_gotDetails = true;
     kDebug() << "Fetch details for" << m_availablePackageId;
     PackageKit::Transaction* transaction = new PackageKit::Transaction(this);

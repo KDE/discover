@@ -80,6 +80,7 @@ class PackageKitResource : public AbstractResource
         QString m_availableVersion;
         QString m_installedVersion;
         bool m_gotDetails;
+        QTime m_time;
 };
 
 #endif // PACKAGEKITRESOURCE_H
