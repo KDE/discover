@@ -21,6 +21,7 @@
 
 #include "PackageKitBackend.h"
 #include "PackageKitResource.h"
+#include "PackageKitUpdater.h"
 #include "AppPackageKitResource.h"
 #include "AppstreamUtils.h"
 #include "PKTransaction.h"
@@ -44,7 +45,7 @@ K_EXPORT_PLUGIN(MuonPackageKitBackendFactory(KAboutData("muon-pkbackend","muon-p
 
 PackageKitBackend::PackageKitBackend(QObject* parent, const QVariantList&)
     : AbstractResourcesBackend(parent)
-    , m_updater(new StandardBackendUpdater(this))
+    , m_updater(new PackageKitUpdater(this))
     , m_refresher(0)
 {
     populateInstalledCache();
@@ -178,6 +179,17 @@ int PackageKitBackend::updatesCount() const
     int ret = 0;
     for(AbstractResource* res : m_packages.values()) {
         if (res->state() == AbstractResource::Upgradeable && !res->isTechnical()) {
+            ret++;
+        }
+    }
+    return ret;
+}
+
+int PackageKitBackend::allUpdatesCount() const
+{
+    int ret = 0;
+    for(AbstractResource* res : m_packages.values()) {
+        if (res->state() == AbstractResource::Upgradeable) {
             ret++;
         }
     }

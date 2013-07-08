@@ -28,7 +28,7 @@
 #include <PackageKit/packagekit-qt2/Transaction>
 
 class QTimerEvent;
-class StandardBackendUpdater;
+class PackageKitUpdater;
 struct ApplicationData
 {
     QString pkgname;
@@ -57,6 +57,7 @@ class PackageKitBackend : public AbstractResourcesBackend
         virtual AbstractResource* resourceByPackageName(const QString& name) const;
         virtual QList<AbstractResource*> searchPackageName(const QString& searchText);
         virtual int updatesCount() const;
+        int allUpdatesCount() const;
         
         virtual void installApplication(AbstractResource* app);
         virtual void installApplication(AbstractResource* app, AddonList addons);
@@ -85,7 +86,7 @@ class PackageKitBackend : public AbstractResourcesBackend
         QHash<QString, AbstractResource*> m_updatingPackages;
         QHash<QString, ApplicationData> m_appdata;
         QList<Transaction*> m_transactions;
-        StandardBackendUpdater* m_updater;
+        PackageKitUpdater* m_updater;
         QList<PackageKitResource*> m_upgradeablePackages;
         PackageKit::Transaction * m_refresher;
 };

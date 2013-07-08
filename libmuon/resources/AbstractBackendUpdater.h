@@ -73,7 +73,7 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
 
     signals:
         void progressChanged(qreal progress);
-        void remainingTimeChanged();
+        void remainingTimeChanged();//FIXME: API inconsistency here!!
         void cancelableChanged(bool cancelable);
         void progressingChanged(bool progressing);
         void statusDetailChanged(const QString& msg);

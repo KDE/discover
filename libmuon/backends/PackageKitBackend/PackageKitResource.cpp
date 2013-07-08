@@ -180,6 +180,7 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
             m_installedPackageId = QString();
             m_installedVersion = QString();
         }
+        m_gotDetails = false;
     }
     if (m_summary.isEmpty())
         m_summary = summary;

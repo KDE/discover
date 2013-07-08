@@ -7,6 +7,7 @@ set(pkbackend_SRCS
     AppPackageKitResource.cpp
     AppstreamUtils.cpp
     PKTransaction.cpp
+    PackageKitUpdater.cpp
 )
 
 kde4_add_plugin(muon-pkbackend SHARED ${pkbackend_SRCS})
