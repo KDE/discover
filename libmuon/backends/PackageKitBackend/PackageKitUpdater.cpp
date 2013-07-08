@@ -271,7 +271,7 @@ void PackageKitUpdater::start()
 
 void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QString& error)
 {
-    KMessageBox::error(0, error, i18n("Found error %1", err));//FIXME: Check the enum on what error it was?!
+    KMessageBox::error(0, error, PackageKitBackend::errorMessage(err));//FIXME: Check the enum on what error it was?!
 }
 
 void PackageKitUpdater::mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text)

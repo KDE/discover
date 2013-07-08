@@ -26,6 +26,7 @@
 #include <KMessageBox>
 #include <KLocalizedString>
 #include <PackageKit/packagekit-qt2/Transaction>
+#include <PackageKit/packagekit-qt2/Daemon>
 #include <KDebug>
 
 PKTransaction::PKTransaction(AbstractResource* app, Transaction::Role role, PackageKit::Transaction* pktrans)
@@ -41,6 +42,7 @@ PKTransaction::PKTransaction(AbstractResource* app, Transaction::Role role, Pack
     connect(pktrans, SIGNAL(requireRestart(PackageKit::Transaction::Restart,QString)),
             SLOT(requireRestard(PackageKit::Transaction::Restart,QString)));
     connect(pktrans, SIGNAL(itemProgress(QString, PackageKit::Transaction::Status, uint)), SLOT(progressChanged(QString, PackageKit::Transaction::Status, uint)));
+    connect(pktrans, SIGNAL(eulaRequired(QString, QString, QString, QString)), SLOT(eulaRequired(QString, QString, QString, QString)));
 }
 
 void PKTransaction::progressChanged(const QString &id, PackageKit::Transaction::Status status, uint percentage)
@@ -78,9 +80,22 @@ PackageKit::Transaction* PKTransaction::transaction()
     return m_trans;
 }
 
+//FIXME Port to updater
+void PKTransaction::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
+{
+    int ret = KMessageBox::questionYesNo(0, i18n("The package %1 and its vendor %2 require that you accept their license:\n %3", 
+                                                 PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement),
+                                            i18n("%1 requires user to accept its license!", PackageKit::Daemon::packageName(packageID)));
+    if (ret == KMessageBox::Yes) {
+        m_trans->acceptEula(eulaID);
+    } else {
+        m_trans->cancel();
+    }
+}
+
 void PKTransaction::errorFound(PackageKit::Transaction::Error err, const QString& error)
 {
-    KMessageBox::error(0, error, i18n("Found error %1", err));//FIXME: Check the enum on what error it was?!
+    KMessageBox::error(0, error, PackageKitBackend::errorMessage(err));//FIXME: Check the enum on what error it was?!
 }
 
 void PKTransaction::mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text)

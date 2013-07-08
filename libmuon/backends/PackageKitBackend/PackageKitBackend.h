@@ -50,6 +50,8 @@ class PackageKitBackend : public AbstractResourcesBackend
         explicit PackageKitBackend(QObject* parent, const QVariantList& args);
         ~PackageKitBackend();
         
+        static QString errorMessage(PackageKit::Transaction::Error error);
+        
         virtual AbstractBackendUpdater* backendUpdater() const;
         virtual AbstractReviewsBackend* reviewsBackend() const;
         
