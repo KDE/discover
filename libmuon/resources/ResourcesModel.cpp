@@ -176,11 +176,14 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
             return QVariant();
         default: {
             QByteArray roleText = roleNames().value(role);
-            if(roleText.isEmpty() || resource->metaObject()->indexOfProperty(roleText) < 0) {
+            const QMetaObject* m = resource->metaObject();
+            int propidx = propidx = roleText.isEmpty() ? -1 : m->indexOfProperty(roleText);
+
+            if(KDE_ISUNLIKELY(propidx < 0)) {
                 qDebug() << "unknown role:" << role << roleText;
                 return QVariant();
             } else
-                return resource->property(roleText);
+                return m->property(propidx).read(resource);
         }
     }
 }
