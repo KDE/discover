@@ -80,7 +80,6 @@ PackageKit::Transaction* PKTransaction::transaction()
     return m_trans;
 }
 
-//FIXME Port to updater
 void PKTransaction::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
 {
     int ret = KMessageBox::questionYesNo(0, i18n("The package %1 and its vendor %2 require that you accept their license:\n %3", 
@@ -95,15 +94,36 @@ void PKTransaction::eulaRequired(const QString& eulaID, const QString& packageID
 
 void PKTransaction::errorFound(PackageKit::Transaction::Error err, const QString& error)
 {
-    KMessageBox::error(0, error, PackageKitBackend::errorMessage(err));//FIXME: Check the enum on what error it was?!
+    KMessageBox::error(0, error, PackageKitBackend::errorMessage(err));
 }
 
 void PKTransaction::mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text)
 {
-    KMessageBox::information(0, text, i18n("Media Change requested: %1", type));
+    KMessageBox::information(0, text, i18n("Media Change of type '%1' is requested.", type));
 }
 
 void PKTransaction::requireRestard(PackageKit::Transaction::Restart restart, const QString& p)
 {
-    KMessageBox::information(0, i18n("A change by '%1' suggests your system to be rebooted.", p));//FIXME: Display proper name
+    QString message;
+    switch (restart) {
+        case PackageKit::Transaction::RestartApplication:
+            message = i18n("'%1' was changed and suggests to be restarted.", PackageKit::Daemon::packageName(p));
+            break;
+        case PackageKit::Transaction::RestartSession:
+            message = i18n("A change by '%1' suggests your session to be restarted.", PackageKit::Daemon::packageName(p));
+            break;
+        case PackageKit::Transaction::RestartSecuritySession:
+            message = i18n("'%1' was updated for security reasons, a restart of the session is recommended.", PackageKit::Daemon::packageName(p));
+            break;
+        case PackageKit::Transaction::RestartSecuritySystem:
+            message = i18n("'%1' was updated for security reasons, a restart of the system is recommended.", PackageKit::Daemon::packageName(p));
+            break;
+        case PackageKit::Transaction::RestartSystem:
+        case PackageKit::Transaction::RestartUnknown:
+        case PackageKit::Transaction::RestartNone:
+        default:
+            message = i18n("A change by '%1' suggests your system to be rebooted.", PackageKit::Daemon::packageName(p));
+            break;
+    };
+    KMessageBox::information(0, message);
 }
