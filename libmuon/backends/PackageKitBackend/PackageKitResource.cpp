@@ -154,7 +154,7 @@ AbstractResource::State PackageKitResource::state()
 
 void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
-    if (packageId.startsWith("kdevelop"))
+    if (packageId.startsWith("libtag"))
         kDebug() << "Add packageId for" << packageId << name();
     if (info == PackageKit::Transaction::InfoUnknown)
         kWarning() << "Received unknown Package::info() for " << name();

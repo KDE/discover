@@ -159,6 +159,8 @@ void PackageKitUpdater::backendChanged()
                 m_statusMessage = i18n("Unknown Status");
                 break;
         };
+        emit statusMessageChanged(m_statusMessage);
+        emit statusDetailChanged(m_statusDetail);
     }
     
     if (m_speed != m_transaction->speed()) {
