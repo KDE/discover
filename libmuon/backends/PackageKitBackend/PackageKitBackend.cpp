@@ -402,7 +402,7 @@ QList<AbstractResource*> PackageKitBackend::upgradeablePackages() const
 
 AbstractBackendUpdater* PackageKitBackend::backendUpdater() const
 {
-    return m_updater;//TODO Do a real updater
+    return m_updater;
 }
 
 //TODO

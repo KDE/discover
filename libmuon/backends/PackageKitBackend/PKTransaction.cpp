@@ -53,7 +53,10 @@ void PKTransaction::progressChanged(const QString &id, PackageKit::Transaction::
         return;
     kDebug() << "Progress" << percentage << "state" << status;
     setProgress(percentage);
-    //FIXME Also set status
+    if (status == PackageKit::Transaction::StatusDownload)
+        setStatus(Transaction::DownloadingStatus);
+    else
+        setStatus(Transaction::CommittingStatus);
 }
 
 void PKTransaction::cancel()
@@ -63,6 +66,7 @@ void PKTransaction::cancel()
 
 void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
 {
+    setStatus(Transaction::DoneStatus);
     if (exit == PackageKit::Transaction::ExitCancelled) {
         TransactionModel::global()->cancelTransaction(this);
         deleteLater();
