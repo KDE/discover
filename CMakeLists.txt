@@ -24,6 +24,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 
 include_directories(${KDE4_INCLUDES} ${QT_INCLUDES} ${QAPT_INCLUDE_DIR}
                     ${CMAKE_CURRENT_BINARY_DIR} ${QCA2_INCLUDE_DIR}
+                    ${QJSON_INCLUDE_DIR}
                     ${CMAKE_SOURCE_DIR}/libmuon ${CMAKE_BINARY_DIR}/libmuon)
 
 add_subdirectory(libmuon)
