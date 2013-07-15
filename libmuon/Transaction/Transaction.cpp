@@ -24,7 +24,12 @@
 
 Transaction::Transaction(QObject *parent, AbstractResource *resource,
                          Role role)
-    : Transaction(parent, resource, role, AddonList())
+    : QObject(parent)
+    , m_resource(resource)
+    , m_role(role)
+    , m_status(CommittingStatus)
+    , m_isCancellable(true)
+    , m_progress(0)
 {
 }
 
