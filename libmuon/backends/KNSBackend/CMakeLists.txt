@@ -1,3 +1,5 @@
+include_directories(${LIBATTICA_INCLUDE_DIR})
+
 add_subdirectory(tests)
 
 set(knsbackend_SRCS
