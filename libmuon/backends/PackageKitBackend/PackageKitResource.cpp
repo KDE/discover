@@ -20,6 +20,7 @@
  ***************************************************************************/
 
 #include "PackageKitResource.h"
+#include "PackageKitBackend.h"
 #include <MuonDataSources.h>
 #include <KGlobal>
 #include <KLocale>
@@ -171,7 +172,10 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
         m_installedPackageId = packageId;
         m_info = info;
         m_installedVersion = PackageKit::Daemon::global()->packageVersion(packageId);
-    } else {
+    } else if (PackageKit::Daemon::global()->filters().testFlag(PackageKit::Transaction::FilterNewest) || 
+        PackageKitBackend::compare_versions(PackageKit::Daemon::global()->packageVersion(packageId), m_availableVersion) > 0) {
+        if (packageId.startsWith("libtag"))
+            kDebug() << "Accept new available package id" << (PackageKit::Daemon::global()->filters() & PackageKit::Transaction::FilterNewest);
         m_availablePackageId = packageId;
         m_availableVersion = PackageKit::Daemon::global()->packageVersion(packageId);
         if (m_installedVersion == m_availableVersion && info != PackageKit::Transaction::InfoInstalled) { //This case will happen when we have a package installed and remove it

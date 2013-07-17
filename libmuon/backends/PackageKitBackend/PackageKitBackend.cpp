@@ -407,3 +407,72 @@ AbstractBackendUpdater* PackageKitBackend::backendUpdater() const
 
 //TODO
 AbstractReviewsBackend* PackageKitBackend::reviewsBackend() const { return 0; }
+
+
+int PackageKitBackend::compare_versions(QString const& a, QString const& b)
+{
+    /* First split takes pkgrels */
+    QStringList withpkgrel1 = a.split("-");
+    QStringList withpkgrel2 = b.split("-");
+    QString pkgrel1, pkgrel2;
+
+    if (withpkgrel1.size() >= 2) {
+        pkgrel1 = withpkgrel1.at(1);
+    }
+    if (withpkgrel2.size() >= 2) {
+        pkgrel2 = withpkgrel2.at(1);
+    }
+
+    for (int i = 0; i != withpkgrel1.count(); i++) {
+        QString s1( withpkgrel1.at(i) ); /* takes the rest */
+        if (withpkgrel2.count() < i)
+            return 1;
+        QString s2( withpkgrel2.at(i) );
+
+        /* Second split is to separate actual version numbers (or strings) */
+        QStringList v1 = s1.split(".");
+        QStringList v2 = s2.split(".");
+
+        QStringList::iterator i1 = v1.begin();
+        QStringList::iterator i2 = v2.begin();
+
+        for (; i1 < v1.end() && i2 < v2.end() ; i1++, i2++) {
+            int p1 = i1->toInt();
+            int p2 = i2->toInt();
+
+            if (p1 > p2) {
+                return 1;
+            }
+            else if (p1 < p2) {
+                return -1;
+            }
+        }
+
+        /* This is, like, v1 = 2.3 and v2 = 2.3.1: v2 wins */
+        if (i1 == v1.end() && i2 != v2.end()) {
+            return -1;
+        }
+
+        /* The opposite case as before */
+        if (i2 == v2.end() && i1 != v1.end()) {
+            return 1;
+        }
+
+        /* The rule explained above */
+        if ((!pkgrel1.isEmpty() && pkgrel2.isEmpty()) || (pkgrel1.isEmpty() && !pkgrel2.isEmpty())) {
+            return 0;
+        }
+
+        /* Normal pkgrel comparison */
+        int pg1 = pkgrel1.toInt();
+        int pg2 = pkgrel2.toInt();
+
+        if (pg1 > pg2) {
+            return 1;
+        } else if (pg2 > pg1) {
+            return -1;
+        }
+    }
+
+    return 0;
+}

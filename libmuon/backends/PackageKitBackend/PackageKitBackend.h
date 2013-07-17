@@ -51,6 +51,7 @@ class PackageKitBackend : public AbstractResourcesBackend
         ~PackageKitBackend();
         
         static QString errorMessage(PackageKit::Transaction::Error error);
+        static int compare_versions(const QString &, const QString &);
         
         virtual AbstractBackendUpdater* backendUpdater() const;
         virtual AbstractReviewsBackend* reviewsBackend() const;
