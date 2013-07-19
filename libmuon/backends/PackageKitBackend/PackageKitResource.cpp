@@ -172,13 +172,13 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
         m_installedPackageId = packageId;
         m_info = info;
         m_installedVersion = PackageKit::Daemon::global()->packageVersion(packageId);
-        if (/*!PackageKit::Daemon::global()->filters().testFlag(PackageKit::Transaction::FilterNewest) &&*/
+        if (!PackageKit::Daemon::global()->filters().testFlag(PackageKit::Transaction::FilterNewest) &&
         PackageKitBackend::compare_versions(PackageKit::Daemon::global()->packageVersion(packageId), m_availableVersion) > 0) {
             m_availablePackageId = packageId;
             m_availableVersion = PackageKit::Daemon::global()->packageVersion(packageId);
             m_gotDetails = false;
         }
-    } else if (/*PackageKit::Daemon::global()->filters().testFlag(PackageKit::Transaction::FilterNewest) ||*/
+    } else if (PackageKit::Daemon::global()->filters().testFlag(PackageKit::Transaction::FilterNewest) ||
         PackageKitBackend::compare_versions(PackageKit::Daemon::global()->packageVersion(packageId), m_availableVersion) > 0) {
         if (packageId.startsWith("nfs-client"))
             kDebug() << "Accept new available package id" << m_availableVersion << PackageKit::Daemon::global()->packageVersion(packageId);
