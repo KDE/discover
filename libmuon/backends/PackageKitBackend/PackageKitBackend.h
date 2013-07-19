@@ -42,7 +42,7 @@ struct ApplicationData
     QStringList mimetypes;
 };
 
-class PackageKitBackend : public AbstractResourcesBackend
+class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
     Q_INTERFACES(AbstractResourcesBackend)

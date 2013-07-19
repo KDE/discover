@@ -155,7 +155,7 @@ AbstractResource::State PackageKitResource::state()
 
 void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
-    if (packageId.startsWith("libtag"))
+    if (packageId.startsWith("nfs-client"))
         kDebug() << "Add packageId for" << packageId << name();
     if (info == PackageKit::Transaction::InfoUnknown)
         kWarning() << "Received unknown Package::info() for " << name();
@@ -172,10 +172,16 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
         m_installedPackageId = packageId;
         m_info = info;
         m_installedVersion = PackageKit::Daemon::global()->packageVersion(packageId);
-    } else if (PackageKit::Daemon::global()->filters().testFlag(PackageKit::Transaction::FilterNewest) || 
+        if (/*!PackageKit::Daemon::global()->filters().testFlag(PackageKit::Transaction::FilterNewest) &&*/
         PackageKitBackend::compare_versions(PackageKit::Daemon::global()->packageVersion(packageId), m_availableVersion) > 0) {
-        if (packageId.startsWith("libtag"))
-            kDebug() << "Accept new available package id" << (PackageKit::Daemon::global()->filters() & PackageKit::Transaction::FilterNewest);
+            m_availablePackageId = packageId;
+            m_availableVersion = PackageKit::Daemon::global()->packageVersion(packageId);
+            m_gotDetails = false;
+        }
+    } else if (/*PackageKit::Daemon::global()->filters().testFlag(PackageKit::Transaction::FilterNewest) ||*/
+        PackageKitBackend::compare_versions(PackageKit::Daemon::global()->packageVersion(packageId), m_availableVersion) > 0) {
+        if (packageId.startsWith("nfs-client"))
+            kDebug() << "Accept new available package id" << m_availableVersion << PackageKit::Daemon::global()->packageVersion(packageId);
         m_availablePackageId = packageId;
         m_availableVersion = PackageKit::Daemon::global()->packageVersion(packageId);
         if (m_installedVersion == m_availableVersion && info != PackageKit::Transaction::InfoInstalled) { //This case will happen when we have a package installed and remove it
@@ -192,6 +198,9 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
     if (changeState) {
         //kDebug() << "State changed" << m_info;
         emit stateChanged();
+    }
+    if (availableVersion() != installedVersion() && !installedVersion().isEmpty() && !availableVersion().isEmpty()) {
+        kDebug() << "Found upgradeable" << installedVersion() << availableVersion() << packageId;
     }
 }
 

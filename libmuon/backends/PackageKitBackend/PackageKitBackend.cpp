@@ -426,7 +426,7 @@ int PackageKitBackend::compare_versions(QString const& a, QString const& b)
     for (int i = 0; i != withpkgrel1.count(); i++) {
         QString s1( withpkgrel1.at(i) ); /* takes the rest */
         if (withpkgrel2.count() < i)
-            return 1;
+            return -1;
         QString s2( withpkgrel2.at(i) );
 
         /* Second split is to separate actual version numbers (or strings) */
@@ -437,13 +437,16 @@ int PackageKitBackend::compare_versions(QString const& a, QString const& b)
         QStringList::iterator i2 = v2.begin();
 
         for (; i1 < v1.end() && i2 < v2.end() ; i1++, i2++) {
+            if ((*i1).length() > (*i2).length())
+                return 1;
+            if ((*i1).length() < (*i2).length())
+                return -1;
             int p1 = i1->toInt();
             int p2 = i2->toInt();
 
             if (p1 > p2) {
                 return 1;
-            }
-            else if (p1 < p2) {
+            } else if (p1 < p2) {
                 return -1;
             }
         }

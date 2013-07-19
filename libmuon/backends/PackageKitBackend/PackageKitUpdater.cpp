@@ -54,6 +54,7 @@ void PackageKitUpdater::prepare()
         m_transaction->reset();
     } else {
         m_transaction = new PackageKit::Transaction(this);
+        connect(m_transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), m_backend, SLOT(populateInstalledCache()));
         connect(m_transaction, SIGNAL(changed()), this, SLOT(backendChanged()));
         connect(m_transaction, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), this, SLOT(errorFound(PackageKit::Transaction::Error,QString)));
         connect(m_transaction, SIGNAL(mediaChangeRequired(PackageKit::Transaction::MediaType,QString,QString)),
@@ -270,6 +271,7 @@ void PackageKitUpdater::start()
     for (AbstractResource * res : m_toUpgrade) {
         PackageKitResource * app = qobject_cast<PackageKitResource*>(res);
         m_packageIds.insert(app->availablePackageId());
+        qDebug() << "Upgrade" << app->availablePackageId() << app->installedPackageId();
     }
     m_transaction->installPackages(m_packageIds.toList());
 }
