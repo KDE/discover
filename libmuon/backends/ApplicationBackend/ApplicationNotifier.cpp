@@ -52,20 +52,21 @@ ApplicationNotifier::ApplicationNotifier(QObject* parent, const QVariantList &)
                          ki18n("Muon Notification Daemon"),
                          "2.0", ki18n("A Notification Daemon for Muon"),
                          KAboutData::License_GPL,
-                         ki18n("(C) 2009-2012 Jonathan Thomas, (C) 2009 Harald Sitter"),
+                         ki18n("(C) 2013 Lukas Appelhans, (C) 2009-2012 Jonathan Thomas, (C) 2009 Harald Sitter"),
                          KLocalizedString(), "http://kubuntu.org");
     
-    init();//TODO: Make it delayed again
+    QTimer::singleShot(2 * 60 * 1000, this, SLOT(init()));
 }
 
 ApplicationNotifier::~ApplicationNotifier()
 {
     delete m_checkerProcess;
+    delete m_updateCheckerProcess;
 }
 
 void ApplicationNotifier::configurationChanged()
 {
-    //TODO: What to do here?
+    //FIXME: Probably update config, depend on the Settingspage discussion
     //m_distUpgradeEvent->reloadConfig();
     //m_updateEvent->reloadConfig();
 }
@@ -93,7 +94,7 @@ void ApplicationNotifier::init()
 void ApplicationNotifier::distUpgradeEvent()
 {
     QString checkerFile = KStandardDirs::locate("data", "muonapplicationnotifier/releasechecker");
-    qDebug() << "Run" << checkerFile;
+    qDebug() << "Run releasechecker: " << checkerFile;
     m_checkerProcess = new KProcess(this);
     connect(m_checkerProcess, SIGNAL(finished(int)),
             this, SLOT(checkUpgradeFinished(int)));
@@ -103,7 +104,7 @@ void ApplicationNotifier::distUpgradeEvent()
 
 void ApplicationNotifier::checkUpgradeFinished(int exitStatus)
 {
-    qWarning() << "checked and" << exitStatus;
+    qWarning() << "checked for upgrades and return with " << exitStatus;
     if (exitStatus == 0) {
         KNotification::event("DistUpgrade", i18n("System update available!"), i18nc("Notification when a new version of Kubuntu is available",
                                  "A new version of Kubuntu is available"), KIcon("svn-update").pixmap(KIconLoader::SizeMedium), nullptr, KNotification::CloseOnTimeout, KComponentData("muonapplicationnotifier"));
@@ -132,7 +133,7 @@ void ApplicationNotifier::parseUpdateInfo()
     // Weirdly enough, apt-check gives output on stderr
     QByteArray line = m_updateCheckerProcess->readAllStandardError();
     m_updateCheckerProcess->deleteLater();
-    m_updateCheckerProcess = 0;
+    m_updateCheckerProcess = nullptr;
 
     // Format updates;security
     int eqpos = line.indexOf(';');
