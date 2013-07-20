@@ -22,7 +22,6 @@
 #include <QDBusInterface>
 #include <qdbusreply.h>
 #include <QDebug>
-#include <QProcess>
 
 #include <KStatusNotifierItem>
 #include <KLocale>
@@ -74,7 +73,7 @@ AbstractKDEDModule::~AbstractKDEDModule()
 
 void AbstractKDEDModule::Private::__k__showMuon()
 {
-    QProcess::execute("muon-discover --mode installed");//TODO: Move to KRun
+    KRun::runCommand("muon-discover --mode installed", 0);
 }
 
 void AbstractKDEDModule::Private::__k__quit()

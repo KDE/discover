@@ -47,6 +47,7 @@ target_link_libraries(muonprivate
     ${KDE4_KDEUI_LIBS}
     ${KDE4_PHONON_LIBS}
     ${KDE4_SOLID_LIBS} 
+    ${KDE4_KIO_LIBS}
 )
 
 install(TARGETS muonprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
