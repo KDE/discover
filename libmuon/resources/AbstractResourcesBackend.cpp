@@ -23,7 +23,8 @@
 
 AbstractResourcesBackend::AbstractResourcesBackend(QObject* parent)
     : QObject(parent)
-{}
+{
+}
 
 void AbstractResourcesBackend::installApplication(AbstractResource* app)
 {

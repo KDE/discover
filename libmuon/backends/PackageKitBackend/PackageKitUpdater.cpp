@@ -283,6 +283,7 @@ void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QSt
 
 void PackageKitUpdater::mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text)
 {
+    Q_UNUSED(media)
     KMessageBox::information(0, text, i18n("Media Change of type '%1' is requested.", type));
 }
 

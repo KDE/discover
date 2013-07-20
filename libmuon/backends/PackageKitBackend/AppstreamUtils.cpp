@@ -36,6 +36,7 @@ QStringList joinLists(const QList<QStringList>& list)
 
 QHash<QString, QStringList> readElementList(QXmlStreamReader* reader, const QString& listedTagName)
 {
+    Q_UNUSED(listedTagName)
     Q_ASSERT(reader->isStartElement());
     QHash<QString, QStringList> ret;
     QStringRef startTag = reader->name();

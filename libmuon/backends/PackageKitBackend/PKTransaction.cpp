@@ -34,6 +34,16 @@ PKTransaction::PKTransaction(AbstractResource* app, Transaction::Role role, Pack
     , m_trans(pktrans)
 {
     m_trans->setParent(this);
+    switch (role) {
+        case Transaction::InstallRole:
+            pktrans->installPackage(qobject_cast<PackageKitResource*>(app)->installedPackageId());
+            break;
+        case Transaction::RemoveRole:
+            pktrans->removePackage(qobject_cast<PackageKitResource*>(app)->installedPackageId());
+            break;
+        case Transaction::ChangeAddonsRole:
+            break;
+    };
     setCancellable(pktrans->allowCancel());
     connect(pktrans, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(cleanup(PackageKit::Transaction::Exit,uint)));
     connect(pktrans, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(errorFound(PackageKit::Transaction::Error,QString)));
@@ -66,6 +76,10 @@ void PKTransaction::cancel()
 
 void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
 {
+    Q_UNUSED(runtime)
+    if (exit == PackageKit::Transaction::ExitEulaRequired) {//FIXME: Port eula stuff to updater
+        return;
+    }
     setStatus(Transaction::DoneStatus);
     if (exit == PackageKit::Transaction::ExitCancelled) {
         TransactionModel::global()->cancelTransaction(this);
@@ -90,9 +104,19 @@ void PKTransaction::eulaRequired(const QString& eulaID, const QString& packageID
                                                  PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement),
                                             i18n("%1 requires user to accept its license!", PackageKit::Daemon::packageName(packageID)));
     if (ret == KMessageBox::Yes) {
-        m_trans->acceptEula(eulaID);
+        m_trans->acceptEula(eulaID);//FIXME: Check if the exit gets first called or after the acceptEula? If not, we got to move a bunch of code to cleanup
+        switch (role()) {
+            case Transaction::InstallRole:
+                m_trans->installPackage(qobject_cast<PackageKitResource*>(resource())->installedPackageId());
+                break;
+            case Transaction::RemoveRole:
+                m_trans->removePackage(qobject_cast<PackageKitResource*>(resource())->installedPackageId());
+                break;
+            case Transaction::ChangeAddonsRole:
+                break;
+        };
     } else {
-        m_trans->cancel();
+        m_trans->cancel();//FIXME: Or call cleanup() directly? Dunno yet, test this! Or check apper!
     }
 }
 
@@ -103,6 +127,7 @@ void PKTransaction::errorFound(PackageKit::Transaction::Error err, const QString
 
 void PKTransaction::mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text)
 {
+    Q_UNUSED(media)
     KMessageBox::information(0, text, i18n("Media Change of type '%1' is requested.", type));
 }
 

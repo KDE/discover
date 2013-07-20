@@ -280,6 +280,7 @@ void PackageKitBackend::finishRefresh()
 
 void PackageKitBackend::timerEvent(QTimerEvent * event)
 {
+    Q_UNUSED(event)//FIXME: Port to QTimer at least or not use this at all
     updateDatabase();
 }
 
@@ -344,6 +345,7 @@ void PackageKitBackend::removeTransaction(Transaction* t)
     qDebug() << "Remove transaction:" << t->resource()->packageName() << "with" << m_transactions.size() << "transactions running";
     int count = m_transactions.removeAll(t);
     Q_ASSERT(count==1);
+    Q_UNUSED(count)
     TransactionModel::global()->removeTransaction(t);
 }
 
@@ -354,9 +356,7 @@ void PackageKitBackend::installApplication(AbstractResource* app, AddonList )
 
 void PackageKitBackend::installApplication(AbstractResource* app)
 {
-    PackageKit::Transaction* installTransaction = new PackageKit::Transaction(this);
-    installTransaction->installPackage(qobject_cast<PackageKitResource*>(app)->availablePackageId());
-    PKTransaction* t = new PKTransaction(app, Transaction::InstallRole, installTransaction);
+    PKTransaction* t = new PKTransaction(app, Transaction::InstallRole, new PackageKit::Transaction(this));
     m_transactions.append(t);
     TransactionModel::global()->addTransaction(t);
 }
@@ -370,6 +370,7 @@ void PackageKitBackend::cancelTransaction(AbstractResource* app)
                 pkt->transaction()->cancel();
                 int count = m_transactions.removeAll(t);
                 Q_ASSERT(count==1);
+                Q_UNUSED(count)
                 //TransactionModel::global()->cancelTransaction(t);
             } else {
                 kWarning() << "trying to cancel a non-cancellable transaction: " << app->name();
@@ -382,9 +383,7 @@ void PackageKitBackend::cancelTransaction(AbstractResource* app)
 void PackageKitBackend::removeApplication(AbstractResource* app)
 {
     kDebug() << "Starting to remove" << app->name();
-    PackageKit::Transaction* removeTransaction = new PackageKit::Transaction(this);
-    removeTransaction->removePackage(qobject_cast<PackageKitResource*>(app)->installedPackageId());
-    PKTransaction* t = new PKTransaction(app, Transaction::RemoveRole, removeTransaction);
+    PKTransaction* t = new PKTransaction(app, Transaction::RemoveRole, new PackageKit::Transaction(this));
     m_transactions.append(t);
     TransactionModel::global()->addTransaction(t);
 }
