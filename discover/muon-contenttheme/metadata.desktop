@@ -32,6 +32,7 @@ Name[sv]=Instrumentpanel för program
 Name[tr]=Uygulama paneli
 Name[uk]=Панель приладів програм
 Name[x-test]=xxApplication dashboardxx
+Name[zh_CN]=应用程序部件板
 Name[zh_TW]=應用程式控制面板
 Comment=Intended as Application dashboard default
 Comment[bs]=Planirano kao podrazumijevana aplikacijska kontrolna ploča
@@ -67,6 +68,7 @@ Comment[sv]=Avsett som förvald instrumentpanel för program
 Comment[tr]=Uygulama paneli varsayılanı olarak amaçlandı
 Comment[uk]=Призначено бути типовою панеллю приладів програм
 Comment[x-test]=xxIntended as Application dashboard defaultxx
+Comment[zh_CN]=作为应用程序部件板的默认值
 Comment[zh_TW]=應用程式預設控制面板
 
 NoDisplay=true
