@@ -24,12 +24,14 @@
 #include <resources/AbstractResource.h>
 #include <PackageKit/packagekit-qt2/Transaction>
 
+class PackageKitBackend;
+
 class PackageKitResource : public AbstractResource
 {
     Q_OBJECT
     Q_PROPERTY(QString license READ license NOTIFY licenseChanged)
     public:
-        explicit PackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, AbstractResourcesBackend* parent);
+        explicit PackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, PackageKitBackend* parent);
         virtual QString packageName() const;
         virtual QString name();
         virtual QString comment();
@@ -58,12 +60,16 @@ class PackageKitResource : public AbstractResource
     public slots:
         void addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
         void details(const QString &packageId, const QString &license, PackageKit::Transaction::Group group, const QString &detail, const QString &url, qulonglong size);
-
+        void resetPackageIds();
+        
     signals:
         void licenseChanged();
 
     private slots:
         void fetchDetails();
+        
+    protected:
+        PackageKitBackend * m_backend;
         
     private:
         QString m_installedPackageId;

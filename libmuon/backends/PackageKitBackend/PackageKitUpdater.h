@@ -69,6 +69,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         void mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text);
         void requireRestard(PackageKit::Transaction::Restart restart, const QString& p);
         void eulaRequired(const QString &eulaID, const QString &packageID, const QString &vendor, const QString &licenseAgreement);
+        void finished(PackageKit::Transaction::Exit exit, uint);
         
     private:
         PackageKit::Transaction * m_transaction;

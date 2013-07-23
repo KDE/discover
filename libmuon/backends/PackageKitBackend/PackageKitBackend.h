@@ -68,23 +68,23 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         virtual void cancelTransaction(AbstractResource* app);
         virtual bool isValid() const { return true; }
         virtual QList<AbstractResource*> upgradeablePackages() const;
+        bool isLoading() const;
         
     public slots:
         void removeTransaction(Transaction* t);
+        void populateInstalledCache();
         
     protected:
         virtual void timerEvent(QTimerEvent * event);
         
     private slots:
         void populateNewestCache();
-        void populateInstalledCache();
         void finishRefresh();
         void updateDatabase();
         void addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
         void addNewest(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
 
     private:
-
         QHash<QString, AbstractResource*> m_packages;
         QHash<QString, AbstractResource*> m_updatingPackages;
         QHash<QString, ApplicationData> m_appdata;
@@ -92,6 +92,7 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         PackageKitUpdater* m_updater;
         QList<PackageKitResource*> m_upgradeablePackages;
         PackageKit::Transaction * m_refresher;
+        bool m_isLoading;
 };
 
 #endif // PACKAGEKITBACKEND_H

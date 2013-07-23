@@ -26,13 +26,13 @@
 #include <KLocale>
 #include <PackageKit/packagekit-qt2/Daemon>
 
-PackageKitResource::PackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, AbstractResourcesBackend* parent)
+PackageKitResource::PackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, PackageKitBackend* parent)
     : AbstractResource(parent)
-    , m_availablePackageId(packageId)
     , m_info(info)
     , m_summary(summary)
     , m_size(0)
     , m_gotDetails(false)
+    , m_backend(parent)
 {
     addPackageId(info, packageId, summary);
     /*if (info == PackageKit::Transaction::InfoInstalled) {
@@ -153,6 +153,13 @@ AbstractResource::State PackageKitResource::state()
     return Broken;
 }
 
+void PackageKitResource::resetPackageIds()
+{
+    m_info = PackageKit::Transaction::InfoUnknown;
+    m_availablePackageId = QString();
+    m_installedPackageId = QString();
+}
+
 void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
     if (info == PackageKit::Transaction::InfoUnknown)
@@ -172,13 +179,13 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
         m_info = info;
         m_installedVersion = PackageKit::Daemon::global()->packageVersion(packageId);
         if (!PackageKit::Daemon::global()->filters().testFlag(PackageKit::Transaction::FilterNewest) &&
-        PackageKitBackend::compare_versions(PackageKit::Daemon::global()->packageVersion(packageId), m_availableVersion) > 0) {
+             PackageKitBackend::compare_versions(PackageKit::Daemon::global()->packageVersion(packageId), m_availableVersion) > 0) {
             m_availablePackageId = packageId;
             m_availableVersion = PackageKit::Daemon::global()->packageVersion(packageId);
             m_gotDetails = false;
         }
     } else if (PackageKit::Daemon::global()->filters().testFlag(PackageKit::Transaction::FilterNewest) ||
-        PackageKitBackend::compare_versions(PackageKit::Daemon::global()->packageVersion(packageId), m_availableVersion) > 0) {
+               PackageKitBackend::compare_versions(PackageKit::Daemon::global()->packageVersion(packageId), m_availableVersion) > 0) {
         m_availablePackageId = packageId;
         m_availableVersion = PackageKit::Daemon::global()->packageVersion(packageId);
         if (m_installedVersion == m_availableVersion && info != PackageKit::Transaction::InfoInstalled) { //This case will happen when we have a package installed and remove it
@@ -317,7 +324,7 @@ QStringList PackageKitResource::categories()
 
 bool PackageKitResource::isTechnical() const
 {
-    return true;
+    return true;//!m_availablePackageId.startsWith("flash");
 }
 
 void PackageKitResource::fetchDetails()

@@ -201,10 +201,17 @@ PackageKitBackend::~PackageKitBackend()
 {
 }
 
+bool PackageKitBackend::isLoading() const
+{
+    return m_isLoading;
+}
+
 void PackageKitBackend::populateInstalledCache()
 {
     kDebug() << "Starting to populate the installed packages cache";
     m_appdata = AppstreamUtils::fetchAppData("/home/lukas/appdata.xml");//FIXME: Change path
+    
+    m_isLoading = true;
     
     emit reloadStarted();
     
@@ -276,6 +283,8 @@ void PackageKitBackend::finishRefresh()
     m_packages = m_updatingPackages;
     
     emit reloadFinished();
+    
+    m_isLoading = false;
 }
 
 void PackageKitBackend::timerEvent(QTimerEvent * event)
@@ -310,10 +319,13 @@ AbstractResource* PackageKitBackend::resourceByPackageName(const QString& name) 
 
 QList<AbstractResource*> PackageKitBackend::searchPackageName(const QString& searchText)
 {
+    kDebug() << "SEARCH FOR" << searchText;
     QList<AbstractResource*> ret;
     for(AbstractResource* res : m_packages.values()) {
-        if (res->name().contains(searchText, Qt::CaseInsensitive))
+        if (res->name().contains(searchText, Qt::CaseInsensitive)) {
+            kDebug() << "Got one" << res->name();
             ret += res;
+        }
     }
     return ret;
 }
@@ -356,7 +368,7 @@ void PackageKitBackend::installApplication(AbstractResource* app, AddonList )
 
 void PackageKitBackend::installApplication(AbstractResource* app)
 {
-    PKTransaction* t = new PKTransaction(app, Transaction::InstallRole, new PackageKit::Transaction(this));
+    PKTransaction* t = new PKTransaction(app, Transaction::InstallRole);
     m_transactions.append(t);
     TransactionModel::global()->addTransaction(t);
 }
@@ -383,7 +395,7 @@ void PackageKitBackend::cancelTransaction(AbstractResource* app)
 void PackageKitBackend::removeApplication(AbstractResource* app)
 {
     kDebug() << "Starting to remove" << app->name();
-    PKTransaction* t = new PKTransaction(app, Transaction::RemoveRole, new PackageKit::Transaction(this));
+    PKTransaction* t = new PKTransaction(app, Transaction::RemoveRole);
     m_transactions.append(t);
     TransactionModel::global()->addTransaction(t);
 }

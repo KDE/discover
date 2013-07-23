@@ -29,30 +29,45 @@
 #include <PackageKit/packagekit-qt2/Daemon>
 #include <KDebug>
 
-PKTransaction::PKTransaction(AbstractResource* app, Transaction::Role role, PackageKit::Transaction* pktrans)
-    : Transaction(app, app, role)
-    , m_trans(pktrans)
+PKTransaction::PKTransaction(AbstractResource* app, Transaction::Role role)
+    : Transaction(app, app, role),
+      m_trans(0)
 {
-    m_trans->setParent(this);
-    switch (role) {
+    start();
+}
+
+void PKTransaction::start()
+{
+    if (m_trans)
+        m_trans->deleteLater();
+    
+    m_trans = new PackageKit::Transaction(this);
+    connect(m_trans, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(cleanup(PackageKit::Transaction::Exit,uint)));
+    connect(m_trans, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(errorFound(PackageKit::Transaction::Error,QString)));
+    connect(m_trans, SIGNAL(mediaChangeRequired(PackageKit::Transaction::MediaType,QString,QString)),
+            SLOT(mediaChange(PackageKit::Transaction::MediaType,QString,QString)));
+    connect(m_trans, SIGNAL(requireRestart(PackageKit::Transaction::Restart,QString)),
+            SLOT(requireRestard(PackageKit::Transaction::Restart,QString)));
+    connect(m_trans, SIGNAL(itemProgress(QString, PackageKit::Transaction::Status, uint)), SLOT(progressChanged(QString, PackageKit::Transaction::Status, uint)));
+    connect(m_trans, SIGNAL(eulaRequired(QString, QString, QString, QString)), SLOT(eulaRequired(QString, QString, QString, QString)));
+    connect(m_trans, SIGNAL(changed()), SLOT(transactionChanged()));
+    
+    switch (role()) {
         case Transaction::InstallRole:
-            pktrans->installPackage(qobject_cast<PackageKitResource*>(app)->installedPackageId());
+            if (qobject_cast<PackageKitResource*>(resource())->availablePackageId().isEmpty())
+                kWarning() << "Trying to install a package with empty packageId" << resource()->name();
+            m_trans->installPackage(qobject_cast<PackageKitResource*>(resource())->availablePackageId());
             break;
         case Transaction::RemoveRole:
-            pktrans->removePackage(qobject_cast<PackageKitResource*>(app)->installedPackageId());
+            if (qobject_cast<PackageKitResource*>(resource())->installedPackageId().isEmpty())
+                kWarning() << "Trying to remove a package with empty packageId" << resource()->name();
+            m_trans->removePackage(qobject_cast<PackageKitResource*>(resource())->installedPackageId());
             break;
         case Transaction::ChangeAddonsRole:
             break;
     };
-    setCancellable(pktrans->allowCancel());
-    connect(pktrans, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(cleanup(PackageKit::Transaction::Exit,uint)));
-    connect(pktrans, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(errorFound(PackageKit::Transaction::Error,QString)));
-    connect(pktrans, SIGNAL(mediaChangeRequired(PackageKit::Transaction::MediaType,QString,QString)),
-            SLOT(mediaChange(PackageKit::Transaction::MediaType,QString,QString)));
-    connect(pktrans, SIGNAL(requireRestart(PackageKit::Transaction::Restart,QString)),
-            SLOT(requireRestard(PackageKit::Transaction::Restart,QString)));
-    connect(pktrans, SIGNAL(itemProgress(QString, PackageKit::Transaction::Status, uint)), SLOT(progressChanged(QString, PackageKit::Transaction::Status, uint)));
-    connect(pktrans, SIGNAL(eulaRequired(QString, QString, QString, QString)), SLOT(eulaRequired(QString, QString, QString, QString)));
+    
+    setCancellable(m_trans->allowCancel());
 }
 
 void PKTransaction::progressChanged(const QString &id, PackageKit::Transaction::Status status, uint percentage)
@@ -62,11 +77,16 @@ void PKTransaction::progressChanged(const QString &id, PackageKit::Transaction::
         id != res->installedPackageId())
         return;
     kDebug() << "Progress" << percentage << "state" << status;
-    setProgress(percentage);
     if (status == PackageKit::Transaction::StatusDownload)
         setStatus(Transaction::DownloadingStatus);
     else
         setStatus(Transaction::CommittingStatus);
+}
+
+void PKTransaction::transactionChanged()
+{
+    setCancellable(m_trans->allowCancel());
+    setProgress(m_trans->percentage());
 }
 
 void PKTransaction::cancel()
@@ -77,7 +97,11 @@ void PKTransaction::cancel()
 void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
 {
     Q_UNUSED(runtime)
-    if (exit == PackageKit::Transaction::ExitEulaRequired) {//FIXME: Port eula stuff to updater
+    kDebug() << "EXIT" << exit;
+    if (exit == PackageKit::Transaction::ExitEulaRequired)
+        return;
+    if (exit == PackageKit::Transaction::ExitSuccess && m_trans->role() == PackageKit::Transaction::RoleAcceptEula) {
+        start();
         return;
     }
     setStatus(Transaction::DoneStatus);
@@ -89,6 +113,7 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     }
     PackageKit::Transaction* t = new PackageKit::Transaction(resource());
     t->resolve(resource()->packageName(), PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
+    qobject_cast<PackageKitResource*>(resource())->resetPackageIds();
     connect(t, SIGNAL(package(PackageKit::Transaction::Info,QString,QString)), resource(), SLOT(addPackageId(PackageKit::Transaction::Info, QString,QString)));
     connect(t, SIGNAL(destroy()), t, SLOT(deleteLater()));
 }
@@ -104,24 +129,18 @@ void PKTransaction::eulaRequired(const QString& eulaID, const QString& packageID
                                                  PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement),
                                             i18n("%1 requires user to accept its license!", PackageKit::Daemon::packageName(packageID)));
     if (ret == KMessageBox::Yes) {
-        m_trans->acceptEula(eulaID);//FIXME: Check if the exit gets first called or after the acceptEula? If not, we got to move a bunch of code to cleanup
-        switch (role()) {
-            case Transaction::InstallRole:
-                m_trans->installPackage(qobject_cast<PackageKitResource*>(resource())->installedPackageId());
-                break;
-            case Transaction::RemoveRole:
-                m_trans->removePackage(qobject_cast<PackageKitResource*>(resource())->installedPackageId());
-                break;
-            case Transaction::ChangeAddonsRole:
-                break;
-        };
+        kDebug() << "RESTART TRANSACTION reset thus";
+        m_trans->acceptEula(eulaID);
     } else {
-        m_trans->cancel();//FIXME: Or call cleanup() directly? Dunno yet, test this! Or check apper!
+        cleanup(PackageKit::Transaction::ExitCancelled, 0);
     }
 }
 
 void PKTransaction::errorFound(PackageKit::Transaction::Error err, const QString& error)
 {
+    kDebug() << "ERROR" << error;
+    if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
+        return;
     KMessageBox::error(0, error, PackageKitBackend::errorMessage(err));
 }
 

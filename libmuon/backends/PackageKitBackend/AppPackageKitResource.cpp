@@ -29,7 +29,7 @@ AppPackageKitResource::AppPackageKitResource(const QString &packageId,
                                              PackageKit::Transaction::Info info, 
                                              const QString &summary,
                                              const ApplicationData& data,
-                                             AbstractResourcesBackend* parent)
+                                             PackageKitBackend* parent)
     : PackageKitResource(packageId, info, summary, parent)
     , m_appdata(data)
 {}
@@ -73,7 +73,7 @@ QUrl AppPackageKitResource::homepage()
 
 bool AppPackageKitResource::isTechnical() const
 {
-    return false;
+    return !(m_backend->isLoading() || !availablePackageId().isEmpty() || !installedPackageId().isEmpty());
 }
 
 QStringList AppPackageKitResource::executables() const

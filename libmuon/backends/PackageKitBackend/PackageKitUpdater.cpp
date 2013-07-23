@@ -50,19 +50,34 @@ void PackageKitUpdater::reloadFinished()
 void PackageKitUpdater::prepare()
 {
     kDebug();
-    if (m_transaction) {
-        m_transaction->reset();
-    } else {
-        m_transaction = new PackageKit::Transaction(this);
-        connect(m_transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), m_backend, SLOT(populateInstalledCache()));
-        connect(m_transaction, SIGNAL(changed()), this, SLOT(backendChanged()));
-        connect(m_transaction, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), this, SLOT(errorFound(PackageKit::Transaction::Error,QString)));
-        connect(m_transaction, SIGNAL(mediaChangeRequired(PackageKit::Transaction::MediaType,QString,QString)),
-                this, SLOT(mediaChange(PackageKit::Transaction::MediaType,QString,QString)));
-        connect(m_transaction, SIGNAL(requireRestart(PackageKit::Transaction::Restart,QString)),
-                this, SLOT(requireRestard(PackageKit::Transaction::Restart,QString)));
-        connect(m_transaction, SIGNAL(eulaRequired(QString, QString, QString, QString)), SLOT(eulaRequired(QString, QString, QString, QString)));
+    if (m_transaction)
+        m_transaction->deleteLater();
+    
+    m_transaction = new PackageKit::Transaction(this);
+    connect(m_transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(finished(PackageKit::Transaction::Exit,uint)));
+    connect(m_transaction, SIGNAL(changed()), this, SLOT(backendChanged()));
+    connect(m_transaction, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), this, SLOT(errorFound(PackageKit::Transaction::Error,QString)));
+    connect(m_transaction, SIGNAL(mediaChangeRequired(PackageKit::Transaction::MediaType,QString,QString)),
+            this, SLOT(mediaChange(PackageKit::Transaction::MediaType,QString,QString)));
+    connect(m_transaction, SIGNAL(requireRestart(PackageKit::Transaction::Restart,QString)),
+            this, SLOT(requireRestard(PackageKit::Transaction::Restart,QString)));
+    connect(m_transaction, SIGNAL(eulaRequired(QString, QString, QString, QString)), SLOT(eulaRequired(QString, QString, QString, QString)));
+
+}
+
+void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint )
+{
+    kDebug() << "EXIT" << exit;
+    if (exit == PackageKit::Transaction::ExitEulaRequired)
+        return;
+    if (exit == PackageKit::Transaction::ExitSuccess && m_transaction->role() == PackageKit::Transaction::RoleAcceptEula) {
+        prepare();
+        start();
+        return;
     }
+    m_isProgressing = false;
+    emit progressingChanged(m_isProgressing);
+    m_backend->populateInstalledCache();
 }
 
 void PackageKitUpdater::backendChanged()
@@ -71,13 +86,6 @@ void PackageKitUpdater::backendChanged()
     if (m_isCancelable != m_transaction->allowCancel()) {
         m_isCancelable = m_transaction->allowCancel();
         emit cancelableChanged(m_isCancelable);
-    }
-    
-    bool isCurrentlyProgressing = (m_transaction->status() != PackageKit::Transaction::StatusUnknown &&
-                                   m_transaction->status() != PackageKit::Transaction::StatusFinished);
-    if (m_isProgressing != isCurrentlyProgressing) {
-        m_isProgressing = isCurrentlyProgressing;
-        emit progressingChanged(m_isProgressing);
     }
     
     if (m_status != m_transaction->status()) {
@@ -278,6 +286,9 @@ void PackageKitUpdater::start()
 
 void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QString& error)
 {
+    kDebug() << "ERROR" << error;
+    if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
+        return;
     KMessageBox::error(0, error, PackageKitBackend::errorMessage(err));
 }
 
@@ -315,12 +326,13 @@ void PackageKitUpdater::requireRestard(PackageKit::Transaction::Restart restart,
 
 void PackageKitUpdater::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
 {
+    kDebug();
     int ret = KMessageBox::questionYesNo(0, i18n("The package %1 and its vendor %2 require that you accept their license:\n %3", 
                                                  PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement),
                                             i18n("%1 requires user to accept its license!", PackageKit::Daemon::packageName(packageID)));
     if (ret == KMessageBox::Yes) {
         m_transaction->acceptEula(eulaID);
     } else {
-        m_transaction->cancel();
+        finished(PackageKit::Transaction::ExitCancelled, 0);
     }
 }

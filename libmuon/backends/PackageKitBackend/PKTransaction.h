@@ -28,7 +28,7 @@ class PKTransaction : public Transaction
 {
     Q_OBJECT
     public:
-        explicit PKTransaction(AbstractResource* app, Transaction::Role role, PackageKit::Transaction* pktrans);
+        explicit PKTransaction(AbstractResource* app, Transaction::Role role);
         PackageKit::Transaction* transaction();
         
         virtual void cancel();
@@ -40,8 +40,10 @@ class PKTransaction : public Transaction
         void requireRestard(PackageKit::Transaction::Restart restart, const QString& p);
         void progressChanged(const QString&, PackageKit::Transaction::Status, uint);
         void eulaRequired(const QString &eulaID, const QString &packageID, const QString &vendor, const QString &licenseAgreement);
+        void transactionChanged();
 
     private:
+        void start();
         PackageKit::Transaction* m_trans;
 };
 
