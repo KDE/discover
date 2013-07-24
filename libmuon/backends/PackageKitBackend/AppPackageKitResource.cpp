@@ -47,7 +47,7 @@ QString AppPackageKitResource::longDescription()
 {
     QString ret = m_appdata.summary.value(KGlobal::locale()->language());
     if(ret.isEmpty()) ret = m_appdata.summary.value(QString());
-    if(ret.isEmpty()) ret = PackageKitResource::longDescription();
+    if(ret.isEmpty() || ret.length() < PackageKitResource::longDescription().length()) ret = PackageKitResource::longDescription();
     return ret;
 }
 

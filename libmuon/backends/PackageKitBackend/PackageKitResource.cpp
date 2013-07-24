@@ -69,18 +69,19 @@ QString PackageKitResource::installedPackageId() const
 
 QString PackageKitResource::comment()
 {
-    fetchDetails();
     return m_summary;
 }
 
 QString PackageKitResource::longDescription()
 {
+    kDebug();
     fetchDetails();
     return m_detail;
 }
 
 QUrl PackageKitResource::homepage()
 {
+    kDebug();
     fetchDetails();
     return m_url;
 }
@@ -92,6 +93,7 @@ QString PackageKitResource::icon() const
 
 QString PackageKitResource::license()
 {
+    kDebug();
     fetchDetails();
     return m_license;
 }
@@ -113,6 +115,7 @@ QString PackageKitResource::installedVersion() const
 
 int PackageKitResource::downloadSize()
 {
+    kDebug();
     fetchDetails();
     return m_size;
 }
@@ -336,10 +339,9 @@ void PackageKitResource::fetchDetails()
     m_gotDetails = true;
     kDebug() << "Fetch details for" << m_availablePackageId;
     PackageKit::Transaction* transaction = new PackageKit::Transaction(this);
-    transaction->getDetails(m_availablePackageId);
-    connect(transaction, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackageId(PackageKit::Transaction::Info, QString, QString)));
     connect(transaction, SIGNAL(details(QString, QString, PackageKit::Transaction::Group, QString, QString, qulonglong)), SLOT(details(QString, QString, PackageKit::Transaction::Group, QString, QString, qulonglong)));
     connect(transaction, SIGNAL(destroy()), transaction, SLOT(deleteLater()));
+    transaction->getDetails(m_availablePackageId);
 }
 
 void PackageKitResource::details(const QString &packageId, const QString &license, PackageKit::Transaction::Group group, const QString &detail, const QString &url, qulonglong size)
