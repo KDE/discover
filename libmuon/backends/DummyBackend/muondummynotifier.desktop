@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Muon Dummy Notifier
+Type=Service
+X-KDE-ServiceTypes=KDEDModule
+X-KDE-Library=muondummyotifier
+X-KDE-FactoryName=muondummyotifier
+X-KDE-DBus-ModuleName=muondummyotifier
+X-KDE-Kded-autoload=true
+X-KDE-Kded-phase=2

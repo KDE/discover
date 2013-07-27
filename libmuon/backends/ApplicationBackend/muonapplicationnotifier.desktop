@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Muon Application Notifier
+Type=Service
+X-KDE-ServiceTypes=KDEDModule
+X-KDE-Library=muonapplicationnotifier
+X-KDE-FactoryName=muonapplicationnotifier
+X-KDE-DBus-ModuleName=muonapplicationnotifier
+X-KDE-Kded-autoload=true
+X-KDE-Kded-phase=2
