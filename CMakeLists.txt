@@ -11,6 +11,8 @@ find_package(QCA2 REQUIRED) #required by QtOAuth
 find_package(QJSON REQUIRED)
 find_package(LibAttica QUIET)
 find_package(BODEGA QUIET)
+find_package(AkabeiCore QUIET)
+find_package(AkabeiClient QUIET)
 
 
 include (KDE4Defaults)
@@ -44,5 +46,7 @@ macro_log_feature(LIBATTICA_FOUND "LibAttica" "Qt library that implements the Op
                   "http://www.kde.org" FALSE "" "Required to build the KNewStuff3 backend")
 macro_log_feature(BODEGA_FOUND "Bodega" "Library that exposes Bodega resources"
                   "http://www.kde.org" FALSE "" "Required to build the Bodega backend")
+macro_log_feature(AKABEICLIENT_FOUND "Akabei" "Library that exposes Akabei resources"
+                  "http://www.kde.org" FALSE "" "Required to build the Akabei backend")
 
 macro_display_feature_log()
