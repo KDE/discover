@@ -342,6 +342,8 @@ void PackageKitResource::fetchDetails()
     connect(transaction, SIGNAL(details(QString, QString, PackageKit::Transaction::Group, QString, QString, qulonglong)), SLOT(details(QString, QString, PackageKit::Transaction::Group, QString, QString, qulonglong)));
     connect(transaction, SIGNAL(destroy()), transaction, SLOT(deleteLater()));
     transaction->getDetails(m_availablePackageId);
+    
+    kDebug() << "ERROR" << transaction->internalErrorMessage();
 }
 
 void PackageKitResource::details(const QString &packageId, const QString &license, PackageKit::Transaction::Group group, const QString &detail, const QString &url, qulonglong size)
