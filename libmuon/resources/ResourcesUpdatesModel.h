@@ -78,7 +78,6 @@ class MUONPRIVATE_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 
     private slots:
         void message(const QString& msg);
-        void updaterProgressingChanged(bool);
         void addNewBackends();
 };
 
