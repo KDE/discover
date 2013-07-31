@@ -22,6 +22,7 @@
 #define NOTIFYSETTINGSPAGE_H
 
 #include <QtGui/QWidget>
+#include <QtDBus/QDBusInterface>
 
 #include "SettingsPageBase.h"
 
@@ -45,11 +46,10 @@ public:
 private:
     QCheckBox *m_updatesCheckBox;
     QCheckBox *m_verboseCheckBox;
-    QCheckBox *m_distUpgradeCheckBox;
-
-    QRadioButton *m_comboRadio;
-    QRadioButton *m_trayOnlyRadio;
-    QRadioButton *m_KNotifyOnlyRadio;
+    
+    QStringList m_services;
+    QStringList m_loadedModules;
+    QDBusInterface *m_kded;
 };
 
 #endif

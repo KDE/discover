@@ -36,12 +36,7 @@ DummyNotifier::~DummyNotifier()
 {
 }
 
-void DummyNotifier::configurationChanged()
-{
-    recheckSystemUpdateNeeded();
-}
-
 void DummyNotifier::recheckSystemUpdateNeeded()
 {
-    setSystemUpToDate(!isSystemUpToDate());
+    setSystemUpToDate(!isSystemUpToDate(), 3, 2);
 }

@@ -28,11 +28,15 @@ class MUONPRIVATE_EXPORT AbstractKDEDModule : public KDEDModule
 {
     Q_OBJECT
     Q_PROPERTY(bool systemUpToDate READ isSystemUpToDate WRITE setSystemUpToDate)
-    Q_PROPERTY(int updateType READ updateType WRITE setUpdateType)
+    Q_PROPERTY(int updateType READ updateType)
 public:    
     enum UpdateType {
         NormalUpdate = 0,
         SecurityUpdate = 1
+    };
+    enum Notification {
+        ShowNotification = 0,
+        DontShowNotification = 1
     };
     Q_ENUMS(UpdateType);
     virtual ~AbstractKDEDModule();
@@ -41,7 +45,7 @@ public:
     int updateType() const;
 
 public slots:
-    virtual Q_SCRIPTABLE void configurationChanged() = 0;
+    virtual Q_SCRIPTABLE void configurationChanged();
     virtual Q_SCRIPTABLE void recheckSystemUpdateNeeded() = 0;
 
 signals:
@@ -50,9 +54,9 @@ signals:
 protected:
     AbstractKDEDModule(const QString &name, const QString &iconName, QObject * parent);
     
-    //FIXME: PRobably make the updateType another parameter here?
-    void setSystemUpToDate(bool systemUpToDate, bool showNotification = true);
-    void setUpdateType(int updateType);
+    void setSystemUpToDate(bool systemUpToDate, UpdateType updateType = NormalUpdate, Notification notification = ShowNotification);
+    void setSystemUpToDate(bool systemUpToDate, int updateCount, UpdateType updateType = NormalUpdate, Notification notification = ShowNotification);
+    void setSystemUpToDate(bool systemUpToDate, int updateCount, int securityUpdateCount, UpdateType updateType = NormalUpdate, Notification notification = ShowNotification);
     
 private:
     class Private;

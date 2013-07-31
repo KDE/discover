@@ -37,7 +37,7 @@
 // Own includes
 #include "distupgradeevent/distupgradeevent.h"
 
-//TODO: Instead of calling ConfigWatcher we should call this
+//TODO: recheckSystemUpdateNeeded should be called from somewhere? where? should be called after each update, so probably in the AbstractBackendUpdater?
 
 K_PLUGIN_FACTORY(ApplicationNotifierFactory,
                  registerPlugin<ApplicationNotifier>();
@@ -62,13 +62,6 @@ ApplicationNotifier::~ApplicationNotifier()
 {
     delete m_checkerProcess;
     delete m_updateCheckerProcess;
-}
-
-void ApplicationNotifier::configurationChanged()
-{
-    //FIXME: Probably update config, depend on the Settingspage discussion
-    //m_distUpgradeEvent->reloadConfig();
-    //m_updateEvent->reloadConfig();
 }
 
 void ApplicationNotifier::init()
@@ -108,7 +101,7 @@ void ApplicationNotifier::checkUpgradeFinished(int exitStatus)
     if (exitStatus == 0) {
         KNotification::event("DistUpgrade", i18n("System update available!"), i18nc("Notification when a new version of Kubuntu is available",
                                  "A new version of Kubuntu is available"), KIcon("svn-update").pixmap(KIconLoader::SizeMedium), nullptr, KNotification::CloseOnTimeout, KComponentData("muonapplicationnotifier"));
-        setSystemUpToDate(false, false);
+        setSystemUpToDate(false, AbstractKDEDModule::NormalUpdate, AbstractKDEDModule::DontShowNotification);
     }
 
     m_checkerProcess->deleteLater();
@@ -149,8 +142,7 @@ void ApplicationNotifier::parseUpdateInfo()
     // ';' not found, apt-check broke :("
     
     if (QFile::exists("/var/lib/update-notifier/updates-available")) {
-        setUpdateType(securityUpdates > 0 ? 1 : 0);
-        setSystemUpToDate(false);
+        setSystemUpToDate(false, updates, securityUpdates, securityUpdates > 0 ? AbstractKDEDModule::SecurityUpdate : NormalUpdate);
     } else {
         setSystemUpToDate(true);
     }
