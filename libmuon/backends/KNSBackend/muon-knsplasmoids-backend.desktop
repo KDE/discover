@@ -37,6 +37,7 @@ Name[sv]=Plasmoider
 Name[tr]=Plasmoid'ler
 Name[uk]=Плазмоїди
 Name[x-test]=xxPlasmoidsxx
+Name[zh_CN]=Plasmoids
 Name[zh_TW]=小元件
 GenericName=Plasmoids
 GenericName[bs]=Plazmoidi
@@ -72,6 +73,7 @@ GenericName[sv]=Plasmoider
 GenericName[tr]=Plasmoid'ler
 GenericName[uk]=Плазмоїди
 GenericName[x-test]=xxPlasmoidsxx
+GenericName[zh_CN]=Plasmoids
 GenericName[zh_TW]=小元件
 Comment=Install plasmoids and raise the power of your workspace!
 Comment[bs]=Instalirajte plazmoide i pojačajte radni prostor!
@@ -105,6 +107,7 @@ Comment[sv]=Installera Plasmoider och öka arbetsytans möjligheter.
 Comment[tr]=Plasmoid'ler yükleyerek çalışma alanınızın gücünü arttırın!
 Comment[uk]=Встановіть плазмоїди і зробіть ваш робочий простір потужнішим!
 Comment[x-test]=xxInstall plasmoids and raise the power of your workspace!xx
+Comment[zh_CN]=安装 plasmoids，让您的工作区更强大！
 Comment[zh_TW]=安裝小元件，提升您的工作空間的能量！
 <<<<<<< HEAD
 =======

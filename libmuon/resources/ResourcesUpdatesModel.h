@@ -75,11 +75,10 @@ class MUONPRIVATE_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 
         ResourcesModel* m_resources;
         QVector<AbstractBackendUpdater*> m_updaters;
-        int m_finishedUpdaters;
 
     private slots:
         void message(const QString& msg);
-        void updaterFinished();
+        void updaterProgressingChanged(bool);
         void addNewBackends();
 };
 

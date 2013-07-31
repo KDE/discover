@@ -51,6 +51,11 @@ ResourcesModel::ResourcesModel(QObject* parent, bool load)
     , m_initializingBackends(0)
     , m_mainwindow(0)
 {
+    init(load);
+}
+
+void ResourcesModel::init(bool load)
+{
     Q_ASSERT(!s_self);
     Q_ASSERT(QCoreApplication::instance()->thread()==QThread::currentThread());
 
@@ -83,8 +88,11 @@ ResourcesModel::ResourcesModel(QObject* parent, bool load)
 }
 
 ResourcesModel::ResourcesModel(const QString& backendName, QObject* parent)
-    : ResourcesModel(parent, false)
+    : QAbstractListModel(parent)
+    , m_initializingBackends(0)
+    , m_mainwindow(0)
 {
+    init(false);
     Q_ASSERT(!s_self);
     s_self = this;
     registerBackendByName(backendName);

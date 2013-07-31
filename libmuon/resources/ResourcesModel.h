@@ -96,6 +96,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
     private:
         ///@p initialize tells if all backends load will be triggered on construction
         explicit ResourcesModel(QObject* parent=0, bool initialize = true);
+        void init(bool initialize);
         void addResourcesBackend(AbstractResourcesBackend* resources);
         void registerBackendByName(const QString& name);
 
