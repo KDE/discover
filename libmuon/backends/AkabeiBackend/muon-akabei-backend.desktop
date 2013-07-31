@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=Muon/Backend
+Exec=blubb
+Icon=applications-other
+Comment=Install and browse applications in Chakra
+Name=Akabei Backend
+GenericName=Chakra Support
+X-KDE-Library=muon-akabeibackend
+X-KDE-PluginInfo-Name=muon-akabeibackend
+X-KDE-PluginInfo-License=GPL
