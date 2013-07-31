@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Application dashboard
+Name[bs]=Aplikacijska kontrolna ploča
 Name[ca]=Tauler d'aplicacions
 Name[cs]=Pracovní plocha aplikace
 Name[da]=Programinstrumentbræt
@@ -33,6 +34,7 @@ Name[uk]=Панель приладів програм
 Name[x-test]=xxApplication dashboardxx
 Name[zh_TW]=應用程式控制面板
 Comment=Intended as Application dashboard default
+Comment[bs]=Planirano kao podrazumijevana aplikacijska kontrolna ploča
 Comment[ca]=Proposat com a tauler d'aplicacions per defecte
 Comment[cs]=Zamýšleno jako výchozí pracovní plocha aplikace
 Comment[da]=Tiltænkt som standard for programinstrumentbræt

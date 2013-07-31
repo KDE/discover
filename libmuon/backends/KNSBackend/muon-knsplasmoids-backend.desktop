@@ -4,6 +4,7 @@ ServiceTypes=Muon/Backend
 Exec=blubb
 Icon=plasma
 Name=Plasmoids
+Name[bs]=Plazmoidi
 Name[ca]=Plasmoides
 Name[cs]=Plasmoidy
 Name[da]=Plasmoids
@@ -38,6 +39,7 @@ Name[uk]=Плазмоїди
 Name[x-test]=xxPlasmoidsxx
 Name[zh_TW]=小元件
 GenericName=Plasmoids
+GenericName[bs]=Plazmoidi
 GenericName[ca]=Plasmoides
 GenericName[cs]=Plasmoidy
 GenericName[da]=Plasmoids
@@ -72,6 +74,7 @@ GenericName[uk]=Плазмоїди
 GenericName[x-test]=xxPlasmoidsxx
 GenericName[zh_TW]=小元件
 Comment=Install plasmoids and raise the power of your workspace!
+Comment[bs]=Instalirajte plazmoide i pojačajte radni prostor!
 Comment[ca]=Instal·leu plasmoides i augmenteu la potència de l'espai de treball!
 Comment[da]=Installér plasmoids og gør dit skrivebord endnu stærkere!
 Comment[el]=Εγκαταστήστε πλασμοειδή και αυξήστε την ισχύ του χώρου εργασίας σας!
@@ -103,6 +106,9 @@ Comment[tr]=Plasmoid'ler yükleyerek çalışma alanınızın gücünü arttır�
 Comment[uk]=Встановіть плазмоїди і зробіть ваш робочий простір потужнішим!
 Comment[x-test]=xxInstall plasmoids and raise the power of your workspace!xx
 Comment[zh_TW]=安裝小元件，提升您的工作空間的能量！
+<<<<<<< HEAD
+=======
+>>>>>>> 2.0
 X-KDE-Library=muon-knsbackend
 X-KDE-PluginInfo-Name=muon-knsbackend-plasmoids
 X-KDE-PluginInfo-License=GPL

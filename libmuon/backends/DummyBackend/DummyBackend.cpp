@@ -40,7 +40,7 @@ DummyBackend::DummyBackend(QObject* parent, const QVariantList&)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
 {
-    for(int i=0; i<32; i++) {
+    for(int i=0; i<32000; i++) {
         QString name = "alalala"+QString::number(i);
         DummyResource* res = new DummyResource(name, this);
         res->setState(AbstractResource::State(1+(i%3)));
