@@ -54,9 +54,10 @@ OriginsBackend::~OriginsBackend()
 
 void OriginsBackend::load()
 {
-    QApt::Backend* backend = qobject_cast<QApt::Backend*>(applicationBackend()->property("backend").value<QObject*>());
+    QObject* b = applicationBackend();
+    QApt::Backend* backend = qobject_cast<QApt::Backend*>(b->property("backend").value<QObject*>());
     if(!backend) {
-        connect(applicationBackend(), SIGNAL(backendReady()), SLOT(load()));
+        connect(b, SIGNAL(fetchingChanged()), SLOT(load()));
         return;
     }
     

@@ -163,12 +163,18 @@ void MainWindow::initObject()
             backend->metaObject()->className()==QLatin1String("ApplicationBackend"))
         {
             m_appBackend = backend;
-            connect(m_appBackend, SIGNAL(backendReady()), SLOT(populateViews()));
-            connect(m_appBackend, SIGNAL(reloadFinished()), SLOT(showLauncherMessage()));
+            connect(m_appBackend, SIGNAL(fetchingChanged()), SLOT(aptFetchingChanged()));
             connect(m_appBackend, SIGNAL(sourcesEditorFinished()), SLOT(sourcesEditorFinished()));
             populateViews();
         }
     }
+    connect(resourcesModel, SIGNAL(allInitialized()), SLOT(populateViews()));
+}
+
+void MainWindow::aptFetchingChanged()
+{
+    if(m_appBackend && !m_appBackend->isFetching())
+        showLauncherMessage();
 }
 
 void MainWindow::loadSplitterSizes()

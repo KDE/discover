@@ -89,7 +89,7 @@ private slots:
     void statusChanged(QApt::TransactionStatus status);
     void setStatusMessage(const QString& msg);
     void setStatusDetail(const QString& msg);
-    void reloadFinished();
+    void fetchingChanged();
     void calculateUpdates();
 };
 

@@ -49,8 +49,7 @@ ApplicationUpdates::ApplicationUpdates(ApplicationBackend* parent)
     , m_eta(0)
     , m_progressing(false)
 {
-    connect(m_appBackend, SIGNAL(reloadFinished()),
-            this, SLOT(reloadFinished()));
+    connect(m_appBackend, SIGNAL(fetchingChanged()), SLOT(fetchingChanged()));
 }
 
 bool ApplicationUpdates::hasUpdates() const
@@ -426,8 +425,11 @@ QList<QAction*> ApplicationUpdates::messageActions() const
     return ret;
 }
 
-void ApplicationUpdates::reloadFinished()
+void ApplicationUpdates::fetchingChanged()
 {
+    if(m_appBackend && m_appBackend->isFetching())
+        return;
+
     calculateUpdates();
     setProgressing(false);
 }
