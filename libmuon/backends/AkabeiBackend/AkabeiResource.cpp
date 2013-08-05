@@ -21,13 +21,14 @@
 #include "AkabeiBackend.h"
 #include <QtCore/QStringList>
 #include <akabeicore/akabeidatabase.h>
+#include <akabeiquery.h>
 
 AkabeiResource::AkabeiResource(Akabei::Package * pkg, AkabeiBackend * parent)
   : AbstractResource(parent),
-    m_pkg(pkg)
+    m_pkg(0),
+    m_installedPkg(0)
 {
-    if (pkg->isInstalled())
-        m_installedPkg = pkg;
+    addPackage(pkg);
 }
         
 QString AkabeiResource::packageName() const
@@ -58,17 +59,31 @@ bool AkabeiResource::canExecute() const
 void AkabeiResource::invokeApplication() const
 {
 }
+
+void AkabeiResource::addPackage(Akabei::Package* pkg)
+{
+    if (pkg->database() == Akabei::Backend::instance()->localDatabase()) {
+        if (!m_installedPkg || m_installedPkg->version() <= pkg->version())
+            m_installedPkg = pkg;
+        if (!m_pkg)
+            m_pkg = pkg;
+    } else if (!m_pkg || m_pkg->version() <= pkg->version()) {
+        m_pkg = pkg;
+    }
+}
         
 AbstractResource::State AkabeiResource::state()
 {
-    if (m_pkg->isInstalled())
+    if (m_installedPkg && m_installedPkg->version() >= m_pkg->version())
         return AbstractResource::Installed;
+    else if (m_installedPkg)
+        return AbstractResource::Upgradeable;
     return AbstractResource::None;
 }
         
 QString AkabeiResource::categories()
 {
-    return "Multimedia";
+    return "AudioVideo";
 }
         
 QUrl AkabeiResource::homepage() const

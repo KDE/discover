@@ -52,23 +52,30 @@ void AkabeiBackend::statusChanged(Akabei::Backend::Status status)
 {
     kDebug() << "Status changed to" << status;
     if (status == Akabei::Backend::StatusReady && m_packages.isEmpty()) {
+        emit backendReady();
+        kDebug() << "get packages";
         connect(Akabei::Backend::instance(), SIGNAL(queryPackagesCompleted(QUuid,QList<Akabei::Package*>)), SLOT(queryComplete(QUuid,QList<Akabei::Package*>)));
         Akabei::Backend::instance()->packages();
-        
     }
-    emit backendReady();
 }
 
 void AkabeiBackend::queryComplete(QUuid,QList<Akabei::Package*> packages)
 {
+    emit reloadStarted();
+    kDebug() << "Got" << packages.count() << "packages";
     foreach (Akabei::Package * pkg, packages) {
-        m_packages.insert(pkg->name(), new AkabeiResource(pkg, this));
+        if (m_packages.contains(pkg->name())) {
+            qobject_cast<AkabeiResource*>(m_packages[pkg->name()])->addPackage(pkg);
+        } else {
+            m_packages.insert(pkg->name(), new AkabeiResource(pkg, this));
+        }
     }
+    emit reloadFinished();
 }
 
 bool AkabeiBackend::isValid() const
 {
-    return true;
+    return Akabei::Backend::instance()->status() != Akabei::Backend::StatusBroken;
 }
 
 AbstractReviewsBackend* AkabeiBackend::reviewsBackend() const
@@ -83,7 +90,12 @@ AbstractResource* AkabeiBackend::resourceByPackageName(const QString& name) cons
 
 int AkabeiBackend::updatesCount() const
 {
-    return 0;
+    int count = 0;
+    for (AbstractResource * res : m_packages.values()) {
+        if (!res->isTechnical() && res->canUpgrade())
+            count++;
+    }
+    return count;
 }
 
 QVector< AbstractResource* > AkabeiBackend::allResources() const
@@ -127,6 +139,11 @@ AbstractBackendUpdater* AkabeiBackend::backendUpdater() const
 
 QList< AbstractResource* > AkabeiBackend::upgradeablePackages() const
 {
-    return QList<AbstractResource*>();
+    QList<AbstractResource*> resources;
+    for (AbstractResource * res : m_packages.values()) {
+        if (!res->isTechnical() && res->canUpgrade())
+            resources << res;
+    }
+    return resources;
 }
 

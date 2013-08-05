@@ -83,6 +83,7 @@ class MUONPRIVATE_EXPORT AkabeiResource : public AbstractResource
     public slots:
         virtual void fetchScreenshots();
         virtual void fetchChangelog();
+        void addPackage(Akabei::Package * pkg);
         
     private:
         Akabei::Package * m_installedPkg;
