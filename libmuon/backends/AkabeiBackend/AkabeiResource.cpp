@@ -22,6 +22,8 @@
 #include <QtCore/QStringList>
 #include <akabeicore/akabeidatabase.h>
 #include <akabeiquery.h>
+#include <kdebug.h>
+#include <MuonDataSources.h>
 
 AkabeiResource::AkabeiResource(Akabei::Package * pkg, AkabeiBackend * parent)
   : AbstractResource(parent),
@@ -53,7 +55,7 @@ QString AkabeiResource::icon() const
         
 bool AkabeiResource::canExecute() const
 {
-    return false;
+    return false;//FIXME
 }
         
 void AkabeiResource::invokeApplication() const
@@ -70,6 +72,14 @@ void AkabeiResource::addPackage(Akabei::Package* pkg)
     } else if (!m_pkg || m_pkg->version() <= pkg->version()) {
         m_pkg = pkg;
     }
+    //if (s != state()) //FIXME: Save the old state before callin clearPackages
+        emit stateChanged();
+}
+
+void AkabeiResource::clearPackages()
+{
+    m_pkg = 0;
+    m_installedPkg = 0;
 }
         
 AbstractResource::State AkabeiResource::state()
@@ -98,12 +108,12 @@ bool AkabeiResource::isTechnical() const
 
 QUrl AkabeiResource::thumbnailUrl()
 {
-    return QUrl();
+    return KUrl(MuonDataSources::screenshotsSource(), "thumbnail/"+packageName());//FIXME: Also return the packages screenshot, probably as priority or fallback?
 }
 
 QUrl AkabeiResource::screenshotUrl()
 {
-    return QUrl();
+    return KUrl(MuonDataSources::screenshotsSource(), "screenshot/"+packageName());
 }
         
 int AkabeiResource::downloadSize()
@@ -118,6 +128,8 @@ QString AkabeiResource::license()
         
 QString AkabeiResource::installedVersion() const
 {
+    if (!m_installedPkg)
+        return QString();
     return m_installedPkg->version().toByteArray().data();
 }
 
@@ -148,7 +160,15 @@ QString AkabeiResource::mimetypes() const
         
 QList<PackageState> AkabeiResource::addonsInformation()
 {
-    return QList<PackageState>();
+    QList<PackageState> states;
+    foreach (const QString &optdep, m_pkg->optionalDependencies()) {
+        QStringList split = optdep.split(":");
+        if (split.count() >= 2) {
+            states.append(PackageState(split.first(), split.at(1), 
+                                       !Akabei::Backend::instance()->localDatabase()->queryPackages(Akabei::Queries::selectPackages("name", "LIKE", split.first())).isEmpty()));
+        }
+    }
+    return states;
 }
 
 bool AkabeiResource::isFromSecureOrigin() const
@@ -159,6 +179,16 @@ bool AkabeiResource::isFromSecureOrigin() const
 QStringList AkabeiResource::executables() const
 {
     return QStringList();
+}
+
+Akabei::Package * AkabeiResource::package() const
+{
+    return m_pkg;
+}
+
+Akabei::Package * AkabeiResource::installedPackage() const
+{
+    return m_installedPkg;
 }
 
 void AkabeiResource::fetchScreenshots() {}

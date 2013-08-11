@@ -19,9 +19,13 @@
  ***************************************************************************/
 #include "AkabeiBackend.h"
 #include "AkabeiResource.h"
+#include "AkabeiTransaction.h"
+#include <Transaction/TransactionModel.h>
 #include <akabeiclient/akabeiclientbackend.h>
 #include <akabeicore/akabeidatabase.h>
 #include <akabeicore/akabeiconfig.h>
+
+#include <QQueue>
 
 #include <KPluginFactory>
 #include <KLocalizedString>
@@ -33,6 +37,7 @@ K_EXPORT_PLUGIN(MuonAkabeiBackendFactory(KAboutData("muon-akabeibackend","muon-a
 
 AkabeiBackend::AkabeiBackend(QObject* parent, const QVariantList& ) : AbstractResourcesBackend(parent)
 {
+    m_transactionQueue.clear();
     kDebug() << "CONSTRUCTED";
     connect(AkabeiClient::Backend::instance(), SIGNAL(statusChanged(Akabei::Backend::Status)), SLOT(statusChanged(Akabei::Backend::Status)));
     
@@ -53,24 +58,42 @@ void AkabeiBackend::statusChanged(Akabei::Backend::Status status)
     kDebug() << "Status changed to" << status;
     if (status == Akabei::Backend::StatusReady && m_packages.isEmpty()) {
         emit backendReady();
-        kDebug() << "get packages";
-        connect(Akabei::Backend::instance(), SIGNAL(queryPackagesCompleted(QUuid,QList<Akabei::Package*>)), SLOT(queryComplete(QUuid,QList<Akabei::Package*>)));
-        Akabei::Backend::instance()->packages();
+        reload();
     }
+}
+
+void AkabeiBackend::reload()
+{
+    kDebug() << "get packages";
+    Akabei::Backend::instance()->localDatabase()->reinit();
+    connect(Akabei::Backend::instance(), SIGNAL(queryPackagesCompleted(QUuid,QList<Akabei::Package*>)), SLOT(queryComplete(QUuid,QList<Akabei::Package*>)));
+    Akabei::Backend::instance()->packages();
 }
 
 void AkabeiBackend::queryComplete(QUuid,QList<Akabei::Package*> packages)
 {
-    emit reloadStarted();
+    disconnect(Akabei::Backend::instance(), SIGNAL(queryPackagesCompleted(QUuid,QList<Akabei::Package*>)), this, SLOT(queryComplete(QUuid,QList<Akabei::Package*>)));
     kDebug() << "Got" << packages.count() << "packages";
+    emit reloadStarted();
+    QHash<QString, AbstractResource*> pkgs;
     foreach (Akabei::Package * pkg, packages) {
-        if (m_packages.contains(pkg->name())) {
-            qobject_cast<AkabeiResource*>(m_packages[pkg->name()])->addPackage(pkg);
+        if (pkgs.contains(pkg->name())) {
+            qobject_cast<AkabeiResource*>(pkgs[pkg->name()])->addPackage(pkg);
+        } else if (m_packages.contains(pkg->name())) {
+            AkabeiResource * res = qobject_cast<AkabeiResource*>(m_packages[pkg->name()]);
+            res->clearPackages();
+            res->addPackage(pkg);
+            pkgs.insert(pkg->name(), res);
         } else {
-            m_packages.insert(pkg->name(), new AkabeiResource(pkg, this));
+            pkgs.insert(pkg->name(), new AkabeiResource(pkg, this));
         }
     }
+    m_packages = pkgs;
     emit reloadFinished();
+    if (m_transactionQueue.count() >= 1) {
+        AkabeiTransaction * trans = m_transactionQueue.first();
+        trans->start();
+    }
 }
 
 bool AkabeiBackend::isValid() const
@@ -112,19 +135,45 @@ QList< AbstractResource* > AkabeiBackend::searchPackageName(const QString& searc
     }
     return result;
 }
-    
+
 void AkabeiBackend::installApplication(AbstractResource* app, AddonList addons)
 {
-    installApplication(app);
+    //FIXME: What do we do when we want to remove an addon from a package that is not installed?!
+    //FIXME: Test with pacman/fakeroot
+    Transaction::Role role = Transaction::InstallRole;
+    if (app->isInstalled() && !app->canUpgrade()) {
+        role = Transaction::ChangeAddonsRole;
+    }
+    AkabeiTransaction * trans = new AkabeiTransaction(this, app, role, addons);
+    TransactionModel::global()->addTransaction(trans);
+    m_transactionQueue.enqueue(trans);
+    if (m_transactionQueue.count() <= 1)
+        trans->start();
 }
 
 void AkabeiBackend::installApplication(AbstractResource* app)
 {
+    AkabeiTransaction * trans = new AkabeiTransaction(this, app, Transaction::InstallRole);
+    TransactionModel::global()->addTransaction(trans);
+    m_transactionQueue.enqueue(trans);
+    if (m_transactionQueue.count() <= 1)
+        trans->start();
 }
 
 void AkabeiBackend::removeApplication(AbstractResource* app)
-{
+{    
+    AkabeiTransaction * trans = new AkabeiTransaction(this, app, Transaction::RemoveRole);
+    TransactionModel::global()->addTransaction(trans);
+    m_transactionQueue.enqueue(trans);
+    if (m_transactionQueue.count() <= 1)
+        trans->start();
+}
 
+void AkabeiBackend::removeFromQueue(AkabeiTransaction* trans)
+{
+    m_transactionQueue.removeAll(trans);
+    TransactionModel::global()->removeTransaction(trans);
+    reload();
 }
 
 void AkabeiBackend::cancelTransaction(AbstractResource* app)
@@ -134,7 +183,7 @@ void AkabeiBackend::cancelTransaction(AbstractResource* app)
 
 AbstractBackendUpdater* AkabeiBackend::backendUpdater() const
 {
-    return nullptr;
+    return nullptr;//FIXME
 }
 
 QList< AbstractResource* > AkabeiBackend::upgradeablePackages() const

@@ -25,7 +25,10 @@
 #include "resources/AbstractResourcesBackend.h"
 #include <QVariantList>
 #include <QUuid>
+#include <QQueue>
 #include <akabeicore/akabeibackend.h>
+
+class AkabeiTransaction;
 
 class MUONPRIVATE_EXPORT AkabeiBackend : public AbstractResourcesBackend
 {
@@ -51,12 +54,17 @@ public:
     
     AbstractBackendUpdater* backendUpdater() const;
     virtual QList<AbstractResource*> upgradeablePackages() const;
+    
+    void removeFromQueue(AkabeiTransaction * trans);
 
-private:
-    QHash<QString, AbstractResource*> m_packages;
 public slots:
     void statusChanged(Akabei::Backend::Status);
     void queryComplete(QUuid,QList<Akabei::Package*>);
+    void reload();
+    
+private:
+    QHash<QString, AbstractResource*> m_packages;
+    QQueue<AkabeiTransaction*> m_transactionQueue;
 };
 
 #endif

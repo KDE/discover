@@ -82,4 +82,3 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
 };
 
 #endif // ABSTRACTBACKENDUPDATER_H
-

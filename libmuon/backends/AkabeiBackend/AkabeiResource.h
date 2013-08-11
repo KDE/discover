@@ -79,11 +79,15 @@ class MUONPRIVATE_EXPORT AkabeiResource : public AbstractResource
         bool isFromSecureOrigin() const;
         
         virtual QStringList executables() const;
+        
+        Akabei::Package * package() const;
+        Akabei::Package * installedPackage() const;
 
     public slots:
         virtual void fetchScreenshots();
         virtual void fetchChangelog();
         void addPackage(Akabei::Package * pkg);
+        void clearPackages();
         
     private:
         Akabei::Package * m_installedPkg;
