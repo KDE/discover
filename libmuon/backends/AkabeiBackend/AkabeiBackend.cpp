@@ -65,7 +65,6 @@ void AkabeiBackend::statusChanged(Akabei::Backend::Status status)
 void AkabeiBackend::reload()
 {
     kDebug() << "get packages";
-    Akabei::Backend::instance()->localDatabase()->reinit();
     connect(Akabei::Backend::instance(), SIGNAL(queryPackagesCompleted(QUuid,QList<Akabei::Package*>)), SLOT(queryComplete(QUuid,QList<Akabei::Package*>)));
     Akabei::Backend::instance()->packages();
 }
