@@ -35,7 +35,7 @@
 K_PLUGIN_FACTORY(MuonAkabeiBackendFactory, registerPlugin<AkabeiBackend>(); )
 K_EXPORT_PLUGIN(MuonAkabeiBackendFactory(KAboutData("muon-akabeibackend","muon-akabeibackend",ki18n("Akabei Backend"),"0.1",ki18n("Chakra-Applications in your system"), KAboutData::License_GPL)))
 
-AkabeiBackend::AkabeiBackend(QObject* parent, const QVariantList& ) : AbstractResourcesBackend(parent)
+AkabeiBackend::AkabeiBackend(QObject* parent, const QVariantList& ) : AbstractResourcesBackend(parent), m_updater(new AkabeiUpdater(this))
 {
     m_transactionQueue.clear();
     kDebug() << "CONSTRUCTED";
@@ -182,7 +182,7 @@ void AkabeiBackend::cancelTransaction(AbstractResource* app)
 
 AbstractBackendUpdater* AkabeiBackend::backendUpdater() const
 {
-    return nullptr;//FIXME
+    return m_updater;
 }
 
 QList< AbstractResource* > AkabeiBackend::upgradeablePackages() const

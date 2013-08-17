@@ -23,6 +23,7 @@
 
 #include <libmuonprivate_export.h>
 #include "resources/AbstractResourcesBackend.h"
+#include "AkabeiUpdater.h"
 #include <QVariantList>
 #include <QUuid>
 #include <QQueue>
@@ -65,6 +66,7 @@ public slots:
 private:
     QHash<QString, AbstractResource*> m_packages;
     QQueue<AkabeiTransaction*> m_transactionQueue;
+    AkabeiUpdater * m_updater;
 };
 
 #endif
