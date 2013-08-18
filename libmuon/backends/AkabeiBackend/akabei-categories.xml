@@ -549,5 +549,15 @@
       </Or>
     </Include>
   </Menu>
+  
+  <Menu>
+    <Name>Unknown</Name>
+    <Icon>unknown</Icon>
+    <Include>
+      <Or>
+        <Category>Unknown</Category>
+      </Or>
+    </Include>
+  </Menu>
 
 </Menu>

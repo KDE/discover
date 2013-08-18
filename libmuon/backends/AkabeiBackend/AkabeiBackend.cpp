@@ -51,6 +51,7 @@ AkabeiBackend::AkabeiBackend(QObject* parent, const QVariantList& ) : AbstractRe
 
 AkabeiBackend::~AkabeiBackend()
 {
+    Akabei::Backend::instance()->deInit();
 }
 
 void AkabeiBackend::statusChanged(Akabei::Backend::Status status)

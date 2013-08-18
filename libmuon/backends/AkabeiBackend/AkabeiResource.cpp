@@ -22,6 +22,7 @@
 #include <QtCore/QStringList>
 #include <akabeicore/akabeidatabase.h>
 #include <akabeiquery.h>
+#include <akabeigroup.h>
 #include <kdebug.h>
 #include <MuonDataSources.h>
 
@@ -93,7 +94,7 @@ AbstractResource::State AkabeiResource::state()
         
 QString AkabeiResource::categories()
 {
-    return "AudioVideo";
+    return "Unknown";//FIXME: Has to be added to akabei
 }
         
 QUrl AkabeiResource::homepage() const
@@ -113,6 +114,9 @@ QUrl AkabeiResource::thumbnailUrl()
 
 QUrl AkabeiResource::screenshotUrl()
 {
+    if (m_pkg && !m_pkg->screenshot().isEmpty()) {
+        return m_pkg->screenshot();
+    }
     return KUrl(MuonDataSources::screenshotsSource(), "screenshot/"+packageName());
 }
         
@@ -123,7 +127,7 @@ int AkabeiResource::downloadSize()
 
 QString AkabeiResource::license()
 {
-    return m_pkg->licenses().join(" ");
+    return m_pkg->licenses().join(", ");
 }
         
 QString AkabeiResource::installedVersion() const
@@ -150,7 +154,9 @@ QString AkabeiResource::origin() const
 
 QString AkabeiResource::section()
 {
-    return "multimedia";
+    if (m_pkg->groups().isEmpty())
+        return "unknown";
+    return m_pkg->groups().first()->name();//FIXME: Probably add support for multiple sections?
 }
         
 QString AkabeiResource::mimetypes() const

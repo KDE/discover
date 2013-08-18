@@ -19,7 +19,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-
 #include "AkabeiUpdater.h"
 #include "AkabeiBackend.h"
 #include "AkabeiResource.h"
@@ -185,6 +184,7 @@ void AkabeiUpdater::finished(bool success)
     disconnect(AkabeiClient::Backend::instance()->transactionHandler(), 0, this, 0);
     disconnect(AkabeiClient::Backend::instance()->transactionHandler()->transactionProgress(), 0, this, 0);
     m_transaction = 0;
+    m_backend->reload();
 }
 
 QList< AbstractResource* > AkabeiUpdater::toUpdate() const
