@@ -31,6 +31,19 @@
 
 class AkabeiTransaction;
 
+struct ApplicationData
+{
+    QString pkgname;
+    QString id;
+    QHash<QString, QString> name;
+    QHash<QString, QString> summary;
+    QString icon;
+    QString url;
+    QHash<QString, QStringList> keywords;
+    QStringList appcategories;
+    QStringList mimetypes;
+};
+
 class MUONPRIVATE_EXPORT AkabeiBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
