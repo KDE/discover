@@ -2,60 +2,43 @@ import QtQuick 1.1
 import org.kde.plasma.components 0.1
 import org.kde.muon 1.0
 
-ListView
+Column
 {
     id: addonsView
     property alias application: addonsModel.application
-    property alias addonsHaveChanged: addonsModel.hasChanges
     property bool isInstalling: false
     property alias isEmpty: addonsModel.isEmpty
-    
-    ApplicationAddonsModel { id: addonsModel }
-    
-    model: addonsModel
-    
-    clip: true
-    delegate: Row {
-        height: 50
-        width: 50
-        spacing: 10
-        CheckBox {
-            enabled: !isInstalling
-            anchors.verticalCenter: parent.verticalCenter
-            checked: model.checked
-            onClicked: addonsModel.changeState(display, checked)
-        }
-        Image {
-            source: "image://icon/applications-other"
-            height: parent.height; width: height
-            smooth: true
-            opacity: isInstalling ? 0.3 : 1
-        }
-        Label {
-            enabled: !isInstalling
-            anchors.verticalCenter: parent.verticalCenter
-            text: i18n("<qt>%1<br/><em>%2</em></qt>", display, toolTip)
-        }
-    }
-    
-    NativeScrollBar {
-        id: scroll
-        orientation: Qt.Vertical
-        flickableItem: parent
-        anchors {
-            top: parent.top
-            right: parent.right
-            bottom: parent.bottom
+
+    Repeater
+    {
+        model: ApplicationAddonsModel { id: addonsModel }
+        
+        delegate: Row {
+            height: 50
+            width: 50
+            spacing: 10
+            CheckBox {
+                enabled: !addonsView.isInstalling
+                anchors.verticalCenter: parent.verticalCenter
+                checked: model.checked
+                onClicked: addonsModel.changeState(display, checked)
+            }
+            Image {
+                source: "image://icon/applications-other"
+                height: parent.height; width: height
+                smooth: true
+                opacity: addonsView.isInstalling ? 0.3 : 1
+            }
+            Label {
+                enabled: !addonsView.isInstalling
+                anchors.verticalCenter: parent.verticalCenter
+                text: i18n("<qt>%1<br/><em>%2</em></qt>", display, toolTip)
+            }
         }
     }
     
     Row {
-        visible: addonsModel.hasChanges && !isInstalling
-        layoutDirection: Qt.RightToLeft
-        anchors {
-            top: parent.top
-            right: parent.right
-        }
+        enabled: addonsModel.hasChanges && !addonsView.isInstalling
         spacing: 5
         
         Button {

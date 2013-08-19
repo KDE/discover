@@ -100,27 +100,27 @@ Item {
                         wrapMode: Text.WordWrap
                     }
                     Row {
+                        anchors.right: parent.right
+
                         spacing: 5
-                        Rating {
-                            visible: overviewContents.ratingInstance!=null
-                            rating: overviewContents.ratingInstance == null ? 
-                                                        0 : overviewContents.ratingInstance.rating
-                            width: 120
-                        }
                         InstallApplicationButton {
                             id: installButton
                             width: maximumWidth
                             application: appInfo.application
-                            additionalItem: Button {
-                                visible: application.isInstalled && application.canExecute
-                                text: i18n("Launch")
-                                onClicked: application.invokeApplication()
+                            additionalItem:  Rating {
+                                visible: overviewContents.ratingInstance!=null
+                                rating:  overviewContents.ratingInstance==null ? 0 : overviewContents.ratingInstance.rating
                             }
+                        }
+                        Button {
+                            visible: application.isInstalled && application.canExecute
+                            text: i18n("Launch")
+                            onClicked: application.invokeApplication()
                         }
                     }
                 }
             }
-            Heading { text: "Description" }
+            Heading { text: i18n("Description") }
             Label {
                 id: info
                 anchors {
@@ -132,15 +132,23 @@ Item {
                 wrapMode: Text.WordWrap
                 text: application.longDescription
             }
-            
+
+            Heading {
+                text: i18n("Addons")
+                visible: addonsView.visible
+            }
             AddonsView {
-                id:addonsView
+                id: addonsView
                 application: appInfo.application
                 isInstalling: installButton.isActive
-                visible: count>0
-                header: Heading { text: i18n("Addons") }
+            }
+
+            Heading {
+                text: i18n("Comments")
+                visible: reviewsView.visible
             }
             ListView {
+                id: reviewsView
                 width: parent.width
                 height: 123
                 spacing: 5
@@ -148,7 +156,6 @@ Item {
                 clip: true
                 interactive: false
                 
-                header: Heading { text: i18n("Comments") }
                 delegate: ReviewDelegate {
                     onMarkUseful: reviewsModel.markUseful(index, useful)
                 }
