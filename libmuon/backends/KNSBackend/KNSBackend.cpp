@@ -103,7 +103,14 @@ KNSBackend::KNSBackend(QObject* parent, const QVariantList& args)
 }
 
 KNSBackend::~KNSBackend()
+{}
+
+void KNSBackend::setFetching(bool f)
 {
+    if(m_fetching!=f) {
+        m_fetching = f;
+        emit fetchingChanged();
+    }
 }
 
 bool KNSBackend::isValid() const
@@ -155,7 +162,7 @@ void KNSBackend::receivedContents(Attica::BaseJob* job)
     Attica::Content::List contents = listJob->itemList();
     
     if(contents.isEmpty()) {
-        m_fetching = false;
+        setFetching(false);
         m_page = 0;
         m_manager->search();
         return;
@@ -176,7 +183,7 @@ void KNSBackend::receivedContents(Attica::BaseJob* job)
 void KNSBackend::receivedEntries(const KNS3::Entry::List& entries)
 {
     if(entries.isEmpty()) {
-        emit backendReady();
+        setFetching(false);
         return;
     }
     

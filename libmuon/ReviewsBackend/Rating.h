@@ -47,6 +47,7 @@ public:
     double sortableRating() const;
 
 private:
+    void init(const QString& packageName, const QString& appName, int ratingCount, int rating, const QString& histogram);
     QString m_packageName;
     QString m_appName;
     quint64 m_ratingCount;

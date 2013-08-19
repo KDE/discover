@@ -33,7 +33,7 @@ Event::Event(QObject* parent, const QString &name)
         : QObject(parent)
         , m_name(name)
         , m_hidden(false)
-        , m_notifierItem(0)
+        , m_notifierItem(nullptr)
         , m_active(false)
         , m_verbose(false)
 {
@@ -44,6 +44,7 @@ Event::Event(QObject* parent, const QString &name)
 
 Event::~Event()
 {
+    delete m_notifierItem;
 }
 
 bool Event::readHiddenConfig()
@@ -85,11 +86,14 @@ bool Event::isHidden() const
     return m_hidden;
 }
 
-void Event::show(const QString &icon, const QString &text, const QStringList &actions, const QString &tTipIcon)
+void Event::show(const QString &icon, const QString &text, const QStringList &actions,
+                 const QString &tTipIcon, const QString &actionIcon)
 {
     if (m_active || m_hidden) {
         return;
     }
+
+    QString aIcon = actionIcon.isEmpty() ? icon : actionIcon;
 
     if (m_useKNotify) {
         KNotification::NotificationFlag flag;
@@ -100,7 +104,7 @@ void Event::show(const QString &icon, const QString &text, const QStringList &ac
         }
 
         m_active = true;
-        KNotification *notify = new KNotification(m_name, 0, flag);
+        KNotification *notify = new KNotification(m_name, nullptr, flag);
         notify->setComponentData(KComponentData("muon-notifier"));
 
         KIcon notifyIcon(icon);
@@ -126,6 +130,7 @@ void Event::show(const QString &icon, const QString &text, const QStringList &ac
 
     if (m_useTrayIcon) {
         m_active = true;
+        delete m_notifierItem;
         m_notifierItem = new KStatusNotifierItem(this);
         m_notifierItem->setIconByName(icon);
         if (!tTipIcon.isEmpty()) {
@@ -143,7 +148,7 @@ void Event::show(const QString &icon, const QString &text, const QStringList &ac
         contextMenu->addTitle(KIcon("applications-system"), i18n("System Notification"));
 
         QAction *runAction = contextMenu->addAction(actions.at(0));
-        runAction->setIcon(KIcon(icon));
+        runAction->setIcon(KIcon(aIcon));
         connect(runAction, SIGNAL(triggered()), this, SLOT(run()));
         contextMenu->addAction(runAction);
 
@@ -159,7 +164,7 @@ void Event::show(const QString &icon, const QString &text, const QStringList &ac
         contextMenu->addAction(hideAction);
 
         m_notifierItem->setContextMenu(contextMenu);
-        m_notifierItem->setAssociatedWidget(NULL);
+        m_notifierItem->setAssociatedWidget(nullptr);
 
         connect(m_notifierItem, SIGNAL(activateRequested(bool,QPoint)), this, SLOT(run()));
     }
@@ -188,14 +193,14 @@ void Event::update(const QString &icon, const QString &text, const QString &tTip
 void Event::run()
 {
     delete m_notifierItem;
-    m_notifierItem = 0;
+    m_notifierItem = nullptr;
     notifyClosed();
 }
 
 void Event::ignore()
 {
     delete m_notifierItem;
-    m_notifierItem = 0;
+    m_notifierItem = nullptr;
     notifyClosed();
 }
 
@@ -216,5 +221,3 @@ void Event::reloadConfig()
     m_hidden = readHiddenConfig();
     readNotifyConfig();
 }
-
-#include "event.moc"

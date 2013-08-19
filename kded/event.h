@@ -45,7 +45,8 @@ public:
 
 public slots:
     bool isHidden() const;
-    void show(const QString &icon, const QString &text, const QStringList &actions, const QString &tTipIcon = QString());
+    void show(const QString &icon, const QString &text, const QStringList &actions,
+              const QString &tTipIcon = QString(), const QString &actionIcon = QString());
     void ignore();
     void update(const QString &icon, const QString &text, const QString &tTipIcon = QString());
     void run();

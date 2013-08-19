@@ -23,11 +23,12 @@
 #include <ReviewsBackend/Review.h>
 #include <ReviewsBackend/Rating.h>
 #include <resources/AbstractResource.h>
+#include <QTimer>
 
 DummyReviewsBackend::DummyReviewsBackend(DummyBackend* parent)
     : AbstractReviewsBackend(parent)
 {
-    connect(parent, SIGNAL(backendReady()), SLOT(initialize()));
+    QTimer::singleShot(0, this, SLOT(initialize()));
 }
 
 void DummyReviewsBackend::fetchReviews(AbstractResource* app, int page)

@@ -90,6 +90,7 @@ private Q_SLOTS:
     void addProgressItem();
     void removeProgressItem();
     void triggerOpenApplication();
+    void aptFetchingChanged();
 
 signals:
     void viewsPopulated();

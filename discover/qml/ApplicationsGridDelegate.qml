@@ -68,7 +68,7 @@ GridItem {
                 topMargin: 5
             }
             property bool hasThumbnail: model.application.thumbnailUrl!=""
-            source: hasThumbnail ? model.application.thumbnailUrl : "image://icon/"+model.application.icon
+            source: (hasThumbnail ? model.application.thumbnailUrl : smallIcon.source)
             height: delegateRoot.height*0.7
             fillMode: Image.PreserveAspectFit
             smooth: false
@@ -91,7 +91,7 @@ GridItem {
             height: width
             smooth: true
             asynchronous: true
-            source: "image://icon/"+model.application.icon
+            source: model.application.icon.indexOf("/")==0 ? "file://"+model.application.icon : "image://icon/"+model.application.icon
             visible: screen.hasThumbnail
             Behavior on y { NumberAnimation { duration: 200; easing.type: Easing.InQuad } }
         }

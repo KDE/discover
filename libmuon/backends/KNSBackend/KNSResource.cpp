@@ -71,8 +71,12 @@ QString KNSResource::icon() const
 QString KNSResource::comment()
 {
     QString s = m_content.summary();
-    if(s.isEmpty())
+    if(s.isEmpty()) {
         s = longDescription();
+        int newLine = s.indexOf('\n');
+        if(newLine>0)
+            s=s.left(newLine);
+    }
     return s;
 }
 

@@ -45,6 +45,7 @@ public:
     virtual void installApplication(AbstractResource* app);
     virtual void installApplication(AbstractResource* app, AddonList addons);
     virtual void removeApplication(AbstractResource* app);
+    virtual bool isFetching() const { return false; }
 
 private:
     QHash<QString, DummyResource*> m_resources;

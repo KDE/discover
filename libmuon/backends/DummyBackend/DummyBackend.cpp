@@ -40,7 +40,7 @@ DummyBackend::DummyBackend(QObject* parent, const QVariantList&)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
 {
-    for(int i=0; i<32; i++) {
+    for(int i=0; i<32000; i++) {
         QString name = "alalala"+QString::number(i);
         DummyResource* res = new DummyResource(name, this);
         res->setState(AbstractResource::State(1+(i%3)));
@@ -48,12 +48,8 @@ DummyBackend::DummyBackend(QObject* parent, const QVariantList&)
         connect(res, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));
     }
     
-    QTimer::singleShot(0, this, SIGNAL(backendReady()));
+//     QTimer::singleShot(0, this, SIGNAL(fetchingChanged()));
     m_reviews = new DummyReviewsBackend(this);
-    
-//     //simulate a random reload
-//     QTimer::singleShot(1000, this, SIGNAL(reloadStarted()));
-//     QTimer::singleShot(1500, this, SIGNAL(reloadFinished()));
 }
 
 QVector<AbstractResource*> DummyBackend::allResources() const

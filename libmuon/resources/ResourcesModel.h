@@ -34,6 +34,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
+    Q_PROPERTY(bool fetching READ isFetching NOTIFY allInitialized)
     public:
         enum Roles {
             NameRole = Qt::UserRole,
@@ -73,6 +74,8 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name);
 
         void integrateMainWindow(MuonMainWindow* w);
+        
+        bool isFetching() const;
 
     public slots:
         void installApplication(AbstractResource* app, AddonList addons);
@@ -87,8 +90,9 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         void searchInvalidated();
 
     private slots:
-        void cleanCaller();
-        void resetCaller();
+        void resetBackend(AbstractResourcesBackend* backend);
+        void cleanBackend(AbstractResourcesBackend* backend);
+        void callerFetchingChanged();
         void updateCaller();
         void registerAllBackends();
         void resourceChangedByTransaction(Transaction* t);
@@ -96,6 +100,7 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
     private:
         ///@p initialize tells if all backends load will be triggered on construction
         explicit ResourcesModel(QObject* parent=0, bool initialize = true);
+        void init(bool initialize);
         void addResourcesBackend(AbstractResourcesBackend* resources);
         void registerBackendByName(const QString& name);
 

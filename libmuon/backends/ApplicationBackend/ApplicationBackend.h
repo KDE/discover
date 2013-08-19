@@ -66,7 +66,7 @@ public:
     int updatesCount() const;
 
     bool confirmRemoval(QApt::StateChanges changes);
-    Q_SCRIPTABLE bool isReloading() const;
+    bool isFetching() const;
     void markTransaction(Transaction *transaction);
     void markLangpacks(Transaction *transaction);
     void addTransaction(Transaction *transaction);
@@ -85,9 +85,11 @@ public:
     virtual QList<AbstractResource*> upgradeablePackages() const;
 
 private:
+    void setFetching(bool f);
+    
     QApt::Backend *m_backend;
     ReviewsBackend *m_reviewsBackend;
-    bool m_isReloading;
+    bool m_isFetching;
 
     QFutureWatcher<QVector<Application*> >* m_watcher;
     QVector<Application *> m_appList;
@@ -103,7 +105,7 @@ private:
 
 public Q_SLOTS:
     void reload();
-    
+
     //helper functions
     void initAvailablePackages(KJob*);
 

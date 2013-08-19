@@ -35,7 +35,7 @@ ReviewsTest::ReviewsTest(QObject* parent): QObject(parent)
 {
     ResourcesModel* m = new ResourcesModel("muon-appsbackend", this);
     m_appBackend = m->backends().first();
-    QTest::kWaitForSignal(m_appBackend, SIGNAL(backendReady()));
+    QTest::kWaitForSignal(m, SIGNAL(allInitialized()));
     m_revBackend = m_appBackend->reviewsBackend();
 }
 

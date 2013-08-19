@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010-2013 Jonathan Thomas <echidnaman@kubuntu.org>        *
+ *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,43 +18,42 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "MainWindow.h"
+#include "DummyTest.h"
+#include <modeltest.h>
+#include <resources/ResourcesModel.h>
+#include <qtest_kde.h>
 
-#include <KUniqueApplication>
-#include <KAboutData>
-#include <KCmdLineArgs>
-#include <KStandardDirs>
+#include <QtTest>
 
-#include <stdio.h>
+QTEST_MAIN(DummyTest);
 
-static const char description[] =
-    I18N_NOOP("An update manager");
-
-static const char version[] = "2.0.65";
-
-int main(int argc, char **argv)
+AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 {
-    KAboutData about("muon-updater", "muon-updater", ki18n("Muon Update Manager"), version, ki18n(description),
-                     KAboutData::License_GPL, ki18n("©2010-2013 Jonathan Thomas"), KLocalizedString(), 0);
-    about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
-    about.setProgramIconName("system-software-update");
-    about.setProductName("muon/updater");
-
-    KCmdLineArgs::init(argc, argv, &about);
-    KCmdLineOptions options;
-    options.add("backends <names>", ki18n("List all the backends we'll want to have loaded, separated by coma ','."));
-    KCmdLineArgs::addCmdLineOptions( options );
-    if (!KUniqueApplication::start()) {
-        fprintf(stderr, "Update Manager is already running!\n");
-        return 0;
+    QVector<AbstractResourcesBackend*> backends = m->backends();
+    foreach(AbstractResourcesBackend* backend, backends) {
+        if(backend->metaObject()->className()==name) {
+            return backend;
+        }
     }
+    return nullptr;
+}
 
-    KUniqueApplication app;
-    app.disableSessionManagement();
-    KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
+DummyTest::DummyTest(QObject* parent): QObject(parent)
+{
+    m_model = new ResourcesModel("muon-dummybackend", this);
+//     new ModelTest(m_model, m_model);
 
-    MainWindow *mainWindow = new MainWindow;
-    mainWindow->show();
+    m_appBackend = backendByName(m_model, "DummyBackend");
+    QVERIFY(m_appBackend); //TODO: test all backends
+    QTest::kWaitForSignal(m_appBackend, SIGNAL(backendReady()));
+}
 
-    return app.exec();
+void DummyTest::testReadData()
+{
+    QBENCHMARK {
+        for(int i=0; i<m_model->rowCount(); i++) {
+            QModelIndex idx = m_model->index(i, 0);
+            QVERIFY(!m_model->data(idx, ResourcesModel::NameRole).isNull());
+        }
+    }
 }

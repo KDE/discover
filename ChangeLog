@@ -1,3 +1,31 @@
+2.1: (as of 2.1 alpha)
+======
+- Features:
+  * Refinements to the user interface of the Muon Update Manager.
+  * Support updating packages from other resource backends within the Muon Update Manager.
+  * Muon Discover's origins view has been ported to use the new QApt::SourcesList API.
+  * Miscellaenous UI improvements for Muon Discover
+  * Added a new icon for Muon Discover.
+- Optimizations:
+  * Speed up search in Muon Discover and Muon Software Center substantially.
+
+2.0.1:
+======
+- Bugfixes:
+  * Fixed too long resource descriptions not wrapping in Muon Discover.
+  * Fixed a few issues with Muon Discover's resource grid view.
+  * Fix the alignment on the elements in Muon Discover's CategoryPage.
+    Makes the flow look aligned with the header and footer.
+  * Fix a crash that sometimes occurs when exiting the sources editor (BKO: #317858)
+  * Fix a crash that occurs while reporting fatal initialization errors. (BKO: #319978)
+  * Use case-insensitive searches for the KNewStuff and Bodega backends.
+  * In Muon Discover, Fix some problems in the grid resource delegate. The icon will be 
+    properly centered when no preview. No more weird stretching.
+  * Fixed an issue in the Muon Update Manager where the "Install Updates" button would not
+    properly be enabled after a check for updates.
+  * Do not crash Muon Software Center if we try to navigate to an application page before
+    the ResourcesModel has been created. (BKO: #317917)
+
 2.0
 ======
 - Features:

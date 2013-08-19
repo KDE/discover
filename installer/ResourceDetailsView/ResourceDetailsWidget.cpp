@@ -63,7 +63,6 @@
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/Review.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
-#include <resources/AbstractResource.h>
 
 // std includes
 #include <math.h>
@@ -345,8 +344,7 @@ void ResourceDetailsWidget::setResource(AbstractResource *resource)
         m_menuPathWidget->hide();
     }
 
-    connect(resource->backend(), SIGNAL(reloadFinished()),
-            this, SLOT(updateActionButton()));
+    connect(resource->backend(), SIGNAL(fetchingChanged()), SLOT(updateActionButton()));
     updateActionButton();
 
     m_longDescLabel->setText(resource->longDescription());
@@ -532,7 +530,7 @@ void ResourceDetailsWidget::progressCommentChanged()
 
 void ResourceDetailsWidget::updateActionButton()
 {
-    if (!m_resource)
+    if (!m_resource || m_resource->backend()->isFetching())
         return;
 
     m_statusLabel->setText(m_resource->status());

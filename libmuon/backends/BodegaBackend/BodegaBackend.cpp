@@ -77,6 +77,7 @@ QMap<QString,QString> retrieveCredentials(const QString& folderName)
 
 BodegaBackend::BodegaBackend(QObject* parent, const QVariantList& args)
     : AbstractResourcesBackend(parent)
+    , m_fetching(false)
 {
     const QVariantMap info = args.first().toMap();
     
@@ -128,11 +129,12 @@ void BodegaBackend::dataReceived(Bodega::NetworkJob* job)
 {
     Bodega::ChannelsJob* cjob = qobject_cast<Bodega::ChannelsJob*>(job);
     QList<Bodega::AssetInfo> assets = cjob->assets();
-    
+
+    setFetching(true);
     foreach(const Bodega::AssetInfo& a, assets) {
         m_resourcesByName.insert(a.name, new BodegaResource(a, this));
     }
-    emit backendReady();
+    setFetching(false);
 }
 
 QVector<AbstractResource*> BodegaBackend::allResources() const
@@ -237,4 +239,12 @@ QList<AbstractResource*> BodegaBackend::upgradeablePackages() const
             ret += res;
     }
     return ret;
+}
+
+void BodegaBackend::setFetching(bool f)
+{
+    if(f!=m_fetching) {
+        m_fetching = f;
+        emit fetchingChanged();
+    }
 }

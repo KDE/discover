@@ -92,7 +92,6 @@ void ResourcesUpdatesModel::prepare()
 void ResourcesUpdatesModel::updateAll()
 {
     Q_ASSERT(m_resources);
-    m_finishedUpdaters = 0;
     
     if(m_updaters.isEmpty())
         emit progressingChanged();
@@ -104,12 +103,6 @@ void ResourcesUpdatesModel::updateAll()
     }
 }
 
-void ResourcesUpdatesModel::updaterFinished()
-{
-    m_finishedUpdaters++;
-    if(m_finishedUpdaters==m_updaters.size())
-        emit progressingChanged();
-}
 
 QString ResourcesUpdatesModel::remainingTime() const
 {
