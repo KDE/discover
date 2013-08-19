@@ -56,6 +56,7 @@ public:
     QString m_name;
     AbstractResource::State m_state;
     QUrl m_screenshot;
+    QList<PackageState> m_addons;
 };
 
 #endif // DUMMYRESOURCE_H

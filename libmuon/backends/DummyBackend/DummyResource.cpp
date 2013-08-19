@@ -26,6 +26,7 @@ DummyResource::DummyResource(const QString& name, AbstractResourcesBackend* pare
     : AbstractResource(parent)
     , m_name(name)
     , m_state(State::Broken)
+    , m_addons(QList<PackageState>() << PackageState("a", "aaaaaa", false) << PackageState("b", "aaaaaa", false) << PackageState("c", "aaaaaa", false))
 {
     if(KRandom::random() % 2)
         m_screenshot = QUrl("http://www.kde.org/stuff/clipart/klogo-official-oxygen-128x128.png");
@@ -33,7 +34,7 @@ DummyResource::DummyResource(const QString& name, AbstractResourcesBackend* pare
 
 QList<PackageState> DummyResource::addonsInformation()
 {
-    return QList<PackageState>();
+    return m_addons;
 }
 
 QString DummyResource::availableVersion() const
@@ -116,7 +117,7 @@ QUrl DummyResource::thumbnailUrl()
 
 QString DummyResource::section()
 {
-    return QString();
+    return "dummy";
 }
 
 AbstractResource::State DummyResource::state()
