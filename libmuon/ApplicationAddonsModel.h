@@ -32,7 +32,7 @@ class AbstractResource;
 class MUONPRIVATE_EXPORT ApplicationAddonsModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(AbstractResource* application READ application WRITE setApplication)
+    Q_PROPERTY(AbstractResource* application READ application WRITE setApplication NOTIFY applicationChanged)
     Q_PROPERTY(bool hasChanges READ hasChanges NOTIFY stateChanged)
     Q_PROPERTY(bool isEmpty READ isEmpty NOTIFY applicationChanged)
     public:

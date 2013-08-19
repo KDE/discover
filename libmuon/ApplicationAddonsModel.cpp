@@ -27,18 +27,23 @@
 ApplicationAddonsModel::ApplicationAddonsModel(QObject* parent)
     : QAbstractListModel(parent)
     , m_app(0)
-{}
-
-void ApplicationAddonsModel::setApplication(AbstractResource* app)
 {
-    discardChanges();
-    m_app = app;
-    m_initial = m_app->addonsInformation();
-    
+    new ModelTest(this, this);
     QHash<int, QByteArray> roles = roleNames();
     roles.insert(Qt::CheckStateRole, "checked");
     setRoleNames(roles);
+}
+
+void ApplicationAddonsModel::setApplication(AbstractResource* app)
+{
+    beginResetModel();
+    m_state.clear();
+    m_app = app;
+    m_initial = m_app->addonsInformation();
+    endResetModel();
+    
     emit applicationChanged();
+    emit stateChanged();
 }
 
 AbstractResource* ApplicationAddonsModel::application() const
