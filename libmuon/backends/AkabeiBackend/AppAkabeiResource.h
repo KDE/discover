@@ -25,11 +25,11 @@
 #include "AkabeiResource.h"
 #include "AkabeiBackend.h"
 
-class AppPackageKitResource : public AkabeiResource
+class AppAkabeiResource : public AkabeiResource
 {
     Q_OBJECT
     public:
-        explicit AppPackageKitResource(const ApplicationData& data, Akabei::Package * pkg, AkabeiBackend* parent);
+        explicit AppAkabeiResource(const ApplicationData& data, Akabei::Package * pkg, AkabeiBackend* parent);
         virtual bool isTechnical() const;
         virtual QString name();
         virtual QString icon() const;

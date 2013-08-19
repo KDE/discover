@@ -27,14 +27,14 @@
 #include <QDebug>
 #include <akabeipackage.h>
 
-AppPackageKitResource::AppPackageKitResource(const ApplicationData& data,
+AppAkabeiResource::AppAkabeiResource(const ApplicationData& data,
                                              Akabei::Package * pkg,
                                              AkabeiBackend* parent)
     : AkabeiResource(pkg, parent)
     , m_appdata(data)
 {}
 
-QString AppPackageKitResource::name()
+QString AppAkabeiResource::name()
 {
     QString ret = m_appdata.name.value(KGlobal::locale()->language());
     if(ret.isEmpty()) ret = m_appdata.name.value(QString());
@@ -43,7 +43,7 @@ QString AppPackageKitResource::name()
     return ret;
 }
 
-QString AppPackageKitResource::longDescription() const
+QString AppAkabeiResource::longDescription() const
 {
     QString ret = m_appdata.summary.value(KGlobal::locale()->language());
     if(ret.isEmpty()) ret = m_appdata.summary.value(QString());
@@ -51,32 +51,32 @@ QString AppPackageKitResource::longDescription() const
     return ret;
 }
 
-QString AppPackageKitResource::icon() const
+QString AppAkabeiResource::icon() const
 {
     return m_appdata.icon;
 }
 
-QString AppPackageKitResource::mimetypes() const
+QString AppAkabeiResource::mimetypes() const
 {
     return m_appdata.mimetypes.first();
 }
 
-QString AppPackageKitResource::categories()
+QString AppAkabeiResource::categories()
 {
     return m_appdata.appcategories.first();
 }
 
-QUrl AppPackageKitResource::homepage() const
+QUrl AppAkabeiResource::homepage() const
 {
     return m_appdata.url.isEmpty() ? AkabeiResource::homepage() : m_appdata.url;
 }
 
-bool AppPackageKitResource::isTechnical() const
+bool AppAkabeiResource::isTechnical() const
 {
     return false;
 }
 
-QStringList AppPackageKitResource::executables() const
+QStringList AppAkabeiResource::executables() const
 {
     QString desktopFile = KGlobal::dirs()->findResource("xdgdata-apps", m_appdata.id);
     QStringList ret;
@@ -85,7 +85,7 @@ QStringList AppPackageKitResource::executables() const
     return ret;
 }
 
-void AppPackageKitResource::invokeApplication() const
+void AppAkabeiResource::invokeApplication() const
 {
     QStringList exes = executables();
     if(!exes.isEmpty())

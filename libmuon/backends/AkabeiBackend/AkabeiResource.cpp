@@ -104,7 +104,7 @@ QUrl AkabeiResource::homepage() const
         
 bool AkabeiResource::isTechnical() const
 {
-    return false;
+    return true;
 }
 
 QUrl AkabeiResource::thumbnailUrl()
@@ -114,9 +114,9 @@ QUrl AkabeiResource::thumbnailUrl()
 
 QUrl AkabeiResource::screenshotUrl()
 {
-    if (m_pkg && !m_pkg->screenshot().isEmpty()) {
-        return m_pkg->screenshot();
-    }
+    //if (m_pkg && !m_pkg->screenshot().isEmpty()) {
+    //    return m_pkg->screenshot();
+    //}
     return KUrl(MuonDataSources::screenshotsSource(), "screenshot/"+packageName());
 }
         

@@ -20,6 +20,8 @@
 #include "AkabeiBackend.h"
 #include "AkabeiResource.h"
 #include "AkabeiTransaction.h"
+#include "AppAkabeiResource.h"
+#include "AppstreamUtils.h"
 #include <Transaction/TransactionModel.h>
 #include <akabeiclient/akabeiclientbackend.h>
 #include <akabeicore/akabeidatabase.h>
@@ -65,6 +67,7 @@ void AkabeiBackend::statusChanged(Akabei::Backend::Status status)
 
 void AkabeiBackend::reload()
 {
+    m_appdata = AppstreamUtils::fetchAppData("/home/lukas/appdata.xml");//FIXME: Change path
     kDebug() << "get packages";
     connect(Akabei::Backend::instance(), SIGNAL(queryPackagesCompleted(QUuid,QList<Akabei::Package*>)), SLOT(queryComplete(QUuid,QList<Akabei::Package*>)));
     Akabei::Backend::instance()->packages();
@@ -85,7 +88,11 @@ void AkabeiBackend::queryComplete(QUuid,QList<Akabei::Package*> packages)
             res->addPackage(pkg);
             pkgs.insert(pkg->name(), res);
         } else {
-            pkgs.insert(pkg->name(), new AkabeiResource(pkg, this));
+            if (m_appdata.contains(pkg->name())) {
+                pkgs.insert(pkg->name(), new AppAkabeiResource(m_appdata[pkg->name()], pkg, this));
+            } else {
+                pkgs.insert(pkg->name(), new AkabeiResource(pkg, this));
+            }
         }
     }
     m_packages = pkgs;

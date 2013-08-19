@@ -80,6 +80,7 @@ private:
     QHash<QString, AbstractResource*> m_packages;
     QQueue<AkabeiTransaction*> m_transactionQueue;
     AkabeiUpdater * m_updater;
+    QHash<QString, ApplicationData> m_appdata;
 };
 
 #endif
