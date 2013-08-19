@@ -30,7 +30,6 @@ Page
         id: over
         anchors {
             fill: parent
-            topMargin: 10
             leftMargin: 10
         }
     }
