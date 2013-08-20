@@ -23,6 +23,7 @@
 #include <resources/AbstractResource.h>
 #include <akabeicore/akabeipackage.h>
 
+class KJob;
 class AkabeiBackend;
 
 class MUONPRIVATE_EXPORT AkabeiResource : public AbstractResource
@@ -89,9 +90,12 @@ class MUONPRIVATE_EXPORT AkabeiResource : public AbstractResource
         void addPackage(Akabei::Package * pkg);
         void clearPackages();
         
+    private slots:
+        void slotScreenshotsFetched(KJob *);
+        
     private:
-        Akabei::Package * m_installedPkg;
         Akabei::Package * m_pkg;
+        Akabei::Package * m_installedPkg;
 };
 
 #endif // ABSTRACTRESOURCE_H

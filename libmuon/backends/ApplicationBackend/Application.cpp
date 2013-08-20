@@ -501,6 +501,7 @@ void Application::fetchScreenshots()
     QString dest = KStandardDirs::locate("tmp", "screenshots."+m_packageName);
     //TODO: Make async
     KUrl packageUrl(MuonDataSources::screenshotsSource(), "/json/package/"+m_packageName);
+
     bool downloadDescriptor = m_sourceHasScreenshot && KIO::NetAccess::download(packageUrl, dest, 0);
     if(downloadDescriptor) {
         QFile f(dest);

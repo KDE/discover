@@ -20,10 +20,15 @@
 #include "AkabeiResource.h"
 #include "AkabeiBackend.h"
 #include <QtCore/QStringList>
+#include <QFile>
+#include <qjson/parser.h>//FIXME: Search in CMakeLists.txt for it?
 #include <akabeicore/akabeidatabase.h>
 #include <akabeiquery.h>
 #include <akabeigroup.h>
 #include <kdebug.h>
+#include <kstandarddirs.h>
+#include <KIO/TransferJob>
+#include <KIO/Job>
 #include <MuonDataSources.h>
 
 AkabeiResource::AkabeiResource(Akabei::Package * pkg, AkabeiBackend * parent)
@@ -48,6 +53,11 @@ QString AkabeiResource::comment()
 {
     return m_pkg->description();
 }
+
+QString AkabeiResource::longDescription() const
+{
+    return m_pkg->description();
+}
         
 QString AkabeiResource::icon() const
 {
@@ -56,7 +66,7 @@ QString AkabeiResource::icon() const
         
 bool AkabeiResource::canExecute() const
 {
-    return false;//FIXME
+    return false;
 }
         
 void AkabeiResource::invokeApplication() const
@@ -94,7 +104,7 @@ AbstractResource::State AkabeiResource::state()
         
 QString AkabeiResource::categories()
 {
-    return "Unknown";//FIXME: Has to be added to akabei
+    return "Unknown";//We just rely on appstream for this until it's implemented in akabei
 }
         
 QUrl AkabeiResource::homepage() const
@@ -140,11 +150,6 @@ QString AkabeiResource::installedVersion() const
 QString AkabeiResource::availableVersion() const
 {
     return m_pkg->version().toByteArray().data();
-}
-
-QString AkabeiResource::longDescription() const
-{
-    return m_pkg->description();
 }
         
 QString AkabeiResource::origin() const
@@ -197,6 +202,56 @@ Akabei::Package * AkabeiResource::installedPackage() const
     return m_installedPkg;
 }
 
-void AkabeiResource::fetchScreenshots() {}
+void AkabeiResource::fetchScreenshots()
+{
+    QString dest = "/tmp/screenshot." + packageName(); //KStandardDirs::locate("tmp", "screenshots." + packageName());
+    
+    QFile f(dest);
+    if (f.exists())
+        f.remove();
+    KUrl packageUrl(MuonDataSources::screenshotsSource(), "/json/package/" + packageName());
+    
+    KIO::Job* getJob = KIO::file_copy(packageUrl, KUrl(dest), -1, KIO::Overwrite | KIO::HideProgressInfo);
+    connect(getJob, SIGNAL(finished(KJob*)), SLOT(slotScreenshotsFetched(KJob*)));
+    getJob->start();
+}
+
+void AkabeiResource::slotScreenshotsFetched(KJob * job)
+{
+    bool done = false;
+    QString dest = "/tmp/screenshot." + packageName(); //KStandardDirs::locate("tmp", "screenshots." + packageName());
+
+    QFile f(dest);
+    if (f.exists()) {
+        bool b = f.open(QIODevice::ReadOnly);
+        Q_ASSERT(b);
+        
+        QJson::Parser p;
+        bool ok;
+        QVariantMap values = p.parse(&f, &ok).toMap();
+        if(ok) {
+            QVariantList screenshots = values["screenshots"].toList();
+            
+            QList<QUrl> thumbnailUrls, screenshotUrls;
+            foreach(const QVariant& screenshot, screenshots) {
+                kDebug() << screenshot;
+                QVariantMap s = screenshot.toMap();
+                thumbnailUrls += s["small_image_url"].toUrl();
+                screenshotUrls += s["large_image_url"].toUrl();
+            }
+            emit screenshotsFetched(thumbnailUrls, screenshotUrls);
+            done = true;
+        }
+    }
+    if(!done) {
+        QList<QUrl> thumbnails, screenshots;
+        if(!thumbnailUrl().isEmpty()) {
+            thumbnails += thumbnailUrl();
+            screenshots += screenshotUrl();
+        }
+        emit screenshotsFetched(thumbnails, screenshots);
+    }
+}
+
 void AkabeiResource::fetchChangelog() {}
 

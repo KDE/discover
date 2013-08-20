@@ -69,10 +69,10 @@ private:
     AkabeiBackend * m_backend;
     QList<AbstractResource*> m_marked;
     AkabeiClient::Transaction * m_transaction;
-    quint64 m_downloadSpeed;
     QString m_statusDetail;
     QString m_statusMessage;
     bool m_isProgressing;
+    quint64 m_downloadSpeed;
     qreal m_progress;
 };
 

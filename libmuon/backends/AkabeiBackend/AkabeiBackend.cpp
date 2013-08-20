@@ -67,7 +67,7 @@ void AkabeiBackend::statusChanged(Akabei::Backend::Status status)
 
 void AkabeiBackend::reload()
 {
-    m_appdata = AppstreamUtils::fetchAppData("/home/lukas/appdata.xml");//FIXME: Change path
+    m_appdata = AppstreamUtils::fetchAppData("/usr/share/app-info/appdata.xml");
     kDebug() << "get packages";
     connect(Akabei::Backend::instance(), SIGNAL(queryPackagesCompleted(QUuid,QList<Akabei::Package*>)), SLOT(queryComplete(QUuid,QList<Akabei::Package*>)));
     Akabei::Backend::instance()->packages();
@@ -145,8 +145,6 @@ QList< AbstractResource* > AkabeiBackend::searchPackageName(const QString& searc
 
 void AkabeiBackend::installApplication(AbstractResource* app, AddonList addons)
 {
-    //FIXME: What do we do when we want to remove an addon from a package that is not installed?!
-    //FIXME: Test with pacman/fakeroot
     Transaction::Role role = Transaction::InstallRole;
     if (app->isInstalled() && !app->canUpgrade()) {
         role = Transaction::ChangeAddonsRole;
