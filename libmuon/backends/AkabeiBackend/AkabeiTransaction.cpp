@@ -114,11 +114,18 @@ void AkabeiTransaction::start()
     connect(AkabeiClient::Backend::instance()->transactionHandler(), SIGNAL(validationFinished(bool)), SLOT(validationFinished(bool)));
     connect(AkabeiClient::Backend::instance()->transactionHandler(), SIGNAL(finished(bool)), SLOT(finished(bool)));
     connect(AkabeiClient::Backend::instance()->transactionHandler()->transactionProgress(), SIGNAL(phaseChanged(AkabeiClient::TransactionProgress::Phase)), SLOT(phaseChanged(AkabeiClient::TransactionProgress::Phase)));
-
+    connect(AkabeiClient::Backend::instance()->transactionHandler(), SIGNAL(newTransactionMessage(QString)), SLOT(transactionMessage(QString)));
+    
     foreach (AkabeiClient::QueueItem * item, AkabeiClient::Backend::instance()->queue()->items())
         kDebug() << "QUEUE ITEM" << item->package()->name() << (item->action() == AkabeiClient::Install);
     
+    m_transactionMessages.clear();
     AkabeiClient::Backend::instance()->transactionHandler()->start(Akabei::ProcessingOption::NoProcessingOption);
+}
+
+void AkabeiTransaction::transactionMessage(const QString& message)
+{
+    m_transactionMessages.append(message);
 }
 
 void AkabeiTransaction::phaseChanged(AkabeiClient::TransactionProgress::Phase phase)
@@ -173,6 +180,9 @@ void AkabeiTransaction::finished(bool successful)
         if (err.isEmpty())
             err = i18n("Something went wrong!");
         KMessageBox::error(0, err, i18n("Error"));
+    }
+    if (!m_transactionMessages.isEmpty()) {
+        KMessageBox::informationList(0, i18n("There are a couple of transaction messages:"), m_transactionMessages, i18n("Transaction messages"));
     }
     setStatus(Transaction::DoneStatus);
     disconnect(AkabeiClient::Backend::instance()->transactionHandler(), 0, this, 0);

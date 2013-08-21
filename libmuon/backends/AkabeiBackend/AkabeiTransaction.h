@@ -40,8 +40,10 @@ public slots:
     void finished(bool);
     void phaseChanged(AkabeiClient::TransactionProgress::Phase);
     void start();
+    void transactionMessage(const QString &message);
     
 private:
+    QStringList m_transactionMessages;
     AkabeiBackend * m_backend;
     AkabeiClient::Transaction * m_transaction;
 };
