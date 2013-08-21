@@ -119,14 +119,14 @@ bool AkabeiResource::isTechnical() const
 
 QUrl AkabeiResource::thumbnailUrl()
 {
-    return KUrl(MuonDataSources::screenshotsSource(), "thumbnail/"+packageName());//FIXME: Also return the packages screenshot, probably as priority or fallback?
+    return KUrl(MuonDataSources::screenshotsSource(), "thumbnail/"+packageName());
 }
 
 QUrl AkabeiResource::screenshotUrl()
 {
-    //if (m_pkg && !m_pkg->screenshot().isEmpty()) {
-    //    return m_pkg->screenshot();
-    //}
+    if (m_pkg && !m_pkg->screenshot().isEmpty()) {
+        return m_pkg->screenshot();
+    }
     return KUrl(MuonDataSources::screenshotsSource(), "screenshot/"+packageName());
 }
         
@@ -218,6 +218,9 @@ void AkabeiResource::fetchScreenshots()
 
 void AkabeiResource::slotScreenshotsFetched(KJob * job)
 {
+    if (job->error() != KJob::NoError) {
+        kWarning() << job->errorString();
+    }
     bool done = false;
     QString dest = "/tmp/screenshot." + packageName(); //KStandardDirs::locate("tmp", "screenshots." + packageName());
 
@@ -253,5 +256,8 @@ void AkabeiResource::slotScreenshotsFetched(KJob * job)
     }
 }
 
-void AkabeiResource::fetchChangelog() {}
+void AkabeiResource::fetchChangelog() 
+{
+    emit changelogFetched(m_pkg->retrieveChangelog());
+}
 

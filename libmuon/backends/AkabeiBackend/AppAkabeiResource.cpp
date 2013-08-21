@@ -47,7 +47,7 @@ QString AppAkabeiResource::longDescription() const
 {
     QString ret = m_appdata.summary.value(KGlobal::locale()->language());
     if(ret.isEmpty()) ret = m_appdata.summary.value(QString());
-    if(ret.isEmpty() || ret.length() < AkabeiResource::longDescription().length()) ret = AkabeiResource::longDescription();
+    if(ret.isEmpty()) ret = AkabeiResource::longDescription();
     return ret;
 }
 
