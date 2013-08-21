@@ -37,8 +37,6 @@
 // Own includes
 #include "distupgradeevent/distupgradeevent.h"
 
-//TODO: recheckSystemUpdateNeeded should be called from somewhere? where? should be called after each update, so probably in the AbstractBackendUpdater?
-
 K_PLUGIN_FACTORY(ApplicationNotifierFactory,
                  registerPlugin<ApplicationNotifier>();
                 )
