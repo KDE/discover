@@ -181,6 +181,11 @@ void AkabeiBackend::removeFromQueue(AkabeiTransaction* trans)
     reload();
 }
 
+bool AkabeiBackend::isTransactionRunning() const
+{
+    return !m_transactionQueue.isEmpty();
+}
+
 void AkabeiBackend::cancelTransaction(AbstractResource* app)
 {
 

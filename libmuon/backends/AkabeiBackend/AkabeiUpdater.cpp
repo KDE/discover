@@ -31,8 +31,6 @@
 #include <KMessageBox>
 #include <KLocale>
 
-//FIXME: Check if we have running transactions in the AkabeiBackend maybe? is that needed?
-
 AkabeiUpdater::AkabeiUpdater(AkabeiBackend * parent)
   : AbstractBackendUpdater(parent),
     m_backend(parent),
@@ -60,6 +58,10 @@ void AkabeiUpdater::prepare()
 
 void AkabeiUpdater::start()
 {
+    if (m_backend->isTransactionRunning()) {
+        KMessageBox::error(0, i18n("Another transaction is still running!"), i18n("Error"));
+        return;
+    }
     kDebug();
     m_isProgressing = true;
     emit progressingChanged(m_isProgressing);

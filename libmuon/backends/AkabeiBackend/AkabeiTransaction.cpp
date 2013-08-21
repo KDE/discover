@@ -101,7 +101,14 @@ void AkabeiTransaction::start()
         AbstractResource * res = m_backend->resourceByPackageName(toInstall);
         if (res) {
             AkabeiClient::Backend::instance()->queue()->addPackage(qobject_cast<AkabeiResource*>(res)->package(), AkabeiClient::Install);
-        } //FIXME: Handle providers in the else clause?
+        } else {
+            Akabei::Package::List packages;
+            foreach (Akabei::Database * db, Akabei::Backend::instance()->databases()) {
+                packages << db->queryPackages("SELECT * FROM packages JOIN provides WHERE provides.provides LIKE \"" + toInstall + "\"");
+            } //NOTE: Probably ask the user here, or rather create a method in akabei to resolve the provider for me
+            if (!packages.isEmpty())
+                AkabeiClient::Backend::instance()->queue()->addPackage(packages.first(), AkabeiClient::Install);
+        }
     }
     connect(AkabeiClient::Backend::instance()->transactionHandler(), SIGNAL(transactionCreated(AkabeiClient::Transaction*)), SLOT(transactionCreated(AkabeiClient::Transaction*)));
     connect(AkabeiClient::Backend::instance()->transactionHandler(), SIGNAL(validationFinished(bool)), SLOT(validationFinished(bool)));

@@ -70,6 +70,8 @@ public:
     virtual QList<AbstractResource*> upgradeablePackages() const;
     
     void removeFromQueue(AkabeiTransaction * trans);
+    
+    bool isTransactionRunning() const;
 
 public slots:
     void statusChanged(Akabei::Backend::Status);
