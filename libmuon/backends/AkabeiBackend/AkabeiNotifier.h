@@ -24,9 +24,13 @@
 
 #include <resources/AbstractKDEDModule.h>
 #include <akabeibackend.h>
+#include <QVariantList>
+
+class QTimer;
 
 class AkabeiNotifier : public AbstractKDEDModule
 {
+    Q_OBJECT
 public:
     AkabeiNotifier(QObject* parent, const QVariantList &);
     ~AkabeiNotifier();
@@ -37,6 +41,10 @@ public slots:
     
 private slots:
     void backendStateChanged(Akabei::Backend::Status status);
+    void init();
+    
+private:
+    QTimer * m_timer;
 };
 
 #endif // AKABEINOTIFIER_H

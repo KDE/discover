@@ -20,18 +20,35 @@
  */
 #include "AkabeiNotifier.h"
 
+#include <QTimer>
 #include <KPluginFactory>
 #include <akabeiclientbackend.h>
 #include <akabeiconfig.h>
 #include <akabeihelpers.h>
+#include <akabeidatabase.h>
 
 K_PLUGIN_FACTORY(MuonAkabeiNotifierFactory,
                  registerPlugin<AkabeiNotifier>();
                 )
 K_EXPORT_PLUGIN(MuonAkabeiNotifierFactory("muon-akabei-notifier"))
 
+const int UPDATE_INTERVAL = 1000 * 60 * 30;//30 min
+
 AkabeiNotifier::AkabeiNotifier(QObject* parent, const QVariantList &)
-  : AbstractKDEDModule("akabei", "muondiscover", parent)
+  : AbstractKDEDModule("akabei", "muondiscover", parent),
+    m_timer(new QTimer(this))
+{
+    m_timer->setInterval(UPDATE_INTERVAL);
+    connect(m_timer, SIGNAL(timeout()), SLOT(recheckSystemUpdateNeeded()));
+    
+    QTimer::singleShot(1000, this, SLOT(init()));
+}
+
+AkabeiNotifier::~AkabeiNotifier()
+{
+}
+
+void AkabeiNotifier::init()
 {
     connect(AkabeiClient::Backend::instance(), SIGNAL(statusChanged(Akabei::Backend::Status)), SLOT(backendStateChanged(Akabei::Backend::Status)));
     
@@ -39,10 +56,6 @@ AkabeiNotifier::AkabeiNotifier(QObject* parent, const QVariantList &)
     Akabei::Config::instance()->setDebug(true);
     
     AkabeiClient::Backend::instance()->initialize();
-}
-
-AkabeiNotifier::~AkabeiNotifier()
-{
 }
 
 void AkabeiNotifier::backendStateChanged(Akabei::Backend::Status status)
@@ -59,9 +72,11 @@ void AkabeiNotifier::backendStateChanged(Akabei::Backend::Status status)
         }
         
         if (!toBeUpgraded.isEmpty()) {
-            set
-            setSystemUpToDate(false);
+            setSystemUpToDate(false, toBeUpgraded.count());
+        } else {
+            setSystemUpToDate(true);
         }
+        m_timer->start();
     }
 }
 
@@ -72,6 +87,7 @@ void AkabeiNotifier::configurationChanged()
 
 void AkabeiNotifier::recheckSystemUpdateNeeded()
 {
+    m_timer->stop();
     AkabeiClient::Backend::instance()->updateDatabase();
 }
 
