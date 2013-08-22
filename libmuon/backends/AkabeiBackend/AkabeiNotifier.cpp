@@ -80,11 +80,6 @@ void AkabeiNotifier::backendStateChanged(Akabei::Backend::Status status)
     }
 }
 
-void AkabeiNotifier::configurationChanged()
-{
-
-}
-
 void AkabeiNotifier::recheckSystemUpdateNeeded()
 {
     m_timer->stop();

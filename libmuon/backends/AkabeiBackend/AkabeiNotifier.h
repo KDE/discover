@@ -36,7 +36,6 @@ public:
     ~AkabeiNotifier();
     
 public slots:
-    virtual Q_SCRIPTABLE void configurationChanged();
     virtual Q_SCRIPTABLE void recheckSystemUpdateNeeded();
     
 private slots:
