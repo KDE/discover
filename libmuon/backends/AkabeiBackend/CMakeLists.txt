@@ -3,7 +3,7 @@ ${AKABEICORE_INCLUDE_DIR}
 ${AKABEICLIENT_INCLUDE_DIR}
 )
 
-set(akabeibackend_SRCS 
+set(akabeibackend_SRCS AkabeiNotifier.cpp
     AppstreamUtils.cpp
     AppAkabeiResource.cpp
     AkabeiUpdater.cpp 
