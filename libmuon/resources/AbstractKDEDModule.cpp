@@ -137,7 +137,7 @@ void AbstractKDEDModule::setSystemUpToDate(bool systemUpToDate, int updateCount,
             if (updateCount > 0 && securityUpdateCount > 0) {
                 message += " " + i18n("There are %1 updated packages, of which %2 were updated for security reasons!", updateCount, securityUpdateCount);
             } else if (updateCount > 0) {
-                message += " " + i18n("There are %1 update packages!", updateCount);
+                message += " " + i18n("There are %1 updated packages!", updateCount);
             } else if (securityUpdateCount > 0) {
                 message += " " + i18n("%1 packages were updated for security reasons", securityUpdateCount);
             }
