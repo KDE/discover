@@ -22,13 +22,16 @@
 #include <QDBusInterface>
 #include <qdbusreply.h>
 #include <QDebug>
-#include <QProcess>
 
 #include <KStatusNotifierItem>
 #include <KLocale>
 #include <KRun>
 #include <KMenu>
 #include <KIcon>
+#include <KNotification>
+#include <KIconLoader>
+#include <KConfigGroup>
+#include <kdebug.h>
 
 class AbstractKDEDModule::Private
 {
@@ -46,12 +49,15 @@ public:
     bool systemUpToDate;
     AbstractKDEDModule::UpdateType updateType;
     KStatusNotifierItem * statusNotifier;
+    bool verbose;
 };
 
 AbstractKDEDModule::AbstractKDEDModule(const QString &name, const QString &iconName, QObject * parent)
   : KDEDModule(parent),
     d(new Private(this, name, iconName))
 {
+    configurationChanged();
+    
     d->statusNotifier = new KStatusNotifierItem("org.kde.muon." + d->name, this);
     d->statusNotifier->setTitle(i18n("%1 update notifier", d->name));
     d->statusNotifier->setIconByName(iconName);
@@ -70,16 +76,24 @@ AbstractKDEDModule::~AbstractKDEDModule()
     delete d;
 }
 
+void AbstractKDEDModule::configurationChanged()
+{
+    KConfig notifierConfig("muon-notifierrc", KConfig::NoGlobals);
+
+    KConfigGroup notifyTypeGroup(&notifierConfig, "NotificationType");
+    d->verbose = notifyTypeGroup.readEntry("Verbose", false);
+}
+
 void AbstractKDEDModule::Private::__k__showMuon()
 {
-    QProcess::execute("muon-discover --mode installed");//TODO: Move to KRun
+    KRun::runCommand("muon-discover --mode installed", 0);
 }
 
 void AbstractKDEDModule::Private::__k__quit()
 {
-    QDBusInterface kded("org.kde.kded", "/kded",      
+    QDBusInterface kded("org.kde.kded", "/kded",
                     "org.kde.kded");
-    kded.call("setModuleAutoloading", q->moduleName(), false);//TODO: Change to abstract names
+    kded.call("setModuleAutoloading", q->moduleName(), false);
     QDBusReply<bool> reply = kded.call("unloadModule", q->moduleName());
 }
 
@@ -93,29 +107,52 @@ int AbstractKDEDModule::updateType() const
     return d->updateType;
 }
 
-void AbstractKDEDModule::setSystemUpToDate(bool systemUpToDate)
+void AbstractKDEDModule::setSystemUpToDate(bool systemUpToDate, UpdateType updateType, Notification notification)
+{
+    setSystemUpToDate(systemUpToDate, -1, -1, updateType, notification);
+}
+
+void AbstractKDEDModule::setSystemUpToDate(bool systemUpToDate, int updateCount, UpdateType updateType, Notification notification)
+{
+    setSystemUpToDate(systemUpToDate, updateCount, -1, updateType, notification);
+}
+
+void AbstractKDEDModule::setSystemUpToDate(bool systemUpToDate, int updateCount, int securityUpdateCount, UpdateType updateType, Notification notification)
 {
     d->systemUpToDate = systemUpToDate;
+    d->updateType = updateType;
     if (!systemUpToDate) {
         emit systemUpdateNeeded();
         //TODO: Better message strings
+        QString message;
+        QString icon;
         if (d->updateType == SecurityUpdate) {
-            d->statusNotifier->showMessage(i18n("System update available!"), i18n("A security update is available for your system!"), "svn-update", 1000);
-            d->statusNotifier->setOverlayIconByName("security-low");
+            message = i18n("A security update is available for your system!");
+            icon = "security-low";
         } else {
-            d->statusNotifier->showMessage(i18n("System update available!"), i18n("An update is available for your system!"), "svn-update", 1000);
-            d->statusNotifier->setOverlayIconByName("security-high");
+            message = i18n("An update is available for your system!");
+            icon = "security-high";
         }
+        if (d->verbose) {
+            if (updateCount > 0 && securityUpdateCount > 0) {
+                message += " " + i18n("There are %1 updated packages, of which %2 were updated for security reasons!", updateCount, securityUpdateCount);
+            } else if (updateCount > 0) {
+                message += " " + i18n("There are %1 update packages!", updateCount);
+            } else if (securityUpdateCount > 0) {
+                message += " " + i18n("%1 packages were updated for security reasons", securityUpdateCount);
+            }
+        }
+        d->statusNotifier->setOverlayIconByName(icon);
+        d->statusNotifier->setToolTip(icon, message, i18n("A system update is recommended"));
         d->statusNotifier->setStatus(KStatusNotifierItem::Active);
+        if (notification == ShowNotification) {
+            KNotification::event("Update", i18n("System update available!"), message, KIcon("svn-update").pixmap(KIconLoader::SizeMedium), nullptr, KNotification::CloseOnTimeout, KComponentData("muonabstractnotifier"));
+        }
     } else {
         d->statusNotifier->setOverlayIconByName(QString());
         d->statusNotifier->setStatus(KStatusNotifierItem::Passive);
+        d->statusNotifier->setToolTip("security-high", i18n("Your system is up-to-date!"), i18n("No system update available"));
     }
-}
-
-void AbstractKDEDModule::setUpdateType(int updateType)
-{
-    d->updateType = (UpdateType)updateType;
 }
 
 #include "AbstractKDEDModule.moc"

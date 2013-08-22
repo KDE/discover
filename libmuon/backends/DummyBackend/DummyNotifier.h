@@ -32,7 +32,6 @@ public:
     virtual ~DummyNotifier();
     
 public slots:
-    virtual void configurationChanged();
     virtual void recheckSystemUpdateNeeded();
 };
 

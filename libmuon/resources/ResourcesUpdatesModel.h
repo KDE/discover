@@ -29,6 +29,7 @@ class AbstractResource;
 class QAction;
 class AbstractBackendUpdater;
 class ResourcesModel;
+class QDBusInterface;
 
 class MUONPRIVATE_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 {
@@ -75,12 +76,13 @@ class MUONPRIVATE_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 
         ResourcesModel* m_resources;
         QVector<AbstractBackendUpdater*> m_updaters;
-        int m_finishedUpdaters;
+        bool m_isProgressing;
+        QDBusInterface * m_kded;
 
     private slots:
         void message(const QString& msg);
-        void updaterFinished();
         void addNewBackends();
+        void slotProgressingChanged(bool progressing);
 };
 
 #endif // RESOURCESUPDATESMODEL_H

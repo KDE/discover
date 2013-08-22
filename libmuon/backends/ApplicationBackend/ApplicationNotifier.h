@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2013 Lukas Appelhans <l.appelhans@gmx.de>                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -17,39 +17,39 @@
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
+#ifndef APPLICATIONNOTIFIER_H
+#define APPLICATIONNOTIFIER_H
 
-#ifndef NOTIFYSETTINGSPAGE_H
-#define NOTIFYSETTINGSPAGE_H
+#include <resources/AbstractKDEDModule.h>
+#include <QVariantList>
 
-#include <QtGui/QWidget>
-#include <QtDBus/QDBusInterface>
+class DistUpgradeEvent;
+class UpdateEvent;
+class KProcess;
+class QProcess;
 
-#include "SettingsPageBase.h"
-
-#include "../libmuonprivate_export.h"
-
-class QCheckBox;
-class QRadioButton;
-
-class MUONPRIVATE_EXPORT NotifySettingsPage : public SettingsPageBase
+class ApplicationNotifier : public AbstractKDEDModule
 {
     Q_OBJECT
-
+    Q_CLASSINFO("D-Bus Interface", "org.kde.muon.application")
 public:
-    NotifySettingsPage(QWidget* parent);
-    virtual ~NotifySettingsPage();
-
-    void loadSettings();
-    virtual void applySettings();
-    virtual void restoreDefaults();
-
-private:
-    QCheckBox *m_updatesCheckBox;
-    QCheckBox *m_verboseCheckBox;
+    ApplicationNotifier(QObject* parent, const QVariantList &);
+    virtual ~ApplicationNotifier();
     
-    QStringList m_services;
-    QStringList m_loadedModules;
-    QDBusInterface *m_kded;
+public slots:
+    virtual void configurationChanged();
+    virtual void recheckSystemUpdateNeeded();
+    
+private slots:
+    void checkUpgradeFinished(int exitStatus);
+    void distUpgradeEvent();
+    void init();
+    void parseUpdateInfo();
+    
+private:
+    KProcess *m_checkerProcess;
+    QProcess *m_updateCheckerProcess;
+    bool m_checkingForUpdates;
 };
 
 #endif

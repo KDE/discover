@@ -25,6 +25,4 @@ target_link_libraries(kded_muondummyotifier ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LI
 
 install(TARGETS kded_muondummyotifier DESTINATION ${PLUGIN_INSTALL_DIR})
 
-#install(FILES muon-dummy-notifier.notifyrc DESTINATION ${DATA_INSTALL_DIR}/muon-notifier)
 install(FILES muondummynotifier.desktop  DESTINATION  ${SERVICES_INSTALL_DIR}/kded)
-#install(FILES distupgradeevent/releasechecker DESTINATION ${DATA_INSTALL_DIR}/muon-notifier)
