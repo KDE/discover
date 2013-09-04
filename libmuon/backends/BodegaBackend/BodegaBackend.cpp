@@ -23,7 +23,6 @@
 #include <Transaction/Transaction.h>
 #include <Transaction/TransactionModel.h>
 #include <bodega/session.h>
-#include <bodega/listballotsjob.h>
 #include <bodega/channelsjob.h>
 #include <bodega/signonjob.h>
 #include <bodega/installjob.h>
