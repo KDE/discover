@@ -51,6 +51,11 @@ ResourcesModel::ResourcesModel(QObject* parent, bool load)
     , m_initializingBackends(0)
     , m_mainwindow(0)
 {
+    init(load);
+}
+
+void ResourcesModel::init(bool load)
+{
     Q_ASSERT(!s_self);
     Q_ASSERT(QCoreApplication::instance()->thread()==QThread::currentThread());
 
@@ -83,8 +88,11 @@ ResourcesModel::ResourcesModel(QObject* parent, bool load)
 }
 
 ResourcesModel::ResourcesModel(const QString& backendName, QObject* parent)
-    : ResourcesModel(parent, false)
+    : QAbstractListModel(parent)
+    , m_initializingBackends(0)
+    , m_mainwindow(0)
 {
+    init(false);
     Q_ASSERT(!s_self);
     s_self = this;
     registerBackendByName(backendName);
@@ -98,28 +106,31 @@ ResourcesModel::~ResourcesModel()
 void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
 {
     Q_ASSERT(!m_backends.contains(backend));
-    QVector<AbstractResource*> newResources = backend->allResources();
-    if(!newResources.isEmpty()) {
+    m_initializingBackends++;
+    if(!backend->isFetching()) {
+        QVector<AbstractResource*> newResources = backend->allResources();
         int current = rowCount();
         beginInsertRows(QModelIndex(), current, current+newResources.size());
         m_backends += backend;
         m_resources.append(newResources);
         endInsertRows();
+        m_initializingBackends--;
     } else {
         m_backends += backend;
-        m_resources.append(newResources);
+        m_resources.append(QVector<AbstractResource*>());
     }
     if(m_mainwindow)
         backend->integrateMainWindow(m_mainwindow);
-    
-    connect(backend, SIGNAL(backendReady()), SLOT(resetCaller()));
-    connect(backend, SIGNAL(reloadStarted()), SLOT(cleanCaller()));
-    connect(backend, SIGNAL(reloadFinished()), SLOT(resetCaller()));
-    connect(backend, SIGNAL(updatesCountChanged()), SIGNAL(updatesCountChanged()));
+
+    connect(backend, SIGNAL(fetchingChanged()), SLOT(callerFetchingChanged()));
     connect(backend, SIGNAL(allDataChanged()), SLOT(updateCaller()));
+    connect(backend, SIGNAL(updatesCountChanged()), SIGNAL(updatesCountChanged()));
     connect(backend, SIGNAL(searchInvalidated()), SIGNAL(searchInvalidated()));
 
     emit backendsChanged();
+
+    if(m_initializingBackends==0)
+        emit allInitialized();
 }
 
 AbstractResource* ResourcesModel::resourceAt(int row) const
@@ -176,11 +187,14 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
             return QVariant();
         default: {
             QByteArray roleText = roleNames().value(role);
-            if(roleText.isEmpty() || resource->metaObject()->indexOfProperty(roleText) < 0) {
+            const QMetaObject* m = resource->metaObject();
+            int propidx = roleText.isEmpty() ? -1 : m->indexOfProperty(roleText);
+
+            if(KDE_ISUNLIKELY(propidx < 0)) {
                 qDebug() << "unknown role:" << role << roleText;
                 return QVariant();
             } else
-                return resource->property(roleText);
+                return m->property(propidx).read(resource);
         }
     }
 }
@@ -198,10 +212,9 @@ int ResourcesModel::rowCount(const QModelIndex& parent) const
     return ret;
 }
 
-void ResourcesModel::cleanCaller()
+void ResourcesModel::cleanBackend(AbstractResourcesBackend* backend)
 {
     m_initializingBackends++;
-    AbstractResourcesBackend* backend = qobject_cast<AbstractResourcesBackend*>(sender());
     Q_ASSERT(backend);
     int pos = m_backends.indexOf(backend);
     Q_ASSERT(pos>=0);
@@ -219,12 +232,19 @@ void ResourcesModel::cleanCaller()
     endRemoveRows();
 }
 
-void ResourcesModel::resetCaller()
+void ResourcesModel::callerFetchingChanged()
 {
     AbstractResourcesBackend* backend = qobject_cast<AbstractResourcesBackend*>(sender());
-    Q_ASSERT(backend);
-    
-    QVector< AbstractResource* > res = backend->allResources();
+    if(backend->isFetching()) {
+        cleanBackend(backend);
+    } else {
+        resetBackend(backend);
+    }
+}
+
+void ResourcesModel::resetBackend(AbstractResourcesBackend* backend)
+{
+    QVector<AbstractResource*> res = backend->allResources();
 
     if(!res.isEmpty()) {
         int pos = m_backends.indexOf(backend);
@@ -325,12 +345,11 @@ QMap<int, QVariant> ResourcesModel::itemData(const QModelIndex& index) const
 void ResourcesModel::registerAllBackends()
 {
     MuonBackendsFactory f;
-    m_initializingBackends += f.backendsCount();
-    if(m_initializingBackends==0) {
+    QList<AbstractResourcesBackend*> backends = f.allBackends();
+    if(m_initializingBackends==0 && backends.isEmpty()) {
         kWarning() << "Couldn't find any backends";
         emit allInitialized();
     } else {
-        QList<AbstractResourcesBackend*> backends = f.allBackends();
         foreach(AbstractResourcesBackend* b, backends) {
             addResourcesBackend(b);
         }
@@ -341,7 +360,6 @@ void ResourcesModel::registerBackendByName(const QString& name)
 {
     MuonBackendsFactory f;
     addResourcesBackend(f.backend(name));
-    m_initializingBackends++;
 }
 
 void ResourcesModel::integrateMainWindow(MuonMainWindow* w)
@@ -359,4 +377,13 @@ void ResourcesModel::resourceChangedByTransaction(Transaction* t)
     QModelIndex idx = resourceIndex(t->resource());
     if(idx.isValid())
         dataChanged(idx, idx);
+}
+
+bool ResourcesModel::isFetching() const
+{
+    foreach(AbstractResourcesBackend* b, m_backends) {
+        if(b->isFetching())
+            return true;
+    }
+    return false;
 }

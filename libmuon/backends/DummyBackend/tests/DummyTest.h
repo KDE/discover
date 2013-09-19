@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,39 +18,26 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef DUMMYBACKEND_H
-#define DUMMYBACKEND_H
+#ifndef DUMMYTEST_H
+#define DUMMYTEST_H
 
-#include <resources/AbstractResourcesBackend.h>
-#include <QVariantList>
+#include <QObject>
 
-class DummyResource;
-class DummyBackend : public AbstractResourcesBackend
+class ResourcesModel;
+class AbstractResourcesBackend;
+
+class DummyTest : public QObject
 {
-Q_OBJECT
-Q_INTERFACES(AbstractResourcesBackend)
+    Q_OBJECT
 public:
-    explicit DummyBackend(QObject* parent, const QVariantList& args);
+    explicit DummyTest(QObject* parent = 0);
 
-    virtual QList<AbstractResource*> upgradeablePackages() const;
-    virtual AbstractResource* resourceByPackageName(const QString& name) const;
-    virtual int updatesCount() const;
-    virtual AbstractBackendUpdater* backendUpdater() const;
-    virtual AbstractReviewsBackend* reviewsBackend() const;
-    virtual QList<AbstractResource*> searchPackageName(const QString& searchText);
-    virtual QVector<AbstractResource*> allResources() const;
-    virtual bool isValid() const { return true; } // No external file dependencies that could cause runtime errors
-
-    virtual void cancelTransaction(AbstractResource* app);
-    virtual void installApplication(AbstractResource* app);
-    virtual void installApplication(AbstractResource* app, AddonList addons);
-    virtual void removeApplication(AbstractResource* app);
-    virtual bool isFetching() const { return false; }
+private slots:
+    void testReadData();
 
 private:
-    QHash<QString, DummyResource*> m_resources;
-    AbstractBackendUpdater* m_updater;
-    AbstractReviewsBackend* m_reviews;
+    AbstractResourcesBackend* m_appBackend;
+    ResourcesModel* m_model;
 };
 
-#endif // DUMMYBACKEND_H
+#endif // DUMMYTEST_H

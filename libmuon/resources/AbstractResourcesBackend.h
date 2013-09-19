@@ -49,14 +49,15 @@ class MuonMainWindow;
  * 
  * To show resources in Muon, we need to initialize all resources we want to show beforehand,
  * we should not create resources in the search function. When we reload the resources
- * (e.g. when initializing), the backend needs to emit reloadStarted() before and
- * reloadFinished() after the work is done.
+ * (e.g. when initializing), the backend needs change the fetching property throughout the
+ * processs.
  */
 class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(AbstractReviewsBackend* reviewsBackend READ reviewsBackend CONSTANT)
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
+    Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
     public:
         /**
          * Constructs an AbstractResourcesBackend
@@ -72,7 +73,6 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
         
         /**
          * @returns all resources of the backend
-         * this will be called right after reloadFinished() gets emitted
          */
         virtual QVector<AbstractResource*> allResources() const = 0;
         
@@ -118,6 +118,11 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
          */
         virtual void integrateMainWindow(MuonMainWindow* w);
 
+        /**
+         * Tells whether the backend is fetching resources
+         */
+        virtual bool isFetching() const = 0;
+
     public slots:
         /**
          * This gets called when the backend should install an application.
@@ -159,17 +164,10 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
 
     signals:
         /**
-         * This should be emitted once the backend is in a state to perform a transaction.
+         * Notify of a change in the backend
          */
-        void backendReady();
-        /**
-         * This should be emitted when the backend starts to reload all of its resources.
-         */
-        void reloadStarted();
-        /**
-         * This should be emitted when the backend finished to reload all of its resources, so they can be shown again.
-         */
-        void reloadFinished();
+        void fetchingChanged();
+
         /**
          * This should be emitted when the number of upgradeable packages changed.
          */

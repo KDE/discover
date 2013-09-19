@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2011,2012 Jonathan Thomas <echidnaman@kubuntu.org>        *
+ *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,55 +18,42 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef ADDONSWIDGET_H
-#define ADDONSWIDGET_H
+#include "DummyTest.h"
+#include <modeltest.h>
+#include <resources/ResourcesModel.h>
+#include <qtest_kde.h>
 
-#include <QtCore/QHash>
+#include <QtTest>
 
-#include <KVBox>
+QTEST_MAIN(DummyTest);
 
-#include <resources/PackageState.h>
-
-class QListView;
-class QModelIndex;
-class QPushButton;
-class QStandardItemModel;
-class QToolButton;
-
-class AbstractResource;
-
-class AddonsWidget : public KVBox
+AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 {
-    Q_OBJECT
-public:
-    AddonsWidget(QWidget *parent);
+    QVector<AbstractResourcesBackend*> backends = m->backends();
+    foreach(AbstractResourcesBackend* backend, backends) {
+        if(backend->metaObject()->className()==name) {
+            return backend;
+        }
+    }
+    return nullptr;
+}
 
-    void setResource(AbstractResource *resource);
+DummyTest::DummyTest(QObject* parent): QObject(parent)
+{
+    m_model = new ResourcesModel("muon-dummybackend", this);
+//     new ModelTest(m_model, m_model);
 
-private:
-    AbstractResource *m_resource;
-    QStandardItemModel *m_addonsModel;
-    QList<PackageState> m_availableAddons;
-    QHash<QString, bool> m_changedAddons;
+    m_appBackend = backendByName(m_model, "DummyBackend");
+    QVERIFY(m_appBackend); //TODO: test all backends
+    QTest::kWaitForSignal(m_appBackend, SIGNAL(backendReady()));
+}
 
-    QToolButton *m_expandButton;
-    QWidget *m_addonsWidget;
-    QListView *m_addonsView;
-    QPushButton *m_addonsRevertButton;
-    QPushButton *m_addonsApplyButton;
-
-public Q_SLOTS:
-    void repaintViewport();
-
-private Q_SLOTS:
-    void fetchingChanged();
-    void populateModel();
-    void expandButtonClicked();
-    void addonStateChanged(const QModelIndex &left, const QModelIndex &right);
-    void emitApplyButtonClicked();
-
-Q_SIGNALS:
-    void applyButtonClicked();
-};
-
-#endif
+void DummyTest::testReadData()
+{
+    QBENCHMARK {
+        for(int i=0; i<m_model->rowCount(); i++) {
+            QModelIndex idx = m_model->index(i, 0);
+            QVERIFY(!m_model->data(idx, ResourcesModel::NameRole).isNull());
+        }
+    }
+}

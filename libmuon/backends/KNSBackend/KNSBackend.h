@@ -60,9 +60,9 @@ public:
     virtual QList<AbstractResource*> searchPackageName(const QString& searchText);
     virtual QVector< AbstractResource* > allResources() const;
     virtual AbstractBackendUpdater* backendUpdater() const;
+    virtual bool isFetching() const;
 
     bool isValid() const;
-    bool isFetching() const;
     Attica::Provider* provider() { return &m_provider; }
     QList<AbstractResource*> upgradeablePackages() const;
 
@@ -76,6 +76,7 @@ public slots:
 private:
     static void initManager(KConfigGroup& group);
     static QSharedPointer<Attica::ProviderManager> m_atticaManager;
+    void setFetching(bool f);
     
     bool m_isValid;
     KNS3::DownloadManager* m_manager;

@@ -53,6 +53,7 @@ public:
     virtual QList<AbstractResource*> searchPackageName(const QString& searchText);
     virtual QVector< AbstractResource* > allResources() const;
     virtual AbstractBackendUpdater* backendUpdater() const;
+    virtual bool isFetching() const { return m_fetching; }
     virtual bool isValid() const { return true; } // No external file dependencies that could cause runtime errors
 
     QList<AbstractResource*> upgradeablePackages() const;
@@ -69,11 +70,14 @@ public slots:
     void removeTransactionGeneric(QObject* job);
 
 private:
+    void setFetching(bool f);
+
     Bodega::Session* m_session;
     QHash<QString, AbstractResource*> m_resourcesByName;
     QList<Transaction*> m_transactions;
     QString m_channel;
     QString m_icon;
+    bool m_fetching;
 };
 
 #endif // BODEGABACKEND_H

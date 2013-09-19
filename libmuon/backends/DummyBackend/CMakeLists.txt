@@ -1,3 +1,5 @@
+add_subdirectory(tests)
+
 set(dummybackend_SRCS
     DummyResource.cpp
     DummyBackend.cpp
