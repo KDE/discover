@@ -169,7 +169,6 @@ void ApplicationBackend::reload()
     if (m_aptify)
         m_aptify->setCanExit(true);
     setFetching(false);
-    emit searchInvalidated();
 }
 
 bool ApplicationBackend::isFetching() const
@@ -488,9 +487,14 @@ AbstractResource* ApplicationBackend::resourceByPackageName(const QString& name)
 
 QList<AbstractResource*> ApplicationBackend::searchPackageName(const QString& searchText)
 {
+    QList<AbstractResource*> resources;
+    if(m_isFetching) {
+        qWarning() << "searching while fetching!!!";
+        return resources;
+    }
+
     QSet<QApt::Package*> packages = m_backend->search(searchText).toSet();
 
-    QList<AbstractResource*> resources;
     foreach(Application* a, m_appList) {
         if(packages.contains(a->package())) {
             resources += a;
@@ -624,7 +628,7 @@ void ApplicationBackend::setFetching(bool f)
     if(m_isFetching == f) {
         m_isFetching = f;
         emit fetchingChanged();
-        if(m_isFetching) {
+        if(!m_isFetching) {
             emit searchInvalidated();
             emit updatesCountChanged();
         }
