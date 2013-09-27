@@ -72,8 +72,13 @@ public:
     QString mimeTypeFilter() const;
     void setMimeTypeFilter(const QString& mime);
 
+    virtual void setSourceModel(QAbstractItemModel *sourceModel);
+
 protected:
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
+
+private Q_SLOTS:
+    void refreshSearch();
 
 private:
     QString m_lastSearch;

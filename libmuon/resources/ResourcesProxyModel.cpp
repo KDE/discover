@@ -22,6 +22,7 @@
 #include "ResourcesProxyModel.h"
 
 #include <QDebug>
+#include <KDebug>
 
 #include "ResourcesModel.h"
 #include "AbstractResource.h"
@@ -35,6 +36,22 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     , m_stateFilter(AbstractResource::Broken)
 {
     setShouldShowTechnical(false);
+}
+
+void ResourcesProxyModel::setSourceModel(QAbstractItemModel* source)
+{
+    ResourcesModel* model = qobject_cast<ResourcesModel*>(sourceModel());
+    if(model) {
+        disconnect(model, SIGNAL(searchInvalidated()), this, SLOT(refreshSearch()));
+    }
+
+    QSortFilterProxyModel::setSourceModel(source);
+
+    ResourcesModel* newModel = qobject_cast<ResourcesModel*>(source);
+    if(newModel) {
+        connect(newModel, SIGNAL(searchInvalidated()), SLOT(refreshSearch()));
+    } else if(source)
+        kWarning() << "ResourcesProxyModel with " << source;
 }
 
 void ResourcesProxyModel::setSearch(const QString &searchText)
@@ -64,6 +81,11 @@ void ResourcesProxyModel::setSearch(const QString &searchText)
 QString ResourcesProxyModel::lastSearch() const
 {
     return m_lastSearch;
+}
+
+void ResourcesProxyModel::refreshSearch()
+{
+    setSearch(lastSearch());
 }
 
 void ResourcesProxyModel::setOriginFilter(const QString &origin)
