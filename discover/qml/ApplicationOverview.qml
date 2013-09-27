@@ -137,6 +137,7 @@ Item {
             fillMode: Image.PreserveAspectFit
             source: thumbnailsView.currentIndex>=0 ? screenshotsModel.screenshotAt(thumbnailsView.currentIndex) : "image://icon/image-missing"
             smooth: true
+            visible: screenshot.status == Image.Ready
             
             onStatusChanged: if(status==Image.Error) {
                 sourceSize.width = sourceSize.height = 200
