@@ -8,12 +8,9 @@ Name[ca]=Dorsal del Muon
 Name[cs]=Podpůrná vrstva Muon
 Name[da]=Muon-motor
 Name[de]=Muon-Backend
-Name[el]=Σύστημα υποστήριξης Muon
 Name[es]=Motor de Muon
-Name[et]=Muoni taustaprogramm
 Name[fi]=Muon-taustaosa
 Name[fr]=Moteur de Muon
-Name[ga]=Inneall Muon
 Name[gl]=Infraestrutura de Muon
 Name[hu]=Muon modul
 Name[it]=Motore di Muon
@@ -39,7 +36,6 @@ Name[sv]=Muon-gränssnitt
 Name[tr]=Muon Arkaucu
 Name[uk]=Модуль Muon
 Name[x-test]=xxMuon Backendxx
-Name[zh_CN]=Muon 后端
 Name[zh_TW]=Muon 後端介面
 
 [PropertyDef::X-Muon-Arguments]
