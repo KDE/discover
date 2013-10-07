@@ -1,5 +1,6 @@
 /***************************************************************************
  *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2013 Lukas Appelhans <l.appelhans@gmx.de>                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -22,6 +23,8 @@
 
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusMessage>
+#include <QDBusInterface>
+#include <qdbusreply.h>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QCheckBox>
 #include <QtGui/QLabel>
@@ -31,65 +34,47 @@
 #include <KConfig>
 #include <KDialog>
 #include <KLocale>
+#include <KService>
+#include <KServiceTypeTrader>
+#include <KDebug>
+
 
 NotifySettingsPage::NotifySettingsPage(QWidget* parent) :
         SettingsPageBase(parent)
-        , m_comboRadio(new QRadioButton(this))
-        , m_trayOnlyRadio(new QRadioButton(this))
-        , m_KNotifyOnlyRadio(new QRadioButton(this))
 {
+    KService::List offers = KServiceTypeTrader::self()->query( "KDEDModule" );
+    KService::List::const_iterator end = offers.constEnd();
+    for (KService::List::const_iterator it = offers.constBegin(); it != end; ++it) {
+        if ((*it)->desktopEntryName().startsWith("muon")) {
+            m_services << (*it)->desktopEntryName();
+        }
+    }
+
+    m_kded = new QDBusInterface("org.kde.kded", "/kded",
+                                "org.kde.kded", QDBusConnection::sessionBus(), this);
+    QDBusReply<QStringList> lM = m_kded->call("loadedModules");
+    QStringList loadedModules = lM.value();
+    foreach (const QString &module, loadedModules) {
+        if (m_services.contains(module))
+            m_loadedModules << module;
+    }
+    
     QVBoxLayout* layout = new QVBoxLayout(this);
     layout->setMargin(0);
     layout->setSpacing(KDialog::spacingHint());
 
-    QLabel *label = new QLabel(this);
-    label->setText(i18n("Show notifications for:"));
-
-    m_updatesCheckBox = new QCheckBox(i18n("Available updates"), this);
+    m_updatesCheckBox = new QCheckBox(i18n("Show notifications for available updates"), this);
     m_verboseCheckBox = new QCheckBox(i18n("Show the number of available updates"), this);
-    m_distUpgradeCheckBox = new QCheckBox(i18n("Distribution upgrades"), this);
 
     connect(m_updatesCheckBox, SIGNAL(clicked()), this, SIGNAL(changed()));
     connect(m_verboseCheckBox, SIGNAL(clicked()), this, SIGNAL(changed()));
-    connect(m_distUpgradeCheckBox, SIGNAL(clicked()), this, SIGNAL(changed()));
+    connect(m_updatesCheckBox, SIGNAL(clicked(bool)), m_verboseCheckBox, SLOT(setEnabled(bool)));
+    
+    QSpacerItem * vSpacer = new QSpacerItem(20, 100, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-    QWidget *hBox = new QWidget(this);
-    QHBoxLayout *hLayout = new QHBoxLayout(hBox);
-    hBox->setLayout(hLayout);
-    QSpacerItem * hSpacer = new QSpacerItem(20, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
-
-    hLayout->setMargin(0);
-    hLayout->addSpacerItem(hSpacer);
-    hLayout->addWidget(m_verboseCheckBox);
-
-    QWidget *spacer = new QWidget(this);
-    spacer->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
-
-    QLabel *label2 = new QLabel(this);
-    label2->setText(i18n("Notification type:"));
-
-    QButtonGroup *notifyTypeGroup = new QButtonGroup(this);
-    m_comboRadio->setText(i18n("Use both popups and tray icons"));
-    m_trayOnlyRadio->setText(i18n("Tray icons only"));
-    m_KNotifyOnlyRadio->setText(i18n("Popup notifications only"));
-
-    notifyTypeGroup->addButton(m_comboRadio);
-    notifyTypeGroup->addButton(m_trayOnlyRadio);
-    notifyTypeGroup->addButton(m_KNotifyOnlyRadio);
-
-    connect(m_comboRadio, SIGNAL(clicked()), this, SIGNAL(changed()));
-    connect(m_trayOnlyRadio, SIGNAL(clicked()), this, SIGNAL(changed()));
-    connect(m_KNotifyOnlyRadio, SIGNAL(clicked()), this, SIGNAL(changed()));
-
-    layout->addWidget(label);
     layout->addWidget(m_updatesCheckBox);
-    layout->addWidget(hBox);
-    layout->addWidget(m_distUpgradeCheckBox);
-    layout->addWidget(label2);
-    layout->addWidget(spacer);
-    layout->addWidget(m_comboRadio);
-    layout->addWidget(m_trayOnlyRadio);
-    layout->addWidget(m_KNotifyOnlyRadio);
+    layout->addWidget(m_verboseCheckBox);
+    layout->addSpacerItem(vSpacer);
 
     loadSettings();
 }
@@ -101,53 +86,48 @@ NotifySettingsPage::~NotifySettingsPage()
 void NotifySettingsPage::loadSettings()
 {
     KConfig notifierConfig("muon-notifierrc", KConfig::NoGlobals);
-    KConfigGroup notifyGroup(&notifierConfig, "Event");
 
-    m_updatesCheckBox->setChecked(!notifyGroup.readEntry("hideUpdateNotifier", false));
-    m_distUpgradeCheckBox->setChecked(!notifyGroup.readEntry("hideDistUpgradeNotifier", false));
+    m_updatesCheckBox->setChecked(!m_loadedModules.isEmpty());
 
     KConfigGroup notifyTypeGroup(&notifierConfig, "NotificationType");
-    QString notifyType = notifyTypeGroup.readEntry("NotifyType", "Combo");
     bool verbose = notifyTypeGroup.readEntry("Verbose", false);
 
     m_verboseCheckBox->setChecked(verbose);
-
-    if (notifyType == "Combo") {
-        m_comboRadio->setChecked(true);
-    } else if (notifyType == "TrayOnly") {
-        m_trayOnlyRadio->setChecked(true);
-    } else {
-        m_KNotifyOnlyRadio->setChecked(true);
-    }
+    m_verboseCheckBox->setEnabled(m_updatesCheckBox->isChecked());
 }
 
 void NotifySettingsPage::applySettings()
 {
+    kDebug() << m_updatesCheckBox->isChecked();
     KConfig notifierConfig("muon-notifierrc", KConfig::NoGlobals);
-    KConfigGroup notifyGroup(&notifierConfig, "Event");
-
-    notifyGroup.writeEntry("hideUpdateNotifier", !m_updatesCheckBox->isChecked());
-    notifyGroup.writeEntry("hideDistUpgradeNotifier", !m_distUpgradeCheckBox->isChecked());
 
     KConfigGroup notifyTypeGroup(&notifierConfig, "NotificationType");
 
     notifyTypeGroup.writeEntry("Verbose", m_verboseCheckBox->isChecked());
-    notifyTypeGroup.writeEntry("NotifyType", m_comboRadio->isChecked() ? "Combo" :
-                               m_trayOnlyRadio->isChecked() ? "TrayOnly" :
-                               m_KNotifyOnlyRadio->isChecked() ? "KNotifyOnly" :
-                               "Combo");
     notifyTypeGroup.sync();
 
-    QDBusMessage message = QDBusMessage::createMethodCall("org.kubuntu.MuonNotifier",
-                               "/MuonNotifier",
-                               "org.kubuntu.MuonNotifier",
-                               "reloadConfig");
-    QDBusConnection::sessionBus().send(message);
+    if (m_updatesCheckBox->isChecked()) {
+        foreach (const QString &service, m_services) {
+            if (!m_loadedModules.contains(service)) {
+                m_kded->call("loadModule", service);
+                m_kded->call("setModuleAutoloading", service, true);
+            }
+            QDBusMessage message = QDBusMessage::createMethodCall("org.kde.kded",
+                                    "/modules/" + service,
+                                    "org.kde.kded.AbstractKDEDModule",
+                                    "configurationChanged");
+            QDBusConnection::sessionBus().send(message);
+        }
+    } else {
+        foreach (const QString &service, m_services) {
+            m_kded->call("setModuleAutoloading", service, false);
+            m_kded->call("unloadModule", service);
+        }
+    }
 }
 
 void NotifySettingsPage::restoreDefaults()
 {
-    m_comboRadio->setChecked(true);
 }
 
 #include "NotifySettingsPage.moc"

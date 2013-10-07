@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2013 Lukas Appelhans <l.appelhans@gmx.de>                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -17,39 +17,28 @@
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
+#include "DummyNotifier.h"
 
-#ifndef NOTIFYSETTINGSPAGE_H
-#define NOTIFYSETTINGSPAGE_H
+#include <KPluginFactory>
+#include <KDebug>
 
-#include <QtGui/QWidget>
-#include <QtDBus/QDBusInterface>
+K_PLUGIN_FACTORY(MuonDummyNotifierFactory,
+                 registerPlugin<DummyNotifier>();
+                )
+K_EXPORT_PLUGIN(MuonDummyNotifierFactory("muon-dummy-notifier"))
 
-#include "SettingsPageBase.h"
-
-#include "../libmuonprivate_export.h"
-
-class QCheckBox;
-class QRadioButton;
-
-class MUONPRIVATE_EXPORT NotifySettingsPage : public SettingsPageBase
+DummyNotifier::DummyNotifier(QObject* parent, const QVariantList &)
+  : AbstractKDEDModule("dummy", "muondiscover", parent)
 {
-    Q_OBJECT
 
-public:
-    NotifySettingsPage(QWidget* parent);
-    virtual ~NotifySettingsPage();
+}
 
-    void loadSettings();
-    virtual void applySettings();
-    virtual void restoreDefaults();
+DummyNotifier::~DummyNotifier()
+{
+}
 
-private:
-    QCheckBox *m_updatesCheckBox;
-    QCheckBox *m_verboseCheckBox;
-    
-    QStringList m_services;
-    QStringList m_loadedModules;
-    QDBusInterface *m_kded;
-};
-
-#endif
+void DummyNotifier::recheckSystemUpdateNeeded()
+{
+    kDebug() << "CALLLED";
+    setSystemUpToDate(!isSystemUpToDate(), 3, 2);
+}

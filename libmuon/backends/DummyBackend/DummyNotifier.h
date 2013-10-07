@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2013 Lukas Appelhans <l.appelhans@gmx.de>                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -17,39 +17,22 @@
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
+#ifndef DUMMYNOTIFIER_H
+#define DUMMYNOTIFIER_H
 
-#ifndef NOTIFYSETTINGSPAGE_H
-#define NOTIFYSETTINGSPAGE_H
+#include <resources/AbstractKDEDModule.h>
+#include <QVariantList>
 
-#include <QtGui/QWidget>
-#include <QtDBus/QDBusInterface>
-
-#include "SettingsPageBase.h"
-
-#include "../libmuonprivate_export.h"
-
-class QCheckBox;
-class QRadioButton;
-
-class MUONPRIVATE_EXPORT NotifySettingsPage : public SettingsPageBase
+class DummyNotifier : public AbstractKDEDModule
 {
     Q_OBJECT
-
+    Q_CLASSINFO("D-Bus Interface", "org.kde.muon.dummy")
 public:
-    NotifySettingsPage(QWidget* parent);
-    virtual ~NotifySettingsPage();
-
-    void loadSettings();
-    virtual void applySettings();
-    virtual void restoreDefaults();
-
-private:
-    QCheckBox *m_updatesCheckBox;
-    QCheckBox *m_verboseCheckBox;
+    DummyNotifier(QObject* parent, const QVariantList &);
+    virtual ~DummyNotifier();
     
-    QStringList m_services;
-    QStringList m_loadedModules;
-    QDBusInterface *m_kded;
+public slots:
+    virtual void recheckSystemUpdateNeeded();
 };
 
 #endif
