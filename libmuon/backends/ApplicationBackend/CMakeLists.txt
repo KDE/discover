@@ -34,13 +34,6 @@ set(appsbackend_SRCS
     UbuntuLoginBackend.cpp
 )
 
-set(notifier_SRCS
-    ApplicationNotifier.cpp
-    event.cpp
-    distupgradeevent/distupgradeevent.cpp
-    UpdateEvent/UpdateEvent.cpp
-)
-
 qt4_add_dbus_interface(appsbackend_SRCS ubuntu_sso_dbus_interface.xml ubuntu_sso -i "LoginMetaTypes.h")
 
 kde4_add_plugin(muon-appsbackend SHARED ${appsbackend_SRCS})
@@ -52,9 +45,8 @@ install(TARGETS muon-appsbackend DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES muon-applications-backend.desktop DESTINATION ${SERVICES_INSTALL_DIR})
 install(FILES apps-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
 
-
-kde4_add_plugin(kded_muonapplicationnotifier ${notifier_SRCS})
-
+include_directories(${CMAKE_SOURCE_DIR}/kded)
+kde4_add_plugin(kded_muonapplicationnotifier ApplicationNotifier.cpp)
 target_link_libraries(kded_muonapplicationnotifier ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} muonprivate)
 
 install(TARGETS kded_muonapplicationnotifier DESTINATION ${PLUGIN_INSTALL_DIR})

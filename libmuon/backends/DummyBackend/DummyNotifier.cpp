@@ -20,6 +20,7 @@
 #include "DummyNotifier.h"
 
 #include <KPluginFactory>
+#include <KDebug>
 
 K_PLUGIN_FACTORY(MuonDummyNotifierFactory,
                  registerPlugin<DummyNotifier>();
@@ -36,12 +37,8 @@ DummyNotifier::~DummyNotifier()
 {
 }
 
-void DummyNotifier::configurationChanged()
-{
-    recheckSystemUpdateNeeded();
-}
-
 void DummyNotifier::recheckSystemUpdateNeeded()
 {
-    setSystemUpToDate(!isSystemUpToDate());
+    kDebug() << "CALLLED";
+    setSystemUpToDate(!isSystemUpToDate(), 3, 2);
 }

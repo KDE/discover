@@ -24,6 +24,10 @@
 #include "AbstractResource.h"
 #include <QDebug>
 #include <QDateTime>
+#include <QDBusConnection>
+#include <QDBusInterface>
+#include <QDBusMessage>
+#include <QDBusReply>
 #include <KLocalizedString>
 #include <KGlobal>
 #include <KLocale>
@@ -32,6 +36,8 @@
 ResourcesUpdatesModel::ResourcesUpdatesModel(QObject* parent)
     : QStandardItemModel(parent)
     , m_resources(0)
+    , m_isProgressing(false)
+    , m_kded(0)
 {
     setResourcesModel(ResourcesModel::global());
 }
@@ -58,9 +64,34 @@ void ResourcesUpdatesModel::addNewBackends()
             connect(updater, SIGNAL(statusDetailChanged(QString)), SIGNAL(statusDetailChanged(QString)));
             connect(updater, SIGNAL(remainingTimeChanged()), SIGNAL(etaChanged()));
             connect(updater, SIGNAL(downloadSpeedChanged(quint64)), SIGNAL(downloadSpeedChanged()));
-            connect(updater, SIGNAL(progressingChanged(bool)), SIGNAL(progressingChanged()));
+            connect(updater, SIGNAL(progressingChanged(bool)), SLOT(slotProgressingChanged(bool)));
             connect(updater, SIGNAL(cancelableChanged(bool)), SIGNAL(cancelableChanged()));
             m_updaters += updater;
+        }
+    }
+}
+
+void ResourcesUpdatesModel::slotProgressingChanged(bool progressing)
+{
+    if ((!progressing && !isProgressing()) || (isProgressing() && !m_isProgressing)) {
+        m_isProgressing = isProgressing();
+        emit progressingChanged();
+        if (!m_isProgressing) {
+            if (!m_kded)
+                m_kded = new QDBusInterface("org.kde.kded", "/kded",
+                                            "org.kde.kded", QDBusConnection::sessionBus(), this);
+            QDBusReply<QStringList> lM = m_kded->call("loadedModules");
+            QStringList services = lM.value();
+            foreach (const QString &service, services) {
+                if (!service.startsWith("muon"))
+                    continue;
+                
+                QDBusMessage message = QDBusMessage::createMethodCall("org.kde.kded",
+                                        "/modules/" + service,
+                                        "org.kde.kded.AbstractKDEDModule",
+                                        "recheckSystemUpdateNeeded");
+                QDBusConnection::sessionBus().send(message);
+            }
         }
     }
 }
