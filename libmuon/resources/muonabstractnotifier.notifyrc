@@ -1,6 +1,16 @@
 [Global]
 IconName=applications-system
 Comment=Muon
+Comment[cs]=Muon
+Comment[de]=Muon
+Comment[nl]=Muon
+Comment[pt]=Muon
+Comment[pt_BR]=Muon
+Comment[sk]=Muon
+Comment[sl]=Muon
+Comment[sv]=Muon
+Comment[uk]=Muon
+Comment[x-test]=xxMuonxx
 
 [Event/Update]
 Name=Updates Are Available
