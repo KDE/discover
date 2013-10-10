@@ -154,7 +154,7 @@ QString Application::icon() const
 
 QString Application::mimetypes() const
 {
-    return getField("MimeType").split(';');
+    return getField("MimeType");
 }
 
 QString Application::menuPath()
