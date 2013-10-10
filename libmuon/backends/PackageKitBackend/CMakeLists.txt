@@ -1,4 +1,3 @@
-pkg_check_modules(QPACKAGEKIT2 REQUIRED packagekit-qt2>=0.6.17)
 include_directories(${QPACKAGEKIT2_INCLUDEDIR})
 
 set(pkbackend_SRCS

@@ -11,7 +11,7 @@ find_package(QCA2 REQUIRED) #required by QtOAuth
 find_package(QJSON REQUIRED)
 find_package(LibAttica QUIET)
 find_package(BODEGA QUIET)
-
+pkg_check_modules(QPACKAGEKIT2 QUIET packagekit-qt2>=0.6.17)
 
 include (KDE4Defaults)
 include( FindPkgConfig )
@@ -44,5 +44,7 @@ macro_log_feature(LIBATTICA_FOUND "LibAttica" "Qt library that implements the Op
                   "http://www.kde.org" FALSE "" "Required to build the KNewStuff3 backend")
 macro_log_feature(BODEGA_FOUND "Bodega" "Library that exposes Bodega resources"
                   "http://www.kde.org" FALSE "" "Required to build the Bodega backend")
+macro_log_feature(PACKAGEKIT_QT2_FOUND "PackageKitQt2" "Library that exposes PackageKit resources"
+                  "http://www.packagekit.org" FALSE "" "Required to build the PackageKit backend")
 
 macro_display_feature_log()
