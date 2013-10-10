@@ -152,7 +152,7 @@ QString Application::icon() const
     return getField("Icon", "applications-other");
 }
 
-QString Application::mimetypes() const
+QStringList Application::mimetypes() const
 {
     return getField("MimeType").split(';');
 }

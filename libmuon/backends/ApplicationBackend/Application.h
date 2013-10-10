@@ -51,7 +51,7 @@ public:
     QString comment();
     QApt::Package *package();
     QString icon() const;
-    QString mimetypes() const;
+    QStringList mimetypes() const;
     QString menuPath();
     QString categories();
     QString license();
