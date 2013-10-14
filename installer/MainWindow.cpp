@@ -260,6 +260,8 @@ QPair<QStringList, QStringList> fetchOrigins()
     ResourcesModel *resourcesModel = ResourcesModel::global();
     for(int i=0; i<resourcesModel->rowCount(); i++) {
         AbstractResource* app = resourcesModel->resourceAt(i);
+        if (app->backend()->isFetching())
+            continue;
         if (app->isInstalled())
             instOriginSet << app->origin();
         else
