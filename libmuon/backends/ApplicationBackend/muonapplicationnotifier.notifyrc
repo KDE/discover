@@ -2,6 +2,7 @@
 IconName=muondiscover
 Comment=Muon Application Backend Notifier
 Comment[cs]=Podpůrná vrstva upozorňování pro Muon
+Comment[da]=Backend-bekendtgørelser for programmet Muon
 Comment[nl]=Muon backend van melder van toepassingen
 Comment[pt]=Notificador da Infra-Estrutura de Aplicações do Muon
 Comment[pt_BR]=Notificador da Infraestrutura de Aplicativos do Muon
