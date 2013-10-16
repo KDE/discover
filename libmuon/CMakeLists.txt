@@ -31,7 +31,7 @@ set(muon_LIB_SRCS
 )
 
 kde4_add_kcfg_files(muon_LIB_SRCS GENERATE_MOC MuonDataSources.kcfgc)
-kde4_add_library(muonprivate SHARED ${muon_LIB_SRCS})
+add_library(muonprivate SHARED ${muon_LIB_SRCS})
 
 set_target_properties(muonprivate PROPERTIES
     VERSION 2.0.65
@@ -39,13 +39,10 @@ set_target_properties(muonprivate PROPERTIES
 )
 
 target_link_libraries(muonprivate
-    ${QT_QTXML_LIBRARY}
-    ${QT_QTGUI_LIBRARY}
-    ${QT_QTDECLARATIVE_LIBRARY}
-    ${KDE4_KDECORE_LIBS}
-    ${KDE4_KDEUI_LIBS}
-    ${KDE4_PHONON_LIBS}
-    ${KDE4_SOLID_LIBS} 
+    Qt5::Core
+    Qt5::Xml
+    Qt5::Widgets
+    KDE4Support
 )
 
 install(TARGETS muonprivate ${INSTALL_TARGETS_DEFAULT_ARGS})

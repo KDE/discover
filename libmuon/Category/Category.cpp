@@ -22,9 +22,8 @@
 
 #include <QtXml/QDomNode>
 
-#include <KLocale>
 #include <KStandardDirs>
-#include <KDebug>
+#include <QDebug>
 #include <QFile>
 
 Category::Category(QObject* parent)
@@ -166,7 +165,7 @@ void Category::addSubcategory(QList< Category* >& list, Category* newcat)
                 || c->shouldShowTechnical() != newcat->shouldShowTechnical()
                 || c->m_andFilters != newcat->andFilters())
             {
-                kWarning() << "the following categories seem to be the same but they're not entirely"
+                qWarning() << "the following categories seem to be the same but they're not entirely"
                     << c->name() << newcat->name();
                 break;
             } else {
