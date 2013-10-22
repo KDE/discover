@@ -14,6 +14,7 @@ Name[sv]=Muon testunderrättelse
 Name[tr]=Muon Kullanımsız Bildirici
 Name[uk]=Тестовий сповіщувач Muon
 Name[x-test]=xxMuon Dummy Notifierxx
+Name[zh_TW]=Muon Dummy 通知器
 Type=Service
 X-KDE-ServiceTypes=KDEDModule
 X-KDE-Library=muondummyotifier

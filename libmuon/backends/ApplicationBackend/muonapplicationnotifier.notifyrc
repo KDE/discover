@@ -16,6 +16,7 @@ Comment[sv]=Muon programgränssnittsunderrättelser
 Comment[tr]=Muon Uygulama Arka Uç Bildirici
 Comment[uk]=Сповіщувач модуля програми Muon
 Comment[x-test]=xxMuon Application Backend Notifierxx
+Comment[zh_TW]=Muon 應用程式後端介面通知器
 
 [Event/DistUpgrade]
 Name=Upgrade Available

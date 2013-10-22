@@ -15,6 +15,7 @@ Name[sv]=Muon programunderrättelse
 Name[tr]=Muon Uygulama Bildirici
 Name[uk]=Сповіщувач програми Muon
 Name[x-test]=xxMuon Application Notifierxx
+Name[zh_TW]=Muon 應用程式通知器
 Type=Service
 X-KDE-ServiceTypes=KDEDModule
 X-KDE-Library=muonapplicationnotifier
