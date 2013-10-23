@@ -203,8 +203,14 @@ void MainWindow::clearViews()
     m_viewModel->clear();
 }
 
-QStandardItem* createOriginItem(const QString& originName, const QString& originLabel)
+QStandardItem* MainWindow::createOriginItem(const QString& originName)
 {
+//     TODO: when origins are abstracted out this should go too
+    QApt::Backend* backend = qobject_cast<QApt::Backend*>(m_appBackend->property("backend").value<QObject*>());
+    QString originLabel = backend->originLabel(originName);
+    if(originLabel.isEmpty())
+        originLabel = originName;
+
     // We must spread the word of Origin. Hallowed are the Ori! ;P
     QStandardItem *viewItem = new QStandardItem;
     viewItem->setEditable(false);
@@ -296,14 +302,13 @@ void MainWindow::populateViews()
     
     QPair< QStringList, QStringList > origins = fetchOrigins();
     QStringList originNames = origins.first;
-    QApt::Backend* backend = qobject_cast<QApt::Backend*>(m_appBackend->property("backend").value<QObject*>());
     foreach(const QString &originName, originNames) {
-        availableItem->appendRow(createOriginItem(originName, backend->originLabel(originName)));
+        availableItem->appendRow(createOriginItem(originName));
     }
 
     QStringList instOriginNames = origins.second;
     foreach(const QString & originName, instOriginNames) {
-        QStandardItem* viewItem = createOriginItem(originName, backend->originLabel(originName));
+        QStandardItem* viewItem = createOriginItem(originName);
 
         viewItem->setData(AbstractResource::State::Installed, StateFilterRole);
         installedItem->appendRow(viewItem);
