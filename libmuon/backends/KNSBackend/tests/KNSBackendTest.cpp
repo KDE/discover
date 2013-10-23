@@ -50,6 +50,7 @@ void KNSBackendTest::testRetrieval()
     foreach(AbstractResource* res, resources) {
         QVERIFY(!res->name().isEmpty());
         QVERIFY(!res->categories().isEmpty());
+        QVERIFY(!res->origin().isEmpty());
     }
 }
 

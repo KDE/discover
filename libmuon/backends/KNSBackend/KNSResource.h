@@ -57,15 +57,15 @@ public:
     virtual int downloadSize();
     virtual void fetchChangelog();
 
-    Attica::Content& content();
+    const Attica::Content& content();
     void setEntry(const KNS3::Entry& entry);
     KNS3::Entry* entry() const;
 
 private:
     KNS3::Entry::Status m_status;
-    Attica::Content m_content;
-    QString m_category;
-    QString m_icon;
+    const Attica::Content m_content;
+    const QString m_category;
+    const QString m_icon;
     KNS3::Entry* m_entry;
 };
 

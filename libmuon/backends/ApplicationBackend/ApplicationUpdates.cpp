@@ -448,3 +448,8 @@ void ApplicationUpdates::calculateUpdates()
         }
     }
 }
+
+bool ApplicationUpdates::isMarked(AbstractResource* res) const
+{
+    return m_toUpdate.contains(res);
+}
