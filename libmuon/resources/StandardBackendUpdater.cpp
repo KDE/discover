@@ -125,6 +125,11 @@ QList<AbstractResource*> StandardBackendUpdater::toUpdate() const
     return m_toUpgrade.toList();
 }
 
+bool StandardBackendUpdater::isMarked(AbstractResource* res) const
+{
+    return m_toUpgrade.contains(res);
+}
+
 bool StandardBackendUpdater::isAllMarked() const
 {
     //Maybe we should make this smarter...

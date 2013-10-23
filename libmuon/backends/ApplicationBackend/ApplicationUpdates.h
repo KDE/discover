@@ -63,6 +63,7 @@ public:
     void prepare();
     virtual QList<QAction*> messageActions() const;
     void setupTransaction(QApt::Transaction *trans);
+    virtual bool isMarked(AbstractResource* res) const;
 
 private:
     void setProgressing(bool progressing);
