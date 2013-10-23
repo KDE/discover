@@ -96,8 +96,9 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
          * It will potentially be called before \start.
          */
         virtual void addResources(const QList<AbstractResource*>& apps) = 0;
+
         /**
-         * @returns the list of resources which are going to be upgraded when \start is called
+         * @returns the list of updateable resources in the system
          */
         virtual QList<AbstractResource*> toUpdate() const = 0;
 
