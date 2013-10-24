@@ -1,11 +1,9 @@
 [Desktop Entry]
 Name=Muon Discover
 Name[bs]=Muon otkrivač
-Name[ca]=Muon Discover
-Name[ca@valencia]=Muon Discover
 Name[cs]=Muon Discover
 Name[da]=Muon Discover
-Name[de]=Muon-Explorer
+Name[de]=Muon-Discover
 Name[el]=Muon Discover
 Name[es]=Muon Discover
 Name[et]=Muoni avastusretk
@@ -38,7 +36,7 @@ Name[tr]=Muon Keşfet
 Name[uk]=Шукач Muon
 Name[x-test]=xxMuon Discoverxx
 Name[zh_CN]=Muon 发现者
-Name[zh_TW]=Muon 探測器
+Name[zh_TW]=Muon 探詢器
 Exec=muon-discover
 Icon=muondiscover
 Type=Application
