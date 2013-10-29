@@ -21,6 +21,7 @@
 #include "DummyResource.h"
 #include <krandom.h>
 #include <QDesktopServices>
+#include <QStringList>
 
 DummyResource::DummyResource(const QString& name, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
