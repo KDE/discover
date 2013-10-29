@@ -96,10 +96,12 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
          * It will potentially be called before \start.
          */
         virtual void addResources(const QList<AbstractResource*>& apps) = 0;
+
         /**
-         * @returns the list of resources which are going to be upgraded when \start is called
+         * @returns the list of updateable resources in the system
          */
         virtual QList<AbstractResource*> toUpdate() const = 0;
+
         /**
          * @returns the QDateTime when the last update happened
          */
@@ -141,6 +143,11 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
          *  to the advanced menu.
          */
         virtual QList<QAction*> messageActions() const = 0;
+
+        /**
+         * @returns whether @p res is marked for update
+         */
+        virtual bool isMarked(AbstractResource* res) const = 0;
 
     public slots:
         /**

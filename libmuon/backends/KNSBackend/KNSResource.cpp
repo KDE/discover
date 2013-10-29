@@ -110,7 +110,7 @@ QUrl KNSResource::screenshotUrl()
     return m_content.previewPicture();
 }
 
-Attica::Content& KNSResource::content()
+const Attica::Content& KNSResource::content()
 {
     return m_content;
 }

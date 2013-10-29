@@ -116,9 +116,7 @@ Comment[uk]=Встановіть плазмоїди і зробіть ваш р�
 Comment[x-test]=xxInstall plasmoids and raise the power of your workspace!xx
 Comment[zh_CN]=安装 plasmoids，让您的工作区更强大！
 Comment[zh_TW]=安裝小元件，提升您的工作空間的能量！
-<<<<<<< HEAD
-=======
->>>>>>> 2.0
+
 X-KDE-Library=muon-knsbackend
 X-KDE-PluginInfo-Name=muon-knsbackend-plasmoids
 X-KDE-PluginInfo-License=GPL
