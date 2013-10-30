@@ -10,9 +10,9 @@ if(BODEGA_FOUND)
     add_subdirectory(BodegaBackend)
 endif(BODEGA_FOUND)
 
-if(PACKAGEKIT_QT2_FOUND)
+if(PACKAGEKITQT2_FOUND)
     add_subdirectory(PackageKitBackend)
-endif(PACKAGEKIT_QT2_FOUND)
+endif(PACKAGEKITQT2_FOUND)
 
 OPTION(BUILD_DummyBackend "Build the DummyBackend" "OFF")
 if(BUILD_DummyBackend)
