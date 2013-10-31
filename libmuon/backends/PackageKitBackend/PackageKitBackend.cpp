@@ -190,15 +190,21 @@ PackageKitBackend::PackageKitBackend(QObject* parent, const QVariantList&)
     : AbstractResourcesBackend(parent)
     , m_updater(new PackageKitUpdater(this))
     , m_refresher(0)
+    , m_isLoading(false)
+    , m_isFetching(false)
 {
     populateInstalledCache();
-    emit backendReady();
     
     startTimer(60 * 60 * 1000);//Update database every 60 minutes
 }
 
 PackageKitBackend::~PackageKitBackend()
 {
+}
+
+bool PackageKitBackend::isFetching() const
+{
+    return m_isFetching;
 }
 
 bool PackageKitBackend::isLoading() const
@@ -213,14 +219,16 @@ void PackageKitBackend::populateInstalledCache()
     
     m_isLoading = true;
     
-    emit reloadStarted();
+    m_isFetching = true;
+    emit fetchingChanged();
     
     foreach (const ApplicationData &data, m_appdata.values()) {
         if (!data.pkgname.isEmpty())
             m_packages[data.pkgname] = new AppPackageKitResource(QString(), PackageKit::Transaction::InfoUnknown, QString(), data, this);
     }
     
-    emit reloadFinished();
+    m_isFetching = false;
+    emit fetchingChanged();
     
     m_updatingPackages = m_packages;
     
@@ -278,13 +286,15 @@ void PackageKitBackend::addNewest(PackageKit::Transaction::Info info, const QStr
 void PackageKitBackend::finishRefresh()
 {
     kDebug() << "Finished the refresh and resetting packages" << m_updatingPackages.count();
-    emit reloadStarted();
+    
+    m_isFetching = true;
     
     m_packages = m_updatingPackages;
     
-    emit reloadFinished();
-    
     m_isLoading = false;
+    m_isFetching = false;
+    
+    emit fetchingChanged();
 }
 
 void PackageKitBackend::timerEvent(QTimerEvent * event)

@@ -73,11 +73,9 @@ void PackageKitNotifier::finished(PackageKit::Transaction::Exit exit, uint)
 {
     kDebug() << "FINISHED" << m_update;
     if (m_update == Security) {
-        setUpdateType(AbstractKDEDModule::SecurityUpdate);
-        setSystemUpToDate(false);
+        setSystemUpToDate(false, AbstractKDEDModule::SecurityUpdate);
     } else if (m_update == Normal) {
-        setUpdateType(AbstractKDEDModule::NormalUpdate);
-        setSystemUpToDate(false);
+        setSystemUpToDate(false, AbstractKDEDModule::NormalUpdate);
     } else if (m_update == NoUpdate) {
         setSystemUpToDate(true);
         m_timer->start();

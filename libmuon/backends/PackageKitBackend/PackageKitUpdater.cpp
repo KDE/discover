@@ -224,6 +224,11 @@ QList<AbstractResource*> PackageKitUpdater::toUpdate() const
     return m_toUpgrade;
 }
 
+bool PackageKitUpdater::isMarked(AbstractResource* res) const
+{
+    return m_toUpgrade.contains(res);
+}
+
 QDateTime PackageKitUpdater::lastUpdate() const
 {
     return m_lastUpdate;

@@ -42,6 +42,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         virtual void removeResources(const QList<AbstractResource*>& apps);
         virtual void addResources(const QList<AbstractResource*>& apps);
         virtual QList<AbstractResource*> toUpdate() const;
+        virtual bool isMarked(AbstractResource* res) const;
         virtual QDateTime lastUpdate() const;
         virtual bool isAllMarked() const;
         virtual bool isCancelable() const;

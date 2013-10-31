@@ -68,6 +68,7 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         virtual void cancelTransaction(AbstractResource* app);
         virtual bool isValid() const { return true; }
         virtual QList<AbstractResource*> upgradeablePackages() const;
+        bool isFetching() const;
         bool isLoading() const;
         
     public slots:
@@ -93,6 +94,7 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QList<PackageKitResource*> m_upgradeablePackages;
         PackageKit::Transaction * m_refresher;
         bool m_isLoading;
+        bool m_isFetching;
 };
 
 #endif // PACKAGEKITBACKEND_H
