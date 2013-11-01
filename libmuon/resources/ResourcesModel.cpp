@@ -235,7 +235,6 @@ void ResourcesModel::cleanBackend(AbstractResourcesBackend* backend)
 void ResourcesModel::callerFetchingChanged()
 {
     AbstractResourcesBackend* backend = qobject_cast<AbstractResourcesBackend*>(sender());
-    qDebug() << "fetching!!!" << backend->isFetching() << isFetching();
     if(backend->isFetching()) {
         cleanBackend(backend);
         emit fetchingChanged();

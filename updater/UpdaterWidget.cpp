@@ -161,6 +161,7 @@ void UpdaterWidget::populateUpdateModel()
     m_busyWidget->stop();
     QApplication::restoreOverrideCursor();
     setEnabled(true);
+    ResourcesModel* m = ResourcesModel::global();
     if (!m_updatesBackends->hasUpdates()) {
         checkUpToDate();
         return;
