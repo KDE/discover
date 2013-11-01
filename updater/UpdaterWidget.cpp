@@ -144,14 +144,15 @@ UpdaterWidget::~UpdaterWidget()
 void UpdaterWidget::activityChanged()
 {
     if(m_updatesBackends->isProgressing() || ResourcesModel::global()->isFetching()) {
+        setCurrentIndex(-1);
         m_updateView->hide();
         m_changelogWidget->hide();
         m_busyWidget->start();
         setEnabled(false);
-        setCurrentIndex(-1);
     } else {
         populateUpdateModel();
         m_updateView->show();
+        setCurrentIndex(0);
     }
 }
 
@@ -172,7 +173,6 @@ void UpdaterWidget::populateUpdateModel()
     m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
 
     checkAllMarked();
-    checkUpToDate();
     emit modelPopulated();
 }
 
