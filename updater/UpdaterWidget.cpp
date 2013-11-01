@@ -124,6 +124,7 @@ UpdaterWidget::UpdaterWidget(ResourcesUpdatesModel* updates, QWidget *parent) :
     m_busyWidget->start();
 
     connect(ResourcesModel::global(), SIGNAL(fetchingChanged()), SLOT(activityChanged()));
+    connect(m_updatesBackends, SIGNAL(progressingChanged()), SLOT(activityChanged()));
 }
 
 UpdaterWidget::~UpdaterWidget()
@@ -133,15 +134,25 @@ UpdaterWidget::~UpdaterWidget()
 
 void UpdaterWidget::activityChanged()
 {
-    if(m_updatesBackends->isProgressing() || ResourcesModel::global()->isFetching()) {
+    if(ResourcesModel::global()->isFetching()) {
+        m_updateModel->setResources(QList<AbstractResource*>());
+        m_updateView->show();
+        m_busyWidget->start();
+        setEnabled(false);
+        setVisible(true);
         setCurrentIndex(0);
+    } else if(m_updatesBackends->isProgressing()) {
+        setCurrentIndex(-1);
+        m_updateView->hide();
         m_changelogWidget->hide();
         m_busyWidget->start();
         setEnabled(false);
+        setVisible(false);
     } else {
         populateUpdateModel();
         m_updateView->show();
-        setCurrentIndex(0);
+        setEnabled(true);
+        setVisible(true);
     }
 }
 
@@ -179,6 +190,7 @@ void UpdaterWidget::selectionChanged(const QItemSelection &selected,
     }
 
     emit selectedResourceChanged(res);
+    checkUpToDate();
 }
 
 void UpdaterWidget::checkAllMarked()
@@ -200,7 +212,7 @@ void UpdaterWidget::checkUpToDate()
     qint64 day = 1000 * 60 * 60 * 24;
     qint64 week = 1000 * 60 * 60 * 24 * 7;
 
-    if(!m_updatesBackends->hasUpdates() || msecSinceUpdate > week) {
+    if((!m_updatesBackends->hasUpdates() && !ResourcesModel::global()->isFetching()) || msecSinceUpdate > week) {
         setCurrentIndex(1);
 
         // Unknown time since last update
@@ -229,5 +241,6 @@ void UpdaterWidget::checkUpToDate()
             m_ui->notifyDesc->setText(i18nc("@info", "Please click <interface>Check for Updates</interface> "
                                         "to check."));
         }
-    }
+    } else
+        setCurrentIndex(0);
 }
