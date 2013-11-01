@@ -28,6 +28,7 @@
 #include <QPushButton>
 #include <QToolButton>
 #include <QMenu>
+#include <QLayoutItem>
 
 // KDE includes
 #include <KAction>
@@ -144,13 +145,26 @@ void MainWindow::initBackend()
     setActionsEnabled();
 }
 
+static bool containsAction(QAction* action, QBoxLayout* l)
+{
+    for(int i=0, count=l->count(); i<count; ++i) {
+        KActionMessageWidget* w = qobject_cast<KActionMessageWidget*>(l->itemAt(i)->widget());
+        if(w && w->action() == action) {
+            return true;
+        }
+    }
+    return false;
+}
+
 void MainWindow::setupBackendsActions()
 {
     foreach (QAction* action, m_updater->messageActions()) {
         switch(action->priority()) {
             case QAction::HighPriority: {
-                KActionMessageWidget* w = new KActionMessageWidget(action, centralWidget());
-                qobject_cast<QBoxLayout*>(centralWidget()->layout())->insertWidget(1, w);
+                if(!containsAction(action, qobject_cast<QBoxLayout*>(centralWidget()->layout()))) {
+                    KActionMessageWidget* w = new KActionMessageWidget(action, centralWidget());
+                    qobject_cast<QBoxLayout*>(centralWidget()->layout())->insertWidget(1, w);
+                }
             }   break;
             case QAction::NormalPriority:
                 m_moreMenu->insertAction(m_moreMenu->actions().first(), action);
