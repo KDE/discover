@@ -620,12 +620,11 @@ void ApplicationBackend::checkForUpdates()
     QApt::Transaction* transaction = backend()->updateCache();
     m_backendUpdater->setupTransaction(transaction);
     transaction->run();
-
 }
 
 void ApplicationBackend::setFetching(bool f)
 {
-    if(m_isFetching == f) {
+    if(m_isFetching != f) {
         m_isFetching = f;
         emit fetchingChanged();
         if(!m_isFetching) {
