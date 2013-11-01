@@ -533,6 +533,7 @@ QWidget* ApplicationBackend::mainWindow() const
 
 void ApplicationBackend::initBackend()
 {
+    setFetching(true);
     if (m_aptify) {
         m_aptify->setCanExit(false);
         QAptActions::self()->setReloadWhenEditorFinished(true);
@@ -549,7 +550,6 @@ void ApplicationBackend::initBackend()
     m_reviewsBackend->setAptBackend(m_backend);
     m_backendUpdater->setBackend(m_backend);
 
-    setFetching(true);
     QFuture<QVector<Application*> > future = QtConcurrent::run(init, m_backend, QThread::currentThread());
     m_watcher->setFuture(future);
     connect(m_backend, SIGNAL(transactionQueueChanged(QString,QStringList)),
