@@ -44,7 +44,7 @@ class UpdaterWidget : public QStackedWidget
 {
     Q_OBJECT
 public:
-    explicit UpdaterWidget(QWidget *parent = 0);
+    explicit UpdaterWidget(ResourcesUpdatesModel* updates, QWidget* parent = 0);
     virtual ~UpdaterWidget();
 
 private:
@@ -57,8 +57,8 @@ private:
     KMessageWidget* m_markallWidget;
     Ui::UpdaterWidgetNoUpdates* m_ui;
 
-public Q_SLOTS:
-    void setBackend(ResourcesUpdatesModel* backend);
+// public Q_SLOTS:
+//     void setBackend(ResourcesUpdatesModel* backend);
 
 private Q_SLOTS:
     void populateUpdateModel();

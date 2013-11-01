@@ -81,7 +81,7 @@ void MainWindow::initGUI()
     checkPlugState();
 
     m_progressWidget = new ProgressWidget(m_updater, mainWidget);
-    m_updaterWidget = new UpdaterWidget(mainWidget);
+    m_updaterWidget = new UpdaterWidget(m_updater, mainWidget);
     m_updaterWidget->setEnabled(false);
     connect(m_updaterWidget, SIGNAL(modelPopulated()),
             this, SLOT(setActionsEnabled()));
@@ -139,7 +139,6 @@ void MainWindow::setupActions()
 
 void MainWindow::initBackend()
 {
-    m_updaterWidget->setBackend(m_updater);
     setupBackendsActions();
 
     setActionsEnabled();

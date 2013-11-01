@@ -46,7 +46,7 @@
 #include <resources/AbstractResource.h>
 #include <resources/AbstractBackendUpdater.h>
 #include <resources/ResourcesUpdatesModel.h>
-// #include <resources/ResourcesModel.h>
+#include <resources/ResourcesModel.h>
 
 // Own includes
 #include "UpdateModel/UpdateModel.h"
@@ -55,8 +55,8 @@
 #include "ChangelogWidget.h"
 #include "ui_UpdaterWidgetNoUpdates.h"
 
-UpdaterWidget::UpdaterWidget(QWidget *parent) :
-    QStackedWidget(parent)
+UpdaterWidget::UpdaterWidget(ResourcesUpdatesModel* updates, QWidget *parent) :
+    QStackedWidget(parent), m_updatesBackends(updates)
 {
     setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
     m_updateModel = new UpdateModel(this);
@@ -122,6 +122,8 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
 
     QApplication::setOverrideCursor(Qt::WaitCursor);
     m_busyWidget->start();
+
+    connect(ResourcesModel::global(), SIGNAL(fetchingChanged()), SLOT(activityChanged()));
 }
 
 UpdaterWidget::~UpdaterWidget()
@@ -129,19 +131,19 @@ UpdaterWidget::~UpdaterWidget()
     delete m_ui;
 }
 
-void UpdaterWidget::setBackend(ResourcesUpdatesModel *updates)
-{
-    m_updatesBackends = updates;
-    m_updateModel->setBackend(updates);
-    connect(m_updatesBackends, SIGNAL(progressingChanged()), SLOT(activityChanged()));
-
-    populateUpdateModel();
-    setEnabled(true);
-}
+// void UpdaterWidget::setBackend(ResourcesUpdatesModel *updates)
+// {
+//     m_updatesBackends = updates;
+//     m_updateModel->setBackend(updates);
+//     connect(m_updatesBackends, SIGNAL(progressingChanged()), SLOT(activityChanged()));
+// 
+//     populateUpdateModel();
+//     setEnabled(true);
+// }
 
 void UpdaterWidget::activityChanged()
 {
-    if(m_updatesBackends->isProgressing()) {
+    if(m_updatesBackends->isProgressing() || ResourcesModel::global()->isFetching()) {
         m_updateView->hide();
         m_changelogWidget->hide();
         m_busyWidget->start();
