@@ -453,6 +453,7 @@ void ApplicationUpdates::calculateUpdates()
 
 bool ApplicationUpdates::isMarked(AbstractResource* res) const
 {
+    Q_ASSERT(!res->backend()->isFetching());
     Application* app = qobject_cast<Application*>(res);
     Q_ASSERT(app);
     return app->package()->state() & QApt::Package::ToInstall;
