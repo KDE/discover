@@ -131,16 +131,6 @@ UpdaterWidget::~UpdaterWidget()
     delete m_ui;
 }
 
-// void UpdaterWidget::setBackend(ResourcesUpdatesModel *updates)
-// {
-//     m_updatesBackends = updates;
-//     m_updateModel->setBackend(updates);
-//     connect(m_updatesBackends, SIGNAL(progressingChanged()), SLOT(activityChanged()));
-// 
-//     populateUpdateModel();
-//     setEnabled(true);
-// }
-
 void UpdaterWidget::activityChanged()
 {
     if(m_updatesBackends->isProgressing() || ResourcesModel::global()->isFetching()) {

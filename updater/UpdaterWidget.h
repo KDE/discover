@@ -57,9 +57,6 @@ private:
     KMessageWidget* m_markallWidget;
     Ui::UpdaterWidgetNoUpdates* m_ui;
 
-// public Q_SLOTS:
-//     void setBackend(ResourcesUpdatesModel* backend);
-
 private Q_SLOTS:
     void populateUpdateModel();
     void selectionChanged(const QItemSelection &selected,
