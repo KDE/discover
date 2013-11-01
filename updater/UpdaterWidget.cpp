@@ -144,8 +144,7 @@ UpdaterWidget::~UpdaterWidget()
 void UpdaterWidget::activityChanged()
 {
     if(m_updatesBackends->isProgressing() || ResourcesModel::global()->isFetching()) {
-        setCurrentIndex(-1);
-        m_updateView->hide();
+        setCurrentIndex(0);
         m_changelogWidget->hide();
         m_busyWidget->start();
         setEnabled(false);
