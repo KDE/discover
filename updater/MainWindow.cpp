@@ -171,6 +171,7 @@ void MainWindow::setupBackendsActions()
                 break;
             case QAction::LowPriority:
             default:
+                m_advancedMenu->setEnabled(true);
                 m_advancedMenu->addAction(action);
                 break;
         }
