@@ -84,6 +84,8 @@ MuonMainWindow* QAptActions::mainWindow() const
 
 void QAptActions::setBackend(QApt::Backend* backend)
 {
+    if(backend == m_backend)
+        return;
     m_backend = backend;
     if (!m_backend->init())
         initError();
