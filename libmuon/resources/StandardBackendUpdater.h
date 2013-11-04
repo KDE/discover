@@ -55,6 +55,8 @@ class MUONPRIVATE_EXPORT StandardBackendUpdater : public AbstractBackendUpdater
         void setStatusDetail(const QString& message);
         void setProgress(qreal p);
 
+        void setMessageActions(const QList<QAction*>& actions);
+
     public slots:
         void transactionRemoved(Transaction* t);
         void cleanup();
@@ -68,6 +70,7 @@ class MUONPRIVATE_EXPORT StandardBackendUpdater : public AbstractBackendUpdater
         QString m_statusDetail;
         qreal m_progress;
         QDateTime m_lastUpdate;
+        QList<QAction*> m_actions;
 };
 
 #endif // STANDARDBACKENDUPDATER_H
