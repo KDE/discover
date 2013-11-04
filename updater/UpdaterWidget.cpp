@@ -138,18 +138,15 @@ void UpdaterWidget::activityChanged()
         m_updateModel->setResources(QList<AbstractResource*>());
         m_busyWidget->start();
         setEnabled(false);
-        setVisible(true);
         setCurrentIndex(0);
     } else if(m_updatesBackends->isProgressing()) {
         setCurrentIndex(-1);
         m_changelogWidget->hide();
         m_busyWidget->start();
         setEnabled(false);
-        setVisible(false);
     } else {
         populateUpdateModel();
         setEnabled(true);
-        setVisible(true);
     }
 }
 
@@ -158,7 +155,6 @@ void UpdaterWidget::populateUpdateModel()
     m_busyWidget->stop();
     QApplication::restoreOverrideCursor();
     setEnabled(true);
-    ResourcesModel* m = ResourcesModel::global();
     if (!m_updatesBackends->hasUpdates()) {
         checkUpToDate();
         return;
