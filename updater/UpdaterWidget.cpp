@@ -136,21 +136,18 @@ void UpdaterWidget::activityChanged()
 {
     if(ResourcesModel::global()->isFetching()) {
         m_updateModel->setResources(QList<AbstractResource*>());
-        m_updateView->show();
         m_busyWidget->start();
         setEnabled(false);
         setVisible(true);
         setCurrentIndex(0);
     } else if(m_updatesBackends->isProgressing()) {
         setCurrentIndex(-1);
-        m_updateView->hide();
         m_changelogWidget->hide();
         m_busyWidget->start();
         setEnabled(false);
         setVisible(false);
     } else {
         populateUpdateModel();
-        m_updateView->show();
         setEnabled(true);
         setVisible(true);
     }
