@@ -352,6 +352,7 @@ void ApplicationUpdates::statusChanged(QApt::TransactionStatus status)
                                         "Finished"));
             m_lastRealProgress = 0;
             m_appBackend->reload();
+            setProgressing(false);
             break;
     }
 }
