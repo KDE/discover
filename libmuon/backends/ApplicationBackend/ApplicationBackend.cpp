@@ -620,6 +620,16 @@ void ApplicationBackend::checkForUpdates()
     QApt::Transaction* transaction = backend()->updateCache();
     m_backendUpdater->setupTransaction(transaction);
     transaction->run();
+    m_backendUpdater->setProgressing(true);
+    connect(transaction, SIGNAL(finished(QApt::ExitStatus)), SLOT(updateFinished(QApt::ExitStatus)));
+}
+
+void ApplicationBackend::updateFinished(QApt::ExitStatus status)
+{
+    if(status != QApt::ExitSuccess) {
+        qWarning() << "updating was not successful";
+    }
+    m_backendUpdater->setProgressing(false);
 }
 
 void ApplicationBackend::setFetching(bool f)
