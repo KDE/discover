@@ -151,9 +151,13 @@ void ApplicationBackend::setApplications()
 
 void ApplicationBackend::reload()
 {
+    if(isFetching()) {
+        qWarning() << "Reloading while already reloading... Please report.";
+        return;
+    }
+    setFetching(true);
     if (m_aptify)
         m_aptify->setCanExit(false);
-    setFetching(true);
     foreach(Application* app, m_appList)
         app->clearPackage();
     qDeleteAll(m_transQueue);
