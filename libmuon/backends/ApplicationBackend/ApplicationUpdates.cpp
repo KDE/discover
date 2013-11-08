@@ -200,7 +200,17 @@ void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
             this, SLOT(untrustedPrompt(QStringList)));
     connect(trans, SIGNAL(downloadSpeedChanged(quint64)),
             this, SIGNAL(downloadSpeedChanged(quint64)));
+    connect(trans, SIGNAL(finished(QApt::ExitStatus)),
+            this, SLOT(transactionFinished(QApt::ExitStatus)));
 }
+
+void ApplicationUpdates::transactionFinished(QApt::ExitStatus )
+{
+    m_lastRealProgress = 0;
+    m_appBackend->reload();
+    setProgressing(false);
+}
+
 
 bool ApplicationUpdates::isAllMarked() const
 {
@@ -350,9 +360,6 @@ void ApplicationUpdates::statusChanged(QApt::TransactionStatus status)
             setProgress(100);
             setStatusMessage(i18nc("@info Status information, widget title",
                                         "Finished"));
-            m_lastRealProgress = 0;
-            m_appBackend->reload();
-            setProgressing(false);
             break;
     }
 }
