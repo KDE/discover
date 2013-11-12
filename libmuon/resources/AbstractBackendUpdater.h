@@ -111,7 +111,7 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
          */
         virtual bool isAllMarked() const = 0;
         /**
-         * @returns whether the updater can currently be cancelled or not
+         * @returns whether the updater can currently be canceled or not
          * @see cancelableChanged
          */
         virtual bool isCancelable() const = 0;

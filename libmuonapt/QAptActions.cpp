@@ -348,7 +348,7 @@ void QAptActions::loadArchives()
                                                       "Choose a Directory"));
 
     if (dirName.isEmpty()) {
-        // User cancelled
+        // User canceled
         return;
     }
 

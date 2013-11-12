@@ -381,7 +381,7 @@
   * Disable the reinstall button for non-reinstallable items, such as non-downloadable
     and/or locally-installed packages. (BKO: #254449)
   * Fix a bug with the new DownloadModel where items from previous downloads would 
-    remain if the user cancelled the download
+    remain if the user canceled the download
   * Don’t enable the Muon Package Manager’s search widget before the package list is
     populated, so that it is impossible to try to search before the backend has initialized. (And crash)
     In theory this sort of thing could only happen under valgrind-levels of load, but for the

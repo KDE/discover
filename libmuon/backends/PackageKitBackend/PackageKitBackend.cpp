@@ -79,7 +79,7 @@ QString PackageKitBackend::errorMessage(PackageKit::Transaction::Error error)
         case PackageKit::Transaction::ErrorTransactionError:
             return i18n("Transaction failure!");
         case PackageKit::Transaction::ErrorTransactionCancelled:
-            return i18n("Transaction cancelled!");
+            return i18n("Transaction canceled!");
         case PackageKit::Transaction::ErrorNoCache:
             return i18n("No Cache available");
         case PackageKit::Transaction::ErrorRepoNotFound:
@@ -175,7 +175,7 @@ QString PackageKitBackend::errorMessage(PackageKit::Transaction::Error error)
         case PackageKit::Transaction::ErrorCannotFetchSources:
             return i18n("Cannot fetch sources!");
         case PackageKit::Transaction::ErrorCancelledPriority:
-            return i18n("Cancelled priority!");
+            return i18n("Canceled priority!");
         case PackageKit::Transaction::ErrorUnfinishedTransaction:
             return i18n("Unfinished transaction!");
         case PackageKit::Transaction::ErrorLockRequired:

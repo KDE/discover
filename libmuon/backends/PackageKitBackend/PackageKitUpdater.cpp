@@ -147,8 +147,8 @@ void PackageKitUpdater::backendChanged()
                 m_lastUpdate = QDateTime::currentDateTime();
                 break;
             case PackageKit::Transaction::StatusCancel:
-                m_statusMessage = i18n("Cancelled.");
-                m_statusDetail = i18n("The transaction was cancelled");
+                m_statusMessage = i18n("Canceled.");
+                m_statusDetail = i18n("The transaction was canceled");
                 break;
             case PackageKit::Transaction::StatusWaitingForLock:
                 m_statusMessage = i18n("Waiting for lock...");

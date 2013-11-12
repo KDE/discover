@@ -208,7 +208,7 @@ void KNSBackend::cancelTransaction(AbstractResource* app)
 {
     Q_UNUSED(app)
 
-    qWarning("KNS transaction cancelling unsupported");
+    qWarning("KNS transaction canceling unsupported");
 }
 
 void KNSBackend::removeApplication(AbstractResource* app)
