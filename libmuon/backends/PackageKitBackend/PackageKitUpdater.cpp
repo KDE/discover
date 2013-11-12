@@ -52,7 +52,7 @@ void PackageKitUpdater::prepare()
     kDebug();
     if (m_transaction)
         m_transaction->deleteLater();
-    
+
     m_transaction = new PackageKit::Transaction(this);
     connect(m_transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(finished(PackageKit::Transaction::Exit,uint)));
     connect(m_transaction, SIGNAL(changed()), this, SLOT(backendChanged()));
@@ -87,12 +87,12 @@ void PackageKitUpdater::backendChanged()
         m_isCancelable = m_transaction->allowCancel();
         emit cancelableChanged(m_isCancelable);
     }
-    
+
     if (m_status != m_transaction->status()) {
         m_status = m_transaction->status();
         switch (m_status) {
             case PackageKit::Transaction::StatusWait:
-                m_statusMessage = i18n("Waiting..");
+                m_statusMessage = i18n("Waiting...");
                 m_statusDetail = i18n("We are waiting for something.");
                 break;
             case PackageKit::Transaction::StatusSetup:
@@ -129,7 +129,7 @@ void PackageKitUpdater::backendChanged()
                 m_statusDetail = i18n("The transaction is currently resolving the dependencies of the packages it will install...");
                 break;
             case PackageKit::Transaction::StatusSigCheck:
-                m_statusMessage = i18n("Chacking signatures...");
+                m_statusMessage = i18n("Checking signatures...");
                 m_statusDetail = i18n("The transaction is currently checking the signatures of the packages...");
                 break;
             case PackageKit::Transaction::StatusTestCommit:
@@ -174,17 +174,17 @@ void PackageKitUpdater::backendChanged()
         emit statusMessageChanged(m_statusMessage);
         emit statusDetailChanged(m_statusDetail);
     }
-    
+
     if (m_speed != m_transaction->speed()) {
         m_speed = m_transaction->speed();
         emit downloadSpeedChanged(m_speed);
     }
-    
+
     if (m_remainingTime != m_transaction->remainingTime()) {
         m_remainingTime = m_transaction->remainingTime();
         emit remainingTimeChanged();
     }
-    
+
     if (m_percentage != m_transaction->percentage()) {
         m_percentage = m_transaction->percentage();
         emit progressChanged(m_percentage);
@@ -332,7 +332,7 @@ void PackageKitUpdater::requireRestard(PackageKit::Transaction::Restart restart,
 void PackageKitUpdater::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
 {
     kDebug();
-    int ret = KMessageBox::questionYesNo(0, i18n("The package %1 and its vendor %2 require that you accept their license:\n %3", 
+    int ret = KMessageBox::questionYesNo(0, i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
                                                  PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement),
                                             i18n("%1 requires user to accept its license!", PackageKit::Daemon::packageName(packageID)));
     if (ret == KMessageBox::Yes) {
