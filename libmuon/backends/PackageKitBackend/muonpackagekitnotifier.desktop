@@ -2,11 +2,17 @@
 Name=Muon PackageKit Notifier
 Name[da]=Muon Packagekit-bekendtgørelser
 Name[de]=Muon-PackageKit-Benachrichtigung
+Name[fi]=Muonin PackageKit-ilmoitukset
+Name[gl]=Notificador PackageKit para Muon
 Name[nl]=Muon-melder van PackageKit
 Name[pt]=Notificação do PackageKit para o Muon
 Name[pt_BR]=Notificador do PackageKit para o Muon
 Name[sk]=Muon PackageKit oznamovač
 Name[sl]=Obvestilnik PackageKit za Muon
+Name[sr]=Муонов извештавач за Пакиџ‑кит
+Name[sr@ijekavian]=Муонов извјештавач за Пакиџ‑кит
+Name[sr@ijekavianlatin]=Muonov izvještavač za PackageKit
+Name[sr@latin]=Muonov izveštavač za PackageKit
 Name[sv]=Muon PackageKit underrättelse
 Name[tr]=Muon PackageKit Bildirici
 Name[uk]=Сповіщувач Muon для PackageKit
