@@ -52,6 +52,7 @@ ResourcesModel::ResourcesModel(QObject* parent, bool load)
     , m_mainwindow(0)
 {
     init(load);
+    connect(this, SIGNAL(allInitialized()), SIGNAL(fetchingChanged()));
 }
 
 void ResourcesModel::init(bool load)
@@ -106,7 +107,6 @@ ResourcesModel::~ResourcesModel()
 void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
 {
     Q_ASSERT(!m_backends.contains(backend));
-    m_initializingBackends++;
     if(!backend->isFetching()) {
         QVector<AbstractResource*> newResources = backend->allResources();
         int current = rowCount();
@@ -114,8 +114,8 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
         m_backends += backend;
         m_resources.append(newResources);
         endInsertRows();
-        m_initializingBackends--;
     } else {
+        m_initializingBackends++;
         m_backends += backend;
         m_resources.append(QVector<AbstractResource*>());
     }
@@ -237,6 +237,7 @@ void ResourcesModel::callerFetchingChanged()
     AbstractResourcesBackend* backend = qobject_cast<AbstractResourcesBackend*>(sender());
     if(backend->isFetching()) {
         cleanBackend(backend);
+        emit fetchingChanged();
     } else {
         resetBackend(backend);
     }

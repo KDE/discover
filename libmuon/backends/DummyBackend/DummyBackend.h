@@ -24,6 +24,7 @@
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
 
+class StandardBackendUpdater;
 class DummyResource;
 class DummyBackend : public AbstractResourcesBackend
 {
@@ -45,12 +46,17 @@ public:
     virtual void installApplication(AbstractResource* app);
     virtual void installApplication(AbstractResource* app, AddonList addons);
     virtual void removeApplication(AbstractResource* app);
-    virtual bool isFetching() const { return false; }
+    virtual bool isFetching() const { return m_fetching; }
+
+public slots:
+    void checkForUpdates();
+    void toggleFetching();
 
 private:
     QHash<QString, DummyResource*> m_resources;
-    AbstractBackendUpdater* m_updater;
+    StandardBackendUpdater* m_updater;
     AbstractReviewsBackend* m_reviews;
+    bool m_fetching;
 };
 
 #endif // DUMMYBACKEND_H
