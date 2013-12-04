@@ -389,7 +389,6 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
 
     if (!confirmRemoval(changes)) {
         m_backend->restoreCacheState(oldCacheState);
-        transaction->cancel();
         transaction->deleteLater();
         return;
     }
