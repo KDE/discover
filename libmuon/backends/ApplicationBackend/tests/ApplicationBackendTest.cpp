@@ -51,7 +51,7 @@ ApplicationBackendTest::ApplicationBackendTest()
 
     m_appBackend = backendByName(m, "ApplicationBackend");
     QVERIFY(m_appBackend); //TODO: test all backends
-    QTest::kWaitForSignal(m_appBackend, SIGNAL(backendReady()));
+    QTest::kWaitForSignal(m, SIGNAL(allInitialized()));
 }
 
 ApplicationBackendTest::~ApplicationBackendTest()

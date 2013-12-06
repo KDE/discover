@@ -48,12 +48,8 @@ DummyBackend::DummyBackend(QObject* parent, const QVariantList&)
         connect(res, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));
     }
     
-    QTimer::singleShot(0, this, SIGNAL(backendReady()));
+//     QTimer::singleShot(0, this, SIGNAL(fetchingChanged()));
     m_reviews = new DummyReviewsBackend(this);
-    
-//     //simulate a random reload
-//     QTimer::singleShot(1000, this, SIGNAL(reloadStarted()));
-//     QTimer::singleShot(1500, this, SIGNAL(reloadFinished()));
 }
 
 QVector<AbstractResource*> DummyBackend::allResources() const

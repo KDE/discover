@@ -106,12 +106,16 @@ AddonsWidget::AddonsWidget(QWidget *parent)
             this, SLOT(addonStateChanged(QModelIndex,QModelIndex)));
 }
 
-void AddonsWidget::clearAddons()
+void AddonsWidget::fetchingChanged()
 {
-    m_resource = nullptr;
-    m_changedAddons.clear();
-    m_availableAddons.clear();
-    m_addonsModel->clear();
+    if(m_resource->backend()->isFetching()) {
+        m_resource = nullptr;
+        m_changedAddons.clear();
+        m_availableAddons.clear();
+        m_addonsModel->clear();
+    } else {
+        populateModel();
+    }
 }
 
 void AddonsWidget::setResource(AbstractResource *resource)
@@ -119,7 +123,7 @@ void AddonsWidget::setResource(AbstractResource *resource)
     m_resource = resource;
 
     // Clear addons when a reload starts
-    connect(m_resource->backend(), SIGNAL(reloadStarted()), this, SLOT(clearAddons()));
+    connect(m_resource->backend(), SIGNAL(fetchingChanged()), this, SLOT(fetchingChanged()));
 
     populateModel();
 }

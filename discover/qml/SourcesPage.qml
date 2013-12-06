@@ -54,7 +54,7 @@ Page {
         }
         
         content: Item {
-            height: 200
+            height: info.childrenRect.height
             width: 500
             
             Column {
