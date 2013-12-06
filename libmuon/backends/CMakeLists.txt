@@ -3,7 +3,7 @@ if(AKABEICLIENT_FOUND)
 endif(AKABEICLIENT_FOUND)
 
 if(LIBATTICA_FOUND)
-#    add_subdirectory(KNSBackend)
+    add_subdirectory(KNSBackend)
 endif(LIBATTICA_FOUND)
 
 if(QAPT_FOUND)
@@ -11,7 +11,7 @@ if(QAPT_FOUND)
 endif(QAPT_FOUND)
 
 if(BODEGA_FOUND)
-#    add_subdirectory(BodegaBackend)
+    add_subdirectory(BodegaBackend)
 endif(BODEGA_FOUND)
 
 OPTION(BUILD_DummyBackend "Build the DummyBackend" "OFF")

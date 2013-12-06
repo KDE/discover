@@ -31,6 +31,7 @@ class QTimer;
 class AkabeiNotifier : public AbstractKDEDModule
 {
     Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface", "org.kde.muon.akabei")
 public:
     AkabeiNotifier(QObject* parent, const QVariantList &);
     ~AkabeiNotifier();

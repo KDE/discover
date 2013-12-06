@@ -122,7 +122,7 @@ void AbstractKDEDModule::setSystemUpToDate(bool systemUpToDate, int updateCount,
     d->systemUpToDate = systemUpToDate;
     d->updateType = updateType;
     if (!systemUpToDate) {
-        //emit systemUpdateNeeded();//FIXME: I had to disable this because of a crash with dbus?
+        emit systemUpdateNeeded();
         //TODO: Better message strings
         QString message;
         QString icon;
