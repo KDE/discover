@@ -72,6 +72,8 @@ public:
     void removeFromQueue(AkabeiTransaction * trans);
     
     bool isTransactionRunning() const;
+    
+    virtual bool isFetching() const { return m_isFetching; }
 
 public slots:
     void statusChanged(Akabei::Backend::Status);
@@ -83,6 +85,7 @@ private:
     QQueue<AkabeiTransaction*> m_transactionQueue;
     AkabeiUpdater * m_updater;
     QHash<QString, ApplicationData> m_appdata;
+    bool m_isFetching;
 };
 
 #endif

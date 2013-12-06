@@ -37,7 +37,8 @@
 K_PLUGIN_FACTORY(MuonAkabeiBackendFactory, registerPlugin<AkabeiBackend>(); )
 K_EXPORT_PLUGIN(MuonAkabeiBackendFactory(KAboutData("muon-akabeibackend","muon-akabeibackend",ki18n("Akabei Backend"),"0.1",ki18n("Chakra-Applications in your system"), KAboutData::License_GPL)))
 
-AkabeiBackend::AkabeiBackend(QObject* parent, const QVariantList& ) : AbstractResourcesBackend(parent), m_updater(new AkabeiUpdater(this))
+AkabeiBackend::AkabeiBackend(QObject* parent, const QVariantList& )
+  : AbstractResourcesBackend(parent), m_updater(new AkabeiUpdater(this)), m_isFetching(false)
 {
     m_transactionQueue.clear();
     kDebug() << "CONSTRUCTED";
@@ -60,13 +61,14 @@ void AkabeiBackend::statusChanged(Akabei::Backend::Status status)
 {
     kDebug() << "Status changed to" << status;
     if (status == Akabei::Backend::StatusReady && m_packages.isEmpty()) {
-        emit backendReady();
         reload();
     }
 }
 
 void AkabeiBackend::reload()
 {
+    m_isFetching = true;
+    emit fetchingChanged();
     m_appdata = AppstreamUtils::fetchAppData("/usr/share/app-info/appdata.xml");
     kDebug() << "get packages";
     connect(Akabei::Backend::instance(), SIGNAL(queryPackagesCompleted(QUuid,QList<Akabei::Package*>)), SLOT(queryComplete(QUuid,QList<Akabei::Package*>)));
@@ -77,7 +79,6 @@ void AkabeiBackend::queryComplete(QUuid,QList<Akabei::Package*> packages)
 {
     disconnect(Akabei::Backend::instance(), SIGNAL(queryPackagesCompleted(QUuid,QList<Akabei::Package*>)), this, SLOT(queryComplete(QUuid,QList<Akabei::Package*>)));
     kDebug() << "Got" << packages.count() << "packages";
-    emit reloadStarted();
     QHash<QString, AbstractResource*> pkgs;
     foreach (Akabei::Package * pkg, packages) {
         if (pkgs.contains(pkg->name())) {
@@ -96,7 +97,8 @@ void AkabeiBackend::queryComplete(QUuid,QList<Akabei::Package*> packages)
         }
     }
     m_packages = pkgs;
-    emit reloadFinished();
+    m_isFetching = false;
+    emit fetchingChanged();
     if (m_transactionQueue.count() >= 1) {
         AkabeiTransaction * trans = m_transactionQueue.first();
         trans->start();

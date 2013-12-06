@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Muon Akabei Notifier
+Type=Service
+X-KDE-ServiceTypes=KDEDModule
+X-KDE-Library=muonakabeinotifier
+X-KDE-FactoryName=muonakabeinotifier
+X-KDE-DBus-ModuleName=muonakabeinotifier
+X-KDE-Kded-autoload=true
+X-KDE-Kded-phase=2
