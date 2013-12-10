@@ -131,6 +131,8 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
 
     if(m_initializingBackends==0)
         emit allInitialized();
+    else
+        emit fetchingChanged();
 }
 
 AbstractResource* ResourcesModel::resourceAt(int row) const
