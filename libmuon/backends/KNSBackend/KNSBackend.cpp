@@ -64,7 +64,7 @@ void KNSBackend::initManager(KConfigGroup& group)
 
 KNSBackend::KNSBackend(QObject* parent, const QVariantList& args)
     : AbstractResourcesBackend(parent)
-    , m_fetching(true)
+    , m_fetching(false)
     , m_isValid(true)
     , m_page(0)
     , m_reviews(new KNSReviews(this))
@@ -123,6 +123,7 @@ void KNSBackend::startFetchingCategories()
     if (m_atticaManager->providers().isEmpty())
         return;
 
+    setFetching(true);
     m_provider = m_atticaManager->providers().first();
 
     Attica::ListJob<Attica::Category>* job = m_provider.requestCategories();
@@ -134,6 +135,7 @@ void KNSBackend::categoriesLoaded(Attica::BaseJob* job)
 {
     if(job->metadata().error() != Attica::Metadata::NoError) {
         kDebug() << "Network error";
+        setFetching(false);
         return;
     }
     Attica::ListJob<Attica::Category>* j = static_cast<Attica::ListJob<Attica::Category>*>(job);
