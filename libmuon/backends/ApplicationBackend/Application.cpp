@@ -154,7 +154,7 @@ QString Application::icon() const
 
 QStringList Application::mimetypes() const
 {
-    return getField("MimeType").split(';');
+    return QString(getField("MimeType")).split(';');
 }
 
 QString Application::menuPath()
@@ -247,14 +247,14 @@ QVector<QPair<QString, QString> > Application::locateApplication(const QString &
     return ret;
 }
 
-QString Application::categories()
+QStringList Application::categories()
 {
-    QString categories = getField("Categories");
+    QStringList categories = QString(getField("Categories")).split(',', QString::SkipEmptyParts);
 
     if (categories.isEmpty()) {
         // extras.ubuntu.com packages can have this field
         if (m_isExtrasApp)
-            categories = package()->controlField(QLatin1String("Category"));
+            categories += package()->controlField(QLatin1String("Category"));
     }
     return categories;
 }

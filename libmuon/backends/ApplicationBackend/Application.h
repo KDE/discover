@@ -53,7 +53,7 @@ public:
     QString icon() const;
     QStringList mimetypes() const;
     QString menuPath();
-    QString categories();
+    QStringList categories();
     QString license();
     QUrl screenshotUrl();
     QUrl thumbnailUrl();
