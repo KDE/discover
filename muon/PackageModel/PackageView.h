@@ -39,6 +39,7 @@ public Q_SLOTS:
 signals:
     void currentPackageChanged(const QModelIndex &current);
     void selectionEmpty();
+    void selectionMulti();
 };
 
 #endif

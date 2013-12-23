@@ -29,7 +29,7 @@ include_directories(${KDE4_INCLUDES} ${QT_INCLUDES} ${QAPT_INCLUDE_DIR}
 
 add_subdirectory(libmuon)
 if(QAPT_FOUND)
-	add_subdirectory(libmuonapt)
+    add_subdirectory(libmuonapt)
     add_subdirectory(muon)
     add_subdirectory(installer)
     add_subdirectory(kded)
