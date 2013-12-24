@@ -32,9 +32,6 @@
 
 #include <LibQApt/Backend>
 
-#include <qjson/parser.h>
-#include <qjson/serializer.h>
-
 #include <QtOAuth/interface.h>
 
 #include <Application.h>
@@ -135,7 +132,7 @@ void ReviewsBackend::loadRatingsFromFile()
     QString ratingsCache = KStandardDirs::locateLocal("data", "libmuon/ratings.txt");
     QIODevice* dev = KFilterDev::deviceForFile(ratingsCache, "application/x-gzip");
 
-    QJson::Parser parser;
+//     QJson::Parser parser;//TODO port to QJsonDocument
     bool ok = false;
     QVariant ratings = parser.parse(dev, &ok);
 
@@ -328,7 +325,7 @@ void ReviewsBackend::postInformation(const QString& path, const QVariantMap& dat
     KUrl url(m_serverBase, path);
     url.setScheme("https");
     
-    KIO::StoredTransferJob* job = KIO::storedHttpPost(QJson::Serializer().serialize(data), url, KIO::Overwrite | KIO::HideProgressInfo);
+    KIO::StoredTransferJob* job = KIO::storedHttpPost(QJson::Serializer().serialize(data), url, KIO::Overwrite | KIO::HideProgressInfo); //TODO port to QJsonDocument
     job->addMetaData("content-type", "Content-Type: application/json" );
     job->addMetaData("customHTTPHeader", "Authorization: " + authorization(m_oauthInterface, url, m_loginBackend));
     connect(job, SIGNAL(result(KJob*)), this, SLOT(informationPosted(KJob*)));

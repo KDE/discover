@@ -23,7 +23,7 @@
 // Qt includes
 #include <QtGui/QGridLayout>
 #include <QtGui/QGroupBox>
-#include <QtGui/QLabel>
+#include <QtWidgets/QLabel>
 #include <QtGui/QScrollArea>
 
 // KDE includes

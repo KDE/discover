@@ -23,9 +23,9 @@
 // Qt includes
 #include <QtCore/QStringBuilder>
 #include <QtGui/QCheckBox>
-#include <QtGui/QLabel>
-#include <QtGui/QTreeView>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTreeView>
+#include <QtWidgets/QVBoxLayout>
 
 // KDE includes
 #include <KComboBox>

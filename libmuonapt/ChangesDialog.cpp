@@ -21,10 +21,10 @@
 #include "ChangesDialog.h"
 
 // Qt includes
-#include <QtGui/QLabel>
-#include <QtGui/QPushButton>
-#include <QtGui/QTreeView>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QTreeView>
+#include <QtWidgets/QVBoxLayout>
 
 // KDE includes
 #include <KIcon>

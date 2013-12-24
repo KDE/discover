@@ -21,7 +21,7 @@
 #ifndef ABSTRACTVIEWBASE_H
 #define ABSTRACTVIEWBASE_H
 
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 
 class QVBoxLayout;
 

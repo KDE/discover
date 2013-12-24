@@ -19,7 +19,7 @@
 
 #include "MuonAptDeclarativePlugin.h"
 #include "OriginsBackend.h"
-#include <qdeclarative.h>
+#include <qqml.h>
 
 void MuonAptDeclarativePlugin::registerTypes(const char* uri)
 {

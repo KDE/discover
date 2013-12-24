@@ -24,7 +24,7 @@
 #include <resources/ResourcesModel.h>
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/AbstractResource.h>
-#include <KDebug>
+#include <QDebug>
 
 ReviewsModel::ReviewsModel(QObject* parent)
     : QAbstractListModel(parent)

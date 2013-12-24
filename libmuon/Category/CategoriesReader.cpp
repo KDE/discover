@@ -22,7 +22,6 @@
 #include "Category.h"
 #include <QDomNode>
 #include <QFile>
-#include <KDebug>
 #include <KGlobal>
 #include <KStandardDirs>
 
@@ -41,7 +40,7 @@ QList<Category*> CategoriesReader::loadCategoriesFile(const QString& path)
     int line;
     bool correct = menuDocument.setContent(&menuFile, &error, &line);
     if(!correct)
-        kWarning() << "error while parsing the categories file:" << error << " at: " << path << ":" << line;
+        qWarning() << "error while parsing the categories file:" << error << " at: " << path << ":" << line;
 
     QDomElement root = menuDocument.documentElement();
 

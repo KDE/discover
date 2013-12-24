@@ -21,10 +21,10 @@
 #include "ReviewsWidget.h"
 
 #include <QtCore/QStringBuilder>
-#include <QtGui/QLabel>
-#include <QtGui/QPushButton>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtGui/QHBoxLayout>
-#include <QtGui/QToolButton>
+#include <QtWidgets/QToolButton>
 
 #include <KDialog>
 #include <KLocale>

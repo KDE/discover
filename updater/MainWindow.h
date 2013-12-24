@@ -24,12 +24,8 @@
 // Own includes
 #include "../libmuon/MuonMainWindow.h"
 
-class ResourcesUpdatesModel;
-class KAction;
-class KDialog;
 class KMessageWidget;
-class KProcess;
-class ChangelogWidget;
+class ResourcesUpdatesModel;
 class ProgressWidget;
 class UpdaterSettingsDialog;
 class UpdaterWidget;
@@ -47,7 +43,7 @@ private:
     UpdaterWidget *m_updaterWidget;
     UpdaterSettingsDialog *m_settingsDialog;
     KMessageWidget *m_powerMessage;
-    KAction *m_applyAction;
+    QAction *m_applyAction;
     QMenu* m_moreMenu;
     QMenu* m_advancedMenu;
 

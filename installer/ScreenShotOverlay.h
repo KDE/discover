@@ -21,7 +21,7 @@
 #define SCREENSHOTOVERLAY_H
 
 #include <QtCore/QPointer>
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 #include <QtGui/QPixmap>
 
 class QLabel;

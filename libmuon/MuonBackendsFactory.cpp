@@ -22,11 +22,18 @@
 #include "resources/AbstractResourcesBackend.h"
 #include "resources/ResourcesModel.h"
 #include <KServiceTypeTrader>
-#include <KDebug>
-#include <KCmdLineArgs>
 #include <QPluginLoader>
 #include <QCoreApplication>
+#include <QDebug>
+#include <QSet>
 #include <kplugininfo.h>
+
+Q_GLOBAL_STATIC(QSet<QString>, s_requestedBackends)
+
+void MuonBackendsFactory::setRequestedBackends(const QStringList& backends)
+{
+    *s_requestedBackends = backends.toSet();
+}
 
 MuonBackendsFactory::MuonBackendsFactory()
 {}
@@ -130,8 +137,5 @@ AbstractResourcesBackend* MuonBackendsFactory::backendForPlugin(const KPluginInf
 
 QSet<QString> MuonBackendsFactory::fetchBackendsWhitelist() const
 {
-    QSet<QString> whitelist;
-    if(KCmdLineArgs::parsedArgs() && KCmdLineArgs::parsedArgs()->isSet("backends"))
-        whitelist = KCmdLineArgs::parsedArgs()->getOption("backends").split(',').toSet();
-    return whitelist;
+    return *s_requestedBackends;
 }

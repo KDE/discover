@@ -17,70 +17,67 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include <KApplication>
-#include <QWidget>
+#include <QApplication>
 #include <KAboutData>
-#include <KCmdLineArgs>
-#include <KUniqueApplication>
-#include <KStandardDirs>
+#include <kdbusservice.h>
+#include <QCommandLineParser>
 #include "MuonDiscoverMainWindow.h"
 #include <MuonBackendsFactory.h>
 
-static const char description[] =
-    I18N_NOOP("An application discoverer");
-
+static const char description[] = I18N_NOOP("An application discoverer");
 static const char version[] = "2.0.65";
 
 int main(int argc, char** argv)
 {
-    KAboutData about("muon-discover", "muon-discover", ki18n("Muon Discover"), version, ki18n(description),
-                     KAboutData::License_GPL, ki18n("©2010-2012 Jonathan Thomas"), KLocalizedString(), 0);
-    about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
-    about.addAuthor(ki18n("Aleix Pol Gonzalez"), KLocalizedString(), "aleixpol@blue-systems.com");
+    QApplication app(argc, argv);
+    KAboutData about("muon-discover", "muon-discover", i18n("Muon Discover"), version, i18n(description),
+                     KAboutData::License_GPL, i18n("©2010-2012 Jonathan Thomas"), QString(), 0);
+    about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
+    about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), "aleixpol@blue-systems.com");
     about.setProgramIconName("muondiscover");
     about.setProductName("muon/discover");
+    app.setApplicationDisplayName("Muon Discover");
+    app.setApplicationName("muon-discover");
+    app.setApplicationVersion(version);
 
-    KCmdLineArgs::init(argc, argv, &about);
-    KCmdLineOptions options;
-    options.add("application <name>", ki18n("Directly open the specified application by its package name."));
-    options.add("mime <name>", ki18n("Open with a program that can deal with the given mimetype."));
-    options.add("category <name>", ki18n("Display a list of entries with a category."));
-    options.add("mode <name>", ki18n("Open Muon Discover in a said mode. Modes correspond to the toolbar buttons."));
-    options.add("listmodes", ki18n("List all the available modes."));
-    options.add("listbackends", ki18n("List all the available backends."));
-    options.add("backends <names>", ki18n("List all the backends we'll want to have loaded, separated by coma ','."));
-    KCmdLineArgs::addCmdLineOptions( options );
-
-    if (!KUniqueApplication::start()) {
-        fprintf(stderr, "Software Discoverer is already running!\n");
-        return 0;
-    }
-
-    KUniqueApplication app;
-    app.disableSessionManagement();
-    KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
-    
+//     KDBusService service(KDBusService::Unique);
     MuonDiscoverMainWindow *mainWindow = new MuonDiscoverMainWindow;
-    if(args->isSet("application"))
-        mainWindow->openApplication(args->getOption("application"));
-    else if(args->isSet("mime"))
-        mainWindow->openMimeType(args->getOption("mime"));
-    else if(args->isSet("category"))
-        mainWindow->openCategory(args->getOption("category"));
-    else if(args->isSet("mode"))
-        mainWindow->openMode(args->getOption("mode").toLocal8Bit());
-    else if(args->isSet("listmodes")) {
-        fprintf(stdout, "%s", qPrintable(i18n("Available modes:\n")));
-        foreach(const QString& mode, mainWindow->modes())
-            fprintf(stdout, " * %s\n", qPrintable(mode));
-        return 0;
-    } else if(args->isSet("listbackends")) {
-        fprintf(stdout, "%s", qPrintable(i18n("Available backends:\n")));
-        MuonBackendsFactory f;
-        foreach(const QString& name, f.allBackendNames())
-            fprintf(stdout, " * %s\n", qPrintable(name));
-        return 0;
+    {
+        QCommandLineParser parser;
+        parser.addOption(QCommandLineOption("application", i18n("Directly open the specified application by its package name."), "name"));
+        parser.addOption(QCommandLineOption("mime", i18n("Open with a program that can deal with the given mimetype."), "name"));
+        parser.addOption(QCommandLineOption("category", i18n("Display a list of entries with a category."), "name"));
+        parser.addOption(QCommandLineOption("mode", i18n("Open Muon Discover in a said mode. Modes correspond to the toolbar buttons.")));
+        parser.addOption(QCommandLineOption("listmodes", i18n("List all the available modes."), "name"));
+        parser.addOption(QCommandLineOption("listbackends", i18n("List all the available backends.")));
+        parser.addOption(QCommandLineOption("backends", i18n("List all the backends we'll want to have loaded, separated by coma ','."), "names"));
+        about.setupCommandLine(&parser);
+        parser.process(app);
+        about.processCommandLine(&parser);
+        MuonBackendsFactory::setRequestedBackends(parser.value("backends").split(",", QString::SkipEmptyParts));
+
+        if(parser.isSet("application"))
+            mainWindow->openApplication(parser.value("application"));
+        else if(parser.isSet("mime"))
+            mainWindow->openMimeType(parser.value("mime"));
+        else if(parser.isSet("category"))
+            mainWindow->openCategory(parser.value("category"));
+        else if(parser.isSet("mode"))
+            mainWindow->openMode(parser.value("mode").toLocal8Bit());
+        else if(parser.isSet("listmodes")) {
+            fprintf(stdout, "%s", qPrintable(i18n("Available modes:\n")));
+            foreach(const QString& mode, mainWindow->modes())
+                fprintf(stdout, " * %s\n", qPrintable(mode));
+            return 0;
+        } else if(parser.isSet("listbackends")) {
+            fprintf(stdout, "%s", qPrintable(i18n("Available backends:\n")));
+            MuonBackendsFactory f;
+            foreach(const QString& name, f.allBackendNames())
+                fprintf(stdout, " * %s\n", qPrintable(name));
+            return 0;
+        }
     }
+
     mainWindow->show();
 
     return app.exec();

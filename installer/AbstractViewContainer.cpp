@@ -21,7 +21,7 @@
 #include "AbstractViewContainer.h"
 
 // Qt includes
-#include <QtGui/QStackedWidget>
+#include <QtWidgets/QStackedWidget>
 
 #include "AbstractViewBase.h"
 #include "BreadcrumbWidget/BreadcrumbWidget.h"

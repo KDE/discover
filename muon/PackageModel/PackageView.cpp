@@ -20,7 +20,7 @@
 
 #include "PackageView.h"
 
-#include <QtGui/QHeaderView>
+#include <QtWidgets/QHeaderView>
 
 PackageView::PackageView(QWidget *parent)
     : QTreeView(parent)

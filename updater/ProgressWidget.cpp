@@ -25,16 +25,14 @@
 #include <QtCore/QPropertyAnimation>
 #include <QtCore/QStringBuilder>
 #include <QDebug>
-#include <QtGui/QLabel>
-#include <QtGui/QProgressBar>
-#include <QtGui/QPushButton>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QProgressBar>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QVBoxLayout>
 
 // KDE includes
-#include <KGlobal>
-#include <KIcon>
-#include <KLocale>
 #include <KMessageBox>
+#include <klocalizedstring.h>
 
 #include <resources/AbstractBackendUpdater.h>
 #include <resources/ResourcesUpdatesModel.h>
@@ -116,7 +114,7 @@ void ProgressWidget::downloadSpeedChanged()
     quint64 speed = m_updater->downloadSpeed();
     if(speed>0) {
         QString downloadSpeed = i18nc("@label Download rate", "Download rate: %1/s",
-                                KGlobal::locale()->formatByteSize(speed));
+                                /*KGlobal::locale()->formatByteSize*/QString::number(speed)); //FIXME need an alternative
         m_ui->downloadSpeed->setText(downloadSpeed);
         m_ui->downloadSpeed->show();
     } else {

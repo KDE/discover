@@ -26,11 +26,11 @@
 #include <QtCore/QPropertyAnimation>
 #include <QtCore/QStringBuilder>
 #include <QtCore/QTextStream>
-#include <QtGui/QToolButton>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QApplication>
 
 // KDE includes
-#include <KGlobal>
 #include <KIO/Job>
 #include <KJob>
 #include <KLocale>
@@ -38,7 +38,6 @@
 #include <KPixmapSequenceOverlayPainter>
 #include <KTemporaryFile>
 #include <KTextBrowser>
-#include <KDebug>
 
 ChangelogWidget::ChangelogWidget(QWidget *parent)
         : QWidget(parent)
@@ -73,7 +72,7 @@ ChangelogWidget::ChangelogWidget(QWidget *parent)
     viewport->setPalette(palette);
 
     m_busyWidget = new KPixmapSequenceOverlayPainter(this);
-    m_busyWidget->setSequence(KPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
+    m_busyWidget->setSequence(KPixmapSequence("process-working", QFontMetrics(qApp->font()).xHeight()*4));
     m_busyWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     m_busyWidget->setWidget(this);
 

@@ -24,7 +24,7 @@
 #include <QDebug>
 #include <QDir>
 #include <QMainWindow>
-#include <qdeclarative.h>
+#include <qqml.h>
 #include <LibQApt/Backend>
 #include <LibQApt/Config>
 #include <KMessageBox>
@@ -152,9 +152,9 @@ bool Source::enabled() const
     return ret;
 }
 
-QDeclarativeListProperty<Entry> Source::entries()
+QQuickListProperty<Entry> Source::entries()
 {
-    return QDeclarativeListProperty<Entry>(this, m_entries);
+    return QQuickListProperty<Entry>(this, m_entries);
 }
 
 QString Source::name() const

@@ -22,15 +22,12 @@
 
 // Qt includes
 #include <QtCore/QMetaProperty>
-
-// KDE includes
-#include <KGlobal>
-#include <KLocale>
+#include <klocalizedstring.h>
 
 // Own includes
 #include "resources/AbstractResource.h"
 
-K_GLOBAL_STATIC(TransactionModel, globalTransactionModel)
+Q_GLOBAL_STATIC(TransactionModel, globalTransactionModel)
 
 TransactionModel *TransactionModel::global()
 {

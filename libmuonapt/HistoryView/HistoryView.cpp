@@ -21,10 +21,10 @@
 #include "HistoryView.h"
 
 #include <QtCore/QTimer>
-#include <QtGui/QLabel>
+#include <QtWidgets/QLabel>
 #include <QtGui/QListView>
-#include <QtGui/QTreeView>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QTreeView>
+#include <QtWidgets/QVBoxLayout>
 #include <QStandardItemModel>
 
 #include <KComboBox>

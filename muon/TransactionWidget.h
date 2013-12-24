@@ -21,7 +21,7 @@
 #ifndef TRANSACTIONWIDGET_H
 #define TRANSACTIONWIDGET_H
 
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 
 #include <LibQApt/Globals>
 

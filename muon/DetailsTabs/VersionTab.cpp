@@ -22,9 +22,9 @@
 
 // Qt includes
 #include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
+#include <QtWidgets/QLabel>
 #include <QtGui/QListView>
-#include <QtGui/QPushButton>
+#include <QtWidgets/QPushButton>
 #include <QStandardItemModel>
 
 // KDE includes

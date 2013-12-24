@@ -21,7 +21,7 @@
 #ifndef PACKAGEVIEW_H
 #define PACKAGEVIEW_H
 
-#include <QtGui/QTreeView>
+#include <QtWidgets/QTreeView>
 
 class PackageView : public QTreeView
 {

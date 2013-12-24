@@ -20,11 +20,10 @@
 #ifndef DISCOVERACTION_H
 #define DISCOVERACTION_H
 
-#include <KAction>
-#include <qdeclarative.h>
+#include <QAction>
 
 class KXmlGuiWindow;
-class DiscoverAction : public KAction
+class DiscoverAction : public QAction
 {
     Q_OBJECT
     Q_PROPERTY(QString iconName READ iconName WRITE setIconName)

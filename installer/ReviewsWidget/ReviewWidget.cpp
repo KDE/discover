@@ -22,7 +22,7 @@
 
 #include <QtCore/QStringBuilder>
 #include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
+#include <QtWidgets/QLabel>
 
 #include <KGlobal>
 #include <KLocale>

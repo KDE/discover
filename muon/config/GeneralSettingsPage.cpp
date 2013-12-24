@@ -22,7 +22,7 @@
 
 #include <QtGui/QCheckBox>
 #include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
+#include <QtWidgets/QLabel>
 #include <QtGui/QSpinBox>
 #include <QtGui/QFormLayout>
 

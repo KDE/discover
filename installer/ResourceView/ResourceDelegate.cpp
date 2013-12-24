@@ -25,8 +25,8 @@
 #include <QApplication>
 #include <QtGui/QAbstractItemView>
 #include <QtGui/QPainter>
-#include <QtGui/QPushButton>
-#include <QtGui/QTreeView>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QTreeView>
 
 // KDE includes
 #include <KApplication>

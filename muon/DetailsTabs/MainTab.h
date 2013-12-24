@@ -33,7 +33,6 @@ class QPushButton;
 class QLabel;
 class QToolButton;
 
-class KAction;
 class KMenu;
 class KTextBrowser;
 

@@ -22,7 +22,7 @@
 #ifndef RESOURCESPROXYMODEL_H
 #define RESOURCESPROXYMODEL_H
 
-#include <QtGui/QSortFilterProxyModel>
+#include <QtCore/QSortFilterProxyModel>
 #include <QtCore/QString>
 #include <QStringList>
 

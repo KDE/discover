@@ -26,12 +26,10 @@
 #include <QtCore/QTimer>
 #include <QtGui/QAbstractItemView>
 #include <QtGui/QSplitter>
-#include <QtGui/QStackedWidget>
+#include <QtWidgets/QStackedWidget>
 
 // KDE includes
-#include <KAction>
 #include <KActionCollection>
-#include <KIcon>
 #include <KMessageBox>
 #include <KMessageWidget>
 #include <KPixmapSequence>

@@ -21,7 +21,6 @@
 #include "ResourcesModel.h"
 
 #include <KGlobal>
-#include <KDebug>
 
 #include "AbstractResource.h"
 #include "resources/AbstractResourcesBackend.h"
@@ -35,7 +34,7 @@
 #include <QCoreApplication>
 #include <QThread>
 
-static const KCatalogLoader loader("libmuon");
+// static const KCatalogLoader loader("libmuon");//FIXME port
 
 ResourcesModel *ResourcesModel::s_self = nullptr;
 
@@ -347,7 +346,7 @@ void ResourcesModel::registerAllBackends()
     MuonBackendsFactory f;
     QList<AbstractResourcesBackend*> backends = f.allBackends();
     if(m_initializingBackends==0 && backends.isEmpty()) {
-        kWarning() << "Couldn't find any backends";
+        qWarning() << "Couldn't find any backends";
         emit allInitialized();
     } else {
         foreach(AbstractResourcesBackend* b, backends) {

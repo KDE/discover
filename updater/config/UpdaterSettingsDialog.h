@@ -21,7 +21,7 @@
 #ifndef UPDATERSETTINGSDIALOG_H
 #define UPDATERSETTINGSDIALOG_H
 
-#include <KPageDialog>
+#include <kpagedialog.h>
 
 class SettingsPageBase;
 
@@ -31,9 +31,6 @@ class UpdaterSettingsDialog : public KPageDialog
 public:
     explicit UpdaterSettingsDialog(QWidget* parent);
     virtual ~UpdaterSettingsDialog();
-
-protected slots:
-    virtual void slotButtonClicked(int button);
 
 private Q_SLOTS:
     void enableApply();

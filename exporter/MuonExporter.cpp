@@ -21,10 +21,11 @@
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/ResourcesModel.h>
 #include <resources/AbstractResource.h>
-#include <qjson/serializer.h>
 #include <QFile>
 #include <QDebug>
 #include <QTimer>
+#include <QMetaProperty>
+#include <qjsondocument.h>
 
 MuonExporter::MuonExporter()
     : QObject(0)
@@ -48,7 +49,7 @@ void MuonExporter::allBackendsInitialized()
     connect(ResourcesModel::global(), SIGNAL(rowsInserted(QModelIndex,int,int)), m_startExportingTimer, SLOT(start()));
 }
 
-void MuonExporter::setExportPath(const KUrl& url)
+void MuonExporter::setExportPath(const QUrl& url)
 {
     m_path = url;
 }
@@ -83,12 +84,17 @@ void MuonExporter::exportModel()
         data += itemDataToMap(res, m_exculdedProperties);
     }
     qDebug() << "found items: " << data.count();
+    QJsonDocument doc = QJsonDocument::fromVariant(data);
+    if(doc.isNull()) {
+        qWarning() << "Could not completely export the data to " << m_path;
+        return;
+    }
+
     QFile f(m_path.toLocalFile());
     if(f.open(QIODevice::WriteOnly|QIODevice::Text)) {
         bool ok=true;
-        QJson::Serializer s;
-        s.serialize(data, &f, &ok);
-        if(!ok)
+        int w = f.write(doc.toJson(QJsonDocument::Indented));
+        if(w<=0)
             qWarning() << "Could not completely export the data to " << m_path;
     } else {
         qWarning() << "Could not write to " << m_path;

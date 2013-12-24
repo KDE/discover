@@ -26,8 +26,6 @@
 #include <QtGui/QPainter>
 
 // KDE includes
-#include <KDebug>
-#include <KIcon>
 #include <KIconLoader>
 
 #define SPACING 4

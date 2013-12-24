@@ -22,13 +22,12 @@
 
 // Qt includes
 #include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QPushButton>
-#include <QtGui/QToolButton>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QVBoxLayout>
 
 // KDE includes
-#include <KAction>
 #include <KDebug>
 #include <KDialog>
 #include <KHBox>

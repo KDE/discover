@@ -23,7 +23,7 @@
 
 #include <QtCore/QList>
 #include <QtCore/QPair>
-#include <QtCore/QString>
+#include <QtCore/QObject>
 
 #include "libmuonprivate_export.h"
 

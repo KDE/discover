@@ -21,8 +21,6 @@
 #ifndef NOTIFYSETTINGSPAGE_H
 #define NOTIFYSETTINGSPAGE_H
 
-#include <QtGui/QWidget>
-
 #include "SettingsPageBase.h"
 
 #include "../libmuonprivate_export.h"

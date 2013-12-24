@@ -34,7 +34,6 @@ class QLabel;
 class QTimer;
 class QVBoxLayout;
 
-class KAction;
 class KLineEdit;
 class KPixmapSequenceOverlayPainter;
 

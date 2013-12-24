@@ -19,11 +19,14 @@
  ***************************************************************************/
 
 #include "MainWindow.h"
+#include <MuonBackendsFactory.h>
 
-#include <KUniqueApplication>
+#include <QApplication>
+#include <QCommandLineParser>
+#include <QCommandLineOption>
 #include <KAboutData>
-#include <KCmdLineArgs>
-#include <KStandardDirs>
+#include <klocalizedstring.h>
+#include <kdbusservice.h>
 
 #include <stdio.h>
 
@@ -34,24 +37,26 @@ static const char version[] = "2.0.65";
 
 int main(int argc, char **argv)
 {
-    KAboutData about("muon-updater", "muon-updater", ki18n("Muon Update Manager"), version, ki18n(description),
-                     KAboutData::License_GPL, ki18n("©2010-2013 Jonathan Thomas"), KLocalizedString(), 0);
-    about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
+    QApplication app(argc, argv);
+    KAboutData about("muon-updater", "muon-updater", i18n("Muon Update Manager"), version, i18n(description),
+                     KAboutData::License_GPL, i18n("©2010-2013 Jonathan Thomas"), QString(), 0);
+    about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
     about.setProgramIconName("system-software-update");
     about.setProductName("muon/updater");
 
-    KCmdLineArgs::init(argc, argv, &about);
-    KCmdLineOptions options;
-    options.add("backends <names>", ki18n("List all the backends we'll want to have loaded, separated by coma ','."));
-    KCmdLineArgs::addCmdLineOptions( options );
-    if (!KUniqueApplication::start()) {
-        fprintf(stderr, "Update Manager is already running!\n");
-        return 0;
+    {
+        QCommandLineParser parser;
+        parser.addOption(QCommandLineOption("backends", i18n("List all the backends we'll want to have loaded, separated by coma ','."), "names"));
+        about.setupCommandLine(&parser);
+        parser.process(app);
+        about.processCommandLine(&parser);
+        MuonBackendsFactory::setRequestedBackends(parser.value("backends").split(",", QString::SkipEmptyParts));
+
     }
 
-    KUniqueApplication app;
-    app.disableSessionManagement();
-    KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
+    KDBusService service(KDBusService::Unique);
+//     app.disableSessionManagement();
+
 
     MainWindow *mainWindow = new MainWindow;
     mainWindow->show();

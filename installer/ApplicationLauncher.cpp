@@ -23,11 +23,11 @@
 #include "LaunchListModel.h"
 
 #include <QtCore/QStringBuilder>
-#include <QtGui/QLabel>
+#include <QtWidgets/QLabel>
 #include <QtGui/QListView>
-#include <QtGui/QPushButton>
+#include <QtWidgets/QPushButton>
 #include <QtGui/QStandardItemModel>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QVBoxLayout>
 
 #include <KLocale>
 #include <KStandardGuiItem>

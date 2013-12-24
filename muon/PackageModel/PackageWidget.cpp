@@ -25,13 +25,12 @@
 #include <QtConcurrentRun>
 #include <QApplication>
 #include <QtCore/QTimer>
-#include <QtGui/QHeaderView>
-#include <QtGui/QPushButton>
-#include <QtGui/QLabel>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QLabel>
 #include <QtGui/QSplitter>
 
 // KDE includes
-#include <KAction>
 #include <KComboBox>
 #include <KHBox>
 #include <KIcon>

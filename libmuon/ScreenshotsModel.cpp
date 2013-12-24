@@ -20,8 +20,8 @@
 
 #include "ScreenshotsModel.h"
 #include <resources/AbstractResource.h>
+#include <QDebug>
 // #include <tests/modeltest.h>
-#include <KDebug>
 
 ScreenshotsModel::ScreenshotsModel(QObject* parent)
     : QAbstractListModel(parent)
@@ -49,7 +49,7 @@ void ScreenshotsModel::setResource(AbstractResource* res)
                         SLOT(screenshotsFetched(QList<QUrl>,QList<QUrl>)));
         res->fetchScreenshots();
     } else
-        kDebug() << "empty resource!";
+        qWarning() << "empty resource!";
 }
 
 AbstractResource* ScreenshotsModel::resource() const

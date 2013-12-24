@@ -21,7 +21,7 @@
 #ifndef PROGRESSWIDGET_H
 #define PROGRESSWIDGET_H
 
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 
 class ResourcesUpdatesModel;
 class QLabel;

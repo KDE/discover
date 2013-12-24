@@ -28,7 +28,6 @@
 #include <KGlobal>
 #include <KIconLoader>
 #include <KLocale>
-#include <KDebug>
 
 // Own includes
 #include "UpdateItem.h"
@@ -233,13 +232,13 @@ void UpdateModel::setResources(const QList< AbstractResource* >& resources)
     m_rootItem = new UpdateItem;
 
     UpdateItem *securityItem = new UpdateItem(i18nc("@item:inlistbox", "Important Security Updates"),
-                                              KIcon("security-medium"));
+                                              QIcon::fromTheme("security-medium"));
 
     UpdateItem *appItem = new UpdateItem(i18nc("@item:inlistbox", "Application Updates"),
-                                          KIcon("applications-other"));
+                                          QIcon::fromTheme("applications-other"));
 
     UpdateItem *systemItem = new UpdateItem(i18nc("@item:inlistbox", "System Updates"),
-                                             KIcon("applications-system"));
+                                             QIcon::fromTheme("applications-system"));
 
     foreach(AbstractResource* res, resources) {
         UpdateItem *updateItem = new UpdateItem(res);

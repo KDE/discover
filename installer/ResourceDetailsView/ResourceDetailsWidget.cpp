@@ -33,10 +33,10 @@
 #include <QtGui/QGraphicsDropShadowEffect>
 #include <QtGui/QGraphicsBlurEffect>
 #include <QtGui/QGraphicsObject>
-#include <QtGui/QLabel>
-#include <QtGui/QProgressBar>
-#include <QtGui/QPushButton>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QProgressBar>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QVBoxLayout>
 
 // KDE includes
 #include <KDialog>

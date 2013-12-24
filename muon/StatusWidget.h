@@ -22,7 +22,7 @@
 #define STATUSWIDGET_H
 
 // Qt includes
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 
 class QLabel;
 class QProgressBar;

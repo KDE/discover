@@ -30,8 +30,6 @@
 
 #include "libmuonprivate_export.h"
 
-class KAction;
-
 /**
  * This class serves as a shared Main Window implementation that connects
  * all the various backend bits so that they don't have to be reimplemented

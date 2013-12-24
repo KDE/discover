@@ -21,13 +21,13 @@
 #include "MuonMainWindow.h"
 
 // Qt includes
-#include <QtGui/QLabel>
-#include <QtGui/QShortcut>
-#include <QtGui/QAction>
+#include <QLabel>
+#include <QShortcut>
+#include <QAction>
+#include <QApplication>
 
 // KDE includes
 #include <KActionCollection>
-#include <KApplication>
 #include <KDialog>
 #include <KStandardAction>
 #include <KStandardDirs>
@@ -52,7 +52,7 @@ QSize MuonMainWindow::sizeHint() const
 
 void MuonMainWindow::setupActions()
 {
-    KAction *quitAction = KStandardAction::quit(KApplication::instance(),
+    QAction *quitAction = KStandardAction::quit(QApplication::instance(),
                                                 SLOT(quit()), actionCollection());
     actionCollection()->addAction("quit", quitAction);
 

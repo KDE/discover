@@ -22,9 +22,9 @@
 
 #include <QtXml/QDomNode>
 
-#include <KStandardDirs>
-#include <QDebug>
+#include <klocalizedstring.h>
 #include <QFile>
+#include <QDebug>
 
 Category::Category(QObject* parent)
         : QObject(parent)
@@ -45,7 +45,7 @@ void Category::parseData(const QString& path, const QDomNode& data, bool canHave
     {
         if(!node.isElement()) {
             if(!node.isComment())
-                kWarning() << "unknown node found at " << QString("%1:%2").arg(path).arg(node.lineNumber());
+                qWarning() << "unknown node found at " << QString("%1:%2").arg(path).arg(node.lineNumber());
             continue;
         }
         QDomElement tempElement = node.toElement();

@@ -22,15 +22,15 @@
 
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusMessage>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QCheckBox>
-#include <QtGui/QLabel>
-#include <QtGui/QRadioButton>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QRadioButton>
+#include <QtWidgets/QVBoxLayout>
 
 #include <KConfig>
 #include <KDialog>
-#include <KLocale>
+#include <klocalizedstring.h>
 
 NotifySettingsPage::NotifySettingsPage(QWidget* parent) :
         SettingsPageBase(parent)

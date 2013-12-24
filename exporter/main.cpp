@@ -17,38 +17,43 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include <KApplication>
-#include <QWidget>
+#include <QApplication>
+#include <QCommandLineParser>
+#include <klocalizedstring.h>
 #include <KAboutData>
-#include <KCmdLineArgs>
-#include <KUniqueApplication>
-#include <KStandardDirs>
 #include "MuonExporter.h"
+#include <MuonBackendsFactory.h>
 
-static const char description[] =
-    I18N_NOOP("An application exporterer");
+static const char description[] = I18N_NOOP("An application exporterer");
 
 static const char version[] = "1.9.60";
 
 int main(int argc, char** argv)
 {
-    KAboutData about("muon-exporter", "muon-exporter", ki18n("Muon Exporter"), version, ki18n(description),
-                     KAboutData::License_GPL, ki18n("©2010-2012 Jonathan Thomas"), KLocalizedString(), 0);
-    about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
-    about.addAuthor(ki18n("Aleix Pol Gonzalez"), KLocalizedString(), "aleixpol@blue-systems.com");
+    QApplication app(argc, argv);
+    KAboutData about("muon-exporter", "muon-exporter", i18n("Muon Exporter"), version, i18n(description),
+                     KAboutData::License_GPL, i18n("©2013 Aleix Pol Gonzalez"), QString(), 0);
+    about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
+    about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), "aleixpol@blue-systems.com");
     about.setProgramIconName("muonexporter");
     about.setProductName("muon/exporter");
 
-    KCmdLineArgs::init(argc, argv, &about);
-    KCmdLineOptions options;
-    options.add("+file", ki18n("File to which we'll export"));
-    KCmdLineArgs::addCmdLineOptions( options );
-
-    KApplication app;
-    KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
-
     MuonExporter exp;
-    exp.setExportPath(args->url(0));
+    {
+        QCommandLineParser parser;
+        parser.addOption(QCommandLineOption("backends", i18n("List all the backends we'll want to have loaded, separated by coma ','."), "names"));
+        parser.addPositionalArgument("file", i18n("File to which we'll export"));
+        about.setupCommandLine(&parser);
+        parser.process(app);
+        about.processCommandLine(&parser);
+        MuonBackendsFactory::setRequestedBackends(parser.value("backends").split(",", QString::SkipEmptyParts));
+
+        if(parser.positionalArguments().isEmpty()) {
+            parser.showHelp(1);
+        }
+        exp.setExportPath(parser.positionalArguments().first());
+    }
+
     QObject::connect(&exp, SIGNAL(exportDone()), &app, SLOT(quit()));
 
     return app.exec();

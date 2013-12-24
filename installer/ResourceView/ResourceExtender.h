@@ -21,7 +21,7 @@
 #ifndef RESOURCEEXTENDER_H
 #define RESOURCEEXTENDER_H
 
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 
 #include "resources/AbstractResourcesBackend.h"
 #include "Transaction/Transaction.h"

@@ -36,6 +36,8 @@ public:
     QStringList allBackendNames() const;
     int backendsCount() const;
     
+    static void setRequestedBackends(const QStringList& backends);
+
 private:
     AbstractResourcesBackend* backendForPlugin(const KPluginInfo& info) const;
     QSet<QString> fetchBackendsWhitelist() const;

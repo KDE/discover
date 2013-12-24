@@ -24,12 +24,12 @@
 #include <QStandardItemModel>
 #include <QtCore/QDir>
 #include <QDateTime>
-#include <QtGui/QApplication>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QTreeView>
-#include <QtGui/QVBoxLayout>
-#include <qaction.h>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTreeView>
+#include <QtWidgets/QVBoxLayout>
+#include <QAction>
 #include <QPushButton>
 
 // KDE includes
@@ -38,7 +38,6 @@
 #include <KMessageBox>
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
-#include <KDebug>
 #include <KMessageWidget>
 
 // Libmuon includes
@@ -104,7 +103,7 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     page1Layout->addWidget(m_changelogWidget);
 
     m_busyWidget = new KPixmapSequenceOverlayPainter(page1);
-    m_busyWidget->setSequence(KPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
+    m_busyWidget->setSequence(KPixmapSequence("process-working", QFontMetrics(qApp->font()).xHeight()*4)); //TODO: make sure it's an appropriate size
     m_busyWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     m_busyWidget->setWidget(m_updateView->viewport());
 
@@ -225,12 +224,12 @@ void UpdaterWidget::checkUpToDate()
             m_ui->updateStatusIcon->setPixmap(KIcon("security-high").pixmap(128, 128));
             m_ui->notifyTitle->setText(i18nc("@info", "The software on this computer is up to date."));
             m_ui->notifyDesc->setText(i18nc("@info", "Last checked %1 ago.",
-                                        KGlobal::locale()->prettyFormatDuration(msecSinceUpdate)));
+                                        /*KGlobal::locale()->prettyFormatDuration*/QString::number(msecSinceUpdate)));
         } else if (msecSinceUpdate < week) {
             m_ui->updateStatusIcon->setPixmap(KIcon("security-medium").pixmap(128, 128));
             m_ui->notifyTitle->setText(i18nc("@info", "No updates are available."));
             m_ui->notifyDesc->setText(i18nc("@info", "Last checked %1 ago.",
-                                        KGlobal::locale()->prettyFormatDuration(msecSinceUpdate)));
+                                        /*KGlobal::locale()->prettyFormatDuration*/QString::number(msecSinceUpdate)));
         } else {
             m_ui->updateStatusIcon->setPixmap(KIcon("security-low").pixmap(128, 128));
             m_ui->notifyTitle->setText("The last check for updates was over a week ago.");

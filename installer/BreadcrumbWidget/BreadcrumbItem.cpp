@@ -21,7 +21,7 @@
 #include "BreadcrumbItem.h"
 
 #include <QtCore/QStringBuilder>
-#include <QtGui/QPushButton>
+#include <QtWidgets/QPushButton>
 
 #include "../AbstractViewBase.h"
 #include "BreadcrumbItemButton.h"

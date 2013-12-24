@@ -22,12 +22,9 @@
 #include "ResourcesModel.h"
 #include "AbstractBackendUpdater.h"
 #include "AbstractResource.h"
-#include <QDebug>
 #include <QDateTime>
-#include <KLocalizedString>
+#include <klocalizedstring.h>
 #include <KGlobal>
-#include <KLocale>
-#include <KDebug>
 
 ResourcesUpdatesModel::ResourcesUpdatesModel(QObject* parent)
     : QStandardItemModel(parent)
@@ -116,7 +113,7 @@ QString ResourcesUpdatesModel::remainingTime() const
         return QString();
     else
         return i18nc("@item:intext Remaining time", "%1 remaining",
-                                KGlobal::locale()->prettyFormatDuration(maxEta));
+                                /*KGlobal::locale()->prettyFormatDuration*/QString::number(maxEta)); //TODO: port
 }
 
 QList<QAction*> ResourcesUpdatesModel::messageActions() const
@@ -224,6 +221,6 @@ void ResourcesUpdatesModel::cancel()
         if(upd->isCancelable())
             upd->cancel();
         else
-            kWarning() << "tried to cancel " << upd->metaObject()->className() << "which is not cancelable";
+            qWarning() << "tried to cancel " << upd->metaObject()->className() << "which is not cancelable";
     }
 }

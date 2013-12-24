@@ -22,7 +22,7 @@
 
 // Qt includes
 #include <QStandardItemModel>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QVBoxLayout>
 
 // KDE includes
 #include <KCategorizedSortFilterProxyModel>

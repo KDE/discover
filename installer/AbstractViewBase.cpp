@@ -21,7 +21,7 @@
 #include "AbstractViewBase.h"
 
 // Qt includes
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QVBoxLayout>
 
 // Own includes
 #include "BreadcrumbWidget/BreadcrumbItem.h"

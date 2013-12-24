@@ -54,8 +54,8 @@ int main(int argc, char **argv)
 
     KUniqueApplication app;
     // Translations
-    KGlobal::locale()->insertCatalog("app-install-data");
-    KGlobal::locale()->insertCatalog("libmuon");
+    //     KGlobal::locale()->insertCatalog("app-install-data"); //FIXME: Port to kf5
+//     KGlobal::locale()->insertCatalog("libmuon"); //FIXME: Port to kf5
     // Needed for KIcon compatibility w/ application icons from app-install-data
     KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
     app.disableSessionManagement();

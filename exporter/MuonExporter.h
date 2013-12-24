@@ -20,9 +20,9 @@
 #ifndef MUONEXPORTER_H
 #define MUONEXPORTER_H
 
-#include "MuonMainWindow.h"
-#include <KUrl>
+#include <QUrl>
 #include <QSet>
+#include <QTimer>
 
 class MuonExporter : public QObject
 {
@@ -31,7 +31,7 @@ class MuonExporter : public QObject
         explicit MuonExporter();
         ~MuonExporter();
 
-        void setExportPath(const KUrl& url);
+        void setExportPath(const QUrl& url);
 
     public slots:
         void exportModel();
@@ -41,7 +41,7 @@ class MuonExporter : public QObject
         void exportDone();
 
     private:
-        KUrl m_path;
+        QUrl m_path;
         QTimer* m_startExportingTimer;
         QSet<QString> m_exculdedProperties;
 };

@@ -23,16 +23,15 @@
 
 // Qt includes
 #include <QtCore/QTimer>
-#include <QtGui/QApplication>
-#include <QtGui/QVBoxLayout>
-#include <QPushButton>
-#include <QToolButton>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QToolButton>
 #include <QMenu>
+#include <QMenuBar>
 
 // KDE includes
-#include <KAction>
 #include <KActionCollection>
-#include <KDebug>
 #include <KMessageBox>
 #include <KMessageWidget>
 #include <KProcess>
@@ -41,7 +40,6 @@
 #include <Solid/Device>
 #include <Solid/AcAdapter>
 #include <KToolBar>
-#include <KMenuBar>
 
 // Own includes
 #include <resources/AbstractResourcesBackend.h>
@@ -112,7 +110,7 @@ void MainWindow::setupActions()
     MuonMainWindow::setupActions();
 
     m_applyAction = actionCollection()->addAction("apply");
-    m_applyAction->setIcon(KIcon("dialog-ok-apply"));
+    m_applyAction->setIcon(QIcon::fromTheme("dialog-ok-apply"));
     m_applyAction->setText(i18nc("@action Downloads and installs updates", "Install Updates"));
     connect(m_applyAction, SIGNAL(triggered()), m_updater, SLOT(updateAll()));
     m_applyAction->setEnabled(false);

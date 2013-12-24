@@ -21,9 +21,9 @@
 #include "ManagerWidget.h"
 
 // Qt includes
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QPushButton>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtGui/QSplitter>
 
 // KDE includes

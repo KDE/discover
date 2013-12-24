@@ -28,7 +28,6 @@
 #include <QDebug>
 
 // KDE includes
-#include <KAction>
 #include <KActionCollection>
 #include <KFileDialog>
 #include <KLocale>

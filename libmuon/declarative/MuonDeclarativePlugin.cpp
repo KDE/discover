@@ -32,7 +32,7 @@
 #include <ReviewsBackend/ReviewsModel.h>
 #include <ScreenshotsModel.h>
 #include <ApplicationAddonsModel.h>
-#include <qdeclarative.h>
+#include <qqml.h>
 
 QML_DECLARE_TYPE(ResourcesModel)
 QML_DECLARE_TYPE(AbstractResourcesBackend)

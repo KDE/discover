@@ -7,8 +7,8 @@ set(dummybackend_SRCS
     DummyTransaction.cpp
 )
 
-kde4_add_plugin(muon-dummybackend SHARED ${dummybackend_SRCS})
-target_link_libraries(muon-dummybackend ${QT_QTCORE_LIBRARY} Qt5::Widgets ${KDE4_KDECORE_LIBRARY} muonprivate)
+add_library(muon-dummybackend MODULE SHARED ${dummybackend_SRCS})
+target_link_libraries(muon-dummybackend Qt5::Core Qt5::Widgets ${KDE4_KDECORE_LIBRARY} muonprivate)
 
 install(TARGETS muon-dummybackend DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES muon-dummy-backend.desktop DESTINATION ${SERVICES_INSTALL_DIR})

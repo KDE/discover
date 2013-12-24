@@ -19,40 +19,34 @@
 
 #include "MuonDiscoverMainWindow.h"
 #include "DiscoverAction.h"
-#include "NativeScrollBar.h"
 #include "MuonActionGroup.h"
 
 // Qt includes
 #include <QDebug>
-#include <QtDeclarative/QDeclarativeEngine>
-#include <QtDeclarative/QDeclarativeContext>
-#include <QtDeclarative/QDeclarativeView>
-#include <QDesktopServices>
+#include <QtQml/QQmlEngine>
+#include <QtQml/QQmlContext>
+#include <QtQuick/QQuickView>
+#include <QtQuick/QQuickItem>
 #include <QTimer>
 #include <QGraphicsObject>
 #include <QToolButton>
 #include <QLayout>
-#include <qdeclarative.h>
+#include <qqml.h>
 #include <QNetworkAccessManager>
 #include <QNetworkDiskCache>
-#include <QDeclarativeNetworkAccessManagerFactory>
-#include <KToolBarSpacerAction>
-
-// #if !defined(QT_NO_OPENGL)
-//     #include <QGLWidget>
-// #endif
+#include <QQmlNetworkAccessManagerFactory>
+#include <QLineEdit>
+#include <QMenu>
+#include <QMenuBar>
+#include <QToolBar>
 
 // KDE includes
+#include <KToolBarSpacerAction>
 #include <KActionCollection>
-#include <KAction>
-#include <kdeclarative.h>
-#include <Plasma/Theme>
-#include <KStandardDirs>
+#include <kdeclarative/kdeclarative.h>
+#include <plasma/theme.h>
 #include <KMessageBox>
 #include <KToolBar>
-#include <KLineEdit>
-#include <KMenu>
-#include <KMenuBar>
 #include <KXMLGUIFactory>
 #include <KToolBarPopupAction>
 
@@ -69,12 +63,14 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     : MuonMainWindow()
 {
     initialize();
-    m_view = new QDeclarativeView(this);
-    m_view->setBackgroundRole(QPalette::AlternateBase);
-    qreal bgGrayness = m_view->backgroundBrush().color().blackF();
+    m_view = new QQuickView;
+    m_view->show();
+    //TODO: reconsider for QtQuick2
+//     m_view->setBackgroundRole(QPalette::AlternateBase);
+//     qreal bgGrayness = m_view->backgroundBrush().color().blackF();
     
-    Plasma::Theme::defaultTheme()->setUseGlobalSettings(false); //don't change every plasma theme!
-    Plasma::Theme::defaultTheme()->setThemeName(bgGrayness>0.5 ? "muon-contenttheme" : "oxygen");
+//     Plasma::Theme::defaultTheme()->setUseGlobalSettings(false); //don't change every plasma theme!
+//     Plasma::Theme::defaultTheme()->setThemeName(bgGrayness>0.5 ? "muon-contenttheme" : "oxygen");
     
     KDeclarative kdeclarative;
     kdeclarative.setDeclarativeEngine(m_view->engine());
@@ -83,13 +79,13 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     kdeclarative.setupBindings();
     
     qmlRegisterType<DiscoverAction>("org.kde.muon.discover", 1, 0, "DiscoverAction");
-    qmlRegisterType<NativeScrollBar>("org.kde.muon.discover", 1, 0, "NativeScrollBar");
+//     qmlRegisterType<NativeScrollBar>("org.kde.muon.discover", 1, 0, "NativeScrollBar");
     qmlRegisterType<MuonActionGroup>("org.kde.muon.discover", 1, 0, "ActionGroup");
     qmlRegisterType<KXmlGuiWindow>();
     qmlRegisterType<QActionGroup>();
     
-    m_searchText = new KLineEdit;
-    m_searchText->setClickMessage(i18n("Search..."));
+    m_searchText = new QLineEdit;
+    m_searchText->setPlaceholderText(i18n("Search..."));
     
     actionCollection()->addAction("search", KStandardAction::find(m_searchText, SLOT(setFocus()), this));
     
@@ -99,13 +95,13 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     m_view->engine()->rootContext()->setContextProperty("transactionModel",
                                                         qVariantFromValue<TransactionModel*>(TransactionModel::global()));
     m_view->engine()->rootContext()->setContextProperty("app", this);
-    m_view->setResizeMode(QDeclarativeView::SizeRootObjectToView);
+    m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     
     m_view->setSource(QUrl("qrc:/qml/Main.qml"));
     if(!m_view->errors().isEmpty()) {
         QString errors;
 
-        for (const QDeclarativeError &error : m_view->errors()) {
+        for (const QQmlError &error : m_view->errors()) {
             errors.append(error.toString() + QLatin1String("\n"));
         }
         KMessageBox::detailedSorry(this,
@@ -116,11 +112,11 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     }
     Q_ASSERT(m_view->errors().isEmpty());
 
-    KConfigGroup window(componentData().config(), "Window");
+    KConfigGroup window(KSharedConfig::openConfig(), "Window");
     restoreGeometry(window.readEntry<QByteArray>("geometry", QByteArray()));
     restoreState(window.readEntry<QByteArray>("windowState", QByteArray()));
     
-    setCentralWidget(m_view);
+//     setCentralWidget(m_view);
     setupActions();
 }
 
@@ -132,7 +128,7 @@ void MuonDiscoverMainWindow::initialize()
 
 MuonDiscoverMainWindow::~MuonDiscoverMainWindow()
 {
-    KConfigGroup window(componentData().config(), "Window");
+    KConfigGroup window(KSharedConfig::openConfig(), "Window");
     window.writeEntry("geometry", saveGeometry());
     window.writeEntry("windowState", saveState());
     window.sync();
@@ -146,7 +142,7 @@ QAction* MuonDiscoverMainWindow::getAction(const QString& name)
 QStringList MuonDiscoverMainWindow::modes() const
 {
     QStringList ret;
-    QGraphicsObject* obj = m_view->rootObject();
+    QQuickItem* obj = m_view->rootObject();
     for(int i = obj->metaObject()->propertyOffset(); i<obj->metaObject()->propertyCount(); i++) {
         QMetaProperty p = obj->metaObject()->property(i);
         QByteArray name = p.name();
@@ -163,12 +159,12 @@ QStringList MuonDiscoverMainWindow::modes() const
 void MuonDiscoverMainWindow::openMode(const QByteArray& _mode)
 {
     if(!modes().contains(_mode))
-        kWarning() << "unknown mode" << _mode;
+        qWarning() << "unknown mode" << _mode;
     
     QByteArray mode = _mode;
     if(mode[0]>'Z')
         mode[0] = mode[0]-'a'+'A';
-    QGraphicsObject* obj = m_view->rootObject();
+    QQuickItem* obj = m_view->rootObject();
     QByteArray propertyName = "top"+mode+"Comp";
     QVariant modeComp = obj->property(propertyName);
     obj->setProperty("currentTopLevel", modeComp);
@@ -215,7 +211,7 @@ QUrl MuonDiscoverMainWindow::featuredSource() const
 
 QUrl MuonDiscoverMainWindow::prioritaryFeaturedSource() const
 {
-    return QUrl::fromLocalFile(KGlobal::dirs()->findResource("appdata", "featured.json"));
+    return QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::DataLocation, "featured.json"));
 }
 
 void MuonDiscoverMainWindow::setupActions()
@@ -230,7 +226,7 @@ void MuonDiscoverMainWindow::setupActions()
     configMenu->addMenu(qobject_cast<QMenu*>(factory()->container("settings", this)));
     configMenu->addMenu(helpMenu());
     
-    KToolBarPopupAction* configureButton = new KToolBarPopupAction(KIcon("applications-system"), i18n("Menu"), t);
+    KToolBarPopupAction* configureButton = new KToolBarPopupAction(QIcon::fromTheme("applications-system"), i18n("Menu"), t);
     configureButton->setToolTip(i18n("Configure and learn about Muon Discover"));
     configureButton->setMenu(configMenu);
     configureButton->setDelayed(false);

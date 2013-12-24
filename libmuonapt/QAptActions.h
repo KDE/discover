@@ -30,7 +30,6 @@
 class MuonMainWindow;
 class KDialog;
 class KXmlGuiWindow;
-class KAction;
 class KActionCollection;
 
 namespace QApt {

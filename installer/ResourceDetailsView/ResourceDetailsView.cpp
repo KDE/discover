@@ -21,7 +21,7 @@
 #include "ResourceDetailsView.h"
 
 // Qt includes
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QVBoxLayout>
 
 // KDE includes
 #include <KIcon>

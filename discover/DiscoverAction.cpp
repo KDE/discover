@@ -21,15 +21,16 @@
 #include <KXmlGuiWindow>
 #include <KActionCollection>
 #include <QDebug>
+#include <QIcon>
 
 DiscoverAction::DiscoverAction(QObject* parent)
-    : KAction(parent)
+    : QAction(parent)
     , m_actionsGroup(nullptr)
 {}
 
 void DiscoverAction::setIconName(const QString& name)
 {
-    setIcon(KIcon(name));
+    setIcon(QIcon::fromTheme(name));
 }
 
 QString DiscoverAction::iconName() const
@@ -39,7 +40,7 @@ QString DiscoverAction::iconName() const
 
 KXmlGuiWindow* DiscoverAction::mainWindow() const
 {
-    return qobject_cast<KXmlGuiWindow*>(KAction::parentWidget());
+    return qobject_cast<KXmlGuiWindow*>(QAction::parentWidget());
 }
 
 void DiscoverAction::setMainWindow(KXmlGuiWindow* w)
@@ -84,5 +85,5 @@ void DiscoverAction::setShortcutString(const QString& str)
 
 QString DiscoverAction::stringShortcut() const
 {
-    return KAction::shortcut().toString();
+    return QAction::shortcut().toString();
 }

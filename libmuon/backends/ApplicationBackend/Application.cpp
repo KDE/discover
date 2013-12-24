@@ -46,9 +46,6 @@
 #include <LibQApt/Config>
 #include <LibQApt/Changelog>
 
-//QJSON includes
-#include <qjson/parser.h>
-
 Application::Application(const QString& fileName, QApt::Backend* backend)
         : AbstractResource(0)
         , m_backend(backend)
@@ -507,6 +504,7 @@ void Application::fetchScreenshots()
         bool b = f.open(QIODevice::ReadOnly);
         Q_ASSERT(b);
         
+        //TODO port to kf5
         QJson::Parser p;
         bool ok;
         QVariantMap values = p.parse(&f, &ok).toMap();

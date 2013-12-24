@@ -24,12 +24,12 @@
 #include <QtCore/QDir>
 #include <QtCore/QStringBuilder>
 #include <QtCore/QUuid>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QProgressBar>
-#include <QtGui/QPushButton>
-#include <QtGui/QTreeView>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QProgressBar>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QTreeView>
+#include <QtWidgets/QVBoxLayout>
 #include <QDebug>
 
 // KDE includes

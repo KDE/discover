@@ -21,7 +21,7 @@
 #ifndef SETTINGSPAGEBASE_H
 #define SETTINGSPAGEBASE_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 #include "../libmuonprivate_export.h"
 

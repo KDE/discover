@@ -48,7 +48,7 @@ int main(int argc, char **argv)
     KUniqueApplication app;
     app.disableSessionManagement();
     // Libmuon translations
-    KGlobal::locale()->insertCatalog("libmuon");
+//     KGlobal::locale()->insertCatalog("libmuon"); //FIXME: Port to kf5
 
     MainWindow *mainWindow = new MainWindow;
     mainWindow->show();

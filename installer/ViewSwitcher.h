@@ -22,7 +22,7 @@
 #define VIEWSWITCHER_H
 
 // Qt includes
-#include <QtGui/QTreeView>
+#include <QtWidgets/QTreeView>
 
 class ViewSwitcher : public QTreeView
 {

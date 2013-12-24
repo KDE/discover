@@ -34,12 +34,12 @@ set(appsbackend_SRCS
     UbuntuLoginBackend.cpp
 )
 
-qt4_add_dbus_interface(appsbackend_SRCS ubuntu_sso_dbus_interface.xml ubuntu_sso -i "LoginMetaTypes.h")
+qt5_add_dbus_interface(appsbackend_SRCS ubuntu_sso_dbus_interface.xml ubuntu_sso -i "LoginMetaTypes.h")
 
-kde4_add_plugin(muon-appsbackend SHARED ${appsbackend_SRCS})
-target_link_libraries(muon-appsbackend ${QT_QTCORE_LIBRARY} Qt5::Widgets ${QT_QTDBUS_LIBRARY}
-    ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} ${DEBCONF_KDE_LIB}
-    ${qjson_LIBRARIES} ${QTOAUTH_LIBRARY} ${QAPT_LIBRARY} muonprivate muonapt
+add_library(muon-appsbackend MODULE SHARED ${appsbackend_SRCS})
+target_link_libraries(muon-appsbackend Qt5::Core Qt5::Widgets Qt5::DBus
+     ${KDE4_KDEUI_LIBS} KF5::KIOWidgets ${DEBCONF_KDE_LIB}
+     ${QTOAUTH_LIBRARY} ${QAPT_LIBRARY} muonprivate muonapt
 )
 install(TARGETS muon-appsbackend DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES muon-applications-backend.desktop DESTINATION ${SERVICES_INSTALL_DIR})

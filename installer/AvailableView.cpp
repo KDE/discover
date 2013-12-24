@@ -21,7 +21,7 @@
 #include "AvailableView.h"
 
 // Qt includes
-#include <QtGui/QStackedWidget>
+#include <QtWidgets/QStackedWidget>
 
 // KDE includes
 #include <KCategorizedSortFilterProxyModel>

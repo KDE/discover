@@ -21,15 +21,14 @@
 #define MUONDISCOVERMAINWINDOW_H
 
 #include <QtCore/QUrl>
-#include <KAction>
 
 #include "MuonMainWindow.h"
 
-class KLineEdit;
+class QLineEdit;
 class QAptIntegration;
 class AbstractResource;
 class Category;
-class QDeclarativeView;
+class QQuickView;
 
 class MuonDiscoverMainWindow : public MuonMainWindow
 {
@@ -65,8 +64,8 @@ class MuonDiscoverMainWindow : public MuonMainWindow
 
     private:
         QString m_appToBeOpened;
-        QDeclarativeView* m_view;
-        KLineEdit* m_searchText;
+        QQuickView* m_view;
+        QLineEdit* m_searchText;
 };
 
 #endif // MUONINSTALLERDECLARATIVEVIEW_H

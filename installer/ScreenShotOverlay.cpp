@@ -24,10 +24,10 @@
 #include <QApplication>
 #include <QtCore/QEvent>
 #include <QtGui/QBoxLayout>
-#include <QtGui/QLabel>
+#include <QtWidgets/QLabel>
 #include <QtGui/QMouseEvent>
 #include <QtGui/QPalette>
-#include <QtGui/QProgressBar>
+#include <QtWidgets/QProgressBar>
 
 #include <QParallelAnimationGroup>
 #include <QPropertyAnimation>

@@ -21,7 +21,7 @@
 #include "ResourceExtender.h"
 
 #include <QtGui/QHBoxLayout>
-#include <QtGui/QPushButton>
+#include <QtWidgets/QPushButton>
 
 #include <KDebug>
 #include <KIcon>

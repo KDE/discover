@@ -20,7 +20,7 @@
 
 #include "DetailsTab.h"
 
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QVBoxLayout>
 
 DetailsTab::DetailsTab(QWidget *parent)
     : QWidget(parent)

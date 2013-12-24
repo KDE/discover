@@ -24,8 +24,8 @@
 #include <QtCore/QStringBuilder>
 #include <QtCore/QTimer>
 #include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QProgressBar>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QProgressBar>
 
 // KDE includes
 #include <KGlobal>

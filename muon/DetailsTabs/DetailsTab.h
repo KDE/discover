@@ -21,8 +21,8 @@
 #ifndef DETAILSTAB_H
 #define DETAILSTAB_H
 
-#include <QtGui/QWidget>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QVBoxLayout>
 
 namespace QApt
 {

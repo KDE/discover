@@ -22,7 +22,7 @@
 #define CHANGELOGWIDGET_H
 
 #include <QtCore/QSet>
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 
 class AbstractResource;
 class QParallelAnimationGroup;

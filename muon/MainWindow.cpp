@@ -25,12 +25,11 @@
 #include <QtCore/QStringBuilder>
 #include <QtCore/QTimer>
 #include <QtGui/QSplitter>
-#include <QtGui/QStackedWidget>
+#include <QtWidgets/QStackedWidget>
 #include <QtGui/QToolBox>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QVBoxLayout>
 
 // KDE includes
-#include <KAction>
 #include <KActionCollection>
 #include <KFileDialog>
 #include <KLocale>
