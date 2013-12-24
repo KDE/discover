@@ -30,7 +30,7 @@ set(muon_LIB_SRCS
     ApplicationAddonsModel.cpp
 )
 
-kde4_add_kcfg_files(muon_LIB_SRCS GENERATE_MOC MuonDataSources.kcfgc)
+kconfig_add_kcfg_files(muon_LIB_SRCS GENERATE_MOC MuonDataSources.kcfgc)
 add_library(muonprivate SHARED ${muon_LIB_SRCS})
 
 set_target_properties(muonprivate PROPERTIES
@@ -39,10 +39,14 @@ set_target_properties(muonprivate PROPERTIES
 )
 
 target_link_libraries(muonprivate
+LINK_PUBLIC
     Qt5::Core
-    Qt5::Xml
     Qt5::Widgets
-    KDE4Support
+LINK_PRIVATE
+    Qt5::Xml
+    KF5::XmlGui
+    KF5::KDE4Support
+    ${PHONON_LIBRARY}
 )
 
 install(TARGETS muonprivate ${INSTALL_TARGETS_DEFAULT_ARGS})

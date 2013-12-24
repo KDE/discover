@@ -31,13 +31,13 @@ set(muon_SRCS
     config/ManagerSettingsDialog.cpp
     config/GeneralSettingsPage.cpp)
 
-kde4_add_kcfg_files(muon_SRCS GENERATE_MOC config/MuonSettings.kcfgc)
+kconfig_add_kcfg_files(muon_SRCS GENERATE_MOC config/MuonSettings.kcfgc)
 install(FILES config/muon.kcfg DESTINATION ${KCFG_INSTALL_DIR})
 
-kde4_add_executable(muon ${muon_SRCS})
+add_executable(muon ${muon_SRCS})
 
 target_link_libraries(muon muonprivate muonapt
-                           ${KDE4_KIO_LIBS}
+                           KF5::KIOWidgets
                            ${QAPT_LIBRARY}
                            ${DEBCONF_KDE_LIB})
 

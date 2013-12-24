@@ -31,15 +31,14 @@ set(muon_installer_SRCS
     LaunchListModel.cpp
 )
 
-kde4_add_kcfg_files(muon_installer_SRCS GENERATE_MOC config/MuonInstallerSettings.kcfgc)
+kconfig_add_kcfg_files(muon_installer_SRCS GENERATE_MOC config/MuonInstallerSettings.kcfgc)
 
-kde4_add_executable(muon-installer ${muon_installer_SRCS})
+add_executable(muon-installer ${muon_installer_SRCS})
 
 target_link_libraries(muon-installer muonprivate muonapt
-                                     ${KDE4_KIO_LIBS}
+                                     KF5::KIOWidgets
                                      ${QAPT_LIBRARY}
-                                     ${qjson_LIBRARIES}
-                                     ${QT_QTDECLARATIVE_LIBRARY})
+                                     Qt5::Declarative)
 
 install(TARGETS muon-installer ${INSTALL_TARGETS_DEFAULT_ARGS} )
 

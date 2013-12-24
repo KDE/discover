@@ -9,9 +9,9 @@ set(muon-notifier_SRCS
 QT4_ADD_DBUS_ADAPTOR(muon-notifier_SRCS org.kubuntu.MuonNotifier.xml
                      configwatcher.h ConfigWatcher)
 
-kde4_add_plugin(kded_muon-notifier ${muon-notifier_SRCS})
+add_library(kded_muon-notifier MODULE ${muon-notifier_SRCS})
 
-target_link_libraries(kded_muon-notifier ${KDE4_KIO_LIBS})
+target_link_libraries(kded_muon-notifier KF5::KIOWidgets)
 
 install(TARGETS kded_muon-notifier DESTINATION ${PLUGIN_INSTALL_DIR})
 
