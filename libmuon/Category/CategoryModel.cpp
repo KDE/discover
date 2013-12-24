@@ -24,7 +24,6 @@
 #include "CategoriesReader.h"
 
 // KDE includes
-#include <KIcon>
 #include <KCategorizedSortFilterProxyModel>
 
 CategoryModel::CategoryModel(QObject* parent)
@@ -43,7 +42,7 @@ void CategoryModel::setCategories(const QList<Category *> &categoryList, const Q
     foreach (Category *category, m_categoryList) {
         QStandardItem *categoryItem = new QStandardItem;
         categoryItem->setText(category->name());
-        categoryItem->setIcon(KIcon(category->icon()));
+        categoryItem->setIcon(QIcon::fromTheme(category->icon()));
         categoryItem->setEditable(false);
         categoryItem->setData(rootName, KCategorizedSortFilterProxyModel::CategoryDisplayRole);
         categoryItem->setData(qVariantFromValue<QObject*>(category), CategoryRole);

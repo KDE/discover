@@ -29,7 +29,6 @@
 // KDE includes
 #include <KDebug>
 #include <KHBox>
-#include <KIcon>
 #include <KLocale>
 
 // LibQApt includes

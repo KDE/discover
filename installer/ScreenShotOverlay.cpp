@@ -34,7 +34,6 @@
 #include <QGraphicsOpacityEffect>
 #include <QtGui/QScrollArea>
 
-#include <KIcon>
 #include <KLocale>
 
 #include "ClickableLabel.h"

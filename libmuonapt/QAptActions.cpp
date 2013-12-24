@@ -106,40 +106,40 @@ void QAptActions::setupActions()
     m_actions.append(redoAction);
 
     KAction* revertAction = actionCollection()->addAction("revert");
-    revertAction->setIcon(KIcon("document-revert"));
+    revertAction->setIcon(QIcon::fromTheme("document-revert"));
     revertAction->setText(i18nc("@action Reverts all potential changes to the cache", "Unmark All"));
     connect(revertAction, SIGNAL(triggered()), this, SLOT(revertChanges()));
     m_actions.append(revertAction);
 
     KAction* softwarePropertiesAction = actionCollection()->addAction("software_properties");
     softwarePropertiesAction->setPriority(QAction::LowPriority);
-    softwarePropertiesAction->setIcon(KIcon("configure"));
+    softwarePropertiesAction->setIcon(QIcon::fromTheme("configure"));
     softwarePropertiesAction->setText(i18nc("@action Opens the software sources configuration dialog", "Configure Software Sources"));
     connect(softwarePropertiesAction, SIGNAL(triggered()), this, SLOT(runSourcesEditor()));
     m_actions.append(softwarePropertiesAction);
     
     KAction* loadSelectionsAction = actionCollection()->addAction("open_markings");
-    loadSelectionsAction->setIcon(KIcon("document-open"));
+    loadSelectionsAction->setIcon(QIcon::fromTheme("document-open"));
     loadSelectionsAction->setText(i18nc("@action", "Read Markings..."));
     connect(loadSelectionsAction, SIGNAL(triggered()), this, SLOT(loadSelections()));
     m_actions.append(loadSelectionsAction);
 
     KAction* saveSelectionsAction = actionCollection()->addAction("save_markings");
-    saveSelectionsAction->setIcon(KIcon("document-save-as"));
+    saveSelectionsAction->setIcon(QIcon::fromTheme("document-save-as"));
     saveSelectionsAction->setText(i18nc("@action", "Save Markings As..."));
     connect(saveSelectionsAction, SIGNAL(triggered()), this, SLOT(saveSelections()));
     m_actions.append(saveSelectionsAction);
 
     KAction* createDownloadListAction = actionCollection()->addAction("save_download_list");
     createDownloadListAction->setPriority(QAction::LowPriority);
-    createDownloadListAction->setIcon(KIcon("document-save-as"));
+    createDownloadListAction->setIcon(QIcon::fromTheme("document-save-as"));
     createDownloadListAction->setText(i18nc("@action", "Save Package Download List..."));
     connect(createDownloadListAction, SIGNAL(triggered()), this, SLOT(createDownloadList()));
     m_actions.append(createDownloadListAction);
 
     KAction* downloadListAction = actionCollection()->addAction("download_from_list");
     downloadListAction->setPriority(QAction::LowPriority);
-    downloadListAction->setIcon(KIcon("download"));
+    downloadListAction->setIcon(QIcon::fromTheme("download"));
     downloadListAction->setText(i18nc("@action", "Download Packages From List..."));
     connect(downloadListAction, SIGNAL(triggered()), this, SLOT(downloadPackagesFromList()));
     if (!isConnected()) {
@@ -150,26 +150,26 @@ void QAptActions::setupActions()
 
     KAction* loadArchivesAction = actionCollection()->addAction("load_archives");
     loadArchivesAction->setPriority(QAction::LowPriority);
-    loadArchivesAction->setIcon(KIcon("document-open"));
+    loadArchivesAction->setIcon(QIcon::fromTheme("document-open"));
     loadArchivesAction->setText(i18nc("@action", "Add Downloaded Packages"));
     connect(loadArchivesAction, SIGNAL(triggered()), this, SLOT(loadArchives()));
     m_actions.append(loadArchivesAction);
     
     KAction* saveInstalledAction = actionCollection()->addAction("save_package_list");
     saveInstalledAction->setPriority(QAction::LowPriority);
-    saveInstalledAction->setIcon(KIcon("document-save-as"));
+    saveInstalledAction->setIcon(QIcon::fromTheme("document-save-as"));
     saveInstalledAction->setText(i18nc("@action", "Save Installed Packages List..."));
     connect(saveInstalledAction, SIGNAL(triggered()), this, SLOT(saveInstalledPackagesList()));
     
     KAction* historyAction = actionCollection()->addAction("history");
     historyAction->setPriority(QAction::LowPriority);
-    historyAction->setIcon(KIcon("view-history"));
+    historyAction->setIcon(QIcon::fromTheme("view-history"));
     historyAction->setText(i18nc("@action::inmenu", "History..."));
     historyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_H));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showHistoryDialog()));
 
     KAction *distUpgradeAction = actionCollection()->addAction("dist-upgrade");
-    distUpgradeAction->setIcon(KIcon("system-software-update"));
+    distUpgradeAction->setIcon(QIcon::fromTheme("system-software-update"));
     distUpgradeAction->setText(i18nc("@action", "Upgrade"));
     distUpgradeAction->setPriority(QAction::HighPriority);
     distUpgradeAction->setWhatsThis(i18nc("Notification when a new version of Kubuntu is available",
@@ -495,7 +495,7 @@ void QAptActions::showHistoryDialog()
         HistoryView *historyView = new HistoryView(m_historyDialog);
         m_historyDialog->setMainWidget(historyView);
         m_historyDialog->setWindowTitle(i18nc("@title:window", "Package History"));
-        m_historyDialog->setWindowIcon(KIcon("view-history"));
+        m_historyDialog->setWindowIcon(QIcon::fromTheme("view-history"));
         m_historyDialog->setButtons(KDialog::Close);
         m_historyDialog->show();
     } else {

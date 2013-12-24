@@ -29,7 +29,6 @@
 
 // KDE includes
 #include <KDialog>
-#include <KIcon>
 #include <KLocale>
 
 // LibQApt includes
@@ -53,7 +52,7 @@ VersionTab::VersionTab(QWidget *parent)
     footerWidget->setLayout(footerLayout);
 
     QLabel *infoIconLabel = new QLabel(footerWidget);
-    infoIconLabel->setPixmap(KIcon("dialog-warning").pixmap(32, 32));
+    infoIconLabel->setPixmap(QIcon::fromTheme("dialog-warning").pixmap(32, 32));
     footerLayout->addWidget(infoIconLabel);
 
     QLabel *infoLabel = new QLabel(footerWidget);

@@ -33,7 +33,6 @@
 #include <QDebug>
 
 // KDE includes
-#include <KIcon>
 #include <KLocale>
 #include <KMessageBox>
 
@@ -102,7 +101,7 @@ TransactionWidget::TransactionWidget(QWidget *parent)
 
     m_cancelButton = new QPushButton(hbox);
     m_cancelButton->setText(i18nc("@action:button Cancels the download", "Cancel"));
-    m_cancelButton->setIcon(KIcon("dialog-cancel"));
+    m_cancelButton->setIcon(QIcon::fromTheme("dialog-cancel"));
     hboxLayout->addWidget(m_cancelButton);
     connect(m_downloadModel, SIGNAL(rowsInserted(QModelIndex,int,int)), m_downloadView, SLOT(scrollToBottom()));
 }

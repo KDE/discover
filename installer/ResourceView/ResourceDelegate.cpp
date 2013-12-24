@@ -57,7 +57,7 @@ ResourceDelegate::ResourceDelegate(QAbstractItemView *parent)
 {
     // To get sizing.
     QPushButton button, button2;
-    KIcon icon("edit-delete");
+    QIcon icon(QIcon::fromTheme("edit-delete"));
 
     button.setText(i18n("Install"));
     button.setIcon(icon);
@@ -68,7 +68,7 @@ ResourceDelegate::ResourceDelegate(QAbstractItemView *parent)
     width = qMax(width, button2.sizeHint().width());
     m_buttonSize.setWidth(width);
 
-    m_emblem = KIcon("dialog-ok").pixmap(QSize(16, 16));
+    m_emblem = QIcon::fromTheme("dialog-ok").pixmap(QSize(16, 16));
     m_ratingPainter = new KRatingPainter;
 }
 
@@ -161,7 +161,7 @@ void ResourceDelegate::paint(QPainter *painter,
     p.translate(-option.rect.topLeft());
 
     // Main icon
-    KIcon icon(index.data(ResourcesModel::IconRole).toString());
+    QIcon icon = QIcon::fromTheme(index.data(ResourcesModel::IconRole).toString());
 
     int iconSize = calcItemHeight(option) - 2 * UNIVERSAL_PADDING;
     icon.paint(&p,

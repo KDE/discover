@@ -24,7 +24,6 @@
 #include <QtWidgets/QPushButton>
 
 #include <KDebug>
-#include <KIcon>
 #include <KLocale>
 #include <KStandardGuiItem>
 
@@ -49,11 +48,11 @@ ResourceExtender::ResourceExtender(QWidget *parent, AbstractResource *app)
     m_actionButton = new QPushButton(this);
 
     if (app->isInstalled()) {
-        m_actionButton->setIcon(KIcon("edit-delete"));
+        m_actionButton->setIcon(QIcon::fromTheme("edit-delete"));
         m_actionButton->setText(i18n("Remove"));
         connect(m_actionButton, SIGNAL(clicked()), this, SLOT(removeButtonClicked()));
     } else {
-        m_actionButton->setIcon(KIcon("download"));
+        m_actionButton->setIcon(QIcon::fromTheme("download"));
         m_actionButton->setText(i18n("Install"));
         connect(m_actionButton, SIGNAL(clicked()), this, SLOT(installButtonClicked()));
     }
@@ -110,10 +109,10 @@ void ResourceExtender::transactionCancelled(Transaction* trans)
     m_actionButton->show();
     m_actionButton->setEnabled(true);
     if (m_resource->isInstalled()) {
-        m_actionButton->setIcon(KIcon("edit-delete"));
+        m_actionButton->setIcon(QIcon::fromTheme("edit-delete"));
         m_actionButton->setText(i18n("Remove"));
     } else {
-        m_actionButton->setIcon(KIcon("download"));
+        m_actionButton->setIcon(QIcon::fromTheme("download"));
         m_actionButton->setText(i18n("Install"));
     }
 }

@@ -26,7 +26,6 @@
 
 // KDE
 #include <KColorScheme>
-#include <KIcon>
 #include <KIconLoader>
 
 // Own
@@ -35,9 +34,9 @@
 
 PackageDelegate::PackageDelegate(QObject *parent)
     : QAbstractItemDelegate(parent)
-    , m_icon(KIcon("muon"))
-    , m_supportedEmblem(KIcon("ubuntu-logo").pixmap(QSize(12,12)))
-    , m_lockedEmblem(KIcon("object-locked").pixmap(QSize(12,12)))
+    , m_icon(QIcon::fromTheme("muon"))
+    , m_supportedEmblem(QIcon::fromTheme("ubuntu-logo").pixmap(QSize(12,12)))
+    , m_lockedEmblem(QIcon::fromTheme("object-locked").pixmap(QSize(12,12)))
 {
     m_spacing  = 4;
 

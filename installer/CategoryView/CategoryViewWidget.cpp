@@ -26,7 +26,6 @@
 
 // KDE includes
 #include <KCategorizedSortFilterProxyModel>
-#include <KIcon>
 #include <KLocale>
 
 // Libmuon includes
@@ -64,7 +63,7 @@ void CategoryViewWidget::setDisplayedCategory(Category* c)
     m_categoryView->setModel(proxy);
 
     m_crumb->setText(c ? c->name() : i18n("Get Software"));
-    m_crumb->setIcon(KIcon(c ? c->icon() : "applications-other"));
+    m_crumb->setIcon(QIcon::fromTheme(c ? c->icon() : "applications-other"));
     m_crumb->setAssociatedView(this);
 }
 
@@ -87,7 +86,7 @@ void CategoryViewWidget::onIndexActivated(const QModelIndex &index)
         ResourceViewWidget *appView = static_cast<ResourceViewWidget *>(m_subView);
         appView->setFiltersFromCategory(category);
         appView->setTitle(category->name());
-        appView->setIcon(KIcon(category->icon()));
+        appView->setIcon(QIcon::fromTheme(category->icon()));
         appView->setShouldShowTechnical(category->shouldShowTechnical());
     } else {
         m_subView = new CategoryViewWidget(this);
@@ -117,7 +116,7 @@ void CategoryViewWidget::search(const QString &text)
     if (!m_searchView) {
         m_searchView = new ResourceViewWidget(this);
         m_searchView->setTitle(i18nc("@label", "Search Results"));
-        m_searchView->setIcon(KIcon("applications-other"));
+        m_searchView->setIcon(QIcon::fromTheme("applications-other"));
 
         // Forward on to parent so that they can handle adding subviews to breadcrumb,
         // switching to subviews from the new subview, etc

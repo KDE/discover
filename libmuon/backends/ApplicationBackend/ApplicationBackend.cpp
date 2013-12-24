@@ -512,7 +512,7 @@ void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
     if (apt->reloadWhenSourcesEditorFinished())
         connect(apt, SIGNAL(sourcesEditorClosed(bool)), SLOT(reload()));
     KAction* updateAction = w->actionCollection()->addAction("update");
-    updateAction->setIcon(KIcon("system-software-update"));
+    updateAction->setIcon(QIcon::fromTheme("system-software-update"));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     updateAction->setEnabled(w->isConnected());

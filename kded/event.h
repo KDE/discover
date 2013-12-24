@@ -28,7 +28,6 @@
 #include <KLocalizedString>
 
 // for implementing classes
-#include <KIcon>
 
 class KStatusNotifierItem;
 

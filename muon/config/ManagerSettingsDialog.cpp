@@ -20,7 +20,6 @@
 
 #include "ManagerSettingsDialog.h"
 
-#include <KIcon>
 #include <KLocale>
 
 #include <LibQApt/Config>
@@ -47,7 +46,7 @@ ManagerSettingsDialog::ManagerSettingsDialog(QWidget* parent, QApt::Config *aptC
     GeneralSettingsPage *generalPage = new GeneralSettingsPage(this, m_aptConfig);
     KPageWidgetItem *generalSettingsFrame = addPage(generalPage,
                                                     i18nc("@title:group Title of the general group", "General"));
-    generalSettingsFrame->setIcon(KIcon("system-run"));
+    generalSettingsFrame->setIcon(QIcon::fromTheme("system-run"));
     connect(generalPage, SIGNAL(changed()), this, SLOT(changed()));
     connect(generalPage, SIGNAL(authChanged()), this, SLOT(authChanged()));
 
@@ -55,7 +54,7 @@ ManagerSettingsDialog::ManagerSettingsDialog(QWidget* parent, QApt::Config *aptC
     NotifySettingsPage *notifyPage = new NotifySettingsPage(this);
     KPageWidgetItem *notifySettingsFrame = addPage(notifyPage,
                                                     i18nc("@title:group", "Notifications"));
-    notifySettingsFrame->setIcon(KIcon("preferences-desktop-notification"));
+    notifySettingsFrame->setIcon(QIcon::fromTheme("preferences-desktop-notification"));
     connect(notifyPage, SIGNAL(changed()), this, SLOT(changed()));
 
     m_pages.insert(generalPage);
@@ -79,14 +78,14 @@ void ManagerSettingsDialog::slotButtonClicked(int button)
 
 void ManagerSettingsDialog::changed()
 {
-    setButtonIcon(Apply, KIcon("dialog-ok-apply"));
+    setButtonIcon(Apply, QIcon::fromTheme("dialog-ok-apply"));
 
     enableButtonApply(true);
 }
 
 void ManagerSettingsDialog::authChanged()
 {
-    setButtonIcon(Apply, KIcon("dialog-password"));
+    setButtonIcon(Apply, QIcon::fromTheme("dialog-password"));
     enableButtonApply(true);
 }
 
@@ -97,7 +96,7 @@ void ManagerSettingsDialog::applySettings()
     }
 
     emit settingsChanged();
-    setButtonIcon(Apply, KIcon("dialog-ok-apply"));
+    setButtonIcon(Apply, QIcon::fromTheme("dialog-ok-apply"));
     enableButtonApply(false);
 }
 
@@ -107,7 +106,7 @@ void ManagerSettingsDialog::restoreDefaults()
         page->restoreDefaults();
     }
 
-    setButtonIcon(Apply, KIcon("dialog-ok-apply"));
+    setButtonIcon(Apply, QIcon::fromTheme("dialog-ok-apply"));
 }
 
 #include "ManagerSettingsDialog.moc"

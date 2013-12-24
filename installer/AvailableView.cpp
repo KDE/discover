@@ -25,7 +25,6 @@
 
 // KDE includes
 #include <KCategorizedSortFilterProxyModel>
-#include <KIcon>
 #include <KLocale>
 
 // Own includes

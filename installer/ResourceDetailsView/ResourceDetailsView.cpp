@@ -21,10 +21,8 @@
 #include "ResourceDetailsView.h"
 
 // Qt includes
+#include <QIcon>
 #include <QtWidgets/QVBoxLayout>
-
-// KDE includes
-#include <KIcon>
 
 // Libmuon includes
 #include <resources/AbstractResource.h>
@@ -48,5 +46,5 @@ void ResourceDetailsView::setResource(AbstractResource *resource)
     m_detailsWidget->setResource(resource);
 
     m_crumb->setText(resource->name());
-    m_crumb->setIcon(KIcon(resource->icon()));
+    m_crumb->setIcon(QIcon::fromTheme(resource->icon()));
 }

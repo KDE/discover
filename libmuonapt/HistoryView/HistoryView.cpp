@@ -30,7 +30,6 @@
 #include <KComboBox>
 #include <KGlobal>
 #include <KHBox>
-#include <KIcon>
 #include <KLineEdit>
 #include <KLocale>
 #include <KDebug>
@@ -65,19 +64,19 @@ HistoryView::HistoryView(QWidget *parent)
     connect(m_searchEdit, SIGNAL(textChanged(QString)), m_searchTimer, SLOT(start()));
 
     m_filterBox = new KComboBox(headerWidget);
-    m_filterBox->insertItem(AllChangesItem, KIcon("bookmark-new-list"),
+    m_filterBox->insertItem(AllChangesItem, QIcon::fromTheme("bookmark-new-list"),
                             i18nc("@item:inlistbox Filters all changes in the history view",
                                   "All changes"),
                             0);
-    m_filterBox->insertItem(InstallationsItem, KIcon("download"),
+    m_filterBox->insertItem(InstallationsItem, QIcon::fromTheme("download"),
                             i18nc("@item:inlistbox Filters installations in the history view",
                                   "Installations"),
                             QApt::Package::ToInstall);
-    m_filterBox->insertItem(UpdatesItem, KIcon("system-software-update"),
+    m_filterBox->insertItem(UpdatesItem, QIcon::fromTheme("system-software-update"),
                             i18nc("@item:inlistbox Filters updates in the history view",
                                   "Updates"),
                             QApt::Package::ToUpgrade);
-    m_filterBox->insertItem(RemovalsItem, KIcon("edit-delete"),
+    m_filterBox->insertItem(RemovalsItem, QIcon::fromTheme("edit-delete"),
                             i18nc("@item:inlistbox Filters removals in the history view",
                                   "Removals"),
                             (QApt::Package::State)(QApt::Package::ToRemove | QApt::Package::ToPurge));
@@ -93,7 +92,7 @@ HistoryView::HistoryView(QWidget *parent)
     m_historyModel->setHeaderData(0, Qt::Horizontal, i18nc("@title:column", "Date"));
     m_historyView = new QTreeView(this);
 
-    KIcon itemIcon("applications-other");
+    QIcon itemIcon(QIcon::fromTheme("applications-other"));
 
     QHash<QString, QString> categoryHash;
 

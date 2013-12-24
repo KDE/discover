@@ -27,7 +27,6 @@
 #include <QtWidgets/QVBoxLayout>
 
 // KDE includes
-#include <KIcon>
 #include <KLocale>
 #include <KStandardGuiItem>
 
@@ -102,7 +101,7 @@ void ChangesDialog::addPackages(const QApt::StateChanges &changes)
         root->setFont(font);
 
         for (QApt::Package *package : *i) {
-            root->appendRow(new QStandardItem(KIcon("muon"), package->name()));
+            root->appendRow(new QStandardItem(QIcon::fromTheme("muon"), package->name()));
         }
 
         m_model->appendRow(root);

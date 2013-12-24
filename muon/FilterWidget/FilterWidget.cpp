@@ -27,7 +27,6 @@
 #include <QtGui/QToolBox>
 
 // KDE includes
-#include <KIcon>
 #include <KLocale>
 
 // LibQApt includes

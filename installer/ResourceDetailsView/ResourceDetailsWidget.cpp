@@ -42,7 +42,6 @@
 #include <KDialog>
 #include <KGlobal>
 #include <KHBox>
-#include <KIcon>
 #include <KIO/Job>
 #include <KJob>
 #include <KLocale>
@@ -316,7 +315,7 @@ void ResourceDetailsWidget::setResource(AbstractResource *resource)
 
     // FIXME: Always keep label size at 48x48, and render the largest size
     // we can up to that point. Otherwise some icons will be blurry
-    m_iconLabel->setPixmap(KIcon(resource->icon()).pixmap(48,48));
+    m_iconLabel->setPixmap(QIcon::fromTheme(resource->icon()).pixmap(48,48));
 
     m_nameLabel->setText(QLatin1Literal("<h1>") % resource->name() % QLatin1Literal("</h1>"));
     m_shortDescLabel->setText(resource->comment());
@@ -536,11 +535,11 @@ void ResourceDetailsWidget::updateActionButton()
     m_statusLabel->setText(m_resource->status());
     if (!m_resource->isInstalled()) {
         m_actionButton->setText(i18nc("@action", "Install"));
-        m_actionButton->setIcon(KIcon("download"));
+        m_actionButton->setIcon(QIcon::fromTheme("download"));
         m_actionButton->show();
     } else {
         m_actionButton->setText(i18nc("@action", "Remove"));
-        m_actionButton->setIcon(KIcon("edit-delete"));
+        m_actionButton->setIcon(QIcon::fromTheme("edit-delete"));
     }
 
     m_addonsWidget->setResource(m_resource);

@@ -33,7 +33,6 @@
 #include <QPushButton>
 
 // KDE includes
-#include <KIcon>
 #include <KLocale>
 #include <KMessageBox>
 #include <KPixmapSequence>
@@ -70,7 +69,7 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
     QString text = i18nc("@label", "<em>Some packages were not marked for update.</em><p/>"
                             "The update of these packages need some others to be installed or removed.<p/>"
                             "Do you want to update those too?");
-    QAction* action = new QAction(KIcon("dialog-ok-apply"), i18n("Mark All"), this);
+    QAction* action = new QAction(QIcon::fromTheme("dialog-ok-apply"), i18n("Mark All"), this);
     connect(action, SIGNAL(triggered(bool)), SLOT(markAllPackagesForUpgrade()));
     m_markallWidget = new KMessageWidget(this);
     m_markallWidget->setText(text);
@@ -212,7 +211,7 @@ void UpdaterWidget::checkUpToDate()
 
         // Unknown time since last update
         if (!lastUpdate.isValid()) {
-            m_ui->updateStatusIcon->setPixmap(KIcon("security-medium").pixmap(128, 128));
+            m_ui->updateStatusIcon->setPixmap(QIcon::fromTheme("security-medium").pixmap(128, 128));
             m_ui->notifyTitle->setText(i18nc("@info",
                                          "It is unknown when the last check for updates was."));
             m_ui->notifyDesc->setText(i18nc("@info", "Please click <interface>Check for Updates</interface> "
@@ -221,17 +220,17 @@ void UpdaterWidget::checkUpToDate()
         }
 
         if (msecSinceUpdate < day) {
-            m_ui->updateStatusIcon->setPixmap(KIcon("security-high").pixmap(128, 128));
+            m_ui->updateStatusIcon->setPixmap(QIcon::fromTheme("security-high").pixmap(128, 128));
             m_ui->notifyTitle->setText(i18nc("@info", "The software on this computer is up to date."));
             m_ui->notifyDesc->setText(i18nc("@info", "Last checked %1 ago.",
                                         /*KGlobal::locale()->prettyFormatDuration*/QString::number(msecSinceUpdate)));
         } else if (msecSinceUpdate < week) {
-            m_ui->updateStatusIcon->setPixmap(KIcon("security-medium").pixmap(128, 128));
+            m_ui->updateStatusIcon->setPixmap(QIcon::fromTheme("security-medium").pixmap(128, 128));
             m_ui->notifyTitle->setText(i18nc("@info", "No updates are available."));
             m_ui->notifyDesc->setText(i18nc("@info", "Last checked %1 ago.",
                                         /*KGlobal::locale()->prettyFormatDuration*/QString::number(msecSinceUpdate)));
         } else {
-            m_ui->updateStatusIcon->setPixmap(KIcon("security-low").pixmap(128, 128));
+            m_ui->updateStatusIcon->setPixmap(QIcon::fromTheme("security-low").pixmap(128, 128));
             m_ui->notifyTitle->setText("The last check for updates was over a week ago.");
             m_ui->notifyDesc->setText(i18nc("@info", "Please click <interface>Check for Updates</interface> "
                                         "to check."));

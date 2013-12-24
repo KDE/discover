@@ -107,10 +107,10 @@ void Event::show(const QString &icon, const QString &text, const QStringList &ac
         KNotification *notify = new KNotification(m_name, nullptr, flag);
         notify->setComponentData(KComponentData("muon-notifier"));
 
-        KIcon notifyIcon(icon);
+        QIcon notifyIcon = QIcon::fromTheme(icon);
 
         if (!tTipIcon.isEmpty()) {
-            notifyIcon = KIcon(tTipIcon);
+            notifyIcon = QIcon::fromTheme(tTipIcon);
         }
 
         notify->setPixmap(notifyIcon.pixmap(NOTIFICATION_ICON_SIZE));
@@ -145,7 +145,7 @@ void Event::show(const QString &icon, const QString &text, const QStringList &ac
         m_notifierItem->setStandardActionsEnabled(false);
 
         KMenu *contextMenu = new KMenu(0);
-        contextMenu->addTitle(KIcon("applications-system"), i18n("System Notification"));
+        contextMenu->addTitle(QIcon::fromTheme("applications-system"), i18n("System Notification"));
 
         QAction *runAction = contextMenu->addAction(actions.at(0));
         runAction->setIcon(KIcon(aIcon));
@@ -159,7 +159,7 @@ void Event::show(const QString &icon, const QString &text, const QStringList &ac
         contextMenu->addSeparator();
 
         QAction *hideAction = contextMenu->addAction(i18n("Hide"));
-        hideAction->setIcon(KIcon("application-exit"));
+        hideAction->setIcon(QIcon::fromTheme("application-exit"));
         connect(hideAction, SIGNAL(triggered()), this, SLOT(ignore()));
         contextMenu->addAction(hideAction);
 

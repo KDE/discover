@@ -31,7 +31,6 @@
 #include <KDebug>
 #include <KDialog>
 #include <KHBox>
-#include <KIcon>
 #include <KLocale>
 #include <KMenu>
 #include <KMessageBox>
@@ -64,7 +63,7 @@ MainTab::MainTab(QWidget *parent)
     buttonBoxLayout->addWidget(buttonLabel);
 
     m_installButton = new QPushButton(buttonBox);
-    m_installButton->setIcon(KIcon("download"));
+    m_installButton->setIcon(QIcon::fromTheme("download"));
     m_installButton->setText(i18nc("@action:button", "Installation"));
     connect(m_installButton, SIGNAL(clicked()), this, SLOT(emitSetInstall()));
     buttonBoxLayout->addWidget(m_installButton);
@@ -72,26 +71,26 @@ MainTab::MainTab(QWidget *parent)
     m_removeButton = new QToolButton(buttonBox);
     m_removeButton->setPopupMode(QToolButton::MenuButtonPopup);
     m_removeButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-    m_removeButton->setIcon(KIcon("edit-delete"));
+    m_removeButton->setIcon(QIcon::fromTheme("edit-delete"));
     m_removeButton->setText(i18nc("@action:button", "Removal"));
     connect(m_removeButton, SIGNAL(clicked()), this, SLOT(emitSetRemove()));
     buttonBoxLayout->addWidget(m_removeButton);
 
     m_upgradeButton = new QPushButton(buttonBox);
-    m_upgradeButton->setIcon(KIcon("system-software-update"));
+    m_upgradeButton->setIcon(QIcon::fromTheme("system-software-update"));
     m_upgradeButton->setText(i18nc("@action:button", "Upgrade"));
     connect(m_upgradeButton, SIGNAL(clicked()), this, SLOT(emitSetInstall()));
     buttonBoxLayout->addWidget(m_upgradeButton);
 
     m_reinstallButton = new QPushButton(buttonBox);
-    m_reinstallButton->setIcon(KIcon("view-refresh"));
+    m_reinstallButton->setIcon(QIcon::fromTheme("view-refresh"));
     m_reinstallButton->setText(i18nc("@action:button", "Reinstallation"));
     connect(m_reinstallButton, SIGNAL(clicked()), this, SLOT(emitSetReInstall()));
     buttonBoxLayout->addWidget(m_reinstallButton);
 
     m_purgeMenu = new KMenu(m_removeButton);
     m_purgeAction = new KAction(this);
-    m_purgeAction->setIcon(KIcon("edit-delete-shred"));
+    m_purgeAction->setIcon(QIcon::fromTheme("edit-delete-shred"));
     m_purgeAction->setText(i18nc("@action:button", "Purge"));
     connect(m_purgeAction, SIGNAL(triggered()), this, SLOT(emitSetPurge()));
     m_purgeMenu->addAction(m_purgeAction);
@@ -104,7 +103,7 @@ MainTab::MainTab(QWidget *parent)
     buttonBoxLayout->addWidget(m_purgeButton);
 
     m_cancelButton = new QPushButton(buttonBox);
-    m_cancelButton->setIcon(KIcon("dialog-cancel"));
+    m_cancelButton->setIcon(QIcon::fromTheme("dialog-cancel"));
     m_cancelButton->setText(i18nc("@action:button", "Unmark"));
     connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(emitSetKeep()));
     buttonBoxLayout->addWidget(m_cancelButton);

@@ -172,34 +172,34 @@ void MainWindow::setupActions()
     MuonMainWindow::setupActions();
 
     m_safeUpgradeAction = actionCollection()->addAction("safeupgrade");
-    m_safeUpgradeAction->setIcon(KIcon("go-up"));
+    m_safeUpgradeAction->setIcon(QIcon::fromTheme("go-up"));
     m_safeUpgradeAction->setText(i18nc("@action Marks upgradeable packages for upgrade", "Cautious Upgrade"));
     connect(m_safeUpgradeAction, SIGNAL(triggered()), this, SLOT(markUpgrade()));
 
     m_distUpgradeAction = actionCollection()->addAction("fullupgrade");
-    m_distUpgradeAction->setIcon(KIcon("go-top"));
+    m_distUpgradeAction->setIcon(QIcon::fromTheme("go-top"));
     m_distUpgradeAction->setText(i18nc("@action Marks upgradeable packages, including ones that install/remove new things",
                                        "Full Upgrade"));
     connect(m_distUpgradeAction, SIGNAL(triggered()), this, SLOT(markDistUpgrade()));
 
     m_autoRemoveAction = actionCollection()->addAction("autoremove");
-    m_autoRemoveAction->setIcon(KIcon("trash-empty"));
+    m_autoRemoveAction->setIcon(QIcon::fromTheme("trash-empty"));
     m_autoRemoveAction->setText(i18nc("@action Marks packages no longer needed for removal",
                                       "Remove Unnecessary Packages"));
     connect(m_autoRemoveAction, SIGNAL(triggered()), this, SLOT(markAutoRemove()));
 
     m_previewAction = actionCollection()->addAction("preview");
-    m_previewAction->setIcon(KIcon("document-preview-archive"));
+    m_previewAction->setIcon(QIcon::fromTheme("document-preview-archive"));
     m_previewAction->setText(i18nc("@action Takes the user to the preview page", "Preview Changes"));
     connect(m_previewAction, SIGNAL(triggered()), this, SLOT(previewChanges()));
 
     m_applyAction = actionCollection()->addAction("apply");
-    m_applyAction->setIcon(KIcon("dialog-ok-apply"));
+    m_applyAction->setIcon(QIcon::fromTheme("dialog-ok-apply"));
     m_applyAction->setText(i18nc("@action Applys the changes a user has made", "Apply Changes"));
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
 
     KAction* updateAction = actionCollection()->addAction("update");
-    updateAction->setIcon(KIcon("system-software-update"));
+    updateAction->setIcon(QIcon::fromTheme("system-software-update"));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
@@ -313,7 +313,7 @@ void MainWindow::previewChanges()
 
     m_stack->setCurrentWidget(m_reviewWidget);
 
-    m_previewAction->setIcon(KIcon("go-previous"));
+    m_previewAction->setIcon(QIcon::fromTheme("go-previous"));
     m_previewAction->setText(i18nc("@action:intoolbar Return from the preview page", "Back"));
     disconnect(m_previewAction, SIGNAL(triggered()), this, SLOT(previewChanges()));
     connect(m_previewAction, SIGNAL(triggered()), this, SLOT(returnFromPreview()));
@@ -327,7 +327,7 @@ void MainWindow::returnFromPreview()
         m_reviewWidget = nullptr;
     }
 
-    m_previewAction->setIcon(KIcon("document-preview-archive"));
+    m_previewAction->setIcon(QIcon::fromTheme("document-preview-archive"));
     m_previewAction->setText(i18nc("@action", "Preview Changes"));
     disconnect(m_previewAction, SIGNAL(triggered()), this, SLOT(returnFromPreview()));
     connect(m_previewAction, SIGNAL(triggered()), this, SLOT(previewChanges()));

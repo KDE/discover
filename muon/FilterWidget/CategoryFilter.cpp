@@ -24,7 +24,6 @@
 #include <QtCore/QSet>
 
 // KDE includes
-#include <KIcon>
 #include <KLocale>
 
 // LibQApt includes
@@ -54,7 +53,7 @@ void CategoryFilter::populate()
 
     QStandardItem *defaultItem = new QStandardItem;
     defaultItem->setEditable(false);
-    defaultItem->setIcon(KIcon("bookmark-new-list"));
+    defaultItem->setIcon(QIcon::fromTheme("bookmark-new-list"));
     defaultItem->setText(i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All"));
     appendRow(defaultItem);
 

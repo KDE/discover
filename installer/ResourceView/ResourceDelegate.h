@@ -24,10 +24,8 @@
 
 // KDE includes
 #include <KExtendableItemDelegate>
-#include <KIcon>
 
 class AbstractResource;
-class KIconLoader;
 class KRatingPainter;
 
 class ResourceExtender;

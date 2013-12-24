@@ -25,7 +25,6 @@
 #include <QStringBuilder>
 
 // KDE includes
-#include <KIcon>
 #include <KService>
 #include <KToolInvocation>
 
@@ -76,7 +75,7 @@ void LaunchListModel::addApplication(AbstractResource* app)
             name += QLatin1String(" - ") % service->genericName();
 
         QStandardItem *item = new QStandardItem(name);
-        item->setIcon(KIcon(service->icon()));
+        item->setIcon(QIcon::fromTheme(service->icon()));
         item->setData(service->desktopEntryPath(), Qt::UserRole);
         items += item;
     }
