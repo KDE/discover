@@ -37,7 +37,6 @@ public:
     virtual ~ApplicationNotifier();
     
 public slots:
-    virtual void configurationChanged();
     virtual void recheckSystemUpdateNeeded();
     
 private slots:

@@ -95,7 +95,7 @@ void ChangesDialog::addPackages(const QApt::StateChanges &changes)
 {
     for (auto i = changes.constBegin(); i != changes.constEnd(); ++i) {
         QStandardItem *root = new QStandardItem;
-        root->setText(MuonStrings::global()->packageChangeStateName(i.key()));
+        root->setText(MuonStrings::global()->packageStateName(i.key()));
 
         QFont font = root->font();
         font.setBold(true);

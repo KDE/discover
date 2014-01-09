@@ -1,5 +1,27 @@
 [Desktop Entry]
 Name=Muon Application Notifier
+Name[cs]=Oznamování aplikace Muon
+Name[da]=Bekendtgørelser fra programmet Muon
+Name[de]=Muon-Anwendungs-Benachrichtigung
+Name[es]=Notificador  aplicaciones de Muon
+Name[fi]=Muonin sovellusilmoitukset
+Name[fr]=Notifieur de l'application Muon
+Name[gl]=Notificador de aplicacións de Muon
+Name[hu]=Muon alkalmazás értesítő
+Name[nl]=Muon melder van toepassingen
+Name[pt]=Notificação de Aplicações do Muon
+Name[pt_BR]=Notificador de Aplicativos do Muon
+Name[sk]=Oznamovač aplikácií Muon
+Name[sl]=Obvestilnik za programe Muon
+Name[sr]=Муонов извештавач о програмима
+Name[sr@ijekavian]=Муонов извјештавач о програмима
+Name[sr@ijekavianlatin]=Muonov izvještavač o programima
+Name[sr@latin]=Muonov izveštavač o programima
+Name[sv]=Muon programunderrättelse
+Name[tr]=Muon Uygulama Bildirici
+Name[uk]=Сповіщувач програми Muon
+Name[x-test]=xxMuon Application Notifierxx
+Name[zh_TW]=Muon 應用程式通知器
 Type=Service
 X-KDE-ServiceTypes=KDEDModule
 X-KDE-Library=muonapplicationnotifier

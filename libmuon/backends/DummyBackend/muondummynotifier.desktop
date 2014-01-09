@@ -1,5 +1,26 @@
 [Desktop Entry]
 Name=Muon Dummy Notifier
+Name[da]=Bekendtgørelser fra Muon-attrap
+Name[de]=Muon-Benachrichtigung-Attrappe
+Name[es]=Simulador de notificador de Muon
+Name[fi]=Muonin testi-ilmoitukset
+Name[fr]=Notifieur factice de Muon
+Name[gl]=Notificador de probas de Muon
+Name[hu]=Muon üres értesítő
+Name[nl]=Muon dummy-melder
+Name[pt]=Notificação de Testes do Muon
+Name[pt_BR]=Notificador de Testes do Muon
+Name[sk]=Prázdny oznamovač Muon
+Name[sl]=Preizkusni obvestilnik Muon
+Name[sr]=Муонов лажни извештавач
+Name[sr@ijekavian]=Муонов лажни извјештавач
+Name[sr@ijekavianlatin]=Muonov lažni izvještavač
+Name[sr@latin]=Muonov lažni izveštavač
+Name[sv]=Muon testunderrättelse
+Name[tr]=Muon Kullanımsız Bildirici
+Name[uk]=Тестовий сповіщувач Muon
+Name[x-test]=xxMuon Dummy Notifierxx
+Name[zh_TW]=Muon Dummy 通知器
 Type=Service
 X-KDE-ServiceTypes=KDEDModule
 X-KDE-Library=muondummyotifier

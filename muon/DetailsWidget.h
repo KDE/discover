@@ -52,6 +52,7 @@ public Q_SLOTS:
     void setPackage(QApt::Package *package);
     void refreshTabs();
     void clear();
+    void emitHideButtons();
 
 signals:
     void setInstall(QApt::Package *package);
@@ -60,6 +61,7 @@ signals:
     void setReInstall(QApt::Package *package);
     void setKeep(QApt::Package *package);
     void setPurge(QApt::Package *package);
+    void emitHideButtonsSignal();
 };
 
 #endif

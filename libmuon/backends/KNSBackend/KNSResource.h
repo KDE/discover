@@ -42,12 +42,12 @@ public:
     virtual QString comment();
     virtual QString name();
     virtual QString packageName() const;
-    virtual QString categories();
-    virtual QUrl homepage() const;
+    virtual QStringList categories();
+    virtual QUrl homepage();
     virtual QUrl thumbnailUrl();
     virtual QUrl screenshotUrl();
     virtual QString license();
-    virtual QString longDescription() const;
+    virtual QString longDescription();
     virtual QList<PackageState> addonsInformation() { return QList<PackageState>(); }
     virtual QString availableVersion() const;
     virtual QString installedVersion() const;
@@ -57,15 +57,15 @@ public:
     virtual int downloadSize();
     virtual void fetchChangelog();
 
-    Attica::Content& content();
+    const Attica::Content& content();
     void setEntry(const KNS3::Entry& entry);
     KNS3::Entry* entry() const;
 
 private:
     KNS3::Entry::Status m_status;
-    Attica::Content m_content;
-    QString m_category;
-    QString m_icon;
+    const Attica::Content m_content;
+    const QString m_category;
+    const QString m_icon;
     KNS3::Entry* m_entry;
 };
 

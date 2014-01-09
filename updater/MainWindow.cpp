@@ -28,6 +28,7 @@
 #include <QPushButton>
 #include <QToolButton>
 #include <QMenu>
+#include <QLayoutItem>
 
 // KDE includes
 #include <KAction>
@@ -81,7 +82,7 @@ void MainWindow::initGUI()
     checkPlugState();
 
     m_progressWidget = new ProgressWidget(m_updater, mainWidget);
-    m_updaterWidget = new UpdaterWidget(mainWidget);
+    m_updaterWidget = new UpdaterWidget(m_updater, mainWidget);
     m_updaterWidget->setEnabled(false);
     connect(m_updaterWidget, SIGNAL(modelPopulated()),
             this, SLOT(setActionsEnabled()));
@@ -139,10 +140,20 @@ void MainWindow::setupActions()
 
 void MainWindow::initBackend()
 {
-    m_updaterWidget->setBackend(m_updater);
     setupBackendsActions();
 
     setActionsEnabled();
+}
+
+static bool containsAction(QAction* action, QBoxLayout* l)
+{
+    for(int i=0, count=l->count(); i<count; ++i) {
+        KActionMessageWidget* w = qobject_cast<KActionMessageWidget*>(l->itemAt(i)->widget());
+        if(w && w->action() == action) {
+            return true;
+        }
+    }
+    return false;
 }
 
 void MainWindow::setupBackendsActions()
@@ -150,14 +161,17 @@ void MainWindow::setupBackendsActions()
     foreach (QAction* action, m_updater->messageActions()) {
         switch(action->priority()) {
             case QAction::HighPriority: {
-                KActionMessageWidget* w = new KActionMessageWidget(action, centralWidget());
-                qobject_cast<QBoxLayout*>(centralWidget()->layout())->insertWidget(1, w);
+                if(!containsAction(action, qobject_cast<QBoxLayout*>(centralWidget()->layout()))) {
+                    KActionMessageWidget* w = new KActionMessageWidget(action, centralWidget());
+                    qobject_cast<QBoxLayout*>(centralWidget()->layout())->insertWidget(1, w);
+                }
             }   break;
             case QAction::NormalPriority:
                 m_moreMenu->insertAction(m_moreMenu->actions().first(), action);
                 break;
             case QAction::LowPriority:
             default:
+                m_advancedMenu->setEnabled(true);
                 m_advancedMenu->addAction(action);
                 break;
         }

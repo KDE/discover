@@ -32,6 +32,7 @@
 #include <QDebug>
 #include <QThread>
 #include <QTimer>
+#include <QAction>
 
 K_PLUGIN_FACTORY(MuonDummyBackendFactory, registerPlugin<DummyBackend>(); )
 K_EXPORT_PLUGIN(MuonDummyBackendFactory(KAboutData("muon-dummybackend","muon-dummybackend",ki18n("Dummy Backend"),"0.1",ki18n("Dummy backend to test muon frontends"), KAboutData::License_GPL)))
@@ -39,6 +40,7 @@ K_EXPORT_PLUGIN(MuonDummyBackendFactory(KAboutData("muon-dummybackend","muon-dum
 DummyBackend::DummyBackend(QObject* parent, const QVariantList&)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
+    , m_fetching(false)
 {
     for(int i=0; i<32000; i++) {
         QString name = "alalala"+QString::number(i);
@@ -47,13 +49,27 @@ DummyBackend::DummyBackend(QObject* parent, const QVariantList&)
         m_resources.insert(name, res);
         connect(res, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));
     }
-    
-//     QTimer::singleShot(0, this, SIGNAL(fetchingChanged()));
+
     m_reviews = new DummyReviewsBackend(this);
+
+    QAction* updateAction = new QAction(this);
+    updateAction->setIcon(QIcon::fromTheme("system-software-update"));
+    updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
+    updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
+    connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
+    m_updater->setMessageActions(QList<QAction*>() << updateAction);
+}
+
+void DummyBackend::toggleFetching()
+{
+    m_fetching = !m_fetching;
+    qDebug() << "fetching..." << m_fetching;
+    emit fetchingChanged();
 }
 
 QVector<AbstractResource*> DummyBackend::allResources() const
 {
+    Q_ASSERT(!m_fetching);
     QVector<AbstractResource*> ret;
     ret.reserve(m_resources.size());
     foreach(AbstractResource* res, m_resources) {
@@ -121,4 +137,12 @@ void DummyBackend::removeApplication(AbstractResource* app)
 
 void DummyBackend::cancelTransaction(AbstractResource*)
 {}
+
+void DummyBackend::checkForUpdates()
+{
+    if(m_fetching)
+        return;
+    toggleFetching();
+    QTimer::singleShot(2000, this, SLOT(toggleFetching()));
+}
 

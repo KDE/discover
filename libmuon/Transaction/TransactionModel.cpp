@@ -193,6 +193,8 @@ bool TransactionModel::removeRows(int row, int count, const QModelIndex &parent)
     for(; count>0; ++row, --count) {
         QModelIndex child = index(row);
         Transaction *trans = transactionFromIndex(child);
+        if(!trans)
+            continue;
 
         beginRemoveRows(parent, row, row);
         int c = m_transactions.removeAll(trans);

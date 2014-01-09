@@ -56,6 +56,8 @@ public:
     void openApplication(const QString &app);
 
 private:
+    QStandardItem* createOriginItem(const QString& originName);
+
     AbstractResourcesBackend *m_appBackend;
     QString m_appToBeOpened;
     QSplitter *m_mainWidget;

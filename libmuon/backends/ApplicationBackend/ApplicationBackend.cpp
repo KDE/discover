@@ -151,9 +151,13 @@ void ApplicationBackend::setApplications()
 
 void ApplicationBackend::reload()
 {
+    if(isFetching()) {
+        qWarning() << "Reloading while already reloading... Please report.";
+        return;
+    }
+    setFetching(true);
     if (m_aptify)
         m_aptify->setCanExit(false);
-    setFetching(true);
     foreach(Application* app, m_appList)
         app->clearPackage();
     qDeleteAll(m_transQueue);
@@ -385,7 +389,6 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
 
     if (!confirmRemoval(changes)) {
         m_backend->restoreCacheState(oldCacheState);
-        transaction->cancel();
         transaction->deleteLater();
         return;
     }
@@ -533,6 +536,7 @@ QWidget* ApplicationBackend::mainWindow() const
 
 void ApplicationBackend::initBackend()
 {
+    setFetching(true);
     if (m_aptify) {
         m_aptify->setCanExit(false);
         QAptActions::self()->setReloadWhenEditorFinished(true);
@@ -549,7 +553,6 @@ void ApplicationBackend::initBackend()
     m_reviewsBackend->setAptBackend(m_backend);
     m_backendUpdater->setBackend(m_backend);
 
-    setFetching(true);
     QFuture<QVector<Application*> > future = QtConcurrent::run(init, m_backend, QThread::currentThread());
     m_watcher->setFuture(future);
     connect(m_backend, SIGNAL(transactionQueueChanged(QString,QStringList)),
@@ -620,12 +623,21 @@ void ApplicationBackend::checkForUpdates()
     QApt::Transaction* transaction = backend()->updateCache();
     m_backendUpdater->setupTransaction(transaction);
     transaction->run();
+    m_backendUpdater->setProgressing(true);
+    connect(transaction, SIGNAL(finished(QApt::ExitStatus)), SLOT(updateFinished(QApt::ExitStatus)));
+}
 
+void ApplicationBackend::updateFinished(QApt::ExitStatus status)
+{
+    if(status != QApt::ExitSuccess) {
+        qWarning() << "updating was not successful";
+    }
+    m_backendUpdater->setProgressing(false);
 }
 
 void ApplicationBackend::setFetching(bool f)
 {
-    if(m_isFetching == f) {
+    if(m_isFetching != f) {
         m_isFetching = f;
         emit fetchingChanged();
         if(!m_isFetching) {

@@ -32,15 +32,24 @@ if __name__ == "__main__":
     """ check for updates, if there are any say so """
 
     init_proxy()
+
     #FIXME: implement command line options for MetaReleaseCore args
     metaRelease = MetaReleaseCore(False, False)
+
+    # MetaReleaseCore internally runs .download() in a thraed. It has however no
+    # meaningful signal for when it is finished, so following the GTK update-manger's
+    # behavior we check ever second.
+    # WARNING: You must *not* call .download() or really any other function
+    # until download==False. Otherwise unprotected members may lead to wrong
+    # results and/or data corruption!
+    # FIXME: If muon-notifier and a $muonapp run releasechecker at the same time
+    # file level race conditions may occur and lead to incorrectly reported
+    # available upgrade when really there was none.
     while metaRelease.downloading:
-        time.sleep(0.5)
+        time.sleep(1)
     new_dist = metaRelease.new_dist
 
     if new_dist is not None:
-        print("Found a release")
         sys.exit(0)
     else:
         sys.exit(1)
-

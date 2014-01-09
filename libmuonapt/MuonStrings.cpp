@@ -193,22 +193,34 @@ QString MuonStrings::groupKey(const QString &text) const
 QHash<int, QString> MuonStrings::stateHash()
 {
     QHash<int, QString> hash;
-    hash[Package::NotInstalled] = i18nc("@info:status Package state" , "Not Installed");
+    hash[Package::ToKeep] = i18nc("@info:status Package state", "No Change");
+    hash[Package::ToInstall] = i18nc("@info:status Requested action", "Install");
+    hash[Package::NewInstall] = i18nc("@info:status Requested action", "Install");
+    hash[Package::ToReInstall] = i18nc("@info:status Requested action", "Reinstall");
+    hash[Package::ToUpgrade] = i18nc("@info:status Requested action", "Upgrade");
+    hash[Package::ToDowngrade] = i18nc("@info:status Requested action", "Downgrade");
+    hash[Package::ToRemove] = i18nc("@info:status Requested action", "Remove");
+    hash[Package::Held] = i18nc("@info:status Package state" , "Held");
     hash[Package::Installed] = i18nc("@info:status Package state", "Installed");
     hash[Package::Upgradeable] = i18nc("@info:status Package state", "Upgradeable");
     hash[Package::NowBroken] = i18nc("@info:status Package state", "Broken");
+    hash[Package::InstallBroken] = i18nc("@info:status Package state", "Install Broken");
+    hash[Package::Orphaned] = i18nc("@info:status Package state", "Orphaned");
+    hash[Package::Pinned] = i18nc("@info:status Package state", "Locked");
+    hash[Package::New] = i18nc("@info:status Package state", "New in repository");
     hash[Package::ResidualConfig] = i18nc("@info:status Package state", "Residual Configuration");
-    hash[Package::IsGarbage] = i18nc("@info:status Package state", "Installed (auto-removable)");
-    hash[Package::NewInstall] = i18nc("@info:status Requested action", "Install");
-    hash[Package::ToKeep] = i18nc("@info:status Package state", "No Change");
-    hash[Package::ToInstall] = i18nc("@info:status Requested action", "Install");
-    hash[Package::ToUpgrade] = i18nc("@info:status Requested action", "Upgrade");
-    hash[Package::ToRemove] = i18nc("@info:status Requested action", "Remove");
+    hash[Package::NotDownloadable] = i18nc("@info:status Package state", "Not Downloadable");
     hash[Package::ToPurge] = i18nc("@info:status Requested action", "Purge");
-    hash[Package::ToReInstall] = i18nc("@info:status Requested action", "Reinstall");
-    hash[Package::ToDowngrade] = i18nc("@info:status Requested action", "Downgrade");
+    hash[Package::IsImportant] = i18nc("@info:status Package state", "Important for base install");
+    hash[Package::OverrideVersion] = i18nc("@info:status Package state", "Version overridden");
+    hash[Package::IsAuto] = i18nc("@info:status Package state", "Required by other packages");
+    hash[Package::IsGarbage] = i18nc("@info:status Package state", "Installed (auto-removable)");
+    hash[Package::NowPolicyBroken] = i18nc("@info:status Package state", "Policy Broken");
+    hash[Package::InstallPolicyBroken] = i18nc("@info:status Package state", "Policy Broken");
+    hash[Package::NotInstalled] = i18nc("@info:status Package state" , "Not Installed");
     hash[Package::IsPinned] = i18nc("@info:status Package locked at a certain version",
                                           "Locked");
+    hash[Package::IsManuallyHeld] = i18nc("@info:status Package state", "Manually held back");
 
     return hash;
 }

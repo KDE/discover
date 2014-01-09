@@ -62,9 +62,9 @@ void AbstractResource::fetchScreenshots()
     emit screenshotsFetched(thumbs, screens);
 }
 
-QString AbstractResource::mimetypes() const
+QStringList AbstractResource::mimetypes() const
 {
-    return QString();
+    return QStringList();
 }
 
 QStringList AbstractResource::executables() const

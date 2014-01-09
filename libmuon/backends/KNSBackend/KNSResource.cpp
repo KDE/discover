@@ -90,12 +90,12 @@ QString KNSResource::packageName() const
     return m_content.id();
 }
 
-QString KNSResource::categories()
+QStringList KNSResource::categories()
 {
-    return m_category;
+    return QStringList(m_category);
 }
 
-QUrl KNSResource::homepage() const
+QUrl KNSResource::homepage()
 {
     return m_content.detailpage();
 }
@@ -110,12 +110,12 @@ QUrl KNSResource::screenshotUrl()
     return m_content.previewPicture();
 }
 
-Attica::Content& KNSResource::content()
+const Attica::Content& KNSResource::content()
 {
     return m_content;
 }
 
-QString KNSResource::longDescription() const
+QString KNSResource::longDescription()
 {
     QString ret = m_content.description();
     ret = ret.replace('\r', QString());

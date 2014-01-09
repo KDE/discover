@@ -13,7 +13,7 @@ find_package(LibAttica QUIET)
 find_package(BODEGA QUIET)
 find_package(AkabeiCore QUIET)
 find_package(AkabeiClient QUIET)
-
+find_package(PackageKitQt2 QUIET)
 
 include (KDE4Defaults)
 include( FindPkgConfig )
@@ -31,7 +31,7 @@ include_directories(${KDE4_INCLUDES} ${QT_INCLUDES} ${QAPT_INCLUDE_DIR}
 
 add_subdirectory(libmuon)
 if(QAPT_FOUND)
-	add_subdirectory(libmuonapt)
+    add_subdirectory(libmuonapt)
     add_subdirectory(muon)
     add_subdirectory(installer)
     add_subdirectory(kded)
@@ -48,5 +48,7 @@ macro_log_feature(BODEGA_FOUND "Bodega" "Library that exposes Bodega resources"
                   "http://www.kde.org" FALSE "" "Required to build the Bodega backend")
 macro_log_feature(AKABEICLIENT_FOUND "Akabei" "Library that exposes Akabei resources"
                   "http://www.kde.org" FALSE "" "Required to build the Akabei backend")
+macro_log_feature(PACKAGEKITQT2_FOUND "PackageKitQt2" "Library that exposes PackageKit resources"
+                  "http://www.packagekit.org" FALSE "" "Required to build the PackageKit backend")
 
 macro_display_feature_log()

@@ -63,10 +63,10 @@ public:
     void prepare();
     virtual QList<QAction*> messageActions() const;
     void setupTransaction(QApt::Transaction *trans);
+    virtual bool isMarked(AbstractResource* res) const;
+    void setProgressing(bool progressing);
 
 private:
-    void setProgressing(bool progressing);
-    
     QPointer<QApt::Transaction> m_trans;
     QApt::Backend* m_aptBackend;
     ApplicationBackend* m_appBackend;
@@ -91,6 +91,7 @@ private slots:
     void setStatusDetail(const QString& msg);
     void fetchingChanged();
     void calculateUpdates();
+    void transactionFinished(QApt::ExitStatus);
 };
 
 #endif // APPLICATIONUPDATES_H

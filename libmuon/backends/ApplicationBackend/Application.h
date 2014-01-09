@@ -41,7 +41,6 @@ namespace QApt {
 class MUONPRIVATE_EXPORT Application : public AbstractResource
 {
 Q_OBJECT
-// Q_PROPERTY(QString mimetypes READ mimetypes CONSTANT)
 Q_PROPERTY(QString menuPath READ menuPath CONSTANT)
 public:
     explicit Application(const QString &fileName, QApt::Backend *backend);
@@ -52,9 +51,9 @@ public:
     QString comment();
     QApt::Package *package();
     QString icon() const;
-    QString mimetypes() const;
+    QStringList mimetypes() const;
     QString menuPath();
-    QString categories();
+    QStringList categories();
     QString license();
     QUrl screenshotUrl();
     QUrl thumbnailUrl();
@@ -64,8 +63,8 @@ public:
     QString packageName() const;
 
     //QApt::Package forwarding
-    QUrl homepage() const;
-    QString longDescription() const;
+    QUrl homepage();
+    QString longDescription();
     QString installedVersion() const;
     QString availableVersion() const;
     QString sizeDescription();

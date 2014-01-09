@@ -62,6 +62,8 @@ void OriginsBackend::load()
     }
     
     m_sourcesList.reload();
+    qDeleteAll(m_sources);
+    m_sources.clear();
 
     for (const QApt::SourceEntry &sEntry : m_sourcesList.entries()) {
         if (!sEntry.isValid())

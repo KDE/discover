@@ -238,7 +238,7 @@ void AddonsWidget::addonStateChanged(const QModelIndex &left, const QModelIndex 
 
 void AddonsWidget::emitApplyButtonClicked()
 {
-    ResourcesModel *resourcesModel = ResourcesModel::global();
+//     ResourcesModel *resourcesModel = ResourcesModel::global();
     //resourcesModel->installApplication(m_resource, m_changedAddons);
 
     emit applyButtonClicked();
