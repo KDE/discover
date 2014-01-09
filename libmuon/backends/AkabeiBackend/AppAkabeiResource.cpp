@@ -43,7 +43,7 @@ QString AppAkabeiResource::name()
     return ret;
 }
 
-QString AppAkabeiResource::longDescription() const
+QString AppAkabeiResource::longDescription()
 {
     QString ret = m_appdata.summary.value(KGlobal::locale()->language());
     if(ret.isEmpty()) ret = m_appdata.summary.value(QString());
@@ -56,17 +56,17 @@ QString AppAkabeiResource::icon() const
     return m_appdata.icon;
 }
 
-QString AppAkabeiResource::mimetypes() const
+QStringList AppAkabeiResource::mimetypes() const
 {
-    return m_appdata.mimetypes.first();
+    return m_appdata.mimetypes;
 }
 
-QString AppAkabeiResource::categories()
+QStringList AppAkabeiResource::categories()
 {
-    return m_appdata.appcategories.first();
+    return m_appdata.appcategories;
 }
 
-QUrl AppAkabeiResource::homepage() const
+QUrl AppAkabeiResource::homepage()
 {
     return m_appdata.url.isEmpty() ? AkabeiResource::homepage() : m_appdata.url;
 }

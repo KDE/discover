@@ -33,10 +33,10 @@ class AppAkabeiResource : public AkabeiResource
         virtual bool isTechnical() const;
         virtual QString name();
         virtual QString icon() const;
-        virtual QString mimetypes() const;
-        virtual QString categories();
-        virtual QString longDescription() const;
-        virtual QUrl homepage() const;
+        virtual QStringList mimetypes() const;
+        virtual QStringList categories();
+        virtual QString longDescription();
+        virtual QUrl homepage();
         virtual bool canExecute() const { return true; }
         virtual QStringList executables() const;
         virtual void invokeApplication() const;

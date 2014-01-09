@@ -53,10 +53,10 @@ class MUONPRIVATE_EXPORT AkabeiResource : public AbstractResource
         
         virtual State state();
         
-        virtual QString categories();
+        virtual QStringList categories();
         
         ///@returns a URL that points to the content
-        virtual QUrl homepage() const;
+        virtual QUrl homepage();
         
         virtual bool isTechnical() const;
 
@@ -68,13 +68,13 @@ class MUONPRIVATE_EXPORT AkabeiResource : public AbstractResource
         
         virtual QString installedVersion() const;
         virtual QString availableVersion() const;
-        virtual QString longDescription() const;
+        virtual QString longDescription();
         
         virtual QString origin() const;
         virtual QString section();
         
         ///@returns what kind of mime types the resource can consume
-        virtual QString mimetypes() const;
+        virtual QStringList mimetypes() const;
         
         virtual QList<PackageState> addonsInformation();
         bool isFromSecureOrigin() const;

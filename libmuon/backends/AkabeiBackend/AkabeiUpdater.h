@@ -45,6 +45,7 @@ public:
     virtual bool isProgressing() const;
     virtual bool isCancelable() const;
     virtual bool isAllMarked() const;
+    virtual bool isMarked(AbstractResource* res) const;
     virtual QDateTime lastUpdate() const;
     virtual QList< AbstractResource* > toUpdate() const;
     virtual void addResources(const QList< AbstractResource* >& apps);

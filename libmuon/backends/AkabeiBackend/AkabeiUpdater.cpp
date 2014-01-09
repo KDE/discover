@@ -241,6 +241,11 @@ bool AkabeiUpdater::isAllMarked() const
     return m_backend->updatesCount() == m_marked.size();
 }
 
+bool AkabeiUpdater::isMarked(AbstractResource* res) const
+{
+    return m_marked.contains(res);
+}
+
 QDateTime AkabeiUpdater::lastUpdate() const
 {
     return QDateTime::currentDateTime();//FIXME

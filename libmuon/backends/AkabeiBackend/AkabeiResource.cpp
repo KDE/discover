@@ -54,7 +54,7 @@ QString AkabeiResource::comment()
     return m_pkg->description();
 }
 
-QString AkabeiResource::longDescription() const
+QString AkabeiResource::longDescription()
 {
     return m_pkg->description();
 }
@@ -102,12 +102,12 @@ AbstractResource::State AkabeiResource::state()
     return AbstractResource::None;
 }
         
-QString AkabeiResource::categories()
+QStringList AkabeiResource::categories()
 {
-    return "Unknown";//We just rely on appstream for this until it's implemented in akabei
+    return QStringList() << "Unknown";//We just rely on appstream for this until it's implemented in akabei
 }
         
-QUrl AkabeiResource::homepage() const
+QUrl AkabeiResource::homepage()
 {
     return m_pkg->url();
 }
@@ -164,9 +164,9 @@ QString AkabeiResource::section()
     return m_pkg->groups().first()->name();//FIXME: Probably add support for multiple sections?
 }
         
-QString AkabeiResource::mimetypes() const
+QStringList AkabeiResource::mimetypes() const
 {
-    return QString();
+    return QStringList();
 }
         
 QList<PackageState> AkabeiResource::addonsInformation()
