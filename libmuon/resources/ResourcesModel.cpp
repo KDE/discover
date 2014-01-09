@@ -229,7 +229,12 @@ void ResourcesModel::cleanBackend(AbstractResourcesBackend* backend)
         before+= it->size();
     }
     
-    beginRemoveRows(QModelIndex(), before, before+backendsResources->count()-1);
+    int last = before + backendsResources->count() - 1;
+    if (backendsResources->isEmpty()) {
+        last = before;
+    }
+
+    beginRemoveRows(QModelIndex(), before, last);
     backendsResources->clear();
     endRemoveRows();
 }
