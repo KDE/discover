@@ -284,6 +284,10 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error)
 
 void ApplicationBackend::updateProgress(int percentage)
 {
+    if(!m_currentTransaction) {
+        qDebug() << "missing transaction";
+        return;
+    }
     m_currentTransaction->setProgress(percentage);
 }
 
