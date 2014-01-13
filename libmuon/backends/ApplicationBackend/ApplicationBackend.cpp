@@ -95,6 +95,8 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
     QDir appDir("/usr/share/app-install/desktop/");
     QStringList fileList = appDir.entryList(QStringList("*.desktop"), QDir::Files);
 
+    QByteArray currentDesktop = qgetenv("XDG_CURRENT_DESKTOP");
+    
     QList<Application *> tempList;
     QSet<QString> packages;
     foreach(const QString &fileName, fileList) {
@@ -122,7 +124,10 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
     for (Application *app : tempList) {
         bool added = false;
         QApt::Package *pkg = app->package();
-        if (app->isValid() && pkg) {
+        if (app->isValid() && pkg
+                && !app->getField("NotShowIn", QByteArray()).contains(currentDesktop)
+                && app->getField("OnlyShowIn", currentDesktop).contains(currentDesktop))
+        {
             appList << app;
             app->moveToThread(thread);
             added = true;
