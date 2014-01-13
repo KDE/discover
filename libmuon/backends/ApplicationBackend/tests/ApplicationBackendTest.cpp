@@ -20,18 +20,23 @@
 
 #include "ApplicationBackendTest.h"
 #include <QStringList>
+#include <QAction>
 #include <KProtocolManager>
+#include <KActionCollection>
 #include <qtest_kde.h>
 
 #include "modeltest.h"
 #include <ApplicationBackend.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>
+#include <resources/AbstractBackendUpdater.h>
 #include <Category/Category.h>
 #include <Category/CategoryModel.h>
 #include <MuonBackendsFactory.h>
+#include <MuonMainWindow.h>
+#include <QAptActions.h>
 
-QTEST_KDEMAIN_CORE( ApplicationBackendTest )
+QTEST_KDEMAIN( ApplicationBackendTest, GUI )
 
 AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 {
@@ -47,6 +52,8 @@ AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 ApplicationBackendTest::ApplicationBackendTest()
 {
     ResourcesModel* m = new ResourcesModel("muon-appsbackend", this);
+    m_window = new MuonMainWindow;
+    m->integrateMainWindow(m_window);
     new ModelTest(m,m);
 
     m_appBackend = backendByName(m, "ApplicationBackend");
@@ -55,7 +62,9 @@ ApplicationBackendTest::ApplicationBackendTest()
 }
 
 ApplicationBackendTest::~ApplicationBackendTest()
-{}
+{
+    delete m_window;
+}
 
 void ApplicationBackendTest::testReload()
 {
@@ -96,4 +105,16 @@ void ApplicationBackendTest::testCategories()
         proxy->setFiltersFromCategory(cat);
         qDebug() << "fuuuuuu" << proxy->rowCount() << cat->name();
     }
+}
+
+void ApplicationBackendTest::testRefreshUpdates()
+{
+    ResourcesModel* m = ResourcesModel::global();
+    AbstractBackendUpdater* updater = m_appBackend->backendUpdater();
+
+    QSignalSpy spy(m, SIGNAL(fetchingChanged()));
+    QAptActions::self()->actionCollection()->action("update")->trigger();
+//     QTest::kWaitForSignal(m, SLOT(fetchingChanged()));
+    QVERIFY(!m->isFetching());
+    qDebug() << spy.count();
 }
