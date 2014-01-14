@@ -106,7 +106,6 @@ Item {
         shortcut: "Alt+Up"
         onTriggered: {
             breadcrumbsItem.popItem(false)
-            window.clearSearch()
         }
     }
     TopLevelPageData {
