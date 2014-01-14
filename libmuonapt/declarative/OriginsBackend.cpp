@@ -45,6 +45,8 @@ OriginsBackend::OriginsBackend(QObject* parent)
     qmlRegisterType<Source>();
     qmlRegisterType<Entry>();
     load();
+    
+    connect(applicationBackend(), SIGNAL(fetchingChanged()), SLOT(load()), Qt::UniqueConnection);
 }
 
 OriginsBackend::~OriginsBackend()
@@ -55,11 +57,6 @@ OriginsBackend::~OriginsBackend()
 void OriginsBackend::load()
 {
     QObject* b = applicationBackend();
-    QApt::Backend* backend = qobject_cast<QApt::Backend*>(b->property("backend").value<QObject*>());
-    if(!backend) {
-        connect(b, SIGNAL(fetchingChanged()), SLOT(load()));
-        return;
-    }
     
     m_sourcesList.reload();
     qDeleteAll(m_sources);
