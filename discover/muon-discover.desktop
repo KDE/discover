@@ -89,6 +89,7 @@ Keywords=program;software;repository;package;install;remove;update;apps;applicat
 Keywords[cs]=program;software;repozitář;balíček;instalovat;odstranit;aktualizovat;programy;aplikace;
 Keywords[de]=Programm,Software,Archiv,Repository,Paket,Installieren,Entfernen,Aktualisieren,deb,Programme,Anwendungen
 Keywords[es]=programa;software;repositorio;paquete;instalar;eliminar;actualizar;apps;aplicaciones;
+Keywords[hu]=program;szoftver;tároló;csomag;telepítés;eltávolítás;frissítés;appok;alkalmazások;
 Keywords[nl]=programma;software;opslagruimte;pakket;installeren;verwijderen;bijwerken;apps;toepassingen;applicaties;
 Keywords[pt]=programa;software;repositório;arquivo;pacote;instalar;remover;actualizar;deb;aplicações;
 Keywords[pt_BR]=programa;software;repositório;pacote;instalar;instalação;remover;atualizar;aplicativos,apps,aplicações;
