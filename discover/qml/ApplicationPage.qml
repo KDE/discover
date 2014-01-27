@@ -41,8 +41,8 @@ Page
             id: icon
             anchors.top: parent.top
             anchors.left: parent.left
-            width: 40
-            height: 40
+            width: height
+            height: theme.defaultFont.mSize.height*3.5
             
             source: application.icon
         }
