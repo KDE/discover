@@ -108,7 +108,7 @@ AddonsWidget::AddonsWidget(QWidget *parent)
 
 void AddonsWidget::fetchingChanged()
 {
-    if(m_resource->backend()->isFetching()) {
+    if(m_resource && m_resource->backend()->isFetching()) {
         m_resource = nullptr;
         m_changedAddons.clear();
         m_availableAddons.clear();

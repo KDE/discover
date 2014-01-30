@@ -23,6 +23,7 @@
 
 #include <QtTest/QtTest>
 
+class MuonMainWindow;
 class AbstractResourcesBackend;
 class ApplicationBackendTest : public QObject
 {
@@ -34,9 +35,11 @@ class ApplicationBackendTest : public QObject
     private slots:
         void testReload();
         void testCategories();
+        void testRefreshUpdates();
 
     private:
         AbstractResourcesBackend* m_appBackend;
+        MuonMainWindow* m_window;
 };
 
 #endif

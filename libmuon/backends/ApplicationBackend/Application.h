@@ -91,9 +91,11 @@ public:
     virtual void fetchChangelog();
     
     bool isFromSecureOrigin() const;
+    QByteArray getField(const char* field, const QByteArray& defaultvalue = QByteArray()) const;
 
 private slots:
     void processChangelog(KJob*);
+    void downloadingScreenshotsFinished(KJob*);
 
 private:
     QString buildDescription(const QByteArray& data, const QString& source);
@@ -108,7 +110,6 @@ private:
     bool m_isExtrasApp;
     bool m_sourceHasScreenshot;
 
-    QByteArray getField(const char* field, const QByteArray& defaultvalue = QByteArray()) const;
     KSharedConfigPtr desktopContents(const QString& filename);
     QApt::PackageList addons();
     QVector<QPair<QString, QString> > locateApplication(const QString &_relPath, const QString &menuId) const;

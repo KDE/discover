@@ -69,7 +69,7 @@ ApplicationBackend::ApplicationBackend(QObject* parent, const QVariantList& )
     : AbstractResourcesBackend(parent)
     , m_backend(new QApt::Backend(this))
     , m_reviewsBackend(new ReviewsBackend(this))
-    , m_isFetching(false)
+    , m_isFetching(true)
     , m_currentTransaction(nullptr)
     , m_backendUpdater(new ApplicationUpdates(this))
     , m_aptify(nullptr)
@@ -122,7 +122,8 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
     for (Application *app : tempList) {
         bool added = false;
         QApt::Package *pkg = app->package();
-        if (app->isValid() && pkg) {
+        if (app->isValid() && pkg)
+        {
             appList << app;
             app->moveToThread(thread);
             added = true;
@@ -279,6 +280,10 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error)
 
 void ApplicationBackend::updateProgress(int percentage)
 {
+    if(!m_currentTransaction) {
+        qDebug() << "missing transaction";
+        return;
+    }
     m_currentTransaction->setProgress(percentage);
 }
 

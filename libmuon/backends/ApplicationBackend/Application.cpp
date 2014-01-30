@@ -58,8 +58,13 @@ Application::Application(const QString& fileName, QApt::Backend* backend)
         , m_isExtrasApp(false)
         , m_sourceHasScreenshot(true)
 {
+    static QByteArray currentDesktop = qgetenv("XDG_CURRENT_DESKTOP");
+
     m_data = desktopContents(fileName);
-    m_isTechnical = getField("NoDisplay").toLower() == "true" || !hasField("Exec");
+    m_isTechnical = getField("NoDisplay").toLower() == "true"
+                    || !hasField("Exec")
+                    || getField("NotShowIn", QByteArray()).contains(currentDesktop)
+                    || getField("OnlyShowIn", currentDesktop).contains(currentDesktop);
     m_packageName = getField("X-AppInstall-Package");
 }
 
@@ -496,21 +501,23 @@ AbstractResource::State Application::state()
 
 void Application::fetchScreenshots()
 {
-    bool done = false;
+    if(!m_sourceHasScreenshot)
+        return;
     
     QString dest = KStandardDirs::locate("tmp", "screenshots."+m_packageName);
-    //TODO: Make async
-    KUrl packageUrl(MuonDataSources::screenshotsSource(), "/json/package/"+m_packageName);
+    const KUrl packageUrl(MuonDataSources::screenshotsSource(), "/json/package/"+m_packageName);
+    KIO::StoredTransferJob* job = KIO::storedGet(packageUrl, KIO::NoReload, KIO::HideProgressInfo);
+    connect(job, SIGNAL(finished(KJob*)), SLOT(downloadingScreenshotsFinished(KJob*)));
+}
 
-    bool downloadDescriptor = m_sourceHasScreenshot && KIO::NetAccess::download(packageUrl, dest, 0);
-    if(downloadDescriptor) {
-        QFile f(dest);
-        bool b = f.open(QIODevice::ReadOnly);
-        Q_ASSERT(b);
-        
+void Application::downloadingScreenshotsFinished(KJob* j)
+{
+    KIO::StoredTransferJob* job = qobject_cast< KIO::StoredTransferJob* >(j);
+    bool done = false;
+    if(job) {
         QJson::Parser p;
         bool ok;
-        QVariantMap values = p.parse(&f, &ok).toMap();
+        QVariantMap values = p.parse(job->data(), &ok).toMap();
         if(ok) {
             QVariantList screenshots = values["screenshots"].toList();
             
@@ -532,6 +539,7 @@ void Application::fetchScreenshots()
         }
         emit screenshotsFetched(thumbnails, screenshots);
     }
+
 }
 
 void Application::setHasScreenshot(bool has)

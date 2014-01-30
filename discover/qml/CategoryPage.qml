@@ -38,6 +38,11 @@ Page {
             Navigation.openApplicationList("edit-find", i18n("Search..."), category, text)
     }
     
+    onVisibleChanged: {
+        if(visible && !category)
+            app.searchWidget.text=""
+    }
+    
     Component {
         id: categoryDelegate
         GridItem {
