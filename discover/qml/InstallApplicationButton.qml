@@ -6,6 +6,7 @@ Item {
     property alias application: listener.resource
     property alias isActive: listener.isActive
     property real maximumWidth: button.implicitWidth*2
+    property real minimumWidth: button.minimumWidth*2
     property Component additionalItem: null
     height: button.implicitHeight
 
