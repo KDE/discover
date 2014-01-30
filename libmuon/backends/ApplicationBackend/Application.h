@@ -96,6 +96,7 @@ public:
 
 private slots:
     void processChangelog(KJob*);
+    void downloadingScreenshotsFinished(KJob*);
 
 private:
     QString buildDescription(const QByteArray& data, const QString& source);

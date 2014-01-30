@@ -496,20 +496,24 @@ AbstractResource::State Application::state()
 
 void Application::fetchScreenshots()
 {
-    bool done = false;
+    if(!m_sourceHasScreenshot)
+        return;
     
     QString dest = KStandardDirs::locate("tmp", "screenshots."+m_packageName);
     //TODO: Make async
-    KUrl packageUrl(MuonDataSources::screenshotsSource(), "/json/package/"+m_packageName);
-    bool downloadDescriptor = m_sourceHasScreenshot && KIO::NetAccess::download(packageUrl, dest, 0);
-    if(downloadDescriptor) {
-        QFile f(dest);
-        bool b = f.open(QIODevice::ReadOnly);
-        Q_ASSERT(b);
-        
+    const KUrl packageUrl(MuonDataSources::screenshotsSource(), "/json/package/"+m_packageName);
+    KIO::StoredTransferJob* job = KIO::storedGet(packageUrl, KIO::NoReload, KIO::HideProgressInfo);
+    connect(job, SIGNAL(finished(KJob*)), SLOT(downloadingScreenshotsFinished(KJob*)));
+}
+
+void Application::downloadingScreenshotsFinished(KJob* j)
+{
+    KIO::StoredTransferJob* job = qobject_cast< KIO::StoredTransferJob* >(j);
+    bool done = false;
+    if(job) {
         QJson::Parser p;
         bool ok;
-        QVariantMap values = p.parse(&f, &ok).toMap();
+        QVariantMap values = p.parse(job->data(), &ok).toMap();
         if(ok) {
             QVariantList screenshots = values["screenshots"].toList();
             
@@ -531,6 +535,7 @@ void Application::fetchScreenshots()
         }
         emit screenshotsFetched(thumbnails, screenshots);
     }
+
 }
 
 void Application::setHasScreenshot(bool has)
