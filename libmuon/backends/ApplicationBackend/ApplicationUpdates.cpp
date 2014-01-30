@@ -465,10 +465,12 @@ void ApplicationUpdates::calculateUpdates()
             AbstractResource* res = m_appBackend->resourceByPackageName(it->name());
             if(!res) //If we couldn't find it by its name, try with
                 res = m_appBackend->resourceByPackageName(QString("%1:%2").arg(it->name()).arg(it->architecture()));
-            if(!res)
+
+            if(res)
+                m_toUpdate += res;
+            else
                 qWarning() << "Couldn't find the package:" << it->name();
             Q_ASSERT(res);
-            m_toUpdate += res;
         }
     }
 }
