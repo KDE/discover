@@ -10,13 +10,9 @@ Comment[ca@valencia]=Instal·la i mostra aplicacions en l'APT
 Comment[cs]=Instalujte a prohlížejte aplikace v APT
 Comment[da]=Installér og gennemse programmer i APT
 Comment[de]=Anwendungen in APT Installieren und durchsuchen
-<<<<<<< HEAD
 Comment[el]=Εγκαταστήστε και περιηγηθείτε σε εφαρμογές με το APT
 Comment[es]=Instalar y examinar aplicaciones en APT
 Comment[et]=Rakenduste paigaldamine ja sirvimine APT-is
-=======
-Comment[es]=Instalar y examinar aplicaciones en APT
->>>>>>> 2.1
 Comment[fi]=Asenna ja selaa APT:n välityksellä tarjolla olevia sovelluksia
 Comment[fr]=Installer et parcourir des applications dans « APT »
 Comment[gl]=Instalar e buscar aplicacións en APT
