@@ -58,8 +58,13 @@ Application::Application(const QString& fileName, QApt::Backend* backend)
         , m_isExtrasApp(false)
         , m_sourceHasScreenshot(true)
 {
+    static QByteArray currentDesktop = qgetenv("XDG_CURRENT_DESKTOP");
+
     m_data = desktopContents(fileName);
-    m_isTechnical = getField("NoDisplay").toLower() == "true" || !hasField("Exec");
+    m_isTechnical = getField("NoDisplay").toLower() == "true"
+                    || !hasField("Exec")
+                    || getField("NotShowIn", QByteArray()).contains(currentDesktop)
+                    || getField("OnlyShowIn", currentDesktop).contains(currentDesktop);
     m_packageName = getField("X-AppInstall-Package");
 }
 
