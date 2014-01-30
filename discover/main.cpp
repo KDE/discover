@@ -29,7 +29,7 @@
 static const char description[] =
     I18N_NOOP("An application discoverer");
 
-static const char version[] = "2.1.2";
+static const char version[] = "2.1.3";
 
 int main(int argc, char** argv)
 {
