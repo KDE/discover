@@ -82,16 +82,28 @@ QList<AbstractResource*> ApplicationUpdates::toUpdate() const
     return m_toUpdate;
 }
 
+void ApplicationUpdates::restoreToCleanCache()
+{
+    if(!m_updatesCache.isEmpty())
+        m_aptBackend->restoreCacheState(m_updatesCache);
+    else {
+        //this is my best bet for retrieving a clean cache, I'm unsure if there's a better way
+        m_updatesCache = m_aptBackend->currentCacheState();
+    }
+    Q_ASSERT(m_aptBackend->markedPackages().isEmpty());
+}
+
 void ApplicationUpdates::prepare()
 {
-    m_aptBackend->markPackages(m_aptBackend->markedPackages(), QApt::Package::ToKeep);
-    m_updatesCache = m_aptBackend->currentCacheState();
+    restoreToCleanCache();
+    
     m_aptBackend->markPackagesForDistUpgrade();
     calculateUpdates();
 }
 
 void ApplicationUpdates::start()
 {
+    Q_ASSERT(!m_updatesCache.isEmpty());
     auto changes = m_aptBackend->stateChanges(m_updatesCache, QApt::PackageList());
     if(changes.isEmpty()) {
         kWarning() << "couldn't find any apt updates";
@@ -207,6 +219,8 @@ void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
 void ApplicationUpdates::transactionFinished(QApt::ExitStatus )
 {
     m_lastRealProgress = 0;
+    m_updatesCache.clear();
+    m_toUpdate.clear();
     m_appBackend->reload();
     setProgressing(false);
 }
@@ -373,7 +387,7 @@ void ApplicationUpdates::setProgressing(bool progressing)
         if(m_progressing)
             setProgress(-1);
         else
-            m_aptBackend->markPackages(m_aptBackend->markedPackages(), QApt::Package::ToKeep);
+            restoreToCleanCache();
     }
 }
 

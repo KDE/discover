@@ -67,6 +67,8 @@ public:
     void setProgressing(bool progressing);
 
 private:
+    void restoreToCleanCache();
+    
     QPointer<QApt::Transaction> m_trans;
     QApt::Backend* m_aptBackend;
     ApplicationBackend* m_appBackend;
