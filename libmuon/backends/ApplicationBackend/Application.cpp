@@ -64,7 +64,7 @@ Application::Application(const QString& fileName, QApt::Backend* backend)
     m_isTechnical = getField("NoDisplay").toLower() == "true"
                     || !hasField("Exec")
                     || getField("NotShowIn", QByteArray()).contains(currentDesktop)
-                    || getField("OnlyShowIn", currentDesktop).contains(currentDesktop);
+                    || !getField("OnlyShowIn", currentDesktop).contains(currentDesktop);
     m_packageName = getField("X-AppInstall-Package");
 }
 
