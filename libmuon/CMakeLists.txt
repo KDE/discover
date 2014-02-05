@@ -35,7 +35,7 @@ kde4_add_kcfg_files(muon_LIB_SRCS GENERATE_MOC MuonDataSources.kcfgc)
 kde4_add_library(muonprivate SHARED ${muon_LIB_SRCS})
 
 set_target_properties(muonprivate PROPERTIES
-    VERSION 2.1.2
+    VERSION 2.1.3
     SOVERSION 2
 )
 
