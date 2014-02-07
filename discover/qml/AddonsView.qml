@@ -43,14 +43,20 @@ Column
         spacing: 5
         
         Button {
+            height: parent.enabled ? implicitHeight : 0
+            visible: height!=0
             iconSource: "dialog-ok"
             text: i18n("Install")
             onClicked: addonsModel.applyChanges()
+            Behavior on height { NumberAnimation { duration: 100 } }
         }
         Button {
+            height: parent.enabled ? implicitHeight : 0
+            visible: height!=0
             iconSource: "document-revert"
             text: i18n("Discard")
             onClicked: addonsModel.discardChanges()
+            Behavior on height { NumberAnimation { duration: 100 } }
         }
     }
 }
