@@ -178,19 +178,14 @@ Item {
             margins: 5
         }
         spacing: 10
-        Row {
-            width: parent.width
-
-            spacing: 5
-            InstallApplicationButton {
-                id: installButton
-                anchors.horizontalCenter: parent.horizontalCenter
-                width: Math.min(parent.width, maximumWidth)
-                application: appInfo.application
-                additionalItem:  Rating {
-                    visible: overviewContents.ratingInstance!=null
-                    rating:  overviewContents.ratingInstance==null ? 0 : overviewContents.ratingInstance.rating
-                }
+        InstallApplicationButton {
+            id: installButton
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: Math.min(parent.width, maximumWidth)
+            application: appInfo.application
+            additionalItem:  Rating {
+                visible: overviewContents.ratingInstance!=null
+                rating:  overviewContents.ratingInstance==null ? 0 : overviewContents.ratingInstance.rating
             }
         }
         Grid {
