@@ -21,6 +21,7 @@
 #include "DummyResource.h"
 #include <krandom.h>
 #include <QDesktopServices>
+#include <QStringList>
 
 DummyResource::DummyResource(const QString& name, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
@@ -42,9 +43,9 @@ QString DummyResource::availableVersion() const
     return "3.0";
 }
 
-QString DummyResource::categories()
+QStringList DummyResource::categories()
 {
-    return "dummy";
+    return QStringList("dummy");
 }
 
 QString DummyResource::comment()
@@ -57,7 +58,7 @@ int DummyResource::downloadSize()
     return 123;
 }
 
-QUrl DummyResource::homepage() const
+QUrl DummyResource::homepage()
 {
     return QUrl("http://kde.org");
 }
@@ -77,7 +78,7 @@ QString DummyResource::license()
     return "GPL";
 }
 
-QString DummyResource::longDescription() const
+QString DummyResource::longDescription()
 {
     return "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies consequat nulla, ut vulputate nulla ultricies ac. Suspendisse lacinia commodo lacus, non tristique mauris dictum vitae. Sed adipiscing augue nec nisi aliquet viverra. Etiam sit amet nulla in tellus consectetur feugiat. Cras in sem tortor. Fusce a nulla at justo accumsan gravida. Maecenas dui felis, lacinia at ornare sed, aliquam et purus. Sed ut sagittis lacus. Etiam dictum pharetra rhoncus. Suspendisse auctor orci ipsum. Pellentesque vitae urna nec felis consequat lobortis dictum in urna. Phasellus a mi ac leo adipiscing varius eget a felis. Cras magna augue, commodo sed placerat vel, tempus vel ligula. In feugiat quam quis est lobortis sed accumsan nunc malesuada. Mauris quis massa sit amet felis tempus suscipit a quis diam.\n\n"
 

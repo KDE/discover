@@ -53,8 +53,11 @@ class NativeScrollBar : public QDeclarativeItem
 
         virtual void geometryChanged(const QRectF& newGeometry, const QRectF& oldGeometry);
 
+    private slots:
+        void scrollbarActionTriggered(int);
+
     Q_SIGNALS:
-        void valueChanged(int value);
+        void valueChanged();
         void maximumChanged();
         void minimumChanged();
         void pageStepChanged();

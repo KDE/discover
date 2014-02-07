@@ -69,7 +69,7 @@ ApplicationBackend::ApplicationBackend(QObject* parent, const QVariantList& )
     : AbstractResourcesBackend(parent)
     , m_backend(new QApt::Backend(this))
     , m_reviewsBackend(new ReviewsBackend(this))
-    , m_isFetching(false)
+    , m_isFetching(true)
     , m_currentTransaction(nullptr)
     , m_backendUpdater(new ApplicationUpdates(this))
     , m_aptify(nullptr)
@@ -122,7 +122,8 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
     for (Application *app : tempList) {
         bool added = false;
         QApt::Package *pkg = app->package();
-        if (app->isValid() && pkg) {
+        if (app->isValid() && pkg)
+        {
             appList << app;
             app->moveToThread(thread);
             added = true;
@@ -151,9 +152,13 @@ void ApplicationBackend::setApplications()
 
 void ApplicationBackend::reload()
 {
+    if(isFetching()) {
+        qWarning() << "Reloading while already reloading... Please report.";
+        return;
+    }
+    setFetching(true);
     if (m_aptify)
         m_aptify->setCanExit(false);
-    setFetching(true);
     foreach(Application* app, m_appList)
         app->clearPackage();
     qDeleteAll(m_transQueue);
@@ -169,7 +174,6 @@ void ApplicationBackend::reload()
     if (m_aptify)
         m_aptify->setCanExit(true);
     setFetching(false);
-    emit searchInvalidated();
 }
 
 bool ApplicationBackend::isFetching() const
@@ -276,6 +280,10 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error)
 
 void ApplicationBackend::updateProgress(int percentage)
 {
+    if(!m_currentTransaction) {
+        qDebug() << "missing transaction";
+        return;
+    }
     m_currentTransaction->setProgress(percentage);
 }
 
@@ -386,7 +394,6 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
 
     if (!confirmRemoval(changes)) {
         m_backend->restoreCacheState(oldCacheState);
-        transaction->cancel();
         transaction->deleteLater();
         return;
     }
@@ -488,9 +495,14 @@ AbstractResource* ApplicationBackend::resourceByPackageName(const QString& name)
 
 QList<AbstractResource*> ApplicationBackend::searchPackageName(const QString& searchText)
 {
+    QList<AbstractResource*> resources;
+    if(m_isFetching) {
+        qWarning() << "searching while fetching!!!";
+        return resources;
+    }
+
     QSet<QApt::Package*> packages = m_backend->search(searchText).toSet();
 
-    QList<AbstractResource*> resources;
     foreach(Application* a, m_appList) {
         if(packages.contains(a->package())) {
             resources += a;
@@ -529,6 +541,7 @@ QWidget* ApplicationBackend::mainWindow() const
 
 void ApplicationBackend::initBackend()
 {
+    setFetching(true);
     if (m_aptify) {
         m_aptify->setCanExit(false);
         QAptActions::self()->setReloadWhenEditorFinished(true);
@@ -545,7 +558,6 @@ void ApplicationBackend::initBackend()
     m_reviewsBackend->setAptBackend(m_backend);
     m_backendUpdater->setBackend(m_backend);
 
-    setFetching(true);
     QFuture<QVector<Application*> > future = QtConcurrent::run(init, m_backend, QThread::currentThread());
     m_watcher->setFuture(future);
     connect(m_backend, SIGNAL(transactionQueueChanged(QString,QStringList)),
@@ -616,15 +628,24 @@ void ApplicationBackend::checkForUpdates()
     QApt::Transaction* transaction = backend()->updateCache();
     m_backendUpdater->setupTransaction(transaction);
     transaction->run();
+    m_backendUpdater->setProgressing(true);
+    connect(transaction, SIGNAL(finished(QApt::ExitStatus)), SLOT(updateFinished(QApt::ExitStatus)));
+}
 
+void ApplicationBackend::updateFinished(QApt::ExitStatus status)
+{
+    if(status != QApt::ExitSuccess) {
+        qWarning() << "updating was not successful";
+    }
+    m_backendUpdater->setProgressing(false);
 }
 
 void ApplicationBackend::setFetching(bool f)
 {
-    if(m_isFetching == f) {
+    if(m_isFetching != f) {
         m_isFetching = f;
         emit fetchingChanged();
-        if(m_isFetching) {
+        if(!m_isFetching) {
             emit searchInvalidated();
             emit updatesCountChanged();
         }

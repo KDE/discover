@@ -26,6 +26,7 @@ Item {
     property bool editable: false
     property int max: 10
     property real rating: 2
+    property real starSize: Math.min(view.height, (view.width-theRepeater.model*theRow.spacing)/theRepeater.model)
     visible: rating>=0
     clip: true
     height: (width/5)-theRow.spacing
@@ -39,7 +40,8 @@ Item {
         Component {
             id: del
             IconItem {
-                height: view.height; width: view.height
+                height: view.starSize
+                width: view.starSize
                 source: "rating"
                 opacity: (view.max/theRepeater.count*index)>view.rating ? 0.2 : 1
 
@@ -47,7 +49,7 @@ Item {
                     enabled: editable
                     
                     anchors.fill: parent
-                    onClicked: rating = (max/5*index)
+                    onClicked: rating = (max/theRepeater.model*index)
                 }
             }
         }

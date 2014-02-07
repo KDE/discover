@@ -58,8 +58,13 @@ Application::Application(const QString& fileName, QApt::Backend* backend)
         , m_isExtrasApp(false)
         , m_sourceHasScreenshot(true)
 {
+    static QByteArray currentDesktop = qgetenv("XDG_CURRENT_DESKTOP");
+
     m_data = desktopContents(fileName);
-    m_isTechnical = getField("NoDisplay").toLower() == "true" || !hasField("Exec");
+    m_isTechnical = getField("NoDisplay").toLower() == "true"
+                    || !hasField("Exec")
+                    || getField("NotShowIn", QByteArray()).contains(currentDesktop)
+                    || !getField("OnlyShowIn", currentDesktop).contains(currentDesktop);
     m_packageName = getField("X-AppInstall-Package");
 }
 
@@ -93,7 +98,7 @@ QString Application::name()
     else
         name = untranslatedName();
 
-    if(m_package->isForeignArch())
+    if (package() && m_package->isForeignArch())
         name = i18n("%1 (%2)", name, m_package->architecture());
     return name;
 }
@@ -152,9 +157,9 @@ QString Application::icon() const
     return getField("Icon", "applications-other");
 }
 
-QString Application::mimetypes() const
+QStringList Application::mimetypes() const
 {
-    return getField("MimeType");
+    return QString(getField("MimeType")).split(';');
 }
 
 QString Application::menuPath()
@@ -247,14 +252,14 @@ QVector<QPair<QString, QString> > Application::locateApplication(const QString &
     return ret;
 }
 
-QString Application::categories()
+QStringList Application::categories()
 {
-    QString categories = getField("Categories");
+    QStringList categories = QString(getField("Categories")).split(',', QString::SkipEmptyParts);
 
     if (categories.isEmpty()) {
         // extras.ubuntu.com packages can have this field
         if (m_isExtrasApp)
-            categories = package()->controlField(QLatin1String("Category"));
+            categories += package()->controlField(QLatin1String("Category"));
     }
     return categories;
 }
@@ -383,7 +388,7 @@ bool Application::hasField(const char* field) const
     return m_data && m_data->group("Desktop Entry").hasKey(field);
 }
 
-QUrl Application::homepage() const
+QUrl Application::homepage()
 {
     if(!m_package) return QString();
     return m_package->homepage();
@@ -395,7 +400,7 @@ QString Application::origin() const
     return m_package->origin();
 }
 
-QString Application::longDescription() const
+QString Application::longDescription()
 {
     if(!m_package) return QString();
     return m_package->longDescription();
@@ -496,20 +501,23 @@ AbstractResource::State Application::state()
 
 void Application::fetchScreenshots()
 {
-    bool done = false;
+    if(!m_sourceHasScreenshot)
+        return;
     
     QString dest = KStandardDirs::locate("tmp", "screenshots."+m_packageName);
-    //TODO: Make async
-    KUrl packageUrl(MuonDataSources::screenshotsSource(), "/json/package/"+m_packageName);
-    bool downloadDescriptor = m_sourceHasScreenshot && KIO::NetAccess::download(packageUrl, dest, 0);
-    if(downloadDescriptor) {
-        QFile f(dest);
-        bool b = f.open(QIODevice::ReadOnly);
-        Q_ASSERT(b);
-        
+    const KUrl packageUrl(MuonDataSources::screenshotsSource(), "/json/package/"+m_packageName);
+    KIO::StoredTransferJob* job = KIO::storedGet(packageUrl, KIO::NoReload, KIO::HideProgressInfo);
+    connect(job, SIGNAL(finished(KJob*)), SLOT(downloadingScreenshotsFinished(KJob*)));
+}
+
+void Application::downloadingScreenshotsFinished(KJob* j)
+{
+    KIO::StoredTransferJob* job = qobject_cast< KIO::StoredTransferJob* >(j);
+    bool done = false;
+    if(job) {
         QJson::Parser p;
         bool ok;
-        QVariantMap values = p.parse(&f, &ok).toMap();
+        QVariantMap values = p.parse(job->data(), &ok).toMap();
         if(ok) {
             QVariantList screenshots = values["screenshots"].toList();
             
@@ -531,6 +539,7 @@ void Application::fetchScreenshots()
         }
         emit screenshotsFetched(thumbnails, screenshots);
     }
+
 }
 
 void Application::setHasScreenshot(bool has)

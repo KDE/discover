@@ -82,16 +82,28 @@ QList<AbstractResource*> ApplicationUpdates::toUpdate() const
     return m_toUpdate;
 }
 
+void ApplicationUpdates::restoreToCleanCache()
+{
+    if(!m_updatesCache.isEmpty())
+        m_aptBackend->restoreCacheState(m_updatesCache);
+    else {
+        //this is my best bet for retrieving a clean cache, I'm unsure if there's a better way
+        m_updatesCache = m_aptBackend->currentCacheState();
+    }
+    Q_ASSERT(m_aptBackend->markedPackages().isEmpty());
+}
+
 void ApplicationUpdates::prepare()
 {
-    m_aptBackend->markPackages(m_aptBackend->markedPackages(), QApt::Package::ToKeep);
-    m_updatesCache = m_aptBackend->currentCacheState();
+    restoreToCleanCache();
+    
     m_aptBackend->markPackagesForDistUpgrade();
     calculateUpdates();
 }
 
 void ApplicationUpdates::start()
 {
+    Q_ASSERT(!m_updatesCache.isEmpty());
     auto changes = m_aptBackend->stateChanges(m_updatesCache, QApt::PackageList());
     if(changes.isEmpty()) {
         kWarning() << "couldn't find any apt updates";
@@ -200,7 +212,19 @@ void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
             this, SLOT(untrustedPrompt(QStringList)));
     connect(trans, SIGNAL(downloadSpeedChanged(quint64)),
             this, SIGNAL(downloadSpeedChanged(quint64)));
+    connect(trans, SIGNAL(finished(QApt::ExitStatus)),
+            this, SLOT(transactionFinished(QApt::ExitStatus)));
 }
+
+void ApplicationUpdates::transactionFinished(QApt::ExitStatus )
+{
+    m_lastRealProgress = 0;
+    m_updatesCache.clear();
+    m_toUpdate.clear();
+    m_appBackend->reload();
+    setProgressing(false);
+}
+
 
 bool ApplicationUpdates::isAllMarked() const
 {
@@ -350,8 +374,6 @@ void ApplicationUpdates::statusChanged(QApt::TransactionStatus status)
             setProgress(100);
             setStatusMessage(i18nc("@info Status information, widget title",
                                         "Finished"));
-            m_lastRealProgress = 0;
-            m_appBackend->reload();
             break;
     }
 }
@@ -365,7 +387,7 @@ void ApplicationUpdates::setProgressing(bool progressing)
         if(m_progressing)
             setProgress(-1);
         else
-            m_aptBackend->markPackages(m_aptBackend->markedPackages(), QApt::Package::ToKeep);
+            restoreToCleanCache();
     }
 }
 
@@ -443,8 +465,20 @@ void ApplicationUpdates::calculateUpdates()
             AbstractResource* res = m_appBackend->resourceByPackageName(it->name());
             if(!res) //If we couldn't find it by its name, try with
                 res = m_appBackend->resourceByPackageName(QString("%1:%2").arg(it->name()).arg(it->architecture()));
+
+            if(res)
+                m_toUpdate += res;
+            else
+                qWarning() << "Couldn't find the package:" << it->name();
             Q_ASSERT(res);
-            m_toUpdate += res;
         }
     }
+}
+
+bool ApplicationUpdates::isMarked(AbstractResource* res) const
+{
+    Q_ASSERT(!res->backend()->isFetching());
+    Application* app = qobject_cast<Application*>(res);
+    Q_ASSERT(app);
+    return app->package()->state() & QApt::Package::ToInstall;
 }

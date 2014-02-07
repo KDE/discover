@@ -20,13 +20,14 @@
 #include "NativeScrollBar.h"
 #include <QScrollBar>
 #include <QGraphicsProxyWidget>
+#include <QTimer>
 
 NativeScrollBar::NativeScrollBar(QDeclarativeItem* parent)
     : QDeclarativeItem(parent)
 {
     m_scrollBar = new QScrollBar;
     m_scrollBar->setAttribute(Qt::WA_NoSystemBackground);
-    connect(m_scrollBar, SIGNAL(sliderMoved(int)), SIGNAL(valueChanged(int)));
+    connect(m_scrollBar, SIGNAL(actionTriggered(int)), SLOT(scrollbarActionTriggered(int)));
     m_proxy = new QGraphicsProxyWidget(this);
     m_proxy->setWidget(m_scrollBar);
 
@@ -54,3 +55,8 @@ void NativeScrollBar::setMinimum(int min) { m_scrollBar->setMinimum(min); emit m
 void NativeScrollBar::setPageStep(int pageStep) { m_scrollBar->setPageStep(pageStep); emit pageStepChanged(); }
 void NativeScrollBar::setOrientation(Qt::Orientation orientation) { m_scrollBar->setOrientation(orientation); }
 void NativeScrollBar::setValue(int val) { m_scrollBar->setValue(val); }
+
+void NativeScrollBar::scrollbarActionTriggered(int)
+{
+    QTimer::singleShot(0, this, SIGNAL(valueChanged()));
+}

@@ -108,7 +108,7 @@ AddonsWidget::AddonsWidget(QWidget *parent)
 
 void AddonsWidget::fetchingChanged()
 {
-    if(m_resource->backend()->isFetching()) {
+    if(m_resource && m_resource->backend()->isFetching()) {
         m_resource = nullptr;
         m_changedAddons.clear();
         m_availableAddons.clear();
@@ -238,7 +238,7 @@ void AddonsWidget::addonStateChanged(const QModelIndex &left, const QModelIndex 
 
 void AddonsWidget::emitApplyButtonClicked()
 {
-    ResourcesModel *resourcesModel = ResourcesModel::global();
+//     ResourcesModel *resourcesModel = ResourcesModel::global();
     //resourcesModel->installApplication(m_resource, m_changedAddons);
 
     emit applyButtonClicked();

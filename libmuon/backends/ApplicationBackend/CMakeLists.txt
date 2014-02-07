@@ -44,3 +44,13 @@ target_link_libraries(muon-appsbackend ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} 
 install(TARGETS muon-appsbackend DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES muon-applications-backend.desktop DESTINATION ${SERVICES_INSTALL_DIR})
 install(FILES apps-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
+
+include_directories(${CMAKE_SOURCE_DIR}/kded)
+kde4_add_plugin(kded_muonapplicationnotifier ApplicationNotifier.cpp)
+target_link_libraries(kded_muonapplicationnotifier ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} muonprivate)
+
+install(TARGETS kded_muonapplicationnotifier DESTINATION ${PLUGIN_INSTALL_DIR})
+
+install(FILES muonapplicationnotifier.desktop  DESTINATION  ${SERVICES_INSTALL_DIR}/kded)
+install(FILES muonapplicationnotifier.notifyrc DESTINATION ${DATA_INSTALL_DIR}/muonapplicationnotifier)
+install(FILES distupgradeevent/releasechecker DESTINATION ${DATA_INSTALL_DIR}/muonapplicationnotifier)

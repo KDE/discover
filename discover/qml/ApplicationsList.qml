@@ -107,6 +107,7 @@ Item {
                             top: parent.top
                         }
                         height: contHeight*.4
+                        width: installButton.width/2
                         rating: model.rating
                     }
                     
@@ -116,7 +117,7 @@ Item {
                             bottom: parent.bottom
                             right: parent.right
                         }
-                        width: ratingsItem.width*2
+                        width: Math.max(200, minimumWidth) //minimumWidth depends on paintedWidth, which is invalid before actually painting the button
 //                         property bool isVisible: delegateArea.containsMouse && !installButton.canHide
 //                         opacity: isVisible ? 1 : 0
                         application: model.application

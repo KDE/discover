@@ -67,6 +67,8 @@ DetailsWidget::DetailsWidget(QWidget *parent)
             this, SIGNAL(setKeep(QApt::Package*)));
     connect(mainTab, SIGNAL(setPurge(QApt::Package*)),
             this, SIGNAL(setPurge(QApt::Package*)));
+    connect(this, SIGNAL(emitHideButtonsSignal()),
+	    mainTab, SLOT(hideButtons()));
 }
 
 DetailsWidget::~DetailsWidget()
@@ -96,6 +98,11 @@ void DetailsWidget::setPackage(QApt::Package *package)
     }
 
     show();
+}
+
+void DetailsWidget::emitHideButtons()
+{
+  emit emitHideButtonsSignal();
 }
 
 void DetailsWidget::refreshTabs()

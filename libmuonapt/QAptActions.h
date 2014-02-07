@@ -98,6 +98,7 @@ private:
     
     KDialog* m_historyDialog;
     QList<KAction *> m_actions;
+    bool m_distUpgradeAvailable;
 
 };
 

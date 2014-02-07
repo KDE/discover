@@ -28,6 +28,29 @@ class QAction;
 class QDateTime;
 class QIcon;
 class AbstractResource;
+
+/**
+ * \class AbstractBackendUpdater  AbstractBackendUpdater.h "AbstractBackendUpdater.h"
+ *
+ * \brief This is the base class for all abstract classes, which handle system upgrades.
+ * 
+ * While implementing this is not mandatory for all backends (you can also use the 
+ * StandardBackendUpdater, which just uses the functions in the ResourcesBackend to
+ * update the packages), it is recommended for many.
+ * 
+ * Before starting the update, the AbstractBackendUpdater will have to keep a list of
+ * packages, which are about to be upgraded. First, all packages have to be inserted
+ * into this list in the \prepare method and they can then be changed by the user through 
+ * the \addResources and \removeResources functions.
+ * 
+ * When \start is called, the AbstractBackendUpdater should start the update and report its
+ * progress through the rest of methods outlined in this API documentation.
+ * 
+ * @see addResources
+ * @see removeResources
+ * @see start
+ * @see prepare
+ */
 class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
 {
     Q_OBJECT
@@ -38,48 +61,151 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
     Q_PROPERTY(QString statusDetail READ statusDetail NOTIFY statusDetailChanged)
     Q_PROPERTY(quint64 downloadSpeed READ downloadSpeed NOTIFY downloadSpeedChanged)
     public:
+        /**
+         * Constructs an AbstractBackendUpdater
+         */
         explicit AbstractBackendUpdater(QObject* parent = 0);
         
+        /**
+         * This method is called, when Muon switches to the updates view.
+         * Here the backend should mark all upgradeable packages as to be upgraded.
+         */
         virtual void prepare() = 0;
         
+        /**
+         * @returns true if the backend contains packages which can be updated
+         */
         virtual bool hasUpdates() const = 0;
+        /**
+         * @returns the progress of the update in percent
+         */
         virtual qreal progress() const = 0;
         
-        /** proposed ETA in milliseconds */
+        /** 
+         * @returns the proposed ETA in milliseconds 
+         */
         virtual long unsigned int remainingTime() const = 0;
         
+        /**
+         * This method is used to remove resources from the list of packages
+         * marked to be upgraded. It will potentially be called before \start.
+         */
         virtual void removeResources(const QList<AbstractResource*>& apps) = 0;
+        /**
+         * This method is used to add resource to the list of packages marked to be upgraded.
+         * It will potentially be called before \start.
+         */
         virtual void addResources(const QList<AbstractResource*>& apps) = 0;
+
+        /**
+         * @returns the list of updateable resources in the system
+         */
         virtual QList<AbstractResource*> toUpdate() const = 0;
+
+        /**
+         * @returns the QDateTime when the last update happened
+         */
         virtual QDateTime lastUpdate() const = 0;
+        /**
+         * @returns true when upgradeable packages are marked be upgraded
+         */
         virtual bool isAllMarked() const = 0;
+        /**
+         * @returns whether the updater can currently be canceled or not
+         * @see cancelableChanged
+         */
         virtual bool isCancelable() const = 0;
+        /**
+         * @returns whether the updater is currently running or not
+         * this property decides, if there will be progress reporting in the GUI.
+         * This has to stay true during the whole transaction!
+         * @see progressingChanged
+         */
         virtual bool isProgressing() const = 0;
         
+        /**
+         * @returns the string about the current status of the update
+         */
         virtual QString statusMessage() const = 0;
+        /**
+         * @returns a more detailled description of what is currently happening with the update
+         */
         virtual QString statusDetail() const = 0;
+        /**
+         * @returns the overall download speed during the downloading phase of the update
+         */
         virtual quint64 downloadSpeed() const = 0;
 
-        /** in muon-updater, actions with HighPriority will be shown in a KMessageWidget,
+        /** 
+         *  This method is used to integrate advanced functions into the Muon GUI.
+         *  In muon-updater, actions with HighPriority will be shown in a KMessageWidget,
          *  normal priority will go right on top of the more menu, low priority will go
-         *  to the advanced menu
+         *  to the advanced menu.
          */
         virtual QList<QAction*> messageActions() const = 0;
 
+        /**
+         * @returns whether @p res is marked for update
+         */
+        virtual bool isMarked(AbstractResource* res) const = 0;
+
     public slots:
-        ///must be implemented if ever isCancelable is true
+        /**
+         * If \isCancelable is true during the transaction, this method has
+         * to be implemented and will potentially be called when the user
+         * wants to cancel the update.
+         */
         virtual void cancel();
+        /**
+         * This method starts the update. All packages which are in \toUpdate
+         * are going to be updated.
+         * 
+         * From this moment on the AbstractBackendUpdater should continuously update
+         * the other methods to show its progress.
+         * 
+         * @see progress
+         * @see progressChanged
+         * @see isProgressing
+         * @see progressingChanged
+         */
         virtual void start() = 0;
 
     signals:
+        /**
+         * The AbstractBackendUpdater should emit this signal when the progress changed.
+         * @see progress
+         */
         void progressChanged(qreal progress);
-        void remainingTimeChanged();
+        /**
+         * The AbstractBackendUpdater should emit this signal when the remaining time changed.
+         * @see remainingTime
+         */
+        void remainingTimeChanged();//FIXME: API inconsistency here!!
+        /**
+         * The AbstractBackendUpdater should emit this signal when the cancelable property changed.
+         * @see isCancelable
+         */
         void cancelableChanged(bool cancelable);
+        /**
+         * The AbstractBackendUpdater should emit this signal when the progressing property changed.
+         * @see isProgressing
+         */
         void progressingChanged(bool progressing);
+        /**
+         * The AbstractBackendUpdater should emit this signal when the status detail changed.
+         * @see statusDetail
+         */
         void statusDetailChanged(const QString& msg);
+        /**
+         * The AbstractBackendUpdater should emit this signal when the status message changed.
+         * @see statusMessage
+         */
         void statusMessageChanged(const QString& msg);
+        /**
+         * The AbstractBackendUpdater should emit this signal when the download speed changed.
+         * @see downloadSpeed
+         */
         void downloadSpeedChanged(quint64);
 };
 
 #endif // ABSTRACTBACKENDUPDATER_H
-
