@@ -14,7 +14,7 @@ Column
         model: ApplicationAddonsModel { id: addonsModel }
         
         delegate: Row {
-            height: 50
+            height: description.paintedHeight*1.2
             width: 50
             spacing: 10
             CheckBox {
@@ -30,6 +30,7 @@ Column
                 opacity: addonsView.isInstalling ? 0.3 : 1
             }
             Label {
+                id: description
                 enabled: !addonsView.isInstalling
                 anchors.verticalCenter: parent.verticalCenter
                 text: i18n("<qt>%1<br/><em>%2</em></qt>", display, toolTip)
