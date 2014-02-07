@@ -57,27 +57,32 @@ Item {
             
             property QtObject ratingInstance: appInfo.reviewsBackend!=null ? appInfo.reviewsBackend.ratingForApplication(appInfo.application) : null
             
+            Item {width: 1; height: 1}
+
             Item {
                 anchors {
                     left: parent.left
                     right: parent.right
+                    margins: 10
                 }
-                height: header.height
+                height: icon.height
                 IconItem {
                     id: icon
                     anchors {
                         top: header.top
                         left: parent.left
-                        bottom: header.bottom
+//                         bottom: header.bottom
                     }
+                    height: 64
                     width: height
                     
                     source: application.icon
                     clip: true
                 }
                 
-                Column {
+                Item {
                     id: header
+                    height: parent.height
                     anchors {
                         top: parent.top
                         left: icon.right
@@ -86,6 +91,7 @@ Item {
                     }
                     
                     Heading {
+                        id: heading
                         text: application.name
                         width: parent.width
                         font.bold: true
@@ -94,13 +100,18 @@ Item {
                         anchors {
                             left: parent.left
                             right: parent.right
+                            top: heading.bottom
+                            bottom: parent.bottom
                         }
                         text: application.comment
                         wrapMode: Text.WordWrap
                         elide: Text.ElideRight
+                        maximumLineCount: 2
+//                         verticalAlignment: Text.AlignVCenter
                     }
                 }
             }
+            Item {width: 1; height: 10}
             Heading { text: i18n("Description") }
             Label {
                 id: info
