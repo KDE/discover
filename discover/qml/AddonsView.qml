@@ -43,7 +43,7 @@ Column
         
         Button {
             iconSource: "dialog-ok"
-            text: i18n("Apply")
+            text: i18n("Install")
             onClicked: addonsModel.applyChanges()
         }
         Button {
