@@ -194,20 +194,18 @@ Item {
             topMargin: 10
             margins: 5
         }
-        Label {
-            clip: true
+        Grid {
             width: parent.width
-            text: i18n(  "<b>Total Size:</b> %1<br/>"
-                        +"<b>Version:</b> %2 %3<br/>"
-                        +"<b>Homepage:</b> <a href='%4'>%4</a><br/>"
-                        +"<b>License:</b> %5<br/>",
-                        application.sizeDescription,
-                        application.name, (application.isInstalled ?
-                                                    application.installedVersion : application.availableVersion),
-                        application.homepage,
-                        application.license
-            )
-            onLinkActivated: Qt.openUrlExternally(link)
+            columns: 2
+            spacing: 0
+            Label { text: i18n("Total Size: "); horizontalAlignment: Text.AlignRight; width: parent.width/3; font.weight: Font.Bold }
+            Label { text: application.sizeDescription }
+            Label { text: i18n("Version: "); horizontalAlignment: Text.AlignRight; width: parent.width/3; font.weight: Font.Bold }
+            Label { text: application.version+" "+(application.isInstalled ? application.installedVersion : application.availableVersion) }
+            Label { text: i18n("Homepage: "); horizontalAlignment: Text.AlignRight; width: parent.width/3; font.weight: Font.Bold }
+            Label { text: "<a href='"+application.homepage+"'>"+application.homepage+"</a>"; onLinkActivated: Qt.openUrlExternally(link) }
+            Label { text: i18n("License: "); horizontalAlignment: Text.AlignRight; width: parent.width/3; font.weight: Font.Bold }
+            Label { text: application.license }
         }
     }
     
