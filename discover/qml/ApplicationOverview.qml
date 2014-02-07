@@ -145,22 +145,22 @@ Item {
                 text: i18n("Comments")
                 visible: reviewsView.visible
             }
-            ListView {
+            Repeater {
                 id: reviewsView
                 width: parent.width
-                height: 123
-                spacing: 5
                 visible: count>0
                 clip: true
-                interactive: false
                 
                 delegate: ReviewDelegate {
                     onMarkUseful: reviewsModel.markUseful(index, useful)
                 }
                 
-                model: ReviewsModel {
-                    id: reviewsModel
-                    resource: application
+                model: Discover.PaginateModel {
+                    pageSize: 3
+                    sourceModel: ReviewsModel {
+                        id: reviewsModel
+                        resource: application
+                    }
                 }
             }
             Row {
