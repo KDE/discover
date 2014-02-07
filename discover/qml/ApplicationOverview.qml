@@ -22,6 +22,7 @@ import org.kde.plasma.core 0.1
 import org.kde.plasma.components 0.1
 import org.kde.plasma.extras 0.1
 import org.kde.qtextracomponents 0.1
+import org.kde.muon.discover 1.0 as Discover
 import org.kde.muon 1.0
 import "navigation.js" as Navigation
 
@@ -96,25 +97,7 @@ Item {
                         }
                         text: application.comment
                         wrapMode: Text.WordWrap
-                    }
-                    Row {
-                        anchors.right: parent.right
-
-                        spacing: 5
-                        InstallApplicationButton {
-                            id: installButton
-                            width: maximumWidth
-                            application: appInfo.application
-                            additionalItem:  Rating {
-                                visible: overviewContents.ratingInstance!=null
-                                rating:  overviewContents.ratingInstance==null ? 0 : overviewContents.ratingInstance.rating
-                            }
-                        }
-                        Button {
-                            visible: application.isInstalled && application.canExecute
-                            text: i18n("Launch")
-                            onClicked: application.invokeApplication()
-                        }
+                        elide: Text.ElideRight
                     }
                 }
             }
@@ -194,10 +177,27 @@ Item {
             topMargin: 10
             margins: 5
         }
+        spacing: 10
+        Row {
+            width: parent.width
+
+            spacing: 5
+            InstallApplicationButton {
+                id: installButton
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: Math.min(parent.width, maximumWidth)
+                application: appInfo.application
+                additionalItem:  Rating {
+                    visible: overviewContents.ratingInstance!=null
+                    rating:  overviewContents.ratingInstance==null ? 0 : overviewContents.ratingInstance.rating
+                }
+            }
+        }
         Grid {
             width: parent.width
             columns: 2
             spacing: 0
+            clip: true
             Label { text: i18n("Total Size: "); horizontalAlignment: Text.AlignRight; width: parent.width/2; font.weight: Font.Bold }
             Label { text: application.sizeDescription }
             Label { text: i18n("Version: "); horizontalAlignment: Text.AlignRight; width: parent.width/2; font.weight: Font.Bold }
@@ -206,6 +206,12 @@ Item {
             Label { text: "<a href='"+application.homepage+"'>"+application.homepage+"</a>"; onLinkActivated: Qt.openUrlExternally(link) }
             Label { text: i18n("License: "); horizontalAlignment: Text.AlignRight; width: parent.width/2; font.weight: Font.Bold }
             Label { text: application.license }
+        }
+        Button {
+            anchors.horizontalCenter: parent.horizontalCenter
+            visible: application.isInstalled && application.canExecute
+            text: i18n("Launch")
+            onClicked: application.invokeApplication()
         }
     }
     
