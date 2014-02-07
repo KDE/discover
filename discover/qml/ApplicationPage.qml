@@ -25,12 +25,12 @@ import org.kde.muon 1.0
 Page
 {
     property alias application: over.application
-    
+
     ApplicationOverview {
         id: over
+        clip: true
         anchors {
             fill: parent
-            leftMargin: 10
         }
     }
 }

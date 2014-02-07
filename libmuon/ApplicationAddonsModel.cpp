@@ -28,7 +28,7 @@ ApplicationAddonsModel::ApplicationAddonsModel(QObject* parent)
     : QAbstractListModel(parent)
     , m_app(0)
 {
-    new ModelTest(this, this);
+//     new ModelTest(this, this);
     QHash<int, QByteArray> roles = roleNames();
     roles.insert(Qt::CheckStateRole, "checked");
     setRoleNames(roles);

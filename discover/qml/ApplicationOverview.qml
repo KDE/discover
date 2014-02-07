@@ -41,7 +41,6 @@ Item {
         }
     }
     Flickable {
-        clip: true
         id: overviewContentsFlickable
         width: 2*parent.width/3
         anchors {
@@ -53,7 +52,7 @@ Item {
         Column {
             id: overviewContents
             width: parent.width
-            spacing: 10
+            spacing: 5
             
             property QtObject ratingInstance: appInfo.reviewsBackend!=null ? appInfo.reviewsBackend.ratingForApplication(appInfo.application) : null
             
@@ -61,7 +60,6 @@ Item {
                 anchors {
                     left: parent.left
                     right: parent.right
-                    margins: 10
                 }
                 height: header.height
                 IconItem {
@@ -180,6 +178,7 @@ Item {
                     onClicked: reviewDialog.open()
                 }
             }
+            Item { height: 1; width: height } //margin by the end
         }
     }
     ReviewDialog {
