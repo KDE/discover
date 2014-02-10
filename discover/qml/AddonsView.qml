@@ -8,32 +8,54 @@ Column
     property alias application: addonsModel.application
     property bool isInstalling: false
     property alias isEmpty: addonsModel.isEmpty
+    enabled: !addonsView.isInstalling
+    visible: !addonsView.isEmpty
 
     Repeater
     {
         model: ApplicationAddonsModel { id: addonsModel }
         
-        delegate: Row {
-            height: description.paintedHeight*1.2
-            width: 50
-            spacing: 10
-            CheckBox {
-                enabled: !addonsView.isInstalling
-                anchors.verticalCenter: parent.verticalCenter
-                checked: model.checked
-                onClicked: addonsModel.changeState(display, checked)
+        delegate: ListItem {
+            height: (description.height + name.height)*1.2
+            width: parent.width
+            Row {
+                id: componentsRow
+                height: parent.height
+                spacing: 10
+                CheckBox {
+                    enabled: !addonsView.isInstalling
+                    anchors.verticalCenter: parent.verticalCenter
+                    checked: model.checked
+                    onClicked: addonsModel.changeState(display, checked)
+                }
+                Image {
+                    source: "image://icon/applications-other"
+                    height: parent.height*0.9
+                    width: height
+                    smooth: true
+                    opacity: addonsView.isInstalling ? 0.3 : 1
+                }
             }
-            Image {
-                source: "image://icon/applications-other"
-                height: parent.height; width: height
-                smooth: true
-                opacity: addonsView.isInstalling ? 0.3 : 1
+            Label {
+                id: name
+                anchors {
+                    top: parent.top
+                    left: componentsRow.right
+                    right: parent.right
+                }
+                elide: Text.ElideRight
+                text: display
             }
             Label {
                 id: description
-                enabled: !addonsView.isInstalling
-                anchors.verticalCenter: parent.verticalCenter
-                text: i18n("<qt>%1<br/><em>%2</em></qt>", display, toolTip)
+                anchors {
+                    bottom: parent.bottom
+                    left: componentsRow.right
+                    right: parent.right
+                }
+                elide: Text.ElideRight
+                font.italic: true
+                text: toolTip
             }
         }
     }
