@@ -91,6 +91,7 @@ GenericName[zh_CN]=软件中心
 GenericName[zh_TW]=軟體中心
 Categories=Qt;KDE;System;
 Keywords=program;software;repository;package;install;remove;update;apps;applications;
+Keywords[ca]=programa;programari;repositori;paquet;instal·la;suprimeix;actualitza;apps;aplicacions;
 Keywords[cs]=program;software;repozitář;balíček;instalovat;odstranit;aktualizovat;programy;aplikace;
 Keywords[da]=program,software,repository,softwarekilde,pakke,installere,fjerne,apps,applikationer,opdatere;
 Keywords[de]=Programm,Software,Archiv,Repository,Paket,Installieren,Entfernen,Aktualisieren,deb,Programme,Anwendungen
