@@ -53,11 +53,10 @@ Item {
         Column {
             id: overviewContents
             width: parent.width
-            spacing: 5
             
             property QtObject ratingInstance: appInfo.reviewsBackend!=null ? appInfo.reviewsBackend.ratingForApplication(appInfo.application) : null
             
-            Item {width: 1; height: 1}
+            Item {width: 10; height: 5}
 
             Item {
                 anchors {
@@ -111,7 +110,7 @@ Item {
                     }
                 }
             }
-            Item {width: 1; height: 10}
+            Item {width: 10; height: 20}
             Heading { text: i18n("Description") }
             Label {
                 id: info
@@ -124,6 +123,7 @@ Item {
                 wrapMode: Text.WordWrap
                 text: application.longDescription
             }
+            Item {width: 10; height: 20}
 
             Heading {
                 text: i18n("Addons")
@@ -133,8 +133,10 @@ Item {
                 id: addonsView
                 application: appInfo.application
                 isInstalling: installButton.isActive
+                width: parent.width
             }
 
+            Item {width: 10; height: 20}
             Heading {
                 text: i18n("Comments")
                 visible: reviewsView.visible
@@ -172,7 +174,7 @@ Item {
                     onClicked: reviewDialog.open()
                 }
             }
-            Item { height: 1; width: height } //margin by the end
+            Item { height: 10; width: 5 } //margin by the end
         }
     }
     ReviewDialog {
