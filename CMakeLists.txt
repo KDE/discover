@@ -15,8 +15,8 @@ find_package(AkabeiCore QUIET)
 find_package(AkabeiClient QUIET)
 find_package(PackageKitQt2 QUIET)
 
-include (KDE4Defaults)
-include( FindPkgConfig )
+include(KDE4Defaults)
+include(FindPkgConfig)
 
 if(NOT qjson_LIBRARIES) #hack to compatibilize different qjson finder versions
     set(qjson_LIBRARIES ${QJSON_LIBRARIES})
