@@ -25,11 +25,10 @@
 #include <KStandardDirs>
 #include "MuonDiscoverMainWindow.h"
 #include <MuonBackendsFactory.h>
+#include "MuonVersion.h"
 
 static const char description[] =
     I18N_NOOP("An application discoverer");
-
-static const char version[] = "2.1.65";
 
 int main(int argc, char** argv)
 {

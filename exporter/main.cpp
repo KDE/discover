@@ -24,11 +24,10 @@
 #include <KUniqueApplication>
 #include <KStandardDirs>
 #include "MuonExporter.h"
+#include "MuonVersion.h"
 
 static const char description[] =
     I18N_NOOP("An application exporterer");
-
-static const char version[] = "2.1.65";
 
 int main(int argc, char** argv)
 {

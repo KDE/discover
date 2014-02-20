@@ -24,13 +24,11 @@
 #include <KAboutData>
 #include <KCmdLineArgs>
 #include <KStandardDirs>
-
+#include "MuonVersion.h"
 #include <stdio.h>
 
 static const char description[] =
     I18N_NOOP("An update manager");
-
-static const char version[] = "2.1.65";
 
 int main(int argc, char **argv)
 {
