@@ -1,30 +1,7 @@
 [Global]
 IconName=muondiscover
 Comment=Muon Application Backend Notifier
-Comment[bs]=Pozadinski obavještavač za Muon aplikacije
-Comment[ca]=Notificador del dorsal d'aplicacions del Muon
-Comment[cs]=Podpůrná vrstva upozorňování pro Muon
-Comment[da]=Backend-bekendtgørelser for programmet Muon
-Comment[de]=Muon-Dienstprogramm für Anwendungs-Benachrichtigungen
-Comment[es]=Motor del notificador de aplicaciones de Muon
-Comment[fi]=Muonin sovellustaustajärjestelmän ilmoitukset
-Comment[fr]=Notifieur du moteur de l'application Muon
-Comment[gl]=Motor de notificacións de aplicacións de Muon
-Comment[hu]=Muon alkalmazás háttérprogram értesítő
-Comment[nl]=Muon backend van melder van toepassingen
-Comment[pt]=Notificador da Infra-Estrutura de Aplicações do Muon
-Comment[pt_BR]=Notificador da Infraestrutura de Aplicativos do Muon
-Comment[sk]=Backendový oznamovač aplikácií Muon
-Comment[sl]=Zaledja obvestilnika za programe Muon
-Comment[sr]=Муонова позадина за извештавање о програмима
-Comment[sr@ijekavian]=Муонова позадина за извештавање о програмима
-Comment[sr@ijekavianlatin]=Muonova pozadina za izveštavanje o programima
-Comment[sr@latin]=Muonova pozadina za izveštavanje o programima
-Comment[sv]=Muon programgränssnittsunderrättelser
 Comment[tr]=Muon Uygulama Arka Uç Bildirici
-Comment[uk]=Сповіщувач модуля програми Muon
-Comment[x-test]=xxMuon Application Backend Notifierxx
-Comment[zh_TW]=Muon 應用程式後端介面通知器
 
 [Event/DistUpgrade]
 Name=Upgrade Available
@@ -108,7 +85,7 @@ Comment[sr@ijekavianlatin]=Dostupno je novo izdanje Kubuntua
 Comment[sr@latin]=Dostupno je novo izdanje Kubuntua
 Comment[sv]=En ny version av Kubuntu är tillgänglig
 Comment[tr]=Kubuntu'nun yeni sürümü var
-Comment[ug]=يېڭى نەشردىكى كۇبۇنتۇ بار
+Comment[ug]=يېڭى نەشردىكى Kubuntu بار
 Comment[uk]=Доступна нова версія Kubuntu
 Comment[x-test]=xxA new version of Kubuntu is availablexx
 Comment[zh_CN]=有新版本的 Kubuntu
