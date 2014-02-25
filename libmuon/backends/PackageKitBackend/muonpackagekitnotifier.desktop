@@ -1,6 +1,14 @@
 [Desktop Entry]
 Name=Muon PackageKit Notifier
+Name[ca]=Notificador del PackageKit pel Muon
+Name[de]=Muon-PackageKit-Benachrichtigung
+Name[fr]=Notifieur PackageKit de Muon
+Name[nl]=Muon-melder van PackageKit
+Name[pt_BR]=Notificador do PackageKit para o Muon
+Name[sv]=Muon PackageKit underrättelse
 Name[tr]=Muon PackageKit Bildirici
+Name[uk]=Сповіщувач Muon для PackageKit
+Name[x-test]=xxMuon PackageKit Notifierxx
 Type=Service
 X-KDE-ServiceTypes=KDEDModule
 X-KDE-Library=muonpackagekitnotifier
