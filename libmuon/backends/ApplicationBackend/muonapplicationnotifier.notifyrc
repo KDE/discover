@@ -2,9 +2,12 @@
 IconName=muondiscover
 Comment=Muon Application Backend Notifier
 Comment[ca]=Notificador del dorsal d'aplicacions del Muon
+Comment[cs]=Podpůrná vrstva upozorňování pro Muon
 Comment[de]=Muon-Dienstprogramm für Anwendungs-Benachrichtigungen
+Comment[es]=Motor del notificador de aplicaciones de Muon
 Comment[fr]=Notifieur du moteur de l'application Muon
 Comment[nl]=Muon backend van melder van toepassingen
+Comment[pl]=Silnik powiadamiania o programach Muon
 Comment[pt_BR]=Notificador da Infraestrutura de Aplicativos do Muon
 Comment[sv]=Muon programgränssnittsunderrättelser
 Comment[tr]=Muon Uygulama Arka Uç Bildirici
