@@ -20,6 +20,7 @@
 import QtQuick 1.1
 import org.kde.plasma.core 0.1
 import org.kde.plasma.components 0.1
+import org.kde.qtextracomponents 0.1
 
 Item {
     id: view
@@ -39,10 +40,10 @@ Item {
         
         Component {
             id: del
-            IconItem {
+            QIconItem {
                 height: view.starSize
                 width: view.starSize
-                source: "rating"
+                icon: "rating"
                 opacity: (view.max/theRepeater.count*index)>view.rating ? 0.2 : 1
 
                 MouseArea {

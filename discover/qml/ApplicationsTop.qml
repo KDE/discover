@@ -20,6 +20,7 @@
 import QtQuick 1.1
 import org.kde.plasma.core 0.1
 import org.kde.plasma.components 0.1
+import org.kde.qtextracomponents 0.1
 import org.kde.muon 1.0
 import "navigation.js" as Navigation
 
@@ -47,12 +48,12 @@ ListView {
                 width: ListView.view.width
                 height: (view.height-nameLabel.paintedHeight*1.5-view.spacing*5)/5
                 enabled: true
-                IconItem {
+                QIconItem {
                     id: iconItem
                     anchors { left: parent.left; verticalCenter: parent.verticalCenter }
                     height: parent.height*0.9
                     width: height
-                    source: model.icon
+                    icon: model.icon
                 }
                 Label {
                     id: nameLabel

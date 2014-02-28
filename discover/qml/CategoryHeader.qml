@@ -20,14 +20,15 @@
 import QtQuick 1.1
 import org.kde.plasma.core 0.1
 import org.kde.plasma.components 0.1
+import org.kde.qtextracomponents 0.1
 
 Item {
     property QtObject category: null
     property real proposedMargin: 0
     
-    IconItem {
+    QIconItem {
         id: iconItem
-        source: category.icon
+        icon: category.icon
         anchors {
             top: parent.top
             bottom: parent.bottom

@@ -65,7 +65,7 @@ Item {
                     margins: 10
                 }
                 height: icon.height
-                IconItem {
+                QIconItem {
                     id: icon
                     anchors {
                         top: header.top
@@ -75,7 +75,7 @@ Item {
                     height: 64
                     width: height
                     
-                    source: application.icon
+                    icon: application.icon
                     clip: true
                 }
                 

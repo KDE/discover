@@ -1,6 +1,7 @@
 import QtQuick 1.1
 import org.kde.plasma.core 0.1
 import org.kde.plasma.components 0.1
+import org.kde.qtextracomponents 0.1
 import org.kde.muon 1.0
 import "navigation.js" as Navigation
 
@@ -68,7 +69,7 @@ ToolBar {
             Row {
                 id: launcherRow
                 spacing: 2
-                IconItem { source: model.app.icon; height: parent.height*0.95; width: height }
+                QIconItem { icon: model.app.icon; height: parent.height*0.95; width: height }
                 Label { text: model.app.name }
                 Label { text: listener.statusText; visible: listener.isActive }
                 ToolButton {
