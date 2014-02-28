@@ -9,6 +9,12 @@ PathView {
     property real delWidth: width
     property real delHeight: height
     property alias slideDuration: timer.interval
+
+    Rectangle {
+        anchors.fill: parent
+        color: "black"
+        opacity: 0.05
+    }
     
     path: Path {
         startX: delWidth/2; startY: delHeight/2
