@@ -86,7 +86,7 @@ void AbstractKDEDModule::configurationChanged()
 
 void AbstractKDEDModule::Private::__k__showMuon()
 {
-    KRun::runCommand("muon-discover --mode installed", 0);
+    KRun::runCommand("muon-updater", 0);
 }
 
 void AbstractKDEDModule::Private::__k__quit()
