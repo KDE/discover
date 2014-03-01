@@ -113,7 +113,7 @@ void PackageKitUpdater::backendChanged()
                 break;
             case PackageKit::Transaction::StatusInstall:
                 m_statusMessage = i18n("Installing...");
-                m_statusDetail = i18n("The transactions is currently installing packages...");
+                m_statusDetail = i18n("The transaction is currently installing packages...");
                 break;
             case PackageKit::Transaction::StatusUpdate:
                 m_statusMessage = i18n("Updating...");
