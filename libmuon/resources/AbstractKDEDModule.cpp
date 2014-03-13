@@ -127,17 +127,17 @@ void AbstractKDEDModule::setSystemUpToDate(bool systemUpToDate, int updateCount,
         QString message;
         QString icon;
         if (d->updateType == SecurityUpdate) {
-            message = i18n("A security update is available for your system!");
+            message = i18n("A security update is available for your system.");
             icon = "security-low";
         } else {
-            message = i18n("An update is available for your system!");
+            message = i18n("An update is available for your system.");
             icon = "security-high";
         }
         if (d->verbose) {
             if (updateCount > 0 && securityUpdateCount > 0) {
-                message += " " + i18n("There are %1 updated packages, of which %2 were updated for security reasons!", updateCount, securityUpdateCount);
+                message += " " + i18n("There are %1 updated packages, of which %2 were updated for security reasons.", updateCount, securityUpdateCount);
             } else if (updateCount > 0) {
-                message += " " + i18n("There are %1 updated packages!", updateCount);
+                message += " " + i18n("There are %1 updated packages.", updateCount);
             } else if (securityUpdateCount > 0) {
                 message += " " + i18n("%1 packages were updated for security reasons", securityUpdateCount);
             }
@@ -146,12 +146,12 @@ void AbstractKDEDModule::setSystemUpToDate(bool systemUpToDate, int updateCount,
         d->statusNotifier->setToolTip(icon, message, i18n("A system update is recommended"));
         d->statusNotifier->setStatus(KStatusNotifierItem::Active);
         if (notification == ShowNotification) {
-            KNotification::event("Update", i18n("System update available!"), message, KIcon("svn-update").pixmap(KIconLoader::SizeMedium), nullptr, KNotification::CloseOnTimeout, KComponentData("muonabstractnotifier"));
+            KNotification::event("Update", i18n("System update available"), message, KIcon("svn-update").pixmap(KIconLoader::SizeMedium), nullptr, KNotification::CloseOnTimeout, KComponentData("muonabstractnotifier"));
         }
     } else {
         d->statusNotifier->setOverlayIconByName(QString());
         d->statusNotifier->setStatus(KStatusNotifierItem::Passive);
-        d->statusNotifier->setToolTip("security-high", i18n("Your system is up-to-date!"), i18n("No system update available"));
+        d->statusNotifier->setToolTip("security-high", i18n("Your system is up-to-date."), i18n("No system update available"));
     }
 }
 

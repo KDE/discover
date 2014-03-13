@@ -1,26 +1,26 @@
 # make the macro a bit more smart, making it possible to pass arguments to qdbusxml2cpp
-MACRO(QT4_ADD_DBUS_INTERFACE _sources _interface _basename)
-  GET_FILENAME_COMPONENT(_infile ${_interface} ABSOLUTE)
-  SET(_header ${CMAKE_CURRENT_BINARY_DIR}/${_basename}.h)
-  SET(_impl   ${CMAKE_CURRENT_BINARY_DIR}/${_basename}.cpp)
-  SET(_moc    ${CMAKE_CURRENT_BINARY_DIR}/${_basename}.moc)
+macro(QT4_ADD_DBUS_INTERFACE _sources _interface _basename)
+  get_filename_component(_infile ${_interface} ABSOLUTE)
+  set(_header ${CMAKE_CURRENT_BINARY_DIR}/${_basename}.h)
+  set(_impl   ${CMAKE_CURRENT_BINARY_DIR}/${_basename}.cpp)
+  set(_moc    ${CMAKE_CURRENT_BINARY_DIR}/${_basename}.moc)
 
   # handling more arguments (as in FindQt4.cmake from KDE4) will come soon, then
   # _params will be used for more than just -m
-  SET(_params -m)
+  set(_params -m)
 
-  ADD_CUSTOM_COMMAND(OUTPUT ${_impl} ${_header}
+  add_custom_command(OUTPUT ${_impl} ${_header}
       COMMAND ${QT_DBUSXML2CPP_EXECUTABLE} ${_params} -p ${_basename} ${_infile} ${ARGN}
       DEPENDS ${_infile})
 
-  SET_SOURCE_FILES_PROPERTIES(${_impl} PROPERTIES SKIP_AUTOMOC TRUE)
+  set_source_files_properties(${_impl} PROPERTIES SKIP_AUTOMOC TRUE)
 
-  QT4_GENERATE_MOC(${_header} ${_moc})
+  qt4_generate_moc(${_header} ${_moc})
 
-  SET(${_sources} ${${_sources}} ${_impl} ${_header} ${_moc})
-  MACRO_ADD_FILE_DEPENDENCIES(${_impl} ${_moc})
+  set(${_sources} ${${_sources}} ${_impl} ${_header} ${_moc})
+  macro_add_file_dependencies(${_impl} ${_moc})
 
-ENDMACRO(QT4_ADD_DBUS_INTERFACE)
+endmacro(QT4_ADD_DBUS_INTERFACE)
 
 include_directories(. ${CMAKE_SOURCE_DIR}/libmuonapt)
 

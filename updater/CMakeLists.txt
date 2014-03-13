@@ -25,7 +25,7 @@ target_link_libraries(muon-updater muonprivate
 
 if (ENABLE_QZEITGEIST)
     target_link_libraries(muon-updater ${QZEITGEIST_LIBRARY})
-endif (ENABLE_QZEITGEIST)
+endif ()
 
 install(TARGETS muon-updater ${INSTALL_TARGETS_DEFAULT_ARGS} )
 

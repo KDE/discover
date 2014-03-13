@@ -6,7 +6,7 @@ set(muon-notifier_SRCS
     UpdateEvent/UpdateEvent.cpp
 )
 
-QT4_ADD_DBUS_ADAPTOR(muon-notifier_SRCS org.kubuntu.MuonNotifier.xml
+qt4_add_dbus_adaptor(muon-notifier_SRCS org.kubuntu.MuonNotifier.xml
                      configwatcher.h ConfigWatcher)
 
 kde4_add_plugin(kded_muon-notifier ${muon-notifier_SRCS})
