@@ -6,15 +6,13 @@ if(LIBATTICA_FOUND)
     add_subdirectory(KNSBackend)
 endif()
 
-if(QAPT_FOUND)
-    add_subdirectory(ApplicationBackend)
-endif()
-
 if(BODEGA_FOUND)
     add_subdirectory(BodegaBackend)
 endif()
 
-if(PACKAGEKITQT2_FOUND)
+if(QAPT_FOUND)
+    add_subdirectory(ApplicationBackend)
+elseif(PACKAGEKITQT2_FOUND)
     add_subdirectory(PackageKitBackend)
 endif()
 
