@@ -18,12 +18,13 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-import QtQuick 1.1
-import org.kde.plasma.components 0.1
+import QtQuick 2.1
+import QtQuick.Controls 1.1
+import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.muon.discover 1.0
 import "navigation.js" as Navigation
 
-Item {
+ApplicationWindow {
     id: window
     property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
     property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
@@ -37,7 +38,12 @@ Item {
     property Component currentTopLevel: defaultStartup ? topBrowsingComp : loadingComponent
     property bool defaultStartup: true
     property bool navigationEnabled: true
-    
+
+    width: 500
+    height: 500
+    visible: true
+//     toolBar: pageToolBar
+
     Binding {
         target: app.searchWidget
         property: "enabled"

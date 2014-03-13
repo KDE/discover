@@ -20,8 +20,8 @@
 
 ///This is a fork of ListItem so that it can be used for GridView
 
-import QtQuick 1.0
-import org.kde.plasma.core 0.1 as PlasmaCore
+import QtQuick 2.1
+import org.kde.plasma.core 2.0 as PlasmaCore
 
 MouseArea {
     id: listItem

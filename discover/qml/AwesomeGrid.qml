@@ -17,7 +17,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 1.1
+import QtQuick 2.1
 
 Flickable {
     property int columnCount: Math.max(Math.floor(actualWidth/minCellWidth), 1)

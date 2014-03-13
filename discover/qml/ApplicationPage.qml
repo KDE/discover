@@ -17,12 +17,12 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 1.1
-import org.kde.plasma.core 0.1
-import org.kde.plasma.components 0.1
+import QtQuick 2.1
+import org.kde.plasma.core 2.0
+import org.kde.plasma.components 2.0
 import org.kde.muon 1.0
 
-Page
+Item
 {
     property alias application: over.application
 

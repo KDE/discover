@@ -17,7 +17,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 1.0
+import QtQuick 2.1
 import org.kde.muon.discover 1.0
 import "navigation.js" as Navigation
 
