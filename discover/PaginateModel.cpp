@@ -58,7 +58,7 @@ void PaginateModel::setPageSize(int count)
             m_pageSize = count;
             endInsertRows();
         } else {
-            beginRemoveRows(QModelIndex(), m_pageSize, m_pageSize+difference);
+            beginRemoveRows(QModelIndex(), m_pageSize+difference, m_pageSize);
             m_pageSize = count;
             endRemoveRows();
         }
