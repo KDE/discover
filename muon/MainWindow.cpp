@@ -225,7 +225,7 @@ void MainWindow::markUpgrade()
                              "available upgrades may require new packages to "
                              "be installed or removed. You may wish to try "
                              "a full upgrade by clicking the <interface>Full "
-                             " Upgrade</interface> button.");
+                             "Upgrade</interface> button.");
         QString title = i18nc("@title:window", "Unable to Mark Upgrades");
         KMessageBox::information(this, text, title);
     } else {

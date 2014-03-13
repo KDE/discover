@@ -23,9 +23,9 @@
 #include <QCommandLineParser>
 #include "MuonDiscoverMainWindow.h"
 #include <MuonBackendsFactory.h>
+#include "MuonVersion.h"
 
 static const char description[] = I18N_NOOP("An application discoverer");
-static const char version[] = "2.0.65";
 
 int main(int argc, char** argv)
 {

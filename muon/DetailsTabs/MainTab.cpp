@@ -58,9 +58,9 @@ MainTab::MainTab(QWidget *parent)
     buttonBoxLayout->setMargin(0);
     buttonBoxLayout->setSpacing(KDialog::spacingHint());
 
-    QLabel *buttonLabel = new QLabel(buttonBox);
-    buttonLabel->setText(i18nc("@label", "Mark for:"));
-    buttonBoxLayout->addWidget(buttonLabel);
+    m_buttonLabel = new QLabel(buttonBox);
+    m_buttonLabel->setText(i18nc("@label", "Mark for:"));
+    buttonBoxLayout->addWidget(m_buttonLabel);
 
     m_installButton = new QPushButton(buttonBox);
     m_installButton->setIcon(QIcon::fromTheme("download"));
@@ -114,11 +114,23 @@ MainTab::MainTab(QWidget *parent)
     m_layout->addWidget(m_descriptionBrowser);
 }
 
+void MainTab::hideButtons()
+{
+    m_installButton->hide();
+    m_removeButton->hide();
+    m_upgradeButton->hide();
+    m_reinstallButton->hide();
+    m_cancelButton->hide();
+    m_buttonLabel->hide();
+
+}
+
 void MainTab::refresh()
 {
     if (!m_package) {
         return; // Nothing to refresh yet, so return, else we crash
     }
+    m_buttonLabel->show();
     int state = m_package->state();
     bool upgradeable = (state & QApt::Package::Upgradeable);
 

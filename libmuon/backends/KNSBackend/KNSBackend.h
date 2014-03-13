@@ -78,6 +78,7 @@ private:
     static QSharedPointer<Attica::ProviderManager> m_atticaManager;
     void setFetching(bool f);
     
+    bool m_fetching;
     bool m_isValid;
     KNS3::DownloadManager* m_manager;
     QHash<QString, AbstractResource*> m_resourcesByName;
@@ -86,7 +87,6 @@ private:
     Attica::Provider m_provider;
     QMap<QString, Attica::Category> m_categories;
     QString m_name;
-    bool m_fetching;
     QString m_iconName;
     AbstractBackendUpdater* m_updater;
 };

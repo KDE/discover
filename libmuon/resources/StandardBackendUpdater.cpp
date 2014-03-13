@@ -124,6 +124,11 @@ QList<AbstractResource*> StandardBackendUpdater::toUpdate() const
     return m_toUpgrade.toList();
 }
 
+bool StandardBackendUpdater::isMarked(AbstractResource* res) const
+{
+    return m_toUpgrade.contains(res);
+}
+
 bool StandardBackendUpdater::isAllMarked() const
 {
     //Maybe we should make this smarter...
@@ -172,5 +177,10 @@ quint64 StandardBackendUpdater::downloadSpeed() const
 
 QList<QAction*> StandardBackendUpdater::messageActions() const
 {
-    return QList<QAction*>();
+    return m_actions;
+}
+
+void StandardBackendUpdater::setMessageActions(const QList<QAction*>& actions)
+{
+    m_actions = actions;
 }

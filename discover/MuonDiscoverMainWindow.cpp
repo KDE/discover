@@ -20,6 +20,7 @@
 #include "MuonDiscoverMainWindow.h"
 #include "DiscoverAction.h"
 #include "MuonActionGroup.h"
+#include "PaginateModel.h"
 
 // Qt includes
 #include <QDebug>
@@ -78,6 +79,7 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     //binds things like kconfig and icons
     kdeclarative.setupBindings();
     
+    qmlRegisterType<PaginateModel>("org.kde.muon.discover", 1, 0, "PaginateModel");
     qmlRegisterType<DiscoverAction>("org.kde.muon.discover", 1, 0, "DiscoverAction");
 //     qmlRegisterType<NativeScrollBar>("org.kde.muon.discover", 1, 0, "NativeScrollBar");
     qmlRegisterType<MuonActionGroup>("org.kde.muon.discover", 1, 0, "ActionGroup");

@@ -25,6 +25,7 @@ set(muon_LIB_SRCS
     resources/AbstractBackendUpdater.cpp
     resources/ResourcesUpdatesModel.cpp
     resources/StandardBackendUpdater.cpp
+    resources/AbstractKDEDModule.cpp
     MuonBackendsFactory.cpp
     ScreenshotsModel.cpp
     ApplicationAddonsModel.cpp
@@ -34,7 +35,7 @@ kconfig_add_kcfg_files(muon_LIB_SRCS GENERATE_MOC MuonDataSources.kcfgc)
 add_library(muonprivate SHARED ${muon_LIB_SRCS})
 
 set_target_properties(muonprivate PROPERTIES
-    VERSION 2.0.65
+    VERSION 2.1.3
     SOVERSION 2
 )
 
@@ -51,6 +52,7 @@ LINK_PRIVATE
 
 install(TARGETS muonprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES moo.ogg DESTINATION ${DATA_INSTALL_DIR}/libmuon)
+install(FILES resources/muonabstractnotifier.notifyrc DESTINATION ${DATA_INSTALL_DIR}/muonabstractnotifier)
 
 install(FILES
     muonbackendplugin.desktop

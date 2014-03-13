@@ -125,7 +125,7 @@ void ReviewsModel::restartFetching()
 
 void ReviewsModel::fetchMore(const QModelIndex& parent)
 {
-    if(!m_backend || !m_app || m_backend->isFetching() || parent.isValid() || !m_canFetchMore)
+    if(!m_backend || !m_app || m_app->backend()->isFetching() || m_backend->isFetching() || parent.isValid() || !m_canFetchMore)
         return;
 
     m_lastPage++;

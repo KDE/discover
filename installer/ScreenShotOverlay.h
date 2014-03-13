@@ -24,11 +24,8 @@
 #include <QtWidgets/QWidget>
 #include <QtGui/QPixmap>
 
-class QLabel;
 class QMouseEvent;
-class QProgressBar;
 class QScrollArea;
-class KJob;
 
 class ClickableLabel;
 

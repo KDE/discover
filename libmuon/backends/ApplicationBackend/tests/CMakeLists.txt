@@ -3,7 +3,7 @@ include_directories(..)
 macro(libmuon_add_unit_test name)
     kde4_add_unit_test(${name}  modeltest.cpp ${ARGN})
     target_link_libraries(${name}
-        muonprivate
+        muonprivate muonapt
         
         Qt5::Test Qt5::Core
         KF5::KIOWidgets ${QAPT_LIBRARY})

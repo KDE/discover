@@ -24,6 +24,7 @@
 ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
     : ResourcesProxyModel(parent)
 {
+    setRoleNames(ResourcesModel::global()->roleNames());
 }
 
 void ApplicationProxyModelHelper::componentComplete()

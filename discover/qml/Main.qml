@@ -28,6 +28,7 @@ Item {
     property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
     property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
     property Component categoryComp: Qt.createComponent("qrc:/qml/CategoryPage.qml")
+    property Component reviewsComp: Qt.createComponent("qrc:/qml/ReviewsPage.qml")
 
     //toplevels
     property Component topBrowsingComp: Qt.createComponent("qrc:/qml/BrowsingPage.qml")
@@ -81,16 +82,16 @@ Item {
             if(obj)
                 obj.destroy(2000)
         }
-        var page = Navigation.rootPagesCache[currentTopLevel]
-        if(page == undefined) {
-            try {
-                page = currentTopLevel.createObject(pageStack)
-                Navigation.rootPagesCache[currentTopLevel] = page
-//                 console.log("created ", currentTopLevel, Navigation.rootPagesCache[currentTopLevel])
-            } catch (e) {
-                console.log("error: "+e)
-                console.log("comp error: "+currentTopLevel.errorString())
-            }
+        if(pageStack.currentPage) {
+            pageStack.currentPage.destroy(100)
+        }
+        var page;
+        try {
+            page = currentTopLevel.createObject(pageStack)
+//             console.log("created ", currentTopLevel, Navigation.rootPagesCache[currentTopLevel])
+        } catch (e) {
+            console.log("error: "+e)
+            console.log("comp error: "+currentTopLevel.errorString())
         }
         pageStack.replace(page, {}, window.status!=Component.Ready)
     }
@@ -106,7 +107,6 @@ Item {
         shortcut: "Alt+Up"
         onTriggered: {
             breadcrumbsItem.popItem(false)
-            window.clearSearch()
         }
     }
     TopLevelPageData {

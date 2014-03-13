@@ -39,6 +39,7 @@
 #include <ReviewsBackend/Review.h>
 #include <ReviewsBackend/AbstractLoginBackend.h>
 #include "UbuntuLoginBackend.h"
+#include <resources/AbstractResourcesBackend.h>
 #include <MuonDataSources.h>
 
 static QString getCodename(const QString& value)
@@ -170,6 +171,7 @@ void ReviewsBackend::stopPendingJobs()
 
 void ReviewsBackend::fetchReviews(AbstractResource* res, int page)
 {
+    Q_ASSERT(!res->backend()->isFetching());
     Application* app = qobject_cast<Application*>(res);
     // Check our cache before fetching from the 'net
     QString hashName = app->package()->name() + app->untranslatedName();

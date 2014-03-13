@@ -28,17 +28,19 @@ find_package(Phonon4Qt5 REQUIRED NO_MODULE)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 
-include_directories(${KDE4_INCLUDES} ${QT_INCLUDES} ${QAPT_INCLUDE_DIR}
+include_directories(${QAPT_INCLUDE_DIR}
                     ${CMAKE_CURRENT_BINARY_DIR} ${QCA2_INCLUDE_DIR}
                     ${PHONON_INCLUDES}
                     ${CMAKE_SOURCE_DIR}/libmuon ${CMAKE_BINARY_DIR}/libmuon)
 
+set(MUON_VERSION "2.65.0")
+configure_file(MuonVersion.h.in MuonVersion.h)
+
 add_subdirectory(libmuon)
 if(QAPT_FOUND)
-	add_subdirectory(libmuonapt)
+    add_subdirectory(libmuonapt)
     add_subdirectory(muon)
     add_subdirectory(installer)
-    add_subdirectory(kded)
 endif(QAPT_FOUND)
 add_subdirectory(updater)
 add_subdirectory(discover)
@@ -50,5 +52,8 @@ add_subdirectory(exporter)
 #                   "http://www.kde.org" FALSE "" "Required to build the KNewStuff3 backend")
 # macro_log_feature(BODEGA_FOUND "Bodega" "Library that exposes Bodega resources"
 #                   "http://www.kde.org" FALSE "" "Required to build the Bodega backend")
-
+# macro_log_feature(AKABEICLIENT_FOUND "Akabei" "Library that exposes Akabei resources"
+#                   "http://www.kde.org" FALSE "" "Required to build the Akabei backend")
+# macro_log_feature(PACKAGEKITQT2_FOUND "PackageKitQt2" "Library that exposes PackageKit resources"
+#                   "http://www.packagekit.org" FALSE "" "Required to build the PackageKit backend")
 # macro_display_feature_log()

@@ -56,7 +56,7 @@
 #include "PackageView.h"
 #include "PackageDelegate.h"
 
-#define NUM_COLUMNS 3
+#define NUM_COLUMNS 3 // If this is changed change PackageView.cpp value as well
 
 bool packageNameLessThan(QApt::Package *p1, QApt::Package *p2)
 {
@@ -138,6 +138,7 @@ PackageWidget::PackageWidget(QWidget *parent)
     connect(m_packageView, SIGNAL(currentPackageChanged(QModelIndex)),
             this, SLOT(packageActivated(QModelIndex)));
     connect(m_packageView, SIGNAL(selectionEmpty()), m_detailsWidget, SLOT(hide()));
+    connect(m_packageView, SIGNAL(selectionMulti()), m_detailsWidget, SLOT(emitHideButtons()));
     connect(m_packageView->header(), SIGNAL(sectionClicked(int)),
             this, SLOT(sectionClicked(int)));
     connect(m_searchEdit, SIGNAL(textChanged(QString)), m_searchTimer, SLOT(start()));
@@ -286,7 +287,7 @@ void PackageWidget::contextMenuRequested(const QPoint &pos)
 
         if (state & QApt::Package::Installed) {
             m_installAction->setEnabled(false);
-            m_removeAction->setEnabled(true);
+
             if (upgradeable) {
                 m_upgradeAction->setEnabled(true);
             } else {
@@ -297,8 +298,19 @@ void PackageWidget::contextMenuRequested(const QPoint &pos)
             } else {
                 m_reinstallAction->setEnabled(true);
             }
-            m_keepAction->setEnabled(false);
-            m_purgeAction->setEnabled(true);
+            if (state & (QApt::Package::ToReInstall |
+			 QApt::Package::ToUpgrade | QApt::Package::ToDowngrade |
+			 QApt::Package::ToRemove  | QApt::Package::ToPurge)) {
+		m_removeAction->setEnabled(false);
+		m_purgeAction->setEnabled(false);
+		m_keepAction->setEnabled(true);
+	    }
+            else {
+		m_removeAction->setEnabled(true);
+		m_keepAction->setEnabled(false);
+		m_purgeAction->setEnabled(true);
+	    }
+
         } else if (state & QApt::Package::ResidualConfig) {
             m_purgeAction->setEnabled(true);
             m_installAction->setEnabled(true);
@@ -306,7 +318,16 @@ void PackageWidget::contextMenuRequested(const QPoint &pos)
             m_upgradeAction->setEnabled(false);
             m_reinstallAction->setEnabled(false);
             m_keepAction->setEnabled(false);
-        } else {
+	} else if (state & (QApt::Package::ToInstall | QApt::Package::ToReInstall |
+                            QApt::Package::ToUpgrade | QApt::Package::ToDowngrade |
+                            QApt::Package::ToRemove  | QApt::Package::ToPurge)) {
+          m_purgeAction->setEnabled(false);
+	  m_installAction->setEnabled(false);
+	  m_removeAction->setEnabled(false);
+	  m_upgradeAction->setEnabled(false);
+	  m_reinstallAction->setEnabled(false);
+	  m_keepAction->setEnabled(true);
+	} else {
             m_purgeAction->setEnabled(false);
             m_installAction->setEnabled(true);
             m_removeAction->setEnabled(false);

@@ -18,8 +18,13 @@
  */
 
 import QtQuick 1.1
+import org.kde.plasma.core 0.1
 import org.kde.plasma.components 0.1
+import org.kde.plasma.extras 0.1
+import org.kde.qtextracomponents 0.1
+import org.kde.muon.discover 1.0 as Discover
 import org.kde.muon 1.0
+import "navigation.js" as Navigation
 
 Item {
     id: appInfo
@@ -37,7 +42,6 @@ Item {
         }
     }
     Flickable {
-        clip: true
         id: overviewContentsFlickable
         width: 2*parent.width/3
         anchors {
@@ -49,54 +53,65 @@ Item {
         Column {
             id: overviewContents
             width: parent.width
-            spacing: 10
             
             property QtObject ratingInstance: appInfo.reviewsBackend!=null ? appInfo.reviewsBackend.ratingForApplication(appInfo.application) : null
-            Rating {
-                anchors.horizontalCenter: parent.horizontalCenter
-                visible: overviewContents.ratingInstance!=null
-                rating: overviewContents.ratingInstance == null ? 0 : overviewContents.ratingInstance.rating
-                width: 150
-            }
-            Label {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: i18n("%1 reviews", overviewContents.ratingInstance ? overviewContents.ratingInstance.ratingCount() : 0)
-            }
             
-            
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: i18n("Homepage")
-                iconSource: "go-home"
-                enabled: application.homepage!=""
-                onClicked: Qt.openUrlExternally(application.homepage)
+            Item {width: 10; height: 5}
+
+            Item {
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    margins: 10
+                }
+                height: icon.height
+                IconItem {
+                    id: icon
+                    anchors {
+                        top: header.top
+                        left: parent.left
+//                         bottom: header.bottom
+                    }
+                    height: 64
+                    width: height
+                    
+                    source: application.icon
+                    clip: true
+                }
+                
+                Item {
+                    id: header
+                    height: parent.height
+                    anchors {
+                        top: parent.top
+                        left: icon.right
+                        right: parent.right
+                        leftMargin: 5
+                    }
+                    
+                    Heading {
+                        id: heading
+                        text: application.name
+                        width: parent.width
+                        font.bold: true
+                    }
+                    Label {
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                            top: heading.bottom
+                            bottom: parent.bottom
+                        }
+                        text: application.comment
+                        wrapMode: Text.WordWrap
+                        elide: Text.ElideRight
+                        maximumLineCount: 2
+//                         verticalAlignment: Text.AlignVCenter
+                    }
+                }
             }
-            
-            Button {
-                visible: application.isInstalled && application.canExecute
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: i18n("Launch")
-                onClicked: application.invokeApplication()
-            }
-            
-            Button {
-                anchors.horizontalCenter: parent.horizontalCenter
-                visible: appInfo.reviewsBackend != null && application.isInstalled
-                text: i18n("Review")
-                onClicked: reviewDialog.open()
-            }
-            
-            Label {
-                text: i18n(  "<b>Total Size:</b> %1<br/>"
-                            +"<b>Version:</b> %2 %3<br/>"
-                            +"<b>License:</b> %4<br/>",
-                            application.sizeDescription,
-                            application.name, (application.isInstalled ?
-                                                        application.installedVersion : application.availableVersion),
-                            application.license
-                )
-            }
-            
+            Item {width: 10; height: 20}
+            Heading { text: i18n("Description") }
             Label {
                 id: info
                 anchors {
@@ -108,12 +123,104 @@ Item {
                 wrapMode: Text.WordWrap
                 text: application.longDescription
             }
+            Item {width: 10; height: 20}
+
+            Heading {
+                text: i18n("Addons")
+                visible: addonsView.visible
+            }
+            AddonsView {
+                id: addonsView
+                application: appInfo.application
+                isInstalling: installButton.isActive
+                width: parent.width
+            }
+
+            Item {width: 10; height: 20}
+            Heading {
+                text: i18n("Comments")
+                visible: reviewsView.visible
+            }
+            Repeater {
+                id: reviewsView
+                width: parent.width
+                visible: count>0
+                clip: true
+                
+                delegate: ReviewDelegate {
+                    onMarkUseful: reviewsModel.markUseful(index, useful)
+                }
+                
+                model: Discover.PaginateModel {
+                    pageSize: 3
+                    sourceModel: ReviewsModel {
+                        id: reviewsModel
+                        resource: application
+                    }
+                }
+            }
+            Row {
+                anchors.horizontalCenter: parent.horizontalCenter
+                spacing: 5
+                
+                Button {
+                    visible: reviewsModel.count>0
+                    text: i18n("More comments (%1)...", overviewContents.ratingInstance ? overviewContents.ratingInstance.ratingCount() : 0)
+                    onClicked: Navigation.openReviews(application, reviewsModel)
+                }
+                Button {
+                    visible: appInfo.reviewsBackend != null && application.isInstalled
+                    text: i18n("Review")
+                    onClicked: reviewDialog.open()
+                }
+            }
+            Item { height: 10; width: 5 } //margin by the end
         }
     }
     ReviewDialog {
         id: reviewDialog
         application: appInfo.application
         onAccepted: appInfo.reviewsBackend.submitReview(appInfo.application, summary, review, rating)
+    }
+    Column {
+        anchors {
+            top: parent.verticalCenter
+            right: overviewContentsFlickable.left
+            left: parent.left
+            topMargin: 10
+            margins: 5
+        }
+        spacing: 10
+        InstallApplicationButton {
+            id: installButton
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: Math.min(parent.width, maximumWidth)
+            application: appInfo.application
+            additionalItem:  Rating {
+                visible: overviewContents.ratingInstance!=null
+                rating:  overviewContents.ratingInstance==null ? 0 : overviewContents.ratingInstance.rating
+            }
+        }
+        Grid {
+            width: parent.width
+            columns: 2
+            spacing: 0
+            clip: true
+            Label { text: i18n("Total Size: "); horizontalAlignment: Text.AlignRight; width: parent.width/2; font.weight: Font.Bold }
+            Label { text: application.sizeDescription }
+            Label { text: i18n("Version: "); horizontalAlignment: Text.AlignRight; width: parent.width/2; font.weight: Font.Bold }
+            Label { text: application.packageName+" "+(application.isInstalled ? application.installedVersion : application.availableVersion) }
+            Label { text: i18n("Homepage: "); horizontalAlignment: Text.AlignRight; width: parent.width/2; font.weight: Font.Bold }
+            Label { text: "<a href='"+application.homepage+"'>"+application.homepage+"</a>"; onLinkActivated: Qt.openUrlExternally(link) }
+            Label { text: i18n("License: "); horizontalAlignment: Text.AlignRight; width: parent.width/2; font.weight: Font.Bold }
+            Label { text: application.license }
+        }
+        Button {
+            anchors.horizontalCenter: parent.horizontalCenter
+            visible: application.isInstalled && application.canExecute
+            text: i18n("Launch")
+            onClicked: application.invokeApplication()
+        }
     }
     
     Item {
@@ -137,6 +244,7 @@ Item {
             fillMode: Image.PreserveAspectFit
             source: thumbnailsView.currentIndex>=0 ? screenshotsModel.screenshotAt(thumbnailsView.currentIndex) : "image://icon/image-missing"
             smooth: true
+            visible: screenshot.status == Image.Ready
             
             onStatusChanged: if(status==Image.Error) {
                 sourceSize.width = sourceSize.height = 200
@@ -156,8 +264,8 @@ Item {
             State { name: "thumbnail"
                 PropertyChanges { target: shadowItem; opacity: 0.1 }
                 PropertyChanges { target: shadow; width: overviewContentsFlickable.x-x-5 }
-                PropertyChanges { target: shadow; height: parent.height }
-                PropertyChanges { target: shadow; x: 0 }
+                PropertyChanges { target: shadow; height: appInfo.height/2 }
+                PropertyChanges { target: shadow; x: 5 }
                 PropertyChanges { target: shadow; y: 5 }
                 PropertyChanges { target: thumbnailsView; opacity: 1 }
             },
@@ -174,7 +282,7 @@ Item {
         transitions: Transition {
             SequentialAnimation {
                 PropertyAction { target: screenshot; property: "smooth"; value: false }
-                NumberAnimation { properties: "y,width,height"; easing.type: Easing.OutQuad; duration: 500 }
+                NumberAnimation { properties: "x,y,width,height"; easing.type: Easing.OutQuad; duration: 500 }
                 PropertyAction { target: screenshot; property: "smooth"; value: true }
             }
         }

@@ -96,7 +96,7 @@ public:
      */
     AddonList addons() const;
     /**
-     * @returns true when the transaction can be cancelled
+     * @returns true when the transaction can be canceled
      */
     bool isCancellable() const;
     /**
@@ -110,8 +110,8 @@ public:
      */
     void setStatus(Status status);
     /**
-     * Sets whether the transaction can be cancelled or not
-     * @param isCancellable should be true if the transaction can be cancelled
+     * Sets whether the transaction can be canceled or not
+     * @param isCancellable should be true if the transaction can be canceled
      */
     void setCancellable(bool isCancellable);
     /**

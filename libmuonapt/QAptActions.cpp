@@ -53,6 +53,7 @@ QAptActions::QAptActions()
     , m_mainWindow(nullptr)
     , m_reloadWhenEditorFinished(false)
     , m_historyDialog(nullptr)
+    , m_distUpgradeAvailable(false)
 {
     connect(Solid::Networking::notifier(), SIGNAL(statusChanged(Solid::Networking::Status)),
             this, SLOT(networkChanged()));
@@ -82,6 +83,8 @@ MuonMainWindow* QAptActions::mainWindow() const
 
 void QAptActions::setBackend(QApt::Backend* backend)
 {
+    if(backend == m_backend)
+        return;
     m_backend = backend;
     if (!m_backend->init())
         initError();
@@ -93,6 +96,7 @@ void QAptActions::setBackend(QApt::Backend* backend)
     setReloadWhenEditorFinished(true);
     // Some actions need an initialized backend to be able to set their enabled state
     setActionsEnabled(true);
+    checkDistUpgrade();
 }
 
 void QAptActions::setupActions()
@@ -174,9 +178,8 @@ void QAptActions::setupActions()
     distUpgradeAction->setPriority(QAction::HighPriority);
     distUpgradeAction->setWhatsThis(i18nc("Notification when a new version of Kubuntu is available",
                                         "A new version of Kubuntu is available."));
-    distUpgradeAction->setEnabled(false);
+    distUpgradeAction->setEnabled(m_distUpgradeAvailable);
     connect(distUpgradeAction, SIGNAL(triggered(bool)), SLOT(launchDistUpgrade()));
-    checkDistUpgrade();
 
     m_actions.append(saveInstalledAction);
 }
@@ -203,8 +206,7 @@ void QAptActions::setActionsEnabledInternal(bool enabled)
     bool changesPending = m_backend && m_backend->areChangesMarked();
     actionCollection()->action("save_markings")->setEnabled(changesPending);
     actionCollection()->action("save_download_list")->setEnabled(changesPending);
-    actionCollection()->action("dist-upgrade")->setEnabled(false);
-    checkDistUpgrade();
+    actionCollection()->action("dist-upgrade")->setEnabled(m_distUpgradeAvailable);
 }
 
 bool QAptActions::reloadWhenSourcesEditorFinished() const
@@ -347,7 +349,7 @@ void QAptActions::loadArchives()
                                                       "Choose a Directory"));
 
     if (dirName.isEmpty()) {
-        // User cancelled
+        // User canceled
         return;
     }
 
@@ -552,5 +554,6 @@ void QAptActions::checkDistUpgrade()
 
 void QAptActions::checkerFinished(int res)
 {
+    m_distUpgradeAvailable = res == 0;
     QAptActions::self()->actionCollection()->action("dist-upgrade")->setEnabled(res == 0);
 }

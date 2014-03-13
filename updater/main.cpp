@@ -28,12 +28,12 @@
 #include <klocalizedstring.h>
 #include <kdbusservice.h>
 
+
+#include "MuonVersion.h"
 #include <stdio.h>
 
 static const char description[] =
     I18N_NOOP("An update manager");
-
-static const char version[] = "2.0.65";
 
 int main(int argc, char **argv)
 {

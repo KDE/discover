@@ -22,6 +22,8 @@
 
 #include <QtWidgets/QHeaderView>
 
+#define NUM_COLUMNS 3 // If this is changed change PackageWidget.cpp value as well
+
 PackageView::PackageView(QWidget *parent)
     : QTreeView(parent)
 {
@@ -52,6 +54,9 @@ void PackageView::selectionChanged(const QItemSelection &selected, const QItemSe
 
     if (!selected.indexes().isEmpty()) {
         emit currentPackageChanged(selected.indexes().first());
+        if(selectedIndexes().count()/NUM_COLUMNS > 1) {
+          emit selectionMulti();
+        }
     }
 }
 

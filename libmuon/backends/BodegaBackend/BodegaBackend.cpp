@@ -23,7 +23,6 @@
 #include <Transaction/Transaction.h>
 #include <Transaction/TransactionModel.h>
 #include <bodega/session.h>
-#include <bodega/listballotsjob.h>
 #include <bodega/channelsjob.h>
 #include <bodega/signonjob.h>
 #include <bodega/installjob.h>
@@ -57,7 +56,7 @@ QMap<QString,QString> retrieveCredentials(const QString& folderName)
 
         if (ret.isEmpty()) {
             QPointer<KPasswordDialog> dialog(new KPasswordDialog(0, KPasswordDialog::ShowKeepPassword|KPasswordDialog::ShowUsernameLine));
-            dialog->setPrompt(i18n("Enter %1 credentials", folderName));
+            dialog->setPrompt(i18n("Enter %1 credentials for MakePlayLive (http://makeplaylive.com)", folderName));
             dialog->exec();
             ret["username"] = dialog->username();
             ret["password"] = dialog->password();

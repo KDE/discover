@@ -179,7 +179,13 @@ void TransactionModel::cancelTransaction(Transaction *trans)
 
 void TransactionModel::removeTransaction(Transaction *trans)
 {
-    removeRow(indexOf(trans).row());
+    int r = indexOf(trans).row();
+    beginRemoveRows(QModelIndex(), r, r);
+    m_transactions.removeAt(r);
+    endRemoveRows();
+    emit transactionRemoved(trans);
+    if (m_transactions.isEmpty())
+        emit lastTransactionFinished(); 
 }
 
 bool TransactionModel::removeRows(int row, int count, const QModelIndex &parent)
@@ -190,6 +196,8 @@ bool TransactionModel::removeRows(int row, int count, const QModelIndex &parent)
     for(; count>0; ++row, --count) {
         QModelIndex child = index(row);
         Transaction *trans = transactionFromIndex(child);
+        if(!trans)
+            continue;
 
         beginRemoveRows(parent, row, row);
         int c = m_transactions.removeAll(trans);

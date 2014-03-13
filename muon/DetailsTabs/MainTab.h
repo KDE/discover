@@ -45,6 +45,7 @@ public:
 private:
     QLabel *m_packageShortDescLabel;
 
+    QLabel *m_buttonLabel;
     QPushButton *m_installButton;
     QToolButton *m_removeButton;
     QPushButton *m_upgradeButton;
@@ -66,6 +67,7 @@ private Q_SLOTS:
     void emitSetReInstall();
     void emitSetPurge();
     void emitSetKeep();
+    void hideButtons();
 
 Q_SIGNALS:
     void setInstall(QApt::Package *package);

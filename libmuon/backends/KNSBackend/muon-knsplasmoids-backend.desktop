@@ -6,6 +6,7 @@ Icon=plasma
 Name=Plasmoids
 Name[bs]=Plazmoidi
 Name[ca]=Plasmoides
+Name[ca@valencia]=Plasmoides
 Name[cs]=Plasmoidy
 Name[da]=Plasmoids
 Name[de]=Plasmoide
@@ -43,6 +44,7 @@ Name[zh_TW]=小元件
 GenericName=Plasmoids
 GenericName[bs]=Plazmoidi
 GenericName[ca]=Plasmoides
+GenericName[ca@valencia]=Plasmoides
 GenericName[cs]=Plasmoidy
 GenericName[da]=Plasmoids
 GenericName[de]=Plasmoide
@@ -80,9 +82,11 @@ GenericName[zh_TW]=小元件
 Comment=Install plasmoids and raise the power of your workspace!
 Comment[bs]=Instalirajte plazmoide i pojačajte radni prostor!
 Comment[ca]=Instal·leu plasmoides i augmenteu la potència de l'espai de treball!
+Comment[ca@valencia]=Instal·leu plasmoides i augmenteu la potència de l'espai de treball!
 Comment[da]=Installér plasmoids og gør dit skrivebord endnu stærkere!
+Comment[de]=Installieren Sie Plasmoide und steigern Sie die Leistungsfähigkeit Ihrer Arbeitsumgebung.
 Comment[el]=Εγκαταστήστε πλασμοειδή και αυξήστε την ισχύ του χώρου εργασίας σας!
-Comment[es]=¡Instale plasmoides y aumente la potencia de su espacio de trabajo!
+Comment[es]=¡Instale plasmoides y aumente la potencia de su área de trabajo!
 Comment[et]=Plasmoidide paigaldamine ja töölauale võlu juurde andmine
 Comment[fi]=Asenna plasmoideja ja lisää työtilasi tehoa!
 Comment[fr]=Installez des composants graphiques et mettez au premier plan la puissance de votre espace de travail !
@@ -112,9 +116,7 @@ Comment[uk]=Встановіть плазмоїди і зробіть ваш р�
 Comment[x-test]=xxInstall plasmoids and raise the power of your workspace!xx
 Comment[zh_CN]=安装 plasmoids，让您的工作区更强大！
 Comment[zh_TW]=安裝小元件，提升您的工作空間的能量！
-<<<<<<< HEAD
-=======
->>>>>>> 2.0
+
 X-KDE-Library=muon-knsbackend
 X-KDE-PluginInfo-Name=muon-knsbackend-plasmoids
 X-KDE-PluginInfo-License=GPL

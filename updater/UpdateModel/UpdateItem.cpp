@@ -179,9 +179,10 @@ qint64 UpdateItem::size() const
 
     return size;
 }
+
 static bool isMarked(AbstractResource* res)
 {
-    return res->backend()->backendUpdater()->toUpdate().contains(res);
+    return res->backend()->backendUpdater()->isMarked(res);
 }
 
 Qt::CheckState UpdateItem::checked() const

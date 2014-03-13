@@ -9,6 +9,7 @@ set(muon_discover_SRCS
 
     DiscoverAction.cpp
     MuonActionGroup.cpp
+    PaginateModel.cpp
 )
 
 qt5_add_resources(muon_discover_SRCS resources.qrc)

@@ -44,7 +44,7 @@
 #include <resources/AbstractResource.h>
 #include <resources/AbstractBackendUpdater.h>
 #include <resources/ResourcesUpdatesModel.h>
-// #include <resources/ResourcesModel.h>
+#include <resources/ResourcesModel.h>
 
 // Own includes
 #include "UpdateModel/UpdateModel.h"
@@ -53,8 +53,8 @@
 #include "ChangelogWidget.h"
 #include "ui_UpdaterWidgetNoUpdates.h"
 
-UpdaterWidget::UpdaterWidget(QWidget *parent) :
-    QStackedWidget(parent)
+UpdaterWidget::UpdaterWidget(ResourcesUpdatesModel* updates, QWidget *parent) :
+    QStackedWidget(parent), m_updatesBackends(updates)
 {
     setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
     m_updateModel = new UpdateModel(this);
@@ -120,6 +120,9 @@ UpdaterWidget::UpdaterWidget(QWidget *parent) :
 
     QApplication::setOverrideCursor(Qt::WaitCursor);
     m_busyWidget->start();
+
+    connect(ResourcesModel::global(), SIGNAL(fetchingChanged()), SLOT(activityChanged()));
+    connect(m_updatesBackends, SIGNAL(progressingChanged()), SLOT(activityChanged()));
 }
 
 UpdaterWidget::~UpdaterWidget()
@@ -127,27 +130,21 @@ UpdaterWidget::~UpdaterWidget()
     delete m_ui;
 }
 
-void UpdaterWidget::setBackend(ResourcesUpdatesModel *updates)
-{
-    m_updatesBackends = updates;
-    m_updateModel->setBackend(updates);
-    connect(m_updatesBackends, SIGNAL(progressingChanged()), SLOT(activityChanged()));
-
-    populateUpdateModel();
-    setEnabled(true);
-}
-
 void UpdaterWidget::activityChanged()
 {
-    if(m_updatesBackends->isProgressing()) {
-        m_updateView->hide();
+    if(ResourcesModel::global()->isFetching()) {
+        m_updateModel->setResources(QList<AbstractResource*>());
+        m_busyWidget->start();
+        setEnabled(false);
+        setCurrentIndex(0);
+    } else if(m_updatesBackends->isProgressing()) {
+        setCurrentIndex(-1);
         m_changelogWidget->hide();
         m_busyWidget->start();
         setEnabled(false);
-        setCurrentIndex(-1);
     } else {
         populateUpdateModel();
-        m_updateView->show();
+        setEnabled(true);
     }
 }
 
@@ -168,7 +165,6 @@ void UpdaterWidget::populateUpdateModel()
     m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
 
     checkAllMarked();
-    checkUpToDate();
     emit modelPopulated();
 }
 
@@ -185,6 +181,7 @@ void UpdaterWidget::selectionChanged(const QItemSelection &selected,
     }
 
     emit selectedResourceChanged(res);
+    checkUpToDate();
 }
 
 void UpdaterWidget::checkAllMarked()
@@ -206,7 +203,7 @@ void UpdaterWidget::checkUpToDate()
     qint64 day = 1000 * 60 * 60 * 24;
     qint64 week = 1000 * 60 * 60 * 24 * 7;
 
-    if(!m_updatesBackends->hasUpdates() || msecSinceUpdate > week) {
+    if((!m_updatesBackends->hasUpdates() && !ResourcesModel::global()->isFetching()) || msecSinceUpdate > week) {
         setCurrentIndex(1);
 
         // Unknown time since last update
@@ -235,5 +232,6 @@ void UpdaterWidget::checkUpToDate()
             m_ui->notifyDesc->setText(i18nc("@info", "Please click <interface>Check for Updates</interface> "
                                         "to check."));
         }
-    }
+    } else
+        setCurrentIndex(0);
 }

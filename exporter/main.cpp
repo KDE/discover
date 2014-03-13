@@ -23,10 +23,9 @@
 #include <KAboutData>
 #include "MuonExporter.h"
 #include <MuonBackendsFactory.h>
+#include "MuonVersion.h"
 
 static const char description[] = I18N_NOOP("An application exporterer");
-
-static const char version[] = "1.9.60";
 
 int main(int argc, char** argv)
 {

@@ -58,7 +58,7 @@
 // Libmuon includes
 #include <resources/AbstractResource.h>
 #include <resources/AbstractResourcesBackend.h>
-#include <MuonStrings.h>
+// #include <MuonStrings.h>
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/Review.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
