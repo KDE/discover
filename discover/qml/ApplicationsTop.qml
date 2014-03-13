@@ -21,56 +21,62 @@ import QtQuick 2.1
 import org.kde.plasma.core 2.0
 import org.kde.plasma.components 2.0
 import org.kde.muon 1.0
+import org.kde.muon.discover 1.0
 import "navigation.js" as Navigation
 
-ListView {
-    id: view
+Column {
+    id: topView
     property alias sortRole: appsModel.stringSortRole
     property alias filteredCategory: appsModel.filteredCategory
     property Component roleDelegate: null
     property string title: ""
 
-    interactive: false
-    model: ApplicationProxyModel {
-        id: appsModel
-        sortOrder: Qt.DescendingOrder
-        onRowsInserted: sortModel()
-    }
-    header: Label {
-        text: ListView.view.title
+    height: 200
+    Label {
+        text: topView.title
         width: parent.width
         horizontalAlignment: Text.AlignHCenter
         font.weight: Font.Bold
         height: paintedHeight*1.5
     }
-    delegate: ListItem {
-                width: ListView.view.width
-                height: (view.height-nameLabel.paintedHeight*1.5-view.spacing*5)/5
-                enabled: true
-                IconItem {
-                    id: iconItem
-                    anchors { left: parent.left; verticalCenter: parent.verticalCenter }
-                    height: parent.height*0.9
-                    width: height
-                    source: model.icon
-                }
-                Label {
-                    id: nameLabel
-                    anchors {
-                        left: iconItem.right
-                        right: pointsLabel.left
-                        verticalCenter: parent.verticalCenter
-                        leftMargin: 5
-                    }
-                    text: name
-                    elide: Text.ElideRight
-                }
-                Loader {
-                    anchors { right: parent.right; verticalCenter: parent.verticalCenter }
-                    id: pointsLabel
-                    sourceComponent: view.roleDelegate
-                    onItemChanged: item.model=model
-                }
-                onClicked: Navigation.openApplication(application)
+    Repeater {
+        model: PaginateModel {
+            pageSize: 5
+            sourceModel: ApplicationProxyModel {
+                id: appsModel
+                sortOrder: Qt.DescendingOrder
+//                 onRowsInserted: sortModel()
             }
+        }
+        delegate: ListItem {
+                    width: topView.width
+                    height: (topView.height-nameLabel.paintedHeight*1.5-topView.spacing*5)/5
+                    enabled: true
+                    IconItem {
+                        id: iconItem
+                        anchors { left: parent.left; verticalCenter: parent.verticalCenter }
+                        height: parent.height*0.9
+                        width: height
+                        source: model.icon
+                    }
+                    Label {
+                        id: nameLabel
+                        anchors {
+                            left: iconItem.right
+                            right: pointsLabel.left
+                            verticalCenter: parent.verticalCenter
+                            leftMargin: 5
+                        }
+                        text: name
+                        elide: Text.ElideRight
+                    }
+                    Loader {
+                        anchors { right: parent.right; verticalCenter: parent.verticalCenter }
+                        id: pointsLabel
+                        sourceComponent: topView.roleDelegate
+                        onItemChanged: item.model=model
+                    }
+                    onClicked: Navigation.openApplication(application)
+                }
+    }
 }

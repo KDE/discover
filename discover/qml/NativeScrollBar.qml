@@ -17,30 +17,30 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 1.1
-import org.kde.muon.discover 1.0
+import QtQuick 2.1
+import QtQuick.Controls 1.1
 
-NativeScrollBar {
-    id: scroll
-    property QtObject flickableItem: null
+ScrollView {
+//     id: scroll
+//     property QtObject flickableItem: null
 
-    orientation: Qt.Vertical
-    minimum: 0
-    maximum: Math.max(flickableItem.contentHeight-flickableItem.height, 0)
-    pageStep: flickableItem.height
+//     orientation: Qt.Vertical
+//     minimum: 0
+//     maximum: Math.max(flickableItem.contentHeight-flickableItem.height, 0)
+//     pageStep: flickableItem.height
     opacity: maximum!=minimum ? 1 : 0
 
-    onValueChanged: flickableItem.contentY=value
-    onFlickableItemChanged: flickableItem.boundsBehavior=Flickable.StopAtBounds
+//     onValueChanged: flickableItem.contentY=value
+//     onFlickableItemChanged: flickableItem.boundsBehavior=Flickable.StopAtBounds
 
-    Behavior on opacity { NumberAnimation { easing.type: Easing.OutQuad; duration: 500 } }
-
-    Connections {
-        target: scroll.flickableItem
-        onContentYChanged: {
-            if(flickableItem.movingVertically) {
-                scroll.value=flickableItem.contentY
-            }
-        }
-    }
+//     Behavior on opacity { NumberAnimation { easing.type: Easing.OutQuad; duration: 500 } }
+//
+//     Connections {
+//         target: scroll.flickableItem
+//         onContentYChanged: {
+//             if(flickableItem.movingVertically) {
+//                 scroll.value=flickableItem.contentY
+//             }
+//         }
+//     }
 }

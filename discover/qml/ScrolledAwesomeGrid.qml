@@ -17,8 +17,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 1.1
-import org.kde.plasma.components 0.1
+import QtQuick 2.1
+import org.kde.plasma.components 2.0
 
 Item {
     property alias header: gridRepeater.header
@@ -38,14 +38,17 @@ Item {
         header: parentItem.header
     }
     
-    NativeScrollBar {
+    Rectangle {
         id: scroll
-        orientation: Qt.Vertical
-        flickableItem: gridRepeater
-        anchors {
-            top: parent.top
-            right: parent.right
-            bottom: parent.bottom
-        }
+        color: "red"
+        width: 5
+        height: 100
+//         orientation: Qt.Vertical
+//         flickableItem: gridRepeater
+//         anchors {
+//             top: parent.top
+//             right: parent.right
+//             bottom: parent.bottom
+//         }
     }
 }

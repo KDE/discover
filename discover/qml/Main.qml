@@ -47,7 +47,7 @@ ApplicationWindow {
     Binding {
         target: app.searchWidget
         property: "enabled"
-        value: pageStack.currentPage!=null && pageStack.currentPage.searchFor!=null
+        value: pageStack.currentItem!=null && pageStack.currentItem.searchFor!=null
     }
     function clearSearch() { app.searchWidget.text="" }
     Connections {
@@ -57,25 +57,25 @@ ApplicationWindow {
             backAction.trigger()
         }
     }
-    Timer {
-        id: searchTimer
-        running: false
-        repeat: false
-        interval: 200
-        onTriggered: { pageStack.currentPage.searchFor(app.searchWidget.text) }
-    }
-    
-    Component {
-        id: loadingComponent
-        Page {
-            Label {
-                text: i18n("Loading...")
-                font.pointSize: 52
-                anchors.centerIn: parent
-            }
-        }
-    }
-    
+//     Timer {
+//         id: searchTimer
+//         running: false
+//         repeat: false
+//         interval: 200
+//         onTriggered: { pageStack.currentItem.searchFor(app.searchWidget.text) }
+//     }
+//
+//     Component {
+//         id: loadingComponent
+//         Item {
+//             Label {
+//                 text: i18n("Loading...")
+//                 font.pointSize: 52
+//                 anchors.centerIn: parent
+//             }
+//         }
+//     }
+//
     onCurrentTopLevelChanged: {
         if(currentTopLevel==null)
             return
@@ -143,8 +143,8 @@ ApplicationWindow {
         onListMimeInternal: Navigation.openApplicationMime(mime)
         onListCategoryInternal: Navigation.openCategoryByName(name)
     }
-    
-    ToolBar {
+
+    PlasmaComponents.ToolBar {
         id: breadcrumbsItemBar
         anchors {
             top: parent.top
@@ -153,14 +153,15 @@ ApplicationWindow {
             rightMargin: pageToolBar.visible ? 10 : 0
         }
         height: breadcrumbsItem.count<=1 ? 0 : 30
-        
-        tools: Breadcrumbs {
-                id: breadcrumbsItem
-                anchors.fill: parent
-                pageStack: pageStack
-                onPoppedPages: window.clearSearch()
-                Component.onCompleted: breadcrumbsItem.pushItem("go-home")
-            }
+
+        Breadcrumbs {
+            id: breadcrumbsItem
+            //FIXME: crash if I uncomment
+            anchors.fill: parent
+//             pageStack: pageStack
+//             onPoppedPages: window.clearSearch()
+//             Component.onCompleted: breadcrumbsItem.pushItem("go-home")
+        }
         Behavior on height { NumberAnimation { duration: 250 } }
     }
     
@@ -171,15 +172,14 @@ ApplicationWindow {
             right: parent.right
         }
         height: visible ? 30 : 0
-        width: tools!=null ? tools.childrenRect.width+5 : 0
+        width: contentItem!=null ? contentItem.childrenRect.width+5 : 0
         visible: width>0
-        
+
         Behavior on width { NumberAnimation { duration: 250 } }
     }
-    
-    PageStack {
+
+    StackView {
         id: pageStack
-        toolBar: pageToolBar
         anchors {
             bottom: progressBox.top
             top: parent.top
