@@ -6,7 +6,7 @@ set(muonapt_SRCS
     HistoryView/HistoryView.cpp
 )
 
-add_library(muonapt SHARED ${muonapt_SRCS})
+add_library(muonapt ${muonapt_SRCS})
 target_link_libraries(muonapt Qt5::Core
      ${KDE4_KDEUI_LIBS} KF5::Solid KF5::KIOWidgets
     ${QAPT_LIBRARY} muonprivate

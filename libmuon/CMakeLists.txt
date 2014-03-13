@@ -32,7 +32,7 @@ set(muon_LIB_SRCS
 )
 
 kconfig_add_kcfg_files(muon_LIB_SRCS GENERATE_MOC MuonDataSources.kcfgc)
-add_library(muonprivate SHARED ${muon_LIB_SRCS})
+add_library(muonprivate ${muon_LIB_SRCS})
 
 set_target_properties(muonprivate PROPERTIES
     VERSION 2.1.3
@@ -43,10 +43,13 @@ target_link_libraries(muonprivate
 LINK_PUBLIC
     Qt5::Core
     Qt5::Widgets
+    KF5::Service
+    KF5::KDE4Support
 LINK_PRIVATE
     Qt5::Xml
     KF5::XmlGui
-    KF5::KDE4Support
+    KF5::ItemViews
+    KF5::DBusAddons
     ${PHONON_LIBRARY}
 )
 

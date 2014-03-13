@@ -1,7 +1,9 @@
 include_directories(..)
 
 macro(libmuon_add_unit_test name)
-    kde4_add_unit_test(${name}  modeltest.cpp ${ARGN})
+    add_executable(${name}  modeltest.cpp ${ARGN})
+    add_test(${name} ${name})
+    ecm_mark_as_test(${name})
     target_link_libraries(${name}
         muonprivate muonapt
         

@@ -1,6 +1,8 @@
 include_directories(..)
 
-kde4_add_unit_test(knsbackendtest KNSBackendTest.cpp)
+add_executable(knsbackendtest KNSBackendTest.cpp)
+add_test(knsbackendtest knsbackendtest)
+ecm_mark_as_test(knsbackendtest)
 target_link_libraries(knsbackendtest
     muonprivate
     

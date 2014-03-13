@@ -16,14 +16,14 @@ qt5_add_resources(muon_discover_SRCS resources.qrc)
 
 add_executable(muon-discover ${muon_discover_SRCS})
 
-target_link_libraries(muon-discover  KF5::KIOWidgets
+target_link_libraries(muon-discover LINK_PUBLIC KF5::KIOWidgets
                                      KF5::Declarative
                                      KF5::DBusAddons
                                      KF5::I18n
                                      KF5::ConfigWidgets
                                      KF5::XmlGui
                                      Qt5::Qml
-                                     Qt5::Quick
+                                     Qt5::Declarative
                                      muonprivate
                                      ${QAPT_LIBRARY}
 )

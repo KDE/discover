@@ -10,6 +10,7 @@ include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDECompilerSettings)
 include(ECMInstallIcons)
+include(ECMMarkAsTest)
 
 find_package(KF5 CONFIG REQUIRED IdleTime ItemModels WidgetsAddons WindowSystem Codecs Archive CoreAddons Solid ThreadWeaver GlobalAccel
                                             Config Auth JS Wallet DBusAddons I18n GuiAddons ConfigWidgets

@@ -36,7 +36,7 @@ set(appsbackend_SRCS
 
 qt5_add_dbus_interface(appsbackend_SRCS ubuntu_sso_dbus_interface.xml ubuntu_sso -i "LoginMetaTypes.h")
 
-add_library(muon-appsbackend MODULE SHARED ${appsbackend_SRCS})
+add_library(muon-appsbackend MODULE ${appsbackend_SRCS})
 target_link_libraries(muon-appsbackend Qt5::Core Qt5::Widgets Qt5::DBus
      ${KDE4_KDEUI_LIBS} KF5::KIOWidgets ${DEBCONF_KDE_LIB}
      ${QTOAUTH_LIBRARY} ${QAPT_LIBRARY} muonprivate muonapt
@@ -46,7 +46,7 @@ install(FILES muon-applications-backend.desktop DESTINATION ${SERVICES_INSTALL_D
 install(FILES apps-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
 
 include_directories(${CMAKE_SOURCE_DIR}/kded)
-kde4_add_plugin(kded_muonapplicationnotifier ApplicationNotifier.cpp)
+add_library(kded_muonapplicationnotifier MODULE ApplicationNotifier.cpp)
 target_link_libraries(kded_muonapplicationnotifier ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} muonprivate)
 
 install(TARGETS kded_muonapplicationnotifier DESTINATION ${PLUGIN_INSTALL_DIR})

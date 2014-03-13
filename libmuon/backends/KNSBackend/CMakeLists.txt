@@ -8,7 +8,7 @@ set(knsbackend_SRCS
     KNSReviews.cpp
 )
 
-add_library(muon-knsbackend MODULE SHARED ${knsbackend_SRCS})
+add_library(muon-knsbackend MODULE ${knsbackend_SRCS})
 target_link_libraries(muon-knsbackend muonprivate
         ${LIBATTICA_LIBRARIES} KF5:KNewStuff)
 

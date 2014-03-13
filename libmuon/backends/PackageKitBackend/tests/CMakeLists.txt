@@ -1,6 +1,8 @@
 include_directories(..)
 
-kde4_add_unit_test(packagekitbackendtest PackageKitBackendTest.cpp)
+add_executable(packagekitbackendtest PackageKitBackendTest.cpp)
+add_test(packagekitbackendtest packagekitbackendtest)
+ecm_mark_as_test(packagekitbackendtest)
 target_link_libraries(packagekitbackendtest
     muonprivate
     

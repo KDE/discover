@@ -13,7 +13,7 @@ set(packagekitnotifier_SRCS
     PackageKitNotifier.cpp
 )
 
-kde4_add_plugin(muon-pkbackend SHARED ${pkbackend_SRCS})
+add_library(muon-pkbackend MODULE ${pkbackend_SRCS})
 target_link_libraries(muon-pkbackend muonprivate ${QT_QTCORE_LIBRARY} ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${PACKAGEKITQT2_LIBRARY})
 
 install(TARGETS muon-pkbackend DESTINATION ${PLUGIN_INSTALL_DIR})
@@ -23,7 +23,7 @@ install(FILES packagekit-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/
 add_subdirectory(tests)
 
 #notifier
-kde4_add_plugin(kded_muonpackagekitnotifier ${packagekitnotifier_SRCS})
+add_library(kded_muonpackagekitnotifier MODULE ${packagekitnotifier_SRCS})
 
 target_link_libraries(kded_muonpackagekitnotifier ${PACKAGEKITQT2_LIBRARY} ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} muonprivate)
 
