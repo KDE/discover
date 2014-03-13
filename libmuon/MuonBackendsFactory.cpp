@@ -111,9 +111,7 @@ AbstractResourcesBackend* MuonBackendsFactory::backendForPlugin(const KPluginInf
     }
     
     QString str_error;
-    AbstractResourcesBackend* obj = KServiceTypeTrader::createInstanceFromQuery<AbstractResourcesBackend>(
-        QLatin1String( "Muon/Backend" ), QString::fromLatin1( "[X-KDE-PluginInfo-Name]=='%1'" ).arg( info.pluginName() ),
-        ResourcesModel::global(), QVariantList() << args, &str_error );
+    AbstractResourcesBackend* obj = info.service()->createInstance<AbstractResourcesBackend>(ResourcesModel::global(), QVariantList() << args, &str_error);
     
     if(!obj) {
         qDebug() << "error when loading the plugin" << info.name() << "because" << str_error;
