@@ -25,6 +25,7 @@
 
 #include "../libmuonprivate_export.h"
 
+class QDBusInterface;
 class QCheckBox;
 class QRadioButton;
 

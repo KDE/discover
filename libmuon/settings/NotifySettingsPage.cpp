@@ -23,6 +23,8 @@
 
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusMessage>
+#include <qdbusinterface.h>
+#include <qdbusreply.h>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QLabel>
@@ -32,6 +34,7 @@
 #include <KConfig>
 #include <KDialog>
 #include <klocalizedstring.h>
+#include <kservicetypetrader.h>
 
 NotifySettingsPage::NotifySettingsPage(QWidget* parent) :
         SettingsPageBase(parent)
@@ -92,7 +95,6 @@ void NotifySettingsPage::loadSettings()
 
 void NotifySettingsPage::applySettings()
 {
-    kDebug() << m_updatesCheckBox->isChecked();
     KConfig notifierConfig("muon-notifierrc", KConfig::NoGlobals);
 
     KConfigGroup notifyTypeGroup(&notifierConfig, "NotificationType");

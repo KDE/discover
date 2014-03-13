@@ -146,3 +146,4 @@ void DummyBackend::checkForUpdates()
     QTimer::singleShot(2000, this, SLOT(toggleFetching()));
 }
 
+#include "DummyBackend.moc"

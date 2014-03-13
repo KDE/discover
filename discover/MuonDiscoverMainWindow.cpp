@@ -26,7 +26,7 @@
 #include <QDebug>
 #include <QtQml/QQmlEngine>
 #include <QtQml/QQmlContext>
-#include <QtQuick/QQuickView>
+#include <QtQml/QQmlApplicationEngine>
 #include <QtQuick/QQuickItem>
 #include <QTimer>
 #include <QGraphicsObject>
@@ -64,18 +64,15 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     : MuonMainWindow()
 {
     initialize();
-    m_view = new QQuickView;
-    m_view->show();
     //TODO: reconsider for QtQuick2
 //     m_view->setBackgroundRole(QPalette::AlternateBase);
 //     qreal bgGrayness = m_view->backgroundBrush().color().blackF();
-    
+
 //     Plasma::Theme::defaultTheme()->setUseGlobalSettings(false); //don't change every plasma theme!
 //     Plasma::Theme::defaultTheme()->setThemeName(bgGrayness>0.5 ? "muon-contenttheme" : "oxygen");
-    
-    KDeclarative kdeclarative;
-    kdeclarative.setDeclarativeEngine(m_view->engine());
-    kdeclarative.initialize();
+    m_engine = new QQmlApplicationEngine(this);
+    KDeclarative::KDeclarative kdeclarative;
+    kdeclarative.setDeclarativeEngine(m_engine);
     //binds things like kconfig and icons
     kdeclarative.setupBindings();
     
@@ -90,36 +87,35 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     m_searchText->setPlaceholderText(i18n("Search..."));
     
     actionCollection()->addAction("search", KStandardAction::find(m_searchText, SLOT(setFocus()), this));
-    
     //Here we set up a cache for the screenshots
-    m_view->engine()->rootContext()->setContextProperty("resourcesModel",
+    m_engine->rootContext()->setContextProperty("resourcesModel",
                                                         qVariantFromValue<ResourcesModel*>(ResourcesModel::global()));
-    m_view->engine()->rootContext()->setContextProperty("transactionModel",
+    m_engine->rootContext()->setContextProperty("transactionModel",
                                                         qVariantFromValue<TransactionModel*>(TransactionModel::global()));
-    m_view->engine()->rootContext()->setContextProperty("app", this);
-    m_view->setResizeMode(QQuickView::SizeRootObjectToView);
+    m_engine->rootContext()->setContextProperty("app", this);
     
-    m_view->setSource(QUrl("qrc:/qml/Main.qml"));
-    if(!m_view->errors().isEmpty()) {
-        QString errors;
-
-        for (const QQmlError &error : m_view->errors()) {
-            errors.append(error.toString() + QLatin1String("\n"));
-        }
-        KMessageBox::detailedSorry(this,
-            i18n("Found some errors while setting up the GUI, the application can't proceed."),
-            errors, i18n("Initialization error"));
-        qDebug() << "errors: " << m_view->errors();
-        exit(-1);
-    }
-    Q_ASSERT(m_view->errors().isEmpty());
-
-    KConfigGroup window(KSharedConfig::openConfig(), "Window");
-    restoreGeometry(window.readEntry<QByteArray>("geometry", QByteArray()));
-    restoreState(window.readEntry<QByteArray>("windowState", QByteArray()));
+//     if(!m_engine->rootContext()->errors().isEmpty()) {
+//         QString errors;
+//
+//         for (const QQmlError &error : m_view->errors()) {
+//             errors.append(error.toString() + QLatin1String("\n"));
+//         }
+//         KMessageBox::detailedSorry(this,
+//             i18n("Found some errors while setting up the GUI, the application can't proceed."),
+//             errors, i18n("Initialization error"));
+//         qDebug() << "errors: " << m_view->errors();
+//         exit(-1);
+//     }
+//     Q_ASSERT(m_view->errors().isEmpty());
+//
+//     KConfigGroup window(KSharedConfig::openConfig(), "Window");
+//     restoreGeometry(window.readEntry<QByteArray>("geometry", QByteArray()));
+//     restoreState(window.readEntry<QByteArray>("windowState", QByteArray()));
     
 //     setCentralWidget(m_view);
     setupActions();
+
+    m_engine->load(QUrl("qrc:/qml/Main.qml"));
 }
 
 void MuonDiscoverMainWindow::initialize()
@@ -130,10 +126,10 @@ void MuonDiscoverMainWindow::initialize()
 
 MuonDiscoverMainWindow::~MuonDiscoverMainWindow()
 {
-    KConfigGroup window(KSharedConfig::openConfig(), "Window");
-    window.writeEntry("geometry", saveGeometry());
-    window.writeEntry("windowState", saveState());
-    window.sync();
+//     KConfigGroup window(KSharedConfig::openConfig(), "Window");
+//     window.writeEntry("geometry", saveGeometry());
+//     window.writeEntry("windowState", saveState());
+//     window.sync();
 }
 
 QAction* MuonDiscoverMainWindow::getAction(const QString& name)
@@ -144,7 +140,7 @@ QAction* MuonDiscoverMainWindow::getAction(const QString& name)
 QStringList MuonDiscoverMainWindow::modes() const
 {
     QStringList ret;
-    QQuickItem* obj = m_view->rootObject();
+    QObject* obj = m_engine->rootObjects().first();
     for(int i = obj->metaObject()->propertyOffset(); i<obj->metaObject()->propertyCount(); i++) {
         QMetaProperty p = obj->metaObject()->property(i);
         QByteArray name = p.name();
@@ -166,7 +162,7 @@ void MuonDiscoverMainWindow::openMode(const QByteArray& _mode)
     QByteArray mode = _mode;
     if(mode[0]>'Z')
         mode[0] = mode[0]-'a'+'A';
-    QQuickItem* obj = m_view->rootObject();
+    QObject* obj = m_engine->rootObjects().first();
     QByteArray propertyName = "top"+mode+"Comp";
     QVariant modeComp = obj->property(propertyName);
     obj->setProperty("currentTopLevel", modeComp);
@@ -184,7 +180,7 @@ void MuonDiscoverMainWindow::openCategory(const QString& category)
 
 void MuonDiscoverMainWindow::openApplication(const QString& app)
 {
-    m_view->rootObject()->setProperty("defaultStartup", false);
+    m_engine->rootObjects().first()->setProperty("defaultStartup", false);
     m_appToBeOpened = app;
     triggerOpenApplication();
     if(!m_appToBeOpened.isEmpty())

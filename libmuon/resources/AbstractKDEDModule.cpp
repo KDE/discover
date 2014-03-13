@@ -63,7 +63,7 @@ AbstractKDEDModule::AbstractKDEDModule(const QString &name, const QString &iconN
     d->statusNotifier->setIconByName(iconName);
     d->statusNotifier->setStandardActionsEnabled(false);
     d->statusNotifier->contextMenu()->clear();
-    d->statusNotifier->contextMenu()->addTitle(KIcon("svn-update"), i18n("Muon %1 update notifier", name));
+    d->statusNotifier->contextMenu()->setTitle(i18n("Muon %1 update notifier", name));
     d->statusNotifier->contextMenu()->setIcon(KIcon(iconName));
     d->statusNotifier->contextMenu()->addAction(KIcon("muondiscover"), i18n("Open Muon..."), this, SLOT(__k__showMuon()));
     d->statusNotifier->contextMenu()->addAction(KIcon("application-exit"), i18n("Quit notifier..."), this, SLOT(__k__quit()));
@@ -146,7 +146,7 @@ void AbstractKDEDModule::setSystemUpToDate(bool systemUpToDate, int updateCount,
         d->statusNotifier->setToolTip(icon, message, i18n("A system update is recommended"));
         d->statusNotifier->setStatus(KStatusNotifierItem::Active);
         if (notification == ShowNotification) {
-            KNotification::event("Update", i18n("System update available!"), message, KIcon("svn-update").pixmap(KIconLoader::SizeMedium), nullptr, KNotification::CloseOnTimeout, KComponentData("muonabstractnotifier"));
+            KNotification::event("Update", i18n("System update available!"), message, KIcon("svn-update").pixmap(KIconLoader::SizeMedium), nullptr, KNotification::CloseOnTimeout, "muonabstractnotifier");
         }
     } else {
         d->statusNotifier->setOverlayIconByName(QString());
@@ -155,4 +155,4 @@ void AbstractKDEDModule::setSystemUpToDate(bool systemUpToDate, int updateCount,
     }
 }
 
-#include "AbstractKDEDModule.moc"
+#include "moc_AbstractKDEDModule.cpp"

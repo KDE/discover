@@ -45,7 +45,8 @@ DummyTest::DummyTest(QObject* parent): QObject(parent)
 
     m_appBackend = backendByName(m_model, "DummyBackend");
     QVERIFY(m_appBackend); //TODO: test all backends
-    QTest::kWaitForSignal(m_appBackend, SIGNAL(backendReady()));
+    QSignalSpy spy(m_appBackend, SIGNAL(backendReady()));
+    QVERIFY(spy.wait(0));
 }
 
 void DummyTest::testReadData()
