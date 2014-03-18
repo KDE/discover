@@ -32,10 +32,10 @@
 #include <KProcess>
 #include <KStandardDirs>
 #include <KNotification>
+#include <KIcon>
 #include <KIconLoader>
 
 // Own includes
-#include "distupgradeevent/distupgradeevent.h"
 
 K_PLUGIN_FACTORY(ApplicationNotifierFactory,
                  registerPlugin<ApplicationNotifier>();
