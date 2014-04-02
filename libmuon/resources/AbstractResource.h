@@ -23,6 +23,7 @@
 
 #include <QtCore/QObject>
 #include <QUrl>
+#include <QStringList>
 
 #include "libmuonprivate_export.h"
 #include "PackageState.h"

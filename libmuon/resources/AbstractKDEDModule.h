@@ -36,7 +36,8 @@ public:
     };
     enum Notification {
         ShowNotification = 0,
-        DontShowNotification = 1
+        DontShowNotification = 1,
+	ShowNotificationIfInformationChanged = 2
     };
     Q_ENUMS(UpdateType);
     virtual ~AbstractKDEDModule();
@@ -54,9 +55,9 @@ signals:
 protected:
     AbstractKDEDModule(const QString &name, const QString &iconName, QObject * parent);
     
-    void setSystemUpToDate(bool systemUpToDate, UpdateType updateType = NormalUpdate, Notification notification = ShowNotification);
-    void setSystemUpToDate(bool systemUpToDate, int updateCount, UpdateType updateType = NormalUpdate, Notification notification = ShowNotification);
-    void setSystemUpToDate(bool systemUpToDate, int updateCount, int securityUpdateCount, UpdateType updateType = NormalUpdate, Notification notification = ShowNotification);
+    void setSystemUpToDate(bool systemUpToDate, UpdateType updateType = NormalUpdate, Notification notification = ShowNotificationIfInformationChanged);
+    void setSystemUpToDate(bool systemUpToDate, int updateCount, UpdateType updateType = NormalUpdate, Notification notification = ShowNotificationIfInformationChanged);
+    void setSystemUpToDate(bool systemUpToDate, int updateCount, int securityUpdateCount, UpdateType updateType = NormalUpdate, Notification notification = ShowNotificationIfInformationChanged);
     
 private:
     class Private;
