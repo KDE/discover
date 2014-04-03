@@ -17,6 +17,7 @@ Comment[nl]=Muon
 Comment[pl]=Muon
 Comment[pt]=Muon
 Comment[pt_BR]=Muon
+Comment[ru]=Muon
 Comment[sk]=Muon
 Comment[sl]=Muon
 Comment[sr]=Муон
@@ -27,6 +28,7 @@ Comment[sv]=Muon
 Comment[tr]=Muon
 Comment[uk]=Muon
 Comment[x-test]=xxMuonxx
+Comment[zh_TW]=Muon
 
 [Event/Update]
 Name=Updates Are Available
