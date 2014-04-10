@@ -133,8 +133,9 @@ void AbstractKDEDModule::setSystemUpToDate(bool systemUpToDate, int updateCount,
         //TODO: Better message strings
         QString message;
         QString icon;
+
         if (updateType == SecurityUpdate) {
-            message = i18n("A security update is available for your system!");
+            message = i18n("A security update is available for your system.");
             icon = "security-low";
         } else {
             message = i18n("An update is available for your system!");
@@ -152,12 +153,13 @@ void AbstractKDEDModule::setSystemUpToDate(bool systemUpToDate, int updateCount,
         d->statusNotifier->setOverlayIconByName(icon);
         d->statusNotifier->setToolTip(icon, message, i18n("A system update is recommended"));
         d->statusNotifier->setStatus(KStatusNotifierItem::Active);
+
         if (notification == ShowNotification || 
 	    (notification == ShowNotificationIfInformationChanged 
 	     && (d->updateCount != updateCount 
 	         || d->securityUpdateCount != securityUpdateCount
 	         || d->updateType != updateType))) {
-            KNotification::event("Update", i18n("System update available!"), message, KIcon("svn-update").pixmap(KIconLoader::SizeMedium), nullptr, KNotification::CloseOnTimeout, KComponentData("muonabstractnotifier"));
+            KNotification::event("Update", i18n("System update available"), message, KIcon("svn-update").pixmap(KIconLoader::SizeMedium), nullptr, KNotification::CloseOnTimeout, KComponentData("muonabstractnotifier"));
         }
     } else {
         d->statusNotifier->setOverlayIconByName(QString());
