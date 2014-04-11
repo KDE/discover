@@ -30,7 +30,6 @@ Name[sv]=Muon PackageKit underrättelse
 Name[tr]=Muon PackageKit Bildirici
 Name[uk]=Сповіщувач Muon для PackageKit
 Name[x-test]=xxMuon PackageKit Notifierxx
-Name[zh_TW]=Muon PackageKit 通知器
 Type=Service
 X-KDE-ServiceTypes=KDEDModule
 X-KDE-Library=muonpackagekitnotifier
