@@ -93,6 +93,7 @@ Item {
                         id: heading
                         text: application.name
                         width: parent.width
+                        elide: Text.ElideRight
                         font.bold: true
                     }
                     Label {
@@ -205,15 +206,24 @@ Item {
             width: parent.width
             columns: 2
             spacing: 0
-            clip: true
             Label { text: i18n("Total Size: "); horizontalAlignment: Text.AlignRight; width: parent.width/2; font.weight: Font.Bold }
-            Label { text: application.sizeDescription }
+            Label { text: application.sizeDescription; width: parent.width/2; elide: Text.ElideRight }
             Label { text: i18n("Version: "); horizontalAlignment: Text.AlignRight; width: parent.width/2; font.weight: Font.Bold }
-            Label { text: application.packageName+" "+(application.isInstalled ? application.installedVersion : application.availableVersion) }
+            Label { text: application.packageName+" "+(application.isInstalled ? application.installedVersion : application.availableVersion); width: parent.width/2; elide: Text.ElideRight }
             Label { text: i18n("Homepage: "); horizontalAlignment: Text.AlignRight; width: parent.width/2; font.weight: Font.Bold }
-            Label { text: "<a href='"+application.homepage+"'>"+application.homepage+"</a>"; onLinkActivated: Qt.openUrlExternally(link) }
+            Label {
+                text: application.homepage
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: Qt.openUrlExternally(application.homepage);
+                }
+                color: theme.linkColor
+                font.underline: true
+                width: parent.width/2
+                elide: Text.ElideRight
+            }
             Label { text: i18n("License: "); horizontalAlignment: Text.AlignRight; width: parent.width/2; font.weight: Font.Bold }
-            Label { text: application.license }
+            Label { text: application.license; width: parent.width/2; elide: Text.ElideRight }
         }
         Button {
             anchors.horizontalCenter: parent.horizontalCenter
