@@ -54,8 +54,10 @@ Q_SIGNALS:
     void shouldConnect(bool isConnected);
     void actionsEnabledChanged(bool enabled);
 
+protected:
+    bool queryClose();
+
 protected slots:
-    bool queryExit();
     void setupActions();
 
 public slots:
