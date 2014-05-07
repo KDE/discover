@@ -100,7 +100,7 @@ private slots:
 private:
     QString buildDescription(const QByteArray& data, const QString& source);
     
-    KSharedConfigPtr m_data;
+    QSharedPointer<KConfig> m_data;
     QApt::Backend *m_backend;
     QApt::Package *m_package;
     QByteArray m_packageName;
@@ -110,7 +110,6 @@ private:
     bool m_isExtrasApp;
     bool m_sourceHasScreenshot;
 
-    KSharedConfigPtr desktopContents(const QString& filename);
     QApt::PackageList addons();
     QVector<QPair<QString, QString> > locateApplication(const QString &_relPath, const QString &menuId) const;
     bool hasField(const char* field) const;
