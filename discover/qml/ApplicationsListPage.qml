@@ -32,7 +32,7 @@ Page {
     property alias mimeTypeFilter: appsModel.mimeTypeFilter
     property alias stateFilter: appsModel.stateFilter
     property alias search: appsModel.search
-    property bool shouldShowTechnical: category ? category.shouldShowTechnical: false
+    property alias shouldShowTechnical: appsModel.isShowingTechnical
     property string sectionProperty: ""
     property Component sectionDelegate: null
     property bool preferList: false
@@ -51,7 +51,7 @@ Page {
         id: appsModel
         stringSortRole: "ratingPoints"
         sortOrder: Qt.DescendingOrder
-        isShowingTechnical: page.shouldShowTechnical
+        isShowingTechnical: category && category.shouldShowTechnical
         
         Component.onCompleted: sortModel()
     }
@@ -153,6 +153,16 @@ Page {
                         checked: page.state==type
                         onClicked: page.state=type
                         Component.onCompleted: shownActionGroup.addAction(itemGrid)
+                    }
+                    MenuItem { separator: true }
+                    MenuItem {
+                        checkable: true
+                        checked: appsModel.shouldShowTechnical
+                        onClicked: {
+                            appsModel.shouldShowTechnical = !appsModel.shouldShowTechnical;
+                            appsModel.sortModel();
+                        }
+                        text: i18n("Show technical packages")
                     }
                 }
             }
