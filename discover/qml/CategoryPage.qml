@@ -124,7 +124,7 @@ Page {
                         }
                         sortRole: "ratingPoints"
                         filteredCategory: page.category
-                        title: i18n("Best Ratings")
+                        title: i18n("Rating")
                         roleDelegate: Rating {
                             property variant model
                             rating: model.rating
