@@ -27,7 +27,7 @@ class DummyResource : public AbstractResource
 {
 Q_OBJECT
 public:
-    explicit DummyResource(const QString& name, AbstractResourcesBackend* parent);
+    explicit DummyResource(const QString& name, bool isTechnical, AbstractResourcesBackend* parent);
 
     virtual QList<PackageState> addonsInformation();
     virtual QString section();
@@ -46,7 +46,7 @@ public:
     virtual QString comment();
     virtual QString name();
     virtual QString packageName() const;
-    virtual bool isTechnical() const { return false; }
+    virtual bool isTechnical() const { return m_isTechnical; }
     void setState(State state);
     virtual bool canExecute() const { return true; }
     virtual void invokeApplication() const;
@@ -57,6 +57,7 @@ public:
     AbstractResource::State m_state;
     QUrl m_screenshot;
     QList<PackageState> m_addons;
+    bool m_isTechnical;
 };
 
 #endif // DUMMYRESOURCE_H
