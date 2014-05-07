@@ -112,7 +112,7 @@ Page {
                         }
                         sortRole: "sortableRating"
                         filteredCategory: page.category
-                        title: i18n("Popularity Contest")
+                        title: i18n("Popularity")
                         roleDelegate: Label { property variant model; text: i18n("points: %1", model.sortableRating.toFixed(2)) }
                     }
                     ApplicationsTop {
