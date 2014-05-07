@@ -126,16 +126,8 @@ void MainWindow::setupActions()
     setupGUI(StandardWindowOption((KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar) & ~KXmlGuiWindow::ToolBar));
 
     m_moreMenu = new QMenu(this);
-    m_moreMenu->addAction(actionCollection()->action("options_configure"));
-    m_moreMenu->addAction(actionCollection()->action("options_configure_keybinding"));
-    m_moreMenu->addSeparator();
     m_advancedMenu = new QMenu(i18n("Advanced..."), m_moreMenu);
-    m_advancedMenu->setEnabled(false);
-    m_moreMenu->addMenu(m_advancedMenu);
-    m_moreMenu->addSeparator();
-    m_moreMenu->addAction(actionCollection()->action("help_about_app"));
-    m_moreMenu->addAction(actionCollection()->action("help_about_kde"));
-    m_moreMenu->addAction(actionCollection()->action("help_report_bug"));
+    setupBackendsActions();
 }
 
 void MainWindow::initBackend()
@@ -158,6 +150,10 @@ static bool containsAction(QAction* action, QBoxLayout* l)
 
 void MainWindow::setupBackendsActions()
 {
+    m_advancedMenu->clear();
+    m_moreMenu->clear();
+
+    bool actionAdded = false;
     foreach (QAction* action, m_updater->messageActions()) {
         switch(action->priority()) {
             case QAction::HighPriority: {
@@ -167,7 +163,8 @@ void MainWindow::setupBackendsActions()
                 }
             }   break;
             case QAction::NormalPriority:
-                m_moreMenu->insertAction(m_moreMenu->actions().first(), action);
+                actionAdded = true;
+                m_moreMenu->addAction(action);
                 break;
             case QAction::LowPriority:
             default:
@@ -176,6 +173,18 @@ void MainWindow::setupBackendsActions()
                 break;
         }
     }
+
+    if(actionAdded)
+        m_moreMenu->addSeparator();
+    m_moreMenu->addAction(actionCollection()->action("options_configure"));
+    m_moreMenu->addAction(actionCollection()->action("options_configure_keybinding"));
+    m_moreMenu->addSeparator();
+    m_advancedMenu->setEnabled(false);
+    m_moreMenu->addMenu(m_advancedMenu);
+    m_moreMenu->addSeparator();
+    m_moreMenu->addAction(actionCollection()->action("help_about_app"));
+    m_moreMenu->addAction(actionCollection()->action("help_about_kde"));
+    m_moreMenu->addAction(actionCollection()->action("help_report_bug"));
 }
 
 void MainWindow::progressingChanged()

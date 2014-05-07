@@ -42,9 +42,17 @@ DummyBackend::DummyBackend(QObject* parent, const QVariantList&)
     , m_updater(new StandardBackendUpdater(this))
     , m_fetching(false)
 {
-    for(int i=0; i<32000; i++) {
+    for(int i=0; i<320; i++) {
         QString name = "alalala"+QString::number(i);
-        DummyResource* res = new DummyResource(name, this);
+        DummyResource* res = new DummyResource(name, false, this);
+        res->setState(AbstractResource::State(1+(i%3)));
+        m_resources.insert(name, res);
+        connect(res, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));
+    }
+
+    for(int i=0; i<320; i++) {
+        QString name = "techie"+QString::number(i);
+        DummyResource* res = new DummyResource(name, true, this);
         res->setState(AbstractResource::State(1+(i%3)));
         m_resources.insert(name, res);
         connect(res, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));

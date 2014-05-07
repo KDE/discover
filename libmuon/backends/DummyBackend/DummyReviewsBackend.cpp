@@ -24,11 +24,13 @@
 #include <ReviewsBackend/Rating.h>
 #include <resources/AbstractResource.h>
 #include <QTimer>
+#include <QDebug>
 
 DummyReviewsBackend::DummyReviewsBackend(DummyBackend* parent)
     : AbstractReviewsBackend(parent)
 {
-    QTimer::singleShot(0, this, SLOT(initialize()));
+//     QTimer::singleShot(0, this, SLOT(initialize()));
+    initialize();
 }
 
 void DummyReviewsBackend::fetchReviews(AbstractResource* app, int page)
@@ -50,7 +52,7 @@ void DummyReviewsBackend::initialize()
 {
     DummyBackend* b = qobject_cast<DummyBackend*>(parent());
     foreach(AbstractResource* app, b->allResources()) {
-        Rating* rating = new Rating(app->packageName(), app->name(), 3, 4, "1,2,3,4,5");
+        Rating* rating = new Rating(app->packageName(), app->name(), 15, 5, "\"0, 0, 0, 4, 5\"");
         m_ratings.insert(app, rating);
     }
     emit ratingsReady();
@@ -58,4 +60,5 @@ void DummyReviewsBackend::initialize()
 
 void DummyReviewsBackend::submitUsefulness(Review* r, bool useful)
 {
+    qDebug() << "usefulness..." << r->applicationName() << r->reviewer() << useful;
 }
