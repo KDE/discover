@@ -38,8 +38,8 @@
 #include <KProcess>
 #include <KProtocolManager>
 #include <KStandardDirs>
-#include <Solid/Device>
-#include <Solid/AcAdapter>
+#include <Solid/Power>
+#include <Solid/AcPluggedJob>
 #include <KToolBar>
 
 // Own includes
@@ -104,6 +104,8 @@ void MainWindow::initGUI()
     connect(m, SIGNAL(allInitialized()), SLOT(initBackend()));
     menuBar()->setVisible(false);
     toolBar()->setVisible(false);
+
+    connect(Solid::Power::self(), SIGNAL(acPluggedChanged(bool)), SLOT(updatePlugState(bool)));
 }
 
 void MainWindow::setupActions()
@@ -222,17 +224,8 @@ void MainWindow::closeSettingsDialog()
 
 void MainWindow::checkPlugState()
 {
-    const QList<Solid::Device> acAdapters = Solid::Device::listFromType(Solid::DeviceInterface::AcAdapter);
-
-    bool isPlugged = acAdapters.isEmpty();
-    for(Solid::Device device_ac : acAdapters) {
-        Solid::AcAdapter* acAdapter = device_ac.as<Solid::AcAdapter>();
-        isPlugged |= acAdapter->isPlugged();
-        connect(acAdapter, SIGNAL(plugStateChanged(bool,QString)),
-                this, SLOT(updatePlugState(bool)), Qt::UniqueConnection);
-    }
-
-    updatePlugState(isPlugged);
+    Solid::AcPluggedJob* job = Solid::Power::isAcPlugged();
+    connect(job, &Solid::AcPluggedJob::result, this, [=]() { updatePlugState(job->isPlugged()); });
 }
 
 void MainWindow::updatePlugState(bool plugged)
