@@ -44,7 +44,7 @@ LINK_PUBLIC
     Qt5::Core
     Qt5::Widgets
     KF5::Service
-    KF5::KDE4Support
+    KF5::KDELibs4Support
 LINK_PRIVATE
     Qt5::Xml
     KF5::XmlGui
