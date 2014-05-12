@@ -1,1 +1,3 @@
+module org.kde.muon
+
 plugin muondeclarativeplugin
