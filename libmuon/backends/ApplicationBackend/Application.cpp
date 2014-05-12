@@ -48,6 +48,7 @@
 
 Application::Application(const QString& fileName, QApt::Backend* backend)
         : AbstractResource(0)
+        , m_data(new KConfig(fileName, KConfig::SimpleConfig))
         , m_backend(backend)
         , m_package(0)
         , m_isValid(true)
@@ -57,7 +58,6 @@ Application::Application(const QString& fileName, QApt::Backend* backend)
 {
     static QByteArray currentDesktop = qgetenv("XDG_CURRENT_DESKTOP");
 
-    m_data = desktopContents(fileName);
     m_isTechnical = getField("NoDisplay").toLower() == "true"
                     || !hasField("Exec")
                     || getField("NotShowIn", QByteArray()).contains(currentDesktop)
@@ -430,11 +430,6 @@ QString Application::sizeDescription()
 int Application::downloadSize()
 {
     return m_package->downloadSize();
-}
-
-KSharedConfigPtr Application::desktopContents(const QString& filename)
-{
-    return KSharedConfig::openConfig(filename, KConfig::SimpleConfig);
 }
 
 void Application::clearPackage()

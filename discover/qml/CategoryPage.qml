@@ -112,7 +112,7 @@ Item {
                         }
                         sortRole: "sortableRating"
                         filteredCategory: page.category
-                        title: i18n("Popularity Contest")
+                        title: i18n("Popularity")
                         roleDelegate: Label { property variant model; text: i18n("points: %1", model.sortableRating.toFixed(2)) }
                     }
                     ApplicationsTop {
@@ -124,7 +124,7 @@ Item {
                         }
                         sortRole: "ratingPoints"
                         filteredCategory: page.category
-                        title: i18n("Best Ratings")
+                        title: i18n("Rating")
                         roleDelegate: Rating {
                             property variant model
                             rating: model.rating

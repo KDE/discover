@@ -32,10 +32,10 @@
 #include <KProcess>
 #include <KStandardDirs>
 #include <KNotification>
+#include <KIcon>
 #include <KIconLoader>
 
 // Own includes
-#include "distupgradeevent/distupgradeevent.h"
 
 K_PLUGIN_FACTORY(ApplicationNotifierFactory,
                  registerPlugin<ApplicationNotifier>();
@@ -139,7 +139,7 @@ void ApplicationNotifier::parseUpdateInfo()
 
     // ';' not found, apt-check broke :("
     
-    if (QFile::exists("/var/lib/update-notifier/updates-available")) {
+    if (securityUpdates > 0 || updates > 0) {
         setSystemUpToDate(false, updates, securityUpdates, securityUpdates > 0 ? AbstractKDEDModule::SecurityUpdate : NormalUpdate);
     } else {
         setSystemUpToDate(true);

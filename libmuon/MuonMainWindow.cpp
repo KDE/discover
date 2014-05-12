@@ -40,7 +40,7 @@ MuonMainWindow::MuonMainWindow()
     , m_canExit(true)
 {}
 
-bool MuonMainWindow::queryExit()
+bool MuonMainWindow::queryClose()
 {
     return m_canExit;
 }

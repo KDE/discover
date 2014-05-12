@@ -19,7 +19,7 @@ CommonDialog {
             anchors.margins: 10
             width: 100
             text: i18n("Submit"); onClicked: reviewDialog.accept()
-            iconSource: "dialog-accept"
+            iconSource: "dialog-ok"
         }
         Button {
             height: parent.height
