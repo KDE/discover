@@ -22,8 +22,7 @@ target_link_libraries(muon-discover LINK_PUBLIC KF5::KIOWidgets
                                      KF5::I18n
                                      KF5::ConfigWidgets
                                      KF5::XmlGui
-                                     Qt5::Qml
-                                     Qt5::Declarative
+                                     Qt5::QuickWidgets
                                      muonprivate
                                      ${QAPT_LIBRARY}
 )

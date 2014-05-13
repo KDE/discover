@@ -21,7 +21,6 @@
 #define PAGINATEMODEL_H
 
 #include <QAbstractListModel>
-#include <QDeclarativeParserStatus>
 
 /**
  * @class PaginateModel
