@@ -1,4 +1,5 @@
 import QtQuick 2.1
+import QtQuick.Controls 1.1
 import org.kde.plasma.components 2.0
 import org.kde.muon 1.0
 import org.kde.muonapt 1.0
@@ -94,97 +95,89 @@ Page {
     }
     OriginsBackend { id: origins }
     
-    NativeScrollBar {
-        id: scroll
-        orientation: Qt.Vertical
-        flickableItem: view
-        anchors {
-            top: view.top
-            right: parent.right
-            bottom: view.bottom
-        }
-    }
-    ListView {
-        id: view
-        anchors {
-            top: parent.top
-            bottom: parent.bottom
-            horizontalCenter: parent.horizontalCenter
-        }
-        width: parent.actualWidth
-        
-        model: origins.sources
-        
-        delegate: ListItem {
-            function joinEntriesSuites(source) {
-                var vals = {}
-                for(var i=0; i<source.entries.length; ++i) {
-                    var entry = source.entries[i]
-                    if(vals[entry.suite]==null)
-                        vals[entry.suite]=0
-                    
-                    if(entry.isSource)
-                        vals[entry.suite] += 2
-                    else
-                        vals[entry.suite] += 1
-                }
-                var ret = new Array
-                for(var e in vals) {
-                    if(vals[e]>1)
-                        ret.push(e)
-                    else
-                        ret.push(i18n("%1 (Binary)", e))
-                }
-                
-                return ret.join(", ")
+    ScrollView {
+        ListView {
+            id: view
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+                horizontalCenter: parent.horizontalCenter
             }
-            enabled: browseOrigin.enabled
-            onClicked: Navigation.openApplicationListSource(modelData.name)
-            
-            CheckBox {
-                id: enabledBox
-                enabled: false //TODO: implement the application of this change
-                anchors {
-                    left: parent.left
-                    top: parent.top
+            width: parent.actualWidth
+
+            model: origins.sources
+
+            delegate: ListItem {
+                function joinEntriesSuites(source) {
+                    var vals = {}
+                    for(var i=0; i<source.entries.length; ++i) {
+                        var entry = source.entries[i]
+                        if(vals[entry.suite]==null)
+                            vals[entry.suite]=0
+
+                        if(entry.isSource)
+                            vals[entry.suite] += 2
+                        else
+                            vals[entry.suite] += 1
+                    }
+                    var ret = new Array
+                    for(var e in vals) {
+                        if(vals[e]>1)
+                            ret.push(e)
+                        else
+                            ret.push(i18n("%1 (Binary)", e))
+                    }
+
+                    return ret.join(", ")
                 }
-                checked: modelData.enabled
-            }
-            Label {
-                anchors {
-                    top: parent.top
-                    bottom: parent.bottom
-                    left: enabledBox.right
-                    right: suitesLabel.left
-                    leftMargin: 5
-                }
-                elide: Text.ElideRight
-                text: modelData.name=="" ? modelData.uri : i18n("%1. %2", modelData.name, modelData.uri)
-            }
-            Label {
-                id: suitesLabel
-                anchors {
-                    bottom: parent.bottom
-                    right: browseOrigin.left
-                }
-                text: joinEntriesSuites(modelData)
-            }
-            ToolButton {
-                id: browseOrigin
-                enabled: modelData.name!=""
-                iconSource: "view-filter"
+                enabled: browseOrigin.enabled
                 onClicked: Navigation.openApplicationListSource(modelData.name)
-                anchors {
-                    bottom: parent.bottom
-                    right: removeButton.left
+
+                CheckBox {
+                    id: enabledBox
+                    enabled: false //TODO: implement the application of this change
+                    anchors {
+                        left: parent.left
+                        top: parent.top
+                    }
+                    checked: modelData.enabled
                 }
-                
-            }
-            ToolButton {
-                id: removeButton
-                anchors.right: parent.right
-                iconSource: "edit-delete"
-                onClicked: origins.removeRepository(modelData.uri)
+                Label {
+                    anchors {
+                        top: parent.top
+                        bottom: parent.bottom
+                        left: enabledBox.right
+                        right: suitesLabel.left
+                        leftMargin: 5
+                    }
+                    elide: Text.ElideRight
+                    text: modelData.name=="" ? modelData.uri : i18n("%1. %2", modelData.name, modelData.uri)
+                }
+                Label {
+                    id: suitesLabel
+                    anchors {
+                        bottom: parent.bottom
+                        right: browseOrigin.left
+                    }
+                    text: joinEntriesSuites(modelData)
+                }
+                ToolButton {
+                    id: browseOrigin
+                    enabled: modelData.name!=""
+                    iconSource: "view-filter"
+                    onClicked: Navigation.openApplicationListSource(modelData.name)
+                    anchors {
+                        bottom: parent.bottom
+                        right: removeButton.left
+                    }
+
+                }
+                ToolButton {
+                    id: removeButton
+                    anchors.right: parent.right
+                    iconSource: "edit-delete"
+                    onClicked: origins.removeRepository(modelData.uri)
+                }
             }
         }
     }

@@ -29,10 +29,10 @@
     <file>qml/DefaultBanner.qml</file>
     <file>qml/FeaturedImage.qml</file>
     <file>qml/GridItem.qml</file>
-    <file>qml/NativeScrollBar.qml</file>
     <file>qml/AwesomeGrid.qml</file>
     <file>qml/ReviewDelegate.qml</file>
     <file>qml/ScrolledAwesomeGrid.qml</file>
+    <file>qml/ApplicationDescription.qml</file>
 
     <file>qml/navigation.js</file>
  </qresource>

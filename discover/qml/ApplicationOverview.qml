@@ -18,164 +18,31 @@
  */
 
 import QtQuick 2.1
+import QtQuick.Controls 1.1
 import org.kde.plasma.core 2.0
 import org.kde.plasma.extras 2.0
 import org.kde.kquickcontrols 2.0
 import org.kde.plasma.components 2.0
 import org.kde.muon.discover 1.0 as Discover
 import org.kde.muon 1.0
-import "navigation.js" as Navigation
 
 Item {
     id: appInfo
     property QtObject application: null
     property variant reviewsBackend: application.backend.reviewsBackend
-    
-    NativeScrollBar {
-        id: scroll
-        orientation: Qt.Vertical
-        flickableItem: overviewContentsFlickable
-        anchors {
-            top: overviewContentsFlickable.top
-            bottom: overviewContentsFlickable.bottom
-            right: parent.right
-        }
-    }
-    Flickable {
+    property QtObject ratingInstance: appInfo.reviewsBackend!=null ? appInfo.reviewsBackend.ratingForApplication(appInfo.application) : null
+
+    ScrollView {
         id: overviewContentsFlickable
         width: 2*parent.width/3
         anchors {
             top: parent.top
-            right: scroll.left
             bottom: parent.bottom
+            right: parent.right
         }
-        contentHeight: overviewContents.childrenRect.height
-        Column {
-            id: overviewContents
-            width: parent.width
-            
-            property QtObject ratingInstance: appInfo.reviewsBackend!=null ? appInfo.reviewsBackend.ratingForApplication(appInfo.application) : null
-            
-            Item {width: 10; height: 5}
-
-            Item {
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    margins: 10
-                }
-                height: icon.height
-                IconItem {
-                    id: icon
-                    anchors {
-                        top: header.top
-                        left: parent.left
-//                         bottom: header.bottom
-                    }
-                    height: 64
-                    width: height
-                    
-                    source: application.icon
-                    clip: true
-                }
-                
-                Item {
-                    id: header
-                    height: parent.height
-                    anchors {
-                        top: parent.top
-                        left: icon.right
-                        right: parent.right
-                        leftMargin: 5
-                    }
-                    
-                    Heading {
-                        id: heading
-                        text: application.name
-                        width: parent.width
-                        elide: Text.ElideRight
-                        font.bold: true
-                    }
-                    Label {
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                            top: heading.bottom
-                            bottom: parent.bottom
-                        }
-                        text: application.comment
-                        wrapMode: Text.WordWrap
-                        elide: Text.ElideRight
-                        maximumLineCount: 2
-//                         verticalAlignment: Text.AlignVCenter
-                    }
-                }
-            }
-            Item {width: 10; height: 20}
-            Heading { text: i18n("Description") }
-            Label {
-                id: info
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    margins: 5
-                }
-                horizontalAlignment: Text.AlignJustify
-                wrapMode: Text.WordWrap
-                text: application.longDescription
-            }
-            Item {width: 10; height: 20}
-
-            Heading {
-                text: i18n("Addons")
-                visible: addonsView.visible
-            }
-            AddonsView {
-                id: addonsView
-                application: appInfo.application
-                isInstalling: installButton.isActive
-                width: parent.width
-            }
-
-            Item {width: 10; height: 20}
-            Heading {
-                text: i18n("Comments")
-                visible: reviewsView.visible
-            }
-            Repeater {
-                id: reviewsView
-                width: parent.width
-                visible: count>0
-                clip: true
-                
-                delegate: ReviewDelegate {
-                    onMarkUseful: reviewsModel.markUseful(index, useful)
-                }
-                
-                model: Discover.PaginateModel {
-                    pageSize: 3
-                    sourceModel: ReviewsModel {
-                        id: reviewsModel
-                        resource: application
-                    }
-                }
-            }
-            Row {
-                anchors.horizontalCenter: parent.horizontalCenter
-                spacing: 5
-                
-                Button {
-                    visible: reviewsModel.count>0
-                    text: i18n("More comments (%1)...", overviewContents.ratingInstance ? overviewContents.ratingInstance.ratingCount() : 0)
-                    onClicked: Navigation.openReviews(application, reviewsModel)
-                }
-                Button {
-                    visible: appInfo.reviewsBackend != null && application.isInstalled
-                    text: i18n("Review")
-                    onClicked: reviewDialog.open()
-                }
-            }
-            Item { height: 10; width: 5 } //margin by the end
+        ApplicationDescription {
+            width: overviewContentsFlickable.width-20
+            height: childrenRect.height
         }
     }
     ReviewDialog {
@@ -198,8 +65,8 @@ Item {
             width: Math.min(parent.width, maximumWidth)
             application: appInfo.application
             additionalItem:  Rating {
-                visible: overviewContents.ratingInstance!=null
-                rating:  overviewContents.ratingInstance==null ? 0 : overviewContents.ratingInstance.rating
+                visible: appInfo.ratingInstance!=null
+                rating:  appInfo.ratingInstance==null ? 0 : appInfo.ratingInstance.rating
             }
         }
         Grid {

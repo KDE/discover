@@ -18,9 +18,10 @@
  */
 
 import QtQuick 2.1
+import QtQuick.Controls 1.1
 import org.kde.plasma.components 2.0
 
-Item {
+ScrollView {
     property alias header: gridRepeater.header
     property alias footer: gridRepeater.footer
     property alias delegate: gridRepeater.delegate
@@ -31,24 +32,6 @@ Item {
     
     AwesomeGrid {
         id: gridRepeater
-        anchors {
-            fill: parent
-            rightMargin: scroll.width
-        }
         header: parentItem.header
-    }
-    
-    Rectangle {
-        id: scroll
-        color: "red"
-        width: 5
-        height: 100
-//         orientation: Qt.Vertical
-//         flickableItem: gridRepeater
-//         anchors {
-//             top: parent.top
-//             right: parent.right
-//             bottom: parent.bottom
-//         }
     }
 }

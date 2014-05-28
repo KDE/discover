@@ -18,11 +18,12 @@
  */
 
 import QtQuick 2.1
+import QtQuick.Controls 1.1
 import org.kde.plasma.core 2.0
 import org.kde.plasma.components 2.0
 import "navigation.js" as Navigation
 
-Item {
+ScrollView {
     id: parentItem
     property alias count: view.count
     property alias header: view.header
@@ -34,12 +35,6 @@ Item {
     ListView
     {
         id: view
-        anchors {
-            top: parent.top
-            left: parent.left
-            bottom: parent.bottom
-            right: scroll.left
-        }
         spacing: 3
         snapMode: ListView.SnapToItem
         currentIndex: -1
@@ -124,16 +119,5 @@ Item {
                     }
                 }
             }
-    }
-    
-    NativeScrollBar {
-        id: scroll
-        orientation: Qt.Vertical
-        flickableItem: view
-        anchors {
-                top: parent.top
-                right: parent.right
-                bottom: parent.bottom
-        }
     }
 }

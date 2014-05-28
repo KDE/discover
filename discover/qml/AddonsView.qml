@@ -17,7 +17,7 @@ Column
         
         delegate: ListItem {
             height: (description.height + name.height)*1.2
-            width: parent.width
+            width: addonsView.width
             Row {
                 id: componentsRow
                 height: parent.height

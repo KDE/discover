@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 import QtQuick 2.1
+import QtQuick.Controls 1.1
 import org.kde.plasma.components 2.0
 import org.kde.plasma.extras 2.0
 import org.kde.muon 1.0
@@ -30,31 +31,20 @@ Page
     property real actualWidth: width-Math.pow(width/70, 2)
     property real proposedMargins: (width-actualWidth)/2
     
-    ListView {
-        id: reviewsView
-        anchors {
-            fill: parent
-            rightMargin: scroll.width
-        }
-        clip: true
-        visible: count>0
-        spacing: 5
-        
-        delegate: ReviewDelegate {
-            x: page.proposedMargins
-            width: page.actualWidth
-            onMarkUseful: reviewsModel.markUseful(index, useful)
-        }
-    }
-    
-    NativeScrollBar {
-        id: scroll
-        orientation: Qt.Vertical
-        flickableItem: reviewsView
-        anchors {
-            top: reviewsView.top
-            right: parent.right
-            bottom: reviewsView.bottom
+    ScrollView {
+        anchors.fill: parent
+        ListView {
+            id: reviewsView
+
+            clip: true
+            visible: count>0
+            spacing: 5
+
+            delegate: ReviewDelegate {
+                x: page.proposedMargins
+                width: page.actualWidth
+                onMarkUseful: reviewsModel.markUseful(index, useful)
+            }
         }
     }
 }
