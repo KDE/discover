@@ -25,15 +25,13 @@
 #include <MuonBackendsFactory.h>
 #include "MuonVersion.h"
 
-static const char description[] = I18N_NOOP("An application discoverer");
-
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
-    KAboutData about("muon-discover", "muon-discover", i18n("Muon Discover"), version, i18n(description),
-                     KAboutData::License_GPL, i18n("©2010-2012 Jonathan Thomas"), QString(), 0);
-    about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
+    KAboutData about("muon-discover", i18n("Muon Discover"), version, i18n("An application discoverer"),
+                     KAboutLicense::GPL, i18n("©2010-2012 Jonathan Thomas"));
     about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), "aleixpol@blue-systems.com");
+    about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
     about.setProgramIconName("muondiscover");
     about.setProductName("muon/discover");
     app.setApplicationDisplayName("Muon Discover");
