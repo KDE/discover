@@ -130,6 +130,7 @@ void MuonDiscoverMainWindow::initialize()
 
 MuonDiscoverMainWindow::~MuonDiscoverMainWindow()
 {
+    delete m_view;
 //     KConfigGroup window(KSharedConfig::openConfig(), "Window");
 //     window.writeEntry("geometry", saveGeometry());
 //     window.writeEntry("windowState", saveState());

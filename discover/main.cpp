@@ -40,6 +40,7 @@ int main(int argc, char** argv)
 
 //     KDBusService service(KDBusService::Unique);
     MuonDiscoverMainWindow *mainWindow = new MuonDiscoverMainWindow;
+    QObject::connect(&app, SIGNAL(aboutToQuit()), mainWindow, SLOT(deleteLater()));
     {
         QCommandLineParser parser;
         parser.addOption(QCommandLineOption("application", i18n("Directly open the specified application by its package name."), "name"));
