@@ -40,6 +40,7 @@
 #include <QMenu>
 #include <QMenuBar>
 #include <QToolBar>
+#include <QQuickWidget>
 
 // KDE includes
 #include <KToolBarSpacerAction>
@@ -50,6 +51,7 @@
 #include <KToolBar>
 #include <KXMLGUIFactory>
 #include <KToolBarPopupAction>
+#include <KIO/MetaData>
 
 // Libmuon includes
 #include <libmuon/MuonDataSources.h>
@@ -70,9 +72,11 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
 
 //     Plasma::Theme::defaultTheme()->setUseGlobalSettings(false); //don't change every plasma theme!
 //     Plasma::Theme::defaultTheme()->setThemeName(bgGrayness>0.5 ? "muon-contenttheme" : "oxygen");
-    m_engine = new QQmlApplicationEngine(this);
+    m_view = new QQuickWidget(this);
+    m_view->setResizeMode(QQuickWidget::SizeRootObjectToView);
+    QQmlEngine* engine = m_view->engine();
     KDeclarative::KDeclarative kdeclarative;
-    kdeclarative.setDeclarativeEngine(m_engine);
+    kdeclarative.setDeclarativeEngine(engine);
     //binds things like kconfig and icons
     kdeclarative.setupBindings();
     
@@ -83,39 +87,39 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     qmlRegisterType<KXmlGuiWindow>();
     qmlRegisterType<QActionGroup>();
     
-    m_searchText = new QLineEdit;
+    m_searchText = new QLineEdit(this);
     m_searchText->setPlaceholderText(i18n("Search..."));
     
     actionCollection()->addAction("search", KStandardAction::find(m_searchText, SLOT(setFocus()), this));
     //Here we set up a cache for the screenshots
-    m_engine->rootContext()->setContextProperty("resourcesModel",
+    engine->rootContext()->setContextProperty("resourcesModel",
                                                         qVariantFromValue<ResourcesModel*>(ResourcesModel::global()));
-    m_engine->rootContext()->setContextProperty("transactionModel",
+    engine->rootContext()->setContextProperty("transactionModel",
                                                         qVariantFromValue<TransactionModel*>(TransactionModel::global()));
-    m_engine->rootContext()->setContextProperty("app", this);
-    
-//     if(!m_engine->rootContext()->errors().isEmpty()) {
-//         QString errors;
-//
-//         for (const QQmlError &error : m_view->errors()) {
-//             errors.append(error.toString() + QLatin1String("\n"));
-//         }
-//         KMessageBox::detailedSorry(this,
-//             i18n("Found some errors while setting up the GUI, the application can't proceed."),
-//             errors, i18n("Initialization error"));
-//         qDebug() << "errors: " << m_view->errors();
-//         exit(-1);
-//     }
-//     Q_ASSERT(m_view->errors().isEmpty());
+    engine->rootContext()->setContextProperty("app", this);
 //
 //     KConfigGroup window(KSharedConfig::openConfig(), "Window");
 //     restoreGeometry(window.readEntry<QByteArray>("geometry", QByteArray()));
 //     restoreState(window.readEntry<QByteArray>("windowState", QByteArray()));
     
-//     setCentralWidget(m_view);
-    setupActions();
+    m_view->setSource(QUrl("qrc:/qml/Main.qml"));
 
-    m_engine->load(QUrl("qrc:/qml/Main.qml"));
+    if(!m_view->errors().isEmpty()) {
+        QString errors;
+
+        for (const QQmlError &error : m_view->errors()) {
+            errors.append(error.toString() + QLatin1String("\n"));
+        }
+        KMessageBox::detailedSorry(this,
+                                   i18n("Found some errors while setting up the GUI, the application can't proceed."),
+                                   errors, i18n("Initialization error"));
+        qDebug() << "errors: " << m_view->errors();
+        exit(-1);
+    }
+    Q_ASSERT(m_view->errors().isEmpty());
+
+    setCentralWidget(m_view);
+    setupActions();
 }
 
 void MuonDiscoverMainWindow::initialize()
@@ -140,7 +144,7 @@ QAction* MuonDiscoverMainWindow::getAction(const QString& name)
 QStringList MuonDiscoverMainWindow::modes() const
 {
     QStringList ret;
-    QObject* obj = m_engine->rootObjects().first();
+    QObject* obj = m_view->rootObject();
     for(int i = obj->metaObject()->propertyOffset(); i<obj->metaObject()->propertyCount(); i++) {
         QMetaProperty p = obj->metaObject()->property(i);
         QByteArray name = p.name();
@@ -162,7 +166,7 @@ void MuonDiscoverMainWindow::openMode(const QByteArray& _mode)
     QByteArray mode = _mode;
     if(mode[0]>'Z')
         mode[0] = mode[0]-'a'+'A';
-    QObject* obj = m_engine->rootObjects().first();
+    QObject* obj = m_view->rootObject();
     QByteArray propertyName = "top"+mode+"Comp";
     QVariant modeComp = obj->property(propertyName);
     obj->setProperty("currentTopLevel", modeComp);
@@ -180,7 +184,7 @@ void MuonDiscoverMainWindow::openCategory(const QString& category)
 
 void MuonDiscoverMainWindow::openApplication(const QString& app)
 {
-    m_engine->rootObjects().first()->setProperty("defaultStartup", false);
+    m_view->rootObject()->setProperty("defaultStartup", false);
     m_appToBeOpened = app;
     triggerOpenApplication();
     if(!m_appToBeOpened.isEmpty())

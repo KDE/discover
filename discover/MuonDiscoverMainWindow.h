@@ -24,12 +24,12 @@
 
 #include "MuonMainWindow.h"
 
-class QQmlApplicationEngine;
+class QQmlEngine;
 class QLineEdit;
 class QAptIntegration;
 class AbstractResource;
 class Category;
-class QQuickView;
+class QQuickWidget;
 
 class MuonDiscoverMainWindow : public MuonMainWindow
 {
@@ -66,7 +66,7 @@ class MuonDiscoverMainWindow : public MuonMainWindow
     private:
         QString m_appToBeOpened;
         QLineEdit* m_searchText;
-        QQmlApplicationEngine* m_engine;
+        QQuickWidget* m_view;
 };
 
 #endif // MUONINSTALLERDECLARATIVEVIEW_H
