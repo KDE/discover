@@ -18,9 +18,9 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-import QtQuick 1.1
-import org.kde.plasma.components 0.1
-import org.kde.plasma.extras 0.1
+import QtQuick 2.1
+import org.kde.plasma.components 2.0
+import org.kde.plasma.extras 2.0
 import org.kde.muon 1.0
 
 Page

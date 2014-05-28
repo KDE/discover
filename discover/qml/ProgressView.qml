@@ -47,13 +47,13 @@ ToolBar {
             top: parent.top
             margins: 3
         }
-        
+
         spacing: 3
         height: 30
         orientation: ListView.Horizontal
-        
+
         model: progressModel
-        
+
         delegate: ListItem {
             width: launcherRow.childrenRect.width+5
             height: contents.height
@@ -64,7 +64,7 @@ ToolBar {
                 resource: model.app
                 onCancelled: model.remove(index)
             }
-            
+
             Row {
                 id: launcherRow
                 spacing: 2
