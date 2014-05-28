@@ -23,7 +23,7 @@ import "navigation.js" as Navigation
 import org.kde.muon.discover 1.0
 import org.kde.muon 1.0
 
-Item {
+Page {
     id: page
     property alias category: appsModel.filteredCategory
     property alias sortRole: appsModel.stringSortRole
@@ -39,6 +39,7 @@ Item {
     property real actualWidth: width-Math.pow(width/70, 2)
     property real proposedMargin: (width-actualWidth)/2
     property Component header: category==null ? null : categoryHeaderComponent
+    property Component extendedToolBar: null
     clip: true
     
     onSearchChanged: appsModel.sortOrder = Qt.AscendingOrder
@@ -65,10 +66,13 @@ Item {
     
     tools: Row {
             id: buttonsRow
-            width: 100
             height: theme.defaultFont.pointSize*2
             visible: page.visible
             spacing: 3
+
+            Loader {
+                sourceComponent: page.extendedToolBar
+            }
 
             MuonToolButton {
                 id: sortButton

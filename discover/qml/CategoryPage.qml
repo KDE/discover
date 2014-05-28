@@ -23,7 +23,7 @@ import org.kde.plasma.components 2.0
 import org.kde.muon 1.0
 import "navigation.js" as Navigation
 
-Item {
+Page {
     id: page
     property QtObject category
     property real actualWidth: width-Math.pow(width/70, 2)

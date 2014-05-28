@@ -4,7 +4,7 @@ import org.kde.muon 1.0
 import org.kde.muonapt 1.0
 import "navigation.js" as Navigation
 
-Item {
+Page {
     id: page
     clip: true
     property real actualWidth: width-Math.pow(width/70, 2)

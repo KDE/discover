@@ -56,25 +56,25 @@ Rectangle
             backAction.trigger()
         }
     }
-//     Timer {
-//         id: searchTimer
-//         running: false
-//         repeat: false
-//         interval: 200
-//         onTriggered: { pageStack.currentItem.searchFor(app.searchWidget.text) }
-//     }
-//
-//     Component {
-//         id: loadingComponent
-//         Item {
-//             Label {
-//                 text: i18n("Loading...")
-//                 font.pointSize: 52
-//                 anchors.centerIn: parent
-//             }
-//         }
-//     }
-//
+    Timer {
+        id: searchTimer
+        running: false
+        repeat: false
+        interval: 200
+        onTriggered: { pageStack.currentItem.searchFor(app.searchWidget.text) }
+    }
+
+    Component {
+        id: loadingComponent
+        Item {
+            Label {
+                text: i18n("Loading...")
+                font.pointSize: 52
+                anchors.centerIn: parent
+            }
+        }
+    }
+
     onCurrentTopLevelChanged: {
         if(currentTopLevel==null)
             return
@@ -100,7 +100,7 @@ Rectangle
         }
         pageStack.replace(page, {}, window.status!=Component.Ready)
     }
-    
+
     DiscoverAction {
         id: backAction
         objectName: "back"
@@ -135,7 +135,7 @@ Rectangle
         objectName: "sources"
         shortcut: "Alt+S"
     }
-    
+
     Connections {
         target: app
         onOpenApplicationInternal: Navigation.openApplication(app)
@@ -155,16 +155,16 @@ Rectangle
 
         Breadcrumbs {
             id: breadcrumbsItem
-            //FIXME: crash if I uncomment
             anchors.fill: parent
-//             pageStack: pageStack
-//             onPoppedPages: window.clearSearch()
-//             Component.onCompleted: breadcrumbsItem.pushItem("go-home")
+
+            pageStack: pageStack
+            onPoppedPages: window.clearSearch()
+            Component.onCompleted: breadcrumbsItem.pushItem("go-home", "")
         }
         Behavior on height { NumberAnimation { duration: 250 } }
     }
-    
-    ToolBar {
+
+    PlasmaComponents.ToolBar {
         id: pageToolBar
         anchors {
             top: parent.top
@@ -177,7 +177,7 @@ Rectangle
         Behavior on width { NumberAnimation { duration: 250 } }
     }
 
-    StackView {
+    PlasmaComponents.PageStack {
         id: pageStack
         anchors {
             bottom: progressBox.top
@@ -186,13 +186,14 @@ Rectangle
             right: parent.right
             topMargin: Math.max(breadcrumbsItemBar.height, pageToolBar.height)
         }
+        toolBar: pageToolBar
         onDepthChanged: {
             if(depth==1) {
                 breadcrumbsItem.removeAllItems()
             }
         }
     }
-    
+
     ProgressView {
         id: progressBox
         anchors {

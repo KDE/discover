@@ -57,33 +57,25 @@ Item {
             items.remove(items.count-1)
         }
     }
-    
-    ListView
-    {
-        id: view
-        anchors {
-            top: parent.top
-            bottom: parent.bottom
-            right: parent.right
-            left: parent.left
-        }
-        
+
+    Row {
         spacing: 0
-        model: items
-        layoutDirection: Qt.LeftToRight
-        orientation: ListView.Horizontal
-        delegate: ToolButton {
-            flat: false
-            height: bread.height
-            iconSource: decoration
-            onClicked: doClick(index)
-            text: display ? display : ""
-            checked: items.count-index<=1
-            checkable: checked
+        Repeater
+        {
+            id: view
+
+            model: ListModel { id: items }
+            delegate: ToolButton {
+                flat: false
+                height: bread.height
+                iconSource: decoration
+                onClicked: doClick(index)
+                text: display ? display : ""
+                checked: items.count-index<=1
+                checkable: checked
+            }
+
+    //         onCountChanged: view.positionViewAtEnd()
         }
-        
-        onCountChanged: view.positionViewAtEnd()
-        
-        ListModel { id: items }
     }
 }

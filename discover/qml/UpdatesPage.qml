@@ -3,7 +3,7 @@ import org.kde.plasma.components 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.muon 1.0
 
-Item
+Page
 {
     id: page
     property real actualWidth: width-Math.pow(width/70, 2)
