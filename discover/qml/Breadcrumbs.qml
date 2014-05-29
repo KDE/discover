@@ -18,13 +18,12 @@
  */
 
 import QtQuick 2.1
-import org.kde.plasma.components 2.0
+import QtQuick.Controls 1.0
 
 Item {
     id: bread
     property alias count: items.count
     property Item pageStack: null
-    
     signal poppedPages
     
     function currentItem() {
@@ -65,17 +64,17 @@ Item {
             id: view
 
             model: ListModel { id: items }
-            delegate: ToolButton {
-                flat: false
+            delegate: Button {
                 height: bread.height
-                iconSource: decoration
+                iconName: decoration
                 onClicked: doClick(index)
-                text: display ? display : ""
+                text: display
                 checked: items.count-index<=1
                 checkable: checked
             }
 
-    //         onCountChanged: view.positionViewAtEnd()
+//TODO: make sure the right-most button is visible
+//         onCountChanged: view.positionViewAtEnd()
         }
     }
 }
