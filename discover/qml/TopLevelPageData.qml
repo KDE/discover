@@ -30,6 +30,11 @@ DiscoverAction {
     enabled: window.navigationEnabled && component && component.status == Component.Ready
     actionsGroup: "topLevelPagesGroup"
 
+    onEnabledChanged: {
+        if(component && component.status != Component.Ready)
+            console.log("error when loading", component.url, component.errorString());
+    }
+
     onTriggered: {
         if(window.currentTopLevel!=component)
             window.currentTopLevel=component
