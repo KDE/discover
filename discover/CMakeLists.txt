@@ -8,7 +8,6 @@ set(muon_discover_SRCS
     MuonDiscoverMainWindow.cpp
 
     DiscoverAction.cpp
-    MuonActionGroup.cpp
     PaginateModel.cpp
 )
 
