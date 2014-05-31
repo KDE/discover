@@ -3,6 +3,7 @@ Type=ServiceType
 X-KDE-ServiceType=Muon/Backend
 X-KDE-Derived=KPluginInfo
 Name=Muon Backend
+Name[bg]=Ядро на Muon
 Name[bs]=Muon pozadina
 Name[ca]=Dorsal del Muon
 Name[ca@valencia]=Dorsal del Muon
