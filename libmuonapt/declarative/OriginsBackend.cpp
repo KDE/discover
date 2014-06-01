@@ -20,9 +20,10 @@
 
 #include "OriginsBackend.h"
 #include <resources/ResourcesModel.h>
-#include <QProcess>
 #include <QDebug>
 #include <QDir>
+#include <kauth.h>
+#include <KProcess>
 #include <QMainWindow>
 #include <qdeclarative.h>
 #include <LibQApt/Backend>
@@ -45,7 +46,7 @@ OriginsBackend::OriginsBackend(QObject* parent)
     qmlRegisterType<Source>();
     qmlRegisterType<Entry>();
     load();
-    
+
     connect(applicationBackend(), SIGNAL(fetchingChanged()), SLOT(load()), Qt::UniqueConnection);
 }
 
@@ -57,7 +58,7 @@ OriginsBackend::~OriginsBackend()
 void OriginsBackend::load()
 {
     QObject* b = applicationBackend();
-    
+
     m_sourcesList.reload();
     qDeleteAll(m_sources);
     m_sources.clear();
@@ -88,20 +89,36 @@ Source* OriginsBackend::sourceForUri(const QString& uri)
 
 void OriginsBackend::addRepository(const QString& repository)
 {
-    QProcess* p = new QProcess(this);
-    p->setProcessChannelMode(QProcess::MergedChannels);
-    connect(p, SIGNAL(finished(int)), SLOT(additionDone(int)));
-    connect(p, SIGNAL(finished(int)), p, SLOT(deleteLater()));
-    p->start("kdesudo", QStringList("--") << "apt-add-repository" << "-y" << repository);
+    KAuth::Action readAction("org.kde.muon.repo.modify");
+    readAction.setHelperID("org.kde.muon.repo");
+    QVariantMap args;
+    args["repository"] = repository;
+    args["action"] = QString("add");
+    readAction.setArguments(args);
+    KAuth::ActionReply reply = readAction.execute();
+    if(reply.failed()){
+	additionDone(1);
+    }
+    else{
+	additionDone(0);
+    }
 }
 
 void OriginsBackend::removeRepository(const QString& repository)
 {
-    QProcess* p = new QProcess(this);
-    p->setProcessChannelMode(QProcess::MergedChannels);
-    connect(p, SIGNAL(finished(int)), SLOT(removalDone(int)));
-    connect(p, SIGNAL(finished(int)), p, SLOT(deleteLater()));
-    p->start("kdesudo", QStringList("--") << "apt-add-repository" << "--remove" << "-y" << repository);
+    KAuth::Action readAction("org.kde.muon.repo.modify");
+    readAction.setHelperID("org.kde.muon.repo");
+    QVariantMap args;
+    args["repository"] = repository;
+    args["action"] = QString("remove");
+    readAction.setArguments(args);
+    KAuth::ActionReply reply = readAction.execute();
+    if(reply.failed()){
+	removalDone(1);
+    }
+    else{
+	removalDone(0);
+    }
 }
 
 void OriginsBackend::additionDone(int processErrorCode)

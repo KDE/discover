@@ -1,0 +1,5 @@
+[org.kde.muon.repo.modify]
+Name=Add Repo
+Description=The system is attempting to modify the sources
+Policy=auth_admin
+Persistence=session
