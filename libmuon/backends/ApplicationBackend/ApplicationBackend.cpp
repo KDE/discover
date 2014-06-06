@@ -27,6 +27,7 @@
 #include <QtCore/QStringList>
 #include <QtCore/QUuid>
 #include <QTimer>
+#include <QSignalMapper>
 
 // KDE includes
 #include <KLocale>
@@ -70,13 +71,14 @@ ApplicationBackend::ApplicationBackend(QObject* parent, const QVariantList& )
     , m_backend(new QApt::Backend(this))
     , m_reviewsBackend(new ReviewsBackend(this))
     , m_isFetching(true)
+    , m_wantedTransaction(nullptr)
     , m_currentTransaction(nullptr)
     , m_backendUpdater(new ApplicationUpdates(this))
     , m_aptify(nullptr)
     , m_aptBackendInitialized(false)
 {
     KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
-    
+
     m_watcher = new QFutureWatcher<QVector<Application*> >(this);
     connect(m_watcher, SIGNAL(finished()), this, SLOT(setApplications()));
     connect(m_reviewsBackend, SIGNAL(ratingsReady()), SIGNAL(allDataChanged()));
@@ -141,7 +143,7 @@ void ApplicationBackend::setApplications()
     m_appList = m_watcher->future().result();
     for (Application* app : m_appList)
         app->setParent(this);
-    
+
     KIO::StoredTransferJob* job = KIO::storedGet(KUrl(MuonDataSources::screenshotsSource(), "/json/packages"),KIO::NoReload, KIO::DefaultFlags|KIO::HideProgressInfo);
     connect(job, SIGNAL(finished(KJob*)), SLOT(initAvailablePackages(KJob*)));
 
@@ -366,6 +368,9 @@ void ApplicationBackend::markLangpacks(Transaction *transaction)
 
 void ApplicationBackend::addTransaction(Transaction *transaction)
 {
+    if(!transaction){
+      return;
+    }
     QApt::CacheState oldCacheState = m_backend->currentCacheState();
     m_backend->saveCacheState();
 
@@ -374,7 +379,6 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
     // Find changes due to markings
     QApt::PackageList excluded;
     excluded.append(qobject_cast<Application*>(transaction->resource())->package());
-
     // Exclude addons being marked
     for (const QString &pkgStr : transaction->addons().addonsToInstall()) {
         QApt::Package *addon = m_backend->package(pkgStr);
@@ -458,13 +462,18 @@ void ApplicationBackend::installApplication(AbstractResource* res, AddonList add
 {
     Application* app = qobject_cast<Application*>(res);
     Transaction::Role role = app->package()->isInstalled() ? Transaction::ChangeAddonsRole : Transaction::InstallRole;
-
-    addTransaction(new Transaction(this, res, role, addons));
+    QStringList pkgName;
+    pkgName << app->packageName();
+    m_wantedTransaction = new Transaction(this, res, role, addons);
+    aptListBugs(pkgName);
 }
 
 void ApplicationBackend::installApplication(AbstractResource* app)
 {
-    addTransaction(new Transaction(this, app, Transaction::InstallRole));
+    QStringList pkgName;
+    pkgName << app->packageName();
+    m_wantedTransaction = new Transaction(this, app, Transaction::InstallRole);
+    aptListBugs(pkgName);
 }
 
 void ApplicationBackend::removeApplication(AbstractResource* app)
@@ -594,7 +603,7 @@ void ApplicationBackend::initAvailablePackages(KJob* j)
 {
     KIO::StoredTransferJob* job = qobject_cast<KIO::StoredTransferJob*>(j);
     Q_ASSERT(job);
-    
+
     bool ok=false;
     QJson::Parser p;
     QVariantList data = p.parse(job->data(), &ok).toMap().value("packages").toList();
@@ -651,3 +660,44 @@ void ApplicationBackend::setFetching(bool f)
         }
     }
 }
+
+void ApplicationBackend::listBugsFinished()
+{
+    bool ok = true;
+    KProcess *mProcess = qobject_cast<KProcess*>(QObject::sender());
+    if(!mProcess) return;
+    QString output = QString::fromUtf8(mProcess->readAllStandardOutput());
+    mProcess->deleteLater();
+    if(!output.isEmpty())
+    {
+	QMessageBox::StandardButton reply;
+	reply = QMessageBox::question(mainWindow(), QString("Bugs found"), output ,QMessageBox::Yes|QMessageBox::No);
+	if (reply == QMessageBox::No) {
+	      ok=false;
+	}
+    }
+    if(ok)
+    {
+      if(m_wantedTransaction){
+	  addTransaction(m_wantedTransaction);
+	  m_wantedTransaction = nullptr;
+      }
+      emit transactionOk();
+    }
+}
+
+void ApplicationBackend::aptListBugs(QStringList packageName)
+{
+    QStringList arguments;
+    QString program = KStandardDirs::findExe(QString("apt-listbugs"));
+    if(program.isEmpty()){
+	emit transactionOk();
+	return;
+    }
+    KProcess *proc = new KProcess;
+    proc->setOutputChannelMode(KProcess::OnlyStdoutChannel);
+    proc->setShellCommand(program.append(QString(" list ")).append(packageName.join(" , ")));
+    connect(proc, SIGNAL(finished(int)), this, SLOT(listBugsFinished()));
+    proc->start();
+}
+

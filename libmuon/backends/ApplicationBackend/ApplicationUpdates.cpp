@@ -73,7 +73,7 @@ void ApplicationUpdates::setBackend(QApt::Backend* backend)
     m_aptBackend = backend;
     // FIXME: Debconf support was lost during the port
     QApt::FrontendCaps caps = (QApt::FrontendCaps)(QApt::MediumPromptCap |
-                               QApt::ConfigPromptCap | QApt::UntrustedPromptCap);
+                              QApt::ConfigPromptCap | QApt::UntrustedPromptCap);
     m_aptBackend->setFrontendCaps(caps);
 }
 
@@ -96,7 +96,7 @@ void ApplicationUpdates::restoreToCleanCache()
 void ApplicationUpdates::prepare()
 {
     restoreToCleanCache();
-    
+
     m_aptBackend->markPackagesForDistUpgrade();
     calculateUpdates();
 }
@@ -110,13 +110,17 @@ void ApplicationUpdates::start()
         setProgressing(false);
         return;
     }
+    QStringList pkgList;
     for(auto it=changes.begin(); it!=changes.end(); ) {
+	for (QApt::Package *package : *it) {
+                pkgList << package->name();
+	}  
         if(it.key()&QApt::Package::ToUpgrade) {
             it = changes.erase(it);
-        } else
+        } else {
             ++it;
+        }
     }
-    
     // Confirm additional changes beyond upgrading the files
     if(!changes.isEmpty()) {
         ChangesDialog d(m_appBackend->mainWindow(), changes);
@@ -125,8 +129,17 @@ void ApplicationUpdates::start()
             return;
         }
     }
+    if(!pkgList.isEmpty()){
+	setStatusMessage(i18n("Checking for bugs..."));
+	connect(m_appBackend,SIGNAL(transactionOk()),this,SLOT(createRunTransaction()));
+	m_appBackend->aptListBugs(pkgList);
+    }
+}
 
+void ApplicationUpdates::createRunTransaction()
+{
     // Create and run the transaction
+    this->disconnect(m_appBackend,SIGNAL(transactionOk()),this,0);
     setupTransaction(m_aptBackend->commitChanges());
     m_trans->run();
     setProgressing(true);
@@ -271,8 +284,8 @@ void ApplicationUpdates::untrustedPrompt(const QStringList &untrustedPackages)
                           "security risk, as the presence of unverifiable software "
                           "can be a sign of tampering.</warning> Do you wish to continue?",
                           untrustedPackages.size());
-    int result = KMessageBox::warningContinueCancelList(QAptActions::self()->mainWindow(), 
-                                                        text, untrustedPackages, title);
+    int result = KMessageBox::warningContinueCancelList(QAptActions::self()->mainWindow(),
+                 text, untrustedPackages, title);
 
     bool installUntrusted = (result == KMessageBox::Continue);
     m_trans->replyUntrustedPrompt(installUntrusted);
