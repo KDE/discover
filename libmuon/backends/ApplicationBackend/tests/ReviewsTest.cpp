@@ -28,13 +28,27 @@
 #include <MuonBackendsFactory.h>
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/ResourcesModel.h>
+#include <MuonMainWindow.h>
 
-QTEST_KDEMAIN_CORE( ReviewsTest )
+QTEST_KDEMAIN( ReviewsTest, GUI )
+
+AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
+{
+    QVector<AbstractResourcesBackend*> backends = m->backends();
+    foreach(AbstractResourcesBackend* backend, backends) {
+        if(backend->metaObject()->className()==name) {
+            return backend;
+        }
+    }
+    return nullptr;
+}
 
 ReviewsTest::ReviewsTest(QObject* parent): QObject(parent)
 {
     ResourcesModel* m = new ResourcesModel("muon-appsbackend", this);
-    m_appBackend = m->backends().first();
+    m_window = new MuonMainWindow;
+    m->integrateMainWindow(m_window);
+    m_appBackend = backendByName(m, "ApplicationBackend");
     QTest::kWaitForSignal(m, SIGNAL(allInitialized()));
     m_revBackend = m_appBackend->reviewsBackend();
 }
