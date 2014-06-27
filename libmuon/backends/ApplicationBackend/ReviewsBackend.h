@@ -65,6 +65,7 @@ public:
 private:
     QApt::Backend *m_aptBackend;
 
+    QString m_distId;
     const KUrl m_serverBase;
     QHash<QString, Rating *> m_ratings;
     // cache key is package name + app name, since both by their own may not be unique
