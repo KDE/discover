@@ -49,15 +49,15 @@ static QString getCodename(const QString& value)
 {
     QString ret;
     QFile f("/etc/os-release");
-    if(f.open(QIODevice::ReadOnly|QIODevice::Text)){
-	QRegExp rx(QString("%1=(.+)\n").arg(value));
-	while(!f.atEnd()) {
-	    QByteArray line = f.readLine();
-	    if(rx.exactMatch(line)) {
-		ret = rx.cap(1);
-		break;
-	    }
-	}
+    if(f.open(QIODevice::ReadOnly|QIODevice::Text)) {
+        QRegExp rx(QString("%1=(.+)\n").arg(value));
+        while(!f.atEnd()) {
+            QByteArray line = f.readLine();
+            if(rx.exactMatch(line)) {
+                ret = rx.cap(1);
+                break;
+            }
+        }
     }
     return ret;
 }
@@ -114,12 +114,12 @@ void ReviewsBackend::fetchRatings()
     KUrl ratingsUrl(m_serverBase,"review-stats/");
     //default to popcon if not using ubuntu
     if(m_distId.toLower() == QLatin1String("ubuntu")){
-	refreshConsumerKeys();
-	// First, load our old ratings cache in case we don't have net connectivity
-	loadRatingsFromFile();
-	// Try to fetch the latest ratings from the internet
-    }else{
-	ratingsUrl = KUrl("http://popcon.debian.org/all-popcon-results.gz");
+        refreshConsumerKeys();
+        // First, load our old ratings cache in case we don't have net connectivity
+        loadRatingsFromFile();
+        // Try to fetch the latest ratings from the internet
+    } else {
+        ratingsUrl = KUrl("http://popcon.debian.org/all-popcon-results.gz");
     }
     getJob = KIO::file_copy(ratingsUrl, ratingsCache, -1,
                                KIO::Overwrite | KIO::HideProgressInfo);
@@ -139,49 +139,48 @@ void ReviewsBackend::loadRatingsFromFile()
 {
     QString ratingsCache = KStandardDirs::locateLocal("data", "libmuon/ratings.txt");
     QIODevice* dev = KFilterDev::deviceForFile(ratingsCache, "application/x-gzip");
-    if(m_distId.toLower() == QLatin1String("ubuntu")){
+    if(m_distId.toLower() == QLatin1String("ubuntu")) {
+        QJson::Parser parser;
+        bool ok = false;
+        QVariant ratings = parser.parse(dev, &ok);
 
-	QJson::Parser parser;
-	bool ok = false;
-	QVariant ratings = parser.parse(dev, &ok);
+        if (!ok) {
+            qDebug() << "error while parsing ratings: " << ratingsCache;
+            return;
+        }
 
-	if (!ok) {
-	    qDebug() << "error while parsing ratings: " << ratingsCache;
-	    return;
-	}
+        qDeleteAll(m_ratings);
+        m_ratings.clear();
+        foreach (const QVariant &data, ratings.toList()) {
+            Rating *rating = new Rating(data.toMap());
+            if (!rating->ratingCount()) {
+                delete rating;
+                continue;
+            }
+            rating->setParent(this);
+            m_ratings[rating->packageName()] = rating;
+        }
+    } else {
+        if(dev->open(QIODevice::ReadOnly)) {
+            while(!dev->atEnd()) {
+                QString line(dev->readLine());
+                QStringList lineContent = line.split(" ");
+                if(lineContent.first() != QLatin1String("Package:") || lineContent.isEmpty()) {
+                    continue;
+                }
+                QString pkgName = lineContent.at(1);
+                lineContent.removeFirst();
+                lineContent.removeFirst();
 
-	qDeleteAll(m_ratings);
-	m_ratings.clear();
-	foreach (const QVariant &data, ratings.toList()) {
-	    Rating *rating = new Rating(data.toMap());
-	    if (!rating->ratingCount()) {
-		delete rating;
-		continue;
-	    }
-	    rating->setParent(this);
-	    m_ratings[rating->packageName()] = rating;
-	}
-    }else{
-	if(dev->open(QIODevice::ReadOnly)){
-	    while(!dev->atEnd()){
-		QString line(dev->readLine());
-		QStringList lineContent = line.split(" ");
-		if(lineContent.first() != QLatin1String("Package:") || lineContent.isEmpty()){
-		    continue;
-		}
-		QString pkgName = lineContent.at(1);
-		lineContent.removeFirst();
-		lineContent.removeFirst();
-
-		Rating *rating = new Rating(pkgName,lineContent);
-		if (!rating->ratingCount()) {
-		    delete rating;
-		    continue;
-		}
-		rating->setParent(this);
-		m_ratings[rating->packageName()] = rating;
-	    }
-	}
+                Rating *rating = new Rating(pkgName,lineContent);
+                if (!rating->ratingCount()) {
+                    delete rating;
+                    continue;
+                }
+                rating->setParent(this);
+                m_ratings[rating->packageName()] = rating;
+            }
+        }
     }
     dev->close();
     dev->deleteLater();
@@ -325,9 +324,9 @@ void ReviewsBackend::submitReview(AbstractResource* application, const QString& 
 
     QString distroSeries = getCodename("VERSION");
     if(!distroSeries.isEmpty()){
-	data["distroseries"] = distroSeries.split(" ").last().remove('(').remove(')');
+        data["distroseries"] = distroSeries.split(" ").last().remove('(').remove(')');
     }else{
-	data["distroseries"] = getCodename("PRETTY_NAME").split(" ").last();
+        data["distroseries"] = getCodename("PRETTY_NAME").split(" ").last();
     }
     data["arch_tag"] = app->package()->architecture();
     
