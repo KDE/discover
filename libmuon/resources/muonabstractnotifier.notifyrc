@@ -1,6 +1,7 @@
 [Global]
 IconName=applications-system
 Comment=Muon
+Comment[bg]=Muon
 Comment[bs]=Muon
 Comment[ca]=Muon
 Comment[ca@valencia]=Muon
@@ -9,6 +10,7 @@ Comment[da]=Muon
 Comment[de]=Muon
 Comment[el]=Muon
 Comment[es]=Muon
+Comment[et]=Muon
 Comment[fi]=Muon
 Comment[fr]=Muon
 Comment[gl]=Muon
@@ -16,6 +18,7 @@ Comment[hu]=Muon
 Comment[it]=Muon
 Comment[ko]=Muon
 Comment[nb]=Muon
+Comment[nds]=Muon
 Comment[nl]=Muon
 Comment[pl]=Muon
 Comment[pt]=Muon
@@ -36,6 +39,7 @@ Comment[zh_TW]=Muon
 
 [Event/Update]
 Name=Updates Are Available
+Name[bg]=Има налични обновления
 Name[bs]=Nadogradnje su dostupne
 Name[ca]=Hi ha actualitzacions disponibles
 Name[ca@valencia]=Hi ha actualitzacions disponibles
@@ -79,6 +83,7 @@ Name[x-test]=xxUpdates Are Availablexx
 Name[zh_CN]=更新可用
 Name[zh_TW]=有可用的更新
 Comment=Updates Available
+Comment[bg]=Налични са обновления
 Comment[bs]=Nadogradnje dostupne
 Comment[ca]=Actualitzacions disponibles
 Comment[ca@valencia]=Actualitzacions disponibles

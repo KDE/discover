@@ -81,6 +81,7 @@ private:
     QList<AbstractResource*> m_toUpdate;
 
 private slots:
+    void createRunTransaction();
     void errorOccurred(QApt::ErrorCode error);
     void setProgress(int progress);
     void etaChanged(quint64 eta);

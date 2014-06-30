@@ -109,6 +109,12 @@ Rating::Rating(const QString& packageName, const QString& appName, int ratingCou
     init(packageName, appName, ratingCount, rating, histogram);
 }
 
+Rating::Rating(const QString& packageName, QStringList histogram)
+    : QObject()
+{
+    debInit(packageName,histogram);
+}
+
 void Rating::init(const QString& packageName, const QString& appName, int ratingCount, int rating, const QString& histogram)
 {
     m_packageName = packageName;
@@ -123,11 +129,40 @@ void Rating::init(const QString& packageName, const QString& appName, int rating
 
     for(int i=0; i<histo.size(); ++i) {
         int points = histo[i].toInt();
-        m_ratingPoints = i*points;
+        m_ratingPoints += (i+1)*points;
         spread.append(points);
     }
 
     m_sortableRating = dampenedRating(spread) * 2;
+}
+
+void Rating::debInit(const QString& packageName, QStringList histogram)
+{
+    int installed = 0;
+    m_packageName = packageName;
+    m_sortableRating = 0;
+    //inst, vote, old, recent, no-files
+    QVector<int> values = QVector<int>();
+    histogram.removeDuplicates();
+    for(int i=1; i<histogram.count(); ++i) {
+        int points = histogram[i].toInt();
+	installed+=points;
+        values.append(points);
+    }
+    m_sortableRating = values[0];
+    m_ratingCount = installed;
+    if(installed){
+	m_rating = values[0]/(m_ratingCount*1.0)*10;
+    }
+    else{
+	m_rating = 0;
+    }
+    if(values[0]-values[1]){
+	m_ratingPoints = (values[2]*1.0)/(values[0]-values[1]);
+    }
+    else{
+	m_ratingPoints = 0;
+    }
 }
 
 Rating::~Rating()

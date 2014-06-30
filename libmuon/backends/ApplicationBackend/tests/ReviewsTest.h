@@ -23,6 +23,7 @@
 
 #include <QtCore/QObject>
 
+class MuonMainWindow;
 class AbstractResourcesBackend;
 class AbstractReviewsBackend;
 namespace QApt {
@@ -44,6 +45,7 @@ class ReviewsTest : public QObject
     private:
         AbstractReviewsBackend* m_revBackend;
         AbstractResourcesBackend* m_appBackend;
+	MuonMainWindow* m_window;
 
 };
 
