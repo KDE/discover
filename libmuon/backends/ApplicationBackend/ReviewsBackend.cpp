@@ -119,7 +119,7 @@ void ReviewsBackend::fetchRatings()
 	loadRatingsFromFile();
 	// Try to fetch the latest ratings from the internet
     }else{
-	ratingsUrl.setPath("http://popcon.debian.org/all-popcon-results.gz");
+	ratingsUrl = KUrl("http://popcon.debian.org/all-popcon-results.gz");
     }
     getJob = KIO::file_copy(ratingsUrl, ratingsCache, -1,
                                KIO::Overwrite | KIO::HideProgressInfo);
