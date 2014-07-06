@@ -223,6 +223,8 @@ void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
             this, SLOT(provideMedium(QString,QString)));
     connect(trans, SIGNAL(promptUntrusted(QStringList)),
             this, SLOT(untrustedPrompt(QStringList)));
+    connect(trans, SIGNAL(configFileConflict(QString,QString)),
+            this, SLOT(configFileConflict(QString,QString)));
     connect(trans, SIGNAL(downloadSpeedChanged(quint64)),
             this, SIGNAL(downloadSpeedChanged(quint64)));
     connect(trans, SIGNAL(finished(QApt::ExitStatus)),

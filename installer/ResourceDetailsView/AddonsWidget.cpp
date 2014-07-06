@@ -138,6 +138,10 @@ void AddonsWidget::populateModel()
 {
     m_addonsModel->clear();
 
+    if (!m_resource) {
+        return;
+    }
+
     m_availableAddons = m_resource->addonsInformation();
 
     for (const PackageState &addon : m_availableAddons) {
