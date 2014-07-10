@@ -38,8 +38,8 @@ static const char description[] =
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
-    KAboutData about("muon-updater", "muon-updater", i18n("Muon Update Manager"), version, i18n(description),
-                     KAboutData::License_GPL, i18n("©2010-2013 Jonathan Thomas"), QString(), 0);
+    KAboutData about("muon-updater", i18n("Muon Update Manager"), version, i18n(description),
+                     KAboutLicense::GPL, i18n("©2010-2013 Jonathan Thomas"), QString(), 0);
     about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
     about.setProgramIconName("system-software-update");
     about.setProductName("muon/updater");

@@ -30,8 +30,8 @@ static const char description[] = I18N_NOOP("An application exporterer");
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
-    KAboutData about("muon-exporter", "muon-exporter", i18n("Muon Exporter"), version, i18n(description),
-                     KAboutData::License_GPL, i18n("©2013 Aleix Pol Gonzalez"), QString(), 0);
+    KAboutData about("muon-exporter", i18n("Muon Exporter"), version, i18n(description),
+                     KAboutLicense::GPL, i18n("©2013 Aleix Pol Gonzalez"), QString(), 0);
     about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
     about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), "aleixpol@blue-systems.com");
     about.setProgramIconName("muonexporter");
