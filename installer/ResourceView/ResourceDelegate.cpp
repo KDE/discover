@@ -23,8 +23,8 @@
 
 // Qt includes
 #include <QApplication>
-#include <QtGui/QAbstractItemView>
-#include <QtGui/QPainter>
+#include <QAbstractItemView>
+#include <QPainter>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTreeView>
 

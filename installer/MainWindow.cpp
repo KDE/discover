@@ -24,8 +24,8 @@
 #include <QStandardItemModel>
 #include <QtCore/QStringBuilder>
 #include <QtCore/QTimer>
-#include <QtGui/QAbstractItemView>
-#include <QtGui/QSplitter>
+#include <QAbstractItemView>
+#include <QSplitter>
 #include <QtWidgets/QStackedWidget>
 
 // KDE includes

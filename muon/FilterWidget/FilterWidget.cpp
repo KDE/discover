@@ -23,8 +23,8 @@
 // Qt includes
 #include <QStandardItemModel>
 #include <QtWidgets/QLabel>
-#include <QtGui/QListView>
-#include <QtGui/QToolBox>
+#include <QListView>
+#include <QToolBox>
 
 // KDE includes
 #include <KLocale>

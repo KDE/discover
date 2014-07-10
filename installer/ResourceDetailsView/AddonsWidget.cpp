@@ -22,11 +22,11 @@
 
 // Qt includes
 #include <QtCore/QStringBuilder>
-#include <QtGui/QHBoxLayout>
+#include <QHBoxLayout>
 #include <QtWidgets/QLabel>
-#include <QtGui/QListView>
+#include <QListView>
 #include <QtWidgets/QPushButton>
-#include <QtGui/QStandardItemModel>
+#include <QStandardItemModel>
 #include <QtWidgets/QToolButton>
 
 // KDE includes

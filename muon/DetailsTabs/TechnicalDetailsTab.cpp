@@ -21,10 +21,10 @@
 #include "TechnicalDetailsTab.h"
 
 // Qt includes
-#include <QtGui/QGridLayout>
-#include <QtGui/QGroupBox>
+#include <QGridLayout>
+#include <QGroupBox>
 #include <QtWidgets/QLabel>
-#include <QtGui/QScrollArea>
+#include <QScrollArea>
 
 // KDE includes
 #include <KGlobal>

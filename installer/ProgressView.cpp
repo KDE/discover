@@ -21,7 +21,7 @@
 #include "ProgressView.h"
 
 #include <QtWidgets/QLabel>
-#include <QtGui/QListView>
+#include <QListView>
 
 #include <KLocalizedString>
 

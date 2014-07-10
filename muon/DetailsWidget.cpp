@@ -21,7 +21,7 @@
 #include "DetailsWidget.h"
 
 // Qt
-#include <QtGui/QScrollArea>
+#include <QScrollArea>
 
 // KDE
 #include <KLocale>

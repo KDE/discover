@@ -23,16 +23,16 @@
 
 #include <QApplication>
 #include <QtCore/QEvent>
-#include <QtGui/QBoxLayout>
+#include <QBoxLayout>
 #include <QtWidgets/QLabel>
-#include <QtGui/QMouseEvent>
-#include <QtGui/QPalette>
+#include <QMouseEvent>
+#include <QPalette>
 #include <QtWidgets/QProgressBar>
 
 #include <QParallelAnimationGroup>
 #include <QPropertyAnimation>
 #include <QGraphicsOpacityEffect>
-#include <QtGui/QScrollArea>
+#include <QScrollArea>
 
 #include <KLocale>
 

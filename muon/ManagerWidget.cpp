@@ -24,7 +24,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
-#include <QtGui/QSplitter>
+#include <QSplitter>
 
 // KDE includes
 #include <KDebug>

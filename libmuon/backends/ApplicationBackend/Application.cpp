@@ -28,6 +28,7 @@
 #include <QtCore/QVector>
 #include <QtCore/QStringList>
 #include <QThread>
+#include <QJsonDocument>
 
 // KDE includes
 #include <KIconLoader>
@@ -211,7 +212,7 @@ QVector<QPair<QString, QString> > Application::locateApplication(const QString &
         const KSycocaEntry::Ptr p = (*it);
 
         if (p->isType(KST_KService)) {
-            const KService::Ptr service = KService::Ptr::staticCast(p);
+            const KService::Ptr service = KService::Ptr(p);
 
             if (service->noDisplay()) {
                 continue;
@@ -225,7 +226,7 @@ QVector<QPair<QString, QString> > Application::locateApplication(const QString &
                 return ret;
             }
         } else if (p->isType(KST_KServiceGroup)) {
-            const KServiceGroup::Ptr serviceGroup = KServiceGroup::Ptr::staticCast(p);
+            const KServiceGroup::Ptr serviceGroup = KServiceGroup::Ptr(p);
 
             if (serviceGroup->noDisplay() || serviceGroup->childCount() == 0) {
                 continue;
@@ -265,7 +266,7 @@ QUrl Application::thumbnailUrl()
 {
     QUrl url(package()->controlField(QLatin1String("Thumbnail-Url")));
     if(m_sourceHasScreenshot) {
-        url = KUrl(MuonDataSources::screenshotsSource(), "thumbnail/"+packageName());
+        url = QUrl(MuonDataSources::screenshotsSource().toString() + "/thumbnail/" + packageName());
     }
     return url;
 }
@@ -274,7 +275,7 @@ QUrl Application::screenshotUrl()
 {
     QUrl url(package()->controlField(QLatin1String("Screenshot-Url")));
     if(m_sourceHasScreenshot) {
-        url = KUrl(MuonDataSources::screenshotsSource(), "screenshot/"+packageName());
+        url = QUrl(MuonDataSources::screenshotsSource().toString() + "/screenshot/" + packageName());
     }
     return url;
 }
@@ -497,7 +498,7 @@ void Application::fetchScreenshots()
         return;
     
     QString dest = KStandardDirs::locate("tmp", "screenshots."+m_packageName);
-    const KUrl packageUrl(MuonDataSources::screenshotsSource(), "/json/package/"+m_packageName);
+    const QUrl packageUrl(MuonDataSources::screenshotsSource().toString() + "/json/package/"+m_packageName);
     KIO::StoredTransferJob* job = KIO::storedGet(packageUrl, KIO::NoReload, KIO::HideProgressInfo);
     connect(job, SIGNAL(finished(KJob*)), SLOT(downloadingScreenshotsFinished(KJob*)));
 }
@@ -507,10 +508,10 @@ void Application::downloadingScreenshotsFinished(KJob* j)
     KIO::StoredTransferJob* job = qobject_cast< KIO::StoredTransferJob* >(j);
     bool done = false;
     if(job) {
-        QJson::Parser p;
-        bool ok;
-        QVariantMap values = p.parse(job->data(), &ok).toMap();
-        if(ok) {
+        QJsonParseError error;
+        QJsonDocument doc = QJsonDocument::fromJson(job->data(), &error);
+        if(error.error != QJsonParseError::NoError) {
+            QVariantMap values = doc.toVariant().toMap();
             QVariantList screenshots = values["screenshots"].toList();
             
             QList<QUrl> thumbnailUrls, screenshotUrls;
@@ -543,7 +544,7 @@ QStringList Application::executables() const
 {
     QStringList ret;
     QVector<KService::Ptr> exes = findExecutables();
-    foreach(KService::Ptr exe, exes) {
+    for(KService::Ptr exe : exes) {
         ret += exe->desktopEntryPath();
     }
     return ret;

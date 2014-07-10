@@ -21,7 +21,7 @@
 #include "DownloadDelegate.h"
 
 // Qt includes
-#include <QtGui/QPainter>
+#include <QPainter>
 
 // KDE includes
 #include <KApplication>

@@ -21,7 +21,7 @@
 #include "ResourceListView.h"
 
 // Qt includes
-#include <QtGui/QIcon>
+#include <QIcon>
 #include <QtWidgets/QStackedWidget>
 
 // KDE includes

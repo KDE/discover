@@ -22,7 +22,7 @@
 
 // Qt
 #include <QApplication>
-#include <QtGui/QPainter>
+#include <QPainter>
 
 // KDE
 #include <KColorScheme>

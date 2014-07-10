@@ -25,6 +25,7 @@
 // Qt includes
 #include <QtCore/QDir>
 #include <QtCore/QStringBuilder>
+#include <QAction>
 #include <QDebug>
 
 // KDE includes
@@ -36,6 +37,7 @@
 #include <KStandardAction>
 #include <KStandardDirs>
 #include <KXmlGuiWindow>
+#include <KDialog>
 #include <Solid/Networking>
 
 // LibQApt includes
@@ -101,47 +103,47 @@ void QAptActions::setBackend(QApt::Backend* backend)
 
 void QAptActions::setupActions()
 {
-    KAction* undoAction = KStandardAction::undo(this, SLOT(undo()), actionCollection());
+    QAction* undoAction = KStandardAction::undo(this, SLOT(undo()), actionCollection());
     actionCollection()->addAction("undo", undoAction);
     m_actions.append(undoAction);
 
-    KAction* redoAction = KStandardAction::redo(this, SLOT(redo()), actionCollection());
+    QAction* redoAction = KStandardAction::redo(this, SLOT(redo()), actionCollection());
     actionCollection()->addAction("redo", redoAction);
     m_actions.append(redoAction);
 
-    KAction* revertAction = actionCollection()->addAction("revert");
+    QAction* revertAction = actionCollection()->addAction("revert");
     revertAction->setIcon(QIcon::fromTheme("document-revert"));
     revertAction->setText(i18nc("@action Reverts all potential changes to the cache", "Unmark All"));
     connect(revertAction, SIGNAL(triggered()), this, SLOT(revertChanges()));
     m_actions.append(revertAction);
 
-    KAction* softwarePropertiesAction = actionCollection()->addAction("software_properties");
+    QAction* softwarePropertiesAction = actionCollection()->addAction("software_properties");
     softwarePropertiesAction->setPriority(QAction::LowPriority);
     softwarePropertiesAction->setIcon(QIcon::fromTheme("configure"));
     softwarePropertiesAction->setText(i18nc("@action Opens the software sources configuration dialog", "Configure Software Sources"));
     connect(softwarePropertiesAction, SIGNAL(triggered()), this, SLOT(runSourcesEditor()));
     m_actions.append(softwarePropertiesAction);
     
-    KAction* loadSelectionsAction = actionCollection()->addAction("open_markings");
+    QAction* loadSelectionsAction = actionCollection()->addAction("open_markings");
     loadSelectionsAction->setIcon(QIcon::fromTheme("document-open"));
     loadSelectionsAction->setText(i18nc("@action", "Read Markings..."));
     connect(loadSelectionsAction, SIGNAL(triggered()), this, SLOT(loadSelections()));
     m_actions.append(loadSelectionsAction);
 
-    KAction* saveSelectionsAction = actionCollection()->addAction("save_markings");
+    QAction* saveSelectionsAction = actionCollection()->addAction("save_markings");
     saveSelectionsAction->setIcon(QIcon::fromTheme("document-save-as"));
     saveSelectionsAction->setText(i18nc("@action", "Save Markings As..."));
     connect(saveSelectionsAction, SIGNAL(triggered()), this, SLOT(saveSelections()));
     m_actions.append(saveSelectionsAction);
 
-    KAction* createDownloadListAction = actionCollection()->addAction("save_download_list");
+    QAction* createDownloadListAction = actionCollection()->addAction("save_download_list");
     createDownloadListAction->setPriority(QAction::LowPriority);
     createDownloadListAction->setIcon(QIcon::fromTheme("document-save-as"));
     createDownloadListAction->setText(i18nc("@action", "Save Package Download List..."));
     connect(createDownloadListAction, SIGNAL(triggered()), this, SLOT(createDownloadList()));
     m_actions.append(createDownloadListAction);
 
-    KAction* downloadListAction = actionCollection()->addAction("download_from_list");
+    QAction* downloadListAction = actionCollection()->addAction("download_from_list");
     downloadListAction->setPriority(QAction::LowPriority);
     downloadListAction->setIcon(QIcon::fromTheme("download"));
     downloadListAction->setText(i18nc("@action", "Download Packages From List..."));
@@ -152,27 +154,27 @@ void QAptActions::setupActions()
     connect(this, SIGNAL(shouldConnect(bool)), downloadListAction, SLOT(setEnabled(bool)));
     m_actions.append(downloadListAction);
 
-    KAction* loadArchivesAction = actionCollection()->addAction("load_archives");
+    QAction* loadArchivesAction = actionCollection()->addAction("load_archives");
     loadArchivesAction->setPriority(QAction::LowPriority);
     loadArchivesAction->setIcon(QIcon::fromTheme("document-open"));
     loadArchivesAction->setText(i18nc("@action", "Add Downloaded Packages"));
     connect(loadArchivesAction, SIGNAL(triggered()), this, SLOT(loadArchives()));
     m_actions.append(loadArchivesAction);
     
-    KAction* saveInstalledAction = actionCollection()->addAction("save_package_list");
+    QAction* saveInstalledAction = actionCollection()->addAction("save_package_list");
     saveInstalledAction->setPriority(QAction::LowPriority);
     saveInstalledAction->setIcon(QIcon::fromTheme("document-save-as"));
     saveInstalledAction->setText(i18nc("@action", "Save Installed Packages List..."));
     connect(saveInstalledAction, SIGNAL(triggered()), this, SLOT(saveInstalledPackagesList()));
     
-    KAction* historyAction = actionCollection()->addAction("history");
+    QAction* historyAction = actionCollection()->addAction("history");
     historyAction->setPriority(QAction::LowPriority);
     historyAction->setIcon(QIcon::fromTheme("view-history"));
     historyAction->setText(i18nc("@action::inmenu", "History..."));
     historyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_H));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showHistoryDialog()));
 
-    KAction *distUpgradeAction = actionCollection()->addAction("dist-upgrade");
+    QAction *distUpgradeAction = actionCollection()->addAction("dist-upgrade");
     distUpgradeAction->setIcon(QIcon::fromTheme("system-software-update"));
     distUpgradeAction->setText(i18nc("@action", "Upgrade"));
     distUpgradeAction->setPriority(QAction::HighPriority);
@@ -188,7 +190,7 @@ void QAptActions::setActionsEnabledInternal(bool enabled)
 {
     m_actionsDisabled = !enabled;
 
-    for (KAction *action : m_actions) {
+    for (QAction *action : m_actions) {
         action->setEnabled(enabled);
     }
 
@@ -344,7 +346,7 @@ void QAptActions::loadArchives()
 {
     QString dirName;
 
-    dirName = KFileDialog::getExistingDirectory(KUrl(), m_mainWindow,
+    dirName = KFileDialog::getExistingDirectory(QUrl(), m_mainWindow,
                                                 i18nc("@title:window",
                                                       "Choose a Directory"));
 

@@ -22,7 +22,7 @@
 
 #include <QtCore/QPointer>
 #include <QtWidgets/QWidget>
-#include <QtGui/QPixmap>
+#include <QPixmap>
 
 class QMouseEvent;
 class QScrollArea;

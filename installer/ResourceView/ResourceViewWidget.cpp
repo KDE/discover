@@ -22,7 +22,7 @@
 
 // Qt includes
 #include <QtCore/QStringBuilder>
-#include <QtGui/QCheckBox>
+#include <QCheckBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QTreeView>
 #include <QtWidgets/QVBoxLayout>

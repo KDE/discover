@@ -24,9 +24,9 @@
 
 #include <QtCore/QStringBuilder>
 #include <QtWidgets/QLabel>
-#include <QtGui/QListView>
+#include <QListView>
 #include <QtWidgets/QPushButton>
-#include <QtGui/QStandardItemModel>
+#include <QStandardItemModel>
 #include <QtWidgets/QVBoxLayout>
 
 #include <KLocale>

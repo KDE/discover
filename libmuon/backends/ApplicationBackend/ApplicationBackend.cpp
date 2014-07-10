@@ -28,6 +28,8 @@
 #include <QtCore/QUuid>
 #include <QTimer>
 #include <QSignalMapper>
+#include <QJsonDocument>
+#include <QAction>
 
 // KDE includes
 #include <KLocale>
@@ -337,7 +339,7 @@ void ApplicationBackend::markLangpacks(Transaction *transaction)
     if (prog.isEmpty())
         return;
 
-    QString language = KGlobal::locale()->language();
+    QString language = QLocale().name();
     QString pkgName = transaction->resource()->packageName();
 
     QStringList args;
@@ -532,7 +534,7 @@ void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
         connect(this, SIGNAL(aptBackendInitialized(QApt::Backend*)), apt, SLOT(setBackend(QApt::Backend*)));
     if (apt->reloadWhenSourcesEditorFinished())
         connect(apt, SIGNAL(sourcesEditorClosed(bool)), SLOT(reload()));
-    KAction* updateAction = w->actionCollection()->addAction("update");
+    QAction* updateAction = w->actionCollection()->addAction("update");
     updateAction->setIcon(QIcon::fromTheme("system-software-update"));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
@@ -602,12 +604,12 @@ void ApplicationBackend::initAvailablePackages(KJob* j)
     KIO::StoredTransferJob* job = qobject_cast<KIO::StoredTransferJob*>(j);
     Q_ASSERT(job);
 
-    bool ok=false;
-//     QJson::Parser p; //TODO port to QJsonDocument
-    QVariantList data = p.parse(job->data(), &ok).toMap().value("packages").toList();
-    if(!ok)
-        kWarning() << "errors!" << p.errorString();
+    QJsonParseError error;
+    QJsonDocument doc = QJsonDocument::fromJson(job->data(), &error);
+    if(error.error != QJsonParseError::NoError)
+        kWarning() << "errors!" << error.errorString();
     else {
+        QVariantList data = doc.toVariant().toMap().value("packages").toList();
         Q_ASSERT(!m_appList.isEmpty());
         QSet<QString> packages;
         foreach(const QVariant& v, data) {

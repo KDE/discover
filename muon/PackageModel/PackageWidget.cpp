@@ -28,7 +28,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QLabel>
-#include <QtGui/QSplitter>
+#include <QSplitter>
 
 // KDE includes
 #include <KComboBox>

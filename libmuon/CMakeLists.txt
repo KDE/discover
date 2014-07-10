@@ -50,8 +50,10 @@ LINK_PRIVATE
     KF5::XmlGui
     KF5::ItemViews
     KF5::DBusAddons
-    ${PHONON_LIBRARY}
+    Phonon::phonon4qt5
 )
+
+target_include_directories(muonprivate PRIVATE ${PHONON_INCLUDES})
 
 install(TARGETS muonprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES moo.ogg DESTINATION ${DATA_INSTALL_DIR}/libmuon)

@@ -31,6 +31,7 @@ class MuonMainWindow;
 class KDialog;
 class KXmlGuiWindow;
 class KActionCollection;
+class QAction;
 
 namespace QApt {
     class Backend;
@@ -96,7 +97,7 @@ private:
     bool m_reloadWhenEditorFinished;
     
     KDialog* m_historyDialog;
-    QList<KAction *> m_actions;
+    QList<QAction *> m_actions;
     bool m_distUpgradeAvailable;
 
 };

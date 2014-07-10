@@ -21,7 +21,7 @@
 #include "ReviewWidget.h"
 
 #include <QtCore/QStringBuilder>
-#include <QtGui/QHBoxLayout>
+#include <QHBoxLayout>
 #include <QtWidgets/QLabel>
 
 #include <KGlobal>

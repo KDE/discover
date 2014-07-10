@@ -29,10 +29,10 @@
 #include <QtDeclarative/QDeclarativeContext>
 #include <QtDeclarative/QDeclarativeComponent>
 #include <QtDeclarative/QDeclarativeError>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QGraphicsDropShadowEffect>
-#include <QtGui/QGraphicsBlurEffect>
-#include <QtGui/QGraphicsObject>
+#include <QHBoxLayout>
+#include <QGraphicsDropShadowEffect>
+#include <QGraphicsBlurEffect>
+#include <QGraphicsObject>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>

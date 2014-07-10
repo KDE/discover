@@ -21,9 +21,9 @@
 #include "VersionTab.h"
 
 // Qt includes
-#include <QtGui/QHBoxLayout>
+#include <QHBoxLayout>
 #include <QtWidgets/QLabel>
-#include <QtGui/QListView>
+#include <QListView>
 #include <QtWidgets/QPushButton>
 #include <QStandardItemModel>
 

@@ -8,7 +8,7 @@ set(muonapt_SRCS
 
 add_library(muonapt ${muonapt_SRCS})
 target_link_libraries(muonapt Qt5::Core
-     ${KDE4_KDEUI_LIBS} KF5::Solid KF5::KIOWidgets
+     KF5::Solid KF5::KIOWidgets KF5::KDELibs4Support
      ${QAPT_LIBRARY} muonprivate
 )
 

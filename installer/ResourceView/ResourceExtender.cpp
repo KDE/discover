@@ -20,7 +20,7 @@
 
 #include "ResourceExtender.h"
 
-#include <QtGui/QHBoxLayout>
+#include <QHBoxLayout>
 #include <QtWidgets/QPushButton>
 
 #include <KDebug>

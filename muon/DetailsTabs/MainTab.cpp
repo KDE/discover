@@ -21,7 +21,7 @@
 #include "MainTab.h"
 
 // Qt includes
-#include <QtGui/QHBoxLayout>
+#include <QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QToolButton>

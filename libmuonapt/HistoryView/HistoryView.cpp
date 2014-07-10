@@ -22,7 +22,7 @@
 
 #include <QtCore/QTimer>
 #include <QtWidgets/QLabel>
-#include <QtGui/QListView>
+#include <QListView>
 #include <QtWidgets/QTreeView>
 #include <QtWidgets/QVBoxLayout>
 #include <QStandardItemModel>

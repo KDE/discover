@@ -24,9 +24,9 @@
 #include <QApplication>
 #include <QtCore/QStringBuilder>
 #include <QtCore/QTimer>
-#include <QtGui/QSplitter>
+#include <QSplitter>
 #include <QtWidgets/QStackedWidget>
-#include <QtGui/QToolBox>
+#include <QToolBox>
 #include <QtWidgets/QVBoxLayout>
 
 // KDE includes

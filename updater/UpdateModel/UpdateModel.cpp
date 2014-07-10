@@ -21,7 +21,7 @@
 #include "UpdateModel.h"
 
 // Qt includes
-#include <QtGui/QFont>
+#include <QFont>
 #include <QApplication>
 
 // KDE includes

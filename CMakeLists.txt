@@ -1,5 +1,5 @@
 project(muon)
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.12)
 
 find_package(ECM REQUIRED NO_MODULE)
 
@@ -12,15 +12,15 @@ include(KDECompilerSettings)
 include(ECMInstallIcons)
 include(ECMMarkAsTest)
 
-find_package(KF5 CONFIG REQUIRED IdleTime ItemModels WidgetsAddons WindowSystem Codecs Archive CoreAddons Solid ThreadWeaver GlobalAccel
+find_package(KF5 REQUIRED IdleTime ItemModels WidgetsAddons WindowSystem Codecs Archive CoreAddons Solid ThreadWeaver GlobalAccel
                                             Config Auth JS Wallet DBusAddons I18n GuiAddons ConfigWidgets
                                             Service ItemViews Notifications IconThemes Completion JobWidgets Sonnet TextWidgets XmlGui Crash
-                                            Bookmarks Declarative UnitConversion Parts Kross KIO DNSSD KDELibs4Support)
+                                            Bookmarks Declarative UnitConversion Parts KIO DNSSD KDELibs4Support)
 
 find_package(Phonon4Qt5 REQUIRED NO_MODULE)
 
-# find_package(QApt QUIET)
-# find_package(DebconfKDE QUIET)
+find_package(QApt QUIET)
+find_package(DebconfKDE QUIET)
 # find_package(QtOAuth REQUIRED)
 # find_package(QCA2 REQUIRED) #required by QtOAuth
 # find_package(LibAttica QUIET)
@@ -28,11 +28,6 @@ find_package(Phonon4Qt5 REQUIRED NO_MODULE)
 
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
-
-include_directories(${QAPT_INCLUDE_DIR}
-                    ${CMAKE_CURRENT_BINARY_DIR} ${QCA2_INCLUDE_DIR}
-                    ${PHONON_INCLUDES}
-                    ${CMAKE_SOURCE_DIR}/libmuon ${CMAKE_BINARY_DIR}/libmuon)
 
 set(MUON_VERSION "2.65.0")
 configure_file(MuonVersion.h.in MuonVersion.h)

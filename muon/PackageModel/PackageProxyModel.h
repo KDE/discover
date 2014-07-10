@@ -21,7 +21,7 @@
 #ifndef PACKAGEPROXYMODEL_H
 #define PACKAGEPROXYMODEL_H
 
-#include <QtGui/QSortFilterProxyModel>
+#include <QSortFilterProxyModel>
 #include <QtCore/QString>
 
 #include <LibQApt/Package>

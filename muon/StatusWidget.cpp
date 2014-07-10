@@ -23,7 +23,7 @@
 // Qt includes
 #include <QtCore/QStringBuilder>
 #include <QtCore/QTimer>
-#include <QtGui/QHBoxLayout>
+#include <QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 

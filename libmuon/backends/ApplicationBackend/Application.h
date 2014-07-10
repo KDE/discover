@@ -25,7 +25,6 @@
 #include <QtCore/QHash>
 #include <QtCore/QStringList>
 
-#include <KUrl>
 #include <KService>
 
 #include <LibQApt/Package>
@@ -34,6 +33,7 @@
 #include "resources/AbstractResource.h"
 
 class KJob;
+class KConfig;
 namespace QApt {
     class Backend;
 }

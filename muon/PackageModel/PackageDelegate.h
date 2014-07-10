@@ -21,7 +21,7 @@
 #ifndef PACKAGEDELEGATE_H
 #define PACKAGEDELEGATE_H
 
-#include <QtGui/QAbstractItemDelegate>
+#include <QAbstractItemDelegate>
 
 #include <QIcon>
 

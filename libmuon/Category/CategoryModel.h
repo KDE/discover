@@ -21,7 +21,7 @@
 #ifndef CATEGORYMODEL_H
 #define CATEGORYMODEL_H
 
-#include <QtGui/QStandardItemModel>
+#include <QStandardItemModel>
 
 #include "libmuonprivate_export.h"
 

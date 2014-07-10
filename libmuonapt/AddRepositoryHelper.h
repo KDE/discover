@@ -1,7 +1,7 @@
 #ifndef ADDREPOSITORYHELPER_H
 #define ADDREPOSITORYHELPER_H
 
-#include <kauth.h>
+#include <kauthactionreply.h>
 
 using namespace KAuth;
 

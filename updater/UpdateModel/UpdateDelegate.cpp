@@ -22,8 +22,8 @@
 
 // Qt
 #include <QApplication>
-#include <QtGui/QMouseEvent>
-#include <QtGui/QPainter>
+#include <QMouseEvent>
+#include <QPainter>
 
 // KDE includes
 #include <KIconLoader>

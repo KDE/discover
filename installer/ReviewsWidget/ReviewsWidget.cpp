@@ -23,7 +23,7 @@
 #include <QtCore/QStringBuilder>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
-#include <QtGui/QHBoxLayout>
+#include <QHBoxLayout>
 #include <QtWidgets/QToolButton>
 
 #include <KDialog>
