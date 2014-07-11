@@ -32,6 +32,7 @@ class Review;
 class MUONPRIVATE_EXPORT AbstractReviewsBackend : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(bool isReviewable READ isReviewable CONSTANT)
     Q_PROPERTY(bool hasCredentials READ hasCredentials NOTIFY loginStateChanged)
     Q_PROPERTY(QString name READ userName NOTIFY loginStateChanged)
     public:
@@ -39,9 +40,9 @@ class MUONPRIVATE_EXPORT AbstractReviewsBackend : public QObject
 
         virtual QString userName() const = 0;
         virtual bool hasCredentials() const = 0;
-        
+
         Q_SCRIPTABLE virtual Rating *ratingForApplication(AbstractResource *app) const = 0;
-        
+        Q_INVOKABLE virtual QString errorMessage() const;
     public slots:
         virtual void login() = 0;
         virtual void registerAndLogin() = 0;
@@ -53,8 +54,8 @@ class MUONPRIVATE_EXPORT AbstractReviewsBackend : public QObject
         virtual void flagReview(Review* r, const QString& reason, const QString &text) = 0;
         virtual bool isFetching() const = 0;
         virtual void fetchReviews(AbstractResource* app, int page=1) = 0;
+        virtual bool isReviewable() const;
 
-        
     Q_SIGNALS:
         void reviewsReady(AbstractResource *app, QList<Review *>);
         void ratingsReady();

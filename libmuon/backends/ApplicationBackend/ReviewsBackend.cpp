@@ -414,3 +414,18 @@ void ReviewsBackend::logout()
     Q_ASSERT(m_loginBackend->hasCredentials());
     m_loginBackend->logout();
 }
+
+QString ReviewsBackend::errorMessage() const
+{
+    return i18n("No reviews available for Debian.");
+}
+
+bool ReviewsBackend::isReviewable() const
+{
+    QString m_distId = getCodename(QLatin1String("ID"));
+    if(m_distId == QLatin1String("ubuntu")){
+        return true;
+    }
+    return false;
+}
+

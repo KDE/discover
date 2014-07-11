@@ -61,6 +61,8 @@ public:
 
     QString userName() const;
     bool hasCredentials() const;
+    QString errorMessage() const;
+    bool isReviewable() const;
 
 private:
     QApt::Backend *m_aptBackend;

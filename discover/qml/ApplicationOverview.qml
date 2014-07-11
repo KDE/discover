@@ -170,7 +170,7 @@ Item {
                     onClicked: Navigation.openReviews(application, reviewsModel)
                 }
                 Button {
-                    visible: appInfo.reviewsBackend != null && application.isInstalled
+                    visible: appInfo.reviewsBackend != null && application.isInstalled && appInfo.reviewsBackend.isReviewable
                     text: i18n("Review")
                     onClicked: reviewDialog.open()
                 }
