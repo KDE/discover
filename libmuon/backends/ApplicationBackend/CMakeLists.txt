@@ -37,8 +37,8 @@ set(appsbackend_SRCS
 qt5_add_dbus_interface(appsbackend_SRCS ubuntu_sso_dbus_interface.xml ubuntu_sso -i "LoginMetaTypes.h")
 
 add_library(muon-appsbackend MODULE ${appsbackend_SRCS})
-target_link_libraries(muon-appsbackend Qt5::Core Qt5::Widgets Qt5::DBus
-     ${KDE4_KDEUI_LIBS} KF5::KIOWidgets ${DEBCONF_KDE_LIB}
+target_link_libraries(muon-appsbackend Qt5::Widgets Qt5::DBus Qt5::Concurrent
+     KF5::KIOWidgets DebconfKDE::Main
      ${QTOAUTH_LIBRARY} ${QAPT_LIBRARY} muonprivate muonapt
 )
 install(TARGETS muon-appsbackend DESTINATION ${PLUGIN_INSTALL_DIR})
