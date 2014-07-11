@@ -35,12 +35,12 @@
 #include <KLocale>
 #include <KService>
 #include <KServiceGroup>
-#include <KDebug>
 #include <KToolInvocation>
 #include <KIO/Job>
 #include <KIO/NetAccess>
 #include <KStandardDirs>
 #include <KConfigGroup>
+#include <KFormat>
 
 // QApt includes
 #include <LibQApt/Backend>
@@ -418,13 +418,14 @@ QString Application::installedVersion() const
 
 QString Application::sizeDescription()
 {
+    KFormat f;
     if (!isInstalled()) {
         return i18nc("@info app size", "%1 to download, %2 on disk",
-                              KGlobal::locale()->formatByteSize(package()->downloadSize()),
-                              KGlobal::locale()->formatByteSize(package()->availableInstalledSize()));
+                              f.formatByteSize(package()->downloadSize()),
+                              f.formatByteSize(package()->availableInstalledSize()));
     } else {
         return i18nc("@info app size", "%1 on disk",
-                              KGlobal::locale()->formatByteSize(package()->currentInstalledSize()));
+                              f.formatByteSize(package()->currentInstalledSize()));
     }
 }
 
@@ -465,7 +466,7 @@ void Application::invokeApplication() const
 {
     QVector< KService::Ptr > execs = findExecutables();
     Q_ASSERT(!execs.isEmpty());
-    KToolInvocation::startServiceByDesktopPath(execs.first()->desktopEntryPath());
+    KToolInvocation::startServiceByDesktopName(execs.first()->desktopEntryName());
 }
 
 bool Application::canExecute() const
@@ -545,7 +546,7 @@ QStringList Application::executables() const
     QStringList ret;
     QVector<KService::Ptr> exes = findExecutables();
     for(KService::Ptr exe : exes) {
-        ret += exe->desktopEntryPath();
+        ret += exe->exec();
     }
     return ret;
 }
@@ -605,7 +606,8 @@ QString Application::buildDescription(const QByteArray& data, const QString& sou
         description += i18nc("@info:label Refers to a software version, Ex: Version 1.2.1:",
                              "Version %1:", entry.version());
 
-        QString issueDate = KGlobal::locale()->formatDateTime(entry.issueDateTime(), KLocale::ShortDate);
+        KFormat f;
+        QString issueDate = entry.issueDateTime().toString(Qt::DefaultLocaleShortDate);
         description += QLatin1String("<p>") +
                        i18nc("@info:label", "This update was issued on %1", issueDate) +
                        QLatin1String("</p>");

@@ -22,6 +22,7 @@
 
 #include <QtCore/QStringBuilder>
 #include <QDebug>
+#include <QJsonDocument>
 
 #include <KGlobal>
 #include <KIO/Job>
@@ -138,14 +139,14 @@ void ReviewsBackend::loadRatingsFromFile()
     QIODevice* dev = KFilterDev::deviceForFile(ratingsCache, "application/x-gzip");
     if(m_distId.toLower() == QLatin1String("ubuntu")){
 
-	QJson::Parser parser; //TODO: port to QJsonDocument
-	bool ok = false;
-	QVariant ratings = parser.parse(dev, &ok);
+    QJsonParseError error;
+    QJsonDocument doc = QJsonDocument::fromJson(dev->readAll(), &error);
 
-	if (!ok) {
+    if (error.error != QJsonParseError::NoError) {
 	    qDebug() << "error while parsing ratings: " << ratingsCache;
 	    return;
 	}
+	QVariant ratings = doc.toVariant();
 
 	qDeleteAll(m_ratings);
 	m_ratings.clear();
@@ -260,17 +261,17 @@ void ReviewsBackend::reviewsFetched(KJob *j)
 {
     KIO::StoredTransferJob* job = qobject_cast<KIO::StoredTransferJob*>(j);
     Application *app = m_jobHash.take(job);
-    if (job->error()) {
+    if (job->error() || !app) {
         return;
     }
 
-    QJson::Parser parser;
-    bool ok = false;
-    QVariant reviews = parser.parse(job->data(), &ok);
+    QJsonParseError error;
+    QJsonDocument doc = QJsonDocument::fromJson(job->data(), &error);
 
-    if (!ok || !app) {
+    if (error.error != QJsonParseError::NoError) {
         return;
     }
+    QVariant reviews = doc.toVariant();
 
     QList<Review *> reviewsList;
     foreach (const QVariant &data, reviews.toList()) {
@@ -362,7 +363,7 @@ void ReviewsBackend::postInformation(const QString& path, const QVariantMap& dat
     KUrl url(m_serverBase, path);
     url.setScheme("https");
     
-    KIO::StoredTransferJob* job = KIO::storedHttpPost(QJson::Serializer().serialize(data), url, KIO::Overwrite | KIO::HideProgressInfo); //TODO port to QJsonDocument
+    KIO::StoredTransferJob* job = KIO::storedHttpPost(QJsonDocument::fromVariant(data).toJson(), url, KIO::Overwrite | KIO::HideProgressInfo); //TODO port to QJsonDocument
     job->addMetaData("content-type", "Content-Type: application/json" );
     job->addMetaData("customHTTPHeader", "Authorization: " + authorization(m_oauthInterface, url, m_loginBackend));
     connect(job, SIGNAL(result(KJob*)), this, SLOT(informationPosted(KJob*)));

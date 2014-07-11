@@ -77,7 +77,8 @@ ApplicationBackend::ApplicationBackend(QObject* parent, const QVariantList& )
     , m_aptify(nullptr)
     , m_aptBackendInitialized(false)
 {
-    KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
+//   TODO: Port
+//     KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
 
     m_watcher = new QFutureWatcher<QVector<Application*> >(this);
     connect(m_watcher, SIGNAL(finished()), this, SLOT(setApplications()));
@@ -701,3 +702,4 @@ void ApplicationBackend::aptListBugs(QStringList packageName)
     proc->start();
 }
 
+#include "ApplicationBackend.moc"

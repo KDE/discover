@@ -67,7 +67,7 @@ class Source : public QObject
         QString uri() { return m_uri; }
         void setUri(const QString& uri) { m_uri = uri; }
         void addEntry(Entry* entry) { m_entries.append(entry); }
-        QDeclarativeListProperty<Entry> entries();
+        QQmlListProperty<Entry> entries();
         QString name() const;
         bool enabled() const;
     private:

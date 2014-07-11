@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <unistd.h>
 #include <stdlib.h>
+#include <kauthhelpersupport.h>
 
 ActionReply AddRepositoryHelper::modify(QVariantMap args)
 {

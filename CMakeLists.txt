@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8.12)
 
 find_package(ECM REQUIRED NO_MODULE)
 
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} "${CMAKE_SOURCE_DIR}/cmake")
 
 find_package(Qt5 5.2.0 REQUIRED CONFIG COMPONENTS Widgets Test Network Xml Concurrent DBus Svg Qml QuickWidgets)
 include(KDEInstallDirs)
@@ -21,8 +21,8 @@ find_package(Phonon4Qt5 REQUIRED NO_MODULE)
 
 find_package(QApt QUIET)
 find_package(DebconfKDE QUIET)
-# find_package(QtOAuth REQUIRED)
-# find_package(QCA2 REQUIRED) #required by QtOAuth
+find_package(QtOAuth REQUIRED)
+find_package(QCA2 REQUIRED) #required by QtOAuth
 # find_package(LibAttica QUIET)
 # find_package(BODEGA QUIET)
 
