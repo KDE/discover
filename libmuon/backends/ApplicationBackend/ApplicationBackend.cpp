@@ -336,8 +336,12 @@ void ApplicationBackend::markTransaction(Transaction *transaction)
 void ApplicationBackend::markLangpacks(Transaction *transaction)
 {
     QString prog = KStandardDirs::findExe("check-language-support");
-    if (prog.isEmpty())
-        return;
+    if (prog.isEmpty()){
+        prog =  KGlobal::dirs()->locate("data","muon/scripts/check-language-support");
+        if ( prog.isEmpty()){
+            return;
+        }
+    }
 
     QString language = KGlobal::locale()->language();
     QString pkgName = transaction->resource()->packageName();
