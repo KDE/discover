@@ -277,6 +277,11 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error)
     if (m_transQueue.isEmpty()) // Shouldn't happen
         return;
 
+    if( error == QApt::AuthError){
+        m_currentTransaction->cancel();
+        m_currentTransaction->deleteLater();
+        m_currentTransaction = nullptr;
+    }
     QAptActions::self()->displayTransactionError(error, m_transQueue.value(m_currentTransaction));
 }
 
