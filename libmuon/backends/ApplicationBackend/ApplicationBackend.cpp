@@ -279,6 +279,7 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error)
 
     if( error == QApt::AuthError){
         m_currentTransaction->cancel();
+        m_transQueue.remove(m_currentTransaction);
         m_currentTransaction->deleteLater();
         m_currentTransaction = nullptr;
     }
