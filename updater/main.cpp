@@ -29,7 +29,7 @@
 #include <kdbusservice.h>
 
 
-#include "MuonVersion.h"
+#include "../MuonVersion.h"
 #include <stdio.h>
 
 static const char description[] =

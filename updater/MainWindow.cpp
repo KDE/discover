@@ -38,9 +38,10 @@
 #include <KProcess>
 #include <KProtocolManager>
 #include <KStandardDirs>
-#include <Solid/Power>
-#include <Solid/AcPluggedJob>
 #include <KToolBar>
+#warning TODO, waiting for this new API to finally be accepted
+// #include <Solid/Power>
+// #include <Solid/AcPluggedJob>
 
 // Own includes
 #include <resources/AbstractResourcesBackend.h>
@@ -105,7 +106,8 @@ void MainWindow::initGUI()
     menuBar()->setVisible(false);
     toolBar()->setVisible(false);
 
-    connect(Solid::Power::self(), SIGNAL(acPluggedChanged(bool)), SLOT(updatePlugState(bool)));
+#warning TODO, waiting for this new API to finally be accepted
+//     connect(Solid::Power::self(), SIGNAL(acPluggedChanged(bool)), SLOT(updatePlugState(bool)));
 }
 
 void MainWindow::setupActions()
@@ -224,8 +226,9 @@ void MainWindow::closeSettingsDialog()
 
 void MainWindow::checkPlugState()
 {
-    Solid::AcPluggedJob* job = Solid::Power::isAcPlugged();
-    connect(job, &Solid::AcPluggedJob::result, this, [=]() { updatePlugState(job->isPlugged()); });
+#warning TODO, waiting for this new API to finally be accepted
+//     Solid::AcPluggedJob* job = Solid::Power::isAcPlugged();
+//     connect(job, &Solid::AcPluggedJob::result, this, [=]() { updatePlugState(job->isPlugged()); });
 }
 
 void MainWindow::updatePlugState(bool plugged)
