@@ -61,7 +61,7 @@ class Source : public QObject
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(QString uri READ uri CONSTANT)
     Q_PROPERTY(bool enabled READ enabled CONSTANT)
-    Q_PROPERTY(QQuickListProperty<Entry> entries READ entries CONSTANT)
+    Q_PROPERTY(QQmlListProperty<Entry> entries READ entries CONSTANT)
     public:
         Source(QObject* parent) : QObject(parent) {}
         QString uri() { return m_uri; }

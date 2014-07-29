@@ -29,7 +29,7 @@
 
 // KDE includes
 #include <KGlobal>
-#include <KLocale>
+#include <KFormat>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -125,12 +125,12 @@ void StatusWidget::updateStatus()
         if (installSize < 0) {
             installSize = -installSize;
             m_downloadLabel->setText(i18nc("@label showing download and install size", "%1 to download, %2 of space to be freed",
-                                           KGlobal::locale()->formatByteSize(m_backend->downloadSize()),
-                                           KGlobal::locale()->formatByteSize(installSize)));
+                                           KFormat().formatByteSize(m_backend->downloadSize()),
+                                           KFormat().formatByteSize(installSize)));
         } else {
             m_downloadLabel->setText(i18nc("@label showing download and install size", "%1 to download, %2 of space to be used",
-                                           KGlobal::locale()->formatByteSize(m_backend->downloadSize()),
-                                           KGlobal::locale()->formatByteSize(installSize)));
+                                           KFormat().formatByteSize(m_backend->downloadSize()),
+                                           KFormat().formatByteSize(installSize)));
         }
 
         m_downloadLabel->show();

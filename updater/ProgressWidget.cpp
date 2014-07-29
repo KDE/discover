@@ -31,6 +31,7 @@
 #include <QtWidgets/QVBoxLayout>
 
 // KDE includes
+#include <KFormat>
 #include <KMessageBox>
 #include <klocalizedstring.h>
 
@@ -114,7 +115,7 @@ void ProgressWidget::downloadSpeedChanged()
     quint64 speed = m_updater->downloadSpeed();
     if(speed>0) {
         QString downloadSpeed = i18nc("@label Download rate", "Download rate: %1/s",
-                                /*KGlobal::locale()->formatByteSize*/QString::number(speed)); //FIXME need an alternative
+                                KFormat().formatByteSize(speed));
         m_ui->downloadSpeed->setText(downloadSpeed);
         m_ui->downloadSpeed->show();
     } else {

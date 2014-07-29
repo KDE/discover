@@ -20,7 +20,8 @@
 
 #include "ManagerSettingsDialog.h"
 
-#include <KLocale>
+#include <QPushButton>
+#include <KLocalizedString>
 
 #include <LibQApt/Config>
 
@@ -37,10 +38,9 @@ ManagerSettingsDialog::ManagerSettingsDialog(QWidget* parent, QApt::Config *aptC
     setMinimumSize(QSize(512, minSize.height()));
 
     setFaceType(List);
-    setCaption(i18nc("@title:window", "Muon Preferences"));
-    setButtons(Ok | Apply | Cancel | Default);
-    enableButtonApply(false);
-    setDefaultButton(Ok);
+    setWindowTitle(i18nc("@title:window", "Muon Preferences"));
+    setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Apply | QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults);
+    button(QDialogButtonBox::Apply)->setEnabled(false);
 
     // General settings
     GeneralSettingsPage *generalPage = new GeneralSettingsPage(this, m_aptConfig);
@@ -65,28 +65,25 @@ ManagerSettingsDialog::~ManagerSettingsDialog()
 {
 }
 
-void ManagerSettingsDialog::slotButtonClicked(int button)
+void ManagerSettingsDialog::slotButtonClicked(QAbstractButton* b)
 {
-    if ((button == Ok) || (button == Apply)) {
+    if ((b == button(QDialogButtonBox::Ok)) || (b == button(QDialogButtonBox::Apply))) {
         applySettings();
-    } else if (button == Default) {
+    } else if (b == button(QDialogButtonBox::RestoreDefaults)) {
         restoreDefaults();
     }
-
-    KPageDialog::slotButtonClicked(button);
 }
 
 void ManagerSettingsDialog::changed()
 {
-    setButtonIcon(Apply, QIcon::fromTheme("dialog-ok-apply"));
-
-    enableButtonApply(true);
+    button(QDialogButtonBox::Apply)->setIcon(QIcon::fromTheme("dialog-ok-apply"));
+    button(QDialogButtonBox::Apply)->setEnabled(true);
 }
 
 void ManagerSettingsDialog::authChanged()
 {
-    setButtonIcon(Apply, QIcon::fromTheme("dialog-password"));
-    enableButtonApply(true);
+    button(QDialogButtonBox::Apply)->setIcon(QIcon::fromTheme("dialog-password"));
+    button(QDialogButtonBox::Apply)->setEnabled(true);
 }
 
 void ManagerSettingsDialog::applySettings()
@@ -96,8 +93,8 @@ void ManagerSettingsDialog::applySettings()
     }
 
     emit settingsChanged();
-    setButtonIcon(Apply, QIcon::fromTheme("dialog-ok-apply"));
-    enableButtonApply(false);
+    button(QDialogButtonBox::Apply)->setIcon(QIcon::fromTheme("dialog-ok-apply"));
+    button(QDialogButtonBox::Apply)->setEnabled(false);
 }
 
 void ManagerSettingsDialog::restoreDefaults()
@@ -106,7 +103,7 @@ void ManagerSettingsDialog::restoreDefaults()
         page->restoreDefaults();
     }
 
-    setButtonIcon(Apply, QIcon::fromTheme("dialog-ok-apply"));
+    button(QDialogButtonBox::Apply)->setIcon(QIcon::fromTheme("dialog-ok-apply"));
 }
 
 #include "ManagerSettingsDialog.moc"

@@ -50,7 +50,7 @@ private:
     QToolButton *m_removeButton;
     QPushButton *m_upgradeButton;
     QPushButton *m_reinstallButton;
-    KAction *m_purgeAction;
+    QAction *m_purgeAction;
     KMenu *m_purgeMenu;
     QPushButton *m_purgeButton;
     QPushButton *m_cancelButton;

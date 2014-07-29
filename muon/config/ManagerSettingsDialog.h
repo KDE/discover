@@ -38,10 +38,8 @@ public:
     ManagerSettingsDialog(QWidget *parent, QApt::Config *aptConfig);
     virtual ~ManagerSettingsDialog();
 
-protected slots:
-    virtual void slotButtonClicked(int button);
-
 private Q_SLOTS:
+    void slotButtonClicked(QAbstractButton* button);
     void changed();
     void authChanged();
 

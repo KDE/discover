@@ -40,7 +40,7 @@
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
 #include <KVBox>
-#include <KDebug>
+#include <KIconLoader>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -151,37 +151,37 @@ PackageWidget::PackageWidget(QWidget *parent)
 
 void PackageWidget::setupActions()
 {
-    m_installAction = new KAction(this);
+    m_installAction = new QAction(this);
     m_installAction->setIcon(QIcon::fromTheme("download"));
     m_installAction->setText(i18nc("@action:inmenu", "Mark for Installation"));
     connect(m_installAction, SIGNAL(triggered()), this, SLOT(setPackagesInstall()));
 
-    m_removeAction = new KAction(this);
+    m_removeAction = new QAction(this);
     m_removeAction->setIcon(QIcon::fromTheme("edit-delete"));
     m_removeAction->setText(i18nc("@action:button", "Mark for Removal"));
     connect(m_removeAction, SIGNAL(triggered()), this, SLOT(setPackagesRemove()));
 
-    m_upgradeAction = new KAction(this);
+    m_upgradeAction = new QAction(this);
     m_upgradeAction->setIcon(QIcon::fromTheme("system-software-update"));
     m_upgradeAction->setText(i18nc("@action:button", "Mark for Upgrade"));
     connect(m_upgradeAction, SIGNAL(triggered()), this, SLOT(setPackagesUpgrade()));
 
-    m_reinstallAction = new KAction(this);
+    m_reinstallAction = new QAction(this);
     m_reinstallAction->setIcon(QIcon::fromTheme("view-refresh"));
     m_reinstallAction->setText(i18nc("@action:button", "Mark for Reinstallation"));
     connect(m_reinstallAction, SIGNAL(triggered()), this, SLOT(setPackagesReInstall()));
 
-    m_purgeAction = new KAction(this);
+    m_purgeAction = new QAction(this);
     m_purgeAction->setIcon(QIcon::fromTheme("edit-delete-shred"));
     m_purgeAction->setText(i18nc("@action:button", "Mark for Purge"));
     connect(m_purgeAction, SIGNAL(triggered()), this, SLOT(setPackagesPurge()));
 
-    m_keepAction = new KAction(this);
+    m_keepAction = new QAction(this);
     m_keepAction->setIcon(QIcon::fromTheme("dialog-cancel"));
     m_keepAction->setText(i18nc("@action:button", "Unmark"));
     connect(m_keepAction, SIGNAL(triggered()), this, SLOT(setPackagesKeep()));
 
-    m_lockAction = new KAction(this);
+    m_lockAction = new QAction(this);
     m_lockAction->setCheckable(true);
     m_lockAction->setIcon(QIcon::fromTheme("object-locked"));
     m_lockAction->setText(i18nc("@action:button", "Lock Package at Current Version"));

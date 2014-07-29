@@ -25,9 +25,9 @@
 #include <QApplication>
 
 // KDE includes
-#include <KGlobal>
 #include <KIconLoader>
-#include <KLocale>
+#include <KFormat>
+#include <KLocalizedString>
 
 // Own includes
 #include "UpdateItem.h"
@@ -66,7 +66,7 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         case VersionColumn:
             return item->version();
         case SizeColumn:
-            return KGlobal::locale()->formatByteSize(item->size());
+            return KFormat().formatByteSize(item->size());
         }
         break;
     case Qt::DecorationRole:

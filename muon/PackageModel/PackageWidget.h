@@ -84,13 +84,13 @@ private:
     KLineEdit *m_searchEdit;
     QTimer *m_searchTimer;
 
-    KAction *m_installAction;
-    KAction *m_removeAction;
-    KAction *m_upgradeAction;
-    KAction *m_reinstallAction;
-    KAction *m_keepAction;
-    KAction *m_purgeAction;
-    KAction *m_lockAction;
+    QAction *m_installAction;
+    QAction *m_removeAction;
+    QAction *m_upgradeAction;
+    QAction *m_reinstallAction;
+    QAction *m_keepAction;
+    QAction *m_purgeAction;
+    QAction *m_lockAction;
 
     int m_packagesType;
     bool m_stop;

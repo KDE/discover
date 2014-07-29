@@ -344,7 +344,7 @@ void ApplicationBackend::markLangpacks(Transaction *transaction)
 {
     QString prog = KStandardDirs::findExe("check-language-support");
     if (prog.isEmpty()){
-        prog =  KGlobal::dirs()->locate("data","muon/scripts/check-language-support");
+        prog =  QStandardPaths::locate(QStandardPaths::GenericDataLocation, "muon/scripts/check-language-support");
         if ( prog.isEmpty()){
             return;
         }

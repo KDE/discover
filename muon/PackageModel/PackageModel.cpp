@@ -20,9 +20,9 @@
 
 #include "PackageModel.h"
 
-#include <QtCore/QStringBuilder>
-
-#include <KLocale>
+#include <QStringBuilder>
+#include <QIcon>
+#include <KLocalizedString>
 
 PackageModel::PackageModel(QObject *parent)
     : QAbstractListModel(parent)

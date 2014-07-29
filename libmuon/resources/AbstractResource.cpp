@@ -21,6 +21,7 @@
 #include "AbstractResource.h"
 #include "AbstractResourcesBackend.h"
 #include <klocalizedstring.h>
+#include <KFormat>
 
 AbstractResource::AbstractResource(AbstractResourcesBackend* parent)
     : QObject(parent)
@@ -93,5 +94,5 @@ bool AbstractResource::isFromSecureOrigin() const
 
 QString AbstractResource::sizeDescription()
 {
-    return /*KGlobal::locale()->formatByteSize*/QString::number(downloadSize());
+    return KFormat().formatByteSize(downloadSize());
 }

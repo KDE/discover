@@ -31,6 +31,7 @@
 #include <KPixmapSequenceOverlayPainter>
 #include <KTemporaryFile>
 #include <KTextBrowser>
+#include <KIconLoader>
 
 // LibQApt includes
 #include <LibQApt/Package>

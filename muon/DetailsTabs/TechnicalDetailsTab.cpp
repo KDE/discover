@@ -28,9 +28,9 @@
 
 // KDE includes
 #include <KGlobal>
-#include <KLocale>
 #include <KVBox>
 #include <KHBox>
+#include <KFormat>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -166,14 +166,14 @@ void TechnicalDetailsTab::refresh()
     if (m_package->isInstalled()) {
         m_installedVersionBox->show();
         m_installedVersion->setText(m_package->installedVersion());
-        m_installedSize->setText(KGlobal::locale()->formatByteSize(m_package->currentInstalledSize()));
+        m_installedSize->setText(KFormat().formatByteSize(m_package->currentInstalledSize()));
     } else {
         m_installedVersionBox->hide();
     }
 
     m_currentVersion->setText(m_package->availableVersion());
-    m_currentSize->setText(KGlobal::locale()->formatByteSize(m_package->availableInstalledSize()));
-    m_downloadSize->setText(KGlobal::locale()->formatByteSize(m_package->downloadSize()));
+    m_currentSize->setText(KFormat().formatByteSize(m_package->availableInstalledSize()));
+    m_downloadSize->setText(KFormat().formatByteSize(m_package->downloadSize()));
 }
 
 #include "TechnicalDetailsTab.moc"

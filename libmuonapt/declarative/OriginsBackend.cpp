@@ -57,8 +57,6 @@ OriginsBackend::~OriginsBackend()
 
 void OriginsBackend::load()
 {
-    QObject* b = applicationBackend();
-
     m_sourcesList.reload();
     qDeleteAll(m_sources);
     m_sources.clear();
@@ -90,35 +88,25 @@ Source* OriginsBackend::sourceForUri(const QString& uri)
 void OriginsBackend::addRepository(const QString& repository)
 {
     KAuth::Action readAction("org.kde.muon.repo.modify");
-    readAction.setHelperID("org.kde.muon.repo");
+    readAction.setHelperId("org.kde.muon.repo");
     QVariantMap args;
     args["repository"] = repository;
     args["action"] = QString("add");
     readAction.setArguments(args);
-    KAuth::ActionReply reply = readAction.execute();
-    if(reply.failed()){
-	additionDone(1);
-    }
-    else{
-	additionDone(0);
-    }
+    KAuth::ExecuteJob* reply = readAction.execute();
+    additionDone(reply->error());
 }
 
 void OriginsBackend::removeRepository(const QString& repository)
 {
     KAuth::Action readAction("org.kde.muon.repo.modify");
-    readAction.setHelperID("org.kde.muon.repo");
+    readAction.setHelperId("org.kde.muon.repo");
     QVariantMap args;
     args["repository"] = repository;
     args["action"] = QString("remove");
     readAction.setArguments(args);
-    KAuth::ActionReply reply = readAction.execute();
-    if(reply.failed()){
-	removalDone(1);
-    }
-    else{
-	removalDone(0);
-    }
+    KAuth::ExecuteJob* reply = readAction.execute();
+    removalDone(reply->error());
 }
 
 void OriginsBackend::additionDone(int processErrorCode)
@@ -168,9 +156,9 @@ bool Source::enabled() const
     return ret;
 }
 
-QQuickListProperty<Entry> Source::entries()
+QQmlListProperty<Entry> Source::entries()
 {
-    return QQuickListProperty<Entry>(this, m_entries);
+    return QQmlListProperty<Entry>(this, m_entries);
 }
 
 QString Source::name() const

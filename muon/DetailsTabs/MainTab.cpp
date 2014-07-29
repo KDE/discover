@@ -89,7 +89,7 @@ MainTab::MainTab(QWidget *parent)
     buttonBoxLayout->addWidget(m_reinstallButton);
 
     m_purgeMenu = new KMenu(m_removeButton);
-    m_purgeAction = new KAction(this);
+    m_purgeAction = new QAction(this);
     m_purgeAction->setIcon(QIcon::fromTheme("edit-delete-shred"));
     m_purgeAction->setText(i18nc("@action:button", "Purge"));
     connect(m_purgeAction, SIGNAL(triggered()), this, SLOT(emitSetPurge()));
@@ -186,7 +186,7 @@ void MainTab::refresh()
         QDateTime endDate = m_package->supportedUntil();
         m_descriptionBrowser->append(i18nc("@info Tells how long Canonical, Ltd. will support a package",
                                         "Canonical provides critical updates for %1 until %2.",
-                                        m_package->name(), KGlobal::locale()->formatDate(endDate.date())));
+                                        m_package->name(), endDate.date().toString()));
     } else {
         m_descriptionBrowser->append(i18nc("@info Tells how long Canonical, Ltd. will support a package",
                                         "Canonical does not provide updates for %1. Some updates "

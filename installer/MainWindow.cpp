@@ -394,14 +394,14 @@ void MainWindow::showLauncherMessage()
         m_launcherMessage->setText(i18nc("@info", "%1 was successfully installed.", name));
 
         QIcon launchIcon = index.data(Qt::DecorationRole).value<QIcon>();
-        KAction *launchAction = new KAction(launchIcon, i18nc("@action", "Start"), this);
+        QAction *launchAction = new QAction(launchIcon, i18nc("@action", "Start"), this);
         connect(launchAction, SIGNAL(activated()), this, SLOT(launchSingleApp()));
 
         m_launcherMessage->addAction(launchAction);
         m_launcherMessage->animatedShow();
     } else if (m_launches->rowCount() > 1) {
         m_launcherMessage->setText(i18nc("@info", "Applications successfully installed."));
-        KAction *launchAction = new KAction(i18nc("@action", "Run New Applications..."), this);
+        QAction *launchAction = new QAction(i18nc("@action", "Run New Applications..."), this);
         connect(launchAction, SIGNAL(activated()), this, SLOT(showAppLauncher()));
         m_launcherMessage->addAction(launchAction);
         m_launcherMessage->animatedShow();

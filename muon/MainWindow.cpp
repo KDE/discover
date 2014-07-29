@@ -27,7 +27,8 @@
 #include <QSplitter>
 #include <QtWidgets/QStackedWidget>
 #include <QToolBox>
-#include <QtWidgets/QVBoxLayout>
+#include <QVBoxLayout>
+#include <QAction>
 
 // KDE includes
 #include <KActionCollection>
@@ -198,7 +199,7 @@ void MainWindow::setupActions()
     m_applyAction->setText(i18nc("@action Applys the changes a user has made", "Apply Changes"));
     connect(m_applyAction, SIGNAL(triggered()), this, SLOT(startCommit()));
 
-    KAction* updateAction = actionCollection()->addAction("update");
+    QAction* updateAction = actionCollection()->addAction("update");
     updateAction->setIcon(QIcon::fromTheme("system-software-update"));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
