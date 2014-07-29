@@ -24,6 +24,8 @@
 #include <QFile>
 #include <KGlobal>
 #include <KStandardDirs>
+#include <MuonBackendsFactory.h>
+#include <resources/AbstractResourcesBackend.h>
 
 QList<Category*> CategoriesReader::loadCategoriesFile(const QString& path)
 {
@@ -62,14 +64,21 @@ static bool categoryLessThan(Category *c1, const Category *c2)
 
 QList<Category*> CategoriesReader::populateCategories()
 {
-    // FIXME: Should only populate categories for plugins that have successfully been loaded
+    MuonBackendsFactory f;
+    QStringList backendNames = f.allBackendNames();
+
     QList<Category*> ret;
-    QStringList files = KGlobal::dirs()->findAllResources("data", "libmuon/categories/*.xml");
-    for(const QString& file : files) {
+    for (const QString& name : backendNames) {
+        QString file = KGlobal::dirs()->findResource("data", "libmuon/categories/"+name+"-categories.xml");
+        if (file.isEmpty()) {
+            qWarning() << "Couldn't find a category for " << name;
+            continue;
+        }
         QList<Category*> cats = loadCategoriesFile(file);
-        if(ret.isEmpty())
+
+        if(ret.isEmpty()) {
             ret += cats;
-        else {
+        } else {
             for(Category* c : cats)
                 Category::addSubcategory(ret, c);
         }
@@ -77,4 +86,3 @@ QList<Category*> CategoriesReader::populateCategories()
     qSort(ret.begin(), ret.end(), categoryLessThan);
     return ret;
 }
-

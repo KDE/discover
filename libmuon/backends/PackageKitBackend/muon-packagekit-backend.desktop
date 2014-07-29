@@ -111,5 +111,5 @@ GenericName[tr]=Uygulama Arka Uçları
 GenericName[uk]=Модуль програм
 GenericName[x-test]=xxApplications Backendxx
 X-KDE-Library=muon-pkbackend
-X-KDE-PluginInfo-Name=muon-pkbackend
+X-KDE-PluginInfo-Name=muon-packagekit-backend
 X-KDE-PluginInfo-License=GPL

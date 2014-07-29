@@ -12,7 +12,7 @@ target_link_libraries(muon-dummybackend Qt5::Core Qt5::Widgets KF5::CoreAddons m
 
 install(TARGETS muon-dummybackend DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES muon-dummy-backend.desktop DESTINATION ${SERVICES_INSTALL_DIR})
-install(FILES dummy-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
+install(FILES muon-dummy-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
 
 
 add_library(kded_muondummyotifier MODULE ${dummynotifier_SRCS})

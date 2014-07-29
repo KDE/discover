@@ -16,5 +16,5 @@ install(TARGETS muon-knsbackend DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES muon-knscomics-backend.desktop DESTINATION ${SERVICES_INSTALL_DIR})
 install(FILES muon-knsplasmoids-backend.desktop DESTINATION ${SERVICES_INSTALL_DIR})
 
-install(FILES knsplasmoids-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
-install(FILES knscomics-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
+install(FILES muon-knsplasmoids-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
+install(FILES muon-knscomics-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)

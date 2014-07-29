@@ -21,7 +21,7 @@ target_include_directories(muon-appsbackend PRIVATE ${QCA_INCLUDES}) #qtoauth sh
 
 install(TARGETS muon-appsbackend DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES muon-applications-backend.desktop DESTINATION ${SERVICES_INSTALL_DIR})
-install(FILES apps-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
+install(FILES muon-applications-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
 
 add_library(kded_muonapplicationnotifier MODULE ApplicationNotifier.cpp)
 target_link_libraries(kded_muonapplicationnotifier ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} muonprivate)
