@@ -126,5 +126,5 @@ Comment[x-test]=xxIt's some dummy backend for testing purposesxx
 Comment[zh_CN]=这是用于测试的哑后端
 Comment[zh_TW]=測試用的虛擬後端介面
 X-KDE-Library=muon-dummybackend
-X-KDE-PluginInfo-Name=muon-dummybackend
+X-KDE-PluginInfo-Name=muon-dummy-backend
 X-KDE-PluginInfo-License=GPL

@@ -127,6 +127,6 @@ Comment[zh_CN]=安装 plasmoids，让您的工作区更强大！
 Comment[zh_TW]=安裝小元件，提升您的工作空間的能量！
 
 X-KDE-Library=muon-knsbackend
-X-KDE-PluginInfo-Name=muon-knsbackend-plasmoids
+X-KDE-PluginInfo-Name=muon-knsplasmoids-backend
 X-KDE-PluginInfo-License=GPL
 X-Muon-Arguments=plasmoids.knsrc

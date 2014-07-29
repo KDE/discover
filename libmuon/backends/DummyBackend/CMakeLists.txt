@@ -16,7 +16,7 @@ target_link_libraries(muon-dummybackend ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY}
 
 install(TARGETS muon-dummybackend DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES muon-dummy-backend.desktop DESTINATION ${SERVICES_INSTALL_DIR})
-install(FILES dummy-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
+install(FILES muon-dummy-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
 
 
 kde4_add_plugin(kded_muondummyotifier ${dummynotifier_SRCS})

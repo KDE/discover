@@ -17,7 +17,7 @@ kde4_add_plugin(muon-akabeibackend SHARED ${akabeibackend_SRCS})
 target_link_libraries(muon-akabeibackend ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} ${qjson_LIBRARIES} ${AKABEICLIENT_LIBRARIES} ${AKABEICORE_LIBRARIES} muonprivate)
 install(TARGETS muon-akabeibackend DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES muon-akabei-backend.desktop DESTINATION ${SERVICES_INSTALL_DIR})
-install(FILES akabei-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
+install(FILES muon-akabei-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
 
 set(akabeinotifier_SRCS
     AkabeiNotifier.cpp

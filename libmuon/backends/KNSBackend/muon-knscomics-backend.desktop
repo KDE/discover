@@ -126,6 +126,6 @@ Comment[zh_CN]=从连环画 plasmoid 安装要使用的连环画
 Comment[zh_TW]=安裝漫畫給漫畫小元件
 
 X-KDE-Library=muon-knsbackend
-X-KDE-PluginInfo-Name=muon-knsbackend-comics
+X-KDE-PluginInfo-Name=muon-knscomics-backend
 X-KDE-PluginInfo-License=GPL
 X-Muon-Arguments=comic.knsrc

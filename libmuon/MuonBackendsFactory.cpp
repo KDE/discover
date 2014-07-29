@@ -50,6 +50,10 @@ AbstractResourcesBackend* MuonBackendsFactory::backend(const QString& name) cons
 
 QStringList MuonBackendsFactory::allBackendNames() const
 {
+    QSet<QString> whitelist = fetchBackendsWhitelist();
+    if (!whitelist.isEmpty())
+        return whitelist.toList();
+
     QStringList ret;
     KService::List serviceList = KServiceTypeTrader::self()->query("Muon/Backend");
     foreach(const KService::Ptr& service, serviceList) {
