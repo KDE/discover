@@ -228,7 +228,7 @@ void UpdaterWidget::checkUpToDate()
                                         /*KGlobal::locale()->prettyFormatDuration*/QString::number(msecSinceUpdate)));
         } else {
             m_ui->updateStatusIcon->setPixmap(QIcon::fromTheme("security-low").pixmap(128, 128));
-            m_ui->notifyTitle->setText("The last check for updates was over a week ago.");
+            m_ui->notifyTitle->setText(i18nc("@info", "The last check for updates was over a week ago."));
             m_ui->notifyDesc->setText(i18nc("@info", "Please click <interface>Check for Updates</interface> "
                                         "to check."));
         }

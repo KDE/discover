@@ -278,6 +278,12 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error)
     if (m_transQueue.isEmpty()) // Shouldn't happen
         return;
 
+    if( error == QApt::AuthError){
+        m_currentTransaction->cancel();
+        m_transQueue.remove(m_currentTransaction);
+        m_currentTransaction->deleteLater();
+        m_currentTransaction = nullptr;
+    }
     QAptActions::self()->displayTransactionError(error, m_transQueue.value(m_currentTransaction));
 }
 
@@ -337,8 +343,12 @@ void ApplicationBackend::markTransaction(Transaction *transaction)
 void ApplicationBackend::markLangpacks(Transaction *transaction)
 {
     QString prog = KStandardDirs::findExe("check-language-support");
-    if (prog.isEmpty())
-        return;
+    if (prog.isEmpty()){
+        prog =  KGlobal::dirs()->locate("data","muon/scripts/check-language-support");
+        if ( prog.isEmpty()){
+            return;
+        }
+    }
 
     QString language = QLocale().name();
     QString pkgName = transaction->resource()->packageName();

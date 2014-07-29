@@ -74,24 +74,23 @@ ApplicationBackendTest::ApplicationBackendTest()
     QFile testRatings("~/.kde-unit-test/share/apps/libmuon/ratings.txt");
     QFile ratings(ratingsDir);
     QString codeName = getCodename("ID");
-    if(!testRatings.exists()){
-	if(ratings.exists()){
-	    ratings.copy(testRatings.fileName());
-	}
-	else{
-	    ratings.close();
-	    if(codeName.toLower() == QLatin1String("ubuntu")){
-		ratingsDir = KStandardDirs::locateLocal("data","libmuon/rnrtestratings.txt");
-	    }else{
-		ratingsDir = KStandardDirs::locateLocal("data","libmuon/popcontestratings.txt");
-	    }
-	    ratings.setFileName(ratingsDir);
-	    if(ratings.exists()){
-		ratings.copy(testRatings.fileName());
-	    }
-	}
-	testRatings.close();
-	ratings.close();
+    if(!testRatings.exists()) {
+        if(ratings.exists()) {
+            ratings.copy(testRatings.fileName());
+        } else {
+            ratings.close();
+            if(codeName.toLower() == QLatin1String("ubuntu")) {
+                ratingsDir = KStandardDirs::locateLocal("data","libmuon/rnrtestratings.txt");
+            } else {
+                ratingsDir = KStandardDirs::locateLocal("data","libmuon/popcontestratings.txt");
+            }
+            ratings.setFileName(ratingsDir);
+            if(ratings.exists()) {
+                ratings.copy(testRatings.fileName());
+            }
+        }
+        testRatings.close();
+        ratings.close();
     }
     ResourcesModel* m = new ResourcesModel("muon-appsbackend", this);
     m_window = new MuonMainWindow;
