@@ -17,7 +17,7 @@ install(FILES muon-dummy-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/
 
 add_library(kded_muondummyotifier MODULE ${dummynotifier_SRCS})
 
-target_link_libraries(kded_muondummyotifier ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} muonprivate)
+target_link_libraries(kded_muondummyotifier muonprivate)
 
 install(TARGETS kded_muondummyotifier DESTINATION ${PLUGIN_INSTALL_DIR})
 
