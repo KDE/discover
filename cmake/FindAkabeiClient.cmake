@@ -64,23 +64,29 @@ if(AKABEICLIENT_INCLUDE_DIR AND AKABEICLIENT_LIBRARIES)
   set(AKABEICLIENT_FOUND TRUE)
 
   # Announce.
-  if(NOT AKABEICLIENT_FIND_QUIETLY)
+  if(NOT AkabeiClient_FIND_QUIETLY)
     message(STATUS "Looking for AkabeiClient library… FOUND.")
-  endif(NOT AKABEICLIENT_FIND_QUIETLY)
+  endif(NOT AkabeiClient_FIND_QUIETLY)
 
 # Akabei could not be found.
 else(AKABEICLIENT_INCLUDE_DIR AND AKABEICLIENT_LIBRARIES)
 
-  message(STATUS "Looking for AkabeiClient library… NOT FOUND.")
+  if (NOT AkabeiClient_FIND_QUIETLY)
+    message(STATUS "Looking for AkabeiClient library… NOT FOUND.")
+  endif()
 
   function(MSG_AKABEI_INCLUDES SEVERITY)
-    message(${SEVERITY} "  - Could not find AkabeiClient library header files.")
-    message(${SEVERITY} "    Use AKABEICLIENT_INCLUDE_DIR to point to the directory where they are located.")
+    if (NOT AkabeiClient_FIND_QUIETLY)
+        message(${SEVERITY} "  - Could not find AkabeiClient library header files.")
+        message(${SEVERITY} "    Use AKABEICLIENT_INCLUDE_DIR to point to the directory where they are located.")
+    endif()
   endfunction(MSG_AKABEI_INCLUDES)
 
   function(MSG_AKABEI_LIBRARY SEVERITY)
-    message(${SEVERITY} "  - Could not find AkabeiClient library files.")
-    message(${SEVERITY} "    Use AKABEICLIENT_LIB_DIR to point to the directory where they are located.")
+    if (NOT AkabeiClient_FIND_QUIETLY)
+        message(${SEVERITY} "  - Could not find AkabeiClient library files.")
+        message(${SEVERITY} "    Use AKABEICLIENT_LIB_DIR to point to the directory where they are located.")
+    endif()
   endfunction(MSG_AKABEI_LIBRARY)
 
   if(AKABEICLIENT_FIND_REQUIRED)
