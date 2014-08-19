@@ -23,9 +23,10 @@ find_package(QApt QUIET)
 find_package(DebconfKDE QUIET)
 find_package(QtOAuth REQUIRED)
 find_package(QCA2 REQUIRED) #required by QtOAuth
-# find_package(LibAttica QUIET)
+find_package(KF5Attica QUIET)
 # find_package(BODEGA QUIET)
-
+find_package(AkabeiClient QUIET)
+find_package(PackageKit-Qt2)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 
@@ -42,14 +43,27 @@ add_subdirectory(updater)
 add_subdirectory(discover)
 add_subdirectory(exporter)
 
-# macro_log_feature(QAPT_FOUND "LibQApt" "Qt wrapper around the libapt-pkg library"
-#                   "http://www.kde.org" FALSE "" "Required to build the APT backend")
-# macro_log_feature(LIBATTICA_FOUND "LibAttica" "Qt library that implements the Open Collaboration Services API"
-#                   "http://www.kde.org" FALSE "" "Required to build the KNewStuff3 backend")
-# macro_log_feature(BODEGA_FOUND "Bodega" "Library that exposes Bodega resources"
-#                   "http://www.kde.org" FALSE "" "Required to build the Bodega backend")
-# macro_log_feature(AKABEICLIENT_FOUND "Akabei" "Library that exposes Akabei resources"
-#                   "http://www.kde.org" FALSE "" "Required to build the Akabei backend")
-# macro_log_feature(PACKAGEKITQT2_FOUND "PackageKitQt2" "Library that exposes PackageKit resources"
-#                   "http://www.packagekit.org" FALSE "" "Required to build the PackageKit backend")
-# macro_display_feature_log()
+set_package_properties(QApt PROPERTIES
+    DESCRIPTION "Qt wrapper around the libapt-pkg library"
+    PURPOSE "Used to support apt-based distribution systems"
+    TYPE OPTIONAL)
+
+set_package_properties(KF5Attica PROPERTIES
+    DESCRIPTION "Qt library that implements the Open Collaboration Services API"
+    PURPOSE "Required to build the KNewStuff3 backend"
+    TYPE OPTIONAL)
+set_package_properties(Bodega PROPERTIES
+    DESCRIPTION "Library that exposes Bodega resources"
+    PURPOSE "Required to build the Bodega backend"
+    TYPE OPTIONAL)
+set_package_properties(AkabeiClient PROPERTIES
+    DESCRIPTION "Library that exposes Akabei resources"
+    PURPOSE "Required to build the Akabei backend (Supports Chakra distribution)"
+    TYPE OPTIONAL)
+set_package_properties(PackageKitQt2 PROPERTIES
+    DESCRIPTION "Library that exposes PackageKit resources"
+    URL "http://www.packagekit.org"
+    PURPOSE "Required to build the PackageKit backend"
+    TYPE OPTIONAL)
+
+feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
