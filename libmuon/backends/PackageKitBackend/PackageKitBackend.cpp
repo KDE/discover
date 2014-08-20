@@ -192,11 +192,15 @@ PackageKitBackend::PackageKitBackend(QObject* parent, const QVariantList&)
     , m_isLoading(false)
     , m_isFetching(false)
 {
+    bool b = m_appdata.open();
+    Q_ASSERT(b && "must be able to open the appstream database");
     populateInstalledCache();
-    
-    startTimer(60 * 60 * 1000);//Update database every 60 minutes
+
     QTimer* t = new QTimer(this);
     connect(t, &QTimer::timeout, this, &PackageKitBackend::updateDatabase);
+    t->setInterval(60 * 60 * 1000);
+    t->setSingleShot(false);
+    t->start();
 }
 
 PackageKitBackend::~PackageKitBackend()
@@ -213,22 +217,26 @@ bool PackageKitBackend::isLoading() const
     return m_isLoading;
 }
 
+void PackageKitBackend::setFetching(bool f)
+{
+    if (f != m_isFetching) {
+        m_isFetching = f;
+        emit fetchingChanged();
+    }
+}
+
 void PackageKitBackend::populateInstalledCache()
 {
     kDebug() << "Starting to populate the installed packages cache";
     
     m_isLoading = true;
-    
-    m_isFetching = true;
-    emit fetchingChanged();
-    
+    setFetching(true);
+
     for (const Appstream::Component &data : m_appdata.allComponents()) {
         if (!data.packageNames().isEmpty())
-            m_packages[data.packageNames().first()] = new AppPackageKitResource(QString(), PackageKit::Transaction::InfoUnknown, QString(), data, this);
+            m_packages[data.packageNames().first()] = new AppPackageKitResource(data.packageNames().first(), PackageKit::Transaction::InfoUnknown, QString(), data, this);
     }
-    
-    m_isFetching = false;
-    emit fetchingChanged();
+    setFetching(false);
     
     m_updatingPackages = m_packages;
     
@@ -236,9 +244,9 @@ void PackageKitBackend::populateInstalledCache()
         disconnect(m_refresher, SIGNAL(changed()), this, SLOT(populateInstalledCache()));
     }
 
-    PackageKit::Transaction * t = PackageKit::Daemon::global()->getPackages(PackageKit::Transaction::FilterInstalled | PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
+    PackageKit::Transaction * t = PackageKit::Daemon::global()->getPackages();
     
-    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(populateNewestCache()));
+    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(finishRefresh()));
     connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackage(PackageKit::Transaction::Info, QString, QString)));
     connect(t, SIGNAL(destroy()), t, SLOT(deleteLater()));
 }
@@ -259,40 +267,16 @@ void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QSt
     }
 }
 
-void PackageKitBackend::populateNewestCache()
-{
-    kDebug() << "Starting to populate the cache with newest packages";
-    PackageKit::Transaction * t = PackageKit::Daemon::global()->getPackages(PackageKit::Transaction::FilterNewest | PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
-    
-    connect(t, SIGNAL(destroy()), t, SLOT(deleteLater()));
-    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(finishRefresh()));
-    connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addNewest(PackageKit::Transaction::Info, QString, QString)));
-}
-
-void PackageKitBackend::addNewest(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
-{
-    QString name = PackageKit::Daemon::global()->packageName(packageId);
-//     TODO: m_updatingPackages should have PackageKitResource*, the cast is not needed
-    if (AbstractResource* someRes = m_updatingPackages.value(name)) {
-        PackageKitResource* res = qobject_cast<PackageKitResource*>(someRes);
-        res->addPackageId(info, packageId, summary);
-    } else {
-        addPackage(info, packageId, summary);
-    }
-}
-
 void PackageKitBackend::finishRefresh()
 {
-    kDebug() << "Finished the refresh and resetting packages" << m_updatingPackages.count();
+    kDebug() << "Finished the refresh and resetting packages" << m_updatingPackages.count() << m_packages.count();
     
-    m_isFetching = true;
+    setFetching(true);
     
     m_packages = m_updatingPackages;
     
     m_isLoading = false;
-    m_isFetching = false;
-    
-    emit fetchingChanged();
+    setFetching(false);
 }
 
 void PackageKitBackend::updateDatabase()

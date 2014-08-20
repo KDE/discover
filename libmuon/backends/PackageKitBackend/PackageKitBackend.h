@@ -64,13 +64,13 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void populateInstalledCache();
 
     private slots:
-        void populateNewestCache();
         void finishRefresh();
         void updateDatabase();
         void addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
-        void addNewest(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
 
     private:
+        void setFetching(bool f);
+
         QHash<QString, AbstractResource*> m_packages;
         QHash<QString, AbstractResource*> m_updatingPackages;
         Appstream::Database m_appdata;

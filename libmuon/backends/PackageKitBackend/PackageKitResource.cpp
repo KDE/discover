@@ -167,6 +167,7 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
 
     bool changeState = (info != m_info);
 
+//     TODO: only fetch the metadata from packagekit if it's not an appstream package
     if (m_availablePackageId.isEmpty()) {
         m_name = PackageKit::Daemon::global()->packageName(packageId);
         m_icon = PackageKit::Daemon::global()->packageIcon(packageId);
