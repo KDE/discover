@@ -338,7 +338,6 @@ void PackageKitResource::fetchDetails()
 //     kDebug() << "Fetch details for" << m_availablePackageId;
     PackageKit::Transaction* transaction = PackageKit::Daemon::global()->getDetails(m_availablePackageId);
     connect(transaction, SIGNAL(details(QString, QString, PackageKit::Transaction::Group, QString, QString, qulonglong)), SLOT(details(QString, QString, PackageKit::Transaction::Group, QString, QString, qulonglong)));
-    connect(transaction, SIGNAL(destroy()), transaction, SLOT(deleteLater()));
     
 //     kDebug() << "ERROR" << transaction->internalErrorMessage();
 }

@@ -248,11 +248,11 @@ void PackageKitBackend::populateInstalledCache()
     
     connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(finishRefresh()));
     connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackage(PackageKit::Transaction::Info, QString, QString)));
-    connect(t, SIGNAL(destroy()), t, SLOT(deleteLater()));
 }
 
 void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
+    qDebug() << "xxxxxxxxxxx adding package" << packageId << summary;
     QString packageName = PackageKit::Daemon::global()->packageName(packageId);
     if (AbstractResource* r = m_updatingPackages.value(packageName)) {
         qobject_cast<PackageKitResource*>(r)->addPackageId(info, packageId, summary);
