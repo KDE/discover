@@ -23,7 +23,6 @@
 #include "PackageKitResource.h"
 #include "PackageKitUpdater.h"
 #include "AppPackageKitResource.h"
-#include "AppstreamUtils.h"
 #include "PKTransaction.h"
 #include <resources/AbstractResource.h>
 #include <resources/StandardBackendUpdater.h>
