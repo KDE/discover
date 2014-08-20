@@ -50,6 +50,8 @@ int main(int argc, char** argv)
         parser.addOption(QCommandLineOption("listmodes", i18n("List all the available modes."), "name"));
         parser.addOption(QCommandLineOption("listbackends", i18n("List all the available backends.")));
         parser.addOption(QCommandLineOption("backends", i18n("List all the backends we'll want to have loaded, separated by coma ','."), "names"));
+        parser.addHelpOption();
+        parser.addVersionOption();
         about.setupCommandLine(&parser);
         parser.process(app);
         about.processCommandLine(&parser);
