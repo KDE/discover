@@ -32,8 +32,8 @@
 #include <QDebug>
 #include <QTimer>
 #include <QTimerEvent>
-#include <PackageKit/packagekit-qt2/Transaction>
-#include <PackageKit/packagekit-qt2/Daemon>
+#include <packagekitqt5/Transaction>
+#include <packagekitqt5/Daemon>
 
 #include <KPluginFactory>
 #include <KLocalizedString>
@@ -196,6 +196,8 @@ PackageKitBackend::PackageKitBackend(QObject* parent, const QVariantList&)
     populateInstalledCache();
     
     startTimer(60 * 60 * 1000);//Update database every 60 minutes
+    QTimer* t = new QTimer(this);
+    connect(t, &QTimer::timeout, this, &PackageKitBackend::updateDatabase);
 }
 
 PackageKitBackend::~PackageKitBackend()
@@ -215,16 +217,15 @@ bool PackageKitBackend::isLoading() const
 void PackageKitBackend::populateInstalledCache()
 {
     kDebug() << "Starting to populate the installed packages cache";
-    m_appdata = AppstreamUtils::fetchAppData("/home/lukas/appdata.xml");//FIXME: Change path
     
     m_isLoading = true;
     
     m_isFetching = true;
     emit fetchingChanged();
     
-    foreach (const ApplicationData &data, m_appdata.values()) {
-        if (!data.pkgname.isEmpty())
-            m_packages[data.pkgname] = new AppPackageKitResource(QString(), PackageKit::Transaction::InfoUnknown, QString(), data, this);
+    for (const Appstream::Component &data : m_appdata.allComponents()) {
+        if (!data.packageNames().isEmpty())
+            m_packages[data.packageNames().first()] = new AppPackageKitResource(QString(), PackageKit::Transaction::InfoUnknown, QString(), data, this);
     }
     
     m_isFetching = false;
@@ -235,48 +236,46 @@ void PackageKitBackend::populateInstalledCache()
     if (m_refresher) {
         disconnect(m_refresher, SIGNAL(changed()), this, SLOT(populateInstalledCache()));
     }
-    
-    PackageKit::Transaction * t = new PackageKit::Transaction(this);
+
+    PackageKit::Transaction * t = PackageKit::Daemon::global()->getPackages(PackageKit::Transaction::FilterInstalled | PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
     
     connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(populateNewestCache()));
     connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackage(PackageKit::Transaction::Info, QString, QString)));
     connect(t, SIGNAL(destroy()), t, SLOT(deleteLater()));
-    
-    t->getPackages(PackageKit::Transaction::FilterInstalled | PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
-    
 }
 
 void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
-    if (m_updatingPackages[PackageKit::Daemon::global()->packageName(packageId)]) {
-        qobject_cast<PackageKitResource*>(m_updatingPackages[PackageKit::Daemon::global()->packageName(packageId)])->addPackageId(info, packageId, summary);
+    QString packageName = PackageKit::Daemon::global()->packageName(packageId);
+    if (AbstractResource* r = m_updatingPackages.value(packageName)) {
+        qobject_cast<PackageKitResource*>(r)->addPackageId(info, packageId, summary);
     } else {
         PackageKitResource* newResource = 0;
-        QHash<QString, ApplicationData>::const_iterator it = m_appdata.constFind(PackageKit::Daemon::global()->packageName(packageId));
-        if (it!=m_appdata.constEnd())
-            newResource = new AppPackageKitResource(packageId, info, summary, *it, this);
+        Appstream::Component component = m_appdata.componentById(packageName);
+        if (component.isValid())
+            newResource = new AppPackageKitResource(packageId, info, summary, component, this);
         else
             newResource = new PackageKitResource(packageId, info, summary, this);
-        m_updatingPackages[PackageKit::Daemon::global()->packageName(packageId)] = newResource;
+        m_updatingPackages[packageName] = newResource;
     }
 }
 
 void PackageKitBackend::populateNewestCache()
 {
     kDebug() << "Starting to populate the cache with newest packages";
-    PackageKit::Transaction * t = new PackageKit::Transaction(this);
+    PackageKit::Transaction * t = PackageKit::Daemon::global()->getPackages(PackageKit::Transaction::FilterNewest | PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
     
     connect(t, SIGNAL(destroy()), t, SLOT(deleteLater()));
     connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(finishRefresh()));
     connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addNewest(PackageKit::Transaction::Info, QString, QString)));
-    
-    t->getPackages(PackageKit::Transaction::FilterNewest | PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
 }
 
 void PackageKitBackend::addNewest(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
-    if (m_updatingPackages[PackageKit::Daemon::global()->packageName(packageId)]) {
-        PackageKitResource * res = qobject_cast<PackageKitResource*>(m_updatingPackages[PackageKit::Daemon::global()->packageName(packageId)]);
+    QString name = PackageKit::Daemon::global()->packageName(packageId);
+//     TODO: m_updatingPackages should have PackageKitResource*, the cast is not needed
+    if (AbstractResource* someRes = m_updatingPackages.value(name)) {
+        PackageKitResource* res = qobject_cast<PackageKitResource*>(someRes);
         res->addPackageId(info, packageId, summary);
     } else {
         addPackage(info, packageId, summary);
@@ -297,24 +296,15 @@ void PackageKitBackend::finishRefresh()
     emit fetchingChanged();
 }
 
-void PackageKitBackend::timerEvent(QTimerEvent * event)
-{
-    Q_UNUSED(event)//FIXME: Port to QTimer at least or not use this at all
-    updateDatabase();
-}
-
 void PackageKitBackend::updateDatabase()
 {
-    kDebug() << "Starting to update the package cache";
+    qDebug() << "Starting to update the package cache";
     if (!m_refresher) {
-        m_refresher = new PackageKit::Transaction(this);
+        m_refresher = PackageKit::Daemon::global()->refreshCache(false);
+        connect(m_refresher, SIGNAL(changed()), SLOT(populateInstalledCache()));
     } else {
-        m_refresher->reset();
+        qWarning() << "already resetting";
     }
-    connect(m_refresher, SIGNAL(changed()), SLOT(populateInstalledCache()), Qt::UniqueConnection);
-    //connect(m_refresher, SIGNAL(destroy()), m_refresher, SLOT(deleteLater()));
-
-    m_refresher->refreshCache(false);
 }
 
 QVector<AbstractResource*> PackageKitBackend::allResources() const
@@ -385,7 +375,7 @@ void PackageKitBackend::installApplication(AbstractResource* app)
 
 void PackageKitBackend::cancelTransaction(AbstractResource* app)
 {
-    foreach(Transaction* t, m_transactions) {
+    for (Transaction* t : m_transactions) {
         PKTransaction* pkt = qobject_cast<PKTransaction*>(t);
         if (pkt->resource() == app) {
             if (pkt->transaction()->allowCancel()) {
@@ -429,74 +419,4 @@ AbstractBackendUpdater* PackageKitBackend::backendUpdater() const
 //TODO
 AbstractReviewsBackend* PackageKitBackend::reviewsBackend() const { return 0; }
 
-
-int PackageKitBackend::compare_versions(QString const& a, QString const& b)
-{
-    /* First split takes pkgrels */
-    QStringList withpkgrel1 = a.split("-");
-    QStringList withpkgrel2 = b.split("-");
-    QString pkgrel1, pkgrel2;
-
-    if (withpkgrel1.size() >= 2) {
-        pkgrel1 = withpkgrel1.at(1);
-    }
-    if (withpkgrel2.size() >= 2) {
-        pkgrel2 = withpkgrel2.at(1);
-    }
-
-    for (int i = 0; i != withpkgrel1.count(); i++) {
-        QString s1( withpkgrel1.at(i) ); /* takes the rest */
-        if (withpkgrel2.count() < i)
-            return -1;
-        QString s2( withpkgrel2.at(i) );
-
-        /* Second split is to separate actual version numbers (or strings) */
-        QStringList v1 = s1.split(".");
-        QStringList v2 = s2.split(".");
-
-        QStringList::iterator i1 = v1.begin();
-        QStringList::iterator i2 = v2.begin();
-
-        for (; i1 < v1.end() && i2 < v2.end() ; i1++, i2++) {
-            if ((*i1).length() > (*i2).length())
-                return 1;
-            if ((*i1).length() < (*i2).length())
-                return -1;
-            int p1 = i1->toInt();
-            int p2 = i2->toInt();
-
-            if (p1 > p2) {
-                return 1;
-            } else if (p1 < p2) {
-                return -1;
-            }
-        }
-
-        /* This is, like, v1 = 2.3 and v2 = 2.3.1: v2 wins */
-        if (i1 == v1.end() && i2 != v2.end()) {
-            return -1;
-        }
-
-        /* The opposite case as before */
-        if (i2 == v2.end() && i1 != v1.end()) {
-            return 1;
-        }
-
-        /* The rule explained above */
-        if ((!pkgrel1.isEmpty() && pkgrel2.isEmpty()) || (pkgrel1.isEmpty() && !pkgrel2.isEmpty())) {
-            return 0;
-        }
-
-        /* Normal pkgrel comparison */
-        int pg1 = pkgrel1.toInt();
-        int pg2 = pkgrel2.toInt();
-
-        if (pg1 > pg2) {
-            return 1;
-        } else if (pg2 > pg1) {
-            return -1;
-        }
-    }
-
-    return 0;
-}
+#include "PackageKitBackend.moc"

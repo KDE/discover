@@ -25,22 +25,11 @@
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
 #include <QStringList>
-#include <PackageKit/packagekit-qt2/Transaction>
+#include <qpointer.h>
+#include <packagekitqt5/Transaction>
+#include <AppstreamQt/database.h>
 
-class QTimerEvent;
 class PackageKitUpdater;
-struct ApplicationData
-{
-    QString pkgname;
-    QString id;
-    QHash<QString, QString> name;
-    QHash<QString, QString> summary;
-    QString icon;
-    QString url;
-    QHash<QString, QStringList> keywords;
-    QStringList appcategories;
-    QStringList mimetypes;
-};
 
 class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
 {
@@ -51,7 +40,6 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         ~PackageKitBackend();
         
         static QString errorMessage(PackageKit::Transaction::Error error);
-        static int compare_versions(const QString &, const QString &);
         
         virtual AbstractBackendUpdater* backendUpdater() const;
         virtual AbstractReviewsBackend* reviewsBackend() const;
@@ -74,10 +62,7 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
     public slots:
         void removeTransaction(Transaction* t);
         void populateInstalledCache();
-        
-    protected:
-        virtual void timerEvent(QTimerEvent * event);
-        
+
     private slots:
         void populateNewestCache();
         void finishRefresh();
@@ -88,11 +73,11 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
     private:
         QHash<QString, AbstractResource*> m_packages;
         QHash<QString, AbstractResource*> m_updatingPackages;
-        QHash<QString, ApplicationData> m_appdata;
+        Appstream::Database m_appdata;
         QList<Transaction*> m_transactions;
         PackageKitUpdater* m_updater;
         QList<PackageKitResource*> m_upgradeablePackages;
-        PackageKit::Transaction * m_refresher;
+        QPointer<PackageKit::Transaction> m_refresher;
         bool m_isLoading;
         bool m_isFetching;
 };

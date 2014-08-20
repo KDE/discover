@@ -25,23 +25,38 @@
 #include <Transaction/TransactionModel.h>
 #include <KMessageBox>
 #include <KLocalizedString>
-#include <PackageKit/packagekit-qt2/Transaction>
-#include <PackageKit/packagekit-qt2/Daemon>
+#include <packagekitqt5/Transaction>
+#include <packagekitqt5/Daemon>
 #include <KDebug>
 
 PKTransaction::PKTransaction(AbstractResource* app, Transaction::Role role)
     : Transaction(app, app, role),
       m_trans(0)
 {
-    start();
 }
 
 void PKTransaction::start()
 {
     if (m_trans)
         m_trans->deleteLater();
-    
-    m_trans = new PackageKit::Transaction(this);
+
+    switch (role()) {
+        case Transaction::InstallRole:
+            if (qobject_cast<PackageKitResource*>(resource())->availablePackageId().isEmpty())
+                kWarning() << "Trying to install a package with empty packageId" << resource()->name();
+            m_trans = PackageKit::Daemon::global()->installPackage(qobject_cast<PackageKitResource*>(resource())->availablePackageId());
+            break;
+        case Transaction::RemoveRole:
+            if (qobject_cast<PackageKitResource*>(resource())->installedPackageId().isEmpty())
+                kWarning() << "Trying to remove a package with empty packageId" << resource()->name();
+            m_trans = PackageKit::Daemon::global()->installPackage(qobject_cast<PackageKitResource*>(resource())->installedPackageId());
+            break;
+        case Transaction::ChangeAddonsRole:
+#warning TODO: implement!
+            break;
+    };
+    Q_ASSERT(m_trans);
+
     connect(m_trans, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(cleanup(PackageKit::Transaction::Exit,uint)));
     connect(m_trans, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(errorFound(PackageKit::Transaction::Error,QString)));
     connect(m_trans, SIGNAL(mediaChangeRequired(PackageKit::Transaction::MediaType,QString,QString)),
@@ -51,21 +66,6 @@ void PKTransaction::start()
     connect(m_trans, SIGNAL(itemProgress(QString, PackageKit::Transaction::Status, uint)), SLOT(progressChanged(QString, PackageKit::Transaction::Status, uint)));
     connect(m_trans, SIGNAL(eulaRequired(QString, QString, QString, QString)), SLOT(eulaRequired(QString, QString, QString, QString)));
     connect(m_trans, SIGNAL(changed()), SLOT(transactionChanged()));
-    
-    switch (role()) {
-        case Transaction::InstallRole:
-            if (qobject_cast<PackageKitResource*>(resource())->availablePackageId().isEmpty())
-                kWarning() << "Trying to install a package with empty packageId" << resource()->name();
-            m_trans->installPackage(qobject_cast<PackageKitResource*>(resource())->availablePackageId());
-            break;
-        case Transaction::RemoveRole:
-            if (qobject_cast<PackageKitResource*>(resource())->installedPackageId().isEmpty())
-                kWarning() << "Trying to remove a package with empty packageId" << resource()->name();
-            m_trans->removePackage(qobject_cast<PackageKitResource*>(resource())->installedPackageId());
-            break;
-        case Transaction::ChangeAddonsRole:
-            break;
-    };
     
     setCancellable(m_trans->allowCancel());
 }
@@ -111,8 +111,7 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     } else {
         qobject_cast<PackageKitBackend*>(resource()->backend())->removeTransaction(this);
     }
-    PackageKit::Transaction* t = new PackageKit::Transaction(resource());
-    t->resolve(resource()->packageName(), PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
+    PackageKit::Transaction* t = PackageKit::Daemon::global()->resolve(resource()->packageName(), PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
     qobject_cast<PackageKitResource*>(resource())->resetPackageIds();
     connect(t, SIGNAL(package(PackageKit::Transaction::Info,QString,QString)), resource(), SLOT(addPackageId(PackageKit::Transaction::Info, QString,QString)));
     connect(t, SIGNAL(destroy()), t, SLOT(deleteLater()));
@@ -123,18 +122,18 @@ PackageKit::Transaction* PKTransaction::transaction()
     return m_trans;
 }
 
-void PKTransaction::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
-{
-    int ret = KMessageBox::questionYesNo(0, i18n("The package %1 and its vendor %2 require that you accept their license:\n %3", 
-                                                 PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement),
-                                            i18n("%1 requires user to accept its license!", PackageKit::Daemon::packageName(packageID)));
-    if (ret == KMessageBox::Yes) {
-        kDebug() << "RESTART TRANSACTION reset thus";
-        m_trans->acceptEula(eulaID);
-    } else {
-        cleanup(PackageKit::Transaction::ExitCancelled, 0);
-    }
-}
+// void PKTransaction::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
+// {
+//     int ret = KMessageBox::questionYesNo(0, i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
+//                                                  PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement),
+//                                             i18n("%1 requires user to accept its license!", PackageKit::Daemon::packageName(packageID)));
+//     if (ret == KMessageBox::Yes) {
+//         kDebug() << "RESTART TRANSACTION reset thus";
+//         m_trans->acceptEula(eulaID);
+//     } else {
+//         cleanup(PackageKit::Transaction::ExitCancelled, 0);
+//     }
+// }
 
 void PKTransaction::errorFound(PackageKit::Transaction::Error err, const QString& error)
 {

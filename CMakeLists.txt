@@ -26,7 +26,8 @@ find_package(QCA2 REQUIRED) #required by QtOAuth
 find_package(KF5Attica QUIET)
 # find_package(BODEGA QUIET)
 find_package(AkabeiClient QUIET)
-find_package(PackageKit-Qt2 QUIET)
+find_package(packagekitqt5 QUIET)
+find_package(AppstreamQt QUIET)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 
@@ -63,6 +64,11 @@ set_package_properties(AkabeiClient PROPERTIES
 set_package_properties(PackageKitQt2 PROPERTIES
     DESCRIPTION "Library that exposes PackageKit resources"
     URL "http://www.packagekit.org"
+    PURPOSE "Required to build the PackageKit backend"
+    TYPE OPTIONAL)
+set_package_properties(AppstreamQt PROPERTIES
+    DESCRIPTION "Library that lists Appstream resources"
+    URL "http://www.freedesktop.org"
     PURPOSE "Required to build the PackageKit backend"
     TYPE OPTIONAL)
 

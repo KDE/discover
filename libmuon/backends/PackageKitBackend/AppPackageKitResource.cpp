@@ -28,60 +28,58 @@
 AppPackageKitResource::AppPackageKitResource(const QString &packageId, 
                                              PackageKit::Transaction::Info info, 
                                              const QString &summary,
-                                             const ApplicationData& data,
+                                             const Appstream::Component& data,
                                              PackageKitBackend* parent)
     : PackageKitResource(packageId, info, summary, parent)
     , m_appdata(data)
-{}
+{
+    Q_ASSERT(data.isValid());
+}
 
 QString AppPackageKitResource::name()
 {
-    QString ret = m_appdata.name.value(KGlobal::locale()->language());
-    if(ret.isEmpty()) ret = m_appdata.name.value(QString());
-    if(ret.isEmpty()) ret = m_appdata.pkgname;
-    if(ret.isEmpty()) ret = PackageKitResource::name();
-    return ret;
+    return m_appdata.name();
 }
 
 QString AppPackageKitResource::longDescription()
 {
-    QString ret = m_appdata.summary.value(KGlobal::locale()->language());
-    if(ret.isEmpty()) ret = m_appdata.summary.value(QString());
-    if(ret.isEmpty() || ret.length() < PackageKitResource::longDescription().length()) ret = PackageKitResource::longDescription();
-    return ret;
+    return m_appdata.description();
 }
 
 QString AppPackageKitResource::icon() const
 {
-    return m_appdata.icon;
+    return m_appdata.icon();
 }
 
 QStringList AppPackageKitResource::mimetypes() const
 {
-    return m_appdata.mimetypes;
+//     TODO
+//     return m_appdata.mimetypes;
+    return QStringList();
 }
 
 QStringList AppPackageKitResource::categories()
 {
-    return m_appdata.appcategories;
+    return m_appdata.categories();
 }
 
 QUrl AppPackageKitResource::homepage()
 {
-    return m_appdata.url.isEmpty() ? PackageKitResource::homepage() : m_appdata.url;
+    QList< QUrl > urls = m_appdata.urls(Appstream::Component::UrlKindHomepage);
+    return urls.isEmpty() ? PackageKitResource::homepage() : urls.first();
 }
 
 bool AppPackageKitResource::isTechnical() const
 {
-    return !(m_backend->isLoading() || !availablePackageId().isEmpty() || !installedPackageId().isEmpty());
+    return m_appdata.kind() != Appstream::Component::KindAddon;
 }
 
 QStringList AppPackageKitResource::executables() const
 {
-    QString desktopFile = KGlobal::dirs()->findResource("xdgdata-apps", m_appdata.id);
     QStringList ret;
-    if(!desktopFile.isEmpty())
-        ret += desktopFile;
+    for(Appstream::Provides p : m_appdata.provides())
+        if (p.kind() == Appstream::Provides::KindBinary)
+            ret += p.value();
     return ret;
 }
 

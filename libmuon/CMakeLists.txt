@@ -44,12 +44,12 @@ LINK_PUBLIC
     Qt5::Core
     Qt5::Widgets
     KF5::Service
+    KF5::DBusAddons # for the notifier
     KF5::KDELibs4Support
 LINK_PRIVATE
     Qt5::Xml
     KF5::XmlGui
     KF5::ItemViews
-    KF5::DBusAddons
     Phonon::phonon4qt5
 )
 

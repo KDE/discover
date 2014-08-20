@@ -16,7 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "PackageKitBackendTest.h"
-#include "PackageKitBackend.h"
+#include <PackageKitUtils.h>
 
 #include <qtest_kde.h>
 
@@ -58,5 +58,5 @@ void PackageKitBackendTest::testVersionComparator()
     QFETCH(QString, version2);
     QFETCH(int, expected);
     
-    QCOMPARE(PackageKitBackend::compare_versions(version1, version2), expected);
+    QCOMPARE(PackageKitUtils::compare_versions(version1, version2), expected);
 }

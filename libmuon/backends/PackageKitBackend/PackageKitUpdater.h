@@ -22,7 +22,7 @@
 
 #include <resources/AbstractBackendUpdater.h>
 #include "PackageKitBackend.h"
-#include <PackageKit/packagekit-qt2/Transaction>
+#include <packagekitqt5/Transaction>
 
 class PackageKitUpdater : public AbstractBackendUpdater
 {
@@ -73,6 +73,8 @@ class PackageKitUpdater : public AbstractBackendUpdater
         void finished(PackageKit::Transaction::Exit exit, uint);
         
     private:
+        void setTransaction(PackageKit::Transaction* transaction);
+
         PackageKit::Transaction * m_transaction;
         PackageKitBackend * m_backend;
         QList<AbstractResource*> m_toUpgrade;

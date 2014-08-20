@@ -22,7 +22,7 @@
 #define PKTRANSACTION_H
 
 #include <Transaction/Transaction.h>
-#include <PackageKit/packagekit-qt2/Transaction>
+#include <packagekitqt5/Transaction>
 
 class PKTransaction : public Transaction
 {
@@ -39,7 +39,7 @@ class PKTransaction : public Transaction
         void mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text);
         void requireRestard(PackageKit::Transaction::Restart restart, const QString& p);
         void progressChanged(const QString&, PackageKit::Transaction::Status, uint);
-        void eulaRequired(const QString &eulaID, const QString &packageID, const QString &vendor, const QString &licenseAgreement);
+//         void eulaRequired(const QString &eulaID, const QString &packageID, const QString &vendor, const QString &licenseAgreement);
         void transactionChanged();
 
     private:

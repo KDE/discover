@@ -24,7 +24,7 @@
 
 namespace AppstreamUtils
 {
-    QHash<QString, ApplicationData> fetchAppData(const QString& path);
+//     QHash<QString, ApplicationData> fetchAppData(const QString& path);
 };
 
 #endif // APPSTREAMUTILS_H

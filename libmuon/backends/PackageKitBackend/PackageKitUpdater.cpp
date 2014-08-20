@@ -19,7 +19,7 @@
  ***************************************************************************/
 #include "PackageKitUpdater.h"
 
-#include <PackageKit/packagekit-qt2/Daemon>
+#include <packagekitqt5/Daemon>
 #include <QSet>
 
 #include <KLocale>
@@ -49,11 +49,16 @@ void PackageKitUpdater::reloadFinished()
 
 void PackageKitUpdater::prepare()
 {
-    kDebug();
-    if (m_transaction)
+    if (m_transaction) {
         m_transaction->deleteLater();
+        qWarning() << "ongoing transaction!";
+    }
+}
 
-    m_transaction = new PackageKit::Transaction(this);
+void PackageKitUpdater::setTransaction(PackageKit::Transaction* transaction)
+{
+    m_transaction = transaction;
+
     connect(m_transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(finished(PackageKit::Transaction::Exit,uint)));
     connect(m_transaction, SIGNAL(changed()), this, SLOT(backendChanged()));
     connect(m_transaction, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), this, SLOT(errorFound(PackageKit::Transaction::Error,QString)));
@@ -62,12 +67,10 @@ void PackageKitUpdater::prepare()
     connect(m_transaction, SIGNAL(requireRestart(PackageKit::Transaction::Restart,QString)),
             this, SLOT(requireRestard(PackageKit::Transaction::Restart,QString)));
     connect(m_transaction, SIGNAL(eulaRequired(QString, QString, QString, QString)), SLOT(eulaRequired(QString, QString, QString, QString)));
-
 }
 
 void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint )
 {
-    kDebug() << "EXIT" << exit;
     if (exit == PackageKit::Transaction::ExitEulaRequired)
         return;
     if (exit == PackageKit::Transaction::ExitSuccess && m_transaction->role() == PackageKit::Transaction::RoleAcceptEula) {
@@ -286,7 +289,7 @@ void PackageKitUpdater::start()
         m_packageIds.insert(app->availablePackageId());
         qDebug() << "Upgrade" << app->availablePackageId() << app->installedPackageId();
     }
-    m_transaction->installPackages(m_packageIds.toList());
+    setTransaction(PackageKit::Daemon::global()->installPackages(m_packageIds.toList()));
 }
 
 void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QString& error)
@@ -336,7 +339,7 @@ void PackageKitUpdater::eulaRequired(const QString& eulaID, const QString& packa
                                                  PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement),
                                             i18n("%1 requires user to accept its license!", PackageKit::Daemon::packageName(packageID)));
     if (ret == KMessageBox::Yes) {
-        m_transaction->acceptEula(eulaID);
+//         m_transaction->acceptEula(eulaID);
     } else {
         finished(PackageKit::Transaction::ExitCancelled, 0);
     }

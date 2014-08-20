@@ -53,9 +53,9 @@ QHash<QString, QStringList> readElementList(QXmlStreamReader* reader, const QStr
 
 ApplicationData readApplication(QXmlStreamReader* reader)
 {
-    Q_ASSERT(reader->isStartElement() && reader->name()=="application");
+    Q_ASSERT(reader->isStartElement() && reader->name()=="component");
     ApplicationData ret;
-    while(!(reader->isEndElement() && reader->name()=="application")) {
+    while(!(reader->isEndElement() && reader->name()=="component")) {
         reader->readNext();
         if(reader->isStartElement()) {
             QStringRef name = reader->name();
@@ -71,11 +71,11 @@ ApplicationData readApplication(QXmlStreamReader* reader)
             else if(name=="appcategories") ret.appcategories = joinLists(readElementList(reader, "appcategory").values());
             else if(name=="mimetypes") ret.mimetypes = joinLists(readElementList(reader, "mimetype").values());
             else {
-                qWarning() << "unrecognized element:" << reader->name();
+                qWarning() << "unrecognized element:" << reader->name() << reader->readElementText();
             }
             Q_ASSERT(reader->isEndElement());
         } else {;
-            Q_ASSERT(reader->isWhitespace() || (reader->isEndElement() && reader->name()=="application"));
+            Q_ASSERT(reader->isWhitespace() || (reader->isEndElement() && reader->name()=="component"));
         }
     }
     return ret;
@@ -95,12 +95,12 @@ QHash<QString, ApplicationData> AppstreamUtils::fetchAppData(const QString& path
     QXmlStreamReader reader(&f);
     while (!reader.atEnd()) {
         reader.readNext();
-        if (reader.isStartElement() && reader.name() == "application") {
+        if (reader.isStartElement() && reader.name() == "component") {
             ApplicationData app = readApplication(&reader);
             ret.insert(app.pkgname, app);
         }
     }
-    qDebug() << "got a number of appstream datasets:" << ret.size();
+    qDebug() << "got a number of appstream datasets:" << path << ret.size();
 
     if (reader.hasError()) {
         qWarning() << "error found while parsing" << path << ":" << reader.errorString();

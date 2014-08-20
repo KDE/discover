@@ -22,6 +22,7 @@
 #include <KPluginFactory>
 #include <QTimer>
 #include <kdebug.h>
+#include <packagekitqt5/Daemon>
 
 K_PLUGIN_FACTORY(MuonPackageKitNotifierFactory,
                  registerPlugin<PackageKitNotifier>();
@@ -53,11 +54,10 @@ void PackageKitNotifier::recheckSystemUpdateNeeded()
     kDebug() << "RECHECK";
     m_timer->stop();
     m_update = NoUpdate;
-    PackageKit::Transaction * trans = new PackageKit::Transaction(this);
+    PackageKit::Transaction * trans = PackageKit::Daemon::global()->getUpdates(PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
     connect(trans, SIGNAL(package(PackageKit::Transaction::Info,QString,QString)), SLOT(package(PackageKit::Transaction::Info,QString,QString)));
     connect(trans, SIGNAL(destroy()), trans, SLOT(deleteLater()));
     connect(trans, SIGNAL(finished(PackageKit::Transaction::Exit, uint)), SLOT(finished(PackageKit::Transaction::Exit, uint)));
-    trans->getUpdates(PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
 }
 
 void PackageKitNotifier::package(PackageKit::Transaction::Info info, const QString &packageID, const QString &summary)
@@ -81,3 +81,5 @@ void PackageKitNotifier::finished(PackageKit::Transaction::Exit exit, uint)
         m_timer->start();
     }
 }
+
+#include "PackageKitNotifier.moc"

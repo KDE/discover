@@ -14,7 +14,7 @@ if(BODEGA_FOUND)
     add_subdirectory(BodegaBackend)
 endif()
 
-if(PACKAGEKITQT2_FOUND)
+if(packagekitqt5_FOUND AND AppstreamQt_FOUND)
     add_subdirectory(PackageKitBackend)
 endif()
 

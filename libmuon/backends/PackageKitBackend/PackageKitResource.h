@@ -22,7 +22,7 @@
 #define PACKAGEKITRESOURCE_H
 
 #include <resources/AbstractResource.h>
-#include <PackageKit/packagekit-qt2/Transaction>
+#include <packagekitqt5/Transaction>
 
 class PackageKitBackend;
 

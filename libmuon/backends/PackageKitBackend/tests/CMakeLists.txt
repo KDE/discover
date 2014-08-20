@@ -1,10 +1,10 @@
 include_directories(..)
 
-add_executable(packagekitbackendtest PackageKitBackendTest.cpp)
+add_executable(packagekitbackendtest PackageKitBackendTest.cpp ../PackageKitUtils.cpp)
 add_test(packagekitbackendtest packagekitbackendtest)
 ecm_mark_as_test(packagekitbackendtest)
 target_link_libraries(packagekitbackendtest
     muonprivate
     
-    ${QT_QTTEST_LIBRARY} ${QT_QTCORE_LIBRARY} ${KDE4_KIO_LIBS} muon-pkbackend
+    Qt5::Test Qt5::Core KF5::KIOWidgets PK::packagekitqt5
 )

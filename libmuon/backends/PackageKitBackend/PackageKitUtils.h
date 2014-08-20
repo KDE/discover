@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,30 +18,16 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPPACKAGEKITRESOURCE_H
-#define APPPACKAGEKITRESOURCE_H
+#ifndef PACKAGEKITUTILS_H
+#define PACKAGEKITUTILS_H
 
-#include "PackageKitResource.h"
-#include "PackageKitBackend.h"
+#include <QString>
+#include <Qt>
 
-class AppPackageKitResource : public PackageKitResource
+class PackageKitUtils
 {
-    Q_OBJECT
-    public:
-        explicit AppPackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, const Appstream::Component& data, PackageKitBackend* parent);
-        virtual bool isTechnical() const;
-        virtual QString name();
-        virtual QString icon() const;
-        virtual QStringList mimetypes() const;
-        virtual QStringList categories();
-        virtual QString longDescription();
-        virtual QUrl homepage();
-        virtual bool canExecute() const { return true; }
-        virtual QStringList executables() const;
-        virtual void invokeApplication() const;
-
-    private:
-        Appstream::Component m_appdata;
+public:
+    static int compare_versions(const QString & a, const QString & b);
 };
 
-#endif // APPPACKAGEKITRESOURCE_H
+#endif // PACKAGEKITUTILS_H
