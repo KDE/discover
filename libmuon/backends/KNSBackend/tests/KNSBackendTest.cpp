@@ -20,6 +20,7 @@
 
 #include "KNSBackendTest.h"
 #include <KNSBackend.h>
+#include <MuonMainWindow.h>
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
@@ -27,14 +28,16 @@
 
 #include <qtest_kde.h>
 
-QTEST_KDEMAIN_CORE( KNSBackendTest )
+QTEST_KDEMAIN( KNSBackendTest, GUI )
 
 KNSBackendTest::KNSBackendTest(QObject* parent)
     : QObject(parent)
     , m_r(0)
 {
-    ResourcesModel* model = new ResourcesModel("muon-knsbackend-plasmoids", this);
+    ResourcesModel* model = new ResourcesModel("muon-knsplasmoids-backend", this);
     m_backend = model->backends().first();
+    MuonMainWindow *m_window = new MuonMainWindow();
+    model->integrateMainWindow(m_window);
     QTest::kWaitForSignal(model, SIGNAL(allInitialized()));
     connect(m_backend->reviewsBackend(), SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
             SLOT(reviewsArrived(AbstractResource*,QList<Review*>)));

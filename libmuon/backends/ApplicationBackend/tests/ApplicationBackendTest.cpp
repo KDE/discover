@@ -92,7 +92,7 @@ ApplicationBackendTest::ApplicationBackendTest()
         testRatings.close();
         ratings.close();
     }
-    ResourcesModel* m = new ResourcesModel("muon-appsbackend", this);
+    ResourcesModel* m = new ResourcesModel("muon-applications-backend", this);
     m_window = new MuonMainWindow;
     m->integrateMainWindow(m_window);
     new ModelTest(m,m);
