@@ -59,7 +59,7 @@ class PackageKitResource : public AbstractResource
 
     public slots:
         void addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
-        void details(const QString &packageId, const QString &license, PackageKit::Transaction::Group group, const QString &detail, const QString &url, qulonglong size);
+        void details(const PackageKit::Details& details);
         void resetPackageIds();
         
     signals:

@@ -25,6 +25,7 @@
 #include <MuonDataSources.h>
 #include <KGlobal>
 #include <KLocale>
+#include <packagekitqt5/Details>
 #include <packagekitqt5/Daemon>
 
 PackageKitResource::PackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, PackageKitBackend* parent)
@@ -328,6 +329,7 @@ bool PackageKitResource::isTechnical() const
     return true;//!m_availablePackageId.startsWith("flash");
 }
 
+// TODO: probably want to fetch the details from the backend, at batch.
 void PackageKitResource::fetchDetails()
 {
 //     kDebug() << "Try to fetch details for" << m_availablePackageId << name();
@@ -337,22 +339,20 @@ void PackageKitResource::fetchDetails()
     m_gotDetails = true;
 //     kDebug() << "Fetch details for" << m_availablePackageId;
     PackageKit::Transaction* transaction = PackageKit::Daemon::global()->getDetails(m_availablePackageId);
-    connect(transaction, SIGNAL(details(QString, QString, PackageKit::Transaction::Group, QString, QString, qulonglong)), SLOT(details(QString, QString, PackageKit::Transaction::Group, QString, QString, qulonglong)));
-    
-//     kDebug() << "ERROR" << transaction->internalErrorMessage();
+    connect(transaction, SIGNAL(details(PackageKit::Details)), SLOT(details(PackageKit::Details)));
 }
 
-void PackageKitResource::details(const QString &packageId, const QString &license, PackageKit::Transaction::Group group, const QString &detail, const QString &url, qulonglong size)
+void PackageKitResource::details(const PackageKit::Details & details)
 {
-    if (packageId != m_availablePackageId)
+    if (details.packageId() != m_availablePackageId)
         return;
 //     kDebug() << "Got details for" << m_availablePackageId;
-    bool newLicense = (license != m_license);
-    m_license = license;
-    m_group = group;
-    m_detail = detail;
-    m_url = url;
-    m_size = size;
+    bool newLicense = (details.license() != m_license);
+    m_license = details.license();
+    m_group = details.group();
+    m_detail = details.description();
+    m_url = details.url();
+    m_size = details.size();
     if (newLicense)
         emit licenseChanged();
 }
