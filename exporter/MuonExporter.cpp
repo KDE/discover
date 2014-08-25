@@ -92,7 +92,6 @@ void MuonExporter::exportModel()
 
     QFile f(m_path.toLocalFile());
     if(f.open(QIODevice::WriteOnly|QIODevice::Text)) {
-        bool ok=true;
         int w = f.write(doc.toJson(QJsonDocument::Indented));
         if(w<=0)
             qWarning() << "Could not completely export the data to " << m_path;

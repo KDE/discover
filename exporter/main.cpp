@@ -47,10 +47,10 @@ int main(int argc, char** argv)
         about.processCommandLine(&parser);
         MuonBackendsFactory::setRequestedBackends(parser.value("backends").split(",", QString::SkipEmptyParts));
 
-        if(parser.positionalArguments().isEmpty()) {
+        if(parser.positionalArguments().count() != 1) {
             parser.showHelp(1);
         }
-        exp.setExportPath(parser.positionalArguments().first());
+        exp.setExportPath(QUrl::fromUserInput(parser.positionalArguments().first(), QString(), QUrl::AssumeLocalFile));
     }
 
     QObject::connect(&exp, SIGNAL(exportDone()), &app, SLOT(quit()));
