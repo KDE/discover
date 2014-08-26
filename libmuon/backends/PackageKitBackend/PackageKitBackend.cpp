@@ -33,6 +33,7 @@
 #include <QTimerEvent>
 #include <packagekitqt5/Transaction>
 #include <packagekitqt5/Daemon>
+#include <packagekitqt5/Details>
 
 #include <KPluginFactory>
 #include <KLocalizedString>
@@ -229,7 +230,6 @@ void PackageKitBackend::populateInstalledCache()
         if (!data.packageNames().isEmpty())
             m_packages[data.packageNames().first()] = new AppPackageKitResource(data.packageNames().first(), PackageKit::Transaction::InfoUnknown, QString(), data, this);
     }
-    setFetching(false);
     
     m_updatingPackages = m_packages;
     
@@ -239,13 +239,12 @@ void PackageKitBackend::populateInstalledCache()
 
     PackageKit::Transaction * t = PackageKit::Daemon::global()->getPackages();
     
-    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(finishRefresh()));
+    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(getPackagesFinished()));
     connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackage(PackageKit::Transaction::Info, QString, QString)));
 }
 
 void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
-    qDebug() << "xxxxxxxxxxx adding package" << packageId << summary;
     QString packageName = PackageKit::Daemon::global()->packageName(packageId);
     if (AbstractResource* r = m_updatingPackages.value(packageName)) {
         qobject_cast<PackageKitResource*>(r)->addPackageId(info, packageId, summary);
@@ -260,15 +259,31 @@ void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QSt
     }
 }
 
-void PackageKitBackend::finishRefresh()
+void PackageKitBackend::getPackagesFinished()
 {
-    kDebug() << "Finished the refresh and resetting packages" << m_updatingPackages.count() << m_packages.count();
-    
-    setFetching(true);
-    
+    Q_ASSERT(m_isFetching);
+
+    PackageKit::Transaction* transaction = PackageKit::Daemon::global()->getDetails(m_updatingPackages.keys());
+    connect(transaction, SIGNAL(details(PackageKit::Details)), SLOT(packageDetails(PackageKit::Details)));
+    connect(transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(getDetailsFinished(PackageKit::Transaction::Exit,uint)));
+}
+
+void PackageKitBackend::getDetailsFinished(PackageKit::Transaction::Exit, uint)
+{
+//     commented out because it's not the case currently, the finished signal is getting
+//     emitted twice, for some reason. *sigh*
+//     Q_ASSERT(m_isFetching);
     m_packages = m_updatingPackages;
-    
     setFetching(false);
+}
+
+void PackageKitBackend::packageDetails(const PackageKit::Details& details)
+{
+    Q_ASSERT(m_isFetching);
+
+    PackageKitResource* res = qobject_cast<PackageKitResource*>(m_updatingPackages.value(details.packageId()));
+    Q_ASSERT(res);
+    res->setDetails(details);
 }
 
 void PackageKitBackend::updateDatabase()

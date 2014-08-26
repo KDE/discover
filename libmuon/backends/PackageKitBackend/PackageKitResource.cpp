@@ -76,13 +76,11 @@ QString PackageKitResource::comment()
 
 QString PackageKitResource::longDescription()
 {
-    fetchDetails();
     return m_detail;
 }
 
 QUrl PackageKitResource::homepage()
 {
-    fetchDetails();
     return m_url;
 }
 
@@ -93,7 +91,6 @@ QString PackageKitResource::icon() const
 
 QString PackageKitResource::license()
 {
-    fetchDetails();
     return m_license;
 }
 
@@ -114,13 +111,12 @@ QString PackageKitResource::installedVersion() const
 
 int PackageKitResource::downloadSize()
 {
-    fetchDetails();
     return m_size;
 }
 
 QString PackageKitResource::origin() const
 {
-    //FIXME
+    //TODO
     return "PackageKit";
 }
 
@@ -329,24 +325,11 @@ bool PackageKitResource::isTechnical() const
     return true;//!m_availablePackageId.startsWith("flash");
 }
 
-// TODO: probably want to fetch the details from the backend, at batch.
-void PackageKitResource::fetchDetails()
-{
-//     kDebug() << "Try to fetch details for" << m_availablePackageId << name();
-    if ((m_gotDetails && (m_size != 0 || m_time.elapsed() < 10000)) || m_availablePackageId.isEmpty())
-        return;
-    m_time.restart();
-    m_gotDetails = true;
-//     kDebug() << "Fetch details for" << m_availablePackageId;
-    PackageKit::Transaction* transaction = PackageKit::Daemon::global()->getDetails(m_availablePackageId);
-    connect(transaction, SIGNAL(details(PackageKit::Details)), SLOT(details(PackageKit::Details)));
-}
-
-void PackageKitResource::details(const PackageKit::Details & details)
+void PackageKitResource::setDetails(const PackageKit::Details & details)
 {
     if (details.packageId() != m_availablePackageId)
         return;
-//     kDebug() << "Got details for" << m_availablePackageId;
+    qDebug() << "Got details for" << m_availablePackageId;
     bool newLicense = (details.license() != m_license);
     m_license = details.license();
     m_group = details.group();

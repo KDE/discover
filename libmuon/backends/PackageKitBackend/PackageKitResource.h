@@ -59,15 +59,12 @@ class PackageKitResource : public AbstractResource
 
     public slots:
         void addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
-        void details(const PackageKit::Details& details);
+        void setDetails(const PackageKit::Details& details);
         void resetPackageIds();
-        
+
     signals:
         void licenseChanged();
 
-    private slots:
-        void fetchDetails();
-        
     protected:
         PackageKitBackend * m_backend;
         
@@ -86,7 +83,6 @@ class PackageKitResource : public AbstractResource
         QString m_availableVersion;
         QString m_installedVersion;
         bool m_gotDetails;
-        QTime m_time;
 };
 
 #endif // PACKAGEKITRESOURCE_H
