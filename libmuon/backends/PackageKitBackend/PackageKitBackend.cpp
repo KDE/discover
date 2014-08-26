@@ -242,7 +242,8 @@ void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QSt
         qobject_cast<PackageKitResource*>(r)->addPackageId(info, packageId, summary);
     } else {
         PackageKitResource* newResource = 0;
-        QList<Appstream::Component> components = m_appdata.findComponentsByString(packageName);
+        QList<Appstream::Component> components = m_appdata.findComponentsByPackageName(packageName);
+
         if (!components.isEmpty())
             newResource = new AppPackageKitResource(packageId, info, summary, components.first(), this);
         else

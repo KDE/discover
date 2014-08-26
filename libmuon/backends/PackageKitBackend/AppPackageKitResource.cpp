@@ -71,7 +71,7 @@ QUrl AppPackageKitResource::homepage()
 
 bool AppPackageKitResource::isTechnical() const
 {
-    return m_appdata.kind() != Appstream::Component::KindAddon;
+    return false;
 }
 
 QStringList AppPackageKitResource::executables() const
