@@ -83,7 +83,7 @@ void MuonExporter::exportModel()
         Q_ASSERT(res);
         data += itemDataToMap(res, m_exculdedProperties);
     }
-    qDebug() << "found items: " << data.count();
+
     QJsonDocument doc = QJsonDocument::fromVariant(data);
     if(doc.isNull()) {
         qWarning() << "Could not completely export the data to " << m_path;
@@ -98,5 +98,6 @@ void MuonExporter::exportModel()
     } else {
         qWarning() << "Could not write to " << m_path;
     }
+    qDebug() << "exported items: " << data.count() << " to " << m_path;
     emit exportDone();
 }
