@@ -189,7 +189,6 @@ PackageKitBackend::PackageKitBackend(QObject* parent, const QVariantList&)
     : AbstractResourcesBackend(parent)
     , m_updater(new PackageKitUpdater(this))
     , m_refresher(0)
-    , m_isLoading(false)
     , m_isFetching(false)
 {
     bool b = m_appdata.open();
@@ -212,11 +211,6 @@ bool PackageKitBackend::isFetching() const
     return m_isFetching;
 }
 
-bool PackageKitBackend::isLoading() const
-{
-    return m_isLoading;
-}
-
 void PackageKitBackend::setFetching(bool f)
 {
     if (f != m_isFetching) {
@@ -229,7 +223,6 @@ void PackageKitBackend::populateInstalledCache()
 {
     kDebug() << "Starting to populate the installed packages cache";
     
-    m_isLoading = true;
     setFetching(true);
 
     for (const Appstream::Component &data : m_appdata.allComponents()) {
@@ -275,7 +268,6 @@ void PackageKitBackend::finishRefresh()
     
     m_packages = m_updatingPackages;
     
-    m_isLoading = false;
     setFetching(false);
 }
 

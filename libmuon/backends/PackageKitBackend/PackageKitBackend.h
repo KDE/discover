@@ -56,9 +56,8 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         virtual void cancelTransaction(AbstractResource* app);
         virtual bool isValid() const { return true; }
         virtual QList<AbstractResource*> upgradeablePackages() const;
-        bool isFetching() const;
-        bool isLoading() const;
-        
+        virtual bool isFetching() const;
+
     public slots:
         void removeTransaction(Transaction* t);
         void populateInstalledCache();
@@ -78,7 +77,6 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         PackageKitUpdater* m_updater;
         QList<PackageKitResource*> m_upgradeablePackages;
         QPointer<PackageKit::Transaction> m_refresher;
-        bool m_isLoading;
         bool m_isFetching;
 };
 
