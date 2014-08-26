@@ -60,7 +60,7 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
 
     public slots:
         void removeTransaction(Transaction* t);
-        void populateInstalledCache();
+        void reloadPackageList();
 
     private slots:
         void getPackagesFinished();

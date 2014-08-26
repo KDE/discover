@@ -194,7 +194,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent, const QVariantList&)
 {
     bool b = m_appdata.open();
     Q_ASSERT(b && "must be able to open the appstream database");
-    populateInstalledCache();
+    reloadPackageList();
 
     QTimer* t = new QTimer(this);
     connect(t, &QTimer::timeout, this, &PackageKitBackend::updateDatabase);
@@ -220,21 +220,13 @@ void PackageKitBackend::setFetching(bool f)
     }
 }
 
-void PackageKitBackend::populateInstalledCache()
+void PackageKitBackend::reloadPackageList()
 {
-    kDebug() << "Starting to populate the installed packages cache";
-    
     setFetching(true);
-
-    for (const Appstream::Component &data : m_appdata.allComponents()) {
-        if (!data.packageNames().isEmpty())
-            m_packages[data.packageNames().first()] = new AppPackageKitResource(data.packageNames().first(), PackageKit::Transaction::InfoUnknown, QString(), data, this);
-    }
-    
     m_updatingPackages = m_packages;
     
     if (m_refresher) {
-        disconnect(m_refresher, SIGNAL(changed()), this, SLOT(populateInstalledCache()));
+        disconnect(m_refresher, SIGNAL(changed()), this, SLOT(reloadPackageList()));
     }
 
     PackageKit::Transaction * t = PackageKit::Daemon::global()->getPackages();
@@ -250,9 +242,9 @@ void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QSt
         qobject_cast<PackageKitResource*>(r)->addPackageId(info, packageId, summary);
     } else {
         PackageKitResource* newResource = 0;
-        Appstream::Component component = m_appdata.componentById(packageName);
-        if (component.isValid())
-            newResource = new AppPackageKitResource(packageId, info, summary, component, this);
+        QList<Appstream::Component> components = m_appdata.findComponentsByString(packageName);
+        if (!components.isEmpty())
+            newResource = new AppPackageKitResource(packageId, info, summary, components.first(), this);
         else
             newResource = new PackageKitResource(packageId, info, summary, this);
         m_updatingPackages[packageName] = newResource;
@@ -291,7 +283,7 @@ void PackageKitBackend::updateDatabase()
     qDebug() << "Starting to update the package cache";
     if (!m_refresher) {
         m_refresher = PackageKit::Daemon::global()->refreshCache(false);
-        connect(m_refresher, SIGNAL(changed()), SLOT(populateInstalledCache()));
+        connect(m_refresher, SIGNAL(changed()), SLOT(reloadPackageList()));
     } else {
         qWarning() << "already resetting";
     }

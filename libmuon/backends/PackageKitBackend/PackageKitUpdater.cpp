@@ -80,7 +80,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint )
     }
     m_isProgressing = false;
     emit progressingChanged(m_isProgressing);
-    m_backend->populateInstalledCache();
+    m_backend->reloadPackageList();
 }
 
 void PackageKitUpdater::backendChanged()
