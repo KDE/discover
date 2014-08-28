@@ -113,11 +113,10 @@ Column {
     }
     Repeater {
         id: reviewsView
-        width: parent.width
         visible: count>0
-        clip: true
 
         delegate: ReviewDelegate {
+            width: parent.width
             onMarkUseful: reviewsModel.markUseful(index, useful)
         }
 
@@ -134,7 +133,7 @@ Column {
         spacing: 5
 
         Button {
-            visible: reviewsModel.count>0
+            visible: reviewsView.visible
             text: i18n("More comments (%1)...", appInfo.ratingInstance ? appInfo.ratingInstance.ratingCount() : 0)
             onClicked: Navigation.openReviews(application, reviewsModel)
         }
