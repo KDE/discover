@@ -171,7 +171,7 @@ Rectangle
             right: parent.right
         }
         height: visible ? 30 : 0
-        width: contentItem!=null ? contentItem.childrenRect.width+5 : 0
+        width: pageToolBar.contentItem!=null ? contentItem.childrenRect.width+5 : 0
         visible: width>0
 
         Behavior on width { NumberAnimation { duration: 250 } }
