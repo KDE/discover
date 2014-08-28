@@ -23,7 +23,7 @@
 
 #include <QWidget>
 
-#include "../libmuonprivate_export.h"
+#include "libmuonprivate_export.h"
 
 /**
  * @brief Base class for the settings pages of the Muon settings dialog.

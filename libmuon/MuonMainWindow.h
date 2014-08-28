@@ -26,7 +26,6 @@
 
 // KDE includes
 #include <KXmlGuiWindow>
-#include <KLocale>
 
 #include "libmuonprivate_export.h"
 

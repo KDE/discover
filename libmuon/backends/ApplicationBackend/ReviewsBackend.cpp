@@ -26,7 +26,7 @@
 
 #include <KGlobal>
 #include <KIO/Job>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KStandardDirs>
 #include <KTemporaryFile>
 #include <KFilterDev>

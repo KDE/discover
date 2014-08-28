@@ -222,7 +222,7 @@ void AkabeiResource::fetchScreenshots()
 void AkabeiResource::slotScreenshotsFetched(KJob * job)
 {
     if (job->error() != KJob::NoError) {
-        kWarning() << job->errorString();
+        qWarning() << job->errorString();
     }
     bool done = false;
     QString dest = "/tmp/screenshot." + packageName(); //KStandardDirs::locate("tmp", "screenshots." + packageName());

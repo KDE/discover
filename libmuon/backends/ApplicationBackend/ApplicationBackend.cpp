@@ -32,7 +32,7 @@
 #include <QAction>
 
 // KDE includes
-#include <KLocale>
+#include <KLocalizedString>
 #include <KMessageBox>
 #include <KProcess>
 #include <KProtocolManager>
@@ -618,7 +618,7 @@ void ApplicationBackend::initAvailablePackages(KJob* j)
     QJsonParseError error;
     QJsonDocument doc = QJsonDocument::fromJson(job->data(), &error);
     if(error.error != QJsonParseError::NoError)
-        kWarning() << "errors!" << error.errorString();
+        qWarning() << "errors!" << error.errorString();
     else {
         QVariantList data = doc.toVariant().toMap().value("packages").toList();
         Q_ASSERT(!m_appList.isEmpty());

@@ -37,8 +37,8 @@
 #include <KMessageWidget>
 #include <KProcess>
 #include <KProtocolManager>
-#include <KStandardDirs>
 #include <KToolBar>
+#include <KLocalizedString>
 #warning TODO, waiting for this new API to finally be accepted
 // #include <Solid/Power>
 // #include <Solid/AcPluggedJob>

@@ -22,8 +22,9 @@
 #include "Category.h"
 #include <QDomNode>
 #include <QFile>
-#include <KGlobal>
-#include <KStandardDirs>
+#include <QDebug>
+#include <qstandardpaths.h>
+
 #include <MuonBackendsFactory.h>
 #include <resources/AbstractResourcesBackend.h>
 
@@ -69,7 +70,7 @@ QList<Category*> CategoriesReader::populateCategories()
 
     QList<Category*> ret;
     for (const QString& name : backendNames) {
-        QString file = KGlobal::dirs()->findResource("data", "libmuon/categories/"+name+"-categories.xml");
+        QString file = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "libmuon/categories/"+name+"-categories.xml");
         if (file.isEmpty()) {
             qWarning() << "Couldn't find a category for " << name;
             continue;

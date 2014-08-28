@@ -25,7 +25,7 @@
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/Rating.h>
 
-#include <qtest_kde.h>
+#include <qtest.h>
 
 QTEST_KDEMAIN_CORE( KNSBackendTest )
 

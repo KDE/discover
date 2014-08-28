@@ -22,7 +22,7 @@
 #include "ResourcesProxyModel.h"
 
 #include <QDebug>
-#include <KDebug>
+#include <QDebug>
 
 #include "ResourcesModel.h"
 #include "AbstractResource.h"
@@ -51,7 +51,7 @@ void ResourcesProxyModel::setSourceModel(QAbstractItemModel* source)
     if(newModel) {
         connect(newModel, SIGNAL(searchInvalidated()), SLOT(refreshSearch()));
     } else if(source)
-        kWarning() << "ResourcesProxyModel with " << source;
+        qWarning() << "ResourcesProxyModel with " << source;
 }
 
 void ResourcesProxyModel::setSearch(const QString &searchText)
@@ -167,7 +167,7 @@ bool shouldFilter(AbstractResource* res, const QPair<FilterType, QString>& filte
 bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
     AbstractResource* res = qobject_cast<AbstractResource*>(sourceModel()->index(sourceRow, 0, sourceParent).data(ResourcesModel::ApplicationRole).value<QObject*>());
-    if(!res)
+    if(!res) //assert?
         return false;
 
     if(m_filterBySearch && !m_searchResults.contains(res)) {

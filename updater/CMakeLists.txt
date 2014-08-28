@@ -24,7 +24,8 @@ target_link_libraries(muon-updater KF5::CoreAddons
                                    KF5::Solid
                                    KF5::I18n
                                    KF5::DBusAddons
-                                   KF5::KDELibs4Support
+                                   KF5::XmlGui
+                                   KF5::IconThemes
                                    muonprivate)
 
 if (ENABLE_QZEITGEIST)

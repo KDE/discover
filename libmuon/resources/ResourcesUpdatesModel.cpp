@@ -23,13 +23,14 @@
 #include "AbstractBackendUpdater.h"
 #include "AbstractResource.h"
 #include <QDateTime>
-#include <klocalizedstring.h>
 #include <QDBusConnection>
 #include <QDBusInterface>
 #include <QDBusMessage>
 #include <QDBusReply>
+#include <QDebug>
+
 #include <KLocalizedString>
-#include <KGlobal>
+#include <KFormat>
 
 ResourcesUpdatesModel::ResourcesUpdatesModel(QObject* parent)
     : QStandardItemModel(parent)
@@ -144,8 +145,7 @@ QString ResourcesUpdatesModel::remainingTime() const
     if(maxEta==0 && maxEta < 2 * 24 * 60 * 60)
         return QString();
     else
-        return i18nc("@item:intext Remaining time", "%1 remaining",
-                                /*KGlobal::locale()->prettyFormatDuration*/QString::number(maxEta)); //TODO: port
+        return i18nc("@item:intext Remaining time", "%1 remaining", KFormat().formatDuration(maxEta));
 }
 
 QList<QAction*> ResourcesUpdatesModel::messageActions() const

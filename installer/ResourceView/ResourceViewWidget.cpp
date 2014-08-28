@@ -29,7 +29,7 @@
 
 // KDE includes
 #include <KComboBox>
-#include <KLocale>
+#include <KLocalizedString>
 
 // Libmuon includes
 #include <Category/Category.h>

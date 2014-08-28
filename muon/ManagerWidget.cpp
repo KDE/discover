@@ -29,7 +29,7 @@
 // KDE includes
 #include <KDebug>
 #include <KHBox>
-#include <KLocale>
+#include <KLocalizedString>
 
 // LibQApt includes
 #include <LibQApt/Backend>

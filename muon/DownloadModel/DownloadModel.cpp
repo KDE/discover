@@ -21,7 +21,7 @@
 #include "DownloadModel.h"
 
 #include <KDebug>
-#include <KLocale>
+#include <KLocalizedString>
 
 DownloadModel::DownloadModel(QObject *parent)
 : QAbstractListModel(parent)

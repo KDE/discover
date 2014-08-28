@@ -21,7 +21,7 @@
 #include "MuonStrings.h"
 
 #include <KGlobal>
-#include <KLocale>
+#include <KLocalizedString>
 #include <QDebug>
 
 #include <LibQApt/Transaction>

@@ -25,14 +25,15 @@
 #include <QtDBus/QDBusMessage>
 #include <qdbusinterface.h>
 #include <qdbusreply.h>
-#include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QCheckBox>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QRadioButton>
-#include <QtWidgets/QVBoxLayout>
+#include <QButtonGroup>
+#include <QCheckBox>
+#include <QLabel>
+#include <QRadioButton>
+#include <QVBoxLayout>
+#include <QDialog>
 
 #include <KConfig>
-#include <KDialog>
+#include <KConfigGroup>
 #include <klocalizedstring.h>
 #include <kservicetypetrader.h>
 
@@ -58,7 +59,6 @@ NotifySettingsPage::NotifySettingsPage(QWidget* parent) :
     
     QVBoxLayout* layout = new QVBoxLayout(this);
     layout->setMargin(0);
-    layout->setSpacing(KDialog::spacingHint());
 
     m_updatesCheckBox = new QCheckBox(i18n("Show notifications for available updates"), this);
     m_verboseCheckBox = new QCheckBox(i18n("Show the number of available updates"), this);

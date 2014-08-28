@@ -33,7 +33,7 @@
 #include <QDebug>
 
 // KDE includes
-#include <KLocale>
+#include <KLocalizedString>
 #include <KMessageBox>
 
 // LibQApt includes

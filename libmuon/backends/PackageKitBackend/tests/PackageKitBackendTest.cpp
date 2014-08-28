@@ -18,9 +18,9 @@
 #include "PackageKitBackendTest.h"
 #include <PackageKitUtils.h>
 
-#include <qtest_kde.h>
+#include <qtest.h>
 
-QTEST_KDEMAIN_CORE( PackageKitBackendTest )
+QTEST_MAIN( PackageKitBackendTest )
 
 PackageKitBackendTest::PackageKitBackendTest(QObject * parent)
   : QObject(parent)

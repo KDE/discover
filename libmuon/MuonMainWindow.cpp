@@ -25,15 +25,15 @@
 #include <QShortcut>
 #include <QAction>
 #include <QApplication>
+#include <QDialog>
+#include <QVBoxLayout>
+#include <QStandardPaths>
 
-// KDE includes
+// KF5 includes
+#include <KLocalizedString>
 #include <KActionCollection>
-#include <KDialog>
 #include <KStandardAction>
-#include <KStandardDirs>
-#include <KVBox>
-#include <Solid/Networking>
-#include <Phonon/MediaObject>
+#include <phonon/MediaObject>
 
 MuonMainWindow::MuonMainWindow()
     : KXmlGuiWindow(0)
@@ -62,11 +62,11 @@ void MuonMainWindow::setupActions()
 
 void MuonMainWindow::easterEggTriggered()
 {
-    KDialog *dialog = new KDialog(this);
-    KVBox *widget = new KVBox(dialog);
-    QLabel *label = new QLabel(widget);
+    QDialog *dialog = new QDialog(this);
+    QVBoxLayout *layout = new QVBoxLayout(dialog);
+    QLabel *label = new QLabel(dialog);
     label->setText(i18nc("@label Easter Egg", "This Muon has super cow powers"));
-    QLabel *moo = new QLabel(widget);
+    QLabel *moo = new QLabel(dialog);
     moo->setFont(QFont("monospace"));
     moo->setText("             (__)\n"
                  "             (oo)\n"
@@ -75,12 +75,12 @@ void MuonMainWindow::easterEggTriggered()
                  "  *  ||------||\n"
                  "     ^^      ^^\n");
 
-    dialog->setMainWidget(widget);
+    dialog->setLayout(layout);
     dialog->show();
 
-    QString mooFile = KStandardDirs::locate("data", "libmuon/moo.ogg");
+    QString mooFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "libmuon/moo.ogg");
     Phonon::MediaObject *music =
-        Phonon::createPlayer(Phonon::MusicCategory,
+    Phonon::createPlayer(Phonon::MusicCategory,
                              Phonon::MediaSource(mooFile));
     music->play();
 }
@@ -104,8 +104,10 @@ void MuonMainWindow::setActionsEnabled(bool enabled)
 
 bool MuonMainWindow::isConnected() const
 {
-    int status = Solid::Networking::status();
-    bool connected = ((status == Solid::Networking::Connected) ||
-                      (status == Solid::Networking::Unknown));
-    return connected;
+//     TODO: Port to new solid API
+//     int status = Solid::Networking::status();
+//     bool connected = ((status == Solid::Networking::Connected) ||
+//                       (status == Solid::Networking::Unknown));
+//     return connected;
+    return true;
 }

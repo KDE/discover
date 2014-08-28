@@ -43,12 +43,12 @@ void PKTransaction::start()
     switch (role()) {
         case Transaction::InstallRole:
             if (qobject_cast<PackageKitResource*>(resource())->availablePackageId().isEmpty())
-                kWarning() << "Trying to install a package with empty packageId" << resource()->name();
+                qWarning() << "Trying to install a package with empty packageId" << resource()->name();
             m_trans = PackageKit::Daemon::global()->installPackage(qobject_cast<PackageKitResource*>(resource())->availablePackageId());
             break;
         case Transaction::RemoveRole:
             if (qobject_cast<PackageKitResource*>(resource())->installedPackageId().isEmpty())
-                kWarning() << "Trying to remove a package with empty packageId" << resource()->name();
+                qWarning() << "Trying to remove a package with empty packageId" << resource()->name();
             m_trans = PackageKit::Daemon::global()->installPackage(qobject_cast<PackageKitResource*>(resource())->installedPackageId());
             break;
         case Transaction::ChangeAddonsRole:

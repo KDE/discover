@@ -26,7 +26,7 @@
 // KDE includes
 #include <KIO/Job>
 #include <KJob>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
 #include <KTemporaryFile>

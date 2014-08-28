@@ -26,7 +26,7 @@
 
 // KDE includes
 #include <KCategorizedSortFilterProxyModel>
-#include <KLocale>
+#include <KLocalizedString>
 
 // Libmuon includes
 #include <Category/Category.h>

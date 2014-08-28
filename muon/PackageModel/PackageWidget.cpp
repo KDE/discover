@@ -34,7 +34,7 @@
 #include <KComboBox>
 #include <KHBox>
 #include <KLineEdit>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KMenu>
 #include <KMessageBox>
 #include <KPixmapSequence>

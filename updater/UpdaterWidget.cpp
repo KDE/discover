@@ -33,7 +33,7 @@
 #include <QPushButton>
 
 // KDE includes
-#include <KLocale>
+#include <KLocalizedString>
 #include <KMessageBox>
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>

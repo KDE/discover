@@ -50,7 +50,7 @@ QMap<QString,QString> retrieveCredentials(const QString& folderName)
                 ret["username"] = map.value("username");
                 ret["password"] = map.value("password");
             } else {
-                kWarning() << "Unable to read credentials from wallet";
+                qWarning() << "Unable to read credentials from wallet";
             }
         }
 
@@ -68,7 +68,7 @@ QMap<QString,QString> retrieveCredentials(const QString& folderName)
             delete dialog;
         }
     } else {
-        kWarning() << "Unable to open wallet";
+        qWarning() << "Unable to open wallet";
     }
 
     return ret;

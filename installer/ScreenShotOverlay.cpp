@@ -34,7 +34,7 @@
 #include <QGraphicsOpacityEffect>
 #include <QScrollArea>
 
-#include <KLocale>
+#include <KLocalizedString>
 
 #include "ClickableLabel.h"
 #include "effects/GraphicsOpacityDropShadowEffect.h"

@@ -25,7 +25,7 @@
 
 // KDE includes
 #include <KCategorizedSortFilterProxyModel>
-#include <KLocale>
+#include <KLocalizedString>
 
 // Own includes
 #include <Category/Category.h>

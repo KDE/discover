@@ -32,7 +32,6 @@
 
 // KDE includes
 #include <KIconLoader>
-#include <KLocale>
 #include <KService>
 #include <KServiceGroup>
 #include <KToolInvocation>

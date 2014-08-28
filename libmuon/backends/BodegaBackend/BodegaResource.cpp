@@ -24,7 +24,7 @@
 #include <bodega/assetoperations.h>
 #include <KLocalizedString>
 #include <KGlobal>
-#include <KLocale>
+#include <KLocalizedString>
 #include <QDebug>
 
 BodegaResource::BodegaResource(const Bodega::AssetInfo& info, AbstractResourcesBackend* parent)

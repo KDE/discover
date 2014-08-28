@@ -24,7 +24,7 @@
 #include "PackageKitUtils.h"
 #include <MuonDataSources.h>
 #include <KGlobal>
-#include <KLocale>
+#include <KLocalizedString>
 #include <packagekitqt5/Details>
 #include <packagekitqt5/Daemon>
 

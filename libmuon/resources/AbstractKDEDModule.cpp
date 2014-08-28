@@ -24,14 +24,13 @@
 #include <QDebug>
 
 #include <KStatusNotifierItem>
-#include <KLocale>
 #include <KRun>
-#include <KMenu>
-#include <KIcon>
+#include <QMenu>
 #include <KNotification>
 #include <KIconLoader>
+#include <KConfig>
 #include <KConfigGroup>
-#include <kdebug.h>
+#include <KLocalizedString>
 
 class AbstractKDEDModule::Private
 {
@@ -73,9 +72,9 @@ AbstractKDEDModule::AbstractKDEDModule(const QString &name, const QString &iconN
     d->statusNotifier->setStandardActionsEnabled(false);
     d->statusNotifier->contextMenu()->clear();
     d->statusNotifier->contextMenu()->setTitle(i18n("Muon %1 update notifier", name));
-    d->statusNotifier->contextMenu()->setIcon(KIcon(iconName));
-    d->statusNotifier->contextMenu()->addAction(KIcon("muondiscover"), i18n("Open Muon..."), this, SLOT(__k__showMuon()));
-    d->statusNotifier->contextMenu()->addAction(KIcon("application-exit"), i18n("Quit notifier..."), this, SLOT(__k__quit()));
+    d->statusNotifier->contextMenu()->setIcon(QIcon::fromTheme(iconName));
+    d->statusNotifier->contextMenu()->addAction(QIcon::fromTheme("muondiscover"), i18n("Open Muon..."), this, SLOT(__k__showMuon()));
+    d->statusNotifier->contextMenu()->addAction(QIcon::fromTheme("application-exit"), i18n("Quit notifier..."), this, SLOT(__k__quit()));
     
     connect(d->statusNotifier, SIGNAL(activateRequested(bool, QPoint)), SLOT(__k__showMuon()));
 }
@@ -158,7 +157,7 @@ void AbstractKDEDModule::setSystemUpToDate(bool systemUpToDate, int updateCount,
 	     && (d->updateCount != updateCount 
 	         || d->securityUpdateCount != securityUpdateCount
 	         || d->updateType != updateType))) {
-            KNotification::event("Update", i18n("System update available!"), message, KIcon("svn-update").pixmap(KIconLoader::SizeMedium), nullptr, KNotification::CloseOnTimeout, "muonabstractnotifier");
+            KNotification::event("Update", i18n("System update available"), message, QIcon::fromTheme("svn-update").pixmap(KIconLoader::SizeMedium), nullptr, KNotification::CloseOnTimeout, "muonabstractnotifier");
         }
     } else {
         d->statusNotifier->setOverlayIconByName(QString());

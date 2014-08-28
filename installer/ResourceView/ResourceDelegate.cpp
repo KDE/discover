@@ -32,7 +32,7 @@
 #include <KApplication>
 #include <KIconLoader>
 #include <KGlobal>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KStandardDirs>
 #include <Nepomuk/KRatingPainter>
 #include <KDebug>

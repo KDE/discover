@@ -24,7 +24,7 @@
 #include <QtWidgets/QPushButton>
 
 #include <KDebug>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KStandardGuiItem>
 
 #include <resources/AbstractResource.h>

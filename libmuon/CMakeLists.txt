@@ -45,15 +45,20 @@ LINK_PUBLIC
     Qt5::Widgets
     KF5::Service
     KF5::DBusAddons # for the notifier
-    KF5::KDELibs4Support
+    KF5::I18n
 LINK_PRIVATE
     Qt5::Xml
+    KF5::Notifications
     KF5::XmlGui
     KF5::ItemViews
+    KF5::KIOWidgets
+    KF5::IconThemes
     Phonon::phonon4qt5
 )
 
-target_include_directories(muonprivate PRIVATE ${PHONON_INCLUDES})
+generate_export_header(muonprivate EXPORT_FILE_NAME libmuonprivate_export.h)
+
+target_include_directories(muonprivate PRIVATE ${PHONON_INCLUDES} PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 
 install(TARGETS muonprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES moo.ogg DESTINATION ${DATA_INSTALL_DIR}/libmuon)

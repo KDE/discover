@@ -98,7 +98,7 @@ void ApplicationNotifier::checkUpgradeFinished(int exitStatus)
     qWarning() << "checked for upgrades and return with " << exitStatus;
     if (exitStatus == 0) {
         KNotification::event("DistUpgrade", i18n("System update available!"), i18nc("Notification when a new version of Kubuntu is available",
-                                 "A new version of Kubuntu is available"), KIcon("svn-update").pixmap(KIconLoader::SizeMedium), nullptr, KNotification::CloseOnTimeout, "muonapplicationnotifier");
+                                 "A new version of Kubuntu is available"), QIcon::fromTheme("svn-update").pixmap(KIconLoader::SizeMedium), nullptr, KNotification::CloseOnTimeout, "muonapplicationnotifier");
         setSystemUpToDate(false, AbstractKDEDModule::NormalUpdate, AbstractKDEDModule::DontShowNotification);
     }
 

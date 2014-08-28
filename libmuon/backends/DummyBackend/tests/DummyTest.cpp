@@ -21,7 +21,7 @@
 #include "DummyTest.h"
 #include <modeltest.h>
 #include <resources/ResourcesModel.h>
-#include <qtest_kde.h>
+#include <qtest.h>
 
 #include <QtTest>
 

@@ -44,7 +44,7 @@
 #include <KHBox>
 #include <KIO/Job>
 #include <KJob>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KPixmapSequence>
 #include <kpixmapsequenceoverlaypainter.h>
 #include <KService>

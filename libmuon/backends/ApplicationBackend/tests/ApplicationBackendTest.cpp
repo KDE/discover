@@ -25,7 +25,7 @@
 #include <KProtocolManager>
 #include <KStandardDirs>
 #include <KActionCollection>
-#include <qtest_kde.h>
+#include <qtest.h>
 
 #include "modeltest.h"
 #include <ApplicationBackend.h>

@@ -45,7 +45,7 @@
 #include <KToolBarSpacerAction>
 #include <KActionCollection>
 #include <kdeclarative/kdeclarative.h>
-#include <plasma/theme.h>
+#include <KLocalizedString>
 #include <KMessageBox>
 #include <KToolBar>
 #include <KXMLGUIFactory>

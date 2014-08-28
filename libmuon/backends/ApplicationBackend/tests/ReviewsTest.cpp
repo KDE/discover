@@ -23,7 +23,7 @@
 #include <ReviewsBackend/ReviewsModel.h>
 #include <libqapt/backend.h>
 #include <KProtocolManager>
-#include <qtest_kde.h>
+#include <qtest.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <MuonBackendsFactory.h>
 #include <resources/AbstractResourcesBackend.h>

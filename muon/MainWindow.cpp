@@ -33,7 +33,7 @@
 // KDE includes
 #include <KActionCollection>
 #include <KFileDialog>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KMessageBox>
 #include <KProtocolManager>
 #include <KStandardAction>

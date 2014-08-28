@@ -23,7 +23,7 @@
 #include <QtCore/QTimer>
 #include <QtWidgets/QToolButton>
 
-#include <KLocale>
+#include <KLocalizedString>
 #include <KLineEdit>
 #include <KSeparator>
 #include <KStandardGuiItem>

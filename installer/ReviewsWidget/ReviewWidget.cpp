@@ -25,7 +25,7 @@
 #include <QtWidgets/QLabel>
 
 #include <KGlobal>
-#include <KLocale>
+#include <KLocalizedString>
 #include <Nepomuk/KRatingWidget>
 
 #include <ReviewsBackend/Review.h>

@@ -21,7 +21,7 @@
 #include "StatusFilter.h"
 
 // KDE includes
-#include <KLocale>
+#include <KLocalizedString>
 
 // LibQApt includes
 #include <LibQApt/Package>

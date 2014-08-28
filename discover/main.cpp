@@ -19,7 +19,8 @@
 
 #include <QApplication>
 #include <KAboutData>
-#include <kdbusservice.h>
+#include <KDBusService>
+#include <KLocalizedString>
 #include <QCommandLineParser>
 #include "MuonDiscoverMainWindow.h"
 #include <MuonBackendsFactory.h>

@@ -368,7 +368,7 @@ void PackageKitBackend::cancelTransaction(AbstractResource* app)
                 Q_UNUSED(count)
                 //TransactionModel::global()->cancelTransaction(t);
             } else {
-                kWarning() << "trying to cancel a non-cancellable transaction: " << app->name();
+                qWarning() << "trying to cancel a non-cancellable transaction: " << app->name();
             }
             break;
         }

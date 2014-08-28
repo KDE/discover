@@ -31,7 +31,7 @@
 #include <KDebug>
 #include <KDialog>
 #include <KHBox>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KMenu>
 #include <KMessageBox>
 #include <KTextBrowser>

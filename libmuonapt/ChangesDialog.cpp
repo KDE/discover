@@ -27,7 +27,7 @@
 #include <QtWidgets/QVBoxLayout>
 
 // KDE includes
-#include <KLocale>
+#include <KLocalizedString>
 #include <KStandardGuiItem>
 
 // Own includes

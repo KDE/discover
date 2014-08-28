@@ -20,8 +20,6 @@
 
 #include "ResourcesModel.h"
 
-#include <KGlobal>
-
 #include "AbstractResource.h"
 #include "resources/AbstractResourcesBackend.h"
 #include <ReviewsBackend/Rating.h>
@@ -191,7 +189,7 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
             const QMetaObject* m = resource->metaObject();
             int propidx = roleText.isEmpty() ? -1 : m->indexOfProperty(roleText);
 
-            if(KDE_ISUNLIKELY(propidx < 0)) {
+            if(Q_UNLIKELY(propidx < 0)) {
                 qDebug() << "unknown role:" << role << roleText;
                 return QVariant();
             } else

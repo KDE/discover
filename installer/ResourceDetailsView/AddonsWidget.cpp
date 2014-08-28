@@ -30,7 +30,7 @@
 #include <QtWidgets/QToolButton>
 
 // KDE includes
-#include <KLocale>
+#include <KLocalizedString>
 
 // Libmuon includes
 #include <resources/AbstractResourcesBackend.h>

@@ -20,7 +20,7 @@
 
 #include "AppPackageKitResource.h"
 #include <KGlobal>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KStandardDirs>
 #include <KToolInvocation>
 #include <QDebug>

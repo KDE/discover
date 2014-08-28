@@ -31,7 +31,7 @@
 #include <KGlobal>
 #include <KHBox>
 #include <KLineEdit>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KDebug>
 #include <kdeversion.h>
 

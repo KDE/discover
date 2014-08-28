@@ -22,7 +22,7 @@
 #include <packagekitqt5/Daemon>
 #include <QSet>
 
-#include <KLocale>
+#include <KLocalizedString>
 #include <KMessageBox>
 #include <KDebug>
 

@@ -27,7 +27,7 @@
 #include <QFormLayout>
 
 #include <KDialog>
-#include <KLocale>
+#include <KLocalizedString>
 
 #include <LibQApt/Config>
 

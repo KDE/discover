@@ -23,7 +23,7 @@
 
 #include "SettingsPageBase.h"
 
-#include "../libmuonprivate_export.h"
+#include "libmuonprivate_export.h"
 
 class QDBusInterface;
 class QCheckBox;

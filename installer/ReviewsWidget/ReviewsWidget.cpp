@@ -27,7 +27,7 @@
 #include <QtWidgets/QToolButton>
 
 #include <KDialog>
-#include <KLocale>
+#include <KLocalizedString>
 
 #include <ReviewsBackend/Review.h>
 

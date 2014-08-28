@@ -25,7 +25,7 @@
 
 // KDE includes
 #include <KComboBox>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KTextBrowser>
 
 // LibQApt includes

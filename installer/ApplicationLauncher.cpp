@@ -29,7 +29,7 @@
 #include <QStandardItemModel>
 #include <QtWidgets/QVBoxLayout>
 
-#include <KLocale>
+#include <KLocalizedString>
 #include <KStandardGuiItem>
 
 ApplicationLauncher::ApplicationLauncher(LaunchListModel* model, QWidget* parent)

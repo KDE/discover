@@ -24,7 +24,7 @@
 #include <QScrollArea>
 
 // KDE
-#include <KLocale>
+#include <KLocalizedString>
 
 // LibQApt includes
 #include <LibQApt/Backend>

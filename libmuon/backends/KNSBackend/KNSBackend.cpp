@@ -83,7 +83,7 @@ KNSBackend::KNSBackend(QObject* parent, const QVariantList& args)
 
     if (!group.isValid()) {
         m_isValid = false;
-        kWarning() << "Config group not found! Check your KNS3 installation.";
+        qWarning() << "Config group not found! Check your KNS3 installation.";
         return;
     }
 
@@ -203,7 +203,7 @@ void KNSBackend::statusChanged(const KNS3::Entry& entry)
     if(r)
         r->setEntry(entry);
     else
-        kWarning() << "unknown entry changed" << entry.id() << entry.name();
+        qWarning() << "unknown entry changed" << entry.id() << entry.name();
 }
 
 void KNSBackend::cancelTransaction(AbstractResource* app)

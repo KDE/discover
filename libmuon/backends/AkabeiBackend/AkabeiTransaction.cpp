@@ -30,7 +30,6 @@
 #include <KDebug>
 #include <KMessageBox>
 #include <QButtonGroup>
-#include <KLocale>
 #include <KDialog>
 #include <akabeidatabase.h>
 #include <akabeiquery.h>

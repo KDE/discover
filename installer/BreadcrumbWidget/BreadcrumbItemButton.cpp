@@ -19,7 +19,7 @@
 #include "BreadcrumbItemButton.h"
 
 #include <KColorScheme>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KMenu>
 
 #include <QApplication>

@@ -20,7 +20,7 @@
 
 #include "ReviewWidget.h"
 
-#include <KLocale>
+#include <KLocalizedString>
 
 ReviewWidget::ReviewWidget(QWidget *parent)
     : PackageWidget(parent)
