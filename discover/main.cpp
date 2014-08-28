@@ -29,15 +29,13 @@
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
-    KAboutData about("muon-discover", i18n("Muon Discover"), version, i18n("An application discoverer"),
-                     KAboutLicense::GPL, i18n("©2010-2012 Jonathan Thomas"));
+    KAboutData about("muon-discover", i18n("Muon Discover"), version, i18n("An application explorer"),
+                     KAboutLicense::GPL, i18n("© 2010-2014 Muon Development Team"));
     about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), "aleixpol@blue-systems.com");
     about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
     about.setProgramIconName("muondiscover");
     about.setProductName("muon/discover");
-    app.setApplicationDisplayName("Muon Discover");
-    app.setApplicationName("muon-discover");
-    app.setApplicationVersion(version);
+    KAboutData::setApplicationData(about);
 
 //     KDBusService service(KDBusService::Unique);
     MuonDiscoverMainWindow *mainWindow = new MuonDiscoverMainWindow;
