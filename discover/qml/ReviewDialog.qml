@@ -1,66 +1,44 @@
-import QtQuick 2.1
-import QtQuick.Controls 1.1
-import org.kde.plasma.components 2.0 as Components
+import QtQuick 2.3
+import QtQuick.Controls 1.2
+import QtQuick.Dialogs 1.2
+import QtQuick.Layouts 1.1
+import QtQuick.Window 2.0
 
-Components.CommonDialog {
+Dialog
+{
     property QtObject application
     property alias rating: ratingInput.rating
     property alias summary: summaryInput.text
     property alias review: reviewInput.text
     id: reviewDialog
-    onClickedOutside: reviewDialog.close()
-    titleText: i18n("Reviewing %1", application.name)
-    buttons: Item {
-        height: 30
-        width: 200
-        Button {
-            id: submitButton
-            height: parent.height
-            anchors.left: parent.left
-            anchors.margins: 10
-            width: 100
-            text: i18n("Submit"); onClicked: reviewDialog.accept()
-            iconSource: "dialog-ok"
-        }
-        Button {
-            height: parent.height
-            width: 100
-            anchors.margins: 10
-            anchors.right: parent.right; anchors.left: submitButton.right
-            iconSource: "dialog-close"
-            text: i18n("Close"); onClicked: reviewDialog.reject()
-        }
-    }
+    title: i18n("Reviewing %1", application.name)
+    modality: Qt.WindowModal
+
+    height: 200
+    width: 200
     
-    content: Item {
-        height: 200
-        width: 200
-        
-        Column {
-            id: info
-            spacing: 5
-            anchors.left: parent.left
-            anchors.right: parent.right
-            Label { text: i18n("Rating:") }
-            Rating {
-                id: ratingInput
-                editable: true
-            }
-            
-            Label { text: i18n("Summary:") }
-            TextField {
-                id: summaryInput
-                anchors.left: parent.left
-                anchors.right: parent.right
-            }
+    ColumnLayout {
+        width: parent.width
+        height: parent.height
+
+        Label { text: i18n("Rating:") }
+        Rating {
+            id: ratingInput
+            editable: true
         }
-        
+
+        Label { text: i18n("Summary:") }
+        TextField {
+            id: summaryInput
+            Layout.fillWidth: true
+        }
+
         TextArea {
             id: reviewInput
-            width: parent.width
-            anchors.top: info.bottom
-            anchors.bottom: parent.bottom
-            anchors.margins: 5
+            Layout.fillWidth: true
+            Layout.fillHeight: true
         }
     }
+
+    standardButtons: StandardButton.Ok | StandardButton.Close
 }

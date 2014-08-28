@@ -141,7 +141,13 @@ Column {
         Button {
             visible: appInfo.reviewsBackend != null && application.isInstalled
             text: i18n("Review")
-            onClicked: reviewDialog.open()
+            onClicked: reviewDialog.visible = true
+
+            ReviewDialog {
+                id: reviewDialog
+                application: appInfo.application
+                onAccepted: appInfo.reviewsBackend.submitReview(appInfo.application, summary, review, rating)
+            }
         }
     }
     Item { height: 10; width: 5 } //margin by the end

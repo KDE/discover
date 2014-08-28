@@ -45,11 +45,7 @@ Item {
             height: childrenRect.height
         }
     }
-    ReviewDialog {
-        id: reviewDialog
-        application: appInfo.application
-        onAccepted: appInfo.reviewsBackend.submitReview(appInfo.application, summary, review, rating)
-    }
+
     Column {
         anchors {
             top: parent.verticalCenter
