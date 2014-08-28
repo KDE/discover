@@ -26,9 +26,9 @@ Item
     id: item
     visible: model.shouldShow
     height: content.height+10
-    
+
     signal markUseful(bool useful)
-    
+
     function usefulnessToString(favorable, total)
     {
         return total==0
@@ -40,19 +40,19 @@ Item
         hoverEnabled: true
         width: parent.width
         height: content.height
-    
+
         Label {
             anchors {
                 left: parent.left
                 right: rating.left
             }
-            
+
             id: content
             text: i18n("<p style='margin: 0 0 0 0'><b>%1</b> by %2</p><p style='margin: 0 0 0 0'>%3</p><p style='margin: 0 0 0 0'>%4</p>", summary, reviewer,
                     display, usefulnessToString(usefulnessFavorable, usefulnessTotal))
             wrapMode: Text.WordWrap
         }
-        
+
         Label {
             anchors {
                 right: parent.right
@@ -60,7 +60,7 @@ Item
                 bottomMargin: -5
             }
             opacity: delegateArea.containsMouse ? 1 : 0.2
-            
+
             text: {
                 switch(usefulChoice) {
                     case ReviewsModel.Yes:
@@ -76,12 +76,12 @@ Item
             }
             onLinkActivated: item.markUseful(link=='true')
         }
-        
+
         Rating {
             id: rating
             anchors.top: parent.top
             anchors.right: parent.right
-            rating: model["rating"]
+            rating: model.rating
             height: content.font.pixelSize
         }
     }
