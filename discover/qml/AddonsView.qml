@@ -1,5 +1,5 @@
 import QtQuick 2.1
-import org.kde.plasma.components 2.0
+import QtQuick.Controls 1.1
 import org.kde.muon 1.0
 
 Column
@@ -15,7 +15,7 @@ Column
     {
         model: ApplicationAddonsModel { id: addonsModel }
         
-        delegate: ListItem {
+        delegate: Item {
             height: (description.height + name.height)*1.2
             width: addonsView.width
             Row {
@@ -67,7 +67,7 @@ Column
         Button {
             height: parent.enabled ? implicitHeight : 0
             visible: height!=0
-            iconSource: "dialog-ok"
+            iconName: "dialog-ok"
             text: i18n("Install")
             onClicked: addonsModel.applyChanges()
             Behavior on height { NumberAnimation { duration: 100 } }
@@ -75,7 +75,7 @@ Column
         Button {
             height: parent.enabled ? implicitHeight : 0
             visible: height!=0
-            iconSource: "document-revert"
+            iconName: "document-revert"
             text: i18n("Discard")
             onClicked: addonsModel.discardChanges()
             Behavior on height { NumberAnimation { duration: 100 } }

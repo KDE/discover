@@ -20,7 +20,6 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
 import org.kde.plasma.core 2.0
-import org.kde.plasma.components 2.0
 import "navigation.js" as Navigation
 
 ScrollView {
@@ -39,8 +38,8 @@ ScrollView {
         snapMode: ListView.SnapToItem
         currentIndex: -1
         
-        delegate: ListItem {
-                checked: view.currentIndex==index
+        delegate: Item {
+//                 checked: view.currentIndex==index
                 width: parentItem.actualWidth
                 x: parentItem.proposedMargin
                 property real contHeight: height*0.8

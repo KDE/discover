@@ -1,5 +1,5 @@
 import QtQuick 2.1
-import org.kde.plasma.components 2.0
+import QtQuick.Controls 1.1
 import org.kde.muon 1.0
 
 Item {
@@ -69,7 +69,7 @@ Item {
             id: workingCancelButton
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
-            iconSource: "dialog-cancel"
+            iconName: "dialog-cancel"
             enabled: listener.isCancellable
             onClicked: resourcesModel.cancelTransaction(application)
         }

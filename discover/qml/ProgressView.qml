@@ -1,6 +1,6 @@
 import QtQuick 2.1
+import QtQuick.Controls 1.1
 import org.kde.plasma.core 2.0
-import org.kde.plasma.components 2.0
 import org.kde.muon 1.0
 import "navigation.js" as Navigation
 
@@ -54,10 +54,10 @@ ToolBar {
 
         model: progressModel
 
-        delegate: ListItem {
+        delegate: MouseArea {
             width: launcherRow.childrenRect.width+5
             height: contents.height
-            enabled: true
+
             onClicked: Navigation.openApplication(model.app)
             TransactionListener {
                 id: listener
@@ -72,12 +72,12 @@ ToolBar {
                 Label { text: model.app.name }
                 Label { text: listener.statusText; visible: listener.isActive }
                 ToolButton {
-                    iconSource: "dialog-cancel"
+                    iconName: "dialog-cancel"
                     visible: listener.isCancellable
                     onClicked: resourcesModel.cancelTransaction(app)
                 }
                 ToolButton {
-                    iconSource: "system-run"
+                    iconName: "system-run"
                     visible: model.app.isInstalled && !listener.isActive && model.app.canExecute
                     onClicked: {
                         model.app.invokeApplication()
@@ -105,7 +105,7 @@ ToolBar {
             rightMargin: 5
         }
         height: Math.min(implicitHeight, parent.height)
-        iconSource: "window-close"
+        iconName: "window-close"
         onClicked: progressModel.clear()
     }
 }

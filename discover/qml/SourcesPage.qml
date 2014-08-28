@@ -1,11 +1,11 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
-import org.kde.plasma.components 2.0
+import org.kde.plasma.components 2.0 as Components
 import org.kde.muon 1.0
 import org.kde.muonapt 1.0
 import "navigation.js" as Navigation
 
-Page {
+Components.Page {
     id: page
     clip: true
     property real actualWidth: width-Math.pow(width/70, 2)
@@ -34,20 +34,19 @@ Page {
         }
     }
     
-    
-    CommonDialog {
+    Components.CommonDialog {
         id: newSourceDialog
         onClickedOutside: reviewDialog.close()
         titleText: i18n("Specify the new source")
         buttons: Row {
             spacing: 5
-            Button {
+            Components. Button {
                 text: i18n("OK")
                 iconSource: "dialog-ok"
                 enabled: repository.text!=""
                 onClicked: newSourceDialog.accept()
             }
-            Button {
+            Components.Button {
                 text: i18n("Cancel")
                 iconSource: "dialog-cancel"
                 onClicked: newSourceDialog.reject()

@@ -46,7 +46,7 @@ Rectangle
     Binding {
         target: app.searchWidget
         property: "enabled"
-        value: pageStack.currentItem!=null && pageStack.currentItem.searchFor!=null
+        value: pageStack.currentPage!=null && pageStack.currentPage.searchFor!=null
     }
     function clearSearch() { app.searchWidget.text="" }
     Connections {
@@ -61,7 +61,7 @@ Rectangle
         running: false
         repeat: false
         interval: 200
-        onTriggered: { pageStack.currentItem.searchFor(app.searchWidget.text) }
+        onTriggered: { pageStack.currentPage.searchFor(app.searchWidget.text) }
     }
 
     Component {

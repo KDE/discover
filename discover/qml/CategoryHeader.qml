@@ -18,8 +18,8 @@
  */
 
 import QtQuick 2.1
+import QtQuick.Controls 1.1
 import org.kde.plasma.core 2.0
-import org.kde.plasma.components 2.0
 
 Item {
     property QtObject category: null
@@ -47,7 +47,7 @@ Item {
             leftMargin: 50
         }
         elide: Text.ElideRight
-        font.pixelSize: parent.height*0.5
+        font.pointSize: parent.height*0.5
         text: category.name
     }
 }

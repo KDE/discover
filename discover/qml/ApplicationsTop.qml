@@ -18,8 +18,8 @@
  */
 
 import QtQuick 2.1
+import QtQuick.Controls 1.1
 import org.kde.plasma.core 2.0
-import org.kde.plasma.components 2.0
 import org.kde.muon 1.0
 import org.kde.muon.discover 1.0
 import "navigation.js" as Navigation
@@ -48,10 +48,10 @@ Column {
 //                 onRowsInserted: sortModel()
             }
         }
-        delegate: ListItem {
+        delegate: MouseArea {
                     width: topView.width
                     height: (topView.height-nameLabel.paintedHeight*1.5-topView.spacing*5)/5
-                    enabled: true
+
                     IconItem {
                         id: iconItem
                         anchors { left: parent.left; verticalCenter: parent.verticalCenter }

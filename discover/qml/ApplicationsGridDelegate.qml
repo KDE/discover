@@ -17,10 +17,10 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import org.kde.plasma.core 2.0
-import org.kde.plasma.components 2.0
-import "navigation.js" as Navigation
 import QtQuick 2.1
+import QtQuick.Controls 1.1
+import org.kde.plasma.core 2.0
+import "navigation.js" as Navigation
 
 GridItem {
     id: delegateRoot
