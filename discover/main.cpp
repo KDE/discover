@@ -45,8 +45,8 @@ int main(int argc, char** argv)
         parser.addOption(QCommandLineOption("application", i18n("Directly open the specified application by its package name."), "name"));
         parser.addOption(QCommandLineOption("mime", i18n("Open with a program that can deal with the given mimetype."), "name"));
         parser.addOption(QCommandLineOption("category", i18n("Display a list of entries with a category."), "name"));
-        parser.addOption(QCommandLineOption("mode", i18n("Open Muon Discover in a said mode. Modes correspond to the toolbar buttons.")));
-        parser.addOption(QCommandLineOption("listmodes", i18n("List all the available modes."), "name"));
+        parser.addOption(QCommandLineOption("mode", i18n("Open Muon Discover in a said mode. Modes correspond to the toolbar buttons."), "name"));
+        parser.addOption(QCommandLineOption("listmodes", i18n("List all the available modes.")));
         parser.addOption(QCommandLineOption("listbackends", i18n("List all the available backends.")));
         parser.addOption(QCommandLineOption("backends", i18n("List all the backends we'll want to have loaded, separated by coma ','."), "names"));
         parser.addHelpOption();
