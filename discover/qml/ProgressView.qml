@@ -1,5 +1,6 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.1
 import org.kde.plasma.core 2.0
 import org.kde.muon 1.0
 import "navigation.js" as Navigation
@@ -54,8 +55,8 @@ ToolBar {
 
         model: progressModel
 
-        delegate: MouseArea {
-            width: launcherRow.childrenRect.width+5
+        delegate: Button {
+            width: launcherRow.childrenRect.width+50
             height: contents.height
 
             onClicked: Navigation.openApplication(model.app)
@@ -65,18 +66,30 @@ ToolBar {
                 onCancelled: model.remove(index)
             }
 
-            Row {
+            RowLayout {
                 id: launcherRow
+                anchors.fill: parent
                 spacing: 2
-                IconItem { source: model.app.icon; height: parent.height*0.95; width: height }
-                Label { text: model.app.name }
-                Label { text: listener.statusText; visible: listener.isActive }
+                IconItem {
+                    anchors.verticalCenter: parent.verticalCenter
+                    source: model.app.icon
+                    Layout.preferredHeight: parent.height*0.5
+                    width: height
+                }
+                Label {
+                    anchors.verticalCenter: parent.verticalCenter
+                    Layout.fillWidth: true
+                    elide: ElideRight
+                    text: model.app.name + (listener.isActive ? " "+listener.statusText : "")
+                }
                 ToolButton {
+                    anchors.verticalCenter: parent.verticalCenter
                     iconName: "dialog-cancel"
                     visible: listener.isCancellable
                     onClicked: resourcesModel.cancelTransaction(app)
                 }
                 ToolButton {
+                    anchors.verticalCenter: parent.verticalCenter
                     iconName: "system-run"
                     visible: model.app.isInstalled && !listener.isActive && model.app.canExecute
                     onClicked: {
@@ -89,11 +102,14 @@ ToolBar {
                 anchors {
                     bottom: parent.bottom
                     left: parent.left
-                    bottomMargin: -3
+                    bottomMargin: 3
+                    leftMargin: 3
+                    rightMargin: 3
                 }
-                width: parent.width*(listener.progress/100)
+                width: (parent.width - anchors.leftMargin - anchors.rightMargin)*(listener.progress/100)
                 color: theme.textColor
                 height: 1
+                opacity: 0.5
                 visible: listener.isActive
             }
         }
@@ -102,7 +118,6 @@ ToolBar {
         anchors {
             verticalCenter: parent.verticalCenter
             right: parent.right
-            rightMargin: 5
         }
         height: Math.min(implicitHeight, parent.height)
         iconName: "window-close"
