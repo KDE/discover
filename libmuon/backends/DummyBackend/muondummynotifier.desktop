@@ -1,5 +1,12 @@
 [Desktop Entry]
 Name=Muon Dummy Notifier
+Name[es]=Notificador vacío de Muon
+Name[nl]=Muon dummy-melder
+Name[pt]=Notificação de Testes do Muon
+Name[pt_BR]=Notificador de Testes do Muon
+Name[sv]=Muon testunderrättelse
+Name[uk]=Тестовий сповіщувач Muon
+Name[x-test]=xxMuon Dummy Notifierxx
 Type=Service
 X-KDE-ServiceTypes=KDEDModule
 X-KDE-Library=muondummyotifier

@@ -1,8 +1,32 @@
 [Global]
 IconName=muondiscover
 Comment=Muon Application Backend Notifier
+Comment[cs]=Podpůrná vrstva upozorňování pro Muon
+Comment[es]=Motor del notificador de aplicaciones de Muon
+Comment[nl]=Muon backend van melder van toepassingen
+Comment[pt]=Notificador da Infra-Estrutura de Aplicações do Muon
+Comment[pt_BR]=Notificador da Infraestrutura de Aplicativos do Muon
+Comment[sv]=Muon programgränssnittsunderrättelser
+Comment[uk]=Сповіщувач модуля програми Muon
+Comment[x-test]=xxMuon Application Backend Notifierxx
 
 [Event/DistUpgrade]
 Name=Upgrade Available
+Name[cs]=Dostupná aktualizace distribuce
+Name[es]=Disponible actualización
+Name[nl]=Opwaardering beschikbaar
+Name[pt]=Actualização Disponível
+Name[pt_BR]=Atualização disponível
+Name[sv]=Uppgradering tillgänglig
+Name[uk]=Доступне оновлення дистрибутива
+Name[x-test]=xxUpgrade Availablexx
 Comment=A new version of Kubuntu is available
+Comment[cs]=Je dostupná nová verze Kubuntu
+Comment[es]=Está disponible una nueva versión de Kubuntu
+Comment[nl]=Er is een nieuwe versie van Kubuntu beschikbaar
+Comment[pt]=Está disponível uma nova versão do Kubuntu
+Comment[pt_BR]=Está disponível uma nova versão do Kubuntu
+Comment[sv]=En ny version av Kubuntu är tillgänglig
+Comment[uk]=Доступна нова версія Kubuntu
+Comment[x-test]=xxA new version of Kubuntu is availablexx
 Action=Popup
