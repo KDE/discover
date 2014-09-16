@@ -24,7 +24,7 @@ import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.muon.discover 1.0
 import "navigation.js" as Navigation
 
-Rectangle
+Item
 {
     id: window
     property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
@@ -41,7 +41,6 @@ Rectangle
     property bool navigationEnabled: true
 
     visible: true
-    color: "white"
 
     Binding {
         target: app.searchWidget

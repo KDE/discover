@@ -70,7 +70,7 @@ Item {
             spacing: 3
 
             Loader {
-                width: item.width
+                width: item ? item.width : 0
                 sourceComponent: page.extendedToolBar
             }
 
