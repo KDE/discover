@@ -48,6 +48,7 @@ void DiscoverAction::setMainWindow(KXmlGuiWindow* w)
     if(m_actionsGroup && !m_actionsGroup->parent())
         m_actionsGroup->setParent(w);
     w->actionCollection()->addAction(objectName(), this);
+    w->actionCollection()->setDefaultShortcuts(this, shortcuts());
 }
 
 QString DiscoverAction::actionsGroup() const
@@ -81,6 +82,8 @@ void DiscoverAction::setActionsGroup(const QString& name)
 void DiscoverAction::setShortcutString(const QString& str)
 {
     setShortcut(str);
+    if (mainWindow())
+        mainWindow()->actionCollection()->setDefaultShortcut(this, str);
 }
 
 QString DiscoverAction::stringShortcut() const
