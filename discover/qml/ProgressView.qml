@@ -79,7 +79,7 @@ ToolBar {
                 Label {
                     anchors.verticalCenter: parent.verticalCenter
                     Layout.fillWidth: true
-                    elide: ElideRight
+                    elide: Text.ElideRight
                     text: model.app.name + (listener.isActive ? " "+listener.statusText : "")
                 }
                 ToolButton {
