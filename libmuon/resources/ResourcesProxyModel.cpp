@@ -131,6 +131,7 @@ void ResourcesProxyModel::setShouldShowTechnical(bool show)
         m_roleFilters.insert(ResourcesModel::IsTechnicalRole, false);
     else
         m_roleFilters.remove(ResourcesModel::IsTechnicalRole);
+    emit showTechnicalChanged();
     invalidate();
     emit invalidated();
 }
