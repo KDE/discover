@@ -1,10 +1,9 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
-import org.kde.plasma.components 2.0 as Components
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.muon 1.0
 
-Components.Page
+Item
 {
     id: page
     property real actualWidth: width-Math.pow(width/70, 2)
@@ -16,7 +15,7 @@ Components.Page
     }
     ResourcesUpdatesModel {
         id: updatesModel
-        onProgressingChanged: if(!isProgressing) page.pageStack.pop()
+        onProgressingChanged: if(!isProgressing) Stack.view.pop()
     }
     onVisibleChanged: window.navigationEnabled=!visible
     Binding {

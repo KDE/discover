@@ -20,11 +20,10 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
 import org.kde.plasma.core 2.0
-import org.kde.plasma.components 2.0 as Components
 import org.kde.muon 1.0
 import "navigation.js" as Navigation
 
-Components.Page {
+Item {
     id: page
     property QtObject category
     property real actualWidth: width-Math.pow(width/70, 2)

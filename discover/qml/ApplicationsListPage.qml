@@ -19,12 +19,11 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.1
-import org.kde.plasma.components 2.0 as Components
 import "navigation.js" as Navigation
 import org.kde.muon.discover 1.0
 import org.kde.muon 1.0
 
-Components.Page {
+Item {
     id: page
     property alias category: appsModel.filteredCategory
     property alias sortRole: appsModel.stringSortRole
@@ -65,8 +64,7 @@ Components.Page {
         page.sectionDelegate = role=="canUpgrade" ? installedSectionDelegate : defaultSectionDelegate
     }
     
-    tools: Row {
-            id: buttonsRow
+    property Component tools: Row {
             height: theme.defaultFont.pointSize*2
             visible: page.visible
             spacing: 3

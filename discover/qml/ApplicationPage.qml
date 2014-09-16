@@ -19,10 +19,9 @@
 
 import QtQuick 2.1
 import org.kde.plasma.core 2.0
-import org.kde.plasma.components 2.0 as Components
 import org.kde.muon 1.0
 
-Components.Page
+Item
 {
     property alias application: over.application
 

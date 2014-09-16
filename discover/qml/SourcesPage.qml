@@ -5,12 +5,12 @@ import org.kde.muon 1.0
 import org.kde.muonapt 1.0
 import "navigation.js" as Navigation
 
-Components.Page {
+Item {
     id: page
     clip: true
     property real actualWidth: width-Math.pow(width/70, 2)
     
-    tools: Row {
+    property Component tools: Row {
         anchors.fill: parent
         visible: page.visible
         ToolButton {

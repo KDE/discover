@@ -143,7 +143,7 @@ Rectangle
         onListCategoryInternal: Navigation.openCategoryByName(name)
     }
 
-    PlasmaComponents.ToolBar {
+    Item {
         id: breadcrumbsItemBar
         anchors {
             top: parent.top
@@ -171,13 +171,18 @@ Rectangle
             right: parent.right
         }
         height: visible ? 30 : 0
-        width: pageToolBar.contentItem!=null ? contentItem.childrenRect.width+5 : 0
+        width: fu.item ? fu.item.width+5 : 0
         visible: width>0
+
+        Loader {
+            id: fu
+            sourceComponent: pageStack.currentItem ? pageStack.currentItem.tools : null
+        }
 
         Behavior on width { NumberAnimation { duration: 250 } }
     }
 
-    PlasmaComponents.PageStack {
+    StackView {
         id: pageStack
         anchors {
             bottom: progressBox.top
@@ -186,7 +191,7 @@ Rectangle
             right: parent.right
             topMargin: Math.max(breadcrumbsItemBar.height, pageToolBar.height)
         }
-        toolBar: pageToolBar
+
         onDepthChanged: {
             if(depth==1) {
                 breadcrumbsItem.removeAllItems()
