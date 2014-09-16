@@ -13,15 +13,15 @@ ApplicationsListPage {
     
     extendedToolBar: Component {
         id: toolbarComponent
-        ToolButton {
+        Button {
             id: commitButton
             text: i18n("Update All")
             iconSource: "system-software-update"
             width: resourcesModel.updatesCount>0 ? commitButton.implicitWidth : 0
 
             onClicked: {
-                var page = Stack.view.push(updatesPage)
-                page.start()
+                var updates = page.Stack.view.push(updatesPage)
+                updates.start()
             }
         }
     }

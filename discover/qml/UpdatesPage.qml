@@ -15,7 +15,7 @@ Item
     }
     ResourcesUpdatesModel {
         id: updatesModel
-        onProgressingChanged: if(!isProgressing) Stack.view.pop()
+        onProgressingChanged: if(!isProgressing) page.Stack.view.pop()
     }
     onVisibleChanged: window.navigationEnabled=!visible
     Binding {
@@ -47,15 +47,6 @@ Item
         }
     }
 
-    PlasmaCore.FrameSvgItem {
-        id: base
-        anchors {
-            fill: messageFlickable
-            margins: -5
-        }
-        imagePath: "widgets/lineedit"
-        prefix: "base"
-    }
     ScrollView {
         anchors {
             top: progress.bottom
