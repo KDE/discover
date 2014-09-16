@@ -38,10 +38,11 @@ Item {
         
         Component {
             id: del
-            IconItem {
+            Image {
                 height: view.starSize
                 width: view.starSize
-                source: "rating"
+                source: "image://icon/rating"
+                asynchronous: false
                 opacity: (view.max/theRepeater.count*index)>view.rating ? 0.2 : 1
 
                 MouseArea {

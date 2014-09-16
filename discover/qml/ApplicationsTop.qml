@@ -50,12 +50,13 @@ Column {
         }
         delegate: MouseArea {
                     width: topView.width
-                    height: (topView.height-nameLabel.paintedHeight*1.5-topView.spacing*5)/5
+                    height: (topView.height-nameLabel.paintedHeight*1.3-topView.spacing*5)/5
+
 
                     IconItem {
                         id: iconItem
                         anchors { left: parent.left; verticalCenter: parent.verticalCenter }
-                        height: parent.height*0.9
+                        height: parent.height*0.5
                         width: height
                         source: model.icon
                     }
