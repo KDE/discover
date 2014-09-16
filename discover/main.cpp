@@ -37,7 +37,7 @@ int main(int argc, char** argv)
     about.setProductName("muon/discover");
     KAboutData::setApplicationData(about);
 
-//     KDBusService service(KDBusService::Unique);
+    KDBusService service(KDBusService::Unique);
     MuonDiscoverMainWindow *mainWindow = new MuonDiscoverMainWindow;
     QObject::connect(&app, SIGNAL(aboutToQuit()), mainWindow, SLOT(deleteLater()));
     {
