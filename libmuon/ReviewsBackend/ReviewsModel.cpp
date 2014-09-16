@@ -130,7 +130,7 @@ void ReviewsModel::fetchMore(const QModelIndex& parent)
 
     m_lastPage++;
     m_backend->fetchReviews(m_app, m_lastPage);
-    qDebug() << "fetching reviews... " << m_lastPage;
+//     qDebug() << "fetching reviews... " << m_lastPage;
 }
 
 void ReviewsModel::addReviews(AbstractResource* app, const QList<Review*>& reviews)
@@ -139,7 +139,7 @@ void ReviewsModel::addReviews(AbstractResource* app, const QList<Review*>& revie
         return;
     
     m_canFetchMore=!reviews.isEmpty();
-    qDebug() << "reviews arrived..." << m_lastPage << reviews.size();
+//     qDebug() << "reviews arrived..." << m_lastPage << reviews.size();
     
     if(!reviews.isEmpty()) {
         beginInsertRows(QModelIndex(), rowCount(), rowCount()+reviews.size()-1);
@@ -158,7 +158,7 @@ void ReviewsModel::markUseful(int row, bool useful)
 {
     Review* r = m_reviews[row];
     r->setUsefulChoice(useful ? Yes : No);
-    qDebug() << "submitting usefulness" << r->applicationName() << r->id() << useful;
+//     qDebug() << "submitting usefulness" << r->applicationName() << r->id() << useful;
     m_backend->submitUsefulness(r, useful);
     const QModelIndex ind = index(row, 0, QModelIndex());
     emit dataChanged(ind, ind);
