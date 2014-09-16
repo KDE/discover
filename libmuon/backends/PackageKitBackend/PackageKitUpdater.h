@@ -22,7 +22,7 @@
 
 #include <resources/AbstractBackendUpdater.h>
 #include "PackageKitBackend.h"
-#include <packagekitqt5/Transaction>
+#include <PackageKit/Transaction>
 
 class PackageKitUpdater : public AbstractBackendUpdater
 {

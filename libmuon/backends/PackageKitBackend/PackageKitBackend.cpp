@@ -31,9 +31,9 @@
 #include <QDebug>
 #include <QTimer>
 #include <QTimerEvent>
-#include <packagekitqt5/Transaction>
-#include <packagekitqt5/Daemon>
-#include <packagekitqt5/Details>
+#include <PackageKit/Transaction>
+#include <PackageKit/Daemon>
+#include <PackageKit/Details>
 
 #include <KPluginFactory>
 #include <KLocalizedString>

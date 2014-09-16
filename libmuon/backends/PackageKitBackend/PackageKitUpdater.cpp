@@ -19,7 +19,7 @@
  ***************************************************************************/
 #include "PackageKitUpdater.h"
 
-#include <packagekitqt5/Daemon>
+#include <PackageKit/Daemon>
 #include <QSet>
 
 #include <KLocalizedString>

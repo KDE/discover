@@ -25,8 +25,8 @@
 #include <MuonDataSources.h>
 #include <KGlobal>
 #include <KLocalizedString>
-#include <packagekitqt5/Details>
-#include <packagekitqt5/Daemon>
+#include <PackageKit/Details>
+#include <PackageKit/Daemon>
 
 PackageKitResource::PackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, PackageKitBackend* parent)
     : AbstractResource(parent)

@@ -25,8 +25,8 @@
 #include <Transaction/TransactionModel.h>
 #include <KMessageBox>
 #include <KLocalizedString>
-#include <packagekitqt5/Transaction>
-#include <packagekitqt5/Daemon>
+#include <PackageKit/Transaction>
+#include <PackageKit/Daemon>
 #include <KDebug>
 
 PKTransaction::PKTransaction(AbstractResource* app, Transaction::Role role)

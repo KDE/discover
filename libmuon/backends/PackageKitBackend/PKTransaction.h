@@ -22,7 +22,7 @@
 #define PKTRANSACTION_H
 
 #include <Transaction/Transaction.h>
-#include <packagekitqt5/Transaction>
+#include <PackageKit/Transaction>
 
 class PKTransaction : public Transaction
 {

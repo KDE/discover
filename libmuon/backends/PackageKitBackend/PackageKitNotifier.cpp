@@ -22,7 +22,7 @@
 #include <KPluginFactory>
 #include <QTimer>
 #include <kdebug.h>
-#include <packagekitqt5/Daemon>
+#include <PackageKit/Daemon>
 
 K_PLUGIN_FACTORY(MuonPackageKitNotifierFactory,
                  registerPlugin<PackageKitNotifier>();

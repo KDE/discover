@@ -26,7 +26,7 @@
 #include <QVariantList>
 #include <QStringList>
 #include <qpointer.h>
-#include <packagekitqt5/Transaction>
+#include <PackageKit/Transaction>
 #include <AppstreamQt/database.h>
 
 class PackageKitUpdater;
