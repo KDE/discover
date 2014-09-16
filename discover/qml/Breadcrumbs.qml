@@ -69,7 +69,7 @@ Item {
                 iconName: decoration
                 onClicked: doClick(index)
                 text: display
-                checked: items.count-index<=1
+                enabled: items.count-index>1
                 checkable: checked
             }
 
