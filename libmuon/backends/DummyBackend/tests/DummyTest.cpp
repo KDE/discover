@@ -40,7 +40,7 @@ AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 
 DummyTest::DummyTest(QObject* parent): QObject(parent)
 {
-    m_model = new ResourcesModel("muon-dummybackend", this);
+    m_model = new ResourcesModel("muon-dummy-backend", this);
 //     new ModelTest(m_model, m_model);
 
     m_appBackend = backendByName(m_model, "DummyBackend");
