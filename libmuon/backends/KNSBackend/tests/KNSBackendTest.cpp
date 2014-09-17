@@ -20,6 +20,7 @@
 
 #include "KNSBackendTest.h"
 #include <KNSBackend.h>
+#include <MuonMainWindow.h>
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
@@ -28,14 +29,17 @@
 #include <qtest.h>
 #include <qsignalspy.h>
 
-QTEST_GUILESS_MAIN( KNSBackendTest )
+QTEST_MAIN( KNSBackendTest )
 
 KNSBackendTest::KNSBackendTest(QObject* parent)
     : QObject(parent)
     , m_r(0)
 {
-    ResourcesModel* model = new ResourcesModel("muon-knsbackend-plasmoids", this);
+    ResourcesModel* model = new ResourcesModel("muon-knsplasmoids-backend", this);
     m_backend = model->backends().first();
+    MuonMainWindow *m_window = new MuonMainWindow();
+    model->integrateMainWindow(m_window);
+
     QSignalSpy s(model, SIGNAL(allInitialized()));
     Q_ASSERT(s.wait());
     connect(m_backend->reviewsBackend(), SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),

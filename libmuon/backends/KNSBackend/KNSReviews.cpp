@@ -58,7 +58,7 @@ Rating* KNSReviews::ratingForApplication(AbstractResource* app) const
     data["app_name"] = app->name();
     data["ratings_total"] = c.numberOfComments();
     data["ratings_average"] = c.rating()/20;
-    data["histogram"] = "";
+    data["histogram"] = "["+QString::number(c.numberOfComments()*c.rating())+"]";
     return new Rating(data);
 }
 

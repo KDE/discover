@@ -86,65 +86,65 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
             Upgradeable
         };
         Q_ENUMS(State)
-        
+
         /**
          * Constructs the AbstractResource with its corresponding backend
          */
         explicit AbstractResource(AbstractResourcesBackend* parent);
-        
+
         ///used as internal identification of a resource
         virtual QString packageName() const = 0;
-        
+
         ///resource name to be displayed
         virtual QString name() = 0;
-        
+
         ///short description of the resource
         virtual QString comment() = 0;
-        
+
         ///xdg-compatible icon name to represent the resource
         virtual QString icon() const = 0;
-        
+
         ///@returns whether invokeApplication makes something
         /// false if not overridden
         virtual bool canExecute() const;
-        
+
         ///executes the resource, if applies.
         Q_SCRIPTABLE virtual void invokeApplication() const;
-        
+
         virtual State state() = 0;
-        
+
         virtual QStringList categories() = 0;
-        
+
         ///@returns a URL that points to the content
         virtual QUrl homepage() = 0;
-        
+
         virtual bool isTechnical() const;
 
         virtual QUrl thumbnailUrl() = 0;
         virtual QUrl screenshotUrl() = 0;
-        
+
         virtual int downloadSize() = 0;
         virtual QString sizeDescription();
         virtual QString license() = 0;
-        
+
         virtual QString installedVersion() const = 0;
         virtual QString availableVersion() const = 0;
         virtual QString longDescription() = 0;
-        
+
         virtual QString origin() const = 0;
         virtual QString section() = 0;
-        
+
         ///@returns what kind of mime types the resource can consume
         virtual QStringList mimetypes() const;
-        
+
         virtual QList<PackageState> addonsInformation() = 0;
         bool isFromSecureOrigin() const;
-        
+
         virtual QStringList executables() const;
 
         bool canUpgrade();
         bool isInstalled();
-        
+
         ///@returns a user-readable explaination of the resource status
         ///by default, it will specify what state() is returning
         virtual QString status();
@@ -157,7 +157,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
 
     signals:
         void stateChanged();
-        
+
         ///response to the fetchScreenshots method
         ///@p thumbnails and @p screenshots should have the same number of elements
         void screenshotsFetched(const QList<QUrl>& thumbnails, const QList<QUrl>& screenshots);

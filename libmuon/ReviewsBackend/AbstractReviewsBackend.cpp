@@ -23,3 +23,13 @@
 AbstractReviewsBackend::AbstractReviewsBackend(QObject* parent)
     : QObject(parent)
 {}
+
+bool AbstractReviewsBackend::isReviewable() const
+{
+    return true;
+}
+
+QString AbstractReviewsBackend::errorMessage() const
+{
+    return QString();
+}
