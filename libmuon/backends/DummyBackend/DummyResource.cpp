@@ -66,7 +66,7 @@ QUrl DummyResource::homepage()
 
 QString DummyResource::icon() const
 {
-    return "kalarm";
+    return isTechnical() ? "kalarm" : "kmail";
 }
 
 QString DummyResource::installedVersion() const

@@ -26,8 +26,9 @@
 #include <ReviewsBackend/Rating.h>
 
 #include <qtest.h>
+#include <qsignalspy.h>
 
-QTEST_KDEMAIN_CORE( KNSBackendTest )
+QTEST_GUILESS_MAIN( KNSBackendTest )
 
 KNSBackendTest::KNSBackendTest(QObject* parent)
     : QObject(parent)
@@ -35,7 +36,8 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
 {
     ResourcesModel* model = new ResourcesModel("muon-knsbackend-plasmoids", this);
     m_backend = model->backends().first();
-    QTest::kWaitForSignal(model, SIGNAL(allInitialized()));
+    QSignalSpy s(model, SIGNAL(allInitialized()));
+    Q_ASSERT(s.wait());
     connect(m_backend->reviewsBackend(), SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
             SLOT(reviewsArrived(AbstractResource*,QList<Review*>)));
 }

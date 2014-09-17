@@ -22,7 +22,7 @@
 #define KNSRESOURCE_H
 
 #include <resources/AbstractResource.h>
-#include <knewstuff3/entry.h>
+#include <kns3/entry.h>
 #include <attica/content.h>
 
 #include "libmuonprivate_export.h"

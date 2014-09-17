@@ -2,7 +2,7 @@ if(AKABEICLIENT_FOUND)
     add_subdirectory(AkabeiBackend)#TODO: Add checks
 endif()
 
-if(LIBATTICA_FOUND)
+if(KF5Attica_FOUND)
     add_subdirectory(KNSBackend)
 endif()
 

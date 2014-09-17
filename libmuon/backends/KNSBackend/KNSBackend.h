@@ -22,7 +22,7 @@
 #define KNSBACKEND_H
 
 // KDE includes
-#include <knewstuff3/entry.h>
+#include <KNewStuff3/kns3/entry.h>
 
 // Attica includes
 #include <attica/category.h>

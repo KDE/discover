@@ -10,7 +10,7 @@ set(knsbackend_SRCS
 
 add_library(muon-knsbackend MODULE ${knsbackend_SRCS})
 target_link_libraries(muon-knsbackend muonprivate
-        ${LIBATTICA_LIBRARIES} KF5:KNewStuff)
+        KF5::Attica KF5::NewStuff)
 
 install(TARGETS muon-knsbackend DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES muon-knscomics-backend.desktop DESTINATION ${SERVICES_INSTALL_DIR})

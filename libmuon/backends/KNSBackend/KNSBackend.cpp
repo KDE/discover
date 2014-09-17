@@ -27,10 +27,8 @@
 #include <attica/providermanager.h>
 
 // KDE includes
-#include <knewstuff3/downloadmanager.h>
-#include <KStandardDirs>
+#include <kns3/downloadmanager.h>
 #include <KConfigGroup>
-#include <KDebug>
 #include <KConfig>
 #include <KPluginFactory>
 #include <KLocalizedString>
@@ -49,6 +47,7 @@
 
 K_PLUGIN_FACTORY(MuonKNSBackendFactory, registerPlugin<KNSBackend>(); )
 K_EXPORT_PLUGIN(MuonKNSBackendFactory(KAboutData("muon-knsbackend","muon-knsbackend",ki18n("KNewStuff Backend"),"0.1",ki18n("Install KNewStuff data in your system"), KAboutData::License_GPL)))
+Q_DECLARE_METATYPE(KService::Ptr);
 
 QSharedPointer<Attica::ProviderManager> KNSBackend::m_atticaManager;
 
@@ -74,7 +73,7 @@ KNSBackend::KNSBackend(QObject* parent, const QVariantList& args)
     KService::Ptr service = args.first().value<KService::Ptr>();
     
     m_iconName = service->icon();
-    m_name = KStandardDirs::locate("config", service.property("X-Muon-Arguments", QVariant::String).toString());
+    m_name = QStandardPaths::locate(QStandardPaths::GenericConfigLocation, service->property("X-Muon-Arguments", QVariant::String).toString());
     Q_ASSERT(!m_name.isEmpty());
     KConfig conf(m_name);
     KConfigGroup group;
@@ -135,7 +134,7 @@ void KNSBackend::startFetchingCategories()
 void KNSBackend::categoriesLoaded(Attica::BaseJob* job)
 {
     if(job->metadata().error() != Attica::Metadata::NoError) {
-        kDebug() << "Network error";
+        qWarning() << "Network error";
         setFetching(false);
         return;
     }
@@ -144,7 +143,7 @@ void KNSBackend::categoriesLoaded(Attica::BaseJob* job)
 
     foreach(const Attica::Category& category, categoryList) {
         if (m_categories.contains(category.name())) {
-            kDebug() << "Adding category: " << category.name();
+//             kDebug() << "Adding category: " << category.name();
             m_categories[category.name()] = category;
         }
     }
@@ -158,7 +157,7 @@ void KNSBackend::categoriesLoaded(Attica::BaseJob* job)
 void KNSBackend::receivedContents(Attica::BaseJob* job)
 {
     if(job->metadata().error() != Attica::Metadata::NoError) {
-        kDebug() << "Network error";
+        qWarning() << "Network error";
         setFetching(false);
         return;
     }
@@ -295,3 +294,5 @@ AbstractBackendUpdater* KNSBackend::backendUpdater() const
 {
     return m_updater;
 }
+
+#include "KNSBackend.moc"

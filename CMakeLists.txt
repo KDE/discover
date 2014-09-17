@@ -24,6 +24,7 @@ find_package(DebconfKDE QUIET)
 find_package(QtOAuth REQUIRED)
 find_package(QCA2 REQUIRED) #required by QtOAuth
 find_package(KF5Attica QUIET)
+find_package(KF5NewStuff QUIET)
 # find_package(BODEGA QUIET)
 find_package(AkabeiClient QUIET)
 find_package(packagekitqt5 QUIET)
@@ -50,8 +51,12 @@ set_package_properties(QApt PROPERTIES
     TYPE OPTIONAL)
 
 set_package_properties(KF5Attica PROPERTIES
-    DESCRIPTION "Qt library that implements the Open Collaboration Services API"
+    DESCRIPTION "KDE Framework that implements the Open Collaboration Services API"
     PURPOSE "Required to build the KNewStuff3 backend"
+    TYPE OPTIONAL)
+set_package_properties(KF5NewStuff PROPERTIES
+    DESCRIPTION "Qt library that allows to interact with KNewStuff implementations"
+    PURPOSE "Required to build the KNS backend"
     TYPE OPTIONAL)
 set_package_properties(Bodega PROPERTIES
     DESCRIPTION "Library that exposes Bodega resources"
