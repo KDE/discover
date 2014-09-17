@@ -29,6 +29,7 @@
 #include <kplugininfo.h>
 
 Q_GLOBAL_STATIC(QSet<QString>, s_requestedBackends)
+Q_DECLARE_METATYPE(KService::Ptr);
 
 void MuonBackendsFactory::setRequestedBackends(const QStringList& backends)
 {
@@ -116,13 +117,8 @@ int MuonBackendsFactory::backendsCount() const
 
 AbstractResourcesBackend* MuonBackendsFactory::backendForPlugin(const KPluginInfo& info) const
 {
-    QVariantMap args;
-    foreach(const QString& prop, info.service()->propertyNames()) {
-        args[prop] = info.property(prop);
-    }
-    
     QString str_error;
-    AbstractResourcesBackend* obj = info.service()->createInstance<AbstractResourcesBackend>(ResourcesModel::global(), QVariantList() << args, &str_error);
+    AbstractResourcesBackend* obj = info.service()->createInstance<AbstractResourcesBackend>(ResourcesModel::global(), QVariantList() << qVariantFromValue(info.service()), &str_error);
     
     if(!obj) {
         qDebug() << "error when loading the plugin" << info.name() << "because" << str_error;

@@ -78,10 +78,10 @@ BodegaBackend::BodegaBackend(QObject* parent, const QVariantList& args)
     : AbstractResourcesBackend(parent)
     , m_fetching(false)
 {
-    const QVariantMap info = args.first().toMap();
+    KService::Ptr service = args.first().value<KService::Ptr>();
     
-    m_icon = info.value("Icon").toString();
-    QUrl url = info.value("X-Muon-Arguments").toString();
+    m_icon = service->icon();
+    QUrl url = service->property("X-Muon-Arguments").toString();
     m_channel = url.queryItemValue("channel");
     QString storeId = url.queryItemValue("storeId");
     QMap<QString,QString> credentials = retrieveCredentials(url.queryItemValue("credentials"));

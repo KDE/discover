@@ -35,6 +35,7 @@
 #include <KPluginFactory>
 #include <KLocalizedString>
 #include <KAboutData>
+#include <KService>
 
 // Libmuon includes
 #include "Transaction/Transaction.h"
@@ -70,10 +71,10 @@ KNSBackend::KNSBackend(QObject* parent, const QVariantList& args)
     , m_reviews(new KNSReviews(this))
     , m_updater(new StandardBackendUpdater(this))
 {
-    const QVariantMap info = args.first().toMap();
+    KService::Ptr service = args.first().value<KService::Ptr>();
     
-    m_iconName = info.value("Icon").toString();
-    m_name = KStandardDirs::locate("config", info.value("X-Muon-Arguments").toString());
+    m_iconName = service->icon();
+    m_name = KStandardDirs::locate("config", service.property("X-Muon-Arguments", QVariant::String).toString());
     Q_ASSERT(!m_name.isEmpty());
     KConfig conf(m_name);
     KConfigGroup group;

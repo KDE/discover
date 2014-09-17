@@ -29,6 +29,7 @@
 #include <KAboutData>
 #include <KLocalizedString>
 #include <KPluginFactory>
+#include <KService>
 #include <QDebug>
 #include <QThread>
 #include <QTimer>
@@ -37,20 +38,24 @@
 K_PLUGIN_FACTORY(MuonDummyBackendFactory, registerPlugin<DummyBackend>(); )
 K_EXPORT_PLUGIN(MuonDummyBackendFactory(KAboutData("muon-dummybackend","muon-dummybackend",ki18n("Dummy Backend"),"0.1",ki18n("Dummy backend to test muon frontends"), KAboutData::License_GPL)))
 
-DummyBackend::DummyBackend(QObject* parent, const QVariantList&)
+Q_DECLARE_METATYPE(KService::Ptr);
+
+DummyBackend::DummyBackend(QObject* parent, const QVariantList& args)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_fetching(false)
 {
-    for(int i=0; i<320; i++) {
-        QString name = "alalala"+QString::number(i);
+    KService::Ptr service = args.first().value<KService::Ptr>();
+
+    for(int i=0; i<32; i++) {
+        QString name = service->name()+" "+QString::number(i);
         DummyResource* res = new DummyResource(name, false, this);
         res->setState(AbstractResource::State(1+(i%3)));
         m_resources.insert(name, res);
         connect(res, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));
     }
 
-    for(int i=0; i<320; i++) {
+    for(int i=0; i<32; i++) {
         QString name = "techie"+QString::number(i);
         DummyResource* res = new DummyResource(name, true, this);
         res->setState(AbstractResource::State(1+(i%3)));
