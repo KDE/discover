@@ -19,8 +19,8 @@ target_link_libraries(muon-appsbackend Qt5::Widgets Qt5::DBus Qt5::Concurrent
 )
 target_include_directories(muon-appsbackend PRIVATE ${QCA_INCLUDES}) #qtoauth should be dragging it, but it doesn't
 
-install(TARGETS muon-appsbackend DESTINATION ${PLUGIN_INSTALL_DIR})
-install(FILES muon-applications-backend.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+install(TARGETS muon-appsbackend DESTINATION ${PLUGIN_INSTALL_DIR}/muon)
+install(FILES muon-applications-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/libmuon/backends)
 install(FILES muon-applications-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
 
 add_library(kded_muonapplicationnotifier MODULE ApplicationNotifier.cpp)

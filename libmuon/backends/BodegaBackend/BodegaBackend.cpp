@@ -32,10 +32,10 @@
 #include <KAboutData>
 #include <KPluginFactory>
 #include <KPasswordDialog>
+#include <KDesktopFile>
 #include <QDebug>
 
-K_PLUGIN_FACTORY(MuonBodegaBackendFactory, registerPlugin<BodegaBackend>(); )
-K_EXPORT_PLUGIN(MuonBodegaBackendFactory(KAboutData("muon-bodegabackend","muon-bodegabackend",ki18n("Bodega Backend"),"0.1",ki18n("Install Bodega data in your system"), KAboutData::License_GPL)))
+MUON_BACKEND_PLUGIN(BodegaBackend)
 
 QMap<QString,QString> retrieveCredentials(const QString& folderName)
 {
@@ -74,19 +74,26 @@ QMap<QString,QString> retrieveCredentials(const QString& folderName)
     return ret;
 }
 
-BodegaBackend::BodegaBackend(QObject* parent, const QVariantList& args)
+BodegaBackend::BodegaBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_fetching(false)
+{}
+
+BodegaBackend::~BodegaBackend()
+{}
+
+void BodegaBackend::setMetaData(const QString& path)
 {
-    KService::Ptr service = args.first().value<KService::Ptr>();
-    
-    m_icon = service->icon();
-    QUrl url = service->property("X-Muon-Arguments").toString();
+    KDesktopFile cfg(path);
+    KConfigGroup service = cfg.group("Desktop File");
+
+    m_icon = service.readEntry("Icon", QString());
+    QUrl url = service.readEntry("X-Muon-Arguments", QString());
     m_channel = url.queryItemValue("channel");
     QString storeId = url.queryItemValue("storeId");
     QMap<QString,QString> credentials = retrieveCredentials(url.queryItemValue("credentials"));
     url.setQueryItems(QList<QPair<QString,QString> >());
-    
+
     m_session = new Bodega::Session(this);
     m_session->setUserName(credentials["username"]);
     m_session->setPassword(credentials["password"]);
@@ -95,9 +102,6 @@ BodegaBackend::BodegaBackend(QObject* parent, const QVariantList& args)
     connect(m_session, SIGNAL(authenticated(bool)), SLOT(resetResources()));
     m_session->signOn();
 }
-
-BodegaBackend::~BodegaBackend()
-{}
 
 void BodegaBackend::resetResources()
 {

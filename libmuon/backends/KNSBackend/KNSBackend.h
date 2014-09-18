@@ -45,11 +45,11 @@ namespace Attica {
 class MUONPRIVATE_EXPORT KNSBackend : public AbstractResourcesBackend
 {
 Q_OBJECT
-Q_INTERFACES(AbstractResourcesBackend)
 public:
-    explicit KNSBackend(QObject* parent, const QVariantList& args);
+    explicit KNSBackend(QObject* parent = 0);
     virtual ~KNSBackend();
     
+    virtual void setMetaData(const QString& path);
     virtual void cancelTransaction(AbstractResource* app);
     virtual void removeApplication(AbstractResource* app);
     virtual void installApplication(AbstractResource* app);

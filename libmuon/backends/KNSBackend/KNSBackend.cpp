@@ -29,11 +29,8 @@
 // KDE includes
 #include <kns3/downloadmanager.h>
 #include <KConfigGroup>
-#include <KConfig>
-#include <KPluginFactory>
+#include <KDesktopFile>
 #include <KLocalizedString>
-#include <KAboutData>
-#include <KService>
 
 // Libmuon includes
 #include "Transaction/Transaction.h"
@@ -45,9 +42,7 @@
 #include "KNSReviews.h"
 #include <resources/StandardBackendUpdater.h>
 
-K_PLUGIN_FACTORY(MuonKNSBackendFactory, registerPlugin<KNSBackend>(); )
-K_EXPORT_PLUGIN(MuonKNSBackendFactory(KAboutData("muon-knsbackend","muon-knsbackend",ki18n("KNewStuff Backend"),"0.1",ki18n("Install KNewStuff data in your system"), KAboutData::License_GPL)))
-Q_DECLARE_METATYPE(KService::Ptr);
+MUON_BACKEND_PLUGIN(KNSBackend)
 
 QSharedPointer<Attica::ProviderManager> KNSBackend::m_atticaManager;
 
@@ -62,19 +57,31 @@ void KNSBackend::initManager(KConfigGroup& group)
     }
 }
 
-KNSBackend::KNSBackend(QObject* parent, const QVariantList& args)
+KNSBackend::KNSBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_fetching(false)
     , m_isValid(true)
     , m_page(0)
     , m_reviews(new KNSReviews(this))
     , m_updater(new StandardBackendUpdater(this))
+{}
+
+KNSBackend::~KNSBackend()
+{}
+
+void KNSBackend::setMetaData(const QString& path)
 {
-    KService::Ptr service = args.first().value<KService::Ptr>();
-    
-    m_iconName = service->icon();
-    m_name = QStandardPaths::locate(QStandardPaths::GenericConfigLocation, service->property("X-Muon-Arguments", QVariant::String).toString());
-    Q_ASSERT(!m_name.isEmpty());
+    KDesktopFile cfg(path);
+    KConfigGroup service = cfg.group("Desktop Entry");
+
+    m_iconName = service.readEntry("Icon", QString());
+    QString knsrc = service.readEntry("X-Muon-Arguments", QString());
+    m_name = QStandardPaths::locate(QStandardPaths::GenericConfigLocation, knsrc);
+    if (m_name.isEmpty()) {
+        m_isValid = false;
+        qWarning() << "Couldn't find knsrc file" << knsrc;
+        return;
+    }
     KConfig conf(m_name);
     KConfigGroup group;
 
@@ -90,20 +97,17 @@ KNSBackend::KNSBackend(QObject* parent, const QVariantList& args)
     QStringList cats = group.readEntry("Categories", QStringList());
     initManager(group);
     connect(m_atticaManager.data(), SIGNAL(defaultProvidersLoaded()), SLOT(startFetchingCategories()));
-    
+
     foreach(const QString& c, cats) {
         m_categories.insert(c, Attica::Category());
     }
-    
+
     m_manager = new KNS3::DownloadManager(m_name, this);
     connect(m_manager, SIGNAL(searchResult(KNS3::Entry::List)), SLOT(receivedEntries(KNS3::Entry::List)));
     connect(m_manager, SIGNAL(entryStatusChanged(KNS3::Entry)), SLOT(statusChanged(KNS3::Entry)));
-    
+
     startFetchingCategories();
 }
-
-KNSBackend::~KNSBackend()
-{}
 
 void KNSBackend::setFetching(bool f)
 {

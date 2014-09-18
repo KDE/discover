@@ -14,7 +14,7 @@ include(ECMMarkAsTest)
 
 find_package(KF5 REQUIRED IdleTime ItemModels WidgetsAddons WindowSystem Codecs Archive CoreAddons Solid ThreadWeaver GlobalAccel
                                             Config Auth JS Wallet DBusAddons I18n GuiAddons ConfigWidgets
-                                            Service ItemViews Notifications IconThemes Completion JobWidgets Sonnet TextWidgets XmlGui Crash
+                                            ItemViews Notifications IconThemes Completion JobWidgets Sonnet TextWidgets XmlGui Crash
                                             Bookmarks Declarative UnitConversion Parts KIO DNSSD KDELibs4Support)
 
 find_package(Phonon4Qt5 REQUIRED NO_MODULE)

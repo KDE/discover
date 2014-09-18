@@ -47,9 +47,8 @@ struct ApplicationData
 class MUONPRIVATE_EXPORT AkabeiBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
-    Q_INTERFACES(AbstractResourcesBackend)
 public:
-    explicit AkabeiBackend(QObject *parent, const QVariantList& args);
+    explicit AkabeiBackend(QObject *parent = 0);
     ~AkabeiBackend();
 
     bool isValid() const;

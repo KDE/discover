@@ -40,8 +40,7 @@
 #include <KAboutData>
 #include <KDebug>
 
-K_PLUGIN_FACTORY(MuonPackageKitBackendFactory, registerPlugin<PackageKitBackend>(); )
-K_EXPORT_PLUGIN(MuonPackageKitBackendFactory(KAboutData("muon-pkbackend","muon-pkbackend",ki18n("PackageKit Backend"),"0.1",ki18n("Install PackageKit data in your system"), KAboutData::License_GPL)))
+MUON_BACKEND_PLUGIN(PackageKitBackend)
 
 QString PackageKitBackend::errorMessage(PackageKit::Transaction::Error error)
 {
@@ -186,7 +185,7 @@ QString PackageKitBackend::errorMessage(PackageKit::Transaction::Error error)
     }
 }
 
-PackageKitBackend::PackageKitBackend(QObject* parent, const QVariantList&)
+PackageKitBackend::PackageKitBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new PackageKitUpdater(this))
     , m_refresher(0)

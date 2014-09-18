@@ -10,8 +10,8 @@ set(pkbackend_SRCS
 add_library(muon-pkbackend MODULE ${pkbackend_SRCS})
 target_link_libraries(muon-pkbackend PRIVATE muonprivate Qt5::Core KF5::KDELibs4Support PK::packagekitqt5 AppstreamQt)
 
-install(TARGETS muon-pkbackend DESTINATION ${PLUGIN_INSTALL_DIR})
-install(FILES muon-packagekit-backend.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+install(TARGETS muon-pkbackend DESTINATION ${PLUGIN_INSTALL_DIR}/muon)
+install(FILES muon-packagekit-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/libmuon/backends)
 install(FILES muon-packagekit-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
 
 add_subdirectory(tests)

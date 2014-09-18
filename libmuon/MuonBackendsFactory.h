@@ -33,14 +33,13 @@ public:
     
     AbstractResourcesBackend* backend(const QString& name) const;
     QList<AbstractResourcesBackend*> allBackends() const;
-    QStringList allBackendNames() const;
+    QStringList allBackendNames(bool whitelist = true) const;
     int backendsCount() const;
     
     static void setRequestedBackends(const QStringList& backends);
 
 private:
-    AbstractResourcesBackend* backendForPlugin(const KPluginInfo& info) const;
-    QSet<QString> fetchBackendsWhitelist() const;
+    QStringList fetchBackendsWhitelist() const;
 };
 
 #endif // MUONBACKENDSFACTORY_H

@@ -34,10 +34,9 @@
 #include <KAboutData>
 #include <KDebug>
 
-K_PLUGIN_FACTORY(MuonAkabeiBackendFactory, registerPlugin<AkabeiBackend>(); )
-K_EXPORT_PLUGIN(MuonAkabeiBackendFactory(KAboutData("muon-akabeibackend","muon-akabeibackend",ki18n("Akabei Backend"),"0.1",ki18n("Chakra-Applications in your system"), KAboutData::License_GPL)))
+MUON_BACKEND_PLUGIN(AkabeiBackend);
 
-AkabeiBackend::AkabeiBackend(QObject* parent, const QVariantList& )
+AkabeiBackend::AkabeiBackend(QObject* parent)
   : AbstractResourcesBackend(parent), m_updater(new AkabeiUpdater(this)), m_isFetching(false)
 {
     m_transactionQueue.clear();

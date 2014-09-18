@@ -63,10 +63,9 @@
 
 // static const KCatalogLoader loader("app-install-data"); //FIXME port
 
-K_PLUGIN_FACTORY(MuonAppsBackendFactory, registerPlugin<ApplicationBackend>(); )
-K_EXPORT_PLUGIN(MuonAppsBackendFactory(KAboutData("muon-appsbackend","muon-appsbackend",ki18n("Applications Backend"),"0.1",ki18n("Applications in your system"), KAboutData::License_GPL)))
+MUON_BACKEND_PLUGIN(ApplicationBackend);
 
-ApplicationBackend::ApplicationBackend(QObject* parent, const QVariantList& )
+ApplicationBackend::ApplicationBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_backend(new QApt::Backend(this))
     , m_reviewsBackend(new ReviewsBackend(this))

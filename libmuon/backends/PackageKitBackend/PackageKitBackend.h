@@ -34,9 +34,8 @@ class PackageKitUpdater;
 class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
-    Q_INTERFACES(AbstractResourcesBackend)
     public:
-        explicit PackageKitBackend(QObject* parent, const QVariantList& args);
+        explicit PackageKitBackend(QObject* parent = 0);
         ~PackageKitBackend();
         
         static QString errorMessage(PackageKit::Transaction::Error error);

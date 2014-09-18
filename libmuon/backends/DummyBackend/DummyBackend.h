@@ -29,10 +29,10 @@ class DummyResource;
 class DummyBackend : public AbstractResourcesBackend
 {
 Q_OBJECT
-Q_INTERFACES(AbstractResourcesBackend)
 public:
-    explicit DummyBackend(QObject* parent, const QVariantList& args);
+    explicit DummyBackend(QObject* parent = 0);
 
+    virtual void setMetaData(const QString& path);
     virtual QList<AbstractResource*> upgradeablePackages() const;
     virtual AbstractResource* resourceByPackageName(const QString& name) const;
     virtual int updatesCount() const;

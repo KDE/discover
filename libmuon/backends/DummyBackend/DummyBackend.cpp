@@ -29,26 +29,30 @@
 #include <KAboutData>
 #include <KLocalizedString>
 #include <KPluginFactory>
-#include <KService>
+#include <KConfigGroup>
+#include <KSharedConfig>
 #include <QDebug>
 #include <QThread>
 #include <QTimer>
 #include <QAction>
 
-K_PLUGIN_FACTORY(MuonDummyBackendFactory, registerPlugin<DummyBackend>(); )
-K_EXPORT_PLUGIN(MuonDummyBackendFactory(KAboutData("muon-dummybackend","muon-dummybackend",ki18n("Dummy Backend"),"0.1",ki18n("Dummy backend to test muon frontends"), KAboutData::License_GPL)))
+MUON_BACKEND_PLUGIN(DummyBackend)
 
-Q_DECLARE_METATYPE(KService::Ptr);
-
-DummyBackend::DummyBackend(QObject* parent, const QVariantList& args)
+DummyBackend::DummyBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_fetching(false)
 {
-    KService::Ptr service = args.first().value<KService::Ptr>();
+}
+
+void DummyBackend::setMetaData(const QString& path)
+{
+    Q_ASSERT(!path.isEmpty());
+    KSharedConfig::Ptr cfg = KSharedConfig::openConfig(path);
+    KConfigGroup metadata = cfg->group(QStringLiteral("Desktop Entry"));
 
     for(int i=0; i<32; i++) {
-        QString name = service->name()+" "+QString::number(i);
+        QString name = metadata.readEntry("Name", QString())+" "+QString::number(i);
         DummyResource* res = new DummyResource(name, false, this);
         res->setState(AbstractResource::State(1+(i%3)));
         m_resources.insert(name, res);

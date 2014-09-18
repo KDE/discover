@@ -123,6 +123,11 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
          */
         virtual bool isFetching() const = 0;
 
+        /**
+         * Receives a path with the plugin's desktop file
+         */
+        virtual void setMetaData(const QString& path);
+
     public slots:
         /**
          * This gets called when the backend should install an application.
@@ -184,6 +189,25 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
         void searchInvalidated();
 };
 
-Q_DECLARE_INTERFACE( AbstractResourcesBackend, "org.kde.muon.AbstractResourcesBackend" )
+
+/**
+ * @internal Workaround because QPluginLoader enforces 1 instance per plugin
+ */
+class MUONPRIVATE_EXPORT AbstractResourcesBackendFactory : public QObject
+{
+public:
+    virtual AbstractResourcesBackend* newInstance(QObject* parent) const = 0;
+};
+
+#define MUON_BACKEND_PLUGIN(ClassName)\
+    class ClassName##Factory : public AbstractResourcesBackendFactory {\
+        Q_OBJECT\
+        Q_PLUGIN_METADATA(IID "org.kde.muon.AbstractResourcesBackendFactory")\
+        Q_INTERFACES(AbstractResourcesBackendFactory)\
+        public:\
+            virtual AbstractResourcesBackend* newInstance(QObject* parent) const override { return new ClassName(parent); }\
+    };
+
+Q_DECLARE_INTERFACE( AbstractResourcesBackendFactory, "org.kde.muon.AbstractResourcesBackendFactory" )
 
 #endif // ABSTRACTRESOURCESBACKEND_H

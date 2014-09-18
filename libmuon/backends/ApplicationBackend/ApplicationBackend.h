@@ -52,10 +52,9 @@ class KJob;
 class MUONPRIVATE_EXPORT ApplicationBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
-    Q_INTERFACES(AbstractResourcesBackend)
     Q_PROPERTY(QObject* backend READ backend)
 public:
-    explicit ApplicationBackend(QObject *parent, const QVariantList& args);
+    explicit ApplicationBackend(QObject *parent = 0);
     ~ApplicationBackend();
 
     bool isValid() const;
