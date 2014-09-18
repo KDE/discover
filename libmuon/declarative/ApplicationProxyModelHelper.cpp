@@ -23,8 +23,11 @@
 
 ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
     : ResourcesProxyModel(parent)
+{}
+
+QHash<int, QByteArray> ApplicationProxyModelHelper::roleNames() const
 {
-    setRoleNames(ResourcesModel::global()->roleNames());
+    return ResourcesModel::global()->roleNames();
 }
 
 void ApplicationProxyModelHelper::componentComplete()

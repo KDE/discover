@@ -29,9 +29,13 @@
 CategoryModel::CategoryModel(QObject* parent)
     : QStandardItemModel(parent)
 {
-    QHash< int, QByteArray > names = roleNames();
+}
+
+QHash< int, QByteArray > CategoryModel::roleNames() const
+{
+    QHash< int, QByteArray > names = QAbstractItemModel::roleNames();
     names[CategoryRole] = "category";
-    setRoleNames(names);
+    return names;
 }
 
 void CategoryModel::setCategories(const QList<Category *> &categoryList, const QString &rootName)

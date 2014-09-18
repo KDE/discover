@@ -41,6 +41,7 @@ class ApplicationProxyModelHelper : public ResourcesProxyModel, public QQmlParse
 
         virtual void classBegin() {}
         virtual void componentComplete();
+        virtual QHash<int, QByteArray> roleNames() const;
 
     public slots:
         void sortModel();

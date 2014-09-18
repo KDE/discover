@@ -32,8 +32,11 @@ ReviewsModel::ReviewsModel(QObject* parent)
     , m_backend(0)
     , m_lastPage(0)
     , m_canFetchMore(true)
+{}
+
+QHash< int, QByteArray > ReviewsModel::roleNames() const
 {
-    QHash<int, QByteArray> roles = roleNames();
+    QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
     roles.insert(ShouldShow, "shouldShow");
     roles.insert(Reviewer, "reviewer");
     roles.insert(CreationDate, "date");
@@ -42,7 +45,7 @@ ReviewsModel::ReviewsModel(QObject* parent)
     roles.insert(UsefulChoice, "usefulChoice");
     roles.insert(Rating, "rating");
     roles.insert(Summary, "summary");
-    setRoleNames(roles);
+    return roles;
 }
 
 QVariant ReviewsModel::data(const QModelIndex& index, int role) const

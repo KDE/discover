@@ -59,6 +59,7 @@ class MUONPRIVATE_EXPORT ReviewsModel : public QAbstractListModel
         AbstractResource* resource() const;
         virtual void fetchMore(const QModelIndex& parent=QModelIndex());
         virtual bool canFetchMore(const QModelIndex&) const;
+        virtual QHash<int, QByteArray> roleNames() const;
 
     public slots:
         void deleteReview(int row);

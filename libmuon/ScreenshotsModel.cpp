@@ -26,11 +26,14 @@
 ScreenshotsModel::ScreenshotsModel(QObject* parent)
     : QAbstractListModel(parent)
     , m_resource(0)
+{}
+
+QHash< int, QByteArray > ScreenshotsModel::roleNames() const
 {
-    QHash<int, QByteArray> roles = roleNames();
+    QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
     roles.insert(ThumbnailUrl, "small_image_url");
     roles.insert(ScreenshotUrl, "large_image_url");
-    setRoleNames(roles);
+    return roles;
 }
 
 void ScreenshotsModel::setResource(AbstractResource* res)

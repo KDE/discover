@@ -52,6 +52,7 @@ class MUONPRIVATE_EXPORT CategoryModel : public QStandardItemModel
 
         void setDisplayedCategory(Category* c);
         Category* displayedCategory() const;
+        virtual QHash< int, QByteArray > roleNames() const;
 
         Q_SCRIPTABLE static Category* findCategoryByName(const QString& name);
     private:

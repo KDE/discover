@@ -29,9 +29,13 @@ ApplicationAddonsModel::ApplicationAddonsModel(QObject* parent)
     , m_app(0)
 {
 //     new ModelTest(this, this);
-    QHash<int, QByteArray> roles = roleNames();
+}
+
+QHash< int, QByteArray > ApplicationAddonsModel::roleNames() const
+{
+    QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
     roles.insert(Qt::CheckStateRole, "checked");
-    setRoleNames(roles);
+    return roles;
 }
 
 void ApplicationAddonsModel::setApplication(AbstractResource* app)

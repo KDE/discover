@@ -57,28 +57,6 @@ void ResourcesModel::init(bool load)
     Q_ASSERT(!s_self);
     Q_ASSERT(QCoreApplication::instance()->thread()==QThread::currentThread());
 
-    QHash< int, QByteArray > roles = roleNames();
-    roles[NameRole] = "name";
-    roles[IconRole] = "icon";
-    roles[CommentRole] = "comment";
-    roles[StateRole] = "state";
-    roles[RatingRole] = "rating";
-    roles[RatingPointsRole] = "ratingPoints";
-    roles[SortableRatingRole] = "sortableRating";
-    roles[ActiveRole] = "active";
-    roles[InstalledRole] = "isInstalled";
-    roles[ApplicationRole] = "application";
-    roles[OriginRole] = "origin";
-    roles[CanUpgrade] = "canUpgrade";
-    roles[PackageNameRole] = "packageName";
-    roles[IsTechnicalRole] = "isTechnical";
-    roles[CategoryRole] = "category";
-    roles[SectionRole] = "section";
-    roles[MimeTypes] = "mimetypes";
-    roles.remove(Qt::EditRole);
-    roles.remove(Qt::WhatsThisRole);
-    setRoleNames(roles);
-
     connect(TransactionModel::global(), SIGNAL(transactionAdded(Transaction*)), SLOT(resourceChangedByTransaction(Transaction*)));
     connect(TransactionModel::global(), SIGNAL(transactionRemoved(Transaction*)), SLOT(resourceChangedByTransaction(Transaction*)));
     if(load)
@@ -99,6 +77,31 @@ ResourcesModel::ResourcesModel(const QString& backendName, QObject* parent)
 ResourcesModel::~ResourcesModel()
 {
     qDeleteAll(m_backends);
+}
+
+QHash<int, QByteArray> ResourcesModel::roleNames() const
+{
+    QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
+    roles[NameRole] = "name";
+    roles[IconRole] = "icon";
+    roles[CommentRole] = "comment";
+    roles[StateRole] = "state";
+    roles[RatingRole] = "rating";
+    roles[RatingPointsRole] = "ratingPoints";
+    roles[SortableRatingRole] = "sortableRating";
+    roles[ActiveRole] = "active";
+    roles[InstalledRole] = "isInstalled";
+    roles[ApplicationRole] = "application";
+    roles[OriginRole] = "origin";
+    roles[CanUpgrade] = "canUpgrade";
+    roles[PackageNameRole] = "packageName";
+    roles[IsTechnicalRole] = "isTechnical";
+    roles[CategoryRole] = "category";
+    roles[SectionRole] = "section";
+    roles[MimeTypes] = "mimetypes";
+    roles.remove(Qt::EditRole);
+    roles.remove(Qt::WhatsThisRole);
+    return roles;
 }
 
 void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)

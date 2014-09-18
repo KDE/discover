@@ -89,9 +89,9 @@ UpdaterWidget::UpdaterWidget(ResourcesUpdatesModel* updates, QWidget *parent) :
     m_updateView = new QTreeView(page1);
     m_updateView->setAlternatingRowColors(true);
     m_updateView->setModel(m_updateModel);
-    m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
-    m_updateView->header()->setResizeMode(1, QHeaderView::ResizeToContents);
-    m_updateView->header()->setResizeMode(2, QHeaderView::ResizeToContents);
+    m_updateView->header()->setSectionResizeMode(0, QHeaderView::Stretch);
+    m_updateView->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+    m_updateView->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
     m_updateView->header()->setStretchLastSection(false);
     connect(m_updateView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged(QItemSelection,QItemSelection)));
@@ -162,7 +162,7 @@ void UpdaterWidget::populateUpdateModel()
 
     m_updateView->expand(m_updateModel->index(0,0)); // Expand apps category
     m_updateView->resizeColumnToContents(0);
-    m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
+    m_updateView->header()->setSectionResizeMode(0, QHeaderView::Stretch);
 
     checkAllMarked();
     emit modelPopulated();

@@ -11,11 +11,10 @@ include(KDECMakeSettings)
 include(KDECompilerSettings)
 include(ECMInstallIcons)
 include(ECMMarkAsTest)
+include(GenerateExportHeader)
 
-find_package(KF5 REQUIRED IdleTime ItemModels WidgetsAddons WindowSystem Codecs Archive CoreAddons Solid ThreadWeaver GlobalAccel
-                                            Config Auth JS Wallet DBusAddons I18n GuiAddons ConfigWidgets
-                                            ItemViews Notifications IconThemes Completion JobWidgets Sonnet TextWidgets XmlGui Crash
-                                            Bookmarks Declarative UnitConversion Parts KIO DNSSD KDELibs4Support)
+find_package(KF5 REQUIRED WidgetsAddons CoreAddons Solid
+                                            Config Wallet DBusAddons I18n ConfigWidgets Notifications Declarative)
 
 find_package(Phonon4Qt5 REQUIRED NO_MODULE)
 
@@ -23,11 +22,11 @@ find_package(QApt QUIET)
 find_package(DebconfKDE QUIET)
 find_package(QtOAuth REQUIRED)
 find_package(QCA2 REQUIRED) #required by QtOAuth
-find_package(KF5Attica QUIET)
-find_package(KF5NewStuff QUIET)
+find_package(KF5Attica)
+find_package(KF5NewStuff)
 # find_package(BODEGA QUIET)
 find_package(AkabeiClient QUIET)
-find_package(packagekitqt5 QUIET)
+find_package(packagekitqt5)
 find_package(AppstreamQt QUIET)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")

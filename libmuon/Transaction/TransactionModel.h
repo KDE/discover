@@ -47,6 +47,7 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     bool removeRows(int row, int count, const QModelIndex &parent);
+    virtual QHash<int, QByteArray> roleNames() const;
 
     Transaction *transactionFromIndex(const QModelIndex &index) const;
     Q_SCRIPTABLE Transaction *transactionFromResource(AbstractResource *resource) const;
