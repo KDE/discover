@@ -19,9 +19,7 @@
  ***************************************************************************/
 
 #include "AppPackageKitResource.h"
-#include <KGlobal>
 #include <KLocalizedString>
-#include <KStandardDirs>
 #include <KToolInvocation>
 #include <QDebug>
 

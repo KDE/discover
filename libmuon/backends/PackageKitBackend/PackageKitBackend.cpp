@@ -35,10 +35,7 @@
 #include <PackageKit/Daemon>
 #include <PackageKit/Details>
 
-#include <KPluginFactory>
 #include <KLocalizedString>
-#include <KAboutData>
-#include <KDebug>
 
 MUON_BACKEND_PLUGIN(PackageKitBackend)
 
@@ -301,11 +298,10 @@ AbstractResource* PackageKitBackend::resourceByPackageName(const QString& name) 
 
 QList<AbstractResource*> PackageKitBackend::searchPackageName(const QString& searchText)
 {
-    kDebug() << "SEARCH FOR" << searchText;
     QList<AbstractResource*> ret;
     for(AbstractResource* res : m_packages.values()) {
         if (res->name().contains(searchText, Qt::CaseInsensitive)) {
-            kDebug() << "Got one" << res->name();
+//             kDebug() << "Got one" << res->name();
             ret += res;
         }
     }
@@ -376,7 +372,6 @@ void PackageKitBackend::cancelTransaction(AbstractResource* app)
 
 void PackageKitBackend::removeApplication(AbstractResource* app)
 {
-    kDebug() << "Starting to remove" << app->name();
     PKTransaction* t = new PKTransaction(app, Transaction::RemoveRole);
     m_transactions.append(t);
     TransactionModel::global()->addTransaction(t);

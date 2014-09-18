@@ -23,7 +23,6 @@
 #include "PackageKitBackend.h"
 #include "PackageKitUtils.h"
 #include <MuonDataSources.h>
-#include <KGlobal>
 #include <KLocalizedString>
 #include <PackageKit/Details>
 #include <PackageKit/Daemon>

@@ -23,11 +23,11 @@
 #include "PackageKitResource.h"
 #include <resources/AbstractResource.h>
 #include <Transaction/TransactionModel.h>
-#include <KMessageBox>
+#include <QDebug>
+#include <QMessageBox>
 #include <KLocalizedString>
 #include <PackageKit/Transaction>
 #include <PackageKit/Daemon>
-#include <KDebug>
 
 PKTransaction::PKTransaction(AbstractResource* app, Transaction::Role role)
     : Transaction(app, app, role),
@@ -76,7 +76,7 @@ void PKTransaction::progressChanged(const QString &id, PackageKit::Transaction::
     if (id != res->availablePackageId() ||
         id != res->installedPackageId())
         return;
-    kDebug() << "Progress" << percentage << "state" << status;
+//     kDebug() << "Progress" << percentage << "state" << status;
     if (status == PackageKit::Transaction::StatusDownload)
         setStatus(Transaction::DownloadingStatus);
     else
@@ -97,7 +97,6 @@ void PKTransaction::cancel()
 void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
 {
     Q_UNUSED(runtime)
-    kDebug() << "EXIT" << exit;
     if (exit == PackageKit::Transaction::ExitEulaRequired)
         return;
     if (exit == PackageKit::Transaction::ExitSuccess && m_trans->role() == PackageKit::Transaction::RoleAcceptEula) {
@@ -137,16 +136,15 @@ PackageKit::Transaction* PKTransaction::transaction()
 
 void PKTransaction::errorFound(PackageKit::Transaction::Error err, const QString& error)
 {
-    kDebug() << "ERROR" << error;
     if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
         return;
-    KMessageBox::error(0, error, PackageKitBackend::errorMessage(err));
+    QMessageBox::critical(0, i18n("PackageKit Error"), PackageKitBackend::errorMessage(err));
 }
 
 void PKTransaction::mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text)
 {
     Q_UNUSED(media)
-    KMessageBox::information(0, text, i18n("Media Change of type '%1' is requested.", type));
+    QMessageBox::information(0, i18n("PackageKit media change"), i18n("Media Change of type '%1' is requested.\n%2", type, text));
 }
 
 void PKTransaction::requireRestard(PackageKit::Transaction::Restart restart, const QString& p)
@@ -172,5 +170,5 @@ void PKTransaction::requireRestard(PackageKit::Transaction::Restart restart, con
             message = i18n("A change by '%1' suggests your system to be rebooted.", PackageKit::Daemon::packageName(p));
             break;
     };
-    KMessageBox::information(0, message);
+    QMessageBox::information(0, i18n("PackageKit restart required"), message);
 }

@@ -20,11 +20,11 @@
 #include "PackageKitUpdater.h"
 
 #include <PackageKit/Daemon>
+#include <QDebug>
+#include <QMessageBox>
 #include <QSet>
 
 #include <KLocalizedString>
-#include <KMessageBox>
-#include <KDebug>
 
 PackageKitUpdater::PackageKitUpdater(PackageKitBackend * parent)
   : AbstractBackendUpdater(parent),
@@ -85,7 +85,6 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint )
 
 void PackageKitUpdater::backendChanged()
 {
-    kDebug();
     if (m_isCancelable != m_transaction->allowCancel()) {
         m_isCancelable = m_transaction->allowCancel();
         emit cancelableChanged(m_isCancelable);
@@ -279,7 +278,6 @@ void PackageKitUpdater::cancel()
 
 void PackageKitUpdater::start()
 {
-    kDebug() << m_toUpgrade.count();
     if (m_toUpgrade.isEmpty()) {//FIXME: Is this correct?
         m_toUpgrade = m_backend->upgradeablePackages();
     }
@@ -294,16 +292,15 @@ void PackageKitUpdater::start()
 
 void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QString& error)
 {
-    kDebug() << "ERROR" << error;
     if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
         return;
-    KMessageBox::error(0, error, PackageKitBackend::errorMessage(err));
+    QMessageBox::critical(0, i18n("PackageKit error found"), PackageKitBackend::errorMessage(err));
 }
 
 void PackageKitUpdater::mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text)
 {
     Q_UNUSED(media)
-    KMessageBox::information(0, text, i18n("Media Change of type '%1' is requested.", type));
+    QMessageBox::information(0, i18n("PackageKit media change"), i18n("Media Change of type '%1' is requested.\n%2", type, text));
 }
 
 void PackageKitUpdater::requireRestard(PackageKit::Transaction::Restart restart, const QString& p)
@@ -329,16 +326,16 @@ void PackageKitUpdater::requireRestard(PackageKit::Transaction::Restart restart,
             message = i18n("A change by '%1' suggests your system to be rebooted.", PackageKit::Daemon::packageName(p));
             break;
     };
-    KMessageBox::information(0, message);
+    QMessageBox::information(0, i18n("PackageKit restart required"), message);
 }
 
 void PackageKitUpdater::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
 {
-    kDebug();
-    int ret = KMessageBox::questionYesNo(0, i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
-                                                 PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement),
-                                            i18n("%1 requires user to accept its license!", PackageKit::Daemon::packageName(packageID)));
-    if (ret == KMessageBox::Yes) {
+    QString packageName = PackageKit::Daemon::packageName(packageID);
+    int ret = QMessageBox::question(0, i18n("%1 requires user to accept its license!", packageName), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
+                                                 packageName, vendor, licenseAgreement), QMessageBox::Yes, QMessageBox::No);
+    if (ret == QMessageBox::Yes) {
+#warning TODO: implement acceptEula
 //         m_transaction->acceptEula(eulaID);
     } else {
         finished(PackageKit::Transaction::ExitCancelled, 0);
