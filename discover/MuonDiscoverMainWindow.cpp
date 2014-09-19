@@ -51,6 +51,8 @@
 #include <KXMLGUIFactory>
 #include <KToolBarPopupAction>
 #include <KIO/MetaData>
+#include <KHelpMenu>
+#include <KAboutData>
 
 // Libmuon includes
 #include <libmuon/MuonDataSources.h>
@@ -220,11 +222,12 @@ void MuonDiscoverMainWindow::setupActions()
     MuonMainWindow::setupActions();
 
     menuBar()->setVisible(false);
+    KHelpMenu* helpMenu = new KHelpMenu(this, KAboutData::applicationData());
 
     QToolBar* t = toolBar();
     QMenu* configMenu = new QMenu(this);
     configMenu->addMenu(qobject_cast<QMenu*>(factory()->container("settings", this)));
-    configMenu->addMenu(helpMenu());
+    configMenu->addMenu(helpMenu->menu());
     
     KToolBarPopupAction* configureButton = new KToolBarPopupAction(QIcon::fromTheme("applications-system"), i18n("Menu"), t);
     configureButton->setToolTip(i18n("Configure and learn about Muon Discover"));

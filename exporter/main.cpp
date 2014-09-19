@@ -21,6 +21,7 @@
 #include <QCommandLineParser>
 #include <klocalizedstring.h>
 #include <KAboutData>
+#include <QIcon>
 #include "MuonExporter.h"
 #include <MuonBackendsFactory.h>
 #include "MuonVersion.h"
@@ -34,7 +35,6 @@ int main(int argc, char** argv)
                      KAboutLicense::GPL, i18n("©2013 Aleix Pol Gonzalez"), QString(), 0);
     about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
     about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), "aleixpol@blue-systems.com");
-    about.setProgramIconName("muonexporter");
     about.setProductName("muon/exporter");
 
     MuonExporter exp;
