@@ -5,7 +5,7 @@ Item
 {
     Image {
         id: icon
-        source: "image:/icon/kde"
+        source: "image://icon/kde"
         y: 30
         width: 200
         height: 200

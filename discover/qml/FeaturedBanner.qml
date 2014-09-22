@@ -75,7 +75,7 @@ Information {
                 margins: 3
             }
             width: height
-            source: titleBar.modelData ? titleBar.modelData.icon : "image://icon/kde"
+            source: titleBar.modelData ? "image://icon/"+titleBar.modelData.icon : "image://icon/kde"
         }
         
         Label {
