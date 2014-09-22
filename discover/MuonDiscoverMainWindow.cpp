@@ -57,11 +57,7 @@
 // Libmuon includes
 #include <libmuon/MuonDataSources.h>
 #include <resources/ResourcesModel.h>
-#include <Transaction/TransactionModel.h>
 #include <Category/Category.h>
-
-Q_DECLARE_METATYPE(ResourcesModel*)
-Q_DECLARE_METATYPE(TransactionModel*)
 
 MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     : MuonMainWindow()
@@ -89,10 +85,6 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     
     actionCollection()->addAction("search", KStandardAction::find(m_searchText, SLOT(setFocus()), this));
     //Here we set up a cache for the screenshots
-    engine->rootContext()->setContextProperty("resourcesModel",
-                                                        qVariantFromValue<ResourcesModel*>(ResourcesModel::global()));
-    engine->rootContext()->setContextProperty("transactionModel",
-                                                        qVariantFromValue<TransactionModel*>(TransactionModel::global()));
     engine->rootContext()->setContextProperty("app", this);
 //
 //     KConfigGroup window(KSharedConfig::openConfig(), "Window");

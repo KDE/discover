@@ -121,7 +121,7 @@ Item
     }
     TopLevelPageData {
         iconName: "applications-other"
-        text: resourcesModel.updatesCount==0 ? i18n("Installed") : i18np("Installed (%1 update)", "Installed (%1 updates)", resourcesModel.updatesCount)
+        text: ResourcesModel.updatesCount==0 ? i18n("Installed") : i18np("Installed (%1 update)", "Installed (%1 updates)", ResourcesModel.updatesCount)
         component: topInstalledComp
         objectName: "installed"
         shortcut: "Alt+I"

@@ -14,7 +14,7 @@ ToolBar {
     }
     
     Connections {
-        target: transactionModel
+        target: TransactionModel
         onTransactionAdded: {
             if(page.enabled && progressModel.appAt(trans.resource)<0)
                 progressModel.append({'app': trans.resource})
@@ -85,7 +85,7 @@ ToolBar {
                     anchors.verticalCenter: parent.verticalCenter
                     iconName: "dialog-cancel"
                     visible: listener.isCancellable
-                    onClicked: resourcesModel.cancelTransaction(app)
+                    onClicked: ResourcesModel.cancelTransaction(app)
                 }
                 ToolButton {
                     anchors.verticalCenter: parent.verticalCenter

@@ -43,6 +43,8 @@ void MuonDeclarativePlugin::registerTypes(const char*)
     qmlRegisterType<TransactionListener>("org.kde.muon", 1, 0, "TransactionListener");
     qmlRegisterType<TransactionModel>();
     qmlRegisterType<ResourcesUpdatesModel>("org.kde.muon", 1, 0, "ResourcesUpdatesModel");
+    qmlRegisterSingletonType<ResourcesModel>("org.kde.muon", 1, 0, "ResourcesModel", [](QQmlEngine*, QJSEngine*) -> QObject* {return ResourcesModel::global();});
+    qmlRegisterSingletonType<TransactionModel>("org.kde.muon", 1, 0, "TransactionModel", [](QQmlEngine*, QJSEngine*) -> QObject* {return TransactionModel::global();});
     
     qmlRegisterType<ReviewsModel>("org.kde.muon", 1, 0, "ReviewsModel");
     qmlRegisterType<ApplicationAddonsModel>("org.kde.muon", 1, 0, "ApplicationAddonsModel");

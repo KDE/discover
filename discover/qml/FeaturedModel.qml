@@ -1,4 +1,5 @@
 import QtQuick 2.1
+import org.kde.muon 1.0
 
 ListModel
 {
@@ -9,7 +10,7 @@ ListModel
     }
     
     property variant fu: Connections {
-        target: resourcesModel
+        target: ResourcesModel
         onRowsInserted: initFeatured()
     }
     
@@ -31,7 +32,7 @@ ListModel
         for(var row=0; row<model.count; row++) {
             var data = model.get(row)
             if(data.packageName) {
-                var appl = resourcesModel.resourceByPackageName(data.packageName)
+                var appl = ResourcesModel.resourceByPackageName(data.packageName)
                 if(appl==null) {
 //                     console.log("application ", data.packageName, " not found")
                     continue

@@ -14,7 +14,7 @@ Information {
             
             onClicked: {
                 if(modelData.packageName!=null)
-                    Navigation.openApplication(resourcesModel.resourceByPackageName(modelData.packageName))
+                    Navigation.openApplication(ResourcesModel.resourceByPackageName(modelData.packageName))
                 else
                     Qt.openUrlExternally(modelData.url)
             }

@@ -26,16 +26,16 @@ Item {
         
         onClicked: {
             if(application.isInstalled)
-                resourcesModel.removeApplication(application);
+                ResourcesModel.removeApplication(application);
             else
-                resourcesModel.installApplication(application);
+                ResourcesModel.installApplication(application);
         }
     }
     Component {
         id: updateButton
         Button {
             text: i18n("Update")
-            onClicked: resourcesModel.installApplication(application)
+            onClicked: ResourcesModel.installApplication(application)
         }
     }
     
@@ -71,7 +71,7 @@ Item {
             anchors.right: parent.right
             iconName: "dialog-cancel"
             enabled: listener.isCancellable
-            onClicked: resourcesModel.cancelTransaction(application)
+            onClicked: ResourcesModel.cancelTransaction(application)
         }
     }
     

@@ -17,7 +17,7 @@ ApplicationsListPage {
             id: commitButton
             text: i18n("Update All")
             iconSource: "system-software-update"
-            width: resourcesModel.updatesCount>0 ? commitButton.implicitWidth : 0
+            width: ResourcesModel.updatesCount>0 ? commitButton.implicitWidth : 0
 
             onClicked: {
                 var updates = page.Stack.view.push(updatesPage)
