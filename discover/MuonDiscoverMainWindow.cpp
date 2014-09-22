@@ -214,10 +214,11 @@ void MuonDiscoverMainWindow::setupActions()
     menuBar()->setVisible(false);
     KHelpMenu* helpMenu = new KHelpMenu(this, KAboutData::applicationData());
 
-    QToolBar* t = toolBar();
+    QToolBar* t = toolBar("discoverToolBar");
     QMenu* configMenu = new QMenu(this);
     configMenu->addMenu(qobject_cast<QMenu*>(factory()->container("settings", this)));
     configMenu->addMenu(helpMenu->menu());
+    t->setVisible(true);
     
     KToolBarPopupAction* configureButton = new KToolBarPopupAction(QIcon::fromTheme("applications-system"), i18n("Menu"), t);
     configureButton->setToolTip(i18n("Configure and learn about Muon Discover"));
