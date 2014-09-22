@@ -1,7 +1,6 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
-import org.kde.plasma.core 2.0
 import org.kde.muon 1.0
 import "navigation.js" as Navigation
 
@@ -70,9 +69,9 @@ ToolBar {
                 id: launcherRow
                 anchors.fill: parent
                 spacing: 2
-                IconItem {
+                Image {
                     anchors.verticalCenter: parent.verticalCenter
-                    source: model.app.icon
+                    source: "image://icon/"+model.app.icon
                     Layout.preferredHeight: parent.height*0.5
                     width: height
                 }
@@ -107,7 +106,8 @@ ToolBar {
                     rightMargin: 3
                 }
                 width: (parent.width - anchors.leftMargin - anchors.rightMargin)*(listener.progress/100)
-                color: theme.textColor
+                SystemPalette { id: theme }
+                color: theme.buttonText
                 height: 1
                 opacity: 0.5
                 visible: listener.isActive

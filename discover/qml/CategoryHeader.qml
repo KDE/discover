@@ -19,15 +19,14 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.1
-import org.kde.plasma.core 2.0
 
 Item {
     property QtObject category: null
     property real proposedMargin: 0
     
-    IconItem {
+    Image {
         id: iconItem
-        source: category.icon
+        source: "image://icon/"+category.icon
         anchors {
             top: parent.top
             bottom: parent.bottom

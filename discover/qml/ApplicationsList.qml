@@ -19,7 +19,7 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.1
-import org.kde.plasma.core 2.0
+import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
 
 ScrollView {
@@ -52,20 +52,20 @@ ScrollView {
                         Navigation.openApplication(application)
                     }
                     hoverEnabled: true
-                    IconItem {
+                    QIconItem {
                         id: icon
-                        source: model.icon
+                        icon: model.icon
                         width: contHeight
                         height: contHeight
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.left: parent.left
                     }
                     
-                    IconItem {
+                    Image {
                         anchors.right: icon.right
                         anchors.bottom: icon.bottom
                         visible: isInstalled && view.model.stateFilter!=2
-                        source: "dialog-ok"
+                        source: "image://icon/dialog-ok"
                         height: 16
                         width: 16
                     }

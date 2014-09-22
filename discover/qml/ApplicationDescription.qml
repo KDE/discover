@@ -19,8 +19,6 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.1
-import org.kde.plasma.core 2.0
-import org.kde.plasma.extras 2.0
 import org.kde.muon 1.0
 import org.kde.muon.discover 1.0 as Discover
 import "navigation.js" as Navigation
@@ -35,7 +33,7 @@ Column {
             margins: 10
         }
         height: icon.height
-        IconItem {
+        Image {
             id: icon
             anchors {
                 top: header.top
@@ -44,7 +42,7 @@ Column {
             height: 64
             width: height
 
-            source: application.icon
+            source: "image://icon/"+application.icon
             clip: true
         }
 
@@ -58,7 +56,7 @@ Column {
                 leftMargin: 5
             }
 
-            Heading {
+            Label {
                 id: heading
                 text: application.name
                 width: parent.width
@@ -81,7 +79,7 @@ Column {
         }
     }
     Item {width: 10; height: 20}
-    Heading { text: i18n("Description") }
+    Label { text: i18n("Description") }
     Label {
         id: info
         anchors {
@@ -95,7 +93,7 @@ Column {
     }
     Item {width: 10; height: 20}
 
-    Heading {
+    Label {
         text: i18n("Addons")
         visible: addonsView.visible
     }
@@ -107,7 +105,7 @@ Column {
     }
 
     Item {width: 10; height: 20}
-    Heading {
+    Label {
         text: i18n("Comments")
         visible: reviewsView.visible
     }

@@ -20,7 +20,6 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.1
-import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.muon.discover 1.0
 import "navigation.js" as Navigation
 
@@ -163,7 +162,7 @@ Item
         Behavior on height { NumberAnimation { duration: 250 } }
     }
 
-    PlasmaComponents.ToolBar {
+    ToolBar {
         id: pageToolBar
         anchors {
             top: parent.top

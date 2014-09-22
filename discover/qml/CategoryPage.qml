@@ -19,8 +19,8 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.1
-import org.kde.plasma.core 2.0
 import org.kde.muon 1.0
+import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
 
 Item {
@@ -53,8 +53,8 @@ Item {
                 anchors.centerIn: parent
                 width: parent.width
                 spacing: 10
-                IconItem {
-                    source: decoration
+                QIconItem {
+                    icon: decoration
                     width: 40; height: 40
                     anchors.horizontalCenter: parent.horizontalCenter
                 }

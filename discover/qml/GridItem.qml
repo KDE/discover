@@ -21,11 +21,9 @@
 ///This is a fork of ListItem so that it can be used for GridView
 
 import QtQuick 2.1
-import org.kde.plasma.core 2.0 as PlasmaCore
 
 MouseArea {
     id: listItem
-    default property alias content: paddingItem.data
 
     //this defines if the item will emit clicked and look pressed on mouse down
     property alias enabled: listItem.enabled
@@ -38,36 +36,4 @@ MouseArea {
 
     property bool changeBackgroundOnPress: !listItem.checked
     hoverEnabled: true
-
-    PlasmaCore.FrameSvgItem {
-        id : background
-        imagePath: "widgets/listitem"
-        prefix: (listItem.checked || listItem.pressed) ? "pressed" : "normal"
-
-        anchors.fill: parent
-        opacity: listItem.containsMouse && !listItem.pressed ? 0.5 : 1
-        Behavior on opacity { NumberAnimation { duration: 200 } }
-    }
-    PlasmaCore.SvgItem {
-        svg: PlasmaCore.Svg {imagePath: "widgets/listitem"}
-        elementId: "separator"
-        anchors {
-            left: parent.left
-            right: parent.right
-            top: parent.top
-        }
-        height: naturalSize.height
-        visible: listItem.sectionDelegate || (typeof(index) != "undefined" && index > 0 && !listItem.checked && !listItem.pressed)
-    }
-
-    Item {
-        id: paddingItem
-        anchors {
-            fill: background
-            leftMargin: background.margins.left
-            topMargin: background.margins.top
-            rightMargin: background.margins.right
-            bottomMargin: background.margins.bottom
-        }
-    }
 }

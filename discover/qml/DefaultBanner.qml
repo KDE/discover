@@ -1,12 +1,11 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
-import org.kde.plasma.core 2.0
 
 Item
 {
-    IconItem {
+    Image {
         id: icon
-        source: "kde"
+        source: "image:/icon/kde"
         y: 30
         width: 200
         height: 200

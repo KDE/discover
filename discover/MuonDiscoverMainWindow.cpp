@@ -71,8 +71,6 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
 //     m_view->setBackgroundRole(QPalette::AlternateBase);
 //     qreal bgGrayness = m_view->backgroundBrush().color().blackF();
 
-//     Plasma::Theme::defaultTheme()->setUseGlobalSettings(false); //don't change every plasma theme!
-//     Plasma::Theme::defaultTheme()->setThemeName(bgGrayness>0.5 ? "muon-contenttheme" : "oxygen");
     m_view = new QQuickWidget(this);
     m_view->setResizeMode(QQuickWidget::SizeRootObjectToView);
     QQmlEngine* engine = m_view->engine();

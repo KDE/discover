@@ -1,6 +1,5 @@
 import QtQuick 2.1
-import org.kde.plasma.core 2.0
-import org.kde.plasma.components 2.0 as Components
+import QtQuick.Controls 1.1
 import "navigation.js" as Navigation
 
 Information {
@@ -54,9 +53,9 @@ Information {
             opacity: 0.7
         }
         
-        Components.ToolButton {
+        ToolButton {
             id: prevButton
-            iconSource: "go-previous"
+            iconName: "go-previous"
             height: parent.height*0.9
             width: height
             onClicked: info.previous()
@@ -67,7 +66,7 @@ Information {
             }
         }
         
-        IconItem {
+        Image {
             id: iconItem
             anchors {
                 left: prevButton.right
@@ -76,10 +75,10 @@ Information {
                 margins: 3
             }
             width: height
-            source: titleBar.modelData ? titleBar.modelData.icon : "kde"
+            source: titleBar.modelData ? titleBar.modelData.icon : "image://icon/kde"
         }
         
-        Components.Label {
+        Label {
             anchors {
                 left: iconItem.right
                 verticalCenter: parent.verticalCenter
@@ -88,8 +87,8 @@ Information {
             color: "white"
             text: titleBar.modelData ? i18n("<b>%1</b><br/>%2", titleBar.modelData.text, titleBar.modelData.comment) : ""
         }
-        Components.ToolButton {
-            iconSource: "go-next"
+        ToolButton {
+            iconName: "go-next"
             height: parent.height*0.9
             width: height
             onClicked: info.next()

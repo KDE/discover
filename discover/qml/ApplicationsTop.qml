@@ -19,9 +19,9 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.1
-import org.kde.plasma.core 2.0
 import org.kde.muon 1.0
 import org.kde.muon.discover 1.0
+import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
 
 Column {
@@ -53,12 +53,12 @@ Column {
                     height: (topView.height-nameLabel.paintedHeight*1.3-topView.spacing*5)/5
 
 
-                    IconItem {
+                    QIconItem {
                         id: iconItem
                         anchors { left: parent.left; verticalCenter: parent.verticalCenter }
                         height: parent.height*0.5
                         width: height
-                        source: model.icon
+                        icon: model.icon
                     }
                     Label {
                         id: nameLabel

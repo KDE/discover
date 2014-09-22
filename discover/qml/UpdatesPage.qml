@@ -1,6 +1,5 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
-import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.muon 1.0
 
 Item
