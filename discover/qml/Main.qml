@@ -44,7 +44,7 @@ Item
     Binding {
         target: app.searchWidget
         property: "enabled"
-        value: pageStack.currentPage!=null && pageStack.currentPage.searchFor!=null
+        value: pageStack.currentItem!=null && pageStack.currentItem.searchFor!=null
     }
     function clearSearch() { app.searchWidget.text="" }
     Connections {
@@ -59,7 +59,7 @@ Item
         running: false
         repeat: false
         interval: 200
-        onTriggered: { pageStack.currentPage.searchFor(app.searchWidget.text) }
+        onTriggered: { pageStack.currentItem.searchFor(app.searchWidget.text) }
     }
 
     Component {
@@ -85,8 +85,8 @@ Item
             if(obj)
                 obj.destroy(2000)
         }
-        if(pageStack.currentPage) {
-            pageStack.currentPage.destroy(100)
+        if(pageStack.currentItem) {
+            pageStack.currentItem.destroy(100)
         }
         var page;
         try {
