@@ -16,7 +16,7 @@
             <Action name="download_from_list" />
             <Action name="load_archives" />
             <Separator/>
-            <Action name="quit" />
+            <Action name="file_quit" />
         </Menu>
         <Menu name="edit" >
             <Action name="undo" />

@@ -83,7 +83,7 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     m_searchText = new QLineEdit(this);
     m_searchText->setPlaceholderText(i18n("Search..."));
     
-    actionCollection()->addAction("search", KStandardAction::find(m_searchText, SLOT(setFocus()), this));
+    actionCollection()->addAction("edit_find", KStandardAction::find(m_searchText, SLOT(setFocus()), this));
     //Here we set up a cache for the screenshots
     engine->rootContext()->setContextProperty("app", this);
 //

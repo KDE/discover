@@ -91,7 +91,7 @@ void MainWindow::initGUI()
     buttonsUi.setupUi(buttons);
     buttonsUi.more->setMenu(m_moreMenu);
     buttonsUi.apply->setDefaultAction(m_applyAction);
-    buttonsUi.quit->setDefaultAction(action("quit"));
+    buttonsUi.quit->setDefaultAction(action("file_quit"));
 
     mainLayout->addWidget(m_powerMessage);
     mainLayout->addWidget(m_updaterWidget);

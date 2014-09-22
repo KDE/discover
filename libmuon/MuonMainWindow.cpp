@@ -54,7 +54,7 @@ void MuonMainWindow::setupActions()
 {
     QAction *quitAction = KStandardAction::quit(QApplication::instance(),
                                                 SLOT(quit()), actionCollection());
-    actionCollection()->addAction("quit", quitAction);
+    actionCollection()->addAction("file_quit", quitAction);
 
     QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_M), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(easterEggTriggered()));
