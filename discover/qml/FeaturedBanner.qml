@@ -84,7 +84,6 @@ Information {
                 verticalCenter: parent.verticalCenter
                 leftMargin: 10
             }
-            color: "white"
             text: titleBar.modelData ? i18n("<b>%1</b><br/>%2", titleBar.modelData.text, titleBar.modelData.comment) : ""
         }
         ToolButton {
