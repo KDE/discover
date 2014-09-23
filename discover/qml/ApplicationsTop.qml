@@ -39,6 +39,7 @@ Column {
         font.weight: Font.Bold
         height: paintedHeight*1.5
     }
+    spacing: 5
     Repeater {
         model: PaginateModel {
             pageSize: 5
@@ -48,7 +49,7 @@ Column {
 //                 onRowsInserted: sortModel()
             }
         }
-        delegate: MouseArea {
+        delegate: GridItem {
                     width: topView.width
                     height: (topView.height-nameLabel.paintedHeight*1.3-topView.spacing*5)/5
 

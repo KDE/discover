@@ -47,9 +47,12 @@ Information {
             bottom: parent.bottom
         }
         
+        SystemPalette {
+            id: palette
+        }
         Rectangle {
             anchors.fill: parent
-            color: "black"
+            color: palette.midlight
             opacity: 0.7
         }
         

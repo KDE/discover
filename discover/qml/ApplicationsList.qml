@@ -38,7 +38,7 @@ ScrollView {
         snapMode: ListView.SnapToItem
         currentIndex: -1
         
-        delegate: Item {
+        delegate: GridItem {
 //                 checked: view.currentIndex==index
                 width: parentItem.actualWidth
                 x: parentItem.proposedMargin

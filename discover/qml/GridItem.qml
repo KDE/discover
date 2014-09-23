@@ -36,4 +36,12 @@ MouseArea {
 
     property bool changeBackgroundOnPress: !listItem.checked
     hoverEnabled: true
+
+    SystemPalette {
+        id: palette
+    }
+    Rectangle {
+        anchors.fill: parent
+        color: listItem.containsMouse ? palette.light : palette.midlight
+    }
 }
