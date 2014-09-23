@@ -50,7 +50,7 @@ int main(int argc, char** argv)
         if(parser.positionalArguments().count() != 1) {
             parser.showHelp(1);
         }
-        exp.setExportPath(QUrl::fromUserInput(parser.positionalArguments().first(), QString(), QUrl::AssumeLocalFile));
+        exp.setExportPath(QUrl::fromUserInput(parser.positionalArguments().first()/*, QString(), QUrl::AssumeLocalFile*/));
     }
 
     QObject::connect(&exp, SIGNAL(exportDone()), &app, SLOT(quit()));
