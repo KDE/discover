@@ -76,6 +76,8 @@ Information {
             }
             width: height
             source: titleBar.modelData ? "image://icon/"+titleBar.modelData.icon : "image://icon/kde"
+            sourceSize.width: width
+            sourceSize.height: height
         }
         
         Label {

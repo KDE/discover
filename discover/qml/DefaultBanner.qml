@@ -9,6 +9,8 @@ Item
         y: 30
         width: 200
         height: 200
+        sourceSize.width: width
+        sourceSize.height: height
     }
     
     Label {

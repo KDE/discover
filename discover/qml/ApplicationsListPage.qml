@@ -65,7 +65,7 @@ Item {
     }
     
     property Component tools: Row {
-            height: theme.defaultFont.pointSize*2
+            height: SystemFonts.generalFont.pointSize*2
             visible: page.visible
             spacing: 3
 

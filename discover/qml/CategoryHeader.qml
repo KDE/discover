@@ -35,6 +35,8 @@ Item {
             margins: 15
         }
         width: height
+        sourceSize.width: width
+        sourceSize.height: height
     }
     
     Label {

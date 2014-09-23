@@ -41,6 +41,8 @@ Column {
             }
             height: 64
             width: height
+            sourceSize.width: width
+            sourceSize.height: height
 
             source: "image://icon/"+application.icon
             clip: true
