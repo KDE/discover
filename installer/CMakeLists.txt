@@ -46,6 +46,6 @@ install(TARGETS muon-installer ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 file(GLOB muon_QMLS "${CMAKE_CURRENT_SOURCE_DIR}/qml/qml/*.qml")
 install( PROGRAMS muon-installer.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR} )
-install(FILES muoninstallerui.rc  DESTINATION  ${DATA_INSTALL_DIR}/muon-installer)
-install(FILES ${muon_QMLS} DESTINATION ${DATA_INSTALL_DIR}/muon-installer)
+install(FILES muoninstallerui.rc  DESTINATION  ${DATA_INSTALL_DIR}/muoninstaller)
+install(FILES ${muon_QMLS} DESTINATION ${DATA_INSTALL_DIR}/muoninstaller)
 install(FILES config/muon-installer.kcfg DESTINATION ${KCFG_INSTALL_DIR})

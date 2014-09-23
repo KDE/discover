@@ -30,5 +30,5 @@ install(TARGETS muon-discover ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 install(PROGRAMS muon-discover.desktop muon-discover-category.desktop
     DESTINATION ${XDG_APPS_INSTALL_DIR} )
-install(FILES featured.json DESTINATION ${DATA_INSTALL_DIR}/muon-discover)
-install(FILES muondiscoverui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/muon-discover)
+install(FILES featured.json DESTINATION ${DATA_INSTALL_DIR}/muondiscover)
+install(FILES muondiscoverui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/muondiscover)
