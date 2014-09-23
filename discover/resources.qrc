@@ -33,6 +33,7 @@
     <file>qml/ReviewDelegate.qml</file>
     <file>qml/ScrolledAwesomeGrid.qml</file>
     <file>qml/ApplicationDescription.qml</file>
+    <file>qml/Heading.qml</file>
 
     <file>qml/navigation.js</file>
  </qresource>

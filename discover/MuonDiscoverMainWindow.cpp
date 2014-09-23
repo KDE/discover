@@ -20,6 +20,7 @@
 #include "MuonDiscoverMainWindow.h"
 #include "DiscoverAction.h"
 #include "PaginateModel.h"
+#include "SystemFonts.h"
 
 // Qt includes
 #include <QDebug>
@@ -77,6 +78,7 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     
     qmlRegisterType<PaginateModel>("org.kde.muon.discover", 1, 0, "PaginateModel");
     qmlRegisterType<DiscoverAction>("org.kde.muon.discover", 1, 0, "DiscoverAction");
+    qmlRegisterSingletonType<SystemFonts>("org.kde.muon.discover", 1, 0, "SystemFonts", ([](QQmlEngine*, QJSEngine*) -> QObject* { return new SystemFonts; }));
     qmlRegisterType<KXmlGuiWindow>();
     qmlRegisterType<QActionGroup>();
     

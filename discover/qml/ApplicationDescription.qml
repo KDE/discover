@@ -56,7 +56,7 @@ Column {
                 leftMargin: 5
             }
 
-            Label {
+            Heading {
                 id: heading
                 text: application.name
                 width: parent.width
@@ -79,7 +79,7 @@ Column {
         }
     }
     Item {width: 10; height: 20}
-    Label { text: i18n("Description") }
+    Heading { text: i18n("Description") }
     Label {
         id: info
         anchors {
@@ -93,7 +93,7 @@ Column {
     }
     Item {width: 10; height: 20}
 
-    Label {
+    Heading {
         text: i18n("Addons")
         visible: addonsView.visible
     }
@@ -105,7 +105,7 @@ Column {
     }
 
     Item {width: 10; height: 20}
-    Label {
+    Heading {
         text: i18n("Comments")
         visible: reviewsView.visible
     }

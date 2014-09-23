@@ -9,6 +9,7 @@ set(muon_discover_SRCS
 
     DiscoverAction.cpp
     PaginateModel.cpp
+    SystemFonts.cpp
 )
 
 qt5_add_resources(muon_discover_SRCS resources.qrc)
