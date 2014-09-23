@@ -30,7 +30,7 @@ int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
     app.setWindowIcon(QIcon::fromTheme("muondiscover"));
-    KAboutData about("muon-discover", i18n("Muon Discover"), version, i18n("An application explorer"),
+    KAboutData about("muondiscover", i18n("Muon Discover"), version, i18n("An application explorer"),
                      KAboutLicense::GPL, i18n("© 2010-2014 Muon Development Team"));
     about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), "aleixpol@blue-systems.com");
     about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");

@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
     app.setWindowIcon(QIcon::fromTheme("system-software-update"));
-    KAboutData about("muon-updater", i18n("Muon Update Manager"), version, i18n(description),
+    KAboutData about("muonupdater", i18n("Muon Update Manager"), version, i18n(description),
                      KAboutLicense::GPL, i18n("©2010-2013 Jonathan Thomas"), QString(), 0);
     about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
     about.setProductName("muon/updater");
