@@ -27,19 +27,13 @@
 #include <KAboutData>
 #include <klocalizedstring.h>
 #include <kdbusservice.h>
-
-
 #include "../MuonVersion.h"
-#include <stdio.h>
-
-static const char description[] =
-    I18N_NOOP("An update manager");
 
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
     app.setWindowIcon(QIcon::fromTheme("system-software-update"));
-    KAboutData about("muonupdater", i18n("Muon Update Manager"), version, i18n(description),
+    KAboutData about("muonupdater", i18n("Muon Update Manager"), version, i18n("An update manager"),
                      KAboutLicense::GPL, i18n("©2010-2013 Jonathan Thomas"), QString(), 0);
     about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
     about.setProductName("muon/updater");
@@ -47,9 +41,13 @@ int main(int argc, char **argv)
     {
         QCommandLineParser parser;
         parser.addOption(QCommandLineOption("backends", i18n("List all the backends we'll want to have loaded, separated by coma ','."), "names"));
+        MuonBackendsFactory::setupCommandLine(&parser);
         about.setupCommandLine(&parser);
+        parser.addHelpOption();
+        parser.addVersionOption();
         parser.process(app);
         about.processCommandLine(&parser);
+        MuonBackendsFactory::processCommandLine(&parser);
         MuonBackendsFactory::setRequestedBackends(parser.value("backends").split(",", QString::SkipEmptyParts));
 
     }

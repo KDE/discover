@@ -25,9 +25,11 @@
 #include <QDebug>
 #include <QStandardPaths>
 #include <QDir>
+#include <QCommandLineParser>
 #include <KSharedConfig>
 #include <KConfigGroup>
 #include <KDesktopFile>
+#include <KLocalizedString>
 
 Q_GLOBAL_STATIC(QStringList, s_requestedBackends)
 
@@ -100,4 +102,22 @@ int MuonBackendsFactory::backendsCount() const
 QStringList MuonBackendsFactory::fetchBackendsWhitelist() const
 {
     return *s_requestedBackends;
+}
+
+void MuonBackendsFactory::setupCommandLine(QCommandLineParser* parser)
+{
+    parser->addOption(QCommandLineOption("listbackends", i18n("List all the available backends.")));
+    parser->addOption(QCommandLineOption("backends", i18n("List all the backends we'll want to have loaded, separated by coma ','."), "names"));
+}
+
+void MuonBackendsFactory::processCommandLine(QCommandLineParser* parser)
+{
+    MuonBackendsFactory::setRequestedBackends(parser->value("backends").split(",", QString::SkipEmptyParts));
+    if(parser->isSet("listbackends")) {
+        fprintf(stdout, "%s", qPrintable(i18n("Available backends:\n")));
+        MuonBackendsFactory f;
+        foreach(const QString& name, f.allBackendNames())
+            fprintf(stdout, " * %s\n", qPrintable(name));
+        qApp->exit(0);
+    }
 }

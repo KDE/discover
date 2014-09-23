@@ -48,14 +48,12 @@ int main(int argc, char** argv)
         parser.addOption(QCommandLineOption("category", i18n("Display a list of entries with a category."), "name"));
         parser.addOption(QCommandLineOption("mode", i18n("Open Muon Discover in a said mode. Modes correspond to the toolbar buttons."), "name"));
         parser.addOption(QCommandLineOption("listmodes", i18n("List all the available modes.")));
-        parser.addOption(QCommandLineOption("listbackends", i18n("List all the available backends.")));
-        parser.addOption(QCommandLineOption("backends", i18n("List all the backends we'll want to have loaded, separated by coma ','."), "names"));
-        parser.addHelpOption();
+        MuonBackendsFactory::setupCommandLine(&parser);
+        about.setupCommandLine(&parser);parser.addHelpOption();
         parser.addVersionOption();
-        about.setupCommandLine(&parser);
         parser.process(app);
         about.processCommandLine(&parser);
-        MuonBackendsFactory::setRequestedBackends(parser.value("backends").split(",", QString::SkipEmptyParts));
+        MuonBackendsFactory::processCommandLine(&parser);
 
         if(parser.isSet("application"))
             mainWindow->openApplication(parser.value("application"));
@@ -69,12 +67,6 @@ int main(int argc, char** argv)
             fprintf(stdout, "%s", qPrintable(i18n("Available modes:\n")));
             foreach(const QString& mode, mainWindow->modes())
                 fprintf(stdout, " * %s\n", qPrintable(mode));
-            return 0;
-        } else if(parser.isSet("listbackends")) {
-            fprintf(stdout, "%s", qPrintable(i18n("Available backends:\n")));
-            MuonBackendsFactory f;
-            foreach(const QString& name, f.allBackendNames())
-                fprintf(stdout, " * %s\n", qPrintable(name));
             return 0;
         }
     }

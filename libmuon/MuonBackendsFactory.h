@@ -23,6 +23,7 @@
 #include "libmuonprivate_export.h"
 #include <QList>
 
+class QCommandLineParser;
 class QStringList;
 class KPluginInfo;
 class AbstractResourcesBackend;
@@ -37,6 +38,8 @@ public:
     int backendsCount() const;
     
     static void setRequestedBackends(const QStringList& backends);
+    static void setupCommandLine(QCommandLineParser* parser);
+    static void processCommandLine(QCommandLineParser* parser);
 
 private:
     QStringList fetchBackendsWhitelist() const;

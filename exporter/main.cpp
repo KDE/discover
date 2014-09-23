@@ -42,10 +42,13 @@ int main(int argc, char** argv)
         QCommandLineParser parser;
         parser.addOption(QCommandLineOption("backends", i18n("List all the backends we'll want to have loaded, separated by coma ','."), "names"));
         parser.addPositionalArgument("file", i18n("File to which we'll export"));
+        MuonBackendsFactory::setupCommandLine(&parser);
         about.setupCommandLine(&parser);
+        parser.addHelpOption();
+        parser.addVersionOption();
         parser.process(app);
         about.processCommandLine(&parser);
-        MuonBackendsFactory::setRequestedBackends(parser.value("backends").split(",", QString::SkipEmptyParts));
+        MuonBackendsFactory::processCommandLine(&parser);
 
         if(parser.positionalArguments().count() != 1) {
             parser.showHelp(1);
