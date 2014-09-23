@@ -29,8 +29,9 @@
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/ResourcesModel.h>
 #include <MuonMainWindow.h>
+#include <QSignalSpy>
 
-QTEST_KDEMAIN( ReviewsTest, GUI )
+QTEST_MAIN( ReviewsTest )
 
 AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 {
@@ -49,14 +50,14 @@ ReviewsTest::ReviewsTest(QObject* parent): QObject(parent)
     m_window = new MuonMainWindow;
     m->integrateMainWindow(m_window);
     m_appBackend = backendByName(m, "ApplicationBackend");
-    QTest::kWaitForSignal(m, SIGNAL(allInitialized()));
+    QSignalSpy(m, SIGNAL(allInitialized())).wait();
     m_revBackend = m_appBackend->reviewsBackend();
 }
 
 void ReviewsTest::testReviewsFetch()
 {
     if(m_revBackend->isFetching())
-        QTest::kWaitForSignal(m_revBackend, SIGNAL(ratingsReady()));
+        QSignalSpy(m_revBackend, SIGNAL(ratingsReady())).wait();
     QVERIFY(!m_revBackend->isFetching());
 }
 
@@ -76,12 +77,12 @@ void ReviewsTest::testReviewsModel()
     AbstractResource* app = m_appBackend->resourceByPackageName(application);
     QVERIFY(app);
     model->setResource(app);
-    QTest::kWaitForSignal(model, SIGNAL(rowsInserted(QModelIndex,int,int)), 2000);
+    QSignalSpy(model, SIGNAL(rowsInserted(QModelIndex,int,int))).wait(2000);
     
     QModelIndex root;
     while(model->canFetchMore(root)) {
         model->fetchMore(root);
-        bool arrived = QTest::kWaitForSignal(model, SIGNAL(rowsInserted(QModelIndex,int,int)), 2000);
+        bool arrived = QSignalSpy(model, SIGNAL(rowsInserted(QModelIndex,int,int))).wait(2000);
         QCOMPARE(arrived, model->canFetchMore(root));
     }
     

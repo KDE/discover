@@ -27,18 +27,23 @@
 #include <QtCore/QStringBuilder>
 #include <QAction>
 #include <QDebug>
+#include <QDialog>
+#include <QFileDialog>
+#include <QStandardPaths>
+#include <QDialogButtonBox>
+#include <QLayout>
 
 // KDE includes
 #include <KActionCollection>
-#include <KFileDialog>
+#include <KConfigGroup>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KProcess>
 #include <KStandardAction>
-#include <KStandardDirs>
+#include <KSharedConfig>
 #include <KXmlGuiWindow>
-#include <KDialog>
-#include <Solid/Networking>
+#include <KWindowConfig>
+// #include <Solid/Networking>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -57,17 +62,18 @@ QAptActions::QAptActions()
     , m_historyDialog(nullptr)
     , m_distUpgradeAvailable(false)
 {
-    connect(Solid::Networking::notifier(), SIGNAL(statusChanged(Solid::Networking::Status)),
-            this, SLOT(networkChanged()));
+//     TODO: port to kf5
+//     connect(Solid::Networking::notifier(), SIGNAL(statusChanged(Solid::Networking::Status)),
+//             this, SLOT(networkChanged()));
 }
 
 QAptActions* QAptActions::self()
 {
-    static QWeakPointer<QAptActions> self;
+    static QPointer<QAptActions> self;
     if(!self) {
         self = new QAptActions;
     }
-    return self.data();
+    return self;
 }
 
 void QAptActions::setMainWindow(MuonMainWindow* w)
@@ -217,10 +223,12 @@ bool QAptActions::reloadWhenSourcesEditorFinished() const
 }
 
 bool QAptActions::isConnected() const {
-    int status = Solid::Networking::status();
-    bool connected = ((status == Solid::Networking::Connected) ||
-                      (status == Solid::Networking::Unknown));
-    return connected;
+//     int status = Solid::Networking::status();
+//     bool connected = ((status == Solid::Networking::Connected) ||
+//                       (status == Solid::Networking::Unknown));
+//     return connected;
+//     TODO: port to kf5
+    return true;
 }
 
 void QAptActions::networkChanged()
@@ -233,10 +241,7 @@ void QAptActions::networkChanged()
 
 bool QAptActions::saveSelections()
 {
-    QString filename;
-
-    filename = KFileDialog::getSaveFileName(QString(), QString(), m_mainWindow,
-                                            i18nc("@title:window", "Save Markings As"));
+    QString filename = QFileDialog::getSaveFileName(m_mainWindow, i18nc("@title:window", "Save Markings As"));
 
     if (filename.isEmpty()) {
         return false;
@@ -260,7 +265,7 @@ bool QAptActions::saveInstalledPackagesList()
 {
     QString filename;
 
-    filename = KFileDialog::getSaveFileName(QString(), QString(), m_mainWindow,
+    filename = QFileDialog::getSaveFileName(m_mainWindow,
                                             i18nc("@title:window", "Save Installed Packages List As"));
 
     if (filename.isEmpty()) {
@@ -284,7 +289,7 @@ bool QAptActions::saveInstalledPackagesList()
 bool QAptActions::createDownloadList()
 {
     QString filename;
-    filename = KFileDialog::getSaveFileName(QString(), QString(), m_mainWindow,
+    filename = QFileDialog::getSaveFileName(m_mainWindow,
                                             i18nc("@title:window", "Save Download List As"));
 
     if (filename.isEmpty()) {
@@ -307,8 +312,7 @@ bool QAptActions::createDownloadList()
 
 void QAptActions::downloadPackagesFromList()
 {
-    QString filename = KFileDialog::getOpenFileName(QString(), QString(),
-                                                    m_mainWindow, i18nc("@title:window", "Open File"));
+    QString filename = QFileDialog::getOpenFileName(m_mainWindow, i18nc("@title:window", "Open File"));
 
     if (filename.isEmpty()) {
         return;
@@ -325,8 +329,7 @@ void QAptActions::downloadPackagesFromList()
 
 void QAptActions::loadSelections()
 {
-    QString filename = KFileDialog::getOpenFileName(QString(), QString(),
-                                                    m_mainWindow, i18nc("@title:window", "Open File"));
+    QString filename = QFileDialog::getOpenFileName(m_mainWindow, i18nc("@title:window", "Open File"));
 
     if (filename.isEmpty()) {
         return;
@@ -344,11 +347,8 @@ void QAptActions::loadSelections()
 
 void QAptActions::loadArchives()
 {
-    QString dirName;
-
-    dirName = KFileDialog::getExistingDirectory(QUrl(), m_mainWindow,
-                                                i18nc("@title:window",
-                                                      "Choose a Directory"));
+    QString dirName = QFileDialog::getExistingDirectory(m_mainWindow,
+                                                i18nc("@title:window", "Choose a Directory"));
 
     if (dirName.isEmpty()) {
         // User canceled
@@ -407,8 +407,8 @@ void QAptActions::runSourcesEditor()
     QStringList arguments;
     int winID = m_mainWindow->effectiveWinId();
 
-    QString kdesudo = KStandardDirs::findExe("kdesudo");
-    QString editor = KStandardDirs::findExe("software-properties-kde");
+    QString kdesudo = QStandardPaths::findExecutable("kdesudo");
+    QString editor = QStandardPaths::findExecutable("software-properties-kde");
 
     if (m_reloadWhenEditorFinished) {
         editor.append(QLatin1String(" --dont-update --attach ") % QString::number(winID)); //krazy:exclude=spelling;
@@ -489,18 +489,25 @@ void QAptActions::displayTransactionError(QApt::ErrorCode error, QApt::Transacti
 void QAptActions::showHistoryDialog()
 {
     if (!m_historyDialog) {
-        m_historyDialog = new KDialog(mainWindow());
+        m_historyDialog = new QDialog(mainWindow());
+        m_historyDialog->setLayout(new QVBoxLayout(m_historyDialog));
 
-        KConfigGroup dialogConfig(KSharedConfig::openConfig("muonrc"),
-                                  "HistoryDialog");
-        m_historyDialog->restoreDialogSize(dialogConfig);
+        KConfigGroup dialogConfig(KSharedConfig::openConfig("muonrc"), "HistoryDialog");
+        KWindowConfig::restoreWindowSize(m_historyDialog->windowHandle(), dialogConfig);
+        
 
         connect(m_historyDialog, SIGNAL(finished()), SLOT(closeHistoryDialog()));
         HistoryView *historyView = new HistoryView(m_historyDialog);
-        m_historyDialog->setMainWidget(historyView);
+        m_historyDialog->layout()->addWidget(historyView);
         m_historyDialog->setWindowTitle(i18nc("@title:window", "Package History"));
         m_historyDialog->setWindowIcon(QIcon::fromTheme("view-history"));
-        m_historyDialog->setButtons(KDialog::Close);
+        
+        QDialogButtonBox* box = new QDialogButtonBox(m_historyDialog);
+        box->setStandardButtons(QDialogButtonBox::Close);
+        connect(box, SIGNAL(accepted()), m_historyDialog, SLOT(accept()));
+        connect(box, SIGNAL(rejected()), m_historyDialog, SLOT(reject()));
+        m_historyDialog->layout()->addWidget(box);
+        
         m_historyDialog->show();
     } else {
         m_historyDialog->raise();
@@ -510,7 +517,7 @@ void QAptActions::showHistoryDialog()
 void QAptActions::closeHistoryDialog()
 {
     KConfigGroup dialogConfig(KSharedConfig::openConfig("muonrc"), "HistoryDialog");
-    m_historyDialog->saveDialogSize(dialogConfig, KConfigBase::Persistent);
+    KWindowConfig::restoreWindowSize(m_historyDialog->windowHandle(), dialogConfig);
     m_historyDialog->deleteLater();
     m_historyDialog = nullptr;
 }
@@ -527,8 +534,8 @@ void QAptActions::launchDistUpgrade()
 {
     KProcess *proc = new KProcess(this);
     QStringList arguments;
-    QString kdesudo = KStandardDirs::findExe("kdesudo");
-    QString upgrader = QString("do-release-upgrade -m desktop -f DistUpgradeViewKDE");
+    QString kdesudo = QStandardPaths::findExecutable("kdesudo");
+    QString upgrader = QStringLiteral("do-release-upgrade -m desktop -f DistUpgradeViewKDE");
 
     arguments << kdesudo << upgrader;
     proc->setProgram(arguments);
@@ -542,7 +549,7 @@ void QAptActions::checkDistUpgrade()
     if(!QFile::exists("/usr/lib/python3/dist-packages/DistUpgrade/DistUpgradeFetcherKDE.py")) {
         qWarning() << "Couldn't find the /usr/lib/python3/dist-packages/DistUpgrade/DistUpgradeFetcherKDE.py file";
     }
-    QString checkerFile = KStandardDirs::locate("data", "muon-notifier/releasechecker");
+    QString checkerFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "muon-notifier/releasechecker");
     if(checkerFile.isEmpty()) {
         qWarning() << "Couldn't find the releasechecker script";
     }

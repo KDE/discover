@@ -24,7 +24,7 @@ install(FILES muon-applications-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/
 install(FILES muon-applications-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
 
 add_library(kded_muonapplicationnotifier MODULE ApplicationNotifier.cpp)
-target_link_libraries(kded_muonapplicationnotifier ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} muonprivate)
+target_link_libraries(kded_muonapplicationnotifier KF5::CoreAddons KF5::Notifications KF5::IconThemes muonprivate)
 target_include_directories(kded_muonapplicationnotifier PRIVATE ${CMAKE_SOURCE_DIR}/kded)
 
 install(TARGETS kded_muonapplicationnotifier DESTINATION ${PLUGIN_INSTALL_DIR})

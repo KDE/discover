@@ -22,8 +22,8 @@
 #define REVIEWSBACKEND_H
 
 #include <QtCore/QString>
+#include <QtCore/QUrl>
 #include <QtCore/QVariant>
-#include <KUrl>
 
 #include "libmuonprivate_export.h"
 #include <ReviewsBackend/AbstractReviewsBackend.h>
@@ -68,7 +68,7 @@ private:
     QApt::Backend *m_aptBackend;
 
     QString m_distId;
-    const KUrl m_serverBase;
+    const QUrl m_serverBase;
     QHash<QString, Rating *> m_ratings;
     // cache key is package name + app name, since both by their own may not be unique
     QHash<QString, QList<Review *> > m_reviewsCache;

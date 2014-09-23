@@ -8,12 +8,12 @@ set(muonapt_SRCS
 
 add_library(muonapt ${muonapt_SRCS})
 target_link_libraries(muonapt Qt5::Core
-     KF5::Solid KF5::KIOWidgets KF5::KDELibs4Support
+     KF5::Solid KF5::KIOWidgets KF5::XmlGui
      ${QAPT_LIBRARY} muonprivate
 )
 
 add_executable(muon_repo_helper AddRepositoryHelper.cpp)
-target_link_libraries(muon_repo_helper ${KDE4_KDECORE_LIBS})
+target_link_libraries(muon_repo_helper Qt5::Core KF5::Auth)
 
 install(TARGETS muon_repo_helper DESTINATION ${LIBEXEC_INSTALL_DIR})
 kauth_install_actions(org.kde.muon.repo policies/org.kde.muon.repo.action)

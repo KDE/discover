@@ -23,16 +23,16 @@
 #include <QtCore/QFile>
 #include <QtCore/QTimer>
 #include <QtCore/QDebug>
+#include <QtCore/QStandardPaths>
+#include <QtCore/QProcess>
+#include <QtGui/QIcon>
 
 // KDE includes
 #include <KAboutData>
 #include <KDirWatch>
 #include <KLocalizedString>
 #include <KPluginFactory>
-#include <KProcess>
-#include <KStandardDirs>
 #include <KNotification>
-#include <KIcon>
 #include <KIconLoader>
 
 // Own includes
@@ -84,13 +84,12 @@ void ApplicationNotifier::init()
 
 void ApplicationNotifier::distUpgradeEvent()
 {
-    QString checkerFile = KStandardDirs::locate("data", "muonapplicationnotifier/releasechecker");
-    qDebug() << "Run releasechecker: " << checkerFile;
-    m_checkerProcess = new KProcess(this);
+    QString checkerFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "muonapplicationnotifier/releasechecker");
+//     qDebug() << "Run releasechecker: " << checkerFile;
+    m_checkerProcess = new QProcess(this);
     connect(m_checkerProcess, SIGNAL(finished(int)),
             this, SLOT(checkUpgradeFinished(int)));
-    m_checkerProcess->setProgram(QStringList() << "/usr/bin/python3" << checkerFile);
-    m_checkerProcess->start();
+    m_checkerProcess->start("/usr/bin/python3", QStringList() << checkerFile);
 }
 
 void ApplicationNotifier::checkUpgradeFinished(int exitStatus)

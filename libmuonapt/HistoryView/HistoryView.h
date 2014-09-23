@@ -23,7 +23,7 @@
 
 #include <QtCore/QHash>
 
-#include <KVBox>
+#include <QWidget>
 
 #include "../libmuonapt_export.h"
 
@@ -31,9 +31,8 @@ class QStandardItem;
 class QStandardItemModel;
 class QTimer;
 class QTreeView;
-
-class KComboBox;
-class KLineEdit;
+class QLineEdit;
+class QComboBox;
 
 namespace QApt {
     class History;
@@ -41,7 +40,7 @@ namespace QApt {
 
 class HistoryProxyModel;
 
-class MUONAPT_EXPORT HistoryView : public KVBox
+class MUONAPT_EXPORT HistoryView : public QWidget
 {
     Q_OBJECT
 public:
@@ -69,9 +68,9 @@ private:
     HistoryProxyModel *m_proxyModel;
     QHash<QString, QStandardItem *> m_categoryHash;
 
-    KLineEdit *m_searchEdit;
+    QLineEdit *m_searchEdit;
     QTimer *m_searchTimer;
-    KComboBox *m_filterBox;
+    QComboBox *m_filterBox;
     QTreeView *m_historyView;
 
 private Q_SLOTS:

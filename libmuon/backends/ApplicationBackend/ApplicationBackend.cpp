@@ -36,9 +36,7 @@
 #include <KMessageBox>
 #include <KProcess>
 #include <KProtocolManager>
-#include <KStandardDirs>
 #include <KIO/Job>
-#include <KDebug>
 #include <KAboutData>
 #include <KActionCollection>
 
@@ -144,7 +142,7 @@ void ApplicationBackend::setApplications()
     for (Application* app : m_appList)
         app->setParent(this);
 
-    KIO::StoredTransferJob* job = KIO::storedGet(KUrl(MuonDataSources::screenshotsSource(), "/json/packages"),KIO::NoReload, KIO::DefaultFlags|KIO::HideProgressInfo);
+    KIO::StoredTransferJob* job = KIO::storedGet(QUrl(MuonDataSources::screenshotsSource().toString() + "/json/packages"),KIO::NoReload, KIO::DefaultFlags|KIO::HideProgressInfo);
     connect(job, SIGNAL(finished(KJob*)), SLOT(initAvailablePackages(KJob*)));
 
     if (m_aptify)
@@ -341,7 +339,7 @@ void ApplicationBackend::markTransaction(Transaction *transaction)
 
 void ApplicationBackend::markLangpacks(Transaction *transaction)
 {
-    QString prog = KStandardDirs::findExe("check-language-support");
+    QString prog = QStandardPaths::findExecutable("check-language-support");
     if (prog.isEmpty()){
         prog =  QStandardPaths::locate(QStandardPaths::GenericDataLocation, "muon/scripts/check-language-support");
         if ( prog.isEmpty()){
@@ -699,7 +697,7 @@ void ApplicationBackend::listBugsFinished()
 void ApplicationBackend::aptListBugs(QStringList packageName)
 {
     QStringList arguments;
-    QString program = KStandardDirs::findExe(QString("apt-listbugs"));
+    QString program = QStandardPaths::findExecutable(QString("apt-listbugs"));
     if(program.isEmpty()){
 	emit transactionOk();
 	return;

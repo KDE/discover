@@ -20,13 +20,12 @@
 
 #include "MuonStrings.h"
 
-#include <KGlobal>
 #include <KLocalizedString>
 #include <QDebug>
 
 #include <LibQApt/Transaction>
 
-K_GLOBAL_STATIC_WITH_ARGS(MuonStrings, globalMuonStrings, (0))
+Q_GLOBAL_STATIC_WITH_ARGS(MuonStrings, globalMuonStrings, (0))
 
 using namespace QApt;
 

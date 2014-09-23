@@ -28,7 +28,7 @@
 #include <KProtocolManager>
 #include <KMessageBox>
 #include <KActionCollection>
-#include <KDebug>
+#include <KLocalizedString>
 
 // Own includes
 #include <LibQApt/Transaction>

@@ -22,6 +22,7 @@
 #define QAPTACTIONS_H
 
 #include <QtCore/QObject>
+#include <QPointer>
 
 #include <LibQApt/Globals>
 
@@ -32,6 +33,7 @@ class KDialog;
 class KXmlGuiWindow;
 class KActionCollection;
 class QAction;
+class QDialog;
 
 namespace QApt {
     class Backend;
@@ -96,7 +98,7 @@ private:
     MuonMainWindow* m_mainWindow;
     bool m_reloadWhenEditorFinished;
     
-    KDialog* m_historyDialog;
+    QPointer<QDialog> m_historyDialog;
     QList<QAction *> m_actions;
     bool m_distUpgradeAvailable;
 

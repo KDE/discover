@@ -1,3 +1,5 @@
+find_package(KF5KDELibs4Support)
+
 add_subdirectory(icons)
 
 set(muon_SRCS
@@ -39,6 +41,7 @@ add_executable(muon ${muon_SRCS})
 target_link_libraries(muon muonprivate muonapt
                            DebconfKDE::Main
                            KF5::KIOWidgets
+                           KF5::KDELibs4Support
                            Qt5::Concurrent
                            ${QAPT_LIBRARY})
 

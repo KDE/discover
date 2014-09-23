@@ -29,15 +29,15 @@
 #include <QtCore/QStringList>
 #include <QThread>
 #include <QJsonDocument>
+#include <QStandardPaths>
 
 // KDE includes
 #include <KIconLoader>
 #include <KService>
 #include <KServiceGroup>
 #include <KToolInvocation>
+#include <KLocalizedString>
 #include <KIO/Job>
-#include <KIO/NetAccess>
-#include <KStandardDirs>
 #include <KConfigGroup>
 #include <KFormat>
 
@@ -497,7 +497,7 @@ void Application::fetchScreenshots()
     if(!m_sourceHasScreenshot)
         return;
     
-    QString dest = KStandardDirs::locate("tmp", "screenshots."+m_packageName);
+    QString dest = QStandardPaths::locate(QStandardPaths::TempLocation, "screenshots."+m_packageName);
     const QUrl packageUrl(MuonDataSources::screenshotsSource().toString() + "/json/package/"+m_packageName);
     KIO::StoredTransferJob* job = KIO::storedGet(packageUrl, KIO::NoReload, KIO::HideProgressInfo);
     connect(job, SIGNAL(finished(KJob*)), SLOT(downloadingScreenshotsFinished(KJob*)));

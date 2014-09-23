@@ -25,23 +25,20 @@
 #include <QListView>
 #include <QtWidgets/QTreeView>
 #include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QComboBox>
 #include <QStandardItemModel>
 
-#include <KComboBox>
-#include <KGlobal>
-#include <KHBox>
-#include <KLineEdit>
 #include <KLocalizedString>
-#include <KDebug>
-#include <kdeversion.h>
 
 #include <LibQApt/History>
 
 #include "HistoryProxyModel.h"
 
 HistoryView::HistoryView(QWidget *parent)
-    : KVBox(parent)
+    : QWidget(parent)
 {
+    setLayout(new QVBoxLayout(this));
     m_history = new QApt::History(this);
 
     QWidget *headerWidget = new QWidget(this);
@@ -53,9 +50,9 @@ HistoryView::HistoryView(QWidget *parent)
     QWidget *headerSpacer = new QWidget(headerWidget);
     headerSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
 
-    m_searchEdit = new KLineEdit(headerWidget);
-    m_searchEdit->setClickMessage(i18nc("@label Line edit click message", "Search"));
-    m_searchEdit->setClearButtonShown(true);
+    m_searchEdit = new QLineEdit(headerWidget);
+    m_searchEdit->setPlaceholderText(i18nc("@label Line edit click message", "Search"));
+    m_searchEdit->setClearButtonEnabled(true);
 
     m_searchTimer = new QTimer(this);
     m_searchTimer->setInterval(300);
@@ -63,7 +60,7 @@ HistoryView::HistoryView(QWidget *parent)
     connect(m_searchTimer, SIGNAL(timeout()), this, SLOT(startSearch()));
     connect(m_searchEdit, SIGNAL(textChanged(QString)), m_searchTimer, SLOT(start()));
 
-    m_filterBox = new KComboBox(headerWidget);
+    m_filterBox = new QComboBox(headerWidget);
     m_filterBox->insertItem(AllChangesItem, QIcon::fromTheme("bookmark-new-list"),
                             i18nc("@item:inlistbox Filters all changes in the history view",
                                   "All changes"),
@@ -105,14 +102,14 @@ HistoryView::HistoryView(QWidget *parent)
 
     for (const QApt::HistoryItem &item : m_history->historyItems()) {
         QDateTime startDateTime = item.startDate();
-        QString formattedTime = KGlobal::locale()->formatTime(startDateTime.time());
+        QString formattedTime = startDateTime.toString();
         QString category;
 
         QString date = startDateTime.date().toString();
         if (categoryHash.contains(date)) {
             category = categoryHash.value(date);
         } else {
-            category = KGlobal::locale()->formatDate(startDateTime.date(), KLocale::FancyShortDate);
+            category = startDateTime.date().toString(Qt::DefaultLocaleShortDate);
             categoryHash[date] = category;
         }
 
