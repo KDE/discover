@@ -48,8 +48,6 @@ int main(int argc, char **argv)
         parser.process(app);
         about.processCommandLine(&parser);
         MuonBackendsFactory::processCommandLine(&parser);
-        MuonBackendsFactory::setRequestedBackends(parser.value("backends").split(",", QString::SkipEmptyParts));
-
     }
 
     KDBusService service(KDBusService::Unique);

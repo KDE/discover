@@ -37,11 +37,11 @@ public:
     QStringList allBackendNames(bool whitelist = true) const;
     int backendsCount() const;
     
-    static void setRequestedBackends(const QStringList& backends);
     static void setupCommandLine(QCommandLineParser* parser);
     static void processCommandLine(QCommandLineParser* parser);
 
 private:
+    static void setRequestedBackends(const QStringList& backends);
     QStringList fetchBackendsWhitelist() const;
 };
 
