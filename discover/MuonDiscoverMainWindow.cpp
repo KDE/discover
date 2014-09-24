@@ -81,6 +81,7 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     qmlRegisterSingletonType<SystemFonts>("org.kde.muon.discover", 1, 0, "SystemFonts", ([](QQmlEngine*, QJSEngine*) -> QObject* { return new SystemFonts; }));
     qmlRegisterType<KXmlGuiWindow>();
     qmlRegisterType<QActionGroup>();
+    qmlRegisterType<QAction>();
     
     m_searchText = new QLineEdit(this);
     m_searchText->setPlaceholderText(i18n("Search..."));

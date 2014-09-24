@@ -85,7 +85,10 @@ void ApplicationNotifier::init()
 void ApplicationNotifier::distUpgradeEvent()
 {
     QString checkerFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "muonapplicationnotifier/releasechecker");
-//     qDebug() << "Run releasechecker: " << checkerFile;
+    if (checkerFile.isEmpty()) {
+        qWarning() << "Couldn't find the releasechecker" << checkerFile << QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
+        return;
+    }
     m_checkerProcess = new QProcess(this);
     connect(m_checkerProcess, SIGNAL(finished(int)),
             this, SLOT(checkUpgradeFinished(int)));

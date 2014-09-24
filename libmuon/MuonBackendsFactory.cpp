@@ -49,6 +49,7 @@ AbstractResourcesBackend* MuonBackendsFactory::backend(const QString& name) cons
     QString libname = group.readEntry("X-KDE-Library", QString());
     QPluginLoader* loader = new QPluginLoader("muon/"+libname, ResourcesModel::global());
 
+//     qDebug() << "trying to load plugin:" << loader->fileName();
     AbstractResourcesBackendFactory* f = qobject_cast<AbstractResourcesBackendFactory*>(loader->instance());
     if(!f) {
         qWarning() << "error loading" << name << loader->errorString() << loader->metaData();

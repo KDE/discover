@@ -26,6 +26,8 @@
 #include <QJsonDocument>
 #include <QTemporaryFile>
 #include <QStandardPaths>
+#include <QFileInfo>
+#include <QDir>
 
 #include <KIO/Job>
 #include <KLocalizedString>
@@ -108,7 +110,9 @@ void ReviewsBackend::setAptBackend(QApt::Backend *aptBackend)
 void ReviewsBackend::fetchRatings()
 {
     QString ratingsCache = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libmuon/ratings.txt";
-    QUrl ratingsUrl(m_serverBase.toString()+"/review-stats/");
+    QFileInfo file(ratingsCache);
+    QDir::temp().mkpath(file.dir().path());
+    QUrl ratingsUrl(m_serverBase.toString()+"review-stats/");
     //default to popcon if not using ubuntu
     if(m_distId.toLower() == QLatin1String("ubuntu")){
         refreshConsumerKeys();
@@ -118,7 +122,7 @@ void ReviewsBackend::fetchRatings()
     } else {
         ratingsUrl = QUrl("http://popcon.debian.org/all-popcon-results.gz");
     }
-    KIO::FileCopyJob *getJob = KIO::file_copy(ratingsUrl, ratingsCache, -1,
+    KIO::FileCopyJob *getJob = KIO::file_copy(ratingsUrl, QUrl::fromLocalFile(ratingsCache), -1,
                                KIO::Overwrite | KIO::HideProgressInfo);
     connect(getJob, SIGNAL(result(KJob*)), SLOT(ratingsFetched(KJob*)));
 }
@@ -126,6 +130,7 @@ void ReviewsBackend::fetchRatings()
 void ReviewsBackend::ratingsFetched(KJob *job)
 {
     if (job->error()) {
+        qWarning() << "Couldn't fetch the ratings" <<  job->errorString();
         return;
     }
 
@@ -135,7 +140,11 @@ void ReviewsBackend::ratingsFetched(KJob *job)
 void ReviewsBackend::loadRatingsFromFile()
 {
     QString ratingsCache = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libmuon/ratings.txt";
-    QIODevice* dev = KFilterDev::deviceForFile(ratingsCache, "application/x-gzip");
+    QScopedPointer<QIODevice> dev(KFilterDev::deviceForFile(ratingsCache, "application/x-gzip"));
+    if (!dev->open(QIODevice::ReadOnly)) {
+        qWarning() << "Couldn't open ratings.txt" << ratingsCache;
+        return;
+    }
     if(m_distId.toLower() == QLatin1String("ubuntu")) {
         QJsonParseError error;
         QJsonDocument doc = QJsonDocument::fromJson(dev->readAll(), &error);
@@ -179,8 +188,6 @@ void ReviewsBackend::loadRatingsFromFile()
             }
         }
     }
-    dev->close();
-    dev->deleteLater();
     emit ratingsReady();
 }
 
