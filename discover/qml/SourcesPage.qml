@@ -1,6 +1,6 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
-import org.kde.plasma.components 2.0 as Components
+import QtQuick.Dialogs 1.2
 import org.kde.muon 1.0
 import org.kde.muonapt 1.0
 import "navigation.js" as Navigation
@@ -29,31 +29,17 @@ Item {
                 text: action.text
                 onClicked: action.trigger()
                 enabled: action.enabled
-                icon: action.icon
+//                 icon: action.icon
             }
         }
     }
     
-    Components.CommonDialog {
+    Dialog {
         id: newSourceDialog
-        onClickedOutside: reviewDialog.close()
-        titleText: i18n("Specify the new source")
-        buttons: Row {
-            spacing: 5
-            Components. Button {
-                text: i18n("OK")
-                iconSource: "dialog-ok"
-                enabled: repository.text!=""
-                onClicked: newSourceDialog.accept()
-            }
-            Components.Button {
-                text: i18n("Cancel")
-                iconSource: "dialog-cancel"
-                onClicked: newSourceDialog.reject()
-            }
-        }
+        title: i18n("Specify the new source")
+        standardButtons: StandardButton.Ok | StandardButton.Close
         
-        content: Item {
+        Item {
             height: info.childrenRect.height
             width: 500
             
@@ -106,7 +92,7 @@ Item {
 
             model: origins.sources
 
-            delegate: ListItem {
+            delegate: GridItem {
                 function joinEntriesSuites(source) {
                     var vals = {}
                     for(var i=0; i<source.entries.length; ++i) {
