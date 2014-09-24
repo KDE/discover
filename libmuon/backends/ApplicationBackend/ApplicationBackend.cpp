@@ -37,7 +37,6 @@
 #include <KProcess>
 #include <KProtocolManager>
 #include <KIO/Job>
-#include <KAboutData>
 #include <KActionCollection>
 
 // LibQApt/DebconfKDE includes

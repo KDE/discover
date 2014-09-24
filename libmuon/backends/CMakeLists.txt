@@ -6,7 +6,7 @@ if(KF5Attica_FOUND)
     add_subdirectory(KNSBackend)
 endif()
 
-if(QAPT_FOUND)
+if(QApt_FOUND)
     add_subdirectory(ApplicationBackend)
 endif()
 

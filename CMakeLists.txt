@@ -18,10 +18,12 @@ find_package(KF5 REQUIRED WidgetsAddons CoreAddons Solid
 
 find_package(Phonon4Qt5 REQUIRED NO_MODULE)
 
-find_package(QApt QUIET)
-find_package(DebconfKDE QUIET)
-find_package(QtOAuth REQUIRED)
-find_package(QCA2 REQUIRED) #required by QtOAuth
+find_package(QApt 3.0.0)
+if(QApt_FOUND)
+    find_package(DebconfKDE REQUIRED)
+    find_package(QtOAuth REQUIRED)
+    find_package(Qca REQUIRED) #required by QtOAuth
+endif()
 find_package(KF5Attica)
 find_package(KF5NewStuff)
 # find_package(BODEGA QUIET)
@@ -35,7 +37,7 @@ set(MUON_VERSION "2.65.0")
 configure_file(MuonVersion.h.in MuonVersion.h)
 
 add_subdirectory(libmuon)
-if(QAPT_FOUND)
+if(QApt_FOUND)
     add_subdirectory(libmuonapt)
     add_subdirectory(muon)
 #    add_subdirectory(installer)

@@ -5,10 +5,10 @@ macro(libmuon_add_unit_test name)
     add_test(${name} ${name})
     ecm_mark_as_test(${name})
     target_link_libraries(${name}
-        muonprivate muonapt
+        muonprivate MuonApt
         
         Qt5::Test Qt5::Core
-        KF5::KIOWidgets ${QAPT_LIBRARY})
+        KF5::KIOWidgets KF5::XmlGui QApt::Main)
 endmacro(libmuon_add_unit_test)
 
 install(FILES rnrtestratings.txt DESTINATION ${DATA_INSTALL_DIR}/libmuon)
@@ -16,4 +16,3 @@ install(FILES popcontestratings.txt DESTINATION ${DATA_INSTALL_DIR}/libmuon)
 
 libmuon_add_unit_test(applicationbackendtest ApplicationBackendTest.cpp)
 libmuon_add_unit_test(reviewstest ReviewsTest.cpp)
-target_include_directories(reviewstest PRIVATE ${QCA_INCLUDES}) #qtoauth should be dragging it, but it doesn't

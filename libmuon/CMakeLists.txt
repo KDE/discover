@@ -57,7 +57,7 @@ LINK_PRIVATE
 
 generate_export_header(muonprivate EXPORT_FILE_NAME libmuonprivate_export.h)
 
-target_include_directories(muonprivate PRIVATE ${PHONON_INCLUDES} PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(muonprivate PRIVATE ${PHONON_INCLUDES} PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
 
 install(TARGETS muonprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES moo.ogg DESTINATION ${DATA_INSTALL_DIR}/libmuon)

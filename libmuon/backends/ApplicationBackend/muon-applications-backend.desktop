@@ -128,6 +128,6 @@ GenericName[uk]=Підтримка APT
 GenericName[x-test]=xxAPT Supportxx
 GenericName[zh_CN]=APT 支持
 GenericName[zh_TW]=APT 支援
-X-KDE-Library=muon-appsbackend
+X-KDE-Library=muon-applications-backend
 X-KDE-PluginInfo-Name=muon-applications-backend
 X-KDE-PluginInfo-License=GPL

@@ -38,12 +38,12 @@ install(FILES config/muon.kcfg DESTINATION ${KCFG_INSTALL_DIR})
 
 add_executable(muon ${muon_SRCS})
 
-target_link_libraries(muon muonprivate muonapt
+target_link_libraries(muon muonprivate MuonApt
                            DebconfKDE::Main
                            KF5::KIOWidgets
                            KF5::KDELibs4Support
                            Qt5::Concurrent
-                           ${QAPT_LIBRARY})
+                           QApt::Main)
 
 install(TARGETS muon ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
