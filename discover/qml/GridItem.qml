@@ -31,9 +31,6 @@ MouseArea {
 
     property bool checked: false
 
-    width: parent ? parent.width : childrenRect.width
-    height: paddingItem.childrenRect.height + background.margins.top + background.margins.bottom
-
     property bool changeBackgroundOnPress: !listItem.checked
     hoverEnabled: true
 
