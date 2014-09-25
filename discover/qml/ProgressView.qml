@@ -1,6 +1,7 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
+import org.kde.kquickcontrolsaddons 2.0
 import org.kde.muon 1.0
 import "navigation.js" as Navigation
 
@@ -69,9 +70,9 @@ ToolBar {
                 id: launcherRow
                 anchors.fill: parent
                 spacing: 2
-                Image {
+                QIconItem {
                     anchors.verticalCenter: parent.verticalCenter
-                    source: "image://icon/"+model.app.icon
+                    icon: model.app.icon
                     Layout.preferredHeight: parent.height*0.5
                     width: height
                 }

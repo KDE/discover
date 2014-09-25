@@ -61,11 +61,11 @@ ScrollView {
                         anchors.left: parent.left
                     }
                     
-                    Image {
+                    QIconItem {
                         anchors.right: icon.right
                         anchors.bottom: icon.bottom
                         visible: isInstalled && view.model.stateFilter!=2
-                        source: "image://icon/dialog-ok"
+                        icon: "dialog-ok"
                         height: 16
                         width: 16
                     }

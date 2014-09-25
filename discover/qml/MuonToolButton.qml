@@ -1,5 +1,6 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import org.kde.kquickcontrolsaddons 2.0
 
 ToolButton
 {
@@ -10,7 +11,7 @@ ToolButton
     width: height+(labelItem.text=="" ? 0 : labelItem.width)
     anchors.margins: 5
     
-    Image {
+    QIconItem {
         id: iconItem
         anchors {
             top: parent.top
@@ -20,7 +21,7 @@ ToolButton
         }
         width: height
         smooth: true
-        source: "image://icon/"+button.icon
+        icon: button.icon
     }
     
     Label {

@@ -1,16 +1,15 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import org.kde.kquickcontrolsaddons 2.0
 
 Item
 {
-    Image {
+    QIconItem {
         id: icon
-        source: "image://icon/kde"
+        icon: "kde"
         y: 30
         width: 200
         height: 200
-        sourceSize.width: width
-        sourceSize.height: height
     }
     
     Label {

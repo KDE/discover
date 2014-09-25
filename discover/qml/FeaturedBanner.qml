@@ -1,5 +1,6 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
 
 Information {
@@ -69,7 +70,7 @@ Information {
             }
         }
         
-        Image {
+        QIconItem {
             id: iconItem
             anchors {
                 left: prevButton.right
@@ -78,9 +79,7 @@ Information {
                 margins: 3
             }
             width: height
-            source: titleBar.modelData ? "image://icon/"+titleBar.modelData.icon : "image://icon/kde"
-            sourceSize.width: width
-            sourceSize.height: height
+            icon: titleBar.modelData ? titleBar.modelData.icon : "kde"
         }
         
         Label {

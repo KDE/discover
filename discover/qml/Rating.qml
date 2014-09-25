@@ -18,6 +18,7 @@
  */
 
 import QtQuick 2.1
+import org.kde.kquickcontrolsaddons 2.0
 
 Item {
     id: view
@@ -37,11 +38,10 @@ Item {
         
         Component {
             id: del
-            Image {
+            QIconItem {
                 height: view.starSize
                 width: view.starSize
-                source: "image://icon/rating"
-                asynchronous: false
+                icon: "rating"
                 opacity: (view.max/theRepeater.count*index)>view.rating ? 0.2 : 1
 
                 MouseArea {

@@ -19,6 +19,7 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import org.kde.kquickcontrolsaddons 2.0
 import org.kde.muon 1.0
 import org.kde.muon.discover 1.0 as Discover
 import "navigation.js" as Navigation
@@ -33,7 +34,7 @@ Column {
             margins: 10
         }
         height: icon.height
-        Image {
+        QIconItem {
             id: icon
             anchors {
                 top: header.top
@@ -41,11 +42,8 @@ Column {
             }
             height: 64
             width: height
-            sourceSize.width: width
-            sourceSize.height: height
 
-            source: "image://icon/"+application.icon
-            clip: true
+            icon: application.icon
         }
 
         Item {

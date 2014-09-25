@@ -1,6 +1,7 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
 import org.kde.muon 1.0
+import org.kde.kquickcontrolsaddons 2.0
 
 Column
 {
@@ -28,8 +29,8 @@ Column
                     checked: model.checked
                     onClicked: addonsModel.changeState(display, checked)
                 }
-                Image {
-                    source: "image://icon/applications-other"
+                QIconItem {
+                    icon: "applications-other"
                     height: parent.height*0.9
                     width: height
                     smooth: true

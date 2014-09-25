@@ -19,14 +19,15 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import org.kde.kquickcontrolsaddons 2.0
 
 Item {
     property QtObject category: null
     property real proposedMargin: 0
     
-    Image {
+    QIconItem {
         id: iconItem
-        source: "image://icon/"+category.icon
+        icon: category.icon
         anchors {
             top: parent.top
             bottom: parent.bottom
@@ -35,8 +36,6 @@ Item {
             margins: 15
         }
         width: height
-        sourceSize.width: width
-        sourceSize.height: height
     }
     
     Label {
