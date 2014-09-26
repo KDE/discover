@@ -1,6 +1,5 @@
 /*
- *   Copyright 2010 Marco Martin <notmart@gmail.com>
- *   Copyright 2012 Aleix Pol Gonzalez <aleixpol@kde.org>
+ *   Copyright 2014 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library General Public License as
@@ -25,13 +24,14 @@ import QtQuick 2.1
 MouseArea {
     id: listItem
 
-    //this defines if the item will emit clicked and look pressed on mouse down
+    default property alias content: paddingItem.data
+
     property alias enabled: listItem.enabled
     property alias containsMouse: listItem.containsMouse
-
     property bool checked: false
+    property int internalMargin: 5
 
-    property bool changeBackgroundOnPress: !listItem.checked
+
     hoverEnabled: true
 
     SystemPalette {
@@ -39,6 +39,18 @@ MouseArea {
     }
     Rectangle {
         anchors.fill: parent
-        color: listItem.containsMouse ? palette.light : palette.midlight
+        color: listItem.containsMouse || listItem.pressed ? palette.light : palette.midlight
     }
+
+    Item {
+        id: paddingItem
+        anchors {
+            fill: parent
+            leftMargin: listItem.internalMargin
+            topMargin: listItem.internalMargin
+            rightMargin: listItem.internalMargin
+            bottomMargin: listItem.internalMargin
+        }
+    }
+
 }
