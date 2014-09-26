@@ -90,7 +90,7 @@ GridItem {
             height: width
             smooth: true
             asynchronous: true
-            source: model.application.icon.indexOf("/")==0 ? "file://"+model.application.icon : "image://icon/"+model.application.icon
+            source: model.application.icon[0] == "/" ? "file://"+model.application.icon : "image://icon/"+model.application.icon
             visible: screen.hasThumbnail
             Behavior on y { NumberAnimation { duration: 200; easing.type: Easing.InQuad } }
         }
