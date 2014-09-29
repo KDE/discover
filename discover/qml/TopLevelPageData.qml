@@ -27,13 +27,8 @@ DiscoverAction {
     mainWindow: app
     checkable: true
     checked: window.currentTopLevel==component
-    enabled: window.navigationEnabled && component && component.status == Component.Ready
+    enabled: window.navigationEnabled
     actionsGroup: "topLevelPagesGroup"
-
-    onEnabledChanged: {
-        if(component && component.status != Component.Ready)
-            console.log("error when loading", component.url, component.errorString());
-    }
 
     onTriggered: {
         if(window.currentTopLevel!=component)

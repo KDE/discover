@@ -1,37 +1,38 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Dialogs 1.2
+import QtQuick.Layouts 1.1
 import org.kde.muon 1.0
-import org.kde.muonapt 1.0
 import "navigation.js" as Navigation
 
 Item {
     id: page
     clip: true
     property real actualWidth: width-Math.pow(width/70, 2)
+    property real proposedMargin: (page.width-actualWidth)/2
     
     property Component tools: Row {
         anchors.fill: parent
         visible: page.visible
         ToolButton {
-            iconSource: "list-add"
+            iconName: "list-add"
             text: i18n("Add Source")
             onClicked: newSourceDialog.open()
             anchors.verticalCenter: parent.verticalCenter
         }
         
-        Repeater {
-            model: ["software_properties"]
-            
-            delegate: MuonToolButton {
-                property QtObject action: app.getAction(modelData)
-                height: parent.height
-                text: action.text
-                onClicked: action.trigger()
-                enabled: action.enabled
-//                 icon: action.icon
-            }
-        }
+//         Repeater {
+//             model: ["software_properties"]
+//
+//             delegate: MuonToolButton {
+//                 property QtObject action: app.getAction(modelData)
+//                 height: parent.height
+//                 text: action.text
+//                 onClicked: action.trigger()
+//                 enabled: action.enabled
+// //                 icon: action.icon
+//             }
+//         }
     }
     
     Dialog {
@@ -78,90 +79,58 @@ Item {
         
         onAccepted: origins.addRepository(repository.text)
     }
-    OriginsBackend { id: origins }
     
     ScrollView {
+        anchors.fill: parent
         ListView {
             id: view
-            anchors {
-                top: parent.top
-                bottom: parent.bottom
-                horizontalCenter: parent.horizontalCenter
-            }
-            width: parent.actualWidth
+            width: parent.width
 
-            model: origins.sources
+            model: SourcesModel
 
-            delegate: GridItem {
-                function joinEntriesSuites(source) {
-                    var vals = {}
-                    for(var i=0; i<source.entries.length; ++i) {
-                        var entry = source.entries[i]
-                        if(vals[entry.suite]==null)
-                            vals[entry.suite]=0
+            delegate: ColumnLayout {
+                x: page.proposedMargin
+                width: page.actualWidth
+                Label { text: "Shit" }
+                Repeater {
+                    model: sourceBackend.sources
 
-                        if(entry.isSource)
-                            vals[entry.suite] += 2
-                        else
-                            vals[entry.suite] += 1
-                    }
-                    var ret = new Array
-                    for(var e in vals) {
-                        if(vals[e]>1)
-                            ret.push(e)
-                        else
-                            ret.push(i18n("%1 (Binary)", e))
-                    }
+                    delegate: GridItem {
+                        width: parent.width
+                        height: browseOrigin.height*1.2
+                        enabled: browseOrigin.enabled
+                        onClicked: Navigation.openApplicationListSource(model.display)
 
-                    return ret.join(", ")
-                }
-                enabled: browseOrigin.enabled
-                onClicked: Navigation.openApplicationListSource(modelData.name)
+                        RowLayout {
+                            Layout.alignment: Qt.AlignVCenter
+                            anchors.centerIn: parent
+                            width: parent.width
 
-                CheckBox {
-                    id: enabledBox
-                    enabled: false //TODO: implement the application of this change
-                    anchors {
-                        left: parent.left
-                        top: parent.top
+                            CheckBox {
+                                id: enabledBox
+                                enabled: false //TODO: implement the application of this change
+                                checked: model.checked != Qt.Unchecked
+                            }
+                            Label {
+                                Layout.fillWidth: true
+                                elide: Text.ElideRight
+                                text: model.display
+                            }
+                            Label {
+                                text: model.toolTip
+                            }
+                            Button {
+                                id: browseOrigin
+                                enabled: display!=""
+                                iconName: "view-filter"
+                                onClicked: Navigation.openApplicationListSource(model.name)
+                            }
+                            Button {
+                                iconName: "edit-delete"
+                                onClicked: origins.removeRepository(model.uri)
+                            }
+                        }
                     }
-                    checked: modelData.enabled
-                }
-                Label {
-                    anchors {
-                        top: parent.top
-                        bottom: parent.bottom
-                        left: enabledBox.right
-                        right: suitesLabel.left
-                        leftMargin: 5
-                    }
-                    elide: Text.ElideRight
-                    text: modelData.name=="" ? modelData.uri : i18n("%1. %2", modelData.name, modelData.uri)
-                }
-                Label {
-                    id: suitesLabel
-                    anchors {
-                        bottom: parent.bottom
-                        right: browseOrigin.left
-                    }
-                    text: joinEntriesSuites(modelData)
-                }
-                ToolButton {
-                    id: browseOrigin
-                    enabled: modelData.name!=""
-                    iconSource: "view-filter"
-                    onClicked: Navigation.openApplicationListSource(modelData.name)
-                    anchors {
-                        bottom: parent.bottom
-                        right: removeButton.left
-                    }
-
-                }
-                ToolButton {
-                    id: removeButton
-                    anchors.right: parent.right
-                    iconSource: "edit-delete"
-                    onClicked: origins.removeRepository(modelData.uri)
                 }
             }
         }

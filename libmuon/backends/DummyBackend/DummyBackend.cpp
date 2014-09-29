@@ -22,7 +22,9 @@
 #include "DummyResource.h"
 #include "DummyReviewsBackend.h"
 #include "DummyTransaction.h"
+#include "DummySourcesBackend.h"
 #include <resources/StandardBackendUpdater.h>
+#include <resources/SourcesModel.h>
 #include <Transaction/Transaction.h>
 #include <Transaction/TransactionModel.h>
 
@@ -75,6 +77,8 @@ void DummyBackend::setMetaData(const QString& path)
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
     m_updater->setMessageActions(QList<QAction*>() << updateAction);
+
+    SourcesModel::global()->addSourcesBackend(new DummySourcesBackend(this));
 }
 
 void DummyBackend::toggleFetching()

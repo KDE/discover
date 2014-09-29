@@ -5,6 +5,7 @@ set(dummy-backend_SRCS
     DummyBackend.cpp
     DummyReviewsBackend.cpp
     DummyTransaction.cpp
+    DummySourcesBackend.cpp
 )
 
 add_library(muon-dummy-backend MODULE ${dummy-backend_SRCS})

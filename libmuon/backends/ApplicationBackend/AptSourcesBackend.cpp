@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2014 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,44 +18,19 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "OriginsBackend.h"
-#include <resources/ResourcesModel.h>
-#include <QDebug>
-#include <QDir>
-#include <kauth.h>
-#include <KProcess>
-#include <QMainWindow>
-#include <qqml.h>
-#include <LibQApt/Backend>
-#include <LibQApt/Config>
-#include <KMessageBox>
-#include <KLocalizedString>
+#include "aptsourcesbackend.h"
 
-static QObject* applicationBackend()
+AptSourcesBackend::AptSourcesBackend(ApplicationBackend* backend)
+    : AbstractSourcesBackend(backend)
+    , m_sources(new QStandardItemModel(this))
 {
-    foreach(AbstractResourcesBackend* b, ResourcesModel::global()->backends()) {
-        if(QByteArray(b->metaObject()->className())=="ApplicationBackend")
-            return b;
+    connect(backend, SIGNAL(fetchingChanged()), SLOT(load()), Qt::UniqueConnection);
+    if (!backend->isFetching()) {
+        load();
     }
-    return 0;
 }
 
-OriginsBackend::OriginsBackend(QObject* parent)
-    : QObject(parent)
-{
-    qmlRegisterType<Source>();
-    qmlRegisterType<Entry>();
-    load();
-
-    connect(applicationBackend(), SIGNAL(fetchingChanged()), SLOT(load()), Qt::UniqueConnection);
-}
-
-OriginsBackend::~OriginsBackend()
-{
-    qDeleteAll(m_sources);
-}
-
-void OriginsBackend::load()
+void AptSourcesBackend::load()
 {
     m_sourcesList.reload();
     qDeleteAll(m_sources);
@@ -73,31 +48,24 @@ void OriginsBackend::load()
     emit originsChanged();
 }
 
-Source* OriginsBackend::sourceForUri(const QString& uri)
+Source* AptSourcesBackend::sourceForUri(const QString& uri)
 {
-    foreach(Source* s, m_sources) {
+    foreach(SourceItem* s, m_sources) {
         if(s->uri()==uri)
             return s;
     }
     Source* s = new Source(this);
     s->setUri(uri);
-    m_sources += s;
+    m_sources->addRow(s);
     return s;
 }
 
-void OriginsBackend::addRepository(const QString& repository)
+QAbstractItemModel* AptSourcesBackend::sources()
 {
-    KAuth::Action readAction("org.kde.muon.repo.modify");
-    readAction.setHelperId("org.kde.muon.repo");
-    QVariantMap args;
-    args["repository"] = repository;
-    args["action"] = QString("add");
-    readAction.setArguments(args);
-    KAuth::ExecuteJob* reply = readAction.execute();
-    additionDone(reply->error());
+    return m_sources;
 }
 
-void OriginsBackend::removeRepository(const QString& repository)
+bool AptSourcesBackend::removeSource()
 {
     KAuth::Action readAction("org.kde.muon.repo.modify");
     readAction.setHelperId("org.kde.muon.repo");
@@ -109,7 +77,19 @@ void OriginsBackend::removeRepository(const QString& repository)
     removalDone(reply->error());
 }
 
-void OriginsBackend::additionDone(int processErrorCode)
+bool AptSourcesBackend::addSource()
+{
+    KAuth::Action readAction("org.kde.muon.repo.modify");
+    readAction.setHelperId("org.kde.muon.repo");
+    QVariantMap args;
+    args["repository"] = repository;
+    args["action"] = QString("add");
+    readAction.setArguments(args);
+    KAuth::ExecuteJob* reply = readAction.execute();
+    additionDone(reply->error());
+}
+
+void AptSourcesBackend::additionDone(int processErrorCode)
 {
     if(processErrorCode==0) {
         load();
@@ -123,7 +103,7 @@ void OriginsBackend::additionDone(int processErrorCode)
     }
 }
 
-void OriginsBackend::removalDone(int processErrorCode)
+void AptSourcesBackend::removalDone(int processErrorCode)
 {
     if(processErrorCode==0) {
         load();
@@ -137,51 +117,65 @@ void OriginsBackend::removalDone(int processErrorCode)
     }
 }
 
-QVariantList OriginsBackend::sourcesVariant() const
-{
-    QVariantList ret;
-    foreach(QObject* source, m_sources) {
-        ret += qVariantFromValue<QObject*>(source);
-    }
-    return ret;
-}
 
-
-bool Source::enabled() const
+QVariant SourceItem::data(int role) const
 {
-    bool ret = false;
-    foreach(Entry* e, m_entries) {
-        ret |= e->isEnabled();
-    }
-    return ret;
-}
-
-QQmlListProperty<Entry> Source::entries()
-{
-    return QQmlListProperty<Entry>(this, m_entries);
-}
-
-QString Source::name() const
-{
-    QUrl uri(m_uri);
-    QApt::Backend* backend = qobject_cast<QApt::Backend*>(applicationBackend()->property("backend").value<QObject*>());
-    QStringList origins = backend->originsForHost(uri.host());
-    if(origins.size()==1)
-        return origins.first();
-    else if(origins.size()==0)
-        return QString();
-    else {
-        QString path = uri.path();
-        int firstSlash = path.indexOf('/', 1);
-        int secondSlash = path.indexOf('/', firstSlash+1);
-        QString launchpadifyUri = path.mid(1,secondSlash-1).replace('/', '-');
-        QStringList results = origins.filter(launchpadifyUri, Qt::CaseInsensitive);
-        if(results.isEmpty()) {
-            launchpadifyUri = path.mid(1,firstSlash-1).replace('/', '-');
-            results = origins.filter(launchpadifyUri, Qt::CaseInsensitive);
+    switch(role) {
+        case Qt::DisplayRole: {
+//             modelData.name=="" ? modelData.uri : i18n("%1. %2", modelData.name, modelData.uri)
+            QUrl uri(m_uri);
+            QApt::Backend* backend = qobject_cast<QApt::Backend*>(parent());
+            QStringList origins = backend->originsForHost(uri.host());
+            if(origins.size()==1)
+                return origins.first();
+            else if(origins.size()==0)
+                return QString();
+            else {
+                QString path = uri.path();
+                int firstSlash = path.indexOf('/', 1);
+                int secondSlash = path.indexOf('/', firstSlash+1);
+                QString launchpadifyUri = path.mid(1,secondSlash-1).replace('/', '-');
+                QStringList results = origins.filter(launchpadifyUri, Qt::CaseInsensitive);
+                if(results.isEmpty()) {
+                    launchpadifyUri = path.mid(1,firstSlash-1).replace('/', '-');
+                    results = origins.filter(launchpadifyUri, Qt::CaseInsensitive);
+                }
+                return results.isEmpty() ? QString() : results.first();
+            }
         }
-        return results.isEmpty() ? QString() : results.first();
+        case Qt::ToolTipRole: {
+            QMap<QString, int> vals;
+            for (QStandardItem* entry : children()) {
+                QString suite = it->data(Suite);
+                if(vals[]==null)
+                    vals[suite]=0;
+
+                if(it->data(IsSource))
+                    vals[suite] += 2
+                else
+                    vals[suite] += 1
+            }
+            QStringList ret;
+            for(const QString& key, vals.keys()) {
+                if(vals[e]>1)
+                    ret.push(e)
+                else
+                    ret.push(i18n("%1 (Binary)", e))
+            }
+
+            return ret.join(", ");
+        }
+        default:
+            return QStandardItem::data(role);
     }
 }
 
-#include "moc_OriginsBackend.cpp"
+
+
+
+
+
+
+
+
+

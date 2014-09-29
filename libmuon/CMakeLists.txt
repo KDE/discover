@@ -19,13 +19,15 @@ set(muon_LIB_SRCS
     Transaction/TransactionModel.cpp
     resources/ResourcesModel.cpp
     resources/ResourcesProxyModel.cpp
-    resources/AbstractResourcesBackend.cpp
-    resources/AbstractResource.cpp
     resources/PackageState.cpp
-    resources/AbstractBackendUpdater.cpp
     resources/ResourcesUpdatesModel.cpp
     resources/StandardBackendUpdater.cpp
+    resources/SourcesModel.cpp
+    resources/AbstractResourcesBackend.cpp
+    resources/AbstractResource.cpp
+    resources/AbstractBackendUpdater.cpp
     resources/AbstractKDEDModule.cpp
+    resources/AbstractSourcesBackend.cpp
     MuonBackendsFactory.cpp
     ScreenshotsModel.cpp
     ApplicationAddonsModel.cpp

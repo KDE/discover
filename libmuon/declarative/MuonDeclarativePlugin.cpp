@@ -27,6 +27,7 @@
 #include <resources/ResourcesUpdatesModel.h>
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
+#include <resources/SourcesModel.h>
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/ReviewsModel.h>
@@ -43,6 +44,7 @@ void MuonDeclarativePlugin::initializeEngine(QQmlEngine* engine, const char* uri
 {
     engine->rootContext()->setContextProperty("ResourcesModel", ResourcesModel::global());
     engine->rootContext()->setContextProperty("TransactionModel", TransactionModel::global());
+    engine->rootContext()->setContextProperty("SourcesModel", SourcesModel::global());
     QQmlExtensionPlugin::initializeEngine(engine, uri);
 }
 

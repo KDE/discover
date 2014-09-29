@@ -56,6 +56,7 @@
 #include "Transaction/TransactionModel.h"
 #include "ApplicationUpdates.h"
 #include "MuonMainWindow.h"
+#include <resources/SourcesModel.h>
 #include <MuonDataSources.h>
 
 // static const KCatalogLoader loader("app-install-data"); //FIXME port
@@ -580,6 +581,8 @@ void ApplicationBackend::initBackend()
             this, SLOT(aptTransactionsChanged(QString)));
     connect(m_backend, SIGNAL(xapianUpdateFinished()),
             this, SIGNAL(searchInvalidated()));
+
+    SourcesModel::self()->addSourcesBackend(new AptSourcesBackend(this));
 }
 
 void ApplicationBackend::setupTransaction(QApt::Transaction *trans)

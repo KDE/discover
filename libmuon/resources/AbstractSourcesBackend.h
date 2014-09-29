@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2014 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,21 +18,27 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef ORIGINSBACKENDTEST_H
-#define ORIGINSBACKENDTEST_H
+#ifndef ABSTRACTSOURCESMANAGER_H
+#define ABSTRACTSOURCESMANAGER_H
 
 #include <QObject>
-#include <../OriginsBackend.h>
+#include "libmuonprivate_export.h"
 
-class OriginsBackendTest : public QObject
+class QAbstractItemModel;
+class MUONPRIVATE_EXPORT AbstractSourcesBackend : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QAbstractItemModel* sources READ sources CONSTANT)
     public:
-        explicit OriginsBackendTest(QObject* parent = 0);
+        AbstractSourcesBackend(QObject* parent);
+        ~AbstractSourcesBackend();
 
-    private slots:
-        void testLoad();
-        void testLocal();
+        virtual QString name() const = 0;
+
+        virtual bool addSource(const QString& id) = 0;
+        virtual bool removeSource(const QString& id) = 0;
+
+        virtual QAbstractItemModel* sources() = 0;
 };
 
-#endif // ORIGINSBACKENDTEST_H
+#endif // ABSTRACTRESOURCESBACKEND_H
