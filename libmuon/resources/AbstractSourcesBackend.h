@@ -38,8 +38,8 @@ class MUONPRIVATE_EXPORT AbstractSourcesBackend : public QObject
         virtual QString name() const = 0;
         virtual QString idDescription() = 0;
 
-        virtual bool addSource(const QString& id) = 0;
-        virtual bool removeSource(const QString& id) = 0;
+        Q_SCRIPTABLE virtual bool addSource(const QString& id) = 0;
+        Q_SCRIPTABLE virtual bool removeSource(const QString& id) = 0;
 
         virtual QAbstractItemModel* sources() = 0;
 };

@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include "DummySourcesBackend.h"
+#include <QDebug>
 
 DummySourcesBackend::DummySourcesBackend(QObject* parent)
     : AbstractSourcesBackend(parent)
@@ -53,6 +54,8 @@ bool DummySourcesBackend::removeSource(const QString& id)
     QList<QStandardItem*> items = m_sources->findItems(id);
     if (items.count()==1) {
         m_sources->removeRow(items.first()->row());
+    } else {
+        qWarning() << "couldn't find " << id  << items;
     }
     return items.count()==1;
 }

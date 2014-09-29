@@ -99,7 +99,7 @@ QString DummyResource::name()
 
 QString DummyResource::origin() const
 {
-    return "dummy";
+    return "DummySource1";
 }
 
 QString DummyResource::packageName() const

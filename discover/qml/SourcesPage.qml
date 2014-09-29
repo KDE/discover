@@ -47,12 +47,14 @@ Item {
             model: SourcesModel
 
             delegate: ColumnLayout {
+                id: sourceDelegate
                 x: page.proposedMargin
                 width: page.actualWidth
 
+                property QtObject sourceBackend: model.sourceBackend
                 AddSourceDialog {
                     id: addSourceDialog
-                    source: model.sourceBackend
+                    source: sourceDelegate.sourceBackend
 
                     onVisibleChanged: if(!visible) destroy()
                 }
@@ -79,7 +81,7 @@ Item {
                     model: sourceBackend.sources
 
                     delegate: GridItem {
-                        width: parent.width
+                        width: sourceDelegate.width
                         height: browseOrigin.height*1.2
                         enabled: browseOrigin.enabled
                         onClicked: Navigation.openApplicationListSource(model.display)
@@ -106,11 +108,11 @@ Item {
                                 id: browseOrigin
                                 enabled: display!=""
                                 iconName: "view-filter"
-                                onClicked: Navigation.openApplicationListSource(model.name)
+                                onClicked: Navigation.openApplicationListSource(model.display)
                             }
                             Button {
                                 iconName: "edit-delete"
-                                onClicked: origins.removeRepository(model.uri)
+                                onClicked: sourceDelegate.sourceBackend.removeSource(model.display)
                             }
                         }
                     }
