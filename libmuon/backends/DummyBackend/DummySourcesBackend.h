@@ -33,6 +33,7 @@ public:
     virtual bool addSource(const QString& id);
     virtual bool removeSource(const QString& id);
     virtual QString name() const { return QStringLiteral("Dummy"); }
+    virtual QString idDescription() { return QStringLiteral("Random weird text"); }
 
 private:
     QStandardItemModel* m_sources;

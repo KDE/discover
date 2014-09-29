@@ -170,12 +170,18 @@ QVariant SourceItem::data(int role) const
     }
 }
 
+QString AptSourcesBackend::idDescription()
+{
+    return i18n(  "<sourceline> - The apt repository source line to add. This is one of:\n"
+                        "  a complete apt line, \n"
+                        "  a repo url and areas (areas defaults to 'main')\n"
+                        "  a PPA shortcut.\n\n"
 
-
-
-
-
-
-
-
+                        "  Examples:\n"
+                        "    deb http://myserver/path/to/repo stable myrepo\n"
+                        "    http://myserver/path/to/repo myrepo\n"
+                        "    https://packages.medibuntu.org free non-free\n"
+                        "    http://extras.ubuntu.com/ubuntu\n"
+                        "    ppa:user/repository");
+}
 

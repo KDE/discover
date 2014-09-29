@@ -28,6 +28,7 @@
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
 #include <resources/SourcesModel.h>
+#include <resources/AbstractSourcesBackend.h>
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/ReviewsModel.h>
@@ -62,6 +63,7 @@ void MuonDeclarativePlugin::registerTypes(const char*)
     
     qmlRegisterType<Rating>();
     qmlRegisterType<AbstractResource>();
+    qmlRegisterType<AbstractSourcesBackend>();
     qmlRegisterType<AbstractResourcesBackend>();
     qmlRegisterType<AbstractReviewsBackend>();
     qmlRegisterType<Category>();

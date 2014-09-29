@@ -34,6 +34,7 @@
     <file>qml/ScrolledAwesomeGrid.qml</file>
     <file>qml/ApplicationDescription.qml</file>
     <file>qml/Heading.qml</file>
+    <file>qml/AddSourceDialog.qml</file>
 
     <file>qml/navigation.js</file>
  </qresource>

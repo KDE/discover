@@ -29,11 +29,14 @@ class MUONPRIVATE_EXPORT AbstractSourcesBackend : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QAbstractItemModel* sources READ sources CONSTANT)
+    Q_PROPERTY(QString name READ name CONSTANT)
+    Q_PROPERTY(QString idDescription READ idDescription CONSTANT)
     public:
         AbstractSourcesBackend(QObject* parent);
         ~AbstractSourcesBackend();
 
         virtual QString name() const = 0;
+        virtual QString idDescription() = 0;
 
         virtual bool addSource(const QString& id) = 0;
         virtual bool removeSource(const QString& id) = 0;

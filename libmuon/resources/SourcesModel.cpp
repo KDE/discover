@@ -52,12 +52,12 @@ void SourcesModel::addSourcesBackend(AbstractSourcesBackend* sources)
     beginInsertRows(QModelIndex(), m_sources.size(), m_sources.size());
     m_sources += sources;
     endInsertRows();
+    emit sourcesChanged();
 }
 
 QVariant SourcesModel::data(const QModelIndex& index, int role) const
 {
     if(!index.isValid() || index.row()>=m_sources.count()) {
-        qDebug() << "discard..." << index << m_sources.count();
         return QVariant();
     }
     switch(role) {
@@ -73,4 +73,9 @@ QVariant SourcesModel::data(const QModelIndex& index, int role) const
 int SourcesModel::rowCount(const QModelIndex& parent) const
 {
     return parent.isValid() ? 0 : m_sources.count();
+}
+
+QVariant SourcesModel::get(int row, const QByteArray& roleName)
+{
+    return data(index(row), roleNames().key(roleName));
 }

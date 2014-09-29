@@ -38,8 +38,10 @@ Q_OBJECT
 public:
     AptSourcesBackend(ApplicationBackend* backend);
     virtual QAbstractItemModel* sources();
-    virtual bool removeSource();
-    virtual bool addSource();
+    virtual bool removeSource(const QString& uri);
+    virtual bool addSource(const QString& uri);
+    virtual QString idDescription();
+    virtual QString name() const;
 
 private slots:
     void load();
