@@ -22,5 +22,3 @@ kauth_install_actions(org.kde.muon.repo policies/org.kde.muon.repo.action)
 kauth_install_helper_files(muon_repo_helper org.kde.muon.repo root)
 
 install(TARGETS MuonApt ${INSTALL_TARGETS_DEFAULT_ARGS})
-
-add_subdirectory(declarative)

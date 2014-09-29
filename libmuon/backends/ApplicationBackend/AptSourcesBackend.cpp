@@ -18,7 +18,40 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "aptsourcesbackend.h"
+#include "AptSourcesBackend.h"
+#include "ApplicationBackend.h"
+#include <libqapt/sourceentry.h>
+#include <kauthexecutejob.h>
+#include <KLocalizedString>
+#include <KMessageWidget>
+#include <KMessageBox>
+#include <QProcess>
+
+class EntryItem : public QStandardItem
+{
+public:
+    EntryItem(const QApt::SourceEntry &sEntry)
+        : m_sEntry(sEntry)
+    {}
+    QApt::SourceEntry& sourceEntry() { return m_sEntry; }
+    
+private:
+    QApt::SourceEntry m_sEntry;
+};
+
+class SourceItem : public QStandardItem
+{
+public:
+    SourceItem(const QUrl& uri)
+        : m_uri(uri)
+    {}
+    
+    virtual QVariant data(int role = Qt::UserRole + 1) const;
+    QUrl uri() const { return m_uri; }
+
+private:
+    QUrl m_uri;
+};
 
 AptSourcesBackend::AptSourcesBackend(ApplicationBackend* backend)
     : AbstractSourcesBackend(backend)
@@ -32,31 +65,28 @@ AptSourcesBackend::AptSourcesBackend(ApplicationBackend* backend)
 
 void AptSourcesBackend::load()
 {
-    m_sourcesList.reload();
-    qDeleteAll(m_sources);
-    m_sources.clear();
+    m_sources->clear();
 
     for (const QApt::SourceEntry &sEntry : m_sourcesList.entries()) {
         if (!sEntry.isValid())
             continue;
 
-        Source* newSource = sourceForUri(sEntry.uri());
-        Entry* entry = new Entry(this, sEntry);
-        newSource->addEntry(entry);
+        SourceItem* newSource = sourceForUri(sEntry.uri());
+        EntryItem* entry = new EntryItem(sEntry);
+        newSource->appendRow(entry);
     }
-
-    emit originsChanged();
 }
 
-Source* AptSourcesBackend::sourceForUri(const QString& uri)
+SourceItem* AptSourcesBackend::sourceForUri(const QString& uri)
 {
-    foreach(SourceItem* s, m_sources) {
+    for(int r = 0, c = m_sources->rowCount(); r<c; ++r) {
+        SourceItem* s = static_cast<SourceItem*>(m_sources->item(r));
         if(s->uri()==uri)
             return s;
     }
-    Source* s = new Source(this);
-    s->setUri(uri);
-    m_sources->addRow(s);
+    SourceItem* s = new SourceItem(uri);
+    s->setData(uri, UriRole);
+    m_sources->appendRow(s);
     return s;
 }
 
@@ -65,7 +95,7 @@ QAbstractItemModel* AptSourcesBackend::sources()
     return m_sources;
 }
 
-bool AptSourcesBackend::removeSource()
+bool AptSourcesBackend::removeSource(const QString& repository)
 {
     KAuth::Action readAction("org.kde.muon.repo.modify");
     readAction.setHelperId("org.kde.muon.repo");
@@ -75,9 +105,10 @@ bool AptSourcesBackend::removeSource()
     readAction.setArguments(args);
     KAuth::ExecuteJob* reply = readAction.execute();
     removalDone(reply->error());
+    return true;
 }
 
-bool AptSourcesBackend::addSource()
+bool AptSourcesBackend::addSource(const QString& repository)
 {
     KAuth::Action readAction("org.kde.muon.repo.modify");
     readAction.setHelperId("org.kde.muon.repo");
@@ -87,13 +118,14 @@ bool AptSourcesBackend::addSource()
     readAction.setArguments(args);
     KAuth::ExecuteJob* reply = readAction.execute();
     additionDone(reply->error());
+    return true;
 }
 
 void AptSourcesBackend::additionDone(int processErrorCode)
 {
     if(processErrorCode==0) {
         load();
-        QMetaObject::invokeMethod(applicationBackend(), "reload");
+        QMetaObject::invokeMethod(appsBackend(), "reload");
     } else {
         QProcess* p = qobject_cast<QProcess*>(sender());
         Q_ASSERT(p);
@@ -107,7 +139,7 @@ void AptSourcesBackend::removalDone(int processErrorCode)
 {
     if(processErrorCode==0) {
         load();
-        QMetaObject::invokeMethod(applicationBackend(), "reload");
+        QMetaObject::invokeMethod(appsBackend(), "reload");
     } else {
         QProcess* p = qobject_cast<QProcess*>(sender());
         Q_ASSERT(p);
@@ -117,6 +149,10 @@ void AptSourcesBackend::removalDone(int processErrorCode)
     }
 }
 
+ApplicationBackend* AptSourcesBackend::appsBackend() const
+{
+    return qobject_cast<ApplicationBackend*>(parent());
+}
 
 QVariant SourceItem::data(int role) const
 {
@@ -124,7 +160,7 @@ QVariant SourceItem::data(int role) const
         case Qt::DisplayRole: {
 //             modelData.name=="" ? modelData.uri : i18n("%1. %2", modelData.name, modelData.uri)
             QUrl uri(m_uri);
-            QApt::Backend* backend = qobject_cast<QApt::Backend*>(parent());
+            QApt::Backend* backend = qobject_cast<AptSourcesBackend*>(model()->parent())->appsBackend()->backend();
             QStringList origins = backend->originsForHost(uri.host());
             if(origins.size()==1)
                 return origins.first();
@@ -145,22 +181,25 @@ QVariant SourceItem::data(int role) const
         }
         case Qt::ToolTipRole: {
             QMap<QString, int> vals;
-            for (QStandardItem* entry : children()) {
-                QString suite = it->data(Suite);
-                if(vals[]==null)
+            for(int i=0, c=rowCount(); i<c; ++i) {
+                EntryItem* entry = static_cast<EntryItem*>(child(i));
+                
+                QString suite = entry->sourceEntry().dist();
+                if(!vals.contains(suite))
                     vals[suite]=0;
 
-                if(it->data(IsSource))
-                    vals[suite] += 2
+                bool hasSource = entry->sourceEntry().type() == QLatin1String("deb-src");
+                if(hasSource)
+                    vals[suite] += 2;
                 else
-                    vals[suite] += 1
+                    vals[suite] += 1;
             }
             QStringList ret;
-            for(const QString& key, vals.keys()) {
+            for(const QString& e : vals.keys()) {
                 if(vals[e]>1)
-                    ret.push(e)
+                    ret.append(e);
                 else
-                    ret.push(i18n("%1 (Binary)", e))
+                    ret.append(i18n("%1 (Binary)", e));
             }
 
             return ret.join(", ");
@@ -185,3 +224,7 @@ QString AptSourcesBackend::idDescription()
                         "    ppa:user/repository");
 }
 
+QString AptSourcesBackend::name() const
+{
+    return i18n("Software Management");
+}

@@ -21,27 +21,28 @@
 #ifndef APTSOURCESBACKEND_H
 #define APTSOURCESBACKEND_H
 
-#include <../../home/kde-devel/frameworks/muon/libmuon/resources/AbstractSourcesBackend.h>
-#include <../../kde5/include/QtGui/qstandarditemmodel.h>
 #include <QStandardItemModel>
+#include <resources/AbstractSourcesBackend.h>
+#include <LibQApt/SourcesList>
 
 class ApplicationBackend;
-
-class SourceItem : public QStandardItem
-{
-    virtual QVariant data(int role = Qt::UserRole + 1) const;
-};
+class SourceItem;
 
 class AptSourcesBackend : public AbstractSourcesBackend
 {
 Q_OBJECT
 public:
+    enum Roles {
+        UriRole
+    };
+    
     AptSourcesBackend(ApplicationBackend* backend);
     virtual QAbstractItemModel* sources();
     virtual bool removeSource(const QString& uri);
     virtual bool addSource(const QString& uri);
     virtual QString idDescription();
     virtual QString name() const;
+    ApplicationBackend* appsBackend() const;
 
 private slots:
     void load();
@@ -49,9 +50,10 @@ private slots:
     void additionDone(int processErrorCode);
 
 private:
-    Source* sourceForUri(const QString& uri);
+    SourceItem* sourceForUri(const QString& uri);
 
     QStandardItemModel* m_sources;
+    QApt::SourcesList m_sourcesList;
 };
 
 #endif // APTSOURCESBACKEND_H

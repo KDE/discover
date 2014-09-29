@@ -50,6 +50,7 @@
 #include "QAptActions.h"
 
 // Own includes
+#include "AptSourcesBackend.h"
 #include "Application.h"
 #include "ReviewsBackend.h"
 #include "Transaction/Transaction.h"
@@ -582,7 +583,7 @@ void ApplicationBackend::initBackend()
     connect(m_backend, SIGNAL(xapianUpdateFinished()),
             this, SIGNAL(searchInvalidated()));
 
-    SourcesModel::self()->addSourcesBackend(new AptSourcesBackend(this));
+    SourcesModel::global()->addSourcesBackend(new AptSourcesBackend(this));
 }
 
 void ApplicationBackend::setupTransaction(QApt::Transaction *trans)
