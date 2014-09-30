@@ -88,8 +88,7 @@ Item {
 
                         RowLayout {
                             Layout.alignment: Qt.AlignVCenter
-                            anchors.centerIn: parent
-                            width: parent.width
+                            anchors.fill: parent
 
                             CheckBox {
                                 id: enabledBox
