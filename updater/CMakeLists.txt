@@ -36,6 +36,6 @@ install(TARGETS muon-updater ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### install files ###############
 
-install( FILES muon-updaterui.rc  DESTINATION  ${DATA_INSTALL_DIR}/muonupdater )
+install( FILES muon-updaterui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/muon-updater )
 install( PROGRAMS muon-updater.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR} )
 

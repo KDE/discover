@@ -31,6 +31,7 @@
 #include <QtWidgets/QVBoxLayout>
 #include <QAction>
 #include <QPushButton>
+#include <QDebug>
 
 // KDE includes
 #include <KLocalizedString>
@@ -38,6 +39,7 @@
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
 #include <KMessageWidget>
+#include <kiconloader.h>
 
 // Libmuon includes
 #include <resources/AbstractResourcesBackend.h>
@@ -102,7 +104,9 @@ UpdaterWidget::UpdaterWidget(ResourcesUpdatesModel* updates, QWidget *parent) :
     page1Layout->addWidget(m_changelogWidget);
 
     m_busyWidget = new KPixmapSequenceOverlayPainter(page1);
-    m_busyWidget->setSequence(KPixmapSequence("process-working", QFontMetrics(qApp->font()).xHeight()*4)); //TODO: make sure it's an appropriate size
+    KPixmapSequence seq = KIconLoader::global()->loadPixmapSequence("process-working", KIconLoader::SizeSmallMedium);
+    qDebug() << "fuuuuuuuuuuu" << seq.isValid();
+    m_busyWidget->setSequence(seq);
     m_busyWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     m_busyWidget->setWidget(m_updateView->viewport());
 
@@ -150,6 +154,7 @@ void UpdaterWidget::activityChanged()
 
 void UpdaterWidget::populateUpdateModel()
 {
+    qDebug() << "..... populating";
     m_busyWidget->stop();
     QApplication::restoreOverrideCursor();
     setEnabled(true);

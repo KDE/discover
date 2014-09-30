@@ -36,6 +36,7 @@
 #include <KLocalizedString>
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
+#include <KIconLoader>
 #include <QTextBrowser>
 
 ChangelogWidget::ChangelogWidget(QWidget *parent)
@@ -71,7 +72,7 @@ ChangelogWidget::ChangelogWidget(QWidget *parent)
     viewport->setPalette(palette);
 
     m_busyWidget = new KPixmapSequenceOverlayPainter(this);
-    m_busyWidget->setSequence(KPixmapSequence("process-working", QFontMetrics(qApp->font()).xHeight()*4));
+    m_busyWidget->setSequence(KIconLoader::global()->loadPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
     m_busyWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     m_busyWidget->setWidget(this);
 
