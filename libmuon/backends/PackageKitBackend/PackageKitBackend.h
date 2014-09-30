@@ -38,8 +38,6 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         explicit PackageKitBackend(QObject* parent = 0);
         ~PackageKitBackend();
         
-        static QString errorMessage(PackageKit::Transaction::Error error);
-        
         virtual AbstractBackendUpdater* backendUpdater() const;
         virtual AbstractReviewsBackend* reviewsBackend() const;
         
@@ -47,7 +45,6 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         virtual AbstractResource* resourceByPackageName(const QString& name) const;
         virtual QList<AbstractResource*> searchPackageName(const QString& searchText);
         virtual int updatesCount() const;
-        int allUpdatesCount() const;
         
         virtual void installApplication(AbstractResource* app);
         virtual void installApplication(AbstractResource* app, AddonList addons);

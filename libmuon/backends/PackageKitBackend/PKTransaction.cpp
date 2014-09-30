@@ -21,6 +21,7 @@
 #include "PKTransaction.h"
 #include "PackageKitBackend.h"
 #include "PackageKitResource.h"
+#include "PackageKitMessages.h"
 #include <resources/AbstractResource.h>
 #include <Transaction/TransactionModel.h>
 #include <QDebug>
@@ -62,7 +63,7 @@ void PKTransaction::start()
     connect(m_trans, SIGNAL(mediaChangeRequired(PackageKit::Transaction::MediaType,QString,QString)),
             SLOT(mediaChange(PackageKit::Transaction::MediaType,QString,QString)));
     connect(m_trans, SIGNAL(requireRestart(PackageKit::Transaction::Restart,QString)),
-            SLOT(requireRestard(PackageKit::Transaction::Restart,QString)));
+            SLOT(requireRestart(PackageKit::Transaction::Restart,QString)));
     connect(m_trans, SIGNAL(itemProgress(QString, PackageKit::Transaction::Status, uint)), SLOT(progressChanged(QString, PackageKit::Transaction::Status, uint)));
     connect(m_trans, SIGNAL(eulaRequired(QString, QString, QString, QString)), SLOT(eulaRequired(QString, QString, QString, QString)));
     connect(m_trans, SIGNAL(changed()), SLOT(transactionChanged()));
@@ -138,7 +139,7 @@ void PKTransaction::errorFound(PackageKit::Transaction::Error err, const QString
 {
     if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
         return;
-    QMessageBox::critical(0, i18n("PackageKit Error"), PackageKitBackend::errorMessage(err));
+    QMessageBox::critical(0, i18n("PackageKit Error"), PackageKitMessages::errorMessage(err));
 }
 
 void PKTransaction::mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text)
@@ -147,28 +148,7 @@ void PKTransaction::mediaChange(PackageKit::Transaction::MediaType media, const 
     QMessageBox::information(0, i18n("PackageKit media change"), i18n("Media Change of type '%1' is requested.\n%2", type, text));
 }
 
-void PKTransaction::requireRestard(PackageKit::Transaction::Restart restart, const QString& p)
+void PKTransaction::requireRestart(PackageKit::Transaction::Restart restart, const QString& pkgid)
 {
-    QString message;
-    switch (restart) {
-        case PackageKit::Transaction::RestartApplication:
-            message = i18n("'%1' was changed and suggests to be restarted.", PackageKit::Daemon::packageName(p));
-            break;
-        case PackageKit::Transaction::RestartSession:
-            message = i18n("A change by '%1' suggests your session to be restarted.", PackageKit::Daemon::packageName(p));
-            break;
-        case PackageKit::Transaction::RestartSecuritySession:
-            message = i18n("'%1' was updated for security reasons, a restart of the session is recommended.", PackageKit::Daemon::packageName(p));
-            break;
-        case PackageKit::Transaction::RestartSecuritySystem:
-            message = i18n("'%1' was updated for security reasons, a restart of the system is recommended.", PackageKit::Daemon::packageName(p));
-            break;
-        case PackageKit::Transaction::RestartSystem:
-        case PackageKit::Transaction::RestartUnknown:
-        case PackageKit::Transaction::RestartNone:
-        default:
-            message = i18n("A change by '%1' suggests your system to be rebooted.", PackageKit::Daemon::packageName(p));
-            break;
-    };
-    QMessageBox::information(0, i18n("PackageKit restart required"), message);
+    QMessageBox::information(0, i18n("PackageKit restart required"), PackageKitMessages::restartMessage(restart, pkgid));
 }

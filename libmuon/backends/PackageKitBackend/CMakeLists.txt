@@ -5,6 +5,7 @@ set(pkbackend_SRCS
     PKTransaction.cpp
     PackageKitUpdater.cpp
     PackageKitUtils.cpp
+    PackageKitMessages.cpp
 )
 
 add_library(muon-pkbackend MODULE ${pkbackend_SRCS})

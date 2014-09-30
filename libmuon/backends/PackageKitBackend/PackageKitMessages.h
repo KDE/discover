@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2012-2014 Aleix Pol Gonzalez <aleixpol@blue-systems.com>  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,33 +18,17 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef PKTRANSACTION_H
-#define PKTRANSACTION_H
+#ifndef PACKAGEKITMESSAGES_H
+#define PACKAGEKITMESSAGES_H
 
-#include <Transaction/Transaction.h>
 #include <PackageKit/Transaction>
 
-class PKTransaction : public Transaction
+namespace PackageKitMessages
 {
-    Q_OBJECT
-    public:
-        explicit PKTransaction(AbstractResource* app, Transaction::Role role);
-        PackageKit::Transaction* transaction();
-        
-        virtual void cancel();
-
-    private slots:
-        void cleanup(PackageKit::Transaction::Exit, uint);
-        void errorFound(PackageKit::Transaction::Error err, const QString& error);
-        void mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text);
-        void requireRestart(PackageKit::Transaction::Restart restart, const QString& p);
-        void progressChanged(const QString&, PackageKit::Transaction::Status, uint);
-//         void eulaRequired(const QString &eulaID, const QString &packageID, const QString &vendor, const QString &licenseAgreement);
-        void transactionChanged();
-
-    private:
-        void start();
-        PackageKit::Transaction* m_trans;
+    QString errorMessage(PackageKit::Transaction::Error error);
+    QString restartMessage(PackageKit::Transaction::Restart restart, const QString& p);
+    QString statusMessage(PackageKit::Transaction::Status status);
+    QString statusDetail(PackageKit::Transaction::Status status);
 };
 
-#endif // PKTRANSACTION_H
+#endif // PACKAGEKITMESSAGES_H

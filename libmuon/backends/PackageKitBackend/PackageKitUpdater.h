@@ -64,13 +64,16 @@ class PackageKitUpdater : public AbstractBackendUpdater
         virtual void start();
     
     private slots:
-        void reloadFinished();
-        void backendChanged();
         void errorFound(PackageKit::Transaction::Error err, const QString& error);
         void mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text);
-        void requireRestard(PackageKit::Transaction::Restart restart, const QString& p);
+        void requireRestart(PackageKit::Transaction::Restart restart, const QString& p);
         void eulaRequired(const QString &eulaID, const QString &packageID, const QString &vendor, const QString &licenseAgreement);
         void finished(PackageKit::Transaction::Exit exit, uint);
+        void statusChanged();
+        void speedChanged();
+        void cancellableChanged();
+        void remainingTimeChanged();
+        void percentageChanged();
         
     private:
         void setTransaction(PackageKit::Transaction* transaction);
