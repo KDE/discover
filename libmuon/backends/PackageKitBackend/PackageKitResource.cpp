@@ -87,7 +87,7 @@ QUrl PackageKitResource::homepage()
 
 QString PackageKitResource::icon() const
 {
-    return m_icon;
+    return m_icon.isEmpty() ? "applications-other" : m_icon;
 }
 
 QString PackageKitResource::license()
