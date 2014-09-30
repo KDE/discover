@@ -108,6 +108,7 @@ void MainWindow::initGUI()
 
 #warning TODO, waiting for this new API to finally be accepted
 //     connect(Solid::Power::self(), SIGNAL(acPluggedChanged(bool)), SLOT(updatePlugState(bool)));
+    updatePlugState(true);
 }
 
 void MainWindow::setupActions()
