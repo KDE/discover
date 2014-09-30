@@ -78,7 +78,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
     private:
         void setTransaction(PackageKit::Transaction* transaction);
 
-        PackageKit::Transaction * m_transaction;
+        QPointer<PackageKit::Transaction> m_transaction;
         PackageKitBackend * m_backend;
         QList<AbstractResource*> m_toUpgrade;
         bool m_isCancelable;

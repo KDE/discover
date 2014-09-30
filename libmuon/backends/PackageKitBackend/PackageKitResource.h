@@ -65,10 +65,8 @@ class PackageKitResource : public AbstractResource
     signals:
         void licenseChanged();
 
-    protected:
-        PackageKitBackend * m_backend;
-        
     private:
+        PackageKitBackend * m_backend;
         QString m_installedPackageId;
         QString m_availablePackageId;
         PackageKit::Transaction::Info m_info;
@@ -82,7 +80,6 @@ class PackageKitResource : public AbstractResource
         QString m_icon;
         QString m_availableVersion;
         QString m_installedVersion;
-        bool m_gotDetails;
 };
 
 #endif // PACKAGEKITRESOURCE_H

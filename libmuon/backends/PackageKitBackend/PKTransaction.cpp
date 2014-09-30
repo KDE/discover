@@ -43,13 +43,9 @@ void PKTransaction::start()
 
     switch (role()) {
         case Transaction::InstallRole:
-            if (qobject_cast<PackageKitResource*>(resource())->availablePackageId().isEmpty())
-                qWarning() << "Trying to install a package with empty packageId" << resource()->name();
             m_trans = PackageKit::Daemon::global()->installPackage(qobject_cast<PackageKitResource*>(resource())->availablePackageId());
             break;
         case Transaction::RemoveRole:
-            if (qobject_cast<PackageKitResource*>(resource())->installedPackageId().isEmpty())
-                qWarning() << "Trying to remove a package with empty packageId" << resource()->name();
             m_trans = PackageKit::Daemon::global()->installPackage(qobject_cast<PackageKitResource*>(resource())->installedPackageId());
             break;
         case Transaction::ChangeAddonsRole:
@@ -73,11 +69,11 @@ void PKTransaction::start()
 
 void PKTransaction::progressChanged(const QString &id, PackageKit::Transaction::Status status, uint percentage)
 {
+    Q_UNUSED(percentage);
     PackageKitResource * res = qobject_cast<PackageKitResource*>(resource());
-    if (id != res->availablePackageId() ||
-        id != res->installedPackageId())
+    if (id != res->availablePackageId() || id != res->installedPackageId())
         return;
-//     kDebug() << "Progress" << percentage << "state" << status;
+
     if (status == PackageKit::Transaction::StatusDownload)
         setStatus(Transaction::DownloadingStatus);
     else

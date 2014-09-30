@@ -59,7 +59,7 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void reloadPackageList();
 
     private slots:
-        void getPackagesFinished();
+        void getPackagesFinished(PackageKit::Transaction::Exit exit);
         void updateDatabase();
         void addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
         void packageDetails(const PackageKit::Details& details);

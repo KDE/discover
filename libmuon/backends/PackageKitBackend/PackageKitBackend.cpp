@@ -84,7 +84,7 @@ void PackageKitBackend::reloadPackageList()
 
     PackageKit::Transaction * t = PackageKit::Daemon::global()->getPackages();
     
-    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(getPackagesFinished()));
+    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(getPackagesFinished(PackageKit::Transaction::Exit)));
     connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackage(PackageKit::Transaction::Info, QString, QString)));
 }
 
@@ -105,17 +105,23 @@ void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QSt
     }
 }
 
-void PackageKitBackend::getPackagesFinished()
+void PackageKitBackend::getPackagesFinished(PackageKit::Transaction::Exit exit)
 {
     Q_ASSERT(m_isFetching);
 
+    if (exit != PackageKit::Transaction::ExitSuccess) {
+        qWarning() << "error while fetching details" << exit;
+    }
     PackageKit::Transaction* transaction = PackageKit::Daemon::global()->getDetails(m_updatingPackages.keys());
     connect(transaction, SIGNAL(details(PackageKit::Details)), SLOT(packageDetails(PackageKit::Details)));
     connect(transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(getDetailsFinished(PackageKit::Transaction::Exit,uint)));
 }
 
-void PackageKitBackend::getDetailsFinished(PackageKit::Transaction::Exit, uint)
+void PackageKitBackend::getDetailsFinished(PackageKit::Transaction::Exit exit, uint)
 {
+    if (exit != PackageKit::Transaction::ExitSuccess) {
+        qWarning() << "error while fetching details" << exit;
+    }
 //     commented out because it's not the case currently, the finished signal is getting
 //     emitted twice, for some reason. *sigh*
 //     Q_ASSERT(m_isFetching);

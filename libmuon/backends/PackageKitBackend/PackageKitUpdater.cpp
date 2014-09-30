@@ -43,10 +43,8 @@ PackageKitUpdater::~PackageKitUpdater()
 
 void PackageKitUpdater::prepare()
 {
-    if (m_transaction) {
-        m_transaction->deleteLater();
-        qWarning() << "ongoing transaction!";
-    }
+    Q_ASSERT(!m_transaction);
+    m_toUpgrade = m_backend->upgradeablePackages();
 }
 
 void PackageKitUpdater::setTransaction(PackageKit::Transaction* transaction)

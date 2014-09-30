@@ -60,11 +60,13 @@ QString PackageKitResource::packageName() const
 
 QString PackageKitResource::availablePackageId() const
 {
+    Q_ASSERT(!m_availablePackageId.isEmpty());
     return m_availablePackageId;
 }
 
 QString PackageKitResource::installedPackageId() const
 {
+    Q_ASSERT(!m_installedPackageId.isEmpty());
     return m_installedPackageId;
 }
 
@@ -179,7 +181,6 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
              PackageKitUtils::compare_versions(PackageKit::Daemon::global()->packageVersion(packageId), m_availableVersion) > 0) {
             m_availablePackageId = packageId;
             m_availableVersion = PackageKit::Daemon::global()->packageVersion(packageId);
-            m_gotDetails = false;
         }
     } else if (PackageKit::Daemon::global()->filters().testFlag(PackageKit::Transaction::FilterNewest) ||
                PackageKitUtils::compare_versions(PackageKit::Daemon::global()->packageVersion(packageId), m_availableVersion) > 0) {
@@ -191,7 +192,6 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
             m_installedPackageId = QString();
             m_installedVersion = QString();
         }
-        m_gotDetails = false;
     }
     if (m_summary.isEmpty())
         m_summary = summary;
