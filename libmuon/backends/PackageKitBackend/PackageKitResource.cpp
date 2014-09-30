@@ -30,21 +30,15 @@
 PackageKitResource::PackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, PackageKitBackend* parent)
     : AbstractResource(parent)
     , m_backend(parent)
+    , m_availablePackageId(packageId)
     , m_info(info)
     , m_summary(summary)
     , m_size(0)
-    , m_gotDetails(false)
+    , m_name(PackageKit::Daemon::packageName(packageId))
+    , m_icon(PackageKit::Daemon::packageIcon(packageId))
 {
     addPackageId(info, packageId, summary);
-    /*if (info == PackageKit::Transaction::InfoInstalled) {
-        m_installedPackageId = packageId;
-        m_installedVersion = PackageKit::Daemon::global()->packageVersion(m_availablePackageId);
-    }
-    if (!m_availablePackageId.isEmpty()) {
-        m_name = PackageKit::Daemon::global()->packageName(m_availablePackageId);
-        m_icon = PackageKit::Daemon::global()->packageIcon(m_availablePackageId);
-        m_availableVersion = PackageKit::Daemon::global()->packageVersion(m_availablePackageId);
-    }*/
+
     setObjectName(m_availablePackageId);
 }
 
@@ -165,10 +159,7 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
 
     bool changeState = (info != m_info);
 
-//     TODO: only fetch the metadata from packagekit if it's not an appstream package
     if (m_availablePackageId.isEmpty()) {
-        m_name = PackageKit::Daemon::global()->packageName(packageId);
-        m_icon = PackageKit::Daemon::global()->packageIcon(packageId);
         m_availablePackageId = packageId;
         m_availableVersion = PackageKit::Daemon::global()->packageVersion(packageId);
         m_info = info;
