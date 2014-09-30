@@ -148,8 +148,8 @@ AbstractResource::State PackageKitResource::state()
 void PackageKitResource::resetPackageIds()
 {
     m_info = PackageKit::Transaction::InfoUnknown;
-    m_availablePackageId = QString();
-    m_installedPackageId = QString();
+    m_availablePackageId.clear();
+    m_installedPackageId.clear();
 }
 
 void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
@@ -180,8 +180,8 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
         if (m_installedVersion == m_availableVersion && info != PackageKit::Transaction::InfoInstalled) { //This case will happen when we have a package installed and remove it
             qWarning() << "Caught the case of adding a package id which was previously installed and now is not anymore";
             m_info = info;
-            m_installedPackageId = QString();
-            m_installedVersion = QString();
+            m_installedPackageId.clear();
+            m_installedVersion.clear();
         }
     }
     if (m_summary.isEmpty())
@@ -191,6 +191,9 @@ void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const 
         //kDebug() << "State changed" << m_info;
         emit stateChanged();
     }
+
+    Q_ASSERT(m_name == PackageKit::Daemon::packageName(m_installedPackageId) || m_installedPackageId.isEmpty());
+    Q_ASSERT(m_name == PackageKit::Daemon::packageName(m_availablePackageId) || m_availablePackageId.isEmpty());
 }
 
 QStringList PackageKitResource::categories()

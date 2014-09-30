@@ -65,6 +65,17 @@ void PackageKitUpdater::setTransaction(PackageKit::Transaction* transaction)
     connect(m_transaction, SIGNAL(percentageChanged()), this, SLOT(percentageChanged()));
 }
 
+void PackageKitUpdater::start()
+{
+    QSet<QString> m_packageIds;
+    for (AbstractResource * res : m_toUpgrade) {
+        PackageKitResource * app = qobject_cast<PackageKitResource*>(res);
+        m_packageIds.insert(app->availablePackageId());
+        qDebug() << "Upgrade" << app->availablePackageId() << app->installedPackageId();
+    }
+    setTransaction(PackageKit::Daemon::global()->updatePackages(m_packageIds.toList()));
+}
+
 void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint )
 {
     if (exit == PackageKit::Transaction::ExitEulaRequired)
@@ -206,20 +217,6 @@ void PackageKitUpdater::cancel()
     m_transaction->cancel();
 }
 
-void PackageKitUpdater::start()
-{
-    if (m_toUpgrade.isEmpty()) {//FIXME: Is this correct?
-        m_toUpgrade = m_backend->upgradeablePackages();
-    }
-    QSet<QString> m_packageIds;
-    for (AbstractResource * res : m_toUpgrade) {
-        PackageKitResource * app = qobject_cast<PackageKitResource*>(res);
-        m_packageIds.insert(app->availablePackageId());
-        qDebug() << "Upgrade" << app->availablePackageId() << app->installedPackageId();
-    }
-    setTransaction(PackageKit::Daemon::global()->installPackages(m_packageIds.toList()));
-}
-
 void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QString& error)
 {
     if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
@@ -241,7 +238,7 @@ void PackageKitUpdater::requireRestart(PackageKit::Transaction::Restart restart,
 void PackageKitUpdater::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
 {
     QString packageName = PackageKit::Daemon::packageName(packageID);
-    int ret = QMessageBox::question(0, i18n("%1 requires user to accept its license!", packageName), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
+    int ret = QMessageBox::question(0, i18n("%1 requires user to accept its license", packageName), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
                                                  packageName, vendor, licenseAgreement), QMessageBox::Yes, QMessageBox::No);
     if (ret == QMessageBox::Yes) {
 #warning TODO: implement acceptEula
