@@ -105,7 +105,7 @@ UpdaterWidget::UpdaterWidget(ResourcesUpdatesModel* updates, QWidget *parent) :
 
     m_busyWidget = new KPixmapSequenceOverlayPainter(page1);
     KPixmapSequence seq = KIconLoader::global()->loadPixmapSequence("process-working", KIconLoader::SizeSmallMedium);
-    qDebug() << "fuuuuuuuuuuu" << seq.isValid();
+
     m_busyWidget->setSequence(seq);
     m_busyWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     m_busyWidget->setWidget(m_updateView->viewport());

@@ -36,7 +36,9 @@ int main(int argc, char **argv)
     KAboutData about("muonupdater", i18n("Muon Update Manager"), version, i18n("An update manager"),
                      KAboutLicense::GPL, i18n("©2010-2013 Jonathan Thomas"), QString(), 0);
     about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
+    about.addAuthor(i18n("Aleix Pol"), QString(), "aleixpol@kde.org");
     about.setProductName("muon/updater");
+    KAboutData::setApplicationData(about);
 
     {
         QCommandLineParser parser;
