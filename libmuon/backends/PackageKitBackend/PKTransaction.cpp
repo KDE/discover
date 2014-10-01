@@ -62,7 +62,7 @@ void PKTransaction::start()
             SLOT(requireRestart(PackageKit::Transaction::Restart,QString)));
     connect(m_trans, SIGNAL(itemProgress(QString, PackageKit::Transaction::Status, uint)), SLOT(progressChanged(QString, PackageKit::Transaction::Status, uint)));
     connect(m_trans, SIGNAL(eulaRequired(QString, QString, QString, QString)), SLOT(eulaRequired(QString, QString, QString, QString)));
-    connect(m_trans, SIGNAL(changed()), SLOT(transactionChanged()));
+    connect(m_trans, SIGNAL(allowCancelChanged()), SLOT(cancellableChanged()));
     
     setCancellable(m_trans->allowCancel());
 }
@@ -80,10 +80,9 @@ void PKTransaction::progressChanged(const QString &id, PackageKit::Transaction::
         setStatus(Transaction::CommittingStatus);
 }
 
-void PKTransaction::transactionChanged()
+void PKTransaction::cancellableChanged()
 {
     setCancellable(m_trans->allowCancel());
-    setProgress(m_trans->percentage());
 }
 
 void PKTransaction::cancel()
@@ -102,15 +101,15 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     }
     setStatus(Transaction::DoneStatus);
     if (exit == PackageKit::Transaction::ExitCancelled) {
-        TransactionModel::global()->cancelTransaction(this);
         deleteLater();
     } else {
+        disconnect(m_trans, 0, this, 0);
+        m_trans = 0;
         qobject_cast<PackageKitBackend*>(resource()->backend())->removeTransaction(this);
     }
     PackageKit::Transaction* t = PackageKit::Daemon::global()->resolve(resource()->packageName(), PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
     qobject_cast<PackageKitResource*>(resource())->resetPackageIds();
     connect(t, SIGNAL(package(PackageKit::Transaction::Info,QString,QString)), resource(), SLOT(addPackageId(PackageKit::Transaction::Info, QString,QString)));
-    connect(t, SIGNAL(destroy()), t, SLOT(deleteLater()));
 }
 
 PackageKit::Transaction* PKTransaction::transaction()

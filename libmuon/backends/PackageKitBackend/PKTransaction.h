@@ -31,7 +31,8 @@ class PKTransaction : public Transaction
         explicit PKTransaction(AbstractResource* app, Transaction::Role role);
         PackageKit::Transaction* transaction();
         
-        virtual void cancel();
+        void start();
+        void cancel();
 
     private slots:
         void cleanup(PackageKit::Transaction::Exit, uint);
@@ -40,10 +41,9 @@ class PKTransaction : public Transaction
         void requireRestart(PackageKit::Transaction::Restart restart, const QString& p);
         void progressChanged(const QString&, PackageKit::Transaction::Status, uint);
 //         void eulaRequired(const QString &eulaID, const QString &packageID, const QString &vendor, const QString &licenseAgreement);
-        void transactionChanged();
+        void cancellableChanged();
 
     private:
-        void start();
         PackageKit::Transaction* m_trans;
 };
 
