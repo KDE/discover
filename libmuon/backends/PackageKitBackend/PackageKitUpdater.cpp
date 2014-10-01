@@ -82,10 +82,12 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint )
     if (exit == PackageKit::Transaction::ExitEulaRequired)
         return;
     if (exit == PackageKit::Transaction::ExitSuccess && m_transaction->role() == PackageKit::Transaction::RoleAcceptEula) {
+        m_transaction = 0;
         prepare();
         start();
         return;
     }
+    m_transaction = 0;
     setProgressing(false);
     m_backend->reloadPackageList();
 }
