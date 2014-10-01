@@ -50,7 +50,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     reloadPackageList();
 
     QTimer* t = new QTimer(this);
-    connect(t, &QTimer::timeout, this, &PackageKitBackend::updateDatabase);
+    connect(t, &QTimer::timeout, this, &PackageKitBackend::refreshDatabase);
     t->setInterval(60 * 60 * 1000);
     t->setSingleShot(false);
     t->start();
@@ -175,7 +175,7 @@ void PackageKitBackend::packageDetails(const PackageKit::Details& details)
     res->setDetails(details);
 }
 
-void PackageKitBackend::updateDatabase()
+void PackageKitBackend::refreshDatabase()
 {
     if (!m_refresher) {
         m_refresher = PackageKit::Daemon::global()->refreshCache(false);

@@ -89,7 +89,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint )
     }
     m_transaction = 0;
     setProgressing(false);
-    m_backend->reloadPackageList();
+    m_backend->refreshDatabase();
 }
 
 void PackageKitUpdater::cancellableChanged()

@@ -61,10 +61,10 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
     public slots:
         void removeTransaction(Transaction* t);
         void reloadPackageList();
+        void refreshDatabase();
 
     private slots:
         void getPackagesFinished(PackageKit::Transaction::Exit exit);
-        void updateDatabase();
         void addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
         void packageDetails(const PackageKit::Details& details);
         void transactionError(PackageKit::Transaction::Error, const QString& message);
