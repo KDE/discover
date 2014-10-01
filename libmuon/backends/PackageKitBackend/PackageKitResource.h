@@ -63,9 +63,7 @@ class PackageKitResource : public AbstractResource
 
     private:
         PackageKitBackend * m_backend;
-        QString m_installedPackageId;
-        QString m_availablePackageId;
-        PackageKit::Transaction::Info m_info;
+        QMap<PackageKit::Transaction::Info, QStringList> m_packages;
         QString m_summary;
         QString m_license;
         PackageKit::Transaction::Group m_group;
@@ -74,8 +72,6 @@ class PackageKitResource : public AbstractResource
         qulonglong m_size;
         QString m_name;
         QString m_icon;
-        QString m_availableVersion;
-        QString m_installedVersion;
 };
 
 #endif // PACKAGEKITRESOURCE_H

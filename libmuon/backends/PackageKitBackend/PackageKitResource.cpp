@@ -21,7 +21,6 @@
 
 #include "PackageKitResource.h"
 #include "PackageKitBackend.h"
-#include "PackageKitUtils.h"
 #include <MuonDataSources.h>
 #include <KLocalizedString>
 #include <PackageKit/Details>
@@ -30,8 +29,6 @@
 PackageKitResource::PackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, PackageKitBackend* parent)
     : AbstractResource(parent)
     , m_backend(parent)
-    , m_availablePackageId(packageId)
-    , m_info(info)
     , m_summary(summary)
     , m_size(0)
     , m_name(PackageKit::Daemon::packageName(packageId))
@@ -39,7 +36,7 @@ PackageKitResource::PackageKitResource(const QString &packageId, PackageKit::Tra
 {
     addPackageId(info, packageId, summary);
 
-    setObjectName(m_availablePackageId);
+    setObjectName(m_name);
 }
 
 QString PackageKitResource::name()
@@ -54,14 +51,15 @@ QString PackageKitResource::packageName() const
 
 QString PackageKitResource::availablePackageId() const
 {
-    Q_ASSERT(!m_availablePackageId.isEmpty());
-    return m_availablePackageId;
+    QMap<PackageKit::Transaction::Info, QStringList>::const_iterator it = m_packages.constFind(PackageKit::Transaction::InfoAvailable);
+    if (it != m_packages.constEnd())
+        return it->first();
+    return installedPackageId();
 }
 
 QString PackageKitResource::installedPackageId() const
 {
-    Q_ASSERT(!m_installedPackageId.isEmpty());
-    return m_installedPackageId;
+    return m_packages[PackageKit::Transaction::InfoInstalled].first();
 }
 
 QString PackageKitResource::comment()
@@ -96,12 +94,12 @@ QList<PackageState> PackageKitResource::addonsInformation()
 
 QString PackageKitResource::availableVersion() const
 {
-    return m_availableVersion;
+    return PackageKit::Daemon::packageVersion(availablePackageId());
 }
 
 QString PackageKitResource::installedVersion() const
 {
-    return m_installedVersion;
+    return PackageKit::Daemon::packageVersion(installedPackageId());
 }
 
 int PackageKitResource::downloadSize()
@@ -134,66 +132,23 @@ AbstractResource::State PackageKitResource::state()
 {
     if (m_backend->isPackageNameUpgradeable(name()))
         return Upgradeable;
-    switch(m_info) {
-        case PackageKit::Transaction::InfoInstalled:
-            return Installed;
-        case PackageKit::Transaction::InfoAvailable:
-            return None;
-        default:
-            break;
-    };
-    return Broken;
+    else if(m_packages.contains(PackageKit::Transaction::InfoInstalled))
+        return Installed;
+    else if(m_packages.contains(PackageKit::Transaction::InfoAvailable))
+        return None;
+    else
+        return Broken;
 }
 
 void PackageKitResource::resetPackageIds()
 {
-    m_info = PackageKit::Transaction::InfoUnknown;
-    m_availablePackageId.clear();
-    m_installedPackageId.clear();
+    m_packages.clear();
 }
 
 void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
-    if (info == PackageKit::Transaction::InfoUnknown)
-        qWarning() << "Received unknown PackageKit::Transaction::Info for " << name();
-
-    bool changeState = (info != m_info);
-
-    if (m_availablePackageId.isEmpty()) {
-        m_availablePackageId = packageId;
-        m_availableVersion = PackageKit::Daemon::global()->packageVersion(packageId);
-        m_info = info;
-    }
-    if (info == PackageKit::Transaction::InfoInstalled) {
-        m_installedPackageId = packageId;
-        m_info = info;
-        m_installedVersion = PackageKit::Daemon::global()->packageVersion(packageId);
-        if (!PackageKit::Daemon::global()->filters().testFlag(PackageKit::Transaction::FilterNewest) &&
-             PackageKitUtils::compare_versions(PackageKit::Daemon::global()->packageVersion(packageId), m_availableVersion) > 0) {
-            m_availablePackageId = packageId;
-            m_availableVersion = PackageKit::Daemon::global()->packageVersion(packageId);
-        }
-    } else if (PackageKit::Daemon::global()->filters().testFlag(PackageKit::Transaction::FilterNewest) ||
-               PackageKitUtils::compare_versions(PackageKit::Daemon::global()->packageVersion(packageId), m_availableVersion) > 0) {
-        m_availablePackageId = packageId;
-        m_availableVersion = PackageKit::Daemon::global()->packageVersion(packageId);
-        if (m_installedVersion == m_availableVersion && info != PackageKit::Transaction::InfoInstalled) { //This case will happen when we have a package installed and remove it
-            qWarning() << "Caught the case of adding a package id which was previously installed and now is not anymore";
-            m_info = info;
-            m_installedPackageId.clear();
-            m_installedVersion.clear();
-        }
-    }
-    if (m_summary.isEmpty())
-        m_summary = summary;
-    
-    if (changeState) {
-        //kDebug() << "State changed" << m_info;
-        emit stateChanged();
-    }
-
-    Q_ASSERT(m_name == PackageKit::Daemon::packageName(m_installedPackageId) || m_installedPackageId.isEmpty());
-    Q_ASSERT(m_name == PackageKit::Daemon::packageName(m_availablePackageId) || m_availablePackageId.isEmpty());
+    m_packages[info].append(packageId);
+    emit stateChanged();
 }
 
 QStringList PackageKitResource::categories()
@@ -320,7 +275,7 @@ bool PackageKitResource::isTechnical() const
 
 void PackageKitResource::setDetails(const PackageKit::Details & details)
 {
-    if (details.packageId() != m_availablePackageId)
+    if (details.packageId() != availablePackageId())
         return;
 
     m_license = details.license();
