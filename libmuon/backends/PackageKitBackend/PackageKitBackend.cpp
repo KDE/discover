@@ -79,17 +79,17 @@ void PackageKitBackend::acquireFetching(bool f)
 
 void PackageKitBackend::reloadPackageList()
 {
-    acquireFetching(true);
     m_updatingPackages = m_packages;
     
     if (m_refresher) {
-        disconnect(m_refresher, SIGNAL(changed()), this, SLOT(reloadPackageList()));
+        disconnect(m_refresher, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(reloadPackageList()));
     }
 
     PackageKit::Transaction * t = PackageKit::Daemon::global()->getPackages();
     connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(getPackagesFinished(PackageKit::Transaction::Exit)));
     connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackage(PackageKit::Transaction::Info, QString, QString)));
     connect(t, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(transactionError(PackageKit::Transaction::Error,QString)));
+    acquireFetching(true);
 
     PackageKit::Transaction * tUpdates = PackageKit::Daemon::global()->getUpdates();
     connect(tUpdates, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(getUpdatesFinished(PackageKit::Transaction::Exit,uint)));
