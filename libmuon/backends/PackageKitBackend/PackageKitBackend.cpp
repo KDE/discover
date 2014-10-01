@@ -43,7 +43,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new PackageKitUpdater(this))
     , m_refresher(0)
-    , m_isFetching(false)
+    , m_isFetching(0)
 {
     bool b = m_appdata.open();
     Q_ASSERT(b && "must be able to open the appstream database");
@@ -171,7 +171,6 @@ void PackageKitBackend::packageDetails(const PackageKit::Details& details)
 
 void PackageKitBackend::updateDatabase()
 {
-    qDebug() << "Starting to update the package cache";
     if (!m_refresher) {
         m_refresher = PackageKit::Daemon::global()->refreshCache(false);
         connect(m_refresher, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(reloadPackageList()));

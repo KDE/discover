@@ -219,6 +219,7 @@ void PackageKitUpdater::cancel()
 
 void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QString& error)
 {
+    Q_UNUSED(error);
     if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
         return;
     QMessageBox::critical(0, i18n("PackageKit error found"), PackageKitMessages::errorMessage(err));
