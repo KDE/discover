@@ -53,6 +53,7 @@ AbstractResourcesBackend* MuonBackendsFactory::backend(const QString& name) cons
     AbstractResourcesBackendFactory* f = qobject_cast<AbstractResourcesBackendFactory*>(loader->instance());
     if(!f) {
         qWarning() << "error loading" << name << loader->errorString() << loader->metaData();
+        return 0;
     }
     AbstractResourcesBackend* instance = f->newInstance(ResourcesModel::global());
     if(instance) {
@@ -92,6 +93,9 @@ QList<AbstractResourcesBackend*> MuonBackendsFactory::allBackends() const
     QStringList names = allBackendNames();
     foreach(const QString& name, names)
         ret += backend(name);
+
+    ret.removeAll(nullptr);
+
     if(ret.isEmpty())
         qWarning() << "Didn't find any muon backend!";
     return ret;
