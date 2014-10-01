@@ -148,12 +148,11 @@ void PackageKitBackend::transactionError(PackageKit::Transaction::Error, const Q
 
 void PackageKitBackend::queueTransactionFinished(PackageKit::Transaction::Exit exit, uint)
 {
-    acquireFetching(false);
-
     if (exit != PackageKit::Transaction::ExitSuccess) {
         qWarning() << "error while fetching details" << exit;
     }
     iterateTransactionQueue();
+    acquireFetching(false);
 }
 
 void PackageKitBackend::iterateTransactionQueue()
