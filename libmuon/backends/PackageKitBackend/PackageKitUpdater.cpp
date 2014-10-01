@@ -254,7 +254,7 @@ void PackageKitUpdater::eulaRequired(const QString& eulaID, const QString& packa
 void PackageKitUpdater::setProgressing(bool progressing)
 {
     if (m_isProgressing != progressing) {
-        m_isProgressing = false;
+        m_isProgressing = progressing;
         emit progressingChanged(m_isProgressing);
     }
 }
