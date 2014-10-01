@@ -132,7 +132,7 @@ QUrl PackageKitResource::thumbnailUrl()
 
 AbstractResource::State PackageKitResource::state()
 {
-    if (availableVersion() != installedVersion() && !installedVersion().isEmpty() && !availableVersion().isEmpty())
+    if (m_backend->isPackageNameUpgradeable(name()))
         return Upgradeable;
     switch(m_info) {
         case PackageKit::Transaction::InfoInstalled:

@@ -87,9 +87,15 @@ void PackageKitBackend::reloadPackageList()
     }
 
     PackageKit::Transaction * t = PackageKit::Daemon::global()->getPackages();
-    
     connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(getPackagesFinished(PackageKit::Transaction::Exit)));
     connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackage(PackageKit::Transaction::Info, QString, QString)));
+    connect(t, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(transactionError(PackageKit::Transaction::Error,QString)));
+
+    PackageKit::Transaction * tUpdates = PackageKit::Daemon::global()->getUpdates();
+    connect(tUpdates, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(getUpdatesFinished(PackageKit::Transaction::Exit,uint)));
+    connect(tUpdates, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackageToUpdate(PackageKit::Transaction::Info,QString,QString)));
+    connect(tUpdates, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(transactionError(PackageKit::Transaction::Error,QString)));
+    acquireFetching(true);
 }
 
 void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
@@ -203,13 +209,7 @@ QList<AbstractResource*> PackageKitBackend::searchPackageName(const QString& sea
 
 int PackageKitBackend::updatesCount() const
 {
-    int ret = 0;
-    for(AbstractResource* res : m_packages.values()) {
-        if (res->state() == AbstractResource::Upgradeable) {
-            ret++;
-        }
-    }
-    return ret;
+    return m_updatesPackageId.count();
 }
 
 void PackageKitBackend::removeTransaction(Transaction* t)
@@ -262,12 +262,33 @@ void PackageKitBackend::removeApplication(AbstractResource* app)
 QList<AbstractResource*> PackageKitBackend::upgradeablePackages() const
 {
     QList<AbstractResource*> ret;
-    for(AbstractResource* res : m_packages.values()) {
-        if (res->state() == AbstractResource::Upgradeable) {
-            ret+=res;
-        }
+    for(const QString& pkgid : m_updatesPackageId) {
+        ret += m_packages[PackageKit::Daemon::packageName(pkgid)];
     }
     return ret;
+}
+
+void PackageKitBackend::addPackageToUpdate(PackageKit::Transaction::Info info, const QString& packageId, const QString& summary)
+{
+    Q_UNUSED(summary);
+    if (info != PackageKit::Transaction::InfoBlocked) {
+        m_updatesPackageId += packageId;
+    }
+}
+
+void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
+{
+    acquireFetching(false);
+    emit updatesCountChanged();
+}
+
+bool PackageKitBackend::isPackageNameUpgradeable(const QString& name) const
+{
+    foreach (const QString& pkgid, m_updatesPackageId) {
+        if (PackageKit::Daemon::packageName(pkgid) == name)
+            return true;
+    }
+    return false;
 }
 
 AbstractBackendUpdater* PackageKitBackend::backendUpdater() const

@@ -26,6 +26,7 @@
 #include <QVariantList>
 #include <QStringList>
 #include <qpointer.h>
+#include <QSet>
 #include <PackageKit/Transaction>
 #include <AppstreamQt/database.h>
 #include <functional>
@@ -55,6 +56,8 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         virtual QList<AbstractResource*> upgradeablePackages() const;
         virtual bool isFetching() const;
 
+        bool isPackageNameUpgradeable(const QString& pkgid) const;
+
     public slots:
         void removeTransaction(Transaction* t);
         void reloadPackageList();
@@ -66,6 +69,8 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void packageDetails(const PackageKit::Details& details);
         void transactionError(PackageKit::Transaction::Error, const QString& message);
         void queueTransactionFinished(PackageKit::Transaction::Exit,uint);
+        void addPackageToUpdate(PackageKit::Transaction::Info, const QString& pkgid, const QString& summary);
+        void getUpdatesFinished(PackageKit::Transaction::Exit,uint);
 
     private:
         void iterateTransactionQueue();
@@ -80,6 +85,7 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QPointer<PackageKit::Transaction> m_refresher;
         int m_isFetching;
         QList<std::function<PackageKit::Transaction*()>> m_transactionQueue;
+        QSet<QString> m_updatesPackageId;
 };
 
 #endif // PACKAGEKITBACKEND_H

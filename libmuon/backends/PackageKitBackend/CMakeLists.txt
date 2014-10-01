@@ -4,7 +4,6 @@ set(pkbackend_SRCS
     AppPackageKitResource.cpp
     PKTransaction.cpp
     PackageKitUpdater.cpp
-    PackageKitUtils.cpp
     PackageKitMessages.cpp
 )
 
@@ -14,8 +13,6 @@ target_link_libraries(muon-pkbackend PRIVATE muonprivate Qt5::Core PK::packageki
 install(TARGETS muon-pkbackend DESTINATION ${PLUGIN_INSTALL_DIR}/muon)
 install(FILES muon-packagekit-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/libmuon/backends)
 install(FILES muon-packagekit-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
-
-add_subdirectory(tests)
 
 #notifier
 add_library(kded_muonpackagekitnotifier MODULE PackageKitNotifier.cpp)
