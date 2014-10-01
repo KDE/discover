@@ -136,6 +136,7 @@ UpdaterWidget::~UpdaterWidget()
 
 void UpdaterWidget::activityChanged()
 {
+    qDebug () << "fuuuuuuuuu" << ResourcesModel::global()->isFetching() << m_updatesBackends->isProgressing();
     if(ResourcesModel::global()->isFetching()) {
         m_updateModel->setResources(QList<AbstractResource*>());
         m_busyWidget->start();
@@ -215,7 +216,7 @@ void UpdaterWidget::checkUpToDate()
             m_ui->updateStatusIcon->setPixmap(QIcon::fromTheme("security-medium").pixmap(128, 128));
             m_ui->notifyTitle->setText(i18nc("@info",
                                          "It is unknown when the last check for updates was."));
-            m_ui->notifyDesc->setText(i18nc("@info", "Please click <interface>Check for Updates</interface> "
+            m_ui->notifyDesc->setText(i18nc("@info", "Please click <em>Check for Updates</em> "
                                         "to check."));
             return;
         }
