@@ -81,13 +81,14 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint )
 {
     if (exit == PackageKit::Transaction::ExitEulaRequired)
         return;
-    if (exit == PackageKit::Transaction::ExitSuccess && m_transaction->role() == PackageKit::Transaction::RoleAcceptEula) {
-        m_transaction = 0;
+    PackageKit::Transaction::Role transactionRole = m_transaction->role();
+    disconnect(m_transaction, 0, this, 0);
+    m_transaction = 0;
+    if (exit == PackageKit::Transaction::ExitSuccess && transactionRole == PackageKit::Transaction::RoleAcceptEula) {
         prepare();
         start();
         return;
     }
-    m_transaction = 0;
     setProgressing(false);
     m_backend->refreshDatabase();
 }
