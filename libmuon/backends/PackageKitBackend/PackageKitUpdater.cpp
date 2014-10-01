@@ -74,6 +74,7 @@ void PackageKitUpdater::start()
         qDebug() << "Upgrade" << app->availablePackageId() << app->installedPackageId();
     }
     setTransaction(PackageKit::Daemon::global()->updatePackages(m_packageIds.toList()));
+    setProgressing(true);
 }
 
 void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint )
@@ -85,8 +86,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint )
         start();
         return;
     }
-    m_isProgressing = false;
-    emit progressingChanged(m_isProgressing);
+    setProgressing(false);
     m_backend->reloadPackageList();
 }
 
@@ -245,5 +245,13 @@ void PackageKitUpdater::eulaRequired(const QString& eulaID, const QString& packa
 //         m_transaction->acceptEula(eulaID);
     } else {
         finished(PackageKit::Transaction::ExitCancelled, 0);
+    }
+}
+
+void PackageKitUpdater::setProgressing(bool progressing)
+{
+    if (m_isProgressing != progressing) {
+        m_isProgressing = false;
+        emit progressingChanged(m_isProgressing);
     }
 }

@@ -76,6 +76,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         void percentageChanged();
         
     private:
+        void setProgressing(bool progressing);
         void setTransaction(PackageKit::Transaction* transaction);
 
         QPointer<PackageKit::Transaction> m_transaction;
