@@ -28,6 +28,7 @@
 #include <qpointer.h>
 #include <PackageKit/Transaction>
 #include <AppstreamQt/database.h>
+#include <functional>
 
 class PackageKitUpdater;
 
@@ -63,9 +64,11 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void updateDatabase();
         void addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
         void packageDetails(const PackageKit::Details& details);
-        void getDetailsFinished(PackageKit::Transaction::Exit, uint);
+        void transactionError(PackageKit::Transaction::Error, const QString& message);
+        void queueTransactionFinished(PackageKit::Transaction::Exit,uint);
 
     private:
+        void iterateTransactionQueue();
         void setFetching(bool f);
 
         QHash<QString, AbstractResource*> m_packages;
@@ -76,6 +79,7 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QList<PackageKitResource*> m_upgradeablePackages;
         QPointer<PackageKit::Transaction> m_refresher;
         bool m_isFetching;
+        QList<std::function<PackageKit::Transaction*()>> m_transactionQueue;
 };
 
 #endif // PACKAGEKITBACKEND_H

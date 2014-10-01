@@ -112,28 +112,56 @@ void PackageKitBackend::getPackagesFinished(PackageKit::Transaction::Exit exit)
     if (exit != PackageKit::Transaction::ExitSuccess) {
         qWarning() << "error while fetching details" << exit;
     }
-    PackageKit::Transaction* transaction = PackageKit::Daemon::global()->getDetails(m_updatingPackages.keys());
-    connect(transaction, SIGNAL(details(PackageKit::Details)), SLOT(packageDetails(PackageKit::Details)));
-    connect(transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(getDetailsFinished(PackageKit::Transaction::Exit,uint)));
+
+    m_packages = m_updatingPackages;
+    setFetching(false);
+    QStringList ids;
+    foreach(AbstractResource* res, m_updatingPackages) {
+        ids += qobject_cast<PackageKitResource*>(res)->availablePackageId();
+    }
+
+//  PackageKit has a maximum of packages to process called PK_TRANSACTION_MAX_PACKAGES_TO_PROCESS
+//  which is 5200 today. To workaround that, we'll create different transactions that we'll process
+//  one after the other.
+
+    for(int i=0, step=1000; i<m_updatingPackages.count(); i+=step) {
+        QStringList chunk = ids.mid(i, qMin(step, m_updatingPackages.count()-i));
+        m_transactionQueue.append([chunk]() { return PackageKit::Daemon::global()->getDetails(chunk); });
+    }
+    iterateTransactionQueue();
 }
 
-void PackageKitBackend::getDetailsFinished(PackageKit::Transaction::Exit exit, uint)
+void PackageKitBackend::transactionError(PackageKit::Transaction::Error, const QString& message)
 {
+    qWarning() << "Transaction error: " << message << sender();
+}
+
+void PackageKitBackend::queueTransactionFinished(PackageKit::Transaction::Exit exit, uint)
+{
+//     that's a workaround to some kind of bug I don't really understand
+    if (exit == PackageKit::Transaction::ExitUnknown)
+        return;
+
     if (exit != PackageKit::Transaction::ExitSuccess) {
         qWarning() << "error while fetching details" << exit;
     }
-//     commented out because it's not the case currently, the finished signal is getting
-//     emitted twice, for some reason. *sigh*
-//     Q_ASSERT(m_isFetching);
-    m_packages = m_updatingPackages;
-    setFetching(false);
+    iterateTransactionQueue();
+}
+
+void PackageKitBackend::iterateTransactionQueue()
+{
+    if (m_transactionQueue.isEmpty())
+        return;
+
+    PackageKit::Transaction* transaction = m_transactionQueue.takeFirst()();
+    connect(transaction, SIGNAL(details(PackageKit::Details)), SLOT(packageDetails(PackageKit::Details)));
+    connect(transaction, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(transactionError(PackageKit::Transaction::Error,QString)));
+    connect(transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(queueTransactionFinished(PackageKit::Transaction::Exit,uint)));
 }
 
 void PackageKitBackend::packageDetails(const PackageKit::Details& details)
 {
-    Q_ASSERT(m_isFetching);
-
-    PackageKitResource* res = qobject_cast<PackageKitResource*>(m_updatingPackages.value(details.packageId()));
+    PackageKitResource* res = qobject_cast<PackageKitResource*>(m_updatingPackages.value(PackageKit::Daemon::packageName(details.packageId())));
     Q_ASSERT(res);
     res->setDetails(details);
 }
