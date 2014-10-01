@@ -46,7 +46,7 @@ void PKTransaction::start()
             m_trans = PackageKit::Daemon::global()->installPackage(qobject_cast<PackageKitResource*>(resource())->availablePackageId());
             break;
         case Transaction::RemoveRole:
-            m_trans = PackageKit::Daemon::global()->installPackage(qobject_cast<PackageKitResource*>(resource())->installedPackageId());
+            m_trans = PackageKit::Daemon::global()->removePackage(qobject_cast<PackageKitResource*>(resource())->installedPackageId());
             break;
         case Transaction::ChangeAddonsRole:
 #warning TODO: implement!
