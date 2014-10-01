@@ -154,7 +154,6 @@ void UpdaterWidget::activityChanged()
 
 void UpdaterWidget::populateUpdateModel()
 {
-    qDebug() << "..... populating";
     m_busyWidget->stop();
     QApplication::restoreOverrideCursor();
     setEnabled(true);
