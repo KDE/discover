@@ -119,7 +119,7 @@ void MuonBackendsFactory::processCommandLine(QCommandLineParser* parser)
     if(parser->isSet("listbackends")) {
         fprintf(stdout, "%s", qPrintable(i18n("Available backends:\n")));
         MuonBackendsFactory f;
-        foreach(const QString& name, f.allBackendNames())
+        foreach(const QString& name, f.allBackendNames(false))
             fprintf(stdout, " * %s\n", qPrintable(name));
         qApp->exit(0);
     }
