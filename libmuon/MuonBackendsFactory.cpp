@@ -77,7 +77,9 @@ QStringList MuonBackendsFactory::allBackendNames(bool whitelist) const
     foreach (const QString& dir, dirs) {
         QDir d(dir);
         foreach(const QFileInfo& file, d.entryInfoList(QDir::Files)) {
-            ret.append(file.baseName());
+            if (file.baseName()!="muon-dummy-backend") {
+                ret.append(file.baseName());
+            }
         }
     }
 
