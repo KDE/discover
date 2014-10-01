@@ -29,7 +29,6 @@ class PackageKitBackend;
 class PackageKitResource : public AbstractResource
 {
     Q_OBJECT
-    Q_PROPERTY(QString license READ license NOTIFY licenseChanged)
     public:
         explicit PackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, PackageKitBackend* parent);
         virtual QString packageName() const;
@@ -61,9 +60,6 @@ class PackageKitResource : public AbstractResource
         void addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
         void setDetails(const PackageKit::Details& details);
         void resetPackageIds();
-
-    signals:
-        void licenseChanged();
 
     private:
         PackageKitBackend * m_backend;

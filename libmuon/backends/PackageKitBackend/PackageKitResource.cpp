@@ -322,15 +322,14 @@ void PackageKitResource::setDetails(const PackageKit::Details & details)
 {
     if (details.packageId() != m_availablePackageId)
         return;
-    qDebug() << "Got details for" << m_availablePackageId;
-    bool newLicense = (details.license() != m_license);
+
     m_license = details.license();
     m_group = details.group();
     m_detail = details.description();
     m_url = details.url();
     m_size = details.size();
-    if (newLicense)
-        emit licenseChanged();
+
+    emit stateChanged();
 }
 
 void PackageKitResource::fetchChangelog()
