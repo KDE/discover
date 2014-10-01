@@ -255,6 +255,7 @@ void PackageKitBackend::cancelTransaction(AbstractResource* app)
 
 void PackageKitBackend::removeApplication(AbstractResource* app)
 {
+    Q_ASSERT(!isFetching());
     PKTransaction* t = new PKTransaction(app, Transaction::RemoveRole);
     m_transactions.append(t);
     TransactionModel::global()->addTransaction(t);

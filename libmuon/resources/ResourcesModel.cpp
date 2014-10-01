@@ -154,6 +154,7 @@ QModelIndex ResourcesModel::resourceIndex(AbstractResource* res) const
         if(m_backends[i]!=backend)
             row += m_resources[i].size();
         else {
+            Q_ASSERT(!m_backends[i]->isFetching());
             int pos = m_resources[i].indexOf(res);
             Q_ASSERT(pos>=0);
             return index(row+pos);
@@ -381,6 +382,7 @@ void ResourcesModel::integrateMainWindow(MuonMainWindow* w)
 
 void ResourcesModel::resourceChangedByTransaction(Transaction* t)
 {
+    Q_ASSERT(!t->resource()->backend()->isFetching());
     QModelIndex idx = resourceIndex(t->resource());
     if(idx.isValid())
         dataChanged(idx, idx);
