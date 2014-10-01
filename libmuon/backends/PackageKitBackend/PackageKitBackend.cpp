@@ -65,17 +65,21 @@ bool PackageKitBackend::isFetching() const
     return m_isFetching;
 }
 
-void PackageKitBackend::setFetching(bool f)
+void PackageKitBackend::acquireFetching(bool f)
 {
-    if (f != m_isFetching) {
-        m_isFetching = f;
+    if (f)
+        m_isFetching++;
+    else
+        m_isFetching--;
+
+    if ((!f && m_isFetching==0) || (f && m_isFetching==1)) {
         emit fetchingChanged();
     }
 }
 
 void PackageKitBackend::reloadPackageList()
 {
-    setFetching(true);
+    acquireFetching(true);
     m_updatingPackages = m_packages;
     
     if (m_refresher) {
@@ -114,11 +118,11 @@ void PackageKitBackend::getPackagesFinished(PackageKit::Transaction::Exit exit)
     }
 
     m_packages = m_updatingPackages;
-    setFetching(false);
     QStringList ids;
     foreach(AbstractResource* res, m_updatingPackages) {
         ids += qobject_cast<PackageKitResource*>(res)->availablePackageId();
     }
+    acquireFetching(false);
 
 //  PackageKit has a maximum of packages to process called PK_TRANSACTION_MAX_PACKAGES_TO_PROCESS
 //  which is 5200 today. To workaround that, we'll create different transactions that we'll process
@@ -138,9 +142,7 @@ void PackageKitBackend::transactionError(PackageKit::Transaction::Error, const Q
 
 void PackageKitBackend::queueTransactionFinished(PackageKit::Transaction::Exit exit, uint)
 {
-//     that's a workaround to some kind of bug I don't really understand
-    if (exit == PackageKit::Transaction::ExitUnknown)
-        return;
+    acquireFetching(false);
 
     if (exit != PackageKit::Transaction::ExitSuccess) {
         qWarning() << "error while fetching details" << exit;
@@ -153,6 +155,7 @@ void PackageKitBackend::iterateTransactionQueue()
     if (m_transactionQueue.isEmpty())
         return;
 
+    acquireFetching(true);
     PackageKit::Transaction* transaction = m_transactionQueue.takeFirst()();
     connect(transaction, SIGNAL(details(PackageKit::Details)), SLOT(packageDetails(PackageKit::Details)));
     connect(transaction, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(transactionError(PackageKit::Transaction::Error,QString)));

@@ -69,7 +69,7 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
 
     private:
         void iterateTransactionQueue();
-        void setFetching(bool f);
+        void acquireFetching(bool f);
 
         QHash<QString, AbstractResource*> m_packages;
         QHash<QString, AbstractResource*> m_updatingPackages;
@@ -78,7 +78,7 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         PackageKitUpdater* m_updater;
         QList<PackageKitResource*> m_upgradeablePackages;
         QPointer<PackageKit::Transaction> m_refresher;
-        bool m_isFetching;
+        int m_isFetching;
         QList<std::function<PackageKit::Transaction*()>> m_transactionQueue;
 };
 
