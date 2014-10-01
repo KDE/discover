@@ -171,7 +171,7 @@ void PackageKitBackend::updateDatabase()
     qDebug() << "Starting to update the package cache";
     if (!m_refresher) {
         m_refresher = PackageKit::Daemon::global()->refreshCache(false);
-        connect(m_refresher, SIGNAL(changed()), SLOT(reloadPackageList()));
+        connect(m_refresher, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(reloadPackageList()));
     } else {
         qWarning() << "already resetting";
     }
