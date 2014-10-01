@@ -95,10 +95,7 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     Q_UNUSED(runtime)
     if (exit == PackageKit::Transaction::ExitEulaRequired)
         return;
-    if (exit == PackageKit::Transaction::ExitSuccess && m_trans->role() == PackageKit::Transaction::RoleAcceptEula) {
-        start();
-        return;
-    }
+
     setStatus(Transaction::DoneStatus);
     if (exit == PackageKit::Transaction::ExitCancelled) {
         deleteLater();
@@ -117,18 +114,17 @@ PackageKit::Transaction* PKTransaction::transaction()
     return m_trans;
 }
 
-// void PKTransaction::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
-// {
-//     int ret = KMessageBox::questionYesNo(0, i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
-//                                                  PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement),
-//                                             i18n("%1 requires user to accept its license!", PackageKit::Daemon::packageName(packageID)));
-//     if (ret == KMessageBox::Yes) {
-//         kDebug() << "RESTART TRANSACTION reset thus";
-//         m_trans->acceptEula(eulaID);
-//     } else {
-//         cleanup(PackageKit::Transaction::ExitCancelled, 0);
-//     }
-// }
+void PKTransaction::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
+{
+    int ret = QMessageBox::question(0, i18n("Accept EULA"), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
+                                                 PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement));
+    if (ret == QMessageBox::Yes) {
+        PackageKit::Transaction* t = PackageKit::Daemon::acceptEula(eulaID);
+        connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(start()));
+    } else {
+        cleanup(PackageKit::Transaction::ExitCancelled, 0);
+    }
+}
 
 void PKTransaction::errorFound(PackageKit::Transaction::Error err, const QString& error)
 {

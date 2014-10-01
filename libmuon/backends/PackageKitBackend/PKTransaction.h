@@ -30,9 +30,11 @@ class PKTransaction : public Transaction
     public:
         explicit PKTransaction(AbstractResource* app, Transaction::Role role);
         PackageKit::Transaction* transaction();
-        
-        void start();
+
         void cancel();
+
+    public slots:
+        void start();
 
     private slots:
         void cleanup(PackageKit::Transaction::Exit, uint);
@@ -40,7 +42,7 @@ class PKTransaction : public Transaction
         void mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text);
         void requireRestart(PackageKit::Transaction::Restart restart, const QString& p);
         void progressChanged(const QString&, PackageKit::Transaction::Status, uint);
-//         void eulaRequired(const QString &eulaID, const QString &packageID, const QString &vendor, const QString &licenseAgreement);
+        void eulaRequired(const QString &eulaID, const QString &packageID, const QString &vendor, const QString &licenseAgreement);
         void cancellableChanged();
 
     private:
