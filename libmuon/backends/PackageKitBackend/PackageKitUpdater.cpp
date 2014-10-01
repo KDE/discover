@@ -84,11 +84,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint )
     PackageKit::Transaction::Role transactionRole = m_transaction->role();
     disconnect(m_transaction, 0, this, 0);
     m_transaction = 0;
-    if (exit == PackageKit::Transaction::ExitSuccess && transactionRole == PackageKit::Transaction::RoleAcceptEula) {
-        prepare();
-        start();
-        return;
-    }
+
     setProgressing(false);
     m_backend->refreshDatabase();
 }
@@ -245,8 +241,8 @@ void PackageKitUpdater::eulaRequired(const QString& eulaID, const QString& packa
     int ret = QMessageBox::question(0, i18n("%1 requires user to accept its license", packageName), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
                                                  packageName, vendor, licenseAgreement), QMessageBox::Yes, QMessageBox::No);
     if (ret == QMessageBox::Yes) {
-#warning TODO: implement acceptEula
-//         m_transaction->acceptEula(eulaID);
+        PackageKit::Transaction* t = PackageKit::Daemon::acceptEula(eulaID);
+        connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(start()));
     } else {
         finished(PackageKit::Transaction::ExitCancelled, 0);
     }
