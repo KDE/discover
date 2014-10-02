@@ -88,13 +88,13 @@ void PackageKitBackend::reloadPackageList()
         disconnect(m_refresher, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(reloadPackageList()));
     }
 
-    PackageKit::Transaction * t = PackageKit::Daemon::global()->getPackages();
+    PackageKit::Transaction * t = PackageKit::Daemon::getPackages();
     connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(getPackagesFinished(PackageKit::Transaction::Exit)));
     connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackage(PackageKit::Transaction::Info, QString, QString)));
     connect(t, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(transactionError(PackageKit::Transaction::Error,QString)));
     acquireFetching(true);
 
-    PackageKit::Transaction * tUpdates = PackageKit::Daemon::global()->getUpdates();
+    PackageKit::Transaction * tUpdates = PackageKit::Daemon::getUpdates();
     connect(tUpdates, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(getUpdatesFinished(PackageKit::Transaction::Exit,uint)));
     connect(tUpdates, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackageToUpdate(PackageKit::Transaction::Info,QString,QString)));
     connect(tUpdates, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(transactionError(PackageKit::Transaction::Error,QString)));
@@ -103,7 +103,7 @@ void PackageKitBackend::reloadPackageList()
 
 void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
-    QString packageName = PackageKit::Daemon::global()->packageName(packageId);
+    QString packageName = PackageKit::Daemon::packageName(packageId);
     if (AbstractResource* r = m_updatingPackages.value(packageName)) {
         qobject_cast<PackageKitResource*>(r)->addPackageId(info, packageId, summary);
     } else {
@@ -139,7 +139,7 @@ void PackageKitBackend::getPackagesFinished(PackageKit::Transaction::Exit exit)
 
     for(int i=0, step=1000; i<m_updatingPackages.count(); i+=step) {
         QStringList chunk = ids.mid(i, qMin(step, m_updatingPackages.count()-i));
-        m_transactionQueue.append([chunk]() { return PackageKit::Daemon::global()->getDetails(chunk); });
+        m_transactionQueue.append([chunk]() { return PackageKit::Daemon::getDetails(chunk); });
     }
     iterateTransactionQueue();
 }
@@ -180,7 +180,7 @@ void PackageKitBackend::packageDetails(const PackageKit::Details& details)
 void PackageKitBackend::refreshDatabase()
 {
     if (!m_refresher) {
-        m_refresher = PackageKit::Daemon::global()->refreshCache(false);
+        m_refresher = PackageKit::Daemon::refreshCache(false);
         connect(m_refresher, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(reloadPackageList()));
     } else {
         qWarning() << "already resetting";

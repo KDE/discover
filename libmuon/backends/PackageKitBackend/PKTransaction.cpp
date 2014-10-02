@@ -43,10 +43,10 @@ void PKTransaction::start()
 
     switch (role()) {
         case Transaction::InstallRole:
-            m_trans = PackageKit::Daemon::global()->installPackage(qobject_cast<PackageKitResource*>(resource())->availablePackageId());
+            m_trans = PackageKit::Daemon::installPackage(qobject_cast<PackageKitResource*>(resource())->availablePackageId());
             break;
         case Transaction::RemoveRole:
-            m_trans = PackageKit::Daemon::global()->removePackage(qobject_cast<PackageKitResource*>(resource())->installedPackageId());
+            m_trans = PackageKit::Daemon::removePackage(qobject_cast<PackageKitResource*>(resource())->installedPackageId());
             break;
         case Transaction::ChangeAddonsRole:
 #warning TODO: implement!
@@ -104,7 +104,7 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
         m_trans = 0;
         qobject_cast<PackageKitBackend*>(resource()->backend())->removeTransaction(this);
     }
-    PackageKit::Transaction* t = PackageKit::Daemon::global()->resolve(resource()->packageName(), PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
+    PackageKit::Transaction* t = PackageKit::Daemon::resolve(resource()->packageName(), PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
     qobject_cast<PackageKitResource*>(resource())->resetPackageIds();
     connect(t, SIGNAL(package(PackageKit::Transaction::Info,QString,QString)), resource(), SLOT(addPackageId(PackageKit::Transaction::Info, QString,QString)));
 }

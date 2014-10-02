@@ -82,7 +82,7 @@ void PackageKitUpdater::start()
         m_packageIds.insert(app->availablePackageId());
         qDebug() << "Upgrade" << app->availablePackageId() << app->installedPackageId();
     }
-    setTransaction(PackageKit::Daemon::global()->updatePackages(m_packageIds.toList()));
+    setTransaction(PackageKit::Daemon::updatePackages(m_packageIds.toList()));
     setProgressing(true);
 }
 
