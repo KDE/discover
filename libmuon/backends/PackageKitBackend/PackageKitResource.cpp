@@ -21,6 +21,7 @@
 
 #include "PackageKitResource.h"
 #include "PackageKitBackend.h"
+#include "PackageKitMessages.h"
 #include <MuonDataSources.h>
 #include <KLocalizedString>
 #include <PackageKit/Details>
@@ -288,6 +289,42 @@ void PackageKitResource::setDetails(const PackageKit::Details & details)
 
 void PackageKitResource::fetchChangelog()
 {
-    //TODO: implement
-    emit changelogFetched(QString());
+    PackageKit::Transaction* t = PackageKit::Daemon::getUpdateDetail(availablePackageId());
+    connect(t, &PackageKit::Transaction::updateDetail, this, &PackageKitResource::updateDetail);
+    connect(t, &PackageKit::Transaction::errorCode, this, [this](PackageKit::Transaction::Error err, const QString & error) {
+        qWarning() << "error fetching updates:" << err << error;
+        emit changelogFetched(QString());
+    });
 }
+
+static void addIfNotEmpty(const QString& title, const QString& content, QString& where)
+{
+    if (!content.isEmpty())
+        where += QStringLiteral("<b>") + title + QStringLiteral("</b><p>&nbsp;") + content + QStringLiteral("</p>");
+}
+
+static QString joinPackages(const QStringList& pkgids)
+{
+    QStringList ret;
+    foreach(const QString& pkgid, pkgids) {
+        ret += i18nc("package-name (version)", "%1 (%2)", PackageKit::Daemon::packageName(pkgid), PackageKit::Daemon::packageVersion(pkgid));
+    }
+    return ret.join(i18nc("comma separating package names", ", "));
+}
+
+void PackageKitResource::updateDetail(const QString& packageID, const QStringList& updates, const QStringList& obsoletes, const QStringList& vendorUrls,
+                                      const QStringList& bugzillaUrls, const QStringList& cveUrls, PackageKit::Transaction::Restart restart, const QString& updateText,
+                                      const QString& changelog, PackageKit::Transaction::UpdateState state, const QDateTime& issued, const QDateTime& updated)
+{
+    QString info;
+    addIfNotEmpty(i18n("Reason:"), updateText, info);
+    addIfNotEmpty(i18n("Obsoletes:"), joinPackages(obsoletes), info);
+    addIfNotEmpty(i18n("Updates:"), joinPackages(updates), info);
+    addIfNotEmpty(i18n("Change Log:"), changelog, info);
+    addIfNotEmpty(i18n("Update State:"), PackageKitMessages::updateStateMessage(state), info);
+    addIfNotEmpty(i18n("Restart:"), PackageKitMessages::restartMessage(restart), info);
+
+    emit changelogFetched(info);
+}
+
+

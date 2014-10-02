@@ -172,28 +172,41 @@ QString errorMessage(PackageKit::Transaction::Error error)
 
 QString restartMessage(PackageKit::Transaction::Restart restart, const QString& pkgid)
 {
-    QString message;
     switch (restart) {
         case PackageKit::Transaction::RestartApplication:
-            message = i18n("'%1' was changed and suggests to be restarted.", PackageKit::Daemon::packageName(pkgid));
-            break;
+            return i18n("'%1' was changed and suggests to be restarted.", PackageKit::Daemon::packageName(pkgid));
         case PackageKit::Transaction::RestartSession:
-            message = i18n("A change by '%1' suggests your session to be restarted.", PackageKit::Daemon::packageName(pkgid));
-            break;
+            return i18n("A change by '%1' suggests your session to be restarted.", PackageKit::Daemon::packageName(pkgid));
         case PackageKit::Transaction::RestartSecuritySession:
-            message = i18n("'%1' was updated for security reasons, a restart of the session is recommended.", PackageKit::Daemon::packageName(pkgid));
-            break;
+            return i18n("'%1' was updated for security reasons, a restart of the session is recommended.", PackageKit::Daemon::packageName(pkgid));
         case PackageKit::Transaction::RestartSecuritySystem:
-            message = i18n("'%1' was updated for security reasons, a restart of the system is recommended.", PackageKit::Daemon::packageName(pkgid));
-            break;
+            return i18n("'%1' was updated for security reasons, a restart of the system is recommended.", PackageKit::Daemon::packageName(pkgid));
         case PackageKit::Transaction::RestartSystem:
         case PackageKit::Transaction::RestartUnknown:
         case PackageKit::Transaction::RestartNone:
         default:
-            message = i18n("A change by '%1' suggests your system to be rebooted.", PackageKit::Daemon::packageName(pkgid));
-            break;
+            return i18n("A change by '%1' suggests your system to be rebooted.", PackageKit::Daemon::packageName(pkgid));
     }
-    return message;
+}
+
+QString restartMessage(PackageKit::Transaction::Restart restart)
+{
+    switch (restart) {
+        case PackageKit::Transaction::RestartApplication:
+            return i18n("The application will have to be restarted.");
+        case PackageKit::Transaction::RestartSession:
+            return i18n("The session will have to be restarted");
+        case PackageKit::Transaction::RestartSystem:
+            return i18n("The system will have to be rebooted.");
+        case PackageKit::Transaction::RestartSecuritySession:
+            return i18n("For security, the session will have to be restarted.");
+        case PackageKit::Transaction::RestartSecuritySystem:
+            return i18n("For security, the system will have to be restarted.");
+        case PackageKit::Transaction::RestartUnknown:
+        case PackageKit::Transaction::RestartNone:
+        default:
+            return QString();
+    }
 }
 
 QString statusMessage(PackageKit::Transaction::Status status)
@@ -290,6 +303,21 @@ QString statusDetail(PackageKit::Transaction::Status status)
         default:
             return i18n("PackageKit does not tell us a useful status right now! Its status is %1.", status);
     }
+}
+
+QString updateStateMessage(PackageKit::Transaction::UpdateState state)
+{
+    switch(state) {
+        case PackageKit::Transaction::UpdateStateUnknown:
+            return QString();
+        case PackageKit::Transaction::UpdateStateStable:
+            return i18nc("update state", "Stable");
+        case PackageKit::Transaction::UpdateStateUnstable:
+            return i18nc("update state", "Unstable");
+        case PackageKit::Transaction::UpdateStateTesting:
+            return i18nc("update state", "Testing");
+    }
+    return QString();
 }
 
 }

@@ -61,6 +61,20 @@ class PackageKitResource : public AbstractResource
         void setDetails(const PackageKit::Details& details);
         void resetPackageIds();
 
+    private slots:
+        void updateDetail(const QString &packageID,
+                          const QStringList &updates,
+                          const QStringList &obsoletes,
+                          const QStringList &vendorUrls,
+                          const QStringList &bugzillaUrls,
+                          const QStringList &cveUrls,
+                          PackageKit::Transaction::Restart restart,
+                          const QString &updateText,
+                          const QString &changelog,
+                          PackageKit::Transaction::UpdateState state,
+                          const QDateTime &issued,
+                          const QDateTime &updated);
+
     private:
         PackageKitBackend * m_backend;
         QMap<PackageKit::Transaction::Info, QStringList> m_packages;
