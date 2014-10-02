@@ -144,7 +144,7 @@ void PackageKitResource::resetPackageIds()
     m_packages.clear();
 }
 
-void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
+void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &/*summary*/)
 {
     m_packages[info].append(packageId);
     emit stateChanged();
