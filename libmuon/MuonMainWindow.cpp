@@ -75,6 +75,8 @@ void MuonMainWindow::easterEggTriggered()
                  "  *  ||------||\n"
                  "     ^^      ^^\n");
 
+    layout->addWidget(label);
+    layout->addWidget(moo);
     dialog->setLayout(layout);
     dialog->show();
 
