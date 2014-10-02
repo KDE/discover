@@ -71,7 +71,6 @@ class PackageKitResource : public AbstractResource
         QString m_url;
         qulonglong m_size;
         QString m_name;
-        QString m_icon;
 };
 
 #endif // PACKAGEKITRESOURCE_H

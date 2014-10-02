@@ -32,7 +32,6 @@ PackageKitResource::PackageKitResource(const QString &packageId, PackageKit::Tra
     , m_summary(summary)
     , m_size(0)
     , m_name(PackageKit::Daemon::packageName(packageId))
-    , m_icon(PackageKit::Daemon::packageIcon(packageId))
 {
     addPackageId(info, packageId, summary);
 
@@ -79,7 +78,7 @@ QUrl PackageKitResource::homepage()
 
 QString PackageKitResource::icon() const
 {
-    return m_icon.isEmpty() ? "applications-other" : m_icon;
+    return QStringLiteral("applications-other");
 }
 
 QString PackageKitResource::license()
