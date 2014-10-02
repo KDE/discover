@@ -80,7 +80,7 @@ Item {
                 onClicked: menu.popup()
 
                 ExclusiveGroup { id: sortActionGroup }
-                Menu {
+                menu: Menu {
                     id: menu
                     MenuItem {
                         id: nameItem
@@ -139,7 +139,7 @@ Item {
                 onClicked: shownMenu.popup()
 
                 ExclusiveGroup { id: shownActionGroup }
-                Menu {
+                menu: Menu {
                     id: shownMenu
                     MenuItem {
                         id: itemList
