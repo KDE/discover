@@ -57,7 +57,7 @@ void PackageKitNotifier::recheckSystemUpdateNeeded()
     connect(trans, SIGNAL(finished(PackageKit::Transaction::Exit, uint)), SLOT(finished(PackageKit::Transaction::Exit, uint)));
 }
 
-void PackageKitNotifier::package(PackageKit::Transaction::Info info, const QString &packageID, const QString &summary)
+void PackageKitNotifier::package(PackageKit::Transaction::Info info, const QString &/*packageID*/, const QString &/*summary*/)
 {
     if (info == PackageKit::Transaction::InfoSecurity) {
         m_update = Security;
@@ -66,7 +66,7 @@ void PackageKitNotifier::package(PackageKit::Transaction::Info info, const QStri
     }
 }
 
-void PackageKitNotifier::finished(PackageKit::Transaction::Exit exit, uint)
+void PackageKitNotifier::finished(PackageKit::Transaction::Exit /*exit*/, uint)
 {
     if (m_update == Security) {
         setSystemUpToDate(false, AbstractKDEDModule::SecurityUpdate);

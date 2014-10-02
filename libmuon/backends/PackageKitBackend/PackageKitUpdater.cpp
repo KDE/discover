@@ -90,7 +90,6 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint )
 {
     if (exit == PackageKit::Transaction::ExitEulaRequired)
         return;
-    PackageKit::Transaction::Role transactionRole = m_transaction->role();
     disconnect(m_transaction, 0, this, 0);
     m_transaction = 0;
 
