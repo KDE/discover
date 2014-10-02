@@ -23,9 +23,11 @@
 #include <PackageKit/Daemon>
 #include <QDebug>
 #include <QMessageBox>
+#include <QAction>
 #include <QSet>
 
 #include <KLocalizedString>
+#include <QIcon>
 
 PackageKitUpdater::PackageKitUpdater(PackageKitBackend * parent)
   : AbstractBackendUpdater(parent),
@@ -34,7 +36,14 @@ PackageKitUpdater::PackageKitUpdater(PackageKitBackend * parent)
     m_speed(0),
     m_remainingTime(0),
     m_percentage(0)
-{}
+{
+    m_updateAction = new QAction(this);
+    m_updateAction->setIcon(QIcon::fromTheme("system-software-update"));
+    m_updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
+    m_updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
+    m_updateAction->setEnabled(PackageKit::Daemon::networkState() != PackageKit::Daemon::NetworkOffline);
+    connect(m_updateAction, SIGNAL(triggered()), parent, SLOT(refreshDatabase()));
+}
 
 PackageKitUpdater::~PackageKitUpdater()
 {
@@ -208,7 +217,7 @@ quint64 PackageKitUpdater::downloadSpeed() const
 
 QList<QAction*> PackageKitUpdater::messageActions() const
 {
-    return QList<QAction*>();
+    return QList<QAction*>() << m_updateAction;
 }
 
 void PackageKitUpdater::cancel()

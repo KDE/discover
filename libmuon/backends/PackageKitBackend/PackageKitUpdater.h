@@ -91,6 +91,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         long unsigned int m_remainingTime;
         uint m_percentage;
         QDateTime m_lastUpdate;
+        QAction* m_updateAction;
 };
 
 
