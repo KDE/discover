@@ -47,6 +47,9 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
 {
     bool b = m_appdata.open();
     Q_ASSERT(b && "must be able to open the appstream database");
+    if (!b) {
+        qWarning() << "Couldn't open the AppStream database";
+    }
     reloadPackageList();
 
     QTimer* t = new QTimer(this);
@@ -199,7 +202,6 @@ QList<AbstractResource*> PackageKitBackend::searchPackageName(const QString& sea
     QList<AbstractResource*> ret;
     for(AbstractResource* res : m_packages.values()) {
         if (res->name().contains(searchText, Qt::CaseInsensitive)) {
-//             kDebug() << "Got one" << res->name();
             ret += res;
         }
     }
