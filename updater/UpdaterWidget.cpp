@@ -136,7 +136,6 @@ UpdaterWidget::~UpdaterWidget()
 
 void UpdaterWidget::activityChanged()
 {
-    qDebug () << "fuuuuuuuuu" << ResourcesModel::global()->isFetching() << m_updatesBackends->isProgressing();
     if(ResourcesModel::global()->isFetching()) {
         m_updateModel->setResources(QList<AbstractResource*>());
         m_busyWidget->start();

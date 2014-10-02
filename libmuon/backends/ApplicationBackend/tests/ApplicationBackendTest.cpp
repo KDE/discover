@@ -143,7 +143,6 @@ void ApplicationBackendTest::testCategories()
     for(int i=0; i<categoryModel->rowCount(); ++i) {
         Category* cat = categoryModel->categoryForRow(i);
         proxy->setFiltersFromCategory(cat);
-        qDebug() << "fuuuuuu" << proxy->rowCount() << cat->name();
     }
 }
 
