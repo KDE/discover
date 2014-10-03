@@ -212,17 +212,11 @@ void MainWindow::editSettings()
 {
     if (!m_settingsDialog) {
         m_settingsDialog = new UpdaterSettingsDialog(this);
-        connect(m_settingsDialog, SIGNAL(okClicked()), SLOT(closeSettingsDialog()));
+        connect(m_settingsDialog, &UpdaterSettingsDialog::finished, m_settingsDialog, &QObject::deleteLater);
         m_settingsDialog->show();
     } else {
         m_settingsDialog->raise();
     }
-}
-
-void MainWindow::closeSettingsDialog()
-{
-    m_settingsDialog->deleteLater();
-    m_settingsDialog = nullptr;
 }
 
 void MainWindow::checkPlugState()
