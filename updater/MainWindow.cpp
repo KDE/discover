@@ -212,7 +212,7 @@ void MainWindow::editSettings()
 {
     if (!m_settingsDialog) {
         m_settingsDialog = new UpdaterSettingsDialog(this);
-        connect(m_settingsDialog, &UpdaterSettingsDialog::finished, m_settingsDialog, &QObject::deleteLater);
+        connect(m_settingsDialog.data(), &UpdaterSettingsDialog::finished, m_settingsDialog, &QObject::deleteLater);
         m_settingsDialog->show();
     } else {
         m_settingsDialog->raise();
