@@ -80,7 +80,7 @@ void MuonMainWindow::easterEggTriggered()
     dialog->setLayout(layout);
     dialog->show();
 
-    QString mooFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "libmuon/moo.ogg");
+    QUrl mooFile = QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::GenericDataLocation, "libmuon/moo.ogg"));
     Phonon::MediaObject *music =
     Phonon::createPlayer(Phonon::MusicCategory,
                              Phonon::MediaSource(mooFile));
