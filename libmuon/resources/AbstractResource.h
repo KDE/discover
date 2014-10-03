@@ -24,6 +24,8 @@
 #include <QtCore/QObject>
 #include <QUrl>
 #include <QStringList>
+#include <QScopedPointer>
+#include <QCollatorSortKey>
 
 #include "libmuonprivate_export.h"
 #include "PackageState.h"
@@ -151,6 +153,11 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
 
         AbstractResourcesBackend* backend() const;
 
+        /**
+         * @returns a name sort key for faster sorting 
+         */
+        QCollatorSortKey nameSortKey();
+
     public slots:
         virtual void fetchScreenshots();
         virtual void fetchChangelog() = 0;
@@ -162,6 +169,10 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
         ///@p thumbnails and @p screenshots should have the same number of elements
         void screenshotsFetched(const QList<QUrl>& thumbnails, const QList<QUrl>& screenshots);
         void changelogFetched(const QString& changelog);
+
+    private:
+//         TODO: make it std::optional or make QCollatorSortKey()
+        QScopedPointer<QCollatorSortKey> m_collatorKey;
 };
 
 #endif // ABSTRACTRESOURCE_H

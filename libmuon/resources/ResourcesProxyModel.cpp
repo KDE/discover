@@ -22,7 +22,6 @@
 #include "ResourcesProxyModel.h"
 
 #include <QDebug>
-#include <QDebug>
 
 #include "ResourcesModel.h"
 #include "AbstractResource.h"
@@ -233,24 +232,30 @@ bool ResourcesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &r
                 return false;
         }
     }
-    QVariant leftValue = left.data(sortRole());
-    QVariant rightValue = right.data(sortRole());
+
+    int theSortRole = sortRole();
     
     bool invert = false;
     //if we're comparing two equal values, we want the model sorted by application name
-    if(sortRole()!=ResourcesModel::NameRole && leftValue == rightValue) {
-        leftValue = left.data(ResourcesModel::NameRole);
-        rightValue = right.data(ResourcesModel::NameRole);
-        invert = (sortOrder()==Qt::DescendingOrder);
+    if(theSortRole != ResourcesModel::NameRole) {
+        QVariant leftValue = left.data(theSortRole);
+        QVariant rightValue = right.data(theSortRole);
+        if (leftValue == rightValue) {
+            theSortRole = ResourcesModel::NameRole;
+            invert = (sortOrder()==Qt::DescendingOrder);
+        }
     }
     
-    if(leftValue.type()==QVariant::String && rightValue.type()==QVariant::String) {
-        int comp = QString::localeAwareCompare(leftValue.toString(), rightValue.toString());
-        return (comp < 0) ^ invert;
-    } else if(sortRole() == ResourcesModel::CanUpgrade) {
+    if(theSortRole == ResourcesModel::NameRole) {
+        AbstractResource* leftPackage = qobject_cast<AbstractResource*>(left.data(ResourcesModel::ApplicationRole).value<QObject*>());
+        AbstractResource* rightPackage = qobject_cast<AbstractResource*>(right.data(ResourcesModel::ApplicationRole).value<QObject*>());
+
+        return (leftPackage->nameSortKey().compare(rightPackage->nameSortKey())<0) ^ invert;
+    } else if(theSortRole == ResourcesModel::CanUpgrade) {
+        QVariant leftValue = left.data(theSortRole);
         return leftValue.toBool();
     } else {
-        return QSortFilterProxyModel::lessThan(left, right);
+        return QSortFilterProxyModel::lessThan(left, right) ^ invert;
     }
 }
 

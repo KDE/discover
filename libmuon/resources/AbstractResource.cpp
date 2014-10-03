@@ -96,3 +96,11 @@ QString AbstractResource::sizeDescription()
 {
     return KFormat().formatByteSize(downloadSize());
 }
+
+QCollatorSortKey AbstractResource::nameSortKey()
+{
+    if (!m_collatorKey) {
+        m_collatorKey.reset(new QCollatorSortKey(QCollator().sortKey(name())));
+    }
+    return *m_collatorKey;
+}
