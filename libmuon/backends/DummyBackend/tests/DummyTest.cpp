@@ -22,9 +22,11 @@
 #include <modeltest.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>
+#include <resources/AbstractBackendUpdater.h>
 #include <qtest.h>
 
 #include <QtTest>
+#include <QAction>
 
 QTEST_MAIN(DummyTest);
 
@@ -45,7 +47,7 @@ DummyTest::DummyTest(QObject* parent): QObject(parent)
 //     new ModelTest(m_model, m_model);
 
     m_appBackend = backendByName(m_model, "DummyBackend");
-    QVERIFY(m_appBackend); //TODO: test all backends
+    QVERIFY(m_appBackend);
     QSignalSpy spy(m_appBackend, SIGNAL(backendReady()));
     QVERIFY(spy.wait(0));
 }
@@ -72,4 +74,38 @@ void DummyTest::testProxy()
     QCOMPARE(m_appBackend->property("startElements").toInt(), pm.rowCount());
     pm.setSearch(QString());
     QCOMPARE(m_appBackend->property("startElements").toInt()*2, pm.rowCount());
+}
+
+void DummyTest::testFetch()
+{
+    QCOMPARE(m_appBackend->property("startElements").toInt()*2, m_model->rowCount());
+
+    //fetches updates, adds new things
+    m_appBackend->backendUpdater()->messageActions().first()->trigger();
+    QCOMPARE(m_model->rowCount(), 0);
+    QCOMPARE(m_model->isFetching(), true);
+    QSignalSpy spy(m_model, SIGNAL(allInitialized()));
+    QVERIFY(spy.wait(80000));
+    QCOMPARE(m_model->isFetching(), false);
+    QCOMPARE(m_appBackend->property("startElements").toInt()*4, m_model->rowCount());
+}
+
+void DummyTest::testSort()
+{
+    ResourcesProxyModel pm;
+    pm.setSourceModel(m_model);
+    QCollator c;
+    QBENCHMARK_ONCE {
+        pm.setSortRole(ResourcesModel::NameRole);
+        pm.sort(0);
+        QString last;
+        for(int i = 0; i<pm.rowCount(); ++i) {
+            QString current = pm.index(i, 0).data(pm.sortRole()).toString();
+            if (!last.isEmpty()) {
+                QCOMPARE(c.compare(last, current), -1);
+            }
+            last = current;
+        }
+        pm.setSortRole(ResourcesModel::StateRole);
+    }
 }
