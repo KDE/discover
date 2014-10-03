@@ -20,9 +20,9 @@
 
 #include "UpdaterSettingsDialog.h"
 
-#include "../../libmuon/settings/SettingsPageBase.h"
-#include "../../libmuon/settings/NotifySettingsPage.h"
-#include <klocalizedstring.h>
+#include "settings/SettingsPageBase.h"
+#include "settings/NotifySettingsPage.h"
+#include <KLocalizedString>
 #include <QIcon>
 #include <QDialogButtonBox>
 #include <QPushButton>
