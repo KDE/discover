@@ -33,11 +33,6 @@
 
 Q_GLOBAL_STATIC(QStringList, s_requestedBackends)
 
-void MuonBackendsFactory::setRequestedBackends(const QStringList& backends)
-{
-    *s_requestedBackends = backends;
-}
-
 MuonBackendsFactory::MuonBackendsFactory()
 {}
 
@@ -68,7 +63,7 @@ AbstractResourcesBackend* MuonBackendsFactory::backend(const QString& name) cons
 QStringList MuonBackendsFactory::allBackendNames(bool whitelist) const
 {
     if (whitelist) {
-        QStringList whitelist = fetchBackendsWhitelist();
+        QStringList whitelist = *s_requestedBackends;
         if (!whitelist.isEmpty())
             return whitelist;
     }
@@ -106,11 +101,6 @@ int MuonBackendsFactory::backendsCount() const
     return allBackendNames().count();
 }
 
-QStringList MuonBackendsFactory::fetchBackendsWhitelist() const
-{
-    return *s_requestedBackends;
-}
-
 void MuonBackendsFactory::setupCommandLine(QCommandLineParser* parser)
 {
     parser->addOption(QCommandLineOption("listbackends", i18n("List all the available backends.")));
@@ -119,7 +109,7 @@ void MuonBackendsFactory::setupCommandLine(QCommandLineParser* parser)
 
 void MuonBackendsFactory::processCommandLine(QCommandLineParser* parser)
 {
-    MuonBackendsFactory::setRequestedBackends(parser->value("backends").split(",", QString::SkipEmptyParts));
+    *s_requestedBackends = parser->value("backends").split(",", QString::SkipEmptyParts);
     if(parser->isSet("listbackends")) {
         fprintf(stdout, "%s", qPrintable(i18n("Available backends:\n")));
         MuonBackendsFactory f;

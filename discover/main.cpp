@@ -39,8 +39,7 @@ int main(int argc, char** argv)
     KAboutData::setApplicationData(about);
 
     KDBusService service(KDBusService::Unique);
-    MuonDiscoverMainWindow *mainWindow = new MuonDiscoverMainWindow;
-    QObject::connect(&app, SIGNAL(aboutToQuit()), mainWindow, SLOT(deleteLater()));
+    MuonDiscoverMainWindow *mainWindow = nullptr;
     {
         QCommandLineParser parser;
         parser.addOption(QCommandLineOption("application", i18n("Directly open the specified application by its package name."), "name"));
@@ -54,6 +53,9 @@ int main(int argc, char** argv)
         parser.process(app);
         about.processCommandLine(&parser);
         MuonBackendsFactory::processCommandLine(&parser);
+
+        mainWindow = new MuonDiscoverMainWindow;
+        QObject::connect(&app, SIGNAL(aboutToQuit()), mainWindow, SLOT(deleteLater()));
 
         if(parser.isSet("application"))
             mainWindow->openApplication(parser.value("application"));

@@ -39,10 +39,6 @@ public:
     
     static void setupCommandLine(QCommandLineParser* parser);
     static void processCommandLine(QCommandLineParser* parser);
-
-private:
-    static void setRequestedBackends(const QStringList& backends);
-    QStringList fetchBackendsWhitelist() const;
 };
 
 #endif // MUONBACKENDSFACTORY_H
