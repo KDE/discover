@@ -21,6 +21,7 @@
 #include "DummyTest.h"
 #include <modeltest.h>
 #include <resources/ResourcesModel.h>
+#include <resources/ResourcesProxyModel.h>
 #include <qtest.h>
 
 #include <QtTest>
@@ -56,5 +57,19 @@ void DummyTest::testReadData()
             QModelIndex idx = m_model->index(i, 0);
             QVERIFY(!m_model->data(idx, ResourcesModel::NameRole).isNull());
         }
+        QCOMPARE(m_appBackend->property("startElements").toInt()*2, m_model->rowCount());
     }
+}
+
+void DummyTest::testProxy()
+{
+    ResourcesProxyModel pm;
+    pm.setSourceModel(m_model);
+    QCOMPARE(m_appBackend->property("startElements").toInt(), pm.rowCount());
+    pm.setShouldShowTechnical(true);
+    QCOMPARE(m_appBackend->property("startElements").toInt()*2, pm.rowCount());
+    pm.setSearch("techie");
+    QCOMPARE(m_appBackend->property("startElements").toInt(), pm.rowCount());
+    pm.setSearch(QString());
+    QCOMPARE(m_appBackend->property("startElements").toInt()*2, pm.rowCount());
 }

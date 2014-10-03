@@ -44,6 +44,7 @@ DummyBackend::DummyBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_fetching(false)
+    , m_startElements(32)
 {
 }
 
@@ -53,7 +54,7 @@ void DummyBackend::setMetaData(const QString& path)
     KSharedConfig::Ptr cfg = KSharedConfig::openConfig(path);
     KConfigGroup metadata = cfg->group(QStringLiteral("Desktop Entry"));
 
-    for(int i=0; i<32; i++) {
+    for(int i=0; i<m_startElements; i++) {
         QString name = metadata.readEntry("Name", QString())+" "+QString::number(i);
         DummyResource* res = new DummyResource(name, false, this);
         res->setState(AbstractResource::State(1+(i%3)));
@@ -61,7 +62,7 @@ void DummyBackend::setMetaData(const QString& path)
         connect(res, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));
     }
 
-    for(int i=0; i<32; i++) {
+    for(int i=0; i<m_startElements; i++) {
         QString name = "techie"+QString::number(i);
         DummyResource* res = new DummyResource(name, true, this);
         res->setState(AbstractResource::State(1+(i%3)));

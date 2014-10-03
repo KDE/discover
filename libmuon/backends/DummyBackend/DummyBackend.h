@@ -29,6 +29,7 @@ class DummyResource;
 class DummyBackend : public AbstractResourcesBackend
 {
 Q_OBJECT
+Q_PROPERTY(int startElements MEMBER m_startElements)
 public:
     explicit DummyBackend(QObject* parent = 0);
 
@@ -57,6 +58,7 @@ private:
     StandardBackendUpdater* m_updater;
     AbstractReviewsBackend* m_reviews;
     bool m_fetching;
+    int m_startElements;
 };
 
 #endif // DUMMYBACKEND_H

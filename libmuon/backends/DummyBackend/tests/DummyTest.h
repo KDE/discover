@@ -34,6 +34,7 @@ public:
 
 private slots:
     void testReadData();
+    void testProxy();
 
 private:
     AbstractResourcesBackend* m_appBackend;
