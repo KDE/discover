@@ -212,7 +212,7 @@ void MainWindow::editSettings()
 {
     if (!m_settingsDialog) {
         m_settingsDialog = new UpdaterSettingsDialog(this);
-        connect(m_settingsDialog.data(), &UpdaterSettingsDialog::finished, m_settingsDialog, &QObject::deleteLater);
+        connect(m_settingsDialog, SIGNAL(finished(int)), m_settingsDialog, SLOT(deleteLater()));
         m_settingsDialog->show();
     } else {
         m_settingsDialog->raise();
