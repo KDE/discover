@@ -27,7 +27,10 @@
 #include <attica/provider.h>
 #include <attica/providermanager.h>
 #include <attica/content.h>
+#include <KLocalizedString>
+#include <KPasswordDialog>
 #include <QDebug>
+#include <QDesktopServices>
 
 Q_DECLARE_METATYPE(AbstractResource*)
 
@@ -99,38 +102,50 @@ bool KNSReviews::isFetching() const
     return m_backend->isFetching();
 }
 
-void KNSReviews::flagReview(Review* r, const QString& reason, const QString& text)
+void KNSReviews::flagReview(Review* , const QString& , const QString& )
 {
-
+    qWarning() << "cannot flag reviews";
 }
 
-void KNSReviews::deleteReview(Review* r)
+void KNSReviews::deleteReview(Review* )
 {
-
+    qWarning() << "cannot delete comments";
 }
 
-void KNSReviews::submitReview(AbstractResource* app, const QString& summary, const QString& review_text, const QString& rating)
+void KNSReviews::submitReview(AbstractResource* app, const QString& summary, const QString& review_text, const QString& /*rating*/)
 {
-
+    m_backend->provider()->addNewComment(Attica::Comment::ContentComment, app->packageName(), QString(), QString(), summary, review_text);
 }
 
 void KNSReviews::submitUsefulness(Review* r, bool useful)
 {
-
+    m_backend->provider()->voteForComment(QString::number(r->id()), useful*5);
 }
 
 void KNSReviews::logout()
 {
-
+    bool b = m_backend->provider()->saveCredentials(QString(), QString());
+    if (!b)
+        qWarning() << "couldn't log out";
 }
 
 void KNSReviews::registerAndLogin()
 {
-
+    QDesktopServices::openUrl(m_backend->provider()->baseUrl());
 }
 
 void KNSReviews::login()
 {
+    KPasswordDialog* dialog = new KPasswordDialog;
+    dialog->setPrompt(i18n("Log in information for %1", m_backend->provider()->name()));
+    connect(dialog, &KPasswordDialog::gotUsernameAndPassword, this, &KNSReviews::credentialsReceived);
+}
+
+void KNSReviews::credentialsReceived(const QString& user, const QString& password)
+{
+    bool b = m_backend->provider()->saveCredentials(user, password);
+    if (!b)
+        qWarning() << "couldn't save" << user << "credentials for" << m_backend->provider()->name();
 }
 
 bool KNSReviews::hasCredentials() const
@@ -140,5 +155,7 @@ bool KNSReviews::hasCredentials() const
 
 QString KNSReviews::userName() const
 {
-    return "little joe";
+    QString user, password;
+    m_backend->provider()->loadCredentials(user, password);
+    return user;
 }
