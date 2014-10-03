@@ -54,6 +54,8 @@ public slots:
     void toggleFetching();
 
 private:
+    void populate(const QString& name);
+
     QHash<QString, DummyResource*> m_resources;
     StandardBackendUpdater* m_updater;
     AbstractReviewsBackend* m_reviews;
