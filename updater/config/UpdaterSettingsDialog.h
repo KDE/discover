@@ -34,8 +34,6 @@ public:
 
 private Q_SLOTS:
     void enableApply();
-
-private:
     void applySettings();
     void restoreDefaults();
 
