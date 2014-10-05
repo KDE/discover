@@ -31,8 +31,10 @@
 
 PackageKitUpdater::PackageKitUpdater(PackageKitBackend * parent)
   : AbstractBackendUpdater(parent),
-    m_transaction(0),
+    m_transaction(nullptr),
     m_backend(parent),
+    m_isCancelable(false),
+    m_isProgressing(false),
     m_speed(0),
     m_remainingTime(0),
     m_percentage(0)
@@ -59,6 +61,7 @@ void PackageKitUpdater::prepare()
 void PackageKitUpdater::setTransaction(PackageKit::Transaction* transaction)
 {
     m_transaction = transaction;
+    m_isCancelable = transaction->allowCancel();
 
     connect(m_transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(finished(PackageKit::Transaction::Exit,uint)));
     connect(m_transaction, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), this, SLOT(errorFound(PackageKit::Transaction::Error,QString)));
