@@ -25,6 +25,7 @@
 #include <resources/ResourcesModel.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/Rating.h>
+#include <MuonBackendsFactory.h>
 
 #include <qtest.h>
 #include <qsignalspy.h>
@@ -40,10 +41,22 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
     MuonMainWindow *m_window = new MuonMainWindow();
     model->integrateMainWindow(m_window);
 
+    if (!m_backend->isValid()) {
+        qWarning() << "couldn't run the test";
+        exit(0);
+    }
+
     QSignalSpy s(model, SIGNAL(allInitialized()));
-    Q_ASSERT(s.wait());
+    Q_ASSERT(s.wait(50000));
     connect(m_backend->reviewsBackend(), SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
             SLOT(reviewsArrived(AbstractResource*,QList<Review*>)));
+}
+
+void KNSBackendTest::wrongBackend()
+{
+    MuonBackendsFactory f;
+    AbstractResourcesBackend* b = f.backendForFile(QFINDTESTDATA("muon-knswrong-backend.desktop"));
+    QVERIFY(!b->isValid());
 }
 
 void KNSBackendTest::testRetrieval()

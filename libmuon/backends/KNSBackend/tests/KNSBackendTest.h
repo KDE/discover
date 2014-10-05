@@ -34,6 +34,7 @@ class KNSBackendTest : public QObject
         explicit KNSBackendTest(QObject* parent = 0);
 
     private slots:
+        void wrongBackend();
         void testRetrieval();
         void testReviews();
 

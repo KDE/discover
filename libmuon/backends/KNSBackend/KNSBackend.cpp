@@ -124,8 +124,12 @@ bool KNSBackend::isValid() const
 
 void KNSBackend::startFetchingCategories()
 {
-    if (m_atticaManager->providers().isEmpty())
+    if (m_atticaManager->providers().isEmpty()) {
+        qWarning() << "no providers for" << m_name;
+        m_isValid = false;
+        setFetching(false);
         return;
+    }
 
     setFetching(true);
     m_provider = m_atticaManager->providers().first();
