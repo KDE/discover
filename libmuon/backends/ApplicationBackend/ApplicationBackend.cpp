@@ -363,11 +363,10 @@ void ApplicationBackend::markLangpacks(Transaction *transaction)
     QString res = proc.readAllStandardOutput();
     res.remove(QString());
 
-    QApt::Package *langPack = nullptr;
     m_backend->setCompressEvents(true);
     foreach(const QString &pkg, res.split(' '))
     {
-        langPack = m_backend->package(pkg.trimmed());
+        QApt::Package *langPack = m_backend->package(pkg.trimmed());
 
         if (langPack)
             langPack->setInstall();
