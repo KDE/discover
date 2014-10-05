@@ -55,6 +55,7 @@ void DummyBackend::setMetaData(const QString& path)
     KConfigGroup metadata = cfg->group(QStringLiteral("Desktop Entry"));
 
     populate(metadata.readEntry("Name", QString()));
+    m_reviews->initialize();
 
     QAction* updateAction = new QAction(this);
     updateAction->setIcon(QIcon::fromTheme("system-software-update"));
@@ -84,8 +85,6 @@ void DummyBackend::populate(const QString& n)
         m_resources.insert(name, res);
         connect(res, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));
     }
-
-    m_reviews->initialize();
 }
 
 void DummyBackend::toggleFetching()
@@ -93,6 +92,8 @@ void DummyBackend::toggleFetching()
     m_fetching = !m_fetching;
     qDebug() << "fetching..." << m_fetching;
     emit fetchingChanged();
+    if (!m_fetching)
+        m_reviews->initialize();
 }
 
 QVector<AbstractResource*> DummyBackend::allResources() const

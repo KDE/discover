@@ -49,6 +49,8 @@ void DummyReviewsBackend::initialize()
 {
     DummyBackend* b = qobject_cast<DummyBackend*>(parent());
     foreach(AbstractResource* app, b->allResources()) {
+        if (m_ratings.contains(app))
+            continue;
         Rating* rating = new Rating(app->packageName(), app->name(), 15, 5, "\"0, 0, 0, 4, 5\"");
         m_ratings.insert(app, rating);
     }
