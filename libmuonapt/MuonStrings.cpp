@@ -233,8 +233,7 @@ QString MuonStrings::packageChangeStateName(Package::State state) const
 {
     int ns = state & (Package::ToKeep | Package::ToInstall | Package::ToReInstall | Package::NewInstall
                                     | Package::ToUpgrade | Package::ToRemove
-                                    | Package::ToPurge | Package::ToReInstall
-                                    | Package::ToDowngrade);
+                                    | Package::ToPurge | Package::ToDowngrade);
     return m_stateHash.value(ns);
 }
 
