@@ -42,6 +42,7 @@ public:
         systemUpToDate(true), 
         updateType(AbstractKDEDModule::NormalUpdate), 
         statusNotifier(0),
+        verbose(false),
         updateCount(0),
         securityUpdateCount(0) {}
     ~Private() {}
