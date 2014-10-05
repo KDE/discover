@@ -149,7 +149,6 @@ void ApplicationBackendTest::testCategories()
 void ApplicationBackendTest::testRefreshUpdates()
 {
     ResourcesModel* m = ResourcesModel::global();
-    AbstractBackendUpdater* updater = m_appBackend->backendUpdater();
 
     QSignalSpy spy(m, SIGNAL(fetchingChanged()));
     QAptActions::self()->actionCollection()->action("update")->trigger();
