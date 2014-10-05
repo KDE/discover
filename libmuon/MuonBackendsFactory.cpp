@@ -39,25 +39,29 @@ MuonBackendsFactory::MuonBackendsFactory()
 AbstractResourcesBackend* MuonBackendsFactory::backend(const QString& name) const
 {
     QString data = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("libmuon/backends/%1.desktop").arg(name));
-    KDesktopFile cfg(data);
+    return backendForFile(data);
+}
+
+AbstractResourcesBackend* MuonBackendsFactory::backendForFile(const QString& path) const
+{
+    KDesktopFile cfg(path);
     KConfigGroup group = cfg.group("Desktop Entry");
     QString libname = group.readEntry("X-KDE-Library", QString());
     QPluginLoader* loader = new QPluginLoader("muon/"+libname, ResourcesModel::global());
 
-//     qDebug() << "trying to load plugin:" << loader->fileName();
+    //     qDebug() << "trying to load plugin:" << loader->fileName();
     AbstractResourcesBackendFactory* f = qobject_cast<AbstractResourcesBackendFactory*>(loader->instance());
     if(!f) {
-        qWarning() << "error loading" << name << loader->errorString() << loader->metaData();
+        qWarning() << "error loading" << path << loader->errorString() << loader->metaData();
         return 0;
     }
     AbstractResourcesBackend* instance = f->newInstance(ResourcesModel::global());
-    if(instance) {
-        instance->setMetaData(data);
-        return instance;
-    } else {
-        qWarning() << "Couldn't find the backend: " << name << "among" << allBackendNames(false) << "because" << loader->errorString();
+    if(!instance) {
+        qWarning() << "Couldn't find the backend: " << path << "among" << allBackendNames(false) << "because" << loader->errorString();
     }
-    return 0;
+    instance->setMetaData(path);
+
+    return instance;
 }
 
 QStringList MuonBackendsFactory::allBackendNames(bool whitelist) const
