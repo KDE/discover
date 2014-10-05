@@ -28,10 +28,7 @@
 
 DummyReviewsBackend::DummyReviewsBackend(DummyBackend* parent)
     : AbstractReviewsBackend(parent)
-{
-//     QTimer::singleShot(0, this, SLOT(initialize()));
-    initialize();
-}
+{}
 
 void DummyReviewsBackend::fetchReviews(AbstractResource* app, int page)
 {

@@ -24,6 +24,7 @@
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
 
+class DummyReviewsBackend;
 class StandardBackendUpdater;
 class DummyResource;
 class DummyBackend : public AbstractResourcesBackend
@@ -58,7 +59,7 @@ private:
 
     QHash<QString, DummyResource*> m_resources;
     StandardBackendUpdater* m_updater;
-    AbstractReviewsBackend* m_reviews;
+    DummyReviewsBackend* m_reviews;
     bool m_fetching;
     int m_startElements;
 };
