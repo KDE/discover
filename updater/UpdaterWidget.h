@@ -21,7 +21,7 @@
 #ifndef UPDATERWIDGET_H
 #define UPDATERWIDGET_H
 
-#include <QtGui/QStackedWidget>
+#include <QtWidgets/QStackedWidget>
 
 class ResourcesUpdatesModel;
 class KMessageWidget;

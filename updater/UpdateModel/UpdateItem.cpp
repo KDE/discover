@@ -34,7 +34,7 @@ UpdateItem::UpdateItem()
 }
 
 UpdateItem::UpdateItem(const QString &categoryName,
-                       const KIcon &categoryIcon)
+                       const QIcon &categoryIcon)
     : m_app(0)
     , m_parent(0)
     , m_type(ItemType::CategoryItem)
@@ -150,18 +150,18 @@ QString UpdateItem::version() const
     return QString();
 }
 
-KIcon UpdateItem::icon() const
+QIcon UpdateItem::icon() const
 {
     switch (type()) {
     case ItemType::CategoryItem:
         return m_categoryIcon;
     case ItemType::ApplicationItem:
-        return KIcon(m_app->icon());
+        return QIcon::fromTheme(m_app->icon());
     default:
-        return KIcon();
+        return QIcon();
     }
 
-    return KIcon();
+    return QIcon();
 }
 
 qint64 UpdateItem::size() const

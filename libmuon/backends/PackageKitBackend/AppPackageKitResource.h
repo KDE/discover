@@ -28,7 +28,7 @@ class AppPackageKitResource : public PackageKitResource
 {
     Q_OBJECT
     public:
-        explicit AppPackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, const ApplicationData& data, PackageKitBackend* parent);
+        explicit AppPackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, const Appstream::Component& data, PackageKitBackend* parent);
         virtual bool isTechnical() const;
         virtual QString name();
         virtual QString icon() const;
@@ -41,7 +41,7 @@ class AppPackageKitResource : public PackageKitResource
         virtual void invokeApplication() const;
 
     private:
-        ApplicationData m_appdata;
+        Appstream::Component m_appdata;
 };
 
 #endif // APPPACKAGEKITRESOURCE_H

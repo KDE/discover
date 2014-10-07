@@ -19,20 +19,22 @@ set(muon_LIB_SRCS
     Transaction/TransactionModel.cpp
     resources/ResourcesModel.cpp
     resources/ResourcesProxyModel.cpp
-    resources/AbstractResourcesBackend.cpp
-    resources/AbstractResource.cpp
     resources/PackageState.cpp
-    resources/AbstractBackendUpdater.cpp
     resources/ResourcesUpdatesModel.cpp
     resources/StandardBackendUpdater.cpp
+    resources/SourcesModel.cpp
+    resources/AbstractResourcesBackend.cpp
+    resources/AbstractResource.cpp
+    resources/AbstractBackendUpdater.cpp
     resources/AbstractKDEDModule.cpp
+    resources/AbstractSourcesBackend.cpp
     MuonBackendsFactory.cpp
     ScreenshotsModel.cpp
     ApplicationAddonsModel.cpp
 )
 
-kde4_add_kcfg_files(muon_LIB_SRCS GENERATE_MOC MuonDataSources.kcfgc)
-kde4_add_library(muonprivate SHARED ${muon_LIB_SRCS})
+kconfig_add_kcfg_files(muon_LIB_SRCS GENERATE_MOC MuonDataSources.kcfgc)
+add_library(muonprivate ${muon_LIB_SRCS})
 
 set_target_properties(muonprivate PROPERTIES
     VERSION 2.1.3
@@ -40,21 +42,26 @@ set_target_properties(muonprivate PROPERTIES
 )
 
 target_link_libraries(muonprivate
-    ${QT_QTXML_LIBRARY}
-    ${QT_QTGUI_LIBRARY}
-    ${QT_QTDECLARATIVE_LIBRARY}
-    ${KDE4_KDECORE_LIBS}
-    ${KDE4_KDEUI_LIBS}
-    ${KDE4_PHONON_LIBS}
-    ${KDE4_SOLID_LIBS} 
-    ${KDE4_KIO_LIBS}
+LINK_PUBLIC
+    Qt5::Core
+    Qt5::Widgets
+    KF5::DBusAddons # for the notifier
+    KF5::I18n
+LINK_PRIVATE
+    Qt5::Xml
+    KF5::Notifications
+    KF5::XmlGui
+    KF5::ItemViews
+    KF5::KIOWidgets
+    KF5::IconThemes
+    Phonon::phonon4qt5
 )
+
+generate_export_header(muonprivate EXPORT_FILE_NAME libmuonprivate_export.h)
+
+target_include_directories(muonprivate PRIVATE ${PHONON_INCLUDES} PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
 
 install(TARGETS muonprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES moo.ogg DESTINATION ${DATA_INSTALL_DIR}/libmuon)
 install(FILES resources/muonabstractnotifier.notifyrc DESTINATION ${DATA_INSTALL_DIR}/muonabstractnotifier)
 
-install(FILES
-    muonbackendplugin.desktop
-    DESTINATION ${SERVICETYPES_INSTALL_DIR}
-)

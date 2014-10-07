@@ -21,7 +21,7 @@
 #ifndef UPDATEDELEGATE_H
 #define UPDATEDELEGATE_H
 
-#include <QtGui/QStyledItemDelegate>
+#include <QtWidgets/QStyledItemDelegate>
 
 class UpdateDelegate : public QStyledItemDelegate
 {

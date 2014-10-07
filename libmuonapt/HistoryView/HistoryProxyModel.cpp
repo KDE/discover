@@ -22,7 +22,6 @@
 
 #include <QStandardItemModel>
 #include <QStandardItem>
-#include <KDebug>
 
 HistoryProxyModel::HistoryProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)

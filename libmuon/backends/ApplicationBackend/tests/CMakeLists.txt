@@ -1,12 +1,14 @@
 include_directories(..)
 
 macro(libmuon_add_unit_test name)
-    kde4_add_unit_test(${name}  modeltest.cpp ${ARGN})
+    add_executable(${name}  modeltest.cpp ${ARGN})
+    add_test(${name} ${name})
+    ecm_mark_as_test(${name})
     target_link_libraries(${name}
-        muonprivate muonapt
+        muonprivate MuonApt
         
-        ${QT_QTTEST_LIBRARY} ${QT_QTCORE_LIBRARY}
-        ${KDE4_KIO_LIBS} ${QAPT_LIBRARY})
+        Qt5::Test Qt5::Core
+        KF5::KIOWidgets KF5::XmlGui QApt::Main)
 endmacro(libmuon_add_unit_test)
 
 install(FILES rnrtestratings.txt DESTINATION ${DATA_INSTALL_DIR}/libmuon)

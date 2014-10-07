@@ -26,11 +26,12 @@
 // KDE includes
 #include <KIO/Job>
 #include <KJob>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
 #include <KTemporaryFile>
 #include <KTextBrowser>
+#include <KIconLoader>
 
 // LibQApt includes
 #include <LibQApt/Package>

@@ -22,7 +22,7 @@
 #define PKTRANSACTION_H
 
 #include <Transaction/Transaction.h>
-#include <PackageKit/packagekit-qt2/Transaction>
+#include <PackageKit/Transaction>
 
 class PKTransaction : public Transaction
 {
@@ -30,20 +30,22 @@ class PKTransaction : public Transaction
     public:
         explicit PKTransaction(AbstractResource* app, Transaction::Role role);
         PackageKit::Transaction* transaction();
-        
-        virtual void cancel();
+
+        void cancel();
+
+    public slots:
+        void start();
 
     private slots:
         void cleanup(PackageKit::Transaction::Exit, uint);
         void errorFound(PackageKit::Transaction::Error err, const QString& error);
         void mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text);
-        void requireRestard(PackageKit::Transaction::Restart restart, const QString& p);
+        void requireRestart(PackageKit::Transaction::Restart restart, const QString& p);
         void progressChanged(const QString&, PackageKit::Transaction::Status, uint);
         void eulaRequired(const QString &eulaID, const QString &packageID, const QString &vendor, const QString &licenseAgreement);
-        void transactionChanged();
+        void cancellableChanged();
 
     private:
-        void start();
         PackageKit::Transaction* m_trans;
 };
 

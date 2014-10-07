@@ -19,37 +19,42 @@
  ***************************************************************************/
 
 #include "MainWindow.h"
+#include <MuonBackendsFactory.h>
 
-#include <KUniqueApplication>
+#include <QApplication>
+#include <QCommandLineParser>
+#include <QCommandLineOption>
 #include <KAboutData>
-#include <KCmdLineArgs>
-#include <KStandardDirs>
-#include "MuonVersion.h"
-#include <stdio.h>
-
-static const char description[] =
-    I18N_NOOP("An update manager");
+#include <klocalizedstring.h>
+#include <kdbusservice.h>
+#include "../MuonVersion.h"
 
 int main(int argc, char **argv)
 {
-    KAboutData about("muon-updater", "muon-updater", ki18n("Muon Update Manager"), version, ki18n(description),
-                     KAboutData::License_GPL, ki18n("©2010-2013 Jonathan Thomas"), KLocalizedString(), 0);
-    about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
-    about.setProgramIconName("system-software-update");
+    QApplication app(argc, argv);
+    app.setWindowIcon(QIcon::fromTheme("system-software-update"));
+    KAboutData about("muonupdater", i18n("Muon Update Manager"), version, i18n("An update manager"),
+                     KAboutLicense::GPL, i18n("©2010-2013 Jonathan Thomas"), QString(), 0);
+    about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
+    about.addAuthor(i18n("Aleix Pol"), QString(), "aleixpol@kde.org");
     about.setProductName("muon/updater");
+    KAboutData::setApplicationData(about);
 
-    KCmdLineArgs::init(argc, argv, &about);
-    KCmdLineOptions options;
-    options.add("backends <names>", ki18n("List all the backends we'll want to have loaded, separated by coma ','."));
-    KCmdLineArgs::addCmdLineOptions( options );
-    if (!KUniqueApplication::start()) {
-        fprintf(stderr, "Update Manager is already running!\n");
-        return 0;
+    {
+        QCommandLineParser parser;
+        parser.addOption(QCommandLineOption("backends", i18n("List all the backends we'll want to have loaded, separated by coma ','."), "names"));
+        MuonBackendsFactory::setupCommandLine(&parser);
+        about.setupCommandLine(&parser);
+        parser.addHelpOption();
+        parser.addVersionOption();
+        parser.process(app);
+        about.processCommandLine(&parser);
+        MuonBackendsFactory::processCommandLine(&parser);
     }
 
-    KUniqueApplication app;
-    app.disableSessionManagement();
-    KCmdLineArgs* args = KCmdLineArgs::parsedArgs();
+    KDBusService service(KDBusService::Unique);
+//     app.disableSessionManagement();
+
 
     MainWindow *mainWindow = new MainWindow;
     mainWindow->show();

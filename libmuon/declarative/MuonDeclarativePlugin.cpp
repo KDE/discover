@@ -27,15 +27,27 @@
 #include <resources/ResourcesUpdatesModel.h>
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
+#include <resources/SourcesModel.h>
+#include <resources/AbstractSourcesBackend.h>
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/ReviewsModel.h>
 #include <ScreenshotsModel.h>
 #include <ApplicationAddonsModel.h>
-#include <qdeclarative.h>
+#include <qqml.h>
+#include <QQmlEngine>
+#include <QQmlContext>
 
 QML_DECLARE_TYPE(ResourcesModel)
 QML_DECLARE_TYPE(AbstractResourcesBackend)
+
+void MuonDeclarativePlugin::initializeEngine(QQmlEngine* engine, const char* uri)
+{
+    engine->rootContext()->setContextProperty("ResourcesModel", ResourcesModel::global());
+    engine->rootContext()->setContextProperty("TransactionModel", TransactionModel::global());
+    engine->rootContext()->setContextProperty("SourcesModel", SourcesModel::global());
+    QQmlExtensionPlugin::initializeEngine(engine, uri);
+}
 
 void MuonDeclarativePlugin::registerTypes(const char*)
 {
@@ -51,6 +63,7 @@ void MuonDeclarativePlugin::registerTypes(const char*)
     
     qmlRegisterType<Rating>();
     qmlRegisterType<AbstractResource>();
+    qmlRegisterType<AbstractSourcesBackend>();
     qmlRegisterType<AbstractResourcesBackend>();
     qmlRegisterType<AbstractReviewsBackend>();
     qmlRegisterType<Category>();

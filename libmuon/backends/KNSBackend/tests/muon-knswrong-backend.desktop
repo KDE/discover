@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=Muon/Backend
+Exec=blubb
+Icon=plasma
+Name=Wrong
+
+X-KDE-Library=muon-knsbackend
+X-KDE-PluginInfo-Name=muon-knswrong-backend
+X-KDE-PluginInfo-License=GPL
+X-Muon-Arguments=wrong.knsrc

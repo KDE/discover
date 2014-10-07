@@ -25,19 +25,25 @@
 // Qt includes
 #include <QtCore/QDir>
 #include <QtCore/QStringBuilder>
+#include <QAction>
 #include <QDebug>
+#include <QDialog>
+#include <QFileDialog>
+#include <QStandardPaths>
+#include <QDialogButtonBox>
+#include <QLayout>
 
 // KDE includes
-#include <KAction>
 #include <KActionCollection>
-#include <KFileDialog>
-#include <KLocale>
+#include <KConfigGroup>
+#include <KLocalizedString>
 #include <KMessageBox>
 #include <KProcess>
 #include <KStandardAction>
-#include <KStandardDirs>
+#include <KSharedConfig>
 #include <KXmlGuiWindow>
-#include <Solid/Networking>
+#include <KWindowConfig>
+// #include <Solid/Networking>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -56,17 +62,18 @@ QAptActions::QAptActions()
     , m_historyDialog(nullptr)
     , m_distUpgradeAvailable(false)
 {
-    connect(Solid::Networking::notifier(), SIGNAL(statusChanged(Solid::Networking::Status)),
-            this, SLOT(networkChanged()));
+//     TODO: port to kf5
+//     connect(Solid::Networking::notifier(), SIGNAL(statusChanged(Solid::Networking::Status)),
+//             this, SLOT(networkChanged()));
 }
 
 QAptActions* QAptActions::self()
 {
-    static QWeakPointer<QAptActions> self;
+    static QPointer<QAptActions> self;
     if(!self) {
         self = new QAptActions;
     }
-    return self.data();
+    return self;
 }
 
 void QAptActions::setMainWindow(MuonMainWindow* w)
@@ -102,49 +109,49 @@ void QAptActions::setBackend(QApt::Backend* backend)
 
 void QAptActions::setupActions()
 {
-    KAction* undoAction = KStandardAction::undo(this, SLOT(undo()), actionCollection());
+    QAction* undoAction = KStandardAction::undo(this, SLOT(undo()), actionCollection());
     actionCollection()->addAction("undo", undoAction);
     m_actions.append(undoAction);
 
-    KAction* redoAction = KStandardAction::redo(this, SLOT(redo()), actionCollection());
+    QAction* redoAction = KStandardAction::redo(this, SLOT(redo()), actionCollection());
     actionCollection()->addAction("redo", redoAction);
     m_actions.append(redoAction);
 
-    KAction* revertAction = actionCollection()->addAction("revert");
-    revertAction->setIcon(KIcon("document-revert"));
+    QAction* revertAction = actionCollection()->addAction("revert");
+    revertAction->setIcon(QIcon::fromTheme("document-revert"));
     revertAction->setText(i18nc("@action Reverts all potential changes to the cache", "Unmark All"));
     connect(revertAction, SIGNAL(triggered()), this, SLOT(revertChanges()));
     m_actions.append(revertAction);
 
-    KAction* softwarePropertiesAction = actionCollection()->addAction("software_properties");
+    QAction* softwarePropertiesAction = actionCollection()->addAction("software_properties");
     softwarePropertiesAction->setPriority(QAction::LowPriority);
-    softwarePropertiesAction->setIcon(KIcon("configure"));
+    softwarePropertiesAction->setIcon(QIcon::fromTheme("configure"));
     softwarePropertiesAction->setText(i18nc("@action Opens the software sources configuration dialog", "Configure Software Sources"));
     connect(softwarePropertiesAction, SIGNAL(triggered()), this, SLOT(runSourcesEditor()));
     m_actions.append(softwarePropertiesAction);
     
-    KAction* loadSelectionsAction = actionCollection()->addAction("open_markings");
-    loadSelectionsAction->setIcon(KIcon("document-open"));
+    QAction* loadSelectionsAction = actionCollection()->addAction("open_markings");
+    loadSelectionsAction->setIcon(QIcon::fromTheme("document-open"));
     loadSelectionsAction->setText(i18nc("@action", "Read Markings..."));
     connect(loadSelectionsAction, SIGNAL(triggered()), this, SLOT(loadSelections()));
     m_actions.append(loadSelectionsAction);
 
-    KAction* saveSelectionsAction = actionCollection()->addAction("save_markings");
-    saveSelectionsAction->setIcon(KIcon("document-save-as"));
+    QAction* saveSelectionsAction = actionCollection()->addAction("save_markings");
+    saveSelectionsAction->setIcon(QIcon::fromTheme("document-save-as"));
     saveSelectionsAction->setText(i18nc("@action", "Save Markings As..."));
     connect(saveSelectionsAction, SIGNAL(triggered()), this, SLOT(saveSelections()));
     m_actions.append(saveSelectionsAction);
 
-    KAction* createDownloadListAction = actionCollection()->addAction("save_download_list");
+    QAction* createDownloadListAction = actionCollection()->addAction("save_download_list");
     createDownloadListAction->setPriority(QAction::LowPriority);
-    createDownloadListAction->setIcon(KIcon("document-save-as"));
+    createDownloadListAction->setIcon(QIcon::fromTheme("document-save-as"));
     createDownloadListAction->setText(i18nc("@action", "Save Package Download List..."));
     connect(createDownloadListAction, SIGNAL(triggered()), this, SLOT(createDownloadList()));
     m_actions.append(createDownloadListAction);
 
-    KAction* downloadListAction = actionCollection()->addAction("download_from_list");
+    QAction* downloadListAction = actionCollection()->addAction("download_from_list");
     downloadListAction->setPriority(QAction::LowPriority);
-    downloadListAction->setIcon(KIcon("download"));
+    downloadListAction->setIcon(QIcon::fromTheme("download"));
     downloadListAction->setText(i18nc("@action", "Download Packages From List..."));
     connect(downloadListAction, SIGNAL(triggered()), this, SLOT(downloadPackagesFromList()));
     if (!isConnected()) {
@@ -153,28 +160,28 @@ void QAptActions::setupActions()
     connect(this, SIGNAL(shouldConnect(bool)), downloadListAction, SLOT(setEnabled(bool)));
     m_actions.append(downloadListAction);
 
-    KAction* loadArchivesAction = actionCollection()->addAction("load_archives");
+    QAction* loadArchivesAction = actionCollection()->addAction("load_archives");
     loadArchivesAction->setPriority(QAction::LowPriority);
-    loadArchivesAction->setIcon(KIcon("document-open"));
+    loadArchivesAction->setIcon(QIcon::fromTheme("document-open"));
     loadArchivesAction->setText(i18nc("@action", "Add Downloaded Packages"));
     connect(loadArchivesAction, SIGNAL(triggered()), this, SLOT(loadArchives()));
     m_actions.append(loadArchivesAction);
     
-    KAction* saveInstalledAction = actionCollection()->addAction("save_package_list");
+    QAction* saveInstalledAction = actionCollection()->addAction("save_package_list");
     saveInstalledAction->setPriority(QAction::LowPriority);
-    saveInstalledAction->setIcon(KIcon("document-save-as"));
+    saveInstalledAction->setIcon(QIcon::fromTheme("document-save-as"));
     saveInstalledAction->setText(i18nc("@action", "Save Installed Packages List..."));
     connect(saveInstalledAction, SIGNAL(triggered()), this, SLOT(saveInstalledPackagesList()));
     
-    KAction* historyAction = actionCollection()->addAction("history");
+    QAction* historyAction = actionCollection()->addAction("history");
     historyAction->setPriority(QAction::LowPriority);
-    historyAction->setIcon(KIcon("view-history"));
+    historyAction->setIcon(QIcon::fromTheme("view-history"));
     historyAction->setText(i18nc("@action::inmenu", "History..."));
     historyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_H));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showHistoryDialog()));
 
-    KAction *distUpgradeAction = actionCollection()->addAction("dist-upgrade");
-    distUpgradeAction->setIcon(KIcon("system-software-update"));
+    QAction *distUpgradeAction = actionCollection()->addAction("dist-upgrade");
+    distUpgradeAction->setIcon(QIcon::fromTheme("system-software-update"));
     distUpgradeAction->setText(i18nc("@action", "Upgrade"));
     distUpgradeAction->setPriority(QAction::HighPriority);
     distUpgradeAction->setWhatsThis(i18nc("Notification when a new version of Kubuntu is available",
@@ -189,7 +196,7 @@ void QAptActions::setActionsEnabledInternal(bool enabled)
 {
     m_actionsDisabled = !enabled;
 
-    for (KAction *action : m_actions) {
+    for (QAction *action : m_actions) {
         action->setEnabled(enabled);
     }
 
@@ -216,10 +223,12 @@ bool QAptActions::reloadWhenSourcesEditorFinished() const
 }
 
 bool QAptActions::isConnected() const {
-    int status = Solid::Networking::status();
-    bool connected = ((status == Solid::Networking::Connected) ||
-                      (status == Solid::Networking::Unknown));
-    return connected;
+//     int status = Solid::Networking::status();
+//     bool connected = ((status == Solid::Networking::Connected) ||
+//                       (status == Solid::Networking::Unknown));
+//     return connected;
+//     TODO: port to kf5
+    return true;
 }
 
 void QAptActions::networkChanged()
@@ -232,10 +241,7 @@ void QAptActions::networkChanged()
 
 bool QAptActions::saveSelections()
 {
-    QString filename;
-
-    filename = KFileDialog::getSaveFileName(QString(), QString(), m_mainWindow,
-                                            i18nc("@title:window", "Save Markings As"));
+    QString filename = QFileDialog::getSaveFileName(m_mainWindow, i18nc("@title:window", "Save Markings As"));
 
     if (filename.isEmpty()) {
         return false;
@@ -259,7 +265,7 @@ bool QAptActions::saveInstalledPackagesList()
 {
     QString filename;
 
-    filename = KFileDialog::getSaveFileName(QString(), QString(), m_mainWindow,
+    filename = QFileDialog::getSaveFileName(m_mainWindow,
                                             i18nc("@title:window", "Save Installed Packages List As"));
 
     if (filename.isEmpty()) {
@@ -283,7 +289,7 @@ bool QAptActions::saveInstalledPackagesList()
 bool QAptActions::createDownloadList()
 {
     QString filename;
-    filename = KFileDialog::getSaveFileName(QString(), QString(), m_mainWindow,
+    filename = QFileDialog::getSaveFileName(m_mainWindow,
                                             i18nc("@title:window", "Save Download List As"));
 
     if (filename.isEmpty()) {
@@ -306,8 +312,7 @@ bool QAptActions::createDownloadList()
 
 void QAptActions::downloadPackagesFromList()
 {
-    QString filename = KFileDialog::getOpenFileName(QString(), QString(),
-                                                    m_mainWindow, i18nc("@title:window", "Open File"));
+    QString filename = QFileDialog::getOpenFileName(m_mainWindow, i18nc("@title:window", "Open File"));
 
     if (filename.isEmpty()) {
         return;
@@ -324,8 +329,7 @@ void QAptActions::downloadPackagesFromList()
 
 void QAptActions::loadSelections()
 {
-    QString filename = KFileDialog::getOpenFileName(QString(), QString(),
-                                                    m_mainWindow, i18nc("@title:window", "Open File"));
+    QString filename = QFileDialog::getOpenFileName(m_mainWindow, i18nc("@title:window", "Open File"));
 
     if (filename.isEmpty()) {
         return;
@@ -343,11 +347,8 @@ void QAptActions::loadSelections()
 
 void QAptActions::loadArchives()
 {
-    QString dirName;
-
-    dirName = KFileDialog::getExistingDirectory(KUrl(), m_mainWindow,
-                                                i18nc("@title:window",
-                                                      "Choose a Directory"));
+    QString dirName = QFileDialog::getExistingDirectory(m_mainWindow,
+                                                i18nc("@title:window", "Choose a Directory"));
 
     if (dirName.isEmpty()) {
         // User canceled
@@ -406,8 +407,8 @@ void QAptActions::runSourcesEditor()
     QStringList arguments;
     int winID = m_mainWindow->effectiveWinId();
 
-    QString kdesudo = KStandardDirs::findExe("kdesudo");
-    QString editor = KStandardDirs::findExe("software-properties-kde");
+    QString kdesudo = QStandardPaths::findExecutable("kdesudo");
+    QString editor = QStandardPaths::findExecutable("software-properties-kde");
 
     if (m_reloadWhenEditorFinished) {
         editor.append(QLatin1String(" --dont-update --attach ") % QString::number(winID)); //krazy:exclude=spelling;
@@ -488,18 +489,25 @@ void QAptActions::displayTransactionError(QApt::ErrorCode error, QApt::Transacti
 void QAptActions::showHistoryDialog()
 {
     if (!m_historyDialog) {
-        m_historyDialog = new KDialog(mainWindow());
+        m_historyDialog = new QDialog(mainWindow());
+        m_historyDialog->setLayout(new QVBoxLayout(m_historyDialog));
 
-        KConfigGroup dialogConfig(KSharedConfig::openConfig("muonrc"),
-                                  "HistoryDialog");
-        m_historyDialog->restoreDialogSize(dialogConfig);
+        KConfigGroup dialogConfig(KSharedConfig::openConfig("muonrc"), "HistoryDialog");
+        KWindowConfig::restoreWindowSize(m_historyDialog->windowHandle(), dialogConfig);
+        
 
         connect(m_historyDialog, SIGNAL(finished()), SLOT(closeHistoryDialog()));
         HistoryView *historyView = new HistoryView(m_historyDialog);
-        m_historyDialog->setMainWidget(historyView);
+        m_historyDialog->layout()->addWidget(historyView);
         m_historyDialog->setWindowTitle(i18nc("@title:window", "Package History"));
-        m_historyDialog->setWindowIcon(KIcon("view-history"));
-        m_historyDialog->setButtons(KDialog::Close);
+        m_historyDialog->setWindowIcon(QIcon::fromTheme("view-history"));
+        
+        QDialogButtonBox* box = new QDialogButtonBox(m_historyDialog);
+        box->setStandardButtons(QDialogButtonBox::Close);
+        connect(box, SIGNAL(accepted()), m_historyDialog, SLOT(accept()));
+        connect(box, SIGNAL(rejected()), m_historyDialog, SLOT(reject()));
+        m_historyDialog->layout()->addWidget(box);
+        
         m_historyDialog->show();
     } else {
         m_historyDialog->raise();
@@ -509,7 +517,7 @@ void QAptActions::showHistoryDialog()
 void QAptActions::closeHistoryDialog()
 {
     KConfigGroup dialogConfig(KSharedConfig::openConfig("muonrc"), "HistoryDialog");
-    m_historyDialog->saveDialogSize(dialogConfig, KConfigBase::Persistent);
+    KWindowConfig::restoreWindowSize(m_historyDialog->windowHandle(), dialogConfig);
     m_historyDialog->deleteLater();
     m_historyDialog = nullptr;
 }
@@ -526,8 +534,8 @@ void QAptActions::launchDistUpgrade()
 {
     KProcess *proc = new KProcess(this);
     QStringList arguments;
-    QString kdesudo = KStandardDirs::findExe("kdesudo");
-    QString upgrader = QString("do-release-upgrade -m desktop -f DistUpgradeViewKDE");
+    QString kdesudo = QStandardPaths::findExecutable("kdesudo");
+    QString upgrader = QStringLiteral("do-release-upgrade -m desktop -f DistUpgradeViewKDE");
 
     arguments << kdesudo << upgrader;
     proc->setProgram(arguments);
@@ -541,9 +549,9 @@ void QAptActions::checkDistUpgrade()
     if(!QFile::exists("/usr/lib/python3/dist-packages/DistUpgrade/DistUpgradeFetcherKDE.py")) {
         qWarning() << "Couldn't find the /usr/lib/python3/dist-packages/DistUpgrade/DistUpgradeFetcherKDE.py file";
     }
-    QString checkerFile = KStandardDirs::locate("data", "muon-notifier/releasechecker");
+    QString checkerFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "muonapplicationnotifier/releasechecker");
     if(checkerFile.isEmpty()) {
-        qWarning() << "Couldn't find the releasechecker script";
+        qWarning() << "Couldn't find the releasechecker script" << QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
     }
 
     KProcess* checkerProcess = new KProcess(this);

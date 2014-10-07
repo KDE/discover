@@ -21,9 +21,9 @@
 #ifndef PACKAGEDELEGATE_H
 #define PACKAGEDELEGATE_H
 
-#include <QtGui/QAbstractItemDelegate>
+#include <QAbstractItemDelegate>
 
-#include <KIcon>
+#include <QIcon>
 
 class PackageDelegate: public QAbstractItemDelegate
 {
@@ -43,7 +43,7 @@ private:
     int m_iconSize;
     int m_spacing;
 
-    KIcon m_icon;
+    QIcon m_icon;
     QPixmap m_supportedEmblem;
     QPixmap m_lockedEmblem;
 

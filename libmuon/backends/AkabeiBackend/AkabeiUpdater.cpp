@@ -29,7 +29,6 @@
 #include <akabeiclienttransactionhandler.h>
 #include <KDebug>
 #include <KMessageBox>
-#include <KLocale>
 
 AkabeiUpdater::AkabeiUpdater(AkabeiBackend * parent)
   : AbstractBackendUpdater(parent),

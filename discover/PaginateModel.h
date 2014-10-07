@@ -21,7 +21,6 @@
 #define PAGINATEMODEL_H
 
 #include <QAbstractListModel>
-#include <QDeclarativeParserStatus>
 
 /**
  * @class PaginateModel
@@ -59,6 +58,7 @@ class PaginateModel : public QAbstractListModel
 
         int currentPage() const;
         int pageCount() const;
+        virtual QHash<int, QByteArray> roleNames() const;
 
         Q_SCRIPTABLE void firstPage();
         Q_SCRIPTABLE void nextPage();

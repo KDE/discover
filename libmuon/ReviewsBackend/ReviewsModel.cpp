@@ -24,7 +24,7 @@
 #include <resources/ResourcesModel.h>
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/AbstractResource.h>
-#include <KDebug>
+#include <QDebug>
 
 ReviewsModel::ReviewsModel(QObject* parent)
     : QAbstractListModel(parent)
@@ -32,8 +32,11 @@ ReviewsModel::ReviewsModel(QObject* parent)
     , m_backend(0)
     , m_lastPage(0)
     , m_canFetchMore(true)
+{}
+
+QHash< int, QByteArray > ReviewsModel::roleNames() const
 {
-    QHash<int, QByteArray> roles = roleNames();
+    QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
     roles.insert(ShouldShow, "shouldShow");
     roles.insert(Reviewer, "reviewer");
     roles.insert(CreationDate, "date");
@@ -42,7 +45,7 @@ ReviewsModel::ReviewsModel(QObject* parent)
     roles.insert(UsefulChoice, "usefulChoice");
     roles.insert(Rating, "rating");
     roles.insert(Summary, "summary");
-    setRoleNames(roles);
+    return roles;
 }
 
 QVariant ReviewsModel::data(const QModelIndex& index, int role) const
@@ -130,7 +133,7 @@ void ReviewsModel::fetchMore(const QModelIndex& parent)
 
     m_lastPage++;
     m_backend->fetchReviews(m_app, m_lastPage);
-    qDebug() << "fetching reviews... " << m_lastPage;
+//     qDebug() << "fetching reviews... " << m_lastPage;
 }
 
 void ReviewsModel::addReviews(AbstractResource* app, const QList<Review*>& reviews)
@@ -139,7 +142,7 @@ void ReviewsModel::addReviews(AbstractResource* app, const QList<Review*>& revie
         return;
     
     m_canFetchMore=!reviews.isEmpty();
-    qDebug() << "reviews arrived..." << m_lastPage << reviews.size();
+//     qDebug() << "reviews arrived..." << m_lastPage << reviews.size();
     
     if(!reviews.isEmpty()) {
         beginInsertRows(QModelIndex(), rowCount(), rowCount()+reviews.size()-1);
@@ -158,7 +161,7 @@ void ReviewsModel::markUseful(int row, bool useful)
 {
     Review* r = m_reviews[row];
     r->setUsefulChoice(useful ? Yes : No);
-    qDebug() << "submitting usefulness" << r->applicationName() << r->id() << useful;
+//     qDebug() << "submitting usefulness" << r->applicationName() << r->id() << useful;
     m_backend->submitUsefulness(r, useful);
     const QModelIndex ind = index(row, 0, QModelIndex());
     emit dataChanged(ind, ind);

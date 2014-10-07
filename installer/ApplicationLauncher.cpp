@@ -23,13 +23,13 @@
 #include "LaunchListModel.h"
 
 #include <QtCore/QStringBuilder>
-#include <QtGui/QLabel>
-#include <QtGui/QListView>
-#include <QtGui/QPushButton>
-#include <QtGui/QStandardItemModel>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QListView>
+#include <QtWidgets/QPushButton>
+#include <QStandardItemModel>
+#include <QtWidgets/QVBoxLayout>
 
-#include <KLocale>
+#include <KLocalizedString>
 #include <KStandardGuiItem>
 
 ApplicationLauncher::ApplicationLauncher(LaunchListModel* model, QWidget* parent)

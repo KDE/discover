@@ -28,24 +28,21 @@
 #include <QtCore/QUuid>
 #include <QTimer>
 #include <QSignalMapper>
+#include <QJsonDocument>
+#include <QAction>
 
 // KDE includes
-#include <KLocale>
+#include <KLocalizedString>
 #include <KMessageBox>
 #include <KProcess>
 #include <KProtocolManager>
-#include <KStandardDirs>
 #include <KIO/Job>
-#include <KDebug>
-#include <KAboutData>
-#include <KAction>
 #include <KActionCollection>
 
 // LibQApt/DebconfKDE includes
 #include <LibQApt/Backend>
 #include <LibQApt/Transaction>
 #include <DebconfGui.h>
-#include <qjson/parser.h>
 
 //libmuonapt includes
 #include "MuonStrings.h"
@@ -53,20 +50,21 @@
 #include "QAptActions.h"
 
 // Own includes
+#include "AptSourcesBackend.h"
 #include "Application.h"
 #include "ReviewsBackend.h"
 #include "Transaction/Transaction.h"
 #include "Transaction/TransactionModel.h"
 #include "ApplicationUpdates.h"
 #include "MuonMainWindow.h"
+#include <resources/SourcesModel.h>
 #include <MuonDataSources.h>
 
-static const KCatalogLoader loader("app-install-data");
+// static const KCatalogLoader loader("app-install-data"); //FIXME port
 
-K_PLUGIN_FACTORY(MuonAppsBackendFactory, registerPlugin<ApplicationBackend>(); )
-K_EXPORT_PLUGIN(MuonAppsBackendFactory(KAboutData("muon-appsbackend","muon-appsbackend",ki18n("Applications Backend"),"0.1",ki18n("Applications in your system"), KAboutData::License_GPL)))
+MUON_BACKEND_PLUGIN(ApplicationBackend);
 
-ApplicationBackend::ApplicationBackend(QObject* parent, const QVariantList& )
+ApplicationBackend::ApplicationBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_backend(new QApt::Backend(this))
     , m_reviewsBackend(new ReviewsBackend(this))
@@ -77,7 +75,8 @@ ApplicationBackend::ApplicationBackend(QObject* parent, const QVariantList& )
     , m_aptify(nullptr)
     , m_aptBackendInitialized(false)
 {
-    KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
+//   TODO: Port
+//     KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
 
     m_watcher = new QFutureWatcher<QVector<Application*> >(this);
     connect(m_watcher, SIGNAL(finished()), this, SLOT(setApplications()));
@@ -144,7 +143,7 @@ void ApplicationBackend::setApplications()
     for (Application* app : m_appList)
         app->setParent(this);
 
-    KIO::StoredTransferJob* job = KIO::storedGet(KUrl(MuonDataSources::screenshotsSource(), "/json/packages"),KIO::NoReload, KIO::DefaultFlags|KIO::HideProgressInfo);
+    KIO::StoredTransferJob* job = KIO::storedGet(QUrl(MuonDataSources::screenshotsSource().toString() + "/json/packages"),KIO::NoReload, KIO::DefaultFlags|KIO::HideProgressInfo);
     connect(job, SIGNAL(finished(KJob*)), SLOT(initAvailablePackages(KJob*)));
 
     if (m_aptify)
@@ -341,15 +340,15 @@ void ApplicationBackend::markTransaction(Transaction *transaction)
 
 void ApplicationBackend::markLangpacks(Transaction *transaction)
 {
-    QString prog = KStandardDirs::findExe("check-language-support");
+    QString prog = QStandardPaths::findExecutable("check-language-support");
     if (prog.isEmpty()){
-        prog =  KGlobal::dirs()->locate("data","muon/scripts/check-language-support");
+        prog =  QStandardPaths::locate(QStandardPaths::GenericDataLocation, "muon/scripts/check-language-support");
         if ( prog.isEmpty()){
             return;
         }
     }
 
-    QString language = KGlobal::locale()->language();
+    QString language = QLocale().name();
     QString pkgName = transaction->resource()->packageName();
 
     QStringList args;
@@ -364,11 +363,10 @@ void ApplicationBackend::markLangpacks(Transaction *transaction)
     QString res = proc.readAllStandardOutput();
     res.remove(QString());
 
-    QApt::Package *langPack = nullptr;
     m_backend->setCompressEvents(true);
     foreach(const QString &pkg, res.split(' '))
     {
-        langPack = m_backend->package(pkg.trimmed());
+        QApt::Package *langPack = m_backend->package(pkg.trimmed());
 
         if (langPack)
             langPack->setInstall();
@@ -544,8 +542,8 @@ void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
         connect(this, SIGNAL(aptBackendInitialized(QApt::Backend*)), apt, SLOT(setBackend(QApt::Backend*)));
     if (apt->reloadWhenSourcesEditorFinished())
         connect(apt, SIGNAL(sourcesEditorClosed(bool)), SLOT(reload()));
-    KAction* updateAction = w->actionCollection()->addAction("update");
-    updateAction->setIcon(KIcon("system-software-update"));
+    QAction* updateAction = w->actionCollection()->addAction("update");
+    updateAction->setIcon(QIcon::fromTheme("system-software-update"));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     updateAction->setEnabled(w->isConnected());
@@ -583,6 +581,8 @@ void ApplicationBackend::initBackend()
             this, SLOT(aptTransactionsChanged(QString)));
     connect(m_backend, SIGNAL(xapianUpdateFinished()),
             this, SIGNAL(searchInvalidated()));
+
+    SourcesModel::global()->addSourcesBackend(new AptSourcesBackend(this));
 }
 
 void ApplicationBackend::setupTransaction(QApt::Transaction *trans)
@@ -614,12 +614,12 @@ void ApplicationBackend::initAvailablePackages(KJob* j)
     KIO::StoredTransferJob* job = qobject_cast<KIO::StoredTransferJob*>(j);
     Q_ASSERT(job);
 
-    bool ok=false;
-    QJson::Parser p;
-    QVariantList data = p.parse(job->data(), &ok).toMap().value("packages").toList();
-    if(!ok)
-        kWarning() << "errors!" << p.errorString();
+    QJsonParseError error;
+    QJsonDocument doc = QJsonDocument::fromJson(job->data(), &error);
+    if(error.error != QJsonParseError::NoError)
+        qWarning() << "errors!" << error.errorString();
     else {
+        QVariantList data = doc.toVariant().toMap().value("packages").toList();
         Q_ASSERT(!m_appList.isEmpty());
         QSet<QString> packages;
         foreach(const QVariant& v, data) {
@@ -699,7 +699,7 @@ void ApplicationBackend::listBugsFinished()
 void ApplicationBackend::aptListBugs(QStringList packageName)
 {
     QStringList arguments;
-    QString program = KStandardDirs::findExe(QString("apt-listbugs"));
+    QString program = QStandardPaths::findExecutable(QString("apt-listbugs"));
     if(program.isEmpty()){
 	emit transactionOk();
 	return;
@@ -711,3 +711,4 @@ void ApplicationBackend::aptListBugs(QStringList packageName)
     proc->start();
 }
 
+#include "ApplicationBackend.moc"

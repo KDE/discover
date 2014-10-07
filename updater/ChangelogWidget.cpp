@@ -26,19 +26,18 @@
 #include <QtCore/QPropertyAnimation>
 #include <QtCore/QStringBuilder>
 #include <QtCore/QTextStream>
-#include <QtGui/QToolButton>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QToolButton>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QApplication>
 
 // KDE includes
-#include <KGlobal>
 #include <KIO/Job>
 #include <KJob>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
-#include <KTemporaryFile>
-#include <KTextBrowser>
-#include <KDebug>
+#include <KIconLoader>
+#include <QTextBrowser>
 
 ChangelogWidget::ChangelogWidget(QWidget *parent)
         : QWidget(parent)
@@ -61,7 +60,7 @@ ChangelogWidget::ChangelogWidget(QWidget *parent)
     sideLayout->addStretch();
     sideWidget->setLayout(sideLayout);
 
-    m_changelogBrowser = new KTextBrowser(this);
+    m_changelogBrowser = new QTextBrowser(this);
     m_changelogBrowser->setFrameShape(QFrame::NoFrame);
     m_changelogBrowser->setFrameShadow(QFrame::Plain);
     m_changelogBrowser->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -73,7 +72,7 @@ ChangelogWidget::ChangelogWidget(QWidget *parent)
     viewport->setPalette(palette);
 
     m_busyWidget = new KPixmapSequenceOverlayPainter(this);
-    m_busyWidget->setSequence(KPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
+    m_busyWidget->setSequence(KIconLoader::global()->loadPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
     m_busyWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     m_busyWidget->setWidget(this);
 

@@ -28,26 +28,23 @@
 #include <QtCore/QVector>
 #include <QtCore/QStringList>
 #include <QThread>
+#include <QJsonDocument>
+#include <QStandardPaths>
 
 // KDE includes
 #include <KIconLoader>
-#include <KLocale>
 #include <KService>
 #include <KServiceGroup>
-#include <KDebug>
 #include <KToolInvocation>
+#include <KLocalizedString>
 #include <KIO/Job>
-#include <KIO/NetAccess>
-#include <KStandardDirs>
 #include <KConfigGroup>
+#include <KFormat>
 
 // QApt includes
 #include <LibQApt/Backend>
 #include <LibQApt/Config>
 #include <LibQApt/Changelog>
-
-//QJSON includes
-#include <qjson/parser.h>
 
 Application::Application(const QString& fileName, QApt::Backend* backend)
         : AbstractResource(0)
@@ -214,7 +211,7 @@ QVector<QPair<QString, QString> > Application::locateApplication(const QString &
         const KSycocaEntry::Ptr p = (*it);
 
         if (p->isType(KST_KService)) {
-            const KService::Ptr service = KService::Ptr::staticCast(p);
+            const KService::Ptr service = KService::Ptr(p);
 
             if (service->noDisplay()) {
                 continue;
@@ -228,7 +225,7 @@ QVector<QPair<QString, QString> > Application::locateApplication(const QString &
                 return ret;
             }
         } else if (p->isType(KST_KServiceGroup)) {
-            const KServiceGroup::Ptr serviceGroup = KServiceGroup::Ptr::staticCast(p);
+            const KServiceGroup::Ptr serviceGroup = KServiceGroup::Ptr(p);
 
             if (serviceGroup->noDisplay() || serviceGroup->childCount() == 0) {
                 continue;
@@ -268,7 +265,7 @@ QUrl Application::thumbnailUrl()
 {
     QUrl url(package()->controlField(QLatin1String("Thumbnail-Url")));
     if(m_sourceHasScreenshot) {
-        url = KUrl(MuonDataSources::screenshotsSource(), "thumbnail/"+packageName());
+        url = QUrl(MuonDataSources::screenshotsSource().toString() + "/thumbnail/" + packageName());
     }
     return url;
 }
@@ -277,7 +274,7 @@ QUrl Application::screenshotUrl()
 {
     QUrl url(package()->controlField(QLatin1String("Screenshot-Url")));
     if(m_sourceHasScreenshot) {
-        url = KUrl(MuonDataSources::screenshotsSource(), "screenshot/"+packageName());
+        url = QUrl(MuonDataSources::screenshotsSource().toString() + "/screenshot/" + packageName());
     }
     return url;
 }
@@ -420,13 +417,14 @@ QString Application::installedVersion() const
 
 QString Application::sizeDescription()
 {
+    KFormat f;
     if (!isInstalled()) {
         return i18nc("@info app size", "%1 to download, %2 on disk",
-                              KGlobal::locale()->formatByteSize(package()->downloadSize()),
-                              KGlobal::locale()->formatByteSize(package()->availableInstalledSize()));
+                              f.formatByteSize(package()->downloadSize()),
+                              f.formatByteSize(package()->availableInstalledSize()));
     } else {
         return i18nc("@info app size", "%1 on disk",
-                              KGlobal::locale()->formatByteSize(package()->currentInstalledSize()));
+                              f.formatByteSize(package()->currentInstalledSize()));
     }
 }
 
@@ -467,7 +465,7 @@ void Application::invokeApplication() const
 {
     QVector< KService::Ptr > execs = findExecutables();
     Q_ASSERT(!execs.isEmpty());
-    KToolInvocation::startServiceByDesktopPath(execs.first()->desktopEntryPath());
+    KToolInvocation::startServiceByDesktopName(execs.first()->desktopEntryName());
 }
 
 bool Application::canExecute() const
@@ -499,8 +497,8 @@ void Application::fetchScreenshots()
     if(!m_sourceHasScreenshot)
         return;
     
-    QString dest = KStandardDirs::locate("tmp", "screenshots."+m_packageName);
-    const KUrl packageUrl(MuonDataSources::screenshotsSource(), "/json/package/"+m_packageName);
+    QString dest = QStandardPaths::locate(QStandardPaths::TempLocation, "screenshots."+m_packageName);
+    const QUrl packageUrl(MuonDataSources::screenshotsSource().toString() + "/json/package/"+m_packageName);
     KIO::StoredTransferJob* job = KIO::storedGet(packageUrl, KIO::NoReload, KIO::HideProgressInfo);
     connect(job, SIGNAL(finished(KJob*)), SLOT(downloadingScreenshotsFinished(KJob*)));
 }
@@ -510,10 +508,10 @@ void Application::downloadingScreenshotsFinished(KJob* j)
     KIO::StoredTransferJob* job = qobject_cast< KIO::StoredTransferJob* >(j);
     bool done = false;
     if(job) {
-        QJson::Parser p;
-        bool ok;
-        QVariantMap values = p.parse(job->data(), &ok).toMap();
-        if(ok) {
+        QJsonParseError error;
+        QJsonDocument doc = QJsonDocument::fromJson(job->data(), &error);
+        if(error.error != QJsonParseError::NoError) {
+            QVariantMap values = doc.toVariant().toMap();
             QVariantList screenshots = values["screenshots"].toList();
             
             QList<QUrl> thumbnailUrls, screenshotUrls;
@@ -546,8 +544,8 @@ QStringList Application::executables() const
 {
     QStringList ret;
     QVector<KService::Ptr> exes = findExecutables();
-    foreach(KService::Ptr exe, exes) {
-        ret += exe->desktopEntryPath();
+    for(KService::Ptr exe : exes) {
+        ret += exe->exec();
     }
     return ret;
 }
@@ -607,7 +605,8 @@ QString Application::buildDescription(const QByteArray& data, const QString& sou
         description += i18nc("@info:label Refers to a software version, Ex: Version 1.2.1:",
                              "Version %1:", entry.version());
 
-        QString issueDate = KGlobal::locale()->formatDateTime(entry.issueDateTime(), KLocale::ShortDate);
+        KFormat f;
+        QString issueDate = entry.issueDateTime().toString(Qt::DefaultLocaleShortDate);
         description += QLatin1String("<p>") +
                        i18nc("@info:label", "This update was issued on %1", issueDate) +
                        QLatin1String("</p>");

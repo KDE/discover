@@ -36,6 +36,7 @@ class MUONPRIVATE_EXPORT ScreenshotsModel : public QAbstractListModel
         enum Roles { ThumbnailUrl=Qt::UserRole+1, ScreenshotUrl };
         
         ScreenshotsModel(QObject* parent = 0);
+        virtual QHash<int, QByteArray> roleNames() const;
 
         AbstractResource* resource() const;
         void setResource(AbstractResource* res);

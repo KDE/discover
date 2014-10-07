@@ -17,10 +17,9 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import org.kde.plasma.core 0.1
-import org.kde.plasma.components 0.1
+import QtQuick 2.1
+import QtQuick.Controls 1.1
 import "navigation.js" as Navigation
-import QtQuick 1.1
 
 GridItem {
     id: delegateRoot
@@ -91,7 +90,7 @@ GridItem {
             height: width
             smooth: true
             asynchronous: true
-            source: model.application.icon.indexOf("/")==0 ? "file://"+model.application.icon : "image://icon/"+model.application.icon
+            source: model.application.icon[0] == "/" ? "file://"+model.application.icon : "image://icon/"+model.application.icon
             visible: screen.hasThumbnail
             Behavior on y { NumberAnimation { duration: 200; easing.type: Easing.InQuad } }
         }

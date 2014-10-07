@@ -21,7 +21,7 @@
 #ifndef HISTORYPROXYMODEL_H
 #define HISTORYPROXYMODEL_H
 
-#include <QtGui/QSortFilterProxyModel>
+#include <QSortFilterProxyModel>
 
 #include <LibQApt/Package>
 

@@ -66,8 +66,8 @@ private:
     ViewSwitcher *m_viewSwitcher;
     QStandardItemModel *m_viewModel;
     QHash<QModelIndex, QWidget *> m_viewHash;
-    KAction *m_loadSelectionsAction;
-    KAction *m_saveSelectionsAction;
+    QAction *m_loadSelectionsAction;
+    QAction *m_saveSelectionsAction;
     LaunchListModel *m_launches;
     KMessageWidget *m_launcherMessage;
     ApplicationLauncher *m_appLauncher;

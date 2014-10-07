@@ -23,19 +23,18 @@
 
 #include <QApplication>
 #include <QtCore/QEvent>
-#include <QtGui/QBoxLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QMouseEvent>
-#include <QtGui/QPalette>
-#include <QtGui/QProgressBar>
+#include <QBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QMouseEvent>
+#include <QPalette>
+#include <QtWidgets/QProgressBar>
 
 #include <QParallelAnimationGroup>
 #include <QPropertyAnimation>
 #include <QGraphicsOpacityEffect>
-#include <QtGui/QScrollArea>
+#include <QScrollArea>
 
-#include <KIcon>
-#include <KLocale>
+#include <KLocalizedString>
 
 #include "ClickableLabel.h"
 #include "effects/GraphicsOpacityDropShadowEffect.h"

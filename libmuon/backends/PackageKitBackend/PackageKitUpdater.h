@@ -22,7 +22,7 @@
 
 #include <resources/AbstractBackendUpdater.h>
 #include "PackageKitBackend.h"
-#include <PackageKit/packagekit-qt2/Transaction>
+#include <PackageKit/Transaction>
 
 class PackageKitUpdater : public AbstractBackendUpdater
 {
@@ -64,16 +64,22 @@ class PackageKitUpdater : public AbstractBackendUpdater
         virtual void start();
     
     private slots:
-        void reloadFinished();
-        void backendChanged();
         void errorFound(PackageKit::Transaction::Error err, const QString& error);
         void mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text);
-        void requireRestard(PackageKit::Transaction::Restart restart, const QString& p);
+        void requireRestart(PackageKit::Transaction::Restart restart, const QString& p);
         void eulaRequired(const QString &eulaID, const QString &packageID, const QString &vendor, const QString &licenseAgreement);
         void finished(PackageKit::Transaction::Exit exit, uint);
+        void statusChanged();
+        void speedChanged();
+        void cancellableChanged();
+        void remainingTimeChanged();
+        void percentageChanged();
         
     private:
-        PackageKit::Transaction * m_transaction;
+        void setProgressing(bool progressing);
+        void setTransaction(PackageKit::Transaction* transaction);
+
+        QPointer<PackageKit::Transaction> m_transaction;
         PackageKitBackend * m_backend;
         QList<AbstractResource*> m_toUpgrade;
         bool m_isCancelable;
@@ -85,6 +91,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         long unsigned int m_remainingTime;
         uint m_percentage;
         QDateTime m_lastUpdate;
+        QAction* m_updateAction;
 };
 
 

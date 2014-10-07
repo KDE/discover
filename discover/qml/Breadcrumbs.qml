@@ -17,14 +17,13 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 1.1
-import org.kde.plasma.components 0.1
+import QtQuick 2.1
+import QtQuick.Controls 1.0
 
 Item {
     id: bread
     property alias count: items.count
     property Item pageStack: null
-    
     signal poppedPages
     
     function currentItem() {
@@ -57,33 +56,25 @@ Item {
             items.remove(items.count-1)
         }
     }
-    
-    ListView
-    {
-        id: view
-        anchors {
-            top: parent.top
-            bottom: parent.bottom
-            right: parent.right
-            left: parent.left
-        }
-        
+
+    Row {
         spacing: 0
-        model: items
-        layoutDirection: Qt.LeftToRight
-        orientation: ListView.Horizontal
-        delegate: ToolButton {
-            flat: false
-            height: bread.height
-            iconSource: decoration
-            onClicked: doClick(index)
-            text: display ? display : ""
-            checked: items.count-index<=1
-            checkable: checked
+        Repeater
+        {
+            id: view
+
+            model: ListModel { id: items }
+            delegate: Button {
+                height: bread.height
+                iconName: decoration
+                onClicked: doClick(index)
+                text: display
+                enabled: items.count-index>1
+                checkable: checked
+            }
+
+//TODO: make sure the right-most button is visible
+//         onCountChanged: view.positionViewAtEnd()
         }
-        
-        onCountChanged: view.positionViewAtEnd()
-        
-        ListModel { id: items }
     }
 }

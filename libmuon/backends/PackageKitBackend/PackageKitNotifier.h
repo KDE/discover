@@ -22,7 +22,7 @@
 
 #include <resources/AbstractKDEDModule.h>
 #include <QVariantList>
-#include <PackageKit/packagekit-qt2/Transaction>
+#include <PackageKit/Transaction>
 
 class QTimer;
 

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2012-2014 Aleix Pol Gonzalez <aleixpol@blue-systems.com>  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,13 +18,19 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef APPSTREAMUTILS_H
-#define APPSTREAMUTILS_H
-#include "PackageKitBackend.h"
+#ifndef PACKAGEKITMESSAGES_H
+#define PACKAGEKITMESSAGES_H
 
-namespace AppstreamUtils
+#include <PackageKit/Transaction>
+
+namespace PackageKitMessages
 {
-    QHash<QString, ApplicationData> fetchAppData(const QString& path);
+    QString errorMessage(PackageKit::Transaction::Error error);
+    QString restartMessage(PackageKit::Transaction::Restart restart, const QString& p);
+    QString restartMessage(PackageKit::Transaction::Restart restart);
+    QString statusMessage(PackageKit::Transaction::Status status);
+    QString statusDetail(PackageKit::Transaction::Status status);
+    QString updateStateMessage(PackageKit::Transaction::UpdateState state);
 };
 
-#endif // APPSTREAMUTILS_H
+#endif // PACKAGEKITMESSAGES_H

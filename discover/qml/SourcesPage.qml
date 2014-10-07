@@ -1,190 +1,121 @@
-import QtQuick 1.0
-import org.kde.plasma.components 0.1
+import QtQuick 2.1
+import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.1
 import org.kde.muon 1.0
-import org.kde.muonapt 1.0
 import "navigation.js" as Navigation
 
-Page {
+Item {
     id: page
     clip: true
     property real actualWidth: width-Math.pow(width/70, 2)
-    
-    tools: Row {
+    property real proposedMargin: (page.width-actualWidth)/2
+
+    Menu {
+        id: sourcesMenu
+    }
+
+    property Component tools: RowLayout {
         anchors.fill: parent
         visible: page.visible
         ToolButton {
-            iconSource: "list-add"
+            iconName: "list-add"
             text: i18n("Add Source")
-            onClicked: newSourceDialog.open()
-            anchors.verticalCenter: parent.verticalCenter
-        }
-        
-        Repeater {
-            model: ["software_properties"]
-            
-            delegate: MuonToolButton {
-                property QtObject action: app.getAction(modelData)
-                height: parent.height
-                text: action.text
-                onClicked: action.trigger()
-                enabled: action.enabled
-                icon: action.icon
-            }
-        }
-    }
-    
-    
-    CommonDialog {
-        id: newSourceDialog
-        onClickedOutside: reviewDialog.close()
-        titleText: i18n("Specify the new source")
-        buttons: Row {
-            spacing: 5
-            Button {
-                text: i18n("OK")
-                iconSource: "dialog-ok"
-                enabled: repository.text!=""
-                onClicked: newSourceDialog.accept()
-            }
-            Button {
-                text: i18n("Cancel")
-                iconSource: "dialog-cancel"
-                onClicked: newSourceDialog.reject()
-            }
-        }
-        
-        content: Item {
-            height: info.childrenRect.height
-            width: 500
-            
-            Column {
-                id: info
-                spacing: 5
-                anchors.fill: parent
-                
-                Label {
-                    anchors {
-                        left: parent.left
-                        right: parent.right
-                        margins: 10
-                    }
-                    wrapMode: Text.WordWrap
-                    text: i18n("<sourceline> - The apt repository source line to add. This is one of:\n"
-                                +"  a complete apt line, \n"
-                                +"  a repo url and areas (areas defaults to 'main')\n"
-                                +"  a PPA shortcut.\n\n"
 
-                                +"  Examples:\n"
-                                +"    deb http://myserver/path/to/repo stable myrepo\n"
-                                +"    http://myserver/path/to/repo myrepo\n"
-                                +"    https://packages.medibuntu.org free non-free\n"
-                                +"    http://extras.ubuntu.com/ubuntu\n"
-                                +"    ppa:user/repository") }
-                TextField {
-                    id: repository
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    Keys.onEnterPressed: newSourceDialog.accept()
-                    focus: true
-                }
-            }
+            menu: sourcesMenu
         }
-        
-        onAccepted: origins.addRepository(repository.text)
+
+//         Repeater {
+//             model: ["software_properties"]
+//
+//             delegate: MuonToolButton {
+//                 property QtObject action: app.getAction(modelData)
+//                 height: parent.height
+//                 text: action.text
+//                 onClicked: action.trigger()
+//                 enabled: action.enabled
+// //                 icon: action.icon
+//             }
+//         }
     }
-    OriginsBackend { id: origins }
     
-    NativeScrollBar {
-        id: scroll
-        orientation: Qt.Vertical
-        flickableItem: view
-        anchors {
-            top: view.top
-            right: parent.right
-            bottom: view.bottom
-        }
-    }
-    ListView {
-        id: view
-        anchors {
-            top: parent.top
-            bottom: parent.bottom
-            horizontalCenter: parent.horizontalCenter
-        }
-        width: parent.actualWidth
-        
-        model: origins.sources
-        
-        delegate: ListItem {
-            function joinEntriesSuites(source) {
-                var vals = {}
-                for(var i=0; i<source.entries.length; ++i) {
-                    var entry = source.entries[i]
-                    if(vals[entry.suite]==null)
-                        vals[entry.suite]=0
-                    
-                    if(entry.isSource)
-                        vals[entry.suite] += 2
-                    else
-                        vals[entry.suite] += 1
+    ScrollView {
+        anchors.fill: parent
+        ListView {
+            id: view
+            width: parent.width
+
+            model: SourcesModel
+
+            delegate: ColumnLayout {
+                id: sourceDelegate
+                x: page.proposedMargin
+                width: page.actualWidth
+
+                property QtObject sourceBackend: model.sourceBackend
+                AddSourceDialog {
+                    id: addSourceDialog
+                    source: sourceDelegate.sourceBackend
+
+                    onVisibleChanged: if(!visible) destroy()
                 }
-                var ret = new Array
-                for(var e in vals) {
-                    if(vals[e]>1)
-                        ret.push(e)
-                    else
-                        ret.push(i18n("%1 (Binary)", e))
+
+                MenuItem {
+                    id: menuItem
+                    text: model.display
+                    onTriggered: {
+                        try {
+                            addSourceDialog.open()
+                            addSourceDialog.visible = true
+                        } catch (e) {
+                            console.log("error loading dialog:", e)
+                        }
+                    }
                 }
-                
-                return ret.join(", ")
-            }
-            enabled: browseOrigin.enabled
-            onClicked: Navigation.openApplicationListSource(modelData.name)
-            
-            CheckBox {
-                id: enabledBox
-                enabled: false //TODO: implement the application of this change
-                anchors {
-                    left: parent.left
-                    top: parent.top
+
+                Component.onCompleted: {
+                    sourcesMenu.insertItem(0, menuItem)
                 }
-                checked: modelData.enabled
-            }
-            Label {
-                anchors {
-                    top: parent.top
-                    bottom: parent.bottom
-                    left: enabledBox.right
-                    right: suitesLabel.left
-                    leftMargin: 5
+
+                Label { text: sourceBackend.name }
+                Repeater {
+                    model: sourceBackend.sources
+
+                    delegate: GridItem {
+                        width: sourceDelegate.width
+                        height: browseOrigin.height*1.2
+                        enabled: browseOrigin.enabled
+                        onClicked: Navigation.openApplicationListSource(model.display)
+
+                        RowLayout {
+                            Layout.alignment: Qt.AlignVCenter
+                            anchors.fill: parent
+
+                            CheckBox {
+                                id: enabledBox
+                                enabled: false //TODO: implement the application of this change
+                                checked: model.checked != Qt.Unchecked
+                            }
+                            Label {
+                                Layout.fillWidth: true
+                                elide: Text.ElideRight
+                                text: model.display
+                            }
+                            Label {
+                                text: model.toolTip
+                            }
+                            Button {
+                                id: browseOrigin
+                                enabled: display!=""
+                                iconName: "view-filter"
+                                onClicked: Navigation.openApplicationListSource(model.display)
+                            }
+                            Button {
+                                iconName: "edit-delete"
+                                onClicked: sourceDelegate.sourceBackend.removeSource(model.display)
+                            }
+                        }
+                    }
                 }
-                elide: Text.ElideRight
-                text: modelData.name=="" ? modelData.uri : i18n("%1. %2", modelData.name, modelData.uri)
-            }
-            Label {
-                id: suitesLabel
-                anchors {
-                    bottom: parent.bottom
-                    right: browseOrigin.left
-                }
-                text: joinEntriesSuites(modelData)
-            }
-            ToolButton {
-                id: browseOrigin
-                enabled: modelData.name!=""
-                iconSource: "view-filter"
-                onClicked: Navigation.openApplicationListSource(modelData.name)
-                anchors {
-                    bottom: parent.bottom
-                    right: removeButton.left
-                }
-                
-            }
-            ToolButton {
-                id: removeButton
-                anchors.right: parent.right
-                iconSource: "edit-delete"
-                onClicked: origins.removeRepository(modelData.uri)
             }
         }
     }

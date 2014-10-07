@@ -1,57 +1,81 @@
 project(muon)
+cmake_minimum_required(VERSION 2.8.12)
 
-set(CMAKE_MODULE_PATH "${muon_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+find_package(ECM REQUIRED NO_MODULE)
 
-set(KDE_MIN_VERSION "4.7.0")
-find_package(KDE4 ${KDE_MIN_VERSION} REQUIRED)
-find_package(QApt QUIET)
-find_package(DebconfKDE QUIET)
-find_package(QtOAuth REQUIRED)
-find_package(QCA2 REQUIRED) #required by QtOAuth
-find_package(QJSON REQUIRED)
-find_package(LibAttica QUIET)
-find_package(BODEGA QUIET)
-find_package(AkabeiCore QUIET)
-find_package(AkabeiClient QUIET)
-find_package(PackageKitQt2 QUIET)
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} "${CMAKE_SOURCE_DIR}/cmake")
 
-include(KDE4Defaults)
-include(FindPkgConfig)
+find_package(Qt5 5.2.0 REQUIRED CONFIG COMPONENTS Widgets Test Network Xml Concurrent DBus Svg Qml QuickWidgets)
+include(KDEInstallDirs)
+include(KDECMakeSettings)
+include(KDECompilerSettings)
+include(ECMInstallIcons)
+include(ECMMarkAsTest)
+include(GenerateExportHeader)
 
-if(NOT qjson_LIBRARIES) #hack to compatibilize different qjson finder versions
-    set(qjson_LIBRARIES ${QJSON_LIBRARIES})
+find_package(KF5 REQUIRED WidgetsAddons CoreAddons Solid
+                                            Config Wallet DBusAddons I18n ConfigWidgets Notifications Declarative)
+
+find_package(Phonon4Qt5 REQUIRED NO_MODULE)
+
+find_package(QApt 3.0.0)
+if(QApt_FOUND)
+    find_package(DebconfKDE REQUIRED)
+    find_package(QtOAuth REQUIRED)
+    find_package(Qca REQUIRED) #required by QtOAuth
 endif()
+find_package(KF5Attica)
+find_package(KF5NewStuff)
+# find_package(BODEGA QUIET)
+find_package(AkabeiClient QUIET)
+find_package(packagekitqt5)
+find_package(AppstreamQt QUIET)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 
-include_directories(${KDE4_INCLUDES} ${QT_INCLUDES} ${QAPT_INCLUDE_DIR}
-                    ${CMAKE_CURRENT_BINARY_DIR} ${QCA2_INCLUDE_DIR}
-                    ${QJSON_INCLUDE_DIR}
-                    ${CMAKE_SOURCE_DIR}/libmuon ${CMAKE_BINARY_DIR}/libmuon)
-
-
-set(MUON_VERSION "2.2.65")
+set(MUON_VERSION "2.65.0")
 configure_file(MuonVersion.h.in MuonVersion.h)
 
 add_subdirectory(libmuon)
-if(QAPT_FOUND)
+if(QApt_FOUND)
     add_subdirectory(libmuonapt)
     add_subdirectory(muon)
-    add_subdirectory(installer)
-endif(QAPT_FOUND)
+#    add_subdirectory(installer)
+endif()
 add_subdirectory(updater)
 add_subdirectory(discover)
 add_subdirectory(exporter)
 
-macro_log_feature(QAPT_FOUND "LibQApt" "Qt wrapper around the libapt-pkg library"
-                  "http://www.kde.org" FALSE "" "Required to build the APT backend")
-macro_log_feature(LIBATTICA_FOUND "LibAttica" "Qt library that implements the Open Collaboration Services API"
-                  "http://www.kde.org" FALSE "" "Required to build the KNewStuff3 backend")
-macro_log_feature(BODEGA_FOUND "Bodega" "Library that exposes Bodega resources"
-                  "http://www.kde.org" FALSE "" "Required to build the Bodega backend")
-macro_log_feature(AKABEICLIENT_FOUND "Akabei" "Library that exposes Akabei resources"
-                  "http://www.kde.org" FALSE "" "Required to build the Akabei backend")
-macro_log_feature(PACKAGEKITQT2_FOUND "PackageKitQt2" "Library that exposes PackageKit resources"
-                  "http://www.packagekit.org" FALSE "" "Required to build the PackageKit backend")
+set_package_properties(QApt PROPERTIES
+    DESCRIPTION "Qt wrapper around the libapt-pkg library"
+    PURPOSE "Used to support apt-based distribution systems"
+    TYPE OPTIONAL)
 
-macro_display_feature_log()
+set_package_properties(KF5Attica PROPERTIES
+    DESCRIPTION "KDE Framework that implements the Open Collaboration Services API"
+    PURPOSE "Required to build the KNewStuff3 backend"
+    TYPE OPTIONAL)
+set_package_properties(KF5NewStuff PROPERTIES
+    DESCRIPTION "Qt library that allows to interact with KNewStuff implementations"
+    PURPOSE "Required to build the KNS backend"
+    TYPE OPTIONAL)
+set_package_properties(Bodega PROPERTIES
+    DESCRIPTION "Library that exposes Bodega resources"
+    PURPOSE "Required to build the Bodega backend"
+    TYPE OPTIONAL)
+set_package_properties(AkabeiClient PROPERTIES
+    DESCRIPTION "Library that exposes Akabei resources"
+    PURPOSE "Required to build the Akabei backend (Supports Chakra distribution)"
+    TYPE OPTIONAL)
+set_package_properties(PackageKitQt2 PROPERTIES
+    DESCRIPTION "Library that exposes PackageKit resources"
+    URL "http://www.packagekit.org"
+    PURPOSE "Required to build the PackageKit backend"
+    TYPE OPTIONAL)
+set_package_properties(AppstreamQt PROPERTIES
+    DESCRIPTION "Library that lists Appstream resources"
+    URL "http://www.freedesktop.org"
+    PURPOSE "Required to build the PackageKit backend"
+    TYPE OPTIONAL)
+
+feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

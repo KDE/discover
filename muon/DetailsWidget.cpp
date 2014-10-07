@@ -21,10 +21,10 @@
 #include "DetailsWidget.h"
 
 // Qt
-#include <QtGui/QScrollArea>
+#include <QScrollArea>
 
 // KDE
-#include <KLocale>
+#include <KLocalizedString>
 
 // LibQApt includes
 #include <LibQApt/Backend>

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2014 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,24 +18,42 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MUONPRIVATE_EXPORT_H
-#define MUONPRIVATE_EXPORT_H
+#ifndef APTSOURCESBACKEND_H
+#define APTSOURCESBACKEND_H
 
-// needed for KDE_EXPORT and KDE_IMPORT macros
-#include <kdemacros.h>
+#include <QStandardItemModel>
+#include <resources/AbstractSourcesBackend.h>
+#include <LibQApt/SourcesList>
 
-#ifndef MUONPRIVATE_EXPORT
-# if defined(MAKE_MUONPRIVATE_LIB)
-   // We are building this library
-#  define MUONPRIVATE_EXPORT KDE_EXPORT
-# else
-   // We are using this library
-#  define MUONPRIVATE_EXPORT KDE_IMPORT
-# endif
-#endif
+class ApplicationBackend;
+class SourceItem;
 
-# ifndef MUONPRIVATE_EXPORT_DEPRECATED
-#  define MUONPRIVATE_EXPORT_DEPRECATED KDE_DEPRECATED MUONPRIVATE_EXPORT
-# endif
+class AptSourcesBackend : public AbstractSourcesBackend
+{
+Q_OBJECT
+public:
+    enum Roles {
+        UriRole
+    };
+    
+    AptSourcesBackend(ApplicationBackend* backend);
+    virtual QAbstractItemModel* sources();
+    virtual bool removeSource(const QString& uri);
+    virtual bool addSource(const QString& uri);
+    virtual QString idDescription();
+    virtual QString name() const;
+    ApplicationBackend* appsBackend() const;
 
-#endif
+private slots:
+    void load();
+    void removalDone(int processErrorCode);
+    void additionDone(int processErrorCode);
+
+private:
+    SourceItem* sourceForUri(const QString& uri);
+
+    QStandardItemModel* m_sources;
+    QApt::SourcesList m_sourcesList;
+};
+
+#endif // APTSOURCESBACKEND_H

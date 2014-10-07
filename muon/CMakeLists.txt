@@ -1,3 +1,5 @@
+find_package(KF5KDELibs4Support)
+
 add_subdirectory(icons)
 
 set(muon_SRCS
@@ -31,15 +33,17 @@ set(muon_SRCS
     config/ManagerSettingsDialog.cpp
     config/GeneralSettingsPage.cpp)
 
-kde4_add_kcfg_files(muon_SRCS GENERATE_MOC config/MuonSettings.kcfgc)
+kconfig_add_kcfg_files(muon_SRCS GENERATE_MOC config/MuonSettings.kcfgc)
 install(FILES config/muon.kcfg DESTINATION ${KCFG_INSTALL_DIR})
 
-kde4_add_executable(muon ${muon_SRCS})
+add_executable(muon ${muon_SRCS})
 
-target_link_libraries(muon muonprivate muonapt
-                           ${KDE4_KIO_LIBS}
-                           ${QAPT_LIBRARY}
-                           ${DEBCONF_KDE_LIB})
+target_link_libraries(muon muonprivate MuonApt
+                           DebconfKDE::Main
+                           KF5::KIOWidgets
+                           KF5::KDELibs4Support
+                           Qt5::Concurrent
+                           QApt::Main)
 
 install(TARGETS muon ${INSTALL_TARGETS_DEFAULT_ARGS} )
 

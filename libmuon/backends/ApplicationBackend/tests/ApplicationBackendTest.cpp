@@ -23,9 +23,8 @@
 #include <QAction>
 #include <QFile>
 #include <KProtocolManager>
-#include <KStandardDirs>
 #include <KActionCollection>
-#include <qtest_kde.h>
+#include <qtest.h>
 
 #include "modeltest.h"
 #include <ApplicationBackend.h>
@@ -38,7 +37,7 @@
 #include <MuonMainWindow.h>
 #include <QAptActions.h>
 
-QTEST_KDEMAIN( ApplicationBackendTest, GUI )
+QTEST_MAIN( ApplicationBackendTest )
 
 QString getCodename(const QString& value)
 {
@@ -70,7 +69,7 @@ AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 
 ApplicationBackendTest::ApplicationBackendTest()
 {
-    QString ratingsDir = KStandardDirs::locateLocal("data","libmuon/ratings.txt");
+    QString ratingsDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libmuon/ratings.txt";
     QFile testRatings("~/.kde-unit-test/share/apps/libmuon/ratings.txt");
     QFile ratings(ratingsDir);
     QString codeName = getCodename("ID");
@@ -80,9 +79,9 @@ ApplicationBackendTest::ApplicationBackendTest()
         } else {
             ratings.close();
             if(codeName.toLower() == QLatin1String("ubuntu")) {
-                ratingsDir = KStandardDirs::locateLocal("data","libmuon/rnrtestratings.txt");
+                ratingsDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libmuon/rnrtestratings.txt";
             } else {
-                ratingsDir = KStandardDirs::locateLocal("data","libmuon/popcontestratings.txt");
+                ratingsDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libmuon/popcontestratings.txt";
             }
             ratings.setFileName(ratingsDir);
             if(ratings.exists()) {
@@ -98,7 +97,8 @@ ApplicationBackendTest::ApplicationBackendTest()
     new ModelTest(m,m);
     m_appBackend = backendByName(m, "ApplicationBackend");
     QVERIFY(m_appBackend); //TODO: test all backends
-    QTest::kWaitForSignal(m, SIGNAL(allInitialized()));
+    QSignalSpy s(m, SIGNAL(allInitialized()));
+    QVERIFY(s.wait());
 }
 
 ApplicationBackendTest::~ApplicationBackendTest()
@@ -143,14 +143,12 @@ void ApplicationBackendTest::testCategories()
     for(int i=0; i<categoryModel->rowCount(); ++i) {
         Category* cat = categoryModel->categoryForRow(i);
         proxy->setFiltersFromCategory(cat);
-        qDebug() << "fuuuuuu" << proxy->rowCount() << cat->name();
     }
 }
 
 void ApplicationBackendTest::testRefreshUpdates()
 {
     ResourcesModel* m = ResourcesModel::global();
-    AbstractBackendUpdater* updater = m_appBackend->backendUpdater();
 
     QSignalSpy spy(m, SIGNAL(fetchingChanged()));
     QAptActions::self()->actionCollection()->action("update")->trigger();

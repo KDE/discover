@@ -23,7 +23,7 @@
 
 // Qt includes
 #include <QStandardItemModel>
-#include <QtGui/QDialog>
+#include <QDialog>
 
 // LibQApt includes
 #include <LibQApt/Package>

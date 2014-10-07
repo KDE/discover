@@ -17,17 +17,17 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 1.1
-import org.kde.plasma.core 0.1
-import org.kde.plasma.components 0.1
+import QtQuick 2.1
+import QtQuick.Controls 1.1
+import org.kde.kquickcontrolsaddons 2.0
 
 Item {
     property QtObject category: null
     property real proposedMargin: 0
     
-    IconItem {
+    QIconItem {
         id: iconItem
-        source: category.icon
+        icon: category.icon
         anchors {
             top: parent.top
             bottom: parent.bottom
@@ -47,7 +47,7 @@ Item {
             leftMargin: 50
         }
         elide: Text.ElideRight
-        font.pixelSize: parent.height*0.5
+        font.pointSize: parent.height*0.5
         text: category.name
     }
 }

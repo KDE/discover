@@ -25,7 +25,6 @@
 
 class DistUpgradeEvent;
 class UpdateEvent;
-class KProcess;
 class QProcess;
 
 class ApplicationNotifier : public AbstractKDEDModule
@@ -46,7 +45,7 @@ private slots:
     void parseUpdateInfo();
     
 private:
-    KProcess *m_checkerProcess;
+    QProcess *m_checkerProcess;
     QProcess *m_updateCheckerProcess;
     bool m_checkingForUpdates;
 };

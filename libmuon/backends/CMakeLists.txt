@@ -1,24 +1,24 @@
 if(AKABEICLIENT_FOUND)
     add_subdirectory(AkabeiBackend)#TODO: Add checks
-endif(AKABEICLIENT_FOUND)
+endif()
 
-if(LIBATTICA_FOUND)
+if(KF5Attica_FOUND AND KF5NewStuff_FOUND)
     add_subdirectory(KNSBackend)
-endif(LIBATTICA_FOUND)
+endif()
 
-if(QAPT_FOUND)
+if(QApt_FOUND)
     add_subdirectory(ApplicationBackend)
-endif(QAPT_FOUND)
+endif()
 
 if(BODEGA_FOUND)
     add_subdirectory(BodegaBackend)
-endif(BODEGA_FOUND)
+endif()
 
-if(PACKAGEKITQT2_FOUND)
+if(packagekitqt5_FOUND AND AppstreamQt_FOUND)
     add_subdirectory(PackageKitBackend)
-endif(PACKAGEKITQT2_FOUND)
+endif()
 
-OPTION(BUILD_DummyBackend "Build the DummyBackend" "OFF")
+option(BUILD_DummyBackend "Build the DummyBackend" "OFF")
 if(BUILD_DummyBackend)
     add_subdirectory(DummyBackend)
-endif(BUILD_DummyBackend)
+endif()

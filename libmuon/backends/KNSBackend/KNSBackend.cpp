@@ -27,14 +27,10 @@
 #include <attica/providermanager.h>
 
 // KDE includes
-#include <knewstuff3/downloadmanager.h>
-#include <KStandardDirs>
+#include <kns3/downloadmanager.h>
 #include <KConfigGroup>
-#include <KDebug>
-#include <KConfig>
-#include <KPluginFactory>
+#include <KDesktopFile>
 #include <KLocalizedString>
-#include <KAboutData>
 
 // Libmuon includes
 #include "Transaction/Transaction.h"
@@ -46,8 +42,7 @@
 #include "KNSReviews.h"
 #include <resources/StandardBackendUpdater.h>
 
-K_PLUGIN_FACTORY(MuonKNSBackendFactory, registerPlugin<KNSBackend>(); )
-K_EXPORT_PLUGIN(MuonKNSBackendFactory(KAboutData("muon-knsbackend","muon-knsbackend",ki18n("KNewStuff Backend"),"0.1",ki18n("Install KNewStuff data in your system"), KAboutData::License_GPL)))
+MUON_BACKEND_PLUGIN(KNSBackend)
 
 QSharedPointer<Attica::ProviderManager> KNSBackend::m_atticaManager;
 
@@ -62,19 +57,31 @@ void KNSBackend::initManager(KConfigGroup& group)
     }
 }
 
-KNSBackend::KNSBackend(QObject* parent, const QVariantList& args)
+KNSBackend::KNSBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_fetching(false)
     , m_isValid(true)
     , m_page(0)
     , m_reviews(new KNSReviews(this))
     , m_updater(new StandardBackendUpdater(this))
+{}
+
+KNSBackend::~KNSBackend()
+{}
+
+void KNSBackend::setMetaData(const QString& path)
 {
-    const QVariantMap info = args.first().toMap();
-    
-    m_iconName = info.value("Icon").toString();
-    m_name = KStandardDirs::locate("config", info.value("X-Muon-Arguments").toString());
-    Q_ASSERT(!m_name.isEmpty());
+    KDesktopFile cfg(path);
+    KConfigGroup service = cfg.group("Desktop Entry");
+
+    m_iconName = service.readEntry("Icon", QString());
+    QString knsrc = service.readEntry("X-Muon-Arguments", QString());
+    m_name = QStandardPaths::locate(QStandardPaths::GenericConfigLocation, knsrc);
+    if (m_name.isEmpty()) {
+        m_isValid = false;
+        qWarning() << "Couldn't find knsrc file" << knsrc;
+        return;
+    }
     KConfig conf(m_name);
     KConfigGroup group;
 
@@ -83,27 +90,24 @@ KNSBackend::KNSBackend(QObject* parent, const QVariantList& args)
 
     if (!group.isValid()) {
         m_isValid = false;
-        kWarning() << "Config group not found! Check your KNS3 installation.";
+        qWarning() << "Config group not found! Check your KNS3 installation.";
         return;
     }
 
     QStringList cats = group.readEntry("Categories", QStringList());
     initManager(group);
     connect(m_atticaManager.data(), SIGNAL(defaultProvidersLoaded()), SLOT(startFetchingCategories()));
-    
+
     foreach(const QString& c, cats) {
         m_categories.insert(c, Attica::Category());
     }
-    
+
     m_manager = new KNS3::DownloadManager(m_name, this);
     connect(m_manager, SIGNAL(searchResult(KNS3::Entry::List)), SLOT(receivedEntries(KNS3::Entry::List)));
     connect(m_manager, SIGNAL(entryStatusChanged(KNS3::Entry)), SLOT(statusChanged(KNS3::Entry)));
-    
+
     startFetchingCategories();
 }
-
-KNSBackend::~KNSBackend()
-{}
 
 void KNSBackend::setFetching(bool f)
 {
@@ -120,8 +124,12 @@ bool KNSBackend::isValid() const
 
 void KNSBackend::startFetchingCategories()
 {
-    if (m_atticaManager->providers().isEmpty())
+    if (m_atticaManager->providers().isEmpty()) {
+        qWarning() << "no providers for" << m_name;
+        m_isValid = false;
+        setFetching(false);
         return;
+    }
 
     setFetching(true);
     m_provider = m_atticaManager->providers().first();
@@ -134,7 +142,7 @@ void KNSBackend::startFetchingCategories()
 void KNSBackend::categoriesLoaded(Attica::BaseJob* job)
 {
     if(job->metadata().error() != Attica::Metadata::NoError) {
-        kDebug() << "Network error";
+        qWarning() << "Network error";
         setFetching(false);
         return;
     }
@@ -143,7 +151,7 @@ void KNSBackend::categoriesLoaded(Attica::BaseJob* job)
 
     foreach(const Attica::Category& category, categoryList) {
         if (m_categories.contains(category.name())) {
-            kDebug() << "Adding category: " << category.name();
+//             kDebug() << "Adding category: " << category.name();
             m_categories[category.name()] = category;
         }
     }
@@ -157,7 +165,7 @@ void KNSBackend::categoriesLoaded(Attica::BaseJob* job)
 void KNSBackend::receivedContents(Attica::BaseJob* job)
 {
     if(job->metadata().error() != Attica::Metadata::NoError) {
-        kDebug() << "Network error";
+        qWarning() << "Network error";
         setFetching(false);
         return;
     }
@@ -203,7 +211,7 @@ void KNSBackend::statusChanged(const KNS3::Entry& entry)
     if(r)
         r->setEntry(entry);
     else
-        kWarning() << "unknown entry changed" << entry.id() << entry.name();
+        qWarning() << "unknown entry changed" << entry.id() << entry.name();
 }
 
 void KNSBackend::cancelTransaction(AbstractResource* app)
@@ -294,3 +302,5 @@ AbstractBackendUpdater* KNSBackend::backendUpdater() const
 {
     return m_updater;
 }
+
+#include "KNSBackend.moc"

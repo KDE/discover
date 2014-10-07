@@ -20,13 +20,12 @@
 
 #include "MuonStrings.h"
 
-#include <KGlobal>
-#include <KLocale>
+#include <KLocalizedString>
 #include <QDebug>
 
 #include <LibQApt/Transaction>
 
-K_GLOBAL_STATIC_WITH_ARGS(MuonStrings, globalMuonStrings, (0))
+Q_GLOBAL_STATIC_WITH_ARGS(MuonStrings, globalMuonStrings, (0))
 
 using namespace QApt;
 
@@ -234,8 +233,7 @@ QString MuonStrings::packageChangeStateName(Package::State state) const
 {
     int ns = state & (Package::ToKeep | Package::ToInstall | Package::ToReInstall | Package::NewInstall
                                     | Package::ToUpgrade | Package::ToRemove
-                                    | Package::ToPurge | Package::ToReInstall
-                                    | Package::ToDowngrade);
+                                    | Package::ToPurge | Package::ToDowngrade);
     return m_stateHash.value(ns);
 }
 

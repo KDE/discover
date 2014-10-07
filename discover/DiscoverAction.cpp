@@ -21,15 +21,16 @@
 #include <KXmlGuiWindow>
 #include <KActionCollection>
 #include <QDebug>
+#include <QIcon>
 
 DiscoverAction::DiscoverAction(QObject* parent)
-    : KAction(parent)
+    : QAction(parent)
     , m_actionsGroup(nullptr)
 {}
 
 void DiscoverAction::setIconName(const QString& name)
 {
-    setIcon(KIcon(name));
+    setIcon(QIcon::fromTheme(name));
 }
 
 QString DiscoverAction::iconName() const
@@ -39,7 +40,7 @@ QString DiscoverAction::iconName() const
 
 KXmlGuiWindow* DiscoverAction::mainWindow() const
 {
-    return qobject_cast<KXmlGuiWindow*>(KAction::parentWidget());
+    return qobject_cast<KXmlGuiWindow*>(QAction::parentWidget());
 }
 
 void DiscoverAction::setMainWindow(KXmlGuiWindow* w)
@@ -47,6 +48,7 @@ void DiscoverAction::setMainWindow(KXmlGuiWindow* w)
     if(m_actionsGroup && !m_actionsGroup->parent())
         m_actionsGroup->setParent(w);
     w->actionCollection()->addAction(objectName(), this);
+    w->actionCollection()->setDefaultShortcuts(this, shortcuts());
 }
 
 QString DiscoverAction::actionsGroup() const
@@ -80,9 +82,11 @@ void DiscoverAction::setActionsGroup(const QString& name)
 void DiscoverAction::setShortcutString(const QString& str)
 {
     setShortcut(str);
+    if (mainWindow())
+        mainWindow()->actionCollection()->setDefaultShortcut(this, str);
 }
 
 QString DiscoverAction::stringShortcut() const
 {
-    return KAction::shortcut().toString();
+    return QAction::shortcut().toString();
 }

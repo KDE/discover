@@ -81,7 +81,6 @@ void PaginateModel::setSourceModel(QAbstractItemModel* model)
         beginResetModel();
         m_sourceModel = model;
         if(model) {
-            setRoleNames(model->roleNames());
             connect(m_sourceModel, SIGNAL(rowsAboutToBeInserted(QModelIndex,int,int)), SLOT(_k_sourceRowsAboutToBeInserted(QModelIndex,int,int)));
             connect(m_sourceModel, SIGNAL(rowsInserted(QModelIndex,int,int)), SLOT(_k_sourceRowsInserted(QModelIndex,int,int)));
             connect(m_sourceModel, SIGNAL(rowsAboutToBeRemoved(QModelIndex,int,int)), SLOT(_k_sourceRowsAboutToBeRemoved(QModelIndex,int,int)));
@@ -109,6 +108,11 @@ void PaginateModel::setSourceModel(QAbstractItemModel* model)
         endResetModel();
         emit sourceModelChanged();
     }
+}
+
+QHash< int, QByteArray > PaginateModel::roleNames() const
+{
+    return m_sourceModel ? m_sourceModel->roleNames() : QAbstractItemModel::roleNames();
 }
 
 int PaginateModel::rowCount(const QModelIndex& parent) const

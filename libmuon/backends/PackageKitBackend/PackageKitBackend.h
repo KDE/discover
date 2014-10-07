@@ -25,33 +25,20 @@
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
 #include <QStringList>
-#include <PackageKit/packagekit-qt2/Transaction>
+#include <qpointer.h>
+#include <QSet>
+#include <PackageKit/Transaction>
+#include <AppstreamQt/database.h>
+#include <functional>
 
-class QTimerEvent;
 class PackageKitUpdater;
-struct ApplicationData
-{
-    QString pkgname;
-    QString id;
-    QHash<QString, QString> name;
-    QHash<QString, QString> summary;
-    QString icon;
-    QString url;
-    QHash<QString, QStringList> keywords;
-    QStringList appcategories;
-    QStringList mimetypes;
-};
 
 class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
-    Q_INTERFACES(AbstractResourcesBackend)
     public:
-        explicit PackageKitBackend(QObject* parent, const QVariantList& args);
+        explicit PackageKitBackend(QObject* parent = 0);
         ~PackageKitBackend();
-        
-        static QString errorMessage(PackageKit::Transaction::Error error);
-        static int compare_versions(const QString &, const QString &);
         
         virtual AbstractBackendUpdater* backendUpdater() const;
         virtual AbstractReviewsBackend* reviewsBackend() const;
@@ -60,7 +47,6 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         virtual AbstractResource* resourceByPackageName(const QString& name) const;
         virtual QList<AbstractResource*> searchPackageName(const QString& searchText);
         virtual int updatesCount() const;
-        int allUpdatesCount() const;
         
         virtual void installApplication(AbstractResource* app);
         virtual void installApplication(AbstractResource* app, AddonList addons);
@@ -68,33 +54,38 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         virtual void cancelTransaction(AbstractResource* app);
         virtual bool isValid() const { return true; }
         virtual QList<AbstractResource*> upgradeablePackages() const;
-        bool isFetching() const;
-        bool isLoading() const;
-        
+        virtual bool isFetching() const;
+
+        bool isPackageNameUpgradeable(const QString& pkgid) const;
+
     public slots:
         void removeTransaction(Transaction* t);
-        void populateInstalledCache();
-        
-    protected:
-        virtual void timerEvent(QTimerEvent * event);
-        
+        void reloadPackageList();
+        void refreshDatabase();
+
     private slots:
-        void populateNewestCache();
-        void finishRefresh();
-        void updateDatabase();
+        void getPackagesFinished(PackageKit::Transaction::Exit exit);
         void addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
-        void addNewest(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
+        void packageDetails(const PackageKit::Details& details);
+        void transactionError(PackageKit::Transaction::Error, const QString& message);
+        void queueTransactionFinished(PackageKit::Transaction::Exit,uint);
+        void addPackageToUpdate(PackageKit::Transaction::Info, const QString& pkgid, const QString& summary);
+        void getUpdatesFinished(PackageKit::Transaction::Exit,uint);
 
     private:
+        void iterateTransactionQueue();
+        void acquireFetching(bool f);
+
         QHash<QString, AbstractResource*> m_packages;
         QHash<QString, AbstractResource*> m_updatingPackages;
-        QHash<QString, ApplicationData> m_appdata;
+        Appstream::Database m_appdata;
         QList<Transaction*> m_transactions;
         PackageKitUpdater* m_updater;
         QList<PackageKitResource*> m_upgradeablePackages;
-        PackageKit::Transaction * m_refresher;
-        bool m_isLoading;
-        bool m_isFetching;
+        QPointer<PackageKit::Transaction> m_refresher;
+        int m_isFetching;
+        QList<std::function<PackageKit::Transaction*()>> m_transactionQueue;
+        QSet<QString> m_updatesPackageId;
 };
 
 #endif // PACKAGEKITBACKEND_H

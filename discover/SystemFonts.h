@@ -1,5 +1,5 @@
 /*
- *   Copyright (C) 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
+ *   Copyright (C) 2014 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library/Lesser General Public License
@@ -17,20 +17,30 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef MUONACTIONGROUP_H
-#define MUONACTIONGROUP_H
+#ifndef SYSTEMFONTS_H
+#define SYSTEMFONTS_H
 
-#include <QActionGroup>
 #include <QObject>
 
-class MuonActionGroup : public QActionGroup
+class SystemFonts : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QFont generalFont READ generalFont NOTIFY fontsChanged)
+    Q_PROPERTY(QFont fixedFont READ fixedFont NOTIFY fontsChanged)
+    Q_PROPERTY(QFont titleFont READ titleFont NOTIFY fontsChanged)
+    Q_PROPERTY(QFont smallestReadableFont READ smallestReadableFont NOTIFY fontsChanged)
     public:
-        explicit MuonActionGroup(QObject* parent = 0);
+        SystemFonts(QObject* parent = 0);
 
-    public slots:
-        void addAction(QAction* action);
+        QFont generalFont() const;
+        QFont fixedFont() const;
+        QFont titleFont() const;
+        QFont smallestReadableFont() const;
+
+        virtual bool eventFilter(QObject* obj, QEvent* ev);
+
+    Q_SIGNALS:
+        void fontsChanged();
 };
 
-#endif // MUONACTIONGROUP_H
+#endif // SYSTEMFONTS_H

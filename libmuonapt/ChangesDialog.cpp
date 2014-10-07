@@ -21,14 +21,13 @@
 #include "ChangesDialog.h"
 
 // Qt includes
-#include <QtGui/QLabel>
-#include <QtGui/QPushButton>
-#include <QtGui/QTreeView>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QTreeView>
+#include <QtWidgets/QVBoxLayout>
 
 // KDE includes
-#include <KIcon>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KStandardGuiItem>
 
 // Own includes
@@ -102,7 +101,7 @@ void ChangesDialog::addPackages(const QApt::StateChanges &changes)
         root->setFont(font);
 
         for (QApt::Package *package : *i) {
-            root->appendRow(new QStandardItem(KIcon("muon"), package->name()));
+            root->appendRow(new QStandardItem(QIcon::fromTheme("muon"), package->name()));
         }
 
         m_model->appendRow(root);

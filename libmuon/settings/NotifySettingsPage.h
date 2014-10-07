@@ -21,13 +21,11 @@
 #ifndef NOTIFYSETTINGSPAGE_H
 #define NOTIFYSETTINGSPAGE_H
 
-#include <QtGui/QWidget>
-#include <QtDBus/QDBusInterface>
-
 #include "SettingsPageBase.h"
 
-#include "../libmuonprivate_export.h"
+#include "libmuonprivate_export.h"
 
+class QDBusInterface;
 class QCheckBox;
 class QRadioButton;
 

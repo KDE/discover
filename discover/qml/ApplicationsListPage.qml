@@ -17,13 +17,13 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 1.1
-import org.kde.plasma.components 0.1
+import QtQuick 2.1
+import QtQuick.Controls 1.1
 import "navigation.js" as Navigation
 import org.kde.muon.discover 1.0
 import org.kde.muon 1.0
 
-Page {
+Item {
     id: page
     property alias category: appsModel.filteredCategory
     property alias sortRole: appsModel.stringSortRole
@@ -39,6 +39,7 @@ Page {
     property real actualWidth: width-Math.pow(width/70, 2)
     property real proposedMargin: (width-actualWidth)/2
     property Component header: category==null ? null : categoryHeaderComponent
+    property Component extendedToolBar: null
     clip: true
     
     onSearchChanged: appsModel.sortOrder = Qt.AscendingOrder
@@ -63,102 +64,106 @@ Page {
         page.sectionDelegate = role=="canUpgrade" ? installedSectionDelegate : defaultSectionDelegate
     }
     
-    tools: Row {
-            id: buttonsRow
-            width: 100
-            height: theme.defaultFont.pointSize*2
+    property Component tools: Row {
+            height: SystemFonts.generalFont.pointSize*2
             visible: page.visible
             spacing: 3
+
+            Loader {
+                width: item ? item.width : 0
+                sourceComponent: page.extendedToolBar
+            }
 
             MuonToolButton {
                 id: sortButton
                 icon: "view-sort-ascending"
-                onClicked: menu.open()
+                onClicked: menu.popup()
 
-                ActionGroup { id: sortActionGroup }
-                Menu {
+                ExclusiveGroup { id: sortActionGroup }
+                menu: Menu {
                     id: menu
                     MenuItem {
                         id: nameItem
                         text: i18n("Name")
-                        onClicked: page.changeSorting("name", Qt.AscendingOrder, "")
+                        onTriggered: page.changeSorting("name", Qt.AscendingOrder, "")
                         checked: appsModel.stringSortRole=="name"
                         checkable: true
-                        Component.onCompleted: sortActionGroup.addAction(nameItem)
+                        exclusiveGroup: sortActionGroup
                     }
                     MenuItem {
                         id: ratingItem
                         text: i18n("Rating")
-                        onClicked: page.changeSorting("sortableRating", Qt.DescendingOrder, "")
+                        onTriggered: page.changeSorting("sortableRating", Qt.DescendingOrder, "")
                         checked: appsModel.stringSortRole=="sortableRating"
                         checkable: true
-                        Component.onCompleted: sortActionGroup.addAction(ratingItem)
+                        exclusiveGroup: sortActionGroup
                     }
                     MenuItem {
                         id: buzzItem
                         text: i18n("Buzz")
-                        onClicked: page.changeSorting("ratingPoints", Qt.DescendingOrder, "")
+                        onTriggered: page.changeSorting("ratingPoints", Qt.DescendingOrder, "")
                         checked: appsModel.stringSortRole=="ratingPoints"
                         checkable: true
-                        Component.onCompleted: sortActionGroup.addAction(buzzItem)
+                        exclusiveGroup: sortActionGroup
                     }
                     MenuItem {
                         id: popularityItem
                         text: i18n("Popularity")
-                        onClicked: page.changeSorting("popcon", Qt.DescendingOrder, "")
+                        onTriggered: page.changeSorting("popcon", Qt.DescendingOrder, "")
                         checked: appsModel.stringSortRole=="popcon"
                         checkable: true
-                        Component.onCompleted: sortActionGroup.addAction(popularityItem)
+                        exclusiveGroup: sortActionGroup
                     }
                     MenuItem {
                         id: originItem
                         text: i18n("Origin")
-                        onClicked: page.changeSorting("origin", Qt.DescendingOrder, "origin")
+                        onTriggered: page.changeSorting("origin", Qt.DescendingOrder, "origin")
                         checked: appsModel.stringSortRole=="origin"
                         checkable: true
-                        Component.onCompleted: sortActionGroup.addAction(originItem)
+                        exclusiveGroup: sortActionGroup
                     }
                     MenuItem {
                         id: installedItem
                         text: i18n("Installed")
-                        onClicked: page.changeSorting("canUpgrade", Qt.DescendingOrder, "canUpgrade")
+                        onTriggered: page.changeSorting("canUpgrade", Qt.DescendingOrder, "canUpgrade")
                         checked: appsModel.stringSortRole=="canUpgrade"
                         checkable: true
-                        Component.onCompleted: sortActionGroup.addAction(installedItem)
+                        exclusiveGroup: sortActionGroup
                     }
                 }
             }
 
-            ActionGroup { id: shownActionGroup }
             MuonToolButton {
                 id: listViewShown
                 icon: "tools-wizard"
-                onClicked: shownMenu.open()
-                Menu {
+                onClicked: shownMenu.popup()
+
+                ExclusiveGroup { id: shownActionGroup }
+                menu: Menu {
                     id: shownMenu
                     MenuItem {
                         id: itemList
-                        property string type: "list"
+                        property string viewType: "list"
                         text: i18n("List")
                         checkable: true
-                        checked: page.state==type
-                        onClicked: page.state=type
-                        Component.onCompleted: shownActionGroup.addAction(itemList)
+                        checked: page.state==viewType
+                        onTriggered: page.state=viewType
+                        exclusiveGroup: shownActionGroup
                     }
                     MenuItem {
                         id: itemGrid
-                        property string type: "grid2"
+                        property string viewType: "grid2"
                         text: i18n("Grid")
                         checkable: true
-                        checked: page.state==type
-                        onClicked: page.state=type
-                        Component.onCompleted: shownActionGroup.addAction(itemGrid)
+                        checked: page.state==viewType
+                        onTriggered: page.state=viewType
+                        exclusiveGroup: shownActionGroup
                     }
-                    MenuItem { separator: true }
+                    MenuSeparator {}
                     MenuItem {
                         checkable: true
                         checked: appsModel.shouldShowTechnical
-                        onClicked: {
+                        onTriggered: {
                             appsModel.shouldShowTechnical = !appsModel.shouldShowTechnical;
                             appsModel.sortModel();
                         }

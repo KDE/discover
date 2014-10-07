@@ -21,9 +21,9 @@
 #include "BreadcrumbWidget.h"
 
 #include <QtCore/QTimer>
-#include <QtGui/QToolButton>
+#include <QtWidgets/QToolButton>
 
-#include <KLocale>
+#include <KLocalizedString>
 #include <KLineEdit>
 #include <KSeparator>
 #include <KStandardGuiItem>

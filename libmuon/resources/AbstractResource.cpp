@@ -20,9 +20,8 @@
 
 #include "AbstractResource.h"
 #include "AbstractResourcesBackend.h"
-#include <KLocalizedString>
-#include <KGlobal>
-#include <KLocale>
+#include <klocalizedstring.h>
+#include <KFormat>
 
 AbstractResource::AbstractResource(AbstractResourcesBackend* parent)
     : QObject(parent)
@@ -95,5 +94,13 @@ bool AbstractResource::isFromSecureOrigin() const
 
 QString AbstractResource::sizeDescription()
 {
-    return KGlobal::locale()->formatByteSize(downloadSize());
+    return KFormat().formatByteSize(downloadSize());
+}
+
+QCollatorSortKey AbstractResource::nameSortKey()
+{
+    if (!m_collatorKey) {
+        m_collatorKey.reset(new QCollatorSortKey(QCollator().sortKey(name())));
+    }
+    return *m_collatorKey;
 }

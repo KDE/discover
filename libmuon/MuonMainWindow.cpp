@@ -21,19 +21,19 @@
 #include "MuonMainWindow.h"
 
 // Qt includes
-#include <QtGui/QLabel>
-#include <QtGui/QShortcut>
-#include <QtGui/QAction>
+#include <QLabel>
+#include <QShortcut>
+#include <QAction>
+#include <QApplication>
+#include <QDialog>
+#include <QVBoxLayout>
+#include <QStandardPaths>
 
-// KDE includes
+// KF5 includes
+#include <KLocalizedString>
 #include <KActionCollection>
-#include <KApplication>
-#include <KDialog>
 #include <KStandardAction>
-#include <KStandardDirs>
-#include <KVBox>
-#include <Solid/Networking>
-#include <Phonon/MediaObject>
+#include <phonon/MediaObject>
 
 MuonMainWindow::MuonMainWindow()
     : KXmlGuiWindow(0)
@@ -52,9 +52,9 @@ QSize MuonMainWindow::sizeHint() const
 
 void MuonMainWindow::setupActions()
 {
-    KAction *quitAction = KStandardAction::quit(KApplication::instance(),
+    QAction *quitAction = KStandardAction::quit(QApplication::instance(),
                                                 SLOT(quit()), actionCollection());
-    actionCollection()->addAction("quit", quitAction);
+    actionCollection()->addAction("file_quit", quitAction);
 
     QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_M), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(easterEggTriggered()));
@@ -62,11 +62,11 @@ void MuonMainWindow::setupActions()
 
 void MuonMainWindow::easterEggTriggered()
 {
-    KDialog *dialog = new KDialog(this);
-    KVBox *widget = new KVBox(dialog);
-    QLabel *label = new QLabel(widget);
+    QDialog *dialog = new QDialog(this);
+    QVBoxLayout *layout = new QVBoxLayout(dialog);
+    QLabel *label = new QLabel(dialog);
     label->setText(i18nc("@label Easter Egg", "This Muon has super cow powers"));
-    QLabel *moo = new QLabel(widget);
+    QLabel *moo = new QLabel(dialog);
     moo->setFont(QFont("monospace"));
     moo->setText("             (__)\n"
                  "             (oo)\n"
@@ -75,12 +75,14 @@ void MuonMainWindow::easterEggTriggered()
                  "  *  ||------||\n"
                  "     ^^      ^^\n");
 
-    dialog->setMainWidget(widget);
+    layout->addWidget(label);
+    layout->addWidget(moo);
+    dialog->setLayout(layout);
     dialog->show();
 
-    QString mooFile = KStandardDirs::locate("data", "libmuon/moo.ogg");
+    QUrl mooFile = QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::GenericDataLocation, "libmuon/moo.ogg"));
     Phonon::MediaObject *music =
-        Phonon::createPlayer(Phonon::MusicCategory,
+    Phonon::createPlayer(Phonon::MusicCategory,
                              Phonon::MediaSource(mooFile));
     music->play();
 }
@@ -104,8 +106,10 @@ void MuonMainWindow::setActionsEnabled(bool enabled)
 
 bool MuonMainWindow::isConnected() const
 {
-    int status = Solid::Networking::status();
-    bool connected = ((status == Solid::Networking::Connected) ||
-                      (status == Solid::Networking::Unknown));
-    return connected;
+//     TODO: Port to new solid API
+//     int status = Solid::Networking::status();
+//     bool connected = ((status == Solid::Networking::Connected) ||
+//                       (status == Solid::Networking::Unknown));
+//     return connected;
+    return true;
 }

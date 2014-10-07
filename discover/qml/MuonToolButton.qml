@@ -1,17 +1,17 @@
-import QtQuick 1.1
-import org.kde.plasma.core 0.1
-import org.kde.plasma.components 0.1
+import QtQuick 2.1
+import QtQuick.Controls 1.1
+import org.kde.kquickcontrolsaddons 2.0
 
 ToolButton
 {
     id: button
-    property alias icon: iconItem.source
+    property string icon: ""
     property alias text: labelItem.text
     property alias overlayText: overlayTextItem.text
     width: height+(labelItem.text=="" ? 0 : labelItem.width)
     anchors.margins: 5
     
-    IconItem {
+    QIconItem {
         id: iconItem
         anchors {
             top: parent.top
@@ -21,6 +21,7 @@ ToolButton
         }
         width: height
         smooth: true
+        icon: button.icon
     }
     
     Label {

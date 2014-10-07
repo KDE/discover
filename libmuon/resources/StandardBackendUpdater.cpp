@@ -24,7 +24,6 @@
 #include <Transaction/Transaction.h>
 #include <Transaction/TransactionModel.h>
 #include <KLocalizedString>
-#include <KAction>
 #include <QDateTime>
 #include <QDebug>
 #include <QTimer>

@@ -1,6 +1,7 @@
-import QtQuick 1.1
-import org.kde.plasma.core 0.1
-import org.kde.plasma.components 0.1
+import QtQuick 2.1
+import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.1
+import org.kde.kquickcontrolsaddons 2.0
 import org.kde.muon 1.0
 import "navigation.js" as Navigation
 
@@ -14,7 +15,7 @@ ToolBar {
     }
     
     Connections {
-        target: transactionModel
+        target: TransactionModel
         onTransactionAdded: {
             if(page.enabled && progressModel.appAt(trans.resource)<0)
                 progressModel.append({'app': trans.resource})
@@ -47,37 +48,49 @@ ToolBar {
             top: parent.top
             margins: 3
         }
-        
+
         spacing: 3
         height: 30
         orientation: ListView.Horizontal
-        
+
         model: progressModel
-        
-        delegate: ListItem {
-            width: launcherRow.childrenRect.width+5
+
+        delegate: Button {
+            width: launcherRow.childrenRect.width+50
             height: contents.height
-            enabled: true
+
             onClicked: Navigation.openApplication(model.app)
             TransactionListener {
                 id: listener
                 resource: model.app
                 onCancelled: model.remove(index)
             }
-            
-            Row {
+
+            RowLayout {
                 id: launcherRow
+                anchors.fill: parent
                 spacing: 2
-                IconItem { source: model.app.icon; height: parent.height*0.95; width: height }
-                Label { text: model.app.name }
-                Label { text: listener.statusText; visible: listener.isActive }
-                ToolButton {
-                    iconSource: "dialog-cancel"
-                    visible: listener.isCancellable
-                    onClicked: resourcesModel.cancelTransaction(app)
+                QIconItem {
+                    anchors.verticalCenter: parent.verticalCenter
+                    icon: model.app.icon
+                    Layout.preferredHeight: parent.height*0.5
+                    width: height
+                }
+                Label {
+                    anchors.verticalCenter: parent.verticalCenter
+                    Layout.fillWidth: true
+                    elide: Text.ElideRight
+                    text: model.app.name + (listener.isActive ? " "+listener.statusText : "")
                 }
                 ToolButton {
-                    iconSource: "system-run"
+                    anchors.verticalCenter: parent.verticalCenter
+                    iconName: "dialog-cancel"
+                    visible: listener.isCancellable
+                    onClicked: ResourcesModel.cancelTransaction(app)
+                }
+                ToolButton {
+                    anchors.verticalCenter: parent.verticalCenter
+                    iconName: "system-run"
                     visible: model.app.isInstalled && !listener.isActive && model.app.canExecute
                     onClicked: {
                         model.app.invokeApplication()
@@ -89,11 +102,15 @@ ToolBar {
                 anchors {
                     bottom: parent.bottom
                     left: parent.left
-                    bottomMargin: -3
+                    bottomMargin: 3
+                    leftMargin: 3
+                    rightMargin: 3
                 }
-                width: parent.width*(listener.progress/100)
-                color: theme.textColor
+                width: (parent.width - anchors.leftMargin - anchors.rightMargin)*(listener.progress/100)
+                SystemPalette { id: theme }
+                color: theme.buttonText
                 height: 1
+                opacity: 0.5
                 visible: listener.isActive
             }
         }
@@ -102,10 +119,9 @@ ToolBar {
         anchors {
             verticalCenter: parent.verticalCenter
             right: parent.right
-            rightMargin: 5
         }
         height: Math.min(implicitHeight, parent.height)
-        iconSource: "window-close"
+        iconName: "window-close"
         onClicked: progressModel.clear()
     }
 }

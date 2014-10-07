@@ -62,17 +62,17 @@ private:
 
     QStackedWidget *m_stack;
     QSplitter *m_mainWidget;
-    KAction *m_safeUpgradeAction;
-    KAction *m_distUpgradeAction;
-    KAction *m_autoRemoveAction;
-    KAction *m_previewAction;
-    KAction *m_applyAction;
-    KAction *m_saveInstalledAction;
-    KAction *m_saveSelectionsAction;
-    KAction *m_loadSelectionsAction;
-    KAction *m_createDownloadListAction;
-    KAction *m_downloadListAction;
-    KAction *m_loadArchivesAction;
+    QAction *m_safeUpgradeAction;
+    QAction *m_distUpgradeAction;
+    QAction *m_autoRemoveAction;
+    QAction *m_previewAction;
+    QAction *m_applyAction;
+    QAction *m_saveInstalledAction;
+    QAction *m_saveSelectionsAction;
+    QAction *m_loadSelectionsAction;
+    QAction *m_createDownloadListAction;
+    QAction *m_downloadListAction;
+    QAction *m_loadArchivesAction;
 
     ManagerSettingsDialog *m_settingsDialog;
     KDialog *m_historyDialog;

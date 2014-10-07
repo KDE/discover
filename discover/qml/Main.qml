@@ -18,12 +18,14 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-import QtQuick 1.1
-import org.kde.plasma.components 0.1
+import QtQuick 2.1
+import QtQuick.Controls 1.1
+import org.kde.muon 1.0
 import org.kde.muon.discover 1.0
 import "navigation.js" as Navigation
 
-Item {
+Item
+{
     id: window
     property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
     property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
@@ -37,11 +39,13 @@ Item {
     property Component currentTopLevel: defaultStartup ? topBrowsingComp : loadingComponent
     property bool defaultStartup: true
     property bool navigationEnabled: true
-    
+
+    visible: true
+
     Binding {
         target: app.searchWidget
         property: "enabled"
-        value: pageStack.currentPage!=null && pageStack.currentPage.searchFor!=null
+        value: pageStack.currentItem!=null && pageStack.currentItem.searchFor!=null
     }
     function clearSearch() { app.searchWidget.text="" }
     Connections {
@@ -56,12 +60,12 @@ Item {
         running: false
         repeat: false
         interval: 200
-        onTriggered: { pageStack.currentPage.searchFor(app.searchWidget.text) }
+        onTriggered: { pageStack.currentItem.searchFor(app.searchWidget.text) }
     }
-    
+
     Component {
         id: loadingComponent
-        Page {
+        Item {
             Label {
                 text: i18n("Loading...")
                 font.pointSize: 52
@@ -69,7 +73,7 @@ Item {
             }
         }
     }
-    
+
     onCurrentTopLevelChanged: {
         if(currentTopLevel==null)
             return
@@ -82,8 +86,8 @@ Item {
             if(obj)
                 obj.destroy(2000)
         }
-        if(pageStack.currentPage) {
-            pageStack.currentPage.destroy(100)
+        if(pageStack.currentItem) {
+            pageStack.currentItem.destroy(100)
         }
         var page;
         try {
@@ -95,7 +99,7 @@ Item {
         }
         pageStack.replace(page, {}, window.status!=Component.Ready)
     }
-    
+
     DiscoverAction {
         id: backAction
         objectName: "back"
@@ -118,7 +122,7 @@ Item {
     }
     TopLevelPageData {
         iconName: "applications-other"
-        text: resourcesModel.updatesCount==0 ? i18n("Installed") : i18np("Installed (%1 update)", "Installed (%1 updates)", resourcesModel.updatesCount)
+        text: ResourcesModel.updatesCount==0 ? i18n("Installed") : i18np("Installed (%1 update)", "Installed (%1 updates)", ResourcesModel.updatesCount)
         component: topInstalledComp
         objectName: "installed"
         shortcut: "Alt+I"
@@ -130,15 +134,15 @@ Item {
         objectName: "sources"
         shortcut: "Alt+S"
     }
-    
+
     Connections {
         target: app
         onOpenApplicationInternal: Navigation.openApplication(app)
         onListMimeInternal: Navigation.openApplicationMime(mime)
         onListCategoryInternal: Navigation.openCategoryByName(name)
     }
-    
-    ToolBar {
+
+    Item {
         id: breadcrumbsItemBar
         anchors {
             top: parent.top
@@ -147,17 +151,18 @@ Item {
             rightMargin: pageToolBar.visible ? 10 : 0
         }
         height: breadcrumbsItem.count<=1 ? 0 : 30
-        
-        tools: Breadcrumbs {
-                id: breadcrumbsItem
-                anchors.fill: parent
-                pageStack: pageStack
-                onPoppedPages: window.clearSearch()
-                Component.onCompleted: breadcrumbsItem.pushItem("go-home")
-            }
+
+        Breadcrumbs {
+            id: breadcrumbsItem
+            anchors.fill: parent
+
+            pageStack: pageStack
+            onPoppedPages: window.clearSearch()
+            Component.onCompleted: breadcrumbsItem.pushItem("go-home", "")
+        }
         Behavior on height { NumberAnimation { duration: 250 } }
     }
-    
+
     ToolBar {
         id: pageToolBar
         anchors {
@@ -165,15 +170,19 @@ Item {
             right: parent.right
         }
         height: visible ? 30 : 0
-        width: tools!=null ? tools.childrenRect.width+5 : 0
+        width: fu.item ? fu.item.width+5 : 0
         visible: width>0
-        
+
+        Loader {
+            id: fu
+            sourceComponent: pageStack.currentItem ? pageStack.currentItem.tools : null
+        }
+
         Behavior on width { NumberAnimation { duration: 250 } }
     }
-    
-    PageStack {
+
+    StackView {
         id: pageStack
-        toolBar: pageToolBar
         anchors {
             bottom: progressBox.top
             top: parent.top
@@ -181,13 +190,14 @@ Item {
             right: parent.right
             topMargin: Math.max(breadcrumbsItemBar.height, pageToolBar.height)
         }
+
         onDepthChanged: {
             if(depth==1) {
                 breadcrumbsItem.removeAllItems()
             }
         }
     }
-    
+
     ProgressView {
         id: progressBox
         anchors {

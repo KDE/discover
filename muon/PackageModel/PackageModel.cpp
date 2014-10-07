@@ -20,10 +20,9 @@
 
 #include "PackageModel.h"
 
-#include <QtCore/QStringBuilder>
-
-#include <KIcon>
-#include <KLocale>
+#include <QStringBuilder>
+#include <QIcon>
+#include <KLocalizedString>
 
 PackageModel::PackageModel(QObject *parent)
     : QAbstractListModel(parent)
@@ -55,7 +54,7 @@ QVariant PackageModel::data(const QModelIndex &index, int role) const
         }
         return package->name();
     case IconRole:
-        return KIcon("application-x-deb");
+        return QIcon::fromTheme("application-x-deb");
     case DescriptionRole:
         return package->shortDescription();
     case StatusRole:

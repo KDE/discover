@@ -21,7 +21,7 @@
 #ifndef CATEGORYMODEL_H
 #define CATEGORYMODEL_H
 
-#include <QtGui/QStandardItemModel>
+#include <QStandardItemModel>
 
 #include "libmuonprivate_export.h"
 
@@ -52,6 +52,7 @@ class MUONPRIVATE_EXPORT CategoryModel : public QStandardItemModel
 
         void setDisplayedCategory(Category* c);
         Category* displayedCategory() const;
+        virtual QHash< int, QByteArray > roleNames() const;
 
         Q_SCRIPTABLE static Category* findCategoryByName(const QString& name);
     private:

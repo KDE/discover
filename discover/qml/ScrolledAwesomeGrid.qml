@@ -17,10 +17,10 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 1.1
-import org.kde.plasma.components 0.1
+import QtQuick 2.1
+import QtQuick.Controls 1.1
 
-Item {
+ScrollView {
     property alias header: gridRepeater.header
     property alias footer: gridRepeater.footer
     property alias delegate: gridRepeater.delegate
@@ -31,21 +31,6 @@ Item {
     
     AwesomeGrid {
         id: gridRepeater
-        anchors {
-            fill: parent
-            rightMargin: scroll.width
-        }
         header: parentItem.header
-    }
-    
-    NativeScrollBar {
-        id: scroll
-        orientation: Qt.Vertical
-        flickableItem: gridRepeater
-        anchors {
-            top: parent.top
-            right: parent.right
-            bottom: parent.bottom
-        }
     }
 }

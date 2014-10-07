@@ -21,30 +21,22 @@
 
 #include "PackageKitResource.h"
 #include "PackageKitBackend.h"
+#include "PackageKitMessages.h"
 #include <MuonDataSources.h>
-#include <KGlobal>
-#include <KLocale>
-#include <PackageKit/packagekit-qt2/Daemon>
+#include <KLocalizedString>
+#include <PackageKit/Details>
+#include <PackageKit/Daemon>
 
 PackageKitResource::PackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, PackageKitBackend* parent)
     : AbstractResource(parent)
-    , m_info(info)
+    , m_backend(parent)
     , m_summary(summary)
     , m_size(0)
-    , m_gotDetails(false)
-    , m_backend(parent)
+    , m_name(PackageKit::Daemon::packageName(packageId))
 {
     addPackageId(info, packageId, summary);
-    /*if (info == PackageKit::Transaction::InfoInstalled) {
-        m_installedPackageId = packageId;
-        m_installedVersion = PackageKit::Daemon::global()->packageVersion(m_availablePackageId);
-    }
-    if (!m_availablePackageId.isEmpty()) {
-        m_name = PackageKit::Daemon::global()->packageName(m_availablePackageId);
-        m_icon = PackageKit::Daemon::global()->packageIcon(m_availablePackageId);
-        m_availableVersion = PackageKit::Daemon::global()->packageVersion(m_availablePackageId);
-    }*/
-    setObjectName(m_availablePackageId);
+
+    setObjectName(m_name);
 }
 
 QString PackageKitResource::name()
@@ -59,12 +51,15 @@ QString PackageKitResource::packageName() const
 
 QString PackageKitResource::availablePackageId() const
 {
-    return m_availablePackageId;
+    QMap<PackageKit::Transaction::Info, QStringList>::const_iterator it = m_packages.constFind(PackageKit::Transaction::InfoAvailable);
+    if (it != m_packages.constEnd())
+        return it->first();
+    return installedPackageId();
 }
 
 QString PackageKitResource::installedPackageId() const
 {
-    return m_installedPackageId;
+    return m_packages[PackageKit::Transaction::InfoInstalled].first();
 }
 
 QString PackageKitResource::comment()
@@ -74,27 +69,21 @@ QString PackageKitResource::comment()
 
 QString PackageKitResource::longDescription()
 {
-    kDebug();
-    fetchDetails();
     return m_detail;
 }
 
 QUrl PackageKitResource::homepage()
 {
-    kDebug();
-    fetchDetails();
     return m_url;
 }
 
 QString PackageKitResource::icon() const
 {
-    return m_icon;
+    return QStringLiteral("applications-other");
 }
 
 QString PackageKitResource::license()
 {
-    kDebug();
-    fetchDetails();
     return m_license;
 }
 
@@ -105,24 +94,22 @@ QList<PackageState> PackageKitResource::addonsInformation()
 
 QString PackageKitResource::availableVersion() const
 {
-    return m_availableVersion;
+    return PackageKit::Daemon::packageVersion(availablePackageId());
 }
 
 QString PackageKitResource::installedVersion() const
 {
-    return m_installedVersion;
+    return PackageKit::Daemon::packageVersion(installedPackageId());
 }
 
 int PackageKitResource::downloadSize()
 {
-    kDebug();
-    fetchDetails();
     return m_size;
 }
 
 QString PackageKitResource::origin() const
 {
-    //FIXME
+    //TODO
     return "PackageKit";
 }
 
@@ -133,79 +120,35 @@ QString PackageKitResource::section()
 
 QUrl PackageKitResource::screenshotUrl()
 {
-    return KUrl(MuonDataSources::screenshotsSource(), "screenshot/"+packageName());
+    return QUrl(MuonDataSources::screenshotsSource().toString() + "/screenshot/" + packageName());
 }
 
 QUrl PackageKitResource::thumbnailUrl()
 {
-    return KUrl(MuonDataSources::screenshotsSource(), "thumbnail/"+packageName());
+    return QUrl(MuonDataSources::screenshotsSource().toString() + "/thumbnail/" + packageName());
 }
 
 AbstractResource::State PackageKitResource::state()
 {
-    if (availableVersion() != installedVersion() && !installedVersion().isEmpty() && !availableVersion().isEmpty())
+    if (m_backend->isPackageNameUpgradeable(name()))
         return Upgradeable;
-    switch(m_info) {
-        case PackageKit::Transaction::InfoInstalled:
-            return Installed;
-        case PackageKit::Transaction::InfoAvailable:
-            return None;
-        default:
-            break;
-    };
-    return Broken;
+    else if(m_packages.contains(PackageKit::Transaction::InfoInstalled))
+        return Installed;
+    else if(m_packages.contains(PackageKit::Transaction::InfoAvailable))
+        return None;
+    else
+        return Broken;
 }
 
 void PackageKitResource::resetPackageIds()
 {
-    m_info = PackageKit::Transaction::InfoUnknown;
-    m_availablePackageId = QString();
-    m_installedPackageId = QString();
+    m_packages.clear();
 }
 
-void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
+void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &/*summary*/)
 {
-    if (info == PackageKit::Transaction::InfoUnknown)
-        kWarning() << "Received unknown PackageKit::Transaction::Info for " << name();
-
-    bool changeState = (info != m_info);
-
-    if (m_availablePackageId.isEmpty()) {
-        m_name = PackageKit::Daemon::global()->packageName(packageId);
-        m_icon = PackageKit::Daemon::global()->packageIcon(packageId);
-        m_availablePackageId = packageId;
-        m_availableVersion = PackageKit::Daemon::global()->packageVersion(packageId);
-        m_info = info;
-    }
-    if (info == PackageKit::Transaction::InfoInstalled) {
-        m_installedPackageId = packageId;
-        m_info = info;
-        m_installedVersion = PackageKit::Daemon::global()->packageVersion(packageId);
-        if (!PackageKit::Daemon::global()->filters().testFlag(PackageKit::Transaction::FilterNewest) &&
-             PackageKitBackend::compare_versions(PackageKit::Daemon::global()->packageVersion(packageId), m_availableVersion) > 0) {
-            m_availablePackageId = packageId;
-            m_availableVersion = PackageKit::Daemon::global()->packageVersion(packageId);
-            m_gotDetails = false;
-        }
-    } else if (PackageKit::Daemon::global()->filters().testFlag(PackageKit::Transaction::FilterNewest) ||
-               PackageKitBackend::compare_versions(PackageKit::Daemon::global()->packageVersion(packageId), m_availableVersion) > 0) {
-        m_availablePackageId = packageId;
-        m_availableVersion = PackageKit::Daemon::global()->packageVersion(packageId);
-        if (m_installedVersion == m_availableVersion && info != PackageKit::Transaction::InfoInstalled) { //This case will happen when we have a package installed and remove it
-            kDebug() << "Caught the case of adding a package id which was previously installed and now is not anymore";
-            m_info = info;
-            m_installedPackageId = QString();
-            m_installedVersion = QString();
-        }
-        m_gotDetails = false;
-    }
-    if (m_summary.isEmpty())
-        m_summary = summary;
-    
-    if (changeState) {
-        //kDebug() << "State changed" << m_info;
-        emit stateChanged();
-    }
+    m_packages[info].append(packageId);
+    emit stateChanged();
 }
 
 QStringList PackageKitResource::categories()
@@ -330,39 +273,58 @@ bool PackageKitResource::isTechnical() const
     return true;//!m_availablePackageId.startsWith("flash");
 }
 
-void PackageKitResource::fetchDetails()
+void PackageKitResource::setDetails(const PackageKit::Details & details)
 {
-    kDebug() << "Try to fetch details for" << m_availablePackageId << name();
-    if ((m_gotDetails && (m_size != 0 || m_time.elapsed() < 10000)) || m_availablePackageId.isEmpty())
+    if (details.packageId() != availablePackageId())
         return;
-    m_time.restart();
-    m_gotDetails = true;
-    kDebug() << "Fetch details for" << m_availablePackageId;
-    PackageKit::Transaction* transaction = new PackageKit::Transaction(this);
-    connect(transaction, SIGNAL(details(QString, QString, PackageKit::Transaction::Group, QString, QString, qulonglong)), SLOT(details(QString, QString, PackageKit::Transaction::Group, QString, QString, qulonglong)));
-    connect(transaction, SIGNAL(destroy()), transaction, SLOT(deleteLater()));
-    transaction->getDetails(m_availablePackageId);
-    
-    kDebug() << "ERROR" << transaction->internalErrorMessage();
-}
 
-void PackageKitResource::details(const QString &packageId, const QString &license, PackageKit::Transaction::Group group, const QString &detail, const QString &url, qulonglong size)
-{
-    if (packageId != m_availablePackageId)
-        return;
-    kDebug() << "Got details for" << m_availablePackageId;
-    bool newLicense = (license != m_license);
-    m_license = license;
-    m_group = group;
-    m_detail = detail;
-    m_url = url;
-    m_size = size;
-    if (newLicense)
-        emit licenseChanged();
+    m_license = details.license();
+    m_group = details.group();
+    m_detail = details.description();
+    m_url = details.url();
+    m_size = details.size();
+
+    emit stateChanged();
 }
 
 void PackageKitResource::fetchChangelog()
 {
-    //TODO: implement
-    emit changelogFetched(QString());
+    PackageKit::Transaction* t = PackageKit::Daemon::getUpdateDetail(availablePackageId());
+    connect(t, &PackageKit::Transaction::updateDetail, this, &PackageKitResource::updateDetail);
+    connect(t, &PackageKit::Transaction::errorCode, this, [this](PackageKit::Transaction::Error err, const QString & error) {
+        qWarning() << "error fetching updates:" << err << error;
+        emit changelogFetched(QString());
+    });
 }
+
+static void addIfNotEmpty(const QString& title, const QString& content, QString& where)
+{
+    if (!content.isEmpty())
+        where += QStringLiteral("<b>") + title + QStringLiteral("</b><p>&nbsp;") + content + QStringLiteral("</p>");
+}
+
+static QString joinPackages(const QStringList& pkgids)
+{
+    QStringList ret;
+    foreach(const QString& pkgid, pkgids) {
+        ret += i18nc("package-name (version)", "%1 (%2)", PackageKit::Daemon::packageName(pkgid), PackageKit::Daemon::packageVersion(pkgid));
+    }
+    return ret.join(i18nc("comma separating package names", ", "));
+}
+
+void PackageKitResource::updateDetail(const QString& packageID, const QStringList& updates, const QStringList& obsoletes, const QStringList& vendorUrls,
+                                      const QStringList& bugzillaUrls, const QStringList& cveUrls, PackageKit::Transaction::Restart restart, const QString& updateText,
+                                      const QString& changelog, PackageKit::Transaction::UpdateState state, const QDateTime& issued, const QDateTime& updated)
+{
+    QString info;
+    addIfNotEmpty(i18n("Reason:"), updateText, info);
+    addIfNotEmpty(i18n("Obsoletes:"), joinPackages(obsoletes), info);
+    addIfNotEmpty(i18n("Updates:"), joinPackages(updates), info);
+    addIfNotEmpty(i18n("Change Log:"), changelog, info);
+    addIfNotEmpty(i18n("Update State:"), PackageKitMessages::updateStateMessage(state), info);
+    addIfNotEmpty(i18n("Restart:"), PackageKitMessages::restartMessage(restart), info);
+
+    emit changelogFetched(info);
+}
+
+

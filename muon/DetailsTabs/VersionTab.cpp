@@ -21,16 +21,15 @@
 #include "VersionTab.h"
 
 // Qt includes
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QListView>
-#include <QtGui/QPushButton>
+#include <QHBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QListView>
+#include <QtWidgets/QPushButton>
 #include <QStandardItemModel>
 
 // KDE includes
 #include <KDialog>
-#include <KIcon>
-#include <KLocale>
+#include <KLocalizedString>
 
 // LibQApt includes
 #include <LibQApt/Package>
@@ -53,7 +52,7 @@ VersionTab::VersionTab(QWidget *parent)
     footerWidget->setLayout(footerLayout);
 
     QLabel *infoIconLabel = new QLabel(footerWidget);
-    infoIconLabel->setPixmap(KIcon("dialog-warning").pixmap(32, 32));
+    infoIconLabel->setPixmap(QIcon::fromTheme("dialog-warning").pixmap(32, 32));
     footerLayout->addWidget(infoIconLabel);
 
     QLabel *infoLabel = new QLabel(footerWidget);

@@ -22,7 +22,7 @@
 #ifndef RESOURCESPROXYMODEL_H
 #define RESOURCESPROXYMODEL_H
 
-#include <QtGui/QSortFilterProxyModel>
+#include <QtCore/QSortFilterProxyModel>
 #include <QtCore/QString>
 #include <QStringList>
 
@@ -41,10 +41,10 @@ class MUONPRIVATE_EXPORT ResourcesProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
     Q_PROPERTY(QAbstractItemModel* sourceModel READ sourceModel WRITE setSourceModel)
-    Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical WRITE setShouldShowTechnical)
+    Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical WRITE setShouldShowTechnical NOTIFY showTechnicalChanged)
     Q_PROPERTY(Category* filteredCategory READ filteredCategory WRITE setFiltersFromCategory NOTIFY categoryChanged)
     Q_PROPERTY(QString originFilter READ originFilter WRITE setOriginFilter)
-    Q_PROPERTY(bool isShowingTechnical READ shouldShowTechnical WRITE setShouldShowTechnical)
+    Q_PROPERTY(bool isShowingTechnical READ shouldShowTechnical WRITE setShouldShowTechnical NOTIFY showTechnicalChanged)
     Q_PROPERTY(bool isSortingByRelevancy READ sortingByRelevancy WRITE setSortByRelevancy)
     Q_PROPERTY(AbstractResource::State stateFilter READ stateFilter WRITE setStateFilter NOTIFY stateFilterChanged)
     Q_PROPERTY(QString mimeTypeFilter READ mimeTypeFilter WRITE setMimeTypeFilter)
@@ -98,6 +98,7 @@ Q_SIGNALS:
     void invalidated();
     void categoryChanged();
     void stateFilterChanged();
+    void showTechnicalChanged();
 };
 
 #endif

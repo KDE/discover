@@ -22,14 +22,13 @@
 #define PACKAGEKITRESOURCE_H
 
 #include <resources/AbstractResource.h>
-#include <PackageKit/packagekit-qt2/Transaction>
+#include <PackageKit/Transaction>
 
 class PackageKitBackend;
 
 class PackageKitResource : public AbstractResource
 {
     Q_OBJECT
-    Q_PROPERTY(QString license READ license NOTIFY licenseChanged)
     public:
         explicit PackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, PackageKitBackend* parent);
         virtual QString packageName() const;
@@ -59,22 +58,26 @@ class PackageKitResource : public AbstractResource
 
     public slots:
         void addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
-        void details(const QString &packageId, const QString &license, PackageKit::Transaction::Group group, const QString &detail, const QString &url, qulonglong size);
+        void setDetails(const PackageKit::Details& details);
         void resetPackageIds();
-        
-    signals:
-        void licenseChanged();
 
     private slots:
-        void fetchDetails();
-        
-    protected:
-        PackageKitBackend * m_backend;
-        
+        void updateDetail(const QString &packageID,
+                          const QStringList &updates,
+                          const QStringList &obsoletes,
+                          const QStringList &vendorUrls,
+                          const QStringList &bugzillaUrls,
+                          const QStringList &cveUrls,
+                          PackageKit::Transaction::Restart restart,
+                          const QString &updateText,
+                          const QString &changelog,
+                          PackageKit::Transaction::UpdateState state,
+                          const QDateTime &issued,
+                          const QDateTime &updated);
+
     private:
-        QString m_installedPackageId;
-        QString m_availablePackageId;
-        PackageKit::Transaction::Info m_info;
+        PackageKitBackend * m_backend;
+        QMap<PackageKit::Transaction::Info, QStringList> m_packages;
         QString m_summary;
         QString m_license;
         PackageKit::Transaction::Group m_group;
@@ -82,11 +85,6 @@ class PackageKitResource : public AbstractResource
         QString m_url;
         qulonglong m_size;
         QString m_name;
-        QString m_icon;
-        QString m_availableVersion;
-        QString m_installedVersion;
-        bool m_gotDetails;
-        QTime m_time;
 };
 
 #endif // PACKAGEKITRESOURCE_H

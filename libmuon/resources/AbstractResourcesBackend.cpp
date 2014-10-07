@@ -33,3 +33,6 @@ void AbstractResourcesBackend::installApplication(AbstractResource* app)
 
 void AbstractResourcesBackend::integrateMainWindow(MuonMainWindow*)
 {}
+
+void AbstractResourcesBackend::setMetaData(const QString&)
+{}

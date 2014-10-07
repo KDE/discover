@@ -21,7 +21,7 @@
 #ifndef APPLICATIONLAUNCHER_H
 #define APPLICATIONLAUNCHER_H
 
-#include <QtGui/QDialog>
+#include <QDialog>
 
 class LaunchListModel;
 class QModelIndex;

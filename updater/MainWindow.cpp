@@ -23,26 +23,25 @@
 
 // Qt includes
 #include <QtCore/QTimer>
-#include <QtGui/QApplication>
-#include <QtGui/QVBoxLayout>
-#include <QPushButton>
-#include <QToolButton>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QToolButton>
 #include <QMenu>
+#include <QMenuBar>
 #include <QLayoutItem>
 
 // KDE includes
-#include <KAction>
 #include <KActionCollection>
-#include <KDebug>
 #include <KMessageBox>
 #include <KMessageWidget>
 #include <KProcess>
 #include <KProtocolManager>
-#include <KStandardDirs>
-#include <Solid/Device>
-#include <Solid/AcAdapter>
 #include <KToolBar>
-#include <KMenuBar>
+#include <KLocalizedString>
+#warning TODO, waiting for this new API to finally be accepted
+// #include <Solid/Power>
+// #include <Solid/AcPluggedJob>
 
 // Own includes
 #include <resources/AbstractResourcesBackend.h>
@@ -92,7 +91,7 @@ void MainWindow::initGUI()
     buttonsUi.setupUi(buttons);
     buttonsUi.more->setMenu(m_moreMenu);
     buttonsUi.apply->setDefaultAction(m_applyAction);
-    buttonsUi.quit->setDefaultAction(action("quit"));
+    buttonsUi.quit->setDefaultAction(action("file_quit"));
 
     mainLayout->addWidget(m_powerMessage);
     mainLayout->addWidget(m_updaterWidget);
@@ -106,6 +105,10 @@ void MainWindow::initGUI()
     connect(m, SIGNAL(allInitialized()), SLOT(initBackend()));
     menuBar()->setVisible(false);
     toolBar()->setVisible(false);
+
+#warning TODO, waiting for this new API to finally be accepted
+//     connect(Solid::Power::self(), SIGNAL(acPluggedChanged(bool)), SLOT(updatePlugState(bool)));
+    updatePlugState(true);
 }
 
 void MainWindow::setupActions()
@@ -113,7 +116,7 @@ void MainWindow::setupActions()
     MuonMainWindow::setupActions();
 
     m_applyAction = actionCollection()->addAction("apply");
-    m_applyAction->setIcon(KIcon("dialog-ok-apply"));
+    m_applyAction->setIcon(QIcon::fromTheme("dialog-ok-apply"));
     m_applyAction->setText(i18nc("@action Downloads and installs updates", "Install Updates"));
     connect(m_applyAction, SIGNAL(triggered()), m_updater, SLOT(updateAll()));
     m_applyAction->setEnabled(false);
@@ -209,32 +212,18 @@ void MainWindow::editSettings()
 {
     if (!m_settingsDialog) {
         m_settingsDialog = new UpdaterSettingsDialog(this);
-        connect(m_settingsDialog, SIGNAL(okClicked()), SLOT(closeSettingsDialog()));
+        connect(m_settingsDialog, SIGNAL(finished(int)), m_settingsDialog, SLOT(deleteLater()));
         m_settingsDialog->show();
     } else {
         m_settingsDialog->raise();
     }
 }
 
-void MainWindow::closeSettingsDialog()
-{
-    m_settingsDialog->deleteLater();
-    m_settingsDialog = nullptr;
-}
-
 void MainWindow::checkPlugState()
 {
-    const QList<Solid::Device> acAdapters = Solid::Device::listFromType(Solid::DeviceInterface::AcAdapter);
-
-    bool isPlugged = acAdapters.isEmpty();
-    for(Solid::Device device_ac : acAdapters) {
-        Solid::AcAdapter* acAdapter = device_ac.as<Solid::AcAdapter>();
-        isPlugged |= acAdapter->isPlugged();
-        connect(acAdapter, SIGNAL(plugStateChanged(bool,QString)),
-                this, SLOT(updatePlugState(bool)), Qt::UniqueConnection);
-    }
-
-    updatePlugState(isPlugged);
+#warning TODO, waiting for this new API to finally be accepted
+//     Solid::AcPluggedJob* job = Solid::Power::isAcPlugged();
+//     connect(job, &Solid::AcPluggedJob::result, this, [=]() { updatePlugState(job->isPlugged()); });
 }
 
 void MainWindow::updatePlugState(bool plugged)

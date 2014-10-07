@@ -21,70 +21,79 @@
 #include "MuonBackendsFactory.h"
 #include "resources/AbstractResourcesBackend.h"
 #include "resources/ResourcesModel.h"
-#include <KServiceTypeTrader>
-#include <KDebug>
-#include <KCmdLineArgs>
 #include <QPluginLoader>
-#include <QCoreApplication>
-#include <kplugininfo.h>
+#include <QDebug>
+#include <QStandardPaths>
+#include <QDir>
+#include <QCommandLineParser>
+#include <KSharedConfig>
+#include <KConfigGroup>
+#include <KDesktopFile>
+#include <KLocalizedString>
+
+Q_GLOBAL_STATIC(QStringList, s_requestedBackends)
 
 MuonBackendsFactory::MuonBackendsFactory()
 {}
 
 AbstractResourcesBackend* MuonBackendsFactory::backend(const QString& name) const
 {
-    QString query = QString("[X-KDE-PluginInfo-Name]=='%1'").arg( name );
-    KService::List serviceList = KServiceTypeTrader::self()->query( "Muon/Backend", query );
-    if(!serviceList.isEmpty()) {
-        return backendForPlugin(KPluginInfo(serviceList.first()));
-    } else {
-        KService::List serviceList = KServiceTypeTrader::self()->query("Muon/Backend");
-        QStringList backends;
-        foreach(const KService::Ptr& ptr, serviceList) {
-            backends += KPluginInfo(ptr).pluginName();
-        }
-        qWarning() << "Couldn't find the backend: " << name << "among" << backends;
-    }
-    return 0;
+    QString data = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("libmuon/backends/%1.desktop").arg(name));
+    return backendForFile(data);
 }
 
-QStringList MuonBackendsFactory::allBackendNames() const
+AbstractResourcesBackend* MuonBackendsFactory::backendForFile(const QString& path) const
 {
-    QSet<QString> whitelist = fetchBackendsWhitelist();
-    if (!whitelist.isEmpty())
-        return whitelist.toList();
+    KDesktopFile cfg(path);
+    KConfigGroup group = cfg.group("Desktop Entry");
+    QString libname = group.readEntry("X-KDE-Library", QString());
+    QPluginLoader* loader = new QPluginLoader("muon/"+libname, ResourcesModel::global());
+
+    //     qDebug() << "trying to load plugin:" << loader->fileName();
+    AbstractResourcesBackendFactory* f = qobject_cast<AbstractResourcesBackendFactory*>(loader->instance());
+    if(!f) {
+        qWarning() << "error loading" << path << loader->errorString() << loader->metaData();
+        return 0;
+    }
+    AbstractResourcesBackend* instance = f->newInstance(ResourcesModel::global());
+    if(!instance) {
+        qWarning() << "Couldn't find the backend: " << path << "among" << allBackendNames(false) << "because" << loader->errorString();
+    }
+    instance->setMetaData(path);
+
+    return instance;
+}
+
+QStringList MuonBackendsFactory::allBackendNames(bool whitelist) const
+{
+    if (whitelist) {
+        QStringList whitelist = *s_requestedBackends;
+        if (!whitelist.isEmpty())
+            return whitelist;
+    }
 
     QStringList ret;
-    KService::List serviceList = KServiceTypeTrader::self()->query("Muon/Backend");
-    foreach(const KService::Ptr& service, serviceList) {
-        ret += service->property("X-KDE-PluginInfo-Name").toString();
+    QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("libmuon/backends/"), QStandardPaths::LocateDirectory);
+    foreach (const QString& dir, dirs) {
+        QDir d(dir);
+        foreach(const QFileInfo& file, d.entryInfoList(QDir::Files)) {
+            if (file.baseName()!="muon-dummy-backend") {
+                ret.append(file.baseName());
+            }
+        }
     }
+
     return ret;
 }
 
 QList<AbstractResourcesBackend*> MuonBackendsFactory::allBackends() const
 {
     QList<AbstractResourcesBackend*> ret;
-    QSet<QString> whitelist = fetchBackendsWhitelist();
-    if(!whitelist.isEmpty()) {
-        foreach(const QString& b, whitelist)
-            ret += backend(b);
-    } else {
-        KService::List serviceList = KServiceTypeTrader::self()->query("Muon/Backend");
-        
-        foreach(const KService::Ptr& plugin, serviceList) {
-            KPluginInfo info(plugin);
-            if(info.pluginName()=="muon-dummybackend")
-                continue;
+    QStringList names = allBackendNames();
+    foreach(const QString& name, names)
+        ret += backend(name);
 
-            AbstractResourcesBackend* b = backendForPlugin(info);
-            if(b) {
-                ret += b;
-            } else {
-                qDebug() << "couldn't load " << info.name();
-            }
-        }
-    }
+    ret.removeAll(nullptr);
 
     if(ret.isEmpty())
         qWarning() << "Didn't find any muon backend!";
@@ -93,47 +102,23 @@ QList<AbstractResourcesBackend*> MuonBackendsFactory::allBackends() const
 
 int MuonBackendsFactory::backendsCount() const
 {
-    int ret = fetchBackendsWhitelist().count();
-    if(ret>0)
-        return ret;
-    
-    KService::List serviceList = KServiceTypeTrader::self() ->query("Muon/Backend");
-    
-    foreach(const KService::Ptr& plugin, serviceList) {
-        KPluginInfo info(plugin);
-        if(info.name()!="muon-dummybackend")
-            ret++;
-    }
-    return ret;
+    return allBackendNames().count();
 }
 
-AbstractResourcesBackend* MuonBackendsFactory::backendForPlugin(const KPluginInfo& info) const
+void MuonBackendsFactory::setupCommandLine(QCommandLineParser* parser)
 {
-    QVariantMap args;
-    foreach(const QString& prop, info.service()->propertyNames()) {
-        args[prop] = info.property(prop);
-    }
-    
-    QString str_error;
-    AbstractResourcesBackend* obj = info.service()->createInstance<AbstractResourcesBackend>(ResourcesModel::global(), QVariantList() << args, &str_error);
-    
-    if(!obj) {
-        qDebug() << "error when loading the plugin" << info.name() << "because" << str_error;
-    } else if (!obj->isValid()) {
-        qDebug() << "Error initializing Muon Backend.";
-
-        // Clean up invalid plugin as we will not load it
-        delete obj;
-        obj = nullptr;
-    }
-
-    return obj;
+    parser->addOption(QCommandLineOption("listbackends", i18n("List all the available backends.")));
+    parser->addOption(QCommandLineOption("backends", i18n("List all the backends we'll want to have loaded, separated by coma ','."), "names"));
 }
 
-QSet<QString> MuonBackendsFactory::fetchBackendsWhitelist() const
+void MuonBackendsFactory::processCommandLine(QCommandLineParser* parser)
 {
-    QSet<QString> whitelist;
-    if(KCmdLineArgs::parsedArgs() && KCmdLineArgs::parsedArgs()->isSet("backends"))
-        whitelist = KCmdLineArgs::parsedArgs()->getOption("backends").split(',').toSet();
-    return whitelist;
+    *s_requestedBackends = parser->value("backends").split(",", QString::SkipEmptyParts);
+    if(parser->isSet("listbackends")) {
+        fprintf(stdout, "%s", qPrintable(i18n("Available backends:\n")));
+        MuonBackendsFactory f;
+        foreach(const QString& name, f.allBackendNames(false))
+            fprintf(stdout, " * %s\n", qPrintable(name));
+        qApp->exit(0);
+    }
 }

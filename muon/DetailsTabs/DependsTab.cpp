@@ -21,11 +21,11 @@
 #include "DependsTab.h"
 
 // Qt includes
-#include <QtGui/QScrollBar>
+#include <QScrollBar>
 
 // KDE includes
 #include <KComboBox>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KTextBrowser>
 
 // LibQApt includes

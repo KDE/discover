@@ -45,7 +45,6 @@ public:
     virtual void flagReview(Review*, const QString&, const QString&) {}
     virtual void submitUsefulness(Review*, bool);
 
-private slots:
     void initialize();
 
 private:

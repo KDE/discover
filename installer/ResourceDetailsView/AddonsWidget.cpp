@@ -22,16 +22,15 @@
 
 // Qt includes
 #include <QtCore/QStringBuilder>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QListView>
-#include <QtGui/QPushButton>
-#include <QtGui/QStandardItemModel>
-#include <QtGui/QToolButton>
+#include <QHBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QListView>
+#include <QtWidgets/QPushButton>
+#include <QStandardItemModel>
+#include <QtWidgets/QToolButton>
 
 // KDE includes
-#include <KIcon>
-#include <KLocale>
+#include <KLocalizedString>
 
 // Libmuon includes
 #include <resources/AbstractResourcesBackend.h>
@@ -83,13 +82,13 @@ AddonsWidget::AddonsWidget(QWidget *parent)
     addonsButtonSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
     m_addonsRevertButton = new QPushButton(addonsButtonBox);
-    m_addonsRevertButton->setIcon(KIcon("edit-undo"));
+    m_addonsRevertButton->setIcon(QIcon::fromTheme("edit-undo"));
     m_addonsRevertButton->setText(i18nc("@action:button", "Revert"));
     connect(m_addonsRevertButton, SIGNAL(clicked()),
             this, SLOT(populateModel()));
 
     m_addonsApplyButton = new QPushButton(addonsButtonBox);
-    m_addonsApplyButton->setIcon(KIcon("dialog-ok-apply"));
+    m_addonsApplyButton->setIcon(QIcon::fromTheme("dialog-ok-apply"));
     m_addonsApplyButton->setText(i18nc("@action:button", "Apply"));
     m_addonsApplyButton->setToolTip(i18nc("@info:tooltip", "Apply changes to addons"));
     connect(m_addonsApplyButton, SIGNAL(clicked()),
@@ -163,10 +162,10 @@ void AddonsWidget::populateModel()
         QString resourceName = QLatin1String(" (") % addon.name() % ')';
         if (addonResource) {
             addonItem->setText(addonResource->name() % resourceName);
-            addonItem->setIcon(KIcon(addonResource->icon()));
+            addonItem->setIcon(QIcon::fromTheme(addonResource->icon()));
         } else {
             addonItem->setText(addon.description() % resourceName);
-            addonItem->setIcon(KIcon("applications-other"));
+            addonItem->setIcon(QIcon::fromTheme("applications-other"));
         }
 
         addonItem->setEditable(false);

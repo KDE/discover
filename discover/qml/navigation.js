@@ -31,7 +31,7 @@ function openApplicationMime(mime) {
 
 function openCategoryByName(catname) {
     currentTopLevel = topBrowsingComp
-    openCategory(pageStack.currentPage.categories.findCategoryByName(catname))
+    openCategory(pageStack.currentItem.categories.findCategoryByName(catname))
 }
 
 function openCategory(cat) {
@@ -54,7 +54,7 @@ function openPage(icon, name, component, props) {
         return
     var obj
     try {
-        obj = component.createObject(pageStack.currentPage, props)
+        obj = component.createObject(pageStack.currentItem, props)
         pageStack.push(obj);
         breadcrumbsItem.pushItem(icon, name)
         console.log("opened "+name)

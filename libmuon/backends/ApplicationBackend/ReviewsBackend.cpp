@@ -21,19 +21,19 @@
 #include "ReviewsBackend.h"
 
 #include <QtCore/QStringBuilder>
+#include <QtCore/QLocale>
 #include <QDebug>
+#include <QJsonDocument>
+#include <QTemporaryFile>
+#include <QStandardPaths>
+#include <QFileInfo>
+#include <QDir>
 
-#include <KGlobal>
 #include <KIO/Job>
-#include <KLocale>
-#include <KStandardDirs>
-#include <KTemporaryFile>
+#include <KLocalizedString>
 #include <KFilterDev>
 
 #include <LibQApt/Backend>
-
-#include <qjson/parser.h>
-#include <qjson/serializer.h>
 
 #include <QtOAuth/interface.h>
 
@@ -109,9 +109,10 @@ void ReviewsBackend::setAptBackend(QApt::Backend *aptBackend)
 
 void ReviewsBackend::fetchRatings()
 {
-    QString ratingsCache = KStandardDirs::locateLocal("data", "libmuon/ratings.txt");
-    KIO::FileCopyJob *getJob;
-    KUrl ratingsUrl(m_serverBase,"review-stats/");
+    QString ratingsCache = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libmuon/ratings.txt";
+    QFileInfo file(ratingsCache);
+    QDir::temp().mkpath(file.dir().path());
+    QUrl ratingsUrl(m_serverBase.toString()+"review-stats/");
     //default to popcon if not using ubuntu
     if(m_distId.toLower() == QLatin1String("ubuntu")){
         refreshConsumerKeys();
@@ -119,9 +120,9 @@ void ReviewsBackend::fetchRatings()
         loadRatingsFromFile();
         // Try to fetch the latest ratings from the internet
     } else {
-        ratingsUrl = KUrl("http://popcon.debian.org/all-popcon-results.gz");
+        ratingsUrl = QUrl("http://popcon.debian.org/all-popcon-results.gz");
     }
-    getJob = KIO::file_copy(ratingsUrl, ratingsCache, -1,
+    KIO::FileCopyJob *getJob = KIO::file_copy(ratingsUrl, QUrl::fromLocalFile(ratingsCache), -1,
                                KIO::Overwrite | KIO::HideProgressInfo);
     connect(getJob, SIGNAL(result(KJob*)), SLOT(ratingsFetched(KJob*)));
 }
@@ -129,6 +130,7 @@ void ReviewsBackend::fetchRatings()
 void ReviewsBackend::ratingsFetched(KJob *job)
 {
     if (job->error()) {
+        qWarning() << "Couldn't fetch the ratings" <<  job->errorString();
         return;
     }
 
@@ -137,18 +139,22 @@ void ReviewsBackend::ratingsFetched(KJob *job)
 
 void ReviewsBackend::loadRatingsFromFile()
 {
-    QString ratingsCache = KStandardDirs::locateLocal("data", "libmuon/ratings.txt");
-    QIODevice* dev = KFilterDev::deviceForFile(ratingsCache, "application/x-gzip");
+    QString ratingsCache = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libmuon/ratings.txt";
+    QScopedPointer<QIODevice> dev(KFilterDev::deviceForFile(ratingsCache, "application/x-gzip"));
+    if (!dev->open(QIODevice::ReadOnly)) {
+        qWarning() << "Couldn't open ratings.txt" << ratingsCache;
+        return;
+    }
     if(m_distId.toLower() == QLatin1String("ubuntu")) {
-        QJson::Parser parser;
-        bool ok = false;
-        QVariant ratings = parser.parse(dev, &ok);
+        QJsonParseError error;
+        QJsonDocument doc = QJsonDocument::fromJson(dev->readAll(), &error);
 
-        if (!ok) {
+        if (error.error != QJsonParseError::NoError) {
             qDebug() << "error while parsing ratings: " << ratingsCache;
             return;
         }
 
+        QVariant ratings = doc.toVariant();
         qDeleteAll(m_ratings);
         m_ratings.clear();
         foreach (const QVariant &data, ratings.toList()) {
@@ -182,8 +188,6 @@ void ReviewsBackend::loadRatingsFromFile()
             }
         }
     }
-    dev->close();
-    dev->deleteLater();
     emit ratingsReady();
 }
 
@@ -227,7 +231,7 @@ void ReviewsBackend::fetchReviews(AbstractResource* res, int page)
     // But that could be because the Ubuntu Software Center (which I used to
     // figure it out) is written in python, so you have to go hunting to where
     // a variable was initially initialized with a primitive to figure out its type.
-    KUrl reviewsUrl(m_serverBase, QLatin1String("reviews/filter/") % lang % '/'
+    QUrl reviewsUrl(m_serverBase.toString() + QLatin1String("/reviews/filter/") % lang % '/'
             % origin % '/' % QLatin1String("any") % '/' % version % '/' % packageName
             % ';' % appName % '/' % QLatin1String("page") % '/' % QString::number(page));
 
@@ -262,17 +266,17 @@ void ReviewsBackend::reviewsFetched(KJob *j)
 {
     KIO::StoredTransferJob* job = qobject_cast<KIO::StoredTransferJob*>(j);
     Application *app = m_jobHash.take(job);
-    if (job->error()) {
+    if (job->error() || !app) {
         return;
     }
 
-    QJson::Parser parser;
-    bool ok = false;
-    QVariant reviews = parser.parse(job->data(), &ok);
+    QJsonParseError error;
+    QJsonDocument doc = QJsonDocument::fromJson(job->data(), &error);
 
-    if (!ok || !app) {
+    if (error.error != QJsonParseError::NoError) {
         return;
     }
+    QVariant reviews = doc.toVariant();
 
     QList<Review *> reviewsList;
     foreach (const QVariant &data, reviews.toList()) {
@@ -290,7 +294,7 @@ QString ReviewsBackend::getLanguage()
     // The reviews API abbreviates all langs past the _ char except these
     fullLangs << "pt_BR" << "zh_CN" << "zh_TW";
 
-    QString language = KGlobal::locale()->language();
+    QString language = QLocale().bcp47Name();
 
     if (fullLangs.contains(language)) {
         return language;
@@ -347,7 +351,7 @@ void ReviewsBackend::flagReview(Review* r, const QString& reason, const QString&
     postInformation(QString("reviews/%1/flags/").arg(r->id()), data);
 }
 
-QByteArray authorization(QOAuth::Interface* oauth, const KUrl& url, AbstractLoginBackend* login)
+QByteArray authorization(QOAuth::Interface* oauth, const QUrl& url, AbstractLoginBackend* login)
 {
     return oauth->createParametersString(url.url(), QOAuth::POST, login->token(), login->tokenSecret(),
                                            QOAuth::HMAC_SHA1, QOAuth::ParamMap(), QOAuth::ParseForHeaderArguments);
@@ -361,10 +365,10 @@ void ReviewsBackend::postInformation(const QString& path, const QVariantMap& dat
         return;
     }
     
-    KUrl url(m_serverBase, path);
+    QUrl url(m_serverBase.toString() +'/'+ path);
     url.setScheme("https");
     
-    KIO::StoredTransferJob* job = KIO::storedHttpPost(QJson::Serializer().serialize(data), url, KIO::Overwrite | KIO::HideProgressInfo);
+    KIO::StoredTransferJob* job = KIO::storedHttpPost(QJsonDocument::fromVariant(data).toJson(), url, KIO::Overwrite | KIO::HideProgressInfo); //TODO port to QJsonDocument
     job->addMetaData("content-type", "Content-Type: application/json" );
     job->addMetaData("customHTTPHeader", "Authorization: " + authorization(m_oauthInterface, url, m_loginBackend));
     connect(job, SIGNAL(result(KJob*)), this, SLOT(informationPosted(KJob*)));

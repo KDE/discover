@@ -17,12 +17,12 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 1.1
-import org.kde.plasma.core 0.1
-import org.kde.plasma.components 0.1
+import QtQuick 2.1
+import QtQuick.Controls 1.1
+import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
 
-Item {
+ScrollView {
     id: parentItem
     property alias count: view.count
     property alias header: view.header
@@ -34,18 +34,12 @@ Item {
     ListView
     {
         id: view
-        anchors {
-            top: parent.top
-            left: parent.left
-            bottom: parent.bottom
-            right: scroll.left
-        }
         spacing: 3
         snapMode: ListView.SnapToItem
         currentIndex: -1
         
-        delegate: ListItem {
-                checked: view.currentIndex==index
+        delegate: GridItem {
+//                 checked: view.currentIndex==index
                 width: parentItem.actualWidth
                 x: parentItem.proposedMargin
                 property real contHeight: height*0.8
@@ -58,20 +52,20 @@ Item {
                         Navigation.openApplication(application)
                     }
                     hoverEnabled: true
-                    IconItem {
+                    QIconItem {
                         id: icon
-                        source: model.icon
+                        icon: model.icon
                         width: contHeight
                         height: contHeight
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.left: parent.left
                     }
                     
-                    IconItem {
+                    QIconItem {
                         anchors.right: icon.right
                         anchors.bottom: icon.bottom
                         visible: isInstalled && view.model.stateFilter!=2
-                        source: "dialog-ok"
+                        icon: "dialog-ok"
                         height: 16
                         width: 16
                     }
@@ -124,16 +118,5 @@ Item {
                     }
                 }
             }
-    }
-    
-    NativeScrollBar {
-        id: scroll
-        orientation: Qt.Vertical
-        flickableItem: view
-        anchors {
-                top: parent.top
-                right: parent.right
-                bottom: parent.bottom
-        }
     }
 }

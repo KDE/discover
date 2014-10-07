@@ -21,7 +21,7 @@
 
 #include <KPluginFactory>
 #include <QTimer>
-#include <kdebug.h>
+#include <PackageKit/Daemon>
 
 K_PLUGIN_FACTORY(MuonPackageKitNotifierFactory,
                  registerPlugin<PackageKitNotifier>();
@@ -33,7 +33,6 @@ const int UPDATE_INTERVAL_MS = 1000 * 60 * 30;
 PackageKitNotifier::PackageKitNotifier(QObject* parent, const QVariantList &)
   : AbstractKDEDModule("packagekit", "muondiscover", parent), m_update(NoUpdate), m_timer(new QTimer(this))
 {
-    kDebug() << "CONSTRUCTED";
     m_timer->setInterval(UPDATE_INTERVAL_MS);
     connect (m_timer, SIGNAL(timeout()), SLOT(recheckSystemUpdateNeeded()));
     recheckSystemUpdateNeeded();
@@ -50,17 +49,15 @@ void PackageKitNotifier::configurationChanged()
 
 void PackageKitNotifier::recheckSystemUpdateNeeded()
 {
-    kDebug() << "RECHECK";
     m_timer->stop();
     m_update = NoUpdate;
-    PackageKit::Transaction * trans = new PackageKit::Transaction(this);
+    PackageKit::Transaction * trans = PackageKit::Daemon::getUpdates(PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
     connect(trans, SIGNAL(package(PackageKit::Transaction::Info,QString,QString)), SLOT(package(PackageKit::Transaction::Info,QString,QString)));
     connect(trans, SIGNAL(destroy()), trans, SLOT(deleteLater()));
     connect(trans, SIGNAL(finished(PackageKit::Transaction::Exit, uint)), SLOT(finished(PackageKit::Transaction::Exit, uint)));
-    trans->getUpdates(PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
 }
 
-void PackageKitNotifier::package(PackageKit::Transaction::Info info, const QString &packageID, const QString &summary)
+void PackageKitNotifier::package(PackageKit::Transaction::Info info, const QString &/*packageID*/, const QString &/*summary*/)
 {
     if (info == PackageKit::Transaction::InfoSecurity) {
         m_update = Security;
@@ -69,9 +66,8 @@ void PackageKitNotifier::package(PackageKit::Transaction::Info info, const QStri
     }
 }
 
-void PackageKitNotifier::finished(PackageKit::Transaction::Exit exit, uint)
+void PackageKitNotifier::finished(PackageKit::Transaction::Exit /*exit*/, uint)
 {
-    kDebug() << "FINISHED" << m_update;
     if (m_update == Security) {
         setSystemUpToDate(false, AbstractKDEDModule::SecurityUpdate);
     } else if (m_update == Normal) {
@@ -81,3 +77,5 @@ void PackageKitNotifier::finished(PackageKit::Transaction::Exit exit, uint)
         m_timer->start();
     }
 }
+
+#include "PackageKitNotifier.moc"

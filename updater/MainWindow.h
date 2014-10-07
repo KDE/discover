@@ -23,13 +23,10 @@
 
 // Own includes
 #include "../libmuon/MuonMainWindow.h"
+#include <QPointer>
 
-class ResourcesUpdatesModel;
-class KAction;
-class KDialog;
 class KMessageWidget;
-class KProcess;
-class ChangelogWidget;
+class ResourcesUpdatesModel;
 class ProgressWidget;
 class UpdaterSettingsDialog;
 class UpdaterWidget;
@@ -45,9 +42,9 @@ private:
 
     ProgressWidget *m_progressWidget;
     UpdaterWidget *m_updaterWidget;
-    UpdaterSettingsDialog *m_settingsDialog;
+    QPointer<UpdaterSettingsDialog> m_settingsDialog;
     KMessageWidget *m_powerMessage;
-    KAction *m_applyAction;
+    QAction *m_applyAction;
     QMenu* m_moreMenu;
     QMenu* m_advancedMenu;
 
@@ -59,7 +56,6 @@ private Q_SLOTS:
     void setupActions();
     void setupBackendsActions();
     void editSettings();
-    void closeSettingsDialog();
     void checkPlugState();
     void updatePlugState(bool plugged);
     void progressingChanged();

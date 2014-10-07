@@ -20,8 +20,8 @@
 
 #include "ProgressView.h"
 
-#include <QtGui/QLabel>
-#include <QtGui/QListView>
+#include <QtWidgets/QLabel>
+#include <QListView>
 
 #include <KLocalizedString>
 

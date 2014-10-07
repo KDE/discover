@@ -21,7 +21,6 @@
 
 #include "AppAkabeiResource.h"
 #include <KGlobal>
-#include <KLocale>
 #include <KStandardDirs>
 #include <KToolInvocation>
 #include <QDebug>

@@ -31,7 +31,6 @@
 #include <LibQApt/Package>
 #include <LibQApt/Backend>
 
-#include <libmuonprivate_export.h>
 #include "resources/AbstractResourcesBackend.h"
 
 namespace QApt {
@@ -49,13 +48,12 @@ class Transaction;
 class QAptActions;
 class KJob;
 
-class MUONPRIVATE_EXPORT ApplicationBackend : public AbstractResourcesBackend
+class ApplicationBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
-    Q_INTERFACES(AbstractResourcesBackend)
     Q_PROPERTY(QObject* backend READ backend)
 public:
-    explicit ApplicationBackend(QObject *parent, const QVariantList& args);
+    explicit ApplicationBackend(QObject *parent = 0);
     ~ApplicationBackend();
 
     bool isValid() const;

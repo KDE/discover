@@ -23,7 +23,7 @@
 
 // Qt includes
 #include <QtCore/QModelIndex>
-#include <QtGui/QDockWidget>
+#include <QDockWidget>
 
 #include <LibQApt/Package>
 

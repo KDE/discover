@@ -22,15 +22,12 @@
 
 // Qt includes
 #include <QtCore/QMetaProperty>
-
-// KDE includes
-#include <KGlobal>
-#include <KLocale>
+#include <klocalizedstring.h>
 
 // Own includes
 #include "resources/AbstractResource.h"
 
-K_GLOBAL_STATIC(TransactionModel, globalTransactionModel)
+Q_GLOBAL_STATIC(TransactionModel, globalTransactionModel)
 
 TransactionModel *TransactionModel::global()
 {
@@ -39,16 +36,18 @@ TransactionModel *TransactionModel::global()
 
 TransactionModel::TransactionModel(QObject *parent)
     : QAbstractListModel(parent)
+{}
+
+QHash< int, QByteArray > TransactionModel::roleNames() const
 {
-    auto roles = roleNames();
+    QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
     roles[TransactionRoleRole] = "transactionRole";
     roles[TransactionStatusRole] = "status";
     roles[CancellableRole] = "cancellable";
     roles[ProgressRole] = "progress";
     roles[StatusTextRole] = "statusText";
     roles[ResourceRole] = "resource";
-
-    setRoleNames(roles);
+    return roles;
 }
 
 int TransactionModel::rowCount(const QModelIndex &parent) const

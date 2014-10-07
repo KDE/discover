@@ -26,11 +26,8 @@
 
 // KDE includes
 #include <KXmlGuiWindow>
-#include <KLocale>
 
 #include "libmuonprivate_export.h"
-
-class KAction;
 
 /**
  * This class serves as a shared Main Window implementation that connects

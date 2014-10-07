@@ -1,5 +1,5 @@
-import QtQuick 1.1
-import org.kde.plasma.components 0.1
+import QtQuick 2.1
+import QtQuick.Controls 1.1
 import org.kde.muon 1.0
 
 Item {
@@ -26,16 +26,16 @@ Item {
         
         onClicked: {
             if(application.isInstalled)
-                resourcesModel.removeApplication(application);
+                ResourcesModel.removeApplication(application);
             else
-                resourcesModel.installApplication(application);
+                ResourcesModel.installApplication(application);
         }
     }
     Component {
         id: updateButton
         Button {
             text: i18n("Update")
-            onClicked: resourcesModel.installApplication(application)
+            onClicked: ResourcesModel.installApplication(application)
         }
     }
     
@@ -69,9 +69,9 @@ Item {
             id: workingCancelButton
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
-            iconSource: "dialog-cancel"
+            iconName: "dialog-cancel"
             enabled: listener.isCancellable
-            onClicked: resourcesModel.cancelTransaction(application)
+            onClicked: ResourcesModel.cancelTransaction(application)
         }
     }
     

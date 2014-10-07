@@ -21,9 +21,9 @@
 #include "MainWindow.h"
 
 #include <KUniqueApplication>
-#include <KAboutData>
+#include <K4AboutData>
 #include <KCmdLineArgs>
-#include "MuonVersion.h"
+#include "../MuonVersion.h"
 #include <stdio.h>
 
 static const char description[] =
@@ -31,8 +31,8 @@ static const char description[] =
 
 int main(int argc, char **argv)
 {
-    KAboutData about("muon", 0, ki18n("Muon Package Manager"), version, ki18n(description),
-                     KAboutData::License_GPL, ki18n("© 2009-2013 Jonathan Thomas"), KLocalizedString(), 0);
+    K4AboutData about("muon", 0, ki18n("Muon Package Manager"), version, ki18n(description),
+                     K4AboutData::License_GPL, ki18n("© 2009-2013 Jonathan Thomas"), KLocalizedString(), 0);
     about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
     about.setProductName("muon/muon");
 
@@ -46,7 +46,7 @@ int main(int argc, char **argv)
     KUniqueApplication app;
     app.disableSessionManagement();
     // Libmuon translations
-    KGlobal::locale()->insertCatalog("libmuon");
+//     KGlobal::locale()->insertCatalog("libmuon"); //FIXME: Port to kf5
 
     MainWindow *mainWindow = new MainWindow;
     mainWindow->show();

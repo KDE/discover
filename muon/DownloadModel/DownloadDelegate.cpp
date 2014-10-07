@@ -21,11 +21,12 @@
 #include "DownloadDelegate.h"
 
 // Qt includes
-#include <QtGui/QPainter>
+#include <QPainter>
 
 // KDE includes
 #include <KApplication>
-#include <KLocale>
+#include <KFormat>
+#include <KLocalizedString>
 
 // LibQApt includes
 #include <LibQApt/Globals>
@@ -53,7 +54,7 @@ void DownloadDelegate::paint(QPainter* painter, const QStyleOptionViewItem& opti
             break;
         }
         case 2: {
-            QString sizeText = KGlobal::locale()->formatByteSize(index.data(DownloadModel::SizeRole).toDouble());
+            QString sizeText = KFormat().formatByteSize(index.data(DownloadModel::SizeRole).toDouble());
             paintText(painter, option, sizeText);
             break;
         }

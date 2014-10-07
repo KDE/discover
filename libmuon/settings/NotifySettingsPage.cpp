@@ -23,21 +23,19 @@
 
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusMessage>
-#include <QDBusInterface>
+#include <qdbusinterface.h>
 #include <qdbusreply.h>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QCheckBox>
-#include <QtGui/QLabel>
-#include <QtGui/QRadioButton>
-#include <QtGui/QVBoxLayout>
+#include <QButtonGroup>
+#include <QCheckBox>
+#include <QLabel>
+#include <QRadioButton>
+#include <QVBoxLayout>
+#include <QDialog>
 
 #include <KConfig>
-#include <KDialog>
-#include <KLocale>
-#include <KService>
-#include <KServiceTypeTrader>
-#include <KDebug>
-
+#include <KConfigGroup>
+#include <klocalizedstring.h>
+#include <kservicetypetrader.h>
 
 NotifySettingsPage::NotifySettingsPage(QWidget* parent) :
         SettingsPageBase(parent)
@@ -61,7 +59,6 @@ NotifySettingsPage::NotifySettingsPage(QWidget* parent) :
     
     QVBoxLayout* layout = new QVBoxLayout(this);
     layout->setMargin(0);
-    layout->setSpacing(KDialog::spacingHint());
 
     m_updatesCheckBox = new QCheckBox(i18n("Show notifications for available updates"), this);
     m_verboseCheckBox = new QCheckBox(i18n("Show the number of available updates"), this);
@@ -98,7 +95,6 @@ void NotifySettingsPage::loadSettings()
 
 void NotifySettingsPage::applySettings()
 {
-    kDebug() << m_updatesCheckBox->isChecked();
     KConfig notifierConfig("muon-notifierrc", KConfig::NoGlobals);
 
     KConfigGroup notifyTypeGroup(&notifierConfig, "NotificationType");

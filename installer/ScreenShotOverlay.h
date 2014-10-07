@@ -21,8 +21,8 @@
 #define SCREENSHOTOVERLAY_H
 
 #include <QtCore/QPointer>
-#include <QtGui/QWidget>
-#include <QtGui/QPixmap>
+#include <QtWidgets/QWidget>
+#include <QPixmap>
 
 class QMouseEvent;
 class QScrollArea;

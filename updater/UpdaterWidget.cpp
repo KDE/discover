@@ -24,22 +24,22 @@
 #include <QStandardItemModel>
 #include <QtCore/QDir>
 #include <QDateTime>
-#include <QtGui/QApplication>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QTreeView>
-#include <QtGui/QVBoxLayout>
-#include <qaction.h>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTreeView>
+#include <QtWidgets/QVBoxLayout>
+#include <QAction>
 #include <QPushButton>
+#include <QDebug>
 
 // KDE includes
-#include <KIcon>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KMessageBox>
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
-#include <KDebug>
 #include <KMessageWidget>
+#include <kiconloader.h>
 
 // Libmuon includes
 #include <resources/AbstractResourcesBackend.h>
@@ -71,7 +71,7 @@ UpdaterWidget::UpdaterWidget(ResourcesUpdatesModel* updates, QWidget *parent) :
     QString text = i18nc("@label", "<em>Some packages were not marked for update.</em><p/>"
                             "The update of these packages need some others to be installed or removed.<p/>"
                             "Do you want to update those too?");
-    QAction* action = new QAction(KIcon("dialog-ok-apply"), i18n("Mark All"), this);
+    QAction* action = new QAction(QIcon::fromTheme("dialog-ok-apply"), i18n("Mark All"), this);
     connect(action, SIGNAL(triggered(bool)), SLOT(markAllPackagesForUpgrade()));
     m_markallWidget = new KMessageWidget(this);
     m_markallWidget->setText(text);
@@ -91,9 +91,9 @@ UpdaterWidget::UpdaterWidget(ResourcesUpdatesModel* updates, QWidget *parent) :
     m_updateView = new QTreeView(page1);
     m_updateView->setAlternatingRowColors(true);
     m_updateView->setModel(m_updateModel);
-    m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
-    m_updateView->header()->setResizeMode(1, QHeaderView::ResizeToContents);
-    m_updateView->header()->setResizeMode(2, QHeaderView::ResizeToContents);
+    m_updateView->header()->setSectionResizeMode(0, QHeaderView::Stretch);
+    m_updateView->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+    m_updateView->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
     m_updateView->header()->setStretchLastSection(false);
     connect(m_updateView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged(QItemSelection,QItemSelection)));
@@ -104,7 +104,9 @@ UpdaterWidget::UpdaterWidget(ResourcesUpdatesModel* updates, QWidget *parent) :
     page1Layout->addWidget(m_changelogWidget);
 
     m_busyWidget = new KPixmapSequenceOverlayPainter(page1);
-    m_busyWidget->setSequence(KPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
+    KPixmapSequence seq = KIconLoader::global()->loadPixmapSequence("process-working", KIconLoader::SizeSmallMedium);
+
+    m_busyWidget->setSequence(seq);
     m_busyWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     m_busyWidget->setWidget(m_updateView->viewport());
 
@@ -164,7 +166,7 @@ void UpdaterWidget::populateUpdateModel()
 
     m_updateView->expand(m_updateModel->index(0,0)); // Expand apps category
     m_updateView->resizeColumnToContents(0);
-    m_updateView->header()->setResizeMode(0, QHeaderView::Stretch);
+    m_updateView->header()->setSectionResizeMode(0, QHeaderView::Stretch);
 
     checkAllMarked();
     emit modelPopulated();
@@ -210,28 +212,28 @@ void UpdaterWidget::checkUpToDate()
 
         // Unknown time since last update
         if (!lastUpdate.isValid()) {
-            m_ui->updateStatusIcon->setPixmap(KIcon("security-medium").pixmap(128, 128));
+            m_ui->updateStatusIcon->setPixmap(QIcon::fromTheme("security-medium").pixmap(128, 128));
             m_ui->notifyTitle->setText(i18nc("@info",
                                          "It is unknown when the last check for updates was."));
-            m_ui->notifyDesc->setText(i18nc("@info", "Please click <interface>Check for Updates</interface> "
+            m_ui->notifyDesc->setText(i18nc("@info", "Please click <em>Check for Updates</em> "
                                         "to check."));
             return;
         }
 
         if (msecSinceUpdate < day) {
-            m_ui->updateStatusIcon->setPixmap(KIcon("security-high").pixmap(128, 128));
+            m_ui->updateStatusIcon->setPixmap(QIcon::fromTheme("security-high").pixmap(128, 128));
             m_ui->notifyTitle->setText(i18nc("@info", "The software on this computer is up to date."));
             m_ui->notifyDesc->setText(i18nc("@info", "Last checked %1 ago.",
-                                        KGlobal::locale()->prettyFormatDuration(msecSinceUpdate)));
+                                        /*KGlobal::locale()->prettyFormatDuration*/QString::number(msecSinceUpdate)));
         } else if (msecSinceUpdate < week) {
-            m_ui->updateStatusIcon->setPixmap(KIcon("security-medium").pixmap(128, 128));
+            m_ui->updateStatusIcon->setPixmap(QIcon::fromTheme("security-medium").pixmap(128, 128));
             m_ui->notifyTitle->setText(i18nc("@info", "No updates are available."));
             m_ui->notifyDesc->setText(i18nc("@info", "Last checked %1 ago.",
-                                        KGlobal::locale()->prettyFormatDuration(msecSinceUpdate)));
+                                        /*KGlobal::locale()->prettyFormatDuration*/QString::number(msecSinceUpdate)));
         } else {
-            m_ui->updateStatusIcon->setPixmap(KIcon("security-low").pixmap(128, 128));
+            m_ui->updateStatusIcon->setPixmap(QIcon::fromTheme("security-low").pixmap(128, 128));
             m_ui->notifyTitle->setText(i18nc("@info", "The last check for updates was over a week ago."));
-            m_ui->notifyDesc->setText(i18nc("@info", "Please click <interface>Check for Updates</interface> "
+            m_ui->notifyDesc->setText(i18nc("@info", "Please click <em>Check for Updates</em> "
                                         "to check."));
         }
     } else

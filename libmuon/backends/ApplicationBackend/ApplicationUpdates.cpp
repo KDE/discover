@@ -28,7 +28,7 @@
 #include <KProtocolManager>
 #include <KMessageBox>
 #include <KActionCollection>
-#include <KDebug>
+#include <KLocalizedString>
 
 // Own includes
 #include <LibQApt/Transaction>
@@ -106,7 +106,7 @@ void ApplicationUpdates::start()
     Q_ASSERT(!m_updatesCache.isEmpty());
     auto changes = m_aptBackend->stateChanges(m_updatesCache, QApt::PackageList());
     if(changes.isEmpty()) {
-        kWarning() << "couldn't find any apt updates";
+        qWarning() << "couldn't find any apt updates";
         setProgressing(false);
         return;
     }

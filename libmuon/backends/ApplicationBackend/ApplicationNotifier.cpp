@@ -23,16 +23,16 @@
 #include <QtCore/QFile>
 #include <QtCore/QTimer>
 #include <QtCore/QDebug>
+#include <QtCore/QStandardPaths>
+#include <QtCore/QProcess>
+#include <QtGui/QIcon>
 
 // KDE includes
 #include <KAboutData>
 #include <KDirWatch>
 #include <KLocalizedString>
 #include <KPluginFactory>
-#include <KProcess>
-#include <KStandardDirs>
 #include <KNotification>
-#include <KIcon>
 #include <KIconLoader>
 
 // Own includes
@@ -46,12 +46,12 @@ ApplicationNotifier::ApplicationNotifier(QObject* parent, const QVariantList &)
   : AbstractKDEDModule("Application", "muondiscover", parent), 
     m_checkerProcess(0), m_updateCheckerProcess(0), m_checkingForUpdates(false)
 {
-    KAboutData aboutData("muonapplicationnotifier", "muonapplicationnotifier",
-                         ki18n("Muon Notification Daemon"),
-                         "2.0", ki18n("A Notification Daemon for Muon"),
-                         KAboutData::License_GPL,
-                         ki18n("(C) 2013 Lukas Appelhans, (C) 2009-2012 Jonathan Thomas, (C) 2009 Harald Sitter"),
-                         KLocalizedString(), "http://kubuntu.org");
+    KAboutData aboutData("muonapplicationnotifier",
+                         i18n("Muon Notification Daemon"),
+                         "2.0", i18n("A Notification Daemon for Muon"),
+                         KAboutLicense::GPL,
+                         i18n("(C) 2013 Lukas Appelhans, (C) 2009-2012 Jonathan Thomas, (C) 2009 Harald Sitter"),
+                         QString(), "http://kubuntu.org");
     
     QTimer::singleShot(2 * 60 * 1000, this, SLOT(init()));
 }
@@ -84,13 +84,15 @@ void ApplicationNotifier::init()
 
 void ApplicationNotifier::distUpgradeEvent()
 {
-    QString checkerFile = KStandardDirs::locate("data", "muonapplicationnotifier/releasechecker");
-    qDebug() << "Run releasechecker: " << checkerFile;
-    m_checkerProcess = new KProcess(this);
+    QString checkerFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "muonapplicationnotifier/releasechecker");
+    if (checkerFile.isEmpty()) {
+        qWarning() << "Couldn't find the releasechecker" << checkerFile << QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
+        return;
+    }
+    m_checkerProcess = new QProcess(this);
     connect(m_checkerProcess, SIGNAL(finished(int)),
             this, SLOT(checkUpgradeFinished(int)));
-    m_checkerProcess->setProgram(QStringList() << "/usr/bin/python3" << checkerFile);
-    m_checkerProcess->start();
+    m_checkerProcess->start("/usr/bin/python3", QStringList() << checkerFile);
 }
 
 void ApplicationNotifier::checkUpgradeFinished(int exitStatus)
@@ -98,7 +100,7 @@ void ApplicationNotifier::checkUpgradeFinished(int exitStatus)
     qWarning() << "checked for upgrades and return with " << exitStatus;
     if (exitStatus == 0) {
         KNotification::event("DistUpgrade", i18n("System update available!"), i18nc("Notification when a new version of Kubuntu is available",
-                                 "A new version of Kubuntu is available"), KIcon("svn-update").pixmap(KIconLoader::SizeMedium), nullptr, KNotification::CloseOnTimeout, KComponentData("muonapplicationnotifier"));
+                                 "A new version of Kubuntu is available"), QIcon::fromTheme("svn-update").pixmap(KIconLoader::SizeMedium), nullptr, KNotification::CloseOnTimeout, "muonapplicationnotifier");
         setSystemUpToDate(false, AbstractKDEDModule::NormalUpdate, AbstractKDEDModule::DontShowNotification);
     }
 
@@ -148,3 +150,4 @@ void ApplicationNotifier::parseUpdateInfo()
     m_checkingForUpdates = false;
 }
 
+#include "ApplicationNotifier.moc"

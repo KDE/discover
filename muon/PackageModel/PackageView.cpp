@@ -20,7 +20,7 @@
 
 #include "PackageView.h"
 
-#include <QtGui/QHeaderView>
+#include <QtWidgets/QHeaderView>
 
 #define NUM_COLUMNS 3 // If this is changed change PackageWidget.cpp value as well
 

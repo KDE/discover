@@ -22,7 +22,7 @@
 #define RESOURCEDETAILSWIDGET_H
 
 // Qt includes
-#include <QtGui/QScrollArea>
+#include <QScrollArea>
 
 // Libmuon includes
 #include <Transaction/Transaction.h>

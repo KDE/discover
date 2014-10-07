@@ -21,7 +21,7 @@
 #ifndef GENERALSETTINGSPAGE_H
 #define GENERALSETTINGSPAGE_H
 
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 
 #include "../../libmuon/settings/SettingsPageBase.h"
 

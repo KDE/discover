@@ -22,43 +22,40 @@
 #include "DummyResource.h"
 #include "DummyReviewsBackend.h"
 #include "DummyTransaction.h"
+#include "DummySourcesBackend.h"
 #include <resources/StandardBackendUpdater.h>
+#include <resources/SourcesModel.h>
 #include <Transaction/Transaction.h>
 #include <Transaction/TransactionModel.h>
 
 #include <KAboutData>
 #include <KLocalizedString>
 #include <KPluginFactory>
+#include <KConfigGroup>
+#include <KSharedConfig>
 #include <QDebug>
 #include <QThread>
 #include <QTimer>
 #include <QAction>
 
-K_PLUGIN_FACTORY(MuonDummyBackendFactory, registerPlugin<DummyBackend>(); )
-K_EXPORT_PLUGIN(MuonDummyBackendFactory(KAboutData("muon-dummybackend","muon-dummybackend",ki18n("Dummy Backend"),"0.1",ki18n("Dummy backend to test muon frontends"), KAboutData::License_GPL)))
+MUON_BACKEND_PLUGIN(DummyBackend)
 
-DummyBackend::DummyBackend(QObject* parent, const QVariantList&)
+DummyBackend::DummyBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_fetching(false)
+    , m_startElements(320)
+    , m_reviews(new DummyReviewsBackend(this))
+{}
+
+void DummyBackend::setMetaData(const QString& path)
 {
-    for(int i=0; i<320; i++) {
-        QString name = "alalala"+QString::number(i);
-        DummyResource* res = new DummyResource(name, false, this);
-        res->setState(AbstractResource::State(1+(i%3)));
-        m_resources.insert(name, res);
-        connect(res, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));
-    }
+    Q_ASSERT(!path.isEmpty());
+    KSharedConfig::Ptr cfg = KSharedConfig::openConfig(path);
+    KConfigGroup metadata = cfg->group(QStringLiteral("Desktop Entry"));
 
-    for(int i=0; i<320; i++) {
-        QString name = "techie"+QString::number(i);
-        DummyResource* res = new DummyResource(name, true, this);
-        res->setState(AbstractResource::State(1+(i%3)));
-        m_resources.insert(name, res);
-        connect(res, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));
-    }
-
-    m_reviews = new DummyReviewsBackend(this);
+    populate(metadata.readEntry("Name", QString()));
+    m_reviews->initialize();
 
     QAction* updateAction = new QAction(this);
     updateAction->setIcon(QIcon::fromTheme("system-software-update"));
@@ -66,6 +63,28 @@ DummyBackend::DummyBackend(QObject* parent, const QVariantList&)
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
     m_updater->setMessageActions(QList<QAction*>() << updateAction);
+
+    SourcesModel::global()->addSourcesBackend(new DummySourcesBackend(this));
+}
+
+void DummyBackend::populate(const QString& n)
+{
+    int start = m_resources.count();
+    for(int i=start; i<start+m_startElements; i++) {
+        QString name = n+" "+QString::number(i);
+        DummyResource* res = new DummyResource(name, false, this);
+        res->setState(AbstractResource::State(1+(i%3)));
+        m_resources.insert(name, res);
+        connect(res, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));
+    }
+
+    for(int i=start; i<start+m_startElements; i++) {
+        QString name = "techie"+QString::number(i);
+        DummyResource* res = new DummyResource(name, true, this);
+        res->setState(AbstractResource::State(1+(i%3)));
+        m_resources.insert(name, res);
+        connect(res, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));
+    }
 }
 
 void DummyBackend::toggleFetching()
@@ -73,6 +92,8 @@ void DummyBackend::toggleFetching()
     m_fetching = !m_fetching;
     qDebug() << "fetching..." << m_fetching;
     emit fetchingChanged();
+    if (!m_fetching)
+        m_reviews->initialize();
 }
 
 QVector<AbstractResource*> DummyBackend::allResources() const
@@ -151,6 +172,8 @@ void DummyBackend::checkForUpdates()
     if(m_fetching)
         return;
     toggleFetching();
-    QTimer::singleShot(2000, this, SLOT(toggleFetching()));
+    populate("Moar");
+    QTimer::singleShot(500, this, SLOT(toggleFetching()));
 }
 
+#include "DummyBackend.moc"

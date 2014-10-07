@@ -20,9 +20,6 @@
 
 #include "ResourcesModel.h"
 
-#include <KGlobal>
-#include <KDebug>
-
 #include "AbstractResource.h"
 #include "resources/AbstractResourcesBackend.h"
 #include <ReviewsBackend/Rating.h>
@@ -35,7 +32,7 @@
 #include <QCoreApplication>
 #include <QThread>
 
-static const KCatalogLoader loader("libmuon");
+// static const KCatalogLoader loader("libmuon");//FIXME port
 
 ResourcesModel *ResourcesModel::s_self = nullptr;
 
@@ -60,28 +57,6 @@ void ResourcesModel::init(bool load)
     Q_ASSERT(!s_self);
     Q_ASSERT(QCoreApplication::instance()->thread()==QThread::currentThread());
 
-    QHash< int, QByteArray > roles = roleNames();
-    roles[NameRole] = "name";
-    roles[IconRole] = "icon";
-    roles[CommentRole] = "comment";
-    roles[StateRole] = "state";
-    roles[RatingRole] = "rating";
-    roles[RatingPointsRole] = "ratingPoints";
-    roles[SortableRatingRole] = "sortableRating";
-    roles[ActiveRole] = "active";
-    roles[InstalledRole] = "isInstalled";
-    roles[ApplicationRole] = "application";
-    roles[OriginRole] = "origin";
-    roles[CanUpgrade] = "canUpgrade";
-    roles[PackageNameRole] = "packageName";
-    roles[IsTechnicalRole] = "isTechnical";
-    roles[CategoryRole] = "category";
-    roles[SectionRole] = "section";
-    roles[MimeTypes] = "mimetypes";
-    roles.remove(Qt::EditRole);
-    roles.remove(Qt::WhatsThisRole);
-    setRoleNames(roles);
-
     connect(TransactionModel::global(), SIGNAL(transactionAdded(Transaction*)), SLOT(resourceChangedByTransaction(Transaction*)));
     connect(TransactionModel::global(), SIGNAL(transactionRemoved(Transaction*)), SLOT(resourceChangedByTransaction(Transaction*)));
     if(load)
@@ -102,6 +77,31 @@ ResourcesModel::ResourcesModel(const QString& backendName, QObject* parent)
 ResourcesModel::~ResourcesModel()
 {
     qDeleteAll(m_backends);
+}
+
+QHash<int, QByteArray> ResourcesModel::roleNames() const
+{
+    QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
+    roles[NameRole] = "name";
+    roles[IconRole] = "icon";
+    roles[CommentRole] = "comment";
+    roles[StateRole] = "state";
+    roles[RatingRole] = "rating";
+    roles[RatingPointsRole] = "ratingPoints";
+    roles[SortableRatingRole] = "sortableRating";
+    roles[ActiveRole] = "active";
+    roles[InstalledRole] = "isInstalled";
+    roles[ApplicationRole] = "application";
+    roles[OriginRole] = "origin";
+    roles[CanUpgrade] = "canUpgrade";
+    roles[PackageNameRole] = "packageName";
+    roles[IsTechnicalRole] = "isTechnical";
+    roles[CategoryRole] = "category";
+    roles[SectionRole] = "section";
+    roles[MimeTypes] = "mimetypes";
+    roles.remove(Qt::EditRole);
+    roles.remove(Qt::WhatsThisRole);
+    return roles;
 }
 
 void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
@@ -154,6 +154,7 @@ QModelIndex ResourcesModel::resourceIndex(AbstractResource* res) const
         if(m_backends[i]!=backend)
             row += m_resources[i].size();
         else {
+            Q_ASSERT(!m_backends[i]->isFetching());
             int pos = m_resources[i].indexOf(res);
             Q_ASSERT(pos>=0);
             return index(row+pos);
@@ -192,7 +193,7 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
             const QMetaObject* m = resource->metaObject();
             int propidx = roleText.isEmpty() ? -1 : m->indexOfProperty(roleText);
 
-            if(KDE_ISUNLIKELY(propidx < 0)) {
+            if(Q_UNLIKELY(propidx < 0)) {
                 qDebug() << "unknown role:" << role << roleText;
                 return QVariant();
             } else
@@ -354,7 +355,7 @@ void ResourcesModel::registerAllBackends()
     MuonBackendsFactory f;
     QList<AbstractResourcesBackend*> backends = f.allBackends();
     if(m_initializingBackends==0 && backends.isEmpty()) {
-        kWarning() << "Couldn't find any backends";
+        qWarning() << "Couldn't find any backends";
         emit allInitialized();
     } else {
         foreach(AbstractResourcesBackend* b, backends) {
@@ -381,6 +382,7 @@ void ResourcesModel::integrateMainWindow(MuonMainWindow* w)
 
 void ResourcesModel::resourceChangedByTransaction(Transaction* t)
 {
+    Q_ASSERT(!t->resource()->backend()->isFetching());
     QModelIndex idx = resourceIndex(t->resource());
     if(idx.isValid())
         dataChanged(idx, idx);

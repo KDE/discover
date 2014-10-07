@@ -5,7 +5,7 @@
     <signal name="CredentialsError">
       <arg type="s" name="app_name" />
       <arg type="a{ss}" name="error_dict" />
-      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="MapString"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="QMap&lt;QString,QString&gt;"/>
     </signal>
     <signal name="CredentialsStored">
       <arg type="s" name="app_name" />
@@ -21,19 +21,19 @@
     <method name="register">
       <arg direction="in"  type="s" name="app_name" />
       <arg direction="in"  type="a{ss}" name="args" />
-      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="MapString"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="QMap&lt;QString,QString&gt;"/>
     </method>-->
     <method name="find_credentials_sync">
       <arg direction="in"  type="s" name="app_name" />
       <arg direction="in"  type="a{ss}" name="args" />
-      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="MapString"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="QMap&lt;QString,QString&gt;"/>
       <arg direction="out" type="a{ss}" />
-      <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="MapString"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="QMap&lt;QString,QString&gt;"/>
     </method>
     <method name="find_credentials">
       <arg direction="in"  type="s" name="app_name" />
       <arg direction="in"  type="a{ss}" name="args" />
-      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="MapString"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="QMap&lt;QString,QString&gt;"/>
     </method>
     <signal name="CredentialsCleared">
       <arg type="s" name="app_name" />
@@ -41,27 +41,27 @@
     <method name="clear_credentials">
       <arg direction="in"  type="s" name="app_name" />
       <arg direction="in"  type="a{ss}" name="args" />
-      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="MapString"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="QMap&lt;QString,QString&gt;"/>
     </method>
     <signal name="CredentialsFound">
       <arg type="s" name="app_name" />
       <arg type="a{ss}" name="credentials" />
-      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="MapString"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="QMap&lt;QString,QString&gt;"/>
     </signal>
     <method name="login">
       <arg direction="in"  type="s" name="app_name" />
       <arg direction="in"  type="a{ss}" name="args" />
-      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="MapString"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="QMap&lt;QString,QString&gt;"/>
     </method>
     <method name="login_email_password">
       <arg direction="in"  type="s" name="app_name" />
       <arg direction="in"  type="a{ss}" name="args" />
-      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="MapString"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="QMap&lt;QString,QString&gt;"/>
     </method>
     <method name="store_credentials">
       <arg direction="in"  type="s" name="app_name" />
       <arg direction="in"  type="a{ss}" name="args" />
-      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="MapString"/>
+      <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="QMap&lt;QString,QString&gt;"/>
     </method>
   </interface>
   <interface name="org.freedesktop.DBus.Introspectable">

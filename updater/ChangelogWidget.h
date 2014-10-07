@@ -22,7 +22,7 @@
 #define CHANGELOGWIDGET_H
 
 #include <QtCore/QSet>
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 
 class AbstractResource;
 class QParallelAnimationGroup;
@@ -30,7 +30,7 @@ class QParallelAnimationGroup;
 class KJob;
 class KPixmapSequenceOverlayPainter;
 class KTemporaryFile;
-class KTextBrowser;
+class QTextBrowser;
 
 class ChangelogWidget : public QWidget
 {
@@ -44,7 +44,7 @@ private:
     bool m_show;
 
     QParallelAnimationGroup *m_expandWidget;
-    KTextBrowser *m_changelogBrowser;
+    QTextBrowser *m_changelogBrowser;
     KPixmapSequenceOverlayPainter *m_busyWidget;
 
     QString buildDescription(const QByteArray& data, const QString& source);

@@ -21,12 +21,11 @@
 #include "AvailableView.h"
 
 // Qt includes
-#include <QtGui/QStackedWidget>
+#include <QtWidgets/QStackedWidget>
 
 // KDE includes
 #include <KCategorizedSortFilterProxyModel>
-#include <KIcon>
-#include <KLocale>
+#include <KLocalizedString>
 
 // Own includes
 #include <Category/Category.h>

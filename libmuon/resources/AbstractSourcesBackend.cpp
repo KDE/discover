@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2014 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,21 +18,11 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef ORIGINSBACKENDTEST_H
-#define ORIGINSBACKENDTEST_H
+#include "AbstractSourcesBackend.h"
 
-#include <QObject>
-#include <../OriginsBackend.h>
+AbstractSourcesBackend::AbstractSourcesBackend(QObject* parent)
+    : QObject(parent)
+{}
 
-class OriginsBackendTest : public QObject
-{
-    Q_OBJECT
-    public:
-        explicit OriginsBackendTest(QObject* parent = 0);
-
-    private slots:
-        void testLoad();
-        void testLocal();
-};
-
-#endif // ORIGINSBACKENDTEST_H
+AbstractSourcesBackend::~AbstractSourcesBackend()
+{}

@@ -21,16 +21,15 @@
 #include "ManagerWidget.h"
 
 // Qt includes
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QPushButton>
-#include <QtGui/QSplitter>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
+#include <QSplitter>
 
 // KDE includes
 #include <KDebug>
 #include <KHBox>
-#include <KIcon>
-#include <KLocale>
+#include <KLocalizedString>
 
 // LibQApt includes
 #include <LibQApt/Backend>

@@ -20,11 +20,12 @@
 
 #include "UpdaterSettingsDialog.h"
 
-#include <KIcon>
-#include <KLocale>
-
-#include "../../libmuon/settings/SettingsPageBase.h"
-#include "../../libmuon/settings/NotifySettingsPage.h"
+#include "settings/SettingsPageBase.h"
+#include "settings/NotifySettingsPage.h"
+#include <KLocalizedString>
+#include <QIcon>
+#include <QDialogButtonBox>
+#include <QPushButton>
 
 UpdaterSettingsDialog::UpdaterSettingsDialog(QWidget* parent) :
     KPageDialog(parent),
@@ -35,16 +36,19 @@ UpdaterSettingsDialog::UpdaterSettingsDialog(QWidget* parent) :
     setMinimumSize(QSize(512, minSize.height()));
 
     setFaceType(List);
-    setCaption(i18nc("@title:window", "Muon Preferences"));
-    setButtons(Ok | Apply | Cancel | Default);
-    enableButtonApply(false);
-    setDefaultButton(Ok);
+    setWindowTitle(i18nc("@title:window", "Muon Preferences"));
+    buttonBox()->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Apply | QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults);
+    buttonBox()->button(QDialogButtonBox::Apply)->setEnabled(false);
+    connect(buttonBox(), SIGNAL(accepted()), SLOT(accept()));
+    connect(buttonBox(), SIGNAL(rejected()), SLOT(reject()));
+    connect(this, SIGNAL(accepted()), SLOT(applySettings()));
+    connect(buttonBox()->button(QDialogButtonBox::RestoreDefaults), SIGNAL(clicked(bool)), SLOT(restoreDefaults()));
 
     // Notification settings
     NotifySettingsPage *notifyPage = new NotifySettingsPage(this);
     KPageWidgetItem* notifySettingsFrame = addPage(notifyPage,
                                                     i18nc("@title:group", "Notifications"));
-    notifySettingsFrame->setIcon(KIcon("preferences-desktop-notification"));
+    notifySettingsFrame->setIcon(QIcon::fromTheme("preferences-desktop-notification"));
     connect(notifyPage, SIGNAL(changed()), this, SLOT(enableApply()));
 
     m_pages.append(notifyPage);
@@ -54,20 +58,9 @@ UpdaterSettingsDialog::~UpdaterSettingsDialog()
 {
 }
 
-void UpdaterSettingsDialog::slotButtonClicked(int button)
-{
-    if ((button == Ok) || (button == Apply)) {
-        applySettings();
-    } else if (button == Default) {
-        restoreDefaults();
-    }
-
-    KPageDialog::slotButtonClicked(button);
-}
-
 void UpdaterSettingsDialog::enableApply()
 {
-    enableButtonApply(true);
+    buttonBox()->button(QDialogButtonBox::Apply)->setEnabled(true);
 }
 
 void UpdaterSettingsDialog::applySettings()
@@ -76,7 +69,7 @@ void UpdaterSettingsDialog::applySettings()
         page->applySettings();
     }
 
-    enableButtonApply(false);
+    buttonBox()->button(QDialogButtonBox::Apply)->setEnabled(false);
 }
 
 void UpdaterSettingsDialog::restoreDefaults()

@@ -21,14 +21,13 @@
 #include "UpdateModel.h"
 
 // Qt includes
-#include <QtGui/QFont>
+#include <QFont>
 #include <QApplication>
 
 // KDE includes
-#include <KGlobal>
 #include <KIconLoader>
-#include <KLocale>
-#include <KDebug>
+#include <KFormat>
+#include <KLocalizedString>
 
 // Own includes
 #include "UpdateItem.h"
@@ -67,7 +66,7 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         case VersionColumn:
             return item->version();
         case SizeColumn:
-            return KGlobal::locale()->formatByteSize(item->size());
+            return KFormat().formatByteSize(item->size());
         }
         break;
     case Qt::DecorationRole:
@@ -233,13 +232,13 @@ void UpdateModel::setResources(const QList< AbstractResource* >& resources)
     m_rootItem = new UpdateItem;
 
     UpdateItem *securityItem = new UpdateItem(i18nc("@item:inlistbox", "Important Security Updates"),
-                                              KIcon("security-medium"));
+                                              QIcon::fromTheme("security-medium"));
 
     UpdateItem *appItem = new UpdateItem(i18nc("@item:inlistbox", "Application Updates"),
-                                          KIcon("applications-other"));
+                                          QIcon::fromTheme("applications-other"));
 
     UpdateItem *systemItem = new UpdateItem(i18nc("@item:inlistbox", "System Updates"),
-                                             KIcon("applications-system"));
+                                             QIcon::fromTheme("applications-system"));
 
     foreach(AbstractResource* res, resources) {
         UpdateItem *updateItem = new UpdateItem(res);

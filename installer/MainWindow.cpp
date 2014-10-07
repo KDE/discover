@@ -24,14 +24,12 @@
 #include <QStandardItemModel>
 #include <QtCore/QStringBuilder>
 #include <QtCore/QTimer>
-#include <QtGui/QAbstractItemView>
-#include <QtGui/QSplitter>
-#include <QtGui/QStackedWidget>
+#include <QAbstractItemView>
+#include <QSplitter>
+#include <QtWidgets/QStackedWidget>
 
 // KDE includes
-#include <KAction>
 #include <KActionCollection>
-#include <KIcon>
 #include <KMessageBox>
 #include <KMessageWidget>
 #include <KPixmapSequence>
@@ -217,29 +215,29 @@ QStandardItem* MainWindow::createOriginItem(const QString& originName)
 
     if (originName == "Ubuntu") {
         viewItem->setText(i18nc("@item:inlistbox", "Provided by Kubuntu"));
-        viewItem->setIcon(KIcon("ubuntu-logo"));
+        viewItem->setIcon(QIcon::fromTheme("ubuntu-logo"));
     }
 
     if (originName == "Debian") {
         viewItem->setText(i18nc("@item:inlistbox", "Provided by Debian"));
-        viewItem->setIcon(KIcon("emblem-debian"));
+        viewItem->setIcon(QIcon::fromTheme("emblem-debian"));
     }
 
     if (originName == "Canonical") {
         viewItem->setText(i18nc("@item:inlistbox The name of the repository provided by Canonical, Ltd. ",
                                 "Canonical Partners"));
-        viewItem->setIcon(KIcon("partner"));
+        viewItem->setIcon(QIcon::fromTheme("partner"));
     }
 
     if (originName.startsWith(QLatin1String("LP-PPA"))) {
-        viewItem->setIcon(KIcon("user-identity"));
+        viewItem->setIcon(QIcon::fromTheme("user-identity"));
 
         if (originName == QLatin1String("LP-PPA-app-review-board")) {
             viewItem->setText(i18nc("@item:inlistbox An independent software source",
                                     "Independent"));
-            viewItem->setIcon(KIcon("system-users"));
+            viewItem->setIcon(QIcon::fromTheme("system-users"));
         } else
-            viewItem->setIcon(KIcon("user-identity"));
+            viewItem->setIcon(QIcon::fromTheme("user-identity"));
     }
     return viewItem;
 }
@@ -286,13 +284,13 @@ void MainWindow::populateViews()
     m_viewModel->clear();
     QStandardItem *availableItem = new QStandardItem;
     availableItem->setEditable(false);
-    availableItem->setIcon(KIcon("applications-other").pixmap(32,32));
+    availableItem->setIcon(QIcon::fromTheme("applications-other").pixmap(32,32));
     availableItem->setText(i18nc("@item:inlistbox Parent item for available software", "Get Software"));
     availableItem->setData(CatView, ViewTypeRole);
 
     QStandardItem *installedItem = new QStandardItem;
     installedItem->setEditable(false);
-    installedItem->setIcon(KIcon("computer"));
+    installedItem->setIcon(QIcon::fromTheme("computer"));
     installedItem->setText(i18nc("@item:inlistbox Parent item for installed software", "Installed Software"));
     installedItem->setData(AppView, ViewTypeRole);
     installedItem->setData(AbstractResource::State::Installed, StateFilterRole);
@@ -313,7 +311,7 @@ void MainWindow::populateViews()
 
     QStandardItem *historyItem = new QStandardItem;
     historyItem->setEditable(false);
-    historyItem->setIcon(KIcon("view-history").pixmap(32,32));
+    historyItem->setIcon(QIcon::fromTheme("view-history").pixmap(32,32));
     historyItem->setText(i18nc("@item:inlistbox Item for showing the history view", "History"));
     historyItem->setData(History, ViewTypeRole);
 
@@ -395,15 +393,15 @@ void MainWindow::showLauncherMessage()
         QString name = index.data().toString();
         m_launcherMessage->setText(i18nc("@info", "%1 was successfully installed.", name));
 
-        KIcon launchIcon = KIcon(index.data(Qt::DecorationRole).value<QIcon>());
-        KAction *launchAction = new KAction(launchIcon, i18nc("@action", "Start"), this);
+        QIcon launchIcon = index.data(Qt::DecorationRole).value<QIcon>();
+        QAction *launchAction = new QAction(launchIcon, i18nc("@action", "Start"), this);
         connect(launchAction, SIGNAL(activated()), this, SLOT(launchSingleApp()));
 
         m_launcherMessage->addAction(launchAction);
         m_launcherMessage->animatedShow();
     } else if (m_launches->rowCount() > 1) {
         m_launcherMessage->setText(i18nc("@info", "Applications successfully installed."));
-        KAction *launchAction = new KAction(i18nc("@action", "Run New Applications..."), this);
+        QAction *launchAction = new QAction(i18nc("@action", "Run New Applications..."), this);
         connect(launchAction, SIGNAL(activated()), this, SLOT(showAppLauncher()));
         m_launcherMessage->addAction(launchAction);
         m_launcherMessage->animatedShow();
@@ -452,7 +450,7 @@ void MainWindow::addProgressItem()
 
     m_progressItem = new QStandardItem;
     m_progressItem->setEditable(false);
-    m_progressItem->setIcon(KIcon("download").pixmap(32,32));
+    m_progressItem->setIcon(QIcon::fromTheme("download").pixmap(32,32));
     m_progressItem->setText(i18nc("@item:inlistbox Item for showing the progress view", "In Progress"));
     m_progressItem->setData(Progress, ViewTypeRole);
     parentItem->appendRow(m_progressItem);

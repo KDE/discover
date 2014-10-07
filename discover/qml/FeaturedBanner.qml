@@ -1,6 +1,6 @@
-import QtQuick 1.0
-import org.kde.plasma.core 0.1
-import org.kde.plasma.components 0.1
+import QtQuick 2.1
+import QtQuick.Controls 1.1
+import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
 
 Information {
@@ -15,7 +15,7 @@ Information {
             
             onClicked: {
                 if(modelData.packageName!=null)
-                    Navigation.openApplication(resourcesModel.resourceByPackageName(modelData.packageName))
+                    Navigation.openApplication(ResourcesModel.resourceByPackageName(modelData.packageName))
                 else
                     Qt.openUrlExternally(modelData.url)
             }
@@ -48,15 +48,18 @@ Information {
             bottom: parent.bottom
         }
         
+        SystemPalette {
+            id: palette
+        }
         Rectangle {
             anchors.fill: parent
-            color: "black"
+            color: palette.midlight
             opacity: 0.7
         }
         
         ToolButton {
             id: prevButton
-            iconSource: "go-previous"
+            iconName: "go-previous"
             height: parent.height*0.9
             width: height
             onClicked: info.previous()
@@ -67,7 +70,7 @@ Information {
             }
         }
         
-        IconItem {
+        QIconItem {
             id: iconItem
             anchors {
                 left: prevButton.right
@@ -76,7 +79,7 @@ Information {
                 margins: 3
             }
             width: height
-            source: titleBar.modelData ? titleBar.modelData.icon : "kde"
+            icon: titleBar.modelData ? titleBar.modelData.icon : "kde"
         }
         
         Label {
@@ -85,11 +88,10 @@ Information {
                 verticalCenter: parent.verticalCenter
                 leftMargin: 10
             }
-            color: "white"
             text: titleBar.modelData ? i18n("<b>%1</b><br/>%2", titleBar.modelData.text, titleBar.modelData.comment) : ""
         }
         ToolButton {
-            iconSource: "go-next"
+            iconName: "go-next"
             height: parent.height*0.9
             width: height
             onClicked: info.next()

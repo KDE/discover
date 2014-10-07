@@ -25,7 +25,7 @@
 #include <QtCore/QList>
 #include <QtCore/QString>
 
-#include <KIcon>
+#include <QIcon>
 
 class AbstractResource;
 class UpdateItem
@@ -40,7 +40,7 @@ public:
 
     UpdateItem();
     UpdateItem(const QString &categoryName,
-               const KIcon &categoryIcon);
+               const QIcon &categoryIcon);
     explicit UpdateItem(AbstractResource *app, UpdateItem *parent = 0);
 
     ~UpdateItem();
@@ -60,7 +60,7 @@ public:
     AbstractResource *app() const;
     QString name() const;
     QString version() const;
-    KIcon icon() const;
+    QIcon icon() const;
     qint64 size() const;
     Qt::CheckState checked() const;
     ItemType type() const;
@@ -72,7 +72,7 @@ private:
     ItemType m_type;
     QList<UpdateItem *> m_children;
     QString m_categoryName;
-    KIcon m_categoryIcon;
+    QIcon m_categoryIcon;
 };
 
 #endif // UPDATEITEM_H

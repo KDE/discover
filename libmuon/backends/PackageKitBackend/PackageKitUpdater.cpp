@@ -18,24 +18,33 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 #include "PackageKitUpdater.h"
+#include "PackageKitMessages.h"
 
-#include <PackageKit/packagekit-qt2/Daemon>
+#include <PackageKit/Daemon>
+#include <QDebug>
+#include <QMessageBox>
+#include <QAction>
 #include <QSet>
 
-#include <KLocale>
-#include <KMessageBox>
-#include <KDebug>
+#include <KLocalizedString>
+#include <QIcon>
 
 PackageKitUpdater::PackageKitUpdater(PackageKitBackend * parent)
   : AbstractBackendUpdater(parent),
-    m_transaction(0),
+    m_transaction(nullptr),
     m_backend(parent),
+    m_isCancelable(false),
+    m_isProgressing(false),
     m_speed(0),
     m_remainingTime(0),
     m_percentage(0)
 {
-    connect(m_backend, SIGNAL(reloadFinished()),
-            this, SLOT(reloadFinished()));
+    m_updateAction = new QAction(this);
+    m_updateAction->setIcon(QIcon::fromTheme("system-software-update"));
+    m_updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
+    m_updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
+    m_updateAction->setEnabled(PackageKit::Daemon::networkState() != PackageKit::Daemon::NetworkOffline);
+    connect(m_updateAction, SIGNAL(triggered()), parent, SLOT(refreshDatabase()));
 }
 
 PackageKitUpdater::~PackageKitUpdater()
@@ -43,157 +52,101 @@ PackageKitUpdater::~PackageKitUpdater()
     delete m_transaction;
 }
 
-void PackageKitUpdater::reloadFinished()
-{
-}
-
 void PackageKitUpdater::prepare()
 {
-    kDebug();
-    if (m_transaction)
-        m_transaction->deleteLater();
+    Q_ASSERT(!m_transaction);
+    m_toUpgrade = m_backend->upgradeablePackages();
+}
 
-    m_transaction = new PackageKit::Transaction(this);
+void PackageKitUpdater::setTransaction(PackageKit::Transaction* transaction)
+{
+    m_transaction = transaction;
+    m_isCancelable = transaction->allowCancel();
+
     connect(m_transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(finished(PackageKit::Transaction::Exit,uint)));
-    connect(m_transaction, SIGNAL(changed()), this, SLOT(backendChanged()));
     connect(m_transaction, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), this, SLOT(errorFound(PackageKit::Transaction::Error,QString)));
     connect(m_transaction, SIGNAL(mediaChangeRequired(PackageKit::Transaction::MediaType,QString,QString)),
             this, SLOT(mediaChange(PackageKit::Transaction::MediaType,QString,QString)));
     connect(m_transaction, SIGNAL(requireRestart(PackageKit::Transaction::Restart,QString)),
-            this, SLOT(requireRestard(PackageKit::Transaction::Restart,QString)));
+            this, SLOT(requireRestart(PackageKit::Transaction::Restart,QString)));
     connect(m_transaction, SIGNAL(eulaRequired(QString, QString, QString, QString)), SLOT(eulaRequired(QString, QString, QString, QString)));
+    connect(m_transaction, SIGNAL(statusChanged()), this, SLOT(statusChanged()));
+    connect(m_transaction, SIGNAL(speedChanged()), this, SLOT(speedChanged()));
+    connect(m_transaction, SIGNAL(allowCancelChanged()), this, SLOT(cancellableChanged()));
+    connect(m_transaction, SIGNAL(remainingTimeChanged()), this, SLOT(remainingTimeChanged()));
+    connect(m_transaction, SIGNAL(percentageChanged()), this, SLOT(percentageChanged()));
+}
 
+void PackageKitUpdater::start()
+{
+    QSet<QString> m_packageIds;
+    for (AbstractResource * res : m_toUpgrade) {
+        PackageKitResource * app = qobject_cast<PackageKitResource*>(res);
+        m_packageIds.insert(app->availablePackageId());
+        qDebug() << "Upgrade" << app->availablePackageId() << app->installedPackageId();
+    }
+    setTransaction(PackageKit::Daemon::updatePackages(m_packageIds.toList()));
+    setProgressing(true);
 }
 
 void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint )
 {
-    kDebug() << "EXIT" << exit;
     if (exit == PackageKit::Transaction::ExitEulaRequired)
         return;
-    if (exit == PackageKit::Transaction::ExitSuccess && m_transaction->role() == PackageKit::Transaction::RoleAcceptEula) {
-        prepare();
-        start();
-        return;
-    }
-    m_isProgressing = false;
-    emit progressingChanged(m_isProgressing);
-    m_backend->populateInstalledCache();
+    disconnect(m_transaction, 0, this, 0);
+    m_transaction = 0;
+
+    setProgressing(false);
+    m_backend->refreshDatabase();
 }
 
-void PackageKitUpdater::backendChanged()
+void PackageKitUpdater::cancellableChanged()
 {
-    kDebug();
     if (m_isCancelable != m_transaction->allowCancel()) {
         m_isCancelable = m_transaction->allowCancel();
         emit cancelableChanged(m_isCancelable);
     }
+}
 
-    if (m_status != m_transaction->status()) {
-        m_status = m_transaction->status();
-        switch (m_status) {
-            case PackageKit::Transaction::StatusWait:
-                m_statusMessage = i18n("Waiting...");
-                m_statusDetail = i18n("We are waiting for something.");
-                break;
-            case PackageKit::Transaction::StatusSetup:
-                m_statusMessage = i18n("Setup...");
-                m_statusDetail = i18n("Setting up transaction...");
-                break;
-            case PackageKit::Transaction::StatusRunning:
-                m_statusMessage = i18n("Processing...");
-                m_statusDetail = i18n("The transaction is currently working...");
-                break;
-            case PackageKit::Transaction::StatusRemove:
-                m_statusMessage = i18n("Remove...");
-                m_statusDetail = i18n("The transaction is currently removing packages...");
-                break;
-            case PackageKit::Transaction::StatusDownload:
-                m_statusMessage = i18n("Downloading...");
-                m_statusDetail = i18n("The transaction is currently downloading packages...");
-                break;
-            case PackageKit::Transaction::StatusInstall:
-                m_statusMessage = i18n("Installing...");
-                m_statusDetail = i18n("The transactions is currently installing packages...");
-                break;
-            case PackageKit::Transaction::StatusUpdate:
-                m_statusMessage = i18n("Updating...");
-                m_statusDetail = i18n("The transaction is currently updating packages...");
-                break;
-            case PackageKit::Transaction::StatusCleanup:
-                m_statusMessage = i18n("Cleaning up...");
-                m_statusDetail = i18n("The transaction is currently cleaning up...");
-                break;
-            //case PackageKit::Transaction::StatusObsolete,
-            case PackageKit::Transaction::StatusDepResolve:
-                m_statusMessage = i18n("Resolving dependencies...");
-                m_statusDetail = i18n("The transaction is currently resolving the dependencies of the packages it will install...");
-                break;
-            case PackageKit::Transaction::StatusSigCheck:
-                m_statusMessage = i18n("Checking signatures...");
-                m_statusDetail = i18n("The transaction is currently checking the signatures of the packages...");
-                break;
-            case PackageKit::Transaction::StatusTestCommit:
-                m_statusMessage = i18n("Test committing...");
-                m_statusDetail = i18n("The transaction is currently testing the commit of this set of packages...");
-                break;
-            case PackageKit::Transaction::StatusCommit:
-                m_statusMessage = i18n("Committing...");
-                m_statusDetail = i18n("The transaction is currently committing its set of packages...");
-                break;
-        //StatusRequest,
-            case PackageKit::Transaction::StatusFinished:
-                m_statusMessage = i18n("Finished.");
-                m_statusDetail = i18n("The transaction has finished!");
-                m_lastUpdate = QDateTime::currentDateTime();
-                break;
-            case PackageKit::Transaction::StatusCancel:
-                m_statusMessage = i18n("Canceled.");
-                m_statusDetail = i18n("The transaction was canceled");
-                break;
-            case PackageKit::Transaction::StatusWaitingForLock:
-                m_statusMessage = i18n("Waiting for lock...");
-                m_statusDetail = i18n("The transaction is currently waiting for the lock...");
-                break;
-            case PackageKit::Transaction::StatusWaitingForAuth:
-                m_statusMessage = i18n("Waiting for authorization...");
-                m_statusDetail = i18n("Waiting for the user to authorize the transaction...");
-                break;
-        //StatusScanProcessList,
-        //StatusCheckExecutableFiles,
-        //StatusCheckLibraries,
-            case PackageKit::Transaction::StatusCopyFiles:
-                m_statusMessage = i18n("Copying files...");
-                m_statusDetail = i18n("The transaction is currently copying files...");
-                break;
-            case PackageKit::Transaction::StatusUnknown:
-            default:
-                m_statusDetail = i18n("PackageKit does not tell us a useful status right now! Its status is %1.", m_transaction->status());
-                m_statusMessage = i18n("Unknown Status");
-                break;
-        };
-        emit statusMessageChanged(m_statusMessage);
-        emit statusDetailChanged(m_statusDetail);
-    }
-
-    if (m_speed != m_transaction->speed()) {
-        m_speed = m_transaction->speed();
-        emit downloadSpeedChanged(m_speed);
-    }
-
-    if (m_remainingTime != m_transaction->remainingTime()) {
-        m_remainingTime = m_transaction->remainingTime();
-        emit remainingTimeChanged();
-    }
-
+void PackageKitUpdater::percentageChanged()
+{
     if (m_percentage != m_transaction->percentage()) {
         m_percentage = m_transaction->percentage();
         emit progressChanged(m_percentage);
     }
 }
 
+void PackageKitUpdater::remainingTimeChanged()
+{
+    if (m_remainingTime != m_transaction->remainingTime()) {
+        m_remainingTime = m_transaction->remainingTime();
+        emit remainingTimeChanged();
+    }
+}
+
+void PackageKitUpdater::speedChanged()
+{
+    if (m_speed != m_transaction->speed()) {
+        m_speed = m_transaction->speed();
+        emit downloadSpeedChanged(m_speed);
+    }
+}
+
+void PackageKitUpdater::statusChanged()
+{
+    if (m_status != m_transaction->status()) {
+        m_status = m_transaction->status();
+        m_statusMessage = PackageKitMessages::statusMessage(m_status);
+        m_statusDetail = PackageKitMessages::statusDetail(m_status);
+#warning if(PackageKit::Transaction::StatusFinished)         m_lastUpdate = QDateTime::currentDateTime();
+        emit statusMessageChanged(m_statusMessage);
+        emit statusDetailChanged(m_statusDetail);
+    }
+}
+
 bool PackageKitUpdater::hasUpdates() const
 {
-    return m_backend->allUpdatesCount() > 0;
+    return m_backend->updatesCount() > 0;
 }
 
 qreal PackageKitUpdater::progress() const
@@ -236,12 +189,12 @@ QDateTime PackageKitUpdater::lastUpdate() const
 
 bool PackageKitUpdater::isAllMarked() const
 {
-    return m_toUpgrade.count() >= m_backend->allUpdatesCount();
+    return m_toUpgrade.count() >= m_backend->updatesCount();
 }
 
 bool PackageKitUpdater::isCancelable() const
 {
-    return m_isCancelable;
+    return m_transaction->allowCancel();
 }
 
 bool PackageKitUpdater::isProgressing() const
@@ -266,7 +219,7 @@ quint64 PackageKitUpdater::downloadSpeed() const
 
 QList<QAction*> PackageKitUpdater::messageActions() const
 {
-    return QList<QAction*>();
+    return QList<QAction*>() << m_updateAction;
 }
 
 void PackageKitUpdater::cancel()
@@ -274,70 +227,42 @@ void PackageKitUpdater::cancel()
     m_transaction->cancel();
 }
 
-void PackageKitUpdater::start()
-{
-    kDebug() << m_toUpgrade.count();
-    if (m_toUpgrade.isEmpty()) {//FIXME: Is this correct?
-        m_toUpgrade = m_backend->upgradeablePackages();
-    }
-    QSet<QString> m_packageIds;
-    for (AbstractResource * res : m_toUpgrade) {
-        PackageKitResource * app = qobject_cast<PackageKitResource*>(res);
-        m_packageIds.insert(app->availablePackageId());
-        qDebug() << "Upgrade" << app->availablePackageId() << app->installedPackageId();
-    }
-    m_transaction->installPackages(m_packageIds.toList());
-}
-
 void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QString& error)
 {
-    kDebug() << "ERROR" << error;
+    Q_UNUSED(error);
     if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
         return;
-    KMessageBox::error(0, error, PackageKitBackend::errorMessage(err));
+    QMessageBox::critical(0, i18n("PackageKit error found"), PackageKitMessages::errorMessage(err));
 }
 
 void PackageKitUpdater::mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text)
 {
     Q_UNUSED(media)
-    KMessageBox::information(0, text, i18n("Media Change of type '%1' is requested.", type));
+    QMessageBox::information(0, i18n("PackageKit media change"), i18n("Media Change of type '%1' is requested.\n%2", type, text));
 }
 
-void PackageKitUpdater::requireRestard(PackageKit::Transaction::Restart restart, const QString& p)
+void PackageKitUpdater::requireRestart(PackageKit::Transaction::Restart restart, const QString& pkgid)
 {
-    QString message;
-    switch (restart) {
-        case PackageKit::Transaction::RestartApplication:
-            message = i18n("'%1' was changed and suggests to be restarted.", PackageKit::Daemon::packageName(p));
-            break;
-        case PackageKit::Transaction::RestartSession:
-            message = i18n("A change by '%1' suggests your session to be restarted.", PackageKit::Daemon::packageName(p));
-            break;
-        case PackageKit::Transaction::RestartSecuritySession:
-            message = i18n("'%1' was updated for security reasons, a restart of the session is recommended.", PackageKit::Daemon::packageName(p));
-            break;
-        case PackageKit::Transaction::RestartSecuritySystem:
-            message = i18n("'%1' was updated for security reasons, a restart of the system is recommended.", PackageKit::Daemon::packageName(p));
-            break;
-        case PackageKit::Transaction::RestartSystem:
-        case PackageKit::Transaction::RestartUnknown:
-        case PackageKit::Transaction::RestartNone:
-        default:
-            message = i18n("A change by '%1' suggests your system to be rebooted.", PackageKit::Daemon::packageName(p));
-            break;
-    };
-    KMessageBox::information(0, message);
+    QMessageBox::information(0, i18n("PackageKit restart required"), PackageKitMessages::restartMessage(restart, pkgid));
 }
 
 void PackageKitUpdater::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
 {
-    kDebug();
-    int ret = KMessageBox::questionYesNo(0, i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
-                                                 PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement),
-                                            i18n("%1 requires user to accept its license!", PackageKit::Daemon::packageName(packageID)));
-    if (ret == KMessageBox::Yes) {
-        m_transaction->acceptEula(eulaID);
+    QString packageName = PackageKit::Daemon::packageName(packageID);
+    int ret = QMessageBox::question(0, i18n("%1 requires user to accept its license", packageName), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
+                                                 packageName, vendor, licenseAgreement), QMessageBox::Yes, QMessageBox::No);
+    if (ret == QMessageBox::Yes) {
+        PackageKit::Transaction* t = PackageKit::Daemon::acceptEula(eulaID);
+        connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(start()));
     } else {
         finished(PackageKit::Transaction::ExitCancelled, 0);
+    }
+}
+
+void PackageKitUpdater::setProgressing(bool progressing)
+{
+    if (m_isProgressing != progressing) {
+        m_isProgressing = progressing;
+        emit progressingChanged(m_isProgressing);
     }
 }

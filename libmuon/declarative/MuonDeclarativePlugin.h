@@ -20,14 +20,15 @@
 #ifndef MUONDECLARATIVEPLUGIN_H
 #define MUONDECLARATIVEPLUGIN_H
 
-#include <QDeclarativeExtensionPlugin>
+#include <QtQml/QQmlExtensionPlugin>
 
-class MuonDeclarativePlugin : public QDeclarativeExtensionPlugin
+class MuonDeclarativePlugin : public QQmlExtensionPlugin
 {
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface")
     public:
+        virtual void initializeEngine(QQmlEngine* engine, const char* uri);
         virtual void registerTypes(const char*);
 };
-
-Q_EXPORT_PLUGIN2(muondeclarativeplugin, MuonDeclarativePlugin);
 
 #endif

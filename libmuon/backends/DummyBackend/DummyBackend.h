@@ -24,15 +24,17 @@
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
 
+class DummyReviewsBackend;
 class StandardBackendUpdater;
 class DummyResource;
 class DummyBackend : public AbstractResourcesBackend
 {
 Q_OBJECT
-Q_INTERFACES(AbstractResourcesBackend)
+Q_PROPERTY(int startElements MEMBER m_startElements)
 public:
-    explicit DummyBackend(QObject* parent, const QVariantList& args);
+    explicit DummyBackend(QObject* parent = 0);
 
+    virtual void setMetaData(const QString& path);
     virtual QList<AbstractResource*> upgradeablePackages() const;
     virtual AbstractResource* resourceByPackageName(const QString& name) const;
     virtual int updatesCount() const;
@@ -53,10 +55,13 @@ public slots:
     void toggleFetching();
 
 private:
+    void populate(const QString& name);
+
     QHash<QString, DummyResource*> m_resources;
     StandardBackendUpdater* m_updater;
-    AbstractReviewsBackend* m_reviews;
+    DummyReviewsBackend* m_reviews;
     bool m_fetching;
+    int m_startElements;
 };
 
 #endif // DUMMYBACKEND_H

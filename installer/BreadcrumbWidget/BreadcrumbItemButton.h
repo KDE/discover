@@ -19,8 +19,8 @@
 #ifndef BREADCRUMBITEMBUTTON_P_H
 #define BREADCRUMBITEMBUTTON_P_H
 
-#include <QtGui/QColor>
-#include <QtGui/QPushButton>
+#include <QColor>
+#include <QtWidgets/QPushButton>
 
 class QEvent;
 

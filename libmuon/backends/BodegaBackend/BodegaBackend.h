@@ -38,11 +38,11 @@ namespace Bodega {
 class MUONPRIVATE_EXPORT BodegaBackend : public AbstractResourcesBackend
 {
 Q_OBJECT
-Q_INTERFACES(AbstractResourcesBackend)
 public:
-    explicit BodegaBackend(QObject* parent, const QVariantList& args);
+    explicit BodegaBackend(QObject* parent = 0);
     virtual ~BodegaBackend();
     
+    virtual void setMetaData(const QString& path);
     virtual void cancelTransaction(AbstractResource* app);
     virtual void removeApplication(AbstractResource* app);
     virtual void installApplication(AbstractResource* app, AddonList addons);

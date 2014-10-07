@@ -22,14 +22,14 @@
 
 // Qt includes
 #include <QtCore/QStringBuilder>
-#include <QtGui/QCheckBox>
-#include <QtGui/QLabel>
-#include <QtGui/QTreeView>
-#include <QtGui/QVBoxLayout>
+#include <QCheckBox>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTreeView>
+#include <QtWidgets/QVBoxLayout>
 
 // KDE includes
 #include <KComboBox>
-#include <KLocale>
+#include <KLocalizedString>
 
 // Libmuon includes
 #include <Category/Category.h>

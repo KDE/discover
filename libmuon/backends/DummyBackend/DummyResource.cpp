@@ -66,7 +66,7 @@ QUrl DummyResource::homepage()
 
 QString DummyResource::icon() const
 {
-    return "kalarm";
+    return isTechnical() ? "kalarm" : "kmail";
 }
 
 QString DummyResource::installedVersion() const
@@ -99,7 +99,7 @@ QString DummyResource::name()
 
 QString DummyResource::origin() const
 {
-    return "dummy";
+    return "DummySource1";
 }
 
 QString DummyResource::packageName() const

@@ -20,14 +20,14 @@
 
 #include "GeneralSettingsPage.h"
 
-#include <QtGui/QCheckBox>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QSpinBox>
-#include <QtGui/QFormLayout>
+#include <QCheckBox>
+#include <QHBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QSpinBox>
+#include <QFormLayout>
 
 #include <KDialog>
-#include <KLocale>
+#include <KLocalizedString>
 
 #include <LibQApt/Config>
 

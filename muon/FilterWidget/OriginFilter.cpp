@@ -21,8 +21,7 @@
 #include "OriginFilter.h"
 
 // KDE includes
-#include <KIcon>
-#include <KLocale>
+#include <KLocalizedString>
 
 // LibQApt includes
 #include <LibQApt/Backend>
@@ -39,7 +38,7 @@ void OriginFilter::populate()
 
     QStandardItem *defaultItem = new QStandardItem;
     defaultItem->setEditable(false);
-    defaultItem->setIcon(KIcon("bookmark-new-list"));
+    defaultItem->setIcon(QIcon::fromTheme("bookmark-new-list"));
     defaultItem->setText(i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All"));
     appendRow(defaultItem);
 

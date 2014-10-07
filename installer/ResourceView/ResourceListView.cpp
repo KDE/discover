@@ -21,8 +21,8 @@
 #include "ResourceListView.h"
 
 // Qt includes
-#include <QtGui/QIcon>
-#include <QtGui/QStackedWidget>
+#include <QIcon>
+#include <QtWidgets/QStackedWidget>
 
 // KDE includes
 #include <KSeparator>
