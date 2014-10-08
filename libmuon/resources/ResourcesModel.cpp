@@ -179,8 +179,7 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
         case RatingPointsRole:
         case RatingRole:
         case SortableRatingRole: {
-            AbstractReviewsBackend* ratings = resource->backend()->reviewsBackend();
-            Rating* rating = ratings ? ratings->ratingForApplication(resource) : nullptr;
+            Rating* rating = resource->rating();
             return rating ? rating->property(roleNames().value(role)) : -1;
         }
         case Qt::DecorationRole:

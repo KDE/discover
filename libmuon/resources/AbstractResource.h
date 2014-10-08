@@ -30,6 +30,7 @@
 #include "libmuonprivate_export.h"
 #include "PackageState.h"
 
+class Rating;
 class AbstractResourcesBackend;
 
 /**
@@ -65,6 +66,7 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString section READ section CONSTANT)
     Q_PROPERTY(QStringList mimetypes READ mimetypes CONSTANT)
     Q_PROPERTY(AbstractResourcesBackend* backend READ backend CONSTANT)
+    Q_PROPERTY(Rating* rating READ rating NOTIFY ratingFetched)
     public:
         /**
          * This describes the state of the resource
@@ -158,12 +160,20 @@ class MUONPRIVATE_EXPORT AbstractResource : public QObject
          */
         QCollatorSortKey nameSortKey();
 
+        /**
+         * Convenience method to fetch the resource's rating
+         *
+         * @returns the rating for the resource or null if not available
+         */
+        Rating* rating() const;
+
     public slots:
         virtual void fetchScreenshots();
         virtual void fetchChangelog() = 0;
 
     signals:
         void stateChanged();
+        void ratingFetched();
 
         ///response to the fetchScreenshots method
         ///@p thumbnails and @p screenshots should have the same number of elements

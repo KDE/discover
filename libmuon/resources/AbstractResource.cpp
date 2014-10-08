@@ -20,12 +20,16 @@
 
 #include "AbstractResource.h"
 #include "AbstractResourcesBackend.h"
+#include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <klocalizedstring.h>
 #include <KFormat>
 
 AbstractResource::AbstractResource(AbstractResourcesBackend* parent)
     : QObject(parent)
-{}
+{
+    if (parent->reviewsBackend())
+        connect(parent->reviewsBackend(), &AbstractReviewsBackend::ratingsReady, this, &AbstractResource::ratingFetched);
+}
 
 bool AbstractResource::canExecute() const
 {
@@ -103,4 +107,10 @@ QCollatorSortKey AbstractResource::nameSortKey()
         m_collatorKey.reset(new QCollatorSortKey(QCollator().sortKey(name())));
     }
     return *m_collatorKey;
+}
+
+Rating* AbstractResource::rating() const
+{
+    AbstractReviewsBackend* ratings = backend()->reviewsBackend();
+    return ratings ? ratings->ratingForApplication(const_cast<AbstractResource*>(this)) : nullptr;
 }
