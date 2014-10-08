@@ -113,7 +113,7 @@ void DummyTest::testSort()
     QBENCHMARK_ONCE {
         pm.setSortRole(ResourcesModel::SortableRatingRole);
         pm.sort(0);
-        int last;
+        int last=-1;
         for(int i = 0; i<pm.rowCount(); ++i) {
             int current = pm.index(i, 0).data(pm.sortRole()).toInt();
             QVERIFY(last<=current);
