@@ -22,6 +22,7 @@
 #include <resources/ResourcesModel.h>
 #include <resources/PackageState.h>
 #include <resources/AbstractResource.h>
+#include <Transaction/TransactionModel.h>
 #include <QDebug>
 
 ApplicationAddonsModel::ApplicationAddonsModel(QObject* parent)
@@ -29,6 +30,8 @@ ApplicationAddonsModel::ApplicationAddonsModel(QObject* parent)
     , m_app(0)
 {
 //     new ModelTest(this, this);
+
+    connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &ApplicationAddonsModel::transactionOver);
 }
 
 QHash< int, QByteArray > ApplicationAddonsModel::roleNames() const
@@ -40,13 +43,25 @@ QHash< int, QByteArray > ApplicationAddonsModel::roleNames() const
 
 void ApplicationAddonsModel::setApplication(AbstractResource* app)
 {
+    if (app == m_app)
+        return;
+
+    if (m_app)
+        disconnect(m_app, 0, this, 0);
+
+    m_app = app;
+    resetState();
+    emit applicationChanged();
+}
+
+void ApplicationAddonsModel::resetState()
+{
+    Q_ASSERT(m_app);
     beginResetModel();
     m_state.clear();
-    m_app = app;
     m_initial = m_app->addonsInformation();
     endResetModel();
-    
-    emit applicationChanged();
+
     emit stateChanged();
 }
 
@@ -124,4 +139,12 @@ bool ApplicationAddonsModel::hasChanges() const
 bool ApplicationAddonsModel::isEmpty() const
 {
     return m_initial.isEmpty();
+}
+
+void ApplicationAddonsModel::transactionOver(Transaction* t)
+{
+    if (t->resource() != m_app)
+        return;
+
+    resetState();
 }

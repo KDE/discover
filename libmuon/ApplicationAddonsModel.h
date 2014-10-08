@@ -27,6 +27,7 @@
 
 #include "libmuonprivate_export.h"
 
+class Transaction;
 class AbstractResource;
 
 class MUONPRIVATE_EXPORT ApplicationAddonsModel : public QAbstractListModel
@@ -57,6 +58,9 @@ class MUONPRIVATE_EXPORT ApplicationAddonsModel : public QAbstractListModel
         void applicationChanged();
 
     private:
+        void transactionOver(Transaction* t);
+        void resetState();
+
         AbstractResource* m_app;
         QList<PackageState> m_initial;
         AddonList m_state;
