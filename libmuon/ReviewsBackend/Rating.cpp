@@ -146,22 +146,22 @@ void Rating::debInit(const QString& packageName, QStringList histogram)
     histogram.removeDuplicates();
     for(int i=1; i<histogram.count(); ++i) {
         int points = histogram[i].toInt();
-	installed+=points;
+        installed+=points;
         values.append(points);
     }
     m_sortableRating = values[0];
     m_ratingCount = installed;
-    if(installed){
-	m_rating = values[0]/(m_ratingCount*1.0)*10;
+
+    if (installed) {
+        m_rating = values[0]/(m_ratingCount*1.0)*10;
+    } else {
+        m_rating = 0;
     }
-    else{
-	m_rating = 0;
-    }
-    if(values[0]-values[1]){
-	m_ratingPoints = (values[2]*1.0)/(values[0]-values[1]);
-    }
-    else{
-	m_ratingPoints = 0;
+
+    if (values[0]-values[1]) {
+        m_ratingPoints = (values[2]*1.0)/(values[0]-values[1]);
+    } else {
+        m_ratingPoints = 0;
     }
 }
 
