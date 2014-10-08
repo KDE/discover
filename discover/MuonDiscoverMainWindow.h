@@ -47,6 +47,8 @@ class MuonDiscoverMainWindow : public MuonMainWindow
         void setupActions();
         QObject* searchWidget() const;
 
+        virtual void showEvent(QShowEvent*);
+
     public slots:
         void openApplication(const QString& app);
         QUrl prioritaryFeaturedSource() const;

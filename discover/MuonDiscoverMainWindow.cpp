@@ -114,6 +114,12 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     setupActions();
 }
 
+void MuonDiscoverMainWindow::showEvent(QShowEvent* ev)
+{
+    QWidget::showEvent(ev);
+    m_searchText->setFocus();
+}
+
 void MuonDiscoverMainWindow::initialize()
 {
     ResourcesModel *m = ResourcesModel::global();
