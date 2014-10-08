@@ -25,6 +25,7 @@
 #include <resources/AbstractBackendUpdater.h>
 #include <ApplicationAddonsModel.h>
 #include <Transaction/TransactionModel.h>
+#include <ReviewsBackend/ReviewsModel.h>
 #include <qtest.h>
 
 #include <QtTest>
@@ -144,4 +145,22 @@ void DummyTest::testInstallAddons()
     QCOMPARE(m.data(m.index(0,0)).toString(), firstAddonName);
     QCOMPARE(res->addonsInformation().first().name(), firstAddonName);
     QCOMPARE(res->addonsInformation().first().isInstalled(), true);
+}
+
+void DummyTest::testReviewsModel()
+{
+    AbstractResource* res = m_model->resourceByPackageName("Dummy 1");
+    QVERIFY(res);
+
+    ReviewsModel m;
+    m.setResource(res);
+    m.fetchMore();
+
+    QVERIFY(m.rowCount()>0);
+
+    QCOMPARE(ReviewsModel::UserChoice(m.data(m.index(0,0), ReviewsModel::UsefulChoice).toInt()), ReviewsModel::None);
+    m.markUseful(0, true);
+    QCOMPARE(ReviewsModel::UserChoice(m.data(m.index(0,0), ReviewsModel::UsefulChoice).toInt()), ReviewsModel::Yes);
+    m.markUseful(0, false);
+    QCOMPARE(ReviewsModel::UserChoice(m.data(m.index(0,0), ReviewsModel::UsefulChoice).toInt()), ReviewsModel::No);
 }

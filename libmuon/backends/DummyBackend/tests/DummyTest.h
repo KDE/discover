@@ -38,6 +38,7 @@ private slots:
     void testFetch();
     void testSort();
     void testInstallAddons();
+    void testReviewsModel();
 
 private:
     AbstractResourcesBackend* m_appBackend;

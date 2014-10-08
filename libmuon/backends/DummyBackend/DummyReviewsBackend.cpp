@@ -28,6 +28,7 @@
 
 DummyReviewsBackend::DummyReviewsBackend(DummyBackend* parent)
     : AbstractReviewsBackend(parent)
+    , m_usefulness(ReviewsModel::None)
 {}
 
 void DummyReviewsBackend::fetchReviews(AbstractResource* app, int page)
@@ -60,4 +61,5 @@ void DummyReviewsBackend::initialize()
 void DummyReviewsBackend::submitUsefulness(Review* r, bool useful)
 {
     qDebug() << "usefulness..." << r->applicationName() << r->reviewer() << useful;
+    m_usefulness = useful ? ReviewsModel::Yes : ReviewsModel::No;
 }
