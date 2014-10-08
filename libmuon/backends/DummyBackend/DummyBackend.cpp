@@ -43,8 +43,8 @@ MUON_BACKEND_PLUGIN(DummyBackend)
 DummyBackend::DummyBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
-    , m_fetching(false)
     , m_reviews(new DummyReviewsBackend(this))
+    , m_fetching(false)
     , m_startElements(320)
 {}
 
