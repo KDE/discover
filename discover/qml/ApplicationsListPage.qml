@@ -93,7 +93,7 @@ Item {
                     }
                     MenuItem {
                         id: ratingItem
-                        text: i18n("Rating")
+                        text: i18n("Popularity")
                         onTriggered: page.changeSorting("sortableRating", Qt.DescendingOrder, "")
                         checked: appsModel.stringSortRole=="sortableRating"
                         checkable: true
@@ -104,14 +104,6 @@ Item {
                         text: i18n("Buzz")
                         onTriggered: page.changeSorting("ratingPoints", Qt.DescendingOrder, "")
                         checked: appsModel.stringSortRole=="ratingPoints"
-                        checkable: true
-                        exclusiveGroup: sortActionGroup
-                    }
-                    MenuItem {
-                        id: popularityItem
-                        text: i18n("Popularity")
-                        onTriggered: page.changeSorting("popcon", Qt.DescendingOrder, "")
-                        checked: appsModel.stringSortRole=="popcon"
                         checkable: true
                         exclusiveGroup: sortActionGroup
                     }

@@ -106,6 +106,16 @@ void DummyTest::testSort()
             }
             last = current;
         }
-        pm.setSortRole(ResourcesModel::StateRole);
+    }
+
+    QBENCHMARK_ONCE {
+        pm.setSortRole(ResourcesModel::SortableRatingRole);
+        pm.sort(0);
+        int last;
+        for(int i = 0; i<pm.rowCount(); ++i) {
+            int current = pm.index(i, 0).data(pm.sortRole()).toInt();
+            QVERIFY(last<=current);
+            last = current;
+        }
     }
 }
