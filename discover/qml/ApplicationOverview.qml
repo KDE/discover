@@ -26,8 +26,6 @@ import org.kde.muon 1.0
 Item {
     id: appInfo
     property QtObject application: null
-    property variant reviewsBackend: application.backend.reviewsBackend
-    property QtObject ratingInstance: appInfo.reviewsBackend!=null ? appInfo.reviewsBackend.ratingForApplication(appInfo.application) : null
 
     ScrollView {
         id: overviewContentsFlickable
@@ -40,6 +38,7 @@ Item {
         ApplicationDescription {
             width: overviewContentsFlickable.width-20
             height: childrenRect.height
+            application: appInfo.application
         }
     }
 
@@ -58,8 +57,9 @@ Item {
             width: Math.min(parent.width, maximumWidth)
             application: appInfo.application
             additionalItem:  Rating {
-                visible: appInfo.ratingInstance!=null
-                rating:  appInfo.ratingInstance==null ? 0 : appInfo.ratingInstance.rating
+                property QtObject ratingInstance: application.rating
+                visible: ratingInstance!=null
+                rating:  ratingInstance==null ? 0 : ratingInstance.rating
             }
         }
         Grid {

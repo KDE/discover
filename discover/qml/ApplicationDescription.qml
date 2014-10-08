@@ -24,7 +24,11 @@ import org.kde.muon 1.0
 import org.kde.muon.discover 1.0 as Discover
 import "navigation.js" as Navigation
 
-Column {
+Column
+{
+    id: desc
+    property QtObject application: null
+
     Item {width: 10; height: 5}
 
     Item {
@@ -99,7 +103,7 @@ Column {
     }
     AddonsView {
         id: addonsView
-        application: appInfo.application
+        application: parent.application
         isInstalling: installButton.isActive
         width: parent.width
     }
@@ -129,21 +133,23 @@ Column {
     Row {
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 5
+        property QtObject rating: desc.application.rating
 
         Button {
             visible: reviewsView.visible
-            text: i18n("More comments (%1)...", appInfo.ratingInstance ? appInfo.ratingInstance.ratingCount() : 0)
+            text: i18n("More comments (%1)...", parent.rating ? parent.rating.ratingCount : 0)
             onClicked: Navigation.openReviews(application, reviewsModel)
         }
         Button {
-            visible: appInfo.reviewsBackend != null && application.isInstalled
+            property QtObject reviewsBackend: application.backend.reviewsBackend
+            visible: reviewsBackend != null && application.isInstalled
             text: i18n("Review")
             onClicked: reviewDialog.visible = true
 
             ReviewDialog {
                 id: reviewDialog
-                application: appInfo.application
-                onAccepted: appInfo.reviewsBackend.submitReview(appInfo.application, summary, review, rating)
+                application: desc.application
+                onAccepted: reviewsBackend.submitReview(parent.application, summary, review, rating)
             }
         }
     }
