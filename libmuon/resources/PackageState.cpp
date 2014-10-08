@@ -40,3 +40,8 @@ bool PackageState::isInstalled() const
 {
     return m_installed;
 }
+
+void PackageState::setInstalled(bool installed)
+{
+    m_installed = installed;
+}

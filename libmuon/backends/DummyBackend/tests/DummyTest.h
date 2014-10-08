@@ -37,6 +37,7 @@ private slots:
     void testProxy();
     void testFetch();
     void testSort();
+    void testInstallAddons();
 
 private:
     AbstractResourcesBackend* m_appBackend;

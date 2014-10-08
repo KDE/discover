@@ -23,6 +23,8 @@
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>
 #include <resources/AbstractBackendUpdater.h>
+#include <ApplicationAddonsModel.h>
+#include <Transaction/TransactionModel.h>
 #include <qtest.h>
 
 #include <QtTest>
@@ -118,4 +120,28 @@ void DummyTest::testSort()
             last = current;
         }
     }
+}
+
+void DummyTest::testInstallAddons()
+{
+    AbstractResource* res = m_model->resourceByPackageName("Dummy 1");
+    QVERIFY(res);
+
+    ApplicationAddonsModel m;
+    m.setApplication(res);
+    QCOMPARE(m.rowCount(), res->addonsInformation().count());
+    QCOMPARE(res->addonsInformation().first().isInstalled(), false);
+
+    QString firstAddonName = m.data(m.index(0,0)).toString();
+    m.changeState(firstAddonName, true);
+    QVERIFY(m.hasChanges());
+
+    m.applyChanges();
+    QSignalSpy sR(TransactionModel::global(), SIGNAL(transactionRemoved(Transaction* )));
+    QVERIFY(sR.wait());
+    QVERIFY(!m.hasChanges());
+
+    QCOMPARE(m.data(m.index(0,0)).toString(), firstAddonName);
+    QCOMPARE(res->addonsInformation().first().name(), firstAddonName);
+    QCOMPARE(res->addonsInformation().first().isInstalled(), true);
 }

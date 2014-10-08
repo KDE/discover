@@ -28,7 +28,8 @@ class DummyTransaction : public Transaction
 {
     Q_OBJECT
     public:
-        explicit DummyTransaction(DummyResource* app, Role role);
+        DummyTransaction(DummyResource* app, Role role);
+        DummyTransaction(DummyResource* app, const AddonList& list, Role role);
 
     private slots:
         void iterateTransaction();

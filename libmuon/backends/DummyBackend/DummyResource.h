@@ -23,6 +23,7 @@
 
 #include <resources/AbstractResource.h>
 
+class AddonList;
 class DummyResource : public AbstractResource
 {
 Q_OBJECT
@@ -47,10 +48,13 @@ public:
     virtual QString name();
     virtual QString packageName() const;
     virtual bool isTechnical() const { return m_isTechnical; }
-    void setState(State state);
     virtual bool canExecute() const { return true; }
     virtual void invokeApplication() const;
     virtual void fetchChangelog();
+    void setState(State state);
+    void setAddons(const AddonList& addons);
+
+    void setAddonInstalled(const QString& addon, bool installed);
 
 public:
     QString m_name;

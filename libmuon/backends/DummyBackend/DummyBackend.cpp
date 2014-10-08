@@ -44,8 +44,8 @@ DummyBackend::DummyBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_fetching(false)
-    , m_startElements(320)
     , m_reviews(new DummyReviewsBackend(this))
+    , m_startElements(320)
 {}
 
 void DummyBackend::setMetaData(const QString& path)
@@ -147,9 +147,10 @@ AbstractReviewsBackend* DummyBackend::reviewsBackend() const
     return m_reviews;
 }
 
-void DummyBackend::installApplication(AbstractResource* app, AddonList )
+void DummyBackend::installApplication(AbstractResource* app, AddonList addons)
 {
-    installApplication(app);
+    TransactionModel *transModel = TransactionModel::global();
+    transModel->addTransaction(new DummyTransaction(qobject_cast<DummyResource*>(app), addons, Transaction::InstallRole));
 }
 
 void DummyBackend::installApplication(AbstractResource* app)

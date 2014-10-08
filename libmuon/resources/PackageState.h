@@ -33,10 +33,12 @@ class MUONPRIVATE_EXPORT PackageState
 {
     public:
         PackageState(const QString& name, const QString& description, bool installed);
+        PackageState& operator=(const PackageState& other);
         
         QString name() const;
         QString description() const;
         bool isInstalled() const;
+        void setInstalled(bool installed);
         
     private:
         QString m_name;

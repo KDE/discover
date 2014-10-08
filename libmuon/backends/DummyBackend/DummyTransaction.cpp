@@ -33,11 +33,18 @@ DummyTransaction::DummyTransaction(DummyResource* app, Role action)
     iterateTransaction();
 }
 
+DummyTransaction::DummyTransaction(DummyResource* app, const AddonList& addons, Transaction::Role role)
+    : Transaction(app->backend(), app, role, addons)
+    , m_app(app)
+{
+    iterateTransaction();
+}
+
 void DummyTransaction::iterateTransaction()
 {
     if(progress()<100) {
         setProgress(progress()+10);
-        QTimer::singleShot(/*KRandom::random()%*/200, this, SLOT(iterateTransaction()));
+        QTimer::singleShot(/*KRandom::random()%*/20, this, SLOT(iterateTransaction()));
     } else
         finishTransaction();
 }
@@ -55,6 +62,8 @@ void DummyTransaction::finishTransaction()
         break;
     }
     m_app->setState(newState);
+    m_app->setAddons(addons());
+    qDebug() << "done...";
     TransactionModel::global()->removeTransaction(this);
     deleteLater();
 }
