@@ -32,6 +32,7 @@ Q_OBJECT
 Q_PROPERTY(double sortableRating READ sortableRating CONSTANT)
 Q_PROPERTY(int rating READ rating CONSTANT)
 Q_PROPERTY(int ratingPoints READ ratingPoints CONSTANT)
+Q_PROPERTY(quint64 ratingCount READ ratingCount CONSTANT)
 public:
     explicit Rating(const QVariantMap &data);
     explicit Rating(const QString& packageName, const QString& appName, int ratingCount, int rating, const QString& histogram);
@@ -40,7 +41,7 @@ public:
 
     QString packageName() const;
     QString applicationName() const;
-    Q_SCRIPTABLE quint64 ratingCount() const;
+    quint64 ratingCount() const;
     // 0.0 - 10.0 ranged rating multiplied by two and rounded for KRating*
     Q_SCRIPTABLE int rating() const;
     int ratingPoints() const;
