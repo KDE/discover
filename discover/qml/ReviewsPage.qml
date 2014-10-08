@@ -22,27 +22,23 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 import org.kde.muon 1.0
 
-Item
-{
+ScrollView {
     id: page
     property alias model: reviewsView.model
     property real actualWidth: width-Math.pow(width/70, 2)
     property real proposedMargins: (width-actualWidth)/2
-    
-    ScrollView {
-        anchors.fill: parent
-        ListView {
-            id: reviewsView
 
-            clip: true
-            visible: count>0
-            spacing: 5
+    ListView {
+        id: reviewsView
 
-            delegate: ReviewDelegate {
-                x: page.proposedMargins
-                width: page.actualWidth
-                onMarkUseful: reviewsModel.markUseful(index, useful)
-            }
+        clip: true
+        visible: count>0
+        spacing: 5
+
+        delegate: ReviewDelegate {
+            x: page.proposedMargins
+            width: page.actualWidth
+            onMarkUseful: page.model.markUseful(index, useful)
         }
     }
 }
