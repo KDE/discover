@@ -58,6 +58,7 @@ Item {
     }
 
     function changeSorting(role, sorting, section) {
+        console.log("changing to", role, "was", appsModel.stringSortRole);
         appsModel.stringSortRole = role
         appsModel.sortOrder=sorting
         page.sectionProperty = section
@@ -209,7 +210,7 @@ Item {
             text: section
             anchors {
                 right: parent.right
-                rightMargin: apps.proposedMargin
+                rightMargin: page.proposedMargin
             }
         }
     }
