@@ -63,7 +63,6 @@ void DummyTransaction::finishTransaction()
     }
     m_app->setState(newState);
     m_app->setAddons(addons());
-    qDebug() << "done...";
     TransactionModel::global()->removeTransaction(this);
     deleteLater();
 }
