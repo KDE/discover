@@ -149,7 +149,7 @@ Column
             ReviewDialog {
                 id: reviewDialog
                 application: desc.application
-                onAccepted: reviewsBackend.submitReview(parent.application, summary, review, rating)
+                onAccepted: parent.reviewsBackend.submitReview(parent.application, summary, review, rating)
             }
         }
     }
