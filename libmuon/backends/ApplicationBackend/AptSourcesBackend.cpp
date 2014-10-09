@@ -20,8 +20,10 @@
 
 #include "AptSourcesBackend.h"
 #include "ApplicationBackend.h"
+#include <libmuonapt/QAptActions.h>
 #include <libqapt/sourceentry.h>
 #include <kauthexecutejob.h>
+#include <KActionCollection>
 #include <KLocalizedString>
 #include <KMessageWidget>
 #include <KMessageBox>
@@ -227,4 +229,9 @@ QString AptSourcesBackend::idDescription()
 QString AptSourcesBackend::name() const
 {
     return i18n("Software Management");
+}
+
+QList<QAction*> AptSourcesBackend::actions() const
+{
+    return QList<QAction*>() << QAptActions::self()->actionCollection()->action("software_properties");
 }

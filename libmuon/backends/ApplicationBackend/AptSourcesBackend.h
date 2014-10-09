@@ -43,6 +43,7 @@ public:
     virtual QString idDescription();
     virtual QString name() const;
     ApplicationBackend* appsBackend() const;
+    virtual QList<QAction*> actions() const;
 
 private slots:
     void load();
