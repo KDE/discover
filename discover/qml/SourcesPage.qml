@@ -98,6 +98,7 @@ Item {
                                 id: enabledBox
                                 enabled: false //TODO: implement the application of this change
                                 checked: model.checked != Qt.Unchecked
+                                tooltip: i18n("Origin enabled")
                             }
                             Label {
                                 Layout.fillWidth: true
@@ -111,11 +112,13 @@ Item {
                                 id: browseOrigin
                                 enabled: display!=""
                                 iconName: "view-filter"
+                                tooltip: i18n("Browse the origin's resources")
                                 onClicked: Navigation.openApplicationListSource(model.display)
                             }
                             Button {
                                 iconName: "edit-delete"
                                 onClicked: sourceDelegate.sourceBackend.removeSource(model.display)
+                                tooltip: i18n("Delete the origin")
                             }
                         }
                     }
