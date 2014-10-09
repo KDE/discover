@@ -20,10 +20,12 @@
 
 #include "DummySourcesBackend.h"
 #include <QDebug>
+#include <QAction>
 
 DummySourcesBackend::DummySourcesBackend(QObject* parent)
     : AbstractSourcesBackend(parent)
     , m_sources(new QStandardItemModel(this))
+    , m_testAction(new QAction(QIcon::fromTheme("kalgebra"), QStringLiteral("DummyAction"), this))
 {
     QHash<int, QByteArray> roles = m_sources->roleNames();
     roles.insert(Qt::CheckStateRole, "checked");
@@ -34,6 +36,8 @@ DummySourcesBackend::DummySourcesBackend(QObject* parent)
     addSource("DummySource3");
     addSource("DummySource4");
     addSource("DummySource5");
+
+    connect(m_testAction, &QAction::triggered, [](){ qDebug() << "action triggered!"; });
 }
 
 QAbstractItemModel* DummySourcesBackend::sources()
@@ -59,3 +63,9 @@ bool DummySourcesBackend::removeSource(const QString& id)
     }
     return items.count()==1;
 }
+
+QList<QAction*> DummySourcesBackend::actions() const
+{
+    return QList<QAction*>() << m_testAction;
+}
+

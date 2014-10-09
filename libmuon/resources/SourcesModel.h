@@ -26,11 +26,13 @@
 #include <QtQml/QQmlListProperty>
 #include "libmuonprivate_export.h"
 
+class QAction;
 class AbstractSourcesBackend;
 class MUONPRIVATE_EXPORT SourcesModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(int count READ rowCount NOTIFY sourcesChanged)
+    Q_PROPERTY(QList<QObject*> actions READ actions NOTIFY sourcesChanged)
     public:
         enum Roles {
             SourceBackend = Qt::UserRole+1
@@ -45,6 +47,7 @@ class MUONPRIVATE_EXPORT SourcesModel : public QAbstractListModel
         void addSourcesBackend(AbstractSourcesBackend* sources);
         virtual QHash<int, QByteArray> roleNames() const;
 
+        QList<QObject*> actions() const;
         Q_SCRIPTABLE QVariant get(int row, const QByteArray& roleName);
 
     Q_SIGNALS:

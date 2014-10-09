@@ -21,6 +21,7 @@
 #include "SourcesModel.h"
 #include <QtGlobal>
 #include <QDebug>
+#include <QAction>
 #include "resources/AbstractSourcesBackend.h"
 
 Q_GLOBAL_STATIC(SourcesModel, s_sources)
@@ -78,4 +79,14 @@ int SourcesModel::rowCount(const QModelIndex& parent) const
 QVariant SourcesModel::get(int row, const QByteArray& roleName)
 {
     return data(index(row), roleNames().key(roleName));
+}
+
+QList<QObject*> SourcesModel::actions() const
+{
+    QList<QObject*> ret;
+    for(AbstractSourcesBackend* b: m_sources) {
+        for(QAction* action: b->actions())
+            ret.append(action);
+    }
+    return ret;
 }

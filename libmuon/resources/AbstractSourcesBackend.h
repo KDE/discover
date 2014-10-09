@@ -24,6 +24,7 @@
 #include <QObject>
 #include "libmuonprivate_export.h"
 
+class QAction;
 class QAbstractItemModel;
 class MUONPRIVATE_EXPORT AbstractSourcesBackend : public QObject
 {
@@ -42,6 +43,7 @@ class MUONPRIVATE_EXPORT AbstractSourcesBackend : public QObject
         Q_SCRIPTABLE virtual bool removeSource(const QString& id) = 0;
 
         virtual QAbstractItemModel* sources() = 0;
+        virtual QList<QAction*> actions() const = 0;
 };
 
 #endif // ABSTRACTRESOURCESBACKEND_H

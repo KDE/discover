@@ -34,9 +34,11 @@ public:
     virtual bool removeSource(const QString& id);
     virtual QString name() const { return QStringLiteral("Dummy"); }
     virtual QString idDescription() { return QStringLiteral("Random weird text"); }
+    virtual QList<QAction*> actions() const;
 
 private:
     QStandardItemModel* m_sources;
+    QAction* m_testAction;
 };
 
 #endif // DUMMYSOURCESBACKEND_H
