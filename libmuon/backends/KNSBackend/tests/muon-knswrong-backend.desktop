@@ -4,6 +4,17 @@ ServiceTypes=Muon/Backend
 Exec=blubb
 Icon=plasma
 Name=Wrong
+Name[ca]=Erroni
+Name[de]=Falsch
+Name[es]=Incorrecto
+Name[hu]=Hibás
+Name[nl]=Verkeerd
+Name[pt]=Errado
+Name[pt_BR]=Errado
+Name[sk]=Zlé
+Name[sv]=Felaktig
+Name[uk]=Помилка
+Name[x-test]=xxWrongxx
 
 X-KDE-Library=muon-knsbackend
 X-KDE-PluginInfo-Name=muon-knswrong-backend
