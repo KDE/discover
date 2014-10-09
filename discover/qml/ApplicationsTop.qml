@@ -31,7 +31,7 @@ Column {
     property Component roleDelegate: null
     property string title: ""
 
-    height: 200
+    height: childrenRect.height
     Label {
         text: topView.title
         width: parent.width
@@ -51,8 +51,7 @@ Column {
         }
         delegate: GridItem {
                     width: topView.width
-                    height: (topView.height-nameLabel.paintedHeight*1.3-topView.spacing*5)/5
-
+                    height: nameLabel.paintedHeight*2.5
 
                     QIconItem {
                         id: iconItem

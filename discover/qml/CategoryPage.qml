@@ -89,10 +89,8 @@ Item {
     }
     ScrolledAwesomeGrid {
         id: flick
-        anchors {
-            fill: parent
-            bottomMargin: 10
-        }
+        anchors.fill: parent
+
         model: CategoryModel {
             id: categoryModel
             displayedCategory: page.category
@@ -101,14 +99,14 @@ Item {
         delegate: categoryDelegate
         header: category==null ? featured : categoryHeader
         footer: Item {
-                    height: Math.min(200, page.height/2)
+                    height: top.height+5
                     width: parent.width
                     ApplicationsTop {
+                        id: top
                         width: parent.width/2-5
                         anchors {
                             top: parent.top
                             left: parent.left
-                            bottom: parent.bottom
                         }
                         sortRole: "sortableRating"
                         filteredCategory: page.category
@@ -120,7 +118,6 @@ Item {
                         anchors {
                             top: parent.top
                             right: parent.right
-                            bottom: parent.bottom
                         }
                         sortRole: "ratingPoints"
                         filteredCategory: page.category
