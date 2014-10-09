@@ -20,7 +20,7 @@
 
 #include "AptSourcesBackend.h"
 #include "ApplicationBackend.h"
-#include <libmuonapt/QAptActions.h>
+#include <QAptActions.h>
 #include <libqapt/sourceentry.h>
 #include <kauthexecutejob.h>
 #include <KActionCollection>
