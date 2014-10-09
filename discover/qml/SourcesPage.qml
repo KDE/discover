@@ -2,6 +2,7 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.muon 1.0
+import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
 
 Item {
@@ -23,7 +24,22 @@ Item {
 
             menu: sourcesMenu
         }
+        Repeater {
+            model: SourcesModel.actions
 
+            delegate: RowLayout{
+                QIconItem {
+                    icon: modelData.icon
+                }
+                ToolButton {
+                    property QtObject action: modelData
+                    height: parent.height
+                    text: action.text
+                    onClicked: action.trigger()
+                    enabled: action.enabled
+                }
+            }
+        }
     }
     
     ScrollView {
