@@ -50,7 +50,7 @@ ReviewsTest::ReviewsTest(QObject* parent): QObject(parent)
     m_window = new MuonMainWindow;
     m->integrateMainWindow(m_window);
     m_appBackend = backendByName(m, "ApplicationBackend");
-    QSignalSpy(m, SIGNAL(allInitialized())).wait();
+    QVERIFY(QSignalSpy(m, SIGNAL(allInitialized())).wait());
     m_revBackend = m_appBackend->reviewsBackend();
 }
 
