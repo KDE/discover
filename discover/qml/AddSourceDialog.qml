@@ -31,7 +31,10 @@ Dialog {
 
     ColumnLayout {
         id: info
-        width: parent.width
+        anchors {
+            left: parent.left
+            right: parent.right
+        }
 
         Label {
             id: description
