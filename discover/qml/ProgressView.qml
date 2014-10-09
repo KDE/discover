@@ -56,7 +56,7 @@ ToolBar {
         model: progressModel
 
         delegate: Button {
-            width: launcherRow.childrenRect.width+50
+            width: launcherRow.implicitWidth+launcherRow.anchors.margins*2
             height: contents.height
 
             onClicked: Navigation.openApplication(model.app)
@@ -66,9 +66,14 @@ ToolBar {
                 onCancelled: model.remove(index)
             }
 
+            Behavior on width { NumberAnimation { duration: 250 } }
+
             RowLayout {
                 id: launcherRow
-                anchors.fill: parent
+                anchors {
+                    fill: parent
+                    margins: 5
+                }
                 spacing: 2
                 QIconItem {
                     anchors.verticalCenter: parent.verticalCenter
