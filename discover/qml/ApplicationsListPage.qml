@@ -58,7 +58,6 @@ Item {
     }
 
     function changeSorting(role, sorting, section) {
-        console.log("changing to", role, "was", appsModel.stringSortRole);
         appsModel.stringSortRole = role
         appsModel.sortOrder=sorting
         page.sectionProperty = section
