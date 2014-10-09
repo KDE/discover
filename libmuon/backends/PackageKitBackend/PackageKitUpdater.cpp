@@ -138,7 +138,7 @@ void PackageKitUpdater::statusChanged()
         m_status = m_transaction->status();
         m_statusMessage = PackageKitMessages::statusMessage(m_status);
         m_statusDetail = PackageKitMessages::statusDetail(m_status);
-#warning if(PackageKit::Transaction::StatusFinished)         m_lastUpdate = QDateTime::currentDateTime();
+
         emit statusMessageChanged(m_statusMessage);
         emit statusDetailChanged(m_statusDetail);
     }
@@ -184,7 +184,7 @@ bool PackageKitUpdater::isMarked(AbstractResource* res) const
 
 QDateTime PackageKitUpdater::lastUpdate() const
 {
-    return m_lastUpdate;
+    return QDateTime();
 }
 
 bool PackageKitUpdater::isAllMarked() const
