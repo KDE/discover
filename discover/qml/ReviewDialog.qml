@@ -6,20 +6,17 @@ import QtQuick.Window 2.0
 
 Dialog
 {
+    id: reviewDialog
+
     property QtObject application
     property alias rating: ratingInput.rating
     property alias summary: summaryInput.text
     property alias review: reviewInput.text
-    id: reviewDialog
     title: i18n("Reviewing %1", application.name)
     modality: Qt.WindowModal
 
-    height: 200
-    width: 200
-    
     ColumnLayout {
         width: parent.width
-        height: parent.height
 
         Label { text: i18n("Rating:") }
         Rating {
@@ -31,6 +28,7 @@ Dialog
         TextField {
             id: summaryInput
             Layout.fillWidth: true
+            placeholderText: i18n("Short summary...")
         }
 
         TextArea {
