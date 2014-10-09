@@ -56,7 +56,6 @@ public:
     int usefulnessFavorable() const;
     ReviewsModel::UserChoice usefulChoice() const;
     void setUsefulChoice(ReviewsModel::UserChoice useful);
-    AbstractResource *package();
 
 private:
     QString m_appName;
@@ -73,8 +72,6 @@ private:
     ReviewsModel::UserChoice m_usefulChoice;
     QString m_summary;
     QString m_packageVersion;
-
-    AbstractResource *m_package;
 };
 
 #endif

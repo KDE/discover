@@ -38,7 +38,6 @@ Review::Review(const QString& name, const QString& pkgName, const QString& langu
     , m_usefulChoice(ReviewsModel::None)
     , m_summary(summary)
     , m_packageVersion(packageVersion)
-    , m_package(nullptr)
 {}
 
 Review::~Review()
@@ -128,12 +127,4 @@ ReviewsModel::UserChoice Review::usefulChoice() const
 void Review::setUsefulChoice(ReviewsModel::UserChoice useful)
 {
     m_usefulChoice = useful;
-}
-
-AbstractResource *Review::package()
-{
-    if(!m_package) {
-        m_package = ResourcesModel::global()->resourceByPackageName(m_packageName);
-    }
-    return m_package;
 }
