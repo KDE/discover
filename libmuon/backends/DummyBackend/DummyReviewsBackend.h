@@ -22,6 +22,7 @@
 #define DUMMYREVIEWSBACKEND_H
 
 #include <ReviewsBackend/AbstractReviewsBackend.h>
+#include <ReviewsBackend/ReviewsModel.h>
 #include <QMap>
 
 class DummyBackend;
