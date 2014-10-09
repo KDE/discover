@@ -49,7 +49,7 @@ void PKTransaction::start()
             m_trans = PackageKit::Daemon::removePackage(qobject_cast<PackageKitResource*>(resource())->installedPackageId());
             break;
         case Transaction::ChangeAddonsRole:
-#warning TODO: implement!
+            qWarning() << "addons unsupported in PackageKit backend";
             break;
     };
     Q_ASSERT(m_trans);
