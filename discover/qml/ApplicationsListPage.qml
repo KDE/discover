@@ -74,9 +74,9 @@ Item {
                 sourceComponent: page.extendedToolBar
             }
 
-            MuonToolButton {
+            ToolButton {
                 id: sortButton
-                icon: "view-sort-ascending"
+                iconName: "view-sort-ascending"
                 onClicked: menu.popup()
 
                 ExclusiveGroup { id: sortActionGroup }
@@ -125,9 +125,9 @@ Item {
                 }
             }
 
-            MuonToolButton {
+            ToolButton {
                 id: listViewShown
-                icon: "tools-wizard"
+                iconName: "tools-wizard"
                 onClicked: shownMenu.popup()
 
                 ExclusiveGroup { id: shownActionGroup }

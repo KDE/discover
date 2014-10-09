@@ -24,18 +24,6 @@ Item {
             menu: sourcesMenu
         }
 
-//         Repeater {
-//             model: ["software_properties"]
-//
-//             delegate: MuonToolButton {
-//                 property QtObject action: app.getAction(modelData)
-//                 height: parent.height
-//                 text: action.text
-//                 onClicked: action.trigger()
-//                 enabled: action.enabled
-// //                 icon: action.icon
-//             }
-//         }
     }
     
     ScrollView {
