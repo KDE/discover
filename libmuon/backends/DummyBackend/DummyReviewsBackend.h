@@ -50,7 +50,6 @@ public:
 
 private:
     QMap<AbstractResource*, Rating*> m_ratings;
-    ReviewsModel::UserChoice m_usefulness;
 };
 
 #endif // DUMMYREVIEWSBACKEND_H
