@@ -24,7 +24,7 @@ import org.kde.muon 1.0
 import org.kde.muon.discover 1.0
 import "navigation.js" as Navigation
 
-Item
+Rectangle
 {
     id: window
     property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
@@ -41,6 +41,9 @@ Item
     property bool navigationEnabled: true
 
     visible: true
+
+    SystemPalette { id: palette }
+    color: palette.base
 
     Binding {
         target: app.searchWidget
