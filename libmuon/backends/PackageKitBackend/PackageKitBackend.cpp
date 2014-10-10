@@ -137,8 +137,8 @@ void PackageKitBackend::getPackagesFinished(PackageKit::Transaction::Exit exit)
 //  which is 5200 today. To workaround that, we'll create different transactions that we'll process
 //  one after the other.
 
-    for(int i=0, step=1000; i<m_updatingPackages.count(); i+=step) {
-        QStringList chunk = ids.mid(i, qMin(step, m_updatingPackages.count()-i));
+    for(int i=0, step=1000; i<ids.count(); i+=step) {
+        QStringList chunk = ids.mid(i, qMin(step, ids.count()-i));
         m_transactionQueue.append([chunk]() { return PackageKit::Daemon::getDetails(chunk); });
     }
     iterateTransactionQueue();
