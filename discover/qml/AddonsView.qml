@@ -69,7 +69,7 @@ Column
             height: parent.enabled ? implicitHeight : 0
             visible: height!=0
             iconName: "dialog-ok"
-            text: i18n("Install")
+            text: i18n("Apply Changes")
             onClicked: addonsModel.applyChanges()
             Behavior on height { NumberAnimation { duration: 100 } }
         }
