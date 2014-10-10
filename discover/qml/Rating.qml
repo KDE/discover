@@ -42,13 +42,18 @@ Item {
                 height: view.starSize
                 width: view.starSize
                 icon: "rating"
-                opacity: (view.max/theRepeater.count*index)>view.rating ? 0.2 : 1
+                opacity: (mouse.containsMouse ? 0.7
+                          : (view.max/theRepeater.count*index)>view.rating ? 0.2
+                          : 1)
 
                 MouseArea {
+                    id: mouse
                     enabled: editable
+                    hoverEnabled: editable
                     
                     anchors.fill: parent
                     onClicked: rating = (max/theRepeater.model*index)
+
                 }
             }
         }
