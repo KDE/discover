@@ -20,19 +20,21 @@
 #ifndef DUMMYNOTIFIER_H
 #define DUMMYNOTIFIER_H
 
-#include <resources/AbstractKDEDModule.h>
-#include <QVariantList>
+#include <BackendNotifierModule.h>
 
-class DummyNotifier : public AbstractKDEDModule
+class DummyNotifier : public BackendNotifierModule
 {
-    Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.kde.muon.dummy")
+Q_OBJECT
+Q_PLUGIN_METADATA(IID "org.kde.muon.BackendNotifierModule")
+Q_INTERFACES(BackendNotifierModule)
 public:
-    DummyNotifier(QObject* parent, const QVariantList &);
+    DummyNotifier(QObject* parent = 0);
     virtual ~DummyNotifier();
-    
-public slots:
+
+    virtual bool isSystemUpToDate() const;
     virtual void recheckSystemUpdateNeeded();
+    virtual int securityUpdatesCount();
+    virtual int updatesCount();
 };
 
 #endif

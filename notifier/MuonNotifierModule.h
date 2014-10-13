@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2014 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,29 +18,58 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MUONBACKENDSFACTORY_H
-#define MUONBACKENDSFACTORY_H
-#include "libmuonprivate_export.h"
-#include <QList>
+#ifndef MUONNOTIFIERMODULE_H
+#define MUONNOTIFIERMODULE_H
 
-class QCommandLineParser;
-class QStringList;
-class KPluginInfo;
-class AbstractResourcesBackend;
+#include <KDEDModule>
+#include <QVariantList>
+#include <BackendNotifierModule.h>
 
-class MUONPRIVATE_EXPORT MuonBackendsFactory
+class KStatusNotifierItem;
+
+class Q_DECL_EXPORT MuonNotifierModule : public KDEDModule
 {
+Q_OBJECT
+Q_CLASSINFO("D-Bus Interface", "org.kde.MuonNotifier")
+Q_PROPERTY(bool systemUpToDate READ isSystemUpToDate)
+Q_PROPERTY(QStringList modules READ loadedModules)
 public:
-    MuonBackendsFactory();
-    
-    AbstractResourcesBackend* backendForFile(const QString& path) const;
-    AbstractResourcesBackend* backend(const QString& name) const;
-    QList<AbstractResourcesBackend*> allBackends() const;
-    QStringList allBackendNames(bool whitelist = true) const;
-    int backendsCount() const;
-    
-    static void setupCommandLine(QCommandLineParser* parser);
-    static void processCommandLine(QCommandLineParser* parser);
+    enum State {
+        NoUpdates,
+        NormalUpdates,
+        SecurityUpdates
+    };
+
+    MuonNotifierModule(QObject* parent = 0, const QVariantList& args = QVariantList());
+    virtual ~MuonNotifierModule();
+
+    bool isSystemUpToDate() const;
+
+    State state() const;
+    QString iconName() const;
+    QString message() const;
+    QString extendedMessage() const;
+    int updatesCount() const;
+    int securityUpdatesCount() const;
+
+    void updateStatusNotifier();
+    QStringList loadedModules() const;
+
+public Q_SLOTS:
+    void configurationChanged();
+    void recheckSystemUpdateNeeded();
+    void quit();
+    void showMuon();
+
+Q_SIGNALS:
+    void systemUpdateNeeded();
+
+private:
+    void loadBackends();
+
+    KStatusNotifierItem* m_statusNotifier;
+    QList<BackendNotifierModule*> m_backends;
+    bool m_verbose;
 };
 
-#endif // MUONBACKENDSFACTORY_H
+#endif //ABSTRACTKDEDMODULE_H

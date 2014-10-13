@@ -1,5 +1,6 @@
 add_subdirectory(backends)
 add_subdirectory(declarative)
+add_subdirectory(notifiers)
 
 set(muon_LIB_SRCS
     Category/Category.cpp
@@ -26,7 +27,6 @@ set(muon_LIB_SRCS
     resources/AbstractResourcesBackend.cpp
     resources/AbstractResource.cpp
     resources/AbstractBackendUpdater.cpp
-    resources/AbstractKDEDModule.cpp
     resources/AbstractSourcesBackend.cpp
     MuonBackendsFactory.cpp
     ScreenshotsModel.cpp
@@ -45,7 +45,6 @@ target_link_libraries(muonprivate
 LINK_PUBLIC
     Qt5::Core
     Qt5::Widgets
-    KF5::DBusAddons # for the notifier
     KF5::I18n
 LINK_PRIVATE
     Qt5::Xml
@@ -64,4 +63,3 @@ target_include_directories(muonprivate PRIVATE ${PHONON_INCLUDES} PUBLIC ${CMAKE
 install(TARGETS muonprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES moo.ogg DESTINATION ${DATA_INSTALL_DIR}/libmuon)
 install(FILES resources/muonabstractnotifier.notifyrc DESTINATION ${DATA_INSTALL_DIR}/muonabstractnotifier)
-

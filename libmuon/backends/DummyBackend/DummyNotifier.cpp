@@ -19,18 +19,11 @@
  ***************************************************************************/
 #include "DummyNotifier.h"
 
-#include <KPluginFactory>
-#include <KDebug>
+#include <QDebug>
 
-K_PLUGIN_FACTORY(MuonDummyNotifierFactory,
-                 registerPlugin<DummyNotifier>();
-                )
-K_EXPORT_PLUGIN(MuonDummyNotifierFactory("muon-dummy-notifier"))
-
-DummyNotifier::DummyNotifier(QObject* parent, const QVariantList &)
-  : AbstractKDEDModule("dummy", "muondiscover", parent)
+DummyNotifier::DummyNotifier(QObject* parent)
+    : BackendNotifierModule(parent)
 {
-
 }
 
 DummyNotifier::~DummyNotifier()
@@ -39,6 +32,22 @@ DummyNotifier::~DummyNotifier()
 
 void DummyNotifier::recheckSystemUpdateNeeded()
 {
-    kDebug() << "CALLLED";
-    setSystemUpToDate(!isSystemUpToDate(), 3, 2);
+    emit foundUpdates();
 }
+
+bool DummyNotifier::isSystemUpToDate() const
+{
+    return false;
+}
+
+int DummyNotifier::securityUpdatesCount()
+{
+    return 3;
+}
+
+int DummyNotifier::updatesCount()
+{
+    return 2;
+}
+
+#include "DummyNotifier.moc"

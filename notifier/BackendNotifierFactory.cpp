@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2013 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,29 +18,32 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MUONBACKENDSFACTORY_H
-#define MUONBACKENDSFACTORY_H
-#include "libmuonprivate_export.h"
-#include <QList>
+#include "BackendNotifierFactory.h"
+#include <BackendNotifierModule.h>
+#include <QDebug>
+#include <QCoreApplication>
+#include <QDir>
+#include <QPluginLoader>
 
-class QCommandLineParser;
-class QStringList;
-class KPluginInfo;
-class AbstractResourcesBackend;
+BackendNotifierFactory::BackendNotifierFactory()
+{}
 
-class MUONPRIVATE_EXPORT MuonBackendsFactory
+QList<BackendNotifierModule*> BackendNotifierFactory::allBackends() const
 {
-public:
-    MuonBackendsFactory();
-    
-    AbstractResourcesBackend* backendForFile(const QString& path) const;
-    AbstractResourcesBackend* backend(const QString& name) const;
-    QList<AbstractResourcesBackend*> allBackends() const;
-    QStringList allBackendNames(bool whitelist = true) const;
-    int backendsCount() const;
-    
-    static void setupCommandLine(QCommandLineParser* parser);
-    static void processCommandLine(QCommandLineParser* parser);
-};
+    QList<BackendNotifierModule*> ret;
 
-#endif // MUONBACKENDSFACTORY_H
+    for(const QString& path : QCoreApplication::instance()->libraryPaths()) {
+        QDir dir(path+"/muon-notifier/");
+        for(const QString& file : dir.entryList(QDir::Files)) {
+            QString fullPath = dir.absoluteFilePath(file);
+            QPluginLoader loader(fullPath);
+            ret += qobject_cast<BackendNotifierModule*>(loader.instance());
+            if (ret.last() == nullptr) {
+                qWarning() << "couldn't load" << fullPath << "because" << loader.errorString();
+                ret.removeLast();
+            }
+        }
+    }
+
+    return ret;
+}

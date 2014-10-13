@@ -45,6 +45,7 @@ endif()
 add_subdirectory(updater)
 add_subdirectory(discover)
 add_subdirectory(exporter)
+add_subdirectory(notifier)
 
 set_package_properties(QApt PROPERTIES
     DESCRIPTION "Qt wrapper around the libapt-pkg library"

@@ -20,28 +20,33 @@
 #ifndef PACKAGEKITNOTIFIER_H
 #define PACKAGEKITNOTIFIER_H
 
-#include <resources/AbstractKDEDModule.h>
+#include <BackendNotifierModule.h>
 #include <QVariantList>
 #include <PackageKit/Transaction>
 
 class QTimer;
 
-class PackageKitNotifier : public AbstractKDEDModule
+class PackageKitNotifier : public BackendNotifierModule
 {
-    Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.kde.muon.packagekit")
+Q_OBJECT
+Q_PLUGIN_METADATA(IID "org.kde.muon.BackendNotifierModule")
+Q_INTERFACES(BackendNotifierModule)
 public:
     enum Update {
         NoUpdate,
         Security,
         Normal
     };
-    PackageKitNotifier(QObject* parent, const QVariantList &);
+    PackageKitNotifier(QObject* parent = 0);
     virtual ~PackageKitNotifier();
+
+    virtual bool isSystemUpToDate() const;
+    virtual int securityUpdatesCount();
+    virtual int updatesCount();
     
 public slots:
     virtual void configurationChanged();
-    virtual void recheckSystemUpdateNeeded();
+    virtual void recheckSystemUpdateNeeded() override;
     
 private slots:
     void package(PackageKit::Transaction::Info info, const QString &packageID, const QString &summary);
@@ -50,6 +55,8 @@ private slots:
 private:
     Update m_update;
     QTimer * m_timer;
+    int m_securityUpdates;
+    int m_normalUpdates;
 };
 
 #endif

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright © 2014 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,29 +18,28 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MUONBACKENDSFACTORY_H
-#define MUONBACKENDSFACTORY_H
-#include "libmuonprivate_export.h"
-#include <QList>
+#ifndef BACKENDNOTIFIERMODULE_H
+#define BACKENDNOTIFIERMODULE_H
 
-class QCommandLineParser;
-class QStringList;
-class KPluginInfo;
-class AbstractResourcesBackend;
+#include <QObject>
+#include "../libmuonprivate_export.h"
 
-class MUONPRIVATE_EXPORT MuonBackendsFactory
+class MUONPRIVATE_EXPORT BackendNotifierModule : public QObject
 {
+Q_OBJECT
 public:
-    MuonBackendsFactory();
-    
-    AbstractResourcesBackend* backendForFile(const QString& path) const;
-    AbstractResourcesBackend* backend(const QString& name) const;
-    QList<AbstractResourcesBackend*> allBackends() const;
-    QStringList allBackendNames(bool whitelist = true) const;
-    int backendsCount() const;
-    
-    static void setupCommandLine(QCommandLineParser* parser);
-    static void processCommandLine(QCommandLineParser* parser);
+    BackendNotifierModule(QObject* parent = nullptr);
+    virtual ~BackendNotifierModule();
+
+    virtual bool isSystemUpToDate() const = 0;
+    virtual void recheckSystemUpdateNeeded() = 0;
+    virtual int updatesCount() = 0;
+    virtual int securityUpdatesCount() = 0;
+
+Q_SIGNALS:
+    void foundUpdates();
 };
 
-#endif // MUONBACKENDSFACTORY_H
+Q_DECLARE_INTERFACE(BackendNotifierModule, "org.kde.muon.BackendNotifierModule")
+
+#endif

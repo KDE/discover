@@ -19,19 +19,15 @@
  ***************************************************************************/
 #include "PackageKitNotifier.h"
 
-#include <KPluginFactory>
 #include <QTimer>
 #include <PackageKit/Daemon>
 
-K_PLUGIN_FACTORY(MuonPackageKitNotifierFactory,
-                 registerPlugin<PackageKitNotifier>();
-                )
-K_EXPORT_PLUGIN(MuonPackageKitNotifierFactory("muon-packagekit-notifier"))
-
 const int UPDATE_INTERVAL_MS = 1000 * 60 * 30;
 
-PackageKitNotifier::PackageKitNotifier(QObject* parent, const QVariantList &)
-  : AbstractKDEDModule("packagekit", "muondiscover", parent), m_update(NoUpdate), m_timer(new QTimer(this))
+PackageKitNotifier::PackageKitNotifier(QObject* parent)
+    : BackendNotifierModule(parent)
+    , m_update(NoUpdate)
+    , m_timer(new QTimer(this))
 {
     m_timer->setInterval(UPDATE_INTERVAL_MS);
     connect (m_timer, SIGNAL(timeout()), SLOT(recheckSystemUpdateNeeded()));
@@ -61,21 +57,34 @@ void PackageKitNotifier::package(PackageKit::Transaction::Info info, const QStri
 {
     if (info == PackageKit::Transaction::InfoSecurity) {
         m_update = Security;
+        m_securityUpdates++;
     } else if (m_update == NoUpdate) {
         m_update = Normal;
+        m_normalUpdates++;
     }
 }
 
 void PackageKitNotifier::finished(PackageKit::Transaction::Exit /*exit*/, uint)
 {
-    if (m_update == Security) {
-        setSystemUpToDate(false, AbstractKDEDModule::SecurityUpdate);
-    } else if (m_update == Normal) {
-        setSystemUpToDate(false, AbstractKDEDModule::NormalUpdate);
-    } else if (m_update == NoUpdate) {
-        setSystemUpToDate(true);
+    if (m_update == NoUpdate) {
         m_timer->start();
     }
+    foundUpdates();
+}
+
+bool PackageKitNotifier::isSystemUpToDate() const
+{
+    return m_update != NoUpdate;
+}
+
+int PackageKitNotifier::securityUpdatesCount()
+{
+    return m_securityUpdates;
+}
+
+int PackageKitNotifier::updatesCount()
+{
+    return m_normalUpdates;
 }
 
 #include "PackageKitNotifier.moc"

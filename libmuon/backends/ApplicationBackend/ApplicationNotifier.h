@@ -20,14 +20,14 @@
 #ifndef APPLICATIONNOTIFIER_H
 #define APPLICATIONNOTIFIER_H
 
-#include <resources/AbstractKDEDModule.h>
+#include <notifiers/BackendNotifierModule.h>
 #include <QVariantList>
 
 class DistUpgradeEvent;
 class UpdateEvent;
 class QProcess;
 
-class ApplicationNotifier : public AbstractKDEDModule
+class ApplicationNotifier : public BackendNotifierModule
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.muon.application")
