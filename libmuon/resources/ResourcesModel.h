@@ -100,6 +100,8 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         void resourceChangedByTransaction(Transaction* t);
 
     private:
+        int rowsBeforeBackend(AbstractResourcesBackend* backend, QVector<QVector<AbstractResource*>>::iterator& backendsResources);
+
         ///@p initialize tells if all backends load will be triggered on construction
         explicit ResourcesModel(QObject* parent=0, bool initialize = true);
         void init(bool initialize);

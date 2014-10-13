@@ -214,13 +214,13 @@ int ResourcesModel::rowCount(const QModelIndex& parent) const
     return ret;
 }
 
-void ResourcesModel::cleanBackend(AbstractResourcesBackend* backend)
+int ResourcesModel::rowsBeforeBackend(AbstractResourcesBackend* backend, QVector<QVector<AbstractResource*>>::iterator& backendsResources)
 {
-    m_initializingBackends++;
     Q_ASSERT(backend);
     int pos = m_backends.indexOf(backend);
     Q_ASSERT(pos>=0);
-    QVector<AbstractResource*>* backendsResources = &m_resources[pos];
+    backendsResources = m_resources.begin()+pos;
+
     int before = 0;
     for(auto it = m_resources.constBegin();
         it != m_resources.constEnd() && it != backendsResources;
@@ -228,7 +228,16 @@ void ResourcesModel::cleanBackend(AbstractResourcesBackend* backend)
     {
         before+= it->size();
     }
+    return before;
+}
+
+void ResourcesModel::cleanBackend(AbstractResourcesBackend* backend)
+{
+    m_initializingBackends++;
     
+    QVector<QVector<AbstractResource*>>::iterator backendsResources;
+    int before = rowsBeforeBackend(backend, backendsResources);
+
     if (backendsResources->isEmpty()) {
         return;
     }
@@ -254,16 +263,9 @@ void ResourcesModel::resetBackend(AbstractResourcesBackend* backend)
     QVector<AbstractResource*> res = backend->allResources();
 
     if(!res.isEmpty()) {
-        int pos = m_backends.indexOf(backend);
-        Q_ASSERT(pos>=0);
-        QVector<AbstractResource*>* backendsResources = &m_resources[pos];
-        int before = 0;
-        for(auto it=m_resources.constBegin();
-            it != m_resources.constEnd() && it !=backendsResources;
-            ++it)
-        {
-            before += it->size();
-        }
+        QVector<QVector<AbstractResource*>>::iterator backendsResources;
+        int before = rowsBeforeBackend(backend, backendsResources);
+        Q_ASSERT(backendsResources->isEmpty());
         
         beginInsertRows(QModelIndex(), before, before+res.size()-1);
         *backendsResources = res;
@@ -278,15 +280,10 @@ void ResourcesModel::resetBackend(AbstractResourcesBackend* backend)
 void ResourcesModel::updateCaller()
 {
     AbstractResourcesBackend* backend = qobject_cast<AbstractResourcesBackend*>(sender());
-    int pos = m_backends.indexOf(backend);
-    QVector<AbstractResource*>* backendsResources = &m_resources[pos];
-    int before = 0;
-    for(auto it=m_resources.constBegin();
-        it!=m_resources.constEnd() && it!=backendsResources;
-        ++it)
-    {
-        before+= it->size();
-    }
+    QVector<QVector<AbstractResource*>>::iterator backendsResources;
+    int before = rowsBeforeBackend(backend, backendsResources);
+    if (backendsResources->isEmpty())
+        return;
     
     emit dataChanged(index(before), index(before+backendsResources->size()-1));
 }
