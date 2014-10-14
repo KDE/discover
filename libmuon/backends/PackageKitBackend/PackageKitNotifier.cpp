@@ -45,6 +45,8 @@ void PackageKitNotifier::configurationChanged()
 
 void PackageKitNotifier::recheckSystemUpdateNeeded()
 {
+    m_normalUpdates = 0;
+    m_securityUpdates = 0;
     m_timer->stop();
     m_update = NoUpdate;
     PackageKit::Transaction * trans = PackageKit::Daemon::getUpdates(PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
@@ -55,7 +57,9 @@ void PackageKitNotifier::recheckSystemUpdateNeeded()
 
 void PackageKitNotifier::package(PackageKit::Transaction::Info info, const QString &/*packageID*/, const QString &/*summary*/)
 {
-    if (info == PackageKit::Transaction::InfoSecurity) {
+    if (info == PackageKit::Transaction::InfoBlocked) {
+        ;
+    } else if (info == PackageKit::Transaction::InfoSecurity) {
         m_update = Security;
         m_securityUpdates++;
     } else if (m_update == NoUpdate) {
