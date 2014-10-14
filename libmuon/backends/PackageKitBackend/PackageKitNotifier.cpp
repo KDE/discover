@@ -28,6 +28,8 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
     : BackendNotifierModule(parent)
     , m_update(NoUpdate)
     , m_timer(new QTimer(this))
+    , m_securityUpdates(0)
+    , m_normalUpdates(0)
 {
     m_timer->setInterval(UPDATE_INTERVAL_MS);
     connect (m_timer, SIGNAL(timeout()), SLOT(recheckSystemUpdateNeeded()));
