@@ -18,9 +18,8 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "MuonNotifierModule.h"
+#include "MuonNotifier.h"
 #include "BackendNotifierFactory.h"
-#include <KStatusNotifierItem>
 #include <KConfig>
 #include <KConfigGroup>
 #include <KRun>
@@ -29,42 +28,25 @@
 #include <KNotification>
 #include <KPluginFactory>
 #include <QMenu>
-#include <QDBusInterface>
-#include <QDBusReply>
 
-K_PLUGIN_FACTORY(MuonNotifierDaemonFactory, registerPlugin<MuonNotifierModule>();)
-K_EXPORT_PLUGIN(MuonNotifierDaemonFactory("muonnotifier", "muonnotifier"))
-
-MuonNotifierModule::MuonNotifierModule(QObject * parent, const QVariantList& /*args*/)
-    : KDEDModule(parent)
+MuonNotifier::MuonNotifier(QObject * parent)
+    : QObject(parent)
     , m_verbose(false)
 {
     configurationChanged();
 
-    m_statusNotifier = new KStatusNotifierItem("org.kde.muonnotifier", this);
-    m_statusNotifier->setTitle(i18n("Muon Update Notifier"));
-    m_statusNotifier->setIconByName("muondiscover");
-    m_statusNotifier->setStandardActionsEnabled(false);
-    m_statusNotifier->contextMenu()->clear();
-    m_statusNotifier->contextMenu()->setTitle(i18n("Muon updates notifier"));
-    m_statusNotifier->contextMenu()->setIcon(QIcon::fromTheme("muondiscover"));
-    m_statusNotifier->contextMenu()->addAction(QIcon::fromTheme("muondiscover"), i18n("Open Muon..."), this, SLOT(showMuon()));
-    m_statusNotifier->contextMenu()->addAction(QIcon::fromTheme("application-exit"), i18n("Quit notifier..."), this, SLOT(quit()));
-
-    connect(m_statusNotifier, SIGNAL(activateRequested(bool, QPoint)), SLOT(showMuon()));
-
     m_backends = BackendNotifierFactory().allBackends();
     for(BackendNotifierModule* module : m_backends) {
-        connect(module, &BackendNotifierModule::foundUpdates, this, &MuonNotifierModule::updateStatusNotifier);
+        connect(module, &BackendNotifierModule::foundUpdates, this, &MuonNotifier::updatesChanged);
     }
     updateStatusNotifier();
 }
 
-MuonNotifierModule::~MuonNotifierModule()
+MuonNotifier::~MuonNotifier()
 {
 }
 
-void MuonNotifierModule::configurationChanged()
+void MuonNotifier::configurationChanged()
 {
     KConfig notifierConfig("muon-notifierrc", KConfig::NoGlobals);
 
@@ -72,20 +54,12 @@ void MuonNotifierModule::configurationChanged()
     m_verbose = notifyTypeGroup.readEntry("Verbose", false);
 }
 
-void MuonNotifierModule::showMuon()
+void MuonNotifier::showMuon()
 {
     KRun::runCommand("muon-discover --mode installed", 0);
 }
 
-void MuonNotifierModule::quit()
-{
-    QDBusInterface kded("org.kde.kded", "/kded",
-                        "org.kde.kded");
-    kded.call("setModuleAutoloading", moduleName(), false);
-    kded.call("unloadModule", moduleName());
-}
-
-bool MuonNotifierModule::isSystemUpToDate() const
+bool MuonNotifier::isSystemUpToDate() const
 {
     for(BackendNotifierModule* module : m_backends) {
         if(!module->isSystemUpToDate())
@@ -94,27 +68,26 @@ bool MuonNotifierModule::isSystemUpToDate() const
     return true;
 }
 
-void MuonNotifierModule::updateStatusNotifier()
+void MuonNotifier::updateStatusNotifier()
 {
-    m_statusNotifier->setOverlayIconByName(iconName());
+//     m_statusNotifier->setOverlayIconByName(iconName());
     if (!isSystemUpToDate()) {
-        emit systemUpdateNeeded();
         //TODO: Better message strings
         QString msg = message();
         if (m_verbose) {
             msg += " " + extendedMessage();
         }
-        m_statusNotifier->setToolTip(iconName(), msg, i18n("A system update is recommended"));
-        m_statusNotifier->setStatus(KStatusNotifierItem::Active);
+//         m_statusNotifier->setToolTip(iconName(), msg, i18n("A system update is recommended"));
+//         m_statusNotifier->setStatus(KStatusNotifierItem::Active);
 
         KNotification::event("Update", i18n("System update available"), msg, QIcon::fromTheme("svn-update").pixmap(KIconLoader::SizeMedium), nullptr, KNotification::CloseOnTimeout, "muonabstractnotifier");
     } else {
-        m_statusNotifier->setStatus(KStatusNotifierItem::Passive);
-        m_statusNotifier->setToolTip(QString(), message(), i18n("Your system is up-to-date"));
+//         m_statusNotifier->setStatus(KStatusNotifierItem::Passive);
+//         m_s:tatusNotifier->setToolTip(QString(), message(), i18n("Your system is up-to-date"));
     }
 }
 
-MuonNotifierModule::State MuonNotifierModule::state() const
+MuonNotifier::State MuonNotifier::state() const
 {
     bool security = false, normal = false;
 
@@ -132,53 +105,53 @@ MuonNotifierModule::State MuonNotifierModule::state() const
         return NoUpdates;
 }
 
-QString MuonNotifierModule::iconName() const
+QString MuonNotifier::iconName() const
 {
     switch(state()) {
         case SecurityUpdates:
-            return QLatin1String("security-high");
-        case NormalUpdates:
             return QLatin1String("security-low");
+        case NormalUpdates:
+            return QLatin1String("security-high");
         case NoUpdates:
             return QLatin1String("security-high");
     }
     return QString();
 }
 
-QString MuonNotifierModule::message() const
+QString MuonNotifier::message() const
 {
     switch(state()) {
         case SecurityUpdates:
-            return i18n("A security update is available for your system");
+            return i18n("Security updates available");
         case NormalUpdates:
-            return i18n("An update is available for your system");
+            return i18n("Updates available");
         case NoUpdates:
-            return i18n("No system update available");
+            return i18n("System up to date");
     }
     return QString();
 }
 
-QString MuonNotifierModule::extendedMessage() const
+QString MuonNotifier::extendedMessage() const
 {
     int count = updatesCount(), securityCount = securityUpdatesCount();
     if (count > 0 && securityCount > 0) {
-        return i18n("There are %1 updated packages, of which %2 were updated for security reasons", count, securityCount);
+        return i18n("%1 packages to update, of which %2 are security updates", count, securityCount);
     } else if (count > 0) {
-        return i18n("There are %1 updated packages", count);
+        return i18n("%1 packages to update", count);
     } else if (securityCount > 0) {
-        return i18n("%1 packages were updated for security reasons", securityCount);
+        return i18n("%1 security updates", securityCount);
     } else {
         return i18n("System up to date");
     }
 }
 
-void MuonNotifierModule::recheckSystemUpdateNeeded()
+void MuonNotifier::recheckSystemUpdateNeeded()
 {
     for(BackendNotifierModule* module : m_backends)
         module->recheckSystemUpdateNeeded();
 }
 
-int MuonNotifierModule::securityUpdatesCount() const
+int MuonNotifier::securityUpdatesCount() const
 {
     int ret = 0;
     for(BackendNotifierModule* module : m_backends)
@@ -186,7 +159,7 @@ int MuonNotifierModule::securityUpdatesCount() const
     return ret;
 }
 
-int MuonNotifierModule::updatesCount() const
+int MuonNotifier::updatesCount() const
 {
     int ret = 0;
     for(BackendNotifierModule* module : m_backends)
@@ -194,12 +167,10 @@ int MuonNotifierModule::updatesCount() const
     return ret;
 }
 
-QStringList MuonNotifierModule::loadedModules() const
+QStringList MuonNotifier::loadedModules() const
 {
     QStringList ret;
     for(BackendNotifierModule* module : m_backends)
         ret += module->metaObject()->className();
     return ret;
 }
-
-#include "MuonNotifierModule.moc"

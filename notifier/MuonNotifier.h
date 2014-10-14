@@ -21,27 +21,30 @@
 #ifndef MUONNOTIFIERMODULE_H
 #define MUONNOTIFIERMODULE_H
 
-#include <KDEDModule>
-#include <QVariantList>
 #include <BackendNotifierModule.h>
+#include <QStringList>
 
 class KStatusNotifierItem;
 
-class Q_DECL_EXPORT MuonNotifierModule : public KDEDModule
+class MuonNotifier : public QObject
 {
 Q_OBJECT
-Q_CLASSINFO("D-Bus Interface", "org.kde.MuonNotifier")
-Q_PROPERTY(bool systemUpToDate READ isSystemUpToDate)
-Q_PROPERTY(QStringList modules READ loadedModules)
+Q_PROPERTY(QStringList modules READ loadedModules CONSTANT)
+Q_PROPERTY(bool systemUpToDate READ isSystemUpToDate NOTIFY updatesChanged)
+Q_PROPERTY(QString iconName READ iconName NOTIFY updatesChanged)
+Q_PROPERTY(QString message READ message NOTIFY updatesChanged)
+Q_PROPERTY(QString extendedMessage READ extendedMessage NOTIFY updatesChanged)
+Q_PROPERTY(State state READ state NOTIFY updatesChanged)
 public:
     enum State {
         NoUpdates,
         NormalUpdates,
         SecurityUpdates
     };
+    Q_ENUMS(State)
 
-    MuonNotifierModule(QObject* parent = 0, const QVariantList& args = QVariantList());
-    virtual ~MuonNotifierModule();
+    MuonNotifier(QObject* parent = 0);
+    virtual ~MuonNotifier();
 
     bool isSystemUpToDate() const;
 
@@ -58,16 +61,14 @@ public:
 public Q_SLOTS:
     void configurationChanged();
     void recheckSystemUpdateNeeded();
-    void quit();
     void showMuon();
 
 Q_SIGNALS:
-    void systemUpdateNeeded();
+    void updatesChanged();
 
 private:
     void loadBackends();
 
-    KStatusNotifierItem* m_statusNotifier;
     QList<BackendNotifierModule*> m_backends;
     bool m_verbose;
 };
