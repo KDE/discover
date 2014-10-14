@@ -141,7 +141,7 @@ QString MuonNotifier::extendedMessage() const
     } else if (securityCount > 0) {
         return i18n("%1 security updates", securityCount);
     } else {
-        return i18n("System up to date");
+        return i18n("No packages to update");
     }
 }
 

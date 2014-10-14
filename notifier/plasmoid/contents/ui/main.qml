@@ -30,6 +30,8 @@ Item
     Plasmoid.fullRepresentation: ColumnLayout {
         PlasmaExtras.Heading {
             Layout.fillWidth: true
+            horizontalAlignment: Text.AlignHCenter
+            level: 3
             wrapMode: Text.WordWrap
             text: MuonNotifier.message
         }
@@ -44,6 +46,21 @@ Item
             text: i18n("Update")
             tooltip: i18n("Launches the software to perform the update")
             onClicked: MuonNotifier.showMuon()
+        }
+    }
+
+    Connections {
+        target: MuonNotifier
+        onUpdatesChanged: {
+            switch(MuonNotifier.state) {
+                case MuonNotifier.NoUpdates:
+                case MuonNotifier.NormalUpdates:
+                    plasmoid.status = PlasmaCore.Types.PassiveStatus;
+                    break;
+                case MuonNotifier.SecurityUpdates:
+                    plasmoid.status = PlasmaCore.Types.ActiveStatus;
+                    break;
+            }
         }
     }
 
