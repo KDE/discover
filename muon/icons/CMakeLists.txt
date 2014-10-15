@@ -9,5 +9,5 @@ ecm_install_icons(
         hi64-apps-muon.png
         hisc-apps-muon.svgz
     DESTINATION ${ICON_INSTALL_DIR}
-    THEME hi
+    THEME hicolor
 )
