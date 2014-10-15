@@ -24,7 +24,7 @@
 #include <QtCore/QVector>
 #include <QModelIndex>
 
-#include <LibQApt/DownloadProgress>
+#include <QApt/DownloadProgress>
 
 class DownloadModel : public QAbstractListModel
 {

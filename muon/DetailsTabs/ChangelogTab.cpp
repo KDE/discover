@@ -33,9 +33,9 @@
 #include <KTextBrowser>
 #include <KIconLoader>
 
-// LibQApt includes
-#include <LibQApt/Package>
-#include <LibQApt/Changelog>
+// QApt includes
+#include <QApt/Package>
+#include <QApt/Changelog>
 
 ChangelogTab::ChangelogTab(QWidget *parent)
     : DetailsTab(parent)

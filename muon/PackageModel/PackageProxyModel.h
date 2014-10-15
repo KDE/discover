@@ -24,7 +24,7 @@
 #include <QSortFilterProxyModel>
 #include <QtCore/QString>
 
-#include <LibQApt/Package>
+#include <QApt/Package>
 
 namespace QApt {
     class Backend;

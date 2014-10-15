@@ -28,8 +28,8 @@
 #include <KLocalizedString>
 #include <KTextBrowser>
 
-// LibQApt includes
-#include <LibQApt/Package>
+// QApt includes
+#include <QApt/Package>
 
 DependsTab::DependsTab(QWidget *parent)
     : DetailsTab(parent)

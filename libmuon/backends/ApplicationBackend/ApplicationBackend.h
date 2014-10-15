@@ -28,8 +28,8 @@
 #include <QtCore/QStringList>
 #include <QtCore/QVector>
 
-#include <LibQApt/Package>
-#include <LibQApt/Backend>
+#include <QApt/Package>
+#include <QApt/Backend>
 
 #include "resources/AbstractResourcesBackend.h"
 

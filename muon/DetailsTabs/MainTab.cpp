@@ -36,9 +36,9 @@
 #include <KMessageBox>
 #include <KTextBrowser>
 
-// LibQApt includes
-#include <LibQApt/Backend>
-#include <LibQApt/Package>
+// QApt includes
+#include <QApt/Backend>
+#include <QApt/Package>
 
 MainTab::MainTab(QWidget *parent)
     : DetailsTab(parent)

@@ -27,7 +27,7 @@
 
 #include <KService>
 
-#include <LibQApt/Package>
+#include <QApt/Package>
 
 #include "libmuonprivate_export.h"
 #include "resources/AbstractResource.h"

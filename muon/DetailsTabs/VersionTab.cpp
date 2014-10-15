@@ -31,8 +31,8 @@
 #include <KDialog>
 #include <KLocalizedString>
 
-// LibQApt includes
-#include <LibQApt/Package>
+// QApt includes
+#include <QApt/Package>
 
 VersionTab::VersionTab(QWidget *parent)
     : DetailsTab(parent)

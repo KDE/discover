@@ -21,7 +21,7 @@
 #include "AptSourcesBackend.h"
 #include "ApplicationBackend.h"
 #include <QAptActions.h>
-#include <libqapt/sourceentry.h>
+#include <qapt/sourceentry.h>
 #include <kauthexecutejob.h>
 #include <KActionCollection>
 #include <KLocalizedString>

@@ -39,9 +39,9 @@
 #include <KIO/Job>
 #include <KActionCollection>
 
-// LibQApt/DebconfKDE includes
-#include <LibQApt/Backend>
-#include <LibQApt/Transaction>
+// QApt/DebconfKDE includes
+#include <QApt/Backend>
+#include <QApt/Transaction>
 #include <DebconfGui.h>
 
 //libmuonapt includes

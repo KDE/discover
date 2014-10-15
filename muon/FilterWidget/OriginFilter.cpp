@@ -23,8 +23,8 @@
 // KDE includes
 #include <KLocalizedString>
 
-// LibQApt includes
-#include <LibQApt/Backend>
+// QApt includes
+#include <QApt/Backend>
 
 OriginFilter::OriginFilter(QObject *parent, QApt::Backend *backend)
     : FilterModel(parent)

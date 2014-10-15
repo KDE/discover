@@ -7,5 +7,5 @@ ecm_install_icons(
         hi48-apps-muondiscover.png
         hisc-apps-muondiscover.svgz
     DESTINATION ${ICON_INSTALL_DIR}
-    THEME hi
+    THEME hicolor
 )

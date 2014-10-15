@@ -23,7 +23,7 @@
 #include <QPushButton>
 #include <KLocalizedString>
 
-#include <LibQApt/Config>
+#include <QApt/Config>
 
 #include "../../libmuon/settings/SettingsPageBase.h"
 #include "../../libmuon/settings/NotifySettingsPage.h"

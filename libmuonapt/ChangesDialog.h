@@ -25,8 +25,8 @@
 #include <QStandardItemModel>
 #include <QDialog>
 
-// LibQApt includes
-#include <LibQApt/Package>
+// QApt includes
+#include <QApt/Package>
 
 #include "libmuonprivate_export.h"
 

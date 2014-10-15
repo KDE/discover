@@ -26,9 +26,9 @@
 // KDE
 #include <KLocalizedString>
 
-// LibQApt includes
-#include <LibQApt/Backend>
-#include <LibQApt/Package>
+// QApt includes
+#include <QApt/Backend>
+#include <QApt/Package>
 
 // Own includes
 #include "DetailsTabs/MainTab.h"

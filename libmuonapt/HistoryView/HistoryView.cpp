@@ -31,7 +31,7 @@
 
 #include <KLocalizedString>
 
-#include <LibQApt/History>
+#include <QApt/History>
 
 #include "HistoryProxyModel.h"
 

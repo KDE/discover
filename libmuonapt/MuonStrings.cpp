@@ -23,7 +23,7 @@
 #include <KLocalizedString>
 #include <QDebug>
 
-#include <LibQApt/Transaction>
+#include <QApt/Transaction>
 
 Q_GLOBAL_STATIC_WITH_ARGS(MuonStrings, globalMuonStrings, (0))
 

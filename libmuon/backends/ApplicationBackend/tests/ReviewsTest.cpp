@@ -21,7 +21,7 @@
 #include "ReviewsTest.h"
 #include "modeltest.h"
 #include <ReviewsBackend/ReviewsModel.h>
-#include <libqapt/backend.h>
+#include <qapt/backend.h>
 #include <KProtocolManager>
 #include <qtest.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>

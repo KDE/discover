@@ -42,9 +42,9 @@
 #include <KFormat>
 
 // QApt includes
-#include <LibQApt/Backend>
-#include <LibQApt/Config>
-#include <LibQApt/Changelog>
+#include <QApt/Backend>
+#include <QApt/Config>
+#include <QApt/Changelog>
 
 Application::Application(const QString& fileName, QApt::Backend* backend)
         : AbstractResource(0)

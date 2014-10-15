@@ -36,8 +36,8 @@
 #include <KLocalizedString>
 #include <KMessageBox>
 
-// LibQApt includes
-#include <LibQApt/Transaction>
+// QApt includes
+#include <QApt/Transaction>
 #include <DebconfGui.h>
 
 // Own includes

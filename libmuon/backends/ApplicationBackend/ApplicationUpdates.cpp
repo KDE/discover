@@ -31,7 +31,7 @@
 #include <KLocalizedString>
 
 // Own includes
-#include <LibQApt/Transaction>
+#include <QApt/Transaction>
 
 #include <MuonMainWindow.h>
 #include <ChangesDialog.h>
