@@ -24,7 +24,7 @@
 #include <QtCore/QObject>
 #include <QPointer>
 
-#include <LibQApt/Globals>
+#include <QApt/Globals>
 
 #include "libmuonprivate_export.h"
 

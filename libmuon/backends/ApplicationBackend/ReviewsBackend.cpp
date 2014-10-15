@@ -33,7 +33,7 @@
 #include <KLocalizedString>
 #include <KFilterDev>
 
-#include <LibQApt/Backend>
+#include <QApt/Backend>
 
 #include <QtOAuth/interface.h>
 

@@ -31,8 +31,8 @@
 #include <KGlobal>
 #include <KFormat>
 
-// LibQApt includes
-#include <LibQApt/Backend>
+// QApt includes
+#include <QApt/Backend>
 
 StatusWidget::StatusWidget(QWidget *parent)
     : QWidget(parent)

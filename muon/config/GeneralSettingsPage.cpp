@@ -29,7 +29,7 @@
 #include <KDialog>
 #include <KLocalizedString>
 
-#include <LibQApt/Config>
+#include <QApt/Config>
 
 #include "MuonSettings.h"
 

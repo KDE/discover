@@ -26,8 +26,8 @@
 // Qt includes
 #include <QtCore/QVariantMap>
 
-// LibQApt includes
-#include <LibQApt/Globals>
+// QApt includes
+#include <QApt/Globals>
 
 class QPushButton;
 class QLabel;

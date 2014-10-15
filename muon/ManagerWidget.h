@@ -23,7 +23,7 @@
 
 #include <QModelIndex>
 
-#include <LibQApt/Package>
+#include <QApt/Package>
 
 #include "PackageModel/PackageWidget.h"
 

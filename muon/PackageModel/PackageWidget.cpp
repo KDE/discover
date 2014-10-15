@@ -42,10 +42,10 @@
 #include <KVBox>
 #include <KIconLoader>
 
-// LibQApt includes
-#include <LibQApt/Backend>
-#include <LibQApt/DependencyInfo>
-#include <LibQApt/MarkingErrorInfo>
+// QApt includes
+#include <QApt/Backend>
+#include <QApt/DependencyInfo>
+#include <QApt/MarkingErrorInfo>
 
 // Own includes
 #include "../libmuonapt/ChangesDialog.h"

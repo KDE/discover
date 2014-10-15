@@ -39,10 +39,10 @@
 #include <KStandardAction>
 #include <KStatusBar>
 
-// LibQApt includes
-#include <LibQApt/Backend>
-#include <LibQApt/Config>
-#include <LibQApt/Transaction>
+// QApt includes
+#include <QApt/Backend>
+#include <QApt/Config>
+#include <QApt/Transaction>
 
 // Own includes
 #include "../libmuonapt/MuonStrings.h"

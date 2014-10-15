@@ -25,7 +25,7 @@
 #include <QtCore/QModelIndex>
 #include <QDockWidget>
 
-#include <LibQApt/Package>
+#include <QApt/Package>
 
 class QAbstractItemView;
 class QDockWidget;

@@ -23,7 +23,7 @@
 
 #include <QStandardItemModel>
 #include <resources/AbstractSourcesBackend.h>
-#include <LibQApt/SourcesList>
+#include <QApt/SourcesList>
 
 class ApplicationBackend;
 class SourceItem;

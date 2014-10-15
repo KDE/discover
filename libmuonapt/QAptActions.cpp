@@ -45,10 +45,10 @@
 #include <KWindowConfig>
 // #include <Solid/Networking>
 
-// LibQApt includes
-#include <LibQApt/Backend>
-#include <LibQApt/DebFile>
-#include <LibQApt/Transaction>
+// QApt includes
+#include <QApt/Backend>
+#include <QApt/DebFile>
+#include <QApt/Transaction>
 
 // Own includes
 #include "MuonMainWindow.h"

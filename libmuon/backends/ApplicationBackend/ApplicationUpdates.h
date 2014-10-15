@@ -25,8 +25,8 @@
 #include <QtCore/QObject>
 #include <QPointer>
 
-// LibQApt includes
-#include <LibQApt/Globals>
+// QApt includes
+#include <QApt/Globals>
 
 // Own includes
 #include "resources/AbstractBackendUpdater.h"

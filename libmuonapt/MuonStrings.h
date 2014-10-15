@@ -23,7 +23,7 @@
 
 #include <QtCore/QHash>
 
-#include <LibQApt/Package>
+#include <QApt/Package>
 
 #include "libmuonprivate_export.h"
 

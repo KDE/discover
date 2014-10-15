@@ -23,7 +23,7 @@
 
 #include <QtWidgets/QWidget>
 
-#include <LibQApt/Globals>
+#include <QApt/Globals>
 
 class QLabel;
 class QProgressBar;

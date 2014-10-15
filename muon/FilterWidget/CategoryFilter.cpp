@@ -26,8 +26,8 @@
 // KDE includes
 #include <KLocalizedString>
 
-// LibQApt includes
-#include <LibQApt/Backend>
+// QApt includes
+#include <QApt/Backend>
 
 // Own includes
 #include "../libmuonapt/MuonStrings.h"

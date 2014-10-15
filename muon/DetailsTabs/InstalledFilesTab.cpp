@@ -24,8 +24,8 @@
 #include <KTextBrowser>
 #include <KLocalizedString>
 
-// LibQApt includes
-#include <LibQApt/Package>
+// QApt includes
+#include <QApt/Package>
 
 InstalledFilesTab::InstalledFilesTab(QWidget *parent)
     : DetailsTab(parent)

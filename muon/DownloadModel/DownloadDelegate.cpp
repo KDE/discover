@@ -28,8 +28,8 @@
 #include <KFormat>
 #include <KLocalizedString>
 
-// LibQApt includes
-#include <LibQApt/Globals>
+// QApt includes
+#include <QApt/Globals>
 
 // Own includes
 #include "DownloadModel.h"

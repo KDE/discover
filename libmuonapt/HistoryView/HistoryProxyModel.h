@@ -23,7 +23,7 @@
 
 #include <QSortFilterProxyModel>
 
-#include <LibQApt/Package>
+#include <QApt/Package>
 
 class HistoryProxyModel : public QSortFilterProxyModel
 {

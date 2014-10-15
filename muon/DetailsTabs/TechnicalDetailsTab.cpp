@@ -32,9 +32,9 @@
 #include <KHBox>
 #include <KFormat>
 
-// LibQApt includes
-#include <LibQApt/Backend>
-#include <LibQApt/Package>
+// QApt includes
+#include <QApt/Backend>
+#include <QApt/Package>
 
 // Own includes
 #include "../libmuonapt/MuonStrings.h"

@@ -37,8 +37,8 @@
 #include <KService>
 #include <KToolInvocation>
 
-// LibQApt includes
-#include <LibQApt/Backend>
+// QApt includes
+#include <QApt/Backend>
 
 //libmuonapt includes
 #include <HistoryView/HistoryView.h>

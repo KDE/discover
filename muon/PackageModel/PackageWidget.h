@@ -28,7 +28,7 @@
 // KDE includes
 #include <KVBox>
 
-#include <LibQApt/Package>
+#include <QApt/Package>
 
 class QLabel;
 class QTimer;
