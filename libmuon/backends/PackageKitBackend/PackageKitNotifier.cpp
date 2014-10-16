@@ -80,7 +80,7 @@ void PackageKitNotifier::finished(PackageKit::Transaction::Exit /*exit*/, uint)
 
 bool PackageKitNotifier::isSystemUpToDate() const
 {
-    return m_update != NoUpdate;
+    return m_update == NoUpdate;
 }
 
 int PackageKitNotifier::securityUpdatesCount()
