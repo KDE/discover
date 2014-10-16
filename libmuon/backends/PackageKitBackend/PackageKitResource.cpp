@@ -67,11 +67,13 @@ QString PackageKitResource::comment()
 
 QString PackageKitResource::longDescription()
 {
+    if(m_detail.isEmpty()) fetchDetails();
     return m_detail;
 }
 
 QUrl PackageKitResource::homepage()
 {
+    if(m_url.isEmpty()) fetchDetails();
     return m_url;
 }
 
@@ -82,6 +84,7 @@ QString PackageKitResource::icon() const
 
 QString PackageKitResource::license()
 {
+    if(m_license.isEmpty()) fetchDetails();
     return m_license;
 }
 
@@ -102,6 +105,7 @@ QString PackageKitResource::installedVersion() const
 
 int PackageKitResource::downloadSize()
 {
+    if(m_size == 0) fetchDetails();
     return m_size;
 }
 
@@ -269,6 +273,13 @@ QStringList PackageKitResource::categories()
 bool PackageKitResource::isTechnical() const
 {
     return true;//!m_availablePackageId.startsWith("flash");
+}
+
+void PackageKitResource::fetchDetails()
+{
+    PackageKit::Transaction* t = PackageKit::Daemon::getDetails(availablePackageId());
+    connect(t, SIGNAL(details(PackageKit::Details)), this, SLOT(setDetails(PackageKit::Details)));
+    connect(t, &PackageKit::Transaction::errorCode, this, [](PackageKit::Transaction::Error, const QString& msg){ qWarning() << "error fetching details" << msg; });
 }
 
 void PackageKitResource::setDetails(const PackageKit::Details & details)

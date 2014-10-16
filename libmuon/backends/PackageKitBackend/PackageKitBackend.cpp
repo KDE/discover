@@ -126,21 +126,7 @@ void PackageKitBackend::getPackagesFinished(PackageKit::Transaction::Exit exit)
     }
 
     m_packages = m_updatingPackages;
-    QStringList ids;
-    foreach(AbstractResource* res, m_updatingPackages) {
-        ids += qobject_cast<PackageKitResource*>(res)->availablePackageId();
-    }
     acquireFetching(false);
-
-//  PackageKit has a maximum of packages to process called PK_TRANSACTION_MAX_PACKAGES_TO_PROCESS
-//  which is 5200 today. To workaround that, we'll create different transactions that we'll process
-//  one after the other.
-
-    for(int i=0, step=1000; i<ids.count(); i+=step) {
-        QStringList chunk = ids.mid(i, qMin(step, ids.count()-i));
-        m_transactionQueue.append([chunk]() { return PackageKit::Daemon::getDetails(chunk); });
-    }
-    iterateTransactionQueue();
 }
 
 void PackageKitBackend::transactionError(PackageKit::Transaction::Error, const QString& message)
@@ -284,6 +270,17 @@ void PackageKitBackend::addPackageToUpdate(PackageKit::Transaction::Info info, c
 
 void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
 {
+    //  PackageKit has a maximum of packages to process called PK_TRANSACTION_MAX_PACKAGES_TO_PROCESS
+    //  which is 5200 today. To workaround that, we'll create different transactions that we'll process
+    //  one after the other.
+
+    QStringList ids = m_updatesPackageId.toList();
+    for(int i=0, step=1000; i<ids.count(); i+=step) {
+        QStringList chunk = ids.mid(i, qMin(step, ids.count()-i));
+        m_transactionQueue.append([chunk]() { return PackageKit::Daemon::getDetails(chunk); });
+    }
+    iterateTransactionQueue();
+
     acquireFetching(false);
     emit updatesCountChanged();
 }
