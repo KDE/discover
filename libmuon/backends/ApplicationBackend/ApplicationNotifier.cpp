@@ -28,58 +28,44 @@
 #include <QtGui/QIcon>
 
 // KDE includes
-#include <KAboutData>
 #include <KDirWatch>
 #include <KLocalizedString>
 #include <KPluginFactory>
 #include <KNotification>
 #include <KIconLoader>
 
-// Own includes
-
-K_PLUGIN_FACTORY(ApplicationNotifierFactory,
-                 registerPlugin<ApplicationNotifier>();
-                )
-K_EXPORT_PLUGIN(ApplicationNotifierFactory("muon-application-notifier"))
-
-ApplicationNotifier::ApplicationNotifier(QObject* parent, const QVariantList &)
-  : AbstractKDEDModule("Application", "muondiscover", parent), 
-    m_checkerProcess(0), m_updateCheckerProcess(0), m_checkingForUpdates(false)
-{
-    KAboutData aboutData("muonapplicationnotifier",
-                         i18n("Muon Notification Daemon"),
-                         "2.0", i18n("A Notification Daemon for Muon"),
-                         KAboutLicense::GPL,
-                         i18n("(C) 2013 Lukas Appelhans, (C) 2009-2012 Jonathan Thomas, (C) 2009 Harald Sitter"),
-                         QString(), "http://kubuntu.org");
-    
-    QTimer::singleShot(2 * 60 * 1000, this, SLOT(init()));
-}
-
-ApplicationNotifier::~ApplicationNotifier()
-{
-    delete m_checkerProcess;
-    delete m_updateCheckerProcess;
-}
-
-void ApplicationNotifier::init()
+ApplicationNotifier::ApplicationNotifier(QObject* parent)
+  : BackendNotifierModule(parent)
+  , m_checkerProcess(0)
+  , m_updateCheckerProcess(0)
+  , m_checkingForUpdates(false)
+  , m_securityUpdates(0)
+  , m_normalUpdates(0)
 {
     KDirWatch *stampDirWatch = new KDirWatch(this);
     stampDirWatch->addFile("/var/lib/update-notifier/dpkg-run-stamp");
-    connect(stampDirWatch, SIGNAL(dirty(QString)),
-             this, SLOT(distUpgradeEvent()));
-    
-    distUpgradeEvent();
+    connect(stampDirWatch, SIGNAL(dirty(QString)), this, SLOT(distUpgradeEvent()));
 
     stampDirWatch = new KDirWatch(this);
     stampDirWatch->addDir("/var/lib/apt/lists/");
     stampDirWatch->addDir("/var/lib/apt/lists/partial/");
     stampDirWatch->addFile("/var/lib/update-notifier/updates-available");
     stampDirWatch->addFile("/var/lib/update-notifier/dpkg-run-stamp");
-    connect(stampDirWatch, SIGNAL(dirty(QString)),
-            this, SLOT(recheckSystemUpdateNeeded()));
+    connect(stampDirWatch, SIGNAL(dirty(QString)), this, SLOT(recheckSystemUpdateNeeded()));
+    
+    QTimer* delayedInitialization = new QTimer(this);
+    delayedInitialization->setInterval(2 * 60 * 1000); //check in 2 minutes
+    connect(delayedInitialization, &QTimer::timeout, this, &ApplicationNotifier::recheckSystemUpdateNeeded);
+}
 
+ApplicationNotifier::~ApplicationNotifier()
+{
+}
+
+void ApplicationNotifier::init()
+{
     recheckSystemUpdateNeeded();
+    distUpgradeEvent();
 }
 
 void ApplicationNotifier::distUpgradeEvent()
@@ -97,15 +83,24 @@ void ApplicationNotifier::distUpgradeEvent()
 
 void ApplicationNotifier::checkUpgradeFinished(int exitStatus)
 {
-    qWarning() << "checked for upgrades and return with " << exitStatus;
-    if (exitStatus == 0) {
-        KNotification::event("DistUpgrade", i18n("System update available!"), i18nc("Notification when a new version of Kubuntu is available",
+    if (exitStatus == 0)
+    {
+        KNotification* n = KNotification::event("DistUpgrade", i18n("System update available!"), i18nc("Notification when a new version of Kubuntu is available",
                                  "A new version of Kubuntu is available"), QIcon::fromTheme("svn-update").pixmap(KIconLoader::SizeMedium), nullptr, KNotification::CloseOnTimeout, "muonapplicationnotifier");
-        setSystemUpToDate(false, AbstractKDEDModule::NormalUpdate, AbstractKDEDModule::DontShowNotification);
+        n->setActions(QStringList() << i18n("Upgrade"));
+        connect(n, &KNotification::action1Activated, this, &ApplicationNotifier::upgradeActivated);
     }
 
     m_checkerProcess->deleteLater();
     m_checkerProcess = nullptr;
+}
+
+void ApplicationNotifier::upgradeActivated()
+{
+    QString kdesudo = QStandardPaths::findExecutable("kdesudo");
+    QString upgrader = QStringLiteral("do-release-upgrade -m desktop -f DistUpgradeViewKDE");
+    
+    QProcess::startDetached(kdesudo, QStringList() << upgrader);
 }
 
 void ApplicationNotifier::recheckSystemUpdateNeeded()
@@ -121,8 +116,8 @@ void ApplicationNotifier::recheckSystemUpdateNeeded()
     
 void ApplicationNotifier::parseUpdateInfo()
 {
-    int securityUpdates = 0;
-    int updates = 0;
+    m_securityUpdates = 0;
+    m_normalUpdates = 0;
     // Weirdly enough, apt-check gives output on stderr
     QByteArray line = m_updateCheckerProcess->readAllStandardError();
     m_updateCheckerProcess->deleteLater();
@@ -135,19 +130,27 @@ void ApplicationNotifier::parseUpdateInfo()
         QByteArray updatesString = line.left(eqpos);
         QByteArray securityString = line.right(line.size() - eqpos - 1);
         
-        securityUpdates = securityString.toInt();
-        updates = updatesString.toInt() - securityUpdates;
+        m_securityUpdates = securityString.toInt();
+        m_normalUpdates = updatesString.toInt() - m_securityUpdates;
     }
-
-    // ';' not found, apt-check broke :("
-    
-    if (securityUpdates > 0 || updates > 0) {
-        setSystemUpToDate(false, updates, securityUpdates, securityUpdates > 0 ? AbstractKDEDModule::SecurityUpdate : NormalUpdate);
-    } else {
-        setSystemUpToDate(true);
-    }
+    emit foundUpdates();
     
     m_checkingForUpdates = false;
+}
+
+bool ApplicationNotifier::isSystemUpToDate() const
+{
+    return (m_securityUpdates+m_normalUpdates)==0;
+}
+
+int ApplicationNotifier::securityUpdatesCount()
+{
+    return m_securityUpdates;
+}
+
+int ApplicationNotifier::updatesCount()
+{
+    return m_normalUpdates;
 }
 
 #include "ApplicationNotifier.moc"

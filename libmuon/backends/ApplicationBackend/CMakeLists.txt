@@ -26,11 +26,9 @@ install(TARGETS muon-applications-backend DESTINATION ${PLUGIN_INSTALL_DIR}/muon
 install(FILES muon-applications-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/libmuon/backends)
 install(FILES muon-applications-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
 
-add_library(kded_muonapplicationnotifier MODULE ApplicationNotifier.cpp)
-target_link_libraries(kded_muonapplicationnotifier KF5::CoreAddons KF5::Notifications KF5::IconThemes MuonNotifiers)
+add_library(MuonApplicationNotifier MODULE ApplicationNotifier.cpp)
+target_link_libraries(MuonApplicationNotifier KF5::CoreAddons KF5::I18n KF5::Notifications KF5::IconThemes MuonNotifiers)
 
-install(TARGETS kded_muonapplicationnotifier DESTINATION ${PLUGIN_INSTALL_DIR})
-
-install(FILES muonapplicationnotifier.desktop  DESTINATION  ${SERVICES_INSTALL_DIR}/kded)
+install(TARGETS MuonApplicationNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/muon-notifier)
 install(FILES muonapplicationnotifier.notifyrc DESTINATION ${DATA_INSTALL_DIR}/muonapplicationnotifier)
 install(FILES distupgradeevent/releasechecker DESTINATION ${DATA_INSTALL_DIR}/muonapplicationnotifier)

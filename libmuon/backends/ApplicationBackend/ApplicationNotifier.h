@@ -20,7 +20,7 @@
 #ifndef APPLICATIONNOTIFIER_H
 #define APPLICATIONNOTIFIER_H
 
-#include <notifiers/BackendNotifierModule.h>
+#include <BackendNotifierModule.h>
 #include <QVariantList>
 
 class DistUpgradeEvent;
@@ -30,24 +30,29 @@ class QProcess;
 class ApplicationNotifier : public BackendNotifierModule
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.kde.muon.application")
+    Q_PLUGIN_METADATA(IID "org.kde.muon.BackendNotifierModule")
 public:
-    ApplicationNotifier(QObject* parent, const QVariantList &);
+    ApplicationNotifier(QObject* parent = 0);
     virtual ~ApplicationNotifier();
-    
-public slots:
-    virtual void recheckSystemUpdateNeeded();
-    
+
+    virtual bool isSystemUpToDate() const;
+    virtual int securityUpdatesCount();
+    virtual int updatesCount();
+
 private slots:
     void checkUpgradeFinished(int exitStatus);
     void distUpgradeEvent();
-    void init();
+    void recheckSystemUpdateNeeded();
     void parseUpdateInfo();
-    
+    void upgradeActivated();
+    void init();
+
 private:
     QProcess *m_checkerProcess;
     QProcess *m_updateCheckerProcess;
     bool m_checkingForUpdates;
+    int m_securityUpdates;
+    int m_normalUpdates;
 };
 
 #endif
