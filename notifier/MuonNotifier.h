@@ -30,7 +30,7 @@ class MuonNotifier : public QObject
 {
 Q_OBJECT
 Q_PROPERTY(QStringList modules READ loadedModules CONSTANT)
-Q_PROPERTY(bool systemUpToDate READ isSystemUpToDate NOTIFY updatesChanged)
+Q_PROPERTY(bool isSystemUpToDate READ isSystemUpToDate NOTIFY updatesChanged)
 Q_PROPERTY(QString iconName READ iconName NOTIFY updatesChanged)
 Q_PROPERTY(QString message READ message NOTIFY updatesChanged)
 Q_PROPERTY(QString extendedMessage READ extendedMessage NOTIFY updatesChanged)

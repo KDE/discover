@@ -23,24 +23,34 @@ import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.plasma.components 2.0
 import org.kde.muonnotifier 1.0
 
-ColumnLayout {
+Item
+{
     PlasmaExtras.Heading {
+        id: header
         Layout.fillWidth: true
-        horizontalAlignment: Text.AlignHCenter
         level: 3
         wrapMode: Text.WordWrap
         text: MuonNotifier.message
     }
-    Label {
-        Layout.fillWidth: true
-        wrapMode: Text.WordWrap
-        horizontalAlignment: Text.AlignHCenter
-        text: MuonNotifier.extendedMessage
-    }
-    Button {
-        anchors.horizontalCenter: parent.horizontalCenter
-        text: i18n("Update")
-        tooltip: i18n("Launches the software to perform the update")
-        onClicked: MuonNotifier.showMuon()
+
+    ColumnLayout
+    {
+        visible: !MuonNotifier.isSystemUpToDate
+        anchors {
+            fill: parent
+            topMargin: header.height
+        }
+        Label {
+            Layout.fillWidth: true
+            wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignHCenter
+            text: MuonNotifier.extendedMessage
+        }
+        Button {
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: i18n("Update")
+            tooltip: i18n("Launches the software to perform the update %1")
+            onClicked: MuonNotifier.showMuon()
+        }
     }
 }
