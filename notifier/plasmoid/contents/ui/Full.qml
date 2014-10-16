@@ -49,7 +49,7 @@ Item
         Button {
             anchors.horizontalCenter: parent.horizontalCenter
             text: i18n("Update")
-            tooltip: i18n("Launches the software to perform the update %1")
+            tooltip: i18n("Launches the software to perform the update")
             onClicked: MuonNotifier.showMuon()
         }
     }
