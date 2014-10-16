@@ -68,12 +68,11 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
         void packageDetails(const PackageKit::Details& details);
         void transactionError(PackageKit::Transaction::Error, const QString& message);
-        void queueTransactionFinished(PackageKit::Transaction::Exit,uint);
         void addPackageToUpdate(PackageKit::Transaction::Info, const QString& pkgid, const QString& summary);
         void getUpdatesFinished(PackageKit::Transaction::Exit,uint);
+        void getUpdatesDetailsFinished(PackageKit::Transaction::Exit,uint);
 
     private:
-        void iterateTransactionQueue();
         void acquireFetching(bool f);
 
         QHash<QString, AbstractResource*> m_packages;
@@ -84,7 +83,6 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QList<PackageKitResource*> m_upgradeablePackages;
         QPointer<PackageKit::Transaction> m_refresher;
         int m_isFetching;
-        QList<std::function<PackageKit::Transaction*()>> m_transactionQueue;
         QSet<QString> m_updatesPackageId;
 };
 

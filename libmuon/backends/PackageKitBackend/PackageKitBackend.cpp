@@ -134,27 +134,6 @@ void PackageKitBackend::transactionError(PackageKit::Transaction::Error, const Q
     qWarning() << "Transaction error: " << message << sender();
 }
 
-void PackageKitBackend::queueTransactionFinished(PackageKit::Transaction::Exit exit, uint)
-{
-    if (exit != PackageKit::Transaction::ExitSuccess) {
-        qWarning() << "error while fetching details" << exit;
-    }
-    iterateTransactionQueue();
-    acquireFetching(false);
-}
-
-void PackageKitBackend::iterateTransactionQueue()
-{
-    if (m_transactionQueue.isEmpty())
-        return;
-
-    acquireFetching(true);
-    PackageKit::Transaction* transaction = m_transactionQueue.takeFirst()();
-    connect(transaction, SIGNAL(details(PackageKit::Details)), SLOT(packageDetails(PackageKit::Details)));
-    connect(transaction, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(transactionError(PackageKit::Transaction::Error,QString)));
-    connect(transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(queueTransactionFinished(PackageKit::Transaction::Exit,uint)));
-}
-
 void PackageKitBackend::packageDetails(const PackageKit::Details& details)
 {
     PackageKitResource* res = qobject_cast<PackageKitResource*>(m_updatingPackages.value(PackageKit::Daemon::packageName(details.packageId())));
@@ -270,24 +249,22 @@ void PackageKitBackend::addPackageToUpdate(PackageKit::Transaction::Info info, c
 
 void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
 {
-    //  PackageKit has a maximum of packages to process called PK_TRANSACTION_MAX_PACKAGES_TO_PROCESS
-    //  which is 5200 today. To workaround that, we'll create different transactions that we'll process
-    //  one after the other.
+    PackageKit::Transaction* transaction = PackageKit::Daemon::getDetails(m_updatesPackageId.toList());
+    connect(transaction, SIGNAL(details(PackageKit::Details)), SLOT(packageDetails(PackageKit::Details)));
+    connect(transaction, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(transactionError(PackageKit::Transaction::Error,QString)));
+    connect(transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(getUpdatesDetailsFinished(PackageKit::Transaction::Exit,uint)));
 
-    QStringList ids = m_updatesPackageId.toList();
-    for(int i=0, step=1000; i<ids.count(); i+=step) {
-        QStringList chunk = ids.mid(i, qMin(step, ids.count()-i));
-        m_transactionQueue.append([chunk]() { return PackageKit::Daemon::getDetails(chunk); });
-    }
-    iterateTransactionQueue();
-
-    acquireFetching(false);
     emit updatesCountChanged();
+}
+
+void PackageKitBackend::getUpdatesDetailsFinished(PackageKit::Transaction::Exit, uint)
+{
+    acquireFetching(false);
 }
 
 bool PackageKitBackend::isPackageNameUpgradeable(const QString& name) const
 {
-    foreach (const QString& pkgid, m_updatesPackageId) {
+    for (const QString& pkgid: m_updatesPackageId) {
         if (PackageKit::Daemon::packageName(pkgid) == name)
             return true;
     }
