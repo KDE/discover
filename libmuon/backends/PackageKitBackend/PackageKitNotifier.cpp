@@ -53,7 +53,6 @@ void PackageKitNotifier::recheckSystemUpdateNeeded()
     m_update = NoUpdate;
     PackageKit::Transaction * trans = PackageKit::Daemon::getUpdates(PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
     connect(trans, SIGNAL(package(PackageKit::Transaction::Info,QString,QString)), SLOT(package(PackageKit::Transaction::Info,QString,QString)));
-    connect(trans, SIGNAL(destroy()), trans, SLOT(deleteLater()));
     connect(trans, SIGNAL(finished(PackageKit::Transaction::Exit, uint)), SLOT(finished(PackageKit::Transaction::Exit, uint)));
 }
 
