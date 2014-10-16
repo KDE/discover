@@ -532,16 +532,10 @@ void QAptActions::setActionsEnabled(bool enabled)
 
 void QAptActions::launchDistUpgrade()
 {
-    KProcess *proc = new KProcess(this);
-    QStringList arguments;
     QString kdesudo = QStandardPaths::findExecutable("kdesudo");
     QString upgrader = QStringLiteral("do-release-upgrade -m desktop -f DistUpgradeViewKDE");
 
-    arguments << kdesudo << upgrader;
-    proc->setProgram(arguments);
-    proc->start();
-
-    connect(proc, SIGNAL(finished(int)), proc, SLOT(deleteLater()));
+    QProcess::startDetached(kdesudo, QStringList() << upgrader);
 }
 
 void QAptActions::checkDistUpgrade()
