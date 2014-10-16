@@ -268,6 +268,9 @@ QList<AbstractResource*> PackageKitBackend::upgradeablePackages() const
     QList<AbstractResource*> ret;
     for(const QString& pkgid : m_updatesPackageId) {
         ret += m_packages[PackageKit::Daemon::packageName(pkgid)];
+        if (!ret.last()) {
+            qWarning() << "couldn't find resource for" << pkgid;
+        }
     }
     return ret;
 }
