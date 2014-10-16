@@ -277,6 +277,7 @@ void PackageKitResource::fetchDetails()
 {
     if (!m_details.isEmpty())
         return;
+    m_details.insert("fetching", true);//we add an entry so it's not re-fetched.
 
     PackageKit::Transaction* t = PackageKit::Daemon::getDetails(availablePackageId());
     connect(t, SIGNAL(details(PackageKit::Details)), this, SLOT(setDetails(PackageKit::Details)));
@@ -285,7 +286,7 @@ void PackageKitResource::fetchDetails()
 
 void PackageKitResource::setDetails(const PackageKit::Details & details)
 {
-    if (details.packageId() != availablePackageId())
+    if (m_packages.value(PackageKit::Transaction::InfoAvailable).contains(details.packageId()))
         return;
 
     m_details = details;
