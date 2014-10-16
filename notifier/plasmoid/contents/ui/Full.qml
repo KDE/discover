@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2014 by Aleix Pol Gonzalez <aleixpol@blue-systems.com>  *
+ *   Copyright (C) 2013 by Aleix Pol Gonzalez <aleixpol@blue-systems.com>  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -17,37 +17,30 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .        *
  ***************************************************************************/
 
-import QtQuick 2.2
-import org.kde.plasma.plasmoid 2.0
-import org.kde.plasma.core 2.0 as PlasmaCore
+import QtQuick 2.1
+import QtQuick.Layouts 1.1
+import org.kde.plasma.extras 2.0 as PlasmaExtras
+import org.kde.plasma.components 2.0
 import org.kde.muonnotifier 1.0
 
-Item
-{
-    Plasmoid.fullRepresentation: Full {}
-
-    Connections {
-        target: MuonNotifier
-        onUpdatesChanged: {
-            switch(MuonNotifier.state) {
-                case MuonNotifier.NoUpdates:
-                case MuonNotifier.NormalUpdates:
-                    plasmoid.status = PlasmaCore.Types.PassiveStatus;
-                    break;
-                case MuonNotifier.SecurityUpdates:
-                    plasmoid.status = PlasmaCore.Types.ActiveStatus;
-                    break;
-            }
-        }
+ColumnLayout {
+    PlasmaExtras.Heading {
+        Layout.fillWidth: true
+        horizontalAlignment: Text.AlignHCenter
+        level: 3
+        wrapMode: Text.WordWrap
+        text: MuonNotifier.message
     }
-
-    Plasmoid.compactRepresentation: PlasmaCore.IconItem {
-        source: MuonNotifier.iconName
-        width: 36
-        height: 36
-        MouseArea {
-            anchors.fill: parent
-            onClicked: plasmoid.expanded = !plasmoid.expanded
-        }
+    Label {
+        Layout.fillWidth: true
+        wrapMode: Text.WordWrap
+        horizontalAlignment: Text.AlignHCenter
+        text: MuonNotifier.extendedMessage
+    }
+    Button {
+        anchors.horizontalCenter: parent.horizontalCenter
+        text: i18n("Update")
+        tooltip: i18n("Launches the software to perform the update")
+        onClicked: MuonNotifier.showMuon()
     }
 }
