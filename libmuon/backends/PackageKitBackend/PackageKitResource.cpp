@@ -27,15 +27,13 @@
 #include <PackageKit/Details>
 #include <PackageKit/Daemon>
 
-PackageKitResource::PackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, PackageKitBackend* parent)
+PackageKitResource::PackageKitResource(const QString &packageName, const QString &summary, PackageKitBackend* parent)
     : AbstractResource(parent)
     , m_backend(parent)
     , m_summary(summary)
     , m_size(0)
-    , m_name(PackageKit::Daemon::packageName(packageId))
+    , m_name(packageName)
 {
-    addPackageId(info, packageId, summary);
-
     setObjectName(m_name);
 }
 

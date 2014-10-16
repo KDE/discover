@@ -30,7 +30,7 @@ class PackageKitResource : public AbstractResource
 {
     Q_OBJECT
     public:
-        explicit PackageKitResource(const QString &packageId, PackageKit::Transaction::Info info, const QString &summary, PackageKitBackend* parent);
+        explicit PackageKitResource(const QString& packageName, const QString& summary, PackageKitBackend* parent);
         virtual QString packageName() const;
         virtual QString name();
         virtual QString comment();

@@ -23,12 +23,8 @@
 #include <KToolInvocation>
 #include <QDebug>
 
-AppPackageKitResource::AppPackageKitResource(const QString &packageId, 
-                                             PackageKit::Transaction::Info info, 
-                                             const QString &summary,
-                                             const Appstream::Component& data,
-                                             PackageKitBackend* parent)
-    : PackageKitResource(packageId, info, summary, parent)
+AppPackageKitResource::AppPackageKitResource(const Appstream::Component& data, PackageKitBackend* parent)
+    : PackageKitResource(data.packageNames().first(), QString(), parent)
     , m_appdata(data)
 {
     Q_ASSERT(data.isValid());
@@ -49,6 +45,11 @@ QString AppPackageKitResource::icon() const
     return m_appdata.icon();
 }
 
+QString AppPackageKitResource::license()
+{
+    return m_appdata.projectLicense();
+}
+
 QStringList AppPackageKitResource::mimetypes() const
 {
 //     TODO
@@ -59,6 +60,11 @@ QStringList AppPackageKitResource::mimetypes() const
 QStringList AppPackageKitResource::categories()
 {
     return m_appdata.categories();
+}
+
+QString AppPackageKitResource::comment()
+{
+    return m_appdata.summary();
 }
 
 QUrl AppPackageKitResource::homepage()

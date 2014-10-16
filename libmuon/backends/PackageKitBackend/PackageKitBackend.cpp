@@ -88,6 +88,11 @@ void PackageKitBackend::reloadPackageList()
         disconnect(m_refresher, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(reloadPackageList()));
     }
 
+    for(const Appstream::Component& component: m_appdata.allComponents()) {
+        const QString name = component.packageNames().first();
+        m_updatingPackages[name] = new AppPackageKitResource(component, this);
+    }
+
     PackageKit::Transaction * t = PackageKit::Daemon::getPackages();
     connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(getPackagesFinished(PackageKit::Transaction::Exit)));
     connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackage(PackageKit::Transaction::Info, QString, QString)));
@@ -104,18 +109,12 @@ void PackageKitBackend::reloadPackageList()
 void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
     QString packageName = PackageKit::Daemon::packageName(packageId);
-    if (AbstractResource* r = m_updatingPackages.value(packageName)) {
-        qobject_cast<PackageKitResource*>(r)->addPackageId(info, packageId, summary);
-    } else {
-        PackageKitResource* newResource = 0;
-        QList<Appstream::Component> components = m_appdata.findComponentsByPackageName(packageName);
-
-        if (!components.isEmpty())
-            newResource = new AppPackageKitResource(packageId, info, summary, components.first(), this);
-        else
-            newResource = new PackageKitResource(packageId, info, summary, this);
-        m_updatingPackages[packageName] = newResource;
+    PackageKitResource* r = qobject_cast<PackageKitResource*>(m_updatingPackages.value(packageName));
+    if (!r) {
+        r = new PackageKitResource(packageName, summary, this);
+        m_updatingPackages[packageName] = r;
     }
+    r->addPackageId(info, packageId, summary);
 }
 
 void PackageKitBackend::getPackagesFinished(PackageKit::Transaction::Exit exit)
