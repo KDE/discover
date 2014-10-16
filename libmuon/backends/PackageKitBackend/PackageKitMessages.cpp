@@ -214,6 +214,8 @@ QString statusMessage(PackageKit::Transaction::Status status)
     switch (status) {
         case PackageKit::Transaction::StatusWait:
             return i18n("Waiting...");
+        case PackageKit::Transaction::StatusRefreshCache:
+            return i18n("Refreshing Cache...");
         case PackageKit::Transaction::StatusSetup:
             return i18n("Setup...");
         case PackageKit::Transaction::StatusRunning:
@@ -299,6 +301,8 @@ QString statusDetail(PackageKit::Transaction::Status status)
             //StatusCheckLibraries,
         case PackageKit::Transaction::StatusCopyFiles:
             return i18n("The transaction is currently copying files...");
+        case PackageKit::Transaction::StatusRefreshCache:
+            return i18n("Currently refreshing the repository cache...");
         case PackageKit::Transaction::StatusUnknown:
         default:
             return i18n("PackageKit does not tell us a useful status right now! Its status is %1.", status);
