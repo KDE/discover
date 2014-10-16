@@ -277,9 +277,9 @@ QList<AbstractResource*> PackageKitBackend::upgradeablePackages() const
 
 void PackageKitBackend::addPackageToUpdate(PackageKit::Transaction::Info info, const QString& packageId, const QString& summary)
 {
-    Q_UNUSED(summary);
     if (info != PackageKit::Transaction::InfoBlocked) {
         m_updatesPackageId += packageId;
+        addPackage(info, packageId, summary);
     }
 }
 
