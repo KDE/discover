@@ -29,7 +29,6 @@
 
 PackageKitResource::PackageKitResource(const QString &packageName, const QString &summary, PackageKitBackend* parent)
     : AbstractResource(parent)
-    , m_backend(parent)
     , m_summary(summary)
     , m_size(0)
     , m_name(packageName)
@@ -132,7 +131,7 @@ QUrl PackageKitResource::thumbnailUrl()
 
 AbstractResource::State PackageKitResource::state()
 {
-    if (m_backend->isPackageNameUpgradeable(name()))
+    if (backend()->isPackageNameUpgradeable(name()))
         return Upgradeable;
     else if(m_packages.contains(PackageKit::Transaction::InfoInstalled))
         return Installed;
@@ -336,4 +335,8 @@ void PackageKitResource::updateDetail(const QString& packageID, const QStringLis
     emit changelogFetched(info);
 }
 
+PackageKitBackend* PackageKitResource::backend() const
+{
+    return qobject_cast<PackageKitBackend*>(parent());
+}
 

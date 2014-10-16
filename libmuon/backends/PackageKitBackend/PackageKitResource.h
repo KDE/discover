@@ -78,8 +78,8 @@ class PackageKitResource : public AbstractResource
     private:
         /** fetches details individually, it's better if done in batch, like for updates */
         void fetchDetails();
+        PackageKitBackend* backend() const;
 
-        PackageKitBackend * m_backend;
         QMap<PackageKit::Transaction::Info, QStringList> m_packages;
         QString m_summary;
         QString m_license;
