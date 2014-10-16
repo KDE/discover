@@ -44,6 +44,8 @@ QList<BackendNotifierModule*> BackendNotifierFactory::allBackends() const
             }
         }
     }
+    if (ret.isEmpty())
+        qWarning() << "couldn't find any notifier backend" << QCoreApplication::instance()->libraryPaths();
 
     return ret;
 }
