@@ -22,6 +22,7 @@ Name[sr@latin]=Pogrešno
 Name[sv]=Felaktig
 Name[uk]=Помилка
 Name[x-test]=xxWrongxx
+Name[zh_TW]=錯誤
 
 X-KDE-Library=muon-knsbackend
 X-KDE-PluginInfo-Name=muon-knswrong-backend
