@@ -23,6 +23,7 @@
 
 #include <resources/AbstractResource.h>
 #include <PackageKit/Transaction>
+#include <PackageKit/Details>
 
 class PackageKitBackend;
 
@@ -82,12 +83,8 @@ class PackageKitResource : public AbstractResource
 
         QMap<PackageKit::Transaction::Info, QStringList> m_packages;
         QString m_summary;
-        QString m_license;
-        PackageKit::Transaction::Group m_group;
-        QString m_detail;
-        QString m_url;
-        qulonglong m_size;
         QString m_name;
+        PackageKit::Details m_details;
 };
 
 #endif // PACKAGEKITRESOURCE_H

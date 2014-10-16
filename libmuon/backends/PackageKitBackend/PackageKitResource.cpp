@@ -30,7 +30,6 @@
 PackageKitResource::PackageKitResource(const QString &packageName, const QString &summary, PackageKitBackend* parent)
     : AbstractResource(parent)
     , m_summary(summary)
-    , m_size(0)
     , m_name(packageName)
 {
     setObjectName(m_name);
@@ -66,14 +65,14 @@ QString PackageKitResource::comment()
 
 QString PackageKitResource::longDescription()
 {
-    if(m_detail.isEmpty()) fetchDetails();
-    return m_detail;
+    fetchDetails();
+    return m_details.description();
 }
 
 QUrl PackageKitResource::homepage()
 {
-    if(m_url.isEmpty()) fetchDetails();
-    return m_url;
+    fetchDetails();
+    return m_details.url();
 }
 
 QString PackageKitResource::icon() const
@@ -83,8 +82,8 @@ QString PackageKitResource::icon() const
 
 QString PackageKitResource::license()
 {
-    if(m_license.isEmpty()) fetchDetails();
-    return m_license;
+    fetchDetails();
+    return m_details.license();
 }
 
 QList<PackageState> PackageKitResource::addonsInformation()
@@ -104,8 +103,8 @@ QString PackageKitResource::installedVersion() const
 
 int PackageKitResource::downloadSize()
 {
-    if(m_size == 0) fetchDetails();
-    return m_size;
+    fetchDetails();
+    return m_details.size();
 }
 
 QString PackageKitResource::origin() const
@@ -276,6 +275,9 @@ bool PackageKitResource::isTechnical() const
 
 void PackageKitResource::fetchDetails()
 {
+    if (!m_details.isEmpty())
+        return;
+
     PackageKit::Transaction* t = PackageKit::Daemon::getDetails(availablePackageId());
     connect(t, SIGNAL(details(PackageKit::Details)), this, SLOT(setDetails(PackageKit::Details)));
     connect(t, &PackageKit::Transaction::errorCode, this, [](PackageKit::Transaction::Error, const QString& msg){ qWarning() << "error fetching details" << msg; });
@@ -286,11 +288,7 @@ void PackageKitResource::setDetails(const PackageKit::Details & details)
     if (details.packageId() != availablePackageId())
         return;
 
-    m_license = details.license();
-    m_group = details.group();
-    m_detail = details.description();
-    m_url = details.url();
-    m_size = details.size();
+    m_details = details;
 
     emit stateChanged();
 }
