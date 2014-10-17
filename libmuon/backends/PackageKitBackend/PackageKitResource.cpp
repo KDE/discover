@@ -286,7 +286,7 @@ void PackageKitResource::fetchDetails()
 
 void PackageKitResource::setDetails(const PackageKit::Details & details)
 {
-    if (m_packages.value(PackageKit::Transaction::InfoAvailable).contains(details.packageId()))
+    if (!m_packages.value(PackageKit::Transaction::InfoAvailable).contains(details.packageId()))
         return;
 
     m_details = details;
