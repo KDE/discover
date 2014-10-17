@@ -262,13 +262,20 @@ void PackageKitBackend::getUpdatesDetailsFinished(PackageKit::Transaction::Exit,
     acquireFetching(false);
 }
 
-bool PackageKitBackend::isPackageNameUpgradeable(const QString& name) const
+bool PackageKitBackend::isPackageNameUpgradeable(PackageKitResource* res) const
 {
+    return !upgradeablePackageId(res).isEmpty();
+}
+
+QString PackageKitBackend::upgradeablePackageId(PackageKitResource* res) const
+{
+    QString name = res->packageName();
     for (const QString& pkgid: m_updatesPackageId) {
         if (PackageKit::Daemon::packageName(pkgid) == name)
-            return true;
+            return pkgid;
     }
-    return false;
+    Q_ASSERT(false && "requesting upgradeable pkg id for non-upgradeable package");
+    return QString();
 }
 
 AbstractBackendUpdater* PackageKitBackend::backendUpdater() const

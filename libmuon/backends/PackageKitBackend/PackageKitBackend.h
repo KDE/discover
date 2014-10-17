@@ -56,7 +56,8 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         virtual QList<AbstractResource*> upgradeablePackages() const;
         virtual bool isFetching() const;
 
-        bool isPackageNameUpgradeable(const QString& pkgid) const;
+        bool isPackageNameUpgradeable(PackageKitResource* res) const;
+        QString upgradeablePackageId(PackageKitResource* res) const;
 
     public slots:
         void removeTransaction(Transaction* t);

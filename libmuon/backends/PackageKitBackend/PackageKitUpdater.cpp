@@ -82,8 +82,8 @@ void PackageKitUpdater::start()
     QSet<QString> m_packageIds;
     for (AbstractResource * res : m_toUpgrade) {
         PackageKitResource * app = qobject_cast<PackageKitResource*>(res);
-        m_packageIds.insert(app->availablePackageId());
-        qDebug() << "Upgrade" << app->availablePackageId() << app->installedPackageId();
+        QString pkgid = m_backend->upgradeablePackageId(app);
+        m_packageIds.insert(pkgid);
     }
     setTransaction(PackageKit::Daemon::updatePackages(m_packageIds.toList()));
     setProgressing(true);

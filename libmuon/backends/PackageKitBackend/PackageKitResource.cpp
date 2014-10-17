@@ -130,7 +130,7 @@ QUrl PackageKitResource::thumbnailUrl()
 
 AbstractResource::State PackageKitResource::state()
 {
-    if (backend()->isPackageNameUpgradeable(name()))
+    if (backend()->isPackageNameUpgradeable(this))
         return Upgradeable;
     else if(m_packages.contains(PackageKit::Transaction::InfoInstalled))
         return Installed;
