@@ -165,8 +165,11 @@ QString errorMessage(PackageKit::Transaction::Error error)
         case PackageKit::Transaction::ErrorLockRequired:
             return i18n("Lock required");
         case PackageKit::Transaction::ErrorUnknown:
-        default:
-            return i18n("Unknown error");
+        default: {
+            int idx = PackageKit::Transaction::staticMetaObject.indexOfEnumerator("Error");
+            QMetaEnum metaenum = PackageKit::Transaction::staticMetaObject.enumerator(idx);
+            return i18n("Unknown error %1.", metaenum.valueToKey(error));
+        }
     }
 }
 
@@ -304,8 +307,11 @@ QString statusDetail(PackageKit::Transaction::Status status)
         case PackageKit::Transaction::StatusRefreshCache:
             return i18n("Currently refreshing the repository cache...");
         case PackageKit::Transaction::StatusUnknown:
-        default:
-            return i18n("PackageKit does not tell us a useful status right now! Its status is %1.", status);
+        default: {
+            int idx = PackageKit::Transaction::staticMetaObject.indexOfEnumerator("Status");
+            QMetaEnum metaenum = PackageKit::Transaction::staticMetaObject.enumerator(idx);
+            return i18n("Unknown status %1.", metaenum.valueToKey(status));
+        }
     }
 }
 
