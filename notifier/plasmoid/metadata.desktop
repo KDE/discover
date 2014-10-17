@@ -1,6 +1,20 @@
 [Desktop Entry]
 Name=Updates
+Name[nl]=Elementen voor bijwerken
+Name[pt]=Actualizações
+Name[pt_BR]=Atualizações
+Name[sk]=Aktualizácie
+Name[sv]=Uppdateringar
+Name[uk]=Оновлення
+Name[x-test]=xxUpdatesxx
 Comment=Helps you keep your system up to date
+Comment[nl]=Helpt u om uw system bij de tijd te houden
+Comment[pt]=Ajuda-o a manter o seu sistema actualizado
+Comment[pt_BR]=Ajuda-o a manter seu sistema atualizado
+Comment[sk]=Pomôže vám udržiavať váš systém aktuálny
+Comment[sv]=Hjälper dig hålla systemet uppdaterat
+Comment[uk]=Допомагає підтримувати актуальний стан вашої системи
+Comment[x-test]=xxHelps you keep your system up to datexx
 Encoding=UTF-8
 
 Icon=muon-discover
