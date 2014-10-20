@@ -33,6 +33,7 @@ Name[sv]=Muon Akabei underrättelse
 Name[tr]=Muon Akabei Bildirici
 Name[uk]=Сповіщувач Muon для Akabei
 Name[x-test]=xxMuon Akabei Notifierxx
+Name[zh_CN]=Muon Akabei 通知器
 Name[zh_TW]=Muon Akabei 通知器
 Type=Service
 X-KDE-ServiceTypes=KDEDModule
