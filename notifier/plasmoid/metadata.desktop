@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Updates
 Name[de]=Aktualisierungen
+Name[es]=Actualizaciones
 Name[hu]=Frissítések
 Name[nl]=Elementen voor bijwerken
 Name[pl]=Uaktualnienia
@@ -17,6 +18,7 @@ Name[x-test]=xxUpdatesxx
 Name[zh_CN]=更新
 Comment=Helps you keep your system up to date
 Comment[de]=Hilft Ihnen, Ihr System auf dem neusten Stand zu halten
+Comment[es]=Le ayuda a mantener su sistema actualizado
 Comment[hu]=Segít rendszere napra készen tartásában
 Comment[nl]=Helpt u om uw system bij de tijd te houden
 Comment[pl]=Pomaga utrzymać twój system aktualnym
@@ -30,6 +32,7 @@ Comment[sr@latin]=Pomaže vam da održavate sistem ažurnim
 Comment[sv]=Hjälper dig hålla systemet uppdaterat
 Comment[uk]=Допомагає підтримувати актуальний стан вашої системи
 Comment[x-test]=xxHelps you keep your system up to datexx
+Comment[zh_CN]=帮助您保持更新
 Encoding=UTF-8
 
 Icon=muon-discover

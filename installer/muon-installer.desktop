@@ -126,4 +126,5 @@ Keywords[sv]=program;programvara;arkiv;paket;installera;ta bort;uppdatera;appar;
 Keywords[tr]=uygulama;yazılım;depo;paket;kur;kaldır;güncelle;uygulamalar;yüklemeler;
 Keywords[uk]=program;software;repository;package;install;remove;update;app;apps;applications;програма;програмне забезпечення;сховище;архів;пакунок;встановити;встановлення;вилучити;вилучення;оновлення;оновити;
 Keywords[x-test]=xxprogram;software;repository;package;install;remove;update;apps;applications;xx
+Keywords[zh_CN]=program;software;repository;package;install;remove;update;apps;applications;程序;软件;软件源;包;安装;移除;升级;应用程序
 Keywords[zh_TW]=program;software;repository;package;install;remove;update;apps;applications;
