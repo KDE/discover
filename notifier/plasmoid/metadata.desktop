@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Updates
 Name[de]=Aktualisierungen
+Name[en_GB]=Updates
 Name[es]=Actualizaciones
 Name[fi]=Päivitykset
 Name[hu]=Frissítések
@@ -20,6 +21,7 @@ Name[x-test]=xxUpdatesxx
 Name[zh_CN]=更新
 Comment=Helps you keep your system up to date
 Comment[de]=Hilft Ihnen, Ihr System auf dem neusten Stand zu halten
+Comment[en_GB]=Helps you keep your system up to date
 Comment[es]=Le ayuda a mantener su sistema actualizado
 Comment[fi]=Auttaa pitämään järjestelmäsi ajan tasalla
 Comment[hu]=Segít rendszere napra készen tartásában
