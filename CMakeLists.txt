@@ -36,7 +36,7 @@ find_package(AppstreamQt QUIET)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 
-set(MUON_VERSION "2.65.0")
+set(MUON_VERSION ${PROJECT_VERSION})
 configure_file(MuonVersion.h.in MuonVersion.h)
 
 add_subdirectory(libmuon)
