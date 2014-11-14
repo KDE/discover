@@ -44,6 +44,7 @@ AbstractResourcesBackend* MuonBackendsFactory::backend(const QString& name) cons
 
 AbstractResourcesBackend* MuonBackendsFactory::backendForFile(const QString& path) const
 {
+    Q_ASSERT(!path.isEmpty());
     KDesktopFile cfg(path);
     KConfigGroup group = cfg.group("Desktop Entry");
     QString libname = group.readEntry("X-KDE-Library", QString());
