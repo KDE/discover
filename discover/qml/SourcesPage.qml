@@ -98,7 +98,6 @@ Item {
                                 id: enabledBox
                                 enabled: false //TODO: implement the application of this change
                                 checked: model.checked != Qt.Unchecked
-                                tooltip: i18n("Origin enabled")
                             }
                             Label {
                                 Layout.fillWidth: true
