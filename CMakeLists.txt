@@ -32,7 +32,9 @@ find_package(KF5NewStuff)
 # find_package(BODEGA QUIET)
 find_package(AkabeiClient QUIET)
 find_package(packagekitqt5)
-find_package(AppstreamQt QUIET)
+if(packagekitqt5_FOUND)
+    find_package(AppstreamQt)
+endif()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 
@@ -71,7 +73,7 @@ set_package_properties(AkabeiClient PROPERTIES
     DESCRIPTION "Library that exposes Akabei resources"
     PURPOSE "Required to build the Akabei backend (Supports Chakra distribution)"
     TYPE OPTIONAL)
-set_package_properties(PackageKitQt2 PROPERTIES
+set_package_properties(packagekitqt5 PROPERTIES
     DESCRIPTION "Library that exposes PackageKit resources"
     URL "http://www.packagekit.org"
     PURPOSE "Required to build the PackageKit backend"
