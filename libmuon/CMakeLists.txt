@@ -37,8 +37,8 @@ kconfig_add_kcfg_files(muon_LIB_SRCS GENERATE_MOC MuonDataSources.kcfgc)
 add_library(muonprivate ${muon_LIB_SRCS})
 
 set_target_properties(muonprivate PROPERTIES
-    VERSION 2.1.3
-    SOVERSION 2
+    VERSION ${PROJECT_VERSION}
+    SOVERSION ${PROJECT_VERSION_MAJOR}
 )
 
 target_link_libraries(muonprivate
