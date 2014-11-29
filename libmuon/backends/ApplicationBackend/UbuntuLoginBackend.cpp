@@ -25,7 +25,6 @@
 #include <QWidget>
 #include <KLocalizedString>
 #include "ubuntu_sso.h"
-#include "LoginMetaTypes.h"
 
 //NOTE: this is needed because the method is called register. see the xml file for more info
 struct HackedComUbuntuSsoCredentialsManagementInterface : public ComUbuntuSsoCredentialsManagementInterface
@@ -34,7 +33,7 @@ struct HackedComUbuntuSsoCredentialsManagementInterface : public ComUbuntuSsoCre
         : ComUbuntuSsoCredentialsManagementInterface(service, path, connection, parent)
     {}
     
-    inline QDBusPendingReply<> register_hack(const QString &app_name, MapString args)
+    inline QDBusPendingReply<> register_hack(const QString &app_name, const QMap<QString,QString>& args)
     {
         QList<QVariant> argumentList;
         argumentList << QVariant::fromValue(app_name) << QVariant::fromValue(args);
@@ -45,18 +44,18 @@ struct HackedComUbuntuSsoCredentialsManagementInterface : public ComUbuntuSsoCre
 UbuntuLoginBackend::UbuntuLoginBackend(QObject* parent)
     : AbstractLoginBackend(parent)
 {
-    qDBusRegisterMetaType<MapString>();
+    qDBusRegisterMetaType< QMap<QString,QString> >();
     m_interface = new HackedComUbuntuSsoCredentialsManagementInterface( "com.ubuntu.sso", "/com/ubuntu/sso/credentials", QDBusConnection::sessionBus(), this);
-    connect(m_interface, SIGNAL(CredentialsError(QString,MapString)), SLOT(credentialsError(QString,MapString)));
+    connect(m_interface, SIGNAL(CredentialsError(QString,QMap<QString,QString>)), SLOT(credentialsError(QString,QMap<QString,QString>)));
     connect(m_interface, SIGNAL(AuthorizationDenied(QString)), SLOT(authorizationDenied(QString)));
-    connect(m_interface, SIGNAL(CredentialsFound(QString,MapString)), this, SLOT(successfulLogin(QString,MapString)));
+    connect(m_interface, SIGNAL(CredentialsFound(QString,QMap<QString,QString>)), this, SLOT(successfulLogin(QString,QMap<QString,QString>)));
     
-    m_interface->find_credentials(appname(), MapString());
+    m_interface->find_credentials(appname(), QMap<QString,QString>());
 }
 
 void UbuntuLoginBackend::login()
 {
-    MapString data;
+    QMap<QString,QString> data;
     data["help_text"] = i18n("Log in to the Ubuntu SSO service");
     data["window_id"] = winId();
     QDBusPendingReply< void > ret = m_interface->login(appname(), data);
@@ -64,7 +63,7 @@ void UbuntuLoginBackend::login()
 
 void UbuntuLoginBackend::registerAndLogin()
 {
-    MapString data;
+    QMap<QString,QString> data;
     data["help_text"] = i18n("Log in to the Ubuntu SSO service");
     data["window_id"] = winId();
     m_interface->register_hack(appname(), data);
@@ -112,7 +111,7 @@ void UbuntuLoginBackend::authorizationDenied(const QString& app)
         emit connectionStateChanged();
 }
 
-void UbuntuLoginBackend::credentialsError(const QString& app, const MapString& a)
+void UbuntuLoginBackend::credentialsError(const QString& app, const QMap<QString,QString>& a)
 {
     //TODO: provide error message?
     qDebug() << "error" << app << a;
@@ -122,7 +121,7 @@ void UbuntuLoginBackend::credentialsError(const QString& app, const MapString& a
 
 void UbuntuLoginBackend::logout()
 {
-    m_interface->clear_credentials(appname(), MapString());
+    m_interface->clear_credentials(appname(), QMap<QString,QString>());
     m_credentials.clear();
     emit connectionStateChanged();
 }

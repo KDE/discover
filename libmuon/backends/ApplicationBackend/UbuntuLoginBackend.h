@@ -23,7 +23,6 @@
 
 #include <ReviewsBackend/AbstractLoginBackend.h>
 #include <QVariant>
-#include "LoginMetaTypes.h"
 
 class HackedComUbuntuSsoCredentialsManagementInterface;
 class UbuntuLoginBackend : public AbstractLoginBackend
@@ -44,15 +43,15 @@ class UbuntuLoginBackend : public AbstractLoginBackend
         QByteArray consumerSecret() const;
 
     private slots:
-        void credentialsError(const QString& app, const MapString& a);
+        void credentialsError(const QString& app, const QMap<QString,QString>& a);
         void authorizationDenied(const QString& app);
-        void successfulLogin(const QString& app, const MapString& credentials);
+        void successfulLogin(const QString& app, const QMap<QString,QString>& credentials);
 
     private:
         QString appname() const;
         QString winId() const;
         HackedComUbuntuSsoCredentialsManagementInterface* m_interface;
-        MapString m_credentials;
+        QMap<QString,QString> m_credentials;
 };
 
 #endif // UBUNTULOGINBACKEND_H
