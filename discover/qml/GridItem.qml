@@ -26,7 +26,6 @@ MouseArea {
 
     default property alias content: paddingItem.data
 
-    property alias containsMouse: listItem.containsMouse
     property bool checked: false
     property int internalMargin: 5
 
