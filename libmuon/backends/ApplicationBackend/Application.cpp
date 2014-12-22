@@ -210,8 +210,10 @@ QVector<QPair<QString, QString> > Application::locateApplication(const QString &
     for (KServiceGroup::List::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it) {
         const KSycocaEntry::Ptr p = (*it);
 
+        // Static cast to specific classes according to isType().
         if (p->isType(KST_KService)) {
-            const KService::Ptr service = KService::Ptr(p);
+            const KService::Ptr service =
+                    KService::Ptr(static_cast<KService *>(p.data()));
 
             if (service->noDisplay()) {
                 continue;
@@ -225,7 +227,8 @@ QVector<QPair<QString, QString> > Application::locateApplication(const QString &
                 return ret;
             }
         } else if (p->isType(KST_KServiceGroup)) {
-            const KServiceGroup::Ptr serviceGroup = KServiceGroup::Ptr(p);
+            const KServiceGroup::Ptr serviceGroup =
+                    KServiceGroup::Ptr(static_cast<KServiceGroup *>(p.data()));
 
             if (serviceGroup->noDisplay() || serviceGroup->childCount() == 0) {
                 continue;
