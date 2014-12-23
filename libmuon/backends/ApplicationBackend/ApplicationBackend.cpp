@@ -675,24 +675,24 @@ void ApplicationBackend::listBugsFinished()
 {
     bool ok = true;
     KProcess *mProcess = qobject_cast<KProcess*>(QObject::sender());
-    if(!mProcess) return;
+    if (!mProcess) {
+        return;
+    }
     QString output = QString::fromUtf8(mProcess->readAllStandardOutput());
     mProcess->deleteLater();
-    if(!output.isEmpty())
-    {
-	QMessageBox::StandardButton reply;
-	reply = QMessageBox::question(mainWindow(), QString("Bugs found"), output ,QMessageBox::Yes|QMessageBox::No);
-	if (reply == QMessageBox::No) {
-	      ok=false;
-	}
+    if (!output.isEmpty()) {
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(mainWindow(), QString("Bugs found"), output ,QMessageBox::Yes|QMessageBox::No);
+        if (reply == QMessageBox::No) {
+            ok = false;
+        }
     }
-    if(ok)
-    {
-      if(m_wantedTransaction){
-	  addTransaction(m_wantedTransaction);
-	  m_wantedTransaction = nullptr;
-      }
-      emit transactionOk();
+    if (ok) {
+        if (m_wantedTransaction){
+            addTransaction(m_wantedTransaction);
+            m_wantedTransaction = nullptr;
+        }
+        emit transactionOk();
     }
 }
 
@@ -700,9 +700,9 @@ void ApplicationBackend::aptListBugs(QStringList packageName)
 {
     QStringList arguments;
     QString program = QStandardPaths::findExecutable(QString("apt-listbugs"));
-    if(program.isEmpty()){
-	emit transactionOk();
-	return;
+    if (program.isEmpty()) {
+        emit transactionOk();
+        return;
     }
     KProcess *proc = new KProcess;
     proc->setOutputChannelMode(KProcess::OnlyStdoutChannel);
