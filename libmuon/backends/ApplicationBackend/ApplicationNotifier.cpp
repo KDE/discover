@@ -36,8 +36,8 @@
 
 ApplicationNotifier::ApplicationNotifier(QObject* parent)
   : BackendNotifierModule(parent)
-  , m_checkerProcess(0)
-  , m_updateCheckerProcess(0)
+  , m_checkerProcess(Q_NULLPTR)
+  , m_updateCheckerProcess(Q_NULLPTR)
   , m_checkingForUpdates(false)
   , m_securityUpdates(0)
   , m_normalUpdates(0)
