@@ -133,8 +133,8 @@ QString MuonNotifier::message() const
 
 QString MuonNotifier::extendedMessage() const
 {
-    int securityCount = securityUpdatesCount();
-    int count = updatesCount() + securityCount;
+    uint securityCount = securityUpdatesCount();
+    uint count = updatesCount() + securityCount;
     if (count > 0 && securityCount > 0) {
         return i18n("%1 packages to update, of which %2 are security updates", count, securityCount);
     } else if (count > 0) {
@@ -152,20 +152,20 @@ void MuonNotifier::recheckSystemUpdateNeeded()
         module->recheckSystemUpdateNeeded();
 }
 
-int MuonNotifier::securityUpdatesCount() const
+uint MuonNotifier::securityUpdatesCount() const
 {
-    int ret = 0;
+    uint ret = 0;
     for(BackendNotifierModule* module : m_backends)
         ret += module->securityUpdatesCount();
     return ret;
 }
 
-int MuonNotifier::updatesCount() const
+uint MuonNotifier::updatesCount() const
 {
-    int ret = 0;
+    uint ret = 0;
     for(BackendNotifierModule* module : m_backends)
         ret += module->updatesCount();
-    return ret;
+    return ret + securityUpdatesCount();
 }
 
 QStringList MuonNotifier::loadedModules() const

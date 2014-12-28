@@ -35,14 +35,14 @@ public:
     ApplicationNotifier(QObject* parent = 0);
     virtual ~ApplicationNotifier();
 
-    virtual bool isSystemUpToDate() const;
-    virtual int securityUpdatesCount();
-    virtual int updatesCount();
+    bool isSystemUpToDate() const Q_DECL_OVERRIDE Q_DECL_FINAL;
+    uint securityUpdatesCount() Q_DECL_OVERRIDE Q_DECL_FINAL;
+    uint updatesCount() Q_DECL_OVERRIDE Q_DECL_FINAL;
 
 private slots:
     void checkUpgradeFinished(int exitStatus);
     void distUpgradeEvent();
-    void recheckSystemUpdateNeeded();
+    void recheckSystemUpdateNeeded() Q_DECL_OVERRIDE Q_DECL_FINAL;
     void parseUpdateInfo();
     void upgradeActivated();
     void init();
@@ -51,8 +51,8 @@ private:
     QProcess *m_checkerProcess;
     QProcess *m_updateCheckerProcess;
     bool m_checkingForUpdates;
-    int m_securityUpdates;
-    int m_normalUpdates;
+    uint m_securityUpdates;
+    uint m_normalUpdates;
 };
 
 #endif

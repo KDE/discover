@@ -82,12 +82,12 @@ bool PackageKitNotifier::isSystemUpToDate() const
     return m_update == NoUpdate;
 }
 
-int PackageKitNotifier::securityUpdatesCount()
+uint PackageKitNotifier::securityUpdatesCount()
 {
     return m_securityUpdates;
 }
 
-int PackageKitNotifier::updatesCount()
+uint PackageKitNotifier::updatesCount()
 {
     return m_normalUpdates;
 }

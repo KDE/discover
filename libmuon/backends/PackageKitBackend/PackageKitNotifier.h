@@ -40,13 +40,13 @@ public:
     PackageKitNotifier(QObject* parent = 0);
     virtual ~PackageKitNotifier();
 
-    virtual bool isSystemUpToDate() const;
-    virtual int securityUpdatesCount();
-    virtual int updatesCount();
+    virtual bool isSystemUpToDate() const Q_DECL_OVERRIDE Q_DECL_FINAL;
+    virtual uint securityUpdatesCount() Q_DECL_OVERRIDE Q_DECL_FINAL;
+    virtual uint updatesCount() Q_DECL_OVERRIDE Q_DECL_FINAL;
     
 public slots:
     virtual void configurationChanged();
-    virtual void recheckSystemUpdateNeeded() override;
+    virtual void recheckSystemUpdateNeeded() Q_DECL_OVERRIDE Q_DECL_FINAL;
     
 private slots:
     void package(PackageKit::Transaction::Info info, const QString &packageID, const QString &summary);
@@ -54,9 +54,9 @@ private slots:
     
 private:
     Update m_update;
-    QTimer * m_timer;
-    int m_securityUpdates;
-    int m_normalUpdates;
+    QTimer *m_timer;
+    uint m_securityUpdates;
+    uint m_normalUpdates;
 };
 
 #endif

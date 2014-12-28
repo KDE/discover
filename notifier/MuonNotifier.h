@@ -53,9 +53,9 @@ public:
     QString message() const;
     QString extendedMessage() const;
     /*** @returns count of normal updates only **/
-    int updatesCount() const;
+    uint updatesCount() const;
     /*** @returns count of security updates only **/
-    int securityUpdatesCount() const;
+    uint securityUpdatesCount() const;
 
     void updateStatusNotifier();
     QStringList loadedModules() const;

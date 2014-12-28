@@ -143,12 +143,12 @@ bool ApplicationNotifier::isSystemUpToDate() const
     return (m_securityUpdates+m_normalUpdates)==0;
 }
 
-int ApplicationNotifier::securityUpdatesCount()
+uint ApplicationNotifier::securityUpdatesCount()
 {
     return m_securityUpdates;
 }
 
-int ApplicationNotifier::updatesCount()
+uint ApplicationNotifier::updatesCount()
 {
     return m_normalUpdates;
 }
