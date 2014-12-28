@@ -44,14 +44,14 @@ ApplicationNotifier::ApplicationNotifier(QObject* parent)
 {
     KDirWatch *stampDirWatch = new KDirWatch(this);
     stampDirWatch->addFile("/var/lib/update-notifier/dpkg-run-stamp");
-    connect(stampDirWatch, SIGNAL(dirty(QString)), this, SLOT(distUpgradeEvent()));
+    connect(stampDirWatch, &KDirWatch::dirty, this, &ApplicationNotifier::distUpgradeEvent);
 
     stampDirWatch = new KDirWatch(this);
     stampDirWatch->addDir("/var/lib/apt/lists/");
     stampDirWatch->addDir("/var/lib/apt/lists/partial/");
     stampDirWatch->addFile("/var/lib/update-notifier/updates-available");
     stampDirWatch->addFile("/var/lib/update-notifier/dpkg-run-stamp");
-    connect(stampDirWatch, SIGNAL(dirty(QString)), this, SLOT(recheckSystemUpdateNeeded()));
+    connect(stampDirWatch, &KDirWatch::dirty, this, &ApplicationNotifier::recheckSystemUpdateNeeded);
     
     QTimer* delayedInitialization = new QTimer(this);
     delayedInitialization->setInterval(2 * 60 * 1000); //check in 2 minutes
