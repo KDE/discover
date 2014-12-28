@@ -133,7 +133,8 @@ QString MuonNotifier::message() const
 
 QString MuonNotifier::extendedMessage() const
 {
-    int count = updatesCount(), securityCount = securityUpdatesCount();
+    int securityCount = securityUpdatesCount();
+    int count = updatesCount() + securityCount;
     if (count > 0 && securityCount > 0) {
         return i18n("%1 packages to update, of which %2 are security updates", count, securityCount);
     } else if (count > 0) {

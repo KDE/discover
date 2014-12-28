@@ -52,7 +52,9 @@ public:
     QString iconName() const;
     QString message() const;
     QString extendedMessage() const;
+    /*** @returns count of normal updates only **/
     int updatesCount() const;
+    /*** @returns count of security updates only **/
     int securityUpdatesCount() const;
 
     void updateStatusNotifier();
