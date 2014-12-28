@@ -85,8 +85,14 @@ void ApplicationNotifier::checkUpgradeFinished(int exitStatus)
 {
     if (exitStatus == 0)
     {
-        KNotification* n = KNotification::event("DistUpgrade", i18n("System update available!"), i18nc("Notification when a new version of Kubuntu is available",
-                                 "A new version of Kubuntu is available"), QIcon::fromTheme("svn-update").pixmap(KIconLoader::SizeMedium), nullptr, KNotification::CloseOnTimeout, "muonapplicationnotifier");
+        KNotification *n = KNotification::event("DistUpgrade",
+                                                i18n("System update available!"),
+                                                i18nc("Notification when a new version of Kubuntu is available",
+                                                      "A new version of Kubuntu is available"),
+                                                QIcon::fromTheme("svn-update").pixmap(KIconLoader::SizeMedium),
+                                                nullptr,
+                                                KNotification::CloseOnTimeout,
+                                                "muonapplicationnotifier");
         n->setActions(QStringList() << i18n("Upgrade"));
         connect(n, &KNotification::action1Activated, this, &ApplicationNotifier::upgradeActivated);
     }
