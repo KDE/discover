@@ -19,17 +19,14 @@
  ***************************************************************************/
 
 #include "Application.h"
-#include "resources/PackageState.h"
-#include "ApplicationBackend.h"
-#include <MuonDataSources.h>
 
 // Qt includes
-#include <QtCore/QFile>
-#include <QtCore/QVector>
-#include <QtCore/QStringList>
-#include <QThread>
+#include <QFile>
 #include <QJsonDocument>
 #include <QStandardPaths>
+#include <QStringList>
+#include <QThread>
+#include <QVector>
 
 // KDE includes
 #include <KIconLoader>
@@ -45,6 +42,11 @@
 #include <QApt/Backend>
 #include <QApt/Config>
 #include <QApt/Changelog>
+
+#include <MuonDataSources.h>
+
+#include "ApplicationBackend.h"
+#include "resources/PackageState.h"
 
 Application::Application(const QString& fileName, QApt::Backend* backend)
         : AbstractResource(0)
