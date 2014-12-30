@@ -56,6 +56,7 @@ void MuonNotifier::configurationChanged()
 
 void MuonNotifier::showMuon()
 {
+#warning should start muon-updater not discover for now
     KRun::runCommand("muon-discover --mode installed", 0);
 }
 
@@ -70,6 +71,7 @@ bool MuonNotifier::isSystemUpToDate() const
 
 void MuonNotifier::updateStatusNotifier()
 {
+#warning event dispatch is not actually done when the async check returns with updates as the signal is not wired up
 //     m_statusNotifier->setOverlayIconByName(iconName());
     if (!isSystemUpToDate()) {
         //TODO: Better message strings

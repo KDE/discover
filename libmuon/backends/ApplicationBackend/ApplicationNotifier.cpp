@@ -53,7 +53,8 @@ ApplicationNotifier::ApplicationNotifier(QObject* parent)
     stampDirWatch->addFile("/var/lib/update-notifier/dpkg-run-stamp");
     connect(stampDirWatch, &KDirWatch::dirty, this, &ApplicationNotifier::recheckSystemUpdateNeeded);
     
-    QTimer* delayedInitialization = new QTimer(this);
+#warning initial check is triggered by the notifier backends on different timeouts, perhaps the notifier should handle this globally rather than the backends independently
+    QTimer *delayedInitialization = new QTimer(this);
     delayedInitialization->setInterval(2 * 60 * 1000); //check in 2 minutes
     connect(delayedInitialization, &QTimer::timeout, this, &ApplicationNotifier::recheckSystemUpdateNeeded);
 }
@@ -83,8 +84,7 @@ void ApplicationNotifier::distUpgradeEvent()
 
 void ApplicationNotifier::checkUpgradeFinished(int exitStatus)
 {
-    if (exitStatus == 0)
-    {
+    if (exitStatus == 0) {
         KNotification *n = KNotification::event("DistUpgrade",
                                                 i18n("System update available!"),
                                                 i18nc("Notification when a new version of Kubuntu is available",
@@ -122,6 +122,7 @@ void ApplicationNotifier::recheckSystemUpdateNeeded()
     
 void ApplicationNotifier::parseUpdateInfo()
 {
+#warning why does this parse stdout and not use qapt, wtf...
     m_securityUpdates = 0;
     m_normalUpdates = 0;
     // Weirdly enough, apt-check gives output on stderr
