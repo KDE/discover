@@ -37,6 +37,7 @@ QList<BackendNotifierModule*> BackendNotifierFactory::allBackends() const
         for(const QString& file : dir.entryList(QDir::Files)) {
             QString fullPath = dir.absoluteFilePath(file);
             QPluginLoader loader(fullPath);
+            loader.load();
             ret += qobject_cast<BackendNotifierModule*>(loader.instance());
             if (ret.last() == nullptr) {
                 qWarning() << "couldn't load" << fullPath << "because" << loader.errorString();
