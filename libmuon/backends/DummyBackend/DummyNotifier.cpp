@@ -40,12 +40,12 @@ bool DummyNotifier::isSystemUpToDate() const
     return true;
 }
 
-int DummyNotifier::securityUpdatesCount()
+uint DummyNotifier::securityUpdatesCount()
 {
     return 0;
 }
 
-int DummyNotifier::updatesCount()
+uint DummyNotifier::updatesCount()
 {
     return 0;
 }

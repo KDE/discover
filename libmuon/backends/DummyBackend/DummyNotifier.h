@@ -31,10 +31,10 @@ public:
     DummyNotifier(QObject* parent = 0);
     virtual ~DummyNotifier();
 
-    virtual bool isSystemUpToDate() const;
-    virtual void recheckSystemUpdateNeeded();
-    virtual int securityUpdatesCount();
-    virtual int updatesCount();
+    virtual bool isSystemUpToDate() const Q_DECL_OVERRIDE;
+    virtual void recheckSystemUpdateNeeded() Q_DECL_OVERRIDE;
+    virtual uint securityUpdatesCount() Q_DECL_OVERRIDE;
+    virtual uint updatesCount() Q_DECL_OVERRIDE;
 };
 
 #endif
