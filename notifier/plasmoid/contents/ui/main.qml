@@ -31,9 +31,9 @@ Item
         onUpdatesChanged: {
             switch(MuonNotifier.state) {
                 case MuonNotifier.NoUpdates:
-                case MuonNotifier.NormalUpdates:
                     plasmoid.status = PlasmaCore.Types.PassiveStatus;
                     break;
+                case MuonNotifier.NormalUpdates:
                 case MuonNotifier.SecurityUpdates:
                     plasmoid.status = PlasmaCore.Types.ActiveStatus;
                     break;
