@@ -56,8 +56,7 @@ void MuonNotifier::configurationChanged()
 
 void MuonNotifier::showMuon()
 {
-#warning should start muon-updater not discover for now
-    KRun::runCommand("muon-discover --mode installed", 0);
+    KRun::runCommand("muon-updater", 0);
 }
 
 bool MuonNotifier::isSystemUpToDate() const
