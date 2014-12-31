@@ -37,7 +37,7 @@ MuonNotifier::MuonNotifier(QObject * parent)
 
     m_backends = BackendNotifierFactory().allBackends();
     for(BackendNotifierModule* module : m_backends) {
-        connect(module, &BackendNotifierModule::foundUpdates, this, &MuonNotifier::updatesChanged);
+        connect(module, &BackendNotifierModule::foundUpdates, this, &MuonNotifier::updateStatusNotifier);
     }
     updateStatusNotifier();
 }
@@ -70,7 +70,6 @@ bool MuonNotifier::isSystemUpToDate() const
 
 void MuonNotifier::updateStatusNotifier()
 {
-#warning event dispatch is not actually done when the async check returns with updates as the signal is not wired up
 //     m_statusNotifier->setOverlayIconByName(iconName());
     if (!isSystemUpToDate()) {
         //TODO: Better message strings
@@ -86,6 +85,7 @@ void MuonNotifier::updateStatusNotifier()
 //         m_statusNotifier->setStatus(KStatusNotifierItem::Passive);
 //         m_s:tatusNotifier->setToolTip(QString(), message(), i18n("Your system is up-to-date"));
     }
+    emit updatesChanged();
 }
 
 MuonNotifier::State MuonNotifier::state() const
