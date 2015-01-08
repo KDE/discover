@@ -3,6 +3,7 @@
   <Menu>
     <Name>Comics</Name>
     <Icon>face-smile-big</Icon>
+    <ShowTechnical>true</ShowTechnical> <!-- needs to be like this as the appsbackend counterpart needs it. -->
     <Include>
       <And>
         <Category>comic.knsrc</Category>
