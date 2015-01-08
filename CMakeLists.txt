@@ -23,7 +23,7 @@ find_package(Phonon4Qt5 REQUIRED NO_MODULE)
 
 find_package(QApt 3.0.0)
 if(QApt_FOUND)
-    find_package(DebconfKDE REQUIRED)
+    find_package(DebconfKDE 1.0.0 REQUIRED)
     find_package(QtOAuth REQUIRED)
     find_package(Qca-qt5 REQUIRED) #required by QtOAuth
 endif()
