@@ -19,7 +19,7 @@ add_library(muon-applications-backend MODULE ${appsbackend_SRCS})
 target_link_libraries(muon-applications-backend Qt5::Widgets Qt5::DBus Qt5::Concurrent
      KF5::Archive KF5::KIOWidgets KF5::XmlGui DebconfKDE::Main KF5::IconThemes
      ${QTOAUTH_LIBRARY} QApt::Main muonprivate MuonApt
-     qca #qtoauth should be dragging it, but it doesn't
+     qca-qt5 #qtoauth should be dragging it, but it doesn't
 )
 
 install(TARGETS muon-applications-backend DESTINATION ${PLUGIN_INSTALL_DIR}/muon)

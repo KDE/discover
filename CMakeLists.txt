@@ -25,7 +25,7 @@ find_package(QApt 3.0.0)
 if(QApt_FOUND)
     find_package(DebconfKDE REQUIRED)
     find_package(QtOAuth REQUIRED)
-    find_package(Qca REQUIRED) #required by QtOAuth
+    find_package(Qca-qt5 REQUIRED) #required by QtOAuth
 endif()
 find_package(KF5Attica)
 find_package(KF5NewStuff)
