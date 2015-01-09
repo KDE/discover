@@ -155,6 +155,7 @@ void MainWindow::setupBackendsActions()
 {
     m_advancedMenu->clear();
     m_moreMenu->clear();
+    m_advancedMenu->setEnabled(false);
 
     bool actionAdded = false;
     foreach (QAction* action, m_updater->messageActions()) {
@@ -182,7 +183,6 @@ void MainWindow::setupBackendsActions()
     m_moreMenu->addAction(actionCollection()->action("options_configure"));
     m_moreMenu->addAction(actionCollection()->action("options_configure_keybinding"));
     m_moreMenu->addSeparator();
-    m_advancedMenu->setEnabled(false);
     m_moreMenu->addMenu(m_advancedMenu);
     m_moreMenu->addSeparator();
     m_moreMenu->addAction(actionCollection()->action("help_about_app"));

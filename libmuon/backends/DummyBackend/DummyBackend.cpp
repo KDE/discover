@@ -70,6 +70,7 @@ void DummyBackend::setMetaData(const QString& path)
     randomAction->setPriority(QAction::LowPriority);
     connect(randomAction, &QAction::triggered, this, [](){ qDebug() << "random action triggered"; });
     m_messageActions = QList<QAction*>() << updateAction << randomAction;
+    m_updater->setMessageActions(m_messageActions);
 
     SourcesModel::global()->addSourcesBackend(new DummySourcesBackend(this));
 }
