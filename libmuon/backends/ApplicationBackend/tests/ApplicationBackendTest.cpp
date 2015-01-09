@@ -44,7 +44,7 @@ QString getCodename(const QString& value)
     QString ret;
     QFile f("/etc/os-release");
     if(f.open(QIODevice::ReadOnly|QIODevice::Text)){
-	QRegExp rx(QString("%1=(.+)\n").arg(value));
+	QRegExp rx(QStringLiteral("%1=(.+)\n").arg(value));
 	while(!f.atEnd()) {
 	    QByteArray line = f.readLine();
 	    if(rx.exactMatch(line)) {

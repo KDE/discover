@@ -45,7 +45,7 @@ void Category::parseData(const QString& path, const QDomNode& data, bool canHave
     {
         if(!node.isElement()) {
             if(!node.isComment())
-                qWarning() << "unknown node found at " << QString("%1:%2").arg(path).arg(node.lineNumber());
+                qWarning() << "unknown node found at " << QStringLiteral("%1:%2").arg(path).arg(node.lineNumber());
             continue;
         }
         QDomElement tempElement = node.toElement();

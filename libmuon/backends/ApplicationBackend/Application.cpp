@@ -179,14 +179,14 @@ QString Application::menuPath()
     }
 
     if (!ret.isEmpty()) {
-        path.append(QString("<img width=\"16\" heigh=\"16\"src=\"%1\"/>")
+        path.append(QStringLiteral("<img width=\"16\" height=\"16\"src=\"%1\"/>")
                     .arg(KIconLoader::global()->iconPath("kde", KIconLoader::Small)));
-        path.append(QString("&nbsp;%1 <img width=\"16\" heigh=\"16\" src=\"%2\"/>&nbsp;%3")
+        path.append(QStringLiteral("&nbsp;%1 <img width=\"16\" height=\"16\" src=\"%2\"/>&nbsp;%3")
                     .arg(arrow)
                     .arg(KIconLoader::global()->iconPath("applications-other", KIconLoader::Small))
                     .arg(i18n("Applications")));
         for (int i = 0; i < ret.size(); i++) {
-            path.append(QString("&nbsp;%1&nbsp;<img width=\"16\" heigh=\"16\" src=\"%2\"/>&nbsp;%3")
+            path.append(QStringLiteral("&nbsp;%1&nbsp;<img width=\"16\" height=\"16\" src=\"%2\"/>&nbsp;%3")
                         .arg(arrow)
                         .arg(KIconLoader::global()->iconPath(ret.at(i).second, KIconLoader::Small))
                         .arg(ret.at(i).first));
@@ -587,7 +587,7 @@ void Application::processChangelog(KJob* j)
         if (m_package->origin() == QLatin1String("Ubuntu")) {
             changelog = i18nc("@info/rich", "The list of changes is not yet available. "
                                             "Please use <link url='%1'>Launchpad</link> instead.",
-                                            QString("http://launchpad.net/ubuntu/+source/" + m_package->sourcePackage()));
+                                            QStringLiteral("http://launchpad.net/ubuntu/+source/") + m_package->sourcePackage());
         } else {
             changelog = i18nc("@info", "The list of changes is not yet available.");
         }

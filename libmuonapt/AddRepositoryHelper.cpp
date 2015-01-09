@@ -17,14 +17,14 @@ ActionReply AddRepositoryHelper::modify(QVariantMap args)
     p->setProcessChannelMode(QProcess::MergedChannels);
     QString modRepo("apt-add-repository");
     QStringList arguments;
-    if(args["action"].toString()==QString("add")) {
-        arguments.append(QString("-y"));
+    if(args["action"].toString()==QStringLiteral("add")) {
+        arguments.append(QStringLiteral("-y"));
         arguments.append(args["repository"].toString());
     } else {
         if(args["action"]=="remove")
         {
-            arguments.append(QString("--remove"));
-            arguments.append(QString("-y"));
+            arguments.append(QStringLiteral("--remove"));
+            arguments.append(QStringLiteral("-y"));
             arguments.append(args["repository"].toString());
         }
     }

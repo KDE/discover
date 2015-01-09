@@ -50,7 +50,7 @@ static QString getCodename(const QString& value)
     QString ret;
     QFile f("/etc/os-release");
     if(f.open(QIODevice::ReadOnly|QIODevice::Text)) {
-        QRegExp rx(QString("%1=(.+)\n").arg(value));
+        QRegExp rx(QStringLiteral("%1=(.+)\n").arg(value));
         while(!f.atEnd()) {
             QByteArray line = f.readLine();
             if(rx.exactMatch(line)) {
@@ -308,7 +308,7 @@ void ReviewsBackend::submitUsefulness(Review* r, bool useful)
     QVariantMap data;
     data["useful"] = useful;
     
-    postInformation(QString("reviews/%1/recommendations/").arg(r->id()), data);
+    postInformation(QStringLiteral("reviews/%1/recommendations/").arg(r->id()), data);
 }
 
 void ReviewsBackend::submitReview(AbstractResource* application, const QString& summary,
@@ -339,7 +339,7 @@ void ReviewsBackend::submitReview(AbstractResource* application, const QString& 
 
 void ReviewsBackend::deleteReview(Review* r)
 {
-    postInformation(QString("reviews/delete/%1/").arg(r->id()), QVariantMap());
+    postInformation(QStringLiteral("reviews/delete/%1/").arg(r->id()), QVariantMap());
 }
 
 void ReviewsBackend::flagReview(Review* r, const QString& reason, const QString& text)
@@ -348,7 +348,7 @@ void ReviewsBackend::flagReview(Review* r, const QString& reason, const QString&
     data["reason"] = reason;
     data["text"] = text;
 
-    postInformation(QString("reviews/%1/flags/").arg(r->id()), data);
+    postInformation(QStringLiteral("reviews/%1/flags/").arg(r->id()), data);
 }
 
 QByteArray authorization(QOAuth::Interface* oauth, const QUrl& url, AbstractLoginBackend* login)

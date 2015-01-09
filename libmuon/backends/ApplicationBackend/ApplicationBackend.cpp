@@ -699,14 +699,14 @@ void ApplicationBackend::listBugsFinished()
 void ApplicationBackend::aptListBugs(QStringList packageName)
 {
     QStringList arguments;
-    QString program = QStandardPaths::findExecutable(QString("apt-listbugs"));
+    QString program = QStandardPaths::findExecutable(QStringLiteral("apt-listbugs"));
     if (program.isEmpty()) {
         emit transactionOk();
         return;
     }
     KProcess *proc = new KProcess;
     proc->setOutputChannelMode(KProcess::OnlyStdoutChannel);
-    proc->setShellCommand(program.append(QString(" list ")).append(packageName.join(" , ")));
+    proc->setShellCommand(program.append(QStringLiteral(" list ")).append(packageName.join(" , ")));
     connect(proc, SIGNAL(finished(int)), this, SLOT(listBugsFinished()));
     proc->start();
 }
