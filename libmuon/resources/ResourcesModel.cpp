@@ -114,6 +114,7 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
         m_backends += backend;
         m_resources.append(newResources);
         endInsertRows();
+        emit updatesCountChanged();
     } else {
         m_initializingBackends++;
         m_backends += backend;
