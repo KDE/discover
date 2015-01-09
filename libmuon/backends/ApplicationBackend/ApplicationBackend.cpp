@@ -682,7 +682,7 @@ void ApplicationBackend::listBugsFinished()
     mProcess->deleteLater();
     if (!output.isEmpty()) {
         QMessageBox::StandardButton reply;
-        reply = QMessageBox::question(mainWindow(), QString("Bugs found"), output ,QMessageBox::Yes|QMessageBox::No);
+        reply = QMessageBox::question(mainWindow(), i18n("Bugs found"), output ,QMessageBox::Yes|QMessageBox::No);
         if (reply == QMessageBox::No) {
             ok = false;
         }
