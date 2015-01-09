@@ -43,6 +43,7 @@ public:
     virtual QList<AbstractResource*> searchPackageName(const QString& searchText);
     virtual QVector<AbstractResource*> allResources() const;
     virtual bool isValid() const { return true; } // No external file dependencies that could cause runtime errors
+    virtual QList<QAction*> messageActions() const { return m_messageActions; }
 
     virtual void cancelTransaction(AbstractResource* app);
     virtual void installApplication(AbstractResource* app);
@@ -62,6 +63,7 @@ private:
     DummyReviewsBackend* m_reviews;
     bool m_fetching;
     int m_startElements;
+    QList<QAction*> m_messageActions;
 };
 
 #endif // DUMMYBACKEND_H

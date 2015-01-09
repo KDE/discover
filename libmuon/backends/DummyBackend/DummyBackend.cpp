@@ -62,7 +62,14 @@ void DummyBackend::setMetaData(const QString& path)
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
-    m_updater->setMessageActions(QList<QAction*>() << updateAction);
+
+    QAction* randomAction = new QAction(this);
+    randomAction->setIcon(QIcon::fromTheme("kalarm"));
+    randomAction->setText(QStringLiteral("test bla bla"));
+    randomAction->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_T));
+    randomAction->setPriority(QAction::LowPriority);
+    connect(randomAction, &QAction::triggered, this, [](){ qDebug() << "random action triggered"; });
+    m_messageActions = QList<QAction*>() << updateAction << randomAction;
 
     SourcesModel::global()->addSourcesBackend(new DummySourcesBackend(this));
 }
