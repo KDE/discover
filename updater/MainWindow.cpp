@@ -158,7 +158,7 @@ void MainWindow::setupBackendsActions()
     m_advancedMenu->setEnabled(false);
 
     bool actionAdded = false;
-    foreach (QAction* action, m_updater->messageActions()) {
+    foreach (QAction* action, ResourcesModel::global()->messageActions()) {
         switch(action->priority()) {
             case QAction::HighPriority: {
                 if(!containsAction(action, qobject_cast<QBoxLayout*>(centralWidget()->layout()))) {

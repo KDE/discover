@@ -84,7 +84,7 @@ void DummyTest::testFetch()
     QCOMPARE(m_appBackend->property("startElements").toInt()*2, m_model->rowCount());
 
     //fetches updates, adds new things
-    m_appBackend->backendUpdater()->messageActions().first()->trigger();
+    m_appBackend->messageActions().first()->trigger();
     QCOMPARE(m_model->rowCount(), 0);
     QCOMPARE(m_model->isFetching(), true);
     QSignalSpy spy(m_model, SIGNAL(allInitialized()));

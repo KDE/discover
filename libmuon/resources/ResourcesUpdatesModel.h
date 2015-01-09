@@ -44,7 +44,6 @@ class MUONPRIVATE_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         
         qreal progress() const;
         QString remainingTime() const;
-        QList<QAction*> messageActions() const;
         bool hasUpdates() const;
         quint64 downloadSpeed() const;
         Q_SCRIPTABLE void prepare();

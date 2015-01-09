@@ -443,25 +443,6 @@ quint64 ApplicationUpdates::downloadSpeed() const
     return m_trans->downloadSpeed();
 }
 
-QList<QAction*> ApplicationUpdates::messageActions() const
-{
-    QList<QAction*> ret;
-    //high priority
-    ret += QAptActions::self()->actionCollection()->action("dist-upgrade");
-
-    //normal priority
-    ret += QAptActions::self()->actionCollection()->action("update");
-
-    //low priority
-    ret += QAptActions::self()->actionCollection()->action("software_properties");
-    ret += QAptActions::self()->actionCollection()->action("load_archives");
-    ret += QAptActions::self()->actionCollection()->action("save_package_list");
-    ret += QAptActions::self()->actionCollection()->action("download_from_list");
-    ret += QAptActions::self()->actionCollection()->action("history");
-    Q_ASSERT(!ret.contains(nullptr));
-    return ret;
-}
-
 void ApplicationUpdates::fetchingChanged()
 {
     if(m_appBackend && m_appBackend->isFetching())

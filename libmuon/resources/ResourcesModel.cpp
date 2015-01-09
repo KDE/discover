@@ -393,3 +393,12 @@ bool ResourcesModel::isFetching() const
     }
     return false;
 }
+
+QList<QAction*> ResourcesModel::messageActions() const
+{
+    QList<QAction*> ret;
+    foreach(AbstractResourcesBackend* b, m_backends) {
+        ret += b->messageActions();
+    }
+    return ret;
+}

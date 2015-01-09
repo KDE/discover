@@ -76,6 +76,8 @@ class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
         void integrateMainWindow(MuonMainWindow* w);
         
         bool isFetching() const;
+        QList<QAction*> messageActions() const;
+        
         virtual QHash<int, QByteArray> roleNames() const;
 
     public slots:

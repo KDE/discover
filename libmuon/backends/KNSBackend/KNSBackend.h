@@ -61,6 +61,7 @@ public:
     virtual QVector< AbstractResource* > allResources() const;
     virtual AbstractBackendUpdater* backendUpdater() const;
     virtual bool isFetching() const;
+    virtual QList<QAction*> messageActions() const { return QList<QAction*>(); }
 
     bool isValid() const;
     Attica::Provider* provider() { return &m_provider; }

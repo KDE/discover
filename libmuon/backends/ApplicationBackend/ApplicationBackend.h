@@ -81,6 +81,7 @@ public:
     QWidget* mainWindow() const;
     virtual QList<AbstractResource*> upgradeablePackages() const;
     void aptListBugs(QStringList packageName);
+    virtual QList<QAction*> messageActions() const;
     
 private:
     void setFetching(bool f);

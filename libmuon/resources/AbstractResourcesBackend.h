@@ -29,6 +29,7 @@
 
 #include "libmuonprivate_export.h"
 
+class QAction;
 class Transaction;
 class AbstractReviewsBackend;
 class AbstractResource;
@@ -127,6 +128,15 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
          * Receives a path with the plugin's desktop file
          */
         virtual void setMetaData(const QString& path);
+
+        /**
+         *  This method is used to integrate advanced functions into the Muon GUI.
+         *
+         *  In muon-updater, actions with HighPriority will be shown in a KMessageWidget,
+         *  normal priority will go right on top of the more menu, low priority will go
+         *  to the advanced menu.
+         */
+        virtual QList<QAction*> messageActions() const = 0;
 
     public slots:
         /**

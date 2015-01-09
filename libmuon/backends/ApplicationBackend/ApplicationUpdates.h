@@ -61,7 +61,6 @@ public:
     virtual void cancel();
     virtual quint64 downloadSpeed() const;
     void prepare();
-    virtual QList<QAction*> messageActions() const;
     void setupTransaction(QApt::Transaction *trans);
     virtual bool isMarked(AbstractResource* res) const;
     void setProgressing(bool progressing);

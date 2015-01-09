@@ -136,14 +136,6 @@ class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
          */
         virtual quint64 downloadSpeed() const = 0;
 
-        /** 
-         *  This method is used to integrate advanced functions into the Muon GUI.
-         *  In muon-updater, actions with HighPriority will be shown in a KMessageWidget,
-         *  normal priority will go right on top of the more menu, low priority will go
-         *  to the advanced menu.
-         */
-        virtual QList<QAction*> messageActions() const = 0;
-
         /**
          * @returns whether @p res is marked for update
          */

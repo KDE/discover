@@ -148,15 +148,6 @@ QString ResourcesUpdatesModel::remainingTime() const
         return i18nc("@item:intext Remaining time", "%1 remaining", KFormat().formatDuration(maxEta));
 }
 
-QList<QAction*> ResourcesUpdatesModel::messageActions() const
-{
-    QList<QAction*> ret;
-    foreach(AbstractBackendUpdater* upd, m_updaters) {
-        ret += upd->messageActions();
-    }
-    return ret;
-}
-
 bool ResourcesUpdatesModel::hasUpdates() const
 {
     bool ret = false;
