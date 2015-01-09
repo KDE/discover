@@ -35,7 +35,7 @@
 
 #include <QApt/Backend>
 
-#include <QtOAuth/interface.h>
+#include <qoauth/src/interface.h>
 
 #include <Application.h>
 #include <ReviewsBackend/Rating.h>

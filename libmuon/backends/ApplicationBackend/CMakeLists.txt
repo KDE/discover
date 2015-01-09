@@ -1,8 +1,10 @@
+# we will have our own fork of the library now, because they haven't still made their mind out of Qt5
+# find_package(QtOAuth REQUIRED)
+add_subdirectory(qoauth)
+
 include_directories(.)
 
 add_subdirectory(tests)
-
-include_directories(${QTOAUTH_INCLUDE_DIR})
 
 set(appsbackend_SRCS
     ApplicationBackend.cpp
@@ -18,8 +20,7 @@ qt5_add_dbus_interface(appsbackend_SRCS ubuntu_sso_dbus_interface.xml ubuntu_sso
 add_library(muon-applications-backend MODULE ${appsbackend_SRCS})
 target_link_libraries(muon-applications-backend Qt5::Widgets Qt5::DBus Qt5::Concurrent
      KF5::Archive KF5::KIOWidgets KF5::XmlGui DebconfKDE::Main KF5::IconThemes
-     ${QTOAUTH_LIBRARY} QApt::Main muonprivate MuonApt
-     qca-qt5 #qtoauth should be dragging it, but it doesn't
+     Muon::QOAuth QApt::Main muonprivate MuonApt
 )
 
 install(TARGETS muon-applications-backend DESTINATION ${PLUGIN_INSTALL_DIR}/muon)
