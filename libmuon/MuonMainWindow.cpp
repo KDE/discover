@@ -26,6 +26,7 @@
 #include <QAction>
 #include <QApplication>
 #include <QDialog>
+#include <QMenu>
 #include <QVBoxLayout>
 #include <QStandardPaths>
 
@@ -112,4 +113,27 @@ bool MuonMainWindow::isConnected() const
 //                       (status == Solid::Networking::Unknown));
 //     return connected;
     return true;
+}
+
+QList<QAction*> MuonMainWindow::setupMessageActions(QMenu* main, QMenu* advanced, const QList<QAction*> &actions)
+{
+    advanced->setEnabled(false);
+
+    QList<QAction*> ret;
+    foreach (QAction* action, actions) {
+        switch(action->priority()) {
+            case QAction::HighPriority:
+                ret += action;
+                break;
+            case QAction::NormalPriority:
+                main->addAction(action);
+                break;
+            case QAction::LowPriority:
+            default:
+                advanced->setEnabled(true);
+                advanced->addAction(action);
+                break;
+        }
+    }
+    return ret;
 }

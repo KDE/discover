@@ -155,30 +155,16 @@ void MainWindow::setupBackendsActions()
 {
     m_advancedMenu->clear();
     m_moreMenu->clear();
-    m_advancedMenu->setEnabled(false);
 
-    bool actionAdded = false;
-    foreach (QAction* action, ResourcesModel::global()->messageActions()) {
-        switch(action->priority()) {
-            case QAction::HighPriority: {
-                if(!containsAction(action, qobject_cast<QBoxLayout*>(centralWidget()->layout()))) {
-                    KActionMessageWidget* w = new KActionMessageWidget(action, centralWidget());
-                    qobject_cast<QBoxLayout*>(centralWidget()->layout())->insertWidget(1, w);
-                }
-            }   break;
-            case QAction::NormalPriority:
-                actionAdded = true;
-                m_moreMenu->addAction(action);
-                break;
-            case QAction::LowPriority:
-            default:
-                m_advancedMenu->setEnabled(true);
-                m_advancedMenu->addAction(action);
-                break;
+    QList<QAction*> highActions = setupMessageActions(m_moreMenu, m_advancedMenu, ResourcesModel::global()->messageActions());
+    for (QAction* action: highActions) {
+        if(!containsAction(action, qobject_cast<QBoxLayout*>(centralWidget()->layout()))) {
+            KActionMessageWidget* w = new KActionMessageWidget(action, centralWidget());
+            qobject_cast<QBoxLayout*>(centralWidget()->layout())->insertWidget(1, w);
         }
     }
 
-    if(actionAdded)
+    if (!m_moreMenu->isEmpty())
         m_moreMenu->addSeparator();
     m_moreMenu->addAction(actionCollection()->action("options_configure"));
     m_moreMenu->addAction(actionCollection()->action("options_configure_keybinding"));

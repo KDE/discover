@@ -52,6 +52,7 @@ Q_SIGNALS:
     void actionsEnabledChanged(bool enabled);
 
 protected:
+    static QList<QAction*> setupMessageActions(QMenu* main, QMenu* advanced, const QList<QAction*> &actions);
     bool queryClose();
 
 protected slots:

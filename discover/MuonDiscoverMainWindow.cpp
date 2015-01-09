@@ -224,23 +224,44 @@ void MuonDiscoverMainWindow::setupActions()
     KHelpMenu* helpMenu = new KHelpMenu(this, KAboutData::applicationData());
 
     QToolBar* t = toolBar("discoverToolBar");
-    QMenu* configMenu = new QMenu(this);
-    configMenu->addMenu(qobject_cast<QMenu*>(factory()->container("settings", this)));
-    configMenu->addMenu(helpMenu->menu());
+    m_moreMenu = new QMenu(this);
+    m_advancedMenu = new QMenu(i18n("Advanced..."), m_moreMenu);
+    configureMenu();
     t->setVisible(true);
     
     KToolBarPopupAction* configureButton = new KToolBarPopupAction(QIcon::fromTheme("applications-system"), i18n("Menu"), t);
     configureButton->setToolTip(i18n("Configure and learn about Muon Discover"));
-    configureButton->setMenu(configMenu);
+    configureButton->setMenu(m_moreMenu);
     configureButton->setDelayed(false);
     configureButton->setPriority(QAction::LowPriority);
     
     t->addAction(new KToolBarSpacerAction(t));
     t->addWidget(m_searchText);
     t->addAction(configureButton);
+
+    connect(ResourcesModel::global(), &ResourcesModel::allInitialized, this, &MuonDiscoverMainWindow::configureMenu);
 }
 
 QObject* MuonDiscoverMainWindow::searchWidget() const
 {
     return m_searchText;
+}
+
+void MuonDiscoverMainWindow::configureMenu()
+{
+    m_advancedMenu->clear();
+    m_moreMenu->clear();
+    QList<QAction*> highActions = setupMessageActions(m_moreMenu, m_advancedMenu, ResourcesModel::global()->messageActions());
+#warning TODO: implement high priority actions
+
+    if (!m_moreMenu->isEmpty())
+        m_moreMenu->addSeparator();
+    m_moreMenu->addAction(actionCollection()->action("options_configure"));
+    m_moreMenu->addAction(actionCollection()->action("options_configure_keybinding"));
+    m_moreMenu->addSeparator();
+    m_moreMenu->addMenu(m_advancedMenu);
+    m_moreMenu->addSeparator();
+    m_moreMenu->addAction(actionCollection()->action("help_about_app"));
+    m_moreMenu->addAction(actionCollection()->action("help_about_kde"));
+    m_moreMenu->addAction(actionCollection()->action("help_report_bug"));
 }

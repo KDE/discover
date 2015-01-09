@@ -66,9 +66,13 @@ class MuonDiscoverMainWindow : public MuonMainWindow
         void listCategoryInternal(const QString& name);
 
     private:
+        void configureMenu();
+
         QString m_appToBeOpened;
         QLineEdit* m_searchText;
         QQuickWidget* m_view;
+        QMenu* m_moreMenu;
+        QMenu* m_advancedMenu;
 };
 
 #endif // MUONINSTALLERDECLARATIVEVIEW_H
