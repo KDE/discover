@@ -87,7 +87,7 @@ void ChangelogTab::changelogFetched(KJob *job)
         if (m_package->origin() == QLatin1String("Ubuntu")) {
             m_changelogBrowser->setText(i18nc("@info/rich", "The list of changes is not yet available. "
                                             "Please use <link url='%1'>Launchpad</link> instead.",
-                                            QStringLiteral("http://launchpad.net/ubuntu/+source/" + m_package->sourcePackage())));
+                                            QStringLiteral("http://launchpad.net/ubuntu/+source/") + m_package->sourcePackage()));
         } else {
             m_changelogBrowser->setText(i18nc("@info", "The list of changes is not yet available."));
         }
