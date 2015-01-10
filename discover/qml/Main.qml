@@ -20,6 +20,7 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.1
 import org.kde.muon 1.0
 import org.kde.muon.discover 1.0
 import "navigation.js" as Navigation
@@ -145,68 +146,65 @@ Rectangle
         onListCategoryInternal: Navigation.openCategoryByName(name)
     }
 
-    Item {
-        id: breadcrumbsItemBar
-        anchors {
-            top: parent.top
-            left: parent.left
-            right: pageToolBar.left
-            rightMargin: pageToolBar.visible ? 10 : 0
-        }
-        height: breadcrumbsItem.count<=1 ? 0 : 30
+    ColumnLayout {
+        anchors.fill: parent
+        Item {
+            Layout.fillWidth: true
+            Layout.minimumHeight: (breadcrumbsItem.visible || pageToolBar.visible) ? 30 : 0
+            height: Layout.minimumHeight
 
-        Breadcrumbs {
-            id: breadcrumbsItem
-            anchors.fill: parent
+            Breadcrumbs {
+                id: breadcrumbsItem
 
-            pageStack: pageStack
-            onPoppedPages: window.clearSearch()
-            Component.onCompleted: breadcrumbsItem.pushItem("go-home", "")
-        }
-        Behavior on height { NumberAnimation { duration: 250 } }
-    }
+                anchors {
+                    top: parent.top
+                    left: parent.left
+                    right: pageToolBar.left
+                    rightMargin: pageToolBar.visible ? 10 : 0
+                }
 
-    ToolBar {
-        id: pageToolBar
-        anchors {
-            top: parent.top
-            right: parent.right
-        }
-        height: visible ? 30 : 0
-        width: fu.item ? fu.item.width+5 : 0
-        visible: width>0
+                height: parent.height
+                pageStack: pageStack
+                onPoppedPages: window.clearSearch()
+                Component.onCompleted: breadcrumbsItem.pushItem("go-home", "")
+                Behavior on height { NumberAnimation { duration: 250 } }
+            }
 
-        Loader {
-            id: fu
-            sourceComponent: pageStack.currentItem ? pageStack.currentItem.tools : null
-        }
+            ToolBar {
+                id: pageToolBar
 
-        Behavior on width { NumberAnimation { duration: 250 } }
-    }
+                anchors {
+                    top: parent.top
+                    right: parent.right
+                }
+                width: fu.item ? fu.item.width+5 : 0
+                height: parent.height
+                visible: width>0
 
-    StackView {
-        id: pageStack
-        anchors {
-            bottom: progressBox.top
-            top: parent.top
-            left: parent.left
-            right: parent.right
-            topMargin: Math.max(breadcrumbsItemBar.height, pageToolBar.height)
-        }
+                Loader {
+                    id: fu
+                    sourceComponent: pageStack.currentItem ? pageStack.currentItem.tools : null
+                }
 
-        onDepthChanged: {
-            if(depth==1) {
-                breadcrumbsItem.removeAllItems()
+                Behavior on width { NumberAnimation { duration: 250 } }
             }
         }
-    }
 
-    ProgressView {
-        id: progressBox
-        anchors {
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
+        StackView {
+            id: pageStack
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            onDepthChanged: {
+                if(depth==1) {
+                    breadcrumbsItem.removeAllItems()
+                }
+            }
+        }
+
+        ProgressView {
+            id: progressBox
+            Layout.fillWidth: true
         }
     }
 }

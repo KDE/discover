@@ -8,9 +8,9 @@ import "navigation.js" as Navigation
 ToolBar {
     id: page
     property bool active: enabled && progressModel.count>0
-    height: active ? contents.height+2*contents.anchors.margins : 0
+    Layout.maximumHeight: active ? contents.height+2*contents.anchors.margins : 0
     
-    Behavior on height {
+    Behavior on Layout.maximumHeight {
         NumberAnimation { duration: 250; easing.type: Easing.InOutQuad }
     }
     
