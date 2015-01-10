@@ -148,6 +148,25 @@ Rectangle
 
     ColumnLayout {
         anchors.fill: parent
+
+        ColumnLayout {
+            id: msgColumn
+            Layout.fillWidth: true
+            visible: rep.count>0
+
+            Repeater {
+                id: rep
+                model: MessageActionsModel {
+                    filterPriority: QAction.HighPriority
+                }
+                delegate: MessageAction {
+                    width: msgColumn.width
+                    Layout.fillWidth: true
+                    theAction: action
+                }
+            }
+        }
+
         Item {
             Layout.fillWidth: true
             Layout.minimumHeight: (breadcrumbsItem.visible || pageToolBar.visible) ? 30 : 0

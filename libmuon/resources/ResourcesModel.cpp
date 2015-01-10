@@ -31,6 +31,7 @@
 #include <QDebug>
 #include <QCoreApplication>
 #include <QThread>
+#include <QAction>
 
 // static const KCatalogLoader loader("libmuon");//FIXME port
 
@@ -46,7 +47,7 @@ ResourcesModel *ResourcesModel::global()
 ResourcesModel::ResourcesModel(QObject* parent, bool load)
     : QAbstractListModel(parent)
     , m_initializingBackends(0)
-    , m_mainwindow(0)
+    , m_mainwindow(nullptr)
 {
     init(load);
     connect(this, SIGNAL(allInitialized()), SIGNAL(fetchingChanged()));
@@ -400,5 +401,6 @@ QList<QAction*> ResourcesModel::messageActions() const
     foreach(AbstractResourcesBackend* b, m_backends) {
         ret += b->messageActions();
     }
+    Q_ASSERT(!ret.contains(nullptr));
     return ret;
 }

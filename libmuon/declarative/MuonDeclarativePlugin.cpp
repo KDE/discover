@@ -34,9 +34,11 @@
 #include <ReviewsBackend/ReviewsModel.h>
 #include <ScreenshotsModel.h>
 #include <ApplicationAddonsModel.h>
+#include <MessageActionsModel.h>
 #include <qqml.h>
 #include <QQmlEngine>
 #include <QQmlContext>
+#include <QAction>
 
 QML_DECLARE_TYPE(ResourcesModel)
 QML_DECLARE_TYPE(AbstractResourcesBackend)
@@ -60,7 +62,9 @@ void MuonDeclarativePlugin::registerTypes(const char*)
     qmlRegisterType<ApplicationAddonsModel>("org.kde.muon", 1, 0, "ApplicationAddonsModel");
     qmlRegisterType<ScreenshotsModel>("org.kde.muon", 1, 0, "ScreenshotsModel");
     qmlRegisterType<ApplicationProxyModelHelper>("org.kde.muon", 1, 0, "ApplicationProxyModel");
+    qmlRegisterType<MessageActionsModel>("org.kde.muon", 1, 0, "MessageActionsModel");
     
+    qmlRegisterUncreatableType<QAction>("org.kde.muon", 1, 0, "QAction", "Use QQC Action");
     qmlRegisterType<Rating>();
     qmlRegisterType<AbstractResource>();
     qmlRegisterType<AbstractSourcesBackend>();

@@ -28,6 +28,7 @@ set(muon_LIB_SRCS
     resources/AbstractResource.cpp
     resources/AbstractBackendUpdater.cpp
     resources/AbstractSourcesBackend.cpp
+    MessageActionsModel
     MuonBackendsFactory.cpp
     ScreenshotsModel.cpp
     ApplicationAddonsModel.cpp
