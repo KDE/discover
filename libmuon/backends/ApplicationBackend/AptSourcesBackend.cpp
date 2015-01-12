@@ -132,7 +132,7 @@ void AptSourcesBackend::additionDone(int processErrorCode)
         QProcess* p = qobject_cast<QProcess*>(sender());
         Q_ASSERT(p);
         QByteArray errorMessage = p->readAllStandardOutput();
-        if(errorMessage.isEmpty())
+        if(!errorMessage.isEmpty())
             KMessageBox::error(0, errorMessage, i18n("Adding Origins..."));
     }
 }
@@ -146,7 +146,7 @@ void AptSourcesBackend::removalDone(int processErrorCode)
         QProcess* p = qobject_cast<QProcess*>(sender());
         Q_ASSERT(p);
         QByteArray errorMessage = p->readAllStandardOutput();
-        if(errorMessage.isEmpty())
+        if(!errorMessage.isEmpty())
             KMessageBox::error(0, errorMessage, i18n("Removing Origins..."));
     }
 }
@@ -161,15 +161,15 @@ QVariant SourceItem::data(int role) const
     switch(role) {
         case Qt::DisplayRole: {
 //             modelData.name=="" ? modelData.uri : i18n("%1. %2", modelData.name, modelData.uri)
-            QUrl uri(m_uri);
             QApt::Backend* backend = qobject_cast<AptSourcesBackend*>(model()->parent())->appsBackend()->backend();
-            QStringList origins = backend->originsForHost(uri.host());
+            QStringList origins = !m_uri.host().isEmpty() ? backend->originsForHost(m_uri.host()) : QStringList();
+            
             if(origins.size()==1)
                 return origins.first();
             else if(origins.size()==0)
-                return QString();
+                return m_uri.toDisplayString();
             else {
-                QString path = uri.path();
+                QString path = m_uri.path();
                 int firstSlash = path.indexOf('/', 1);
                 int secondSlash = path.indexOf('/', firstSlash+1);
                 QString launchpadifyUri = path.mid(1,secondSlash-1).replace('/', '-');
