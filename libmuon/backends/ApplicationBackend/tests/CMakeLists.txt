@@ -16,3 +16,4 @@ install(FILES popcontestratings.txt DESTINATION ${DATA_INSTALL_DIR}/libmuon)
 
 libmuon_add_unit_test(applicationbackendtest ApplicationBackendTest.cpp)
 libmuon_add_unit_test(reviewstest ReviewsTest.cpp)
+libmuon_add_unit_test(sourcestest SourcesTest.cpp)
