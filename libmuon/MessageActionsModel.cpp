@@ -55,7 +55,7 @@ void MessageActionsModel::reload()
     beginResetModel();
     m_actions = ResourcesModel::global()->messageActions();
     if (m_priority>=0) {
-        for(auto it=m_actions.begin(), itEnd=m_actions.end(); it!=itEnd; ) {
+        for(auto it=m_actions.begin(); it!=m_actions.end(); ) {
             if ((*it)->priority() == m_priority) {
                 ++it;
             } else
