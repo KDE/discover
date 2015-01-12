@@ -132,7 +132,7 @@ void AptSourcesBackend::additionDone(int processErrorCode)
         QProcess* p = qobject_cast<QProcess*>(sender());
         Q_ASSERT(p);
         QByteArray errorMessage = p->readAllStandardOutput();
-        if(errorMessage.isEmpty())
+        if(!errorMessage.isEmpty())
             KMessageBox::error(0, errorMessage, i18n("Adding Origins..."));
     }
 }
@@ -146,7 +146,7 @@ void AptSourcesBackend::removalDone(int processErrorCode)
         QProcess* p = qobject_cast<QProcess*>(sender());
         Q_ASSERT(p);
         QByteArray errorMessage = p->readAllStandardOutput();
-        if(errorMessage.isEmpty())
+        if(!errorMessage.isEmpty())
             KMessageBox::error(0, errorMessage, i18n("Removing Origins..."));
     }
 }
