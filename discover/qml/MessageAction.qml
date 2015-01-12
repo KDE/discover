@@ -28,7 +28,10 @@ Rectangle {
     Layout.minimumHeight: row.Layout.minimumHeight
 
     visible: theAction.enabled
-    color: "green"
+    SystemPalette {
+        id: palette
+    }
+    color: palette.highlight
 
     RowLayout {
         id: row
@@ -37,6 +40,7 @@ Rectangle {
         Label {
             Layout.fillWidth: true
             text: theAction.whatsThis
+            color: palette.highlightedText
         }
         Button {
             text: theAction.text
