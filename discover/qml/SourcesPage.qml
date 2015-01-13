@@ -85,7 +85,7 @@ Item {
                     model: sourceBackend.sources
 
                     delegate: GridItem {
-                        width: sourceDelegate.width
+                        Layout.fillWidth: true
                         height: browseOrigin.height*1.2
                         enabled: browseOrigin.enabled
                         onClicked: Navigation.openApplicationListSource(model.display)
