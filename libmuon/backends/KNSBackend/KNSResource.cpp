@@ -141,7 +141,8 @@ QString KNSResource::license()
 
 int KNSResource::downloadSize()
 {
-    return m_content.downloadUrlDescription(0).size();
+    const Attica::DownloadDescription desc = m_content.downloadUrlDescription(0);
+    return desc.size();
 }
 
 QString KNSResource::installedVersion() const
@@ -161,7 +162,8 @@ QString KNSResource::origin() const
 
 QString KNSResource::section()
 {
-    return m_content.downloadUrlDescription(0).category();
+    const Attica::DownloadDescription desc = m_content.downloadUrlDescription(0);
+    return desc.category();
 }
 
 void KNSResource::fetchScreenshots()
