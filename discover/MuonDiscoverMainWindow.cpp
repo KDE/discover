@@ -221,7 +221,6 @@ void MuonDiscoverMainWindow::setupActions()
     MuonMainWindow::setupActions();
 
     menuBar()->setVisible(false);
-    KHelpMenu* helpMenu = new KHelpMenu(this, KAboutData::applicationData());
 
     QToolBar* t = toolBar("discoverToolBar");
     m_moreMenu = new QMenu(this);
