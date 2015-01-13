@@ -32,4 +32,9 @@ target_link_libraries(MuonApplicationNotifier KF5::CoreAddons KF5::I18n KF5::Not
 
 install(TARGETS MuonApplicationNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/muon-notifier)
 install(FILES muonapplicationnotifier.notifyrc DESTINATION ${DATA_INSTALL_DIR}/muonapplicationnotifier)
-install(FILES distupgradeevent/releasechecker DESTINATION ${DATA_INSTALL_DIR}/muonapplicationnotifier)
+install(FILES distupgradeevent/releasechecker DESTINATION ${DATA_INSTALL_DIR}/muonapplicationnotifier
+    PERMISSIONS
+        OWNER_EXECUTE OWNER_READ OWNER_WRITE
+        GROUP_EXECUTE GROUP_READ
+        WORLD_EXECUTE WORLD_READ
+)
