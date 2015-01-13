@@ -4,6 +4,8 @@ set(PROJECT_VERSION_MAJOR 5)
 
 cmake_minimum_required(VERSION 2.8.12)
 
+option(MUON_INSTALL_EXPORTER "Install muon-exporter [development utility]" OFF)
+
 find_package(ECM REQUIRED NO_MODULE)
 
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} "${CMAKE_SOURCE_DIR}/cmake")
