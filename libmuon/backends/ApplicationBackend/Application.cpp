@@ -488,13 +488,22 @@ AbstractResource::State Application::state()
     if (!package())
         return Broken;
 
-    State ret = None;
-
     int s = package()->state();
-    if(s & QApt::Package::Upgradeable) ret = Upgradeable;
-    else if(s & QApt::Package::Installed) ret = Installed;
+
+    if (s & QApt::Package::Upgradeable) {
+#if QAPT_VERSION >= QT_VERSION_CHECK(3, 1, 0)
+        if (package()->isInUpdatePhase())
+            return Upgradeable;
+#else
+        return Upgradeable;
+#endif
+    }
+
+    if (s & QApt::Package::Installed) {
+        return Installed;
+    }
     
-    return ret;
+    return None; // Actually: none of interest to us here in muon-discover.
 }
 
 void Application::fetchScreenshots()

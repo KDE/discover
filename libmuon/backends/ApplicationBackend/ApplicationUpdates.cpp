@@ -481,10 +481,12 @@ void ApplicationUpdates::calculateUpdates()
             if(!res) //If we couldn't find it by its name, try with
                 res = m_appBackend->resourceByPackageName(QStringLiteral("%1:%2").arg(it->name()).arg(it->architecture()));
 
-            if(res)
-                m_toUpdate += res;
-            else
+            if(res) {
+                if (res->state() == Application::Upgradeable)
+                    m_toUpdate += res;
+            } else {
                 qWarning() << "Couldn't find the package:" << it->name();
+            }
             Q_ASSERT(res);
         }
     }
