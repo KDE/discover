@@ -33,7 +33,7 @@
 
 class PackageKitUpdater;
 
-class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
+class MUONCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
     public:

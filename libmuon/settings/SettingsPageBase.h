@@ -23,14 +23,14 @@
 
 #include <QWidget>
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 /**
  * @brief Base class for the settings pages of the Muon settings dialog.
  *
  * @author Peter Penz <peter.penz@gmx.at>
  */
-class MUONPRIVATE_EXPORT SettingsPageBase : public QWidget
+class MUONCOMMON_EXPORT SettingsPageBase : public QWidget
 {
     Q_OBJECT
 

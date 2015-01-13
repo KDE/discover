@@ -27,7 +27,7 @@
 // KDE includes
 #include <KXmlGuiWindow>
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 /**
  * This class serves as a shared Main Window implementation that connects
@@ -38,7 +38,7 @@
  * @author Jonathan Thomas <echidnaman@kubuntu.org>
  * @version 0.1
  */
-class MUONPRIVATE_EXPORT MuonMainWindow : public KXmlGuiWindow
+class MUONCOMMON_EXPORT MuonMainWindow : public KXmlGuiWindow
 {
     Q_OBJECT
 public:

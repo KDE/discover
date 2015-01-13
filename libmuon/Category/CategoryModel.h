@@ -23,11 +23,11 @@
 
 #include <QStandardItemModel>
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 class Category;
 
-class MUONPRIVATE_EXPORT CategoryModel : public QStandardItemModel
+class MUONCOMMON_EXPORT CategoryModel : public QStandardItemModel
 {
     Q_OBJECT
     Q_PROPERTY(Category* displayedCategory READ displayedCategory WRITE setDisplayedCategory)

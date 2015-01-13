@@ -23,13 +23,13 @@
 
 #include <QObject>
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 class Rating;
 class AbstractResource;
 class Review;
 
-class MUONPRIVATE_EXPORT AbstractReviewsBackend : public QObject
+class MUONCOMMON_EXPORT AbstractReviewsBackend : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool isReviewable READ isReviewable CONSTANT)

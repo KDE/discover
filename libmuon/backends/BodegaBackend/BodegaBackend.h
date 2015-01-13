@@ -22,7 +22,7 @@
 #define BODEGABACKEND_H
 
 #include <resources/AbstractResourcesBackend.h>
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 #include <Transaction/AddonList.h>
 #include <Transaction/Transaction.h>
 #include <QHash>
@@ -35,7 +35,7 @@ namespace Bodega {
     class UninstallJob;
 }
 
-class MUONPRIVATE_EXPORT BodegaBackend : public AbstractResourcesBackend
+class MUONCOMMON_EXPORT BodegaBackend : public AbstractResourcesBackend
 {
 Q_OBJECT
 public:

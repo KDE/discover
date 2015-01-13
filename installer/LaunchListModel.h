@@ -21,7 +21,7 @@
 #ifndef LAUNCHLISTMODEL_H
 #define LAUNCHLISTMODEL_H
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 // Qt includes
 #include <QStandardItemModel>
@@ -31,7 +31,7 @@
 
 class AbstractResource;
 
-class MUONPRIVATE_EXPORT LaunchListModel : public QStandardItemModel
+class MUONCOMMON_EXPORT LaunchListModel : public QStandardItemModel
 {
     Q_OBJECT
 public:

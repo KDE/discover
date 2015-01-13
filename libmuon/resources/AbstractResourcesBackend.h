@@ -27,7 +27,7 @@
 
 #include "Transaction/AddonList.h"
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 class QAction;
 class Transaction;
@@ -53,7 +53,7 @@ class MuonMainWindow;
  * (e.g. when initializing), the backend needs change the fetching property throughout the
  * processs.
  */
-class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
+class MUONCOMMON_EXPORT AbstractResourcesBackend : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(AbstractReviewsBackend* reviewsBackend READ reviewsBackend CONSTANT)
@@ -203,7 +203,7 @@ class MUONPRIVATE_EXPORT AbstractResourcesBackend : public QObject
 /**
  * @internal Workaround because QPluginLoader enforces 1 instance per plugin
  */
-class MUONPRIVATE_EXPORT AbstractResourcesBackendFactory : public QObject
+class MUONCOMMON_EXPORT AbstractResourcesBackendFactory : public QObject
 {
 public:
     virtual AbstractResourcesBackend* newInstance(QObject* parent) const = 0;

@@ -27,7 +27,7 @@
 #include <QScopedPointer>
 #include <QCollatorSortKey>
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 #include "PackageState.h"
 
 class Rating;
@@ -40,7 +40,7 @@ class AbstractResourcesBackend;
  * 
  * Each backend must reimplement its own resource class which needs to derive from this one.
  */
-class MUONPRIVATE_EXPORT AbstractResource : public QObject
+class MUONCOMMON_EXPORT AbstractResource : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ name CONSTANT)

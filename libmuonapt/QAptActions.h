@@ -26,7 +26,7 @@
 
 #include <QApt/Globals>
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 class MuonMainWindow;
 class KDialog;
@@ -40,7 +40,7 @@ namespace QApt {
     class Transaction;
 }
 
-class MUONPRIVATE_EXPORT QAptActions : public QObject
+class MUONCOMMON_EXPORT QAptActions : public QObject
 {
     Q_OBJECT
 public:

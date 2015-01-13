@@ -22,11 +22,11 @@
 #define MESSAGEACTIONSMODEL_H
 
 #include <QAbstractListModel>
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 class QAction;
 
-class MUONPRIVATE_EXPORT MessageActionsModel : public QAbstractListModel
+class MUONCOMMON_EXPORT MessageActionsModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(int filterPriority READ filterPriority WRITE setFilterPriority)

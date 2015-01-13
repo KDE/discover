@@ -25,11 +25,11 @@
 #include <QtCore/QObject>
 
 #include "Transaction.h"
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 class AbstractResource;
 
-class MUONPRIVATE_EXPORT TransactionListener : public QObject
+class MUONCOMMON_EXPORT TransactionListener : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(AbstractResource* resource READ resource WRITE setResource NOTIFY resourceChanged)

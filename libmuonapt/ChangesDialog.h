@@ -28,11 +28,11 @@
 // QApt includes
 #include <QApt/Package>
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 class QStandardItemModel;
 
-class MUONPRIVATE_EXPORT ChangesDialog : public QDialog
+class MUONCOMMON_EXPORT ChangesDialog : public QDialog
 {
 public:
     ChangesDialog(QWidget *parent, const QApt::StateChanges &changes);

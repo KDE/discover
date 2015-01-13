@@ -27,7 +27,7 @@
 // Own includes
 #include "AddonList.h"
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 class AbstractResource;
 
@@ -39,7 +39,7 @@ class AbstractResource;
  * When there are transactions running inside Muon, the backends should
  * provide the corresponding Transaction objects with proper information.
  */
-class MUONPRIVATE_EXPORT Transaction : public QObject
+class MUONCOMMON_EXPORT Transaction : public QObject
 {
     Q_OBJECT
 

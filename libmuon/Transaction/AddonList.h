@@ -24,9 +24,9 @@
 #include <QStringList>
 #include <QtCore/QVector>
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
-class MUONPRIVATE_EXPORT AddonList
+class MUONCOMMON_EXPORT AddonList
 {
 public:
     enum State {

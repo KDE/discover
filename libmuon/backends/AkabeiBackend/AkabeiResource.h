@@ -26,7 +26,7 @@
 class KJob;
 class AkabeiBackend;
 
-class MUONPRIVATE_EXPORT AkabeiResource : public AbstractResource
+class MUONCOMMON_EXPORT AkabeiResource : public AbstractResource
 {
     Q_OBJECT
     public:

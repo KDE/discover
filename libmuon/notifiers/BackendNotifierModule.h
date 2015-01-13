@@ -22,9 +22,9 @@
 #define BACKENDNOTIFIERMODULE_H
 
 #include <QObject>
-#include "../libmuonprivate_export.h"
+#include "../libMuonCommon_export.h"
 
-class MUONPRIVATE_EXPORT BackendNotifierModule : public QObject
+class MUONCOMMON_EXPORT BackendNotifierModule : public QObject
 {
 Q_OBJECT
 public:

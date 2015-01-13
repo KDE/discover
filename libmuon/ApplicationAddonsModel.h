@@ -25,12 +25,12 @@
 #include <resources/PackageState.h>
 #include "Transaction/AddonList.h"
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 class Transaction;
 class AbstractResource;
 
-class MUONPRIVATE_EXPORT ApplicationAddonsModel : public QAbstractListModel
+class MUONCOMMON_EXPORT ApplicationAddonsModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(AbstractResource* application READ application WRITE setApplication NOTIFY applicationChanged)

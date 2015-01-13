@@ -24,11 +24,11 @@
 #include <QAbstractListModel>
 #include <QSet>
 #include <QtQml/QQmlListProperty>
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 class QAction;
 class AbstractSourcesBackend;
-class MUONPRIVATE_EXPORT SourcesModel : public QAbstractListModel
+class MUONCOMMON_EXPORT SourcesModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(int count READ rowCount NOTIFY sourcesChanged)

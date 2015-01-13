@@ -21,7 +21,7 @@
 #ifndef MUONAKABEIBACKEND_H
 #define MUONAKABEIBACKEND_H
 
-#include <libmuonprivate_export.h>
+#include <libMuonCommon_export.h>
 #include "resources/AbstractResourcesBackend.h"
 #include "AkabeiUpdater.h"
 #include <QVariantList>
@@ -44,7 +44,7 @@ struct ApplicationData
     QStringList mimetypes;
 };
 
-class MUONPRIVATE_EXPORT AkabeiBackend : public AbstractResourcesBackend
+class MUONCOMMON_EXPORT AkabeiBackend : public AbstractResourcesBackend
 {
     Q_OBJECT
 public:

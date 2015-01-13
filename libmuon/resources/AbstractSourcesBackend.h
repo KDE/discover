@@ -22,11 +22,11 @@
 #define ABSTRACTSOURCESMANAGER_H
 
 #include <QObject>
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 class QAction;
 class QAbstractItemModel;
-class MUONPRIVATE_EXPORT AbstractSourcesBackend : public QObject
+class MUONCOMMON_EXPORT AbstractSourcesBackend : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QAbstractItemModel* sources READ sources CONSTANT)

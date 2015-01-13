@@ -22,14 +22,14 @@
 #define PACKAGESTATE_H
 
 #include <QString>
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 /**
  * The @class PackageState will be used to expose resources related to an @class AbstractResource.
  * 
  * @see ApplicationAddonsModel
  */
-class MUONPRIVATE_EXPORT PackageState
+class MUONCOMMON_EXPORT PackageState
 {
     public:
         PackageState(const QString& name, const QString& description, bool installed);

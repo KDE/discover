@@ -25,10 +25,10 @@
 #include <kns3/entry.h>
 #include <attica/content.h>
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 class KNSBackend;
-class MUONPRIVATE_EXPORT KNSResource : public AbstractResource
+class MUONCOMMON_EXPORT KNSResource : public AbstractResource
 {
 Q_OBJECT
 public:

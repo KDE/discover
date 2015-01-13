@@ -29,7 +29,7 @@
 
 #include <QApt/Package>
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 #include "resources/AbstractResource.h"
 
 class KJob;
@@ -38,7 +38,7 @@ namespace QApt {
     class Backend;
 }
 
-class MUONPRIVATE_EXPORT Application : public AbstractResource
+class MUONCOMMON_EXPORT Application : public AbstractResource
 {
 Q_OBJECT
 Q_PROPERTY(QString menuPath READ menuPath CONSTANT)

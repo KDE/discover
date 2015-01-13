@@ -24,13 +24,13 @@
 #include <QtCore/QModelIndex>
 #include <QVector>
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 #include "AbstractResourcesBackend.h"
 
 class AbstractResource;
 class AbstractResourcesBackend;
 
-class MUONPRIVATE_EXPORT ResourcesModel : public QAbstractListModel
+class MUONCOMMON_EXPORT ResourcesModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)

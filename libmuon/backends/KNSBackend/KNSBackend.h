@@ -32,7 +32,7 @@
 #include <resources/AbstractResourcesBackend.h>
 #include "Transaction/AddonList.h"
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 class KConfigGroup;
 class KNSReviews;
@@ -42,7 +42,7 @@ namespace Attica {
     class BaseJob;
 }
 
-class MUONPRIVATE_EXPORT KNSBackend : public AbstractResourcesBackend
+class MUONCOMMON_EXPORT KNSBackend : public AbstractResourcesBackend
 {
 Q_OBJECT
 public:

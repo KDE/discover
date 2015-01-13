@@ -25,9 +25,9 @@
 
 #include "Transaction.h"
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
-class MUONPRIVATE_EXPORT TransactionModel : public QAbstractListModel
+class MUONCOMMON_EXPORT TransactionModel : public QAbstractListModel
 {
     Q_OBJECT
 public:

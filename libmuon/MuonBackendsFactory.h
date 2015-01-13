@@ -20,7 +20,7 @@
 
 #ifndef MUONBACKENDSFACTORY_H
 #define MUONBACKENDSFACTORY_H
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 #include <QList>
 
 class QCommandLineParser;
@@ -28,7 +28,7 @@ class QStringList;
 class KPluginInfo;
 class AbstractResourcesBackend;
 
-class MUONPRIVATE_EXPORT MuonBackendsFactory
+class MUONCOMMON_EXPORT MuonBackendsFactory
 {
 public:
     MuonBackendsFactory();

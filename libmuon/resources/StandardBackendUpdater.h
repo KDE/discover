@@ -20,7 +20,7 @@
 #ifndef STANDARDBACKENDUPDATER_H
 #define STANDARDBACKENDUPDATER_H
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 #include <resources/AbstractBackendUpdater.h>
 #include "AbstractResourcesBackend.h"
 #include <QSet>
@@ -28,7 +28,7 @@
 
 class AbstractResourcesBackend;
 
-class MUONPRIVATE_EXPORT StandardBackendUpdater : public AbstractBackendUpdater
+class MUONCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdater
 {
     Q_OBJECT
     public:

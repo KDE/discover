@@ -24,9 +24,9 @@
 #include <QtCore/QObject>
 #include <QtCore/QVariant>
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
-class MUONPRIVATE_EXPORT Rating : public QObject
+class MUONCOMMON_EXPORT Rating : public QObject
 {
 Q_OBJECT
 Q_PROPERTY(double sortableRating READ sortableRating CONSTANT)

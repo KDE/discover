@@ -25,11 +25,11 @@
 #include <QtCore/QVariant>
 
 #include "ReviewsModel.h"
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 class AbstractResource;
 
-class MUONPRIVATE_EXPORT Review
+class MUONCOMMON_EXPORT Review
 {
 public:
     Review(const QString& name, const QString& pkgName, const QString& language, const QString& summary,

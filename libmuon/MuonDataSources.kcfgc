@@ -2,5 +2,5 @@ File=muondatasources.kcfg
 ClassName=MuonDataSources
 Singleton=true
 Mutators=false
-IncludeFiles=\"libmuonprivate_export.h\"
-Visibility=MUONPRIVATE_EXPORT
+IncludeFiles=\"libMuonCommon_export.h\"
+Visibility=MUONCOMMON_EXPORT

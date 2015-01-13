@@ -25,7 +25,7 @@
 #include <QtCore/QPair>
 #include <QtCore/QObject>
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 class QDomNode;
 
@@ -37,7 +37,7 @@ enum FilterType {
     PkgNameFilter
 };
 
-class MUONPRIVATE_EXPORT Category : public QObject
+class MUONCOMMON_EXPORT Category : public QObject
 {
 Q_OBJECT
 public:

@@ -22,12 +22,12 @@
 #define REVIEWSMODEL_H
 
 #include <QModelIndex>
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 class Review;
 class AbstractResource;
 class AbstractReviewsBackend;
-class MUONPRIVATE_EXPORT ReviewsModel : public QAbstractListModel
+class MUONCOMMON_EXPORT ReviewsModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(AbstractReviewsBackend* backend READ backend)

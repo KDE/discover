@@ -28,7 +28,7 @@
 
 #include <Category/Category.h>
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 #include "AbstractResource.h"
 
 namespace QApt {
@@ -37,7 +37,7 @@ namespace QApt {
 
 class Application;
 
-class MUONPRIVATE_EXPORT ResourcesProxyModel : public QSortFilterProxyModel
+class MUONCOMMON_EXPORT ResourcesProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
     Q_PROPERTY(QAbstractItemModel* sourceModel READ sourceModel WRITE setSourceModel)

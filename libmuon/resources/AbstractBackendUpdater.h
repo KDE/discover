@@ -22,7 +22,7 @@
 #define ABSTRACTBACKENDUPDATER_H
 
 #include <QObject>
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 class QAction;
 class QDateTime;
@@ -51,7 +51,7 @@ class AbstractResource;
  * @see start
  * @see prepare
  */
-class MUONPRIVATE_EXPORT AbstractBackendUpdater : public QObject
+class MUONCOMMON_EXPORT AbstractBackendUpdater : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(qreal progress READ progress NOTIFY progressChanged)

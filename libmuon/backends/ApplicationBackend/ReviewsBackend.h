@@ -25,7 +25,7 @@
 #include <QtCore/QUrl>
 #include <QtCore/QVariant>
 
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 
 namespace QOAuth {
@@ -44,7 +44,7 @@ class Application;
 class Rating;
 class Review;
 
-class MUONPRIVATE_EXPORT ReviewsBackend : public AbstractReviewsBackend
+class MUONCOMMON_EXPORT ReviewsBackend : public AbstractReviewsBackend
 {
     Q_OBJECT
 public:

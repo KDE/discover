@@ -22,7 +22,7 @@
 #define RESOURCESUPDATESMODEL_H
 
 #include <QStandardItemModel>
-#include "libmuonprivate_export.h"
+#include "libMuonCommon_export.h"
 
 class AbstractResourcesBackend;
 class AbstractResource;
@@ -31,7 +31,7 @@ class AbstractBackendUpdater;
 class ResourcesModel;
 class QDBusInterface;
 
-class MUONPRIVATE_EXPORT ResourcesUpdatesModel : public QStandardItemModel
+class MUONCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 {
     Q_OBJECT
     Q_PROPERTY(qreal progress READ progress NOTIFY progressChanged);
