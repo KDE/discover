@@ -22,6 +22,7 @@ Item {
             iconName: "list-add"
             text: i18n("Add Source")
 
+            tooltip: text
             menu: sourcesMenu
         }
         Repeater {
@@ -32,11 +33,13 @@ Item {
                     icon: modelData.icon
                 }
                 ToolButton {
-                    property QtObject action: modelData
                     height: parent.height
-                    text: action.text
-                    onClicked: action.trigger()
-                    enabled: action.enabled
+                    action: Action {
+                        property QtObject action: modelData
+                        text: action.text
+                        onTriggered: action.trigger()
+                        enabled: action.enabled
+                    }
                 }
             }
         }
