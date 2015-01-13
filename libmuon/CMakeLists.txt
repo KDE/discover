@@ -35,14 +35,9 @@ set(muon_LIB_SRCS
 )
 
 kconfig_add_kcfg_files(muon_LIB_SRCS GENERATE_MOC MuonDataSources.kcfgc)
-add_library(muonprivate ${muon_LIB_SRCS})
+add_library(MuonCommon ${muon_LIB_SRCS})
 
-set_target_properties(muonprivate PROPERTIES
-    VERSION ${PROJECT_VERSION}
-    SOVERSION ${PROJECT_VERSION_MAJOR}
-)
-
-target_link_libraries(muonprivate
+target_link_libraries(MuonCommon
 LINK_PUBLIC
     Qt5::Core
     Qt5::Widgets
@@ -57,10 +52,10 @@ LINK_PRIVATE
     Phonon::phonon4qt5
 )
 
-generate_export_header(muonprivate EXPORT_FILE_NAME libmuonprivate_export.h)
+generate_export_header(MuonCommon EXPORT_FILE_NAME libMuonCommon_export.h)
 
-target_include_directories(muonprivate PRIVATE ${PHONON_INCLUDES} PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(MuonCommon PRIVATE ${PHONON_INCLUDES} PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
 
-install(TARGETS muonprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS MuonCommon ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES moo.ogg DESTINATION ${DATA_INSTALL_DIR}/libmuon)
 install(FILES resources/muonabstractnotifier.notifyrc DESTINATION ${DATA_INSTALL_DIR}/muonabstractnotifier)

@@ -20,7 +20,7 @@ qt5_add_dbus_interface(appsbackend_SRCS ubuntu_sso_dbus_interface.xml ubuntu_sso
 add_library(muon-applications-backend MODULE ${appsbackend_SRCS})
 target_link_libraries(muon-applications-backend Qt5::Widgets Qt5::DBus Qt5::Concurrent
      KF5::Archive KF5::KIOWidgets KF5::XmlGui DebconfKDE::Main KF5::IconThemes
-     Muon::QOAuth QApt::Main muonprivate MuonApt
+     Muon::QOAuth QApt::Main MuonCommon MuonApt
 )
 
 install(TARGETS muon-applications-backend DESTINATION ${PLUGIN_INSTALL_DIR}/muon)

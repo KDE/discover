@@ -9,7 +9,7 @@ set(knsbackend_SRCS
 )
 
 add_library(muon-knsbackend MODULE ${knsbackend_SRCS})
-target_link_libraries(muon-knsbackend muonprivate
+target_link_libraries(muon-knsbackend MuonCommon
         KF5::ConfigCore KF5::Attica KF5::NewStuff KF5::WidgetsAddons)
 
 install(TARGETS muon-knsbackend DESTINATION ${PLUGIN_INSTALL_DIR}/muon)

@@ -9,7 +9,7 @@ set(dummy-backend_SRCS
 )
 
 add_library(muon-dummy-backend MODULE ${dummy-backend_SRCS})
-target_link_libraries(muon-dummy-backend Qt5::Core Qt5::Widgets KF5::CoreAddons KF5::Service muonprivate)
+target_link_libraries(muon-dummy-backend Qt5::Core Qt5::Widgets KF5::CoreAddons KF5::Service MuonCommon)
 
 install(TARGETS muon-dummy-backend DESTINATION ${PLUGIN_INSTALL_DIR}/muon)
 install(FILES muon-dummy-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/libmuon/backends)

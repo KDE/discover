@@ -8,7 +8,7 @@ set(pkbackend_SRCS
 )
 
 add_library(muon-pkbackend MODULE ${pkbackend_SRCS})
-target_link_libraries(muon-pkbackend PRIVATE muonprivate Qt5::Core PK::packagekitqt5 KF5::ConfigGui KF5::Service AppstreamQt)
+target_link_libraries(muon-pkbackend PRIVATE MuonCommon Qt5::Core PK::packagekitqt5 KF5::ConfigGui KF5::Service AppstreamQt)
 
 install(TARGETS muon-pkbackend DESTINATION ${PLUGIN_INSTALL_DIR}/muon)
 install(FILES muon-packagekit-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/libmuon/backends)

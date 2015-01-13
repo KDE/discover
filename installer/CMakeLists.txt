@@ -35,7 +35,7 @@ kconfig_add_kcfg_files(muon_installer_SRCS GENERATE_MOC config/MuonInstallerSett
 
 add_executable(muon-installer ${muon_installer_SRCS})
 
-target_link_libraries(muon-installer muonprivate MuonApt
+target_link_libraries(muon-installer MuonCommon MuonApt
                                      KF5::KIOWidgets
                                      QApt::Main
                                      Qt5::Declarative)

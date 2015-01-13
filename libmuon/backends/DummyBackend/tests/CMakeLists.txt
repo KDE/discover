@@ -5,7 +5,7 @@ macro(libmuon_add_unit_test name)
     add_test(${name} ${name})
     ecm_mark_as_test(${name})
     target_link_libraries(${name}
-        muonprivate
+        MuonCommon
 
         Qt5::Test Qt5::Core
         KF5::KIOWidgets)

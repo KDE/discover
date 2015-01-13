@@ -4,7 +4,7 @@ add_executable(knsbackendtest KNSBackendTest.cpp)
 add_test(knsbackendtest knsbackendtest)
 ecm_mark_as_test(knsbackendtest)
 target_link_libraries(knsbackendtest
-    muonprivate
+    MuonCommon
     
     Qt5::Test Qt5::Core
     KF5::NewStuff KF5::KIOWidgets KF5::Attica
