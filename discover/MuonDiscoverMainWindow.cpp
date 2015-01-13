@@ -217,7 +217,7 @@ QUrl MuonDiscoverMainWindow::prioritaryFeaturedSource() const
 
 void MuonDiscoverMainWindow::setupActions()
 {
-    setupGUI(StandardWindowOption(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
+    setupGUI(StandardWindowOption(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar & ~KXmlGuiWindow::ToolBar));
     MuonMainWindow::setupActions();
 
     menuBar()->setVisible(false);
