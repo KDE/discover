@@ -16,7 +16,7 @@ Item {
     }
 
     property Component tools: RowLayout {
-        anchors.fill: parent
+        Layout.fillWidth: true
         visible: page.visible
         ToolButton {
             iconName: "list-add"
