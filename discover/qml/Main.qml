@@ -147,25 +147,28 @@ Rectangle
     }
 
     ColumnLayout {
-        spacing: 0
-        anchors.fill: parent
+        id: msgColumn
+        width: parent.width
+        visible: rep.count>0
 
-        ColumnLayout {
-            id: msgColumn
-            Layout.fillWidth: true
-            visible: rep.count>0
-
-            Repeater {
-                id: rep
-                model: MessageActionsModel {
-                    filterPriority: QAction.HighPriority
-                }
-                delegate: MessageAction {
-                    width: msgColumn.width
-                    Layout.fillWidth: true
-                    theAction: action
-                }
+        Repeater {
+            id: rep
+            model: MessageActionsModel {
+                filterPriority: QAction.HighPriority
             }
+            delegate: MessageAction {
+                width: msgColumn.width
+                Layout.fillWidth: true
+                theAction: action
+            }
+        }
+    }
+
+    ColumnLayout {
+        spacing: 0
+        anchors {
+            fill: parent
+            topMargin: msgColumn.height
         }
 
         Item {
