@@ -147,6 +147,7 @@ Rectangle
     }
 
     ColumnLayout {
+        spacing: 0
         anchors.fill: parent
 
         ColumnLayout {
