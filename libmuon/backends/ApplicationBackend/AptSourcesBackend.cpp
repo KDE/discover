@@ -101,10 +101,12 @@ bool AptSourcesBackend::removeSource(const QString& repository)
 {
     KAuth::Action readAction("org.kde.muon.repo.modify");
     readAction.setHelperId("org.kde.muon.repo");
-    QVariantMap args;
-    args["repository"] = repository;
-    args["action"] = QStringLiteral("remove");
+    QVariantMap args = {
+        { "repository", repository },
+        { "action", QStringLiteral("remove") }
+    };
     readAction.setArguments(args);
+    qDebug() << "removing..." << args;
     KAuth::ExecuteJob* reply = readAction.execute();
     removalDone(reply->error());
     return true;
@@ -114,10 +116,12 @@ bool AptSourcesBackend::addSource(const QString& repository)
 {
     KAuth::Action readAction("org.kde.muon.repo.modify");
     readAction.setHelperId("org.kde.muon.repo");
-    QVariantMap args;
-    args["repository"] = repository;
-    args["action"] = QStringLiteral("add");
+    QVariantMap args = {
+        { "repository", repository },
+        { "action", QStringLiteral("add") }
+    };
     readAction.setArguments(args);
+    qDebug() << "adding..." << args;
     KAuth::ExecuteJob* reply = readAction.execute();
     additionDone(reply->error());
     return true;

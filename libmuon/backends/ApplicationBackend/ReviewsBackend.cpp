@@ -305,8 +305,7 @@ QString ReviewsBackend::getLanguage()
 
 void ReviewsBackend::submitUsefulness(Review* r, bool useful)
 {
-    QVariantMap data;
-    data["useful"] = useful;
+    QVariantMap data = { { "useful", useful } };
     
     postInformation(QStringLiteral("reviews/%1/recommendations/").arg(r->id()), data);
 }
@@ -316,15 +315,16 @@ void ReviewsBackend::submitReview(AbstractResource* application, const QString& 
 {
     Application* app = qobject_cast<Application*>(application);
     
-    QVariantMap data;
-    data["app_name"] = app->name();
-    data["package_name"] = app->packageName();
-    data["summary"] = summary;
-    data["version"] = app->package()->version();
-    data["review_text"] = review_text;
-    data["rating"] = rating;
-    data["language"] = getLanguage();
-    data["origin"] = app->package()->origin();
+    QVariantMap data = {
+        { "app_name", app->name() },
+        { "package_name", app->packageName() },
+        { "summary", summary },
+        { "version", app->package()->version() },
+        { "review_text", review_text },
+        { "rating", rating },
+        { "language", getLanguage() },
+        { "origin", app->package()->origin() }
+    };
 
     QString distroSeries = getCodename("VERSION");
     if(!distroSeries.isEmpty()){
@@ -344,9 +344,10 @@ void ReviewsBackend::deleteReview(Review* r)
 
 void ReviewsBackend::flagReview(Review* r, const QString& reason, const QString& text)
 {
-    QVariantMap data;
-    data["reason"] = reason;
-    data["text"] = text;
+    QVariantMap data = {
+        { "reason", reason },
+        { "text", text }
+    };
 
     postInformation(QStringLiteral("reviews/%1/flags/").arg(r->id()), data);
 }
