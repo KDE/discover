@@ -77,7 +77,6 @@ ChangelogWidget::ChangelogWidget(QWidget *parent)
     m_busyWidget->setWidget(this);
 
     QHBoxLayout *mainLayout = new QHBoxLayout(this);
-    mainLayout->setMargin(0);
     mainLayout->setSpacing(0);
     mainLayout->addWidget(sideWidget);
     mainLayout->addWidget(m_changelogBrowser);
@@ -144,7 +143,11 @@ void ChangelogWidget::changelogFetched(const QString& changelog)
     if (m_package) {
         // Work around http://bugreports.qt.nokia.com/browse/QTBUG-2533 by forcibly resetting the CharFormat
         m_changelogBrowser->setCurrentCharFormat(QTextCharFormat());
-        m_changelogBrowser->setHtml(changelog);
+        QString fullText;
+        fullText += i18nc("@info/rich", "<p><b>Package Name:</b> %1</p>", m_package->packageName());
+        fullText += i18nc("@info/rich", "<p><b>Installed Version:</b> %1</p>", m_package->installedVersion());
+        fullText += changelog;
+        m_changelogBrowser->setHtml(fullText);
     }
 
     m_busyWidget->stop();
