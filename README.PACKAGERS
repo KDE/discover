@@ -6,6 +6,6 @@ libmuonprivate:
 muon:
 - apt-xapian-index
 
-muon-installer:
+muon-discover:
 - app-install-data
 - apt-xapian-index
