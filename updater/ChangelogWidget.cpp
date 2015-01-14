@@ -26,6 +26,7 @@
 #include <QtCore/QPropertyAnimation>
 #include <QtCore/QStringBuilder>
 #include <QtCore/QTextStream>
+#include <QProcess>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QApplication>
@@ -38,6 +39,8 @@
 #include <KPixmapSequenceOverlayPainter>
 #include <KIconLoader>
 #include <QTextBrowser>
+#include <QPushButton>
+#include <QDebug>
 
 ChangelogWidget::ChangelogWidget(QWidget *parent)
         : QWidget(parent)
@@ -53,11 +56,18 @@ ChangelogWidget::ChangelogWidget(QWidget *parent)
     hideButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     connect(hideButton, SIGNAL(clicked()), this, SLOT(animatedHide()));
 
+    m_infoButton = new QPushButton(sideWidget);
+    m_infoButton->setText(i18nc("@action:button", "More..."));
+    m_infoButton->setEnabled(false);
+    m_infoButton->setToolTip(i18n("Shows the selected package on Muon Discover"));
+    connect(m_infoButton, &QPushButton::clicked, this, &ChangelogWidget::showMore);
+
     QVBoxLayout *sideLayout = new QVBoxLayout(sideWidget);
     sideLayout->setMargin(0);
     sideLayout->setSpacing(0);
     sideLayout->addWidget(hideButton);
     sideLayout->addStretch();
+    sideLayout->addWidget(m_infoButton);
     sideWidget->setLayout(sideLayout);
 
     m_changelogBrowser = new QTextBrowser(this);
@@ -114,6 +124,7 @@ void ChangelogWidget::setResource(AbstractResource* package)
         fetchChangelog();
     } else
         animatedHide();
+    m_infoButton->setEnabled(m_package);
 }
 
 void ChangelogWidget::show()
@@ -162,4 +173,12 @@ void ChangelogWidget::fetchChangelog()
     m_changelogBrowser->clear();
     m_busyWidget->start();
     m_package->fetchChangelog();
+}
+
+void ChangelogWidget::showMore()
+{
+    bool b = QProcess::startDetached("muon-discover", { "--application", m_package->packageName() });
+    if (!b) {
+        qWarning() << "Couldn't launch muon-discover";
+    }
 }

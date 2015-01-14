@@ -30,6 +30,7 @@ class QParallelAnimationGroup;
 class KJob;
 class KPixmapSequenceOverlayPainter;
 class KTemporaryFile;
+class QPushButton;
 class QTextBrowser;
 
 class ChangelogWidget : public QWidget
@@ -46,8 +47,7 @@ private:
     QParallelAnimationGroup *m_expandWidget;
     QTextBrowser *m_changelogBrowser;
     KPixmapSequenceOverlayPainter *m_busyWidget;
-
-    QString buildDescription(const QByteArray& data, const QString& source);
+    QPushButton* m_infoButton;
 
 public Q_SLOTS:
     void setResource(AbstractResource *package);
@@ -57,6 +57,7 @@ public Q_SLOTS:
 private Q_SLOTS:
     void fetchChangelog();
     void changelogFetched(const QString& changelog);
+    void showMore();
 };
 
 #endif
