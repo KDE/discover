@@ -130,7 +130,10 @@ AbstractResource::State DummyResource::state()
 
 void DummyResource::fetchChangelog()
 {
-    emit changelogFetched(longDescription().left(200));
+    QString log = longDescription();
+    log.replace('\n', QStringLiteral("<br />"));
+
+    emit changelogFetched(log);
 }
 
 void DummyResource::setState(AbstractResource::State state)
