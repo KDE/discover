@@ -86,7 +86,7 @@ private:
     QList<QPair<FilterType, QString> > m_andFilters;
     QList<QPair<FilterType, QString> > m_orFilters;
     QList<QPair<FilterType, QString> > m_notFilters;
-    QHash<int, QVariant> m_roleFilters;
+    QHash<QByteArray, QVariant> m_roleFilters;
 
     bool m_sortByRelevancy;
     bool m_filterBySearch;

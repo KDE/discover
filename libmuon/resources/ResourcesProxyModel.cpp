@@ -90,9 +90,9 @@ void ResourcesProxyModel::refreshSearch()
 void ResourcesProxyModel::setOriginFilter(const QString &origin)
 {
     if(origin.isEmpty())
-        m_roleFilters.remove(ResourcesModel::OriginRole);
+        m_roleFilters.remove("origin");
     else
-        m_roleFilters.insert(ResourcesModel::OriginRole, origin);
+        m_roleFilters.insert("origin", origin);
 
     invalidateFilter();
     emit invalidated();
@@ -100,7 +100,7 @@ void ResourcesProxyModel::setOriginFilter(const QString &origin)
 
 QString ResourcesProxyModel::originFilter() const
 {
-    return m_roleFilters.value(ResourcesModel::OriginRole).toString();
+    return m_roleFilters.value("origin").toString();
 }
 
 void ResourcesProxyModel::setFiltersFromCategory(Category *category)
@@ -127,9 +127,9 @@ void ResourcesProxyModel::setFiltersFromCategory(Category *category)
 void ResourcesProxyModel::setShouldShowTechnical(bool show)
 {
     if(!show)
-        m_roleFilters.insert(ResourcesModel::IsTechnicalRole, false);
+        m_roleFilters.insert("isTechnical", false);
     else
-        m_roleFilters.remove(ResourcesModel::IsTechnicalRole);
+        m_roleFilters.remove("isTechnical");
     emit showTechnicalChanged();
     invalidate();
     emit invalidated();
@@ -137,7 +137,7 @@ void ResourcesProxyModel::setShouldShowTechnical(bool show)
 
 bool ResourcesProxyModel::shouldShowTechnical() const
 {
-    return !m_roleFilters.contains(ResourcesModel::IsTechnicalRole);
+    return !m_roleFilters.contains("isTechnical");
 }
 
 bool shouldFilter(AbstractResource* res, const QPair<FilterType, QString>& filter)
@@ -174,8 +174,9 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
         return false;
     }
 
-    for(QHash<int, QVariant>::const_iterator it=m_roleFilters.constBegin(), itEnd=m_roleFilters.constEnd(); it!=itEnd; ++it) {
-        if(res->property(roleNames().value(it.key()))!=it.value()) {
+    for(QHash<QByteArray, QVariant>::const_iterator it=m_roleFilters.constBegin(), itEnd=m_roleFilters.constEnd(); it!=itEnd; ++it) {
+        Q_ASSERT(AbstractResource::staticMetaObject.indexOfProperty(it.key())>=0);
+        if(res->property(it.key())!=it.value()) {
             return false;
         }
     }
@@ -187,10 +188,10 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
         return false;
     }
 
-    if (!m_orFilters.isEmpty()) {
-        bool orValue = false;
-        for (QList<QPair<FilterType, QString> >::const_iterator filter = m_orFilters.constBegin(); filter != m_orFilters.constEnd(); ++filter) {
-            if(shouldFilter(res, *filter)) {
+    {
+        bool orValue = m_orFilters.isEmpty();
+        for(const QPair<FilterType, QString>& filter : m_orFilters) {
+            if(shouldFilter(res, filter)) {
                 orValue = true;
                 break;
             }
@@ -199,18 +200,14 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
             return false;
     }
 
-    if (!m_andFilters.isEmpty()) {
-        for (QList<QPair<FilterType, QString> >::const_iterator filter = m_andFilters.constBegin(); filter != m_andFilters.constEnd(); ++filter) {
-            if(!shouldFilter(res, *filter))
-                return false;
-        }
+    for(const QPair<FilterType, QString> &filter : m_andFilters) {
+        if(!shouldFilter(res, filter))
+            return false;
     }
 
-    if (!m_notFilters.isEmpty()) {
-        for(QList<QPair<FilterType, QString> >::const_iterator filter = m_notFilters.constBegin(); filter != m_notFilters.constEnd(); ++filter) {
-            if(shouldFilter(res, *filter))
-                return false;
-        }
+    for(const QPair<FilterType, QString> &filter : m_notFilters) {
+        if(shouldFilter(res, filter))
+            return false;
     }
 
     return true;
@@ -303,7 +300,7 @@ void ResourcesProxyModel::setMimeTypeFilter(const QString& mime)
 void ResourcesProxyModel::setFilterActive(bool filter)
 {
     if(filter)
-        m_roleFilters.insert(ResourcesModel::ActiveRole, true);
+        m_roleFilters.insert("active", true);
     else
-        m_roleFilters.remove(ResourcesModel::ActiveRole);
+        m_roleFilters.remove("active");
 }
