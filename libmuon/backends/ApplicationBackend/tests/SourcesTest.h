@@ -24,6 +24,7 @@
 #include <QtCore/QObject>
 
 class MuonMainWindow;
+class AbstractSourcesBackend;
 class AbstractResourcesBackend;
 
 class SourcesTest : public QObject
@@ -34,8 +35,11 @@ class SourcesTest : public QObject
 
     private slots:
         void testSourcesFetch();
+        void testResourcesMatchSources();
 
     private:
+        AbstractSourcesBackend* backend() const;
+
         AbstractResourcesBackend* m_appBackend;
         MuonMainWindow* m_window;
 

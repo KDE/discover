@@ -53,20 +53,49 @@ SourcesTest::SourcesTest(QObject* parent): QObject(parent)
     m->integrateMainWindow(m_window);
     m_appBackend = backendByName(m, "ApplicationBackend");
     QVERIFY(QSignalSpy(m, SIGNAL(allInitialized())).wait());
+    
+    SourcesModel* sources = SourcesModel::global();
+    QVERIFY(sources->rowCount() == 1);
+    QVERIFY(!backend()->name().isEmpty());
 }
+
+AbstractSourcesBackend* SourcesTest::backend() const
+{
+    SourcesModel* sources = SourcesModel::global();
+    QObject* l = sources->data(sources->index(0), SourcesModel::SourceBackend).value<QObject*>();
+    return qobject_cast<AbstractSourcesBackend*>(l);
+}
+
 
 void SourcesTest::testSourcesFetch()
 {
-    SourcesModel* sources = SourcesModel::global();
-    QVERIFY(sources->rowCount() == 1);
-    QObject* l = sources->data(sources->index(0), SourcesModel::SourceBackend).value<QObject*>();
-    AbstractSourcesBackend* backend = qobject_cast<AbstractSourcesBackend*>(l);
-    QVERIFY(!backend->name().isEmpty());
-    QAbstractItemModel* aptSources = backend->sources();
+    QAbstractItemModel* aptSources = backend()->sources();
     
     for(int i = 0, c=aptSources->rowCount(); i<c; ++i) {
         QVERIFY(aptSources);
         QModelIndex idx = aptSources->index(i, 0);
         QVERIFY(idx.data(Qt::DisplayRole).toString() != QString());
+    }
+}
+
+void SourcesTest::testResourcesMatchSources()
+{
+    QAbstractItemModel* aptSources = backend()->sources();
+    QSet<QString> allSources;
+    for (int i=0, c=aptSources->rowCount(); i<c; ++i) {
+        QModelIndex idx = aptSources->index(i, 0);
+        allSources += idx.data(Qt::DisplayRole).toString();
+    }
+    
+    ResourcesModel* rmodel = ResourcesModel::global();
+    for (int i=0, c=rmodel->rowCount(); i<c; ++i) {
+        QModelIndex idx = rmodel->index(i, 0);
+        QString origin = idx.data(ResourcesModel::OriginRole).toString();
+        bool found = allSources.contains(origin);
+        if (!found) {
+            qDebug() << "couldn't find" << origin << "for" << idx.data(ResourcesModel::NameRole).toString() << "@" << i << "/" << c << "in" << allSources;
+            QEXPECT_FAIL("", "I need to ask the Kubuntu guys, I don't understand", Continue);
+        }
+        QVERIFY(found);
     }
 }
