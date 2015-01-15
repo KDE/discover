@@ -213,7 +213,10 @@ void KNSBackend::receivedEntries(const KNS3::Entry::List& entries)
     
     foreach(const KNS3::Entry& entry, entries) {
         KNSResource* r = qobject_cast<KNSResource*>(m_resourcesByName.value(entry.id()));
-        r->setEntry(entry);
+        if (r) {
+            r->setEntry(entry);
+        } else
+            qWarning() << "Couldn't find a resource for" << entry.id() << entry.name();
     }
     ++m_page;
     m_manager->search(m_page);
