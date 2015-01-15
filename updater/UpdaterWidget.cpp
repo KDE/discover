@@ -39,7 +39,8 @@
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
 #include <KMessageWidget>
-#include <kiconloader.h>
+#include <KFormat>
+#include <KIconLoader>
 
 // Libmuon includes
 #include <resources/AbstractResourcesBackend.h>
@@ -224,12 +225,12 @@ void UpdaterWidget::checkUpToDate()
             m_ui->updateStatusIcon->setPixmap(QIcon::fromTheme("security-high").pixmap(128, 128));
             m_ui->notifyTitle->setText(i18nc("@info", "The software on this computer is up to date."));
             m_ui->notifyDesc->setText(i18nc("@info", "Last checked %1 ago.",
-                                        /*KGlobal::locale()->prettyFormatDuration*/QString::number(msecSinceUpdate)));
+                                        KFormat().formatDecimalDuration(msecSinceUpdate, 0)));
         } else if (msecSinceUpdate < week) {
             m_ui->updateStatusIcon->setPixmap(QIcon::fromTheme("security-medium").pixmap(128, 128));
             m_ui->notifyTitle->setText(i18nc("@info", "No updates are available."));
             m_ui->notifyDesc->setText(i18nc("@info", "Last checked %1 ago.",
-                                        /*KGlobal::locale()->prettyFormatDuration*/QString::number(msecSinceUpdate)));
+                                        KFormat().formatDecimalDuration(msecSinceUpdate, 0)));
         } else {
             m_ui->updateStatusIcon->setPixmap(QIcon::fromTheme("security-low").pixmap(128, 128));
             m_ui->notifyTitle->setText(i18nc("@info", "The last check for updates was over a week ago."));
