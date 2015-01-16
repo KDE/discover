@@ -20,6 +20,7 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.1
 import org.kde.muon 1.0
 import org.kde.muon.discover 1.0
 import "navigation.js" as Navigation
@@ -153,7 +154,7 @@ Rectangle
             right: pageToolBar.left
             rightMargin: pageToolBar.visible ? 10 : 0
         }
-        height: breadcrumbsItem.count<=1 ? 0 : 30
+        height: breadcrumbsItem.count==0 ? 0 : breadcrumbsItem.Layout.minimumHeight
 
         Breadcrumbs {
             id: breadcrumbsItem
@@ -172,12 +173,12 @@ Rectangle
             top: parent.top
             right: parent.right
         }
-        height: visible ? 30 : 0
-        width: fu.item ? fu.item.width+5 : 0
+        height: visible && toolbarLoader.item ? toolbarLoader.item.Layout.minimumHeight : 0
+        width: toolbarLoader.item ? toolbarLoader.item.width+5 : 0
         visible: width>0
 
         Loader {
-            id: fu
+            id: toolbarLoader
             sourceComponent: pageStack.currentItem ? pageStack.currentItem.tools : null
         }
 

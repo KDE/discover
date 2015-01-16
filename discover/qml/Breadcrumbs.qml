@@ -19,11 +19,13 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.0
+import QtQuick.Layouts 1.0
 
 Item {
     id: bread
     property alias count: items.count
     property Item pageStack: null
+    Layout.minimumHeight: theLayout.Layout.minimumHeight
     signal poppedPages
     
     function currentItem() {
@@ -57,7 +59,8 @@ Item {
         }
     }
 
-    Row {
+    RowLayout {
+        id: theLayout
         spacing: 0
         Repeater
         {
@@ -65,7 +68,7 @@ Item {
 
             model: ListModel { id: items }
             delegate: Button {
-                height: bread.height
+                Layout.fillHeight: true
                 iconName: decoration
                 onClicked: doClick(index)
                 text: display
