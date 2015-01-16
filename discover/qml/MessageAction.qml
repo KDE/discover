@@ -35,7 +35,11 @@ Rectangle {
 
     RowLayout {
         id: row
-        anchors.fill: parent
+        anchors {
+            fill: parent
+            leftMargin: 5
+            rightMargin: 5
+        }
 
         Label {
             Layout.fillWidth: true
