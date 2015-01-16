@@ -446,7 +446,12 @@ void Application::clearPackage()
 QVector<KService::Ptr> Application::findExecutables() const
 {
     QVector<KService::Ptr> ret;
-    foreach (const QString &desktop, package()->installedFilesList().filter(QRegExp(".+\\.desktop$", Qt::CaseSensitive))) {
+    if (!m_package) {
+        qWarning() << "trying to find the executables for an uninitialized package!" << packageName();
+        return ret;
+    }
+
+    foreach (const QString &desktop, m_package->installedFilesList().filter(QRegExp(".+\\.desktop$", Qt::CaseSensitive))) {
         // Important to use serviceByStorageId to ensure we get a service even
         // if the KSycoca database doesn't have our .desktop file yet.
         KService::Ptr service = KService::serviceByStorageId(desktop);

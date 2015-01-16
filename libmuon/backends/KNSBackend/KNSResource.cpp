@@ -21,6 +21,7 @@
 #include "KNSResource.h"
 #include "KNSBackend.h"
 #include <QDebug>
+#include <knewstuff_version.h>
 
 KNSResource::KNSResource(const Attica::Content& c, const QString& category, const QString& icon, KNSBackend* parent)
     : AbstractResource(parent)
@@ -141,7 +142,10 @@ QString KNSResource::license()
 
 int KNSResource::downloadSize()
 {
-    const Attica::DownloadDescription desc = m_content.downloadUrlDescription(0);
+#if KNEWSTUFF_VERSION_MINOR > 3 and KNEWSTUFF_VERSION_MAJOR == 5
+    const
+#endif
+    Attica::DownloadDescription desc = m_content.downloadUrlDescription(0);
     return desc.size();
 }
 
@@ -162,7 +166,10 @@ QString KNSResource::origin() const
 
 QString KNSResource::section()
 {
-    const Attica::DownloadDescription desc = m_content.downloadUrlDescription(0);
+#if KNEWSTUFF_VERSION_MINOR > 3 and KNEWSTUFF_VERSION_MAJOR == 5
+    const
+#endif
+    Attica::DownloadDescription desc = m_content.downloadUrlDescription(0);
     return desc.category();
 }
 
