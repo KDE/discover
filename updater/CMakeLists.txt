@@ -12,7 +12,7 @@ set(muon_updater_SRCS
     UpdateModel/UpdateDelegate.cpp
     config/UpdaterSettingsDialog.cpp)
 
-qt5_wrap_ui(muon_updater_SRCS ProgressWidget.ui
+ki18n_wrap_ui(muon_updater_SRCS ProgressWidget.ui
                                     UpdaterCentralWidget.ui
                                     UpdaterWidgetNoUpdates.ui
 )
