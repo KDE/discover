@@ -231,4 +231,3 @@ void HistoryView::startSearch()
     m_proxyModel->search(m_searchEdit->text());
 }
 
-#include "HistoryView.moc"

@@ -79,4 +79,3 @@ void UpdaterSettingsDialog::restoreDefaults()
     }
 }
 
-#include "UpdaterSettingsDialog.moc"
