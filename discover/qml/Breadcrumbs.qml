@@ -62,6 +62,10 @@ Item {
     RowLayout {
         id: theLayout
         spacing: 0
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+        }
         Repeater
         {
             id: view
@@ -69,6 +73,8 @@ Item {
             model: ListModel { id: items }
             delegate: Button {
                 Layout.fillHeight: true
+                Layout.minimumHeight: implicitHeight
+
                 iconName: decoration
                 onClicked: doClick(index)
                 text: display
