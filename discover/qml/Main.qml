@@ -173,8 +173,7 @@ Rectangle
 
         Item {
             Layout.fillWidth: true
-            Layout.minimumHeight: (breadcrumbsItem.visible || pageToolBar.visible) ? 30 : 0
-            height: Layout.minimumHeight
+            Layout.minimumHeight: (breadcrumbsItem.visible || pageToolBar.visible) ? Math.max(breadcrumbsItem.Layout.minimumHeight, pageToolBar.Layout.minimumHeight)+5 : 0
 
             Breadcrumbs {
                 id: breadcrumbsItem
@@ -182,15 +181,15 @@ Rectangle
                 anchors {
                     top: parent.top
                     left: parent.left
+                    bottom: parent.bottom
                     right: pageToolBar.left
                     rightMargin: pageToolBar.visible ? 10 : 0
                 }
 
-                height: parent.height
                 pageStack: pageStack
                 onPoppedPages: window.clearSearch()
                 Component.onCompleted: breadcrumbsItem.pushItem("go-home", "")
-                Behavior on height { NumberAnimation { duration: 250 } }
+//                 Behavior on height { NumberAnimation { duration: 250 } }
             }
 
             ToolBar {
@@ -199,13 +198,14 @@ Rectangle
                 anchors {
                     top: parent.top
                     right: parent.right
+                    bottom: parent.bottom
                 }
-                width: fu.item ? fu.item.width+5 : 0
-                height: parent.height
+                Layout.minimumHeight: toolbarLoader.item ? toolbarLoader.item.Layout.minimumHeight : 0
+                width: toolbarLoader.item ? toolbarLoader.item.width+5 : 0
                 visible: width>0
 
                 Loader {
-                    id: fu
+                    id: toolbarLoader
                     sourceComponent: pageStack.currentItem ? pageStack.currentItem.tools : null
                 }
 

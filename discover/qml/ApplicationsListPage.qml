@@ -19,6 +19,7 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.1
 import "navigation.js" as Navigation
 import org.kde.muon.discover 1.0
 import org.kde.muon 1.0
@@ -64,8 +65,7 @@ Item {
         page.sectionDelegate = role=="canUpgrade" ? installedSectionDelegate : defaultSectionDelegate
     }
     
-    property Component tools: Row {
-            height: SystemFonts.generalFont.pointSize*2
+    property Component tools: RowLayout {
             visible: page.visible
             spacing: 3
 
