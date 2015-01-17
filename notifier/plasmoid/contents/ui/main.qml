@@ -26,25 +26,24 @@ Item
 {
     Plasmoid.fullRepresentation: Full {}
 
-    Connections {
-        target: MuonNotifier
-        onUpdatesChanged: {
-            switch(MuonNotifier.state) {
+    Binding {
+        target: plasmoid
+        property: "status"
+        value: switch (MuonNotifier.state) {
                 case MuonNotifier.NoUpdates:
-                    plasmoid.status = PlasmaCore.Types.PassiveStatus;
-                    break;
+                    return PlasmaCore.Types.PassiveStatus;
                 case MuonNotifier.NormalUpdates:
                 case MuonNotifier.SecurityUpdates:
-                    plasmoid.status = PlasmaCore.Types.ActiveStatus;
-                    break;
+                    return PlasmaCore.Types.ActiveStatus;
             }
-        }
     }
+
+
 
     Plasmoid.compactRepresentation: PlasmaCore.IconItem {
         source: MuonNotifier.iconName
-        width: 36
-        height: 36
+        width: 4
+        height: 4
         MouseArea {
             anchors.fill: parent
             onClicked: plasmoid.expanded = !plasmoid.expanded
