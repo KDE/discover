@@ -44,7 +44,7 @@ class MUONPRIVATE_EXPORT MuonMainWindow : public KXmlGuiWindow
 public:
     MuonMainWindow();
 
-    QSize sizeHint() const;
+    QSize sizeHint() const Q_DECL_OVERRIDE;
     bool isConnected() const;
 
 Q_SIGNALS:
@@ -52,7 +52,7 @@ Q_SIGNALS:
     void actionsEnabledChanged(bool enabled);
 
 protected:
-    bool queryClose();
+    bool queryClose() Q_DECL_OVERRIDE;
 
 protected slots:
     void setupActions();
