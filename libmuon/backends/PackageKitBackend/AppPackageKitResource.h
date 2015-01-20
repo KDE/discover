@@ -42,6 +42,8 @@ class AppPackageKitResource : public PackageKitResource
         virtual void invokeApplication() const override;
         virtual QString comment() override;
         virtual QString license() override;
+        virtual QUrl screenshotUrl() override;
+        virtual QUrl thumbnailUrl() override;
 
     private:
         Appstream::Component m_appdata;
