@@ -36,6 +36,7 @@
 #include <PackageKit/Details>
 
 #include <KLocalizedString>
+#include <QAction>
 
 MUON_BACKEND_PLUGIN(PackageKitBackend)
 
@@ -57,6 +58,13 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     t->setInterval(60 * 60 * 1000);
     t->setSingleShot(false);
     t->start();
+
+    QAction* updateAction = new QAction(this);
+    updateAction->setIcon(QIcon::fromTheme("system-software-update"));
+    updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
+    updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
+    connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
+    m_messageActions += updateAction;
 
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitBackend::fetchUpdates);
 }
@@ -294,7 +302,7 @@ AbstractBackendUpdater* PackageKitBackend::backendUpdater() const
 
 QList<QAction*> PackageKitBackend::messageActions() const
 {
-    return QList<QAction*>();
+    return m_messageActions;
 }
 
 

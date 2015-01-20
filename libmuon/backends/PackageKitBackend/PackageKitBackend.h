@@ -86,6 +86,7 @@ class MUONCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QPointer<PackageKit::Transaction> m_refresher;
         int m_isFetching;
         QSet<QString> m_updatesPackageId;
+        QList<QAction*> m_messageActions;
 };
 
 #endif // PACKAGEKITBACKEND_H
