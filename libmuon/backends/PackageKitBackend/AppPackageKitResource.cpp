@@ -19,6 +19,8 @@
  ***************************************************************************/
 
 #include "AppPackageKitResource.h"
+#include <AppstreamQt/screenshot.h>
+#include <AppstreamQt/image.h>
 #include <KLocalizedString>
 #include <KToolInvocation>
 #include <QDebug>
@@ -98,4 +100,32 @@ void AppPackageKitResource::invokeApplication() const
     QStringList exes = executables();
     if(!exes.isEmpty())
         KToolInvocation::startServiceByDesktopPath(exes.first());
+}
+
+QUrl screenshot(const Appstream::Component& comp, Appstream::Image::Kind kind)
+{
+    QUrl ret;
+    for (const Appstream::Screenshot &s : comp.screenshots()) {
+        for (const Appstream::Image &i : s.images()) {
+            if (i.kind() == kind) {
+                ret = i.url();
+            }
+        }
+        if (s.isDefault() && !ret.isEmpty())
+            break;
+    }
+    return ret;
+}
+
+QUrl AppPackageKitResource::screenshotUrl()
+{
+    QUrl url = screenshot(m_appdata, Appstream::Image::Plain);
+    return url.isEmpty() ? PackageKitResource::screenshotUrl() : url;
+
+}
+
+QUrl AppPackageKitResource::thumbnailUrl()
+{
+    QUrl url = screenshot(m_appdata, Appstream::Image::Thumbnail);
+    return url.isEmpty() ? PackageKitResource::screenshotUrl() : url;
 }
