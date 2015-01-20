@@ -42,6 +42,7 @@
 #include <QApt/Backend>
 #include <QApt/Config>
 #include <QApt/Changelog>
+#include <qapt/qaptversion.h>
 
 #include <MuonDataSources.h>
 
