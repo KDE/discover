@@ -282,6 +282,12 @@ AbstractBackendUpdater* PackageKitBackend::backendUpdater() const
     return m_updater;
 }
 
+QList<QAction*> PackageKitBackend::messageActions() const
+{
+    return QList<QAction*>();
+}
+
+
 //TODO
 AbstractReviewsBackend* PackageKitBackend::reviewsBackend() const { return 0; }
 

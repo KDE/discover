@@ -55,6 +55,7 @@ class MUONCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         virtual bool isValid() const { return true; }
         virtual QList<AbstractResource*> upgradeablePackages() const;
         virtual bool isFetching() const;
+        virtual QList<QAction*> messageActions() const;
 
         bool isPackageNameUpgradeable(PackageKitResource* res) const;
         QString upgradeablePackageId(PackageKitResource* res) const;
