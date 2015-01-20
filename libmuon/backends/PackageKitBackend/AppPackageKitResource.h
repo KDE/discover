@@ -30,18 +30,18 @@ class AppPackageKitResource : public PackageKitResource
     public:
         explicit AppPackageKitResource(const Appstream::Component& data, PackageKitBackend* parent);
 
-        virtual bool isTechnical() const;
-        virtual QString name();
-        virtual QString icon() const;
-        virtual QStringList mimetypes() const;
-        virtual QStringList categories();
-        virtual QString longDescription();
-        virtual QUrl homepage();
-        virtual bool canExecute() const { return true; }
-        virtual QStringList executables() const;
-        virtual void invokeApplication() const;
-        virtual QString comment();
-        virtual QString license();
+        virtual bool isTechnical() const override;
+        virtual QString name() override;
+        virtual QString icon() const override;
+        virtual QStringList mimetypes() const override;
+        virtual QStringList categories() override;
+        virtual QString longDescription() override;
+        virtual QUrl homepage() override;
+        virtual bool canExecute() const override { return true; }
+        virtual QStringList executables() const override;
+        virtual void invokeApplication() const override;
+        virtual QString comment() override;
+        virtual QString license() override;
 
     private:
         Appstream::Component m_appdata;
