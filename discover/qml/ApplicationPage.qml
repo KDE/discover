@@ -37,7 +37,7 @@ Item {
             right: parent.right
         }
         ApplicationDescription {
-            width: overviewContentsFlickable.width-20
+            width: overviewContentsFlickable.viewport.width
             height: childrenRect.height
             application: appInfo.application
         }
