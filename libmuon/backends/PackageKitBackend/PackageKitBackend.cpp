@@ -57,6 +57,8 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     t->setInterval(60 * 60 * 1000);
     t->setSingleShot(false);
     t->start();
+
+    connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitBackend::fetchUpdates);
 }
 
 PackageKitBackend::~PackageKitBackend()
@@ -99,12 +101,20 @@ void PackageKitBackend::reloadPackageList()
     connect(t, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(transactionError(PackageKit::Transaction::Error,QString)));
     acquireFetching(true);
 
+    fetchUpdates();
+}
+
+void PackageKitBackend::fetchUpdates()
+{
+    m_updatesPackageId.clear();
+
     PackageKit::Transaction * tUpdates = PackageKit::Daemon::getUpdates();
     connect(tUpdates, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(getUpdatesFinished(PackageKit::Transaction::Exit,uint)));
     connect(tUpdates, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackageToUpdate(PackageKit::Transaction::Info,QString,QString)));
     connect(tUpdates, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(transactionError(PackageKit::Transaction::Error,QString)));
     acquireFetching(true);
 }
+
 
 void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {

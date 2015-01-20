@@ -75,6 +75,7 @@ class MUONCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void getUpdatesDetailsFinished(PackageKit::Transaction::Exit,uint);
 
     private:
+        void fetchUpdates();
         void acquireFetching(bool f);
 
         QHash<QString, AbstractResource*> m_packages;
@@ -82,7 +83,6 @@ class MUONCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         Appstream::Database m_appdata;
         QList<Transaction*> m_transactions;
         PackageKitUpdater* m_updater;
-        QList<PackageKitResource*> m_upgradeablePackages;
         QPointer<PackageKit::Transaction> m_refresher;
         int m_isFetching;
         QSet<QString> m_updatesPackageId;
