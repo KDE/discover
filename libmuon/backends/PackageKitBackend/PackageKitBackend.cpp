@@ -274,7 +274,6 @@ QString PackageKitBackend::upgradeablePackageId(PackageKitResource* res) const
         if (PackageKit::Daemon::packageName(pkgid) == name)
             return pkgid;
     }
-    Q_ASSERT(false && "requesting upgradeable pkg id for non-upgradeable package");
     return QString();
 }
 

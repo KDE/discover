@@ -22,6 +22,7 @@
 #include <KDBusService>
 #include <KLocalizedString>
 #include <QCommandLineParser>
+#include <qwindow.h>
 #include "MuonDiscoverMainWindow.h"
 #include <MuonBackendsFactory.h>
 #include "MuonVersion.h"
@@ -74,6 +75,10 @@ int main(int argc, char** argv)
     }
 
     mainWindow->show();
+    QObject::connect(mainWindow->windowHandle(), &QWindow::visibleChanged, [](bool b){
+        if(!b)
+            QCoreApplication::instance()->quit();
+    });
 
     return app.exec();
 }

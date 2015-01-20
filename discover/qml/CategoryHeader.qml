@@ -47,7 +47,7 @@ Item {
             leftMargin: 50
         }
         elide: Text.ElideRight
-        font.pointSize: parent.height*0.5
+        font.pointSize: iconItem.height*0.5
         text: category.name
     }
 }

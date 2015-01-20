@@ -44,7 +44,7 @@ class MUONCOMMON_EXPORT MuonMainWindow : public KXmlGuiWindow
 public:
     MuonMainWindow();
 
-    QSize sizeHint() const;
+    QSize sizeHint() const Q_DECL_OVERRIDE;
     bool isConnected() const;
 
 Q_SIGNALS:
