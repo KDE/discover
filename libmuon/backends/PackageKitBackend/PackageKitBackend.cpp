@@ -67,6 +67,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     m_messageActions += updateAction;
 
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitBackend::fetchUpdates);
+    connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitBackend::checkDaemonRunning);
 }
 
 PackageKitBackend::~PackageKitBackend()
@@ -293,6 +294,13 @@ QString PackageKitBackend::upgradeablePackageId(PackageKitResource* res) const
             return pkgid;
     }
     return QString();
+}
+
+void PackageKitBackend::checkDaemonRunning()
+{
+    if (!PackageKit::Daemon::isRunning()) {
+        qWarning() << "PackageKit stopped running!";
+    }
 }
 
 AbstractBackendUpdater* PackageKitBackend::backendUpdater() const
