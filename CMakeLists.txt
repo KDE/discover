@@ -33,7 +33,7 @@ find_package(KF5NewStuff)
 find_package(AkabeiClient QUIET)
 find_package(packagekitqt5)
 if(packagekitqt5_FOUND)
-    find_package(AppstreamQt)
+    find_package(AppstreamQt 1.1)
 endif()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
