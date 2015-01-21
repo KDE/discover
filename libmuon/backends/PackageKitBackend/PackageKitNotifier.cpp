@@ -49,11 +49,6 @@ void PackageKitNotifier::recheckSystemUpdateNeeded()
     m_normalUpdates = 0;
     m_securityUpdates = 0;
     m_update = NoUpdate;
-<<<<<<< HEAD
-    PackageKit::Transaction * trans = PackageKit::Daemon::getUpdates();
-    connect(trans, &PackageKit::Transaction::package, this, &PackageKitNotifier::package);
-    connect(trans, &PackageKit::Transaction::finished, this, &PackageKitNotifier::finished);
-=======
 
     if (PackageKit::Daemon::global()->isRunning()) {
         PackageKit::Transaction * trans = PackageKit::Daemon::getUpdates();
@@ -63,7 +58,6 @@ void PackageKitNotifier::recheckSystemUpdateNeeded()
         qWarning("PackageKit Daemon is not running. Can't check system updates");
         Q_EMIT foundUpdates();
     }
->>>>>>> Plasma/5.2
 }
 
 void PackageKitNotifier::package(PackageKit::Transaction::Info info, const QString &/*packageID*/, const QString &/*summary*/)
