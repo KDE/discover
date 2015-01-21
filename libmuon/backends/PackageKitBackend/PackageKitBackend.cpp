@@ -63,7 +63,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     updateAction->setIcon(QIcon::fromTheme("system-software-update"));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
-    connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
+    connect(updateAction, &QAction::triggered, this, &PackageKitBackend::refreshDatabase);
     m_messageActions += updateAction;
 
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitBackend::fetchUpdates);
