@@ -54,7 +54,6 @@ private slots:
     
 private:
     Update m_update;
-    QTimer *m_timer;
     uint m_securityUpdates;
     uint m_normalUpdates;
 };
