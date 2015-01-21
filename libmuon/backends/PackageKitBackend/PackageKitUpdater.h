@@ -76,6 +76,8 @@ class PackageKitUpdater : public AbstractBackendUpdater
         void percentageChanged();
         
     private:
+        void fetchLastUpdateTime();
+        void lastUpdateTimeReceived(QDBusPendingCallWatcher* w);
         void setProgressing(bool progressing);
         void setTransaction(PackageKit::Transaction* transaction);
 
@@ -91,6 +93,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         long unsigned int m_remainingTime;
         uint m_percentage;
         QAction* m_updateAction;
+        QDateTime m_lastUpdate;
 };
 
 

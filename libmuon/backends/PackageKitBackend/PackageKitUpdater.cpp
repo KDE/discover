@@ -37,7 +37,8 @@ PackageKitUpdater::PackageKitUpdater(PackageKitBackend * parent)
     m_isProgressing(false),
     m_speed(0),
     m_remainingTime(0),
-    m_percentage(0)
+    m_percentage(0),
+    m_lastUpdate()
 {
     m_updateAction = new QAction(this);
     m_updateAction->setIcon(QIcon::fromTheme("system-software-update"));
@@ -45,6 +46,8 @@ PackageKitUpdater::PackageKitUpdater(PackageKitBackend * parent)
     m_updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     m_updateAction->setEnabled(PackageKit::Daemon::networkState() != PackageKit::Daemon::NetworkOffline);
     connect(m_updateAction, SIGNAL(triggered()), parent, SLOT(refreshDatabase()));
+
+    fetchLastUpdateTime();
 }
 
 PackageKitUpdater::~PackageKitUpdater()
@@ -98,6 +101,7 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint )
 
     setProgressing(false);
     m_backend->refreshDatabase();
+    fetchLastUpdateTime();
 }
 
 void PackageKitUpdater::cancellableChanged()
@@ -184,7 +188,7 @@ bool PackageKitUpdater::isMarked(AbstractResource* res) const
 
 QDateTime PackageKitUpdater::lastUpdate() const
 {
-    return QDateTime();
+    return m_lastUpdate;
 }
 
 bool PackageKitUpdater::isAllMarked() const
@@ -265,4 +269,23 @@ void PackageKitUpdater::setProgressing(bool progressing)
         m_isProgressing = progressing;
         emit progressingChanged(m_isProgressing);
     }
+}
+
+void PackageKitUpdater::fetchLastUpdateTime()
+{
+    QDBusPendingReply<uint> transaction = PackageKit::Daemon::global()->getTimeSinceAction(PackageKit::Transaction::RoleGetUpdates);
+    QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(transaction, this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, &PackageKitUpdater::lastUpdateTimeReceived);
+}
+
+void PackageKitUpdater::lastUpdateTimeReceived(QDBusPendingCallWatcher* w)
+{
+    QDBusPendingReply<uint> reply = w->reply();
+    if (reply.isError()) {
+        qWarning() << "Error when fetching the last update time" << reply.error();
+    } else {
+        m_lastUpdate = QDateTime::currentDateTime();
+        m_lastUpdate.addSecs(-reply.value());
+    }
+    w->deleteLater();
 }
