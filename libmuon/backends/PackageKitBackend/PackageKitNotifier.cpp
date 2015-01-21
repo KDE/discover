@@ -22,18 +22,14 @@
 #include <QTimer>
 #include <PackageKit/Daemon>
 
-const int UPDATE_INTERVAL_MS = 1000 * 60 * 30;
-
 PackageKitNotifier::PackageKitNotifier(QObject* parent)
     : BackendNotifierModule(parent)
     , m_update(NoUpdate)
-    , m_timer(new QTimer(this))
     , m_securityUpdates(0)
     , m_normalUpdates(0)
 {
-    m_timer->setInterval(UPDATE_INTERVAL_MS);
-    connect (m_timer, SIGNAL(timeout()), SLOT(recheckSystemUpdateNeeded()));
     recheckSystemUpdateNeeded();
+    connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
 }
 
 PackageKitNotifier::~PackageKitNotifier()
@@ -49,7 +45,6 @@ void PackageKitNotifier::recheckSystemUpdateNeeded()
 {
     m_normalUpdates = 0;
     m_securityUpdates = 0;
-    m_timer->stop();
     m_update = NoUpdate;
     PackageKit::Transaction * trans = PackageKit::Daemon::getUpdates(PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
     connect(trans, SIGNAL(package(PackageKit::Transaction::Info,QString,QString)), SLOT(package(PackageKit::Transaction::Info,QString,QString)));
@@ -71,10 +66,7 @@ void PackageKitNotifier::package(PackageKit::Transaction::Info info, const QStri
 
 void PackageKitNotifier::finished(PackageKit::Transaction::Exit /*exit*/, uint)
 {
-    if (m_update == NoUpdate) {
-        m_timer->start();
-    }
-    foundUpdates();
+    Q_EMIT foundUpdates();
 }
 
 bool PackageKitNotifier::isSystemUpToDate() const
