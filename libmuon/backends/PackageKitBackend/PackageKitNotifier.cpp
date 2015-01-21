@@ -47,8 +47,8 @@ void PackageKitNotifier::recheckSystemUpdateNeeded()
     m_securityUpdates = 0;
     m_update = NoUpdate;
     PackageKit::Transaction * trans = PackageKit::Daemon::getUpdates();
-    connect(trans, SIGNAL(package(PackageKit::Transaction::Info,QString,QString)), SLOT(package(PackageKit::Transaction::Info,QString,QString)));
-    connect(trans, SIGNAL(finished(PackageKit::Transaction::Exit, uint)), SLOT(finished(PackageKit::Transaction::Exit, uint)));
+    connect(trans, &PackageKit::Transaction::package, this, &PackageKitNotifier::package);
+    connect(trans, &PackageKit::Transaction::finished, this, &PackageKitNotifier::finished);
 }
 
 void PackageKitNotifier::package(PackageKit::Transaction::Info info, const QString &/*packageID*/, const QString &/*summary*/)
