@@ -74,6 +74,7 @@ class MUONPRIVATE_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void getUpdatesDetailsFinished(PackageKit::Transaction::Exit,uint);
 
     private:
+        void checkDaemonRunning();
         void fetchUpdates();
         void acquireFetching(bool f);
 

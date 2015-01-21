@@ -28,8 +28,11 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
     , m_securityUpdates(0)
     , m_normalUpdates(0)
 {
-    recheckSystemUpdateNeeded();
+    if (PackageKit::Daemon::global()->isRunning()) {
+        recheckSystemUpdateNeeded();
+    }
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
+    connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
 }
 
 PackageKitNotifier::~PackageKitNotifier()
@@ -46,9 +49,15 @@ void PackageKitNotifier::recheckSystemUpdateNeeded()
     m_normalUpdates = 0;
     m_securityUpdates = 0;
     m_update = NoUpdate;
-    PackageKit::Transaction * trans = PackageKit::Daemon::getUpdates();
-    connect(trans, &PackageKit::Transaction::package, this, &PackageKitNotifier::package);
-    connect(trans, &PackageKit::Transaction::finished, this, &PackageKitNotifier::finished);
+
+    if (PackageKit::Daemon::global()->isRunning()) {
+        PackageKit::Transaction * trans = PackageKit::Daemon::getUpdates();
+        connect(trans, &PackageKit::Transaction::package, this, &PackageKitNotifier::package);
+        connect(trans, &PackageKit::Transaction::finished, this, &PackageKitNotifier::finished);
+    } else {
+        qWarning("PackageKit Daemon is not running. Can't check system updates");
+        Q_EMIT foundUpdates();
+    }
 }
 
 void PackageKitNotifier::package(PackageKit::Transaction::Info info, const QString &/*packageID*/, const QString &/*summary*/)
