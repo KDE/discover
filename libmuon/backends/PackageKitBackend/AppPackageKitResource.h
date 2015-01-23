@@ -37,7 +37,7 @@ class AppPackageKitResource : public PackageKitResource
         virtual QStringList categories() override;
         virtual QString longDescription() override;
         virtual QUrl homepage() override;
-        virtual bool canExecute() const override { return true; }
+        virtual bool canExecute() const override;
         virtual QStringList executables() const override;
         virtual void invokeApplication() const override;
         virtual QString comment() override;

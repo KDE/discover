@@ -129,3 +129,8 @@ QUrl AppPackageKitResource::thumbnailUrl()
     QUrl url = screenshot(m_appdata, Appstream::Image::Thumbnail);
     return url.isEmpty() ? PackageKitResource::screenshotUrl() : url;
 }
+
+bool AppPackageKitResource::canExecute() const
+{
+    return !executables().isEmpty();
+}
