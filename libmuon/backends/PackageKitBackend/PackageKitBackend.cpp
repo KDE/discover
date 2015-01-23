@@ -261,11 +261,15 @@ void PackageKitBackend::addPackageToUpdate(PackageKit::Transaction::Info info, c
 
 void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
 {
-    PackageKit::Transaction* transaction = PackageKit::Daemon::getDetails(m_updatesPackageId.toList());
-    connect(transaction, SIGNAL(details(PackageKit::Details)), SLOT(packageDetails(PackageKit::Details)));
-    connect(transaction, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(transactionError(PackageKit::Transaction::Error,QString)));
-    connect(transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(getUpdatesDetailsFinished(PackageKit::Transaction::Exit,uint)));
+    if (!m_updatesPackageId.isEmpty()) {
+        acquireFetching(true);
+        PackageKit::Transaction* transaction = PackageKit::Daemon::getDetails(m_updatesPackageId.toList());
+        connect(transaction, SIGNAL(details(PackageKit::Details)), SLOT(packageDetails(PackageKit::Details)));
+        connect(transaction, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(transactionError(PackageKit::Transaction::Error,QString)));
+        connect(transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(getUpdatesDetailsFinished(PackageKit::Transaction::Exit,uint)));
+    }
 
+    acquireFetching(false);
     emit updatesCountChanged();
 }
 
