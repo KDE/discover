@@ -127,6 +127,7 @@ UpdaterWidget::UpdaterWidget(ResourcesUpdatesModel* updates, QWidget *parent) :
     m_busyWidget->start();
 
     connect(ResourcesModel::global(), SIGNAL(fetchingChanged()), SLOT(activityChanged()));
+    connect(ResourcesModel::global(), SIGNAL(updatesCountChanged()), SLOT(activityChanged()));
     connect(m_updatesBackends, SIGNAL(progressingChanged()), SLOT(activityChanged()));
 }
 
@@ -158,8 +159,8 @@ void UpdaterWidget::populateUpdateModel()
     m_busyWidget->stop();
     QApplication::restoreOverrideCursor();
     setEnabled(true);
+    checkUpToDate();
     if (!m_updatesBackends->hasUpdates()) {
-        checkUpToDate();
         return;
     }
     m_updatesBackends->prepare();
@@ -186,7 +187,6 @@ void UpdaterWidget::selectionChanged(const QItemSelection &selected,
     }
 
     emit selectedResourceChanged(res);
-    checkUpToDate();
 }
 
 void UpdaterWidget::checkAllMarked()
@@ -203,10 +203,10 @@ void UpdaterWidget::markAllPackagesForUpgrade()
 
 void UpdaterWidget::checkUpToDate()
 {
-    QDateTime lastUpdate = m_updatesBackends->lastUpdate();
-    qint64 msecSinceUpdate = lastUpdate.msecsTo(QDateTime::currentDateTime());
-    qint64 day = 1000 * 60 * 60 * 24;
-    qint64 week = 1000 * 60 * 60 * 24 * 7;
+    const QDateTime lastUpdate = m_updatesBackends->lastUpdate();
+    const qint64 msecSinceUpdate = lastUpdate.msecsTo(QDateTime::currentDateTime());
+    const qint64 day = 1000 * 60 * 60 * 24;
+    const qint64 week = 1000 * 60 * 60 * 24 * 7;
 
     if((!m_updatesBackends->hasUpdates() && !ResourcesModel::global()->isFetching()) || msecSinceUpdate > week) {
         setCurrentIndex(1);
