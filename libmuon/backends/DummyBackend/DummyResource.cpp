@@ -23,6 +23,7 @@
 #include <krandom.h>
 #include <QDesktopServices>
 #include <QStringList>
+#include <QTimer>
 
 DummyResource::DummyResource(const QString& name, bool isTechnical, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
@@ -33,7 +34,24 @@ DummyResource::DummyResource(const QString& name, bool isTechnical, AbstractReso
 {
     if(KRandom::random() % 2)
         m_screenshot = QUrl("http://www.kde.org/stuff/clipart/klogo-official-oxygen-128x128.png");
+
+//     if((KRandom::random() % 100) == 0) {
+//         enableStateChanges();
+//     }
 }
+
+void DummyResource::enableStateChanges()
+{
+    QTimer* t = new QTimer(this);
+    t->setSingleShot(false);
+    t->setInterval(500);
+    connect(t, &QTimer::timeout, this, [this](){
+        int s = (m_state+1) % 4;
+        setState(State(s));
+    });
+    t->start();
+}
+
 
 QList<PackageState> DummyResource::addonsInformation()
 {
