@@ -202,10 +202,10 @@ void UpdaterWidget::markAllPackagesForUpgrade()
 
 void UpdaterWidget::checkUpToDate()
 {
-    QDateTime lastUpdate = m_updatesBackends->lastUpdate();
-    qint64 msecSinceUpdate = lastUpdate.msecsTo(QDateTime::currentDateTime());
-    qint64 day = 1000 * 60 * 60 * 24;
-    qint64 week = 1000 * 60 * 60 * 24 * 7;
+    const QDateTime lastUpdate = m_updatesBackends->lastUpdate();
+    const qint64 msecSinceUpdate = lastUpdate.msecsTo(QDateTime::currentDateTime());
+    const qint64 day = 1000 * 60 * 60 * 24;
+    const qint64 week = 1000 * 60 * 60 * 24 * 7;
 
     if((!m_updatesBackends->hasUpdates() && !ResourcesModel::global()->isFetching()) || msecSinceUpdate > week) {
         setCurrentIndex(1);

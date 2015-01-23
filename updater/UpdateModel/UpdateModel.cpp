@@ -205,7 +205,7 @@ bool UpdateModel::setData(const QModelIndex &idx, const QVariant &value, int rol
         }
 
         checkResources(apps, newValue);
-        dataChanged(idx, idx);
+        emit dataChanged(idx, idx);
         if (type == UpdateItem::ItemType::ApplicationItem) {
             QModelIndex parentIndex = idx.parent();
             emit dataChanged(parentIndex, parentIndex);

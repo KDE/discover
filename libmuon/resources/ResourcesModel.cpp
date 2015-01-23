@@ -382,7 +382,7 @@ void ResourcesModel::resourceChangedByTransaction(Transaction* t)
     Q_ASSERT(!t->resource()->backend()->isFetching());
     QModelIndex idx = resourceIndex(t->resource());
     if(idx.isValid())
-        dataChanged(idx, idx);
+        emit dataChanged(idx, idx);
 }
 
 bool ResourcesModel::isFetching() const
