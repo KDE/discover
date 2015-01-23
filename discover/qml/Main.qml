@@ -137,6 +137,7 @@ Rectangle
         component: topSourcesComp
         objectName: "sources"
         shortcut: "Alt+S"
+        enabled: SourcesModel.count>0
     }
 
     Connections {
