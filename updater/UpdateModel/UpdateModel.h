@@ -66,7 +66,6 @@ private:
     ResourcesUpdatesModel* m_updates;
 
 public Q_SLOTS:
-    void packageChanged();
     void setBackend(ResourcesUpdatesModel* updates);
 };
 
