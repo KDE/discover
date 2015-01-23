@@ -126,6 +126,7 @@ UpdaterWidget::UpdaterWidget(ResourcesUpdatesModel* updates, QWidget *parent) :
     m_busyWidget->start();
 
     connect(ResourcesModel::global(), SIGNAL(fetchingChanged()), SLOT(activityChanged()));
+    connect(ResourcesModel::global(), SIGNAL(updatesCountChanged()), SLOT(activityChanged()));
     connect(m_updatesBackends, SIGNAL(progressingChanged()), SLOT(activityChanged()));
 }
 
@@ -157,8 +158,8 @@ void UpdaterWidget::populateUpdateModel()
     m_busyWidget->stop();
     QApplication::restoreOverrideCursor();
     setEnabled(true);
+    checkUpToDate();
     if (!m_updatesBackends->hasUpdates()) {
-        checkUpToDate();
         return;
     }
     m_updatesBackends->prepare();
@@ -185,7 +186,6 @@ void UpdaterWidget::selectionChanged(const QItemSelection &selected,
     }
 
     emit selectedResourceChanged(res);
-    checkUpToDate();
 }
 
 void UpdaterWidget::checkAllMarked()
