@@ -81,6 +81,7 @@ void PackageKitBackend::acquireFetching(bool f)
     if ((!f && m_isFetching==0) || (f && m_isFetching==1)) {
         emit fetchingChanged();
     }
+    Q_ASSERT(m_isFetching>=0);
 }
 
 void PackageKitBackend::reloadPackageList()
@@ -268,8 +269,11 @@ void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
     emit updatesCountChanged();
 }
 
-void PackageKitBackend::getUpdatesDetailsFinished(PackageKit::Transaction::Exit, uint)
+void PackageKitBackend::getUpdatesDetailsFinished(PackageKit::Transaction::Exit exit, uint)
 {
+    if (exit != PackageKit::Transaction::ExitSuccess) {
+        qWarning() << "Couldn't figure out the updates on PackageKit backend" << exit;
+    }
     acquireFetching(false);
 }
 
