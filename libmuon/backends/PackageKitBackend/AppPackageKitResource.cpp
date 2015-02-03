@@ -60,9 +60,7 @@ QString AppPackageKitResource::license()
 
 QStringList AppPackageKitResource::mimetypes() const
 {
-//     TODO
-//     return m_appdata.mimetypes;
-    return QStringList();
+    return findProvides(Appstream::Provides::KindMimetype);
 }
 
 QStringList AppPackageKitResource::categories()
@@ -88,11 +86,7 @@ bool AppPackageKitResource::isTechnical() const
 
 QStringList AppPackageKitResource::executables() const
 {
-    QStringList ret;
-    for(Appstream::Provides p : m_appdata.provides())
-        if (p.kind() == Appstream::Provides::KindBinary)
-            ret += p.value();
-    return ret;
+    return findProvides(Appstream::Provides::KindBinary);
 }
 
 void AppPackageKitResource::invokeApplication() const
@@ -133,4 +127,13 @@ QUrl AppPackageKitResource::thumbnailUrl()
 bool AppPackageKitResource::canExecute() const
 {
     return !executables().isEmpty();
+}
+
+QStringList AppPackageKitResource::findProvides(Appstream::Provides::Kind kind) const
+{
+    QStringList ret;
+    for(Appstream::Provides p : m_appdata.provides())
+        if (p.kind() == kind)
+            ret += p.value();
+    return ret;
 }

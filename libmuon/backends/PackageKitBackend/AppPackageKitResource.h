@@ -46,6 +46,8 @@ class AppPackageKitResource : public PackageKitResource
         virtual QUrl thumbnailUrl() override;
 
     private:
+        QStringList findProvides(Appstream::Provides::Kind kind) const;
+
         Appstream::Component m_appdata;
 };
 
