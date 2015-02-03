@@ -26,7 +26,7 @@ function openApplicationListSource(origin) {
 }
 
 function openApplicationMime(mime) {
-    openPage("document-open-data", mime, applicationListComp, { mimeTypeFilter: mime })
+    openPage("document-open-data", i18n("Resources for '%1'", mime), applicationListComp, { mimeTypeFilter: mime })
 }
 
 function openCategoryByName(catname) {
