@@ -184,7 +184,7 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
     if(res->state() < m_stateFilter)
         return false;
 
-    if(!m_filteredMimeType.isEmpty() && res->mimetypes().contains(m_filteredMimeType)) {
+    if(!m_filteredMimeType.isEmpty() && !res->mimetypes().contains(m_filteredMimeType)) {
         return false;
     }
 
