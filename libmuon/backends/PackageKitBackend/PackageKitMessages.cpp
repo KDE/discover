@@ -71,7 +71,7 @@ QString errorMessage(PackageKit::Transaction::Error error)
         case PackageKit::Transaction::ErrorCannotRemoveSystemPackage:
             return i18n("Cannot remove system package");
         case PackageKit::Transaction::ErrorProcessKill:
-            return i18n("Cannot kill process");
+            return i18n("The PackageKit daemon has crashed");
         case PackageKit::Transaction::ErrorFailedInitialization:
             return i18n("Initialization failure");
         case PackageKit::Transaction::ErrorFailedFinalise:
