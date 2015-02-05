@@ -19,6 +19,7 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
 
 GridItem {
@@ -93,6 +94,17 @@ GridItem {
             source: model.application.icon[0] == "/" ? "file://"+model.application.icon : "image://icon/"+model.application.icon
             visible: screen.hasThumbnail
             Behavior on y { NumberAnimation { duration: 200; easing.type: Easing.InQuad } }
+
+            QIconItem {
+                anchors {
+                    right: parent.right
+                    bottom: parent.bottom
+                }
+                height: parent.height/2
+                width: height
+                icon: "checkmark"
+                visible: application.isInstalled
+            }
         }
         Label {
             anchors {
