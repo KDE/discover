@@ -25,6 +25,9 @@ import org.kde.muonnotifier 1.0
 
 Item
 {
+    Layout.minimumWidth: 300
+    Layout.minimumHeight: 200
+
     PlasmaExtras.Heading {
         id: header
         Layout.fillWidth: true
