@@ -237,6 +237,7 @@ void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QSt
     if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
         return;
     QMessageBox::critical(0, i18n("PackageKit error found"), PackageKitMessages::errorMessage(err));
+    qWarning() << "Error happened" << err << error;
 }
 
 void PackageKitUpdater::mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text)

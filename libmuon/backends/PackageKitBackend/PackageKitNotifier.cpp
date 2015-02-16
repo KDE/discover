@@ -1,5 +1,6 @@
 /***************************************************************************
  *   Copyright © 2013 Lukas Appelhans <l.appelhans@gmx.de>                 *
+ *   Copyright © 2015 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -17,6 +18,7 @@
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
+
 #include "PackageKitNotifier.h"
 
 #include <QTimer>
@@ -31,6 +33,7 @@ PackageKitNotifier::PackageKitNotifier(QObject* parent)
 if (PackageKit::Daemon::global()->isRunning()) {
         recheckSystemUpdateNeeded();
     }
+    connect(PackageKit::Daemon::global(), &PackageKit::Daemon::networkStateChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitNotifier::recheckSystemUpdateNeeded);
 }
@@ -62,14 +65,17 @@ void PackageKitNotifier::recheckSystemUpdateNeeded()
 
 void PackageKitNotifier::package(PackageKit::Transaction::Info info, const QString &/*packageID*/, const QString &/*summary*/)
 {
-    if (info == PackageKit::Transaction::InfoBlocked) {
-        ;
-    } else if (info == PackageKit::Transaction::InfoSecurity) {
-        m_update = Security;
-        m_securityUpdates++;
-    } else if (m_update == NoUpdate) {
-        m_update = Normal;
-        m_normalUpdates++;
+    switch (info) {
+        case PackageKit::Transaction::InfoBlocked:
+            break; //skip, we ignore blocked updates
+        case PackageKit::Transaction::InfoSecurity:
+            m_update = Security;
+            m_securityUpdates++;
+            break;
+        default:
+            m_update = Normal;
+            m_normalUpdates++;
+            break;
     }
 }
 

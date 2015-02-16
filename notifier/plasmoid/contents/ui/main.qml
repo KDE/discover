@@ -42,8 +42,6 @@ Item
 
     Plasmoid.compactRepresentation: PlasmaCore.IconItem {
         source: MuonNotifier.iconName
-        width: 4
-        height: 4
         MouseArea {
             anchors.fill: parent
             onClicked: plasmoid.expanded = !plasmoid.expanded

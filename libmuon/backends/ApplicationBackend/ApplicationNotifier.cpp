@@ -52,11 +52,9 @@ ApplicationNotifier::ApplicationNotifier(QObject* parent)
     stampDirWatch->addFile("/var/lib/update-notifier/updates-available");
     stampDirWatch->addFile("/var/lib/update-notifier/dpkg-run-stamp");
     connect(stampDirWatch, &KDirWatch::dirty, this, &ApplicationNotifier::recheckSystemUpdateNeeded);
-    
-#warning initial check is triggered by the notifier backends on different timeouts, perhaps the notifier should handle this globally rather than the backends independently
-    QTimer *delayedInitialization = new QTimer(this);
-    delayedInitialization->setInterval(2 * 60 * 1000); //check in 2 minutes
-    connect(delayedInitialization, &QTimer::timeout, this, &ApplicationNotifier::recheckSystemUpdateNeeded);
+
+    //check in 2 minutes
+    QTimer::singleShot(2 * 60 * 1000, this, &ApplicationNotifier::recheckSystemUpdateNeeded);
 }
 
 ApplicationNotifier::~ApplicationNotifier()
