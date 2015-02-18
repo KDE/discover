@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Updates
 Name[ca]=Actualitzacions
+Name[da]=Opdateringer
 Name[de]=Aktualisierungen
 Name[el]=Ενημερώσεις
 Name[en_GB]=Updates
@@ -29,6 +30,7 @@ Name[zh_CN]=更新
 Name[zh_TW]=更新
 Comment=Helps you keep your system up to date
 Comment[ca]=Us ajuda a mantenir el vostre sistema al dia 
+Comment[da]=Her kan du holde dit system opdateret
 Comment[de]=Hilft Ihnen, Ihr System auf dem neusten Stand zu halten
 Comment[el]=Βοηθά να διατηρήσετε το σύστημά σας ενημερωμένο
 Comment[en_GB]=Helps you keep your system up to date

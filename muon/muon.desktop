@@ -97,6 +97,7 @@ Categories=Qt;KDE;System;
 X-KDE-Keywords=program,software,repository,archive,package,install,remove,update,deb
 X-KDE-Keywords[ca]=programa,programari,repositori,arxiu,paquet,instal·la,suprimeix,actualitza,deb
 X-KDE-Keywords[cs]=program,software,repozitář,archiv,balíček,instalovat,odstranit,aktualizovat,deb
+X-KDE-Keywords[da]=program,software,repository,softwarekilde,arkiv,pakke,installere,fjerne,opdatere,deb
 X-KDE-Keywords[de]=Programm,Software,Archiv,Repository,Paket,Installieren,Entfernen,Aktualisieren,deb,
 X-KDE-Keywords[el]=πρόγραμμα,λογισμικό,αποθετήριο,αρχειοθήκη,πακέτο,εγκατάσταση,αφαίρεση,ενημέρωση,deb
 X-KDE-Keywords[en_GB]=program,software,repository,archive,package,install,remove,update,deb
