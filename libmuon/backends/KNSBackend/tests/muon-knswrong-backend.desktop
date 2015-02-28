@@ -4,6 +4,7 @@ ServiceTypes=Muon/Backend
 Exec=blubb
 Icon=plasma
 Name=Wrong
+Name[bs]=Pogrešno
 Name[ca]=Erroni
 Name[da]=Forkert
 Name[de]=Falsch
