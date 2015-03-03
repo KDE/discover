@@ -45,6 +45,11 @@ QString PackageKitResource::packageName() const
     return m_name;
 }
 
+QStringList PackageKitResource::allPackageNames() const
+{
+    return QStringList(m_name);
+}
+
 QString PackageKitResource::availablePackageId() const
 {
     QMap<PackageKit::Transaction::Info, QStringList>::const_iterator it = m_packages.constFind(PackageKit::Transaction::InfoAvailable);

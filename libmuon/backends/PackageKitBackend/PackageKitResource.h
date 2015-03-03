@@ -54,6 +54,7 @@ class PackageKitResource : public AbstractResource
         
         virtual QString installedVersion() const;
         virtual QString availableVersion() const;
+        virtual QStringList allPackageNames() const;
         QString installedPackageId() const;
         QString availablePackageId() const;
 

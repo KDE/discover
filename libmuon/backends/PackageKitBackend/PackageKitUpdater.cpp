@@ -58,7 +58,8 @@ PackageKitUpdater::~PackageKitUpdater()
 void PackageKitUpdater::prepare()
 {
     Q_ASSERT(!m_transaction);
-    m_toUpgrade = m_backend->upgradeablePackages();
+    m_toUpgrade = m_backend->upgradeablePackages().toSet();
+    m_allUpgradeable = m_toUpgrade;
 }
 
 void PackageKitUpdater::setTransaction(PackageKit::Transaction* transaction)
@@ -80,15 +81,38 @@ void PackageKitUpdater::setTransaction(PackageKit::Transaction* transaction)
     connect(m_transaction, SIGNAL(percentageChanged()), this, SLOT(percentageChanged()));
 }
 
-void PackageKitUpdater::start()
+QSet<AbstractResource*> PackageKitUpdater::packagesForPackageId(const QSet<QString>& pkgids) const
 {
-    QSet<QString> m_packageIds;
-    for (AbstractResource * res : m_toUpgrade) {
+    QSet<QString> packages;
+    foreach(const QString& pkgid, pkgids) {
+        packages += PackageKit::Daemon::packageName(pkgid);
+    }
+
+    QSet<AbstractResource*> ret;
+    foreach (AbstractResource * res, m_allUpgradeable) {
+        PackageKitResource* pres = qobject_cast<PackageKitResource*>(res);
+        if (packages.contains(pres->allPackageNames().toSet())) {
+            ret.insert(res);
+        }
+    }
+
+    return ret;
+}
+
+QSet<QString> PackageKitUpdater::involvedPackages(const QSet<AbstractResource*>& packages) const
+{
+    QSet<QString> packageIds;
+    foreach (AbstractResource * res, packages) {
         PackageKitResource * app = qobject_cast<PackageKitResource*>(res);
         QString pkgid = m_backend->upgradeablePackageId(app);
-        m_packageIds.insert(pkgid);
+        packageIds.insert(pkgid);
     }
-    setTransaction(PackageKit::Daemon::updatePackages(m_packageIds.toList()));
+    return packageIds;
+}
+
+void PackageKitUpdater::start()
+{
+    setTransaction(PackageKit::Daemon::updatePackages(involvedPackages(m_toUpgrade).toList()));
     setProgressing(true);
 }
 
@@ -166,19 +190,19 @@ long unsigned int PackageKitUpdater::remainingTime() const
 
 void PackageKitUpdater::removeResources(const QList<AbstractResource*>& apps)
 {
-    for (AbstractResource * app : apps) {
-        m_toUpgrade.removeAll(app);
-    }
+    QSet<QString> pkgs = involvedPackages(apps.toSet());
+    m_toUpgrade.subtract(packagesForPackageId(pkgs));
 }
 
 void PackageKitUpdater::addResources(const QList<AbstractResource*>& apps)
 {
-    m_toUpgrade << apps;
+    QSet<QString> pkgs = involvedPackages(apps.toSet());
+    m_toUpgrade.unite(packagesForPackageId(pkgs));
 }
 
 QList<AbstractResource*> PackageKitUpdater::toUpdate() const
 {
-    return m_toUpgrade;
+    return m_toUpgrade.toList();
 }
 
 bool PackageKitUpdater::isMarked(AbstractResource* res) const

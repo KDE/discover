@@ -95,14 +95,17 @@ void PackageKitBackend::acquireFetching(bool f)
 void PackageKitBackend::reloadPackageList()
 {
     m_updatingPackages = m_packages;
+    m_updatingTranslationPackageToApp = m_translationPackageToApp;
     
     if (m_refresher) {
         disconnect(m_refresher, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(reloadPackageList()));
     }
 
     for(const Appstream::Component& component: m_appdata.allComponents()) {
-        const QString name = component.packageNames().first();
-        m_updatingPackages[name] = new AppPackageKitResource(component, this);
+        m_updatingPackages[component.id()] = new AppPackageKitResource(component, this);
+        foreach (const QString& pkg, component.packageNames()) {
+            m_updatingTranslationPackageToApp[pkg] += component.id();
+        }
     }
 
     PackageKit::Transaction * t = PackageKit::Daemon::getPackages();
@@ -128,13 +131,14 @@ void PackageKitBackend::fetchUpdates()
 
 void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
-    QString packageName = PackageKit::Daemon::packageName(packageId);
-    PackageKitResource* r = qobject_cast<PackageKitResource*>(m_updatingPackages.value(packageName));
-    if (!r) {
-        r = new PackageKitResource(packageName, summary, this);
-        m_updatingPackages[packageName] = r;
+    const QString packageName = PackageKit::Daemon::packageName(packageId);
+    QVector<AbstractResource*> r = resourcesByPackageName(packageName, true);
+    if (r.isEmpty()) {
+        r += new PackageKitResource(packageName, summary, this);
+        m_updatingPackages[packageName] = r.last();
     }
-    r->addPackageId(info, packageId, summary);
+    foreach(const auto & res, r)
+        static_cast<PackageKitResource*>(res)->addPackageId(info, packageId, summary);
 }
 
 void PackageKitBackend::getPackagesFinished(PackageKit::Transaction::Exit exit)
@@ -146,6 +150,7 @@ void PackageKitBackend::getPackagesFinished(PackageKit::Transaction::Exit exit)
     }
 
     m_packages = m_updatingPackages;
+    m_translationPackageToApp = m_updatingTranslationPackageToApp;
     acquireFetching(false);
 }
 
@@ -156,9 +161,22 @@ void PackageKitBackend::transactionError(PackageKit::Transaction::Error, const Q
 
 void PackageKitBackend::packageDetails(const PackageKit::Details& details)
 {
-    PackageKitResource* res = qobject_cast<PackageKitResource*>(m_updatingPackages.value(PackageKit::Daemon::packageName(details.packageId())));
-    Q_ASSERT(res);
-    res->setDetails(details);
+    QVector<AbstractResource*> resources = resourcesByPackageName(PackageKit::Daemon::packageName(details.packageId()), false);
+    foreach(AbstractResource* res, resources)
+        qobject_cast<PackageKitResource*>(res)->setDetails(details);
+}
+
+QVector<AbstractResource*> PackageKitBackend::resourcesByPackageName(const QString& name, bool updating) const
+{
+    const QHash<QString, QStringList> *dictionary = updating ? &m_updatingTranslationPackageToApp : &m_translationPackageToApp;
+    const QHash<QString, AbstractResource*> *pkgs = updating ? &m_updatingPackages : &m_packages;
+
+    QVector<AbstractResource*> ret;
+    QStringList names = dictionary->value(name);
+    foreach(const QString& name, names) {
+        ret += pkgs->value(name);
+    }
+    return ret;
 }
 
 void PackageKitBackend::refreshDatabase()
@@ -249,14 +267,15 @@ void PackageKitBackend::removeApplication(AbstractResource* app)
 
 QList<AbstractResource*> PackageKitBackend::upgradeablePackages() const
 {
-    QList<AbstractResource*> ret;
+    QVector<AbstractResource*> ret;
     for(const QString& pkgid : m_updatesPackageId) {
-        ret += m_packages[PackageKit::Daemon::packageName(pkgid)];
-        if (!ret.last()) {
+        const QString pkgname = PackageKit::Daemon::packageName(pkgid);
+        ret += resourcesByPackageName(pkgname, false);
+        if (ret.isEmpty()) {
             qWarning() << "couldn't find resource for" << pkgid;
         }
     }
-    return ret;
+    return ret.toList();
 }
 
 void PackageKitBackend::addPackageToUpdate(PackageKit::Transaction::Info info, const QString& packageId, const QString& summary)

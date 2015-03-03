@@ -59,6 +59,7 @@ class MUONCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
 
         bool isPackageNameUpgradeable(PackageKitResource* res) const;
         QString upgradeablePackageId(PackageKitResource* res) const;
+        QVector<AbstractResource*> resourcesByPackageName(const QString& name, bool updating) const;
 
     public slots:
         void removeTransaction(Transaction* t);
@@ -88,6 +89,8 @@ class MUONCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         int m_isFetching;
         QSet<QString> m_updatesPackageId;
         QList<QAction*> m_messageActions;
+        QHash<QString, QStringList> m_translationPackageToApp;
+        QHash<QString, QStringList> m_updatingTranslationPackageToApp;
 };
 
 #endif // PACKAGEKITBACKEND_H

@@ -137,3 +137,8 @@ QStringList AppPackageKitResource::findProvides(Appstream::Provides::Kind kind) 
             ret += p.value();
     return ret;
 }
+
+QStringList AppPackageKitResource::allPackageNames() const
+{
+    return m_appdata.packageNames();
+}

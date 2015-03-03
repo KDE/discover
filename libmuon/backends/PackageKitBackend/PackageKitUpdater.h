@@ -80,10 +80,13 @@ class PackageKitUpdater : public AbstractBackendUpdater
         void lastUpdateTimeReceived(QDBusPendingCallWatcher* w);
         void setProgressing(bool progressing);
         void setTransaction(PackageKit::Transaction* transaction);
+        QSet<QString> involvedPackages(const QSet<AbstractResource*>& packages) const;
+        QSet<AbstractResource*> packagesForPackageId(const QSet<QString>& packages) const;
 
         QPointer<PackageKit::Transaction> m_transaction;
         PackageKitBackend * m_backend;
-        QList<AbstractResource*> m_toUpgrade;
+        QSet<AbstractResource*> m_toUpgrade;
+        QSet<AbstractResource*> m_allUpgradeable;
         bool m_isCancelable;
         bool m_isProgressing;
         PackageKit::Transaction::Status m_status;

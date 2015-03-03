@@ -44,6 +44,7 @@ class AppPackageKitResource : public PackageKitResource
         virtual QString license() override;
         virtual QUrl screenshotUrl() override;
         virtual QUrl thumbnailUrl() override;
+        virtual QStringList allPackageNames() const override;
 
     private:
         QStringList findProvides(Appstream::Provides::Kind kind) const;
