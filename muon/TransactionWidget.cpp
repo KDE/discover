@@ -144,7 +144,7 @@ void TransactionWidget::statusChanged(QApt::TransactionStatus status)
 {
     switch (status) {
     case QApt::SetupStatus:
-        m_headerLabel->setText(i18nc("@info Status information, widget title",
+        m_headerLabel->setText(xi18nc("@info Status information, widget title",
                                      "<title>Starting</title>"));
         m_statusLabel->setText(i18nc("@info Status info",
                                      "Waiting for service to start"));
@@ -155,28 +155,28 @@ void TransactionWidget::statusChanged(QApt::TransactionStatus status)
                                      "Waiting for authentication"));
         break;
     case QApt::WaitingStatus:
-        m_headerLabel->setText(i18nc("@info Status information, widget title",
+        m_headerLabel->setText(xi18nc("@info Status information, widget title",
                                      "<title>Waiting</title>"));
         m_statusLabel->setText(i18nc("@info Status info",
                                      "Waiting for other transactions to finish"));
         m_totalProgress->setMaximum(0);
         break;
     case QApt::WaitingLockStatus:
-        m_headerLabel->setText(i18nc("@info Status information, widget title",
+        m_headerLabel->setText(xi18nc("@info Status information, widget title",
                                      "<title>Waiting</title>"));
         m_statusLabel->setText(i18nc("@info Status info",
                                      "Waiting for other software managers to quit"));
         m_totalProgress->setMaximum(0);
         break;
     case QApt::WaitingMediumStatus:
-        m_headerLabel->setText(i18nc("@info Status information, widget title",
+        m_headerLabel->setText(xi18nc("@info Status information, widget title",
                                      "<title>Waiting</title>"));
         m_statusLabel->setText(i18nc("@info Status info",
                                      "Waiting for required medium"));
         m_totalProgress->setMaximum(0);
         break;
     case QApt::WaitingConfigFilePromptStatus:
-        m_headerLabel->setText(i18nc("@info Status information, widget title",
+        m_headerLabel->setText(xi18nc("@info Status information, widget title",
                                      "<title>Waiting</title>"));
         m_statusLabel->setText(i18nc("@info Status info",
                                      "Waiting for configuration file"));
@@ -189,7 +189,7 @@ void TransactionWidget::statusChanged(QApt::TransactionStatus status)
         break;
     case QApt::LoadingCacheStatus:
         m_statusLabel->clear();
-        m_headerLabel->setText(i18nc("@info Status info",
+        m_headerLabel->setText(xi18nc("@info Status info",
                                      "<title>Loading Software List</title>"));
         break;
     case QApt::DownloadingStatus:
@@ -197,12 +197,12 @@ void TransactionWidget::statusChanged(QApt::TransactionStatus status)
         m_downloadView->show();
         switch (m_trans->role()) {
         case QApt::UpdateCacheRole:
-            m_headerLabel->setText(i18nc("@info Status information, widget title",
+            m_headerLabel->setText(xi18nc("@info Status information, widget title",
                                          "<title>Updating software sources</title>"));
             break;
         case QApt::DownloadArchivesRole:
         case QApt::CommitChangesRole:
-            m_headerLabel->setText(i18nc("@info Status information, widget title",
+            m_headerLabel->setText(xi18nc("@info Status information, widget title",
                                          "<title>Downloading Packages</title>"));
             break;
         default:
@@ -214,14 +214,14 @@ void TransactionWidget::statusChanged(QApt::TransactionStatus status)
         m_downloadView->hide();
         m_spacer->show();
 
-        m_headerLabel->setText(i18nc("@info Status information, widget title",
+        m_headerLabel->setText(xi18nc("@info Status information, widget title",
                                      "<title>Committing Changes</title>"));
         break;
     case QApt::FinishedStatus:
         m_spacer->hide();
         m_downloadView->hide();
         m_downloadModel->clear();
-        m_headerLabel->setText(i18nc("@info Status information, widget title",
+        m_headerLabel->setText(xi18nc("@info Status information, widget title",
                                      "<title>Finished</title>"));
         m_lastRealProgress = 0;
     }
@@ -252,7 +252,7 @@ void TransactionWidget::transactionErrorOccurred(QApt::ErrorCode error)
 void TransactionWidget::provideMedium(const QString &label, const QString &medium)
 {
     QString title = i18nc("@title:window", "Media Change Required");
-    QString text = i18nc("@label", "Please insert %1 into <filename>%2</filename>",
+    QString text = xi18nc("@label", "Please insert %1 into <filename>%2</filename>",
                          label, medium);
 
     KMessageBox::information(this, text, title);
@@ -262,7 +262,7 @@ void TransactionWidget::provideMedium(const QString &label, const QString &mediu
 void TransactionWidget::untrustedPrompt(const QStringList &untrustedPackages)
 {
     QString title = i18nc("@title:window", "Warning - Unverified Software");
-    QString text = i18ncp("@label",
+    QString text = xi18ncp("@label",
                           "The following piece of software cannot be verified. "
                           "<warning>Installing unverified software represents a "
                           "security risk, as the presence of unverifiable software "
@@ -282,7 +282,7 @@ void TransactionWidget::untrustedPrompt(const QStringList &untrustedPackages)
 void TransactionWidget::configFileConflict(const QString &currentPath, const QString &newPath)
 {
     QString title = i18nc("@title:window", "Configuration File Changed");
-    QString text = i18nc("@label Notifies a config file change",
+    QString text = xi18nc("@label Notifies a config file change",
                          "A new version of the configuration file "
                          "<filename>%1</filename> is available, but your version has "
                          "been modified. Would you like to keep your current version "
