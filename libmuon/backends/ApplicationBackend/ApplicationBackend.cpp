@@ -701,6 +701,7 @@ void ApplicationBackend::aptListBugs(QStringList packageName)
     QStringList arguments;
     QString program = QStandardPaths::findExecutable(QStringLiteral("apt-listbugs"));
     if (program.isEmpty()) {
+        qWarning() << "apt-listbugs not found!";
         emit transactionOk();
         return;
     }
