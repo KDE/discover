@@ -38,6 +38,7 @@
 #include <KProtocolManager>
 #include <KIO/Job>
 #include <KActionCollection>
+#include <KIconLoader>
 
 // QApt/DebconfKDE includes
 #include <QApt/Backend>
@@ -74,8 +75,7 @@ ApplicationBackend::ApplicationBackend(QObject* parent)
     , m_aptify(nullptr)
     , m_aptBackendInitialized(false)
 {
-//   TODO: Port
-//     KGlobal::dirs()->addResourceDir("appicon", "/usr/share/app-install/icons/");
+    KIconLoader::global()->reconfigure(QString(), QStringList(QStringLiteral("/usr/share/app-install/icons/")));
 
     m_watcher = new QFutureWatcher<QVector<Application*> >(this);
     connect(m_watcher, SIGNAL(finished()), this, SLOT(setApplications()));
