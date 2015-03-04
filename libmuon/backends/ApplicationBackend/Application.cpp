@@ -154,7 +154,6 @@ QApt::Package *Application::package()
 
 QString Application::icon() const
 {
-    qDebug() << "xxxxxxxxxX" << getField("Icon", "applications-other");
     return getField("Icon", "applications-other");
 }
 
