@@ -110,11 +110,7 @@ void ApplicationUpdates::start()
         setProgressing(false);
         return;
     }
-    QStringList pkgList;
     for(auto it=changes.begin(); it!=changes.end(); ) {
-	for (QApt::Package *package : *it) {
-                pkgList << package->name();
-	}  
         if(it.key()&QApt::Package::ToUpgrade) {
             it = changes.erase(it);
         } else {
@@ -129,17 +125,8 @@ void ApplicationUpdates::start()
             return;
         }
     }
-    if(!pkgList.isEmpty()){
-	setStatusMessage(i18n("Checking for bugs..."));
-	connect(m_appBackend,SIGNAL(transactionOk()),this,SLOT(createRunTransaction()));
-	m_appBackend->aptListBugs(pkgList);
-    }
-}
-
-void ApplicationUpdates::createRunTransaction()
-{
+    
     // Create and run the transaction
-    this->disconnect(m_appBackend,SIGNAL(transactionOk()),this,0);
     setupTransaction(m_aptBackend->commitChanges());
     m_trans->run();
     setProgressing(true);

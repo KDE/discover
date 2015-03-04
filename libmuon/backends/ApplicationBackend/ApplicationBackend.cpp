@@ -69,7 +69,6 @@ ApplicationBackend::ApplicationBackend(QObject* parent)
     , m_backend(new QApt::Backend(this))
     , m_reviewsBackend(new ReviewsBackend(this))
     , m_isFetching(true)
-    , m_wantedTransaction(nullptr)
     , m_currentTransaction(nullptr)
     , m_backendUpdater(new ApplicationUpdates(this))
     , m_aptify(nullptr)
@@ -470,18 +469,12 @@ void ApplicationBackend::installApplication(AbstractResource* res, AddonList add
 {
     Application* app = qobject_cast<Application*>(res);
     Transaction::Role role = app->package()->isInstalled() ? Transaction::ChangeAddonsRole : Transaction::InstallRole;
-    QStringList pkgName;
-    pkgName << app->packageName();
-    m_wantedTransaction = new Transaction(this, res, role, addons);
-    aptListBugs(pkgName);
+    addTransaction(new Transaction(this, res, role, addons));
 }
 
 void ApplicationBackend::installApplication(AbstractResource* app)
 {
-    QStringList pkgName;
-    pkgName << app->packageName();
-    m_wantedTransaction = new Transaction(this, app, Transaction::InstallRole);
-    aptListBugs(pkgName);
+    addTransaction(new Transaction(this, app, Transaction::InstallRole));
 }
 
 void ApplicationBackend::removeApplication(AbstractResource* app)
@@ -669,47 +662,6 @@ void ApplicationBackend::setFetching(bool f)
             emit updatesCountChanged();
         }
     }
-}
-
-void ApplicationBackend::listBugsFinished()
-{
-    bool ok = true;
-    KProcess *mProcess = qobject_cast<KProcess*>(QObject::sender());
-    if (!mProcess) {
-        return;
-    }
-    QString output = QString::fromUtf8(mProcess->readAllStandardOutput());
-    mProcess->deleteLater();
-    if (!output.isEmpty()) {
-        QMessageBox::StandardButton reply;
-        reply = QMessageBox::question(mainWindow(), i18n("Bugs found"), output ,QMessageBox::Yes|QMessageBox::No);
-        if (reply == QMessageBox::No) {
-            ok = false;
-        }
-    }
-    if (ok) {
-        if (m_wantedTransaction){
-            addTransaction(m_wantedTransaction);
-            m_wantedTransaction = nullptr;
-        }
-        emit transactionOk();
-    }
-}
-
-void ApplicationBackend::aptListBugs(QStringList packageName)
-{
-    QStringList arguments;
-    QString program = QStandardPaths::findExecutable(QStringLiteral("apt-listbugs"));
-    if (program.isEmpty()) {
-        qWarning() << "apt-listbugs not found!";
-        emit transactionOk();
-        return;
-    }
-    KProcess *proc = new KProcess;
-    proc->setOutputChannelMode(KProcess::OnlyStdoutChannel);
-    proc->setShellCommand(program.append(QStringLiteral(" list ")).append(packageName.join(" , ")));
-    connect(proc, SIGNAL(finished(int)), this, SLOT(listBugsFinished()));
-    proc->start();
 }
 
 #include "ApplicationBackend.moc"

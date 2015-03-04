@@ -80,7 +80,6 @@ public:
     void integrateMainWindow(MuonMainWindow* w);
     QWidget* mainWindow() const;
     virtual QList<AbstractResource*> upgradeablePackages() const;
-    void aptListBugs(QStringList packageName);
     
 private:
     void setFetching(bool f);
@@ -94,13 +93,13 @@ private:
 
     // Transactions
     QHash<Transaction *, QApt::Transaction *> m_transQueue;
-    Transaction *m_wantedTransaction;
     Transaction *m_currentTransaction;
 
     DebconfKde::DebconfGui *m_debconfGui;
     ApplicationUpdates* m_backendUpdater;
     MuonMainWindow *m_aptify;
     bool m_aptBackendInitialized;
+    
 public Q_SLOTS:
     void reload();
     void addTransaction(Transaction *transaction);
@@ -118,10 +117,8 @@ private Q_SLOTS:
     void sourcesEditorClosed();
     void checkForUpdates();
     void updateFinished(QApt::ExitStatus);
-    void listBugsFinished();
 
 Q_SIGNALS:
-    void transactionOk();
     void startingFirstTransaction();
     void sourcesEditorFinished();
     void aptBackendInitialized(QApt::Backend* backend);
