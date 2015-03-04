@@ -7,6 +7,7 @@ Flickable {
     interactive: false
     contentWidth: Math.max(image.width, width)
     contentHeight: Math.max(image.height, height)
+    property bool isCurrentItem: itemDelegate.PathView.isCurrentItem
     
     states: [
         State {
@@ -48,6 +49,11 @@ Flickable {
             }
         }
     ]
+
+    onIsCurrentItemChanged: {
+        if (itemDelegate.PathView.isCurrentItem && image.status==Image.Error)
+            info.next();
+    }
     
     Image {
         id: image
