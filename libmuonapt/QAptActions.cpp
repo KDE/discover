@@ -248,7 +248,7 @@ bool QAptActions::saveSelections()
     }
 
     if (!m_backend->saveSelections(filename)) {
-        QString text = i18nc("@label", "The document could not be saved, as it "
+        QString text = xi18nc("@label", "The document could not be saved, as it "
                              "was not possible to write to "
                              "<filename>%1</filename>\n\nCheck "
                              "that you have write access to this file "
@@ -273,7 +273,7 @@ bool QAptActions::saveInstalledPackagesList()
     }
 
     if (!m_backend->saveInstalledPackagesList(filename)) {
-        QString text = i18nc("@label", "The document could not be saved, as it "
+        QString text = xi18nc("@label", "The document could not be saved, as it "
                              "was not possible to write to "
                              "<filename>%1</filename>\n\nCheck "
                              "that you have write access to this file "
@@ -297,7 +297,7 @@ bool QAptActions::createDownloadList()
     }
 
     if (!m_backend->saveDownloadList(filename)) {
-        QString text = i18nc("@label", "The document could not be saved, as it "
+        QString text = xi18nc("@label", "The document could not be saved, as it "
                              "was not possible to write to "
                              "<filename>%1</filename>\n\nCheck "
                              "that you have write access to this file "

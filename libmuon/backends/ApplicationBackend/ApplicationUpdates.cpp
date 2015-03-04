@@ -110,11 +110,7 @@ void ApplicationUpdates::start()
         setProgressing(false);
         return;
     }
-    QStringList pkgList;
     for(auto it=changes.begin(); it!=changes.end(); ) {
-	for (QApt::Package *package : *it) {
-                pkgList << package->name();
-	}  
         if(it.key()&QApt::Package::ToUpgrade) {
             it = changes.erase(it);
         } else {
@@ -129,17 +125,8 @@ void ApplicationUpdates::start()
             return;
         }
     }
-    if(!pkgList.isEmpty()){
-	setStatusMessage(i18n("Checking for bugs..."));
-	connect(m_appBackend,SIGNAL(transactionOk()),this,SLOT(createRunTransaction()));
-	m_appBackend->aptListBugs(pkgList);
-    }
-}
-
-void ApplicationUpdates::createRunTransaction()
-{
+    
     // Create and run the transaction
-    this->disconnect(m_appBackend,SIGNAL(transactionOk()),this,0);
     setupTransaction(m_aptBackend->commitChanges());
     m_trans->run();
     setProgressing(true);
@@ -266,7 +253,7 @@ bool ApplicationUpdates::isProgressing() const
 void ApplicationUpdates::provideMedium(const QString &label, const QString &medium)
 {
     QString title = i18nc("@title:window", "Media Change Required");
-    QString text = i18nc("@label", "Please insert %1 into <filename>%2</filename>",
+    QString text = xi18nc("@label", "Please insert %1 into <filename>%2</filename>",
                          label, medium);
 
     KMessageBox::information(QAptActions::self()->mainWindow(), text, title);
@@ -276,7 +263,7 @@ void ApplicationUpdates::provideMedium(const QString &label, const QString &medi
 void ApplicationUpdates::untrustedPrompt(const QStringList &untrustedPackages)
 {
     QString title = i18nc("@title:window", "Warning - Unverified Software");
-    QString text = i18ncp("@label",
+    QString text = xi18ncp("@label",
                           "The following piece of software cannot be verified. "
                           "<warning>Installing unverified software represents a "
                           "security risk, as the presence of unverifiable software "
@@ -296,7 +283,7 @@ void ApplicationUpdates::untrustedPrompt(const QStringList &untrustedPackages)
 void ApplicationUpdates::configFileConflict(const QString &currentPath, const QString &newPath)
 {
     QString title = i18nc("@title:window", "Configuration File Changed");
-    QString text = i18nc("@label Notifies a config file change",
+    QString text = xi18nc("@label Notifies a config file change",
                          "A new version of the configuration file "
                          "<filename>%1</filename> is available, but your version has "
                          "been modified. Would you like to keep your current version "

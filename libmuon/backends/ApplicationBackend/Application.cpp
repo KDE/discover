@@ -80,7 +80,7 @@ Application::Application(QApt::Package* package, QApt::Backend* backend)
     
     QString arch = m_package->architecture();
     if (arch != m_backend->nativeArchitecture() && arch != QLatin1String("all"))
-        m_packageName.append(QByteArray(":") + m_package->architecture().toLatin1());
+        m_packageName.append(QLatin1Char(':') + m_package->architecture().toLatin1());
 
     if (m_package->origin() == QLatin1String("LP-PPA-app-review-board")) {
         if (!m_package->controlField(QLatin1String("Appname")).isEmpty()) {
@@ -154,6 +154,7 @@ QApt::Package *Application::package()
 
 QString Application::icon() const
 {
+    qDebug() << "xxxxxxxxxX" << getField("Icon", "applications-other");
     return getField("Icon", "applications-other");
 }
 
