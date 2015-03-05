@@ -106,7 +106,9 @@ void KNSBackend::setMetaData(const QString& path)
     connect(m_manager, SIGNAL(searchResult(KNS3::Entry::List)), SLOT(receivedEntries(KNS3::Entry::List)));
     connect(m_manager, SIGNAL(entryStatusChanged(KNS3::Entry)), SLOT(statusChanged(KNS3::Entry)));
 
-    startFetchingCategories();
+    if (!m_atticaManager->providers().isEmpty()) {
+        startFetchingCategories();
+    }
 }
 
 void KNSBackend::setFetching(bool f)

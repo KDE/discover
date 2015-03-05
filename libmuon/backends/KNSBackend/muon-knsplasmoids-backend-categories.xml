@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Menu>
   <Menu>
-    <Name>Comics</Name>
-    <Icon>face-smile-big</Icon>
-    <ShowTechnical>true</ShowTechnical> <!-- needs to be like this as the appsbackend counterpart needs it. -->
+    <Name>Plasma Desktop Widgets</Name>
+    <Icon>plasma</Icon>
     <Include>
-      <And>
-        <Category>comic.knsrc</Category>
-      </And>
+      <Or>
+        <Category>plasmoids.knsrc</Category>
+      </Or>
     </Include>
   </Menu>
 </Menu>
