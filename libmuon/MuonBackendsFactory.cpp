@@ -39,10 +39,10 @@ MuonBackendsFactory::MuonBackendsFactory()
 AbstractResourcesBackend* MuonBackendsFactory::backend(const QString& name) const
 {
     QString data = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("libmuon/backends/%1.desktop").arg(name));
-    return backendForFile(data);
+    return backendForFile(data, name);
 }
 
-AbstractResourcesBackend* MuonBackendsFactory::backendForFile(const QString& path) const
+AbstractResourcesBackend* MuonBackendsFactory::backendForFile(const QString& path, const QString& name) const
 {
     Q_ASSERT(!path.isEmpty());
     KDesktopFile cfg(path);
@@ -60,7 +60,7 @@ AbstractResourcesBackend* MuonBackendsFactory::backendForFile(const QString& pat
     if(!instance) {
         qWarning() << "Couldn't find the backend: " << path << "among" << allBackendNames(false) << "because" << loader->errorString();
     }
-    instance->setName(libname);
+    instance->setName(name);
     instance->setMetaData(path);
 
     return instance;

@@ -33,7 +33,7 @@ class MUONPRIVATE_EXPORT MuonBackendsFactory
 public:
     MuonBackendsFactory();
     
-    AbstractResourcesBackend* backendForFile(const QString& path) const;
+    AbstractResourcesBackend* backendForFile(const QString& path, const QString& name) const;
     AbstractResourcesBackend* backend(const QString& name) const;
     QList<AbstractResourcesBackend*> allBackends() const;
     QStringList allBackendNames(bool whitelist = true) const;
