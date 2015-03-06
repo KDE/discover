@@ -60,6 +60,7 @@ AbstractResourcesBackend* MuonBackendsFactory::backendForFile(const QString& pat
     if(!instance) {
         qWarning() << "Couldn't find the backend: " << path << "among" << allBackendNames(false) << "because" << loader->errorString();
     }
+    instance->setName(libname);
     instance->setMetaData(path);
 
     return instance;
