@@ -20,33 +20,39 @@
 
 #include "MainWindow.h"
 
-#include <KUniqueApplication>
-#include <K4AboutData>
-#include <KCmdLineArgs>
+#include <QApplication>
+#include <KAboutData>
 #include "../MuonVersion.h"
-#include <stdio.h>
-
-static const char description[] =
-    I18N_NOOP("A package manager");
+#include <KDBusService>
+#include <KLocalizedString>
+#include <QSessionManager>
+#include <QCommandLineParser>
 
 int main(int argc, char **argv)
 {
-    K4AboutData about("muon", 0, ki18n("Muon Package Manager"), version, ki18n(description),
-                     K4AboutData::License_GPL, ki18n("© 2009-2013 Jonathan Thomas"), KLocalizedString(), 0);
-    about.addAuthor(ki18n("Jonathan Thomas"), KLocalizedString(), "echidnaman@kubuntu.org");
+    QApplication app(argc, argv);
+    app.setWindowIcon(QIcon::fromTheme("muon"));
+    KAboutData about("muondiscover", i18n("Muon Package Manager"), version, i18n("A package manager"),
+                     KAboutLicense::GPL, i18n("© 2009-2013 Jonathan Thomas"));
+    about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
     about.setProductName("muon/muon");
+    KAboutData::setApplicationData(about);
 
-    KCmdLineArgs::init(argc, argv, &about);
-
-    if (!KUniqueApplication::start()) {
-        fprintf(stderr, "Muon is already running!\n");
-        return 0;
+    {
+        QCommandLineParser parser;
+        about.setupCommandLine(&parser);
+        parser.process(app);
+        about.processCommandLine(&parser);
     }
 
-    KUniqueApplication app;
-    app.disableSessionManagement();
-    // Libmuon translations
-//     KGlobal::locale()->insertCatalog("libmuon"); //FIXME: Port to kf5
+
+    KDBusService service(KDBusService::Unique);
+
+    auto disableSessionManagement = [](QSessionManager &sm) {
+        sm.setRestartHint(QSessionManager::RestartNever);
+    };
+    QObject::connect(&app, &QGuiApplication::commitDataRequest, disableSessionManagement);
+    QObject::connect(&app, &QGuiApplication::saveStateRequest, disableSessionManagement);
 
     MainWindow *mainWindow = new MainWindow;
     mainWindow->show();
