@@ -182,3 +182,17 @@ void Category::addSubcategory(QList< Category* >& list, Category* newcat)
     }
     list << newcat;
 }
+
+bool Category::blacklistPlugins(const QSet<QString>& pluginNames)
+{
+    for(QList<Category*>::iterator it = m_subCategories.begin(), itEnd = m_subCategories.end(); it!=itEnd; ) {
+        if ((*it)->blacklistPlugins(pluginNames)) {
+            delete *it;
+            it = m_subCategories.erase(it);
+        } else
+            ++it;
+    }
+    m_plugins.subtract(pluginNames);
+
+    return m_plugins.isEmpty();
+}

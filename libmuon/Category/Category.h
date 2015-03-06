@@ -60,6 +60,7 @@ public:
 
     static void addSubcategory(QList<Category*>& list, Category* cat);
     void parseData(const QString& path, const QDomNode& data, bool canHaveChildren);
+    bool blacklistPlugins(const QSet<QString>& pluginName);
 
 private:
     QString m_name;

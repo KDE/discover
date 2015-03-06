@@ -28,6 +28,7 @@
 #include <MuonBackendsFactory.h>
 #include <MuonMainWindow.h>
 #include "Transaction/TransactionModel.h"
+#include "Category/CategoryModel.h"
 #include <QDebug>
 #include <QCoreApplication>
 #include <QThread>
@@ -109,6 +110,7 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
     Q_ASSERT(!m_backends.contains(backend));
     if(!backend->isValid()) {
         qWarning() << "Discarding invalid backend" << backend->name();
+        CategoryModel::blacklistPlugin(backend->name());
         delete backend;
         return;
     }
@@ -263,6 +265,7 @@ void ResourcesModel::callerFetchingChanged()
         Q_ASSERT(idx>=0);
         m_backends.removeAt(idx);
         m_resources.removeAt(idx);
+        CategoryModel::blacklistPlugin(backend->name());
         delete backend;
         return;
     }
