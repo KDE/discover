@@ -107,6 +107,12 @@ QHash<int, QByteArray> ResourcesModel::roleNames() const
 void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
 {
     Q_ASSERT(!m_backends.contains(backend));
+    if(!backend->isValid()) {
+        qWarning() << "Discarding invalid backend" << backend->name();
+        delete backend;
+        return;
+    }
+
     if(!backend->isFetching()) {
         QVector<AbstractResource*> newResources = backend->allResources();
         int current = rowCount();
@@ -234,8 +240,6 @@ int ResourcesModel::rowsBeforeBackend(AbstractResourcesBackend* backend, QVector
 
 void ResourcesModel::cleanBackend(AbstractResourcesBackend* backend)
 {
-    m_initializingBackends++;
-    
     QVector<QVector<AbstractResource*>>::iterator backendsResources;
     int before = rowsBeforeBackend(backend, backendsResources);
 
@@ -251,7 +255,20 @@ void ResourcesModel::cleanBackend(AbstractResourcesBackend* backend)
 void ResourcesModel::callerFetchingChanged()
 {
     AbstractResourcesBackend* backend = qobject_cast<AbstractResourcesBackend*>(sender());
+
+    if (!backend->isValid()) {
+        qWarning() << "Discarding invalid backend" << backend->name();
+        cleanBackend(backend);
+        int idx = m_backends.indexOf(backend);
+        Q_ASSERT(idx>=0);
+        m_backends.removeAt(idx);
+        m_resources.removeAt(idx);
+        delete backend;
+        return;
+    }
+
     if(backend->isFetching()) {
+        m_initializingBackends++;
         cleanBackend(backend);
         emit fetchingChanged();
     } else {
