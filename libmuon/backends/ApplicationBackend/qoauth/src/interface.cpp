@@ -351,16 +351,16 @@ QByteArray QOAuth::InterfacePrivate::paramsToString( const ParamMap &parameters,
 
     switch ( mode ) {
     case ParseForInlineQuery:
-        prependString = "?";
+        prependString = '?';
     case ParseForRequestContent:
     case ParseForSignatureBaseString:
-        middleString = "=";
-        endString = "&";
+        middleString = '=';
+        endString = '&';
         break;
     case ParseForHeaderArguments:
         prependString = "OAuth ";
         middleString = "=\"";
-        endString = "\",";
+        endString = '\",';
         break;
     default:
         qWarning() << __FUNCTION__ << "- Unrecognized mode";
@@ -1038,8 +1038,8 @@ QByteArray QOAuth::InterfacePrivate::createSignature( const QString &requestUrl,
     } else {
         // 4. create signature base string
         QByteArray signatureBaseString;
-        signatureBaseString.append( httpMethodString + "&" );
-        signatureBaseString.append( percentRequestUrl + "&" );
+        signatureBaseString.append( httpMethodString + '&' );
+        signatureBaseString.append( percentRequestUrl + '&' );
         signatureBaseString.append( percentParametersString );
 
 
@@ -1048,7 +1048,7 @@ QByteArray QOAuth::InterfacePrivate::createSignature( const QString &requestUrl,
                 qFatal( "HMAC(SHA1) is not supported!" );
             }
             // create key for HMAC-SHA1 hashing
-            QByteArray key( consumerSecret.toPercentEncoding() + "&" + tokenSecret.toPercentEncoding() );
+            QByteArray key( consumerSecret.toPercentEncoding() + '&' + tokenSecret.toPercentEncoding() );
 
             // create HMAC-SHA1 digest in Base64
             QCA::MessageAuthenticationCode hmac( "hmac(sha1)", QCA::SymmetricKey( key ) );
@@ -1079,7 +1079,7 @@ QByteArray QOAuth::InterfacePrivate::createPlaintextSignature( const QByteArray 
     }
 
     // get percent encoded consumer secret and token secret, join and return
-    return consumerSecret.toPercentEncoding() + "&" + tokenSecret.toPercentEncoding();
+    return consumerSecret.toPercentEncoding() + '&' + tokenSecret.toPercentEncoding();
 }
 
 #include "moc_interface.cpp"

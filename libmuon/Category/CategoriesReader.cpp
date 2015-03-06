@@ -43,7 +43,7 @@ QList<Category*> CategoriesReader::loadCategoriesFile(const QString& path)
     int line;
     bool correct = menuDocument.setContent(&menuFile, &error, &line);
     if(!correct)
-        qWarning() << "error while parsing the categories file:" << error << " at: " << path << ":" << line;
+        qWarning() << "error while parsing the categories file:" << error << " at: " << path << ':' << line;
 
     QDomElement root = menuDocument.documentElement();
 

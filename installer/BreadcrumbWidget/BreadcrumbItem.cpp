@@ -61,7 +61,7 @@ void BreadcrumbItem::setChildItem(BreadcrumbItem *child)
     // Only give an arrow if it has never had children. If it has, it will
     // already have one
     if (!m_hasChildren) {
-        m_button->setText(m_button->text() % ' ' % QString::fromUtf8("➜"));
+        m_button->setText(m_button->text() % ' ' % QString::fromUtf8('➜'));
     }
 
     m_childItem = child;

@@ -170,7 +170,7 @@ void ReviewsBackend::loadRatingsFromFile()
         if(dev->open(QIODevice::ReadOnly)) {
             while(!dev->atEnd()) {
                 QString line(dev->readLine());
-                QStringList lineContent = line.split(" ");
+                QStringList lineContent = line.split(' ');
                 if(lineContent.first() != QLatin1String("Package:") || lineContent.isEmpty()) {
                     continue;
                 }
@@ -328,9 +328,9 @@ void ReviewsBackend::submitReview(AbstractResource* application, const QString& 
 
     QString distroSeries = getCodename("VERSION");
     if(!distroSeries.isEmpty()){
-        data["distroseries"] = distroSeries.split(" ").last().remove('(').remove(')');
+        data["distroseries"] = distroSeries.split(' ').last().remove('(').remove(')');
     }else{
-        data["distroseries"] = getCodename("PRETTY_NAME").split(" ").last();
+        data["distroseries"] = getCodename("PRETTY_NAME").split(' ').last();
     }
     data["arch_tag"] = app->package()->architecture();
     

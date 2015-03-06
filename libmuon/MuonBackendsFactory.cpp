@@ -114,7 +114,7 @@ void MuonBackendsFactory::setupCommandLine(QCommandLineParser* parser)
 
 void MuonBackendsFactory::processCommandLine(QCommandLineParser* parser)
 {
-    *s_requestedBackends = parser->value("backends").split(",", QString::SkipEmptyParts);
+    *s_requestedBackends = parser->value("backends").split(',', QString::SkipEmptyParts);
     if(parser->isSet("listbackends")) {
         fprintf(stdout, "%s", qPrintable(i18n("Available backends:\n")));
         MuonBackendsFactory f;

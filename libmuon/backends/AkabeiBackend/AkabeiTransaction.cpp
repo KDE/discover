@@ -91,7 +91,7 @@ void AkabeiTransaction::start()
         if (res) {
             AkabeiClient::Backend::instance()->queue()->addPackage(qobject_cast<AkabeiResource*>(res)->installedPackage(), AkabeiClient::Remove);
         } else {
-            Akabei::Package::List pkgs = Akabei::Backend::instance()->localDatabase()->queryPackages("SELECT * FROM packages JOIN provides WHERE provides.provides LIKE \"" + toRemove + "\"");
+            Akabei::Package::List pkgs = Akabei::Backend::instance()->localDatabase()->queryPackages("SELECT * FROM packages JOIN provides WHERE provides.provides LIKE \"" + toRemove + '\"');
             foreach (Akabei::Package * p, pkgs)
                 AkabeiClient::Backend::instance()->queue()->addPackage(p, AkabeiClient::Remove);
         }
@@ -103,7 +103,7 @@ void AkabeiTransaction::start()
         } else {
             Akabei::Package::List packages;
             foreach (Akabei::Database * db, Akabei::Backend::instance()->databases()) {
-                packages << db->queryPackages("SELECT * FROM packages JOIN provides WHERE provides.provides LIKE \"" + toInstall + "\"");
+                packages << db->queryPackages("SELECT * FROM packages JOIN provides WHERE provides.provides LIKE \"" + toInstall + '\"');
             } //NOTE: Probably ask the user here, or rather create a method in akabei to resolve the provider for me
             if (!packages.isEmpty())
                 AkabeiClient::Backend::instance()->queue()->addPackage(packages.first(), AkabeiClient::Install);
@@ -174,7 +174,7 @@ void AkabeiTransaction::finished(bool successful)
     if (!successful) {
         QString err;
         foreach (const Akabei::Error &error, m_transaction->errors()) {
-            err.append(" " + error.description());
+            err.append(' ' + error.description());
         }
         if (err.isEmpty())
             err = i18n("Something went wrong!");
