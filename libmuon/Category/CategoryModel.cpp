@@ -89,7 +89,7 @@ static Category* recFindCategory(Category* root, const QString& name)
     if(root->name()==name)
         return root;
     else if(root->hasSubCategories()) {
-        QList<Category*> subs = root->subCategories();
+        const QList<Category*> subs = root->subCategories();
         for(Category* c : subs) {
             Category* ret = recFindCategory(c, name);
             if(ret)
@@ -101,7 +101,7 @@ static Category* recFindCategory(Category* root, const QString& name)
 
 Category* CategoryModel::findCategoryByName(const QString& name)
 {
-    QList<Category*> cats = populateCategories();
+    const QList<Category*> cats = populateCategories();
     for(Category* cat : cats) {
         Category* ret = recFindCategory(cat, name);
         if(ret)
