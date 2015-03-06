@@ -24,6 +24,7 @@
 #include <QtCore/QList>
 #include <QtCore/QPair>
 #include <QtCore/QObject>
+#include <QtCore/QSet>
 
 #include "libmuonprivate_export.h"
 
@@ -45,7 +46,7 @@ public:
     Q_PROPERTY(QString icon READ icon CONSTANT)
     Q_PROPERTY(bool hasSubCategories READ hasSubCategories CONSTANT)
     Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical CONSTANT)
-    explicit Category(QObject* parent = 0);
+    explicit Category(const QSet<QString>& pluginNames, QObject* parent = 0);
     ~Category();
 
     QString name() const;
@@ -70,6 +71,7 @@ private:
     QList<Category *> m_subCategories;
 
     QList<QPair<FilterType, QString> > parseIncludes(const QDomNode &data);
+    QSet<QString> m_plugins;
 };
 
 #endif
