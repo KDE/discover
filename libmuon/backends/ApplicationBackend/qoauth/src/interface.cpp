@@ -351,16 +351,16 @@ QByteArray QOAuth::InterfacePrivate::paramsToString( const ParamMap &parameters,
 
     switch ( mode ) {
     case ParseForInlineQuery:
-        prependString = '?';
+        prependString = "?";
     case ParseForRequestContent:
     case ParseForSignatureBaseString:
-        middleString = '=';
-        endString = '&';
+        middleString = "=";
+        endString = "&";
         break;
     case ParseForHeaderArguments:
         prependString = "OAuth ";
         middleString = "=\"";
-        endString = '\",';
+        endString = "\",";
         break;
     default:
         qWarning() << __FUNCTION__ << "- Unrecognized mode";
