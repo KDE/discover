@@ -169,6 +169,7 @@ void KNSBackend::categoriesLoaded(Attica::BaseJob* job)
             ++it;
     }
     if (m_categories.isEmpty()) {
+        m_isValid = false;
         setFetching(false);
         return;
     }
