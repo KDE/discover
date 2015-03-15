@@ -106,6 +106,7 @@ Keywords[es]=programa;software;repositorio;paquete;instalar;eliminar;actualizar;
 Keywords[et]=programm,rakendus,tarkvara,hoidla,pakk,pakett,paigaldamine,installimine,eemaldamine,uuendamine,rakendused,deb
 Keywords[fi]=program;software;repository;package;install;remove;update;apps;applications;ohjelma;ohjelmisto;ohjelmalähde;lähteet;arkisto;paketti;asenna;poista;päivitä;sovellukset;
 Keywords[fr]=programme ; logiciel ; dépôt ; archive ; paquet ; installation ; suppression ; mise à jour ; deb
+Keywords[gl]=aplicativo,software,repositorio,paquete,instalar,eliminar,actualizar,deb
 Keywords[hu]=program;szoftver;tároló;csomag;telepítés;eltávolítás;frissítés;appok;alkalmazások;
 Keywords[id]=program;perangkat lunak;repositori;paket;pasang;buang;perbarui;apl;aplikasi;
 Keywords[it]=programma;software;deposito;pacchetto;installa;rimuovi;aggiorna;app;applicazioni;
