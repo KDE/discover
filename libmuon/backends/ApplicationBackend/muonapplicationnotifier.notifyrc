@@ -42,6 +42,7 @@ Comment[zh_TW]=Muon 應用程式後端介面通知器
 
 [Event/DistUpgrade]
 Name=Upgrade Available
+Name[ast]=Anovamientu disponible
 Name[bg]=Налично е надграждане
 Name[bs]=Nadogradnja dostupna
 Name[ca]=Hi ha una actualització disponible
@@ -87,6 +88,7 @@ Name[x-test]=xxUpgrade Availablexx
 Name[zh_CN]=升级可用
 Name[zh_TW]=有可用的更新
 Comment=A new version of Kubuntu is available
+Comment[ast]=Ta disponible una versión nueva de Kubuntu
 Comment[bg]=Налична е нова версия на Кубунту
 Comment[bs]=Nova verzija Kubuntu je dostupna
 Comment[ca]=Hi ha disponible una nova versió del Kubuntu

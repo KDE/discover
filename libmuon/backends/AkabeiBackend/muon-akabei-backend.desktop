@@ -83,6 +83,7 @@ Name[x-test]=xxAkabei Backendxx
 Name[zh_CN]=Akabei 后端
 Name[zh_TW]=Akabei 後端介面
 GenericName=Chakra Support
+GenericName[ast]=Sofitu de Chakra
 GenericName[bg]=Поддръжка на Chakra
 GenericName[bs]=Chakra podrška
 GenericName[ca]=Implementació a Chakra

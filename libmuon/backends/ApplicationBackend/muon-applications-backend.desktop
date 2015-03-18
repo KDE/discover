@@ -89,6 +89,7 @@ Name[x-test]=xxApplications Backendxx
 Name[zh_CN]=应用程序后端
 Name[zh_TW]=應用程式後端介面
 GenericName=APT Support
+GenericName[ast]=Sofitu d'APT
 GenericName[bg]=Поддръжка на APT
 GenericName[bs]=APT podrška
 GenericName[ca]=Implementació de l'APT
