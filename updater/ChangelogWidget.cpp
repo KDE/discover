@@ -56,24 +56,19 @@ ChangelogWidget::ChangelogWidget(QWidget *parent)
     hideButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     connect(hideButton, SIGNAL(clicked()), this, SLOT(animatedHide()));
 
-    m_infoButton = new QPushButton(sideWidget);
-    m_infoButton->setText(i18nc("@action:button", "More..."));
-    m_infoButton->setEnabled(false);
-    m_infoButton->setToolTip(i18n("Shows the selected package on Muon Discover"));
-    connect(m_infoButton, &QPushButton::clicked, this, &ChangelogWidget::showMore);
-
     QVBoxLayout *sideLayout = new QVBoxLayout(sideWidget);
     sideLayout->setMargin(0);
     sideLayout->setSpacing(0);
     sideLayout->addWidget(hideButton);
     sideLayout->addStretch();
-    sideLayout->addWidget(m_infoButton);
     sideWidget->setLayout(sideLayout);
 
     m_changelogBrowser = new QTextBrowser(this);
+    m_changelogBrowser->setOpenLinks(false);
     m_changelogBrowser->setFrameShape(QFrame::NoFrame);
     m_changelogBrowser->setFrameShadow(QFrame::Plain);
     m_changelogBrowser->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    connect(m_changelogBrowser, &QTextBrowser::anchorClicked, this, &ChangelogWidget::showMore);
 
     QWidget *viewport = m_changelogBrowser->viewport();
     QPalette palette = viewport->palette();
@@ -124,7 +119,6 @@ void ChangelogWidget::setResource(AbstractResource* package)
         fetchChangelog();
     } else
         animatedHide();
-    m_infoButton->setEnabled(m_package);
 }
 
 void ChangelogWidget::show()
@@ -155,7 +149,7 @@ void ChangelogWidget::changelogFetched(const QString& changelog)
         // Work around http://bugreports.qt.nokia.com/browse/QTBUG-2533 by forcibly resetting the CharFormat
         m_changelogBrowser->setCurrentCharFormat(QTextCharFormat());
         QString fullText;
-        fullText += i18nc("@info/rich", "<p><b>Package Name:</b> %1</p>", m_package->packageName());
+        fullText += i18nc("@info/rich", "<p><b>Package Name:</b> <a href='package:%1'>%1</a></p>", m_package->packageName());
         fullText += i18nc("@info/rich", "<p><b>Installed Version:</b> %1</p>", m_package->installedVersion());
         fullText += changelog;
         m_changelogBrowser->setHtml(fullText);
@@ -175,9 +169,9 @@ void ChangelogWidget::fetchChangelog()
     m_package->fetchChangelog();
 }
 
-void ChangelogWidget::showMore()
+void ChangelogWidget::showMore(const QUrl& package)
 {
-    bool b = QProcess::startDetached("muon-discover", { "--application", m_package->packageName() });
+    bool b = QProcess::startDetached("muon-discover", { "--application", package.path() });
     if (!b) {
         qWarning() << "Couldn't launch muon-discover";
     }

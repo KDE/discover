@@ -47,7 +47,6 @@ private:
     QParallelAnimationGroup *m_expandWidget;
     QTextBrowser *m_changelogBrowser;
     KPixmapSequenceOverlayPainter *m_busyWidget;
-    QPushButton* m_infoButton;
 
 public Q_SLOTS:
     void setResource(AbstractResource *package);
@@ -57,7 +56,7 @@ public Q_SLOTS:
 private Q_SLOTS:
     void fetchChangelog();
     void changelogFetched(const QString& changelog);
-    void showMore();
+    void showMore(const QUrl &package);
 };
 
 #endif
