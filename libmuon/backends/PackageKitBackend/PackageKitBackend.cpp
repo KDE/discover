@@ -196,7 +196,8 @@ QVector<AbstractResource*> PackageKitBackend::allResources() const
 
 AbstractResource* PackageKitBackend::resourceByPackageName(const QString& name) const
 {
-    return m_packages[name];
+    const QStringList ids = m_translationPackageToApp.value(name, QStringList(name));
+    return ids.isEmpty() ? nullptr : m_packages[ids.first()];
 }
 
 QList<AbstractResource*> PackageKitBackend::searchPackageName(const QString& searchText)
