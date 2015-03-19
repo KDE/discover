@@ -26,10 +26,11 @@
 #include <QFile>
 #include <QDebug>
 
-Category::Category(QObject* parent)
+Category::Category(const QSet<QString>& pluginName, QObject* parent)
         : QObject(parent)
         , m_iconString("applications-other")
         , m_showTechnical(false)
+        , m_plugins(pluginName)
 {}
 
 Category::~Category()
@@ -54,7 +55,7 @@ void Category::parseData(const QString& path, const QDomNode& data, bool canHave
             if (tempElement.tagName() == QLatin1String("Name")) {
                 m_name = i18nc("Category", tempElement.text().toUtf8());
             } else if (tempElement.tagName() == QLatin1String("Menu")) {
-                m_subCategories << new Category(this);
+                m_subCategories << new Category(m_plugins, this);
                 m_subCategories.last()->parseData(path, node, true);
             }
         }
@@ -69,7 +70,7 @@ void Category::parseData(const QString& path, const QDomNode& data, bool canHave
     }
 
     if (!m_subCategories.isEmpty()) {
-        m_subCategories << new Category(this);
+        m_subCategories << new Category(m_plugins, this);
         m_subCategories.last()->parseData(path, data, false);
     }
 }
@@ -171,6 +172,7 @@ void Category::addSubcategory(QList< Category* >& list, Category* newcat)
             } else {
                 c->m_orFilters += newcat->orFilters();
                 c->m_notFilters += newcat->notFilters();
+                c->m_plugins.unite(newcat->m_plugins);
                 for(Category* nc : newcat->subCategories())
                     addSubcategory(c->m_subCategories, nc);
                 delete newcat;
@@ -179,4 +181,18 @@ void Category::addSubcategory(QList< Category* >& list, Category* newcat)
         }
     }
     list << newcat;
+}
+
+bool Category::blacklistPlugins(const QSet<QString>& pluginNames)
+{
+    for(QList<Category*>::iterator it = m_subCategories.begin(), itEnd = m_subCategories.end(); it!=itEnd; ) {
+        if ((*it)->blacklistPlugins(pluginNames)) {
+            delete *it;
+            it = m_subCategories.erase(it);
+        } else
+            ++it;
+    }
+    m_plugins.subtract(pluginNames);
+
+    return m_plugins.isEmpty();
 }

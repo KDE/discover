@@ -39,10 +39,10 @@ MuonBackendsFactory::MuonBackendsFactory()
 AbstractResourcesBackend* MuonBackendsFactory::backend(const QString& name) const
 {
     QString data = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("libmuon/backends/%1.desktop").arg(name));
-    return backendForFile(data);
+    return backendForFile(data, name);
 }
 
-AbstractResourcesBackend* MuonBackendsFactory::backendForFile(const QString& path) const
+AbstractResourcesBackend* MuonBackendsFactory::backendForFile(const QString& path, const QString& name) const
 {
     Q_ASSERT(!path.isEmpty());
     KDesktopFile cfg(path);
@@ -60,6 +60,7 @@ AbstractResourcesBackend* MuonBackendsFactory::backendForFile(const QString& pat
     if(!instance) {
         qWarning() << "Couldn't find the backend: " << path << "among" << allBackendNames(false) << "because" << loader->errorString();
     }
+    instance->setName(name);
     instance->setMetaData(path);
 
     return instance;
@@ -114,7 +115,7 @@ void MuonBackendsFactory::setupCommandLine(QCommandLineParser* parser)
 
 void MuonBackendsFactory::processCommandLine(QCommandLineParser* parser)
 {
-    *s_requestedBackends = parser->value("backends").split(",", QString::SkipEmptyParts);
+    *s_requestedBackends = parser->value("backends").split(',', QString::SkipEmptyParts);
     if(parser->isSet("listbackends")) {
         fprintf(stdout, "%s", qPrintable(i18n("Available backends:\n")));
         MuonBackendsFactory f;

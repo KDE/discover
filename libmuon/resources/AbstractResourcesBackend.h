@@ -56,6 +56,7 @@ class MuonMainWindow;
 class MUONCOMMON_EXPORT AbstractResourcesBackend : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QString name CONSTANT)
     Q_PROPERTY(AbstractReviewsBackend* reviewsBackend READ reviewsBackend CONSTANT)
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
     Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
@@ -138,6 +139,12 @@ class MUONCOMMON_EXPORT AbstractResourcesBackend : public QObject
          */
         virtual QList<QAction*> messageActions() const = 0;
 
+        /** @returns the plugin's name */
+        QString name() const;
+
+        /** @internal only to be used by the factory */
+        void setName(const QString& name);
+
     public slots:
         /**
          * This gets called when the backend should install an application.
@@ -197,6 +204,9 @@ class MUONCOMMON_EXPORT AbstractResourcesBackend : public QObject
          * or the data set in which the backend searched changed.
          */
         void searchInvalidated();
+
+    private:
+        QString m_name;
 };
 
 

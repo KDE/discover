@@ -1,5 +1,9 @@
 project(muon)
+<<<<<<< HEAD
 set(PROJECT_VERSION "5.2.90")
+=======
+set(PROJECT_VERSION "5.2.2")
+>>>>>>> Plasma/5.2
 set(PROJECT_VERSION_MAJOR 5)
 
 cmake_minimum_required(VERSION 2.8.12)
@@ -22,6 +26,7 @@ find_package(KF5 REQUIRED WidgetsAddons CoreAddons Solid
                                             Config Wallet DBusAddons I18n ConfigWidgets Notifications Declarative
                                             KIO IconThemes ItemViews)
 
+find_package(KF5KDELibs4Support) # Needed for muon and MuonApt
 find_package(Phonon4Qt5 REQUIRED NO_MODULE)
 
 find_package(QApt 3.0.0)

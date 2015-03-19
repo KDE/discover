@@ -55,11 +55,11 @@ class MUONCOMMON_EXPORT CategoryModel : public QStandardItemModel
         virtual QHash< int, QByteArray > roleNames() const;
 
         Q_SCRIPTABLE static Category* findCategoryByName(const QString& name);
+        static void blacklistPlugin(const QString& name);
     private:
+        void categoryDeleted(QObject* cat);
         void setCategories(const QList<Category *> &categoryList, const QString &rootName);
-        static QList<Category*> populateCategories();
 
-        QList<Category*> m_categoryList;
         Category* m_currentCategory;
 };
 

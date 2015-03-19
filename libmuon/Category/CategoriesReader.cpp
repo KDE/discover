@@ -28,11 +28,16 @@
 #include <MuonBackendsFactory.h>
 #include <resources/AbstractResourcesBackend.h>
 
-QList<Category*> CategoriesReader::loadCategoriesFile(const QString& path)
+QList<Category*> CategoriesReader::loadCategoriesFile(const QString& name)
 {
-    QFile menuFile(path);
     QList<Category *> ret;
+    QString path = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "libmuon/categories/"+name+"-categories.xml");
+    if (path.isEmpty()) {
+        qWarning() << "Couldn't find a category for " << name;
+        return ret;
+    }
 
+    QFile menuFile(path);
     if (!menuFile.open(QIODevice::ReadOnly)) {
         // Broken install or broken FS
         return ret;
@@ -43,14 +48,14 @@ QList<Category*> CategoriesReader::loadCategoriesFile(const QString& path)
     int line;
     bool correct = menuDocument.setContent(&menuFile, &error, &line);
     if(!correct)
-        qWarning() << "error while parsing the categories file:" << error << " at: " << path << ":" << line;
+        qWarning() << "error while parsing the categories file:" << error << " at: " << path << ':' << line;
 
     QDomElement root = menuDocument.documentElement();
 
     QDomNode node = root.firstChild();
     while(!node.isNull())
     {
-        ret << new Category(nullptr);
+        ret << new Category( {name} );
         ret.last()->parseData(path, node, true);
 
         node = node.nextSibling();
@@ -70,12 +75,7 @@ QList<Category*> CategoriesReader::populateCategories()
 
     QList<Category*> ret;
     for (const QString& name : backendNames) {
-        QString file = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "libmuon/categories/"+name+"-categories.xml");
-        if (file.isEmpty()) {
-            qWarning() << "Couldn't find a category for " << name;
-            continue;
-        }
-        QList<Category*> cats = loadCategoriesFile(file);
+        QList<Category*> cats = loadCategoriesFile(name);
 
         if(ret.isEmpty()) {
             ret += cats;

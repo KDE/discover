@@ -162,12 +162,14 @@ void KNSBackend::categoriesLoaded(Attica::BaseJob* job)
     // Otherwise we'll fetch an empty category specificier which can return
     // everything and the kitchen sink if the remote provider feels like it.
     for (auto it = m_categories.begin(); it != m_categories.end();) {
-        if (!it.value().isValid())
+        if (!it.value().isValid()) {
+            qWarning() << "Found invalid category" << it.key();
             it = m_categories.erase(it);
-        else
+        } else
             ++it;
     }
     if (m_categories.isEmpty()) {
+        m_isValid = false;
         setFetching(false);
         return;
     }

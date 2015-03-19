@@ -173,11 +173,11 @@ QList<PackageState> AkabeiResource::addonsInformation()
 {
     QList<PackageState> states;
     foreach (const QString &optdep, m_pkg->optionalDependencies()) {
-        QStringList split = optdep.split(":");
+        QStringList split = optdep.split(':');
         if (split.count() >= 2) {
             bool installed = !Akabei::Backend::instance()->localDatabase()->queryPackages(Akabei::Queries::selectPackages("name", "LIKE", split.first())).isEmpty();
             if (!installed) {
-                installed = !Akabei::Backend::instance()->localDatabase()->queryPackages("SELECT * FROM packages JOIN provides WHERE provides.provides LIKE \"" + split.first() + "\"").isEmpty();
+                installed = !Akabei::Backend::instance()->localDatabase()->queryPackages("SELECT * FROM packages JOIN provides WHERE provides.provides LIKE \"" + split.first() + '\"').isEmpty();
             }
             states.append(PackageState(split.first(), split.at(1), installed));
         }

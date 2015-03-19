@@ -36,3 +36,13 @@ void AbstractResourcesBackend::integrateMainWindow(MuonMainWindow*)
 
 void AbstractResourcesBackend::setMetaData(const QString&)
 {}
+
+void AbstractResourcesBackend::setName(const QString& name)
+{
+    m_name = name;
+}
+
+QString AbstractResourcesBackend::name() const
+{
+    return m_name;
+}

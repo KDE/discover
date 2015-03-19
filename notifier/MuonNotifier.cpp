@@ -75,7 +75,7 @@ void MuonNotifier::updateStatusNotifier()
         //TODO: Better message strings
         QString msg = message();
         if (m_verbose) {
-            msg += " " + extendedMessage();
+            msg += ' ' + extendedMessage();
         }
 //         m_statusNotifier->setToolTip(iconName(), msg, i18n("A system update is recommended"));
 //         m_statusNotifier->setStatus(KStatusNotifierItem::Active);

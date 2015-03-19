@@ -55,7 +55,7 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
 void KNSBackendTest::wrongBackend()
 {
     MuonBackendsFactory f;
-    AbstractResourcesBackend* b = f.backendForFile(QFINDTESTDATA("muon-knswrong-backend.desktop"));
+    AbstractResourcesBackend* b = f.backendForFile(QFINDTESTDATA("muon-knswrong-backend.desktop"), "muon-knswrong-backend");
     QVERIFY(!b->isValid());
 }
 

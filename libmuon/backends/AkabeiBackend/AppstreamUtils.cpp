@@ -103,7 +103,7 @@ QHash<QString, ApplicationData> AppstreamUtils::fetchAppData(const QString& path
     qDebug() << "got a number of appstream datasets:" << ret.size();
 
     if (reader.hasError()) {
-        qWarning() << "error found while parsing" << path << ":" << reader.errorString();
+        qWarning() << "error found while parsing" << path << ':' << reader.errorString();
     }
     return ret;
 }

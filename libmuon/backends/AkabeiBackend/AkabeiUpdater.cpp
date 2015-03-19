@@ -176,7 +176,7 @@ void AkabeiUpdater::finished(bool success)
     if (!success) {
         QString err;
         foreach (const Akabei::Error &error, m_transaction->errors()) {
-            err.append(" " + error.description());
+            err.append(' ' + error.description());
         }
         if (err.isEmpty())
             err = i18n("Something went wrong!");

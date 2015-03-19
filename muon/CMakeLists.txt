@@ -1,4 +1,3 @@
-find_package(KF5KDELibs4Support)
 
 add_subdirectory(icons)
 
@@ -42,6 +41,7 @@ target_link_libraries(muon MuonCommon MuonApt
                            DebconfKDE::Main
                            KF5::KIOWidgets
                            KF5::KDELibs4Support
+                           KF5::DBusAddons
                            Qt5::Concurrent
                            QApt::Main)
 
