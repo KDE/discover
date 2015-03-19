@@ -1,4 +1,3 @@
-find_package(KF5KDELibs4Support)
 
 add_subdirectory(icons)
 

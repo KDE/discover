@@ -6,14 +6,12 @@ set(muonapt_SRCS
     HistoryView/HistoryView.cpp
 )
 
-find_package(KF5 REQUIRED KDELibs4Support)
-
 add_library(MuonApt ${muonapt_SRCS})
 target_link_libraries(MuonApt Qt5::Core
      KF5::Solid KF5::KIOWidgets KF5::XmlGui KF5::KDELibs4Support
      QApt::Main muonprivate
 )
-message(STATUS "lalala ${CMAKE_CURRENT_SOURCE_DIR}")
+
 target_include_directories(MuonApt PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 add_executable(muon_repo_helper AddRepositoryHelper.cpp)
