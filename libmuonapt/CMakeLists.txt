@@ -8,7 +8,7 @@ set(muonapt_SRCS
 
 add_library(MuonApt ${muonapt_SRCS})
 target_link_libraries(MuonApt Qt5::Core
-     KF5::Solid KF5::KIOWidgets KF5::XmlGui KF5::KDELibs4Support
+     KF5::Solid KF5::KIOWidgets KF5::XmlGui
      QApt::Main MuonCommon
 )
 
