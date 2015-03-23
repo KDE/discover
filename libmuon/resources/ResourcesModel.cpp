@@ -112,7 +112,7 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
     if(!backend->isValid()) {
         qWarning() << "Discarding invalid backend" << backend->name();
         CategoryModel::blacklistPlugin(backend->name());
-        delete backend;
+        backend->deleteLater();
         return;
     }
 
@@ -267,7 +267,7 @@ void ResourcesModel::callerFetchingChanged()
         m_backends.removeAt(idx);
         m_resources.removeAt(idx);
         CategoryModel::blacklistPlugin(backend->name());
-        delete backend;
+        backend->deleteLater();
         return;
     }
 
