@@ -73,7 +73,10 @@ void ResourcesUpdatesModel::addNewBackends()
 
 void ResourcesUpdatesModel::updaterDestroyed(QObject* obj)
 {
-    m_updaters.removeAll(qobject_cast<AbstractBackendUpdater*>(obj));
+//     TODO: use removeAll when build.kde.org doesn't complain about Qt 5.4 API usage...
+    int idx = m_updaters.indexOf(qobject_cast<AbstractBackendUpdater*>(obj));
+    if (idx>=0)
+        m_updaters.remove(idx);
 }
 
 void ResourcesUpdatesModel::slotProgressingChanged(bool progressing)
