@@ -26,6 +26,7 @@
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/Rating.h>
 #include <MuonBackendsFactory.h>
+#include <QStandardPaths>
 
 #include <qtest.h>
 #include <qsignalspy.h>
@@ -36,7 +37,9 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
     : QObject(parent)
     , m_r(0)
 {
-    ResourcesModel* model = new ResourcesModel("muon-knsplasmoids-backend", this);
+    QStandardPaths::setTestModeEnabled(true);
+    ResourcesModel* model = new ResourcesModel(QFINDTESTDATA("muon-knscorrect-backend.desktop"), this);
+    Q_ASSERT(!model->backends().isEmpty());
     m_backend = model->backends().first();
     MuonMainWindow *m_window = new MuonMainWindow();
     model->integrateMainWindow(m_window);
