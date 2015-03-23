@@ -38,8 +38,13 @@ MuonBackendsFactory::MuonBackendsFactory()
 
 AbstractResourcesBackend* MuonBackendsFactory::backend(const QString& name) const
 {
-    QString data = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("libmuon/backends/%1.desktop").arg(name));
-    return backendForFile(data, name);
+    if (QDir::isAbsolutePath(name) && QStandardPaths::isTestModeEnabled()) {
+        QString path = name;
+        return backendForFile(path, QFileInfo(name).fileName());
+    } else {
+        QString path = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("libmuon/backends/%1.desktop").arg(name));
+        return backendForFile(path, name);
+    }
 }
 
 AbstractResourcesBackend* MuonBackendsFactory::backendForFile(const QString& path, const QString& name) const
