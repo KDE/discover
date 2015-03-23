@@ -71,6 +71,9 @@ class MUONPRIVATE_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         void cancel();
         void updateAll();
 
+    private slots:
+        void updaterDestroyed(QObject* obj);
+
     private:
         void setResourcesModel(ResourcesModel* model);
 

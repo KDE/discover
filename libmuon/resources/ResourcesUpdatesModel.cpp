@@ -65,9 +65,15 @@ void ResourcesUpdatesModel::addNewBackends()
             connect(updater, SIGNAL(downloadSpeedChanged(quint64)), SIGNAL(downloadSpeedChanged()));
             connect(updater, SIGNAL(progressingChanged(bool)), SLOT(slotProgressingChanged(bool)));
             connect(updater, SIGNAL(cancelableChanged(bool)), SIGNAL(cancelableChanged()));
+            connect(updater, SIGNAL(destroyed(QObject*)), SLOT(updaterDestroyed(QObject*)));
             m_updaters += updater;
         }
     }
+}
+
+void ResourcesUpdatesModel::updaterDestroyed(QObject* obj)
+{
+    m_updaters.removeAll(qobject_cast<AbstractBackendUpdater*>(obj));
 }
 
 void ResourcesUpdatesModel::slotProgressingChanged(bool progressing)
