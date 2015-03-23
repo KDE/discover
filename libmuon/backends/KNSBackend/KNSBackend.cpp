@@ -20,6 +20,7 @@
 
 // Qt includes
 #include <QDebug>
+#include <QDir>
 #include <QFileInfo>
 
 // Attica includes
@@ -77,6 +78,13 @@ void KNSBackend::setMetaData(const QString& path)
     m_iconName = service.readEntry("Icon", QString());
     QString knsrc = service.readEntry("X-Muon-Arguments", QString());
     m_name = QStandardPaths::locate(QStandardPaths::GenericConfigLocation, knsrc);
+    if (m_name.isEmpty()) {
+        QString p = QFileInfo(path).dir().filePath(knsrc);
+        if (QFile::exists(p))
+            m_name = p;
+
+    }
+
     if (m_name.isEmpty()) {
         m_isValid = false;
         qWarning() << "Couldn't find knsrc file" << knsrc;
