@@ -171,10 +171,13 @@ QVector<AbstractResource*> PackageKitBackend::resourcesByPackageName(const QStri
     const QHash<QString, QStringList> *dictionary = updating ? &m_updatingTranslationPackageToApp : &m_translationPackageToApp;
     const QHash<QString, AbstractResource*> *pkgs = updating ? &m_updatingPackages : &m_packages;
 
+    QStringList names = dictionary->value(name, QStringList(name));
     QVector<AbstractResource*> ret;
-    QStringList names = dictionary->value(name);
+    ret.reserve(names.size());
     foreach(const QString& name, names) {
-        ret += pkgs->value(name);
+        AbstractResource* res = pkgs->value(name);
+        if (res)
+            ret += res;
     }
     return ret;
 }
