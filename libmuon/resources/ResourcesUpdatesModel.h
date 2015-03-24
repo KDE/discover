@@ -78,7 +78,7 @@ class MUONCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 
         ResourcesModel* m_resources;
         QVector<AbstractBackendUpdater*> m_updaters;
-        bool m_isProgressing;
+        bool m_lastIsProgressing;
         QDBusInterface * m_kded;
 
     private slots:

@@ -35,7 +35,7 @@
 ResourcesUpdatesModel::ResourcesUpdatesModel(QObject* parent)
     : QStandardItemModel(parent)
     , m_resources(0)
-    , m_isProgressing(false)
+    , m_lastIsProgressing(false)
     , m_kded(0)
 {
     setResourcesModel(ResourcesModel::global());
@@ -81,10 +81,12 @@ void ResourcesUpdatesModel::updaterDestroyed(QObject* obj)
 
 void ResourcesUpdatesModel::slotProgressingChanged(bool progressing)
 {
-    if ((!progressing && !isProgressing()) || (isProgressing() && !m_isProgressing)) {
-        m_isProgressing = isProgressing();
+    Q_UNUSED(progressing);
+    const bool newProgressing = isProgressing();
+    if (newProgressing != m_lastIsProgressing) {
+        m_lastIsProgressing = newProgressing;
         emit progressingChanged();
-        if (!m_isProgressing) {
+        if (!m_lastIsProgressing) {
             if (!m_kded)
                 m_kded = new QDBusInterface("org.kde.kded", "/kded",
                                             "org.kde.kded", QDBusConnection::sessionBus(), this);
