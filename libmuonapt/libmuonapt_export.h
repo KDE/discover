@@ -18,64 +18,24 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef HISTORYVIEW_H
-#define HISTORYVIEW_H
+#ifndef MUONAPT_EXPORT_H
+#define MUONAPT_EXPORT_H
 
-#include <QtCore/QHash>
+// needed for KDE_EXPORT and KDE_IMPORT macros
+#include <kdemacros.h>
 
-#include <QWidget>
+#ifndef MUONAPT_EXPORT
+# if defined(MAKE_MUONAPT_LIB)
+   // We are building this library
+#  define MUONAPT_EXPORT KDE_EXPORT
+# else
+   // We are using this library
+#  define MUONAPT_EXPORT KDE_IMPORT
+# endif
+#endif
 
-#include "../libmuonapt_export.h"
-
-class QStandardItem;
-class QStandardItemModel;
-class QTimer;
-class QTreeView;
-class QLineEdit;
-class QComboBox;
-
-namespace QApt {
-    class History;
-}
-
-class HistoryProxyModel;
-
-class MUONAPT_EXPORT HistoryView : public QWidget
-{
-    Q_OBJECT
-public:
-    enum ComboItems {
-        AllChangesItem = 0,
-        InstallationsItem = 1,
-        UpdatesItem = 2,
-        RemovalsItem = 3
-    };
-    enum PastActions {
-        InvalidAction = 0,
-        InstalledAction = 1,
-        UpgradedAction = 2,
-        DowngradedAction = 3,
-        RemovedAction = 4,
-        PurgedAction = 5
-    };
-    HistoryView(QWidget *parent);
-
-    QSize sizeHint() const;
-
-private:
-    QApt::History *m_history;
-    QStandardItemModel *m_historyModel;
-    HistoryProxyModel *m_proxyModel;
-    QHash<QString, QStandardItem *> m_categoryHash;
-
-    QLineEdit *m_searchEdit;
-    QTimer *m_searchTimer;
-    QComboBox *m_filterBox;
-    QTreeView *m_historyView;
-
-private Q_SLOTS:
-    void setStateFilter(int index);
-    void startSearch();
-};
+# ifndef MUONAPT_EXPORT_DEPRECATED
+#  define MUONAPT_EXPORT_DEPRECATED KDE_DEPRECATED MUONAPT_EXPORT
+# endif
 
 #endif
