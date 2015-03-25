@@ -4,6 +4,10 @@ ServiceTypes=Muon/Backend
 Exec=blubb
 Icon=plasma
 Name=Correct
+Name[nl]=Juist
+Name[sv]=Riktig
+Name[uk]=Правильно
+Name[x-test]=xxCorrectxx
 
 X-KDE-Library=muon-knsbackend
 X-KDE-PluginInfo-Name=muon-knscorrect-backend
