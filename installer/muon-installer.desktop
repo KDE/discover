@@ -40,6 +40,7 @@ Name[sv]=Muon programvarucentral
 Name[tr]=Muon Yazılım Merkezi
 Name[ug]=Muon يۇمشاق دېتال مەركىزى
 Name[uk]=Центр програм Muon
+Name[x-test]=xxMuon Software Centerxx
 Name[zh_CN]=Muon 软件中心
 Name[zh_TW]=Muon 軟體中心
 Exec=muon-installer %i -caption %c
