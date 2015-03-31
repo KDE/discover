@@ -324,6 +324,14 @@ static QString joinPackages(const QStringList& pkgids)
     return ret.join(i18nc("comma separating package names", ", "));
 }
 
+static QStringList urlToLinks(const QStringList& urls)
+{
+    QStringList ret;
+    foreach(const QString& in, urls)
+        ret += QStringLiteral("<a href='%1'>%1</a>").arg(in);
+    return ret;
+}
+
 void PackageKitResource::updateDetail(const QString& packageID, const QStringList& updates, const QStringList& obsoletes, const QStringList& vendorUrls,
                                       const QStringList& bugzillaUrls, const QStringList& cveUrls, PackageKit::Transaction::Restart restart, const QString& updateText,
                                       const QString& changelog, PackageKit::Transaction::UpdateState state, const QDateTime& issued, const QDateTime& updated)
@@ -335,6 +343,9 @@ void PackageKitResource::updateDetail(const QString& packageID, const QStringLis
     addIfNotEmpty(i18n("Change Log:"), changelog, info);
     addIfNotEmpty(i18n("Update State:"), PackageKitMessages::updateStateMessage(state), info);
     addIfNotEmpty(i18n("Restart:"), PackageKitMessages::restartMessage(restart), info);
+
+    if (!vendorUrls.isEmpty())
+        addIfNotEmpty(i18n("Vendor:"), urlToLinks(vendorUrls).join(QStringLiteral(", ")), info);
 
     emit changelogFetched(info);
 }
