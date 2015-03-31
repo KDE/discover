@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
     app.setWindowIcon(QIcon::fromTheme("muon"));
-    KAboutData about("muondiscover", i18n("Muon Package Manager"), version, i18n("A package manager"),
+    KAboutData about("muon", i18n("Muon Package Manager"), version, i18n("A package manager"),
                      KAboutLicense::GPL, i18n("© 2009-2013 Jonathan Thomas"));
     about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
     about.setProductName("muon/muon");

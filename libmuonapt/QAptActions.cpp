@@ -177,7 +177,7 @@ void QAptActions::setupActions()
     historyAction->setPriority(QAction::LowPriority);
     historyAction->setIcon(QIcon::fromTheme("view-history"));
     historyAction->setText(i18nc("@action::inmenu", "History..."));
-    historyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_H));
+    actionCollection()->setDefaultShortcut(historyAction, QKeySequence(Qt::CTRL + Qt::Key_H));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showHistoryDialog()));
 
     QAction *distUpgradeAction = actionCollection()->addAction("dist-upgrade");
