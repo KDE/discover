@@ -30,6 +30,7 @@
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QApplication>
+#include <QDesktopServices>
 
 // KDE includes
 #include <KIO/Job>
@@ -171,8 +172,12 @@ void ChangelogWidget::fetchChangelog()
 
 void ChangelogWidget::showMore(const QUrl& package)
 {
-    bool b = QProcess::startDetached("muon-discover", { "--application", package.path() });
-    if (!b) {
-        qWarning() << "Couldn't launch muon-discover";
+    if (package.scheme() == QLatin1String("package")) {
+        bool b = QProcess::startDetached("muon-discover", { "--application", package.path() });
+        if (!b) {
+            qWarning() << "Couldn't launch muon-discover";
+        }
+    } else {
+        QDesktopServices::openUrl(package);
     }
 }
