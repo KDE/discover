@@ -202,7 +202,7 @@ void MainWindow::setupActions()
     QAction* updateAction = actionCollection()->addAction("update");
     updateAction->setIcon(QIcon::fromTheme("system-software-update"));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
-    updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
+    actionCollection()->setDefaultShortcut(updateAction, QKeySequence(Qt::CTRL + Qt::Key_R));
     connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
     if (!isConnected()) {
         updateAction->setDisabled(true);
@@ -213,7 +213,7 @@ void MainWindow::setupActions()
 
     setActionsEnabled(false);
 
-    setupGUI((StandardWindowOption)(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
+    setupGUI(StandardWindowOption(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar));
 }
 
 void MainWindow::markUpgrade()
