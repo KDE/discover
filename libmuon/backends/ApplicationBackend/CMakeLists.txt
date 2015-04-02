@@ -37,4 +37,4 @@ add_library(MuonApplicationNotifier MODULE ApplicationNotifier.cpp)
 target_link_libraries(MuonApplicationNotifier KF5::CoreAddons KF5::I18n KF5::Notifications KF5::IconThemes MuonNotifiers)
 
 install(TARGETS MuonApplicationNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/muon-notifier)
-install(FILES muonapplicationnotifier.notifyrc DESTINATION ${DATA_INSTALL_DIR}/muonapplicationnotifier)
+install(FILES muonapplicationnotifier.notifyrc DESTINATION ${KNOTIFYRC_INSTALL_DIR})

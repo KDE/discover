@@ -58,4 +58,4 @@ target_include_directories(MuonCommon PRIVATE ${PHONON_INCLUDES} PUBLIC ${CMAKE_
 
 install(TARGETS MuonCommon ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES moo.ogg DESTINATION ${DATA_INSTALL_DIR}/libmuon)
-install(FILES resources/muonabstractnotifier.notifyrc DESTINATION ${DATA_INSTALL_DIR}/muonabstractnotifier)
+install(FILES resources/muonabstractnotifier.notifyrc DESTINATION ${KNOTIFYRC_INSTALL_DIR})
