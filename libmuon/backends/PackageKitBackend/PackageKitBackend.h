@@ -57,8 +57,8 @@ class MUONCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         virtual bool isFetching() const;
         virtual QList<QAction*> messageActions() const;
 
-        bool isPackageNameUpgradeable(PackageKitResource* res) const;
-        QString upgradeablePackageId(PackageKitResource* res) const;
+        bool isPackageNameUpgradeable(const PackageKitResource* res) const;
+        QString upgradeablePackageId(const PackageKitResource* res) const;
         QVector<AbstractResource*> resourcesByPackageName(const QString& name, bool updating) const;
 
     public slots:

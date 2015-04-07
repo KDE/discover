@@ -312,12 +312,12 @@ void PackageKitBackend::getUpdatesDetailsFinished(PackageKit::Transaction::Exit 
     acquireFetching(false);
 }
 
-bool PackageKitBackend::isPackageNameUpgradeable(PackageKitResource* res) const
+bool PackageKitBackend::isPackageNameUpgradeable(const PackageKitResource* res) const
 {
     return !upgradeablePackageId(res).isEmpty();
 }
 
-QString PackageKitBackend::upgradeablePackageId(PackageKitResource* res) const
+QString PackageKitBackend::upgradeablePackageId(const PackageKitResource* res) const
 {
     QString name = res->packageName();
     for (const QString& pkgid: m_updatesPackageId) {
