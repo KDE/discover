@@ -52,6 +52,11 @@ QStringList PackageKitResource::allPackageNames() const
 
 QString PackageKitResource::availablePackageId() const
 {
+    //First we check if it's upgradeable and use this version to display
+    const QString pkgid = backend()->upgradeablePackageId(this);
+    if (!pkgid.isEmpty())
+        return pkgid;
+
     QMap<PackageKit::Transaction::Info, QStringList>::const_iterator it = m_packages.constFind(PackageKit::Transaction::InfoAvailable);
     if (it != m_packages.constEnd())
         return it->first();
