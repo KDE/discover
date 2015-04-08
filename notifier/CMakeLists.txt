@@ -1,3 +1,5 @@
+add_definitions(-DTRANSLATION_DOMAIN=\"muon-notifier\")
+
 add_library(MuonNotifierDeclarativePlugin BackendNotifierFactory.cpp MuonNotifier.cpp MuonNotifierDeclarativePlugin.cpp)
 target_link_libraries(MuonNotifierDeclarativePlugin
     KF5::Notifications

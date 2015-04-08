@@ -1,3 +1,5 @@
+add_definitions(-DTRANSLATION_DOMAIN=\"libmuon\")
+
 add_subdirectory(backends)
 add_subdirectory(declarative)
 add_subdirectory(notifiers)

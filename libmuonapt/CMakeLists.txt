@@ -1,3 +1,5 @@
+add_definitions(-DTRANSLATION_DOMAIN=\"libmuon\")
+
 set(muonapt_SRCS
     ChangesDialog.cpp
     MuonStrings.cpp
