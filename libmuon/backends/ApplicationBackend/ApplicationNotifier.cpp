@@ -135,12 +135,20 @@ void ApplicationNotifier::parseUpdateInfo()
         QByteArray updatesString = line.left(eqpos);
         QByteArray securityString = line.right(line.size() - eqpos - 1);
         
-        m_securityUpdates = securityString.toInt();
-        m_normalUpdates = updatesString.toInt() - m_securityUpdates;
+        int securityUpdates = securityString.toInt();
+        setUpdates(updatesString.toInt() - m_securityUpdates, securityUpdates);
     }
-    emit foundUpdates();
     
     m_checkingForUpdates = false;
+}
+
+void ApplicationNotifier::setUpdates(int normal, int security)
+{
+    if (m_normalUpdates != normal || security != m_securityUpdates) {
+        m_normalUpdates = normal;
+        m_securityUpdates = security;
+        emit foundUpdates();
+    }
 }
 
 bool ApplicationNotifier::isSystemUpToDate() const
