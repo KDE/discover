@@ -87,7 +87,7 @@ void ApplicationNotifier::checkUpgradeFinished(int exitStatus)
                                                 i18n("System update available!"),
                                                 i18nc("Notification when a new version of Kubuntu is available",
                                                       "A new version of Kubuntu is available"),
-                                                QIcon::fromTheme("svn-update").pixmap(KIconLoader::SizeMedium),
+                                                QStringLiteral("system-software-update"),
                                                 nullptr,
                                                 KNotification::CloseOnTimeout,
                                                 "muonapplicationnotifier");

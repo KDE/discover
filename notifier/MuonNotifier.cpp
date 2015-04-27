@@ -80,7 +80,7 @@ void MuonNotifier::updateStatusNotifier()
 //         m_statusNotifier->setToolTip(iconName(), msg, i18n("A system update is recommended"));
 //         m_statusNotifier->setStatus(KStatusNotifierItem::Active);
 
-        KNotification::event("Update", i18n("System update available"), msg, QIcon::fromTheme("svn-update").pixmap(KIconLoader::SizeMedium), nullptr, KNotification::CloseOnTimeout, "muonabstractnotifier");
+        KNotification::event("Update", i18n("System update available"), msg, QStringLiteral("system-software-update"), nullptr, KNotification::CloseOnTimeout, "muonabstractnotifier");
     } else {
 //         m_statusNotifier->setStatus(KStatusNotifierItem::Passive);
 //         m_s:tatusNotifier->setToolTip(QString(), message(), i18n("Your system is up-to-date"));
