@@ -49,6 +49,8 @@ private slots:
     void init();
 
 private:
+    void setUpdates(int normal, int security);
+
     QProcess *m_checkerProcess;
     QProcess *m_updateCheckerProcess;
     bool m_checkingForUpdates;
