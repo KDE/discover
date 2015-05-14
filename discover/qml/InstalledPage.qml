@@ -1,5 +1,6 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.1
 import org.kde.muon 1.0
 
 ApplicationsListPage {
@@ -14,15 +15,18 @@ ApplicationsListPage {
     
     extendedToolBar: Component {
         id: toolbarComponent
-        Button {
-            id: commitButton
-            text: i18n("Update All")
-            iconSource: "system-software-update"
-            width: ResourcesModel.updatesCount>0 ? commitButton.implicitWidth : 0
+        RowLayout {
+            Button {
+                id: commitButton
+                text: i18n("Update All")
+                iconSource: "system-software-update"
+                visible: ResourcesModel.updatesCount>0
+                width: ResourcesModel.updatesCount>0 ? commitButton.implicitWidth : 0
 
-            onClicked: {
-                var updates = page.Stack.view.push(updatesPage)
-                updates.start()
+                onClicked: {
+                    var updates = page.Stack.view.push(updatesPage)
+                    updates.start()
+                }
             }
         }
     }
