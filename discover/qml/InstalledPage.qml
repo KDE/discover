@@ -18,7 +18,7 @@ ApplicationsListPage {
         RowLayout {
             Button {
                 id: commitButton
-                text: i18n("Update All %1", width)
+                text: i18n("Update All")
                 iconSource: "system-software-update"
                 visible: ResourcesModel.updatesCount>0
                 width: ResourcesModel.updatesCount>0 ? commitButton.implicitWidth : 0
