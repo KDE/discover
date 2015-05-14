@@ -43,7 +43,6 @@
 #include <KSharedConfig>
 #include <KXmlGuiWindow>
 #include <KWindowConfig>
-// #include <Solid/Networking>
 
 // QApt includes
 #include <QApt/Backend>
@@ -62,9 +61,6 @@ QAptActions::QAptActions()
     , m_historyDialog(nullptr)
     , m_distUpgradeAvailable(false)
 {
-//     TODO: port to kf5
-//     connect(Solid::Networking::notifier(), SIGNAL(statusChanged(Solid::Networking::Status)),
-//             this, SLOT(networkChanged()));
 }
 
 QAptActions* QAptActions::self()
@@ -81,6 +77,7 @@ void QAptActions::setMainWindow(MuonMainWindow* w)
     setParent(w);
     m_mainWindow = w;
     connect(m_mainWindow, SIGNAL(actionsEnabledChanged(bool)), SLOT(setActionsEnabledInternal(bool)));
+    connect(m_mainWindow, SIGNAL(shouldConnect(bool)), SIGNAL(shouldConnect(bool)));
     setupActions();
 }
 
@@ -154,9 +151,7 @@ void QAptActions::setupActions()
     downloadListAction->setIcon(QIcon::fromTheme("download"));
     downloadListAction->setText(i18nc("@action", "Download Packages From List..."));
     connect(downloadListAction, SIGNAL(triggered()), this, SLOT(downloadPackagesFromList()));
-    if (!isConnected()) {
-        downloadListAction->setDisabled(false);
-    }
+    downloadListAction->setEnabled(isConnected());
     connect(this, SIGNAL(shouldConnect(bool)), downloadListAction, SLOT(setEnabled(bool)));
     m_actions.append(downloadListAction);
 
@@ -222,21 +217,9 @@ bool QAptActions::reloadWhenSourcesEditorFinished() const
     return m_reloadWhenEditorFinished;
 }
 
-bool QAptActions::isConnected() const {
-//     int status = Solid::Networking::status();
-//     bool connected = ((status == Solid::Networking::Connected) ||
-//                       (status == Solid::Networking::Unknown));
-//     return connected;
-//     TODO: port to kf5
-    return true;
-}
-
-void QAptActions::networkChanged()
+bool QAptActions::isConnected() const
 {
-    if (m_actionsDisabled)
-        return;
-
-    emit shouldConnect(isConnected());
+    return !m_mainWindow || m_mainWindow->isConnected();
 }
 
 bool QAptActions::saveSelections()

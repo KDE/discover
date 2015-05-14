@@ -65,7 +65,6 @@ signals:
 public slots:
     void setBackend(QApt::Backend *backend);
     void setupActions();
-    void networkChanged();
 
     // KAction slots
     bool saveSelections();

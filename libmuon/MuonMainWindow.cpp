@@ -29,6 +29,7 @@
 #include <QMenu>
 #include <QVBoxLayout>
 #include <QStandardPaths>
+#include <QNetworkConfigurationManager>
 
 // KF5 includes
 #include <KLocalizedString>
@@ -38,8 +39,11 @@
 
 MuonMainWindow::MuonMainWindow()
     : KXmlGuiWindow(0)
+    , m_config(new QNetworkConfigurationManager(this))
     , m_canExit(true)
-{}
+{
+    connect(m_config, &QNetworkConfigurationManager::onlineStateChanged, this, &MuonMainWindow::shouldConnect);
+}
 
 bool MuonMainWindow::queryClose()
 {
@@ -107,12 +111,7 @@ void MuonMainWindow::setActionsEnabled(bool enabled)
 
 bool MuonMainWindow::isConnected() const
 {
-//     TODO: Port to new solid API
-//     int status = Solid::Networking::status();
-//     bool connected = ((status == Solid::Networking::Connected) ||
-//                       (status == Solid::Networking::Unknown));
-//     return connected;
-    return true;
+    return m_config->isOnline();
 }
 
 QList<QAction*> MuonMainWindow::setupMessageActions(QMenu* main, QMenu* advanced, const QList<QAction*> &actions)

@@ -22,12 +22,14 @@
 #define MUONMAINWINDOW_H
 
 // Qt includes
-#include <QtCore/QVariantMap>
+#include <QList>
 
 // KDE includes
 #include <KXmlGuiWindow>
 
 #include "libMuonCommon_export.h"
+
+class QNetworkConfigurationManager;
 
 /**
  * This class serves as a shared Main Window implementation that connects
@@ -64,6 +66,7 @@ public slots:
     virtual void setActionsEnabled(bool enabled=true);
 
 private:
+    QNetworkConfigurationManager* m_config;
     bool m_canExit;
 };
 
