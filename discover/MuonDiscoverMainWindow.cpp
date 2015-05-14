@@ -250,12 +250,11 @@ void MuonDiscoverMainWindow::configureMenu()
 {
     m_advancedMenu->clear();
     m_moreMenu->clear();
-    QList<QAction*> highActions = setupMessageActions(m_moreMenu, m_advancedMenu, ResourcesModel::global()->messageActions());
-#warning TODO: implement high priority actions
+    setupMessageActions(m_moreMenu, m_advancedMenu, ResourcesModel::global()->messageActions());
 
     if (!m_moreMenu->isEmpty())
         m_moreMenu->addSeparator();
-    m_moreMenu->addAction(actionCollection()->action("options_configure"));
+
     m_moreMenu->addAction(actionCollection()->action("options_configure_keybinding"));
     m_moreMenu->addSeparator();
     m_moreMenu->addMenu(m_advancedMenu);
