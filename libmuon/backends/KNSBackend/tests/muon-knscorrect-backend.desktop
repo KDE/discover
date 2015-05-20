@@ -30,6 +30,7 @@ Name[sr@latin]=Tačno
 Name[sv]=Riktig
 Name[uk]=Правильно
 Name[x-test]=xxCorrectxx
+Name[zh_TW]=修正
 
 X-KDE-Library=muon-knsbackend
 X-KDE-PluginInfo-Name=muon-knscorrect-backend
