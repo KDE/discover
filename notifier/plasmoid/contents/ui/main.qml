@@ -38,7 +38,13 @@ Item
             }
     }
 
+    Component.onCompleted: {
+        plasmoid.setAction("update", i18n("See Updates..."), "system-software-update");
+    }
 
+    function action_update() {
+        MuonNotifier.showMuon();
+    }
 
     Plasmoid.compactRepresentation: PlasmaCore.IconItem {
         source: MuonNotifier.iconName
