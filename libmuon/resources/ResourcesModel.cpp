@@ -340,21 +340,25 @@ int ResourcesModel::updatesCount() const
 
 void ResourcesModel::installApplication(AbstractResource* app)
 {
+    Q_ASSERT(!isFetching());
     app->backend()->installApplication(app);
 }
 
 void ResourcesModel::installApplication(AbstractResource* app, AddonList addons)
 {
+    Q_ASSERT(!isFetching());
     app->backend()->installApplication(app, addons);
 }
 
 void ResourcesModel::removeApplication(AbstractResource* app)
 {
+    Q_ASSERT(!isFetching());
     app->backend()->removeApplication(app);
 }
 
 void ResourcesModel::cancelTransaction(AbstractResource* app)
 {
+    Q_ASSERT(!isFetching());
     app->backend()->cancelTransaction(app);
 }
 

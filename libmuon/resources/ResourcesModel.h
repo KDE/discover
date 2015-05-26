@@ -34,7 +34,7 @@ class MUONCOMMON_EXPORT ResourcesModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
-    Q_PROPERTY(bool fetching READ isFetching NOTIFY fetchingChanged)
+    Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
     public:
         enum Roles {
             NameRole = Qt::UserRole,
