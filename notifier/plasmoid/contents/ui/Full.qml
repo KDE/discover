@@ -30,7 +30,10 @@ Item
 
     PlasmaExtras.Heading {
         id: header
-        Layout.fillWidth: true
+        anchors {
+            left: parent.left
+            right: parent.right
+        }
         level: 3
         wrapMode: Text.WordWrap
         text: MuonNotifier.message
