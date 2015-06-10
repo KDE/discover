@@ -55,6 +55,8 @@ ApplicationNotifier::ApplicationNotifier(QObject* parent)
 
     //check in 2 minutes
     QTimer::singleShot(2 * 60 * 1000, this, &ApplicationNotifier::recheckSystemUpdateNeeded);
+
+    init();
 }
 
 ApplicationNotifier::~ApplicationNotifier()
