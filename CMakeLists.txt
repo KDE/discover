@@ -18,11 +18,10 @@ include(ECMInstallIcons)
 include(ECMMarkAsTest)
 include(GenerateExportHeader)
 
-find_package(KF5 REQUIRED WidgetsAddons CoreAddons Solid
+find_package(KF5 REQUIRED WidgetsAddons CoreAddons Solid Archive
                                             Config Wallet DBusAddons I18n ConfigWidgets Notifications Declarative
                                             KIO IconThemes ItemViews)
 
-find_package(KF5KDELibs4Support) # Needed for muon and MuonApt
 find_package(Phonon4Qt5 REQUIRED NO_MODULE)
 
 find_package(QApt 3.0.0)
