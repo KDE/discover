@@ -195,7 +195,7 @@ void QAptActions::setActionsEnabledInternal(bool enabled)
         action->setEnabled(enabled);
     }
 
-    if (!enabled)
+    if (!enabled || !m_mainWindow || !actionCollection())
         return;
 
     actionCollection()->action("update")->setEnabled(isConnected() && enabled);
@@ -541,5 +541,7 @@ void QAptActions::checkDistUpgrade()
 void QAptActions::checkerFinished(int res)
 {
     m_distUpgradeAvailable = res == 0;
-    QAptActions::self()->actionCollection()->action("dist-upgrade")->setEnabled(res == 0);
+    if (!m_mainWindow)
+        return;
+    actionCollection()->action("dist-upgrade")->setEnabled(res == 0);
 }
