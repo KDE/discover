@@ -1,5 +1,6 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.1
 import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
 
@@ -37,10 +38,21 @@ Information {
                 height: info.height
             }
         }
-    Item {
+
+    Rectangle {
+        anchors.fill: titleBar
+        color: palette.midlight
+        opacity: 0.7
+        z: 20
+    }
+
+    SystemPalette { id: palette }
+
+    RowLayout {
         id: titleBar
-        height: 40
+        height: description.paintedHeight*1.2
         z: 23
+        spacing: 10
         property variant modelData: info.model.get(Math.min(info.currentIndex, info.model.count))
         anchors {
             left: parent.left
@@ -48,58 +60,32 @@ Information {
             bottom: parent.bottom
         }
         
-        SystemPalette {
-            id: palette
-        }
-        Rectangle {
-            anchors.fill: parent
-            color: palette.midlight
-            opacity: 0.7
-        }
-        
         ToolButton {
-            id: prevButton
             iconName: "go-previous"
-            height: parent.height*0.9
+            Layout.fillHeight: true
             width: height
             onClicked: info.previous()
-            anchors {
-                verticalCenter: parent.verticalCenter
-                left: parent.left
-                leftMargin: 3
-            }
         }
         
         QIconItem {
-            id: iconItem
-            anchors {
-                left: prevButton.right
-                top: parent.top
-                bottom: parent.bottom
-                margins: 3
-            }
-            width: height
+            height: parent.height*2
+            width: parent.height*2
             icon: titleBar.modelData ? titleBar.modelData.icon : "kde"
         }
         
         Label {
-            anchors {
-                left: iconItem.right
-                verticalCenter: parent.verticalCenter
-                leftMargin: 10
-            }
+            id: description
+            Layout.fillWidth: true
+            anchors.verticalCenter: parent.verticalCenter
+
             text: titleBar.modelData ? i18n("<b>%1</b><br/>%2", titleBar.modelData.text, titleBar.modelData.comment) : ""
         }
         ToolButton {
             iconName: "go-next"
-            height: parent.height*0.9
+            Layout.fillHeight: true
+
             width: height
             onClicked: info.next()
-            anchors {
-                right: parent.right
-                verticalCenter: parent.verticalCenter
-                rightMargin: 3
-            }
         }
     }
 }
