@@ -98,27 +98,20 @@ Item {
         actualWidth: page.actualWidth
         delegate: categoryDelegate
         header: category==null ? featured : categoryHeader
-        footer: Item {
-                    height: top.height+5
+        footer: RowLayout {
+                    height: top.Layout.preferredHeight+5
                     width: parent.width
                     ApplicationsTop {
                         id: top
-                        width: parent.width/2-5
-                        anchors {
-                            top: parent.top
-                            left: parent.left
-                        }
+                        Layout.fillWidth: true
                         sortRole: "sortableRating"
                         filteredCategory: page.category
                         title: i18n("Popularity")
                         roleDelegate: Label { property variant model; text: i18n("points: %1", model.sortableRating.toFixed(2)) }
                     }
                     ApplicationsTop {
-                        width: parent.width/2-5
-                        anchors {
-                            top: parent.top
-                            right: parent.right
-                        }
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
                         sortRole: "ratingPoints"
                         filteredCategory: page.category
                         title: i18n("Rating")
