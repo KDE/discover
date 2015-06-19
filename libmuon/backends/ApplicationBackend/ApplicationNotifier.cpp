@@ -103,10 +103,10 @@ void ApplicationNotifier::checkUpgradeFinished(int exitStatus)
 
 void ApplicationNotifier::upgradeActivated()
 {
-    QString kdesudo = QStandardPaths::findExecutable("kdesudo");
+    QString pkexec = QStandardPaths::findExecutable("pkexec");
     QString upgrader = QStringLiteral("do-release-upgrade -m desktop -f DistUpgradeViewKDE");
     
-    QProcess::startDetached(kdesudo, QStringList() << upgrader);
+    QProcess::startDetached(pkexec, QStringList() << upgrader);
 }
 
 void ApplicationNotifier::recheckSystemUpdateNeeded()

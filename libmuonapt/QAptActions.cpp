@@ -390,7 +390,7 @@ void QAptActions::runSourcesEditor()
     QStringList arguments;
     int winID = m_mainWindow->effectiveWinId();
 
-    QString kdesudo = QStandardPaths::findExecutable("kdesudo");
+    QString pkexec = QStandardPaths::findExecutable("pkexec");
     QString editor = QStandardPaths::findExecutable("software-properties-kde");
 
     if (m_reloadWhenEditorFinished) {
@@ -399,7 +399,7 @@ void QAptActions::runSourcesEditor()
         editor.append(QLatin1String(" --attach ") % QString::number(winID));
     }
 
-    arguments << kdesudo << editor;
+    arguments << pkexec << editor;
 
     proc->setProgram(arguments);
     m_mainWindow->find(winID)->setEnabled(false);
@@ -515,10 +515,10 @@ void QAptActions::setActionsEnabled(bool enabled)
 
 void QAptActions::launchDistUpgrade()
 {
-    QString kdesudo = QStandardPaths::findExecutable("kdesudo");
+    QString pkexec = QStandardPaths::findExecutable("pkexec");
     QString upgrader = QStringLiteral("do-release-upgrade -m desktop -f DistUpgradeViewKDE");
 
-    QProcess::startDetached(kdesudo, QStringList() << upgrader);
+    QProcess::startDetached(pkexec, QStringList() << upgrader);
 }
 
 void QAptActions::checkDistUpgrade()
