@@ -34,6 +34,7 @@ class KXmlGuiWindow;
 class KActionCollection;
 class QAction;
 class QDialog;
+class QNetworkConfigurationManager;
 
 namespace QApt {
     class Backend;
@@ -100,6 +101,7 @@ private:
     QPointer<QDialog> m_historyDialog;
     QList<QAction *> m_actions;
     bool m_distUpgradeAvailable;
+    QNetworkConfigurationManager* m_config;
 
 };
 

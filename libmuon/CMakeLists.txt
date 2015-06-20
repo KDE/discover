@@ -30,6 +30,7 @@ set(muon_LIB_SRCS
     resources/AbstractResource.cpp
     resources/AbstractBackendUpdater.cpp
     resources/AbstractSourcesBackend.cpp
+    resources/UIHelper.cpp
     MessageActionsModel
     MuonBackendsFactory.cpp
     ScreenshotsModel.cpp

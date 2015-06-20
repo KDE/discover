@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2015 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,52 +18,34 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MUONMAINWINDOW_H
-#define MUONMAINWINDOW_H
+#include "UIHelper.h"
+#include <QAction>
+#include <QMenu>
 
-// Qt includes
-#include <QList>
-
-// KDE includes
-#include <KXmlGuiWindow>
-
-#include "libMuonCommon_export.h"
-
-class QNetworkConfigurationManager;
-
-/**
- * This class serves as a shared Main Window implementation that connects
- * all the various backend bits so that they don't have to be reimplemented
- * in things like an update-centric GUI, etc.
- *
- * @short Main window class
- * @author Jonathan Thomas <echidnaman@kubuntu.org>
- * @version 0.1
- */
-class MUONCOMMON_EXPORT MuonMainWindow : public KXmlGuiWindow
+namespace UIHelper
 {
-    Q_OBJECT
-public:
-    MuonMainWindow();
 
-    QSize sizeHint() const Q_DECL_OVERRIDE;
+QList<QAction*> setupMessageActions(QMenu* main, QMenu* advanced, const QList<QAction*> &actions)
+{
+    advanced->setEnabled(false);
 
-Q_SIGNALS:
-    void actionsEnabledChanged(bool enabled);
+    QList<QAction*> ret;
+    foreach (QAction* action, actions) {
+        switch(action->priority()) {
+            case QAction::HighPriority:
+                ret += action;
+                break;
+            case QAction::NormalPriority:
+                main->addAction(action);
+                break;
+            case QAction::LowPriority:
+            default:
+                advanced->setEnabled(true);
+                advanced->addAction(action);
+                break;
+        }
+    }
+    return ret;
+}
 
-protected:
-    bool queryClose();
-
-protected slots:
-    void setupActions();
-
-public slots:
-    void easterEggTriggered();
-    void setCanExit(bool canExit);
-    virtual void setActionsEnabled(bool enabled=true);
-
-private:
-    bool m_canExit;
-};
-
-#endif
+}

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2015 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,52 +18,13 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MUONMAINWINDOW_H
-#define MUONMAINWINDOW_H
-
-// Qt includes
 #include <QList>
-
-// KDE includes
-#include <KXmlGuiWindow>
-
 #include "libMuonCommon_export.h"
 
-class QNetworkConfigurationManager;
+class QAction;
+class QMenu;
 
-/**
- * This class serves as a shared Main Window implementation that connects
- * all the various backend bits so that they don't have to be reimplemented
- * in things like an update-centric GUI, etc.
- *
- * @short Main window class
- * @author Jonathan Thomas <echidnaman@kubuntu.org>
- * @version 0.1
- */
-class MUONCOMMON_EXPORT MuonMainWindow : public KXmlGuiWindow
+namespace UIHelper
 {
-    Q_OBJECT
-public:
-    MuonMainWindow();
-
-    QSize sizeHint() const Q_DECL_OVERRIDE;
-
-Q_SIGNALS:
-    void actionsEnabledChanged(bool enabled);
-
-protected:
-    bool queryClose();
-
-protected slots:
-    void setupActions();
-
-public slots:
-    void easterEggTriggered();
-    void setCanExit(bool canExit);
-    virtual void setActionsEnabled(bool enabled=true);
-
-private:
-    bool m_canExit;
-};
-
-#endif
+    MUONCOMMON_EXPORT QList<QAction*> setupMessageActions(QMenu* main, QMenu* advanced, const QList<QAction*> &actions);
+}

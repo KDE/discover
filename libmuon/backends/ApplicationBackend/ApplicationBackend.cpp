@@ -539,7 +539,7 @@ void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
     updateAction->setIcon(QIcon::fromTheme("system-software-update"));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
-    updateAction->setEnabled(w->isConnected());
+    updateAction->setEnabled(apt->isConnected());
     connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
     connect(w, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
 }

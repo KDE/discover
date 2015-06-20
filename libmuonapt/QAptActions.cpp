@@ -32,6 +32,7 @@
 #include <QStandardPaths>
 #include <QDialogButtonBox>
 #include <QLayout>
+#include <QNetworkConfigurationManager>
 
 // KDE includes
 #include <KActionCollection>
@@ -60,7 +61,9 @@ QAptActions::QAptActions()
     , m_reloadWhenEditorFinished(false)
     , m_historyDialog(nullptr)
     , m_distUpgradeAvailable(false)
+    , m_config(new QNetworkConfigurationManager(this))
 {
+    connect(m_config, &QNetworkConfigurationManager::onlineStateChanged, this, &QAptActions::shouldConnect);
 }
 
 QAptActions* QAptActions::self()
@@ -77,7 +80,6 @@ void QAptActions::setMainWindow(MuonMainWindow* w)
     setParent(w);
     m_mainWindow = w;
     connect(m_mainWindow, SIGNAL(actionsEnabledChanged(bool)), SLOT(setActionsEnabledInternal(bool)));
-    connect(m_mainWindow, SIGNAL(shouldConnect(bool)), SIGNAL(shouldConnect(bool)));
     setupActions();
 }
 
@@ -219,7 +221,7 @@ bool QAptActions::reloadWhenSourcesEditorFinished() const
 
 bool QAptActions::isConnected() const
 {
-    return !m_mainWindow || m_mainWindow->isConnected();
+    return m_config->isOnline();
 }
 
 bool QAptActions::saveSelections()

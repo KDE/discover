@@ -39,10 +39,8 @@
 
 MuonMainWindow::MuonMainWindow()
     : KXmlGuiWindow(0)
-    , m_config(new QNetworkConfigurationManager(this))
     , m_canExit(true)
 {
-    connect(m_config, &QNetworkConfigurationManager::onlineStateChanged, this, &MuonMainWindow::shouldConnect);
 }
 
 bool MuonMainWindow::queryClose()
@@ -107,32 +105,4 @@ void MuonMainWindow::setActionsEnabled(bool enabled)
     }
     if(enabled)
         emit actionsEnabledChanged(enabled);
-}
-
-bool MuonMainWindow::isConnected() const
-{
-    return m_config->isOnline();
-}
-
-QList<QAction*> MuonMainWindow::setupMessageActions(QMenu* main, QMenu* advanced, const QList<QAction*> &actions)
-{
-    advanced->setEnabled(false);
-
-    QList<QAction*> ret;
-    foreach (QAction* action, actions) {
-        switch(action->priority()) {
-            case QAction::HighPriority:
-                ret += action;
-                break;
-            case QAction::NormalPriority:
-                main->addAction(action);
-                break;
-            case QAction::LowPriority:
-            default:
-                advanced->setEnabled(true);
-                advanced->addAction(action);
-                break;
-        }
-    }
-    return ret;
 }

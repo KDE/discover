@@ -48,6 +48,7 @@
 #include <resources/AbstractBackendUpdater.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesUpdatesModel.h>
+#include <resources/UIHelper.h>
 #include "ProgressWidget.h"
 #include "config/UpdaterSettingsDialog.h"
 #include "UpdaterWidget.h"
@@ -156,7 +157,7 @@ void MainWindow::setupBackendsActions()
     m_advancedMenu->clear();
     m_moreMenu->clear();
 
-    QList<QAction*> highActions = setupMessageActions(m_moreMenu, m_advancedMenu, ResourcesModel::global()->messageActions());
+    QList<QAction*> highActions = UIHelper::setupMessageActions(m_moreMenu, m_advancedMenu, ResourcesModel::global()->messageActions());
     for (QAction* action: highActions) {
         if(!containsAction(action, qobject_cast<QBoxLayout*>(centralWidget()->layout()))) {
             KActionMessageWidget* w = new KActionMessageWidget(action, centralWidget());

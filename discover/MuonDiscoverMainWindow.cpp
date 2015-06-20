@@ -58,6 +58,7 @@
 // Libmuon includes
 #include <libmuon/MuonDataSources.h>
 #include <resources/ResourcesModel.h>
+#include <resources/UIHelper.h>
 #include <Category/Category.h>
 
 MuonDiscoverMainWindow::MuonDiscoverMainWindow()
@@ -250,7 +251,7 @@ void MuonDiscoverMainWindow::configureMenu()
 {
     m_advancedMenu->clear();
     m_moreMenu->clear();
-    setupMessageActions(m_moreMenu, m_advancedMenu, ResourcesModel::global()->messageActions());
+    UIHelper::setupMessageActions(m_moreMenu, m_advancedMenu, ResourcesModel::global()->messageActions());
 
     if (!m_moreMenu->isEmpty())
         m_moreMenu->addSeparator();
