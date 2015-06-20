@@ -12,8 +12,8 @@ target_link_libraries(MuonNotifierDeclarativePlugin
 
     MuonNotifiers
 )
-install(TARGETS MuonNotifierDeclarativePlugin DESTINATION ${QML_INSTALL_DIR}/org/kde/muonnotifier)
-install(FILES qmldir DESTINATION ${QML_INSTALL_DIR}/org/kde/muonnotifier)
+install(TARGETS MuonNotifierDeclarativePlugin DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/muonnotifier)
+install(FILES qmldir DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/muonnotifier)
 
 find_package(KF5Plasma)
 if(KF5Plasma_FOUND)

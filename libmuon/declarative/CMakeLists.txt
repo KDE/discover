@@ -4,5 +4,5 @@ add_library(muondeclarativeplugin MuonDeclarativePlugin.cpp ApplicationProxyMode
 
 target_link_libraries(muondeclarativeplugin Qt5::Core Qt5::Qml MuonCommon)
 
-install(TARGETS muondeclarativeplugin DESTINATION ${QML_INSTALL_DIR}/org/kde/muon)
-install(FILES qmldir DESTINATION ${QML_INSTALL_DIR}/org/kde/muon)
+install(TARGETS muondeclarativeplugin DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/muon)
+install(FILES qmldir DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/muon)
