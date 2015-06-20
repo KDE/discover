@@ -19,6 +19,7 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.1
 import org.kde.muon 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
@@ -110,8 +111,10 @@ Item {
                         roleDelegate: Label { property variant model; text: i18n("points: %1", model.sortableRating.toFixed(2)) }
                     }
                     ApplicationsTop {
+                        id: top2
                         Layout.fillHeight: true
                         Layout.fillWidth: true
+                        visible: parent.width > Layout.preferredWidth*2
                         sortRole: "ratingPoints"
                         filteredCategory: page.category
                         title: i18n("Rating")

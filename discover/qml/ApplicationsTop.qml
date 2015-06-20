@@ -33,6 +33,7 @@ Column {
     property string title: ""
 
     Layout.preferredHeight: childrenRect.height
+    Layout.preferredWidth: 250
     Label {
         text: topView.title
         width: parent.width
