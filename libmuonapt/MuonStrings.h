@@ -25,13 +25,13 @@
 
 #include <QApt/Package>
 
-#include "libMuonCommon_export.h"
+#include "libMuonApt_export.h"
 
 namespace QApt {
     class Transaction;
 }
 
-class MUONCOMMON_EXPORT MuonStrings : public QObject
+class MUONAPT_EXPORT MuonStrings : public QObject
 {
     Q_OBJECT
 public:

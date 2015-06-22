@@ -25,7 +25,7 @@
 
 #include <QWidget>
 
-#include "libMuonCommon_export.h"
+#include "libMuonApt_export.h"
 
 class QStandardItem;
 class QStandardItemModel;
@@ -40,7 +40,7 @@ namespace QApt {
 
 class HistoryProxyModel;
 
-class MUONCOMMON_EXPORT HistoryView : public QWidget
+class MUONAPT_EXPORT HistoryView : public QWidget
 {
     Q_OBJECT
 public:

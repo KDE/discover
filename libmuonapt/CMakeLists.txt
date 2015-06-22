@@ -11,7 +11,7 @@ set(muonapt_SRCS
 add_library(MuonApt ${muonapt_SRCS})
 target_link_libraries(MuonApt Qt5::Core
      KF5::Solid KF5::KIOWidgets KF5::XmlGui
-     QApt::Main MuonCommon
+     QApt::Main KF5::I18n
 )
 
 target_include_directories(MuonApt PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
@@ -24,3 +24,5 @@ kauth_install_actions(org.kde.muon.repo policies/org.kde.muon.repo.action)
 kauth_install_helper_files(muon_repo_helper org.kde.muon.repo root)
 
 install(TARGETS MuonApt ${INSTALL_TARGETS_DEFAULT_ARGS})
+
+generate_export_header(MuonApt EXPORT_FILE_NAME libMuonApt_export.h)

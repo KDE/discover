@@ -50,9 +50,6 @@
 #include <QApt/DebFile>
 #include <QApt/Transaction>
 
-// Own includes
-#include "MuonMainWindow.h"
-
 QAptActions::QAptActions()
     : QObject(nullptr)
     , m_backend(nullptr)
@@ -75,7 +72,7 @@ QAptActions* QAptActions::self()
     return self;
 }
 
-void QAptActions::setMainWindow(MuonMainWindow* w)
+void QAptActions::setMainWindow(KXmlGuiWindow* w)
 {
     setParent(w);
     m_mainWindow = w;
@@ -83,7 +80,7 @@ void QAptActions::setMainWindow(MuonMainWindow* w)
     setupActions();
 }
 
-MuonMainWindow* QAptActions::mainWindow() const
+KXmlGuiWindow* QAptActions::mainWindow() const
 {
     return m_mainWindow;
 }
@@ -102,7 +99,7 @@ void QAptActions::setBackend(QApt::Backend* backend)
 
     setReloadWhenEditorFinished(true);
     // Some actions need an initialized backend to be able to set their enabled state
-    setActionsEnabled(true);
+    setActionsEnabledInternal(true);
     checkDistUpgrade();
 }
 
@@ -305,7 +302,7 @@ void QAptActions::downloadPackagesFromList()
 
     QString dirName = filename.left(filename.lastIndexOf('/'));
 
-    setActionsEnabled(false);
+    setActionsEnabledInternal(false);
     QApt::Transaction *trans = m_backend->downloadArchives(filename, dirName % QLatin1String("/packages"));
 
     if (trans)
@@ -505,14 +502,6 @@ void QAptActions::closeHistoryDialog()
     KWindowConfig::restoreWindowSize(m_historyDialog->windowHandle(), dialogConfig);
     m_historyDialog->deleteLater();
     m_historyDialog = nullptr;
-}
-
-void QAptActions::setActionsEnabled(bool enabled)
-{
-    if(m_mainWindow)
-        m_mainWindow->setActionsEnabled(enabled);
-    else
-        setActionsEnabledInternal(enabled);
 }
 
 void QAptActions::launchDistUpgrade()

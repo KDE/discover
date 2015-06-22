@@ -26,9 +26,9 @@
 
 #include <QApt/Globals>
 
-#include "libMuonCommon_export.h"
+#include "libMuonApt_export.h"
 
-class MuonMainWindow;
+class KXmlGuiWindow;
 class KDialog;
 class KXmlGuiWindow;
 class KActionCollection;
@@ -41,13 +41,13 @@ namespace QApt {
     class Transaction;
 }
 
-class MUONCOMMON_EXPORT QAptActions : public QObject
+class MUONAPT_EXPORT QAptActions : public QObject
 {
     Q_OBJECT
 public:
     static QAptActions* self();
-    void setMainWindow(MuonMainWindow* w);
-    MuonMainWindow* mainWindow() const;
+    void setMainWindow(KXmlGuiWindow* w);
+    KXmlGuiWindow* mainWindow() const;
 
     bool reloadWhenSourcesEditorFinished() const;
     bool isConnected() const;
@@ -83,11 +83,10 @@ public slots:
     void runSourcesEditor();
     void sourcesEditorFinished(int exitStatus);
     void showHistoryDialog();
-    void setActionsEnabled(bool enabled = true);
+    void setActionsEnabledInternal(bool enabled);
 
 private slots:
     void closeHistoryDialog();
-    void setActionsEnabledInternal(bool enabled);
     void checkDistUpgrade();
     void launchDistUpgrade();
     void checkerFinished(int res);
@@ -98,7 +97,7 @@ private:
     QApt::Backend *m_backend;
     QApt::CacheState m_originalState;
     bool m_actionsDisabled;
-    MuonMainWindow* m_mainWindow;
+    KXmlGuiWindow* m_mainWindow;
     bool m_reloadWhenEditorFinished;
     
     QPointer<QDialog> m_historyDialog;
