@@ -42,43 +42,6 @@ MuonMainWindow::MuonMainWindow()
 {
 }
 
-void MuonMainWindow::setupActions()
-{
-    QAction *quitAction = KStandardAction::quit(QApplication::instance(),
-                                                SLOT(quit()), actionCollection());
-    actionCollection()->addAction("file_quit", quitAction);
-
-    QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_M), this);
-    connect(shortcut, SIGNAL(activated()), this, SLOT(easterEggTriggered()));
-}
-
-void MuonMainWindow::easterEggTriggered()
-{
-    QDialog *dialog = new QDialog(this);
-    QVBoxLayout *layout = new QVBoxLayout(dialog);
-    QLabel *label = new QLabel(dialog);
-    label->setText(i18nc("@label Easter Egg", "This Muon has super cow powers"));
-    QLabel *moo = new QLabel(dialog);
-    moo->setFont(QFont("monospace"));
-    moo->setText("             (__)\n"
-                 "             (oo)\n"
-                 "    /---------\\/\n"
-                 "   / | Muuu!!||\n"
-                 "  *  ||------||\n"
-                 "     ^^      ^^\n");
-
-    layout->addWidget(label);
-    layout->addWidget(moo);
-    dialog->setLayout(layout);
-    dialog->show();
-
-    QUrl mooFile = QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::GenericDataLocation, "libmuon/moo.ogg"));
-    Phonon::MediaObject *music =
-    Phonon::createPlayer(Phonon::MusicCategory,
-                             Phonon::MediaSource(mooFile));
-    music->play();
-}
-
 void MuonMainWindow::setActionsEnabled(bool enabled)
 {
     for (int i = 0; i < actionCollection()->count(); ++i) {

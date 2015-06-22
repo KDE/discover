@@ -219,7 +219,8 @@ QUrl MuonDiscoverMainWindow::prioritaryFeaturedSource() const
 void MuonDiscoverMainWindow::setupActions()
 {
     setupGUI(StandardWindowOption(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar & ~KXmlGuiWindow::ToolBar));
-    MuonMainWindow::setupActions();
+    QAction *quitAction = KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), actionCollection());
+    actionCollection()->addAction("file_quit", quitAction);
 
     menuBar()->setVisible(false);
 

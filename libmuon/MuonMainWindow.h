@@ -49,11 +49,7 @@ public:
 Q_SIGNALS:
     void actionsEnabledChanged(bool enabled);
 
-protected slots:
-    void setupActions();
-
 public slots:
-    void easterEggTriggered();
     virtual void setActionsEnabled(bool enabled=true);
 };
 

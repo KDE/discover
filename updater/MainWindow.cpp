@@ -112,7 +112,8 @@ void MainWindow::initGUI()
 
 void MainWindow::setupActions()
 {
-    MuonMainWindow::setupActions();
+    QAction *quitAction = KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), actionCollection());
+    actionCollection()->addAction("file_quit", quitAction);
 
     m_applyAction = actionCollection()->addAction("apply");
     m_applyAction->setIcon(QIcon::fromTheme("dialog-ok-apply"));

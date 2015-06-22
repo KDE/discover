@@ -169,7 +169,8 @@ void MainWindow::saveSplitterSizes()
 
 void MainWindow::setupActions()
 {
-    MuonMainWindow::setupActions();
+    QAction *quitAction = KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), actionCollection());
+    actionCollection()->addAction("file_quit", quitAction);
 
     m_safeUpgradeAction = actionCollection()->addAction("safeupgrade");
     m_safeUpgradeAction->setIcon(QIcon::fromTheme("go-up"));
