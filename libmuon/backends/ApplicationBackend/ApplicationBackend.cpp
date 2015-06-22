@@ -541,7 +541,7 @@ void ApplicationBackend::integrateMainWindow(KXmlGuiWindow* w)
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     updateAction->setEnabled(apt->isConnected());
     connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
-    connect(w, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
+    connect(apt, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
 }
 
 QWidget* ApplicationBackend::mainWindow() const

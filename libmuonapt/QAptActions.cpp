@@ -76,7 +76,7 @@ void QAptActions::setMainWindow(KXmlGuiWindow* w)
 {
     setParent(w);
     m_mainWindow = w;
-    connect(m_mainWindow, SIGNAL(actionsEnabledChanged(bool)), SLOT(setActionsEnabledInternal(bool)));
+
     setupActions();
 }
 
@@ -99,7 +99,7 @@ void QAptActions::setBackend(QApt::Backend* backend)
 
     setReloadWhenEditorFinished(true);
     // Some actions need an initialized backend to be able to set their enabled state
-    setActionsEnabledInternal(true);
+    setActionsEnabled(true);
     checkDistUpgrade();
 }
 
@@ -186,7 +186,7 @@ void QAptActions::setupActions()
     m_actions.append(saveInstalledAction);
 }
 
-void QAptActions::setActionsEnabledInternal(bool enabled)
+void QAptActions::setActionsEnabled(bool enabled)
 {
     m_actionsDisabled = !enabled;
 
@@ -302,7 +302,7 @@ void QAptActions::downloadPackagesFromList()
 
     QString dirName = filename.left(filename.lastIndexOf('/'));
 
-    setActionsEnabledInternal(false);
+    setActionsEnabled(false);
     QApt::Transaction *trans = m_backend->downloadArchives(filename, dirName % QLatin1String("/packages"));
 
     if (trans)

@@ -83,7 +83,7 @@ public slots:
     void runSourcesEditor();
     void sourcesEditorFinished(int exitStatus);
     void showHistoryDialog();
-    void setActionsEnabledInternal(bool enabled);
+    void setActionsEnabled(bool enabled = true);
 
 private slots:
     void closeHistoryDialog();

@@ -205,7 +205,7 @@ void MainWindow::setupActions()
     actionCollection()->setDefaultShortcut(updateAction, QKeySequence(Qt::CTRL + Qt::Key_R));
     connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
     updateAction->setEnabled(QAptActions::self()->isConnected());
-    connect(this, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
+    connect(QAptActions::self(), SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
 
     KStandardAction::preferences(this, SLOT(editSettings()), actionCollection());
 
@@ -376,7 +376,7 @@ void MainWindow::reload()
 
 void MainWindow::setActionsEnabled(bool enabled)
 {
-    QAptActions::self()->setActionsEnabledInternal(enabled);
+    QAptActions::self()->setActionsEnabled(enabled);
     if (!enabled) {
         m_applyAction->setEnabled(false);
         m_safeUpgradeAction->setEnabled(false);
