@@ -31,7 +31,9 @@ set(muon_SRCS
     StatusWidget.cpp
     TransactionWidget.cpp
     config/ManagerSettingsDialog.cpp
-    config/GeneralSettingsPage.cpp)
+    config/GeneralSettingsPage.cpp
+    settings/SettingsPageBase.cpp
+)
 
 kconfig_add_kcfg_files(muon_SRCS GENERATE_MOC config/MuonSettings.kcfgc)
 install(FILES config/muon.kcfg DESTINATION ${KCFG_INSTALL_DIR})

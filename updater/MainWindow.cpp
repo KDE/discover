@@ -50,15 +50,13 @@
 #include <resources/ResourcesUpdatesModel.h>
 #include <resources/UIHelper.h>
 #include "ProgressWidget.h"
-#include "config/UpdaterSettingsDialog.h"
 #include "UpdaterWidget.h"
 #include "KActionMessageWidget.h"
 #include "ui_UpdaterCentralWidget.h"
 
 MainWindow::MainWindow()
     : MuonMainWindow()
-    , m_settingsDialog(nullptr)
-{
+ {
     m_updater = new ResourcesUpdatesModel(this);
     connect(m_updater, SIGNAL(progressingChanged()), SLOT(progressingChanged()));
 
@@ -121,8 +119,6 @@ void MainWindow::setupActions()
     m_applyAction->setText(i18nc("@action Downloads and installs updates", "Install Updates"));
     connect(m_applyAction, SIGNAL(triggered()), m_updater, SLOT(updateAll()));
     m_applyAction->setEnabled(false);
-
-    KStandardAction::preferences(this, SLOT(editSettings()), actionCollection());
 
     setActionsEnabled(false);
 
@@ -196,17 +192,6 @@ void MainWindow::setActionsEnabled(bool enabled)
 {
     MuonMainWindow::setActionsEnabled(enabled);
     m_applyAction->setEnabled(enabled && m_updater->hasUpdates());
-}
-
-void MainWindow::editSettings()
-{
-    if (!m_settingsDialog) {
-        m_settingsDialog = new UpdaterSettingsDialog(this);
-        connect(m_settingsDialog, SIGNAL(finished(int)), m_settingsDialog, SLOT(deleteLater()));
-        m_settingsDialog->show();
-    } else {
-        m_settingsDialog->raise();
-    }
 }
 
 void MainWindow::checkPlugState()

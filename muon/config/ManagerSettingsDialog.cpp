@@ -25,8 +25,7 @@
 
 #include <QApt/Config>
 
-#include "../../libmuon/settings/SettingsPageBase.h"
-#include "../../libmuon/settings/NotifySettingsPage.h"
+#include "../settings/SettingsPageBase.h"
 #include "GeneralSettingsPage.h"
 
 ManagerSettingsDialog::ManagerSettingsDialog(QWidget* parent, QApt::Config *aptConfig) :
@@ -50,15 +49,7 @@ ManagerSettingsDialog::ManagerSettingsDialog(QWidget* parent, QApt::Config *aptC
     connect(generalPage, SIGNAL(changed()), this, SLOT(changed()));
     connect(generalPage, SIGNAL(authChanged()), this, SLOT(authChanged()));
 
-    // Notification settings
-    NotifySettingsPage *notifyPage = new NotifySettingsPage(this);
-    KPageWidgetItem *notifySettingsFrame = addPage(notifyPage,
-                                                    i18nc("@title:group", "Notifications"));
-    notifySettingsFrame->setIcon(QIcon::fromTheme("preferences-desktop-notification"));
-    connect(notifyPage, SIGNAL(changed()), this, SLOT(changed()));
-
     m_pages.insert(generalPage);
-    m_pages.insert(notifyPage);
 }
 
 ManagerSettingsDialog::~ManagerSettingsDialog()

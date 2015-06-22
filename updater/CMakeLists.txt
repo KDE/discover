@@ -9,8 +9,7 @@ set(muon_updater_SRCS
     KActionMessageWidget.cpp
     UpdateModel/UpdateItem.cpp
     UpdateModel/UpdateModel.cpp
-    UpdateModel/UpdateDelegate.cpp
-    config/UpdaterSettingsDialog.cpp)
+    UpdateModel/UpdateDelegate.cpp)
 
 ki18n_wrap_ui(muon_updater_SRCS ProgressWidget.ui
                                     UpdaterCentralWidget.ui

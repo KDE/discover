@@ -14,8 +14,6 @@ set(muon_LIB_SRCS
     ReviewsBackend/Review.cpp
     ReviewsBackend/AbstractLoginBackend.cpp
     ReviewsBackend/ReviewsModel.cpp
-    settings/SettingsPageBase.cpp
-    settings/NotifySettingsPage.cpp
     Transaction/AddonList.cpp
     Transaction/Transaction.cpp
     Transaction/TransactionListener.cpp

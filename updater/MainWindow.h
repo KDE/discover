@@ -28,7 +28,6 @@
 class KMessageWidget;
 class ResourcesUpdatesModel;
 class ProgressWidget;
-class UpdaterSettingsDialog;
 class UpdaterWidget;
 
 class MainWindow : public MuonMainWindow
@@ -45,7 +44,6 @@ private:
 
     ProgressWidget *m_progressWidget;
     UpdaterWidget *m_updaterWidget;
-    QPointer<UpdaterSettingsDialog> m_settingsDialog;
     KMessageWidget *m_powerMessage;
     QAction *m_applyAction;
     QMenu* m_moreMenu;
@@ -58,7 +56,6 @@ private Q_SLOTS:
     void initBackend();
     void setupActions();
     void setupBackendsActions();
-    void editSettings();
     void checkPlugState();
     void updatePlugState(bool plugged);
     void progressingChanged();

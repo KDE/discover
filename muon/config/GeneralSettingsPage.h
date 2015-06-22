@@ -23,7 +23,7 @@
 
 #include <QtWidgets/QWidget>
 
-#include "../../libmuon/settings/SettingsPageBase.h"
+#include "../settings/SettingsPageBase.h"
 
 class QCheckBox;
 class QSpinBox;
