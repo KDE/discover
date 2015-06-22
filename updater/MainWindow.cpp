@@ -176,6 +176,10 @@ void MainWindow::setupBackendsActions()
     m_moreMenu->addAction(actionCollection()->action("help_about_kde"));
     m_moreMenu->addAction(actionCollection()->action("help_report_bug"));
 }
+QSize MainWindow::sizeHint() const
+{
+    return KXmlGuiWindow::sizeHint().expandedTo(QSize(900, 500));
+}
 
 void MainWindow::progressingChanged()
 {

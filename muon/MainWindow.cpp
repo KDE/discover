@@ -455,3 +455,8 @@ void MainWindow::setupTransaction(QApt::Transaction *trans)
     connect(m_trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
             this, SLOT(errorOccurred(QApt::ErrorCode)));
 }
+
+QSize MainWindow::sizeHint() const
+{
+    return KXmlGuiWindow::sizeHint().expandedTo(QSize(900, 500));
+}

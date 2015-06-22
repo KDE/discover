@@ -37,6 +37,8 @@ class MainWindow : public MuonMainWindow
 public:
     MainWindow();
 
+    QSize sizeHint() const Q_DECL_OVERRIDE;
+
 private:
     ResourcesUpdatesModel* m_updater;
 

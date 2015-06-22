@@ -48,11 +48,6 @@ bool MuonMainWindow::queryClose()
     return m_canExit;
 }
 
-QSize MuonMainWindow::sizeHint() const
-{
-    return KXmlGuiWindow::sizeHint().expandedTo(QSize(900, 500));
-}
-
 void MuonMainWindow::setupActions()
 {
     QAction *quitAction = KStandardAction::quit(QApplication::instance(),

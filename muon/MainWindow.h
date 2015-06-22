@@ -56,6 +56,8 @@ public:
     MainWindow();
     ~MainWindow();
 
+    QSize sizeHint() const Q_DECL_OVERRIDE;
+
 private:
     QApt::Backend *m_backend;
     QApt::Transaction *m_trans;
