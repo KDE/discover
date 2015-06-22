@@ -39,13 +39,7 @@
 
 MuonMainWindow::MuonMainWindow()
     : KXmlGuiWindow(0)
-    , m_canExit(true)
 {
-}
-
-bool MuonMainWindow::queryClose()
-{
-    return m_canExit;
 }
 
 void MuonMainWindow::setupActions()
@@ -83,11 +77,6 @@ void MuonMainWindow::easterEggTriggered()
     Phonon::createPlayer(Phonon::MusicCategory,
                              Phonon::MediaSource(mooFile));
     music->play();
-}
-
-void MuonMainWindow::setCanExit(bool canExit)
-{
-    m_canExit = canExit;
 }
 
 void MuonMainWindow::setActionsEnabled(bool enabled)

@@ -75,6 +75,7 @@ class MUONCOMMON_EXPORT ResourcesModel : public QAbstractListModel
 
         void integrateMainWindow(MuonMainWindow* w);
         
+        bool isBusy() const;
         bool isFetching() const;
         QList<QAction*> messageActions() const;
         

@@ -264,3 +264,8 @@ void MuonDiscoverMainWindow::configureMenu()
     m_moreMenu->addAction(actionCollection()->action("help_about_kde"));
     m_moreMenu->addAction(actionCollection()->action("help_report_bug"));
 }
+
+bool MuonDiscoverMainWindow::queryClose()
+{
+    return !ResourcesModel::global()->isBusy();
+}

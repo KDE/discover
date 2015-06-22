@@ -57,6 +57,9 @@ public:
     void displayTransactionError(QApt::ErrorCode error, QApt::Transaction* trans);
     KActionCollection* actionCollection();
     
+    void setCanExit(bool e) { m_canExit = e; }
+    bool canExit() const { return m_canExit; }
+
 signals:
     void shouldConnect(bool isConnected);
     void changesReverted();
@@ -102,6 +105,7 @@ private:
     QList<QAction *> m_actions;
     bool m_distUpgradeAvailable;
     QNetworkConfigurationManager* m_config;
+    bool m_canExit;
 
 };
 

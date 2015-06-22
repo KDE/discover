@@ -66,6 +66,7 @@ public:
     int packagesType() {
         return m_packagesType;
     }
+    bool isSortingPackages() const;
 
 protected:
     QApt::Backend *m_backend;
@@ -103,6 +104,7 @@ private:
                          QApt::BrokenReason failType,
                          QHash<QString, QVariantMap> failReason);
 
+
 public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void reload();
@@ -137,7 +139,6 @@ private Q_SLOTS:
 
 Q_SIGNALS:
     void packageChanged();
-    void doneSortingPackages(bool sorting);
 };
 
 #endif

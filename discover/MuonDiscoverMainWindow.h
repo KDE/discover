@@ -47,7 +47,8 @@ class MuonDiscoverMainWindow : public MuonMainWindow
         void setupActions();
         QObject* searchWidget() const;
 
-        virtual void showEvent(QShowEvent*);
+        void showEvent(QShowEvent*) Q_DECL_OVERRIDE;
+        bool queryClose() Q_DECL_OVERRIDE;
 
     public slots:
         void openApplication(const QString& app);

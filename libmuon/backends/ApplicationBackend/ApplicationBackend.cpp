@@ -146,7 +146,7 @@ void ApplicationBackend::setApplications()
     connect(job, SIGNAL(finished(KJob*)), SLOT(initAvailablePackages(KJob*)));
 
     if (m_aptify)
-        m_aptify->setCanExit(true);
+        QAptActions::self()->setCanExit(true);
     setFetching(false);
 }
 
@@ -158,7 +158,7 @@ void ApplicationBackend::reload()
     }
     setFetching(true);
     if (m_aptify)
-        m_aptify->setCanExit(false);
+        QAptActions::self()->setCanExit(false);
     foreach(Application* app, m_appList)
         app->clearPackage();
     qDeleteAll(m_transQueue);
@@ -172,7 +172,7 @@ void ApplicationBackend::reload()
         app->package();
 
     if (m_aptify)
-        m_aptify->setCanExit(true);
+        QAptActions::self()->setCanExit(true);
     setFetching(false);
 }
 
@@ -553,7 +553,7 @@ void ApplicationBackend::initBackend()
 {
     setFetching(true);
     if (m_aptify) {
-        m_aptify->setCanExit(false);
+        QAptActions::self()->setCanExit(false);
         QAptActions::self()->setReloadWhenEditorFinished(true);
     }
 

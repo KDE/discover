@@ -190,7 +190,6 @@ void MainWindow::progressingChanged()
     m_progressWidget->setVisible(active);
 //     m_updaterWidget->setVisible(!active);
     setActionsEnabled(!active);
-    setCanExit(!active);
 }
 
 void MainWindow::setActionsEnabled(bool enabled)
@@ -220,4 +219,9 @@ void MainWindow::checkPlugState()
 void MainWindow::updatePlugState(bool plugged)
 {
     m_powerMessage->setVisible(!plugged);
+}
+
+bool MainWindow::queryClose()
+{
+    return !m_updater->isProgressing() && !ResourcesModel::global()->isBusy();
 }

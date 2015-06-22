@@ -230,7 +230,7 @@ void PackageWidget::setBackend(QApt::Backend *backend)
     m_proxyModel->setBackend(m_backend);
     m_packageView->setSortingEnabled(true);
     QApt::PackageList packageList = m_backend->availablePackages();
-    emit doneSortingPackages(false);
+
     QFuture<QList<QApt::Package*> > future = QtConcurrent::run(sortPackages, packageList);
     m_watcher->setFuture(future);
     m_packageView->updateView();
@@ -364,7 +364,6 @@ void PackageWidget::setSortedPackages()
     m_searchEdit->setEnabled(true);
     m_busyWidget->stop();
     QApplication::restoreOverrideCursor();
-    emit doneSortingPackages(true);
 }
 
 void PackageWidget::sectionClicked(int section)
@@ -675,4 +674,9 @@ QString PackageWidget::digestReason(QApt::Package *pkg, const QApt::MarkingError
     reason += '\n';
 
     return reason;
+}
+
+bool PackageWidget::isSortingPackages() const
+{
+    return m_watcher->isRunning();
 }

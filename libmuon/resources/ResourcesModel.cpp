@@ -428,3 +428,8 @@ QList<QAction*> ResourcesModel::messageActions() const
     Q_ASSERT(!ret.contains(nullptr));
     return ret;
 }
+
+bool ResourcesModel::isBusy() const
+{
+    return isFetching() || TransactionModel::global()->rowCount() > 0;
+}

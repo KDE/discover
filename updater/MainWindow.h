@@ -38,6 +38,7 @@ public:
     MainWindow();
 
     QSize sizeHint() const Q_DECL_OVERRIDE;
+    bool queryClose() Q_DECL_OVERRIDE;
 
 private:
     ResourcesUpdatesModel* m_updater;

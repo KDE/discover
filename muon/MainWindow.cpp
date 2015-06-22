@@ -60,6 +60,7 @@ MainWindow::MainWindow()
     , m_settingsDialog(nullptr)
     , m_reviewWidget(nullptr)
     , m_transWidget(nullptr)
+    , m_reloading(false)
 
 {
     initGUI();
@@ -92,8 +93,6 @@ void MainWindow::initGUI()
     m_mainWidget = new QSplitter(this);
     m_mainWidget->setOrientation(Qt::Horizontal);
     connect(m_mainWidget, SIGNAL(splitterMoved(int,int)), this, SLOT(saveSplitterSizes()));
-    connect(m_managerWidget, SIGNAL(doneSortingPackages(bool)),
-            this, SLOT(setCanExit(bool)));
 
     m_transWidget = new TransactionWidget(this);
 
@@ -204,9 +203,7 @@ void MainWindow::setupActions()
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     actionCollection()->setDefaultShortcut(updateAction, QKeySequence(Qt::CTRL + Qt::Key_R));
     connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
-    if (!isConnected()) {
-        updateAction->setDisabled(true);
-    }
+    updateAction->setEnabled(QAptActions::self()->isConnected());
     connect(this, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
 
     KStandardAction::preferences(this, SLOT(editSettings()), actionCollection());
@@ -347,9 +344,14 @@ void MainWindow::startCommit()
     m_trans->run();
 }
 
+bool MainWindow::queryClose()
+{
+    return !m_reloading && !m_managerWidget->isSortingPackages() && QAptActions::self()->canExit() && MuonMainWindow::queryClose();
+}
+
 void MainWindow::reload()
 {
-    setCanExit(false);
+    m_reloading = true;
     returnFromPreview();
     m_stack->setCurrentWidget(m_mainWidget);
 
@@ -368,7 +370,7 @@ void MainWindow::reload()
     setActionsEnabled();
     m_managerWidget->setEnabled(true);
 
-    setCanExit(true);
+    m_reloading = false;
 }
 
 void MainWindow::setActionsEnabled(bool enabled)

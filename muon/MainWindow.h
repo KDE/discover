@@ -57,6 +57,7 @@ public:
     ~MainWindow();
 
     QSize sizeHint() const Q_DECL_OVERRIDE;
+    bool queryClose() Q_DECL_OVERRIDE;
 
 private:
     QApt::Backend *m_backend;
@@ -83,6 +84,7 @@ private:
     ReviewWidget *m_reviewWidget;
     TransactionWidget *m_transWidget;
     StatusWidget *m_statusWidget;
+    bool m_reloading;
 
 private Q_SLOTS:
     void initGUI();
