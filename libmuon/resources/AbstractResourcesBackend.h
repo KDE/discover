@@ -34,7 +34,7 @@ class Transaction;
 class AbstractReviewsBackend;
 class AbstractResource;
 class AbstractBackendUpdater;
-class MuonMainWindow;
+class KXmlGuiWindow;
 
 /**
  * \class AbstractResourcesBackend  AbstractResourcesBackend.h "AbstractResourcesBackend.h"
@@ -115,10 +115,10 @@ class MUONCOMMON_EXPORT AbstractResourcesBackend : public QObject
         
         /**
          * This method gets called while initializing the GUI, in case the backend needs to
-         * integrate in a special way with the MuonMainWindow.
-         * @param w the MuonMainWindow the backend should integrate to
+         * integrate in a special way with the KXmlGuiWindow.
+         * @param w the KXmlGuiWindow the backend should integrate to
          */
-        virtual void integrateMainWindow(MuonMainWindow* w);
+        virtual void integrateMainWindow(KXmlGuiWindow* w);
 
         /**
          * Tells whether the backend is fetching resources

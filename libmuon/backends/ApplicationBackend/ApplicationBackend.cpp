@@ -39,6 +39,7 @@
 #include <KIO/Job>
 #include <KActionCollection>
 #include <KIconLoader>
+#include <KXmlGuiWindow>
 
 // QApt/DebconfKDE includes
 #include <QApt/Backend>
@@ -57,7 +58,6 @@
 #include "Transaction/Transaction.h"
 #include "Transaction/TransactionModel.h"
 #include "ApplicationUpdates.h"
-#include "MuonMainWindow.h"
 #include <resources/SourcesModel.h>
 #include <MuonDataSources.h>
 
@@ -526,7 +526,7 @@ AbstractBackendUpdater* ApplicationBackend::backendUpdater() const
     return m_backendUpdater;
 }
 
-void ApplicationBackend::integrateMainWindow(MuonMainWindow* w)
+void ApplicationBackend::integrateMainWindow(KXmlGuiWindow* w)
 {
     m_aptify = w;
     QAptActions* apt = QAptActions::self();

@@ -28,7 +28,7 @@
 #include <MuonBackendsFactory.h>
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/ResourcesModel.h>
-#include <MuonMainWindow.h>
+#include <KXmlGuiWindow>
 #include <QSignalSpy>
 
 QTEST_MAIN( ReviewsTest )
@@ -47,7 +47,7 @@ AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 ReviewsTest::ReviewsTest(QObject* parent): QObject(parent)
 {
     ResourcesModel* m = new ResourcesModel("muon-applications-backend", this);
-    m_window = new MuonMainWindow;
+    m_window = new KXmlGuiWindow;
     m->integrateMainWindow(m_window);
     m_appBackend = backendByName(m, "ApplicationBackend");
     QVERIFY(QSignalSpy(m, SIGNAL(allInitialized())).wait());

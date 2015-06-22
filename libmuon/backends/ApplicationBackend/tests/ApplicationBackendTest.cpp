@@ -34,7 +34,7 @@
 #include <Category/Category.h>
 #include <Category/CategoryModel.h>
 #include <MuonBackendsFactory.h>
-#include <MuonMainWindow.h>
+#include <KXmlGuiWindow>
 #include <QAptActions.h>
 
 QTEST_MAIN( ApplicationBackendTest )
@@ -92,7 +92,7 @@ ApplicationBackendTest::ApplicationBackendTest()
         ratings.close();
     }
     ResourcesModel* m = new ResourcesModel("muon-applications-backend", this);
-    m_window = new MuonMainWindow;
+    m_window = new KXmlGuiWindow;
     m->integrateMainWindow(m_window);
     new ModelTest(m,m);
     m_appBackend = backendByName(m, "ApplicationBackend");

@@ -23,7 +23,7 @@
 
 #include <QtTest/QtTest>
 
-class MuonMainWindow;
+class KXmlGuiWindow;
 class AbstractResourcesBackend;
 class ApplicationBackendTest : public QObject
 {
@@ -39,7 +39,7 @@ class ApplicationBackendTest : public QObject
 
     private:
         AbstractResourcesBackend* m_appBackend;
-        MuonMainWindow* m_window;
+        KXmlGuiWindow* m_window;
 };
 
 #endif

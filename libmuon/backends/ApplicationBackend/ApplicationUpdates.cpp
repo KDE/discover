@@ -29,11 +29,11 @@
 #include <KMessageBox>
 #include <KActionCollection>
 #include <KLocalizedString>
+#include <KXmlGuiWindow>
 
 // Own includes
 #include <QApt/Transaction>
 
-#include <MuonMainWindow.h>
 #include <ChangesDialog.h>
 #include <MuonStrings.h>
 #include <QAptActions.h>

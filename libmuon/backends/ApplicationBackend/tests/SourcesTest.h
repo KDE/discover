@@ -23,7 +23,7 @@
 
 #include <QtCore/QObject>
 
-class MuonMainWindow;
+class KXmlGuiWindow;
 class AbstractSourcesBackend;
 class AbstractResourcesBackend;
 
@@ -41,7 +41,7 @@ class SourcesTest : public QObject
         AbstractSourcesBackend* backend() const;
 
         AbstractResourcesBackend* m_appBackend;
-        MuonMainWindow* m_window;
+        KXmlGuiWindow* m_window;
 
 };
 

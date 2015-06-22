@@ -77,7 +77,7 @@ public:
     void cancelTransaction(AbstractResource *app);
     
     AbstractBackendUpdater* backendUpdater() const;
-    void integrateMainWindow(MuonMainWindow* w);
+    void integrateMainWindow(KXmlGuiWindow* w);
     QWidget* mainWindow() const;
     virtual QList<AbstractResource*> upgradeablePackages() const;
     virtual QList<QAction*> messageActions() const;
@@ -98,7 +98,7 @@ private:
 
     DebconfKde::DebconfGui *m_debconfGui;
     ApplicationUpdates* m_backendUpdater;
-    MuonMainWindow *m_aptify;
+    KXmlGuiWindow *m_aptify;
     bool m_aptBackendInitialized;
     
 public Q_SLOTS:

@@ -20,7 +20,7 @@
 
 #include "KNSBackendTest.h"
 #include <KNSBackend.h>
-#include <MuonMainWindow.h>
+#include <KXmlGuiWindow>
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
@@ -41,7 +41,7 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
     ResourcesModel* model = new ResourcesModel(QFINDTESTDATA("muon-knscorrect-backend.desktop"), this);
     Q_ASSERT(!model->backends().isEmpty());
     m_backend = model->backends().first();
-    MuonMainWindow *m_window = new MuonMainWindow();
+    KXmlGuiWindow *m_window = new KXmlGuiWindow();
     model->integrateMainWindow(m_window);
 
     if (!m_backend->isValid()) {

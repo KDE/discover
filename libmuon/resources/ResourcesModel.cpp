@@ -26,7 +26,7 @@
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <Transaction/Transaction.h>
 #include <MuonBackendsFactory.h>
-#include <MuonMainWindow.h>
+#include <KXmlGuiWindow>
 #include "Transaction/TransactionModel.h"
 #include "Category/CategoryModel.h"
 #include <QDebug>
@@ -392,7 +392,7 @@ void ResourcesModel::registerBackendByName(const QString& name)
     addResourcesBackend(f.backend(name));
 }
 
-void ResourcesModel::integrateMainWindow(MuonMainWindow* w)
+void ResourcesModel::integrateMainWindow(KXmlGuiWindow* w)
 {
     Q_ASSERT(w->thread()==thread());
     m_mainwindow = w;

@@ -23,6 +23,7 @@
 #include <ReviewsBackend/ReviewsModel.h>
 #include <qapt/backend.h>
 #include <KProtocolManager>
+#include <KXmlGuiWindow>
 #include <qtest.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <MuonBackendsFactory.h>
@@ -30,7 +31,6 @@
 #include <resources/ResourcesModel.h>
 #include <resources/SourcesModel.h>
 #include <resources/AbstractSourcesBackend.h>
-#include <MuonMainWindow.h>
 #include <QSignalSpy>
 
 QTEST_MAIN( SourcesTest )
@@ -49,7 +49,7 @@ AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 SourcesTest::SourcesTest(QObject* parent): QObject(parent)
 {
     ResourcesModel* m = new ResourcesModel("muon-applications-backend", this);
-    m_window = new MuonMainWindow;
+    m_window = new KXmlGuiWindow;
     m->integrateMainWindow(m_window);
     m_appBackend = backendByName(m, "ApplicationBackend");
     QVERIFY(QSignalSpy(m, SIGNAL(allInitialized())).wait());

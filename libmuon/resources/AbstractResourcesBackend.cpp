@@ -31,7 +31,7 @@ void AbstractResourcesBackend::installApplication(AbstractResource* app)
     installApplication(app, AddonList());
 }
 
-void AbstractResourcesBackend::integrateMainWindow(MuonMainWindow*)
+void AbstractResourcesBackend::integrateMainWindow(KXmlGuiWindow*)
 {}
 
 void AbstractResourcesBackend::setMetaData(const QString&)

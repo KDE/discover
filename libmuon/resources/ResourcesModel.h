@@ -73,7 +73,7 @@ class MUONCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         
         Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name);
 
-        void integrateMainWindow(MuonMainWindow* w);
+        void integrateMainWindow(KXmlGuiWindow* w);
         
         bool isBusy() const;
         bool isFetching() const;
@@ -114,7 +114,7 @@ class MUONCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         QVector< AbstractResourcesBackend* > m_backends;
         QVector< QVector<AbstractResource*> > m_resources;
         int m_initializingBackends;
-        MuonMainWindow* m_mainwindow;
+        KXmlGuiWindow* m_mainwindow;
 
         static ResourcesModel* s_self;
 };
