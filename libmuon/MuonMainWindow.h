@@ -46,11 +46,6 @@ class MUONCOMMON_EXPORT MuonMainWindow : public KXmlGuiWindow
 public:
     MuonMainWindow();
 
-Q_SIGNALS:
-    void actionsEnabledChanged(bool enabled);
-
-public slots:
-    virtual void setActionsEnabled(bool enabled=true);
 };
 
 #endif

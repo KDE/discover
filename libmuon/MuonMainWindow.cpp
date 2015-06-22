@@ -41,15 +41,3 @@ MuonMainWindow::MuonMainWindow()
     : KXmlGuiWindow(0)
 {
 }
-
-void MuonMainWindow::setActionsEnabled(bool enabled)
-{
-    for (int i = 0; i < actionCollection()->count(); ++i) {
-        QAction* a=actionCollection()->action(i);
-        //FIXME: Better solution? (en/dis)abling all actions at once could be dangerous...
-        if(QByteArray(a->metaObject()->className())!="DiscoverAction")
-            a->setEnabled(enabled);
-    }
-    if(enabled)
-        emit actionsEnabledChanged(enabled);
-}

@@ -191,7 +191,9 @@ void MainWindow::progressingChanged()
 
 void MainWindow::setActionsEnabled(bool enabled)
 {
-    MuonMainWindow::setActionsEnabled(enabled);
+    foreach (QAction* a, actionCollection()->actions()) {
+        a->setEnabled(enabled);
+    }
     m_applyAction->setEnabled(enabled && m_updater->hasUpdates());
 }
 

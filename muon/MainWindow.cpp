@@ -376,7 +376,7 @@ void MainWindow::reload()
 
 void MainWindow::setActionsEnabled(bool enabled)
 {
-    MuonMainWindow::setActionsEnabled(enabled);
+    QAptActions::self()->setActionsEnabledInternal(enabled);
     if (!enabled) {
         m_applyAction->setEnabled(false);
         m_safeUpgradeAction->setEnabled(false);
