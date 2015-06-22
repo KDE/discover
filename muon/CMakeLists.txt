@@ -40,7 +40,7 @@ install(FILES config/muon.kcfg DESTINATION ${KCFG_INSTALL_DIR})
 
 add_executable(muon ${muon_SRCS})
 
-target_link_libraries(muon MuonCommon MuonApt
+target_link_libraries(muon MuonApt
                            DebconfKDE::Main
                            KF5::KIOWidgets
                            KF5::KDELibs4Support

@@ -21,8 +21,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-// Own includes
-#include "../libmuon/MuonMainWindow.h"
+#include <KXmlGuiWindow>
 #include <QPointer>
 
 class KMessageWidget;
@@ -30,7 +29,7 @@ class ResourcesUpdatesModel;
 class ProgressWidget;
 class UpdaterWidget;
 
-class MainWindow : public MuonMainWindow
+class MainWindow : public KXmlGuiWindow
 {
     Q_OBJECT
 public:

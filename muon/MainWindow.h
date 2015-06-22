@@ -22,7 +22,7 @@
 #define MAINWINDOW_H
 
 // Own includes
-#include "../libmuon/MuonMainWindow.h"
+#include <KXmlGuiWindow>
 #include <QApt/Globals>
 
 class QSplitter;
@@ -49,7 +49,7 @@ namespace QApt {
  * @short Main window class
  * @author Jonathan Thomas <echidnaman@kubuntu.org>
  */
-class MainWindow : public MuonMainWindow
+class MainWindow : public KXmlGuiWindow
 {
     Q_OBJECT
 public:

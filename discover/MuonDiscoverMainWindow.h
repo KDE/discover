@@ -22,7 +22,7 @@
 
 #include <QtCore/QUrl>
 
-#include "MuonMainWindow.h"
+#include <KXmlGuiWindow>
 
 class QQmlEngine;
 class QLineEdit;
@@ -31,7 +31,7 @@ class AbstractResource;
 class Category;
 class QQuickWidget;
 
-class MuonDiscoverMainWindow : public MuonMainWindow
+class MuonDiscoverMainWindow : public KXmlGuiWindow
 {
     Q_OBJECT
     Q_PROPERTY(QObject* searchWidget READ searchWidget CONSTANT)

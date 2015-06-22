@@ -55,7 +55,7 @@
 #include "ui_UpdaterCentralWidget.h"
 
 MainWindow::MainWindow()
-    : MuonMainWindow()
+    : KXmlGuiWindow()
  {
     m_updater = new ResourcesUpdatesModel(this);
     connect(m_updater, SIGNAL(progressingChanged()), SLOT(progressingChanged()));

@@ -62,7 +62,7 @@
 #include <Category/Category.h>
 
 MuonDiscoverMainWindow::MuonDiscoverMainWindow()
-    : MuonMainWindow()
+    : KXmlGuiWindow()
 {
     initialize();
     //TODO: reconsider for QtQuick2

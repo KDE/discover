@@ -56,7 +56,7 @@
 #include "../libmuonapt/QAptActions.h"
 
 MainWindow::MainWindow()
-    : MuonMainWindow()
+    : KXmlGuiWindow()
     , m_settingsDialog(nullptr)
     , m_reviewWidget(nullptr)
     , m_transWidget(nullptr)
@@ -347,7 +347,7 @@ void MainWindow::startCommit()
 
 bool MainWindow::queryClose()
 {
-    return !m_reloading && !m_managerWidget->isSortingPackages() && QAptActions::self()->canExit() && MuonMainWindow::queryClose();
+    return !m_reloading && !m_managerWidget->isSortingPackages() && QAptActions::self()->canExit();
 }
 
 void MainWindow::reload()
