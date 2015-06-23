@@ -22,6 +22,7 @@ import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.muon 1.0
 import org.kde.kquickcontrolsaddons 2.0
+import QtQuick.Window 2.2
 import "navigation.js" as Navigation
 
 Item {
@@ -99,6 +100,7 @@ Item {
             clip: true
         }
     }
+    readonly property bool compact: (width/Screen.pixelDensity)<70
     ScrolledAwesomeGrid {
         id: flick
         anchors.fill: parent
@@ -125,7 +127,7 @@ Item {
                         id: top2
                         Layout.fillHeight: true
                         Layout.fillWidth: true
-                        visible: parent.width > Layout.preferredWidth*2
+                        visible: !page.compact
                         sortRole: "ratingPoints"
                         filteredCategory: page.category
                         title: i18n("Rating")
