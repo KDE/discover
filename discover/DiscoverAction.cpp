@@ -26,7 +26,9 @@
 DiscoverAction::DiscoverAction(QObject* parent)
     : QAction(parent)
     , m_actionsGroup(nullptr)
-{}
+{
+    connect(this, &QAction::changed, this, &DiscoverAction::proxyChanged);
+}
 
 void DiscoverAction::setIconName(const QString& name)
 {
@@ -35,7 +37,7 @@ void DiscoverAction::setIconName(const QString& name)
 
 QString DiscoverAction::iconName() const
 {
-    return icon().themeName();
+    return icon().name();
 }
 
 KXmlGuiWindow* DiscoverAction::mainWindow() const
