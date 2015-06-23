@@ -41,7 +41,7 @@ Item {
     
     onVisibleChanged: {
         if(visible && !category)
-            app.searchWidget.text = ""
+            searchWidget.text = ""
     }
     
     Component {
