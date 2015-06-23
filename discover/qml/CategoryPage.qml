@@ -51,10 +51,11 @@ Item {
             id: category
             property bool horizontal: flick.columnCount==1
             width: flick.cellWidth
-            height: 100
+            height: layout.height
             enabled: true
 
             GridLayout {
+                id: layout
                 rows: category.horizontal ? 1 : 2
                 columns: category.horizontal ? 2 : 1
 
