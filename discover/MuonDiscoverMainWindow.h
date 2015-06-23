@@ -34,7 +34,6 @@ class QQuickWidget;
 class MuonDiscoverMainWindow : public KXmlGuiWindow
 {
     Q_OBJECT
-    Q_PROPERTY(QObject* searchWidget READ searchWidget CONSTANT)
     public:
         explicit MuonDiscoverMainWindow();
         ~MuonDiscoverMainWindow();
@@ -45,9 +44,7 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
         void initialize();
         QStringList modes() const;
         void setupActions();
-        QObject* searchWidget() const;
 
-        void showEvent(QShowEvent*) Q_DECL_OVERRIDE;
         bool queryClose() Q_DECL_OVERRIDE;
 
     public slots:
@@ -57,6 +54,7 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
         void openMimeType(const QString& mime);
         void openCategory(const QString& category);
         void openMode(const QByteArray& mode);
+        void showMenu(int x, int y);
 
     private slots:
         void triggerOpenApplication();
@@ -70,7 +68,6 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
         void configureMenu();
 
         QString m_appToBeOpened;
-        QLineEdit* m_searchText;
         QQuickWidget* m_view;
         QMenu* m_moreMenu;
         QMenu* m_advancedMenu;

@@ -84,10 +84,6 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     qmlRegisterType<QActionGroup>();
     qmlRegisterType<QAction>();
     
-    m_searchText = new QLineEdit(this);
-    m_searchText->setPlaceholderText(i18n("Search..."));
-    
-    actionCollection()->addAction("edit_find", KStandardAction::find(m_searchText, SLOT(setFocus()), this));
     //Here we set up a cache for the screenshots
     engine->rootContext()->setContextProperty("app", this);
 //
@@ -113,12 +109,6 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
 
     setCentralWidget(m_view);
     setupActions();
-}
-
-void MuonDiscoverMainWindow::showEvent(QShowEvent* ev)
-{
-    QWidget::showEvent(ev);
-    m_searchText->setFocus();
 }
 
 void MuonDiscoverMainWindow::initialize()
@@ -224,28 +214,11 @@ void MuonDiscoverMainWindow::setupActions()
 
     menuBar()->setVisible(false);
 
-    QToolBar* t = toolBar("discoverToolBar");
     m_moreMenu = new QMenu(this);
     m_advancedMenu = new QMenu(i18n("Advanced..."), m_moreMenu);
     configureMenu();
-    t->setVisible(true);
-    
-    KToolBarPopupAction* configureButton = new KToolBarPopupAction(QIcon::fromTheme("applications-system"), i18n("Menu"), t);
-    configureButton->setToolTip(i18n("Configure and learn about Muon Discover"));
-    configureButton->setMenu(m_moreMenu);
-    configureButton->setDelayed(false);
-    configureButton->setPriority(QAction::LowPriority);
-    
-    t->addAction(new KToolBarSpacerAction(t));
-    t->addWidget(m_searchText);
-    t->addAction(configureButton);
 
     connect(ResourcesModel::global(), &ResourcesModel::allInitialized, this, &MuonDiscoverMainWindow::configureMenu);
-}
-
-QObject* MuonDiscoverMainWindow::searchWidget() const
-{
-    return m_searchText;
 }
 
 void MuonDiscoverMainWindow::configureMenu()
@@ -269,4 +242,10 @@ void MuonDiscoverMainWindow::configureMenu()
 bool MuonDiscoverMainWindow::queryClose()
 {
     return !ResourcesModel::global()->isBusy();
+}
+
+void MuonDiscoverMainWindow::showMenu(int x, int y)
+{
+    QPoint p = m_view->mapToGlobal(QPoint(x, y));
+    m_moreMenu->exec(p);
 }

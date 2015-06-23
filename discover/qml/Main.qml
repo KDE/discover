@@ -46,25 +46,13 @@ Rectangle
     SystemPalette { id: palette }
     color: palette.base
 
-    Binding {
-        target: app.searchWidget
-        property: "enabled"
-        value: pageStack.currentItem!=null && pageStack.currentItem.searchFor!=null
-    }
-    function clearSearch() { app.searchWidget.text="" }
-    Connections {
-        target: app.searchWidget
-        onTextChanged: searchTimer.running = true
-        onEditingFinished: if(app.searchWidget.text == "" && backAction.enabled) {
-            backAction.trigger()
-        }
-    }
+    function clearSearch() { searchWidget.text="" }
     Timer {
         id: searchTimer
         running: false
         repeat: false
         interval: 200
-        onTriggered: { pageStack.currentItem.searchFor(app.searchWidget.text) }
+        onTriggered: { pageStack.currentItem.searchFor(searchWidget.text) }
     }
 
     Component {
@@ -104,41 +92,30 @@ Rectangle
         pageStack.replace(page, {}, window.status!=Component.Ready)
     }
 
-    DiscoverAction {
-        id: backAction
-        objectName: "back"
-        iconName: "go-previous"
-        enabled: window.navigationEnabled && breadcrumbsItem.count>1
-        mainWindow: app
-        text: i18n("Back")
-        priority: "LowPriority"
-        shortcut: "Alt+Up"
-        onTriggered: {
-            breadcrumbsItem.popItem(false)
+    property list<DiscoverAction> awesome: [
+        TopLevelPageData {
+            iconName: "tools-wizard"
+            text: i18n("Discover")
+            component: topBrowsingComp
+            objectName: "discover"
+            shortcut: "Alt+D"
+        },
+        TopLevelPageData {
+            iconName: "applications-other"
+            text: ResourcesModel.updatesCount==0 ? i18n("Installed") : i18np("Installed (%1 update)", "Installed (%1 updates)", ResourcesModel.updatesCount)
+            component: topInstalledComp
+            objectName: "installed"
+            shortcut: "Alt+I"
+        },
+        TopLevelPageData {
+            iconName: "repository"
+            text: i18n("Sources")
+            component: topSourcesComp
+            objectName: "sources"
+            shortcut: "Alt+S"
+            enabled: SourcesModel.count>0
         }
-    }
-    TopLevelPageData {
-        iconName: "tools-wizard"
-        text: i18n("Discover")
-        component: topBrowsingComp
-        objectName: "discover"
-        shortcut: "Alt+D"
-    }
-    TopLevelPageData {
-        iconName: "applications-other"
-        text: ResourcesModel.updatesCount==0 ? i18n("Installed") : i18np("Installed (%1 update)", "Installed (%1 updates)", ResourcesModel.updatesCount)
-        component: topInstalledComp
-        objectName: "installed"
-        shortcut: "Alt+I"
-    }
-    TopLevelPageData {
-        iconName: "repository"
-        text: i18n("Sources")
-        component: topSourcesComp
-        objectName: "sources"
-        shortcut: "Alt+S"
-        enabled: SourcesModel.count>0
-    }
+    ]
 
     Connections {
         target: app
@@ -147,29 +124,92 @@ Rectangle
         onListCategoryInternal: Navigation.openCategoryByName(name)
     }
 
-    ColumnLayout {
-        id: msgColumn
-        width: parent.width
-        visible: rep.count>0
-
-        Repeater {
-            id: rep
-            model: MessageActionsModel {
-                filterPriority: QAction.HighPriority
-            }
-            delegate: MessageAction {
-                width: msgColumn.width
-                Layout.fillWidth: true
-                theAction: action
-            }
-        }
-    }
+    ExclusiveGroup { id: appTabs }
 
     ColumnLayout {
         spacing: 0
-        anchors {
-            fill: parent
-            topMargin: msgColumn.height
+        anchors.fill: parent
+
+        ToolBar {
+            Layout.preferredHeight: backAction.height+2
+            Layout.fillWidth: true
+
+            RowLayout {
+                spacing: 1
+                anchors.fill: parent
+
+                ToolButton {
+                    id: backAction
+                    objectName: "back"
+                    iconName: "go-previous"
+                    enabled: window.navigationEnabled && breadcrumbsItem.count>1
+                    tooltip: text
+                    text: i18n("Back")
+//                     shortcut: "Alt+Up" //We need QtQuick 2.5
+                    onClicked: {
+                        breadcrumbsItem.popItem(false)
+                    }
+                }
+
+                Repeater {
+                    model: window.awesome
+                    delegate: Button {
+                        enabled: modelData.enabled
+                        checkable: modelData.checkable
+                        checked: modelData.checked
+                        onClicked: modelData.trigger();
+                        iconName: modelData.iconName
+                        text: modelData.text
+                        tooltip: modelData.shortcut
+                        exclusiveGroup: appTabs
+                    }
+                }
+                Item {
+                    Layout.fillWidth: true
+                }
+                TextField {
+                    id: searchWidget
+                    placeholderText: i18n("Search...")
+                    focus: true
+                    enabled: pageStack.currentItem!=null && pageStack.currentItem.searchFor!=null
+
+                    onTextChanged: searchTimer.running = true
+                    onEditingFinished: if(searchWidget.text == "" && backAction.enabled) {
+                        backAction.trigger()
+                    }
+                }
+                ToolButton {
+                    id: button
+                    iconName: "applications-system"
+                    tooltip: i18n("Configure and learn about Muon Discover")
+                    onClicked: {
+                        var pos = mapToItem(window, 0, height);
+                        app.showMenu(pos.x, pos.y);
+                    }
+                }
+            }
+        }
+
+        Item {
+            Layout.fillWidth: true
+            Layout.preferredHeight: rep.count>0 ? msgColumn.height : 0
+
+            ColumnLayout {
+                width: parent.width
+                id: msgColumn
+
+                Repeater {
+                    id: rep
+                    model: MessageActionsModel {
+                        filterPriority: QAction.HighPriority
+                    }
+                    delegate: MessageAction {
+                        width: msgColumn.width
+                        Layout.fillWidth: true
+                        theAction: action
+                    }
+                }
+            }
         }
 
         Item {
