@@ -25,7 +25,6 @@
 
 DiscoverAction::DiscoverAction(QObject* parent)
     : QAction(parent)
-    , m_actionsGroup(nullptr)
 {
     connect(this, &QAction::changed, this, &DiscoverAction::proxyChanged);
 }
@@ -47,38 +46,8 @@ KXmlGuiWindow* DiscoverAction::mainWindow() const
 
 void DiscoverAction::setMainWindow(KXmlGuiWindow* w)
 {
-    if(m_actionsGroup && !m_actionsGroup->parent())
-        m_actionsGroup->setParent(w);
     w->actionCollection()->addAction(objectName(), this);
     w->actionCollection()->setDefaultShortcuts(this, shortcuts());
-}
-
-QString DiscoverAction::actionsGroup() const
-{
-    return m_actionsGroup ? m_actionsGroup->objectName() : QString();
-}
-
-void DiscoverAction::setActionsGroup(const QString& name)
-{
-    static QHash<QString, QActionGroup*> availableGroups;
-    QString oldName = actionsGroup();
-    if(m_actionsGroup && name != oldName) {
-        if(m_actionsGroup->actions().count()<=1) {
-            availableGroups.remove(oldName);
-            delete m_actionsGroup;
-        } else
-            m_actionsGroup->removeAction(this);
-    }
-
-    if(!name.isEmpty()) {
-        m_actionsGroup = availableGroups.value(name);
-        if(!m_actionsGroup) {
-            m_actionsGroup = new QActionGroup(mainWindow());
-            m_actionsGroup->setObjectName(name);
-            availableGroups.insert(name, m_actionsGroup);
-        }
-        m_actionsGroup->addAction(this);
-    }
 }
 
 void DiscoverAction::setShortcutString(const QString& str)

@@ -39,18 +39,15 @@
 #include <QLineEdit>
 #include <QMenu>
 #include <QMenuBar>
-#include <QToolBar>
 #include <QQuickWidget>
 
 // KDE includes
-#include <KToolBarSpacerAction>
 #include <KActionCollection>
 #include <kdeclarative/kdeclarative.h>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KToolBar>
 #include <KXMLGUIFactory>
-#include <KToolBarPopupAction>
 #include <KIO/MetaData>
 #include <KHelpMenu>
 #include <KAboutData>
@@ -209,10 +206,12 @@ QUrl MuonDiscoverMainWindow::prioritaryFeaturedSource() const
 void MuonDiscoverMainWindow::setupActions()
 {
     setupGUI(StandardWindowOption(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar & ~KXmlGuiWindow::ToolBar));
+
     QAction *quitAction = KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), actionCollection());
     actionCollection()->addAction("file_quit", quitAction);
 
     menuBar()->setVisible(false);
+    toolBar("discoverToolBar")->setVisible(false);
 
     m_moreMenu = new QMenu(this);
     m_advancedMenu = new QMenu(i18n("Advanced..."), m_moreMenu);

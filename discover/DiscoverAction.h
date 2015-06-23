@@ -29,7 +29,6 @@ class DiscoverAction : public QAction
     Q_PROPERTY(QString iconName READ iconName WRITE setIconName NOTIFY proxyChanged)
     Q_PROPERTY(KXmlGuiWindow* mainWindow READ mainWindow WRITE setMainWindow NOTIFY proxyChanged)
     Q_PROPERTY(QAction::Priority priority READ priority WRITE setPriority NOTIFY proxyChanged)
-    Q_PROPERTY(QString actionsGroup READ actionsGroup WRITE setActionsGroup NOTIFY proxyChanged)
     Q_PROPERTY(QString shortcut READ stringShortcut WRITE setShortcutString NOTIFY proxyChanged)
     public:
         explicit DiscoverAction(QObject* parent = 0);
@@ -40,17 +39,11 @@ class DiscoverAction : public QAction
         KXmlGuiWindow* mainWindow() const;
         void setMainWindow(KXmlGuiWindow* w);
         
-        QString actionsGroup() const;
-        void setActionsGroup(const QString& name);
-        
         QString stringShortcut() const;
         void setShortcutString(const QString& name);
 
     Q_SIGNALS:
         void proxyChanged();
-
-    private:
-        QActionGroup* m_actionsGroup;
 };
 
 #endif // DISCOVERACTION_H
