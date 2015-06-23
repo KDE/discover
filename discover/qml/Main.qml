@@ -21,6 +21,7 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
+import QtQuick.Window 2.1
 import org.kde.muon 1.0
 import org.kde.muon.discover 1.0
 import "navigation.js" as Navigation
@@ -41,18 +42,20 @@ Rectangle
     property bool defaultStartup: true
     property bool navigationEnabled: true
 
+    readonly property bool compact: (width/Screen.pixelDensity)<70
+
     visible: true
 
     SystemPalette { id: palette }
     color: palette.base
 
-    function clearSearch() { searchWidget.text="" }
+    function clearSearch() { toolbar.search.text="" }
     Timer {
         id: searchTimer
         running: false
         repeat: false
         interval: 200
-        onTriggered: { pageStack.currentItem.searchFor(searchWidget.text) }
+        onTriggered: { pageStack.currentItem.searchFor(toolbar.search.text) }
     }
 
     Component {
@@ -124,70 +127,13 @@ Rectangle
         onListCategoryInternal: Navigation.openCategoryByName(name)
     }
 
-    ExclusiveGroup { id: appTabs }
-
     ColumnLayout {
         spacing: 0
         anchors.fill: parent
 
-        ToolBar {
-            Layout.preferredHeight: backAction.height+2
-            Layout.fillWidth: true
-
-            RowLayout {
-                spacing: 1
-                anchors.fill: parent
-
-                ToolButton {
-                    id: backAction
-                    objectName: "back"
-                    iconName: "go-previous"
-                    enabled: window.navigationEnabled && breadcrumbsItem.count>1
-                    tooltip: text
-                    text: i18n("Back")
-//                     shortcut: "Alt+Up" //We need QtQuick 2.5
-                    onClicked: {
-                        breadcrumbsItem.popItem(false)
-                    }
-                }
-
-                Repeater {
-                    model: window.awesome
-                    delegate: Button {
-                        enabled: modelData.enabled
-                        checkable: modelData.checkable
-                        checked: modelData.checked
-                        onClicked: modelData.trigger();
-                        iconName: modelData.iconName
-                        text: modelData.text
-                        tooltip: modelData.shortcut
-                        exclusiveGroup: appTabs
-                    }
-                }
-                Item {
-                    Layout.fillWidth: true
-                }
-                TextField {
-                    id: searchWidget
-                    placeholderText: i18n("Search...")
-                    focus: true
-                    enabled: pageStack.currentItem!=null && pageStack.currentItem.searchFor!=null
-
-                    onTextChanged: searchTimer.running = true
-                    onEditingFinished: if(searchWidget.text == "" && backAction.enabled) {
-                        backAction.trigger()
-                    }
-                }
-                ToolButton {
-                    id: button
-                    iconName: "applications-system"
-                    tooltip: i18n("Configure and learn about Muon Discover")
-                    onClicked: {
-                        var pos = mapToItem(window, 0, height);
-                        app.showMenu(pos.x, pos.y);
-                    }
-                }
-            }
+        MuonToolbar {
+            id: toolbar
+            compact: window.compact
         }
 
         Item {

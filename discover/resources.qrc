@@ -33,6 +33,8 @@
     <file>qml/Heading.qml</file>
     <file>qml/AddSourceDialog.qml</file>
     <file>qml/MessageAction.qml</file>
+    <file>qml/ConditionalLoader.qml</file>
+    <file>qml/MuonToolbar.qml</file>
 
     <file>qml/navigation.js</file>
  </qresource>
