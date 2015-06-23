@@ -431,5 +431,5 @@ QList<QAction*> ResourcesModel::messageActions() const
 
 bool ResourcesModel::isBusy() const
 {
-    return isFetching() || TransactionModel::global()->rowCount() > 0;
+    return TransactionModel::global()->rowCount() > 0;
 }
