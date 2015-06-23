@@ -21,6 +21,7 @@ include(GenerateExportHeader)
 find_package(KF5 REQUIRED WidgetsAddons CoreAddons Solid Archive
                                             Config Wallet DBusAddons I18n ConfigWidgets Notifications Declarative
                                             KIO IconThemes ItemViews)
+find_package(KF5TextWidgets REQUIRED)
 
 find_package(Phonon4Qt5 REQUIRED NO_MODULE)
 

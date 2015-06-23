@@ -21,7 +21,7 @@ Item
             verticalCenter: icon.verticalCenter
             left: icon.right
         }
-        font.pointSize: parent.height/7
+        font.pixelSize: parent.height/5
         horizontalAlignment: Text.AlignHCenter
     }
 }

@@ -18,9 +18,11 @@
  */
 
 import QtQuick 2.1
+import QtQuick.Window 2.2
 
 Flickable {
-    property int columnCount: Math.max(Math.floor(actualWidth/minCellWidth), 1)
+    readonly property bool compact: (width/Screen.pixelDensity)<70
+    property int columnCount: compact ? 1 : Math.max(Math.floor(actualWidth/minCellWidth), 1)
     property real cellWidth: (actualWidth-(columnCount-1)*dataFlow.spacing)/columnCount
     property int minCellWidth: 130
     property alias actualWidth: conts.width

@@ -20,6 +20,7 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
+import QtQuick.Window 2.2
 import "navigation.js" as Navigation
 import org.kde.muon.discover 1.0
 import org.kde.muon 1.0
@@ -235,7 +236,8 @@ Item {
         }
     }
     
-    state: preferList ? "list" : "grid2"
+    readonly property bool compact: (width/Screen.pixelDensity)<70
+    state: preferList || compact ? "list" : "grid2"
     states: [
         State {
             name: "list"

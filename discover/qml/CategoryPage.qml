@@ -47,24 +47,35 @@ Item {
     Component {
         id: categoryDelegate
         GridItem {
+            id: category
+            property bool horizontal: flick.columnCount==1
             width: flick.cellWidth
             height: 100
             enabled: true
-            Column {
+
+            GridLayout {
+                rows: category.horizontal ? 1 : 2
+                columns: category.horizontal ? 2 : 1
+
                 anchors.centerIn: parent
                 width: parent.width
-                spacing: 10
-                QIconItem {
-                    icon: decoration
-                    width: 40; height: 40
-                    anchors.horizontalCenter: parent.horizontalCenter
+                columnSpacing: 10
+                rowSpacing: 10
+                Item {
+                    Layout.fillWidth: !category.horizontal
+                    Layout.fillHeight: category.horizontal
+                    Layout.preferredWidth: 40
+                    Layout.preferredHeight: 40
+                    QIconItem {
+                        icon: decoration
+                        anchors.centerIn: parent
+                        width: 40
+                        height: width
+                    }
                 }
                 Label {
                     text: display
-                    anchors {
-                        left: parent.left
-                        right: parent.right
-                    }
+                    Layout.fillWidth: true
                     horizontalAlignment: Text.AlignHCenter
                     wrapMode: Text.WordWrap
                 }
