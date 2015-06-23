@@ -48,9 +48,9 @@ private:
     QMenu* m_moreMenu;
     QMenu* m_advancedMenu;
 
-    virtual void setActionsEnabled(bool enabled = true);
-
 private Q_SLOTS:
+    void setActionsEnabled(bool enabled = true);
+
     void initGUI();
     void initBackend();
     void setupActions();
