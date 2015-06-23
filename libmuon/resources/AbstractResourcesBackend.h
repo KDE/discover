@@ -56,7 +56,7 @@ class KXmlGuiWindow;
 class MUONCOMMON_EXPORT AbstractResourcesBackend : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString name CONSTANT)
+    Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(AbstractReviewsBackend* reviewsBackend READ reviewsBackend CONSTANT)
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
     Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
