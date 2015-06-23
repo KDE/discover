@@ -23,8 +23,6 @@ find_package(KF5 REQUIRED WidgetsAddons CoreAddons Solid Archive
                                             KIO IconThemes ItemViews)
 find_package(KF5TextWidgets REQUIRED)
 
-find_package(Phonon4Qt5 REQUIRED NO_MODULE)
-
 find_package(QApt 3.0.0)
 if(QApt_FOUND)
     find_package(DebconfKDE 1.0.0 REQUIRED)

@@ -49,7 +49,6 @@ LINK_PRIVATE
     KF5::ItemViews
     KF5::KIOWidgets
     KF5::IconThemes
-    Phonon::phonon4qt5
 )
 
 generate_export_header(MuonCommon EXPORT_FILE_NAME libMuonCommon_export.h)
@@ -57,5 +56,4 @@ generate_export_header(MuonCommon EXPORT_FILE_NAME libMuonCommon_export.h)
 target_include_directories(MuonCommon PRIVATE ${PHONON_INCLUDES} PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
 
 install(TARGETS MuonCommon ${INSTALL_TARGETS_DEFAULT_ARGS})
-install(FILES moo.ogg DESTINATION ${DATA_INSTALL_DIR}/libmuon)
 install(FILES resources/muonabstractnotifier.notifyrc DESTINATION ${KNOTIFYRC_INSTALL_DIR})
