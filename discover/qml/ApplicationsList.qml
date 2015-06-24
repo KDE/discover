@@ -19,7 +19,9 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.1
 import org.kde.kquickcontrolsaddons 2.0
+import QtQuick.Window 2.1
 import "navigation.js" as Navigation
 
 ScrollView {
@@ -30,6 +32,7 @@ ScrollView {
     property alias model: view.model
     property real actualWidth: width
     property real proposedMargin: (view.width-actualWidth)/2
+    readonly property bool compact: (width/Screen.pixelDensity)<70
 
     ListView
     {
@@ -45,6 +48,7 @@ ScrollView {
                 x: parentItem.proposedMargin
                 property real contHeight: height*0.8
                 height: nameLabel.font.pixelSize*3
+                internalMargin: 0
 
                 onClicked: {
                     view.currentIndex = index
@@ -60,18 +64,19 @@ ScrollView {
                         verticalCenter: parent.verticalCenter
                         left: parent.left
                     }
+
+                    QIconItem {
+                        anchors {
+                            right: resourceIcon.right
+                            bottom: resourceIcon.bottom
+                        }
+                        visible: isInstalled && view.model.stateFilter!=2
+                        icon: "checkmark"
+                        height: 16
+                        width: 16
+                    }
                 }
 
-                QIconItem {
-                    anchors {
-                        right: resourceIcon.right
-                        bottom: resourceIcon.bottom
-                    }
-                    visible: isInstalled && view.model.stateFilter!=2
-                    icon: "checkmark"
-                    height: 16
-                    width: 16
-                }
                 Label {
                     id: nameLabel
                     anchors {
@@ -84,42 +89,47 @@ ScrollView {
                     elide: Text.ElideRight
                     text: name
                 }
-                Label {
-                    id: commentLabel
-                    anchors {
-                        bottom: resourceIcon.bottom
-                        left: resourceIcon.right
-                        leftMargin: 5
-                        right: installButton.left
-                    }
-                    elide: Text.ElideRight
-                    text: comment
-                    font.italic: true
-                    opacity: delegateArea.containsMouse ? 1 : 0.2
-                    maximumLineCount: 1
-                    clip: true
-                }
                 Rating {
                     id: ratingsItem
                     anchors {
                         right: parent.right
-                        top: parent.top
+                        verticalCenter: nameLabel.verticalCenter
                     }
-                    height: contHeight*.4
-                    width: installButton.width/2
+                    height: parentItem.compact ? contHeight*.6 : contHeight*.4
+                    width: parent.width/5
                     rating: model.rating
                 }
 
-                InstallApplicationButton {
-                    id: installButton
+                RowLayout {
                     anchors {
                         bottom: parent.bottom
+                        left: resourceIcon.right
+                        leftMargin: 5
                         right: parent.right
                     }
-                    width: Math.max(200, minimumWidth) //minimumWidth depends on paintedWidth, which is invalid before actually painting the button
-//                     property bool isVisible: delegateArea.containsMouse && !installButton.canHide
-//                     opacity: isVisible ? 1 : 0
-                    application: model.application
+
+                    Label {
+                        id: commentLabel
+                        Layout.fillWidth: true
+
+                        elide: Text.ElideRight
+                        text: comment
+                        font.italic: true
+                        opacity: delegateArea.containsMouse ? 1 : 0.2
+                        maximumLineCount: 1
+                        clip: true
+                    }
+
+                    Label {
+                        visible: parentItem.compact
+                        text: model.application.status
+                    }
+                    InstallApplicationButton {
+                        Layout.preferredWidth: parentItem.compact ? 0 : Math.max(200, minimumWidth)
+    //                     property bool isVisible: delegateArea.containsMouse && !canHide
+    //                     opacity: isVisible ? 1 : 0
+                        application: model.application
+                    }
                 }
             }
     }

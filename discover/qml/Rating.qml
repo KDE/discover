@@ -39,6 +39,7 @@ Item {
         Component {
             id: del
             QIconItem {
+                anchors.verticalCenter: parent.verticalCenter
                 height: view.starSize
                 width: view.starSize
                 icon: "rating"

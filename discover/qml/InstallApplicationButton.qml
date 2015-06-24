@@ -1,12 +1,13 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.1
 import org.kde.muon 1.0
 
 Item {
     property alias application: listener.resource
     property alias isActive: listener.isActive
-    property real maximumWidth: button.implicitWidth*2
-    property real minimumWidth: button.minimumWidth*2
+    property real maximumWidth: button.Layout.preferredWidth*2
+    property real minimumWidth: button.Layout.minimumWidth*2
     property Component additionalItem: null
     height: button.implicitHeight
 
