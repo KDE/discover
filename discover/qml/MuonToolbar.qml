@@ -42,13 +42,13 @@ ToolBar
         ToolButton {
             id: backAction
             objectName: "back"
-            iconName: "go-previous"
-            enabled: window.navigationEnabled && breadcrumbsItem.count>1
-            tooltip: text
-            text: i18n("Back")
-//             shortcut: "Alt+Up" //We need QtQuick 2.5
-            onClicked: {
-                breadcrumbsItem.popItem(false)
+            action: Action {
+                shortcut: "Alt+Up"
+                iconName: "go-previous"
+                enabled: window.navigationEnabled && breadcrumbsItem.count>1
+                tooltip: text
+                text: i18n("Back")
+                onTriggered: { breadcrumbsItem.popItem(false) }
             }
         }
 
