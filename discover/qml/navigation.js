@@ -57,7 +57,8 @@ function openPage(icon, name, component, props) {
         obj = component.createObject(pageStack.currentItem, props)
         pageStack.push(obj);
         breadcrumbsItem.pushItem(icon, name)
-        console.log("opened "+name)
+        if (!obj)
+            console.log("error opening", name, obj, component.errorString())
     } catch (e) {
         console.log("error: "+e)
         console.log("comp error: "+component.errorString())
