@@ -28,6 +28,7 @@ Column
 {
     id: desc
     property QtObject application: null
+    property alias isInstalling: addonsView.isInstalling
 
     Item {width: 10; height: 5}
 
@@ -104,7 +105,6 @@ Column
     AddonsView {
         id: addonsView
         application: parent.application
-        isInstalling: installButton.isActive
         width: parent.width
     }
 
