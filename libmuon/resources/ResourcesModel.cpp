@@ -84,23 +84,25 @@ ResourcesModel::~ResourcesModel()
 QHash<int, QByteArray> ResourcesModel::roleNames() const
 {
     QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
-    roles[NameRole] = "name";
-    roles[IconRole] = "icon";
-    roles[CommentRole] = "comment";
-    roles[StateRole] = "state";
-    roles[RatingRole] = "rating";
-    roles[RatingPointsRole] = "ratingPoints";
-    roles[SortableRatingRole] = "sortableRating";
-    roles[ActiveRole] = "active";
-    roles[InstalledRole] = "isInstalled";
-    roles[ApplicationRole] = "application";
-    roles[OriginRole] = "origin";
-    roles[CanUpgrade] = "canUpgrade";
-    roles[PackageNameRole] = "packageName";
-    roles[IsTechnicalRole] = "isTechnical";
-    roles[CategoryRole] = "category";
-    roles[SectionRole] = "section";
-    roles[MimeTypes] = "mimetypes";
+    roles.unite({
+     { NameRole, "name" },
+     { IconRole, "icon" },
+     { CommentRole, "comment" },
+     { StateRole, "state" },
+     { RatingRole, "rating" },
+     { RatingPointsRole, "ratingPoints" },
+     { SortableRatingRole, "sortableRating" },
+     { ActiveRole, "active" },
+     { InstalledRole, "isInstalled" },
+     { ApplicationRole, "application" },
+     { OriginRole, "origin" },
+     { CanUpgrade, "canUpgrade" },
+     { PackageNameRole, "packageName" },
+     { IsTechnicalRole, "isTechnical" },
+     { CategoryRole, "category" },
+     { SectionRole, "section" },
+     { MimeTypes, "mimetypes" }
+    });
     roles.remove(Qt::EditRole);
     roles.remove(Qt::WhatsThisRole);
     return roles;
