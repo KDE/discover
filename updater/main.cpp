@@ -59,6 +59,7 @@ int main(int argc, char **argv)
 
     MainWindow *mainWindow = new MainWindow;
     mainWindow->show();
+    QObject::connect(&service, &KDBusService::activateRequested, mainWindow, &QWidget::raise);
 
     return app.exec();
 }

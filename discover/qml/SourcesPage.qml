@@ -62,8 +62,6 @@ Item {
                 AddSourceDialog {
                     id: addSourceDialog
                     source: sourceDelegate.sourceBackend
-
-                    onVisibleChanged: if(!visible) destroy()
                 }
 
                 MenuItem {
