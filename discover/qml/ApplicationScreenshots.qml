@@ -25,6 +25,9 @@ import org.kde.muon 1.0
 Item {
     id: shadow
     state: "thumbnail"
+    property alias application: screenshotsModel.application
+    property rect initialGeometry: Qt.rect(5, 5, 200, 200)
+    property rect fullGeometry: Qt.rect(0, 0, parent.width, parent.height)
 
     Rectangle {
         id: shadowItem
@@ -62,19 +65,18 @@ Item {
     states: [
     State { name: "thumbnail"
         PropertyChanges { target: shadowItem; opacity: 0.1 }
-        PropertyChanges { target: shadow; width: overviewContentsFlickable.x-x-5 }
-        PropertyChanges { target: shadow; height: appInfo.height/2 }
-        PropertyChanges { target: shadow; x: 5 }
-        PropertyChanges { target: shadow; y: 5 }
+        PropertyChanges { target: shadow; width: initialGeometry.width }
+        PropertyChanges { target: shadow; height: initialGeometry.height }
+        PropertyChanges { target: shadow; x: initialGeometry.x }
+        PropertyChanges { target: shadow; y: initialGeometry.y }
         PropertyChanges { target: thumbnailsView; opacity: 1 }
     },
     State { name: "full"
         PropertyChanges { target: shadowItem; opacity: 0.7 }
-        PropertyChanges { target: shadow; x: 0 }
-        PropertyChanges { target: shadow; y: 0 }
-        PropertyChanges { target: shadow; height: appInfo.height }
-        PropertyChanges { target: shadow; width: appInfo.width }
-        PropertyChanges { target: shadow; z: 0 }
+        PropertyChanges { target: shadow; x: fullGeometry.x }
+        PropertyChanges { target: shadow; y: fullGeometry.y }
+        PropertyChanges { target: shadow; height: fullGeometry.height }
+        PropertyChanges { target: shadow; width: fullGeometry.width }
         PropertyChanges { target: thumbnailsView; opacity: 0.3 }
     }
     ]
@@ -107,7 +109,6 @@ Item {
 
         model: ScreenshotsModel {
             id: screenshotsModel
-            application: appInfo.application
         }
         highlight: Rectangle { color: "white"; opacity: 0.5 }
 

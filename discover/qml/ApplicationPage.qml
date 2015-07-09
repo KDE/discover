@@ -55,11 +55,12 @@ Item {
                     topMargin: 10
                     margins: 5
                 }
+                application: appInfo.application
             }
 
             ApplicationScreenshots {
-                id: screenshots
-                width: overviewContentsFlickable.x
+                application: appInfo.application
+                initialGeometry: Qt.rect(5,5, overviewContentsFlickable.x-10, appInfo.height/2)
             }
         }
         componentTrue: ScrollView {
@@ -69,6 +70,7 @@ Item {
 
                 ApplicationDetails {
                     Layout.fillWidth: true
+                    application: appInfo.application
                 }
                 ApplicationDescription {
                     Layout.fillWidth: true

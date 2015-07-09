@@ -27,11 +27,11 @@ Column
 {
     property alias isInstalling: installButton.isActive
     spacing: 10
+    property alias application: installButton.application
     InstallApplicationButton {
         id: installButton
         anchors.horizontalCenter: parent.horizontalCenter
         width: Math.min(parent.width, maximumWidth)
-        application: appInfo.application
         additionalItem:  Rating {
             property QtObject ratingInstance: application.rating
             visible: ratingInstance!=null
