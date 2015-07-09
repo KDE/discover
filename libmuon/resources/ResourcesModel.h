@@ -115,6 +115,7 @@ class MUONCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         QVector< QVector<AbstractResource*> > m_resources;
         int m_initializingBackends;
         KXmlGuiWindow* m_mainwindow;
+        const QHash<int, QByteArray> m_roles;
 
         static ResourcesModel* s_self;
 };

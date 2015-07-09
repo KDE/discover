@@ -49,6 +49,26 @@ ResourcesModel::ResourcesModel(QObject* parent, bool load)
     : QAbstractListModel(parent)
     , m_initializingBackends(0)
     , m_mainwindow(nullptr)
+    , m_roles(QAbstractItemModel::roleNames().unite({
+        { NameRole, "name" },
+        { IconRole, "icon" },
+        { CommentRole, "comment" },
+        { StateRole, "state" },
+        { RatingRole, "rating" },
+        { RatingPointsRole, "ratingPoints" },
+        { SortableRatingRole, "sortableRating" },
+        { ActiveRole, "active" },
+        { InstalledRole, "isInstalled" },
+        { ApplicationRole, "application" },
+        { OriginRole, "origin" },
+        { CanUpgrade, "canUpgrade" },
+        { PackageNameRole, "packageName" },
+        { IsTechnicalRole, "isTechnical" },
+        { CategoryRole, "category" },
+        { SectionRole, "section" },
+        { MimeTypes, "mimetypes" }
+        })
+    )
 {
     init(load);
     connect(this, SIGNAL(allInitialized()), SIGNAL(fetchingChanged()));
@@ -83,29 +103,7 @@ ResourcesModel::~ResourcesModel()
 
 QHash<int, QByteArray> ResourcesModel::roleNames() const
 {
-    QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
-    roles.unite({
-     { NameRole, "name" },
-     { IconRole, "icon" },
-     { CommentRole, "comment" },
-     { StateRole, "state" },
-     { RatingRole, "rating" },
-     { RatingPointsRole, "ratingPoints" },
-     { SortableRatingRole, "sortableRating" },
-     { ActiveRole, "active" },
-     { InstalledRole, "isInstalled" },
-     { ApplicationRole, "application" },
-     { OriginRole, "origin" },
-     { CanUpgrade, "canUpgrade" },
-     { PackageNameRole, "packageName" },
-     { IsTechnicalRole, "isTechnical" },
-     { CategoryRole, "category" },
-     { SectionRole, "section" },
-     { MimeTypes, "mimetypes" }
-    });
-    roles.remove(Qt::EditRole);
-    roles.remove(Qt::WhatsThisRole);
-    return roles;
+    return m_roles;
 }
 
 void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
