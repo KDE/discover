@@ -26,7 +26,6 @@ Dialog {
     id: newSourceDialog
     title: i18n("Specify the new source for %1", source.name)
     standardButtons: StandardButton.Ok | StandardButton.Close
-    width: description.contentWidth
     property QtObject source
 
     ColumnLayout {
@@ -52,5 +51,5 @@ Dialog {
             focus: true
         }
     }
-    onAccepted: source.addRepository(repository.text)
+    onAccepted: source.addSource(repository.text)
 }
