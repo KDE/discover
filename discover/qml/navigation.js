@@ -54,6 +54,8 @@ function openPage(icon, name, component, props) {
         return
     var obj
     try {
+        console.assert(typeof name === 'string', "wrong page name");
+
         obj = component.createObject(pageStack.currentItem, props)
         pageStack.push(obj);
         breadcrumbsItem.pushItem(icon, name)

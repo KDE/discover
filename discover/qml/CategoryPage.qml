@@ -39,16 +39,11 @@ Item {
         else
             Navigation.openApplicationList("edit-find", i18n("Search..."), category, text)
     }
-    
-    onVisibleChanged: {
-        if(visible && !category)
-            searchWidget.text = ""
-    }
-    
+
     Component {
         id: categoryDelegate
         GridItem {
-            id: category
+            id: categoryItem
             property bool horizontal: flick.columnCount==1
             width: flick.cellWidth
             height: layout.height
@@ -56,16 +51,16 @@ Item {
 
             GridLayout {
                 id: layout
-                rows: category.horizontal ? 1 : 2
-                columns: category.horizontal ? 2 : 1
+                rows: categoryItem.horizontal ? 1 : 2
+                columns: categoryItem.horizontal ? 2 : 1
 
                 anchors.centerIn: parent
                 width: parent.width
                 columnSpacing: 10
                 rowSpacing: 10
                 Item {
-                    Layout.fillWidth: !category.horizontal
-                    Layout.fillHeight: category.horizontal
+                    Layout.fillWidth: !categoryItem.horizontal
+                    Layout.fillHeight: categoryItem.horizontal
                     Layout.preferredWidth: 40
                     Layout.preferredHeight: 40
                     QIconItem {
