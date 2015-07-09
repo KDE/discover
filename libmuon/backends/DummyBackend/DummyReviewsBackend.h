@@ -49,7 +49,7 @@ public:
     void initialize();
 
 private:
-    QMap<AbstractResource*, Rating*> m_ratings;
+    QHash<AbstractResource*, Rating*> m_ratings;
 };
 
 #endif // DUMMYREVIEWSBACKEND_H
