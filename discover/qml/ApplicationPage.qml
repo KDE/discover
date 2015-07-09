@@ -72,10 +72,23 @@ Item {
                     Layout.fillWidth: true
                     application: appInfo.application
                 }
+
+                Item {
+                    Layout.fillWidth: true
+                    Layout.minimumHeight: 100
+
+                    ApplicationScreenshots {
+                        application: appInfo.application
+                        initialGeometry: Qt.rect(0, 0, parent.width, parent.height)
+                        fullGeometry: Qt.rect(-parent.x, -parent.y, scroll.viewport.width, scroll.viewport.height)
+                    }
+                }
+
                 ApplicationDescription {
                     Layout.fillWidth: true
 
                     application: appInfo.application
+                    z: -1
                 }
             }
         }
