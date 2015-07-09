@@ -22,12 +22,12 @@ Flickable {
         },
         State {
             name: "shownBig"
-            when: itemDelegate.PathView.isCurrentItem
+            when: flick.isCurrentItem
             PropertyChanges { target: flick; contentY: flick.contentHeight-flick.height }
         },
         State {
             name: "notShown"
-            when: !itemDelegate.PathView.isCurrentItem
+            when: !flick.isCurrentItem
             PropertyChanges { target: flick; contentY: 0 }
         }
     ]
@@ -39,19 +39,11 @@ Flickable {
                 duration: info.slideDuration
                 easing.type: Easing.InOutQuad
             }
-        },
-        Transition {
-            to: "notShown"; from: "shownBig"
-            NumberAnimation {
-                properties: "contentY"
-                duration: info.slideDuration
-                easing.type: Easing.InOutQuad
-            }
         }
     ]
 
     onIsCurrentItemChanged: {
-        if (itemDelegate.PathView.isCurrentItem && image.status==Image.Error)
+        if (flick.isCurrentItem && image.status==Image.Error)
             info.next();
     }
     
