@@ -65,7 +65,7 @@ class MUONCOMMON_EXPORT AbstractResourcesBackend : public QObject
          * Constructs an AbstractResourcesBackend
          * @param parent the parent of the class (the object will be deleted when the parent gets deleted)
          */
-        explicit AbstractResourcesBackend(QObject* parent = 0);
+        explicit AbstractResourcesBackend(QObject* parent = nullptr);
         
         /**
          * @returns true when the backend is in a valid state, which means it is able to work

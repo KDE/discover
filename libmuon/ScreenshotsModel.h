@@ -35,14 +35,14 @@ class MUONCOMMON_EXPORT ScreenshotsModel : public QAbstractListModel
     public:
         enum Roles { ThumbnailUrl=Qt::UserRole+1, ScreenshotUrl };
         
-        ScreenshotsModel(QObject* parent = 0);
-        virtual QHash<int, QByteArray> roleNames() const;
+        ScreenshotsModel(QObject* parent = nullptr);
+        virtual QHash<int, QByteArray> roleNames() const override;
 
         AbstractResource* resource() const;
         void setResource(AbstractResource* res);
 
-        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
-        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
+        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
+        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
         Q_SCRIPTABLE QUrl screenshotAt(int row) const;
         int count() const;
 

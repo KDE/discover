@@ -56,7 +56,7 @@ void MuonNotifier::configurationChanged()
 
 void MuonNotifier::showMuon()
 {
-    KRun::runCommand("muon-updater", 0);
+    KRun::runCommand("muon-updater", nullptr);
 }
 
 bool MuonNotifier::isSystemUpToDate() const

@@ -44,7 +44,7 @@ class UpdaterWidget : public QStackedWidget
 {
     Q_OBJECT
 public:
-    explicit UpdaterWidget(ResourcesUpdatesModel* updates, QWidget* parent = 0);
+    explicit UpdaterWidget(ResourcesUpdatesModel* updates, QWidget* parent = nullptr);
     virtual ~UpdaterWidget();
 
 private:

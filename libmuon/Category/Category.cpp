@@ -26,11 +26,11 @@
 #include <QFile>
 #include <QDebug>
 
-Category::Category(const QSet<QString>& pluginName, QObject* parent)
+Category::Category(QSet<QString>  pluginName, QObject* parent)
         : QObject(parent)
         , m_iconString("applications-other")
         , m_showTechnical(false)
-        , m_plugins(pluginName)
+        , m_plugins(std::move(pluginName))
 {}
 
 Category::~Category()

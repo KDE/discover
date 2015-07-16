@@ -39,9 +39,9 @@ public:
     };
 
     UpdateItem();
-    UpdateItem(const QString &categoryName,
-               const QIcon &categoryIcon);
-    explicit UpdateItem(AbstractResource *app, UpdateItem *parent = 0);
+    UpdateItem(QString categoryName,
+               QIcon categoryIcon);
+    explicit UpdateItem(AbstractResource *app, UpdateItem *parent = nullptr);
 
     ~UpdateItem();
 

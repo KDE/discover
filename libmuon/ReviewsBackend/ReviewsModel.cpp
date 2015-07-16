@@ -28,8 +28,8 @@
 
 ReviewsModel::ReviewsModel(QObject* parent)
     : QAbstractListModel(parent)
-    , m_app(0)
-    , m_backend(0)
+    , m_app(nullptr)
+    , m_backend(nullptr)
     , m_lastPage(0)
     , m_canFetchMore(true)
 {}

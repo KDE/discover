@@ -25,7 +25,7 @@
 
 ScreenshotsModel::ScreenshotsModel(QObject* parent)
     : QAbstractListModel(parent)
-    , m_resource(0)
+    , m_resource(nullptr)
 {}
 
 QHash< int, QByteArray > ScreenshotsModel::roleNames() const

@@ -24,7 +24,7 @@ PaginateModel::PaginateModel(QObject* object)
     : QAbstractListModel(object)
     , m_firstItem(0)
     , m_pageSize(10)
-    , m_sourceModel(0)
+    , m_sourceModel(nullptr)
 {
 }
 
@@ -74,7 +74,7 @@ QAbstractItemModel* PaginateModel::sourceModel() const
 void PaginateModel::setSourceModel(QAbstractItemModel* model)
 {
     if(m_sourceModel) {
-        disconnect(m_sourceModel, 0, this, 0);
+        disconnect(m_sourceModel, nullptr, this, nullptr);
     }
 
     if(model!=m_sourceModel) {

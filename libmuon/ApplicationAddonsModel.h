@@ -37,15 +37,15 @@ class MUONCOMMON_EXPORT ApplicationAddonsModel : public QAbstractListModel
     Q_PROPERTY(bool hasChanges READ hasChanges NOTIFY stateChanged)
     Q_PROPERTY(bool isEmpty READ isEmpty NOTIFY applicationChanged)
     public:
-        explicit ApplicationAddonsModel(QObject* parent = 0);
+        explicit ApplicationAddonsModel(QObject* parent = nullptr);
         
         AbstractResource* application() const;
         void setApplication(AbstractResource* app);
         bool hasChanges() const;
         
-        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
-        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
-        virtual QHash<int, QByteArray> roleNames() const;
+        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
+        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
+        virtual QHash<int, QByteArray> roleNames() const override;
         bool isEmpty() const;
 
     public slots:

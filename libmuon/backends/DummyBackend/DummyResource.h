@@ -28,29 +28,29 @@ class DummyResource : public AbstractResource
 {
 Q_OBJECT
 public:
-    explicit DummyResource(const QString& name, bool isTechnical, AbstractResourcesBackend* parent);
+    explicit DummyResource(QString  name, bool isTechnical, AbstractResourcesBackend* parent);
 
-    virtual QList<PackageState> addonsInformation();
-    virtual QString section();
-    virtual QString origin() const;
-    virtual QString longDescription();
-    virtual QString availableVersion() const;
-    virtual QString installedVersion() const;
-    virtual QString license();
-    virtual int downloadSize();
-    virtual QUrl screenshotUrl();
-    virtual QUrl thumbnailUrl();
-    virtual QUrl homepage();
-    virtual QStringList categories();
-    virtual AbstractResource::State state();
-    virtual QString icon() const;
-    virtual QString comment();
-    virtual QString name();
-    virtual QString packageName() const;
-    virtual bool isTechnical() const { return m_isTechnical; }
-    virtual bool canExecute() const { return true; }
-    virtual void invokeApplication() const;
-    virtual void fetchChangelog();
+    virtual QList<PackageState> addonsInformation() override;
+    virtual QString section() override;
+    virtual QString origin() const override;
+    virtual QString longDescription() override;
+    virtual QString availableVersion() const override;
+    virtual QString installedVersion() const override;
+    virtual QString license() override;
+    virtual int downloadSize() override;
+    virtual QUrl screenshotUrl() override;
+    virtual QUrl thumbnailUrl() override;
+    virtual QUrl homepage() override;
+    virtual QStringList categories() override;
+    virtual AbstractResource::State state() override;
+    virtual QString icon() const override;
+    virtual QString comment() override;
+    virtual QString name() override;
+    virtual QString packageName() const override;
+    virtual bool isTechnical() const override { return m_isTechnical; }
+    virtual bool canExecute() const override { return true; }
+    virtual void invokeApplication() const override;
+    virtual void fetchChangelog() override;
     void setState(State state);
     void setAddons(const AddonList& addons);
 

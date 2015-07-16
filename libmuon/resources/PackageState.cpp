@@ -20,9 +20,9 @@
 
 #include "PackageState.h"
 
-PackageState::PackageState(const QString& name, const QString& description, bool installed)
-    : m_name(name)
-    , m_description(description)
+PackageState::PackageState(QString  name, QString  description, bool installed)
+    : m_name(std::move(name))
+    , m_description(std::move(description))
     , m_installed(installed)
 {}
 

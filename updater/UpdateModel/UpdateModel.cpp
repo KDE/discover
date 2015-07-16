@@ -127,7 +127,7 @@ QVariant UpdateModel::headerData(int section, Qt::Orientation orientation,
 Qt::ItemFlags UpdateModel::flags(const QModelIndex &index) const
 {
     if (!index.isValid())
-        return 0;
+        return nullptr;
 
     return Qt::ItemIsEnabled | Qt::ItemIsSelectable;
 }

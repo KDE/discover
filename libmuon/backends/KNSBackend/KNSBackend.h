@@ -46,26 +46,26 @@ class MUONCOMMON_EXPORT KNSBackend : public AbstractResourcesBackend
 {
 Q_OBJECT
 public:
-    explicit KNSBackend(QObject* parent = 0);
+    explicit KNSBackend(QObject* parent = nullptr);
     virtual ~KNSBackend();
     
-    virtual void setMetaData(const QString& path);
-    virtual void cancelTransaction(AbstractResource* app);
-    virtual void removeApplication(AbstractResource* app);
-    virtual void installApplication(AbstractResource* app);
-    virtual void installApplication(AbstractResource* app, AddonList addons);
-    virtual AbstractResource* resourceByPackageName(const QString& name) const;
-    virtual int updatesCount() const;
-    virtual AbstractReviewsBackend* reviewsBackend() const;
-    virtual QList<AbstractResource*> searchPackageName(const QString& searchText);
-    virtual QVector< AbstractResource* > allResources() const;
-    virtual AbstractBackendUpdater* backendUpdater() const;
-    virtual bool isFetching() const;
-    virtual QList<QAction*> messageActions() const { return QList<QAction*>(); }
+    virtual void setMetaData(const QString& path) override;
+    virtual void cancelTransaction(AbstractResource* app) override;
+    virtual void removeApplication(AbstractResource* app) override;
+    virtual void installApplication(AbstractResource* app) override;
+    virtual void installApplication(AbstractResource* app, AddonList addons) override;
+    virtual AbstractResource* resourceByPackageName(const QString& name) const override;
+    virtual int updatesCount() const override;
+    virtual AbstractReviewsBackend* reviewsBackend() const override;
+    virtual QList<AbstractResource*> searchPackageName(const QString& searchText) override;
+    virtual QVector< AbstractResource* > allResources() const override;
+    virtual AbstractBackendUpdater* backendUpdater() const override;
+    virtual bool isFetching() const override;
+    virtual QList<QAction*> messageActions() const override { return QList<QAction*>(); }
 
-    bool isValid() const;
+    bool isValid() const override;
     Attica::Provider* provider() { return &m_provider; }
-    QList<AbstractResource*> upgradeablePackages() const;
+    QList<AbstractResource*> upgradeablePackages() const override;
 
 public slots:
     void receivedEntries(const KNS3::Entry::List& entry);

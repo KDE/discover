@@ -28,7 +28,7 @@ class MUONCOMMON_EXPORT AbstractLoginBackend : public QObject
 {
     Q_OBJECT
     public:
-        AbstractLoginBackend(QObject* parent=0);
+        AbstractLoginBackend(QObject* parent=nullptr);
         virtual bool hasCredentials() const = 0;
         virtual QString displayName() const = 0;
 

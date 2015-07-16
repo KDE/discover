@@ -32,16 +32,16 @@ class ApplicationProxyModelHelper : public ResourcesProxyModel, public QQmlParse
     Q_PROPERTY(Qt::SortOrder sortOrder READ sortOrder WRITE setSortOrder_hack NOTIFY sortOrderChanged)
     public:
         void setStateFilter_hack(int state);
-        explicit ApplicationProxyModelHelper(QObject* parent = 0);
+        explicit ApplicationProxyModelHelper(QObject* parent = nullptr);
         
         void setSortRole_hack(int role);
         void setSortOrder_hack(Qt::SortOrder order);
         void setStringSortRole_hack(const QString& role);
         QString stringSortRole() const;
 
-        virtual void classBegin() {}
-        virtual void componentComplete();
-        virtual QHash<int, QByteArray> roleNames() const;
+        virtual void classBegin() override {}
+        virtual void componentComplete() override;
+        virtual QHash<int, QByteArray> roleNames() const override;
 
     public slots:
         void sortModel();

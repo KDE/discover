@@ -30,21 +30,21 @@ class DummyReviewsBackend : public AbstractReviewsBackend
 {
 Q_OBJECT
 public:
-    explicit DummyReviewsBackend(DummyBackend* parent = 0);
+    explicit DummyReviewsBackend(DummyBackend* parent = nullptr);
 
-    virtual QString userName() const { return "dummy"; }
-    virtual void login() {}
-    virtual void logout() {}
-    virtual void registerAndLogin() {}
+    virtual QString userName() const override { return "dummy"; }
+    virtual void login() override {}
+    virtual void logout() override {}
+    virtual void registerAndLogin() override {}
 
-    virtual Rating* ratingForApplication(AbstractResource* app) const;
-    virtual bool hasCredentials() const { return false; }
-    virtual void deleteReview(Review*) {}
-    virtual void fetchReviews(AbstractResource* app, int page = 1);
-    virtual bool isFetching() const { return false; }
-    virtual void submitReview(AbstractResource*, const QString&, const QString&, const QString&) {}
-    virtual void flagReview(Review*, const QString&, const QString&) {}
-    virtual void submitUsefulness(Review*, bool);
+    virtual Rating* ratingForApplication(AbstractResource* app) const override;
+    virtual bool hasCredentials() const override { return false; }
+    virtual void deleteReview(Review*) override {}
+    virtual void fetchReviews(AbstractResource* app, int page = 1) override;
+    virtual bool isFetching() const override { return false; }
+    virtual void submitReview(AbstractResource*, const QString&, const QString&, const QString&) override {}
+    virtual void flagReview(Review*, const QString&, const QString&) override {}
+    virtual void submitUsefulness(Review*, bool) override;
 
     void initialize();
 

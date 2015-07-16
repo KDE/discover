@@ -31,7 +31,7 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
     , m_sortByRelevancy(false)
     , m_filterBySearch(false)
-    , m_filteredCategory(0)
+    , m_filteredCategory(nullptr)
     , m_stateFilter(AbstractResource::Broken)
 {
     setShouldShowTechnical(false);

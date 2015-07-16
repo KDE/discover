@@ -31,29 +31,29 @@ class PackageKitResource : public AbstractResource
 {
     Q_OBJECT
     public:
-        explicit PackageKitResource(const QString& packageName, const QString& summary, PackageKitBackend* parent);
-        virtual QString packageName() const;
-        virtual QString name();
-        virtual QString comment();
-        virtual QString longDescription();
-        virtual QUrl homepage();
-        virtual QString icon() const;
-        virtual QStringList categories();
-        virtual QString license();
-        virtual QString origin() const;
-        virtual QString section();
-        virtual bool isTechnical() const;
-        virtual int downloadSize();
-        virtual void fetchChangelog();
+        explicit PackageKitResource(QString  packageName, QString  summary, PackageKitBackend* parent);
+        virtual QString packageName() const override;
+        virtual QString name() override;
+        virtual QString comment() override;
+        virtual QString longDescription() override;
+        virtual QUrl homepage() override;
+        virtual QString icon() const override;
+        virtual QStringList categories() override;
+        virtual QString license() override;
+        virtual QString origin() const override;
+        virtual QString section() override;
+        virtual bool isTechnical() const override;
+        virtual int downloadSize() override;
+        virtual void fetchChangelog() override;
         
-        virtual QList<PackageState> addonsInformation();
-        virtual State state();
+        virtual QList<PackageState> addonsInformation() override;
+        virtual State state() override;
         
-        virtual QUrl screenshotUrl();
-        virtual QUrl thumbnailUrl();
+        virtual QUrl screenshotUrl() override;
+        virtual QUrl thumbnailUrl() override;
         
-        virtual QString installedVersion() const;
-        virtual QString availableVersion() const;
+        virtual QString installedVersion() const override;
+        virtual QString availableVersion() const override;
         virtual QStringList allPackageNames() const;
         QString installedPackageId() const;
         QString availablePackageId() const;

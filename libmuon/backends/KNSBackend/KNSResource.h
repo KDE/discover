@@ -32,30 +32,30 @@ class MUONCOMMON_EXPORT KNSResource : public AbstractResource
 {
 Q_OBJECT
 public:
-    explicit KNSResource(const Attica::Content& c, const QString& category, const QString& icon, KNSBackend* parent);
+    explicit KNSResource(const Attica::Content& c, QString  category, QString  icon, KNSBackend* parent);
     virtual ~KNSResource();
 
     void setStatus(KNS3::Entry::Status status);
 
-    virtual AbstractResource::State state();
-    virtual QString icon() const;
-    virtual QString comment();
-    virtual QString name();
-    virtual QString packageName() const;
-    virtual QStringList categories();
-    virtual QUrl homepage();
-    virtual QUrl thumbnailUrl();
-    virtual QUrl screenshotUrl();
-    virtual QString license();
-    virtual QString longDescription();
-    virtual QList<PackageState> addonsInformation() { return QList<PackageState>(); }
-    virtual QString availableVersion() const;
-    virtual QString installedVersion() const;
-    virtual QString origin() const;
-    virtual QString section();
-    virtual void fetchScreenshots();
-    virtual int downloadSize();
-    virtual void fetchChangelog();
+    virtual AbstractResource::State state() override;
+    virtual QString icon() const override;
+    virtual QString comment() override;
+    virtual QString name() override;
+    virtual QString packageName() const override;
+    virtual QStringList categories() override;
+    virtual QUrl homepage() override;
+    virtual QUrl thumbnailUrl() override;
+    virtual QUrl screenshotUrl() override;
+    virtual QString license() override;
+    virtual QString longDescription() override;
+    virtual QList<PackageState> addonsInformation() override { return QList<PackageState>(); }
+    virtual QString availableVersion() const override;
+    virtual QString installedVersion() const override;
+    virtual QString origin() const override;
+    virtual QString section() override;
+    virtual void fetchScreenshots() override;
+    virtual int downloadSize() override;
+    virtual void fetchChangelog() override;
 
     const Attica::Content& content();
     void setEntry(const KNS3::Entry& entry);

@@ -32,9 +32,9 @@ class AbstractResource;
 class MUONCOMMON_EXPORT Review
 {
 public:
-    Review(const QString& name, const QString& pkgName, const QString& language, const QString& summary,
-               const QString& reviewText, const QString& userName, const QDateTime& date, bool show, quint64 id,
-               int rating, int usefulTotal, int usefulFavorable, const QString& packageVersion);
+    Review(QString  name, QString  pkgName, QString  language, QString  summary,
+               QString  reviewText, QString  userName, const QDateTime& date, bool show, quint64 id,
+               int rating, int usefulTotal, int usefulFavorable, QString  packageVersion);
     ~Review();
 
     // Creation date determines greater than/less than

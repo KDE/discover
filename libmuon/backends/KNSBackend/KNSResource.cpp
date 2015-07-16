@@ -23,13 +23,13 @@
 #include <QDebug>
 #include <knewstuff_version.h>
 
-KNSResource::KNSResource(const Attica::Content& c, const QString& category, const QString& icon, KNSBackend* parent)
+KNSResource::KNSResource(const Attica::Content& c, QString  category, QString  icon, KNSBackend* parent)
     : AbstractResource(parent)
     , m_status(KNS3::Entry::Downloadable)
     , m_content(c)
-    , m_category(category)
-    , m_icon(icon)
-    , m_entry(0)
+    , m_category(std::move(category))
+    , m_icon(std::move(icon))
+    , m_entry(nullptr)
 {}
 
 KNSResource::~KNSResource()

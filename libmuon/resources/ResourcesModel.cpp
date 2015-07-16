@@ -88,7 +88,7 @@ void ResourcesModel::init(bool load)
 ResourcesModel::ResourcesModel(const QString& backendName, QObject* parent)
     : QAbstractListModel(parent)
     , m_initializingBackends(0)
-    , m_mainwindow(0)
+    , m_mainwindow(nullptr)
 {
     init(false);
     Q_ASSERT(!s_self);
@@ -153,7 +153,7 @@ AbstractResource* ResourcesModel::resourceAt(int row) const
         else
             return it->at(row);
     }
-    return 0;
+    return nullptr;
 }
 
 QModelIndex ResourcesModel::resourceIndex(AbstractResource* res) const
@@ -324,7 +324,7 @@ AbstractResource* ResourcesModel::resourceByPackageName(const QString& name)
             return res;
         }
     }
-    return 0;
+    return nullptr;
 }
 
 int ResourcesModel::updatesCount() const

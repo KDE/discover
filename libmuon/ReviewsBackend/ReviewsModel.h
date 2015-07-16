@@ -50,16 +50,16 @@ class MUONCOMMON_EXPORT ReviewsModel : public QAbstractListModel
             Yes,
             No
         };
-        explicit ReviewsModel(QObject* parent = 0);
-        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
-        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
+        explicit ReviewsModel(QObject* parent = nullptr);
+        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
+        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
 
         AbstractReviewsBackend* backend() const;
         void setResource(AbstractResource* app);
         AbstractResource* resource() const;
-        virtual void fetchMore(const QModelIndex& parent=QModelIndex());
-        virtual bool canFetchMore(const QModelIndex&) const;
-        virtual QHash<int, QByteArray> roleNames() const;
+        virtual void fetchMore(const QModelIndex& parent=QModelIndex()) override;
+        virtual bool canFetchMore(const QModelIndex&) const override;
+        virtual QHash<int, QByteArray> roleNames() const override;
 
     public slots:
         void deleteReview(int row);

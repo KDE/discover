@@ -39,18 +39,18 @@ class KNSReviews : public AbstractReviewsBackend
     public:
         explicit KNSReviews(KNSBackend* backend);
 
-        virtual void fetchReviews(AbstractResource* app, int page = 1);
-        virtual bool isFetching() const;
-        virtual void flagReview(Review* r, const QString& reason, const QString& text);
-        virtual void deleteReview(Review* r);
-        virtual void submitReview(AbstractResource* app, const QString& summary, const QString& review_text, const QString& rating);
-        virtual void submitUsefulness(Review* r, bool useful);
-        virtual void logout();
-        virtual void registerAndLogin();
-        virtual void login();
-        virtual Rating* ratingForApplication(AbstractResource* app) const;
-        virtual bool hasCredentials() const;
-        virtual QString userName() const;
+        virtual void fetchReviews(AbstractResource* app, int page = 1) override;
+        virtual bool isFetching() const override;
+        virtual void flagReview(Review* r, const QString& reason, const QString& text) override;
+        virtual void deleteReview(Review* r) override;
+        virtual void submitReview(AbstractResource* app, const QString& summary, const QString& review_text, const QString& rating) override;
+        virtual void submitUsefulness(Review* r, bool useful) override;
+        virtual void logout() override;
+        virtual void registerAndLogin() override;
+        virtual void login() override;
+        virtual Rating* ratingForApplication(AbstractResource* app) const override;
+        virtual bool hasCredentials() const override;
+        virtual QString userName() const override;
 
     private slots:
         void commentsReceived(Attica::BaseJob* job);

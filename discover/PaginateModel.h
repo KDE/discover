@@ -40,7 +40,7 @@ class PaginateModel : public QAbstractListModel
     Q_PROPERTY(int pageCount READ pageCount NOTIFY pageCountChanged)
 
     public:
-        PaginateModel(QObject* object = 0);
+        PaginateModel(QObject* object = nullptr);
 
         int pageSize() const;
         void setPageSize(int count);
@@ -53,12 +53,12 @@ class PaginateModel : public QAbstractListModel
 
         QModelIndex mapToSource(const QModelIndex& idx) const;
         QModelIndex mapFromSource(const QModelIndex& idx) const;
-        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
-        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
+        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
+        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
 
         int currentPage() const;
         int pageCount() const;
-        virtual QHash<int, QByteArray> roleNames() const;
+        virtual QHash<int, QByteArray> roleNames() const override;
 
         Q_SCRIPTABLE void firstPage();
         Q_SCRIPTABLE void nextPage();

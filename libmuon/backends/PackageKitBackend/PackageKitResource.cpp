@@ -27,10 +27,10 @@
 #include <PackageKit/Details>
 #include <PackageKit/Daemon>
 
-PackageKitResource::PackageKitResource(const QString &packageName, const QString &summary, PackageKitBackend* parent)
+PackageKitResource::PackageKitResource(QString packageName, QString summary, PackageKitBackend* parent)
     : AbstractResource(parent)
-    , m_summary(summary)
-    , m_name(packageName)
+    , m_summary(std::move(summary))
+    , m_name(std::move(packageName))
 {
     setObjectName(m_name);
 }

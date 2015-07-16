@@ -39,7 +39,7 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
         ~MuonDiscoverMainWindow();
 
         Q_SCRIPTABLE QAction* getAction(const QString& name);
-        QSize sizeHint() const;
+        QSize sizeHint() const override;
         
         void initialize();
         QStringList modes() const;

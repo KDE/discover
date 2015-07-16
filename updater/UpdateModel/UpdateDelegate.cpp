@@ -67,7 +67,7 @@ bool UpdateDelegate::editorEvent(QEvent *event,
         event->type() == QEvent::MouseButtonRelease) {
     }
 
-    const QWidget *widget = 0;
+    const QWidget *widget = nullptr;
     if (const QStyleOptionViewItemV4 *v4 = qstyleoption_cast<const QStyleOptionViewItemV4 *>(&option)) {
         widget = v4->widget;
     }

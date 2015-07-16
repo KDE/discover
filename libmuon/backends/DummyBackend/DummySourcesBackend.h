@@ -29,12 +29,12 @@ class DummySourcesBackend : public AbstractSourcesBackend
 public:
     DummySourcesBackend(QObject* parent);
 
-    virtual QAbstractItemModel* sources();
-    virtual bool addSource(const QString& id);
-    virtual bool removeSource(const QString& id);
-    virtual QString name() const { return QStringLiteral("Dummy"); }
-    virtual QString idDescription() { return QStringLiteral("Random weird text"); }
-    virtual QList<QAction*> actions() const;
+    virtual QAbstractItemModel* sources() override;
+    virtual bool addSource(const QString& id) override;
+    virtual bool removeSource(const QString& id) override;
+    virtual QString name() const override { return QStringLiteral("Dummy"); }
+    virtual QString idDescription() override { return QStringLiteral("Random weird text"); }
+    virtual QList<QAction*> actions() const override;
 
 private:
     QStandardItemModel* m_sources;

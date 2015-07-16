@@ -21,23 +21,23 @@
 #include "Review.h"
 #include <resources/ResourcesModel.h>
 
-Review::Review(const QString& name, const QString& pkgName, const QString& language, const QString& summary,
-               const QString& reviewText, const QString& userName, const QDateTime& date, bool show, quint64 id,
-               int rating, int usefulTotal, int usefulFavorable, const QString& packageVersion)
-    : m_appName(name)
+Review::Review(QString  name, QString  pkgName, QString  language, QString  summary,
+               QString  reviewText, QString  userName, const QDateTime& date, bool show, quint64 id,
+               int rating, int usefulTotal, int usefulFavorable, QString  packageVersion)
+    : m_appName(std::move(name))
     , m_creationDate(date)
     , m_shouldShow(show)
     , m_id(id)
-    , m_language(language)
-    , m_packageName(pkgName)
+    , m_language(std::move(language))
+    , m_packageName(std::move(pkgName))
     , m_rating(rating)
-    , m_reviewText(reviewText)
-    , m_reviewer(userName)
+    , m_reviewText(std::move(reviewText))
+    , m_reviewer(std::move(userName))
     , m_usefulnessTotal(usefulTotal)
     , m_usefulnessFavorable(usefulFavorable)
     , m_usefulChoice(ReviewsModel::None)
-    , m_summary(summary)
-    , m_packageVersion(packageVersion)
+    , m_summary(std::move(summary))
+    , m_packageVersion(std::move(packageVersion))
 {}
 
 Review::~Review()

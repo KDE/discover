@@ -34,9 +34,9 @@
 
 ResourcesUpdatesModel::ResourcesUpdatesModel(QObject* parent)
     : QStandardItemModel(parent)
-    , m_resources(0)
+    , m_resources(nullptr)
     , m_lastIsProgressing(false)
-    , m_kded(0)
+    , m_kded(nullptr)
 {
     setResourcesModel(ResourcesModel::global());
 }

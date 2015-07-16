@@ -36,7 +36,7 @@ class MUONCOMMON_EXPORT AbstractReviewsBackend : public QObject
     Q_PROPERTY(bool hasCredentials READ hasCredentials NOTIFY loginStateChanged)
     Q_PROPERTY(QString name READ userName NOTIFY loginStateChanged)
     public:
-        explicit AbstractReviewsBackend(QObject* parent = 0);
+        explicit AbstractReviewsBackend(QObject* parent = nullptr);
 
         virtual QString userName() const = 0;
         virtual bool hasCredentials() const = 0;

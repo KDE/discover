@@ -81,7 +81,7 @@ void TransactionListener::setTransaction(Transaction* trans)
 {
     Q_ASSERT(!trans || trans->resource()==m_resource);
     if(m_transaction) {
-        disconnect(m_transaction, 0, this, 0);
+        disconnect(m_transaction, nullptr, this, nullptr);
     }
     m_transaction = trans;
     if(m_transaction) {

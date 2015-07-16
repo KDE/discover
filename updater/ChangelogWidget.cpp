@@ -45,7 +45,7 @@
 
 ChangelogWidget::ChangelogWidget(QWidget *parent)
         : QWidget(parent)
-        , m_package(0)
+        , m_package(nullptr)
         , m_show(false)
 {
     QWidget *sideWidget = new QWidget(this);

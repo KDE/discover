@@ -43,7 +43,7 @@ public:
     };
     Q_ENUMS(State)
 
-    MuonNotifier(QObject* parent = 0);
+    MuonNotifier(QObject* parent = nullptr);
     virtual ~MuonNotifier();
 
     bool isSystemUpToDate() const;

@@ -37,15 +37,15 @@ class MUONCOMMON_EXPORT SourcesModel : public QAbstractListModel
         enum Roles {
             SourceBackend = Qt::UserRole+1
         };
-        SourcesModel(QObject* parent = 0);
+        SourcesModel(QObject* parent = nullptr);
         ~SourcesModel();
 
         static SourcesModel* global();
 
-        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
-        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
+        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
+        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
         void addSourcesBackend(AbstractSourcesBackend* sources);
-        virtual QHash<int, QByteArray> roleNames() const;
+        virtual QHash<int, QByteArray> roleNames() const override;
 
         QList<QObject*> actions() const;
         Q_SCRIPTABLE QVariant get(int row, const QByteArray& roleName);

@@ -33,24 +33,24 @@ class DummyBackend : public AbstractResourcesBackend
 Q_OBJECT
 Q_PROPERTY(int startElements MEMBER m_startElements)
 public:
-    explicit DummyBackend(QObject* parent = 0);
+    explicit DummyBackend(QObject* parent = nullptr);
 
-    virtual void setMetaData(const QString& path);
-    virtual QList<AbstractResource*> upgradeablePackages() const;
-    virtual AbstractResource* resourceByPackageName(const QString& name) const;
-    virtual int updatesCount() const;
-    virtual AbstractBackendUpdater* backendUpdater() const;
-    virtual AbstractReviewsBackend* reviewsBackend() const;
-    virtual QList<AbstractResource*> searchPackageName(const QString& searchText);
-    virtual QVector<AbstractResource*> allResources() const;
-    virtual bool isValid() const { return true; } // No external file dependencies that could cause runtime errors
-    virtual QList<QAction*> messageActions() const { return m_messageActions; }
+    virtual void setMetaData(const QString& path) override;
+    virtual QList<AbstractResource*> upgradeablePackages() const override;
+    virtual AbstractResource* resourceByPackageName(const QString& name) const override;
+    virtual int updatesCount() const override;
+    virtual AbstractBackendUpdater* backendUpdater() const override;
+    virtual AbstractReviewsBackend* reviewsBackend() const override;
+    virtual QList<AbstractResource*> searchPackageName(const QString& searchText) override;
+    virtual QVector<AbstractResource*> allResources() const override;
+    virtual bool isValid() const override { return true; } // No external file dependencies that could cause runtime errors
+    virtual QList<QAction*> messageActions() const override { return m_messageActions; }
 
-    virtual void cancelTransaction(AbstractResource* app);
-    virtual void installApplication(AbstractResource* app);
-    virtual void installApplication(AbstractResource* app, AddonList addons);
-    virtual void removeApplication(AbstractResource* app);
-    virtual bool isFetching() const { return m_fetching; }
+    virtual void cancelTransaction(AbstractResource* app) override;
+    virtual void installApplication(AbstractResource* app) override;
+    virtual void installApplication(AbstractResource* app, AddonList addons) override;
+    virtual void removeApplication(AbstractResource* app) override;
+    virtual bool isFetching() const override { return m_fetching; }
 
 public slots:
     void checkForUpdates();

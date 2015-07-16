@@ -32,26 +32,26 @@ class MUONCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdater
 {
     Q_OBJECT
     public:
-        explicit StandardBackendUpdater(AbstractResourcesBackend* parent = 0);
+        explicit StandardBackendUpdater(AbstractResourcesBackend* parent = nullptr);
 
-        virtual bool hasUpdates() const;
-        virtual qreal progress() const;
-        virtual void start();
-        virtual long unsigned int remainingTime() const;
+        virtual bool hasUpdates() const override;
+        virtual qreal progress() const override;
+        virtual void start() override;
+        virtual long unsigned int remainingTime() const override;
         
-        virtual QList<AbstractResource*> toUpdate() const;
-        virtual void addResources(const QList<AbstractResource*>& apps);
-        virtual void removeResources(const QList<AbstractResource*>& apps);
-        virtual void prepare();
-        virtual bool isAllMarked() const;
-        virtual QDateTime lastUpdate() const;
-        virtual bool isCancelable() const;
-        virtual bool isProgressing() const;
-        virtual QString statusDetail() const;
-        virtual QString statusMessage() const;
-        virtual quint64 downloadSpeed() const;
+        virtual QList<AbstractResource*> toUpdate() const override;
+        virtual void addResources(const QList<AbstractResource*>& apps) override;
+        virtual void removeResources(const QList<AbstractResource*>& apps) override;
+        virtual void prepare() override;
+        virtual bool isAllMarked() const override;
+        virtual QDateTime lastUpdate() const override;
+        virtual bool isCancelable() const override;
+        virtual bool isProgressing() const override;
+        virtual QString statusDetail() const override;
+        virtual QString statusMessage() const override;
+        virtual quint64 downloadSpeed() const override;
         virtual QList<QAction*> messageActions() const;
-        virtual bool isMarked(AbstractResource* res) const;
+        virtual bool isMarked(AbstractResource* res) const override;
         void setStatusDetail(const QString& message);
         void setProgress(qreal p);
 

@@ -37,7 +37,7 @@ class ChangelogWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ChangelogWidget(QWidget *parent = 0);
+    explicit ChangelogWidget(QWidget *parent = nullptr);
 
 private:
     AbstractResource *m_package;

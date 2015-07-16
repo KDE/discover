@@ -31,7 +31,7 @@ class DiscoverAction : public QAction
     Q_PROPERTY(QAction::Priority priority READ priority WRITE setPriority NOTIFY proxyChanged)
     Q_PROPERTY(QString shortcut READ stringShortcut WRITE setShortcutString NOTIFY proxyChanged)
     public:
-        explicit DiscoverAction(QObject* parent = 0);
+        explicit DiscoverAction(QObject* parent = nullptr);
         
         QString iconName() const;
         void setIconName(const QString& name);

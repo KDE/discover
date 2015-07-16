@@ -40,7 +40,7 @@ class MUONCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
     Q_PROPERTY(bool isCancelable READ isCancelable NOTIFY cancelableChanged)
     Q_PROPERTY(bool isProgressing READ isProgressing NOTIFY progressingChanged)
     public:
-        explicit ResourcesUpdatesModel(QObject* parent = 0);
+        explicit ResourcesUpdatesModel(QObject* parent = nullptr);
         
         qreal progress() const;
         QString remainingTime() const;

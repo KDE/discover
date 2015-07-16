@@ -32,7 +32,7 @@
 class MUONCOMMON_EXPORT PackageState
 {
     public:
-        PackageState(const QString& name, const QString& description, bool installed);
+        PackageState(QString  name, QString  description, bool installed);
         PackageState& operator=(const PackageState& other);
         
         QString name() const;

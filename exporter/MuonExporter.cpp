@@ -28,7 +28,7 @@
 #include <qjsondocument.h>
 
 MuonExporter::MuonExporter()
-    : QObject(0)
+    : QObject(nullptr)
 {
     m_startExportingTimer = new QTimer(this);
     m_startExportingTimer->setInterval(200);

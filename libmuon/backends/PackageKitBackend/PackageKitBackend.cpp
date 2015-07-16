@@ -43,7 +43,7 @@ MUON_BACKEND_PLUGIN(PackageKitBackend)
 PackageKitBackend::PackageKitBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new PackageKitUpdater(this))
-    , m_refresher(0)
+    , m_refresher(nullptr)
     , m_isFetching(0)
 {
     bool b = m_appdata.open();
@@ -346,6 +346,6 @@ QList<QAction*> PackageKitBackend::messageActions() const
 
 
 //TODO
-AbstractReviewsBackend* PackageKitBackend::reviewsBackend() const { return 0; }
+AbstractReviewsBackend* PackageKitBackend::reviewsBackend() const { return nullptr; }
 
 #include "PackageKitBackend.moc"

@@ -40,14 +40,14 @@ public:
         ResourceRole
     };
 
-    explicit TransactionModel(QObject *parent = 0);
+    explicit TransactionModel(QObject *parent = nullptr);
     static TransactionModel *global();
 
     // Reimplemented from QAbstractListModel
-    int rowCount(const QModelIndex &parent = QModelIndex()) const;
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
-    bool removeRows(int row, int count, const QModelIndex &parent);
-    virtual QHash<int, QByteArray> roleNames() const;
+    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+    bool removeRows(int row, int count, const QModelIndex &parent) override;
+    virtual QHash<int, QByteArray> roleNames() const override;
 
     Transaction *transactionFromIndex(const QModelIndex &index) const;
     Q_SCRIPTABLE Transaction *transactionFromResource(AbstractResource *resource) const;

@@ -58,18 +58,18 @@ class MUONCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         /** This constructor should be only used by unit tests.
          *  @p backendName defines what backend will be loaded when the backend is constructed.
          */
-        ResourcesModel(const QString& backendName, QObject* parent = 0);
+        ResourcesModel(const QString& backendName, QObject* parent = nullptr);
         static ResourcesModel* global();
         virtual ~ResourcesModel();
         
-        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
-        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
+        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
+        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
         
         AbstractResource* resourceAt(int row) const;
         QModelIndex resourceIndex(AbstractResource* res) const;
         QVector< AbstractResourcesBackend* > backends() const;
         int updatesCount() const;
-        virtual QMap< int, QVariant > itemData(const QModelIndex& index) const;
+        virtual QMap< int, QVariant > itemData(const QModelIndex& index) const override;
         
         Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name);
 
@@ -79,7 +79,7 @@ class MUONCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         bool isFetching() const;
         QList<QAction*> messageActions() const;
         
-        virtual QHash<int, QByteArray> roleNames() const;
+        virtual QHash<int, QByteArray> roleNames() const override;
 
     public slots:
         void installApplication(AbstractResource* app, AddonList addons);
@@ -106,7 +106,7 @@ class MUONCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         int rowsBeforeBackend(AbstractResourcesBackend* backend, QVector<QVector<AbstractResource*>>::iterator& backendsResources);
 
         ///@p initialize tells if all backends load will be triggered on construction
-        explicit ResourcesModel(QObject* parent=0, bool initialize = true);
+        explicit ResourcesModel(QObject* parent=nullptr, bool initialize = true);
         void init(bool initialize);
         void addResourcesBackend(AbstractResourcesBackend* resources);
         void registerBackendByName(const QString& name);

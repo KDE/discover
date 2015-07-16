@@ -28,7 +28,7 @@ Q_OBJECT
 Q_PLUGIN_METADATA(IID "org.kde.muon.BackendNotifierModule")
 Q_INTERFACES(BackendNotifierModule)
 public:
-    DummyNotifier(QObject* parent = 0);
+    DummyNotifier(QObject* parent = nullptr);
     virtual ~DummyNotifier();
 
     virtual bool isSystemUpToDate() const Q_DECL_OVERRIDE;

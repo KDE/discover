@@ -59,7 +59,7 @@ AbstractResourcesBackend* MuonBackendsFactory::backendForFile(const QString& pat
     AbstractResourcesBackendFactory* f = qobject_cast<AbstractResourcesBackendFactory*>(loader->instance());
     if(!f) {
         qWarning() << "error loading" << path << loader->errorString() << loader->metaData();
-        return 0;
+        return nullptr;
     }
     AbstractResourcesBackend* instance = f->newInstance(ResourcesModel::global());
     if(!instance) {

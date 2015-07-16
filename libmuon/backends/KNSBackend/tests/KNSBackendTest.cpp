@@ -35,13 +35,13 @@ QTEST_MAIN( KNSBackendTest )
 
 KNSBackendTest::KNSBackendTest(QObject* parent)
     : QObject(parent)
-    , m_r(0)
+    , m_r(nullptr)
 {
     QStandardPaths::setTestModeEnabled(true);
     ResourcesModel* model = new ResourcesModel(QFINDTESTDATA("muon-knscorrect-backend.desktop"), this);
     Q_ASSERT(!model->backends().isEmpty());
     m_backend = model->backends().first();
-    KXmlGuiWindow *m_window = new KXmlGuiWindow();
+    auto m_window = new KXmlGuiWindow();
     model->integrateMainWindow(m_window);
 
     if (!m_backend->isValid()) {

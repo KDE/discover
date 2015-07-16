@@ -64,7 +64,7 @@ class MUONCOMMON_EXPORT AbstractBackendUpdater : public QObject
         /**
          * Constructs an AbstractBackendUpdater
          */
-        explicit AbstractBackendUpdater(QObject* parent = 0);
+        explicit AbstractBackendUpdater(QObject* parent = nullptr);
         
         /**
          * This method is called, when Muon switches to the updates view.

@@ -30,14 +30,14 @@ class SystemFonts : public QObject
     Q_PROPERTY(QFont titleFont READ titleFont NOTIFY fontsChanged)
     Q_PROPERTY(QFont smallestReadableFont READ smallestReadableFont NOTIFY fontsChanged)
     public:
-        SystemFonts(QObject* parent = 0);
+        SystemFonts(QObject* parent = nullptr);
 
         QFont generalFont() const;
         QFont fixedFont() const;
         QFont titleFont() const;
         QFont smallestReadableFont() const;
 
-        virtual bool eventFilter(QObject* obj, QEvent* ev);
+        virtual bool eventFilter(QObject* obj, QEvent* ev) override;
 
     Q_SIGNALS:
         void fontsChanged();

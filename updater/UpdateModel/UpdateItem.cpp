@@ -27,19 +27,19 @@
 #include <KLocalizedString>
 
 UpdateItem::UpdateItem()
-    : m_app(0)
-    , m_parent(0)
+    : m_app(nullptr)
+    , m_parent(nullptr)
     , m_type(ItemType::RootItem)
 {
 }
 
-UpdateItem::UpdateItem(const QString &categoryName,
-                       const QIcon &categoryIcon)
-    : m_app(0)
-    , m_parent(0)
+UpdateItem::UpdateItem(QString categoryName,
+                       QIcon categoryIcon)
+    : m_app(nullptr)
+    , m_parent(nullptr)
     , m_type(ItemType::CategoryItem)
-    , m_categoryName(categoryName)
-    , m_categoryIcon(categoryIcon)
+    , m_categoryName(std::move(categoryName))
+    , m_categoryIcon(std::move(categoryIcon))
 {
 }
 

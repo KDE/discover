@@ -25,9 +25,9 @@
 #include <QStringList>
 #include <QTimer>
 
-DummyResource::DummyResource(const QString& name, bool isTechnical, AbstractResourcesBackend* parent)
+DummyResource::DummyResource(QString  name, bool isTechnical, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
-    , m_name(name)
+    , m_name(std::move(name))
     , m_state(State::Broken)
     , m_addons({ PackageState("a", "aaaaaa", false), PackageState("b", "aaaaaa", false), PackageState("c", "aaaaaa", false)})
     , m_isTechnical(isTechnical)
@@ -172,9 +172,9 @@ void DummyResource::setAddons(const AddonList& addons)
 
 void DummyResource::setAddonInstalled(const QString& addon, bool installed)
 {
-    for(QList<PackageState>::iterator it = m_addons.begin(), itEnd = m_addons.end(); it!=itEnd; ++it) {
-        if(it->name() == addon) {
-            it->setInstalled(installed);
+    for(auto & elem : m_addons) {
+        if(elem.name() == addon) {
+            elem.setInstalled(installed);
         }
     }
 }

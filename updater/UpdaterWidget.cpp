@@ -180,7 +180,7 @@ void UpdaterWidget::selectionChanged(const QItemSelection &selected,
     Q_UNUSED(deselected);
 
     QModelIndexList indexes = selected.indexes();
-    AbstractResource *res = 0;
+    AbstractResource *res = nullptr;
 
     if (!indexes.isEmpty()) {
         res = m_updateModel->itemFromIndex(indexes.first())->app();

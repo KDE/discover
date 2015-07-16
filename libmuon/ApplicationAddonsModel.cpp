@@ -27,7 +27,7 @@
 
 ApplicationAddonsModel::ApplicationAddonsModel(QObject* parent)
     : QAbstractListModel(parent)
-    , m_app(0)
+    , m_app(nullptr)
 {
 //     new ModelTest(this, this);
 
@@ -47,7 +47,7 @@ void ApplicationAddonsModel::setApplication(AbstractResource* app)
         return;
 
     if (m_app)
-        disconnect(m_app, 0, this, 0);
+        disconnect(m_app, nullptr, this, nullptr);
 
     m_app = app;
     resetState();

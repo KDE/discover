@@ -27,7 +27,7 @@ class KActionMessageWidget : public KMessageWidget
 {
     Q_OBJECT
     public:
-        explicit KActionMessageWidget(QAction* action, QWidget* parent = 0);
+        explicit KActionMessageWidget(QAction* action, QWidget* parent = nullptr);
         QAction* action() const { return m_action; }
 
     public slots:

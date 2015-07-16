@@ -98,7 +98,7 @@ static Category* recFindCategory(Category* root, const QString& name)
                 return ret;
         }
     }
-    return 0;
+    return nullptr;
 }
 
 Category* CategoryModel::findCategoryByName(const QString& name)
@@ -109,7 +109,7 @@ Category* CategoryModel::findCategoryByName(const QString& name)
         if(ret)
             return ret;
     }
-    return 0;
+    return nullptr;
 }
 
 void CategoryModel::blacklistPlugin(const QString& name)

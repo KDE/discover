@@ -33,7 +33,7 @@ int main(int argc, char** argv)
     QApplication app(argc, argv);
     KLocalizedString::setApplicationDomain("muon-exporter");
     KAboutData about("muonexporter", i18n("Muon Exporter"), version, i18n(description),
-                     KAboutLicense::GPL, i18n("©2013 Aleix Pol Gonzalez"), QString(), 0);
+                     KAboutLicense::GPL, i18n("©2013 Aleix Pol Gonzalez"), QString(), nullptr);
     about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
     about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), "aleixpol@blue-systems.com");
     about.setProductName("muon/exporter");

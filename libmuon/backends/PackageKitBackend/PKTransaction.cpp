@@ -32,7 +32,7 @@
 
 PKTransaction::PKTransaction(AbstractResource* app, Transaction::Role role)
     : Transaction(app, app, role),
-      m_trans(0)
+      m_trans(nullptr)
 {
 }
 
@@ -100,8 +100,8 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     if (exit == PackageKit::Transaction::ExitCancelled) {
         deleteLater();
     } else {
-        disconnect(m_trans, 0, this, 0);
-        m_trans = 0;
+        disconnect(m_trans, nullptr, this, nullptr);
+        m_trans = nullptr;
         qobject_cast<PackageKitBackend*>(resource()->backend())->removeTransaction(this);
     }
     PackageKit::Transaction* t = PackageKit::Daemon::resolve(resource()->packageName(), PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
@@ -116,7 +116,7 @@ PackageKit::Transaction* PKTransaction::transaction()
 
 void PKTransaction::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
 {
-    int ret = QMessageBox::question(0, i18n("Accept EULA"), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
+    int ret = QMessageBox::question(nullptr, i18n("Accept EULA"), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
                                                  PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement));
     if (ret == QMessageBox::Yes) {
         PackageKit::Transaction* t = PackageKit::Daemon::acceptEula(eulaID);
@@ -131,16 +131,16 @@ void PKTransaction::errorFound(PackageKit::Transaction::Error err, const QString
     Q_UNUSED(error);
     if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
         return;
-    QMessageBox::critical(0, i18n("PackageKit Error"), PackageKitMessages::errorMessage(err));
+    QMessageBox::critical(nullptr, i18n("PackageKit Error"), PackageKitMessages::errorMessage(err));
 }
 
 void PKTransaction::mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text)
 {
     Q_UNUSED(media)
-    QMessageBox::information(0, i18n("PackageKit media change"), i18n("Media Change of type '%1' is requested.\n%2", type, text));
+    QMessageBox::information(nullptr, i18n("PackageKit media change"), i18n("Media Change of type '%1' is requested.\n%2", type, text));
 }
 
 void PKTransaction::requireRestart(PackageKit::Transaction::Restart restart, const QString& pkgid)
 {
-    QMessageBox::information(0, i18n("PackageKit restart required"), PackageKitMessages::restartMessage(restart, pkgid));
+    QMessageBox::information(nullptr, i18n("PackageKit restart required"), PackageKitMessages::restartMessage(restart, pkgid));
 }

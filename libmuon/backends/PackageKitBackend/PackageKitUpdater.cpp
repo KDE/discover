@@ -120,8 +120,8 @@ void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint )
 {
     if (exit == PackageKit::Transaction::ExitEulaRequired)
         return;
-    disconnect(m_transaction, 0, this, 0);
-    m_transaction = 0;
+    disconnect(m_transaction, nullptr, this, nullptr);
+    m_transaction = nullptr;
 
     setProgressing(false);
     m_backend->refreshDatabase();
@@ -260,25 +260,25 @@ void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QSt
     Q_UNUSED(error);
     if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
         return;
-    QMessageBox::critical(0, i18n("PackageKit error found"), PackageKitMessages::errorMessage(err));
+    QMessageBox::critical(nullptr, i18n("PackageKit error found"), PackageKitMessages::errorMessage(err));
     qWarning() << "Error happened" << err << error;
 }
 
 void PackageKitUpdater::mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text)
 {
     Q_UNUSED(media)
-    QMessageBox::information(0, i18n("PackageKit media change"), i18n("Media Change of type '%1' is requested.\n%2", type, text));
+    QMessageBox::information(nullptr, i18n("PackageKit media change"), i18n("Media Change of type '%1' is requested.\n%2", type, text));
 }
 
 void PackageKitUpdater::requireRestart(PackageKit::Transaction::Restart restart, const QString& pkgid)
 {
-    QMessageBox::information(0, i18n("PackageKit restart required"), PackageKitMessages::restartMessage(restart, pkgid));
+    QMessageBox::information(nullptr, i18n("PackageKit restart required"), PackageKitMessages::restartMessage(restart, pkgid));
 }
 
 void PackageKitUpdater::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
 {
     QString packageName = PackageKit::Daemon::packageName(packageID);
-    int ret = QMessageBox::question(0, i18n("%1 requires user to accept its license", packageName), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
+    int ret = QMessageBox::question(nullptr, i18n("%1 requires user to accept its license", packageName), i18n("The package %1 and its vendor %2 require that you accept their license:\n %3",
                                                  packageName, vendor, licenseAgreement), QMessageBox::Yes, QMessageBox::No);
     if (ret == QMessageBox::Yes) {
         PackageKit::Transaction* t = PackageKit::Daemon::acceptEula(eulaID);

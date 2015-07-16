@@ -50,7 +50,7 @@ class MUONCOMMON_EXPORT ResourcesProxyModel : public QSortFilterProxyModel
     Q_PROPERTY(QString mimeTypeFilter READ mimeTypeFilter WRITE setMimeTypeFilter)
     Q_PROPERTY(QString search READ lastSearch WRITE setSearch)
 public:
-    explicit ResourcesProxyModel(QObject *parent=0);
+    explicit ResourcesProxyModel(QObject *parent=nullptr);
 
     void setSearch(const QString &text);
     QString lastSearch() const;
@@ -66,16 +66,16 @@ public:
     void setFilterActive(bool filter);
     AbstractResource::State stateFilter() const;
 
-    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
+    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
     Category* filteredCategory() const;
     
     QString mimeTypeFilter() const;
     void setMimeTypeFilter(const QString& mime);
 
-    virtual void setSourceModel(QAbstractItemModel *sourceModel);
+    virtual void setSourceModel(QAbstractItemModel *sourceModel) override;
 
 protected:
-    bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
+    bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
 
 private Q_SLOTS:
     void refreshSearch();

@@ -46,13 +46,13 @@ class MUONCOMMON_EXPORT CategoryModel : public QStandardItemModel
         };
         Q_ENUMS(CatViewType);
 
-        explicit CategoryModel(QObject* parent = 0);
+        explicit CategoryModel(QObject* parent = nullptr);
 
         Category* categoryForRow(int row);
 
         void setDisplayedCategory(Category* c);
         Category* displayedCategory() const;
-        virtual QHash< int, QByteArray > roleNames() const;
+        virtual QHash< int, QByteArray > roleNames() const override;
 
         Q_SCRIPTABLE static Category* findCategoryByName(const QString& name);
         static void blacklistPlugin(const QString& name);

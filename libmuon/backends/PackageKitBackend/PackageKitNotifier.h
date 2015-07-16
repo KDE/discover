@@ -38,7 +38,7 @@ public:
         Normal
     };
     Q_ENUMS(Update);
-    PackageKitNotifier(QObject* parent = 0);
+    PackageKitNotifier(QObject* parent = nullptr);
     virtual ~PackageKitNotifier();
 
     virtual bool isSystemUpToDate() const Q_DECL_OVERRIDE Q_DECL_FINAL;
