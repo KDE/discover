@@ -61,6 +61,8 @@ void StandardBackendUpdater::start()
     if(m_pendingResources.isEmpty()) {
         emit progressingChanged(false);
         cleanup();
+    } else {
+        setProgress(1);
     }
 }
 
