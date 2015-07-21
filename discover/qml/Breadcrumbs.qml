@@ -73,6 +73,7 @@ Item {
             model: ListModel { id: items }
             delegate: Button {
                 Layout.fillHeight: true
+                Layout.minimumWidth: height //workaround bug in the plasma style
 
                 iconName: decoration
                 onClicked: doClick(index)
