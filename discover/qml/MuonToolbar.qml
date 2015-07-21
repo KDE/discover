@@ -46,8 +46,7 @@ ToolBar
                 shortcut: "Alt+Up"
                 iconName: "go-previous"
                 enabled: window.navigationEnabled && breadcrumbsItem.count>1
-                tooltip: text
-                text: i18n("Back")
+                tooltip: i18n("Back")
                 onTriggered: { breadcrumbsItem.popItem(false) }
             }
         }
