@@ -160,7 +160,8 @@ Rectangle
 
         Item {
             Layout.fillWidth: true
-            Layout.minimumHeight: (breadcrumbsItem.visible || pageToolBar.visible) ? Math.max(breadcrumbsItem.Layout.minimumHeight, pageToolBar.Layout.minimumHeight)+5 : 0
+            Layout.preferredHeight: (breadcrumbsItem.visible || pageToolBar.visible) ? toolbar.Layout.preferredHeight : 0
+
 
             Breadcrumbs {
                 id: breadcrumbsItem

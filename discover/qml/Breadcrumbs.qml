@@ -73,7 +73,6 @@ Item {
             model: ListModel { id: items }
             delegate: Button {
                 Layout.fillHeight: true
-                Layout.minimumHeight: implicitHeight
 
                 iconName: decoration
                 onClicked: doClick(index)
