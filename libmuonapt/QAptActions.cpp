@@ -533,7 +533,7 @@ void QAptActions::checkDistUpgrade()
 
 void QAptActions::checkerFinished(int res)
 {
-    m_distUpgradeAvailable = res == 0;
+    m_distUpgradeAvailable = (res == 0);
     if (!m_mainWindow)
         return;
     actionCollection()->action("dist-upgrade")->setEnabled(res == 0);
