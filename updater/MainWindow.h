@@ -47,6 +47,7 @@ private:
     QAction *m_applyAction;
     QMenu* m_moreMenu;
     QMenu* m_advancedMenu;
+    QWidget* m_controls;
 
 private Q_SLOTS:
     void setActionsEnabled(bool enabled = true);

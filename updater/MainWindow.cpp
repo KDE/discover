@@ -56,6 +56,7 @@
 
 MainWindow::MainWindow()
     : KXmlGuiWindow()
+    , m_controls(new QWidget)
  {
     m_updater = new ResourcesUpdatesModel(this);
     connect(m_updater, SIGNAL(progressingChanged()), SLOT(progressingChanged()));
@@ -86,8 +87,7 @@ void MainWindow::initGUI()
             this, SLOT(setActionsEnabled()));
 
     Ui::UpdaterButtons buttonsUi;
-    QWidget* buttons = new QWidget(this);
-    buttonsUi.setupUi(buttons);
+    buttonsUi.setupUi(m_controls);
     buttonsUi.more->setMenu(m_moreMenu);
     buttonsUi.apply->setDefaultAction(m_applyAction);
     buttonsUi.quit->setDefaultAction(action("file_quit"));
@@ -95,7 +95,7 @@ void MainWindow::initGUI()
     mainLayout->addWidget(m_powerMessage);
     mainLayout->addWidget(m_updaterWidget);
     mainLayout->addWidget(m_progressWidget);
-    mainLayout->addWidget(buttons);
+    mainLayout->addWidget(m_controls);
 
     mainWidget->setLayout(mainLayout);
     setCentralWidget(mainWidget);
@@ -191,9 +191,7 @@ void MainWindow::progressingChanged()
 
 void MainWindow::setActionsEnabled(bool enabled)
 {
-    foreach (QAction* a, actionCollection()->actions()) {
-        a->setEnabled(enabled);
-    }
+    m_controls->setEnabled(enabled);
     m_applyAction->setEnabled(enabled && m_updater->hasUpdates());
 }
 
