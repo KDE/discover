@@ -58,7 +58,7 @@ class MUONCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         /** This constructor should be only used by unit tests.
          *  @p backendName defines what backend will be loaded when the backend is constructed.
          */
-        ResourcesModel(const QString& backendName, QObject* parent = nullptr);
+        explicit ResourcesModel(const QString& backendName, QObject* parent = nullptr);
         static ResourcesModel* global();
         virtual ~ResourcesModel();
         

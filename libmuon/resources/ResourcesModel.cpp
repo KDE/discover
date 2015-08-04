@@ -86,13 +86,8 @@ void ResourcesModel::init(bool load)
 }
 
 ResourcesModel::ResourcesModel(const QString& backendName, QObject* parent)
-    : QAbstractListModel(parent)
-    , m_initializingBackends(0)
-    , m_mainwindow(nullptr)
+    : ResourcesModel(parent, false)
 {
-    init(false);
-    Q_ASSERT(!s_self);
-    s_self = this;
     registerBackendByName(backendName);
 }
 
