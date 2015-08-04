@@ -88,6 +88,7 @@ void ResourcesModel::init(bool load)
 ResourcesModel::ResourcesModel(const QString& backendName, QObject* parent)
     : ResourcesModel(parent, false)
 {
+    s_self = this;
     registerBackendByName(backendName);
 }
 
