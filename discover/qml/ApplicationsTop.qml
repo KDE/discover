@@ -35,6 +35,7 @@ Column {
     Layout.preferredHeight: childrenRect.height
     Layout.preferredWidth: 250
     Label {
+        id: title
         text: topView.title
         width: parent.width
         horizontalAlignment: Text.AlignHCenter
@@ -53,31 +54,29 @@ Column {
         }
         delegate: GridItem {
                     width: topView.width
-                    height: nameLabel.paintedHeight*2.5
+                    height: title.paintedHeight*2.5
 
-                    QIconItem {
-                        id: iconItem
-                        anchors { left: parent.left; verticalCenter: parent.verticalCenter }
-                        height: parent.height*0.5
-                        width: height
-                        icon: model.icon
-                    }
-                    Label {
-                        id: nameLabel
-                        anchors {
-                            left: iconItem.right
-                            right: pointsLabel.left
-                            verticalCenter: parent.verticalCenter
-                            leftMargin: 5
+                    RowLayout {
+                        anchors.fill: parent
+                        QIconItem {
+                            Layout.fillHeight: true
+                            Layout.minimumWidth: height
+                            icon: model.icon
                         }
-                        text: name
-                        elide: Text.ElideRight
-                    }
-                    Loader {
-                        anchors { right: parent.right; verticalCenter: parent.verticalCenter }
-                        id: pointsLabel
-                        sourceComponent: topView.roleDelegate
-                        onItemChanged: item.model=model
+                        Label {
+                            Layout.fillHeight: true
+                            text: name
+                            elide: Text.ElideRight
+                        }
+                        Item {
+                            Layout.fillWidth: true
+                        }
+                        Loader {
+                            Layout.fillHeight: true
+                            Layout.minimumWidth: item.width
+                            sourceComponent: topView.roleDelegate
+                            onItemChanged: item.model=model
+                        }
                     }
                     onClicked: Navigation.openApplication(application)
                 }
