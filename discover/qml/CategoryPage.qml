@@ -113,6 +113,7 @@ Item {
                     width: parent.width
                     ApplicationsTop {
                         id: top
+                        Layout.fillHeight: true
                         Layout.fillWidth: true
                         sortRole: "sortableRating"
                         filteredCategory: page.category
