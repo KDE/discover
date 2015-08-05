@@ -108,7 +108,7 @@ ToolBar
         }
         ToolButton {
             id: button
-            iconName: "applications-system"
+            iconName: "preferences-other"
             tooltip: i18n("Configure and learn about Muon Discover")
             onClicked: {
                 var pos = mapToItem(window, 0, height);
