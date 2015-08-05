@@ -164,7 +164,6 @@ void MainWindow::setupBackendsActions()
 
     if (!m_moreMenu->isEmpty())
         m_moreMenu->addSeparator();
-    m_moreMenu->addAction(actionCollection()->action("options_configure"));
     m_moreMenu->addAction(actionCollection()->action("options_configure_keybinding"));
     m_moreMenu->addSeparator();
     m_moreMenu->addMenu(m_advancedMenu);
