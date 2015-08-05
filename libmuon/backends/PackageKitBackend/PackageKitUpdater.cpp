@@ -102,6 +102,7 @@ QSet<AbstractResource*> PackageKitUpdater::packagesForPackageId(const QSet<QStri
 QSet<QString> PackageKitUpdater::involvedPackages(const QSet<AbstractResource*>& packages) const
 {
     QSet<QString> packageIds;
+    packageIds.reserve(packages.size());
     foreach (AbstractResource * res, packages) {
         PackageKitResource * app = qobject_cast<PackageKitResource*>(res);
         QString pkgid = m_backend->upgradeablePackageId(app);
