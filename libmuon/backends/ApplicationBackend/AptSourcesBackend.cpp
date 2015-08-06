@@ -69,7 +69,7 @@ void AptSourcesBackend::load()
 {
     m_sources->clear();
 
-    for (const QApt::SourceEntry &sEntry : m_sourcesList.entries()) {
+    Q_FOREACH (const QApt::SourceEntry &sEntry, m_sourcesList.entries()) {
         if (!sEntry.isValid())
             continue;
 
@@ -201,7 +201,7 @@ QVariant SourceItem::data(int role) const
                     vals[suite] += 1;
             }
             QStringList ret;
-            for(const QString& e : vals.keys()) {
+            Q_FOREACH (const QString& e, vals.keys()) {
                 if(vals[e]>1)
                     ret.append(e);
                 else

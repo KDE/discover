@@ -74,13 +74,13 @@ QList<Category*> CategoriesReader::populateCategories()
     QStringList backendNames = f.allBackendNames();
 
     QList<Category*> ret;
-    for (const QString& name : backendNames) {
+    Q_FOREACH (const QString& name, backendNames) {
         QList<Category*> cats = loadCategoriesFile(name);
 
         if(ret.isEmpty()) {
             ret += cats;
         } else {
-            for(Category* c : cats)
+            Q_FOREACH (Category* c, cats)
                 Category::addSubcategory(ret, c);
         }
     }

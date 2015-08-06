@@ -82,7 +82,7 @@ double dampenedRating(const QVector<int> &ratings, double power = 0.1)
         return 0;
 
     int tot_ratings = 0;
-    for (const int rating : ratings)
+    Q_FOREACH (const int rating, ratings)
             tot_ratings = rating + tot_ratings;
 
     double sum_scores = 0.0;

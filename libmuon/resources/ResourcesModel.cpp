@@ -214,7 +214,7 @@ int ResourcesModel::rowCount(const QModelIndex& parent) const
 
     // The root element parents all resources from all backends
     int ret = 0;
-    for (const QVector<AbstractResource*>& resources : m_resources)
+    Q_FOREACH (const QVector<AbstractResource*>& resources, m_resources)
         ret += resources.size();
 
     return ret;

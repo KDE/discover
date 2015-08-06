@@ -443,8 +443,8 @@ void ApplicationUpdates::calculateUpdates()
 {
     m_toUpdate.clear();
     auto changes = m_aptBackend->stateChanges(m_updatesCache, QApt::PackageList());
-    for(auto pkgList : changes.values()) {
-        for(QApt::Package* it : pkgList) {
+    Q_FOREACH (const auto &pkgList, changes) {
+        Q_FOREACH (QApt::Package* it, pkgList) {
             AbstractResource* res = m_appBackend->resourceByPackageName(it->name());
             if(!res) //If we couldn't find it by its name, try with
                 res = m_appBackend->resourceByPackageName(QStringLiteral("%1:%2").arg(it->name()).arg(it->architecture()));

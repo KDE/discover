@@ -93,7 +93,7 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     if(!m_view->errors().isEmpty()) {
         QString errors;
 
-        for (const QQmlError &error : m_view->errors()) {
+        Q_FOREACH (const QQmlError &error, m_view->errors()) {
             errors.append(error.toString() + QLatin1String("\n"));
         }
         KMessageBox::detailedSorry(this,

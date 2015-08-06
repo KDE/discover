@@ -190,7 +190,7 @@ void QAptActions::setActionsEnabled(bool enabled)
 {
     m_actionsDisabled = !enabled;
 
-    for (QAction *action : m_actions) {
+    Q_FOREACH (QAction *action, m_actions) {
         action->setEnabled(enabled);
     }
 

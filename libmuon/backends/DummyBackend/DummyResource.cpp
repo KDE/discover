@@ -162,10 +162,10 @@ void DummyResource::setState(AbstractResource::State state)
 
 void DummyResource::setAddons(const AddonList& addons)
 {
-    for(const QString& toInstall : addons.addonsToInstall()) {
+    Q_FOREACH (const QString& toInstall, addons.addonsToInstall()) {
         setAddonInstalled(toInstall, true);
     }
-    for(const QString& toRemove : addons.addonsToRemove()) {
+    Q_FOREACH (const QString& toRemove, addons.addonsToRemove()) {
         setAddonInstalled(toRemove, false);
     }
 }

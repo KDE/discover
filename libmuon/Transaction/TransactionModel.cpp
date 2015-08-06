@@ -119,7 +119,7 @@ Transaction *TransactionModel::transactionFromResource(AbstractResource *resourc
 {
     Transaction *ret = nullptr;
 
-    for (Transaction *trans : m_transactions) {
+    Q_FOREACH (Transaction *trans, m_transactions) {
         if (trans->resource() == resource) {
             ret = trans;
             break;

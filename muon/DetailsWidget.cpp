@@ -77,14 +77,14 @@ DetailsWidget::~DetailsWidget()
 
 void DetailsWidget::setBackend(QApt::Backend *backend)
 {
-    for (DetailsTab *tab : m_detailsTabs) {
+    Q_FOREACH (DetailsTab *tab, m_detailsTabs) {
         tab->setBackend(backend);
     }
 }
 
 void DetailsWidget::setPackage(QApt::Package *package)
 {
-    for (DetailsTab *tab : m_detailsTabs) {
+    Q_FOREACH (DetailsTab *tab, m_detailsTabs) {
         tab->setPackage(package);
 
         if (tab->shouldShow()) {
@@ -107,14 +107,14 @@ void DetailsWidget::emitHideButtons()
 
 void DetailsWidget::refreshTabs()
 {
-    for (DetailsTab *tab : m_detailsTabs) {
+    Q_FOREACH (DetailsTab *tab, m_detailsTabs) {
         tab->refresh();
     }
 }
 
 void DetailsWidget::clear()
 {
-    for (DetailsTab *tab : m_detailsTabs) {
+    Q_FOREACH (DetailsTab *tab, m_detailsTabs) {
         tab->clear();
     }
 

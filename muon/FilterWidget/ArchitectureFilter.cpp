@@ -47,7 +47,7 @@ void ArchitectureFilter::populate()
     defaultItem->setText(i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All"));
     appendRow(defaultItem);
 
-    for (const QString &arch : archList) {
+    Q_FOREACH (const QString &arch, archList) {
         QStandardItem *archItem = new QStandardItem;
         archItem->setEditable(false);
         archItem->setText(MuonStrings::global()->archString(arch));

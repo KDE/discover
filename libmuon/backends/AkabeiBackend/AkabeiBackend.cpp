@@ -122,7 +122,7 @@ AbstractResource* AkabeiBackend::resourceByPackageName(const QString& name) cons
 int AkabeiBackend::updatesCount() const
 {
     int count = 0;
-    for (AbstractResource * res : m_packages.values()) {
+    Q_FOREACH (AbstractResource * res, m_packages.values()) {
         if (!res->isTechnical() && res->canUpgrade())
             count++;
     }
@@ -137,7 +137,7 @@ QVector< AbstractResource* > AkabeiBackend::allResources() const
 QList< AbstractResource* > AkabeiBackend::searchPackageName(const QString& searchText)
 {
     QList<AbstractResource*> result;
-    for (AbstractResource * res : m_packages.values()) {
+    Q_FOREACH (AbstractResource * res, m_packages.values()) {
         if (res->name().contains(searchText, Qt::CaseInsensitive) || res->comment().contains(searchText, Qt::CaseInsensitive))
             result << res;
     }
@@ -200,7 +200,7 @@ AbstractBackendUpdater* AkabeiBackend::backendUpdater() const
 QList< AbstractResource* > AkabeiBackend::upgradeablePackages() const
 {
     QList<AbstractResource*> resources;
-    for (AbstractResource * res : m_packages.values()) {
+    Q_FOREACH (AbstractResource * res, m_packages.values()) {
         if (!res->isTechnical() && res->canUpgrade())
             resources << res;
     }

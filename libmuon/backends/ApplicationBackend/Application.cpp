@@ -563,7 +563,7 @@ void Application::setHasScreenshot(bool has)
 QStringList Application::executables() const
 {
     QStringList ret;
-    QVector<KService::Ptr> exes = findExecutables();
+    const QVector<KService::Ptr> exes = findExecutables();
     for(KService::Ptr exe : exes) {
         ret += exe->exec();
     }
@@ -572,7 +572,7 @@ QStringList Application::executables() const
 
 bool Application::isFromSecureOrigin() const
 {
-    for (const QString &archive : m_package->archives()) {
+    Q_FOREACH (const QString &archive, m_package->archives()) {
         if (archive.contains(QLatin1String("security"))) {
             return true;
         }

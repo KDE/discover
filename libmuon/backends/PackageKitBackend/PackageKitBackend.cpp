@@ -206,7 +206,7 @@ AbstractResource* PackageKitBackend::resourceByPackageName(const QString& name) 
 QList<AbstractResource*> PackageKitBackend::searchPackageName(const QString& searchText)
 {
     QList<AbstractResource*> ret;
-    for(AbstractResource* res : m_packages.values()) {
+    Q_FOREACH (AbstractResource* res, m_packages.values()) {
         if (res->name().contains(searchText, Qt::CaseInsensitive)) {
             ret += res;
         }
@@ -243,7 +243,7 @@ void PackageKitBackend::installApplication(AbstractResource* app)
 
 void PackageKitBackend::cancelTransaction(AbstractResource* app)
 {
-    for (Transaction* t : m_transactions) {
+    Q_FOREACH (Transaction* t, m_transactions) {
         PKTransaction* pkt = qobject_cast<PKTransaction*>(t);
         if (pkt->resource() == app) {
             if (pkt->transaction()->allowCancel()) {
@@ -272,7 +272,7 @@ void PackageKitBackend::removeApplication(AbstractResource* app)
 QList<AbstractResource*> PackageKitBackend::upgradeablePackages() const
 {
     QVector<AbstractResource*> ret;
-    for(const QString& pkgid : m_updatesPackageId) {
+    Q_FOREACH (const QString& pkgid, m_updatesPackageId) {
         const QString pkgname = PackageKit::Daemon::packageName(pkgid);
         ret += resourcesByPackageName(pkgname, false);
         if (ret.isEmpty()) {

@@ -100,7 +100,7 @@ HistoryView::HistoryView(QWidget *parent)
     actionHash[RemovedAction] = i18nc("@status describes a past-tense action", "Removed");
     actionHash[PurgedAction] = i18nc("@status describes a past-tense action", "Purged");
 
-    for (const QApt::HistoryItem &item : m_history->historyItems()) {
+    Q_FOREACH (const QApt::HistoryItem &item, m_history->historyItems()) {
         QDateTime startDateTime = item.startDate();
         QString formattedTime = startDateTime.toString();
         QString category;

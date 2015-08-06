@@ -99,8 +99,8 @@ void AppPackageKitResource::invokeApplication() const
 QUrl screenshot(const Appstream::Component& comp, Appstream::Image::Kind kind)
 {
     QUrl ret;
-    for (const Appstream::Screenshot &s : comp.screenshots()) {
-        for (const Appstream::Image &i : s.images()) {
+    Q_FOREACH (const Appstream::Screenshot &s, comp.screenshots()) {
+        Q_FOREACH (const Appstream::Image &i, s.images()) {
             if (i.kind() == kind) {
                 ret = i.url();
             }
@@ -132,7 +132,7 @@ bool AppPackageKitResource::canExecute() const
 QStringList AppPackageKitResource::findProvides(Appstream::Provides::Kind kind) const
 {
     QStringList ret;
-    for(Appstream::Provides p : m_appdata.provides())
+    Q_FOREACH (Appstream::Provides p, m_appdata.provides())
         if (p.kind() == kind)
             ret += p.value();
     return ret;

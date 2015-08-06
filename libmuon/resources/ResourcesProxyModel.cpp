@@ -188,9 +188,11 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
         return false;
     }
 
+    typedef QPair<FilterType, QString> FilterPair;
+
     {
         bool orValue = m_orFilters.isEmpty();
-        for(const QPair<FilterType, QString>& filter : m_orFilters) {
+        Q_FOREACH (const FilterPair& filter, m_orFilters) {
             if(shouldFilter(res, filter)) {
                 orValue = true;
                 break;
@@ -200,12 +202,12 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
             return false;
     }
 
-    for(const QPair<FilterType, QString> &filter : m_andFilters) {
+    Q_FOREACH (const FilterPair &filter, m_andFilters) {
         if(!shouldFilter(res, filter))
             return false;
     }
 
-    for(const QPair<FilterType, QString> &filter : m_notFilters) {
+    Q_FOREACH (const FilterPair &filter, m_notFilters) {
         if(shouldFilter(res, filter))
             return false;
     }
@@ -222,7 +224,7 @@ bool ResourcesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &r
         // This is expensive for very large datasets. It takes about 3 seconds with 30,000 packages
         // The order in m_packages is based on relevancy when returned by m_backend->search()
         // Use this order to determine less than
-        for(AbstractResource* res : m_searchResults) {
+        Q_FOREACH (AbstractResource* res, m_searchResults) {
             if(res == leftPackage)
                 return true;
             else if(res == rightPackage)

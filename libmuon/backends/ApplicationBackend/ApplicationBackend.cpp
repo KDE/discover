@@ -119,7 +119,7 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
     // a) exists
     // b) is not on the blacklist
     // c) if not downloadable, then it must already be installed
-    for (Application *app : tempList) {
+    Q_FOREACH (Application *app, tempList) {
         bool added = false;
         QApt::Package *pkg = app->package();
         if (app->isValid() && pkg)
@@ -139,7 +139,7 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
 void ApplicationBackend::setApplications()
 {
     m_appList = m_watcher->future().result();
-    for (Application* app : m_appList)
+    Q_FOREACH (Application* app, m_appList)
         app->setParent(this);
 
     KIO::StoredTransferJob* job = KIO::storedGet(QUrl(MuonDataSources::screenshotsSource().toString() + "/json/packages"),KIO::NoReload, KIO::DefaultFlags|KIO::HideProgressInfo);
@@ -192,9 +192,8 @@ void ApplicationBackend::aptTransactionsChanged(QString active)
 {
     // Find the newly-active QApt transaction in our list
     QApt::Transaction *trans = nullptr;
-    auto list = m_transQueue.values();
 
-    for (QApt::Transaction *t : list) {
+    Q_FOREACH (QApt::Transaction *t, m_transQueue) {
         if (t->transactionId() == active) {
             trans = t;
             break;
@@ -326,12 +325,12 @@ void ApplicationBackend::markTransaction(Transaction *transaction)
 
     AddonList addons = transaction->addons();
 
-    for (const QString &pkgStr : addons.addonsToInstall()) {
+    Q_FOREACH (const QString &pkgStr, addons.addonsToInstall()) {
         QApt::Package *package = m_backend->package(pkgStr);
         package->setInstall();
     }
 
-    for (const QString &pkgStr : addons.addonsToRemove()) {
+    Q_FOREACH (const QString &pkgStr, addons.addonsToRemove()) {
         QApt::Package *package = m_backend->package(pkgStr);
         package->setRemove();
     }
@@ -387,14 +386,14 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
     QApt::PackageList excluded;
     excluded.append(qobject_cast<Application*>(transaction->resource())->package());
     // Exclude addons being marked
-    for (const QString &pkgStr : transaction->addons().addonsToInstall()) {
+    Q_FOREACH (const QString &pkgStr, transaction->addons().addonsToInstall()) {
         QApt::Package *addon = m_backend->package(pkgStr);
 
         if (addon)
             excluded.append(addon);
     }
 
-    for (const QString &pkgStr : transaction->addons().addonsToRemove()) {
+    Q_FOREACH (const QString &pkgStr, transaction->addons().addonsToRemove()) {
         QApt::Package *addon = m_backend->package(pkgStr);
 
         if (addon)
@@ -459,7 +458,7 @@ QVector<AbstractResource*> ApplicationBackend::allResources() const
 {
     QVector<AbstractResource*> ret;
 
-    for (Application* app : m_appList) {
+    Q_FOREACH (Application* app, m_appList) {
         ret += app;
     }
     return ret;
@@ -619,7 +618,7 @@ void ApplicationBackend::initAvailablePackages(KJob* j)
             packages += v.toMap().value("name").toString();
         }
         Q_ASSERT(packages.count()==data.count());
-        for(Application* a : m_appList) {
+        Q_FOREACH (Application* a, m_appList) {
             a->setHasScreenshot(packages.contains(a->packageName()));
         }
     }

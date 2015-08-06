@@ -160,7 +160,7 @@ QList<Category *> Category::subCategories() const
 //TODO: maybe it would be interesting to apply some rules to a said backend...
 void Category::addSubcategory(QList< Category* >& list, Category* newcat)
 {
-    for(Category* c : list) {
+    Q_FOREACH (Category* c, list) {
         if(c->name() == newcat->name()) {
             if(c->icon() != newcat->icon()
                 || c->shouldShowTechnical() != newcat->shouldShowTechnical()
@@ -173,7 +173,7 @@ void Category::addSubcategory(QList< Category* >& list, Category* newcat)
                 c->m_orFilters += newcat->orFilters();
                 c->m_notFilters += newcat->notFilters();
                 c->m_plugins.unite(newcat->m_plugins);
-                for(Category* nc : newcat->subCategories())
+                Q_FOREACH (Category* nc, newcat->subCategories())
                     addSubcategory(c->m_subCategories, nc);
                 delete newcat;
                 return;
