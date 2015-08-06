@@ -214,7 +214,6 @@ Rectangle
         }
 
         ProgressView {
-            id: progressBox
             Layout.fillWidth: true
         }
     }

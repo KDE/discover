@@ -31,8 +31,6 @@ ConditionalLoader
         }
     }
 
-    Rectangle { color: "red"; anchors.fill: parent }
-
     componentFalse: RowLayout {
         Button {
             enabled: !ResourcesModel.isFetching
