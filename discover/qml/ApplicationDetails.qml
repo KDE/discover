@@ -19,27 +19,29 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.1
 import QtQuick.Window 2.1
 import org.kde.muon.discover 1.0 as Discover
 import org.kde.muon 1.0
 
-Column
+ColumnLayout
 {
     property alias isInstalling: installButton.isActive
-    spacing: 10
     property alias application: installButton.application
+    spacing: 10
     InstallApplicationButton {
         id: installButton
         anchors.horizontalCenter: parent.horizontalCenter
-        width: Math.min(parent.width, maximumWidth)
+
         additionalItem:  Rating {
             property QtObject ratingInstance: application.rating
             visible: ratingInstance!=null
             rating:  ratingInstance==null ? 0 : ratingInstance.rating
         }
     }
+
     Grid {
-        width: parent.width
+        Layout.fillWidth: true
         columns: 2
         spacing: 0
         Label { text: i18n("Total Size: "); horizontalAlignment: Text.AlignRight; width: parent.width/2; font.weight: Font.Bold }

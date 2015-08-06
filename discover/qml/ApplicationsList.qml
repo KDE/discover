@@ -106,6 +106,7 @@ ScrollView {
                         left: resourceIcon.right
                         leftMargin: 5
                         right: parent.right
+                        top: nameLabel.bottom
                     }
 
                     Label {
@@ -125,7 +126,7 @@ ScrollView {
                         text: model.application.status
                     }
                     InstallApplicationButton {
-                        Layout.preferredWidth: parentItem.compact ? 0 : Math.max(200, minimumWidth)
+                        Layout.maximumHeight: parent.Layout.maximumHeight
     //                     property bool isVisible: delegateArea.containsMouse && !canHide
     //                     opacity: isVisible ? 1 : 0
                         application: model.application
