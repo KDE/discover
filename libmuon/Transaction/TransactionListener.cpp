@@ -21,8 +21,9 @@
 
 #include "TransactionListener.h"
 
-// Own includes
 #include "TransactionModel.h"
+#include <QMetaProperty>
+#include <QDebug>
 
 TransactionListener::TransactionListener(QObject *parent)
     : QObject(parent)
@@ -61,6 +62,9 @@ QString TransactionListener::statusText() const
 
 void TransactionListener::setResource(AbstractResource *resource)
 {
+    if (m_resource == resource)
+        return;
+
     m_resource = resource;
 
     // Catch already-started transactions
@@ -77,12 +81,47 @@ void TransactionListener::transactionAdded(Transaction *trans)
     setTransaction(trans);
 }
 
+class CheckChange
+{
+public:
+    CheckChange(QObject* obj, const QByteArray& prop)
+        : m_object(obj)
+        , m_prop(obj->metaObject()->property(obj->metaObject()->indexOfProperty(prop)))
+        , m_oldValue(m_prop.read(obj))
+    {
+        Q_ASSERT(obj->metaObject()->indexOfProperty(prop)>=0);
+    }
+
+    ~CheckChange() {
+        const QVariant newValue = m_prop.read(m_object);
+        if (newValue != m_oldValue) {
+            QMetaMethod m = m_prop.notifySignal();
+            m.invoke(m_object, Qt::DirectConnection);
+        }
+    }
+
+private:
+    QObject* m_object;
+    QMetaProperty m_prop;
+    QVariant m_oldValue;
+};
+
 void TransactionListener::setTransaction(Transaction* trans)
 {
     Q_ASSERT(!trans || trans->resource()==m_resource);
+    if (m_transaction == trans) {
+        return;
+    }
+
     if(m_transaction) {
         disconnect(m_transaction, nullptr, this, nullptr);
     }
+
+    CheckChange change1(this, "isCancellable");
+    CheckChange change2(this, "isRunning");
+    CheckChange change3(this, "statusText");
+    CheckChange change4(this, "progress");
+
     m_transaction = trans;
     if(m_transaction) {
         connect(m_transaction, SIGNAL(cancellableChanged(bool)),
@@ -92,10 +131,6 @@ void TransactionListener::setTransaction(Transaction* trans)
         connect(m_transaction, SIGNAL(progressChanged(int)),
                 this, SIGNAL(progressChanged()));
     }
-    emit cancellableChanged();
-    emit runningChanged();
-    emit statusTextChanged();
-    emit progressChanged();
 }
 
 void TransactionListener::transactionStatusChanged(Transaction::Status status)
