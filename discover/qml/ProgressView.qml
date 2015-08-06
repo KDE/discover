@@ -5,10 +5,11 @@ import org.kde.kquickcontrolsaddons 2.0
 import org.kde.muon 1.0
 import "navigation.js" as Navigation
 
-ToolBar {
+Item {
     id: page
     property bool active: enabled && progressModel.count>0
-    Layout.maximumHeight: active ? contents.height+2*contents.anchors.margins : 0
+    Layout.minimumHeight: active ? contents.height : 0
+    Layout.maximumHeight: Layout.minimumHeight
     
     Behavior on Layout.maximumHeight {
         NumberAnimation { duration: 250; easing.type: Easing.InOutQuad }
@@ -44,7 +45,7 @@ ToolBar {
         id: contents
         anchors {
             left: parent.left
-            right: parent.right
+            right: closeButton.left
             top: parent.top
             margins: 3
         }
@@ -121,11 +122,13 @@ ToolBar {
         }
     }
     ToolButton {
+        id: closeButton
+        visible: parent.active //otherwise it shows. even if parent.height==0, parent.visible is true
         anchors {
             verticalCenter: parent.verticalCenter
             right: parent.right
         }
-        height: Math.min(implicitHeight, parent.height)
+        enabled: parent.active
         iconName: "window-close"
         onClicked: progressModel.clear()
     }
