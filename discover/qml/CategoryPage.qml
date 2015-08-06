@@ -46,7 +46,7 @@ Item {
             id: categoryItem
             property bool horizontal: flick.columnCount==1
             width: flick.cellWidth
-            height: layout.height
+            height: horizontal ? nameLabel.paintedHeight*2.5 : layout.height
             enabled: true
 
             GridLayout {
@@ -71,6 +71,7 @@ Item {
                     }
                 }
                 Label {
+                    id: nameLabel
                     text: display
                     Layout.fillWidth: true
                     horizontalAlignment: Text.AlignHCenter
