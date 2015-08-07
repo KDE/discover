@@ -118,7 +118,7 @@ void TransactionListener::setTransaction(Transaction* trans)
     }
 
     CheckChange change1(this, "isCancellable");
-    CheckChange change2(this, "isRunning");
+    CheckChange change2(this, "isActive");
     CheckChange change3(this, "statusText");
     CheckChange change4(this, "progress");
 
