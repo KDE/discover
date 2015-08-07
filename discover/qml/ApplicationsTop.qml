@@ -67,6 +67,7 @@ Column {
                             Layout.fillHeight: true
                             text: name
                             elide: Text.ElideRight
+                            verticalAlignment: Text.AlignVCenter
                         }
                         Item {
                             Layout.fillWidth: true

@@ -45,7 +45,7 @@ Item {
             id: categoryItem
             property bool horizontal: flick.columnCount==1
             width: flick.cellWidth
-            height: horizontal ? nameLabel.paintedHeight*2.5 : layout.height
+            height: horizontal ? nameLabel.paintedHeight*2.5 : layout.height+10
             enabled: true
 
             GridLayout {
@@ -56,17 +56,17 @@ Item {
                 anchors.centerIn: parent
                 width: parent.width
                 columnSpacing: 10
-                rowSpacing: 10
+                rowSpacing: 5
                 Item {
                     Layout.fillWidth: !categoryItem.horizontal
                     Layout.fillHeight: categoryItem.horizontal
-                    Layout.preferredWidth: 40
-                    Layout.preferredHeight: 40
+                    Layout.preferredWidth: categoryItem.horizontal ? nameLabel.paintedHeight*2 : 40
+                    Layout.preferredHeight: Layout.preferredWidth
                     QIconItem {
                         icon: decoration
-                        anchors.centerIn: parent
-                        width: 40
+                        width: Math.min(parent.width, parent.height)
                         height: width
+                        anchors.centerIn: parent
                     }
                 }
                 Label {
@@ -74,6 +74,7 @@ Item {
                     text: display
                     Layout.fillWidth: true
                     horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
                     wrapMode: Text.WordWrap
                 }
             }
@@ -116,7 +117,11 @@ Item {
                         sortRole: "sortableRating"
                         filteredCategory: page.category
                         title: i18n("Popularity")
-                        roleDelegate: Label { property variant model; text: i18n("points: %1", model.sortableRating.toFixed(2)) }
+                        roleDelegate: Label {
+                            property variant model
+                            text: i18n("points: %1", model.sortableRating.toFixed(2))
+                            verticalAlignment: Text.AlignVCenter
+                        }
                     }
                     ApplicationsTop {
                         id: top2
