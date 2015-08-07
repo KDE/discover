@@ -203,7 +203,11 @@ QUrl MuonDiscoverMainWindow::prioritaryFeaturedSource() const
 
 bool MuonDiscoverMainWindow::isCompact() const
 {
-    return isVisible() && (width()/windowHandle()->screen()->devicePixelRatio())<70;
+    if (!isVisible())
+        return true;
+
+    const qreal pixelDensity = windowHandle()->screen()->physicalDotsPerInch() / 25.4;
+    return (width()/pixelDensity)<70; //we'll use compact if the width of the window is less than 7cm
 }
 
 qreal MuonDiscoverMainWindow::actualWidth() const
