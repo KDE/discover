@@ -5,8 +5,7 @@ import org.kde.muon 1.0
 Item
 {
     id: page
-    readonly property real actualWidth: width-Math.pow(width/70, 2)
-    property real sideMargin: (width-actualWidth)/2
+    readonly property real proposedMargin: (width-app.actualWidth)/2
     
     function start() {
         updatesModel.prepare()
@@ -29,8 +28,8 @@ Item
             right: parent.right
             left: parent.left
             top: parent.top
-            rightMargin: sideMargin
-            leftMargin: sideMargin
+            rightMargin: proposedMargin
+            leftMargin: proposedMargin
         }
         value: updatesModel.progress
         minimumValue: 0
@@ -52,8 +51,8 @@ Item
             right: parent.right
             left: parent.left
             bottom: parent.bottom
-            rightMargin: sideMargin
-            leftMargin: sideMargin
+            rightMargin: proposedMargin
+            leftMargin: proposedMargin
             topMargin: 10
             bottomMargin: 10
         }

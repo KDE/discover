@@ -38,8 +38,7 @@ Item {
     property string sectionProperty: ""
     property Component sectionDelegate: null
     property bool preferList: false
-    readonly property real actualWidth: width-Math.pow(width/70, 2)
-    readonly property real proposedMargin: (width-actualWidth)/2
+    readonly property real proposedMargin: (width-app.actualWidth)/2
     property Component header: category==null ? null : categoryHeaderComponent
     property Component extendedToolBar: null
     clip: true
@@ -172,7 +171,7 @@ Item {
             id: categoryHeader
             category: page.category
             height: 100
-            width: page.actualWidth
+            width: app.actualWidth
             x: viewLoader.sourceComponent == listComponent ? page.proposedMargin : 0
         }
     }
@@ -189,7 +188,6 @@ Item {
             anchors.fill: parent
             section.property: page.sectionProperty
             section.delegate: page.sectionDelegate
-            actualWidth: page.actualWidth
             
             header: page.header
             model: appsModel
@@ -226,7 +224,6 @@ Item {
             id: theGrid
             model: appsModel
             header: page.header
-            actualWidth: page.actualWidth
             minCellWidth: 200
             
             delegate: ApplicationsGridDelegate {

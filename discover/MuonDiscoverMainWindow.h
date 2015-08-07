@@ -37,6 +37,7 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
     Q_PROPERTY(QUrl prioritaryFeaturedSource READ prioritaryFeaturedSource CONSTANT)
     Q_PROPERTY(QUrl featuredSource READ featuredSource CONSTANT)
     Q_PROPERTY(bool isCompact READ isCompact NOTIFY compactChanged)
+    Q_PROPERTY(qreal actualWidth READ actualWidth NOTIFY actualWidthChanged)
     public:
         explicit MuonDiscoverMainWindow();
         ~MuonDiscoverMainWindow();
@@ -53,6 +54,7 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
         QUrl featuredSource() const;
 
         bool isCompact() const;
+        qreal actualWidth() const;
 
         void resizeEvent(QResizeEvent * event);
 
@@ -70,7 +72,9 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
         void openApplicationInternal(AbstractResource* app);
         void listMimeInternal(const QString& mime);
         void listCategoryInternal(const QString& name);
+
         void compactChanged(bool isCompact);
+        void actualWidthChanged(qreal actualWidth);
 
     private:
         void configureMenu();

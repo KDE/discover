@@ -21,10 +21,9 @@ import QtQuick 2.1
 import QtQuick.Window 2.2
 
 Flickable {
-    property int columnCount: app.isCompact ? 1 : Math.max(Math.floor(actualWidth/minCellWidth), 1)
-    property real cellWidth: (actualWidth-(columnCount-1)*dataFlow.spacing)/columnCount
+    property int columnCount: app.isCompact ? 1 : Math.max(Math.floor(app.actualWidth/minCellWidth), 1)
+    property real cellWidth: (app.actualWidth-(columnCount-1)*dataFlow.spacing)/columnCount
     property int minCellWidth: 130
-    property alias actualWidth: conts.width
     property alias header: headerLoader.sourceComponent
     property alias footer: footerLoader.sourceComponent
     property alias delegate: dataRepeater.delegate
@@ -33,6 +32,7 @@ Flickable {
     
     Column {
         id: conts
+        width: app.actualWidth
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 10
         Loader {

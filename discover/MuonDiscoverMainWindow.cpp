@@ -59,6 +59,8 @@
 #include <resources/UIHelper.h>
 #include <Category/Category.h>
 
+#include <cmath>
+
 MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     : KXmlGuiWindow()
 {
@@ -204,9 +206,15 @@ bool MuonDiscoverMainWindow::isCompact() const
     return isVisible() && (width()/windowHandle()->screen()->devicePixelRatio())<70;
 }
 
-void MuonDiscoverMainWindow::resizeEvent(QResizeEvent * event)
+qreal MuonDiscoverMainWindow::actualWidth() const
+{
+    return isCompact() ? width() : width()-std::pow(width()/70, 2);
+}
+
+void MuonDiscoverMainWindow::resizeEvent(QResizeEvent * /*event*/)
 {
     Q_EMIT compactChanged(isCompact());
+    Q_EMIT actualWidthChanged(actualWidth());
 }
 
 void MuonDiscoverMainWindow::setupActions()

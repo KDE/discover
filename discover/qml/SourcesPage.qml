@@ -8,8 +8,7 @@ import "navigation.js" as Navigation
 Item {
     id: page
     clip: true
-    readonly property real actualWidth: width-Math.pow(width/70, 2)
-    readonly property real proposedMargin: (page.width-actualWidth)/2
+    readonly property real proposedMargin: (width-app.actualWidth)/2
 
     Menu {
         id: sourcesMenu
@@ -56,7 +55,7 @@ Item {
             delegate: ColumnLayout {
                 id: sourceDelegate
                 x: page.proposedMargin
-                width: page.actualWidth
+                width: app.actualWidth
 
                 property QtObject sourceBackend: model.sourceBackend
                 AddSourceDialog {

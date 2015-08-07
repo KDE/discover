@@ -28,7 +28,6 @@ import "navigation.js" as Navigation
 Item {
     id: page
     property QtObject category
-    readonly property real actualWidth: width-Math.pow(width/70, 2)
     property alias categories: categoryModel
     
     function searchFor(text) {
@@ -105,7 +104,6 @@ Item {
             id: categoryModel
             displayedCategory: page.category
         }
-        actualWidth: page.actualWidth
         delegate: categoryDelegate
         header: category==null ? featured : categoryHeader
         footer: RowLayout {

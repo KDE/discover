@@ -25,8 +25,7 @@ import org.kde.muon 1.0
 ScrollView {
     id: page
     property alias model: reviewsView.model
-    readonly property real actualWidth: width-Math.pow(width/70, 2)
-    property real proposedMargins: (width-actualWidth)/2
+    readonly property real proposedMargin: (width-app.actualWidth)/2
 
     ListView {
         id: reviewsView
@@ -36,7 +35,7 @@ ScrollView {
         spacing: 5
 
         delegate: ReviewDelegate {
-            x: page.proposedMargins
+            x: page.proposedMargin
             width: page.actualWidth
             onMarkUseful: page.model.markUseful(index, useful)
         }

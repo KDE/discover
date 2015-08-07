@@ -30,8 +30,7 @@ ScrollView {
     property alias header: view.header
     property alias section: view.section
     property alias model: view.model
-    property real actualWidth: width
-    readonly property real proposedMargin: app.isCompact ? 0 : (view.width-actualWidth)/2
+    readonly property real proposedMargin: app.isCompact ? 0 : (width-app.actualWidth)/2
 
     ListView
     {
@@ -43,7 +42,7 @@ ScrollView {
         delegate: GridItem {
                 id: delegateArea
 //                 checked: view.currentIndex==index
-                width: parentItem.actualWidth
+                width: app.actualWidth
                 x: parentItem.proposedMargin
                 property real contHeight: height*0.8
                 height: nameLabel.font.pixelSize*3
@@ -124,8 +123,14 @@ ScrollView {
                         visible: app.isCompact
                         text: model.application.status
                     }
+                    Text {
+                        Layout.fillHeight: true
+                        width: 5
+                        text: parent.height
+                        Rectangle { color: "red"; anchors.fill: parent; opacity: 0.3 }
+                    }
                     InstallApplicationButton {
-                        Layout.maximumHeight: parent.Layout.maximumHeight
+                        Layout.maximumHeight: parent.height
     //                     property bool isVisible: delegateArea.containsMouse && !canHide
     //                     opacity: isVisible ? 1 : 0
                         application: model.application
