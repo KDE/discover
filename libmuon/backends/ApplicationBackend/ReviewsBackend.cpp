@@ -31,7 +31,7 @@
 
 #include <KIO/Job>
 #include <KLocalizedString>
-#include <KFilterDev>
+#include <KCompressionDevice>
 
 #include <QApt/Backend>
 
@@ -140,7 +140,7 @@ void ReviewsBackend::ratingsFetched(KJob *job)
 void ReviewsBackend::loadRatingsFromFile()
 {
     QString ratingsCache = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libmuon/ratings.txt";
-    QScopedPointer<QIODevice> dev(KFilterDev::deviceForFile(ratingsCache, "application/x-gzip"));
+    QScopedPointer<QIODevice> dev(new KCompressionDevice(ratingsCache, "application/x-gzip"));
     if (!dev->open(QIODevice::ReadOnly)) {
         qWarning() << "Couldn't open ratings.txt" << ratingsCache;
         return;
