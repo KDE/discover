@@ -57,6 +57,7 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
         qreal actualWidth() const;
 
         void resizeEvent(QResizeEvent * event);
+        void showEvent(QShowEvent * event);
 
     public slots:
         void openApplication(const QString& app);

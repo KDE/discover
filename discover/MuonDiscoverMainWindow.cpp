@@ -211,8 +211,16 @@ qreal MuonDiscoverMainWindow::actualWidth() const
     return isCompact() ? width() : width()-std::pow(width()/70, 2);
 }
 
-void MuonDiscoverMainWindow::resizeEvent(QResizeEvent * /*event*/)
+void MuonDiscoverMainWindow::resizeEvent(QResizeEvent * event)
 {
+    KXmlGuiWindow::resizeEvent(event);
+    Q_EMIT compactChanged(isCompact());
+    Q_EMIT actualWidthChanged(actualWidth());
+}
+
+void MuonDiscoverMainWindow::showEvent(QShowEvent * event)
+{
+    KXmlGuiWindow::showEvent(event);
     Q_EMIT compactChanged(isCompact());
     Q_EMIT actualWidthChanged(actualWidth());
 }
