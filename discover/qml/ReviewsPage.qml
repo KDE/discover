@@ -25,7 +25,7 @@ import org.kde.muon 1.0
 ScrollView {
     id: page
     property alias model: reviewsView.model
-    property real actualWidth: width-Math.pow(width/70, 2)
+    readonly property real actualWidth: width-Math.pow(width/70, 2)
     property real proposedMargins: (width-actualWidth)/2
 
     ListView {

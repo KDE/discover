@@ -34,11 +34,12 @@ class QQuickWidget;
 class MuonDiscoverMainWindow : public KXmlGuiWindow
 {
     Q_OBJECT
+    Q_PROPERTY(QUrl prioritaryFeaturedSource READ prioritaryFeaturedSource CONSTANT)
+    Q_PROPERTY(QUrl featuredSource READ featuredSource CONSTANT)
     public:
         explicit MuonDiscoverMainWindow();
         ~MuonDiscoverMainWindow();
 
-        Q_SCRIPTABLE QAction* getAction(const QString& name);
         QSize sizeHint() const override;
         
         void initialize();
@@ -47,10 +48,11 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
 
         bool queryClose() Q_DECL_OVERRIDE;
 
-    public slots:
-        void openApplication(const QString& app);
         QUrl prioritaryFeaturedSource() const;
         QUrl featuredSource() const;
+
+    public slots:
+        void openApplication(const QString& app);
         void openMimeType(const QString& mime);
         void openCategory(const QString& category);
         void openMode(const QByteArray& mode);

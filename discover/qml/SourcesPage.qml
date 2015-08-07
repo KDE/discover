@@ -8,8 +8,8 @@ import "navigation.js" as Navigation
 Item {
     id: page
     clip: true
-    property real actualWidth: width-Math.pow(width/70, 2)
-    property real proposedMargin: (page.width-actualWidth)/2
+    readonly property real actualWidth: width-Math.pow(width/70, 2)
+    readonly property real proposedMargin: (page.width-actualWidth)/2
 
     Menu {
         id: sourcesMenu

@@ -31,8 +31,8 @@ ScrollView {
     property alias section: view.section
     property alias model: view.model
     property real actualWidth: width
-    property real proposedMargin: (view.width-actualWidth)/2
     readonly property bool compact: (width/Screen.pixelDensity)<70
+    readonly property real proposedMargin: compact ? 0 : (view.width-actualWidth)/2
 
     ListView
     {

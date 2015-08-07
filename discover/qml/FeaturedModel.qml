@@ -5,8 +5,8 @@ ListModel
 {
     id: model
     Component.onCompleted: {
-        fetchSource(app.prioritaryFeaturedSource())
-        fetchSource(app.featuredSource())
+        fetchSource(app.prioritaryFeaturedSource)
+        fetchSource(app.featuredSource)
     }
     
     property variant fu: Connections {

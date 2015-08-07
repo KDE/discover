@@ -38,8 +38,8 @@ Item {
     property string sectionProperty: ""
     property Component sectionDelegate: null
     property bool preferList: false
-    property real actualWidth: width-Math.pow(width/70, 2)
-    property real proposedMargin: (width-actualWidth)/2
+    readonly property real actualWidth: width-Math.pow(width/70, 2)
+    readonly property real proposedMargin: (width-actualWidth)/2
     property Component header: category==null ? null : categoryHeaderComponent
     property Component extendedToolBar: null
     clip: true

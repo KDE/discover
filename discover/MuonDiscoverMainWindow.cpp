@@ -123,11 +123,6 @@ MuonDiscoverMainWindow::~MuonDiscoverMainWindow()
 //     window.sync();
 }
 
-QAction* MuonDiscoverMainWindow::getAction(const QString& name)
-{
-    return actionCollection()->action(name);
-}
-
 QStringList MuonDiscoverMainWindow::modes() const
 {
     QStringList ret;

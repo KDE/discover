@@ -5,7 +5,7 @@ import org.kde.muon 1.0
 Item
 {
     id: page
-    property real actualWidth: width-Math.pow(width/70, 2)
+    readonly property real actualWidth: width-Math.pow(width/70, 2)
     property real sideMargin: (width-actualWidth)/2
     
     function start() {
