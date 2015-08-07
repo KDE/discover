@@ -236,8 +236,7 @@ Item {
         }
     }
     
-    readonly property bool compact: (width/Screen.pixelDensity)<70
-    state: preferList || compact ? "list" : "grid2"
+    state: preferList || app.isCompact ? "list" : "grid2"
     states: [
         State {
             name: "list"

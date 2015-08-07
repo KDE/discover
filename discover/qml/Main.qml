@@ -42,8 +42,6 @@ Rectangle
     property bool defaultStartup: true
     property bool navigationEnabled: true
 
-    readonly property bool compact: (width/Screen.pixelDensity)<70
-
     visible: true
 
     SystemPalette { id: palette }
@@ -133,7 +131,6 @@ Rectangle
 
         MuonToolbar {
             id: toolbar
-            compact: window.compact
         }
 
         Item {

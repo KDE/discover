@@ -40,6 +40,7 @@
 #include <QMenu>
 #include <QMenuBar>
 #include <QQuickWidget>
+#include <QScreen>
 
 // KDE includes
 #include <KActionCollection>
@@ -196,6 +197,16 @@ QUrl MuonDiscoverMainWindow::featuredSource() const
 QUrl MuonDiscoverMainWindow::prioritaryFeaturedSource() const
 {
     return QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::DataLocation, "featured.json"));
+}
+
+bool MuonDiscoverMainWindow::isCompact() const
+{
+    return isVisible() && (width()/windowHandle()->screen()->devicePixelRatio())<70;
+}
+
+void MuonDiscoverMainWindow::resizeEvent(QResizeEvent * event)
+{
+    Q_EMIT compactChanged(isCompact());
 }
 
 void MuonDiscoverMainWindow::setupActions()

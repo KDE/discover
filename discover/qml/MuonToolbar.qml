@@ -27,7 +27,6 @@ ToolBar
     id: root
     Layout.preferredHeight: backAction.height+2
     Layout.fillWidth: true
-    property bool compact
     property Item search: searchWidget
 
     ExclusiveGroup {
@@ -52,7 +51,7 @@ ToolBar
         }
 
         ConditionalLoader {
-            condition: root.compact
+            condition: app.isCompact
             componentFalse: RowLayout {
                 Repeater {
                     model: window.awesome
@@ -92,11 +91,11 @@ ToolBar
         }
 
         Item {
-            Layout.fillWidth: !root.compact
+            Layout.fillWidth: !app.isCompact
         }
         TextField {
             id: searchWidget
-            Layout.fillWidth: root.compact
+            Layout.fillWidth: app.isCompact
             placeholderText: i18n("Search...")
             focus: true
             enabled: pageStack.currentItem!=null && pageStack.currentItem.searchFor!=null

@@ -25,12 +25,11 @@ import QtQuick.Layouts 1.1
 Item {
     id: appInfo
     property QtObject application: null
-    readonly property bool compact: (width/Screen.pixelDensity)<70
     clip: true
 
     ConditionalLoader {
         anchors.fill: parent
-        condition: appInfo.compact
+        condition: app.isCompact
 
         componentFalse: Item {
             ScrollView {

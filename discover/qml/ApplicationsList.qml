@@ -31,8 +31,7 @@ ScrollView {
     property alias section: view.section
     property alias model: view.model
     property real actualWidth: width
-    readonly property bool compact: (width/Screen.pixelDensity)<70
-    readonly property real proposedMargin: compact ? 0 : (view.width-actualWidth)/2
+    readonly property real proposedMargin: app.isCompact ? 0 : (view.width-actualWidth)/2
 
     ListView
     {
@@ -95,7 +94,7 @@ ScrollView {
                         right: parent.right
                         verticalCenter: nameLabel.verticalCenter
                     }
-                    height: parentItem.compact ? contHeight*.6 : contHeight*.4
+                    height: app.isCompact ? contHeight*.6 : contHeight*.4
                     width: parent.width/5
                     rating: model.rating
                 }
@@ -122,7 +121,7 @@ ScrollView {
                     }
 
                     Label {
-                        visible: parentItem.compact
+                        visible: app.isCompact
                         text: model.application.status
                     }
                     InstallApplicationButton {

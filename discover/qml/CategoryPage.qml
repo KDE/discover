@@ -97,7 +97,6 @@ Item {
             clip: true
         }
     }
-    readonly property bool compact: (width/Screen.pixelDensity)<70
     ScrolledAwesomeGrid {
         id: flick
         anchors.fill: parent
@@ -125,7 +124,7 @@ Item {
                         id: top2
                         Layout.fillHeight: true
                         Layout.fillWidth: true
-                        visible: !page.compact
+                        visible: !app.isCompact
                         sortRole: "ratingPoints"
                         filteredCategory: page.category
                         title: i18n("Rating")
