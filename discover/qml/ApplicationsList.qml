@@ -45,7 +45,7 @@ ScrollView {
                 width: app.actualWidth
                 x: parentItem.proposedMargin
                 property real contHeight: height*0.8
-                height: nameLabel.font.pixelSize*3
+                height: lowLayout.implicitHeight*2
                 internalMargin: 0
 
                 onClicked: {
@@ -99,12 +99,13 @@ ScrollView {
                 }
 
                 RowLayout {
+                    id: lowLayout
                     anchors {
                         bottom: parent.bottom
                         left: resourceIcon.right
                         leftMargin: 5
+                        top: parent.verticalCenter
                         right: parent.right
-                        top: nameLabel.bottom
                     }
 
                     Label {
@@ -124,7 +125,6 @@ ScrollView {
                         text: model.application.status
                     }
                     InstallApplicationButton {
-                        Layout.maximumHeight: parent.height
     //                     property bool isVisible: delegateArea.containsMouse && !canHide
     //                     opacity: isVisible ? 1 : 0
                         application: model.application
