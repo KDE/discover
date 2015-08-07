@@ -173,7 +173,7 @@ Item {
             category: page.category
             height: 100
             width: page.actualWidth
-            proposedMargin: viewLoader.sourceComponent == listComponent ? page.proposedMargin : 0
+            x: viewLoader.sourceComponent == listComponent ? page.proposedMargin : 0
         }
     }
     

@@ -23,7 +23,6 @@ import org.kde.kquickcontrolsaddons 2.0
 
 Item {
     property QtObject category: null
-    property real proposedMargin: 0
     
     QIconItem {
         id: iconItem
@@ -32,7 +31,6 @@ Item {
             top: parent.top
             bottom: parent.bottom
             left: parent.left
-            leftMargin: parent.proposedMargin
             margins: 15
         }
         width: height
@@ -43,11 +41,12 @@ Item {
             verticalCenter: parent.verticalCenter
             left: iconItem.right
             right: parent.right
-            rightMargin: parent.proposedMargin
             leftMargin: 50
         }
         elide: Text.ElideRight
-        font.pointSize: parent.height*0.5
+        verticalAlignment: Text.AlignVCenter
+        fontSizeMode: Text.Fit
+        font.pointSize: parent.height
         text: category.name
     }
 }
