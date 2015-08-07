@@ -123,12 +123,6 @@ ScrollView {
                         visible: app.isCompact
                         text: model.application.status
                     }
-                    Text {
-                        Layout.fillHeight: true
-                        width: 5
-                        text: parent.height
-                        Rectangle { color: "red"; anchors.fill: parent; opacity: 0.3 }
-                    }
                     InstallApplicationButton {
                         Layout.maximumHeight: parent.height
     //                     property bool isVisible: delegateArea.containsMouse && !canHide
