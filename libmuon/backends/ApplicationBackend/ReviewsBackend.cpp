@@ -140,7 +140,7 @@ void ReviewsBackend::ratingsFetched(KJob *job)
 void ReviewsBackend::loadRatingsFromFile()
 {
     QString ratingsCache = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libmuon/ratings.txt";
-    QScopedPointer<QIODevice> dev(new KCompressionDevice(ratingsCache, "application/x-gzip"));
+    QScopedPointer<QIODevice> dev(new KCompressionDevice(ratingsCache, KCompressionDevice::GZip));
     if (!dev->open(QIODevice::ReadOnly)) {
         qWarning() << "Couldn't open ratings.txt" << ratingsCache;
         return;
