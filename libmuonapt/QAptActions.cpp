@@ -392,13 +392,10 @@ void QAptActions::runSourcesEditor()
     QString pkexec = QStandardPaths::findExecutable("pkexec");
     QString editor = QStandardPaths::findExecutable("software-properties-kde");
 
+    arguments << pkexec << editor << QStringLiteral("--attach") % QString::number(winID);
     if (m_reloadWhenEditorFinished) {
-        editor.append(QLatin1String(" --dont-update --attach ") % QString::number(winID)); //krazy:exclude=spelling;
-    } else {
-        editor.append(QLatin1String(" --attach ") % QString::number(winID));
+        arguments << QStringLiteral("--dont-update");
     }
-
-    arguments << pkexec << editor;
 
     proc->setProgram(arguments);
     m_mainWindow->find(winID)->setEnabled(false);
