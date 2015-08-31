@@ -420,7 +420,7 @@ void MainWindow::editSettings()
 {
     if (!m_settingsDialog) {
         m_settingsDialog = new ManagerSettingsDialog(this, m_backend->config());
-        connect(m_settingsDialog, SIGNAL(finished()), SLOT(closeSettingsDialog()));
+        connect(m_settingsDialog, SIGNAL(finished(int)), SLOT(closeSettingsDialog()));
         connect(m_settingsDialog, SIGNAL(settingsChanged()), SLOT(loadSettings()));
         m_settingsDialog->show();
     } else {
