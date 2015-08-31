@@ -103,10 +103,8 @@ void ApplicationNotifier::checkUpgradeFinished(int exitStatus)
 
 void ApplicationNotifier::upgradeActivated()
 {
-    QString pkexec = QStandardPaths::findExecutable("pkexec");
-    QString upgrader = QStringLiteral("do-release-upgrade -m desktop -f DistUpgradeViewKDE");
-    
-    QProcess::startDetached(pkexec, QStringList() << upgrader);
+    const QString kdesu = QFile::decodeName(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/kdesu");
+    QProcess::startDetached(kdesu, { "--", "do-release-upgrade", "-m", "desktop", "-f", "DistUpgradeViewKDE" });
 }
 
 void ApplicationNotifier::recheckSystemUpdateNeeded()

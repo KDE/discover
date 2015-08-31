@@ -14,6 +14,8 @@ target_link_libraries(MuonApt Qt5::Core
      QApt::Main KF5::I18n
 )
 
+target_compile_definitions(MuonApt PRIVATE -DCMAKE_INSTALL_FULL_LIBEXECDIR_KF5=\"${CMAKE_INSTALL_FULL_LIBEXECDIR_KF5}\")
+
 target_include_directories(MuonApt PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 add_executable(muon_repo_helper AddRepositoryHelper.cpp)

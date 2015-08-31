@@ -34,6 +34,7 @@ install(FILES distupgradeevent/releasechecker DESTINATION ${DATA_INSTALL_DIR}/li
 )
 
 add_library(MuonApplicationNotifier MODULE ApplicationNotifier.cpp)
+target_compile_definitions(MuonApplicationNotifier PRIVATE -DCMAKE_INSTALL_FULL_LIBEXECDIR_KF5=\"${CMAKE_INSTALL_FULL_LIBEXECDIR_KF5}\")
 target_link_libraries(MuonApplicationNotifier KF5::CoreAddons KF5::I18n KF5::Notifications KF5::IconThemes MuonNotifiers)
 
 install(TARGETS MuonApplicationNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/muon-notifier)

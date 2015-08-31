@@ -1,11 +1,10 @@
 Runtime dependencies:
-libmuonprivate:
-- kdesudo
-- software-properties-kde
-
 muon:
 - apt-xapian-index
 
-muon-discover:
+apt-backend:
 - app-install-data
 - apt-xapian-index
+- kde-cli-tools (kdesu)
+- software-properties-kde
+
