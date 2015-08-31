@@ -6,10 +6,10 @@ import org.kde.muon 1.0
 Item {
     property alias application: listener.resource
     property alias isActive: listener.isActive
-    property real maximumWidth: button.Layout.preferredWidth*2
     property real minimumWidth: button.Layout.minimumWidth*2
     property Component additionalItem: null
     height: button.implicitHeight
+    width: button.implicitWidth * 2
 
     TransactionListener {
         id: listener

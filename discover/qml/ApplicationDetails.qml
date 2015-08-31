@@ -26,12 +26,12 @@ import org.kde.muon 1.0
 Column
 {
     property alias isInstalling: installButton.isActive
-    spacing: 10
     property alias application: installButton.application
+    spacing: 10
+
     InstallApplicationButton {
         id: installButton
         anchors.horizontalCenter: parent.horizontalCenter
-        width: Math.min(parent.width, maximumWidth)
         additionalItem:  Rating {
             property QtObject ratingInstance: application.rating
             visible: ratingInstance!=null
