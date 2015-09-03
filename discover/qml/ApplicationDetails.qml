@@ -29,10 +29,10 @@ ColumnLayout
     property alias isInstalling: installButton.isActive
     property alias application: installButton.application
     spacing: 10
+
     InstallApplicationButton {
         id: installButton
         anchors.horizontalCenter: parent.horizontalCenter
-
         additionalItem:  Rating {
             property QtObject ratingInstance: application.rating
             visible: ratingInstance!=null

@@ -389,16 +389,13 @@ void QAptActions::runSourcesEditor()
     QStringList arguments;
     int winID = m_mainWindow->effectiveWinId();
 
-    QString pkexec = QStandardPaths::findExecutable("pkexec");
-    QString editor = QStandardPaths::findExecutable("software-properties-kde");
+    const QString kdesu = QFile::decodeName(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/kdesu");
+    const QString editor = QStandardPaths::findExecutable("software-properties-kde");
 
+    arguments << kdesu << "--" << editor << QStringLiteral("--attach") << QString::number(winID);
     if (m_reloadWhenEditorFinished) {
-        editor.append(QLatin1String(" --dont-update --attach ") % QString::number(winID)); //krazy:exclude=spelling;
-    } else {
-        editor.append(QLatin1String(" --attach ") % QString::number(winID));
+        arguments << QStringLiteral("--dont-update");
     }
-
-    arguments << pkexec << editor;
 
     proc->setProgram(arguments);
     m_mainWindow->find(winID)->setEnabled(false);
@@ -506,10 +503,8 @@ void QAptActions::closeHistoryDialog()
 
 void QAptActions::launchDistUpgrade()
 {
-    QString pkexec = QStandardPaths::findExecutable("pkexec");
-    QString upgrader = QStringLiteral("do-release-upgrade -m desktop -f DistUpgradeViewKDE");
-
-    QProcess::startDetached(pkexec, QStringList() << upgrader);
+    const QString kdesu = QFile::decodeName(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/kdesu");
+    QProcess::startDetached(kdesu, {"--", "do-release-upgrade", "-m", "desktop", "-f", "DistUpgradeViewKDE"});
 }
 
 void QAptActions::checkDistUpgrade()
