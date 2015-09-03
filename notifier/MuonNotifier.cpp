@@ -39,6 +39,9 @@ MuonNotifier::MuonNotifier(QObject * parent)
     for(BackendNotifierModule* module : m_backends) {
         connect(module, &BackendNotifierModule::foundUpdates, this, &MuonNotifier::updateStatusNotifier);
     }
+    connect(&m_timer, &QTimer::timeout, this, &MuonNotifier::showUpdatesNotification);
+    m_timer.setSingleShot(true);
+    m_timer.setInterval(180000);
     updateStatusNotifier();
 }
 
@@ -68,22 +71,21 @@ bool MuonNotifier::isSystemUpToDate() const
     return true;
 }
 
+void MuonNotifier::showUpdatesNotification()
+{
+    //TODO: Better message strings
+    QString msg = message();
+    if (m_verbose) {
+        msg += ' ' + extendedMessage();
+    }
+
+    KNotification::event("Update", i18n("System update available"), msg, QStringLiteral("system-software-update"), nullptr, KNotification::CloseOnTimeout, "muonabstractnotifier");
+}
+
 void MuonNotifier::updateStatusNotifier()
 {
-//     m_statusNotifier->setOverlayIconByName(iconName());
     if (!isSystemUpToDate()) {
-        //TODO: Better message strings
-        QString msg = message();
-        if (m_verbose) {
-            msg += ' ' + extendedMessage();
-        }
-//         m_statusNotifier->setToolTip(iconName(), msg, i18n("A system update is recommended"));
-//         m_statusNotifier->setStatus(KStatusNotifierItem::Active);
-
-        KNotification::event("Update", i18n("System update available"), msg, QStringLiteral("system-software-update"), nullptr, KNotification::CloseOnTimeout, "muonabstractnotifier");
-    } else {
-//         m_statusNotifier->setStatus(KStatusNotifierItem::Passive);
-//         m_s:tatusNotifier->setToolTip(QString(), message(), i18n("Your system is up-to-date"));
+        m_timer.start();
     }
     emit updatesChanged();
 }

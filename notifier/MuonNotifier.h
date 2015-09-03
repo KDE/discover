@@ -23,6 +23,7 @@
 
 #include <BackendNotifierModule.h>
 #include <QStringList>
+#include <QTimer>
 
 class KStatusNotifierItem;
 
@@ -57,7 +58,6 @@ public:
     /*** @returns count of security updates only **/
     uint securityUpdatesCount() const;
 
-    void updateStatusNotifier();
     QStringList loadedModules() const;
 
 public Q_SLOTS:
@@ -69,10 +69,13 @@ Q_SIGNALS:
     void updatesChanged();
 
 private:
+    void showUpdatesNotification();
+    void updateStatusNotifier();
     void loadBackends();
 
     QList<BackendNotifierModule*> m_backends;
     bool m_verbose;
+    QTimer m_timer;
 };
 
 #endif //ABSTRACTKDEDMODULE_H
