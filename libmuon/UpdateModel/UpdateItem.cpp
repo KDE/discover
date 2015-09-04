@@ -25,6 +25,7 @@
 
 #include <QtCore/QStringBuilder>
 #include <KLocalizedString>
+#include <QDebug>
 
 UpdateItem::UpdateItem()
     : m_app(nullptr)

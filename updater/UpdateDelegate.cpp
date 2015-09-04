@@ -36,27 +36,6 @@ UpdateDelegate::UpdateDelegate(QObject *parent)
 {
 }
 
-QSize UpdateDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
-{
-    Q_UNUSED(index);
-
-    QSize size;
-    QFontMetrics metric = QFontMetrics(option.font);
-
-    size.setWidth(metric.width(index.data(Qt::DisplayRole).toString()));
-    size.setHeight(ICON_SIZE + SPACING);
-
-    if (index.column() == 0) {
-        const QStyle *style = QApplication::style();
-        QRect rect = style->subElementRect(QStyle::SE_CheckBoxIndicator, &option);
-        // Adds the icon size AND the checkbox size
-        // [ x ] (icon) Text
-        size.rwidth() += 4 * SPACING + ICON_SIZE + rect.width();
-    }
-
-    return size;
-}
-
 bool UpdateDelegate::editorEvent(QEvent *event,
                                  QAbstractItemModel *model,
                                  const QStyleOptionViewItem &option,
@@ -103,4 +82,10 @@ bool UpdateDelegate::editorEvent(QEvent *event,
                        Qt::CheckStateRole);
     }
     return false;
+}
+
+void UpdateDelegate::initStyleOption(QStyleOptionViewItem *option, const QModelIndex &index) const
+{
+    QStyledItemDelegate::initStyleOption(option, index);
+    option->decorationSize = QSize(ICON_SIZE, ICON_SIZE);
 }

@@ -23,6 +23,7 @@
 // Qt includes
 #include <QFont>
 #include <QApplication>
+#include <QDebug>
 
 // KDE includes
 #include <KIconLoader>
@@ -33,20 +34,49 @@
 #include "UpdateItem.h"
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesUpdatesModel.h>
-
-#define ICON_SIZE KIconLoader::SizeSmallMedium
-
+#include <resources/ResourcesModel.h>
 
 UpdateModel::UpdateModel(QObject *parent)
     : QAbstractItemModel(parent)
     , m_updates(nullptr)
 {
     m_rootItem = new UpdateItem();
+
+    connect(ResourcesModel::global(), &ResourcesModel::fetchingChanged, this, &UpdateModel::activityChanged);
+    connect(ResourcesModel::global(), &ResourcesModel::updatesCountChanged, this, &UpdateModel::activityChanged);
 }
 
 UpdateModel::~UpdateModel()
 {
     delete m_rootItem;
+}
+
+QHash<int,QByteArray> UpdateModel::roleNames() const
+{
+    return QAbstractItemModel::roleNames().unite({ { Qt::CheckStateRole, "checked"} } );
+}
+
+void UpdateModel::setBackend(ResourcesUpdatesModel* updates)
+{
+    if (m_updates) {
+        disconnect(m_updates, nullptr, this, nullptr);
+    }
+
+    m_updates = updates;
+
+    connect(m_updates, &ResourcesUpdatesModel::progressingChanged, this, &UpdateModel::activityChanged);
+
+    activityChanged();
+}
+
+void UpdateModel::activityChanged()
+{
+    if(ResourcesModel::global()->isFetching()) {
+        setResources(QList<AbstractResource*>());
+    } else if(!m_updates->isProgressing() && m_updates->hasUpdates()) {
+        m_updates->prepare();
+        setResources(m_updates->toUpdate());
+    }
 }
 
 QVariant UpdateModel::data(const QModelIndex &index, int role) const
@@ -71,7 +101,7 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         break;
     case Qt::DecorationRole:
         if (column == NameColumn) {
-            return item->icon().pixmap(ICON_SIZE, ICON_SIZE);
+            return item->icon();
         }
         break;
     case Qt::FontRole: {
@@ -269,7 +299,7 @@ void UpdateModel::setResources(const QList< AbstractResource* >& resources)
     endResetModel();
 }
 
-void UpdateModel::setBackend(ResourcesUpdatesModel* updates)
+ResourcesUpdatesModel* UpdateModel::backend() const
 {
-    m_updates = updates;
+    return m_updates;
 }

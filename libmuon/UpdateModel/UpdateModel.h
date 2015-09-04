@@ -22,18 +22,16 @@
 #define UPDATEMODEL_H
 
 #include <QtCore/QAbstractItemModel>
+#include "libMuonCommon_export.h"
 
 class ResourcesUpdatesModel;
 class AbstractResource;
 class UpdateItem;
 
-namespace QApt {
-    class Package;
-}
-
-class UpdateModel : public QAbstractItemModel
+class MUONCOMMON_EXPORT UpdateModel : public QAbstractItemModel
 {
     Q_OBJECT
+    Q_PROPERTY(ResourcesUpdatesModel* backend READ backend WRITE setBackend)
 public:
     explicit UpdateModel(QObject *parent = nullptr);
     ~UpdateModel();
@@ -53,20 +51,24 @@ public:
     UpdateItem *itemFromIndex(const QModelIndex &index) const;
 
     void checkResources(const QList< AbstractResource* >& resource, bool checked);
+    QHash<int,QByteArray> roleNames() const override;
 
     enum Columns {
         NameColumn = 0,
         VersionColumn,
         SizeColumn
     };
-
-private:
-    void addResource(AbstractResource* res);
-    UpdateItem *m_rootItem;
-    ResourcesUpdatesModel* m_updates;
+    ResourcesUpdatesModel* backend() const;
 
 public Q_SLOTS:
     void setBackend(ResourcesUpdatesModel* updates);
+
+private:
+    void activityChanged();
+
+    void addResource(AbstractResource* res);
+    UpdateItem *m_rootItem;
+    ResourcesUpdatesModel* m_updates;
 };
 
 #endif // UPDATEMODEL_H

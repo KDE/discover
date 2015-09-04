@@ -48,11 +48,11 @@
 #include <resources/AbstractBackendUpdater.h>
 #include <resources/ResourcesUpdatesModel.h>
 #include <resources/ResourcesModel.h>
+#include <UpdateModel/UpdateModel.h>
+#include <UpdateModel/UpdateItem.h>
 
 // Own includes
-#include "UpdateModel/UpdateModel.h"
-#include "UpdateModel/UpdateItem.h"
-#include "UpdateModel/UpdateDelegate.h"
+#include "UpdateDelegate.h"
 #include "ChangelogWidget.h"
 #include "ui_UpdaterWidgetNoUpdates.h"
 
@@ -61,6 +61,7 @@ UpdaterWidget::UpdaterWidget(ResourcesUpdatesModel* updates, QWidget *parent) :
 {
     setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
     m_updateModel = new UpdateModel(this);
+    m_updateModel->setBackend(updates);
 
     // First page (update view)
     QWidget *page1 = new QWidget(this);
@@ -139,7 +140,6 @@ UpdaterWidget::~UpdaterWidget()
 void UpdaterWidget::activityChanged()
 {
     if(ResourcesModel::global()->isFetching()) {
-        m_updateModel->setResources(QList<AbstractResource*>());
         m_busyWidget->start();
         setEnabled(false);
         setCurrentIndex(0);
@@ -163,8 +163,6 @@ void UpdaterWidget::populateUpdateModel()
     if (!m_updatesBackends->hasUpdates()) {
         return;
     }
-    m_updatesBackends->prepare();
-    m_updateModel->setResources(m_updatesBackends->toUpdate());
 
     m_updateView->expand(m_updateModel->index(0,0)); // Expand apps category
     m_updateView->resizeColumnToContents(0);

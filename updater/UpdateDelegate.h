@@ -18,61 +18,26 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef UPDATEITEM_H
-#define UPDATEITEM_H
+#ifndef UPDATEDELEGATE_H
+#define UPDATEDELEGATE_H
 
-// Qt includes
-#include <QtCore/QList>
-#include <QtCore/QString>
+#include <QtWidgets/QStyledItemDelegate>
 
-#include <QIcon>
-
-class AbstractResource;
-class UpdateItem
+class UpdateDelegate : public QStyledItemDelegate
 {
+    Q_OBJECT
 public:
-    enum class ItemType : quint8 {
-        InvalidItem = 0,
-        RootItem,
-        CategoryItem,
-        ApplicationItem
-    };
+    explicit UpdateDelegate(QObject *parent = nullptr);
 
-    UpdateItem();
-    UpdateItem(QString categoryName,
-               QIcon categoryIcon);
-    explicit UpdateItem(AbstractResource *app, UpdateItem *parent = nullptr);
-
-    ~UpdateItem();
-
-    UpdateItem *parent() const;
-    void setParent(UpdateItem *parent);
-
-    void appendChild(UpdateItem *child);
-    bool removeChildren(int position, int count);
-    QList<UpdateItem *> children() const;
-    UpdateItem *child(int row) const;
-    int childCount() const;
-    int row() const;
-    void sort();
-    bool isEmpty() const;
-
-    AbstractResource *app() const;
-    QString name() const;
-    QString version() const;
-    QIcon icon() const;
-    qint64 size() const;
-    Qt::CheckState checked() const;
-    ItemType type() const;
+protected:
+    void initStyleOption(QStyleOptionViewItem *option, const QModelIndex &index) const override;
+    bool editorEvent(QEvent *event,
+                        QAbstractItemModel *model,
+                        const QStyleOptionViewItem &option,
+                        const QModelIndex &index) override;
 
 private:
-    AbstractResource *m_app;
-
-    UpdateItem *m_parent;
-    ItemType m_type;
-    QList<UpdateItem *> m_children;
-    QString m_categoryName;
-    QIcon m_categoryIcon;
+    int calcItemHeight(const QStyleOptionViewItem &option) const;
 };
 
-#endif // UPDATEITEM_H
+#endif // UPDATEDELEGATE_H

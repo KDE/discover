@@ -18,26 +18,62 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef UPDATEDELEGATE_H
-#define UPDATEDELEGATE_H
+#ifndef UPDATEITEM_H
+#define UPDATEITEM_H
 
-#include <QtWidgets/QStyledItemDelegate>
+// Qt includes
+#include <QtCore/QList>
+#include <QtCore/QString>
+#include "libMuonCommon_export.h"
 
-class UpdateDelegate : public QStyledItemDelegate
+#include <QIcon>
+
+class AbstractResource;
+class MUONCOMMON_EXPORT UpdateItem
 {
-    Q_OBJECT
 public:
-    explicit UpdateDelegate(QObject *parent = nullptr);
+    enum class ItemType : quint8 {
+        InvalidItem = 0,
+        RootItem,
+        CategoryItem,
+        ApplicationItem
+    };
 
-protected:
-    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const override;
-    bool editorEvent(QEvent *event,
-                        QAbstractItemModel *model,
-                        const QStyleOptionViewItem &option,
-                        const QModelIndex &index) override;
+    UpdateItem();
+    UpdateItem(QString categoryName,
+               QIcon categoryIcon);
+    explicit UpdateItem(AbstractResource *app, UpdateItem *parent = nullptr);
+
+    ~UpdateItem();
+
+    UpdateItem *parent() const;
+    void setParent(UpdateItem *parent);
+
+    void appendChild(UpdateItem *child);
+    bool removeChildren(int position, int count);
+    QList<UpdateItem *> children() const;
+    UpdateItem *child(int row) const;
+    int childCount() const;
+    int row() const;
+    void sort();
+    bool isEmpty() const;
+
+    AbstractResource *app() const;
+    QString name() const;
+    QString version() const;
+    QIcon icon() const;
+    qint64 size() const;
+    Qt::CheckState checked() const;
+    ItemType type() const;
 
 private:
-    int calcItemHeight(const QStyleOptionViewItem &option) const;
+    AbstractResource *m_app;
+
+    UpdateItem *m_parent;
+    ItemType m_type;
+    QList<UpdateItem *> m_children;
+    QString m_categoryName;
+    QIcon m_categoryIcon;
 };
 
-#endif // UPDATEDELEGATE_H
+#endif // UPDATEITEM_H
