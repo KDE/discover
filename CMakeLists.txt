@@ -33,7 +33,7 @@ else()
     endif()
 
     if(packagekitqt5_FOUND OR AkabeiClient_FOUND)
-        find_package(AppstreamQt 1.1)
+        find_package(AppstreamQt 0.8.4)
     endif()
 endif()
 find_package(KF5Attica)
