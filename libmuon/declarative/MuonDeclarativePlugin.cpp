@@ -32,6 +32,7 @@
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <ReviewsBackend/ReviewsModel.h>
+#include <UpdateModel/UpdateModel.h>
 #include <ScreenshotsModel.h>
 #include <ApplicationAddonsModel.h>
 #include <MessageActionsModel.h>
@@ -63,6 +64,7 @@ void MuonDeclarativePlugin::registerTypes(const char*)
     qmlRegisterType<ScreenshotsModel>("org.kde.muon", 1, 0, "ScreenshotsModel");
     qmlRegisterType<ApplicationProxyModelHelper>("org.kde.muon", 1, 0, "ApplicationProxyModel");
     qmlRegisterType<MessageActionsModel>("org.kde.muon", 1, 0, "MessageActionsModel");
+    qmlRegisterType<UpdateModel>("org.kde.muon", 1, 0, "UpdateModel");
     
     qmlRegisterUncreatableType<QAction>("org.kde.muon", 1, 0, "QAction", "Use QQC Action");
     qmlRegisterType<Rating>();

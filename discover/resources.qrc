@@ -20,6 +20,7 @@
     <file>qml/ProgressView.qml</file>
     <file>qml/BrowsingPage.qml</file>
     <file>qml/InstalledPage.qml</file>
+    <file>qml/PresentUpdatesPage.qml</file>
     <file>qml/Information.qml</file>
     <file>qml/SourcesPage.qml</file>
     <file>qml/FeaturedModel.qml</file>

@@ -37,6 +37,7 @@ Rectangle
     //toplevels
     property Component topBrowsingComp: Qt.createComponent("qrc:/qml/BrowsingPage.qml")
     property Component topInstalledComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
+    property Component topUpdateComp: Qt.createComponent("qrc:/qml/PresentUpdatesPage.qml")
     property Component topSourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
     property Component currentTopLevel: defaultStartup ? topBrowsingComp : loadingComponent
     property bool defaultStartup: true
@@ -103,10 +104,18 @@ Rectangle
         },
         TopLevelPageData {
             iconName: "applications-other"
-            text: ResourcesModel.updatesCount==0 ? i18n("Installed") : i18np("Installed (%1 update)", "Installed (%1 updates)", ResourcesModel.updatesCount)
+            text: i18n("Installed")
             component: topInstalledComp
             objectName: "installed"
             shortcut: "Alt+I"
+        },
+        TopLevelPageData {
+            iconName: "system-software-update"
+            text: ResourcesModel.updatesCount==0 ? i18n("No Updates") : i18n("Update (%1)", ResourcesModel.updatesCount)
+            enabled: ResourcesModel.updatesCount>0
+            component: topUpdateComp
+            objectName: "update"
+            shortcut: "Alt+U"
         },
         TopLevelPageData {
             iconName: "repository"

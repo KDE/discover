@@ -33,6 +33,12 @@ class MUONCOMMON_EXPORT UpdateModel : public QAbstractItemModel
     Q_OBJECT
     Q_PROPERTY(ResourcesUpdatesModel* backend READ backend WRITE setBackend)
 public:
+
+    enum Roles {
+        VersionRole = Qt::UserRole + 1,
+        SizeRole
+    };
+
     explicit UpdateModel(QObject *parent = nullptr);
     ~UpdateModel();
 

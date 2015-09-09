@@ -53,7 +53,11 @@ UpdateModel::~UpdateModel()
 
 QHash<int,QByteArray> UpdateModel::roleNames() const
 {
-    return QAbstractItemModel::roleNames().unite({ { Qt::CheckStateRole, "checked"} } );
+    return QAbstractItemModel::roleNames().unite({
+        { Qt::CheckStateRole, "checked" },
+        { VersionRole, "version" },
+        { SizeRole, "size" }
+    } );
 }
 
 void UpdateModel::setBackend(ResourcesUpdatesModel* updates)
@@ -117,6 +121,10 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
             return item->checked();
         }
         break;
+    case VersionRole:
+        return item->version();
+    case SizeRole:
+        return KFormat().formatByteSize(item->size());
     default:
         break;
     }
