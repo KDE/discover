@@ -28,7 +28,6 @@ target_link_libraries(muon-discover LINK_PUBLIC KF5::KIOWidgets
 
 install(TARGETS muon-discover ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
-install(PROGRAMS muon-discover.desktop muon-discover-category.desktop
-    DESTINATION ${XDG_APPS_INSTALL_DIR} )
+install(PROGRAMS org.kde.discover.desktop DESTINATION ${XDG_APPS_INSTALL_DIR} )
 install(FILES featured.json DESTINATION ${DATA_INSTALL_DIR}/muondiscover)
 install(FILES muondiscoverui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/muondiscover)
