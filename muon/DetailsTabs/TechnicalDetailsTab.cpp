@@ -62,6 +62,8 @@ TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
     m_maintainer = new QLabel(generalWidget);
     generalGrid->addWidget(maintainerLabel, 0, 0, Qt::AlignRight);
     generalGrid->addWidget(m_maintainer, 0, 1, Qt::AlignLeft);
+    maintainerLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    m_maintainer->setTextInteractionFlags(Qt::TextSelectableByMouse);
 
     // generalGrid, row 1
     QLabel *sectionLabel = new QLabel(generalWidget);
@@ -69,6 +71,8 @@ TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
     m_section = new QLabel(generalWidget);
     generalGrid->addWidget(sectionLabel, 1, 0, Qt::AlignRight);
     generalGrid->addWidget(m_section, 1, 1, Qt::AlignLeft);
+    sectionLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    m_section->setTextInteractionFlags(Qt::TextSelectableByMouse);
 
     // generalGrid, row 2
     QLabel *sourcePackageLabel = new QLabel(generalWidget);
@@ -77,6 +81,8 @@ TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
     m_sourcePackage = new QLabel(generalWidget);
     generalGrid->addWidget(sourcePackageLabel, 2, 0, Qt::AlignRight);
     generalGrid->addWidget(m_sourcePackage, 2, 1, Qt::AlignLeft);
+    sourcePackageLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    m_sourcePackage->setTextInteractionFlags(Qt::TextSelectableByMouse);
 
     // generalGrid, row 3
     QLabel *originLabel = new QLabel(generalWidget);
@@ -85,6 +91,8 @@ TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
     m_origin = new QLabel(generalWidget);
     generalGrid->addWidget(originLabel, 3, 0, Qt::AlignRight);
     generalGrid->addWidget(m_origin, 3, 1, Qt::AlignLeft);
+    originLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    m_origin->setTextInteractionFlags(Qt::TextSelectableByMouse);
 
     // generalGrid, row 4
     QLabel *componentLabel = new QLabel(generalWidget);
@@ -93,6 +101,8 @@ TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
     m_component = new QLabel(generalWidget);
     generalGrid->addWidget(componentLabel, 4, 0, Qt::AlignRight);
     generalGrid->addWidget(m_component, 4, 1, Qt::AlignLeft);
+    componentLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    m_component->setTextInteractionFlags(Qt::TextSelectableByMouse);
 
     generalGrid->setColumnStretch(1, 1);
 
@@ -105,17 +115,20 @@ TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
 
     // installedVersionBox, row 0
     QLabel *installedVersionLabel = new QLabel(m_installedVersionBox);
+    installedVersionLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
     installedVersionLabel->setText(i18nc("@label Label preceding the package version", "Version:"));
     m_installedVersion = new QLabel(m_installedVersionBox);
+    m_installedVersion->setTextInteractionFlags(Qt::TextSelectableByMouse);
     installedGridLayout->addWidget(installedVersionLabel, 0, 0, Qt::AlignRight);
     installedGridLayout->addWidget(m_installedVersion, 0, 1, Qt::AlignLeft);
     // installedVersionBox, row 1
     QLabel *installedSizeLabel = new QLabel(m_installedVersionBox);
+    installedSizeLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
     installedSizeLabel->setText(i18nc("@label Label preceding the package size", "Installed Size:"));
     m_installedSize = new QLabel(m_installedVersionBox);
+    m_installedSize->setTextInteractionFlags(Qt::TextSelectableByMouse);
     installedGridLayout->addWidget(installedSizeLabel, 1, 0, Qt::AlignRight);
     installedGridLayout->addWidget(m_installedSize, 1, 1, Qt::AlignLeft);
-
     installedGridLayout->setRowStretch(3, 1);
     installedGridLayout->setColumnStretch(1, 1);
 
@@ -127,20 +140,26 @@ TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
 
     // currentVersionBox, row 0
     QLabel *currentVersionLabel = new QLabel(m_currentVersionBox);
+    currentVersionLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
     currentVersionLabel->setText(i18nc("@label Label preceding the package version", "Version:"));
     m_currentVersion = new QLabel(m_currentVersionBox);
+    m_currentVersion->setTextInteractionFlags(Qt::TextSelectableByMouse);
     currentGridLayout->addWidget(currentVersionLabel, 0, 0, Qt::AlignRight);
     currentGridLayout->addWidget(m_currentVersion, 0, 1, Qt::AlignLeft);
     // currentVersionBox, row 1
     QLabel *currentSizeLabel = new QLabel(m_currentVersionBox);
+    currentSizeLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
     currentSizeLabel->setText(i18nc("@label Label preceding the package size", "Installed Size:"));
     m_currentSize = new QLabel(m_currentVersionBox);
+    m_currentSize->setTextInteractionFlags(Qt::TextSelectableByMouse);
     currentGridLayout->addWidget(currentSizeLabel, 1, 0, Qt::AlignRight);
     currentGridLayout->addWidget(m_currentSize, 1, 1, Qt::AlignLeft);
     // currentVersionBox, row 2
     QLabel *downloadSizeLabel = new QLabel(m_currentVersionBox);
+    downloadSizeLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
     downloadSizeLabel->setText(i18nc("@label Label preceding the package's download size", "Download Size:"));
     m_downloadSize = new QLabel(m_currentVersionBox);
+    m_downloadSize->setTextInteractionFlags(Qt::TextSelectableByMouse);
     currentGridLayout->addWidget(downloadSizeLabel, 2, 0, Qt::AlignRight);
     currentGridLayout->addWidget(m_downloadSize, 2, 1, Qt::AlignLeft);
 
