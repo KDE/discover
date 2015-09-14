@@ -77,7 +77,7 @@ void UpdateModel::activityChanged()
 {
     if(ResourcesModel::global()->isFetching()) {
         setResources(QList<AbstractResource*>());
-    } else if(!m_updates->isProgressing() && m_updates->hasUpdates()) {
+    } else if(!m_updates->isProgressing()) {
         m_updates->prepare();
         setResources(m_updates->toUpdate());
     }
@@ -305,6 +305,13 @@ void UpdateModel::setResources(const QList< AbstractResource* >& resources)
         delete systemItem;
     }
     endResetModel();
+
+    Q_EMIT hasUpdatesChanged(!resources.isEmpty());
+}
+
+bool UpdateModel::hasUpdates() const
+{
+    return rowCount() > 0;
 }
 
 ResourcesUpdatesModel* UpdateModel::backend() const

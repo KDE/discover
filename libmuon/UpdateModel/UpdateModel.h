@@ -32,6 +32,7 @@ class MUONCOMMON_EXPORT UpdateModel : public QAbstractItemModel
 {
     Q_OBJECT
     Q_PROPERTY(ResourcesUpdatesModel* backend READ backend WRITE setBackend)
+    Q_PROPERTY(bool hasUpdates READ hasUpdates NOTIFY hasUpdatesChanged)
 public:
 
     enum Roles {
@@ -59,6 +60,8 @@ public:
     void checkResources(const QList< AbstractResource* >& resource, bool checked);
     QHash<int,QByteArray> roleNames() const override;
 
+    bool hasUpdates() const;
+
     enum Columns {
         NameColumn = 0,
         VersionColumn,
@@ -68,6 +71,9 @@ public:
 
 public Q_SLOTS:
     void setBackend(ResourcesUpdatesModel* updates);
+
+Q_SIGNALS:
+    void hasUpdatesChanged(bool hasUpdates);
 
 private:
     void activityChanged();

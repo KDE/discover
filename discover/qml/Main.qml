@@ -220,6 +220,7 @@ Rectangle
         }
 
         ProgressView {
+            id: progressBox //used from UpdatesPage.qml
             Layout.fillWidth: true
         }
     }

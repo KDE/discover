@@ -11,6 +11,7 @@ ScrollView
     readonly property Component tools: RowLayout {
         Button {
             text: i18n("Update")
+            enabled: updateModel.hasUpdates
             onClicked: {
                 var updates = page.Stack.view.push(updatesPage)
                 updates.start()
