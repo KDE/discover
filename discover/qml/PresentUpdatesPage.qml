@@ -21,7 +21,7 @@ ScrollView
 
     Component {
         id: updatesPage
-        UpdatesPage {}
+        UpdateProgressPage {}
     }
 
     ColumnLayout

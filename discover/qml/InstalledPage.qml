@@ -10,7 +10,7 @@ ApplicationsListPage {
     
     Component {
         id: updatesPage
-        UpdatesPage {}
+        UpdateProgressPage {}
     }
     
     extendedToolBar: Component {
