@@ -23,39 +23,14 @@ import QtQuick.Layouts 1.0
 
 Item {
     id: bread
-    property alias count: items.count
-    property Item pageStack: null
+    readonly property int count: pageStack.depth+1
+    property StackView pageStack: null
     Layout.minimumHeight: theLayout.Layout.minimumHeight
-    signal poppedPages
-    
-    function currentItem() {
-        return items.count=="" ? null : items.get(items.count-1).display
-    }
-    
-    function pushItem(icon, text) {
-        items.append({"decoration": icon, "display": text})
-    }
-    
-    function popItem(last) {
-        items.remove(items.count-1)
-        var page = pageStack.pop(undefined, last)
-        page.destroy(1000)
-        
-        if(last)
-            poppedPages()
-    }
     
     function doClick(index) {
-        var pos = items.count-index-1
-        for(; pos>0; --pos) {
-            bread.popItem(pos>1)
-        }
-    }
-    
-    function removeAllItems() {
-        var pos = items.count-1
-        for(; pos>0; --pos) {
-            items.remove(items.count-1)
+        var pos = bread.pageStack.depth
+        for(; pos>index; --pos) {
+            bread.pageStack.pop(pos>index)
         }
     }
 
@@ -68,22 +43,19 @@ Item {
         }
         Repeater
         {
-            id: view
-
-            model: ListModel { id: items }
+            model: bread.pageStack.depth
             delegate: Button {
                 Layout.fillHeight: true
                 Layout.minimumWidth: height //workaround bug in the plasma style
 
-                iconName: decoration
+                property var currentPage: bread.pageStack.get(modelData, false)
+
+                iconName: currentPage.icon
                 onClicked: doClick(index)
-                text: display
-                enabled: items.count-index>1
+                text: currentPage.title
+                enabled: bread.pageStack.depth!=(modelData+1)
                 checkable: checked
             }
-
-//TODO: make sure the right-most button is visible
-//         onCountChanged: view.positionViewAtEnd()
         }
     }
 }

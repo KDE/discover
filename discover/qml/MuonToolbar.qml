@@ -44,9 +44,9 @@ ToolBar
             action: Action {
                 shortcut: "Alt+Up"
                 iconName: "go-previous"
-                enabled: window.navigationEnabled && breadcrumbsItem.count>1
+                enabled: window.navigationEnabled && stackView.depth>1
                 tooltip: i18n("Back")
-                onTriggered: { breadcrumbsItem.popItem(false) }
+                onTriggered: { stackView.pop() }
             }
         }
 
@@ -98,7 +98,7 @@ ToolBar
             Layout.fillWidth: app.isCompact
             placeholderText: i18n("Search...")
             focus: true
-            enabled: pageStack.currentItem!=null && pageStack.currentItem.searchFor!=null
+            enabled: stackView.currentItem!=null && stackView.currentItem.searchFor!=null
 
             onTextChanged: searchTimer.running = true
             onEditingFinished: if(searchWidget.text == "" && backAction.enabled) {

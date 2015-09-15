@@ -29,6 +29,8 @@ Item {
     id: page
     property QtObject category
     property alias categories: categoryModel
+    property var icon: category ? category.icon : "go-home"
+    property string title: category ? category.name : ""
     
     function searchFor(text) {
         if(text == "")

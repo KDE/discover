@@ -6,6 +6,8 @@ Item
 {
     id: page
     readonly property real proposedMargin: (width-app.actualWidth)/2
+    readonly property string title: i18n("Updating...")
+    readonly property string icon: "system-software-update"
     
     function start() {
         updatesModel.prepare()

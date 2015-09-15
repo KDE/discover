@@ -27,6 +27,9 @@ Item {
     property QtObject application: null
     clip: true
 
+    property var icon: application.icon
+    property string title: application.name
+
     ConditionalLoader {
         anchors.fill: parent
         condition: app.isCompact

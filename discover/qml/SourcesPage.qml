@@ -9,6 +9,8 @@ Item {
     id: page
     clip: true
     readonly property real proposedMargin: (width-app.actualWidth)/2
+    readonly property string title: i18n("Sources")
+    readonly property string icon: "view-filter"
 
     Menu {
         id: sourcesMenu

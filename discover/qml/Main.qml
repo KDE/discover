@@ -54,7 +54,7 @@ Rectangle
         running: false
         repeat: false
         interval: 200
-        onTriggered: { pageStack.currentItem.searchFor(toolbar.search.text) }
+        onTriggered: { stackView.currentItem.searchFor(toolbar.search.text) }
     }
 
     Component {
@@ -75,23 +75,23 @@ Rectangle
         if(currentTopLevel.status==Component.Error) {
             console.log("status error: "+currentTopLevel.errorString())
         }
-        while(pageStack.depth>1) {
-            var obj = pageStack.pop()
+        while(stackView.depth>1) {
+            var obj = stackView.pop()
             if(obj)
                 obj.destroy(2000)
         }
-        if(pageStack.currentItem) {
-            pageStack.currentItem.destroy(100)
+        if(stackView.currentItem) {
+            stackView.currentItem.destroy(100)
         }
         var page;
         try {
-            page = currentTopLevel.createObject(pageStack)
-//             console.log("created ", currentTopLevel, Navigation.rootPagesCache[currentTopLevel])
+            page = currentTopLevel.createObject(stackView)
+//             console.log("created ", currentTopLevel)
         } catch (e) {
             console.log("error: "+e)
             console.log("comp error: "+currentTopLevel.errorString())
         }
-        pageStack.replace(page, {}, window.status!=Component.Ready)
+        stackView.replace(page, {}, window.status!=Component.Ready)
     }
 
     property list<DiscoverAction> awesome: [
@@ -180,10 +180,7 @@ Rectangle
                     rightMargin: pageToolBar.visible ? 10 : 0
                 }
 
-                pageStack: pageStack
-                onPoppedPages: window.clearSearch()
-                Component.onCompleted: breadcrumbsItem.pushItem("go-home", "")
-//                 Behavior on height { NumberAnimation { duration: 250 } }
+                pageStack: stackView
             }
 
             ToolBar {
@@ -200,7 +197,7 @@ Rectangle
 
                 Loader {
                     id: toolbarLoader
-                    sourceComponent: pageStack.currentItem ? pageStack.currentItem.tools : null
+                    sourceComponent: stackView.currentItem ? stackView.currentItem.tools : null
                 }
 
                 Behavior on width { NumberAnimation { duration: 250 } }
@@ -208,14 +205,12 @@ Rectangle
         }
 
         StackView {
-            id: pageStack
+            id: stackView
             Layout.fillWidth: true
             Layout.fillHeight: true
 
             onDepthChanged: {
-                if(depth==1) {
-                    breadcrumbsItem.removeAllItems()
-                }
+                window.clearSearch()
             }
         }
 

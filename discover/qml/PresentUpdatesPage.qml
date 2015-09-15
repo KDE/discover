@@ -18,6 +18,8 @@ ScrollView
             }
         }
     }
+    property var icon: "system-updates"
+    property string title: i18n("Updates (%1)", updateModel.updatesCount)
 
     Component {
         id: updatesPage
