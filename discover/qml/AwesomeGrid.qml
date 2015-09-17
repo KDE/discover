@@ -28,6 +28,7 @@ Flickable {
     property alias footer: footerLoader.sourceComponent
     property alias delegate: dataRepeater.delegate
     property alias model: dataRepeater.model
+    property alias count: dataRepeater.count
     contentHeight: conts.height
     
     Column {

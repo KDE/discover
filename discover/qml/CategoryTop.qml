@@ -20,29 +20,38 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
-import org.kde.muon 1.0
-import org.kde.kquickcontrolsaddons 2.0
 
-Item {
-    readonly property string title: ""
-    readonly property string icon: "go-home"
-    ColumnLayout
-    {
-        width: app.actualWidth
-        anchors {
-            horizontalCenter: parent.horizontalCenter
-            top: parent.top
-            bottom: parent.bottom
+RowLayout {
+    id: page
+    property QtObject category: null
+    implicitHeight: top.Layout.preferredHeight+5
+    height: top.Layout.preferredHeight+5
+
+    ApplicationsTop {
+        id: top
+        Layout.fillHeight: true
+        Layout.fillWidth: true
+        sortRole: "sortableRating"
+        filteredCategory: page.category
+        title: i18n("Popularity")
+        roleDelegate: Label {
+            property variant model
+            text: i18n("points: %1", model.sortableRating.toFixed(2))
+            verticalAlignment: Text.AlignVCenter
         }
-
-        FeaturedBanner {
-            Layout.fillWidth: true
-            height: 310
-        }
-
-        CategoryDisplay {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
+    }
+    ApplicationsTop {
+        id: top2
+        Layout.fillHeight: true
+        Layout.fillWidth: true
+        visible: !app.isCompact
+        sortRole: "ratingPoints"
+        filteredCategory: page.category
+        title: i18n("Rating")
+        roleDelegate: Rating {
+            property variant model
+            rating: model.rating
+            height: 12
         }
     }
 }

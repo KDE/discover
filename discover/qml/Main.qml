@@ -31,7 +31,7 @@ Rectangle
     id: window
     property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
     property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
-    property Component categoryComp: Qt.createComponent("qrc:/qml/CategoryPage.qml")
+    property Component categoryComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
     property Component reviewsComp: Qt.createComponent("qrc:/qml/ReviewsPage.qml")
 
     //toplevels

@@ -1,5 +1,5 @@
 /*
- *   Copyright (C) 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
+ *   Copyright (C) 2015 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library/Lesser General Public License
@@ -19,34 +19,45 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.1
+import org.kde.muon 1.0
 import org.kde.kquickcontrolsaddons 2.0
 
-Item {
-    property QtObject category: null
-    
-    QIconItem {
-        id: iconItem
-        icon: category.icon
+Item
+{
+    clip: true
+    implicitHeight: categories.height
+
+    property alias category: categoryModel.displayedCategory
+    CategoryTop {
+        id: categories
+        category: parent.category
         anchors {
             top: parent.top
+            right: parent.horizontalCenter
             bottom: parent.bottom
             left: parent.left
-            margins: 15
+            rightMargin: 5
         }
-        width: height
     }
-    
-    Label {
+
+    GridView {
+        id: grid
         anchors {
-            verticalCenter: parent.verticalCenter
-            left: iconItem.right
+            top: parent.top
+            left: parent.horizontalCenter
+            bottom: parent.bottom
             right: parent.right
-            leftMargin: 50
         }
-        elide: Text.ElideRight
-        verticalAlignment: Text.AlignVCenter
-        fontSizeMode: Text.Fit
-        font.pointSize: parent.height
-        text: category.name
+
+        model: CategoryModel {
+            id: categoryModel
+            displayedCategory: null
+        }
+
+        delegate: CategoryDelegate {
+            horizontal: app.isCompact
+            width: grid.cellWidth
+        }
     }
 }

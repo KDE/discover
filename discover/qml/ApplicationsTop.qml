@@ -31,9 +31,11 @@ Column {
     property alias filteredCategory: appsModel.filteredCategory
     property Component roleDelegate: null
     property string title: ""
+    readonly property var delegateHeight: title.paintedHeight*2.5
 
-    Layout.preferredHeight: childrenRect.height
+    Layout.preferredHeight: (rep.count*(topView.spacing+topView.delegateHeight) + title.paintedHeight)
     Layout.preferredWidth: 250
+
     Label {
         id: title
         text: topView.title
@@ -44,6 +46,7 @@ Column {
     }
     spacing: 5
     Repeater {
+        id: rep
         model: PaginateModel {
             pageSize: 5
             sourceModel: ApplicationProxyModel {
@@ -54,7 +57,7 @@ Column {
         }
         delegate: GridItem {
                     width: topView.width
-                    height: title.paintedHeight*2.5
+                    height: topView.delegateHeight
 
                     RowLayout {
                         anchors.fill: parent

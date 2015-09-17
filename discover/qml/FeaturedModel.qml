@@ -22,7 +22,11 @@ ListModel
         xhr.open("GET", source);
         xhr.onreadystatechange = function() {
             if (xhr.readyState == XMLHttpRequest.DONE) {
-                getFeatured(JSON.parse(xhr.responseText))
+                try {
+                    getFeatured(JSON.parse(xhr.responseText))
+                } catch (e) {
+                    console.log("json error", e, xhr.responseText)
+                }
             }
         }
         xhr.send();

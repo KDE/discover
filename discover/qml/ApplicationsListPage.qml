@@ -169,11 +169,11 @@ Item {
     
     Component {
         id: categoryHeaderComponent
-        CategoryHeader {
+        CategoryDisplay {
             id: categoryHeader
             category: page.category
-            height: 100
             width: app.actualWidth
+            height: implicitHeight
             x: viewLoader.sourceComponent == listComponent ? page.proposedMargin : 0
         }
     }
