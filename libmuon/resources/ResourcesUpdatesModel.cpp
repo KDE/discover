@@ -127,11 +127,6 @@ void ResourcesUpdatesModel::message(const QString& msg)
     appendRow(new QStandardItem(msg));
 }
 
-int ResourcesUpdatesModel::count() const
-{
-    return rowCount();
-}
-
 void ResourcesUpdatesModel::prepare()
 {
     foreach(AbstractBackendUpdater* upd, m_updaters) {

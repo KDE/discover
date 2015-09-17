@@ -42,7 +42,6 @@ class MUONCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
     Q_PROPERTY(bool isProgressing READ isProgressing NOTIFY progressingChanged)
     Q_PROPERTY(QDateTime lastUpdate READ lastUpdate NOTIFY progressingChanged)
     Q_PROPERTY(qint64 secsToLastUpdate READ secsToLastUpdate NOTIFY progressingChanged)
-    Q_PROPERTY(int count READ count NOTIFY caca)
     public:
         explicit ResourcesUpdatesModel(QObject* parent = nullptr);
         
@@ -62,7 +61,6 @@ class MUONCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         void removeResources(const QList<AbstractResource*>& resources);
 
         qint64 secsToLastUpdate() const;
-        int count() const;
 
     signals:
         void downloadSpeedChanged();
