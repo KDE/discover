@@ -17,6 +17,7 @@
     <file>qml/Breadcrumbs.qml</file>
     <file>qml/InstallApplicationButton.qml</file>
     <file>qml/Rating.qml</file>
+    <file>qml/UpdatesPage.qml</file>
     <file>qml/UpdateProgressPage.qml</file>
     <file>qml/ReviewDialog.qml</file>
     <file>qml/ProgressView.qml</file>

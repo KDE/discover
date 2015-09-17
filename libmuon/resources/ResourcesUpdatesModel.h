@@ -22,6 +22,7 @@
 #define RESOURCESUPDATESMODEL_H
 
 #include <QStandardItemModel>
+#include <QDateTime>
 #include "libMuonCommon_export.h"
 
 class AbstractResourcesBackend;
@@ -39,6 +40,9 @@ class MUONCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
     Q_PROPERTY(quint64 downloadSpeed READ downloadSpeed NOTIFY downloadSpeedChanged)
     Q_PROPERTY(bool isCancelable READ isCancelable NOTIFY cancelableChanged)
     Q_PROPERTY(bool isProgressing READ isProgressing NOTIFY progressingChanged)
+    Q_PROPERTY(QDateTime lastUpdate READ lastUpdate NOTIFY progressingChanged)
+    Q_PROPERTY(qint64 secsToLastUpdate READ secsToLastUpdate NOTIFY progressingChanged)
+    Q_PROPERTY(int count READ count NOTIFY caca)
     public:
         explicit ResourcesUpdatesModel(QObject* parent = nullptr);
         
@@ -57,14 +61,18 @@ class MUONCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         void addResources(const QList<AbstractResource*>& resources);
         void removeResources(const QList<AbstractResource*>& resources);
 
+        qint64 secsToLastUpdate() const;
+        int count() const;
+
     signals:
         void downloadSpeedChanged();
         void progressChanged();
         void etaChanged();
         void cancelableChanged();
-        void progressingChanged();
+        void progressingChanged(bool progressing);
         void statusMessageChanged(const QString& message);
         void statusDetailChanged(const QString& msg);
+        void finished();
 
     public slots:
         void cancel();

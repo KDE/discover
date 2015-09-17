@@ -85,7 +85,6 @@ void ResourcesUpdatesModel::slotProgressingChanged(bool progressing)
     const bool newProgressing = isProgressing();
     if (newProgressing != m_lastIsProgressing) {
         m_lastIsProgressing = newProgressing;
-        emit progressingChanged();
         if (!m_lastIsProgressing) {
             if (!m_kded)
                 m_kded = new QDBusInterface("org.kde.kded", "/kded",
@@ -102,6 +101,11 @@ void ResourcesUpdatesModel::slotProgressingChanged(bool progressing)
                                         "recheckSystemUpdateNeeded");
                 QDBusConnection::sessionBus().send(message);
             }
+        }
+        emit progressingChanged(newProgressing);
+
+        if (!newProgressing) {
+            Q_EMIT finished();
         }
     }
 }
@@ -123,6 +127,11 @@ void ResourcesUpdatesModel::message(const QString& msg)
     appendRow(new QStandardItem(msg));
 }
 
+int ResourcesUpdatesModel::count() const
+{
+    return rowCount();
+}
+
 void ResourcesUpdatesModel::prepare()
 {
     foreach(AbstractBackendUpdater* upd, m_updaters) {
@@ -135,7 +144,7 @@ void ResourcesUpdatesModel::updateAll()
     Q_ASSERT(m_resources);
     
     if(m_updaters.isEmpty())
-        emit progressingChanged();
+        emit progressingChanged(false);
     else {
         Q_FOREACH (AbstractBackendUpdater* upd, m_updaters) {
             if (upd->hasUpdates())
@@ -153,7 +162,7 @@ QString ResourcesUpdatesModel::remainingTime() const
     }
 
     // Ignore ETA if it's larger than 2 days.
-    if(maxEta==0 && maxEta < 2 * 24 * 60 * 60)
+    if(maxEta==0 || maxEta > 2 * 24 * 60 * 60)
         return QString();
     else
         return i18nc("@item:intext Remaining time", "%1 remaining", KFormat().formatDuration(maxEta));
@@ -257,4 +266,9 @@ void ResourcesUpdatesModel::cancel()
         else
             qWarning() << "tried to cancel " << upd->metaObject()->className() << "which is not cancelable";
     }
+}
+
+qint64 ResourcesUpdatesModel::secsToLastUpdate() const
+{
+    return lastUpdate().secsTo(QDateTime::currentDateTime());
 }

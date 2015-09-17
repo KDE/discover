@@ -1,46 +1,38 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
-import org.kde.muon 1.0
+import QtQuick.Layouts 1.1
 
-Item
+ColumnLayout
 {
     id: page
     readonly property real proposedMargin: (width-app.actualWidth)/2
     readonly property string title: i18n("Updating...")
     readonly property string icon: "system-software-update"
-    
+
     function start() {
-        updatesModel.prepare()
-        updatesModel.updateAll()
+        resourcesUpdatesModel.prepare()
+        resourcesUpdatesModel.updateAll()
     }
-    ResourcesUpdatesModel {
-        id: updatesModel
-        onProgressingChanged: if(!isProgressing) page.Stack.view.pop()
-    }
+
     onVisibleChanged: window.navigationEnabled=!visible
     Binding {
         target: progressBox
         property: "enabled"
-        value: !page.visible
+        value: !visible
     }
 
     ProgressBar {
         id: progress
-        anchors {
-            right: parent.right
-            left: parent.left
-            top: parent.top
-            rightMargin: proposedMargin
-            leftMargin: proposedMargin
-        }
-        value: updatesModel.progress
+        width: app.actualWidth
+
+        value: resourcesUpdatesModel.progress
         minimumValue: 0
         maximumValue: 100
-        indeterminate: updatesModel.progress==-1
+        indeterminate: resourcesUpdatesModel.progress==-1
         
         Label {
             anchors.centerIn: parent
-            text: updatesModel.remainingTime
+            text: resourcesUpdatesModel.remainingTime
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             visible: text!=""
@@ -48,21 +40,15 @@ Item
     }
 
     ScrollView {
-        anchors {
-            top: progress.bottom
-            right: parent.right
-            left: parent.left
-            bottom: parent.bottom
-            rightMargin: proposedMargin
-            leftMargin: proposedMargin
-            topMargin: 10
-            bottomMargin: 10
-        }
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+
         ListView {
             id: messageFlickable
+            width: app.actualWidth
             property bool userScrolled: false
             clip: true
-            model: updatesModel
+            model: resourcesUpdatesModel
             delegate: Label {
                 text: display
                 height: paintedHeight

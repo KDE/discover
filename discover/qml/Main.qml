@@ -37,7 +37,7 @@ Rectangle
     //toplevels
     property Component topBrowsingComp: Qt.createComponent("qrc:/qml/BrowsingPage.qml")
     property Component topInstalledComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
-    property Component topUpdateComp: Qt.createComponent("qrc:/qml/PresentUpdatesPage.qml")
+    property Component topUpdateComp: Qt.createComponent("qrc:/qml/UpdatesPage.qml")
     property Component topSourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
     property Component currentTopLevel: defaultStartup ? topBrowsingComp : loadingComponent
     property bool defaultStartup: true

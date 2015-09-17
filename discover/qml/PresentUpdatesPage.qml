@@ -7,24 +7,7 @@ import org.kde.kquickcontrolsaddons 2.0
 ScrollView
 {
     id: page
-    readonly property real proposedMargin: (width-app.actualWidth)/2
-    readonly property Component tools: RowLayout {
-        Button {
-            text: i18n("Update")
-            enabled: updateModel.hasUpdates
-            onClicked: {
-                var updates = page.Stack.view.push(updatesPage)
-                updates.start()
-            }
-        }
-    }
-    property var icon: "system-updates"
-    property string title: i18n("Updates (%1)", updateModel.updatesCount)
-
-    Component {
-        id: updatesPage
-        UpdateProgressPage {}
-    }
+    property real proposedMargin: 0
 
     ColumnLayout
     {
@@ -32,12 +15,8 @@ ScrollView
         width: app.actualWidth
         Repeater {
             id: rep
-            model: UpdateModel {
-                id: updateModel
-                backend: ResourcesUpdatesModel {
-                    id: updates
-                }
-            }
+            model: updateModel
+
             delegate: ColumnLayout {
                 id: col
                 property var currentRow: index
