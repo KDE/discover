@@ -62,17 +62,6 @@ ScrollView {
                         verticalCenter: parent.verticalCenter
                         left: parent.left
                     }
-
-                    QIconItem {
-                        anchors {
-                            right: resourceIcon.right
-                            bottom: resourceIcon.bottom
-                        }
-                        visible: isInstalled && view.model.stateFilter!=2
-                        icon: "checkmark"
-                        height: 16
-                        width: 16
-                    }
                 }
 
                 Label {
@@ -90,7 +79,8 @@ ScrollView {
                 Rating {
                     id: ratingsItem
                     anchors {
-                        right: parent.right
+                        right: indicator.left
+                        rightMargin: 2
                         verticalCenter: nameLabel.verticalCenter
                     }
                     height: app.isCompact ? contHeight*.6 : contHeight*.4
@@ -104,8 +94,9 @@ ScrollView {
                         bottom: parent.bottom
                         left: resourceIcon.right
                         leftMargin: 5
+                        rightMargin: 2
                         top: parent.verticalCenter
-                        right: parent.right
+                        right: indicator.left
                     }
 
                     Label {
@@ -129,6 +120,14 @@ ScrollView {
     //                     opacity: isVisible ? 1 : 0
                         application: model.application
                     }
+                }
+                Rectangle {
+                    id: indicator
+                    color: canUpgrade ? "blue" : isInstalled && view.model.stateFilter!=2 ? "green" : "yellow"
+                    width: 2
+                    height: parent.height
+                    anchors.right: parent.right
+                    opacity: 0.3
                 }
             }
     }
