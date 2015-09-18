@@ -25,6 +25,8 @@
 #include <QStringList>
 #include <QTimer>
 
+static QVector<QString> s_icons = { "kdevelop", "kalgebra", "kmail", "akregator", "korganizer" };
+
 DummyResource::DummyResource(QString  name, bool isTechnical, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
     , m_name(std::move(name))
@@ -32,8 +34,11 @@ DummyResource::DummyResource(QString  name, bool isTechnical, AbstractResourcesB
     , m_addons({ PackageState("a", "aaaaaa", false), PackageState("b", "aaaaaa", false), PackageState("c", "aaaaaa", false)})
     , m_isTechnical(isTechnical)
 {
-    if(KRandom::random() % 2)
-        m_screenshot = QUrl("http://www.kde.org/stuff/clipart/klogo-official-oxygen-128x128.png");
+    if(KRandom::random() % 2) {
+        m_screenshot = QUrl("http://screenshots.debian.net/screenshots/d/dolphin/9383_large.png");
+        m_screenshotThumbnail = QUrl("http://screenshots.debian.net/screenshots/d/dolphin/9383_small.png");
+    }
+    m_iconName = s_icons[KRandom::random() % s_icons.size()];
 
 //     if((KRandom::random() % 100) == 0) {
 //         enableStateChanges();
@@ -85,7 +90,7 @@ QUrl DummyResource::homepage()
 
 QString DummyResource::icon() const
 {
-    return isTechnical() ? "kalarm" : "kmail";
+    return isTechnical() ? "kalarm" : m_iconName;
 }
 
 QString DummyResource::installedVersion() const
@@ -133,7 +138,7 @@ QUrl DummyResource::screenshotUrl()
 
 QUrl DummyResource::thumbnailUrl()
 {
-    return m_screenshot;
+    return m_screenshotThumbnail;
 }
 
 QString DummyResource::section()

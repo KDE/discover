@@ -43,8 +43,8 @@ DummyTransaction::DummyTransaction(DummyResource* app, const AddonList& addons, 
 void DummyTransaction::iterateTransaction()
 {
     if(progress()<100) {
-        setProgress(progress()+10);
-        QTimer::singleShot(/*KRandom::random()%*/20, this, SLOT(iterateTransaction()));
+        setProgress(progress()+(KRandom::random()%30));
+        QTimer::singleShot(/*KRandom::random()%*/200, this, SLOT(iterateTransaction()));
     } else
         finishTransaction();
 }

@@ -70,17 +70,17 @@ void DummyBackend::setMetaData(const QString& path)
     randomAction->setPriority(QAction::LowPriority);
     connect(randomAction, &QAction::triggered, this, [](){ qDebug() << "random action triggered"; });
 
-    QAction* importantAction = new QAction(this);
-    importantAction->setIcon(QIcon::fromTheme("kalarm"));
-    importantAction->setText(QStringLiteral("Amaze!"));
-    importantAction->setWhatsThis(QStringLiteral("Wo Wo I'm so important"));
-    importantAction->setPriority(QAction::HighPriority);
-    connect(importantAction, &QAction::triggered, this, [importantAction](){
-        importantAction->setEnabled(false);
-        qDebug() << "important action triggered";
-    });
+//     QAction* importantAction = new QAction(this);
+//     importantAction->setIcon(QIcon::fromTheme("kalarm"));
+//     importantAction->setText(QStringLiteral("Amaze!"));
+//     importantAction->setWhatsThis(QStringLiteral("Wo Wo I'm so important"));
+//     importantAction->setPriority(QAction::HighPriority);
+//     connect(importantAction, &QAction::triggered, this, [importantAction](){
+//         importantAction->setEnabled(false);
+//         qDebug() << "important action triggered";
+//     });
 
-    m_messageActions = QList<QAction*>() << updateAction << randomAction << importantAction;
+    m_messageActions = QList<QAction*>() << updateAction << randomAction /*<< importantAction*/;
 
     SourcesModel::global()->addSourcesBackend(new DummySourcesBackend(this));
 }

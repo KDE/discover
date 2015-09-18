@@ -63,6 +63,8 @@ public:
     QString m_name;
     AbstractResource::State m_state;
     QUrl m_screenshot;
+    QUrl m_screenshotThumbnail;
+    QString m_iconName;
     QList<PackageState> m_addons;
     bool m_isTechnical;
 };
