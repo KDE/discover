@@ -32,6 +32,7 @@ Column {
     property Component roleDelegate: null
     property string title: ""
     readonly property var delegateHeight: title.paintedHeight*2.5
+    readonly property alias titleHeight: title.height
 
     Layout.preferredHeight: (rep.count*(topView.spacing+topView.delegateHeight) + title.paintedHeight)
     Layout.preferredWidth: 250

@@ -24,7 +24,7 @@ import org.kde.muon 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
 
-GridItem {
+MouseArea {
     id: categoryItem
     property bool horizontal: false
     height: horizontal ? nameLabel.paintedHeight*2.5 : layout.height+10

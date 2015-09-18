@@ -31,15 +31,11 @@ GridItem {
     onClicked: {
         Navigation.openApplication(application)
     }
-    Timer {
-        id: timer
-        interval: 200
-        onTriggered: delegateRoot.displayDescription=true
-    }
 
+    SystemPalette { id: sys }
     Rectangle {
         id: artwork
-        color: "black"
+        color: sys.shadow
         width: parent.width
         height: parent.height*0.7
 

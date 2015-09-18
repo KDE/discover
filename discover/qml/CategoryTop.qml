@@ -24,6 +24,7 @@ import QtQuick.Layouts 1.1
 RowLayout {
     id: page
     property QtObject category: null
+    readonly property alias titleHeight: top.titleHeight
     implicitHeight: top.Layout.preferredHeight+5
     height: top.Layout.preferredHeight+5
 

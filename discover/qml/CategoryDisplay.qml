@@ -25,7 +25,6 @@ import org.kde.kquickcontrolsaddons 2.0
 
 Item
 {
-    clip: true
     implicitHeight: categories.height
 
     property alias category: categoryModel.displayedCategory
@@ -41,23 +40,28 @@ Item
         }
     }
 
-    GridView {
-        id: grid
+    GridItem {
+        clip: true
         anchors {
             top: parent.top
             left: parent.horizontalCenter
             bottom: parent.bottom
             right: parent.right
+            topMargin: categories.titleHeight-2
         }
+        GridView {
+            id: grid
+            anchors.fill: parent
 
-        model: CategoryModel {
-            id: categoryModel
-            displayedCategory: null
-        }
+            model: CategoryModel {
+                id: categoryModel
+                displayedCategory: null
+            }
 
-        delegate: CategoryDelegate {
-            horizontal: app.isCompact
-            width: grid.cellWidth
+            delegate: CategoryDelegate {
+                horizontal: app.isCompact
+                width: grid.cellWidth
+            }
         }
     }
 }
