@@ -38,6 +38,9 @@ MouseArea {
     Rectangle {
         anchors.fill: parent
         color: listItem.containsMouse || listItem.pressed ? palette.light : palette.midlight
+        border.color: palette.mid
+        border.width: 2
+        opacity: 0.3
     }
 
     Item {

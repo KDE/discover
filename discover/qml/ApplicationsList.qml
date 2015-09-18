@@ -35,9 +35,9 @@ ScrollView {
     ListView
     {
         id: view
-        spacing: 3
         snapMode: ListView.SnapToItem
         currentIndex: -1
+        spacing: -2 //this should be the same as -GridItem.border.width
         
         delegate: GridItem {
                 id: delegateArea
@@ -45,7 +45,7 @@ ScrollView {
                 width: app.actualWidth
                 x: parentItem.proposedMargin
                 property real contHeight: height*0.8
-                height: lowLayout.implicitHeight*2
+                height: lowLayout.implicitHeight
                 internalMargin: 0
 
                 onClicked: {
@@ -53,81 +53,107 @@ ScrollView {
                     Navigation.openApplication(application)
                 }
 
-                QIconItem {
-                    id: resourceIcon
-                    icon: model.icon
-                    width: contHeight
-                    height: contHeight
-                    anchors {
-                        verticalCenter: parent.verticalCenter
-                        left: parent.left
-                    }
-                }
-
-                Label {
-                    id: nameLabel
-                    anchors {
-                        top: resourceIcon.top
-                        left: resourceIcon.right
-                        right: ratingsItem.left
-                        leftMargin: 5
-                    }
-                    font.pointSize: commentLabel.font.pointSize*1.7
-                    elide: Text.ElideRight
-                    text: name
-                }
-                Rating {
-                    id: ratingsItem
-                    anchors {
-                        right: indicator.left
-                        rightMargin: 2
-                        verticalCenter: nameLabel.verticalCenter
-                    }
-                    height: app.isCompact ? contHeight*.6 : contHeight*.4
-                    width: parent.width/5
-                    rating: model.rating
-                }
-
                 RowLayout {
                     id: lowLayout
                     anchors {
-                        bottom: parent.bottom
-                        left: resourceIcon.right
-                        leftMargin: 5
-                        rightMargin: 2
-                        top: parent.verticalCenter
-                        right: indicator.left
+                        left: parent.left
+                        right: parent.right
                     }
 
-                    Label {
-                        id: commentLabel
+                    QIconItem {
+                        id: resourceIcon
+                        icon: model.icon
+                        Layout.minimumWidth: contHeight
+                        Layout.minimumHeight: contHeight
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+
+                    ColumnLayout {
                         Layout.fillWidth: true
+                        Layout.fillHeight: true
+                        Layout.maximumWidth: 2123123123
 
-                        elide: Text.ElideRight
-                        text: comment
-                        font.italic: true
-                        opacity: delegateArea.containsMouse ? 1 : 0.2
-                        maximumLineCount: 1
-                        clip: true
+                        Item { height: 3; width: 3 }
+
+                        Label {
+                            Layout.fillWidth: true
+                            id: nameLabel
+                            font.pointSize: commentLabel.font.pointSize*1.7
+                            elide: Text.ElideRight
+                            text: name
+                        }
+                        Label {
+                            id: commentLabel
+                            Layout.fillWidth: true
+
+                            elide: Text.ElideRight
+                            text: comment
+                            font.italic: true
+                            opacity: delegateArea.containsMouse ? 1 : 0.2
+                            maximumLineCount: 1
+                            clip: true
+                        }
+
+                        Item { height: 3; width: 3 }
                     }
 
                     Label {
-                        visible: app.isCompact
-                        text: model.application.status
+                        text: i18n("(%1)", ratingPoints)
                     }
-                    InstallApplicationButton {
-    //                     property bool isVisible: delegateArea.containsMouse && !canHide
-    //                     opacity: isVisible ? 1 : 0
-                        application: model.application
+
+                    Rating {
+                        id: ratingsItem
+                        height: app.isCompact ? contHeight*.6 : contHeight*.4
+                        rating: model.rating
                     }
-                }
-                Rectangle {
-                    id: indicator
-                    color: canUpgrade ? "blue" : isInstalled && view.model.stateFilter!=2 ? "green" : "yellow"
-                    width: 2
-                    height: parent.height
-                    anchors.right: parent.right
-                    opacity: 0.3
+
+
+                    Label {
+                        text: category
+                    }
+
+                    Item {
+                        Layout.fillHeight: true
+                        width: Math.max(installInfo.width, installButton.width)
+
+                        InstallApplicationButton {
+                            id: installButton
+                            anchors.verticalCenter: parent.verticalCenter
+                            application: model.application
+                            visible: delegateArea.containsMouse
+                        }
+                        SystemPalette {id: pal}
+                        Label {
+                            id: installInfo
+                            anchors {
+                                verticalCenter: parent.verticalCenter
+                                centerIn: parent
+                            }
+                            text: "two GiB"
+                            visible: !delegateArea.containsMouse
+                            color: pal.highlightedText
+                        }
+
+                        Rectangle {
+                            anchors {
+                                fill: installInfo
+                                margins: -5
+                            }
+                            visible: !delegateArea.containsMouse
+                            color: pal.highlight
+                            z: -1
+                            radius: 5
+                        }
+                    }
+
+                    Rectangle {
+                        id: indicator
+                        color: canUpgrade ? "blue" : isInstalled && view.model.stateFilter!=2 ? "green" : "yellow"
+                        width: 2
+                        height: parent.height
+                        anchors.right: parent.right
+                        opacity: 0.3
+                    }
                 }
             }
     }
