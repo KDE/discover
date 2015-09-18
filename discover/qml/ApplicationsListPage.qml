@@ -231,6 +231,7 @@ Item {
             delegate: ApplicationsGridDelegate {
                 height: width/1.618 //tau
                 width: theGrid.cellWidth
+                allInstalled: appsModel.stateFilter!=2
             }
         }
     }

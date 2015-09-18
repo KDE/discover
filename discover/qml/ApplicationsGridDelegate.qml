@@ -18,6 +18,7 @@
  */
 
 import QtQuick 2.1
+import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.1
 import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
@@ -25,143 +26,117 @@ import "navigation.js" as Navigation
 GridItem {
     id: delegateRoot
     clip: true
-    property bool requireClick: false
-    property bool displayDescription: false
+    property bool allInstalled: false
     enabled: true
     onClicked: {
-        if(delegateRoot.requireClick && !displayDescription) {
-            displayDescription=true
-        } else
-            Navigation.openApplication(application)
+        Navigation.openApplication(application)
     }
     Timer {
         id: timer
         interval: 200
         onTriggered: delegateRoot.displayDescription=true
     }
-    onPositionChanged: if(!delegateRoot.requireClick) timer.restart()
-    onContainsMouseChanged: {
-        if(!containsMouse) {
-            if(!delegateRoot.requireClick)
-                timer.stop();
-            displayDescription=false
-        }
-    }
-    onDisplayDescriptionChanged: {
-        if(delegateRoot.displayDescription)
-            descriptionLoader.sourceComponent=extraInfoComponent
-    }
 
-    Flickable {
-        id: delegateFlickable
-        anchors.fill: parent
-        contentHeight: delegateRoot.height*2
-        interactive: false
-        contentY: delegateRoot.displayDescription ? delegateRoot.height : 0
-        Behavior on contentY { NumberAnimation { duration: 200; easing.type: Easing.InQuad } }
-        
-        Image {
-            id: screen
-            anchors {
-                horizontalCenter: parent.horizontalCenter
-                top: parent.top
-                topMargin: 5
+    Rectangle {
+        id: artwork
+        color: "black"
+        width: parent.width
+        height: parent.height*0.7
+
+        ConditionalLoader {
+            id: artworkConditional
+            anchors.fill: parent
+
+            condition: model.application.thumbnailUrl!=""
+            componentTrue: Item {
+                Image {
+                    id: screen
+                    anchors {
+                        verticalCenter: parent.verticalCenter
+                        right: parent.right
+                        rightMargin: parent.width*0.1
+                    }
+
+                    source: model.application.thumbnailUrl
+                    height: parent.height*0.9
+                    fillMode: Image.PreserveAspectFit
+                    smooth: false
+                    cache: false
+                    asynchronous: true
+                    onStatusChanged:  {
+                        if(status==Image.Error) {
+                            artworkConditional.hasThumbnail=false
+                        }
+                    }
+                }
+                Image {
+                    anchors {
+                        verticalCenter: parent.verticalCenter
+                        left: parent.left
+                        leftMargin: parent.width*0.1
+                    }
+
+                    id: smallIcon
+                    width: 64
+                    height: width
+                    smooth: true
+                    asynchronous: true
+                    source: model.application.icon[0] == "/" ? "file://"+model.application.icon : "image://icon/"+model.application.icon
+                }
             }
-            property bool hasThumbnail: model.application.thumbnailUrl!=""
-            source: (hasThumbnail ? model.application.thumbnailUrl : smallIcon.source)
-            height: delegateRoot.height*0.7
-            fillMode: Image.PreserveAspectFit
-            smooth: false
-            cache: false
-            asynchronous: true
-            onStatusChanged:  {
-                if(status==Image.Error) {
-                    hasThumbnail=false
+            componentFalse: Item {
+                Image {
+                    anchors.centerIn: parent
+                    height: parent.height*0.7
+                    width: height
+                    smooth: true
+                    asynchronous: true
+                    source: model.application.icon[0] == "/" ? "file://"+model.application.icon : "image://icon/"+model.application.icon
                 }
             }
         }
-        Image {
-            id: smallIcon
-            anchors {
-                right: parent.right
-                rightMargin: 5
-            }
-            y: 5+(delegateRoot.displayDescription ? delegateRoot.height : screen.height-height )
-            width: 48
-            height: width
-            smooth: true
-            asynchronous: true
-            source: model.application.icon[0] == "/" ? "file://"+model.application.icon : "image://icon/"+model.application.icon
-            visible: screen.hasThumbnail
-            Behavior on y { NumberAnimation { duration: 200; easing.type: Easing.InQuad } }
-
-            QIconItem {
-                anchors {
-                    right: parent.right
-                    bottom: parent.bottom
-                }
-                height: parent.height/2
-                width: height
-                icon: "checkmark"
-                visible: application.isInstalled
-            }
-        }
-        Label {
-            anchors {
-                top: screen.bottom
-                left: parent.left
-                right: parent.right
-                leftMargin: 5
-            }
-            horizontalAlignment: Text.AlignHCenter
-            elide: Text.ElideRight
-            text: name
-        }
-        Loader {
-            id: descriptionLoader
-            anchors {
-                left: parent.left
-                right: parent.right
-                bottom: parent.bottom
-                top: parent.verticalCenter
-                bottomMargin: 10
-            }
-            clip: true
-        }
     }
-    
-    Component {
-        id: extraInfoComponent
-        Item {
+    RowLayout {
+        anchors {
+            topMargin: artwork.height+2
+            fill: parent
+        }
+
+        ColumnLayout {
+            Layout.fillWidth: true
             Label {
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    top: parent.top
-                    bottom: installButton.top
-                    rightMargin: smallIcon.visible ? 48 : 0
-                    topMargin: 5
-                }
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-                wrapMode: Text.WordWrap
-                text: model.application.comment
+                Layout.fillWidth: true
+                elide: Text.ElideRight
+                text: name
             }
-            InstallApplicationButton {
-                id: installButton
-                height: 30
-                anchors {
-                    bottom: parent.bottom
-                    left: parent.left
-                    right: parent.right
-                    bottomMargin: 5
-                }
-                application: model.application
-                additionalItem: Rating {
-                    rating: model.rating
-                    visible: !model.application.canUpgrade && model.rating>=0
-                }
+            Label {
+                Layout.fillWidth: true
+                elide: Text.ElideRight
+                text: comment
+                opacity: 0.6
             }
         }
+        ConditionalLoader {
+            Layout.minimumWidth: parent.width/3
+            Layout.fillHeight: true
+
+            condition: delegateRoot.containsMouse
+            componentFalse: Rating {
+                rating: 5
+            }
+
+            componentTrue: InstallApplicationButton {
+                application: model.application
+            }
+        }
+    }
+
+    Rectangle {
+        id: indicator
+        color: canUpgrade ? "blue" : (isInstalled && !delegateRoot.allInstalled ? "green" : "yellow")
+        height: 2
+        width: parent.width
+        anchors.bottom: parent.bottom
+        opacity: 0.3
     }
 }
