@@ -34,7 +34,6 @@ ScrollView
                         height: 32
                         RowLayout {
                             anchors.fill: parent
-                            spacing: 5
                             CheckBox {
                                 anchors.verticalCenter: parent.verticalCenter
                                 checked: model.checked

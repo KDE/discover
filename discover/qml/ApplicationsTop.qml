@@ -44,7 +44,7 @@ Column {
         font.weight: Font.Bold
         height: paintedHeight*1.5
     }
-    spacing: 5
+    spacing: -2 //GridItem.border.width
     Repeater {
         id: rep
         model: PaginateModel {
