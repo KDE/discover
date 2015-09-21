@@ -16,36 +16,6 @@ Item {
         id: sourcesMenu
     }
 
-    property Component tools: RowLayout {
-        Layout.fillWidth: true
-        visible: page.visible
-        ToolButton {
-            iconName: "list-add"
-            text: i18n("Add Source")
-
-            tooltip: text
-            menu: sourcesMenu
-        }
-        Repeater {
-            model: SourcesModel.actions
-
-            delegate: RowLayout{
-                QIconItem {
-                    icon: modelData.icon
-                }
-                ToolButton {
-                    height: parent.height
-                    action: Action {
-                        property QtObject action: modelData
-                        text: action.text
-                        onTriggered: action.trigger()
-                        enabled: action.enabled
-                    }
-                }
-            }
-        }
-    }
-    
     ScrollView {
         anchors.fill: parent
         ListView {
@@ -53,6 +23,40 @@ Item {
             width: parent.width
 
             model: SourcesModel
+
+            header: GridItem {
+                height: 50
+                x: page.proposedMargin
+                width: app.actualWidth
+                RowLayout {
+                    anchors.verticalCenter: parent.verticalCenter
+                    ToolButton {
+                        iconName: "list-add"
+                        text: i18n("Add Source")
+
+                        tooltip: text
+                        menu: sourcesMenu
+                    }
+                    Repeater {
+                        model: SourcesModel.actions
+
+                        delegate: RowLayout{
+                            QIconItem {
+                                icon: modelData.icon
+                            }
+                            ToolButton {
+                                height: parent.height
+                                action: Action {
+                                    property QtObject action: modelData
+                                    text: action.text
+                                    onTriggered: action.trigger()
+                                    enabled: action.enabled
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
             delegate: ColumnLayout {
                 id: sourceDelegate
