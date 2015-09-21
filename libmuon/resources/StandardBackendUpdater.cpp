@@ -34,6 +34,7 @@ StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend* parent)
     , m_backend(parent)
     , m_preparedSize(0)
     , m_settingUp(false)
+    , m_progress(0)
     , m_lastUpdate(QDateTime())
 {
     connect(TransactionModel::global(),
