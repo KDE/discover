@@ -78,6 +78,9 @@ class MUONCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 
     private slots:
         void updaterDestroyed(QObject* obj);
+        void message(const QString& msg);
+        void addNewBackends();
+        void slotProgressingChanged(bool progressing);
 
     private:
         void setResourcesModel(ResourcesModel* model);
@@ -86,11 +89,6 @@ class MUONCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         QVector<AbstractBackendUpdater*> m_updaters;
         bool m_lastIsProgressing;
         QDBusInterface * m_kded;
-
-    private slots:
-        void message(const QString& msg);
-        void addNewBackends();
-        void slotProgressingChanged(bool progressing);
 };
 
 #endif // RESOURCESUPDATESMODEL_H
