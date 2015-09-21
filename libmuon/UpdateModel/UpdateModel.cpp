@@ -39,6 +39,7 @@
 UpdateModel::UpdateModel(QObject *parent)
     : QAbstractItemModel(parent)
     , m_updates(nullptr)
+    , m_updatesCount(0)
 {
     m_rootItem = new UpdateItem();
 
@@ -251,6 +252,8 @@ bool UpdateModel::setData(const QModelIndex &idx, const QVariant &value, int rol
             emit dataChanged(index(0,0, idx), index(item->childCount()-1, 0, idx));
         }
 
+        Q_EMIT toUpdateChanged();
+
         return true;
     }
 
@@ -306,6 +309,8 @@ void UpdateModel::setResources(const QList< AbstractResource* >& resources)
     }
     endResetModel();
 
+    m_updatesCount = resources.count();
+
     Q_EMIT hasUpdatesChanged(!resources.isEmpty());
 }
 
@@ -317,4 +322,14 @@ bool UpdateModel::hasUpdates() const
 ResourcesUpdatesModel* UpdateModel::backend() const
 {
     return m_updates;
+}
+
+int UpdateModel::totalUpdatesCount() const
+{
+    return m_updatesCount;
+}
+
+int UpdateModel::toUpdateCount() const
+{
+    return m_rootItem->checkedItems();
 }
