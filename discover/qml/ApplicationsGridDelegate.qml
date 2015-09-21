@@ -123,6 +123,7 @@ GridItem {
 
             componentTrue: InstallApplicationButton {
                 application: model.application
+                canUpgrade: false
             }
         }
     }

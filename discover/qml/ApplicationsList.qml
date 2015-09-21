@@ -120,6 +120,7 @@ ScrollView {
                             id: installButton
                             anchors.verticalCenter: parent.verticalCenter
                             application: model.application
+                            canUpgrade: false
                             visible: delegateArea.containsMouse
                         }
                         SystemPalette {id: pal}

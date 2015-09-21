@@ -7,8 +7,9 @@ ConditionalLoader
 {
     id: root
     property alias application: listener.resource
-    property alias isActive: listener.isActive
+    readonly property alias isActive: listener.isActive
     property Component additionalItem: null
+    property bool canUpgrade: true
 
     TransactionListener {
         id: listener
@@ -51,7 +52,7 @@ ConditionalLoader
                     onClicked: ResourcesModel.installApplication(application)
                 }
             }
-            sourceComponent: application.canUpgrade ? updateButton : root.additionalItem
+            sourceComponent: (root.canUpgrade && application.canUpgrade) ? updateButton : root.additionalItem
         }
     }
 }
