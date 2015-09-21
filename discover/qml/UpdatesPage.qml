@@ -12,21 +12,6 @@ ConditionalLoader
     readonly property var icon: "system-updates"
     readonly property string title: i18n("System Update")
     readonly property real proposedMargin: (width-app.actualWidth)/2
-    readonly property Component tools: RowLayout {
-        Button {
-            Component {
-                id: updatesPage
-                UpdateProgressPage {}
-            }
-
-            text: i18n("Update")
-            enabled: updateModel.hasUpdates
-            onClicked: {
-                var updates = page.Stack.view.push(updatesPage)
-                updates.start()
-            }
-        }
-    }
 
     ResourcesUpdatesModel {
         id: resourcesUpdatesModel

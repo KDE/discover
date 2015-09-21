@@ -9,10 +9,56 @@ ScrollView
     id: page
     property real proposedMargin: 0
 
+    function start() {
+        resourcesUpdatesModel.prepare()
+        resourcesUpdatesModel.updateAll()
+    }
+
     ColumnLayout
     {
         x: proposedMargin
         width: app.actualWidth
+
+        GridItem {
+            Layout.fillWidth: true
+            height: 50
+
+            ConditionalLoader {
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    verticalCenter: parent.verticalCenter
+                }
+
+                condition: resourcesUpdatesModel.isProgressing
+                componentFalse: RowLayout {
+                    Label {
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: i18n("%1 updates", updateModel.toUpdateCount)
+                    }
+                    Label {
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: i18n("%1 updates disabled", (updateModel.totalUpdatesCount - updateModel.toUpdateCount))
+                    }
+                    Item { Layout.fillWidth: true}
+                    Button {
+                        id: startButton
+                        text: i18n("Update")
+                        onClicked: page.start()
+                    }
+                }
+                componentTrue: ColumnLayout {
+                    Label {
+                        text: resourcesUpdatesModel.remainingTime
+                    }
+                    ProgressBar {
+                        anchors.centerIn: parent
+                        value: resourcesUpdatesModel.progress
+                    }
+                }
+            }
+        }
+
         Repeater {
             id: rep
             model: updateModel
@@ -33,10 +79,12 @@ ScrollView
                         Layout.fillWidth: true
                         height: 32
                         RowLayout {
+                            enabled: !resourcesUpdatesModel.isProgressing
                             anchors.fill: parent
                             CheckBox {
                                 anchors.verticalCenter: parent.verticalCenter
                                 checked: model.checked
+                                onClicked: model.checked = !model.checked
                             }
 
                             QIconItem {
