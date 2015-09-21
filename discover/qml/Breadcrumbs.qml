@@ -23,9 +23,10 @@ import QtQuick.Layouts 1.0
 
 Item {
     id: bread
-    readonly property int count: pageStack.depth+1
+    readonly property int count: pageStack.depth
     property StackView pageStack: null
     Layout.minimumHeight: theLayout.Layout.minimumHeight
+    Layout.preferredHeight: theLayout.Layout.preferredHeight
     
     function doClick(index) {
         var pos = bread.pageStack.depth
@@ -47,6 +48,7 @@ Item {
             delegate: Button {
                 Layout.fillHeight: true
                 Layout.minimumWidth: height //workaround bug in the plasma style
+                Layout.minimumHeight: implicitHeight
 
                 property var currentPage: bread.pageStack.get(modelData, false)
 

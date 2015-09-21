@@ -164,44 +164,12 @@ Rectangle
             }
         }
 
-        Item {
+        Breadcrumbs {
+            id: fu
             Layout.fillWidth: true
-            Layout.preferredHeight: (breadcrumbsItem.visible || pageToolBar.visible) ? toolbar.Layout.preferredHeight : 0
+            visible: count>1
 
-
-            Breadcrumbs {
-                id: breadcrumbsItem
-
-                anchors {
-                    top: parent.top
-                    left: parent.left
-                    bottom: parent.bottom
-                    right: pageToolBar.left
-                    rightMargin: pageToolBar.visible ? 10 : 0
-                }
-
-                pageStack: stackView
-            }
-
-            ToolBar {
-                id: pageToolBar
-
-                anchors {
-                    top: parent.top
-                    right: parent.right
-                    bottom: parent.bottom
-                }
-                Layout.minimumHeight: toolbarLoader.item ? toolbarLoader.item.Layout.minimumHeight : 0
-                width: toolbarLoader.item ? toolbarLoader.item.width+5 : 0
-                visible: width>0
-
-                Loader {
-                    id: toolbarLoader
-                    sourceComponent: stackView.currentItem ? stackView.currentItem.tools : null
-                }
-
-                Behavior on width { NumberAnimation { duration: 250 } }
-            }
+            pageStack: stackView
         }
 
         StackView {
