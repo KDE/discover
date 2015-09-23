@@ -53,8 +53,8 @@ Item
         GridView {
             id: grid
             anchors.fill: parent
-            cellWidth: 100
-            cellHeight: 60
+            cellWidth: app.isCompact ? width : 100
+            cellHeight: app.isCompact ? 30 : 60
 
             model: CategoryModel {
                 id: categoryModel

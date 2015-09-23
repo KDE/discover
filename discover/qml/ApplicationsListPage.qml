@@ -43,7 +43,6 @@ Item {
     property Component extendedToolBar: null
     property var icon: category ? category.icon : "go-home"
     property string title: category ? category.name : ""
-    clip: true
     
     onSearchChanged: appsModel.sortOrder = Qt.AscendingOrder
     

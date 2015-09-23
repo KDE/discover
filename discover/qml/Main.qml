@@ -48,13 +48,9 @@ Rectangle
     SystemPalette { id: palette }
     color: palette.base
 
-    function clearSearch() { toolbar.search.text="" }
-    Timer {
-        id: searchTimer
-        running: false
-        repeat: false
-        interval: 200
-        onTriggered: { stackView.currentItem.searchFor(toolbar.search.text) }
+    function clearSearch() {
+        if (toolbar.search)
+            toolbar.search.text=""
     }
 
     Component {
