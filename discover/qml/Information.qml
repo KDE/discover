@@ -4,20 +4,21 @@ PathView {
     id: viewItem
     interactive: false
     pathItemCount: count
+    cacheItemCount: count
     highlightMoveDuration: 500
-    property real delWidth: width
-    property real delHeight: height
+    readonly property real oriX: viewItem.width/2
+    readonly property real oriY: viewItem.height/2
     property alias slideDuration: timer.interval
     
     path: Path {
-        startX: delWidth/2; startY: delHeight/2
-        PathLine { x: 3*delWidth; y: delHeight/2 }
-        PathLine { x: 3*delWidth; y: -delHeight }
-        PathLine { x: -3*delWidth; y: -delHeight }
-        PathLine { x: -3*delWidth; y: delHeight/2 }
-        PathLine { x: delWidth/2; y: delHeight/2 }
+        startX: oriX; startY: oriY
+        PathLine { x: oriX-800; y: oriY-300 }
+        PathLine { x: oriX-800; y: oriY-300 }
+        PathLine { x: oriX+800; y: oriY-600 }
+        PathLine { x: oriX+800; y: oriY-300 }
+        PathLine { x: oriX; y: oriY }
     }
-    
+
     function next() { incrementCurrentIndex() }
     function previous() { decrementCurrentIndex() }
     

@@ -52,6 +52,8 @@ Item
         GridView {
             id: grid
             anchors.fill: parent
+            cellWidth: 100
+            cellHeight: 60
 
             model: CategoryModel {
                 id: categoryModel

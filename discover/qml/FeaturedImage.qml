@@ -3,6 +3,7 @@ import QtQuick 2.1
 Flickable {
     id: flick
     
+    clip: true
     contentY: 0
     interactive: false
     contentWidth: Math.max(image.width, width)

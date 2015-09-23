@@ -37,6 +37,8 @@ Item {
 
         FeaturedBanner {
             Layout.fillWidth: true
+            clip: true
+            anchors.horizontalCenter: parent.horizontalCenter
             height: 310
         }
 
