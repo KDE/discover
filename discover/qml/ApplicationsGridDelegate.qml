@@ -78,6 +78,7 @@ GridItem {
                     height: width
                     smooth: true
                     asynchronous: true
+                    sourceSize: Qt.size(width, width)
                     source: model.application.icon[0] == "/" ? "file://"+model.application.icon : "image://icon/"+model.application.icon
                 }
             }
@@ -86,6 +87,7 @@ GridItem {
                     anchors.centerIn: parent
                     height: parent.height*0.7
                     width: height
+                    sourceSize: Qt.size(width, width)
                     smooth: true
                     asynchronous: true
                     source: model.application.icon[0] == "/" ? "file://"+model.application.icon : "image://icon/"+model.application.icon
