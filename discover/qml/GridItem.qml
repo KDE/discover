@@ -26,7 +26,6 @@ MouseArea {
 
     default property alias content: paddingItem.data
 
-    property bool checked: false
     property int internalMargin: 5
 
 
