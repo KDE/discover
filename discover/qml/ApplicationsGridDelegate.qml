@@ -39,60 +39,41 @@ GridItem {
         color: sys.shadow
         width: parent.width
         height: parent.height*0.65
+        property bool hasThumbnail: model.application.thumbnailUrl!=""
 
-        ConditionalLoader {
-            id: artworkConditional
-            anchors.fill: parent
+        Image {
+            id: screen
+            anchors {
+                verticalCenter: parent.verticalCenter
+                right: parent.right
+                rightMargin: parent.width*0.1
+            }
 
-            condition: model.application.thumbnailUrl!=""
-            componentTrue: Item {
-                Image {
-                    id: screen
-                    anchors {
-                        verticalCenter: parent.verticalCenter
-                        right: parent.right
-                        rightMargin: parent.width*0.1
-                    }
-
-                    source: model.application.thumbnailUrl
-                    height: parent.height*0.9
-                    fillMode: Image.PreserveAspectFit
-                    smooth: false
-                    cache: false
-                    asynchronous: true
-                    onStatusChanged:  {
-                        if(status==Image.Error) {
-                            artworkConditional.hasThumbnail=false
-                        }
-                    }
-                }
-                Image {
-                    anchors {
-                        verticalCenter: parent.verticalCenter
-                        left: parent.left
-                        leftMargin: parent.width*0.1
-                    }
-
-                    id: smallIcon
-                    width: 64
-                    height: width
-                    smooth: true
-                    asynchronous: true
-                    sourceSize: Qt.size(width, width)
-                    source: model.application.icon[0] == "/" ? "file://"+model.application.icon : "image://icon/"+model.application.icon
+            source: model.application.thumbnailUrl
+            height: parent.height*0.9
+            fillMode: Image.PreserveAspectFit
+            smooth: false
+            cache: false
+            asynchronous: true
+            onStatusChanged:  {
+                if(status==Image.Error) {
+                    artwork.hasThumbnail=false
                 }
             }
-            componentFalse: Item {
-                Image {
-                    anchors.centerIn: parent
-                    height: parent.height*0.7
-                    width: height
-                    sourceSize: Qt.size(width, width)
-                    smooth: true
-                    asynchronous: true
-                    source: model.application.icon[0] == "/" ? "file://"+model.application.icon : "image://icon/"+model.application.icon
-                }
+        }
+        Image {
+            anchors {
+                centerIn: parent
+                horizontalCenterOffset: artwork.hasThumbnail ? -50 : 0
             }
+
+            id: smallIcon
+            width: 64
+            height: width
+            smooth: true
+            asynchronous: true
+            sourceSize: Qt.size(width, width)
+            source: model.application.icon[0] == "/" ? "file://"+model.application.icon : "image://icon/"+model.application.icon
         }
     }
     RowLayout {
