@@ -49,6 +49,7 @@ Item
             right: parent.right
             topMargin: categories.titleHeight-2
         }
+        hoverEnabled: false
         GridView {
             id: grid
             anchors.fill: parent

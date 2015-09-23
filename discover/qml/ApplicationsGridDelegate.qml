@@ -38,7 +38,7 @@ GridItem {
         id: artwork
         color: sys.shadow
         width: parent.width
-        height: parent.height*0.7
+        height: parent.height*0.65
 
         ConditionalLoader {
             id: artworkConditional
@@ -96,6 +96,8 @@ GridItem {
     RowLayout {
         anchors {
             topMargin: artwork.height+2
+            bottomMargin: 8
+            margins: 5
             fill: parent
         }
 
@@ -131,7 +133,7 @@ GridItem {
 
     Rectangle {
         id: indicator
-        color: canUpgrade ? "#55f" : (isInstalled ? "#5f5" : "transparent")
+        color: canUpgrade ? "#337" : (isInstalled ? "#070" : "transparent")
         height: 5
         width: parent.width
         anchors.bottom: parent.bottom

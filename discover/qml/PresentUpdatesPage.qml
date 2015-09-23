@@ -22,23 +22,33 @@ ScrollView
         GridItem {
             Layout.fillWidth: true
             height: 50
+            hoverEnabled: false
 
             ConditionalLoader {
                 anchors {
                     left: parent.left
                     right: parent.right
                     verticalCenter: parent.verticalCenter
+                    margins: 10
                 }
 
                 condition: resourcesUpdatesModel.isProgressing
                 componentFalse: RowLayout {
-                    Label {
+                    LabelBackground {
                         anchors.verticalCenter: parent.verticalCenter
-                        text: i18n("%1 updates", updateModel.toUpdateCount)
+                        text: updateModel.toUpdateCount
                     }
                     Label {
                         anchors.verticalCenter: parent.verticalCenter
-                        text: i18n("%1 updates disabled", (updateModel.totalUpdatesCount - updateModel.toUpdateCount))
+                        text: i18n("updates selected")
+                    }
+                    LabelBackground {
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: (updateModel.totalUpdatesCount - updateModel.toUpdateCount)
+                    }
+                    Label {
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: i18n("updates not selected")
                     }
                     Item { Layout.fillWidth: true}
                     Button {
@@ -97,8 +107,12 @@ ScrollView
                             Label {
                                 id: label
                                 Layout.fillWidth: true
-                                text: i18n("%1 (%2) - %3", display, version, size)
+                                text: i18n("%1 (%2)", display, version)
                                 elide: Text.ElideRight
+                            }
+
+                            LabelBackground {
+                                text: size
                             }
                         }
                     }

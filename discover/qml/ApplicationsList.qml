@@ -123,33 +123,17 @@ ScrollView {
                             canUpgrade: false
                             visible: delegateArea.containsMouse
                         }
-                        SystemPalette {id: pal}
-                        Label {
+                        LabelBackground {
                             id: installInfo
-                            anchors {
-                                verticalCenter: parent.verticalCenter
-                                centerIn: parent
-                            }
+                            anchors.centerIn: parent
+                            visible: !delegateArea.containsMouse
                             text: "two GiB"
-                            visible: !delegateArea.containsMouse
-                            color: pal.highlightedText
-                        }
-
-                        Rectangle {
-                            anchors {
-                                fill: installInfo
-                                margins: -5
-                            }
-                            visible: !delegateArea.containsMouse
-                            color: pal.highlight
-                            z: -1
-                            radius: 5
                         }
                     }
 
                     Rectangle {
                         id: indicator
-                        color: canUpgrade ? "#55f" : isInstalled && view.model.stateFilter!=2 ? "#5f5" : "transparent"
+                        color: canUpgrade ? "#337" : isInstalled && view.model.stateFilter!=2 ? "#070" : "transparent"
                         width: 5
                         height: parent.height
                         anchors.right: parent.right

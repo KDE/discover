@@ -28,7 +28,6 @@ MouseArea {
 
     property int internalMargin: 5
 
-
     hoverEnabled: true
 
     SystemPalette {
@@ -36,9 +35,10 @@ MouseArea {
     }
     Rectangle {
         anchors.fill: parent
-        color: listItem.containsMouse || listItem.pressed ? palette.button : palette.midlight
+        color: listItem.containsMouse || listItem.pressed ? palette.highlight : palette.button
         border.color: palette.mid
         border.width: 2
+        opacity: 0.4
     }
 
     Item {
