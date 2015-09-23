@@ -31,6 +31,7 @@ GridItem {
     onClicked: {
         Navigation.openApplication(application)
     }
+    internalMargin: 0
 
     SystemPalette { id: sys }
     Rectangle {
@@ -130,10 +131,10 @@ GridItem {
 
     Rectangle {
         id: indicator
-        color: canUpgrade ? "blue" : (isInstalled && !delegateRoot.allInstalled ? "green" : "yellow")
-        height: 2
+        color: canUpgrade ? "#55f" : (isInstalled ? "#5f5" : "transparent")
+        height: 5
         width: parent.width
         anchors.bottom: parent.bottom
-        opacity: 0.3
+        opacity: 0.7
     }
 }

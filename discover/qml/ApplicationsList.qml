@@ -149,11 +149,11 @@ ScrollView {
 
                     Rectangle {
                         id: indicator
-                        color: canUpgrade ? "blue" : isInstalled && view.model.stateFilter!=2 ? "green" : "yellow"
-                        width: 2
+                        color: canUpgrade ? "#55f" : isInstalled && view.model.stateFilter!=2 ? "#5f5" : "transparent"
+                        width: 5
                         height: parent.height
                         anchors.right: parent.right
-                        opacity: 0.3
+                        opacity: 0.7
                     }
                 }
             }
