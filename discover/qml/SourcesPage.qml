@@ -28,6 +28,7 @@ Item {
                 height: 50
                 x: page.proposedMargin
                 width: app.actualWidth
+                hoverEnabled: false
                 RowLayout {
                     anchors.verticalCenter: parent.verticalCenter
                     ToolButton {
@@ -92,7 +93,7 @@ Item {
 
                     delegate: GridItem {
                         Layout.fillWidth: true
-                        height: browseOrigin.height*1.2
+                        height: browseOrigin.implicitHeight*1.4
                         enabled: browseOrigin.enabled
                         onClicked: Navigation.openApplicationListSource(model.display)
 
