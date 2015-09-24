@@ -130,11 +130,27 @@ Rectangle
         onListCategoryInternal: Navigation.openCategoryByName(name)
     }
 
+    Rectangle {
+        gradient: Gradient {
+            GradientStop { position: 0.0; color: "darkGray" }
+            GradientStop { position: 1.0; color: "transparent" }
+        }
+        height: parent.height/5
+        anchors {
+            topMargin: toolbar.height
+            top: parent.top
+            left: parent.left
+            right: parent.right
+        }
+        visible: !fu.visible
+    }
+
     ColumnLayout {
         spacing: 0
         anchors.fill: parent
 
         MuonToolbar {
+            Layout.fillWidth: true
             id: toolbar
         }
 
