@@ -25,9 +25,8 @@ import QtQuick.Layouts 1.1
 ToolBar
 {
     id: root
-    Layout.preferredHeight: layout.Layout.preferredHeight.height+2
-    Layout.fillWidth: true
     property Item search: app.isCompact ? compactSearch : null
+    Layout.preferredHeight: layout.Layout.preferredHeight
 
     ExclusiveGroup {
         id: appTabs
@@ -41,15 +40,20 @@ ToolBar
     }
 
     ColumnLayout {
+        id: layout
+        anchors.fill: parent
+        spacing: 0
+
         RowLayout {
-            id: layout
             spacing: 1
             anchors.fill: parent
+            Layout.alignment: Qt.AlignVCenter
 
             ToolButton {
                 id: backAction
                 objectName: "back"
                 visible: !app.isCompact
+                Layout.alignment: Qt.AlignVCenter
                 action: Action {
                     shortcut: "Alt+Up"
                     iconName: "go-previous"
@@ -75,6 +79,7 @@ ToolBar
 
             Item {
                 Layout.fillWidth: true
+                Layout.fillHeight: true
             }
             ConditionalLoader {
                 condition: app.isCompact
