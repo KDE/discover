@@ -26,6 +26,7 @@ import org.kde.kquickcontrolsaddons 2.0
 Item {
     readonly property string title: ""
     readonly property string icon: "go-home"
+    clip: true
     ColumnLayout
     {
         width: app.actualWidth
@@ -37,13 +38,15 @@ Item {
 
         FeaturedBanner {
             Layout.fillWidth: true
-            clip: true
             anchors.horizontalCenter: parent.horizontalCenter
-            height: 310
+            Layout.preferredHeight: 310
         }
 
         CategoryDisplay {
             Layout.fillWidth: true
+            Layout.fillHeight: true
+        }
+        Item {
             Layout.fillHeight: true
         }
     }

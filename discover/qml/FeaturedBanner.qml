@@ -53,13 +53,6 @@ Information {
                 }
 
                 source: endsWith(modelData.image, ".qml") ? modelData.image : "qrc:/qml/FeaturedImage.qml"
-
-                Rectangle
-                {
-                    anchors.fill: parent
-                    color: modelData.color
-                    border.color: "cyan"
-                }
             }
 
             Rectangle {
