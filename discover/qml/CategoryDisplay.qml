@@ -1,5 +1,5 @@
 /*
- *   Copyright (C) 2015 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
+ *   Copyright (C) 2012-2015 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library/Lesser General Public License
@@ -23,38 +23,65 @@ import QtQuick.Layouts 1.1
 import org.kde.muon 1.0
 import org.kde.kquickcontrolsaddons 2.0
 
-Item
+RowLayout
 {
-    implicitHeight: categories.height
-
+    id: page
     property alias category: categoryModel.displayedCategory
-    CategoryTop {
-        id: categories
-        category: parent.category
-        anchors {
-            top: parent.top
-            right: parent.horizontalCenter
-            bottom: parent.bottom
-            left: parent.left
-            rightMargin: 5
+    readonly property bool extended: !app.isCompact && grid.count>5
+
+    ApplicationsTop {
+        id: top
+        Layout.fillHeight: true
+        Layout.fillWidth: true
+        sortRole: "sortableRating"
+        filteredCategory: page.category
+        title: i18n("Popularity")
+        extended: page.extended
+        roleDelegate: Item {
+            width: bg.width
+            property variant model
+            LabelBackground {
+                id: bg
+                anchors.centerIn: parent
+                text: model.sortableRating.toFixed(2)
+            }
+        }
+    }
+    ApplicationsTop {
+        id: top2
+        Layout.fillHeight: true
+        Layout.fillWidth: true
+        visible: !app.isCompact
+        sortRole: "ratingPoints"
+        filteredCategory: page.category
+        title: i18n("Rating")
+        extended: page.extended
+        roleDelegate: Rating {
+            property variant model
+            rating: model.rating
+            height: 12
         }
     }
 
     GridItem {
+        Layout.fillWidth: true
         clip: true
         anchors {
             top: parent.top
-            left: parent.horizontalCenter
-            bottom: parent.bottom
-            right: parent.right
-            topMargin: categories.titleHeight-2
+            topMargin: top.titleHeight-2
+            bottom: top.bottom
         }
+        Layout.preferredWidth: page.width/2
         hoverEnabled: false
         GridView {
             id: grid
-            anchors.fill: parent
-            cellWidth: app.isCompact ? width : 100
+            anchors {
+                fill: parent
+                margins: 5
+            }
+            cellWidth: app.isCompact ? width : width/Math.floor(width/100)
             cellHeight: app.isCompact ? 30 : 60
+            boundsBehavior: Flickable.StopAtBounds
 
             model: CategoryModel {
                 id: categoryModel
@@ -64,6 +91,7 @@ Item
             delegate: CategoryDelegate {
                 horizontal: app.isCompact
                 width: grid.cellWidth
+                height: grid.cellHeight
             }
         }
     }

@@ -25,25 +25,24 @@ import org.kde.muon.discover 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
 
-Column {
+ColumnLayout {
     id: topView
     property alias sortRole: appsModel.stringSortRole
     property alias filteredCategory: appsModel.filteredCategory
     property Component roleDelegate: null
     property string title: ""
-    readonly property var delegateHeight: title.paintedHeight*2.5
+    property bool extended: false
     readonly property alias titleHeight: title.height
 
-    Layout.preferredHeight: (rep.count*(topView.spacing+topView.delegateHeight) + title.paintedHeight)
     Layout.preferredWidth: 250
 
     Label {
         id: title
         text: topView.title
-        width: parent.width
+        Layout.fillWidth: true
         horizontalAlignment: Text.AlignHCenter
         font.weight: Font.Bold
-        height: paintedHeight*1.5
+        Layout.minimumHeight: paintedHeight*1.5
     }
     spacing: -2 //GridItem.border.width
     Repeater {
@@ -57,21 +56,34 @@ Column {
             }
         }
         delegate: GridItem {
-                    width: topView.width
-                    height: topView.delegateHeight
+                    Layout.fillWidth: true
+                    Layout.minimumHeight: title.paintedHeight*(topView.extended ? 3.5 : 2.5)
 
                     RowLayout {
+                        id: layo
                         anchors.fill: parent
                         QIconItem {
                             Layout.fillHeight: true
                             Layout.minimumWidth: height
                             icon: model.icon
                         }
-                        Label {
+                        ColumnLayout {
                             Layout.fillHeight: true
-                            text: name
-                            elide: Text.ElideRight
-                            verticalAlignment: Text.AlignVCenter
+                            Label {
+                                id: nameItem
+                                Layout.fillHeight: true
+                                text: name
+                                elide: Text.ElideRight
+                                verticalAlignment: Text.AlignVCenter
+                            }
+                            Label {
+                                Layout.preferredWidth: nameItem.Layout.preferredWidth
+                                visible: topView.extended
+                                text: category
+                                elide: Text.ElideRight
+                                verticalAlignment: Text.AlignVCenter
+                                opacity: 0.6
+                            }
                         }
                         Item {
                             Layout.fillWidth: true

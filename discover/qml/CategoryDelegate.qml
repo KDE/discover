@@ -27,7 +27,6 @@ import "navigation.js" as Navigation
 MouseArea {
     id: categoryItem
     property bool horizontal: false
-    height: horizontal ? nameLabel.paintedHeight*2.5 : layout.height+10
     enabled: true
 
     GridLayout {
