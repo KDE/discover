@@ -129,7 +129,7 @@ UpdaterWidget::UpdaterWidget(ResourcesUpdatesModel* updates, QWidget *parent) :
 
     connect(ResourcesModel::global(), SIGNAL(fetchingChanged()), SLOT(activityChanged()));
     connect(ResourcesModel::global(), SIGNAL(updatesCountChanged()), SLOT(activityChanged()));
-    connect(m_updatesBackends, SIGNAL(progressingChanged()), SLOT(activityChanged()));
+    connect(m_updatesBackends, SIGNAL(progressingChanged(bool)), SLOT(activityChanged()));
 }
 
 UpdaterWidget::~UpdaterWidget()

@@ -59,7 +59,7 @@ MainWindow::MainWindow()
     , m_controls(new QWidget)
  {
     m_updater = new ResourcesUpdatesModel(this);
-    connect(m_updater, SIGNAL(progressingChanged()), SLOT(progressingChanged()));
+    connect(m_updater, SIGNAL(progressingChanged(bool)), SLOT(progressingChanged()));
 
     setupActions();
     initGUI();
