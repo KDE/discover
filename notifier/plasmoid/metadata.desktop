@@ -71,7 +71,7 @@ Comment[zh_CN]=帮助您保持更新
 Comment[zh_TW]=協助您的系統更新到最新狀態
 Encoding=UTF-8
 
-Icon=muon-discover
+Icon=org.kde.muonnotifier
 Type=Service
 
 X-KDE-ServiceTypes=Plasma/Applet
