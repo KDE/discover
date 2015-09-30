@@ -38,7 +38,6 @@ MouseArea {
         color: listItem.containsMouse || listItem.pressed ? palette.highlight : palette.button
         border.color: palette.mid
         border.width: 2
-        opacity: 0.4
     }
 
     Item {
