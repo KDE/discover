@@ -31,9 +31,10 @@ Information {
     delegate: MouseArea {
             property QtObject modelData: model
             enabled: modelData.package!=""
-            width: 400
-            height: 250
-            
+            readonly property real size: PathView.isCurrentItem ? 1 : 0.7
+            width: 400 * size
+            height: 250 * size
+
             onClicked: {
                 if(modelData.packageName!=null)
                     Navigation.openApplication(ResourcesModel.resourceByPackageName(modelData.packageName))
@@ -41,6 +42,8 @@ Information {
                     Qt.openUrlExternally(modelData.url)
             }
             
+            Behavior on width { NumberAnimation { duration: 250 } }
+            Behavior on height { NumberAnimation { duration: 250 } }
             z: PathView.isCurrentItem && !PathView.view.moving ? 1 : -1
             id: itemDelegate
             
@@ -77,8 +80,8 @@ Information {
                 }
 
                 QIconItem {
-                    height: parent.height
-                    width: parent.height
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
                     icon: titleBar.modelData ? titleBar.modelData.icon : "kde"
                 }
 

@@ -29,6 +29,8 @@ RowLayout
     property alias category: categoryModel.displayedCategory
     readonly property bool extended: !app.isCompact && grid.count>5
 
+    spacing: 7
+
     ApplicationsTop {
         id: top
         Layout.fillHeight: true
@@ -70,6 +72,7 @@ RowLayout
             top: parent.top
             topMargin: top.titleHeight-2
             bottom: top.bottom
+            bottomMargin: -1
         }
         Layout.preferredWidth: page.width/2
         hoverEnabled: false

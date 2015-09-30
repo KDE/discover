@@ -12,10 +12,9 @@ PathView {
     
     path: Path {
         startX: oriX; startY: oriY
-        PathLine { x: oriX-800; y: oriY-300 }
-        PathLine { x: oriX-800; y: oriY-300 }
-        PathLine { x: oriX+800; y: oriY-600 }
-        PathLine { x: oriX+800; y: oriY-300 }
+        PathLine { x: oriX-800; y: oriY }
+        PathLine { x: oriX+800; y: oriY-1900 }
+        PathLine { x: oriX+800; y: oriY }
         PathLine { x: oriX; y: oriY }
     }
 
