@@ -75,6 +75,7 @@ ScrollView
 
             delegate: ColumnLayout {
                 id: col
+                spacing: -2
                 property var currentRow: index
                 Label {
                     Layout.fillWidth: true
