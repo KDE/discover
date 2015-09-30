@@ -34,10 +34,7 @@ Item {
     function searchFor(text) {
         if(text == "")
             return;
-        if(category)
-            Navigation.openApplicationList(category.icon, i18n("Search in '%1'...", category.name), category, text)
-        else
-            Navigation.openApplicationList("edit-find", i18n("Search..."), category, text)
+        Navigation.openApplicationList(category.icon, i18n("Search in '%1'...", category.name), category, text)
     }
 
     ApplicationList {

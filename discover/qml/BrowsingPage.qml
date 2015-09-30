@@ -22,11 +22,17 @@ import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.muon 1.0
 import org.kde.kquickcontrolsaddons 2.0
+import "navigation.js" as Navigation
 
 Item {
     readonly property string title: ""
     readonly property string icon: "go-home"
     clip: true
+
+    function searchFor(text) {
+        Navigation.openApplicationList("edit-find", i18n("Search..."), null, text)
+    }
+
     ColumnLayout
     {
         width: app.actualWidth
