@@ -7,7 +7,6 @@ set(muon_discover_SRCS
     main.cpp
     MuonDiscoverMainWindow.cpp
 
-    DiscoverAction.cpp
     PaginateModel.cpp
     SystemFonts.cpp
 )

@@ -90,7 +90,7 @@ Rectangle
         stackView.replace(page, {}, window.status!=Component.Ready)
     }
 
-    property list<DiscoverAction> awesome: [
+    property list<Action> awesome: [
         TopLevelPageData {
             iconName: "tools-wizard"
             text: i18n("Discover")

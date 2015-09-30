@@ -18,13 +18,12 @@
  */
 
 import QtQuick 2.1
-import org.kde.muon.discover 1.0
+import QtQuick.Controls 1.2
 import "navigation.js" as Navigation
 
-DiscoverAction {
+Action {
     property string overlay
     property Component component
-    mainWindow: app
     checkable: true
     checked: window.currentTopLevel==component
     enabled: window.navigationEnabled
