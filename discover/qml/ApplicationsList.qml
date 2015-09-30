@@ -131,13 +131,12 @@ ScrollView {
                         }
                     }
 
-                    Rectangle {
+                    ApplicationIndicator {
                         id: indicator
-                        color: canUpgrade ? "#337" : isInstalled && view.model.stateFilter!=2 ? "#070" : "transparent"
+                        state: canUpgrade ? "upgradeable" : isInstalled && view.model.stateFilter!=2 ? "installed" : "none"
                         width: 5
                         height: parent.height
                         anchors.right: parent.right
-                        opacity: 0.7
                     }
                 }
             }

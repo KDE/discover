@@ -39,6 +39,7 @@
     <file>qml/MuonToolbar.qml</file>
     <file>qml/ApplicationDetails.qml</file>
     <file>qml/ApplicationScreenshots.qml</file>
+    <file>qml/ApplicationIndicator.qml</file>
     <file>qml/LabelBackground.qml</file>
 
     <file>qml/navigation.js</file>

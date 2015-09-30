@@ -114,12 +114,11 @@ GridItem {
         }
     }
 
-    Rectangle {
+    ApplicationIndicator {
         id: indicator
-        color: canUpgrade ? "#337" : (isInstalled ? "#070" : "transparent")
+        state: canUpgrade ? "upgradeable" : (isInstalled ? "installed" : "none")
         height: 5
         width: parent.width
         anchors.bottom: parent.bottom
-        opacity: 0.7
     }
 }
