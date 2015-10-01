@@ -112,14 +112,6 @@ Rectangle
             component: topUpdateComp
             objectName: "update"
             shortcut: "Alt+U"
-        },
-        TopLevelPageData {
-            iconName: "repository"
-            text: i18n("Sources")
-            component: topSourcesComp
-            objectName: "sources"
-            shortcut: "Alt+S"
-            enabled: SourcesModel.count>0
         }
     ]
 

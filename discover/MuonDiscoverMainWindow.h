@@ -78,6 +78,7 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
         void actualWidthChanged(qreal actualWidth);
 
     private:
+        void configureSources();
         void configureMenu();
 
         QString m_appToBeOpened;

@@ -236,6 +236,10 @@ void MuonDiscoverMainWindow::setupActions()
     QAction *quitAction = KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), actionCollection());
     actionCollection()->addAction("file_quit", quitAction);
 
+    QAction* configureSourcesAction = new QAction(QIcon::fromTheme("repository"), i18n("Configure Sources"), this);
+    connect(configureSourcesAction, &QAction::triggered, this, &MuonDiscoverMainWindow::configureSources);
+    actionCollection()->addAction("configure_sources", configureSourcesAction);
+
     menuBar()->setVisible(false);
     toolBar("discoverToolBar")->setVisible(false);
 
@@ -255,6 +259,7 @@ void MuonDiscoverMainWindow::configureMenu()
     if (!m_moreMenu->isEmpty())
         m_moreMenu->addSeparator();
 
+    m_moreMenu->addAction(actionCollection()->action("configure_sources"));
     m_moreMenu->addAction(actionCollection()->action("options_configure_keybinding"));
     m_moreMenu->addSeparator();
     m_moreMenu->addMenu(m_advancedMenu);
@@ -262,6 +267,11 @@ void MuonDiscoverMainWindow::configureMenu()
     m_moreMenu->addAction(actionCollection()->action("help_about_app"));
     m_moreMenu->addAction(actionCollection()->action("help_about_kde"));
     m_moreMenu->addAction(actionCollection()->action("help_report_bug"));
+}
+
+void MuonDiscoverMainWindow::configureSources()
+{
+    openMode("Sources");
 }
 
 bool MuonDiscoverMainWindow::queryClose()
