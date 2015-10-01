@@ -1,5 +1,6 @@
 add_subdirectory(icons)
 add_subdirectory(muon-contenttheme)
+add_subdirectory(autotests)
 
 include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/..)
 
@@ -9,6 +10,7 @@ set(muon_discover_SRCS
 
     PaginateModel.cpp
     SystemFonts.cpp
+    IconColors.cpp
 )
 
 qt5_add_resources(muon_discover_SRCS resources.qrc)

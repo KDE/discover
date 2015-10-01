@@ -21,6 +21,7 @@ import QtQuick 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.1
 import org.kde.kquickcontrolsaddons 2.0
+import org.kde.muon.discover 1.0
 import "navigation.js" as Navigation
 
 GridItem {
@@ -36,10 +37,19 @@ GridItem {
     SystemPalette { id: sys }
     Rectangle {
         id: artwork
-        color: sys.shadow
+        gradient: Gradient {
+            GradientStop { position: 0.0; color: Qt.darker(colors.dominantColor) }
+            GradientStop { position: 0.5; color: "black" }
+        }
+
         width: parent.width
         height: parent.height*0.65
         property bool hasThumbnail: model.application.thumbnailUrl!=""
+
+        IconColors {
+            id: colors
+            iconName: model.application.icon
+        }
 
         Image {
             id: screen

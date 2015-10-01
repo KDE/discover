@@ -20,6 +20,7 @@
 #include "MuonDiscoverMainWindow.h"
 #include "PaginateModel.h"
 #include "SystemFonts.h"
+#include "IconColors.h"
 
 // Qt includes
 #include <QDebug>
@@ -77,6 +78,7 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     kdeclarative.setupBindings();
     
     qmlRegisterType<PaginateModel>("org.kde.muon.discover", 1, 0, "PaginateModel");
+    qmlRegisterType<IconColors>("org.kde.muon.discover", 1, 0, "IconColors");
     qmlRegisterSingletonType<SystemFonts>("org.kde.muon.discover", 1, 0, "SystemFonts", ([](QQmlEngine*, QJSEngine*) -> QObject* { return new SystemFonts; }));
     qmlRegisterType<KXmlGuiWindow>();
     qmlRegisterType<QActionGroup>();
