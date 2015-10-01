@@ -61,7 +61,10 @@ ColumnLayout {
 
                     RowLayout {
                         id: layo
-                        anchors.fill: parent
+                        anchors {
+                            fill: parent
+                            margins: 2
+                        }
                         QIconItem {
                             Layout.fillHeight: true
                             Layout.minimumWidth: height
@@ -69,9 +72,11 @@ ColumnLayout {
                         }
                         ColumnLayout {
                             Layout.fillHeight: true
+                            Layout.fillWidth: true
+
                             Label {
                                 id: nameItem
-                                Layout.fillHeight: true
+                                Layout.fillWidth: true
                                 text: name
                                 elide: Text.ElideRight
                                 verticalAlignment: Text.AlignVCenter
@@ -84,9 +89,6 @@ ColumnLayout {
                                 verticalAlignment: Text.AlignVCenter
                                 opacity: 0.6
                             }
-                        }
-                        Item {
-                            Layout.fillWidth: true
                         }
                         Loader {
                             Layout.fillHeight: true

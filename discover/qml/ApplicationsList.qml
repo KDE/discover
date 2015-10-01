@@ -56,6 +56,7 @@ ScrollView {
                 RowLayout {
                     id: lowLayout
                     anchors {
+                        leftMargin: 2
                         left: parent.left
                         right: parent.right
                     }
