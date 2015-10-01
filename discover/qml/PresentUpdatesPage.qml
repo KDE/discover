@@ -43,12 +43,16 @@ ScrollView
                         text: i18n("updates selected")
                     }
                     LabelBackground {
+                        id: unselectedItem
+                        readonly property int unselected: (updateModel.totalUpdatesCount - updateModel.toUpdateCount)
                         anchors.verticalCenter: parent.verticalCenter
-                        text: (updateModel.totalUpdatesCount - updateModel.toUpdateCount)
+                        text: unselected
+                        visible: unselected>0
                     }
                     Label {
                         anchors.verticalCenter: parent.verticalCenter
                         text: i18n("updates not selected")
+                        visible: unselectedItem.visible
                     }
                     Item { Layout.fillWidth: true}
                     Button {
