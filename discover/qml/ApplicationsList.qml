@@ -110,7 +110,7 @@ ScrollView {
 
 
                     Label {
-                        text: category
+                        text: category[0]
                     }
 
                     Item {

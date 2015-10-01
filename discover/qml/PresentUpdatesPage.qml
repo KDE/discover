@@ -117,6 +117,7 @@ ScrollView
                             }
 
                             LabelBackground {
+                                Layout.minimumWidth: 90
                                 text: size
                             }
                         }
