@@ -90,7 +90,10 @@ RowLayout
             hoverEnabled: false
 
             ScrollView {
-                anchors.fill: parent
+                anchors {
+                    margins: -3
+                    fill: parent
+                }
 
                 GridView {
                     id: grid
