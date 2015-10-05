@@ -66,8 +66,17 @@ ScrollView
                         text: resourcesUpdatesModel.remainingTime
                     }
                     ProgressBar {
+                        id: pbar
                         anchors.centerIn: parent
-                        value: resourcesUpdatesModel.progress
+                        minimumValue: 0
+                        maximumValue: 100
+                    }
+
+                    // Workaround for bug in Qt
+                    // https://bugreports.qt.io/browse/QTBUG-48598
+                    Connections {
+                        target: resourcesUpdatesModel
+                        onProgressChanged: pbar.value = resourcesUpdatesModel.progress
                     }
                 }
             }
