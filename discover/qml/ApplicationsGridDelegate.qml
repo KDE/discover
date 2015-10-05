@@ -83,7 +83,9 @@ GridItem {
             smooth: true
             asynchronous: true
             sourceSize: Qt.size(width, width)
-            source: model.application.icon[0] == "/" ? "file://"+model.application.icon : "image://icon/"+model.application.icon
+            source: model.application.icon.length==0 ? ""
+                  : model.application.icon[0] == "/" ? "file://"+model.application.icon
+                  : "image://icon/"+model.application.icon
         }
     }
     RowLayout {
