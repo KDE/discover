@@ -157,8 +157,10 @@ QString ResourcesUpdatesModel::remainingTime() const
     }
 
     // Ignore ETA if it's larger than 2 days.
-    if(maxEta==0 || maxEta > 2 * 24 * 60 * 60)
+    if(maxEta > 2 * 24 * 60 * 60)
         return QString();
+    else if(maxEta==0)
+        return i18nc("@item:intext Unknown remaining time", "Updating...");
     else
         return i18nc("@item:intext Remaining time", "%1 remaining", KFormat().formatDuration(maxEta));
 }
