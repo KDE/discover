@@ -40,7 +40,6 @@ ColumnLayout {
         id: title
         text: topView.title
         Layout.fillWidth: true
-        horizontalAlignment: Text.AlignHCenter
         font.weight: Font.Bold
         Layout.minimumHeight: paintedHeight*1.5
     }

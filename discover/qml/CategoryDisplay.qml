@@ -29,7 +29,7 @@ RowLayout
     property alias category: categoryModel.displayedCategory
     readonly property bool extended: !app.isCompact && grid.count>5
 
-    spacing: 7
+    spacing: 3
 
     ApplicationsTop {
         id: top
@@ -65,36 +65,51 @@ RowLayout
         }
     }
 
-    GridItem {
+    Item {
+        width: 4
+    }
+
+    ColumnLayout {
         Layout.fillWidth: true
-        clip: true
-        anchors {
-            top: parent.top
-            topMargin: top.titleHeight-2
-            bottom: top.bottom
-            bottomMargin: -1
-        }
+        Layout.fillHeight: true
         Layout.preferredWidth: page.width/2
-        hoverEnabled: false
-        GridView {
-            id: grid
-            anchors {
-                fill: parent
-                margins: 5
-            }
-            cellWidth: app.isCompact ? width : width/Math.floor(width/100)
-            cellHeight: app.isCompact ? 30 : 60
-            boundsBehavior: Flickable.StopAtBounds
+        Layout.maximumHeight: top.height
 
-            model: CategoryModel {
-                id: categoryModel
-                displayedCategory: null
-            }
+        spacing: -2
 
-            delegate: CategoryDelegate {
-                horizontal: app.isCompact
-                width: grid.cellWidth
-                height: grid.cellHeight
+        Label {
+            text: i18n("Categories")
+            Layout.fillWidth: true
+            font.weight: Font.Bold
+            Layout.minimumHeight: paintedHeight*1.5
+        }
+
+        GridItem {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            hoverEnabled: false
+
+            ScrollView {
+                anchors.fill: parent
+
+                GridView {
+                    id: grid
+
+                    cellWidth: app.isCompact ? width : width/Math.floor(width/100)
+                    cellHeight: app.isCompact ? 35 : 60
+                    boundsBehavior: Flickable.StopAtBounds
+
+                    model: CategoryModel {
+                        id: categoryModel
+                        displayedCategory: null
+                    }
+
+                    delegate: CategoryDelegate {
+                        horizontal: app.isCompact
+                        width: grid.cellWidth
+                        height: grid.cellHeight-2
+                    }
+                }
             }
         }
     }

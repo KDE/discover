@@ -41,11 +41,12 @@ MouseArea {
         Item {
             Layout.fillWidth: !categoryItem.horizontal
             Layout.fillHeight: categoryItem.horizontal
-            Layout.preferredWidth: categoryItem.horizontal ? nameLabel.paintedHeight*2 : 40
+            Layout.preferredWidth: categoryItem.horizontal ? nameLabel.paintedHeight*2 : 32
             Layout.preferredHeight: Layout.preferredWidth
+
             QIconItem {
                 icon: decoration
-                width: Math.min(parent.width, parent.height)
+                width: 32
                 height: width
                 anchors.centerIn: parent
             }
@@ -54,9 +55,12 @@ MouseArea {
             id: nameLabel
             text: display
             Layout.fillWidth: true
-            horizontalAlignment: Text.AlignHCenter
+            horizontalAlignment: !categoryItem.horizontal ? Text.AlignHCenter : Text.AlignLeft
             verticalAlignment: Text.AlignVCenter
             wrapMode: Text.WordWrap
+
+            renderType: Text.QtRendering
+            maximumLineCount: 2
         }
     }
     onClicked: Navigation.openCategory(category)
