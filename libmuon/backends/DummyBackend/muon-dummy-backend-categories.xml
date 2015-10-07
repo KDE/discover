@@ -29,6 +29,21 @@
         </Include>
     </Menu>
   </Menu>
+  <Menu>
+    <Name>dummy with quite some stuff</Name>
+    <Icon>kmail</Icon>
+    <Include>
+        <Category>dummy</Category>
+    </Include>
+
+    <Menu>
+        <Name>dummy 2.1</Name>
+        <Icon>kalgebra</Icon>
+        <Include>
+            <Category>dummy</Category>
+        </Include>
+    </Menu>
+  </Menu>
 
   <Menu>
     <Name>dummy 3</Name>
