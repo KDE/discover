@@ -27,6 +27,7 @@ MouseArea {
     default property alias content: paddingItem.data
 
     property int internalMargin: 5
+    readonly property color highlightColor: Qt.lighter(palette.highlight)
 
     hoverEnabled: true
 
@@ -35,7 +36,7 @@ MouseArea {
     }
     Rectangle {
         anchors.fill: parent
-        color: listItem.containsMouse || listItem.pressed ? palette.highlight : palette.button
+        color: listItem.containsMouse || listItem.pressed ? listItem.highlightColor : palette.button
         border.color: palette.mid
         border.width: 2
     }
