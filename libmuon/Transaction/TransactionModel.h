@@ -59,7 +59,7 @@ public:
     void removeTransaction(Transaction *trans);
 
 private:
-    QList<Transaction *> m_transactions;
+    QVector<Transaction *> m_transactions;
     
 signals:
     void startingFirstTransaction();
