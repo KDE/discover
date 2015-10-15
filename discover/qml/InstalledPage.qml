@@ -29,6 +29,11 @@ ApplicationsListPage {
                 text: i18n("items installed")
             }
             Item { Layout.fillWidth: true }
+            Label {
+                visible: TransactionModel.count>0
+                text: i18n("%1 jobs pending...", TransactionModel.count)
+            }
+            Item { Layout.fillWidth: true }
             Label { text: i18n("Sort by ") }
             Button {
                 text: page.currentSortAction.text

@@ -30,6 +30,7 @@
 class MUONCOMMON_EXPORT TransactionModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
 public:
     enum Roles {
         TransactionRoleRole = Qt::UserRole,
@@ -67,6 +68,7 @@ signals:
     void transactionAdded(Transaction *trans);
     void transactionCancelled(Transaction *trans);
     void transactionRemoved(Transaction* trans);
+    void countChanged();
 
 private slots:
     void transactionChanged();

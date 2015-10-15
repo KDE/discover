@@ -100,7 +100,7 @@ Rectangle
         },
         TopLevelPageData {
             iconName: "applications-other"
-            text: i18n("Installed")
+            text: TransactionModel.count == 0 ? i18n("Installed") : i18n("Installing...")
             component: topInstalledComp
             objectName: "installed"
             shortcut: "Alt+I"
@@ -184,11 +184,6 @@ Rectangle
             onDepthChanged: {
                 window.clearSearch()
             }
-        }
-
-        ProgressView {
-            id: progressBox //used from UpdateProgressPage.qml
-            Layout.fillWidth: true
         }
     }
 }
