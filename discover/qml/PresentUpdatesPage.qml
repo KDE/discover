@@ -19,10 +19,8 @@ ScrollView
         x: proposedMargin
         width: app.actualWidth
 
-        GridItem {
+        PageHeader {
             Layout.fillWidth: true
-            height: 50
-            hoverEnabled: false
 
             ConditionalLoader {
                 anchors {

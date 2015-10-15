@@ -27,6 +27,7 @@ import org.kde.muon 1.0
 
 Item {
     id: page
+    readonly property var model: appsModel
     property alias category: appsModel.filteredCategory
     property alias sortRole: appsModel.stringSortRole
     property alias sortOrder: appsModel.sortOrder
@@ -43,7 +44,7 @@ Item {
     property Component extendedToolBar: null
     property var icon: category ? category.icon : "go-home"
     property string title: category ? category.name : ""
-    
+
     onSearchChanged: appsModel.sortOrder = Qt.AscendingOrder
     
     function searchFor(text) {
@@ -65,6 +66,46 @@ Item {
         page.sectionProperty = section
         page.sectionDelegate = role=="canUpgrade" ? installedSectionDelegate : defaultSectionDelegate
     }
+
+    readonly property alias currentSortAction: sortActionGroup.current
+    readonly property Menu sortMenu: Menu {
+        MenuItem {
+            text: i18n("Name")
+            onTriggered: page.changeSorting("name", Qt.AscendingOrder, "")
+            checked: appsModel.stringSortRole=="name"
+            checkable: true
+            exclusiveGroup: sortActionGroup
+        }
+        MenuItem {
+            text: i18n("Popularity")
+            onTriggered: page.changeSorting("sortableRating", Qt.DescendingOrder, "")
+            checked: appsModel.stringSortRole=="sortableRating"
+            checkable: true
+            exclusiveGroup: sortActionGroup
+        }
+        MenuItem {
+            text: i18n("Buzz")
+            onTriggered: page.changeSorting("ratingPoints", Qt.DescendingOrder, "")
+            checked: appsModel.stringSortRole=="ratingPoints"
+            checkable: true
+            exclusiveGroup: sortActionGroup
+        }
+        MenuItem {
+            text: i18n("Origin")
+            onTriggered: page.changeSorting("origin", Qt.DescendingOrder, "origin")
+            checked: appsModel.stringSortRole=="origin"
+            checkable: true
+            exclusiveGroup: sortActionGroup
+        }
+        MenuItem {
+            text: i18n("Installed")
+            onTriggered: page.changeSorting("canUpgrade", Qt.DescendingOrder, "canUpgrade")
+            checked: appsModel.stringSortRole=="canUpgrade"
+            checkable: true
+            exclusiveGroup: sortActionGroup
+        }
+    }
+    ExclusiveGroup { id: sortActionGroup }
     
     property Component tools: RowLayout {
             visible: page.visible
@@ -80,52 +121,8 @@ Item {
                 iconName: "view-sort-ascending"
                 onClicked: menu.popup()
 
-                ExclusiveGroup { id: sortActionGroup }
-                menu: Menu {
-                    id: menu
-                    MenuItem {
-                        id: nameItem
-                        text: i18n("Name")
-                        onTriggered: page.changeSorting("name", Qt.AscendingOrder, "")
-                        checked: appsModel.stringSortRole=="name"
-                        checkable: true
-                        exclusiveGroup: sortActionGroup
-                    }
-                    MenuItem {
-                        id: ratingItem
-                        text: i18n("Popularity")
-                        onTriggered: page.changeSorting("sortableRating", Qt.DescendingOrder, "")
-                        checked: appsModel.stringSortRole=="sortableRating"
-                        checkable: true
-                        exclusiveGroup: sortActionGroup
-                    }
-                    MenuItem {
-                        id: buzzItem
-                        text: i18n("Buzz")
-                        onTriggered: page.changeSorting("ratingPoints", Qt.DescendingOrder, "")
-                        checked: appsModel.stringSortRole=="ratingPoints"
-                        checkable: true
-                        exclusiveGroup: sortActionGroup
-                    }
-                    MenuItem {
-                        id: originItem
-                        text: i18n("Origin")
-                        onTriggered: page.changeSorting("origin", Qt.DescendingOrder, "origin")
-                        checked: appsModel.stringSortRole=="origin"
-                        checkable: true
-                        exclusiveGroup: sortActionGroup
-                    }
-                    MenuItem {
-                        id: installedItem
-                        text: i18n("Installed")
-                        onTriggered: page.changeSorting("canUpgrade", Qt.DescendingOrder, "canUpgrade")
-                        checked: appsModel.stringSortRole=="canUpgrade"
-                        checkable: true
-                        exclusiveGroup: sortActionGroup
-                    }
-                }
+                menu: sortMenu
             }
-
             ToolButton {
                 id: listViewShown
                 iconName: "tools-wizard"
