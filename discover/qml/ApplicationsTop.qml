@@ -83,7 +83,7 @@ ColumnLayout {
                             Label {
                                 Layout.preferredWidth: nameItem.Layout.preferredWidth
                                 visible: topView.extended
-                                text: category
+                                text: category[0]
                                 elide: Text.ElideRight
                                 verticalAlignment: Text.AlignVCenter
                                 opacity: 0.6
