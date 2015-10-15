@@ -23,7 +23,10 @@
 
 ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
     : ResourcesProxyModel(parent)
-{}
+{
+    connect(this, &QAbstractItemModel::rowsInserted, this, &ApplicationProxyModelHelper::countChanged);
+    connect(this, &QAbstractItemModel::rowsRemoved, this, &ApplicationProxyModelHelper::countChanged);
+}
 
 QHash<int, QByteArray> ApplicationProxyModelHelper::roleNames() const
 {
