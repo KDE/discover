@@ -56,8 +56,9 @@ QHash<int,QByteArray> UpdateModel::roleNames() const
 {
     return QAbstractItemModel::roleNames().unite({
         { Qt::CheckStateRole, "checked" },
-        { VersionRole, "version" },
-        { SizeRole, "size" }
+        { ResourceRole, "resource" },
+        { SizeRole, "size" },
+        { VersionRole, "version" }
     } );
 }
 
@@ -126,6 +127,8 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         return item->version();
     case SizeRole:
         return KFormat().formatByteSize(item->size());
+    case ResourceRole:
+        return QVariant::fromValue<QObject*>(item->resource());
     default:
         break;
     }

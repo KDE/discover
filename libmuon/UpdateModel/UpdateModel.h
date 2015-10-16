@@ -39,7 +39,8 @@ public:
 
     enum Roles {
         VersionRole = Qt::UserRole + 1,
-        SizeRole
+        SizeRole,
+        ResourceRole
     };
 
     explicit UpdateModel(QObject *parent = nullptr);

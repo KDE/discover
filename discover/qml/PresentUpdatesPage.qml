@@ -1,7 +1,8 @@
-import QtQuick.Controls 1.1
+import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.1
 import QtQuick 2.1
 import org.kde.muon 1.0
+import "navigation.js" as Navigation
 import org.kde.kquickcontrolsaddons 2.0
 
 ScrollView
@@ -89,11 +90,20 @@ ScrollView
             delegate: ColumnLayout {
                 id: col
                 spacing: -2
-                property var currentRow: index
-                Label {
-                    Layout.fillWidth: true
-                    horizontalAlignment: Text.AlignRight
-                    text: display
+                readonly property var currentRow: index
+                RowLayout {
+                    Layout.minimumHeight: 32
+                    Layout.leftMargin: 5 //GridItem.internalMargin
+                    Layout.rightMargin: 5 //GridItem.internalMargin
+                    anchors.margins: 100
+                    Label {
+                        Layout.fillWidth: true
+                        text: display
+                    }
+                    LabelBackground {
+                        text: size
+                        Layout.minimumWidth: 90
+                    }
                 }
                 Repeater {
                     model: ColumnProxyModel {
@@ -130,6 +140,8 @@ ScrollView
                                 text: size
                             }
                         }
+
+                        onClicked: Navigation.openApplication(resource)
                     }
                 }
             }
