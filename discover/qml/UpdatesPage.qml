@@ -33,6 +33,14 @@ ConditionalLoader
         ColumnLayout {
             width: app.actualWidth
             anchors.centerIn: parent
+            BusyIndicator {
+                id: busy
+                visible: false
+                enabled: visible
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: icon.width
+                height: icon.height
+            }
             QIconItem {
                 anchors.horizontalCenter: parent.horizontalCenter
 
@@ -44,6 +52,7 @@ ConditionalLoader
                 id: title
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignHCenter
+                font.pointSize: description.font.pointSize*1.5
             }
             Label {
                 id: description
@@ -54,13 +63,21 @@ ConditionalLoader
 
         readonly property var secSinceUpdate: resourcesUpdatesModel.secsToLastUpdate
 
-        state: ( secSinceUpdate < 0                         ? "unknown"
+        state: ( ResourcesModel.isFetching                  ? "fetching"
+               : secSinceUpdate < 0                         ? "unknown"
                : secSinceUpdate < 1000 * 60 * 60 * 24       ? "uptodate"
                : secSinceUpdate < 1000 * 60 * 60 * 24 * 7   ? "medium"
                :                                              "low"
                )
 
         states: [
+            State {
+                name: "fetching"
+                PropertyChanges { target: icon; visible: false }
+                PropertyChanges { target: busy; visible: true }
+                PropertyChanges { target: title; text: i18nc("@info", "Loading...") }
+                PropertyChanges { target: description; text: "" }
+            },
             State {
                 name: "uptodate"
                 PropertyChanges { target: icon; icon: "security-high" }
