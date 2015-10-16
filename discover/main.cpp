@@ -50,6 +50,7 @@ int main(int argc, char** argv)
         parser.addOption(QCommandLineOption("category", i18n("Display a list of entries with a category."), "name"));
         parser.addOption(QCommandLineOption("mode", i18n("Open Muon Discover in a said mode. Modes correspond to the toolbar buttons."), "name"));
         parser.addOption(QCommandLineOption("listmodes", i18n("List all the available modes.")));
+        parser.addPositionalArgument("urls", i18n("Supports appstream: url scheme (experimental)"));
         MuonBackendsFactory::setupCommandLine(&parser);
         about.setupCommandLine(&parser);parser.addHelpOption();
         parser.addVersionOption();
@@ -73,6 +74,13 @@ int main(int argc, char** argv)
             foreach(const QString& mode, mainWindow->modes())
                 fprintf(stdout, " * %s\n", qPrintable(mode));
             return 0;
+        }
+
+        foreach(const QString &arg, parser.positionalArguments()) {
+            QUrl url(arg);
+            if (url.scheme() == QLatin1String("appstream")) {
+                mainWindow->openApplication(url.path());
+            }
         }
     }
 
