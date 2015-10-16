@@ -44,9 +44,11 @@ DummyBackend::DummyBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_reviews(new DummyReviewsBackend(this))
-    , m_fetching(false)
+    , m_fetching(true)
     , m_startElements(320)
-{}
+{
+    QTimer::singleShot(500, this, &DummyBackend::toggleFetching);
+}
 
 void DummyBackend::setMetaData(const QString& path)
 {
@@ -55,7 +57,8 @@ void DummyBackend::setMetaData(const QString& path)
     KConfigGroup metadata = cfg->group(QStringLiteral("Desktop Entry"));
 
     populate(metadata.readEntry("Name", QString()));
-    m_reviews->initialize();
+    if (!m_fetching)
+        m_reviews->initialize();
 
     QAction* updateAction = new QAction(this);
     updateAction->setIcon(QIcon::fromTheme("system-software-update"));
