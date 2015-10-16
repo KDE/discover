@@ -25,35 +25,35 @@ import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
 
 Item {
+    id: top
     readonly property string title: ""
     readonly property string icon: "go-home"
+    readonly property real proposedMargin: (width-app.actualWidth)/2
     clip: true
 
     function searchFor(text) {
         Navigation.openApplicationList("edit-find", i18n("Search..."), null, text)
     }
 
-    ColumnLayout
-    {
-        width: app.actualWidth
-        anchors {
-            horizontalCenter: parent.horizontalCenter
-            top: parent.top
-            bottom: parent.bottom
-        }
+    ScrollView {
+        anchors.fill: parent
 
-        FeaturedBanner {
-            Layout.fillWidth: true
-            anchors.horizontalCenter: parent.horizontalCenter
-            Layout.preferredHeight: 310
-        }
+        ColumnLayout
+        {
+            x: top.proposedMargin
+            width: app.actualWidth
 
-        CategoryDisplay {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-        }
-        Item {
-            Layout.fillHeight: true
+            FeaturedBanner {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 310
+            }
+
+            CategoryDisplay {
+                Layout.fillWidth: true
+            }
+            Item {
+                height: 5
+            }
         }
     }
 }
