@@ -55,7 +55,6 @@ void PaginateModel::setPageSize(int count)
         const int oldSize = rowsByPageSize(m_pageSize);
         const int newSize = rowsByPageSize(count);
         const int difference = newSize - oldSize;
-        qDebug() << "oldold" << oldSize << difference;
         if (difference==0) {
             m_pageSize = count;
         } else if(difference>0) {
