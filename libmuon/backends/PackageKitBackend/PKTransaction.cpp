@@ -131,6 +131,7 @@ void PKTransaction::errorFound(PackageKit::Transaction::Error err, const QString
     Q_UNUSED(error);
     if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
         return;
+    qWarning() << "PackageKit error:" << err << PackageKitMessages::errorMessage(err);
     QMessageBox::critical(nullptr, i18n("PackageKit Error"), PackageKitMessages::errorMessage(err));
 }
 
