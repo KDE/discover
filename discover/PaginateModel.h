@@ -93,6 +93,7 @@ class PaginateModel : public QAbstractListModel
         void pageCountChanged();
 
     private:
+        int rowsByPageSize(int size) const;
         int m_firstItem;
         int m_pageSize;
         QAbstractItemModel* m_sourceModel;
