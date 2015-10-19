@@ -34,7 +34,7 @@ MouseArea {
         rows: categoryItem.horizontal ? 1 : 2
         columns: categoryItem.horizontal ? 2 : 1
 
-        anchors.centerIn: parent
+        anchors.top: parent.top
         width: parent.width
         columnSpacing: 10
         rowSpacing: 5
