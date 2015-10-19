@@ -29,9 +29,9 @@ Information {
     model: FeaturedModel {}
     
     delegate: MouseArea {
-            property QtObject modelData: model
+            readonly property QtObject modelData: model
+            readonly property real size: PathView.itemScale
             enabled: modelData.package!=""
-            readonly property real size: PathView.isCurrentItem ? 1 : 0.7
             width: 400 * size
             height: 250 * size
 
@@ -42,8 +42,6 @@ Information {
                     Qt.openUrlExternally(modelData.url)
             }
             
-            Behavior on width { NumberAnimation { duration: 250 } }
-            Behavior on height { NumberAnimation { duration: 250 } }
             z: PathView.isCurrentItem && !PathView.view.moving ? 1 : -1
             id: itemDelegate
             
@@ -52,7 +50,7 @@ Information {
                 anchors.fill: parent
 
                 function endsWith(str, suffix) {
-                    return str.indexOf(suffix, str.length - str.length) !== -1;
+                    return str.indexOf(suffix, str.length - suffix.length) !== -1;
                 }
 
                 source: endsWith(modelData.image, ".qml") ? modelData.image : "qrc:/qml/FeaturedImage.qml"

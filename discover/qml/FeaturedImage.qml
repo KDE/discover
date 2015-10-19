@@ -9,7 +9,7 @@ Flickable {
     contentWidth: Math.max(image.width, width)
     contentHeight: Math.max(image.height, height)
     property bool isCurrentItem: itemDelegate.PathView.isCurrentItem
-    
+
     states: [
         State {
             name: "shownSmall"
@@ -24,7 +24,7 @@ Flickable {
         State {
             name: "shownBig"
             when: flick.isCurrentItem
-            PropertyChanges { target: flick; contentY: flick.contentHeight-flick.height }
+            PropertyChanges { target: flick; contentY: (flick.contentHeight-flick.height)/2 }
         },
         State {
             name: "notShown"
