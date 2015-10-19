@@ -24,32 +24,23 @@ ScrollView
             Layout.fillWidth: true
 
             ConditionalLoader {
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    verticalCenter: parent.verticalCenter
-                    margins: 10
-                }
+                anchors.fill: parent
 
                 condition: resourcesUpdatesModel.isProgressing
                 componentFalse: RowLayout {
                     LabelBackground {
-                        anchors.verticalCenter: parent.verticalCenter
                         text: updateModel.toUpdateCount
                     }
                     Label {
-                        anchors.verticalCenter: parent.verticalCenter
                         text: i18n("updates selected")
                     }
                     LabelBackground {
                         id: unselectedItem
                         readonly property int unselected: (updateModel.totalUpdatesCount - updateModel.toUpdateCount)
-                        anchors.verticalCenter: parent.verticalCenter
                         text: unselected
                         visible: unselected>0
                     }
                     Label {
-                        anchors.verticalCenter: parent.verticalCenter
                         text: i18n("updates not selected")
                         visible: unselectedItem.visible
                     }

@@ -24,8 +24,7 @@ Item {
 
             model: SourcesModel
 
-            header: GridItem {
-                height: 50
+            header: PageHeader {
                 x: page.proposedMargin
                 width: app.actualWidth
                 hoverEnabled: false

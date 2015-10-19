@@ -17,7 +17,22 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-GridItem {
+import QtQuick 2.0
+
+GridItem
+{
+    id: root
     height: 50
     hoverEnabled: false
+
+    readonly property real internalMargin: 5
+
+    default property alias content: paddingItem.data
+    Item {
+        id: paddingItem
+        anchors {
+            fill: parent
+            margins: root.internalMargin
+        }
+    }
 }
