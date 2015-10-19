@@ -67,7 +67,8 @@ Item {
         page.sectionDelegate = role=="canUpgrade" ? installedSectionDelegate : defaultSectionDelegate
     }
 
-    readonly property alias currentSortAction: sortActionGroup.current
+    ExclusiveGroup { id: sortActionGroup }
+    readonly property string currentSortAction: sortActionGroup.current.text
     readonly property Menu sortMenu: Menu {
         MenuItem {
             text: i18n("Name")
@@ -105,7 +106,6 @@ Item {
             exclusiveGroup: sortActionGroup
         }
     }
-    ExclusiveGroup { id: sortActionGroup }
     
     property Component tools: RowLayout {
             visible: page.visible

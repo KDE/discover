@@ -7,13 +7,13 @@ ApplicationsListPage {
     id: page
     stateFilter: 2
     preferList: true
-    
+
     Component.onCompleted: {
         page.changeSorting("canUpgrade", Qt.AscendingOrder, "canUpgrade")
     }
 
-    property var icon: "applications-other"
-    property string title: i18n("Installed")
+    readonly property var icon: "applications-other"
+    readonly property string title: i18n("Installed")
 
     header: PageHeader {
         width: app.actualWidth
@@ -36,7 +36,7 @@ ApplicationsListPage {
             Item { Layout.fillWidth: true }
             Label { text: i18n("Sort by ") }
             Button {
-                text: page.currentSortAction.text
+                text: page.currentSortAction
                 menu: page.sortMenu
             }
         }
