@@ -22,72 +22,136 @@ import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.muon 1.0
 import org.kde.kquickcontrolsaddons 2.0
+import "navigation.js" as Navigation
 
-RowLayout
+ConditionalLoader
 {
     id: page
-    property alias category: view.category
-    readonly property bool extended: !app.isCompact && view.count>5
+    property QtObject category: null
 
-    spacing: 3
+    CategoryModel {
+        id: categoryModel
+        displayedCategory: page.category
+    }
 
-    ApplicationsTop {
-        id: top
-        Layout.fillHeight: true
-        Layout.fillWidth: true
-        sortRole: "sortableRating"
-        filteredCategory: page.category
-        title: i18n("Popularity")
-        extended: page.extended
-        roleDelegate: Item {
-            width: bg.width
-            property variant model
-            LabelBackground {
-                id: bg
-                anchors.centerIn: parent
-                text: model.sortableRating.toFixed(2)
+    condition: !app.isCompact
+    componentTrue: RowLayout {
+            id: gridRow
+            readonly property bool extended: !app.isCompact && view.count>5
+            spacing: 3
+
+            ApplicationsTop {
+                id: top
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                sortRole: "sortableRating"
+                filteredCategory: categoryModel.displayedCategory
+                title: i18n("Popularity")
+                extended: gridRow.extended
+                roleDelegate: Item {
+                    width: bg.width
+                    property variant model
+                    LabelBackground {
+                        id: bg
+                        anchors.centerIn: parent
+                        text: model.sortableRating.toFixed(2)
+                    }
+                }
+            }
+            ApplicationsTop {
+                id: top2
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                sortRole: "ratingPoints"
+                filteredCategory: categoryModel.displayedCategory
+                title: i18n("Rating")
+                extended: gridRow.extended
+                roleDelegate: Rating {
+                    property variant model
+                    rating: model.rating
+                    height: 12
+                }
+            }
+
+            Item {
+                width: 4
+            }
+
+            ColumnLayout {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.preferredWidth: page.width/2
+                Layout.maximumHeight: top.height
+
+                spacing: -2
+
+                Label {
+                    text: i18n("Categories")
+                    Layout.fillWidth: true
+                    font.weight: Font.Bold
+                    Layout.minimumHeight: paintedHeight*1.5
+                }
+
+                CategoryView {
+                    id: view
+                    model: categoryModel
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+                }
             }
         }
-    }
-    ApplicationsTop {
-        id: top2
-        Layout.fillHeight: true
-        Layout.fillWidth: true
-        visible: !app.isCompact
-        sortRole: "ratingPoints"
-        filteredCategory: page.category
-        title: i18n("Rating")
-        extended: page.extended
-        roleDelegate: Rating {
-            property variant model
-            rating: model.rating
-            height: 12
-        }
-    }
 
-    Item {
-        width: 4
-    }
+    componentFalse: ColumnLayout {
+            Layout.minimumHeight: 5000
 
-    ColumnLayout {
-        Layout.fillWidth: true
-        Layout.fillHeight: true
-        Layout.preferredWidth: page.width/2
-        Layout.maximumHeight: top.height
+            ApplicationsTop {
+                id: top
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                sortRole: "sortableRating"
+                filteredCategory: categoryModel.displayedCategory
+                title: i18n("Popularity")
+                roleDelegate: Item {
+                    width: bg.width
+                    property variant model
+                    LabelBackground {
+                        id: bg
+                        anchors.centerIn: parent
+                        text: model.sortableRating.toFixed(2)
+                    }
+                }
+            }
+            Label {
+                text: i18n("Categories")
+                Layout.fillWidth: true
+                font.weight: Font.Bold
+                Layout.minimumHeight: paintedHeight*1.5
+            }
 
-        spacing: -2
+            Repeater {
+                id: view
+                Layout.fillWidth: true
+                model: categoryModel
 
-        Label {
-            text: i18n("Categories")
-            Layout.fillWidth: true
-            font.weight: Font.Bold
-            Layout.minimumHeight: paintedHeight*1.5
-        }
+                delegate: GridItem {
+                    height: 40
+                    Layout.fillWidth: true
+                    RowLayout {
+                        QIconItem {
+                            icon: decoration
+                            width: 32
+                            height: width
+                        }
+                        Label {
+                            text: display
+                            Layout.fillWidth: true
+                            wrapMode: Text.WordWrap
 
-        CategoryView {
-            id: view
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-        }
+                            maximumLineCount: 2
+                        }
+                    }
+                    onClicked: Navigation.openCategory(category)
+                }
+            }
     }
 }

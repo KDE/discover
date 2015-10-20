@@ -26,7 +26,7 @@ import "navigation.js" as Navigation
 
 GridItem
 {
-    property alias category: categoryModel.displayedCategory
+    property alias model: grid.model
     readonly property alias count: grid.count
     hoverEnabled: false
 
@@ -43,32 +43,22 @@ GridItem
             cellHeight: app.isCompact ? 35 : 60
             boundsBehavior: Flickable.StopAtBounds
 
-            model: CategoryModel {
-                id: categoryModel
-                displayedCategory: null
-            }
-
             delegate: MouseArea {
                 id: categoryItem
-                property bool horizontal: app.isCompact
                 enabled: true
 
                 width: grid.cellWidth
                 height: grid.cellHeight-2
 
-                GridLayout {
+                ColumnLayout {
                     id: layout
-                    rows: categoryItem.horizontal ? 1 : 2
-                    columns: categoryItem.horizontal ? 2 : 1
 
                     anchors.top: parent.top
                     width: parent.width
-                    columnSpacing: 10
-                    rowSpacing: 5
+                    spacing: 5
                     Item {
-                        Layout.fillWidth: !categoryItem.horizontal
-                        Layout.fillHeight: categoryItem.horizontal
-                        Layout.preferredWidth: categoryItem.horizontal ? nameLabel.paintedHeight*2 : 32
+                        Layout.fillWidth: true
+                        Layout.preferredWidth: 32
                         Layout.preferredHeight: Layout.preferredWidth
 
                         QIconItem {
@@ -82,11 +72,10 @@ GridItem
                         id: nameLabel
                         text: display
                         Layout.fillWidth: true
-                        horizontalAlignment: !categoryItem.horizontal ? Text.AlignHCenter : Text.AlignLeft
+                        horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
                         wrapMode: Text.WordWrap
 
-                        renderType: Text.QtRendering
                         maximumLineCount: 2
                     }
                 }
