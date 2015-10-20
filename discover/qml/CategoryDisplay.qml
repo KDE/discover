@@ -26,8 +26,8 @@ import org.kde.kquickcontrolsaddons 2.0
 RowLayout
 {
     id: page
-    property alias category: categoryModel.displayedCategory
-    readonly property bool extended: !app.isCompact && grid.count>5
+    property alias category: view.category
+    readonly property bool extended: !app.isCompact && view.count>5
 
     spacing: 3
 
@@ -84,36 +84,10 @@ RowLayout
             Layout.minimumHeight: paintedHeight*1.5
         }
 
-        GridItem {
+        CategoryView {
+            id: view
             Layout.fillWidth: true
             Layout.fillHeight: true
-            hoverEnabled: false
-
-            ScrollView {
-                anchors {
-                    margins: -3
-                    fill: parent
-                }
-
-                GridView {
-                    id: grid
-
-                    cellWidth: app.isCompact ? width : width/Math.floor(width/100)
-                    cellHeight: app.isCompact ? 35 : 60
-                    boundsBehavior: Flickable.StopAtBounds
-
-                    model: CategoryModel {
-                        id: categoryModel
-                        displayedCategory: null
-                    }
-
-                    delegate: CategoryDelegate {
-                        horizontal: app.isCompact
-                        width: grid.cellWidth
-                        height: grid.cellHeight-2
-                    }
-                }
-            }
         }
     }
 }
