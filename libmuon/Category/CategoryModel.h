@@ -30,7 +30,7 @@ class Category;
 class MUONCOMMON_EXPORT CategoryModel : public QStandardItemModel
 {
     Q_OBJECT
-    Q_PROPERTY(Category* displayedCategory READ displayedCategory WRITE setDisplayedCategory)
+    Q_PROPERTY(Category* displayedCategory READ displayedCategory WRITE setDisplayedCategory NOTIFY categoryChanged)
     public:
         enum CategoryModelRole {
             CategoryRole = Qt::UserRole + 1
@@ -56,6 +56,10 @@ class MUONCOMMON_EXPORT CategoryModel : public QStandardItemModel
 
         Q_SCRIPTABLE static Category* findCategoryByName(const QString& name);
         static void blacklistPlugin(const QString& name);
+
+    Q_SIGNALS:
+        void categoryChanged(Category* displayedCategory);
+
     private:
         void categoryDeleted(QObject* cat);
         void setCategories(const QList<Category *> &categoryList, const QString &rootName);
