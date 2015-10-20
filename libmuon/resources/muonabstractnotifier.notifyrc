@@ -45,6 +45,7 @@ Comment[zh_TW]=Muon
 
 [Event/Update]
 Name=Updates Are Available
+Name[ast]=Tán disponibles anovamientos
 Name[bg]=Има налични обновления
 Name[bs]=Nadogradnje su dostupne
 Name[ca]=Hi ha actualitzacions disponibles
