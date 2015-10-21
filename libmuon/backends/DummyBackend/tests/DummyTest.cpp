@@ -19,6 +19,8 @@
  ***************************************************************************/
 
 #include "DummyTest.h"
+#include <resources/ResourcesUpdatesModel.h>
+#include <UpdateModel/UpdateModel.h>
 #include <modeltest.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>
@@ -163,4 +165,14 @@ void DummyTest::testReviewsModel()
     QCOMPARE(ReviewsModel::UserChoice(m.data(m.index(0,0), ReviewsModel::UsefulChoice).toInt()), ReviewsModel::Yes);
     m.markUseful(0, false);
     QCOMPARE(ReviewsModel::UserChoice(m.data(m.index(0,0), ReviewsModel::UsefulChoice).toInt()), ReviewsModel::No);
+}
+
+void DummyTest::testUpdateModel()
+{
+    ResourcesUpdatesModel ruModel;
+    UpdateModel model;
+    model.setBackend(&ruModel);
+
+    QCOMPARE(model.rowCount(), 2);
+    QCOMPARE(model.hasUpdates(), true);
 }
