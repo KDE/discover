@@ -45,7 +45,7 @@ HistoryView::HistoryView(QWidget *parent)
     QHBoxLayout *headerLayout = new QHBoxLayout(headerWidget);
 
     QLabel *headerLabel = new QLabel(headerWidget);
-    headerLabel->setText(i18nc("@info", "<title>History</title>"));
+    headerLabel->setText(xi18nc("@info", "<title>History</title>"));
 
     QWidget *headerSpacer = new QWidget(headerWidget);
     headerSpacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);

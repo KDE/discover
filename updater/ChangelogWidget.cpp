@@ -150,8 +150,8 @@ void ChangelogWidget::changelogFetched(const QString& changelog)
         // Work around http://bugreports.qt.nokia.com/browse/QTBUG-2533 by forcibly resetting the CharFormat
         m_changelogBrowser->setCurrentCharFormat(QTextCharFormat());
         QString fullText;
-        fullText += i18nc("@info/rich", "<p><b>Package Name:</b> <a href='package:%1'>%1</a></p>", m_package->packageName());
-        fullText += i18nc("@info/rich", "<p><b>Installed Version:</b> %1</p>", m_package->installedVersion());
+        fullText += xi18nc("@info/rich", "<p><b>Package Name:</b> <a href='package:%1'>%1</a></p>", m_package->packageName());
+        fullText += xi18nc("@info/rich", "<p><b>Installed Version:</b> %1</p>", m_package->installedVersion());
         fullText += changelog;
         m_changelogBrowser->setHtml(fullText);
     }
