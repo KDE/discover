@@ -18,7 +18,7 @@ ScrollView
     ColumnLayout
     {
         x: proposedMargin
-        width: app.actualWidth
+        width: Math.min(app.actualWidth, page.viewport.width)
 
         PageHeader {
             Layout.fillWidth: true

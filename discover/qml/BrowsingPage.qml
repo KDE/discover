@@ -36,12 +36,13 @@ Item {
     }
 
     ScrollView {
+        id: view
         anchors.fill: parent
 
         ColumnLayout
         {
             x: top.proposedMargin
-            width: app.actualWidth
+            width: Math.min(app.actualWidth, view.viewport.width)
 
             FeaturedBanner {
                 Layout.fillWidth: true

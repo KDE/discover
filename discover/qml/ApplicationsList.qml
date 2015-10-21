@@ -42,7 +42,7 @@ ScrollView {
         delegate: GridItem {
                 id: delegateArea
 //                 checked: view.currentIndex==index
-                width: app.actualWidth
+                width: Math.min(app.actualWidth, parentItem.viewport.width)
                 x: parentItem.proposedMargin
                 property real contHeight: height*0.8
                 height: lowLayout.implicitHeight

@@ -26,7 +26,7 @@ Item {
 
             header: PageHeader {
                 x: page.proposedMargin
-                width: app.actualWidth
+                width: Math.min(app.actualWidth, view.viewport.width)
                 hoverEnabled: false
                 RowLayout {
                     anchors.verticalCenter: parent.verticalCenter
@@ -61,7 +61,7 @@ Item {
             delegate: ColumnLayout {
                 id: sourceDelegate
                 x: page.proposedMargin
-                width: app.actualWidth
+                width: Math.min(app.actualWidth, view.viewport.width)
                 spacing: -2
 
                 property QtObject sourceBackend: model.sourceBackend
