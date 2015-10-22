@@ -25,93 +25,108 @@ import QtQuick.Layouts 1.1
 ToolBar
 {
     id: root
-    Layout.preferredHeight: backAction.height+2
-    Layout.fillWidth: true
-    property Item search: searchWidget
+    property Item search: app.isCompact ? compactSearch : null
+    Layout.preferredHeight: layout.Layout.preferredHeight
 
     ExclusiveGroup {
         id: appTabs
     }
+    Timer {
+        id: searchTimer
+        running: false
+        repeat: false
+        interval: 200
+        onTriggered: { stackView.currentItem.searchFor(root.search.text) }
+    }
 
-    RowLayout {
+    ColumnLayout {
         id: layout
-        spacing: 1
         anchors.fill: parent
+        spacing: 0
 
-        ToolButton {
-            id: backAction
-            objectName: "back"
-            action: Action {
-                shortcut: "Alt+Up"
-                iconName: "go-previous"
-                enabled: window.navigationEnabled && breadcrumbsItem.count>1
-                tooltip: i18n("Back")
-                onTriggered: { breadcrumbsItem.popItem(false) }
-            }
-        }
+        RowLayout {
+            spacing: 1
+            anchors.fill: parent
+            Layout.alignment: Qt.AlignVCenter
 
-        ConditionalLoader {
-            condition: app.isCompact
-            componentFalse: RowLayout {
-                Repeater {
-                    model: window.awesome
-                    delegate: Button {
-                        enabled: modelData.enabled
-                        checkable: modelData.checkable
-                        checked: modelData.checked
-                        onClicked: modelData.trigger();
-                        iconName: modelData.iconName
-                        text: modelData.text
-                        tooltip: modelData.shortcut
-                        exclusiveGroup: appTabs
-                    }
+            ToolButton {
+                id: backAction
+                objectName: "back"
+                visible: !app.isCompact
+                Layout.alignment: Qt.AlignVCenter
+                action: Action {
+                    shortcut: "Alt+Up"
+                    iconName: "go-previous"
+                    enabled: window.navigationEnabled && stackView.depth>1
+                    tooltip: i18n("Back")
+                    onTriggered: { stackView.pop() }
                 }
             }
-            componentTrue: Button {
-                text: appTabs.current ? appTabs.current.text: ""
-                menu: Menu {
-                    id: menu
-                    Instantiator {
-                        model: window.awesome
-                        MenuItem {
-                            enabled: modelData.enabled
-                            checkable: modelData.checkable
-                            checked: modelData.checked
-                            onTriggered: modelData.trigger();
-                            iconName: modelData.iconName
-                            text: modelData.text
-//                             tooltip: modelData.shortcut
-                            exclusiveGroup: appTabs
-                        }
-                        onObjectAdded: menu.insertItem(index, object)
-                        onObjectRemoved: menu.removeItem(object)
-                    }
+
+            Repeater {
+                model: window.awesome
+                delegate: Button {
+                    enabled: modelData.enabled
+                    checkable: modelData.checkable
+                    checked: modelData.checked
+                    onClicked: modelData.trigger();
+                    iconName: modelData.iconName
+                    text: app.isCompact ? "" : modelData.text
+                    tooltip: i18n("%1 (%2)", modelData.text, modelData.shortcut)
+                    exclusiveGroup: appTabs
                 }
             }
-        }
 
-        Item {
-            Layout.fillWidth: !app.isCompact
+            Item {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+            }
+            ConditionalLoader {
+                condition: app.isCompact
+                enabled: stackView.currentItem!=null && stackView.currentItem.searchFor!=null
+
+                componentTrue: Button {
+                    iconName: "search"
+                    checkable: true
+                    onCheckedChanged: {
+                        compactSearch.visible = checked
+                        compactSearch.focus = true
+                    }
+                }
+                componentFalse: TextField {
+                    id: searchWidget
+                    Component.onCompleted: {
+                        root.search = searchWidget
+                    }
+                    focus: true
+
+                    placeholderText: i18n("Search...")
+                    onTextChanged: searchTimer.running = true
+                    onEditingFinished: if(text == "" && backAction.enabled) {
+                        backAction.trigger()
+                    }
+                }
+
+            }
+            ToolButton {
+                id: button
+                iconName: "application-menu"
+                tooltip: i18n("Configure and learn about Muon Discover")
+                onClicked: {
+                    var pos = mapToItem(window, 0, height);
+                    app.showMenu(pos.x, pos.y);
+                }
+            }
         }
         TextField {
-            id: searchWidget
-            Layout.fillWidth: app.isCompact
-            placeholderText: i18n("Search...")
-            focus: true
-            enabled: pageStack.currentItem!=null && pageStack.currentItem.searchFor!=null
+            id: compactSearch
+            visible: false
+            Layout.fillWidth: true
 
+            placeholderText: i18n("Search...")
             onTextChanged: searchTimer.running = true
-            onEditingFinished: if(searchWidget.text == "" && backAction.enabled) {
+            onEditingFinished: if(text == "" && backAction.enabled) {
                 backAction.trigger()
-            }
-        }
-        ToolButton {
-            id: button
-            iconName: "application-menu"
-            tooltip: i18n("Configure and learn about Muon Discover")
-            onClicked: {
-                var pos = mapToItem(window, 0, height);
-                app.showMenu(pos.x, pos.y);
             }
         }
     }

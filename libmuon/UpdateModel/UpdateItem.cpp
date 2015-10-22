@@ -215,3 +215,16 @@ UpdateItem::ItemType UpdateItem::type() const
 {
     return m_type;
 }
+
+int UpdateItem::checkedItems() const
+{
+    if (m_app)
+        return checked()!=Qt::Unchecked ? 1 : 0;
+    else {
+        int ret = 0;
+        foreach(UpdateItem* item, children()) {
+            ret += item->checkedItems();
+        }
+        return ret;
+    }
+}

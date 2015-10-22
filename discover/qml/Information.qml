@@ -3,21 +3,29 @@ import QtQuick 2.1
 PathView {
     id: viewItem
     interactive: false
-    pathItemCount: count
+    pathItemCount: 3
+    cacheItemCount: count
     highlightMoveDuration: 500
-    property real delWidth: width
-    property real delHeight: height
+    readonly property real oriX: viewItem.width/2
+    readonly property real oriY: viewItem.height/2
     property alias slideDuration: timer.interval
     
     path: Path {
-        startX: delWidth/2; startY: delHeight/2
-        PathLine { x: 3*delWidth; y: delHeight/2 }
-        PathLine { x: 3*delWidth; y: -delHeight }
-        PathLine { x: -3*delWidth; y: -delHeight }
-        PathLine { x: -3*delWidth; y: delHeight/2 }
-        PathLine { x: delWidth/2; y: delHeight/2 }
+        startX: oriX; startY: oriY
+        PathAttribute { name: "itemScale"; value: 1. }
+        PathLine { x: oriX-500; y: oriY }
+        PathAttribute { name: "itemScale"; value: .7 }
+        PathPercent { value: 0.5 }
+        PathLine { x: oriX-800; y: oriY-1900 }
+        PathLine { x: oriX+800; y: oriY-1900 }
+        PathLine { x: oriX+500; y: oriY }
+        PathAttribute { name: "itemScale"; value: .7 }
+        PathPercent { value: 0.5 }
+        PathLine { x: oriX; y: oriY }
+        PathAttribute { name: "itemScale"; value: 1 }
+        PathPercent { value: 1 }
     }
-    
+
     function next() { incrementCurrentIndex() }
     function previous() { decrementCurrentIndex() }
     

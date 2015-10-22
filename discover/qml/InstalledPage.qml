@@ -7,31 +7,38 @@ ApplicationsListPage {
     id: page
     stateFilter: 2
     preferList: true
-    
-    Component {
-        id: updatesPage
-        UpdatesPage {}
-    }
-    
-    extendedToolBar: Component {
-        id: toolbarComponent
-        RowLayout {
-            Button {
-                id: commitButton
-                text: i18n("Update All")
-                iconSource: "system-software-update"
-                visible: ResourcesModel.updatesCount>0
-                width: ResourcesModel.updatesCount>0 ? commitButton.implicitWidth : 0
 
-                onClicked: {
-                    var updates = page.Stack.view.push(updatesPage)
-                    updates.start()
-                }
-            }
-        }
-    }
-    
     Component.onCompleted: {
         page.changeSorting("canUpgrade", Qt.AscendingOrder, "canUpgrade")
+    }
+
+    readonly property var icon: "applications-other"
+    readonly property string title: i18n("Installed")
+
+    header: PageHeader {
+        width: app.actualWidth
+        x: page.proposedMargin
+
+        RowLayout {
+            anchors.fill: parent
+
+            LabelBackground {
+                text: page.model.count
+            }
+            Label {
+                text: i18n("items installed")
+            }
+            Item { Layout.fillWidth: true }
+            Label {
+                visible: TransactionModel.count>0
+                text: i18n("%1 jobs pending...", TransactionModel.count)
+            }
+            Item { Layout.fillWidth: true }
+            Label { text: i18n("Sort by ") }
+            Button {
+                text: page.currentSortAction
+                menu: page.sortMenu
+            }
+        }
     }
 }

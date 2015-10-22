@@ -18,9 +18,9 @@
  */
 
 #include "MuonDiscoverMainWindow.h"
-#include "DiscoverAction.h"
 #include "PaginateModel.h"
 #include "SystemFonts.h"
+#include "IconColors.h"
 
 // Qt includes
 #include <QDebug>
@@ -78,7 +78,7 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     kdeclarative.setupBindings();
     
     qmlRegisterType<PaginateModel>("org.kde.muon.discover", 1, 0, "PaginateModel");
-    qmlRegisterType<DiscoverAction>("org.kde.muon.discover", 1, 0, "DiscoverAction");
+    qmlRegisterType<IconColors>("org.kde.muon.discover", 1, 0, "IconColors");
     qmlRegisterSingletonType<SystemFonts>("org.kde.muon.discover", 1, 0, "SystemFonts", ([](QQmlEngine*, QJSEngine*) -> QObject* { return new SystemFonts; }));
     qmlRegisterType<KXmlGuiWindow>();
     qmlRegisterType<QActionGroup>();
@@ -207,7 +207,7 @@ bool MuonDiscoverMainWindow::isCompact() const
         return true;
 
     const qreal pixelDensity = windowHandle()->screen()->physicalDotsPerInch() / 25.4;
-    return (width()/pixelDensity)<70; //we'll use compact if the width of the window is less than 7cm
+    return (width()/pixelDensity)<100; //we'll use compact if the width of the window is less than 7cm
 }
 
 qreal MuonDiscoverMainWindow::actualWidth() const
@@ -236,6 +236,10 @@ void MuonDiscoverMainWindow::setupActions()
     QAction *quitAction = KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), actionCollection());
     actionCollection()->addAction("file_quit", quitAction);
 
+    QAction* configureSourcesAction = new QAction(QIcon::fromTheme("repository"), i18n("Configure Sources"), this);
+    connect(configureSourcesAction, &QAction::triggered, this, &MuonDiscoverMainWindow::configureSources);
+    actionCollection()->addAction("configure_sources", configureSourcesAction);
+
     menuBar()->setVisible(false);
     toolBar("discoverToolBar")->setVisible(false);
 
@@ -255,6 +259,7 @@ void MuonDiscoverMainWindow::configureMenu()
     if (!m_moreMenu->isEmpty())
         m_moreMenu->addSeparator();
 
+    m_moreMenu->addAction(actionCollection()->action("configure_sources"));
     m_moreMenu->addAction(actionCollection()->action("options_configure_keybinding"));
     m_moreMenu->addSeparator();
     m_moreMenu->addMenu(m_advancedMenu);
@@ -262,6 +267,11 @@ void MuonDiscoverMainWindow::configureMenu()
     m_moreMenu->addAction(actionCollection()->action("help_about_app"));
     m_moreMenu->addAction(actionCollection()->action("help_about_kde"));
     m_moreMenu->addAction(actionCollection()->action("help_report_bug"));
+}
+
+void MuonDiscoverMainWindow::configureSources()
+{
+    openMode("Sources");
 }
 
 bool MuonDiscoverMainWindow::queryClose()

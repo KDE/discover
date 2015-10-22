@@ -81,7 +81,7 @@ ProgressWidget::ProgressWidget(ResourcesUpdatesModel* updates, QWidget *parent)
             m_ui->header, SLOT(setText(QString)));
     connect(m_updater, SIGNAL(statusDetailChanged(QString)),
             m_ui->details, SLOT(setText(QString)));
-    connect(m_updater, SIGNAL(progressingChanged()),
+    connect(m_updater, SIGNAL(progressingChanged(bool)),
             SLOT(updateIsProgressing()));
     
     cancelChanged();

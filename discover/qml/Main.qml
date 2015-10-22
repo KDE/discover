@@ -31,13 +31,13 @@ Rectangle
     id: window
     property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
     property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
-    property Component categoryComp: Qt.createComponent("qrc:/qml/CategoryPage.qml")
+    property Component categoryComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
     property Component reviewsComp: Qt.createComponent("qrc:/qml/ReviewsPage.qml")
 
     //toplevels
     property Component topBrowsingComp: Qt.createComponent("qrc:/qml/BrowsingPage.qml")
     property Component topInstalledComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
-    property Component topUpdateComp: Qt.createComponent("qrc:/qml/PresentUpdatesPage.qml")
+    property Component topUpdateComp: Qt.createComponent("qrc:/qml/UpdatesPage.qml")
     property Component topSourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
     property Component currentTopLevel: defaultStartup ? topBrowsingComp : loadingComponent
     property bool defaultStartup: true
@@ -48,13 +48,9 @@ Rectangle
     SystemPalette { id: palette }
     color: palette.base
 
-    function clearSearch() { toolbar.search.text="" }
-    Timer {
-        id: searchTimer
-        running: false
-        repeat: false
-        interval: 200
-        onTriggered: { pageStack.currentItem.searchFor(toolbar.search.text) }
+    function clearSearch() {
+        if (toolbar.search)
+            toolbar.search.text=""
     }
 
     Component {
@@ -75,26 +71,26 @@ Rectangle
         if(currentTopLevel.status==Component.Error) {
             console.log("status error: "+currentTopLevel.errorString())
         }
-        while(pageStack.depth>1) {
-            var obj = pageStack.pop()
+        while(stackView.depth>1) {
+            var obj = stackView.pop()
             if(obj)
                 obj.destroy(2000)
         }
-        if(pageStack.currentItem) {
-            pageStack.currentItem.destroy(100)
+        if(stackView.currentItem) {
+            stackView.currentItem.destroy(100)
         }
         var page;
         try {
-            page = currentTopLevel.createObject(pageStack)
-//             console.log("created ", currentTopLevel, Navigation.rootPagesCache[currentTopLevel])
+            page = currentTopLevel.createObject(stackView)
+//             console.log("created ", currentTopLevel)
         } catch (e) {
             console.log("error: "+e)
             console.log("comp error: "+currentTopLevel.errorString())
         }
-        pageStack.replace(page, {}, window.status!=Component.Ready)
+        stackView.replace(page, {}, window.status!=Component.Ready)
     }
 
-    property list<DiscoverAction> awesome: [
+    property list<Action> awesome: [
         TopLevelPageData {
             iconName: "tools-wizard"
             text: i18n("Discover")
@@ -104,7 +100,7 @@ Rectangle
         },
         TopLevelPageData {
             iconName: "applications-other"
-            text: i18n("Installed")
+            text: TransactionModel.count == 0 ? i18n("Installed") : i18n("Installing...")
             component: topInstalledComp
             objectName: "installed"
             shortcut: "Alt+I"
@@ -116,14 +112,6 @@ Rectangle
             component: topUpdateComp
             objectName: "update"
             shortcut: "Alt+U"
-        },
-        TopLevelPageData {
-            iconName: "repository"
-            text: i18n("Sources")
-            component: topSourcesComp
-            objectName: "sources"
-            shortcut: "Alt+S"
-            enabled: SourcesModel.count>0
         }
     ]
 
@@ -134,11 +122,27 @@ Rectangle
         onListCategoryInternal: Navigation.openCategoryByName(name)
     }
 
+    Rectangle {
+        gradient: Gradient {
+            GradientStop { position: 0.0; color: "darkGray" }
+            GradientStop { position: 1.0; color: "transparent" }
+        }
+        height: parent.height/5
+        anchors {
+            topMargin: toolbar.height
+            top: parent.top
+            left: parent.left
+            right: parent.right
+        }
+        visible: !fu.visible
+    }
+
     ColumnLayout {
         spacing: 0
         anchors.fill: parent
 
         MuonToolbar {
+            Layout.fillWidth: true
             id: toolbar
         }
 
@@ -164,64 +168,22 @@ Rectangle
             }
         }
 
-        Item {
+        Breadcrumbs {
+            id: fu
             Layout.fillWidth: true
-            Layout.preferredHeight: (breadcrumbsItem.visible || pageToolBar.visible) ? toolbar.Layout.preferredHeight : 0
+            visible: count>1
 
-
-            Breadcrumbs {
-                id: breadcrumbsItem
-
-                anchors {
-                    top: parent.top
-                    left: parent.left
-                    bottom: parent.bottom
-                    right: pageToolBar.left
-                    rightMargin: pageToolBar.visible ? 10 : 0
-                }
-
-                pageStack: pageStack
-                onPoppedPages: window.clearSearch()
-                Component.onCompleted: breadcrumbsItem.pushItem("go-home", "")
-//                 Behavior on height { NumberAnimation { duration: 250 } }
-            }
-
-            ToolBar {
-                id: pageToolBar
-
-                anchors {
-                    top: parent.top
-                    right: parent.right
-                    bottom: parent.bottom
-                }
-                Layout.minimumHeight: toolbarLoader.item ? toolbarLoader.item.Layout.minimumHeight : 0
-                width: toolbarLoader.item ? toolbarLoader.item.width+5 : 0
-                visible: width>0
-
-                Loader {
-                    id: toolbarLoader
-                    sourceComponent: pageStack.currentItem ? pageStack.currentItem.tools : null
-                }
-
-                Behavior on width { NumberAnimation { duration: 250 } }
-            }
+            pageStack: stackView
         }
 
         StackView {
-            id: pageStack
+            id: stackView
             Layout.fillWidth: true
             Layout.fillHeight: true
 
             onDepthChanged: {
-                if(depth==1) {
-                    breadcrumbsItem.removeAllItems()
-                }
+                window.clearSearch()
             }
-        }
-
-        ProgressView {
-            id: progressBox //used from UpdatesPage.qml
-            Layout.fillWidth: true
         }
     }
 }

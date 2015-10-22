@@ -26,6 +26,8 @@ ScrollView {
     id: page
     property alias model: reviewsView.model
     readonly property real proposedMargin: (width-app.actualWidth)/2
+    property var icon
+    property string title
 
     ListView {
         id: reviewsView

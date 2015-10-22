@@ -39,6 +39,7 @@
 UpdateModel::UpdateModel(QObject *parent)
     : QAbstractItemModel(parent)
     , m_updates(nullptr)
+    , m_updatesCount(0)
 {
     m_rootItem = new UpdateItem();
 
@@ -55,8 +56,9 @@ QHash<int,QByteArray> UpdateModel::roleNames() const
 {
     return QAbstractItemModel::roleNames().unite({
         { Qt::CheckStateRole, "checked" },
-        { VersionRole, "version" },
-        { SizeRole, "size" }
+        { ResourceRole, "resource" },
+        { SizeRole, "size" },
+        { VersionRole, "version" }
     } );
 }
 
@@ -125,6 +127,8 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         return item->version();
     case SizeRole:
         return KFormat().formatByteSize(item->size());
+    case ResourceRole:
+        return QVariant::fromValue<QObject*>(item->resource());
     default:
         break;
     }
@@ -251,6 +255,8 @@ bool UpdateModel::setData(const QModelIndex &idx, const QVariant &value, int rol
             emit dataChanged(index(0,0, idx), index(item->childCount()-1, 0, idx));
         }
 
+        Q_EMIT toUpdateChanged();
+
         return true;
     }
 
@@ -306,6 +312,8 @@ void UpdateModel::setResources(const QList< AbstractResource* >& resources)
     }
     endResetModel();
 
+    m_updatesCount = resources.count();
+
     Q_EMIT hasUpdatesChanged(!resources.isEmpty());
 }
 
@@ -317,4 +325,14 @@ bool UpdateModel::hasUpdates() const
 ResourcesUpdatesModel* UpdateModel::backend() const
 {
     return m_updates;
+}
+
+int UpdateModel::totalUpdatesCount() const
+{
+    return m_updatesCount;
+}
+
+int UpdateModel::toUpdateCount() const
+{
+    return m_rootItem->checkedItems();
 }

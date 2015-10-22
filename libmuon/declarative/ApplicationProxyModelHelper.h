@@ -30,6 +30,7 @@ class ApplicationProxyModelHelper : public ResourcesProxyModel, public QQmlParse
     Q_PROPERTY(int sortRole READ sortRole WRITE setSortRole_hack NOTIFY sortRoleChanged)
     Q_PROPERTY(QString stringSortRole READ stringSortRole WRITE setStringSortRole_hack NOTIFY sortRoleChanged)
     Q_PROPERTY(Qt::SortOrder sortOrder READ sortOrder WRITE setSortOrder_hack NOTIFY sortOrderChanged)
+    Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
     public:
         void setStateFilter_hack(int state);
         explicit ApplicationProxyModelHelper(QObject* parent = nullptr);
@@ -49,6 +50,7 @@ class ApplicationProxyModelHelper : public ResourcesProxyModel, public QQmlParse
     signals:
         void sortRoleChanged();
         void sortOrderChanged();
+        void countChanged();
 
     private:
         int stringToRole(const QByteArray& strRole) const;

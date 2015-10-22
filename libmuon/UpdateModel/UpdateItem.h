@@ -66,6 +66,9 @@ public:
     Qt::CheckState checked() const;
     ItemType type() const;
 
+    int checkedItems() const;
+    AbstractResource* resource() const { return m_app; }
+
 private:
     AbstractResource *m_app;
 

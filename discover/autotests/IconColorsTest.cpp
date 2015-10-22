@@ -1,5 +1,5 @@
 /*
- *   Copyright (C) 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
+ *   Copyright (C) 2015 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library/Lesser General Public License
@@ -17,19 +17,35 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.1
-import QtQuick.Controls 1.2
-import "navigation.js" as Navigation
+#include <QtTest>
+#include "../IconColors.h"
 
-Action {
-    property string overlay
-    property Component component
-    checkable: true
-    checked: window.currentTopLevel==component
-    enabled: window.navigationEnabled
+class IconColorsTest : public QObject
+{
+    Q_OBJECT
+public:
+    IconColorsTest() {}
 
-    onTriggered: {
-        if(window.currentTopLevel!=component)
-            window.currentTopLevel=component
+private slots:
+    void testIcon_data() {
+        QTest::addColumn<QString>("iconName");
+        QTest::addColumn<int>("hue");
+
+        QTest::newRow("akregator") << "akregator" << 15;
+        QTest::newRow("korganizer") << "korganizer" << 105;
     }
-}
+
+    void testIcon() {
+        QFETCH(QString, iconName);
+        QFETCH(int, hue);
+
+        IconColors colors;
+        colors.setIconName(iconName);
+
+        QCOMPARE(colors.dominantColor().hue(), hue);
+    }
+};
+
+QTEST_MAIN( IconColorsTest )
+
+#include "IconColorsTest.moc"

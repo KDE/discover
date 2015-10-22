@@ -35,17 +35,17 @@ ScrollView {
     ListView
     {
         id: view
-        spacing: 3
         snapMode: ListView.SnapToItem
         currentIndex: -1
+        spacing: -1 //this should be the same as -GridItem.border.width
         
         delegate: GridItem {
                 id: delegateArea
 //                 checked: view.currentIndex==index
-                width: app.actualWidth
+                width: Math.min(app.actualWidth, parentItem.viewport.width)
                 x: parentItem.proposedMargin
                 property real contHeight: height*0.8
-                height: lowLayout.implicitHeight*2
+                height: lowLayout.implicitHeight
                 internalMargin: 0
 
                 onClicked: {
@@ -53,81 +53,89 @@ ScrollView {
                     Navigation.openApplication(application)
                 }
 
-                QIconItem {
-                    id: resourceIcon
-                    icon: model.icon
-                    width: contHeight
-                    height: contHeight
-                    anchors {
-                        verticalCenter: parent.verticalCenter
-                        left: parent.left
-                    }
-
-                    QIconItem {
-                        anchors {
-                            right: resourceIcon.right
-                            bottom: resourceIcon.bottom
-                        }
-                        visible: isInstalled && view.model.stateFilter!=2
-                        icon: "checkmark"
-                        height: 16
-                        width: 16
-                    }
-                }
-
-                Label {
-                    id: nameLabel
-                    anchors {
-                        top: resourceIcon.top
-                        left: resourceIcon.right
-                        right: ratingsItem.left
-                        leftMargin: 5
-                    }
-                    font.pointSize: commentLabel.font.pointSize*1.7
-                    elide: Text.ElideRight
-                    text: name
-                }
-                Rating {
-                    id: ratingsItem
-                    anchors {
-                        right: parent.right
-                        verticalCenter: nameLabel.verticalCenter
-                    }
-                    height: app.isCompact ? contHeight*.6 : contHeight*.4
-                    width: parent.width/5
-                    rating: model.rating
-                }
-
                 RowLayout {
                     id: lowLayout
                     anchors {
-                        bottom: parent.bottom
-                        left: resourceIcon.right
-                        leftMargin: 5
-                        top: parent.verticalCenter
+                        leftMargin: 2
+                        left: parent.left
                         right: parent.right
                     }
 
-                    Label {
-                        id: commentLabel
+                    QIconItem {
+                        id: resourceIcon
+                        icon: model.icon
+                        Layout.minimumWidth: contHeight
+                        Layout.minimumHeight: contHeight
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+
+                    ColumnLayout {
                         Layout.fillWidth: true
+                        Layout.fillHeight: true
 
-                        elide: Text.ElideRight
-                        text: comment
-                        font.italic: true
-                        opacity: delegateArea.containsMouse ? 1 : 0.2
-                        maximumLineCount: 1
-                        clip: true
+                        Item { height: 3; width: 3 }
+
+                        Label {
+                            Layout.fillWidth: true
+                            id: nameLabel
+                            elide: Text.ElideRight
+                            text: name
+                        }
+                        Label {
+                            id: commentLabel
+                            Layout.fillWidth: true
+
+                            elide: Text.ElideRight
+                            text: comment
+                            font.italic: true
+                            opacity: delegateArea.containsMouse ? 1 : 0.2
+                            maximumLineCount: 1
+                            clip: true
+                        }
+
+                        Item { height: 3; width: 3 }
                     }
 
                     Label {
-                        visible: app.isCompact
-                        text: model.application.status
+                        text: i18n("(%1)", ratingPoints)
                     }
-                    InstallApplicationButton {
-    //                     property bool isVisible: delegateArea.containsMouse && !canHide
-    //                     opacity: isVisible ? 1 : 0
-                        application: model.application
+
+                    Rating {
+                        id: ratingsItem
+                        height: app.isCompact ? contHeight*.6 : contHeight*.4
+                        rating: model.rating
+                    }
+
+
+                    Label {
+                        text: category[0]
+                    }
+
+                    Item {
+                        Layout.fillHeight: true
+                        width: Math.max(installInfo.width, installButton.width)
+
+                        InstallApplicationButton {
+                            id: installButton
+                            anchors.verticalCenter: parent.verticalCenter
+                            application: model.application
+                            canUpgrade: false
+                            visible: delegateArea.containsMouse
+                        }
+                        LabelBackground {
+                            id: installInfo
+                            anchors.centerIn: parent
+                            visible: !delegateArea.containsMouse
+                            text: "two GiB"
+                        }
+                    }
+
+                    ApplicationIndicator {
+                        id: indicator
+                        state: canUpgrade ? "upgradeable" : isInstalled && view.model.stateFilter!=2 ? "installed" : "none"
+                        width: 5
+                        height: parent.height
+                        anchors.right: parent.right
                     }
                 }
             }

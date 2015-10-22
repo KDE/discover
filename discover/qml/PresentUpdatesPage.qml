@@ -1,48 +1,100 @@
-import QtQuick.Controls 1.1
+import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.1
 import QtQuick 2.1
 import org.kde.muon 1.0
+import "navigation.js" as Navigation
 import org.kde.kquickcontrolsaddons 2.0
 
 ScrollView
 {
     id: page
-    readonly property real proposedMargin: (width-app.actualWidth)/2
-    readonly property Component tools: RowLayout {
-        Button {
-            text: i18n("Update")
-            enabled: updateModel.hasUpdates
-            onClicked: {
-                var updates = page.Stack.view.push(updatesPage)
-                updates.start()
-            }
-        }
-    }
+    property real proposedMargin: 0
 
-    Component {
-        id: updatesPage
-        UpdatesPage {}
+    function start() {
+        resourcesUpdatesModel.prepare()
+        resourcesUpdatesModel.updateAll()
     }
 
     ColumnLayout
     {
         x: proposedMargin
-        width: app.actualWidth
-        Repeater {
-            id: rep
-            model: UpdateModel {
-                id: updateModel
-                backend: ResourcesUpdatesModel {
-                    id: updates
+        width: Math.min(app.actualWidth, page.viewport.width)
+
+        PageHeader {
+            Layout.fillWidth: true
+
+            ConditionalLoader {
+                anchors.fill: parent
+
+                condition: resourcesUpdatesModel.isProgressing
+                componentFalse: RowLayout {
+                    LabelBackground {
+                        text: updateModel.toUpdateCount
+                    }
+                    Label {
+                        text: i18n("updates selected")
+                    }
+                    LabelBackground {
+                        id: unselectedItem
+                        readonly property int unselected: (updateModel.totalUpdatesCount - updateModel.toUpdateCount)
+                        text: unselected
+                        visible: unselected>0
+                    }
+                    Label {
+                        text: i18n("updates not selected")
+                        visible: unselectedItem.visible
+                    }
+                    Item { Layout.fillWidth: true}
+                    Button {
+                        id: startButton
+                        text: i18n("Update")
+                        onClicked: page.start()
+                    }
+                }
+                componentTrue: ColumnLayout {
+                    Label {
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignHCenter
+                        text: resourcesUpdatesModel.remainingTime
+                    }
+                    ProgressBar {
+                        id: pbar
+                        anchors.centerIn: parent
+                        minimumValue: 0
+                        maximumValue: 100
+
+                        // Workaround for bug in Qt
+                        // https://bugreports.qt.io/browse/QTBUG-48598
+                        Connections {
+                            target: resourcesUpdatesModel
+                            onProgressChanged: pbar.value = resourcesUpdatesModel.progress
+                        }
+                    }
                 }
             }
+        }
+
+        Repeater {
+            id: rep
+            model: updateModel
+
             delegate: ColumnLayout {
                 id: col
-                property var currentRow: index
-                Label {
-                    Layout.fillWidth: true
-                    horizontalAlignment: Text.AlignRight
-                    text: display
+                spacing: -1
+                readonly property var currentRow: index
+                RowLayout {
+                    Layout.minimumHeight: 32
+                    Layout.leftMargin: 5 //GridItem.internalMargin
+                    Layout.rightMargin: 5 //GridItem.internalMargin
+                    anchors.margins: 100
+                    Label {
+                        Layout.fillWidth: true
+                        text: display
+                    }
+                    LabelBackground {
+                        text: size
+                        Layout.minimumWidth: 90
+                    }
                 }
                 Repeater {
                     model: ColumnProxyModel {
@@ -52,11 +104,12 @@ ScrollView
                         Layout.fillWidth: true
                         height: 32
                         RowLayout {
+                            enabled: !resourcesUpdatesModel.isProgressing
                             anchors.fill: parent
-                            spacing: 5
                             CheckBox {
                                 anchors.verticalCenter: parent.verticalCenter
                                 checked: model.checked
+                                onClicked: model.checked = !model.checked
                             }
 
                             QIconItem {
@@ -69,10 +122,17 @@ ScrollView
                             Label {
                                 id: label
                                 Layout.fillWidth: true
-                                text: i18n("%1 (%2) - %3", display, version, size)
+                                text: i18n("%1 (%2)", display, version)
                                 elide: Text.ElideRight
                             }
+
+                            LabelBackground {
+                                Layout.minimumWidth: 90
+                                text: size
+                            }
                         }
+
+                        onClicked: Navigation.openApplication(resource)
                     }
                 }
             }

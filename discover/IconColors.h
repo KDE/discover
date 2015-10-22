@@ -1,5 +1,5 @@
 /*
- *   Copyright (C) 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
+ *   Copyright (C) 2015 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library/Lesser General Public License
@@ -17,19 +17,30 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.1
-import QtQuick.Controls 1.2
-import "navigation.js" as Navigation
+#ifndef ICONCOLORS_H
+#define ICONCOLORS_H
 
-Action {
-    property string overlay
-    property Component component
-    checkable: true
-    checked: window.currentTopLevel==component
-    enabled: window.navigationEnabled
+#include <QColor>
+#include <QObject>
 
-    onTriggered: {
-        if(window.currentTopLevel!=component)
-            window.currentTopLevel=component
-    }
-}
+class IconColors : public QObject
+{
+    Q_OBJECT
+    Q_PROPERTY(QString iconName READ iconName WRITE setIconName)
+    Q_PROPERTY(QColor dominantColor READ dominantColor NOTIFY dominantColorChanged STORED false)
+public:
+    IconColors(QObject* parent = Q_NULLPTR);
+
+    QString iconName() const;
+    void setIconName(const QString& name);
+
+    QColor dominantColor() const;
+
+Q_SIGNALS:
+    void dominantColorChanged(const QColor &dominantColor);
+
+private:
+    QString m_iconName;
+};
+
+#endif // ICONCOLORS_H

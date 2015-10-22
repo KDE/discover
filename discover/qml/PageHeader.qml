@@ -1,5 +1,5 @@
 /*
- *   Copyright (C) 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
+ *   Copyright (C) 2015 Aleix Pol Gonzalez <aleixpol@blue-systems.com>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library/Lesser General Public License
@@ -17,19 +17,29 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.1
-import QtQuick.Controls 1.2
-import "navigation.js" as Navigation
+import QtQuick 2.0
 
-Action {
-    property string overlay
-    property Component component
-    checkable: true
-    checked: window.currentTopLevel==component
-    enabled: window.navigationEnabled
+Item {
+    id: root
+    readonly property real internalMargin: 5
+    default property alias content: paddingItem.data
+    height: 50 + item.anchors.topMargin
 
-    onTriggered: {
-        if(window.currentTopLevel!=component)
-            window.currentTopLevel=component
+    GridItem
+    {
+        id: item
+        anchors {
+            fill: parent
+            topMargin: 20
+        }
+        hoverEnabled: false
+
+        Item {
+            id: paddingItem
+            anchors {
+                fill: parent
+                margins: root.internalMargin
+            }
+        }
     }
 }

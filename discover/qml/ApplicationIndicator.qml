@@ -18,35 +18,23 @@
  */
 
 import QtQuick 2.1
-import QtQuick.Controls 1.1
-import org.kde.kquickcontrolsaddons 2.0
 
-Item {
-    property QtObject category: null
-    
-    QIconItem {
-        id: iconItem
-        icon: category.icon
-        anchors {
-            top: parent.top
-            bottom: parent.bottom
-            left: parent.left
-            margins: 15
+Rectangle {
+    id: root
+    state: "none"
+
+    states: [
+        State {
+            name: "none"
+            PropertyChanges { target: root; color: "transparent" }
+        },
+        State {
+            name: "installed"
+            PropertyChanges { target: root; color: "#090" }
+        },
+        State {
+            name: "upgradeable"
+            PropertyChanges { target: root; color: "#339" }
         }
-        width: height
-    }
-    
-    Label {
-        anchors {
-            verticalCenter: parent.verticalCenter
-            left: iconItem.right
-            right: parent.right
-            leftMargin: 50
-        }
-        elide: Text.ElideRight
-        verticalAlignment: Text.AlignVCenter
-        fontSizeMode: Text.Fit
-        font.pointSize: parent.height
-        text: category.name
-    }
+    ]
 }

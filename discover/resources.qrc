@@ -2,9 +2,9 @@
  <qresource>
     <file>qml/Main.qml</file>
     <file>qml/TopLevelPageData.qml</file>
-    <file>qml/CategoryPage.qml</file>
+    <file>qml/CategoryView.qml</file>
+    <file>qml/CategoryDisplay.qml</file>
     <file>qml/ApplicationsTop.qml</file>
-    <file>qml/CategoryHeader.qml</file>
     <file>qml/FeaturedBanner.qml</file>
     <file>qml/ApplicationsListPage.qml</file>
     <file>qml/ApplicationPage.qml</file>
@@ -38,6 +38,9 @@
     <file>qml/MuonToolbar.qml</file>
     <file>qml/ApplicationDetails.qml</file>
     <file>qml/ApplicationScreenshots.qml</file>
+    <file>qml/ApplicationIndicator.qml</file>
+    <file>qml/LabelBackground.qml</file>
+    <file>qml/PageHeader.qml</file>
 
     <file>qml/navigation.js</file>
  </qresource>

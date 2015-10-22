@@ -17,48 +17,43 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-function openApplicationList(icon, name, cat, search) {
-    openPage(icon, name, applicationListComp, { category: cat, search: search, preferList: search!="" })
+function openApplicationList(cat, search) {
+    openPage(applicationListComp, { category: cat, search: search, preferList: search!="" })
 }
 
 function openApplicationListSource(origin) {
-    openPage("view-filter", origin, applicationListComp, { originFilter: origin, preferList: true })
+    openPage(applicationListComp, { originFilter: origin, preferList: true, title: origin, icon: "view-filter" })
 }
 
 function openApplicationMime(mime) {
-    openPage("document-open-data", i18n("Resources for '%1'", mime), applicationListComp, { mimeTypeFilter: mime })
+    openPage(applicationListComp, { mimeTypeFilter: mime , icon: "document-open-data", title: i18n("Resources for '%1'", mime) })
 }
 
 function openCategoryByName(catname) {
     currentTopLevel = topBrowsingComp
-    openCategory(pageStack.currentItem.categories.findCategoryByName(catname))
+    openCategory(stackView.currentItem.categories.findCategoryByName(catname))
 }
 
 function openCategory(cat) {
     if(cat.hasSubCategories)
-        openPage(cat.icon, cat.name, categoryComp, { category: cat })
+        openPage(categoryComp, { category: cat })
     else
-        openApplicationList(cat.icon, cat.name, cat, "")
+        openApplicationList(cat, "")
 }
 
 function openApplication(app) {
-    openPage(app.icon, app.name, applicationComp, { application: app })
+    openPage(applicationComp, { application: app })
 }
 
 function openReviews(app, reviews) {
-    openPage("rating", i18n("Ratings for %1", app.name), reviewsComp, { model: reviews })
+    openPage(reviewsComp, { model: reviews, title: i18n("Ratings for %1", app.name), icon: "rating" })
 }
 
-function openPage(icon, name, component, props) {
-    if(breadcrumbsItem.currentItem()==name)
-        return
+function openPage(component, props) {
     var obj
     try {
-        console.assert(typeof name === 'string', "wrong page name");
-
-        obj = component.createObject(pageStack.currentItem, props)
-        pageStack.push(obj);
-        breadcrumbsItem.pushItem(icon, name)
+        obj = component.createObject(stackView.currentItem, props)
+        stackView.push(obj);
         if (!obj)
             console.log("error opening", name, obj, component.errorString())
     } catch (e) {

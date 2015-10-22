@@ -18,18 +18,24 @@
  */
 
 import QtQuick 2.1
-import QtQuick.Controls 1.2
-import "navigation.js" as Navigation
+import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.1
 
-Action {
-    property string overlay
-    property Component component
-    checkable: true
-    checked: window.currentTopLevel==component
-    enabled: window.navigationEnabled
+Rectangle
+{
+    property alias text: theLabel.text
+    color: pal.highlight
+    radius: 5
+    width: theLabel.implicitWidth + 10
+    height: theLabel.implicitHeight + 10
 
-    onTriggered: {
-        if(window.currentTopLevel!=component)
-            window.currentTopLevel=component
+    SystemPalette {
+        id: pal
+    }
+
+    Label {
+        id: theLabel
+        anchors.centerIn: parent
+        color: pal.highlightedText
     }
 }

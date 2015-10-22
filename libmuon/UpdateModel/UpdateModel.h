@@ -33,11 +33,14 @@ class MUONCOMMON_EXPORT UpdateModel : public QAbstractItemModel
     Q_OBJECT
     Q_PROPERTY(ResourcesUpdatesModel* backend READ backend WRITE setBackend)
     Q_PROPERTY(bool hasUpdates READ hasUpdates NOTIFY hasUpdatesChanged)
+    Q_PROPERTY(int toUpdateCount READ toUpdateCount NOTIFY toUpdateChanged)
+    Q_PROPERTY(int totalUpdatesCount READ totalUpdatesCount NOTIFY hasUpdatesChanged)
 public:
 
     enum Roles {
         VersionRole = Qt::UserRole + 1,
-        SizeRole
+        SizeRole,
+        ResourceRole
     };
 
     explicit UpdateModel(QObject *parent = nullptr);
@@ -62,6 +65,12 @@ public:
 
     bool hasUpdates() const;
 
+    ///all upgradeable packages
+    int totalUpdatesCount() const;
+
+    ///packages marked to upgrade
+    int toUpdateCount() const;
+
     enum Columns {
         NameColumn = 0,
         VersionColumn,
@@ -74,6 +83,7 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     void hasUpdatesChanged(bool hasUpdates);
+    void toUpdateChanged();
 
 private:
     void activityChanged();
@@ -81,6 +91,7 @@ private:
     void addResource(AbstractResource* res);
     UpdateItem *m_rootItem;
     ResourcesUpdatesModel* m_updates;
+    int m_updatesCount;
 };
 
 #endif // UPDATEMODEL_H

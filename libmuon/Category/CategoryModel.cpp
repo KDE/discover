@@ -74,11 +74,16 @@ Category* CategoryModel::categoryForRow(int row)
 
 void CategoryModel::setDisplayedCategory(Category* c)
 {
+    if (m_currentCategory == c)
+        return;
+
     m_currentCategory = c;
     if(c)
         setCategories(c->subCategories(), c->name());
     else
         setCategories(*s_categories, QString());
+
+    categoryChanged(c);
 }
 
 Category* CategoryModel::displayedCategory() const

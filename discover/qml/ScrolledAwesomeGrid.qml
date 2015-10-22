@@ -21,6 +21,7 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 
 ScrollView {
+    property alias count: gridRepeater.count
     property alias header: gridRepeater.header
     property alias footer: gridRepeater.footer
     property alias delegate: gridRepeater.delegate
@@ -28,9 +29,9 @@ ScrollView {
     property alias cellWidth: gridRepeater.cellWidth
     property alias minCellWidth: gridRepeater.minCellWidth
     property alias columnCount: gridRepeater.columnCount
+    property alias section: gridRepeater.section
     
     AwesomeGrid {
         id: gridRepeater
-        header: parentItem.header
     }
 }

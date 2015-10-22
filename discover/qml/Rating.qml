@@ -30,9 +30,9 @@ Item {
     clip: true
     height: (width/5)-theRow.spacing
     width: 20*5
+
     Row {
         id: theRow
-        spacing: 1
         height: parent.height
         anchors.right: parent.right
         

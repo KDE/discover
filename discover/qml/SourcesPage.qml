@@ -9,41 +9,13 @@ Item {
     id: page
     clip: true
     readonly property real proposedMargin: (width-app.actualWidth)/2
+    readonly property string title: i18n("Sources")
+    readonly property string icon: "view-filter"
 
     Menu {
         id: sourcesMenu
     }
 
-    property Component tools: RowLayout {
-        Layout.fillWidth: true
-        visible: page.visible
-        ToolButton {
-            iconName: "list-add"
-            text: i18n("Add Source")
-
-            tooltip: text
-            menu: sourcesMenu
-        }
-        Repeater {
-            model: SourcesModel.actions
-
-            delegate: RowLayout{
-                QIconItem {
-                    icon: modelData.icon
-                }
-                ToolButton {
-                    height: parent.height
-                    action: Action {
-                        property QtObject action: modelData
-                        text: action.text
-                        onTriggered: action.trigger()
-                        enabled: action.enabled
-                    }
-                }
-            }
-        }
-    }
-    
     ScrollView {
         anchors.fill: parent
         ListView {
@@ -52,10 +24,45 @@ Item {
 
             model: SourcesModel
 
+            header: PageHeader {
+                x: page.proposedMargin
+                width: Math.min(app.actualWidth, view.viewport.width)
+                hoverEnabled: false
+                RowLayout {
+                    anchors.verticalCenter: parent.verticalCenter
+                    ToolButton {
+                        iconName: "list-add"
+                        text: i18n("Add Source")
+
+                        tooltip: text
+                        menu: sourcesMenu
+                    }
+                    Repeater {
+                        model: SourcesModel.actions
+
+                        delegate: RowLayout{
+                            QIconItem {
+                                icon: modelData.icon
+                            }
+                            ToolButton {
+                                height: parent.height
+                                action: Action {
+                                    property QtObject action: modelData
+                                    text: action.text
+                                    onTriggered: action.trigger()
+                                    enabled: action.enabled
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             delegate: ColumnLayout {
                 id: sourceDelegate
                 x: page.proposedMargin
-                width: app.actualWidth
+                width: Math.min(app.actualWidth, view.viewport.width)
+                spacing: -1
 
                 property QtObject sourceBackend: model.sourceBackend
                 AddSourceDialog {
@@ -86,7 +93,7 @@ Item {
 
                     delegate: GridItem {
                         Layout.fillWidth: true
-                        height: browseOrigin.height*1.2
+                        height: browseOrigin.implicitHeight*1.4
                         enabled: browseOrigin.enabled
                         onClicked: Navigation.openApplicationListSource(model.display)
 

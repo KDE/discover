@@ -36,7 +36,10 @@ TransactionModel *TransactionModel::global()
 
 TransactionModel::TransactionModel(QObject *parent)
     : QAbstractListModel(parent)
-{}
+{
+    connect(this, &QAbstractItemModel::rowsInserted, this, &TransactionModel::countChanged);
+    connect(this, &QAbstractItemModel::rowsRemoved, this, &TransactionModel::countChanged);
+}
 
 QHash< int, QByteArray > TransactionModel::roleNames() const
 {

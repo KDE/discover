@@ -52,8 +52,12 @@ int PaginateModel::pageSize() const
 void PaginateModel::setPageSize(int count)
 {
     if (count != m_pageSize) {
-        int difference = count - m_pageSize;
-        if(difference>0) {
+        const int oldSize = rowsByPageSize(m_pageSize);
+        const int newSize = rowsByPageSize(count);
+        const int difference = newSize - oldSize;
+        if (difference==0) {
+            m_pageSize = count;
+        } else if(difference>0) {
             beginInsertRows(QModelIndex(), m_pageSize, m_pageSize+difference);
             m_pageSize = count;
             endInsertRows();
@@ -115,10 +119,14 @@ QHash< int, QByteArray > PaginateModel::roleNames() const
     return m_sourceModel ? m_sourceModel->roleNames() : QAbstractItemModel::roleNames();
 }
 
+int PaginateModel::rowsByPageSize(int size) const
+{
+    return !m_sourceModel ? 0 : qMin(m_sourceModel->rowCount()-m_firstItem, size);
+}
+
 int PaginateModel::rowCount(const QModelIndex& parent) const
 {
-    int ret = parent.isValid() || !m_sourceModel ? 0 : qMin(m_sourceModel->rowCount()-m_firstItem, m_pageSize);
-    return ret;
+    return parent.isValid() ? 0 : rowsByPageSize(m_pageSize);
 }
 
 QModelIndex PaginateModel::mapToSource(const QModelIndex& idx) const
@@ -274,7 +282,7 @@ void PaginateModel::_k_sourceRowsAboutToBeInserted(const QModelIndex& parent, in
         return;
     }
 
-    int insertedCount = end-start;
+    int insertedCount = end-start-1;
     if(insertedCount > m_pageSize) {
         beginResetModel();
     } else {
