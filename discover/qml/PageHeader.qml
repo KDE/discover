@@ -19,20 +19,27 @@
 
 import QtQuick 2.0
 
-GridItem
-{
+Item {
     id: root
-    height: 50
-    hoverEnabled: false
-
     readonly property real internalMargin: 5
-
     default property alias content: paddingItem.data
-    Item {
-        id: paddingItem
+    height: 50 + item.anchors.topMargin
+
+    GridItem
+    {
+        id: item
         anchors {
             fill: parent
-            margins: root.internalMargin
+            topMargin: 20
+        }
+        hoverEnabled: false
+
+        Item {
+            id: paddingItem
+            anchors {
+                fill: parent
+                margins: root.internalMargin
+            }
         }
     }
 }
