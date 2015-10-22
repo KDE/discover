@@ -170,6 +170,8 @@ Item {
             category: page.category
             width: app.actualWidth
             height: implicitHeight
+            spacing: 10
+            maxtopwidth: viewLoader.sourceComponent == listComponent ? 100 : viewLoader.item.cellWidth
             x: viewLoader.sourceComponent == listComponent ? page.proposedMargin : 0
         }
     }

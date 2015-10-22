@@ -28,6 +28,8 @@ ConditionalLoader
 {
     id: page
     property QtObject category: null
+    property real spacing: 3
+    property real maxtopwidth: 250
 
     CategoryModel {
         id: categoryModel
@@ -38,7 +40,7 @@ ConditionalLoader
     componentTrue: RowLayout {
             id: gridRow
             readonly property bool extended: !app.isCompact && view.count>5
-            spacing: 3
+            spacing: page.spacing
 
             ApplicationsTop {
                 id: top
@@ -57,9 +59,11 @@ ConditionalLoader
                         text: model.sortableRating.toFixed(2)
                     }
                 }
+                Layout.preferredWidth: page.maxtopwidth
             }
             ApplicationsTop {
                 id: top2
+                Layout.preferredWidth: page.maxtopwidth
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 sortRole: "ratingPoints"
@@ -71,10 +75,6 @@ ConditionalLoader
                     rating: model.rating
                     height: 12
                 }
-            }
-
-            Item {
-                width: 4
             }
 
             ColumnLayout {
@@ -90,10 +90,12 @@ ConditionalLoader
                     Layout.fillWidth: true
                     font.weight: Font.Bold
                     Layout.minimumHeight: paintedHeight*1.5
+                    visible: view.count>0
                 }
 
                 CategoryView {
                     id: view
+                    visible: view.count>0
                     model: categoryModel
                     Layout.fillWidth: true
                     Layout.fillHeight: true

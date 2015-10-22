@@ -34,8 +34,6 @@ ColumnLayout {
     property bool extended: false
     readonly property alias titleHeight: title.height
 
-    Layout.preferredWidth: 250
-
     Label {
         id: title
         text: topView.title
