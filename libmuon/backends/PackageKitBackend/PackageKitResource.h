@@ -58,6 +58,8 @@ class PackageKitResource : public AbstractResource
         QString installedPackageId() const;
         QString availablePackageId() const;
 
+        QMap<PackageKit::Transaction::Info, QStringList> packages() const { return m_packages; }
+
     public slots:
         void addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
         void setDetails(const PackageKit::Details& details);

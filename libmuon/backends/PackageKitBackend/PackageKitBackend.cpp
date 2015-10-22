@@ -149,6 +149,16 @@ void PackageKitBackend::getPackagesFinished(PackageKit::Transaction::Exit exit)
         qWarning() << "error while fetching details" << exit;
     }
 
+    for(auto it = m_updatingPackages.begin(); it != m_updatingPackages.end(); ) {
+        auto pkr = qobject_cast<PackageKitResource*>(it.value());
+        if (pkr->packages().isEmpty()) {
+            qWarning() << "Failed to find package for" << it.key();
+            it.value()->deleteLater();
+            it = m_updatingPackages.erase(it);
+        } else
+            ++it;
+    }
+
     m_packages = m_updatingPackages;
     m_translationPackageToApp = m_updatingTranslationPackageToApp;
     acquireFetching(false);
@@ -171,7 +181,7 @@ QVector<AbstractResource*> PackageKitBackend::resourcesByPackageName(const QStri
     const QHash<QString, QStringList> *dictionary = updating ? &m_updatingTranslationPackageToApp : &m_translationPackageToApp;
     const QHash<QString, AbstractResource*> *pkgs = updating ? &m_updatingPackages : &m_packages;
 
-    QStringList names = dictionary->value(name, QStringList(name));
+    const QStringList names = dictionary->value(name, QStringList(name));
     QVector<AbstractResource*> ret;
     ret.reserve(names.size());
     foreach(const QString& name, names) {
