@@ -83,7 +83,7 @@ ConditionalLoader
                 Layout.preferredWidth: page.width/2
                 Layout.maximumHeight: top.height
 
-                spacing: -2
+                spacing: -1
 
                 Label {
                     text: i18n("Categories")

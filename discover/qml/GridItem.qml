@@ -38,7 +38,7 @@ MouseArea {
         anchors.fill: parent
         color: listItem.containsMouse || listItem.pressed ? listItem.highlightColor : palette.button
         border.color: palette.mid
-        border.width: 2
+        border.width: 1
     }
 
     Item {

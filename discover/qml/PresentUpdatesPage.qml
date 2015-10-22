@@ -80,7 +80,7 @@ ScrollView
 
             delegate: ColumnLayout {
                 id: col
-                spacing: -2
+                spacing: -1
                 readonly property var currentRow: index
                 RowLayout {
                     Layout.minimumHeight: 32

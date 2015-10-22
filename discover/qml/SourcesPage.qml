@@ -62,7 +62,7 @@ Item {
                 id: sourceDelegate
                 x: page.proposedMargin
                 width: Math.min(app.actualWidth, view.viewport.width)
-                spacing: -2
+                spacing: -1
 
                 property QtObject sourceBackend: model.sourceBackend
                 AddSourceDialog {
