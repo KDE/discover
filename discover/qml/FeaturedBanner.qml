@@ -20,6 +20,7 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
+import QtGraphicalEffects 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
 
@@ -90,6 +91,16 @@ Information {
 
                     text: titleBar.modelData ? i18n("<b>%1</b><br/>%2", titleBar.modelData.text, titleBar.modelData.comment) : ""
                 }
+            }
+
+            DropShadow {
+                anchors.fill: flick
+                horizontalOffset: 3
+                verticalOffset: 3
+                radius: 8.0
+                samples: 16
+                color: "#80000000"
+                source: flick
             }
         }
 }
