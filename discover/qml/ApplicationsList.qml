@@ -72,14 +72,12 @@ ScrollView {
                     ColumnLayout {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
-                        Layout.maximumWidth: 2123123123
 
                         Item { height: 3; width: 3 }
 
                         Label {
                             Layout.fillWidth: true
                             id: nameLabel
-                            font.pointSize: commentLabel.font.pointSize*1.7
                             elide: Text.ElideRight
                             text: name
                         }
