@@ -102,5 +102,18 @@ Information {
                 color: "#80000000"
                 source: flick
             }
+
+            Desaturate {
+                anchors.fill: flick
+                source: flick
+                desaturation: parent.PathView.isCurrentItem ? 0 : 0.8
+
+                Behavior on desaturation {
+                    NumberAnimation {
+                        duration: 500
+                        easing.type: Easing.InQuad
+                    }
+                }
+            }
         }
 }
