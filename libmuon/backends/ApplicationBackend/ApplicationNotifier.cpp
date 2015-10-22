@@ -136,7 +136,7 @@ void ApplicationNotifier::parseUpdateInfo()
         QByteArray securityString = line.right(line.size() - eqpos - 1);
         
         int securityUpdates = securityString.toInt();
-        setUpdates(updatesString.toInt() - m_securityUpdates, securityUpdates);
+        setUpdates(updatesString.toInt() - securityUpdates, securityUpdates);
     }
     
     m_checkingForUpdates = false;
