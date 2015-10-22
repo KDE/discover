@@ -42,6 +42,8 @@ GridItem
             cellWidth: app.isCompact ? width : width/Math.floor(width/100)
             cellHeight: app.isCompact ? 35 : 60
             boundsBehavior: Flickable.StopAtBounds
+            header: Item { height: 10; width: 10 }
+            footer: header
 
             delegate: MouseArea {
                 id: categoryItem
