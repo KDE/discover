@@ -224,6 +224,12 @@ Item {
             header: page.header
             minCellWidth: 200
             
+            section: RowLayout {
+                Label { text: i18n("All") }
+                Item { Layout.fillWidth: true }
+                Label { text: i18n("%1 items", theGrid.count) }
+            }
+
             delegate: ApplicationsGridDelegate {
                 height: width/1.618 //tau
                 width: theGrid.cellWidth

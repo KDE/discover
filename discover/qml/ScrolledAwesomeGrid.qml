@@ -29,6 +29,7 @@ ScrollView {
     property alias cellWidth: gridRepeater.cellWidth
     property alias minCellWidth: gridRepeater.minCellWidth
     property alias columnCount: gridRepeater.columnCount
+    property alias section: gridRepeater.section
     
     AwesomeGrid {
         id: gridRepeater
