@@ -9,7 +9,7 @@ ApplicationsListPage {
     preferList: true
 
     Component.onCompleted: {
-        page.changeSorting("canUpgrade", Qt.AscendingOrder, "canUpgrade")
+        page.changeSorting("size", Qt.AscendingOrder, "")
     }
 
     readonly property var icon: "applications-other"

@@ -105,6 +105,13 @@ Item {
             checkable: true
             exclusiveGroup: sortActionGroup
         }
+        MenuItem {
+            text: i18n("Size")
+            onTriggered: page.changeSorting("size", Qt.DescendingOrder, "")
+            checked: appsModel.stringSortRole=="size"
+            checkable: true
+            exclusiveGroup: sortActionGroup
+        }
     }
     
     property Component tools: RowLayout {

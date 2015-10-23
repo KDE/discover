@@ -22,6 +22,7 @@ import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.kquickcontrolsaddons 2.0
 import QtQuick.Window 2.1
+import org.kde.kcoreaddons 1.0
 import "navigation.js" as Navigation
 
 ScrollView {
@@ -126,7 +127,7 @@ ScrollView {
                             id: installInfo
                             anchors.centerIn: parent
                             visible: !delegateArea.containsMouse
-                            text: "two GiB"
+                            text: Format.formatByteSize(size)
                         }
                     }
 
