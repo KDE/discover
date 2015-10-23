@@ -54,7 +54,7 @@ public:
     virtual QString origin() const override;
     virtual QString section() override;
     virtual void fetchScreenshots() override;
-    virtual int downloadSize() override;
+    virtual int size() override;
     virtual void fetchChangelog() override;
 
     const Attica::Content& content();

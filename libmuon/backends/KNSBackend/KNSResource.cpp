@@ -140,7 +140,7 @@ QString KNSResource::license()
     return m_content.licenseName();
 }
 
-int KNSResource::downloadSize()
+int KNSResource::size()
 {
 #if KNEWSTUFF_VERSION_MINOR > 3 and KNEWSTUFF_VERSION_MAJOR == 5
     const

@@ -171,10 +171,10 @@ qint64 UpdateItem::size() const
     int size = 0;
 
     if (itemType == ItemType::ApplicationItem) {
-        size = m_app->downloadSize();
+        size = m_app->size();
     } else if (itemType == ItemType::CategoryItem) {
         foreach (UpdateItem *item, m_children) {
-            size += item->app()->downloadSize();
+            size += item->app()->size();
         }
     }
 

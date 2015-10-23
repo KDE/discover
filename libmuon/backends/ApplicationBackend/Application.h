@@ -69,7 +69,7 @@ public:
     QString availableVersion() const;
     QString sizeDescription();
     QString origin() const;
-    int downloadSize();
+    int size();
 
     bool hasScreenshot() const { return m_sourceHasScreenshot; }
     void setHasScreenshot(bool has);

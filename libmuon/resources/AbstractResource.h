@@ -60,6 +60,7 @@ class MUONCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString license READ license CONSTANT)
     Q_PROPERTY(QString longDescription READ longDescription CONSTANT)
     Q_PROPERTY(QString origin READ origin CONSTANT)
+    Q_PROPERTY(int size READ size NOTIFY stateChanged)
     Q_PROPERTY(QString sizeDescription READ sizeDescription NOTIFY stateChanged)
     Q_PROPERTY(QString installedVersion READ installedVersion NOTIFY stateChanged)
     Q_PROPERTY(QString availableVersion READ availableVersion NOTIFY stateChanged)
@@ -127,7 +128,7 @@ class MUONCOMMON_EXPORT AbstractResource : public QObject
         virtual QUrl thumbnailUrl() = 0;
         virtual QUrl screenshotUrl() = 0;
 
-        virtual int downloadSize() = 0;
+        virtual int size() = 0;
         virtual QString sizeDescription();
         virtual QString license() = 0;
 

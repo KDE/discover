@@ -130,7 +130,7 @@ QUrl AkabeiResource::screenshotUrl()
     return KUrl(MuonDataSources::screenshotsSource(), "screenshot/"+packageName());
 }
         
-int AkabeiResource::downloadSize()
+int AkabeiResource::size()
 {
     return m_pkg->size();
 }

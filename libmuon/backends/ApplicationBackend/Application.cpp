@@ -426,7 +426,7 @@ QString Application::sizeDescription()
     KFormat f;
     if (!isInstalled()) {
         return i18nc("@info app size", "%1 to download, %2 on disk",
-                              f.formatByteSize(package()->downloadSize()),
+                              f.formatByteSize(package()->size()),
                               f.formatByteSize(package()->availableInstalledSize()));
     } else {
         return i18nc("@info app size", "%1 on disk",
@@ -434,9 +434,9 @@ QString Application::sizeDescription()
     }
 }
 
-int Application::downloadSize()
+int Application::size()
 {
-    return m_package->downloadSize();
+    return m_package->size();
 }
 
 void Application::clearPackage()

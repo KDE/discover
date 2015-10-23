@@ -63,7 +63,7 @@ class MUONCOMMON_EXPORT AkabeiResource : public AbstractResource
         virtual QUrl thumbnailUrl();
         virtual QUrl screenshotUrl();
         
-        virtual int downloadSize();
+        virtual int size();
         virtual QString license();
         
         virtual QString installedVersion() const;

@@ -98,7 +98,7 @@ bool AbstractResource::isFromSecureOrigin() const
 
 QString AbstractResource::sizeDescription()
 {
-    return KFormat().formatByteSize(downloadSize());
+    return KFormat().formatByteSize(size());
 }
 
 QCollatorSortKey AbstractResource::nameSortKey()

@@ -78,7 +78,7 @@ QStringList BodegaResource::categories()
     return QStringList(assetOperations()->assetTags().value("mimetype"));
 }
 
-int BodegaResource::downloadSize()
+int BodegaResource::size()
 {
     //TODO
     return 0;

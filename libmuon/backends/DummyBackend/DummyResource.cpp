@@ -78,7 +78,7 @@ QString DummyResource::comment()
     return "comment "+name()+"...";
 }
 
-int DummyResource::downloadSize()
+int DummyResource::size()
 {
     return 123;
 }

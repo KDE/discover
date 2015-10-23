@@ -43,7 +43,7 @@ class PackageKitResource : public AbstractResource
         virtual QString origin() const override;
         virtual QString section() override;
         virtual bool isTechnical() const override;
-        virtual int downloadSize() override;
+        virtual int size() override;
         virtual void fetchChangelog() override;
         
         virtual QList<PackageState> addonsInformation() override;

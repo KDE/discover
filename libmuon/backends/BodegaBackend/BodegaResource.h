@@ -49,7 +49,7 @@ class BodegaResource : public AbstractResource
         virtual QString longDescription() { return m_info.description; }
         virtual QString packageName() const { return m_info.id; }
         virtual QString license() { return m_info.license; }
-        virtual int downloadSize();
+        virtual int size();
         virtual void fetchChangelog();
         virtual QUrl screenshotUrl();
         virtual QUrl thumbnailUrl();

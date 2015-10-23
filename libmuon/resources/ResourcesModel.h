@@ -53,7 +53,8 @@ class MUONCOMMON_EXPORT ResourcesModel : public QAbstractListModel
             IsTechnicalRole,
             CategoryRole,
             SectionRole,
-            MimeTypes
+            MimeTypes,
+            SizeRole
         };
         /** This constructor should be only used by unit tests.
          *  @p backendName defines what backend will be loaded when the backend is constructed.

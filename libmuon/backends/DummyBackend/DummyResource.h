@@ -37,7 +37,7 @@ public:
     virtual QString availableVersion() const override;
     virtual QString installedVersion() const override;
     virtual QString license() override;
-    virtual int downloadSize() override;
+    virtual int size() override;
     virtual QUrl screenshotUrl() override;
     virtual QUrl thumbnailUrl() override;
     virtual QUrl homepage() override;
