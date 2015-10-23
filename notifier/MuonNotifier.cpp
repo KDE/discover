@@ -139,11 +139,18 @@ QString MuonNotifier::extendedMessage() const
     uint securityCount = securityUpdatesCount();
     uint count = updatesCount() + securityCount;
     if (count > 0 && securityCount > 0) {
-        return i18n("%1 packages to update, of which %2 are security updates", count, securityCount);
+        QString allUpdates = i18ncp("First part of '%1, %2'",
+                                    "1 package to update", "%1 packages to update", count);
+
+        QString securityUpdates = i18ncp("Second part of '%1, %2'",
+                                         "of which 1 is security update", "of which %1 are security updates", securityCount);
+
+        return i18nc("%1 is '%1 packages to update' and %2 is 'of which %1 is security updates'",
+                     "%1, %2", allUpdates, securityUpdates);
     } else if (count > 0) {
-        return i18n("%1 packages to update", count);
+        return i18np("1 package to update", "%1 packages to update", count);
     } else if (securityCount > 0) {
-        return i18n("%1 security updates", securityCount);
+        return i18np("1 security update", "%1 security updates", securityCount);
     } else {
         return i18n("No packages to update");
     }
