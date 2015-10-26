@@ -17,9 +17,9 @@ Item {
     }
 
     ScrollView {
+        id: view
         anchors.fill: parent
         ListView {
-            id: view
             width: parent.width
 
             model: SourcesModel
@@ -27,7 +27,7 @@ Item {
             header: PageHeader {
                 x: page.proposedMargin
                 width: Math.min(app.actualWidth, view.viewport.width)
-                hoverEnabled: false
+
                 RowLayout {
                     anchors.verticalCenter: parent.verticalCenter
                     ToolButton {
