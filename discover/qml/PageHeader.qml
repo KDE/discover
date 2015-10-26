@@ -21,7 +21,7 @@ import QtQuick 2.0
 
 Item {
     id: root
-    readonly property real internalMargin: 5
+    property real internalMargin: 5
     default property alias content: paddingItem.data
     height: 50 + item.anchors.topMargin
 
@@ -39,6 +39,8 @@ Item {
             anchors {
                 fill: parent
                 margins: root.internalMargin
+                topMargin: 0
+                bottomMargin: 0
             }
         }
     }
