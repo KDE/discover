@@ -53,7 +53,11 @@ QColor IconColors::dominantColor() const
 
     for (int w=0, cw=img.width(); w<cw; ++w) {
         for (int h=0, ch=img.height(); h<ch; ++h) {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
             const QColor c = img.pixelColor(w, h);
+#else
+            const QColor c(img.pixel(w, h));
+#endif
 
             if (c.value()>150 && c.saturation()>20 && c.hue()>=0 && c.alpha()>200) {
                 hue[c.hue()/tolerance]++;
