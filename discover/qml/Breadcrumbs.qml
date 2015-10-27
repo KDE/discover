@@ -20,6 +20,7 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
+import org.kde.kquickcontrolsaddons 2.0
 
 Item {
     id: bread
@@ -45,18 +46,26 @@ Item {
         Repeater
         {
             model: bread.pageStack.depth
-            delegate: Button {
-                Layout.fillHeight: true
-                Layout.minimumWidth: height //workaround bug in the plasma style
-                Layout.minimumHeight: implicitHeight
+            delegate: RowLayout {
+                spacing: 0
+                QIconItem {
+                    visible: index > 0
+                    width: 16
+                    height: width
+                    icon: "arrow-right"
+                }
+                MuonToolButton {
+                    Layout.fillHeight: true
+                    Layout.minimumHeight: implicitHeight
 
-                property var currentPage: bread.pageStack.get(modelData, false)
+                    property var currentPage: bread.pageStack.get(modelData, false)
 
-                iconName: currentPage.icon
-                onClicked: doClick(index)
-                text: currentPage.title
-                enabled: bread.pageStack.depth!=(modelData+1)
-                checkable: checked
+                    iconName: currentPage.icon
+                    onClicked: doClick(index)
+                    text: currentPage.title
+                    enabled: bread.pageStack.depth!=(modelData+1)
+                    checkable: checked
+                }
             }
         }
     }

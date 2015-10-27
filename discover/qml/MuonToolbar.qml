@@ -65,7 +65,7 @@ ToolBar
 
             Repeater {
                 model: window.awesome
-                delegate: Button {
+                delegate: MuonToolButton {
                     enabled: modelData.enabled
                     checkable: modelData.checkable
                     checked: modelData.checked

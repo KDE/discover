@@ -36,6 +36,7 @@
     <file>qml/MessageAction.qml</file>
     <file>qml/ConditionalLoader.qml</file>
     <file>qml/MuonToolbar.qml</file>
+    <file>qml/MuonToolButton.qml</file>
     <file>qml/ApplicationDetails.qml</file>
     <file>qml/ApplicationScreenshots.qml</file>
     <file>qml/ApplicationIndicator.qml</file>
