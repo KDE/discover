@@ -33,6 +33,8 @@ public:
     explicit DummyTest(QObject* parent = nullptr);
 
 private slots:
+    void init();
+
     void testReadData();
     void testProxy();
     void testFetch();

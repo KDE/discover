@@ -52,15 +52,21 @@ DummyTest::DummyTest(QObject* parent): QObject(parent)
 //     new ModelTest(m_model, m_model);
 
     m_appBackend = backendByName(m_model, "DummyBackend");
+}
+
+void DummyTest::init()
+{
     QVERIFY(m_appBackend);
-    QSignalSpy spy(m_appBackend, SIGNAL(backendReady()));
-    QVERIFY(spy.wait(0));
+    while(m_appBackend->isFetching()) {
+        QSignalSpy spy(m_appBackend, &AbstractResourcesBackend::fetchingChanged);
+        QVERIFY(spy.wait());
+    }
 }
 
 void DummyTest::testReadData()
 {
     QBENCHMARK {
-        for(int i=0; i<m_model->rowCount(); i++) {
+        for(int i=0, c=m_model->rowCount(); i<c; i++) {
             QModelIndex idx = m_model->index(i, 0);
             QVERIFY(!m_model->data(idx, ResourcesModel::NameRole).isNull());
         }

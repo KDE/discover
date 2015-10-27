@@ -55,12 +55,18 @@ public:
 //         new ModelTest(m_model, m_model);
 
         m_appBackend = backendByName(m_model, "DummyBackend");
-        QVERIFY(m_appBackend);
-        QSignalSpy spy(m_appBackend, SIGNAL(backendReady()));
-        QVERIFY(spy.wait(0));
     }
 
 private slots:
+    void init()
+    {
+        QVERIFY(m_appBackend);
+        while(m_appBackend->isFetching()) {
+            QSignalSpy spy(m_appBackend, &AbstractResourcesBackend::fetchingChanged);
+            QVERIFY(spy.wait());
+        }
+    }
+
     void testUpdate()
     {
         ResourcesUpdatesModel* rum = new ResourcesUpdatesModel(this);
@@ -81,7 +87,7 @@ private slots:
 
         rum->updateAll();
 
-        QSignalSpy spy(rum, SIGNAL(progressingChanged()));
+        QSignalSpy spy(rum, &ResourcesUpdatesModel::progressingChanged);
         QVERIFY(spy.wait());
         QCOMPARE(rum->isProgressing(), true);
         QVERIFY(spy.wait());
