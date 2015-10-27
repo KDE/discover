@@ -184,7 +184,9 @@ void DummyTest::testReviewsModel()
 void DummyTest::testUpdateModel()
 {
     ResourcesUpdatesModel ruModel;
+    new ModelTest(&ruModel, &ruModel);
     UpdateModel model;
+    new ModelTest(&model, &model);
     model.setBackend(&ruModel);
 
     QCOMPARE(model.rowCount(), 2);
