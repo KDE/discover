@@ -32,6 +32,9 @@ DummyReviewsBackend::DummyReviewsBackend(DummyBackend* parent)
 
 void DummyReviewsBackend::fetchReviews(AbstractResource* app, int page)
 {
+    if (page>=5)
+        return;
+
     QList<Review*> review;
     for(int i=0; i<33; i++) {
         review += new Review(app->name(), app->packageName(), "en_US", "good morning", "the morning is very good", "dummy",

@@ -97,6 +97,7 @@ void ReviewsModel::setResource(AbstractResource* app)
     if(m_app!=app) {
         beginResetModel();
         m_reviews.clear();
+        m_lastPage = 0;
         endResetModel();
 
         if(m_backend) {

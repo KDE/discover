@@ -49,7 +49,7 @@ AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 DummyTest::DummyTest(QObject* parent): QObject(parent)
 {
     m_model = new ResourcesModel("muon-dummy-backend", this);
-//     new ModelTest(m_model, m_model);
+    new ModelTest(m_model, m_model);
 
     m_appBackend = backendByName(m_model, "DummyBackend");
 }
@@ -161,6 +161,7 @@ void DummyTest::testReviewsModel()
     QVERIFY(res);
 
     ReviewsModel m;
+    new ModelTest(&m, &m);
     m.setResource(res);
     m.fetchMore();
 
@@ -171,6 +172,13 @@ void DummyTest::testReviewsModel()
     QCOMPARE(ReviewsModel::UserChoice(m.data(m.index(0,0), ReviewsModel::UsefulChoice).toInt()), ReviewsModel::Yes);
     m.markUseful(0, false);
     QCOMPARE(ReviewsModel::UserChoice(m.data(m.index(0,0), ReviewsModel::UsefulChoice).toInt()), ReviewsModel::No);
+
+    res = m_model->resourceByPackageName("Dummy 2");
+    m.setResource(res);
+    m.fetchMore();
+
+    QSignalSpy spy(&m, &ReviewsModel::rowsChanged);
+    QVERIFY(m.rowCount()>0);
 }
 
 void DummyTest::testUpdateModel()
