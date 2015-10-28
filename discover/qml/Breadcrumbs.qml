@@ -54,18 +54,17 @@ Item {
                     property var currentPage: bread.pageStack.get(modelData, false)
 
                     iconName: currentPage.icon
-                    onClicked: doClick(index)
+                    onClicked: theLayout.doClick(index)
                     text: currentPage.title
                     enabled: bread.pageStack.depth!=(modelData+1)
                     checkable: checked
-
-                    function doClick(index) {
-                        var pos = bread.pageStack.depth
-                        for(; pos>index; --pos) {
-                            bread.pageStack.pop(pos>index)
-                        }
-                    }
                 }
+            }
+        }
+        function doClick(index) {
+            var pos = bread.pageStack.depth
+            for(; pos>(index+1); --pos) {
+                bread.pageStack.pop(pos>index)
             }
         }
     }
