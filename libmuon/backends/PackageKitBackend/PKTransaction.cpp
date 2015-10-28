@@ -46,7 +46,8 @@ void PKTransaction::start()
             m_trans = PackageKit::Daemon::installPackage(qobject_cast<PackageKitResource*>(resource())->availablePackageId());
             break;
         case Transaction::RemoveRole:
-            m_trans = PackageKit::Daemon::removePackage(qobject_cast<PackageKitResource*>(resource())->installedPackageId());
+            //see bug #315063
+            m_trans = PackageKit::Daemon::removePackage(qobject_cast<PackageKitResource*>(resource())->installedPackageId(), true /*allowDeps*/);
             break;
         case Transaction::ChangeAddonsRole:
             qWarning() << "addons unsupported in PackageKit backend";
