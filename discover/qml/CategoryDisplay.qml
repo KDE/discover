@@ -48,7 +48,7 @@ ConditionalLoader
                 Layout.fillWidth: true
                 sortRole: "sortableRating"
                 filteredCategory: categoryModel.displayedCategory
-                title: i18n("Popularity")
+                title: i18n("Most Popular")
                 extended: gridRow.extended
                 roleDelegate: Item {
                     width: bg.width
@@ -68,7 +68,7 @@ ConditionalLoader
                 Layout.fillWidth: true
                 sortRole: "ratingPoints"
                 filteredCategory: categoryModel.displayedCategory
-                title: i18n("Rating")
+                title: i18n("Best Rating")
                 extended: gridRow.extended
                 roleDelegate: Rating {
                     property variant model
@@ -112,7 +112,7 @@ ConditionalLoader
                 Layout.fillWidth: true
                 sortRole: "sortableRating"
                 filteredCategory: categoryModel.displayedCategory
-                title: i18n("Popularity")
+                title: i18n("Most Popular")
                 roleDelegate: Item {
                     width: bg.width
                     property variant model

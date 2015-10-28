@@ -51,6 +51,7 @@ GridItem
 
                 width: grid.cellWidth
                 height: grid.cellHeight-2
+                hoverEnabled: true
 
                 ColumnLayout {
                     id: layout
@@ -62,6 +63,7 @@ GridItem
                         Layout.fillWidth: true
                         Layout.preferredWidth: 32
                         Layout.preferredHeight: Layout.preferredWidth
+                        opacity: categoryItem.containsMouse ? 0.5 : 1
 
                         QIconItem {
                             icon: decoration

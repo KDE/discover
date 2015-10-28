@@ -14,6 +14,7 @@ Dialog
     property alias review: reviewInput.text
     title: i18n("Reviewing %1", application.name)
     modality: Qt.WindowModal
+    width: 500
 
     ColumnLayout {
         width: parent.width

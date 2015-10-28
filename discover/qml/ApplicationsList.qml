@@ -89,7 +89,7 @@ ScrollView {
                             elide: Text.ElideRight
                             text: comment
                             font.italic: true
-                            opacity: delegateArea.containsMouse ? 1 : 0.2
+                            opacity: delegateArea.containsMouse ? 1 : 0.5
                             maximumLineCount: 1
                             clip: true
                         }
