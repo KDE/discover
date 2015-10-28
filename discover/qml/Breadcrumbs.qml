@@ -28,13 +28,6 @@ Item {
     property StackView pageStack: null
     Layout.minimumHeight: theLayout.Layout.minimumHeight
     Layout.preferredHeight: theLayout.Layout.preferredHeight
-    
-    function doClick(index) {
-        var pos = bread.pageStack.depth
-        for(; pos>index; --pos) {
-            bread.pageStack.pop(pos>index)
-        }
-    }
 
     RowLayout {
         id: theLayout
@@ -65,6 +58,13 @@ Item {
                     text: currentPage.title
                     enabled: bread.pageStack.depth!=(modelData+1)
                     checkable: checked
+
+                    function doClick(index) {
+                        var pos = bread.pageStack.depth
+                        for(; pos>index; --pos) {
+                            bread.pageStack.pop(pos>index)
+                        }
+                    }
                 }
             }
         }
