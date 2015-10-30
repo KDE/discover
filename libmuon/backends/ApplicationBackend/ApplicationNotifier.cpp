@@ -112,7 +112,7 @@ void ApplicationNotifier::recheckSystemUpdateNeeded()
         return;
     
     m_updateCheckerProcess = new QProcess(this);
-    connect(m_updateCheckerProcess, SIGNAL(finished(int)), this, SLOT(parseUpdateInfo()));
+    connect(m_updateCheckerProcess, static_cast<void(QProcess::*)(int)>(&QProcess::finished), this, &ApplicationNotifier::parseUpdateInfo);
     m_updateCheckerProcess->start("/usr/lib/update-notifier/apt-check");
 }
     
