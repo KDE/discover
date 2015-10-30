@@ -38,7 +38,6 @@ ApplicationNotifier::ApplicationNotifier(QObject* parent)
   : BackendNotifierModule(parent)
   , m_checkerProcess(Q_NULLPTR)
   , m_updateCheckerProcess(Q_NULLPTR)
-  , m_checkingForUpdates(false)
   , m_securityUpdates(0)
   , m_normalUpdates(0)
 {
@@ -109,10 +108,9 @@ void ApplicationNotifier::upgradeActivated()
 
 void ApplicationNotifier::recheckSystemUpdateNeeded()
 {
-    if (m_checkingForUpdates)
+    if (m_updateCheckerProcess->state() == QProcess::Running)
         return;
     
-    m_checkingForUpdates = true;
     m_updateCheckerProcess = new QProcess(this);
     connect(m_updateCheckerProcess, SIGNAL(finished(int)), this, SLOT(parseUpdateInfo()));
     m_updateCheckerProcess->start("/usr/lib/update-notifier/apt-check");
@@ -138,8 +136,6 @@ void ApplicationNotifier::parseUpdateInfo()
         int securityUpdates = securityString.toInt();
         setUpdates(updatesString.toInt() - securityUpdates, securityUpdates);
     }
-    
-    m_checkingForUpdates = false;
 }
 
 void ApplicationNotifier::setUpdates(int normal, int security)

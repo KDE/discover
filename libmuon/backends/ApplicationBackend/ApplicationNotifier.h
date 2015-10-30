@@ -53,7 +53,6 @@ private:
 
     QProcess *m_checkerProcess;
     QProcess *m_updateCheckerProcess;
-    bool m_checkingForUpdates;
     int m_securityUpdates;
     int m_normalUpdates;
 };
