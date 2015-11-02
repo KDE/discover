@@ -24,7 +24,7 @@ ConditionalLoader
         backend: resourcesUpdatesModel
     }
 
-    condition: updateModel.hasUpdates
+    condition: updateModel.hasUpdates || resourcesUpdatesModel.isProgressing
     componentTrue: PresentUpdatesPage {
         proposedMargin: page.proposedMargin
     }
