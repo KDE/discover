@@ -30,6 +30,7 @@ Q_GLOBAL_STATIC_WITH_ARGS(QList<Category*>, s_categories, (CategoriesReader().po
 
 CategoryModel::CategoryModel(QObject* parent)
     : QStandardItemModel(parent)
+    , m_currentCategory(nullptr)
 {
 }
 
@@ -74,7 +75,7 @@ Category* CategoryModel::categoryForRow(int row)
 
 void CategoryModel::setDisplayedCategory(Category* c)
 {
-    if (m_currentCategory == c)
+    if (m_currentCategory == c && (c || rowCount()>0))
         return;
 
     m_currentCategory = c;
