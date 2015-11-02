@@ -212,7 +212,7 @@ bool MuonDiscoverMainWindow::isCompact() const
 
 qreal MuonDiscoverMainWindow::actualWidth() const
 {
-    return isCompact() ? width() : width()-std::pow(width()/70, 2);
+    return isCompact() ? width() : width()-std::pow(width()/70., 2);
 }
 
 void MuonDiscoverMainWindow::resizeEvent(QResizeEvent * event)
