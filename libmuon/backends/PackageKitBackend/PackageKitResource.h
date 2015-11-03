@@ -59,11 +59,11 @@ class PackageKitResource : public AbstractResource
         QString availablePackageId() const;
 
         QMap<PackageKit::Transaction::Info, QStringList> packages() const { return m_packages; }
+        void setPackages(const QMap<PackageKit::Transaction::Info, QStringList> &packages);
 
     public slots:
         void addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
         void setDetails(const PackageKit::Details& details);
-        void resetPackageIds();
 
     private slots:
         void updateDetail(const QString &packageID,
