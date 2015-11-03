@@ -85,8 +85,8 @@ class PackageKitResource : public AbstractResource
         PackageKitBackend* backend() const;
 
         QMap<PackageKit::Transaction::Info, QStringList> m_packages;
-        QString m_summary;
-        QString m_name;
+        const QString m_summary;
+        const QString m_name;
         PackageKit::Details m_details;
 };
 
