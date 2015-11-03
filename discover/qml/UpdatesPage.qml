@@ -9,7 +9,7 @@ ConditionalLoader
 {
     id: page
 
-    readonly property var icon: "system-updates"
+    readonly property var icon: "system-software-update"
     readonly property string title: i18n("System Update")
     readonly property real proposedMargin: (width-app.actualWidth)/2
 
