@@ -97,17 +97,25 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     if (exit == PackageKit::Transaction::ExitEulaRequired)
         return;
 
-    setStatus(Transaction::DoneStatus);
     if (exit == PackageKit::Transaction::ExitCancelled) {
         deleteLater();
     } else {
         disconnect(m_trans, nullptr, this, nullptr);
         m_trans = nullptr;
-        qobject_cast<PackageKitBackend*>(resource()->backend())->removeTransaction(this);
     }
     PackageKit::Transaction* t = PackageKit::Daemon::resolve(resource()->packageName(), PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
-    qobject_cast<PackageKitResource*>(resource())->resetPackageIds();
-    connect(t, SIGNAL(package(PackageKit::Transaction::Info,QString,QString)), resource(), SLOT(addPackageId(PackageKit::Transaction::Info, QString,QString)));
+    connect(t, &PackageKit::Transaction::package, t, [t](PackageKit::Transaction::Info info, const QString& packageId) {
+        QMap<PackageKit::Transaction::Info, QStringList> packages = t->property("packages").value<QMap<PackageKit::Transaction::Info, QStringList>>();
+        packages[info].append(packageId);
+        t->setProperty("packages", qVariantFromValue(packages));
+    });
+
+    connect(t, &PackageKit::Transaction::finished, t, [t, this](PackageKit::Transaction::Exit status, uint runtime){
+        QMap<PackageKit::Transaction::Info, QStringList> packages = t->property("packages").value<QMap<PackageKit::Transaction::Info, QStringList>>();
+        qobject_cast<PackageKitResource*>(resource())->setPackages(packages);
+        setStatus(Transaction::DoneStatus);
+        qobject_cast<PackageKitBackend*>(resource()->backend())->removeTransaction(this);
+    });
 }
 
 PackageKit::Transaction* PKTransaction::transaction()

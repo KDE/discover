@@ -150,9 +150,10 @@ AbstractResource::State PackageKitResource::state()
         return Broken;
 }
 
-void PackageKitResource::resetPackageIds()
+void PackageKitResource::setPackages(const QMap<PackageKit::Transaction::Info, QStringList> &packages)
 {
-    m_packages.clear();
+    m_packages = packages;
+    emit stateChanged();
 }
 
 void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &/*summary*/)
