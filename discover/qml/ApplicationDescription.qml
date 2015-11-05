@@ -19,6 +19,7 @@
 
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.1
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.muon 1.0
 import org.kde.muon.discover 1.0 as Discover
@@ -51,35 +52,35 @@ Column
             icon: application.icon
         }
 
-        Item {
+        ColumnLayout {
             id: header
             height: parent.height
             anchors {
                 top: parent.top
                 left: icon.right
                 right: parent.right
+                bottom: icon.bottom
                 leftMargin: 5
+                bottomMargin: 5
             }
 
             Heading {
                 id: heading
                 text: application.name
-                width: parent.width
+                Layout.fillWidth: true
                 elide: Text.ElideRight
                 font.bold: true
             }
             Label {
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                    top: heading.bottom
-                    bottom: parent.bottom
-                }
+                Layout.fillWidth: true
                 text: application.comment
                 wrapMode: Text.WordWrap
                 elide: Text.ElideRight
                 maximumLineCount: 2
 //                         verticalAlignment: Text.AlignVCenter
+            }
+            Rating {
+                rating: application.rating.rating
             }
         }
     }
