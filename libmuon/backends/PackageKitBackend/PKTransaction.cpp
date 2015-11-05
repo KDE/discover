@@ -103,7 +103,7 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
         disconnect(m_trans, nullptr, this, nullptr);
         m_trans = nullptr;
     }
-    PackageKit::Transaction* t = PackageKit::Daemon::resolve(resource()->packageName(), PackageKit::Transaction::FilterArch | PackageKit::Transaction::FilterLast);
+    PackageKit::Transaction* t = PackageKit::Daemon::resolve(resource()->packageName(), PackageKit::Transaction::FilterArch);
     connect(t, &PackageKit::Transaction::package, t, [t](PackageKit::Transaction::Info info, const QString& packageId) {
         QMap<PackageKit::Transaction::Info, QStringList> packages = t->property("packages").value<QMap<PackageKit::Transaction::Info, QStringList>>();
         packages[info].append(packageId);
