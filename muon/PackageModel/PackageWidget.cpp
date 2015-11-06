@@ -48,7 +48,7 @@
 #include <QApt/MarkingErrorInfo>
 
 // Own includes
-#include "../libmuonapt/ChangesDialog.h"
+#include "muonapt/ChangesDialog.h"
 #include "DetailsWidget.h"
 #include "MuonSettings.h"
 #include "PackageModel.h"

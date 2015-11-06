@@ -45,7 +45,7 @@
 #include <QApt/Transaction>
 
 // Own includes
-#include "../libmuonapt/MuonStrings.h"
+#include "muonapt/MuonStrings.h"
 #include "TransactionWidget.h"
 #include "FilterWidget/FilterWidget.h"
 #include "ManagerWidget.h"
@@ -53,7 +53,7 @@
 #include "MuonSettings.h"
 #include "StatusWidget.h"
 #include "config/ManagerSettingsDialog.h"
-#include "../libmuonapt/QAptActions.h"
+#include "muonapt/QAptActions.h"
 
 MainWindow::MainWindow()
     : KXmlGuiWindow()

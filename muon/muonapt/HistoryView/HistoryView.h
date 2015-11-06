@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010, 2011 Jonathan Thomas <echidnaman@kubuntu.org>       *
+ *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,52 +18,62 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "CategoryFilter.h"
+#ifndef HISTORYVIEW_H
+#define HISTORYVIEW_H
 
-// Qt includes
-#include <QtCore/QSet>
+#include <QtCore/QHash>
 
-// KDE includes
-#include <KLocalizedString>
+#include <QWidget>
 
-// QApt includes
-#include <QApt/Backend>
+class QStandardItem;
+class QStandardItemModel;
+class QTimer;
+class QTreeView;
+class QLineEdit;
+class QComboBox;
 
-// Own includes
-#include "muonapt/MuonStrings.h"
-
-CategoryFilter::CategoryFilter(QObject *parent, QApt::Backend *backend)
-    : FilterModel(parent)
-    , m_backend(backend)
-{
+namespace QApt {
+    class History;
 }
 
-void CategoryFilter::populate()
+class HistoryProxyModel;
+
+class HistoryView : public QWidget
 {
-    QApt::GroupList groups = m_backend->availableGroups();
-    QSet<QString> groupSet;
+    Q_OBJECT
+public:
+    enum ComboItems {
+        AllChangesItem = 0,
+        InstallationsItem = 1,
+        UpdatesItem = 2,
+        RemovalsItem = 3
+    };
+    enum PastActions {
+        InvalidAction = 0,
+        InstalledAction = 1,
+        UpgradedAction = 2,
+        DowngradedAction = 3,
+        RemovedAction = 4,
+        PurgedAction = 5
+    };
+    HistoryView(QWidget *parent);
 
-    foreach(const QApt::Group &group, groups) {
-        QString groupName = MuonStrings::global()->groupName(group);
+    QSize sizeHint() const;
 
-        if (!groupName.isEmpty()) {
-            groupSet << groupName;
-        }
-    }
+private:
+    QApt::History *m_history;
+    QStandardItemModel *m_historyModel;
+    HistoryProxyModel *m_proxyModel;
+    QHash<QString, QStandardItem *> m_categoryHash;
 
-    QStandardItem *defaultItem = new QStandardItem;
-    defaultItem->setEditable(false);
-    defaultItem->setIcon(QIcon::fromTheme("bookmark-new-list"));
-    defaultItem->setText(i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All"));
-    appendRow(defaultItem);
+    QLineEdit *m_searchEdit;
+    QTimer *m_searchTimer;
+    QComboBox *m_filterBox;
+    QTreeView *m_historyView;
 
-    QStringList groupList = groupSet.toList();
-    qSort(groupList);
+private Q_SLOTS:
+    void setStateFilter(int index);
+    void startSearch();
+};
 
-    foreach(const QString &group, groupList) {
-        QStandardItem *groupItem = new QStandardItem;
-        groupItem->setEditable(false);
-        groupItem->setText(group);
-        appendRow(groupItem);
-    }
-}
+#endif

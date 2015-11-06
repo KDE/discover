@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010, 2011 Jonathan Thomas <echidnaman@kubuntu.org>       *
+ *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,52 +18,28 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "CategoryFilter.h"
+#ifndef CHANGESDIALOG_H
+#define CHANGESDIALOG_H
 
 // Qt includes
-#include <QtCore/QSet>
-
-// KDE includes
-#include <KLocalizedString>
+#include <QStandardItemModel>
+#include <QDialog>
 
 // QApt includes
-#include <QApt/Backend>
+#include <QApt/Package>
 
-// Own includes
-#include "muonapt/MuonStrings.h"
+class QStandardItemModel;
 
-CategoryFilter::CategoryFilter(QObject *parent, QApt::Backend *backend)
-    : FilterModel(parent)
-    , m_backend(backend)
+class ChangesDialog : public QDialog
 {
-}
+public:
+    ChangesDialog(QWidget *parent, const QApt::StateChanges &changes);
 
-void CategoryFilter::populate()
-{
-    QApt::GroupList groups = m_backend->availableGroups();
-    QSet<QString> groupSet;
+private:
+    QStandardItemModel *m_model;
 
-    foreach(const QApt::Group &group, groups) {
-        QString groupName = MuonStrings::global()->groupName(group);
+    void addPackages(const QApt::StateChanges &changes);
+    int countChanges(const QApt::StateChanges &changes);
+};
 
-        if (!groupName.isEmpty()) {
-            groupSet << groupName;
-        }
-    }
-
-    QStandardItem *defaultItem = new QStandardItem;
-    defaultItem->setEditable(false);
-    defaultItem->setIcon(QIcon::fromTheme("bookmark-new-list"));
-    defaultItem->setText(i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All"));
-    appendRow(defaultItem);
-
-    QStringList groupList = groupSet.toList();
-    qSort(groupList);
-
-    foreach(const QString &group, groupList) {
-        QStandardItem *groupItem = new QStandardItem;
-        groupItem->setEditable(false);
-        groupItem->setText(group);
-        appendRow(groupItem);
-    }
-}
+#endif // CHANGESDIALOG_H

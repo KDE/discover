@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010, 2011 Jonathan Thomas <echidnaman@kubuntu.org>       *
+ *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,52 +18,35 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "CategoryFilter.h"
+#ifndef HISTORYPROXYMODEL_H
+#define HISTORYPROXYMODEL_H
 
-// Qt includes
-#include <QtCore/QSet>
+#include <QSortFilterProxyModel>
 
-// KDE includes
-#include <KLocalizedString>
+#include <QApt/Package>
 
-// QApt includes
-#include <QApt/Backend>
-
-// Own includes
-#include "muonapt/MuonStrings.h"
-
-CategoryFilter::CategoryFilter(QObject *parent, QApt::Backend *backend)
-    : FilterModel(parent)
-    , m_backend(backend)
+class HistoryProxyModel : public QSortFilterProxyModel
 {
-}
+    Q_OBJECT
+public:
+    enum {
+        HistoryDateRole = Qt::UserRole + 1,
+        HistoryActionRole = Qt::UserRole + 2
+    };
+    HistoryProxyModel(QObject *parent);
+    ~HistoryProxyModel();
 
-void CategoryFilter::populate()
-{
-    QApt::GroupList groups = m_backend->availableGroups();
-    QSet<QString> groupSet;
+    void search(const QString &searchText);
+    void setStateFilter(QApt::Package::State state);
 
-    foreach(const QApt::Group &group, groups) {
-        QString groupName = MuonStrings::global()->groupName(group);
+    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
 
-        if (!groupName.isEmpty()) {
-            groupSet << groupName;
-        }
-    }
+protected:
+    bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
 
-    QStandardItem *defaultItem = new QStandardItem;
-    defaultItem->setEditable(false);
-    defaultItem->setIcon(QIcon::fromTheme("bookmark-new-list"));
-    defaultItem->setText(i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All"));
-    appendRow(defaultItem);
+private:
+    QString m_searchText;
+    QApt::Package::State m_stateFilter;
+};
 
-    QStringList groupList = groupSet.toList();
-    qSort(groupList);
-
-    foreach(const QString &group, groupList) {
-        QStandardItem *groupItem = new QStandardItem;
-        groupItem->setEditable(false);
-        groupItem->setText(group);
-        appendRow(groupItem);
-    }
-}
+#endif

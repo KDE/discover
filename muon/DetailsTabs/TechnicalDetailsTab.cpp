@@ -37,7 +37,7 @@
 #include <QApt/Package>
 
 // Own includes
-#include "../libmuonapt/MuonStrings.h"
+#include "muonapt/MuonStrings.h"
 
 TechnicalDetailsTab::TechnicalDetailsTab(QWidget *parent)
     : DetailsTab(parent)

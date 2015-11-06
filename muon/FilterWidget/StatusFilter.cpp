@@ -27,7 +27,7 @@
 #include <QApt/Package>
 
 // Own includes
-#include "../libmuonapt/MuonStrings.h"
+#include "muonapt/MuonStrings.h"
 
 StatusFilter::StatusFilter(QObject *parent)
     : FilterModel(parent)

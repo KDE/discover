@@ -41,7 +41,7 @@
 #include <DebconfGui.h>
 
 // Own includes
-#include "../libmuonapt/MuonStrings.h"
+#include "muonapt/MuonStrings.h"
 #include "DownloadModel/DownloadDelegate.h"
 #include "DownloadModel/DownloadModel.h"
 

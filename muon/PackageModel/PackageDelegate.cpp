@@ -29,7 +29,7 @@
 #include <KIconLoader>
 
 // Own
-#include "../libmuonapt/MuonStrings.h"
+#include "muonapt/MuonStrings.h"
 #include "PackageModel.h"
 
 PackageDelegate::PackageDelegate(QObject *parent)

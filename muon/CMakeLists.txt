@@ -33,6 +33,15 @@ set(muon_SRCS
     config/ManagerSettingsDialog.cpp
     config/GeneralSettingsPage.cpp
     settings/SettingsPageBase.cpp
+    
+    muonapt/ChangesDialog.cpp
+    muonapt/MuonStrings.cpp
+    muonapt/QAptActions.cpp
+    muonapt/HistoryView/HistoryView.h
+    muonapt/HistoryView/HistoryProxyModel.h
+    muonapt/HistoryView/HistoryView.cpp
+    muonapt/HistoryView/HistoryProxyModel.cpp
+
 )
 
 kconfig_add_kcfg_files(muon_SRCS GENERATE_MOC config/MuonSettings.kcfgc)
@@ -40,8 +49,9 @@ install(FILES config/muon.kcfg DESTINATION ${KCFG_INSTALL_DIR})
 
 add_executable(muon ${muon_SRCS})
 
-target_link_libraries(muon MuonApt
-                           DebconfKDE::Main
+target_compile_definitions(muon PRIVATE -DCMAKE_INSTALL_FULL_LIBEXECDIR_KF5=\"${CMAKE_INSTALL_FULL_LIBEXECDIR_KF5}\")
+
+target_link_libraries(muon DebconfKDE::Main
                            KF5::KIOWidgets
                            KF5::KDELibs4Support
                            KF5::DBusAddons

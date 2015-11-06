@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010, 2011 Jonathan Thomas <echidnaman@kubuntu.org>       *
+ *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,52 +18,47 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#include "CategoryFilter.h"
+#ifndef MUONSTRINGS_H
+#define MUONSTRINGS_H
 
-// Qt includes
-#include <QtCore/QSet>
+#include <QtCore/QHash>
 
-// KDE includes
-#include <KLocalizedString>
+#include <QApt/Package>
 
-// QApt includes
-#include <QApt/Backend>
-
-// Own includes
-#include "muonapt/MuonStrings.h"
-
-CategoryFilter::CategoryFilter(QObject *parent, QApt::Backend *backend)
-    : FilterModel(parent)
-    , m_backend(backend)
-{
+namespace QApt {
+    class Transaction;
 }
 
-void CategoryFilter::populate()
+class MuonStrings : public QObject
 {
-    QApt::GroupList groups = m_backend->availableGroups();
-    QSet<QString> groupSet;
+    Q_OBJECT
+public:
+    explicit MuonStrings(QObject *parent);
 
-    foreach(const QApt::Group &group, groups) {
-        QString groupName = MuonStrings::global()->groupName(group);
+    static MuonStrings* global();
 
-        if (!groupName.isEmpty()) {
-            groupSet << groupName;
-        }
-    }
+    QString groupName(const QString &name) const;
+    QString groupKey(const QString &text) const;
 
-    QStandardItem *defaultItem = new QStandardItem;
-    defaultItem->setEditable(false);
-    defaultItem->setIcon(QIcon::fromTheme("bookmark-new-list"));
-    defaultItem->setText(i18nc("@item:inlistbox Item that resets the filter to \"all\"", "All"));
-    appendRow(defaultItem);
+    /** @returns the state name for a given @p state, for displaying it to the user */
+    QString packageStateName(QApt::Package::State state) const;
 
-    QStringList groupList = groupSet.toList();
-    qSort(groupList);
+    /** @returns the state name for the given @p state changes, for displaying it to the user
+     * This means, the flags that are related to a state change, like ToInstall, ToUpgrade, etc
+     */
+    QString packageChangeStateName(QApt::Package::State state) const;
+    QString archString(const QString &arch) const;
+    QString errorTitle(QApt::ErrorCode error) const;
+    QString errorText(QApt::ErrorCode error, QApt::Transaction *trans) const;
 
-    foreach(const QString &group, groupList) {
-        QStandardItem *groupItem = new QStandardItem;
-        groupItem->setEditable(false);
-        groupItem->setText(group);
-        appendRow(groupItem);
-    }
-}
+private:
+    const QHash<QString, QString> m_groupHash;
+    const QHash<int, QString> m_stateHash;
+    const QHash<QString, QString> m_archHash;
+
+    QHash<QString, QString> groupHash();
+    QHash<int, QString> stateHash();
+    QHash<QString, QString> archHash();
+};
+
+#endif
