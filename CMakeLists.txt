@@ -47,7 +47,6 @@ configure_file(MuonVersion.h.in MuonVersion.h)
 
 add_subdirectory(libmuon)
 if(QApt_FOUND)
-    add_subdirectory(libmuonapt)
     add_subdirectory(muon)
 endif()
 add_subdirectory(updater)

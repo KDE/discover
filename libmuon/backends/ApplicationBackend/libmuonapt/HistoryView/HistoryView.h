@@ -18,49 +18,62 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef MUONSTRINGS_H
-#define MUONSTRINGS_H
+#ifndef HISTORYVIEW_H
+#define HISTORYVIEW_H
 
 #include <QtCore/QHash>
 
-#include <QApt/Package>
+#include <QWidget>
 
-#include "libMuonApt_export.h"
+class QStandardItem;
+class QStandardItemModel;
+class QTimer;
+class QTreeView;
+class QLineEdit;
+class QComboBox;
 
 namespace QApt {
-    class Transaction;
+    class History;
 }
 
-class MUONAPT_EXPORT MuonStrings : public QObject
+class HistoryProxyModel;
+
+class HistoryView : public QWidget
 {
     Q_OBJECT
 public:
-    explicit MuonStrings(QObject *parent);
+    enum ComboItems {
+        AllChangesItem = 0,
+        InstallationsItem = 1,
+        UpdatesItem = 2,
+        RemovalsItem = 3
+    };
+    enum PastActions {
+        InvalidAction = 0,
+        InstalledAction = 1,
+        UpgradedAction = 2,
+        DowngradedAction = 3,
+        RemovedAction = 4,
+        PurgedAction = 5
+    };
+    HistoryView(QWidget *parent);
 
-    static MuonStrings* global();
-
-    QString groupName(const QString &name) const;
-    QString groupKey(const QString &text) const;
-
-    /** @returns the state name for a given @p state, for displaying it to the user */
-    QString packageStateName(QApt::Package::State state) const;
-
-    /** @returns the state name for the given @p state changes, for displaying it to the user
-     * This means, the flags that are related to a state change, like ToInstall, ToUpgrade, etc
-     */
-    QString packageChangeStateName(QApt::Package::State state) const;
-    QString archString(const QString &arch) const;
-    QString errorTitle(QApt::ErrorCode error) const;
-    QString errorText(QApt::ErrorCode error, QApt::Transaction *trans) const;
+    QSize sizeHint() const;
 
 private:
-    const QHash<QString, QString> m_groupHash;
-    const QHash<int, QString> m_stateHash;
-    const QHash<QString, QString> m_archHash;
+    QApt::History *m_history;
+    QStandardItemModel *m_historyModel;
+    HistoryProxyModel *m_proxyModel;
+    QHash<QString, QStandardItem *> m_categoryHash;
 
-    QHash<QString, QString> groupHash();
-    QHash<int, QString> stateHash();
-    QHash<QString, QString> archHash();
+    QLineEdit *m_searchEdit;
+    QTimer *m_searchTimer;
+    QComboBox *m_filterBox;
+    QTreeView *m_historyView;
+
+private Q_SLOTS:
+    void setStateFilter(int index);
+    void startSearch();
 };
 
 #endif

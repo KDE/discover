@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,64 +18,28 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef HISTORYVIEW_H
-#define HISTORYVIEW_H
+#ifndef CHANGESDIALOG_H
+#define CHANGESDIALOG_H
 
-#include <QtCore/QHash>
+// Qt includes
+#include <QStandardItemModel>
+#include <QDialog>
 
-#include <QWidget>
+// QApt includes
+#include <QApt/Package>
 
-#include "libMuonApt_export.h"
-
-class QStandardItem;
 class QStandardItemModel;
-class QTimer;
-class QTreeView;
-class QLineEdit;
-class QComboBox;
 
-namespace QApt {
-    class History;
-}
-
-class HistoryProxyModel;
-
-class MUONAPT_EXPORT HistoryView : public QWidget
+class ChangesDialog : public QDialog
 {
-    Q_OBJECT
 public:
-    enum ComboItems {
-        AllChangesItem = 0,
-        InstallationsItem = 1,
-        UpdatesItem = 2,
-        RemovalsItem = 3
-    };
-    enum PastActions {
-        InvalidAction = 0,
-        InstalledAction = 1,
-        UpgradedAction = 2,
-        DowngradedAction = 3,
-        RemovedAction = 4,
-        PurgedAction = 5
-    };
-    HistoryView(QWidget *parent);
-
-    QSize sizeHint() const;
+    ChangesDialog(QWidget *parent, const QApt::StateChanges &changes);
 
 private:
-    QApt::History *m_history;
-    QStandardItemModel *m_historyModel;
-    HistoryProxyModel *m_proxyModel;
-    QHash<QString, QStandardItem *> m_categoryHash;
+    QStandardItemModel *m_model;
 
-    QLineEdit *m_searchEdit;
-    QTimer *m_searchTimer;
-    QComboBox *m_filterBox;
-    QTreeView *m_historyView;
-
-private Q_SLOTS:
-    void setStateFilter(int index);
-    void startSearch();
+    void addPackages(const QApt::StateChanges &changes);
+    int countChanges(const QApt::StateChanges &changes);
 };
 
-#endif
+#endif // CHANGESDIALOG_H

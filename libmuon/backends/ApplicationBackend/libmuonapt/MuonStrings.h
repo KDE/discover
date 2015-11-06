@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2010 Jonathan Thomas <echidnaman@kubuntu.org>             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,30 +18,47 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef CHANGESDIALOG_H
-#define CHANGESDIALOG_H
+#ifndef MUONSTRINGS_H
+#define MUONSTRINGS_H
 
-// Qt includes
-#include <QStandardItemModel>
-#include <QDialog>
+#include <QtCore/QHash>
 
-// QApt includes
 #include <QApt/Package>
 
-#include "libMuonApt_export.h"
+namespace QApt {
+    class Transaction;
+}
 
-class QStandardItemModel;
-
-class MUONAPT_EXPORT ChangesDialog : public QDialog
+class MuonStrings : public QObject
 {
+    Q_OBJECT
 public:
-    ChangesDialog(QWidget *parent, const QApt::StateChanges &changes);
+    explicit MuonStrings(QObject *parent);
+
+    static MuonStrings* global();
+
+    QString groupName(const QString &name) const;
+    QString groupKey(const QString &text) const;
+
+    /** @returns the state name for a given @p state, for displaying it to the user */
+    QString packageStateName(QApt::Package::State state) const;
+
+    /** @returns the state name for the given @p state changes, for displaying it to the user
+     * This means, the flags that are related to a state change, like ToInstall, ToUpgrade, etc
+     */
+    QString packageChangeStateName(QApt::Package::State state) const;
+    QString archString(const QString &arch) const;
+    QString errorTitle(QApt::ErrorCode error) const;
+    QString errorText(QApt::ErrorCode error, QApt::Transaction *trans) const;
 
 private:
-    QStandardItemModel *m_model;
+    const QHash<QString, QString> m_groupHash;
+    const QHash<int, QString> m_stateHash;
+    const QHash<QString, QString> m_archHash;
 
-    void addPackages(const QApt::StateChanges &changes);
-    int countChanges(const QApt::StateChanges &changes);
+    QHash<QString, QString> groupHash();
+    QHash<int, QString> stateHash();
+    QHash<QString, QString> archHash();
 };
 
-#endif // CHANGESDIALOG_H
+#endif

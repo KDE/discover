@@ -1,6 +1,7 @@
 # we will have our own fork of the library now, because they haven't still made their mind out of Qt5
 # find_package(QtOAuth REQUIRED)
 add_subdirectory(qoauth)
+add_subdirectory(libmuonapt)
 
 include_directories(.)
 
