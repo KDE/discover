@@ -1,6 +1,18 @@
 [Desktop Entry]
 Name=Updates
+Name[ca]=Actualitzacions
+Name[en_GB]=Updates
+Name[nl]=Elementen voor bijwerken
+Name[pt_BR]=Atualizações
+Name[sv]=Uppdateringar
+Name[x-test]=xxUpdatesxx
 Comment=Helps you keep your system up to date
+Comment[ca]=Us ajuda a mantenir el vostre sistema al dia
+Comment[en_GB]=Helps you keep your system up to date
+Comment[nl]=Helpt u om uw system bijgewerkt te houden
+Comment[pt_BR]=Ajuda-o a manter seu sistema atualizado
+Comment[sv]=Hjälper dig hålla systemet uppdaterat
+Comment[x-test]=xxHelps you keep your system up to datexx
 Encoding=UTF-8
 
 Icon=org.kde.muonnotifier

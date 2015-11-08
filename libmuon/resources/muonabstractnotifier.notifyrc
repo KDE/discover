@@ -1,9 +1,27 @@
 [Global]
 IconName=applications-system
 Comment=Muon
+Comment[ca]=Muon
+Comment[en_GB]=Muon
+Comment[nl]=Muon
+Comment[pt_BR]=Muon
+Comment[sv]=Muon
+Comment[x-test]=xxMuonxx
 
 [Event/Update]
 Name=Updates Are Available
+Name[ca]=Hi ha actualitzacions disponibles
+Name[en_GB]=Updates Are Available
+Name[nl]=Bijwerken is beschikbaar
+Name[pt_BR]=Atualizações estão disponíveis
+Name[sv]=Uppdateringar är tillgängliga
+Name[x-test]=xxUpdates Are Availablexx
 Comment=Updates Available
+Comment[ca]=Actualitzacions disponibles
+Comment[en_GB]=Updates Available
+Comment[nl]=Bijwerken is beschikbaar
+Comment[pt_BR]=Atualizações disponíveis
+Comment[sv]=Uppdateringar tillgängliga
+Comment[x-test]=xxUpdates Availablexx
 Action=Popup
 

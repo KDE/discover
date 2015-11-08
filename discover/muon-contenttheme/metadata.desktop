@@ -1,6 +1,18 @@
 [Desktop Entry]
 Name=Application dashboard
+Name[ca]=Tauler d'aplicacions
+Name[en_GB]=Application dashboard
+Name[nl]=Toepassingendashboard
+Name[pt_BR]=Painel de aplicativos
+Name[sv]=Instrumentpanel för program
+Name[x-test]=xxApplication dashboardxx
 Comment=Intended as Application dashboard default
+Comment[ca]=Proposat com a tauler d'aplicacions per defecte
+Comment[en_GB]=Intended as Application dashboard default
+Comment[nl]=Bedoelt als standaard in het toepassingendashboard
+Comment[pt_BR]=Pretende ser o painel de aplicativos padrão
+Comment[sv]=Avsett som förvald instrumentpanel för program
+Comment[x-test]=xxIntended as Application dashboard defaultxx
 
 NoDisplay=true
 

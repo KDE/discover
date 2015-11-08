@@ -1,5 +1,11 @@
 [Desktop Entry]
 Name=Muon Notifier
+Name[ca]=Notificador del Muon
+Name[en_GB]=Muon Notifier
+Name[nl]=Muon-melder
+Name[pt_BR]=Notificador do Muon
+Name[sv]=Muon underrättelse
+Name[x-test]=xxMuon Notifierxx
 Type=Service
 X-KDE-ServiceTypes=KDEDModule
 X-KDE-Library=MuonNotifier

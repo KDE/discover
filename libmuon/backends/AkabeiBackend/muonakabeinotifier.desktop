@@ -1,5 +1,11 @@
 [Desktop Entry]
 Name=Muon Akabei Notifier
+Name[ca]=Notificador Akabei del Muon
+Name[en_GB]=Muon Akabei Notifier
+Name[nl]=Muon-melder van Akabei
+Name[pt_BR]=Notificador do Akabei para o Muon
+Name[sv]=Muon Akabei underrättelse
+Name[x-test]=xxMuon Akabei Notifierxx
 Type=Service
 X-KDE-ServiceTypes=KDEDModule
 X-KDE-Library=muonakabeinotifier
