@@ -32,6 +32,7 @@
 #include <functional>
 
 class PackageKitUpdater;
+class PKTransaction;
 
 class MUONCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
 {
@@ -76,6 +77,7 @@ class MUONCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void getUpdatesDetailsFinished(PackageKit::Transaction::Exit,uint);
 
     private:
+        void addTransaction(PKTransaction* trans);
         void checkDaemonRunning();
         void fetchUpdates();
         void acquireFetching(bool f);
