@@ -229,6 +229,15 @@ int PackageKitBackend::updatesCount() const
     return m_updatesPackageId.count();
 }
 
+void PackageKitBackend::transactionCanceled(Transaction* t)
+{
+    qDebug() << "Cancel transaction:" << t->resource()->packageName() << "with" << m_transactions.size() << "transactions running";
+    int count = m_transactions.removeAll(t);
+    Q_ASSERT(count==1);
+    Q_UNUSED(count)
+    TransactionModel::global()->cancelTransaction(t);
+}
+
 void PackageKitBackend::removeTransaction(Transaction* t)
 {
     qDebug() << "Remove transaction:" << t->resource()->packageName() << "with" << m_transactions.size() << "transactions running";

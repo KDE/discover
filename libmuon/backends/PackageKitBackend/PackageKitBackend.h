@@ -63,6 +63,7 @@ class MUONCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QVector<AbstractResource*> resourcesByPackageName(const QString& name, bool updating) const;
 
     public slots:
+        void transactionCanceled(Transaction* t);
         void removeTransaction(Transaction* t);
         void reloadPackageList();
         void refreshDatabase();

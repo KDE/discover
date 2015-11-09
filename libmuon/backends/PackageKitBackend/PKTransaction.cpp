@@ -94,15 +94,14 @@ void PKTransaction::cancel()
 void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
 {
     Q_UNUSED(runtime)
-    if (exit == PackageKit::Transaction::ExitEulaRequired)
-        return;
-
-    if (exit == PackageKit::Transaction::ExitCancelled) {
-        deleteLater();
-    } else {
-        disconnect(m_trans, nullptr, this, nullptr);
-        m_trans = nullptr;
+    bool cancel = false;
+    if (exit == PackageKit::Transaction::ExitEulaRequired || exit == PackageKit::Transaction::ExitCancelled) {
+        cancel = true;
     }
+
+    disconnect(m_trans, nullptr, this, nullptr);
+    m_trans = nullptr;
+
     PackageKit::Transaction* t = PackageKit::Daemon::resolve(resource()->packageName(), PackageKit::Transaction::FilterArch);
     connect(t, &PackageKit::Transaction::package, t, [t](PackageKit::Transaction::Info info, const QString& packageId) {
         QMap<PackageKit::Transaction::Info, QStringList> packages = t->property("packages").value<QMap<PackageKit::Transaction::Info, QStringList>>();
@@ -110,11 +109,14 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
         t->setProperty("packages", qVariantFromValue(packages));
     });
 
-    connect(t, &PackageKit::Transaction::finished, t, [t, this](PackageKit::Transaction::Exit status, uint runtime){
+    connect(t, &PackageKit::Transaction::finished, t, [cancel, t, this](PackageKit::Transaction::Exit status, uint runtime){
         QMap<PackageKit::Transaction::Info, QStringList> packages = t->property("packages").value<QMap<PackageKit::Transaction::Info, QStringList>>();
         qobject_cast<PackageKitResource*>(resource())->setPackages(packages);
         setStatus(Transaction::DoneStatus);
-        qobject_cast<PackageKitBackend*>(resource()->backend())->removeTransaction(this);
+        if (cancel)
+            qobject_cast<PackageKitBackend*>(resource()->backend())->transactionCanceled(this);
+        else
+            qobject_cast<PackageKitBackend*>(resource()->backend())->removeTransaction(this);
     });
 }
 
