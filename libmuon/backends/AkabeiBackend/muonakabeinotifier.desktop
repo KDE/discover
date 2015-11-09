@@ -2,9 +2,14 @@
 Name=Muon Akabei Notifier
 Name[ca]=Notificador Akabei del Muon
 Name[en_GB]=Muon Akabei Notifier
+Name[fi]=Muonin Akabei-ilmoitukset
+Name[fr]=Notifieur Akabei de Muon
 Name[nl]=Muon-melder van Akabei
+Name[pt]=Notificação do Akabei - Muon
 Name[pt_BR]=Notificador do Akabei para o Muon
+Name[sk]=Muon Akabei oznamovač
 Name[sv]=Muon Akabei underrättelse
+Name[uk]=Сповіщувач Muon для Akabei
 Name[x-test]=xxMuon Akabei Notifierxx
 Type=Service
 X-KDE-ServiceTypes=KDEDModule

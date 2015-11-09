@@ -6,9 +6,14 @@ Icon=plasma
 Name=Wrong
 Name[ca]=Erroni
 Name[en_GB]=Wrong
+Name[fi]=Väärä
+Name[fr]=Incorrect
 Name[nl]=Verkeerd
+Name[pt]=Errado
 Name[pt_BR]=Errado
+Name[sk]=Zlé
 Name[sv]=Felaktig
+Name[uk]=Неправильно
 Name[x-test]=xxWrongxx
 
 X-KDE-Library=muon-knsbackend

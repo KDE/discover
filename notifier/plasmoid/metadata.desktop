@@ -2,16 +2,26 @@
 Name=Updates
 Name[ca]=Actualitzacions
 Name[en_GB]=Updates
+Name[fi]=Päivitykset
+Name[fr]=Mises à jour
 Name[nl]=Elementen voor bijwerken
+Name[pt]=Actualizações
 Name[pt_BR]=Atualizações
+Name[sk]=Aktualizácie
 Name[sv]=Uppdateringar
+Name[uk]=Оновлення
 Name[x-test]=xxUpdatesxx
 Comment=Helps you keep your system up to date
 Comment[ca]=Us ajuda a mantenir el vostre sistema al dia
 Comment[en_GB]=Helps you keep your system up to date
+Comment[fi]=Auttaa pitämään järjestelmäsi ajan tasalla
+Comment[fr]=Vous aide à maintenir le système à jour
 Comment[nl]=Helpt u om uw system bijgewerkt te houden
+Comment[pt]=Ajuda-o a manter o seu sistema actualizado
 Comment[pt_BR]=Ajuda-o a manter seu sistema atualizado
+Comment[sk]=Pomôže vám udržiavať váš systém aktuálny
 Comment[sv]=Hjälper dig hålla systemet uppdaterat
+Comment[uk]=Допомагає підтримувати актуальний стан вашої системи
 Comment[x-test]=xxHelps you keep your system up to datexx
 Encoding=UTF-8
 
