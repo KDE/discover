@@ -198,7 +198,7 @@ bool TransactionModel::removeRows(int row, int count, const QModelIndex &parent)
     if(parent.isValid())
         return false;
 
-    for(; count>0; ++row, --count) {
+    for(; row<=count; ++row) {
         QModelIndex child = index(row);
         Transaction *trans = transactionFromIndex(child);
         if(!trans)
