@@ -1,15 +1,10 @@
 Legend:
- - [MPM] = Muon Package Manager
  - [MUM] = Muon Update Manager
  - [MSC] = Muon Software Center
 
--[MPM] Supplemental "slow" search that does a search over package information fields, as opposed to the quick xapian-based search
--[MPM] Config GUI for confirmation dialogs (save on quit)
--[MPM] Optional columns for installed and available versions in the Muon Package Manager
 -[MSC] Commercial app support. (See: software-center/db/update.py, backends/restfulclient.py)
        Example URL: https://software-center.ubuntu.com/api/2.0/applications/en/ubuntu/precise/amd64/
 -[MSC] Review submittal (Use KIO::storedHttpPost)
 -[MSC] Add an on-hover magnifying graphic to the screenshot preview
 -[MSC] Include addons size in Total size calculation
 -[MSC] When going back from a child breadcrumb, hide the crumb, but still be able to go forward
--[MPM] Configurable status column colors
