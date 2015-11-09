@@ -75,6 +75,10 @@ void Transaction::setStatus(Status status)
     if(m_status != status) {
         m_status = status;
         emit statusChanged(m_status);
+
+        if (m_status == DoneStatus) {
+            setCancellable(false);
+        }
     }
 }
 
