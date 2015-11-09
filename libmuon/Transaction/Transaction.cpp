@@ -35,14 +35,9 @@ Transaction::Transaction(QObject *parent, AbstractResource *resource,
 
 Transaction::Transaction(QObject *parent, AbstractResource *resource,
                          Role role, AddonList addons)
-    : QObject(parent)
-    , m_resource(resource)
-    , m_role(role)
-    , m_status(CommittingStatus)
-    , m_addons(addons)
-    , m_isCancellable(true)
-    , m_progress(0)
+    : Transaction(parent, resource, role)
 {
+    m_addons = addons;
 }
 
 AbstractResource *Transaction::resource() const
