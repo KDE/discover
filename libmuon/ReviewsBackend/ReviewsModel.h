@@ -51,6 +51,7 @@ class MUONCOMMON_EXPORT ReviewsModel : public QAbstractListModel
             No
         };
         explicit ReviewsModel(QObject* parent = nullptr);
+        ~ReviewsModel();
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
         virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
 

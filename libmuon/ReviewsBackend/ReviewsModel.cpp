@@ -34,6 +34,11 @@ ReviewsModel::ReviewsModel(QObject* parent)
     , m_canFetchMore(true)
 {}
 
+ReviewsModel::~ReviewsModel()
+{
+    qDeleteAll(m_reviews);
+}
+
 QHash< int, QByteArray > ReviewsModel::roleNames() const
 {
     QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
@@ -96,6 +101,7 @@ void ReviewsModel::setResource(AbstractResource* app)
 {
     if(m_app!=app) {
         beginResetModel();
+        qDeleteAll(m_reviews);
         m_reviews.clear();
         m_lastPage = 0;
         endResetModel();

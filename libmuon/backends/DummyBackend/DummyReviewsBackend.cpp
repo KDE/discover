@@ -55,6 +55,7 @@ void DummyReviewsBackend::initialize()
         if (m_ratings.contains(app))
             continue;
         Rating* rating = new Rating(app->packageName(), app->name(), 15, qrand()%15, QStringLiteral("\"0, 0, 0, 4, %1\"").arg(qrand()%15));
+        rating->setParent(this);
         m_ratings.insert(app, rating);
     }
     emit ratingsReady();
