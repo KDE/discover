@@ -238,6 +238,13 @@ void PackageKitBackend::removeTransaction(Transaction* t)
     TransactionModel::global()->removeTransaction(t);
 }
 
+void PackageKitBackend::addTransaction(PKTransaction* t)
+{
+    m_transactions.append(t);
+    TransactionModel::global()->addTransaction(t);
+    t->start();
+}
+
 void PackageKitBackend::installApplication(AbstractResource* app, AddonList )
 {
     installApplication(app);
@@ -245,10 +252,7 @@ void PackageKitBackend::installApplication(AbstractResource* app, AddonList )
 
 void PackageKitBackend::installApplication(AbstractResource* app)
 {
-    PKTransaction* t = new PKTransaction(app, Transaction::InstallRole);
-    m_transactions.append(t);
-    TransactionModel::global()->addTransaction(t);
-    t->start();
+    addTransaction(new PKTransaction(app, Transaction::InstallRole));
 }
 
 void PackageKitBackend::cancelTransaction(AbstractResource* app)
@@ -273,10 +277,7 @@ void PackageKitBackend::cancelTransaction(AbstractResource* app)
 void PackageKitBackend::removeApplication(AbstractResource* app)
 {
     Q_ASSERT(!isFetching());
-    PKTransaction* t = new PKTransaction(app, Transaction::RemoveRole);
-    m_transactions.append(t);
-    TransactionModel::global()->addTransaction(t);
-    t->start();
+    addTransaction(new PKTransaction(app, Transaction::RemoveRole));
 }
 
 QList<AbstractResource*> PackageKitBackend::upgradeablePackages() const
