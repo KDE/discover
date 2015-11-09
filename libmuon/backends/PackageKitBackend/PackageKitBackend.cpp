@@ -262,10 +262,6 @@ void PackageKitBackend::cancelTransaction(AbstractResource* app)
         if (pkt->resource() == app) {
             if (pkt->transaction()->allowCancel()) {
                 pkt->transaction()->cancel();
-                int count = m_transactions.removeAll(t);
-                Q_ASSERT(count==1);
-                Q_UNUSED(count)
-                //TransactionModel::global()->cancelTransaction(t);
             } else {
                 qWarning() << "trying to cancel a non-cancellable transaction: " << app->name();
             }
