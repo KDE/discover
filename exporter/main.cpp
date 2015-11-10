@@ -23,8 +23,8 @@
 #include <KAboutData>
 #include <QIcon>
 #include "MuonExporter.h"
-#include <MuonBackendsFactory.h>
-#include "MuonVersion.h"
+#include <DiscoverBackendsFactory.h>
+#include "DiscoverVersion.h"
 
 static const char description[] = I18N_NOOP("An application exporterer");
 
@@ -43,13 +43,13 @@ int main(int argc, char** argv)
         QCommandLineParser parser;
         parser.addOption(QCommandLineOption("backends", i18n("List all the backends we'll want to have loaded, separated by coma ','."), "names"));
         parser.addPositionalArgument("file", i18n("File to which we'll export"));
-        MuonBackendsFactory::setupCommandLine(&parser);
+        DiscoverBackendsFactory::setupCommandLine(&parser);
         about.setupCommandLine(&parser);
         parser.addHelpOption();
         parser.addVersionOption();
         parser.process(app);
         about.processCommandLine(&parser);
-        MuonBackendsFactory::processCommandLine(&parser);
+        DiscoverBackendsFactory::processCommandLine(&parser);
 
         if(parser.positionalArguments().count() != 1) {
             parser.showHelp(1);

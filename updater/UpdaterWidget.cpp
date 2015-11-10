@@ -42,7 +42,7 @@
 #include <KFormat>
 #include <KIconLoader>
 
-// Libmuon includes
+// DiscoverCommon includes
 #include <resources/AbstractResourcesBackend.h>
 #include <resources/AbstractResource.h>
 #include <resources/AbstractBackendUpdater.h>

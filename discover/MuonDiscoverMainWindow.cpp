@@ -53,8 +53,8 @@
 #include <KHelpMenu>
 #include <KAboutData>
 
-// Libmuon includes
-#include <libmuon/MuonDataSources.h>
+// DiscoverCommon includes
+#include <MuonDataSources.h>
 #include <resources/ResourcesModel.h>
 #include <resources/UIHelper.h>
 #include <Category/Category.h>

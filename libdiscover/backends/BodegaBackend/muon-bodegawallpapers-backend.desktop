@@ -1,0 +1,49 @@
+[Desktop Entry]
+Type=Service
+Exec=blubb
+Icon=preferences-desktop-wallpaper
+Name=Bodega Wallpapers
+Name[ca]=Fons d'escriptori del Bodega
+Name[en_GB]=Bodega Wallpapers
+Name[fi]=Bodega-taustakuvat
+Name[fr]=Papiers peints de « Bodega »
+Name[ko]=Bodega 배경 그림
+Name[nl]=Bodega-bureaubladachtergronden
+Name[pt]=Papéis de Parede do Bodega
+Name[pt_BR]=Papéis de parede do Bodega
+Name[sk]=Tapety Bodega
+Name[sv]=Bodega skrivbordsunderlägg
+Name[uk]=Шпалери Bodega
+Name[x-test]=xxBodega Wallpapersxx
+GenericName=Wallpapers
+GenericName[ca]=Fons d'escriptori
+GenericName[en_GB]=Wallpapers
+GenericName[fi]=Taustakuvat
+GenericName[fr]=Papiers peints
+GenericName[ko]=배경 그림
+GenericName[nl]=Bureaubladachtergronden
+GenericName[pt]=Papéis de Parede
+GenericName[pt_BR]=Papéis de parede
+GenericName[sk]=Tapety
+GenericName[sv]=Skrivbordsunderlägg
+GenericName[uk]=Шпалери
+GenericName[x-test]=xxWallpapersxx
+Comment=Install new, awesome wallpapers for your KDE!
+Comment[ca]=Instal·leu fons d'escriptori nous i fantàstics pel vostre KDE!
+Comment[en_GB]=Install new, awesome wallpapers for your KDE!
+Comment[fi]=Asenna uusia ja mahtavia taustakuvia KDE:hesi!
+Comment[fr]=Installez de nouveaux et magnifiques papiers peints pour votre environnement KDE !
+Comment[ko]=KDE에 새로운 배경 그림을 설치하십시오!
+Comment[nl]=Installeer nieuwe, geweldige bureaubladachtergronden voor uw KDE!
+Comment[pt]=Instale novos papéis de parede giros no seu KDE!
+Comment[pt_BR]=Instalar papéis de parede novos e incríveis para o seu KDE!
+Comment[sk]=Nainštalujte nové, úžasné tapety pre vaše KDE!
+Comment[sv]=Installera nya fantastiska skrivbordsunderlägg för KDE.
+Comment[uk]=Встановіть нові чудові шпалери для вашого KDE!
+Comment[x-test]=xxInstall new, awesome wallpapers for your KDE!xx
+X-KDE-Library=muon-bodegabackend
+X-KDE-PluginInfo-Name=muon-bodegawallpapers-backend
+X-KDE-PluginInfo-License=GPL
+
+#channel name
+X-Muon-Arguments=http://addons.makeplaylive.com:3000/?channel=Wallpapers&credentials=MakePlayLive&storeId=VIVALDI-1

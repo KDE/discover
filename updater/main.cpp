@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "MainWindow.h"
-#include <MuonBackendsFactory.h>
+#include <DiscoverBackendsFactory.h>
 
 #include <QApplication>
 #include <QCommandLineParser>
@@ -27,7 +27,7 @@
 #include <KAboutData>
 #include <klocalizedstring.h>
 #include <kdbusservice.h>
-#include "../MuonVersion.h"
+#include "../DiscoverVersion.h"
 
 int main(int argc, char **argv)
 {
@@ -44,13 +44,13 @@ int main(int argc, char **argv)
     {
         QCommandLineParser parser;
         parser.addOption(QCommandLineOption("backends", i18n("List all the backends we'll want to have loaded, separated by coma ','."), "names"));
-        MuonBackendsFactory::setupCommandLine(&parser);
+        DiscoverBackendsFactory::setupCommandLine(&parser);
         about.setupCommandLine(&parser);
         parser.addHelpOption();
         parser.addVersionOption();
         parser.process(app);
         about.processCommandLine(&parser);
-        MuonBackendsFactory::processCommandLine(&parser);
+        DiscoverBackendsFactory::processCommandLine(&parser);
     }
 
     KDBusService service(KDBusService::Unique);

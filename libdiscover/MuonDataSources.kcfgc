@@ -1,0 +1,6 @@
+File=muondatasources.kcfg
+ClassName=MuonDataSources
+Singleton=true
+Mutators=false
+IncludeFiles=\"discovercommon_export.h\"
+Visibility=DISCOVERCOMMON_EXPORT

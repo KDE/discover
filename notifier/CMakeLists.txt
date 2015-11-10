@@ -1,7 +1,7 @@
 add_definitions(-DTRANSLATION_DOMAIN=\"muon-notifier\")
 
-add_library(MuonNotifierDeclarativePlugin BackendNotifierFactory.cpp MuonNotifier.cpp MuonNotifierDeclarativePlugin.cpp)
-target_link_libraries(MuonNotifierDeclarativePlugin
+add_library(DiscoverNotifierDeclarativePlugin BackendNotifierFactory.cpp DiscoverNotifier.cpp DiscoverNotifierDeclarativePlugin.cpp)
+target_link_libraries(DiscoverNotifierDeclarativePlugin
     KF5::Notifications
     KF5::ConfigCore
     KF5::I18n
@@ -10,12 +10,12 @@ target_link_libraries(MuonNotifierDeclarativePlugin
     KF5::IconThemes
     Qt5::Qml
 
-    MuonNotifiers
+    DiscoverNotifiers
 )
-install(TARGETS MuonNotifierDeclarativePlugin DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/muonnotifier)
-install(FILES qmldir DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/muonnotifier)
+install(TARGETS DiscoverNotifierDeclarativePlugin DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/discovernotifier)
+install(FILES qmldir DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/discovernotifier)
 
 find_package(KF5Plasma)
 if(KF5Plasma_FOUND)
-    plasma_install_package(plasmoid org.kde.muonnotifier)
+    plasma_install_package(plasmoid org.kde.discovernotifier)
 endif()

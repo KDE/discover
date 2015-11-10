@@ -21,7 +21,7 @@ import QtQuick 2.1
 import QtQuick.Layouts 1.1
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.plasma.components 2.0
-import org.kde.muonnotifier 1.0
+import org.kde.discovernotifier 1.0
 
 Item
 {
@@ -36,12 +36,12 @@ Item
         }
         level: 3
         wrapMode: Text.WordWrap
-        text: MuonNotifier.message
+        text: DiscoverNotifier.message
     }
 
     ColumnLayout
     {
-        visible: !MuonNotifier.isSystemUpToDate
+        visible: !DiscoverNotifier.isSystemUpToDate
         anchors {
             fill: parent
             topMargin: header.height
@@ -50,13 +50,13 @@ Item
             Layout.fillWidth: true
             wrapMode: Text.WordWrap
             horizontalAlignment: Text.AlignHCenter
-            text: MuonNotifier.extendedMessage
+            text: DiscoverNotifier.extendedMessage
         }
         Button {
             anchors.horizontalCenter: parent.horizontalCenter
             text: i18n("Update")
             tooltip: i18n("Launches the software to perform the update")
-            onClicked: MuonNotifier.showMuon()
+            onClicked: DiscoverNotifier.showMuon()
         }
     }
 }

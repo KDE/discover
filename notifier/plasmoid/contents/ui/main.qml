@@ -20,7 +20,7 @@
 import QtQuick 2.2
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.muonnotifier 1.0
+import org.kde.discovernotifier 1.0
 
 Item
 {
@@ -29,11 +29,11 @@ Item
     Binding {
         target: plasmoid
         property: "status"
-        value: switch (MuonNotifier.state) {
-                case MuonNotifier.NoUpdates:
+        value: switch (DiscoverNotifier.state) {
+                case DiscoverNotifier.NoUpdates:
                     return PlasmaCore.Types.PassiveStatus;
-                case MuonNotifier.NormalUpdates:
-                case MuonNotifier.SecurityUpdates:
+                case DiscoverNotifier.NormalUpdates:
+                case DiscoverNotifier.SecurityUpdates:
                     return PlasmaCore.Types.ActiveStatus;
             }
     }
@@ -43,11 +43,11 @@ Item
     }
 
     function action_update() {
-        MuonNotifier.showMuon();
+        DiscoverNotifier.showMuon();
     }
 
     Plasmoid.compactRepresentation: PlasmaCore.IconItem {
-        source: MuonNotifier.iconName
+        source: DiscoverNotifier.iconName
         MouseArea {
             anchors.fill: parent
             onClicked: plasmoid.expanded = !plasmoid.expanded

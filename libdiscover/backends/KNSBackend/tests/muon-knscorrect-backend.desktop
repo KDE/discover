@@ -1,0 +1,22 @@
+[Desktop Entry]
+Type=Service
+Exec=blubb
+Icon=plasma
+Name=Correct
+Name[ca]=Correcte
+Name[en_GB]=Correct
+Name[fi]=Oikea
+Name[fr]=Correct
+Name[ko]=올바름
+Name[nl]=Juist
+Name[pt]=Certo
+Name[pt_BR]=Certo
+Name[sk]=Správne
+Name[sv]=Riktig
+Name[uk]=Правильно
+Name[x-test]=xxCorrectxx
+
+X-KDE-Library=muon-knsbackend
+X-KDE-PluginInfo-Name=muon-knscorrect-backend
+X-KDE-PluginInfo-License=GPL
+X-Muon-Arguments=testplasmoids.knsrc

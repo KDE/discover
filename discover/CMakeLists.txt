@@ -1,5 +1,4 @@
 add_subdirectory(icons)
-add_subdirectory(muon-contenttheme)
 add_subdirectory(autotests)
 
 include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/..)
@@ -24,7 +23,7 @@ target_link_libraries(muon-discover LINK_PUBLIC KF5::KIOWidgets
                                      KF5::ConfigWidgets
                                      KF5::XmlGui
                                      Qt5::QuickWidgets
-                                     MuonCommon
+                                     DiscoverCommon
 )
 
 install(TARGETS muon-discover ${INSTALL_TARGETS_DEFAULT_ARGS} )

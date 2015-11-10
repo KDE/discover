@@ -23,7 +23,7 @@ target_link_libraries(muon-updater KF5::CoreAddons
                                    KF5::DBusAddons
                                    KF5::XmlGui
                                    KF5::IconThemes
-                                   MuonCommon)
+                                   DiscoverCommon)
 
 if (ENABLE_QZEITGEIST)
     target_link_libraries(muon-updater ${QZEITGEIST_LIBRARY})

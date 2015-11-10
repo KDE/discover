@@ -24,8 +24,8 @@
 #include <QCommandLineParser>
 #include <qwindow.h>
 #include "MuonDiscoverMainWindow.h"
-#include <MuonBackendsFactory.h>
-#include "MuonVersion.h"
+#include <DiscoverBackendsFactory.h>
+#include "DiscoverVersion.h"
 
 int main(int argc, char** argv)
 {
@@ -51,12 +51,12 @@ int main(int argc, char** argv)
         parser.addOption(QCommandLineOption("mode", i18n("Open Muon Discover in a said mode. Modes correspond to the toolbar buttons."), "name"));
         parser.addOption(QCommandLineOption("listmodes", i18n("List all the available modes.")));
         parser.addPositionalArgument("urls", i18n("Supports appstream: url scheme (experimental)"));
-        MuonBackendsFactory::setupCommandLine(&parser);
+        DiscoverBackendsFactory::setupCommandLine(&parser);
         about.setupCommandLine(&parser);parser.addHelpOption();
         parser.addVersionOption();
         parser.process(app);
         about.processCommandLine(&parser);
-        MuonBackendsFactory::processCommandLine(&parser);
+        DiscoverBackendsFactory::processCommandLine(&parser);
 
         mainWindow = new MuonDiscoverMainWindow;
         QObject::connect(&app, SIGNAL(aboutToQuit()), mainWindow, SLOT(deleteLater()));

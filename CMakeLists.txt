@@ -1,10 +1,10 @@
-project(muon)
+project(discover)
 set(PROJECT_VERSION "5.4.90")
 set(PROJECT_VERSION_MAJOR 5)
 
 cmake_minimum_required(VERSION 2.8.12)
 
-option(MUON_INSTALL_EXPORTER "Install muon-exporter [development utility]" OFF)
+option(INSTALL_EXPORTER "Install muon-exporter [development utility]" OFF)
 
 find_package(ECM REQUIRED NO_MODULE)
 
@@ -42,10 +42,9 @@ find_package(KF5NewStuff)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(MUON_VERSION ${PROJECT_VERSION})
-configure_file(MuonVersion.h.in MuonVersion.h)
+configure_file(DiscoverVersion.h.in DiscoverVersion.h)
 
-add_subdirectory(libmuon)
+add_subdirectory(libdiscover)
 add_subdirectory(updater)
 add_subdirectory(discover)
 add_subdirectory(exporter)

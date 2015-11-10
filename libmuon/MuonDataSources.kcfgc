@@ -1,6 +1,0 @@
-File=muondatasources.kcfg
-ClassName=MuonDataSources
-Singleton=true
-Mutators=false
-IncludeFiles=\"libMuonCommon_export.h\"
-Visibility=MUONCOMMON_EXPORT
