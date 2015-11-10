@@ -17,7 +17,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include "MuonDeclarativePlugin.h"
+#include "DiscoverDeclarativePlugin.h"
 #include "ApplicationProxyModelHelper.h"
 #include <Category/CategoryModel.h>
 #include <Category/Category.h>
@@ -44,7 +44,7 @@
 QML_DECLARE_TYPE(ResourcesModel)
 QML_DECLARE_TYPE(AbstractResourcesBackend)
 
-void MuonDeclarativePlugin::initializeEngine(QQmlEngine* engine, const char* uri)
+void DiscoverDeclarativePlugin::initializeEngine(QQmlEngine* engine, const char* uri)
 {
     engine->rootContext()->setContextProperty("ResourcesModel", ResourcesModel::global());
     engine->rootContext()->setContextProperty("TransactionModel", TransactionModel::global());
@@ -52,21 +52,21 @@ void MuonDeclarativePlugin::initializeEngine(QQmlEngine* engine, const char* uri
     QQmlExtensionPlugin::initializeEngine(engine, uri);
 }
 
-void MuonDeclarativePlugin::registerTypes(const char*)
+void DiscoverDeclarativePlugin::registerTypes(const char*)
 {
-    qmlRegisterType<CategoryModel>("org.kde.muon", 1, 0, "CategoryModel");
-    qmlRegisterType<TransactionListener>("org.kde.muon", 1, 0, "TransactionListener");
+    qmlRegisterType<CategoryModel>("org.kde.discover", 1, 0, "CategoryModel");
+    qmlRegisterType<TransactionListener>("org.kde.discover", 1, 0, "TransactionListener");
     qmlRegisterType<TransactionModel>();
-    qmlRegisterType<ResourcesUpdatesModel>("org.kde.muon", 1, 0, "ResourcesUpdatesModel");
+    qmlRegisterType<ResourcesUpdatesModel>("org.kde.discover", 1, 0, "ResourcesUpdatesModel");
     
-    qmlRegisterType<ReviewsModel>("org.kde.muon", 1, 0, "ReviewsModel");
-    qmlRegisterType<ApplicationAddonsModel>("org.kde.muon", 1, 0, "ApplicationAddonsModel");
-    qmlRegisterType<ScreenshotsModel>("org.kde.muon", 1, 0, "ScreenshotsModel");
-    qmlRegisterType<ApplicationProxyModelHelper>("org.kde.muon", 1, 0, "ApplicationProxyModel");
-    qmlRegisterType<MessageActionsModel>("org.kde.muon", 1, 0, "MessageActionsModel");
-    qmlRegisterType<UpdateModel>("org.kde.muon", 1, 0, "UpdateModel");
+    qmlRegisterType<ReviewsModel>("org.kde.discover", 1, 0, "ReviewsModel");
+    qmlRegisterType<ApplicationAddonsModel>("org.kde.discover", 1, 0, "ApplicationAddonsModel");
+    qmlRegisterType<ScreenshotsModel>("org.kde.discover", 1, 0, "ScreenshotsModel");
+    qmlRegisterType<ApplicationProxyModelHelper>("org.kde.discover", 1, 0, "ApplicationProxyModel");
+    qmlRegisterType<MessageActionsModel>("org.kde.discover", 1, 0, "MessageActionsModel");
+    qmlRegisterType<UpdateModel>("org.kde.discover", 1, 0, "UpdateModel");
     
-    qmlRegisterUncreatableType<QAction>("org.kde.muon", 1, 0, "QAction", "Use QQC Action");
+    qmlRegisterUncreatableType<QAction>("org.kde.discover", 1, 0, "QAction", "Use QQC Action");
     qmlRegisterType<Rating>();
     qmlRegisterType<AbstractResource>();
     qmlRegisterType<AbstractSourcesBackend>();

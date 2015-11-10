@@ -17,12 +17,12 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef MUONDECLARATIVEPLUGIN_H
-#define MUONDECLARATIVEPLUGIN_H
+#ifndef DISCOVERDECLARATIVEPLUGIN_H
+#define DISCOVERDECLARATIVEPLUGIN_H
 
 #include <QtQml/QQmlExtensionPlugin>
 
-class MuonDeclarativePlugin : public QQmlExtensionPlugin
+class DiscoverDeclarativePlugin : public QQmlExtensionPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface")

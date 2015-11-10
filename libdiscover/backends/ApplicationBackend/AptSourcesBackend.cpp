@@ -99,8 +99,8 @@ QAbstractItemModel* AptSourcesBackend::sources()
 
 bool AptSourcesBackend::removeSource(const QString& repository)
 {
-    KAuth::Action readAction("org.kde.muon.repo.modify");
-    readAction.setHelperId("org.kde.muon.repo");
+    KAuth::Action readAction("org.kde.discover.repo.modify");
+    readAction.setHelperId("org.kde.discover.repo");
     QVariantMap args = {
         { "repository", repository },
         { "action", QStringLiteral("remove") }
@@ -114,8 +114,8 @@ bool AptSourcesBackend::removeSource(const QString& repository)
 
 bool AptSourcesBackend::addSource(const QString& repository)
 {
-    KAuth::Action readAction("org.kde.muon.repo.modify");
-    readAction.setHelperId("org.kde.muon.repo");
+    KAuth::Action readAction("org.kde.discover.repo.modify");
+    readAction.setHelperId("org.kde.discover.repo");
     QVariantMap args = {
         { "repository", repository },
         { "action", QStringLiteral("add") }

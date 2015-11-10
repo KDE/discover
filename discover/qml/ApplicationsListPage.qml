@@ -22,8 +22,8 @@ import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.2
 import "navigation.js" as Navigation
-import org.kde.muon.discover 1.0
-import org.kde.muon 1.0
+import org.kde.discover.app 1.0
+import org.kde.discover 1.0
 
 Item {
     id: page

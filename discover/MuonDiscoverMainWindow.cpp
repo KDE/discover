@@ -77,9 +77,9 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     //binds things like kconfig and icons
     kdeclarative.setupBindings();
     
-    qmlRegisterType<PaginateModel>("org.kde.muon.discover", 1, 0, "PaginateModel");
-    qmlRegisterType<IconColors>("org.kde.muon.discover", 1, 0, "IconColors");
-    qmlRegisterSingletonType<SystemFonts>("org.kde.muon.discover", 1, 0, "SystemFonts", ([](QQmlEngine*, QJSEngine*) -> QObject* { return new SystemFonts; }));
+    qmlRegisterType<PaginateModel>("org.kde.discover.app", 1, 0, "PaginateModel");
+    qmlRegisterType<IconColors>("org.kde.discover.app", 1, 0, "IconColors");
+    qmlRegisterSingletonType<SystemFonts>("org.kde.discover.app", 1, 0, "SystemFonts", ([](QQmlEngine*, QJSEngine*) -> QObject* { return new SystemFonts; }));
     qmlRegisterType<KXmlGuiWindow>();
     qmlRegisterType<QActionGroup>();
     qmlRegisterType<QAction>();

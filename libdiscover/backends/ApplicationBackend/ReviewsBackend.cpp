@@ -109,7 +109,7 @@ void ReviewsBackend::setAptBackend(QApt::Backend *aptBackend)
 
 void ReviewsBackend::fetchRatings()
 {
-    QString ratingsCache = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libmuon/ratings.txt";
+    QString ratingsCache = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libdiscover/ratings.txt";
     QFileInfo file(ratingsCache);
     QDir::temp().mkpath(file.dir().path());
     QUrl ratingsUrl(m_serverBase.toString()+"review-stats/");
@@ -139,7 +139,7 @@ void ReviewsBackend::ratingsFetched(KJob *job)
 
 void ReviewsBackend::loadRatingsFromFile()
 {
-    QString ratingsCache = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libmuon/ratings.txt";
+    QString ratingsCache = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libdiscover/ratings.txt";
     QScopedPointer<QIODevice> dev(new KCompressionDevice(ratingsCache, KCompressionDevice::GZip));
     if (!dev->open(QIODevice::ReadOnly)) {
         qWarning() << "Couldn't open ratings.txt" << ratingsCache;

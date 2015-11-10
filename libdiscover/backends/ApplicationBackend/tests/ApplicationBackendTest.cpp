@@ -69,8 +69,8 @@ AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 
 ApplicationBackendTest::ApplicationBackendTest()
 {
-    QString ratingsDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libmuon/ratings.txt";
-    QFile testRatings("~/.kde-unit-test/share/apps/libmuon/ratings.txt");
+    QString ratingsDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libdiscover/ratings.txt";
+    QFile testRatings("~/.kde-unit-test/share/apps/libdiscover/ratings.txt");
     QFile ratings(ratingsDir);
     QString codeName = getCodename("ID");
     if(!testRatings.exists()) {
@@ -79,9 +79,9 @@ ApplicationBackendTest::ApplicationBackendTest()
         } else {
             ratings.close();
             if(codeName.toLower() == QLatin1String("ubuntu")) {
-                ratingsDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libmuon/rnrtestratings.txt";
+                ratingsDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libdiscover/rnrtestratings.txt";
             } else {
-                ratingsDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libmuon/popcontestratings.txt";
+                ratingsDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libdiscover/popcontestratings.txt";
             }
             ratings.setFileName(ratingsDir);
             if(ratings.exists()) {

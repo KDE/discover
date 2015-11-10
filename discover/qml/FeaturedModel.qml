@@ -1,5 +1,5 @@
 import QtQuick 2.1
-import org.kde.muon 1.0
+import org.kde.discover 1.0
 
 ListModel
 {

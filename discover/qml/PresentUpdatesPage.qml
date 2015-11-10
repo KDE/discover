@@ -1,7 +1,7 @@
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.1
 import QtQuick 2.1
-import org.kde.muon 1.0
+import org.kde.discover 1.0
 import "navigation.js" as Navigation
 import org.kde.kquickcontrolsaddons 2.0
 
