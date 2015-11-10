@@ -13,11 +13,11 @@ set(akabeibackend_SRCS
     AkabeiTransaction.cpp
 )
 
-add_library(muon-akabeibackend ${akabeibackend_SRCS})
-target_link_libraries(muon-akabeibackend ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} ${qjson_LIBRARIES} ${AKABEICLIENT_LIBRARIES} ${AKABEICORE_LIBRARIES} DiscoverCommon)
-install(TARGETS muon-akabeibackend DESTINATION ${PLUGIN_INSTALL_DIR}/muon)
-install(FILES muon-akabei-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/libmuon/backends)
-install(FILES muon-akabei-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
+add_library(akabei-backend ${akabeibackend_SRCS})
+target_link_libraries(akabei-backend ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} ${qjson_LIBRARIES} ${AKABEICLIENT_LIBRARIES} ${AKABEICORE_LIBRARIES} Discover::Common)
+install(TARGETS akabei-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
+install(FILES akabei-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/libdiscover/backends)
+install(FILES akabei-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
 
 set(akabeinotifier_SRCS
     AkabeiNotifier.cpp
@@ -25,7 +25,7 @@ set(akabeinotifier_SRCS
 
 add_library(kded_muonakabeinotifier MODULE ${akabeinotifier_SRCS})
 
-target_link_libraries(kded_muonakabeinotifier ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${AKABEICLIENT_LIBRARIES} ${AKABEICORE_LIBRARIES} DiscoverCommon)
+target_link_libraries(kded_muonakabeinotifier ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${AKABEICLIENT_LIBRARIES} ${AKABEICORE_LIBRARIES} Discover::Common)
 
 install(TARGETS kded_muonakabeinotifier DESTINATION ${PLUGIN_INSTALL_DIR})
 

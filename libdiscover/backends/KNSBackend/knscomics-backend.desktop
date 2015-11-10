@@ -42,7 +42,7 @@ Comment[sv]=Installera serier att använda med serie-plasmoiden
 Comment[uk]=Встановіть стрічки коміксів, які буде використано у плазмоїді коміксів
 Comment[x-test]=xxInstall comic stripes to be used from the comics plasmoidxx
 
-X-KDE-Library=muon-knsbackend
-X-KDE-PluginInfo-Name=muon-knscomics-backend
+X-KDE-Library=kns-backend
+X-KDE-PluginInfo-Name=knscomics-backend
 X-KDE-PluginInfo-License=GPL
 X-Muon-Arguments=comic.knsrc

@@ -46,7 +46,7 @@ AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 
 ReviewsTest::ReviewsTest(QObject* parent): QObject(parent)
 {
-    ResourcesModel* m = new ResourcesModel("muon-applications-backend", this);
+    ResourcesModel* m = new ResourcesModel("qapt-backend", this);
     m_window = new KXmlGuiWindow;
     m->integrateMainWindow(m_window);
     m_appBackend = backendByName(m, "ApplicationBackend");

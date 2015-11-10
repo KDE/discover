@@ -8,14 +8,14 @@ set(dummy-backend_SRCS
     DummySourcesBackend.cpp
 )
 
-add_library(muon-dummy-backend MODULE ${dummy-backend_SRCS})
-target_link_libraries(muon-dummy-backend Qt5::Core Qt5::Widgets KF5::CoreAddons KF5::Service DiscoverCommon)
+add_library(dummy-backend MODULE ${dummy-backend_SRCS})
+target_link_libraries(dummy-backend Qt5::Core Qt5::Widgets KF5::CoreAddons KF5::Service Discover::Common)
 
-install(TARGETS muon-dummy-backend DESTINATION ${PLUGIN_INSTALL_DIR}/muon)
-install(FILES muon-dummy-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/libmuon/backends)
-install(FILES muon-dummy-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
+install(TARGETS dummy-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
+install(FILES dummy-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/libdiscover/backends)
+install(FILES dummy-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
 
-add_library(MuonDummyNotifier MODULE DummyNotifier.cpp)
-target_link_libraries(MuonDummyNotifier DiscoverNotifiers)
+add_library(DummyNotifier MODULE DummyNotifier.cpp)
+target_link_libraries(DummyNotifier Discover::Notifiers)
 
-install(TARGETS MuonDummyNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/muon-notifier)
+install(TARGETS DummyNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/discover-notifier)

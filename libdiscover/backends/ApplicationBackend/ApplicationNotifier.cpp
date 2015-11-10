@@ -70,7 +70,7 @@ void ApplicationNotifier::init()
 
 void ApplicationNotifier::distUpgradeEvent()
 {
-    QString checkerFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "libmuon/applicationsbackend/releasechecker");
+    QString checkerFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "libdiscover/applicationsbackend/releasechecker");
     if (checkerFile.isEmpty()) {
         qWarning() << "Couldn't find the releasechecker" << checkerFile << QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
         return;

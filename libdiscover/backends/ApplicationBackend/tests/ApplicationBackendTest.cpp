@@ -91,7 +91,7 @@ ApplicationBackendTest::ApplicationBackendTest()
         testRatings.close();
         ratings.close();
     }
-    ResourcesModel* m = new ResourcesModel("muon-applications-backend", this);
+    ResourcesModel* m = new ResourcesModel("qapt-backend", this);
     m_window = new KXmlGuiWindow;
     m->integrateMainWindow(m_window);
     new ModelTest(m,m);

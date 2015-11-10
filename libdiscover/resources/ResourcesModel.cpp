@@ -34,8 +34,6 @@
 #include <QThread>
 #include <QAction>
 
-// static const KCatalogLoader loader("libmuon");//FIXME port
-
 ResourcesModel *ResourcesModel::s_self = nullptr;
 
 ResourcesModel *ResourcesModel::global()

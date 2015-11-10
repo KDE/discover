@@ -1,3 +1,14 @@
+function(add_unit_test name)
+    add_executable(${name} ${CMAKE_SOURCE_DIR}/libdiscover/backends/ApplicationBackend/tests/modeltest.cpp ${ARGN})
+    add_test(${name} ${name})
+    ecm_mark_as_test(${name})
+    target_link_libraries(${name}
+        Discover::Common
+
+        Qt5::Test Qt5::Core
+        KF5::KIOWidgets KF5::XmlGui ${EXTRA_LIBS})
+endfunction()
+
 if(AKABEICLIENT_FOUND)
     add_subdirectory(AkabeiBackend)#TODO: Add checks
 endif()

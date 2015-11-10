@@ -52,6 +52,7 @@ LINK_PRIVATE
     KF5::KIOWidgets
     KF5::IconThemes
 )
+add_library(Discover::Common ALIAS DiscoverCommon)
 
 generate_export_header(DiscoverCommon)
 

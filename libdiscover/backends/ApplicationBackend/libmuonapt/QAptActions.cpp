@@ -513,7 +513,7 @@ void QAptActions::checkDistUpgrade()
         qWarning() << "Couldn't find the /usr/lib/python3/dist-packages/DistUpgrade/DistUpgradeFetcherKDE.py file";
         return;
     }
-    QString checkerFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "libmuon/applicationsbackend/releasechecker");
+    QString checkerFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "libdiscover/applicationsbackend/releasechecker");
     if(checkerFile.isEmpty()) {
         qWarning() << "Couldn't find the releasechecker script" << QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
         return;

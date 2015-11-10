@@ -16,7 +16,7 @@ Name[sv]=Felaktig
 Name[uk]=Неправильно
 Name[x-test]=xxWrongxx
 
-X-KDE-Library=muon-knsbackend
-X-KDE-PluginInfo-Name=muon-knswrong-backend
+X-KDE-Library=kns-backend
+X-KDE-PluginInfo-Name=knswrong-backend
 X-KDE-PluginInfo-License=GPL
 X-Muon-Arguments=wrong.knsrc

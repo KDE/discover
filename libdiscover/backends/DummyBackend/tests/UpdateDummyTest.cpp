@@ -51,7 +51,7 @@ public:
 
     UpdateDummyTest(QObject* parent = nullptr): QObject(parent)
     {
-        m_model = new ResourcesModel("muon-dummy-backend", this);
+        m_model = new ResourcesModel("dummy-backend", this);
 //         new ModelTest(m_model, m_model);
 
         m_appBackend = backendByName(m_model, "DummyBackend");

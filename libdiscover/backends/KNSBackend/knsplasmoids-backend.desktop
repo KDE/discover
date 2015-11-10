@@ -42,7 +42,7 @@ Comment[sv]=Installera Plasmoider och öka arbetsytans möjligheter.
 Comment[uk]=Встановіть плазмоїди і зробіть ваш робочий простір потужнішим!
 Comment[x-test]=xxInstall plasmoids and raise the power of your workspace!xx
 
-X-KDE-Library=muon-knsbackend
-X-KDE-PluginInfo-Name=muon-knsplasmoids-backend
+X-KDE-Library=kns-backend
+X-KDE-PluginInfo-Name=knsplasmoids-backend
 X-KDE-PluginInfo-License=GPL
 X-Muon-Arguments=plasmoids.knsrc

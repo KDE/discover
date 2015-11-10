@@ -1,4 +1,4 @@
-include_directories(../libmuon)
+include_directories(../libdiscover)
 
 set(muon_updater_SRCS
     main.cpp
@@ -23,7 +23,7 @@ target_link_libraries(muon-updater KF5::CoreAddons
                                    KF5::DBusAddons
                                    KF5::XmlGui
                                    KF5::IconThemes
-                                   DiscoverCommon)
+                                   Discover::Common)
 
 if (ENABLE_QZEITGEIST)
     target_link_libraries(muon-updater ${QZEITGEIST_LIBRARY})

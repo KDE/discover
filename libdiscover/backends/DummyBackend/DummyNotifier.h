@@ -25,7 +25,7 @@
 class DummyNotifier : public BackendNotifierModule
 {
 Q_OBJECT
-Q_PLUGIN_METADATA(IID "org.kde.muon.BackendNotifierModule")
+Q_PLUGIN_METADATA(IID "org.kde.discover.BackendNotifierModule")
 Q_INTERFACES(BackendNotifierModule)
 public:
     DummyNotifier(QObject* parent = nullptr);

@@ -51,6 +51,6 @@ Q_SIGNALS:
     void foundUpdates();
 };
 
-Q_DECLARE_INTERFACE(BackendNotifierModule, "org.kde.muon.BackendNotifierModule")
+Q_DECLARE_INTERFACE(BackendNotifierModule, "org.kde.discover.BackendNotifierModule")
 
 #endif

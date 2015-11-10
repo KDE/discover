@@ -18,16 +18,16 @@ set(appsbackend_SRCS
 
 qt5_add_dbus_interface(appsbackend_SRCS ubuntu_sso_dbus_interface.xml ubuntu_sso OPTIONS -i "LoginMetaTypes.h")
 
-add_library(muon-applications-backend MODULE ${appsbackend_SRCS})
-target_link_libraries(muon-applications-backend Qt5::Widgets Qt5::DBus Qt5::Concurrent
+add_library(discover-qapt MODULE ${appsbackend_SRCS})
+target_link_libraries(discover-qapt Qt5::Widgets Qt5::DBus Qt5::Concurrent
      KF5::Archive KF5::KIOWidgets KF5::XmlGui DebconfKDE::Main KF5::IconThemes
-     Muon::QOAuth QApt::Main DiscoverCommon MuonApt
+     Muon::QOAuth QApt::Main Discover::Common MuonApt
 )
 
-install(TARGETS muon-applications-backend DESTINATION ${PLUGIN_INSTALL_DIR}/muon)
-install(FILES muon-applications-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/libmuon/backends)
-install(FILES muon-applications-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libmuon/categories)
-install(FILES distupgradeevent/releasechecker DESTINATION ${DATA_INSTALL_DIR}/libmuon/applicationsbackend/
+install(TARGETS discover-qapt DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
+install(FILES discover-qapt.desktop DESTINATION ${DATA_INSTALL_DIR}/libdiscover/backends)
+install(FILES discover-qapt-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
+install(FILES distupgradeevent/releasechecker DESTINATION ${DATA_INSTALL_DIR}/libdiscover/applicationsbackend/
     PERMISSIONS
         OWNER_EXECUTE OWNER_READ OWNER_WRITE
         GROUP_EXECUTE GROUP_READ
@@ -36,7 +36,7 @@ install(FILES distupgradeevent/releasechecker DESTINATION ${DATA_INSTALL_DIR}/li
 
 add_library(MuonApplicationNotifier MODULE ApplicationNotifier.cpp)
 target_compile_definitions(MuonApplicationNotifier PRIVATE -DCMAKE_INSTALL_FULL_LIBEXECDIR_KF5=\"${CMAKE_INSTALL_FULL_LIBEXECDIR_KF5}\")
-target_link_libraries(MuonApplicationNotifier KF5::CoreAddons KF5::I18n KF5::Notifications KF5::IconThemes DiscoverNotifiers)
+target_link_libraries(MuonApplicationNotifier KF5::CoreAddons KF5::I18n KF5::Notifications KF5::IconThemes Discover::Notifiers)
 
-install(TARGETS MuonApplicationNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/muon-notifier)
+install(TARGETS MuonApplicationNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/discover-notifier)
 install(FILES muonapplicationnotifier.notifyrc DESTINATION ${KNOTIFYRC_INSTALL_DIR})

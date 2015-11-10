@@ -33,7 +33,7 @@ QList<BackendNotifierModule*> BackendNotifierFactory::allBackends() const
     QList<BackendNotifierModule*> ret;
 
     for(const QString& path : QCoreApplication::instance()->libraryPaths()) {
-        QDir dir(path+"/muon-notifier/");
+        QDir dir(path+"/discover-notifier/");
         for(const QString& file : dir.entryList(QDir::Files)) {
             QString fullPath = dir.absoluteFilePath(file);
             QPluginLoader loader(fullPath);

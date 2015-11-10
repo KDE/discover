@@ -42,7 +42,7 @@ AbstractResourcesBackend* DiscoverBackendsFactory::backend(const QString& name) 
         QString path = name;
         return backendForFile(path, QFileInfo(name).fileName());
     } else {
-        QString path = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("libmuon/backends/%1.desktop").arg(name));
+        QString path = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("libdiscover/backends/%1.desktop").arg(name));
         return backendForFile(path, name);
     }
 }
@@ -53,7 +53,7 @@ AbstractResourcesBackend* DiscoverBackendsFactory::backendForFile(const QString&
     KDesktopFile cfg(path);
     KConfigGroup group = cfg.group("Desktop Entry");
     QString libname = group.readEntry("X-KDE-Library", QString());
-    QPluginLoader* loader = new QPluginLoader("muon/"+libname, ResourcesModel::global());
+    QPluginLoader* loader = new QPluginLoader("discover/"+libname, ResourcesModel::global());
 
     //     qDebug() << "trying to load plugin:" << loader->fileName();
     AbstractResourcesBackendFactory* f = qobject_cast<AbstractResourcesBackendFactory*>(loader->instance());
@@ -80,11 +80,11 @@ QStringList DiscoverBackendsFactory::allBackendNames(bool whitelist) const
     }
 
     QStringList ret;
-    QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("libmuon/backends/"), QStandardPaths::LocateDirectory);
+    QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("libdiscover/backends/"), QStandardPaths::LocateDirectory);
     foreach (const QString& dir, dirs) {
         QDir d(dir);
         foreach(const QFileInfo& file, d.entryInfoList(QDir::Files)) {
-            if (file.baseName()!="muon-dummy-backend") {
+            if (file.baseName()!="dummy-backend") {
                 ret.append(file.baseName());
             }
         }
@@ -103,7 +103,7 @@ QList<AbstractResourcesBackend*> DiscoverBackendsFactory::allBackends() const
     ret.removeAll(nullptr);
 
     if(ret.isEmpty())
-        qWarning() << "Didn't find any muon backend!";
+        qWarning() << "Didn't find any Discover backend!";
     return ret;
 }
 

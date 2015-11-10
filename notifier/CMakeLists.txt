@@ -10,7 +10,7 @@ target_link_libraries(DiscoverNotifierDeclarativePlugin
     KF5::IconThemes
     Qt5::Qml
 
-    DiscoverNotifiers
+    Discover::Notifiers
 )
 install(TARGETS DiscoverNotifierDeclarativePlugin DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/discovernotifier)
 install(FILES qmldir DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/discovernotifier)

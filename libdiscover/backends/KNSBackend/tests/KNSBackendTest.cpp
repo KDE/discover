@@ -38,7 +38,7 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
     , m_r(nullptr)
 {
     QStandardPaths::setTestModeEnabled(true);
-    ResourcesModel* model = new ResourcesModel(QFINDTESTDATA("muon-knscorrect-backend.desktop"), this);
+    ResourcesModel* model = new ResourcesModel(QFINDTESTDATA("knscorrect-backend.desktop"), this);
     Q_ASSERT(!model->backends().isEmpty());
     m_backend = model->backends().first();
     auto m_window = new KXmlGuiWindow();
@@ -58,7 +58,7 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
 void KNSBackendTest::wrongBackend()
 {
     DiscoverBackendsFactory f;
-    AbstractResourcesBackend* b = f.backendForFile(QFINDTESTDATA("muon-knswrong-backend.desktop"), "muon-knswrong-backend");
+    AbstractResourcesBackend* b = f.backendForFile(QFINDTESTDATA("knswrong-backend.desktop"), "knswrong-backend");
     QVERIFY(!b->isValid());
 }
 
