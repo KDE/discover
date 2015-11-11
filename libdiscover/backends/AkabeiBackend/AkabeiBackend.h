@@ -74,7 +74,7 @@ public:
     
     virtual bool isFetching() const { return m_isFetching; }
 
-public slots:
+public Q_SLOTS:
     void statusChanged(Akabei::Backend::Status);
     void queryComplete(QUuid,QList<Akabei::Package*>);
     void reload();

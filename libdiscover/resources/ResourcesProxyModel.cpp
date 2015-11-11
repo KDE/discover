@@ -152,7 +152,7 @@ bool shouldFilter(AbstractResource* res, const QPair<FilterType, QString>& filte
             break;
         case PkgWildcardFilter: {
             QString wildcard = filter.second;
-            wildcard.remove('*');
+            wildcard.remove(QLatin1Char('*'));
             ret = res->packageName().contains(wildcard);
         }   break;
         case PkgNameFilter: // Only useful in the not filters
@@ -175,8 +175,8 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
     }
 
     for(QHash<QByteArray, QVariant>::const_iterator it=m_roleFilters.constBegin(), itEnd=m_roleFilters.constEnd(); it!=itEnd; ++it) {
-        Q_ASSERT(AbstractResource::staticMetaObject.indexOfProperty(it.key())>=0);
-        if(res->property(it.key())!=it.value()) {
+        Q_ASSERT(AbstractResource::staticMetaObject.indexOfProperty(it.key().constData())>=0);
+        if(res->property(it.key().constData())!=it.value()) {
             return false;
         }
     }

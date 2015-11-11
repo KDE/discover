@@ -81,13 +81,15 @@ void AptSourcesBackend::load()
 
 SourceItem* AptSourcesBackend::sourceForUri(const QString& uri)
 {
+    QUrl uriUrl(uri);
+
     for(int r = 0, c = m_sources->rowCount(); r<c; ++r) {
         SourceItem* s = static_cast<SourceItem*>(m_sources->item(r));
-        if(s->uri()==uri)
+        if(s->uri()==uriUrl)
             return s;
     }
-    SourceItem* s = new SourceItem(uri);
-    s->setData(uri, UriRole);
+    SourceItem* s = new SourceItem(uriUrl);
+    s->setData(uriUrl, UriRole);
     m_sources->appendRow(s);
     return s;
 }
@@ -99,11 +101,11 @@ QAbstractItemModel* AptSourcesBackend::sources()
 
 bool AptSourcesBackend::removeSource(const QString& repository)
 {
-    KAuth::Action readAction("org.kde.discover.repo.modify");
-    readAction.setHelperId("org.kde.discover.repo");
+    KAuth::Action readAction(QStringLiteral("org.kde.discover.repo.modify"));
+    readAction.setHelperId(QStringLiteral("org.kde.discover.repo"));
     QVariantMap args = {
-        { "repository", repository },
-        { "action", QStringLiteral("remove") }
+        { QStringLiteral("repository"), repository },
+        { QStringLiteral("action"), QStringLiteral("remove") }
     };
     readAction.setArguments(args);
     qDebug() << "removing..." << args;
@@ -114,11 +116,11 @@ bool AptSourcesBackend::removeSource(const QString& repository)
 
 bool AptSourcesBackend::addSource(const QString& repository)
 {
-    KAuth::Action readAction("org.kde.discover.repo.modify");
-    readAction.setHelperId("org.kde.discover.repo");
+    KAuth::Action readAction(QStringLiteral("org.kde.discover.repo.modify"));
+    readAction.setHelperId(QStringLiteral("org.kde.discover.repo"));
     QVariantMap args = {
-        { "repository", repository },
-        { "action", QStringLiteral("add") }
+        { QStringLiteral("repository"), repository },
+        { QStringLiteral("action"), QStringLiteral("add") }
     };
     readAction.setArguments(args);
     qDebug() << "adding..." << args;
@@ -137,7 +139,7 @@ void AptSourcesBackend::additionDone(int processErrorCode)
         Q_ASSERT(p);
         QByteArray errorMessage = p->readAllStandardOutput();
         if(!errorMessage.isEmpty())
-            KMessageBox::error(0, errorMessage, i18n("Adding Origins..."));
+            KMessageBox::error(0, QString::fromUtf8(errorMessage), i18n("Adding Origins..."));
     }
 }
 
@@ -151,7 +153,7 @@ void AptSourcesBackend::removalDone(int processErrorCode)
         Q_ASSERT(p);
         QByteArray errorMessage = p->readAllStandardOutput();
         if(!errorMessage.isEmpty())
-            KMessageBox::error(0, errorMessage, i18n("Removing Origins..."));
+            KMessageBox::error(0, QString::fromUtf8(errorMessage), i18n("Removing Origins..."));
     }
 }
 
@@ -174,12 +176,12 @@ QVariant SourceItem::data(int role) const
                 return m_uri.toDisplayString();
             else {
                 QString path = m_uri.path();
-                int firstSlash = path.indexOf('/', 1);
-                int secondSlash = path.indexOf('/', firstSlash+1);
-                QString launchpadifyUri = path.mid(1,secondSlash-1).replace('/', '-');
+                int firstSlash = path.indexOf(QLatin1Char('/'), 1);
+                int secondSlash = path.indexOf(QLatin1Char('/'), firstSlash+1);
+                QString launchpadifyUri = path.mid(1,secondSlash-1).replace(QLatin1Char('/'), QLatin1Char('-'));
                 QStringList results = origins.filter(launchpadifyUri, Qt::CaseInsensitive);
                 if(results.isEmpty()) {
-                    launchpadifyUri = path.mid(1,firstSlash-1).replace('/', '-');
+                    launchpadifyUri = path.mid(1,firstSlash-1).replace(QLatin1Char('/'), QLatin1Char('-'));
                     results = origins.filter(launchpadifyUri, Qt::CaseInsensitive);
                 }
                 return results.isEmpty() ? QString() : results.first();
@@ -208,7 +210,7 @@ QVariant SourceItem::data(int role) const
                     ret.append(i18n("%1 (Binary)", e));
             }
 
-            return ret.join(", ");
+            return ret.join(QStringLiteral(", "));
         }
         default:
             return QStandardItem::data(role);
@@ -237,5 +239,5 @@ QString AptSourcesBackend::name() const
 
 QList<QAction*> AptSourcesBackend::actions() const
 {
-    return QList<QAction*>() << QAptActions::self()->actionCollection()->action("software_properties");
+    return { QAptActions::self()->actionCollection()->action(QStringLiteral("software_properties")) };
 }

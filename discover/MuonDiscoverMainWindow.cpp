@@ -85,13 +85,13 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     qmlRegisterType<QAction>();
     
     //Here we set up a cache for the screenshots
-    engine->rootContext()->setContextProperty("app", this);
+    engine->rootContext()->setContextProperty(QStringLiteral("app"), this);
 //
 //     KConfigGroup window(KSharedConfig::openConfig(), "Window");
 //     restoreGeometry(window.readEntry<QByteArray>("geometry", QByteArray()));
 //     restoreState(window.readEntry<QByteArray>("windowState", QByteArray()));
     
-    m_view->setSource(QUrl("qrc:/qml/Main.qml"));
+    m_view->setSource(QUrl(QStringLiteral("qrc:/qml/Main.qml")));
 
     if(!m_view->errors().isEmpty()) {
         QString errors;
@@ -137,7 +137,7 @@ QStringList MuonDiscoverMainWindow::modes() const
             name = name.mid(3);
             name = name.left(name.length()-4);
             name[0] = name[0] - 'A' + 'a';
-            ret += name;
+            ret += QString::fromLatin1(name);
         }
     }
     return ret;
@@ -145,7 +145,7 @@ QStringList MuonDiscoverMainWindow::modes() const
 
 void MuonDiscoverMainWindow::openMode(const QByteArray& _mode)
 {
-    if(!modes().contains(_mode))
+    if(!modes().contains(QString::fromLatin1(_mode)))
         qWarning() << "unknown mode" << _mode;
     
     QByteArray mode = _mode;
@@ -153,7 +153,7 @@ void MuonDiscoverMainWindow::openMode(const QByteArray& _mode)
         mode[0] = mode[0]-'a'+'A';
     QObject* obj = m_view->rootObject();
     QByteArray propertyName = "top"+mode+"Comp";
-    QVariant modeComp = obj->property(propertyName);
+    QVariant modeComp = obj->property(propertyName.constData());
     obj->setProperty("currentTopLevel", modeComp);
 }
 
@@ -198,7 +198,7 @@ QUrl MuonDiscoverMainWindow::featuredSource() const
 
 QUrl MuonDiscoverMainWindow::prioritaryFeaturedSource() const
 {
-    return QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::DataLocation, "featured.json"));
+    return QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::DataLocation, QStringLiteral("featured.json")));
 }
 
 bool MuonDiscoverMainWindow::isCompact() const
@@ -234,14 +234,14 @@ void MuonDiscoverMainWindow::setupActions()
     setupGUI(StandardWindowOption(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar & ~KXmlGuiWindow::ToolBar));
 
     QAction *quitAction = KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), actionCollection());
-    actionCollection()->addAction("file_quit", quitAction);
+    actionCollection()->addAction(QStringLiteral("file_quit"), quitAction);
 
-    QAction* configureSourcesAction = new QAction(QIcon::fromTheme("repository"), i18n("Configure Sources"), this);
+    QAction* configureSourcesAction = new QAction(QIcon::fromTheme(QStringLiteral("repository")), i18n("Configure Sources"), this);
     connect(configureSourcesAction, &QAction::triggered, this, &MuonDiscoverMainWindow::configureSources);
-    actionCollection()->addAction("configure_sources", configureSourcesAction);
+    actionCollection()->addAction(QStringLiteral("configure_sources"), configureSourcesAction);
 
     menuBar()->setVisible(false);
-    toolBar("discoverToolBar")->setVisible(false);
+    toolBar(QStringLiteral("discoverToolBar"))->setVisible(false);
 
     m_moreMenu = new QMenu(this);
     m_advancedMenu = new QMenu(i18n("Advanced..."), m_moreMenu);
@@ -259,14 +259,14 @@ void MuonDiscoverMainWindow::configureMenu()
     if (!m_moreMenu->isEmpty())
         m_moreMenu->addSeparator();
 
-    m_moreMenu->addAction(actionCollection()->action("configure_sources"));
-    m_moreMenu->addAction(actionCollection()->action("options_configure_keybinding"));
+    m_moreMenu->addAction(actionCollection()->action(QStringLiteral("configure_sources")));
+    m_moreMenu->addAction(actionCollection()->action(QStringLiteral("options_configure_keybinding")));
     m_moreMenu->addSeparator();
     m_moreMenu->addMenu(m_advancedMenu);
     m_moreMenu->addSeparator();
-    m_moreMenu->addAction(actionCollection()->action("help_about_app"));
-    m_moreMenu->addAction(actionCollection()->action("help_about_kde"));
-    m_moreMenu->addAction(actionCollection()->action("help_report_bug"));
+    m_moreMenu->addAction(actionCollection()->action(QStringLiteral("help_about_app")));
+    m_moreMenu->addAction(actionCollection()->action(QStringLiteral("help_about_kde")));
+    m_moreMenu->addAction(actionCollection()->action(QStringLiteral("help_report_bug")));
 }
 
 void MuonDiscoverMainWindow::configureSources()

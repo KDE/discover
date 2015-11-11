@@ -31,7 +31,7 @@
 #include "interface.h"
 #include <QPointer>
 #include <QNetworkAccessManager>
-#include <QtCrypto>
+// #include <QtCrypto>
 
 class QNetworkReply;
 class QEventLoop;

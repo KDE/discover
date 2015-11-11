@@ -33,7 +33,7 @@ class SourcesTest : public QObject
     public:
         explicit SourcesTest(QObject* parent = 0);
 
-    private slots:
+    private Q_SLOTS:
         void testSourcesFetch();
         void testResourcesMatchSources();
 

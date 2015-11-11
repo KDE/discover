@@ -44,7 +44,7 @@ class DISCOVERCOMMON_EXPORT CategoryModel : public QStandardItemModel
             /// A SubCategoryView
             SubCatType = 2
         };
-        Q_ENUMS(CatViewType);
+        Q_ENUMS(CatViewType)
 
         explicit CategoryModel(QObject* parent = nullptr);
 

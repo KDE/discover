@@ -41,7 +41,7 @@ PackageKitUpdater::PackageKitUpdater(PackageKitBackend * parent)
     m_lastUpdate()
 {
     m_updateAction = new QAction(this);
-    m_updateAction->setIcon(QIcon::fromTheme("system-software-update"));
+    m_updateAction->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
     m_updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     m_updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     m_updateAction->setEnabled(PackageKit::Daemon::networkState() != PackageKit::Daemon::NetworkOffline);

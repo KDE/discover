@@ -33,12 +33,12 @@ class KNSBackendTest : public QObject
     public:
         explicit KNSBackendTest(QObject* parent = nullptr);
 
-    private slots:
+    private Q_SLOTS:
         void wrongBackend();
         void testRetrieval();
         void testReviews();
 
-    public slots:
+    public Q_SLOTS:
         void reviewsArrived(AbstractResource *r, const QList<Review *>& revs);
 
     private:

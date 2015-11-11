@@ -87,7 +87,7 @@ private Q_SLOTS:
     void postInformation(const QString& path, const QVariantMap& data);
     void fetchRatings();
 
-public slots:
+public Q_SLOTS:
     void login();
     void registerAndLogin();
     void logout();

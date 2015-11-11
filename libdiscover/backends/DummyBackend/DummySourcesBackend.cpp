@@ -25,17 +25,17 @@
 DummySourcesBackend::DummySourcesBackend(QObject* parent)
     : AbstractSourcesBackend(parent)
     , m_sources(new QStandardItemModel(this))
-    , m_testAction(new QAction(QIcon::fromTheme("kalgebra"), QStringLiteral("DummyAction"), this))
+    , m_testAction(new QAction(QIcon::fromTheme(QStringLiteral("kalgebra")), QStringLiteral("DummyAction"), this))
 {
     QHash<int, QByteArray> roles = m_sources->roleNames();
     roles.insert(Qt::CheckStateRole, "checked");
     m_sources->setItemRoleNames(roles);
 
-    addSource("DummySource1");
-    addSource("DummySource2");
-    addSource("DummySource3");
-    addSource("DummySource4");
-    addSource("DummySource5");
+    addSource(QStringLiteral("DummySource1"));
+    addSource(QStringLiteral("DummySource2"));
+    addSource(QStringLiteral("DummySource3"));
+    addSource(QStringLiteral("DummySource4"));
+    addSource(QStringLiteral("DummySource5"));
 
     connect(m_testAction, &QAction::triggered, [](){ qDebug() << "action triggered!"; });
 }
@@ -48,7 +48,7 @@ QAbstractItemModel* DummySourcesBackend::sources()
 bool DummySourcesBackend::addSource(const QString& id)
 {
     QStandardItem* it = new QStandardItem(id);
-    it->setData(QString(id+" "+id), Qt::ToolTipRole);
+    it->setData(QVariant(id + QLatin1Char(' ') + id), Qt::ToolTipRole);
     m_sources->appendRow(it);
     return true;
 }

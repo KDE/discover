@@ -36,7 +36,7 @@ public:
     
     QString ask();
     
-private slots:
+private Q_SLOTS:
     void buttonClicked(QAbstractButton * button);
     
 private:

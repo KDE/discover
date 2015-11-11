@@ -52,7 +52,7 @@ class KNSReviews : public AbstractReviewsBackend
         virtual bool hasCredentials() const override;
         virtual QString userName() const override;
 
-    private slots:
+    private Q_SLOTS:
         void commentsReceived(Attica::BaseJob* job);
         void credentialsReceived(const QString& user, const QString& password);
 

@@ -32,7 +32,7 @@ class ApplicationBackendTest : public QObject
         ApplicationBackendTest();
         virtual ~ApplicationBackendTest();
 
-    private slots:
+    private Q_SLOTS:
         void testReload();
         void testCategories();
         void testRefreshUpdates();

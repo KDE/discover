@@ -67,7 +67,7 @@ private Q_SLOTS:
 
     void activityChanged();
 
-signals:
+Q_SIGNALS:
     void selectedResourceChanged(AbstractResource* res);
     void modelPopulated();
 };

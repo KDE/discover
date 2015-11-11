@@ -55,7 +55,7 @@ public:
     virtual bool hasUpdates() const;
     virtual void prepare();
     
-public slots:
+public Q_SLOTS:
     virtual void start();
     void transactionCreated(AkabeiClient::Transaction*);
     void validationFinished(bool);

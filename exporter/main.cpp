@@ -32,17 +32,17 @@ int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
     KLocalizedString::setApplicationDomain("muon-exporter");
-    KAboutData about("muonexporter", i18n("Muon Exporter"), version, i18n(description),
-                     KAboutLicense::GPL, i18n("©2013 Aleix Pol Gonzalez"), QString(), nullptr);
-    about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
-    about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), "aleixpol@blue-systems.com");
+    KAboutData about(QStringLiteral("muonexporter"), i18n("Muon Exporter"), version, i18n(description),
+                     KAboutLicense::GPL, i18n("©2013 Aleix Pol Gonzalez"), QString());
+    about.addAuthor(i18n("Jonathan Thomas"), QString(), QStringLiteral("echidnaman@kubuntu.org"));
+    about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), QStringLiteral("aleixpol@blue-systems.com"));
     about.setProductName("muon/exporter");
 
     MuonExporter exp;
     {
         QCommandLineParser parser;
-        parser.addOption(QCommandLineOption("backends", i18n("List all the backends we'll want to have loaded, separated by coma ','."), "names"));
-        parser.addPositionalArgument("file", i18n("File to which we'll export"));
+        parser.addOption(QCommandLineOption(QStringLiteral("backends"), i18n("List all the backends we'll want to have loaded, separated by coma ','."), QStringLiteral("names")));
+        parser.addPositionalArgument(QStringLiteral("file"), i18n("File to which we'll export"));
         DiscoverBackendsFactory::setupCommandLine(&parser);
         about.setupCommandLine(&parser);
         parser.addHelpOption();

@@ -62,13 +62,13 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QString upgradeablePackageId(const PackageKitResource* res) const;
         QVector<AbstractResource*> resourcesByPackageName(const QString& name, bool updating) const;
 
-    public slots:
+    public Q_SLOTS:
         void transactionCanceled(Transaction* t);
         void removeTransaction(Transaction* t);
         void reloadPackageList();
         void refreshDatabase();
 
-    private slots:
+    private Q_SLOTS:
         void getPackagesFinished(PackageKit::Transaction::Exit exit);
         void addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
         void packageDetails(const PackageKit::Details& details);

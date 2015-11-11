@@ -58,13 +58,13 @@ public:
     void setCanExit(bool e) { m_canExit = e; }
     bool canExit() const { return m_canExit; }
 
-signals:
+Q_SIGNALS:
     void shouldConnect(bool isConnected);
     void changesReverted();
     void sourcesEditorClosed(bool reload);
     void downloadArchives(QApt::Transaction *trans);
     
-public slots:
+public Q_SLOTS:
     void setBackend(QApt::Backend *backend);
     void setupActions();
 
@@ -83,7 +83,7 @@ public slots:
     void showHistoryDialog();
     void setActionsEnabled(bool enabled = true);
 
-private slots:
+private Q_SLOTS:
     void closeHistoryDialog();
     void checkDistUpgrade();
     void launchDistUpgrade();

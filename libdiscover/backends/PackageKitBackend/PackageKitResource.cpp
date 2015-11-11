@@ -82,7 +82,7 @@ QString PackageKitResource::longDescription()
 QUrl PackageKitResource::homepage()
 {
     fetchDetails();
-    return m_details.url();
+    return QUrl(m_details.url());
 }
 
 QString PackageKitResource::icon() const
@@ -120,7 +120,7 @@ int PackageKitResource::size()
 QString PackageKitResource::origin() const
 {
     //TODO
-    return "PackageKit";
+    return QStringLiteral("PackageKit");
 }
 
 QString PackageKitResource::section()
@@ -130,12 +130,12 @@ QString PackageKitResource::section()
 
 QUrl PackageKitResource::screenshotUrl()
 {
-    return QUrl(MuonDataSources::screenshotsSource().toString() + "/screenshot/" + packageName());
+    return QUrl(MuonDataSources::screenshotsSource().toString() + QStringLiteral("/screenshot/") + packageName());
 }
 
 QUrl PackageKitResource::thumbnailUrl()
 {
-    return QUrl(MuonDataSources::screenshotsSource().toString() + "/thumbnail/" + packageName());
+    return QUrl(MuonDataSources::screenshotsSource().toString() + QStringLiteral("/thumbnail/") + packageName());
 }
 
 AbstractResource::State PackageKitResource::state()
@@ -274,7 +274,7 @@ QStringList PackageKitResource::categories()
             break;
     };
     return categories;*/
-    return QStringList() << "Unknown";
+    return QStringList(QStringLiteral("Unknown"));
     //NOTE: I commented the category fetching code, as it seems to get called even for non-technical items
     //when selecting a category, and receiving details for all packages takes about 20 mins in my VirtualBox and probably not much less on real systems
 }
@@ -288,7 +288,7 @@ void PackageKitResource::fetchDetails()
 {
     if (!m_details.isEmpty())
         return;
-    m_details.insert("fetching", true);//we add an entry so it's not re-fetched.
+    m_details.insert(QStringLiteral("fetching"), true);//we add an entry so it's not re-fetched.
 
     PackageKit::Transaction* t = PackageKit::Daemon::getDetails(availablePackageId());
     connect(t, &PackageKit::Transaction::details, this, &PackageKitResource::setDetails);

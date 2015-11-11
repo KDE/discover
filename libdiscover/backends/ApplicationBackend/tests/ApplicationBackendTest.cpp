@@ -42,11 +42,11 @@ QTEST_MAIN( ApplicationBackendTest )
 QString getCodename(const QString& value)
 {
     QString ret;
-    QFile f("/etc/os-release");
+    QFile f(QStringLiteral("/etc/os-release"));
     if(f.open(QIODevice::ReadOnly|QIODevice::Text)){
 	QRegExp rx(QStringLiteral("%1=(.+)\n").arg(value));
 	while(!f.atEnd()) {
-	    QByteArray line = f.readLine();
+	    QString line = QString::fromUtf8(f.readLine());
 	    if(rx.exactMatch(line)) {
 		ret = rx.cap(1);
 		break;
@@ -60,7 +60,7 @@ AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 {
     QVector<AbstractResourcesBackend*> backends = m->backends();
     foreach(AbstractResourcesBackend* backend, backends) {
-        if(backend->metaObject()->className()==name) {
+        if(QString::fromLatin1(backend->metaObject()->className())==name) {
             return backend;
         }
     }
@@ -69,19 +69,19 @@ AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 
 ApplicationBackendTest::ApplicationBackendTest()
 {
-    QString ratingsDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libdiscover/ratings.txt";
-    QFile testRatings("~/.kde-unit-test/share/apps/libdiscover/ratings.txt");
+    QString ratingsDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+QStringLiteral("/libdiscover/ratings.txt");
+    QFile testRatings(QStringLiteral("~/.kde-unit-test/share/apps/libdiscover/ratings.txt"));
     QFile ratings(ratingsDir);
-    QString codeName = getCodename("ID");
+    QString codeName = getCodename(QStringLiteral("ID"));
     if(!testRatings.exists()) {
         if(ratings.exists()) {
             ratings.copy(testRatings.fileName());
         } else {
             ratings.close();
             if(codeName.toLower() == QLatin1String("ubuntu")) {
-                ratingsDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libdiscover/rnrtestratings.txt";
+                ratingsDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+QStringLiteral("/libdiscover/rnrtestratings.txt");
             } else {
-                ratingsDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libdiscover/popcontestratings.txt";
+                ratingsDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+QStringLiteral("/libdiscover/popcontestratings.txt");
             }
             ratings.setFileName(ratingsDir);
             if(ratings.exists()) {
@@ -91,11 +91,11 @@ ApplicationBackendTest::ApplicationBackendTest()
         testRatings.close();
         ratings.close();
     }
-    ResourcesModel* m = new ResourcesModel("qapt-backend", this);
+    ResourcesModel* m = new ResourcesModel(QStringLiteral("qapt-backend"), this);
     m_window = new KXmlGuiWindow;
     m->integrateMainWindow(m_window);
     new ModelTest(m,m);
-    m_appBackend = backendByName(m, "ApplicationBackend");
+    m_appBackend = backendByName(m, QStringLiteral("ApplicationBackend"));
     QVERIFY(m_appBackend); //TODO: test all backends
     QSignalSpy s(m, SIGNAL(allInitialized()));
     QVERIFY(s.wait());
@@ -119,7 +119,7 @@ void ApplicationBackendTest::testReload()
     }
     
     bool b = QMetaObject::invokeMethod(m_appBackend, "reload");
-    Q_ASSERT(b);
+    QVERIFY(b);
     m_appBackend->updatesCount();
     QCOMPARE(apps, m_appBackend->allResources() );
     
@@ -151,7 +151,7 @@ void ApplicationBackendTest::testRefreshUpdates()
     ResourcesModel* m = ResourcesModel::global();
 
     QSignalSpy spy(m, SIGNAL(fetchingChanged()));
-    QAptActions::self()->actionCollection()->action("update")->trigger();
+    QAptActions::self()->actionCollection()->action(QStringLiteral("update"))->trigger();
 //     QTest::kWaitForSignal(m, SLOT(fetchingChanged()));
     QVERIFY(!m->isFetching());
     qDebug() << spy.count();

@@ -59,17 +59,17 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
         void resizeEvent(QResizeEvent * event) override;
         void showEvent(QShowEvent * event) override;
 
-    public slots:
+    public Q_SLOTS:
         void openApplication(const QString& app);
         void openMimeType(const QString& mime);
         void openCategory(const QString& category);
         void openMode(const QByteArray& mode);
         void showMenu(int x, int y);
 
-    private slots:
+    private Q_SLOTS:
         void triggerOpenApplication();
 
-    signals:
+    Q_SIGNALS:
         void openApplicationInternal(AbstractResource* app);
         void listMimeInternal(const QString& mime);
         void listCategoryInternal(const QString& name);

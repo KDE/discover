@@ -40,7 +40,7 @@ public:
     uint securityUpdatesCount() Q_DECL_OVERRIDE Q_DECL_FINAL;
     uint updatesCount() Q_DECL_OVERRIDE Q_DECL_FINAL;
 
-private slots:
+private Q_SLOTS:
     void checkUpgradeFinished(int exitStatus);
     void distUpgradeEvent();
     void recheckSystemUpdateNeeded() Q_DECL_OVERRIDE Q_DECL_FINAL;

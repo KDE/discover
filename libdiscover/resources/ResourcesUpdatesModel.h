@@ -35,7 +35,7 @@ class QDBusInterface;
 class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 {
     Q_OBJECT
-    Q_PROPERTY(qreal progress READ progress NOTIFY progressChanged);
+    Q_PROPERTY(qreal progress READ progress NOTIFY progressChanged)
     Q_PROPERTY(QString remainingTime READ remainingTime NOTIFY etaChanged)
     Q_PROPERTY(quint64 downloadSpeed READ downloadSpeed NOTIFY downloadSpeedChanged)
     Q_PROPERTY(bool isCancelable READ isCancelable NOTIFY cancelableChanged)
@@ -62,7 +62,7 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 
         qint64 secsToLastUpdate() const;
 
-    signals:
+    Q_SIGNALS:
         void downloadSpeedChanged();
         void progressChanged();
         void etaChanged();
@@ -72,11 +72,11 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         void statusDetailChanged(const QString& msg);
         void finished();
 
-    public slots:
+    public Q_SLOTS:
         void cancel();
         void updateAll();
 
-    private slots:
+    private Q_SLOTS:
         void updaterDestroyed(QObject* obj);
         void message(const QString& msg);
         void addNewBackends();

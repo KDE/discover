@@ -67,7 +67,7 @@ public:
     Attica::Provider* provider() { return &m_provider; }
     QList<AbstractResource*> upgradeablePackages() const override;
 
-public slots:
+public Q_SLOTS:
     void receivedEntries(const KNS3::Entry::List& entry);
     void startFetchingCategories();
     void categoriesLoaded(Attica::BaseJob*);

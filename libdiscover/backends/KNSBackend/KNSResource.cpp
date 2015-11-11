@@ -74,7 +74,7 @@ QString KNSResource::comment()
     QString s = m_content.summary();
     if(s.isEmpty()) {
         s = longDescription();
-        int newLine = s.indexOf('\n');
+        int newLine = s.indexOf(QLatin1Char('\n'));
         if(newLine>0)
             s=s.left(newLine);
     }
@@ -103,12 +103,12 @@ QUrl KNSResource::homepage()
 
 QUrl KNSResource::thumbnailUrl()
 {
-    return m_content.smallPreviewPicture();
+    return QUrl(m_content.smallPreviewPicture());
 }
 
 QUrl KNSResource::screenshotUrl()
 {
-    return m_content.previewPicture();
+    return QUrl(m_content.previewPicture());
 }
 
 const Attica::Content& KNSResource::content()
@@ -119,7 +119,7 @@ const Attica::Content& KNSResource::content()
 QString KNSResource::longDescription()
 {
     QString ret = m_content.description();
-    ret = ret.replace('\r', QString());
+    ret = ret.replace(QLatin1Char('\r'), QString());
     return ret;
 }
 

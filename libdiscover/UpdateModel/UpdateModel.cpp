@@ -270,13 +270,13 @@ void UpdateModel::setResources(const QList< AbstractResource* >& resources)
     m_rootItem = new UpdateItem;
 
     UpdateItem *securityItem = new UpdateItem(i18nc("@item:inlistbox", "Important Security Updates"),
-                                              QIcon::fromTheme("security-medium"));
+                                              QIcon::fromTheme(QStringLiteral("security-medium")));
 
     UpdateItem *appItem = new UpdateItem(i18nc("@item:inlistbox", "Application Updates"),
-                                          QIcon::fromTheme("applications-other"));
+                                          QIcon::fromTheme(QStringLiteral("applications-other")));
 
     UpdateItem *systemItem = new UpdateItem(i18nc("@item:inlistbox", "System Updates"),
-                                             QIcon::fromTheme("applications-system"));
+                                             QIcon::fromTheme(QStringLiteral("applications-system")));
 
     foreach(AbstractResource* res, resources) {
         UpdateItem *updateItem = new UpdateItem(res);

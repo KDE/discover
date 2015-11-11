@@ -32,7 +32,7 @@ class DummyTest : public QObject
 public:
     explicit DummyTest(QObject* parent = nullptr);
 
-private slots:
+private Q_SLOTS:
     void init();
 
     void testReadData();

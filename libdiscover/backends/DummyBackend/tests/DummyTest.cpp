@@ -33,13 +33,13 @@
 #include <QtTest>
 #include <QAction>
 
-QTEST_MAIN(DummyTest);
+QTEST_MAIN(DummyTest)
 
 AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 {
     QVector<AbstractResourcesBackend*> backends = m->backends();
     foreach(AbstractResourcesBackend* backend, backends) {
-        if(backend->metaObject()->className()==name) {
+        if(QString::fromLatin1(backend->metaObject()->className()) == name) {
             return backend;
         }
     }
@@ -48,10 +48,10 @@ AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 
 DummyTest::DummyTest(QObject* parent): QObject(parent)
 {
-    m_model = new ResourcesModel("dummy-backend", this);
+    m_model = new ResourcesModel(QStringLiteral("dummy-backend"), this);
     new ModelTest(m_model, m_model);
 
-    m_appBackend = backendByName(m_model, "DummyBackend");
+    m_appBackend = backendByName(m_model, QStringLiteral("DummyBackend"));
 }
 
 void DummyTest::init()
@@ -81,7 +81,7 @@ void DummyTest::testProxy()
     QCOMPARE(m_appBackend->property("startElements").toInt(), pm.rowCount());
     pm.setShouldShowTechnical(true);
     QCOMPARE(m_appBackend->property("startElements").toInt()*2, pm.rowCount());
-    pm.setSearch("techie");
+    pm.setSearch(QStringLiteral("techie"));
     QCOMPARE(m_appBackend->property("startElements").toInt(), pm.rowCount());
     pm.setSearch(QString());
     QCOMPARE(m_appBackend->property("startElements").toInt()*2, pm.rowCount());
@@ -133,7 +133,7 @@ void DummyTest::testSort()
 
 void DummyTest::testInstallAddons()
 {
-    AbstractResource* res = m_model->resourceByPackageName("Dummy 1");
+    AbstractResource* res = m_model->resourceByPackageName(QStringLiteral("Dummy 1"));
     QVERIFY(res);
 
     ApplicationAddonsModel m;
@@ -157,7 +157,7 @@ void DummyTest::testInstallAddons()
 
 void DummyTest::testReviewsModel()
 {
-    AbstractResource* res = m_model->resourceByPackageName("Dummy 1");
+    AbstractResource* res = m_model->resourceByPackageName(QStringLiteral("Dummy 1"));
     QVERIFY(res);
 
     ReviewsModel m;
@@ -173,7 +173,7 @@ void DummyTest::testReviewsModel()
     m.markUseful(0, false);
     QCOMPARE(ReviewsModel::UserChoice(m.data(m.index(0,0), ReviewsModel::UsefulChoice).toInt()), ReviewsModel::No);
 
-    res = m_model->resourceByPackageName("Dummy 2");
+    res = m_model->resourceByPackageName(QStringLiteral("Dummy 2"));
     m.setResource(res);
     m.fetchMore();
 

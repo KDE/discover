@@ -941,7 +941,7 @@ QOAuth::ParamMap QOAuth::InterfacePrivate::sendRequest( const QString &requestUr
     } else if ( httpMethod == POST ) {
         authorizationHeader = paramsToString( parameters, ParseForRequestContent );
         // create a network request
-        request.setHeader( QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded" );
+        request.setHeader( QNetworkRequest::ContentTypeHeader, QStringLiteral("application/x-www-form-urlencoded") );
     }
 
     request.setUrl( QUrl( requestUrl ) );
@@ -1051,7 +1051,7 @@ QByteArray QOAuth::InterfacePrivate::createSignature( const QString &requestUrl,
             QByteArray key( consumerSecret.toPercentEncoding() + '&' + tokenSecret.toPercentEncoding() );
 
             // create HMAC-SHA1 digest in Base64
-            QCA::MessageAuthenticationCode hmac( "hmac(sha1)", QCA::SymmetricKey( key ) );
+            QCA::MessageAuthenticationCode hmac( QStringLiteral("hmac(sha1)"), QCA::SymmetricKey( key ) );
             QCA::SecureArray array( signatureBaseString );
             hmac.update( array );
             QCA::SecureArray resultArray = hmac.final();

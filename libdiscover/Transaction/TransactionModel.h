@@ -62,7 +62,7 @@ public:
 private:
     QVector<Transaction *> m_transactions;
     
-signals:
+Q_SIGNALS:
     void startingFirstTransaction();
     void lastTransactionFinished();
     void transactionAdded(Transaction *trans);
@@ -70,7 +70,7 @@ signals:
     void transactionRemoved(Transaction* trans);
     void countChanged();
 
-private slots:
+private Q_SLOTS:
     void transactionChanged();
 };
 

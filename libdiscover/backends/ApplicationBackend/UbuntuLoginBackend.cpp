@@ -45,7 +45,7 @@ UbuntuLoginBackend::UbuntuLoginBackend(QObject* parent)
     : AbstractLoginBackend(parent)
 {
     qDBusRegisterMetaType< QMap<QString,QString> >();
-    m_interface = new HackedComUbuntuSsoCredentialsManagementInterface( "com.ubuntu.sso", "/com/ubuntu/sso/credentials", QDBusConnection::sessionBus(), this);
+    m_interface = new HackedComUbuntuSsoCredentialsManagementInterface( QStringLiteral("com.ubuntu.sso"), QStringLiteral("/com/ubuntu/sso/credentials"), QDBusConnection::sessionBus(), this);
     connect(m_interface, SIGNAL(CredentialsError(QString,QMap<QString,QString>)), SLOT(credentialsError(QString,QMap<QString,QString>)));
     connect(m_interface, SIGNAL(AuthorizationDenied(QString)), SLOT(authorizationDenied(QString)));
     connect(m_interface, SIGNAL(CredentialsFound(QString,QMap<QString,QString>)), this, SLOT(successfulLogin(QString,QMap<QString,QString>)));
@@ -56,22 +56,22 @@ UbuntuLoginBackend::UbuntuLoginBackend(QObject* parent)
 void UbuntuLoginBackend::login()
 {
     QMap<QString,QString> data;
-    data["help_text"] = i18n("Log in to the Ubuntu SSO service");
-    data["window_id"] = winId();
+    data[QStringLiteral("help_text")] = i18n("Log in to the Ubuntu SSO service");
+    data[QStringLiteral("window_id")] = winId();
     QDBusPendingReply< void > ret = m_interface->login(appname(), data);
 }
 
 void UbuntuLoginBackend::registerAndLogin()
 {
     QMap<QString,QString> data;
-    data["help_text"] = i18n("Log in to the Ubuntu SSO service");
-    data["window_id"] = winId();
+    data[QStringLiteral("help_text")] = i18n("Log in to the Ubuntu SSO service");
+    data[QStringLiteral("window_id")] = winId();
     m_interface->register_hack(appname(), data);
 }
 
 QString UbuntuLoginBackend::displayName() const
 {
-    return m_credentials["name"];
+    return m_credentials[QStringLiteral("name")];
 }
 
 bool UbuntuLoginBackend::hasCredentials() const
@@ -128,20 +128,20 @@ void UbuntuLoginBackend::logout()
 
 QByteArray UbuntuLoginBackend::token() const
 {
-    return m_credentials["token"].toLatin1();
+    return m_credentials[QStringLiteral("token")].toLatin1();
 }
 
 QByteArray UbuntuLoginBackend::tokenSecret() const
 {
-    return m_credentials["token_secret"].toLatin1();
+    return m_credentials[QStringLiteral("token_secret")].toLatin1();
 }
 
 QByteArray UbuntuLoginBackend::consumerKey() const
 {
-    return m_credentials["consumer_key"].toLatin1();
+    return m_credentials[QStringLiteral("consumer_key")].toLatin1();
 }
 
 QByteArray UbuntuLoginBackend::consumerSecret() const
 {
-    return m_credentials["consumer_secret"].toLatin1();
+    return m_credentials[QStringLiteral("consumer_secret")].toLatin1();
 }

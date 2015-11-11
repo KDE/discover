@@ -168,11 +168,11 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
          */
         Rating* rating() const;
 
-    public slots:
+    public Q_SLOTS:
         virtual void fetchScreenshots();
         virtual void fetchChangelog() = 0;
 
-    signals:
+    Q_SIGNALS:
         void stateChanged();
         void ratingFetched();
 

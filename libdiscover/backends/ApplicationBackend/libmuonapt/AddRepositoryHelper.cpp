@@ -8,30 +8,30 @@
 ActionReply AddRepositoryHelper::modify(QVariantMap args)
 {
     ActionReply reply = ActionReply::SuccessReply();
-    if(args["repository"].isNull() || args["action"].isNull()) {
-        reply.setErrorDescription("Invalid action arguments.");
+    if(args[QStringLiteral("repository")].isNull() || args[QStringLiteral("action")].isNull()) {
+        reply.setErrorDescription(QStringLiteral("Invalid action arguments."));
         reply = ActionReply::HelperErrorReply();
         return reply;
     }
     QProcess *p = new QProcess(this);
     p->setProcessChannelMode(QProcess::MergedChannels);
-    QString modRepo("apt-add-repository");
+    QString modRepo(QStringLiteral("apt-add-repository"));
     QStringList arguments;
-    if(args["action"].toString()==QStringLiteral("add")) {
+    if(args[QStringLiteral("action")].toString() == QLatin1String("add")) {
         arguments.append(QStringLiteral("-y"));
-        arguments.append(args["repository"].toString());
+        arguments.append(args[QStringLiteral("repository")].toString());
     } else {
-        if(args["action"]=="remove")
+        if(args[QStringLiteral("action")] == QLatin1String("remove"))
         {
             arguments.append(QStringLiteral("--remove"));
             arguments.append(QStringLiteral("-y"));
-            arguments.append(args["repository"].toString());
+            arguments.append(args[QStringLiteral("repository")].toString());
         }
     }
     p->start(modRepo,arguments);
     p->waitForFinished();
     if(p->exitCode()) {
-        reply.setErrorDescription("Could not modify source.");
+        reply.setErrorDescription(QStringLiteral("Could not modify source."));
         reply= ActionReply::HelperErrorReply();
     }
     p->deleteLater();

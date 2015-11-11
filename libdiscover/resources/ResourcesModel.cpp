@@ -185,7 +185,7 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
         case RatingRole:
         case SortableRatingRole: {
             Rating* rating = resource->rating();
-            return rating ? rating->property(roleNames().value(role)) : -1;
+            return rating ? rating->property(roleNames().value(role).constData()) : -1;
         }
         case Qt::DecorationRole:
         case Qt::DisplayRole:
@@ -195,7 +195,7 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
         default: {
             QByteArray roleText = roleNames().value(role);
             const QMetaObject* m = resource->metaObject();
-            int propidx = roleText.isEmpty() ? -1 : m->indexOfProperty(roleText);
+            int propidx = roleText.isEmpty() ? -1 : m->indexOfProperty(roleText.constData());
 
             if(Q_UNLIKELY(propidx < 0)) {
                 qDebug() << "unknown role:" << role << roleText;

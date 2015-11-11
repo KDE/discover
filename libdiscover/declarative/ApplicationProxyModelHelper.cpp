@@ -78,5 +78,5 @@ void ApplicationProxyModelHelper::setStringSortRole_hack(const QString& role)
 
 QString ApplicationProxyModelHelper::stringSortRole() const
 {
-    return roleToString(sortRole());
+    return QString::fromLatin1(roleToString(sortRole()));
 }

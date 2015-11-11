@@ -36,10 +36,10 @@ public:
     AkabeiNotifier(QObject* parent, const QVariantList &);
     ~AkabeiNotifier();
     
-public slots:
+public Q_SLOTS:
     virtual Q_SCRIPTABLE void recheckSystemUpdateNeeded();
     
-private slots:
+private Q_SLOTS:
     void backendStateChanged(Akabei::Backend::Status status);
     void init();
     

@@ -25,18 +25,18 @@
 #include <QStringList>
 #include <QTimer>
 
-static QVector<QString> s_icons = { "kdevelop", "kalgebra", "kmail", "akregator", "korganizer" };
+static QVector<QString> s_icons = { QStringLiteral("kdevelop"), QStringLiteral("kalgebra"), QStringLiteral("kmail"), QStringLiteral("akregator"), QStringLiteral("korganizer") };
 
 DummyResource::DummyResource(QString  name, bool isTechnical, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
     , m_name(std::move(name))
     , m_state(State::Broken)
-    , m_addons({ PackageState("a", "aaaaaa", false), PackageState("b", "aaaaaa", false), PackageState("c", "aaaaaa", false)})
+    , m_addons({ PackageState(QStringLiteral("a"), QStringLiteral("aaaaaa"), false), PackageState(QStringLiteral("b"), QStringLiteral("aaaaaa"), false), PackageState(QStringLiteral("c"), QStringLiteral("aaaaaa"), false)})
     , m_isTechnical(isTechnical)
 {
     if(KRandom::random() % 2) {
-        m_screenshot = QUrl("http://screenshots.debian.net/screenshots/d/dolphin/9383_large.png");
-        m_screenshotThumbnail = QUrl("http://screenshots.debian.net/screenshots/d/dolphin/9383_small.png");
+        m_screenshot = QUrl(QStringLiteral("http://screenshots.debian.net/screenshots/d/dolphin/9383_large.png"));
+        m_screenshotThumbnail = QUrl(QStringLiteral("http://screenshots.debian.net/screenshots/d/dolphin/9383_small.png"));
     }
     m_iconName = s_icons[KRandom::random() % s_icons.size()];
 
@@ -65,17 +65,17 @@ QList<PackageState> DummyResource::addonsInformation()
 
 QString DummyResource::availableVersion() const
 {
-    return "3.0";
+    return QStringLiteral("3.0");
 }
 
 QStringList DummyResource::categories()
 {
-    return QStringList("dummy");
+    return QStringList(QStringLiteral("dummy"));
 }
 
 QString DummyResource::comment()
 {
-    return "comment "+name()+"...";
+    return QStringLiteral("comment ")+name()+QStringLiteral("...");
 }
 
 int DummyResource::size()
@@ -85,27 +85,27 @@ int DummyResource::size()
 
 QUrl DummyResource::homepage()
 {
-    return QUrl("http://kde.org");
+    return QUrl(QStringLiteral("http://kde.org"));
 }
 
 QString DummyResource::icon() const
 {
-    return isTechnical() ? "kalarm" : m_iconName;
+    return isTechnical() ? QStringLiteral("kalarm") : m_iconName;
 }
 
 QString DummyResource::installedVersion() const
 {
-    return "2.3";
+    return QStringLiteral("2.3");
 }
 
 QString DummyResource::license()
 {
-    return "GPL";
+    return QStringLiteral("GPL");
 }
 
 QString DummyResource::longDescription()
 {
-    return "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies consequat nulla, ut vulputate nulla ultricies ac. Suspendisse lacinia commodo lacus, non tristique mauris dictum vitae. Sed adipiscing augue nec nisi aliquet viverra. Etiam sit amet nulla in tellus consectetur feugiat. Cras in sem tortor. Fusce a nulla at justo accumsan gravida. Maecenas dui felis, lacinia at ornare sed, aliquam et purus. Sed ut sagittis lacus. Etiam dictum pharetra rhoncus. Suspendisse auctor orci ipsum. Pellentesque vitae urna nec felis consequat lobortis dictum in urna. Phasellus a mi ac leo adipiscing varius eget a felis. Cras magna augue, commodo sed placerat vel, tempus vel ligula. In feugiat quam quis est lobortis sed accumsan nunc malesuada. Mauris quis massa sit amet felis tempus suscipit a quis diam.\n\n"
+    return QStringLiteral("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies consequat nulla, ut vulputate nulla ultricies ac. Suspendisse lacinia commodo lacus, non tristique mauris dictum vitae. Sed adipiscing augue nec nisi aliquet viverra. Etiam sit amet nulla in tellus consectetur feugiat. Cras in sem tortor. Fusce a nulla at justo accumsan gravida. Maecenas dui felis, lacinia at ornare sed, aliquam et purus. Sed ut sagittis lacus. Etiam dictum pharetra rhoncus. Suspendisse auctor orci ipsum. Pellentesque vitae urna nec felis consequat lobortis dictum in urna. Phasellus a mi ac leo adipiscing varius eget a felis. Cras magna augue, commodo sed placerat vel, tempus vel ligula. In feugiat quam quis est lobortis sed accumsan nunc malesuada. Mauris quis massa sit amet felis tempus suscipit a quis diam.\n\n"
 
     "Aenean quis nulla erat, vel sagittis sem. Praesent vitae mauris arcu. Cras porttitor, ante at scelerisque sodales, nibh felis consectetur orci, ut hendrerit urna urna non urna. Duis eu magna id mi scelerisque adipiscing. Aliquam sed quam in eros sodales accumsan. Phasellus tempus sagittis suscipit. Aliquam rutrum dictum justo ut viverra. Nulla felis sem, molestie sed scelerisque non, consequat vitae nulla. Aliquam ullamcorper malesuada mi, vel vestibulum magna vulputate eget. In hac habitasse platea dictumst. Cras sed lacus dui, vel semper sem. Aenean sodales porta leo vel fringilla.\n\n"
 
@@ -113,7 +113,7 @@ QString DummyResource::longDescription()
 
     "Praesent tincidunt mattis massa mattis porta. Nullam posuere neque at mauris vestibulum vitae elementum leo sodales. Quisque condimentum lectus in libero luctus egestas. Fusce tempor neque ac dui tincidunt eget viverra quam suscipit. In hac habitasse platea dictumst. Etiam metus mi, adipiscing nec suscipit id, aliquet sed sem. Duis urna ligula, ornare sed vestibulum vel, molestie ac nisi. Morbi varius iaculis ligula. Nunc in augue leo, sit amet aliquam elit. Suspendisse rutrum sem diam. Proin eu orci nisl. Praesent porttitor dignissim est, id fermentum arcu venenatis vitae.\n\n"
 
-    "Integer in sapien eget quam vulputate lobortis. Morbi nibh elit, elementum vitae vehicula sed, consequat nec erat. Donec placerat porttitor est ut dapibus. Fusce augue orci, dictum et convallis vel, blandit eu tortor. Phasellus non eros nulla. In iaculis nulla fermentum nulla gravida eu mattis purus consectetur. Integer dui nunc, sollicitudin ac tincidunt nec, hendrerit bibendum nunc. Proin sit amet augue ac velit egestas varius. Sed eu ante quis orci vestibulum sagittis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus vitae urna odio, at molestie leo. In convallis neque vel mi dictum convallis lobortis turpis sagittis.\n\n";
+    "Integer in sapien eget quam vulputate lobortis. Morbi nibh elit, elementum vitae vehicula sed, consequat nec erat. Donec placerat porttitor est ut dapibus. Fusce augue orci, dictum et convallis vel, blandit eu tortor. Phasellus non eros nulla. In iaculis nulla fermentum nulla gravida eu mattis purus consectetur. Integer dui nunc, sollicitudin ac tincidunt nec, hendrerit bibendum nunc. Proin sit amet augue ac velit egestas varius. Sed eu ante quis orci vestibulum sagittis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus vitae urna odio, at molestie leo. In convallis neque vel mi dictum convallis lobortis turpis sagittis.\n\n");
 }
 
 QString DummyResource::name()
@@ -123,7 +123,7 @@ QString DummyResource::name()
 
 QString DummyResource::origin() const
 {
-    return "DummySource1";
+    return QStringLiteral("DummySource1");
 }
 
 QString DummyResource::packageName() const
@@ -143,7 +143,7 @@ QUrl DummyResource::thumbnailUrl()
 
 QString DummyResource::section()
 {
-    return "dummy";
+    return QStringLiteral("dummy");
 }
 
 AbstractResource::State DummyResource::state()
@@ -154,7 +154,7 @@ AbstractResource::State DummyResource::state()
 void DummyResource::fetchChangelog()
 {
     QString log = longDescription();
-    log.replace('\n', QStringLiteral("<br />"));
+    log.replace(QLatin1Char('\n'), QLatin1String("<br />"));
 
     emit changelogFetched(log);
 }
@@ -188,5 +188,5 @@ void DummyResource::setAddonInstalled(const QString& addon, bool installed)
 void DummyResource::invokeApplication() const
 {
     QDesktopServices d;
-    d.openUrl(QUrl("https://projects.kde.org/projects/extragear/sysadmin/muon"));
+    d.openUrl(QUrl(QStringLiteral("https://projects.kde.org/projects/extragear/sysadmin/muon")));
 }

@@ -58,7 +58,7 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
 void KNSBackendTest::wrongBackend()
 {
     DiscoverBackendsFactory f;
-    AbstractResourcesBackend* b = f.backendForFile(QFINDTESTDATA("knswrong-backend.desktop"), "knswrong-backend");
+    AbstractResourcesBackend* b = f.backendForFile(QFINDTESTDATA("knswrong-backend.desktop"), QStringLiteral("knswrong-backend"));
     QVERIFY(!b->isValid());
 }
 

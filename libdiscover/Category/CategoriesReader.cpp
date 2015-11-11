@@ -31,7 +31,7 @@
 QList<Category*> CategoriesReader::loadCategoriesFile(const QString& name)
 {
     QList<Category *> ret;
-    QString path = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "libdiscover/categories/"+name+"-categories.xml");
+    QString path = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("libdiscover/categories/")+name+QStringLiteral("-categories.xml"));
     if (path.isEmpty()) {
         qWarning() << "Couldn't find a category for " << name;
         return ret;

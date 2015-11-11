@@ -31,6 +31,6 @@ namespace PackageKitMessages
     QString statusMessage(PackageKit::Transaction::Status status);
     QString statusDetail(PackageKit::Transaction::Status status);
     QString updateStateMessage(PackageKit::Transaction::UpdateState state);
-};
+}
 
 #endif // PACKAGEKITMESSAGES_H

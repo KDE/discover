@@ -51,7 +51,7 @@ DiscoverNotifier::~DiscoverNotifier()
 
 void DiscoverNotifier::configurationChanged()
 {
-    KConfig notifierConfig("muon-notifierrc", KConfig::NoGlobals);
+    KConfig notifierConfig(QStringLiteral("muon-notifierrc"), KConfig::NoGlobals);
 
     KConfigGroup notifyTypeGroup(&notifierConfig, "NotificationType");
     m_verbose = notifyTypeGroup.readEntry("Verbose", false);
@@ -59,7 +59,7 @@ void DiscoverNotifier::configurationChanged()
 
 void DiscoverNotifier::showMuon()
 {
-    KRun::runCommand("muon-discover --mode update", nullptr);
+    KRun::runCommand(QStringLiteral("muon-discover --mode update"), nullptr);
 }
 
 bool DiscoverNotifier::isSystemUpToDate() const
@@ -76,10 +76,10 @@ void DiscoverNotifier::showUpdatesNotification()
     //TODO: Better message strings
     QString msg = message();
     if (m_verbose) {
-        msg += ' ' + extendedMessage();
+        msg += QLatin1Char(' ') + extendedMessage();
     }
 
-    KNotification::event("Update", i18n("System update available"), msg, QStringLiteral("system-software-update"), nullptr, KNotification::CloseOnTimeout, "muonabstractnotifier");
+    KNotification::event(QStringLiteral("Update"), i18n("System update available"), msg, QStringLiteral("system-software-update"), nullptr, KNotification::CloseOnTimeout, QStringLiteral("muonabstractnotifier"));
 }
 
 void DiscoverNotifier::updateStatusNotifier()
@@ -182,6 +182,6 @@ QStringList DiscoverNotifier::loadedModules() const
 {
     QStringList ret;
     for(BackendNotifierModule* module : m_backends)
-        ret += module->metaObject()->className();
+        ret += QString::fromLatin1(module->metaObject()->className());
     return ret;
 }

@@ -37,7 +37,7 @@ AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 {
     QVector<AbstractResourcesBackend*> backends = m->backends();
     foreach(AbstractResourcesBackend* backend, backends) {
-        if(backend->metaObject()->className()==name) {
+        if(QString::fromLatin1(backend->metaObject()->className())==name) {
             return backend;
         }
     }
@@ -46,10 +46,10 @@ AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 
 ReviewsTest::ReviewsTest(QObject* parent): QObject(parent)
 {
-    ResourcesModel* m = new ResourcesModel("qapt-backend", this);
+    ResourcesModel* m = new ResourcesModel(QStringLiteral("qapt-backend"), this);
     m_window = new KXmlGuiWindow;
     m->integrateMainWindow(m_window);
-    m_appBackend = backendByName(m, "ApplicationBackend");
+    m_appBackend = backendByName(m, QStringLiteral("ApplicationBackend"));
     QVERIFY(QSignalSpy(m, SIGNAL(allInitialized())).wait());
     m_revBackend = m_appBackend->reviewsBackend();
 }
@@ -64,8 +64,8 @@ void ReviewsTest::testReviewsFetch()
 void ReviewsTest::testReviewsModel_data()
 {
     QTest::addColumn<QString>( "application" );
-    QTest::newRow( "python" ) << "python";
-    QTest::newRow( "gedit" ) << "gedit";
+    QTest::newRow( "python" ) << QStringLiteral("python");
+    QTest::newRow( "gedit" ) << QStringLiteral("gedit");
 }
 
 void ReviewsTest::testReviewsModel()

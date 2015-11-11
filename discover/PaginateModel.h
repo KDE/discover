@@ -65,7 +65,7 @@ class PaginateModel : public QAbstractListModel
         Q_SCRIPTABLE void previousPage();
         Q_SCRIPTABLE void lastPage();
 
-    private slots:
+    private Q_SLOTS:
         void _k_sourceRowsAboutToBeInserted(const QModelIndex &parent, int start, int end);
         void _k_sourceRowsInserted(const QModelIndex &parent, int start, int end);
         void _k_sourceRowsAboutToBeRemoved(const QModelIndex &parent, int start, int end);
@@ -86,7 +86,7 @@ class PaginateModel : public QAbstractListModel
         void _k_sourceModelAboutToBeReset();
         void _k_sourceModelReset();
 
-    signals:
+    Q_SIGNALS:
         void pageSizeChanged();
         void firstItemChanged();
         void sourceModelChanged();

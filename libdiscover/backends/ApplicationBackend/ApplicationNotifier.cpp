@@ -42,14 +42,14 @@ ApplicationNotifier::ApplicationNotifier(QObject* parent)
   , m_normalUpdates(0)
 {
     KDirWatch *stampDirWatch = new KDirWatch(this);
-    stampDirWatch->addFile("/var/lib/update-notifier/dpkg-run-stamp");
+    stampDirWatch->addFile(QStringLiteral("/var/lib/update-notifier/dpkg-run-stamp"));
     connect(stampDirWatch, &KDirWatch::dirty, this, &ApplicationNotifier::distUpgradeEvent);
 
     stampDirWatch = new KDirWatch(this);
-    stampDirWatch->addDir("/var/lib/apt/lists/");
-    stampDirWatch->addDir("/var/lib/apt/lists/partial/");
-    stampDirWatch->addFile("/var/lib/update-notifier/updates-available");
-    stampDirWatch->addFile("/var/lib/update-notifier/dpkg-run-stamp");
+    stampDirWatch->addDir(QStringLiteral("/var/lib/apt/lists/"));
+    stampDirWatch->addDir(QStringLiteral("/var/lib/apt/lists/partial/"));
+    stampDirWatch->addFile(QStringLiteral("/var/lib/update-notifier/updates-available"));
+    stampDirWatch->addFile(QStringLiteral("/var/lib/update-notifier/dpkg-run-stamp"));
     connect(stampDirWatch, &KDirWatch::dirty, this, &ApplicationNotifier::recheckSystemUpdateNeeded);
 
     //check in 2 minutes
@@ -70,7 +70,7 @@ void ApplicationNotifier::init()
 
 void ApplicationNotifier::distUpgradeEvent()
 {
-    QString checkerFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, "libdiscover/applicationsbackend/releasechecker");
+    QString checkerFile = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("libdiscover/applicationsbackend/releasechecker"));
     if (checkerFile.isEmpty()) {
         qWarning() << "Couldn't find the releasechecker" << checkerFile << QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
         return;
@@ -78,20 +78,20 @@ void ApplicationNotifier::distUpgradeEvent()
     m_checkerProcess = new QProcess(this);
     connect(m_checkerProcess, SIGNAL(finished(int)),
             this, SLOT(checkUpgradeFinished(int)));
-    m_checkerProcess->start("/usr/bin/python3", QStringList() << checkerFile);
+    m_checkerProcess->start(QStringLiteral("/usr/bin/python3"), QStringList() << checkerFile);
 }
 
 void ApplicationNotifier::checkUpgradeFinished(int exitStatus)
 {
     if (exitStatus == 0) {
-        KNotification *n = KNotification::event("DistUpgrade",
+        KNotification *n = KNotification::event(QStringLiteral("DistUpgrade"),
                                                 i18n("System update available!"),
                                                 i18nc("Notification when a new version of Kubuntu is available",
                                                       "A new version of Kubuntu is available"),
                                                 QStringLiteral("system-software-update"),
                                                 nullptr,
                                                 KNotification::CloseOnTimeout,
-                                                "muonapplicationnotifier");
+                                                QStringLiteral("muonapplicationnotifier"));
         n->setActions(QStringList() << i18n("Upgrade"));
         connect(n, &KNotification::action1Activated, this, &ApplicationNotifier::upgradeActivated);
     }
@@ -103,7 +103,7 @@ void ApplicationNotifier::checkUpgradeFinished(int exitStatus)
 void ApplicationNotifier::upgradeActivated()
 {
     const QString kdesu = QFile::decodeName(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/kdesu");
-    QProcess::startDetached(kdesu, { "--", "do-release-upgrade", "-m", "desktop", "-f", "DistUpgradeViewKDE" });
+    QProcess::startDetached(kdesu, { QStringLiteral("--"), QStringLiteral("do-release-upgrade"), QStringLiteral("-m"), QStringLiteral("desktop"), QStringLiteral("-f"), QStringLiteral("DistUpgradeViewKDE") });
 }
 
 void ApplicationNotifier::recheckSystemUpdateNeeded()
@@ -113,7 +113,7 @@ void ApplicationNotifier::recheckSystemUpdateNeeded()
     
     m_updateCheckerProcess = new QProcess(this);
     connect(m_updateCheckerProcess, static_cast<void(QProcess::*)(int)>(&QProcess::finished), this, &ApplicationNotifier::parseUpdateInfo);
-    m_updateCheckerProcess->start("/usr/lib/update-notifier/apt-check");
+    m_updateCheckerProcess->start(QStringLiteral("/usr/lib/update-notifier/apt-check"));
 }
     
 void ApplicationNotifier::parseUpdateInfo()

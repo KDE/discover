@@ -93,7 +93,7 @@ public:
     bool isFromSecureOrigin() const;
     QByteArray getField(const char* field, const QByteArray& defaultvalue = QByteArray()) const;
 
-private slots:
+private Q_SLOTS:
     void processChangelog(KJob*);
     void downloadingScreenshotsFinished(KJob*);
 

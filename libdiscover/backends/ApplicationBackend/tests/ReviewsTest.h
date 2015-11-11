@@ -36,7 +36,7 @@ class ReviewsTest : public QObject
     public:
         explicit ReviewsTest(QObject* parent = 0);
 
-    private slots:
+    private Q_SLOTS:
         void testReviewsFetch();
         
         void testReviewsModel_data();

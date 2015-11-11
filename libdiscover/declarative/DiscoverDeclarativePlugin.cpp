@@ -46,9 +46,9 @@ QML_DECLARE_TYPE(AbstractResourcesBackend)
 
 void DiscoverDeclarativePlugin::initializeEngine(QQmlEngine* engine, const char* uri)
 {
-    engine->rootContext()->setContextProperty("ResourcesModel", ResourcesModel::global());
-    engine->rootContext()->setContextProperty("TransactionModel", TransactionModel::global());
-    engine->rootContext()->setContextProperty("SourcesModel", SourcesModel::global());
+    engine->rootContext()->setContextProperty(QStringLiteral("ResourcesModel"), ResourcesModel::global());
+    engine->rootContext()->setContextProperty(QStringLiteral("TransactionModel"), TransactionModel::global());
+    engine->rootContext()->setContextProperty(QStringLiteral("SourcesModel"), SourcesModel::global());
     QQmlExtensionPlugin::initializeEngine(engine, uri);
 }
 
@@ -66,7 +66,7 @@ void DiscoverDeclarativePlugin::registerTypes(const char*)
     qmlRegisterType<MessageActionsModel>("org.kde.discover", 1, 0, "MessageActionsModel");
     qmlRegisterType<UpdateModel>("org.kde.discover", 1, 0, "UpdateModel");
     
-    qmlRegisterUncreatableType<QAction>("org.kde.discover", 1, 0, "QAction", "Use QQC Action");
+    qmlRegisterUncreatableType<QAction>("org.kde.discover", 1, 0, "QAction", QStringLiteral("Use QQC Action"));
     qmlRegisterType<Rating>();
     qmlRegisterType<AbstractResource>();
     qmlRegisterType<AbstractSourcesBackend>();

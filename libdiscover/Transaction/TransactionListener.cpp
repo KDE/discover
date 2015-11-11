@@ -86,10 +86,10 @@ class CheckChange
 public:
     CheckChange(QObject* obj, const QByteArray& prop)
         : m_object(obj)
-        , m_prop(obj->metaObject()->property(obj->metaObject()->indexOfProperty(prop)))
+        , m_prop(obj->metaObject()->property(obj->metaObject()->indexOfProperty(prop.constData())))
         , m_oldValue(m_prop.read(obj))
     {
-        Q_ASSERT(obj->metaObject()->indexOfProperty(prop)>=0);
+        Q_ASSERT(obj->metaObject()->indexOfProperty(prop.constData())>=0);
     }
 
     ~CheckChange() {

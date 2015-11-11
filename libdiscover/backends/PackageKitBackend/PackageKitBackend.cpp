@@ -60,7 +60,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     t->start();
 
     QAction* updateAction = new QAction(this);
-    updateAction->setIcon(QIcon::fromTheme("system-software-update"));
+    updateAction->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     connect(updateAction, &QAction::triggered, this, &PackageKitBackend::refreshDatabase);

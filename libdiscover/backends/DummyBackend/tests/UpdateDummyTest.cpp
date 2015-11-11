@@ -42,7 +42,7 @@ public:
     {
         QVector<AbstractResourcesBackend*> backends = m->backends();
         foreach(AbstractResourcesBackend* backend, backends) {
-            if(backend->metaObject()->className()==name) {
+            if(QLatin1String(backend->metaObject()->className()) == name) {
                 return backend;
             }
         }
@@ -51,13 +51,13 @@ public:
 
     UpdateDummyTest(QObject* parent = nullptr): QObject(parent)
     {
-        m_model = new ResourcesModel("dummy-backend", this);
+        m_model = new ResourcesModel(QStringLiteral("dummy-backend"), this);
 //         new ModelTest(m_model, m_model);
 
-        m_appBackend = backendByName(m_model, "DummyBackend");
+        m_appBackend = backendByName(m_model, QStringLiteral("DummyBackend"));
     }
 
-private slots:
+private Q_SLOTS:
     void init()
     {
         QVERIFY(m_appBackend);

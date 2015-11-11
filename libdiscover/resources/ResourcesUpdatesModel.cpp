@@ -87,18 +87,18 @@ void ResourcesUpdatesModel::slotProgressingChanged(bool progressing)
         m_lastIsProgressing = newProgressing;
         if (!m_lastIsProgressing) {
             if (!m_kded)
-                m_kded = new QDBusInterface("org.kde.kded", "/kded",
-                                            "org.kde.kded", QDBusConnection::sessionBus(), this);
-            QDBusReply<QStringList> lM = m_kded->call("loadedModules");
+                m_kded = new QDBusInterface(QStringLiteral("org.kde.kded"), QStringLiteral("/kded"),
+                                            QStringLiteral("org.kde.kded"), QDBusConnection::sessionBus(), this);
+            QDBusReply<QStringList> lM = m_kded->call(QStringLiteral("loadedModules"));
             QStringList services = lM.value();
             foreach (const QString &service, services) {
-                if (!service.startsWith("muon"))
+                if (!service.startsWith(QLatin1String("muon")))
                     continue;
                 
-                QDBusMessage message = QDBusMessage::createMethodCall("org.kde.kded",
-                                        "/modules/" + service,
-                                        "org.kde.kded.AbstractKDEDModule",
-                                        "recheckSystemUpdateNeeded");
+                QDBusMessage message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.kded"),
+                                        QStringLiteral("/modules/") + service,
+                                        QStringLiteral("org.kde.kded.AbstractKDEDModule"),
+                                        QStringLiteral("recheckSystemUpdateNeeded"));
                 QDBusConnection::sessionBus().send(message);
             }
         }

@@ -79,8 +79,10 @@ Application::Application(QApt::Package* package, QApt::Backend* backend)
     m_packageName = m_package->name().latin1();
     
     QString arch = m_package->architecture();
-    if (arch != m_backend->nativeArchitecture() && arch != QLatin1String("all"))
-        m_packageName.append(QLatin1Char(':') + m_package->architecture().toLatin1());
+    if (arch != m_backend->nativeArchitecture() && arch != QLatin1String("all")) {
+        m_packageName.append(':');
+        m_packageName.append(m_package->architecture().toLatin1());
+    }
 
     if (m_package->origin() == QLatin1String("LP-PPA-app-review-board")) {
         if (!m_package->controlField(QLatin1String("Appname")).isEmpty()) {
@@ -94,7 +96,7 @@ QString Application::name()
 {
     QString name;
     if (!m_isTechnical)
-        name = i18n(untranslatedName().toUtf8());
+        name = i18n(untranslatedName().toUtf8().constData());
     else
         name = untranslatedName();
 
@@ -119,28 +121,28 @@ QString Application::untranslatedName()
 
 QString Application::comment()
 {
-    QString comment = getField("Comment");
+    QString comment = QString::fromLatin1(getField("Comment"));
     if (comment.isEmpty()) {
         // Sometimes GenericName is used instead of Comment
-        comment = getField("GenericName");
+        comment = QString::fromLatin1(getField("GenericName"));
         if (comment.isEmpty()) {
             return package()->shortDescription();
         }
     }
 
-    return i18n(comment.toUtf8());
+    return i18n(comment.toUtf8().constData());
 }
 
 QString Application::packageName() const
 {
-    return m_packageName;
+    return QString::fromLatin1(m_packageName);
 }
 
 QApt::Package *Application::package()
 {
     if (!m_package && m_backend) {
         m_package = m_backend->package(packageName());
-        emit stateChanged();
+        Q_EMIT stateChanged();
     }
 
     // Packages removed from archive will remain in app-install-data until the
@@ -154,12 +156,12 @@ QApt::Package *Application::package()
 
 QString Application::icon() const
 {
-    return getField("Icon", "applications-other");
+    return QString::fromLatin1(getField("Icon", "applications-other"));
 }
 
 QStringList Application::mimetypes() const
 {
-    return QString(getField("MimeType")).split(';');
+    return QString::fromLatin1(getField("MimeType")).split(QLatin1Char(';'));
 }
 
 QString Application::menuPath()
@@ -181,10 +183,10 @@ QString Application::menuPath()
 
     if (!ret.isEmpty()) {
         path.append(QStringLiteral("<img width=\"16\" height=\"16\"src=\"%1\"/>")
-                    .arg(KIconLoader::global()->iconPath("kde", KIconLoader::Small)));
+                    .arg(KIconLoader::global()->iconPath(QStringLiteral("kde"), KIconLoader::Small)));
         path.append(QStringLiteral("&nbsp;%1 <img width=\"16\" height=\"16\" src=\"%2\"/>&nbsp;%3")
                     .arg(arrow)
-                    .arg(KIconLoader::global()->iconPath("applications-other", KIconLoader::Small))
+                    .arg(KIconLoader::global()->iconPath(QStringLiteral("applications-other"), KIconLoader::Small))
                     .arg(i18n("Applications")));
         for (int i = 0; i < ret.size(); i++) {
             path.append(QStringLiteral("&nbsp;%1&nbsp;<img width=\"16\" height=\"16\" src=\"%2\"/>&nbsp;%3")
@@ -257,12 +259,12 @@ QVector<QPair<QString, QString> > Application::locateApplication(const QString &
 
 QStringList Application::categories()
 {
-    QStringList categories = QString(getField("Categories")).split(';', QString::SkipEmptyParts);
+    QStringList categories = QString::fromLatin1(getField("Categories")).split(QLatin1Char(';'), QString::SkipEmptyParts);
 
     if (categories.isEmpty()) {
         // extras.ubuntu.com packages can have this field
         if (m_isExtrasApp)
-            categories = package()->controlField(QLatin1String("Category")).split(';');
+            categories = package()->controlField(QLatin1String("Category")).split(QLatin1Char(';'));
     }
     return categories;
 }
@@ -271,7 +273,7 @@ QUrl Application::thumbnailUrl()
 {
     QUrl url(package()->controlField(QLatin1String("Thumbnail-Url")));
     if(m_sourceHasScreenshot) {
-        url = QUrl(MuonDataSources::screenshotsSource().toString() + "/thumbnail/" + packageName());
+        url = QUrl(MuonDataSources::screenshotsSource().toString() + QStringLiteral("/thumbnail/") + packageName());
     }
     return url;
 }
@@ -280,7 +282,7 @@ QUrl Application::screenshotUrl()
 {
     QUrl url(package()->controlField(QLatin1String("Screenshot-Url")));
     if(m_sourceHasScreenshot) {
-        url = QUrl(MuonDataSources::screenshotsSource().toString() + "/screenshot/" + packageName());
+        url = QUrl(MuonDataSources::screenshotsSource().toString() + QStringLiteral("/screenshot/") + packageName());
     }
     return url;
 }
@@ -288,9 +290,9 @@ QUrl Application::screenshotUrl()
 QString Application::license()
 {
     QString component = package()->component();
-    if (component == "main" || component == "universe") {
+    if (component == QLatin1String("main") || component == QLatin1String("universe")) {
         return i18nc("@info license", "Open Source");
-    } else if (component == "restricted") {
+    } else if (component == QLatin1String("restricted")) {
         return i18nc("@info license", "Proprietary");
     } else {
         return i18nc("@info license", "Unknown");
@@ -309,35 +311,35 @@ QApt::PackageList Application::addons()
     QStringList tempList;
     // Only add recommends or suggests to the list if they aren't already going to be
     // installed
-    if (!m_backend->config()->readEntry("APT::Install-Recommends", true)) {
+    if (!m_backend->config()->readEntry(QStringLiteral("APT::Install-Recommends"), true)) {
         tempList << m_package->recommendsList();
     }
-    if (!m_backend->config()->readEntry("APT::Install-Suggests", false)) {
+    if (!m_backend->config()->readEntry(QStringLiteral("APT::Install-Suggests"), false)) {
         tempList << m_package->suggestsList();
     }
     tempList << m_package->enhancedByList();
 
     QStringList languagePackages;
-    QFile l10nFilterFile("/usr/share/language-selector/data/pkg_depends");
+    QFile l10nFilterFile(QStringLiteral("/usr/share/language-selector/data/pkg_depends"));
 
     if (l10nFilterFile.open(QFile::ReadOnly)) {
-        QString contents = l10nFilterFile.readAll();
+        QString contents = QString::fromLatin1(l10nFilterFile.readAll());
 
-        foreach (const QString &line, contents.split('\n')) {
+        foreach (const QString &line, contents.split(QLatin1Char('\n'))) {
             if (line.startsWith(QLatin1Char('#'))) {
                 continue;
             }
-            languagePackages << line.split(':').last();
+            languagePackages << line.split(QLatin1Char(':')).last();
         }
 
-        languagePackages.removeAll("");
+        languagePackages.removeAll(QString());
     }
 
     foreach (const QString &addon, tempList) {
         bool shouldShow = true;
         QApt::Package *package = m_backend->package(addon);
 
-        if (!package || QString(package->section()).contains("lib") || addons.contains(package)) {
+        if (!package || QString(package->section()).contains(QLatin1String("lib")) || addons.contains(package)) {
             continue;
         }
 
@@ -379,7 +381,7 @@ bool Application::isTechnical() const
 QByteArray Application::getField(const char* field, const QByteArray& defaultvalue) const
 {
     if(m_data) {
-        KConfigGroup group = m_data->group("Desktop Entry");
+        KConfigGroup group = m_data->group(QStringLiteral("Desktop Entry"));
         return group.readEntry(field, defaultvalue);
     } else
         return defaultvalue;
@@ -388,13 +390,13 @@ QByteArray Application::getField(const char* field, const QByteArray& defaultval
 
 bool Application::hasField(const char* field) const
 {
-    return m_data && m_data->group("Desktop Entry").hasKey(field);
+    return m_data && m_data->group(QStringLiteral("Desktop Entry")).hasKey(field);
 }
 
 QUrl Application::homepage()
 {
-    if(!m_package) return QString();
-    return m_package->homepage();
+    if(!m_package) return QUrl();
+    return QUrl(m_package->homepage());
 }
 
 QString Application::origin() const
@@ -452,7 +454,8 @@ QVector<KService::Ptr> Application::findExecutables() const
         return ret;
     }
 
-    foreach (const QString &desktop, m_package->installedFilesList().filter(QRegExp(".+\\.desktop$", Qt::CaseSensitive))) {
+    QRegExp rx(QStringLiteral(".+\\.desktop$"), Qt::CaseSensitive);
+    foreach (const QString &desktop, m_package->installedFilesList().filter(rx)) {
         // Important to use serviceByStorageId to ensure we get a service even
         // if the KSycoca database doesn't have our .desktop file yet.
         KService::Ptr service = KService::serviceByStorageId(desktop);
@@ -517,8 +520,8 @@ void Application::fetchScreenshots()
     if(!m_sourceHasScreenshot)
         return;
     
-    QString dest = QStandardPaths::locate(QStandardPaths::TempLocation, "screenshots."+m_packageName);
-    const QUrl packageUrl(MuonDataSources::screenshotsSource().toString() + "/json/package/"+m_packageName);
+    QString dest = QStandardPaths::locate(QStandardPaths::TempLocation, QStringLiteral("screenshots.")+QString::fromLatin1(m_packageName));
+    const QUrl packageUrl(MuonDataSources::screenshotsSource().toString() + QStringLiteral("/json/package/")+QString::fromLatin1(m_packageName));
     KIO::StoredTransferJob* job = KIO::storedGet(packageUrl, KIO::NoReload, KIO::HideProgressInfo);
     connect(job, SIGNAL(finished(KJob*)), SLOT(downloadingScreenshotsFinished(KJob*)));
 }
@@ -532,13 +535,13 @@ void Application::downloadingScreenshotsFinished(KJob* j)
         QJsonDocument doc = QJsonDocument::fromJson(job->data(), &error);
         if(error.error != QJsonParseError::NoError) {
             QVariantMap values = doc.toVariant().toMap();
-            QVariantList screenshots = values["screenshots"].toList();
+            QVariantList screenshots = values[QStringLiteral("screenshots")].toList();
             
             QList<QUrl> thumbnailUrls, screenshotUrls;
             foreach(const QVariant& screenshot, screenshots) {
                 QVariantMap s = screenshot.toMap();
-                thumbnailUrls += s["small_image_url"].toUrl();
-                screenshotUrls += s["large_image_url"].toUrl();
+                thumbnailUrls += s[QStringLiteral("small_image_url")].toUrl();
+                screenshotUrls += s[QStringLiteral("large_image_url")].toUrl();
             }
             emit screenshotsFetched(thumbnailUrls, screenshotUrls);
             done = true;
@@ -612,7 +615,7 @@ void Application::processChangelog(KJob* j)
 
 QString Application::buildDescription(const QByteArray& data, const QString& source)
 {
-    QApt::Changelog changelog(data, source);
+    QApt::Changelog changelog(QString::fromLatin1(data), source);
     QString description;
 
     QApt::ChangelogEntryList entries = changelog.newEntriesSince(m_package->installedVersion());
@@ -632,7 +635,7 @@ QString Application::buildDescription(const QByteArray& data, const QString& sou
                        QLatin1String("</p>");
 
         QString updateText = entry.description();
-        updateText.replace('\n', QLatin1String("<br/>"));
+        updateText.replace(QLatin1Char('\n'), QLatin1String("<br/>"));
         description += QLatin1String("<p><pre>") + updateText + QLatin1String("</pre></p>");
     }
 

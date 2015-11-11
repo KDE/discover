@@ -31,7 +31,7 @@ class DummyTransaction : public Transaction
         DummyTransaction(DummyResource* app, Role role);
         DummyTransaction(DummyResource* app, const AddonList& list, Role role);
 
-    private slots:
+    private Q_SLOTS:
         void iterateTransaction();
         void finishTransaction();
 

@@ -79,7 +79,7 @@ private:
     QString m_statusDetail;
     QList<AbstractResource*> m_toUpdate;
 
-private slots:
+private Q_SLOTS:
     void errorOccurred(QApt::ErrorCode error);
     void setProgress(int progress);
     void etaChanged(quint64 eta);

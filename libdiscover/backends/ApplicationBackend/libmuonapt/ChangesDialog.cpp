@@ -101,7 +101,7 @@ void ChangesDialog::addPackages(const QApt::StateChanges &changes)
         root->setFont(font);
 
         Q_FOREACH (QApt::Package *package, *i) {
-            root->appendRow(new QStandardItem(QIcon::fromTheme("muon"), package->name()));
+            root->appendRow(new QStandardItem(QIcon::fromTheme(QStringLiteral("muon")), package->name()));
         }
 
         m_model->appendRow(root);

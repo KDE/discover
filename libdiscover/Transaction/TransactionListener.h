@@ -54,13 +54,13 @@ private:
     AbstractResource *m_resource;
     Transaction *m_transaction;
 
-private slots:
+private Q_SLOTS:
     void transactionAdded(Transaction *trans);
     void transactionRemoved(Transaction* trans);
     void transactionCancelled(Transaction* trans);
     void transactionStatusChanged(Transaction::Status status);
 
-signals:
+Q_SIGNALS:
     void resourceChanged();
     void cancellableChanged();
     void runningChanged();

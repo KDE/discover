@@ -44,10 +44,10 @@ class ApplicationProxyModelHelper : public ResourcesProxyModel, public QQmlParse
         virtual void componentComplete() override;
         virtual QHash<int, QByteArray> roleNames() const override;
 
-    public slots:
+    public Q_SLOTS:
         void sortModel();
 
-    signals:
+    Q_SIGNALS:
         void sortRoleChanged();
         void sortOrderChanged();
         void countChanged();

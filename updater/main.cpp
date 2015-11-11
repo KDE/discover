@@ -32,18 +32,18 @@
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
-    app.setWindowIcon(QIcon::fromTheme("system-software-update"));
+    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
     KLocalizedString::setApplicationDomain("muon-updater");
-    KAboutData about("muonupdater", i18n("Muon Update Manager"), version, i18n("An update manager"),
-                     KAboutLicense::GPL, i18n("©2010-2013 Jonathan Thomas"), QString(), nullptr);
-    about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
-    about.addAuthor(i18n("Aleix Pol"), QString(), "aleixpol@kde.org");
+    KAboutData about(QStringLiteral("muonupdater"), i18n("Update Manager"), version, i18n("An update manager"),
+                     KAboutLicense::GPL, i18n("©2010-2013 Jonathan Thomas"), QString());
+    about.addAuthor(i18n("Jonathan Thomas"), QString(), QStringLiteral("echidnaman@kubuntu.org"));
+    about.addAuthor(i18n("Aleix Pol"), QString(), QStringLiteral("aleixpol@kde.org"));
     about.setProductName("muon/updater");
     KAboutData::setApplicationData(about);
 
     {
         QCommandLineParser parser;
-        parser.addOption(QCommandLineOption("backends", i18n("List all the backends we'll want to have loaded, separated by coma ','."), "names"));
+        parser.addOption(QCommandLineOption(QStringLiteral("backends"), i18n("List all the backends we'll want to have loaded, separated by coma ','."), QStringLiteral("names")));
         DiscoverBackendsFactory::setupCommandLine(&parser);
         about.setupCommandLine(&parser);
         parser.addHelpOption();

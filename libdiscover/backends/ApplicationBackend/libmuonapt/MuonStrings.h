@@ -37,9 +37,6 @@ public:
 
     static MuonStrings* global();
 
-    QString groupName(const QString &name) const;
-    QString groupKey(const QString &text) const;
-
     /** @returns the state name for a given @p state, for displaying it to the user */
     QString packageStateName(QApt::Package::State state) const;
 
@@ -47,18 +44,13 @@ public:
      * This means, the flags that are related to a state change, like ToInstall, ToUpgrade, etc
      */
     QString packageChangeStateName(QApt::Package::State state) const;
-    QString archString(const QString &arch) const;
     QString errorTitle(QApt::ErrorCode error) const;
     QString errorText(QApt::ErrorCode error, QApt::Transaction *trans) const;
 
 private:
-    const QHash<QString, QString> m_groupHash;
     const QHash<int, QString> m_stateHash;
-    const QHash<QString, QString> m_archHash;
 
-    QHash<QString, QString> groupHash();
-    QHash<int, QString> stateHash();
-    QHash<QString, QString> archHash();
+    static QHash<int, QString> stateHash();
 };
 
 #endif

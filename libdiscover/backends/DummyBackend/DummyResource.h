@@ -56,7 +56,7 @@ public:
 
     void setAddonInstalled(const QString& addon, bool installed);
 
-public slots:
+public Q_SLOTS:
     void enableStateChanges();
 
 public:

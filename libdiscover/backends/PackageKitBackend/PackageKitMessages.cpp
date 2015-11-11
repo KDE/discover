@@ -168,7 +168,7 @@ QString errorMessage(PackageKit::Transaction::Error error)
         default: {
             int idx = PackageKit::Transaction::staticMetaObject.indexOfEnumerator("Error");
             QMetaEnum metaenum = PackageKit::Transaction::staticMetaObject.enumerator(idx);
-            return i18n("Unknown error %1.", metaenum.valueToKey(error));
+            return i18n("Unknown error %1.", QString::fromLatin1(metaenum.valueToKey(error)));
         }
     }
 }
@@ -310,7 +310,7 @@ QString statusDetail(PackageKit::Transaction::Status status)
         default: {
             int idx = PackageKit::Transaction::staticMetaObject.indexOfEnumerator("Status");
             QMetaEnum metaenum = PackageKit::Transaction::staticMetaObject.enumerator(idx);
-            return i18n("Unknown status %1.", metaenum.valueToKey(status));
+            return i18n("Unknown status %1.", QString::fromLatin1(metaenum.valueToKey(status)));
         }
     }
 }

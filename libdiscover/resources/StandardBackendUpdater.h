@@ -57,7 +57,7 @@ class DISCOVERCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdat
 
         void setMessageActions(const QList<QAction*>& actions);
 
-    public slots:
+    public Q_SLOTS:
         void transactionRemoved(Transaction* t);
         void cleanup();
 

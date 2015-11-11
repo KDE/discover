@@ -32,7 +32,7 @@ class DISCOVERCOMMON_EXPORT AbstractLoginBackend : public QObject
         virtual bool hasCredentials() const = 0;
         virtual QString displayName() const = 0;
 
-    public slots:
+    public Q_SLOTS:
         virtual void login() = 0;
         virtual void registerAndLogin() = 0;
         virtual void logout() = 0;
@@ -41,7 +41,7 @@ class DISCOVERCOMMON_EXPORT AbstractLoginBackend : public QObject
         virtual QByteArray consumerKey() const = 0;
         virtual QByteArray consumerSecret() const = 0;
 
-    signals:
+    Q_SIGNALS:
         void connectionStateChanged();
 };
 

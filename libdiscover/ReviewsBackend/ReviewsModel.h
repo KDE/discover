@@ -33,7 +33,7 @@ class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
     Q_PROPERTY(AbstractReviewsBackend* backend READ backend)
     Q_PROPERTY(AbstractResource* resource READ resource WRITE setResource)
     Q_PROPERTY(int count READ rowCount NOTIFY rowsChanged)
-    Q_ENUMS(UserChoice);
+    Q_ENUMS(UserChoice)
     public:
         enum Roles {
             ShouldShow=Qt::UserRole+1,
@@ -62,16 +62,16 @@ class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
         virtual bool canFetchMore(const QModelIndex&) const override;
         virtual QHash<int, QByteArray> roleNames() const override;
 
-    public slots:
+    public Q_SLOTS:
         void deleteReview(int row);
         void flagReview(int row, const QString& reason, const QString& text);
         void markUseful(int row, bool useful);
 
-    private slots:
+    private Q_SLOTS:
         void addReviews(AbstractResource* app, const QList<Review*>& reviews);
         void restartFetching();
 
-    signals:
+    Q_SIGNALS:
         void rowsChanged();
 
     private:

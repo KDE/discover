@@ -30,7 +30,7 @@ class KActionMessageWidget : public KMessageWidget
         explicit KActionMessageWidget(QAction* action, QWidget* parent = nullptr);
         QAction* action() const { return m_action; }
 
-    public slots:
+    public Q_SLOTS:
         void reconsiderVisibility();
 
     private:

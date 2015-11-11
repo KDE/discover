@@ -53,7 +53,7 @@ AbstractResourcesBackend* DiscoverBackendsFactory::backendForFile(const QString&
     KDesktopFile cfg(path);
     KConfigGroup group = cfg.group("Desktop Entry");
     QString libname = group.readEntry("X-KDE-Library", QString());
-    QPluginLoader* loader = new QPluginLoader("discover/"+libname, ResourcesModel::global());
+    QPluginLoader* loader = new QPluginLoader(QStringLiteral("discover/") + libname, ResourcesModel::global());
 
     //     qDebug() << "trying to load plugin:" << loader->fileName();
     AbstractResourcesBackendFactory* f = qobject_cast<AbstractResourcesBackendFactory*>(loader->instance());
@@ -84,7 +84,7 @@ QStringList DiscoverBackendsFactory::allBackendNames(bool whitelist) const
     foreach (const QString& dir, dirs) {
         QDir d(dir);
         foreach(const QFileInfo& file, d.entryInfoList(QDir::Files)) {
-            if (file.baseName()!="dummy-backend") {
+            if (file.baseName()!= QLatin1String("dummy-backend")) {
                 ret.append(file.baseName());
             }
         }
@@ -114,14 +114,14 @@ int DiscoverBackendsFactory::backendsCount() const
 
 void DiscoverBackendsFactory::setupCommandLine(QCommandLineParser* parser)
 {
-    parser->addOption(QCommandLineOption("listbackends", i18n("List all the available backends.")));
-    parser->addOption(QCommandLineOption("backends", i18n("List all the backends we'll want to have loaded, separated by coma ','."), "names"));
+    parser->addOption(QCommandLineOption(QStringLiteral("listbackends"), i18n("List all the available backends.")));
+    parser->addOption(QCommandLineOption(QStringLiteral("backends"), i18n("List all the backends we'll want to have loaded, separated by coma ','."), QStringLiteral("names")));
 }
 
 void DiscoverBackendsFactory::processCommandLine(QCommandLineParser* parser)
 {
-    *s_requestedBackends = parser->value("backends").split(',', QString::SkipEmptyParts);
-    if(parser->isSet("listbackends")) {
+    *s_requestedBackends = parser->value(QStringLiteral("backends")).split(QLatin1Char(','), QString::SkipEmptyParts);
+    if(parser->isSet(QStringLiteral("listbackends"))) {
         fprintf(stdout, "%s", qPrintable(i18n("Available backends:\n")));
         DiscoverBackendsFactory f;
         foreach(const QString& name, f.allBackendNames(false))

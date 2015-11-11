@@ -8,7 +8,7 @@ using namespace KAuth;
 class AddRepositoryHelper : public QObject
 {
     Q_OBJECT
-public slots:
+public Q_SLOTS:
     ActionReply modify(QVariantMap args);
 };
 

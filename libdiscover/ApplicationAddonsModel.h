@@ -48,12 +48,12 @@ class DISCOVERCOMMON_EXPORT ApplicationAddonsModel : public QAbstractListModel
         virtual QHash<int, QByteArray> roleNames() const override;
         bool isEmpty() const;
 
-    public slots:
+    public Q_SLOTS:
         void discardChanges();
         void applyChanges();
         void changeState(const QString& packageName, bool installed);
 
-    signals:
+    Q_SIGNALS:
         void stateChanged();
         void applicationChanged();
 

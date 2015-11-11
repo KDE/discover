@@ -20,6 +20,8 @@
 #ifndef DISCOVERVERSION_H
 #define DISCOVERVERSION_H
 
-static const char version[] = "@PROJECT_VERSION@";
+#include <QLatin1String>
+
+static QLatin1String version("@PROJECT_VERSION@");
 
 #endif

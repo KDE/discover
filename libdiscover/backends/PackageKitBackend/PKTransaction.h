@@ -33,10 +33,10 @@ class PKTransaction : public Transaction
 
         void cancel();
 
-    public slots:
+    public Q_SLOTS:
         void start();
 
-    private slots:
+    private Q_SLOTS:
         void cleanup(PackageKit::Transaction::Exit, uint);
         void errorFound(PackageKit::Transaction::Error err, const QString& error);
         void mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text);

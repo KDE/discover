@@ -82,20 +82,20 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         
         virtual QHash<int, QByteArray> roleNames() const override;
 
-    public slots:
+    public Q_SLOTS:
         void installApplication(AbstractResource* app, AddonList addons);
         void installApplication(AbstractResource* app);
         void removeApplication(AbstractResource* app);
         void cancelTransaction(AbstractResource* app);
 
-    signals:
+    Q_SIGNALS:
         void fetchingChanged();
         void allInitialized();
         void backendsChanged();
         void updatesCountChanged();
         void searchInvalidated();
 
-    private slots:
+    private Q_SLOTS:
         void resetBackend(AbstractResourcesBackend* backend);
         void cleanBackend(AbstractResourcesBackend* backend);
         void callerFetchingChanged();

@@ -58,12 +58,12 @@ class PackageKitUpdater : public AbstractBackendUpdater
          */
         virtual QList<QAction*> messageActions() const;
 
-    public slots:
+    public Q_SLOTS:
         ///must be implemented if ever isCancelable is true
         virtual void cancel() override;
         virtual void start() override;
     
-    private slots:
+    private Q_SLOTS:
         void errorFound(PackageKit::Transaction::Error err, const QString& error);
         void mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text);
         void requireRestart(PackageKit::Transaction::Restart restart, const QString& p);

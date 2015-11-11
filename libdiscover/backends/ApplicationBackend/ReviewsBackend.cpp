@@ -48,11 +48,11 @@
 static QString getCodename(const QString& value)
 {
     QString ret;
-    QFile f("/etc/os-release");
+    QFile f(QStringLiteral("/etc/os-release"));
     if(f.open(QIODevice::ReadOnly|QIODevice::Text)) {
         QRegExp rx(QStringLiteral("%1=(.+)\n").arg(value));
         while(!f.atEnd()) {
-            QByteArray line = f.readLine();
+            QString line = QString::fromLatin1(f.readLine());
             if(rx.exactMatch(line)) {
                 ret = rx.cap(1);
                 break;
@@ -67,7 +67,7 @@ ReviewsBackend::ReviewsBackend(QObject *parent)
         , m_aptBackend(0)
         , m_serverBase(MuonDataSources::rnRSource())
 {
-    m_distId = getCodename("ID");
+    m_distId = getCodename(QStringLiteral("ID"));
     m_loginBackend = new UbuntuLoginBackend(this);
     connect(m_loginBackend, SIGNAL(connectionStateChanged()), SIGNAL(loginStateChanged()));
     connect(m_loginBackend, SIGNAL(connectionStateChanged()), SLOT(refreshConsumerKeys()));
@@ -109,10 +109,10 @@ void ReviewsBackend::setAptBackend(QApt::Backend *aptBackend)
 
 void ReviewsBackend::fetchRatings()
 {
-    QString ratingsCache = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libdiscover/ratings.txt";
+    QString ratingsCache = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QStringLiteral("/libdiscover/ratings.txt");
     QFileInfo file(ratingsCache);
     QDir::temp().mkpath(file.dir().path());
-    QUrl ratingsUrl(m_serverBase.toString()+"review-stats/");
+    QUrl ratingsUrl(m_serverBase.toString()+QStringLiteral("review-stats/"));
     //default to popcon if not using ubuntu
     if(m_distId.toLower() == QLatin1String("ubuntu")){
         refreshConsumerKeys();
@@ -120,7 +120,7 @@ void ReviewsBackend::fetchRatings()
         loadRatingsFromFile();
         // Try to fetch the latest ratings from the internet
     } else {
-        ratingsUrl = QUrl("http://popcon.debian.org/all-popcon-results.gz");
+        ratingsUrl = QUrl(QStringLiteral("http://popcon.debian.org/all-popcon-results.gz"));
     }
     KIO::FileCopyJob *getJob = KIO::file_copy(ratingsUrl, QUrl::fromLocalFile(ratingsCache), -1,
                                KIO::Overwrite | KIO::HideProgressInfo);
@@ -139,7 +139,7 @@ void ReviewsBackend::ratingsFetched(KJob *job)
 
 void ReviewsBackend::loadRatingsFromFile()
 {
-    QString ratingsCache = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+"/libdiscover/ratings.txt";
+    QString ratingsCache = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)+QStringLiteral("/libdiscover/ratings.txt");
     QScopedPointer<QIODevice> dev(new KCompressionDevice(ratingsCache, KCompressionDevice::GZip));
     if (!dev->open(QIODevice::ReadOnly)) {
         qWarning() << "Couldn't open ratings.txt" << ratingsCache;
@@ -169,8 +169,8 @@ void ReviewsBackend::loadRatingsFromFile()
     } else {
         if(dev->open(QIODevice::ReadOnly)) {
             while(!dev->atEnd()) {
-                QString line(dev->readLine());
-                QStringList lineContent = line.split(' ');
+                QString line = QString::fromLatin1(dev->readLine());
+                QStringList lineContent = line.split(QLatin1Char(' '));
                 if(lineContent.first() != QLatin1String("Package:") || lineContent.isEmpty()) {
                     continue;
                 }
@@ -224,16 +224,16 @@ void ReviewsBackend::fetchReviews(AbstractResource* res, int page)
     QString packageName = app->package()->name();
     QString appName = app->name();
     // Replace spaces with %2B for the url
-    appName.replace(' ', QLatin1String("%2B"));
+    appName.replace(QLatin1Char(' '), QLatin1String("%2B"));
 
     // Figuring out how this damn Django url was put together took more
     // time than figuring out QJson...
     // But that could be because the Ubuntu Software Center (which I used to
     // figure it out) is written in python, so you have to go hunting to where
     // a variable was initially initialized with a primitive to figure out its type.
-    QUrl reviewsUrl(m_serverBase.toString() + QLatin1String("/reviews/filter/") % lang % '/'
-            % origin % '/' % QLatin1String("any") % '/' % version % '/' % packageName
-            % ';' % appName % '/' % QLatin1String("page") % '/' % QString::number(page));
+    QUrl reviewsUrl(m_serverBase.toString() + QLatin1String("/reviews/filter/") % lang % QLatin1Char('/')
+            % origin % QLatin1Char('/') % QLatin1String("any") % QLatin1Char('/') % version % QLatin1Char('/') % packageName
+            % QLatin1Char(';') % appName % QLatin1String("/page/") % QString::number(page));
 
     KIO::StoredTransferJob* getJob = KIO::storedGet(reviewsUrl, KIO::NoReload, KIO::Overwrite | KIO::HideProgressInfo);
     m_jobHash[getJob] = app;
@@ -243,23 +243,23 @@ void ReviewsBackend::fetchReviews(AbstractResource* res, int page)
 
 static Review* constructReview(const QVariantMap& data)
 {
-    QString reviewUsername = data.value("reviewer_username").toString();
-    QString reviewDisplayName = data.value("reviewer_displayname").toString();
+    QString reviewUsername = data.value(QStringLiteral("reviewer_username")).toString();
+    QString reviewDisplayName = data.value(QStringLiteral("reviewer_displayname")).toString();
     QString reviewer = reviewDisplayName.isEmpty() ? reviewUsername : reviewDisplayName;
     return new Review(
-        data.value("app_name").toString(),
-        data.value("package_name").toString(),
-        data.value("language").toString(),
-        data.value("summary").toString(),
-        data.value("review_text").toString(),
+        data.value(QStringLiteral("app_name")).toString(),
+        data.value(QStringLiteral("package_name")).toString(),
+        data.value(QStringLiteral("language")).toString(),
+        data.value(QStringLiteral("summary")).toString(),
+        data.value(QStringLiteral("review_text")).toString(),
         reviewer,
-        QDateTime::fromString(data.value("date_created").toString(), "yyyy-MM-dd HH:mm:ss"),
-        !data.value("hide").toBool(),
-        data.value("id").toULongLong(),
-        data.value("rating").toInt() * 2,
-        data.value("usefulness_total").toInt(),
-        data.value("usefulness_favorable").toInt(),
-        data.value("version").toString());
+        QDateTime::fromString(data.value(QStringLiteral("date_created")).toString(), QStringLiteral("yyyy-MM-dd HH:mm:ss")),
+        !data.value(QStringLiteral("hide")).toBool(),
+        data.value(QStringLiteral("id")).toULongLong(),
+        data.value(QStringLiteral("rating")).toInt() * 2,
+        data.value(QStringLiteral("usefulness_total")).toInt(),
+        data.value(QStringLiteral("usefulness_favorable")).toInt(),
+        data.value(QStringLiteral("version")).toString());
 }
 
 void ReviewsBackend::reviewsFetched(KJob *j)
@@ -290,9 +290,8 @@ void ReviewsBackend::reviewsFetched(KJob *j)
 
 QString ReviewsBackend::getLanguage()
 {
-    QStringList fullLangs;
     // The reviews API abbreviates all langs past the _ char except these
-    fullLangs << "pt_BR" << "zh_CN" << "zh_TW";
+    const QStringList fullLangs = { QStringLiteral("pt_BR"), QStringLiteral("zh_CN"), QStringLiteral("zh_TW") };
 
     QString language = QLocale().bcp47Name();
 
@@ -300,12 +299,12 @@ QString ReviewsBackend::getLanguage()
         return language;
     }
 
-    return language.split('_').first();
+    return language.split(QLatin1Char('_')).first();
 }
 
 void ReviewsBackend::submitUsefulness(Review* r, bool useful)
 {
-    QVariantMap data = { { "useful", useful } };
+    QVariantMap data = { { QStringLiteral("useful"), useful } };
     
     postInformation(QStringLiteral("reviews/%1/recommendations/").arg(r->id()), data);
 }
@@ -316,25 +315,25 @@ void ReviewsBackend::submitReview(AbstractResource* application, const QString& 
     Application* app = qobject_cast<Application*>(application);
     
     QVariantMap data = {
-        { "app_name", app->name() },
-        { "package_name", app->packageName() },
-        { "summary", summary },
-        { "version", app->package()->version() },
-        { "review_text", review_text },
-        { "rating", rating },
-        { "language", getLanguage() },
-        { "origin", app->package()->origin() }
+        { QStringLiteral("app_name"), app->name() },
+        { QStringLiteral("package_name"), app->packageName() },
+        { QStringLiteral("summary"), summary },
+        { QStringLiteral("version"), app->package()->version() },
+        { QStringLiteral("review_text"), review_text },
+        { QStringLiteral("rating"), rating },
+        { QStringLiteral("language"), getLanguage() },
+        { QStringLiteral("origin"), app->package()->origin() }
     };
 
-    QString distroSeries = getCodename("VERSION");
+    QString distroSeries = getCodename(QStringLiteral("VERSION"));
     if(!distroSeries.isEmpty()){
-        data["distroseries"] = distroSeries.split(' ').last().remove('(').remove(')');
+        data[QStringLiteral("distroseries")] = distroSeries.split(QLatin1Char(' ')).last().remove(QLatin1Char('(')).remove(QLatin1Char(')'));
     }else{
-        data["distroseries"] = getCodename("PRETTY_NAME").split(' ').last();
+        data[QStringLiteral("distroseries")] = getCodename(QStringLiteral("PRETTY_NAME")).split(QLatin1Char(' ')).last();
     }
-    data["arch_tag"] = app->package()->architecture();
+    data[QStringLiteral("arch_tag")] = app->package()->architecture();
     
-    postInformation("reviews/", data);
+    postInformation(QStringLiteral("reviews/"), data);
 }
 
 void ReviewsBackend::deleteReview(Review* r)
@@ -345,8 +344,8 @@ void ReviewsBackend::deleteReview(Review* r)
 void ReviewsBackend::flagReview(Review* r, const QString& reason, const QString& text)
 {
     QVariantMap data = {
-        { "reason", reason },
-        { "text", text }
+        { QStringLiteral("reason"), reason },
+        { QStringLiteral("text"), text }
     };
 
     postInformation(QStringLiteral("reviews/%1/flags/").arg(r->id()), data);
@@ -366,12 +365,12 @@ void ReviewsBackend::postInformation(const QString& path, const QVariantMap& dat
         return;
     }
     
-    QUrl url(m_serverBase.toString() +'/'+ path);
-    url.setScheme("https");
+    QUrl url(m_serverBase.toString() +QLatin1Char('/')+ path);
+    url.setScheme(QStringLiteral("https"));
     
     KIO::StoredTransferJob* job = KIO::storedHttpPost(QJsonDocument::fromVariant(data).toJson(), url, KIO::Overwrite | KIO::HideProgressInfo); //TODO port to QJsonDocument
-    job->addMetaData("content-type", "Content-Type: application/json" );
-    job->addMetaData("customHTTPHeader", "Authorization: " + authorization(m_oauthInterface, url, m_loginBackend));
+    job->addMetaData(QStringLiteral("content-type"), QStringLiteral("Content-Type: application/json") );
+    job->addMetaData(QStringLiteral("customHTTPHeader"), QStringLiteral("Authorization: ") + QString::fromLatin1(authorization(m_oauthInterface, url, m_loginBackend)));
     connect(job, SIGNAL(result(KJob*)), this, SLOT(informationPosted(KJob*)));
     job->start();
 }

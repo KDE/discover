@@ -113,10 +113,10 @@ void MainWindow::initGUI()
 void MainWindow::setupActions()
 {
     QAction *quitAction = KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), actionCollection());
-    actionCollection()->addAction("file_quit", quitAction);
+    actionCollection()->addAction(QStringLiteral("file_quit"), quitAction);
 
-    m_applyAction = actionCollection()->addAction("apply");
-    m_applyAction->setIcon(QIcon::fromTheme("dialog-ok-apply"));
+    m_applyAction = actionCollection()->addAction(QStringLiteral("apply"));
+    m_applyAction->setIcon(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")));
     m_applyAction->setText(i18nc("@action Downloads and installs updates", "Install Updates"));
     connect(m_applyAction, SIGNAL(triggered()), m_updater, SLOT(updateAll()));
     m_applyAction->setEnabled(false);
@@ -164,13 +164,13 @@ void MainWindow::setupBackendsActions()
 
     if (!m_moreMenu->isEmpty())
         m_moreMenu->addSeparator();
-    m_moreMenu->addAction(actionCollection()->action("options_configure_keybinding"));
+    m_moreMenu->addAction(actionCollection()->action(QStringLiteral("options_configure_keybinding")));
     m_moreMenu->addSeparator();
     m_moreMenu->addMenu(m_advancedMenu);
     m_moreMenu->addSeparator();
-    m_moreMenu->addAction(actionCollection()->action("help_about_app"));
-    m_moreMenu->addAction(actionCollection()->action("help_about_kde"));
-    m_moreMenu->addAction(actionCollection()->action("help_report_bug"));
+    m_moreMenu->addAction(actionCollection()->action(QStringLiteral("help_about_app")));
+    m_moreMenu->addAction(actionCollection()->action(QStringLiteral("help_about_kde")));
+    m_moreMenu->addAction(actionCollection()->action(QStringLiteral("help_report_bug")));
 }
 QSize MainWindow::sizeHint() const
 {

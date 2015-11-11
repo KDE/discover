@@ -30,7 +30,10 @@
 
 #include <QObject>
 
-// #include <QtCrypto>
+#define slots Q_SLOTS
+#define signals Q_SIGNALS
+
+#include <QtCrypto>
 
 #include "qoauth_global.h"
 #include "qoauth_namespace.h"

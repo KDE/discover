@@ -99,8 +99,8 @@ double dampenedRating(const QVector<int> &ratings, double power = 0.1)
 Rating::Rating(const QVariantMap &data)
     : QObject()
 {
-    init(data.value("package_name").toString(), data.value("app_name").toString(),
-         data.value("ratings_total").toULongLong(), data.value("ratings_average").toDouble() * 2, data.value("histogram").toString());
+    init(data.value(QStringLiteral("package_name")).toString(), data.value(QStringLiteral("app_name")).toString(),
+         data.value(QStringLiteral("ratings_total")).toULongLong(), data.value(QStringLiteral("ratings_average")).toDouble() * 2, data.value(QStringLiteral("histogram")).toString());
 }
 
 Rating::Rating(const QString& packageName, const QString& appName, int ratingCount, int rating, const QString& histogram)
@@ -124,7 +124,7 @@ void Rating::init(const QString& packageName, const QString& appName, int rating
     m_ratingPoints = 0;
     m_sortableRating = 0;
 
-    QStringList histo = histogram.mid(1,histogram.size()-2).split(", ");
+    QStringList histo = histogram.mid(1,histogram.size()-2).split(QStringLiteral(", "));
     QVector<int> spread = QVector<int>();
 
     for(int i=0; i<histo.size(); ++i) {

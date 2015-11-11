@@ -18,15 +18,16 @@ set(appsbackend_SRCS
 
 qt5_add_dbus_interface(appsbackend_SRCS ubuntu_sso_dbus_interface.xml ubuntu_sso OPTIONS -i "LoginMetaTypes.h")
 
-add_library(discover-qapt MODULE ${appsbackend_SRCS})
-target_link_libraries(discover-qapt Qt5::Widgets Qt5::DBus Qt5::Concurrent
+add_library(qapt-backend MODULE ${appsbackend_SRCS})
+target_link_libraries(qapt-backend Qt5::Widgets Qt5::DBus Qt5::Concurrent
      KF5::Archive KF5::KIOWidgets KF5::XmlGui DebconfKDE::Main KF5::IconThemes
      Muon::QOAuth QApt::Main Discover::Common MuonApt
 )
+target_include_directories(qapt-backend PRIVATE /usr/include/Qca-qt5/QtCrypto)
 
-install(TARGETS discover-qapt DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
-install(FILES discover-qapt.desktop DESTINATION ${DATA_INSTALL_DIR}/libdiscover/backends)
-install(FILES discover-qapt-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
+install(TARGETS qapt-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
+install(FILES qapt-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/libdiscover/backends)
+install(FILES qapt-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
 install(FILES distupgradeevent/releasechecker DESTINATION ${DATA_INSTALL_DIR}/libdiscover/applicationsbackend/
     PERMISSIONS
         OWNER_EXECUTE OWNER_READ OWNER_WRITE

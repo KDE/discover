@@ -52,7 +52,7 @@ public:
     virtual void removeApplication(AbstractResource* app) override;
     virtual bool isFetching() const override { return m_fetching; }
 
-public slots:
+public Q_SLOTS:
     void checkForUpdates();
     void toggleFetching();
 

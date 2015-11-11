@@ -34,7 +34,7 @@ public:
     AkabeiTransaction(AkabeiBackend* parent, AbstractResource* resource, Transaction::Role role, AddonList addons);
     ~AkabeiTransaction();
     
-public slots:
+public Q_SLOTS:
     void transactionCreated(AkabeiClient::Transaction * transaction);
     void validationFinished(bool);
     void finished(bool);

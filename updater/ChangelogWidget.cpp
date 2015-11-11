@@ -78,7 +78,7 @@ ChangelogWidget::ChangelogWidget(QWidget *parent)
     viewport->setPalette(palette);
 
     m_busyWidget = new KPixmapSequenceOverlayPainter(this);
-    m_busyWidget->setSequence(KIconLoader::global()->loadPixmapSequence("process-working", KIconLoader::SizeSmallMedium));
+    m_busyWidget->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), KIconLoader::SizeSmallMedium));
     m_busyWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     m_busyWidget->setWidget(this);
 
@@ -173,7 +173,7 @@ void ChangelogWidget::fetchChangelog()
 void ChangelogWidget::showMore(const QUrl& package)
 {
     if (package.scheme() == QLatin1String("package")) {
-        bool b = QProcess::startDetached("muon-discover", { "--application", package.path() });
+        bool b = QProcess::startDetached(QStringLiteral("muon-discover"), { QStringLiteral("--application"), package.path() });
         if (!b) {
             qWarning() << "Couldn't launch muon-discover";
         }

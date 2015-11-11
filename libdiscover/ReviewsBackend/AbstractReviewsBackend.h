@@ -43,7 +43,7 @@ class DISCOVERCOMMON_EXPORT AbstractReviewsBackend : public QObject
 
         Q_SCRIPTABLE virtual Rating *ratingForApplication(AbstractResource *app) const = 0;
         Q_INVOKABLE virtual QString errorMessage() const;
-    public slots:
+    public Q_SLOTS:
         virtual void login() = 0;
         virtual void registerAndLogin() = 0;
         virtual void logout() = 0;

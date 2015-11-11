@@ -92,8 +92,8 @@ ApplicationBackend::~ApplicationBackend()
 QVector<Application *> init(QApt::Backend *backend, QThread* thread)
 {
     QVector<Application *> appList;
-    QDir appDir("/usr/share/app-install/desktop/");
-    QStringList fileList = appDir.entryList(QStringList("*.desktop"), QDir::Files);
+    QDir appDir(QStringLiteral("/usr/share/app-install/desktop/"));
+    QStringList fileList = appDir.entryList(QStringList(QStringLiteral("*.desktop")), QDir::Files);
 
     QList<Application *> tempList;
     QSet<QString> packages;
@@ -142,7 +142,7 @@ void ApplicationBackend::setApplications()
     Q_FOREACH (Application* app, m_appList)
         app->setParent(this);
 
-    KIO::StoredTransferJob* job = KIO::storedGet(QUrl(MuonDataSources::screenshotsSource().toString() + "/json/packages"),KIO::NoReload, KIO::DefaultFlags|KIO::HideProgressInfo);
+    KIO::StoredTransferJob* job = KIO::storedGet(QUrl(MuonDataSources::screenshotsSource().toString() + QStringLiteral("/json/packages")),KIO::NoReload, KIO::DefaultFlags|KIO::HideProgressInfo);
     connect(job, SIGNAL(finished(KJob*)), SLOT(initAvailablePackages(KJob*)));
 
     if (m_aptify)
@@ -338,9 +338,9 @@ void ApplicationBackend::markTransaction(Transaction *transaction)
 
 void ApplicationBackend::markLangpacks(Transaction *transaction)
 {
-    QString prog = QStandardPaths::findExecutable("check-language-support");
+    QString prog = QStandardPaths::findExecutable(QStringLiteral("check-language-support"));
     if (prog.isEmpty()){
-        prog =  QStandardPaths::locate(QStandardPaths::GenericDataLocation, "muon/scripts/check-language-support");
+        prog = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("discover/scripts/check-language-support"));
         if ( prog.isEmpty()){
             return;
         }
@@ -358,11 +358,11 @@ void ApplicationBackend::markLangpacks(Transaction *transaction)
     proc.start();
     proc.waitForFinished();
 
-    QString res = proc.readAllStandardOutput();
+    QString res = QString::fromLatin1(proc.readAllStandardOutput());
     res.remove(QString());
 
     m_backend->setCompressEvents(true);
-    foreach(const QString &pkg, res.split(' '))
+    foreach(const QString &pkg, res.split(QLatin1Char(' ')))
     {
         QApt::Package *langPack = m_backend->package(pkg.trimmed());
 
@@ -534,8 +534,8 @@ void ApplicationBackend::integrateMainWindow(KXmlGuiWindow* w)
         connect(this, SIGNAL(aptBackendInitialized(QApt::Backend*)), apt, SLOT(setBackend(QApt::Backend*)));
     if (apt->reloadWhenSourcesEditorFinished())
         connect(apt, SIGNAL(sourcesEditorClosed(bool)), SLOT(reload()));
-    QAction* updateAction = w->actionCollection()->addAction("update");
-    updateAction->setIcon(QIcon::fromTheme("system-software-update"));
+    QAction* updateAction = w->actionCollection()->addAction(QStringLiteral("update"));
+    updateAction->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     updateAction->setEnabled(apt->isConnected());
@@ -581,14 +581,14 @@ void ApplicationBackend::setupTransaction(QApt::Transaction *trans)
 {
     // Provide proxy/locale to the transaction
     if (KProtocolManager::proxyType() == KProtocolManager::ManualProxy) {
-        trans->setProxy(KProtocolManager::proxyFor("http"));
+        trans->setProxy(KProtocolManager::proxyFor(QStringLiteral("http")));
     }
 
     trans->setLocale(QLatin1String(setlocale(LC_MESSAGES, 0)));
 
     // Debconf
     QString uuid = QUuid::createUuid().toString();
-    uuid.remove('{').remove('}').remove('-');
+    uuid.remove(QLatin1Char('{')).remove(QLatin1Char('}')).remove(QLatin1Char('-'));
     QFile pipe(QDir::tempPath() % QLatin1String("/qapt-sock-") % uuid);
     pipe.open(QFile::ReadWrite);
     pipe.close();
@@ -611,11 +611,11 @@ void ApplicationBackend::initAvailablePackages(KJob* j)
     if(error.error != QJsonParseError::NoError)
         qWarning() << "errors!" << error.errorString();
     else {
-        QVariantList data = doc.toVariant().toMap().value("packages").toList();
+        QVariantList data = doc.toVariant().toMap().value(QStringLiteral("packages")).toList();
         Q_ASSERT(!m_appList.isEmpty());
         QSet<QString> packages;
         foreach(const QVariant& v, data) {
-            packages += v.toMap().value("name").toString();
+            packages += v.toMap().value(QStringLiteral("name")).toString();
         }
         Q_ASSERT(packages.count()==data.count());
         Q_FOREACH (Application* a, m_appList) {
@@ -667,17 +667,17 @@ QList<QAction*> ApplicationBackend::messageActions() const
 {
     QList<QAction*> ret;
     //high priority
-    ret += QAptActions::self()->actionCollection()->action("dist-upgrade");
+    ret += QAptActions::self()->actionCollection()->action(QStringLiteral("dist-upgrade"));
 
     //normal priority
-    ret += QAptActions::self()->actionCollection()->action("update");
+    ret += QAptActions::self()->actionCollection()->action(QStringLiteral("update"));
 
     //low priority
-    ret += QAptActions::self()->actionCollection()->action("software_properties");
-    ret += QAptActions::self()->actionCollection()->action("load_archives");
-    ret += QAptActions::self()->actionCollection()->action("save_package_list");
-    ret += QAptActions::self()->actionCollection()->action("download_from_list");
-    ret += QAptActions::self()->actionCollection()->action("history");
+    ret += QAptActions::self()->actionCollection()->action(QStringLiteral("software_properties"));
+    ret += QAptActions::self()->actionCollection()->action(QStringLiteral("load_archives"));
+    ret += QAptActions::self()->actionCollection()->action(QStringLiteral("save_package_list"));
+    ret += QAptActions::self()->actionCollection()->action(QStringLiteral("download_from_list"));
+    ret += QAptActions::self()->actionCollection()->action(QStringLiteral("history"));
     Q_ASSERT(!ret.contains(nullptr));
     return ret;
 }

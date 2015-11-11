@@ -45,11 +45,11 @@ public:
     virtual uint securityUpdatesCount() Q_DECL_OVERRIDE Q_DECL_FINAL;
     virtual uint updatesCount() Q_DECL_OVERRIDE Q_DECL_FINAL;
     
-public slots:
+public Q_SLOTS:
     virtual void configurationChanged();
     virtual void recheckSystemUpdateNeeded() Q_DECL_OVERRIDE Q_DECL_FINAL;
     
-private slots:
+private Q_SLOTS:
     void package(PackageKit::Transaction::Info info, const QString &packageID, const QString &summary);
     void finished(PackageKit::Transaction::Exit exit, uint);
     

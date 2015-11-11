@@ -54,7 +54,7 @@ void MuonExporter::setExportPath(const QUrl& url)
     m_path = url;
 }
 
-QVariantMap itemDataToMap(const AbstractResource* res, const QSet<QString>& excluded)
+QVariantMap itemDataToMap(const AbstractResource* res, const QSet<QByteArray>& excluded)
 {
     QVariantMap ret;
     int propsCount = res->metaObject()->propertyCount();
@@ -67,7 +67,7 @@ QVariantMap itemDataToMap(const AbstractResource* res, const QSet<QString>& excl
         if(val.isNull())
             continue;
         
-        ret.insert(prop.name(), val);
+        ret.insert(QString::fromLatin1(prop.name()), val);
     }
     return ret;
 }

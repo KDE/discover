@@ -26,7 +26,7 @@ class IconColorsTest : public QObject
 public:
     IconColorsTest() {}
 
-private slots:
+private Q_SLOTS:
     void testIcon_data() {
         QTest::addColumn<QString>("iconName");
         QTest::addColumn<int>("hue");

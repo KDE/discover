@@ -28,7 +28,7 @@
 
 Category::Category(QSet<QString>  pluginName, QObject* parent)
         : QObject(parent)
-        , m_iconString("applications-other")
+        , m_iconString(QStringLiteral("applications-other"))
         , m_showTechnical(false)
         , m_plugins(std::move(pluginName))
 {}
@@ -53,7 +53,7 @@ void Category::parseData(const QString& path, const QDomNode& data, bool canHave
 
         if (canHaveChildren) {
             if (tempElement.tagName() == QLatin1String("Name")) {
-                m_name = i18nc("Category", tempElement.text().toUtf8());
+                m_name = i18nc("Category", tempElement.text().toUtf8().constData());
             } else if (tempElement.tagName() == QLatin1String("Menu")) {
                 m_subCategories << new Category(m_plugins, this);
                 m_subCategories.last()->parseData(path, node, true);

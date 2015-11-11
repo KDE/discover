@@ -100,7 +100,7 @@ void BodegaResource::fetchChangelog()
                        QLatin1String("</p>");
 
         QString updateText = it->changes;
-        updateText.replace('\n', QLatin1String("<br/>"));
+        updateText.replace(QLatin1Char('\n'), QLatin1String("<br/>"));
         description += QLatin1String("<p><pre>") + updateText + QLatin1String("</pre></p>");
     }
     

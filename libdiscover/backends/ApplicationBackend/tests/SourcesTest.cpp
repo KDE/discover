@@ -39,7 +39,7 @@ AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 {
     QVector<AbstractResourcesBackend*> backends = m->backends();
     foreach(AbstractResourcesBackend* backend, backends) {
-        if(backend->metaObject()->className()==name) {
+        if(QString::fromLatin1(backend->metaObject()->className()) == name) {
             return backend;
         }
     }
@@ -48,10 +48,10 @@ AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 
 SourcesTest::SourcesTest(QObject* parent): QObject(parent)
 {
-    ResourcesModel* m = new ResourcesModel("qapt-backend", this);
+    ResourcesModel* m = new ResourcesModel(QStringLiteral("qapt-backend"), this);
     m_window = new KXmlGuiWindow;
     m->integrateMainWindow(m_window);
-    m_appBackend = backendByName(m, "ApplicationBackend");
+    m_appBackend = backendByName(m, QStringLiteral("ApplicationBackend"));
     QVERIFY(QSignalSpy(m, SIGNAL(allInitialized())).wait());
     
     SourcesModel* sources = SourcesModel::global();

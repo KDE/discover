@@ -32,7 +32,7 @@ Q_OBJECT
 public:
     explicit DummyReviewsBackend(DummyBackend* parent = nullptr);
 
-    virtual QString userName() const override { return "dummy"; }
+    virtual QString userName() const override { return QStringLiteral("dummy"); }
     virtual void login() override {}
     virtual void logout() override {}
     virtual void registerAndLogin() override {}

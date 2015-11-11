@@ -145,7 +145,7 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
         /** @internal only to be used by the factory */
         void setName(const QString& name);
 
-    public slots:
+    public Q_SLOTS:
         /**
          * This gets called when the backend should install an application.
          * The AbstractResourcesBackend should create a Transaction object, which
@@ -184,7 +184,7 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
          */
         virtual void cancelTransaction(AbstractResource *app) = 0;
 
-    signals:
+    Q_SIGNALS:
         /**
          * Notify of a change in the backend
          */

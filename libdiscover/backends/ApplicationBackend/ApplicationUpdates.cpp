@@ -193,7 +193,7 @@ void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
 
     // Provide proxy/locale to the transaction
     if (KProtocolManager::proxyType() == KProtocolManager::ManualProxy) {
-        trans->setProxy(KProtocolManager::proxyFor("http"));
+        trans->setProxy(KProtocolManager::proxyFor(QStringLiteral("http")));
     }
 
     trans->setLocale(QLatin1String(setlocale(LC_MESSAGES, 0)));

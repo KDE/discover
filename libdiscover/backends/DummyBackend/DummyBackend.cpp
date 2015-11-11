@@ -62,20 +62,20 @@ void DummyBackend::setMetaData(const QString& path)
         m_reviews->initialize();
 
     QAction* updateAction = new QAction(this);
-    updateAction->setIcon(QIcon::fromTheme("system-software-update"));
+    updateAction->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
 
     QAction* randomAction = new QAction(this);
-    randomAction->setIcon(QIcon::fromTheme("kalarm"));
+    randomAction->setIcon(QIcon::fromTheme(QStringLiteral("kalarm")));
     randomAction->setText(QStringLiteral("test bla bla"));
     randomAction->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_T));
     randomAction->setPriority(QAction::LowPriority);
     connect(randomAction, &QAction::triggered, this, [](){ qDebug() << "random action triggered"; });
 
 //     QAction* importantAction = new QAction(this);
-//     importantAction->setIcon(QIcon::fromTheme("kalarm"));
+//     importantAction->setIcon(QIcon::fromTheme(QStringLiteral("kalarm"));
 //     importantAction->setText(QStringLiteral("Amaze!"));
 //     importantAction->setWhatsThis(QStringLiteral("Wo Wo I'm so important"));
 //     importantAction->setPriority(QAction::HighPriority);
@@ -93,7 +93,7 @@ void DummyBackend::populate(const QString& n)
 {
     int start = m_resources.count();
     for(int i=start; i<start+m_startElements; i++) {
-        QString name = n+' '+QString::number(i);
+        QString name = n+QLatin1Char(' ')+QString::number(i);
         DummyResource* res = new DummyResource(name, false, this);
         res->setState(AbstractResource::State(1+(i%3)));
         m_resources.insert(name, res);
@@ -101,7 +101,7 @@ void DummyBackend::populate(const QString& n)
     }
 
     for(int i=start; i<start+m_startElements; i++) {
-        QString name = "techie"+QString::number(i);
+        QString name = QStringLiteral("techie")+QString::number(i);
         DummyResource* res = new DummyResource(name, true, this);
         res->setState(AbstractResource::State(1+(i%3)));
         m_resources.insert(name, res);
@@ -195,7 +195,7 @@ void DummyBackend::checkForUpdates()
     if(m_fetching)
         return;
     toggleFetching();
-    populate("Moar");
+    populate(QStringLiteral("Moar"));
     QTimer::singleShot(500, this, SLOT(toggleFetching()));
 }
 

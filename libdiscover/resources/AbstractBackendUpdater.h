@@ -141,7 +141,7 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
          */
         virtual bool isMarked(AbstractResource* res) const = 0;
 
-    public slots:
+    public Q_SLOTS:
         /**
          * If \isCancelable is true during the transaction, this method has
          * to be implemented and will potentially be called when the user
@@ -162,7 +162,7 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
          */
         virtual void start() = 0;
 
-    signals:
+    Q_SIGNALS:
         /**
          * The AbstractBackendUpdater should emit this signal when the progress changed.
          * @see progress

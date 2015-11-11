@@ -61,7 +61,7 @@ public:
     Bodega::Session* session() const { return m_session; }
     QString icon() const { return m_icon; }
 
-public slots:
+public Q_SLOTS:
     void channelsRetrieved(Bodega::NetworkJob*);
     void resetResources();
     void dataReceived(Bodega::NetworkJob*);

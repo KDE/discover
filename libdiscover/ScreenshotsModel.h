@@ -46,10 +46,10 @@ class DISCOVERCOMMON_EXPORT ScreenshotsModel : public QAbstractListModel
         Q_SCRIPTABLE QUrl screenshotAt(int row) const;
         int count() const;
 
-    private slots:
+    private Q_SLOTS:
         void screenshotsFetched(const QList<QUrl>& thumbnails, const QList<QUrl>& screenshots);
 
-    signals:
+    Q_SIGNALS:
         void countChanged();
 
     private:

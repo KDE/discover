@@ -132,7 +132,7 @@ private:
     bool m_isCancellable;
     int m_progress;
 
-signals:
+Q_SIGNALS:
     /**
      * This gets emitted when the status of the transaction changed
      */

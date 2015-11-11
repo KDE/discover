@@ -57,11 +57,11 @@ Rating* KNSReviews::ratingForApplication(AbstractResource* app) const
     Attica::Content c = resource->content();
     Q_ASSERT(c.rating()<=100);
     QVariantMap data = {
-        { "package_name", app->packageName() },
-        { "app_name", app->name() },
-        { "ratings_total", c.numberOfComments() },
-        { "ratings_average", c.rating()/20 },
-        { "histogram", '['+QString::number(c.numberOfComments()*c.rating())+']' }
+        { QStringLiteral("package_name"), QVariant::fromValue(app->packageName()) },
+        { QStringLiteral("app_name"), QVariant::fromValue(app->name()) },
+        { QStringLiteral("ratings_total"), QVariant::fromValue(c.numberOfComments()) },
+        { QStringLiteral("ratings_average"), QVariant::fromValue(c.rating()/20) },
+        { QStringLiteral("histogram"), QVariant::fromValue<QString>(QLatin1Char('[')+QString::number(c.numberOfComments()*c.rating())+QLatin1Char(']')) }
     };
     return new Rating(data);
 }
@@ -69,12 +69,12 @@ Rating* KNSReviews::ratingForApplication(AbstractResource* app) const
 void KNSReviews::fetchReviews(AbstractResource* app, int page)
 {
     if(!m_backend->provider()->hasCommentService()) {
-        emit reviewsReady(app, QList<Review*>());
+        Q_EMIT reviewsReady(app, QList<Review*>());
         return;
     }
     
     Attica::ListJob< Attica::Comment >* job =
-        m_backend->provider()->requestComments(Attica::Comment::ContentComment, app->packageName(), "0", page, 10);
+        m_backend->provider()->requestComments(Attica::Comment::ContentComment, app->packageName(), QStringLiteral("0"), page, 10);
     job->setProperty("app", qVariantFromValue<AbstractResource*>(app));
     connect(job, SIGNAL(finished(Attica::BaseJob*)), SLOT(commentsReceived(Attica::BaseJob*)));
     job->start();
@@ -89,7 +89,7 @@ void KNSReviews::commentsReceived(Attica::BaseJob* j)
     AbstractResource* app = job->property("app").value<AbstractResource*>();
     foreach(const Attica::Comment& comment, comments) {
         //TODO: language lookup?
-        Review* r = new Review(app->name(), app->packageName(), "en", comment.subject(), comment.text(), comment.user(),
+        Review* r = new Review(app->name(), app->packageName(), QStringLiteral("en"), comment.subject(), comment.text(), comment.user(),
             comment.date(), true, comment.id().toInt(), comment.score()/10, 0, 0, QString()
         );
         reviews += r;

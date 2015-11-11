@@ -84,13 +84,13 @@ class DISCOVERCOMMON_EXPORT AkabeiResource : public AbstractResource
         Akabei::Package * package() const;
         Akabei::Package * installedPackage() const;
 
-    public slots:
+    public Q_SLOTS:
         virtual void fetchScreenshots();
         virtual void fetchChangelog();
         void addPackage(Akabei::Package * pkg);
         void clearPackages();
         
-    private slots:
+    private Q_SLOTS:
         void slotScreenshotsFetched(KJob *);
         
     private:

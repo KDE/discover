@@ -45,7 +45,7 @@ public:
     ApplicationBackend* appsBackend() const;
     virtual QList<QAction*> actions() const;
 
-private slots:
+private Q_SLOTS:
     void load();
     void removalDone(int processErrorCode);
     void additionDone(int processErrorCode);
