@@ -111,7 +111,6 @@ ToolBar
             ToolButton {
                 id: button
                 iconName: "application-menu"
-                tooltip: i18n("Configure and learn about Muon Discover")
                 onClicked: {
                     var pos = mapToItem(window, 0, height);
                     app.showMenu(pos.x, pos.y);

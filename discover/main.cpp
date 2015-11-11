@@ -34,8 +34,8 @@ int main(int argc, char** argv)
     app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     KLocalizedString::setApplicationDomain("muon-discover");
-    KAboutData about("muondiscover", i18n("Muon Discover"), version, i18n("An application explorer"),
-                     KAboutLicense::GPL, i18n("© 2010-2014 Muon Development Team"));
+    KAboutData about("muondiscover", i18n("Discover"), version, i18n("An application explorer"),
+                     KAboutLicense::GPL, i18n("© 2010-2014 Plasma Development Team"));
     about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), "aleixpol@blue-systems.com");
     about.addAuthor(i18n("Jonathan Thomas"), QString(), "echidnaman@kubuntu.org");
     about.setProductName("muon/discover");
@@ -48,7 +48,7 @@ int main(int argc, char** argv)
         parser.addOption(QCommandLineOption("application", i18n("Directly open the specified application by its package name."), "name"));
         parser.addOption(QCommandLineOption("mime", i18n("Open with a program that can deal with the given mimetype."), "name"));
         parser.addOption(QCommandLineOption("category", i18n("Display a list of entries with a category."), "name"));
-        parser.addOption(QCommandLineOption("mode", i18n("Open Muon Discover in a said mode. Modes correspond to the toolbar buttons."), "name"));
+        parser.addOption(QCommandLineOption("mode", i18n("Open Discover in a said mode. Modes correspond to the toolbar buttons."), "name"));
         parser.addOption(QCommandLineOption("listmodes", i18n("List all the available modes.")));
         parser.addPositionalArgument("urls", i18n("Supports appstream: url scheme (experimental)"));
         DiscoverBackendsFactory::setupCommandLine(&parser);

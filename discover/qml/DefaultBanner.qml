@@ -14,7 +14,7 @@ Rectangle
     }
     
     Label {
-        text: i18n("Welcome to\nMuon Discover!")
+        text: i18n("Discover\nall the possibilities!")
         anchors {
             right: parent.right
             top: parent.top

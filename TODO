@@ -1,5 +1,5 @@
 Legend:
- - [MUM] = Muon Update Manager
+ - [MUM] = Update Manager
  - [MSC] = Muon Software Center
 
 -[MSC] Commercial app support. (See: software-center/db/update.py, backends/restfulclient.py)

@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Muon Update Manager
+Name=Update Manager
 Name[ca]=Gestor d'actualitzacions Muon
-Name[en_GB]=Muon Update Manager
+Name[en_GB]=Update Manager
 Name[fi]=Muon-päivitystenhallinta
 Name[fr]=Gestionnaire de mises à jour de Muon
 Name[ko]=Muon 업데이트 관리자
@@ -15,7 +15,7 @@ Name[sk]=Správca aktualizácií Muon
 Name[sl]=Upravljalnik posodobitev Muon
 Name[sv]=Muon uppdateringshanterare
 Name[uk]=Керування оновленнями
-Name[x-test]=xxMuon Update Managerxx
+Name[x-test]=xxUpdate Managerxx
 Exec=muon-updater
 Icon=system-software-update
 Type=Application
