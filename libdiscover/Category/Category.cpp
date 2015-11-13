@@ -64,7 +64,9 @@ void Category::parseData(const QString& path, const QDomNode& data, bool canHave
             m_iconString = tempElement.text();
         } else if (tempElement.tagName() == QLatin1String("ShowTechnical")) {
             m_showTechnical = true;
-        } else if (tempElement.tagName() == QLatin1String("Include")) {
+        } else if (tempElement.tagName() == QLatin1String("Include")) { //previous muon format
+            parseIncludes(tempElement);
+        } else if (tempElement.tagName() == QLatin1String("Categories")) { //as provided by appstream
             parseIncludes(tempElement);
         }
     }

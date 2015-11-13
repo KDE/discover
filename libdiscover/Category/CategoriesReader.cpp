@@ -55,8 +55,10 @@ QList<Category*> CategoriesReader::loadCategoriesFile(const QString& name)
     QDomNode node = root.firstChild();
     while(!node.isNull())
     {
-        ret << new Category( {name} );
-        ret.last()->parseData(path, node, true);
+        if (node.nodeType() == QDomNode::ElementNode) {
+            ret << new Category( {path} );
+            ret.last()->parseData(path, node, true);
+        }
 
         node = node.nextSibling();
     }
