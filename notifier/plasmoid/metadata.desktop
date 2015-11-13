@@ -1,9 +1,12 @@
 [Desktop Entry]
 Name=Updates
 Name[ca]=Actualitzacions
+Name[el]=Ενημερώσεις
 Name[en_GB]=Updates
+Name[es]=Actualizaciones
 Name[fi]=Päivitykset
 Name[fr]=Mises à jour
+Name[gl]=Actualizacións
 Name[ko]=업데이트
 Name[nb]=Oppdateringer
 Name[nl]=Elementen voor bijwerken
@@ -18,9 +21,12 @@ Name[uk]=Оновлення
 Name[x-test]=xxUpdatesxx
 Comment=Helps you keep your system up to date
 Comment[ca]=Us ajuda a mantenir el vostre sistema al dia
+Comment[el]=Βοηθά να διατηρήσετε το σύστημά σας ενημερωμένο
 Comment[en_GB]=Helps you keep your system up to date
+Comment[es]=Le ayuda a mantener su sistema al día
 Comment[fi]=Auttaa pitämään järjestelmäsi ajan tasalla
 Comment[fr]=Vous aide à maintenir le système à jour
+Comment[gl]=Axúdao a manter o seu sistema actualizado.
 Comment[ko]=시스템을 최신 상태로 유치합니다
 Comment[nb]=Hjelper til å holde systemet oppdatert
 Comment[nl]=Helpt u om uw system bijgewerkt te houden
