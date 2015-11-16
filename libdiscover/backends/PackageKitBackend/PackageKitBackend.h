@@ -58,6 +58,8 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         virtual bool isFetching() const override;
         virtual QList<QAction*> messageActions() const override;
 
+        QString categoriesFilePath() const override;
+
         bool isPackageNameUpgradeable(const PackageKitResource* res) const;
         QString upgradeablePackageId(const PackageKitResource* res) const;
         QVector<AbstractResource*> resourcesByPackageName(const QString& name, bool updating) const;

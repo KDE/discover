@@ -23,7 +23,56 @@
 #include "Category.h"
 #include "CategoriesReader.h"
 
-Q_GLOBAL_STATIC_WITH_ARGS(QList<Category*>, s_categories, (CategoriesReader().populateCategories()))
+#include <resources/ResourcesModel.h>
+
+#include <QDebug>
+
+class AllCategories : public QObject
+{
+Q_OBJECT
+public:
+    AllCategories() {
+        connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, this, &AllCategories::updateCategories, Qt::QueuedConnection);
+        updateCategories();
+    }
+
+    static AllCategories* global() {
+        static AllCategories* s_self = new AllCategories;
+        return s_self;
+    }
+
+    void updateCategories() {
+        QSet<AbstractResourcesBackend*> newBackends = ResourcesModel::global()->backends().toList().toSet();
+        if (newBackends == m_backends)
+            return;
+        m_backends = newBackends;
+
+        qDeleteAll(m_categories);
+        m_categories = CategoriesReader().populateCategories();
+
+        Q_EMIT categoriesChanged();
+    }
+
+    void blacklist(const QString &name) {
+        const QSet<QString> plugins = {name};
+        for(QList<Category*>::iterator it = m_categories.begin(), itEnd = m_categories.end(); it!=itEnd; ) {
+            if ((*it)->blacklistPlugins(plugins)) {
+                delete *it;
+                it = m_categories.erase(it);
+            } else
+                ++it;
+        }
+    }
+
+    QList<Category*> categories() const { return m_categories; }
+
+Q_SIGNALS:
+    void categoriesChanged();
+
+private:
+    QSet<AbstractResourcesBackend*> m_backends;
+    QList<Category*> m_categories;
+};
 
 CategoryModel::CategoryModel(QObject* parent)
     : QStandardItemModel(parent)
@@ -75,12 +124,20 @@ void CategoryModel::setDisplayedCategory(Category* c)
         return;
 
     m_currentCategory = c;
+    disconnect(AllCategories::global(), &AllCategories::categoriesChanged, this, &CategoryModel::resetCategories);
     if(c)
         setCategories(c->subCategories(), c->name());
-    else
-        setCategories(*s_categories, QString());
+    else {
+        resetCategories();
+        connect(AllCategories::global(), &AllCategories::categoriesChanged, this, &CategoryModel::resetCategories);
+    }
 
     categoryChanged(c);
+}
+
+void CategoryModel::resetCategories()
+{
+    setCategories(AllCategories::global()->categories(), QString());
 }
 
 Category* CategoryModel::displayedCategory() const
@@ -105,7 +162,7 @@ static Category* recFindCategory(Category* root, const QString& name)
 
 Category* CategoryModel::findCategoryByName(const QString& name)
 {
-    const QList<Category*> cats = *s_categories;
+    const QList<Category*> cats = AllCategories::global()->categories();
     Q_FOREACH (Category* cat, cats) {
         Category* ret = recFindCategory(cat, name);
         if(ret)
@@ -116,12 +173,7 @@ Category* CategoryModel::findCategoryByName(const QString& name)
 
 void CategoryModel::blacklistPlugin(const QString& name)
 {
-    const QSet<QString> plugins = {name};
-    for(QList<Category*>::iterator it = s_categories->begin(), itEnd = s_categories->end(); it!=itEnd; ) {
-        if ((*it)->blacklistPlugins(plugins)) {
-            delete *it;
-            it = s_categories->erase(it);
-        } else
-            ++it;
-    }
+    AllCategories::global()->blacklist(name);
 }
+
+#include "CategoryModel.moc"

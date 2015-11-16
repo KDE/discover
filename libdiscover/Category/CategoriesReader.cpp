@@ -26,16 +26,14 @@
 #include <qstandardpaths.h>
 
 #include <DiscoverBackendsFactory.h>
+#include <resources/ResourcesModel.h>
 #include <resources/AbstractResourcesBackend.h>
 
-QList<Category*> CategoriesReader::loadCategoriesFile(const QString& name)
+QList<Category*> CategoriesReader::loadCategoriesFile(const QString& path)
 {
+    Q_ASSERT(!path.isEmpty());
+
     QList<Category *> ret;
-    QString path = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("libdiscover/categories/")+name+QStringLiteral("-categories.xml"));
-    if (path.isEmpty()) {
-        qWarning() << "Couldn't find a category for " << name;
-        return ret;
-    }
 
     QFile menuFile(path);
     if (!menuFile.open(QIODevice::ReadOnly)) {
@@ -72,12 +70,13 @@ static bool categoryLessThan(Category *c1, const Category *c2)
 
 QList<Category*> CategoriesReader::populateCategories()
 {
+    qDebug() << "xxxxxxx" << ResourcesModel::global()->backends();
     DiscoverBackendsFactory f;
-    QStringList backendNames = f.allBackendNames();
+    QVector<AbstractResourcesBackend*> backends = ResourcesModel::global()->backends();
 
     QList<Category*> ret;
-    Q_FOREACH (const QString& name, backendNames) {
-        QList<Category*> cats = loadCategoriesFile(name);
+    Q_FOREACH (const AbstractResourcesBackend* backend, backends) {
+        QList<Category*> cats = loadCategoriesFile(backend->categoriesFilePath());
 
         if(ret.isEmpty()) {
             ret += cats;

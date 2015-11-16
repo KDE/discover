@@ -20,6 +20,7 @@
  ***************************************************************************/
 
 #include "PackageKitBackend.h"
+#include <QStandardPaths>
 #include "PackageKitResource.h"
 #include "PackageKitUpdater.h"
 #include "AppPackageKitResource.h"
@@ -359,6 +360,10 @@ QList<QAction*> PackageKitBackend::messageActions() const
     return m_messageActions;
 }
 
+QString PackageKitBackend::categoriesFilePath() const
+{
+    return QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("app-info/categories.xml"));
+}
 
 //TODO
 AbstractReviewsBackend* PackageKitBackend::reviewsBackend() const { return nullptr; }

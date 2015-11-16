@@ -91,6 +91,8 @@ QStringList DiscoverBackendsFactory::allBackendNames(bool whitelist) const
         }
     }
 
+//     qDebug() << "xxxxxxx" << ret << allBackends();
+
     return ret;
 }
 

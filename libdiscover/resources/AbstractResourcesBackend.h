@@ -145,6 +145,9 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
         /** @internal only to be used by the factory */
         void setName(const QString& name);
 
+        /** @returns an absolute path to the categories.xml file. */
+        virtual QString categoriesFilePath() const;
+
     public Q_SLOTS:
         /**
          * This gets called when the backend should install an application.

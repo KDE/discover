@@ -20,6 +20,8 @@
 
 #include "AbstractResourcesBackend.h"
 #include <QHash>
+#include <QStandardPaths>
+#include <QDebug>
 
 AbstractResourcesBackend::AbstractResourcesBackend(QObject* parent)
     : QObject(parent)
@@ -45,4 +47,13 @@ void AbstractResourcesBackend::setName(const QString& name)
 QString AbstractResourcesBackend::name() const
 {
     return m_name;
+}
+
+QString AbstractResourcesBackend::categoriesFilePath() const
+{
+    QString path = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("libdiscover/categories/")+name()+QStringLiteral("-categories.xml"));
+    if (path.isEmpty()) {
+        qWarning() << "Couldn't find a category for " << name();
+    }
+    return path;
 }
