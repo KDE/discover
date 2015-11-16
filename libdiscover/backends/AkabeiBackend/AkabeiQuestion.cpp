@@ -57,7 +57,7 @@ AkabeiQuestion::AkabeiQuestion(AkabeiClient::TransactionQuestion* question, QWid
         buttonLayout->addWidget(button);
         m_buttonGroup->addButton(button);
     }
-    connect(m_buttonGroup, SIGNAL(buttonClicked(QAbstractButton*)), SLOT(buttonClicked(QAbstractButton*)));
+    connect(m_buttonGroup, static_cast<void (QButtonGroup::*)(QAbstractButton *)>(&QButtonGroup::buttonClicked), this, &AkabeiQuestion::buttonClicked);
     layout->addItem(buttonLayout);
     
     setMainWidget(mainWidget);

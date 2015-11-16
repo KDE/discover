@@ -78,8 +78,8 @@ ApplicationBackend::ApplicationBackend(QObject* parent)
     KIconLoader::global()->reconfigure(QString(), QStringList(QStringLiteral("/usr/share/app-install/icons/")));
 
     m_watcher = new QFutureWatcher<QVector<Application*> >(this);
-    connect(m_watcher, SIGNAL(finished()), this, SLOT(setApplications()));
-    connect(m_reviewsBackend, SIGNAL(ratingsReady()), SIGNAL(allDataChanged()));
+    connect(m_watcher, &QFutureWatcher::finished, this, &ApplicationBackend::setApplications);
+    connect(m_reviewsBackend, &ReviewsBackend::ratingsReady, this, &ApplicationBackend::allDataChanged);
     
     QTimer::singleShot(10, this, SLOT(initBackend()));
 }
@@ -143,7 +143,7 @@ void ApplicationBackend::setApplications()
         app->setParent(this);
 
     KIO::StoredTransferJob* job = KIO::storedGet(QUrl(MuonDataSources::screenshotsSource().toString() + QStringLiteral("/json/packages")),KIO::NoReload, KIO::DefaultFlags|KIO::HideProgressInfo);
-    connect(job, SIGNAL(finished(KJob*)), SLOT(initAvailablePackages(KJob*)));
+    connect(job, &KIO::StoredTransferJob::finished, this, &ApplicationBackend::initAvailablePackages);
 
     if (m_aptify)
         QAptActions::self()->setCanExit(true);
@@ -204,12 +204,9 @@ void ApplicationBackend::aptTransactionsChanged(QString active)
         return;
 
     m_currentTransaction = m_transQueue.key(trans);
-    connect(trans, SIGNAL(statusChanged(QApt::TransactionStatus)),
-            this, SLOT(transactionEvent(QApt::TransactionStatus)));
-    connect(trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
-            this, SLOT(errorOccurred(QApt::ErrorCode)));
-    connect(trans, SIGNAL(progressChanged(int)),
-            this, SLOT(updateProgress(int)));
+    connect(trans, &QApt::Transaction::statusChanged, this, &ApplicationBackend::transactionEvent);
+    connect(trans, &QApt::Transaction::errorOccurred, this, &ApplicationBackend::errorOccurred);
+    connect(trans, &QApt::Transaction::progressChanged, this, &ApplicationBackend::updateProgress);
     // FIXME: untrusted packages, conf file prompt, media change
 }
 
@@ -243,8 +240,8 @@ void ApplicationBackend::transactionEvent(QApt::TransactionStatus status)
 
         // Set up debconf
         m_debconfGui = new DebconfKde::DebconfGui(iter.value()->debconfPipe());
-        m_debconfGui->connect(m_debconfGui, SIGNAL(activated()), m_debconfGui, SLOT(show()));
-        m_debconfGui->connect(m_debconfGui, SIGNAL(deactivated()), m_debconfGui, SLOT(hide()));
+        m_debconfGui->connect(m_debconfGui, &DebconfKde::DebconfGui::activated, m_debconfGui, &DebconfKde::DebconfGui::show);
+        m_debconfGui->connect(m_debconfGui, &DebconfKde::DebconfGui::deactivated, m_debconfGui, &DebconfKde::DebconfGui::hide);
         break;
     case QApt::FinishedStatus:
         m_currentTransaction->setStatus(Transaction::DoneStatus);
@@ -531,16 +528,16 @@ void ApplicationBackend::integrateMainWindow(KXmlGuiWindow* w)
     QAptActions* apt = QAptActions::self();
     apt->setMainWindow(w);
     if(!m_aptBackendInitialized)
-        connect(this, SIGNAL(aptBackendInitialized(QApt::Backend*)), apt, SLOT(setBackend(QApt::Backend*)));
+        connect(this, &ApplicationBackend::aptBackendInitialized, apt, &QAptActions::setBackend);
     if (apt->reloadWhenSourcesEditorFinished())
-        connect(apt, SIGNAL(sourcesEditorClosed(bool)), SLOT(reload()));
+        connect(apt, &QAptActions::sourcesEditorClosed, this, &ApplicationBackend::reload);
     QAction* updateAction = w->actionCollection()->addAction(QStringLiteral("update"));
     updateAction->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     updateAction->setEnabled(apt->isConnected());
-    connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
-    connect(apt, SIGNAL(shouldConnect(bool)), updateAction, SLOT(setEnabled(bool)));
+    connect(updateAction, &QAction::triggered, this, &ApplicationBackend::checkForUpdates);
+    connect(apt, &QAptActions::shouldConnect, updateAction, &QAction::setEnabled);
 }
 
 QWidget* ApplicationBackend::mainWindow() const
@@ -569,10 +566,8 @@ void ApplicationBackend::initBackend()
 
     QFuture<QVector<Application*> > future = QtConcurrent::run(init, m_backend, QThread::currentThread());
     m_watcher->setFuture(future);
-    connect(m_backend, SIGNAL(transactionQueueChanged(QString,QStringList)),
-            this, SLOT(aptTransactionsChanged(QString)));
-    connect(m_backend, SIGNAL(xapianUpdateFinished()),
-            this, SIGNAL(searchInvalidated()));
+    connect(m_backend, &QApt::Backend::transactionQueueChanged, this, &ApplicationBackend::aptTransactionsChanged);
+    connect(m_backend, &QApt::Backend::xapianUpdateFinished, this, &ApplicationBackend::searchInvalidated);
 
     SourcesModel::global()->addSourcesBackend(new AptSourcesBackend(this));
 }
@@ -640,7 +635,7 @@ void ApplicationBackend::checkForUpdates()
     m_backendUpdater->setupTransaction(transaction);
     transaction->run();
     m_backendUpdater->setProgressing(true);
-    connect(transaction, SIGNAL(finished(QApt::ExitStatus)), SLOT(updateFinished(QApt::ExitStatus)));
+    connect(transaction, &QApt::Transaction::finished, this, &ApplicationBackend::updateFinished);
 }
 
 void ApplicationBackend::updateFinished(QApt::ExitStatus status)

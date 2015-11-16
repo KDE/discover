@@ -24,6 +24,7 @@
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
+#include <ReviewsBackend/Review.h>
 #include <ReviewsBackend/Rating.h>
 #include <DiscoverBackendsFactory.h>
 #include <QStandardPaths>
@@ -40,7 +41,7 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
     QStandardPaths::setTestModeEnabled(true);
     ResourcesModel* model = new ResourcesModel(QFINDTESTDATA("knscorrect-backend.desktop"), this);
     Q_ASSERT(!model->backends().isEmpty());
-    m_backend = model->backends().first();
+    m_backend = model->backends().at(0);
     auto m_window = new KXmlGuiWindow();
     model->integrateMainWindow(m_window);
 
@@ -51,8 +52,7 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
 
     QSignalSpy s(model, SIGNAL(allInitialized()));
     Q_ASSERT(s.wait(50000));
-    connect(m_backend->reviewsBackend(), SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
-            SLOT(reviewsArrived(AbstractResource*,QList<Review*>)));
+    connect(m_backend->reviewsBackend(), &AbstractReviewsBackend::reviewsReady, this, &KNSBackendTest::reviewsArrived);
 }
 
 void KNSBackendTest::wrongBackend()

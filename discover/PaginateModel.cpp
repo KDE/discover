@@ -85,29 +85,29 @@ void PaginateModel::setSourceModel(QAbstractItemModel* model)
         beginResetModel();
         m_sourceModel = model;
         if(model) {
-            connect(m_sourceModel, SIGNAL(rowsAboutToBeInserted(QModelIndex,int,int)), SLOT(_k_sourceRowsAboutToBeInserted(QModelIndex,int,int)));
-            connect(m_sourceModel, SIGNAL(rowsInserted(QModelIndex,int,int)), SLOT(_k_sourceRowsInserted(QModelIndex,int,int)));
-            connect(m_sourceModel, SIGNAL(rowsAboutToBeRemoved(QModelIndex,int,int)), SLOT(_k_sourceRowsAboutToBeRemoved(QModelIndex,int,int)));
-            connect(m_sourceModel, SIGNAL(rowsRemoved(QModelIndex,int,int)), SLOT(_k_sourceRowsRemoved(QModelIndex,int,int)));
-            connect(m_sourceModel, SIGNAL(rowsAboutToBeMoved(QModelIndex,int,int,QModelIndex,int)), SLOT(_k_sourceRowsAboutToBeMoved(QModelIndex,int,int,QModelIndex,int)));
-            connect(m_sourceModel, SIGNAL(rowsMoved(QModelIndex,int,int,QModelIndex,int)), SLOT(_k_sourceRowsMoved(QModelIndex,int,int,QModelIndex,int)));
+            connect(m_sourceModel, &QAbstractItemModel::rowsAboutToBeInserted, this, &PaginateModel::_k_sourceRowsAboutToBeInserted);
+            connect(m_sourceModel, &QAbstractItemModel::rowsInserted, this, &PaginateModel::_k_sourceRowsInserted);
+            connect(m_sourceModel, &QAbstractItemModel::rowsAboutToBeRemoved, this, &PaginateModel::_k_sourceRowsAboutToBeRemoved);
+            connect(m_sourceModel, &QAbstractItemModel::rowsRemoved, this, &PaginateModel::_k_sourceRowsRemoved);
+            connect(m_sourceModel, &QAbstractItemModel::rowsAboutToBeMoved, this, &PaginateModel::_k_sourceRowsAboutToBeMoved);
+            connect(m_sourceModel, &QAbstractItemModel::rowsMoved, this, &PaginateModel::_k_sourceRowsMoved);
 
-            connect(m_sourceModel, SIGNAL(columnsAboutToBeInserted(QModelIndex,int,int)), SLOT(_k_sourceColumnsAboutToBeInserted(QModelIndex,int,int)));
-            connect(m_sourceModel, SIGNAL(columnsInserted(QModelIndex,int,int)), SLOT(_k_sourceColumnsInserted(QModelIndex,int,int)));
-            connect(m_sourceModel, SIGNAL(columnsAboutToBeRemoved(QModelIndex,int,int)), SLOT(_k_sourceColumnsAboutToBeRemoved(QModelIndex,int,int)));
-            connect(m_sourceModel, SIGNAL(columnsRemoved(QModelIndex,int,int)), SLOT(_k_sourceColumnsRemoved(QModelIndex,int,int)));
-            connect(m_sourceModel, SIGNAL(columnsAboutToBeMoved(QModelIndex,int,int,QModelIndex,int)), SLOT(_k_sourceColumnsAboutToBeMoved(QModelIndex,int,int,QModelIndex,int)));
-            connect(m_sourceModel, SIGNAL(columnsMoved(QModelIndex,int,int,QModelIndex,int)), SLOT(_k_sourceColumnsMoved(QModelIndex,int,int,QModelIndex,int)));
+            connect(m_sourceModel, &QAbstractItemModel::columnsAboutToBeInserted, this, &PaginateModel::_k_sourceColumnsAboutToBeInserted);
+            connect(m_sourceModel, &QAbstractItemModel::columnsInserted, this, &PaginateModel::_k_sourceColumnsInserted);
+            connect(m_sourceModel, &QAbstractItemModel::columnsAboutToBeRemoved, this, &PaginateModel::_k_sourceColumnsAboutToBeRemoved);
+            connect(m_sourceModel, &QAbstractItemModel::columnsRemoved, this, &PaginateModel::_k_sourceColumnsRemoved);
+            connect(m_sourceModel, &QAbstractItemModel::columnsAboutToBeMoved, this, &PaginateModel::_k_sourceColumnsAboutToBeMoved);
+            connect(m_sourceModel, &QAbstractItemModel::columnsMoved, this, &PaginateModel::_k_sourceColumnsMoved);
 
-            connect(m_sourceModel, SIGNAL(dataChanged(QModelIndex,QModelIndex)), SLOT(_k_sourceDataChanged(QModelIndex,QModelIndex)));
-            connect(m_sourceModel, SIGNAL(headerDataChanged(Qt::Orientation,int,int)), SLOT(_k_sourceHeaderDataChanged(Qt::Orientation,int,int)));
+            connect(m_sourceModel, &QAbstractItemModel::dataChanged, this, &PaginateModel::_k_sourceDataChanged);
+            connect(m_sourceModel, &QAbstractItemModel::headerDataChanged, this, &PaginateModel::_k_sourceHeaderDataChanged);
 
-            connect(m_sourceModel, SIGNAL(modelAboutToBeReset()), SLOT(_k_sourceModelAboutToBeReset()));
-            connect(m_sourceModel, SIGNAL(modelReset()), SLOT(_k_sourceModelReset()));
+            connect(m_sourceModel, &QAbstractItemModel::modelAboutToBeReset, this, &PaginateModel::_k_sourceModelAboutToBeReset);
+            connect(m_sourceModel, &QAbstractItemModel::modelReset, this, &PaginateModel::_k_sourceModelReset);
 
-            connect(m_sourceModel, SIGNAL(rowsInserted(QModelIndex,int,int)), SIGNAL(pageCountChanged()));
-            connect(m_sourceModel, SIGNAL(rowsRemoved(QModelIndex,int,int)), SIGNAL(pageCountChanged()));
-            connect(m_sourceModel, SIGNAL(modelReset()), SIGNAL(pageCountChanged()));
+            connect(m_sourceModel, &QAbstractItemModel::rowsInserted, this, &PaginateModel::pageCountChanged);
+            connect(m_sourceModel, &QAbstractItemModel::rowsRemoved, this, &PaginateModel::pageCountChanged);
+            connect(m_sourceModel, &QAbstractItemModel::modelReset, this, &PaginateModel::pageCountChanged);
         }
         endResetModel();
         emit sourceModelChanged();

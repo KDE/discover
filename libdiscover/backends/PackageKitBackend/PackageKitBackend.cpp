@@ -98,10 +98,10 @@ void PackageKitBackend::reloadPackageList()
     m_updatingTranslationPackageToApp = m_translationPackageToApp;
     
     if (m_refresher) {
-        disconnect(m_refresher, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(reloadPackageList()));
+        disconnect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitBackend::reloadPackageList);
     }
 
-    for(const Appstream::Component& component: m_appdata.allComponents()) {
+    foreach(const Appstream::Component& component, m_appdata.allComponents()) {
         m_updatingPackages[component.id()] = new AppPackageKitResource(component, this);
         foreach (const QString& pkg, component.packageNames()) {
             m_updatingTranslationPackageToApp[pkg] += component.id();
@@ -109,9 +109,9 @@ void PackageKitBackend::reloadPackageList()
     }
 
     PackageKit::Transaction * t = PackageKit::Daemon::getPackages();
-    connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(getPackagesFinished(PackageKit::Transaction::Exit)));
-    connect(t, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackage(PackageKit::Transaction::Info, QString, QString)));
-    connect(t, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(transactionError(PackageKit::Transaction::Error,QString)));
+    connect(t, &PackageKit::Transaction::finished, this, &PackageKitBackend::getPackagesFinished);
+    connect(t, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackage);
+    connect(t, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
     acquireFetching(true);
 
     fetchUpdates();
@@ -122,9 +122,9 @@ void PackageKitBackend::fetchUpdates()
     m_updatesPackageId.clear();
 
     PackageKit::Transaction * tUpdates = PackageKit::Daemon::getUpdates();
-    connect(tUpdates, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(getUpdatesFinished(PackageKit::Transaction::Exit,uint)));
-    connect(tUpdates, SIGNAL(package(PackageKit::Transaction::Info, QString, QString)), SLOT(addPackageToUpdate(PackageKit::Transaction::Info,QString,QString)));
-    connect(tUpdates, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(transactionError(PackageKit::Transaction::Error,QString)));
+    connect(tUpdates, &PackageKit::Transaction::finished, this, &PackageKitBackend::getUpdatesFinished);
+    connect(tUpdates, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackageToUpdate);
+    connect(tUpdates, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
     acquireFetching(true);
 }
 
@@ -137,7 +137,7 @@ void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QSt
         r += new PackageKitResource(packageName, summary, this);
         m_updatingPackages[packageName] = r.last();
     }
-    foreach(const auto & res, r)
+    foreach(auto res, r)
         static_cast<PackageKitResource*>(res)->addPackageId(info, packageId, summary);
 }
 
@@ -196,7 +196,7 @@ void PackageKitBackend::refreshDatabase()
 {
     if (!m_refresher) {
         m_refresher = PackageKit::Daemon::refreshCache(false);
-        connect(m_refresher, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(reloadPackageList()));
+        connect(m_refresher, &PackageKit::Transaction::finished, this, &PackageKitBackend::reloadPackageList);
     } else {
         qWarning() << "already resetting";
     }
@@ -311,9 +311,9 @@ void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
     if (!m_updatesPackageId.isEmpty()) {
         acquireFetching(true);
         PackageKit::Transaction* transaction = PackageKit::Daemon::getDetails(m_updatesPackageId.toList());
-        connect(transaction, SIGNAL(details(PackageKit::Details)), SLOT(packageDetails(PackageKit::Details)));
-        connect(transaction, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(transactionError(PackageKit::Transaction::Error,QString)));
-        connect(transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(getUpdatesDetailsFinished(PackageKit::Transaction::Exit,uint)));
+        connect(transaction, &PackageKit::Transaction::details, this, &PackageKitBackend::packageDetails);
+        connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
+        connect(transaction, &PackageKit::Transaction::finished, this, &PackageKitBackend::getUpdatesDetailsFinished);
     }
 
     acquireFetching(false);

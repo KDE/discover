@@ -37,9 +37,7 @@ StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend* parent)
     , m_progress(0)
     , m_lastUpdate(QDateTime())
 {
-    connect(TransactionModel::global(),
-            SIGNAL(transactionRemoved(Transaction*)),
-            SLOT(transactionRemoved(Transaction*)));
+    connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &StandardBackendUpdater::transactionRemoved);
 }
 
 bool StandardBackendUpdater::hasUpdates() const

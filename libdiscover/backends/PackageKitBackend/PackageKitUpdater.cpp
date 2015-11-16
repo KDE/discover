@@ -45,7 +45,7 @@ PackageKitUpdater::PackageKitUpdater(PackageKitBackend * parent)
     m_updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     m_updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     m_updateAction->setEnabled(PackageKit::Daemon::networkState() != PackageKit::Daemon::NetworkOffline);
-    connect(m_updateAction, SIGNAL(triggered()), parent, SLOT(refreshDatabase()));
+    connect(m_updateAction, &QAction::triggered, parent, &PackageKitBackend::refreshDatabase);
 
     fetchLastUpdateTime();
 }
@@ -67,18 +67,16 @@ void PackageKitUpdater::setTransaction(PackageKit::Transaction* transaction)
     m_transaction = transaction;
     m_isCancelable = transaction->allowCancel();
 
-    connect(m_transaction, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(finished(PackageKit::Transaction::Exit,uint)));
-    connect(m_transaction, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), this, SLOT(errorFound(PackageKit::Transaction::Error,QString)));
-    connect(m_transaction, SIGNAL(mediaChangeRequired(PackageKit::Transaction::MediaType,QString,QString)),
-            this, SLOT(mediaChange(PackageKit::Transaction::MediaType,QString,QString)));
-    connect(m_transaction, SIGNAL(requireRestart(PackageKit::Transaction::Restart,QString)),
-            this, SLOT(requireRestart(PackageKit::Transaction::Restart,QString)));
-    connect(m_transaction, SIGNAL(eulaRequired(QString, QString, QString, QString)), SLOT(eulaRequired(QString, QString, QString, QString)));
-    connect(m_transaction, SIGNAL(statusChanged()), this, SLOT(statusChanged()));
-    connect(m_transaction, SIGNAL(speedChanged()), this, SLOT(speedChanged()));
-    connect(m_transaction, SIGNAL(allowCancelChanged()), this, SLOT(cancellableChanged()));
-    connect(m_transaction, SIGNAL(remainingTimeChanged()), this, SLOT(remainingTimeChanged()));
-    connect(m_transaction, SIGNAL(percentageChanged()), this, SLOT(percentageChanged()));
+    connect(m_transaction.data(), &PackageKit::Transaction::finished, this, &PackageKitUpdater::finished);
+    connect(m_transaction.data(), &PackageKit::Transaction::errorCode, this, &PackageKitUpdater::errorFound);
+    connect(m_transaction.data(), &PackageKit::Transaction::mediaChangeRequired, this, &PackageKitUpdater::mediaChange);
+    connect(m_transaction.data(), &PackageKit::Transaction::requireRestart, this, &PackageKitUpdater::requireRestart);
+    connect(m_transaction.data(), &PackageKit::Transaction::eulaRequired, this, &PackageKitUpdater::eulaRequired);
+    connect(m_transaction.data(), &PackageKit::Transaction::statusChanged, this, &PackageKitUpdater::statusChanged);
+    connect(m_transaction.data(), &PackageKit::Transaction::speedChanged, this, &PackageKitUpdater::speedChanged);
+    connect(m_transaction.data(), &PackageKit::Transaction::allowCancelChanged, this, &PackageKitUpdater::cancellableChanged);
+    connect(m_transaction.data(), &PackageKit::Transaction::remainingTimeChanged, this, &PackageKitUpdater::remainingTimeChanged);
+    connect(m_transaction.data(), &PackageKit::Transaction::percentageChanged, this, &PackageKitUpdater::percentageChanged);
 }
 
 QSet<AbstractResource*> PackageKitUpdater::packagesForPackageId(const QSet<QString>& pkgids) const
@@ -283,7 +281,7 @@ void PackageKitUpdater::eulaRequired(const QString& eulaID, const QString& packa
                                                  packageName, vendor, licenseAgreement), QMessageBox::Yes, QMessageBox::No);
     if (ret == QMessageBox::Yes) {
         PackageKit::Transaction* t = PackageKit::Daemon::acceptEula(eulaID);
-        connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(start()));
+        connect(t, &PackageKit::Transaction::finished, this, &PackageKitUpdater::start);
     } else {
         finished(PackageKit::Transaction::ExitCancelled, 0);
     }
@@ -310,8 +308,7 @@ void PackageKitUpdater::lastUpdateTimeReceived(QDBusPendingCallWatcher* w)
     if (reply.isError()) {
         qWarning() << "Error when fetching the last update time" << reply.error();
     } else {
-        m_lastUpdate = QDateTime::currentDateTime();
-        m_lastUpdate.addSecs(-reply.value());
+        m_lastUpdate = QDateTime::currentDateTime().addSecs(-reply.value());
     }
     w->deleteLater();
 }

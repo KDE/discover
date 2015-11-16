@@ -55,15 +55,13 @@ void PKTransaction::start()
     };
     Q_ASSERT(m_trans);
 
-    connect(m_trans, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), SLOT(cleanup(PackageKit::Transaction::Exit,uint)));
-    connect(m_trans, SIGNAL(errorCode(PackageKit::Transaction::Error,QString)), SLOT(errorFound(PackageKit::Transaction::Error,QString)));
-    connect(m_trans, SIGNAL(mediaChangeRequired(PackageKit::Transaction::MediaType,QString,QString)),
-            SLOT(mediaChange(PackageKit::Transaction::MediaType,QString,QString)));
-    connect(m_trans, SIGNAL(requireRestart(PackageKit::Transaction::Restart,QString)),
-            SLOT(requireRestart(PackageKit::Transaction::Restart,QString)));
-    connect(m_trans, SIGNAL(itemProgress(QString, PackageKit::Transaction::Status, uint)), SLOT(progressChanged(QString, PackageKit::Transaction::Status, uint)));
-    connect(m_trans, SIGNAL(eulaRequired(QString, QString, QString, QString)), SLOT(eulaRequired(QString, QString, QString, QString)));
-    connect(m_trans, SIGNAL(allowCancelChanged()), SLOT(cancellableChanged()));
+    connect(m_trans, &PackageKit::Transaction::finished, this, &PKTransaction::cleanup);
+    connect(m_trans, &PackageKit::Transaction::errorCode, this, &PKTransaction::errorFound);
+    connect(m_trans, &PackageKit::Transaction::mediaChangeRequired, this, &PKTransaction::mediaChange);
+    connect(m_trans, &PackageKit::Transaction::requireRestart, this, &PKTransaction::requireRestart);
+    connect(m_trans, &PackageKit::Transaction::itemProgress, this, &PKTransaction::progressChanged);
+    connect(m_trans, &PackageKit::Transaction::eulaRequired, this, &PKTransaction::eulaRequired);
+    connect(m_trans, &PackageKit::Transaction::allowCancelChanged, this, &PKTransaction::cancellableChanged);
     
     setCancellable(m_trans->allowCancel());
 }
@@ -103,21 +101,9 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     m_trans = nullptr;
 
     PackageKit::Transaction* t = PackageKit::Daemon::resolve(resource()->packageName(), PackageKit::Transaction::FilterArch);
-    connect(t, &PackageKit::Transaction::package, t, [t](PackageKit::Transaction::Info info, const QString& packageId) {
-        QMap<PackageKit::Transaction::Info, QStringList> packages = t->property("packages").value<QMap<PackageKit::Transaction::Info, QStringList>>();
-        packages[info].append(packageId);
-        t->setProperty("packages", qVariantFromValue(packages));
-    });
+    connect(t, &PackageKit::Transaction::package, t, [t](PackageKit::Transaction::Info info, const QString& packageId) { QMap<PackageKit::Transaction::Info, QStringList> packages = t->property("packages").value<QMap<PackageKit::Transaction::Info, QStringList>>(); packages[info].append(packageId); t->setProperty("packages", qVariantFromValue(packages)); });
 
-    connect(t, &PackageKit::Transaction::finished, t, [cancel, t, this](PackageKit::Transaction::Exit /*status*/, uint /*runtime*/){
-        QMap<PackageKit::Transaction::Info, QStringList> packages = t->property("packages").value<QMap<PackageKit::Transaction::Info, QStringList>>();
-        qobject_cast<PackageKitResource*>(resource())->setPackages(packages);
-        setStatus(Transaction::DoneStatus);
-        if (cancel)
-            qobject_cast<PackageKitBackend*>(resource()->backend())->transactionCanceled(this);
-        else
-            qobject_cast<PackageKitBackend*>(resource()->backend())->removeTransaction(this);
-    });
+    connect(t, &PackageKit::Transaction::finished, t, [cancel, t, this](PackageKit::Transaction::Exit /*status*/, uint /*runtime*/){ QMap<PackageKit::Transaction::Info, QStringList> packages = t->property("packages").value<QMap<PackageKit::Transaction::Info, QStringList>>(); qobject_cast<PackageKitResource*>(resource())->setPackages(packages); setStatus(Transaction::DoneStatus); if (cancel) qobject_cast<PackageKitBackend*>(resource()->backend())->transactionCanceled(this); else qobject_cast<PackageKitBackend*>(resource()->backend())->removeTransaction(this); });
 }
 
 PackageKit::Transaction* PKTransaction::transaction()
@@ -131,7 +117,7 @@ void PKTransaction::eulaRequired(const QString& eulaID, const QString& packageID
                                                  PackageKit::Daemon::packageName(packageID), vendor, licenseAgreement));
     if (ret == QMessageBox::Yes) {
         PackageKit::Transaction* t = PackageKit::Daemon::acceptEula(eulaID);
-        connect(t, SIGNAL(finished(PackageKit::Transaction::Exit,uint)), this, SLOT(start()));
+        connect(t, &PackageKit::Transaction::finished, this, &PKTransaction::start);
     } else {
         cleanup(PackageKit::Transaction::ExitCancelled, 0);
     }

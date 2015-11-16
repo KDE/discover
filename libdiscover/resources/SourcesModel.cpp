@@ -85,7 +85,7 @@ QList<QObject*> SourcesModel::actions() const
 {
     QList<QObject*> ret;
     for(AbstractSourcesBackend* b: m_sources) {
-        for(QAction* action: b->actions())
+        foreach(QAction* action, b->actions())
             ret.append(action);
     }
     return ret;

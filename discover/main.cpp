@@ -59,7 +59,7 @@ int main(int argc, char** argv)
         DiscoverBackendsFactory::processCommandLine(&parser);
 
         mainWindow = new MuonDiscoverMainWindow;
-        QObject::connect(&app, SIGNAL(aboutToQuit()), mainWindow, SLOT(deleteLater()));
+        QObject::connect(&app, &QApplication::aboutToQuit, mainWindow, &MuonDiscoverMainWindow::deleteLater);
 
         if(parser.isSet(QStringLiteral("application")))
             mainWindow->openApplication(parser.value(QStringLiteral("application")));
@@ -85,10 +85,7 @@ int main(int argc, char** argv)
     }
 
     mainWindow->show();
-    QObject::connect(mainWindow->windowHandle(), &QWindow::visibleChanged, [](bool b){
-        if(!b)
-            QCoreApplication::instance()->quit();
-    });
+    QObject::connect(mainWindow->windowHandle(), &QWindow::visibleChanged, [](bool b){ if(!b) QCoreApplication::instance()->quit(); });
 
     return app.exec();
 }

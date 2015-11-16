@@ -311,10 +311,7 @@ void PackageKitResource::fetchChangelog()
 {
     PackageKit::Transaction* t = PackageKit::Daemon::getUpdateDetail(availablePackageId());
     connect(t, &PackageKit::Transaction::updateDetail, this, &PackageKitResource::updateDetail);
-    connect(t, &PackageKit::Transaction::errorCode, this, [this](PackageKit::Transaction::Error err, const QString & error) {
-        qWarning() << "error fetching updates:" << err << error;
-        emit changelogFetched(QString());
-    });
+    connect(t, &PackageKit::Transaction::errorCode, this, [this](PackageKit::Transaction::Error err, const QString & error) { qWarning() << "error fetching updates:" << err << error; emit changelogFetched(QString()); });
 }
 
 static void addIfNotEmpty(const QString& title, const QString& content, QString& where)

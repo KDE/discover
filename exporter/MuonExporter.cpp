@@ -25,7 +25,7 @@
 #include <QDebug>
 #include <QTimer>
 #include <QMetaProperty>
-#include <qjsondocument.h>
+#include <QJsonDocument>
 
 MuonExporter::MuonExporter()
     : QObject(nullptr)
@@ -33,11 +33,11 @@ MuonExporter::MuonExporter()
     m_startExportingTimer = new QTimer(this);
     m_startExportingTimer->setInterval(200);
     m_startExportingTimer->setSingleShot(true);
-    connect(m_startExportingTimer, SIGNAL(timeout()), SLOT(exportModel()));
+    connect(m_startExportingTimer, &QTimer::timeout, this, &MuonExporter::exportModel);
     
     m_exculdedProperties += "executables";
     m_exculdedProperties += "canExecute";
-    connect(ResourcesModel::global(), SIGNAL(allInitialized()), SLOT(allBackendsInitialized()));
+    connect(ResourcesModel::global(), &ResourcesModel::allInitialized, this, &MuonExporter::allBackendsInitialized);
 }
 
 MuonExporter::~MuonExporter()

@@ -66,13 +66,13 @@ ChangesDialog::ChangesDialog(QWidget *parent, const QApt::StateChanges &changes)
     KGuiItem okItem = KStandardGuiItem::ok();
     okButton->setText(okItem.text());
     okButton->setIcon(okItem.icon());
-    connect(okButton, SIGNAL(clicked()), this, SLOT(accept()));
+    connect(okButton, &QPushButton::clicked, this, &ChangesDialog::accept);
 
     QPushButton *cancelButton = new QPushButton(bottomBox);
     KGuiItem cancelItem = KStandardGuiItem::cancel();
     cancelButton->setText(cancelItem.text());
     cancelButton->setIcon(cancelItem.icon());
-    connect(cancelButton, SIGNAL(clicked()), this, SLOT(reject()));
+    connect(cancelButton, &QPushButton::clicked, this, &ChangesDialog::reject);
 
     bottomLayout->addWidget(bottomSpacer);
     bottomLayout->addWidget(okButton);

@@ -39,7 +39,7 @@ AkabeiNotifier::AkabeiNotifier(QObject* parent, const QVariantList &)
     m_timer(new QTimer(this))
 {
     m_timer->setInterval(UPDATE_INTERVAL);
-    connect(m_timer, SIGNAL(timeout()), SLOT(recheckSystemUpdateNeeded()));
+    connect(m_timer, &QTimer::timeout, this, &AkabeiNotifier::recheckSystemUpdateNeeded);
     
     QTimer::singleShot(10 * 1000, this, SLOT(init()));
 }

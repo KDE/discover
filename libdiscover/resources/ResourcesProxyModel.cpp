@@ -41,14 +41,14 @@ void ResourcesProxyModel::setSourceModel(QAbstractItemModel* source)
 {
     ResourcesModel* model = qobject_cast<ResourcesModel*>(sourceModel());
     if(model) {
-        disconnect(model, SIGNAL(searchInvalidated()), this, SLOT(refreshSearch()));
+        disconnect(model, &ResourcesModel::searchInvalidated, this, &ResourcesProxyModel::refreshSearch);
     }
 
     QSortFilterProxyModel::setSourceModel(source);
 
     ResourcesModel* newModel = qobject_cast<ResourcesModel*>(source);
     if(newModel) {
-        connect(newModel, SIGNAL(searchInvalidated()), SLOT(refreshSearch()));
+        connect(newModel, &ResourcesModel::searchInvalidated, this, &ResourcesProxyModel::refreshSearch);
     } else if(source)
         qWarning() << "ResourcesProxyModel with " << source;
 }

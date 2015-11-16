@@ -65,7 +65,7 @@ void DummyBackend::setMetaData(const QString& path)
     updateAction->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
-    connect(updateAction, SIGNAL(triggered()), SLOT(checkForUpdates()));
+    connect(updateAction, &QAction::triggered, this, &DummyBackend::checkForUpdates);
 
     QAction* randomAction = new QAction(this);
     randomAction->setIcon(QIcon::fromTheme(QStringLiteral("kalarm")));
@@ -97,7 +97,7 @@ void DummyBackend::populate(const QString& n)
         DummyResource* res = new DummyResource(name, false, this);
         res->setState(AbstractResource::State(1+(i%3)));
         m_resources.insert(name, res);
-        connect(res, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));
+        connect(res, &DummyResource::stateChanged, this, &DummyBackend::updatesCountChanged);
     }
 
     for(int i=start; i<start+m_startElements; i++) {
@@ -105,7 +105,7 @@ void DummyBackend::populate(const QString& n)
         DummyResource* res = new DummyResource(name, true, this);
         res->setState(AbstractResource::State(1+(i%3)));
         m_resources.insert(name, res);
-        connect(res, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));
+        connect(res, &DummyResource::stateChanged, this, &DummyBackend::updatesCountChanged);
     }
 }
 
@@ -196,7 +196,7 @@ void DummyBackend::checkForUpdates()
         return;
     toggleFetching();
     populate(QStringLiteral("Moar"));
-    QTimer::singleShot(500, this, SLOT(toggleFetching()));
+    QTimer::singleShot(500, this, &DummyBackend::toggleFetching);
 }
 
 #include "DummyBackend.moc"

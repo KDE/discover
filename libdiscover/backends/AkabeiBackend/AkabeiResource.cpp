@@ -215,7 +215,7 @@ void AkabeiResource::fetchScreenshots()
     KUrl packageUrl(MuonDataSources::screenshotsSource(), "/json/package/" + packageName());
     
     KIO::Job* getJob = KIO::file_copy(packageUrl, KUrl(dest), -1, KIO::Overwrite | KIO::HideProgressInfo);
-    connect(getJob, SIGNAL(finished(KJob*)), SLOT(slotScreenshotsFetched(KJob*)));
+    connect(getJob, &KIO::Job::finished, this, &AkabeiResource::slotScreenshotsFetched);
     getJob->start();
 }
 

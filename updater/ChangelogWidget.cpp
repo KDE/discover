@@ -55,7 +55,7 @@ ChangelogWidget::ChangelogWidget(QWidget *parent)
     hideButton->setArrowType(Qt::DownArrow);
     hideButton->setAutoRaise(true);
     hideButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-    connect(hideButton, SIGNAL(clicked()), this, SLOT(animatedHide()));
+    connect(hideButton, &QToolButton::clicked, this, &ChangelogWidget::animatedHide);
 
     QVBoxLayout *sideLayout = new QVBoxLayout(sideWidget);
     sideLayout->setMargin(0);
@@ -112,11 +112,11 @@ void ChangelogWidget::setResource(AbstractResource* package)
         return;
 
     if(m_package)
-        disconnect(m_package, SIGNAL(changelogFetched(QString)), this, SLOT(changelogFetched(QString)));
+        disconnect(m_package, &AbstractResource::changelogFetched, this, &ChangelogWidget::changelogFetched);
 
     m_package = package;
     if (m_package) {
-        connect(m_package, SIGNAL(changelogFetched(QString)), SLOT(changelogFetched(QString)));
+        connect(m_package, &AbstractResource::changelogFetched, this, &ChangelogWidget::changelogFetched);
         fetchChangelog();
     } else
         animatedHide();
@@ -128,7 +128,7 @@ void ChangelogWidget::show()
 
     if (!m_show) {
         m_show = true;
-        disconnect(m_expandWidget, SIGNAL(finished()), this, SLOT(hide()));
+        disconnect(m_expandWidget, &QParallelAnimationGroup::finished, this, &ChangelogWidget::hide);
         m_expandWidget->setDirection(QAbstractAnimation::Forward);
         m_expandWidget->start();
     }
@@ -141,7 +141,7 @@ void ChangelogWidget::animatedHide()
 
     m_expandWidget->setDirection(QAbstractAnimation::Backward);
     m_expandWidget->start();
-    connect(m_expandWidget, SIGNAL(finished()), this, SLOT(hide()));
+    connect(m_expandWidget, &QParallelAnimationGroup::finished, this, &ChangelogWidget::hide);
 }
 
 void ChangelogWidget::changelogFetched(const QString& changelog)

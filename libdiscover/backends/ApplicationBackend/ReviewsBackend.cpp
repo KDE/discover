@@ -69,8 +69,8 @@ ReviewsBackend::ReviewsBackend(QObject *parent)
 {
     m_distId = getCodename(QStringLiteral("ID"));
     m_loginBackend = new UbuntuLoginBackend(this);
-    connect(m_loginBackend, SIGNAL(connectionStateChanged()), SIGNAL(loginStateChanged()));
-    connect(m_loginBackend, SIGNAL(connectionStateChanged()), SLOT(refreshConsumerKeys()));
+    connect(m_loginBackend, &AbstractLoginBackend::connectionStateChanged, this, &ReviewsBackend::loginStateChanged);
+    connect(m_loginBackend, &AbstractLoginBackend::connectionStateChanged, this, &ReviewsBackend::refreshConsumerKeys);
     m_oauthInterface = new QOAuth::Interface(this);
     
     QMetaObject::invokeMethod(this, "fetchRatings", Qt::QueuedConnection);
@@ -124,7 +124,7 @@ void ReviewsBackend::fetchRatings()
     }
     KIO::FileCopyJob *getJob = KIO::file_copy(ratingsUrl, QUrl::fromLocalFile(ratingsCache), -1,
                                KIO::Overwrite | KIO::HideProgressInfo);
-    connect(getJob, SIGNAL(result(KJob*)), SLOT(ratingsFetched(KJob*)));
+    connect(getJob, &KIO::FileCopyJob::result, this, &ReviewsBackend::ratingsFetched);
 }
 
 void ReviewsBackend::ratingsFetched(KJob *job)
@@ -237,8 +237,7 @@ void ReviewsBackend::fetchReviews(AbstractResource* res, int page)
 
     KIO::StoredTransferJob* getJob = KIO::storedGet(reviewsUrl, KIO::NoReload, KIO::Overwrite | KIO::HideProgressInfo);
     m_jobHash[getJob] = app;
-    connect(getJob, SIGNAL(result(KJob*)),
-            this, SLOT(reviewsFetched(KJob*)));
+    connect(getJob, &KIO::StoredTransferJob::result, this, &ReviewsBackend::reviewsFetched);
 }
 
 static Review* constructReview(const QVariantMap& data)
@@ -371,7 +370,7 @@ void ReviewsBackend::postInformation(const QString& path, const QVariantMap& dat
     KIO::StoredTransferJob* job = KIO::storedHttpPost(QJsonDocument::fromVariant(data).toJson(), url, KIO::Overwrite | KIO::HideProgressInfo); //TODO port to QJsonDocument
     job->addMetaData(QStringLiteral("content-type"), QStringLiteral("Content-Type: application/json") );
     job->addMetaData(QStringLiteral("customHTTPHeader"), QStringLiteral("Authorization: ") + QString::fromLatin1(authorization(m_oauthInterface, url, m_loginBackend)));
-    connect(job, SIGNAL(result(KJob*)), this, SLOT(informationPosted(KJob*)));
+    connect(job, &KIO::StoredTransferJob::result, this, &ReviewsBackend::informationPosted);
     job->start();
 }
 

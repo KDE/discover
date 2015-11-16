@@ -92,7 +92,7 @@ void DummyTest::testFetch()
     QCOMPARE(m_appBackend->property("startElements").toInt()*2, m_model->rowCount());
 
     //fetches updates, adds new things
-    m_appBackend->messageActions().first()->trigger();
+    m_appBackend->messageActions().at(0)->trigger();
     QCOMPARE(m_model->rowCount(), 0);
     QCOMPARE(m_model->isFetching(), true);
     QSignalSpy spy(m_model, SIGNAL(allInitialized()));
@@ -139,7 +139,7 @@ void DummyTest::testInstallAddons()
     ApplicationAddonsModel m;
     m.setApplication(res);
     QCOMPARE(m.rowCount(), res->addonsInformation().count());
-    QCOMPARE(res->addonsInformation().first().isInstalled(), false);
+    QCOMPARE(res->addonsInformation().at(0).isInstalled(), false);
 
     QString firstAddonName = m.data(m.index(0,0)).toString();
     m.changeState(firstAddonName, true);
@@ -151,8 +151,8 @@ void DummyTest::testInstallAddons()
     QVERIFY(!m.hasChanges());
 
     QCOMPARE(m.data(m.index(0,0)).toString(), firstAddonName);
-    QCOMPARE(res->addonsInformation().first().name(), firstAddonName);
-    QCOMPARE(res->addonsInformation().first().isInstalled(), true);
+    QCOMPARE(res->addonsInformation().at(0).name(), firstAddonName);
+    QCOMPARE(res->addonsInformation().at(0).isInstalled(), true);
 }
 
 void DummyTest::testReviewsModel()

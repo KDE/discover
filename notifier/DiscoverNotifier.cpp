@@ -36,7 +36,7 @@ DiscoverNotifier::DiscoverNotifier(QObject * parent)
     configurationChanged();
 
     m_backends = BackendNotifierFactory().allBackends();
-    for(BackendNotifierModule* module : m_backends) {
+    foreach(BackendNotifierModule* module, m_backends) {
         connect(module, &BackendNotifierModule::foundUpdates, this, &DiscoverNotifier::updateStatusNotifier);
     }
     connect(&m_timer, &QTimer::timeout, this, &DiscoverNotifier::showUpdatesNotification);
@@ -112,11 +112,11 @@ QString DiscoverNotifier::iconName() const
 {
     switch(state()) {
         case SecurityUpdates:
-            return QLatin1String("security-low");
+            return QStringLiteral("security-low");
         case NormalUpdates:
-            return QLatin1String("security-high");
+            return QStringLiteral("security-high");
         case NoUpdates:
-            return QLatin1String("security-high");
+            return QStringLiteral("security-high");
     }
     return QString();
 }
@@ -158,14 +158,14 @@ QString DiscoverNotifier::extendedMessage() const
 
 void DiscoverNotifier::recheckSystemUpdateNeeded()
 {
-    for(BackendNotifierModule* module : m_backends)
+    foreach(BackendNotifierModule* module, m_backends)
         module->recheckSystemUpdateNeeded();
 }
 
 uint DiscoverNotifier::securityUpdatesCount() const
 {
     uint ret = 0;
-    for(BackendNotifierModule* module : m_backends)
+    foreach(BackendNotifierModule* module, m_backends)
         ret += module->securityUpdatesCount();
     return ret;
 }
@@ -173,7 +173,7 @@ uint DiscoverNotifier::securityUpdatesCount() const
 uint DiscoverNotifier::updatesCount() const
 {
     uint ret = 0;
-    for(BackendNotifierModule* module : m_backends)
+    foreach(BackendNotifierModule* module, m_backends)
         ret += module->updatesCount();
     return ret + securityUpdatesCount();
 }

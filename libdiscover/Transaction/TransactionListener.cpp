@@ -30,12 +30,9 @@ TransactionListener::TransactionListener(QObject *parent)
     , m_resource(nullptr)
     , m_transaction(nullptr)
 {
-    connect(TransactionModel::global(), SIGNAL(transactionAdded(Transaction*)),
-            this, SLOT(transactionAdded(Transaction*)));
-    connect(TransactionModel::global(), SIGNAL(transactionRemoved(Transaction*)),
-            this, SLOT(transactionRemoved(Transaction*)));
-    connect(TransactionModel::global(), SIGNAL(transactionCancelled(Transaction*)),
-            this, SLOT(transactionCancelled(Transaction*)));
+    connect(TransactionModel::global(), &TransactionModel::transactionAdded, this, &TransactionListener::transactionAdded);
+    connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &TransactionListener::transactionRemoved);
+    connect(TransactionModel::global(), &TransactionModel::transactionCancelled, this, &TransactionListener::transactionCancelled);
 }
 
 AbstractResource *TransactionListener::resource() const
@@ -124,12 +121,9 @@ void TransactionListener::setTransaction(Transaction* trans)
 
     m_transaction = trans;
     if(m_transaction) {
-        connect(m_transaction, SIGNAL(cancellableChanged(bool)),
-                this, SIGNAL(cancellableChanged()));
-        connect(m_transaction, SIGNAL(statusChanged(Transaction::Status)),
-                this, SLOT(transactionStatusChanged(Transaction::Status)));
-        connect(m_transaction, SIGNAL(progressChanged(int)),
-                this, SIGNAL(progressChanged()));
+        connect(m_transaction, &Transaction::cancellableChanged, this, &TransactionListener::cancellableChanged);
+        connect(m_transaction, &Transaction::statusChanged, this, &TransactionListener::transactionStatusChanged);
+        connect(m_transaction, &Transaction::progressChanged, this, &TransactionListener::progressChanged);
     }
 }
 

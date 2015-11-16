@@ -68,7 +68,7 @@ Bodega::AssetOperations* BodegaResource::assetOperations()
     if(!m_assetOperations) {
         Bodega::Session* session = backend()->session();
         m_assetOperations = session->assetOperations(m_info.id);
-        connect(m_assetOperations, SIGNAL(installedChanged()), SIGNAL(stateChanged()));
+        connect(m_assetOperations, &Bodega::AssetOperations::installedChanged, this, &BodegaResource::stateChanged);
     }
     return m_assetOperations;
 }

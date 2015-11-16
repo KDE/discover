@@ -28,7 +28,7 @@ KActionMessageWidget::KActionMessageWidget(QAction* action, QWidget* parent)
     setText(action->whatsThis());
     addAction(action);
     reconsiderVisibility();
-    connect(action, SIGNAL(changed()), SLOT(reconsiderVisibility()));
+    connect(action, &QAction::changed, this, &KActionMessageWidget::reconsiderVisibility);
 }
 
 void KActionMessageWidget::reconsiderVisibility()

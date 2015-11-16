@@ -49,7 +49,7 @@ ApplicationUpdates::ApplicationUpdates(ApplicationBackend* parent)
     , m_eta(0)
     , m_progressing(false)
 {
-    connect(m_appBackend, SIGNAL(fetchingChanged()), SLOT(fetchingChanged()));
+    connect(m_appBackend, &ApplicationBackend::fetchingChanged, this, &ApplicationUpdates::fetchingChanged);
 }
 
 bool ApplicationUpdates::hasUpdates() const

@@ -57,8 +57,8 @@ HistoryView::HistoryView(QWidget *parent)
     m_searchTimer = new QTimer(this);
     m_searchTimer->setInterval(300);
     m_searchTimer->setSingleShot(true);
-    connect(m_searchTimer, SIGNAL(timeout()), this, SLOT(startSearch()));
-    connect(m_searchEdit, SIGNAL(textChanged(QString)), m_searchTimer, SLOT(start()));
+    connect(m_searchTimer, &QTimer::timeout, this, &HistoryView::startSearch);
+    connect(m_searchEdit, &QLineEdit::textChanged, m_searchTimer, &QTimer::start);
 
     m_filterBox = new QComboBox(headerWidget);
     m_filterBox->insertItem(AllChangesItem, QIcon::fromTheme(QStringLiteral("bookmark-new-list")),
@@ -77,7 +77,7 @@ HistoryView::HistoryView(QWidget *parent)
                             i18nc("@item:inlistbox Filters removals in the history view",
                                   "Removals"),
                             (QApt::Package::State)(QApt::Package::ToRemove | QApt::Package::ToPurge));
-    connect(m_filterBox, SIGNAL(currentIndexChanged(int)), this, SLOT(setStateFilter(int)));
+    connect(m_filterBox, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &HistoryView::setStateFilter);
 
     headerLayout->addWidget(headerLabel);
     headerLayout->addWidget(headerSpacer);

@@ -44,7 +44,7 @@ void DummyTransaction::iterateTransaction()
 {
     if(progress()<100) {
         setProgress(progress()+(KRandom::random()%30));
-        QTimer::singleShot(/*KRandom::random()%*/200, this, SLOT(iterateTransaction()));
+        QTimer::singleShot(/*KRandom::random()%*/200, this, &DummyTransaction::iterateTransaction);
     } else
         finishTransaction();
 }

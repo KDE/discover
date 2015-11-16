@@ -70,7 +70,7 @@ ResourcesModel::ResourcesModel(QObject* parent, bool load)
     )
 {
     init(load);
-    connect(this, SIGNAL(allInitialized()), SIGNAL(fetchingChanged()));
+    connect(this, &ResourcesModel::allInitialized, this, &ResourcesModel::fetchingChanged);
 }
 
 void ResourcesModel::init(bool load)
@@ -78,8 +78,8 @@ void ResourcesModel::init(bool load)
     Q_ASSERT(!s_self);
     Q_ASSERT(QCoreApplication::instance()->thread()==QThread::currentThread());
 
-    connect(TransactionModel::global(), SIGNAL(transactionAdded(Transaction*)), SLOT(resourceChangedByTransaction(Transaction*)));
-    connect(TransactionModel::global(), SIGNAL(transactionRemoved(Transaction*)), SLOT(resourceChangedByTransaction(Transaction*)));
+    connect(TransactionModel::global(), &TransactionModel::transactionAdded, this, &ResourcesModel::resourceChangedByTransaction);
+    connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &ResourcesModel::resourceChangedByTransaction);
     if(load)
         QMetaObject::invokeMethod(this, "registerAllBackends", Qt::QueuedConnection);
 }
@@ -127,10 +127,10 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
     if(m_mainwindow)
         backend->integrateMainWindow(m_mainwindow);
 
-    connect(backend, SIGNAL(fetchingChanged()), SLOT(callerFetchingChanged()));
-    connect(backend, SIGNAL(allDataChanged()), SLOT(updateCaller()));
-    connect(backend, SIGNAL(updatesCountChanged()), SIGNAL(updatesCountChanged()));
-    connect(backend, SIGNAL(searchInvalidated()), SIGNAL(searchInvalidated()));
+    connect(backend, &AbstractResourcesBackend::fetchingChanged, this, &ResourcesModel::callerFetchingChanged);
+    connect(backend, &AbstractResourcesBackend::allDataChanged, this, &ResourcesModel::updateCaller);
+    connect(backend, &AbstractResourcesBackend::updatesCountChanged, this, &ResourcesModel::updatesCountChanged);
+    connect(backend, &AbstractResourcesBackend::searchInvalidated, this, &ResourcesModel::searchInvalidated);
 
     emit backendsChanged();
 

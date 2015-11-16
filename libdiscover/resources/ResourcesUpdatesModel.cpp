@@ -47,7 +47,7 @@ void ResourcesUpdatesModel::setResourcesModel(ResourcesModel* model)
     m_resources = model;
     m_updaters.clear();
     addNewBackends();
-    connect(model, SIGNAL(backendsChanged()), SLOT(addNewBackends()));
+    connect(model, &ResourcesModel::backendsChanged, this, &ResourcesUpdatesModel::addNewBackends);
 }
 
 void ResourcesUpdatesModel::addNewBackends()
@@ -56,16 +56,16 @@ void ResourcesUpdatesModel::addNewBackends()
     foreach(AbstractResourcesBackend* b, backends) {
         AbstractBackendUpdater* updater = b->backendUpdater();
         if(updater && !m_updaters.contains(updater)) {
-            connect(updater, SIGNAL(progressChanged(qreal)), SIGNAL(progressChanged()));
-            connect(updater, SIGNAL(statusMessageChanged(QString)), SIGNAL(statusMessageChanged(QString)));
-            connect(updater, SIGNAL(statusMessageChanged(QString)), SLOT(message(QString)));
-            connect(updater, SIGNAL(statusDetailChanged(QString)), SLOT(message(QString)));
-            connect(updater, SIGNAL(statusDetailChanged(QString)), SIGNAL(statusDetailChanged(QString)));
-            connect(updater, SIGNAL(remainingTimeChanged()), SIGNAL(etaChanged()));
-            connect(updater, SIGNAL(downloadSpeedChanged(quint64)), SIGNAL(downloadSpeedChanged()));
-            connect(updater, SIGNAL(progressingChanged(bool)), SLOT(slotProgressingChanged(bool)));
-            connect(updater, SIGNAL(cancelableChanged(bool)), SIGNAL(cancelableChanged()));
-            connect(updater, SIGNAL(destroyed(QObject*)), SLOT(updaterDestroyed(QObject*)));
+            connect(updater, &AbstractBackendUpdater::progressChanged, this, &ResourcesUpdatesModel::progressChanged);
+            connect(updater, &AbstractBackendUpdater::statusMessageChanged, this, &ResourcesUpdatesModel::statusMessageChanged);
+            connect(updater, &AbstractBackendUpdater::statusMessageChanged, this, &ResourcesUpdatesModel::message);
+            connect(updater, &AbstractBackendUpdater::statusDetailChanged, this, &ResourcesUpdatesModel::message);
+            connect(updater, &AbstractBackendUpdater::statusDetailChanged, this, &ResourcesUpdatesModel::statusDetailChanged);
+            connect(updater, &AbstractBackendUpdater::remainingTimeChanged, this, &ResourcesUpdatesModel::etaChanged);
+            connect(updater, &AbstractBackendUpdater::downloadSpeedChanged, this, &ResourcesUpdatesModel::downloadSpeedChanged);
+            connect(updater, &AbstractBackendUpdater::progressingChanged, this, &ResourcesUpdatesModel::slotProgressingChanged);
+            connect(updater, &AbstractBackendUpdater::cancelableChanged, this, &ResourcesUpdatesModel::cancelableChanged);
+            connect(updater, &AbstractBackendUpdater::destroyed, this, &ResourcesUpdatesModel::updaterDestroyed);
             m_updaters += updater;
         }
     }
@@ -221,7 +221,7 @@ QList<AbstractResource*> ResourcesUpdatesModel::toUpdate() const
 
 void ResourcesUpdatesModel::addResources(const QList<AbstractResource*>& resources)
 {
-    QMap<AbstractResourcesBackend*, QList<AbstractResource*> > sortedResources;
+    QHash<AbstractResourcesBackend*, QList<AbstractResource*> > sortedResources;
     foreach(AbstractResource* res, resources) {
         sortedResources[res->backend()] += res;
     }
@@ -233,7 +233,7 @@ void ResourcesUpdatesModel::addResources(const QList<AbstractResource*>& resourc
 
 void ResourcesUpdatesModel::removeResources(const QList< AbstractResource* >& resources)
 {
-    QMap<AbstractResourcesBackend*, QList<AbstractResource*> > sortedResources;
+    QHash<AbstractResourcesBackend*, QList<AbstractResource*> > sortedResources;
     foreach(AbstractResource* res, resources) {
         sortedResources[res->backend()] += res;
     }

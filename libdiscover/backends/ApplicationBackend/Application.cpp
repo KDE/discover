@@ -523,7 +523,7 @@ void Application::fetchScreenshots()
     QString dest = QStandardPaths::locate(QStandardPaths::TempLocation, QStringLiteral("screenshots.")+QString::fromLatin1(m_packageName));
     const QUrl packageUrl(MuonDataSources::screenshotsSource().toString() + QStringLiteral("/json/package/")+QString::fromLatin1(m_packageName));
     KIO::StoredTransferJob* job = KIO::storedGet(packageUrl, KIO::NoReload, KIO::HideProgressInfo);
-    connect(job, SIGNAL(finished(KJob*)), SLOT(downloadingScreenshotsFinished(KJob*)));
+    connect(job, &KIO::StoredTransferJob::finished, this, &Application::downloadingScreenshotsFinished);
 }
 
 void Application::downloadingScreenshotsFinished(KJob* j)
@@ -586,8 +586,7 @@ bool Application::isFromSecureOrigin() const
 void Application::fetchChangelog()
 {
     KIO::StoredTransferJob* getJob = KIO::storedGet(m_package->changelogUrl(), KIO::NoReload, KIO::HideProgressInfo);
-    connect(getJob, SIGNAL(result(KJob*)),
-            this, SLOT(processChangelog(KJob*)));
+    connect(getJob, &KIO::StoredTransferJob::result, this, &Application::processChangelog);
 }
 
 void Application::processChangelog(KJob* j)

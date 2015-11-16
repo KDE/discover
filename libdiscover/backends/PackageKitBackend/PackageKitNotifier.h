@@ -37,7 +37,7 @@ public:
         Security,
         Normal
     };
-    Q_ENUMS(Update);
+    Q_ENUMS(Update)
     PackageKitNotifier(QObject* parent = nullptr);
     virtual ~PackageKitNotifier();
 

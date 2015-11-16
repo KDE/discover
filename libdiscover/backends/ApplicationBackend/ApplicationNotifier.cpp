@@ -76,8 +76,7 @@ void ApplicationNotifier::distUpgradeEvent()
         return;
     }
     m_checkerProcess = new QProcess(this);
-    connect(m_checkerProcess, SIGNAL(finished(int)),
-            this, SLOT(checkUpgradeFinished(int)));
+    connect(m_checkerProcess, static_cast<void (QProcess::*)(int)>(&QProcess::finished), this, &ApplicationNotifier::checkUpgradeFinished);
     m_checkerProcess->start(QStringLiteral("/usr/bin/python3"), QStringList() << checkerFile);
 }
 

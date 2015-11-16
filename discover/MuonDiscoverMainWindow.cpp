@@ -173,7 +173,7 @@ void MuonDiscoverMainWindow::openApplication(const QString& app)
     m_appToBeOpened = app;
     triggerOpenApplication();
     if(!m_appToBeOpened.isEmpty())
-        connect(ResourcesModel::global(), SIGNAL(rowsInserted(QModelIndex,int,int)), SLOT(triggerOpenApplication()));
+        connect(ResourcesModel::global(), &ResourcesModel::rowsInserted, this, &MuonDiscoverMainWindow::triggerOpenApplication);
 }
 
 void MuonDiscoverMainWindow::triggerOpenApplication()
@@ -182,7 +182,7 @@ void MuonDiscoverMainWindow::triggerOpenApplication()
     if(app) {
         emit openApplicationInternal(app);
         m_appToBeOpened.clear();
-        disconnect(ResourcesModel::global(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(triggerOpenApplication()));
+        disconnect(ResourcesModel::global(), &ResourcesModel::rowsInserted, this, &MuonDiscoverMainWindow::triggerOpenApplication);
     }
 }
 

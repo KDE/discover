@@ -40,7 +40,7 @@ KNSReviews::KNSReviews(KNSBackend* backend)
     , m_fetching(0)
 {
     if(m_backend->isFetching())
-        connect(m_backend, SIGNAL(fetchingChanged()), SIGNAL(ratingsReady()));
+        connect(m_backend, &KNSBackend::fetchingChanged, this, &KNSReviews::ratingsReady);
     else
         QMetaObject::invokeMethod(this, "ratingsReady", Qt::QueuedConnection);
 }

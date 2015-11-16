@@ -59,7 +59,7 @@ MainWindow::MainWindow()
     , m_controls(new QWidget)
  {
     m_updater = new ResourcesUpdatesModel(this);
-    connect(m_updater, SIGNAL(progressingChanged(bool)), SLOT(progressingChanged()));
+    connect(m_updater, &ResourcesUpdatesModel::progressingChanged, this, &MainWindow::progressingChanged);
 
     setupActions();
     initGUI();
@@ -83,8 +83,7 @@ void MainWindow::initGUI()
     m_progressWidget = new ProgressWidget(m_updater, mainWidget);
     m_updaterWidget = new UpdaterWidget(m_updater, mainWidget);
     m_updaterWidget->setEnabled(false);
-    connect(m_updaterWidget, SIGNAL(modelPopulated()),
-            this, SLOT(setActionsEnabled()));
+    connect(m_updaterWidget, &UpdaterWidget::modelPopulated, this, static_cast<void(MainWindow::*)()>(&MainWindow::setActionsEnabled));
 
     Ui::UpdaterButtons buttonsUi;
     buttonsUi.setupUi(m_controls);
@@ -101,7 +100,7 @@ void MainWindow::initGUI()
     setCentralWidget(mainWidget);
     progressingChanged();
 
-    connect(m, SIGNAL(allInitialized()), SLOT(initBackend()));
+    connect(m, &ResourcesModel::allInitialized, this, &MainWindow::initBackend);
     menuBar()->setVisible(false);
     toolBar()->setVisible(false);
 
@@ -118,7 +117,7 @@ void MainWindow::setupActions()
     m_applyAction = actionCollection()->addAction(QStringLiteral("apply"));
     m_applyAction->setIcon(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")));
     m_applyAction->setText(i18nc("@action Downloads and installs updates", "Install Updates"));
-    connect(m_applyAction, SIGNAL(triggered()), m_updater, SLOT(updateAll()));
+    connect(m_applyAction, &QAction::triggered, m_updater, &ResourcesUpdatesModel::updateAll);
     m_applyAction->setEnabled(false);
 
     setActionsEnabled(false);
@@ -155,7 +154,7 @@ void MainWindow::setupBackendsActions()
     m_moreMenu->clear();
 
     QList<QAction*> highActions = UIHelper::setupMessageActions(m_moreMenu, m_advancedMenu, ResourcesModel::global()->messageActions());
-    for (QAction* action: highActions) {
+    foreach (QAction* action, highActions) {
         if(!containsAction(action, qobject_cast<QBoxLayout*>(centralWidget()->layout()))) {
             KActionMessageWidget* w = new KActionMessageWidget(action, centralWidget());
             qobject_cast<QBoxLayout*>(centralWidget()->layout())->insertWidget(1, w);

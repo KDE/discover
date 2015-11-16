@@ -99,7 +99,7 @@ void BodegaBackend::setMetaData(const QString& path)
     m_session->setPassword(credentials["password"]);
     m_session->setBaseUrl(url);
     m_session->setStoreId(storeId);
-    connect(m_session, SIGNAL(authenticated(bool)), SLOT(resetResources()));
+    connect(m_session, &Bodega::Session::authenticated, this, &BodegaBackend::resetResources);
     m_session->signOn();
 }
 
@@ -111,7 +111,7 @@ void BodegaBackend::resetResources()
     }
     
     Bodega::ChannelsJob* job = m_session->channels();
-    connect(job, SIGNAL(jobFinished(Bodega::NetworkJob*)), SLOT(channelsRetrieved(Bodega::NetworkJob*)));
+    connect(job, &Bodega::ChannelsJob::jobFinished, this, &BodegaBackend::channelsRetrieved);
 }
 
 void BodegaBackend::channelsRetrieved(Bodega::NetworkJob* job)
@@ -123,7 +123,7 @@ void BodegaBackend::channelsRetrieved(Bodega::NetworkJob* job)
     foreach(const Bodega::ChannelInfo& c, channels) {
         if(c.name == m_channel) {
             Bodega::ChannelsJob* wallpapersChannel = m_session->channels(c.id);
-            connect(wallpapersChannel, SIGNAL(jobFinished(Bodega::NetworkJob*)), SLOT(dataReceived(Bodega::NetworkJob*)));
+            connect(wallpapersChannel, &Bodega::ChannelsJob::jobFinished, this, &BodegaBackend::dataReceived);
         }
     }
 }
@@ -175,7 +175,7 @@ void BodegaBackend::installApplication(AbstractResource* app, AddonList addons)
     
     Bodega::InstallJob* job = m_session->install(res->assetOperations());
     t->setProperty("job", qVariantFromValue<QObject*>(job));
-    connect(job, SIGNAL(jobFinished(Bodega::NetworkJob*)), SLOT(removeTransaction(Bodega::NetworkJob*)));
+    connect(job, &Bodega::InstallJob::jobFinished, this, &BodegaBackend::removeTransaction);
 }
 
 void BodegaBackend::removeApplication(AbstractResource* app)
@@ -190,7 +190,7 @@ void BodegaBackend::removeApplication(AbstractResource* app)
     
     Bodega::UninstallJob* job = m_session->uninstall(res->assetOperations());
     t->setProperty("job", qVariantFromValue<QObject*>(job));
-    connect(job, SIGNAL(jobFinished(Bodega::UninstallJob*)), SLOT(removeTransaction(Bodega::UninstallJob*)));
+    connect(job, &Bodega::UninstallJob::jobFinished, this, &BodegaBackend::removeTransaction);
 }
 
 void BodegaBackend::removeTransaction(Bodega::NetworkJob* job) { removeTransactionGeneric(job); }

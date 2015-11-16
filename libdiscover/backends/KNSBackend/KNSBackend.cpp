@@ -104,15 +104,15 @@ void KNSBackend::setMetaData(const QString& path)
 
     QStringList cats = group.readEntry("Categories", QStringList());
     initManager(group);
-    connect(m_atticaManager.data(), SIGNAL(defaultProvidersLoaded()), SLOT(startFetchingCategories()));
+    connect(m_atticaManager.data(), &Attica::ProviderManager::defaultProvidersLoaded, this, &KNSBackend::startFetchingCategories);
 
     foreach(const QString& c, cats) {
         m_categories.insert(c, Attica::Category());
     }
 
     m_manager = new KNS3::DownloadManager(m_name, this);
-    connect(m_manager, SIGNAL(searchResult(KNS3::Entry::List)), SLOT(receivedEntries(KNS3::Entry::List)));
-    connect(m_manager, SIGNAL(entryStatusChanged(KNS3::Entry)), SLOT(statusChanged(KNS3::Entry)));
+    connect(m_manager, &KNS3::DownloadManager::searchResult, this, &KNSBackend::receivedEntries);
+    connect(m_manager, &KNS3::DownloadManager::entryStatusChanged, this, &KNSBackend::statusChanged);
 
     if (!m_atticaManager->providers().isEmpty()) {
         startFetchingCategories();
@@ -145,7 +145,7 @@ void KNSBackend::startFetchingCategories()
     m_provider = m_atticaManager->providers().first();
 
     Attica::ListJob<Attica::Category>* job = m_provider.requestCategories();
-    connect(job, SIGNAL(finished(Attica::BaseJob*)), SLOT(categoriesLoaded(Attica::BaseJob*)));
+    connect(job, &Attica::GetJob::finished, this, &KNSBackend::categoriesLoaded);
     job->start();
 }
 
@@ -184,7 +184,7 @@ void KNSBackend::categoriesLoaded(Attica::BaseJob* job)
 
     Attica::ListJob<Attica::Content>* jj =
         m_provider.searchContents(m_categories.values(), QString(), Attica::Provider::Alphabetical, m_page, 100);
-    connect(jj, SIGNAL(finished(Attica::BaseJob*)), SLOT(receivedContents(Attica::BaseJob*)));
+    connect(jj, &Attica::GetJob::finished, this, &KNSBackend::receivedContents);
     jj->start();
 }
 
@@ -207,12 +207,12 @@ void KNSBackend::receivedContents(Attica::BaseJob* job)
     foreach(const Attica::Content& c, contents) {
         KNSResource* r = new KNSResource(c, filename, m_iconName, this);
         m_resourcesByName.insert(c.id(), r);
-        connect(r, SIGNAL(stateChanged()), SIGNAL(updatesCountChanged()));
+        connect(r, &KNSResource::stateChanged, this, &KNSBackend::updatesCountChanged);
     }
     m_page++;
     Attica::ListJob<Attica::Content>* jj =
         m_provider.searchContents(m_categories.values(), QString(), Attica::Provider::Alphabetical, m_page, 100);
-    connect(jj, SIGNAL(finished(Attica::BaseJob*)), SLOT(receivedContents(Attica::BaseJob*)));
+    connect(jj, &Attica::GetJob::finished, this, &KNSBackend::receivedContents);
     jj->start();
 }
 

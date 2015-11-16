@@ -25,7 +25,7 @@
 #include <QStringList>
 #include <QTimer>
 
-static QVector<QString> s_icons = { QStringLiteral("kdevelop"), QStringLiteral("kalgebra"), QStringLiteral("kmail"), QStringLiteral("akregator"), QStringLiteral("korganizer") };
+Q_GLOBAL_STATIC(QVector<QString>, s_icons);
 
 DummyResource::DummyResource(QString  name, bool isTechnical, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
@@ -38,7 +38,10 @@ DummyResource::DummyResource(QString  name, bool isTechnical, AbstractResourcesB
         m_screenshot = QUrl(QStringLiteral("http://screenshots.debian.net/screenshots/d/dolphin/9383_large.png"));
         m_screenshotThumbnail = QUrl(QStringLiteral("http://screenshots.debian.net/screenshots/d/dolphin/9383_small.png"));
     }
-    m_iconName = s_icons[KRandom::random() % s_icons.size()];
+    if (s_icons->isEmpty()) {
+        * s_icons = { QStringLiteral("kdevelop"), QStringLiteral("kalgebra"), QStringLiteral("kmail"), QStringLiteral("akregator"), QStringLiteral("korganizer") };
+    }
+    m_iconName = (*s_icons)[KRandom::random() % s_icons->size()];
 
 //     if((KRandom::random() % 100) == 0) {
 //         enableStateChanges();
@@ -50,10 +53,7 @@ void DummyResource::enableStateChanges()
     QTimer* t = new QTimer(this);
     t->setSingleShot(false);
     t->setInterval(500);
-    connect(t, &QTimer::timeout, this, [this](){
-        int s = (m_state+1) % 4;
-        setState(State(s));
-    });
+    connect(t, &QTimer::timeout, this, [this](){ int s = (m_state+1) % 4; setState(State(s)); });
     t->start();
 }
 

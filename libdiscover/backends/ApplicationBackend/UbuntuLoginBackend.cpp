@@ -46,9 +46,9 @@ UbuntuLoginBackend::UbuntuLoginBackend(QObject* parent)
 {
     qDBusRegisterMetaType< QMap<QString,QString> >();
     m_interface = new HackedComUbuntuSsoCredentialsManagementInterface( QStringLiteral("com.ubuntu.sso"), QStringLiteral("/com/ubuntu/sso/credentials"), QDBusConnection::sessionBus(), this);
-    connect(m_interface, SIGNAL(CredentialsError(QString,QMap<QString,QString>)), SLOT(credentialsError(QString,QMap<QString,QString>)));
-    connect(m_interface, SIGNAL(AuthorizationDenied(QString)), SLOT(authorizationDenied(QString)));
-    connect(m_interface, SIGNAL(CredentialsFound(QString,QMap<QString,QString>)), this, SLOT(successfulLogin(QString,QMap<QString,QString>)));
+    connect(m_interface, &HackedComUbuntuSsoCredentialsManagementInterface::CredentialsError, this, &UbuntuLoginBackend::credentialsError);
+    connect(m_interface, &HackedComUbuntuSsoCredentialsManagementInterface::AuthorizationDenied, this, &UbuntuLoginBackend::authorizationDenied);
+    connect(m_interface, &HackedComUbuntuSsoCredentialsManagementInterface::CredentialsFound, this, &UbuntuLoginBackend::successfulLogin);
     
     m_interface->find_credentials(appname(), QMap<QString,QString>());
 }

@@ -50,7 +50,8 @@ private:
     QWidget* m_controls;
 
 private Q_SLOTS:
-    void setActionsEnabled(bool enabled = true);
+    void setActionsEnabled() { setActionsEnabled(true); }
+    void setActionsEnabled(bool enabled);
 
     void initGUI();
     void initBackend();

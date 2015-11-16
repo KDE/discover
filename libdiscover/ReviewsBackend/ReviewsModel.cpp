@@ -107,14 +107,12 @@ void ReviewsModel::setResource(AbstractResource* app)
         endResetModel();
 
         if(m_backend) {
-            disconnect(m_backend, SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
-                this, SLOT(addReviews(AbstractResource*,QList<Review*>)));
+            disconnect(m_backend, &AbstractReviewsBackend::reviewsReady, this, &ReviewsModel::addReviews);
         }
         m_app = app;
         m_backend = app->backend()->reviewsBackend();
         if(m_backend) {
-            connect(m_backend, SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)),
-                    this, SLOT(addReviews(AbstractResource*,QList<Review*>)));
+            connect(m_backend, &AbstractReviewsBackend::reviewsReady, this, &ReviewsModel::addReviews);
 
             QMetaObject::invokeMethod(this, "restartFetching", Qt::QueuedConnection);
         }

@@ -71,21 +71,16 @@ ProgressWidget::ProgressWidget(ResourcesUpdatesModel* updates, QWidget *parent)
     m_ui->header->setFont(f);
 
     // Connect the transaction all up to our slots
-    connect(m_updater, SIGNAL(progressChanged()),
-            this, SLOT(updateProgress()));
-    connect(m_updater, SIGNAL(downloadSpeedChanged()),
-            this, SLOT(downloadSpeedChanged()));
-    connect(m_updater, SIGNAL(etaChanged()), SLOT(etaChanged()));
-    connect(m_updater, SIGNAL(cancelableChanged()), SLOT(cancelChanged()));
-    connect(m_updater, SIGNAL(statusMessageChanged(QString)),
-            m_ui->header, SLOT(setText(QString)));
-    connect(m_updater, SIGNAL(statusDetailChanged(QString)),
-            m_ui->details, SLOT(setText(QString)));
-    connect(m_updater, SIGNAL(progressingChanged(bool)),
-            SLOT(updateIsProgressing()));
+    connect(m_updater, &ResourcesUpdatesModel::progressChanged, this, &ProgressWidget::updateProgress);
+    connect(m_updater, &ResourcesUpdatesModel::downloadSpeedChanged, this, &ProgressWidget::downloadSpeedChanged);
+    connect(m_updater, &ResourcesUpdatesModel::etaChanged, this, &ProgressWidget::etaChanged);
+    connect(m_updater, &ResourcesUpdatesModel::cancelableChanged, this, &ProgressWidget::cancelChanged);
+    connect(m_updater, &ResourcesUpdatesModel::statusMessageChanged, m_ui->header, &QLabel::setText);
+    connect(m_updater, &ResourcesUpdatesModel::statusDetailChanged, m_ui->details, &QLabel::setText);
+    connect(m_updater, &ResourcesUpdatesModel::progressingChanged, this, &ProgressWidget::updateIsProgressing);
     
     cancelChanged();
-    connect(m_ui->cancel, SIGNAL(clicked()), m_updater, SLOT(cancel()));
+    connect(m_ui->cancel, &QPushButton::clicked, m_updater, &ResourcesUpdatesModel::cancel);
 }
 
 ProgressWidget::~ProgressWidget()
@@ -136,7 +131,7 @@ void ProgressWidget::show()
     if (!m_show) {
         m_show = true;
         // Disconnect from previous animatedHide(), else we'll hide once we finish showing
-        disconnect(m_expandWidget, SIGNAL(finished()), this, SLOT(hide()));
+        disconnect(m_expandWidget, &QParallelAnimationGroup::finished, this, &ProgressWidget::hide);
         m_expandWidget->setDirection(QAbstractAnimation::Forward);
         m_expandWidget->start();
     }
@@ -148,8 +143,8 @@ void ProgressWidget::animatedHide()
 
     m_expandWidget->setDirection(QAbstractAnimation::Backward);
     m_expandWidget->start();
-    connect(m_expandWidget, SIGNAL(finished()), this, SLOT(hide()));
-    connect(m_expandWidget, SIGNAL(finished()), m_ui->cancel, SLOT(show()));
+    connect(m_expandWidget, &QParallelAnimationGroup::finished, this, &ProgressWidget::hide);
+    connect(m_expandWidget, &QParallelAnimationGroup::finished, m_ui->cancel, &QPushButton::show);
 }
 
 void ProgressWidget::cancelChanged()

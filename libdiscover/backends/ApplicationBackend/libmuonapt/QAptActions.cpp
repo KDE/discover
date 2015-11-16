@@ -116,63 +116,63 @@ void QAptActions::setupActions()
     QAction* revertAction = actionCollection()->addAction(QStringLiteral("revert"));
     revertAction->setIcon(QIcon::fromTheme(QStringLiteral("document-revert")));
     revertAction->setText(i18nc("@action Reverts all potential changes to the cache", "Unmark All"));
-    connect(revertAction, SIGNAL(triggered()), this, SLOT(revertChanges()));
+    connect(revertAction, &QAction::triggered, this, &QAptActions::revertChanges);
     m_actions.append(revertAction);
 
     QAction* softwarePropertiesAction = actionCollection()->addAction(QStringLiteral("software_properties"));
     softwarePropertiesAction->setPriority(QAction::LowPriority);
     softwarePropertiesAction->setIcon(QIcon::fromTheme(QStringLiteral("configure")));
     softwarePropertiesAction->setText(i18nc("@action Opens the software sources configuration dialog", "Configure Software Sources"));
-    connect(softwarePropertiesAction, SIGNAL(triggered()), this, SLOT(runSourcesEditor()));
+    connect(softwarePropertiesAction, &QAction::triggered, this, &QAptActions::runSourcesEditor);
     m_actions.append(softwarePropertiesAction);
     
     QAction* loadSelectionsAction = actionCollection()->addAction(QStringLiteral("open_markings"));
     loadSelectionsAction->setIcon(QIcon::fromTheme(QStringLiteral("document-open")));
     loadSelectionsAction->setText(i18nc("@action", "Read Markings..."));
-    connect(loadSelectionsAction, SIGNAL(triggered()), this, SLOT(loadSelections()));
+    connect(loadSelectionsAction, &QAction::triggered, this, &QAptActions::loadSelections);
     m_actions.append(loadSelectionsAction);
 
     QAction* saveSelectionsAction = actionCollection()->addAction(QStringLiteral("save_markings"));
     saveSelectionsAction->setIcon(QIcon::fromTheme(QStringLiteral("document-save-as")));
     saveSelectionsAction->setText(i18nc("@action", "Save Markings As..."));
-    connect(saveSelectionsAction, SIGNAL(triggered()), this, SLOT(saveSelections()));
+    connect(saveSelectionsAction, &QAction::triggered, this, &QAptActions::saveSelections);
     m_actions.append(saveSelectionsAction);
 
     QAction* createDownloadListAction = actionCollection()->addAction(QStringLiteral("save_download_list"));
     createDownloadListAction->setPriority(QAction::LowPriority);
     createDownloadListAction->setIcon(QIcon::fromTheme(QStringLiteral("document-save-as")));
     createDownloadListAction->setText(i18nc("@action", "Save Package Download List..."));
-    connect(createDownloadListAction, SIGNAL(triggered()), this, SLOT(createDownloadList()));
+    connect(createDownloadListAction, &QAction::triggered, this, &QAptActions::createDownloadList);
     m_actions.append(createDownloadListAction);
 
     QAction* downloadListAction = actionCollection()->addAction(QStringLiteral("download_from_list"));
     downloadListAction->setPriority(QAction::LowPriority);
     downloadListAction->setIcon(QIcon::fromTheme(QStringLiteral("download")));
     downloadListAction->setText(i18nc("@action", "Download Packages From List..."));
-    connect(downloadListAction, SIGNAL(triggered()), this, SLOT(downloadPackagesFromList()));
+    connect(downloadListAction, &QAction::triggered, this, &QAptActions::downloadPackagesFromList);
     downloadListAction->setEnabled(isConnected());
-    connect(this, SIGNAL(shouldConnect(bool)), downloadListAction, SLOT(setEnabled(bool)));
+    connect(this, &QAptActions::shouldConnect, downloadListAction, &QAction::setEnabled);
     m_actions.append(downloadListAction);
 
     QAction* loadArchivesAction = actionCollection()->addAction(QStringLiteral("load_archives"));
     loadArchivesAction->setPriority(QAction::LowPriority);
     loadArchivesAction->setIcon(QIcon::fromTheme(QStringLiteral("document-open")));
     loadArchivesAction->setText(i18nc("@action", "Add Downloaded Packages"));
-    connect(loadArchivesAction, SIGNAL(triggered()), this, SLOT(loadArchives()));
+    connect(loadArchivesAction, &QAction::triggered, this, &QAptActions::loadArchives);
     m_actions.append(loadArchivesAction);
     
     QAction* saveInstalledAction = actionCollection()->addAction(QStringLiteral("save_package_list"));
     saveInstalledAction->setPriority(QAction::LowPriority);
     saveInstalledAction->setIcon(QIcon::fromTheme(QStringLiteral("document-save-as")));
     saveInstalledAction->setText(i18nc("@action", "Save Installed Packages List..."));
-    connect(saveInstalledAction, SIGNAL(triggered()), this, SLOT(saveInstalledPackagesList()));
+    connect(saveInstalledAction, &QAction::triggered, this, &QAptActions::saveInstalledPackagesList);
     
     QAction* historyAction = actionCollection()->addAction(QStringLiteral("history"));
     historyAction->setPriority(QAction::LowPriority);
     historyAction->setIcon(QIcon::fromTheme(QStringLiteral("view-history")));
     historyAction->setText(i18nc("@action::inmenu", "History..."));
     actionCollection()->setDefaultShortcut(historyAction, QKeySequence(Qt::CTRL + Qt::Key_H));
-    connect(historyAction, SIGNAL(triggered()), this, SLOT(showHistoryDialog()));
+    connect(historyAction, &QAction::triggered, this, &QAptActions::showHistoryDialog);
 
     QAction *distUpgradeAction = actionCollection()->addAction(QStringLiteral("dist-upgrade"));
     distUpgradeAction->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
@@ -181,7 +181,7 @@ void QAptActions::setupActions()
     distUpgradeAction->setWhatsThis(i18nc("Notification when a new version of Kubuntu is available",
                                         "A new version of Kubuntu is available."));
     distUpgradeAction->setEnabled(m_distUpgradeAvailable);
-    connect(distUpgradeAction, SIGNAL(triggered(bool)), SLOT(launchDistUpgrade()));
+    connect(distUpgradeAction, &QAction::triggered, this, &QAptActions::launchDistUpgrade);
 
     m_actions.append(saveInstalledAction);
 }
@@ -400,8 +400,7 @@ void QAptActions::runSourcesEditor()
     proc->setProgram(arguments);
     m_mainWindow->find(winID)->setEnabled(false);
     proc->start();
-    connect(proc, SIGNAL(finished(int,QProcess::ExitStatus)),
-            this, SLOT(sourcesEditorFinished(int)));
+    connect(proc, static_cast<void (KProcess::*)(int, QProcess::ExitStatus)>(&KProcess::finished), this, &QAptActions::sourcesEditorFinished);
 }
 
 void QAptActions::sourcesEditorFinished(int exitStatus)
@@ -483,8 +482,8 @@ void QAptActions::showHistoryDialog()
         
         QDialogButtonBox* box = new QDialogButtonBox(m_historyDialog);
         box->setStandardButtons(QDialogButtonBox::Close);
-        connect(box, SIGNAL(accepted()), m_historyDialog, SLOT(accept()));
-        connect(box, SIGNAL(rejected()), m_historyDialog, SLOT(reject()));
+        connect(box, &QDialogButtonBox::accepted, m_historyDialog.data(), &QDialog::accept);
+        connect(box, &QDialogButtonBox::rejected, m_historyDialog.data(), &QDialog::reject);
         m_historyDialog->layout()->addWidget(box);
         
         m_historyDialog->show();
@@ -521,8 +520,8 @@ void QAptActions::checkDistUpgrade()
 
     KProcess* checkerProcess = new KProcess(this);
     checkerProcess->setProgram({ QStringLiteral("/usr/bin/python3"), checkerFile });
-    connect(checkerProcess, SIGNAL(finished(int)), this, SLOT(checkerFinished(int)));
-    connect(checkerProcess, SIGNAL(finished(int)), checkerProcess, SLOT(deleteLater()));
+    connect(checkerProcess, static_cast<void (KProcess::*)(int)>(&KProcess::finished), this, &QAptActions::checkerFinished);
+    connect(checkerProcess, static_cast<void (KProcess::*)(int)>(&KProcess::finished), checkerProcess, &KProcess::deleteLater);
     checkerProcess->start();
 }
 

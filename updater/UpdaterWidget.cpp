@@ -74,7 +74,7 @@ UpdaterWidget::UpdaterWidget(ResourcesUpdatesModel* updates, QWidget *parent) :
                             "The update of these packages need some others to be installed or removed.<p/>"
                             "Do you want to update those too?");
     QAction* action = new QAction(QIcon::fromTheme(QStringLiteral("dialog-ok-apply")), i18n("Mark All"), this);
-    connect(action, SIGNAL(triggered(bool)), SLOT(markAllPackagesForUpgrade()));
+    connect(action, &QAction::triggered, this, &UpdaterWidget::markAllPackagesForUpgrade);
     m_markallWidget = new KMessageWidget(this);
     m_markallWidget->setText(text);
     m_markallWidget->addAction(action);
@@ -83,8 +83,7 @@ UpdaterWidget::UpdaterWidget(ResourcesUpdatesModel* updates, QWidget *parent) :
 
     m_changelogWidget = new ChangelogWidget(this);
     m_changelogWidget->hide();
-    connect(this, SIGNAL(selectedResourceChanged(AbstractResource*)),
-            m_changelogWidget, SLOT(setResource(AbstractResource*)));
+    connect(this, &UpdaterWidget::selectedResourceChanged, m_changelogWidget, &ChangelogWidget::setResource);
 
     QLabel* descriptionLabel = new QLabel(this);
     descriptionLabel->setText(i18n("<p><b>New software is available for your computer</b></p><p>Click 'Install Updates' to keep your system up-to-date and safe</p>"));
@@ -97,8 +96,8 @@ UpdaterWidget::UpdaterWidget(ResourcesUpdatesModel* updates, QWidget *parent) :
     m_updateView->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
     m_updateView->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
     m_updateView->header()->setStretchLastSection(false);
-    connect(m_updateView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-            this, SLOT(selectionChanged(QItemSelection,QItemSelection)));
+    connect(m_updateView->selectionModel(), &QItemSelectionModel::selectionChanged,
+            this, &UpdaterWidget::selectionChanged);
 
     page1Layout->addWidget(m_markallWidget);
     page1Layout->addWidget(descriptionLabel);
@@ -127,9 +126,10 @@ UpdaterWidget::UpdaterWidget(ResourcesUpdatesModel* updates, QWidget *parent) :
     QApplication::setOverrideCursor(Qt::WaitCursor);
     m_busyWidget->start();
 
-    connect(ResourcesModel::global(), SIGNAL(fetchingChanged()), SLOT(activityChanged()));
-    connect(ResourcesModel::global(), SIGNAL(updatesCountChanged()), SLOT(activityChanged()));
-    connect(m_updatesBackends, SIGNAL(progressingChanged(bool)), SLOT(activityChanged()));
+    ResourcesModel* resourcesModel = ResourcesModel::global();
+    connect(resourcesModel, &ResourcesModel::fetchingChanged, this, &UpdaterWidget::activityChanged);
+    connect(resourcesModel, &ResourcesModel::updatesCountChanged, this, &UpdaterWidget::activityChanged);
+    connect(m_updatesBackends, &ResourcesUpdatesModel::progressingChanged, this, &UpdaterWidget::activityChanged);
 }
 
 UpdaterWidget::~UpdaterWidget()

@@ -42,14 +42,12 @@ void ScreenshotsModel::setResource(AbstractResource* res)
         return;
 
     if(m_resource) {
-        disconnect(m_resource, SIGNAL(screenshotsFetched(QList<QUrl>,QList<QUrl>)), this,
-                                SLOT(screenshotsFetched(QList<QUrl>,QList<QUrl>)));
+        disconnect(m_resource, &AbstractResource::screenshotsFetched, this, &ScreenshotsModel::screenshotsFetched);
     }
     m_resource = res;
     
     if(res) {
-        connect(m_resource, SIGNAL(screenshotsFetched(QList<QUrl>,QList<QUrl>)),
-                        SLOT(screenshotsFetched(QList<QUrl>,QList<QUrl>)));
+        connect(m_resource, &AbstractResource::screenshotsFetched, this, &ScreenshotsModel::screenshotsFetched);
         res->fetchScreenshots();
     } else
         qWarning() << "empty resource!";
