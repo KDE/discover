@@ -58,7 +58,7 @@ HistoryView::HistoryView(QWidget *parent)
     m_searchTimer->setInterval(300);
     m_searchTimer->setSingleShot(true);
     connect(m_searchTimer, &QTimer::timeout, this, &HistoryView::startSearch);
-    connect(m_searchEdit, &QLineEdit::textChanged, m_searchTimer, &QTimer::start);
+    connect(m_searchEdit, &QLineEdit::textChanged, m_searchTimer, static_cast<void(QTimer::*)()>(&QTimer::start));
 
     m_filterBox = new QComboBox(headerWidget);
     m_filterBox->insertItem(AllChangesItem, QIcon::fromTheme(QStringLiteral("bookmark-new-list")),

@@ -244,8 +244,8 @@ void QOAuth::InterfacePrivate::setupNetworkAccessManager()
 
     manager->setParent(q);
     q->connect(manager, &QNetworkAccessManager::finished, loop, &QEventLoop::quit);
-    q->connect(manager, &QNetworkAccessManager::finished, this, &Interface::_q_parseReply);
-    q->connect(manager, &QNetworkAccessManager::sslErrors, this, &Interface::_q_handleSslErrors);
+    q->connect(manager, SIGNAL(finished(QNetworkReply*)), SLOT(_q_parseReply(QNetworkReply*)));
+    q->connect(manager, SIGNAL(sslErrors(QNetworkReply*, QList<QSslError>)), SLOT(_q_handleSslErrors(QNetworkReply*, QList<QSslError>)));
 }
 
 QByteArray QOAuth::InterfacePrivate::httpMethodToString( HttpMethod method )

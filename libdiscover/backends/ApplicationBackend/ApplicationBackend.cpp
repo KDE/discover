@@ -63,7 +63,7 @@
 
 // static const KCatalogLoader loader("app-install-data"); //FIXME port
 
-MUON_BACKEND_PLUGIN(ApplicationBackend);
+MUON_BACKEND_PLUGIN(ApplicationBackend)
 
 ApplicationBackend::ApplicationBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
@@ -78,7 +78,7 @@ ApplicationBackend::ApplicationBackend(QObject* parent)
     KIconLoader::global()->reconfigure(QString(), QStringList(QStringLiteral("/usr/share/app-install/icons/")));
 
     m_watcher = new QFutureWatcher<QVector<Application*> >(this);
-    connect(m_watcher, &QFutureWatcher::finished, this, &ApplicationBackend::setApplications);
+    connect(m_watcher, &QFutureWatcher<QVector<Application*> >::finished, this, &ApplicationBackend::setApplications);
     connect(m_reviewsBackend, &ReviewsBackend::ratingsReady, this, &ApplicationBackend::allDataChanged);
     
     QTimer::singleShot(10, this, SLOT(initBackend()));
