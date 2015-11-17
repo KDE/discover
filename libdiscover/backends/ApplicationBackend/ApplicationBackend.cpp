@@ -91,11 +91,10 @@ ApplicationBackend::~ApplicationBackend()
 
 QVector<Application *> init(QApt::Backend *backend, QThread* thread)
 {
-    QVector<Application *> appList;
     QDir appDir(QStringLiteral("/usr/share/app-install/desktop/"));
     QStringList fileList = appDir.entryList(QStringList(QStringLiteral("*.desktop")), QDir::Files);
 
-    QList<Application *> tempList;
+    QVector<Application *> tempList;
     QSet<QString> packages;
     foreach(const QString &fileName, fileList) {
         Application *app = new Application(appDir.filePath(fileName), backend);
@@ -119,17 +118,16 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
     // a) exists
     // b) is not on the blacklist
     // c) if not downloadable, then it must already be installed
+    QVector<Application *> appList;
+    appList.reserve(tempList.size());
     Q_FOREACH (Application *app, tempList) {
-        bool added = false;
         QApt::Package *pkg = app->package();
         if (app->isValid() && pkg)
         {
             appList << app;
             app->moveToThread(thread);
-            added = true;
         }
-
-        if(!added)
+        else
             delete app;
     }
 
