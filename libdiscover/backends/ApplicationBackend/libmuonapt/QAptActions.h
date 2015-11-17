@@ -45,7 +45,7 @@ class QAptActions : public QObject
 public:
     static QAptActions* self();
     void setMainWindow(KXmlGuiWindow* w);
-    KXmlGuiWindow* mainWindow() const;
+    QWidget* mainWindow() const;
 
     bool reloadWhenSourcesEditorFinished() const;
     bool isConnected() const;

@@ -33,6 +33,7 @@
 #include <QDialogButtonBox>
 #include <QLayout>
 #include <QNetworkConfigurationManager>
+#include <QApplication>
 
 // KDE includes
 #include <KActionCollection>
@@ -80,7 +81,7 @@ void QAptActions::setMainWindow(KXmlGuiWindow* w)
     setupActions();
 }
 
-KXmlGuiWindow* QAptActions::mainWindow() const
+QWidget* QAptActions::mainWindow() const
 {
     return m_mainWindow;
 }
@@ -194,7 +195,7 @@ void QAptActions::setActionsEnabled(bool enabled)
         action->setEnabled(enabled);
     }
 
-    if (!enabled || !m_mainWindow || !actionCollection())
+    if (!enabled || !mainWindow() || !actionCollection())
         return;
 
     actionCollection()->action(QStringLiteral("update"))->setEnabled(isConnected() && enabled);
@@ -223,7 +224,7 @@ bool QAptActions::isConnected() const
 
 bool QAptActions::saveSelections()
 {
-    QString filename = QFileDialog::getSaveFileName(m_mainWindow, i18nc("@title:window", "Save Markings As"));
+    QString filename = QFileDialog::getSaveFileName(mainWindow(), i18nc("@title:window", "Save Markings As"));
 
     if (filename.isEmpty()) {
         return false;
@@ -236,7 +237,7 @@ bool QAptActions::saveSelections()
                              "that you have write access to this file "
                              "or that enough disk space is available.",
                              filename);
-        KMessageBox::error(m_mainWindow, text, QString());
+        KMessageBox::error(mainWindow(), text, QString());
         return false;
     }
 
@@ -247,7 +248,7 @@ bool QAptActions::saveInstalledPackagesList()
 {
     QString filename;
 
-    filename = QFileDialog::getSaveFileName(m_mainWindow,
+    filename = QFileDialog::getSaveFileName(mainWindow(),
                                             i18nc("@title:window", "Save Installed Packages List As"));
 
     if (filename.isEmpty()) {
@@ -261,7 +262,7 @@ bool QAptActions::saveInstalledPackagesList()
                              "that you have write access to this file "
                              "or that enough disk space is available.",
                              filename);
-        KMessageBox::error(m_mainWindow, text, QString());
+        KMessageBox::error(mainWindow(), text, QString());
         return false;
     }
 
@@ -271,7 +272,7 @@ bool QAptActions::saveInstalledPackagesList()
 bool QAptActions::createDownloadList()
 {
     QString filename;
-    filename = QFileDialog::getSaveFileName(m_mainWindow,
+    filename = QFileDialog::getSaveFileName(mainWindow(),
                                             i18nc("@title:window", "Save Download List As"));
 
     if (filename.isEmpty()) {
@@ -285,7 +286,7 @@ bool QAptActions::createDownloadList()
                              "that you have write access to this file "
                              "or that enough disk space is available.",
                              filename);
-        KMessageBox::error(m_mainWindow, text, QString());
+        KMessageBox::error(mainWindow(), text, QString());
         return false;
     }
 
@@ -294,7 +295,7 @@ bool QAptActions::createDownloadList()
 
 void QAptActions::downloadPackagesFromList()
 {
-    QString filename = QFileDialog::getOpenFileName(m_mainWindow, i18nc("@title:window", "Open File"));
+    QString filename = QFileDialog::getOpenFileName(mainWindow(), i18nc("@title:window", "Open File"));
 
     if (filename.isEmpty()) {
         return;
@@ -311,7 +312,7 @@ void QAptActions::downloadPackagesFromList()
 
 void QAptActions::loadSelections()
 {
-    QString filename = QFileDialog::getOpenFileName(m_mainWindow, i18nc("@title:window", "Open File"));
+    QString filename = QFileDialog::getOpenFileName(mainWindow(), i18nc("@title:window", "Open File"));
 
     if (filename.isEmpty()) {
         return;
@@ -323,13 +324,13 @@ void QAptActions::loadSelections()
                              "that the file is a markings file created by "
                              "either the Muon Package Manager or the "
                              "Synaptic Package Manager.");
-        KMessageBox::error(m_mainWindow, text, QString());
+        KMessageBox::error(mainWindow(), text, QString());
     }
 }
 
 void QAptActions::loadArchives()
 {
-    QString dirName = QFileDialog::getExistingDirectory(m_mainWindow,
+    QString dirName = QFileDialog::getExistingDirectory(mainWindow(),
                                                 i18nc("@title:window", "Choose a Directory"));
 
     if (dirName.isEmpty()) {
@@ -356,13 +357,13 @@ void QAptActions::loadArchives()
                                  "%1 package was successfully added to the cache",
                                  "%1 packages were successfully added to the cache",
                                  successCount);
-        KMessageBox::information(m_mainWindow, message, QString());
+        KMessageBox::information(mainWindow(), message, QString());
     } else {
         QString message = i18nc("@label",
                                 "No valid packages could be found in this directory. "
                                 "Please make sure the packages are compatible with your "
                                 "computer and are at the latest version.");
-        KMessageBox::error(m_mainWindow, message, i18nc("@title:window",
+        KMessageBox::error(mainWindow(), message, i18nc("@title:window",
                                                 "Packages Could Not be Found"));
     }
 }
@@ -387,7 +388,7 @@ void QAptActions::runSourcesEditor()
 {
     KProcess *proc = new KProcess(this);
     QStringList arguments;
-    int winID = m_mainWindow->effectiveWinId();
+    int winID = mainWindow()->effectiveWinId();
 
     const QString kdesu = QFile::decodeName(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/kdesu");
     const QString editor = QStandardPaths::findExecutable(QStringLiteral("software-properties-kde"));
@@ -398,7 +399,7 @@ void QAptActions::runSourcesEditor()
     }
 
     proc->setProgram(arguments);
-    m_mainWindow->find(winID)->setEnabled(false);
+    mainWindow()->setEnabled(false);
     proc->start();
     connect(proc, static_cast<void (KProcess::*)(int, QProcess::ExitStatus)>(&KProcess::finished), this, &QAptActions::sourcesEditorFinished);
 }
@@ -406,7 +407,7 @@ void QAptActions::runSourcesEditor()
 void QAptActions::sourcesEditorFinished(int exitStatus)
 {
     bool reload = (exitStatus != 0);
-    m_mainWindow->find(m_mainWindow->effectiveWinId())->setEnabled(true);
+    mainWindow()->setEnabled(true);
     if (m_reloadWhenEditorFinished && reload) {
         actionCollection()->action(QStringLiteral("update"))->trigger();
     }
@@ -416,7 +417,7 @@ void QAptActions::sourcesEditorFinished(int exitStatus)
 
 KActionCollection* QAptActions::actionCollection()
 {
-    return m_mainWindow->actionCollection();
+    return m_mainWindow ? m_mainWindow->actionCollection() : nullptr;
 }
 
 void QAptActions::setOriginalState(QApt::CacheState state)
@@ -438,7 +439,7 @@ void QAptActions::initError()
     QString title = muonStrings->errorTitle(QApt::InitError);
     QString text = muonStrings->errorText(QApt::InitError, nullptr);
 
-    KMessageBox::detailedError(m_mainWindow, text, details, title);
+    KMessageBox::detailedError(mainWindow(), text, details, title);
     exit(-1);
 }
 
@@ -528,7 +529,7 @@ void QAptActions::checkDistUpgrade()
 void QAptActions::checkerFinished(int res)
 {
     m_distUpgradeAvailable = (res == 0);
-    if (!m_mainWindow)
+    if (!actionCollection())
         return;
     actionCollection()->action(QStringLiteral("dist-upgrade"))->setEnabled(m_distUpgradeAvailable);
 }
