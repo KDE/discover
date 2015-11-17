@@ -41,6 +41,8 @@
 #include <KIconLoader>
 #include <KXmlGuiWindow>
 
+#include <AppstreamQt/database.h>
+
 // QApt/DebconfKDE includes
 #include <QApt/Backend>
 #include <QApt/Transaction>
@@ -60,8 +62,6 @@
 #include "ApplicationUpdates.h"
 #include <resources/SourcesModel.h>
 #include <MuonDataSources.h>
-
-// static const KCatalogLoader loader("app-install-data"); //FIXME port
 
 MUON_BACKEND_PLUGIN(ApplicationBackend)
 
@@ -91,13 +91,14 @@ ApplicationBackend::~ApplicationBackend()
 
 QVector<Application *> init(QApt::Backend *backend, QThread* thread)
 {
-    QDir appDir(QStringLiteral("/usr/share/app-install/desktop/"));
-    QStringList fileList = appDir.entryList(QStringList(QStringLiteral("*.desktop")), QDir::Files);
+    Appstream::Database appdata;
+    bool opened = appdata.open();
+    Q_ASSERT(opened);
 
     QVector<Application *> tempList;
     QSet<QString> packages;
-    foreach(const QString &fileName, fileList) {
-        Application *app = new Application(appDir.filePath(fileName), backend);
+    foreach(const Appstream::Component &component, appdata.allComponents()) {
+        Application *app = new Application(component, backend);
         packages.insert(app->packageName());
         tempList << app;
     }

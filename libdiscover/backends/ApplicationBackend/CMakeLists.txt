@@ -20,7 +20,7 @@ qt5_add_dbus_interface(appsbackend_SRCS ubuntu_sso_dbus_interface.xml ubuntu_sso
 
 add_library(qapt-backend MODULE ${appsbackend_SRCS})
 target_link_libraries(qapt-backend Qt5::Widgets Qt5::DBus Qt5::Concurrent
-     KF5::Archive KF5::KIOWidgets KF5::XmlGui DebconfKDE::Main KF5::IconThemes
+     KF5::Archive KF5::KIOWidgets KF5::XmlGui DebconfKDE::Main KF5::IconThemes AppstreamQt
      Muon::QOAuth QApt::Main Discover::Common MuonApt
 )
 target_include_directories(qapt-backend PRIVATE /usr/include/Qca-qt5/QtCrypto)

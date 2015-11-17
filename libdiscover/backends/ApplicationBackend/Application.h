@@ -27,6 +27,7 @@
 
 #include <KService>
 
+#include <AppstreamQt/component.h>
 #include <QApt/Package>
 
 #include "discovercommon_export.h"
@@ -43,11 +44,10 @@ class DISCOVERCOMMON_EXPORT Application : public AbstractResource
 Q_OBJECT
 Q_PROPERTY(QString menuPath READ menuPath CONSTANT)
 public:
-    explicit Application(const QString &fileName, QApt::Backend *backend);
+    explicit Application(const Appstream::Component &component, QApt::Backend *backend);
     explicit Application(QApt::Package *package, QApt::Backend *backend);
 
     QString name();
-    QString untranslatedName();
     QString comment();
     QApt::Package *package();
     QString icon() const;
@@ -91,19 +91,19 @@ public:
     virtual void fetchChangelog();
     
     bool isFromSecureOrigin() const;
-    QByteArray getField(const char* field, const QByteArray& defaultvalue = QByteArray()) const;
 
 private Q_SLOTS:
     void processChangelog(KJob*);
     void downloadingScreenshotsFinished(KJob*);
 
 private:
+    QApt::Backend *backend() const;
+    QStringList findProvides(Appstream::Provides::Kind kind) const;
     QString buildDescription(const QByteArray& data, const QString& source);
     
-    QSharedPointer<KConfig> m_data;
-    QApt::Backend *m_backend;
+    const Appstream::Component m_data;
     QApt::Package *m_package;
-    QByteArray m_packageName;
+    QString m_packageName;
 
     bool m_isValid;
     bool m_isTechnical;
@@ -112,7 +112,6 @@ private:
 
     QApt::PackageList addons();
     QVector<QPair<QString, QString> > locateApplication(const QString &_relPath, const QString &menuId) const;
-    bool hasField(const char* field) const;
 };
 
 #endif
