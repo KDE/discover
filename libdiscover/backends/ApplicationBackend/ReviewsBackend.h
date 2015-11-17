@@ -71,7 +71,7 @@ private:
     const QUrl m_serverBase;
     QHash<QString, Rating *> m_ratings;
     // cache key is package name + app name, since both by their own may not be unique
-    QHash<QString, QList<Review *> > m_reviewsCache;
+    QHash<Application*, QList<Review *> > m_reviewsCache;
     QHash<KJob *, Application *> m_jobHash;
 
     void loadRatingsFromFile();

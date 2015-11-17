@@ -208,10 +208,8 @@ void ReviewsBackend::fetchReviews(AbstractResource* res, int page)
 {
     Q_ASSERT(!res->backend()->isFetching());
     Application* app = qobject_cast<Application*>(res);
-    // Check our cache before fetching from the 'net
-    QString hashName = app->package()->name() + app->untranslatedName();
     
-    QList<Review*> revs = m_reviewsCache.value(hashName);
+    const QList<Review*> revs = m_reviewsCache.value(app);
     if (revs.size()>(page*10)) { //there are 10 reviews per page
         emit reviewsReady(app, revs.mid(page*10, 10));
         return;
@@ -282,7 +280,7 @@ void ReviewsBackend::reviewsFetched(KJob *j)
         reviewsList << constructReview(data.toMap());
     }
 
-    m_reviewsCache[app->package()->name() + app->name()].append(reviewsList);
+    m_reviewsCache[app].append(reviewsList);
 
     emit reviewsReady(app, reviewsList);
 }
