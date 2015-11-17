@@ -49,39 +49,36 @@
 #include "ApplicationBackend.h"
 #include "resources/PackageState.h"
 
-Application::Application(const QString& fileName, QApt::Backend* backend)
+Application::Application(const Appstream::Component &component, QApt::Backend* backend)
         : AbstractResource(0)
-        , m_data(new KConfig(fileName, KConfig::SimpleConfig))
-        , m_backend(backend)
+        , m_data(component)
         , m_package(0)
         , m_isValid(true)
-        , m_isTechnical(false)
+        , m_isTechnical(component.kind() != Appstream::Component::KindDesktop)
         , m_isExtrasApp(false)
         , m_sourceHasScreenshot(true)
 {
     static QByteArray currentDesktop = qgetenv("XDG_CURRENT_DESKTOP");
 
-    m_isTechnical = getField("NoDisplay").toLower() == "true"
-                    || !hasField("Exec")
-                    || getField("NotShowIn", QByteArray()).contains(currentDesktop)
-                    || !getField("OnlyShowIn", currentDesktop).contains(currentDesktop);
-    m_packageName = getField("X-AppInstall-Package");
+    Q_ASSERT(component.packageNames().count() == 1);
+    m_packageName = component.packageNames().at(0);
+    
+    m_package = backend->package(packageName());
+    m_isValid = bool(m_package);
 }
 
 Application::Application(QApt::Package* package, QApt::Backend* backend)
         : AbstractResource(0)
-        , m_backend(backend)
         , m_package(package)
+        , m_packageName(m_package->name())
         , m_isValid(true)
         , m_isTechnical(true)
         , m_isExtrasApp(false)
 {
-    m_packageName = m_package->name().latin1();
-    
     QString arch = m_package->architecture();
-    if (arch != m_backend->nativeArchitecture() && arch != QLatin1String("all")) {
-        m_packageName.append(':');
-        m_packageName.append(m_package->architecture().toLatin1());
+    if (arch != backend->nativeArchitecture() && arch != QLatin1String("all")) {
+        m_packageName.append(QLatin1Char(':'));
+        m_packageName.append(arch);
     }
 
     if (m_package->origin() == QLatin1String("LP-PPA-app-review-board")) {
@@ -94,20 +91,7 @@ Application::Application(QApt::Package* package, QApt::Backend* backend)
 
 QString Application::name()
 {
-    QString name;
-    if (!m_isTechnical)
-        name = i18n(untranslatedName().toUtf8().constData());
-    else
-        name = untranslatedName();
-
-    if (package() && m_package->isForeignArch())
-        name = i18n("%1 (%2)", name, m_package->architecture());
-    return name;
-}
-
-QString Application::untranslatedName()
-{
-    QString name = QString::fromUtf8(getField("Name")).trimmed();
+    QString name = m_data.isValid() ? m_data.name() : QString();
     if (name.isEmpty() && package()) {
         // extras.ubuntu.com packages can have this
         if (m_isExtrasApp)
@@ -116,18 +100,17 @@ QString Application::untranslatedName()
             name = m_package->name();
     }
 
+    if (package() && m_package->isForeignArch())
+        name = i18n("%1 (%2)", name, m_package->architecture());
+    
     return name;
 }
 
 QString Application::comment()
 {
-    QString comment = QString::fromLatin1(getField("Comment"));
+    QString comment = m_data.isValid() ? m_data.description() : QString();
     if (comment.isEmpty()) {
-        // Sometimes GenericName is used instead of Comment
-        comment = QString::fromLatin1(getField("GenericName"));
-        if (comment.isEmpty()) {
-            return package()->shortDescription();
-        }
+        return package()->shortDescription();
     }
 
     return i18n(comment.toUtf8().constData());
@@ -135,13 +118,13 @@ QString Application::comment()
 
 QString Application::packageName() const
 {
-    return QString::fromLatin1(m_packageName);
+    return m_packageName;
 }
 
 QApt::Package *Application::package()
 {
-    if (!m_package && m_backend) {
-        m_package = m_backend->package(packageName());
+    if (!m_package && parent()) {
+        m_package = backend()->package(packageName());
         Q_EMIT stateChanged();
     }
 
@@ -156,12 +139,27 @@ QApt::Package *Application::package()
 
 QString Application::icon() const
 {
-    return QString::fromLatin1(getField("Icon", "applications-other"));
+    QString anIcon = m_data.icon();
+    if (anIcon.isEmpty()) {
+        QUrl iconUrl = m_data.iconUrl(QSize());
+        if (iconUrl.isLocalFile())
+            anIcon = iconUrl.toLocalFile();
+    }
+    return anIcon;
+}
+
+QStringList Application::findProvides(Appstream::Provides::Kind kind) const
+{
+    QStringList ret;
+    Q_FOREACH (Appstream::Provides p, m_data.provides())
+        if (p.kind() == kind)
+            ret += p.value();
+    return ret;
 }
 
 QStringList Application::mimetypes() const
 {
-    return QString::fromLatin1(getField("MimeType")).split(QLatin1Char(';'));
+    return findProvides(Appstream::Provides::KindMimetype);
 }
 
 QString Application::menuPath()
@@ -259,7 +257,7 @@ QVector<QPair<QString, QString> > Application::locateApplication(const QString &
 
 QStringList Application::categories()
 {
-    QStringList categories = QString::fromLatin1(getField("Categories")).split(QLatin1Char(';'), QString::SkipEmptyParts);
+    QStringList categories = m_data.isValid() ? m_data.categories() : QStringList();
 
     if (categories.isEmpty()) {
         // extras.ubuntu.com packages can have this field
@@ -311,10 +309,10 @@ QApt::PackageList Application::addons()
     QStringList tempList;
     // Only add recommends or suggests to the list if they aren't already going to be
     // installed
-    if (!m_backend->config()->readEntry(QStringLiteral("APT::Install-Recommends"), true)) {
+    if (!backend()->config()->readEntry(QStringLiteral("APT::Install-Recommends"), true)) {
         tempList << m_package->recommendsList();
     }
-    if (!m_backend->config()->readEntry(QStringLiteral("APT::Install-Suggests"), false)) {
+    if (!backend()->config()->readEntry(QStringLiteral("APT::Install-Suggests"), false)) {
         tempList << m_package->suggestsList();
     }
     tempList << m_package->enhancedByList();
@@ -337,7 +335,7 @@ QApt::PackageList Application::addons()
 
     foreach (const QString &addon, tempList) {
         bool shouldShow = true;
-        QApt::Package *package = m_backend->package(addon);
+        QApt::Package *package = backend()->package(addon);
 
         if (!package || QString(package->section()).contains(QLatin1String("lib")) || addons.contains(package)) {
             continue;
@@ -376,21 +374,6 @@ bool Application::isValid() const
 bool Application::isTechnical() const
 {
     return m_isTechnical;
-}
-
-QByteArray Application::getField(const char* field, const QByteArray& defaultvalue) const
-{
-    if(m_data) {
-        KConfigGroup group = m_data->group(QStringLiteral("Desktop Entry"));
-        return group.readEntry(field, defaultvalue);
-    } else
-        return defaultvalue;
-
-}
-
-bool Application::hasField(const char* field) const
-{
-    return m_data && m_data->group(QStringLiteral("Desktop Entry")).hasKey(field);
 }
 
 QUrl Application::homepage()
@@ -520,8 +503,8 @@ void Application::fetchScreenshots()
     if(!m_sourceHasScreenshot)
         return;
     
-    QString dest = QStandardPaths::locate(QStandardPaths::TempLocation, QStringLiteral("screenshots.")+QString::fromLatin1(m_packageName));
-    const QUrl packageUrl(MuonDataSources::screenshotsSource().toString() + QStringLiteral("/json/package/")+QString::fromLatin1(m_packageName));
+    QString dest = QStandardPaths::locate(QStandardPaths::TempLocation, QStringLiteral("screenshots.")+m_packageName);
+    const QUrl packageUrl(MuonDataSources::screenshotsSource().toString() + QStringLiteral("/json/package/")+m_packageName);
     KIO::StoredTransferJob* job = KIO::storedGet(packageUrl, KIO::NoReload, KIO::HideProgressInfo);
     connect(job, &KIO::StoredTransferJob::finished, this, &Application::downloadingScreenshotsFinished);
 }
@@ -639,4 +622,9 @@ QString Application::buildDescription(const QByteArray& data, const QString& sou
     }
 
     return description;
+}
+
+QApt::Backend *Application::backend() const
+{
+    return qobject_cast<ApplicationBackend*>(parent())->backend();
 }
