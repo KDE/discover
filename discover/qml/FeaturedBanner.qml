@@ -37,6 +37,7 @@ Information {
     }
 
     delegate: MouseArea {
+            id: itemDelegate
             readonly property QtObject modelData: model
             readonly property real size: PathView.itemScale
             enabled: modelData.package!=""
@@ -51,7 +52,6 @@ Information {
             }
             
             z: PathView.isCurrentItem && !PathView.view.moving ? 1 : -1
-            id: itemDelegate
             
             Loader {
                 id: flick
@@ -79,7 +79,6 @@ Information {
                 height: description.paintedHeight*1.2
                 z: 23
                 spacing: 10
-                property variant modelData: info.model.get(Math.min(info.currentIndex, info.model.count))
                 anchors {
                     left: parent.left
                     right: parent.right
@@ -88,8 +87,8 @@ Information {
 
                 QIconItem {
                     Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    icon: titleBar.modelData ? titleBar.modelData.icon : "kde"
+                    Layout.minimumWidth: height
+                    icon: itemDelegate.modelData ? itemDelegate.modelData.icon : "kde"
                 }
 
                 Label {
@@ -97,7 +96,8 @@ Information {
                     Layout.fillWidth: true
                     anchors.verticalCenter: parent.verticalCenter
 
-                    text: titleBar.modelData ? i18n("<b>%1</b><br/>%2", titleBar.modelData.text, titleBar.modelData.comment) : ""
+                    text: itemDelegate.modelData ? i18n("<b>%1</b><br/>%2", itemDelegate.modelData.text, itemDelegate.modelData.comment) : ""
+                    clip: true //can't elide because it's rich text :(
                 }
             }
 
