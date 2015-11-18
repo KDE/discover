@@ -35,6 +35,8 @@ GridItem
             margins: -3
             fill: parent
         }
+        horizontalScrollBarPolicy: Qt.ScrollBarAlwaysOff
+        verticalScrollBarPolicy: Qt.ScrollBarAlwaysOn
 
         GridView {
             id: grid
