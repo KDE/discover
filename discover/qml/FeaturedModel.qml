@@ -8,12 +8,7 @@ ListModel
         fetchSource(app.prioritaryFeaturedSource)
         fetchSource(app.featuredSource)
     }
-    
-    property variant fu: Connections {
-        target: ResourcesModel
-        onRowsInserted: initFeatured()
-    }
-    
+
     function fetchSource(source)
     {
         if(source=="")

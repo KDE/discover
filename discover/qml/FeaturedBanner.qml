@@ -27,8 +27,15 @@ import "navigation.js" as Navigation
 Information {
     id: info
 
-    model: FeaturedModel {}
-    
+    Connections {
+        target: ResourcesModel
+        onAllInitialized: featuredModel.initFeatured()
+    }
+
+    model: FeaturedModel {
+        id: featuredModel
+    }
+
     delegate: MouseArea {
             readonly property QtObject modelData: model
             readonly property real size: PathView.itemScale
