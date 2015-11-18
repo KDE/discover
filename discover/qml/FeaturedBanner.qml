@@ -62,6 +62,7 @@ Information {
                 }
 
                 source: endsWith(modelData.image, ".qml") ? modelData.image : "qrc:/qml/FeaturedImage.qml"
+                clip: true
             }
 
             Rectangle {
