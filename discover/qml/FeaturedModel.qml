@@ -63,7 +63,7 @@ ListModel
                 "image": currentData.image,
                 "icon": alternateIfNull(currentData.icon, "kde"),
                 "comment": alternateIfNull(currentData.comment, "&nbsp;"),
-                "packageName": currentData.package,
+                "packageName": alternateIfNull(currentData.package, ""),
                 "url": currentData.url
             })
         }

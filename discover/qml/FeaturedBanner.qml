@@ -44,7 +44,7 @@ Information {
             height: 250 * size
 
             onClicked: {
-                if(modelData.packageName!=null)
+                if(model.packageName !== "")
                     Navigation.openApplication(ResourcesModel.resourceByPackageName(modelData.packageName))
                 else
                     Qt.openUrlExternally(modelData.url)
