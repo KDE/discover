@@ -272,6 +272,12 @@ void ResourcesModel::callerFetchingChanged()
         emit fetchingChanged();
     } else {
         resetBackend(backend);
+
+        m_initializingBackends--;
+        if(m_initializingBackends==0)
+            emit allInitialized();
+        else
+            emit fetchingChanged();
     }
 }
 
@@ -289,9 +295,6 @@ void ResourcesModel::resetBackend(AbstractResourcesBackend* backend)
         endInsertRows();
         emit updatesCountChanged();
     }
-    m_initializingBackends--;
-    if(m_initializingBackends==0)
-        emit allInitialized();
 }
 
 void ResourcesModel::updateCaller()
