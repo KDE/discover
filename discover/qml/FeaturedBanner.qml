@@ -39,10 +39,19 @@ Information {
     delegate: MouseArea {
             id: itemDelegate
             readonly property QtObject modelData: model
-            readonly property real size: PathView.itemScale
+            readonly property int d1: Math.abs(info.currentIndex - model.index)
+            readonly property int distance: Math.min(d1, info.count - d1)
+            property real size: 1/((distance+3)/3)
             enabled: modelData.package!=""
             width: 400 * size
             height: 250 * size
+
+            Behavior on size {
+                NumberAnimation {
+                    duration: 500
+                    easing.type: Easing.InQuad
+                }
+            }
 
             onClicked: {
                 if(model.packageName !== "")
@@ -50,8 +59,7 @@ Information {
                 else
                     Qt.openUrlExternally(modelData.url)
             }
-            
-            z: PathView.isCurrentItem && !PathView.view.moving ? 1 : -1
+            z: -itemDelegate.distance + PathView.isCurrentItem
             
             Loader {
                 id: flick
