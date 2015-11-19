@@ -3,7 +3,7 @@ import QtQuick 2.1
 PathView {
     id: viewItem
     interactive: false
-    pathItemCount: 3
+    pathItemCount: count
     cacheItemCount: count
     highlightMoveDuration: 500
     readonly property real oriX: viewItem.width/2
@@ -12,17 +12,13 @@ PathView {
     
     path: Path {
         startX: oriX; startY: oriY
-        PathAttribute { name: "itemScale"; value: 1. }
         PathLine { x: oriX-500; y: oriY }
-        PathAttribute { name: "itemScale"; value: .7 }
-        PathPercent { value: 0.5 }
+        PathPercent { value: 0.3 }
         PathLine { x: oriX-800; y: oriY-1900 }
         PathLine { x: oriX+800; y: oriY-1900 }
         PathLine { x: oriX+500; y: oriY }
-        PathAttribute { name: "itemScale"; value: .7 }
-        PathPercent { value: 0.5 }
+        PathPercent { value: 0.7 }
         PathLine { x: oriX; y: oriY }
-        PathAttribute { name: "itemScale"; value: 1 }
         PathPercent { value: 1 }
     }
 
