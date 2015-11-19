@@ -4,6 +4,7 @@ Exec=blubb
 Icon=plasma
 Name=Wrong
 Name[ca]=Erroni
+Name[ca@valencia]=Erroni
 Name[el]=Λάθος
 Name[en_GB]=Wrong
 Name[fi]=Väärä

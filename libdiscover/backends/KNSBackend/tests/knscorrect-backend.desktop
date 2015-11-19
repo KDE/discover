@@ -4,6 +4,7 @@ Exec=blubb
 Icon=plasma
 Name=Correct
 Name[ca]=Correcte
+Name[ca@valencia]=Correcte
 Name[el]=Σωστό
 Name[en_GB]=Correct
 Name[fi]=Oikea

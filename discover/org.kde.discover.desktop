@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Discover
 Name[ca]=Discover
+Name[ca@valencia]=Discover
 Name[en_GB]=Discover
 Name[gl]=Descubrir
 Name[nl]=Ontdekken
@@ -19,6 +20,7 @@ X-DocPath=muon/index.html
 GenericName=Software Center
 GenericName[ast]=Centru de software
 GenericName[ca]=Centre de programari
+GenericName[ca@valencia]=Centre de programari
 GenericName[el]=Κέντρο λογισμικού
 GenericName[en_GB]=Software Center
 GenericName[es]=Centro de software
@@ -44,6 +46,7 @@ GenericName[x-test]=xxSoftware Centerxx
 Categories=Qt;KDE;System;
 Keywords=program;software;repository;package;install;remove;update;apps;applications;
 Keywords[ca]=programa;programari;repositori;paquet;instal·la;suprimeix;actualitza;apps;aplicacions;
+Keywords[ca@valencia]=programa;programari;repositori;paquet;instal·la;suprimeix;actualitza;apps;aplicacions;
 Keywords[el]=πρόγραμμα;λογισμικό;αποθετήριο;πακέτο;εγκατάσταση;αφαίρεση;ενημέρωση;εφαρμογές;
 Keywords[en_GB]=program;software;repository;package;install;remove;update;apps;applications;
 Keywords[es]=programa;software;repositorio;paquete;instalar;eliminar;actualizar;apps;aplicaciones;
