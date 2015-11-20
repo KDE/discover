@@ -48,7 +48,8 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
         QStringList modes() const;
         void setupActions();
 
-        bool queryClose() Q_DECL_OVERRIDE;
+        void closeEvent(QCloseEvent *e) override;
+        bool queryClose() override;
 
         QUrl prioritaryFeaturedSource() const;
         QUrl featuredSource() const;
@@ -76,6 +77,7 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
 
         void compactChanged(bool isCompact);
         void actualWidthChanged(qreal actualWidth);
+        void preventedClose();
 
     private:
         void configureSources();

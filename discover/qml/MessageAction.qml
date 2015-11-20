@@ -43,7 +43,7 @@ Rectangle {
 
         Label {
             Layout.fillWidth: true
-            text: theAction.whatsThis
+            text: theAction.whatsThis || theAction.tooltip
             color: palette.highlightedText
         }
         Button {

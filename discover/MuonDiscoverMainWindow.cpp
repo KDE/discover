@@ -274,6 +274,15 @@ void MuonDiscoverMainWindow::configureSources()
     openMode("Sources");
 }
 
+void MuonDiscoverMainWindow::closeEvent(QCloseEvent *e)
+{
+    KXmlGuiWindow::closeEvent(e);
+    if (!e->isAccepted()) {
+        qWarning() << "not closing because there's still pending tasks";
+        Q_EMIT preventedClose();
+    }
+}
+
 bool MuonDiscoverMainWindow::queryClose()
 {
     return !ResourcesModel::global()->isBusy();

@@ -120,6 +120,7 @@ Rectangle
         onOpenApplicationInternal: Navigation.openApplication(app)
         onListMimeInternal: Navigation.openApplicationMime(mime)
         onListCategoryInternal: Navigation.openCategoryByName(name)
+        onPreventedClose: closePreventedInfo.enabled = true
     }
 
     Rectangle {
@@ -164,6 +165,20 @@ Rectangle
                         Layout.fillWidth: true
                         theAction: action
                     }
+                }
+            }
+        }
+
+        MessageAction {
+            width: msgColumn.width
+            Layout.fillWidth: true
+            theAction: Action {
+                id: closePreventedInfo
+                enabled: false
+                text: i18n("Got it");
+                tooltip: i18n("Could not close the application, there are tasks that need to be done.")
+                onTriggered: {
+                    enabled=false
                 }
             }
         }
