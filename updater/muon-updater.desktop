@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Update Manager
 Name[ca]=Gestor d'actualitzacions
+Name[ca@valencia]=Gestor d'actualitzacions
 Name[en_GB]=Update Manager
 Name[gl]=Xestor de actualizacións
 Name[nl]=Beheerder voor bijwerken
@@ -17,6 +18,7 @@ Type=Application
 X-DocPath=muon/index.html
 GenericName=Update Manager
 GenericName[ca]=Gestor d'actualitzacions
+GenericName[ca@valencia]=Gestor d'actualitzacions
 GenericName[el]=Διαχειριστής ενημερώσεων
 GenericName[en_GB]=Update Manager
 GenericName[es]=Gestor de actualizaciones

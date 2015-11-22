@@ -2,6 +2,7 @@
 IconName=muondiscover
 Comment=Muon Application Backend Notifier
 Comment[ca]=Notificador del dorsal d'aplicacions del Muon
+Comment[ca@valencia]=Notificador del dorsal d'aplicacions del Muon
 Comment[el]=Πρόγραμμα ειδοποιήσεων εφαρμογών υποστήριξης Muon
 Comment[en_GB]=Muon Application Backend Notifier
 Comment[fi]=Muonin sovellustaustajärjestelmän ilmoitukset
@@ -27,6 +28,7 @@ Comment[x-test]=xxMuon Application Backend Notifierxx
 [Event/DistUpgrade]
 Name=Upgrade Available
 Name[ca]=Hi ha una actualització disponible
+Name[ca@valencia]=Hi ha una actualització disponible
 Name[el]=Διαθέσιμη αναβάθμιση
 Name[en_GB]=Upgrade Available
 Name[es]=Actualización disponible
@@ -51,6 +53,7 @@ Name[uk]=Доступне оновлення дистрибутива
 Name[x-test]=xxUpgrade Availablexx
 Comment=A new version of Kubuntu is available
 Comment[ca]=Hi ha disponible una nova versió del Kubuntu
+Comment[ca@valencia]=Hi ha disponible una nova versió del Kubuntu
 Comment[el]=Μια νέα έκδοση του Kubuntu είναι διαθέσιμη
 Comment[en_GB]=A new version of Kubuntu is available
 Comment[es]=Está disponible una nueva versión de Kubuntu

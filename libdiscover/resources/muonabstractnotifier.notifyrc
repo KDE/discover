@@ -2,6 +2,7 @@
 IconName=applications-system
 Comment=Muon
 Comment[ca]=Muon
+Comment[ca@valencia]=Muon
 Comment[el]=Muon
 Comment[en_GB]=Muon
 Comment[es]=Muon
@@ -28,6 +29,7 @@ Comment[x-test]=xxMuonxx
 [Event/Update]
 Name=Updates Are Available
 Name[ca]=Hi ha actualitzacions disponibles
+Name[ca@valencia]=Hi ha actualitzacions disponibles
 Name[el]=Υπάρχουν διαθέσιμες ενημερώσεις
 Name[en_GB]=Updates Are Available
 Name[es]=Existen actualizaciones disponibles
@@ -52,6 +54,7 @@ Name[uk]=Доступні оновлення
 Name[x-test]=xxUpdates Are Availablexx
 Comment=Updates Available
 Comment[ca]=Actualitzacions disponibles
+Comment[ca@valencia]=Actualitzacions disponibles
 Comment[el]=Διαθέσιμες ενημερώσεις
 Comment[en_GB]=Updates Available
 Comment[es]=Actualizaciones disponibles
