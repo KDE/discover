@@ -21,6 +21,7 @@
 #define SYSTEMFONTS_H
 
 #include <QObject>
+#include <QFont>
 
 class SystemFonts : public QObject
 {

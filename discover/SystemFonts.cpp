@@ -20,7 +20,6 @@
 #include "SystemFonts.h"
 #include <QFontDatabase>
 #include <QGuiApplication>
-#include <QDebug>
 
 SystemFonts::SystemFonts(QObject* parent)
     : QObject(parent)
