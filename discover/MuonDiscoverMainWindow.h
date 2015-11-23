@@ -22,7 +22,8 @@
 
 #include <QtCore/QUrl>
 
-#include <KXmlGuiWindow>
+#include <QQuickView>
+#include <KActionCollection>
 
 class QQmlEngine;
 class QLineEdit;
@@ -30,8 +31,9 @@ class QAptIntegration;
 class AbstractResource;
 class Category;
 class QQuickWidget;
+class QMenu;
 
-class MuonDiscoverMainWindow : public KXmlGuiWindow
+class MuonDiscoverMainWindow : public QQuickView
 {
     Q_OBJECT
     Q_PROPERTY(QUrl prioritaryFeaturedSource READ prioritaryFeaturedSource CONSTANT)
@@ -42,14 +44,12 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
         explicit MuonDiscoverMainWindow();
         ~MuonDiscoverMainWindow();
 
-        QSize sizeHint() const override;
-        
         void initialize();
         QStringList modes() const;
         void setupActions();
 
-        void closeEvent(QCloseEvent *e) override;
-        bool queryClose() override;
+        void closeEvent(QCloseEvent *e) /*override*/;
+        bool queryClose();
 
         QUrl prioritaryFeaturedSource() const;
         QUrl featuredSource() const;
@@ -69,6 +69,11 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
 
     private Q_SLOTS:
         void triggerOpenApplication();
+        void appHelpActivated();
+        void reportBug();
+        void switchApplicationLanguage();
+        void aboutApplication();
+        void configureShortcuts();
 
     Q_SIGNALS:
         void openApplicationInternal(AbstractResource* app);
@@ -83,10 +88,12 @@ class MuonDiscoverMainWindow : public KXmlGuiWindow
         void configureSources();
         void configureMenu();
 
+        KActionCollection* actionCollection() { return &m_collection; }
+
         QString m_appToBeOpened;
-        QQuickWidget* m_view;
         QMenu* m_moreMenu;
         QMenu* m_advancedMenu;
+        KActionCollection m_collection;
 };
 
 #endif // MUONINSTALLERDECLARATIVEVIEW_H

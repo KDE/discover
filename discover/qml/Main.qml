@@ -46,6 +46,8 @@ Rectangle
     objectName: "DiscoverMainWindow"
 
     visible: true
+    implicitHeight: 800
+    implicitWidth: 900
 
     SystemPalette { id: palette }
     color: palette.base

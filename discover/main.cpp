@@ -85,7 +85,7 @@ int main(int argc, char** argv)
     }
 
     mainWindow->show();
-    QObject::connect(mainWindow->windowHandle(), &QWindow::visibleChanged, [](bool b){ if(!b) QCoreApplication::instance()->quit(); });
+    QObject::connect(mainWindow, &QWindow::visibleChanged, [](bool b){ if(!b) QCoreApplication::instance()->quit(); });
 
     return app.exec();
 }

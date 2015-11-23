@@ -18,12 +18,14 @@
  */
 
 #include "MuonDiscoverMainWindow.h"
+#include <KShortcutsDialog>
 #include "PaginateModel.h"
 #include "SystemFonts.h"
 #include "IconColors.h"
 
 // Qt includes
 #include <QDebug>
+#include <QDesktopServices>
 #include <QtQml/QQmlEngine>
 #include <QtQml/QQmlContext>
 #include <QtQml/QQmlApplicationEngine>
@@ -41,8 +43,10 @@
 #include <QMenuBar>
 #include <QQuickWidget>
 #include <QScreen>
+#include <QPointer>
 
 // KDE includes
+#include <KAuthorized>
 #include <KActionCollection>
 #include <kdeclarative/kdeclarative.h>
 #include <KLocalizedString>
@@ -52,6 +56,10 @@
 #include <KIO/MetaData>
 #include <KHelpMenu>
 #include <KAboutData>
+#include <KHelpMenu>
+#include <KAboutApplicationDialog>
+#include <KBugReport>
+// #include <KSwitchLanguageDialog>
 
 // DiscoverCommon includes
 #include <MuonDataSources.h>
@@ -62,18 +70,14 @@
 #include <cmath>
 
 MuonDiscoverMainWindow::MuonDiscoverMainWindow()
-    : KXmlGuiWindow()
+    : QQuickView()
+    , m_collection(this)
 {
     initialize();
-    //TODO: reconsider for QtQuick2
-//     m_view->setBackgroundRole(QPalette::AlternateBase);
-//     qreal bgGrayness = m_view->backgroundBrush().color().blackF();
 
     setObjectName(QStringLiteral("DiscoverMain"));
-
-    m_view = new QQuickWidget(this);
-    m_view->setResizeMode(QQuickWidget::SizeRootObjectToView);
-    QQmlEngine* engine = m_view->engine();
+    setResizeMode(QQuickView::SizeRootObjectToView);
+    QQmlEngine* engine = this->engine();
     KDeclarative::KDeclarative kdeclarative;
     kdeclarative.setDeclarativeEngine(engine);
     //binds things like kconfig and icons
@@ -82,34 +86,32 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     qmlRegisterType<PaginateModel>("org.kde.discover.app", 1, 0, "PaginateModel");
     qmlRegisterType<IconColors>("org.kde.discover.app", 1, 0, "IconColors");
     qmlRegisterSingletonType<SystemFonts>("org.kde.discover.app", 1, 0, "SystemFonts", ([](QQmlEngine*, QJSEngine*) -> QObject* { return new SystemFonts; }));
-    qmlRegisterType<KXmlGuiWindow>();
+    qmlRegisterType<QQuickView>();
     qmlRegisterType<QActionGroup>();
     qmlRegisterType<QAction>();
     
     //Here we set up a cache for the screenshots
     engine->rootContext()->setContextProperty(QStringLiteral("app"), this);
 //
-//     KConfigGroup window(KSharedConfig::openConfig(), "Window");
-//     restoreGeometry(window.readEntry<QByteArray>("geometry", QByteArray()));
-//     restoreState(window.readEntry<QByteArray>("windowState", QByteArray()));
+    KConfigGroup window(KSharedConfig::openConfig(), "Window");
+    setGeometry(window.readEntry("geometry", QRect()));
     
-    m_view->setSource(QUrl(QStringLiteral("qrc:/qml/Main.qml")));
+    setSource(QUrl(QStringLiteral("qrc:/qml/Main.qml")));
 
-    if(!m_view->errors().isEmpty()) {
-        QString errors;
+    if(!errors().isEmpty()) {
+        QString errorsText;
 
-        Q_FOREACH (const QQmlError &error, m_view->errors()) {
-            errors.append(error.toString() + QLatin1String("\n"));
+        Q_FOREACH (const QQmlError &error, errors()) {
+            errorsText.append(error.toString() + QLatin1String("\n"));
         }
-        KMessageBox::detailedSorry(this,
+        KMessageBox::detailedSorry(nullptr,
                                    i18n("Found some errors while setting up the GUI, the application can't proceed."),
-                                   errors, i18n("Initialization error"));
-        qDebug() << "errors: " << m_view->errors();
+                                   errorsText, i18n("Initialization error"));
+        qDebug() << "errors: " << errors();
         exit(-1);
     }
-    Q_ASSERT(m_view->errors().isEmpty());
+    Q_ASSERT(errors().isEmpty());
 
-    setCentralWidget(m_view);
     setupActions();
 }
 
@@ -121,17 +123,15 @@ void MuonDiscoverMainWindow::initialize()
 
 MuonDiscoverMainWindow::~MuonDiscoverMainWindow()
 {
-    delete m_view;
-//     KConfigGroup window(KSharedConfig::openConfig(), "Window");
-//     window.writeEntry("geometry", saveGeometry());
-//     window.writeEntry("windowState", saveState());
-//     window.sync();
+    KConfigGroup window(KSharedConfig::openConfig(), "Window");
+    window.writeEntry("geometry", geometry());
+    window.sync();
 }
 
 QStringList MuonDiscoverMainWindow::modes() const
 {
     QStringList ret;
-    QObject* obj = m_view->rootObject();
+    QObject* obj = rootObject();
     for(int i = obj->metaObject()->propertyOffset(); i<obj->metaObject()->propertyCount(); i++) {
         QMetaProperty p = obj->metaObject()->property(i);
         QByteArray name = p.name();
@@ -153,7 +153,7 @@ void MuonDiscoverMainWindow::openMode(const QByteArray& _mode)
     QByteArray mode = _mode;
     if(mode[0]>'Z')
         mode[0] = mode[0]-'a'+'A';
-    QObject* obj = m_view->rootObject();
+    QObject* obj = rootObject();
     QByteArray propertyName = "top"+mode+"Comp";
     QVariant modeComp = obj->property(propertyName.constData());
     obj->setProperty("currentTopLevel", modeComp);
@@ -171,7 +171,7 @@ void MuonDiscoverMainWindow::openCategory(const QString& category)
 
 void MuonDiscoverMainWindow::openApplication(const QString& app)
 {
-    m_view->rootObject()->setProperty("defaultStartup", false);
+    rootObject()->setProperty("defaultStartup", false);
     m_appToBeOpened = app;
     triggerOpenApplication();
     if(!m_appToBeOpened.isEmpty())
@@ -186,11 +186,6 @@ void MuonDiscoverMainWindow::triggerOpenApplication()
         m_appToBeOpened.clear();
         disconnect(ResourcesModel::global(), &ResourcesModel::rowsInserted, this, &MuonDiscoverMainWindow::triggerOpenApplication);
     }
-}
-
-QSize MuonDiscoverMainWindow::sizeHint() const
-{
-    return QSize(800, 900);
 }
 
 QUrl MuonDiscoverMainWindow::featuredSource() const
@@ -208,7 +203,7 @@ bool MuonDiscoverMainWindow::isCompact() const
     if (!isVisible())
         return true;
 
-    const qreal pixelDensity = windowHandle()->screen()->physicalDotsPerInch() / 25.4;
+    const qreal pixelDensity = screen()->physicalDotsPerInch() / 25.4;
     return (width()/pixelDensity)<100; //we'll use compact if the width of the window is less than 7cm
 }
 
@@ -219,22 +214,20 @@ qreal MuonDiscoverMainWindow::actualWidth() const
 
 void MuonDiscoverMainWindow::resizeEvent(QResizeEvent * event)
 {
-    KXmlGuiWindow::resizeEvent(event);
+    QQuickView::resizeEvent(event);
     Q_EMIT compactChanged(isCompact());
     Q_EMIT actualWidthChanged(actualWidth());
 }
 
 void MuonDiscoverMainWindow::showEvent(QShowEvent * event)
 {
-    KXmlGuiWindow::showEvent(event);
+    QQuickView::showEvent(event);
     Q_EMIT compactChanged(isCompact());
     Q_EMIT actualWidthChanged(actualWidth());
 }
 
 void MuonDiscoverMainWindow::setupActions()
 {
-    setupGUI(StandardWindowOption(KXmlGuiWindow::Default & ~KXmlGuiWindow::StatusBar & ~KXmlGuiWindow::ToolBar));
-
     QAction *quitAction = KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), actionCollection());
     actionCollection()->addAction(QStringLiteral("file_quit"), quitAction);
 
@@ -242,10 +235,31 @@ void MuonDiscoverMainWindow::setupActions()
     connect(configureSourcesAction, &QAction::triggered, this, &MuonDiscoverMainWindow::configureSources);
     actionCollection()->addAction(QStringLiteral("configure_sources"), configureSourcesAction);
 
-    menuBar()->setVisible(false);
-    toolBar(QStringLiteral("discoverToolBar"))->setVisible(false);
+    if (KAuthorized::authorizeKAction(QStringLiteral("help_contents"))) {
+        auto mHandBookAction = KStandardAction::helpContents(this, SLOT(appHelpActivated()), this);
+        actionCollection()->addAction(mHandBookAction->objectName(), mHandBookAction);
+    }
 
-    m_moreMenu = new QMenu(this);
+    if (KAuthorized::authorizeKAction(QStringLiteral("help_report_bug")) && !KAboutData::applicationData().bugAddress().isEmpty()) {
+        auto mReportBugAction = KStandardAction::reportBug(this, SLOT(reportBug()), this);
+        actionCollection()->addAction(mReportBugAction->objectName(), mReportBugAction);
+    }
+
+    if (KAuthorized::authorizeKAction(QStringLiteral("switch_application_language"))) {
+        if (KLocalizedString::availableApplicationTranslations().count() > 1) {
+            auto mSwitchApplicationLanguageAction = KStandardAction::create(KStandardAction::SwitchApplicationLanguage, this, SLOT(switchApplicationLanguage()), this);
+            actionCollection()->addAction(mSwitchApplicationLanguageAction->objectName(), mSwitchApplicationLanguageAction);
+        }
+    }
+
+    if (KAuthorized::authorizeKAction(QStringLiteral("help_about_app"))) {
+        auto mAboutAppAction = KStandardAction::aboutApp(this, SLOT(aboutApplication()), this);
+        actionCollection()->addAction(mAboutAppAction->objectName(), mAboutAppAction);
+    }
+    auto mKeyBindignsAction = KStandardAction::keyBindings(this, SLOT(configureShortcuts()), this);
+    actionCollection()->addAction(mKeyBindignsAction->objectName(), mKeyBindignsAction);
+
+    m_moreMenu = new QMenu;
     m_advancedMenu = new QMenu(i18n("Advanced..."), m_moreMenu);
     configureMenu();
 
@@ -267,7 +281,6 @@ void MuonDiscoverMainWindow::configureMenu()
     m_moreMenu->addMenu(m_advancedMenu);
     m_moreMenu->addSeparator();
     m_moreMenu->addAction(actionCollection()->action(QStringLiteral("help_about_app")));
-    m_moreMenu->addAction(actionCollection()->action(QStringLiteral("help_about_kde")));
     m_moreMenu->addAction(actionCollection()->action(QStringLiteral("help_report_bug")));
 }
 
@@ -278,7 +291,7 @@ void MuonDiscoverMainWindow::configureSources()
 
 void MuonDiscoverMainWindow::closeEvent(QCloseEvent *e)
 {
-    KXmlGuiWindow::closeEvent(e);
+//     QQuickView::closeEvent(e);
     if (!e->isAccepted()) {
         qWarning() << "not closing because there's still pending tasks";
         Q_EMIT preventedClose();
@@ -292,6 +305,50 @@ bool MuonDiscoverMainWindow::queryClose()
 
 void MuonDiscoverMainWindow::showMenu(int x, int y)
 {
-    QPoint p = m_view->mapToGlobal(QPoint(x, y));
+    QPoint p = mapToGlobal(QPoint(x, y));
     m_moreMenu->exec(p);
+}
+
+void MuonDiscoverMainWindow::appHelpActivated()
+{
+    QDesktopServices::openUrl(QUrl(QStringLiteral("help:/")));
+}
+
+void MuonDiscoverMainWindow::aboutApplication()
+{
+    static QPointer<QDialog> dialog;
+    if (!dialog) {
+        dialog = new KAboutApplicationDialog(KAboutData::applicationData(), nullptr);
+        dialog->setAttribute(Qt::WA_DeleteOnClose);
+    }
+    dialog->show();
+}
+
+void MuonDiscoverMainWindow::reportBug()
+{
+    static QPointer<QDialog> dialog;
+    if (!dialog) {
+        dialog = new KBugReport(KAboutData::applicationData(), nullptr);
+        dialog->setAttribute(Qt::WA_DeleteOnClose);
+    }
+    dialog->show();
+}
+
+void MuonDiscoverMainWindow::switchApplicationLanguage()
+{
+//     auto langDialog = new KSwitchLanguageDialog(nullptr);
+//     connect(langDialog, SIGNAL(finished(int)), this, SLOT(dialogFinished()));
+//     langDialog->show();
+}
+
+void MuonDiscoverMainWindow::configureShortcuts()
+{
+    const bool letterCutsOk = true;
+
+    KShortcutsDialog dlg(KShortcutsEditor::AllActions,
+                         letterCutsOk ? KShortcutsEditor::LetterShortcutsAllowed : KShortcutsEditor::LetterShortcutsDisallowed,
+                         qobject_cast<QWidget *>(parent()));
+    dlg.setModal(true);
+    dlg.addCollection(actionCollection());
+    qDebug() << "saving shortcuts..." << dlg.configure(/*bSaveSettings*/);
 }
