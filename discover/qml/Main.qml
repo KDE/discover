@@ -43,6 +43,8 @@ Rectangle
     property bool defaultStartup: true
     property bool navigationEnabled: true
 
+    objectName: "DiscoverMainWindow"
+
     visible: true
 
     SystemPalette { id: palette }

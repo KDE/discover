@@ -42,8 +42,6 @@ KNSBackendTest::KNSBackendTest(QObject* parent)
     ResourcesModel* model = new ResourcesModel(QFINDTESTDATA("knscorrect-backend.desktop"), this);
     Q_ASSERT(!model->backends().isEmpty());
     m_backend = model->backends().at(0);
-    auto m_window = new KXmlGuiWindow();
-    model->integrateMainWindow(m_window);
 
     if (!m_backend->isValid()) {
         qWarning() << "couldn't run the test";

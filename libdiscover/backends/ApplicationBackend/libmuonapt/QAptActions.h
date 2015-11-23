@@ -23,6 +23,7 @@
 
 #include <QtCore/QObject>
 #include <QPointer>
+#include <QWindow>
 
 #include <QApt/Globals>
 
@@ -44,8 +45,8 @@ class QAptActions : public QObject
     Q_OBJECT
 public:
     static QAptActions* self();
-    void setMainWindow(KXmlGuiWindow* w);
-    QWidget* mainWindow() const;
+    void setActionCollection(KActionCollection* w);
+    Q_DECL_DEPRECATED QWidget* mainWindow() const;
 
     bool reloadWhenSourcesEditorFinished() const;
     bool isConnected() const;
@@ -95,7 +96,7 @@ private:
     QApt::Backend *m_backend;
     QApt::CacheState m_originalState;
     bool m_actionsDisabled;
-    KXmlGuiWindow* m_mainWindow;
+    KActionCollection* m_actionCollection;
     bool m_reloadWhenEditorFinished;
     
     QPointer<QDialog> m_historyDialog;

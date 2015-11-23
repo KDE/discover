@@ -34,7 +34,7 @@ class Transaction;
 class AbstractReviewsBackend;
 class AbstractResource;
 class AbstractBackendUpdater;
-class KXmlGuiWindow;
+class KActionCollection;
 
 /**
  * \class AbstractResourcesBackend  AbstractResourcesBackend.h "AbstractResourcesBackend.h"
@@ -115,10 +115,10 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
         
         /**
          * This method gets called while initializing the GUI, in case the backend needs to
-         * integrate in a special way with the KXmlGuiWindow.
-         * @param w the KXmlGuiWindow the backend should integrate to
+         * integrate actions in the action collection.
+         * @param w the KActionCollection the backend should integrate to
          */
-        virtual void integrateMainWindow(KXmlGuiWindow* w);
+        virtual void integrateActions(KActionCollection* w);
 
         /**
          * Tells whether the backend is fetching resources

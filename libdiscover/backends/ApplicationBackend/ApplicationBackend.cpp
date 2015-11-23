@@ -520,16 +520,16 @@ AbstractBackendUpdater* ApplicationBackend::backendUpdater() const
     return m_backendUpdater;
 }
 
-void ApplicationBackend::integrateMainWindow(KXmlGuiWindow* w)
+void ApplicationBackend::integrateActions(KActionCollection* w)
 {
     m_aptify = w;
     QAptActions* apt = QAptActions::self();
-    apt->setMainWindow(w);
+    apt->setActionCollection(w);
     if(!m_aptBackendInitialized)
         connect(this, &ApplicationBackend::aptBackendInitialized, apt, &QAptActions::setBackend);
     if (apt->reloadWhenSourcesEditorFinished())
         connect(apt, &QAptActions::sourcesEditorClosed, this, &ApplicationBackend::reload);
-    QAction* updateAction = w->actionCollection()->addAction(QStringLiteral("update"));
+    QAction* updateAction = w->addAction(QStringLiteral("update"));
     updateAction->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));

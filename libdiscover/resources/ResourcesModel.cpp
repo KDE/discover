@@ -26,13 +26,14 @@
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <Transaction/Transaction.h>
 #include <DiscoverBackendsFactory.h>
-#include <KXmlGuiWindow>
+#include <KActionCollection>
 #include "Transaction/TransactionModel.h"
 #include "Category/CategoryModel.h"
 #include <QDebug>
 #include <QCoreApplication>
 #include <QThread>
 #include <QAction>
+#include <QMetaProperty>
 
 ResourcesModel *ResourcesModel::s_self = nullptr;
 
@@ -46,7 +47,7 @@ ResourcesModel *ResourcesModel::global()
 ResourcesModel::ResourcesModel(QObject* parent, bool load)
     : QAbstractListModel(parent)
     , m_initializingBackends(0)
-    , m_mainwindow(nullptr)
+    , m_actionCollection(nullptr)
     , m_roles(QAbstractItemModel::roleNames().unite({
         { NameRole, "name" },
         { IconRole, "icon" },
@@ -124,8 +125,8 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
         m_backends += backend;
         m_resources.append(QVector<AbstractResource*>());
     }
-    if(m_mainwindow)
-        backend->integrateMainWindow(m_mainwindow);
+    if(m_actionCollection)
+        backend->integrateActions(m_actionCollection);
 
     connect(backend, &AbstractResourcesBackend::fetchingChanged, this, &ResourcesModel::callerFetchingChanged);
     connect(backend, &AbstractResourcesBackend::allDataChanged, this, &ResourcesModel::updateCaller);
@@ -390,13 +391,13 @@ void ResourcesModel::registerBackendByName(const QString& name)
     addResourcesBackend(f.backend(name));
 }
 
-void ResourcesModel::integrateMainWindow(KXmlGuiWindow* w)
+void ResourcesModel::integrateActions(KActionCollection* w)
 {
     Q_ASSERT(w->thread()==thread());
-    m_mainwindow = w;
+    m_actionCollection = w;
     setParent(w);
     foreach(AbstractResourcesBackend* b, m_backends) {
-        b->integrateMainWindow(w);
+        b->integrateActions(w);
     }
 }
 

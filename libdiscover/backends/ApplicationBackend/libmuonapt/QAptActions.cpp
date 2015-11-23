@@ -55,7 +55,6 @@ QAptActions::QAptActions()
     : QObject(nullptr)
     , m_backend(nullptr)
     , m_actionsDisabled(false)
-    , m_mainWindow(nullptr)
     , m_reloadWhenEditorFinished(false)
     , m_historyDialog(nullptr)
     , m_distUpgradeAvailable(false)
@@ -73,17 +72,17 @@ QAptActions* QAptActions::self()
     return self;
 }
 
-void QAptActions::setMainWindow(KXmlGuiWindow* w)
+void QAptActions::setActionCollection(KActionCollection* actions)
 {
-    setParent(w);
-    m_mainWindow = w;
+    setParent(actions);
+    m_actionCollection = actions;
 
     setupActions();
 }
 
 QWidget* QAptActions::mainWindow() const
 {
-    return m_mainWindow;
+    return nullptr;
 }
 
 void QAptActions::setBackend(QApt::Backend* backend)
@@ -195,7 +194,7 @@ void QAptActions::setActionsEnabled(bool enabled)
         action->setEnabled(enabled);
     }
 
-    if (!enabled || !mainWindow() || !actionCollection())
+    if (!enabled || !actionCollection())
         return;
 
     actionCollection()->action(QStringLiteral("update"))->setEnabled(isConnected() && enabled);
@@ -388,7 +387,12 @@ void QAptActions::runSourcesEditor()
 {
     KProcess *proc = new KProcess(this);
     QStringList arguments;
-    int winID = mainWindow()->effectiveWinId();
+    int winID = 0;
+    foreach(QWindow* w, QGuiApplication::allWindows()) {
+        if (w->objectName() == QLatin1String("DiscoverMainWindow")) {
+            winID = w->winId();
+        }
+    }
 
     const QString kdesu = QFile::decodeName(CMAKE_INSTALL_FULL_LIBEXECDIR_KF5 "/kdesu");
     const QString editor = QStandardPaths::findExecutable(QStringLiteral("software-properties-kde"));
@@ -399,7 +403,6 @@ void QAptActions::runSourcesEditor()
     }
 
     proc->setProgram(arguments);
-    mainWindow()->setEnabled(false);
     proc->start();
     connect(proc, static_cast<void (KProcess::*)(int, QProcess::ExitStatus)>(&KProcess::finished), this, &QAptActions::sourcesEditorFinished);
 }
@@ -407,7 +410,6 @@ void QAptActions::runSourcesEditor()
 void QAptActions::sourcesEditorFinished(int exitStatus)
 {
     bool reload = (exitStatus != 0);
-    mainWindow()->setEnabled(true);
     if (m_reloadWhenEditorFinished && reload) {
         actionCollection()->action(QStringLiteral("update"))->trigger();
     }
@@ -417,7 +419,7 @@ void QAptActions::sourcesEditorFinished(int exitStatus)
 
 KActionCollection* QAptActions::actionCollection()
 {
-    return m_mainWindow ? m_mainWindow->actionCollection() : nullptr;
+    return m_actionCollection;
 }
 
 void QAptActions::setOriginalState(QApt::CacheState state)

@@ -23,7 +23,7 @@
 
 #include <QtTest/QtTest>
 
-class KXmlGuiWindow;
+class KActionCollection;
 class AbstractResourcesBackend;
 class ApplicationBackendTest : public QObject
 {
@@ -39,7 +39,7 @@ class ApplicationBackendTest : public QObject
 
     private:
         AbstractResourcesBackend* m_appBackend;
-        KXmlGuiWindow* m_window;
+        KActionCollection* m_window;
 };
 
 #endif

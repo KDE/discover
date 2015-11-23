@@ -69,7 +69,7 @@ void MainWindow::initGUI()
 {
     setWindowTitle(i18nc("@title:window", "Software Updates"));
     ResourcesModel* m = ResourcesModel::global();
-    m->integrateMainWindow(this);
+    m->integrateActions(actionCollection());
 
     QWidget *mainWidget = new QWidget(this);
     QVBoxLayout *mainLayout = new QVBoxLayout(mainWidget);

@@ -23,7 +23,7 @@
 
 #include <QtCore/QObject>
 
-class KXmlGuiWindow;
+class KActionCollection;
 class AbstractSourcesBackend;
 class AbstractResourcesBackend;
 
@@ -41,7 +41,7 @@ class SourcesTest : public QObject
         AbstractSourcesBackend* backend() const;
 
         AbstractResourcesBackend* m_appBackend;
-        KXmlGuiWindow* m_window;
+        KActionCollection* m_window;
 
 };
 

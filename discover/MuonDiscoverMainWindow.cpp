@@ -69,6 +69,8 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
 //     m_view->setBackgroundRole(QPalette::AlternateBase);
 //     qreal bgGrayness = m_view->backgroundBrush().color().blackF();
 
+    setObjectName(QStringLiteral("DiscoverMain"));
+
     m_view = new QQuickWidget(this);
     m_view->setResizeMode(QQuickWidget::SizeRootObjectToView);
     QQmlEngine* engine = m_view->engine();
@@ -114,7 +116,7 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
 void MuonDiscoverMainWindow::initialize()
 {
     ResourcesModel *m = ResourcesModel::global();
-    m->integrateMainWindow(this);
+    m->integrateActions(actionCollection());
 }
 
 MuonDiscoverMainWindow::~MuonDiscoverMainWindow()

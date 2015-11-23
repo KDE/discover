@@ -23,7 +23,7 @@
 #include <ReviewsBackend/ReviewsModel.h>
 #include <qapt/backend.h>
 #include <KProtocolManager>
-#include <KXmlGuiWindow>
+#include <KActionCollection>
 #include <qtest.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
 #include <DiscoverBackendsFactory.h>
@@ -49,8 +49,8 @@ AbstractResourcesBackend* backendByName(ResourcesModel* m, const QString& name)
 SourcesTest::SourcesTest(QObject* parent): QObject(parent)
 {
     ResourcesModel* m = new ResourcesModel(QStringLiteral("qapt-backend"), this);
-    m_window = new KXmlGuiWindow;
-    m->integrateMainWindow(m_window);
+    m_window = new KActionCollection(this, QStringLiteral("SourcesTest"));
+    m->integrateActions(m_window);
     m_appBackend = backendByName(m, QStringLiteral("ApplicationBackend"));
     QVERIFY(QSignalSpy(m, SIGNAL(allInitialized())).wait());
     

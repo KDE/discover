@@ -23,7 +23,7 @@
 
 #include <QtCore/QObject>
 
-class KXmlGuiWindow;
+class KActionCollection;
 class AbstractResourcesBackend;
 class AbstractReviewsBackend;
 namespace QApt {
@@ -45,7 +45,7 @@ class ReviewsTest : public QObject
     private:
         AbstractReviewsBackend* m_revBackend;
         AbstractResourcesBackend* m_appBackend;
-        KXmlGuiWindow* m_window;
+        KActionCollection* m_window;
 
 };
 

@@ -74,7 +74,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         
         Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name);
 
-        void integrateMainWindow(KXmlGuiWindow* w);
+        void integrateActions(KActionCollection* w);
         
         bool isBusy() const;
         bool isFetching() const;
@@ -115,7 +115,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         QVector< AbstractResourcesBackend* > m_backends;
         QVector< QVector<AbstractResource*> > m_resources;
         int m_initializingBackends;
-        KXmlGuiWindow* m_mainwindow;
+        KActionCollection* m_actionCollection;
         const QHash<int, QByteArray> m_roles;
 
         static ResourcesModel* s_self;

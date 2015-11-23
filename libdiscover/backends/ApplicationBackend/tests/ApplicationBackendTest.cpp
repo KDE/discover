@@ -92,8 +92,8 @@ ApplicationBackendTest::ApplicationBackendTest()
         ratings.close();
     }
     ResourcesModel* m = new ResourcesModel(QStringLiteral("qapt-backend"), this);
-    m_window = new KXmlGuiWindow;
-    m->integrateMainWindow(m_window);
+    m_window = new KActionCollection(this, QStringLiteral("ApplicationBackendTest"));
+    m->integrateActions(m_window);
     new ModelTest(m,m);
     m_appBackend = backendByName(m, QStringLiteral("ApplicationBackend"));
     QVERIFY(m_appBackend); //TODO: test all backends
