@@ -2,6 +2,7 @@
 Name=Updates
 Name[ca]=Actualitzacions
 Name[ca@valencia]=Actualitzacions
+Name[da]=Opdateringer
 Name[el]=Ενημερώσεις
 Name[en_GB]=Updates
 Name[es]=Actualizaciones
@@ -24,6 +25,7 @@ Name[sr@latin]=Dopune
 Name[sv]=Uppdateringar
 Name[uk]=Оновлення
 Name[x-test]=xxUpdatesxx
+Name[zh_TW]=更新
 Comment=Helps you keep your system up to date
 Comment[ca]=Us ajuda a mantenir el vostre sistema al dia
 Comment[ca@valencia]=Vos ajuda a mantindre el vostre sistema al dia
@@ -49,6 +51,7 @@ Comment[sr@latin]=Pomaže vam da održavate sistem ažurnim
 Comment[sv]=Hjälper dig hålla systemet uppdaterat
 Comment[uk]=Допомагає підтримувати актуальний стан вашої системи
 Comment[x-test]=xxHelps you keep your system up to datexx
+Comment[zh_TW]=協助保持您的系統更新
 Encoding=UTF-8
 
 Icon=org.kde.muonnotifier
