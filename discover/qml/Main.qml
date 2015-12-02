@@ -29,16 +29,16 @@ import "navigation.js" as Navigation
 Rectangle
 {
     id: window
-    property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
-    property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
-    property Component categoryComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
-    property Component reviewsComp: Qt.createComponent("qrc:/qml/ReviewsPage.qml")
+    readonly property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
+    readonly property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
+    readonly property Component categoryComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
+    readonly property Component reviewsComp: Qt.createComponent("qrc:/qml/ReviewsPage.qml")
 
     //toplevels
-    property Component topBrowsingComp: Qt.createComponent("qrc:/qml/BrowsingPage.qml")
-    property Component topInstalledComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
-    property Component topUpdateComp: Qt.createComponent("qrc:/qml/UpdatesPage.qml")
-    property Component topSourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
+    readonly property Component topBrowsingComp: Qt.createComponent("qrc:/qml/BrowsingPage.qml")
+    readonly property Component topInstalledComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
+    readonly property Component topUpdateComp: Qt.createComponent("qrc:/qml/UpdatesPage.qml")
+    readonly property Component topSourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
     property Component currentTopLevel: defaultStartup ? topBrowsingComp : loadingComponent
     property bool defaultStartup: true
     property bool navigationEnabled: true
