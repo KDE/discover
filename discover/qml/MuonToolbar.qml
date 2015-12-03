@@ -28,9 +28,6 @@ ToolBar
     property Item search: app.isCompact ? compactSearch : null
     Layout.preferredHeight: layout.Layout.preferredHeight
 
-    ExclusiveGroup {
-        id: appTabs
-    }
     Timer {
         id: searchTimer
         running: false
@@ -66,14 +63,7 @@ ToolBar
             Repeater {
                 model: window.awesome
                 delegate: MuonToolButton {
-                    enabled: modelData.enabled
-                    checkable: modelData.checkable
-                    checked: modelData.checked
-                    onClicked: modelData.trigger();
-                    iconName: modelData.iconName
-                    text: app.isCompact ? "" : modelData.text
-                    tooltip: i18n("%1 (%2)", modelData.text, modelData.shortcut)
-                    exclusiveGroup: appTabs
+                    action: modelData
                 }
             }
 
@@ -106,28 +96,6 @@ ToolBar
                         backAction.trigger()
                     }
                 }
-
-            }
-
-            Menu {
-                id: moreMenu
-                MenuItem { action: ActionBridge { action: app.action("configure_sources"); } }
-                MenuSeparator {}
-                Menu {
-                    id: advancedMenu
-                    title: i18n("Advanced...")
-
-                    Instantiator {
-                        model: ResourcesModel.messageActions
-                        delegate: MenuItem { action: ActionBridge { action: modelData} }
-
-                        onObjectAdded: advancedMenu.insertItem(index, object)
-                        onObjectRemoved: advancedMenu.removeItem(object)
-                    }
-                }
-                MenuItem { action: ActionBridge { action: app.action("options_configure_keybinding"); } }
-                MenuItem { action: ActionBridge { action: app.action("help_about_app"); } }
-                MenuItem { action: ActionBridge { action: app.action("help_report_bug"); } }
 
             }
 

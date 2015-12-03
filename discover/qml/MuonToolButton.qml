@@ -17,18 +17,30 @@ Item
     property alias checkable: button.checkable
     property alias checked: button.checked
     property alias exclusiveGroup: button.exclusiveGroup
+    property QtObject action
+
     Layout.minimumWidth: layout.Layout.minimumWidth
     implicitHeight: layout.Layout.preferredHeight
 
     clip: true
 
     signal clicked()
+    onClicked: if (action) action.trigger()
 
     ToolButton {
         id: button
         anchors.fill: parent
         enabled: root.enabled
         onClicked: { root.clicked() }
+
+        tooltip: root.action ? root.action.tooltip : ""
+        action: Action {
+            checkable: root.action && root.action.checkable
+            checked: root.action && root.action.checked
+            onTriggered: {
+                checked = Qt.binding(function() { return root.action && root.action.checked})
+            }
+        }
 
         RowLayout {
             id: layout
@@ -44,9 +56,16 @@ Item
                 anchors.verticalCenter: parent.verticalCenter
                 Layout.minimumWidth: layout.Layout.preferredHeight*0.8
                 height: Layout.minimumWidth
+                icon: root.action ? root.action.iconName : ""
             }
             Label {
                 id: label
+
+                function removeAmpersand(text) {
+                    return text.replace("&", "");
+                }
+
+                text: root.action ? removeAmpersand(root.action.text) : ""
                 Layout.fillWidth: true
                 Layout.minimumWidth: text == "" ? 0 : (10+label.implicitWidth)
             }

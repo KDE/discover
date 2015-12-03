@@ -94,6 +94,8 @@ Rectangle
         stackView.replace(page, {}, window.status!=Component.Ready)
     }
 
+    ExclusiveGroup { id: appTabs }
+
     property list<Action> awesome: [
         TopLevelPageData {
             iconName: "tools-wizard"
