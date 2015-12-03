@@ -25,7 +25,7 @@ import QtQuick.Layouts 1.1
 ToolBar
 {
     id: root
-    property Item search: app.isCompact ? compactSearch : null
+    property Item search: searchWidget
     Layout.preferredHeight: layout.Layout.preferredHeight
 
     Timer {
@@ -71,49 +71,22 @@ ToolBar
                 Layout.fillWidth: true
                 Layout.fillHeight: true
             }
-            ConditionalLoader {
-                condition: app.isCompact
+            TextField {
+                id: searchWidget
                 enabled: stackView.currentItem!=null && stackView.currentItem.searchFor!=null
+                focus: true
 
-                componentTrue: Button {
-                    iconName: "search"
-                    checkable: true
-                    onCheckedChanged: {
-                        compactSearch.visible = checked
-                        compactSearch.focus = true
-                    }
+                placeholderText: i18n("Search...")
+                onTextChanged: searchTimer.running = true
+                onEditingFinished: if(text == "" && backAction.enabled) {
+                    backAction.trigger()
                 }
-                componentFalse: TextField {
-                    id: searchWidget
-                    Component.onCompleted: {
-                        root.search = searchWidget
-                    }
-                    focus: true
-
-                    placeholderText: i18n("Search...")
-                    onTextChanged: searchTimer.running = true
-                    onEditingFinished: if(text == "" && backAction.enabled) {
-                        backAction.trigger()
-                    }
-                }
-
             }
 
             ToolButton {
                 id: button
                 iconName: "application-menu"
                 menu: moreMenu
-            }
-        }
-        TextField {
-            id: compactSearch
-            visible: false
-            Layout.fillWidth: true
-
-            placeholderText: i18n("Search...")
-            onTextChanged: searchTimer.running = true
-            onEditingFinished: if(text == "" && backAction.enabled) {
-                backAction.trigger()
             }
         }
     }

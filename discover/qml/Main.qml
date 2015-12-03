@@ -28,46 +28,12 @@ import "navigation.js" as Navigation
 
 Rectangle
 {
-    id: window
-    readonly property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
-    readonly property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
-    readonly property Component categoryComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
-    readonly property Component reviewsComp: Qt.createComponent("qrc:/qml/ReviewsPage.qml")
-
-    //toplevels
-    readonly property Component topBrowsingComp: Qt.createComponent("qrc:/qml/BrowsingPage.qml")
-    readonly property Component topInstalledComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
-    readonly property Component topUpdateComp: Qt.createComponent("qrc:/qml/UpdatesPage.qml")
-    readonly property Component topSourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
-    property Component currentTopLevel: defaultStartup ? topBrowsingComp : loadingComponent
-    property bool defaultStartup: true
-    property bool navigationEnabled: true
-
-    objectName: "DiscoverMainWindow"
-
-    visible: true
+    SystemPalette { id: palette }
+    color: palette.base
     implicitHeight: 800
     implicitWidth: 900
 
-    SystemPalette { id: palette }
-    color: palette.base
-
-    function clearSearch() {
-        if (toolbar.search)
-            toolbar.search.text=""
-    }
-
-    Component {
-        id: loadingComponent
-        Item {
-            Label {
-                text: i18n("Loading...")
-                font.pointSize: 52
-                anchors.centerIn: parent
-            }
-        }
-    }
-
+    property Component currentTopLevel: null
     onCurrentTopLevelChanged: {
         if(currentTopLevel==null)
             return
@@ -94,40 +60,7 @@ Rectangle
         stackView.replace(page, {}, window.status!=Component.Ready)
     }
 
-    ExclusiveGroup { id: appTabs }
-
-    property list<Action> awesome: [
-        TopLevelPageData {
-            iconName: "tools-wizard"
-            text: i18n("Discover")
-            component: topBrowsingComp
-            objectName: "discover"
-            shortcut: "Alt+D"
-        },
-        TopLevelPageData {
-            iconName: "applications-other"
-            text: TransactionModel.count == 0 ? i18n("Installed") : i18n("Installing...")
-            component: topInstalledComp
-            objectName: "installed"
-            shortcut: "Alt+I"
-        },
-        TopLevelPageData {
-            iconName: "system-software-update"
-            text: ResourcesModel.updatesCount==0 ? i18n("No Updates") : i18n("Update (%1)", ResourcesModel.updatesCount)
-            enabled: ResourcesModel.updatesCount>0
-            component: topUpdateComp
-            objectName: "update"
-            shortcut: "Alt+U"
-        }
-    ]
-
-    Connections {
-        target: app
-        onOpenApplicationInternal: Navigation.openApplication(app)
-        onListMimeInternal: Navigation.openApplicationMime(mime)
-        onListCategoryInternal: Navigation.openCategoryByName(name)
-        onPreventedClose: closePreventedInfo.enabled = true
-    }
+    readonly property QtObject stack: stackView
 
     Rectangle {
         gradient: Gradient {
@@ -135,48 +68,26 @@ Rectangle
             GradientStop { position: 1.0; color: "transparent" }
         }
         height: parent.height/5
-        anchors {
-            topMargin: toolbar.height
-            top: parent.top
-            left: parent.left
-            right: parent.right
-        }
-        visible: !fu.visible
+        anchors. fill: parent
+        visible: !breadcrumbs.visible
     }
 
     ColumnLayout {
         spacing: 0
         anchors.fill: parent
 
-        MuonToolbar {
-            Layout.fillWidth: true
-            id: toolbar
-        }
-
-        Item {
-            Layout.fillWidth: true
-            Layout.preferredHeight: rep.count>0 ? msgColumn.height : 0
-
-            ColumnLayout {
-                width: parent.width
-                id: msgColumn
-
-                Repeater {
-                    id: rep
-                    model: MessageActionsModel {
-                        filterPriority: QAction.HighPriority
-                    }
-                    delegate: MessageAction {
-                        width: msgColumn.width
-                        Layout.fillWidth: true
-                        theAction: action
-                    }
-                }
+        Repeater {
+            model: MessageActionsModel {
+                filterPriority: QAction.HighPriority
+            }
+            delegate: MessageAction {
+                Layout.fillWidth: true
+                height: Layout.minimumHeight
+                theAction: action
             }
         }
 
         MessageAction {
-            width: msgColumn.width
             Layout.fillWidth: true
             theAction: Action {
                 id: closePreventedInfo
@@ -190,7 +101,7 @@ Rectangle
         }
 
         Breadcrumbs {
-            id: fu
+            id: breadcrumbs
             Layout.fillWidth: true
             visible: count>1
 
