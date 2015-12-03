@@ -215,6 +215,7 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
  */
 class DISCOVERCOMMON_EXPORT AbstractResourcesBackendFactory : public QObject
 {
+    Q_OBJECT
 public:
     virtual AbstractResourcesBackend* newInstance(QObject* parent) const = 0;
 };
