@@ -57,9 +57,10 @@
 
 #include <cmath>
 
-MuonDiscoverMainWindow::MuonDiscoverMainWindow()
+MuonDiscoverMainWindow::MuonDiscoverMainWindow(CompactMode mode)
     : QQuickView()
     , m_collection(this)
+    , m_mode(mode)
 {
     initialize();
 
@@ -85,7 +86,7 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     KConfigGroup window(KSharedConfig::openConfig(), "Window");
     setGeometry(window.readEntry("geometry", QRect()));
     
-    setSource(QUrl(QStringLiteral("qrc:/qml/Main.qml")));
+    setSource(QUrl(QStringLiteral("qrc:/qml/DiscoverWindow.qml")));
 
     if(!errors().isEmpty()) {
         QString errorsText;
@@ -187,7 +188,9 @@ QUrl MuonDiscoverMainWindow::prioritaryFeaturedSource() const
 
 bool MuonDiscoverMainWindow::isCompact() const
 {
-    if (!isVisible())
+    if (m_mode != Auto) {
+        return m_mode == Compact;
+    } else if (!isVisible())
         return true;
 
     const qreal pixelDensity = screen()->physicalDotsPerInch() / 25.4;

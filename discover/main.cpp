@@ -27,6 +27,17 @@
 #include <DiscoverBackendsFactory.h>
 #include "DiscoverVersion.h"
 
+MuonDiscoverMainWindow::CompactMode decodeCompactMode(const QString &str)
+{
+    if (str == QLatin1String("auto"))
+        return MuonDiscoverMainWindow::Auto;
+    else if (str == QLatin1String("compact"))
+        return MuonDiscoverMainWindow::Compact;
+    else if (str == QLatin1String("full"))
+        return MuonDiscoverMainWindow::Full;
+    return MuonDiscoverMainWindow::Full;
+}
+
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
@@ -50,6 +61,7 @@ int main(int argc, char** argv)
         parser.addOption(QCommandLineOption(QStringLiteral("category"), i18n("Display a list of entries with a category."), QStringLiteral("name")));
         parser.addOption(QCommandLineOption(QStringLiteral("mode"), i18n("Open Discover in a said mode. Modes correspond to the toolbar buttons."), QStringLiteral("name")));
         parser.addOption(QCommandLineOption(QStringLiteral("listmodes"), i18n("List all the available modes.")));
+        parser.addOption(QCommandLineOption(QStringLiteral("compact"), i18n("Compact Mode (auto/compact/full)."), QStringLiteral("mode"), QStringLiteral("full")));
         parser.addPositionalArgument(QStringLiteral("urls"), i18n("Supports appstream: url scheme (experimental)"));
         DiscoverBackendsFactory::setupCommandLine(&parser);
         about.setupCommandLine(&parser);parser.addHelpOption();
@@ -58,7 +70,7 @@ int main(int argc, char** argv)
         about.processCommandLine(&parser);
         DiscoverBackendsFactory::processCommandLine(&parser);
 
-        mainWindow = new MuonDiscoverMainWindow;
+        mainWindow = new MuonDiscoverMainWindow(decodeCompactMode(parser.value(QStringLiteral("compact"))));
         QObject::connect(&app, &QApplication::aboutToQuit, mainWindow, &MuonDiscoverMainWindow::deleteLater);
 
         if(parser.isSet(QStringLiteral("application")))
