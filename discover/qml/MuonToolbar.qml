@@ -33,7 +33,7 @@ ToolBar
         running: false
         repeat: false
         interval: 200
-        onTriggered: { stackView.currentItem.searchFor(root.search.text) }
+        onTriggered: { window.stack.currentItem.searchFor(root.search.text) }
     }
 
     ColumnLayout {
@@ -54,9 +54,9 @@ ToolBar
                 action: Action {
                     shortcut: "Alt+Up"
                     iconName: "go-previous"
-                    enabled: window.navigationEnabled && stackView.depth>1
+                    enabled: window.navigationEnabled && window.stack.depth>1
                     tooltip: i18n("Back")
-                    onTriggered: { stackView.pop() }
+                    onTriggered: { window.stack.pop() }
                 }
             }
 
@@ -73,7 +73,7 @@ ToolBar
             }
             TextField {
                 id: searchWidget
-                enabled: stackView.currentItem!=null && stackView.currentItem.searchFor!=null
+                enabled: window.stack.currentItem!=null && window.stack.currentItem.searchFor!=null
                 focus: true
 
                 placeholderText: i18n("Search...")

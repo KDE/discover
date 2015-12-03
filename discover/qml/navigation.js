@@ -31,7 +31,7 @@ function openApplicationMime(mime) {
 
 function openCategoryByName(catname) {
     currentTopLevel = topBrowsingComp
-    openCategory(stackView.currentItem.categories.findCategoryByName(catname))
+    openCategory(window.stack.currentItem.categories.findCategoryByName(catname))
 }
 
 function openCategory(cat) {
@@ -52,8 +52,8 @@ function openReviews(app, reviews) {
 function openPage(component, props) {
     var obj
     try {
-        obj = component.createObject(stackView.currentItem, props)
-        stackView.push(obj);
+        obj = component.createObject(window.stack.currentItem, props)
+        window.stack.push(obj);
         if (!obj)
             console.log("error opening", name, obj, component.errorString())
     } catch (e) {
