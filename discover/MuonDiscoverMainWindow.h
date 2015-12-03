@@ -60,12 +60,14 @@ class MuonDiscoverMainWindow : public QQuickView
         void resizeEvent(QResizeEvent * event) override;
         void showEvent(QShowEvent * event) override;
 
+        Q_SCRIPTABLE QAction * action(const QString& name);
+        Q_SCRIPTABLE QString iconName(const QIcon& icon);
+
     public Q_SLOTS:
         void openApplication(const QString& app);
         void openMimeType(const QString& mime);
         void openCategory(const QString& category);
         void openMode(const QByteArray& mode);
-        void showMenu(int x, int y);
 
     private Q_SLOTS:
         void triggerOpenApplication();
@@ -91,8 +93,6 @@ class MuonDiscoverMainWindow : public QQuickView
         KActionCollection* actionCollection() { return &m_collection; }
 
         QString m_appToBeOpened;
-        QMenu* m_moreMenu;
-        QMenu* m_advancedMenu;
         KActionCollection m_collection;
 };
 

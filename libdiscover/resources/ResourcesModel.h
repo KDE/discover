@@ -35,6 +35,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
     Q_OBJECT
     Q_PROPERTY(int updatesCount READ updatesCount NOTIFY updatesCountChanged)
     Q_PROPERTY(bool isFetching READ isFetching NOTIFY fetchingChanged)
+    Q_PROPERTY(QVariantList messageActions READ messageActionsVariant NOTIFY fetchingChanged)
     public:
         enum Roles {
             NameRole = Qt::UserRole,
@@ -79,6 +80,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         bool isBusy() const;
         bool isFetching() const;
         QList<QAction*> messageActions() const;
+        QVariantList messageActionsVariant() const;
         
         virtual QHash<int, QByteArray> roleNames() const override;
 

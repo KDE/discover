@@ -89,6 +89,7 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
     qmlRegisterType<QQuickView>();
     qmlRegisterType<QActionGroup>();
     qmlRegisterType<QAction>();
+    setupActions();
     
     //Here we set up a cache for the screenshots
     engine->rootContext()->setContextProperty(QStringLiteral("app"), this);
@@ -111,8 +112,6 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow()
         exit(-1);
     }
     Q_ASSERT(errors().isEmpty());
-
-    setupActions();
 }
 
 void MuonDiscoverMainWindow::initialize()
@@ -258,30 +257,16 @@ void MuonDiscoverMainWindow::setupActions()
     }
     auto mKeyBindignsAction = KStandardAction::keyBindings(this, SLOT(configureShortcuts()), this);
     actionCollection()->addAction(mKeyBindignsAction->objectName(), mKeyBindignsAction);
-
-    m_moreMenu = new QMenu;
-    m_advancedMenu = new QMenu(i18n("Advanced..."), m_moreMenu);
-    configureMenu();
-
-    connect(ResourcesModel::global(), &ResourcesModel::allInitialized, this, &MuonDiscoverMainWindow::configureMenu);
 }
 
-void MuonDiscoverMainWindow::configureMenu()
+QAction * MuonDiscoverMainWindow::action(const QString& name)
 {
-    m_advancedMenu->clear();
-    m_moreMenu->clear();
-    UIHelper::setupMessageActions(m_moreMenu, m_advancedMenu, ResourcesModel::global()->messageActions());
+    return actionCollection()->action(name);
+}
 
-    if (!m_moreMenu->isEmpty())
-        m_moreMenu->addSeparator();
-
-    m_moreMenu->addAction(actionCollection()->action(QStringLiteral("configure_sources")));
-    m_moreMenu->addAction(actionCollection()->action(QStringLiteral("options_configure_keybinding")));
-    m_moreMenu->addSeparator();
-    m_moreMenu->addMenu(m_advancedMenu);
-    m_moreMenu->addSeparator();
-    m_moreMenu->addAction(actionCollection()->action(QStringLiteral("help_about_app")));
-    m_moreMenu->addAction(actionCollection()->action(QStringLiteral("help_report_bug")));
+QString MuonDiscoverMainWindow::iconName(const QIcon& icon)
+{
+    return icon.name();
 }
 
 void MuonDiscoverMainWindow::configureSources()
@@ -301,12 +286,6 @@ void MuonDiscoverMainWindow::closeEvent(QCloseEvent *e)
 bool MuonDiscoverMainWindow::queryClose()
 {
     return !ResourcesModel::global()->isBusy();
-}
-
-void MuonDiscoverMainWindow::showMenu(int x, int y)
-{
-    QPoint p = mapToGlobal(QPoint(x, y));
-    m_moreMenu->exec(p);
 }
 
 void MuonDiscoverMainWindow::appHelpActivated()

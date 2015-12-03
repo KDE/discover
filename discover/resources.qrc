@@ -42,6 +42,7 @@
     <file>qml/ApplicationIndicator.qml</file>
     <file>qml/LabelBackground.qml</file>
     <file>qml/PageHeader.qml</file>
+    <file>qml/ActionBridge.qml</file>
 
     <file>qml/navigation.js</file>
  </qresource>

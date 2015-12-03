@@ -108,13 +108,33 @@ ToolBar
                 }
 
             }
+
+            Menu {
+                id: moreMenu
+                MenuItem { action: ActionBridge { action: app.action("configure_sources"); } }
+                MenuSeparator {}
+                Menu {
+                    id: advancedMenu
+                    title: i18n("Advanced...")
+
+                    Instantiator {
+                        model: ResourcesModel.messageActions
+                        delegate: MenuItem { action: ActionBridge { action: modelData} }
+
+                        onObjectAdded: advancedMenu.insertItem(index, object)
+                        onObjectRemoved: advancedMenu.removeItem(object)
+                    }
+                }
+                MenuItem { action: ActionBridge { action: app.action("options_configure_keybinding"); } }
+                MenuItem { action: ActionBridge { action: app.action("help_about_app"); } }
+                MenuItem { action: ActionBridge { action: app.action("help_report_bug"); } }
+
+            }
+
             ToolButton {
                 id: button
                 iconName: "application-menu"
-                onClicked: {
-                    var pos = mapToItem(window, 0, height);
-                    app.showMenu(pos.x, pos.y);
-                }
+                menu: moreMenu
             }
         }
         TextField {
