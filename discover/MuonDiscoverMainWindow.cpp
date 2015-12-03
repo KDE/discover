@@ -18,47 +18,35 @@
  */
 
 #include "MuonDiscoverMainWindow.h"
-#include <KShortcutsDialog>
 #include "PaginateModel.h"
 #include "SystemFonts.h"
 #include "IconColors.h"
 
 // Qt includes
+#include <QAction>
 #include <QDebug>
 #include <QDesktopServices>
 #include <QtQml/QQmlEngine>
 #include <QtQml/QQmlContext>
 #include <QtQml/QQmlApplicationEngine>
 #include <QtQuick/QQuickItem>
-#include <QTimer>
-#include <QGraphicsObject>
-#include <QToolButton>
-#include <QLayout>
-#include <qqml.h>
-#include <QNetworkAccessManager>
-#include <QNetworkDiskCache>
-#include <QQmlNetworkAccessManagerFactory>
-#include <QLineEdit>
-#include <QMenu>
-#include <QMenuBar>
-#include <QQuickWidget>
 #include <QScreen>
+#include <qqml.h>
+#include <QQmlNetworkAccessManagerFactory>
 #include <QPointer>
 
 // KDE includes
+#include <KAboutApplicationDialog>
 #include <KAuthorized>
+#include <KBugReport>
 #include <KActionCollection>
-#include <kdeclarative/kdeclarative.h>
+#include <KDeclarative/KDeclarative>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KToolBar>
-#include <KXMLGUIFactory>
-#include <KIO/MetaData>
 #include <KHelpMenu>
 #include <KAboutData>
 #include <KHelpMenu>
-#include <KAboutApplicationDialog>
-#include <KBugReport>
+#include <KShortcutsDialog>
 // #include <KSwitchLanguageDialog>
 
 // DiscoverCommon includes
