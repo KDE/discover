@@ -35,9 +35,17 @@ install(FILES distupgradeevent/releasechecker DESTINATION ${DATA_INSTALL_DIR}/li
         WORLD_EXECUTE WORLD_READ
 )
 
-add_library(MuonApplicationNotifier MODULE ApplicationNotifier.cpp)
-target_compile_definitions(MuonApplicationNotifier PRIVATE -DCMAKE_INSTALL_FULL_LIBEXECDIR_KF5=\"${CMAKE_INSTALL_FULL_LIBEXECDIR_KF5}\")
-target_link_libraries(MuonApplicationNotifier KF5::CoreAddons KF5::I18n KF5::Notifications KF5::IconThemes Discover::Notifiers)
+foreach(testing IN ITEMS ON OFF)
+    set(name MuonApplicationNotifier)
+    set(type MODULE)
+    if(${testing})
+        set(name MuonApplicationNotifierTestLib)
+        set(type STATIC)
+    endif()
+    add_library(${name} ${type} ApplicationNotifier.cpp)
+    target_compile_definitions(${name} PRIVATE -DCMAKE_INSTALL_FULL_LIBEXECDIR_KF5=\"${CMAKE_INSTALL_FULL_LIBEXECDIR_KF5}\")
+    target_link_libraries(${name} KF5::CoreAddons KF5::I18n KF5::Notifications KF5::IconThemes Discover::Notifiers)
+endforeach()
 
 install(TARGETS MuonApplicationNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/discover-notifier)
 install(FILES muonapplicationnotifier.notifyrc DESTINATION ${KNOTIFYRC_INSTALL_DIR})
