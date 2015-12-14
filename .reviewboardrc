@@ -1,4 +1,4 @@
-REPOSITORY = "git://anongit.kde.org/muon"
+REPOSITORY = "git://anongit.kde.org/discover"
 REVIEWBOARD_URL = "https://git.reviewboard.kde.org"
 TARGET_GROUPS = "muon, kubuntu"
 BRANCH = "master"
