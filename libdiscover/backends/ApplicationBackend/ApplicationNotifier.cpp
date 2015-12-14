@@ -107,7 +107,8 @@ void ApplicationNotifier::upgradeActivated()
 
 void ApplicationNotifier::recheckSystemUpdateNeeded()
 {
-    if (m_updateCheckerProcess->state() == QProcess::Running)
+    if (m_updateCheckerProcess &&
+            m_updateCheckerProcess->state() == QProcess::Running)
         return;
     
     m_updateCheckerProcess = new QProcess(this);
