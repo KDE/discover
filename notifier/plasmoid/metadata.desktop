@@ -56,13 +56,13 @@ Comment[x-test]=xxHelps you keep your system up to datexx
 Comment[zh_CN]=帮助您保持系统更新
 Encoding=UTF-8
 
-Icon=org.kde.muonnotifier
+Icon=org.kde.discovernotifier
 Type=Service
 
 X-KDE-ServiceTypes=Plasma/Applet
 X-KDE-PluginInfo-Author=The Plasma Team
 X-KDE-PluginInfo-Email=plasma-devel@kde.org
-X-KDE-PluginInfo-Name=org.kde.muonnotifier
+X-KDE-PluginInfo-Name=org.kde.discovernotifier
 X-KDE-PluginInfo-Version=3.0
 X-KDE-PluginInfo-Website=http://plasma.kde.org/
 X-KDE-PluginInfo-Category=Online Services
