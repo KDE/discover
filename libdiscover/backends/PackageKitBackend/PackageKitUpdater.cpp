@@ -308,7 +308,7 @@ void PackageKitUpdater::lastUpdateTimeReceived(QDBusPendingCallWatcher* w)
     if (reply.isError()) {
         qWarning() << "Error when fetching the last update time" << reply.error();
     } else {
-        m_lastUpdate = QDateTime::currentDateTime().addSecs(-reply.value());
+        m_lastUpdate = QDateTime::currentDateTime().addSecs(-int(reply.value()));
     }
     w->deleteLater();
 }
