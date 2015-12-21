@@ -60,7 +60,7 @@ Comment[zh_CN]=帮助您保持系统更新
 Comment[zh_TW]=協助保持您的系統更新
 Encoding=UTF-8
 
-Icon=org.kde.discovernotifier
+Icon=security-high
 Type=Service
 
 X-KDE-ServiceTypes=Plasma/Applet
