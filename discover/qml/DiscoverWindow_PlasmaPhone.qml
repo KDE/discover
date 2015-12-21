@@ -26,7 +26,8 @@ import org.kde.plasma.mobilecomponents 0.2 as MobileComponents
 MobileComponents.GlobalDrawer {
     id: drawer
     anchors.fill: parent
-    title: i18n("Hola")
+    title: i18n("Discover")
+    titleIcon: "muondiscover"
 
     function itemsFilter(items) {
         var ret = [];
@@ -51,7 +52,7 @@ MobileComponents.GlobalDrawer {
     Repeater {
         model: drawer.itemsFilter(moreMenu.items)
         delegate: MuonToolButton {
-            width: parent.width
+            Layout.fillWidth: true
             action: visible ? modelData.action : null
         }
     }
