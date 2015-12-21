@@ -18,7 +18,7 @@ ConditionalLoader
     property Component currentTopLevel: defaultStartup ? topBrowsingComp : loadingComponent
     property bool defaultStartup: true
     property bool navigationEnabled: true
-    property QtObject stack: item.stack
+    readonly property QtObject stack: item.stack
 
     objectName: "DiscoverMainWindow"
 
