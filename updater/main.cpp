@@ -33,8 +33,8 @@ int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
-    KLocalizedString::setApplicationDomain("muon-updater");
-    KAboutData about(QStringLiteral("muonupdater"), i18n("Update Manager"), version, i18n("An update manager"),
+    KLocalizedString::setApplicationDomain("plasma-discover-updater");
+    KAboutData about(QStringLiteral("plasmadiscoverupdater"), i18n("Update Manager"), version, i18n("An update manager"),
                      KAboutLicense::GPL, i18n("©2010-2013 Jonathan Thomas"), QString());
     about.addAuthor(i18n("Jonathan Thomas"), QString(), QStringLiteral("echidnaman@kubuntu.org"));
     about.addAuthor(i18n("Aleix Pol"), QString(), QStringLiteral("aleixpol@kde.org"));

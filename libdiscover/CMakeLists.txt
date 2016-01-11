@@ -59,4 +59,4 @@ generate_export_header(DiscoverCommon)
 target_include_directories(DiscoverCommon PRIVATE ${PHONON_INCLUDES} PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
 
 install(TARGETS DiscoverCommon ${INSTALL_TARGETS_DEFAULT_ARGS})
-install(FILES resources/muonabstractnotifier.notifyrc DESTINATION ${KNOTIFYRC_INSTALL_DIR})
+install(FILES resources/discoverabstractnotifier.notifyrc DESTINATION ${KNOTIFYRC_INSTALL_DIR})

@@ -133,7 +133,7 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
         /**
          *  This method is used to integrate advanced functions into the Muon GUI.
          *
-         *  In muon-updater, actions with HighPriority will be shown in a KMessageWidget,
+         *  In plasma-discover-updater, actions with HighPriority will be shown in a KMessageWidget,
          *  normal priority will go right on top of the more menu, low priority will go
          *  to the advanced menu.
          */

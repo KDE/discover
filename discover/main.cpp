@@ -44,7 +44,7 @@ int main(int argc, char** argv)
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("muondiscover")));
     app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
-    KLocalizedString::setApplicationDomain("muon-discover");
+    KLocalizedString::setApplicationDomain("plasma-discover");
     KAboutData about(QStringLiteral("muondiscover"), i18n("Discover"), version, i18n("An application explorer"),
                      KAboutLicense::GPL, i18n("© 2010-2014 Plasma Development Team"));
     about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), QStringLiteral("aleixpol@blue-systems.com"));

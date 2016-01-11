@@ -1,6 +1,6 @@
 include_directories(../libdiscover)
 
-set(muon_updater_SRCS
+set(plasmadiscover_updater_SRCS
     main.cpp
     MainWindow.cpp
     ChangelogWidget.cpp
@@ -9,14 +9,14 @@ set(muon_updater_SRCS
     KActionMessageWidget.cpp
     UpdateDelegate.cpp)
 
-ki18n_wrap_ui(muon_updater_SRCS ProgressWidget.ui
+ki18n_wrap_ui(plasmadiscover_updater_SRCS ProgressWidget.ui
                                     UpdaterCentralWidget.ui
                                     UpdaterWidgetNoUpdates.ui
 )
 
-add_executable(muon-updater ${muon_updater_SRCS})
+add_executable(plasma-discover-updater ${plasmadiscover_updater_SRCS})
 
-target_link_libraries(muon-updater KF5::CoreAddons
+target_link_libraries(plasma-discover-updater KF5::CoreAddons
                                    KF5::KIOWidgets
                                    KF5::Solid
                                    KF5::I18n
@@ -26,13 +26,13 @@ target_link_libraries(muon-updater KF5::CoreAddons
                                    Discover::Common)
 
 if (ENABLE_QZEITGEIST)
-    target_link_libraries(muon-updater ${QZEITGEIST_LIBRARY})
+    target_link_libraries(plasma-discover-updater ${QZEITGEIST_LIBRARY})
 endif ()
 
-install(TARGETS muon-updater ${INSTALL_TARGETS_DEFAULT_ARGS} )
+install(TARGETS plasma-discover-updater ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### install files ###############
 
-install( FILES muonupdaterui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/muonupdater )
-install( PROGRAMS muon-updater.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR} )
+install( FILES plasmadiscoverupdaterui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/plasmadiscoverupdater )
+install( PROGRAMS plasma-discover-updater.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR} )
 

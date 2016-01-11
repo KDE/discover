@@ -51,7 +51,7 @@ DiscoverNotifier::~DiscoverNotifier()
 
 void DiscoverNotifier::configurationChanged()
 {
-    KConfig notifierConfig(QStringLiteral("muon-notifierrc"), KConfig::NoGlobals);
+    KConfig notifierConfig(QStringLiteral("plasma-discover-notifierrc"), KConfig::NoGlobals);
 
     KConfigGroup notifyTypeGroup(&notifierConfig, "NotificationType");
     m_verbose = notifyTypeGroup.readEntry("Verbose", false);
@@ -59,7 +59,7 @@ void DiscoverNotifier::configurationChanged()
 
 void DiscoverNotifier::showMuon()
 {
-    KRun::runCommand(QStringLiteral("muon-discover --mode update"), nullptr);
+    KRun::runCommand(QStringLiteral("plasma-discover --mode update"), nullptr);
 }
 
 bool DiscoverNotifier::isSystemUpToDate() const

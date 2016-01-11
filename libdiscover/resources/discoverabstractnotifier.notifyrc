@@ -1,34 +1,6 @@
 [Global]
 IconName=applications-system
-Comment=Muon
-Comment[ca]=Muon
-Comment[ca@valencia]=Muon
-Comment[da]=Muon
-Comment[de]=Muon
-Comment[el]=Muon
-Comment[en_GB]=Muon
-Comment[es]=Muon
-Comment[fi]=Muon
-Comment[fr]=Muon
-Comment[gl]=Muon
-Comment[it]=Muon
-Comment[ko]=Muon
-Comment[nb]=Muon
-Comment[nl]=Muon
-Comment[nn]=Muon
-Comment[pl]=Muon
-Comment[pt]=Muon
-Comment[pt_BR]=Muon
-Comment[sk]=Muon
-Comment[sl]=Muon
-Comment[sr]=Муон
-Comment[sr@ijekavian]=Муон
-Comment[sr@ijekavianlatin]=Muon
-Comment[sr@latin]=Muon
-Comment[sv]=Muon
-Comment[uk]=Muon
-Comment[x-test]=xxMuonxx
-Comment[zh_CN]=Muon
+Comment=Discover
 
 [Event/Update]
 Name=Updates Are Available

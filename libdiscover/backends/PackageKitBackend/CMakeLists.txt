@@ -15,7 +15,7 @@ install(FILES packagekit-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/libdisc
 install(FILES packagekit-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
 
 #notifier
-add_library(MuonPackageKitNotifier MODULE PackageKitNotifier.cpp)
-target_link_libraries(MuonPackageKitNotifier PRIVATE PK::packagekitqt5 Discover::Notifiers)
+add_library(DiscoverPackageKitNotifier MODULE PackageKitNotifier.cpp)
+target_link_libraries(DiscoverPackageKitNotifier PRIVATE PK::packagekitqt5 Discover::Notifiers)
 
-install(TARGETS MuonPackageKitNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/discover-notifier)
+install(TARGETS DiscoverPackageKitNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/discover-notifier)

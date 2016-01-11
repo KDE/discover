@@ -495,7 +495,7 @@ AbstractResource::State Application::state()
         return Installed;
     }
     
-    return None; // Actually: none of interest to us here in muon-discover.
+    return None; // Actually: none of interest to us here in plasma-discover.
 }
 
 void Application::fetchScreenshots()

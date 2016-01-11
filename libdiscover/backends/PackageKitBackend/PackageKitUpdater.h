@@ -52,7 +52,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         virtual QString statusDetail() const override;
         virtual quint64 downloadSpeed() const override;
 
-        /** in muon-updater, actions with HighPriority will be shown in a KMessageWidget,
+        /** in plasma-discover-updater, actions with HighPriority will be shown in a KMessageWidget,
          *  normal priority will go right on top of the more menu, low priority will go
          *  to the advanced menu
          */

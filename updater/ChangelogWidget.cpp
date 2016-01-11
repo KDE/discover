@@ -173,9 +173,9 @@ void ChangelogWidget::fetchChangelog()
 void ChangelogWidget::showMore(const QUrl& package)
 {
     if (package.scheme() == QLatin1String("package")) {
-        bool b = QProcess::startDetached(QStringLiteral("muon-discover"), { QStringLiteral("--application"), package.path() });
+        bool b = QProcess::startDetached(QStringLiteral("plasma-discover"), { QStringLiteral("--application"), package.path() });
         if (!b) {
-            qWarning() << "Couldn't launch muon-discover";
+            qWarning() << "Couldn't launch plasma-discover";
         }
     } else {
         QDesktopServices::openUrl(package);

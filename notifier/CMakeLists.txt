@@ -1,4 +1,4 @@
-add_definitions(-DTRANSLATION_DOMAIN=\"muon-notifier\")
+add_definitions(-DTRANSLATION_DOMAIN=\"plasma-discover-notifier\")
 
 add_library(DiscoverNotifierDeclarativePlugin BackendNotifierFactory.cpp DiscoverNotifier.cpp DiscoverNotifierDeclarativePlugin.cpp)
 target_link_libraries(DiscoverNotifierDeclarativePlugin
