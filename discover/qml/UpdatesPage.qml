@@ -30,6 +30,7 @@ ConditionalLoader
     }
 
     componentFalse: Item {
+        id: noUpdatesView
         ColumnLayout {
             width: app.actualWidth
             anchors.centerIn: parent
@@ -62,9 +63,11 @@ ConditionalLoader
         }
 
         readonly property var secSinceUpdate: resourcesUpdatesModel.secsToLastUpdate
+        readonly property string message: i18nc("@info", "Last checked %1 ago.", Format.formatDecimalDuration(secSinceUpdate*1000, 0))
 
         state: ( ResourcesModel.isFetching                  ? "fetching"
                : secSinceUpdate < 0                         ? "unknown"
+               : secSinceUpdate === 0                       ? "now-uptodate"
                : secSinceUpdate < 1000 * 60 * 60 * 24       ? "uptodate"
                : secSinceUpdate < 1000 * 60 * 60 * 24 * 7   ? "medium"
                :                                              "low"
@@ -79,22 +82,28 @@ ConditionalLoader
                 PropertyChanges { target: description; text: "" }
             },
             State {
+                name: "now-uptodate"
+                PropertyChanges { target: icon; icon: "security-high" }
+                PropertyChanges { target: title; text: i18nc("@info", "The software on this computer is up to date.") }
+                PropertyChanges { target: description; text: "" }
+            },
+            State {
                 name: "uptodate"
                 PropertyChanges { target: icon; icon: "security-high" }
                 PropertyChanges { target: title; text: i18nc("@info", "The software on this computer is up to date.") }
-                PropertyChanges { target: description; text: i18nc("@info", "Last checked %1 ago.", Format.formatDecimalDuration(secSinceUpdate*1000, 0)) }
+                PropertyChanges { target: description; text: noUpdatesView.message }
             },
             State {
                 name: "medium"
                 PropertyChanges { target: icon; icon: "security-medium" }
                 PropertyChanges { target: title; text: i18nc("@info", "No updates are available.") }
-                PropertyChanges { target: description; text: i18nc("@info", "Last checked %1 ago.", Format.formatDecimalDuration(secSinceUpdate*1000, 0)) }
+                PropertyChanges { target: description; text: noUpdatesView.message }
             },
             State {
                 name: "low"
                 PropertyChanges { target: icon; icon: "security-low" }
                 PropertyChanges { target: title; text: i18nc("@info", "The last check for updates was over a week ago.") }
-                PropertyChanges { target: description; text: i18nc("@info", "Last checked %1 ago.", Format.formatDecimalDuration(secSinceUpdate*1000, 0)) }
+                PropertyChanges { target: description; text: noUpdatesView.message }
             },
             State {
                 name: "unknown"
