@@ -27,6 +27,9 @@ ScrollView
                 anchors.fill: parent
 
                 condition: resourcesUpdatesModel.isProgressing
+                onConditionChanged: {
+                    window.navigationEnabled = !condition;
+                }
                 componentFalse: RowLayout {
                     LabelBackground {
                         text: updateModel.toUpdateCount

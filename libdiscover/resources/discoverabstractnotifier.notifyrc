@@ -1,5 +1,4 @@
 [Global]
-IconName=applications-system
 Comment=Discover
 
 [Event/Update]
@@ -11,6 +10,7 @@ Name[de]=Es sind Aktualisierungen verfügbar
 Name[el]=Υπάρχουν διαθέσιμες ενημερώσεις
 Name[en_GB]=Updates Are Available
 Name[es]=Existen actualizaciones disponibles
+Name[et]=Saadaval on uuendused
 Name[fi]=Päivityksiä on saatavilla
 Name[fr]=Des mises à jour sont disponibles
 Name[gl]=Hai actualizacións dispoñíbeis
@@ -40,6 +40,7 @@ Comment[de]=Aktualisierungen verfügbar
 Comment[el]=Διαθέσιμες ενημερώσεις
 Comment[en_GB]=Updates Available
 Comment[es]=Actualizaciones disponibles
+Comment[et]=Saadaval on uuendused
 Comment[fi]=Päivityksiä saatavilla
 Comment[fr]=Mises à jour disponibles
 Comment[gl]=Actualizacións dispoñíbeis
