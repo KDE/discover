@@ -8,6 +8,7 @@ ConditionalLoader
     id: root
     property alias application: listener.resource
     readonly property alias isActive: listener.isActive
+    readonly property alias progress: listener.progress
     property Component additionalItem: null
     property bool canUpgrade: true
 

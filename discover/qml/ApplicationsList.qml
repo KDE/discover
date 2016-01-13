@@ -124,6 +124,9 @@ ScrollView {
                             visible: delegateArea.containsMouse
                         }
                         LabelBackground {
+                            progressing: installButton.isActive
+                            progress: installButton.progress/100
+
                             id: installInfo
                             anchors.centerIn: parent
                             visible: !delegateArea.containsMouse
