@@ -1,8 +1,15 @@
 [Global]
 Comment=Discover
+Comment[ca]=Discover
+Comment[gl]=Descubrir
+Comment[pt]=Discover
+Comment[pt_BR]=Discover
+Comment[uk]=Discover
+Comment[x-test]=xxDiscoverxx
 
 [Event/Update]
 Name=Updates Are Available
+Name[ast]=Tan disponibles anovamientos
 Name[ca]=Hi ha actualitzacions disponibles
 Name[ca@valencia]=Hi ha actualitzacions disponibles
 Name[da]=Opdateringer tilgængelige
@@ -10,7 +17,6 @@ Name[de]=Es sind Aktualisierungen verfügbar
 Name[el]=Υπάρχουν διαθέσιμες ενημερώσεις
 Name[en_GB]=Updates Are Available
 Name[es]=Existen actualizaciones disponibles
-Name[et]=Saadaval on uuendused
 Name[fi]=Päivityksiä on saatavilla
 Name[fr]=Des mises à jour sont disponibles
 Name[gl]=Hai actualizacións dispoñíbeis
@@ -33,6 +39,7 @@ Name[uk]=Доступні оновлення
 Name[x-test]=xxUpdates Are Availablexx
 Name[zh_CN]=更新可用
 Comment=Updates Available
+Comment[ast]=Anovamientos disponibles
 Comment[ca]=Actualitzacions disponibles
 Comment[ca@valencia]=Actualitzacions disponibles
 Comment[da]=Opdateringer tilgængelige
@@ -40,7 +47,6 @@ Comment[de]=Aktualisierungen verfügbar
 Comment[el]=Διαθέσιμες ενημερώσεις
 Comment[en_GB]=Updates Available
 Comment[es]=Actualizaciones disponibles
-Comment[et]=Saadaval on uuendused
 Comment[fi]=Päivityksiä saatavilla
 Comment[fr]=Mises à jour disponibles
 Comment[gl]=Actualizacións dispoñíbeis
