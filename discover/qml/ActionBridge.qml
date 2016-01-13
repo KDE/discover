@@ -28,7 +28,7 @@ Action
     text: action ? action.text : "<null>"
     checked: action && action.checked
     enabled: action && action.enabled
-    tooltip: action && action.tooltip
+    tooltip: action ? action.toolTip : ""
     iconName: action ? app.iconName(action.icon) : ""
 
     onTriggered: action.trigger()
