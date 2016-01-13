@@ -47,7 +47,7 @@ Rectangle
                 obj.destroy(2000)
         }
         if(stackView.currentItem) {
-            stackView.currentItem.destroy(100)
+            stackView.currentItem.destroy(2000)
         }
         var page;
         try {
