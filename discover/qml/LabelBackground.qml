@@ -24,13 +24,25 @@ import QtQuick.Layouts 1.1
 Rectangle
 {
     property alias text: theLabel.text
-    color: pal.highlight
+    property bool progressing: false
+    property real progress: 1.
+    color: progressing ? pal.dark : pal.highlight
     radius: 5
     width: theLabel.implicitWidth + 10
     height: theLabel.implicitHeight + 10
 
     SystemPalette {
         id: pal
+    }
+
+    Rectangle {
+        color: "white"
+        opacity: 0.3
+        visible: parent.progressing
+        anchors {
+            fill: parent
+            leftMargin: parent.progress * parent.width
+        }
     }
 
     Label {
