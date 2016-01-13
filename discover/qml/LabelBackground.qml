@@ -26,7 +26,7 @@ Rectangle
     property alias text: theLabel.text
     property bool progressing: false
     property real progress: 1.
-    color: progressing ? pal.dark : pal.highlight
+    color: pal.dark
     radius: 5
     width: theLabel.implicitWidth + 10
     height: theLabel.implicitHeight + 10
@@ -36,7 +36,7 @@ Rectangle
     }
 
     Rectangle {
-        color: "white"
+        color: pal.light
         opacity: 0.3
         visible: parent.progressing
         anchors {
