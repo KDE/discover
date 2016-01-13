@@ -112,7 +112,7 @@ void DummyBackend::populate(const QString& n)
 void DummyBackend::toggleFetching()
 {
     m_fetching = !m_fetching;
-    qDebug() << "fetching..." << m_fetching;
+//     qDebug() << "fetching..." << m_fetching;
     emit fetchingChanged();
     if (!m_fetching)
         m_reviews->initialize();
