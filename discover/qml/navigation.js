@@ -53,9 +53,9 @@ function openPage(component, props) {
     var obj
     try {
         obj = component.createObject(window.stack.currentItem, props)
-        window.stack.push(obj);
         if (!obj)
             console.log("error opening", name, obj, component.errorString())
+        window.stack.push(obj);
     } catch (e) {
         console.log("error: "+e)
         console.log("comp error: "+component.errorString())
