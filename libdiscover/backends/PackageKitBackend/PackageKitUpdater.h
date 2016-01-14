@@ -76,6 +76,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         void percentageChanged();
         
     private:
+        void itemProgress(const QString &itemID, PackageKit::Transaction::Status status, uint percentage);
         void fetchLastUpdateTime();
         void lastUpdateTimeReceived(QDBusPendingCallWatcher* w);
         void setProgressing(bool progressing);

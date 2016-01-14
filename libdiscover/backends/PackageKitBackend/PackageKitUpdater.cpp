@@ -77,6 +77,7 @@ void PackageKitUpdater::setTransaction(PackageKit::Transaction* transaction)
     connect(m_transaction.data(), &PackageKit::Transaction::allowCancelChanged, this, &PackageKitUpdater::cancellableChanged);
     connect(m_transaction.data(), &PackageKit::Transaction::remainingTimeChanged, this, &PackageKitUpdater::remainingTimeChanged);
     connect(m_transaction.data(), &PackageKit::Transaction::percentageChanged, this, &PackageKitUpdater::percentageChanged);
+    connect(m_transaction.data(), &PackageKit::Transaction::itemProgress, this, &PackageKitUpdater::itemProgress);
 }
 
 QSet<AbstractResource*> PackageKitUpdater::packagesForPackageId(const QSet<QString>& pkgids) const
@@ -311,4 +312,13 @@ void PackageKitUpdater::lastUpdateTimeReceived(QDBusPendingCallWatcher* w)
         m_lastUpdate = QDateTime::currentDateTime().addSecs(-int(reply.value()));
     }
     w->deleteLater();
+}
+
+void PackageKitUpdater::itemProgress(const QString& itemID, PackageKit::Transaction::Status /*status*/, uint percentage)
+{
+    auto res = packagesForPackageId({itemID});
+
+    foreach(auto r, res) {
+        resourceProgressed(r, percentage);
+    }
 }
