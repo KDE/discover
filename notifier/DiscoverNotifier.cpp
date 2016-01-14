@@ -73,6 +73,11 @@ bool DiscoverNotifier::isSystemUpToDate() const
 
 void DiscoverNotifier::showUpdatesNotification()
 {
+    if (state()==NoUpdates) {
+        //it's not very helpful to notify that everyting is in order
+        return;
+    }
+
     //TODO: Better message strings
     QString msg = message();
     if (m_verbose) {

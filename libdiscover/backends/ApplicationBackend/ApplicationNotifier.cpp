@@ -118,6 +118,9 @@ void ApplicationNotifier::recheckSystemUpdateNeeded()
     
 void ApplicationNotifier::parseUpdateInfo()
 {
+    if (!m_updateCheckerProcess)
+        return;
+
 #warning why does this parse stdout and not use qapt, wtf...
     m_securityUpdates = 0;
     m_normalUpdates = 0;
