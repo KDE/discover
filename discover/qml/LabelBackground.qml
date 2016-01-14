@@ -21,13 +21,11 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 
-Rectangle
+Item
 {
     property alias text: theLabel.text
     property bool progressing: false
     property real progress: 1.
-    color: pal.dark
-    radius: 5
     width: theLabel.implicitWidth + 10
     height: theLabel.implicitHeight + 10
 
@@ -36,13 +34,19 @@ Rectangle
     }
 
     Rectangle {
-        color: pal.light
-        opacity: 0.3
+        color: pal.dark
         visible: parent.progressing
+        anchors.fill: parent
+        radius: 5
+    }
+
+    Rectangle {
         anchors {
             fill: parent
-            leftMargin: parent.progress * parent.width
+            rightMargin: !parent.progressing ? 0 : (1-parent.progress) * parent.width
         }
+        color: pal.highlight
+        radius: 5
     }
 
     Label {

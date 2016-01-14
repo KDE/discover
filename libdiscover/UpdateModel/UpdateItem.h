@@ -58,6 +58,9 @@ public:
     void sort();
     bool isEmpty() const;
 
+    void setProgress(qreal progress);
+    qreal progress() const;
+
     AbstractResource *app() const;
     QString name() const;
     QString version() const;
@@ -77,6 +80,7 @@ private:
     QList<UpdateItem *> m_children;
     QString m_categoryName;
     QIcon m_categoryIcon;
+    qreal m_progress;
 };
 
 #endif // UPDATEITEM_H

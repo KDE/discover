@@ -132,6 +132,9 @@ ScrollView
                             LabelBackground {
                                 Layout.minimumWidth: 90
                                 text: size
+
+                                progressing: resourcesUpdatesModel.isProgressing
+                                progress: resourceProgress/100
                             }
                         }
 

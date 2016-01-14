@@ -93,7 +93,8 @@ void Transaction::setCancellable(bool isCancellable)
 void Transaction::setProgress(int progress)
 {
     if(m_progress != progress) {
-        m_progress = progress;
+        Q_ASSERT(qBound(0, progress, 100) == progress);
+        m_progress = qBound(0, progress, 100);
         emit progressChanged(m_progress);
     }
 }

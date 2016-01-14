@@ -38,6 +38,7 @@ StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend* parent)
     , m_lastUpdate(QDateTime())
 {
     connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &StandardBackendUpdater::transactionRemoved);
+    connect(TransactionModel::global(), &TransactionModel::transactionAdded, this, &StandardBackendUpdater::transactionAdded);
 }
 
 bool StandardBackendUpdater::hasUpdates() const
@@ -63,6 +64,20 @@ void StandardBackendUpdater::start()
     } else {
         setProgress(1);
     }
+}
+
+void StandardBackendUpdater::transactionAdded(Transaction* newTransaction)
+{
+    if (!m_pendingResources.contains(newTransaction->resource()))
+        return;
+
+    connect(newTransaction, &Transaction::progressChanged, this, &StandardBackendUpdater::transactionProgressChanged);
+}
+
+void StandardBackendUpdater::transactionProgressChanged(int percentage)
+{
+    Transaction* t = qobject_cast<Transaction*>(sender());
+    Q_EMIT resourceProgressed(t->resource(), percentage);
 }
 
 void StandardBackendUpdater::transactionRemoved(Transaction* t)

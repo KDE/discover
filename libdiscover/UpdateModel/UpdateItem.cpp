@@ -31,6 +31,7 @@ UpdateItem::UpdateItem()
     : m_app(nullptr)
     , m_parent(nullptr)
     , m_type(ItemType::RootItem)
+    , m_progress(0)
 {
 }
 
@@ -41,6 +42,7 @@ UpdateItem::UpdateItem(QString categoryName,
     , m_type(ItemType::CategoryItem)
     , m_categoryName(std::move(categoryName))
     , m_categoryIcon(std::move(categoryIcon))
+    , m_progress(0)
 {
 }
 
@@ -48,6 +50,7 @@ UpdateItem::UpdateItem(AbstractResource *app, UpdateItem *parent)
     : m_app(app)
     , m_parent(parent)
     , m_type(ItemType::ApplicationItem)
+    , m_progress(0)
 {
 }
 
@@ -227,4 +230,14 @@ int UpdateItem::checkedItems() const
         }
         return ret;
     }
+}
+
+qreal UpdateItem::progress() const
+{
+    return m_progress;
+}
+
+void UpdateItem::setProgress(qreal progress)
+{
+    m_progress = progress;
 }

@@ -71,6 +71,7 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         void statusMessageChanged(const QString& message);
         void statusDetailChanged(const QString& msg);
         void finished();
+        void resourceProgressed(AbstractResource* resource, qreal progress);
 
     public Q_SLOTS:
         void cancel();

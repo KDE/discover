@@ -40,7 +40,8 @@ public:
     enum Roles {
         VersionRole = Qt::UserRole + 1,
         SizeRole,
-        ResourceRole
+        ResourceRole,
+        ResourceProgressRole
     };
 
     explicit UpdateModel(QObject *parent = nullptr);
@@ -86,9 +87,11 @@ Q_SIGNALS:
     void toUpdateChanged();
 
 private:
+    QModelIndex indexFromItem(UpdateItem* item) const;
+    UpdateItem* itemFromResource(AbstractResource* res, UpdateItem* root);
+    void resourceHasProgressed(AbstractResource* res, qreal progress);
     void activityChanged();
 
-    void addResource(AbstractResource* res);
     UpdateItem *m_rootItem;
     ResourcesUpdatesModel* m_updates;
     int m_updatesCount;

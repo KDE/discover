@@ -112,6 +112,6 @@ private:
     AbstractResourcesBackend* m_appBackend;
 };
 
-QTEST_MAIN(UpdateDummyTest);
+QTEST_MAIN(UpdateDummyTest)
 
 #include "UpdateDummyTest.moc"

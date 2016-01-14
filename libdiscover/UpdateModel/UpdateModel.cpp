@@ -56,6 +56,7 @@ QHash<int,QByteArray> UpdateModel::roleNames() const
 {
     return QAbstractItemModel::roleNames().unite({
         { Qt::CheckStateRole, "checked" },
+        { ResourceProgressRole, "resourceProgress" },
         { ResourceRole, "resource" },
         { SizeRole, "size" },
         { VersionRole, "version" }
@@ -71,8 +72,19 @@ void UpdateModel::setBackend(ResourcesUpdatesModel* updates)
     m_updates = updates;
 
     connect(m_updates, &ResourcesUpdatesModel::progressingChanged, this, &UpdateModel::activityChanged);
+    connect(m_updates, &ResourcesUpdatesModel::resourceProgressed, this, &UpdateModel::resourceHasProgressed);
 
     activityChanged();
+}
+
+void UpdateModel::resourceHasProgressed(AbstractResource* res, qreal progress)
+{
+    UpdateItem* item = itemFromResource(res, m_rootItem);
+    Q_ASSERT(item);
+    item->setProgress(progress);
+
+    QModelIndex idx = indexFromItem(item);
+    Q_EMIT dataChanged(idx, idx);
 }
 
 void UpdateModel::activityChanged()
@@ -129,6 +141,8 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         return KFormat().formatByteSize(item->size());
     case ResourceRole:
         return QVariant::fromValue<QObject*>(item->resource());
+    case ResourceProgressRole:
+        return item->progress();
     default:
         break;
     }
@@ -335,4 +349,31 @@ int UpdateModel::totalUpdatesCount() const
 int UpdateModel::toUpdateCount() const
 {
     return m_rootItem->checkedItems();
+}
+
+UpdateItem * UpdateModel::itemFromResource(AbstractResource* res, UpdateItem* root)
+{
+    if (root->app()) {
+        if (root->app() == res)
+            return root;
+    } else {
+        foreach (UpdateItem* cat, root->children()) {
+            UpdateItem* item = itemFromResource(res, cat);
+            if (item)
+                return item;
+        }
+    }
+    return nullptr;
+}
+
+QModelIndex UpdateModel::indexFromItem(UpdateItem* item) const
+{
+    if (item == m_rootItem) {
+        return QModelIndex();
+    }
+    UpdateItem* parentItem = item->parent();
+    QModelIndex parent = indexFromItem(parentItem);
+
+    int row = parentItem->children().indexOf(item);
+    return index(row, 0, parent);
 }

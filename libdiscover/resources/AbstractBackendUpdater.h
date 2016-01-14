@@ -198,6 +198,11 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
          * @see downloadSpeed
          */
         void downloadSpeedChanged(quint64);
+
+        /**
+         * Provides the @p progress of a specific @p resource in a percentage.
+         */
+        void resourceProgressed(AbstractResource* resource, qreal progress);
 };
 
 #endif // ABSTRACTBACKENDUPDATER_H
