@@ -1,6 +1,7 @@
 [Global]
 Comment=Discover
 Comment[ca]=Discover
+Comment[ca@valencia]=Discover
 Comment[el]=Discover
 Comment[es]=Discover
 Comment[gl]=Descubrir
@@ -8,6 +9,10 @@ Comment[nl]=Ontdekken
 Comment[pt]=Discover
 Comment[pt_BR]=Discover
 Comment[sl]=Odkrijte
+Comment[sr]=Oткривач
+Comment[sr@ijekavian]=Oткривач
+Comment[sr@ijekavianlatin]=Otkrivač
+Comment[sr@latin]=Otkrivač
 Comment[uk]=Discover
 Comment[x-test]=xxDiscoverxx
 
