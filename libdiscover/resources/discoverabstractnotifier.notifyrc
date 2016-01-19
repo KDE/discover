@@ -5,6 +5,7 @@ Comment[ca@valencia]=Discover
 Comment[de]=Discover
 Comment[el]=Discover
 Comment[es]=Discover
+Comment[fi]=Discover
 Comment[gl]=Descubrir
 Comment[nl]=Ontdekken
 Comment[pt]=Discover
@@ -16,6 +17,7 @@ Comment[sr@ijekavianlatin]=Otkrivač
 Comment[sr@latin]=Otkrivač
 Comment[uk]=Discover
 Comment[x-test]=xxDiscoverxx
+Comment[zh_CN]=发现者
 
 [Event/Update]
 Name=Updates Are Available
