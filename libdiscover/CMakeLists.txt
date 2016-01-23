@@ -1,4 +1,4 @@
-add_definitions(-DTRANSLATION_DOMAIN=\"libmuon\")
+add_definitions(-DTRANSLATION_DOMAIN=\"libdiscover\")
 
 add_subdirectory(backends)
 add_subdirectory(declarative)
