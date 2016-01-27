@@ -5,8 +5,7 @@ function(add_unit_test name)
     target_link_libraries(${name}
         Discover::Common
 
-        Qt5::Test Qt5::Core
-        KF5::KIOWidgets KF5::XmlGui ${EXTRA_LIBS})
+        Qt5::Test Qt5::Core ${EXTRA_LIBS})
 endfunction()
 
 if(AKABEICLIENT_FOUND)

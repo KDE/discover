@@ -7,5 +7,5 @@ target_link_libraries(knsbackendtest
     Discover::Common
     
     Qt5::Test Qt5::Core
-    KF5::NewStuff KF5::KIOWidgets KF5::Attica
+    KF5::NewStuff KF5::Attica
 )

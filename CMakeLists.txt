@@ -10,7 +10,7 @@ find_package(ECM REQUIRED NO_MODULE)
 
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} "${CMAKE_SOURCE_DIR}/cmake")
 
-find_package(Qt5 5.2.0 REQUIRED CONFIG COMPONENTS Widgets Test Network Xml Concurrent DBus Svg Qml QuickWidgets)
+find_package(Qt5 5.2.0 REQUIRED CONFIG COMPONENTS Widgets Test Network Xml Concurrent DBus Quick)
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
@@ -18,15 +18,13 @@ include(ECMInstallIcons)
 include(ECMMarkAsTest)
 include(GenerateExportHeader)
 
-find_package(KF5 REQUIRED WidgetsAddons CoreAddons
-                                            Config DBusAddons I18n ConfigWidgets Notifications Declarative
-                                            KIO ItemViews)
+find_package(KF5 REQUIRED CoreAddons Config DBusAddons I18n)
 find_package(KF5TextWidgets REQUIRED)
 
 find_package(QApt 3.0.0)
 if(QApt_FOUND)
     find_package(DebconfKDE 1.0.0 REQUIRED)
-    find_package(KF5 REQUIRED Archive IconThemes)
+    find_package(KF5 REQUIRED Archive IconThemes Notifications KIO)
 else()
     find_package(AkabeiClient QUIET)
     if(NOT AkabeiClient_FOUND)
@@ -46,7 +44,12 @@ add_subdirectory(libdiscover)
 add_subdirectory(updater)
 add_subdirectory(discover)
 add_subdirectory(exporter)
-add_subdirectory(notifier)
+
+option(WITH_NOTIFIER "Build and install the notifier plasmoid" ON)
+if(WITH_NOTIFIER)
+    find_package(KF5 REQUIRED Notifications KIO)
+    add_subdirectory(notifier)
+endif()
 
 set_package_properties(QApt PROPERTIES
     DESCRIPTION "Qt wrapper around the libapt-pkg library"

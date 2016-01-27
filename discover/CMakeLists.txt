@@ -16,13 +16,11 @@ qt5_add_resources(plasma_discover_SRCS resources.qrc)
 
 add_executable(plasma-discover ${plasma_discover_SRCS})
 
-target_link_libraries(plasma-discover LINK_PUBLIC KF5::KIOWidgets
-                                     KF5::Declarative
+target_link_libraries(plasma-discover LINK_PUBLIC
                                      KF5::DBusAddons
                                      KF5::I18n
-                                     KF5::ConfigWidgets
                                      KF5::XmlGui
-                                     Qt5::QuickWidgets
+                                     Qt5::Quick
                                      Discover::Common
 )
 

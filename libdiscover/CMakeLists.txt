@@ -46,9 +46,7 @@ LINK_PUBLIC
     KF5::I18n
 LINK_PRIVATE
     Qt5::Xml
-    KF5::Notifications
     KF5::XmlGui
-    KF5::KIOWidgets
 )
 add_library(Discover::Common ALIAS DiscoverCommon)
 
