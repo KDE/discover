@@ -13,7 +13,7 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} "${CMAKE_SOURCE_D
 find_package(Qt5 5.2.0 REQUIRED CONFIG COMPONENTS Widgets Test Network Xml Concurrent DBus Svg Qml QuickWidgets)
 include(KDEInstallDirs)
 include(KDECMakeSettings)
-include(KDEFrameworkCompilerSettings)
+include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMInstallIcons)
 include(ECMMarkAsTest)
 include(GenerateExportHeader)
