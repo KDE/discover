@@ -40,14 +40,13 @@
 #include <KAuthorized>
 #include <KBugReport>
 #include <KActionCollection>
-#include <KDeclarative/KDeclarative>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KHelpMenu>
 #include <KAboutData>
 #include <KHelpMenu>
 #include <KShortcutsDialog>
-// #include <KSwitchLanguageDialog>
+#include <KLocalizedContext>
 
 // DiscoverCommon includes
 #include <MuonDataSources.h>
@@ -67,10 +66,9 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow(CompactMode mode)
     setObjectName(QStringLiteral("DiscoverMain"));
     setResizeMode(QQuickView::SizeRootObjectToView);
     QQmlEngine* engine = this->engine();
-    KDeclarative::KDeclarative kdeclarative;
-    kdeclarative.setDeclarativeEngine(engine);
-    //binds things like kconfig and icons
-    kdeclarative.setupBindings();
+
+    auto ctx = new KLocalizedContext(this);
+    engine->rootContext()->setContextObject(ctx);
     
     qmlRegisterType<PaginateModel>("org.kde.discover.app", 1, 0, "PaginateModel");
     qmlRegisterType<IconColors>("org.kde.discover.app", 1, 0, "IconColors");
