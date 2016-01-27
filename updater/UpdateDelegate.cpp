@@ -25,11 +25,7 @@
 #include <QMouseEvent>
 #include <QPainter>
 
-// KDE includes
-#include <KIconLoader>
-
 #define SPACING 4
-#define ICON_SIZE KIconLoader::SizeSmallMedium
 
 UpdateDelegate::UpdateDelegate(QObject *parent)
     : QStyledItemDelegate(parent)
@@ -87,5 +83,5 @@ bool UpdateDelegate::editorEvent(QEvent *event,
 void UpdateDelegate::initStyleOption(QStyleOptionViewItem *option, const QModelIndex &index) const
 {
     QStyledItemDelegate::initStyleOption(option, index);
-    option->decorationSize = QSize(ICON_SIZE, ICON_SIZE);
+    option->decorationSize = option->decorationSize * 1.5;
 }

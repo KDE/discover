@@ -21,7 +21,6 @@ target_link_libraries(plasma-discover-updater KF5::CoreAddons
                                    KF5::I18n
                                    KF5::DBusAddons
                                    KF5::XmlGui
-                                   KF5::IconThemes
                                    Discover::Common)
 
 if (ENABLE_QZEITGEIST)

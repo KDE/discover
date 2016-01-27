@@ -32,7 +32,6 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 #include <KNotification>
-#include <KIconLoader>
 
 ApplicationNotifier::ApplicationNotifier(QObject* parent)
   : BackendNotifierModule(parent)

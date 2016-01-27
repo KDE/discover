@@ -24,7 +24,6 @@
 #include <KConfigGroup>
 #include <KRun>
 #include <KLocalizedString>
-#include <KIconLoader>
 #include <KNotification>
 #include <KPluginFactory>
 #include <QMenu>

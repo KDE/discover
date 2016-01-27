@@ -20,13 +20,13 @@ include(GenerateExportHeader)
 
 find_package(KF5 REQUIRED WidgetsAddons CoreAddons
                                             Config DBusAddons I18n ConfigWidgets Notifications Declarative
-                                            KIO IconThemes ItemViews)
+                                            KIO ItemViews)
 find_package(KF5TextWidgets REQUIRED)
 
 find_package(QApt 3.0.0)
 if(QApt_FOUND)
     find_package(DebconfKDE 1.0.0 REQUIRED)
-    find_package(KF5 REQUIRED Archive REQUIRED)
+    find_package(KF5 REQUIRED Archive IconThemes)
 else()
     find_package(AkabeiClient QUIET)
     if(NOT AkabeiClient_FOUND)

@@ -28,12 +28,10 @@ class KMessageWidget;
 class AbstractResource;
 class AbstractResourcesBackend;
 class QItemSelection;
-class QLabel;
 class QStandardItemModel;
 class QTreeView;
 class ChangelogWidget;
 
-class KPixmapSequenceOverlayPainter;
 class UpdateModel;
 
 namespace Ui {
@@ -52,7 +50,6 @@ private:
 
     QTreeView *m_updateView;
     ChangelogWidget *m_changelogWidget;
-    KPixmapSequenceOverlayPainter *m_busyWidget;
     ResourcesUpdatesModel* m_updatesBackends;
     KMessageWidget* m_markallWidget;
     Ui::UpdaterWidgetNoUpdates* m_ui;

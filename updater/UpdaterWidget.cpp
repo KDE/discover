@@ -40,7 +40,6 @@
 #include <KPixmapSequenceOverlayPainter>
 #include <KMessageWidget>
 #include <KFormat>
-#include <KIconLoader>
 
 // DiscoverCommon includes
 #include <resources/AbstractResourcesBackend.h>
@@ -104,13 +103,6 @@ UpdaterWidget::UpdaterWidget(ResourcesUpdatesModel* updates, QWidget *parent) :
     page1Layout->addWidget(m_updateView);
     page1Layout->addWidget(m_changelogWidget);
 
-    m_busyWidget = new KPixmapSequenceOverlayPainter(page1);
-    KPixmapSequence seq = KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), KIconLoader::SizeSmallMedium);
-
-    m_busyWidget->setSequence(seq);
-    m_busyWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    m_busyWidget->setWidget(m_updateView->viewport());
-
     UpdateDelegate *delegate = new UpdateDelegate(m_updateView);
     m_updateView->setItemDelegate(delegate);
 
@@ -124,7 +116,6 @@ UpdaterWidget::UpdaterWidget(ResourcesUpdatesModel* updates, QWidget *parent) :
     setCurrentWidget(page1);
 
     QApplication::setOverrideCursor(Qt::WaitCursor);
-    m_busyWidget->start();
 
     ResourcesModel* resourcesModel = ResourcesModel::global();
     connect(resourcesModel, &ResourcesModel::fetchingChanged, this, &UpdaterWidget::activityChanged);
@@ -140,13 +131,11 @@ UpdaterWidget::~UpdaterWidget()
 void UpdaterWidget::activityChanged()
 {
     if(ResourcesModel::global()->isFetching()) {
-        m_busyWidget->start();
         setEnabled(false);
         setCurrentIndex(0);
     } else if(m_updatesBackends->isProgressing()) {
         setCurrentIndex(-1);
         m_changelogWidget->hide();
-        m_busyWidget->start();
         setEnabled(false);
     } else {
         populateUpdateModel();
@@ -156,7 +145,6 @@ void UpdaterWidget::activityChanged()
 
 void UpdaterWidget::populateUpdateModel()
 {
-    m_busyWidget->stop();
     QApplication::restoreOverrideCursor();
     setEnabled(true);
     checkUpToDate();

@@ -26,7 +26,6 @@
 #include <QDebug>
 
 // KDE includes
-#include <KIconLoader>
 #include <KFormat>
 #include <KLocalizedString>
 

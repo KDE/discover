@@ -28,7 +28,6 @@ class AbstractResource;
 class QParallelAnimationGroup;
 
 class KJob;
-class KPixmapSequenceOverlayPainter;
 class KTemporaryFile;
 class QPushButton;
 class QTextBrowser;
@@ -46,7 +45,6 @@ private:
 
     QParallelAnimationGroup *m_expandWidget;
     QTextBrowser *m_changelogBrowser;
-    KPixmapSequenceOverlayPainter *m_busyWidget;
 
 public Q_SLOTS:
     void setResource(AbstractResource *package);

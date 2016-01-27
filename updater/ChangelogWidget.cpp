@@ -38,7 +38,6 @@
 #include <KLocalizedString>
 #include <KPixmapSequence>
 #include <KPixmapSequenceOverlayPainter>
-#include <KIconLoader>
 #include <QTextBrowser>
 #include <QPushButton>
 #include <QDebug>
@@ -76,11 +75,6 @@ ChangelogWidget::ChangelogWidget(QWidget *parent)
     palette.setColor(viewport->backgroundRole(), Qt::transparent);
     palette.setColor(viewport->foregroundRole(), palette.color(QPalette::WindowText));
     viewport->setPalette(palette);
-
-    m_busyWidget = new KPixmapSequenceOverlayPainter(this);
-    m_busyWidget->setSequence(KIconLoader::global()->loadPixmapSequence(QStringLiteral("process-working"), KIconLoader::SizeSmallMedium));
-    m_busyWidget->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-    m_busyWidget->setWidget(this);
 
     QHBoxLayout *mainLayout = new QHBoxLayout(this);
     mainLayout->setSpacing(0);
@@ -156,7 +150,6 @@ void ChangelogWidget::changelogFetched(const QString& changelog)
         m_changelogBrowser->setHtml(fullText);
     }
 
-    m_busyWidget->stop();
     if (!m_show) {
         animatedHide();
     }
@@ -166,7 +159,6 @@ void ChangelogWidget::fetchChangelog()
 {
     show();
     m_changelogBrowser->clear();
-    m_busyWidget->start();
     m_package->fetchChangelog();
 }
 
