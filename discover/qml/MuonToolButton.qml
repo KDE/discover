@@ -23,6 +23,7 @@ Item
     implicitHeight: layout.Layout.preferredHeight
 
     clip: true
+    enabled: action.enabled
 
     signal clicked()
     onClicked: if (action) action.trigger()
