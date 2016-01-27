@@ -23,9 +23,6 @@
 #include "Category.h"
 #include "CategoriesReader.h"
 
-// KDE includes
-#include <KCategorizedSortFilterProxyModel>
-
 Q_GLOBAL_STATIC_WITH_ARGS(QList<Category*>, s_categories, (CategoriesReader().populateCategories()))
 
 CategoryModel::CategoryModel(QObject* parent)
@@ -51,7 +48,6 @@ void CategoryModel::setCategories(const QList<Category *> &categoryList, const Q
         categoryItem->setText(category->name());
         categoryItem->setIcon(QIcon::fromTheme(category->icon()));
         categoryItem->setEditable(false);
-        categoryItem->setData(rootName, KCategorizedSortFilterProxyModel::CategoryDisplayRole);
         categoryItem->setData(qVariantFromValue<QObject*>(category), CategoryRole);
         connect(category, &QObject::destroyed, this, &CategoryModel::categoryDeleted);
 

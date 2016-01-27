@@ -48,7 +48,6 @@ LINK_PRIVATE
     Qt5::Xml
     KF5::Notifications
     KF5::XmlGui
-    KF5::ItemViews
     KF5::KIOWidgets
     KF5::IconThemes
 )
