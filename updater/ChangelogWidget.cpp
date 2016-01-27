@@ -33,7 +33,6 @@
 #include <QDesktopServices>
 
 // KDE includes
-#include <KIO/Job>
 #include <KJob>
 #include <KLocalizedString>
 #include <KPixmapSequence>

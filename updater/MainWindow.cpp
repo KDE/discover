@@ -36,7 +36,6 @@
 #include <KMessageBox>
 #include <KMessageWidget>
 #include <KProcess>
-#include <KProtocolManager>
 #include <KToolBar>
 #include <KLocalizedString>
 #warning TODO, waiting for this new API to finally be accepted
