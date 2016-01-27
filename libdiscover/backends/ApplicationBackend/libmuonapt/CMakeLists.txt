@@ -7,7 +7,7 @@ add_library(MuonApt STATIC ChangesDialog.cpp
     HistoryView/HistoryView.cpp)
 
 target_link_libraries(MuonApt Qt5::Core
-     KF5::Solid KF5::KIOWidgets KF5::XmlGui
+     KF5::KIOWidgets KF5::XmlGui
      QApt::Main KF5::I18n
 )
 

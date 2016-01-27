@@ -18,14 +18,15 @@ include(ECMInstallIcons)
 include(ECMMarkAsTest)
 include(GenerateExportHeader)
 
-find_package(KF5 REQUIRED WidgetsAddons CoreAddons Solid Archive
-                                            Config Wallet DBusAddons I18n ConfigWidgets Notifications Declarative
+find_package(KF5 REQUIRED WidgetsAddons CoreAddons
+                                            Config DBusAddons I18n ConfigWidgets Notifications Declarative
                                             KIO IconThemes ItemViews)
 find_package(KF5TextWidgets REQUIRED)
 
 find_package(QApt 3.0.0)
 if(QApt_FOUND)
     find_package(DebconfKDE 1.0.0 REQUIRED)
+    find_package(KF5 REQUIRED Archive REQUIRED)
 else()
     find_package(AkabeiClient QUIET)
     if(NOT AkabeiClient_FOUND)
