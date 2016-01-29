@@ -122,12 +122,9 @@ QStringList MuonDiscoverMainWindow::modes() const
     QObject* obj = rootObject();
     for(int i = obj->metaObject()->propertyOffset(); i<obj->metaObject()->propertyCount(); i++) {
         QMetaProperty p = obj->metaObject()->property(i);
-        QByteArray name = p.name();
-        if(name.startsWith("top") && name.endsWith("Comp")) {
-            name = name.mid(3);
-            name = name.left(name.length()-4);
-            name[0] = name[0] - 'A' + 'a';
-            ret += QString::fromLatin1(name);
+        QByteArray compName = p.name();
+        if(compName.startsWith("top") && compName.endsWith("Comp")) {
+            ret += QString::fromLatin1(compName.mid(3, compName.length()-7));
         }
     }
     return ret;
