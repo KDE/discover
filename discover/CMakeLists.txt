@@ -20,6 +20,7 @@ target_link_libraries(plasma-discover LINK_PUBLIC
                                      KF5::DBusAddons
                                      KF5::I18n
                                      KF5::XmlGui
+                                     KF5::Declarative
                                      Qt5::Quick
                                      Discover::Common
 )

@@ -18,7 +18,7 @@ include(ECMInstallIcons)
 include(ECMMarkAsTest)
 include(GenerateExportHeader)
 
-find_package(KF5 REQUIRED CoreAddons Config DBusAddons I18n)
+find_package(KF5 REQUIRED CoreAddons Config DBusAddons I18n Declarative)
 find_package(KF5TextWidgets REQUIRED)
 
 find_package(QApt 3.0.0)
