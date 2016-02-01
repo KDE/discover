@@ -54,15 +54,17 @@ ColumnLayout {
             }
         }
         delegate: GridItem {
+                    id: delegate
                     Layout.fillWidth: true
                     Layout.minimumHeight: title.paintedHeight*(topView.extended ? 3.5 : 2.5)
 
+                    enabled: model["name"] !== undefined
                     ConditionalLoader {
                         anchors {
                             fill: parent
                             margins: 2
                         }
-                        condition: model["name"] !== undefined
+                        condition: delegate.enabled
                         componentFalse: Item {}
                         componentTrue: RowLayout {
                             id: layo
