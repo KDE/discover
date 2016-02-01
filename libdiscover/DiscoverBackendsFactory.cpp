@@ -64,6 +64,7 @@ AbstractResourcesBackend* DiscoverBackendsFactory::backendForFile(const QString&
     AbstractResourcesBackend* instance = f->newInstance(ResourcesModel::global());
     if(!instance) {
         qWarning() << "Couldn't find the backend: " << path << "among" << allBackendNames(false) << "because" << loader->errorString();
+        return instance;
     }
     instance->setName(name);
     instance->setMetaData(path);
