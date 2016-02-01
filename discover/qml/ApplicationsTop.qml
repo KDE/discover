@@ -46,6 +46,7 @@ ColumnLayout {
         id: rep
         model: PaginateModel {
             pageSize: 5
+            staticRowCount: true
             sourceModel: ApplicationProxyModel {
                 id: appsModel
                 sortOrder: Qt.DescendingOrder
@@ -56,42 +57,46 @@ ColumnLayout {
                     Layout.fillWidth: true
                     Layout.minimumHeight: title.paintedHeight*(topView.extended ? 3.5 : 2.5)
 
-                    RowLayout {
-                        id: layo
+                    ConditionalLoader {
                         anchors {
                             fill: parent
                             margins: 2
                         }
-                        QIconItem {
-                            Layout.fillHeight: true
-                            Layout.minimumWidth: height
-                            icon: model.icon
-                        }
-                        ColumnLayout {
-                            Layout.fillHeight: true
-                            Layout.fillWidth: true
-
-                            Label {
-                                id: nameItem
+                        condition: model["name"] !== undefined
+                        componentFalse: Item {}
+                        componentTrue: RowLayout {
+                            id: layo
+                            QIconItem {
+                                Layout.fillHeight: true
+                                Layout.minimumWidth: height
+                                icon: model.icon
+                            }
+                            ColumnLayout {
+                                Layout.fillHeight: true
                                 Layout.fillWidth: true
-                                text: name
-                                elide: Text.ElideRight
-                                verticalAlignment: Text.AlignVCenter
+
+                                Label {
+                                    id: nameItem
+                                    Layout.fillWidth: true
+                                    text: name
+                                    elide: Text.ElideRight
+                                    verticalAlignment: Text.AlignVCenter
+                                }
+                                Label {
+                                    Layout.preferredWidth: nameItem.Layout.preferredWidth
+                                    visible: topView.extended
+                                    text: category[0]
+                                    elide: Text.ElideRight
+                                    verticalAlignment: Text.AlignVCenter
+                                    opacity: 0.6
+                                }
                             }
-                            Label {
-                                Layout.preferredWidth: nameItem.Layout.preferredWidth
-                                visible: topView.extended
-                                text: category[0]
-                                elide: Text.ElideRight
-                                verticalAlignment: Text.AlignVCenter
-                                opacity: 0.6
+                            Loader {
+                                Layout.fillHeight: true
+                                Layout.minimumWidth: item.width
+                                sourceComponent: topView.roleDelegate
+                                onItemChanged: item.model=model
                             }
-                        }
-                        Loader {
-                            Layout.fillHeight: true
-                            Layout.minimumWidth: item.width
-                            sourceComponent: topView.roleDelegate
-                            onItemChanged: item.model=model
                         }
                     }
                     onClicked: Navigation.openApplication(application)

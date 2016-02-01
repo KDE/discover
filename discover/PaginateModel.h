@@ -39,6 +39,9 @@ class PaginateModel : public QAbstractListModel
     Q_PROPERTY(int currentPage READ currentPage NOTIFY firstItemChanged)
     Q_PROPERTY(int pageCount READ pageCount NOTIFY pageCountChanged)
 
+    /** If enabled, ensures that pageCount and pageSize are the same. */
+    Q_PROPERTY(bool staticRowCount READ hasStaticRowCount WRITE setStaticRowCount)
+
     public:
         PaginateModel(QObject* object = nullptr);
 
@@ -53,12 +56,15 @@ class PaginateModel : public QAbstractListModel
 
         QModelIndex mapToSource(const QModelIndex& idx) const;
         QModelIndex mapFromSource(const QModelIndex& idx) const;
-        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
-        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
+        int rowCount(const QModelIndex& parent = QModelIndex()) const override;
+        QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
 
         int currentPage() const;
         int pageCount() const;
-        virtual QHash<int, QByteArray> roleNames() const override;
+        QHash<int, QByteArray> roleNames() const override;
+
+        void setStaticRowCount(bool src);
+        bool hasStaticRowCount() const;
 
         Q_SCRIPTABLE void firstPage();
         Q_SCRIPTABLE void nextPage();
@@ -93,10 +99,13 @@ class PaginateModel : public QAbstractListModel
         void pageCountChanged();
 
     private:
+        bool isIntervalValid(const QModelIndex& parent, int start, int end) const;
+
         int rowsByPageSize(int size) const;
         int m_firstItem;
         int m_pageSize;
         QAbstractItemModel* m_sourceModel;
+        bool m_hasStaticRowCount;
 };
 
 #endif

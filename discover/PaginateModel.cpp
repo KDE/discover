@@ -25,6 +25,7 @@ PaginateModel::PaginateModel(QObject* object)
     , m_firstItem(0)
     , m_pageSize(10)
     , m_sourceModel(nullptr)
+    , m_hasStaticRowCount(false)
 {
 }
 
@@ -121,7 +122,9 @@ QHash< int, QByteArray > PaginateModel::roleNames() const
 
 int PaginateModel::rowsByPageSize(int size) const
 {
-    return !m_sourceModel ? 0 : qMin(m_sourceModel->rowCount()-m_firstItem, size);
+    return m_hasStaticRowCount ? size
+        : !m_sourceModel ? 0
+        : qMin(m_sourceModel->rowCount()-m_firstItem, size);
 }
 
 int PaginateModel::rowCount(const QModelIndex& parent) const
@@ -183,6 +186,22 @@ int PaginateModel::pageCount() const
         return 0;
     int r = (m_sourceModel->rowCount()%m_pageSize == 0) ? 1 : 0;
     return m_sourceModel->rowCount()/m_pageSize - r;
+}
+
+bool PaginateModel::hasStaticRowCount() const
+{
+    return m_hasStaticRowCount;
+}
+
+void PaginateModel::setStaticRowCount(bool src)
+{
+    if (src == m_hasStaticRowCount) {
+        return;
+    }
+
+    m_hasStaticRowCount = src;
+    beginResetModel();
+    endResetModel();
 }
 
 //////////////////////////////
@@ -276,9 +295,14 @@ void PaginateModel::_k_sourceModelReset()
     endResetModel();
 }
 
+bool PaginateModel::isIntervalValid(const QModelIndex& parent, int start, int end) const
+{
+    return !parent.isValid() && (start<m_firstItem+m_pageSize || end>m_firstItem);
+}
+
 void PaginateModel::_k_sourceRowsAboutToBeInserted(const QModelIndex& parent, int start, int end)
 {
-    if(parent.isValid() || start>m_firstItem+m_pageSize) {
+    if(!isIntervalValid(parent, start, end)) {
         return;
     }
 
@@ -298,13 +322,23 @@ void PaginateModel::_k_sourceRowsAboutToBeMoved(const QModelIndex& sourceParent,
     Q_UNUSED(sourceEnd)
     Q_UNUSED(destParent)
     Q_UNUSED(dest)
-    //TODO could optimize, unsure if it makes sense
+    //NOTE could optimize, unsure if it makes sense
     beginResetModel();
+}
+
+void PaginateModel::_k_sourceRowsMoved(const QModelIndex& sourceParent, int sourceStart, int sourceEnd, const QModelIndex& destParent, int dest)
+{
+    Q_UNUSED(sourceParent)
+    Q_UNUSED(sourceStart)
+    Q_UNUSED(sourceEnd)
+    Q_UNUSED(destParent)
+    Q_UNUSED(dest)
+    endResetModel();
 }
 
 void PaginateModel::_k_sourceRowsAboutToBeRemoved(const QModelIndex& parent, int start, int end)
 {
-    if(parent.isValid() || start>m_firstItem+m_pageSize) {
+    if(!isIntervalValid(parent, start, end)) {
         return;
     }
 
@@ -319,7 +353,7 @@ void PaginateModel::_k_sourceRowsAboutToBeRemoved(const QModelIndex& parent, int
 
 void PaginateModel::_k_sourceRowsInserted(const QModelIndex& parent, int start, int end)
 {
-    if(parent.isValid() || start>m_firstItem+m_pageSize) {
+    if(!isIntervalValid(parent, start, end)) {
         return;
     }
 
@@ -331,19 +365,9 @@ void PaginateModel::_k_sourceRowsInserted(const QModelIndex& parent, int start, 
     }
 }
 
-void PaginateModel::_k_sourceRowsMoved(const QModelIndex& sourceParent, int sourceStart, int sourceEnd, const QModelIndex& destParent, int dest)
-{
-    Q_UNUSED(sourceParent)
-    Q_UNUSED(sourceStart)
-    Q_UNUSED(sourceEnd)
-    Q_UNUSED(destParent)
-    Q_UNUSED(dest)
-    endResetModel();
-}
-
 void PaginateModel::_k_sourceRowsRemoved(const QModelIndex& parent, int start, int end)
 {
-    if(parent.isValid() || start>m_firstItem+m_pageSize) {
+    if(!isIntervalValid(parent, start, end)) {
         return;
     }
 
