@@ -116,6 +116,9 @@ void KNSBackend::setMetaData(const QString& path)
 
     if (!m_atticaManager->providers().isEmpty()) {
         startFetchingCategories();
+    } else {
+        m_isValid = false;
+        qWarning() << "Could not find providers for" << m_name;
     }
 }
 
