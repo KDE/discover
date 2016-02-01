@@ -80,9 +80,11 @@ private Q_SLOTS:
         QCOMPARE(m_appBackend->updatesCount(), 212);
         QCOMPARE(m->hasUpdates(), true);
 
-        QCOMPARE(m->index(0,0).child(0,0).data(Qt::CheckStateRole).toBool(), true);
-        m->setData(m->index(0,0).child(0,0), false, Qt::CheckStateRole);
-        QCOMPARE(m->index(0,0).child(0,0).data(Qt::CheckStateRole).toBool(), false);
+        const QModelIndex firstIdx = m->index(0,0).child(0,0);
+        QCOMPARE(firstIdx.data(Qt::CheckStateRole).toBool(), true);
+        QVERIFY(m->setData(firstIdx, false, Qt::CheckStateRole));
+        QCOMPARE(firstIdx.data(Qt::CheckStateRole).toBool(), false);
+        QVERIFY(firstIdx.data(Qt::DisplayRole).isValid());
 
 
         rum->updateAll();
