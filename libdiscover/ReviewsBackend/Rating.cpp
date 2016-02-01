@@ -99,14 +99,14 @@ double dampenedRating(const QVector<int> &ratings, double power = 0.1)
 Rating::Rating(const QVariantMap &data)
     : QObject()
 {
-    init(data.value(QStringLiteral("package_name")).toString(), data.value(QStringLiteral("app_name")).toString(),
+    init(data.value(QStringLiteral("package_name")).toString(),
          data.value(QStringLiteral("ratings_total")).toULongLong(), data.value(QStringLiteral("ratings_average")).toDouble() * 2, data.value(QStringLiteral("histogram")).toString());
 }
 
-Rating::Rating(const QString& packageName, const QString& appName, int ratingCount, int rating, const QString& histogram)
+Rating::Rating(const QString& packageName, int ratingCount, int rating, const QString& histogram)
     : QObject()
 {
-    init(packageName, appName, ratingCount, rating, histogram);
+    init(packageName, ratingCount, rating, histogram);
 }
 
 Rating::Rating(const QString& packageName, QStringList histogram)
@@ -115,10 +115,9 @@ Rating::Rating(const QString& packageName, QStringList histogram)
     debInit(packageName,histogram);
 }
 
-void Rating::init(const QString& packageName, const QString& appName, int ratingCount, int rating, const QString& histogram)
+void Rating::init(const QString& packageName, int ratingCount, int rating, const QString& histogram)
 {
     m_packageName = packageName;
-    m_appName = appName;
     m_ratingCount = ratingCount;
     m_rating = rating;
     m_ratingPoints = 0;
@@ -172,11 +171,6 @@ Rating::~Rating()
 QString Rating::packageName() const
 {
     return m_packageName;
-}
-
-QString Rating::applicationName() const
-{
-    return m_appName;
 }
 
 quint64 Rating::ratingCount() const

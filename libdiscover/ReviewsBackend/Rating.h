@@ -35,12 +35,11 @@ Q_PROPERTY(int ratingPoints READ ratingPoints CONSTANT)
 Q_PROPERTY(quint64 ratingCount READ ratingCount CONSTANT)
 public:
     explicit Rating(const QVariantMap &data);
-    explicit Rating(const QString& packageName, const QString& appName, int ratingCount, int rating, const QString& histogram);
+    explicit Rating(const QString& packageName, int ratingCount, int rating, const QString& histogram);
     explicit Rating(const QString& packageName, QStringList histogram);
     ~Rating();
 
     QString packageName() const;
-    QString applicationName() const;
     quint64 ratingCount() const;
     // 0.0 - 10.0 ranged rating multiplied by two and rounded for KRating*
     Q_SCRIPTABLE int rating() const;
@@ -49,10 +48,9 @@ public:
     double sortableRating() const;
 
 private:
-    void init(const QString& packageName, const QString& appName, int ratingCount, int rating, const QString& histogram);
-    void debInit(const QString& packageName,QStringList histogram);
+    void init(const QString& packageName, int ratingCount, int rating, const QString& histogram);
+    void debInit(const QString& packageName, QStringList histogram);
     QString m_packageName;
-    QString m_appName;
     quint64 m_ratingCount;
     int m_rating;
     int m_ratingPoints;
