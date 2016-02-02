@@ -45,15 +45,22 @@ ApplicationNotifier::ApplicationNotifier(QObject* parent)
     stampDirWatch->addFile(QStringLiteral("/var/lib/update-notifier/dpkg-run-stamp"));
     connect(stampDirWatch, &KDirWatch::dirty, this, &ApplicationNotifier::distUpgradeEvent);
 
+    QTimer* t = new QTimer(this);
+    t->setSingleShot(true);
+    t->setInterval(2000);
+    connect(t, &QTimer::timeout, this, &ApplicationNotifier::recheckSystemUpdateNeeded);
+
     stampDirWatch = new KDirWatch(this);
     stampDirWatch->addDir(QStringLiteral("/var/lib/apt/lists/"));
     stampDirWatch->addDir(QStringLiteral("/var/lib/apt/lists/partial/"));
     stampDirWatch->addFile(QStringLiteral("/var/lib/update-notifier/updates-available"));
     stampDirWatch->addFile(QStringLiteral("/var/lib/update-notifier/dpkg-run-stamp"));
-    connect(stampDirWatch, &KDirWatch::dirty, this, &ApplicationNotifier::recheckSystemUpdateNeeded);
+    connect(stampDirWatch, &KDirWatch::dirty, t, static_cast<void(QTimer::*)()>(&QTimer::start));
+//     connect(stampDirWatch, &KDirWatch::dirty, this, [](const QString& dirty){ qDebug() << "dirty path" << dirty;});
 
-    //check in 2 minutes
-    QTimer::singleShot(2 * 60 * 1000, this, &ApplicationNotifier::recheckSystemUpdateNeeded);
+    m_updateCheckerProcess = new QProcess(this);
+    m_updateCheckerProcess->setProgram(QStringLiteral("/usr/lib/update-notifier/apt-check"));
+    connect(m_updateCheckerProcess, static_cast<void(QProcess::*)(int)>(&QProcess::finished), this, &ApplicationNotifier::parseUpdateInfo);
 
     init();
 }
@@ -107,13 +114,12 @@ void ApplicationNotifier::upgradeActivated()
 
 void ApplicationNotifier::recheckSystemUpdateNeeded()
 {
-    if (m_updateCheckerProcess &&
-            m_updateCheckerProcess->state() == QProcess::Running)
+    qDebug() << "should recheck..." << m_updateCheckerProcess << m_updateCheckerProcess->state();
+
+    if (m_updateCheckerProcess->state() == QProcess::Running)
         return;
     
-    m_updateCheckerProcess = new QProcess(this);
-    connect(m_updateCheckerProcess, static_cast<void(QProcess::*)(int)>(&QProcess::finished), this, &ApplicationNotifier::parseUpdateInfo);
-    m_updateCheckerProcess->start(QStringLiteral("/usr/lib/update-notifier/apt-check"));
+    m_updateCheckerProcess->start();
 }
     
 void ApplicationNotifier::parseUpdateInfo()
@@ -122,13 +128,13 @@ void ApplicationNotifier::parseUpdateInfo()
         return;
 
 #warning why does this parse stdout and not use qapt, wtf...
-    m_securityUpdates = 0;
-    m_normalUpdates = 0;
     // Weirdly enough, apt-check gives output on stderr
     QByteArray line = m_updateCheckerProcess->readAllStandardError();
-    m_updateCheckerProcess->deleteLater();
-    m_updateCheckerProcess = nullptr;
+    if (line.isEmpty())
+        return;
 
+    m_securityUpdates = 0;
+    m_normalUpdates = 0;
     // Format updates;security
     int eqpos = line.indexOf(';');
 
