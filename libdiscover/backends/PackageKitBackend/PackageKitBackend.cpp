@@ -196,7 +196,7 @@ void PackageKitBackend::refreshDatabase()
 {
     if (!m_refresher) {
         m_refresher = PackageKit::Daemon::refreshCache(false);
-        connect(m_refresher, &PackageKit::Transaction::finished, this, &PackageKitBackend::reloadPackageList);
+        connect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitBackend::reloadPackageList);
     } else {
         qWarning() << "already resetting";
     }
