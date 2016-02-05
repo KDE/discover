@@ -114,11 +114,9 @@ void KNSBackend::setMetaData(const QString& path)
     connect(m_manager, &KNS3::DownloadManager::searchResult, this, &KNSBackend::receivedEntries);
     connect(m_manager, &KNS3::DownloadManager::entryStatusChanged, this, &KNSBackend::statusChanged);
 
+    //otherwise this will be executed when defaultProvidersLoaded is emitted
     if (!m_atticaManager->providers().isEmpty()) {
         startFetchingCategories();
-    } else {
-        m_isValid = false;
-        qWarning() << "Could not find providers for" << m_name;
     }
 }
 
