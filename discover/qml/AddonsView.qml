@@ -1,9 +1,10 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.1
 import org.kde.discover 1.0
 import org.kde.kquickcontrolsaddons 2.0
 
-Column
+ColumnLayout
 {
     id: addonsView
     property alias application: addonsModel.application
@@ -11,75 +12,64 @@ Column
     property alias isEmpty: addonsModel.isEmpty
     enabled: !addonsView.isInstalling
     visible: !addonsView.isEmpty
+    spacing: 5
 
     Repeater
     {
         model: ApplicationAddonsModel { id: addonsModel }
         
-        delegate: Item {
-            height: (description.height + name.height)*1.2
-            width: addonsView.width
-            Row {
-                id: componentsRow
-                height: parent.height
-                spacing: 10
-                CheckBox {
-                    enabled: !addonsView.isInstalling
-                    anchors.verticalCenter: parent.verticalCenter
-                    checked: model.checked
-                    onClicked: addonsModel.changeState(packageName, checked)
-                }
-                QIconItem {
-                    icon: "applications-other"
-                    height: parent.height*0.9
-                    width: height
-                    smooth: true
-                    opacity: addonsView.isInstalling ? 0.3 : 1
-                }
+        delegate: RowLayout {
+            Layout.fillWidth: true
+
+            CheckBox {
+                enabled: !addonsView.isInstalling
+                checked: model.checked
+                onClicked: addonsModel.changeState(packageName, checked)
             }
-            Label {
-                id: name
-                anchors {
-                    top: parent.top
-                    left: componentsRow.right
-                    right: parent.right
-                }
-                elide: Text.ElideRight
-                text: display
+            QIconItem {
+                icon: "applications-other"
+                smooth: true
+                Layout.minimumWidth: content.implicitHeight
+                Layout.minimumHeight: content.implicitHeight
+                opacity: addonsView.isInstalling ? 0.3 : 1
             }
-            Label {
-                id: description
-                anchors {
-                    bottom: parent.bottom
-                    left: componentsRow.right
-                    right: parent.right
+
+            ColumnLayout {
+                id: content
+                Layout.fillWidth: true
+                spacing: 0
+                Label {
+                    Layout.fillWidth: true
+                    elide: Text.ElideRight
+                    text: display
                 }
-                elide: Text.ElideRight
-                font.italic: true
-                text: toolTip
+                Label {
+                    Layout.fillWidth: true
+                    elide: Text.ElideRight
+                    font.italic: true
+                    text: toolTip
+                }
             }
         }
     }
     
-    Row {
-        enabled: addonsModel.hasChanges && !addonsView.isInstalling
+    RowLayout {
+        visible: addonsModel.hasChanges && !addonsView.isInstalling
         spacing: 5
-        
+
         Button {
-            height: parent.enabled ? implicitHeight : 0
-            visible: height!=0
             iconName: "dialog-ok"
             text: i18n("Apply Changes")
             onClicked: addonsModel.applyChanges()
-            Behavior on height { NumberAnimation { duration: 100 } }
+
+            height: parent.visible ? implicitHeight : 0
         }
         Button {
-            height: parent.enabled ? implicitHeight : 0
-            visible: height!=0
             iconName: "document-revert"
             text: i18n("Discard")
             onClicked: addonsModel.discardChanges()
-            Behavior on height { NumberAnimation { duration: 100 } }
+
+            height: parent.visible ? implicitHeight : 0
         }
     }
 }
