@@ -49,7 +49,7 @@ class AppPackageKitResource : public PackageKitResource
     private:
         QStringList findProvides(Appstream::Provides::Kind kind) const;
 
-        Appstream::Component m_appdata;
+        const Appstream::Component m_appdata;
 };
 
 #endif // APPPACKAGEKITRESOURCE_H
