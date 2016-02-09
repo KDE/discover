@@ -56,10 +56,9 @@ void ApplicationAddonsModel::setApplication(AbstractResource* app)
 
 void ApplicationAddonsModel::resetState()
 {
-    Q_ASSERT(m_app);
     beginResetModel();
     m_state.clear();
-    m_initial = m_app->addonsInformation();
+    m_initial = m_app ? m_app->addonsInformation() : QList<PackageState>();
     endResetModel();
 
     emit stateChanged();
