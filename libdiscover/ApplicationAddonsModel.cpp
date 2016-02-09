@@ -38,6 +38,7 @@ QHash< int, QByteArray > ApplicationAddonsModel::roleNames() const
 {
     QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
     roles.insert(Qt::CheckStateRole, "checked");
+    roles.insert(PackageNameRole, "packageName");
     return roles;
 }
 
@@ -84,11 +85,13 @@ QVariant ApplicationAddonsModel::data(const QModelIndex& index, int role) const
             return m_initial[index.row()].name();
         case Qt::ToolTipRole:
             return m_initial[index.row()].description();
+        case PackageNameRole:
+            return m_initial[index.row()].packageName();
         case Qt::CheckStateRole: {
-            PackageState init = m_initial[index.row()];
-            AddonList::State state = m_state.addonState(init.name());
+            const PackageState init = m_initial[index.row()];
+            const AddonList::State state = m_state.addonState(init.name());
             if(state == AddonList::None) {
-                return init.isInstalled();
+                return init.isInstalled() ? Qt::Checked : Qt::Unchecked;
             } else {
                 return state == AddonList::ToInstall ? Qt::Checked : Qt::Unchecked;
             }
@@ -116,9 +119,10 @@ void ApplicationAddonsModel::changeState(const QString& packageName, bool instal
 {
     auto it = m_initial.constBegin();
     for(; it != m_initial.constEnd(); ++it) {
-        if(it->name()==packageName)
+        if(it->packageName()==packageName)
             break;
     }
+    Q_ASSERT(it != m_initial.constEnd());
     
     bool restored = it->isInstalled()==installed;
 

@@ -20,8 +20,16 @@
 
 #include "PackageState.h"
 
-PackageState::PackageState(QString  name, QString  description, bool installed)
-    : m_name(std::move(name))
+PackageState::PackageState(QString name, QString description, bool installed)
+    : m_packageName(std::move(name))
+    , m_name(m_packageName)
+    , m_description(std::move(description))
+    , m_installed(installed)
+{}
+
+PackageState::PackageState(QString packageName, QString name, QString description, bool installed)
+    : m_packageName(std::move(packageName))
+    , m_name(std::move(name))
     , m_description(std::move(description))
     , m_installed(installed)
 {}
@@ -34,6 +42,11 @@ QString PackageState::name() const
 QString PackageState::description() const
 {
     return m_description;
+}
+
+QString PackageState::packageName() const
+{
+    return m_packageName;
 }
 
 bool PackageState::isInstalled() const

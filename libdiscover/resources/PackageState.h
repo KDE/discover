@@ -32,17 +32,20 @@
 class DISCOVERCOMMON_EXPORT PackageState
 {
     public:
-        PackageState(QString  name, QString  description, bool installed);
+        PackageState(QString packageName, QString name, QString description, bool installed);
+        PackageState(QString name, QString description, bool installed);
         PackageState& operator=(const PackageState& other);
         
+        QString packageName() const;
         QString name() const;
         QString description() const;
         bool isInstalled() const;
         void setInstalled(bool installed);
         
     private:
-        QString m_name;
-        QString m_description;
+        const QString m_packageName;
+        const QString m_name;
+        const QString m_description;
         bool m_installed;
 };
 

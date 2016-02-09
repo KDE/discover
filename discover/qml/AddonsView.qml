@@ -27,7 +27,7 @@ Column
                     enabled: !addonsView.isInstalling
                     anchors.verticalCenter: parent.verticalCenter
                     checked: model.checked
-                    onClicked: addonsModel.changeState(display, checked)
+                    onClicked: addonsModel.changeState(packageName, checked)
                 }
                 QIconItem {
                     icon: "applications-other"
