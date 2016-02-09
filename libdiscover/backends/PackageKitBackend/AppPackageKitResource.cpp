@@ -73,6 +73,11 @@ QString AppPackageKitResource::comment()
     return m_appdata.summary();
 }
 
+QString AppPackageKitResource::appstreamId() const
+{
+    return m_appdata.id();
+}
+
 QUrl AppPackageKitResource::homepage()
 {
     QList< QUrl > urls = m_appdata.urls(Appstream::Component::UrlKindHomepage);
@@ -141,4 +146,17 @@ QStringList AppPackageKitResource::findProvides(Appstream::Provides::Kind kind) 
 QStringList AppPackageKitResource::allPackageNames() const
 {
     return m_appdata.packageNames();
+}
+
+QList<PackageState> AppPackageKitResource::addonsInformation()
+{
+    const PackageKitBackend* p = static_cast<PackageKitBackend*>(parent());
+    const QVector<AppPackageKitResource*> res = p->extendedBy(m_appdata.id());
+
+    QList<PackageState> ret;
+    Q_FOREACH (AppPackageKitResource* r, res) {
+        qDebug() << "addons!" << r->packageName() << r->name();
+        ret += PackageState(r->appstreamId(), r->name(), r->comment(), r->isInstalled());
+    }
+    return ret;
 }
