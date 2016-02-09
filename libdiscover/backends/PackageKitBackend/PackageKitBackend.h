@@ -83,8 +83,6 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void fetchUpdates();
         void acquireFetching(bool f);
 
-        QHash<QString, AbstractResource*> m_packages;
-        QHash<QString, AbstractResource*> m_updatingPackages;
         Appstream::Database m_appdata;
         QList<Transaction*> m_transactions;
         PackageKitUpdater* m_updater;
@@ -92,8 +90,14 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         int m_isFetching;
         QSet<QString> m_updatesPackageId;
         QList<QAction*> m_messageActions;
-        QHash<QString, QStringList> m_translationPackageToApp;
-        QHash<QString, QStringList> m_updatingTranslationPackageToApp;
+
+        struct Packages {
+            QHash<QString, AbstractResource*> packages;
+            QHash<QString, QStringList> packageToApp;
+        };
+
+        Packages m_packages;
+        Packages m_updatingPackages;
 };
 
 #endif // PACKAGEKITBACKEND_H

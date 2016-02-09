@@ -95,16 +95,15 @@ void PackageKitBackend::acquireFetching(bool f)
 void PackageKitBackend::reloadPackageList()
 {
     m_updatingPackages = m_packages;
-    m_updatingTranslationPackageToApp = m_translationPackageToApp;
     
     if (m_refresher) {
         disconnect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitBackend::reloadPackageList);
     }
 
     foreach(const Appstream::Component& component, m_appdata.allComponents()) {
-        m_updatingPackages[component.id()] = new AppPackageKitResource(component, this);
+        m_updatingPackages.packages[component.id()] = new AppPackageKitResource(component, this);
         foreach (const QString& pkg, component.packageNames()) {
-            m_updatingTranslationPackageToApp[pkg] += component.id();
+            m_updatingPackages.packageToApp[pkg] += component.id();
         }
     }
 
@@ -135,7 +134,7 @@ void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QSt
     QVector<AbstractResource*> r = resourcesByPackageName(packageName, true);
     if (r.isEmpty()) {
         r += new PackageKitResource(packageName, summary, this);
-        m_updatingPackages[packageName] = r.last();
+        m_updatingPackages.packages[packageName] = r.last();
     }
     foreach(auto res, r)
         static_cast<PackageKitResource*>(res)->addPackageId(info, packageId, summary);
@@ -149,18 +148,17 @@ void PackageKitBackend::getPackagesFinished(PackageKit::Transaction::Exit exit)
         qWarning() << "error while fetching details" << exit;
     }
 
-    for(auto it = m_updatingPackages.begin(); it != m_updatingPackages.end(); ) {
+    for(auto it = m_updatingPackages.packages.begin(); it != m_updatingPackages.packages.end(); ) {
         auto pkr = qobject_cast<PackageKitResource*>(it.value());
         if (pkr->packages().isEmpty()) {
             qWarning() << "Failed to find package for" << it.key();
             it.value()->deleteLater();
-            it = m_updatingPackages.erase(it);
+            it = m_updatingPackages.packages.erase(it);
         } else
             ++it;
     }
 
     m_packages = m_updatingPackages;
-    m_translationPackageToApp = m_updatingTranslationPackageToApp;
     acquireFetching(false);
 }
 
@@ -178,8 +176,9 @@ void PackageKitBackend::packageDetails(const PackageKit::Details& details)
 
 QVector<AbstractResource*> PackageKitBackend::resourcesByPackageName(const QString& name, bool updating) const
 {
-    const QHash<QString, QStringList> *dictionary = updating ? &m_updatingTranslationPackageToApp : &m_translationPackageToApp;
-    const QHash<QString, AbstractResource*> *pkgs = updating ? &m_updatingPackages : &m_packages;
+    const Packages * const f = (updating ? &m_updatingPackages : &m_packages);
+    const QHash<QString, QStringList> *dictionary = &f->packageToApp;
+    const QHash<QString, AbstractResource*> *pkgs = &f->packages;
 
     const QStringList names = dictionary->value(name, QStringList(name));
     QVector<AbstractResource*> ret;
@@ -204,19 +203,19 @@ void PackageKitBackend::refreshDatabase()
 
 QVector<AbstractResource*> PackageKitBackend::allResources() const
 {
-    return m_packages.values().toVector();
+    return m_packages.packages.values().toVector();
 }
 
 AbstractResource* PackageKitBackend::resourceByPackageName(const QString& name) const
 {
-    const QStringList ids = m_translationPackageToApp.value(name, QStringList(name));
-    return ids.isEmpty() ? nullptr : m_packages[ids.first()];
+    const QStringList ids = m_packages.packageToApp.value(name, QStringList(name));
+    return ids.isEmpty() ? nullptr : m_packages.packages[ids.first()];
 }
 
 QList<AbstractResource*> PackageKitBackend::searchPackageName(const QString& searchText)
 {
     QList<AbstractResource*> ret;
-    Q_FOREACH (AbstractResource* res, m_packages.values()) {
+    Q_FOREACH (AbstractResource* res, m_packages.packages.values()) {
         if (res->name().contains(searchText, Qt::CaseInsensitive)) {
             ret += res;
         }
