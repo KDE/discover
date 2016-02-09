@@ -30,10 +30,21 @@
 #include <PackageKit/Transaction>
 #include <PackageKit/Daemon>
 
-PKTransaction::PKTransaction(AbstractResource* app, Transaction::Role role)
-    : Transaction(app, app, role),
-      m_trans(nullptr)
+PKTransaction::PKTransaction(const QVector<AbstractResource*>& apps, Transaction::Role role)
+    : Transaction(apps.first(), apps.first(), role)
+    , m_apps(apps)
 {
+    Q_ASSERT(!apps.contains(nullptr));
+}
+
+static QStringList packageIds(const QVector<AbstractResource*>& res, std::function<QString(PackageKitResource*)> func)
+{
+    QStringList ret;
+    foreach(auto r, res) {
+        ret += func(qobject_cast<PackageKitResource*>(r));
+    }
+    ret.removeDuplicates();
+    return ret;
 }
 
 void PKTransaction::start()
@@ -42,15 +53,13 @@ void PKTransaction::start()
         m_trans->deleteLater();
 
     switch (role()) {
+        case Transaction::ChangeAddonsRole:
         case Transaction::InstallRole:
-            m_trans = PackageKit::Daemon::installPackage(qobject_cast<PackageKitResource*>(resource())->availablePackageId());
+            m_trans = PackageKit::Daemon::installPackages(packageIds(m_apps, [](PackageKitResource* r){return r->availablePackageId(); }));
             break;
         case Transaction::RemoveRole:
             //see bug #315063
-            m_trans = PackageKit::Daemon::removePackage(qobject_cast<PackageKitResource*>(resource())->installedPackageId(), true /*allowDeps*/);
-            break;
-        case Transaction::ChangeAddonsRole:
-            qWarning() << "addons unsupported in PackageKit backend";
+            m_trans = PackageKit::Daemon::removePackages(packageIds(m_apps, [](PackageKitResource* r){return r->installedPackageId(); }), true /*allowDeps*/);
             break;
     };
     Q_ASSERT(m_trans);

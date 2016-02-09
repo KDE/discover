@@ -101,9 +101,14 @@ void PackageKitBackend::reloadPackageList()
     }
 
     foreach(const Appstream::Component& component, m_appdata.allComponents()) {
-        m_updatingPackages.packages[component.id()] = new AppPackageKitResource(component, this);
+        const auto res = new AppPackageKitResource(component, this);;
+        m_updatingPackages.packages[component.id()] = res;
         foreach (const QString& pkg, component.packageNames()) {
             m_updatingPackages.packageToApp[pkg] += component.id();
+        }
+
+        foreach (const QString& pkg, component.extends()) {
+            m_updatingPackages.extendedBy[pkg] += res;
         }
     }
 
@@ -253,14 +258,34 @@ void PackageKitBackend::addTransaction(PKTransaction* t)
     t->start();
 }
 
-void PackageKitBackend::installApplication(AbstractResource* app, const AddonList&)
+void PackageKitBackend::installApplication(AbstractResource* app, const AddonList& addons)
 {
-    installApplication(app);
+    if(!addons.addonsToInstall().isEmpty())
+    {
+        QVector<AbstractResource*> appsToInstall;
+
+        if(!app->isInstalled())
+            appsToInstall << app;
+
+        foreach(const QString& toInstall, addons.addonsToInstall()) {
+            appsToInstall += m_packages.packages.value(toInstall);
+            Q_ASSERT(appsToInstall.last());
+        }
+        addTransaction(new PKTransaction(appsToInstall, Transaction::ChangeAddonsRole));
+    }
+
+    if (!addons.addonsToRemove().isEmpty()) {
+        QVector<AbstractResource*> appsToRemove;
+        foreach(const QString& toRemove, addons.addonsToRemove()) {
+            appsToRemove += m_packages.packages.value(toRemove);
+        }
+        addTransaction(new PKTransaction(appsToRemove, Transaction::RemoveRole));
+    }
 }
 
 void PackageKitBackend::installApplication(AbstractResource* app)
 {
-    addTransaction(new PKTransaction(app, Transaction::InstallRole));
+    addTransaction(new PKTransaction({app}, Transaction::InstallRole));
 }
 
 void PackageKitBackend::cancelTransaction(AbstractResource* app)
@@ -281,7 +306,7 @@ void PackageKitBackend::cancelTransaction(AbstractResource* app)
 void PackageKitBackend::removeApplication(AbstractResource* app)
 {
     Q_ASSERT(!isFetching());
-    addTransaction(new PKTransaction(app, Transaction::RemoveRole));
+    addTransaction(new PKTransaction({app}, Transaction::RemoveRole));
 }
 
 QList<AbstractResource*> PackageKitBackend::upgradeablePackages() const
@@ -359,6 +384,10 @@ QList<QAction*> PackageKitBackend::messageActions() const
     return m_messageActions;
 }
 
+QVector<AppPackageKitResource*> PackageKitBackend::extendedBy(const QString& id) const
+{
+    return m_packages.extendedBy[id];
+}
 
 //TODO
 AbstractReviewsBackend* PackageKitBackend::reviewsBackend() const { return nullptr; }

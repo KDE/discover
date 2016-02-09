@@ -23,12 +23,13 @@
 
 #include <Transaction/Transaction.h>
 #include <PackageKit/Transaction>
+#include <QPointer>
 
 class PKTransaction : public Transaction
 {
     Q_OBJECT
     public:
-        explicit PKTransaction(AbstractResource* app, Transaction::Role role);
+        explicit PKTransaction(const QVector<AbstractResource*>& app, Transaction::Role role);
         PackageKit::Transaction* transaction();
 
         void cancel();
@@ -46,7 +47,8 @@ class PKTransaction : public Transaction
         void cancellableChanged();
 
     private:
-        PackageKit::Transaction* m_trans;
+        QPointer<PackageKit::Transaction> m_trans;
+        const QVector<AbstractResource*> m_apps;
 };
 
 #endif // PKTRANSACTION_H

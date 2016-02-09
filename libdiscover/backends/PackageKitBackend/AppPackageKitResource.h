@@ -30,6 +30,8 @@ class AppPackageKitResource : public PackageKitResource
     public:
         explicit AppPackageKitResource(const Appstream::Component& data, PackageKitBackend* parent);
 
+        QString appstreamId() const;
+
         virtual bool isTechnical() const override;
         virtual QString name() override;
         virtual QString icon() const override;
@@ -45,6 +47,7 @@ class AppPackageKitResource : public PackageKitResource
         virtual QUrl screenshotUrl() override;
         virtual QUrl thumbnailUrl() override;
         virtual QStringList allPackageNames() const override;
+        virtual QList<PackageState> addonsInformation() override;
 
     private:
         QStringList findProvides(Appstream::Provides::Kind kind) const;

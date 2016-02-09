@@ -31,6 +31,7 @@
 #include <AppstreamQt/database.h>
 #include <functional>
 
+class AppPackageKitResource;
 class PackageKitUpdater;
 class PKTransaction;
 
@@ -61,6 +62,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         bool isPackageNameUpgradeable(const PackageKitResource* res) const;
         QString upgradeablePackageId(const PackageKitResource* res) const;
         QVector<AbstractResource*> resourcesByPackageName(const QString& name, bool updating) const;
+        QVector<AppPackageKitResource*> extendedBy(const QString& id) const;
 
     public Q_SLOTS:
         void transactionCanceled(Transaction* t);
@@ -94,6 +96,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         struct Packages {
             QHash<QString, AbstractResource*> packages;
             QHash<QString, QStringList> packageToApp;
+            QHash<QString, QVector<AppPackageKitResource*>> extendedBy;
         };
 
         Packages m_packages;
