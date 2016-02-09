@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Update Manager
+Name[ar]=مدير التّحديثات
 Name[ast]=Xestor d'anovamientos
 Name[ca]=Gestor d'actualitzacions
 Name[ca@valencia]=Gestor d'actualitzacions
@@ -31,6 +32,7 @@ Icon=system-software-update
 Type=Application
 X-DocPath=muon/index.html
 GenericName=Update Manager
+GenericName[ar]=مدير التّحديثات
 GenericName[ast]=Xestor d'anovamientos
 GenericName[ca]=Gestor d'actualitzacions
 GenericName[ca@valencia]=Gestor d'actualitzacions

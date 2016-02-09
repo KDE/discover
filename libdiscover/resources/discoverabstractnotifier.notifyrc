@@ -1,5 +1,6 @@
 [Global]
 Comment=Discover
+Comment[ar]=استكشف
 Comment[ca]=Discover
 Comment[ca@valencia]=Discover
 Comment[de]=Discover
@@ -26,6 +27,7 @@ Comment[zh_CN]=发现者
 
 [Event/Update]
 Name=Updates Are Available
+Name[ar]=التّحديثات متوفّرة
 Name[ast]=Tan disponibles anovamientos
 Name[ca]=Hi ha actualitzacions disponibles
 Name[ca@valencia]=Hi ha actualitzacions disponibles
@@ -57,6 +59,7 @@ Name[uk]=Доступні оновлення
 Name[x-test]=xxUpdates Are Availablexx
 Name[zh_CN]=更新可用
 Comment=Updates Available
+Comment[ar]=التّحديثات متوفّرة
 Comment[ast]=Anovamientos disponibles
 Comment[ca]=Actualitzacions disponibles
 Comment[ca@valencia]=Actualitzacions disponibles

@@ -61,6 +61,7 @@ Name[uk]=Доступне оновлення дистрибутива
 Name[x-test]=xxUpgrade Availablexx
 Name[zh_CN]=更新可用
 Comment=A new version of Kubuntu is available
+Comment[ar]=إصدارة جديدة من كوبونتو متوفّرة
 Comment[ca]=Hi ha disponible una nova versió del Kubuntu
 Comment[ca@valencia]=Hi ha disponible una nova versió del Kubuntu
 Comment[cs]=Je dostupná nová verze Kubuntu

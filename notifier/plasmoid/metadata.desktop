@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Updates
+Name[ar]=التّحديثات
 Name[ast]=Anovamientos
 Name[ca]=Actualitzacions
 Name[ca@valencia]=Actualitzacions
@@ -31,6 +32,7 @@ Name[uk]=Оновлення
 Name[x-test]=xxUpdatesxx
 Name[zh_CN]=更新
 Comment=Helps you keep your system up to date
+Comment[ar]=يساعدك في إبقاء نظامك محدّثًا
 Comment[ast]=Ayúdate a caltener el to sistema anováu
 Comment[ca]=Us ajuda a mantenir el vostre sistema al dia
 Comment[ca@valencia]=Vos ajuda a mantindre el vostre sistema al dia

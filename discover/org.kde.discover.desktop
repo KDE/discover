@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Discover
+Name[ar]=استكشف
 Name[ca]=Discover
 Name[ca@valencia]=Discover
 Name[da]=Opdagelse
@@ -31,6 +32,7 @@ Icon=plasmadiscover
 Type=Application
 X-DocPath=plasma-discover/index.html
 GenericName=Software Center
+GenericName[ar]=مركز برمجيّات
 GenericName[ast]=Centru de software
 GenericName[ca]=Centre de programari
 GenericName[ca@valencia]=Centre de programari
@@ -63,6 +65,7 @@ GenericName[x-test]=xxSoftware Centerxx
 GenericName[zh_CN]=软件中心
 Categories=Qt;KDE;System;
 Keywords=program;software;repository;package;install;remove;update;apps;applications;
+Keywords[ar]=برنامج;برمجيّة;برمجية;مستودع;حزمة;تثبيت;إزالة;ازالة;تحديث;تطبيقات;تطبيق;
 Keywords[ca]=programa;programari;repositori;paquet;instal·la;suprimeix;actualitza;apps;aplicacions;
 Keywords[ca@valencia]=programa;programari;repositori;paquet;instal·la;suprimeix;actualitza;apps;aplicacions;
 Keywords[cs]=program;software;repozitář;balíček;instalovat;odstranit;aktualizovat;programy;aplikace;
