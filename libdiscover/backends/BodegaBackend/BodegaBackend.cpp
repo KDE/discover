@@ -162,7 +162,7 @@ AbstractResource* BodegaBackend::resourceByPackageName(const QString& name) cons
 AbstractBackendUpdater* BodegaBackend::backendUpdater() const
 { return 0; }
 
-void BodegaBackend::installApplication(AbstractResource* app, AddonList addons)
+void BodegaBackend::installApplication(AbstractResource* app, const AddonList& addons)
 {
     Q_ASSERT(m_transactions.count()==0);
     Q_ASSERT(addons.isEmpty());

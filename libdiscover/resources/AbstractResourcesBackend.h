@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright ?? 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -158,7 +158,7 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
          * @param app the application to be installed
          * @param addons the addons which should be installed with the application
          */
-        virtual void installApplication(AbstractResource *app, AddonList addons) = 0;
+        virtual void installApplication(AbstractResource *app, const AddonList& addons) = 0;
         
         /**
          * Overloaded function, which simply does the same, except not installing any addons.

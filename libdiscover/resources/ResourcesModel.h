@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
+ *   Copyright ?? 2012 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -85,7 +85,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         virtual QHash<int, QByteArray> roleNames() const override;
 
     public Q_SLOTS:
-        void installApplication(AbstractResource* app, AddonList addons);
+        void installApplication(AbstractResource* app, const AddonList& addons);
         void installApplication(AbstractResource* app);
         void removeApplication(AbstractResource* app);
         void cancelTransaction(AbstractResource* app);

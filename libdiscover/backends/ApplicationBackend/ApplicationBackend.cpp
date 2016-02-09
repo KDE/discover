@@ -460,7 +460,7 @@ QVector<AbstractResource*> ApplicationBackend::allResources() const
     return ret;
 }
 
-void ApplicationBackend::installApplication(AbstractResource* res, AddonList addons)
+void ApplicationBackend::installApplication(AbstractResource* res, const AddonList& addons)
 {
     Application* app = qobject_cast<Application*>(res);
     Transaction::Role role = app->package()->isInstalled() ? Transaction::ChangeAddonsRole : Transaction::InstallRole;

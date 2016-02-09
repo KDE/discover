@@ -50,7 +50,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         virtual int updatesCount() const override;
         
         virtual void installApplication(AbstractResource* app) override;
-        virtual void installApplication(AbstractResource* app, AddonList addons) override;
+        virtual void installApplication(AbstractResource* app, const AddonList& addons) override;
         virtual void removeApplication(AbstractResource* app) override;
         virtual void cancelTransaction(AbstractResource* app) override;
         virtual bool isValid() const override { return true; }

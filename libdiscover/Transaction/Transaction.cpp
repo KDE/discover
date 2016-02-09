@@ -34,7 +34,7 @@ Transaction::Transaction(QObject *parent, AbstractResource *resource,
 }
 
 Transaction::Transaction(QObject *parent, AbstractResource *resource,
-                         Role role, AddonList addons)
+                         Role role, const AddonList& addons)
     : Transaction(parent, resource, role)
 {
     m_addons = addons;

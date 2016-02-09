@@ -53,7 +53,7 @@ public:
     virtual void cancelTransaction(AbstractResource* app) override;
     virtual void removeApplication(AbstractResource* app) override;
     virtual void installApplication(AbstractResource* app) override;
-    virtual void installApplication(AbstractResource* app, AddonList addons) override;
+    virtual void installApplication(AbstractResource* app, const AddonList& addons) override;
     virtual AbstractResource* resourceByPackageName(const QString& name) const override;
     virtual int updatesCount() const override;
     virtual AbstractReviewsBackend* reviewsBackend() const override;

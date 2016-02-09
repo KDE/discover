@@ -169,7 +169,7 @@ AbstractReviewsBackend* DummyBackend::reviewsBackend() const
     return m_reviews;
 }
 
-void DummyBackend::installApplication(AbstractResource* app, AddonList addons)
+void DummyBackend::installApplication(AbstractResource* app, const AddonList& addons)
 {
     TransactionModel *transModel = TransactionModel::global();
     transModel->addTransaction(new DummyTransaction(qobject_cast<DummyResource*>(app), addons, Transaction::InstallRole));

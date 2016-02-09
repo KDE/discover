@@ -47,7 +47,7 @@ AkabeiTransaction::AkabeiTransaction(AkabeiBackend* parent, AbstractResource* re
     setStatus(Transaction::QueuedStatus);
 }
 
-AkabeiTransaction::AkabeiTransaction(AkabeiBackend* parent, AbstractResource* resource, Transaction::Role role, AddonList addons)
+AkabeiTransaction::AkabeiTransaction(AkabeiBackend* parent, AbstractResource* resource, Transaction::Role role, const AddonList& addons)
   : Transaction(parent, resource, role, addons),
     m_backend(parent),
     m_transaction(0)

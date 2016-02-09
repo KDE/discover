@@ -45,8 +45,8 @@ public:
     virtual void setMetaData(const QString& path);
     virtual void cancelTransaction(AbstractResource* app);
     virtual void removeApplication(AbstractResource* app);
-    virtual void installApplication(AbstractResource* app, AddonList addons);
-    virtual void installApplication(AbstractResource* app) { installApplication(app, AddonList()); }
+    virtual void installApplication(AbstractResource* app, const AddonList& addons);
+    virtual void installApplication(AbstractResource* app) { installApplication(app, const AddonList&()); }
     virtual AbstractResource* resourceByPackageName(const QString& name) const;
     virtual int updatesCount() const;
     virtual AbstractReviewsBackend* reviewsBackend() const;

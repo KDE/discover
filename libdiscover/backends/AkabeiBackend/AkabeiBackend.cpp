@@ -144,7 +144,7 @@ QList< AbstractResource* > AkabeiBackend::searchPackageName(const QString& searc
     return result;
 }
 
-void AkabeiBackend::installApplication(AbstractResource* app, AddonList addons)
+void AkabeiBackend::installApplication(AbstractResource* app, const AddonList& addons)
 {
     Transaction::Role role = Transaction::InstallRole;
     if (app->isInstalled() && !app->canUpgrade()) {

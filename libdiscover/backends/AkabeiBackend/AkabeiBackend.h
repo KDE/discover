@@ -60,7 +60,7 @@ public:
     QVector< AbstractResource* > allResources() const;
     QList<AbstractResource*> searchPackageName(const QString& searchText);
     
-    void installApplication(AbstractResource *app, AddonList addons);
+    void installApplication(AbstractResource *app, const AddonList& addons);
     void installApplication(AbstractResource *app);
     void removeApplication(AbstractResource *app);
     void cancelTransaction(AbstractResource *app);

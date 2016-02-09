@@ -253,7 +253,7 @@ void PackageKitBackend::addTransaction(PKTransaction* t)
     t->start();
 }
 
-void PackageKitBackend::installApplication(AbstractResource* app, AddonList )
+void PackageKitBackend::installApplication(AbstractResource* app, const AddonList&)
 {
     installApplication(app);
 }

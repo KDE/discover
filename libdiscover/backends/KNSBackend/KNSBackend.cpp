@@ -273,7 +273,7 @@ void KNSBackend::installApplication(AbstractResource* app)
     transModel->removeTransaction(t);
 }
 
-void KNSBackend::installApplication(AbstractResource* app, AddonList)
+void KNSBackend::installApplication(AbstractResource* app, const AddonList&)
 {
     installApplication(app);
 }

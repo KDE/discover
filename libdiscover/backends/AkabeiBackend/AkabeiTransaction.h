@@ -31,7 +31,7 @@ class AkabeiTransaction : public Transaction
     Q_OBJECT
 public:
     AkabeiTransaction(AkabeiBackend* parent, AbstractResource* resource, Transaction::Role role);
-    AkabeiTransaction(AkabeiBackend* parent, AbstractResource* resource, Transaction::Role role, AddonList addons);
+    AkabeiTransaction(AkabeiBackend* parent, AbstractResource* resource, Transaction::Role role, const AddonList& addons);
     ~AkabeiTransaction();
     
 public Q_SLOTS:
