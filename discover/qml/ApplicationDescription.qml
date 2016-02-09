@@ -29,7 +29,7 @@ Column
 {
     id: desc
     property QtObject application: null
-    property alias isInstalling: addonsView.isInstalling
+    readonly property alias isInstalling: addonsView.isInstalling
 
     Item {width: 10; height: 5}
 
@@ -80,7 +80,7 @@ Column
 //                         verticalAlignment: Text.AlignVCenter
             }
             Rating {
-                rating: application.rating.rating
+                rating: application.rating ? application.rating.rating : -1
             }
         }
     }
