@@ -25,7 +25,7 @@
 #include <QStringList>
 #include <QTimer>
 
-Q_GLOBAL_STATIC(QVector<QString>, s_icons);
+Q_GLOBAL_STATIC(QVector<QString>, s_icons)
 
 DummyResource::DummyResource(QString  name, bool isTechnical, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
