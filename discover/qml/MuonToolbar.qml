@@ -79,7 +79,7 @@ ToolBar
                 placeholderText: i18n("Search...")
                 onTextChanged: searchTimer.running = true
                 onEditingFinished: if(text == "" && backAction.enabled) {
-                    backAction.trigger()
+                    backAction.action.trigger()
                 }
             }
 
