@@ -70,6 +70,13 @@ KNSBackend::KNSBackend(QObject* parent)
 KNSBackend::~KNSBackend()
 {}
 
+void KNSBackend::markInvalid()
+{
+    qWarning() << "invalid kns backend!";
+    m_isValid = false;
+    setFetching(false);
+}
+
 void KNSBackend::setMetaData(const QString& path)
 {
     KDesktopFile cfg(path);
@@ -86,7 +93,7 @@ void KNSBackend::setMetaData(const QString& path)
     }
 
     if (m_name.isEmpty()) {
-        m_isValid = false;
+        markInvalid();
         qWarning() << "Couldn't find knsrc file" << knsrc;
         return;
     }
@@ -97,7 +104,7 @@ void KNSBackend::setMetaData(const QString& path)
         group = conf.group("KNewStuff3");
 
     if (!group.isValid()) {
-        m_isValid = false;
+        markInvalid();
         qWarning() << "Config group not found! Check your KNS3 installation.";
         return;
     }
@@ -137,8 +144,7 @@ void KNSBackend::startFetchingCategories()
 {
     if (m_atticaManager->providers().isEmpty()) {
         qWarning() << "no providers for" << m_name;
-        m_isValid = false;
-        setFetching(false);
+        markInvalid();
         return;
     }
 
@@ -178,8 +184,7 @@ void KNSBackend::categoriesLoaded(Attica::BaseJob* job)
             ++it;
     }
     if (m_categories.isEmpty()) {
-        m_isValid = false;
-        setFetching(false);
+        markInvalid();
         return;
     }
 

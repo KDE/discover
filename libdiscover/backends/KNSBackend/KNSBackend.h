@@ -78,6 +78,7 @@ private:
     static void initManager(KConfigGroup& group);
     static QSharedPointer<Attica::ProviderManager> m_atticaManager;
     void setFetching(bool f);
+    void markInvalid();
     
     bool m_fetching;
     bool m_isValid;
