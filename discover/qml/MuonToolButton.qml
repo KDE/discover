@@ -19,8 +19,9 @@ Item
     property alias exclusiveGroup: button.exclusiveGroup
     property QtObject action
 
+    Layout.minimumHeight: 64
     Layout.minimumWidth: layout.Layout.minimumWidth
-    implicitHeight: layout.Layout.preferredHeight
+    Layout.preferredHeight: label.font.pixelSize*3
 
     clip: true
     enabled: action.enabled
@@ -50,13 +51,13 @@ Item
                 margins: 3
             }
 
-            Layout.preferredHeight: 32
             QIconItem {
                 id: icon
-                Layout.alignment: Qt.AlignVCenter
                 anchors.verticalCenter: parent.verticalCenter
-                Layout.minimumWidth: layout.Layout.preferredHeight*0.8
-                height: Layout.minimumWidth
+                Layout.alignment: Qt.AlignVCenter
+                Layout.preferredWidth: label.font.pixelSize*2
+                Layout.preferredHeight: label.font.pixelSize*2
+                Layout.maximumHeight: button.height
                 icon: root.action ? root.action.iconName : ""
             }
             Label {

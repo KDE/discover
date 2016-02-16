@@ -22,50 +22,43 @@ import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
 import org.kde.kquickcontrolsaddons 2.0
 
-Item {
+RowLayout {
     id: bread
     readonly property int count: pageStack.depth
     property StackView pageStack: null
-    Layout.minimumHeight: theLayout.Layout.minimumHeight
-    Layout.preferredHeight: theLayout.Layout.preferredHeight
+    spacing: 0
+    anchors {
+        top: parent.top
+        bottom: parent.bottom
+    }
+    Repeater
+    {
+        model: bread.pageStack.depth
+        delegate: RowLayout {
+            spacing: 0
+            QIconItem {
+                visible: index > 0
+                width: 16
+                height: width
+                icon: "arrow-right"
+            }
+            MuonToolButton {
+                Layout.fillHeight: true
 
-    RowLayout {
-        id: theLayout
-        spacing: 0
-        anchors {
-            top: parent.top
-            bottom: parent.bottom
-        }
-        Repeater
-        {
-            model: bread.pageStack.depth
-            delegate: RowLayout {
-                spacing: 0
-                QIconItem {
-                    visible: index > 0
-                    width: 16
-                    height: width
-                    icon: "arrow-right"
-                }
-                MuonToolButton {
-                    Layout.fillHeight: true
-                    Layout.minimumHeight: implicitHeight
+                property var currentPage: bread.pageStack.get(modelData, false)
 
-                    property var currentPage: bread.pageStack.get(modelData, false)
-
-                    iconName: currentPage.icon
-                    onClicked: theLayout.doClick(index)
-                    text: currentPage.title
-                    enabled: bread.pageStack.depth!=(modelData+1)
-                    checkable: checked
-                }
+                iconName: currentPage.icon
+                onClicked: bread.doClick(index)
+                text: currentPage.title
+                enabled: bread.pageStack.depth!=(modelData+1)
+                checkable: checked
             }
         }
-        function doClick(index) {
-            var pos = bread.pageStack.depth
-            for(; pos>(index+1); --pos) {
-                bread.pageStack.pop(pos>index)
-            }
+    }
+    function doClick(index) {
+        var pos = bread.pageStack.depth
+        for(; pos>(index+1); --pos) {
+            bread.pageStack.pop(pos>index)
         }
     }
 }
