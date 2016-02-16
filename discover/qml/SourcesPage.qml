@@ -47,7 +47,7 @@ Item {
                             ToolButton {
                                 height: parent.height
                                 action: Action {
-                                    property QtObject action: modelData
+                                    readonly property QtObject action: modelData
                                     text: action.text
                                     onTriggered: action.trigger()
                                     enabled: action.enabled
