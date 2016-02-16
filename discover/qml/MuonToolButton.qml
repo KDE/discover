@@ -19,7 +19,7 @@ Item
     property alias exclusiveGroup: button.exclusiveGroup
     property QtObject action
 
-    Layout.minimumHeight: 64
+    Layout.minimumHeight: label.font.pixelSize
     Layout.minimumWidth: layout.Layout.minimumWidth
     Layout.preferredHeight: label.font.pixelSize*3
 

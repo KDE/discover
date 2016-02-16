@@ -105,6 +105,7 @@ ConditionalLoader
 
     componentFalse: ColumnLayout {
             Layout.minimumHeight: 5000
+            spacing: -1
 
             ApplicationsTop {
                 id: top
@@ -123,6 +124,7 @@ ConditionalLoader
                     }
                 }
             }
+            Item { height: 3; width: 3 }
             Label {
                 text: i18n("Categories")
                 Layout.fillWidth: true
@@ -145,10 +147,11 @@ ConditionalLoader
                         QIconItem {
                             icon: decoration
                             Layout.fillHeight: true
-                            Layout.preferredWidth: 32
+                            Layout.preferredWidth: label.implicitHeight*3
                             Layout.preferredHeight: width
                         }
                         Label {
+                            id: label
                             text: display
                             Layout.fillWidth: true
                             wrapMode: Text.WordWrap
