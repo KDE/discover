@@ -47,15 +47,20 @@ MUON_BACKEND_PLUGIN(KNSBackend)
 
 QSharedPointer<Attica::ProviderManager> KNSBackend::m_atticaManager;
 
-void KNSBackend::initManager(KConfigGroup& group)
+void KNSBackend::initManager(const QUrl& entry)
 {
+    bool loadNeeded = false;
     if(!m_atticaManager) {
         m_atticaManager = QSharedPointer<Attica::ProviderManager>(new Attica::ProviderManager);
-        QUrl entry(group.readEntry("ProvidersUrl", QString()));
-        if(!m_atticaManager->defaultProviderFiles().contains(entry))
-            m_atticaManager->addProviderFileToDefaultProviders(entry);
-        m_atticaManager->loadDefaultProviders();
+        loadNeeded = true;
     }
+    if(!m_atticaManager->defaultProviderFiles().contains(entry)) {
+        m_atticaManager->addProviderFileToDefaultProviders(entry);
+        loadNeeded = true;
+    }
+
+    if(loadNeeded)
+        m_atticaManager->loadDefaultProviders();
 }
 
 KNSBackend::KNSBackend(QObject* parent)
@@ -110,7 +115,7 @@ void KNSBackend::setMetaData(const QString& path)
     }
 
     QStringList cats = group.readEntry("Categories", QStringList());
-    initManager(group);
+    initManager(QUrl(group.readEntry("ProvidersUrl", QString())));
     connect(m_atticaManager.data(), &Attica::ProviderManager::defaultProvidersLoaded, this, &KNSBackend::startFetchingCategories);
 
     foreach(const QString& c, cats) {
