@@ -28,7 +28,6 @@ Item {
     id: top
     readonly property string title: ""
     readonly property string icon: "go-home"
-    readonly property real proposedMargin: (width-app.actualWidth)/2
     clip: true
 
     function searchFor(text) {
@@ -41,8 +40,8 @@ Item {
 
         ColumnLayout
         {
-            x: top.proposedMargin
-            width: Math.min(app.actualWidth, view.viewport.width)
+            width: view.width-20
+            x: 10
 
             FeaturedBanner {
                 Layout.fillWidth: true
