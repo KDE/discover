@@ -38,11 +38,12 @@ RowLayout {
             spacing: 0
             QIconItem {
                 visible: index > 0
-                width: 16
+                width: button.Layout.preferredHeight/2
                 height: width
                 icon: "arrow-right"
             }
             MuonToolButton {
+                id: button
                 Layout.fillHeight: true
 
                 property var currentPage: bread.pageStack.get(modelData, false)
