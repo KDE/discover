@@ -136,13 +136,17 @@ ConditionalLoader
                 model: categoryModel
 
                 delegate: GridItem {
-                    height: 40
+                    height: layout.implicitHeight
                     Layout.fillWidth: true
+
                     RowLayout {
+                        anchors.fill: parent
+                        id: layout
                         QIconItem {
                             icon: decoration
-                            width: 32
-                            height: width
+                            Layout.fillHeight: true
+                            Layout.preferredWidth: 32
+                            Layout.preferredHeight: width
                         }
                         Label {
                             text: display
