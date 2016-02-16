@@ -85,12 +85,12 @@ private:
     KNS3::DownloadManager* m_manager;
     QHash<QString, AbstractResource*> m_resourcesByName;
     int m_page;
-    KNSReviews* m_reviews;
+    KNSReviews* const m_reviews;
     Attica::Provider m_provider;
     QMap<QString, Attica::Category> m_categories;
     QString m_name;
     QString m_iconName;
-    AbstractBackendUpdater* m_updater;
+    AbstractBackendUpdater* const m_updater;
 };
 
 #endif // KNSBACKEND_H
