@@ -61,7 +61,7 @@ int main(int argc, char** argv)
         parser.addOption(QCommandLineOption(QStringLiteral("category"), i18n("Display a list of entries with a category."), QStringLiteral("name")));
         parser.addOption(QCommandLineOption(QStringLiteral("mode"), i18n("Open Discover in a said mode. Modes correspond to the toolbar buttons."), QStringLiteral("name")));
         parser.addOption(QCommandLineOption(QStringLiteral("listmodes"), i18n("List all the available modes.")));
-        parser.addOption(QCommandLineOption(QStringLiteral("compact"), i18n("Compact Mode (auto/compact/full)."), QStringLiteral("mode"), QStringLiteral("full")));
+        parser.addOption(QCommandLineOption(QStringLiteral("compact"), i18n("Compact Mode (auto/compact/full)."), QStringLiteral("mode"), QStringLiteral("auto")));
         parser.addPositionalArgument(QStringLiteral("urls"), i18n("Supports appstream: url scheme (experimental)"));
         DiscoverBackendsFactory::setupCommandLine(&parser);
         about.setupCommandLine(&parser);parser.addHelpOption();

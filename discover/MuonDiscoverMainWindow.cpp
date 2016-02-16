@@ -78,6 +78,7 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow(CompactMode mode)
     qmlRegisterType<QQuickView>();
     qmlRegisterType<QActionGroup>();
     qmlRegisterType<QAction>();
+    qmlRegisterType<MuonDiscoverMainWindow>();
     setupActions();
     
     //Here we set up a cache for the screenshots
@@ -318,4 +319,11 @@ void MuonDiscoverMainWindow::configureShortcuts()
     dlg.setModal(true);
     dlg.addCollection(actionCollection());
     qDebug() << "saving shortcuts..." << dlg.configure(/*bSaveSettings*/);
+}
+
+void MuonDiscoverMainWindow::setCompactMode(MuonDiscoverMainWindow::CompactMode mode)
+{
+    m_mode = mode;
+    Q_EMIT compactChanged(isCompact());
+    Q_EMIT actualWidthChanged(actualWidth());
 }
