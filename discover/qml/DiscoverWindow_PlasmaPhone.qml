@@ -70,7 +70,7 @@ MobileComponents.GlobalDrawer {
                     pageRow.push(menuComponent, {"model": modelData.children, "level": level + 1});
                 } else {
                     modelData.trigger();
-                    root.opened = false;
+                    drawer.opened = false;
                 }
             }
         }
