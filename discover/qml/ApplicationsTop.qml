@@ -70,7 +70,7 @@ ColumnLayout {
                             id: layo
                             QIconItem {
                                 Layout.fillHeight: true
-                                Layout.minimumWidth: height
+                                Layout.preferredWidth: height
                                 icon: model.icon
                             }
                             ColumnLayout {
