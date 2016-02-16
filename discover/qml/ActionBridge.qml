@@ -25,7 +25,10 @@ Action
 {
     property QtObject action: null
 
-    text: action ? action.text : "<null>"
+    function removeAmpersand(text) {
+        return text.replace("&", "");
+    }
+    text: action ? removeAmpersand(action.text) : "<null>"
     checked: action && action.checked
     enabled: action && action.enabled
     tooltip: action ? action.toolTip : ""

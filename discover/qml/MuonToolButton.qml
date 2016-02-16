@@ -62,11 +62,7 @@ Item
             Label {
                 id: label
 
-                function removeAmpersand(text) {
-                    return text.replace("&", "");
-                }
-
-                text: root.action ? removeAmpersand(root.action.text) : ""
+                text: root.action ? root.action.text : ""
                 Layout.fillWidth: true
                 Layout.minimumWidth: text == "" ? 0 : (10+label.implicitWidth)
             }

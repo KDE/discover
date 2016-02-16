@@ -39,22 +39,52 @@ MobileComponents.GlobalDrawer {
         return ret;
     }
 
+    Component {
+        id: buttonComponent
+//         MuonToolButton {
+//             Layout.fillWidth: true
+//             action: modelData
+//         }
+
+        MobileComponents.BasicListItem {
+            Layout.fillWidth: true
+            enabled: modelData.enabled
+            checked: modelData.checked
+            icon: modelData.iconName
+            label: modelData.text
+            opacity: enabled ? 1.0 : 0.3
+
+            MobileComponents.Icon {
+                anchors {
+                    top: parent.top
+                    bottom: parent.bottom
+                    right: parent.right
+                }
+                width: height
+                source: "go-next"
+                visible: modelData.children != undefined
+            }
+
+            onClicked: {
+                if (modelData.children) {
+                    pageRow.push(menuComponent, {"model": modelData.children, "level": level + 1});
+                } else {
+                    modelData.trigger();
+                    root.opened = false;
+                }
+            }
+        }
+    }
     Repeater {
         model: window.awesome
-        delegate: MuonToolButton {
-            Layout.fillWidth: true
-            action: modelData
-        }
+        delegate: buttonComponent
     }
 
     Item { height: 10 }
 
     Repeater {
         model: drawer.itemsFilter(moreMenu.items)
-        delegate: MuonToolButton {
-            Layout.fillWidth: true
-            action: visible ? modelData.action : null
-        }
+        delegate: buttonComponent
     }
 
     Item {
