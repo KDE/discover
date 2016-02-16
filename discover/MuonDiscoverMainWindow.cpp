@@ -191,7 +191,7 @@ bool MuonDiscoverMainWindow::isCompact() const
         return true;
 
     const qreal pixelDensity = screen()->physicalDotsPerInch() / 25.4;
-    return (width()/pixelDensity)<100; //we'll use compact if the width of the window is less than 7cm
+    return (width()/pixelDensity)<100; //we'll use compact if the width of the window is less than 10cm
 }
 
 qreal MuonDiscoverMainWindow::actualWidth() const
