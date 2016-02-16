@@ -41,7 +41,7 @@ ColumnLayout {
         font.weight: Font.Bold
         Layout.minimumHeight: paintedHeight*1.5
     }
-    spacing: -1 //GridItem.border.width
+    spacing: -2 //GridItem.border.width
     Repeater {
         id: rep
         model: PaginateModel {
