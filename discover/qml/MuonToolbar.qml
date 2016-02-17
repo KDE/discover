@@ -75,6 +75,7 @@ ToolBar
                 id: searchWidget
                 enabled: window.stack.currentItem!=null && window.stack.currentItem.searchFor!=null
                 focus: true
+                Layout.preferredWidth: backAction.implicitWidth*10
 
                 placeholderText: i18n("Search...")
                 onTextChanged: searchTimer.running = true
