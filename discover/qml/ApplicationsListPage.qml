@@ -231,8 +231,7 @@ Item {
             id: theGrid
             model: appsModel
             header: page.header
-            minCellWidth: 200
-            
+
             section: RowLayout {
                 Label { text: i18n("All") }
                 Item { Layout.fillWidth: true }

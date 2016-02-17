@@ -19,12 +19,13 @@
 
 import QtQuick 2.1
 import QtQuick.Window 2.2
+import org.kde.discover.app 1.0
 
 Flickable {
-    readonly property int columnCount: app.isCompact ? 1 : Math.max(Math.floor(conts.width/minCellWidth), 1)
+    readonly property int columnCount: app.isCompact ? 1 : Math.max(Math.floor(conts.width/(minCellWidth+dataFlow.spacing*2)), 1)
     readonly property real cellWidth: (conts.width-(columnCount-1)*dataFlow.spacing)/columnCount
     readonly property alias count: dataRepeater.count
-    property int minCellWidth: 130
+    readonly property int minCellWidth: SystemFonts.generalFont.pointSize*20
     property alias header: headerLoader.sourceComponent
     property alias footer: footerLoader.sourceComponent
     property alias delegate: dataRepeater.delegate
