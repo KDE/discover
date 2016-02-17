@@ -75,7 +75,7 @@ QStringList DummyResource::categories()
 
 QString DummyResource::comment()
 {
-    return QStringLiteral("comment ")+name()+QStringLiteral("...");
+    return QStringLiteral("A reasonably short comment ")+name();
 }
 
 int DummyResource::size()
