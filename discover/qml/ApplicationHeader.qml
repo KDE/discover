@@ -21,6 +21,9 @@ PageHeader {
 
         ColumnLayout {
             Layout.fillWidth: true
+            Layout.fillHeight: true
+            Layout.maximumHeight: parent.height
+            spacing: 0
             Heading {
                 id: heading
                 text: application.name
@@ -33,7 +36,7 @@ PageHeader {
                 text: application.comment
                 wrapMode: Text.WordWrap
                 elide: Text.ElideRight
-                maximumLineCount: 2
+                maximumLineCount: 1
 //                         verticalAlignment: Text.AlignVCenter
             }
         }

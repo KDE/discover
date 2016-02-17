@@ -22,7 +22,7 @@ import org.kde.discover.app 1.0
 
 Item {
     id: root
-    property real internalMargin: 5
+    property real internalMargin: SystemFonts.generalFont.pointSize
     default property alias content: paddingItem.data
     height: SystemFonts.generalFont.pointSize*5 + item.anchors.topMargin
 
