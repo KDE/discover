@@ -29,63 +29,14 @@ Column
 {
     id: desc
     property QtObject application: null
-    readonly property alias isInstalling: addonsView.isInstalling
+    property alias isInstalling: addonsView.isInstalling
 
     Item {width: 10; height: 5}
 
-    Item {
-        anchors {
-            left: parent.left
-            right: parent.right
-            margins: 10
-        }
-        height: icon.height
-        QIconItem {
-            id: icon
-            anchors {
-                top: header.top
-                left: parent.left
-            }
-            height: 64
-            width: height
-
-            icon: application.icon
-        }
-
-        ColumnLayout {
-            id: header
-            height: parent.height
-            anchors {
-                top: parent.top
-                left: icon.right
-                right: parent.right
-                bottom: icon.bottom
-                leftMargin: 5
-                bottomMargin: 5
-            }
-
-            Heading {
-                id: heading
-                text: application.name
-                Layout.fillWidth: true
-                elide: Text.ElideRight
-                font.bold: true
-            }
-            Label {
-                Layout.fillWidth: true
-                text: application.comment
-                wrapMode: Text.WordWrap
-                elide: Text.ElideRight
-                maximumLineCount: 2
-//                         verticalAlignment: Text.AlignVCenter
-            }
-            Rating {
-                rating: application.rating ? application.rating.rating : -1
-            }
-        }
+    Heading {
+        x: 5
+        text: i18n("Description")
     }
-    Item {width: 10; height: 20}
-    Heading { text: i18n("Description") }
     Label {
         id: info
         anchors {

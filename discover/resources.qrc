@@ -40,6 +40,7 @@
     <file>qml/ApplicationDetails.qml</file>
     <file>qml/ApplicationScreenshots.qml</file>
     <file>qml/ApplicationIndicator.qml</file>
+    <file>qml/ApplicationHeader.qml</file>
     <file>qml/LabelBackground.qml</file>
     <file>qml/PageHeader.qml</file>
     <file>qml/ActionBridge.qml</file>

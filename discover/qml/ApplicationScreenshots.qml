@@ -26,8 +26,12 @@ Item {
     id: shadow
     state: "thumbnail"
     property alias application: screenshotsModel.application
-    property rect initialGeometry: Qt.rect(5, 5, 200, 200)
-    property rect fullGeometry: Qt.rect(0, 0, parent.width, parent.height)
+    readonly property rect initialGeometry: parent.mapFromItem(initialParent, 0, 0, initialParent.width, initialParent.height)
+    readonly property rect fullGeometry: Qt.rect(0, 0, parent.width, parent.height)
+
+    property Item initialParent: null
+    property Item fullParent: null
+    parent: fullParent
 
     Rectangle {
         id: shadowItem
@@ -55,8 +59,9 @@ Item {
     }
     BusyIndicator {
         id: busy
-        width: 128
-        height: 128
+        readonly property real size: Math.min(parent.height, parent.width) * 0.9
+        width: size
+        height: size
         anchors.centerIn: parent
         running: visible
         visible: screenshot.status == Image.Loading

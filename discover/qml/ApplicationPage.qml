@@ -21,48 +21,72 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Window 2.1
 import QtQuick.Layouts 1.1
+import org.kde.kquickcontrolsaddons 2.0
 
 Item {
     id: appInfo
     property QtObject application: null
     clip: true
 
-    property var icon: application.icon
-    property string title: application.name
+    readonly property var icon: application.icon
+    readonly property string title: application.name
 
     ConditionalLoader {
         anchors.fill: parent
         condition: app.isCompact
 
         componentFalse: Item {
-            ScrollView {
-                id: overviewContentsFlickable
-                width: 2*parent.width/3
-                anchors {
-                    top: parent.top
-                    bottom: parent.bottom
-                    right: parent.right
-                }
-                ApplicationDescription {
-                    width: overviewContentsFlickable.viewport.width
+            readonly property real proposedMargin: (width-app.actualWidth)/2
+
+            GridLayout {
+                x: proposedMargin
+                width: app.actualWidth
+                height: parent.height
+                columns: 2
+                rows: 2
+
+                ApplicationHeader {
+                    id: header
+                    Layout.fillWidth: true
+                    Layout.columnSpan: 2
                     application: appInfo.application
                 }
-            }
 
-            ApplicationDetails {
-                anchors {
-                    top: parent.verticalCenter
-                    right: overviewContentsFlickable.left
-                    left: parent.left
-                    topMargin: 10
-                    margins: 5
+                ColumnLayout {
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: app.actualWidth/3
+
+                    Item {
+                        id: screenhotsPlaceholder
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: width/1.618
+
+                        ApplicationScreenshots {
+                            initialParent: screenhotsPlaceholder
+                            fullParent: appInfo
+                            application: appInfo.application
+                        }
+                    }
+                    ApplicationDetails {
+                        Layout.fillWidth: true
+                        application: appInfo.application
+                    }
+                    Item {
+                        Layout.fillHeight: true
+                    }
                 }
-                application: appInfo.application
-            }
+                ScrollView {
+                    id: scroll
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: app.actualWidth/2
 
-            ApplicationScreenshots {
-                application: appInfo.application
-                initialGeometry: Qt.rect(5,5, overviewContentsFlickable.x-10, appInfo.height/2)
+                    ApplicationDescription {
+                        width: scroll.viewport.width
+                        application: appInfo.application
+                        isInstalling: header.isInstalling
+                    }
+                }
             }
         }
         componentTrue: ScrollView {
@@ -70,19 +94,28 @@ Item {
             ColumnLayout {
                 width: scroll.viewport.width
 
+                ApplicationHeader {
+                    id: header
+                    Layout.fillWidth: true
+                    Layout.columnSpan: 2
+                    application: appInfo.application
+                }
+
                 ApplicationDetails {
+                    id: details
                     Layout.fillWidth: true
                     application: appInfo.application
                 }
 
                 Item {
+                    id: screenhotsPlaceholder
                     Layout.fillWidth: true
-                    Layout.minimumHeight: 100
+                    Layout.minimumHeight: details.height
 
                     ApplicationScreenshots {
                         application: appInfo.application
-                        initialGeometry: Qt.rect(0, 0, parent.width, parent.height)
-                        fullGeometry: Qt.rect(-parent.x, -parent.y, scroll.viewport.width, scroll.viewport.height)
+                        initialParent: screenhotsPlaceholder
+                        fullParent: scroll
                     }
                 }
 
