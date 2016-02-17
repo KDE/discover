@@ -130,6 +130,7 @@ ConditionalLoader
                 Layout.fillWidth: true
                 font.weight: Font.Bold
                 Layout.minimumHeight: paintedHeight*1.5
+                visible: view.count>0
             }
 
             Repeater {
