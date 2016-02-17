@@ -18,12 +18,13 @@
  */
 
 import QtQuick 2.0
+import org.kde.discover.app 1.0
 
 Item {
     id: root
     property real internalMargin: 5
     default property alias content: paddingItem.data
-    height: 50 + item.anchors.topMargin
+    height: SystemFonts.generalFont.pointSize*5 + item.anchors.topMargin
 
     GridItem
     {
