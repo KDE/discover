@@ -80,7 +80,7 @@ ConditionalLoader
             ColumnLayout {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                Layout.preferredWidth: page.width/2
+                Layout.preferredWidth: page.maxtopwidth*2
                 Layout.maximumHeight: top.height
 
                 spacing: -1
