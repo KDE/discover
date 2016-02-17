@@ -138,7 +138,7 @@ ConditionalLoader
                 model: categoryModel
 
                 delegate: GridItem {
-                    height: layout.implicitHeight
+                    height: label.implicitHeight*3
                     Layout.fillWidth: true
 
                     RowLayout {
