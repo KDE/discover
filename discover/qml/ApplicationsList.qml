@@ -103,7 +103,7 @@ ScrollView {
 
                     Rating {
                         id: ratingsItem
-                        height: app.isCompact ? contHeight*.6 : contHeight*.4
+                        starSize: app.isCompact ? contHeight*.6 : contHeight*.4
                         rating: model.rating
                     }
 

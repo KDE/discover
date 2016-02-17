@@ -18,51 +18,44 @@
  */
 
 import QtQuick 2.1
+import QtQuick.Layouts 1.1
 import org.kde.kquickcontrolsaddons 2.0
+import org.kde.discover.app 1.0
 
-Item {
+RowLayout
+{
     id: view
     property bool editable: false
     property int max: 10
     property real rating: 2
-    property real starSize: Math.min(view.height, (view.width-theRepeater.model*theRow.spacing)/theRepeater.model)
+    property real starSize: SystemFonts.generalFont.pointSize*2
+
     visible: rating>=0
     clip: true
-    height: (width/5)-theRow.spacing
-    width: 20*5
+    spacing: 0
 
-    Row {
-        id: theRow
-        height: parent.height
-        anchors.right: parent.right
-        
-        Component {
-            id: del
-            QIconItem {
-                anchors.verticalCenter: parent.verticalCenter
-                height: view.starSize
-                width: view.starSize
-                icon: "rating"
-                opacity: (mouse.containsMouse ? 0.7
-                          : (view.max/theRepeater.count*index)>view.rating ? 0.2
-                          : 1)
+    Repeater {
+        id: theRepeater
+        model: 5
+        delegate: QIconItem {
+            Layout.minimumWidth: view.starSize
+            Layout.minimumHeight: view.starSize
 
-                MouseArea {
-                    id: mouse
-                    enabled: editable
-                    hoverEnabled: editable
-                    
-                    anchors.fill: parent
-                    onClicked: rating = (max/theRepeater.model*index)
+            width: height
+            icon: "rating"
+            opacity: (mouse.containsMouse ? 0.7
+                        : (view.max/theRepeater.count*index)>view.rating ? 0.2
+                        : 1)
 
-                }
+            MouseArea {
+                id: mouse
+                enabled: editable
+                hoverEnabled: editable
+
+                anchors.fill: parent
+                onClicked: rating = (max/theRepeater.model*index)
+
             }
-        }
-        
-        Repeater {
-            id: theRepeater
-            model: 5
-            delegate: del
         }
     }
 }

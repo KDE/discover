@@ -73,7 +73,7 @@ ConditionalLoader
                 roleDelegate: Rating {
                     property variant model
                     rating: model.rating
-                    height: 12
+                    starSize: 2*parent.height/3
                 }
             }
 
