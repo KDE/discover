@@ -69,7 +69,7 @@ Information {
                     return str.indexOf(suffix, str.length - suffix.length) !== -1;
                 }
 
-                source: endsWith(modelData.image, ".qml") ? modelData.image : "qrc:/qml/FeaturedImage.qml"
+                source: modelData.image && endsWith(modelData.image, ".qml") ? modelData.image : "qrc:/qml/FeaturedImage.qml"
                 clip: true
             }
 
