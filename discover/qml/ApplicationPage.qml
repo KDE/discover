@@ -57,12 +57,12 @@ Item {
                     Layout.preferredWidth: app.actualWidth/3
 
                     Item {
-                        id: screenhotsPlaceholder
+                        id: screenshotsPlaceholder
                         Layout.fillWidth: true
                         Layout.preferredHeight: width/1.618
 
                         ApplicationScreenshots {
-                            initialParent: screenhotsPlaceholder
+                            initialParent: screenshotsPlaceholder
                             fullParent: appInfo
                             application: appInfo.application
                         }
@@ -108,13 +108,13 @@ Item {
                 }
 
                 Item {
-                    id: screenhotsPlaceholder
+                    id: screenshotsPlaceholder
                     Layout.fillWidth: true
                     Layout.minimumHeight: details.height
 
                     ApplicationScreenshots {
                         application: appInfo.application
-                        initialParent: screenhotsPlaceholder
+                        initialParent: screenshotsPlaceholder
                         fullParent: scroll
                     }
                 }
