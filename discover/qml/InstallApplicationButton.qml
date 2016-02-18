@@ -34,6 +34,16 @@ ConditionalLoader
     }
 
     componentFalse: RowLayout {
+        Loader {
+            Component {
+                id: updateButton
+                Button {
+                    text: i18n("Update")
+                    onClicked: ResourcesModel.installApplication(application)
+                }
+            }
+            sourceComponent: (root.canUpgrade && application.canUpgrade) ? updateButton : root.additionalItem
+        }
         Button {
             enabled: !ResourcesModel.isFetching
             text: !application.isInstalled ? i18n("Install") : i18n("Remove")
@@ -44,16 +54,6 @@ ConditionalLoader
                 else
                     ResourcesModel.installApplication(application);
             }
-        }
-        Loader {
-            Component {
-                id: updateButton
-                Button {
-                    text: i18n("Update")
-                    onClicked: ResourcesModel.installApplication(application)
-                }
-            }
-            sourceComponent: (root.canUpgrade && application.canUpgrade) ? updateButton : root.additionalItem
         }
     }
 }
