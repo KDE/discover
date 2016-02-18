@@ -91,6 +91,7 @@ Item {
         }
         componentTrue: ScrollView {
             id: scroll
+            flickableItem.flickableDirection: Flickable.VerticalFlick
             ColumnLayout {
                 width: scroll.viewport.width
 

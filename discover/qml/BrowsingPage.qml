@@ -28,6 +28,7 @@ Item {
     id: top
     readonly property string title: ""
     readonly property string icon: "go-home"
+    flickableItem.flickableDirection: Flickable.VerticalFlick
     clip: true
 
     function searchFor(text) {
