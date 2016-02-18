@@ -24,7 +24,7 @@ Item {
     id: root
     property real internalMargin: SystemFonts.generalFont.pointSize
     default property alias content: paddingItem.data
-    height: SystemFonts.generalFont.pointSize*5 + item.anchors.topMargin
+    height: Math.max(SystemFonts.generalFont.pointSize*5, SystemFonts.titleFont.pointSize*3) + item.anchors.topMargin
 
     GridItem
     {
