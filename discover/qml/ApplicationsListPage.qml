@@ -175,7 +175,7 @@ Item {
         CategoryDisplay {
             id: categoryHeader
             category: page.category
-            width: app.actualWidth
+            width: Math.min(app.actualWidth, viewLoader.item.viewport.width)
             height: implicitHeight
             spacing: 10
             maxtopwidth: viewLoader.sourceComponent == listComponent ? 100 : viewLoader.item.cellWidth
@@ -187,6 +187,19 @@ Item {
         id: viewLoader
         anchors.fill: parent
     }
+
+    Component {
+        id: fushit
+        ColumnLayout {
+            Loader { sourceComponent: categoryHeaderComponent }
+            Label {
+                text: i18n("Resources")
+                Layout.fillWidth: true
+                font.weight: Font.Bold
+                Layout.minimumHeight: paintedHeight*1.5
+            }
+        }
+    }
     
     Component {
         id: listComponent
@@ -195,8 +208,8 @@ Item {
             anchors.fill: parent
             section.property: page.sectionProperty
             section.delegate: page.sectionDelegate
-            
-            header: page.header
+
+            header: page.header == categoryHeaderComponent ? fushit : page.header
             model: appsModel
         }
     }

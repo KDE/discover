@@ -99,22 +99,25 @@ ScrollView {
 
                     Label {
                         text: i18n("(%1)", ratingPoints)
+                        visible: !app.isCompact
                     }
 
                     Rating {
                         id: ratingsItem
                         starSize: app.isCompact ? contHeight*.6 : contHeight*.4
                         rating: model.rating
+                        visible: !app.isCompact
                     }
 
 
                     Label {
                         text: category[0]
+                        visible: !app.isCompact
                     }
 
                     Item {
                         Layout.fillHeight: true
-                        width: Math.max(installInfo.width, installButton.width)
+                        width: app.isCompact ? installInfo.width : Math.max(installInfo.width, installButton.width)
 
                         InstallApplicationButton {
                             id: installButton

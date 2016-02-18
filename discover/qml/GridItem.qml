@@ -29,7 +29,7 @@ MouseArea {
     property int internalMargin: 5
     readonly property color highlightColor: Qt.lighter(palette.highlight)
 
-    hoverEnabled: true
+    hoverEnabled: !app.isCompact
 
     SystemPalette {
         id: palette
