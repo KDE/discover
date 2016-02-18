@@ -25,11 +25,9 @@ PageHeader {
             Layout.maximumHeight: parent.height
             spacing: 0
             Heading {
-                id: heading
                 text: application.name
                 Layout.fillWidth: true
                 elide: Text.ElideRight
-                font.bold: true
             }
             Label {
                 Layout.fillWidth: true
@@ -37,7 +35,6 @@ PageHeader {
                 wrapMode: Text.WordWrap
                 elide: Text.ElideRight
                 maximumLineCount: 1
-//                         verticalAlignment: Text.AlignVCenter
             }
         }
         InstallApplicationButton {
