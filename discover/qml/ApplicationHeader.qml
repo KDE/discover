@@ -44,7 +44,7 @@ PageHeader {
             id: installButton
             application: appInfo.application
             additionalItem:  Rating {
-                property QtObject ratingInstance: application.rating
+                readonly property QtObject ratingInstance: application.rating
                 visible: ratingInstance!=null
                 rating:  ratingInstance==null ? 0 : ratingInstance.rating
             }
