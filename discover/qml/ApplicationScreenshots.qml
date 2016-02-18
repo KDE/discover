@@ -26,7 +26,9 @@ Item {
     id: shadow
     state: "thumbnail"
     property alias application: screenshotsModel.application
-    readonly property rect initialGeometry: parent.mapFromItem(initialParent, 0, 0, initialParent.width, initialParent.height)
+    readonly property rect initialGeometry: fullParent.flickableItem ?
+        parent.mapFromItem(initialParent, fullParent.flickableItem.visibleArea.xPosition, fullParent.flickableItem.visibleArea.yPosition, initialParent.width, initialParent.height) :
+        parent.mapFromItem(initialParent, 0, 0, initialParent.width, initialParent.height)
     readonly property rect fullGeometry: Qt.rect(0, 0, parent.width, parent.height)
 
     property Item initialParent: null
