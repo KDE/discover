@@ -22,6 +22,7 @@ import QtQuick.Controls 1.1
 import QtQuick.Window 2.1
 import QtQuick.Layouts 1.1
 import org.kde.kquickcontrolsaddons 2.0
+import org.kde.discover.app 1.0
 
 Item {
     id: appInfo
@@ -82,7 +83,7 @@ Item {
                     Layout.preferredWidth: app.actualWidth/2
 
                     ApplicationDescription {
-                        width: scroll.viewport.width
+                        width: scroll.viewport.width-margin/2
                         application: appInfo.application
                         isInstalling: header.isInstalling
                     }
@@ -92,8 +93,10 @@ Item {
         componentTrue: ScrollView {
             id: scroll
             flickableItem.flickableDirection: Flickable.VerticalFlick
+
             ColumnLayout {
                 width: scroll.viewport.width
+                x: desc.margin/2
 
                 ApplicationHeader {
                     id: header
@@ -121,6 +124,7 @@ Item {
                 }
 
                 ApplicationDescription {
+                    id: desc
                     Layout.fillWidth: true
 
                     application: appInfo.application

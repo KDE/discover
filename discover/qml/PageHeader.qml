@@ -37,6 +37,7 @@ Item {
 
         Item {
             id: paddingItem
+            clip: true
             anchors {
                 fill: parent
                 margins: root.internalMargin

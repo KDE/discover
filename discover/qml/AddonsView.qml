@@ -14,6 +14,10 @@ ColumnLayout
     visible: !addonsView.isEmpty
     spacing: 5
 
+    Heading {
+        text: i18n("Addons")
+    }
+
     Repeater
     {
         model: ApplicationAddonsModel { id: addonsModel }

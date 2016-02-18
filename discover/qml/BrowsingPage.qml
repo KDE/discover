@@ -22,10 +22,11 @@ import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 1.0
 import org.kde.kquickcontrolsaddons 2.0
+import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
 
-Item {
-    id: top
+ScrollView {
+    id: view
     readonly property string title: ""
     readonly property string icon: "go-home"
     flickableItem.flickableDirection: Flickable.VerticalFlick
@@ -35,26 +36,22 @@ Item {
         Navigation.openApplicationList("edit-find", i18n("Search..."), null, text)
     }
 
-    ScrollView {
-        id: view
-        anchors.fill: parent
+    ColumnLayout
+    {
+        readonly property real margin: SystemFonts.generalFont.pointSize/2
+        width: view.viewport.width-margin*2
+        x: margin
 
-        ColumnLayout
-        {
-            width: view.width-20
-            x: 10
+        FeaturedBanner {
+            Layout.fillWidth: true
+            Layout.preferredHeight: 310
+        }
 
-            FeaturedBanner {
-                Layout.fillWidth: true
-                Layout.preferredHeight: 310
-            }
-
-            CategoryDisplay {
-                Layout.fillWidth: true
-            }
-            Item {
-                height: 5
-            }
+        CategoryDisplay {
+            Layout.fillWidth: true
+        }
+        Item {
+            height: parent.margin
         }
     }
 }

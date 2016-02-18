@@ -25,42 +25,32 @@ import org.kde.discover 1.0
 import org.kde.discover.app 1.0 as Discover
 import "navigation.js" as Navigation
 
-Column
+ColumnLayout
 {
     id: desc
     property QtObject application: null
     property alias isInstalling: addonsView.isInstalling
 
-    Item {width: 10; height: 5}
+    readonly property real margin: Discover.SystemFonts.generalFont.pointSize
 
     Heading {
-        x: 5
         text: i18n("Description")
     }
     Label {
-        id: info
-        anchors {
-            left: parent.left
-            right: parent.right
-            margins: 5
-        }
+        Layout.fillWidth: true
         horizontalAlignment: Text.AlignJustify
         wrapMode: Text.WordWrap
         text: application.longDescription
     }
-    Item {width: 10; height: 20}
+    Item { width: 1; height: parent.margin }
 
-    Heading {
-        text: i18n("Addons")
-        visible: addonsView.visible
-    }
     AddonsView {
         id: addonsView
         application: parent.application
-        width: parent.width
+        Layout.fillWidth: true
     }
 
-    Item {width: 10; height: 20}
+    Item { width: 1; height: parent.margin }
     Heading {
         text: i18n("Comments")
         visible: reviewsView.visible
@@ -70,7 +60,7 @@ Column
         visible: count>0
 
         delegate: ReviewDelegate {
-            width: parent.width
+            Layout.fillWidth: true
             onMarkUseful: reviewsModel.markUseful(index, useful)
         }
 
@@ -105,5 +95,5 @@ Column
             }
         }
     }
-    Item { height: 10; width: 5 } //margin by the end
+    Item { width: 1; height: parent.margin/2 }
 }

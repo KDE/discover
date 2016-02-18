@@ -89,7 +89,7 @@ ScrollView {
                             elide: Text.ElideRight
                             text: comment
                             font.italic: true
-                            opacity: delegateArea.containsMouse ? 1 : 0.5
+                            opacity: !app.isCompact && delegateArea.containsMouse ? 1 : 0.5
                             maximumLineCount: 1
                             clip: true
                         }
@@ -124,7 +124,7 @@ ScrollView {
                             anchors.verticalCenter: parent.verticalCenter
                             application: model.application
                             canUpgrade: false
-                            visible: delegateArea.containsMouse
+                            visible: !app.isCompact && delegateArea.containsMouse
                         }
                         LabelBackground {
                             progressing: installButton.isActive
@@ -132,7 +132,7 @@ ScrollView {
 
                             id: installInfo
                             anchors.centerIn: parent
-                            visible: !delegateArea.containsMouse
+                            visible: app.isCompact || !delegateArea.containsMouse
                             text: Format.formatByteSize(size)
                         }
                     }

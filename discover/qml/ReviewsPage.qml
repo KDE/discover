@@ -38,7 +38,7 @@ ScrollView {
 
         delegate: ReviewDelegate {
             x: page.proposedMargin
-            width: page.actualWidth
+            width: app.actualWidth
             onMarkUseful: page.model.markUseful(index, useful)
         }
     }
