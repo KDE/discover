@@ -22,6 +22,7 @@ import QtQuick.Controls 1.1
 import QtQuick.Window 2.1
 import QtQuick.Layouts 1.1
 import org.kde.kquickcontrolsaddons 2.0
+import org.kde.discover 1.0
 import org.kde.discover.app 1.0
 
 Item {
@@ -46,11 +47,47 @@ Item {
                 columns: 2
                 rows: 2
 
-                ApplicationHeader {
-                    id: header
-                    Layout.fillWidth: true
+                PageHeader {
                     Layout.columnSpan: 2
-                    application: appInfo.application
+                    Layout.fillWidth: true
+                    topMargin: 0
+
+                    RowLayout {
+                        QIconItem {
+                            Layout.preferredHeight: col.height
+                            Layout.preferredWidth: col.height
+
+                            icon: appInfo.application.icon
+                        }
+
+                        ColumnLayout {
+                            id: col
+                            Layout.fillWidth: true
+
+                            spacing: 0
+                            Heading {
+                                text: appInfo.application.name
+                                Layout.fillWidth: true
+                                elide: Text.ElideRight
+                            }
+                            Label {
+                                Layout.fillWidth: true
+                                text: appInfo.application.comment
+                                wrapMode: Text.WordWrap
+                                elide: Text.ElideRight
+                                maximumLineCount: 1
+                            }
+                        }
+                        InstallApplicationButton {
+                            id: installButton
+                            application: appInfo.application
+                            additionalItem:  Rating {
+                                readonly property QtObject ratingInstance: application.rating
+                                visible: ratingInstance!=null
+                                rating:  ratingInstance==null ? 0 : ratingInstance.rating
+                            }
+                        }
+                    }
                 }
 
                 ColumnLayout {
@@ -85,7 +122,7 @@ Item {
                     ApplicationDescription {
                         width: scroll.viewport.width-margin/2
                         application: appInfo.application
-                        isInstalling: header.isInstalling
+                        isInstalling: installButton.isActive
                     }
                 }
             }
@@ -94,21 +131,76 @@ Item {
             id: scroll
             flickableItem.flickableDirection: Flickable.VerticalFlick
 
+
             ColumnLayout {
-                width: scroll.viewport.width
+                width: scroll.viewport.width-desc.margin
                 x: desc.margin/2
 
-                ApplicationHeader {
-                    id: header
+                GridItem {
                     Layout.fillWidth: true
-                    Layout.columnSpan: 2
-                    application: appInfo.application
-                }
+                    height: conts.Layout.minimumHeight + 2*internalMargin
 
-                ApplicationDetails {
-                    id: details
-                    Layout.fillWidth: true
-                    application: appInfo.application
+                    ColumnLayout {
+                        id: conts
+                        anchors.fill: parent
+
+                        RowLayout {
+                            Layout.fillWidth: true
+                            QIconItem {
+                                Layout.preferredHeight: title.height
+                                Layout.preferredWidth: title.height
+
+                                icon: appInfo.application.icon
+                                Layout.alignment: Qt.AlignTop
+                            }
+
+                            ColumnLayout {
+                                Layout.fillWidth: true
+                                Layout.fillHeight: true
+
+                                Heading {
+                                    id: title
+                                    text: appInfo.application.name
+                                    Layout.fillWidth: true
+                                    elide: Text.ElideRight
+                                }
+                                Label {
+                                    Layout.fillWidth: true
+                                    text: appInfo.application.comment
+                                    wrapMode: Text.WordWrap
+                                    elide: Text.ElideRight
+                                    maximumLineCount: 1
+                                }
+                                Rating {
+                                    readonly property QtObject ratingInstance: application.rating
+                                    visible: ratingInstance!=null
+                                    rating:  ratingInstance==null ? 0 : ratingInstance.rating
+                                    starSize: title.paintedHeight
+
+                                    Text { text: i18n(" (%1)", parent.ratingInstance.ratingCount) }
+                                }
+                            }
+                        }
+                        RowLayout {
+                            Layout.fillWidth: true
+                            Button {
+                                Layout.fillWidth: true
+                                text: i18n("Update")
+                                onClicked: ResourcesModel.installApplication(appInfo.application)
+                                opacity: appInfo.application.canUpgrade ? 1 : 0
+
+                                TransactionListener {
+                                    id: listener
+                                    resource: appInfo.application
+                                }
+                                enabled: !listener.isActive
+                            }
+                            Button {
+                                Layout.fillWidth: true
+                                text: i18n("Launch")
+                            }
+                        }
+                    }
                 }
 
                 Item {
@@ -129,6 +221,12 @@ Item {
 
                     application: appInfo.application
                     z: -1
+                }
+
+                ApplicationDetails {
+                    id: details
+                    Layout.fillWidth: true
+                    application: appInfo.application
                 }
             }
         }

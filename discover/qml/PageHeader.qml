@@ -22,8 +22,9 @@ import org.kde.discover.app 1.0
 
 Item {
     id: root
-    property real internalMargin: SystemFonts.generalFont.pointSize
-    default property alias content: paddingItem.data
+    property alias internalMargin: item.internalMargin
+    property real topMargin: 20
+    default property Item content
     height: Math.max(SystemFonts.generalFont.pointSize*5, SystemFonts.titleFont.pointSize*3) + item.anchors.topMargin
 
     GridItem
@@ -31,19 +32,13 @@ Item {
         id: item
         anchors {
             fill: parent
-            topMargin: 20
+            topMargin: root.topMargin
         }
         hoverEnabled: false
+        clip: true
+        content: root.content
 
-        Item {
-            id: paddingItem
-            clip: true
-            anchors {
-                fill: parent
-                margins: root.internalMargin
-                topMargin: 0
-                bottomMargin: 0
-            }
-        }
+        Binding { target: root.content; property: "width"; value: internalWidth }
+        Binding { target: root.content; property: "height"; value: internalHeight }
     }
 }
