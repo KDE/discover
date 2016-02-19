@@ -133,12 +133,13 @@ Item {
 
 
             ColumnLayout {
-                width: scroll.viewport.width-desc.margin
-                x: desc.margin/2
+                width: scroll.viewport.width-desc.margin*4
+                x: desc.margin*2
 
                 GridItem {
                     Layout.fillWidth: true
                     height: conts.Layout.minimumHeight + 2*internalMargin
+                    enabled: false
 
                     ColumnLayout {
                         id: conts
