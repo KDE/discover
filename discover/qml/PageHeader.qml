@@ -34,11 +34,11 @@ Item {
             fill: parent
             topMargin: root.topMargin
         }
-        hoverEnabled: false
+        enabled: false
         clip: true
         content: root.content
 
-        Binding { target: root.content; property: "width"; value: internalWidth }
-        Binding { target: root.content; property: "height"; value: internalHeight }
+        Binding { target: root.content; property: "width"; value: item.internalWidth }
+        Binding { target: root.content; property: "height"; value: item.internalHeight }
     }
 }
