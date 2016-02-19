@@ -53,10 +53,4 @@ ColumnLayout
         Label { text: i18n("License: "); horizontalAlignment: Text.AlignRight; width: parent.width/2; font.weight: Font.Bold }
         Label { text: application.license; width: parent.width/2; elide: Text.ElideRight }
     }
-    Button {
-        anchors.horizontalCenter: parent.horizontalCenter
-        visible: application.isInstalled && application.canExecute
-        text: i18n("Launch")
-        onClicked: application.invokeApplication()
-    }
 }

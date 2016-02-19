@@ -109,6 +109,12 @@ Item {
                         Layout.fillWidth: true
                         application: appInfo.application
                     }
+                    Button {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        visible: application.isInstalled && application.canExecute
+                        text: i18n("Launch")
+                        onClicked: application.invokeApplication()
+                    }
                     Item {
                         Layout.fillHeight: true
                     }
@@ -198,7 +204,9 @@ Item {
                             }
                             Button {
                                 Layout.fillWidth: true
+                                visible: application.isInstalled && application.canExecute
                                 text: i18n("Launch")
+                                onClicked: application.invokeApplication()
                             }
                         }
                     }
