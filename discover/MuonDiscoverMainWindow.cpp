@@ -311,11 +311,7 @@ void MuonDiscoverMainWindow::switchApplicationLanguage()
 
 void MuonDiscoverMainWindow::configureShortcuts()
 {
-    const bool letterCutsOk = true;
-
-    KShortcutsDialog dlg(KShortcutsEditor::AllActions,
-                         letterCutsOk ? KShortcutsEditor::LetterShortcutsAllowed : KShortcutsEditor::LetterShortcutsDisallowed,
-                         qobject_cast<QWidget *>(parent()));
+    KShortcutsDialog dlg(KShortcutsEditor::AllActions, KShortcutsEditor::LetterShortcutsAllowed, nullptr);
     dlg.setModal(true);
     dlg.addCollection(actionCollection());
     qDebug() << "saving shortcuts..." << dlg.configure(/*bSaveSettings*/);
