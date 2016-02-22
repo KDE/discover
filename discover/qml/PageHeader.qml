@@ -25,7 +25,7 @@ Item {
     property alias internalMargin: item.internalMargin
     property real topMargin: 20
     default property Item content
-    height: Math.max(SystemFonts.generalFont.pointSize*5, SystemFonts.titleFont.pointSize*3) + item.anchors.topMargin
+    height: Math.max(SystemFonts.generalFont.pointSize*5, content.implicitHeight + 2*item.internalMargin) + item.anchors.topMargin
 
     GridItem
     {
