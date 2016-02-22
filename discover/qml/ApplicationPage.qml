@@ -188,21 +188,11 @@ Item {
                                 }
                             }
                         }
-                        RowLayout {
+                        InstallApplicationButton {
                             Layout.fillWidth: true
-                            Button {
-                                Layout.fillWidth: true
-                                text: i18n("Update")
-                                onClicked: ResourcesModel.installApplication(appInfo.application)
-                                opacity: appInfo.application.canUpgrade ? 1 : 0
-
-                                TransactionListener {
-                                    id: listener
-                                    resource: appInfo.application
-                                }
-                                enabled: !listener.isActive
-                            }
-                            Button {
+                            application: appInfo.application
+                            fill: true
+                            additionalItem: Button {
                                 Layout.fillWidth: true
                                 visible: application.isInstalled && application.canExecute
                                 text: i18n("Launch")

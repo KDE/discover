@@ -11,6 +11,7 @@ ConditionalLoader
     readonly property alias progress: listener.progress
     property Component additionalItem: null
     property bool canUpgrade: true
+    property bool fill: false
 
     TransactionListener {
         id: listener
@@ -35,6 +36,7 @@ ConditionalLoader
 
     componentFalse: RowLayout {
         Loader {
+            Layout.fillWidth: root.fill
             Component {
                 id: updateButton
                 Button {
@@ -47,6 +49,7 @@ ConditionalLoader
         Button {
             enabled: !ResourcesModel.isFetching
             text: !application.isInstalled ? i18n("Install") : i18n("Remove")
+            Layout.fillWidth: root.fill
 
             onClicked: {
                 if(application.isInstalled)
