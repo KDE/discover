@@ -46,8 +46,8 @@ ConditionalLoader
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 id: icon
-                width: 128
-                height: 128
+                height: title.implicitHeight*5
+                width: height
             }
             Label {
                 id: title
