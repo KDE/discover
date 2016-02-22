@@ -70,6 +70,13 @@ int main(int argc, char** argv)
         about.processCommandLine(&parser);
         DiscoverBackendsFactory::processCommandLine(&parser);
 
+        if(parser.isSet(QStringLiteral("listmodes"))) {
+            fprintf(stdout, "%s", qPrintable(i18n("Available modes:\n")));
+            foreach(const QString& mode, mainWindow->modes())
+                fprintf(stdout, " * %s\n", qPrintable(mode));
+            return 0;
+        }
+
         mainWindow = new MuonDiscoverMainWindow(decodeCompactMode(parser.value(QStringLiteral("compact"))));
         QObject::connect(&app, &QApplication::aboutToQuit, mainWindow, &MuonDiscoverMainWindow::deleteLater);
 
@@ -79,14 +86,9 @@ int main(int argc, char** argv)
             mainWindow->openMimeType(parser.value(QStringLiteral("mime")));
         else if(parser.isSet(QStringLiteral("category")))
             mainWindow->openCategory(parser.value(QStringLiteral("category")));
-        else if(parser.isSet(QStringLiteral("mode")))
+
+        if(parser.isSet(QStringLiteral("mode")))
             mainWindow->openMode(parser.value(QStringLiteral("mode")).toLocal8Bit());
-        else if(parser.isSet(QStringLiteral("listmodes"))) {
-            fprintf(stdout, "%s", qPrintable(i18n("Available modes:\n")));
-            foreach(const QString& mode, mainWindow->modes())
-                fprintf(stdout, " * %s\n", qPrintable(mode));
-            return 0;
-        }
 
         foreach(const QString &arg, parser.positionalArguments()) {
             QUrl url(arg);

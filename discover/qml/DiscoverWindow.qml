@@ -20,7 +20,6 @@ ConditionalLoader
     property Component currentTopLevel: defaultStartup ? topBrowsingComp : loadingComponent
     property bool defaultStartup: true
     property bool navigationEnabled: true
-    property bool compactDisabled: false
 
     objectName: "DiscoverMainWindow"
 

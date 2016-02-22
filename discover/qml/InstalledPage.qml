@@ -20,8 +20,6 @@ ApplicationsListPage {
         x: page.proposedMargin
 
         RowLayout {
-            anchors.fill: parent
-
             LabelBackground {
                 text: page.model.count
             }

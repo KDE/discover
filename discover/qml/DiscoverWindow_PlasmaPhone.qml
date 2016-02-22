@@ -41,10 +41,6 @@ MobileComponents.GlobalDrawer {
 
     Component {
         id: buttonComponent
-//         MuonToolButton {
-//             Layout.fillWidth: true
-//             action: modelData
-//         }
 
         MobileComponents.BasicListItem {
             Layout.fillWidth: true
