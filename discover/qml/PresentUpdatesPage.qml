@@ -86,10 +86,8 @@ ScrollView
                 spacing: -1
                 readonly property var currentRow: index
                 RowLayout {
-                    Layout.minimumHeight: 32
                     Layout.leftMargin: 5 //GridItem.internalMargin
                     Layout.rightMargin: 5 //GridItem.internalMargin
-                    anchors.margins: 100
                     Label {
                         Layout.fillWidth: true
                         text: display
@@ -105,10 +103,12 @@ ScrollView
                     }
                     delegate: GridItem {
                         Layout.fillWidth: true
-                        height: 32
+                        height: row.implicitHeight + 2*internalMargin
                         RowLayout {
+                            id: row
                             enabled: !resourcesUpdatesModel.isProgressing
                             anchors.fill: parent
+
                             CheckBox {
                                 anchors.verticalCenter: parent.verticalCenter
                                 checked: model.checked
