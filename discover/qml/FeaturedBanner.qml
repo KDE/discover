@@ -43,8 +43,10 @@ Information {
             readonly property int distance: Math.min(d1, info.count - d1)
             property real size: 1/((distance+3)/3)
             enabled: modelData.package!=""
-            width: 400 * size
-            height: 250 * size
+
+            readonly property real side: Math.min(info.height*0.9, info.width/1.618)
+            width: side*1.618 * size
+            height: side * size
 
             Behavior on size {
                 NumberAnimation {

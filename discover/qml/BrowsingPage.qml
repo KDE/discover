@@ -38,13 +38,13 @@ ScrollView {
 
     ColumnLayout
     {
-        readonly property real margin: SystemFonts.generalFont.pointSize/2
-        width: view.viewport.width-margin*2
-        x: margin
+        readonly property real margin: SystemFonts.generalFont.pointSize
+        width: view.viewport.width-margin
+        x: margin/2
 
         FeaturedBanner {
             Layout.fillWidth: true
-            Layout.preferredHeight: 310
+            Layout.preferredHeight: parent.margin*30
         }
 
         CategoryDisplay {
