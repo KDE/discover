@@ -205,7 +205,7 @@ Item {
                 Item {
                     id: screenshotsPlaceholder
                     Layout.fillWidth: true
-                    Layout.minimumHeight: details.height
+                    Layout.minimumHeight: width/1.618
 
                     ApplicationScreenshots {
                         application: appInfo.application
