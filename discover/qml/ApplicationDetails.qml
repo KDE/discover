@@ -24,33 +24,56 @@ import QtQuick.Window 2.1
 import org.kde.discover.app 1.0 as Discover
 import org.kde.discover 1.0
 
-ColumnLayout
+GridLayout
 {
+    id: layout
     property QtObject application
-    spacing: 10
 
-    Grid {
+    columns: 2
+
+    Heading {
         Layout.fillWidth: true
-        columns: 2
-        spacing: 0
-        Label { text: i18n("Total Size: "); horizontalAlignment: Text.AlignRight; width: parent.width/2; font.weight: Font.Bold }
-        Label { text: application.sizeDescription; width: parent.width/2; elide: Text.ElideRight }
-        Label { text: i18n("Version: "); horizontalAlignment: Text.AlignRight; width: parent.width/2; font.weight: Font.Bold }
-        Label { text: application.packageName+" "+(application.isInstalled ? application.installedVersion : application.availableVersion); width: parent.width/2; elide: Text.ElideRight }
-        Label { text: i18n("Homepage: "); horizontalAlignment: Text.AlignRight; width: parent.width/2; font.weight: Font.Bold }
-        Label {
-            text: application.homepage
-            MouseArea {
-                anchors.fill: parent
-                onClicked: Qt.openUrlExternally(application.homepage);
+        text: i18n("Details")
+    }
+    Item { width: 5; height: 5 }//if the heading has columnSpan: 2 the whole layout shrinks
+
+    Repeater {
+        model: details
+        property list<QtObject> details: [
+            QtObject {
+                readonly property string title: i18n("Homepage")
+                readonly property string value: "<a href='"+application.homepage+"'>"+application.homepage+"</a>"
+                readonly property int span: 2
+                readonly property var url: application.homepage
+            },
+            QtObject {
+                readonly property string title: i18n("Size")
+                readonly property string value: application.sizeDescription
+            },
+            QtObject {
+                readonly property string title: i18n("License")
+                readonly property string value: application.license
+            },
+            QtObject {
+                readonly property string title: i18n("Version")
+                readonly property string value: application.isInstalled ? application.installedVersion : application.availableVersion
             }
-            SystemPalette { id: palette }
-            color: palette.highlight
-            font.underline: true
-            width: parent.width/2
-            elide: Text.ElideRight
+        ]
+        delegate: Column {
+            Layout.fillWidth: true
+            Layout.columnSpan: modelData.span ? modelData.span : 1
+            spacing: 0
+            Label {
+                text: modelData.title
+            }
+            Label {
+                text: modelData.value
+                elide: Text.ElideRight
+                opacity: modelData.url ? 1 : 0.5
+                onLinkActivated: if (modelData.url) {
+                    Qt.openUrlExternally(modelData.url);
+                }
+            }
         }
-        Label { text: i18n("License: "); horizontalAlignment: Text.AlignRight; width: parent.width/2; font.weight: Font.Bold }
-        Label { text: application.license; width: parent.width/2; elide: Text.ElideRight }
     }
 }
