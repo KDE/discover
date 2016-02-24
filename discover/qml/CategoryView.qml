@@ -28,7 +28,7 @@ GridItem
 {
     property alias model: grid.model
     readonly property alias count: grid.count
-    hoverEnabled: false
+    enabled: false
 
     ScrollView {
         anchors {
