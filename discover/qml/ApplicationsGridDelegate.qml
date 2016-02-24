@@ -35,102 +35,133 @@ GridItem {
     internalMargin: 0
 
     SystemPalette { id: sys }
-    Rectangle {
-        id: artwork
-        gradient: Gradient {
-            GradientStop { position: 0.0; color: Qt.darker(colors.dominantColor) }
-            GradientStop { position: 0.5; color: "black" }
-        }
-
-        width: parent.width
-        height: parent.height*0.65
-        property bool hasThumbnail: model.application.thumbnailUrl!=""
-
-        IconColors {
-            id: colors
-            iconName: model.application.icon
-        }
-
-        Image {
-            id: screen
-            anchors {
-                verticalCenter: parent.verticalCenter
-                right: parent.right
-                rightMargin: parent.width*0.1
+    ColumnLayout {
+        anchors.fill: parent
+        spacing: 0
+        Rectangle {
+            id: artwork
+            gradient: Gradient {
+                GradientStop { position: 0.0; color: Qt.darker(colors.dominantColor) }
+                GradientStop { position: 0.5; color: "black" }
             }
 
-            source: model.application.thumbnailUrl
-            height: parent.height*0.9
-            fillMode: Image.PreserveAspectFit
-            smooth: false
-            cache: false
-            asynchronous: true
-            onStatusChanged:  {
-                if(status==Image.Error) {
-                    artwork.hasThumbnail=false
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            Layout.minimumHeight: parent.height*0.7
+            readonly property bool hasThumbnail: screen.status != Image.Error && screen.source.toString()
+
+            IconColors {
+                id: colors
+                iconName: model.application.icon
+            }
+
+            Image {
+                id: screen
+                anchors {
+                    right: rating.right
+                    rightMargin: (parent.width-width)/8
+                    verticalCenter: parent.verticalCenter
+                    verticalCenterOffset: -rating.height/3
+                    bottom: rating.top
+                }
+
+                source: model.application.thumbnailUrl
+                height: parent.height*0.8
+                fillMode: Image.PreserveAspectFit
+                smooth: false
+                cache: false
+                asynchronous: true
+            }
+            Image {
+                id: icon
+
+                height: parent.height*0.7
+                width: height
+                smooth: true
+                asynchronous: true
+                sourceSize: Qt.size(width, width)
+                source: model.application.icon.length==0 ? ""
+                    : model.application.icon[0] == "/" ? "file://"+model.application.icon
+                    : "image://icon/"+model.application.icon
+            }
+
+            Rating {
+                id: rating
+                anchors {
+                    bottom: parent.bottom
+                    bottomMargin: 3
+                    right: parent.right
+                    rightMargin: 3
+                }
+                starSize: parent.height*0.15
+                rating: 10
+            }
+
+            state: artwork.hasThumbnail ? "withthumbnail" : "nothumbnail"
+            states: [
+                State {
+                    name: "withthumbnail"
+
+                    PropertyChanges {
+                        target: icon
+                        anchors {
+                            left: artwork.left
+                            leftMargin: artwork.width/6
+                            verticalCenter: screen.verticalCenter
+                        }
+                    }
+                },
+                State {
+                    name: "nothumbnail"
+
+                    PropertyChanges {
+                        target: icon
+                        anchors {
+                            centerIn: artwork
+                            verticalCenter: artwork.verticalCenter
+                        }
+                    }
+                }
+            ]
+        }
+        RowLayout {
+            Layout.fillWidth: true
+            Layout.rightMargin: 5
+            ColumnLayout {
+                spacing: 0
+                Layout.fillWidth: true
+                Layout.bottomMargin: 3
+                Layout.topMargin: 3
+                Layout.leftMargin: 5
+                Layout.rightMargin: 5
+                Label {
+                    Layout.fillWidth: true
+                    elide: Text.ElideRight
+                    text: name
+                }
+                Label {
+                    Layout.fillWidth: true
+                    elide: Text.ElideRight
+                    text: comment
+                    font: SystemFonts.smallestReadableFont
+                    opacity: 0.6
                 }
             }
-        }
-        Image {
-            anchors {
-                centerIn: parent
-                horizontalCenterOffset: artwork.hasThumbnail ? -50 : 0
-            }
 
-            id: smallIcon
-            width: 64
-            height: width
-            smooth: true
-            asynchronous: true
-            sourceSize: Qt.size(width, width)
-            source: model.application.icon.length==0 ? ""
-                  : model.application.icon[0] == "/" ? "file://"+model.application.icon
-                  : "image://icon/"+model.application.icon
-        }
-    }
-    RowLayout {
-        anchors {
-            topMargin: artwork.height+2
-            bottomMargin: 8
-            margins: 5
-            fill: parent
-        }
+            InstallApplicationButton {
+                Layout.minimumWidth: parent.width/3
 
-        ColumnLayout {
-            Layout.fillWidth: true
-            Label {
-                Layout.fillWidth: true
-                elide: Text.ElideRight
-                text: name
-            }
-            Label {
-                Layout.fillWidth: true
-                elide: Text.ElideRight
-                text: comment
-                opacity: 0.6
-            }
-        }
-        ConditionalLoader {
-            Layout.minimumWidth: parent.width/3
-            Layout.fillHeight: true
-
-            condition: delegateRoot.containsMouse
-            componentFalse: Rating {
-                rating: 5
-            }
-
-            componentTrue: InstallApplicationButton {
+                visible: delegateRoot.containsMouse
                 application: model.application
                 canUpgrade: false
             }
         }
-    }
 
-    ApplicationIndicator {
-        id: indicator
-        state: canUpgrade ? "upgradeable" : (isInstalled ? "installed" : "none")
-        height: 5
-        width: parent.width
-        anchors.bottom: parent.bottom
+        ApplicationIndicator {
+            Layout.fillWidth: true
+            id: indicator
+            state: canUpgrade ? "upgradeable" : (isInstalled ? "installed" : "none")
+            height: 5
+        }
     }
 }

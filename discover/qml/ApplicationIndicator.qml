@@ -22,6 +22,7 @@ import QtQuick 2.1
 Rectangle {
     id: root
     state: "none"
+    border.width: 0
 
     states: [
         State {
