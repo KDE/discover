@@ -20,6 +20,7 @@
 import QtQuick 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.1
+import QtGraphicalEffects 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
@@ -83,6 +84,16 @@ GridItem {
                 source: model.application.icon.length==0 ? ""
                     : model.application.icon[0] == "/" ? "file://"+model.application.icon
                     : "image://icon/"+model.application.icon
+            }
+
+            DropShadow {
+                anchors.fill: icon
+                horizontalOffset: 3
+                verticalOffset: 3
+                radius: 8.0
+                samples: 16
+                color: "#80000000"
+                source: icon
             }
 
             Rating {
