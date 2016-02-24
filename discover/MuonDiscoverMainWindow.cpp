@@ -214,6 +214,12 @@ void MuonDiscoverMainWindow::showEvent(QShowEvent * event)
     Q_EMIT actualWidthChanged(actualWidth());
 }
 
+void MuonDiscoverMainWindow::hideEvent(QHideEvent * event)
+{
+    delete engine();
+    QQuickView::hideEvent(event);
+}
+
 void MuonDiscoverMainWindow::setupActions()
 {
     QAction *quitAction = KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), actionCollection());

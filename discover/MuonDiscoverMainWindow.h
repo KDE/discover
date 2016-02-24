@@ -66,6 +66,7 @@ class MuonDiscoverMainWindow : public QQuickView
 
         void resizeEvent(QResizeEvent * event) override;
         void showEvent(QShowEvent * event) override;
+        void hideEvent(QHideEvent * event) override;
 
         Q_SCRIPTABLE QAction * action(const QString& name);
         Q_SCRIPTABLE QString iconName(const QIcon& icon);
