@@ -39,7 +39,7 @@ Item {
         id: shadowItem
         anchors.fill: parent
         color: "black"
-        Behavior on opacity { NumberAnimation { duration: 1000 } }
+        Behavior on opacity { NumberAnimation { duration: 1000; easing.type: Easing.InQuad } }
     }
 
     Image {
@@ -71,7 +71,7 @@ Item {
 
     states: [
     State { name: "thumbnail"
-        PropertyChanges { target: shadowItem; opacity: 0.1 }
+        PropertyChanges { target: shadowItem; opacity: 0.0 }
         PropertyChanges { target: shadow; width: initialGeometry.width }
         PropertyChanges { target: shadow; height: initialGeometry.height }
         PropertyChanges { target: shadow; x: initialGeometry.x }
