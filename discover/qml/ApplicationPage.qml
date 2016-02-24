@@ -46,6 +46,8 @@ Item {
                 height: parent.height
                 columns: 2
                 rows: 2
+                rowSpacing: 3*SystemFonts.generalFont.pointSize
+                columnSpacing: rowSpacing
 
                 PageHeader {
                     Layout.columnSpan: 2
