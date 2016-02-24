@@ -175,7 +175,6 @@ Item {
         CategoryDisplay {
             id: categoryHeader
             category: page.category
-            width: Math.min(app.actualWidth, viewLoader.item.viewport.width)
             height: implicitHeight
             spacing: 10
             maxtopwidth: viewLoader.sourceComponent == listComponent ? 100 : viewLoader.item.cellWidth
@@ -189,7 +188,7 @@ Item {
     }
 
     Component {
-        id: fushit
+        id: appListHeader
         ColumnLayout {
             Loader { sourceComponent: categoryHeaderComponent }
             Label {
@@ -209,7 +208,7 @@ Item {
             section.property: page.sectionProperty
             section.delegate: page.sectionDelegate
 
-            header: page.header == categoryHeaderComponent ? fushit : page.header
+            header: page.header == categoryHeaderComponent ? appListHeader : page.header
             model: appsModel
         }
     }

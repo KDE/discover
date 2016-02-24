@@ -39,7 +39,7 @@ ConditionalLoader
     condition: !app.isCompact
     componentTrue: RowLayout {
             id: gridRow
-            readonly property bool extended: !app.isCompact && view.count>5
+            readonly property bool extended: view.count>5
             spacing: page.spacing
 
             ApplicationsTop {
@@ -80,7 +80,7 @@ ConditionalLoader
             ColumnLayout {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                Layout.preferredWidth: page.maxtopwidth*2
+                Layout.preferredWidth: page.maxtopwidth*2+page.spacing
                 Layout.maximumHeight: top.height
 
                 spacing: -1
