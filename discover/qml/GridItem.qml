@@ -31,9 +31,6 @@ MouseArea {
 
     hoverEnabled: true
 
-    SystemPalette {
-        id: palette
-    }
     Rectangle {
         anchors.fill: parent
         color: listItem.containsMouse || listItem.pressed ? listItem.highlightColor : palette.button

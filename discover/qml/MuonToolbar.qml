@@ -59,7 +59,7 @@ ToolBar
                     iconName: "go-previous"
                     enabled: window.navigationEnabled && stackView.depth>1
                     tooltip: i18n("Back")
-                    onTriggered: { stackView.pop() }
+                    onTriggered: { stackView.pop().destroy(2000) }
                 }
             }
 

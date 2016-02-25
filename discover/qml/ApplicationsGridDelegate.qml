@@ -34,7 +34,6 @@ GridItem {
     }
     internalMargin: 0
 
-    SystemPalette { id: sys }
     Rectangle {
         id: artwork
         gradient: Gradient {
@@ -116,7 +115,7 @@ GridItem {
 
             condition: delegateRoot.containsMouse
             componentFalse: Rating {
-                rating: 5
+                rating: model.rating
             }
 
             componentTrue: InstallApplicationButton {
