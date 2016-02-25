@@ -28,7 +28,6 @@ import "navigation.js" as Navigation
 GridItem {
     id: delegateRoot
     clip: true
-    property bool allInstalled: false
     enabled: true
     onClicked: {
         Navigation.openApplication(application)
@@ -85,16 +84,6 @@ GridItem {
                     : "image://icon/"+model.application.icon
             }
 
-            DropShadow {
-                anchors.fill: icon
-                horizontalOffset: 3
-                verticalOffset: 3
-                radius: 8.0
-                samples: 16
-                color: "#80000000"
-                source: icon
-            }
-
             Rating {
                 id: rating
                 anchors {
@@ -104,7 +93,7 @@ GridItem {
                     rightMargin: 3
                 }
                 starSize: parent.height*0.15
-                rating: 10
+                rating: model.rating
             }
 
             state: artwork.hasThumbnail ? "withthumbnail" : "nothumbnail"
