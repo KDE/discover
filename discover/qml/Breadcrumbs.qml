@@ -59,7 +59,7 @@ RowLayout {
     function doClick(index) {
         var pos = bread.pageStack.depth
         for(; pos>(index+1); --pos) {
-            bread.pageStack.pop(pos>index)
+            bread.pageStack.pop(pos>index).destroy(1000);
         }
     }
 }
