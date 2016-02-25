@@ -147,12 +147,15 @@ GridItem {
                 }
             }
 
-            InstallApplicationButton {
+            ConditionalLoader {
                 Layout.minimumWidth: parent.width/3
+                visible: condition
+                condition: delegateRoot.containsMouse
 
-                visible: delegateRoot.containsMouse
-                application: model.application
-                canUpgrade: false
+                componentTrue: InstallApplicationButton {
+                    application: model.application
+                    canUpgrade: false
+                }
             }
         }
 
