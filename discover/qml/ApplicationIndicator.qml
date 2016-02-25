@@ -21,21 +21,13 @@ import QtQuick 2.1
 
 Rectangle {
     id: root
-    state: "none"
+    property string state: "none"
     border.width: 0
 
-    states: [
-        State {
-            name: "none"
-            PropertyChanges { target: root; color: "transparent" }
-        },
-        State {
-            name: "installed"
-            PropertyChanges { target: root; color: "#090" }
-        },
-        State {
-            name: "upgradeable"
-            PropertyChanges { target: root; color: "#339" }
-        }
-    ]
+    readonly property var colors: {
+        "none": "transparent",
+        "installed": "#090",
+        "upgradeable": "#339"
+    }
+    color: colors[state]
 }
