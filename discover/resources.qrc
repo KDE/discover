@@ -44,6 +44,7 @@
     <file>qml/LabelBackground.qml</file>
     <file>qml/PageHeader.qml</file>
     <file>qml/ActionBridge.qml</file>
+    <file>qml/DiscoverSystemPalette.qml</file>
     <file>qml/DiscoverWindow.qml</file>
     <file>qml/DiscoverWindow_PlasmaPhone.qml</file>
 

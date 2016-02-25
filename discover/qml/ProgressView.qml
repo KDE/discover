@@ -113,8 +113,7 @@ Item {
                     rightMargin: 3
                 }
                 width: (parent.width - anchors.leftMargin - anchors.rightMargin)*(listener.progress/100)
-                SystemPalette { id: palette }
-                color: palette.buttonText
+                color: DiscoverSystemPalette.buttonText
                 height: 1
                 opacity: 0.5
                 visible: listener.isActive

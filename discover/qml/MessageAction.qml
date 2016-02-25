@@ -21,6 +21,7 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
+import org.kde.discover.app 1.0
 
 Rectangle {
     id: msg
@@ -28,10 +29,7 @@ Rectangle {
     Layout.minimumHeight: row.Layout.minimumHeight
 
     visible: theAction.enabled
-    SystemPalette {
-        id: palette
-    }
-    color: palette.highlight
+    color: DiscoverSystemPalette.highlight
 
     RowLayout {
         id: row
@@ -44,7 +42,7 @@ Rectangle {
         Label {
             Layout.fillWidth: true
             text: theAction.whatsThis || theAction.tooltip
-            color: palette.highlightedText
+            color: DiscoverSystemPalette.highlightedText
         }
         Button {
             text: theAction.text

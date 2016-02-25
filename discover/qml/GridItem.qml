@@ -20,6 +20,7 @@
 ///This is a fork of ListItem so that it can be used for GridView
 
 import QtQuick 2.1
+import org.kde.discover.app 1.0
 
 MouseArea {
     id: listItem
@@ -27,19 +28,16 @@ MouseArea {
     default property alias content: paddingItem.data
 
     property int internalMargin: 5
-    readonly property color highlightColor: Qt.lighter(palette.highlight)
+    readonly property color highlightColor: Qt.lighter(DiscoverSystemPalette.highlight)
     readonly property real internalWidth: width - 2*internalMargin
     readonly property real internalHeight: height - 2*internalMargin
 
     hoverEnabled: !app.isCompact
 
-    SystemPalette {
-        id: palette
-    }
     Rectangle {
         anchors.fill: parent
-        color: listItem.containsMouse || listItem.pressed ? listItem.highlightColor : palette.button
-        border.color: palette.mid
+        color: listItem.containsMouse || listItem.pressed ? listItem.highlightColor : DiscoverSystemPalette.button
+        border.color: DiscoverSystemPalette.mid
         border.width: 1
     }
 

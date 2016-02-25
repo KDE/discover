@@ -28,8 +28,7 @@ import "navigation.js" as Navigation
 
 Rectangle
 {
-    SystemPalette { id: palette }
-    color: palette.base
+    color: DiscoverSystemPalette.base
     implicitHeight: 800
     implicitWidth: 900
 

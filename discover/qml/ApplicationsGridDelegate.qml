@@ -35,7 +35,6 @@ GridItem {
     }
     internalMargin: 0
 
-    SystemPalette { id: sys }
     ColumnLayout {
         anchors.fill: parent
         spacing: 0

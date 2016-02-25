@@ -20,6 +20,7 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
+import org.kde.discover.app 1.0
 
 Item
 {
@@ -29,12 +30,8 @@ Item
     width: theLabel.implicitWidth + 10
     height: theLabel.implicitHeight + 10
 
-    SystemPalette {
-        id: pal
-    }
-
     Rectangle {
-        color: pal.dark
+        color: DiscoverSystemPalette.dark
         visible: parent.progressing
         anchors.fill: parent
         radius: 5
@@ -45,13 +42,13 @@ Item
             fill: parent
             rightMargin: !parent.progressing ? 0 : (1-parent.progress) * parent.width
         }
-        color: pal.highlight
+        color: DiscoverSystemPalette.highlight
         radius: 5
     }
 
     Label {
         id: theLabel
         anchors.centerIn: parent
-        color: pal.highlightedText
+        color: DiscoverSystemPalette.highlightedText
     }
 }

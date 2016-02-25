@@ -22,6 +22,7 @@ import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import QtGraphicalEffects 1.0
 import org.kde.kquickcontrolsaddons 2.0
+import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
 
 Information {
@@ -77,12 +78,10 @@ Information {
 
             Rectangle {
                 anchors.fill: titleBar
-                color: palette.midlight
+                color: DiscoverSystemPalette.midlight
                 opacity: 0.7
                 z: 20
             }
-
-            SystemPalette { id: palette }
 
             RowLayout {
                 id: titleBar
