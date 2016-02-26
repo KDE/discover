@@ -345,11 +345,6 @@ void MuonDiscoverMainWindow::setCompactMode(MuonDiscoverMainWindow::CompactMode 
 
 void MuonDiscoverMainWindow::loadTest(const QUrl& url)
 {
-    executeTest(url);
-}
-
-void MuonDiscoverMainWindow::executeTest(const QUrl& url)
-{
     connect(engine(), &QQmlEngine::quit, this, [](){
         qGuiApp->quit();
     }, Qt::QueuedConnection);
