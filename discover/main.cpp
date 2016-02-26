@@ -26,6 +26,7 @@
 #include "MuonDiscoverMainWindow.h"
 #include <DiscoverBackendsFactory.h>
 #include "DiscoverVersion.h"
+#include <QTextStream>
 
 MuonDiscoverMainWindow::CompactMode decodeCompactMode(const QString &str)
 {
@@ -62,18 +63,20 @@ int main(int argc, char** argv)
         parser.addOption(QCommandLineOption(QStringLiteral("mode"), i18n("Open Discover in a said mode. Modes correspond to the toolbar buttons."), QStringLiteral("name")));
         parser.addOption(QCommandLineOption(QStringLiteral("listmodes"), i18n("List all the available modes.")));
         parser.addOption(QCommandLineOption(QStringLiteral("compact"), i18n("Compact Mode (auto/compact/full)."), QStringLiteral("mode"), QStringLiteral("auto")));
-        parser.addPositionalArgument(QStringLiteral("urls"), i18n("Supports appstream: url scheme (experimental)"));
+        parser.addOption(QCommandLineOption(QStringLiteral("test"), QStringLiteral("Test file"), QStringLiteral("file.qml")));
+        parser.addPositionalArgument(QStringLiteral("urls"), i18n("Supports appstream: url scheme"));
         DiscoverBackendsFactory::setupCommandLine(&parser);
-        about.setupCommandLine(&parser);parser.addHelpOption();
+        about.setupCommandLine(&parser);
+        parser.addHelpOption();
         parser.addVersionOption();
         parser.process(app);
         about.processCommandLine(&parser);
-        DiscoverBackendsFactory::processCommandLine(&parser);
+        DiscoverBackendsFactory::processCommandLine(&parser, parser.isSet(QStringLiteral("test")));
 
         if(parser.isSet(QStringLiteral("listmodes"))) {
-            fprintf(stdout, "%s", qPrintable(i18n("Available modes:\n")));
+            QTextStream(stdout) << i18n("Available modes:\n");
             foreach(const QString& mode, mainWindow->modes())
-                fprintf(stdout, " * %s\n", qPrintable(mode));
+                QTextStream(stdout) << " * " << mode << '\n';
             return 0;
         }
 
@@ -95,6 +98,13 @@ int main(int argc, char** argv)
             if (url.scheme() == QLatin1String("appstream")) {
                 mainWindow->openApplication(url.path());
             }
+        }
+
+        if (parser.isSet(QStringLiteral("test"))) {
+            const QUrl testFile = QUrl::fromUserInput(parser.value(QStringLiteral("test")), {}, QUrl::AssumeLocalFile);
+            Q_ASSERT(!testFile.isEmpty() && testFile.isLocalFile());
+
+            mainWindow->loadTest(testFile);
         }
     }
 

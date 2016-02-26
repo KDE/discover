@@ -41,7 +41,7 @@ public:
     int backendsCount() const;
     
     static void setupCommandLine(QCommandLineParser* parser);
-    static void processCommandLine(QCommandLineParser* parser);
+    static void processCommandLine(QCommandLineParser* parser, bool test);
 };
 
 #endif // MUONBACKENDSFACTORY_H

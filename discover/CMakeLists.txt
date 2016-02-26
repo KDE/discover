@@ -15,6 +15,7 @@ set(plasma_discover_SRCS
 qt5_add_resources(plasma_discover_SRCS resources.qrc)
 
 add_executable(plasma-discover ${plasma_discover_SRCS})
+add_executable(Plasma::Discover ALIAS plasma-discover)
 
 target_link_libraries(plasma-discover LINK_PUBLIC
                                      KF5::DBusAddons

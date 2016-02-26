@@ -34,6 +34,7 @@
 #include <qqml.h>
 #include <QQmlNetworkAccessManagerFactory>
 #include <QPointer>
+#include <QGuiApplication>
 
 // KDE includes
 #include <KAboutApplicationDialog>
@@ -329,4 +330,34 @@ void MuonDiscoverMainWindow::setCompactMode(MuonDiscoverMainWindow::CompactMode 
     m_mode = mode;
     Q_EMIT compactChanged(isCompact());
     Q_EMIT actualWidthChanged(actualWidth());
+}
+
+void MuonDiscoverMainWindow::loadTest(const QUrl& url)
+{
+    executeTest(url);
+}
+
+void MuonDiscoverMainWindow::executeTest(const QUrl& url)
+{
+    connect(engine(), &QQmlEngine::quit, this, [](){
+        qGuiApp->quit();
+    }, Qt::QueuedConnection);
+
+    QQmlComponent* component = new QQmlComponent(engine(), url, engine());
+    QObject* obj = component->create(engine()->rootContext());
+
+    if (!obj) {
+        qWarning() << "error loading test" << url << obj << component->errors();
+        Q_ASSERT(false);
+    }
+
+    obj->setProperty("appRoot", QVariant::fromValue<QObject*>(rootObject()));
+    connect(engine(), &QQmlEngine::warnings, obj, [this, obj](const QList<QQmlError> &warnings) {
+        foreach(const QQmlError &warning, warnings) {
+            if (warning.url().path().endsWith(QLatin1String("DiscoverTest.qml"))) {
+                qWarning() << "Test failed!" << warnings;
+                qGuiApp->exit(1);
+            }
+        }
+    });
 }

@@ -50,7 +50,7 @@ int main(int argc, char **argv)
         parser.addVersionOption();
         parser.process(app);
         about.processCommandLine(&parser);
-        DiscoverBackendsFactory::processCommandLine(&parser);
+        DiscoverBackendsFactory::processCommandLine(&parser, false);
     }
 
     KDBusService service(KDBusService::Unique);

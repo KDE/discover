@@ -69,6 +69,8 @@ class MuonDiscoverMainWindow : public QQuickView
         Q_SCRIPTABLE QAction * action(const QString& name);
         Q_SCRIPTABLE QString iconName(const QIcon& icon);
 
+        void loadTest(const QUrl& url);
+
     public Q_SLOTS:
         void openApplication(const QString& app);
         void openMimeType(const QString& mime);

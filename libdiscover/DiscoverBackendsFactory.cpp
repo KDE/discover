@@ -119,9 +119,9 @@ void DiscoverBackendsFactory::setupCommandLine(QCommandLineParser* parser)
     parser->addOption(QCommandLineOption(QStringLiteral("backends"), i18n("List all the backends we'll want to have loaded, separated by coma ','."), QStringLiteral("names")));
 }
 
-void DiscoverBackendsFactory::processCommandLine(QCommandLineParser* parser)
+void DiscoverBackendsFactory::processCommandLine(QCommandLineParser* parser, bool test)
 {
-    *s_requestedBackends = parser->value(QStringLiteral("backends")).split(QLatin1Char(','), QString::SkipEmptyParts);
+    *s_requestedBackends = test ? QStringList{ QStringLiteral("dummy-backend") } : parser->value(QStringLiteral("backends")).split(QLatin1Char(','), QString::SkipEmptyParts);
     if(parser->isSet(QStringLiteral("listbackends"))) {
         fprintf(stdout, "%s", qPrintable(i18n("Available backends:\n")));
         DiscoverBackendsFactory f;
