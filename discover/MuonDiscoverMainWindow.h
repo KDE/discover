@@ -88,7 +88,7 @@ class MuonDiscoverMainWindow : public QQuickView
     Q_SIGNALS:
         void openApplicationInternal(AbstractResource* app);
         void listMimeInternal(const QString& mime);
-        void listCategoryInternal(const QString& name);
+        void listCategoryInternal(Category* cat);
 
         void compactChanged(bool isCompact);
         void actualWidthChanged(qreal actualWidth);

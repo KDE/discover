@@ -55,6 +55,7 @@
 #include <resources/ResourcesModel.h>
 #include <resources/UIHelper.h>
 #include <Category/Category.h>
+#include <Category/CategoryModel.h>
 
 #include <cmath>
 
@@ -154,7 +155,10 @@ void MuonDiscoverMainWindow::openMimeType(const QString& mime)
 
 void MuonDiscoverMainWindow::openCategory(const QString& category)
 {
-    emit listCategoryInternal(category);
+    CategoryModel m;
+    Category* cat = m.findCategoryByName(category);
+    Q_ASSERT(cat);
+    emit listCategoryInternal(cat);
 }
 
 void MuonDiscoverMainWindow::openApplication(const QString& app)
@@ -162,8 +166,13 @@ void MuonDiscoverMainWindow::openApplication(const QString& app)
     rootObject()->setProperty("defaultStartup", false);
     m_appToBeOpened = app;
     triggerOpenApplication();
-    if(!m_appToBeOpened.isEmpty())
-        connect(ResourcesModel::global(), &ResourcesModel::rowsInserted, this, &MuonDiscoverMainWindow::triggerOpenApplication);
+    if(!m_appToBeOpened.isEmpty()) {
+        if (ResourcesModel::global()->isFetching()) {
+            connect(ResourcesModel::global(), &ResourcesModel::rowsInserted, this, &MuonDiscoverMainWindow::triggerOpenApplication);
+        } else {
+            triggerOpenApplication();
+        }
+    }
 }
 
 void MuonDiscoverMainWindow::triggerOpenApplication()
@@ -173,6 +182,8 @@ void MuonDiscoverMainWindow::triggerOpenApplication()
         emit openApplicationInternal(app);
         m_appToBeOpened.clear();
         disconnect(ResourcesModel::global(), &ResourcesModel::rowsInserted, this, &MuonDiscoverMainWindow::triggerOpenApplication);
+    } else {
+        qDebug() << "couldn't find" << m_appToBeOpened;
     }
 }
 

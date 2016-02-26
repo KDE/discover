@@ -29,16 +29,8 @@ function openApplicationMime(mime) {
     openPage(applicationListComp, { mimeTypeFilter: mime , icon: "document-open-data", title: i18n("Resources for '%1'", mime) })
 }
 
-function openCategoryByName(catname) {
-    currentTopLevel = topBrowsingComp
-    openCategory(window.stack.currentItem.categories.findCategoryByName(catname))
-}
-
 function openCategory(cat) {
-    if(cat.hasSubCategories)
-        openPage(categoryComp, { category: cat })
-    else
-        openApplicationList(cat, "")
+    openPage(categoryComp, { category: cat })
 }
 
 function openApplication(app) {
@@ -50,6 +42,8 @@ function openReviews(app, reviews) {
 }
 
 function openPage(component, props) {
+    console.assert(component.status === Component.Ready)
+
     var obj
     try {
         obj = component.createObject(window.stack.currentItem, props)

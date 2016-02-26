@@ -72,7 +72,7 @@ ConditionalLoader
         target: app
         onOpenApplicationInternal: Navigation.openApplication(app)
         onListMimeInternal: Navigation.openApplicationMime(mime)
-        onListCategoryInternal: Navigation.openCategoryByName(name)
+        onListCategoryInternal: Navigation.openCategory(cat)
     }
 
     Menu {
