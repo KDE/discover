@@ -118,6 +118,8 @@ MuonDiscoverMainWindow::~MuonDiscoverMainWindow()
     KConfigGroup window(KSharedConfig::openConfig(), "Window");
     window.writeEntry("geometry", geometry());
     window.sync();
+
+    delete rootObject();
 }
 
 QStringList MuonDiscoverMainWindow::modes() const
