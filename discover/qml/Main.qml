@@ -70,6 +70,10 @@ Rectangle
         anchors. fill: parent
         visible: !breadcrumbs.visible
     }
+    Connections {
+        target: app
+        onPreventedClose: closePreventedInfo.enabled = true
+    }
 
     ColumnLayout {
         spacing: 0

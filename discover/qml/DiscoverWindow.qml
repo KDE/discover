@@ -73,7 +73,6 @@ ConditionalLoader
         onOpenApplicationInternal: Navigation.openApplication(app)
         onListMimeInternal: Navigation.openApplicationMime(mime)
         onListCategoryInternal: Navigation.openCategoryByName(name)
-        onPreventedClose: closePreventedInfo.enabled = true
     }
 
     Menu {

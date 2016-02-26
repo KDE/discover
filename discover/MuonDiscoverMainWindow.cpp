@@ -270,18 +270,18 @@ void MuonDiscoverMainWindow::configureSources()
     openMode("Sources");
 }
 
-void MuonDiscoverMainWindow::closeEvent(QCloseEvent *e)
+bool MuonDiscoverMainWindow::event(QEvent * e)
 {
-//     QQuickView::closeEvent(e);
-    if (!e->isAccepted()) {
-        qWarning() << "not closing because there's still pending tasks";
-        Q_EMIT preventedClose();
+    if (e->type() == QEvent::Close) {
+        if (!ResourcesModel::global()->isBusy()) {
+            delete engine();
+        } else {
+            qWarning() << "not closing because there's still pending tasks";
+            Q_EMIT preventedClose();
+            return true;
+        }
     }
-}
-
-bool MuonDiscoverMainWindow::queryClose()
-{
-    return !ResourcesModel::global()->isBusy();
+    return QQuickView::event(e);
 }
 
 void MuonDiscoverMainWindow::appHelpActivated()

@@ -52,9 +52,6 @@ class MuonDiscoverMainWindow : public QQuickView
         QStringList modes() const;
         void setupActions();
 
-        void closeEvent(QCloseEvent *e) /*override*/;
-        bool queryClose();
-
         QUrl prioritaryFeaturedSource() const;
         QUrl featuredSource() const;
 
@@ -64,6 +61,7 @@ class MuonDiscoverMainWindow : public QQuickView
         CompactMode compactMode() const { return m_mode; }
         void setCompactMode(CompactMode mode);
 
+        bool event(QEvent * event) override;
         void resizeEvent(QResizeEvent * event) override;
         void showEvent(QShowEvent * event) override;
         void hideEvent(QHideEvent * event) override;
