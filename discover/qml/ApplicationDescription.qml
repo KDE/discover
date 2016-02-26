@@ -35,6 +35,7 @@ ColumnLayout
 
     Heading {
         text: i18n("Description")
+        visible: application.longDescription
     }
     Label {
         Layout.fillWidth: true
