@@ -19,12 +19,11 @@
  ***************************************************************************/
 
 #include <QList>
-#include "discovercommon_export.h"
 
 class QAction;
 class QMenu;
 
 namespace UIHelper
 {
-    DISCOVERCOMMON_EXPORT QList<QAction*> setupMessageActions(QMenu* main, QMenu* advanced, const QList<QAction*> &actions);
+    QList<QAction*> setupMessageActions(QMenu* main, QMenu* advanced, const QList<QAction*> &actions);
 }

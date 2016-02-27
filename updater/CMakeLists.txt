@@ -7,7 +7,9 @@ set(plasmadiscover_updater_SRCS
     ProgressWidget.cpp
     UpdaterWidget.cpp
     KActionMessageWidget.cpp
-    UpdateDelegate.cpp)
+    UIHelper.cpp
+    UpdateDelegate.cpp
+)
 
 ki18n_wrap_ui(plasmadiscover_updater_SRCS ProgressWidget.ui
                                     UpdaterCentralWidget.ui

@@ -53,7 +53,6 @@
 // DiscoverCommon includes
 #include <MuonDataSources.h>
 #include <resources/ResourcesModel.h>
-#include <resources/UIHelper.h>
 #include <Category/Category.h>
 #include <Category/CategoryModel.h>
 

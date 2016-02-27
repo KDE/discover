@@ -29,7 +29,6 @@ set(discovercommon_SRCS
     resources/AbstractResource.cpp
     resources/AbstractBackendUpdater.cpp
     resources/AbstractSourcesBackend.cpp
-    resources/UIHelper.cpp
     MessageActionsModel
     DiscoverBackendsFactory.cpp
     ScreenshotsModel.cpp

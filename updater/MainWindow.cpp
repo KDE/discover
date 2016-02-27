@@ -47,7 +47,7 @@
 #include <resources/AbstractBackendUpdater.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesUpdatesModel.h>
-#include <resources/UIHelper.h>
+#include "UIHelper.h"
 #include "ProgressWidget.h"
 #include "UpdaterWidget.h"
 #include "KActionMessageWidget.h"
