@@ -1,4 +1,5 @@
 import QtQuick 2.1
+import QtTest 1.1
 
 QtObject
 {
@@ -23,6 +24,34 @@ QtObject
             e.object = testRoot;
             throw e;
         }
+    }
+
+    function findChild(obj, typename) {
+        if (obj.toString().indexOf(typename+"_QMLTYPE_") == 0)
+            return obj;
+
+        for(var v in obj.children) {
+            var v = findChild(obj.children[v], typename)
+            if (v)
+                return v
+        }
+        return null
+    }
+
+    readonly property var ssc: Component {
+        id: signalSpyComponent
+        SignalSpy {}
+    }
+
+    function waitForSignal(object, name) {
+        var spy = signalSpyComponent.createObject(null, {
+            target: object,
+            signalName: name
+        });
+        verify(spy);
+
+        spy.wait(10000);
+        spy.destroy();
     }
 
     readonly property var conex: Connections {

@@ -12,6 +12,13 @@ DiscoverTest
         app.openApplication(resourceName);
         verify(appRoot.stack.currentItem, "has a page");
         compare(appRoot.stack.currentItem.title, "Dummy 1", "same title");
+
+        var button = findChild(appRoot.stack.currentItem, "InstallApplicationButton")
+        verify(!button.isActive)
+        button.click()
+        verify(button.isActive)
+        waitForSignal(button, "isActiveChanged")
+        verify(!button.isActive)
     }
 
     function test_openCategory() {

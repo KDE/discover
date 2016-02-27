@@ -17,6 +17,12 @@ ConditionalLoader
         id: listener
     }
 
+    function click() {
+        if (!isActive) {
+            item.click();
+        }
+    }
+
     condition: listener.isActive
     componentTrue: RowLayout {
         Label {
@@ -35,6 +41,8 @@ ConditionalLoader
     }
 
     componentFalse: RowLayout {
+        function click() { button.clicked(); }
+
         Loader {
             Layout.fillWidth: root.fill
             Component {
@@ -47,6 +55,7 @@ ConditionalLoader
             sourceComponent: (root.canUpgrade && application.canUpgrade) ? updateButton : root.additionalItem
         }
         Button {
+            id: button
             enabled: !ResourcesModel.isFetching
             text: !application.isInstalled ? i18n("Install") : i18n("Remove")
             Layout.fillWidth: root.fill
