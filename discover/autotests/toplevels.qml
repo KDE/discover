@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import org.kde.discover.app 1.0
+import QtTest 1.1
 
 DiscoverTest
 {
@@ -26,19 +27,24 @@ DiscoverTest
         app.openCategory(categoryName);
         verify(appRoot.stack.currentItem, "has a page");
         compare(appRoot.stack.currentItem.title, "dummy", "same title");
+        verify(waitForRendering())
     }
 
     function test_modes() {
         app.openMode("Browsing");
         compare(appRoot.currentTopLevel, appRoot.topBrowsingComp, "correct component, browsing");
+        verify(waitForRendering())
 
         app.openMode("Installed");
         compare(appRoot.currentTopLevel, appRoot.topInstalledComp, "correct component, installed");
+        verify(waitForRendering())
 
         app.openMode("Update");
         compare(appRoot.currentTopLevel, appRoot.topUpdateComp, "correct component, updates");
+        verify(waitForRendering())
 
         app.openMode("Sources");
         compare(appRoot.currentTopLevel, appRoot.topSourcesComp, "correct component, sources");
+        verify(waitForRendering())
     }
 }

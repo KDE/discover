@@ -1,7 +1,7 @@
 import QtQuick 2.1
 import QtTest 1.1
 
-QtObject
+Item
 {
     id: testRoot
     property QtObject appRoot
@@ -38,7 +38,7 @@ QtObject
         return null
     }
 
-    readonly property var ssc: Component {
+    Component {
         id: signalSpyComponent
         SignalSpy {}
     }
@@ -50,11 +50,21 @@ QtObject
         });
         verify(spy);
 
-        spy.wait(10000);
+        var done = true;
+        try {
+            spy.wait(5000);
+        } catch (e) {
+            done = false;
+        }
         spy.destroy();
+        return done;
     }
 
-    readonly property var conex: Connections {
+    function waitForRendering() {
+        return waitForSignal(app, "frameSwapped")
+    }
+
+    Connections {
         target: ResourcesModel
         onIsFetchingChanged: {
             if (ResourcesModel.isFetching)
