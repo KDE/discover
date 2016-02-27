@@ -30,6 +30,17 @@ DiscoverTest
         verify(waitForRendering())
     }
 
+    function test_update() {
+        app.openMode("Update");
+
+        var updatePage = appRoot.stack.currentItem
+        var button = findChild(updatePage, "Button")
+        verify(button);
+        button.clicked();
+        verify(updatePage.condition)
+        waitForSignal(updatePage, "conditionChanged")
+    }
+
     function test_modes() {
         app.openMode("Browsing");
         compare(appRoot.currentTopLevel, appRoot.topBrowsingComp, "correct component, browsing");
