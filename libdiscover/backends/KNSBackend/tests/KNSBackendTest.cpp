@@ -66,25 +66,48 @@ void KNSBackendTest::testRetrieval()
     QVector<AbstractResource*> resources = m_backend->allResources();
     QVERIFY(!resources.isEmpty());
     QCOMPARE(resources.count(), model->rowCount());
+    QVERIFY(m_backend->backendUpdater());
+    QCOMPARE(m_backend->updatesCount(), m_backend->upgradeablePackages().count());
     
     foreach(AbstractResource* res, resources) {
         QVERIFY(!res->name().isEmpty());
         QVERIFY(!res->categories().isEmpty());
         QVERIFY(!res->origin().isEmpty());
+        QVERIFY(!res->icon().isEmpty());
+        QVERIFY(!res->comment().isEmpty());
+        QVERIFY(!res->longDescription().isEmpty());
+//         QVERIFY(!res->license().isEmpty());
+        QVERIFY(res->homepage().isValid() && !res->homepage().isEmpty());
+        QVERIFY(res->state() > AbstractResource::Broken);
+        QVERIFY(res->addonsInformation().isEmpty());
+
+        QSignalSpy spy(res, &AbstractResource::screenshotsFetched);
+        res->fetchScreenshots();
+        QVERIFY(spy.count() || spy.wait());
+
+        QSignalSpy spy1(res, &AbstractResource::changelogFetched);
+        res->fetchChangelog();
+        QVERIFY(spy1.count() || spy1.wait());
     }
 }
 
 void KNSBackendTest::testReviews()
 {
+    qRegisterMetaType<QList<Review*>>("QList<Review*>");
+    qRegisterMetaType<AbstractResource*>("AbstractResource*");
+
     QVector<AbstractResource*> resources = m_backend->allResources();
     AbstractReviewsBackend* rev = m_backend->reviewsBackend();
+    QVERIFY(!rev->hasCredentials());
     foreach(AbstractResource* res, resources) {
         Rating* r = rev->ratingForApplication(res);
         QVERIFY(r);
         QCOMPARE(r->packageName(), res->packageName());
         QVERIFY(r->rating()>0 && r->rating()<=10);
-//         rev->fetchReviews(res);
-//         QTest::kWaitForSignal(rev, SIGNAL(reviewsReady(AbstractResource*,QList<Review*>)));
+
+        QSignalSpy spy(rev, &AbstractReviewsBackend::reviewsReady);
+        rev->fetchReviews(res);
+        QVERIFY(spy.count() || spy.wait());
     }
 }
 
