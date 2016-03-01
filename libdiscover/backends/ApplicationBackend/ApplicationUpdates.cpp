@@ -23,6 +23,7 @@
 // Qt includes
 #include <QIcon>
 #include <QAction>
+#include <QApplication>
 
 // KDE includes
 #include <KProtocolManager>
@@ -134,7 +135,7 @@ void ApplicationUpdates::start()
 
 void ApplicationUpdates::addResources(const QList<AbstractResource*>& apps)
 {
-    if (resource.size() > 1) {
+    if (apps.size() > 1) {
         QApplication::setOverrideCursor(Qt::WaitCursor);
     }
     QList<QApt::Package*> packages;
