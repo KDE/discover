@@ -220,7 +220,7 @@ AbstractResource* PackageKitBackend::resourceByPackageName(const QString& name) 
 QList<AbstractResource*> PackageKitBackend::searchPackageName(const QString& searchText)
 {
     QList<AbstractResource*> ret;
-    Q_FOREACH (AbstractResource* res, m_packages.packages.values()) {
+    Q_FOREACH (AbstractResource* res, m_packages.packages) {
         if (res->name().contains(searchText, Qt::CaseInsensitive)) {
             ret += res;
         }
