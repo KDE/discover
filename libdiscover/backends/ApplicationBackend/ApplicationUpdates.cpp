@@ -134,6 +134,9 @@ void ApplicationUpdates::start()
 
 void ApplicationUpdates::addResources(const QList<AbstractResource*>& apps)
 {
+    if (resource.size() > 1) {
+        QApplication::setOverrideCursor(Qt::WaitCursor);
+    }
     QList<QApt::Package*> packages;
     foreach(AbstractResource* res, apps) {
         Application* app = qobject_cast<Application*>(res);
@@ -141,6 +144,7 @@ void ApplicationUpdates::addResources(const QList<AbstractResource*>& apps)
         packages += app->package();
     }
     m_aptBackend->markPackages(packages, QApt::Package::ToInstall);
+    QApplication::restoreOverrideCursor();
 }
 
 void ApplicationUpdates::removeResources(const QList<AbstractResource*>& apps)

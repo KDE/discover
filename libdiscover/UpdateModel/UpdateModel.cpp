@@ -22,7 +22,6 @@
 
 // Qt includes
 #include <QFont>
-#include <QApplication>
 #include <QDebug>
 
 // KDE includes
@@ -151,14 +150,10 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
 
 void UpdateModel::checkResources(const QList<AbstractResource*>& resource, bool checked)
 {
-    if (resource.size() > 1) {
-        QApplication::setOverrideCursor(Qt::WaitCursor);
-    }
     if(checked)
         m_updates->addResources(resource);
     else
         m_updates->removeResources(resource);
-    QApplication::restoreOverrideCursor();
 }
 
 QVariant UpdateModel::headerData(int section, Qt::Orientation orientation,
