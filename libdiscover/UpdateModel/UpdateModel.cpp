@@ -277,47 +277,41 @@ void UpdateModel::setResources(const QList< AbstractResource* >& resources)
     delete m_rootItem;
     m_rootItem = new UpdateItem;
 
-    UpdateItem *securityItem = new UpdateItem(i18nc("@item:inlistbox", "Important Security Updates"),
-                                              QIcon::fromTheme(QStringLiteral("security-medium")));
-
-    UpdateItem *appItem = new UpdateItem(i18nc("@item:inlistbox", "Application Updates"),
-                                          QIcon::fromTheme(QStringLiteral("applications-other")));
-
-    UpdateItem *systemItem = new UpdateItem(i18nc("@item:inlistbox", "System Updates"),
-                                             QIcon::fromTheme(QStringLiteral("applications-system")));
-
+    QVector<UpdateItem*> securityItems, appItems, systemItems;
     foreach(AbstractResource* res, resources) {
         UpdateItem *updateItem = new UpdateItem(res);
+
         if (res->isFromSecureOrigin()) {
-            securityItem->appendChild(updateItem);
+            securityItems += updateItem;
         } else if(!res->isTechnical()) {
-            appItem->appendChild(updateItem);
+            appItems += updateItem;
         } else {
-            systemItem->appendChild(updateItem);
+            systemItems += updateItem;
         }
     }
 
-    // Add populated items to the model
-    if (securityItem->childCount()) {
-        securityItem->sort();
-        m_rootItem->appendChild(securityItem);
-    } else {
-        delete securityItem;
+    QVector<UpdateItem*> categoryItems;
+    if (!securityItems.isEmpty()) {
+        UpdateItem *securityItem = new UpdateItem(i18nc("@item:inlistbox", "Important Security Updates"),
+                                            QIcon::fromTheme(QStringLiteral("security-medium")));
+        securityItem->setChildren(securityItems);
+        categoryItems += securityItem;
     }
 
-    if (appItem->childCount()) {
-        appItem->sort();
-        m_rootItem->appendChild(appItem);
-    } else {
-        delete appItem;
+    if (!appItems.isEmpty()) {
+        UpdateItem *appItem = new UpdateItem(i18nc("@item:inlistbox", "Application Updates"),
+                                          QIcon::fromTheme(QStringLiteral("applications-other")));
+        appItem->setChildren(appItems);
+        categoryItems += appItem;
     }
 
-    if (systemItem->childCount()) {
-        systemItem->sort();
-        m_rootItem->appendChild(systemItem);
-    } else {
-        delete systemItem;
+    if (!systemItems.isEmpty()) {
+        UpdateItem *systemItem = new UpdateItem(i18nc("@item:inlistbox", "System Updates"),
+                                             QIcon::fromTheme(QStringLiteral("applications-system")));
+        systemItem->setChildren(systemItems);
+        categoryItems += systemItem;
     }
+    m_rootItem->setChildren(categoryItems);
     endResetModel();
 
     m_updatesCount = resources.count();

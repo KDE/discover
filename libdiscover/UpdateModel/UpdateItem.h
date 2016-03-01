@@ -22,7 +22,7 @@
 #define UPDATEITEM_H
 
 // Qt includes
-#include <QtCore/QList>
+#include <QtCore/QSet>
 #include <QtCore/QString>
 #include "discovercommon_export.h"
 
@@ -33,7 +33,6 @@ class DISCOVERCOMMON_EXPORT UpdateItem
 {
 public:
     enum class ItemType : quint8 {
-        InvalidItem = 0,
         RootItem,
         CategoryItem,
         ApplicationItem
@@ -49,14 +48,11 @@ public:
     UpdateItem *parent() const;
     void setParent(UpdateItem *parent);
 
-    void appendChild(UpdateItem *child);
-    bool removeChildren(int position, int count);
-    QList<UpdateItem *> children() const;
+    void setChildren(const QVector<UpdateItem*> &child);
+    QVector<UpdateItem *> children() const;
     UpdateItem *child(int row) const;
     int childCount() const;
     int row() const;
-    void sort();
-    bool isEmpty() const;
 
     void setProgress(qreal progress);
     qreal progress() const;
@@ -73,11 +69,12 @@ public:
     AbstractResource* resource() const { return m_app; }
 
 private:
+    void sort();
     AbstractResource *m_app;
 
     UpdateItem *m_parent;
     ItemType m_type;
-    QList<UpdateItem *> m_children;
+    QVector<UpdateItem *> m_children;
     QString m_categoryName;
     QIcon m_categoryIcon;
     qreal m_progress;

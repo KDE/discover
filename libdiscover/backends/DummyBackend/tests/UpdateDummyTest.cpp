@@ -83,14 +83,20 @@ private Q_SLOTS:
         for(int i=0, c=m->rowCount(); i<c; ++i) {
             const QModelIndex idx = m->index(i,0);
 
+            QVERIFY(!idx.data(UpdateModel::ResourceRole).value<QObject*>());
+            QCOMPARE(idx.data(UpdateModel::SizeRole).toString(), QStringLiteral("12.7 KiB"));
             for(int j=0, c=m->rowCount(idx); j<c; ++j) {
                 const QModelIndex resourceIdx = idx.child(j,0);
                 QVERIFY(resourceIdx.isValid());
 
+                AbstractResource* res = qobject_cast<AbstractResource*>(resourceIdx.data(UpdateModel::ResourceRole).value<QObject*>());
+                QVERIFY(res);
+                QCOMPARE(resourceIdx.data(UpdateModel::SizeRole).toString(), QStringLiteral("123 B"));
+
                 QCOMPARE(Qt::CheckState(resourceIdx.data(Qt::CheckStateRole).toInt()), Qt::Checked);
                 QVERIFY(m->setData(resourceIdx, int(Qt::Unchecked), Qt::CheckStateRole));
                 QCOMPARE(Qt::CheckState(resourceIdx.data(Qt::CheckStateRole).toInt()), Qt::Unchecked);
-                QVERIFY(resourceIdx.data(Qt::DisplayRole).isValid());
+                QCOMPARE(resourceIdx.data(Qt::DisplayRole).toString(), res->name());
 
                 if (j!=0) {
                     QVERIFY(m->setData(resourceIdx, int(Qt::Checked), Qt::CheckStateRole));

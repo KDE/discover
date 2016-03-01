@@ -69,26 +69,15 @@ void UpdateItem::setParent(UpdateItem *parent)
     m_parent = parent;
 }
 
-void UpdateItem::appendChild(UpdateItem *child)
+void UpdateItem::setChildren(const QVector<UpdateItem*> &child)
 {
-    if(!m_children.contains(child)) {
-        child->setParent(this);
-        m_children.append(child);
-    }
+    m_children = child;
+    foreach(UpdateItem* item, m_children)
+        item->setParent(this);
+    sort();
 }
 
-bool UpdateItem::removeChildren(int position, int count)
-{
-    if (position < 0 || position > m_children.size())
-        return false;
-
-    for (int row = 0; row < count; ++row)
-        delete m_children.takeAt(position);
-
-    return true;
-}
-
-QList<UpdateItem *> UpdateItem::children() const
+QVector<UpdateItem *> UpdateItem::children() const
 {
     return m_children;
 }
@@ -101,11 +90,6 @@ UpdateItem *UpdateItem::child(int row) const
 int UpdateItem::childCount() const
 {
     return m_children.count();
-}
-
-bool UpdateItem::isEmpty() const
-{
-    return m_children.isEmpty();
 }
 
 int UpdateItem::row() const
@@ -134,10 +118,11 @@ QString UpdateItem::name() const
         return m_categoryName;
     case ItemType::ApplicationItem:
         return m_app->name();
-    default:
-        break;
+    case ItemType::RootItem:
+        return {};
     }
 
+    Q_UNREACHABLE();
     return QString();
 }
 
@@ -147,10 +132,11 @@ QString UpdateItem::version() const
     case ItemType::ApplicationItem:
         return m_app->availableVersion();
     case ItemType::CategoryItem:
-    default:
+    case ItemType::RootItem:
         break;
     }
 
+    Q_UNREACHABLE();
     return QString();
 }
 
@@ -161,17 +147,18 @@ QIcon UpdateItem::icon() const
         return m_categoryIcon;
     case ItemType::ApplicationItem:
         return QIcon::fromTheme(m_app->icon());
-    default:
+    case ItemType::RootItem:
         return QIcon();
     }
 
+    Q_UNREACHABLE();
     return QIcon();
 }
 
 qint64 UpdateItem::size() const
 {
     ItemType itemType = type();
-    int size = 0;
+    qint64 size = 0;
 
     if (itemType == ItemType::ApplicationItem) {
         size = m_app->size();
@@ -207,7 +194,6 @@ Qt::CheckState UpdateItem::checked() const
         ret = isMarked(app()) ? Qt::Checked : Qt::Unchecked;
         break;
     case ItemType::RootItem:
-    case ItemType::InvalidItem:
         break;
     }
 
