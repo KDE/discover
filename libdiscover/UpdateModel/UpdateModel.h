@@ -92,7 +92,7 @@ private:
     void resourceHasProgressed(AbstractResource* res, qreal progress);
     void activityChanged();
 
-    UpdateItem *m_rootItem;
+    QScopedPointer<UpdateItem> m_rootItem;
     ResourcesUpdatesModel* m_updates;
     int m_updatesCount;
 };

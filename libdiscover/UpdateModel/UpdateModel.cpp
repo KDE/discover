@@ -36,10 +36,10 @@
 
 UpdateModel::UpdateModel(QObject *parent)
     : QAbstractItemModel(parent)
+    , m_rootItem(new UpdateItem)
     , m_updates(nullptr)
     , m_updatesCount(0)
 {
-    m_rootItem = new UpdateItem();
 
     connect(ResourcesModel::global(), &ResourcesModel::fetchingChanged, this, &UpdateModel::activityChanged);
     connect(ResourcesModel::global(), &ResourcesModel::updatesCountChanged, this, &UpdateModel::activityChanged);
@@ -47,7 +47,6 @@ UpdateModel::UpdateModel(QObject *parent)
 
 UpdateModel::~UpdateModel()
 {
-    delete m_rootItem;
 }
 
 QHash<int,QByteArray> UpdateModel::roleNames() const
@@ -77,7 +76,7 @@ void UpdateModel::setBackend(ResourcesUpdatesModel* updates)
 
 void UpdateModel::resourceHasProgressed(AbstractResource* res, qreal progress)
 {
-    UpdateItem* item = itemFromResource(res, m_rootItem);
+    UpdateItem* item = itemFromResource(res, m_rootItem.data());
     Q_ASSERT(item);
     item->setProgress(progress);
 
@@ -207,7 +206,7 @@ QModelIndex UpdateModel::parent(const QModelIndex &index) const
     UpdateItem *childItem = itemFromIndex(index);
     UpdateItem *parentItem = childItem->parent();
 
-    if (parentItem == m_rootItem) {
+    if (parentItem == m_rootItem.data()) {
         return QModelIndex();
     }
 
@@ -234,7 +233,7 @@ UpdateItem* UpdateModel::itemFromIndex(const QModelIndex &index) const
 {
     if (index.isValid())
          return static_cast<UpdateItem*>(index.internalPointer());
-    return m_rootItem;
+    return m_rootItem.data();
 }
 
 bool UpdateModel::setData(const QModelIndex &idx, const QVariant &value, int role)
@@ -274,8 +273,7 @@ bool UpdateModel::setData(const QModelIndex &idx, const QVariant &value, int rol
 void UpdateModel::setResources(const QList< AbstractResource* >& resources)
 {
     beginResetModel();
-    delete m_rootItem;
-    m_rootItem = new UpdateItem;
+    m_rootItem.reset(new UpdateItem);
 
     QVector<UpdateItem*> securityItems, appItems, systemItems;
     foreach(AbstractResource* res, resources) {
@@ -356,7 +354,7 @@ UpdateItem * UpdateModel::itemFromResource(AbstractResource* res, UpdateItem* ro
 
 QModelIndex UpdateModel::indexFromItem(UpdateItem* item) const
 {
-    if (item == m_rootItem) {
+    if (item == m_rootItem.data()) {
         return QModelIndex();
     }
     UpdateItem* parentItem = item->parent();

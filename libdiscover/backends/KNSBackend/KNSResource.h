@@ -66,7 +66,7 @@ private:
     const Attica::Content m_content;
     const QString m_category;
     const QString m_icon;
-    KNS3::Entry* m_entry;
+    QScopedPointer<KNS3::Entry> m_entry;
 };
 
 #endif // KNSRESOURCE_H

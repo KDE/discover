@@ -34,7 +34,6 @@ KNSResource::KNSResource(const Attica::Content& c, QString  category, QString  i
 
 KNSResource::~KNSResource()
 {
-    delete m_entry;
 }
 
 AbstractResource::State KNSResource::state()
@@ -126,13 +125,12 @@ QString KNSResource::longDescription()
 void KNSResource::setEntry(const KNS3::Entry& entry)
 {
     setStatus(entry.status());
-    delete m_entry;
-    m_entry = new KNS3::Entry(entry);
+    m_entry.reset(new KNS3::Entry(entry));
 }
 
 KNS3::Entry* KNSResource::entry() const
 {
-    return m_entry;
+    return m_entry.data();
 }
 
 QString KNSResource::license()
