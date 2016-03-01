@@ -246,7 +246,7 @@ bool UpdateModel::setData(const QModelIndex &idx, const QVariant &value, int rol
 {
     if (role == Qt::CheckStateRole) {
         UpdateItem *item = static_cast<UpdateItem*>(idx.internalPointer());
-        bool newValue = value.toBool();
+        const bool newValue = value.toInt() == Qt::Checked;
         UpdateItem::ItemType type = item->type();
 
         QList<AbstractResource *> apps;

@@ -74,7 +74,7 @@ bool UpdateDelegate::editorEvent(QEvent *event,
 
     if (setData) {
         return model->setData(index,
-                       !index.data(Qt::CheckStateRole).toBool(),
+                       !index.data(Qt::CheckStateRole).toBool() ? Qt::Checked : Qt::Unchecked,
                        Qt::CheckStateRole);
     }
     return false;

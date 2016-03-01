@@ -80,11 +80,23 @@ private Q_SLOTS:
         QCOMPARE(m_appBackend->updatesCount(), 212);
         QCOMPARE(m->hasUpdates(), true);
 
-        const QModelIndex firstIdx = m->index(0,0).child(0,0);
-        QCOMPARE(firstIdx.data(Qt::CheckStateRole).toBool(), true);
-        QVERIFY(m->setData(firstIdx, false, Qt::CheckStateRole));
-        QCOMPARE(firstIdx.data(Qt::CheckStateRole).toBool(), false);
-        QVERIFY(firstIdx.data(Qt::DisplayRole).isValid());
+        for(int i=0, c=m->rowCount(); i<c; ++i) {
+            const QModelIndex idx = m->index(i,0);
+
+            for(int j=0, c=m->rowCount(idx); j<c; ++j) {
+                const QModelIndex resourceIdx = idx.child(j,0);
+                QVERIFY(resourceIdx.isValid());
+
+                QCOMPARE(Qt::CheckState(resourceIdx.data(Qt::CheckStateRole).toInt()), Qt::Checked);
+                QVERIFY(m->setData(resourceIdx, int(Qt::Unchecked), Qt::CheckStateRole));
+                QCOMPARE(Qt::CheckState(resourceIdx.data(Qt::CheckStateRole).toInt()), Qt::Unchecked);
+                QVERIFY(resourceIdx.data(Qt::DisplayRole).isValid());
+
+                if (j!=0) {
+                    QVERIFY(m->setData(resourceIdx, int(Qt::Checked), Qt::CheckStateRole));
+                }
+            }
+        }
 
 
         rum->updateAll();
@@ -95,7 +107,7 @@ private Q_SLOTS:
         QVERIFY(spy.wait());
         QCOMPARE(rum->isProgressing(), false);
 
-        QCOMPARE(m_appBackend->updatesCount(), 1);
+        QCOMPARE(m_appBackend->updatesCount(), m->rowCount());
         QCOMPARE(m->hasUpdates(), true);
 
         rum->prepare();

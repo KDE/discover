@@ -111,8 +111,8 @@ ScrollView
 
                             CheckBox {
                                 anchors.verticalCenter: parent.verticalCenter
-                                checked: model.checked
-                                onClicked: model.checked = !model.checked
+                                checked: model.checked == Qt.Checked
+                                onClicked: model.checked = (!model.checked ? Qt.Unchecked : Qt.Checked)
                             }
 
                             QIconItem {
