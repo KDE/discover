@@ -314,10 +314,11 @@ QList<AbstractResource*> PackageKitBackend::upgradeablePackages() const
     QVector<AbstractResource*> ret;
     Q_FOREACH (const QString& pkgid, m_updatesPackageId) {
         const QString pkgname = PackageKit::Daemon::packageName(pkgid);
-        ret += resourcesByPackageName(pkgname, false);
-        if (ret.isEmpty()) {
+        const auto pkgs = resourcesByPackageName(pkgname, false);
+        if (pkgs.isEmpty()) {
             qWarning() << "couldn't find resource for" << pkgid;
         }
+        ret += pkgs;
     }
     return ret.toList();
 }
