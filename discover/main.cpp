@@ -47,10 +47,10 @@ int main(int argc, char** argv)
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     KLocalizedString::setApplicationDomain("plasma-discover");
     KAboutData about(QStringLiteral("muondiscover"), i18n("Discover"), version, i18n("An application explorer"),
-                     KAboutLicense::GPL, i18n("© 2010-2014 Plasma Development Team"));
+                     KAboutLicense::GPL, i18n("© 2010-2016 Plasma Development Team"));
     about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), QStringLiteral("aleixpol@blue-systems.com"));
     about.addAuthor(i18n("Jonathan Thomas"), QString(), QStringLiteral("echidnaman@kubuntu.org"));
-    about.setProductName("muon/discover");
+    about.setProductName("discover/discover");
     KAboutData::setApplicationData(about);
 
     KDBusService service(KDBusService::Unique);

@@ -26,17 +26,15 @@
 #include <DiscoverBackendsFactory.h>
 #include "DiscoverVersion.h"
 
-static const char description[] = I18N_NOOP("An application exporterer");
-
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
     KLocalizedString::setApplicationDomain("plasma-discover-exporter");
-    KAboutData about(QStringLiteral("muonexporter"), i18n("Muon Exporter"), version, i18n(description),
+    KAboutData about(QStringLiteral("muonexporter"), i18n("Muon Exporter"), version, QString(),
                      KAboutLicense::GPL, i18n("©2013 Aleix Pol Gonzalez"), QString());
     about.addAuthor(i18n("Jonathan Thomas"), QString(), QStringLiteral("echidnaman@kubuntu.org"));
     about.addAuthor(i18n("Aleix Pol Gonzalez"), QString(), QStringLiteral("aleixpol@blue-systems.com"));
-    about.setProductName("muon/exporter");
+    about.setProductName("discover/exporter");
 
     MuonExporter exp;
     {

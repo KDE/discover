@@ -38,7 +38,7 @@ int main(int argc, char **argv)
                      KAboutLicense::GPL, i18n("©2010-2013 Jonathan Thomas"), QString());
     about.addAuthor(i18n("Jonathan Thomas"), QString(), QStringLiteral("echidnaman@kubuntu.org"));
     about.addAuthor(i18n("Aleix Pol"), QString(), QStringLiteral("aleixpol@kde.org"));
-    about.setProductName("muon/updater");
+    about.setProductName("discover/Updater");
     KAboutData::setApplicationData(about);
 
     {
