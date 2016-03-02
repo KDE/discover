@@ -27,14 +27,17 @@ Item
     property alias text: theLabel.text
     property bool progressing: false
     property real progress: 1.
-    width: theLabel.implicitWidth + 10
-    height: theLabel.implicitHeight + 10
+    readonly property real margin: 5
+    implicitWidth: theLabel.implicitWidth + margin*2
+    implicitHeight: theLabel.implicitHeight + margin*2
+    width: implicitWidth
+    height: implicitHeight
 
     Rectangle {
         color: DiscoverSystemPalette.dark
         visible: parent.progressing
         anchors.fill: parent
-        radius: 5
+        radius: parent.margin
     }
 
     Rectangle {
@@ -43,7 +46,7 @@ Item
             rightMargin: !parent.progressing ? 0 : (1-parent.progress) * parent.width
         }
         color: DiscoverSystemPalette.highlight
-        radius: 5
+        radius: parent.margin
     }
 
     Label {
