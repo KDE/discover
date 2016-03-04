@@ -38,16 +38,14 @@ Item
         return null
     }
 
-    Component {
-        id: signalSpyComponent
-        SignalSpy {}
+    SignalSpy {
+        id: spy
     }
 
     function waitForSignal(object, name) {
-        var spy = signalSpyComponent.createObject(null, {
-            target: object,
-            signalName: name
-        });
+        spy.signalName = ""
+        spy.target = object;
+        spy.signalName = name;
         verify(spy);
 
         var done = true;
@@ -56,7 +54,6 @@ Item
         } catch (e) {
             done = false;
         }
-        spy.destroy();
         return done;
     }
 
