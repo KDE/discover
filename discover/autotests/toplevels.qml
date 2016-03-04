@@ -38,7 +38,15 @@ DiscoverTest
         verify(button);
         button.clicked();
         verify(updatePage.condition)
+
+        //make sure the window doesn't close while updating
+        verify(app.visible);
+        verify(waitForRendering())
+        app.close();
+        verify(app.visible);
+
         waitForSignal(updatePage, "conditionChanged")
+        verify(!updatePage.condition)
     }
 
     function test_modes() {
