@@ -78,7 +78,7 @@ ToolBar
                 focus: true
                 Layout.preferredWidth: backAction.implicitWidth*10
 
-                placeholderText: window.stack.currentItem.title == "" || !searchWidget.enabled? i18n("Search...") : i18n("Search in '%1'...", window.stack.currentItem.title)
+                placeholderText: (!searchWidget.enabled || window.stack.currentItem.title == "") ? i18n("Search...") : i18n("Search in '%1'...", window.stack.currentItem.title)
                 onTextChanged: searchTimer.running = true
                 onEditingFinished: if(text == "" && backAction.enabled) {
                     backAction.action.trigger()
