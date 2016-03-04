@@ -230,8 +230,13 @@ void MuonDiscoverMainWindow::showEvent(QShowEvent * event)
 
 void MuonDiscoverMainWindow::hideEvent(QHideEvent * event)
 {
-    delete engine();
-    QQuickView::hideEvent(event);
+    if (!ResourcesModel::global()->isBusy()) {
+        delete engine();
+        QQuickView::hideEvent(event);
+    } else {
+        qWarning() << "not closing because there's still pending tasks";
+        Q_EMIT preventedClose();
+    }
 }
 
 void MuonDiscoverMainWindow::setupActions()
