@@ -133,7 +133,7 @@ QString UpdateItem::version() const
         return m_app->availableVersion();
     case ItemType::CategoryItem:
     case ItemType::RootItem:
-        break;
+        return {};
     }
 
     Q_UNREACHABLE();

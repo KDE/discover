@@ -95,9 +95,11 @@ ColumnLayout {
                             }
                             Loader {
                                 Layout.fillHeight: true
-                                Layout.minimumWidth: item.width
+                                Layout.preferredWidth: item.implicitWidth
                                 sourceComponent: topView.roleDelegate
                                 onItemChanged: item.model=model
+
+                                visible: width < layo.width/2
                             }
                         }
                     }

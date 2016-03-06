@@ -52,6 +52,7 @@ ConditionalLoader
                 extended: gridRow.extended
                 roleDelegate: Item {
                     width: bg.width
+                    implicitWidth: bg.implicitWidth
                     property variant model
                     LabelBackground {
                         id: bg
@@ -115,8 +116,9 @@ ConditionalLoader
                 filteredCategory: categoryModel.displayedCategory
                 title: i18n("Most Popular")
                 roleDelegate: Item {
-                    width: bg.width
                     property variant model
+                    width: bg.width
+                    implicitWidth: bg.implicitWidth
                     LabelBackground {
                         id: bg
                         anchors.centerIn: parent
