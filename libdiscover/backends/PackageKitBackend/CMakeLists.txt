@@ -17,5 +17,6 @@ install(FILES packagekit-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/
 #notifier
 add_library(DiscoverPackageKitNotifier MODULE PackageKitNotifier.cpp)
 target_link_libraries(DiscoverPackageKitNotifier PRIVATE PK::packagekitqt5 Discover::Notifiers)
+set_target_properties(DiscoverPackageKitNotifier PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 
 install(TARGETS DiscoverPackageKitNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/discover-notifier)

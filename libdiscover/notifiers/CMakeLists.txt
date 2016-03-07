@@ -7,7 +7,6 @@ target_link_libraries(DiscoverNotifiers
 generate_export_header(DiscoverNotifiers)
 
 target_include_directories(DiscoverNotifiers PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-install(TARGETS DiscoverNotifiers ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS DiscoverNotifiers DESTINATION ${CMAKE_INSTALL_LIBDIR}/plasma-discover)
 
 add_library(Discover::Notifiers ALIAS DiscoverNotifiers)
-

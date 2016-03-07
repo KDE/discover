@@ -10,6 +10,8 @@ target_link_libraries(DiscoverNotifierDeclarativePlugin
 
     Discover::Notifiers
 )
+set_target_properties(DiscoverNotifierDeclarativePlugin PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
+
 install(TARGETS DiscoverNotifierDeclarativePlugin DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/discovernotifier)
 install(FILES qmldir DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/discovernotifier)
 
