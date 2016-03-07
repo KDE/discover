@@ -17,6 +17,7 @@ ki18n_wrap_ui(plasmadiscover_updater_SRCS ProgressWidget.ui
 )
 
 add_executable(plasma-discover-updater ${plasmadiscover_updater_SRCS})
+set_target_properties(plasma-discover-updater PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 
 target_link_libraries(plasma-discover-updater KF5::CoreAddons
                                    KF5::I18n
@@ -34,4 +35,3 @@ install(TARGETS plasma-discover-updater ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 install( FILES plasmadiscoverupdaterui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/plasmadiscoverupdater )
 install( PROGRAMS plasma-discover-updater.desktop  DESTINATION ${XDG_APPS_INSTALL_DIR} )
-
