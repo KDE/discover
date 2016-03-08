@@ -19,6 +19,8 @@
  ***************************************************************************/
 
 #include "ResourcesUpdatesModel.h"
+#include <Transaction/Transaction.h>
+#include <Transaction/TransactionModel.h>
 #include "ResourcesModel.h"
 #include "AbstractBackendUpdater.h"
 #include "AbstractResource.h"
@@ -35,6 +37,7 @@
 ResourcesUpdatesModel::ResourcesUpdatesModel(QObject* parent)
     : QStandardItemModel(parent)
     , m_lastIsProgressing(false)
+    , m_transaction(nullptr)
 {
     init();
 }
@@ -72,11 +75,16 @@ void ResourcesUpdatesModel::updaterDestroyed(QObject* obj)
 void ResourcesUpdatesModel::slotProgressingChanged(bool progressing)
 {
     Q_UNUSED(progressing);
+    Q_ASSERT(m_transaction);
     const bool newProgressing = isProgressing();
     if (newProgressing != m_lastIsProgressing) {
         m_lastIsProgressing = newProgressing;
 
+
+        if (!newProgressing) {
+            TransactionModel::global()->removeTransaction(m_transaction);
         }
+
         emit progressingChanged(newProgressing);
 
         if (!newProgressing) {
@@ -114,6 +122,9 @@ void ResourcesUpdatesModel::updateAll()
     if(m_updaters.isEmpty())
         emit progressingChanged(false);
     else {
+        delete m_transaction;
+        m_transaction = new Transaction(this, nullptr, Transaction::InstallRole);
+        TransactionModel::global()->addTransaction(m_transaction);
         Q_FOREACH (AbstractBackendUpdater* upd, m_updaters) {
             if (upd->hasUpdates())
                 QMetaObject::invokeMethod(upd, "start", Qt::QueuedConnection);

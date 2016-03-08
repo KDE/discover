@@ -403,6 +403,9 @@ void ResourcesModel::integrateActions(KActionCollection* w)
 
 void ResourcesModel::resourceChangedByTransaction(Transaction* t)
 {
+    if (!t->resource())
+        return;
+
     Q_ASSERT(!t->resource()->backend()->isFetching());
     QModelIndex idx = resourceIndex(t->resource());
     if(idx.isValid())

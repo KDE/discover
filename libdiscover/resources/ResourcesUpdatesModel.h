@@ -31,6 +31,7 @@ class QAction;
 class AbstractBackendUpdater;
 class ResourcesModel;
 class QDBusInterface;
+class Transaction;
 
 class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 {
@@ -87,6 +88,7 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 
         QVector<AbstractBackendUpdater*> m_updaters;
         bool m_lastIsProgressing;
+        Transaction* m_transaction;
 };
 
 #endif // RESOURCESUPDATESMODEL_H

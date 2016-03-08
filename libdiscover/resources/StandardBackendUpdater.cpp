@@ -82,7 +82,7 @@ void StandardBackendUpdater::transactionProgressChanged(int percentage)
 
 void StandardBackendUpdater::transactionRemoved(Transaction* t)
 {
-    bool found = t->resource()->backend()==m_backend && m_pendingResources.remove(t->resource());
+    bool found = t->resource() && t->resource()->backend()==m_backend && m_pendingResources.remove(t->resource());
     if(found && !m_settingUp) {
         setStatusDetail(i18n("%1 has been updated", t->resource()->name()));
         qreal p = 1-(qreal(m_pendingResources.size())/m_toUpgrade.size());
