@@ -22,7 +22,7 @@
 
 // Qt includes
 #include <QtCore/QMetaProperty>
-#include <klocalizedstring.h>
+#include <KLocalizedString>
 
 // Own includes
 #include "resources/AbstractResource.h"
@@ -112,7 +112,7 @@ Transaction *TransactionModel::transactionFromIndex(const QModelIndex &index) co
 {
     Transaction *trans = nullptr;
 
-    if (index.row() < m_transactions.size())
+    if (index.isValid() && index.row() < m_transactions.size())
         trans = m_transactions.at(index.row());
 
     return trans;
@@ -159,7 +159,7 @@ void TransactionModel::addTransaction(Transaction *trans)
     const QMetaObject *meta = trans->metaObject();
     const QMetaMethod notifySlot = metaObject()->method(metaObject()->indexOfSlot("transactionChanged()"));
     for (int i = 0; i < meta->propertyCount(); ++i) {
-        QMetaProperty prop = meta->property(i);
+        const QMetaProperty prop = meta->property(i);
 
         if (prop.notifySignalIndex() == -1)
             continue;
@@ -184,7 +184,10 @@ void TransactionModel::cancelTransaction(Transaction *trans)
 
 void TransactionModel::removeTransaction(Transaction *trans)
 {
+    Q_ASSERT(trans);
     int r = indexOf(trans).row();
+    Q_ASSERT(r>=0);
+
     beginRemoveRows(QModelIndex(), r, r);
     m_transactions.removeAt(r);
     endRemoveRows();
