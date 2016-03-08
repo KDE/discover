@@ -34,24 +34,14 @@
 
 ResourcesUpdatesModel::ResourcesUpdatesModel(QObject* parent)
     : QStandardItemModel(parent)
-    , m_resources(nullptr)
     , m_lastIsProgressing(false)
 {
-    setResourcesModel(ResourcesModel::global());
+    init();
 }
 
-void ResourcesUpdatesModel::setResourcesModel(ResourcesModel* model)
+void ResourcesUpdatesModel::init()
 {
-    Q_ASSERT(model);
-    m_resources = model;
-    m_updaters.clear();
-    addNewBackends();
-    connect(model, &ResourcesModel::backendsChanged, this, &ResourcesUpdatesModel::addNewBackends);
-}
-
-void ResourcesUpdatesModel::addNewBackends()
-{
-    QVector<AbstractResourcesBackend*> backends = ResourcesModel::global()->backends();
+    const QVector<AbstractResourcesBackend*> backends = ResourcesModel::global()->backends();
     foreach(AbstractResourcesBackend* b, backends) {
         AbstractBackendUpdater* updater = b->backendUpdater();
         if(updater && !m_updaters.contains(updater)) {
@@ -121,8 +111,6 @@ void ResourcesUpdatesModel::prepare()
 
 void ResourcesUpdatesModel::updateAll()
 {
-    Q_ASSERT(m_resources);
-    
     if(m_updaters.isEmpty())
         emit progressingChanged(false);
     else {
