@@ -203,7 +203,7 @@ bool MuonDiscoverMainWindow::isCompact() const
     if (m_mode != Auto) {
         return m_mode == Compact;
     } else if (!isVisible())
-        return true;
+        return false;
 
     const qreal pixelDensity = screen()->physicalDotsPerInch() / 25.4;
     return (width()/pixelDensity)<100; //we'll use compact if the width of the window is less than 10cm
