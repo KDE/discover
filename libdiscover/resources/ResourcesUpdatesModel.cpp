@@ -36,7 +36,6 @@ ResourcesUpdatesModel::ResourcesUpdatesModel(QObject* parent)
     : QStandardItemModel(parent)
     , m_resources(nullptr)
     , m_lastIsProgressing(false)
-    , m_kded(nullptr)
 {
     setResourcesModel(ResourcesModel::global());
 }
@@ -86,22 +85,7 @@ void ResourcesUpdatesModel::slotProgressingChanged(bool progressing)
     const bool newProgressing = isProgressing();
     if (newProgressing != m_lastIsProgressing) {
         m_lastIsProgressing = newProgressing;
-        if (!m_lastIsProgressing) {
-            if (!m_kded)
-                m_kded = new QDBusInterface(QStringLiteral("org.kde.kded"), QStringLiteral("/kded"),
-                                            QStringLiteral("org.kde.kded"), QDBusConnection::sessionBus(), this);
-            QDBusReply<QStringList> lM = m_kded->call(QStringLiteral("loadedModules"));
-            QStringList services = lM.value();
-            foreach (const QString &service, services) {
-                if (!service.startsWith(QLatin1String("muon")))
-                    continue;
-                
-                QDBusMessage message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.kded"),
-                                        QStringLiteral("/modules/") + service,
-                                        QStringLiteral("org.kde.kded.AbstractKDEDModule"),
-                                        QStringLiteral("recheckSystemUpdateNeeded"));
-                QDBusConnection::sessionBus().send(message);
-            }
+
         }
         emit progressingChanged(newProgressing);
 

@@ -89,7 +89,6 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         ResourcesModel* m_resources;
         QVector<AbstractBackendUpdater*> m_updaters;
         bool m_lastIsProgressing;
-        QDBusInterface * m_kded;
 };
 
 #endif // RESOURCESUPDATESMODEL_H
