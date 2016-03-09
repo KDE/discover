@@ -18,7 +18,7 @@ DiscoverTest
         verify(!button.isActive)
         button.click()
         verify(button.isActive)
-        waitForSignal(button, "isActiveChanged")
+        verify(waitForSignal(button, "isActiveChanged"))
         verify(!button.isActive)
     }
 
@@ -45,7 +45,7 @@ DiscoverTest
         app.close();
         verify(app.visible);
 
-        waitForSignal(updatePage, "conditionChanged")
+        verify(waitForSignal(updatePage, "conditionChanged"))
         verify(!updatePage.condition)
     }
 
