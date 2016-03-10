@@ -40,6 +40,7 @@ ResourcesUpdatesModel::ResourcesUpdatesModel(QObject* parent)
     , m_transaction(nullptr)
 {
     init();
+    connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, this, &ResourcesUpdatesModel::init);
 }
 
 void ResourcesUpdatesModel::init()
