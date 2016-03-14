@@ -52,7 +52,7 @@ class DISCOVERCOMMON_EXPORT CategoryModel : public QStandardItemModel
 
         void setDisplayedCategory(Category* c);
         Category* displayedCategory() const;
-        virtual QHash< int, QByteArray > roleNames() const override;
+        QHash< int, QByteArray > roleNames() const override;
 
         Q_SCRIPTABLE static Category* findCategoryByName(const QString& name);
         static void blacklistPlugin(const QString& name);

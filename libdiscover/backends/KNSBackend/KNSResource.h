@@ -33,29 +33,29 @@ class DISCOVERCOMMON_EXPORT KNSResource : public AbstractResource
 Q_OBJECT
 public:
     explicit KNSResource(const Attica::Content& c, QString  category, QString  icon, KNSBackend* parent);
-    virtual ~KNSResource();
+    ~KNSResource() override;
 
     void setStatus(KNS3::Entry::Status status);
 
-    virtual AbstractResource::State state() override;
-    virtual QString icon() const override;
-    virtual QString comment() override;
-    virtual QString name() override;
-    virtual QString packageName() const override;
-    virtual QStringList categories() override;
-    virtual QUrl homepage() override;
-    virtual QUrl thumbnailUrl() override;
-    virtual QUrl screenshotUrl() override;
-    virtual QString license() override;
-    virtual QString longDescription() override;
-    virtual QList<PackageState> addonsInformation() override { return QList<PackageState>(); }
-    virtual QString availableVersion() const override;
-    virtual QString installedVersion() const override;
-    virtual QString origin() const override;
-    virtual QString section() override;
-    virtual void fetchScreenshots() override;
-    virtual int size() override;
-    virtual void fetchChangelog() override;
+    AbstractResource::State state() override;
+    QString icon() const override;
+    QString comment() override;
+    QString name() override;
+    QString packageName() const override;
+    QStringList categories() override;
+    QUrl homepage() override;
+    QUrl thumbnailUrl() override;
+    QUrl screenshotUrl() override;
+    QString license() override;
+    QString longDescription() override;
+    QList<PackageState> addonsInformation() override { return QList<PackageState>(); }
+    QString availableVersion() const override;
+    QString installedVersion() const override;
+    QString origin() const override;
+    QString section() override;
+    void fetchScreenshots() override;
+    int size() override;
+    void fetchChangelog() override;
 
     const Attica::Content& content();
     void setEntry(const KNS3::Entry& entry);

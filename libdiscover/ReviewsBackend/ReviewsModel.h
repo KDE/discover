@@ -51,16 +51,16 @@ class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
             No
         };
         explicit ReviewsModel(QObject* parent = nullptr);
-        ~ReviewsModel();
-        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
-        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
+        ~ReviewsModel() override;
+        QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
+        int rowCount(const QModelIndex& parent = QModelIndex()) const override;
 
         AbstractReviewsBackend* backend() const;
         void setResource(AbstractResource* app);
         AbstractResource* resource() const;
-        virtual void fetchMore(const QModelIndex& parent=QModelIndex()) override;
-        virtual bool canFetchMore(const QModelIndex&) const override;
-        virtual QHash<int, QByteArray> roleNames() const override;
+        void fetchMore(const QModelIndex& parent=QModelIndex()) override;
+        bool canFetchMore(const QModelIndex&) const override;
+        QHash<int, QByteArray> roleNames() const override;
 
     public Q_SLOTS:
         void deleteReview(int row);

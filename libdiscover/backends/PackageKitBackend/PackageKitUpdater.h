@@ -29,28 +29,28 @@ class PackageKitUpdater : public AbstractBackendUpdater
     Q_OBJECT
     public:
         PackageKitUpdater(PackageKitBackend * parent = nullptr);
-        ~PackageKitUpdater();
+        ~PackageKitUpdater() override;
         
-        virtual void prepare() override;
+        void prepare() override;
         
-        virtual bool hasUpdates() const override;
-        virtual qreal progress() const override;
+        bool hasUpdates() const override;
+        qreal progress() const override;
         
         /** proposed ETA in milliseconds */
-        virtual long unsigned int remainingTime() const override;
+        long unsigned int remainingTime() const override;
         
-        virtual void removeResources(const QList<AbstractResource*>& apps) override;
-        virtual void addResources(const QList<AbstractResource*>& apps) override;
-        virtual QList<AbstractResource*> toUpdate() const override;
-        virtual bool isMarked(AbstractResource* res) const override;
-        virtual QDateTime lastUpdate() const override;
-        virtual bool isAllMarked() const override;
-        virtual bool isCancelable() const override;
-        virtual bool isProgressing() const override;
+        void removeResources(const QList<AbstractResource*>& apps) override;
+        void addResources(const QList<AbstractResource*>& apps) override;
+        QList<AbstractResource*> toUpdate() const override;
+        bool isMarked(AbstractResource* res) const override;
+        QDateTime lastUpdate() const override;
+        bool isAllMarked() const override;
+        bool isCancelable() const override;
+        bool isProgressing() const override;
         
-        virtual QString statusMessage() const override;
-        virtual QString statusDetail() const override;
-        virtual quint64 downloadSpeed() const override;
+        QString statusMessage() const override;
+        QString statusDetail() const override;
+        quint64 downloadSpeed() const override;
 
         /** in plasma-discover-updater, actions with HighPriority will be shown in a KMessageWidget,
          *  normal priority will go right on top of the more menu, low priority will go
@@ -60,8 +60,8 @@ class PackageKitUpdater : public AbstractBackendUpdater
 
     public Q_SLOTS:
         ///must be implemented if ever isCancelable is true
-        virtual void cancel() override;
-        virtual void start() override;
+        void cancel() override;
+        void start() override;
     
     private Q_SLOTS:
         void errorFound(PackageKit::Transaction::Error err, const QString& error);

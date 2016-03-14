@@ -33,9 +33,9 @@ class DISCOVERCOMMON_EXPORT MessageActionsModel : public QAbstractListModel
     public:
         MessageActionsModel(QObject* parent = nullptr);
 
-        virtual QHash<int, QByteArray> roleNames() const override;
-        virtual QVariant data(const QModelIndex& index, int role) const override;
-        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
+        QHash<int, QByteArray> roleNames() const override;
+        QVariant data(const QModelIndex& index, int role) const override;
+        int rowCount(const QModelIndex& parent = QModelIndex()) const override;
 
         void setFilterPriority(int p);
         int filterPriority() const;

@@ -38,7 +38,7 @@ class SystemFonts : public QObject
         QFont titleFont() const;
         QFont smallestReadableFont() const;
 
-        virtual bool eventFilter(QObject* obj, QEvent* ev) override;
+        bool eventFilter(QObject* obj, QEvent* ev) override;
 
     Q_SIGNALS:
         void fontsChanged();

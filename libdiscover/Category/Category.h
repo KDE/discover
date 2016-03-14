@@ -47,7 +47,7 @@ public:
     Q_PROPERTY(bool hasSubCategories READ hasSubCategories CONSTANT)
     Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical CONSTANT)
     explicit Category(QSet<QString>  pluginNames, QObject* parent = nullptr);
-    ~Category();
+    ~Category() override;
 
     QString name() const;
     QString icon() const;

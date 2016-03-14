@@ -31,6 +31,7 @@ class QAction;
 class AbstractBackendUpdater;
 class ResourcesModel;
 class QDBusInterface;
+class Transaction;
 
 class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
 {
@@ -80,16 +81,14 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
     private Q_SLOTS:
         void updaterDestroyed(QObject* obj);
         void message(const QString& msg);
-        void addNewBackends();
         void slotProgressingChanged(bool progressing);
 
     private:
-        void setResourcesModel(ResourcesModel* model);
+        void init();
 
-        ResourcesModel* m_resources;
         QVector<AbstractBackendUpdater*> m_updaters;
         bool m_lastIsProgressing;
-        QDBusInterface * m_kded;
+        Transaction* m_transaction;
 };
 
 #endif // RESOURCESUPDATESMODEL_H

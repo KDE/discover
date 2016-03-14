@@ -40,24 +40,24 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
     Q_OBJECT
     public:
         explicit PackageKitBackend(QObject* parent = nullptr);
-        ~PackageKitBackend();
+        ~PackageKitBackend() override;
         
-        virtual AbstractBackendUpdater* backendUpdater() const override;
-        virtual AbstractReviewsBackend* reviewsBackend() const override;
+        AbstractBackendUpdater* backendUpdater() const override;
+        AbstractReviewsBackend* reviewsBackend() const override;
         
-        virtual QVector< AbstractResource* > allResources() const override;
-        virtual AbstractResource* resourceByPackageName(const QString& name) const override;
-        virtual QList<AbstractResource*> searchPackageName(const QString& searchText) override;
-        virtual int updatesCount() const override;
+        QVector< AbstractResource* > allResources() const override;
+        AbstractResource* resourceByPackageName(const QString& name) const override;
+        QList<AbstractResource*> searchPackageName(const QString& searchText) override;
+        int updatesCount() const override;
         
-        virtual void installApplication(AbstractResource* app) override;
-        virtual void installApplication(AbstractResource* app, const AddonList& addons) override;
-        virtual void removeApplication(AbstractResource* app) override;
-        virtual void cancelTransaction(AbstractResource* app) override;
-        virtual bool isValid() const override { return true; }
-        virtual QList<AbstractResource*> upgradeablePackages() const override;
-        virtual bool isFetching() const override;
-        virtual QList<QAction*> messageActions() const override;
+        void installApplication(AbstractResource* app) override;
+        void installApplication(AbstractResource* app, const AddonList& addons) override;
+        void removeApplication(AbstractResource* app) override;
+        void cancelTransaction(AbstractResource* app) override;
+        bool isValid() const override { return true; }
+        QList<AbstractResource*> upgradeablePackages() const override;
+        bool isFetching() const override;
+        QList<QAction*> messageActions() const override;
 
         bool isPackageNameUpgradeable(const PackageKitResource* res) const;
         QString upgradeablePackageId(const PackageKitResource* res) const;

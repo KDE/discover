@@ -36,7 +36,7 @@ class ProgressWidget : public QWidget
     Q_OBJECT
 public:
     ProgressWidget(ResourcesUpdatesModel* updates, QWidget *parent);
-    virtual ~ProgressWidget();
+    ~ProgressWidget() override;
 
 private:
     ResourcesUpdatesModel* m_updater;

@@ -42,19 +42,21 @@ Item
         id: spy
     }
 
-    function waitForSignal(object, name) {
+    function waitForSignal(object, name, timeout) {
+        if (!timeout) timeout = 5000;
+
         spy.signalName = ""
         spy.target = object;
         spy.signalName = name;
         verify(spy);
 
-        var done = true;
         try {
-            spy.wait(5000);
+            spy.wait(timeout);
         } catch (e) {
-            done = false;
+            console.warn("wait for signal unsuccessful")
+            return false;
         }
-        return done;
+        return spy.count>0;
     }
 
     function waitForRendering() {
@@ -63,10 +65,12 @@ Item
 
     Connections {
         target: ResourcesModel
+        property bool done: false
         onIsFetchingChanged: {
             if (ResourcesModel.isFetching)
                 return;
 
+            done = true;
             for(var v in testRoot) {
                 if (v.indexOf("test_") == 0) {
                     testRoot.reset();

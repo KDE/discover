@@ -19,6 +19,8 @@
  ***************************************************************************/
 
 #include "ResourcesUpdatesModel.h"
+#include <Transaction/Transaction.h>
+#include <Transaction/TransactionModel.h>
 #include "ResourcesModel.h"
 #include "AbstractBackendUpdater.h"
 #include "AbstractResource.h"
@@ -34,25 +36,16 @@
 
 ResourcesUpdatesModel::ResourcesUpdatesModel(QObject* parent)
     : QStandardItemModel(parent)
-    , m_resources(nullptr)
     , m_lastIsProgressing(false)
-    , m_kded(nullptr)
+    , m_transaction(nullptr)
 {
-    setResourcesModel(ResourcesModel::global());
+    init();
+    connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, this, &ResourcesUpdatesModel::init);
 }
 
-void ResourcesUpdatesModel::setResourcesModel(ResourcesModel* model)
+void ResourcesUpdatesModel::init()
 {
-    Q_ASSERT(model);
-    m_resources = model;
-    m_updaters.clear();
-    addNewBackends();
-    connect(model, &ResourcesModel::backendsChanged, this, &ResourcesUpdatesModel::addNewBackends);
-}
-
-void ResourcesUpdatesModel::addNewBackends()
-{
-    QVector<AbstractResourcesBackend*> backends = ResourcesModel::global()->backends();
+    const QVector<AbstractResourcesBackend*> backends = ResourcesModel::global()->backends();
     foreach(AbstractResourcesBackend* b, backends) {
         AbstractBackendUpdater* updater = b->backendUpdater();
         if(updater && !m_updaters.contains(updater)) {
@@ -83,26 +76,16 @@ void ResourcesUpdatesModel::updaterDestroyed(QObject* obj)
 void ResourcesUpdatesModel::slotProgressingChanged(bool progressing)
 {
     Q_UNUSED(progressing);
+    Q_ASSERT(m_transaction);
     const bool newProgressing = isProgressing();
     if (newProgressing != m_lastIsProgressing) {
         m_lastIsProgressing = newProgressing;
-        if (!m_lastIsProgressing) {
-            if (!m_kded)
-                m_kded = new QDBusInterface(QStringLiteral("org.kde.kded"), QStringLiteral("/kded"),
-                                            QStringLiteral("org.kde.kded"), QDBusConnection::sessionBus(), this);
-            QDBusReply<QStringList> lM = m_kded->call(QStringLiteral("loadedModules"));
-            QStringList services = lM.value();
-            foreach (const QString &service, services) {
-                if (!service.startsWith(QLatin1String("muon")))
-                    continue;
-                
-                QDBusMessage message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.kded"),
-                                        QStringLiteral("/modules/") + service,
-                                        QStringLiteral("org.kde.kded.AbstractKDEDModule"),
-                                        QStringLiteral("recheckSystemUpdateNeeded"));
-                QDBusConnection::sessionBus().send(message);
-            }
+
+
+        if (!newProgressing) {
+            TransactionModel::global()->removeTransaction(m_transaction);
         }
+
         emit progressingChanged(newProgressing);
 
         if (!newProgressing) {
@@ -137,11 +120,12 @@ void ResourcesUpdatesModel::prepare()
 
 void ResourcesUpdatesModel::updateAll()
 {
-    Q_ASSERT(m_resources);
-    
     if(m_updaters.isEmpty())
         emit progressingChanged(false);
     else {
+        delete m_transaction;
+        m_transaction = new Transaction(this, nullptr, Transaction::InstallRole);
+        TransactionModel::global()->addTransaction(m_transaction);
         Q_FOREACH (AbstractBackendUpdater* upd, m_updaters) {
             if (upd->hasUpdates())
                 QMetaObject::invokeMethod(upd, "start", Qt::QueuedConnection);

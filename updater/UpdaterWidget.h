@@ -43,7 +43,7 @@ class UpdaterWidget : public QStackedWidget
     Q_OBJECT
 public:
     explicit UpdaterWidget(ResourcesUpdatesModel* updates, QWidget* parent = nullptr);
-    virtual ~UpdaterWidget();
+    ~UpdaterWidget() override;
 
 private:
     UpdateModel *m_updateModel;

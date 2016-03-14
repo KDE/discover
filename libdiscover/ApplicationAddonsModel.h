@@ -47,9 +47,9 @@ class DISCOVERCOMMON_EXPORT ApplicationAddonsModel : public QAbstractListModel
         void setApplication(AbstractResource* app);
         bool hasChanges() const;
         
-        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
-        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
-        virtual QHash<int, QByteArray> roleNames() const override;
+        QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
+        int rowCount(const QModelIndex& parent = QModelIndex()) const override;
+        QHash<int, QByteArray> roleNames() const override;
         bool isEmpty() const;
 
     public Q_SLOTS:

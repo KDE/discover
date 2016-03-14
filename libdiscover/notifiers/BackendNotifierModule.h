@@ -29,7 +29,7 @@ class DISCOVERNOTIFIERS_EXPORT BackendNotifierModule : public QObject
 Q_OBJECT
 public:
     BackendNotifierModule(QObject* parent = nullptr);
-    virtual ~BackendNotifierModule();
+    ~BackendNotifierModule() override;
 
     /*** @returns \c true if there are any updates, \c false if not **/
     virtual bool isSystemUpToDate() const = 0;

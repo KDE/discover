@@ -39,15 +39,15 @@ public:
     };
     Q_ENUMS(Update)
     PackageKitNotifier(QObject* parent = nullptr);
-    virtual ~PackageKitNotifier();
+    ~PackageKitNotifier() override;
 
-    virtual bool isSystemUpToDate() const Q_DECL_OVERRIDE Q_DECL_FINAL;
-    virtual uint securityUpdatesCount() Q_DECL_OVERRIDE Q_DECL_FINAL;
-    virtual uint updatesCount() Q_DECL_OVERRIDE Q_DECL_FINAL;
+    bool isSystemUpToDate() const Q_DECL_FINAL;
+    uint securityUpdatesCount() Q_DECL_FINAL;
+    uint updatesCount() Q_DECL_FINAL;
     
 public Q_SLOTS:
     virtual void configurationChanged();
-    virtual void recheckSystemUpdateNeeded() Q_DECL_OVERRIDE Q_DECL_FINAL;
+    void recheckSystemUpdateNeeded() Q_DECL_FINAL;
     
 private Q_SLOTS:
     void package(PackageKit::Transaction::Info info, const QString &packageID, const QString &summary);
