@@ -46,7 +46,7 @@ class MuonDiscoverMainWindow : public QQuickView
         Q_ENUMS(CompactMode)
 
         explicit MuonDiscoverMainWindow(CompactMode mode);
-        ~MuonDiscoverMainWindow();
+        ~MuonDiscoverMainWindow() override;
 
         void initialize();
         QStringList modes() const;

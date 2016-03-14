@@ -32,22 +32,22 @@ class AppPackageKitResource : public PackageKitResource
 
         QString appstreamId() const;
 
-        virtual bool isTechnical() const override;
-        virtual QString name() override;
-        virtual QString icon() const override;
-        virtual QStringList mimetypes() const override;
-        virtual QStringList categories() override;
-        virtual QString longDescription() override;
-        virtual QUrl homepage() override;
-        virtual bool canExecute() const override;
-        virtual QStringList executables() const override;
-        virtual void invokeApplication() const override;
-        virtual QString comment() override;
-        virtual QString license() override;
-        virtual QUrl screenshotUrl() override;
-        virtual QUrl thumbnailUrl() override;
-        virtual QStringList allPackageNames() const override;
-        virtual QList<PackageState> addonsInformation() override;
+        bool isTechnical() const override;
+        QString name() override;
+        QString icon() const override;
+        QStringList mimetypes() const override;
+        QStringList categories() override;
+        QString longDescription() override;
+        QUrl homepage() override;
+        bool canExecute() const override;
+        QStringList executables() const override;
+        void invokeApplication() const override;
+        QString comment() override;
+        QString license() override;
+        QUrl screenshotUrl() override;
+        QUrl thumbnailUrl() override;
+        QStringList allPackageNames() const override;
+        QList<PackageState> addonsInformation() override;
 
     private:
         QStringList findProvides(Appstream::Provides::Kind kind) const;

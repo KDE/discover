@@ -38,14 +38,14 @@ class DISCOVERCOMMON_EXPORT SourcesModel : public QAbstractListModel
             SourceBackend = Qt::UserRole+1
         };
         SourcesModel(QObject* parent = nullptr);
-        ~SourcesModel();
+        ~SourcesModel() override;
 
         static SourcesModel* global();
 
-        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
-        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
+        QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
+        int rowCount(const QModelIndex& parent = QModelIndex()) const override;
         void addSourcesBackend(AbstractSourcesBackend* sources);
-        virtual QHash<int, QByteArray> roleNames() const override;
+        QHash<int, QByteArray> roleNames() const override;
 
         QList<QObject*> actions() const;
         Q_SCRIPTABLE QVariant get(int row, const QByteArray& roleName);

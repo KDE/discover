@@ -37,7 +37,7 @@ public:
     explicit Rating(const QVariantMap &data);
     explicit Rating(const QString& packageName, int ratingCount, int rating, const QString& histogram);
     explicit Rating(const QString& packageName, QStringList histogram);
-    ~Rating();
+    ~Rating() override;
 
     QString packageName() const;
     quint64 ratingCount() const;

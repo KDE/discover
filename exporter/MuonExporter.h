@@ -29,7 +29,7 @@ class MuonExporter : public QObject
     Q_OBJECT
     public:
         explicit MuonExporter();
-        ~MuonExporter();
+        ~MuonExporter() override;
 
         void setExportPath(const QUrl& url);
 

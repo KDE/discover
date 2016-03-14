@@ -32,19 +32,19 @@ Q_OBJECT
 public:
     explicit DummyReviewsBackend(DummyBackend* parent = nullptr);
 
-    virtual QString userName() const override { return QStringLiteral("dummy"); }
-    virtual void login() override {}
-    virtual void logout() override {}
-    virtual void registerAndLogin() override {}
+    QString userName() const override { return QStringLiteral("dummy"); }
+    void login() override {}
+    void logout() override {}
+    void registerAndLogin() override {}
 
-    virtual Rating* ratingForApplication(AbstractResource* app) const override;
-    virtual bool hasCredentials() const override { return false; }
-    virtual void deleteReview(Review*) override {}
-    virtual void fetchReviews(AbstractResource* app, int page = 1) override;
-    virtual bool isFetching() const override { return false; }
-    virtual void submitReview(AbstractResource*, const QString&, const QString&, const QString&) override {}
-    virtual void flagReview(Review*, const QString&, const QString&) override {}
-    virtual void submitUsefulness(Review*, bool) override;
+    Rating* ratingForApplication(AbstractResource* app) const override;
+    bool hasCredentials() const override { return false; }
+    void deleteReview(Review*) override {}
+    void fetchReviews(AbstractResource* app, int page = 1) override;
+    bool isFetching() const override { return false; }
+    void submitReview(AbstractResource*, const QString&, const QString&, const QString&) override {}
+    void flagReview(Review*, const QString&, const QString&) override {}
+    void submitUsefulness(Review*, bool) override;
 
     void initialize();
 

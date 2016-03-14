@@ -47,21 +47,21 @@ class DISCOVERCOMMON_EXPORT KNSBackend : public AbstractResourcesBackend
 Q_OBJECT
 public:
     explicit KNSBackend(QObject* parent = nullptr);
-    virtual ~KNSBackend();
+    ~KNSBackend() override;
     
-    virtual void setMetaData(const QString& path) override;
-    virtual void cancelTransaction(AbstractResource* app) override;
-    virtual void removeApplication(AbstractResource* app) override;
-    virtual void installApplication(AbstractResource* app) override;
-    virtual void installApplication(AbstractResource* app, const AddonList& addons) override;
-    virtual AbstractResource* resourceByPackageName(const QString& name) const override;
-    virtual int updatesCount() const override;
-    virtual AbstractReviewsBackend* reviewsBackend() const override;
-    virtual QList<AbstractResource*> searchPackageName(const QString& searchText) override;
-    virtual QVector< AbstractResource* > allResources() const override;
-    virtual AbstractBackendUpdater* backendUpdater() const override;
-    virtual bool isFetching() const override;
-    virtual QList<QAction*> messageActions() const override { return QList<QAction*>(); }
+    void setMetaData(const QString& path) override;
+    void cancelTransaction(AbstractResource* app) override;
+    void removeApplication(AbstractResource* app) override;
+    void installApplication(AbstractResource* app) override;
+    void installApplication(AbstractResource* app, const AddonList& addons) override;
+    AbstractResource* resourceByPackageName(const QString& name) const override;
+    int updatesCount() const override;
+    AbstractReviewsBackend* reviewsBackend() const override;
+    QList<AbstractResource*> searchPackageName(const QString& searchText) override;
+    QVector< AbstractResource* > allResources() const override;
+    AbstractBackendUpdater* backendUpdater() const override;
+    bool isFetching() const override;
+    QList<QAction*> messageActions() const override { return QList<QAction*>(); }
 
     bool isValid() const override;
     Attica::Provider* provider() { return &m_provider; }

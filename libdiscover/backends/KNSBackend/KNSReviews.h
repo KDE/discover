@@ -39,18 +39,18 @@ class KNSReviews : public AbstractReviewsBackend
     public:
         explicit KNSReviews(KNSBackend* backend);
 
-        virtual void fetchReviews(AbstractResource* app, int page = 1) override;
-        virtual bool isFetching() const override;
-        virtual void flagReview(Review* r, const QString& reason, const QString& text) override;
-        virtual void deleteReview(Review* r) override;
-        virtual void submitReview(AbstractResource* app, const QString& summary, const QString& review_text, const QString& rating) override;
-        virtual void submitUsefulness(Review* r, bool useful) override;
-        virtual void logout() override;
-        virtual void registerAndLogin() override;
-        virtual void login() override;
-        virtual Rating* ratingForApplication(AbstractResource* app) const override;
-        virtual bool hasCredentials() const override;
-        virtual QString userName() const override;
+        void fetchReviews(AbstractResource* app, int page = 1) override;
+        bool isFetching() const override;
+        void flagReview(Review* r, const QString& reason, const QString& text) override;
+        void deleteReview(Review* r) override;
+        void submitReview(AbstractResource* app, const QString& summary, const QString& review_text, const QString& rating) override;
+        void submitUsefulness(Review* r, bool useful) override;
+        void logout() override;
+        void registerAndLogin() override;
+        void login() override;
+        Rating* ratingForApplication(AbstractResource* app) const override;
+        bool hasCredentials() const override;
+        QString userName() const override;
 
     private Q_SLOTS:
         void commentsReceived(Attica::BaseJob* job);

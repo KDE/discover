@@ -34,7 +34,7 @@ class DISCOVERCOMMON_EXPORT AbstractSourcesBackend : public QObject
     Q_PROPERTY(QString idDescription READ idDescription CONSTANT)
     public:
         AbstractSourcesBackend(QObject* parent);
-        ~AbstractSourcesBackend();
+        ~AbstractSourcesBackend() override;
 
         virtual QString name() const = 0;
         virtual QString idDescription() = 0;

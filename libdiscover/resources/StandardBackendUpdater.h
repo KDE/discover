@@ -34,24 +34,24 @@ class DISCOVERCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdat
     public:
         explicit StandardBackendUpdater(AbstractResourcesBackend* parent = nullptr);
 
-        virtual bool hasUpdates() const override;
-        virtual qreal progress() const override;
-        virtual void start() override;
-        virtual long unsigned int remainingTime() const override;
+        bool hasUpdates() const override;
+        qreal progress() const override;
+        void start() override;
+        long unsigned int remainingTime() const override;
         
-        virtual QList<AbstractResource*> toUpdate() const override;
-        virtual void addResources(const QList<AbstractResource*>& apps) override;
-        virtual void removeResources(const QList<AbstractResource*>& apps) override;
-        virtual void prepare() override;
-        virtual bool isAllMarked() const override;
-        virtual QDateTime lastUpdate() const override;
-        virtual bool isCancelable() const override;
-        virtual bool isProgressing() const override;
-        virtual QString statusDetail() const override;
-        virtual QString statusMessage() const override;
-        virtual quint64 downloadSpeed() const override;
+        QList<AbstractResource*> toUpdate() const override;
+        void addResources(const QList<AbstractResource*>& apps) override;
+        void removeResources(const QList<AbstractResource*>& apps) override;
+        void prepare() override;
+        bool isAllMarked() const override;
+        QDateTime lastUpdate() const override;
+        bool isCancelable() const override;
+        bool isProgressing() const override;
+        QString statusDetail() const override;
+        QString statusMessage() const override;
+        quint64 downloadSpeed() const override;
         virtual QList<QAction*> messageActions() const;
-        virtual bool isMarked(AbstractResource* res) const override;
+        bool isMarked(AbstractResource* res) const override;
         void setStatusDetail(const QString& message);
         void setProgress(qreal p);
 

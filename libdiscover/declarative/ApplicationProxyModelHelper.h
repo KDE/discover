@@ -40,9 +40,9 @@ class ApplicationProxyModelHelper : public ResourcesProxyModel, public QQmlParse
         void setStringSortRole_hack(const QString& role);
         QString stringSortRole() const;
 
-        virtual void classBegin() override {}
-        virtual void componentComplete() override;
-        virtual QHash<int, QByteArray> roleNames() const override;
+        void classBegin() override {}
+        void componentComplete() override;
+        QHash<int, QByteArray> roleNames() const override;
 
     public Q_SLOTS:
         void sortModel();

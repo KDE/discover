@@ -30,27 +30,27 @@ Q_OBJECT
 public:
     explicit DummyResource(QString  name, bool isTechnical, AbstractResourcesBackend* parent);
 
-    virtual QList<PackageState> addonsInformation() override;
-    virtual QString section() override;
-    virtual QString origin() const override;
-    virtual QString longDescription() override;
-    virtual QString availableVersion() const override;
-    virtual QString installedVersion() const override;
-    virtual QString license() override;
-    virtual int size() override;
-    virtual QUrl screenshotUrl() override;
-    virtual QUrl thumbnailUrl() override;
-    virtual QUrl homepage() override;
-    virtual QStringList categories() override;
-    virtual AbstractResource::State state() override;
-    virtual QString icon() const override;
-    virtual QString comment() override;
-    virtual QString name() override;
-    virtual QString packageName() const override;
-    virtual bool isTechnical() const override { return m_isTechnical; }
-    virtual bool canExecute() const override { return true; }
-    virtual void invokeApplication() const override;
-    virtual void fetchChangelog() override;
+    QList<PackageState> addonsInformation() override;
+    QString section() override;
+    QString origin() const override;
+    QString longDescription() override;
+    QString availableVersion() const override;
+    QString installedVersion() const override;
+    QString license() override;
+    int size() override;
+    QUrl screenshotUrl() override;
+    QUrl thumbnailUrl() override;
+    QUrl homepage() override;
+    QStringList categories() override;
+    AbstractResource::State state() override;
+    QString icon() const override;
+    QString comment() override;
+    QString name() override;
+    QString packageName() const override;
+    bool isTechnical() const override { return m_isTechnical; }
+    bool canExecute() const override { return true; }
+    void invokeApplication() const override;
+    void fetchChangelog() override;
     void setState(State state);
     void setAddons(const AddonList& addons);
 

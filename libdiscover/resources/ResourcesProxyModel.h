@@ -72,7 +72,7 @@ public:
     QString mimeTypeFilter() const;
     void setMimeTypeFilter(const QString& mime);
 
-    virtual void setSourceModel(QAbstractItemModel *sourceModel) override;
+    void setSourceModel(QAbstractItemModel *sourceModel) override;
 
 protected:
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;

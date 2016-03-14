@@ -32,28 +32,28 @@ class PackageKitResource : public AbstractResource
     Q_OBJECT
     public:
         explicit PackageKitResource(QString  packageName, QString  summary, PackageKitBackend* parent);
-        virtual QString packageName() const override;
-        virtual QString name() override;
-        virtual QString comment() override;
-        virtual QString longDescription() override;
-        virtual QUrl homepage() override;
-        virtual QString icon() const override;
-        virtual QStringList categories() override;
-        virtual QString license() override;
-        virtual QString origin() const override;
-        virtual QString section() override;
-        virtual bool isTechnical() const override;
-        virtual int size() override;
-        virtual void fetchChangelog() override;
+        QString packageName() const override;
+        QString name() override;
+        QString comment() override;
+        QString longDescription() override;
+        QUrl homepage() override;
+        QString icon() const override;
+        QStringList categories() override;
+        QString license() override;
+        QString origin() const override;
+        QString section() override;
+        bool isTechnical() const override;
+        int size() override;
+        void fetchChangelog() override;
         
-        virtual QList<PackageState> addonsInformation() override;
-        virtual State state() override;
+        QList<PackageState> addonsInformation() override;
+        State state() override;
         
-        virtual QUrl screenshotUrl() override;
-        virtual QUrl thumbnailUrl() override;
+        QUrl screenshotUrl() override;
+        QUrl thumbnailUrl() override;
         
-        virtual QString installedVersion() const override;
-        virtual QString availableVersion() const override;
+        QString installedVersion() const override;
+        QString availableVersion() const override;
         virtual QStringList allPackageNames() const;
         QString installedPackageId() const;
         QString availablePackageId() const;

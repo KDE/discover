@@ -62,16 +62,16 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
          */
         explicit ResourcesModel(const QString& backendName, QObject* parent = nullptr);
         static ResourcesModel* global();
-        virtual ~ResourcesModel();
+        ~ResourcesModel() override;
         
-        virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
-        virtual int rowCount(const QModelIndex& parent = QModelIndex()) const override;
+        QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
+        int rowCount(const QModelIndex& parent = QModelIndex()) const override;
         
         AbstractResource* resourceAt(int row) const;
         QModelIndex resourceIndex(AbstractResource* res) const;
         QVector< AbstractResourcesBackend* > backends() const;
         int updatesCount() const;
-        virtual QMap< int, QVariant > itemData(const QModelIndex& index) const override;
+        QMap< int, QVariant > itemData(const QModelIndex& index) const override;
         
         Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name);
 
@@ -82,7 +82,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         QList<QAction*> messageActions() const;
         QVariantList messageActionsVariant() const;
         
-        virtual QHash<int, QByteArray> roleNames() const override;
+        QHash<int, QByteArray> roleNames() const override;
 
     public Q_SLOTS:
         void installApplication(AbstractResource* app, const AddonList& addons);

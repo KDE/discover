@@ -45,7 +45,7 @@ public:
     };
 
     explicit UpdateModel(QObject *parent = nullptr);
-    ~UpdateModel();
+    ~UpdateModel() override;
 
     QVariant data(const QModelIndex &index, int role) const override;
     QVariant headerData(int section, Qt::Orientation orientation,
