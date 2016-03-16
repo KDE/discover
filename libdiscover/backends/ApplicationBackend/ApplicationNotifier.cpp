@@ -132,8 +132,6 @@ void ApplicationNotifier::parseUpdateInfo()
     if (line.isEmpty())
         return;
 
-    m_securityUpdates = 0;
-    m_normalUpdates = 0;
     // Format updates;security
     int eqpos = line.indexOf(';');
 
@@ -143,6 +141,10 @@ void ApplicationNotifier::parseUpdateInfo()
         
         int securityUpdates = securityString.toInt();
         setUpdates(updatesString.toInt() - securityUpdates, securityUpdates);
+    } else {
+        //if the format is wrong consider as up to date
+        m_securityUpdates = 0;
+        m_normalUpdates = 0;
     }
 }
 
