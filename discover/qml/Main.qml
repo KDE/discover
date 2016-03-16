@@ -63,7 +63,7 @@ Rectangle
 
     Rectangle {
         gradient: Gradient {
-            GradientStop { position: 0.0; color: "darkGray" }
+            GradientStop { position: 0.0; color: DiscoverSystemPalette.dark }
             GradientStop { position: 1.0; color: "transparent" }
         }
         height: parent.height/5
