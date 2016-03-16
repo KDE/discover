@@ -471,23 +471,23 @@ void QAptActions::showHistoryDialog()
 {
     if (!m_historyDialog) {
         m_historyDialog = new QDialog(mainWindow());
-        m_historyDialog->setLayout(new QVBoxLayout(m_historyDialog));
+        QVBoxLayout* layout = new QVBoxLayout(m_historyDialog);
+        m_historyDialog->setLayout(layout);
+        m_historyDialog->setWindowTitle(i18nc("@title:window", "Package History"));
+        m_historyDialog->setWindowIcon(QIcon::fromTheme(QStringLiteral("view-history")));
 
         KConfigGroup dialogConfig(KSharedConfig::openConfig(QStringLiteral("muonrc")), QStringLiteral("HistoryDialog"));
         KWindowConfig::restoreWindowSize(m_historyDialog->windowHandle(), dialogConfig);
-        
 
-        connect(m_historyDialog, SIGNAL(finished()), SLOT(closeHistoryDialog()));
         HistoryView *historyView = new HistoryView(m_historyDialog);
-        m_historyDialog->layout()->addWidget(historyView);
-        m_historyDialog->setWindowTitle(i18nc("@title:window", "Package History"));
-        m_historyDialog->setWindowIcon(QIcon::fromTheme(QStringLiteral("view-history")));
+        layout->addWidget(historyView);
         
         QDialogButtonBox* box = new QDialogButtonBox(m_historyDialog);
         box->setStandardButtons(QDialogButtonBox::Close);
         connect(box, &QDialogButtonBox::accepted, m_historyDialog.data(), &QDialog::accept);
         connect(box, &QDialogButtonBox::rejected, m_historyDialog.data(), &QDialog::reject);
-        m_historyDialog->layout()->addWidget(box);
+        connect(m_historyDialog, &QDialog::finished, this, &QAptActions::closeHistoryDialog);
+        layout->addWidget(box);
         
         m_historyDialog->show();
     } else {
