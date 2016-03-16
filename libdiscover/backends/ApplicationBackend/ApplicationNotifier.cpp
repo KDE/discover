@@ -143,8 +143,7 @@ void ApplicationNotifier::parseUpdateInfo()
         setUpdates(updatesString.toInt() - securityUpdates, securityUpdates);
     } else {
         //if the format is wrong consider as up to date
-        m_securityUpdates = 0;
-        m_normalUpdates = 0;
+        setUpdates(0, 0);
     }
 }
 
