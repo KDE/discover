@@ -38,11 +38,13 @@
 HistoryView::HistoryView(QWidget *parent)
     : QWidget(parent)
 {
-    setLayout(new QVBoxLayout(this));
+    QVBoxLayout* layout = new QVBoxLayout(this);
+    setLayout(layout);
     m_history = new QApt::History(this);
 
     QWidget *headerWidget = new QWidget(this);
     QHBoxLayout *headerLayout = new QHBoxLayout(headerWidget);
+    headerWidget->setLayout(headerLayout);
 
     QLabel *headerLabel = new QLabel(headerWidget);
     headerLabel->setText(xi18nc("@info", "<title>History</title>"));
@@ -88,6 +90,9 @@ HistoryView::HistoryView(QWidget *parent)
     m_historyModel->setColumnCount(1);
     m_historyModel->setHeaderData(0, Qt::Horizontal, i18nc("@title:column", "Date"));
     m_historyView = new QTreeView(this);
+
+    layout->addWidget(headerWidget);
+    layout->addWidget(m_historyView);
 
     QIcon itemIcon(QIcon::fromTheme(QStringLiteral("applications-other")));
 
