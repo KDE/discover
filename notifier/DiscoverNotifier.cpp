@@ -141,7 +141,7 @@ QString DiscoverNotifier::message() const
 QString DiscoverNotifier::extendedMessage() const
 {
     uint securityCount = securityUpdatesCount();
-    uint count = updatesCount() + securityCount;
+    uint count = updatesCount();
     if (count > 0 && securityCount > 0) {
         QString allUpdates = i18ncp("First part of '%1, %2'",
                                     "1 package to update", "%1 packages to update", count);
