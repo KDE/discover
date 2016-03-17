@@ -31,6 +31,7 @@
 #include <AppstreamQt/database.h>
 #include <functional>
 
+class AppstreamReviews;
 class AppPackageKitResource;
 class PackageKitUpdater;
 class PKTransaction;
@@ -101,6 +102,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
 
         Packages m_packages;
         Packages m_updatingPackages;
+        AppstreamReviews* const m_reviews;
 };
 
 #endif // PACKAGEKITBACKEND_H
