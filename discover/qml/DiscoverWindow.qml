@@ -26,8 +26,8 @@ ConditionalLoader
     visible: true
 
     function clearSearch() {
-//         if (toolbar.search)
-//             toolbar.search.text=""
+        if (window.item)
+            window.item.clearSearch();
     }
 
     Component {
@@ -101,6 +101,9 @@ ConditionalLoader
         id: main
         property alias stack: main.stack
         currentTopLevel: window.currentTopLevel
+        function clearSearch() {
+            //TODO
+        }
 
         Loader {
             anchors.fill: parent
@@ -117,6 +120,9 @@ ConditionalLoader
     componentFalse: ColumnLayout {
         property alias stack: main.stack
         spacing: 0
+
+        function clearSearch() { toolbar.clearSearch() }
+
         MuonToolbar {
             id: toolbar
             Layout.fillWidth: true
