@@ -27,13 +27,21 @@ ToolBar
     id: root
     property Item search: searchWidget
     Layout.preferredHeight: layout.Layout.preferredHeight
+    function clearSearch() {
+        searchWidget.text=""
+    }
 
     Timer {
         id: searchTimer
         running: false
         repeat: false
         interval: 200
-        onTriggered: { window.stack.currentItem.searchFor(root.search.text) }
+        onTriggered: {
+            if (root.search.text !== "")
+                window.stack.currentItem.searchFor(root.search.text)
+            else if(backAction.enabled)
+                backAction.action.trigger()
+        }
     }
 
     ColumnLayout {

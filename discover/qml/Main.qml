@@ -36,7 +36,7 @@ Rectangle
     onCurrentTopLevelChanged: {
         if(currentTopLevel==null)
             return
-        window.clearSearch()
+
         if(currentTopLevel.status==Component.Error) {
             console.log("status error: "+currentTopLevel.errorString())
         }
@@ -63,7 +63,7 @@ Rectangle
 
     Rectangle {
         gradient: Gradient {
-            GradientStop { position: 0.0; color: "darkGray" }
+            GradientStop { position: 0.0; color: DiscoverSystemPalette.dark }
             GradientStop { position: 1.0; color: "transparent" }
         }
         height: parent.height/5
@@ -116,8 +116,12 @@ Rectangle
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-            onDepthChanged: {
+            onInitialItemChanged: {
                 window.clearSearch()
+            }
+            onDepthChanged: {
+                if (depth==1)
+                    window.clearSearch()
             }
         }
     }

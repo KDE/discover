@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright © 2011 Jonathan Thomas <echidnaman@kubuntu.org>             *
+ *   Copyright © 2016 Aleix Pol Gonzalez <aleixpol@blue-systems.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or         *
  *   modify it under the terms of the GNU General Public License as        *
@@ -18,42 +18,42 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-#ifndef RATING_H
-#define RATING_H
+#ifndef APPSTREAMREVIEWS_H
+#define APPSTREAMREVIEWS_H
 
-#include <QtCore/QObject>
-#include <QtCore/QVariant>
+#include <QHash>
+#include <ReviewsBackend/AbstractReviewsBackend.h>
 
-#include "discovercommon_export.h"
+class KJob;
+class AbstractResourcesBackend;
 
-class DISCOVERCOMMON_EXPORT Rating : public QObject
+class AppstreamReviews : public AbstractReviewsBackend
 {
-Q_OBJECT
-Q_PROPERTY(double sortableRating READ sortableRating CONSTANT)
-Q_PROPERTY(int rating READ rating CONSTANT)
-Q_PROPERTY(int ratingPoints READ ratingPoints CONSTANT)
-Q_PROPERTY(quint64 ratingCount READ ratingCount CONSTANT)
+    Q_OBJECT
 public:
-    explicit Rating(const QVariantMap &data);
-    explicit Rating(const QString& packageName, quint64 ratingCount, int rating, const QString& histogram);
-    explicit Rating(const QString& packageName, int inst, int vote, int old, int recent);
-    ~Rating() override;
+    AppstreamReviews(AbstractResourcesBackend* parent);
 
-    QString packageName() const;
-    quint64 ratingCount() const;
-    // 0.0 - 10.0 ranged rating multiplied by two and rounded for KRating*
-    Q_SCRIPTABLE int rating() const;
-    int ratingPoints() const;
-    // Returns a dampened rating calculated with the Wilson Score Interval algorithm
-    double sortableRating() const;
+    Rating *ratingForApplication(AbstractResource *app) const override;
+
+    QString userName() const override{ return {}; }
+    bool hasCredentials() const override { return false; }
+    void login() override {}
+    void registerAndLogin() override {}
+    void logout() override {}
+    void submitUsefulness(Review* /*r*/, bool /*useful*/) override {}
+    void submitReview(AbstractResource* /*app*/, const QString& /*summary*/, const QString& /*review_text*/, const QString& /*rating*/) override {}
+    void deleteReview(Review* /*r*/) override {}
+
+    void flagReview(Review* /*r*/, const QString& /*reason*/, const QString &/*text*/) override {}
+    void fetchReviews(AbstractResource* /*app*/, int /*page*/) override {}
+    bool isReviewable() const override { return false; }
+    bool isFetching() const override;
 
 private:
-    void init(const QString& packageName, quint64 ratingCount, int rating, const QString& histogram);
-    QString m_packageName;
-    quint64 m_ratingCount;
-    int m_rating;
-    int m_ratingPoints;
-    double m_sortableRating;
+    void ratingsFetched(KJob* job);
+
+    QHash<QString, Rating *> m_ratings;
+    bool m_fetching;
 };
 
-#endif
+#endif // APPSTREAMREVIEWS_H

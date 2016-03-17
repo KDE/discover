@@ -24,6 +24,7 @@
 #include "PackageKitUpdater.h"
 #include "AppPackageKitResource.h"
 #include "PKTransaction.h"
+#include "AppstreamReviews.h"
 #include <resources/AbstractResource.h>
 #include <resources/StandardBackendUpdater.h>
 #include <Transaction/TransactionModel.h>
@@ -45,6 +46,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     , m_updater(new PackageKitUpdater(this))
     , m_refresher(nullptr)
     , m_isFetching(0)
+    , m_reviews(new AppstreamReviews(this))
 {
     bool b = m_appdata.open();
     Q_ASSERT(b && "must be able to open the appstream database");
@@ -390,7 +392,9 @@ QVector<AppPackageKitResource*> PackageKitBackend::extendedBy(const QString& id)
     return m_packages.extendedBy[id];
 }
 
-//TODO
-AbstractReviewsBackend* PackageKitBackend::reviewsBackend() const { return nullptr; }
+AbstractReviewsBackend* PackageKitBackend::reviewsBackend() const
+{
+    return m_reviews;
+}
 
 #include "PackageKitBackend.moc"
