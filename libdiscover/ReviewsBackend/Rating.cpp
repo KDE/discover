@@ -109,7 +109,7 @@ Rating::Rating(const QString& packageName, quint64 ratingCount, int rating, cons
     init(packageName, ratingCount, rating, histogram);
 }
 
-Rating::Rating(const QString& packageName, int inst, int vote, int old, int recent)
+Rating::Rating(const QString& packageName, int inst, int vote, int old, int /*recent*/)
     : QObject()
     , m_packageName(packageName)
     , m_ratingCount(inst)
@@ -117,7 +117,6 @@ Rating::Rating(const QString& packageName, int inst, int vote, int old, int rece
     , m_ratingPoints(vote)
     , m_sortableRating(m_rating)
 {
-    qDebug() << "lalala" << packageName << inst << old << "--" << m_rating << (10*old)/qMax<qreal>(inst, 1);
 }
 
 void Rating::init(const QString& packageName, quint64 ratingCount, int rating, const QString& histogram)
