@@ -123,7 +123,7 @@ void Rating::init(const QString& packageName, int ratingCount, int rating, const
     m_ratingPoints = 0;
     m_sortableRating = 0;
 
-    QStringList histo = histogram.mid(1,histogram.size()-2).split(QStringLiteral(", "));
+    auto histo = histogram.midRef(1,histogram.size()-2).split(QStringLiteral(", "));
     QVector<int> spread = QVector<int>();
 
     for(int i=0; i<histo.size(); ++i) {
