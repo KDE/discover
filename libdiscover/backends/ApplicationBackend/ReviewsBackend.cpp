@@ -41,6 +41,7 @@
 #include <ReviewsBackend/Rating.h>
 #include <ReviewsBackend/Review.h>
 #include <ReviewsBackend/AbstractLoginBackend.h>
+#include <ReviewsBackend/PopConParser.h>
 #include "UbuntuLoginBackend.h"
 #include <resources/AbstractResourcesBackend.h>
 #include <MuonDataSources.h>
@@ -167,26 +168,8 @@ void ReviewsBackend::loadRatingsFromFile()
             m_ratings[rating->packageName()] = rating;
         }
     } else {
-        if(dev->open(QIODevice::ReadOnly)) {
-            while(!dev->atEnd()) {
-                QString line = QString::fromLatin1(dev->readLine());
-                QStringList lineContent = line.split(QLatin1Char(' '));
-                if(lineContent.first() != QLatin1String("Package:") || lineContent.isEmpty()) {
-                    continue;
-                }
-                QString pkgName = lineContent.at(1);
-                lineContent.removeFirst();
-                lineContent.removeFirst();
-
-                Rating *rating = new Rating(pkgName,lineContent);
-                if (!rating->ratingCount()) {
-                    delete rating;
-                    continue;
-                }
-                rating->setParent(this);
-                m_ratings[rating->packageName()] = rating;
-            }
-        }
+        qDeleteAll(m_ratings);
+        m_ratings = PopConParser::parsePopcon(this, dev.data());
     }
     emit ratingsReady();
 }

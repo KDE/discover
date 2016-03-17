@@ -13,6 +13,7 @@ set(discovercommon_SRCS
     ReviewsBackend/Review.cpp
     ReviewsBackend/AbstractLoginBackend.cpp
     ReviewsBackend/ReviewsModel.cpp
+    ReviewsBackend/PopConParser.cpp
     Transaction/AddonList.cpp
     Transaction/Transaction.cpp
     Transaction/TransactionListener.cpp
