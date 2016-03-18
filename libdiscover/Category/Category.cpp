@@ -169,7 +169,9 @@ void Category::addSubcategory(QList< Category* >& list, Category* newcat)
                 || c->m_andFilters != newcat->andFilters())
             {
                 qWarning() << "the following categories seem to be the same but they're not entirely"
-                    << c->name() << newcat->name();
+                    << c->name() << newcat->name() << "--"
+                    << c->shouldShowTechnical() << newcat->shouldShowTechnical() << "--"
+                    << c->andFilters() << newcat->andFilters();
                 break;
             } else {
                 c->m_orFilters += newcat->orFilters();
