@@ -140,10 +140,7 @@ QString KNSResource::license()
 
 int KNSResource::size()
 {
-#if KNEWSTUFF_VERSION_MINOR > 3 and KNEWSTUFF_VERSION_MAJOR == 5
-    const
-#endif
-    Attica::DownloadDescription desc = m_content.downloadUrlDescription(0);
+    const Attica::DownloadDescription desc = m_content.downloadUrlDescription(0);
     return desc.size();
 }
 
@@ -164,10 +161,7 @@ QString KNSResource::origin() const
 
 QString KNSResource::section()
 {
-#if KNEWSTUFF_VERSION_MINOR > 3 and KNEWSTUFF_VERSION_MAJOR == 5
-    const
-#endif
-    Attica::DownloadDescription desc = m_content.downloadUrlDescription(0);
+    const Attica::DownloadDescription desc = m_content.downloadUrlDescription(0);
     return desc.category();
 }
 
