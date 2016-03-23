@@ -21,9 +21,9 @@
 import QtQuick 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.1
-import org.kde.plasma.mobilecomponents 0.2 as MobileComponents
+import org.kde.kirigami 1.0 as Kirigami
 
-MobileComponents.GlobalDrawer {
+Kirigami.GlobalDrawer {
     id: drawer
     anchors.fill: parent
     title: i18n("Discover")
@@ -42,7 +42,7 @@ MobileComponents.GlobalDrawer {
     Component {
         id: buttonComponent
 
-        MobileComponents.BasicListItem {
+        Kirigami.BasicListItem {
             Layout.fillWidth: true
             enabled: modelData.enabled
             checked: modelData.checked
@@ -50,14 +50,13 @@ MobileComponents.GlobalDrawer {
             label: modelData.text
             opacity: enabled ? 1.0 : 0.3
 
-            MobileComponents.Icon {
+            Kirigami.Icon {
                 anchors {
                     top: parent.top
                     bottom: parent.bottom
                     right: parent.right
                 }
                 width: height
-                source: "go-next"
                 visible: modelData.children != undefined
             }
 
