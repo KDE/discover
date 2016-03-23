@@ -216,7 +216,7 @@ void KNSBackend::receivedContents(Attica::BaseJob* job)
     }
     QString filename = QFileInfo(m_name).fileName();
     foreach(const Attica::Content& c, contents) {
-        KNSResource* r = new KNSResource(c, filename, m_iconName, this);
+        KNSResource* r = new KNSResource(c, filename, this);
         m_resourcesByName.insert(c.id(), r);
         connect(r, &KNSResource::stateChanged, this, &KNSBackend::updatesCountChanged);
     }

@@ -23,14 +23,13 @@
 #include <QDebug>
 #include <knewstuff_version.h>
 
-KNSResource::KNSResource(const Attica::Content& c, QString  category, QString  icon, KNSBackend* parent)
+KNSResource::KNSResource(const Attica::Content& c, QString  category, KNSBackend* parent)
     : AbstractResource(parent)
-    , m_status(KNS3::Entry::Downloadable)
     , m_content(c)
     , m_category(std::move(category))
-    , m_icon(std::move(icon))
     , m_entry(nullptr)
-{}
+{
+}
 
 KNSResource::~KNSResource()
 {
@@ -38,7 +37,9 @@ KNSResource::~KNSResource()
 
 AbstractResource::State KNSResource::state()
 {
-    switch(m_status) {
+    if (!m_entry)
+        return None;
+    switch(m_entry->status()) {
         case KNS3::Entry::Invalid:
             return Broken;
         case KNS3::Entry::Downloadable:
@@ -55,17 +56,9 @@ AbstractResource::State KNSResource::state()
     return None;
 }
 
-void KNSResource::setStatus(KNS3::Entry::Status status)
-{
-    if(status!=m_status) {
-        m_status = status;
-        emit stateChanged();
-    }
-}
-
 QString KNSResource::icon() const
 {
-    return m_icon;
+    return qobject_cast<KNSBackend*>(parent())->iconName();
 }
 
 QString KNSResource::comment()
@@ -124,8 +117,8 @@ QString KNSResource::longDescription()
 
 void KNSResource::setEntry(const KNS3::Entry& entry)
 {
-    setStatus(entry.status());
     m_entry.reset(new KNS3::Entry(entry));
+    Q_EMIT stateChanged();
 }
 
 KNS3::Entry* KNSResource::entry() const
