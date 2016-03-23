@@ -59,6 +59,7 @@ Item
                 Layout.preferredHeight: label.font.pixelSize*2
                 Layout.maximumHeight: button.height
                 icon: root.action ? root.action.iconName : ""
+                enabled: root.enabled
             }
             Label {
                 id: label
