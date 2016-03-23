@@ -122,7 +122,7 @@ ConditionalLoader
                     LabelBackground {
                         id: bg
                         anchors.centerIn: parent
-                        text: model.sortableRating.toFixed(2)
+                        text: model ? model.sortableRating.toFixed(2) : ""
                     }
                 }
             }
