@@ -99,7 +99,7 @@ ScrollView {
 
                     Label {
                         text: i18n("(%1)", ratingPoints)
-                        visible: !app.isCompact
+                        visible: !app.isCompact && ratingPoints>0
                     }
 
                     Rating {
@@ -113,6 +113,8 @@ ScrollView {
                     Label {
                         text: category[0]
                         visible: !app.isCompact
+                        Layout.preferredWidth: Math.max(100, implicitWidth)
+                        horizontalAlignment: Text.AlignHCenter
                     }
 
                     Item {

@@ -67,6 +67,8 @@ public:
     Attica::Provider* provider() { return &m_provider; }
     QList<AbstractResource*> upgradeablePackages() const override;
 
+    QString iconName() const { return m_iconName; }
+
 public Q_SLOTS:
     void receivedEntries(const KNS3::Entry::List& entry);
     void startFetchingCategories();

@@ -44,13 +44,15 @@ QString AppPackageKitResource::longDescription()
 
 QString AppPackageKitResource::icon() const
 {
-    QString anIcon = m_appdata.icon();
-    if (anIcon.isEmpty()) {
-        QUrl iconUrl = m_appdata.iconUrl(QSize());
-        if (iconUrl.isLocalFile())
-            anIcon = iconUrl.toLocalFile();
-    }
-    return anIcon;
+    const QString anIcon = m_appdata.icon();
+    if (!anIcon.isEmpty())
+        return anIcon;
+
+    const QUrl iconUrl = m_appdata.iconUrl(QSize());
+    if (iconUrl.isLocalFile())
+        return iconUrl.toLocalFile();
+
+    return QStringLiteral("applications-other");
 }
 
 QString AppPackageKitResource::license()
