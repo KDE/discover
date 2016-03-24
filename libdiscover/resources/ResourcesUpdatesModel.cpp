@@ -39,8 +39,9 @@ ResourcesUpdatesModel::ResourcesUpdatesModel(QObject* parent)
     , m_lastIsProgressing(false)
     , m_transaction(nullptr)
 {
-    init();
     connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, this, &ResourcesUpdatesModel::init);
+
+    init();
 }
 
 void ResourcesUpdatesModel::init()
@@ -56,7 +57,6 @@ void ResourcesUpdatesModel::init()
             connect(updater, &AbstractBackendUpdater::statusDetailChanged, this, &ResourcesUpdatesModel::statusDetailChanged);
             connect(updater, &AbstractBackendUpdater::remainingTimeChanged, this, &ResourcesUpdatesModel::etaChanged);
             connect(updater, &AbstractBackendUpdater::downloadSpeedChanged, this, &ResourcesUpdatesModel::downloadSpeedChanged);
-            connect(updater, &AbstractBackendUpdater::progressingChanged, this, &ResourcesUpdatesModel::slotProgressingChanged);
             connect(updater, &AbstractBackendUpdater::cancelableChanged, this, &ResourcesUpdatesModel::cancelableChanged);
             connect(updater, &AbstractBackendUpdater::resourceProgressed, this, &ResourcesUpdatesModel::resourceProgressed);
             connect(updater, &AbstractBackendUpdater::destroyed, this, &ResourcesUpdatesModel::updaterDestroyed);
@@ -77,6 +77,7 @@ void ResourcesUpdatesModel::slotProgressingChanged(bool progressing)
 {
     Q_UNUSED(progressing);
     Q_ASSERT(m_transaction);
+
     const bool newProgressing = isProgressing();
     if (newProgressing != m_lastIsProgressing) {
         m_lastIsProgressing = newProgressing;
@@ -129,6 +130,9 @@ void ResourcesUpdatesModel::updateAll()
         Q_FOREACH (AbstractBackendUpdater* upd, m_updaters) {
             if (upd->hasUpdates())
                 QMetaObject::invokeMethod(upd, "start", Qt::QueuedConnection);
+        }
+        foreach(auto updater, m_updaters) {
+            connect(updater, &AbstractBackendUpdater::progressingChanged, this, &ResourcesUpdatesModel::slotProgressingChanged, Qt::UniqueConnection);
         }
     }
 }
