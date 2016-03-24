@@ -39,7 +39,11 @@ QString AppPackageKitResource::name()
 
 QString AppPackageKitResource::longDescription()
 {
-    return m_appdata.description();
+    const auto desc = m_appdata.description();
+    if (!desc.isEmpty())
+        return desc;
+
+    return PackageKitResource::longDescription();
 }
 
 QString AppPackageKitResource::icon() const
@@ -72,7 +76,11 @@ QStringList AppPackageKitResource::categories()
 
 QString AppPackageKitResource::comment()
 {
-    return m_appdata.summary();
+    const auto summary = m_appdata.summary();
+    if (!summary.isEmpty())
+        return summary;
+
+    return PackageKitResource::comment();
 }
 
 QString AppPackageKitResource::appstreamId() const
