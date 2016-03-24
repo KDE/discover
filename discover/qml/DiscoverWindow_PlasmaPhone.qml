@@ -29,60 +29,19 @@ Kirigami.GlobalDrawer {
     title: i18n("Discover")
     titleIcon: "muondiscover"
 
-    function itemsFilter(items) {
+    function itemsFilter(actions, items) {
         var ret = [];
+        for(var v in actions)
+            ret.push(actions[v]);
+
         for(var v in items) {
             var it = items[v];
-            if (it.type == MenuItemType.Item)
-                ret.push(it);
+            if (it.type == MenuItemType.Item) {
+                ret.push(it.action);
+            }
         }
         return ret;
     }
 
-    Component {
-        id: buttonComponent
-
-        Kirigami.BasicListItem {
-            Layout.fillWidth: true
-            enabled: modelData.enabled
-            checked: modelData.checked
-            icon: modelData.iconName
-            label: modelData.text
-            opacity: enabled ? 1.0 : 0.3
-
-            Kirigami.Icon {
-                anchors {
-                    top: parent.top
-                    bottom: parent.bottom
-                    right: parent.right
-                }
-                width: height
-                visible: modelData.children != undefined
-            }
-
-            onClicked: {
-                if (modelData.children) {
-                    pageRow.push(menuComponent, {"model": modelData.children, "level": level + 1});
-                } else {
-                    modelData.trigger();
-                    drawer.opened = false;
-                }
-            }
-        }
-    }
-    Repeater {
-        model: window.awesome
-        delegate: buttonComponent
-    }
-
-    Item { height: 10 }
-
-    Repeater {
-        model: drawer.itemsFilter(moreMenu.items)
-        delegate: buttonComponent
-    }
-
-    Item {
-        Layout.fillHeight: true
-    }
+    actions: itemsFilter(window.awesome, moreMenu.items)
 }
