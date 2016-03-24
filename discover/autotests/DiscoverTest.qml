@@ -26,8 +26,12 @@ Item
         }
     }
 
+    function isType(obj, typename) {
+        return obj.toString().indexOf(typename+"_QMLTYPE_") == 0
+    }
+
     function findChild(obj, typename) {
-        if (obj.toString().indexOf(typename+"_QMLTYPE_") == 0)
+        if (isType(obj, typename))
             return obj;
 
         for(var v in obj.children) {

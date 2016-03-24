@@ -33,11 +33,13 @@ DiscoverTest
     function test_update() {
         app.openMode("Update");
 
-        var updatePage = appRoot.stack.currentItem
+        var updatePage = appRoot.stack.currentItem;
+        verify(isType(updatePage, "UpdatesPage"), updatePage.toString());
+        compare(updatePage.condition, true, "to update")
         var button = findChild(updatePage, "Button")
         verify(button);
         button.clicked();
-        compare(updatePage.condition, true)
+        compare(updatePage.condition, true, "updating")
 
         //make sure the window doesn't close while updating
         verify(app.visible);
@@ -47,7 +49,7 @@ DiscoverTest
 
         verify(waitForSignal(updatePage, "conditionChanged"))
         verify(waitForRendering())
-        compare(updatePage.condition, false)
+        compare(updatePage.condition, false, "update finished")
     }
 
     function test_modes() {
