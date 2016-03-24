@@ -11,7 +11,7 @@ Item
     function verify(condition, msg) {
         if (!condition) {
             console.trace();
-            var e = new Error(msg)
+            var e = new Error(condition + ": " + msg)
             e.object = testRoot;
             throw e;
         }

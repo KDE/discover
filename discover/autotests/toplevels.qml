@@ -37,7 +37,7 @@ DiscoverTest
         var button = findChild(updatePage, "Button")
         verify(button);
         button.clicked();
-        verify(updatePage.condition)
+        compare(updatePage.condition, true)
 
         //make sure the window doesn't close while updating
         verify(app.visible);
@@ -46,7 +46,8 @@ DiscoverTest
         verify(app.visible);
 
         verify(waitForSignal(updatePage, "conditionChanged"))
-        verify(!updatePage.condition)
+        verify(waitForRendering())
+        compare(updatePage.condition, false)
     }
 
     function test_modes() {
