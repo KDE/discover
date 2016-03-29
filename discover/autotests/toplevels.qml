@@ -49,6 +49,7 @@ DiscoverTest
 
         verify(waitForSignal(updatePage, "conditionChanged"))
         verify(waitForRendering())
+        compare(ResourcesModel.updatesCount, 0, "should be up to date")
         compare(updatePage.condition, false, "update finished")
     }
 
