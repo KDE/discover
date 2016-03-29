@@ -21,6 +21,7 @@
 #include "Transaction.h"
 
 #include "TransactionModel.h"
+#include <QDebug>
 
 Transaction::Transaction(QObject *parent, AbstractResource *resource,
                          Role role)
@@ -101,8 +102,10 @@ void Transaction::setProgress(int progress)
 
 void Transaction::cancel()
 {
-    if (!m_isCancellable)
+    if (!m_isCancellable) {
+        qWarning() << "trying to cancel a transaction that can't be cancelled" << this;
         return;
+    }
 
     TransactionModel::global()->cancelTransaction(this);
 }

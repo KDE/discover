@@ -192,3 +192,6 @@ void DummyTest::testUpdateModel()
     QCOMPARE(model.rowCount(), 2);
     QCOMPARE(model.hasUpdates(), true);
 }
+
+
+//TODO test cancel transaction

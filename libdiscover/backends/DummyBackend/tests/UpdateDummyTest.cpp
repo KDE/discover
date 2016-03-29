@@ -83,6 +83,7 @@ private Q_SLOTS:
         for(int i=0, c=m->rowCount(); i<c; ++i) {
             const QModelIndex idx = m->index(i,0);
 
+            QVERIFY(!idx.data(Qt::DecorationRole).isNull());
             QVERIFY(!idx.data(UpdateModel::ResourceRole).value<QObject*>());
             QCOMPARE(idx.data(UpdateModel::SizeRole).toString(), QStringLiteral("12.7 KiB"));
             QCOMPARE(idx.data(UpdateModel::VersionRole).toString(), QString());

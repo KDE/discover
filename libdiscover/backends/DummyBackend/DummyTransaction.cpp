@@ -30,6 +30,7 @@ DummyTransaction::DummyTransaction(DummyResource* app, Role action)
     : Transaction(app->backend(), app, action)
     , m_app(app)
 {
+    setCancellable(false);
     iterateTransaction();
 }
 
@@ -37,11 +38,13 @@ DummyTransaction::DummyTransaction(DummyResource* app, const AddonList& addons, 
     : Transaction(app->backend(), app, role, addons)
     , m_app(app)
 {
+    setCancellable(false);
     iterateTransaction();
 }
 
 void DummyTransaction::iterateTransaction()
 {
+    setStatus(CommittingStatus);
     if(progress()<100) {
         setProgress(qBound(0, progress()+(KRandom::random()%30), 100));
         QTimer::singleShot(/*KRandom::random()%*/200, this, &DummyTransaction::iterateTransaction);
@@ -51,6 +54,7 @@ void DummyTransaction::iterateTransaction()
 
 void DummyTransaction::finishTransaction()
 {
+    setStatus(DoneStatus);
     AbstractResource::State newState;
     switch(role()) {
     case InstallRole:
