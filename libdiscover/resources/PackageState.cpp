@@ -21,10 +21,7 @@
 #include "PackageState.h"
 
 PackageState::PackageState(QString name, QString description, bool installed)
-    : m_packageName(std::move(name))
-    , m_name(m_packageName)
-    , m_description(std::move(description))
-    , m_installed(installed)
+    : PackageState(name, name, description, installed)
 {}
 
 PackageState::PackageState(QString packageName, QString name, QString description, bool installed)
