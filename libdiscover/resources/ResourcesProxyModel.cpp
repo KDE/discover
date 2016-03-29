@@ -273,11 +273,6 @@ bool ResourcesProxyModel::sortingByRelevancy() const
     return m_sortByRelevancy;
 }
 
-bool ResourcesProxyModel::isFilteringBySearch() const
-{
-    return m_filterBySearch;
-}
-
 void ResourcesProxyModel::setStateFilter(AbstractResource::State s)
 {
     m_stateFilter = s;

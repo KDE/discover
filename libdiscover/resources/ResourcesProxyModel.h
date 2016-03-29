@@ -61,7 +61,6 @@ public:
     bool shouldShowTechnical() const;
     void setSortByRelevancy(bool sort);
     bool sortingByRelevancy() const;
-    bool isFilteringBySearch() const;
     void setStateFilter(AbstractResource::State s);
     void setFilterActive(bool filter);
     AbstractResource::State stateFilter() const;
