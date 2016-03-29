@@ -47,10 +47,10 @@ DiscoverTest
         app.close();
         verify(app.visible);
 
-        verify(waitForSignal(updatePage, "conditionChanged"))
-        verify(waitForRendering())
-        compare(ResourcesModel.updatesCount, 0, "should be up to date")
+        while(ResourcesModel.updatesCount>0)
+            verify(waitForSignal(ResourcesModel, "updatesCountChanged"))
         compare(updatePage.condition, false, "update finished")
+        compare(ResourcesModel.updatesCount, 0, "should be up to date")
     }
 
     function test_modes() {
