@@ -100,9 +100,6 @@
     <Include>
       <And>
         <Category>Education</Category>
-        <Not>
-          <Category>Science</Category>
-        </Not>
       </And>
     </Include>
   </Menu>
