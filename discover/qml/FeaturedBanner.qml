@@ -85,7 +85,7 @@ Information {
 
             RowLayout {
                 id: titleBar
-                height: description.paintedHeight*1.2
+                height: description.implicitHeight
                 z: 23
                 spacing: 10
                 anchors {
@@ -100,13 +100,24 @@ Information {
                     icon: itemDelegate.modelData ? itemDelegate.modelData.icon : "kde"
                 }
 
-                Label {
+                ColumnLayout {
                     id: description
                     Layout.fillWidth: true
-                    anchors.verticalCenter: parent.verticalCenter
 
-                    text: itemDelegate.modelData ? i18n("<b>%1</b><br/>%2", itemDelegate.modelData.text, itemDelegate.modelData.comment) : ""
-                    clip: true //can't elide because it's rich text :(
+                    spacing: 0
+                    Label {
+                        Layout.fillWidth: true
+                        text: itemDelegate.modelData.text
+                        font.bold: true
+                        elide: Text.ElideRight
+                    }
+
+                    Label {
+                        Layout.fillWidth: true
+                        text: itemDelegate.modelData.comment
+                        visible: text !== ""
+                        elide: Text.ElideRight
+                    }
                 }
             }
 
