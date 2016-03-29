@@ -2,13 +2,14 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 1.0
+import org.kde.discover.app 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
 
 Item {
     id: page
     clip: true
-    readonly property real proposedMargin: (width-app.actualWidth)/2
+    readonly property real proposedMargin: (width-Helpers.actualWidth)/2
     readonly property string title: i18n("Sources")
     readonly property string icon: "view-filter"
 
@@ -26,7 +27,7 @@ Item {
 
             header: PageHeader {
                 x: page.proposedMargin
-                width: Math.min(app.actualWidth, view.viewport.width)
+                width: Helpers.actualWidth
 
                 RowLayout {
                     anchors.verticalCenter: parent.verticalCenter
@@ -61,7 +62,7 @@ Item {
             delegate: ColumnLayout {
                 id: sourceDelegate
                 x: page.proposedMargin
-                width: Math.min(app.actualWidth, view.viewport.width)
+                width: Math.min(Helpers.actualWidth, view.viewport.width)
                 spacing: -1
 
                 property QtObject sourceBackend: model.sourceBackend

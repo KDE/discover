@@ -35,14 +35,14 @@ Item {
 
     ConditionalLoader {
         anchors.fill: parent
-        condition: app.isCompact
+        condition: Helpers.isCompact
 
         componentFalse: Item {
-            readonly property real proposedMargin: (width-app.actualWidth)/2
+            readonly property real proposedMargin: (width-Helpers.actualWidth)/2
 
             GridLayout {
                 x: proposedMargin
-                width: app.actualWidth
+                width: Helpers.actualWidth
                 height: parent.height
                 columns: 2
                 rows: 2
@@ -94,7 +94,7 @@ Item {
 
                 ColumnLayout {
                     Layout.fillWidth: true
-                    Layout.preferredWidth: app.actualWidth/3
+                    Layout.preferredWidth: Helpers.actualWidth/3
 
                     Item {
                         id: screenshotsPlaceholder
@@ -125,7 +125,7 @@ Item {
                     id: scroll
                     Layout.fillHeight: true
                     Layout.fillWidth: true
-                    Layout.preferredWidth: app.actualWidth/2
+                    Layout.preferredWidth: Helpers.actualWidth/2
 
                     ApplicationDescription {
                         width: scroll.viewport.width-margin/2

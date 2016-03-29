@@ -21,6 +21,7 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 1.0
+import org.kde.discover.app 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
 
@@ -41,8 +42,8 @@ GridItem
         GridView {
             id: grid
 
-            cellWidth: app.isCompact ? width : width/Math.floor(width/100)
-            cellHeight: app.isCompact ? 35 : 60
+            cellWidth: Helpers.isCompact ? width : width/Math.floor(width/100)
+            cellHeight: Helpers.isCompact ? 35 : 60
             boundsBehavior: Flickable.StopAtBounds
             header: Item { height: 10; width: 10 }
             footer: header

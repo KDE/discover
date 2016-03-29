@@ -38,9 +38,7 @@ class MuonDiscoverMainWindow : public QQuickView
     Q_OBJECT
     Q_PROPERTY(QUrl prioritaryFeaturedSource READ prioritaryFeaturedSource CONSTANT)
     Q_PROPERTY(QUrl featuredSource READ featuredSource CONSTANT)
-    Q_PROPERTY(bool isCompact READ isCompact NOTIFY compactChanged)
-    Q_PROPERTY(qreal actualWidth READ actualWidth NOTIFY actualWidthChanged)
-    Q_PROPERTY(CompactMode compactMode READ compactMode WRITE setCompactMode)
+    Q_PROPERTY(CompactMode compactMode READ compactMode WRITE setCompactMode NOTIFY compactModeChanged)
     public:
         enum CompactMode { Auto, Compact, Full };
         Q_ENUMS(CompactMode)
@@ -55,15 +53,10 @@ class MuonDiscoverMainWindow : public QQuickView
         QUrl prioritaryFeaturedSource() const;
         QUrl featuredSource() const;
 
-        bool isCompact() const;
-        qreal actualWidth() const;
-
         CompactMode compactMode() const { return m_mode; }
         void setCompactMode(CompactMode mode);
 
         bool event(QEvent * event) override;
-        void resizeEvent(QResizeEvent * event) override;
-        void showEvent(QShowEvent * event) override;
         void hideEvent(QHideEvent * event) override;
 
         Q_SCRIPTABLE QAction * action(const QString& name);
@@ -90,8 +83,7 @@ class MuonDiscoverMainWindow : public QQuickView
         void listMimeInternal(const QString& mime);
         void listCategoryInternal(Category* cat);
 
-        void compactChanged(bool isCompact);
-        void actualWidthChanged(qreal actualWidth);
+        void compactModeChanged(CompactMode compactMode);
         void preventedClose();
 
     private:

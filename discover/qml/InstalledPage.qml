@@ -2,6 +2,7 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 1.0
+import org.kde.discover.app 1.0
 
 ApplicationsListPage {
     id: page
@@ -16,7 +17,7 @@ ApplicationsListPage {
     readonly property string title: i18n("Installed")
 
     header: PageHeader {
-        width: app.actualWidth
+        width: Helpers.actualWidth
         x: page.proposedMargin
 
         RowLayout {

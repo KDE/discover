@@ -21,6 +21,7 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
+import org.kde.discover.app 1.0
 
 ToolBar
 {
@@ -57,7 +58,6 @@ ToolBar
             ToolButton {
                 id: backAction
                 objectName: "back"
-                visible: !app.isCompact
                 Layout.alignment: Qt.AlignVCenter
                 action: Action {
                     shortcut: "Alt+Up"

@@ -21,6 +21,7 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.kquickcontrolsaddons 2.0
+import org.kde.discover.app 1.0
 import QtQuick.Window 2.1
 import org.kde.kcoreaddons 1.0
 import "navigation.js" as Navigation
@@ -31,7 +32,7 @@ ScrollView {
     property alias header: view.header
     property alias section: view.section
     property alias model: view.model
-    readonly property real proposedMargin: app.isCompact ? 0 : (width-app.actualWidth)/2
+    readonly property real proposedMargin: Helpers.isCompact ? 0 : (width-Helpers.actualWidth)/2
 
     ListView
     {
@@ -43,7 +44,7 @@ ScrollView {
         delegate: GridItem {
                 id: delegateArea
 //                 checked: view.currentIndex==index
-                width: Math.min(app.actualWidth, parentItem.viewport.width)
+                width: Math.min(Helpers.actualWidth, parentItem.viewport.width)
                 x: parentItem.proposedMargin
                 property real contHeight: height*0.8
                 height: lowLayout.implicitHeight
@@ -89,7 +90,7 @@ ScrollView {
                             elide: Text.ElideRight
                             text: comment
                             font.italic: true
-                            opacity: !app.isCompact && delegateArea.containsMouse ? 1 : 0.5
+                            opacity: !Helpers.isCompact && delegateArea.containsMouse ? 1 : 0.5
                             maximumLineCount: 1
                             clip: true
                         }
@@ -99,34 +100,34 @@ ScrollView {
 
                     Label {
                         text: i18n("(%1)", ratingPoints)
-                        visible: !app.isCompact && ratingPoints>0
+                        visible: !Helpers.isCompact && ratingPoints>0
                     }
 
                     Rating {
                         id: ratingsItem
-                        starSize: app.isCompact ? contHeight*.6 : contHeight*.4
+                        starSize: Helpers.isCompact ? contHeight*.6 : contHeight*.4
                         rating: model.rating
-                        visible: !app.isCompact
+                        visible: !Helpers.isCompact
                     }
 
 
                     Label {
                         text: category[0]
-                        visible: !app.isCompact
+                        visible: !Helpers.isCompact
                         Layout.preferredWidth: Math.max(100, implicitWidth)
                         horizontalAlignment: Text.AlignHCenter
                     }
 
                     Item {
                         Layout.fillHeight: true
-                        width: app.isCompact ? installInfo.width : Math.max(installInfo.width, installButton.width)
+                        width: Helpers.isCompact ? installInfo.width : Math.max(installInfo.width, installButton.width)
 
                         InstallApplicationButton {
                             id: installButton
                             anchors.verticalCenter: parent.verticalCenter
                             application: model.application
                             canUpgrade: false
-                            visible: !app.isCompact && delegateArea.containsMouse
+                            visible: !Helpers.isCompact && delegateArea.containsMouse
                         }
                         LabelBackground {
                             progressing: installButton.isActive
@@ -134,7 +135,7 @@ ScrollView {
 
                             id: installInfo
                             anchors.centerIn: parent
-                            visible: app.isCompact || !delegateArea.containsMouse
+                            visible: Helpers.isCompact || !delegateArea.containsMouse
                             text: Format.formatByteSize(size)
                         }
                     }

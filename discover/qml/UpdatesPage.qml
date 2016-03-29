@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.2
 import org.kde.discover 1.0
+import org.kde.discover.app 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.kcoreaddons 1.0
 
@@ -11,7 +12,7 @@ ConditionalLoader
 
     readonly property var icon: "system-software-update"
     readonly property string title: i18n("System Update")
-    readonly property real proposedMargin: (width-app.actualWidth)/2
+    readonly property real proposedMargin: (width-Helpers.actualWidth)/2
 
     ResourcesUpdatesModel {
         id: resourcesUpdatesModel
@@ -32,7 +33,7 @@ ConditionalLoader
     componentFalse: Item {
         id: noUpdatesView
         ColumnLayout {
-            width: app.actualWidth
+            width: Helpers.actualWidth
             anchors.centerIn: parent
             BusyIndicator {
                 id: busy

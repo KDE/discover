@@ -1,6 +1,7 @@
 import QtQuick 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.1
+import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
 
 ConditionalLoader
@@ -96,7 +97,7 @@ ConditionalLoader
         MenuItem { action: ActionBridge { action: app.action("help_report_bug"); } }
     }
 
-    condition: app.isCompact
+    condition: Helpers.isCompact
     componentTrue: Main {
         id: main
         property alias stack: main.stack
@@ -126,7 +127,6 @@ ConditionalLoader
         MuonToolbar {
             id: toolbar
             Layout.fillWidth: true
-            visible: !app.isCompact
         }
 
         Main {

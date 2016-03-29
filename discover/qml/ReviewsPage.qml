@@ -25,7 +25,7 @@ import org.kde.discover 1.0
 ScrollView {
     id: page
     property alias model: reviewsView.model
-    readonly property real proposedMargin: app.isCompact ? 0 : (width-app.actualWidth)/2
+    readonly property real proposedMargin: Helpers.isCompact ? 0 : (width-Helpers.actualWidth)/2
     property var icon
     property string title
 
@@ -38,7 +38,7 @@ ScrollView {
 
         delegate: ReviewDelegate {
             x: page.proposedMargin
-            width: app.isCompact ? page.viewport.width : app.actualWidth
+            width: Helpers.isCompact ? page.viewport.width : Helpers.actualWidth
             onMarkUseful: page.model.markUseful(index, useful)
         }
     }

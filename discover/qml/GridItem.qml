@@ -32,7 +32,7 @@ MouseArea {
     readonly property real internalWidth: width - 2*internalMargin
     readonly property real internalHeight: height - 2*internalMargin
 
-    hoverEnabled: !app.isCompact
+    hoverEnabled: !Helpers.isCompact
 
     Rectangle {
         anchors.fill: parent

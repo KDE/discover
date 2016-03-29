@@ -21,6 +21,7 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 1.0
+import org.kde.discover.app 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
 
@@ -36,7 +37,7 @@ ConditionalLoader
         displayedCategory: page.category
     }
 
-    condition: !app.isCompact
+    condition: !Helpers.isCompact
     componentTrue: RowLayout {
             id: gridRow
             readonly property bool extended: view.count>5

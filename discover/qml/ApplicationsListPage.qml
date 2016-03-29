@@ -39,7 +39,7 @@ Item {
     property string sectionProperty: ""
     property Component sectionDelegate: null
     property bool preferList: false
-    readonly property real proposedMargin: (width-app.actualWidth)/2
+    readonly property real proposedMargin: (width-Helpers.actualWidth)/2
     property Component header: category==null ? null : categoryHeaderComponent
     property Component extendedToolBar: null
     property var icon: category ? category.icon : "go-home"
@@ -258,7 +258,7 @@ Item {
         }
     }
     
-    state: preferList || app.isCompact ? "list" : "grid2"
+    state: preferList || Helpers.isCompact ? "list" : "grid2"
     states: [
         State {
             name: "list"

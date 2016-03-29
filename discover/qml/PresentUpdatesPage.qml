@@ -2,6 +2,7 @@ import QtQuick.Controls 1.2
 import QtQuick.Layouts 1.1
 import QtQuick 2.1
 import org.kde.discover 1.0
+import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
 import org.kde.kquickcontrolsaddons 2.0
 
@@ -18,7 +19,7 @@ ScrollView
     ColumnLayout
     {
         x: proposedMargin
-        width: Math.min(app.actualWidth, page.viewport.width)
+        width: Math.min(Helpers.actualWidth, page.viewport.width)
 
         PageHeader {
             Layout.fillWidth: true

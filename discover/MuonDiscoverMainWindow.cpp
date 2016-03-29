@@ -77,10 +77,11 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow(CompactMode mode)
     qmlRegisterType<IconColors>("org.kde.discover.app", 1, 0, "IconColors");
     qmlRegisterSingletonType<SystemFonts>("org.kde.discover.app", 1, 0, "SystemFonts", ([](QQmlEngine*, QJSEngine*) -> QObject* { return new SystemFonts; }));
     qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/qml/DiscoverSystemPalette.qml")), "org.kde.discover.app", 1, 0, "DiscoverSystemPalette");
+    qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/qml/Helpers.qml")), "org.kde.discover.app", 1, 0, "Helpers");
     qmlRegisterType<QQuickView>();
     qmlRegisterType<QActionGroup>();
     qmlRegisterType<QAction>();
-    qmlRegisterType<MuonDiscoverMainWindow>();
+    qmlRegisterUncreatableType<MuonDiscoverMainWindow>("org.kde.discover.app", 1, 0, "MuonDiscoverMainWindow", QStringLiteral("don't do that"));
     setupActions();
     
     //Here we set up a cache for the screenshots
@@ -196,36 +197,6 @@ QUrl MuonDiscoverMainWindow::featuredSource() const
 QUrl MuonDiscoverMainWindow::prioritaryFeaturedSource() const
 {
     return QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::DataLocation, QStringLiteral("featured.json")));
-}
-
-bool MuonDiscoverMainWindow::isCompact() const
-{
-    if (m_mode != Auto) {
-        return m_mode == Compact;
-    } else if (!isVisible())
-        return false;
-
-    const qreal pixelDensity = screen()->physicalDotsPerInch() / 25.4;
-    return (width()/pixelDensity)<100; //we'll use compact if the width of the window is less than 10cm
-}
-
-qreal MuonDiscoverMainWindow::actualWidth() const
-{
-    return isCompact() ? width() : width()-std::pow(width()/70., 2);
-}
-
-void MuonDiscoverMainWindow::resizeEvent(QResizeEvent * event)
-{
-    QQuickView::resizeEvent(event);
-    Q_EMIT compactChanged(isCompact());
-    Q_EMIT actualWidthChanged(actualWidth());
-}
-
-void MuonDiscoverMainWindow::showEvent(QShowEvent * event)
-{
-    QQuickView::showEvent(event);
-    Q_EMIT compactChanged(isCompact());
-    Q_EMIT actualWidthChanged(actualWidth());
 }
 
 void MuonDiscoverMainWindow::hideEvent(QHideEvent * event)
@@ -344,9 +315,10 @@ void MuonDiscoverMainWindow::configureShortcuts()
 
 void MuonDiscoverMainWindow::setCompactMode(MuonDiscoverMainWindow::CompactMode mode)
 {
-    m_mode = mode;
-    Q_EMIT compactChanged(isCompact());
-    Q_EMIT actualWidthChanged(actualWidth());
+    if (m_mode != mode) {
+        m_mode = mode;
+        Q_EMIT compactModeChanged(m_mode);
+    }
 }
 
 class DiscoverTestExecutor : public QObject
