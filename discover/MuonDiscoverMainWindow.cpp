@@ -349,27 +349,50 @@ void MuonDiscoverMainWindow::setCompactMode(MuonDiscoverMainWindow::CompactMode 
     Q_EMIT actualWidthChanged(actualWidth());
 }
 
-void MuonDiscoverMainWindow::loadTest(const QUrl& url)
+class DiscoverTestExecutor : public QObject
 {
-    connect(engine(), &QQmlEngine::quit, this, [](){
-        qGuiApp->quit();
-    }, Qt::QueuedConnection);
+public:
+    DiscoverTestExecutor(QObject* rootObject, QQmlEngine* engine, const QUrl &url)
+        : QObject(engine)
+    {
+        connect(engine, &QQmlEngine::quit, this, &DiscoverTestExecutor::finish, Qt::QueuedConnection);
 
-    QQmlComponent* component = new QQmlComponent(engine(), url, engine());
-    QObject* obj = component->create(engine()->rootContext());
+        QQmlComponent* component = new QQmlComponent(engine, url, engine);
+        m_testObject = component->create(engine->rootContext());
 
-    if (!obj) {
-        qWarning() << "error loading test" << url << obj << component->errors();
-        Q_ASSERT(false);
+        if (!m_testObject) {
+            qWarning() << "error loading test" << url << m_testObject << component->errors();
+            Q_ASSERT(false);
+        }
+
+        m_testObject->setProperty("appRoot", QVariant::fromValue<QObject*>(rootObject));
+        connect(engine, &QQmlEngine::warnings, this, &DiscoverTestExecutor::processWarnings);
     }
 
-    obj->setProperty("appRoot", QVariant::fromValue<QObject*>(rootObject()));
-    connect(engine(), &QQmlEngine::warnings, obj, [this, obj](const QList<QQmlError> &warnings) {
+    void processWarnings(const QList<QQmlError> &warnings) {
         foreach(const QQmlError &warning, warnings) {
             if (warning.url().path().endsWith(QLatin1String("DiscoverTest.qml"))) {
                 qWarning() << "Test failed!" << warnings;
                 qGuiApp->exit(1);
             }
         }
-    });
+        m_warnings << warnings;
+    }
+
+    void finish() {
+        if (m_warnings.isEmpty())
+            qDebug() << "cool no warnings!";
+        else
+            qDebug() << "test finished succesfully despite" << m_warnings;
+        qGuiApp->exit(m_warnings.count());
+    }
+
+private:
+    QObject* m_testObject;
+    QList<QQmlError> m_warnings;
+};
+
+void MuonDiscoverMainWindow::loadTest(const QUrl& url)
+{
+    new DiscoverTestExecutor(rootObject(), engine(), url);
 }
