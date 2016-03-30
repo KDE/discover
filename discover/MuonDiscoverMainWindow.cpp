@@ -85,9 +85,6 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow(CompactMode mode)
     
     //Here we set up a cache for the screenshots
     m_engine->rootContext()->setContextProperty(QStringLiteral("app"), this);
-//
-    KConfigGroup window(KSharedConfig::openConfig(), "Window");
-//     setGeometry(window.readEntry("geometry", QRect()));
 
     connect(m_engine, &QQmlApplicationEngine::objectCreated, this, &MuonDiscoverMainWindow::integrateObject);
     m_engine->load(QUrl(QStringLiteral("qrc:/qml/DiscoverWindow.qml")));
@@ -95,10 +92,6 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow(CompactMode mode)
 
 MuonDiscoverMainWindow::~MuonDiscoverMainWindow()
 {
-//     KConfigGroup window(KSharedConfig::openConfig(), "Window");
-//     window.writeEntry("geometry", geometry());
-//     window.sync();
-
     delete m_engine;
 }
 
@@ -181,6 +174,10 @@ QUrl MuonDiscoverMainWindow::prioritaryFeaturedSource() const
 
 void MuonDiscoverMainWindow::integrateObject(QObject* object)
 {
+    KConfigGroup window(KSharedConfig::openConfig(), "Window");
+    if (window.hasKey("geometry"))
+        rootObject()->setGeometry(window.readEntry("geometry", QRect()));
+
     object->installEventFilter(this);
 }
 
@@ -195,6 +192,9 @@ bool MuonDiscoverMainWindow::eventFilter(QObject * object, QEvent * event)
             Q_EMIT preventedClose();
             return true;
         }
+
+        KConfigGroup window(KSharedConfig::openConfig(), "Window");
+        window.writeEntry("geometry", rootObject()->geometry());
     }
     return false;
 }
@@ -349,7 +349,7 @@ void MuonDiscoverMainWindow::loadTest(const QUrl& url)
     new DiscoverTestExecutor(rootObject(), engine(), url);
 }
 
-QObject * MuonDiscoverMainWindow::rootObject() const
+QWindow* MuonDiscoverMainWindow::rootObject() const
 {
-    return m_engine->rootObjects().first();
+    return qobject_cast<QWindow*>(m_engine->rootObjects().first());
 }

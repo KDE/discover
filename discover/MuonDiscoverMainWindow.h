@@ -31,7 +31,7 @@ class QAptIntegration;
 class AbstractResource;
 class Category;
 class QQuickWidget;
-class QMenu;
+class QWindow;
 class QQmlApplicationEngine;
 
 class MuonDiscoverMainWindow : public QObject
@@ -62,7 +62,6 @@ class MuonDiscoverMainWindow : public QObject
         Q_SCRIPTABLE QString iconName(const QIcon& icon);
 
         void loadTest(const QUrl& url);
-        QObject* rootObject() const;
 
     public Q_SLOTS:
         void openApplication(const QString& app);
@@ -87,6 +86,7 @@ class MuonDiscoverMainWindow : public QObject
         void preventedClose();
 
     private:
+        QWindow* rootObject() const;
         void integrateObject(QObject* object);
         QQmlApplicationEngine* engine() const { return m_engine; }
         void configureSources();
