@@ -38,7 +38,7 @@ QHash< int, QByteArray > CategoryModel::roleNames() const
     return names;
 }
 
-void CategoryModel::setCategories(const QList<Category *> &categoryList, const QString &rootName)
+void CategoryModel::setCategories(const QList<Category *> &categoryList)
 {
     clear();
 
@@ -76,9 +76,9 @@ void CategoryModel::setDisplayedCategory(Category* c)
 
     m_currentCategory = c;
     if(c)
-        setCategories(c->subCategories(), c->name());
+        setCategories(c->subCategories());
     else
-        setCategories(*s_categories, QString());
+        setCategories(*s_categories);
 
     categoryChanged(c);
 }
