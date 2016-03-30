@@ -328,9 +328,9 @@ public:
 
     void finish() {
         //The CI doesn't seem to have icons, remove when it's not an issue anymore
-        std::remove_if(m_warnings.begin(), m_warnings.end(), [](const QQmlError& err) -> bool {
+        m_warnings.erase(std::remove_if(m_warnings.begin(), m_warnings.end(), [](const QQmlError& err) -> bool {
             return err.description().contains(QLatin1String("QML Image: Failed to get image from provider: image://icon/"));
-        });
+        }));
 
         if (m_warnings.isEmpty())
             qDebug() << "cool no warnings!";
