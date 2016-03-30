@@ -4,6 +4,7 @@ import QtTest 1.1
 
 DiscoverTest
 {
+    property QtObject appRoot
     onReset: {
         appRoot.currentTopLevel = appRoot.topBrowsingComp
     }
@@ -42,10 +43,10 @@ DiscoverTest
         compare(updatePage.condition, true, "updating")
 
         //make sure the window doesn't close while updating
-        verify(app.visible);
+        verify(appRoot.visible);
         verify(waitForRendering())
-        app.close();
-        verify(app.visible);
+        appRoot.close()
+        verify(appRoot.visible);
 
         while(ResourcesModel.updatesCount>0)
             verify(waitForSignal(ResourcesModel, "updatesCountChanged"))

@@ -4,7 +4,7 @@ import QtQuick.Controls 1.1
 import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
 
-ConditionalLoader
+ApplicationWindow
 {
     id: window
     readonly property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
@@ -17,7 +17,7 @@ ConditionalLoader
     readonly property Component topInstalledComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
     readonly property Component topUpdateComp: Qt.createComponent("qrc:/qml/UpdatesPage.qml")
     readonly property Component topSourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
-    readonly property QtObject stack: item.stack
+    readonly property QtObject stack: loader.item.stack
     property Component currentTopLevel: defaultStartup ? topBrowsingComp : loadingComponent
     property bool defaultStartup: true
     property bool navigationEnabled: true
@@ -26,9 +26,13 @@ ConditionalLoader
 
     visible: true
 
+    Component.onCompleted: {
+        Helpers.mainWindow = window
+    }
+
     function clearSearch() {
-        if (window.item)
-            window.item.clearSearch();
+        if (loader.item)
+            loader.item.clearSearch();
     }
 
     Component {
@@ -97,43 +101,49 @@ ConditionalLoader
         MenuItem { action: ActionBridge { action: app.action("help_report_bug"); } }
     }
 
-    condition: Helpers.isCompact
-    componentTrue: Main {
-        id: main
-        property alias stack: main.stack
-        currentTopLevel: window.currentTopLevel
-        function clearSearch() {
-            //TODO
-        }
+    ConditionalLoader
+    {
+        id: loader
+        anchors.fill: parent
 
-        Loader {
-            anchors.fill: parent
-            source: "qrc:/qml/DiscoverWindow_PlasmaPhone.qml"
-            onStatusChanged: {
-                if (status==Loader.Error) {
-                    console.log("Disabling compact mode. Make sure Plasma Mobile is properly installed");
-                    app.compactMode = "Full";
+        condition: Helpers.isCompact
+        componentTrue: Main {
+            id: main
+            readonly property alias stack: main.stack
+            currentTopLevel: window.currentTopLevel
+            function clearSearch() {
+                //TODO
+            }
+
+            Loader {
+                anchors.fill: parent
+                source: "qrc:/qml/DiscoverWindow_PlasmaPhone.qml"
+                onStatusChanged: {
+                    if (status==Loader.Error) {
+                        console.log("Disabling compact mode. Make sure Plasma Mobile is properly installed");
+                        app.compactMode = MuonDiscoverMainWindow.Full;
+                    }
                 }
             }
         }
-    }
 
-    componentFalse: ColumnLayout {
-        property alias stack: main.stack
-        spacing: 0
+        componentFalse: ColumnLayout {
+            readonly property alias stack: main.stack
+            spacing: 0
 
-        function clearSearch() { toolbar.clearSearch() }
+            function clearSearch() { toolbar.clearSearch() }
 
-        MuonToolbar {
-            id: toolbar
-            Layout.fillWidth: true
-        }
+            MuonToolbar {
+                id: toolbar
+                Layout.fillWidth: true
+            }
 
-        Main {
-            id: main
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            currentTopLevel: window.currentTopLevel
+            Main {
+                id: main
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                currentTopLevel: window.currentTopLevel
+            }
         }
     }
 }

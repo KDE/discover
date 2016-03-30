@@ -32,8 +32,9 @@ class AbstractResource;
 class Category;
 class QQuickWidget;
 class QMenu;
+class QQmlApplicationEngine;
 
-class MuonDiscoverMainWindow : public QQuickView
+class MuonDiscoverMainWindow : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QUrl prioritaryFeaturedSource READ prioritaryFeaturedSource CONSTANT)
@@ -46,7 +47,6 @@ class MuonDiscoverMainWindow : public QQuickView
         explicit MuonDiscoverMainWindow(CompactMode mode);
         ~MuonDiscoverMainWindow() override;
 
-        void initialize();
         QStringList modes() const;
         void setupActions();
 
@@ -56,13 +56,13 @@ class MuonDiscoverMainWindow : public QQuickView
         CompactMode compactMode() const { return m_mode; }
         void setCompactMode(CompactMode mode);
 
-        bool event(QEvent * event) override;
-        void hideEvent(QHideEvent * event) override;
+        bool eventFilter(QObject * object, QEvent * event) override;
 
         Q_SCRIPTABLE QAction * action(const QString& name);
         Q_SCRIPTABLE QString iconName(const QIcon& icon);
 
         void loadTest(const QUrl& url);
+        QObject* rootObject() const;
 
     public Q_SLOTS:
         void openApplication(const QString& app);
@@ -87,6 +87,8 @@ class MuonDiscoverMainWindow : public QQuickView
         void preventedClose();
 
     private:
+        void integrateObject(QObject* object);
+        QQmlApplicationEngine* engine() const { return m_engine; }
         void configureSources();
         void configureMenu();
 
@@ -94,6 +96,7 @@ class MuonDiscoverMainWindow : public QQuickView
 
         QString m_appToBeOpened;
         KActionCollection m_collection;
+        QQmlApplicationEngine * const m_engine;
 
         CompactMode m_mode;
 };

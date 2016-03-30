@@ -1,10 +1,10 @@
 import QtQuick 2.1
 import QtTest 1.1
+import org.kde.discover.app 1.0
 
 Item
 {
     id: testRoot
-    property QtObject appRoot
 
     signal reset()
 
@@ -64,7 +64,7 @@ Item
     }
 
     function waitForRendering() {
-        return waitForSignal(app, "frameSwapped")
+        return waitForSignal(Helpers.mainWindow, "frameSwapped")
     }
 
     Connections {

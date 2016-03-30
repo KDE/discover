@@ -59,18 +59,17 @@
 #include <cmath>
 
 MuonDiscoverMainWindow::MuonDiscoverMainWindow(CompactMode mode)
-    : QQuickView()
+    : QObject()
     , m_collection(this)
+    , m_engine(new QQmlApplicationEngine)
     , m_mode(mode)
 {
-    initialize();
+    ResourcesModel *m = ResourcesModel::global();
+    m->integrateActions(actionCollection());
 
     setObjectName(QStringLiteral("DiscoverMain"));
-    setResizeMode(QQuickView::SizeRootObjectToView);
-    QQmlEngine* engine = this->engine();
     KDeclarative::KDeclarative kdeclarative;
-    kdeclarative.setDeclarativeEngine(engine);
-    //binds things like kconfig and icons
+    kdeclarative.setDeclarativeEngine(m_engine);
     kdeclarative.setupBindings();
     
     qmlRegisterType<PaginateModel>("org.kde.discover.app", 1, 0, "PaginateModel");
@@ -85,41 +84,22 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow(CompactMode mode)
     setupActions();
     
     //Here we set up a cache for the screenshots
-    engine->rootContext()->setContextProperty(QStringLiteral("app"), this);
+    m_engine->rootContext()->setContextProperty(QStringLiteral("app"), this);
 //
     KConfigGroup window(KSharedConfig::openConfig(), "Window");
-    setGeometry(window.readEntry("geometry", QRect()));
-    
-    setSource(QUrl(QStringLiteral("qrc:/qml/DiscoverWindow.qml")));
+//     setGeometry(window.readEntry("geometry", QRect()));
 
-    if(!errors().isEmpty()) {
-        QString errorsText;
-
-        Q_FOREACH (const QQmlError &error, errors()) {
-            errorsText.append(error.toString() + QLatin1String("\n"));
-        }
-        KMessageBox::detailedSorry(nullptr,
-                                   i18n("Found some errors while setting up the GUI, the application can't proceed."),
-                                   errorsText, i18n("Initialization error"));
-        qDebug() << "errors: " << errors();
-        exit(-1);
-    }
-    Q_ASSERT(errors().isEmpty());
-}
-
-void MuonDiscoverMainWindow::initialize()
-{
-    ResourcesModel *m = ResourcesModel::global();
-    m->integrateActions(actionCollection());
+    connect(m_engine, &QQmlApplicationEngine::objectCreated, this, &MuonDiscoverMainWindow::integrateObject);
+    m_engine->load(QUrl(QStringLiteral("qrc:/qml/DiscoverWindow.qml")));
 }
 
 MuonDiscoverMainWindow::~MuonDiscoverMainWindow()
 {
-    KConfigGroup window(KSharedConfig::openConfig(), "Window");
-    window.writeEntry("geometry", geometry());
-    window.sync();
+//     KConfigGroup window(KSharedConfig::openConfig(), "Window");
+//     window.writeEntry("geometry", geometry());
+//     window.sync();
 
-    delete rootObject();
+    delete m_engine;
 }
 
 QStringList MuonDiscoverMainWindow::modes() const
@@ -199,15 +179,24 @@ QUrl MuonDiscoverMainWindow::prioritaryFeaturedSource() const
     return QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::DataLocation, QStringLiteral("featured.json")));
 }
 
-void MuonDiscoverMainWindow::hideEvent(QHideEvent * event)
+void MuonDiscoverMainWindow::integrateObject(QObject* object)
 {
-    if (!ResourcesModel::global()->isBusy()) {
-        delete engine();
-        QQuickView::hideEvent(event);
-    } else {
-        qWarning() << "not closing because there's still pending tasks";
-        Q_EMIT preventedClose();
+    object->installEventFilter(this);
+}
+
+bool MuonDiscoverMainWindow::eventFilter(QObject * object, QEvent * event)
+{
+    if (object!=rootObject())
+        return false;
+
+    if (event->type() == QEvent::Close) {
+        if (ResourcesModel::global()->isBusy()) {
+            qWarning() << "not closing because there's still pending tasks";
+            Q_EMIT preventedClose();
+            return true;
+        }
     }
+    return false;
 }
 
 void MuonDiscoverMainWindow::setupActions()
@@ -257,20 +246,6 @@ QString MuonDiscoverMainWindow::iconName(const QIcon& icon)
 void MuonDiscoverMainWindow::configureSources()
 {
     openMode("Sources");
-}
-
-bool MuonDiscoverMainWindow::event(QEvent * e)
-{
-    if (e->type() == QEvent::Close) {
-        if (!ResourcesModel::global()->isBusy()) {
-            delete engine();
-        } else {
-            qWarning() << "not closing because there's still pending tasks";
-            Q_EMIT preventedClose();
-            return true;
-        }
-    }
-    return QQuickView::event(e);
 }
 
 void MuonDiscoverMainWindow::appHelpActivated()
@@ -372,4 +347,9 @@ private:
 void MuonDiscoverMainWindow::loadTest(const QUrl& url)
 {
     new DiscoverTestExecutor(rootObject(), engine(), url);
+}
+
+QObject * MuonDiscoverMainWindow::rootObject() const
+{
+    return m_engine->rootObjects().first();
 }
