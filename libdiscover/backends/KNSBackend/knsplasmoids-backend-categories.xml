@@ -3,11 +3,11 @@
   <Menu>
     <Name>Plasma Desktop Widgets</Name>
     <Icon>plasma</Icon>
-    <ShowTechnical>true</ShowTechnical> <!-- needs to be like this to be the same as the Plasmoid category over . -->
+    <ShowTechnical>true</ShowTechnical>
     <Include>
-      <Or>
+      <And>
         <Category>plasmoids.knsrc</Category>
-      </Or>
+      </And>
     </Include>
   </Menu>
 </Menu>
