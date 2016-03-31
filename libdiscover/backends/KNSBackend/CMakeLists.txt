@@ -1,17 +1,28 @@
-include_directories(${LIBATTICA_INCLUDE_DIR})
-
+add_subdirectory(knsintegrate)
 add_subdirectory(tests)
+
+function(makekns knsfile iconName backend category)
+    add_custom_target(${knsfile} ALL
+        COMMAND knsintegrate ${knsfile} ${iconName} ${backend} ${category}
+        COMMAND cmake -E rename ${CMAKE_CURRENT_BINARY_DIR}/${backend}.desktop ${CMAKE_CURRENT_SOURCE_DIR}/${backend}.desktop
+        COMMAND cmake -E rename ${CMAKE_CURRENT_BINARY_DIR}/${backend}-categories.xml ${CMAKE_CURRENT_SOURCE_DIR}/${backend}-categories.xml
+        DEPENDS knsintegrate
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    )
+
+    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/${backend}.desktop DESTINATION ${DATA_INSTALL_DIR}/libdiscover/backends)
+    install(FILES ${backend}-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
+endfunction()
+
+include_directories(${LIBATTICA_INCLUDE_DIR})
 
 add_library(kns-backend MODULE KNSBackend.cpp
     KNSResource.cpp
     KNSReviews.cpp)
 
-target_link_libraries(kns-backend Discover::Common
-        KF5::ConfigCore KF5::Attica KF5::NewStuff)
+target_link_libraries(kns-backend Discover::Common KF5::ConfigCore KF5::Attica KF5::NewStuff)
 
 install(TARGETS kns-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
-install(FILES knscomics-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/libdiscover/backends)
-install(FILES knsplasmoids-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/libdiscover/backends)
 
-install(FILES knsplasmoids-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
-install(FILES knscomics-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
+makekns(comic.knsrc face-smile-big knscomics-backend "Comics")
+makekns(plasmoids.knsrc plasma knsplasmoids-backend "Plasma Desktop Widgets")
