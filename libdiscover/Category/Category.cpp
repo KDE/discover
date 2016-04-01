@@ -177,8 +177,10 @@ void Category::addSubcategory(QList< Category* >& list, Category* newcat)
                 c->m_orFilters += newcat->orFilters();
                 c->m_notFilters += newcat->notFilters();
                 c->m_plugins.unite(newcat->m_plugins);
-                Q_FOREACH (Category* nc, newcat->subCategories())
+                Q_FOREACH (Category* nc, newcat->subCategories()) {
+                    nc->setParent(c);
                     addSubcategory(c->m_subCategories, nc);
+                }
                 delete newcat;
                 return;
             }
