@@ -22,6 +22,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QCommandLineParser>
+#include <QFileInfo>
 
 int main(int argc, char** argv)
 {
@@ -30,19 +31,19 @@ int main(int argc, char** argv)
     QCommandLineParser parser;
     parser.addPositionalArgument(QStringLiteral("knsfile"), QStringLiteral("*.knsrc file"), QStringLiteral("knsfile"));
     parser.addPositionalArgument(QStringLiteral("iconName"), QStringLiteral("Icon to use"), QStringLiteral("icon"));
-    parser.addPositionalArgument(QStringLiteral("backend"), QStringLiteral("Backend name"), QStringLiteral("backend"));
     parser.addPositionalArgument(QStringLiteral("category"), QStringLiteral("Category display name"), QStringLiteral("category"));
     parser.addHelpOption();
     parser.process(app);
 
-    if (parser.positionalArguments().count()!=4) {
+    if (parser.positionalArguments().count()!=3) {
         parser.showHelp(1);
     }
 
     const QString knsFile = parser.positionalArguments().at(0);
     const QString iconName = parser.positionalArguments().at(1);
-    const QString outputName = parser.positionalArguments().at(2);
-    const QString categoryName = parser.positionalArguments().at(3);
+    const QString categoryName = parser.positionalArguments().at(2);
+
+    const QString outputName = QStringLiteral("kns%1-backend").arg(QFileInfo(knsFile).baseName());
 
     QFile f(outputName + QStringLiteral("-categories.xml"));
     if (!f.open(QIODevice::WriteOnly | QIODevice::Text)) {
