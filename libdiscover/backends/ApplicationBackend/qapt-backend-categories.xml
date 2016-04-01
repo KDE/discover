@@ -541,14 +541,19 @@
   </Menu>
 
   <Menu>
-    <Name>Plasma Desktop Widgets</Name>
+    <Name>Plasma Addons</Name>
     <Icon>plasma</Icon>
-    <ShowTechnical>true</ShowTechnical> <!-- needs to be like this as plasmoids don't get a appinstall file for some reason. -->
-    <Include>
-      <Or>
-        <PkgWildcard>plasma-widget-*</PkgWildcard>
-      </Or>
-    </Include>
+
+    <Menu>
+        <Name>Plasma Desktop Widgets</Name>
+        <Icon>plasma</Icon>
+        <ShowTechnical>true</ShowTechnical> <!-- needs to be like this as plasmoids don't get a appinstall file for some reason. -->
+        <Include>
+          <Or>
+            <PkgWildcard>plasma-widget-*</PkgWildcard>
+          </Or>
+        </Include>
+    </Menu>
   </Menu>
 
 </Menu>

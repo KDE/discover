@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Menu>
   <Menu>
-    <Name>Plasma Desktop Widgets</Name>
+    <Name>Plasma Addons</Name>
     <Icon>plasma</Icon>
-    <ShowTechnical>true</ShowTechnical>
-    <Include>
-      <And>
-        <Category>plasmoids.knsrc</Category>
-      </And>
-    </Include>
+    <Menu>
+      <Name>Plasma Desktop Widgets</Name>
+      <Icon>plasma</Icon>
+      <ShowTechnical>true</ShowTechnical>
+      <Include>
+        <Or>
+          <Category>plasmoids.knsrc</Category>
+        </Or>
+      </Include>
+    </Menu>
   </Menu>
 </Menu>
