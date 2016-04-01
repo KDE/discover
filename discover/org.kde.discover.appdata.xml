@@ -4,11 +4,36 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <name>Discover</name>
+  <name xml:lang="nl">Ontdekken</name>
+  <name xml:lang="pt">Discover</name>
+  <name xml:lang="sv">Discover</name>
+  <name xml:lang="uk">Discover</name>
+  <name xml:lang="x-test">xxDiscoverxx</name>
   <summary>Discover</summary>
+  <summary xml:lang="nl">Ontdekken</summary>
+  <summary xml:lang="pt">Discover</summary>
+  <summary xml:lang="sv">Discover</summary>
+  <summary xml:lang="uk">Discover</summary>
+  <summary xml:lang="x-test">xxDiscoverxx</summary>
   <description>
     <p>Haven’t you ever found a tool that was perfect for your need but you only found it after some time stumbling upon it on the net? When considering to install an application, don’t you wonder sometimes if it’s really worth it? Or if it’s actually what you’re looking for?</p>
+    <p xml:lang="nl">Hebt u niet ooit een hulpmiddel gevonden dat perfect was voor uw behoefte maar dat u alleen na enige tijd toevallig vond op het internet? Bij de overweging om een toepassing te installeren, hebt u uzelf dan soms niet afgevraagd of het dat werkelijk waard was? Of of het echt was waarnaar u op zoek was?</p>
+    <p xml:lang="pt">Nunca encontrou uma ferramenta que fosse perfeita para as suas necessidades, mas que só a tivesse encontrado depois de "tropeçar" nela na Internet? Ao considerar instalar uma aplicação, não se questionou algumas vezes se realmente vale a pena? Ou se é realmente o que procura?</p>
+    <p xml:lang="sv">Har du aldrig hittat ett verktyg som är perfekt för dina behov, men bara efter att ha stött på det på nätet av en slump? När du funderar på att installera ett program, undrar du inte ibland om det verkligen är värt att göra? Eller om det verkligen är vad du behöver?</p>
+    <p xml:lang="uk">Чи траплялося вам знаходити програму, яка повністю задовольняє ваші потреби, після довгих пошуків у інтернеті? Чи не кортіло вам дізнатися про те, чи варто встановлювати програму, ще до її встановлення? Чи хотіли б ви наперед знати, чи та це програма, яка вам потрібна?</p>
+    <p xml:lang="x-test">xxHaven’t you ever found a tool that was perfect for your need but you only found it after some time stumbling upon it on the net? When considering to install an application, don’t you wonder sometimes if it’s really worth it? Or if it’s actually what you’re looking for?xx</p>
     <p>Discover helps users easily and quickly find applications or tools. By allowing to navigate a software library by search, software categories, top lists along with detailed application information that includes screenshots and reviews, users can more quickly find applications that suit their needs.</p>
+    <p xml:lang="nl">Discover helpt gebruikers om gemakkelijk en snel een toepassing of hulpmiddel te vinden. Door navigatie te bieden in een softwarebibliotheek door zoeken in softwarecategorieën, lijsten met toppers, samen met gedetailleerde informatie over toepassingen die schermafdrukken en reviews bevatten, kunnen gebruikers sneller toepassingen vinden die in hun behoeften voorzien.</p>
+    <p xml:lang="pt">O Discover ajuda os utilizadores a procurar fácil e rapidamente aplicações ou ferramentas. Ao permitir navegar numa biblioteca de 'software' com a pesquisa, as categorias de aplicações, as listas de topo com informações detalhadas, incluindo fotografias e revisões, os utilizadores poderão encontrar mais rapidamente as aplicações que se adequam às suas necessidades.</p>
+    <p xml:lang="sv">Discover hjälper användare att enkelt och snabbt hitta program eller verktyg. Genom att göra det möjligt att gå igenom ett programvarubibliotek via sökning, enligt programvarukategorier och i topplistor tillsammans med detaljerad programinformation som innehåller skärmbilder och recensioner, kan användare snabbare hitta program som passar deras behov.</p>
+    <p xml:lang="uk">Discover допомагає користувачам просто і швидко знаходити програми або інструменти. Користувач може просто мандрувати бібліотекою програмного забезпечення, шукаючи програми, передивляючись списки категорій програм, найкращих програм, та ознайомлюючись із докладною інформацією щодо програм, знімками вікон та відгуками інших користувачів. Знайти потрібну програму у такий спосіб можна набагато швидше.</p>
+    <p xml:lang="x-test">xxDiscover helps users easily and quickly find applications or tools. By allowing to navigate a software library by search, software categories, top lists along with detailed application information that includes screenshots and reviews, users can more quickly find applications that suit their needs.xx</p>
     <p>Furthermore, Discover will let you manage the different sources of software you have and manage the applications you’ve already installed in the past but you don’t want anymore.</p>
+    <p xml:lang="nl">Verder laat Discover u de verschillende bronnen van software die u hebt beheren, evenals de al eerder geïnstalleerde toepassingen maar die u niet meer wilt.</p>
+    <p xml:lang="pt">Para além disso, o Discover permitir-lhe-á gerir as diferentes fontes de aplicações que tem e gerir as aplicações que já instalou no passado e que não quer mais.</p>
+    <p xml:lang="sv">Dessutom låter Discover dig hantera olika programvarukällor du använder och hantera program som du redan tidigare har installerat men inte lägre vill ha.</p>
+    <p xml:lang="uk">Крім того, Discover надасть вам змогу керувати різними джерелами програмного забезпечення та вилучати програми, у яких уже немає потреби.</p>
+    <p xml:lang="x-test">xxFurthermore, Discover will let you manage the different sources of software you have and manage the applications you’ve already installed in the past but you don’t want anymore.xx</p>
   </description>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=Discover</url>
   <screenshots>
