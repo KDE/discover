@@ -2,6 +2,13 @@
 Type=Service
 Icon=plasma
 Name=Plasma Desktop Widgets
+Name[nl]=Bureaubladwidgets voor Plasma
+Name[pt]=Elementos Gráficos do Plasma
+Name[pt_BR]=Widgets do Plasma Desktop
+Name[sk]=Widgety plochy Plasma
+Name[sl]=Namizni gradniki Plasma
+Name[uk]=Віджети стільниці Плазми
+Name[x-test]=xxPlasma Desktop Widgetsxx
 X-KDE-Library=kns-backend
 X-KDE-PluginInfo-Name=knsplasmoids-backend
 X-Muon-Arguments=plasmoids.knsrc
