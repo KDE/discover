@@ -5,7 +5,7 @@ function(makekns knsfile iconName category)
     get_filename_component(RESOURCE_NAME "${knsfile}" NAME_WE)
     set(backend "kns${RESOURCE_NAME}-backend")
 
-    add_custom_target(${knsfile} ALL
+    add_custom_target(${knsfile}
         COMMAND knsintegrate ${knsfile} ${iconName} ${category}
         COMMAND cmake -E rename ${CMAKE_CURRENT_BINARY_DIR}/${backend}.desktop ${CMAKE_CURRENT_SOURCE_DIR}/${backend}.desktop
         COMMAND cmake -E rename ${CMAKE_CURRENT_BINARY_DIR}/${backend}-categories.xml ${CMAKE_CURRENT_SOURCE_DIR}/${backend}-categories.xml
@@ -16,8 +16,6 @@ function(makekns knsfile iconName category)
     install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/${backend}.desktop DESTINATION ${DATA_INSTALL_DIR}/libdiscover/backends)
     install(FILES ${backend}-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
 endfunction()
-
-include_directories(${LIBATTICA_INCLUDE_DIR})
 
 add_library(kns-backend MODULE KNSBackend.cpp
     KNSResource.cpp
