@@ -70,13 +70,13 @@ public:
 
 private:
     void sort();
-    AbstractResource *m_app;
+    AbstractResource * const m_app;
 
-    UpdateItem *m_parent;
-    ItemType m_type;
+    UpdateItem * m_parent;
+    const ItemType m_type;
     QVector<UpdateItem *> m_children;
-    QString m_categoryName;
-    QIcon m_categoryIcon;
+    const QString m_categoryName;
+    const QIcon m_categoryIcon;
     qreal m_progress;
 };
 
