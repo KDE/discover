@@ -38,6 +38,9 @@ private Q_SLOTS:
     void testIcon() {
         QFETCH(QString, iconName);
         QFETCH(int, hue);
+        if (QIcon::fromTheme(iconName).isNull()) {
+            QSKIP("Icon not found");
+        }
 
         IconColors colors;
         colors.setIconName(iconName);
