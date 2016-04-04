@@ -104,42 +104,66 @@ ScrollView
                     }
                     delegate: GridItem {
                         Layout.fillWidth: true
-                        height: row.implicitHeight + 2*internalMargin
-                        RowLayout {
-                            id: row
+                        Layout.preferredHeight: layout.extended ? 200 : layout.implicitHeight + 2*internalMargin
+                        ColumnLayout {
+                            id: layout
                             enabled: !resourcesUpdatesModel.isProgressing
+                            property bool extended: false
                             anchors.fill: parent
-
-                            CheckBox {
-                                anchors.verticalCenter: parent.verticalCenter
-                                checked: model.checked == Qt.Checked
-                                onClicked: model.checked = (!model.checked ? Qt.Unchecked : Qt.Checked)
-                            }
-
-                            QIconItem {
-                                Layout.fillHeight: true
-                                anchors.verticalCenter: parent.verticalCenter
-                                width: 30
-                                icon: decoration
-                            }
-
-                            Label {
-                                id: label
+                            RowLayout {
                                 Layout.fillWidth: true
-                                text: i18n("%1 (%2)", display, version)
-                                elide: Text.ElideRight
+                                CheckBox {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    checked: model.checked == Qt.Checked
+                                    onClicked: model.checked = (!model.checked ? Qt.Unchecked : Qt.Checked)
+                                }
+
+                                QIconItem {
+                                    Layout.fillHeight: true
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: 30
+                                    icon: decoration
+                                }
+
+                                Label {
+                                    id: label
+                                    Layout.fillWidth: true
+                                    text: i18n("%1 (%2)", display, version)
+                                    elide: Text.ElideRight
+                                }
+
+                                LabelBackground {
+                                    Layout.minimumWidth: 90
+                                    text: size
+
+                                    progressing: resourcesUpdatesModel.isProgressing
+                                    progress: resourceProgress/100
+                                }
                             }
 
-                            LabelBackground {
-                                Layout.minimumWidth: 90
-                                text: size
+                            ScrollView {
+                                id: view
+                                Layout.fillHeight: true
+                                Layout.fillWidth: true
+                                frameVisible: true
+                                visible: layout.extended && changelog !== ""
 
-                                progressing: resourcesUpdatesModel.isProgressing
-                                progress: resourceProgress/100
+                                Label {
+                                    width: view.width-32
+                                    text: changelog
+                                    textFormat: Text.RichText
+                                    wrapMode: Text.WordWrap
+                                }
+                            }
+
+                            Button {
+                                text: i18n("Open")
+                                visible: layout.extended
+                                onClicked: Navigation.openApplication(resource)
                             }
                         }
 
-                        onClicked: Navigation.openApplication(resource)
+                        onClicked: layout.extended = !layout.extended
                     }
                 }
             }
