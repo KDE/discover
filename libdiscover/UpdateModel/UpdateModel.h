@@ -49,8 +49,6 @@ public:
     ~UpdateModel() override;
 
     QVariant data(const QModelIndex &index, int role) const override;
-    QVariant headerData(int section, Qt::Orientation orientation,
-                        int role) const override;
     Qt::ItemFlags flags(const QModelIndex &index) const override;
     QModelIndex index(int row, int column,
                       const QModelIndex &parent = QModelIndex()) const override;
@@ -73,11 +71,6 @@ public:
     ///packages marked to upgrade
     int toUpdateCount() const;
 
-    enum Columns {
-        NameColumn = 0,
-        VersionColumn,
-        SizeColumn
-    };
     ResourcesUpdatesModel* backend() const;
 
 public Q_SLOTS:

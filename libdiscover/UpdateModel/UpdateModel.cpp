@@ -102,37 +102,14 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
     }
 
     UpdateItem *item = static_cast<UpdateItem*>(index.internalPointer());
-    int column = index.column();
 
     switch (role) {
     case Qt::DisplayRole:
-        switch (column) {
-        case NameColumn:
-            return item->name();
-        case VersionColumn:
-            return item->version();
-        case SizeColumn:
-            return KFormat().formatByteSize(item->size());
-        }
-        break;
+        return item->name();
     case Qt::DecorationRole:
-        if (column == NameColumn) {
-            return item->icon();
-        }
-        break;
-    case Qt::FontRole: {
-        QFont font;
-        if ((item->type() == UpdateItem::ItemType::CategoryItem) && column == SizeColumn) {
-            font.setBold(true);
-            return font;
-        }
-        return font;
-    }
+        return item->icon();
     case Qt::CheckStateRole:
-        if (column == NameColumn) {
-            return item->checked();
-        }
-        break;
+        return item->checked();
     case VersionRole:
         return item->version();
     case SizeRole:
@@ -158,24 +135,6 @@ void UpdateModel::checkResources(const QList<AbstractResource*>& resource, bool 
         m_updates->removeResources(resource);
 }
 
-QVariant UpdateModel::headerData(int section, Qt::Orientation orientation,
-                                int role) const
-{
-    if (orientation == Qt::Horizontal && role == Qt::DisplayRole)
-    {
-        switch (section) {
-        case NameColumn:
-            return i18nc("@label Column label", "Updates");
-        case VersionColumn:
-            return i18nc("@label Column label", "Version");
-        case SizeColumn:
-            return i18nc("@label Column label", "Download Size");
-        }
-    }
-
-    return QVariant();
-}
-
 Qt::ItemFlags UpdateModel::flags(const QModelIndex &index) const
 {
     if (!index.isValid())
@@ -187,8 +146,7 @@ Qt::ItemFlags UpdateModel::flags(const QModelIndex &index) const
 QModelIndex UpdateModel::index(int row, int column, const QModelIndex &index) const
 {
     // Bounds checks
-    if (!m_rootItem || row < 0 || column < 0 || column > 3 ||
-        (index.isValid() && index.column() != 0)) {
+    if (!m_rootItem || row < 0 || column != 0) {
         return QModelIndex();
     }
 
@@ -218,9 +176,6 @@ QModelIndex UpdateModel::parent(const QModelIndex &index) const
 
 int UpdateModel::rowCount(const QModelIndex &parent) const
 {
-    if (parent.isValid() && parent.column() != 0)
-        return 0;
-
     UpdateItem *parentItem = itemFromIndex(parent);
 
     return parentItem ? parentItem->childCount() : 0;
@@ -229,7 +184,7 @@ int UpdateModel::rowCount(const QModelIndex &parent) const
 int UpdateModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return 3;
+    return 1;
 }
 
 UpdateItem* UpdateModel::itemFromIndex(const QModelIndex &index) const
