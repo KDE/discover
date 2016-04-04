@@ -2,6 +2,9 @@
 Type=Service
 Icon=plasma
 Name=Plasma Desktop Widgets
+Name[ca]=Estris d'escriptori Plasma
+Name[ca@valencia]=Estris d'escriptori Plasma
+Name[es]=Elementos gráficos del escritorio Plasma
 Name[nl]=Bureaubladwidgets voor Plasma
 Name[pt]=Elementos Gráficos do Plasma
 Name[pt_BR]=Widgets do Plasma Desktop
