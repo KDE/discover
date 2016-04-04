@@ -21,7 +21,7 @@
 #include "DummyTest.h"
 #include <resources/ResourcesUpdatesModel.h>
 #include <UpdateModel/UpdateModel.h>
-#include <modeltest.h>
+#include <tests/modeltest.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>
 #include <resources/AbstractBackendUpdater.h>

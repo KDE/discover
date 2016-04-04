@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "DummyTest.h"
-#include <modeltest.h>
+#include <tests/modeltest.h>
 #include <KFormat>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>

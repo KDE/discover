@@ -1,5 +1,5 @@
 function(add_unit_test name)
-    add_executable(${name} ${CMAKE_SOURCE_DIR}/libdiscover/backends/ApplicationBackend/tests/modeltest.cpp ${ARGN})
+    add_executable(${name} ${CMAKE_SOURCE_DIR}/libdiscover/tests/modeltest.cpp ${ARGN})
     add_test(${name} ${name})
     ecm_mark_as_test(${name})
     target_link_libraries(${name}
