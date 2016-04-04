@@ -162,7 +162,7 @@ void PaginateModel::firstPage()
 
 void PaginateModel::lastPage()
 {
-    setFirstItem(pageCount()*m_pageSize);
+    setFirstItem((pageCount() - 1)*m_pageSize);
 }
 
 void PaginateModel::nextPage()
@@ -184,8 +184,8 @@ int PaginateModel::pageCount() const
 {
     if(!m_sourceModel)
         return 0;
-    int r = (m_sourceModel->rowCount()%m_pageSize == 0) ? 1 : 0;
-    return m_sourceModel->rowCount()/m_pageSize - r;
+    const int r = (m_sourceModel->rowCount()%m_pageSize == 0) ? 1 : 0;
+    return std::ceil(float(m_sourceModel->rowCount())/m_pageSize) - r;
 }
 
 bool PaginateModel::hasStaticRowCount() const
