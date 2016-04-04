@@ -47,6 +47,18 @@ private Q_SLOTS:
 
         QCOMPARE(colors.dominantColor().hue(), hue);
     }
+
+    void testFlatIcon() {
+        const QColor color = QColor::fromHsvF(0, 1, 1, 1);
+        QPixmap px(32, 32);
+        px.fill(color);
+        const QIcon icon(px);
+
+        IconColors colors;
+        colors.setIcon(icon);
+
+        QCOMPARE(colors.dominantColor().hue(), 5);
+    }
 };
 
 QTEST_MAIN( IconColorsTest )

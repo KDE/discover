@@ -30,19 +30,20 @@ IconColors::IconColors(QObject* parent)
 
 QString IconColors::iconName() const
 {
-    return m_iconName;
+    return m_icon.name();
 }
 
 void IconColors::setIconName(const QString& name)
 {
-    if (m_iconName != name) {
-        m_iconName = name;
+    if (m_icon.name() != name) {
+        m_icon = QIcon::fromTheme(name);
     }
 }
 
 QColor IconColors::dominantColor() const
 {
-    const QImage img = QIcon::fromTheme(m_iconName).pixmap({32, 32}).toImage();
+    const QImage img = m_icon.pixmap({32, 32}).toImage();
+    Q_ASSERT(!img.isNull());
     const int tolerance = 10;
     QVector<uint> hue(360/tolerance, 0);
 
@@ -54,7 +55,7 @@ QColor IconColors::dominantColor() const
     for (int w=0, cw=img.width(); w<cw; ++w) {
         for (int h=0, ch=img.height(); h<ch; ++h) {
 #if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
-            const QColor c = img.pixelColor(w, h);
+            const QColor c = img.pixelColor(w, h).toHsv();
 #else
             const QColor c(img.pixel(w, h));
 #endif
@@ -88,4 +89,9 @@ QColor IconColors::dominantColor() const
 #endif
 
     return ret;
+}
+
+void IconColors::setIcon(const QIcon& icon)
+{
+    m_icon = icon;
 }

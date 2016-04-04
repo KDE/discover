@@ -21,6 +21,7 @@
 #define ICONCOLORS_H
 
 #include <QColor>
+#include <QIcon>
 #include <QObject>
 
 class IconColors : public QObject
@@ -34,13 +35,16 @@ public:
     QString iconName() const;
     void setIconName(const QString& name);
 
+    void setIcon(const QIcon &icon);
+    QIcon icon() const { return m_icon; }
+
     QColor dominantColor() const;
 
 Q_SIGNALS:
     void dominantColorChanged(const QColor &dominantColor);
 
 private:
-    QString m_iconName;
+    QIcon m_icon;
 };
 
 #endif // ICONCOLORS_H
