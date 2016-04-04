@@ -53,7 +53,7 @@ public:
     UpdateDummyTest(QObject* parent = nullptr): QObject(parent)
     {
         m_model = new ResourcesModel(QStringLiteral("dummy-backend"), this);
-//         new ModelTest(m_model, m_model);
+        new ModelTest(m_model, m_model);
 
         m_appBackend = backendByName(m_model, QStringLiteral("DummyBackend"));
     }
@@ -71,10 +71,10 @@ private Q_SLOTS:
     void testUpdate()
     {
         ResourcesUpdatesModel* rum = new ResourcesUpdatesModel(this);
-//         new ModelTest(rum, rum);
+        new ModelTest(rum, rum);
 
         UpdateModel* m = new UpdateModel(this);
-//         new ModelTest(m, m);
+        new ModelTest(m, m);
         m->setBackend(rum);
 
         rum->prepare();
