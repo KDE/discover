@@ -56,7 +56,8 @@ QHash<int,QByteArray> UpdateModel::roleNames() const
         { ResourceProgressRole, "resourceProgress" },
         { ResourceRole, "resource" },
         { SizeRole, "size" },
-        { VersionRole, "version" }
+        { VersionRole, "version" },
+        { ChangelogRole, "changelog" }
     } );
 }
 
@@ -80,7 +81,7 @@ void UpdateModel::resourceHasProgressed(AbstractResource* res, qreal progress)
     Q_ASSERT(item);
     item->setProgress(progress);
 
-    QModelIndex idx = indexFromItem(item);
+    const QModelIndex idx = indexFromItem(item);
     Q_EMIT dataChanged(idx, idx);
 }
 
@@ -140,6 +141,8 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         return QVariant::fromValue<QObject*>(item->resource());
     case ResourceProgressRole:
         return item->progress();
+    case ChangelogRole:
+        return item->changelog();
     default:
         break;
     }
@@ -270,6 +273,21 @@ bool UpdateModel::setData(const QModelIndex &idx, const QVariant &value, int rol
     return false;
 }
 
+void UpdateModel::integrateChangelog(const QString &changelog)
+{
+    auto app = qobject_cast<AbstractResource*>(sender());
+    Q_ASSERT(app);
+    auto item = itemFromResource(app, m_rootItem.data());
+    if (!item)
+        return;
+
+    item->setChangelog(changelog);
+
+    const QModelIndex idx = indexFromItem(item);
+    Q_ASSERT(idx.isValid());
+    emit dataChanged(idx, idx, { ChangelogRole });
+}
+
 void UpdateModel::setResources(const QList< AbstractResource* >& resources)
 {
     beginResetModel();
@@ -277,6 +295,8 @@ void UpdateModel::setResources(const QList< AbstractResource* >& resources)
 
     QVector<UpdateItem*> securityItems, appItems, systemItems;
     foreach(AbstractResource* res, resources) {
+        connect(res, &AbstractResource::changelogFetched, this, &UpdateModel::integrateChangelog, Qt::UniqueConnection);
+
         UpdateItem *updateItem = new UpdateItem(res);
 
         if (res->isFromSecureOrigin()) {
@@ -313,6 +333,10 @@ void UpdateModel::setResources(const QList< AbstractResource* >& resources)
     endResetModel();
 
     m_updatesCount = resources.count();
+
+    foreach(AbstractResource* res, resources) {
+        res->fetchChangelog();
+    }
 
     Q_EMIT hasUpdatesChanged(!resources.isEmpty());
 }

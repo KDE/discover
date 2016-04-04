@@ -57,6 +57,9 @@ public:
     void setProgress(qreal progress);
     qreal progress() const;
 
+    QString changelog() const;
+    void setChangelog(const QString &changelog);
+
     AbstractResource *app() const;
     QString name() const;
     QString version() const;
@@ -78,6 +81,7 @@ private:
     const QString m_categoryName;
     const QIcon m_categoryIcon;
     qreal m_progress;
+    QString m_changelog;
 };
 
 #endif // UPDATEITEM_H

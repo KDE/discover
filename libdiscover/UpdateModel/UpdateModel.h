@@ -41,7 +41,8 @@ public:
         VersionRole = Qt::UserRole + 1,
         SizeRole,
         ResourceRole,
-        ResourceProgressRole
+        ResourceProgressRole,
+        ChangelogRole
     };
 
     explicit UpdateModel(QObject *parent = nullptr);
@@ -87,6 +88,7 @@ Q_SIGNALS:
     void toUpdateChanged();
 
 private:
+    void integrateChangelog(const QString &changelog);
     QModelIndex indexFromItem(UpdateItem* item) const;
     UpdateItem* itemFromResource(AbstractResource* res, UpdateItem* root);
     void resourceHasProgressed(AbstractResource* res, qreal progress);

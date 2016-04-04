@@ -227,3 +227,13 @@ void UpdateItem::setProgress(qreal progress)
 {
     m_progress = progress;
 }
+
+QString UpdateItem::changelog() const
+{
+    return m_changelog;
+}
+
+void UpdateItem::setChangelog(const QString& changelog)
+{
+    m_changelog = changelog;
+}
