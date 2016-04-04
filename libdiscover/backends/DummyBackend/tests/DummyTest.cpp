@@ -54,7 +54,7 @@ DummyTest::DummyTest(QObject* parent): QObject(parent)
     m_appBackend = backendByName(m_model, QStringLiteral("DummyBackend"));
 }
 
-void DummyTest::init()
+void DummyTest::initTestCase()
 {
     QVERIFY(m_appBackend);
     while(m_appBackend->isFetching()) {
@@ -65,19 +65,19 @@ void DummyTest::init()
 
 void DummyTest::testReadData()
 {
+    QCOMPARE(m_appBackend->property("startElements").toInt()*2, m_model->rowCount());
     QBENCHMARK {
         for(int i=0, c=m_model->rowCount(); i<c; i++) {
             QModelIndex idx = m_model->index(i, 0);
             QVERIFY(!m_model->data(idx, ResourcesModel::NameRole).isNull());
         }
-        QCOMPARE(m_appBackend->property("startElements").toInt()*2, m_model->rowCount());
     }
 }
 
 void DummyTest::testProxy()
 {
     ResourcesProxyModel pm;
-    pm.setSourceModel(m_model);
+    QVERIFY(pm.sourceModel());
     QCOMPARE(m_appBackend->property("startElements").toInt(), pm.rowCount());
     pm.setShouldShowTechnical(true);
     QCOMPARE(m_appBackend->property("startElements").toInt()*2, pm.rowCount());
@@ -104,7 +104,6 @@ void DummyTest::testFetch()
 void DummyTest::testSort()
 {
     ResourcesProxyModel pm;
-    pm.setSourceModel(m_model);
     QCollator c;
     QBENCHMARK_ONCE {
         pm.setSortRole(ResourcesModel::NameRole);

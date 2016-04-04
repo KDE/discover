@@ -33,7 +33,7 @@ public:
     explicit DummyTest(QObject* parent = nullptr);
 
 private Q_SLOTS:
-    void init();
+    void initTestCase();
 
     void testReadData();
     void testProxy();

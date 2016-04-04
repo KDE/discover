@@ -34,23 +34,17 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     , m_filteredCategory(nullptr)
     , m_stateFilter(AbstractResource::Broken)
 {
+    connect(ResourcesModel::global(), &ResourcesModel::searchInvalidated, this, &ResourcesProxyModel::refreshSearch);
+
     setShouldShowTechnical(false);
+
+    setSourceModel(ResourcesModel::global());
 }
 
 void ResourcesProxyModel::setSourceModel(QAbstractItemModel* source)
 {
-    ResourcesModel* model = qobject_cast<ResourcesModel*>(sourceModel());
-    if(model) {
-        disconnect(model, &ResourcesModel::searchInvalidated, this, &ResourcesProxyModel::refreshSearch);
-    }
-
+    Q_ASSERT(ResourcesModel::global() == source);
     QSortFilterProxyModel::setSourceModel(source);
-
-    ResourcesModel* newModel = qobject_cast<ResourcesModel*>(source);
-    if(newModel) {
-        connect(newModel, &ResourcesModel::searchInvalidated, this, &ResourcesProxyModel::refreshSearch);
-    } else if(source)
-        qWarning() << "ResourcesProxyModel with " << source;
 }
 
 void ResourcesProxyModel::setSearch(const QString &searchText)

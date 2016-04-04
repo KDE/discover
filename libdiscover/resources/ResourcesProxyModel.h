@@ -40,7 +40,7 @@ class Application;
 class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
-    Q_PROPERTY(QAbstractItemModel* sourceModel READ sourceModel WRITE setSourceModel)
+    Q_PROPERTY(QAbstractItemModel* sourceModel READ sourceModel CONSTANT)
     Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical WRITE setShouldShowTechnical NOTIFY showTechnicalChanged)
     Q_PROPERTY(Category* filteredCategory READ filteredCategory WRITE setFiltersFromCategory NOTIFY categoryChanged)
     Q_PROPERTY(QString originFilter READ originFilter WRITE setOriginFilter)
@@ -71,8 +71,6 @@ public:
     QString mimeTypeFilter() const;
     void setMimeTypeFilter(const QString& mime);
 
-    void setSourceModel(QAbstractItemModel *sourceModel) override;
-
 protected:
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
 
@@ -80,6 +78,8 @@ private Q_SLOTS:
     void refreshSearch();
 
 private:
+    void setSourceModel(QAbstractItemModel *sourceModel) override;
+
     QString m_lastSearch;
     QList<AbstractResource*> m_searchResults;
     QList<QPair<FilterType, QString> > m_andFilters;
