@@ -16,6 +16,7 @@ include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(ECMInstallIcons)
 include(ECMMarkAsTest)
+include(ECMAddTests)
 include(GenerateExportHeader)
 
 find_package(KF5 REQUIRED CoreAddons Config DBusAddons I18n Declarative)
