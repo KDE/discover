@@ -124,7 +124,7 @@ void ApplicationAddonsModel::changeState(const QString& packageName, bool instal
     }
     Q_ASSERT(it != m_initial.constEnd());
     
-    bool restored = it->isInstalled()==installed;
+    const bool restored = it->isInstalled()==installed;
 
     if(restored)
         m_state.resetAddon(packageName);

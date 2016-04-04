@@ -42,6 +42,7 @@ private Q_SLOTS:
     void testInstallAddons();
     void testReviewsModel();
     void testUpdateModel();
+    void testScreenshotsModel();
 
 private:
     AbstractResourcesBackend* m_appBackend;

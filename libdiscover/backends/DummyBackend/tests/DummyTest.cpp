@@ -28,6 +28,7 @@
 #include <ApplicationAddonsModel.h>
 #include <Transaction/TransactionModel.h>
 #include <ReviewsBackend/ReviewsModel.h>
+#include <ScreenshotsModel.h>
 #include <qtest.h>
 
 #include <QtTest>
@@ -136,6 +137,7 @@ void DummyTest::testInstallAddons()
     QVERIFY(res);
 
     ApplicationAddonsModel m;
+    new ModelTest(&m, &m);
     m.setApplication(res);
     QCOMPARE(m.rowCount(), res->addonsInformation().count());
     QCOMPARE(res->addonsInformation().at(0).isInstalled(), false);
@@ -152,6 +154,16 @@ void DummyTest::testInstallAddons()
     QCOMPARE(m.data(m.index(0,0)).toString(), firstAddonName);
     QCOMPARE(res->addonsInformation().at(0).name(), firstAddonName);
     QCOMPARE(res->addonsInformation().at(0).isInstalled(), true);
+
+    m.changeState(m.data(m.index(1,0)).toString(), true);
+    QVERIFY(m.hasChanges());
+    for(int i=0, c=m.rowCount(); i<c; ++i) {
+        const auto idx = m.index(i, 0);
+        QCOMPARE(idx.data(Qt::CheckStateRole).toInt(), int(i<=1 ? Qt::Checked : Qt::Unchecked));
+        QVERIFY(!idx.data(ApplicationAddonsModel::PackageNameRole).toString().isEmpty());
+    }
+    m.discardChanges();
+    QVERIFY(!m.hasChanges());
 }
 
 void DummyTest::testReviewsModel()
@@ -192,5 +204,22 @@ void DummyTest::testUpdateModel()
     QCOMPARE(model.hasUpdates(), true);
 }
 
+void DummyTest::testScreenshotsModel()
+{
+    ScreenshotsModel m;
+    new ModelTest(&m, &m);
+
+    AbstractResource* res = m_model->resourceByPackageName(QStringLiteral("Dummy 1"));
+    m.setResource(res);
+    QCOMPARE(res, m.resource());
+
+    int c=m.rowCount();
+    QCOMPARE(c, 1);
+    for(int i=0; i<c; ++i) {
+        const auto idx = m.index(i, 0);
+        QVERIFY(!idx.data(ScreenshotsModel::ThumbnailUrl).isNull());
+        QVERIFY(!idx.data(ScreenshotsModel::ScreenshotUrl).isNull());
+    }
+}
 
 //TODO test cancel transaction
