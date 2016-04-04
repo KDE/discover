@@ -20,6 +20,7 @@
 
 #include "DummyTest.h"
 #include <modeltest.h>
+#include <KFormat>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>
 #include <resources/AbstractBackendUpdater.h>
@@ -85,7 +86,7 @@ private Q_SLOTS:
 
 //             QVERIFY(!idx.data(Qt::DecorationRole).isNull()); //CI doesn't have icons
             QVERIFY(!idx.data(UpdateModel::ResourceRole).value<QObject*>());
-            QCOMPARE(idx.data(UpdateModel::SizeRole).toString(), QStringLiteral("12.7 KiB"));
+            QCOMPARE(idx.data(UpdateModel::SizeRole).toString(), KFormat().formatByteSize(13038));
             QCOMPARE(idx.data(UpdateModel::VersionRole).toString(), QString());
             for(int j=0, c=m->rowCount(idx); j<c; ++j) {
                 const QModelIndex resourceIdx = idx.child(j,0);
