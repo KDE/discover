@@ -144,11 +144,6 @@ QVector<QPair<FilterType, QString> > Category::notFilters() const
     return m_notFilters;
 }
 
-bool Category::hasSubCategories() const
-{
-    return !m_subCategories.isEmpty();
-}
-
 bool Category::shouldShowTechnical() const
 {
     return m_showTechnical;

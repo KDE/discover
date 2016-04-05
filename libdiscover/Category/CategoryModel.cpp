@@ -92,7 +92,7 @@ static Category* recFindCategory(Category* root, const QString& name)
 {
     if(root->name()==name)
         return root;
-    else if(root->hasSubCategories()) {
+    else {
         const QVector<Category*> subs = root->subCategories();
         Q_FOREACH (Category* c, subs) {
             Category* ret = recFindCategory(c, name);

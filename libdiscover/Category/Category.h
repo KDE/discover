@@ -44,7 +44,6 @@ Q_OBJECT
 public:
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(QString icon READ icon CONSTANT)
-    Q_PROPERTY(bool hasSubCategories READ hasSubCategories CONSTANT)
     Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical CONSTANT)
     explicit Category(QSet<QString>  pluginNames, QObject* parent = nullptr);
     ~Category() override;
@@ -54,7 +53,6 @@ public:
     QVector<QPair<FilterType, QString> > andFilters() const;
     QVector<QPair<FilterType, QString> > orFilters() const;
     QVector<QPair<FilterType, QString> > notFilters() const;
-    bool hasSubCategories() const;
     bool shouldShowTechnical() const;
     QVector<Category *> subCategories() const;
 
