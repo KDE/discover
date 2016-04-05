@@ -30,7 +30,7 @@ class IconColors : public QObject
     Q_PROPERTY(QString iconName READ iconName WRITE setIconName)
     Q_PROPERTY(QColor dominantColor READ dominantColor NOTIFY dominantColorChanged STORED false)
 public:
-    IconColors(QObject* parent = Q_NULLPTR);
+    explicit IconColors(QObject* parent = Q_NULLPTR);
 
     QString iconName() const;
     void setIconName(const QString& name);

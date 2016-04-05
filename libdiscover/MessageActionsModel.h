@@ -31,7 +31,7 @@ class DISCOVERCOMMON_EXPORT MessageActionsModel : public QAbstractListModel
     Q_OBJECT
     Q_PROPERTY(int filterPriority READ filterPriority WRITE setFilterPriority)
     public:
-        MessageActionsModel(QObject* parent = nullptr);
+        explicit MessageActionsModel(QObject* parent = nullptr);
 
         QHash<int, QByteArray> roleNames() const override;
         QVariant data(const QModelIndex& index, int role) const override;

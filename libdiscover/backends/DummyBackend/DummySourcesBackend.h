@@ -27,7 +27,7 @@
 class DummySourcesBackend : public AbstractSourcesBackend
 {
 public:
-    DummySourcesBackend(QObject* parent);
+    explicit DummySourcesBackend(QObject* parent);
 
     QAbstractItemModel* sources() override;
     bool addSource(const QString& id) override;

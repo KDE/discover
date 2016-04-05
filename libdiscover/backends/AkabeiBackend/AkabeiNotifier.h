@@ -33,7 +33,7 @@ class AkabeiNotifier : public AbstractKDEDModule
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.muon.akabei")
 public:
-    AkabeiNotifier(QObject* parent, const QVariantList &);
+    explicit AkabeiNotifier(QObject* parent, const QVariantList &);
     ~AkabeiNotifier();
     
 public Q_SLOTS:
