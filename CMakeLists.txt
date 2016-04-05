@@ -35,8 +35,6 @@ find_package(KF5Attica)
 find_package(KF5NewStuff)
 # find_package(BODEGA QUIET)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-
 configure_file(DiscoverVersion.h.in DiscoverVersion.h)
 
 add_subdirectory(libdiscover)
