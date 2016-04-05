@@ -21,7 +21,7 @@
 #ifndef CATEGORY_H
 #define CATEGORY_H
 
-#include <QtCore/QList>
+#include <QtCore/QVector>
 #include <QtCore/QPair>
 #include <QtCore/QObject>
 #include <QtCore/QSet>
@@ -51,27 +51,27 @@ public:
 
     QString name() const;
     QString icon() const;
-    QList<QPair<FilterType, QString> > andFilters() const;
-    QList<QPair<FilterType, QString> > orFilters() const;
-    QList<QPair<FilterType, QString> > notFilters() const;
+    QVector<QPair<FilterType, QString> > andFilters() const;
+    QVector<QPair<FilterType, QString> > orFilters() const;
+    QVector<QPair<FilterType, QString> > notFilters() const;
     bool hasSubCategories() const;
     bool shouldShowTechnical() const;
-    QList<Category *> subCategories() const;
+    QVector<Category *> subCategories() const;
 
-    static void addSubcategory(QList<Category*>& list, Category* cat);
+    static void addSubcategory(QVector<Category*>& list, Category* cat);
     void parseData(const QString& path, const QDomNode& data, bool canHaveChildren);
     bool blacklistPlugins(const QSet<QString>& pluginName);
 
 private:
     QString m_name;
     QString m_iconString;
-    QList<QPair<FilterType, QString> > m_andFilters;
-    QList<QPair<FilterType, QString> > m_orFilters;
-    QList<QPair<FilterType, QString> > m_notFilters;
+    QVector<QPair<FilterType, QString> > m_andFilters;
+    QVector<QPair<FilterType, QString> > m_orFilters;
+    QVector<QPair<FilterType, QString> > m_notFilters;
     bool m_showTechnical;
-    QList<Category *> m_subCategories;
+    QVector<Category *> m_subCategories;
 
-    QList<QPair<FilterType, QString> > parseIncludes(const QDomNode &data);
+    QVector<QPair<FilterType, QString> > parseIncludes(const QDomNode &data);
     QSet<QString> m_plugins;
 };
 

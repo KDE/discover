@@ -28,7 +28,7 @@ class CategoriesTest : public QObject
 public:
     CategoriesTest() {}
 
-    QList<Category*> populateCategories()
+    QVector<Category*> populateCategories()
     {
         const QVector<QString> categoryFiles = {
             QFINDTESTDATA("../backends/BodegaBackend/muon-bodegawallpapers-backend-categories.xml"),
@@ -41,10 +41,10 @@ public:
             QFINDTESTDATA("../backends/DummyBackend/dummy-backend-categories.xml")
         };
 
-        QList<Category*> ret;
+        QVector<Category*> ret;
         CategoriesReader reader;
         Q_FOREACH (const QString& name, categoryFiles) {
-            const QList<Category*> cats = reader.loadCategoriesPath(name);
+            const QVector<Category*> cats = reader.loadCategoriesPath(name);
 
             if(ret.isEmpty()) {
                 ret = cats;

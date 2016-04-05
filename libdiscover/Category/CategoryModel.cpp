@@ -23,7 +23,7 @@
 #include "Category.h"
 #include "CategoriesReader.h"
 
-Q_GLOBAL_STATIC_WITH_ARGS(QList<Category*>, s_categories, (CategoriesReader().populateCategories()))
+Q_GLOBAL_STATIC_WITH_ARGS(QVector<Category*>, s_categories, (CategoriesReader().populateCategories()))
 
 CategoryModel::CategoryModel(QObject* parent)
     : QStandardItemModel(parent)
@@ -38,7 +38,7 @@ QHash< int, QByteArray > CategoryModel::roleNames() const
     return names;
 }
 
-void CategoryModel::setCategories(const QList<Category *> &categoryList)
+void CategoryModel::setCategories(const QVector<Category *> &categoryList)
 {
     clear();
 
@@ -93,7 +93,7 @@ static Category* recFindCategory(Category* root, const QString& name)
     if(root->name()==name)
         return root;
     else if(root->hasSubCategories()) {
-        const QList<Category*> subs = root->subCategories();
+        const QVector<Category*> subs = root->subCategories();
         Q_FOREACH (Category* c, subs) {
             Category* ret = recFindCategory(c, name);
             if(ret)
@@ -105,7 +105,7 @@ static Category* recFindCategory(Category* root, const QString& name)
 
 Category* CategoryModel::findCategoryByName(const QString& name)
 {
-    const QList<Category*> cats = *s_categories;
+    const QVector<Category*> cats = *s_categories;
     Q_FOREACH (Category* cat, cats) {
         Category* ret = recFindCategory(cat, name);
         if(ret)
@@ -117,7 +117,7 @@ Category* CategoryModel::findCategoryByName(const QString& name)
 void CategoryModel::blacklistPlugin(const QString& name)
 {
     const QSet<QString> plugins = {name};
-    for(QList<Category*>::iterator it = s_categories->begin(), itEnd = s_categories->end(); it!=itEnd; ) {
+    for(auto it = s_categories->begin(), itEnd = s_categories->end(); it!=itEnd; ) {
         if ((*it)->blacklistPlugins(plugins)) {
             delete *it;
             it = s_categories->erase(it);

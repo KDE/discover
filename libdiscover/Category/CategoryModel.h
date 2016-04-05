@@ -62,7 +62,7 @@ class DISCOVERCOMMON_EXPORT CategoryModel : public QStandardItemModel
 
     private:
         void categoryDeleted(QObject* cat);
-        void setCategories(const QList<Category *> &categoryList);
+        void setCategories(const QVector<Category *> &categoryList);
 
         Category* m_currentCategory;
 };

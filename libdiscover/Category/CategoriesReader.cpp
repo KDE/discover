@@ -23,14 +23,14 @@
 #include <QDomNode>
 #include <QFile>
 #include <QDebug>
-#include <qstandardpaths.h>
+#include <QStandardPaths>
 
 #include <DiscoverBackendsFactory.h>
 #include <resources/AbstractResourcesBackend.h>
 
-QList<Category*> CategoriesReader::loadCategoriesFile(const QString& name)
+QVector<Category*> CategoriesReader::loadCategoriesFile(const QString& name)
 {
-    QList<Category *> ret;
+    QVector<Category *> ret;
     QString path = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("libdiscover/categories/")+name+QStringLiteral("-categories.xml"));
     if (path.isEmpty()) {
         qWarning() << "Couldn't find a category for " << name;
@@ -39,9 +39,9 @@ QList<Category*> CategoriesReader::loadCategoriesFile(const QString& name)
     return loadCategoriesPath(path);
 }
 
-QList<Category*> CategoriesReader::loadCategoriesPath(const QString& path)
+QVector<Category*> CategoriesReader::loadCategoriesPath(const QString& path)
 {
-    QList<Category *> ret;
+    QVector<Category *> ret;
     QFile menuFile(path);
     if (!menuFile.open(QIODevice::ReadOnly)) {
         qWarning() << "couldn't open" << path;
@@ -75,14 +75,14 @@ bool CategoriesReader::categoryLessThan(Category *c1, const Category *c2)
     return (QString::localeAwareCompare(c1->name(), c2->name()) < 0);
 }
 
-QList<Category*> CategoriesReader::populateCategories()
+QVector<Category*> CategoriesReader::populateCategories()
 {
     DiscoverBackendsFactory f;
     QStringList backendNames = f.allBackendNames();
 
-    QList<Category*> ret;
+    QVector<Category*> ret;
     Q_FOREACH (const QString& name, backendNames) {
-        const QList<Category*> cats = loadCategoriesFile(name);
+        const QVector<Category*> cats = loadCategoriesFile(name);
 
         if(ret.isEmpty()) {
             ret = cats;

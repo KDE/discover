@@ -77,10 +77,10 @@ void Category::parseData(const QString& path, const QDomNode& data, bool canHave
     }
 }
 
-QList<QPair<FilterType, QString> > Category::parseIncludes(const QDomNode &data)
+QVector<QPair<FilterType, QString> > Category::parseIncludes(const QDomNode &data)
 {
     QDomNode node = data.firstChild();
-    QList<QPair<FilterType, QString> > filter;
+    QVector<QPair<FilterType, QString> > filter;
     while(!node.isNull())
     {
         QDomElement tempElement = node.toElement();
@@ -129,17 +129,17 @@ QString Category::icon() const
     return m_iconString;
 }
 
-QList<QPair<FilterType, QString> > Category::andFilters() const
+QVector<QPair<FilterType, QString> > Category::andFilters() const
 {
     return m_andFilters;
 }
 
-QList<QPair<FilterType, QString> > Category::orFilters() const
+QVector<QPair<FilterType, QString> > Category::orFilters() const
 {
     return m_orFilters;
 }
 
-QList<QPair<FilterType, QString> > Category::notFilters() const
+QVector<QPair<FilterType, QString> > Category::notFilters() const
 {
     return m_notFilters;
 }
@@ -154,13 +154,13 @@ bool Category::shouldShowTechnical() const
     return m_showTechnical;
 }
 
-QList<Category *> Category::subCategories() const
+QVector<Category *> Category::subCategories() const
 {
     return m_subCategories;
 }
 
 //TODO: maybe it would be interesting to apply some rules to a said backend...
-void Category::addSubcategory(QList< Category* >& list, Category* newcat)
+void Category::addSubcategory(QVector< Category* >& list, Category* newcat)
 {
     Q_FOREACH (Category* c, list) {
         if(c->name() == newcat->name()) {
@@ -191,7 +191,7 @@ void Category::addSubcategory(QList< Category* >& list, Category* newcat)
 
 bool Category::blacklistPlugins(const QSet<QString>& pluginNames)
 {
-    for(QList<Category*>::iterator it = m_subCategories.begin(), itEnd = m_subCategories.end(); it!=itEnd; ) {
+    for(QVector<Category*>::iterator it = m_subCategories.begin(), itEnd = m_subCategories.end(); it!=itEnd; ) {
         if ((*it)->blacklistPlugins(pluginNames)) {
             delete *it;
             it = m_subCategories.erase(it);
