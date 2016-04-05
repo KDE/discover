@@ -44,6 +44,7 @@ class PaginateModel : public QAbstractListModel
 
     public:
         PaginateModel(QObject* object = nullptr);
+        ~PaginateModel() override;
 
         int pageSize() const;
         void setPageSize(int count);

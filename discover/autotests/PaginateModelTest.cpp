@@ -20,25 +20,24 @@
 #include <QtTest>
 #include "../PaginateModel.h"
 #include <tests/modeltest.h>
-#include <QStringListModel>
+#include <QStandardItemModel>
 
 class PaginateModelTest : public QObject
 {
     Q_OBJECT
 public:
     PaginateModelTest()
-        : m_testModel(new QStringListModel)
+        : m_testModel(new QStandardItemModel)
     {
-        QStringList testValues;
         for(int i=0; i<13; ++i) {
-            testValues += QStringLiteral("figui%1").arg(i);
+            m_testModel->appendRow(new QStandardItem(QStringLiteral("figui%1").arg(i)));
         }
-        m_testModel->setStringList(testValues);
     }
 
 private Q_SLOTS:
     void testPages() {
         PaginateModel pm;
+        new ModelTest(&pm, &pm);
         pm.setSourceModel(m_testModel);
         pm.setPageSize(5);
         QCOMPARE(pm.pageCount(), 3);
@@ -54,14 +53,66 @@ private Q_SLOTS:
 
         pm.firstPage();
         QCOMPARE(pm.firstItem(), 0);
+        pm.setFirstItem(0);
+        QCOMPARE(pm.firstItem(), 0);
         QCOMPARE(pm.currentPage(), 0);
         pm.lastPage();
         QCOMPARE(pm.firstItem(), 10);
         QCOMPARE(pm.currentPage(), 2);
     }
 
+    void testPageSize() {
+        PaginateModel pm;
+        new ModelTest(&pm, &pm);
+        pm.setSourceModel(m_testModel);
+        pm.setPageSize(5);
+        QCOMPARE(pm.pageCount(), 3);
+        pm.setPageSize(10);
+        QCOMPARE(pm.pageCount(), 2);
+        pm.setPageSize(5);
+        QCOMPARE(pm.pageCount(), 3);
+    }
+
+    void testItemAdded() {
+        PaginateModel pm;
+        new ModelTest(&pm, &pm);
+        pm.setSourceModel(m_testModel);
+        pm.setPageSize(5);
+        QCOMPARE(pm.pageCount(), 3);
+        QSignalSpy spy(m_testModel, &QAbstractItemModel::rowsAboutToBeInserted);
+        m_testModel->insertRow(3, new QStandardItem(QStringLiteral("mwahahaha")));
+        QVERIFY(spy.count()==1);
+
+        pm.lastPage();
+        for (int i=0; i<7; ++i)
+            m_testModel->appendRow(new QStandardItem(QStringLiteral("mwahahaha%1").arg(i)));
+    }
+
+    void testItemRemoved() {
+        PaginateModel pm;
+        new ModelTest(&pm, &pm);
+        pm.setSourceModel(m_testModel);
+        pm.setPageSize(5);
+        QCOMPARE(pm.pageCount(), 5);
+        QSignalSpy spy(m_testModel, &QAbstractItemModel::rowsAboutToBeRemoved);
+        m_testModel->removeRow(3);
+        QVERIFY(spy.count()==1);
+        spy.clear();
+
+        m_testModel->removeRow(m_testModel->rowCount()-1);
+        QVERIFY(spy.count()==1);
+    }
+
+    void testMove() {
+        PaginateModel pm;
+        new ModelTest(&pm, &pm);
+        pm.setSourceModel(m_testModel);
+        pm.setPageSize(5);
+        m_testModel->moveRow({}, 0, {}, 3);
+    }
+
 private:
-    QStringListModel* const m_testModel;
+    QStandardItemModel* const m_testModel;
 };
 
 QTEST_MAIN( PaginateModelTest )
