@@ -20,13 +20,18 @@
 
 #ifndef CATEGORIESREADER_H
 #define CATEGORIESREADER_H
+
 #include <QList>
+#include "discovercommon_export.h"
 
 class Category;
-class CategoriesReader
+class DISCOVERCOMMON_EXPORT CategoriesReader
 {
     public:
         QList<Category*> populateCategories();
+        QList<Category*> loadCategoriesPath(const QString& path);
+
+        static bool categoryLessThan(Category *c1, const Category *c2);
 
     private:
         QList<Category*> loadCategoriesFile(const QString& path);

@@ -36,10 +36,15 @@ QList<Category*> CategoriesReader::loadCategoriesFile(const QString& name)
         qWarning() << "Couldn't find a category for " << name;
         return ret;
     }
+    return loadCategoriesPath(path);
+}
 
+QList<Category*> CategoriesReader::loadCategoriesPath(const QString& path)
+{
+    QList<Category *> ret;
     QFile menuFile(path);
     if (!menuFile.open(QIODevice::ReadOnly)) {
-        // Broken install or broken FS
+        qWarning() << "couldn't open" << path;
         return ret;
     }
 
@@ -65,7 +70,7 @@ QList<Category*> CategoriesReader::loadCategoriesFile(const QString& name)
     return ret;
 }
 
-static bool categoryLessThan(Category *c1, const Category *c2)
+bool CategoriesReader::categoryLessThan(Category *c1, const Category *c2)
 {
     return (QString::localeAwareCompare(c1->name(), c2->name()) < 0);
 }
@@ -77,10 +82,10 @@ QList<Category*> CategoriesReader::populateCategories()
 
     QList<Category*> ret;
     Q_FOREACH (const QString& name, backendNames) {
-        QList<Category*> cats = loadCategoriesFile(name);
+        const QList<Category*> cats = loadCategoriesFile(name);
 
         if(ret.isEmpty()) {
-            ret += cats;
+            ret = cats;
         } else {
             Q_FOREACH (Category* c, cats)
                 Category::addSubcategory(ret, c);
