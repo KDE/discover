@@ -42,21 +42,7 @@ DummyResource::DummyResource(QString  name, bool isTechnical, AbstractResourcesB
         * s_icons = { QStringLiteral("kdevelop"), QStringLiteral("kalgebra"), QStringLiteral("kmail"), QStringLiteral("akregator"), QStringLiteral("korganizer") };
     }
     m_iconName = (*s_icons)[KRandom::random() % s_icons->size()];
-
-//     if((KRandom::random() % 100) == 0) {
-//         enableStateChanges();
-//     }
 }
-
-void DummyResource::enableStateChanges()
-{
-    QTimer* t = new QTimer(this);
-    t->setSingleShot(false);
-    t->setInterval(500);
-    connect(t, &QTimer::timeout, this, [this](){ int s = (m_state+1) % 4; setState(State(s)); });
-    t->start();
-}
-
 
 QList<PackageState> DummyResource::addonsInformation()
 {

@@ -41,9 +41,6 @@
 #include <QQmlContext>
 #include <QAction>
 
-QML_DECLARE_TYPE(ResourcesModel)
-QML_DECLARE_TYPE(AbstractResourcesBackend)
-
 void DiscoverDeclarativePlugin::initializeEngine(QQmlEngine* engine, const char* uri)
 {
     engine->rootContext()->setContextProperty(QStringLiteral("ResourcesModel"), ResourcesModel::global());

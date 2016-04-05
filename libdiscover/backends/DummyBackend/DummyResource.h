@@ -56,9 +56,6 @@ public:
 
     void setAddonInstalled(const QString& addon, bool installed);
 
-public Q_SLOTS:
-    void enableStateChanges();
-
 public:
     QString m_name;
     AbstractResource::State m_state;
