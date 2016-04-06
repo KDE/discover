@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "SourcesTest.h"
-#include "modeltest.h"
+#include <tests/modeltest.h>
 #include <ReviewsBackend/ReviewsModel.h>
 #include <qapt/backend.h>
 #include <KProtocolManager>

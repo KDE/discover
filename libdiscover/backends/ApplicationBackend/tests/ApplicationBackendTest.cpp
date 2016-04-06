@@ -26,7 +26,7 @@
 #include <KActionCollection>
 #include <qtest.h>
 
-#include "modeltest.h"
+#include <tests/modeltest.h>
 #include <ApplicationBackend.h>
 #include <resources/ResourcesModel.h>
 #include <resources/ResourcesProxyModel.h>
@@ -135,9 +135,7 @@ void ApplicationBackendTest::testReload()
 
 void ApplicationBackendTest::testCategories()
 {
-    ResourcesModel* m = ResourcesModel::global();
-    ResourcesProxyModel* proxy = new ResourcesProxyModel(m);
-    proxy->setSourceModel(m);
+    ResourcesProxyModel* proxy = new ResourcesProxyModel(this);
     CategoryModel* categoryModel = new CategoryModel(proxy);
     categoryModel->setDisplayedCategory(nullptr);
     for(int i=0; i<categoryModel->rowCount(); ++i) {
