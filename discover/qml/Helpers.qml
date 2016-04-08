@@ -10,7 +10,8 @@ QtObject
     property QtObject mainWindow: null
     property int compactMode: app.compactMode
 
+    readonly property real width: root.mainWindow ? root.mainWindow.width : 0
     ///we'll use compact if the width of the window is less than 10cm
-    readonly property bool isCompact: (!root.mainWindow || compactMode!=MuonDiscoverMainWindow.Auto) ? compactMode==MuonDiscoverMainWindow.Compact : (root.mainWindow.width/root.mainWindow.Screen.pixelDensity<100)
-    readonly property real actualWidth: isCompact ? root.mainWindow.width : root.mainWindow.width-Math.pow(root.mainWindow.width/70., 2)
+    readonly property bool isCompact: (!root.mainWindow || compactMode!=MuonDiscoverMainWindow.Auto) ? compactMode==MuonDiscoverMainWindow.Compact : (width/root.mainWindow.Screen.pixelDensity<100)
+    readonly property real actualWidth: isCompact ? width : width-Math.pow(width/70., 2)
 }
