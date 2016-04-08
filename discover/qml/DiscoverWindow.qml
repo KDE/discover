@@ -3,9 +3,10 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.1
 import org.kde.discover 1.0
 import org.kde.discover.app 1.0
+import org.kde.kirigami 1.0 as Kirigami
 import "navigation.js" as Navigation
 
-ApplicationWindow
+Kirigami.ApplicationWindow
 {
     id: window
     readonly property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
@@ -18,8 +19,7 @@ ApplicationWindow
     readonly property Component topInstalledComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
     readonly property Component topUpdateComp: Qt.createComponent("qrc:/qml/UpdatesPage.qml")
     readonly property Component topSourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
-    readonly property Component phoneWindow: Qt.createComponent("qrc:/qml/DiscoverWindow_PlasmaPhone.qml")
-    readonly property QtObject stack: loader.item.stack
+    readonly property QtObject stack: window.pageStack
     property Component currentTopLevel: defaultStartup ? topBrowsingComp : loadingComponent
     property bool defaultStartup: true
     property bool navigationEnabled: true
@@ -121,43 +121,58 @@ ApplicationWindow
         MenuItem { action: ActionBridge { action: app.action("help_report_bug"); } }
     }
 
-    ConditionalLoader
-    {
-        id: loader
-        anchors.fill: parent
+    globalDrawer: DiscoverWindow_PlasmaPhone {}
 
-        condition: Helpers.isCompact
-        componentTrue: Main {
-            id: main
-            readonly property alias stack: main.stack
-            currentTopLevel: window.currentTopLevel
-            function clearSearch() {
-                //TODO
-            }
+    onCurrentTopLevelChanged: {
+        if(currentTopLevel==null)
+            return
 
-            Loader {
-                anchors.fill: parent
-                sourceComponent: phoneWindow
-            }
+        if(currentTopLevel.status==Component.Error) {
+            console.log("status error: "+currentTopLevel.errorString())
         }
-
-        componentFalse: ColumnLayout {
-            readonly property alias stack: main.stack
-            spacing: 0
-
-            function clearSearch() { toolbar.clearSearch() }
-
-            MuonToolbar {
-                id: toolbar
-                Layout.fillWidth: true
-            }
-
-            Main {
-                id: main
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                currentTopLevel: window.currentTopLevel
-            }
+        var stackView = window.pageStack;
+        while(stackView.depth>1) {
+            var obj = stackView.pop()
+            if(obj)
+                obj.destroy(2000)
         }
+        if(stackView.currentItem) {
+            stackView.currentItem.destroy(2000)
+        }
+        var page;
+        try {
+            page = currentTopLevel.createObject(stackView)
+//             console.log("created ", currentTopLevel)
+        } catch (e) {
+            console.log("error: "+e)
+            console.log("comp error: "+currentTopLevel.errorString())
+        }
+        stackView.replace(page, {}, window.status!=Component.Ready)
     }
+
+    Connections {
+        target: app
+        onPreventedClose: showPassiveNotification(i18n("Could not close the application, there are tasks that need to be done."), 3000)
+        onUnableToFind: showPassiveNotification(i18n("Unable to find resource: %1", resid)
+    }
+    Component.onCompleted: {
+        if (app.isRoot)
+            showPassiveNotification(i18n("Running as <em>root</em> is discouraged and unnecessary."));
+    }
+
+//     ColumnLayout {
+//         spacing: 0
+//         anchors.fill: parent
+//
+//         Repeater {
+//             model: MessageActionsModel {
+//                 filterPriority: QAction.HighPriority
+//             }
+//             delegate: MessageAction {
+//                 Layout.fillWidth: true
+//                 height: Layout.minimumHeight
+//                 theAction: action
+//             }
+//         }
+//     }
 }

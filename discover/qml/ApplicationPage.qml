@@ -24,14 +24,17 @@ import QtQuick.Layouts 1.1
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.discover 1.0
 import org.kde.discover.app 1.0
+import org.kde.kirigami 1.0 as Kirigami
 
-Item {
+Kirigami.Page {
     id: appInfo
     property QtObject application: null
     clip: true
 
     readonly property var icon: application.icon
-    readonly property string title: application.name
+    title: application.name
+
+    mainAction: Kirigami.Action { iconName: application.icon }
 
     ConditionalLoader {
         anchors.fill: parent

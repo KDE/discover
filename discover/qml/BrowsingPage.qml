@@ -24,37 +24,41 @@ import org.kde.discover 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
+import org.kde.kirigami 1.0 as Kirigami
 
-ScrollView {
-    id: view
-    readonly property string title: ""
+Kirigami.Page
+{
+    title: i18n("Discover")
     readonly property string icon: "go-home"
-    flickableItem.flickableDirection: Flickable.VerticalFlick
-    clip: true
+    ScrollView {
+        id: view
+        anchors.fill: parent
+        flickableItem.flickableDirection: Flickable.VerticalFlick
 
-    function searchFor(text) {
-        if (text === "")
-            return;
-        Navigation.openApplicationList(null, text)
-    }
-
-    ColumnLayout
-    {
-        readonly property real margin: SystemFonts.generalFont.pointSize
-        width: view.viewport.width-margin*2
-        x: margin
-
-        FeaturedBanner {
-            Layout.fillWidth: true
-            Layout.preferredHeight: parent.margin*30
+        function searchFor(text) {
+            if (text === "")
+                return;
+            Navigation.openApplicationList(null, text)
         }
 
-        CategoryDisplay {
-            spacing: parent.margin
-            Layout.fillWidth: true
-        }
-        Item {
-            height: parent.margin
+        ColumnLayout
+        {
+            readonly property real margin: SystemFonts.generalFont.pointSize
+            width: view.viewport.width-margin*2
+            x: margin
+
+            FeaturedBanner {
+                Layout.fillWidth: true
+                Layout.preferredHeight: parent.margin*30
+            }
+
+            CategoryDisplay {
+                spacing: parent.margin
+                Layout.fillWidth: true
+            }
+            Item {
+                height: parent.margin
+            }
         }
     }
 }
