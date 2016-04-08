@@ -65,7 +65,7 @@ ApplicationWindow
         },
         TopLevelPageData {
             iconName: "system-software-update"
-            text: ResourcesModel.updatesCount==0 ? i18n("No Updates") : i18n("Update (%1)", ResourcesModel.updatesCount)
+            text: ResourcesModel.updatesCount==0 ? i18n("No Updates") : i18nc("Update section name", "Update (%1)", ResourcesModel.updatesCount)
             enabled: ResourcesModel.updatesCount>0
             component: topUpdateComp
             objectName: "update"

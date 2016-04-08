@@ -248,7 +248,7 @@ Item {
             section: RowLayout {
                 Label { text: i18n("All") }
                 Item { Layout.fillWidth: true }
-                Label { text: i18n("%1 items", theGrid.count) }
+                Label { text: i18np("%1 item", "%1 items", theGrid.count) }
             }
 
             delegate: ApplicationsGridDelegate {
