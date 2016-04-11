@@ -21,6 +21,7 @@
 
 import QtQuick 2.1
 import org.kde.discover.app 1.0
+import org.kde.kirigami 1.0
 
 MouseArea {
     id: listItem
@@ -34,7 +35,7 @@ MouseArea {
 
     hoverEnabled: !Helpers.isCompact
 
-    Rectangle {
+    BasicListItem {
         anchors.fill: parent
         color: listItem.containsMouse || listItem.pressed ? listItem.highlightColor : DiscoverSystemPalette.button
         border.color: DiscoverSystemPalette.mid

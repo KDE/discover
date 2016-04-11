@@ -24,8 +24,9 @@ import QtQuick.Window 2.2
 import "navigation.js" as Navigation
 import org.kde.discover.app 1.0
 import org.kde.discover 1.0
+import org.kde.kirigami 1.0 as Kirigami
 
-Item {
+Kirigami.Page {
     id: page
     readonly property var model: appsModel
     property alias category: appsModel.filteredCategory
@@ -44,7 +45,8 @@ Item {
     property Component header: category==null ? null : categoryHeaderComponent
     property Component extendedToolBar: null
     property var icon: category ? category.icon : search !== "" ? "edit-find" : "go-home"
-    property string title: category ? category.name : ""
+    title: category ? category.name : ""
+
     onSearchChanged: appsModel.sortOrder = Qt.AscendingOrder
 
     
