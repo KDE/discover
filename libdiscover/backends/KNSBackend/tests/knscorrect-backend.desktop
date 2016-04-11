@@ -33,6 +33,7 @@ Name[sv]=Riktig
 Name[uk]=Правильно
 Name[x-test]=xxCorrectxx
 Name[zh_CN]=改正
+Name[zh_TW]=正確
 
 X-KDE-Library=kns-backend
 X-KDE-PluginInfo-Name=knscorrect-backend
