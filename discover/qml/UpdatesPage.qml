@@ -1,17 +1,18 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.2
+import org.kde.kirigami 1.0 as Kirigami
 import org.kde.discover 1.0
 import org.kde.discover.app 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.kcoreaddons 1.0
 
-ConditionalLoader
+Kirigami.Page
 {
     id: page
 
+    title: i18n("System Update")
     readonly property var icon: "system-software-update"
-    readonly property string title: i18n("System Update")
     readonly property real proposedMargin: (width-Helpers.actualWidth)/2
 
     ResourcesUpdatesModel {
@@ -25,93 +26,96 @@ ConditionalLoader
         backend: resourcesUpdatesModel
     }
 
-    condition: updateModel.hasUpdates || resourcesUpdatesModel.isProgressing
-    componentTrue: PresentUpdatesPage {
-        proposedMargin: page.proposedMargin
-    }
-
-    componentFalse: Item {
-        id: noUpdatesView
-        ColumnLayout {
-            width: Helpers.actualWidth
-            anchors.centerIn: parent
-            BusyIndicator {
-                id: busy
-                visible: false
-                enabled: visible
-                anchors.horizontalCenter: parent.horizontalCenter
-                width: icon.width
-                height: icon.height
-            }
-            QIconItem {
-                anchors.horizontalCenter: parent.horizontalCenter
-
-                id: icon
-                height: title.implicitHeight*5
-                width: height
-            }
-            Label {
-                id: title
-                Layout.fillWidth: true
-                horizontalAlignment: Text.AlignHCenter
-                font.pointSize: description.font.pointSize*1.5
-            }
-            Label {
-                id: description
-                Layout.fillWidth: true
-                horizontalAlignment: Text.AlignHCenter
-            }
+    ConditionalLoader {
+        anchors.fill: parent
+        condition: updateModel.hasUpdates || resourcesUpdatesModel.isProgressing
+        componentTrue: PresentUpdatesPage {
+            proposedMargin: page.proposedMargin
         }
 
-        readonly property var secSinceUpdate: resourcesUpdatesModel.secsToLastUpdate
-        readonly property string message: i18nc("@info", "Last checked %1 ago.", Format.formatDecimalDuration(secSinceUpdate*1000, 0))
+        componentFalse: Item {
+            id: noUpdatesView
+            ColumnLayout {
+                width: Helpers.actualWidth
+                anchors.centerIn: parent
+                BusyIndicator {
+                    id: busy
+                    visible: false
+                    enabled: visible
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: icon.width
+                    height: icon.height
+                }
+                QIconItem {
+                    anchors.horizontalCenter: parent.horizontalCenter
 
-        state: ( ResourcesModel.isFetching                  ? "fetching"
-               : secSinceUpdate < 0                         ? "unknown"
-               : secSinceUpdate === 0                       ? "now-uptodate"
-               : secSinceUpdate < 1000 * 60 * 60 * 24       ? "uptodate"
-               : secSinceUpdate < 1000 * 60 * 60 * 24 * 7   ? "medium"
-               :                                              "low"
-               )
-
-        states: [
-            State {
-                name: "fetching"
-                PropertyChanges { target: icon; visible: false }
-                PropertyChanges { target: busy; visible: true }
-                PropertyChanges { target: title; text: i18nc("@info", "Loading...") }
-                PropertyChanges { target: description; text: "" }
-            },
-            State {
-                name: "now-uptodate"
-                PropertyChanges { target: icon; icon: "security-high" }
-                PropertyChanges { target: title; text: i18nc("@info", "The software on this computer is up to date.") }
-                PropertyChanges { target: description; text: "" }
-            },
-            State {
-                name: "uptodate"
-                PropertyChanges { target: icon; icon: "security-high" }
-                PropertyChanges { target: title; text: i18nc("@info", "The software on this computer is up to date.") }
-                PropertyChanges { target: description; text: noUpdatesView.message }
-            },
-            State {
-                name: "medium"
-                PropertyChanges { target: icon; icon: "security-medium" }
-                PropertyChanges { target: title; text: i18nc("@info", "No updates are available.") }
-                PropertyChanges { target: description; text: noUpdatesView.message }
-            },
-            State {
-                name: "low"
-                PropertyChanges { target: icon; icon: "security-low" }
-                PropertyChanges { target: title; text: i18nc("@info", "The last check for updates was over a week ago.") }
-                PropertyChanges { target: description; text: noUpdatesView.message }
-            },
-            State {
-                name: "unknown"
-                PropertyChanges { target: icon; icon: "security-low" }
-                PropertyChanges { target: title; text: i18nc("@info", "It is unknown when the last check for updates was.") }
-                PropertyChanges { target: description; text: i18nc("@info", "Please click <em>Check for Updates</em> to check.") }
+                    id: icon
+                    height: title.implicitHeight*5
+                    width: height
+                }
+                Label {
+                    id: title
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignHCenter
+                    font.pointSize: description.font.pointSize*1.5
+                }
+                Label {
+                    id: description
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignHCenter
+                }
             }
-        ]
+
+            readonly property var secSinceUpdate: resourcesUpdatesModel.secsToLastUpdate
+            readonly property string message: i18nc("@info", "Last checked %1 ago.", Format.formatDecimalDuration(secSinceUpdate*1000, 0))
+
+            state: ( ResourcesModel.isFetching                  ? "fetching"
+                : secSinceUpdate < 0                         ? "unknown"
+                : secSinceUpdate === 0                       ? "now-uptodate"
+                : secSinceUpdate < 1000 * 60 * 60 * 24       ? "uptodate"
+                : secSinceUpdate < 1000 * 60 * 60 * 24 * 7   ? "medium"
+                :                                              "low"
+                )
+
+            states: [
+                State {
+                    name: "fetching"
+                    PropertyChanges { target: icon; visible: false }
+                    PropertyChanges { target: busy; visible: true }
+                    PropertyChanges { target: title; text: i18nc("@info", "Loading...") }
+                    PropertyChanges { target: description; text: "" }
+                },
+                State {
+                    name: "now-uptodate"
+                    PropertyChanges { target: icon; icon: "security-high" }
+                    PropertyChanges { target: title; text: i18nc("@info", "The software on this computer is up to date.") }
+                    PropertyChanges { target: description; text: "" }
+                },
+                State {
+                    name: "uptodate"
+                    PropertyChanges { target: icon; icon: "security-high" }
+                    PropertyChanges { target: title; text: i18nc("@info", "The software on this computer is up to date.") }
+                    PropertyChanges { target: description; text: noUpdatesView.message }
+                },
+                State {
+                    name: "medium"
+                    PropertyChanges { target: icon; icon: "security-medium" }
+                    PropertyChanges { target: title; text: i18nc("@info", "No updates are available.") }
+                    PropertyChanges { target: description; text: noUpdatesView.message }
+                },
+                State {
+                    name: "low"
+                    PropertyChanges { target: icon; icon: "security-low" }
+                    PropertyChanges { target: title; text: i18nc("@info", "The last check for updates was over a week ago.") }
+                    PropertyChanges { target: description; text: noUpdatesView.message }
+                },
+                State {
+                    name: "unknown"
+                    PropertyChanges { target: icon; icon: "security-low" }
+                    PropertyChanges { target: title; text: i18nc("@info", "It is unknown when the last check for updates was.") }
+                    PropertyChanges { target: description; text: i18nc("@info", "Please click <em>Check for Updates</em> to check.") }
+                }
+            ]
+        }
     }
 }
