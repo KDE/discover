@@ -39,7 +39,6 @@ ScrollView {
         id: view
         snapMode: ListView.SnapToItem
         currentIndex: -1
-        spacing: -1 //this should be the same as -GridItem.border.width
         
         delegate: GridItem {
                 id: delegateArea

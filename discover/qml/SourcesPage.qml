@@ -64,7 +64,6 @@ Kirigami.Page {
                 id: sourceDelegate
                 x: page.proposedMargin
                 width: Math.min(Helpers.actualWidth, view.viewport.width)
-                spacing: -1
 
                 property QtObject sourceBackend: model.sourceBackend
                 AddSourceDialog {
