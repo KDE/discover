@@ -13,5 +13,10 @@
         </Or>
       </Include>
     </Menu>
+      <Include>
+        <Or>
+          <Category>plasmoids.knsrc</Category>
+        </Or>
+      </Include>
   </Menu>
 </Menu>

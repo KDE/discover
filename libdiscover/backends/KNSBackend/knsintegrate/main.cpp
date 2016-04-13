@@ -52,6 +52,13 @@ int main(int argc, char** argv)
     }
 
     {
+        const QString filter = QStringLiteral(
+            "      <Include>\n"
+            "        <Or>\n"
+            "          <Category>") + knsFile + QStringLiteral("</Category>\n"
+            "        </Or>\n"
+            "      </Include>\n");
+
         QTextStream fs(&f);
         fs << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
             "<Menu>\n"
@@ -62,12 +69,9 @@ int main(int argc, char** argv)
             "      <Name>" << categoryName << "</Name>\n"
             "      <Icon>" << iconName << "</Icon>\n"
             "      <ShowTechnical>true</ShowTechnical>\n"
-            "      <Include>\n"
-            "        <Or>\n"
-            "          <Category>" << knsFile << "</Category>\n"
-            "        </Or>\n"
-            "      </Include>\n"
+            << filter <<
             "    </Menu>\n"
+            << filter <<
             "  </Menu>\n"
             "</Menu>\n";
     }
