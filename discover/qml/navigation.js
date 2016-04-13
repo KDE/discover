@@ -18,41 +18,25 @@
  */
 
 function openApplicationList(cat, search) {
-    openPage(applicationListComp, { category: cat, search: search, preferList: search!="" })
+    window.stack.push(applicationListComp, { category: cat, search: search, preferList: search!="" })
 }
 
 function openApplicationListSource(origin) {
-    openPage(applicationListComp, { originFilter: origin, preferList: true, title: origin, icon: "view-filter" })
+    window.stack.push(applicationListComp, { originFilter: origin, preferList: true, title: origin, icon: "view-filter" })
 }
 
 function openApplicationMime(mime) {
-    openPage(applicationListComp, { mimeTypeFilter: mime , icon: "document-open-data", title: i18n("Resources for '%1'", mime) })
+    window.stack.push(applicationListComp, { mimeTypeFilter: mime , icon: "document-open-data", title: i18n("Resources for '%1'", mime) })
 }
 
 function openCategory(cat) {
-    openPage(categoryComp, { category: cat })
+    window.stack.push(categoryComp, { category: cat })
 }
 
 function openApplication(app) {
-    openPage(applicationComp, { application: app })
+    window.stack.push(applicationComp, { application: app })
 }
 
 function openReviews(app, reviews) {
-    openPage(reviewsComp, { model: reviews, title: i18n("Ratings for %1", app.name), icon: "rating" })
-}
-
-function openPage(component, props) {
-    console.assert(component.status === Component.Ready)
-
-    var obj
-    try {
-        obj = component.createObject(window.stack.currentItem, props)
-        if (!obj)
-            console.log("error opening", name, obj, component.errorString())
-        window.stack.push(obj);
-    } catch (e) {
-        console.log("error: "+e)
-        console.log("comp error: "+component.errorString())
-    }
-    return obj
+    window.stack.push(reviewsComp, { model: reviews, title: i18n("Ratings for %1", app.name), icon: "rating" })
 }

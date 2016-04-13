@@ -48,15 +48,7 @@ Rectangle
         if(stackView.currentItem) {
             stackView.currentItem.destroy(2000)
         }
-        var page;
-        try {
-            page = currentTopLevel.createObject(stackView)
-//             console.log("created ", currentTopLevel)
-        } catch (e) {
-            console.log("error: "+e)
-            console.log("comp error: "+currentTopLevel.errorString())
-        }
-        stackView.replace(page, {}, window.status!=Component.Ready)
+        stackView.replace(currentTopLevel, {}, window.status!=Component.Ready)
     }
 
     readonly property QtObject stack: stackView
