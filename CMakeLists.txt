@@ -4,8 +4,6 @@ set(PROJECT_VERSION_MAJOR 5)
 
 cmake_minimum_required(VERSION 2.8.12)
 
-option(INSTALL_EXPORTER "Install plasma-discover-exporter [development utility]" OFF)
-
 find_package(ECM REQUIRED NO_MODULE)
 
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} "${CMAKE_SOURCE_DIR}/cmake")
