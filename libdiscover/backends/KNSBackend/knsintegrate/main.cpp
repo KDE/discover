@@ -84,7 +84,6 @@ int main(int argc, char** argv)
             "[Desktop Entry]\n"
             "Type=Service\n"
             "Icon=" << iconName << "\n"
-            "Name="<< categoryName <<"\n"
             "X-KDE-Library=kns-backend\n"
             "X-KDE-PluginInfo-Name=" << outputName <<"\n"
             "X-Muon-Arguments=" << knsFile << "\n";

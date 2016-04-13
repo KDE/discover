@@ -1,27 +1,6 @@
 [Desktop Entry]
 Type=Service
 Icon=plasma
-Name=Plasma Desktop Widgets
-Name[ca]=Estris d'escriptori Plasma
-Name[ca@valencia]=Estris d'escriptori Plasma
-Name[de]=Plasma Arbeitsflächen-Miniprogramme
-Name[es]=Elementos gráficos del escritorio Plasma
-Name[fi]=Plasma-työpöytäsovelmat
-Name[it]=Oggetti del desktop di Plasma
-Name[nl]=Bureaubladwidgets voor Plasma
-Name[pl]=Elementy interfejsu pulpitu Plazma
-Name[pt]=Elementos Gráficos do Plasma
-Name[pt_BR]=Widgets do Plasma Desktop
-Name[sk]=Widgety plochy Plasma
-Name[sl]=Namizni gradniki Plasma
-Name[sr]=Плазма виџети површи
-Name[sr@ijekavian]=Плазма виџети површи
-Name[sr@ijekavianlatin]=Plasma vidžeti površi
-Name[sr@latin]=Plasma vidžeti površi
-Name[sv]=Plasma grafiska skrivbordskomponenter
-Name[uk]=Віджети стільниці Плазми
-Name[x-test]=xxPlasma Desktop Widgetsxx
-Name[zh_CN]=Plasma 桌面部件
 X-KDE-Library=kns-backend
 X-KDE-PluginInfo-Name=knsplasmoids-backend
 X-Muon-Arguments=plasmoids.knsrc
