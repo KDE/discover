@@ -67,7 +67,7 @@ Comment[x-test]=xxHelps you keep your system up to datexx
 Comment[zh_CN]=帮助您保持系统更新
 Encoding=UTF-8
 
-Icon=security-high
+Icon=update-none
 Type=Service
 
 X-KDE-ServiceTypes=Plasma/Applet

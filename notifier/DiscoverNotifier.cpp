@@ -116,11 +116,11 @@ QString DiscoverNotifier::iconName() const
 {
     switch(state()) {
         case SecurityUpdates:
-            return QStringLiteral("security-low");
+            return QStringLiteral("update-low");
         case NormalUpdates:
-            return QStringLiteral("security-high");
+            return QStringLiteral("update-high");
         case NoUpdates:
-            return QStringLiteral("security-high");
+            return QStringLiteral("update-none");
     }
     return QString();
 }
