@@ -68,15 +68,10 @@ Rating* KNSReviews::ratingForApplication(AbstractResource* app) const
 
 void KNSReviews::fetchReviews(AbstractResource* app, int page)
 {
-    if(!m_backend->provider()->hasCommentService()) {
-        Q_EMIT reviewsReady(app, QList<Review*>());
-        return;
-    }
-    
     Attica::ListJob< Attica::Comment >* job =
         m_backend->provider()->requestComments(Attica::Comment::ContentComment, app->packageName(), QStringLiteral("0"), page, 10);
     job->setProperty("app", qVariantFromValue<AbstractResource*>(app));
-    connect(job, SIGNAL(finished(Attica::BaseJob*)), SLOT(commentsReceived(Attica::BaseJob*)));
+    connect(job, &Attica::BaseJob::finished, this, &KNSReviews::commentsReceived);
     job->start();
 }
 
