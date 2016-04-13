@@ -5,7 +5,7 @@ function(makekns knsfile iconName category)
     get_filename_component(RESOURCE_NAME "${knsfile}" NAME_WE)
     set(backend "kns${RESOURCE_NAME}-backend")
 
-    add_custom_target(${knsfile}
+    add_custom_target(${knsfile} ALL
         COMMAND knsintegrate ${knsfile} ${iconName} ${category}
         COMMAND cmake -E rename ${CMAKE_CURRENT_BINARY_DIR}/${backend}.desktop ${CMAKE_CURRENT_SOURCE_DIR}/${backend}.desktop
         COMMAND cmake -E rename ${CMAKE_CURRENT_BINARY_DIR}/${backend}-categories.xml ${CMAKE_CURRENT_SOURCE_DIR}/${backend}-categories.xml
