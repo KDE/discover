@@ -58,7 +58,7 @@ ConditionalLoader
                     LabelBackground {
                         id: bg
                         anchors.centerIn: parent
-                        text: model.sortableRating.toFixed(2)
+                        text: model ? model.sortableRating.toFixed(2) : ""
                     }
                 }
                 Layout.preferredWidth: page.maxtopwidth
@@ -74,7 +74,7 @@ ConditionalLoader
                 extended: gridRow.extended
                 roleDelegate: Rating {
                     property variant model
-                    rating: model.rating
+                    rating: model ? model.rating : 0
                     starSize: parent.height/3
                 }
             }
