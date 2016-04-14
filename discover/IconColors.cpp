@@ -43,7 +43,10 @@ void IconColors::setIconName(const QString& name)
 QColor IconColors::dominantColor() const
 {
     const QImage img = m_icon.pixmap({32, 32}).toImage();
-    Q_ASSERT(!img.isNull());
+    if(img.isNull()) {
+        qWarning() << "wrong icon" << m_icon << m_icon.name();
+        return QColor(Qt::black);
+    }
     const int tolerance = 10;
     QVector<uint> hue(360/tolerance, 0);
 
@@ -83,9 +86,9 @@ QColor IconColors::dominantColor() const
     QColor ret = QColor::fromHsv((dominantHue*tolerance + tolerance/2) % 360, 255, 255);
 
 #ifdef OUTPUT_PIXMAP_DEBUG
-    qDebug() << "dominant" << dominantHue << hue[dominantHue] << "~=" << ((100*hue[dominantHue])/(img.width()*img.height())) << "% " << m_iconName;
+    qDebug() << "dominant" << dominantHue << hue[dominantHue] << "~=" << ((100*hue[dominantHue])/(img.width()*img.height())) << "% " << iconName();
     thing.setPixelColor(0, img.height(), ret);
-    thing.save("/tmp/"+m_iconName+".png");
+    thing.save("/tmp/"+iconName()+".png");
 #endif
 
     return ret;
