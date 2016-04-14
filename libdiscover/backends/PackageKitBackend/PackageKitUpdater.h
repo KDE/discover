@@ -79,7 +79,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         QSet<AbstractResource*> packagesForPackageId(const QSet<QString>& packages) const;
 
         QPointer<PackageKit::Transaction> m_transaction;
-        PackageKitBackend * m_backend;
+        PackageKitBackend * const m_backend;
         QSet<AbstractResource*> m_toUpgrade;
         QSet<AbstractResource*> m_allUpgradeable;
         bool m_isCancelable;
