@@ -186,7 +186,7 @@ Item {
                                     rating:  ratingInstance==null ? 0 : ratingInstance.rating
                                     starSize: title.paintedHeight
 
-                                    Text { text: i18n(" (%1)", parent.ratingInstance.ratingCount) }
+                                    Text { text: parent.ratingInstance ? i18n(" (%1)", parent.ratingInstance.ratingCount) : "" }
                                 }
                             }
                         }
