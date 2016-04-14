@@ -113,7 +113,7 @@ void ResourcesProxyModel::setFiltersFromCategory(Category *category)
     }
 
     m_filteredCategory = category;
-    invalidate();
+    invalidateFilter();
     emit invalidated();
     emit categoryChanged();
 }
@@ -125,7 +125,7 @@ void ResourcesProxyModel::setShouldShowTechnical(bool show)
     else
         m_roleFilters.remove("isTechnical");
     emit showTechnicalChanged();
-    invalidate();
+    invalidateFilter();
     emit invalidated();
 }
 
@@ -258,6 +258,7 @@ Category* ResourcesProxyModel::filteredCategory() const
 void ResourcesProxyModel::setSortByRelevancy(bool sort)
 {
     m_sortByRelevancy = sort;
+    invalidate();
 }
 
 bool ResourcesProxyModel::sortingByRelevancy() const
@@ -268,6 +269,7 @@ bool ResourcesProxyModel::sortingByRelevancy() const
 void ResourcesProxyModel::setStateFilter(AbstractResource::State s)
 {
     m_stateFilter = s;
+    invalidateFilter();
     emit stateFilterChanged();
 }
 
@@ -284,6 +286,7 @@ QString ResourcesProxyModel::mimeTypeFilter() const
 void ResourcesProxyModel::setMimeTypeFilter(const QString& mime)
 {
     m_filteredMimeType = mime;
+    invalidateFilter();
 }
 
 void ResourcesProxyModel::setFilterActive(bool filter)
@@ -292,4 +295,5 @@ void ResourcesProxyModel::setFilterActive(bool filter)
         m_roleFilters.insert("active", true);
     else
         m_roleFilters.remove("active");
+    invalidateFilter();
 }
