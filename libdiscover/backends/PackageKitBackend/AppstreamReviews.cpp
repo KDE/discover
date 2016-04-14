@@ -38,8 +38,6 @@ AppstreamReviews::AppstreamReviews(AbstractResourcesBackend* parent)
     : AbstractReviewsBackend(parent)
     , m_fetching(true)
 {
-    connect(this, &AppstreamReviews::ratingsReady, parent, &AbstractResourcesBackend::allDataChanged);
-
     const QUrl ratingsUrl(QStringLiteral("http://appstream.kubuntu.co.uk/appstream-ubuntu-popcon-results.gz"));
     const QString dir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
     QDir().mkpath(dir);
