@@ -33,6 +33,7 @@ Action
     enabled: action && action.enabled
     tooltip: action ? action.toolTip : ""
     iconName: action ? app.iconName(action.icon) : ""
+    shortcut: action ? action.shortcut : undefined
 
     onTriggered: action.trigger()
 }
