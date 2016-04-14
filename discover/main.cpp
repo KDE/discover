@@ -27,6 +27,7 @@
 #include <DiscoverBackendsFactory.h>
 #include "DiscoverVersion.h"
 #include <QTextStream>
+#include <QStandardPaths>
 
 MuonDiscoverMainWindow::CompactMode decodeCompactMode(const QString &str)
 {
@@ -78,6 +79,10 @@ int main(int argc, char** argv)
             foreach(const QString& mode, mainWindow->modes())
                 QTextStream(stdout) << " * " << mode << '\n';
             return 0;
+        }
+
+        if (parser.isSet(QStringLiteral("test"))) {
+            QStandardPaths::setTestModeEnabled(true);
         }
 
         mainWindow = new MuonDiscoverMainWindow(decodeCompactMode(parser.value(QStringLiteral("compact"))));
