@@ -55,6 +55,7 @@ ResourcesModel::ResourcesModel(QObject* parent, bool load)
         { StateRole, "state" },
         { RatingRole, "rating" },
         { RatingPointsRole, "ratingPoints" },
+        { RatingCountRole, "ratingCount" },
         { SortableRatingRole, "sortableRating" },
         { ActiveRole, "active" },
         { InstalledRole, "isInstalled" },
@@ -176,7 +177,7 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
         return QVariant();
     }
 
-    AbstractResource* resource = resourceAt(index.row());
+    AbstractResource* const resource = resourceAt(index.row());
     switch(role) {
         case ActiveRole:
             return TransactionModel::global()->transactionFromResource(resource) != nullptr;
@@ -184,8 +185,9 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
             return qVariantFromValue<QObject*>(resource);
         case RatingPointsRole:
         case RatingRole:
+        case RatingCountRole:
         case SortableRatingRole: {
-            Rating* rating = resource->rating();
+            Rating* const rating = resource->rating();
             return rating ? rating->property(roleNames().value(role).constData()) : -1;
         }
         case Qt::DecorationRole:

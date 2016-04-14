@@ -44,6 +44,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
             StateRole,
             RatingRole,
             RatingPointsRole,
+            RatingCountRole,
             SortableRatingRole,
             ActiveRole,
             InstalledRole,
