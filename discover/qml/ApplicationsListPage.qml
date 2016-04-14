@@ -49,7 +49,7 @@ Item {
     
     function searchFor(text) {
         appsModel.search = text
-        appsModel.sortingByRelevancy = true
+        appsModel.isSortingByRelevancy = true
     }
     
     ApplicationProxyModel {
