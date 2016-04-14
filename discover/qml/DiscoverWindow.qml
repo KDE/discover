@@ -18,6 +18,7 @@ ApplicationWindow
     readonly property Component topInstalledComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
     readonly property Component topUpdateComp: Qt.createComponent("qrc:/qml/UpdatesPage.qml")
     readonly property Component topSourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
+    readonly property Component phoneWindow: Qt.createComponent("qrc:/qml/DiscoverWindow_PlasmaPhone.qml")
     readonly property QtObject stack: loader.item.stack
     property Component currentTopLevel: defaultStartup ? topBrowsingComp : loadingComponent
     property bool defaultStartup: true
@@ -118,13 +119,7 @@ ApplicationWindow
 
             Loader {
                 anchors.fill: parent
-                source: "qrc:/qml/DiscoverWindow_PlasmaPhone.qml"
-                onStatusChanged: {
-                    if (status==Loader.Error) {
-                        console.log("Disabling compact mode. Make sure Plasma Mobile is properly installed");
-                        app.compactMode = MuonDiscoverMainWindow.Full;
-                    }
-                }
+                sourceComponent: phoneWindow
             }
         }
 
