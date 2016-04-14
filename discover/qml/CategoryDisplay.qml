@@ -37,8 +37,8 @@ ConditionalLoader
         displayedCategory: page.category
     }
 
-    condition: !Helpers.isCompact
-    componentTrue: RowLayout {
+    condition: Helpers.isCompact
+    componentFalse: RowLayout {
             id: gridRow
             readonly property bool extended: view.count>5
             spacing: page.spacing
@@ -105,7 +105,7 @@ ConditionalLoader
             }
         }
 
-    componentFalse: ColumnLayout {
+    componentTrue: ColumnLayout {
             Layout.minimumHeight: 5000
             spacing: -1
 
