@@ -65,6 +65,9 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     updateAction->setIcon(QIcon::fromTheme(QStringLiteral("system-software-update")));
     updateAction->setText(i18nc("@action Checks the Internet for updates", "Check for Updates"));
     updateAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
+    connect(this, &PackageKitBackend::fetchingChanged, updateAction, [updateAction, this](){
+        updateAction->setEnabled(!isFetching());
+    });
     connect(updateAction, &QAction::triggered, this, &PackageKitBackend::refreshDatabase);
     m_messageActions += updateAction;
 
@@ -118,9 +121,9 @@ void PackageKitBackend::reloadPackageList()
     connect(t, &PackageKit::Transaction::finished, this, &PackageKitBackend::getPackagesFinished);
     connect(t, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackage);
     connect(t, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
-    acquireFetching(true);
 
     fetchUpdates();
+    acquireFetching(true);
 }
 
 void PackageKitBackend::fetchUpdates()
@@ -202,7 +205,12 @@ void PackageKitBackend::refreshDatabase()
 {
     if (!m_refresher) {
         m_refresher = PackageKit::Daemon::refreshCache(false);
-        connect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitBackend::reloadPackageList);
+        connect(m_refresher.data(), &PackageKit::Transaction::finished, this, [this]() {
+            reloadPackageList();
+            acquireFetching(false);
+            delete m_refresher;
+        });
+        acquireFetching(true);
     } else {
         qWarning() << "already resetting";
     }
