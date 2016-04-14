@@ -54,6 +54,18 @@ DiscoverTest
         compare(ResourcesModel.updatesCount, 0, "should be up to date")
     }
 
+    function test_search() {
+        var searchField = findChild(appRoot, "TextField");
+        verify(searchField);
+        searchField.text = "cocacola"
+        verify(waitForSignal(appRoot.stack, "currentItemChanged"))
+        searchField.text = "dummy"
+        var listPage = appRoot.stack.currentItem
+        compare(listPage.state, "list")
+        verify(waitForSignal(listPage.model, "countChanged"))
+        compare(listPage.model.count, ResourcesModel.rowCount()/2)
+    }
+
     function test_modes() {
         app.openMode("Browsing");
         compare(appRoot.currentTopLevel, appRoot.topBrowsingComp, "correct component, browsing");
