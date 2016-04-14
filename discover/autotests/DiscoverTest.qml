@@ -11,7 +11,7 @@ Item
     function verify(condition, msg) {
         if (!condition) {
             console.trace();
-            var e = new Error(condition + ": " + msg)
+            var e = new Error(condition + (msg ? (": " + msg) : ""))
             e.object = testRoot;
             throw e;
         }
@@ -33,9 +33,8 @@ Item
     function findChild(obj, typename) {
         if (isType(obj, typename))
             return obj;
-
-        for(var v in obj.children) {
-            var v = findChild(obj.children[v], typename)
+        for(var v in obj.data) {
+            var v = findChild(obj.data[v], typename)
             if (v)
                 return v
         }
