@@ -97,16 +97,9 @@ double dampenedRating(const QVector<int> &ratings, double power = 0.1)
 }
 
 Rating::Rating(const QVariantMap &data)
-    : QObject()
+    : Rating(data.value(QStringLiteral("package_name")).toString(),
+         data.value(QStringLiteral("ratings_total")).toULongLong(), data.value(QStringLiteral("ratings_average")).toDouble() * 2, data.value(QStringLiteral("histogram")).toString())
 {
-    init(data.value(QStringLiteral("package_name")).toString(),
-         data.value(QStringLiteral("ratings_total")).toULongLong(), data.value(QStringLiteral("ratings_average")).toDouble() * 2, data.value(QStringLiteral("histogram")).toString());
-}
-
-Rating::Rating(const QString& packageName, quint64 ratingCount, int rating, const QString& histogram)
-    : QObject()
-{
-    init(packageName, ratingCount, rating, histogram);
 }
 
 Rating::Rating(const QString& packageName, int inst, int vote, int old, int /*recent*/)
@@ -119,16 +112,17 @@ Rating::Rating(const QString& packageName, int inst, int vote, int old, int /*re
 {
 }
 
-void Rating::init(const QString& packageName, quint64 ratingCount, int rating, const QString& histogram)
+Rating::Rating(const QString& packageName, quint64 ratingCount, int rating, const QString& histogram)
+    : QObject()
+    , m_packageName(packageName)
+    , m_ratingCount(ratingCount)
+    , m_rating(rating)
+    , m_ratingPoints(0)
+    , m_sortableRating(0)
 {
-    m_packageName = packageName;
-    m_ratingCount = ratingCount;
-    m_rating = rating;
-    m_ratingPoints = 0;
-    m_sortableRating = 0;
-
-    auto histo = histogram.midRef(1,histogram.size()-2).split(QStringLiteral(", "));
-    QVector<int> spread = QVector<int>();
+    const auto histo = histogram.midRef(1,histogram.size()-2).split(QStringLiteral(", "));
+    QVector<int> spread;
+    spread.reserve(histo.size());
 
     for(int i=0; i<histo.size(); ++i) {
         int points = histo[i].toInt();
