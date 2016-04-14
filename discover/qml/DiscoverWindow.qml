@@ -1,6 +1,7 @@
 import QtQuick 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.1
+import org.kde.discover 1.0
 import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
 
@@ -89,8 +90,8 @@ ApplicationWindow
             title: i18n("Advanced...")
 
             Instantiator {
-                model: ResourcesModel.messageActions
-                delegate: MenuItem { action: ActionBridge { action: modelData} }
+                model: MessageActionsModel {}
+                delegate: MenuItem { action: ActionBridge { action: model.action } }
 
                 onObjectAdded: advancedMenu.insertItem(index, object)
                 onObjectRemoved: advancedMenu.removeItem(object)
