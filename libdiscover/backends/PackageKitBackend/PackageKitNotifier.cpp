@@ -42,11 +42,6 @@ PackageKitNotifier::~PackageKitNotifier()
 {
 }
 
-void PackageKitNotifier::configurationChanged()
-{
-    recheckSystemUpdateNeeded();
-}
-
 void PackageKitNotifier::recheckSystemUpdateNeeded()
 {
     if (PackageKit::Daemon::global()->isRunning()) {

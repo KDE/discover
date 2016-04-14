@@ -72,10 +72,14 @@ ConditionalLoader
                 filteredCategory: categoryModel.displayedCategory
                 title: i18n("Best Rating")
                 extended: gridRow.extended
-                roleDelegate: Rating {
+//                 roleDelegate: Rating {
+//                     property variant model
+//                     rating: model ? model.rating : 0
+//                     starSize: parent.height/3
+//                 }
+                roleDelegate: Label {
                     property variant model
-                    rating: model ? model.rating : 0
-                    starSize: parent.height/3
+                    text: model ? model.ratingPoints : "--"
                 }
             }
 

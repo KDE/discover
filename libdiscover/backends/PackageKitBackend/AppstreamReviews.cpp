@@ -80,6 +80,5 @@ Rating * AppstreamReviews::ratingForApplication(AbstractResource* app) const
 
 bool AppstreamReviews::isFetching() const
 {
-    qDebug() << "fetching popcon..." << m_fetching;
     return m_fetching;
 }
