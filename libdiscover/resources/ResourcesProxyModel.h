@@ -82,9 +82,11 @@ private:
 
     QString m_lastSearch;
     QList<AbstractResource*> m_searchResults;
-    QVector<QPair<FilterType, QString> > m_andFilters;
-    QVector<QPair<FilterType, QString> > m_orFilters;
-    QVector<QPair<FilterType, QString> > m_notFilters;
+
+    typedef QPair<FilterType, QString> FilterPair;
+    QVector<FilterPair> m_andFilters;
+    QVector<FilterPair> m_orFilters;
+    QVector<FilterPair> m_notFilters;
     QHash<QByteArray, QVariant> m_roleFilters;
 
     bool m_sortByRelevancy;

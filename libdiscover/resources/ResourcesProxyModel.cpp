@@ -182,8 +182,6 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
         return false;
     }
 
-    typedef QPair<FilterType, QString> FilterPair;
-
     {
         bool orValue = m_orFilters.isEmpty();
         Q_FOREACH (const FilterPair& filter, m_orFilters) {
