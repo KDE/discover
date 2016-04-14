@@ -48,9 +48,9 @@ public:
     double sortableRating() const;
 
 private:
-    QString m_packageName;
-    quint64 m_ratingCount;
-    int m_rating;
+    const QString m_packageName;
+    const quint64 m_ratingCount;
+    const int m_rating;
     int m_ratingPoints;
     double m_sortableRating;
 };
