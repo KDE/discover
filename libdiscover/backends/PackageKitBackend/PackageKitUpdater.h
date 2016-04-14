@@ -52,12 +52,6 @@ class PackageKitUpdater : public AbstractBackendUpdater
         QString statusDetail() const override;
         quint64 downloadSpeed() const override;
 
-        /** in plasma-discover-updater, actions with HighPriority will be shown in a KMessageWidget,
-         *  normal priority will go right on top of the more menu, low priority will go
-         *  to the advanced menu
-         */
-        virtual QList<QAction*> messageActions() const;
-
     public Q_SLOTS:
         ///must be implemented if ever isCancelable is true
         void cancel() override;
@@ -96,7 +90,6 @@ class PackageKitUpdater : public AbstractBackendUpdater
         quint64 m_speed;
         long unsigned int m_remainingTime;
         uint m_percentage;
-        QAction* m_updateAction;
         QDateTime m_lastUpdate;
 };
 
