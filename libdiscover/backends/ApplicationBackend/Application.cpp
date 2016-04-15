@@ -61,7 +61,8 @@ Application::Application(const Appstream::Component &component, QApt::Backend* b
     static QByteArray currentDesktop = qgetenv("XDG_CURRENT_DESKTOP");
 
     Q_ASSERT(component.packageNames().count() == 1);
-    m_packageName = component.packageNames().at(0);
+    if (!component.packageNames().empty())
+        m_packageName = component.packageNames().at(0);
     
     m_package = backend->package(packageName());
     m_isValid = bool(m_package);
