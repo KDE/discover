@@ -96,7 +96,6 @@ private:
     QString m_filteredMimeType;
 
 Q_SIGNALS:
-    void invalidated();
     void categoryChanged();
     void stateFilterChanged();
     void showTechnicalChanged();

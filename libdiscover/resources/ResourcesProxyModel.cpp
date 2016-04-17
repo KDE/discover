@@ -68,7 +68,6 @@ void ResourcesProxyModel::setSearch(const QString &searchText)
         m_sortByRelevancy = false;
     }
     invalidateFilter();
-    emit invalidated();
 }
 
 QString ResourcesProxyModel::lastSearch() const
@@ -89,7 +88,6 @@ void ResourcesProxyModel::setOriginFilter(const QString &origin)
         m_roleFilters.insert("origin", origin);
 
     invalidateFilter();
-    emit invalidated();
 }
 
 QString ResourcesProxyModel::originFilter() const
@@ -114,7 +112,6 @@ void ResourcesProxyModel::setFiltersFromCategory(Category *category)
 
     m_filteredCategory = category;
     invalidateFilter();
-    emit invalidated();
     emit categoryChanged();
 }
 
@@ -126,7 +123,6 @@ void ResourcesProxyModel::setShouldShowTechnical(bool show)
         m_roleFilters.remove("isTechnical");
     emit showTechnicalChanged();
     invalidateFilter();
-    emit invalidated();
 }
 
 bool ResourcesProxyModel::shouldShowTechnical() const
