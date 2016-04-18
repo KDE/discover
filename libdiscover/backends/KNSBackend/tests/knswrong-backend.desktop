@@ -5,6 +5,7 @@ Icon=plasma
 Name=Wrong
 Name[ca]=Erroni
 Name[ca@valencia]=Erroni
+Name[cs]=Špatně
 Name[da]=Forkert
 Name[de]=Falsch
 Name[el]=Λάθος
@@ -33,6 +34,7 @@ Name[sv]=Felaktig
 Name[uk]=Неправильно
 Name[x-test]=xxWrongxx
 Name[zh_CN]=错误
+Name[zh_TW]=錯誤
 
 X-KDE-Library=kns-backend
 X-KDE-PluginInfo-Name=knswrong-backend

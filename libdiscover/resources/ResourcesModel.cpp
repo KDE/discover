@@ -188,7 +188,14 @@ QVariant ResourcesModel::data(const QModelIndex& index, int role) const
         case RatingCountRole:
         case SortableRatingRole: {
             Rating* const rating = resource->rating();
-            return rating ? rating->property(roleNames().value(role).constData()) : -1;
+            if (rating)
+                return rating->property(roleNames().value(role).constData());
+            else {
+                const int idx = Rating::staticMetaObject.indexOfProperty(roleNames().value(role).constData());
+                QVariant val = QVariant(0);
+                val.convert(Rating::staticMetaObject.property(idx).type());
+                return val;
+            }
         }
         case Qt::DecorationRole:
         case Qt::DisplayRole:

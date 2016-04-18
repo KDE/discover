@@ -41,8 +41,8 @@ public:
 
     QString packageName() const;
     quint64 ratingCount() const;
-    // 0.0 - 10.0 ranged rating multiplied by two and rounded for KRating*
-    Q_SCRIPTABLE int rating() const;
+    // 0.0 - 10.0 ranged rating
+    int rating() const;
     int ratingPoints() const;
     // Returns a dampened rating calculated with the Wilson Score Interval algorithm
     double sortableRating() const;
