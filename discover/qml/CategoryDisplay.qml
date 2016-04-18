@@ -46,7 +46,7 @@ ConditionalLoader
                 id: top
                 Layout.fillHeight: true
                 Layout.fillWidth: true
-                sortRole: "sortableRating"
+                sortRole: "ratingCount"
                 filteredCategory: categoryModel.displayedCategory
                 title: i18n("Most Popular")
                 extended: gridRow.extended
@@ -57,7 +57,7 @@ ConditionalLoader
                     LabelBackground {
                         id: bg
                         anchors.centerIn: parent
-                        text: model.sortableRating.toFixed(2)
+                        text: model ? model.ratingCount : ""
                     }
                 }
                 Layout.preferredWidth: page.maxtopwidth
