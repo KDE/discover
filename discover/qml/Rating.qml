@@ -30,7 +30,7 @@ RowLayout
     property real rating: 2
     property real starSize: SystemFonts.generalFont.pointSize*2
 
-    visible: rating>=0
+    visible: rating>0
     clip: true
     spacing: 0
 
