@@ -105,13 +105,17 @@ void DummyTest::testSort()
 {
     ResourcesProxyModel pm;
     pm.setSourceModel(m_model);
+
     QCollator c;
     QBENCHMARK_ONCE {
         pm.setSortRole(ResourcesModel::NameRole);
+        pm.setDynamicSortFilter(true);
         pm.sort(0);
+        QCOMPARE(pm.sortColumn(), 0);
+        QCOMPARE(pm.sortOrder(), Qt::AscendingOrder);
         QString last;
-        for(int i = 0; i<pm.rowCount(); ++i) {
-            QString current = pm.index(i, 0).data(pm.sortRole()).toString();
+        for(int i = 0, count = pm.rowCount(); i<count; ++i) {
+            const QString current = pm.index(i, 0).data(pm.sortRole()).toString();
             if (!last.isEmpty()) {
                 QCOMPARE(c.compare(last, current), -1);
             }
@@ -121,10 +125,9 @@ void DummyTest::testSort()
 
     QBENCHMARK_ONCE {
         pm.setSortRole(ResourcesModel::SortableRatingRole);
-        pm.sort(0);
         int last=-1;
-        for(int i = 0; i<pm.rowCount(); ++i) {
-            int current = pm.index(i, 0).data(pm.sortRole()).toInt();
+        for(int i = 0, count = pm.rowCount(); i<count; ++i) {
+            const int current = pm.index(i, 0).data(pm.sortRole()).toInt();
             QVERIFY(last<=current);
             last = current;
         }

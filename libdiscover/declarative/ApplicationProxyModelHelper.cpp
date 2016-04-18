@@ -26,6 +26,7 @@ ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
 {
     connect(this, &QAbstractItemModel::rowsInserted, this, &ApplicationProxyModelHelper::countChanged);
     connect(this, &QAbstractItemModel::rowsRemoved, this, &ApplicationProxyModelHelper::countChanged);
+    setDynamicSortFilter(false);
 }
 
 QHash<int, QByteArray> ApplicationProxyModelHelper::roleNames() const
@@ -39,13 +40,15 @@ void ApplicationProxyModelHelper::componentComplete()
     
     if(!m_sortRoleString.isEmpty())
         setStringSortRole_hack(m_sortRoleString);
+
     setSearch(lastSearch());
     setDynamicSortFilter(true);
+    sortModel();
 }
 
 void ApplicationProxyModelHelper::sortModel()
 {
-    QSortFilterProxyModel::sort(sortColumn(), sortOrder());
+    QSortFilterProxyModel::sort(0, sortOrder());
 }
 
 int ApplicationProxyModelHelper::stringToRole(const QByteArray& strRole) const
@@ -60,8 +63,10 @@ QByteArray ApplicationProxyModelHelper::roleToString(int role) const
 
 void ApplicationProxyModelHelper::setSortRole_hack(int role)
 {
-    setSortRole(role);
-    emit sortRoleChanged();
+    if (role != sortRole()) {
+        setSortRole(role);
+        emit sortRoleChanged();
+    }
 }
 
 void ApplicationProxyModelHelper::setSortOrder_hack(Qt::SortOrder order)
