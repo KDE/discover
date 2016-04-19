@@ -8,6 +8,7 @@ set(pkbackend_SRCS
     PKTransaction.cpp
     PackageKitUpdater.cpp
     PackageKitMessages.cpp
+    PackageKitSourcesBackend.cpp
     AppstreamReviews.cpp
 )
 

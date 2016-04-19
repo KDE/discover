@@ -20,6 +20,7 @@
  ***************************************************************************/
 
 #include "PackageKitBackend.h"
+#include "PackageKitSourcesBackend.h"
 #include "PackageKitResource.h"
 #include "PackageKitUpdater.h"
 #include "AppPackageKitResource.h"
@@ -27,11 +28,14 @@
 #include "AppstreamReviews.h"
 #include <resources/AbstractResource.h>
 #include <resources/StandardBackendUpdater.h>
+#include <resources/SourcesModel.h>
 #include <Transaction/TransactionModel.h>
+
 #include <QStringList>
 #include <QDebug>
 #include <QTimer>
 #include <QTimerEvent>
+
 #include <PackageKit/Transaction>
 #include <PackageKit/Daemon>
 #include <PackageKit/Details>
@@ -74,6 +78,8 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitBackend::fetchUpdates);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitBackend::checkDaemonRunning);
     connect(m_reviews, &AppstreamReviews::ratingsReady, this, &AbstractResourcesBackend::allDataChanged);
+
+    SourcesModel::global()->addSourcesBackend(new PackageKitSourcesBackend(this));
 }
 
 PackageKitBackend::~PackageKitBackend()
