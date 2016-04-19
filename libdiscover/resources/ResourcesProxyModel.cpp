@@ -284,12 +284,3 @@ void ResourcesProxyModel::setMimeTypeFilter(const QString& mime)
     m_filteredMimeType = mime;
     invalidateFilter();
 }
-
-void ResourcesProxyModel::setFilterActive(bool filter)
-{
-    if(filter)
-        m_roleFilters.insert("active", true);
-    else
-        m_roleFilters.remove("active");
-    invalidateFilter();
-}

@@ -62,7 +62,6 @@ public:
     void setSortByRelevancy(bool sort);
     bool sortingByRelevancy() const;
     void setStateFilter(AbstractResource::State s);
-    void setFilterActive(bool filter);
     AbstractResource::State stateFilter() const;
 
     bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
