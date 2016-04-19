@@ -169,7 +169,7 @@ void ReviewsModel::markUseful(int row, bool useful)
 //     qDebug() << "submitting usefulness" << r->applicationName() << r->id() << useful;
     m_backend->submitUsefulness(r, useful);
     const QModelIndex ind = index(row, 0, QModelIndex());
-    emit dataChanged(ind, ind);
+    emit dataChanged(ind, ind, {UsefulnessTotal, UsefulnessFavorable, UsefulChoice});
 }
 
 void ReviewsModel::deleteReview(int row)
