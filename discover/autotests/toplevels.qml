@@ -55,6 +55,7 @@ DiscoverTest
     }
 
     function test_search() {
+        app.openMode("Browsing");
         var searchField = findChild(appRoot, "TextField");
         verify(searchField);
         searchField.text = "cocacola"
