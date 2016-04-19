@@ -27,7 +27,7 @@ Item
     }
 
     function isType(obj, typename) {
-        return obj.toString().indexOf(typename+"_QMLTYPE_") == 0
+        return obj && obj.toString().indexOf(typename+"_QMLTYPE_") == 0
     }
 
     function findChild(obj, typename) {

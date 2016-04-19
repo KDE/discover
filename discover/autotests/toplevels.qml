@@ -60,6 +60,8 @@ DiscoverTest
         verify(searchField);
         searchField.text = "cocacola"
         verify(waitForSignal(appRoot.stack, "currentItemChanged"))
+        while(!isType(appRoot.stack.currentItem, "ApplicationsListPage"))
+            verify(waitForSignal(appRoot.stack, "currentItemChanged"))
         searchField.text = "dummy"
         var listPage = appRoot.stack.currentItem
         compare(listPage.state, "list")
