@@ -197,13 +197,15 @@ void DummyTest::testReviewsModel()
 
 void DummyTest::testUpdateModel()
 {
+    const auto backend = m_model->backends().first();
+
     ResourcesUpdatesModel ruModel;
     new ModelTest(&ruModel, &ruModel);
     UpdateModel model;
     new ModelTest(&model, &model);
     model.setBackend(&ruModel);
 
-    QCOMPARE(model.rowCount(), 2);
+    QCOMPARE(model.rowCount(), 4*backend->property("startElements").toInt()/3);
     QCOMPARE(model.hasUpdates(), true);
 }
 

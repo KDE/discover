@@ -16,13 +16,11 @@ ScrollView
         resourcesUpdatesModel.updateAll()
     }
 
-    ColumnLayout
+    ListView
     {
-        x: proposedMargin
-        width: Math.min(Helpers.actualWidth, page.viewport.width)
-
-        PageHeader {
-            Layout.fillWidth: true
+        header: PageHeader {
+            x: proposedMargin
+            width: Math.min(Helpers.actualWidth, page.viewport.width)
 
             ConditionalLoader {
                 anchors.fill: parent
@@ -78,95 +76,86 @@ ScrollView
             }
         }
 
-        Repeater {
-            id: rep
-            model: updateModel
+        footer: Item { width: 5; height: 5 }
 
-            delegate: ColumnLayout {
-                id: col
-                spacing: -1
-                readonly property var currentRow: index
+        model: updateModel
+
+        section {
+            property: "section"
+            delegate: Label {
+                x: proposedMargin
+                width: Math.min(Helpers.actualWidth, page.viewport.width)
+                height: 1.5*implicitHeight
+                horizontalAlignment: Text.AlignRight
+                verticalAlignment: Text.AlignVCenter
+                text: section
+            }
+        }
+
+        delegate: GridItem {
+            x: proposedMargin
+            width: Math.min(Helpers.actualWidth, page.viewport.width)
+            height: layout.extended ? 200 : layout.implicitHeight + 2*internalMargin
+
+            ColumnLayout {
+                id: layout
+                enabled: !resourcesUpdatesModel.isProgressing
+                property bool extended: false
+                anchors.fill: parent
                 RowLayout {
-                    Layout.leftMargin: 5 //GridItem.internalMargin
-                    Layout.rightMargin: 5 //GridItem.internalMargin
-                    Label {
-                        Layout.fillWidth: true
-                        text: display
+                    Layout.fillWidth: true
+                    CheckBox {
+                        anchors.verticalCenter: parent.verticalCenter
+                        checked: model.checked == Qt.Checked
+                        onClicked: model.checked = (model.checked==Qt.Checked ? Qt.Unchecked : Qt.Checked)
                     }
+
+                    QIconItem {
+                        Layout.fillHeight: true
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: 30
+                        icon: decoration
+                    }
+
+                    Label {
+                        id: label
+                        Layout.fillWidth: true
+                        text: i18n("%1 (%2)", display, version)
+                        elide: Text.ElideRight
+                    }
+
                     LabelBackground {
-                        text: size
                         Layout.minimumWidth: 90
+                        text: size
+
+                        progressing: resourcesUpdatesModel.isProgressing
+                        progress: resourceProgress/100
                     }
                 }
-                Repeater {
-                    model: ColumnProxyModel {
-                        rootIndex: updateModel.index(col.currentRow, 0)
+
+                ScrollView {
+                    id: view
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    frameVisible: true
+                    visible: layout.extended && changelog !== ""
+
+                    Label {
+                        width: view.width-32
+                        text: changelog
+                        textFormat: Text.RichText
+                        wrapMode: Text.WordWrap
                     }
-                    delegate: GridItem {
-                        Layout.fillWidth: true
-                        Layout.preferredHeight: layout.extended ? 200 : layout.implicitHeight + 2*internalMargin
-                        ColumnLayout {
-                            id: layout
-                            enabled: !resourcesUpdatesModel.isProgressing
-                            property bool extended: false
-                            anchors.fill: parent
-                            RowLayout {
-                                Layout.fillWidth: true
-                                CheckBox {
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    checked: model.checked == Qt.Checked
-                                    onClicked: model.checked = (!model.checked ? Qt.Unchecked : Qt.Checked)
-                                }
+                }
 
-                                QIconItem {
-                                    Layout.fillHeight: true
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    width: 30
-                                    icon: decoration
-                                }
-
-                                Label {
-                                    id: label
-                                    Layout.fillWidth: true
-                                    text: i18n("%1 (%2)", display, version)
-                                    elide: Text.ElideRight
-                                }
-
-                                LabelBackground {
-                                    Layout.minimumWidth: 90
-                                    text: size
-
-                                    progressing: resourcesUpdatesModel.isProgressing
-                                    progress: resourceProgress/100
-                                }
-                            }
-
-                            ScrollView {
-                                id: view
-                                Layout.fillHeight: true
-                                Layout.fillWidth: true
-                                frameVisible: true
-                                visible: layout.extended && changelog !== ""
-
-                                Label {
-                                    width: view.width-32
-                                    text: changelog
-                                    textFormat: Text.RichText
-                                    wrapMode: Text.WordWrap
-                                }
-                            }
-
-                            Button {
-                                text: i18n("Open")
-                                visible: layout.extended
-                                onClicked: Navigation.openApplication(resource)
-                            }
-                        }
-
-                        onClicked: layout.extended = !layout.extended
-                    }
+                Button {
+                    text: i18n("Open")
+                    visible: layout.extended
+                    onClicked: Navigation.openApplication(resource)
                 }
             }
+
+            onClicked: layout.extended = !layout.extended
         }
     }
 }

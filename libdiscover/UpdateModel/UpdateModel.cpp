@@ -35,10 +35,8 @@
 #include <resources/ResourcesModel.h>
 
 UpdateModel::UpdateModel(QObject *parent)
-    : QAbstractItemModel(parent)
-    , m_rootItem(new UpdateItem)
+    : QAbstractListModel(parent)
     , m_updates(nullptr)
-    , m_updatesCount(0)
 {
 
     connect(ResourcesModel::global(), &ResourcesModel::fetchingChanged, this, &UpdateModel::activityChanged);
@@ -57,6 +55,7 @@ QHash<int,QByteArray> UpdateModel::roleNames() const
         { ResourceRole, "resource" },
         { SizeRole, "size" },
         { VersionRole, "version" },
+        { SectionRole, "section" },
         { ChangelogRole, "changelog" }
     } );
 }
@@ -77,12 +76,12 @@ void UpdateModel::setBackend(ResourcesUpdatesModel* updates)
 
 void UpdateModel::resourceHasProgressed(AbstractResource* res, qreal progress)
 {
-    UpdateItem* item = itemFromResource(res, m_rootItem.data());
+    UpdateItem* item = itemFromResource(res);
     Q_ASSERT(item);
     item->setProgress(progress);
 
     const QModelIndex idx = indexFromItem(item);
-    Q_EMIT dataChanged(idx, idx);
+    Q_EMIT dataChanged(idx, idx, { ResourceProgressRole });
 }
 
 void UpdateModel::activityChanged()
@@ -101,7 +100,7 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         return QVariant();
     }
 
-    UpdateItem *item = static_cast<UpdateItem*>(index.internalPointer());
+    UpdateItem *item = itemFromIndex(index);
 
     switch (role) {
     case Qt::DisplayRole:
@@ -120,6 +119,8 @@ QVariant UpdateModel::data(const QModelIndex &index, int role) const
         return item->progress();
     case ChangelogRole:
         return item->changelog();
+    case SectionRole:
+        return item->section();
     default:
         break;
     }
@@ -143,83 +144,21 @@ Qt::ItemFlags UpdateModel::flags(const QModelIndex &index) const
     return Qt::ItemIsEnabled | Qt::ItemIsSelectable;
 }
 
-QModelIndex UpdateModel::index(int row, int column, const QModelIndex &index) const
-{
-    // Bounds checks
-    if (!m_rootItem || row < 0 || column != 0) {
-        return QModelIndex();
-    }
-
-    if (UpdateItem *parent = itemFromIndex(index)) {
-        if (UpdateItem *childItem = parent->child(row))
-            return createIndex(row, column, childItem);
-    }
-
-    return QModelIndex();
-}
-
-QModelIndex UpdateModel::parent(const QModelIndex &index) const
-{
-    if (!index.isValid()) {
-        return QModelIndex();
-    }
-
-    UpdateItem *childItem = itemFromIndex(index);
-    UpdateItem *parentItem = childItem->parent();
-
-    if (parentItem == m_rootItem.data()) {
-        return QModelIndex();
-    }
-
-    return createIndex(parentItem->row(), 0, parentItem);
-}
-
 int UpdateModel::rowCount(const QModelIndex &parent) const
 {
-    UpdateItem *parentItem = itemFromIndex(parent);
-
-    return parentItem ? parentItem->childCount() : 0;
-}
-
-int UpdateModel::columnCount(const QModelIndex &parent) const
-{
-    Q_UNUSED(parent);
-    return 1;
-}
-
-UpdateItem* UpdateModel::itemFromIndex(const QModelIndex &index) const
-{
-    if (index.isValid())
-         return static_cast<UpdateItem*>(index.internalPointer());
-    return m_rootItem.data();
+    return !parent.isValid() ? m_updateItems.count() : 0;
 }
 
 bool UpdateModel::setData(const QModelIndex &idx, const QVariant &value, int role)
 {
     if (role == Qt::CheckStateRole) {
-        UpdateItem *item = static_cast<UpdateItem*>(idx.internalPointer());
+        UpdateItem *item = itemFromIndex(idx);
         const bool newValue = value.toInt() == Qt::Checked;
-        UpdateItem::ItemType type = item->type();
-
-        QList<AbstractResource *> apps;
-        if (type == UpdateItem::ItemType::CategoryItem) {
-            // Collect items to (un)check
-            foreach (UpdateItem *child, item->children()) {
-                apps << child->app();
-            }
-        } else if (type == UpdateItem::ItemType::ApplicationItem) {
-            apps << item->app();
-        }
+        const QList<AbstractResource *> apps = { item->app() };
 
         checkResources(apps, newValue);
-        emit dataChanged(idx, idx);
-        if (type == UpdateItem::ItemType::ApplicationItem) {
-            QModelIndex parentIndex = idx.parent();
-            emit dataChanged(parentIndex, parentIndex);
-        } else {
-            emit dataChanged(index(0,0, idx), index(item->childCount()-1, 0, idx));
-        }
-
+        Q_ASSERT(idx.data(Qt::CheckStateRole) == value);
+        Q_EMIT dataChanged(idx, idx, { Qt::CheckStateRole });
         Q_EMIT toUpdateChanged();
 
         return true;
@@ -232,7 +171,7 @@ void UpdateModel::integrateChangelog(const QString &changelog)
 {
     auto app = qobject_cast<AbstractResource*>(sender());
     Q_ASSERT(app);
-    auto item = itemFromResource(app, m_rootItem.data());
+    auto item = itemFromResource(app);
     if (!item)
         return;
 
@@ -246,8 +185,12 @@ void UpdateModel::integrateChangelog(const QString &changelog)
 void UpdateModel::setResources(const QList< AbstractResource* >& resources)
 {
     beginResetModel();
-    m_rootItem.reset(new UpdateItem);
+    qDeleteAll(m_updateItems);
+    m_updateItems.clear();
 
+    const QString importantUpdatesSection = i18nc("@item:inlistbox", "Important Security Updates");
+    const QString appUpdatesSection = i18nc("@item:inlistbox", "Application Updates");
+    const QString systemUpdateSection = i18nc("@item:inlistbox", "System Updates");
     QVector<UpdateItem*> securityItems, appItems, systemItems;
     foreach(AbstractResource* res, resources) {
         connect(res, &AbstractResource::changelogFetched, this, &UpdateModel::integrateChangelog, Qt::UniqueConnection);
@@ -255,39 +198,22 @@ void UpdateModel::setResources(const QList< AbstractResource* >& resources)
         UpdateItem *updateItem = new UpdateItem(res);
 
         if (res->isFromSecureOrigin()) {
+            updateItem->setSection(importantUpdatesSection);
             securityItems += updateItem;
         } else if(!res->isTechnical()) {
+            updateItem->setSection(appUpdatesSection);
             appItems += updateItem;
         } else {
+            updateItem->setSection(systemUpdateSection);
             systemItems += updateItem;
         }
     }
-
-    QVector<UpdateItem*> categoryItems;
-    if (!securityItems.isEmpty()) {
-        UpdateItem *securityItem = new UpdateItem(i18nc("@item:inlistbox", "Important Security Updates"),
-                                            QIcon::fromTheme(QStringLiteral("security-medium")));
-        securityItem->setChildren(securityItems);
-        categoryItems += securityItem;
-    }
-
-    if (!appItems.isEmpty()) {
-        UpdateItem *appItem = new UpdateItem(i18nc("@item:inlistbox", "Application Updates"),
-                                          QIcon::fromTheme(QStringLiteral("applications-other")));
-        appItem->setChildren(appItems);
-        categoryItems += appItem;
-    }
-
-    if (!systemItems.isEmpty()) {
-        UpdateItem *systemItem = new UpdateItem(i18nc("@item:inlistbox", "System Updates"),
-                                             QIcon::fromTheme(QStringLiteral("applications-system")));
-        systemItem->setChildren(systemItems);
-        categoryItems += systemItem;
-    }
-    m_rootItem->setChildren(categoryItems);
+    const auto sortUpdateItems = [](UpdateItem *a, UpdateItem *b) { return a->name() < b->name(); };
+    qSort(securityItems.begin(), securityItems.end(), sortUpdateItems);
+    qSort(appItems.begin(), appItems.end(), sortUpdateItems);
+    qSort(systemItems.begin(), systemItems.end(), sortUpdateItems);
+    m_updateItems = (QVector<UpdateItem*>() << securityItems << appItems << systemItems);
     endResetModel();
-
-    m_updatesCount = resources.count();
 
     foreach(AbstractResource* res, resources) {
         res->fetchChangelog();
@@ -306,39 +232,40 @@ ResourcesUpdatesModel* UpdateModel::backend() const
     return m_updates;
 }
 
-int UpdateModel::totalUpdatesCount() const
-{
-    return m_updatesCount;
-}
-
 int UpdateModel::toUpdateCount() const
 {
-    return m_rootItem->checkedItems();
+    int ret = 0;
+    foreach (UpdateItem* item, m_updateItems) {
+        ret += item->checked();
+    }
+    return ret;
 }
 
-UpdateItem * UpdateModel::itemFromResource(AbstractResource* res, UpdateItem* root)
+UpdateItem * UpdateModel::itemFromResource(AbstractResource* res)
 {
-    if (root->app()) {
-        if (root->app() == res)
-            return root;
-    } else {
-        foreach (UpdateItem* cat, root->children()) {
-            UpdateItem* item = itemFromResource(res, cat);
-            if (item)
-                return item;
-        }
+    foreach (UpdateItem* item, m_updateItems) {
+        if (item->app() == res)
+            return item;
     }
     return nullptr;
 }
 
+QString UpdateModel::updateSize() const
+{
+    double ret = 0;
+    foreach (UpdateItem* item, m_updateItems) {
+        if (item->checked() == Qt::Checked)
+            ret += item->size();
+    }
+    return KFormat().formatByteSize(ret);
+}
+
 QModelIndex UpdateModel::indexFromItem(UpdateItem* item) const
 {
-    if (item == m_rootItem.data()) {
-        return QModelIndex();
-    }
-    UpdateItem* parentItem = item->parent();
-    QModelIndex parent = indexFromItem(parentItem);
+    return index(m_updateItems.indexOf(item), 0, {});
+}
 
-    int row = parentItem->children().indexOf(item);
-    return index(row, 0, parent);
+UpdateItem * UpdateModel::itemFromIndex(const QModelIndex& index) const
+{
+    return m_updateItems[index.row()];
 }

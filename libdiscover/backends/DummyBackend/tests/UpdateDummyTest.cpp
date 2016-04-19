@@ -78,32 +78,24 @@ private Q_SLOTS:
         m->setBackend(rum);
 
         rum->prepare();
-        QCOMPARE(m_appBackend->updatesCount(), 212);
+        QCOMPARE(m_appBackend->updatesCount(), m_appBackend->property("startElements").toInt()*2/3-1);
         QCOMPARE(m->hasUpdates(), true);
 
         for(int i=0, c=m->rowCount(); i<c; ++i) {
-            const QModelIndex idx = m->index(i,0);
+            const QModelIndex resourceIdx = m->index(i,0);
+            QVERIFY(resourceIdx.isValid());
 
-//             QVERIFY(!idx.data(Qt::DecorationRole).isNull()); //CI doesn't have icons
-            QVERIFY(!idx.data(UpdateModel::ResourceRole).value<QObject*>());
-            QCOMPARE(idx.data(UpdateModel::SizeRole).toString(), KFormat().formatByteSize(13038));
-            QCOMPARE(idx.data(UpdateModel::VersionRole).toString(), QString());
-            for(int j=0, c=m->rowCount(idx); j<c; ++j) {
-                const QModelIndex resourceIdx = idx.child(j,0);
-                QVERIFY(resourceIdx.isValid());
+            AbstractResource* res = qobject_cast<AbstractResource*>(resourceIdx.data(UpdateModel::ResourceRole).value<QObject*>());
+            QVERIFY(res);
+            QCOMPARE(resourceIdx.data(UpdateModel::SizeRole).toString(), QStringLiteral("123 B"));
 
-                AbstractResource* res = qobject_cast<AbstractResource*>(resourceIdx.data(UpdateModel::ResourceRole).value<QObject*>());
-                QVERIFY(res);
-                QCOMPARE(resourceIdx.data(UpdateModel::SizeRole).toString(), QStringLiteral("123 B"));
+            QCOMPARE(Qt::CheckState(resourceIdx.data(Qt::CheckStateRole).toInt()), Qt::Checked);
+            QVERIFY(m->setData(resourceIdx, int(Qt::Unchecked), Qt::CheckStateRole));
+            QCOMPARE(Qt::CheckState(resourceIdx.data(Qt::CheckStateRole).toInt()), Qt::Unchecked);
+            QCOMPARE(resourceIdx.data(Qt::DisplayRole).toString(), res->name());
 
-                QCOMPARE(Qt::CheckState(resourceIdx.data(Qt::CheckStateRole).toInt()), Qt::Checked);
-                QVERIFY(m->setData(resourceIdx, int(Qt::Unchecked), Qt::CheckStateRole));
-                QCOMPARE(Qt::CheckState(resourceIdx.data(Qt::CheckStateRole).toInt()), Qt::Unchecked);
-                QCOMPARE(resourceIdx.data(Qt::DisplayRole).toString(), res->name());
-
-                if (j!=0) {
-                    QVERIFY(m->setData(resourceIdx, int(Qt::Checked), Qt::CheckStateRole));
-                }
+            if (i!=0) {
+                QVERIFY(m->setData(resourceIdx, int(Qt::Checked), Qt::CheckStateRole));
             }
         }
 
