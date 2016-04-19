@@ -24,10 +24,16 @@ DiscoverTest
     }
 
     function test_openCategory() {
-        var categoryName = "dummy";
+        var categoryName = "dummy 3";
         app.openCategory(categoryName);
         verify(appRoot.stack.currentItem, "has a page");
-        compare(appRoot.stack.currentItem.title, "dummy", "same title");
+        compare(appRoot.stack.currentItem.title, categoryName, "same title");
+        verify(waitForRendering())
+
+        categoryName = "dummy 4";
+        app.openCategory(categoryName);
+        verify(appRoot.stack.currentItem, "has a page");
+        compare(appRoot.stack.currentItem.title, categoryName, "same title");
         verify(waitForRendering())
     }
 

@@ -25,12 +25,13 @@
 #include <QStringList>
 #include <QTimer>
 
-Q_GLOBAL_STATIC(QVector<QString>, s_icons)
+Q_GLOBAL_STATIC_WITH_ARGS(QVector<QString>, s_icons, ({ QLatin1String("kdevelop"), QLatin1String("kalgebra"), QLatin1String("kmail"), QLatin1String("akregator"), QLatin1String("korganizer") }))
 
 DummyResource::DummyResource(QString  name, bool isTechnical, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
     , m_name(std::move(name))
     , m_state(State::Broken)
+    , m_iconName((*s_icons)[KRandom::random() % s_icons->size()])
     , m_addons({ PackageState(QStringLiteral("a"), QStringLiteral("aaaaaa"), false), PackageState(QStringLiteral("b"), QStringLiteral("aaaaaa"), false), PackageState(QStringLiteral("c"), QStringLiteral("aaaaaa"), false)})
     , m_isTechnical(isTechnical)
 {
@@ -38,10 +39,6 @@ DummyResource::DummyResource(QString  name, bool isTechnical, AbstractResourcesB
         m_screenshot = QUrl(QStringLiteral("http://screenshots.debian.net/screenshots/d/dolphin/9383_large.png"));
         m_screenshotThumbnail = QUrl(QStringLiteral("http://screenshots.debian.net/screenshots/d/dolphin/9383_small.png"));
     }
-    if (s_icons->isEmpty()) {
-        * s_icons = { QStringLiteral("kdevelop"), QStringLiteral("kalgebra"), QStringLiteral("kmail"), QStringLiteral("akregator"), QStringLiteral("korganizer") };
-    }
-    m_iconName = (*s_icons)[KRandom::random() % s_icons->size()];
 }
 
 QList<PackageState> DummyResource::addonsInformation()
@@ -56,7 +53,7 @@ QString DummyResource::availableVersion() const
 
 QStringList DummyResource::categories()
 {
-    return QStringList(QStringLiteral("dummy"));
+    return { QStringLiteral("dummy"), m_name.endsWith(QLatin1Char('3')) ? QStringLiteral("three") : QStringLiteral("notthree") };
 }
 
 QString DummyResource::comment()

@@ -50,6 +50,9 @@
     <Icon>kig</Icon>
     <Include>
         <Category>dummy</Category>
+        <Or>
+          <Category>three</Category>
+        </Or>
     </Include>
   </Menu>
   <Menu>
@@ -57,6 +60,9 @@
     <Icon>kdeconnect</Icon>
     <Include>
         <Category>dummy</Category>
+        <And>
+          <Category>notthree</Category>
+        </And>
     </Include>
   </Menu>
   <Menu>

@@ -93,7 +93,7 @@ void DummyBackend::populate(const QString& n)
 {
     int start = m_resources.count();
     for(int i=start; i<start+m_startElements; i++) {
-        QString name = n+QLatin1Char(' ')+QString::number(i);
+        const QString name = n+QLatin1Char(' ')+QString::number(i);
         DummyResource* res = new DummyResource(name, false, this);
         res->setState(AbstractResource::State(1+(i%3)));
         m_resources.insert(name, res);
