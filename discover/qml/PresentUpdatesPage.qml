@@ -31,7 +31,7 @@ ScrollView
                 }
                 componentFalse: RowLayout {
                     LabelBackground {
-                        text: updateModel.toUpdateCount
+                        text: updateModel.toUpdateCount + " (" + updateModel.updateSize+")"
                     }
                     Label {
                         text: i18n("updates selected")
