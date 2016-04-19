@@ -54,7 +54,7 @@ ConditionalLoader
                 roleDelegate: Item {
                     width: bg.width
                     implicitWidth: bg.implicitWidth
-                    property variant model
+                    property var model
                     LabelBackground {
                         id: bg
                         anchors.centerIn: parent
@@ -73,7 +73,7 @@ ConditionalLoader
                 title: i18n("Best Rating")
                 extended: gridRow.extended
                 roleDelegate: Rating {
-                    property variant model
+                    property var model
                     rating: model ? model.rating : 0
                     starSize: parent.height/3
                 }

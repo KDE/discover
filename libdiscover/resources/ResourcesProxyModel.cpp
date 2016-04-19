@@ -82,6 +82,9 @@ void ResourcesProxyModel::refreshSearch()
 
 void ResourcesProxyModel::setOriginFilter(const QString &origin)
 {
+    if (origin == originFilter())
+        return;
+
     if(origin.isEmpty())
         m_roleFilters.remove("origin");
     else
@@ -117,6 +120,9 @@ void ResourcesProxyModel::setFiltersFromCategory(Category *category)
 
 void ResourcesProxyModel::setShouldShowTechnical(bool show)
 {
+    if (shouldShowTechnical() == show)
+        return;
+
     if(!show)
         m_roleFilters.insert("isTechnical", false);
     else

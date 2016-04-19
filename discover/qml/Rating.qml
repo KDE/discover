@@ -43,18 +43,22 @@ RowLayout
 
             width: height
             icon: "rating"
-            opacity: (mouse.containsMouse ? 0.7
+            opacity: (view.editable && mouse.item.containsMouse ? 0.7
                         : (view.max/theRepeater.count*index)>view.rating ? 0.2
                         : 1)
 
-            MouseArea {
+            ConditionalLoader {
                 id: mouse
-                enabled: editable
-                hoverEnabled: editable
 
                 anchors.fill: parent
-                onClicked: rating = (max/theRepeater.model*index)
+                condition: view.editable
+                componentTrue: MouseArea {
+                    hoverEnabled: true
 
+                    onClicked: rating = (max/theRepeater.model*index)
+
+                }
+                componentFalse: null
             }
         }
     }
