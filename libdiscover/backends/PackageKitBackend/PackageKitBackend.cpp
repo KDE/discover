@@ -56,6 +56,12 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     Q_ASSERT(b && "must be able to open the appstream database");
     if (!b) {
         qWarning() << "Couldn't open the AppStream database";
+
+        auto msg = new QAction(i18n("Got it"), this);
+        msg->setWhatsThis(i18n("Please make sure that Appstream is properly set up on your system"));
+        msg->setPriority(QAction::HighPriority);
+        connect(msg, &QAction::triggered, msg, [msg](){ msg->setVisible(false); });
+        m_messageActions << msg;
     }
     reloadPackageList();
 
