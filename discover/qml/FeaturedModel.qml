@@ -62,7 +62,7 @@ ListModel
                 "color": alternateIfNull(currentData.color, "red"),
                 "image": currentData.image,
                 "icon": alternateIfNull(currentData.icon, "kde"),
-                "comment": alternateIfNull(currentData.comment, "&nbsp;"),
+                "comment": alternateIfNull(currentData.comment, ""),
                 "packageName": alternateIfNull(currentData.package, ""),
                 "url": currentData.url
             })
