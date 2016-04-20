@@ -34,17 +34,21 @@ RowLayout
     clip: true
     spacing: 0
 
+    readonly property var ratingIndex: (theRepeater.count/view.max)*view.rating
+
     Repeater {
         id: theRepeater
         model: 5
         delegate: QIconItem {
             Layout.minimumWidth: view.starSize
             Layout.minimumHeight: view.starSize
+            Layout.preferredWidth: view.starSize
+            Layout.preferredHeight: view.starSize
 
             width: height
             icon: "rating"
             opacity: (view.editable && mouse.item.containsMouse ? 0.7
-                        : (view.max/theRepeater.count*index)>view.rating ? 0.2
+                        : index>=view.ratingIndex ? 0.2
                         : 1)
 
             ConditionalLoader {
@@ -54,9 +58,7 @@ RowLayout
                 condition: view.editable
                 componentTrue: MouseArea {
                     hoverEnabled: true
-
                     onClicked: rating = (max/theRepeater.model*index)
-
                 }
                 componentFalse: null
             }
