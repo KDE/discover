@@ -26,6 +26,7 @@ import org.kde.discover 1.0
 
 GridLayout
 {
+    clip: true
     id: layout
     property QtObject application
 
