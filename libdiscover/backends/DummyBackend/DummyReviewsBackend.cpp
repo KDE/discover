@@ -54,7 +54,7 @@ void DummyReviewsBackend::initialize()
     foreach(AbstractResource* app, b->allResources()) {
         if (m_ratings.contains(app))
             continue;
-        auto randomRating = qrand()%15;
+        auto randomRating = qrand()%10;
         Rating* rating = new Rating(app->packageName(), 15, randomRating, QStringLiteral("\"0, 0, 0, 4, %1\"").arg(randomRating));
         rating->setParent(this);
         m_ratings.insert(app, rating);
