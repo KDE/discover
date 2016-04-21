@@ -324,9 +324,9 @@ QList<AbstractResource*> KNSBackend::searchPackageName(const QString& searchText
     return ret;
 }
 
-QVector< AbstractResource* > KNSBackend::allResources() const
+QVector<AbstractResource*> KNSBackend::allResources() const
 {
-    return m_resourcesByName.values().toVector();
+    return containerValues<QVector<AbstractResource*>>(m_resourcesByName);
 }
 
 bool KNSBackend::isFetching() const

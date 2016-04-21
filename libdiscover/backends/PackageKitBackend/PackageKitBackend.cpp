@@ -231,7 +231,7 @@ void PackageKitBackend::refreshDatabase()
 
 QVector<AbstractResource*> PackageKitBackend::allResources() const
 {
-    return m_packages.packages.values().toVector();
+    return containerValues<QVector<AbstractResource*>>(m_packages.packages);
 }
 
 AbstractResource* PackageKitBackend::resourceByPackageName(const QString& name) const

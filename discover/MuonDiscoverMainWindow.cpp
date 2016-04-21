@@ -351,5 +351,5 @@ void MuonDiscoverMainWindow::loadTest(const QUrl& url)
 
 QWindow* MuonDiscoverMainWindow::rootObject() const
 {
-    return qobject_cast<QWindow*>(m_engine->rootObjects().first());
+    return qobject_cast<QWindow*>(m_engine->rootObjects().at(0));
 }

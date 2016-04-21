@@ -36,6 +36,17 @@ class AbstractResource;
 class AbstractBackendUpdater;
 class KActionCollection;
 
+template <typename T, typename W>
+static T containerValues(const W& container)
+{
+    T ret;
+    ret.reserve(container.size());
+    for(auto a : container) {
+        ret.push_back(a);
+    }
+    return ret;
+}
+
 /**
  * \class AbstractResourcesBackend  AbstractResourcesBackend.h "AbstractResourcesBackend.h"
  *
