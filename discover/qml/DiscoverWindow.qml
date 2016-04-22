@@ -123,31 +123,25 @@ Kirigami.ApplicationWindow
 
     globalDrawer: DiscoverWindow_PlasmaPhone {}
 
-    onCurrentTopLevelChanged: {
-        if(currentTopLevel==null)
-            return
+    Component {
+        id: menuComponent
+        Kirigami.Page {
+            title: "bananas"
+            Rectangle {
+                anchors.fill: parent
+                color: "red"
+            }
+        }
+    }
 
+    onCurrentTopLevelChanged: {
         if(currentTopLevel.status==Component.Error) {
             console.log("status error: "+currentTopLevel.errorString())
         }
         var stackView = window.pageStack;
-        while(stackView.depth>1) {
-            var obj = stackView.pop()
-            if(obj)
-                obj.destroy(2000)
-        }
-        if(stackView.currentItem) {
-            stackView.currentItem.destroy(2000)
-        }
-        var page;
-        try {
-            page = currentTopLevel.createObject(stackView)
-//             console.log("created ", currentTopLevel)
-        } catch (e) {
-            console.log("error: "+e)
-            console.log("comp error: "+currentTopLevel.errorString())
-        }
-        stackView.replace(page, {}, window.status!=Component.Ready)
+        stackView.clear()
+        stackView.push(menuComponent, {}, window.status!=Component.Ready)
+        stackView.push(currentTopLevel, {}, window.status!=Component.Ready)
     }
 
     Connections {
