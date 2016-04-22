@@ -11,7 +11,7 @@ Kirigami.Page {
     id: page
     clip: true
     readonly property real proposedMargin: (width-Helpers.actualWidth)/2
-    readonly property string title: i18n("Sources")
+    title: i18n("Sources")
     readonly property string icon: "view-filter"
 
     Menu {
