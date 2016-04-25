@@ -26,6 +26,7 @@ Item {
     property real topMargin: 20
     default property Item content
     height: Math.max(SystemFonts.generalFont.pointSize*5, content.implicitHeight + 2*item.internalMargin) + item.anchors.topMargin
+    width: parent.width
 
     GridItem
     {

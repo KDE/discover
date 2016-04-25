@@ -13,7 +13,6 @@ Kirigami.Page
 
     title: i18n("System Update")
     readonly property var icon: "system-software-update"
-    readonly property real proposedMargin: (width-Helpers.actualWidth)/2
 
     ResourcesUpdatesModel {
         id: resourcesUpdatesModel
@@ -30,13 +29,11 @@ Kirigami.Page
         anchors.fill: parent
         condition: updateModel.hasUpdates || resourcesUpdatesModel.isProgressing
         componentTrue: PresentUpdatesPage {
-            proposedMargin: page.proposedMargin
         }
 
         componentFalse: Item {
             id: noUpdatesView
             ColumnLayout {
-                width: Helpers.actualWidth
                 anchors.centerIn: parent
                 BusyIndicator {
                     id: busy

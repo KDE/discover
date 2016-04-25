@@ -41,11 +41,8 @@ Kirigami.Page {
         condition: Helpers.isCompact
 
         componentFalse: Item {
-            readonly property real proposedMargin: (width-Helpers.actualWidth)/2
-
             GridLayout {
-                x: proposedMargin
-                width: Helpers.actualWidth
+                anchors.fill: parent
                 height: parent.height
                 columns: 2
                 rows: 2
@@ -97,7 +94,7 @@ Kirigami.Page {
 
                 ColumnLayout {
                     Layout.fillWidth: true
-                    Layout.preferredWidth: Helpers.actualWidth/3
+                    Layout.preferredWidth: parent.width/3
 
                     Item {
                         id: screenshotsPlaceholder
@@ -128,7 +125,7 @@ Kirigami.Page {
                     id: scroll
                     Layout.fillHeight: true
                     Layout.fillWidth: true
-                    Layout.preferredWidth: Helpers.actualWidth/2
+                    Layout.preferredWidth: parent.width/2
 
                     ApplicationDescription {
                         width: scroll.viewport.width-margin/2

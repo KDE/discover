@@ -41,7 +41,6 @@ Kirigami.Page {
     property string sectionProperty: ""
     property Component sectionDelegate: null
     property bool preferList: false
-    readonly property real proposedMargin: (width-Helpers.actualWidth)/2
     property Component header: category==null ? null : categoryHeaderComponent
     property Component extendedToolBar: null
     property var icon: category ? category.icon : search !== "" ? "edit-find" : "go-home"
@@ -183,7 +182,6 @@ Kirigami.Page {
             height: implicitHeight
             spacing: 10
             maxtopwidth: viewLoader.sourceComponent == listComponent ? 100 : viewLoader.item.cellWidth
-            x: viewLoader.sourceComponent == listComponent ? page.proposedMargin : 0
         }
     }
     
@@ -224,7 +222,6 @@ Kirigami.Page {
             text: section
             anchors {
                 right: parent.right
-                rightMargin: page.proposedMargin
             }
         }
     }
@@ -237,7 +234,6 @@ Kirigami.Page {
                 section)
             anchors {
                 right: parent.right
-                rightMargin: page.proposedMargin
             }
         }
     }

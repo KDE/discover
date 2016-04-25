@@ -9,7 +9,6 @@ import org.kde.kquickcontrolsaddons 2.0
 ScrollView
 {
     id: page
-    property real proposedMargin: 0
 
     function start() {
         resourcesUpdatesModel.prepare()
@@ -19,9 +18,6 @@ ScrollView
     ListView
     {
         header: PageHeader {
-            x: proposedMargin
-            width: Helpers.actualWidth
-
             ConditionalLoader {
                 anchors.fill: parent
 
@@ -83,8 +79,6 @@ ScrollView
         section {
             property: "section"
             delegate: Label {
-                x: proposedMargin
-                width: Math.min(Helpers.actualWidth, page.viewport.width)
                 height: 1.5*implicitHeight
                 horizontalAlignment: Text.AlignRight
                 verticalAlignment: Text.AlignVCenter
@@ -93,8 +87,7 @@ ScrollView
         }
 
         delegate: GridItem {
-            x: proposedMargin
-            width: Math.min(Helpers.actualWidth, page.viewport.width)
+            width: parent.width
             height: layout.extended ? 200 : layout.implicitHeight + 2*internalMargin
 
             ColumnLayout {

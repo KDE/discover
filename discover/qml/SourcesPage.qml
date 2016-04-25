@@ -10,7 +10,6 @@ import "navigation.js" as Navigation
 Kirigami.Page {
     id: page
     clip: true
-    readonly property real proposedMargin: (width-Helpers.actualWidth)/2
     title: i18n("Sources")
     readonly property string icon: "view-filter"
 
@@ -27,9 +26,6 @@ Kirigami.Page {
             model: SourcesModel
 
             header: PageHeader {
-                x: page.proposedMargin
-                width: Helpers.actualWidth
-
                 RowLayout {
                     anchors.verticalCenter: parent.verticalCenter
                     ToolButton {
@@ -62,8 +58,7 @@ Kirigami.Page {
 
             delegate: ColumnLayout {
                 id: sourceDelegate
-                x: page.proposedMargin
-                width: Math.min(Helpers.actualWidth, view.viewport.width)
+                width: parent.width
 
                 property QtObject sourceBackend: model.sourceBackend
                 AddSourceDialog {

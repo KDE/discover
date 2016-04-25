@@ -17,9 +17,6 @@ ApplicationsListPage {
     readonly property string title: i18n("Installed")
 
     header: PageHeader {
-        width: Helpers.actualWidth
-        x: page.proposedMargin
-
         RowLayout {
             LabelBackground {
                 text: page.model.count

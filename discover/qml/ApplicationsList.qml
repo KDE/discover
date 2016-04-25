@@ -32,7 +32,6 @@ ScrollView {
     property alias header: view.header
     property alias section: view.section
     property alias model: view.model
-    readonly property real proposedMargin: Helpers.isCompact ? 0 : (width-Helpers.actualWidth)/2
 
     ListView
     {
@@ -43,8 +42,7 @@ ScrollView {
         delegate: GridItem {
                 id: delegateArea
 //                 checked: view.currentIndex==index
-                width: Math.min(Helpers.actualWidth, parentItem.viewport.width)
-                x: parentItem.proposedMargin
+                width: parent.width
                 property real contHeight: height*0.8
                 height: lowLayout.implicitHeight
                 internalMargin: 0
