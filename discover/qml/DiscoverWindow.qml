@@ -127,6 +127,7 @@ Kirigami.ApplicationWindow
         id: menuComponent
         Kirigami.Page {
             title: "bananas"
+            implicitWidth: 150
             Rectangle {
                 anchors.fill: parent
                 color: "red"
