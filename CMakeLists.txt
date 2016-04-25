@@ -18,7 +18,7 @@ include(ECMInstallIcons)
 include(ECMMarkAsTest)
 include(GenerateExportHeader)
 
-find_package(KF5 REQUIRED CoreAddons Config DBusAddons I18n Declarative)
+find_package(KF5 REQUIRED CoreAddons Config Crash DBusAddons I18n Declarative)
 find_package(KF5TextWidgets REQUIRED)
 
 find_package(packagekitqt5)
@@ -33,6 +33,10 @@ find_package(AppstreamQt 0.9.2)
 find_package(KF5Attica)
 find_package(KF5NewStuff)
 # find_package(BODEGA QUIET)
+
+if (${KF5_VERSION} VERSION_GREATER "5.14.0")
+    add_definitions(-DWITH_KCRASH_INIT)
+endif()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
