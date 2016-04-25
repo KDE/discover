@@ -23,7 +23,7 @@ Rectangle
             rightMargin: 20
         }
 
-        font.pixelSize: 72
+        font.pointSize: 72
         minimumPixelSize: 10
         verticalAlignment: Text.AlignVCenter
 

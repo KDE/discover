@@ -19,9 +19,9 @@ Item
     property alias exclusiveGroup: button.exclusiveGroup
     property QtObject action
 
-    Layout.minimumHeight: label.font.pixelSize
+    Layout.minimumHeight: label.font.pointSize
     Layout.minimumWidth: layout.Layout.minimumWidth
-    Layout.preferredHeight: label.font.pixelSize*3
+    Layout.preferredHeight: label.font.pointSize*3
 
     clip: true
     enabled: action.enabled
@@ -55,8 +55,8 @@ Item
                 id: icon
                 anchors.verticalCenter: parent.verticalCenter
                 Layout.alignment: Qt.AlignVCenter
-                Layout.preferredWidth: label.font.pixelSize*2
-                Layout.preferredHeight: label.font.pixelSize*2
+                Layout.preferredWidth: label.font.pointSize*2
+                Layout.preferredHeight: label.font.pointSize*2
                 Layout.maximumHeight: button.height
                 icon: root.action ? root.action.iconName : ""
                 enabled: root.enabled

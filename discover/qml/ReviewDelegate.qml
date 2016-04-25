@@ -82,7 +82,7 @@ Item
             anchors.top: parent.top
             anchors.right: parent.right
             rating: model.rating
-            starSize: content.font.pixelSize
+            starSize: content.font.pointSize
         }
     }
 }
