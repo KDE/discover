@@ -195,7 +195,7 @@ QUrl MuonDiscoverMainWindow::featuredSource() const
 
 QUrl MuonDiscoverMainWindow::prioritaryFeaturedSource() const
 {
-    return QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::DataLocation, QStringLiteral("featured.json")));
+    return QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("plasmadiscover/featured.json")));
 }
 
 bool MuonDiscoverMainWindow::isCompact() const
