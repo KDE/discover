@@ -37,9 +37,8 @@ ToolBar
         repeat: false
         interval: 200
         onTriggered: {
-            if (root.search.text !== "")
-                window.stack.currentItem.searchFor(root.search.text)
-            else if(backAction.enabled)
+            var ret = window.stack.currentItem.searchFor(root.search.text)
+            if (ret === true)
                 backAction.action.trigger()
         }
     }
