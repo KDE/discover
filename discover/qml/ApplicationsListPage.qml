@@ -50,6 +50,7 @@ Item {
     function searchFor(text) {
         appsModel.search = text
         appsModel.isSortingByRelevancy = true
+        return text === "" && state === "list"
     }
     
     ApplicationProxyModel {
