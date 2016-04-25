@@ -8,6 +8,7 @@
   <name xml:lang="ca-valencia">Discover</name>
   <name xml:lang="cs">Discover</name>
   <name xml:lang="de">Discover</name>
+  <name xml:lang="en-GB">Discover</name>
   <name xml:lang="es">Discover</name>
   <name xml:lang="gl">Discover</name>
   <name xml:lang="nl">Ontdekken</name>
@@ -29,6 +30,7 @@
   <summary xml:lang="ca-valencia">Discover</summary>
   <summary xml:lang="cs">Discover</summary>
   <summary xml:lang="de">Discover</summary>
+  <summary xml:lang="en-GB">Discover</summary>
   <summary xml:lang="es">Discover</summary>
   <summary xml:lang="gl">Discover</summary>
   <summary xml:lang="nl">Ontdekken</summary>
@@ -49,6 +51,7 @@
     <p>Haven’t you ever found a tool that was perfect for your need but you only found it after some time stumbling upon it on the net? When considering to install an application, don’t you wonder sometimes if it’s really worth it? Or if it’s actually what you’re looking for?</p>
     <p xml:lang="ca">Alguna vegada heu trobat una eina que era perfecta per a les vostres necessitats però l'heu vist després d'ensopegar-hi per la xarxa? Quan considereu instal·lar una aplicació, voleu saber si val la pena? O si és la que realment esteu cercant?</p>
     <p xml:lang="ca-valencia">Alguna vegada heu trobat una eina que era perfecta per a les vostres necessitats però l'heu vist després d'ensopegar-hi per la xarxa? Quan considereu instal·lar una aplicació, voleu saber si val la pena? O si és la que realment esteu cercant?</p>
+    <p xml:lang="en-GB">Haven’t you ever found a tool that was perfect for your need but you only found it after some time stumbling upon it on the net? When considering to install an application, don’t you wonder sometimes if it’s really worth it? Or if it’s actually what you’re looking for?</p>
     <p xml:lang="es">¿Ha encontrado alguna vez una herramienta perfecta para sus necesidades aunque solo la ha encontrado tras perder un tiempo valioso en Internet? Cuando considera instalar una aplicación, ¿no se pregunta a veces si realmente merece la pena o si realmente es lo que estaba buscando?</p>
     <p xml:lang="gl">Nunca lle pasou que atopou unha ferramenta perfecta para o que necesitaba, pero que para atopala tivo que pasar un bo anaco buscando en internet? Á hora de instalar un programa, non se pregunta ás veces se paga a pena? Ou se realmente é o programa que está a buscar?</p>
     <p xml:lang="nl">Hebt u niet ooit een hulpmiddel gevonden dat perfect was voor uw behoefte maar dat u alleen na enige tijd toevallig vond op het internet? Bij de overweging om een toepassing te installeren, hebt u uzelf dan soms niet afgevraagd of het dat werkelijk waard was? Of of het echt was waarnaar u op zoek was?</p>
@@ -68,6 +71,7 @@
     <p>Discover helps users easily and quickly find applications or tools. By allowing to navigate a software library by search, software categories, top lists along with detailed application information that includes screenshots and reviews, users can more quickly find applications that suit their needs.</p>
     <p xml:lang="ca">El Discover ajuda als usuaris a cercar aplicacions i eines fàcilment i ràpidament. Permet explorar una biblioteca de programari cercant per categories de programari, llistes més valorades, junt amb informació detallada que inclou captures de pantalla i ressenyes. Els usuaris poden cercar ràpidament aplicacions que s'ajustin a les seves necessitats.</p>
     <p xml:lang="ca-valencia">El Discover ajuda als usuaris a cercar aplicacions i eines fàcilment i ràpidament. Permet explorar una biblioteca de programari cercant per categories de programari, llistes més valorades, junt amb informació detallada que inclou captures de pantalla i ressenyes. Els usuaris poden cercar ràpidament aplicacions que s'ajusten a les seues necessitats.</p>
+    <p xml:lang="en-GB">Discover helps users easily and quickly find applications or tools. By allowing to navigate a software library by search, software categories, top lists along with detailed application information that includes screenshots and reviews, users can more quickly find applications that suit their needs.</p>
     <p xml:lang="es">Discover le ayuda a encontrar aplicaciones y herramientas de una forma rápida y fácil. Al poder explorar una biblioteca de software usando búsquedas, categorías de software y listas de puntuaciones, junto a una detallada información sobre las aplicaciones que incluye capturas de pantalla y comentarios, los usuarios pueden encontrar más rápidamente aplicaciones que satisfagan sus necesidades.</p>
     <p xml:lang="gl">Discover permite atopar programas e ferramentas de maneira fácil e rápida. Atope rapidamente programas que se axustan ás súas necesidades explorando a biblioteca de software mediante buscas, categorías de software, e listas de programas máis usados con información detallada dos programas, incluíndo capturas de pantalla e opinións de usuarios.</p>
     <p xml:lang="nl">Discover helpt gebruikers om gemakkelijk en snel een toepassing of hulpmiddel te vinden. Door navigatie te bieden in een softwarebibliotheek door zoeken in softwarecategorieën, lijsten met toppers, samen met gedetailleerde informatie over toepassingen die schermafdrukken en reviews bevatten, kunnen gebruikers sneller toepassingen vinden die in hun behoeften voorzien.</p>
@@ -87,6 +91,7 @@
     <p>Furthermore, Discover will let you manage the different sources of software you have and manage the applications you’ve already installed in the past but you don’t want anymore.</p>
     <p xml:lang="ca">Per altra banda, el Discover permet gestionar les diferents fonts de programari que tingueu i gestionar les aplicacions que ja heu instal·lat en el passat però ja no desitgeu.</p>
     <p xml:lang="ca-valencia">Per altra banda, el Discover permet gestionar les diferents fonts de programari que tingueu i gestionar les aplicacions que ja heu instal·lat en el passat però ja no desitgeu.</p>
+    <p xml:lang="en-GB">Furthermore, Discover will let you manage the different sources of software you have and manage the applications you’ve already installed in the past but you don’t want anymore.</p>
     <p xml:lang="es">Además, Discover le permite gestionar las distintas fuentes de software de las que disponga y las aplicaciones que ya hubiera instalado en el pasado y que ya no desee.</p>
     <p xml:lang="gl">Ademais, Discover permitiralle xestionar as distintas fontes de software de que dispón e xestionar os programas que ten instalados pero que xa non lle interesan.</p>
     <p xml:lang="nl">Verder laat Discover u de verschillende bronnen van software die u hebt beheren, evenals de al eerder geïnstalleerde toepassingen maar die u niet meer wilt.</p>
