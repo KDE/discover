@@ -110,6 +110,7 @@ Information {
                         text: itemDelegate.modelData.text
                         font.bold: true
                         elide: Text.ElideRight
+                        maximumLineCount: 1
                     }
 
                     Label {
@@ -117,6 +118,7 @@ Information {
                         text: itemDelegate.modelData.comment
                         visible: text !== ""
                         elide: Text.ElideRight
+                        maximumLineCount: 1
                     }
                 }
             }
