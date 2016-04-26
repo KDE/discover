@@ -103,7 +103,12 @@ void PackageKitBackend::reloadPackageList()
     }
 
     foreach(const Appstream::Component& component, m_appdata.allComponents()) {
-        const auto res = new AppPackageKitResource(component, this);;
+        if (component.packageNames().isEmpty()) {
+            qDebug() << "no packages for" << component.name();
+            continue;
+        }
+
+        const auto res = new AppPackageKitResource(component, this);
         m_updatingPackages.packages[component.id()] = res;
         foreach (const QString& pkg, component.packageNames()) {
             m_updatingPackages.packageToApp[pkg] += component.id();
