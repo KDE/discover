@@ -116,7 +116,7 @@ ConditionalLoader
                 sortRole: "ratingCount"
                 filteredCategory: categoryModel.displayedCategory
                 title: i18n("Most Popular")
-                extended: gridRow.extended
+                extended: false
                 roleDelegate: Item {
                     width: bg.width
                     implicitWidth: bg.implicitWidth
