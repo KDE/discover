@@ -19,6 +19,7 @@
 
 #include <QApplication>
 #include <KAboutData>
+#include <KCrash>
 #include <KDBusService>
 #include <KLocalizedString>
 #include <QCommandLineParser>
@@ -46,6 +47,9 @@ int main(int argc, char** argv)
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("muondiscover")));
     app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+#ifdef WITH_KCRASH_INIT
+    KCrash::initialize();
+#endif
     KLocalizedString::setApplicationDomain("plasma-discover");
     KAboutData about(QStringLiteral("muondiscover"), i18n("Discover"), version, i18n("An application explorer"),
                      KAboutLicense::GPL, i18n("© 2010-2016 Plasma Development Team"));
