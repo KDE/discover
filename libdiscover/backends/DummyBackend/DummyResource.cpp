@@ -35,7 +35,7 @@ DummyResource::DummyResource(QString name, bool isTechnical, AbstractResourcesBa
     , m_addons({ PackageState(QStringLiteral("a"), QStringLiteral("aaaaaa"), false), PackageState(QStringLiteral("b"), QStringLiteral("aaaaaa"), false), PackageState(QStringLiteral("c"), QStringLiteral("aaaaaa"), false)})
     , m_isTechnical(isTechnical)
 {
-    const bool hasScreenshot = name == QStringLiteral("Dummy 1") || KRandom::random() % 2;
+    const bool hasScreenshot = m_name == QStringLiteral("Dummy 1") || KRandom::random() % 2;
     if(hasScreenshot) {
         m_screenshot = QUrl(QStringLiteral("http://screenshots.debian.net/screenshots/d/dolphin/9383_large.png"));
         m_screenshotThumbnail = QUrl(QStringLiteral("http://screenshots.debian.net/screenshots/d/dolphin/9383_small.png"));
