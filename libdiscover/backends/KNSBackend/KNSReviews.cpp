@@ -56,14 +56,12 @@ Rating* KNSReviews::ratingForApplication(AbstractResource* app) const
 
     Attica::Content c = resource->content();
     Q_ASSERT(c.rating()<=100);
-    QVariantMap data = {
-        { QStringLiteral("package_name"), QVariant::fromValue(app->packageName()) },
-        { QStringLiteral("app_name"), QVariant::fromValue(app->name()) },
-        { QStringLiteral("ratings_total"), QVariant::fromValue(c.numberOfComments()) },
-        { QStringLiteral("ratings_average"), QVariant::fromValue(c.rating()/20) },
-        { QStringLiteral("histogram"), QVariant::fromValue<QString>(QLatin1Char('[')+QString::number(c.numberOfComments()*c.rating())+QLatin1Char(']')) }
-    };
-    return new Rating(data);
+    return new Rating(
+        app->packageName(),
+        c.numberOfComments(),
+        c.rating()/10,
+        QLatin1Char('[')+QString::number(c.numberOfComments()*c.rating())+QLatin1Char(']')
+    );
 }
 
 void KNSReviews::fetchReviews(AbstractResource* app, int page)
