@@ -27,7 +27,7 @@
 
 Q_GLOBAL_STATIC_WITH_ARGS(QVector<QString>, s_icons, ({ QLatin1String("kdevelop"), QLatin1String("kalgebra"), QLatin1String("kmail"), QLatin1String("akregator"), QLatin1String("korganizer") }))
 
-DummyResource::DummyResource(QString  name, bool isTechnical, AbstractResourcesBackend* parent)
+DummyResource::DummyResource(QString name, bool isTechnical, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
     , m_name(std::move(name))
     , m_state(State::Broken)
@@ -35,7 +35,8 @@ DummyResource::DummyResource(QString  name, bool isTechnical, AbstractResourcesB
     , m_addons({ PackageState(QStringLiteral("a"), QStringLiteral("aaaaaa"), false), PackageState(QStringLiteral("b"), QStringLiteral("aaaaaa"), false), PackageState(QStringLiteral("c"), QStringLiteral("aaaaaa"), false)})
     , m_isTechnical(isTechnical)
 {
-    if(KRandom::random() % 2) {
+    const bool hasScreenshot = name == QStringLiteral("Dummy 1") || KRandom::random() % 2;
+    if(hasScreenshot) {
         m_screenshot = QUrl(QStringLiteral("http://screenshots.debian.net/screenshots/d/dolphin/9383_large.png"));
         m_screenshotThumbnail = QUrl(QStringLiteral("http://screenshots.debian.net/screenshots/d/dolphin/9383_small.png"));
     }
