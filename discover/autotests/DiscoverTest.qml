@@ -66,6 +66,9 @@ Item
         return waitForSignal(Helpers.mainWindow, "frameSwapped")
     }
 
+    property string currentTest: "<null>"
+    onCurrentTestChanged: console.log("changed to test", currentTest)
+
     Connections {
         target: ResourcesModel
         property bool done: false
@@ -76,6 +79,7 @@ Item
             done = true;
             for(var v in testRoot) {
                 if (v.indexOf("test_") == 0) {
+                    testRoot.currentTest = v;
                     testRoot.reset();
                     testRoot[v]();
                 }
