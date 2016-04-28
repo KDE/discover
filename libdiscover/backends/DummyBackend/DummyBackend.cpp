@@ -45,7 +45,7 @@ DummyBackend::DummyBackend(QObject* parent)
     , m_updater(new StandardBackendUpdater(this))
     , m_reviews(new DummyReviewsBackend(this))
     , m_fetching(true)
-    , m_startElements(320)
+    , m_startElements(120)
 {
     QTimer::singleShot(500, this, &DummyBackend::toggleFetching);
     connect(m_reviews, &DummyReviewsBackend::ratingsReady, this, &DummyBackend::allDataChanged);
