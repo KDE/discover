@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Service
-Icon=plasma
-X-KDE-Library=kns-backend
-X-KDE-PluginInfo-Name=knsplasmoids-backend
-X-Muon-Arguments=plasmoids.knsrc
