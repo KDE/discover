@@ -78,7 +78,7 @@ private Q_SLOTS:
         m->setBackend(rum);
 
         rum->prepare();
-        QCOMPARE(m_appBackend->updatesCount(), m_appBackend->property("startElements").toInt()*2/3-1);
+        QCOMPARE(m_appBackend->updatesCount(), m_appBackend->property("startElements").toInt()*2/3);
         QCOMPARE(m->hasUpdates(), true);
 
         for(int i=0, c=m->rowCount(); i<c; ++i) {
