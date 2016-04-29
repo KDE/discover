@@ -88,7 +88,7 @@ void KNSBackend::setMetaData(const QString& path)
     KConfigGroup service = cfg.group("Desktop Entry");
 
     m_iconName = service.readEntry("Icon", QString());
-    QString knsrc = service.readEntry("X-Muon-Arguments", QString());
+    const QString knsrc = service.readEntry("X-Muon-Arguments", QString());
     m_name = QStandardPaths::locate(QStandardPaths::GenericConfigLocation, knsrc);
     if (m_name.isEmpty()) {
         QString p = QFileInfo(path).dir().filePath(knsrc);
@@ -102,22 +102,19 @@ void KNSBackend::setMetaData(const QString& path)
         qWarning() << "Couldn't find knsrc file" << knsrc;
         return;
     }
-    KConfig conf(m_name);
-    KConfigGroup group;
 
-    if (conf.hasGroup("KNewStuff3"))
-        group = conf.group("KNewStuff3");
-
-    if (!group.isValid()) {
+    const KConfig conf(m_name);
+    if (!conf.hasGroup("KNewStuff3")) {
         markInvalid();
         qWarning() << "Config group not found! Check your KNS3 installation.";
         return;
     }
 
-    QStringList cats = group.readEntry("Categories", QStringList());
+    const KConfigGroup group = conf.group("KNewStuff3");
     initManager(QUrl(group.readEntry("ProvidersUrl", QString())));
     connect(m_atticaManager.data(), &Attica::ProviderManager::defaultProvidersLoaded, this, &KNSBackend::startFetchingCategories);
 
+    const QStringList cats = group.readEntry("Categories", QStringList());
     foreach(const QString& c, cats) {
         m_categories.insert(c, Attica::Category());
     }
