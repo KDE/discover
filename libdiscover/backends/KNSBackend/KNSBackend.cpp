@@ -167,8 +167,9 @@ void KNSBackend::startFetchingCategories()
         return;
     }
 
+
     setFetching(true);
-    m_provider = m_atticaManager->providers().first();
+    m_provider = m_atticaManager->providers().last();
 
     Attica::ListJob<Attica::Category>* job = m_provider.requestCategories();
     connect(job, &Attica::GetJob::finished, this, &KNSBackend::categoriesLoaded);
