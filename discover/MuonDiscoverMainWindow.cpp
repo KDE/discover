@@ -164,11 +164,11 @@ void MuonDiscoverMainWindow::openCategory(const QString& category)
 
 void MuonDiscoverMainWindow::openApplication(const QString& app)
 {
-    rootObject()->setProperty("defaultStartup", false);
     m_appToBeOpened = app;
-    triggerOpenApplication();
     if(!m_appToBeOpened.isEmpty()) {
-        if (ResourcesModel::global()->isFetching()) {
+        rootObject()->setProperty("defaultStartup", false);
+
+        if (ResourcesModel::global()->isFetching() || ResourcesModel::global()->backends().isEmpty()) {
             connect(ResourcesModel::global(), &ResourcesModel::rowsInserted, this, &MuonDiscoverMainWindow::triggerOpenApplication);
         } else {
             triggerOpenApplication();

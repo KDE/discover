@@ -325,6 +325,9 @@ QVector< AbstractResourcesBackend* > ResourcesModel::backends() const
 
 AbstractResource* ResourcesModel::resourceByPackageName(const QString& name)
 {
+    if (m_backends.isEmpty()) {
+        qWarning() << "looking for package" << name << "without any backends loaded";
+    }
     foreach(AbstractResourcesBackend* backend, m_backends)
     {
         AbstractResource* res = backend->resourceByPackageName(name);
