@@ -45,6 +45,20 @@
 
 MUON_BACKEND_PLUGIN(KNSBackend)
 
+QDebug operator<<(QDebug s, const Attica::Category& cat) {
+    const QString name = cat.isValid() ? cat.name() : QStringLiteral("Invalid");
+    s.nospace() << "Category(" << name << ')';
+    return s.space();
+}
+
+QDebug operator<<(QDebug s, const Attica::Provider& prov) {
+    if (prov.isValid())
+        s.nospace() << "Category(" << prov.name() << ':' << prov.baseUrl() << ')';
+    else
+        s.nospace() << "Category(Invalid)";
+    return s.space();
+}
+
 QSharedPointer<Attica::ProviderManager> KNSBackend::m_atticaManager;
 
 void KNSBackend::initManager(const QUrl& entry)
@@ -77,7 +91,7 @@ KNSBackend::~KNSBackend()
 
 void KNSBackend::markInvalid()
 {
-    qWarning() << "invalid kns backend!";
+    qWarning() << "invalid kns backend!" << m_name;
     m_isValid = false;
     setFetching(false);
 }
@@ -186,6 +200,7 @@ void KNSBackend::categoriesLoaded(Attica::BaseJob* job)
             ++it;
     }
     if (m_categories.isEmpty()) {
+        qDebug() << "didn't find categories" << categoryList;
         markInvalid();
         return;
     }
