@@ -107,7 +107,10 @@ int main(int argc, char** argv)
         foreach(const QString &arg, parser.positionalArguments()) {
             QUrl url(arg);
             if (url.scheme() == QLatin1String("appstream")) {
-                mainWindow->openApplication(url.path());
+                mainWindow->openApplication(url.host());
+            } else {
+                QTextStream(stdout) << "unrecognized url" << url.toDisplayString() << '\n';
+                return 1;
             }
         }
 
