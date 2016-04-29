@@ -3,6 +3,7 @@ import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 1.0
 import org.kde.kquickcontrolsaddons 2.0
+import "navigation.js" as Navigation
 
 ColumnLayout
 {
@@ -11,7 +12,6 @@ ColumnLayout
     property bool isInstalling: false
     property alias isEmpty: addonsModel.isEmpty
     enabled: !addonsView.isInstalling
-    visible: !addonsView.isEmpty
     spacing: 5
 
     Heading {
@@ -58,7 +58,7 @@ ColumnLayout
     }
     
     RowLayout {
-        visible: addonsModel.hasChanges && !addonsView.isInstalling
+        readonly property bool active: addonsModel.hasChanges && !addonsView.isInstalling
         spacing: 5
 
         Button {
@@ -66,14 +66,22 @@ ColumnLayout
             text: i18n("Apply Changes")
             onClicked: addonsModel.applyChanges()
 
-            height: parent.visible ? implicitHeight : 0
+            visible: parent.active
         }
         Button {
             iconName: "document-revert"
             text: i18n("Discard")
             onClicked: addonsModel.discardChanges()
 
-            height: parent.visible ? implicitHeight : 0
+            visible: parent.active
+        }
+        Item {
+            Layout.fillWidth: true
+        }
+        Button {
+            text: i18n("More...")
+            visible: application.appstreamId !== ""
+            onClicked: Navigation.openExtends(application.appstreamId)
         }
     }
 }
