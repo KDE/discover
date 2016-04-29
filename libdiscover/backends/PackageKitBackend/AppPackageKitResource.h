@@ -30,7 +30,7 @@ class AppPackageKitResource : public PackageKitResource
     public:
         explicit AppPackageKitResource(const Appstream::Component& data, PackageKitBackend* parent);
 
-        QString appstreamId() const;
+        QString appstreamId() const override;
 
         bool isTechnical() const override;
         QString name() override;

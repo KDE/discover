@@ -68,6 +68,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QStringList mimetypes READ mimetypes CONSTANT)
     Q_PROPERTY(AbstractResourcesBackend* backend READ backend CONSTANT)
     Q_PROPERTY(Rating* rating READ rating NOTIFY ratingFetched)
+    Q_PROPERTY(QString appstreamId READ appstreamId CONSTANT)
     public:
         /**
          * This describes the state of the resource
@@ -146,6 +147,8 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         bool isFromSecureOrigin() const;
 
         virtual QStringList executables() const;
+
+        virtual QString appstreamId() const;
 
         bool canUpgrade();
         bool isInstalled();

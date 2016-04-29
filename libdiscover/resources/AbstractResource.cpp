@@ -114,3 +114,8 @@ Rating* AbstractResource::rating() const
     AbstractReviewsBackend* ratings = backend()->reviewsBackend();
     return ratings ? ratings->ratingForApplication(const_cast<AbstractResource*>(this)) : nullptr;
 }
+
+QString AbstractResource::appstreamId() const
+{
+    return {};
+}

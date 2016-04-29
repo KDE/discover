@@ -165,8 +165,12 @@ QList<PackageState> AppPackageKitResource::addonsInformation()
 
     QList<PackageState> ret;
     Q_FOREACH (AppPackageKitResource* r, res) {
-        qDebug() << "addons!" << r->packageName() << r->name();
         ret += PackageState(r->appstreamId(), r->name(), r->comment(), r->isInstalled());
     }
     return ret;
+}
+
+QStringList AppPackageKitResource::extends() const
+{
+    return m_appdata.extends();
 }
