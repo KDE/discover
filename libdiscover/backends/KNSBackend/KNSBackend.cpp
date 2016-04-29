@@ -131,6 +131,7 @@ void KNSBackend::setMetaData(const QString& path)
     connect(m_atticaManager.data(), &Attica::ProviderManager::defaultProvidersLoaded, this, &KNSBackend::startFetchingCategories);
 
     const QStringList cats = group.readEntry("Categories", QStringList());
+    Q_ASSERT(!cats.isEmpty());
     foreach(const QString& c, cats) {
         m_categories.insert(c, Attica::Category());
     }
