@@ -61,7 +61,7 @@ QDebug operator<<(QDebug s, const Attica::Provider& prov) {
 
 QSharedPointer<Attica::ProviderManager> KNSBackend::m_atticaManager;
 
-void KNSBackend::initManager(const QUrl& entry)
+bool KNSBackend::initManager(const QUrl& entry)
 {
     bool loadNeeded = false;
     if(!m_atticaManager) {
@@ -75,6 +75,7 @@ void KNSBackend::initManager(const QUrl& entry)
 
     if(loadNeeded)
         m_atticaManager->loadDefaultProviders();
+    return loadNeeded;
 }
 
 KNSBackend::KNSBackend(QObject* parent)
@@ -125,7 +126,8 @@ void KNSBackend::setMetaData(const QString& path)
     }
 
     const KConfigGroup group = conf.group("KNewStuff3");
-    initManager(QUrl(group.readEntry("ProvidersUrl", QString())));
+    const QUrl providerUrl(group.readEntry("ProvidersUrl", QString()));
+    const bool loaded = initManager(providerUrl);
     connect(m_atticaManager.data(), &Attica::ProviderManager::defaultProvidersLoaded, this, &KNSBackend::startFetchingCategories);
 
     const QStringList cats = group.readEntry("Categories", QStringList());
@@ -138,7 +140,7 @@ void KNSBackend::setMetaData(const QString& path)
     connect(m_manager, &KNS3::DownloadManager::entryStatusChanged, this, &KNSBackend::statusChanged);
 
     //otherwise this will be executed when defaultProvidersLoaded is emitted
-    if (!m_atticaManager->providers().isEmpty()) {
+    if (!loaded) {
         startFetchingCategories();
     }
 }

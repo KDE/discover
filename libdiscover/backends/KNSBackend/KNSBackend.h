@@ -77,7 +77,7 @@ public Q_SLOTS:
     void statusChanged(const KNS3::Entry& entry);
 
 private:
-    static void initManager(const QUrl& group);
+    static bool initManager(const QUrl& group);
     static QSharedPointer<Attica::ProviderManager> m_atticaManager;
     void setFetching(bool f);
     void markInvalid();
