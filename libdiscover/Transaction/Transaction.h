@@ -75,9 +75,7 @@ public:
     Q_ENUMS(Role)
 
     Transaction(QObject *parent, AbstractResource *resource,
-                 Transaction::Role role);
-    Transaction(QObject *parent, AbstractResource *resource,
-                 Transaction::Role role, const AddonList &addons);
+                 Transaction::Role role, const AddonList &addons = {});
 
     /**
      * @returns the AbstractResource which this transaction works with
@@ -125,10 +123,10 @@ public:
     void cancel();
 
 private:
-    AbstractResource *m_resource;
-    Role m_role;
+    AbstractResource * const m_resource;
+    const Role m_role;
     Status m_status;
-    AddonList m_addons;
+    const AddonList m_addons;
     bool m_isCancellable;
     int m_progress;
 
