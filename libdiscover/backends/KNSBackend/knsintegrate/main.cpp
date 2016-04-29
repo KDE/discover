@@ -23,6 +23,7 @@
 #include <QTextStream>
 #include <QCommandLineParser>
 #include <QFileInfo>
+#include <QDebug>
 
 int main(int argc, char** argv)
 {
@@ -31,27 +32,28 @@ int main(int argc, char** argv)
     QCommandLineParser parser;
     parser.addPositionalArgument(QStringLiteral("knsfile"), QStringLiteral("*.knsrc file"), QStringLiteral("knsfile"));
     parser.addPositionalArgument(QStringLiteral("iconName"), QStringLiteral("Icon to use"), QStringLiteral("icon"));
-    parser.addPositionalArgument(QStringLiteral("category"), QStringLiteral("Category display name"), QStringLiteral("category"));
+    parser.addPositionalArgument(QStringLiteral("category"), QStringLiteral("Category display name (categoryA/categoryB)"), QStringLiteral("category"));
     parser.addHelpOption();
     parser.process(app);
 
-    if (parser.positionalArguments().count()!=3) {
+    const auto args = parser.positionalArguments();
+    if (args.count()!=3) {
         parser.showHelp(1);
     }
 
-    const QString knsFile = parser.positionalArguments().at(0);
-    const QString iconName = parser.positionalArguments().at(1);
-    const QString categoryName = parser.positionalArguments().at(2);
+    const QString knsFile = args.at(0);
+    const QString iconName = args.at(1);
+    const QStringList categoryName = args.at(2).split(QLatin1Char('/'));
 
     const QString outputName = QStringLiteral("kns%1-backend").arg(QFileInfo(knsFile).baseName());
 
-    QFile f(outputName + QStringLiteral("-categories.xml"));
-    if (!f.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        QTextStream(stderr) << "Could not open file to write:" << f.fileName() << '\n';
-        return 1;
-    }
-
     {
+        QFile f(outputName + QStringLiteral("-categories.xml"));
+        if (!f.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QTextStream(stderr) << "Could not open file to write:" << f.fileName() << '\n';
+            return 1;
+        }
+
         const QString filter = QStringLiteral(
             "      <Include>\n"
             "        <Or>\n"
@@ -63,10 +65,10 @@ int main(int argc, char** argv)
         fs << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
             "<Menu>\n"
             "  <Menu>\n"
-            "    <Name>Plasma Addons</Name>\n"
+            "    <Name>" << categoryName[0] << "</Name>\n"
             "    <Icon>plasma</Icon>\n"
             "    <Menu>\n"
-            "      <Name>" << categoryName << "</Name>\n"
+            "      <Name>" << categoryName[1] << "</Name>\n"
             "      <Icon>" << iconName << "</Icon>\n"
             "      <ShowTechnical>true</ShowTechnical>\n"
             << filter <<

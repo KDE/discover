@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Menu>
+  <Menu>
+    <Name>Application Addons</Name>
+    <Icon>plasma</Icon>
+    <Menu>
+      <Name>Kate Snippets</Name>
+      <Icon>kate</Icon>
+      <ShowTechnical>true</ShowTechnical>
+      <Include>
+        <Or>
+          <Category>ktexteditor_codesnippets_core.knsrc</Category>
+        </Or>
+      </Include>
+    </Menu>
+      <Include>
+        <Or>
+          <Category>ktexteditor_codesnippets_core.knsrc</Category>
+        </Or>
+      </Include>
+  </Menu>
+</Menu>
