@@ -80,7 +80,7 @@ ColumnLayout
         }
         Button {
             text: i18n("More...")
-            visible: application.appstreamId !== ""
+            visible: application.appstreamId !== "" //add appstream.isKNSExtended or similar
             onClicked: Navigation.openExtends(application.appstreamId)
         }
     }
