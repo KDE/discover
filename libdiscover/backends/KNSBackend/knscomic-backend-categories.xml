@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Menu>
+  <Menu>
+    <Name>Plasma Addons</Name>
+    <Icon>plasma</Icon>
+    <Menu>
+      <Name>Comics</Name>
+      <Icon>face-smile-big</Icon>
+      <ShowTechnical>true</ShowTechnical>
+      <Include>
+        <Or>
+          <Category>comic.knsrc</Category>
+        </Or>
+      </Include>
+    </Menu>
+      <Include>
+        <Or>
+          <Category>comic.knsrc</Category>
+        </Or>
+      </Include>
+  </Menu>
+</Menu>
