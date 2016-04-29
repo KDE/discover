@@ -67,6 +67,8 @@ public:
     Attica::Provider* provider() { return &m_provider; }
     QList<AbstractResource*> upgradeablePackages() const override;
 
+    QStringList extends() const { return m_extends; }
+
     QString iconName() const { return m_iconName; }
 
 public Q_SLOTS:

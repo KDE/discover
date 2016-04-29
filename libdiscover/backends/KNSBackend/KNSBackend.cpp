@@ -102,7 +102,7 @@ void KNSBackend::setMetaData(const QString& path)
     KConfigGroup service = cfg.group("Desktop Entry");
 
     m_iconName = service.readEntry("Icon", QString());
-    m_extends = service.readEntry("Extends", QStringList());
+
     const QString knsrc = service.readEntry("X-Muon-Arguments", QString());
     m_name = QStandardPaths::locate(QStandardPaths::GenericConfigLocation, knsrc);
     if (m_name.isEmpty()) {
@@ -126,6 +126,7 @@ void KNSBackend::setMetaData(const QString& path)
     }
 
     const KConfigGroup group = conf.group("KNewStuff3");
+    m_extends = group.readEntry("Extends", QStringList());
     initManager(QUrl(group.readEntry("ProvidersUrl", QString())));
     connect(m_atticaManager.data(), &Attica::ProviderManager::defaultProvidersLoaded, this, &KNSBackend::startFetchingCategories);
 

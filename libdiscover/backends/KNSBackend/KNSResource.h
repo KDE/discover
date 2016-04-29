@@ -54,6 +54,7 @@ public:
     void fetchScreenshots() override;
     int size() override;
     void fetchChangelog() override;
+    QStringList extends() const override;
 
     const Attica::Content& content();
     void setEntry(const KNS3::Entry& entry);

@@ -176,3 +176,8 @@ void KNSResource::fetchChangelog()
 {
     emit changelogFetched(m_content.changelog());
 }
+
+QStringList KNSResource::extends() const
+{
+    return qobject_cast<KNSBackend*>(parent())->extends();
+}
