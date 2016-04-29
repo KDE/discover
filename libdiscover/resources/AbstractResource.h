@@ -148,6 +148,8 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
 
         virtual QStringList executables() const;
 
+        virtual QStringList extends() const;
+
         virtual QString appstreamId() const;
 
         bool canUpgrade();

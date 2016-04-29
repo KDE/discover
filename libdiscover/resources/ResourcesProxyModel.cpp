@@ -166,6 +166,10 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
     if(!res) //assert?
         return false;
 
+    if(!m_extends.isEmpty() && !res->extends().contains(m_extends)) {
+        return false;
+    }
+
     if(m_filterBySearch && !m_searchResults.contains(res)) {
         return false;
     }
@@ -288,5 +292,16 @@ QString ResourcesProxyModel::mimeTypeFilter() const
 void ResourcesProxyModel::setMimeTypeFilter(const QString& mime)
 {
     m_filteredMimeType = mime;
+    invalidateFilter();
+}
+
+QString ResourcesProxyModel::extends() const
+{
+    return m_extends;
+}
+
+void ResourcesProxyModel::setExtends(const QString& extends)
+{
+    m_extends = extends;
     invalidateFilter();
 }

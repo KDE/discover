@@ -40,3 +40,7 @@ function openApplication(app) {
 function openReviews(app, reviews) {
     window.stack.push(reviewsComp, { model: reviews, title: i18n("Ratings for %1", app.name), icon: "rating" })
 }
+
+function openExtends(ext) {
+    window.stack.push(applicationListComp, { extend: ext, title: i18n("Extensions...") })
+}

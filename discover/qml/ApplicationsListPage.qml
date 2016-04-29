@@ -34,6 +34,7 @@ Item {
     property alias originFilter: appsModel.originFilter
     property alias mimeTypeFilter: appsModel.mimeTypeFilter
     property alias stateFilter: appsModel.stateFilter
+    property alias extend: appsModel.extends
     property alias search: appsModel.search
     property alias shouldShowTechnical: appsModel.isShowingTechnical
     property string sectionProperty: ""

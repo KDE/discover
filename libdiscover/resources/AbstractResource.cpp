@@ -115,6 +115,11 @@ Rating* AbstractResource::rating() const
     return ratings ? ratings->ratingForApplication(const_cast<AbstractResource*>(this)) : nullptr;
 }
 
+QStringList AbstractResource::extends() const
+{
+    return {};
+}
+
 QString AbstractResource::appstreamId() const
 {
     return {};

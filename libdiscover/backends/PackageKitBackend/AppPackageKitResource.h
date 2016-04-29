@@ -48,6 +48,7 @@ class AppPackageKitResource : public PackageKitResource
         QUrl thumbnailUrl() override;
         QStringList allPackageNames() const override;
         QList<PackageState> addonsInformation() override;
+        QStringList extends() const override;
 
     private:
         QStringList findProvides(Appstream::Provides::Kind kind) const;

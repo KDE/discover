@@ -93,6 +93,7 @@ private:
     QString m_name;
     QString m_iconName;
     AbstractBackendUpdater* const m_updater;
+    QStringList m_extends;
 };
 
 #endif // KNSBACKEND_H

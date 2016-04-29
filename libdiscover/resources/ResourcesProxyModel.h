@@ -49,6 +49,7 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QSortFilterProxyModel
     Q_PROPERTY(AbstractResource::State stateFilter READ stateFilter WRITE setStateFilter NOTIFY stateFilterChanged)
     Q_PROPERTY(QString mimeTypeFilter READ mimeTypeFilter WRITE setMimeTypeFilter)
     Q_PROPERTY(QString search READ lastSearch WRITE setSearch)
+    Q_PROPERTY(QString extends READ extends WRITE setExtends)
 public:
     explicit ResourcesProxyModel(QObject *parent=nullptr);
 
@@ -69,6 +70,9 @@ public:
     
     QString mimeTypeFilter() const;
     void setMimeTypeFilter(const QString& mime);
+
+    QString extends() const;
+    void setExtends(const QString &extends);
 
 protected:
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
@@ -93,6 +97,7 @@ private:
     Category* m_filteredCategory;
     AbstractResource::State m_stateFilter;
     QString m_filteredMimeType;
+    QString m_extends;
 
 Q_SIGNALS:
     void categoryChanged();
