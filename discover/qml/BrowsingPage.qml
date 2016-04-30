@@ -33,7 +33,9 @@ ScrollView {
     clip: true
 
     function searchFor(text) {
-        Navigation.openApplicationList("edit-find", i18n("Search..."), null, text)
+        if (text === "")
+            return;
+        Navigation.openApplicationList(null, text)
     }
 
     ColumnLayout

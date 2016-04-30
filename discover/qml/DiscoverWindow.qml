@@ -40,7 +40,10 @@ ApplicationWindow
     Component {
         id: loadingComponent
         Item {
+            readonly property string title: ""
+            readonly property string icon: "applications-other"
             Label {
+                id: label
                 text: i18n("Loading...")
                 font.pointSize: 52
                 anchors.centerIn: parent

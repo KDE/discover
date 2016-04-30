@@ -43,10 +43,10 @@ Item {
     readonly property real proposedMargin: (width-Helpers.actualWidth)/2
     property Component header: category==null ? null : categoryHeaderComponent
     property Component extendedToolBar: null
-    property var icon: category ? category.icon : "go-home"
+    property var icon: category ? category.icon : search !== "" ? "edit-find" : "go-home"
     property string title: category ? category.name : ""
-
     onSearchChanged: appsModel.sortOrder = Qt.AscendingOrder
+
     
     function searchFor(text) {
         appsModel.search = text

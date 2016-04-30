@@ -49,6 +49,7 @@ Rectangle
             stackView.currentItem.destroy(2000)
         }
         stackView.replace(currentTopLevel, {}, window.status!=Component.Ready)
+        window.clearSearch()
     }
 
     readonly property QtObject stack: stackView
@@ -108,9 +109,6 @@ Rectangle
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-            onInitialItemChanged: {
-                window.clearSearch()
-            }
             onDepthChanged: {
                 if (depth==1)
                     window.clearSearch()
