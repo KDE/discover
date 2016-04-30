@@ -46,7 +46,7 @@ RowLayout {
                 id: button
                 Layout.fillHeight: true
 
-                property var currentPage: bread.pageStack.get(modelData, false)
+                readonly property QtObject currentPage: bread.pageStack.get(modelData, false)
 
                 iconName: currentPage.icon
                 onClicked: bread.doClick(index)
