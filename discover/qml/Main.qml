@@ -57,6 +57,7 @@ Rectangle
             console.log("comp error: "+currentTopLevel.errorString())
         }
         stackView.replace(page, {}, window.status!=Component.Ready)
+        window.clearSearch()
     }
 
     readonly property QtObject stack: stackView
@@ -116,9 +117,6 @@ Rectangle
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-            onInitialItemChanged: {
-                window.clearSearch()
-            }
             onDepthChanged: {
                 if (depth==1)
                     window.clearSearch()
