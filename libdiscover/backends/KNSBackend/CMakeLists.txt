@@ -31,4 +31,4 @@ install(TARGETS kns-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
 
 makekns(comic.knsrc face-smile-big "Plasma Addons/Comics")
 makekns(plasmoids.knsrc plasma "Plasma Addons/Plasma Desktop Widgets")
-makekns(custom/ktexteditor_codesnippets_core.knsrc kate "Application Addons/Kate Snippets")
+makekns(custom/discover_ktexteditor_codesnippets_core.knsrc kate "Application Addons/Kate Snippets")
