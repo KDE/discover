@@ -75,9 +75,6 @@ ColumnLayout
 
             visible: parent.active
         }
-        Item {
-            Layout.fillWidth: true
-        }
         Button {
             text: i18n("More...")
             visible: application.appstreamId !== "" //add appstream.isKNSExtended or similar
