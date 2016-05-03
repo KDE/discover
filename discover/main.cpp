@@ -26,21 +26,21 @@
 #include <KLocalizedString>
 #include <QCommandLineParser>
 #include <qwindow.h>
-#include "MuonDiscoverMainWindow.h"
+#include "DiscoverMainWindow.h"
 #include <DiscoverBackendsFactory.h>
 #include "DiscoverVersion.h"
 #include <QTextStream>
 #include <QStandardPaths>
 
-MuonDiscoverMainWindow::CompactMode decodeCompactMode(const QString &str)
+DiscoverMainWindow::CompactMode decodeCompactMode(const QString &str)
 {
     if (str == QLatin1String("auto"))
-        return MuonDiscoverMainWindow::Auto;
+        return DiscoverMainWindow::Auto;
     else if (str == QLatin1String("compact"))
-        return MuonDiscoverMainWindow::Compact;
+        return DiscoverMainWindow::Compact;
     else if (str == QLatin1String("full"))
-        return MuonDiscoverMainWindow::Full;
-    return MuonDiscoverMainWindow::Full;
+        return DiscoverMainWindow::Full;
+    return DiscoverMainWindow::Full;
 }
 
 int main(int argc, char** argv)
@@ -61,7 +61,7 @@ int main(int argc, char** argv)
     KAboutData::setApplicationData(about);
 
     KDBusService service(KDBusService::Unique);
-    MuonDiscoverMainWindow *mainWindow = nullptr;
+    DiscoverMainWindow *mainWindow = nullptr;
     {
         QCommandLineParser parser;
         parser.addOption(QCommandLineOption(QStringLiteral("application"), i18n("Directly open the specified application by its package name."), QStringLiteral("name")));
@@ -91,8 +91,8 @@ int main(int argc, char** argv)
             QStandardPaths::setTestModeEnabled(true);
         }
 
-        mainWindow = new MuonDiscoverMainWindow(decodeCompactMode(parser.value(QStringLiteral("compact"))));
-        QObject::connect(&app, &QApplication::aboutToQuit, mainWindow, &MuonDiscoverMainWindow::deleteLater);
+        mainWindow = new DiscoverMainWindow(decodeCompactMode(parser.value(QStringLiteral("compact"))));
+        QObject::connect(&app, &QApplication::aboutToQuit, mainWindow, &DiscoverMainWindow::deleteLater);
 
         if(parser.isSet(QStringLiteral("application")))
             mainWindow->openApplication(parser.value(QStringLiteral("application")));

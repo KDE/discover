@@ -17,7 +17,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include "MuonDiscoverMainWindow.h"
+#include "DiscoverMainWindow.h"
 #include "PaginateModel.h"
 #include "SystemFonts.h"
 #include "IconColors.h"
@@ -58,7 +58,7 @@
 
 #include <cmath>
 
-MuonDiscoverMainWindow::MuonDiscoverMainWindow(CompactMode mode)
+DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
     : QObject()
     , m_collection(this)
     , m_engine(new QQmlApplicationEngine)
@@ -80,22 +80,22 @@ MuonDiscoverMainWindow::MuonDiscoverMainWindow(CompactMode mode)
     qmlRegisterType<QQuickView>();
     qmlRegisterType<QActionGroup>();
     qmlRegisterType<QAction>();
-    qmlRegisterUncreatableType<MuonDiscoverMainWindow>("org.kde.discover.app", 1, 0, "MuonDiscoverMainWindow", QStringLiteral("don't do that"));
+    qmlRegisterUncreatableType<DiscoverMainWindow>("org.kde.discover.app", 1, 0, "DiscoverMainWindow", QStringLiteral("don't do that"));
     setupActions();
     
     //Here we set up a cache for the screenshots
     m_engine->rootContext()->setContextProperty(QStringLiteral("app"), this);
 
-    connect(m_engine, &QQmlApplicationEngine::objectCreated, this, &MuonDiscoverMainWindow::integrateObject);
+    connect(m_engine, &QQmlApplicationEngine::objectCreated, this, &DiscoverMainWindow::integrateObject);
     m_engine->load(QUrl(QStringLiteral("qrc:/qml/DiscoverWindow.qml")));
 }
 
-MuonDiscoverMainWindow::~MuonDiscoverMainWindow()
+DiscoverMainWindow::~DiscoverMainWindow()
 {
     delete m_engine;
 }
 
-QStringList MuonDiscoverMainWindow::modes() const
+QStringList DiscoverMainWindow::modes() const
 {
     QStringList ret;
     QObject* obj = rootObject();
@@ -109,7 +109,7 @@ QStringList MuonDiscoverMainWindow::modes() const
     return ret;
 }
 
-void MuonDiscoverMainWindow::openMode(const QByteArray& _mode)
+void DiscoverMainWindow::openMode(const QByteArray& _mode)
 {
     if(!modes().contains(QString::fromLatin1(_mode)))
         qWarning() << "unknown mode" << _mode;
@@ -123,12 +123,12 @@ void MuonDiscoverMainWindow::openMode(const QByteArray& _mode)
     obj->setProperty("currentTopLevel", modeComp);
 }
 
-void MuonDiscoverMainWindow::openMimeType(const QString& mime)
+void DiscoverMainWindow::openMimeType(const QString& mime)
 {
     emit listMimeInternal(mime);
 }
 
-void MuonDiscoverMainWindow::openCategory(const QString& category)
+void DiscoverMainWindow::openCategory(const QString& category)
 {
     CategoryModel m;
     Category* cat = m.findCategoryByName(category);
@@ -136,43 +136,43 @@ void MuonDiscoverMainWindow::openCategory(const QString& category)
     emit listCategoryInternal(cat);
 }
 
-void MuonDiscoverMainWindow::openApplication(const QString& app)
+void DiscoverMainWindow::openApplication(const QString& app)
 {
     m_appToBeOpened = app;
     if(!m_appToBeOpened.isEmpty()) {
         rootObject()->setProperty("defaultStartup", false);
 
         if (ResourcesModel::global()->isFetching() || ResourcesModel::global()->backends().isEmpty()) {
-            connect(ResourcesModel::global(), &ResourcesModel::rowsInserted, this, &MuonDiscoverMainWindow::triggerOpenApplication);
+            connect(ResourcesModel::global(), &ResourcesModel::rowsInserted, this, &DiscoverMainWindow::triggerOpenApplication);
         } else {
             triggerOpenApplication();
         }
     }
 }
 
-void MuonDiscoverMainWindow::triggerOpenApplication()
+void DiscoverMainWindow::triggerOpenApplication()
 {
     AbstractResource* app = ResourcesModel::global()->resourceByPackageName(m_appToBeOpened);
     if(app) {
         emit openApplicationInternal(app);
         m_appToBeOpened.clear();
-        disconnect(ResourcesModel::global(), &ResourcesModel::rowsInserted, this, &MuonDiscoverMainWindow::triggerOpenApplication);
+        disconnect(ResourcesModel::global(), &ResourcesModel::rowsInserted, this, &DiscoverMainWindow::triggerOpenApplication);
     } else {
         qDebug() << "couldn't find" << m_appToBeOpened;
     }
 }
 
-QUrl MuonDiscoverMainWindow::featuredSource() const
+QUrl DiscoverMainWindow::featuredSource() const
 {
     return MuonDataSources::featuredSource();
 }
 
-QUrl MuonDiscoverMainWindow::prioritaryFeaturedSource() const
+QUrl DiscoverMainWindow::prioritaryFeaturedSource() const
 {
     return QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("plasmadiscover/featured.json")));
 }
 
-void MuonDiscoverMainWindow::integrateObject(QObject* object)
+void DiscoverMainWindow::integrateObject(QObject* object)
 {
     KConfigGroup window(KSharedConfig::openConfig(), "Window");
     if (window.hasKey("geometry"))
@@ -181,7 +181,7 @@ void MuonDiscoverMainWindow::integrateObject(QObject* object)
     object->installEventFilter(this);
 }
 
-bool MuonDiscoverMainWindow::eventFilter(QObject * object, QEvent * event)
+bool DiscoverMainWindow::eventFilter(QObject * object, QEvent * event)
 {
     if (object!=rootObject())
         return false;
@@ -199,13 +199,13 @@ bool MuonDiscoverMainWindow::eventFilter(QObject * object, QEvent * event)
     return false;
 }
 
-void MuonDiscoverMainWindow::setupActions()
+void DiscoverMainWindow::setupActions()
 {
     QAction *quitAction = KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), actionCollection());
     actionCollection()->addAction(QStringLiteral("file_quit"), quitAction);
 
     QAction* configureSourcesAction = new QAction(QIcon::fromTheme(QStringLiteral("repository")), i18n("Configure Sources"), this);
-    connect(configureSourcesAction, &QAction::triggered, this, &MuonDiscoverMainWindow::configureSources);
+    connect(configureSourcesAction, &QAction::triggered, this, &DiscoverMainWindow::configureSources);
     actionCollection()->addAction(QStringLiteral("configure_sources"), configureSourcesAction);
 
     if (KAuthorized::authorizeKAction(QStringLiteral("help_contents"))) {
@@ -233,27 +233,27 @@ void MuonDiscoverMainWindow::setupActions()
     actionCollection()->addAction(mKeyBindignsAction->objectName(), mKeyBindignsAction);
 }
 
-QAction * MuonDiscoverMainWindow::action(const QString& name)
+QAction * DiscoverMainWindow::action(const QString& name)
 {
     return actionCollection()->action(name);
 }
 
-QString MuonDiscoverMainWindow::iconName(const QIcon& icon)
+QString DiscoverMainWindow::iconName(const QIcon& icon)
 {
     return icon.name();
 }
 
-void MuonDiscoverMainWindow::configureSources()
+void DiscoverMainWindow::configureSources()
 {
     openMode("Sources");
 }
 
-void MuonDiscoverMainWindow::appHelpActivated()
+void DiscoverMainWindow::appHelpActivated()
 {
     QDesktopServices::openUrl(QUrl(QStringLiteral("help:/")));
 }
 
-void MuonDiscoverMainWindow::aboutApplication()
+void DiscoverMainWindow::aboutApplication()
 {
     static QPointer<QDialog> dialog;
     if (!dialog) {
@@ -263,7 +263,7 @@ void MuonDiscoverMainWindow::aboutApplication()
     dialog->show();
 }
 
-void MuonDiscoverMainWindow::reportBug()
+void DiscoverMainWindow::reportBug()
 {
     static QPointer<QDialog> dialog;
     if (!dialog) {
@@ -273,14 +273,14 @@ void MuonDiscoverMainWindow::reportBug()
     dialog->show();
 }
 
-void MuonDiscoverMainWindow::switchApplicationLanguage()
+void DiscoverMainWindow::switchApplicationLanguage()
 {
 //     auto langDialog = new KSwitchLanguageDialog(nullptr);
 //     connect(langDialog, SIGNAL(finished(int)), this, SLOT(dialogFinished()));
 //     langDialog->show();
 }
 
-void MuonDiscoverMainWindow::configureShortcuts()
+void DiscoverMainWindow::configureShortcuts()
 {
     KShortcutsDialog dlg(KShortcutsEditor::AllActions, KShortcutsEditor::LetterShortcutsAllowed, nullptr);
     dlg.setModal(true);
@@ -288,7 +288,7 @@ void MuonDiscoverMainWindow::configureShortcuts()
     qDebug() << "saving shortcuts..." << dlg.configure(/*bSaveSettings*/);
 }
 
-void MuonDiscoverMainWindow::setCompactMode(MuonDiscoverMainWindow::CompactMode mode)
+void DiscoverMainWindow::setCompactMode(DiscoverMainWindow::CompactMode mode)
 {
     if (m_mode != mode) {
         m_mode = mode;
@@ -344,12 +344,12 @@ private:
     QList<QQmlError> m_warnings;
 };
 
-void MuonDiscoverMainWindow::loadTest(const QUrl& url)
+void DiscoverMainWindow::loadTest(const QUrl& url)
 {
     new DiscoverTestExecutor(rootObject(), engine(), url);
 }
 
-QWindow* MuonDiscoverMainWindow::rootObject() const
+QWindow* DiscoverMainWindow::rootObject() const
 {
     return qobject_cast<QWindow*>(m_engine->rootObjects().at(0));
 }

@@ -5,7 +5,7 @@ include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR}/..)
 
 set(plasma_discover_SRCS
     main.cpp
-    MuonDiscoverMainWindow.cpp
+    DiscoverMainWindow.cpp
 
     PaginateModel.cpp
     SystemFonts.cpp

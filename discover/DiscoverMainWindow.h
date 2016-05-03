@@ -34,7 +34,7 @@ class QQuickWidget;
 class QWindow;
 class QQmlApplicationEngine;
 
-class MuonDiscoverMainWindow : public QObject
+class DiscoverMainWindow : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QUrl prioritaryFeaturedSource READ prioritaryFeaturedSource CONSTANT)
@@ -44,8 +44,8 @@ class MuonDiscoverMainWindow : public QObject
         enum CompactMode { Auto, Compact, Full };
         Q_ENUMS(CompactMode)
 
-        explicit MuonDiscoverMainWindow(CompactMode mode);
-        ~MuonDiscoverMainWindow() override;
+        explicit DiscoverMainWindow(CompactMode mode);
+        ~DiscoverMainWindow() override;
 
         QStringList modes() const;
         void setupActions();
