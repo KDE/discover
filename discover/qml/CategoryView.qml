@@ -43,7 +43,7 @@ GridItem
             id: grid
 
             cellWidth: Helpers.isCompact ? width : width/Math.floor(width/100)
-            cellHeight: Helpers.isCompact ? 35 : 60
+            cellHeight: Helpers.isCompact ? 35 : (32 + SystemFonts.generalFont.pixelSize*3 + 5)
             boundsBehavior: Flickable.StopAtBounds
             header: Item { height: 10; width: 10 }
             footer: header
@@ -61,7 +61,6 @@ GridItem
 
                     anchors.top: parent.top
                     width: parent.width
-                    spacing: 5
                     Item {
                         Layout.fillWidth: true
                         Layout.preferredWidth: 32
