@@ -120,7 +120,7 @@ Rating::Rating(const QString& packageName, quint64 ratingCount, int rating, cons
     , m_ratingPoints(0)
     , m_sortableRating(0)
 {
-    Q_ASSERT(rating < 10 && rating>=-1);
+    Q_ASSERT(rating <= 10 && rating>=-1);
 
     const auto histo = histogram.midRef(1,histogram.size()-2).split(QStringLiteral(", "));
     QVector<int> spread;
