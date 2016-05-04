@@ -29,7 +29,7 @@
 //NOTE: this is needed because the method is called register. see the xml file for more info
 struct HackedComUbuntuSsoCredentialsManagementInterface : public ComUbuntuSsoCredentialsManagementInterface
 {
-    HackedComUbuntuSsoCredentialsManagementInterface(const QString& service, const QString& path, const QDBusConnection& connection, QObject* parent = 0)
+    HackedComUbuntuSsoCredentialsManagementInterface(const QString& service, const QString& path, const QDBusConnection& connection, QObject* parent = nullptr)
         : ComUbuntuSsoCredentialsManagementInterface(service, path, connection, parent)
     {}
     

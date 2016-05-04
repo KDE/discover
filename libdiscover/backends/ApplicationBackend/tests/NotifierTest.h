@@ -28,7 +28,7 @@ class NotifierTest : public QObject
     Q_OBJECT
     public:
         NotifierTest();
-        virtual ~NotifierTest();
+        ~NotifierTest() override;
 
     private Q_SLOTS:
         void testInit();

@@ -65,7 +65,7 @@ static QString getCodename(const QString& value)
 
 ReviewsBackend::ReviewsBackend(QObject *parent)
         : AbstractReviewsBackend(parent)
-        , m_aptBackend(0)
+        , m_aptBackend(nullptr)
         , m_serverBase(MuonDataSources::rnRSource())
 {
     m_distId = getCodename(QStringLiteral("ID"));
@@ -77,8 +77,7 @@ ReviewsBackend::ReviewsBackend(QObject *parent)
     QMetaObject::invokeMethod(this, "fetchRatings", Qt::QueuedConnection);
 }
 
-ReviewsBackend::~ReviewsBackend()
-{}
+ReviewsBackend::~ReviewsBackend() = default;
 
 void ReviewsBackend::refreshConsumerKeys()
 {
@@ -160,7 +159,7 @@ void ReviewsBackend::loadRatingsFromFile()
         m_ratings.clear();
         foreach (const QVariant &data, ratings.toList()) {
             Rating *rating = new Rating(data.toMap());
-            if (!rating->ratingCount()) {
+            if (rating->ratingCount() == 0u) {
                 delete rating;
                 continue;
             }
@@ -407,9 +406,6 @@ QString ReviewsBackend::errorMessage() const
 bool ReviewsBackend::isReviewable() const
 {
     QString m_distId = getCodename(QLatin1String("ID"));
-    if(m_distId == QLatin1String("ubuntu")){
-        return true;
-    }
-    return false;
+    return m_distId == QLatin1String("ubuntu");
 }
 

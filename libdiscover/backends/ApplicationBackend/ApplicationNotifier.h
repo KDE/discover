@@ -34,16 +34,16 @@ class ApplicationNotifier : public BackendNotifierModule
     Q_INTERFACES(BackendNotifierModule)
 public:
     explicit ApplicationNotifier(QObject* parent = nullptr);
-    virtual ~ApplicationNotifier();
+    ~ApplicationNotifier() override;
 
-    bool isSystemUpToDate() const Q_DECL_OVERRIDE Q_DECL_FINAL;
-    uint securityUpdatesCount() Q_DECL_OVERRIDE Q_DECL_FINAL;
-    uint updatesCount() Q_DECL_OVERRIDE Q_DECL_FINAL;
+    bool isSystemUpToDate() const Q_DECL_FINAL;
+    uint securityUpdatesCount() Q_DECL_FINAL;
+    uint updatesCount() Q_DECL_FINAL;
 
 private Q_SLOTS:
     void checkUpgradeFinished(int exitStatus);
     void distUpgradeEvent();
-    void recheckSystemUpdateNeeded() Q_DECL_OVERRIDE Q_DECL_FINAL;
+    void recheckSystemUpdateNeeded() Q_DECL_FINAL;
     void parseUpdateInfo();
     void upgradeActivated();
     void init();

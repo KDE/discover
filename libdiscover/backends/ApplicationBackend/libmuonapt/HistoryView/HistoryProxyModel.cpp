@@ -25,7 +25,7 @@
 
 HistoryProxyModel::HistoryProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
-    , m_stateFilter((QApt::Package::State)0)
+    , m_stateFilter(static_cast<QApt::Package::State>(0))
 {
 }
 
@@ -76,7 +76,7 @@ bool HistoryProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourc
 
 bool HistoryProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
 {
-    QStandardItemModel *parentModel = static_cast<QStandardItemModel *>(sourceModel());
+    QStandardItemModel *parentModel = dynamic_cast<QStandardItemModel *>(sourceModel());
 
     QStandardItem *leftItem = parentModel->itemFromIndex(left);
     QStandardItem *rightItem = parentModel->itemFromIndex(right);

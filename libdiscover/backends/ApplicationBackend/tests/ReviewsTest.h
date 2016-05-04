@@ -34,7 +34,7 @@ class ReviewsTest : public QObject
 {
     Q_OBJECT
     public:
-        explicit ReviewsTest(QObject* parent = 0);
+        explicit ReviewsTest(QObject* parent = nullptr);
 
     private Q_SLOTS:
         void testReviewsFetch();

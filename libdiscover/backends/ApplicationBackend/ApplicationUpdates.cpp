@@ -201,7 +201,7 @@ void ApplicationUpdates::setupTransaction(QApt::Transaction *trans)
         trans->setProxy(KProtocolManager::proxyFor(QStringLiteral("http")));
     }
 
-    trans->setLocale(QLatin1String(setlocale(LC_MESSAGES, 0)));
+    trans->setLocale(QLatin1String(setlocale(LC_MESSAGES, nullptr)));
 
     connect(trans, SIGNAL(errorOccurred(QApt::ErrorCode)),
             SLOT(errorOccurred(QApt::ErrorCode)));

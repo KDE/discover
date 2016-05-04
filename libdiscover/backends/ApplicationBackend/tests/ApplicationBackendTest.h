@@ -30,7 +30,7 @@ class ApplicationBackendTest : public QObject
     Q_OBJECT
     public:
         ApplicationBackendTest();
-        virtual ~ApplicationBackendTest();
+        ~ApplicationBackendTest() override;
 
     private Q_SLOTS:
         void testReload();

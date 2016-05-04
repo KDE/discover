@@ -30,7 +30,7 @@ ActionReply AddRepositoryHelper::modify(QVariantMap args)
     }
     p->start(modRepo,arguments);
     p->waitForFinished();
-    if(p->exitCode()) {
+    if(p->exitCode() != 0) {
         reply.setErrorDescription(QStringLiteral("Could not modify source."));
         reply= ActionReply::HelperErrorReply();
     }

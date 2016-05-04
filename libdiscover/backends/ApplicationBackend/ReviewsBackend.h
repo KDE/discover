@@ -49,20 +49,20 @@ class DISCOVERCOMMON_EXPORT ReviewsBackend : public AbstractReviewsBackend
     Q_OBJECT
 public:
     explicit ReviewsBackend(QObject *parent);
-    ~ReviewsBackend();
+    ~ReviewsBackend() override;
 
-    Rating *ratingForApplication(AbstractResource *app) const;
+    Rating *ratingForApplication(AbstractResource *app) const override;
 
     void setAptBackend(QApt::Backend *aptBackend);
-    void fetchReviews(AbstractResource* app, int page=1);
+    void fetchReviews(AbstractResource* res, int page=1) override;
 //     void clearReviewCache();
     void stopPendingJobs();
-    bool isFetching() const;
+    bool isFetching() const override;
 
-    QString userName() const;
-    bool hasCredentials() const;
-    QString errorMessage() const;
-    bool isReviewable() const;
+    QString userName() const override;
+    bool hasCredentials() const override;
+    QString errorMessage() const override;
+    bool isReviewable() const override;
 
 private:
     QApt::Backend *m_aptBackend;
@@ -82,20 +82,20 @@ private:
 
 private Q_SLOTS:
     void ratingsFetched(KJob *job);
-    void reviewsFetched(KJob *job);
-    void informationPosted(KJob* job);
+    void reviewsFetched(KJob *j);
+    void informationPosted(KJob* j);
     void postInformation(const QString& path, const QVariantMap& data);
     void fetchRatings();
 
 public Q_SLOTS:
-    void login();
-    void registerAndLogin();
-    void logout();
-    void submitUsefulness(Review* r, bool useful);
-    void submitReview(AbstractResource* app, const QString& summary,
-                      const QString& review_text, const QString& rating);
-    void deleteReview(Review* r);
-    void flagReview(Review* r, const QString& reason, const QString &text);
+    void login() override;
+    void registerAndLogin() override;
+    void logout() override;
+    void submitUsefulness(Review* r, bool useful) override;
+    void submitReview(AbstractResource* application, const QString& summary,
+                      const QString& review_text, const QString& rating) override;
+    void deleteReview(Review* r) override;
+    void flagReview(Review* r, const QString& reason, const QString &text) override;
     void refreshConsumerKeys();
 };
 

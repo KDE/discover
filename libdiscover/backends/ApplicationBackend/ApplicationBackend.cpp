@@ -497,7 +497,7 @@ AbstractResource* ApplicationBackend::resourceByPackageName(const QString& name)
         if(app->packageName()==name)
             return app;
     }
-    return 0;
+    return nullptr;
 }
 
 QList<AbstractResource*> ApplicationBackend::searchPackageName(const QString& searchText)
@@ -580,7 +580,7 @@ void ApplicationBackend::setupTransaction(QApt::Transaction *trans)
         trans->setProxy(KProtocolManager::proxyFor(QStringLiteral("http")));
     }
 
-    trans->setLocale(QLatin1String(setlocale(LC_MESSAGES, 0)));
+    trans->setLocale(QLatin1String(setlocale(LC_MESSAGES, nullptr)));
 
     // Debconf
     QString uuid = QUuid::createUuid().toString();

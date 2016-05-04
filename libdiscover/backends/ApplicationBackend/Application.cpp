@@ -50,9 +50,9 @@
 #include "resources/PackageState.h"
 
 Application::Application(const Appstream::Component &component, QApt::Backend* backend)
-        : AbstractResource(0)
+        : AbstractResource(nullptr)
         , m_data(component)
-        , m_package(0)
+        , m_package(nullptr)
         , m_isValid(true)
         , m_isTechnical(component.kind() != Appstream::Component::KindDesktop)
         , m_isExtrasApp(false)
@@ -61,7 +61,7 @@ Application::Application(const Appstream::Component &component, QApt::Backend* b
     static QByteArray currentDesktop = qgetenv("XDG_CURRENT_DESKTOP");
 
     Q_ASSERT(component.packageNames().count() == 1);
-    if (!component.packageNames().empty())
+    if (!component.packageNames().isEmpty())
         m_packageName = component.packageNames().at(0);
     
     m_package = backend->package(packageName());
@@ -69,7 +69,7 @@ Application::Application(const Appstream::Component &component, QApt::Backend* b
 }
 
 Application::Application(QApt::Package* package, QApt::Backend* backend)
-        : AbstractResource(0)
+        : AbstractResource(nullptr)
         , m_package(package)
         , m_packageName(m_package->name())
         , m_isValid(true)
@@ -337,7 +337,7 @@ int Application::size()
 
 void Application::clearPackage()
 {
-    m_package = 0;
+    m_package = nullptr;
 }
 
 QVector<KService::Ptr> Application::findExecutables() const

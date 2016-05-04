@@ -351,7 +351,7 @@ void QAptActions::loadArchives()
         }
     }
 
-    if (successCount) {
+    if (successCount != 0) {
         QString message = i18ncp("@label",
                                  "%1 package was successfully added to the cache",
                                  "%1 packages were successfully added to the cache",

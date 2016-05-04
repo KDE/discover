@@ -58,7 +58,7 @@ public:
     };
     explicit HistoryView(QWidget *parent);
 
-    QSize sizeHint() const;
+    QSize sizeHint() const override;
 
 private:
     QApt::History *m_history;

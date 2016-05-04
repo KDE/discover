@@ -24,23 +24,23 @@
 #include <ReviewsBackend/AbstractLoginBackend.h>
 #include <QVariant>
 
-class HackedComUbuntuSsoCredentialsManagementInterface;
+struct HackedComUbuntuSsoCredentialsManagementInterface;
 class UbuntuLoginBackend : public AbstractLoginBackend
 {
     Q_OBJECT
     public:
         explicit UbuntuLoginBackend(QObject* parent=nullptr);
         
-        void login();
-        void registerAndLogin();
-        void logout();
-        QString displayName() const;
-        bool hasCredentials() const;
+        void login() override;
+        void registerAndLogin() override;
+        void logout() override;
+        QString displayName() const override;
+        bool hasCredentials() const override;
         
-        QByteArray token() const;
-        QByteArray tokenSecret() const;
-        QByteArray consumerKey() const;
-        QByteArray consumerSecret() const;
+        QByteArray token() const override;
+        QByteArray tokenSecret() const override;
+        QByteArray consumerKey() const override;
+        QByteArray consumerSecret() const override;
 
     private Q_SLOTS:
         void credentialsError(const QString& app, const QMap<QString,QString>& a);

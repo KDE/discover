@@ -31,7 +31,7 @@ class SourcesTest : public QObject
 {
     Q_OBJECT
     public:
-        explicit SourcesTest(QObject* parent = 0);
+        explicit SourcesTest(QObject* parent = nullptr);
 
     private Q_SLOTS:
         void testSourcesFetch();

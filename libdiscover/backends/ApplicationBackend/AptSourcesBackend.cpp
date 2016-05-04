@@ -44,11 +44,11 @@ private:
 class SourceItem : public QStandardItem
 {
 public:
-    SourceItem(const QUrl& uri)
-        : m_uri(uri)
+    explicit SourceItem(QUrl uri)
+        : m_uri(std::move(uri))
     {}
     
-    virtual QVariant data(int role = Qt::UserRole + 1) const;
+    QVariant data(int role = Qt::UserRole + 1) const override;
     QUrl uri() const { return m_uri; }
 
 private:
@@ -70,11 +70,12 @@ void AptSourcesBackend::load()
     m_sources->clear();
 
     Q_FOREACH (const QApt::SourceEntry &sEntry, m_sourcesList.entries()) {
-        if (!sEntry.isValid())
+        if (!sEntry.isValid()) {
             continue;
+}
 
         SourceItem* newSource = sourceForUri(sEntry.uri());
-        EntryItem* entry = new EntryItem(sEntry);
+        auto  entry = new EntryItem(sEntry);
         newSource->appendRow(entry);
     }
 }
