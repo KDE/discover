@@ -70,14 +70,14 @@ public:
     QString iconName() const { return m_iconName; }
 
 public Q_SLOTS:
-    void receivedEntries(const KNS3::Entry::List& entry);
+    void receivedEntries(const KNS3::Entry::List& entries);
     void startFetchingCategories();
     void categoriesLoaded(Attica::BaseJob*);
     void receivedContents(Attica::BaseJob*);
     void statusChanged(const KNS3::Entry& entry);
 
 private:
-    static void initManager(const QUrl& group);
+    static void initManager(const QUrl& entry);
     static QSharedPointer<Attica::ProviderManager> m_atticaManager;
     void setFetching(bool f);
     void markInvalid();

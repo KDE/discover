@@ -52,7 +52,7 @@ void DiscoverDeclarativePlugin::initializeEngine(QQmlEngine* engine, const char*
     QQmlExtensionPlugin::initializeEngine(engine, uri);
 }
 
-void DiscoverDeclarativePlugin::registerTypes(const char*)
+void DiscoverDeclarativePlugin::registerTypes(const char* /*uri*/)
 {
     qmlRegisterType<CategoryModel>("org.kde.discover", 1, 0, "CategoryModel");
     qmlRegisterType<TransactionListener>("org.kde.discover", 1, 0, "TransactionListener");

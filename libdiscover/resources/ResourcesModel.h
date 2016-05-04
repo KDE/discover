@@ -111,8 +111,8 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
 
         ///@p initialize tells if all backends load will be triggered on construction
         explicit ResourcesModel(QObject* parent=nullptr, bool load = true);
-        void init(bool initialize);
-        void addResourcesBackend(AbstractResourcesBackend* resources);
+        void init(bool load);
+        void addResourcesBackend(AbstractResourcesBackend* backend);
         void registerBackendByName(const QString& name);
 
         QVector< AbstractResourcesBackend* > m_backends;

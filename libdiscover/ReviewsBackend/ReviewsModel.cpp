@@ -157,7 +157,7 @@ void ReviewsModel::addReviews(AbstractResource* app, const QList<Review*>& revie
     }
 }
 
-bool ReviewsModel::canFetchMore(const QModelIndex&) const
+bool ReviewsModel::canFetchMore(const QModelIndex& /*parent*/) const
 {
     return m_canFetchMore;
 }

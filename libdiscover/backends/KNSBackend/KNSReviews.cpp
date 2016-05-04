@@ -103,12 +103,12 @@ bool KNSReviews::isFetching() const
     return m_backend->isFetching();
 }
 
-void KNSReviews::flagReview(Review* , const QString& , const QString& )
+void KNSReviews::flagReview(Review*  /*r*/, const QString&  /*reason*/, const QString&  /*text*/)
 {
     qWarning() << "cannot flag reviews";
 }
 
-void KNSReviews::deleteReview(Review* )
+void KNSReviews::deleteReview(Review*  /*r*/)
 {
     qWarning() << "cannot delete comments";
 }
