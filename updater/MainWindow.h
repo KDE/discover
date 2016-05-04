@@ -35,8 +35,8 @@ class MainWindow : public KXmlGuiWindow
 public:
     MainWindow();
 
-    QSize sizeHint() const Q_DECL_OVERRIDE;
-    bool queryClose() Q_DECL_OVERRIDE;
+    QSize sizeHint() const override;
+    bool queryClose() override;
 
 private:
     ResourcesUpdatesModel* m_updater;

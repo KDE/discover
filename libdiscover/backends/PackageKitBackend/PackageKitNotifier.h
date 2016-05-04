@@ -41,13 +41,13 @@ public:
     PackageKitNotifier(QObject* parent = nullptr);
     ~PackageKitNotifier() override;
 
-    bool isSystemUpToDate() const Q_DECL_FINAL;
-    uint securityUpdatesCount() Q_DECL_FINAL;
-    uint updatesCount() Q_DECL_FINAL;
+    bool isSystemUpToDate() const final;
+    uint securityUpdatesCount() final;
+    uint updatesCount() final;
     
 public Q_SLOTS:
     virtual void configurationChanged();
-    void recheckSystemUpdateNeeded() Q_DECL_FINAL;
+    void recheckSystemUpdateNeeded() final;
     
 private Q_SLOTS:
     void package(PackageKit::Transaction::Info info, const QString &packageID, const QString &summary);
