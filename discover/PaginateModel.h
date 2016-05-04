@@ -43,7 +43,7 @@ class PaginateModel : public QAbstractListModel
     Q_PROPERTY(bool staticRowCount READ hasStaticRowCount WRITE setStaticRowCount)
 
     public:
-        PaginateModel(QObject* object = nullptr);
+        explicit PaginateModel(QObject* object = nullptr);
 
         int pageSize() const;
         void setPageSize(int count);

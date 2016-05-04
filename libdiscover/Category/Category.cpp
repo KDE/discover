@@ -33,8 +33,7 @@ Category::Category(QSet<QString>  pluginName, QObject* parent)
         , m_plugins(std::move(pluginName))
 {}
 
-Category::~Category()
-{}
+Category::~Category() = default;
 
 void Category::parseData(const QString& path, const QDomNode& data, bool canHaveChildren)
 {

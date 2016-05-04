@@ -33,7 +33,7 @@ public:
         HistoryDateRole = Qt::UserRole + 1,
         HistoryActionRole = Qt::UserRole + 2
     };
-    HistoryProxyModel(QObject *parent);
+    explicit HistoryProxyModel(QObject *parent);
     ~HistoryProxyModel();
 
     void search(const QString &searchText);

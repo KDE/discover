@@ -37,7 +37,7 @@ class DISCOVERCOMMON_EXPORT SourcesModel : public QAbstractListModel
         enum Roles {
             SourceBackend = Qt::UserRole+1
         };
-        SourcesModel(QObject* parent = nullptr);
+        explicit SourcesModel(QObject* parent = nullptr);
         ~SourcesModel() override;
 
         static SourcesModel* global();

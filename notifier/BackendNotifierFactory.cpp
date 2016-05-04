@@ -25,8 +25,7 @@
 #include <QDir>
 #include <QPluginLoader>
 
-BackendNotifierFactory::BackendNotifierFactory()
-{}
+BackendNotifierFactory::BackendNotifierFactory() = default;
 
 QList<BackendNotifierModule*> BackendNotifierFactory::allBackends() const
 {

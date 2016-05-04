@@ -44,7 +44,7 @@ public:
     };
     Q_ENUMS(State)
 
-    DiscoverNotifier(QObject* parent = nullptr);
+    explicit DiscoverNotifier(QObject* parent = nullptr);
     ~DiscoverNotifier() override;
 
     bool isSystemUpToDate() const;

@@ -23,11 +23,7 @@
 AddonList::AddonList()
 {}
 
-AddonList::AddonList(const AddonList &other)
-    : m_toInstall(other.m_toInstall)
-    , m_toRemove(other.m_toRemove)
-{
-}
+AddonList::AddonList(const AddonList &other) = default;
 
 bool AddonList::isEmpty() const
 {

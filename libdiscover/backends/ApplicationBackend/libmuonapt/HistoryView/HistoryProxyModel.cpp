@@ -29,9 +29,7 @@ HistoryProxyModel::HistoryProxyModel(QObject *parent)
 {
 }
 
-HistoryProxyModel::~HistoryProxyModel()
-{
-}
+HistoryProxyModel::~HistoryProxyModel() = default;
 
 void HistoryProxyModel::search(const QString &searchText)
 {

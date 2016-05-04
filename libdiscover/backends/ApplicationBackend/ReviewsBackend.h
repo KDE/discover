@@ -48,7 +48,7 @@ class DISCOVERCOMMON_EXPORT ReviewsBackend : public AbstractReviewsBackend
 {
     Q_OBJECT
 public:
-    ReviewsBackend(QObject *parent);
+    explicit ReviewsBackend(QObject *parent);
     ~ReviewsBackend();
 
     Rating *ratingForApplication(AbstractResource *app) const;

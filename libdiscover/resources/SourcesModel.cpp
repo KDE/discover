@@ -30,8 +30,7 @@ SourcesModel::SourcesModel(QObject* parent)
     : QAbstractListModel(parent)
 {}
 
-SourcesModel::~SourcesModel()
-{}
+SourcesModel::~SourcesModel() = default;
 
 QHash<int, QByteArray> SourcesModel::roleNames() const
 {

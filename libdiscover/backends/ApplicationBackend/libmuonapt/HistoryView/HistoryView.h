@@ -56,7 +56,7 @@ public:
         RemovedAction = 4,
         PurgedAction = 5
     };
-    HistoryView(QWidget *parent);
+    explicit HistoryView(QWidget *parent);
 
     QSize sizeHint() const;
 

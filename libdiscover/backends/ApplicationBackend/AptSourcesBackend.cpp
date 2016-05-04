@@ -32,7 +32,7 @@
 class EntryItem : public QStandardItem
 {
 public:
-    EntryItem(const QApt::SourceEntry &sEntry)
+    explicit EntryItem(const QApt::SourceEntry &sEntry)
         : m_sEntry(sEntry)
     {}
     QApt::SourceEntry& sourceEntry() { return m_sEntry; }

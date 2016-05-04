@@ -40,9 +40,7 @@ Review::Review(QString  name, QString  pkgName, QString  language, QString  summ
     , m_packageVersion(std::move(packageVersion))
 {}
 
-Review::~Review()
-{
-}
+Review::~Review() = default;
 
 bool Review::operator<(const Review &other) const
 {

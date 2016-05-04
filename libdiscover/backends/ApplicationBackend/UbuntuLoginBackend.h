@@ -29,7 +29,7 @@ class UbuntuLoginBackend : public AbstractLoginBackend
 {
     Q_OBJECT
     public:
-        UbuntuLoginBackend(QObject* parent=0);
+        explicit UbuntuLoginBackend(QObject* parent=nullptr);
         
         void login();
         void registerAndLogin();

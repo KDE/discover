@@ -45,9 +45,7 @@ UpdateModel::UpdateModel(QObject *parent)
     connect(ResourcesModel::global(), &ResourcesModel::updatesCountChanged, this, &UpdateModel::activityChanged);
 }
 
-UpdateModel::~UpdateModel()
-{
-}
+UpdateModel::~UpdateModel() = default;
 
 QHash<int,QByteArray> UpdateModel::roleNames() const
 {

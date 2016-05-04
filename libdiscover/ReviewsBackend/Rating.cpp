@@ -139,9 +139,7 @@ void Rating::init(const QString& packageName, quint64 ratingCount, int rating, c
     m_sortableRating = dampenedRating(spread) * 2;
 }
 
-Rating::~Rating()
-{
-}
+Rating::~Rating() = default;
 
 QString Rating::packageName() const
 {

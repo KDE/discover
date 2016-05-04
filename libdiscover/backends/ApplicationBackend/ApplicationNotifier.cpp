@@ -64,9 +64,7 @@ ApplicationNotifier::ApplicationNotifier(QObject* parent)
     init();
 }
 
-ApplicationNotifier::~ApplicationNotifier()
-{
-}
+ApplicationNotifier::~ApplicationNotifier() = default;
 
 void ApplicationNotifier::init()
 {

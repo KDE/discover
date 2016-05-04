@@ -35,7 +35,7 @@ class DISCOVERCOMMON_EXPORT ScreenshotsModel : public QAbstractListModel
     public:
         enum Roles { ThumbnailUrl=Qt::UserRole+1, ScreenshotUrl };
         
-        ScreenshotsModel(QObject* parent = nullptr);
+        explicit ScreenshotsModel(QObject* parent = nullptr);
         QHash<int, QByteArray> roleNames() const override;
 
         AbstractResource* resource() const;

@@ -33,7 +33,7 @@ class ApplicationNotifier : public BackendNotifierModule
     Q_PLUGIN_METADATA(IID "org.kde.discover.BackendNotifierModule")
     Q_INTERFACES(BackendNotifierModule)
 public:
-    ApplicationNotifier(QObject* parent = 0);
+    explicit ApplicationNotifier(QObject* parent = nullptr);
     virtual ~ApplicationNotifier();
 
     bool isSystemUpToDate() const Q_DECL_OVERRIDE Q_DECL_FINAL;

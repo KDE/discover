@@ -30,9 +30,7 @@ NotifierTest::NotifierTest()
 {
 }
 
-NotifierTest::~NotifierTest()
-{
-}
+NotifierTest::~NotifierTest() = default;
 
 void NotifierTest::testInit()
 {

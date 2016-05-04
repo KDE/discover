@@ -28,7 +28,7 @@ class DISCOVERCOMMON_EXPORT AbstractLoginBackend : public QObject
 {
     Q_OBJECT
     public:
-        AbstractLoginBackend(QObject* parent=nullptr);
+        explicit AbstractLoginBackend(QObject* parent=nullptr);
         virtual bool hasCredentials() const = 0;
         virtual QString displayName() const = 0;
 
