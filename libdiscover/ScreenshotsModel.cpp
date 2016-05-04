@@ -61,7 +61,7 @@ AbstractResource* ScreenshotsModel::resource() const
 void ScreenshotsModel::screenshotsFetched(const QList< QUrl >& thumbnails, const QList< QUrl >& screenshots)
 {
     Q_ASSERT(thumbnails.count()==screenshots.count());
-    if (thumbnails.size() == 0)
+    if (thumbnails.isEmpty())
         return;
     
     beginInsertRows(QModelIndex(), m_thumbnails.size(), m_thumbnails.size()+thumbnails.size()-1);

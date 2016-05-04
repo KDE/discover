@@ -102,9 +102,9 @@ Rating::Rating(const QVariantMap &data)
 {
 }
 
-Rating::Rating(const QString& packageName, int inst, int /*vote*/, int /*old*/, int /*recent*/)
+Rating::Rating(QString packageName, int inst, int /*vote*/, int /*old*/, int /*recent*/)
     : QObject()
-    , m_packageName(packageName)
+    , m_packageName(std::move(packageName))
     , m_ratingCount(inst)
     , m_rating(0)
     , m_ratingPoints(0)
@@ -135,9 +135,7 @@ Rating::Rating(const QString& packageName, quint64 ratingCount, int rating, cons
     m_sortableRating = dampenedRating(spread) * 2;
 }
 
-Rating::~Rating()
-{
-}
+Rating::~Rating() = default;
 
 QString Rating::packageName() const
 {

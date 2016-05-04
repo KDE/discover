@@ -59,7 +59,7 @@ class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
         void setResource(AbstractResource* app);
         AbstractResource* resource() const;
         void fetchMore(const QModelIndex& parent=QModelIndex()) override;
-        bool canFetchMore(const QModelIndex&) const override;
+        bool canFetchMore(const QModelIndex& /*parent*/) const override;
         QHash<int, QByteArray> roleNames() const override;
 
     public Q_SLOTS:

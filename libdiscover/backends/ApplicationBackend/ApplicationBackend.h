@@ -53,34 +53,34 @@ class ApplicationBackend : public AbstractResourcesBackend
     Q_OBJECT
     Q_PROPERTY(QObject* backend READ backend)
 public:
-    explicit ApplicationBackend(QObject *parent = 0);
-    ~ApplicationBackend();
+    explicit ApplicationBackend(QObject *parent = nullptr);
+    ~ApplicationBackend() override;
 
-    bool isValid() const;
-    AbstractReviewsBackend *reviewsBackend() const;
-    Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name) const;
+    bool isValid() const override;
+    AbstractReviewsBackend *reviewsBackend() const override;
+    Q_SCRIPTABLE AbstractResource* resourceByPackageName(const QString& name) const override;
     QApt::Backend* backend() const;
 
-    int updatesCount() const;
+    int updatesCount() const override;
 
     bool confirmRemoval(QApt::StateChanges changes);
-    bool isFetching() const;
+    bool isFetching() const override;
     void markTransaction(Transaction *transaction);
     void markLangpacks(Transaction *transaction);
     
-    QVector< AbstractResource* > allResources() const;
-    QList<AbstractResource*> searchPackageName(const QString& searchText);
+    QVector< AbstractResource* > allResources() const override;
+    QList<AbstractResource*> searchPackageName(const QString& searchText) override;
     
-    void installApplication(AbstractResource *app, const AddonList& addons);
-    void installApplication(AbstractResource *app);
-    void removeApplication(AbstractResource *app);
-    void cancelTransaction(AbstractResource *app);
+    void installApplication(AbstractResource *res, const AddonList& addons) override;
+    void installApplication(AbstractResource *app) override;
+    void removeApplication(AbstractResource *app) override;
+    void cancelTransaction(AbstractResource *app) override;
     
-    AbstractBackendUpdater* backendUpdater() const;
-    void integrateActions(KActionCollection* w);
+    AbstractBackendUpdater* backendUpdater() const override;
+    void integrateActions(KActionCollection* w) override;
     QWidget* mainWindow() const;
-    virtual QList<AbstractResource*> upgradeablePackages() const;
-    virtual QList<QAction*> messageActions() const;
+    QList<AbstractResource*> upgradeablePackages() const override;
+    QList<QAction*> messageActions() const override;
     
 private:
     void setFetching(bool f);

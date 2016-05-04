@@ -44,25 +44,25 @@ class ApplicationUpdates : public AbstractBackendUpdater
 public:
     explicit ApplicationUpdates(ApplicationBackend* parent);
 
-    bool hasUpdates() const;
-    qreal progress() const;
-    void start();
-    void setBackend(QApt::Backend* b);
-    long unsigned int remainingTime() const;
-    virtual void addResources(const QList<AbstractResource*>& apps);
-    virtual void removeResources(const QList<AbstractResource*>& apps);
-    virtual QList<AbstractResource*> toUpdate() const;
-    virtual bool isAllMarked() const;
-    virtual QDateTime lastUpdate() const;
-    virtual bool isCancelable() const;
-    virtual bool isProgressing() const;
-    virtual QString statusDetail() const;
-    virtual QString statusMessage() const;
-    virtual void cancel();
-    virtual quint64 downloadSpeed() const;
-    void prepare();
+    bool hasUpdates() const override;
+    qreal progress() const override;
+    void start() override;
+    void setBackend(QApt::Backend* backend);
+    long unsigned int remainingTime() const override;
+    void addResources(const QList<AbstractResource*>& apps) override;
+    void removeResources(const QList<AbstractResource*>& apps) override;
+    QList<AbstractResource*> toUpdate() const override;
+    bool isAllMarked() const override;
+    QDateTime lastUpdate() const override;
+    bool isCancelable() const override;
+    bool isProgressing() const override;
+    QString statusDetail() const override;
+    QString statusMessage() const override;
+    void cancel() override;
+    quint64 downloadSpeed() const override;
+    void prepare() override;
     void setupTransaction(QApt::Transaction *trans);
-    virtual bool isMarked(AbstractResource* res) const;
+    bool isMarked(AbstractResource* res) const override;
     void setProgressing(bool progressing);
 
 private:

@@ -42,53 +42,51 @@ namespace QApt {
 class DISCOVERCOMMON_EXPORT Application : public AbstractResource
 {
 Q_OBJECT
-Q_PROPERTY(QString menuPath READ menuPath CONSTANT)
 public:
     explicit Application(const Appstream::Component &component, QApt::Backend *backend);
     explicit Application(QApt::Package *package, QApt::Backend *backend);
 
-    QString name();
-    QString comment();
+    QString name() override;
+    QString comment() override;
     QApt::Package *package();
-    QString icon() const;
-    QStringList mimetypes() const;
-    QString menuPath();
-    QStringList categories();
-    QString license();
-    QUrl screenshotUrl();
-    QUrl thumbnailUrl();
-    virtual QList< PackageState > addonsInformation();
+    QString icon() const override;
+    QStringList mimetypes() const override;
+    QStringList categories() override;
+    QString license() override;
+    QUrl screenshotUrl() override;
+    QUrl thumbnailUrl() override;
+    QList< PackageState > addonsInformation() override;
     bool isValid() const;
-    bool isTechnical() const;
-    QString packageName() const;
+    bool isTechnical() const override;
+    QString packageName() const override;
 
     //QApt::Package forwarding
-    QUrl homepage();
-    QString longDescription();
-    QString installedVersion() const;
-    QString availableVersion() const;
-    QString sizeDescription();
-    QString origin() const;
-    int size();
+    QUrl homepage() override;
+    QString longDescription() override;
+    QString installedVersion() const override;
+    QString availableVersion() const override;
+    QString sizeDescription() override;
+    QString origin() const override;
+    int size() override;
 
     bool hasScreenshot() const { return m_sourceHasScreenshot; }
     void setHasScreenshot(bool has);
     
     void clearPackage();
     QVector<KService::Ptr> findExecutables() const;
-    virtual QStringList executables() const;
+    QStringList executables() const override;
     
     /** Used to trigger the stateChanged signal from the ApplicationBackend */
     void emitStateChanged();
     
-    void invokeApplication() const;
+    void invokeApplication() const override;
     
-    bool canExecute() const;
-    QString section();
+    bool canExecute() const override;
+    QString section() override;
     
-    virtual State state();
-    virtual void fetchScreenshots();
-    virtual void fetchChangelog();
+    State state() override;
+    void fetchScreenshots() override;
+    void fetchChangelog() override;
     
     bool isFromSecureOrigin() const;
 
@@ -111,7 +109,6 @@ private:
     bool m_sourceHasScreenshot;
 
     QApt::PackageList addons();
-    QVector<QPair<QString, QString> > locateApplication(const QString &_relPath, const QString &menuId) const;
 };
 
 #endif

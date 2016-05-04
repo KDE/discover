@@ -36,7 +36,7 @@ Q_PROPERTY(quint64 ratingCount READ ratingCount CONSTANT)
 public:
     explicit Rating(const QVariantMap &data);
     explicit Rating(const QString& packageName, quint64 ratingCount, int rating, const QString& histogram);
-    explicit Rating(const QString& packageName, int inst, int vote, int old, int recent);
+    explicit Rating(QString packageName, int inst, int vote, int old, int recent);
     ~Rating() override;
 
     QString packageName() const;

@@ -40,8 +40,7 @@ MuonExporter::MuonExporter()
     connect(ResourcesModel::global(), &ResourcesModel::allInitialized, this, &MuonExporter::allBackendsInitialized);
 }
 
-MuonExporter::~MuonExporter()
-{}
+MuonExporter::~MuonExporter() = default;
 
 void MuonExporter::allBackendsInitialized()
 {

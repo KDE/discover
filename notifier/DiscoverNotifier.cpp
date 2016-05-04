@@ -44,9 +44,7 @@ DiscoverNotifier::DiscoverNotifier(QObject * parent)
     updateStatusNotifier();
 }
 
-DiscoverNotifier::~DiscoverNotifier()
-{
-}
+DiscoverNotifier::~DiscoverNotifier() = default;
 
 void DiscoverNotifier::configurationChanged()
 {

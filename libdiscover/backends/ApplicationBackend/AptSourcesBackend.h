@@ -36,14 +36,14 @@ public:
         UriRole
     };
     
-    AptSourcesBackend(ApplicationBackend* backend);
-    virtual QAbstractItemModel* sources();
-    virtual bool removeSource(const QString& uri);
-    virtual bool addSource(const QString& uri);
-    virtual QString idDescription();
-    virtual QString name() const;
+    explicit AptSourcesBackend(ApplicationBackend* backend);
+    QAbstractItemModel* sources() override;
+    bool removeSource(const QString& repository) override;
+    bool addSource(const QString& repository) override;
+    QString idDescription() override;
+    QString name() const override;
     ApplicationBackend* appsBackend() const;
-    virtual QList<QAction*> actions() const;
+    QList<QAction*> actions() const override;
 
 private Q_SLOTS:
     void load();

@@ -31,9 +31,7 @@ KNSResource::KNSResource(const Attica::Content& c, QString  category, KNSBackend
 {
 }
 
-KNSResource::~KNSResource()
-{
-}
+KNSResource::~KNSResource() = default;
 
 AbstractResource::State KNSResource::state()
 {

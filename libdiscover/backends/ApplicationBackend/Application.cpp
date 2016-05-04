@@ -50,9 +50,9 @@
 #include "resources/PackageState.h"
 
 Application::Application(const Appstream::Component &component, QApt::Backend* backend)
-        : AbstractResource(0)
+        : AbstractResource(nullptr)
         , m_data(component)
-        , m_package(0)
+        , m_package(nullptr)
         , m_isValid(true)
         , m_isTechnical(component.kind() != Appstream::Component::KindDesktop)
         , m_isExtrasApp(false)
@@ -61,7 +61,7 @@ Application::Application(const Appstream::Component &component, QApt::Backend* b
     static QByteArray currentDesktop = qgetenv("XDG_CURRENT_DESKTOP");
 
     Q_ASSERT(component.packageNames().count() == 1);
-    if (!component.packageNames().empty())
+    if (!component.packageNames().isEmpty())
         m_packageName = component.packageNames().at(0);
     
     m_package = backend->package(packageName());
@@ -69,7 +69,7 @@ Application::Application(const Appstream::Component &component, QApt::Backend* b
 }
 
 Application::Application(QApt::Package* package, QApt::Backend* backend)
-        : AbstractResource(0)
+        : AbstractResource(nullptr)
         , m_package(package)
         , m_packageName(m_package->name())
         , m_isValid(true)
@@ -141,6 +141,7 @@ QApt::Package *Application::package()
 QString Application::icon() const
 {
     QString anIcon = m_data.icon();
+
     if (anIcon.isEmpty()) {
         QUrl iconUrl = m_data.iconUrl(QSize());
         if (iconUrl.isLocalFile())
@@ -161,99 +162,6 @@ QStringList Application::findProvides(Appstream::Provides::Kind kind) const
 QStringList Application::mimetypes() const
 {
     return findProvides(Appstream::Provides::KindMimetype);
-}
-
-QString Application::menuPath()
-{
-    QString path;
-    QString arrow(QString::fromUtf8(" ➜ "));
-
-    // Take the file name and remove the .desktop ending
-    QVector<KService::Ptr> execs = findExecutables();
-    if(execs.isEmpty())
-        return path;
-
-    KService::Ptr service = execs.first();
-    QVector<QPair<QString, QString> > ret;
-
-    if (service) {
-        ret = locateApplication(QString(), service->menuId());
-    }
-
-    if (!ret.isEmpty()) {
-        path.append(QStringLiteral("<img width=\"16\" height=\"16\"src=\"%1\"/>")
-                    .arg(KIconLoader::global()->iconPath(QStringLiteral("kde"), KIconLoader::Small)));
-        path.append(QStringLiteral("&nbsp;%1 <img width=\"16\" height=\"16\" src=\"%2\"/>&nbsp;%3")
-                    .arg(arrow)
-                    .arg(KIconLoader::global()->iconPath(QStringLiteral("applications-other"), KIconLoader::Small))
-                    .arg(i18n("Applications")));
-        for (int i = 0; i < ret.size(); i++) {
-            path.append(QStringLiteral("&nbsp;%1&nbsp;<img width=\"16\" height=\"16\" src=\"%2\"/>&nbsp;%3")
-                        .arg(arrow)
-                        .arg(KIconLoader::global()->iconPath(ret.at(i).second, KIconLoader::Small))
-                        .arg(ret.at(i).first));
-        }
-    }
-
-    return path;
-}
-
-QVector<QPair<QString, QString> > Application::locateApplication(const QString &_relPath, const QString &menuId) const
-{
-    QVector<QPair<QString, QString> > ret;
-    KServiceGroup::Ptr root = KServiceGroup::group(_relPath);
-
-    if (!root || !root->isValid()) {
-        return ret;
-    }
-
-    const KServiceGroup::List list = root->entries(false /* sorted */,
-                                                   true /* exclude no display entries */,
-                                                   false /* allow separators */);
-
-    for (KServiceGroup::List::ConstIterator it = list.constBegin(); it != list.constEnd(); ++it) {
-        const KSycocaEntry::Ptr p = (*it);
-
-        // Static cast to specific classes according to isType().
-        if (p->isType(KST_KService)) {
-            const KService::Ptr service =
-                    KService::Ptr(static_cast<KService *>(p.data()));
-
-            if (service->noDisplay()) {
-                continue;
-            }
-
-            if (service->menuId() == menuId) {
-                QPair<QString, QString> pair;
-                pair.first  = service->name();
-                pair.second = service->icon();
-                ret << pair;
-                return ret;
-            }
-        } else if (p->isType(KST_KServiceGroup)) {
-            const KServiceGroup::Ptr serviceGroup =
-                    KServiceGroup::Ptr(static_cast<KServiceGroup *>(p.data()));
-
-            if (serviceGroup->noDisplay() || serviceGroup->childCount() == 0) {
-                continue;
-            }
-
-            QVector<QPair<QString, QString> > found;
-            found = locateApplication(serviceGroup->relPath(), menuId);
-            if (!found.isEmpty()) {
-                QPair<QString, QString> pair;
-                pair.first  = serviceGroup->caption();
-                pair.second = serviceGroup->icon();
-                ret << pair;
-                ret << found;
-                return ret;
-            }
-        } else {
-            continue;
-        }
-    }
-
-    return ret;
 }
 
 QStringList Application::categories()
@@ -429,7 +337,7 @@ int Application::size()
 
 void Application::clearPackage()
 {
-    m_package = 0;
+    m_package = nullptr;
 }
 
 QVector<KService::Ptr> Application::findExecutables() const

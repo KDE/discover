@@ -86,8 +86,7 @@ KNSBackend::KNSBackend(QObject* parent)
     , m_updater(new StandardBackendUpdater(this))
 {}
 
-KNSBackend::~KNSBackend()
-{}
+KNSBackend::~KNSBackend() = default;
 
 void KNSBackend::markInvalid()
 {
@@ -295,7 +294,7 @@ void KNSBackend::installApplication(AbstractResource* app)
     transModel->removeTransaction(t);
 }
 
-void KNSBackend::installApplication(AbstractResource* app, const AddonList&)
+void KNSBackend::installApplication(AbstractResource* app, const AddonList& /*addons*/)
 {
     installApplication(app);
 }

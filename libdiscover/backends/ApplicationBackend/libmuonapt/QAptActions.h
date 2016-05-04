@@ -45,7 +45,7 @@ class QAptActions : public QObject
     Q_OBJECT
 public:
     static QAptActions* self();
-    void setActionCollection(KActionCollection* w);
+    void setActionCollection(KActionCollection* actions);
     Q_DECL_DEPRECATED QWidget* mainWindow() const;
 
     bool reloadWhenSourcesEditorFinished() const;

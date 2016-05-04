@@ -63,7 +63,7 @@ class DISCOVERCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdat
 
     private:
         void transactionAdded(Transaction* newTransaction);
-        void transactionProgressChanged(int progress);
+        void transactionProgressChanged(int percentage);
 
         QSet<AbstractResource*> m_toUpgrade;
         AbstractResourcesBackend* m_backend;

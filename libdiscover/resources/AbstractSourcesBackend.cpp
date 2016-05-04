@@ -24,5 +24,4 @@ AbstractSourcesBackend::AbstractSourcesBackend(QObject* parent)
     : QObject(parent)
 {}
 
-AbstractSourcesBackend::~AbstractSourcesBackend()
-{}
+AbstractSourcesBackend::~AbstractSourcesBackend() = default;

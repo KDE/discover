@@ -33,16 +33,16 @@ public:
         HistoryDateRole = Qt::UserRole + 1,
         HistoryActionRole = Qt::UserRole + 2
     };
-    HistoryProxyModel(QObject *parent);
-    ~HistoryProxyModel();
+    explicit HistoryProxyModel(QObject *parent);
+    ~HistoryProxyModel() override;
 
     void search(const QString &searchText);
     void setStateFilter(QApt::Package::State state);
 
-    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
+    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
 
 protected:
-    bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
+    bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
 
 private:
     QString m_searchText;

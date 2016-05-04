@@ -31,7 +31,7 @@ class SystemFonts : public QObject
     Q_PROPERTY(QFont titleFont READ titleFont NOTIFY fontsChanged)
     Q_PROPERTY(QFont smallestReadableFont READ smallestReadableFont NOTIFY fontsChanged)
     public:
-        SystemFonts(QObject* parent = nullptr);
+        explicit SystemFonts(QObject* parent = nullptr);
 
         QFont generalFont() const;
         QFont fixedFont() const;
