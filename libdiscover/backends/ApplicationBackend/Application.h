@@ -42,7 +42,6 @@ namespace QApt {
 class DISCOVERCOMMON_EXPORT Application : public AbstractResource
 {
 Q_OBJECT
-Q_PROPERTY(QString menuPath READ menuPath CONSTANT)
 public:
     explicit Application(const Appstream::Component &component, QApt::Backend *backend);
     explicit Application(QApt::Package *package, QApt::Backend *backend);
@@ -52,7 +51,6 @@ public:
     QApt::Package *package();
     QString icon() const;
     QStringList mimetypes() const;
-    QString menuPath();
     QStringList categories();
     QString license();
     QUrl screenshotUrl();
@@ -111,7 +109,6 @@ private:
     bool m_sourceHasScreenshot;
 
     QApt::PackageList addons();
-    QVector<QPair<QString, QString> > locateApplication(const QString &_relPath, const QString &menuId) const;
 };
 
 #endif
