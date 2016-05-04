@@ -109,7 +109,7 @@ QString Application::name()
 
 QString Application::comment()
 {
-    QString comment = m_data.isValid() ? m_data.description() : QString();
+    QString comment = m_data.isValid() ? m_data.summary() : QString();
     if (comment.isEmpty()) {
         return package()->shortDescription();
     }
@@ -391,7 +391,9 @@ QString Application::origin() const
 
 QString Application::longDescription()
 {
-    if(!m_package) return QString();
+    const QString comment = m_data.isValid() ? m_data.description() : QString();
+    if(!comment.isEmpty()) return comment;
+    if(m_package) return QString();
     return m_package->longDescription();
 }
 

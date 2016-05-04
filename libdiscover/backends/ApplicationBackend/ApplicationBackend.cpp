@@ -98,6 +98,8 @@ QVector<Application *> init(QApt::Backend *backend, QThread* thread)
     QVector<Application *> tempList;
     QSet<QString> packages;
     foreach(const Appstream::Component &component, appdata.allComponents()) {
+        if (component.packageNames().isEmpty())
+            continue;
         Application *app = new Application(component, backend);
         packages.insert(app->packageName());
         tempList << app;
