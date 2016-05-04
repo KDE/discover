@@ -31,10 +31,10 @@ public:
     explicit DummyNotifier(QObject* parent = nullptr);
     ~DummyNotifier() override;
 
-    bool isSystemUpToDate() const Q_DECL_OVERRIDE;
-    void recheckSystemUpdateNeeded() Q_DECL_OVERRIDE;
-    uint securityUpdatesCount() Q_DECL_OVERRIDE;
-    uint updatesCount() Q_DECL_OVERRIDE;
+    bool isSystemUpToDate() const override;
+    void recheckSystemUpdateNeeded() override;
+    uint securityUpdatesCount() override;
+    uint updatesCount() override;
 };
 
 #endif

@@ -36,14 +36,14 @@ public:
     explicit ApplicationNotifier(QObject* parent = nullptr);
     ~ApplicationNotifier() override;
 
-    bool isSystemUpToDate() const Q_DECL_FINAL;
-    uint securityUpdatesCount() Q_DECL_FINAL;
-    uint updatesCount() Q_DECL_FINAL;
+    bool isSystemUpToDate() const final;
+    uint securityUpdatesCount() final;
+    uint updatesCount() final;
 
 private Q_SLOTS:
     void checkUpgradeFinished(int exitStatus);
     void distUpgradeEvent();
-    void recheckSystemUpdateNeeded() Q_DECL_FINAL;
+    void recheckSystemUpdateNeeded() final;
     void parseUpdateInfo();
     void upgradeActivated();
     void init();
