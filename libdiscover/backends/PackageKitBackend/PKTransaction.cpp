@@ -119,7 +119,8 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     connect(t, &PackageKit::Transaction::finished, t, [cancel, t, this](PackageKit::Transaction::Exit /*status*/, uint /*runtime*/){
         QMap<PackageKit::Transaction::Info, QStringList> packages = t->property("packages").value<QMap<PackageKit::Transaction::Info, QStringList>>();
         auto pkr = qobject_cast<PackageKitResource*>(resource());
-        pkr->setPackages(packages); setStatus(Transaction::DoneStatus);
+        pkr->setPackages(packages);
+        setStatus(Transaction::DoneStatus);
         if (cancel)
             pkr->backend()->transactionCanceled(this);
         else
