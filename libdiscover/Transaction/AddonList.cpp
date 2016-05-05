@@ -23,8 +23,6 @@
 AddonList::AddonList()
 {}
 
-AddonList::AddonList(const AddonList &other) = default;
-
 bool AddonList::isEmpty() const
 {
     return m_toInstall.isEmpty() && m_toRemove.isEmpty();

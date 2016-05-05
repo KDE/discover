@@ -35,7 +35,7 @@ public:
         ToRemove
     };
     AddonList();
-    AddonList(const AddonList &other);
+    AddonList(const AddonList &other) = default;
 
     bool isEmpty() const;
     QStringList addonsToInstall() const;
