@@ -156,7 +156,7 @@ void PackageKitResource::setPackages(const QMap<PackageKit::Transaction::Info, Q
     emit stateChanged();
 }
 
-void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &/*summary*/)
+void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId)
 {
     m_packages[info].append(packageId);
     emit stateChanged();

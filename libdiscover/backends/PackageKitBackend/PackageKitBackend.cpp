@@ -165,7 +165,7 @@ void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QSt
         m_updatingPackages.packages[packageName] = r.last();
     }
     foreach(auto res, r)
-        static_cast<PackageKitResource*>(res)->addPackageId(info, packageId, summary);
+        static_cast<PackageKitResource*>(res)->addPackageId(info, packageId);
 }
 
 void PackageKitBackend::getPackagesFinished(PackageKit::Transaction::Exit exit)

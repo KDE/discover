@@ -110,9 +110,21 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     m_trans = nullptr;
 
     PackageKit::Transaction* t = PackageKit::Daemon::resolve(resource()->packageName(), PackageKit::Transaction::FilterArch);
-    connect(t, &PackageKit::Transaction::package, t, [t](PackageKit::Transaction::Info info, const QString& packageId) { QMap<PackageKit::Transaction::Info, QStringList> packages = t->property("packages").value<QMap<PackageKit::Transaction::Info, QStringList>>(); packages[info].append(packageId); t->setProperty("packages", qVariantFromValue(packages)); });
+    connect(t, &PackageKit::Transaction::package, t, [t](PackageKit::Transaction::Info info, const QString& packageId) {
+        QMap<PackageKit::Transaction::Info, QStringList> packages = t->property("packages").value<QMap<PackageKit::Transaction::Info, QStringList>>();
+        packages[info].append(packageId);
+        t->setProperty("packages", qVariantFromValue(packages));
+    });
 
-    connect(t, &PackageKit::Transaction::finished, t, [cancel, t, this](PackageKit::Transaction::Exit /*status*/, uint /*runtime*/){ QMap<PackageKit::Transaction::Info, QStringList> packages = t->property("packages").value<QMap<PackageKit::Transaction::Info, QStringList>>(); qobject_cast<PackageKitResource*>(resource())->setPackages(packages); setStatus(Transaction::DoneStatus); if (cancel) qobject_cast<PackageKitBackend*>(resource()->backend())->transactionCanceled(this); else qobject_cast<PackageKitBackend*>(resource()->backend())->removeTransaction(this); });
+    connect(t, &PackageKit::Transaction::finished, t, [cancel, t, this](PackageKit::Transaction::Exit /*status*/, uint /*runtime*/){
+        QMap<PackageKit::Transaction::Info, QStringList> packages = t->property("packages").value<QMap<PackageKit::Transaction::Info, QStringList>>();
+        auto pkr = qobject_cast<PackageKitResource*>(resource());
+        pkr->setPackages(packages); setStatus(Transaction::DoneStatus);
+        if (cancel)
+            pkr->backend()->transactionCanceled(this);
+        else
+            pkr->backend()->removeTransaction(this);
+    });
 }
 
 PackageKit::Transaction* PKTransaction::transaction()

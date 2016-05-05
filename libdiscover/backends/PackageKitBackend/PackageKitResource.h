@@ -61,8 +61,10 @@ class PackageKitResource : public AbstractResource
         QMap<PackageKit::Transaction::Info, QStringList> packages() const { return m_packages; }
         void setPackages(const QMap<PackageKit::Transaction::Info, QStringList> &packages);
 
+        PackageKitBackend* backend() const;
+
     public Q_SLOTS:
-        void addPackageId(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary);
+        void addPackageId(PackageKit::Transaction::Info info, const QString &packageId);
         void setDetails(const PackageKit::Details& details);
 
     private Q_SLOTS:
@@ -82,7 +84,6 @@ class PackageKitResource : public AbstractResource
     private:
         /** fetches details individually, it's better if done in batch, like for updates */
         void fetchDetails();
-        PackageKitBackend* backend() const;
 
         QMap<PackageKit::Transaction::Info, QStringList> m_packages;
         const QString m_summary;
