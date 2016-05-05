@@ -115,12 +115,15 @@ void DiscoverMainWindow::openMode(const QString& _mode)
         qWarning() << "unknown mode" << _mode;
     
     QString mode = _mode;
-    mode[0] = mode[0].toLower();
+    mode[0] = mode[0].toUpper();
 
     QObject* obj = rootObject();
-    QByteArray propertyName = "top"+mode.toLatin1()+"Comp";
-    QVariant modeComp = obj->property(propertyName.constData());
-    obj->setProperty("currentTopLevel", modeComp);
+    const QByteArray propertyName = "top"+mode.toLatin1()+"Comp";
+    const QVariant modeComp = obj->property(propertyName.constData());
+    if (!modeComp.isValid())
+        qWarning() << "couldn't open mode" << _mode;
+    else
+        obj->setProperty("currentTopLevel", modeComp);
 }
 
 void DiscoverMainWindow::openMimeType(const QString& mime)
