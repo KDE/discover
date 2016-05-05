@@ -67,7 +67,7 @@ class DiscoverMainWindow : public QObject
         void openApplication(const QString& app);
         void openMimeType(const QString& mime);
         void openCategory(const QString& category);
-        void openMode(const QByteArray& mode);
+        void openMode(const QString& mode);
 
     private Q_SLOTS:
         void triggerOpenApplication();

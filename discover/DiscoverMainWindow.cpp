@@ -109,16 +109,16 @@ QStringList DiscoverMainWindow::modes() const
     return ret;
 }
 
-void DiscoverMainWindow::openMode(const QByteArray& _mode)
+void DiscoverMainWindow::openMode(const QString& _mode)
 {
-    if(!modes().contains(QString::fromLatin1(_mode)))
+    if(!modes().contains(_mode))
         qWarning() << "unknown mode" << _mode;
     
-    QByteArray mode = _mode;
-    if(mode[0]>'Z')
-        mode[0] = mode[0]-'a'+'A';
+    QString mode = _mode;
+    mode[0] = mode[0].toLower();
+
     QObject* obj = rootObject();
-    QByteArray propertyName = "top"+mode+"Comp";
+    QByteArray propertyName = "top"+mode.toLatin1()+"Comp";
     QVariant modeComp = obj->property(propertyName.constData());
     obj->setProperty("currentTopLevel", modeComp);
 }
@@ -245,7 +245,7 @@ QString DiscoverMainWindow::iconName(const QIcon& icon)
 
 void DiscoverMainWindow::configureSources()
 {
-    openMode("Sources");
+    openMode(QStringLiteral("Sources"));
 }
 
 void DiscoverMainWindow::appHelpActivated()

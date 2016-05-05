@@ -102,7 +102,7 @@ int main(int argc, char** argv)
             mainWindow->openCategory(parser.value(QStringLiteral("category")));
 
         if(parser.isSet(QStringLiteral("mode")))
-            mainWindow->openMode(parser.value(QStringLiteral("mode")).toLocal8Bit());
+            mainWindow->openMode(parser.value(QStringLiteral("mode")));
 
         foreach(const QString &arg, parser.positionalArguments()) {
             QUrl url(arg);
