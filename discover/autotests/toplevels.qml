@@ -40,7 +40,7 @@ DiscoverTest
         app.openMode("Update");
 
         var updatePage = appRoot.stack.currentItem;
-        verify(isType(updatePage, "UpdatesPage"), updatePage.toString());
+        compare(typeName(updatePage), "UpdatesPage")
         compare(updatePage.condition, true, "to update")
         var button = findChild(updatePage, "Button")
         verify(button);

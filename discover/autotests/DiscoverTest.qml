@@ -41,6 +41,12 @@ Item
         }
     }
 
+    function typeName(obj) {
+        var name = obj.toString();
+        var idx = name.indexOf("_QMLTYPE_");
+        return name.substring(0, idx);
+    }
+
     function isType(obj, typename) {
         return obj && obj.toString().indexOf(typename+"_QMLTYPE_") == 0
     }
