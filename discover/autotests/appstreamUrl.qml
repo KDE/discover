@@ -3,8 +3,6 @@ import QtTest 1.1
 
 DiscoverTest
 {
-    property QtObject appRoot
-
     function test_open() {
         verify(appRoot.stack.currentItem, "has a page");
         while (appRoot.stack.currentItem.title === "")

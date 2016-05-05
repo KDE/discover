@@ -4,7 +4,6 @@ import QtTest 1.1
 
 DiscoverTest
 {
-    property QtObject appRoot
     onReset: {
         appRoot.currentTopLevel = appRoot.topBrowsingComp
     }

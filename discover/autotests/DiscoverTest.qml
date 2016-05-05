@@ -1,4 +1,5 @@
 import QtQuick 2.1
+import QtQuick.Controls 1.4
 import QtTest 1.1
 import org.kde.discover.app 1.0
 
@@ -7,6 +8,20 @@ Item
     id: testRoot
 
     signal reset()
+    property QtObject appRoot
+
+    StackViewDelegate {
+        id: noTransitionsDelegate
+        popTransition: StackViewTransition { immediate: true }
+        pushTransition: StackViewTransition { immediate: true }
+        replaceTransition: StackViewTransition { immediate: true }
+    }
+
+    onAppRootChanged: {
+        if (!appRoot)
+            return;
+        appRoot.stack.delegate = noTransitionsDelegate
+    }
 
     function verify(condition, msg) {
         if (!condition) {
