@@ -91,7 +91,7 @@ void DummyBackend::setMetaData(const QString& path)
 
 void DummyBackend::populate(const QString& n)
 {
-    int start = m_resources.count();
+    const int start = m_resources.count();
     for(int i=start; i<start+m_startElements; i++) {
         const QString name = n+QLatin1Char(' ')+QString::number(i);
         DummyResource* res = new DummyResource(name, false, this);
@@ -101,7 +101,7 @@ void DummyBackend::populate(const QString& n)
     }
 
     for(int i=start; i<start+m_startElements; i++) {
-        QString name = QStringLiteral("techie")+QString::number(i);
+        const QString name = QStringLiteral("techie")+QString::number(i);
         DummyResource* res = new DummyResource(name, true, this);
         res->setState(AbstractResource::State(1+(i%3)));
         m_resources.insert(name, res);

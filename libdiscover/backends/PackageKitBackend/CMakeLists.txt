@@ -1,8 +1,7 @@
 find_package(KF5KIO REQUIRED)
 find_package(KF5Archive REQUIRED)
 
-set(pkbackend_SRCS
-    PackageKitBackend.cpp
+add_library(packagekit-backend MODULE PackageKitBackend.cpp
     PackageKitResource.cpp
     AppPackageKitResource.cpp
     PKTransaction.cpp
@@ -11,8 +10,6 @@ set(pkbackend_SRCS
     PackageKitSourcesBackend.cpp
     AppstreamReviews.cpp
 )
-
-add_library(packagekit-backend MODULE ${pkbackend_SRCS})
 target_link_libraries(packagekit-backend PRIVATE Discover::Common Qt5::Core PK::packagekitqt5 KF5::ConfigGui KF5::Service KF5::KIOWidgets KF5::Archive AppstreamQt)
 
 install(TARGETS packagekit-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
