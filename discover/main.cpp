@@ -80,19 +80,19 @@ int main(int argc, char** argv)
         about.processCommandLine(&parser);
         DiscoverBackendsFactory::processCommandLine(&parser, parser.isSet(QStringLiteral("test")));
 
-        if(parser.isSet(QStringLiteral("listmodes"))) {
-            QTextStream(stdout) << i18n("Available modes:\n");
-            foreach(const QString& mode, mainWindow->modes())
-                QTextStream(stdout) << " * " << mode << '\n';
-            return 0;
-        }
-
         if (parser.isSet(QStringLiteral("test"))) {
             QStandardPaths::setTestModeEnabled(true);
         }
 
         mainWindow = new DiscoverMainWindow(decodeCompactMode(parser.value(QStringLiteral("compact"))));
         QObject::connect(&app, &QApplication::aboutToQuit, mainWindow, &DiscoverMainWindow::deleteLater);
+
+        if(parser.isSet(QStringLiteral("listmodes"))) {
+            QTextStream(stdout) << i18n("Available modes:\n");
+            foreach(const QString& mode, mainWindow->modes())
+                QTextStream(stdout) << " * " << mode << '\n';
+            return 0;
+        }
 
         if(parser.isSet(QStringLiteral("application")))
             mainWindow->openApplication(parser.value(QStringLiteral("application")));
