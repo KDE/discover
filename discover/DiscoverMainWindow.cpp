@@ -207,10 +207,6 @@ void DiscoverMainWindow::setupActions()
     QAction *quitAction = KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), actionCollection());
     actionCollection()->addAction(QStringLiteral("file_quit"), quitAction);
 
-    QAction* configureSourcesAction = new QAction(QIcon::fromTheme(QStringLiteral("repository")), i18n("Configure Sources"), this);
-    connect(configureSourcesAction, &QAction::triggered, this, &DiscoverMainWindow::configureSources);
-    actionCollection()->addAction(QStringLiteral("configure_sources"), configureSourcesAction);
-
     if (KAuthorized::authorizeKAction(QStringLiteral("help_contents"))) {
         auto mHandBookAction = KStandardAction::helpContents(this, SLOT(appHelpActivated()), this);
         actionCollection()->addAction(mHandBookAction->objectName(), mHandBookAction);
@@ -244,11 +240,6 @@ QAction * DiscoverMainWindow::action(const QString& name)
 QString DiscoverMainWindow::iconName(const QIcon& icon)
 {
     return icon.name();
-}
-
-void DiscoverMainWindow::configureSources()
-{
-    openMode(QStringLiteral("Sources"));
 }
 
 void DiscoverMainWindow::appHelpActivated()

@@ -87,7 +87,14 @@ ApplicationWindow
 
     Menu {
         id: moreMenu
-        MenuItem { action: ActionBridge { action: app.action("configure_sources"); } }
+        MenuItem {
+            action: TopLevelPageData {
+                text: i18n("Configure Sources...")
+                iconName: "repository"
+                shortcut: "Alt+S"
+                component: topSourcesComp
+            }
+        }
         MenuSeparator {}
         Menu {
             id: advancedMenu
