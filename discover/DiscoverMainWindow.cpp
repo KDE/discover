@@ -57,6 +57,7 @@
 #include <Category/CategoryModel.h>
 
 #include <cmath>
+#include <unistd.h>
 
 DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
     : QObject()
@@ -93,6 +94,11 @@ DiscoverMainWindow::DiscoverMainWindow(CompactMode mode)
 DiscoverMainWindow::~DiscoverMainWindow()
 {
     delete m_engine;
+}
+
+bool DiscoverMainWindow::isRoot()
+{
+    return ::getuid() == 0;
 }
 
 QStringList DiscoverMainWindow::modes() const

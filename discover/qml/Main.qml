@@ -96,6 +96,16 @@ Rectangle
             }
         }
 
+        MessageAction {
+            Layout.fillWidth: true
+            theAction: Action {
+                enabled: app.isRoot
+                text: i18n("Got it");
+                tooltip: i18n("Running as <em>root</em> is discouraged and unnecessary.")
+                onTriggered: { enabled=false }
+            }
+        }
+
         Breadcrumbs {
             id: breadcrumbs
             Layout.fillWidth: true

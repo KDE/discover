@@ -40,6 +40,7 @@ class DiscoverMainWindow : public QObject
     Q_PROPERTY(QUrl prioritaryFeaturedSource READ prioritaryFeaturedSource CONSTANT)
     Q_PROPERTY(QUrl featuredSource READ featuredSource CONSTANT)
     Q_PROPERTY(CompactMode compactMode READ compactMode WRITE setCompactMode NOTIFY compactModeChanged)
+    Q_PROPERTY(bool isRoot READ isRoot CONSTANT)
     public:
         enum CompactMode { Auto, Compact, Full };
         Q_ENUMS(CompactMode)
@@ -62,6 +63,8 @@ class DiscoverMainWindow : public QObject
         Q_SCRIPTABLE QString iconName(const QIcon& icon);
 
         void loadTest(const QUrl& url);
+
+        static bool isRoot();
 
     public Q_SLOTS:
         void openApplication(const QString& app);
