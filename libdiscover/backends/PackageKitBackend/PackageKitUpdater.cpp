@@ -76,6 +76,7 @@ void PackageKitUpdater::setTransaction(PackageKit::Transaction* transaction)
 QSet<AbstractResource*> PackageKitUpdater::packagesForPackageId(const QSet<QString>& pkgids) const
 {
     QSet<QString> packages;
+    packages.reserve(pkgids.size());
     foreach(const QString& pkgid, pkgids) {
         packages += PackageKit::Daemon::packageName(pkgid);
     }

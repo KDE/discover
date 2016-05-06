@@ -79,7 +79,7 @@ void PKTransaction::progressChanged(const QString &id, PackageKit::Transaction::
 {
     Q_UNUSED(percentage);
     PackageKitResource * res = qobject_cast<PackageKitResource*>(resource());
-    if (id != res->availablePackageId() || id != res->installedPackageId())
+    if (!res->allPackageNames().contains(PackageKit::Daemon::packageName(id)))
         return;
 
     if (status == PackageKit::Transaction::StatusDownload)
