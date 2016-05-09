@@ -224,10 +224,10 @@ void DiscoverMainWindow::setupActions()
     }
 
     if (KAuthorized::authorizeKAction(QStringLiteral("switch_application_language"))) {
-        if (KLocalizedString::availableApplicationTranslations().count() > 1) {
+//         if (KLocalizedString::availableApplicationTranslations().count() > 1) {
             auto mSwitchApplicationLanguageAction = KStandardAction::create(KStandardAction::SwitchApplicationLanguage, this, SLOT(switchApplicationLanguage()), this);
             actionCollection()->addAction(mSwitchApplicationLanguageAction->objectName(), mSwitchApplicationLanguageAction);
-        }
+//         }
     }
 
     if (KAuthorized::authorizeKAction(QStringLiteral("help_about_app"))) {
