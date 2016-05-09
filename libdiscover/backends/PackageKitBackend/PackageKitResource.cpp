@@ -291,20 +291,28 @@ void PackageKitResource::fetchDetails()
     m_details.insert(QStringLiteral("fetching"), true);//we add an entry so it's not re-fetched.
 
     PackageKit::Transaction* t = PackageKit::Daemon::getDetails(availablePackageId());
-    connect(t, &PackageKit::Transaction::details, this, &PackageKitResource::setDetails);
+    connect(t, &PackageKit::Transaction::details, this, &PackageKitResource::setDetailsAndUpdate);
     connect(t, &PackageKit::Transaction::errorCode, this, [](PackageKit::Transaction::Error, const QString& msg){ qWarning() << "error fetching details" << msg; });
 }
 
 void PackageKitResource::setDetails(const PackageKit::Details & details)
 {
+    if (m_details != details) {
+        m_details = details;
+        emit stateChanged();
+    }
+}
+
+void PackageKitResource::setDetailsAndUpdate(const PackageKit::Details & details)
+{
     const bool ourDetails = details.packageId() == availablePackageId();
     if (!ourDetails)
         return;
 
-    m_details = details;
-    emit stateChanged();
+    setDetails(details);
 
-    backend()->allDataChanged();
+    if (!backend()->isFetching())
+        backend()->allDataChanged();
 }
 
 void PackageKitResource::fetchChangelog()
