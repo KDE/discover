@@ -104,6 +104,11 @@ void PackageKitBackend::acquireFetching(bool f)
     else
         m_isFetching--;
 
+    if (m_isFetching==0) {
+        m_packages = m_updatingPackages;
+        m_updatingPackages.clear();
+    }
+
     if ((!f && m_isFetching==0) || (f && m_isFetching==1)) {
         emit fetchingChanged();
     }
@@ -191,7 +196,6 @@ void PackageKitBackend::getPackagesFinished(PackageKit::Transaction::Exit exit)
             ++it;
     }
 
-    m_packages = m_updatingPackages;
     acquireFetching(false);
 }
 

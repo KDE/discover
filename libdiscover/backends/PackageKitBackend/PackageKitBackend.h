@@ -98,6 +98,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
             QHash<QString, AbstractResource*> packages;
             QHash<QString, QStringList> packageToApp;
             QHash<QString, QVector<AppPackageKitResource*>> extendedBy;
+            void clear() { *this = {}; }
         };
 
         Packages m_packages;
