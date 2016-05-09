@@ -18,6 +18,7 @@
  */
 
 #include "PaginateModel.h"
+#include <QtMath>
 #include <QDebug>
 
 PaginateModel::PaginateModel(QObject* object)
@@ -189,7 +190,7 @@ int PaginateModel::pageCount() const
     if(!m_sourceModel)
         return 0;
     const int r = (m_sourceModel->rowCount()%m_pageSize == 0) ? 1 : 0;
-    return std::ceil(float(m_sourceModel->rowCount())/m_pageSize) - r;
+    return qCeil(float(m_sourceModel->rowCount())/m_pageSize) - r;
 }
 
 bool PaginateModel::hasStaticRowCount() const
