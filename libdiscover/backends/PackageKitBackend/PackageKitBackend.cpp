@@ -349,6 +349,7 @@ void PackageKitBackend::removeApplication(AbstractResource* app)
 QList<AbstractResource*> PackageKitBackend::upgradeablePackages() const
 {
     QVector<AbstractResource*> ret;
+    ret.reserve(m_updatesPackageId.size());
     Q_FOREACH (const QString& pkgid, m_updatesPackageId) {
         const QString pkgname = PackageKit::Daemon::packageName(pkgid);
         const auto pkgs = resourcesByPackageName(pkgname, false);
