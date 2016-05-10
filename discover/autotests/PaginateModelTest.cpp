@@ -79,13 +79,21 @@ private Q_SLOTS:
         pm.setSourceModel(m_testModel);
         pm.setPageSize(5);
         QCOMPARE(pm.pageCount(), 3);
-        QSignalSpy spy(m_testModel, &QAbstractItemModel::rowsAboutToBeInserted);
+        QSignalSpy spy(&pm, &QAbstractItemModel::rowsAboutToBeInserted);
         m_testModel->insertRow(3, new QStandardItem(QStringLiteral("mwahahaha")));
-        QVERIFY(spy.count()==1);
+        m_testModel->insertRow(3, new QStandardItem(QStringLiteral("mwahahaha")));
+        m_testModel->insertRow(3, new QStandardItem(QStringLiteral("mwahahaha")));
+        QCOMPARE(spy.count(), 0);
 
         pm.lastPage();
         for (int i=0; i<7; ++i)
             m_testModel->appendRow(new QStandardItem(QStringLiteral("mwahahaha%1").arg(i)));
+        QCOMPARE(spy.count(), 4);
+        pm.firstPage();
+
+        for (int i=0; i<7; ++i)
+            m_testModel->appendRow(new QStandardItem(QStringLiteral("faraway%1").arg(i)));
+        QCOMPARE(spy.count(), 4);
     }
 
     void testItemRemoved() {
@@ -94,13 +102,14 @@ private Q_SLOTS:
         pm.setSourceModel(m_testModel);
         pm.setPageSize(5);
         QCOMPARE(pm.pageCount(), 5);
-        QSignalSpy spy(m_testModel, &QAbstractItemModel::rowsAboutToBeRemoved);
+        QSignalSpy spy(&pm, &QAbstractItemModel::rowsAboutToBeRemoved);
         m_testModel->removeRow(3);
-        QVERIFY(spy.count()==1);
+        QCOMPARE(spy.count(), 0);
         spy.clear();
 
+        pm.lastPage();
         m_testModel->removeRow(m_testModel->rowCount()-1);
-        QVERIFY(spy.count()==1);
+        QCOMPARE(spy.count(), 1);
     }
 
     void testMove() {
