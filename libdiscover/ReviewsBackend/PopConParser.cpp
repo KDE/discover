@@ -27,8 +27,12 @@ QHash<QString, Rating *> PopConParser::parsePopcon(QObject* parent, QIODevice* d
 {
     QHash<QString, Rating *> ratings;
     QRegularExpression rx(QStringLiteral("^Package: ([^ ]+) +(\\d+) +(\\d+) +(\\d+) +(\\d+)\\s+$"));
+    QByteArray buff;
+    buff.resize(1024);
     while(!dev->atEnd()) {
-        QString line = QString::fromLatin1(dev->readLine());
+        dev->readLine(buff.data(), buff.size());
+
+        const QString line = QString::fromLatin1(buff);
 
         auto match = rx.match(line);
         if (!match.hasMatch())
