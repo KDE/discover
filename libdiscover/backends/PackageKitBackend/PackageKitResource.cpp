@@ -291,7 +291,7 @@ void PackageKitResource::fetchDetails()
     m_details.insert(QStringLiteral("fetching"), true);//we add an entry so it's not re-fetched.
 
     PackageKit::Transaction* t = PackageKit::Daemon::getDetails(availablePackageId());
-    connect(t, &PackageKit::Transaction::details, this, &PackageKitResource::setDetailsAndUpdate);
+    connect(t, &PackageKit::Transaction::details, this, &PackageKitResource::setDetails);
     connect(t, &PackageKit::Transaction::errorCode, this, &PackageKitResource::failedFetchingDetails);
 }
 
@@ -302,22 +302,17 @@ void PackageKitResource::failedFetchingDetails(PackageKit::Transaction::Error, c
 
 void PackageKitResource::setDetails(const PackageKit::Details & details)
 {
-    if (m_details != details) {
-        m_details = details;
-        emit stateChanged();
-    }
-}
-
-void PackageKitResource::setDetailsAndUpdate(const PackageKit::Details & details)
-{
     const bool ourDetails = details.packageId() == availablePackageId();
     if (!ourDetails)
         return;
 
-    setDetails(details);
+    if (m_details != details) {
+        m_details = details;
+        emit stateChanged();
 
-    if (!backend()->isFetching())
-        backend()->allDataChanged();
+        if (!backend()->isFetching())
+            backend()->resourcesChanged(this, {"size", "homepage", "license"});
+    }
 }
 
 void PackageKitResource::fetchChangelog()

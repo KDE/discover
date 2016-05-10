@@ -206,12 +206,13 @@ void PackageKitBackend::transactionError(PackageKit::Transaction::Error, const Q
 
 void PackageKitBackend::packageDetails(const PackageKit::Details& details)
 {
-    QVector<AbstractResource*> resources = resourcesByPackageName(PackageKit::Daemon::packageName(details.packageId()), false);
+    QVector<AbstractResource*> resources = resourcesByPackageName(PackageKit::Daemon::packageName(details.packageId()), true);
+    if (resources.isEmpty())
+        qWarning() << "couldn't find package for" << details.packageId();
+
     foreach(AbstractResource* res, resources) {
         qobject_cast<PackageKitResource*>(res)->setDetails(details);
     }
-    if (!resources.isEmpty())
-        allDataChanged();
 }
 
 QVector<AbstractResource*> PackageKitBackend::resourcesByPackageName(const QString& name, bool updating) const

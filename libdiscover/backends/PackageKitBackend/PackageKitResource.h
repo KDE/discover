@@ -65,7 +65,6 @@ class PackageKitResource : public AbstractResource
 
     public Q_SLOTS:
         void addPackageId(PackageKit::Transaction::Info info, const QString &packageId);
-        void setDetailsAndUpdate(const PackageKit::Details& details);
         void setDetails(const PackageKit::Details& details);
 
     private Q_SLOTS:

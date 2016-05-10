@@ -105,6 +105,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         void updateCaller();
         void registerAllBackends();
         void resourceChangedByTransaction(Transaction* t);
+        void emitResourceChanges(AbstractResource* res, const QVector<QByteArray> &properties);
 
     private:
         int rowsBeforeBackend(AbstractResourcesBackend* backend, QVector<QVector<AbstractResource*>>::iterator& backendsResources);

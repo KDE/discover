@@ -131,6 +131,7 @@ void ResourcesModel::addResourcesBackend(AbstractResourcesBackend* backend)
 
     connect(backend, &AbstractResourcesBackend::fetchingChanged, this, &ResourcesModel::callerFetchingChanged);
     connect(backend, &AbstractResourcesBackend::allDataChanged, this, &ResourcesModel::updateCaller);
+    connect(backend, &AbstractResourcesBackend::resourcesChanged, this, &ResourcesModel::emitResourceChanges);
     connect(backend, &AbstractResourcesBackend::updatesCountChanged, this, &ResourcesModel::updatesCountChanged);
     connect(backend, &AbstractResourcesBackend::searchInvalidated, this, &ResourcesModel::searchInvalidated);
 
@@ -316,6 +317,20 @@ void ResourcesModel::updateCaller()
         return;
     
     emit dataChanged(index(before), index(before+backendsResources->size()-1));
+}
+
+void ResourcesModel::emitResourceChanges(AbstractResource* resource, const QVector<QByteArray> &properties)
+{
+    const QModelIndex idx = resourceIndex(resource);
+    if (!idx.isValid())
+        return;
+
+    QVector<int> roles;
+    roles.reserve(properties.size());
+    std::transform(properties.cbegin(), properties.cend(), roles.begin(), [this](const QByteArray& arr) { return roleNames().key(arr, -1); });
+    roles.removeAll(-1);
+
+    emit dataChanged(idx, idx, roles);
 }
 
 QVector< AbstractResourcesBackend* > ResourcesModel::backends() const
