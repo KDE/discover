@@ -69,6 +69,7 @@ class PackageKitResource : public AbstractResource
         void setDetails(const PackageKit::Details& details);
 
     private Q_SLOTS:
+        void failedFetchingDetails(PackageKit::Transaction::Error, const QString& msg);
         void updateDetail(const QString &packageID,
                           const QStringList &updates,
                           const QStringList &obsoletes,

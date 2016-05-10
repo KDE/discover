@@ -292,7 +292,12 @@ void PackageKitResource::fetchDetails()
 
     PackageKit::Transaction* t = PackageKit::Daemon::getDetails(availablePackageId());
     connect(t, &PackageKit::Transaction::details, this, &PackageKitResource::setDetailsAndUpdate);
-    connect(t, &PackageKit::Transaction::errorCode, this, [](PackageKit::Transaction::Error, const QString& msg){ qWarning() << "error fetching details" << msg; });
+    connect(t, &PackageKit::Transaction::errorCode, this, &PackageKitResource::failedFetchingDetails);
+}
+
+void PackageKitResource::failedFetchingDetails(PackageKit::Transaction::Error, const QString& msg)
+{
+    qWarning() << "error fetching details" << msg;
 }
 
 void PackageKitResource::setDetails(const PackageKit::Details & details)
