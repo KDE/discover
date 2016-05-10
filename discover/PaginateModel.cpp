@@ -269,7 +269,7 @@ void PaginateModel::_k_sourceColumnsRemoved(const QModelIndex& parent, int start
 
 void PaginateModel::_k_sourceDataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight, const QVector<int> &roles)
 {
-    if(topLeft.parent().isValid() || bottomRight.row()<m_firstItem || topLeft.row()>m_firstItem+rowCount()) {
+    if(topLeft.parent().isValid() || bottomRight.row()<m_firstItem || topLeft.row()>lastItem()) {
         return;
     }
 
@@ -300,9 +300,14 @@ void PaginateModel::_k_sourceModelReset()
     endResetModel();
 }
 
-bool PaginateModel::isIntervalValid(const QModelIndex& parent, int start, int end) const
+bool PaginateModel::isIntervalValid(const QModelIndex& parent, int start, int /*end*/) const
 {
-    return !parent.isValid() && (start<m_firstItem+m_pageSize || end>m_firstItem);
+    return !parent.isValid() && start<=lastItem();
+}
+
+bool PaginateModel::canSizeChange() const
+{
+    return !m_hasStaticRowCount && currentPage() == pageCount()-1;
 }
 
 void PaginateModel::_k_sourceRowsAboutToBeInserted(const QModelIndex& parent, int start, int end)
@@ -311,7 +316,7 @@ void PaginateModel::_k_sourceRowsAboutToBeInserted(const QModelIndex& parent, in
         return;
     }
 
-    if(currentPage() == pageCount()-1) {
+    if(canSizeChange()) {
         const int insertedCount = end-start;
         const int newStart = qMax(start-m_firstItem, 0);
         beginInsertRows(QModelIndex(), newStart, newStart+insertedCount);
@@ -326,7 +331,7 @@ void PaginateModel::_k_sourceRowsInserted(const QModelIndex& parent, int start, 
         return;
     }
 
-    if(currentPage() == pageCount()-1) {
+    if(canSizeChange()) {
         endInsertRows();
     } else {
         endResetModel();
@@ -360,7 +365,7 @@ void PaginateModel::_k_sourceRowsAboutToBeRemoved(const QModelIndex& parent, int
         return;
     }
 
-    if(currentPage() == pageCount()-1) {
+    if(canSizeChange()) {
         const int removedCount = end-start;
         const int newStart = qMax(start-m_firstItem, 0);
         beginRemoveRows(QModelIndex(), newStart, newStart+removedCount);
@@ -375,9 +380,14 @@ void PaginateModel::_k_sourceRowsRemoved(const QModelIndex& parent, int start, i
         return;
     }
 
-    if(currentPage() == pageCount()-1) {
+    if(canSizeChange()) {
         endRemoveRows();
     } else {
         beginResetModel();
     }
+}
+
+int PaginateModel::lastItem() const
+{
+    return m_firstItem + rowCount();
 }

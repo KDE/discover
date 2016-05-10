@@ -52,6 +52,13 @@ class PaginateModel : public QAbstractListModel
         int firstItem() const;
         void setFirstItem(int row);
 
+        /**
+         * @returns Last visible item.
+         *
+         * Convenience function
+         */
+        int lastItem() const;
+
         QAbstractItemModel* sourceModel() const;
         void setSourceModel(QAbstractItemModel* model);
 
@@ -100,6 +107,7 @@ class PaginateModel : public QAbstractListModel
         void pageCountChanged();
 
     private:
+        bool canSizeChange() const;
         bool isIntervalValid(const QModelIndex& parent, int start, int end) const;
 
         int rowsByPageSize(int size) const;

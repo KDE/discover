@@ -82,8 +82,8 @@ private Q_SLOTS:
         QSignalSpy spy(&pm, &QAbstractItemModel::rowsAboutToBeInserted);
         m_testModel->insertRow(3, new QStandardItem(QStringLiteral("mwahahaha")));
         m_testModel->insertRow(3, new QStandardItem(QStringLiteral("mwahahaha")));
-        m_testModel->insertRow(3, new QStandardItem(QStringLiteral("mwahahaha")));
         QCOMPARE(spy.count(), 0);
+        m_testModel->appendRow(new QStandardItem(QStringLiteral("mwahahaha")));
 
         pm.lastPage();
         for (int i=0; i<7; ++i)
