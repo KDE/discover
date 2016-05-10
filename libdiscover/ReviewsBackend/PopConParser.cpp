@@ -26,15 +26,14 @@
 QHash<QString, Rating *> PopConParser::parsePopcon(QObject* parent, QIODevice* dev)
 {
     QHash<QString, Rating *> ratings;
-    QRegularExpression rx(QStringLiteral("^Package: ([^ ]+) +(\\d+) +(\\d+) +(\\d+) +(\\d+)\\s+$"));
-    QByteArray buff;
-    buff.resize(1024);
+    QRegularExpression rx(QStringLiteral("^Package: ([^ ]+) +(\\d+) +(\\d+) +(\\d+) +(\\d+)\\s*$"));
+    QString buff;
+    buff.resize(512);
+    QTextStream stream(dev);
     while(!dev->atEnd()) {
-        dev->readLine(buff.data(), buff.size());
+        stream.readLineInto(&buff, 0);
 
-        const QString line = QString::fromLatin1(buff);
-
-        auto match = rx.match(line);
+        auto match = rx.match(buff);
         if (!match.hasMatch())
             continue;
 
