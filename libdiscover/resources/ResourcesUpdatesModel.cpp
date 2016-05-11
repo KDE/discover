@@ -172,15 +172,6 @@ QString ResourcesUpdatesModel::remainingTime() const
         return i18nc("@item:intext Remaining time", "%1 remaining", KFormat().formatDuration(maxEta));
 }
 
-bool ResourcesUpdatesModel::hasUpdates() const
-{
-    bool ret = false;
-    foreach(AbstractBackendUpdater* upd, m_updaters) {
-        ret |= upd->hasUpdates();
-    }
-    return ret;
-}
-
 quint64 ResourcesUpdatesModel::downloadSpeed() const
 {
     quint64 ret = 0;
@@ -206,15 +197,6 @@ bool ResourcesUpdatesModel::isProgressing() const
         progressing |= upd->isProgressing();
     }
     return progressing;
-}
-
-bool ResourcesUpdatesModel::isAllMarked() const
-{
-    bool allmarked = false;
-    foreach(AbstractBackendUpdater* upd, m_updaters) {
-        allmarked |= upd->isAllMarked();
-    }
-    return allmarked;
 }
 
 QList<AbstractResource*> ResourcesUpdatesModel::toUpdate() const

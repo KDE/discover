@@ -48,14 +48,12 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         
         qreal progress() const;
         QString remainingTime() const;
-        bool hasUpdates() const;
         quint64 downloadSpeed() const;
         Q_SCRIPTABLE void prepare();
 
         ///checks if any of them is cancelable
         bool isCancelable() const;
         bool isProgressing() const;
-        bool isAllMarked() const;
         QList<AbstractResource*> toUpdate() const;
         QDateTime lastUpdate() const;
         void addResources(const QList<AbstractResource*>& resources);

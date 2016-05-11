@@ -44,7 +44,6 @@ class PackageKitUpdater : public AbstractBackendUpdater
         QList<AbstractResource*> toUpdate() const override;
         bool isMarked(AbstractResource* res) const override;
         QDateTime lastUpdate() const override;
-        bool isAllMarked() const override;
         bool isCancelable() const override;
         bool isProgressing() const override;
         

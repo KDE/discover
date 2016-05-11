@@ -99,9 +99,6 @@ private Q_SLOTS:
             }
         }
 
-
-        rum->updateAll();
-
         QSignalSpy spy(rum, &ResourcesUpdatesModel::progressingChanged);
         QVERIFY(spy.wait());
         QCOMPARE(rum->isProgressing(), true);

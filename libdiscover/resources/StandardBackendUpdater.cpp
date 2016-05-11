@@ -145,12 +145,6 @@ bool StandardBackendUpdater::isMarked(AbstractResource* res) const
     return m_toUpgrade.contains(res);
 }
 
-bool StandardBackendUpdater::isAllMarked() const
-{
-    //Maybe we should make this smarter...
-    return m_preparedSize>=m_toUpgrade.size();
-}
-
 QDateTime StandardBackendUpdater::lastUpdate() const
 {
     return m_lastUpdate;

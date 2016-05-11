@@ -210,11 +210,6 @@ QDateTime PackageKitUpdater::lastUpdate() const
     return m_lastUpdate;
 }
 
-bool PackageKitUpdater::isAllMarked() const
-{
-    return m_toUpgrade.count() >= m_backend->updatesCount();
-}
-
 bool PackageKitUpdater::isCancelable() const
 {
     return m_transaction->allowCancel();

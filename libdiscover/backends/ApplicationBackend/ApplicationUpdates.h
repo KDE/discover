@@ -52,7 +52,6 @@ public:
     void addResources(const QList<AbstractResource*>& apps) override;
     void removeResources(const QList<AbstractResource*>& apps) override;
     QList<AbstractResource*> toUpdate() const override;
-    bool isAllMarked() const override;
     QDateTime lastUpdate() const override;
     bool isCancelable() const override;
     bool isProgressing() const override;

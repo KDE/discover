@@ -106,10 +106,7 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
          * @returns the QDateTime when the last update happened
          */
         virtual QDateTime lastUpdate() const = 0;
-        /**
-         * @returns true when upgradeable packages are marked be upgraded
-         */
-        virtual bool isAllMarked() const = 0;
+
         /**
          * @returns whether the updater can currently be canceled or not
          * @see cancelableChanged
