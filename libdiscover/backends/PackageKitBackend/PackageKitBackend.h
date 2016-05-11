@@ -54,7 +54,6 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void installApplication(AbstractResource* app) override;
         void installApplication(AbstractResource* app, const AddonList& addons) override;
         void removeApplication(AbstractResource* app) override;
-        void cancelTransaction(AbstractResource* app) override;
         bool isValid() const override { return true; }
         QList<AbstractResource*> upgradeablePackages() const override;
         bool isFetching() const override;

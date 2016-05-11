@@ -94,12 +94,3 @@ void Transaction::setProgress(int progress)
     }
 }
 
-void Transaction::cancel()
-{
-    if (!m_isCancellable) {
-        qWarning() << "trying to cancel a transaction that can't be cancelled" << this;
-        return;
-    }
-
-    TransactionModel::global()->cancelTransaction(this);
-}

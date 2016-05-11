@@ -119,13 +119,31 @@ void ResourcesUpdatesModel::prepare()
     }
 }
 
+class UpdateTransaction : public Transaction
+{
+public:
+    UpdateTransaction(ResourcesUpdatesModel* parent)
+        : Transaction(parent, nullptr, Transaction::InstallRole)
+        , m_updater(parent)
+    {
+        setCancellable(m_updater->isCancelable());
+    }
+
+    void cancel() override {
+        m_updater->cancel();
+    }
+
+private:
+    ResourcesUpdatesModel* m_updater;
+};
+
 void ResourcesUpdatesModel::updateAll()
 {
     if(m_updaters.isEmpty())
         emit progressingChanged(false);
     else {
         delete m_transaction;
-        m_transaction = new Transaction(this, nullptr, Transaction::InstallRole);
+        m_transaction = new UpdateTransaction(this);
         TransactionModel::global()->addTransaction(m_transaction);
         Q_FOREACH (AbstractBackendUpdater* upd, m_updaters) {
             if (upd->hasUpdates())

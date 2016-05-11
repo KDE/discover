@@ -89,7 +89,6 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         void installApplication(AbstractResource* app, const AddonList& addons);
         void installApplication(AbstractResource* app);
         void removeApplication(AbstractResource* app);
-        void cancelTransaction(AbstractResource* app);
 
     Q_SIGNALS:
         void fetchingChanged();

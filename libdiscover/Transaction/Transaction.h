@@ -120,7 +120,7 @@ public:
     /**
      * Cancels the transaction
      */
-    void cancel();
+    virtual void cancel() = 0;
 
 private:
     AbstractResource * const m_resource;

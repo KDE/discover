@@ -32,7 +32,7 @@ class PKTransaction : public Transaction
         explicit PKTransaction(const QVector<AbstractResource*>& app, Transaction::Role role);
         PackageKit::Transaction* transaction();
 
-        void cancel();
+        void cancel() override;
 
     public Q_SLOTS:
         void start();

@@ -95,7 +95,11 @@ void PKTransaction::cancellableChanged()
 
 void PKTransaction::cancel()
 {
-    m_trans->cancel();
+    if (m_trans->allowCancel()) {
+        m_trans->cancel();
+    } else {
+        qWarning() << "trying to cancel a non-cancellable transaction: " << resource()->name();
+    }
 }
 
 void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)

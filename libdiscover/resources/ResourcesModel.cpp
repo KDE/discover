@@ -382,12 +382,6 @@ void ResourcesModel::removeApplication(AbstractResource* app)
     app->backend()->removeApplication(app);
 }
 
-void ResourcesModel::cancelTransaction(AbstractResource* app)
-{
-    Q_ASSERT(!isFetching());
-    app->backend()->cancelTransaction(app);
-}
-
 QMap<int, QVariant> ResourcesModel::itemData(const QModelIndex& index) const
 {
     QMap<int, QVariant> ret;

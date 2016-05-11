@@ -36,7 +36,7 @@ ConditionalLoader
             Layout.fillHeight: true
             iconName: "dialog-cancel"
             enabled: listener.isCancellable
-            onClicked: ResourcesModel.cancelTransaction(application)
+            onClicked: listener.cancel()
         }
     }
 

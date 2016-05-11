@@ -46,6 +46,8 @@ public:
     QString statusText() const;
     int progress() const;
 
+    Q_SCRIPTABLE void cancel();
+
     void setResource(AbstractResource* resource);
 
 private:

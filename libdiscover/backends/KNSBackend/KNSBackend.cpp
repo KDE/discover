@@ -265,33 +265,37 @@ void KNSBackend::statusChanged(const KNS3::Entry& entry)
         qWarning() << "unknown entry changed" << entry.id() << entry.name();
 }
 
-void KNSBackend::cancelTransaction(AbstractResource* app)
+class LambdaTransaction : public Transaction
 {
-    Q_UNUSED(app)
+public:
+    LambdaTransaction(QObject* parent, AbstractResource* res, Transaction::Role role)
+        : Transaction(parent, res, role)
+    {
+        setCancellable(false);
+        TransactionModel::global()->addTransaction(this);
+    }
 
-    qWarning("KNS transaction canceling unsupported");
-}
+    ~LambdaTransaction() override {
+        TransactionModel::global()->removeTransaction(this);
+    }
+
+    void cancel() override {}
+};
 
 void KNSBackend::removeApplication(AbstractResource* app)
 {
-    Transaction* t = new Transaction(this, app, Transaction::RemoveRole);
-    TransactionModel *transModel = TransactionModel::global();
-    transModel->addTransaction(t);
+    QScopedPointer<Transaction> t(new LambdaTransaction(this, app, Transaction::RemoveRole));
     KNSResource* r = qobject_cast<KNSResource*>(app);
     Q_ASSERT(r->entry());
     m_manager->uninstallEntry(*r->entry());
-    transModel->removeTransaction(t);
 }
 
 void KNSBackend::installApplication(AbstractResource* app)
 {
-    Transaction* t = new Transaction(this, app, Transaction::InstallRole);
-    TransactionModel *transModel = TransactionModel::global();
-    transModel->addTransaction(t);
+    QScopedPointer<Transaction> t(new LambdaTransaction(this, app, Transaction::InstallRole));
     KNSResource* r = qobject_cast<KNSResource*>(app);
     Q_ASSERT(r->entry());
     m_manager->installEntry(*r->entry());
-    transModel->removeTransaction(t);
 }
 
 void KNSBackend::installApplication(AbstractResource* app, const AddonList& /*addons*/)

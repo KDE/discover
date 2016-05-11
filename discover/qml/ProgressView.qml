@@ -92,7 +92,7 @@ Item {
                     anchors.verticalCenter: parent.verticalCenter
                     iconName: "dialog-cancel"
                     visible: listener.isCancellable
-                    onClicked: ResourcesModel.cancelTransaction(app)
+                    onClicked: listener.cancel()
                 }
                 ToolButton {
                     anchors.verticalCenter: parent.verticalCenter

@@ -65,6 +65,23 @@
 
 MUON_BACKEND_PLUGIN(ApplicationBackend)
 
+class AptTransaction : public Transaction
+{
+public:
+    AptTransaction(QObject *parent, AbstractResource *resource, Transaction::Role role, const AddonList &addons = {})
+        : Transaction(parent, resource, role, addons), m_aptTrans(nullptr) {}
+
+    void cancel() {
+        m_aptTrans->cancel();
+    }
+
+    QApt::Transaction *aptTrans() const { return m_aptTrans; }
+    void setAptTrans(QApt::Transaction *t) { m_aptTrans = t; }
+
+private:
+    QApt::Transaction *m_aptTrans;
+};
+
 ApplicationBackend::ApplicationBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_backend(new QApt::Backend(this))
@@ -192,19 +209,20 @@ bool ApplicationBackend::isValid() const
 void ApplicationBackend::aptTransactionsChanged(QString active)
 {
     // Find the newly-active QApt transaction in our list
-    QApt::Transaction *trans = nullptr;
+    AptTransaction* discTrans = nullptr;
 
-    Q_FOREACH (QApt::Transaction *t, m_transQueue) {
-        if (t->transactionId() == active) {
-            trans = t;
+    Q_FOREACH (AptTransaction *t, m_transQueue) {
+        if (t->aptTrans()->transactionId() == active) {
+            discTrans = t;
             break;
         }
     }
 
-    if (!trans || m_transQueue.key(trans) == m_currentTransaction)
+    if (!discTrans || discTrans == m_currentTransaction)
         return;
 
-    m_currentTransaction = m_transQueue.key(trans);
+    m_currentTransaction = discTrans;
+    QApt::Transaction *trans = discTrans->aptTrans();
     connect(trans, &QApt::Transaction::statusChanged, this, &ApplicationBackend::transactionEvent);
     connect(trans, &QApt::Transaction::errorOccurred, this, &ApplicationBackend::errorOccurred);
     connect(trans, &QApt::Transaction::progressChanged, this, &ApplicationBackend::updateProgress);
@@ -213,8 +231,7 @@ void ApplicationBackend::aptTransactionsChanged(QString active)
 
 void ApplicationBackend::transactionEvent(QApt::TransactionStatus status)
 {
-    auto iter = m_transQueue.find(m_currentTransaction);
-    if (iter == m_transQueue.end())
+    if (!m_currentTransaction->aptTrans())
         return;
 
     TransactionModel *transModel = TransactionModel::global();
@@ -240,7 +257,7 @@ void ApplicationBackend::transactionEvent(QApt::TransactionStatus status)
         m_currentTransaction->setStatus(Transaction::CommittingStatus);
 
         // Set up debconf
-        m_debconfGui = new DebconfKde::DebconfGui(iter.value()->debconfPipe());
+        m_debconfGui = new DebconfKde::DebconfGui(m_currentTransaction->aptTrans()->debconfPipe());
         m_debconfGui->connect(m_debconfGui, &DebconfKde::DebconfGui::activated, m_debconfGui, &DebconfKde::DebconfGui::show);
         m_debconfGui->connect(m_debconfGui, &DebconfKde::DebconfGui::deactivated, m_debconfGui, &DebconfKde::DebconfGui::hide);
         break;
@@ -248,14 +265,18 @@ void ApplicationBackend::transactionEvent(QApt::TransactionStatus status)
         m_currentTransaction->setStatus(Transaction::DoneStatus);
 
         // Clean up manually created debconf pipe
-        QApt::Transaction *trans = iter.value();
+        QApt::Transaction *trans = m_currentTransaction->aptTrans();
         if (!trans->debconfPipe().isEmpty())
             QFile::remove(trans->debconfPipe());
 
         // Cleanup
         trans->deleteLater();
-        transModel->removeTransaction(m_currentTransaction);
-        m_transQueue.remove(iter.key());
+
+        if (trans->exitStatus() == QApt::ExitCancelled)
+            transModel->cancelTransaction(m_currentTransaction);
+        else
+            transModel->removeTransaction(m_currentTransaction);
+        m_transQueue.removeAll(m_currentTransaction);
 
         qobject_cast<Application*>(m_currentTransaction->resource())->emitStateChanged();
         delete m_currentTransaction;
@@ -274,11 +295,11 @@ void ApplicationBackend::errorOccurred(QApt::ErrorCode error)
 
     if( error == QApt::AuthError){
         m_currentTransaction->cancel();
-        m_transQueue.remove(m_currentTransaction);
+        m_transQueue.removeAll(m_currentTransaction);
         m_currentTransaction->deleteLater();
         m_currentTransaction = nullptr;
     }
-    QAptActions::self()->displayTransactionError(error, m_transQueue.value(m_currentTransaction));
+    QAptActions::self()->displayTransactionError(error, m_currentTransaction->aptTrans());
 }
 
 void ApplicationBackend::updateProgress(int percentage)
@@ -370,7 +391,7 @@ void ApplicationBackend::markLangpacks(Transaction *transaction)
     m_backend->setCompressEvents(false);
 }
 
-void ApplicationBackend::addTransaction(Transaction *transaction)
+void ApplicationBackend::addTransaction(AptTransaction *transaction)
 {
     if(!transaction){
       return;
@@ -415,8 +436,8 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
 
     QApt::Transaction *aptTrans = m_backend->commitChanges();
     setupTransaction(aptTrans);
+    transaction->setAptTrans(aptTrans);
     TransactionModel::global()->addTransaction(transaction);
-    m_transQueue.insert(transaction, aptTrans);
     aptTrans->run();
     m_backend->restoreCacheState(oldCacheState); // Undo temporary simulation marking
 
@@ -424,22 +445,6 @@ void ApplicationBackend::addTransaction(Transaction *transaction)
         aptTransactionsChanged(aptTrans->transactionId());
         m_currentTransaction = transaction;
     }
-}
-
-void ApplicationBackend::cancelTransaction(AbstractResource* app)
-{
-    for (auto iter = m_transQueue.begin(); iter != m_transQueue.end(); ++iter) {
-        Transaction* t = iter.key();
-        QApt::Transaction *aptTrans = iter.value();
-
-        if (t->resource() == app) {
-            if (t->isCancellable()) {
-                aptTrans->cancel();
-            }
-            break;
-        }
-    }
-    // Emitting the cancellation occurs when the QApt trans is finished
 }
 
 QApt::Backend* ApplicationBackend::backend() const
@@ -466,17 +471,17 @@ void ApplicationBackend::installApplication(AbstractResource* res, const AddonLi
 {
     Application* app = qobject_cast<Application*>(res);
     Transaction::Role role = app->package()->isInstalled() ? Transaction::ChangeAddonsRole : Transaction::InstallRole;
-    addTransaction(new Transaction(this, res, role, addons));
+    addTransaction(new AptTransaction(this, res, role, addons));
 }
 
 void ApplicationBackend::installApplication(AbstractResource* app)
 {
-    addTransaction(new Transaction(this, app, Transaction::InstallRole));
+    addTransaction(new AptTransaction(this, app, Transaction::InstallRole));
 }
 
 void ApplicationBackend::removeApplication(AbstractResource* app)
 {
-    addTransaction(new Transaction(this, app, Transaction::RemoveRole));
+    addTransaction(new AptTransaction(this, app, Transaction::RemoveRole));
 }
 
 int ApplicationBackend::updatesCount() const

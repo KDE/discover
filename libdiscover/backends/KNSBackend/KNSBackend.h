@@ -50,7 +50,6 @@ public:
     ~KNSBackend() override;
     
     void setMetaData(const QString& path) override;
-    void cancelTransaction(AbstractResource* app) override;
     void removeApplication(AbstractResource* app) override;
     void installApplication(AbstractResource* app) override;
     void installApplication(AbstractResource* app, const AddonList& addons) override;

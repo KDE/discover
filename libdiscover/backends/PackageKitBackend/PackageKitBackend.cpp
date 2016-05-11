@@ -328,21 +328,6 @@ void PackageKitBackend::installApplication(AbstractResource* app)
     addTransaction(new PKTransaction({app}, Transaction::InstallRole));
 }
 
-void PackageKitBackend::cancelTransaction(AbstractResource* app)
-{
-    Q_FOREACH (Transaction* t, m_transactions) {
-        PKTransaction* pkt = qobject_cast<PKTransaction*>(t);
-        if (pkt->resource() == app) {
-            if (pkt->transaction()->allowCancel()) {
-                pkt->transaction()->cancel();
-            } else {
-                qWarning() << "trying to cancel a non-cancellable transaction: " << app->name();
-            }
-            break;
-        }
-    }
-}
-
 void PackageKitBackend::removeApplication(AbstractResource* app)
 {
     Q_ASSERT(!isFetching());

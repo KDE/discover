@@ -184,16 +184,6 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
          * @param app the application to be removed
          */
         virtual void removeApplication(AbstractResource *app) = 0;
-        
-        /**
-         * This gets called when a transaction should get canceled and thus the backend
-         * should cancel the transaction and remove it from the TransactionModel:
-         * \code
-         * TransactionModel::global()->removeTransaction(t);
-         * \endcode
-         * @param app the application whose transaction is going to be canceled
-         */
-        virtual void cancelTransaction(AbstractResource *app) = 0;
 
     Q_SIGNALS:
         /**

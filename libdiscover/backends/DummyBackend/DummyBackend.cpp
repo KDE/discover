@@ -187,9 +187,6 @@ void DummyBackend::removeApplication(AbstractResource* app)
 	transModel->addTransaction(new DummyTransaction(qobject_cast<DummyResource*>(app), Transaction::RemoveRole));
 }
 
-void DummyBackend::cancelTransaction(AbstractResource*)
-{}
-
 void DummyBackend::checkForUpdates()
 {
     if(m_fetching)

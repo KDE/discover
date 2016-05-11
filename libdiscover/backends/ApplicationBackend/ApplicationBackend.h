@@ -23,6 +23,7 @@
 
 #include <QFutureWatcher>
 #include <QtCore/QObject>
+#include <QtCore/QPointer>
 #include <QtCore/QQueue>
 #include <QtCore/QSet>
 #include <QtCore/QStringList>
@@ -45,6 +46,7 @@ class Application;
 class ApplicationUpdates;
 class ReviewsBackend;
 class Transaction;
+class AptTransaction;
 class QAptActions;
 class KJob;
 
@@ -74,7 +76,6 @@ public:
     void installApplication(AbstractResource *res, const AddonList& addons) override;
     void installApplication(AbstractResource *app) override;
     void removeApplication(AbstractResource *app) override;
-    void cancelTransaction(AbstractResource *app) override;
     
     AbstractBackendUpdater* backendUpdater() const override;
     void integrateActions(KActionCollection* w) override;
@@ -93,8 +94,8 @@ private:
     QVector<Application *> m_appList;
 
     // Transactions
-    QHash<Transaction *, QApt::Transaction *> m_transQueue;
-    Transaction *m_currentTransaction;
+    QVector<AptTransaction *> m_transQueue;
+    QPointer<AptTransaction> m_currentTransaction;
 
     DebconfKde::DebconfGui *m_debconfGui;
     ApplicationUpdates* m_backendUpdater;
@@ -103,7 +104,7 @@ private:
     
 public Q_SLOTS:
     void reload();
-    void addTransaction(Transaction *transaction);
+    void addTransaction(AptTransaction *transaction);
     //helper functions
     void initAvailablePackages(KJob*);
 

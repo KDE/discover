@@ -35,6 +35,15 @@ TransactionListener::TransactionListener(QObject *parent)
     connect(TransactionModel::global(), &TransactionModel::transactionCancelled, this, &TransactionListener::transactionCancelled);
 }
 
+void TransactionListener::cancel()
+{
+    if(!isCancellable()) {
+        qWarning() << "cannot cancel the transaction" << m_transaction;
+        return;
+    }
+    m_transaction->cancel();
+}
+
 AbstractResource *TransactionListener::resource() const
 {
     return m_resource;
