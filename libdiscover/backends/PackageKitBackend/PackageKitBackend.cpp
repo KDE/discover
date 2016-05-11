@@ -130,13 +130,12 @@ void PackageKitBackend::reloadPackageList()
 
 void PackageKitBackend::fetchUpdates()
 {
-    m_updatesPackageId.clear();
-
     PackageKit::Transaction * tUpdates = PackageKit::Daemon::getUpdates();
     connect(tUpdates, &PackageKit::Transaction::finished, this, &PackageKitBackend::getUpdatesFinished);
     connect(tUpdates, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackageToUpdate);
     connect(tUpdates, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
     acquireFetching(true);
+    m_updatesPackageId.clear();
 }
 
 

@@ -45,10 +45,14 @@ class PKTransaction : public Transaction
         void progressChanged(const QString&, PackageKit::Transaction::Status, uint);
         void eulaRequired(const QString &eulaID, const QString &packageID, const QString &vendor, const QString &licenseAgreement);
         void cancellableChanged();
+        void packageResolved(PackageKit::Transaction::Info info, const QString& packageId);
+        void submitResolve();
 
     private:
         QPointer<PackageKit::Transaction> m_trans;
         const QVector<AbstractResource*> m_apps;
+
+        QMap<PackageKit::Transaction::Info, QStringList> m_newPackageStates;
 };
 
 #endif // PKTRANSACTION_H

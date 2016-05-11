@@ -64,6 +64,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QString upgradeablePackageId(const PackageKitResource* res) const;
         QVector<AbstractResource*> resourcesByPackageName(const QString& name, bool updating) const;
         QVector<AppPackageKitResource*> extendedBy(const QString& id) const;
+        void fetchUpdates();
 
     public Q_SLOTS:
         void transactionCanceled(Transaction* t);
@@ -83,7 +84,6 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
     private:
         void addTransaction(PKTransaction* trans);
         void checkDaemonRunning();
-        void fetchUpdates();
         void acquireFetching(bool f);
 
         Appstream::Database m_appdata;

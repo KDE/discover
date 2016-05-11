@@ -110,9 +110,26 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     m_trans = nullptr;
 
     PackageKit::Transaction* t = PackageKit::Daemon::resolve(resource()->packageName(), PackageKit::Transaction::FilterArch);
-    connect(t, &PackageKit::Transaction::package, t, [t](PackageKit::Transaction::Info info, const QString& packageId) { QMap<PackageKit::Transaction::Info, QStringList> packages = t->property("packages").value<QMap<PackageKit::Transaction::Info, QStringList>>(); packages[info].append(packageId); t->setProperty("packages", qVariantFromValue(packages)); });
+    connect(t, &PackageKit::Transaction::package, this, &PKTransaction::packageResolved);
 
-    connect(t, &PackageKit::Transaction::finished, t, [cancel, t, this](PackageKit::Transaction::Exit /*status*/, uint /*runtime*/){ QMap<PackageKit::Transaction::Info, QStringList> packages = t->property("packages").value<QMap<PackageKit::Transaction::Info, QStringList>>(); qobject_cast<PackageKitResource*>(resource())->setPackages(packages); setStatus(Transaction::DoneStatus); if (cancel) qobject_cast<PackageKitBackend*>(resource()->backend())->transactionCanceled(this); else qobject_cast<PackageKitBackend*>(resource()->backend())->removeTransaction(this); });
+    connect(t, &PackageKit::Transaction::finished, t, [cancel, this](PackageKit::Transaction::Exit /*status*/, uint /*runtime*/) {
+        this->submitResolve();
+        auto backend = qobject_cast<PackageKitBackend*>(resource()->backend());
+        if (cancel) backend->transactionCanceled(this);
+        else backend->removeTransaction(this);
+        backend->fetchUpdates();
+    });
+}
+
+void PKTransaction::packageResolved(PackageKit::Transaction::Info info, const QString& packageId)
+{
+    m_newPackageStates[info].append(packageId);
+}
+
+void PKTransaction::submitResolve()
+{
+    qobject_cast<PackageKitResource*>(resource())->setPackages(m_newPackageStates);
+    setStatus(Transaction::DoneStatus);
 }
 
 PackageKit::Transaction* PKTransaction::transaction()
