@@ -66,10 +66,6 @@ set_package_properties(Bodega PROPERTIES
     DESCRIPTION "Library that exposes Bodega resources"
     PURPOSE "Required to build the Bodega backend"
     TYPE OPTIONAL)
-set_package_properties(AkabeiClient PROPERTIES
-    DESCRIPTION "Library that exposes Akabei resources"
-    PURPOSE "Required to build the Akabei backend (Supports Chakra distribution)"
-    TYPE OPTIONAL)
 set_package_properties(packagekitqt5 PROPERTIES
     DESCRIPTION "Library that exposes PackageKit resources"
     URL "http://www.packagekit.org"

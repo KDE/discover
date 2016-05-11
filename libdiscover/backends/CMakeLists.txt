@@ -8,10 +8,6 @@ function(add_unit_test name)
         Qt5::Test Qt5::Core ${EXTRA_LIBS})
 endfunction()
 
-if(AKABEICLIENT_FOUND)
-    add_subdirectory(AkabeiBackend)#TODO: Add checks
-endif()
-
 if(KF5Attica_FOUND AND KF5NewStuff_FOUND)
     add_subdirectory(KNSBackend)
 endif()
