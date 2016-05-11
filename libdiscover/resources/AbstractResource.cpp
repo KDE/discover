@@ -29,6 +29,8 @@ AbstractResource::AbstractResource(AbstractResourcesBackend* parent)
 {
     if (parent && parent->reviewsBackend())
         connect(parent->reviewsBackend(), &AbstractReviewsBackend::ratingsReady, this, &AbstractResource::ratingFetched);
+
+    connect(this, &AbstractResource::stateChanged, this, &AbstractResource::reportNewState);
 }
 
 bool AbstractResource::canExecute() const
@@ -123,4 +125,12 @@ QStringList AbstractResource::extends() const
 QString AbstractResource::appstreamId() const
 {
     return {};
+}
+
+void AbstractResource::reportNewState()
+{
+    if (backend()->isFetching())
+        return;
+
+    emit backend()->resourcesChanged(this, {"state", "status", "canUpgrade", "size", "sizeDescription", "installedVersion", "availableVersion" });
 }

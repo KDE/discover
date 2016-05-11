@@ -187,6 +187,8 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         void changelogFetched(const QString& changelog);
 
     private:
+        void reportNewState();
+
 //         TODO: make it std::optional or make QCollatorSortKey()
         QScopedPointer<QCollatorSortKey> m_collatorKey;
 };
