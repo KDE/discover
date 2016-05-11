@@ -452,18 +452,6 @@ QList<QAction*> ResourcesModel::messageActions() const
     return ret;
 }
 
-QVariantList ResourcesModel::messageActionsVariant() const
-{
-    QVariantList ret;
-    QList<QAction*> actions = messageActions();
-    ret.reserve(actions.count());
-
-    foreach(QAction* action, actions) {
-        ret += QVariant::fromValue<QObject*>(action);
-    }
-    return ret;
-}
-
 bool ResourcesModel::isBusy() const
 {
     return TransactionModel::global()->rowCount() > 0;
