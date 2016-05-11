@@ -25,17 +25,16 @@ import org.kde.discovernotifier 1.0
 Item
 {
     Plasmoid.fullRepresentation: Full {}
-
-    Binding {
-        target: plasmoid
-        property: "status"
-        value: switch (DiscoverNotifier.state) {
-                case DiscoverNotifier.NoUpdates:
-                    return PlasmaCore.Types.PassiveStatus;
-                case DiscoverNotifier.NormalUpdates:
-                case DiscoverNotifier.SecurityUpdates:
-                    return PlasmaCore.Types.ActiveStatus;
-            }
+    Plasmoid.icon: DiscoverNotifier.iconName
+    Plasmoid.toolTipSubText: DiscoverNotifier.message
+    Plasmoid.status: {
+        switch (DiscoverNotifier.state) {
+        case DiscoverNotifier.NoUpdates:
+            return PlasmaCore.Types.PassiveStatus;
+        case DiscoverNotifier.NormalUpdates:
+        case DiscoverNotifier.SecurityUpdates:
+            return PlasmaCore.Types.ActiveStatus;
+        }
     }
 
     Component.onCompleted: {
@@ -44,13 +43,5 @@ Item
 
     function action_update() {
         DiscoverNotifier.showMuon();
-    }
-
-    Plasmoid.compactRepresentation: PlasmaCore.IconItem {
-        source: DiscoverNotifier.iconName
-        MouseArea {
-            anchors.fill: parent
-            onClicked: plasmoid.expanded = !plasmoid.expanded
-        }
     }
 }
