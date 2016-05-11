@@ -196,28 +196,6 @@ void TransactionModel::removeTransaction(Transaction *trans)
         emit lastTransactionFinished(); 
 }
 
-bool TransactionModel::removeRows(int row, int count, const QModelIndex &parent)
-{
-    if(parent.isValid())
-        return false;
-
-    for(; row<=count; ++row) {
-        QModelIndex child = index(row);
-        Transaction *trans = transactionFromIndex(child);
-        if(!trans)
-            continue;
-
-        beginRemoveRows(parent, row, row);
-        int c = m_transactions.removeAll(trans);
-        Q_ASSERT(c==1);
-        endRemoveRows();
-        emit transactionRemoved(trans);
-    }
-    if (m_transactions.isEmpty())
-        emit lastTransactionFinished();
-    return true;
-}
-
 void TransactionModel::transactionChanged()
 {
     Transaction *trans = qobject_cast<Transaction *>(sender());
