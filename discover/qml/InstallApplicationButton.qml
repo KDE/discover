@@ -9,6 +9,7 @@ ConditionalLoader
     property alias application: listener.resource
     readonly property alias isActive: listener.isActive
     readonly property alias progress: listener.progress
+    readonly property alias listener: listener
     property Component additionalItem: null
     property bool canUpgrade: true
     property bool fill: false

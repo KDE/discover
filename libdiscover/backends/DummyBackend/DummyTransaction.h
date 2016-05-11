@@ -31,13 +31,14 @@ class DummyTransaction : public Transaction
         DummyTransaction(DummyResource* app, Role role);
         DummyTransaction(DummyResource* app, const AddonList& list, Role role);
 
-        void cancel() override {}
+        void cancel() override;
 
     private Q_SLOTS:
         void iterateTransaction();
         void finishTransaction();
 
     private:
+        bool m_iterate = true;
         DummyResource* m_app;
 };
 

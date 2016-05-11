@@ -26,30 +26,36 @@
 #include <QDebug>
 #include <KRandom>
 
-DummyTransaction::DummyTransaction(DummyResource* app, Role action)
-    : Transaction(app->backend(), app, action)
-    , m_app(app)
+DummyTransaction::DummyTransaction(DummyResource* app, Role role)
+    : DummyTransaction(app, {}, role)
 {
-    setCancellable(false);
-    iterateTransaction();
 }
 
 DummyTransaction::DummyTransaction(DummyResource* app, const AddonList& addons, Transaction::Role role)
     : Transaction(app->backend(), app, role, addons)
     , m_app(app)
 {
-    setCancellable(false);
+    setCancellable(true);
     iterateTransaction();
 }
 
 void DummyTransaction::iterateTransaction()
 {
+    if (!m_iterate)
+        return;
+
     setStatus(CommittingStatus);
     if(progress()<100) {
         setProgress(qBound(0, progress()+(KRandom::random()%30), 100));
         QTimer::singleShot(/*KRandom::random()%*/100, this, &DummyTransaction::iterateTransaction);
     } else
         finishTransaction();
+}
+
+void DummyTransaction::cancel()
+{
+    m_iterate = false;
+    TransactionModel::global()->cancelTransaction(this);
 }
 
 void DummyTransaction::finishTransaction()

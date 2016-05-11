@@ -8,20 +8,6 @@ DiscoverTest
         appRoot.currentTopLevel = appRoot.topBrowsingComp
     }
 
-    function test_openResource() {
-        var resourceName = "Dummy 1";
-        app.openApplication(resourceName);
-        verify(appRoot.stack.currentItem, "has a page");
-        compare(appRoot.stack.currentItem.title, "Dummy 1", "same title");
-
-        var button = findChild(appRoot.stack.currentItem, "InstallApplicationButton")
-        verify(!button.isActive)
-        button.click()
-        verify(button.isActive)
-        verify(waitForSignal(button, "isActiveChanged"))
-        verify(!button.isActive)
-    }
-
     function test_openCategory() {
         var categoryName = "dummy 3";
         app.openCategory(categoryName);

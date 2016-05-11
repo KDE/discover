@@ -4,6 +4,8 @@ target_include_directories(PaginateModelTest PUBLIC ${CMAKE_SOURCE_DIR}/libdisco
 
 if(BUILD_DummyBackend)
     add_test(NAME toplevels COMMAND Plasma::Discover --test "${CMAKE_CURRENT_SOURCE_DIR}/toplevels.qml")
+    add_test(NAME install COMMAND Plasma::Discover --test "${CMAKE_CURRENT_SOURCE_DIR}/install.qml")
+
     add_test(NAME appstreamUrl COMMAND Plasma::Discover --test "${CMAKE_CURRENT_SOURCE_DIR}/appstreamUrl.qml" "appstream://techie1")
     add_test(NAME apparg COMMAND Plasma::Discover --test "${CMAKE_CURRENT_SOURCE_DIR}/appstreamUrl.qml" --application techie1)
     add_test(NAME categoryarg COMMAND Plasma::Discover --test "${CMAKE_CURRENT_SOURCE_DIR}/categoryArg.qml" --category "dummy 10")
