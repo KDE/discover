@@ -149,7 +149,7 @@ void ApplicationBackendTest::testRefreshUpdates()
     ResourcesModel* m = ResourcesModel::global();
 
     QSignalSpy spy(m, SIGNAL(fetchingChanged()));
-    QAptActions::self()->actionCollection()->action(QStringLiteral("update"))->trigger();
+    m_window->action(QStringLiteral("update"))->trigger();
 //     QTest::kWaitForSignal(m, SLOT(fetchingChanged()));
     QVERIFY(!m->isFetching());
     qDebug() << spy.count();
