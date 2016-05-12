@@ -212,7 +212,7 @@ QDateTime PackageKitUpdater::lastUpdate() const
 
 bool PackageKitUpdater::isCancelable() const
 {
-    return m_transaction->allowCancel();
+    return m_isCancelable;
 }
 
 bool PackageKitUpdater::isProgressing() const
