@@ -127,6 +127,9 @@ public:
         , m_updater(parent)
     {
         setCancellable(m_updater->isCancelable());
+        connect(m_updater, &ResourcesUpdatesModel::cancelableChanged, this, [this]() {
+            setCancellable(m_updater->isCancelable());
+        });
     }
 
     void cancel() override {
