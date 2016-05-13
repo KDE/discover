@@ -261,7 +261,7 @@ void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QSt
     Q_UNUSED(error);
     if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
         return;
-    QMessageBox::critical(nullptr, i18n("PackageKit error found"), PackageKitMessages::errorMessage(err));
+    QMessageBox::critical(nullptr, i18n("PackageKit error found"), QStringLiteral("%1\n%2").arg(PackageKitMessages::errorMessage(err), error));
     qWarning() << "Error happened" << err << error;
 }
 
