@@ -69,6 +69,7 @@ void PackageKitUpdater::setTransaction(PackageKit::Transaction* transaction)
 
     connect(m_transaction.data(), &PackageKit::Transaction::finished, this, &PackageKitUpdater::finished);
     connect(m_transaction.data(), &PackageKit::Transaction::errorCode, this, &PackageKitUpdater::errorFound);
+    connect(m_transaction.data(), &PackageKit::Transaction::message, this, &PackageKitUpdater::printMessage);
     connect(m_transaction.data(), &PackageKit::Transaction::mediaChangeRequired, this, &PackageKitUpdater::mediaChange);
     connect(m_transaction.data(), &PackageKit::Transaction::requireRestart, this, &PackageKitUpdater::requireRestart);
     connect(m_transaction.data(), &PackageKit::Transaction::eulaRequired, this, &PackageKitUpdater::eulaRequired);
@@ -263,6 +264,11 @@ void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QSt
         return;
     QMessageBox::critical(nullptr, i18n("PackageKit error found"), QStringLiteral("%1\n%2").arg(PackageKitMessages::errorMessage(err), error));
     qWarning() << "Error happened" << err << error;
+}
+
+void PackageKitUpdater::printMessage(PackageKit::Transaction::Message type, const QString &message)
+{
+    qDebug() << "message" << type << message;
 }
 
 void PackageKitUpdater::mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text)

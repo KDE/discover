@@ -74,7 +74,8 @@ class PackageKitUpdater : public AbstractBackendUpdater
         void cancellableChanged();
         void remainingTimeChanged();
         void percentageChanged();
-        
+        void printMessage(PackageKit::Transaction::Message type, const QString &message);
+
     private:
         void itemProgress(const QString &itemID, PackageKit::Transaction::Status status, uint percentage);
         void fetchLastUpdateTime();
