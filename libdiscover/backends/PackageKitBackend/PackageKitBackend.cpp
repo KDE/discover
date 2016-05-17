@@ -53,7 +53,6 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
     , m_reviews(new AppstreamReviews(this))
 {
     bool b = m_appdata.open();
-    Q_ASSERT(b && "must be able to open the appstream database");
     if (!b) {
         qWarning() << "Couldn't open the AppStream database";
 
