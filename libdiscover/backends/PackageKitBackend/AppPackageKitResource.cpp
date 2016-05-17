@@ -111,15 +111,23 @@ void AppPackageKitResource::invokeApplication() const
         KToolInvocation::startServiceByDesktopPath(exes.first());
 }
 
-QUrl screenshot(const Appstream::Component& comp, Appstream::Image::Kind kind)
+static QUrl imageOfKind(const QList<Appstream::Image>& images, Appstream::Image::Kind kind)
+{
+    QUrl ret;
+    Q_FOREACH (const Appstream::Image &i, images) {
+        if (i.kind() == kind) {
+            ret = i.url();
+            break;
+        }
+    }
+    return ret;
+}
+
+static QUrl screenshot(const Appstream::Component& comp, Appstream::Image::Kind kind)
 {
     QUrl ret;
     Q_FOREACH (const Appstream::Screenshot &s, comp.screenshots()) {
-        Q_FOREACH (const Appstream::Image &i, s.images()) {
-            if (i.kind() == kind) {
-                ret = i.url();
-            }
-        }
+        ret = imageOfKind(s.images(), kind);
         if (s.isDefault() && !ret.isEmpty())
             break;
     }
@@ -137,6 +145,23 @@ QUrl AppPackageKitResource::thumbnailUrl()
 {
     QUrl url = screenshot(m_appdata, Appstream::Image::Thumbnail);
     return url.isEmpty() ? PackageKitResource::screenshotUrl() : url;
+}
+
+void AppPackageKitResource::fetchScreenshots()
+{
+    QList<QUrl> thumbnails, screenshots;
+
+    Q_FOREACH (const Appstream::Screenshot &s, m_appdata.screenshots()) {
+        const QUrl thumbnail = imageOfKind(s.images(), Appstream::Image::Thumbnail);
+        const QUrl plain = imageOfKind(s.images(), Appstream::Image::Plain);
+        if (plain.isEmpty())
+            qWarning() << "invalid screenshot for" << name();
+
+        screenshots << plain;
+        thumbnails << (thumbnail.isEmpty() ? plain : thumbnail);
+    }
+
+    Q_EMIT screenshotsFetched(thumbnails, screenshots);
 }
 
 bool AppPackageKitResource::canExecute() const
