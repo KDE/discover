@@ -100,9 +100,7 @@ private Q_SLOTS:
         }
 
         QSignalSpy spy(rum, &ResourcesUpdatesModel::progressingChanged);
-        QVERIFY(spy.wait());
-        QCOMPARE(rum->isProgressing(), true);
-        QVERIFY(spy.wait());
+        QVERIFY(!rum->isProgressing() || spy.wait());
         QCOMPARE(rum->isProgressing(), false);
 
         QCOMPARE(m_appBackend->updatesCount(), m->rowCount());
