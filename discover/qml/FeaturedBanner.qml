@@ -36,6 +36,7 @@ Information {
     model: FeaturedModel {
         id: featuredModel
     }
+    readonly property real side: Math.min(info.height*0.9, info.width/1.618)
 
     delegate: MouseArea {
             id: itemDelegate
@@ -45,9 +46,8 @@ Information {
             property real size: 1/((distance+3)/3)
             enabled: modelData.package!=""
 
-            readonly property real side: Math.min(info.height*0.9, info.width/1.618)
-            width: side*1.618 * size
-            height: side * size
+            width: info.side*1.618 * size
+            height: info.side * size
 
             Behavior on size {
                 NumberAnimation {
