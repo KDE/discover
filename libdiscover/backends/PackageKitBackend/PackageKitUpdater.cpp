@@ -320,6 +320,7 @@ void PackageKitUpdater::fetchChangelog() const
     foreach(AbstractResource* res, m_backend->upgradeablePackages()) {
         pkgids += static_cast<PackageKitResource*>(res)->availablePackageId();
     }
+    Q_ASSERT(!pkgids.isEmpty());
 
     PackageKit::Transaction* t = PackageKit::Daemon::getUpdatesDetails(pkgids);
     connect(t, &PackageKit::Transaction::updateDetail, this, &PackageKitUpdater::updateDetail);

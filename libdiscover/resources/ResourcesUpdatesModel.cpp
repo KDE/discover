@@ -122,7 +122,8 @@ void ResourcesUpdatesModel::prepare()
 void ResourcesUpdatesModel::fetchChangelog()
 {
     foreach(AbstractBackendUpdater* upd, m_updaters) {
-        upd->fetchChangelog();
+        if (upd->hasUpdates())
+            upd->fetchChangelog();
     }
 }
 
