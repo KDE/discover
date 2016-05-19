@@ -46,7 +46,8 @@ class PackageKitUpdater : public AbstractBackendUpdater
         QDateTime lastUpdate() const override;
         bool isCancelable() const override;
         bool isProgressing() const override;
-        
+        void fetchChangelog() const override;
+
         QString statusMessage() const override;
         QString statusDetail() const override;
         quint64 downloadSpeed() const override;
@@ -68,6 +69,9 @@ class PackageKitUpdater : public AbstractBackendUpdater
         void remainingTimeChanged();
         void percentageChanged();
         void printMessage(PackageKit::Transaction::Message type, const QString &message);
+        void updateDetail(const QString& packageID, const QStringList& updates, const QStringList& obsoletes, const QStringList& vendorUrls,
+                                      const QStringList& bugzillaUrls, const QStringList& cveUrls, PackageKit::Transaction::Restart restart, const QString& updateText,
+                                      const QString& changelog, PackageKit::Transaction::UpdateState state, const QDateTime& issued, const QDateTime& updated);
 
     private:
         void itemProgress(const QString &itemID, PackageKit::Transaction::Status status, uint percentage);

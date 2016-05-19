@@ -310,6 +310,29 @@ void PackageKitUpdater::itemProgress(const QString& itemID, PackageKit::Transact
     auto res = packagesForPackageId({itemID});
 
     foreach(auto r, res) {
-        resourceProgressed(r, percentage);
+        Q_EMIT resourceProgressed(r, percentage);
+    }
+}
+
+void PackageKitUpdater::fetchChangelog() const
+{
+    QStringList pkgids;
+    foreach(AbstractResource* res, m_backend->upgradeablePackages()) {
+        pkgids += static_cast<PackageKitResource*>(res)->availablePackageId();
+    }
+
+    PackageKit::Transaction* t = PackageKit::Daemon::getUpdatesDetails(pkgids);
+    connect(t, &PackageKit::Transaction::updateDetail, this, &PackageKitUpdater::updateDetail);
+    connect(t, &PackageKit::Transaction::errorCode, this, &PackageKitUpdater::errorFound);
+}
+
+void PackageKitUpdater::updateDetail(const QString& packageID, const QStringList& updates, const QStringList& obsoletes, const QStringList& vendorUrls,
+                                      const QStringList& bugzillaUrls, const QStringList& cveUrls, PackageKit::Transaction::Restart restart, const QString& updateText,
+                                      const QString& changelog, PackageKit::Transaction::UpdateState state, const QDateTime& issued, const QDateTime& updated)
+{
+    auto res = packagesForPackageId({packageID});
+    foreach(auto r, res) {
+        static_cast<PackageKitResource*>(r)->updateDetail(packageID, updates, obsoletes, vendorUrls, bugzillaUrls,
+                                                          cveUrls, restart, updateText, changelog, state, issued, updated);
     }
 }

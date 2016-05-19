@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include "AbstractBackendUpdater.h"
+#include "AbstractResource.h"
 
 AbstractBackendUpdater::AbstractBackendUpdater(QObject* parent)
     : QObject(parent)
@@ -28,4 +29,11 @@ void AbstractBackendUpdater::cancel()
 {
     Q_ASSERT(isCancelable() && "only call cancel when cancelable");
     Q_ASSERT(false && "if it can be canceled, then ::cancel() must be implemented");
+}
+
+void AbstractBackendUpdater::fetchChangelog() const
+{
+    foreach(auto res, toUpdate()) {
+        res->fetchChangelog();
+    }
 }

@@ -88,6 +88,7 @@ void UpdateModel::activityChanged()
         setResources(QList<AbstractResource*>());
     } else if(!m_updates->isProgressing()) {
         m_updates->prepare();
+        m_updates->fetchChangelog();
         setResources(m_updates->toUpdate());
     }
 }
@@ -212,10 +213,6 @@ void UpdateModel::setResources(const QList< AbstractResource* >& resources)
     qSort(systemItems.begin(), systemItems.end(), sortUpdateItems);
     m_updateItems = (QVector<UpdateItem*>() << securityItems << appItems << systemItems);
     endResetModel();
-
-    foreach(AbstractResource* res, resources) {
-        res->fetchChangelog();
-    }
 
     Q_EMIT hasUpdatesChanged(!resources.isEmpty());
 }

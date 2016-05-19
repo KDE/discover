@@ -50,6 +50,7 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         QString remainingTime() const;
         quint64 downloadSpeed() const;
         Q_SCRIPTABLE void prepare();
+        void fetchChangelog();
 
         ///checks if any of them is cancelable
         bool isCancelable() const;

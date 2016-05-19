@@ -119,6 +119,13 @@ void ResourcesUpdatesModel::prepare()
     }
 }
 
+void ResourcesUpdatesModel::fetchChangelog()
+{
+    foreach(AbstractBackendUpdater* upd, m_updaters) {
+        upd->fetchChangelog();
+    }
+}
+
 class UpdateTransaction : public Transaction
 {
 public:

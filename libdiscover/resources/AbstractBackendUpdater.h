@@ -138,6 +138,8 @@ class DISCOVERCOMMON_EXPORT AbstractBackendUpdater : public QObject
          */
         virtual bool isMarked(AbstractResource* res) const = 0;
 
+        virtual void fetchChangelog() const;
+
     public Q_SLOTS:
         /**
          * If \isCancelable is true during the transaction, this method has
