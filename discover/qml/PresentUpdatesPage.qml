@@ -20,7 +20,7 @@ ScrollView
     {
         header: PageHeader {
             x: proposedMargin
-            width: Math.min(Helpers.actualWidth, page.viewport.width)
+            width: Helpers.actualWidth
 
             ConditionalLoader {
                 anchors.fill: parent
