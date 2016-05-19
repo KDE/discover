@@ -234,7 +234,7 @@ int UpdateModel::toUpdateCount() const
 {
     int ret = 0;
     foreach (UpdateItem* item, m_updateItems) {
-        ret += item->checked();
+        ret += item->checked() != Qt::Unchecked ? 1 : 0;
     }
     return ret;
 }
