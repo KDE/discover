@@ -73,13 +73,11 @@ public:
 public Q_SLOTS:
     void receivedEntries(const KNS3::Entry::List& entries);
     void startFetchingCategories();
-    void categoriesLoaded(Attica::BaseJob*);
+    void categoriesLoaded(const QUrl &prov, const Attica::Category::List& categoryList);
     void receivedContents(Attica::BaseJob*);
     void statusChanged(const KNS3::Entry& entry);
 
 private:
-    static void initManager(const QUrl& entry);
-    static QSharedPointer<Attica::ProviderManager> m_atticaManager;
     void setFetching(bool f);
     void markInvalid();
     

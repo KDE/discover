@@ -59,18 +59,45 @@ QDebug operator<<(QDebug s, const Attica::Provider& prov) {
     return s.space();
 }
 
-QSharedPointer<Attica::ProviderManager> KNSBackend::m_atticaManager;
-
-void KNSBackend::initManager(const QUrl& entry)
+class SharedManager : public QObject
 {
-    if(!m_atticaManager) {
-        m_atticaManager = QSharedPointer<Attica::ProviderManager>(new Attica::ProviderManager);
-        m_atticaManager->loadDefaultProviders();
+Q_OBJECT
+public:
+    SharedManager() {
+        atticaManager.loadDefaultProviders();
     }
-    if(!m_atticaManager->providerFiles().contains(entry)) {
-        m_atticaManager->addProviderFile(entry);
+
+    void requestCategories(Attica::Provider &provider)
+    {
+        const auto it = m_categories.constFind(provider.baseUrl());
+        if (it != m_categories.constEnd()) {
+            Q_EMIT categoriesFor(provider.baseUrl(), it.value());
+        } else {
+            auto ret = provider.requestCategories();
+            ret->setProperty("url", provider.baseUrl());
+            connect(ret, &Attica::GetJob::finished, this, &SharedManager::removeJob);
+            ret->start();
+        }
     }
-}
+
+    void removeJob(Attica::BaseJob* job) {
+        Attica::ListJob<Attica::Category>* j = static_cast<Attica::ListJob<Attica::Category>*>(job);
+
+        const Attica::Category::List categoryList = j->itemList();
+        const QUrl url = job->property("url").toUrl();
+        m_categories[url] = categoryList;
+        Q_EMIT categoriesFor(url, categoryList);
+    }
+
+Q_SIGNALS:
+    void categoriesFor(const QUrl &prov, const Attica::Category::List& categoryList);
+
+public:
+    QHash<QUrl, Attica::Category::List> m_categories;
+    Attica::ProviderManager atticaManager;
+};
+
+Q_GLOBAL_STATIC(SharedManager, s_shared);
 
 KNSBackend::KNSBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
@@ -121,8 +148,11 @@ void KNSBackend::setMetaData(const QString& path)
 
     const KConfigGroup group = conf.group("KNewStuff3");
     m_extends = group.readEntry("Extends", QStringList());
-    initManager(QUrl(group.readEntry("ProvidersUrl", QString())));
-    connect(m_atticaManager.data(), &Attica::ProviderManager::defaultProvidersLoaded, this, &KNSBackend::startFetchingCategories);
+    const QUrl entry(group.readEntry("ProvidersUrl", QString()));
+    if(!s_shared->atticaManager.providerFiles().contains(entry)) {
+        s_shared->atticaManager.addProviderFile(entry);
+    }
+    connect(&s_shared->atticaManager, &Attica::ProviderManager::defaultProvidersLoaded, this, &KNSBackend::startFetchingCategories);
 
     const QStringList cats = group.readEntry("Categories", QStringList());
     Q_ASSERT(!cats.isEmpty());
@@ -135,7 +165,7 @@ void KNSBackend::setMetaData(const QString& path)
     connect(m_manager, &KNS3::DownloadManager::entryStatusChanged, this, &KNSBackend::statusChanged);
 
     //otherwise this will be executed when defaultProvidersLoaded is emitted
-    if (!m_atticaManager->providers().isEmpty()) {
+    if (!s_shared->atticaManager.providers().isEmpty()) {
         startFetchingCategories();
     }
 }
@@ -155,30 +185,29 @@ bool KNSBackend::isValid() const
 
 void KNSBackend::startFetchingCategories()
 {
-    if (m_atticaManager->providers().isEmpty()) {
+    if (s_shared->atticaManager.providers().isEmpty()) {
         qWarning() << "no providers for" << m_name;
         markInvalid();
         return;
     }
 
-
     setFetching(true);
-    m_provider = m_atticaManager->providers().last();
+    m_provider = s_shared->atticaManager.providers().last();
 
-    Attica::ListJob<Attica::Category>* job = m_provider.requestCategories();
-    connect(job, &Attica::GetJob::finished, this, &KNSBackend::categoriesLoaded);
-    job->start();
+    connect(s_shared, &SharedManager::categoriesFor, this, &KNSBackend::categoriesLoaded);
+    s_shared->requestCategories(m_provider);
 }
 
-void KNSBackend::categoriesLoaded(Attica::BaseJob* job)
+void KNSBackend::categoriesLoaded(const QUrl &provBaseUrl, const Attica::Category::List& categoryList)
 {
-    if(job->metadata().error() != Attica::Metadata::NoError) {
+    if (provBaseUrl != m_provider.baseUrl()) {
+        return;
+    }
+    if(categoryList.isEmpty()) {
         qWarning() << "Network error";
         markInvalid();
         return;
     }
-    Attica::ListJob<Attica::Category>* j = static_cast<Attica::ListJob<Attica::Category>*>(job);
-    Attica::Category::List categoryList = j->itemList();
 
     foreach(const Attica::Category& category, categoryList) {
         const auto it = m_categories.find(category.name());
