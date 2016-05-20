@@ -181,9 +181,10 @@ void KNSBackend::categoriesLoaded(Attica::BaseJob* job)
     Attica::Category::List categoryList = j->itemList();
 
     foreach(const Attica::Category& category, categoryList) {
-        if (m_categories.contains(category.name())) {
+        const auto it = m_categories.find(category.name());
+        if (it != m_categories.end()) {
 //             qDebug() << "Adding category: " << category.name();
-            m_categories[category.name()] = category;
+            *it = category;
         }
     }
     
