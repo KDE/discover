@@ -63,18 +63,13 @@ QSharedPointer<Attica::ProviderManager> KNSBackend::m_atticaManager;
 
 void KNSBackend::initManager(const QUrl& entry)
 {
-    bool loadNeeded = false;
     if(!m_atticaManager) {
         m_atticaManager = QSharedPointer<Attica::ProviderManager>(new Attica::ProviderManager);
-        loadNeeded = true;
-    }
-    if(!m_atticaManager->defaultProviderFiles().contains(entry)) {
-        m_atticaManager->addProviderFileToDefaultProviders(entry);
-        loadNeeded = true;
-    }
-
-    if(loadNeeded)
         m_atticaManager->loadDefaultProviders();
+    }
+    if(!m_atticaManager->providerFiles().contains(entry)) {
+        m_atticaManager->addProviderFile(entry);
+    }
 }
 
 KNSBackend::KNSBackend(QObject* parent)
