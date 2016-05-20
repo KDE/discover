@@ -53,9 +53,9 @@ QDebug operator<<(QDebug s, const Attica::Category& cat) {
 
 QDebug operator<<(QDebug s, const Attica::Provider& prov) {
     if (prov.isValid())
-        s.nospace() << "Category(" << prov.name() << ':' << prov.baseUrl() << ')';
+        s.nospace() << "Provider(" << prov.name() << ':' << prov.baseUrl() << ')';
     else
-        s.nospace() << "Category(Invalid)";
+        s.nospace() << "Provider(Invalid)";
     return s.space();
 }
 
