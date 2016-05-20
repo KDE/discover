@@ -174,7 +174,7 @@ void KNSBackend::categoriesLoaded(Attica::BaseJob* job)
 {
     if(job->metadata().error() != Attica::Metadata::NoError) {
         qWarning() << "Network error";
-        setFetching(false);
+        markInvalid();
         return;
     }
     Attica::ListJob<Attica::Category>* j = static_cast<Attica::ListJob<Attica::Category>*>(job);
