@@ -49,13 +49,10 @@ class DISCOVERCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdat
         QString statusDetail() const override;
         QString statusMessage() const override;
         quint64 downloadSpeed() const override;
-        virtual QList<QAction*> messageActions() const;
         bool isMarked(AbstractResource* res) const override;
         void setStatusDetail(const QString& message);
         void setProgress(qreal p);
         int updatesCount() const;
-
-        void setMessageActions(const QList<QAction*>& actions);
 
     public Q_SLOTS:
         void transactionRemoved(Transaction* t);
@@ -74,7 +71,6 @@ class DISCOVERCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdat
         QString m_statusDetail;
         qreal m_progress;
         QDateTime m_lastUpdate;
-        QList<QAction*> m_actions;
 };
 
 #endif // STANDARDBACKENDUPDATER_H

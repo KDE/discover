@@ -214,13 +214,3 @@ quint64 StandardBackendUpdater::downloadSpeed() const
 {
     return 0;
 }
-
-QList<QAction*> StandardBackendUpdater::messageActions() const
-{
-    return m_actions;
-}
-
-void StandardBackendUpdater::setMessageActions(const QList<QAction*>& actions)
-{
-    m_actions = actions;
-}
