@@ -51,7 +51,7 @@ PackageKitUpdater::~PackageKitUpdater()
 void PackageKitUpdater::prepare()
 {
     Q_ASSERT(!m_transaction);
-    m_toUpgrade = m_backend->upgradeablePackages().toSet();
+    m_toUpgrade = m_backend->upgradeablePackages();
     m_allUpgradeable = m_toUpgrade;
 }
 
@@ -317,7 +317,7 @@ void PackageKitUpdater::itemProgress(const QString& itemID, PackageKit::Transact
 void PackageKitUpdater::fetchChangelog() const
 {
     QStringList pkgids;
-    foreach(AbstractResource* res, m_backend->upgradeablePackages()) {
+    foreach(AbstractResource* res, m_allUpgradeable) {
         pkgids += static_cast<PackageKitResource*>(res)->availablePackageId();
     }
     Q_ASSERT(!pkgids.isEmpty());

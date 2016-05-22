@@ -32,18 +32,18 @@
 StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend* parent)
     : AbstractBackendUpdater(parent)
     , m_backend(parent)
-    , m_preparedSize(0)
     , m_settingUp(false)
     , m_progress(0)
     , m_lastUpdate(QDateTime())
 {
+    connect(m_backend, &AbstractResourcesBackend::fetchingChanged, this, &StandardBackendUpdater::refreshUpdateable);
     connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &StandardBackendUpdater::transactionRemoved);
     connect(TransactionModel::global(), &TransactionModel::transactionAdded, this, &StandardBackendUpdater::transactionAdded);
 }
 
 bool StandardBackendUpdater::hasUpdates() const
 {
-    return m_backend->updatesCount() > 0;
+    return !m_upgradeable.isEmpty();
 }
 
 void StandardBackendUpdater::start()
@@ -82,7 +82,14 @@ void StandardBackendUpdater::transactionProgressChanged(int percentage)
 
 void StandardBackendUpdater::transactionRemoved(Transaction* t)
 {
-    bool found = t->resource() && t->resource()->backend()==m_backend && m_pendingResources.remove(t->resource());
+    const bool fromOurBackend = t->resource() && t->resource()->backend()==m_backend;
+    if (!fromOurBackend) {
+        return;
+    }
+    refreshUpdateable();
+
+    const bool found = fromOurBackend && m_pendingResources.remove(t->resource());
+
     if(found && !m_settingUp) {
         setStatusDetail(i18n("%1 has been updated", t->resource()->name()));
         qreal p = 1-(qreal(m_pendingResources.size())/m_toUpgrade.size());
@@ -92,6 +99,20 @@ void StandardBackendUpdater::transactionRemoved(Transaction* t)
             emit progressingChanged(false);
         }
     }
+}
+
+void StandardBackendUpdater::refreshUpdateable()
+{
+    if (m_backend->isFetching())
+        return;
+
+    QSet<AbstractResource*> upgradeable;
+    foreach(AbstractResource* r, m_backend->allResources()) {
+        if(r->state()==AbstractResource::Upgradeable)
+            upgradeable += r;
+    }
+
+    m_upgradeable = upgradeable;
 }
 
 qreal StandardBackendUpdater::progress() const
@@ -115,17 +136,24 @@ long unsigned int StandardBackendUpdater::remainingTime() const
 void StandardBackendUpdater::prepare()
 {
     m_lastUpdate = QDateTime::currentDateTime();
-    m_toUpgrade = m_backend->upgradeablePackages().toSet();
-    m_preparedSize = m_toUpgrade.size();
+    m_toUpgrade = m_upgradeable;
+}
+
+int StandardBackendUpdater::updatesCount() const
+{
+    return m_upgradeable.count();
 }
 
 void StandardBackendUpdater::addResources(const QList< AbstractResource* >& apps)
 {
+    Q_ASSERT(m_upgradeable.contains(apps.toSet()));
     m_toUpgrade += apps.toSet();
 }
 
 void StandardBackendUpdater::removeResources(const QList< AbstractResource* >& apps)
 {
+    Q_ASSERT(m_upgradeable.contains(apps.toSet()));
+    Q_ASSERT(m_toUpgrade.contains(apps.toSet()));
     m_toUpgrade -= apps.toSet();
 }
 
@@ -168,8 +196,10 @@ QString StandardBackendUpdater::statusDetail() const
 
 void StandardBackendUpdater::setStatusDetail(const QString& msg)
 {
-    m_statusDetail = msg;
-    emit statusDetailChanged(msg);
+    if (m_statusDetail != msg) {
+        m_statusDetail = msg;
+        emit statusDetailChanged(msg);
+    }
 }
 
 QString StandardBackendUpdater::statusMessage() const

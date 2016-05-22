@@ -167,10 +167,11 @@ void PackageKitBackend::fetchUpdates()
 void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
     const QString packageName = PackageKit::Daemon::packageName(packageId);
-    QVector<AbstractResource*> r = resourcesByPackageName(packageName, true);
+    QSet<AbstractResource*> r = resourcesByPackageName(packageName, true);
     if (r.isEmpty()) {
-        r += new PackageKitResource(packageName, summary, this);
-        m_updatingPackages.packages[packageName] = r.last();
+        auto pk = new PackageKitResource(packageName, summary, this);
+        r = { pk };
+        m_updatingPackages.packages[packageName] = pk;
     }
     foreach(auto res, r)
         static_cast<PackageKitResource*>(res)->addPackageId(info, packageId);
@@ -204,7 +205,7 @@ void PackageKitBackend::transactionError(PackageKit::Transaction::Error, const Q
 
 void PackageKitBackend::packageDetails(const PackageKit::Details& details)
 {
-    QVector<AbstractResource*> resources = resourcesByPackageName(PackageKit::Daemon::packageName(details.packageId()), true);
+    const QSet<AbstractResource*> resources = resourcesByPackageName(PackageKit::Daemon::packageName(details.packageId()), true);
     if (resources.isEmpty())
         qWarning() << "couldn't find package for" << details.packageId();
 
@@ -213,14 +214,14 @@ void PackageKitBackend::packageDetails(const PackageKit::Details& details)
     }
 }
 
-QVector<AbstractResource*> PackageKitBackend::resourcesByPackageName(const QString& name, bool updating) const
+QSet<AbstractResource*> PackageKitBackend::resourcesByPackageName(const QString& name, bool updating) const
 {
     const Packages * const f = (updating ? &m_updatingPackages : &m_packages);
     const QHash<QString, QStringList> *dictionary = &f->packageToApp;
     const QHash<QString, AbstractResource*> *pkgs = &f->packages;
 
     const QStringList names = dictionary->value(name, QStringList(name));
-    QVector<AbstractResource*> ret;
+    QSet<AbstractResource*> ret;
     ret.reserve(names.size());
     foreach(const QString& name, names) {
         AbstractResource* res = pkgs->value(name);
@@ -333,9 +334,9 @@ void PackageKitBackend::removeApplication(AbstractResource* app)
     addTransaction(new PKTransaction({app}, Transaction::RemoveRole));
 }
 
-QList<AbstractResource*> PackageKitBackend::upgradeablePackages() const
+QSet<AbstractResource*> PackageKitBackend::upgradeablePackages() const
 {
-    QVector<AbstractResource*> ret;
+    QSet<AbstractResource*> ret;
     ret.reserve(m_updatesPackageId.size());
     Q_FOREACH (const QString& pkgid, m_updatesPackageId) {
         const QString pkgname = PackageKit::Daemon::packageName(pkgid);
@@ -343,9 +344,9 @@ QList<AbstractResource*> PackageKitBackend::upgradeablePackages() const
         if (pkgs.isEmpty()) {
             qWarning() << "couldn't find resource for" << pkgid;
         }
-        ret += pkgs;
+        ret.unite(pkgs);
     }
-    return ret.toList();
+    return ret;
 }
 
 void PackageKitBackend::addPackageToUpdate(PackageKit::Transaction::Info info, const QString& packageId, const QString& summary)
@@ -386,7 +387,7 @@ bool PackageKitBackend::isPackageNameUpgradeable(const PackageKitResource* res) 
 QString PackageKitBackend::upgradeablePackageId(const PackageKitResource* res) const
 {
     QString name = res->packageName();
-    for (const QString& pkgid: m_updatesPackageId) {
+    foreach (const QString& pkgid, m_updatesPackageId) {
         if (PackageKit::Daemon::packageName(pkgid) == name)
             return pkgid;
     }

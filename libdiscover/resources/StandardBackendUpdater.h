@@ -53,6 +53,7 @@ class DISCOVERCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdat
         bool isMarked(AbstractResource* res) const override;
         void setStatusDetail(const QString& message);
         void setProgress(qreal p);
+        int updatesCount() const;
 
         void setMessageActions(const QList<QAction*>& actions);
 
@@ -61,12 +62,13 @@ class DISCOVERCOMMON_EXPORT StandardBackendUpdater : public AbstractBackendUpdat
         void cleanup();
 
     private:
+        void refreshUpdateable();
         void transactionAdded(Transaction* newTransaction);
         void transactionProgressChanged(int percentage);
 
         QSet<AbstractResource*> m_toUpgrade;
-        AbstractResourcesBackend* m_backend;
-        int m_preparedSize;
+        QSet<AbstractResource*> m_upgradeable;
+        AbstractResourcesBackend * const m_backend;
         QSet<AbstractResource*> m_pendingResources;
         bool m_settingUp;
         QString m_statusDetail;

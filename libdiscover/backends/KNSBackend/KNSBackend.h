@@ -36,6 +36,8 @@
 
 class KConfigGroup;
 class KNSReviews;
+class StandardBackendUpdater;
+
 namespace KNS3 { class DownloadManager; }
 namespace Attica {
     class ProviderManager;
@@ -64,7 +66,6 @@ public:
 
     bool isValid() const override;
     Attica::Provider* provider() { return &m_provider; }
-    QList<AbstractResource*> upgradeablePackages() const override;
 
     QStringList extends() const { return m_extends; }
 
@@ -91,7 +92,7 @@ private:
     QMap<QString, Attica::Category> m_categories;
     QString m_name;
     QString m_iconName;
-    AbstractBackendUpdater* const m_updater;
+    StandardBackendUpdater* const m_updater;
     QStringList m_extends;
 };
 

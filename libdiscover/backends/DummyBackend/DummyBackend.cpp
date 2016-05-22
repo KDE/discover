@@ -131,17 +131,7 @@ QVector<AbstractResource*> DummyBackend::allResources() const
 
 int DummyBackend::updatesCount() const
 {
-    return upgradeablePackages().count();
-}
-
-QList<AbstractResource*> DummyBackend::upgradeablePackages() const
-{
-    QList<AbstractResource*> updates;
-    foreach(AbstractResource* res, m_resources) {
-        if(res->state()==AbstractResource::Upgradeable)
-            updates += res;
-    }
-    return updates;
+    return m_updater->updatesCount();
 }
 
 AbstractResource* DummyBackend::resourceByPackageName(const QString& name) const

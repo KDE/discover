@@ -55,13 +55,13 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void installApplication(AbstractResource* app, const AddonList& addons) override;
         void removeApplication(AbstractResource* app) override;
         bool isValid() const override { return true; }
-        QList<AbstractResource*> upgradeablePackages() const override;
+        QSet<AbstractResource*> upgradeablePackages() const;
         bool isFetching() const override;
         QList<QAction*> messageActions() const override;
 
         bool isPackageNameUpgradeable(const PackageKitResource* res) const;
         QString upgradeablePackageId(const PackageKitResource* res) const;
-        QVector<AbstractResource*> resourcesByPackageName(const QString& name, bool updating) const;
+        QSet<AbstractResource*> resourcesByPackageName(const QString& name, bool updating) const;
         QVector<AppPackageKitResource*> extendedBy(const QString& id) const;
         void fetchUpdates();
 

@@ -120,11 +120,6 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
         virtual AbstractResource* resourceByPackageName(const QString& name) const = 0;//FIXME: Even this could get a standard impl
         
         /**
-         * @returns all resources for which an update is available
-         */
-        virtual QList<AbstractResource*> upgradeablePackages() const = 0;//FIXME: Do a standard impl as well
-        
-        /**
          * This method gets called while initializing the GUI, in case the backend needs to
          * integrate actions in the action collection.
          * @param w the KActionCollection the backend should integrate to

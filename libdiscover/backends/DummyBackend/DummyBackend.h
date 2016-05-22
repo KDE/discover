@@ -36,7 +36,6 @@ public:
     explicit DummyBackend(QObject* parent = nullptr);
 
     void setMetaData(const QString& path) override;
-    QList<AbstractResource*> upgradeablePackages() const override;
     AbstractResource* resourceByPackageName(const QString& name) const override;
     int updatesCount() const override;
     AbstractBackendUpdater* backendUpdater() const override;

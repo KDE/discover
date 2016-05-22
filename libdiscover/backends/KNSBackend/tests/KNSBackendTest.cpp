@@ -21,6 +21,7 @@
 #include "KNSBackendTest.h"
 #include <KNSBackend.h>
 #include <KXmlGuiWindow>
+#include <resources/AbstractBackendUpdater.h>
 #include <resources/AbstractResource.h>
 #include <resources/ResourcesModel.h>
 #include <ReviewsBackend/AbstractReviewsBackend.h>
@@ -67,7 +68,7 @@ void KNSBackendTest::testRetrieval()
     QVERIFY(!resources.isEmpty());
     QCOMPARE(resources.count(), model->rowCount());
     QVERIFY(m_backend->backendUpdater());
-    QCOMPARE(m_backend->updatesCount(), m_backend->upgradeablePackages().count());
+    QCOMPARE(m_backend->updatesCount(), m_backend->backendUpdater()->toUpdate().count());
     
     foreach(AbstractResource* res, resources) {
         QVERIFY(!res->name().isEmpty());
