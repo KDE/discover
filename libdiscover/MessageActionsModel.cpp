@@ -24,7 +24,6 @@
 
 MessageActionsModel::MessageActionsModel(QObject* parent)
     : QAbstractListModel(parent)
-    , m_actions(ResourcesModel::global()->messageActions())
     , m_priority(-1)
 {
     connect(ResourcesModel::global(), &ResourcesModel::backendsChanged, this, &MessageActionsModel::reload);
@@ -46,9 +45,6 @@ int MessageActionsModel::rowCount(const QModelIndex& parent) const
 {
     return parent.isValid() ? 0 : m_actions.count();
 }
-
-
-#include <QDebug>
 
 void MessageActionsModel::reload()
 {
