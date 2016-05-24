@@ -43,6 +43,48 @@ DiscoverMainWindow::CompactMode decodeCompactMode(const QString &str)
     return DiscoverMainWindow::Full;
 }
 
+QCommandLineParser* createParser()
+{
+    QCommandLineParser* parser = new QCommandLineParser;
+    parser->addOption(QCommandLineOption(QStringLiteral("application"), i18n("Directly open the specified application by its package name."), QStringLiteral("name")));
+    parser->addOption(QCommandLineOption(QStringLiteral("mime"), i18n("Open with a program that can deal with the given mimetype."), QStringLiteral("name")));
+    parser->addOption(QCommandLineOption(QStringLiteral("category"), i18n("Display a list of entries with a category."), QStringLiteral("name")));
+    parser->addOption(QCommandLineOption(QStringLiteral("mode"), i18n("Open Discover in a said mode. Modes correspond to the toolbar buttons."), QStringLiteral("name")));
+    parser->addOption(QCommandLineOption(QStringLiteral("listmodes"), i18n("List all the available modes.")));
+    parser->addOption(QCommandLineOption(QStringLiteral("compact"), i18n("Compact Mode (auto/compact/full)."), QStringLiteral("mode"), QStringLiteral("auto")));
+    parser->addOption(QCommandLineOption(QStringLiteral("test"), QStringLiteral("Test file"), QStringLiteral("file.qml")));
+    parser->addPositionalArgument(QStringLiteral("urls"), i18n("Supports appstream: url scheme"));
+    DiscoverBackendsFactory::setupCommandLine(parser);
+    KAboutData::applicationData().setupCommandLine(parser);
+    parser->addHelpOption();
+    parser->addVersionOption();
+    return parser;
+}
+
+bool processArgs(QCommandLineParser* parser, DiscoverMainWindow* mainWindow)
+{
+    if(parser->isSet(QStringLiteral("application")))
+        mainWindow->openApplication(parser->value(QStringLiteral("application")));
+    else if(parser->isSet(QStringLiteral("mime")))
+        mainWindow->openMimeType(parser->value(QStringLiteral("mime")));
+    else if(parser->isSet(QStringLiteral("category")))
+        mainWindow->openCategory(parser->value(QStringLiteral("category")));
+
+    if(parser->isSet(QStringLiteral("mode")))
+        mainWindow->openMode(parser->value(QStringLiteral("mode")));
+
+    foreach(const QString &arg, parser->positionalArguments()) {
+        QUrl url(arg);
+        if (url.scheme() == QLatin1String("appstream")) {
+            mainWindow->openApplication(url.host());
+        } else {
+            QTextStream(stdout) << "unrecognized url" << url.toDisplayString() << '\n';
+            return true;
+        }
+    }
+    return false;
+}
+
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
@@ -60,62 +102,39 @@ int main(int argc, char** argv)
     about.setProductName("discover/discover");
     KAboutData::setApplicationData(about);
 
-    KDBusService service(KDBusService::Unique);
     DiscoverMainWindow *mainWindow = nullptr;
     {
-        QCommandLineParser parser;
-        parser.addOption(QCommandLineOption(QStringLiteral("application"), i18n("Directly open the specified application by its package name."), QStringLiteral("name")));
-        parser.addOption(QCommandLineOption(QStringLiteral("mime"), i18n("Open with a program that can deal with the given mimetype."), QStringLiteral("name")));
-        parser.addOption(QCommandLineOption(QStringLiteral("category"), i18n("Display a list of entries with a category."), QStringLiteral("name")));
-        parser.addOption(QCommandLineOption(QStringLiteral("mode"), i18n("Open Discover in a said mode. Modes correspond to the toolbar buttons."), QStringLiteral("name")));
-        parser.addOption(QCommandLineOption(QStringLiteral("listmodes"), i18n("List all the available modes.")));
-        parser.addOption(QCommandLineOption(QStringLiteral("compact"), i18n("Compact Mode (auto/compact/full)."), QStringLiteral("mode"), QStringLiteral("auto")));
-        parser.addOption(QCommandLineOption(QStringLiteral("test"), QStringLiteral("Test file"), QStringLiteral("file.qml")));
-        parser.addPositionalArgument(QStringLiteral("urls"), i18n("Supports appstream: url scheme"));
-        DiscoverBackendsFactory::setupCommandLine(&parser);
-        about.setupCommandLine(&parser);
-        parser.addHelpOption();
-        parser.addVersionOption();
-        parser.process(app);
-        about.processCommandLine(&parser);
-        DiscoverBackendsFactory::processCommandLine(&parser, parser.isSet(QStringLiteral("test")));
+        QScopedPointer<QCommandLineParser> parser(createParser());
+        parser->process(app);
+        about.processCommandLine(parser.data());
+        DiscoverBackendsFactory::processCommandLine(parser.data(), parser->isSet(QStringLiteral("test")));
 
-        if (parser.isSet(QStringLiteral("test"))) {
+        if (parser->isSet(QStringLiteral("test"))) {
             QStandardPaths::setTestModeEnabled(true);
         }
 
-        mainWindow = new DiscoverMainWindow(decodeCompactMode(parser.value(QStringLiteral("compact"))));
-        QObject::connect(&app, &QApplication::aboutToQuit, mainWindow, &DiscoverMainWindow::deleteLater);
+        KDBusService* service = new KDBusService(KDBusService::Unique, &app);
 
-        if(parser.isSet(QStringLiteral("listmodes"))) {
+        mainWindow = new DiscoverMainWindow(decodeCompactMode(parser->value(QStringLiteral("compact"))));
+        QObject::connect(&app, &QApplication::aboutToQuit, mainWindow, &DiscoverMainWindow::deleteLater);
+        QObject::connect(service, &KDBusService::activateRequested, mainWindow, [mainWindow](const QStringList &arguments, const QString &/*workingDirectory*/){
+            QScopedPointer<QCommandLineParser> parser(createParser());
+            parser->process(arguments);
+            processArgs(parser.data(), mainWindow);
+        });
+
+        if (processArgs(parser.data(), mainWindow))
+            return 1;
+
+        if(parser->isSet(QStringLiteral("listmodes"))) {
             QTextStream(stdout) << i18n("Available modes:\n");
             foreach(const QString& mode, mainWindow->modes())
                 QTextStream(stdout) << " * " << mode << '\n';
             return 0;
         }
 
-        if(parser.isSet(QStringLiteral("application")))
-            mainWindow->openApplication(parser.value(QStringLiteral("application")));
-        else if(parser.isSet(QStringLiteral("mime")))
-            mainWindow->openMimeType(parser.value(QStringLiteral("mime")));
-        else if(parser.isSet(QStringLiteral("category")))
-            mainWindow->openCategory(parser.value(QStringLiteral("category")));
-
-        if(parser.isSet(QStringLiteral("mode")))
-            mainWindow->openMode(parser.value(QStringLiteral("mode")));
-
-        foreach(const QString &arg, parser.positionalArguments()) {
-            QUrl url(arg);
-            if (url.scheme() == QLatin1String("appstream")) {
-                mainWindow->openApplication(url.host());
-            } else {
-                QTextStream(stdout) << "unrecognized url" << url.toDisplayString() << '\n';
-                return 1;
-            }
-        }
-
-        if (parser.isSet(QStringLiteral("test"))) {
-            const QUrl testFile = QUrl::fromUserInput(parser.value(QStringLiteral("test")), {}, QUrl::AssumeLocalFile);
+        if (parser->isSet(QStringLiteral("test"))) {
+            const QUrl testFile = QUrl::fromUserInput(parser->value(QStringLiteral("test")), {}, QUrl::AssumeLocalFile);
             Q_ASSERT(!testFile.isEmpty() && testFile.isLocalFile());
 
             mainWindow->loadTest(testFile);
