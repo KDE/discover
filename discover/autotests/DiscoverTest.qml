@@ -35,7 +35,7 @@ Item
     function compare(valA, valB, msg) {
         if (valA !== valB) {
             console.trace();
-            var e = new Error(valA + " !== " + valB + ": " + msg)
+            var e = new Error(valA + " !== " + valB + (msg ? (": " + msg) : ""))
             e.object = testRoot;
             throw e;
         }
