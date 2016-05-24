@@ -30,6 +30,8 @@ Kirigami.ApplicationWindow
 
     Component.onCompleted: {
         Helpers.mainWindow = window
+        if (app.isRoot)
+            showPassiveNotification(i18n("Running as <em>root</em> is discouraged and unnecessary."));
     }
 
     function clearSearch() {
@@ -148,11 +150,7 @@ Kirigami.ApplicationWindow
     Connections {
         target: app
         onPreventedClose: showPassiveNotification(i18n("Could not close the application, there are tasks that need to be done."), 3000)
-        onUnableToFind: showPassiveNotification(i18n("Unable to find resource: %1", resid)
-    }
-    Component.onCompleted: {
-        if (app.isRoot)
-            showPassiveNotification(i18n("Running as <em>root</em> is discouraged and unnecessary."));
+        onUnableToFind: showPassiveNotification(i18n("Unable to find resource: %1", resid));
     }
 
 //     ColumnLayout {
