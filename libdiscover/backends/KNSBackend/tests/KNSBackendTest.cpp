@@ -81,6 +81,8 @@ void KNSBackendTest::testRetrieval()
         QVERIFY(res->homepage().isValid() && !res->homepage().isEmpty());
         QVERIFY(res->state() > AbstractResource::Broken);
         QVERIFY(res->addonsInformation().isEmpty());
+        QVERIFY(res->thumbnailUrl().isValid() || res->thumbnailUrl().isEmpty());
+        QVERIFY(res->screenshotUrl().isValid() || res->screenshotUrl().isEmpty());
 
         QSignalSpy spy(res, &AbstractResource::screenshotsFetched);
         res->fetchScreenshots();
@@ -94,9 +96,6 @@ void KNSBackendTest::testRetrieval()
 
 void KNSBackendTest::testReviews()
 {
-    qRegisterMetaType<QList<Review*>>("QList<Review*>");
-    qRegisterMetaType<AbstractResource*>("AbstractResource*");
-
     QVector<AbstractResource*> resources = m_backend->allResources();
     AbstractReviewsBackend* rev = m_backend->reviewsBackend();
     QVERIFY(!rev->hasCredentials());
@@ -105,11 +104,12 @@ void KNSBackendTest::testReviews()
         QVERIFY(r);
         QCOMPARE(r->packageName(), res->packageName());
         QVERIFY(r->rating()>0 && r->rating()<=10);
-
-        QSignalSpy spy(rev, &AbstractReviewsBackend::reviewsReady);
-        rev->fetchReviews(res);
-        QVERIFY(spy.count() || spy.wait());
     }
+
+    auto res = resources.first();
+    QSignalSpy spy(rev, &AbstractReviewsBackend::reviewsReady);
+    rev->fetchReviews(res);
+    QVERIFY(spy.count() || spy.wait());
 }
 
 void KNSBackendTest::reviewsArrived(AbstractResource* r, const QList< Review* >& revs)
