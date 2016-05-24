@@ -73,9 +73,18 @@ ConditionalLoader
 
     Connections {
         target: app
-        onOpenApplicationInternal: Navigation.openApplication(app)
-        onListMimeInternal: Navigation.openApplicationMime(mime)
-        onListCategoryInternal: Navigation.openCategory(cat)
+        onOpenApplicationInternal: {
+            currentTopLevel = topBrowsingComp;
+            Navigation.openApplication(app)
+        }
+        onListMimeInternal:  {
+            currentTopLevel = topBrowsingComp;
+            Navigation.openApplicationMime(mime)
+        }
+        onListCategoryInternal:  {
+            currentTopLevel = topBrowsingComp;
+            Navigation.openCategory(cat)
+        }
     }
 
     Menu {
