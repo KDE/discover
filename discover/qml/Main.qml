@@ -83,27 +83,16 @@ Rectangle
             }
         }
 
-        MessageAction {
+        JustMessageAction {
+            id: closePreventedInfo
             Layout.fillWidth: true
-            theAction: Action {
-                id: closePreventedInfo
-                enabled: false
-                text: i18n("Got it");
-                tooltip: i18n("Could not close the application, there are tasks that need to be done.")
-                onTriggered: {
-                    enabled=false
-                }
-            }
+            message: i18n("Could not close the application, there are tasks that need to be done.")
         }
 
-        MessageAction {
+        JustMessageAction {
             Layout.fillWidth: true
-            theAction: Action {
-                enabled: app.isRoot
-                text: i18n("Got it");
-                tooltip: i18n("Running as <em>root</em> is discouraged and unnecessary.")
-                onTriggered: { enabled=false }
-            }
+            enabled: app.isRoot
+            message: i18n("Running as <em>root</em> is discouraged and unnecessary.")
         }
 
         Breadcrumbs {
