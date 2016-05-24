@@ -625,16 +625,6 @@ void ApplicationBackend::initAvailablePackages(KJob* j)
     }
 }
 
-QList< AbstractResource* > ApplicationBackend::upgradeablePackages() const
-{
-    QList<AbstractResource*> ret;
-    foreach(AbstractResource* r, m_appList) {
-        if(r->state()==AbstractResource::Upgradeable)
-            ret+=r;
-    }
-    return ret;
-}
-
 void ApplicationBackend::checkForUpdates()
 {
     QApt::Transaction* transaction = backend()->updateCache();

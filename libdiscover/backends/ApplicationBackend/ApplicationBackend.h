@@ -80,7 +80,6 @@ public:
     AbstractBackendUpdater* backendUpdater() const override;
     void integrateActions(KActionCollection* w) override;
     QWidget* mainWindow() const;
-    QList<AbstractResource*> upgradeablePackages() const override;
     QList<QAction*> messageActions() const override;
     
 private:
