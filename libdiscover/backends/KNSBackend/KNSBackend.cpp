@@ -67,37 +67,11 @@ public:
         atticaManager.loadDefaultProviders();
     }
 
-    void requestCategories(Attica::Provider &provider)
-    {
-        const auto it = m_categories.constFind(provider.baseUrl());
-        if (it != m_categories.constEnd()) {
-            Q_EMIT categoriesFor(provider.baseUrl(), it.value());
-        } else {
-            auto ret = provider.requestCategories();
-            ret->setProperty("url", provider.baseUrl());
-            connect(ret, &Attica::GetJob::finished, this, &SharedManager::removeJob);
-            ret->start();
-        }
-    }
-
-    void removeJob(Attica::BaseJob* job) {
-        Attica::ListJob<Attica::Category>* j = static_cast<Attica::ListJob<Attica::Category>*>(job);
-
-        const Attica::Category::List categoryList = j->itemList();
-        const QUrl url = job->property("url").toUrl();
-        m_categories[url] = categoryList;
-        Q_EMIT categoriesFor(url, categoryList);
-    }
-
-Q_SIGNALS:
-    void categoriesFor(const QUrl &prov, const Attica::Category::List& categoryList);
-
 public:
-    QHash<QUrl, Attica::Category::List> m_categories;
     Attica::ProviderManager atticaManager;
 };
 
-Q_GLOBAL_STATIC(SharedManager, s_shared);
+Q_GLOBAL_STATIC(SharedManager, s_shared)
 
 KNSBackend::KNSBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
@@ -148,26 +122,19 @@ void KNSBackend::setMetaData(const QString& path)
 
     const KConfigGroup group = conf.group("KNewStuff3");
     m_extends = group.readEntry("Extends", QStringList());
-    const QUrl entry(group.readEntry("ProvidersUrl", QString()));
-    if(!s_shared->atticaManager.providerFiles().contains(entry)) {
-        s_shared->atticaManager.addProviderFile(entry);
+    m_providerUrl = QUrl(group.readEntry("ProvidersUrl", QString()));
+    if(!s_shared->atticaManager.providerFiles().contains(m_providerUrl)) {
+        s_shared->atticaManager.addProviderFile(m_providerUrl);
     }
-    connect(&s_shared->atticaManager, &Attica::ProviderManager::defaultProvidersLoaded, this, &KNSBackend::startFetchingCategories);
 
-    const QStringList cats = group.readEntry("Categories", QStringList());
-    Q_ASSERT(!cats.isEmpty());
-    foreach(const QString& c, cats) {
-        m_categories.insert(c, Attica::Category());
-    }
+    setFetching(true);
 
     m_manager = new KNS3::DownloadManager(m_name, this);
     connect(m_manager, &KNS3::DownloadManager::searchResult, this, &KNSBackend::receivedEntries);
     connect(m_manager, &KNS3::DownloadManager::entryStatusChanged, this, &KNSBackend::statusChanged);
 
-    //otherwise this will be executed when defaultProvidersLoaded is emitted
-    if (!s_shared->atticaManager.providers().isEmpty()) {
-        startFetchingCategories();
-    }
+    m_page = 0;
+    m_manager->search(m_page);
 }
 
 void KNSBackend::setFetching(bool f)
@@ -183,99 +150,17 @@ bool KNSBackend::isValid() const
     return m_isValid;
 }
 
-void KNSBackend::startFetchingCategories()
-{
-    if (s_shared->atticaManager.providers().isEmpty()) {
-        qWarning() << "no providers for" << m_name;
-        markInvalid();
-        return;
-    }
-
-    setFetching(true);
-    m_provider = s_shared->atticaManager.providers().last();
-
-    connect(s_shared(), &SharedManager::categoriesFor, this, &KNSBackend::categoriesLoaded);
-    s_shared->requestCategories(m_provider);
-}
-
-void KNSBackend::categoriesLoaded(const QUrl &provBaseUrl, const Attica::Category::List& categoryList)
-{
-    if (provBaseUrl != m_provider.baseUrl()) {
-        return;
-    }
-    if(categoryList.isEmpty()) {
-        qWarning() << "Network error";
-        markInvalid();
-        return;
-    }
-
-    foreach(const Attica::Category& category, categoryList) {
-        const auto it = m_categories.find(category.name());
-        if (it != m_categories.end()) {
-//             qDebug() << "Adding category: " << category.name();
-            *it = category;
-        }
-    }
-    
-    // Remove categories for which we got no matching category from the provider.
-    // Otherwise we'll fetch an empty category specificier which can return
-    // everything and the kitchen sink if the remote provider feels like it.
-    for (auto it = m_categories.begin(); it != m_categories.end();) {
-        if (!it.value().isValid()) {
-            qWarning() << "Found invalid category" << it.key();
-            it = m_categories.erase(it);
-        } else
-            ++it;
-    }
-    if (m_categories.isEmpty()) {
-        qDebug() << "didn't find categories" << categoryList;
-        markInvalid();
-        return;
-    }
-
-    Attica::ListJob<Attica::Content>* jj =
-        m_provider.searchContents(m_categories.values(), QString(), Attica::Provider::Alphabetical, m_page, 100);
-    connect(jj, &Attica::GetJob::finished, this, &KNSBackend::receivedContents);
-    jj->start();
-}
-
-void KNSBackend::receivedContents(Attica::BaseJob* job)
-{
-    if(job->metadata().error() != Attica::Metadata::NoError) {
-        qWarning() << "Network error";
-        setFetching(false);
-        return;
-    }
-    Attica::ListJob<Attica::Content>* listJob = static_cast<Attica::ListJob<Attica::Content>*>(job);
-    Attica::Content::List contents = listJob->itemList();
-    
-    if(contents.isEmpty()) {
-        m_page = 0;
-        m_manager->search();
-        return;
-    }
-    QString filename = QFileInfo(m_name).fileName();
-    foreach(const Attica::Content& c, contents) {
-        KNSResource* r = new KNSResource(c, filename, this);
-        m_resourcesByName.insert(c.id(), r);
-        connect(r, &KNSResource::stateChanged, this, &KNSBackend::updatesCountChanged);
-    }
-    m_page++;
-    Attica::ListJob<Attica::Content>* jj =
-        m_provider.searchContents(m_categories.values(), QString(), Attica::Provider::Alphabetical, m_page, 100);
-    connect(jj, &Attica::GetJob::finished, this, &KNSBackend::receivedContents);
-    jj->start();
-}
-
 void KNSBackend::receivedEntries(const KNS3::Entry::List& entries)
 {
     if(entries.isEmpty()) {
         setFetching(false);
         return;
     }
-    
+
+    const QString filename = QFileInfo(m_name).fileName();
     foreach(const KNS3::Entry& entry, entries) {
-        statusChanged(entry);
+        KNSResource* r = new KNSResource(entry, filename, this);
+        m_resourcesByName.insert(entry.id(), r);
     }
     ++m_page;
     m_manager->search(m_page);
@@ -311,16 +196,14 @@ void KNSBackend::removeApplication(AbstractResource* app)
 {
     QScopedPointer<Transaction> t(new LambdaTransaction(this, app, Transaction::RemoveRole));
     KNSResource* r = qobject_cast<KNSResource*>(app);
-    Q_ASSERT(r->entry());
-    m_manager->uninstallEntry(*r->entry());
+    m_manager->uninstallEntry(r->entry());
 }
 
 void KNSBackend::installApplication(AbstractResource* app)
 {
     QScopedPointer<Transaction> t(new LambdaTransaction(this, app, Transaction::InstallRole));
     KNSResource* r = qobject_cast<KNSResource*>(app);
-    Q_ASSERT(r->entry());
-    m_manager->installEntry(*r->entry());
+    m_manager->installEntry(r->entry());
 }
 
 void KNSBackend::installApplication(AbstractResource* app, const AddonList& /*addons*/)
@@ -366,6 +249,13 @@ bool KNSBackend::isFetching() const
 AbstractBackendUpdater* KNSBackend::backendUpdater() const
 {
     return m_updater;
+}
+
+Attica::Provider KNSBackend::provider() const
+{
+    auto ret = s_shared->atticaManager.providerFor(m_providerUrl);
+    Q_ASSERT(ret.isValid());
+    return ret;
 }
 
 #include "KNSBackend.moc"

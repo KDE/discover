@@ -32,7 +32,7 @@ class DISCOVERCOMMON_EXPORT KNSResource : public AbstractResource
 {
 Q_OBJECT
 public:
-    explicit KNSResource(const Attica::Content& c, QString category, KNSBackend* parent);
+    explicit KNSResource(const KNS3::Entry& c, QString category, KNSBackend* parent);
     ~KNSResource() override;
 
     AbstractResource::State state() override;
@@ -56,14 +56,12 @@ public:
     void fetchChangelog() override;
     QStringList extends() const override;
 
-    const Attica::Content& content();
     void setEntry(const KNS3::Entry& entry);
-    KNS3::Entry* entry() const;
+    KNS3::Entry entry() const;
 
 private:
-    const Attica::Content m_content;
     const QString m_category;
-    QScopedPointer<KNS3::Entry> m_entry;
+    KNS3::Entry m_entry;
 };
 
 #endif // KNSRESOURCE_H

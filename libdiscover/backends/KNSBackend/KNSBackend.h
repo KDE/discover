@@ -65,7 +65,7 @@ public:
     QList<QAction*> messageActions() const override { return QList<QAction*>(); }
 
     bool isValid() const override;
-    Attica::Provider* provider() { return &m_provider; }
+    Attica::Provider provider() const;
 
     QStringList extends() const { return m_extends; }
 
@@ -73,9 +73,6 @@ public:
 
 public Q_SLOTS:
     void receivedEntries(const KNS3::Entry::List& entries);
-    void startFetchingCategories();
-    void categoriesLoaded(const QUrl &prov, const Attica::Category::List& categoryList);
-    void receivedContents(Attica::BaseJob*);
     void statusChanged(const KNS3::Entry& entry);
 
 private:
@@ -88,12 +85,12 @@ private:
     QHash<QString, AbstractResource*> m_resourcesByName;
     int m_page;
     KNSReviews* const m_reviews;
-    Attica::Provider m_provider;
     QMap<QString, Attica::Category> m_categories;
     QString m_name;
     QString m_iconName;
     StandardBackendUpdater* const m_updater;
     QStringList m_extends;
+    QUrl m_providerUrl;
 };
 
 #endif // KNSBACKEND_H

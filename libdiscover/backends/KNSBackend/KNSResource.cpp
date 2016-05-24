@@ -23,21 +23,19 @@
 #include <QDebug>
 #include <knewstuff_version.h>
 
-KNSResource::KNSResource(const Attica::Content& c, QString  category, KNSBackend* parent)
+KNSResource::KNSResource(const KNS3::Entry& entry, QString  category, KNSBackend* parent)
     : AbstractResource(parent)
-    , m_content(c)
     , m_category(std::move(category))
-    , m_entry(nullptr)
+    , m_entry(entry)
 {
+    connect(this, &KNSResource::stateChanged, parent, &KNSBackend::updatesCountChanged);
 }
 
 KNSResource::~KNSResource() = default;
 
 AbstractResource::State KNSResource::state()
 {
-    if (!m_entry)
-        return None;
-    switch(m_entry->status()) {
+    switch(m_entry.status()) {
         case KNS3::Entry::Invalid:
             return Broken;
         case KNS3::Entry::Downloadable:
@@ -61,7 +59,7 @@ QString KNSResource::icon() const
 
 QString KNSResource::comment()
 {
-    QString s = m_content.summary();
+    QString s = m_entry.shortSummary();
     if(s.isEmpty()) {
         s = longDescription();
         int newLine = s.indexOf(QLatin1Char('\n'));
@@ -73,12 +71,12 @@ QString KNSResource::comment()
 
 QString KNSResource::name()
 {
-    return m_content.name();
+    return m_entry.name();
 }
 
 QString KNSResource::packageName() const
 {
-    return m_content.id();
+    return m_entry.id();
 }
 
 QStringList KNSResource::categories()
@@ -88,91 +86,81 @@ QStringList KNSResource::categories()
 
 QUrl KNSResource::homepage()
 {
-    return m_content.detailpage();
+    return m_entry.url();
+}
+
+template <class T>
+static T firstIfExists(const QList<T> &list)
+{
+    return list.isEmpty() ? T() : list.at(0);
 }
 
 QUrl KNSResource::thumbnailUrl()
 {
-    return QUrl(m_content.smallPreviewPicture());
+    return firstIfExists(m_entry.previewThumbnails());
 }
 
 QUrl KNSResource::screenshotUrl()
 {
-    return QUrl(m_content.previewPicture());
-}
-
-const Attica::Content& KNSResource::content()
-{
-    return m_content;
+    return firstIfExists(m_entry.previewImages());
 }
 
 QString KNSResource::longDescription()
 {
-    QString ret = m_content.description();
+    QString ret = m_entry.summary();
     ret = ret.replace(QLatin1Char('\r'), QString());
     return ret;
 }
 
 void KNSResource::setEntry(const KNS3::Entry& entry)
 {
-    m_entry.reset(new KNS3::Entry(entry));
+    m_entry = entry;
     Q_EMIT stateChanged();
 }
 
-KNS3::Entry* KNSResource::entry() const
+KNS3::Entry KNSResource::entry() const
 {
-    return m_entry.data();
+    return m_entry;
 }
 
 QString KNSResource::license()
 {
-    return m_content.licenseName();
+    return m_entry.license();
 }
 
 int KNSResource::size()
 {
-    const Attica::DownloadDescription desc = m_content.downloadUrlDescription(0);
-    return desc.size();
+    return m_entry.size();
 }
 
 QString KNSResource::installedVersion() const
 {
-    return m_entry->version();
+    return m_entry.version();
 }
 
 QString KNSResource::availableVersion() const
 {
-    return m_content.version();
+    return m_entry.updateVersion();
 }
 
 QString KNSResource::origin() const
 {
-    return m_entry->providerId();
+    return m_entry.providerId();
 }
 
 QString KNSResource::section()
 {
-    const Attica::DownloadDescription desc = m_content.downloadUrlDescription(0);
-    return desc.category();
+    return m_entry.category();
 }
 
 void KNSResource::fetchScreenshots()
 {
-    QList<QUrl> thumbnails, screenshots;
-    for(int i=0; i<=3; i++) {
-        QString number = QString::number(i);
-        QString last = m_content.previewPicture(number);
-        if(!last.isEmpty()) {
-            thumbnails += QUrl(m_content.smallPreviewPicture(number));
-            screenshots += QUrl(last);
-        }
-    }
-    emit screenshotsFetched(thumbnails, screenshots);
+    emit screenshotsFetched(m_entry.previewThumbnails(), m_entry.previewImages());
 }
 
 void KNSResource::fetchChangelog()
 {
-    emit changelogFetched(m_content.changelog());
+    emit changelogFetched(m_entry.changelog());
 }
 
 QStringList KNSResource::extends() const
