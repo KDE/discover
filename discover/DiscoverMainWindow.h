@@ -87,13 +87,12 @@ class DiscoverMainWindow : public QObject
 
         void compactModeChanged(CompactMode compactMode);
         void preventedClose();
+        void unableToFind(const QString &resid);
 
     private:
         QWindow* rootObject() const;
         void integrateObject(QObject* object);
         QQmlApplicationEngine* engine() const { return m_engine; }
-        void configureSources();
-        void configureMenu();
 
         KActionCollection* actionCollection() { return &m_collection; }
 

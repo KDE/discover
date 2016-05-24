@@ -153,6 +153,7 @@ void DiscoverMainWindow::openApplication(const QString& app)
 
         if (ResourcesModel::global()->isFetching() || ResourcesModel::global()->backends().isEmpty()) {
             connect(ResourcesModel::global(), &ResourcesModel::rowsInserted, this, &DiscoverMainWindow::triggerOpenApplication);
+            connect(ResourcesModel::global(), &ResourcesModel::allInitialized, this, &DiscoverMainWindow::triggerOpenApplication);
         } else {
             triggerOpenApplication();
         }
@@ -166,8 +167,14 @@ void DiscoverMainWindow::triggerOpenApplication()
         emit openApplicationInternal(app);
         m_appToBeOpened.clear();
         disconnect(ResourcesModel::global(), &ResourcesModel::rowsInserted, this, &DiscoverMainWindow::triggerOpenApplication);
+        disconnect(ResourcesModel::global(), &ResourcesModel::allInitialized, this, &DiscoverMainWindow::triggerOpenApplication);
     } else {
         qDebug() << "couldn't find" << m_appToBeOpened;
+        if (!ResourcesModel::global()->isFetching()) {
+            Q_EMIT unableToFind(m_appToBeOpened);
+            disconnect(ResourcesModel::global(), &ResourcesModel::rowsInserted, this, &DiscoverMainWindow::triggerOpenApplication);
+            disconnect(ResourcesModel::global(), &ResourcesModel::allInitialized, this, &DiscoverMainWindow::triggerOpenApplication);
+        }
     }
 }
 

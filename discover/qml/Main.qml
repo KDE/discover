@@ -66,6 +66,10 @@ Rectangle
     Connections {
         target: app
         onPreventedClose: closePreventedInfo.enabled = true
+        onUnableToFind: {
+            resourceNotFound.addResource(resid);
+            currentTopLevel = topBrowsingComp
+        }
     }
 
     ColumnLayout {
@@ -87,6 +91,17 @@ Rectangle
             id: closePreventedInfo
             Layout.fillWidth: true
             message: i18n("Could not close the application, there are tasks that need to be done.")
+        }
+
+        JustMessageAction {
+            id: resourceNotFound
+            Layout.fillWidth: true
+            property var resid: []
+            function addResource(id) {
+                resid.push(id)
+                message = i18n("Resources requested but unable to find: %1", resid.join(", "))
+                enabled = true
+            }
         }
 
         JustMessageAction {
