@@ -194,7 +194,7 @@ void KNSBackend::startFetchingCategories()
     setFetching(true);
     m_provider = s_shared->atticaManager.providers().last();
 
-    connect(s_shared, &SharedManager::categoriesFor, this, &KNSBackend::categoriesLoaded);
+    connect(s_shared(), &SharedManager::categoriesFor, this, &KNSBackend::categoriesLoaded);
     s_shared->requestCategories(m_provider);
 }
 
