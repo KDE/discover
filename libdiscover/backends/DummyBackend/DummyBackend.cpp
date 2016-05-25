@@ -48,7 +48,7 @@ DummyBackend::DummyBackend(QObject* parent)
     , m_startElements(120)
 {
     QTimer::singleShot(500, this, &DummyBackend::toggleFetching);
-    connect(m_reviews, &DummyReviewsBackend::ratingsReady, this, &DummyBackend::allDataChanged);
+    connect(m_reviews, &DummyReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
 }
 
 void DummyBackend::setMetaData(const QString& path)

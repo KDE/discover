@@ -151,6 +151,11 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
         /** @internal only to be used by the factory */
         void setName(const QString& name);
 
+        /**
+         * emits a change for all rating properties
+         */
+        void emitRatingsReady();
+
     public Q_SLOTS:
         /**
          * This gets called when the backend should install an application.
@@ -194,7 +199,7 @@ class DISCOVERCOMMON_EXPORT AbstractResourcesBackend : public QObject
          * This should be emitted when all data of the backends resources changed. Internally it will emit
          * a signal in the model to show the view that all data of a certain backend changed.
          */
-        void allDataChanged();
+        void allDataChanged(const QVector<QByteArray> &propertyNames);
         /**
          * This should be emitted whenever there are new search results available, other than the ones returned previously,
          * or the data set in which the backend searched changed.

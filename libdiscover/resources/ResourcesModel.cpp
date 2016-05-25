@@ -308,7 +308,7 @@ void ResourcesModel::resetBackend(AbstractResourcesBackend* backend)
     }
 }
 
-void ResourcesModel::updateCaller()
+void ResourcesModel::updateCaller(const QVector<QByteArray>& properties)
 {
     AbstractResourcesBackend* backend = qobject_cast<AbstractResourcesBackend*>(sender());
     QVector<QVector<AbstractResource*>>::iterator backendsResources;
@@ -316,7 +316,16 @@ void ResourcesModel::updateCaller()
     if (backendsResources->isEmpty())
         return;
     
-    emit dataChanged(index(before), index(before+backendsResources->size()-1));
+    emit dataChanged(index(before), index(before+backendsResources->size()-1), propertiesToRoles(properties));
+}
+
+QVector<int> ResourcesModel::propertiesToRoles(const QVector<QByteArray>& properties) const
+{
+    QVector<int> roles;
+    roles.reserve(properties.size());
+    std::transform(properties.cbegin(), properties.cend(), roles.begin(), [this](const QByteArray& arr) { return roleNames().key(arr, -1); });
+    roles.removeAll(-1);
+    return roles;
 }
 
 void ResourcesModel::emitResourceChanges(AbstractResource* resource, const QVector<QByteArray> &properties)
@@ -325,12 +334,7 @@ void ResourcesModel::emitResourceChanges(AbstractResource* resource, const QVect
     if (!idx.isValid())
         return;
 
-    QVector<int> roles;
-    roles.reserve(properties.size());
-    std::transform(properties.cbegin(), properties.cend(), roles.begin(), [this](const QByteArray& arr) { return roleNames().key(arr, -1); });
-    roles.removeAll(-1);
-
-    emit dataChanged(idx, idx, roles);
+    emit dataChanged(idx, idx, propertiesToRoles(properties));
 }
 
 QVector< AbstractResourcesBackend* > ResourcesModel::backends() const

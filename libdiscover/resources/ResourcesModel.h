@@ -99,12 +99,13 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         void resetBackend(AbstractResourcesBackend* backend);
         void cleanBackend(AbstractResourcesBackend* backend);
         void callerFetchingChanged();
-        void updateCaller();
+        void updateCaller(const QVector<QByteArray>& properties);
         void registerAllBackends();
         void resourceChangedByTransaction(Transaction* t);
         void emitResourceChanges(AbstractResource* res, const QVector<QByteArray> &properties);
 
     private:
+        QVector<int> propertiesToRoles(const QVector<QByteArray>& propertyNames) const;
         int rowsBeforeBackend(AbstractResourcesBackend* backend, QVector<QVector<AbstractResource*>>::iterator& backendsResources);
 
         ///@p initialize tells if all backends load will be triggered on construction

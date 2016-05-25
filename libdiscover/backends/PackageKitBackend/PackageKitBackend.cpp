@@ -82,7 +82,7 @@ PackageKitBackend::PackageKitBackend(QObject* parent)
 
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::updatesChanged, this, &PackageKitBackend::fetchUpdates);
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::isRunningChanged, this, &PackageKitBackend::checkDaemonRunning);
-    connect(m_reviews, &AppstreamReviews::ratingsReady, this, &AbstractResourcesBackend::allDataChanged);
+    connect(m_reviews, &AppstreamReviews::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
 
     SourcesModel::global()->addSourcesBackend(new PackageKitSourcesBackend(this));
 }

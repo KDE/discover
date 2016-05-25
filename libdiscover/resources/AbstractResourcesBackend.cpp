@@ -46,3 +46,8 @@ QString AbstractResourcesBackend::name() const
 {
     return m_name;
 }
+
+void AbstractResourcesBackend::emitRatingsReady()
+{
+    emit allDataChanged({ "rating", "ratingPoints", "ratingCount" });
+}
