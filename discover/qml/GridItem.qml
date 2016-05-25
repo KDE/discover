@@ -32,6 +32,7 @@ Item {
     readonly property color highlightColor: Qt.lighter(DiscoverSystemPalette.highlight)
     readonly property real internalWidth: width - 2*internalMargin
     readonly property real internalHeight: height - 2*internalMargin
+    property alias supportsMouseEvents: deco.supportsMouseEvents
 
     signal clicked()
 

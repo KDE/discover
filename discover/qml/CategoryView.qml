@@ -29,7 +29,7 @@ GridItem
 {
     property alias category: categoryModel.displayedCategory
     readonly property alias count: grid.count
-    enabled: false
+    supportsMouseEvents: false
 
     ScrollView {
         anchors {
