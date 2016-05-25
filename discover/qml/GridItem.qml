@@ -23,7 +23,7 @@ import QtQuick 2.1
 import org.kde.discover.app 1.0
 import org.kde.kirigami 1.0
 
-MouseArea {
+Item {
     id: listItem
 
     default property alias content: paddingItem.data
@@ -33,13 +33,15 @@ MouseArea {
     readonly property real internalWidth: width - 2*internalMargin
     readonly property real internalHeight: height - 2*internalMargin
 
-    hoverEnabled: !Helpers.isCompact
+    signal clicked()
 
     BasicListItem {
+        id: deco
         anchors.fill: parent
         color: listItem.containsMouse || listItem.pressed ? listItem.highlightColor : DiscoverSystemPalette.button
         border.color: DiscoverSystemPalette.mid
         border.width: 1
+        onClicked: listItem.clicked()
     }
 
     Item {
