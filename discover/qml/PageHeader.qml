@@ -35,7 +35,7 @@ Item {
             fill: parent
             topMargin: root.topMargin
         }
-        enabled: false
+        supportsMouseEvents: false
         clip: true
         content: root.content
 
