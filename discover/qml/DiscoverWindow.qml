@@ -96,33 +96,6 @@ Kirigami.ApplicationWindow
         }
     }
 
-    Menu {
-        id: moreMenu
-        MenuItem {
-            action: TopLevelPageData {
-                text: i18n("Configure Sources...")
-                iconName: "repository"
-                shortcut: "Alt+S"
-                component: topSourcesComp
-            }
-        }
-        MenuSeparator {}
-        Instantiator {
-            id: actionsInstantiator
-            model: MessageActionsModel {}
-            delegate: MenuItem { action: ActionBridge { action: model.action } }
-
-            onObjectAdded: moreMenu.insertItem(index, object)
-            onObjectRemoved: moreMenu.removeItem(object)
-        }
-        MenuSeparator {
-            visible: actionsInstantiator.count > 0
-        }
-        MenuItem { action: ActionBridge { action: app.action("options_configure_keybinding"); } }
-        MenuItem { action: ActionBridge { action: app.action("help_about_app"); } }
-        MenuItem { action: ActionBridge { action: app.action("help_report_bug"); } }
-    }
-
     globalDrawer: DiscoverWindow_PlasmaPhone {}
 
     onCurrentTopLevelChanged: {

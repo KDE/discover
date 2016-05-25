@@ -21,6 +21,7 @@
 import QtQuick 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.1
+import org.kde.discover 1.0
 import org.kde.discover.app 1.0
 import org.kde.kirigami 1.0 as Kirigami
 
@@ -28,23 +29,54 @@ Kirigami.GlobalDrawer {
     id: drawer
     anchors.fill: parent
     title: i18n("Discover")
-    titleIcon: "muondiscover"
+    titleIcon: "plasmadiscover"
 
     function itemsFilter(actions, items) {
         var ret = [];
         for(var v in actions)
             ret.push(actions[v]);
 
-        for(var v in items) {
-            var it = items[v];
-            if (it.type == MenuItemType.Item) {
-                ret.push(it.action);
-            }
-        }
-        return ret;
+        return ret.concat(items);
     }
 
-    actions: itemsFilter(window.awesome, moreMenu.items)
+    Kirigami.Action {
+        id: configureMenu
+        text: i18n("Configure...")
+
+        TopLevelPageData {
+            id: sources
+            text: i18n("Configure Sources...")
+            iconName: "repository"
+            shortcut: "Alt+S"
+            component: topSourcesComp
+        }
+        ActionBridge {
+            id: bindings
+            action: app.action("options_configure_keybinding");
+        }
+
+        Instantiator {
+            id: advanced
+            model: MessageActionsModel {}
+            delegate: ActionBridge { action: model.action }
+
+            property var objects: []
+            onObjectAdded: objects.push(object)
+            onObjectRemoved: objects = objects.splice(configureMenu.children.indexOf(object))
+        }
+
+        children: [sources, bindings].concat(advanced.objects)
+    }
+
+    Kirigami.Action {
+        id: helpMenu
+        text: i18n("Help...")
+
+        ActionBridge { action: app.action("help_about_app"); }
+        ActionBridge { action: app.action("help_report_bug"); }
+    }
+
+    actions: itemsFilter(window.awesome, [ configureMenu, helpMenu ])
     modal: Helpers.isCompact
     handleVisible: Helpers.isCompact
 
