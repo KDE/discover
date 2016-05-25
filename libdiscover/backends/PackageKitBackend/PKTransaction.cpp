@@ -64,13 +64,13 @@ void PKTransaction::start()
     };
     Q_ASSERT(m_trans);
 
-    connect(m_trans, &PackageKit::Transaction::finished, this, &PKTransaction::cleanup);
-    connect(m_trans, &PackageKit::Transaction::errorCode, this, &PKTransaction::errorFound);
-    connect(m_trans, &PackageKit::Transaction::mediaChangeRequired, this, &PKTransaction::mediaChange);
-    connect(m_trans, &PackageKit::Transaction::requireRestart, this, &PKTransaction::requireRestart);
-    connect(m_trans, &PackageKit::Transaction::itemProgress, this, &PKTransaction::progressChanged);
-    connect(m_trans, &PackageKit::Transaction::eulaRequired, this, &PKTransaction::eulaRequired);
-    connect(m_trans, &PackageKit::Transaction::allowCancelChanged, this, &PKTransaction::cancellableChanged);
+    connect(m_trans.data(), &PackageKit::Transaction::finished, this, &PKTransaction::cleanup);
+    connect(m_trans.data(), &PackageKit::Transaction::errorCode, this, &PKTransaction::errorFound);
+    connect(m_trans.data(), &PackageKit::Transaction::mediaChangeRequired, this, &PKTransaction::mediaChange);
+    connect(m_trans.data(), &PackageKit::Transaction::requireRestart, this, &PKTransaction::requireRestart);
+    connect(m_trans.data(), &PackageKit::Transaction::itemProgress, this, &PKTransaction::progressChanged);
+    connect(m_trans.data(), &PackageKit::Transaction::eulaRequired, this, &PKTransaction::eulaRequired);
+    connect(m_trans.data(), &PackageKit::Transaction::allowCancelChanged, this, &PKTransaction::cancellableChanged);
     
     setCancellable(m_trans->allowCancel());
 }
