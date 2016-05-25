@@ -61,7 +61,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
 
         bool isPackageNameUpgradeable(const PackageKitResource* res) const;
         QString upgradeablePackageId(const PackageKitResource* res) const;
-        QSet<AbstractResource*> resourcesByPackageName(const QString& name, bool updating) const;
+        QSet<AbstractResource*> resourcesByPackageName(const QString& name) const;
         QVector<AppPackageKitResource*> extendedBy(const QString& id) const;
         void fetchUpdates();
 
@@ -84,6 +84,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void addTransaction(PKTransaction* trans);
         void checkDaemonRunning();
         void acquireFetching(bool f);
+        void includePackagesToAdd();
 
         Appstream::Database m_appdata;
         QList<Transaction*> m_transactions;
@@ -91,6 +92,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QPointer<PackageKit::Transaction> m_refresher;
         int m_isFetching;
         QSet<QString> m_updatesPackageId;
+        QSet<PackageKitResource*> m_packagesToAdd;
         QList<QAction*> m_messageActions;
 
         struct Packages {
@@ -101,7 +103,6 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         };
 
         Packages m_packages;
-        Packages m_updatingPackages;
         AppstreamReviews* const m_reviews;
 };
 

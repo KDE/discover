@@ -65,7 +65,8 @@ QString PackageKitResource::availablePackageId() const
 
 QString PackageKitResource::installedPackageId() const
 {
-    return m_packages[PackageKit::Transaction::InfoInstalled].first();
+    const auto installed = m_packages[PackageKit::Transaction::InfoInstalled];
+    return installed.isEmpty() ? QString() : installed.first();
 }
 
 QString PackageKitResource::comment()

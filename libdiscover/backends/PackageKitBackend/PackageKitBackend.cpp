@@ -103,11 +103,6 @@ void PackageKitBackend::acquireFetching(bool f)
     else
         m_isFetching--;
 
-    if (m_isFetching==0) {
-        m_packages = m_updatingPackages;
-        m_updatingPackages.clear();
-    }
-
     if ((!f && m_isFetching==0) || (f && m_isFetching==1)) {
         emit fetchingChanged();
     }
@@ -116,8 +111,7 @@ void PackageKitBackend::acquireFetching(bool f)
 
 void PackageKitBackend::reloadPackageList()
 {
-    m_updatingPackages = m_packages;
-    
+    acquireFetching(true);
     if (m_refresher) {
         disconnect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitBackend::reloadPackageList);
     }
@@ -133,15 +127,16 @@ void PackageKitBackend::reloadPackageList()
         neededPackages += component.packageNames();
 
         const auto res = new AppPackageKitResource(component, this);
-        m_updatingPackages.packages[component.id()] = res;
+        m_packages.packages[component.id()] = res;
         foreach (const QString& pkg, component.packageNames()) {
-            m_updatingPackages.packageToApp[pkg] += component.id();
+            m_packages.packageToApp[pkg] += component.id();
         }
 
         foreach (const QString& pkg, component.extends()) {
-            m_updatingPackages.extendedBy[pkg] += res;
+            m_packages.extendedBy[pkg] += res;
         }
     }
+    acquireFetching(false);
     neededPackages.removeDuplicates();
 
     PackageKit::Transaction * t = PackageKit::Daemon::resolve(neededPackages);
@@ -150,7 +145,6 @@ void PackageKitBackend::reloadPackageList()
     connect(t, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
 
     fetchUpdates();
-    acquireFetching(true);
 }
 
 void PackageKitBackend::fetchUpdates()
@@ -159,7 +153,6 @@ void PackageKitBackend::fetchUpdates()
     connect(tUpdates, &PackageKit::Transaction::finished, this, &PackageKitBackend::getUpdatesFinished);
     connect(tUpdates, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackageToUpdate);
     connect(tUpdates, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
-    acquireFetching(true);
     m_updatesPackageId.clear();
 }
 
@@ -167,11 +160,11 @@ void PackageKitBackend::fetchUpdates()
 void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
 {
     const QString packageName = PackageKit::Daemon::packageName(packageId);
-    QSet<AbstractResource*> r = resourcesByPackageName(packageName, true);
+    QSet<AbstractResource*> r = resourcesByPackageName(packageName);
     if (r.isEmpty()) {
         auto pk = new PackageKitResource(packageName, summary, this);
         r = { pk };
-        m_updatingPackages.packages[packageName] = pk;
+        m_packagesToAdd.insert(pk);
     }
     foreach(auto res, r)
         static_cast<PackageKitResource*>(res)->addPackageId(info, packageId);
@@ -179,22 +172,31 @@ void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QSt
 
 void PackageKitBackend::getPackagesFinished(PackageKit::Transaction::Exit exit)
 {
-    Q_ASSERT(m_isFetching);
-
     if (exit != PackageKit::Transaction::ExitSuccess) {
         qWarning() << "error while fetching details" << exit;
     }
 
-    for(auto it = m_updatingPackages.packages.begin(); it != m_updatingPackages.packages.end(); ) {
+    for(auto it = m_packages.packages.begin(); it != m_packages.packages.end(); ) {
         auto pkr = qobject_cast<PackageKitResource*>(it.value());
         if (pkr->packages().isEmpty()) {
             qWarning() << "Failed to find package for" << it.key();
             it.value()->deleteLater();
-            it = m_updatingPackages.packages.erase(it);
+            it = m_packages.packages.erase(it);
         } else
             ++it;
     }
+    includePackagesToAdd();
+}
 
+void PackageKitBackend::includePackagesToAdd()
+{
+    if (m_packagesToAdd.isEmpty())
+        return;
+
+    acquireFetching(true);
+    foreach(PackageKitResource* res, m_packagesToAdd) {
+        m_packages.packages[res->packageName()] = res;
+    }
     acquireFetching(false);
 }
 
@@ -205,7 +207,7 @@ void PackageKitBackend::transactionError(PackageKit::Transaction::Error, const Q
 
 void PackageKitBackend::packageDetails(const PackageKit::Details& details)
 {
-    const QSet<AbstractResource*> resources = resourcesByPackageName(PackageKit::Daemon::packageName(details.packageId()), true);
+    const QSet<AbstractResource*> resources = resourcesByPackageName(PackageKit::Daemon::packageName(details.packageId()));
     if (resources.isEmpty())
         qWarning() << "couldn't find package for" << details.packageId();
 
@@ -214,17 +216,13 @@ void PackageKitBackend::packageDetails(const PackageKit::Details& details)
     }
 }
 
-QSet<AbstractResource*> PackageKitBackend::resourcesByPackageName(const QString& name, bool updating) const
+QSet<AbstractResource*> PackageKitBackend::resourcesByPackageName(const QString& name) const
 {
-    const Packages * const f = (updating ? &m_updatingPackages : &m_packages);
-    const QHash<QString, QStringList> *dictionary = &f->packageToApp;
-    const QHash<QString, AbstractResource*> *pkgs = &f->packages;
-
-    const QStringList names = dictionary->value(name, QStringList(name));
+    const QStringList names = m_packages.packageToApp.value(name, QStringList(name));
     QSet<AbstractResource*> ret;
     ret.reserve(names.size());
     foreach(const QString& name, names) {
-        AbstractResource* res = pkgs->value(name);
+        AbstractResource* res = m_packages.packages.value(name);
         if (res)
             ret += res;
     }
@@ -240,7 +238,6 @@ void PackageKitBackend::refreshDatabase()
             acquireFetching(false);
             delete m_refresher;
         });
-        acquireFetching(true);
     } else {
         qWarning() << "already resetting";
     }
@@ -340,7 +337,7 @@ QSet<AbstractResource*> PackageKitBackend::upgradeablePackages() const
     ret.reserve(m_updatesPackageId.size());
     Q_FOREACH (const QString& pkgid, m_updatesPackageId) {
         const QString pkgname = PackageKit::Daemon::packageName(pkgid);
-        const auto pkgs = resourcesByPackageName(pkgname, false);
+        const auto pkgs = resourcesByPackageName(pkgname);
         if (pkgs.isEmpty()) {
             qWarning() << "couldn't find resource for" << pkgid;
         }
@@ -360,14 +357,13 @@ void PackageKitBackend::addPackageToUpdate(PackageKit::Transaction::Info info, c
 void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
 {
     if (!m_updatesPackageId.isEmpty()) {
-        acquireFetching(true);
         PackageKit::Transaction* transaction = PackageKit::Daemon::getDetails(m_updatesPackageId.toList());
         connect(transaction, &PackageKit::Transaction::details, this, &PackageKitBackend::packageDetails);
         connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
         connect(transaction, &PackageKit::Transaction::finished, this, &PackageKitBackend::getUpdatesDetailsFinished);
     }
 
-    acquireFetching(false);
+    includePackagesToAdd();
     emit updatesCountChanged();
 }
 
@@ -376,7 +372,6 @@ void PackageKitBackend::getUpdatesDetailsFinished(PackageKit::Transaction::Exit 
     if (exit != PackageKit::Transaction::ExitSuccess) {
         qWarning() << "Couldn't figure out the updates on PackageKit backend" << exit;
     }
-    acquireFetching(false);
 }
 
 bool PackageKitBackend::isPackageNameUpgradeable(const PackageKitResource* res) const

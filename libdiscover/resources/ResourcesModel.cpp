@@ -164,8 +164,7 @@ QModelIndex ResourcesModel::resourceIndex(AbstractResource* res) const
         else {
             Q_ASSERT(!m_backends[i]->isFetching());
             int pos = m_resources[i].indexOf(res);
-            Q_ASSERT(pos>=0);
-            return index(row+pos);
+            return pos>=0 ? index(row+pos) : QModelIndex();
         }
     }
 
