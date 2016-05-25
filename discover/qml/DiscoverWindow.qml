@@ -125,25 +125,12 @@ Kirigami.ApplicationWindow
 
     globalDrawer: DiscoverWindow_PlasmaPhone {}
 
-    Component {
-        id: menuComponent
-        Kirigami.Page {
-            title: "bananas"
-            implicitWidth: 150
-            Rectangle {
-                anchors.fill: parent
-                color: "red"
-            }
-        }
-    }
-
     onCurrentTopLevelChanged: {
         if(currentTopLevel.status==Component.Error) {
             console.log("status error: "+currentTopLevel.errorString())
         }
         var stackView = window.pageStack;
         stackView.clear()
-        stackView.push(menuComponent, {}, window.status!=Component.Ready)
         stackView.push(currentTopLevel, {}, window.status!=Component.Ready)
     }
 
