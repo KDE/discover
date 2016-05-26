@@ -46,23 +46,31 @@ AppstreamReviews::AppstreamReviews(AbstractResourcesBackend* parent)
     KIO::FileCopyJob *getJob = KIO::file_copy(ratingsUrl, *ratingsCache, -1,
                                KIO::Overwrite | KIO::HideProgressInfo);
     connect(getJob, &KIO::FileCopyJob::result, this, &AppstreamReviews::ratingsFetched);
+
+    if (QFile::exists(ratingsCache->toLocalFile()))
+        readRatings();
 }
 
 void AppstreamReviews::ratingsFetched(KJob* job)
 {
+    m_fetching = false;
     if (job->error()) {
         qWarning() << "error fetching popcon" << job->errorString();
     } else {
-        QScopedPointer<QIODevice> dev(new KCompressionDevice(ratingsCache->toLocalFile(), KCompressionDevice::GZip));
-        if (!dev->open(QIODevice::ReadOnly)) {
-            qWarning() << "couldn't open popcon file" << dev->errorString();
-        } else {
-            qDeleteAll(m_ratings);
-            m_ratings = PopConParser::parsePopcon(this, dev.data());
-        }
+        readRatings();
     }
-    m_fetching = false;
-    Q_EMIT ratingsReady();
+}
+
+void AppstreamReviews::readRatings()
+{
+    QScopedPointer<QIODevice> dev(new KCompressionDevice(ratingsCache->toLocalFile(), KCompressionDevice::GZip));
+    if (!dev->open(QIODevice::ReadOnly)) {
+        qWarning() << "couldn't open popcon file" << dev->errorString();
+    } else {
+        qDeleteAll(m_ratings);
+        m_ratings = PopConParser::parsePopcon(this, dev.data());
+        Q_EMIT ratingsReady();
+    }
 }
 
 Rating * AppstreamReviews::ratingForApplication(AbstractResource* app) const

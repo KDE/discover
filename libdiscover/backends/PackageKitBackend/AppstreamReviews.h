@@ -53,6 +53,7 @@ Q_SIGNALS:
     void ratingsReady();
 
 private:
+    void readRatings();
     void ratingsFetched(KJob* job);
 
     QHash<QString, Rating *> m_ratings;
