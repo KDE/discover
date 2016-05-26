@@ -64,6 +64,9 @@ public:
     QString errorMessage() const override;
     bool isReviewable() const override;
 
+Q_SIGNALS:
+    void ratingsReady();
+
 private:
     QApt::Backend *m_aptBackend;
 

@@ -48,6 +48,9 @@ public:
 
     void initialize();
 
+Q_SIGNALS:
+    void ratingsReady();
+
 private:
     QHash<AbstractResource*, Rating*> m_ratings;
 };

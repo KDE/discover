@@ -58,7 +58,6 @@ class DISCOVERCOMMON_EXPORT AbstractReviewsBackend : public QObject
 
     Q_SIGNALS:
         void reviewsReady(AbstractResource *app, QList<Review *>);
-        void ratingsReady();
         void loginStateChanged();
 };
 

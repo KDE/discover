@@ -27,9 +27,6 @@
 AbstractResource::AbstractResource(AbstractResourcesBackend* parent)
     : QObject(parent)
 {
-    if (parent && parent->reviewsBackend())
-        connect(parent->reviewsBackend(), &AbstractReviewsBackend::ratingsReady, this, &AbstractResource::ratingFetched);
-
     connect(this, &AbstractResource::stateChanged, this, &AbstractResource::reportNewState);
 }
 

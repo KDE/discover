@@ -49,6 +49,9 @@ public:
     bool isReviewable() const override { return false; }
     bool isFetching() const override;
 
+Q_SIGNALS:
+    void ratingsReady();
+
 private:
     void ratingsFetched(KJob* job);
 
