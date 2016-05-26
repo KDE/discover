@@ -116,15 +116,11 @@ void PackageKitBackend::reloadPackageList()
         disconnect(m_refresher.data(), &PackageKit::Transaction::finished, this, &PackageKitBackend::reloadPackageList);
     }
 
-    const auto components = m_appdata.allComponents();
-    QStringList neededPackages;
-    neededPackages.reserve(components.size());
-    foreach(const Appstream::Component& component, components) {
+    foreach(const Appstream::Component& component, m_appdata.allComponents()) {
         if (component.packageNames().isEmpty()) {
             qDebug() << "no packages for" << component.name();
             continue;
         }
-        neededPackages += component.packageNames();
 
         const auto res = new AppPackageKitResource(component, this);
         m_packages.packages[component.id()] = res;
@@ -137,9 +133,8 @@ void PackageKitBackend::reloadPackageList()
         }
     }
     acquireFetching(false);
-    neededPackages.removeDuplicates();
 
-    PackageKit::Transaction * t = PackageKit::Daemon::resolve(neededPackages);
+    PackageKit::Transaction * t = PackageKit::Daemon::getPackages();
     connect(t, &PackageKit::Transaction::finished, this, &PackageKitBackend::getPackagesFinished);
     connect(t, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackage);
     connect(t, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
