@@ -28,6 +28,7 @@
 #include <QUrl>
 #include <resources/AbstractResource.h>
 #include <ReviewsBackend/PopConParser.h>
+#include <ReviewsBackend/Rating.h>
 #include <QDebug>
 
 #include "AppPackageKitResource.h"
@@ -67,7 +68,9 @@ void AppstreamReviews::readRatings()
     if (!dev->open(QIODevice::ReadOnly)) {
         qWarning() << "couldn't open popcon file" << dev->errorString();
     } else {
-        qDeleteAll(m_ratings);
+        foreach(Rating* res, m_ratings) {
+            res->deleteLater();
+        }
         m_ratings = PopConParser::parsePopcon(this, dev.data());
         Q_EMIT ratingsReady();
     }
