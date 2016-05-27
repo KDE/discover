@@ -93,6 +93,7 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         int m_isFetching;
         QSet<QString> m_updatesPackageId;
         QSet<PackageKitResource*> m_packagesToAdd;
+        QSet<PackageKitResource*> m_packagesToDelete;
         QList<QAction*> m_messageActions;
 
         struct Packages {

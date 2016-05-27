@@ -171,14 +171,12 @@ void PackageKitBackend::getPackagesFinished(PackageKit::Transaction::Exit exit)
         qWarning() << "error while fetching details" << exit;
     }
 
-    for(auto it = m_packages.packages.begin(); it != m_packages.packages.end(); ) {
+    for(auto it = m_packages.packages.cbegin(); it != m_packages.packages.cend(); ++it) {
         auto pkr = qobject_cast<PackageKitResource*>(it.value());
         if (pkr->packages().isEmpty()) {
             qWarning() << "Failed to find package for" << it.key();
-            it.value()->deleteLater();
-            it = m_packages.packages.erase(it);
-        } else
-            ++it;
+            m_packagesToDelete += pkr;
+        }
     }
     includePackagesToAdd();
 }
@@ -192,6 +190,11 @@ void PackageKitBackend::includePackagesToAdd()
     foreach(PackageKitResource* res, m_packagesToAdd) {
         m_packages.packages[res->packageName()] = res;
     }
+    foreach(PackageKitResource* res, m_packagesToDelete) {
+        m_packages.packages.take(res->packageName())->deleteLater();
+    }
+    m_packagesToAdd.clear();
+    m_packagesToDelete.clear();
     acquireFetching(false);
 }
 
