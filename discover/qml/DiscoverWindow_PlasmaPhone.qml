@@ -42,6 +42,7 @@ Kirigami.GlobalDrawer {
     Kirigami.Action {
         id: configureMenu
         text: i18n("Configure...")
+        iconName: "settings-configure"
 
         TopLevelPageData {
             id: sources
@@ -71,6 +72,7 @@ Kirigami.GlobalDrawer {
     Kirigami.Action {
         id: helpMenu
         text: i18n("Help...")
+        iconName: "system-help"
 
         ActionBridge { action: app.action("help_about_app"); }
         ActionBridge { action: app.action("help_report_bug"); }
