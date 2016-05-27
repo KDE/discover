@@ -26,14 +26,24 @@ ListModel
         }
         xhr.send();
     }
+
+    readonly property var fu: Connections {
+        target: ResourcesModel
+        onAllInitialized: featuredModel.initFeatured(true)
+    }
     
+    property var dataFound: []
+
     function initFeatured() {
-        for(var row=0; row<model.count; row++) {
-            var data = model.get(row)
+        for(var i in dataFound) {
+            var data = dataFound[i];
+            if (!data)
+                continue;
             if(data.packageName) {
                 var appl = ResourcesModel.resourceByPackageName(data.packageName)
                 if(appl==null) {
-//                     console.log("application ", data.packageName, " not found")
+                    console.log("application ", data.packageName, " not found")
+
                     continue
                 }
                 if(data.image==null)
@@ -42,7 +52,7 @@ ListModel
                 data.icon = appl.icon
                 data.comment = appl.comment
             }
-            model.set(row, data)
+            model.append(data)
         }
     }
 
@@ -54,10 +64,11 @@ ListModel
     function getFeatured(data) {
         if(data==null)
             return
-        
+
+        var objs = []
         for(var packageName in data) {
             var currentData = data[packageName]
-            model.append({
+            objs.push({
                 "text": alternateIfNull(currentData.text, currentData.package),
                 "color": alternateIfNull(currentData.color, "red"),
                 "image": currentData.image,
@@ -67,6 +78,7 @@ ListModel
                 "url": currentData.url
             })
         }
-        initFeatured()
+        dataFound = dataFound.concat(objs);
+        initFeatured();
     }
 }
