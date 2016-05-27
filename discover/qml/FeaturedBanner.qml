@@ -28,11 +28,6 @@ import "navigation.js" as Navigation
 Information {
     id: info
 
-    Connections {
-        target: ResourcesModel
-        onAllInitialized: featuredModel.initFeatured()
-    }
-
     model: FeaturedModel {
         id: featuredModel
     }
