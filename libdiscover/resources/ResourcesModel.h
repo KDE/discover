@@ -83,6 +83,8 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
         
         QHash<int, QByteArray> roleNames() const override;
 
+        Q_SCRIPTABLE bool isExtended(const QString &id);
+
     public Q_SLOTS:
         void installApplication(AbstractResource* app, const AddonList& addons);
         void installApplication(AbstractResource* app);

@@ -459,3 +459,15 @@ bool ResourcesModel::isBusy() const
 {
     return TransactionModel::global()->rowCount() > 0;
 }
+
+bool ResourcesModel::isExtended(const QString& id)
+{
+    auto resourceExtends = [id](AbstractResource* res) {return res->extends().contains(id); };
+    bool ret = false;
+    foreach (const QVector<AbstractResource*> & backend, m_resources) {
+        ret = std::find_if(backend.cbegin(), backend.cend(), resourceExtends) != backend.cend();
+        if (ret)
+            break;
+    }
+    return ret;
+}

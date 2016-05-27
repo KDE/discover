@@ -11,6 +11,8 @@ ColumnLayout
     property alias application: addonsModel.application
     property bool isInstalling: false
     property alias isEmpty: addonsModel.isEmpty
+    visible: rep.count>0 || isExtended
+    readonly property bool isExtended: ResourcesModel.isExtended(application.appstreamId)
     enabled: !addonsView.isInstalling
     spacing: 5
 
@@ -20,6 +22,7 @@ ColumnLayout
 
     Repeater
     {
+        id: rep
         model: ApplicationAddonsModel { id: addonsModel }
         
         delegate: RowLayout {
@@ -77,7 +80,7 @@ ColumnLayout
         }
         Button {
             text: i18n("More...")
-            visible: application.appstreamId !== "" //add appstream.isKNSExtended or similar
+            visible: application.appstreamId !== "" && addonsView.isExtended
             onClicked: Navigation.openExtends(application.appstreamId)
         }
     }
