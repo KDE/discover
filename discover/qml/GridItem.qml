@@ -32,6 +32,7 @@ Item {
     readonly property color highlightColor: Qt.lighter(DiscoverSystemPalette.highlight)
     readonly property real internalWidth: width - 2*internalMargin
     readonly property real internalHeight: height - 2*internalMargin
+    readonly property alias containsMouse: deco.containsMouse
     property alias supportsMouseEvents: deco.supportsMouseEvents
 
     signal clicked()
@@ -39,9 +40,6 @@ Item {
     BasicListItem {
         id: deco
         anchors.fill: parent
-        color: listItem.containsMouse || listItem.pressed ? listItem.highlightColor : DiscoverSystemPalette.button
-        border.color: DiscoverSystemPalette.mid
-        border.width: 1
         onClicked: listItem.clicked()
     }
 
