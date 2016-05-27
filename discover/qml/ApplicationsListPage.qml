@@ -193,7 +193,11 @@ Kirigami.Page {
     Component {
         id: appListHeader
         ColumnLayout {
-            Loader { sourceComponent: categoryHeaderComponent }
+            width: ListView.view.width
+            Loader {
+                Layout.fillWidth: true
+                sourceComponent: categoryHeaderComponent
+            }
             Label {
                 text: i18n("Resources")
                 Layout.fillWidth: true

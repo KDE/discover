@@ -102,10 +102,8 @@ ConditionalLoader
 
     componentTrue: ColumnLayout {
             Layout.minimumHeight: 5000
-            spacing: -1
 
             ApplicationsTop {
-                id: top
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 sortRole: "ratingCount"
@@ -122,7 +120,6 @@ ConditionalLoader
                         text: model ? model.ratingCount : ""
                     }
                 }
-                Layout.preferredWidth: page.maxtopwidth
             }
             Item { height: 3; width: 3 }
             Label {
