@@ -45,34 +45,6 @@
 
 MUON_BACKEND_PLUGIN(KNSBackend)
 
-QDebug operator<<(QDebug s, const Attica::Category& cat) {
-    const QString name = cat.isValid() ? cat.name() : QStringLiteral("Invalid");
-    s.nospace() << "Category(" << name << ')';
-    return s.space();
-}
-
-QDebug operator<<(QDebug s, const Attica::Provider& prov) {
-    if (prov.isValid())
-        s.nospace() << "Provider(" << prov.name() << ':' << prov.baseUrl() << ')';
-    else
-        s.nospace() << "Provider(Invalid)";
-    return s.space();
-}
-
-class SharedManager : public QObject
-{
-Q_OBJECT
-public:
-    SharedManager() {
-        atticaManager.loadDefaultProviders();
-    }
-
-public:
-    Attica::ProviderManager atticaManager;
-};
-
-Q_GLOBAL_STATIC(SharedManager, s_shared)
-
 KNSBackend::KNSBackend(QObject* parent)
     : AbstractResourcesBackend(parent)
     , m_fetching(false)
@@ -122,10 +94,7 @@ void KNSBackend::setMetaData(const QString& path)
 
     const KConfigGroup group = conf.group("KNewStuff3");
     m_extends = group.readEntry("Extends", QStringList());
-    m_providerUrl = QUrl(group.readEntry("ProvidersUrl", QString()));
-    if(!s_shared->atticaManager.providerFiles().contains(m_providerUrl)) {
-        s_shared->atticaManager.addProviderFile(m_providerUrl);
-    }
+    m_reviews->setProviderUrl(QUrl(group.readEntry("ProvidersUrl", QString())));
 
     setFetching(true);
 
@@ -249,13 +218,6 @@ bool KNSBackend::isFetching() const
 AbstractBackendUpdater* KNSBackend::backendUpdater() const
 {
     return m_updater;
-}
-
-Attica::Provider KNSBackend::provider() const
-{
-    auto ret = s_shared->atticaManager.providerFor(m_providerUrl);
-    Q_ASSERT(ret.isValid());
-    return ret;
 }
 
 #include "KNSBackend.moc"

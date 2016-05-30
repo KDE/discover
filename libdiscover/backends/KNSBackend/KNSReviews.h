@@ -22,13 +22,11 @@
 #define KNSREVIEWS_H
 
 #include <ReviewsBackend/AbstractReviewsBackend.h>
-#include <QMap>
-#include <attica/content.h>
+#include <attica/provider.h>
 
 class KNSBackend;
 class QUrl;
 namespace Attica {
-class Provider;
 class ProviderManager;
 class BaseJob;
 }
@@ -52,14 +50,16 @@ class KNSReviews : public AbstractReviewsBackend
         bool hasCredentials() const override;
         QString userName() const override;
 
+        void setProviderUrl(const QUrl &url);
+
     private Q_SLOTS:
         void commentsReceived(Attica::BaseJob* job);
         void credentialsReceived(const QString& user, const QString& password);
 
     private:
+        Attica::Provider provider() const;
         KNSBackend* m_backend;
-
-        int m_fetching;
+        QUrl m_providerUrl;
 };
 
 #endif // KNSREVIEWS_H

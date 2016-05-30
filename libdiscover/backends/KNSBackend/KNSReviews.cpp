@@ -34,10 +34,23 @@
 
 Q_DECLARE_METATYPE(AbstractResource*)
 
+class SharedManager : public QObject
+{
+Q_OBJECT
+public:
+    SharedManager() {
+        atticaManager.loadDefaultProviders();
+    }
+
+public:
+    Attica::ProviderManager atticaManager;
+};
+
+Q_GLOBAL_STATIC(SharedManager, s_shared)
+
 KNSReviews::KNSReviews(KNSBackend* backend)
     : AbstractReviewsBackend(backend)
     , m_backend(backend)
-    , m_fetching(0)
 {
 }
 
@@ -64,7 +77,7 @@ Rating* KNSReviews::ratingForApplication(AbstractResource* app) const
 void KNSReviews::fetchReviews(AbstractResource* app, int page)
 {
     Attica::ListJob< Attica::Comment >* job =
-        m_backend->provider().requestComments(Attica::Comment::ContentComment, app->packageName(), QStringLiteral("0"), page, 10);
+        provider().requestComments(Attica::Comment::ContentComment, app->packageName(), QStringLiteral("0"), page, 10);
     job->setProperty("app", qVariantFromValue<AbstractResource*>(app));
     connect(job, &Attica::BaseJob::finished, this, &KNSReviews::commentsReceived);
     job->start();
@@ -90,7 +103,7 @@ void KNSReviews::commentsReceived(Attica::BaseJob* j)
 
 bool KNSReviews::isFetching() const
 {
-    return m_backend->isFetching();
+    return isFetching();
 }
 
 void KNSReviews::flagReview(Review*  /*r*/, const QString&  /*reason*/, const QString&  /*text*/)
@@ -105,48 +118,63 @@ void KNSReviews::deleteReview(Review*  /*r*/)
 
 void KNSReviews::submitReview(AbstractResource* app, const QString& summary, const QString& review_text, const QString& /*rating*/)
 {
-    m_backend->provider().addNewComment(Attica::Comment::ContentComment, app->packageName(), QString(), QString(), summary, review_text);
+    provider().addNewComment(Attica::Comment::ContentComment, app->packageName(), QString(), QString(), summary, review_text);
 }
 
 void KNSReviews::submitUsefulness(Review* r, bool useful)
 {
-    m_backend->provider().voteForComment(QString::number(r->id()), useful*5);
+    provider().voteForComment(QString::number(r->id()), useful*5);
 }
 
 void KNSReviews::logout()
 {
-    bool b = m_backend->provider().saveCredentials(QString(), QString());
+    bool b = provider().saveCredentials(QString(), QString());
     if (!b)
         qWarning() << "couldn't log out";
 }
 
 void KNSReviews::registerAndLogin()
 {
-    QDesktopServices::openUrl(m_backend->provider().baseUrl());
+    QDesktopServices::openUrl(provider().baseUrl());
 }
 
 void KNSReviews::login()
 {
     KPasswordDialog* dialog = new KPasswordDialog;
-    dialog->setPrompt(i18n("Log in information for %1", m_backend->provider().name()));
+    dialog->setPrompt(i18n("Log in information for %1", provider().name()));
     connect(dialog, &KPasswordDialog::gotUsernameAndPassword, this, &KNSReviews::credentialsReceived);
 }
 
 void KNSReviews::credentialsReceived(const QString& user, const QString& password)
 {
-    bool b = m_backend->provider().saveCredentials(user, password);
+    bool b = provider().saveCredentials(user, password);
     if (!b)
-        qWarning() << "couldn't save" << user << "credentials for" << m_backend->provider().name();
+        qWarning() << "couldn't save" << user << "credentials for" << provider().name();
 }
 
 bool KNSReviews::hasCredentials() const
 {
-    return m_backend->provider().hasCredentials();
+    return provider().hasCredentials();
 }
 
 QString KNSReviews::userName() const
 {
     QString user, password;
-    m_backend->provider().loadCredentials(user, password);
+    provider().loadCredentials(user, password);
     return user;
 }
+
+void KNSReviews::setProviderUrl(const QUrl& url)
+{
+    m_providerUrl = url;
+    if(!s_shared->atticaManager.providerFiles().contains(url)) {
+        s_shared->atticaManager.addProviderFile(url);
+    }
+}
+
+Attica::Provider KNSReviews::provider() const
+{
+    return s_shared->atticaManager.providerFor(m_providerUrl);
+}
+
+#include "KNSReviews.moc"

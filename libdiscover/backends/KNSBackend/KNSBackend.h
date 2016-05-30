@@ -24,10 +24,6 @@
 // KDE includes
 #include <KNewStuff3/kns3/entry.h>
 
-// Attica includes
-#include <attica/category.h>
-#include <attica/provider.h>
-
 // DiscoverCommon includes
 #include <resources/AbstractResourcesBackend.h>
 #include "Transaction/AddonList.h"
@@ -39,10 +35,6 @@ class KNSReviews;
 class StandardBackendUpdater;
 
 namespace KNS3 { class DownloadManager; }
-namespace Attica {
-    class ProviderManager;
-    class BaseJob;
-}
 
 class DISCOVERCOMMON_EXPORT KNSBackend : public AbstractResourcesBackend
 {
@@ -65,7 +57,6 @@ public:
     QList<QAction*> messageActions() const override { return QList<QAction*>(); }
 
     bool isValid() const override;
-    Attica::Provider provider() const;
 
     QStringList extends() const { return m_extends; }
 
@@ -85,12 +76,10 @@ private:
     QHash<QString, AbstractResource*> m_resourcesByName;
     int m_page;
     KNSReviews* const m_reviews;
-    QMap<QString, Attica::Category> m_categories;
     QString m_name;
     QString m_iconName;
     StandardBackendUpdater* const m_updater;
     QStringList m_extends;
-    QUrl m_providerUrl;
 };
 
 #endif // KNSBACKEND_H
