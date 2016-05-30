@@ -139,8 +139,7 @@ void DiscoverMainWindow::openMimeType(const QString& mime)
 
 void DiscoverMainWindow::openCategory(const QString& category)
 {
-    CategoryModel m;
-    Category* cat = m.findCategoryByName(category);
+    Category* cat = CategoryModel::findCategoryByName(category);
     Q_ASSERT(cat);
     emit listCategoryInternal(cat);
 }
