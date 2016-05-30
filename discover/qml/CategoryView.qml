@@ -27,7 +27,7 @@ import "navigation.js" as Navigation
 
 GridItem
 {
-    property alias model: grid.model
+    property alias category: categoryModel.displayedCategory
     readonly property alias count: grid.count
     enabled: false
 
@@ -41,52 +41,70 @@ GridItem
 
         GridView {
             id: grid
+            readonly property real iconSide: 32
 
             cellWidth: Helpers.isCompact ? width : width/Math.floor(width/100)
-            cellHeight: Helpers.isCompact ? 35 : (32 + SystemFonts.generalFont.pixelSize*3 + 5)
+            cellHeight: Helpers.isCompact ? 35 : (grid.iconSide + SystemFonts.generalFont.pixelSize*3 + 5)
             boundsBehavior: Flickable.StopAtBounds
-            header: Item { height: 10; width: 10 }
-            footer: header
-
-            delegate: MouseArea {
-                id: categoryItem
-                enabled: true
-
-                width: grid.cellWidth
-                height: grid.cellHeight-2
-                hoverEnabled: true
-
-                ColumnLayout {
-                    id: layout
-
-                    anchors.top: parent.top
-                    width: parent.width
-                    Item {
-                        Layout.fillWidth: true
-                        Layout.preferredWidth: 32
-                        Layout.preferredHeight: Layout.preferredWidth
-                        opacity: categoryItem.containsMouse ? 0.5 : 1
-
-                        QIconItem {
-                            icon: decoration
-                            width: 32
-                            height: width
-                            anchors.centerIn: parent
-                        }
+            footer: Grid {
+                Repeater {
+                    model: CategoryModel {
+                        displayedCategory: categoryModel.displayedCategory
+                        filter: CategoryModel.OnlyAddons
                     }
-                    Label {
-                        id: nameLabel
-                        text: display
-                        Layout.fillWidth: true
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                        wrapMode: Text.WordWrap
+                    delegate: categoryIconDelegate
+                }
+            }
+            header: Item { height: 10; width: 10 }
+            model: CategoryModel {
+                id: categoryModel
+                filter: CategoryModel.NoAddons
+            }
 
-                        maximumLineCount: 2
+            delegate: categoryIconDelegate
+        }
+    }
+
+    Component {
+        id: categoryIconDelegate
+        MouseArea {
+            id: categoryItem
+            enabled: true
+
+            width: grid.cellWidth
+            height: grid.cellHeight-2
+            hoverEnabled: true
+
+            ColumnLayout {
+                id: layout
+
+                anchors.top: parent.top
+                width: parent.width
+                Item {
+                    Layout.fillWidth: true
+                    Layout.preferredWidth: grid.iconSide
+                    Layout.preferredHeight: Layout.preferredWidth
+                    opacity: categoryItem.containsMouse ? 0.5 : 1
+
+                    QIconItem {
+                        icon: decoration
+                        width: grid.iconSide
+                        height: width
+                        anchors.centerIn: parent
                     }
                 }
-                onClicked: Navigation.openCategory(category)
+                Label {
+                    id: nameLabel
+                    text: display
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    wrapMode: Text.WordWrap
+
+                    maximumLineCount: 2
+                }
             }
+            onClicked: Navigation.openCategory(category)
         }
     }
 }

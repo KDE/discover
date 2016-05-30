@@ -31,24 +31,25 @@ class DISCOVERCOMMON_EXPORT CategoryModel : public QStandardItemModel
 {
     Q_OBJECT
     Q_PROPERTY(Category* displayedCategory READ displayedCategory WRITE setDisplayedCategory NOTIFY categoryChanged)
+    Q_PROPERTY(ShowAddons filter READ filter WRITE setFilter)
     public:
         enum CategoryModelRole {
             CategoryRole = Qt::UserRole + 1
         };
 
-        enum CatViewType {
-            /// An invalid type
-            InvalidType = 0,
-            /// An AppView since there are no sub-cats
-            CategoryType = 1,
-            /// A SubCategoryView
-            SubCatType = 2
+        enum ShowAddons {
+            OnlyAddons,
+            NoAddons,
+            ShowEverything
         };
-        Q_ENUMS(CatViewType)
+        Q_ENUMS(ShowAddons)
 
         explicit CategoryModel(QObject* parent = nullptr);
 
         Category* categoryForRow(int row);
+
+        ShowAddons filter() const;
+        void setFilter(ShowAddons filter);
 
         void setDisplayedCategory(Category* c);
         Category* displayedCategory() const;
@@ -61,10 +62,12 @@ class DISCOVERCOMMON_EXPORT CategoryModel : public QStandardItemModel
         void categoryChanged(Category* displayedCategory);
 
     private:
+        void resetCategories();
         void categoryDeleted(QObject* cat);
         void setCategories(const QVector<Category *> &categoryList);
 
         Category* m_currentCategory;
+        ShowAddons m_filter;
 };
 
 #endif // CATEGORYMODEL_H

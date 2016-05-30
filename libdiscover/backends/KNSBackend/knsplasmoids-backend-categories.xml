@@ -2,6 +2,7 @@
 <Menu>
   <Menu>
     <Name>Plasma Addons</Name>
+    <Addons/>
     <Icon>plasma</Icon>
     <Menu>
       <Name>Plasma Desktop Widgets</Name>

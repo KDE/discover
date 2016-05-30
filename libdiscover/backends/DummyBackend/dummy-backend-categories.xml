@@ -8,6 +8,14 @@
     </Include>
   </Menu>
   <Menu>
+    <Name>dummy addons</Name>
+    <Icon>plasma</Icon>
+    <Addons />
+    <Include>
+        <Category>dummy</Category>
+    </Include>
+  </Menu>
+  <Menu>
     <Name>dummy 1</Name>
     <Icon>kontact</Icon>
     <Include>

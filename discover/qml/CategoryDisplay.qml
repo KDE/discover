@@ -32,11 +32,6 @@ ConditionalLoader
     property real spacing: 3
     property real maxtopwidth: 250
 
-    CategoryModel {
-        id: categoryModel
-        displayedCategory: page.category
-    }
-
     condition: Helpers.isCompact
     componentFalse: RowLayout {
             id: gridRow
@@ -48,7 +43,7 @@ ConditionalLoader
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 sortRole: "ratingCount"
-                filteredCategory: categoryModel.displayedCategory
+                filteredCategory: page.category
                 title: i18n("Most Popular")
                 extended: gridRow.extended
                 roleDelegate: Item {
@@ -69,7 +64,7 @@ ConditionalLoader
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 sortRole: "ratingPoints"
-                filteredCategory: categoryModel.displayedCategory
+                filteredCategory: page.category
                 title: i18n("Best Rating")
                 extended: gridRow.extended
                 roleDelegate: Rating {
@@ -98,7 +93,7 @@ ConditionalLoader
                 CategoryView {
                     id: view
                     visible: view.count>0
-                    model: categoryModel
+                    category: page.category
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
@@ -114,7 +109,7 @@ ConditionalLoader
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 sortRole: "ratingCount"
-                filteredCategory: categoryModel.displayedCategory
+                filteredCategory: page.category
                 title: i18n("Most Popular")
                 extended: false
                 roleDelegate: Item {
@@ -141,7 +136,7 @@ ConditionalLoader
             Repeater {
                 id: view
                 Layout.fillWidth: true
-                model: categoryModel
+                model: page.category
 
                 delegate: GridItem {
                     height: label.implicitHeight*3

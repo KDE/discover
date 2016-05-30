@@ -59,6 +59,7 @@ public:
     static void addSubcategory(QVector<Category*>& list, Category* cat);
     void parseData(const QString& path, const QDomNode& data, bool canHaveChildren);
     bool blacklistPlugins(const QSet<QString>& pluginName);
+    bool isAddons() const { return m_isAddons; }
 
 private:
     QString m_name;
@@ -71,6 +72,7 @@ private:
 
     QVector<QPair<FilterType, QString> > parseIncludes(const QDomNode &data);
     QSet<QString> m_plugins;
+    bool m_isAddons = false;
 };
 
 #endif

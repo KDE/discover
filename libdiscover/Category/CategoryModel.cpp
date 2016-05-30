@@ -28,6 +28,7 @@ Q_GLOBAL_STATIC_WITH_ARGS(QVector<Category*>, s_categories, (CategoriesReader().
 CategoryModel::CategoryModel(QObject* parent)
     : QStandardItemModel(parent)
     , m_currentCategory(nullptr)
+    , m_filter(ShowEverything)
 {
 }
 
@@ -44,6 +45,10 @@ void CategoryModel::setCategories(const QVector<Category *> &categoryList)
 
     invisibleRootItem()->removeRows(0, invisibleRootItem()->rowCount());
     foreach (Category *category, categoryList) {
+        if (m_filter != ShowEverything && (category->isAddons() != (m_filter == OnlyAddons))) {
+            continue;
+        }
+
         QStandardItem *categoryItem = new QStandardItem;
         categoryItem->setText(category->name());
         categoryItem->setIcon(QIcon::fromTheme(category->icon()));
@@ -75,12 +80,9 @@ void CategoryModel::setDisplayedCategory(Category* c)
         return;
 
     m_currentCategory = c;
-    if(c)
-        setCategories(c->subCategories());
-    else
-        setCategories(*s_categories);
+    resetCategories();
 
-    categoryChanged(c);
+    Q_EMIT categoryChanged(c);
 }
 
 Category* CategoryModel::displayedCategory() const
@@ -124,4 +126,23 @@ void CategoryModel::blacklistPlugin(const QString& name)
         } else
             ++it;
     }
+}
+
+CategoryModel::ShowAddons CategoryModel::filter() const
+{
+    return m_filter;
+}
+
+void CategoryModel::setFilter(CategoryModel::ShowAddons filter)
+{
+    m_filter = filter;
+    resetCategories();
+}
+
+void CategoryModel::resetCategories()
+{
+    if(m_currentCategory)
+        setCategories(m_currentCategory->subCategories());
+    else
+        setCategories(*s_categories);
 }

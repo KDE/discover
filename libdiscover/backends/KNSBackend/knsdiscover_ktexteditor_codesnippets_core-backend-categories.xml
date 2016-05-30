@@ -2,6 +2,7 @@
 <Menu>
   <Menu>
     <Name>Application Addons</Name>
+    <Addons/>
     <Icon>plasma</Icon>
     <Menu>
       <Name>Kate Snippets</Name>

@@ -66,6 +66,7 @@ int main(int argc, char** argv)
             "<Menu>\n"
             "  <Menu>\n"
             "    <Name>" << categoryName[0] << "</Name>\n"
+            "    <Addons/>\n"
             "    <Icon>plasma</Icon>\n"
             "    <Menu>\n"
             "      <Name>" << categoryName[1] << "</Name>\n"
