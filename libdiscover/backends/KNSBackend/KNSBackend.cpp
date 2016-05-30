@@ -56,9 +56,9 @@ KNSBackend::KNSBackend(QObject* parent)
 
 KNSBackend::~KNSBackend() = default;
 
-void KNSBackend::markInvalid()
+void KNSBackend::markInvalid(const QString &message)
 {
-    qWarning() << "invalid kns backend!" << m_name;
+    qWarning() << "invalid kns backend!" << m_name << "because:" << message;
     m_isValid = false;
     setFetching(false);
 }
@@ -80,15 +80,13 @@ void KNSBackend::setMetaData(const QString& path)
     }
 
     if (m_name.isEmpty()) {
-        markInvalid();
-        qWarning() << "Couldn't find knsrc file" << knsrc;
+        markInvalid(QStringLiteral("Couldn't find knsrc file: ") + knsrc);
         return;
     }
 
     const KConfig conf(m_name);
     if (!conf.hasGroup("KNewStuff3")) {
-        markInvalid();
-        qWarning() << "Config group not found! Check your KNS3 installation.";
+        markInvalid(QStringLiteral("Config group not found! Check your KNS3 installation."));
         return;
     }
 
@@ -99,6 +97,7 @@ void KNSBackend::setMetaData(const QString& path)
     setFetching(true);
 
     m_manager = new KNS3::DownloadManager(m_name, this);
+    connect(m_manager, &KNS3::DownloadManager::errorFound, this, &KNSBackend::markInvalid);
     connect(m_manager, &KNS3::DownloadManager::searchResult, this, &KNSBackend::receivedEntries);
     connect(m_manager, &KNS3::DownloadManager::entryStatusChanged, this, &KNSBackend::statusChanged);
 

@@ -68,7 +68,7 @@ public Q_SLOTS:
 
 private:
     void setFetching(bool f);
-    void markInvalid();
+    void markInvalid(const QString &message);
     
     bool m_fetching;
     bool m_isValid;
