@@ -76,6 +76,7 @@ ColumnLayout {
                             ColumnLayout {
                                 Layout.fillHeight: true
                                 Layout.fillWidth: true
+                                Layout.maximumWidth: layo.width/2
 
                                 Label {
                                     id: nameItem
@@ -85,7 +86,7 @@ ColumnLayout {
                                     verticalAlignment: Text.AlignVCenter
                                 }
                                 Label {
-                                    Layout.preferredWidth: nameItem.Layout.preferredWidth
+                                    Layout.fillWidth: true
                                     visible: topView.extended
                                     text: category[0]
                                     elide: Text.ElideRight
