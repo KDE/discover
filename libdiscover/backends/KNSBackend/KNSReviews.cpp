@@ -103,7 +103,7 @@ void KNSReviews::commentsReceived(Attica::BaseJob* j)
 
 bool KNSReviews::isFetching() const
 {
-    return isFetching();
+    return m_backend->isFetching();
 }
 
 void KNSReviews::flagReview(Review*  /*r*/, const QString&  /*reason*/, const QString&  /*text*/)
