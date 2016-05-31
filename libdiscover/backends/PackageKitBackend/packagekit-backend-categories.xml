@@ -458,6 +458,7 @@
   <Menu>
     <Name>Plasma Addons</Name>
     <Icon>plasma</Icon>
+    <Addons />
 
     <Menu>
       <Name>Plasma Desktop Widgets</Name>
