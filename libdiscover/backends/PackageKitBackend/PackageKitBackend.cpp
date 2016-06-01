@@ -188,7 +188,7 @@ void PackageKitBackend::getPackagesFinished(PackageKit::Transaction::Exit exit)
 
 void PackageKitBackend::includePackagesToAdd()
 {
-    if (m_packagesToAdd.isEmpty())
+    if (m_packagesToAdd.isEmpty() && m_packagesToDelete.isEmpty())
         return;
 
     acquireFetching(true);
