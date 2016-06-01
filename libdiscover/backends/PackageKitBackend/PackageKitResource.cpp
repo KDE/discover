@@ -47,7 +47,7 @@ QString PackageKitResource::packageName() const
 
 QStringList PackageKitResource::allPackageNames() const
 {
-    return QStringList(m_name);
+    return { m_name };
 }
 
 QString PackageKitResource::availablePackageId() const
@@ -153,8 +153,10 @@ AbstractResource::State PackageKitResource::state()
 
 void PackageKitResource::setPackages(const QMap<PackageKit::Transaction::Info, QStringList> &packages)
 {
-    m_packages = packages;
-    emit stateChanged();
+    if (m_packages != packages) {
+        m_packages = packages;
+        emit stateChanged();
+    }
 }
 
 void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId)
