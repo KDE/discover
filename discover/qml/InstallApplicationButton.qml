@@ -57,7 +57,7 @@ ConditionalLoader
         }
         Button {
             id: button
-            enabled: !ResourcesModel.isFetching
+            enabled: !ResourcesModel.isFetching && application.state != AbstractResource.Broken
             text: !application.isInstalled ? i18n("Install") : i18n("Remove")
             Layout.fillWidth: root.fill
 
