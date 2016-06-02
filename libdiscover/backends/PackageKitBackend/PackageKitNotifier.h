@@ -37,7 +37,7 @@ public:
         Security,
         Normal
     };
-    Q_ENUMS(Update)
+    Q_ENUM(Update)
     explicit PackageKitNotifier(QObject* parent = nullptr);
     ~PackageKitNotifier() override;
 

@@ -43,7 +43,7 @@ class DiscoverMainWindow : public QObject
     Q_PROPERTY(bool isRoot READ isRoot CONSTANT)
     public:
         enum CompactMode { Auto, Compact, Full };
-        Q_ENUMS(CompactMode)
+        Q_ENUM(CompactMode)
 
         explicit DiscoverMainWindow(CompactMode mode);
         ~DiscoverMainWindow() override;

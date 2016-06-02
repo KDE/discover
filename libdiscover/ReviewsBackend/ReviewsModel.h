@@ -33,7 +33,6 @@ class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
     Q_PROPERTY(AbstractReviewsBackend* backend READ backend)
     Q_PROPERTY(AbstractResource* resource READ resource WRITE setResource)
     Q_PROPERTY(int count READ rowCount NOTIFY rowsChanged)
-    Q_ENUMS(UserChoice)
     public:
         enum Roles {
             ShouldShow=Qt::UserRole+1,
@@ -50,6 +49,8 @@ class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
             Yes,
             No
         };
+        Q_ENUM(UserChoice)
+
         explicit ReviewsModel(QObject* parent = nullptr);
         ~ReviewsModel() override;
         QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;

@@ -62,7 +62,7 @@ public:
         /// Transaction is done
         DoneStatus
     };
-    Q_ENUMS(Status)
+    Q_ENUM(Status)
 
     enum Role {
         ///The transaction is going to install a resource
@@ -72,7 +72,7 @@ public:
         ///The transaction is going to change the addons of a resource
         ChangeAddonsRole
     };
-    Q_ENUMS(Role)
+    Q_ENUM(Role)
 
     Transaction(QObject *parent, AbstractResource *resource,
                  Transaction::Role role, const AddonList &addons = {});

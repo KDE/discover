@@ -42,7 +42,7 @@ public:
         NormalUpdates,
         SecurityUpdates
     };
-    Q_ENUMS(State)
+    Q_ENUM(State)
 
     explicit DiscoverNotifier(QObject* parent = nullptr);
     ~DiscoverNotifier() override;

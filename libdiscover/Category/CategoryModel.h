@@ -42,7 +42,7 @@ class DISCOVERCOMMON_EXPORT CategoryModel : public QStandardItemModel
             NoAddons,
             ShowEverything
         };
-        Q_ENUMS(ShowAddons)
+        Q_ENUM(ShowAddons)
 
         explicit CategoryModel(QObject* parent = nullptr);
 

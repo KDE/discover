@@ -91,7 +91,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
              */
             Upgradeable
         };
-        Q_ENUMS(State)
+        Q_ENUM(State)
 
         /**
          * Constructs the AbstractResource with its corresponding backend
