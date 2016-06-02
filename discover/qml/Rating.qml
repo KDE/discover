@@ -27,10 +27,9 @@ RowLayout
     id: view
     property bool editable: false
     property int max: 10
-    property real rating: 2
+    property int rating: 2
     property real starSize: SystemFonts.generalFont.pointSize*2
 
-    visible: rating>0
     clip: true
     spacing: 0
 
@@ -38,7 +37,7 @@ RowLayout
 
     Repeater {
         id: theRepeater
-        model: 5
+        model: view.rating>0 ? 5 : 0
         delegate: QIconItem {
             Layout.minimumWidth: view.starSize
             Layout.minimumHeight: view.starSize
