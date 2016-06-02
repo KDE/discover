@@ -139,6 +139,7 @@ void PackageKitBackend::reloadPackageList()
     acquireFetching(false);
     neededPackages.removeDuplicates();
 
+    qDebug() << "needed..." << neededPackages.count();
     PackageKit::Transaction * t = PackageKit::Daemon::resolve(neededPackages);
     connect(t, &PackageKit::Transaction::finished, this, &PackageKitBackend::getPackagesFinished);
     connect(t, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackage);
@@ -264,6 +265,13 @@ QList<AbstractResource*> PackageKitBackend::searchPackageName(const QString& sea
     Q_FOREACH (AbstractResource* res, m_packages.packages) {
         if (res->name().contains(searchText, Qt::CaseInsensitive)) {
             ret += res;
+        } else {
+            foreach(const QString &mime, res->mimetypes()) {
+                if (mime.contains(searchText, Qt::CaseInsensitive)) {
+                    ret += res;
+                    break;
+                }
+            }
         }
     }
     return ret;
