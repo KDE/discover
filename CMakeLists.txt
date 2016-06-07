@@ -17,7 +17,7 @@ include(ECMMarkAsTest)
 include(ECMAddTests)
 include(GenerateExportHeader)
 
-find_package(KF5 REQUIRED CoreAddons Config Crash DBusAddons I18n Archive Declarative)
+find_package(KF5 5.23 REQUIRED CoreAddons Config Crash DBusAddons I18n Archive Declarative)
 find_package(KF5TextWidgets REQUIRED)
 
 find_package(packagekitqt5)
