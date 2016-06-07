@@ -142,7 +142,6 @@ QUrl AppPackageKitResource::screenshotUrl()
 
 QUrl AppPackageKitResource::thumbnailUrl()
 {
-    qDebug() << "lalala" << m_appdata.screenshots();
     return screenshot(m_appdata, Appstream::Image::Thumbnail);
 }
 
