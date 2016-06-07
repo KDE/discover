@@ -136,15 +136,14 @@ static QUrl screenshot(const Appstream::Component& comp, Appstream::Image::Kind 
 
 QUrl AppPackageKitResource::screenshotUrl()
 {
-    QUrl url = screenshot(m_appdata, Appstream::Image::Plain);
-    return url.isEmpty() ? PackageKitResource::screenshotUrl() : url;
+    return screenshot(m_appdata, Appstream::Image::Plain);
 
 }
 
 QUrl AppPackageKitResource::thumbnailUrl()
 {
-    QUrl url = screenshot(m_appdata, Appstream::Image::Thumbnail);
-    return url.isEmpty() ? PackageKitResource::screenshotUrl() : url;
+    qDebug() << "lalala" << m_appdata.screenshots();
+    return screenshot(m_appdata, Appstream::Image::Thumbnail);
 }
 
 void AppPackageKitResource::fetchScreenshots()

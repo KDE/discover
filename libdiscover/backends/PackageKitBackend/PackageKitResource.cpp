@@ -131,12 +131,12 @@ QString PackageKitResource::section()
 
 QUrl PackageKitResource::screenshotUrl()
 {
-    return QUrl(MuonDataSources::screenshotsSource().toString() + QStringLiteral("/screenshot/") + packageName());
+    return {};
 }
 
 QUrl PackageKitResource::thumbnailUrl()
 {
-    return QUrl(MuonDataSources::screenshotsSource().toString() + QStringLiteral("/thumbnail/") + packageName());
+    return {};
 }
 
 AbstractResource::State PackageKitResource::state()
