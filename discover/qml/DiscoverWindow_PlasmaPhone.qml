@@ -39,6 +39,34 @@ Kirigami.GlobalDrawer {
         return ret.concat(items);
     }
 
+    TextField {
+        id: searchWidget
+        anchors {
+            left: parent.left;
+            right: parent.right;
+        }
+        enabled: window.stack.currentItem!=null && window.stack.currentItem.searchFor!=null
+        focus: true
+
+        placeholderText: (!searchWidget.enabled || window.stack.currentItem.title == "") ? i18n("Search...") : i18n("Search in '%1'...", window.stack.currentItem.title)
+        onTextChanged: searchTimer.running = true
+        onEditingFinished: if(text == "" && backAction.enabled) {
+            backAction.action.trigger()
+        }
+
+        Timer {
+            id: searchTimer
+            running: false
+            repeat: false
+            interval: 200
+            onTriggered: {
+                var ret = window.stack.currentItem.searchFor(searchWidget.text)
+                if (ret === true)
+                    backAction.action.trigger()
+            }
+        }
+    }
+
     Kirigami.Action {
         id: configureMenu
         text: i18n("Configure...")

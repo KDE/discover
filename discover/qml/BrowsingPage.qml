@@ -30,16 +30,17 @@ Kirigami.Page
 {
     title: i18n("Discover")
     readonly property string icon: "go-home"
+
+    function searchFor(text) {
+        if (text === "")
+            return;
+        Navigation.openApplicationList(null, text)
+    }
+
     ScrollView {
         id: view
         anchors.fill: parent
         flickableItem.flickableDirection: Flickable.VerticalFlick
-
-        function searchFor(text) {
-            if (text === "")
-                return;
-            Navigation.openApplicationList(null, text)
-        }
 
         ColumnLayout
         {

@@ -32,18 +32,6 @@ ToolBar
         searchWidget.text=""
     }
 
-    Timer {
-        id: searchTimer
-        running: false
-        repeat: false
-        interval: 200
-        onTriggered: {
-            var ret = window.stack.currentItem.searchFor(root.search.text)
-            if (ret === true)
-                backAction.action.trigger()
-        }
-    }
-
     ColumnLayout {
         id: layout
         anchors.fill: parent
@@ -78,18 +66,6 @@ ToolBar
             Item {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-            }
-            TextField {
-                id: searchWidget
-                enabled: window.stack.currentItem!=null && window.stack.currentItem.searchFor!=null
-                focus: true
-                Layout.preferredWidth: backAction.implicitWidth*10
-
-                placeholderText: (!searchWidget.enabled || window.stack.currentItem.title == "") ? i18n("Search...") : i18n("Search in '%1'...", window.stack.currentItem.title)
-                onTextChanged: searchTimer.running = true
-                onEditingFinished: if(text == "" && backAction.enabled) {
-                    backAction.action.trigger()
-                }
             }
 
             ToolButton {
