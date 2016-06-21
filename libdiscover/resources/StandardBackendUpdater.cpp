@@ -37,8 +37,15 @@ StandardBackendUpdater::StandardBackendUpdater(AbstractResourcesBackend* parent)
     , m_lastUpdate(QDateTime())
 {
     connect(m_backend, &AbstractResourcesBackend::fetchingChanged, this, &StandardBackendUpdater::refreshUpdateable);
+    connect(m_backend, &AbstractResourcesBackend::resourcesChanged, this, &StandardBackendUpdater::resourcesChanged);
     connect(TransactionModel::global(), &TransactionModel::transactionRemoved, this, &StandardBackendUpdater::transactionRemoved);
     connect(TransactionModel::global(), &TransactionModel::transactionAdded, this, &StandardBackendUpdater::transactionAdded);
+}
+
+void StandardBackendUpdater::resourcesChanged(AbstractResource* /*res*/, const QVector<QByteArray>& props)
+{
+    if (props.contains("state"))
+        refreshUpdateable();
 }
 
 bool StandardBackendUpdater::hasUpdates() const
@@ -86,7 +93,6 @@ void StandardBackendUpdater::transactionRemoved(Transaction* t)
     if (!fromOurBackend) {
         return;
     }
-    refreshUpdateable();
 
     const bool found = fromOurBackend && m_pendingResources.remove(t->resource());
 
@@ -99,12 +105,14 @@ void StandardBackendUpdater::transactionRemoved(Transaction* t)
             emit progressingChanged(false);
         }
     }
+    refreshUpdateable();
 }
 
 void StandardBackendUpdater::refreshUpdateable()
 {
-    if (m_backend->isFetching())
+    if (m_backend->isFetching()) {
         return;
+    }
 
     QSet<AbstractResource*> upgradeable;
     foreach(AbstractResource* r, m_backend->allResources()) {
