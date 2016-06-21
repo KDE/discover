@@ -30,7 +30,7 @@ QHash<QString, Rating *> PopConParser::parsePopcon(QObject* parent, QIODevice* d
     QString buff;
     buff.resize(512);
     QTextStream stream(dev);
-    while(!dev->atEnd()) {
+    while(!stream.atEnd()) {
         stream.readLineInto(&buff, 0);
 
         auto match = rx.match(buff);
