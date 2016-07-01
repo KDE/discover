@@ -61,7 +61,6 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
 
         bool isPackageNameUpgradeable(const PackageKitResource* res) const;
         QString upgradeablePackageId(const PackageKitResource* res) const;
-        QSet<AbstractResource*> resourcesByPackageName(const QString& name) const;
         QVector<AppPackageKitResource*> extendedBy(const QString& id) const;
         void fetchUpdates();
 
@@ -81,6 +80,10 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         void getUpdatesDetailsFinished(PackageKit::Transaction::Exit,uint);
 
     private:
+        QSet<AbstractResource*> resourcesByPackageName(const QString& name) const;
+        template <typename T>
+        T resourcesByPackageNames(const QStringList& names) const;
+
         void addTransaction(PKTransaction* trans);
         void checkDaemonRunning();
         void acquireFetching(bool f);

@@ -233,6 +233,22 @@ QSet<AbstractResource*> PackageKitBackend::resourcesByPackageName(const QString&
     return ret;
 }
 
+template <typename T>
+T PackageKitBackend::resourcesByPackageNames(const QStringList &pkgnames) const
+{
+    T ret;
+    ret.reserve(pkgnames.size());
+    for(const QString &name : pkgnames) {
+        const QStringList names = m_packages.packageToApp.value(name, QStringList(name));
+        foreach(const QString& name, names) {
+            AbstractResource* res = m_packages.packages.value(name);
+            if (res)
+                ret += res;
+        }
+    }
+    return ret;
+}
+
 void PackageKitBackend::refreshDatabase()
 {
     if (!m_refresher) {
@@ -259,22 +275,23 @@ AbstractResource* PackageKitBackend::resourceByPackageName(const QString& name) 
     return ids.isEmpty() ? nullptr : m_packages.packages[ids.first()];
 }
 
-QList<AbstractResource*> PackageKitBackend::searchPackageName(const QString& searchText)
+template <typename T, typename Q, typename _UnaryOperation>
+T kTransform(const Q &input, _UnaryOperation op)
 {
-    QList<AbstractResource*> ret;
-    Q_FOREACH (AbstractResource* res, m_packages.packages) {
-        if (res->name().contains(searchText, Qt::CaseInsensitive)) {
-            ret += res;
-        } else {
-            foreach(const QString &mime, res->mimetypes()) {
-                if (mime.contains(searchText, Qt::CaseInsensitive)) {
-                    ret += res;
-                    break;
-                }
-            }
-        }
+    T ret;
+    ret.reserve(input.size());
+    for(const auto& v : input) {
+        ret += op(v);
     }
     return ret;
+}
+
+QList<AbstractResource*> PackageKitBackend::searchPackageName(const QString& searchText)
+{
+    const QList<Appstream::Component> components = m_appdata.findComponentsByString(searchText, {});
+    const QStringList ids = kTransform<QStringList>(components, [](const Appstream::Component& comp) { return comp.id(); });
+
+    return resourcesByPackageNames<QList<AbstractResource*>>(ids);
 }
 
 int PackageKitBackend::updatesCount() const
