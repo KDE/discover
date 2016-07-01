@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include "ResourcesModel.h"
+#include <utils.h>
 
 #include "AbstractResource.h"
 #include "resources/AbstractResourcesBackend.h"
@@ -320,9 +321,7 @@ void ResourcesModel::updateCaller(const QVector<QByteArray>& properties)
 
 QVector<int> ResourcesModel::propertiesToRoles(const QVector<QByteArray>& properties) const
 {
-    QVector<int> roles;
-    roles.reserve(properties.size());
-    std::transform(properties.cbegin(), properties.cend(), roles.begin(), [this](const QByteArray& arr) { return roleNames().key(arr, -1); });
+    QVector<int> roles = kTransform<QVector<int>>(properties, [this](const QByteArray& arr) { return roleNames().key(arr, -1); });
     roles.removeAll(-1);
     return roles;
 }

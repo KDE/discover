@@ -43,6 +43,8 @@
 #include <KLocalizedString>
 #include <QAction>
 
+#include "utils.h"
+
 MUON_BACKEND_PLUGIN(PackageKitBackend)
 
 PackageKitBackend::PackageKitBackend(QObject* parent)
@@ -273,17 +275,6 @@ AbstractResource* PackageKitBackend::resourceByPackageName(const QString& name) 
 {
     const QStringList ids = m_packages.packageToApp.value(name, QStringList(name));
     return ids.isEmpty() ? nullptr : m_packages.packages[ids.first()];
-}
-
-template <typename T, typename Q, typename _UnaryOperation>
-T kTransform(const Q &input, _UnaryOperation op)
-{
-    T ret;
-    ret.reserve(input.size());
-    for(const auto& v : input) {
-        ret += op(v);
-    }
-    return ret;
 }
 
 QList<AbstractResource*> PackageKitBackend::searchPackageName(const QString& searchText)
