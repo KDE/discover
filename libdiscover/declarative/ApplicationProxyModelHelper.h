@@ -42,7 +42,6 @@ class ApplicationProxyModelHelper : public ResourcesProxyModel, public QQmlParse
 
         void classBegin() override {}
         void componentComplete() override;
-        QHash<int, QByteArray> roleNames() const override;
 
     public Q_SLOTS:
         void sortModel();

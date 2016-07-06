@@ -53,6 +53,8 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QSortFilterProxyModel
 public:
     explicit ResourcesProxyModel(QObject *parent=nullptr);
 
+    QHash<int, QByteArray> roleNames() const override;
+
     void setSearch(const QString &text);
     QString lastSearch() const;
     void setOriginFilter(const QString &origin);

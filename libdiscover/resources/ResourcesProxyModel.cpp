@@ -41,6 +41,11 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     setSourceModel(ResourcesModel::global());
 }
 
+QHash<int, QByteArray> ResourcesProxyModel::roleNames() const
+{
+    return ResourcesModel::global()->roleNames();
+}
+
 void ResourcesProxyModel::setSourceModel(QAbstractItemModel* source)
 {
     Q_ASSERT(ResourcesModel::global() == source);

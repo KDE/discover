@@ -29,11 +29,6 @@ ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
     setDynamicSortFilter(false);
 }
 
-QHash<int, QByteArray> ApplicationProxyModelHelper::roleNames() const
-{
-    return ResourcesModel::global()->roleNames();
-}
-
 void ApplicationProxyModelHelper::componentComplete()
 {
     if(!m_sortRoleString.isEmpty())
