@@ -54,6 +54,8 @@ void ResourcesProxyModel::setSourceModel(QAbstractItemModel* source)
 
 void ResourcesProxyModel::setSearch(const QString &searchText)
 {
+    const bool diff = searchText != m_lastSearch;
+
     m_searchResults.clear();
     m_lastSearch = searchText;
     ResourcesModel* model = qobject_cast<ResourcesModel*>(sourceModel());
@@ -73,6 +75,9 @@ void ResourcesProxyModel::setSearch(const QString &searchText)
         m_sortByRelevancy = false;
     }
     invalidateFilter();
+
+    if (diff)
+        Q_EMIT searchChanged(m_lastSearch);
 }
 
 QString ResourcesProxyModel::lastSearch() const

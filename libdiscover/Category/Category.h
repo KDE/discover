@@ -45,6 +45,7 @@ public:
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(QString icon READ icon CONSTANT)
     Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical CONSTANT)
+    Q_PROPERTY(QObject* parent READ parent CONSTANT)
     explicit Category(QSet<QString>  pluginNames, QObject* parent = nullptr);
     ~Category() override;
 

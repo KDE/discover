@@ -31,6 +31,13 @@ ColumnLayout
     property alias category: catModel.displayedCategory
     property real spacing: 3
     property real maxtopwidth: 250
+    property alias search: bread.search
+
+    Breadcrumbs {
+        id: bread
+        Layout.fillWidth: true
+        category: page.category
+    }
 
     PageHeader {
         Layout.fillWidth: true

@@ -34,12 +34,6 @@ ColumnLayout {
         return obj;
     }
 
-    Breadcrumbs {
-        id: bread
-        Layout.fillWidth: true
-        currentPage: root._page
-    }
-
     Label {
         id: titleLabel
         font.pointSize: SystemFonts.titleFont.pointSize * 3

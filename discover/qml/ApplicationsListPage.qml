@@ -114,6 +114,7 @@ Kirigami.ScrollablePage {
         CategoryDisplay {
             id: categoryHeader
             category: page.category
+            search: appsModel.search
             height: implicitHeight
             spacing: 10
             maxtopwidth: 100

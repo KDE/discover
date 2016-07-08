@@ -48,7 +48,7 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QSortFilterProxyModel
     Q_PROPERTY(bool isSortingByRelevancy READ sortingByRelevancy WRITE setSortByRelevancy)
     Q_PROPERTY(AbstractResource::State stateFilter READ stateFilter WRITE setStateFilter NOTIFY stateFilterChanged)
     Q_PROPERTY(QString mimeTypeFilter READ mimeTypeFilter WRITE setMimeTypeFilter)
-    Q_PROPERTY(QString search READ lastSearch WRITE setSearch)
+    Q_PROPERTY(QString search READ lastSearch WRITE setSearch NOTIFY searchChanged)
     Q_PROPERTY(QString extends READ extends WRITE setExtends)
 public:
     explicit ResourcesProxyModel(QObject *parent=nullptr);
@@ -105,6 +105,7 @@ Q_SIGNALS:
     void categoryChanged();
     void stateFilterChanged();
     void showTechnicalChanged();
+    void searchChanged(const QString &search);
 };
 
 #endif

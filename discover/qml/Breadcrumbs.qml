@@ -25,26 +25,45 @@ import org.kde.kirigami 1.0 as Kirigami
 
 RowLayout {
     id: bread
-    readonly property QtObject pageStack: applicationWindow().pageStack
-    property QtObject currentPage: null
+    property var category
+    property string search
 
     spacing: 0
-    anchors {
-        top: parent.top
-        bottom: parent.bottom
+
+    signal setCategory(QtObject category)
+
+    Kirigami.Action {
+        id: searchAction
+        text: bread.search? i18n("Search: %1", bread.search) : ""
+        onTriggered: bread.setCategory(category);
     }
-    Repeater
-    {
-        id: rep
-        model: {
-//             for(var i=0, c=bread.pageStack.depth; i<c; ++i) {
-//                 var page = bread.pageStack.get(i);
-//                 if (bread.currentPage == page) {
-//                     return i;
-//                 }
-//             }
-            return 0;
+
+    Component {
+        id: categoryActionComponent
+        Kirigami.Action {
+            property QtObject category
+            text: category.name
+            onTriggered: bread.setCategory(category)
         }
+    }
+
+    function breadcrumbs(search, category) {
+        var ret = [];
+
+        while(category) {
+            var categoryAction = categoryActionComponent.createObject(rep, { category: category })
+            ret.unshift(categoryAction)
+            category = category.parent
+        }
+        if (search !== "")
+            ret.unshift(searchAction);
+        return ret
+    }
+
+    Repeater {
+        id: rep
+        model: breadcrumbs(bread.search, bread.category)
+
         delegate: RowLayout {
             spacing: 0
             QIconItem {
@@ -57,11 +76,7 @@ RowLayout {
                 id: button
                 Layout.fillHeight: true
 
-                readonly property QtObject currentPage: bread.pageStack.get(modelData, false)
-
-                onClicked: bread.doClick(index)
-                text: currentPage ? currentPage.title : "<null>"
-                checkable: checked
+                action: modelData
             }
         }
     }
