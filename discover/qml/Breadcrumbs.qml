@@ -21,11 +21,13 @@ import QtQuick 2.1
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
 import org.kde.kquickcontrolsaddons 2.0
+import org.kde.kirigami 1.0 as Kirigami
 
 RowLayout {
     id: bread
-    readonly property int count: pageStack.depth
-    property StackView pageStack: null
+    readonly property QtObject pageStack: applicationWindow().pageStack
+    property QtObject currentPage: null
+
     spacing: 0
     anchors {
         top: parent.top
@@ -33,7 +35,16 @@ RowLayout {
     }
     Repeater
     {
-        model: bread.pageStack.depth
+        id: rep
+        model: {
+//             for(var i=0, c=bread.pageStack.depth; i<c; ++i) {
+//                 var page = bread.pageStack.get(i);
+//                 if (bread.currentPage == page) {
+//                     return i;
+//                 }
+//             }
+            return 0;
+        }
         delegate: RowLayout {
             spacing: 0
             QIconItem {
@@ -42,16 +53,14 @@ RowLayout {
                 height: width
                 icon: "arrow-right"
             }
-            MuonToolButton {
+            ToolButton {
                 id: button
                 Layout.fillHeight: true
 
                 readonly property QtObject currentPage: bread.pageStack.get(modelData, false)
 
-                iconName: currentPage.icon
                 onClicked: bread.doClick(index)
-                text: currentPage.title
-                enabled: bread.pageStack.depth!=(modelData+1)
+                text: currentPage ? currentPage.title : "<null>"
                 checkable: checked
             }
         }

@@ -22,13 +22,13 @@
 #include "CategoryModel.h"
 #include "Category.h"
 #include "CategoriesReader.h"
+#include <QDebug>
 
 Q_GLOBAL_STATIC_WITH_ARGS(QVector<Category*>, s_categories, (CategoriesReader().populateCategories()))
 
 CategoryModel::CategoryModel(QObject* parent)
     : QStandardItemModel(parent)
     , m_currentCategory(nullptr)
-    , m_filter(ShowEverything)
 {
 }
 
@@ -45,10 +45,6 @@ void CategoryModel::setCategories(const QVector<Category *> &categoryList)
 
     invisibleRootItem()->removeRows(0, invisibleRootItem()->rowCount());
     foreach (Category *category, categoryList) {
-        if (m_filter != ShowEverything && (category->isAddons() != (m_filter == OnlyAddons))) {
-            continue;
-        }
-
         QStandardItem *categoryItem = new QStandardItem;
         categoryItem->setText(category->name());
         categoryItem->setIcon(QIcon::fromTheme(category->icon()));
@@ -128,21 +124,16 @@ void CategoryModel::blacklistPlugin(const QString& name)
     }
 }
 
-CategoryModel::ShowAddons CategoryModel::filter() const
-{
-    return m_filter;
-}
-
-void CategoryModel::setFilter(CategoryModel::ShowAddons filter)
-{
-    m_filter = filter;
-    resetCategories();
-}
-
 void CategoryModel::resetCategories()
 {
     if(m_currentCategory)
         setCategories(m_currentCategory->subCategories());
     else
         setCategories(*s_categories);
+}
+
+void CategoryModel::componentComplete()
+{
+    if (rowCount() == 0)
+        resetCategories();
 }

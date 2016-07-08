@@ -26,6 +26,7 @@ Kirigami.ApplicationWindow
 
     objectName: "DiscoverMainWindow"
 
+    header: null
     visible: true
 
     Component.onCompleted: {
@@ -62,23 +63,40 @@ Kirigami.ApplicationWindow
             component: topBrowsingComp
             objectName: "discover"
             shortcut: "Alt+D"
-        },
-        TopLevelPageData {
-            iconName: "installed"
-            text: TransactionModel.count == 0 ? i18n("Installed") : i18n("Installing...")
-            component: topInstalledComp
-            objectName: "installed"
-            shortcut: "Alt+I"
-        },
-        TopLevelPageData {
-            iconName: enabled ? "update-low" : "update-none"
-            text: !enabled ? i18n("No Updates") : i18nc("Update section name", "Update (%1)", ResourcesModel.updatesCount)
-            enabled: ResourcesModel.updatesCount>0
-            component: topUpdateComp
-            objectName: "update"
-            shortcut: "Alt+U"
         }
     ]
+    TopLevelPageData {
+        id: installedAction
+        iconName: "installed"
+        text: TransactionModel.count == 0 ? i18n("Installed") : i18n("Installing...")
+        component: topInstalledComp
+        objectName: "installed"
+        shortcut: "Alt+I"
+    }
+    TopLevelPageData {
+        id: updateAction
+        iconName: enabled ? "update-low" : "update-none"
+        text: !enabled ? i18n("No Updates") : i18nc("Update section name", "Update (%1)", ResourcesModel.updatesCount)
+        enabled: ResourcesModel.updatesCount>0
+        component: topUpdateComp
+        objectName: "update"
+        shortcut: "Alt+U"
+    }
+    TopLevelPageData {
+        id: settingsAction
+        iconName: "settings"
+        text: i18n("Settings")
+        component: topSourcesComp
+        objectName: "settings"
+        shortcut: "Alt+S"
+    }
+    TopLevelPageData {
+        id: sources
+        text: i18n("Configure Sources...")
+        iconName: "repository"
+        shortcut: "Alt+S"
+        component: topSourcesComp
+    }
 
     Connections {
         target: app
@@ -96,7 +114,7 @@ Kirigami.ApplicationWindow
         }
     }
 
-    globalDrawer: DiscoverWindow_PlasmaPhone {}
+    globalDrawer: DiscoverDrawer {}
 
     onCurrentTopLevelChanged: {
         if(currentTopLevel.status==Component.Error) {

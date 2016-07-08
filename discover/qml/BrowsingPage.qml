@@ -26,7 +26,7 @@ import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
 import org.kde.kirigami 1.0 as Kirigami
 
-Kirigami.Page
+Kirigami.ScrollablePage
 {
     title: i18n("Discover")
     readonly property string icon: "go-home"
@@ -37,29 +37,18 @@ Kirigami.Page
         Navigation.openApplicationList(null, text)
     }
 
-    ScrollView {
-        id: view
-        anchors.fill: parent
-        flickableItem.flickableDirection: Flickable.VerticalFlick
+    ColumnLayout
+    {
+        readonly property real margin: SystemFonts.generalFont.pointSize
+        width: parent.width-margin*2
+        x: margin
 
-        ColumnLayout
-        {
-            readonly property real margin: SystemFonts.generalFont.pointSize
-            width: view.viewport.width-margin*2
-            x: margin
-
-            FeaturedBanner {
-                Layout.fillWidth: true
-                Layout.preferredHeight: parent.margin*30
-            }
-
-            CategoryDisplay {
-                spacing: parent.margin
-                Layout.fillWidth: true
-            }
-            Item {
-                height: parent.margin
-            }
+        CategoryDisplay {
+            spacing: parent.margin
+            Layout.fillWidth: true
+        }
+        Item {
+            height: parent.margin
         }
     }
 }

@@ -30,6 +30,7 @@ function openApplicationMime(mime) {
 }
 
 function openCategory(cat) {
+    window.stack.clear();
     window.stack.push(categoryComp, { category: cat })
 }
 

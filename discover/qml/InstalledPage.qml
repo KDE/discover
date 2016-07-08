@@ -17,13 +17,8 @@ ApplicationsListPage {
     readonly property string title: i18n("Installed")
 
     header: PageHeader {
+        width: parent.width
         RowLayout {
-            LabelBackground {
-                text: page.model.count
-            }
-            Label {
-                text: i18n("items installed")
-            }
             Item { Layout.fillWidth: true }
             Label {
                 visible: TransactionModel.count>0

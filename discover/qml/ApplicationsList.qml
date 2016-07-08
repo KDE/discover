@@ -26,125 +26,116 @@ import QtQuick.Window 2.1
 import org.kde.kcoreaddons 1.0
 import "navigation.js" as Navigation
 
-ScrollView {
-    id: parentItem
-    property alias count: view.count
-    property alias header: view.header
-    property alias section: view.section
-    property alias model: view.model
+ListView
+{
+    id: view
+    snapMode: ListView.SnapToItem
+    currentIndex: -1
 
-    ListView
-    {
-        id: view
-        snapMode: ListView.SnapToItem
-        currentIndex: -1
-        
-        delegate: GridItem {
-                id: delegateArea
-//                 checked: view.currentIndex==index
-                width: view.width
-                property real contHeight: height*0.8
-                height: lowLayout.implicitHeight
-                internalMargin: 0
+    delegate: GridItem {
+        id: delegateArea
+        width: view.width
+        readonly property real contHeight: height*0.8
+        height: lowLayout.implicitHeight
+        internalMargin: 0
 
-                onClicked: {
-                    view.currentIndex = index
-                    Navigation.openApplication(application)
+        onClicked: {
+            view.currentIndex = index
+            Navigation.openApplication(application)
+        }
+
+        RowLayout {
+            id: lowLayout
+            anchors {
+                leftMargin: 2
+                left: parent.left
+                right: parent.right
+            }
+
+            QIconItem {
+                id: resourceIcon
+                icon: model.icon
+                Layout.minimumWidth: contHeight
+                Layout.minimumHeight: contHeight
+                anchors.verticalCenter: parent.verticalCenter
+            }
+
+            ColumnLayout {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+
+                Item { height: 3; width: 3 }
+
+                Label {
+                    Layout.fillWidth: true
+                    id: nameLabel
+                    elide: Text.ElideRight
+                    text: name
+                }
+                Label {
+                    id: commentLabel
+                    Layout.fillWidth: true
+
+                    elide: Text.ElideRight
+                    text: comment
+                    font.italic: true
+                    opacity: !Helpers.isCompact && delegateArea.containsMouse ? 1 : 0.5
+                    maximumLineCount: 1
+                    clip: true
                 }
 
-                RowLayout {
-                    id: lowLayout
-                    anchors {
-                        leftMargin: 2
-                        left: parent.left
-                        right: parent.right
-                    }
+                Item { height: 3; width: 3 }
+            }
 
-                    QIconItem {
-                        id: resourceIcon
-                        icon: model.icon
-                        Layout.minimumWidth: contHeight
-                        Layout.minimumHeight: contHeight
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
+            Label {
+                text: i18n("(%1)", ratingPoints)
+                visible: !Helpers.isCompact && ratingPoints>0
+            }
 
-                    ColumnLayout {
-                        Layout.fillWidth: true
-                        Layout.fillHeight: true
-
-                        Item { height: 3; width: 3 }
-
-                        Label {
-                            Layout.fillWidth: true
-                            id: nameLabel
-                            elide: Text.ElideRight
-                            text: name
-                        }
-                        Label {
-                            id: commentLabel
-                            Layout.fillWidth: true
-
-                            elide: Text.ElideRight
-                            text: comment
-                            font.italic: true
-                            opacity: !Helpers.isCompact && delegateArea.containsMouse ? 1 : 0.5
-                            maximumLineCount: 1
-                            clip: true
-                        }
-
-                        Item { height: 3; width: 3 }
-                    }
-
-                    Label {
-                        text: i18n("(%1)", ratingPoints)
-                        visible: !Helpers.isCompact && ratingPoints>0
-                    }
-
-                    Rating {
-                        id: ratingsItem
-                        starSize: Helpers.isCompact ? contHeight*.6 : contHeight*.4
-                        rating: model.rating
-                        visible: !Helpers.isCompact
-                    }
+            Rating {
+                id: ratingsItem
+                starSize: Helpers.isCompact ? contHeight*.6 : contHeight*.4
+                rating: model.rating
+                visible: !Helpers.isCompact
+            }
 
 
-                    Label {
-                        text: category[0]
-                        visible: !Helpers.isCompact
-                        Layout.preferredWidth: Math.max(100, implicitWidth)
-                        horizontalAlignment: Text.AlignHCenter
-                    }
+            Label {
+                text: category[0]
+                visible: !Helpers.isCompact
+                Layout.preferredWidth: Math.max(100, implicitWidth)
+                horizontalAlignment: Text.AlignHCenter
+            }
 
-                    Item {
-                        Layout.fillHeight: true
-                        width: Helpers.isCompact ? installInfo.width : Math.max(installInfo.width, installButton.width)
+            Item {
+                Layout.fillHeight: true
+                width: Helpers.isCompact ? installInfo.width : Math.max(installInfo.width, installButton.width)
 
-                        InstallApplicationButton {
-                            id: installButton
-                            anchors.verticalCenter: parent.verticalCenter
-                            application: model.application
-                            canUpgrade: false
-                            visible: !Helpers.isCompact && delegateArea.containsMouse
-                        }
-                        LabelBackground {
-                            progressing: installButton.isActive
-                            progress: installButton.progress/100
+                InstallApplicationButton {
+                    id: installButton
+                    anchors.verticalCenter: parent.verticalCenter
+                    application: model.application
+                    canUpgrade: false
+                    visible: !Helpers.isCompact && delegateArea.containsMouse
+                }
+                LabelBackground {
+                    progressing: installButton.isActive
+                    progress: installButton.progress/100
 
-                            id: installInfo
-                            anchors.centerIn: parent
-                            visible: Helpers.isCompact || !delegateArea.containsMouse
-                            text: Format.formatByteSize(size)
-                        }
-                    }
-
-                    ApplicationIndicator {
-                        id: indicator
-                        state: canUpgrade ? "upgradeable" : isInstalled && view.model.stateFilter!=2 ? "installed" : "none"
-                        width: 5
-                        height: parent.height
-                        anchors.right: parent.right
-                    }
+                    id: installInfo
+                    anchors.centerIn: parent
+                    visible: Helpers.isCompact || !delegateArea.containsMouse
+                    text: Format.formatByteSize(size)
                 }
             }
+
+            ApplicationIndicator {
+                id: indicator
+                state: canUpgrade ? "upgradeable" : isInstalled && view.model.stateFilter!=2 ? "installed" : "none"
+                width: 5
+                height: parent.height
+                anchors.right: parent.right
+            }
+        }
     }
 }

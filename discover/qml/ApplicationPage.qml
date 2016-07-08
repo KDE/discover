@@ -52,7 +52,6 @@ Kirigami.Page {
                 PageHeader {
                     Layout.columnSpan: 2
                     Layout.fillWidth: true
-                    topMargin: 0
 
                     RowLayout {
                         QIconItem {

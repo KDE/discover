@@ -18,28 +18,36 @@
  */
 
 import QtQuick 2.0
+import QtQuick.Layouts 1.2
+import QtQuick.Controls 1.2
 import org.kde.discover.app 1.0
+import org.kde.kirigami 1.0 as Kirigami
 
-Item {
+ColumnLayout {
     id: root
-    property alias internalMargin: item.internalMargin
-    property real topMargin: 20
-    default property Item content
-    height: Math.max(SystemFonts.generalFont.pointSize*5, content.implicitHeight + 2*item.internalMargin) + item.anchors.topMargin
-    width: parent.width
-
-    GridItem
-    {
-        id: item
-        anchors {
-            fill: parent
-            topMargin: root.topMargin
+    readonly property QtObject _page: findPage()
+    function findPage() {
+        var obj = root;
+        while(obj && !obj.hasOwnProperty("title")) {
+            obj = obj.parent
         }
-        supportsMouseEvents: false
-        clip: true
-        content: root.content
+        return obj;
+    }
 
-        Binding { target: root.content; property: "width"; value: item.internalWidth }
-        Binding { target: root.content; property: "height"; value: item.internalHeight }
+    Breadcrumbs {
+        id: bread
+        Layout.fillWidth: true
+        currentPage: root._page
+    }
+
+    Label {
+        id: titleLabel
+        font.pointSize: SystemFonts.titleFont.pointSize * 3
+        text: root._page.title
+    }
+    Rectangle {
+        color: Kirigami.Theme.linkColor
+        Layout.fillWidth: true
+        height: 3
     }
 }

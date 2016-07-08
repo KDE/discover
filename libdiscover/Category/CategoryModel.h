@@ -22,34 +22,24 @@
 #define CATEGORYMODEL_H
 
 #include <QStandardItemModel>
+#include <QQmlParserStatus>
 
 #include "discovercommon_export.h"
 
 class Category;
 
-class DISCOVERCOMMON_EXPORT CategoryModel : public QStandardItemModel
+class DISCOVERCOMMON_EXPORT CategoryModel : public QStandardItemModel, public QQmlParserStatus
 {
     Q_OBJECT
     Q_PROPERTY(Category* displayedCategory READ displayedCategory WRITE setDisplayedCategory NOTIFY categoryChanged)
-    Q_PROPERTY(ShowAddons filter READ filter WRITE setFilter)
     public:
         enum CategoryModelRole {
             CategoryRole = Qt::UserRole + 1
         };
 
-        enum ShowAddons {
-            OnlyAddons,
-            NoAddons,
-            ShowEverything
-        };
-        Q_ENUM(ShowAddons)
-
         explicit CategoryModel(QObject* parent = nullptr);
 
         Category* categoryForRow(int row);
-
-        ShowAddons filter() const;
-        void setFilter(ShowAddons filter);
 
         void setDisplayedCategory(Category* c);
         Category* displayedCategory() const;
@@ -57,6 +47,9 @@ class DISCOVERCOMMON_EXPORT CategoryModel : public QStandardItemModel
 
         Q_SCRIPTABLE static Category* findCategoryByName(const QString& name);
         static void blacklistPlugin(const QString& name);
+
+        void classBegin() override {}
+        void componentComplete() override;
 
     Q_SIGNALS:
         void categoryChanged(Category* displayedCategory);
@@ -67,7 +60,6 @@ class DISCOVERCOMMON_EXPORT CategoryModel : public QStandardItemModel
         void setCategories(const QVector<Category *> &categoryList);
 
         Category* m_currentCategory;
-        ShowAddons m_filter;
 };
 
 #endif // CATEGORYMODEL_H

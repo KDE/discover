@@ -46,6 +46,7 @@ LINK_PUBLIC
     Qt5::Widgets
     KF5::I18n
 LINK_PRIVATE
+    Qt5::Qml
     Qt5::Xml
     KF5::XmlGui
     KF5::CoreAddons

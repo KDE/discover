@@ -18,6 +18,7 @@ ScrollView
     ListView
     {
         header: PageHeader {
+            width: parent.width
             ConditionalLoader {
                 anchors.fill: parent
 

@@ -1,125 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Menu>
   <Menu>
-    <Name>dummy</Name>
-    <Icon>kalarm</Icon>
-    <Include>
-        <Category>dummy</Category>
-    </Include>
-  </Menu>
-  <Menu>
-    <Name>dummy addons</Name>
-    <Icon>plasma</Icon>
-    <Addons />
-    <Include>
-        <Category>dummy</Category>
-    </Include>
-  </Menu>
-  <Menu>
-    <Name>dummy 1</Name>
-    <Icon>kontact</Icon>
-    <Include>
-        <Category>dummy</Category>
-    </Include>
-  </Menu>
-  <Menu>
-    <Name>dummy with stuff</Name>
-    <Icon>kmail</Icon>
-    <Include>
-        <Category>dummy</Category>
-    </Include>
+    <Name>Applications</Name>
+    <Icon>applications</Icon>
+    <Include />
 
     <Menu>
-        <Name>dummy 2.1</Name>
-        <Icon>kalgebra</Icon>
-        <Include>
-            <Category>dummy</Category>
-        </Include>
+      <Name>dummy</Name>
+      <Icon>kalarm</Icon>
+      <Include>
+          <Category>dummy</Category>
+      </Include>
     </Menu>
-  </Menu>
-  <Menu>
-    <Name>dummy with quite some stuff</Name>
-    <Icon>kmail</Icon>
-    <Include>
-        <Category>dummy</Category>
-    </Include>
+    <Menu>
+      <Name>dummy addons</Name>
+      <Icon>plasma</Icon>
+      <Addons />
+      <Include>
+          <Category>dummy</Category>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>dummy 1</Name>
+      <Icon>kontact</Icon>
+      <Include>
+          <Category>dummy</Category>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>dummy with stuff</Name>
+      <Icon>kmail</Icon>
+      <Include>
+          <Category>dummy</Category>
+      </Include>
+
+      <Menu>
+          <Name>dummy 2.1</Name>
+          <Icon>kalgebra</Icon>
+          <Include>
+              <Category>dummy</Category>
+          </Include>
+      </Menu>
+    </Menu>
+    <Menu>
+      <Name>dummy with quite some stuff</Name>
+      <Icon>kmail</Icon>
+      <Include>
+          <Category>dummy</Category>
+      </Include>
+
+      <Menu>
+          <Name>dummy 2.1</Name>
+          <Icon>kalgebra</Icon>
+          <Include>
+              <Category>dummy</Category>
+          </Include>
+      </Menu>
+    </Menu>
 
     <Menu>
-        <Name>dummy 2.1</Name>
-        <Icon>kalgebra</Icon>
-        <Include>
-            <Category>dummy</Category>
-        </Include>
+      <Name>dummy 3</Name>
+      <Icon>kig</Icon>
+      <Include>
+          <Category>dummy</Category>
+          <Or>
+            <Category>three</Category>
+          </Or>
+      </Include>
     </Menu>
-  </Menu>
-
-  <Menu>
-    <Name>dummy 3</Name>
-    <Icon>kig</Icon>
-    <Include>
-        <Category>dummy</Category>
-        <Or>
-          <Category>three</Category>
-        </Or>
-    </Include>
-  </Menu>
-  <Menu>
-    <Name>dummy 4</Name>
-    <Icon>kdeconnect</Icon>
-    <Include>
-        <Category>dummy</Category>
-        <And>
-          <Category>notthree</Category>
-        </And>
-    </Include>
-  </Menu>
-  <Menu>
-    <Name>dummy 5</Name>
-    <Icon>kdevelop</Icon>
-    <Include>
-        <Category>dummy</Category>
-    </Include>
-  </Menu>
-  <Menu>
-    <Name>dummy 6</Name>
-    <Icon>kate</Icon>
-    <Include>
-        <Category>dummy</Category>
-    </Include>
-  </Menu>
-  <Menu>
-    <Name>dummy 7</Name>
-    <Icon>firefox</Icon>
-    <Include>
-        <Category>dummy</Category>
-    </Include>
-  </Menu>
-  <Menu>
-    <Name>dummy 8</Name>
-    <Icon>konversation</Icon>
-    <Include>
-        <Category>dummy</Category>
-    </Include>
-  </Menu>
-  <Menu>
-    <Name>dummy 9</Name>
-    <Icon>chromium</Icon>
-    <Include>
-        <Category>dummy</Category>
-    </Include>
-  </Menu>
-  <Menu>
-    <Name>dummy 10</Name>
-    <Icon>ktorrent</Icon>
-    <Include>
-        <Category>dummy</Category>
-    </Include>
-  </Menu>
-  <Menu>
-    <Name>dummy 11</Name>
-    <Icon>akregator</Icon>
-    <Include>
-        <Category>dummy</Category>
-    </Include>
+    <Menu>
+      <Name>dummy 4</Name>
+      <Icon>kdeconnect</Icon>
+      <Include>
+          <Category>dummy</Category>
+          <And>
+            <Category>notthree</Category>
+          </And>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>dummy 5</Name>
+      <Icon>kdevelop</Icon>
+      <Include>
+          <Category>dummy</Category>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>dummy 6</Name>
+      <Icon>kate</Icon>
+      <Include>
+          <Category>dummy</Category>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>dummy 7</Name>
+      <Icon>firefox</Icon>
+      <Include>
+          <Category>dummy</Category>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>dummy 8</Name>
+      <Icon>konversation</Icon>
+      <Include>
+          <Category>dummy</Category>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>dummy 9</Name>
+      <Icon>chromium</Icon>
+      <Include>
+          <Category>dummy</Category>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>dummy 10</Name>
+      <Icon>ktorrent</Icon>
+      <Include>
+          <Category>dummy</Category>
+      </Include>
+    </Menu>
+    <Menu>
+      <Name>dummy 11</Name>
+      <Icon>akregator</Icon>
+      <Include>
+          <Category>dummy</Category>
+      </Include>
+    </Menu>
   </Menu>
 </Menu>

@@ -36,7 +36,6 @@
     <file>qml/MessageAction.qml</file>
     <file>qml/JustMessageAction.qml</file>
     <file>qml/ConditionalLoader.qml</file>
-    <file>qml/MuonToolbar.qml</file>
     <file>qml/MuonToolButton.qml</file>
     <file>qml/ApplicationDetails.qml</file>
     <file>qml/ApplicationScreenshots.qml</file>
@@ -47,7 +46,7 @@
     <file>qml/ActionBridge.qml</file>
     <file>qml/DiscoverSystemPalette.qml</file>
     <file>qml/DiscoverWindow.qml</file>
-    <file>qml/DiscoverWindow_PlasmaPhone.qml</file>
+    <file>qml/DiscoverDrawer.qml</file>
     <file>qml/Helpers.qml</file>
 
     <file>qml/navigation.js</file>

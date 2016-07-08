@@ -26,7 +26,7 @@ import org.kde.discover.app 1.0
 import org.kde.discover 1.0
 import org.kde.kirigami 1.0 as Kirigami
 
-Kirigami.Page {
+Kirigami.ScrollablePage {
     id: page
     readonly property var model: appsModel
     property alias category: appsModel.filteredCategory
@@ -54,15 +54,6 @@ Kirigami.Page {
         appsModel.isSortingByRelevancy = true
         return text === "" && state === "list"
     }
-    
-    ApplicationProxyModel {
-        id: appsModel
-        stringSortRole: "ratingPoints"
-        sortOrder: Qt.DescendingOrder
-        isShowingTechnical: category && category.shouldShowTechnical
-        
-        Component.onCompleted: sortModel()
-    }
 
     function changeSorting(role, sorting, section) {
         appsModel.stringSortRole = role
@@ -71,7 +62,7 @@ Kirigami.Page {
         page.sectionDelegate = role=="canUpgrade" ? installedSectionDelegate : defaultSectionDelegate
     }
 
-    ExclusiveGroup { id: sortActionGroup }
+    readonly property var fu: ExclusiveGroup { id: sortActionGroup }
     readonly property string currentSortAction: sortActionGroup.current.text
     readonly property Menu sortMenu: Menu {
         MenuItem {
@@ -117,63 +108,7 @@ Kirigami.Page {
             exclusiveGroup: sortActionGroup
         }
     }
-    
-    property Component tools: RowLayout {
-            visible: page.visible
-            spacing: 3
 
-            Loader {
-                width: item ? item.width : 0
-                sourceComponent: page.extendedToolBar
-            }
-
-            ToolButton {
-                id: sortButton
-                iconName: "view-sort-ascending"
-                onClicked: menu.popup()
-
-                menu: sortMenu
-            }
-            ToolButton {
-                id: listViewShown
-                iconName: "tools-wizard"
-                onClicked: shownMenu.popup()
-
-                ExclusiveGroup { id: shownActionGroup }
-                menu: Menu {
-                    id: shownMenu
-                    MenuItem {
-                        id: itemList
-                        property string viewType: "list"
-                        text: i18n("List")
-                        checkable: true
-                        checked: page.state==viewType
-                        onTriggered: page.state=viewType
-                        exclusiveGroup: shownActionGroup
-                    }
-                    MenuItem {
-                        id: itemGrid
-                        property string viewType: "grid2"
-                        text: i18n("Grid")
-                        checkable: true
-                        checked: page.state==viewType
-                        onTriggered: page.state=viewType
-                        exclusiveGroup: shownActionGroup
-                    }
-                    MenuSeparator {}
-                    MenuItem {
-                        checkable: true
-                        checked: appsModel.shouldShowTechnical
-                        onTriggered: {
-                            appsModel.shouldShowTechnical = !appsModel.shouldShowTechnical;
-                            appsModel.sortModel();
-                        }
-                        text: i18n("Show technical packages")
-                    }
-                }
-            }
-        }
-    
     Component {
         id: categoryHeaderComponent
         CategoryDisplay {
@@ -181,13 +116,21 @@ Kirigami.Page {
             category: page.category
             height: implicitHeight
             spacing: 10
-            maxtopwidth: viewLoader.sourceComponent == listComponent ? 100 : viewLoader.item.cellWidth
+            maxtopwidth: 100
+
+            RowLayout {
+                visible: page.visible
+                spacing: 3
+
+                ToolButton {
+                    id: sortButton
+                    iconName: "view-sort-ascending"
+                    onClicked: menu.popup()
+
+                    menu: sortMenu
+                }
+            }
         }
-    }
-    
-    Loader {
-        id: viewLoader
-        anchors.fill: parent
     }
 
     Component {
@@ -204,19 +147,6 @@ Kirigami.Page {
                 font.weight: Font.Bold
                 Layout.minimumHeight: paintedHeight*1.5
             }
-        }
-    }
-    
-    Component {
-        id: listComponent
-        ApplicationsList {
-            id: apps
-            anchors.fill: parent
-            section.property: page.sectionProperty
-            section.delegate: page.sectionDelegate
-
-            header: page.header == categoryHeaderComponent ? appListHeader : page.header
-            model: appsModel
         }
     }
     
@@ -241,36 +171,20 @@ Kirigami.Page {
             }
         }
     }
-    
-    Component {
-        id: gridComponent
-        ScrolledAwesomeGrid {
-            id: theGrid
-            model: appsModel
-            header: page.header
+    ApplicationsList {
+        id: apps
+        anchors.fill: parent
+        section.property: page.sectionProperty
+        section.delegate: page.sectionDelegate
 
-            section: RowLayout {
-                Label { text: i18n("All") }
-                Item { Layout.fillWidth: true }
-                Label { text: i18np("%1 item", "%1 items", theGrid.count) }
-            }
+        header: page.header == categoryHeaderComponent ? appListHeader : page.header
+        model: ApplicationProxyModel {
+            id: appsModel
+            stringSortRole: "ratingPoints"
+            sortOrder: Qt.DescendingOrder
+            isShowingTechnical: category && category.shouldShowTechnical
 
-            delegate: ApplicationsGridDelegate {
-                width: theGrid.cellWidth
-                height: theGrid.cellWidth/1.618 //tau
-            }
+            Component.onCompleted: sortModel()
         }
     }
-    
-    state: preferList || Helpers.isCompact ? "list" : "grid2"
-    states: [
-        State {
-            name: "list"
-            PropertyChanges { target: viewLoader; sourceComponent: listComponent }
-        },
-        State {
-            name: "grid2"
-            PropertyChanges { target: viewLoader; sourceComponent: gridComponent }
-        }
-    ]
 }

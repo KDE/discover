@@ -24,12 +24,14 @@ import QtQuick.Controls 1.1
 import org.kde.discover 1.0
 import org.kde.discover.app 1.0
 import org.kde.kirigami 1.0 as Kirigami
+import "navigation.js" as Navigation
 
 Kirigami.GlobalDrawer {
     id: drawer
     anchors.fill: parent
     title: i18n("Discover")
     titleIcon: "plasmadiscover"
+    bannerImageSource: "image://icon/plasma"
 
     function itemsFilter(actions, items) {
         var ret = [];
@@ -38,17 +40,13 @@ Kirigami.GlobalDrawer {
 
         return ret.concat(items);
     }
+    topContent: TextField {
+        Layout.fillWidth: true
 
-    TextField {
-        id: searchWidget
-        anchors {
-            left: parent.left;
-            right: parent.right;
-        }
         enabled: window.stack.currentItem!=null && window.stack.currentItem.searchFor!=null
         focus: true
 
-        placeholderText: (!searchWidget.enabled || window.stack.currentItem.title == "") ? i18n("Search...") : i18n("Search in '%1'...", window.stack.currentItem.title)
+        placeholderText: (!enabled || window.stack.currentItem.title == "") ? i18n("Search...") : i18n("Search in '%1'...", window.stack.currentItem.title)
         onTextChanged: searchTimer.running = true
         onEditingFinished: if(text == "" && backAction.enabled) {
             backAction.action.trigger()
@@ -60,53 +58,52 @@ Kirigami.GlobalDrawer {
             repeat: false
             interval: 200
             onTriggered: {
-                var ret = window.stack.currentItem.searchFor(searchWidget.text)
+                var ret = window.stack.currentItem.searchFor(parent.text)
                 if (ret === true)
                     backAction.action.trigger()
             }
         }
     }
 
-    Kirigami.Action {
-        id: configureMenu
-        text: i18n("Configure...")
-        iconName: "settings-configure"
-
-        TopLevelPageData {
-            id: sources
-            text: i18n("Configure Sources...")
-            iconName: "repository"
-            shortcut: "Alt+S"
-            component: topSourcesComp
-        }
-        ActionBridge {
-            id: bindings
-            action: app.action("options_configure_keybinding");
+    ColumnLayout {
+        anchors {
+            left: parent.left;
+            right: parent.right;
         }
 
-        Instantiator {
-            id: advanced
-            model: MessageActionsModel {}
-            delegate: ActionBridge { action: model.action }
-
-            property var objects: []
-            onObjectAdded: objects.push(object)
-            onObjectRemoved: objects = objects.splice(configureMenu.children.indexOf(object))
+        Kirigami.BasicListItem {
+            icon: installedAction.iconName
+            label: installedAction.text
+            onClicked: installedAction.trigger()
         }
-
-        children: [sources, bindings].concat(advanced.objects)
+        Kirigami.BasicListItem {
+            icon: settingsAction.iconName
+            label: settingsAction.text
+            onClicked: settingsAction.trigger()
+        }
+        Kirigami.BasicListItem {
+            icon: updateAction.iconName
+            label: updateAction.text
+            onClicked: updateAction.trigger()
+        }
     }
 
-    Kirigami.Action {
-        id: helpMenu
-        text: i18n("Help...")
-        iconName: "system-help"
+    property var objects: []
+    Instantiator {
+        model: CategoryModel {}
+        delegate: Kirigami.Action {
+            text: display
+            onTriggered: Navigation.openCategory(category)
+        }
 
-        ActionBridge { action: app.action("help_about_app"); }
-        ActionBridge { action: app.action("help_report_bug"); }
+        onObjectAdded: {
+            drawer.objects.push(object)
+            drawer.actions = drawer.objects
+        }
+        onObjectRemoved: drawer.objects = drawer.objects.splice(drawer.objects.indexOf(object))
     }
 
-    actions: itemsFilter(window.awesome, [ configureMenu, helpMenu ])
+    actions: objects
     modal: Helpers.isCompact
     handleVisible: Helpers.isCompact
 
