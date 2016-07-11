@@ -94,25 +94,13 @@ QVector<QPair<FilterType, QString> > Category::parseIncludes(const QDomNode &dat
         } else if (tempElement.tagName() == QLatin1String("Not")) {
             m_notFilters.append(parseIncludes(node));
         } else if (tempElement.tagName() == QLatin1String("PkgSection")) {
-            QPair<FilterType, QString> pkgSectionFilter;
-            pkgSectionFilter.first = PkgSectionFilter;
-            pkgSectionFilter.second = tempElement.text();
-            filter.append(pkgSectionFilter);
+            filter.append({ PkgSectionFilter, tempElement.text() });
         } else if (tempElement.tagName() == QLatin1String("Category")) {
-            QPair<FilterType, QString> categoryFilter;
-            categoryFilter.first = CategoryFilter;
-            categoryFilter.second = tempElement.text();
-            filter.append(categoryFilter);
+            filter.append({ CategoryFilter, tempElement.text() });
         } else if (tempElement.tagName() == QLatin1String("PkgWildcard")) {
-            QPair<FilterType, QString> wildcardFilter;
-            wildcardFilter.first = PkgWildcardFilter;
-            wildcardFilter.second = tempElement.text();
-            filter.append(wildcardFilter);
+            filter.append({ PkgWildcardFilter, tempElement.text() });
         } else if (tempElement.tagName() == QLatin1String("PkgName")) {
-            QPair<FilterType, QString> nameFilter;
-            nameFilter.first = PkgNameFilter;
-            nameFilter.second = tempElement.text();
-            filter.append(nameFilter);
+            filter.append({ PkgNameFilter, tempElement.text() });
         }
         node = node.nextSibling();
     }
