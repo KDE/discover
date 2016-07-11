@@ -28,6 +28,7 @@ ColumnLayout {
     readonly property QtObject _page: findPage()
     property alias background: decorationImage.source
     property alias headerItem: topItem.data
+    property string search: ""
 
     function findPage() {
         var obj = root;
@@ -55,7 +56,9 @@ ColumnLayout {
                 margins: Kirigami.Units.gridUnit
             }
             font.pointSize: SystemFonts.titleFont.pointSize * 3
-            text: root._page.title
+            text: root.search!=="" && root._page.title!=="" ? i18n("Search: %1 + %2", root.search, root._page.title)
+                : root.search!=="" ? i18n("Search: %1", root.search)
+                : root._page.title
             color: decorationImage.source != "" ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
             horizontalAlignment: Text.AlignRight
             verticalAlignment: Text.AlignBottom

@@ -34,7 +34,7 @@ Kirigami.ScrollablePage
     function searchFor(text) {
         if (text === "")
             return;
-        Navigation.openApplicationList(null, text)
+        Navigation.openCategory(null)
     }
 
     CategoryDisplay {

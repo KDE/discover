@@ -41,19 +41,12 @@ Kirigami.ScrollablePage {
     property string sectionProperty: ""
     property Component sectionDelegate: null
     property bool preferList: false
-    property Component header: category==null ? null : categoryHeaderComponent
+    property Component header: categoryHeaderComponent
     property Component extendedToolBar: null
     property var icon: category ? category.icon : search !== "" ? "edit-find" : "go-home"
     title: category ? category.name : ""
 
     onSearchChanged: appsModel.sortOrder = Qt.AscendingOrder
-
-    
-    function searchFor(text) {
-        appsModel.search = text
-        appsModel.isSortingByRelevancy = true
-        return text === "" && state === "list"
-    }
 
     function changeSorting(role, sorting, section) {
         appsModel.stringSortRole = role
@@ -181,6 +174,7 @@ Kirigami.ScrollablePage {
         header: page.header == categoryHeaderComponent ? appListHeader : page.header
         model: ApplicationProxyModel {
             id: appsModel
+            isSortingByRelevancy: true
             stringSortRole: "ratingPoints"
             sortOrder: Qt.DescendingOrder
             isShowingTechnical: category && category.shouldShowTechnical

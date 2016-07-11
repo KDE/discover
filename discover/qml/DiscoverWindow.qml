@@ -11,7 +11,6 @@ Kirigami.ApplicationWindow
     id: window
     readonly property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
     readonly property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
-    readonly property Component categoryComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
     readonly property Component reviewsComp: Qt.createComponent("qrc:/qml/ReviewsPage.qml")
 
     //toplevels

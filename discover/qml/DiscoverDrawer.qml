@@ -43,14 +43,11 @@ Kirigami.GlobalDrawer {
     topContent: TextField {
         Layout.fillWidth: true
 
-        enabled: window.stack.currentItem!=null && window.stack.currentItem.searchFor!=null
+        enabled: window.stack.currentItem!=null && (window.stack.currentItem.searchFor!=null || window.stack.currentItem.hasOwnProperty("search"))
         focus: true
 
         placeholderText: (!enabled || window.stack.currentItem.title == "") ? i18n("Search...") : i18n("Search in '%1'...", window.stack.currentItem.title)
         onTextChanged: searchTimer.running = true
-        onEditingFinished: if(text == "" && backAction.enabled) {
-            backAction.action.trigger()
-        }
 
         Timer {
             id: searchTimer
@@ -58,18 +55,18 @@ Kirigami.GlobalDrawer {
             repeat: false
             interval: 200
             onTriggered: {
-                var ret = window.stack.currentItem.searchFor(parent.text)
-                if (ret === true)
-                    backAction.action.trigger()
+                var curr = window.stack.currentItem;
+                if (!curr.hasOwnProperty("search"))
+                    Navigation.openApplicationList( { search: parent.text })
+                else
+                    curr.search = parent.text;
             }
         }
     }
 
     ColumnLayout {
-        anchors {
-            left: parent.left;
-            right: parent.right;
-        }
+        spacing: 0
+        Layout.fillWidth: true
 
         Kirigami.BasicListItem {
             icon: installedAction.iconName

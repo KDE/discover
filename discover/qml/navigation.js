@@ -17,21 +17,21 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-function openApplicationList(cat, search) {
-    window.stack.push(applicationListComp, { category: cat, search: search, preferList: search!="" })
-}
-
 function openApplicationListSource(origin) {
-    window.stack.push(applicationListComp, { originFilter: origin, preferList: true, title: origin, icon: "view-filter" })
+    openApplicationList({ originFilter: origin, preferList: true, title: origin, icon: "view-filter" })
 }
 
 function openApplicationMime(mime) {
-    window.stack.push(applicationListComp, { mimeTypeFilter: mime , icon: "document-open-data", title: i18n("Resources for '%1'", mime) })
+    openApplicationList({ mimeTypeFilter: mime , icon: "document-open-data", title: i18n("Resources for '%1'", mime) })
+}
+
+function openApplicationList(props) {
+    window.stack.clear();
+    window.stack.push(applicationListComp, props)
 }
 
 function openCategory(cat) {
-    window.stack.clear();
-    window.stack.push(categoryComp, { category: cat })
+    openApplicationList({ category: cat })
 }
 
 function openApplication(app) {
