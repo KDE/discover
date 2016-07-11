@@ -14,14 +14,12 @@ T.ToolButton {
     readonly property alias textColor: textItem.color
     hoverEnabled: true
 
+    onHoveredChanged: textItem.font.underline = control.hovered
+
     contentItem: Text {
         id: textItem
         text: control.text
-        font: {
-            var f = control.font;
-            f.underline = control.hovered;
-            return f;
-        }
+        font: control.font
         color: Kirigami.Theme.viewBackgroundColor
         elide: Text.ElideRight
         horizontalAlignment: Text.AlignHCenter
