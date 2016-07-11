@@ -38,7 +38,6 @@ Kirigami.ScrollablePage
     }
 
     CategoryDisplay {
-        spacing: parent.margin
         Layout.fillWidth: true
     }
 }

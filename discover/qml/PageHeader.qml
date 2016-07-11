@@ -27,6 +27,7 @@ ColumnLayout {
     id: root
     readonly property QtObject _page: findPage()
     property alias background: decorationImage.source
+    property alias headerItem: topItem.data
 
     function findPage() {
         var obj = root;
@@ -42,6 +43,10 @@ ColumnLayout {
         fillMode: Image.PreserveAspectCrop
         Layout.preferredHeight: titleLabel.paintedHeight * 4
         Layout.fillWidth: true
+
+        Item {
+            id: topItem
+        }
 
         Label {
             id: titleLabel

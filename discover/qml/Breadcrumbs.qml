@@ -29,7 +29,7 @@ RowLayout {
     property var category
     property string search
 
-    spacing: 0
+    spacing: 2
 
     Kirigami.Action {
         id: searchAction
@@ -68,17 +68,17 @@ RowLayout {
 
         delegate: RowLayout {
             spacing: 0
-            QIconItem {
+            Text {
                 visible: index > 0
-                width: button.Layout.preferredHeight/2
-                height: width
-                icon: "arrow-right"
+                text: ">"
+                color: button.textColor
             }
-            ToolButton {
+            MuonToolButton {
                 id: button
                 Layout.fillHeight: true
 
-                action: modelData
+                text: modelData.text
+                onClicked: modelData.trigger()
             }
         }
     }

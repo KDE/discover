@@ -33,15 +33,14 @@ ColumnLayout
     property real maxtopwidth: 250
     property alias search: bread.search
 
-    Breadcrumbs {
-        id: bread
-        Layout.fillWidth: true
-        category: page.category
-    }
-
     PageHeader {
         Layout.fillWidth: true
         background: category ? category.decoration : "https://c2.staticflickr.com/8/7193/6900377481_76367f973a_o.jpg"
+
+        headerItem: Breadcrumbs {
+            id: bread
+            category: page.category
+        }
 
         ListView {
             Layout.fillWidth: true
