@@ -8,6 +8,7 @@
     <Menu>
       <Name>dummy</Name>
       <Icon>kalarm</Icon>
+      <Image>https://c2.staticflickr.com/6/5308/5876407905_6f31082232_o.jpg</Image>
       <Include>
           <Category>dummy</Category>
       </Include>
@@ -15,6 +16,7 @@
     <Menu>
       <Name>dummy addons</Name>
       <Icon>plasma</Icon>
+      <Image>https://c2.staticflickr.com/4/3221/2897450915_a1fcde62b7_o.jpg</Image>
       <Addons />
       <Include>
           <Category>dummy</Category>
@@ -23,6 +25,7 @@
     <Menu>
       <Name>dummy 1</Name>
       <Icon>kontact</Icon>
+      <Image>https://c2.staticflickr.com/2/1347/955467402_be4f5970b2_o.jpg</Image>
       <Include>
           <Category>dummy</Category>
       </Include>

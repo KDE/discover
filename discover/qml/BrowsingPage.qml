@@ -37,18 +37,8 @@ Kirigami.ScrollablePage
         Navigation.openApplicationList(null, text)
     }
 
-    ColumnLayout
-    {
-        readonly property real margin: SystemFonts.generalFont.pointSize
-        width: parent.width-margin*2
-        x: margin
-
-        CategoryDisplay {
-            spacing: parent.margin
-            Layout.fillWidth: true
-        }
-        Item {
-            height: parent.margin
-        }
+    CategoryDisplay {
+        spacing: parent.margin
+        Layout.fillWidth: true
     }
 }

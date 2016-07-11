@@ -59,7 +59,9 @@ void Category::parseData(const QString& path, const QDomNode& data, bool canHave
             }
         }
         
-        if (tempElement.tagName() == QLatin1String("Addons")) {
+        if (tempElement.tagName() == QLatin1String("Image")) {
+            m_decoration = QUrl(tempElement.text());
+        } else if (tempElement.tagName() == QLatin1String("Addons")) {
             m_isAddons = true;
         } else if (tempElement.tagName() == QLatin1String("Icon") && tempElement.hasChildNodes()) {
             m_iconString = tempElement.text();
@@ -101,6 +103,8 @@ QVector<QPair<FilterType, QString> > Category::parseIncludes(const QDomNode &dat
             filter.append({ PkgWildcardFilter, tempElement.text() });
         } else if (tempElement.tagName() == QLatin1String("PkgName")) {
             filter.append({ PkgNameFilter, tempElement.text() });
+        } else {
+            qWarning() << "unknown" << tempElement.tagName();
         }
         node = node.nextSibling();
     }
@@ -188,4 +192,14 @@ bool Category::blacklistPlugins(const QSet<QString>& pluginNames)
     m_plugins.subtract(pluginNames);
 
     return m_plugins.isEmpty();
+}
+
+QUrl Category::decoration() const
+{
+    if (m_decoration.isEmpty()) {
+        Category* c = qobject_cast<Category*>(parent());
+        return c ? c->decoration() : QUrl();
+    } else {
+        return m_decoration;
+    }
 }

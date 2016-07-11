@@ -22,6 +22,7 @@ import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.kirigami 1.0 as Kirigami
+import "navigation.js" as Navigation
 
 RowLayout {
     id: bread
@@ -30,12 +31,10 @@ RowLayout {
 
     spacing: 0
 
-    signal setCategory(QtObject category)
-
     Kirigami.Action {
         id: searchAction
         text: bread.search? i18n("Search: %1", bread.search) : ""
-        onTriggered: bread.setCategory(category);
+        onTriggered: Navigation.openCategory(category);
     }
 
     Component {
@@ -43,12 +42,15 @@ RowLayout {
         Kirigami.Action {
             property QtObject category
             text: category.name
-            onTriggered: bread.setCategory(category)
+            onTriggered: Navigation.openCategory(category)
         }
     }
 
     function breadcrumbs(search, category) {
         var ret = [];
+
+        if (category) //skip the first one
+            category = category.parent;
 
         while(category) {
             var categoryAction = categoryActionComponent.createObject(rep, { category: category })

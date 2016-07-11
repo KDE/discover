@@ -26,6 +26,8 @@ import org.kde.kirigami 1.0 as Kirigami
 ColumnLayout {
     id: root
     readonly property QtObject _page: findPage()
+    property alias background: decorationImage.source
+
     function findPage() {
         var obj = root;
         while(obj && !obj.hasOwnProperty("title")) {
@@ -33,11 +35,26 @@ ColumnLayout {
         }
         return obj;
     }
+    spacing: 0
 
-    Label {
-        id: titleLabel
-        font.pointSize: SystemFonts.titleFont.pointSize * 3
-        text: root._page.title
+    Image {
+        id: decorationImage
+        fillMode: Image.PreserveAspectCrop
+        Layout.preferredHeight: titleLabel.paintedHeight * 4
+        Layout.fillWidth: true
+
+        Label {
+            id: titleLabel
+            anchors {
+                fill: parent
+                margins: Kirigami.Units.gridUnit
+            }
+            font.pointSize: SystemFonts.titleFont.pointSize * 3
+            text: root._page.title
+            color: decorationImage.source != "" ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
+            horizontalAlignment: Text.AlignRight
+            verticalAlignment: Text.AlignBottom
+        }
     }
     Rectangle {
         color: Kirigami.Theme.linkColor
