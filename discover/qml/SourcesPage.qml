@@ -22,6 +22,7 @@ Kirigami.ScrollablePage {
 
         header: PageHeader {
             width: ListView.view.width
+            background: "https://c2.staticflickr.com/8/7460/10058518443_d0a3eb47e8_b.jpg"
 
             RowLayout {
                 Layout.fillWidth: true

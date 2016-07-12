@@ -60,6 +60,9 @@ int main(int argc, char** argv)
             "          <Category>") + knsFile + QStringLiteral("</Category>\n"
             "        </Or>\n"
             "      </Include>\n");
+        const QString image = categoryName[0].contains(QLatin1String("plasma"), Qt::CaseInsensitive)
+                              ? QStringLiteral("https://c2.staticflickr.com/4/3148/3042248532_20bd2e38f4_b.jpg")
+                              : QStringLiteral("https://c2.staticflickr.com/8/7067/6847903539_d9324dcd19_o.jpg");
 
         QTextStream fs(&f);
         fs << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -68,6 +71,7 @@ int main(int argc, char** argv)
             "    <Name>" << categoryName[0] << "</Name>\n"
             "    <Addons/>\n"
             "    <Icon>plasma</Icon>\n"
+            "    <Image>" << image << "</Image>\n"
             "    <Menu>\n"
             "      <Name>" << categoryName[1] << "</Name>\n"
             "      <Icon>" << iconName << "</Icon>\n"

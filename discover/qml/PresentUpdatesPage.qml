@@ -19,6 +19,7 @@ ScrollView
     {
         header: PageHeader {
             width: parent.width
+            background: "https://c2.staticflickr.com/4/3095/3246726097_711731f31a_b.jpg"
             ConditionalLoader {
                 anchors.fill: parent
 

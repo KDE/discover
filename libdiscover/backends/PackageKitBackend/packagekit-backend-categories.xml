@@ -4,6 +4,7 @@
   <Menu>
     <Name>Applications</Name>
     <Icon>applications-internet</Icon>
+    <Image>https://c2.staticflickr.com/8/7303/9462149812_2a904bf5d5_b.jpg</Image>
     <Menu>
       <Name>Accessories</Name>
       <Icon>applications-utilities</Icon>
