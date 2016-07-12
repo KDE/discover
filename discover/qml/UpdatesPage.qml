@@ -16,8 +16,6 @@ Kirigami.Page
 
     ResourcesUpdatesModel {
         id: resourcesUpdatesModel
-
-        onFinished: page.Stack.view.pop()
     }
 
     UpdateModel {

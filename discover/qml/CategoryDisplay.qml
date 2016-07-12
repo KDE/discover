@@ -62,6 +62,7 @@ ColumnLayout
         id: gridRow
         readonly property bool extended: top.count>5
         spacing: page.spacing
+        visible: page.search === ""
 
         ApplicationsTop {
             id: top

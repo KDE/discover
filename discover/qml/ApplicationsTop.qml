@@ -95,7 +95,7 @@ ColumnLayout {
                             }
                             Loader {
                                 Layout.fillHeight: true
-                                Layout.preferredWidth: item.implicitWidth
+                                Layout.preferredWidth: item ? item.implicitWidth : 0
                                 sourceComponent: topView.roleDelegate
                                 onItemChanged: item.model=model
 
