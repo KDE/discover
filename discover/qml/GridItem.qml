@@ -37,7 +37,7 @@ Item {
 
     signal clicked()
 
-    BasicListItem {
+    AbstractListItem {
         id: deco
         anchors.fill: parent
         onClicked: listItem.clicked()

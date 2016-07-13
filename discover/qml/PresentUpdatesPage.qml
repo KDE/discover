@@ -3,8 +3,9 @@ import QtQuick.Layouts 1.1
 import QtQuick 2.1
 import org.kde.discover 1.0
 import org.kde.discover.app 1.0
-import "navigation.js" as Navigation
 import org.kde.kquickcontrolsaddons 2.0
+import "navigation.js" as Navigation
+import org.kde.kirigami 1.0 as Kirigami
 
 ScrollView
 {
@@ -21,7 +22,7 @@ ScrollView
             width: parent.width
             background: "https://c2.staticflickr.com/4/3095/3246726097_711731f31a_b.jpg"
             ConditionalLoader {
-                Layout.fillWidth: parent
+                Layout.fillWidth: true
 
                 condition: resourcesUpdatesModel.isProgressing
                 onConditionChanged: {
@@ -88,15 +89,19 @@ ScrollView
             }
         }
 
-        delegate: GridItem {
-            width: parent.width
-            height: layout.extended ? 200 : layout.implicitHeight + 2*internalMargin
+        spacing: Kirigami.Units.smallSpacing
+
+        delegate: Kirigami.AbstractListItem {
+            width: ListView.view.width
 
             ColumnLayout {
                 id: layout
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
                 enabled: !resourcesUpdatesModel.isProgressing
                 property bool extended: false
-                anchors.fill: parent
                 RowLayout {
                     Layout.fillWidth: true
                     CheckBox {
@@ -113,7 +118,6 @@ ScrollView
                     }
 
                     Label {
-                        id: label
                         Layout.fillWidth: true
                         text: i18n("%1 (%2)", display, version)
                         elide: Text.ElideRight

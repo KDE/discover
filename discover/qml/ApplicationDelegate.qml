@@ -27,7 +27,7 @@ import org.kde.kcoreaddons 1.0
 import "navigation.js" as Navigation
 import org.kde.kirigami 1.0 as Kirigami
 
-Kirigami.BasicListItem
+Kirigami.AbstractListItem
 {
     id: delegateArea
     readonly property real contHeight: height*0.8

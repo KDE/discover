@@ -14,14 +14,12 @@ Kirigami.ScrollablePage {
     readonly property string icon: "view-filter"
 
     ListView {
-        width: parent.width
-
         model: SourcesModel
 
         Menu { id: sourcesMenu }
 
         header: PageHeader {
-            width: ListView.view.width
+            width: parent.width
             background: "https://c2.staticflickr.com/8/7460/10058518443_d0a3eb47e8_b.jpg"
 
             RowLayout {
@@ -119,15 +117,14 @@ Kirigami.ScrollablePage {
             Repeater {
                 model: sourceBackend.sources
 
-                delegate: GridItem {
-                    Layout.fillWidth: true
+                delegate: Kirigami.AbstractListItem {
                     height: browseOrigin.implicitHeight*1.4
                     enabled: browseOrigin.enabled
                     onClicked: Navigation.openApplicationListSource(model.display)
 
                     RowLayout {
                         Layout.alignment: Qt.AlignVCenter
-                        anchors.fill: parent
+                        width: parent.width
 
                         CheckBox {
                             id: enabledBox
