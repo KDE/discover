@@ -56,6 +56,8 @@ ColumnLayout {
                 margins: Kirigami.Units.gridUnit
             }
             font.pointSize: SystemFonts.titleFont.pointSize * 3
+            style: Text.Raised
+            styleColor: "gray"
             text: root.search!=="" && root._page.title!=="" ? i18n("Search: %1 + %2", root.search, root._page.title)
                 : root.search!=="" ? i18n("Search: %1", root.search)
                 : root._page.title
