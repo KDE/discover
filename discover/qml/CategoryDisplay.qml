@@ -30,7 +30,6 @@ ColumnLayout
     id: page
     property alias category: catModel.displayedCategory
     property real spacing: 3
-    property real maxtopwidth: 250
     property alias search: bread.search
 
     PageHeader {
@@ -58,45 +57,23 @@ ColumnLayout
         }
     }
 
-    RowLayout {
-        id: gridRow
-        readonly property bool extended: top.count>5
-        spacing: page.spacing
-        visible: page.search === ""
-
-        ApplicationsTop {
-            id: top
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            sortRole: "ratingCount"
-            filteredCategory: page.category
-            title: i18n("Most Popular")
-            extended: gridRow.extended
-            roleDelegate: Item {
-                width: bg.width
-                implicitWidth: bg.implicitWidth
-                property var model
-                LabelBackground {
-                    id: bg
-                    anchors.centerIn: parent
-                    text: model ? model.ratingCount : ""
+    ApplicationsTop {
+        Layout.fillWidth: true
+        sortRole: "ratingCount"
+        filteredCategory: page.category
+        title: i18n("Most Popular")
+        extended: true
+        roleDelegate: Item {
+            width: bg.width
+            implicitWidth: bg.implicitWidth
+            property var model
+            LabelBackground {
+                id: bg
+                anchors {
+                    verticalCenter: parent.verticalCenter
+                    right: parent.right
                 }
-            }
-            Layout.preferredWidth: page.maxtopwidth
-        }
-        ApplicationsTop {
-            id: top2
-            Layout.preferredWidth: page.maxtopwidth
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            sortRole: "ratingPoints"
-            filteredCategory: page.category
-            title: i18n("Best Rating")
-            extended: gridRow.extended
-            roleDelegate: Rating {
-                property var model
-                rating: model ? model.rating : 0
-                starSize: parent.height/3
+                text: model ? model.ratingCount : ""
             }
         }
     }

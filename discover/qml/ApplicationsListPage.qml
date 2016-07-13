@@ -108,9 +108,6 @@ Kirigami.ScrollablePage {
             id: categoryHeader
             category: page.category
             search: appsModel.search
-            height: implicitHeight
-            spacing: 10
-            maxtopwidth: 100
 
             RowLayout {
                 visible: page.visible
@@ -165,7 +162,7 @@ Kirigami.ScrollablePage {
             }
         }
     }
-    ApplicationsList {
+    ListView {
         id: apps
         anchors.fill: parent
         section.property: page.sectionProperty
@@ -180,6 +177,10 @@ Kirigami.ScrollablePage {
             isShowingTechnical: category && category.shouldShowTechnical
 
             Component.onCompleted: sortModel()
+        }
+        spacing: Kirigami.Units.smallSpacing
+        delegate: ApplicationDelegate {
+            width: ListView.view.width
         }
     }
 }
