@@ -105,17 +105,16 @@ ApplicationWindow
             }
         }
         MenuSeparator {}
-        Menu {
-            id: advancedMenu
-            title: i18n("Advanced...")
+        Instantiator {
+            id: actionsInstantiator
+            model: MessageActionsModel {}
+            delegate: MenuItem { action: ActionBridge { action: model.action } }
 
-            Instantiator {
-                model: MessageActionsModel {}
-                delegate: MenuItem { action: ActionBridge { action: model.action } }
-
-                onObjectAdded: advancedMenu.insertItem(index, object)
-                onObjectRemoved: advancedMenu.removeItem(object)
-            }
+            onObjectAdded: moreMenu.insertItem(index, object)
+            onObjectRemoved: moreMenu.removeItem(object)
+        }
+        MenuSeparator {
+            visible: actionsInstantiator.count > 0
         }
         MenuItem { action: ActionBridge { action: app.action("options_configure_keybinding"); } }
         MenuItem { action: ActionBridge { action: app.action("help_about_app"); } }
