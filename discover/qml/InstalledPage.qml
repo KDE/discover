@@ -18,7 +18,7 @@ ApplicationsListPage {
 
     header: PageHeader {
         background: "https://c2.staticflickr.com/8/7146/6783941909_30c7c5d52f_b.jpg"
-        width: parent.width
+        width: page.width
         RowLayout {
             Item { Layout.fillWidth: true }
             Label {
