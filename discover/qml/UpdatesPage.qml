@@ -46,29 +46,6 @@ Kirigami.ScrollablePage
             width: parent.width
             background: "https://c2.staticflickr.com/4/3095/3246726097_711731f31a_b.jpg"
 
-            headerItem: Item {
-                anchors.fill: parent
-                id: noUpdatesView
-                ColumnLayout {
-                    anchors.centerIn: parent
-                    QIconItem {
-                        anchors.horizontalCenter: parent.horizontalCenter
-
-                        id: icon
-                        height: title.implicitHeight*5
-                        width: height
-                    }
-                    Label {
-                        id: description
-                        Layout.fillWidth: true
-                        horizontalAlignment: Text.AlignHCenter
-                        color: Kirigami.Theme.highlightedTextColor
-                    }
-                }
-
-                readonly property string message: i18nc("@info", "Last checked %1 ago.", Format.formatDecimalDuration(secSinceUpdate*1000, 0))
-            }
-
             Component {
                 id: progressComponent
                 ColumnLayout {
@@ -124,6 +101,8 @@ Kirigami.ScrollablePage
             ConditionalLoader {
                 Layout.fillWidth: true
 
+                visible: resourcesUpdatesModel.isProgressing || updateModel.hasUpdates
+                condition: resourcesUpdatesModel.isProgressing
                 componentFalse: selectionComponent
                 componentTrue: progressComponent
             }
@@ -141,49 +120,37 @@ Kirigami.ScrollablePage
                 states: [
                     State {
                         name: "fetching"
-                        PropertyChanges { target: icon; visible: false }
                         PropertyChanges { target: page; title: i18nc("@info", "Loading...") }
-                        PropertyChanges { target: description; text: "" }
                         PropertyChanges { target: header; background: "https://c2.staticflickr.com/4/3873/14950433815_1794b390d4_b.jpg" }
                     },
                     State {
                         name: "has-updates"
-                        PropertyChanges { target: icon; icon: "" }
                         PropertyChanges { target: page; title: i18nc("@info", "Updates") }
                         PropertyChanges { target: header; background: "https://c2.staticflickr.com/4/3873/14950433815_1794b390d4_b.jpg" }
                     },
                     State {
                         name: "now-uptodate"
-                        PropertyChanges { target: icon; icon: "security-high" }
                         PropertyChanges { target: page; title: i18nc("@info", "The system is up to date.") }
                         PropertyChanges { target: header; background: "https://c2.staticflickr.com/4/3095/3246726097_711731f31a_b.jpg" }
                     },
                     State {
                         name: "uptodate"
-                        PropertyChanges { target: icon; icon: "security-high" }
                         PropertyChanges { target: page; title: i18nc("@info", "The system is up to date.") }
-                        PropertyChanges { target: description; text: noUpdatesView.message }
                         PropertyChanges { target: header; background: "https://c2.staticflickr.com/4/3095/3246726097_711731f31a_b.jpg" }
                     },
                     State {
                         name: "medium"
-                        PropertyChanges { target: icon; icon: "security-medium" }
                         PropertyChanges { target: page; title: i18nc("@info", "No updates are available.") }
-                        PropertyChanges { target: description; text: noUpdatesView.message }
                         PropertyChanges { target: header; background: "https://c2.staticflickr.com/4/3095/3246726097_711731f31a_b.jpg" }
                     },
                     State {
                         name: "low"
-                        PropertyChanges { target: icon; icon: "security-low" }
                         PropertyChanges { target: page; title: i18nc("@info", "Should check for updates.") }
-                        PropertyChanges { target: description; text: noUpdatesView.message }
                         PropertyChanges { target: header; background: "https://c2.staticflickr.com/4/3100/2466596520_776eda5d3d_o.jpg" }
                     },
                     State {
                         name: "unknown"
-                        PropertyChanges { target: icon; icon: "security-low" }
                         PropertyChanges { target: page; title: i18nc("@info", "It is unknown when the last check for updates was.") }
-                        PropertyChanges { target: description; text: i18nc("@info", "Please click <em>Check for Updates</em> to check.") }
                         PropertyChanges { target: header; background: "https://c2.staticflickr.com/4/3100/2466596520_776eda5d3d_o.jpg" }
                     }
                 ]
