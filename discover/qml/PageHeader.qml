@@ -47,6 +47,7 @@ ColumnLayout {
 
         Item {
             id: topItem
+            anchors.fill: parent
         }
 
         Label {
