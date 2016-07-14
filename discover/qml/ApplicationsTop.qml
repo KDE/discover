@@ -35,7 +35,7 @@ ColumnLayout {
     property bool extended: false
     readonly property alias titleHeight: title.height
 
-    spacing: Kirigami.Units.smallSpacing
+    spacing: Kirigami.Units.gridUnit
     Label {
         id: title
         text: topView.title
@@ -56,6 +56,8 @@ ColumnLayout {
         }
         delegate: ConditionalLoader {
             Layout.fillWidth: parent
+            Layout.leftMargin: Kirigami.Units.gridUnit
+            Layout.rightMargin: Kirigami.Units.gridUnit
             condition: model["name"] !== undefined
             componentFalse: Item {}
             componentTrue: ApplicationDelegate {}

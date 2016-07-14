@@ -178,9 +178,10 @@ Kirigami.ScrollablePage {
 
             Component.onCompleted: sortModel()
         }
-        spacing: Kirigami.Units.smallSpacing
+        spacing: Kirigami.Units.gridUnit
         delegate: ApplicationDelegate {
-            width: ListView.view.width
+            x: Kirigami.Units.gridUnit
+            width: ListView.view.width - Kirigami.Units.gridUnit*2
         }
     }
 }
