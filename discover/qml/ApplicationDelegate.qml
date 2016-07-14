@@ -30,10 +30,10 @@ import org.kde.kirigami 1.0 as Kirigami
 Kirigami.AbstractListItem
 {
     id: delegateArea
-    readonly property real contHeight: height*0.8
 
     onClicked: {
-        view.currentIndex = index
+        if (ListView.view)
+            ListView.view.currentIndex = index
         Navigation.openApplication(application)
     }
 
@@ -48,56 +48,66 @@ Kirigami.AbstractListItem
         QIconItem {
             id: resourceIcon
             icon: model.icon
+
+            Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
+            readonly property real contHeight: Math.max(conts.height * 0.8, 128)
             Layout.minimumWidth: contHeight
             Layout.minimumHeight: contHeight
             anchors.verticalCenter: parent.verticalCenter
         }
 
         ColumnLayout {
+            id: conts
             Layout.fillWidth: true
             Layout.fillHeight: true
 
             Item { height: 3; width: 3 }
 
-            Label {
+            RowLayout {
                 Layout.fillWidth: true
-                elide: Text.ElideRight
-                text: name
+                Label {
+                    Layout.fillWidth: true
+                    elide: Text.ElideRight
+                    text: name
+                    font: SystemFonts.titleFont
+                }
+                Label {
+                    text: category[0]
+                }
             }
+
+            Rectangle {
+                color: Kirigami.Theme.linkColor
+                Layout.fillWidth: true
+                height: 1
+            }
+
             Label {
                 Layout.fillWidth: true
 
                 elide: Text.ElideRight
                 text: comment
-                font.italic: true
-                opacity: !Helpers.isCompact && delegateArea.containsMouse ? 1 : 0.5
                 maximumLineCount: 1
                 clip: true
             }
 
-            Item { height: 3; width: 3 }
-        }
+            Label {
+                Layout.fillWidth: true
+                clip: true
 
-        Item {
-            Layout.fillHeight: true
-            width: Helpers.isCompact ? installInfo.width : Math.max(installInfo.width, installButton.width)
+                wrapMode: Text.WordWrap
+                text: longDescription
+                maximumLineCount: 5
+            }
 
             InstallApplicationButton {
                 id: installButton
-                anchors.verticalCenter: parent.verticalCenter
+                Layout.alignment: Qt.AlignRight
                 application: model.application
                 canUpgrade: false
-                visible: !Helpers.isCompact && delegateArea.containsMouse
             }
-            LabelBackground {
-                progressing: installButton.isActive
-                progress: installButton.progress/100
 
-                id: installInfo
-                anchors.centerIn: parent
-                visible: Helpers.isCompact || !delegateArea.containsMouse
-                text: Format.formatByteSize(size)
-            }
+            Item { height: 3; width: 3 }
         }
 
         ApplicationIndicator {
