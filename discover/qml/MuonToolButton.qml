@@ -1,6 +1,5 @@
 import QtQuick 2.6
 import QtQuick.Templates 2.0 as T
-import QtQuick.Controls.Material 2.0
 import org.kde.kirigami 1.0 as Kirigami
 
 T.ToolButton {
