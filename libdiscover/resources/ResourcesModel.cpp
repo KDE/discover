@@ -68,6 +68,7 @@ ResourcesModel::ResourcesModel(QObject* parent, bool load)
         { CategoryRole, "category" },
         { SectionRole, "section" },
         { MimeTypes, "mimetypes" },
+        { LongDescriptionRole, "longDescription" },
         { SizeRole, "size" }
         })
     )

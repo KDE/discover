@@ -55,7 +55,8 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
             CategoryRole,
             SectionRole,
             MimeTypes,
-            SizeRole
+            SizeRole,
+            LongDescriptionRole
         };
         /** This constructor should be only used by unit tests.
          *  @p backendName defines what backend will be loaded when the backend is constructed.
