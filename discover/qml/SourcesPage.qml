@@ -121,6 +121,7 @@ Kirigami.ScrollablePage {
                     height: browseOrigin.implicitHeight*1.4
                     enabled: browseOrigin.enabled
                     onClicked: Navigation.openApplicationListSource(model.display)
+                    width: parent.width
 
                     RowLayout {
                         Layout.alignment: Qt.AlignVCenter
