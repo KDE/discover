@@ -35,11 +35,15 @@ DummyResource::DummyResource(QString name, bool isTechnical, AbstractResourcesBa
     , m_addons({ PackageState(QStringLiteral("a"), QStringLiteral("aaaaaa"), false), PackageState(QStringLiteral("b"), QStringLiteral("aaaaaa"), false), PackageState(QStringLiteral("c"), QStringLiteral("aaaaaa"), false)})
     , m_isTechnical(isTechnical)
 {
-    const bool hasScreenshot = m_name == QStringLiteral("Dummy 1") || KRandom::random() % 2;
-    if(hasScreenshot) {
-        m_screenshot = QUrl(QStringLiteral("http://screenshots.debian.net/screenshots/d/dolphin/9383_large.png"));
-        m_screenshotThumbnail = QUrl(QStringLiteral("http://screenshots.debian.net/screenshots/d/dolphin/9383_small.png"));
-    }
+    const int nofScreenshots = KRandom::random() % 5;
+    m_screenshots = QList<QUrl>{
+        QUrl(QStringLiteral("http://screenshots.debian.net/screenshots/d/dolphin/9383_large.png")),
+        QUrl(QStringLiteral("https://c2.staticflickr.com/6/5656/21772158034_dc84382527_o.jpg")),
+        QUrl(QStringLiteral("https://c1.staticflickr.com/9/8479/8166397343_b78106f353_k.jpg")),
+        QUrl(QStringLiteral("https://c2.staticflickr.com/4/3685/9954407993_dad10a6943_k.jpg")),
+        QUrl(QStringLiteral("https://c1.staticflickr.com/1/653/22527103378_8ce572e1de_k.jpg"))
+    }.mid(nofScreenshots);
+    m_screenshotThumbnails = m_screenshots;
 }
 
 QList<PackageState> DummyResource::addonsInformation()
@@ -117,12 +121,12 @@ QString DummyResource::packageName() const
 
 QUrl DummyResource::screenshotUrl()
 {
-    return m_screenshot;
+    return m_screenshots.at(0);
 }
 
 QUrl DummyResource::thumbnailUrl()
 {
-    return m_screenshotThumbnail;
+    return m_screenshotThumbnails.at(0);
 }
 
 QString DummyResource::section()
@@ -141,6 +145,11 @@ void DummyResource::fetchChangelog()
     log.replace(QLatin1Char('\n'), QLatin1String("<br />"));
 
     emit changelogFetched(log);
+}
+
+void DummyResource::fetchScreenshots()
+{
+    Q_EMIT screenshotsFetched(m_screenshotThumbnails, m_screenshots);
 }
 
 void DummyResource::setState(AbstractResource::State state)
