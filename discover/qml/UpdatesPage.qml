@@ -18,6 +18,8 @@ Kirigami.ScrollablePage
         resourcesUpdatesModel.updateAll()
     }
 
+    //TODO: use supportsRefreshing to fetch updates
+
     ListView
     {
         ResourcesUpdatesModel {

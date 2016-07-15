@@ -37,70 +37,50 @@ Kirigami.ScrollablePage {
     mainAction: Kirigami.Action { iconName: application.icon }
 
     ColumnLayout {
-        ColumnLayout {
-            id: conts
-            anchors.fill: parent
+        RowLayout {
+            Layout.fillWidth: true
+            QIconItem {
+                Layout.preferredHeight: 128
+                Layout.preferredWidth: 128
 
-            RowLayout {
-                Layout.fillWidth: true
-                QIconItem {
-                    Layout.preferredHeight: title.height
-                    Layout.preferredWidth: title.height
-
-                    icon: appInfo.application.icon
-                    Layout.alignment: Qt.AlignTop
-                }
-
-                ColumnLayout {
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-
-                    Heading {
-                        id: title
-                        text: appInfo.application.name
-                        Layout.fillWidth: true
-                        elide: Text.ElideRight
-                    }
-                    Label {
-                        Layout.fillWidth: true
-                        text: appInfo.application.comment
-                        wrapMode: Text.WordWrap
-                        elide: Text.ElideRight
-                        maximumLineCount: 1
-                    }
-                    Rating {
-                        readonly property QtObject ratingInstance: application.rating
-                        visible: ratingInstance!=null
-                        rating:  ratingInstance==null ? 0 : ratingInstance.rating
-                        starSize: title.paintedHeight
-
-                        Text { text: parent.ratingInstance ? i18n(" (%1)", parent.ratingInstance.ratingCount) : "" }
-                    }
-                }
+                icon: appInfo.application.icon
+                Layout.alignment: Qt.AlignTop
             }
-            InstallApplicationButton {
+            ColumnLayout {
+                id: conts
+
                 Layout.fillWidth: true
-                application: appInfo.application
-                fill: true
-                additionalItem: Button {
+                Layout.fillHeight: true
+
+                Heading {
+                    id: title
+                    text: appInfo.application.name
                     Layout.fillWidth: true
-                    visible: application.isInstalled && application.canExecute
-                    text: i18n("Launch")
-                    onClicked: application.invokeApplication()
+                    elide: Text.ElideRight
+                }
+                Rectangle {
+                    color: Kirigami.Theme.linkColor
+                    Layout.fillWidth: true
+                    height: 1
+                }
+                Label {
+                    Layout.fillWidth: true
+                    text: appInfo.application.comment
+                    wrapMode: Text.WordWrap
+                    elide: Text.ElideRight
+                    maximumLineCount: 1
+                }
+                ApplicationDetails {
+                    id: details
+                    Layout.fillWidth: true
+                    application: appInfo.application
                 }
             }
         }
 
-        Item {
-            id: screenshotsPlaceholder
+        ApplicationScreenshots {
             Layout.fillWidth: true
-            Layout.minimumHeight: width/1.618
-
-            ApplicationScreenshots {
-                application: appInfo.application
-                initialParent: screenshotsPlaceholder
-                fullParent: appInfo
-            }
+            resource: appInfo.application
         }
 
         ApplicationDescription {
@@ -111,10 +91,54 @@ Kirigami.ScrollablePage {
             z: -1
         }
 
-        ApplicationDetails {
-            id: details
+        GridLayout {
+            columns: 2
+            Label { text: i18n("Homepage:") }
+            ToolButton {
+                text: application.homepage
+                onClicked: Qt.openUrlExternally(application.homepage)
+            }
+        }
+        RowLayout {
+            Layout.alignment: Qt.AlignRight
+            spacing: 5
+            property QtObject rating: desc.application.rating
+
+            Button {
+                visible: parent.rating && parent.rating.ratingCount>0
+                text: i18n("Show comments (%1)...", parent.rating ? parent.rating.ratingCount : 0)
+                onClicked: Navigation.openReviews(application, reviewsModel)
+            }
+            Button {
+                property QtObject reviewsBackend: application.backend.reviewsBackend
+                visible: reviewsBackend != null && application.isInstalled
+                text: i18n("Review")
+                onClicked: reviewDialog.visible = true
+
+                ReviewDialog {
+                    id: reviewDialog
+                    application: desc.application
+                    onAccepted: application.backend.reviewsBackend.submitReview(application, summary, review, rating)
+                }
+            }
+        }
+
+        AddonsView {
+            id: addonsView
+            application: desc.application
             Layout.fillWidth: true
+        }
+
+        InstallApplicationButton {
+            Layout.alignment: Qt.AlignRight
             application: appInfo.application
+            fill: true
+            additionalItem: Button {
+                Layout.fillWidth: true
+                visible: application.isInstalled && application.canExecute
+                text: i18n("Launch")
+                onClicked: application.invokeApplication()
+            }
         }
     }
 }

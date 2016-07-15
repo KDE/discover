@@ -24,57 +24,18 @@ import QtQuick.Window 2.1
 import org.kde.discover.app 1.0 as Discover
 import org.kde.discover 1.0
 
-GridLayout
+ColumnLayout
 {
-    clip: true
-    id: layout
     property QtObject application
+    spacing: 1
 
-    columns: 2
-
-    Heading {
-        Layout.fillWidth: true
-        text: i18n("Details")
+    Label {
+        text: i18n("Size: %1", application.sizeDescription)
     }
-    Item { width: 5; height: 5 }//if the heading has columnSpan: 2 the whole layout shrinks
-
-    Repeater {
-        model: details
-        property list<QtObject> details: [
-            QtObject {
-                readonly property string title: i18n("Homepage")
-                readonly property string value: "<a href='"+application.homepage+"'>"+application.homepage+"</a>"
-                readonly property int span: 2
-                readonly property var url: application.homepage
-            },
-            QtObject {
-                readonly property string title: i18n("Size")
-                readonly property string value: application.sizeDescription
-            },
-            QtObject {
-                readonly property string title: i18n("License")
-                readonly property string value: application.license
-            },
-            QtObject {
-                readonly property string title: i18n("Version")
-                readonly property string value: application.isInstalled ? application.installedVersion : application.availableVersion
-            }
-        ]
-        delegate: Column {
-            Layout.fillWidth: true
-            Layout.columnSpan: modelData.span ? modelData.span : 1
-            spacing: 0
-            Label {
-                text: modelData.title
-            }
-            Label {
-                text: modelData.value
-                elide: Text.ElideRight
-                opacity: modelData.url ? 1 : 0.5
-                onLinkActivated: if (modelData.url) {
-                    Qt.openUrlExternally(modelData.url);
-                }
-            }
-        }
+    Label {
+        text: i18n("License: %1", application.license)
+    }
+    Label {
+        text: i18n("Version: %1", application.isInstalled ? application.installedVersion : application.availableVersion)
     }
 }

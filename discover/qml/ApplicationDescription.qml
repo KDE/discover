@@ -29,7 +29,6 @@ ColumnLayout
 {
     id: desc
     property QtObject application: null
-    property alias isInstalling: addonsView.isInstalling
 
     readonly property real margin: Discover.SystemFonts.generalFont.pointSize
 
@@ -43,58 +42,4 @@ ColumnLayout
         wrapMode: Text.WordWrap
         text: application.longDescription
     }
-    Item { width: 1; height: parent.margin }
-
-    AddonsView {
-        id: addonsView
-        application: parent.application
-        Layout.fillWidth: true
-    }
-
-    Item { width: 1; height: parent.margin }
-    Heading {
-        text: i18n("Comments")
-        visible: reviewsView.visible
-    }
-    Repeater {
-        id: reviewsView
-        visible: count>0
-
-        delegate: ReviewDelegate {
-            Layout.fillWidth: true
-            onMarkUseful: reviewsModel.markUseful(index, useful)
-        }
-
-        model: Discover.PaginateModel {
-            pageSize: 3
-            sourceModel: ReviewsModel {
-                id: reviewsModel
-                resource: application
-            }
-        }
-    }
-    Row {
-        anchors.horizontalCenter: parent.horizontalCenter
-        spacing: 5
-        property QtObject rating: desc.application.rating
-
-        Button {
-            visible: reviewsView.visible
-            text: i18n("More comments (%1)...", parent.rating ? parent.rating.ratingCount : 0)
-            onClicked: Navigation.openReviews(application, reviewsModel)
-        }
-        Button {
-            property QtObject reviewsBackend: application.backend.reviewsBackend
-            visible: reviewsBackend != null && application.isInstalled
-            text: i18n("Review")
-            onClicked: reviewDialog.visible = true
-
-            ReviewDialog {
-                id: reviewDialog
-                application: desc.application
-                onAccepted: application.backend.reviewsBackend.submitReview(application, summary, review, rating)
-            }
-        }
-    }
-    Item { width: 1; height: parent.margin/2 }
 }
