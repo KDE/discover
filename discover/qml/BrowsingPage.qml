@@ -26,7 +26,7 @@ import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
 import org.kde.kirigami 1.0 as Kirigami
 
-Kirigami.Page
+Kirigami.ScrollablePage
 {
     title: i18n("Discover")
     readonly property string icon: "go-home"
@@ -36,12 +36,7 @@ Kirigami.Page
             return;
         Navigation.openCategory(null)
     }
-
     CategoryDisplay {
-        anchors.fill: parent
-        Item {
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-        }
+        width: parent.width
     }
 }
