@@ -9,9 +9,9 @@ Dialog
     id: reviewDialog
 
     property QtObject application
-    property alias rating: ratingInput.rating
-    property alias summary: summaryInput.text
-    property alias review: reviewInput.text
+    readonly property alias rating: ratingInput.rating
+    readonly property alias summary: summaryInput.text
+    readonly property alias review: reviewInput.text
     title: i18n("Reviewing '%1'", application.name)
     modality: Qt.WindowModal
     width: 500

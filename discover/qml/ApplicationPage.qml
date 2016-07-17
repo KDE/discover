@@ -102,15 +102,15 @@ Kirigami.ScrollablePage {
         RowLayout {
             Layout.alignment: Qt.AlignRight
             spacing: 5
-            property QtObject rating: desc.application.rating
 
             Button {
-                visible: parent.rating && parent.rating.ratingCount>0
-                text: i18n("Show comments (%1)...", parent.rating ? parent.rating.ratingCount : 0)
+                readonly property QtObject rating: desc.application.rating
+                visible: rating && rating.ratingCount>0
+                text: i18n("Show comments (%1)...", rating ? rating.ratingCount : 0)
                 onClicked: Navigation.openReviews(application, reviewsModel)
             }
             Button {
-                property QtObject reviewsBackend: application.backend.reviewsBackend
+                readonly property QtObject reviewsBackend: application.backend.reviewsBackend
                 visible: reviewsBackend != null && application.isInstalled
                 text: i18n("Review")
                 onClicked: reviewDialog.visible = true
@@ -118,7 +118,7 @@ Kirigami.ScrollablePage {
                 ReviewDialog {
                     id: reviewDialog
                     application: desc.application
-                    onAccepted: application.backend.reviewsBackend.submitReview(application, summary, review, rating)
+                    onAccepted: parent.reviewsBackend.submitReview(application, summary, review, rating)
                 }
             }
         }
