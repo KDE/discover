@@ -107,7 +107,7 @@ Kirigami.ScrollablePage {
                 readonly property QtObject rating: desc.application.rating
                 visible: rating && rating.ratingCount>0
                 text: i18n("Show comments (%1)...", rating ? rating.ratingCount : 0)
-                onClicked: Navigation.openReviews(application, reviewsModel)
+                onClicked: Navigation.openReviews(application)
             }
             Button {
                 readonly property QtObject reviewsBackend: application.backend.reviewsBackend

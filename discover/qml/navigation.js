@@ -38,8 +38,8 @@ function openApplication(app) {
     window.stack.push(applicationComp, { application: app })
 }
 
-function openReviews(app, reviews) {
-    window.stack.push(reviewsComp, { model: reviews, title: i18n("Ratings for %1", app.name), icon: "rating" })
+function openReviews(app) {
+    window.stack.push(reviewsComp, { resource: app })
 }
 
 function openExtends(ext) {

@@ -22,12 +22,12 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 import org.kde.discover 1.0
 import org.kde.discover.app 1.0
+import org.kde.kirigami 1.0 as Kirigami
 
-ScrollView {
+Kirigami.ScrollablePage {
     id: page
-    property alias model: reviewsView.model
-    property var icon
-    property string title
+    title: i18n("Ratings for %1", resource.name)
+    property alias resource: reviewsModel.resource
 
     ListView {
         id: reviewsView
@@ -35,9 +35,12 @@ ScrollView {
         clip: true
         visible: count>0
         spacing: 5
+        model: ReviewsModel {
+            id: reviewsModel
+        }
 
         delegate: ReviewDelegate {
-            onMarkUseful: page.model.markUseful(index, useful)
+            onMarkUseful: reviewsModel.markUseful(index, useful)
         }
     }
 }
