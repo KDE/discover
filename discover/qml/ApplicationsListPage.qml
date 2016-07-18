@@ -43,7 +43,6 @@ Kirigami.ScrollablePage {
     property bool preferList: false
     property Component header: categoryHeaderComponent
     property Component extendedToolBar: null
-    property var icon: category ? category.icon : search !== "" ? "edit-find" : "go-home"
     title: category ? category.name : ""
 
     onSearchChanged: appsModel.sortOrder = Qt.AscendingOrder

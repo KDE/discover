@@ -29,7 +29,6 @@ import org.kde.kirigami 1.0 as Kirigami
 Kirigami.ScrollablePage
 {
     title: i18n("Discover")
-    readonly property string icon: "go-home"
 
     function searchFor(text) {
         if (text === "")

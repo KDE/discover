@@ -25,13 +25,13 @@ import org.kde.kquickcontrolsaddons 2.0
 import org.kde.discover 1.0
 import org.kde.discover.app 1.0
 import org.kde.kirigami 1.0 as Kirigami
+import "navigation.js" as Navigation
 
 Kirigami.ScrollablePage {
     id: appInfo
     property QtObject application: null
     clip: true
 
-    readonly property var icon: application.icon
     title: application.name
 
     mainAction: Kirigami.Action { iconName: application.icon }
@@ -124,7 +124,6 @@ Kirigami.ScrollablePage {
         }
 
         AddonsView {
-            id: addonsView
             application: desc.application
             Layout.fillWidth: true
         }

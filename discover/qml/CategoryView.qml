@@ -41,7 +41,6 @@ GridItem
 
         GridView {
             id: grid
-            readonly property real iconSide: 32
 
             cellWidth: Helpers.isCompact ? width : width/Math.floor(width/100)
             cellHeight: Helpers.isCompact ? 35 : (grid.iconSide + SystemFonts.generalFont.pixelSize*3 + 5)

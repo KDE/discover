@@ -13,8 +13,7 @@ ApplicationsListPage {
         page.changeSorting("size", Qt.DescendingOrder, "")
     }
 
-    readonly property var icon: "applications-other"
-    readonly property string title: i18n("Installed")
+    title: i18n("Installed")
 
     header: PageHeader {
         background: "https://c2.staticflickr.com/8/7146/6783941909_30c7c5d52f_b.jpg"

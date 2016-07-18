@@ -11,7 +11,6 @@ Kirigami.ScrollablePage {
     id: page
     clip: true
     title: i18n("Sources")
-    readonly property string icon: "view-filter"
 
     ListView {
         model: SourcesModel

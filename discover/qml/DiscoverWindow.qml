@@ -41,9 +41,8 @@ Kirigami.ApplicationWindow
 
     Component {
         id: loadingComponent
-        Item {
-            readonly property string title: ""
-            readonly property string icon: "applications-other"
+        Kirigami.Page {
+            title: ""
             Label {
                 id: label
                 text: i18n("Loading...")
