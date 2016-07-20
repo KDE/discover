@@ -34,6 +34,7 @@ Exec=plasma-discover %U
 Icon=plasmadiscover
 Type=Application
 X-DocPath=plasma-discover/index.html
+InitialPreference=5
 GenericName=Software Center
 GenericName[ar]=مركز برمجيّات
 GenericName[ast]=Centru de software
