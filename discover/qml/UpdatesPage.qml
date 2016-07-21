@@ -102,6 +102,10 @@ Kirigami.ScrollablePage
 
             ConditionalLoader {
                 Layout.fillWidth: true
+                Layout.leftMargin: Kirigami.Units.gridUnit
+                Layout.rightMargin: Kirigami.Units.gridUnit
+                Layout.topMargin: Kirigami.Units.smallSpacing
+                Layout.bottomMargin: Kirigami.Units.smallSpacing
 
                 visible: resourcesUpdatesModel.isProgressing || updateModel.hasUpdates
                 condition: resourcesUpdatesModel.isProgressing

@@ -23,6 +23,10 @@ Kirigami.ScrollablePage {
 
             RowLayout {
                 Layout.fillWidth: true
+                Layout.leftMargin: Kirigami.Units.gridUnit
+                Layout.rightMargin: Kirigami.Units.gridUnit
+                Layout.topMargin: Kirigami.Units.smallSpacing
+                Layout.bottomMargin: Kirigami.Units.smallSpacing
                 ToolButton {
 //                         iconName: "list-add"
                     text: i18n("Add Source")
