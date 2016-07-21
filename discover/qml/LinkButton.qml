@@ -20,6 +20,8 @@ T.ToolButton {
         text: control.text
         font: control.font
         color: Kirigami.Theme.viewBackgroundColor
+        style: Text.Raised
+        styleColor: Kirigami.Theme.disabledTextColor
         elide: Text.ElideRight
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
