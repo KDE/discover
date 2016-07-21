@@ -89,8 +89,11 @@ Kirigami.AbstractListItem
                 elide: Text.ElideRight
                 text: comment
                 maximumLineCount: 1
+                font: SystemFonts.titleFont
                 clip: true
             }
+
+            Item { height: Kirigami.Units.largeSpacing; width: 3 }
 
             Label {
                 Layout.fillWidth: true
