@@ -175,7 +175,8 @@ Kirigami.ScrollablePage
         spacing: Kirigami.Units.smallSpacing
 
         delegate: Kirigami.AbstractListItem {
-            width: ListView.view.width
+            x: Kirigami.Units.gridUnit
+            width: ListView.view.width - Kirigami.Units.gridUnit * 2
 
             ColumnLayout {
                 id: layout
