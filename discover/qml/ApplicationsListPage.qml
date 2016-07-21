@@ -38,66 +38,11 @@ Kirigami.ScrollablePage {
     property alias extend: appsModel.extends
     property alias search: appsModel.search
     property alias shouldShowTechnical: appsModel.isShowingTechnical
-    property Component sectionDelegate: null
     property alias header: apps.header
     property Component extendedToolBar: null
     title: category ? category.name : ""
 
     onSearchChanged: appsModel.sortOrder = Qt.AscendingOrder
-
-    function changeSorting(role, sorting, section) {
-        appsModel.stringSortRole = role
-        appsModel.sortOrder=sorting
-        apps.section.property = section
-        apps.section.delegate = role=="canUpgrade" ? installedSectionDelegate : defaultSectionDelegate
-    }
-
-    readonly property var fu: ExclusiveGroup { id: sortActionGroup }
-    readonly property string currentSortAction: sortActionGroup.current.text
-    readonly property Menu sortMenu: Menu {
-        MenuItem {
-            text: i18n("Name")
-            onTriggered: page.changeSorting("name", Qt.AscendingOrder, "")
-            checked: appsModel.stringSortRole=="name"
-            checkable: true
-            exclusiveGroup: sortActionGroup
-        }
-        MenuItem {
-            text: i18n("Popularity")
-            onTriggered: page.changeSorting("sortableRating", Qt.DescendingOrder, "")
-            checked: appsModel.stringSortRole=="sortableRating"
-            checkable: true
-            exclusiveGroup: sortActionGroup
-        }
-        MenuItem {
-            text: i18n("Buzz")
-            onTriggered: page.changeSorting("ratingPoints", Qt.DescendingOrder, "")
-            checked: appsModel.stringSortRole=="ratingPoints"
-            checkable: true
-            exclusiveGroup: sortActionGroup
-        }
-        MenuItem {
-            text: i18n("Origin")
-            onTriggered: page.changeSorting("origin", Qt.DescendingOrder, "origin")
-            checked: appsModel.stringSortRole=="origin"
-            checkable: true
-            exclusiveGroup: sortActionGroup
-        }
-        MenuItem {
-            text: i18n("Installed")
-            onTriggered: page.changeSorting("canUpgrade", Qt.DescendingOrder, "canUpgrade")
-            checked: appsModel.stringSortRole=="canUpgrade"
-            checkable: true
-            exclusiveGroup: sortActionGroup
-        }
-        MenuItem {
-            text: i18n("Size")
-            onTriggered: page.changeSorting("size", Qt.DescendingOrder, "")
-            checked: appsModel.stringSortRole=="size"
-            checkable: true
-            exclusiveGroup: sortActionGroup
-        }
-    }
 
     Component {
         id: categoryHeaderComponent
@@ -114,30 +59,15 @@ Kirigami.ScrollablePage {
         }
     }
 
-    Component {
-        id: defaultSectionDelegate
-        Label {
+    ListView {
+        id: apps
+        anchors.fill: parent
+        section.delegate: Label {
             text: section
             anchors {
                 right: parent.right
             }
         }
-    }
-    
-    Component {
-        id: installedSectionDelegate
-        Label {
-            text: (section=="true" ? i18n("Update") :
-                section=="false" ? i18n("Installed") :
-                section)
-            anchors {
-                right: parent.right
-            }
-        }
-    }
-    ListView {
-        id: apps
-        anchors.fill: parent
 
         header: categoryHeaderComponent
         model: ApplicationProxyModel {
