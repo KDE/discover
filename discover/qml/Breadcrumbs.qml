@@ -73,7 +73,7 @@ RowLayout {
                 text: ">"
                 color: button.textColor
             }
-            MuonToolButton {
+            LinkButton {
                 id: button
                 Layout.fillHeight: true
 

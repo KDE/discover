@@ -48,7 +48,7 @@ ColumnLayout
             model: CategoryModel {
                 id: catModel
             }
-            delegate: ToolButton {
+            delegate: HeaderButton {
                 text: display
                 onClicked: Navigation.openCategory(category)
             }

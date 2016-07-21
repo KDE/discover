@@ -35,7 +35,8 @@
     <file>qml/MessageAction.qml</file>
     <file>qml/JustMessageAction.qml</file>
     <file>qml/ConditionalLoader.qml</file>
-    <file>qml/MuonToolButton.qml</file>
+    <file>qml/LinkButton.qml</file>
+    <file>qml/HeaderButton.qml</file>
     <file>qml/ApplicationDetails.qml</file>
     <file>qml/ApplicationScreenshots.qml</file>
     <file>qml/ApplicationIndicator.qml</file>
