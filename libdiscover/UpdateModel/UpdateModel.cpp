@@ -88,8 +88,8 @@ void UpdateModel::activityChanged()
         setResources(QList<AbstractResource*>());
     } else if(!m_updates->isProgressing()) {
         m_updates->prepare();
-        m_updates->fetchChangelog();
         setResources(m_updates->toUpdate());
+        m_updates->fetchChangelog();
     }
 }
 
