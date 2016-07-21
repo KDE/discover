@@ -73,6 +73,7 @@ Kirigami.AbstractListItem
                 }
                 Label {
                     text: category[0]
+                    color: Kirigami.Theme.linkColor
                 }
             }
 
