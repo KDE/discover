@@ -7,11 +7,6 @@ import org.kde.discover.app 1.0
 ApplicationsListPage {
     id: page
     stateFilter: 2
-    preferList: true
-
-    Component.onCompleted: {
-        page.changeSorting("size", Qt.DescendingOrder, "")
-    }
 
     title: i18n("Installed")
 
@@ -25,11 +20,6 @@ ApplicationsListPage {
                 text: i18np("%1 job pending...", "%1 jobs pending...", TransactionModel.count)
             }
             Item { Layout.fillWidth: true }
-            Label { text: i18n("Sort by ") }
-            Button {
-                text: page.currentSortAction
-                menu: page.sortMenu
-            }
         }
     }
 }
