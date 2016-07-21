@@ -68,6 +68,7 @@ ColumnLayout
         filteredCategory: page.category
         title: i18n("Most Popular")
         extended: true
+        visible: bread.search === ""
         roleDelegate: Item {
             width: bg.width
             implicitWidth: bg.implicitWidth
