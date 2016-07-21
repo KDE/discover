@@ -56,8 +56,6 @@ ColumnLayout {
         }
         delegate: ConditionalLoader {
             Layout.fillWidth: parent
-            Layout.leftMargin: Kirigami.Units.gridUnit
-            Layout.rightMargin: Kirigami.Units.gridUnit
             condition: model["name"] !== undefined
             componentFalse: Item {}
             componentTrue: ApplicationDelegate {}

@@ -29,6 +29,10 @@ import org.kde.kirigami 1.0 as Kirigami
 Kirigami.ScrollablePage
 {
     title: i18n("Discover")
+    leftPadding: 0
+    rightPadding: 0
+    topPadding: 0
+    bottomPadding: 0
 
     function searchFor(text) {
         if (text === "")

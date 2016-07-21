@@ -24,6 +24,7 @@ import org.kde.discover 1.0
 import org.kde.discover.app 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
+import org.kde.kirigami 1.0 as Kirigami
 
 ColumnLayout
 {
@@ -44,6 +45,8 @@ ColumnLayout
 
         ListView {
             Layout.fillWidth: true
+            Layout.leftMargin: Kirigami.Units.gridUnit
+            Layout.rightMargin: Kirigami.Units.gridUnit
             orientation: ListView.Horizontal
             model: CategoryModel {
                 id: catModel
@@ -59,6 +62,8 @@ ColumnLayout
 
     ApplicationsTop {
         Layout.fillWidth: true
+        Layout.leftMargin: Kirigami.Units.gridUnit
+        Layout.rightMargin: Kirigami.Units.gridUnit
         sortRole: "ratingCount"
         filteredCategory: page.category
         title: i18n("Most Popular")

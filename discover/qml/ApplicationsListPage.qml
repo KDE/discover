@@ -38,10 +38,8 @@ Kirigami.ScrollablePage {
     property alias extend: appsModel.extends
     property alias search: appsModel.search
     property alias shouldShowTechnical: appsModel.isShowingTechnical
-    property string sectionProperty: ""
     property Component sectionDelegate: null
-    property bool preferList: false
-    property Component header: categoryHeaderComponent
+    property alias header: apps.header
     property Component extendedToolBar: null
     title: category ? category.name : ""
 
@@ -50,8 +48,8 @@ Kirigami.ScrollablePage {
     function changeSorting(role, sorting, section) {
         appsModel.stringSortRole = role
         appsModel.sortOrder=sorting
-        page.sectionProperty = section
-        page.sectionDelegate = role=="canUpgrade" ? installedSectionDelegate : defaultSectionDelegate
+        apps.section.property = section
+        apps.section.delegate = role=="canUpgrade" ? installedSectionDelegate : defaultSectionDelegate
     }
 
     readonly property var fu: ExclusiveGroup { id: sortActionGroup }
@@ -107,39 +105,15 @@ Kirigami.ScrollablePage {
             id: categoryHeader
             category: page.category
             search: appsModel.search
+            width: apps.width
 
-            RowLayout {
-                visible: page.visible
-                spacing: 3
-
-                ToolButton {
-                    id: sortButton
-                    iconName: "view-sort-ascending"
-                    onClicked: menu.popup()
-
-                    menu: sortMenu
-                }
+            Item {
+                Layout.fillWidth: true
+                height: Kirigami.Units.largeSpacing * 3
             }
         }
     }
 
-    Component {
-        id: appListHeader
-        ColumnLayout {
-            width: ListView.view.width
-            Loader {
-                Layout.fillWidth: true
-                sourceComponent: categoryHeaderComponent
-            }
-            Label {
-                text: i18n("Resources")
-                Layout.fillWidth: true
-                font.weight: Font.Bold
-                Layout.minimumHeight: paintedHeight*1.5
-            }
-        }
-    }
-    
     Component {
         id: defaultSectionDelegate
         Label {
@@ -164,10 +138,8 @@ Kirigami.ScrollablePage {
     ListView {
         id: apps
         anchors.fill: parent
-        section.property: page.sectionProperty
-        section.delegate: page.sectionDelegate
 
-        header: page.header == categoryHeaderComponent ? appListHeader : page.header
+        header: categoryHeaderComponent
         model: ApplicationProxyModel {
             id: appsModel
             isSortingByRelevancy: true
