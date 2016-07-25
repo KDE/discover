@@ -71,7 +71,9 @@ QStringList AppPackageKitResource::mimetypes() const
 
 QStringList AppPackageKitResource::categories()
 {
-    return m_appdata.categories();
+    auto cats = m_appdata.categories();
+    cats.append(QStringLiteral("Application"));
+    return cats;
 }
 
 QString AppPackageKitResource::comment()
