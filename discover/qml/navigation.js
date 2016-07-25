@@ -18,20 +18,22 @@
  */
 
 function openApplicationListSource(origin) {
-    openApplicationList({ originFilter: origin, preferList: true, title: origin, icon: "view-filter" })
+    openApplicationList({ originFilter: origin, title: origin })
 }
 
 function openApplicationMime(mime) {
-    openApplicationList({ mimeTypeFilter: mime , icon: "document-open-data", title: i18n("Resources for '%1'", mime) })
+    openApplicationList({ mimeTypeFilter: mime , title: i18n("Resources for '%1'", mime) })
 }
 
 function openApplicationList(props) {
     window.stack.clear();
-    window.stack.push(applicationListComp, props)
+    var page = window.stack.push(applicationListComp, props)
+    if (props.search === "")
+        page.clearSearch()
 }
 
-function openCategory(cat) {
-    openApplicationList({ category: cat })
+function openCategory(cat, search) {
+    openApplicationList({ category: cat, search: search })
 }
 
 function openApplication(app) {

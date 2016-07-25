@@ -29,8 +29,8 @@ import org.kde.kirigami 1.0 as Kirigami
 ColumnLayout
 {
     id: page
-    property alias category: catModel.displayedCategory
-    property real spacing: 3
+    property alias category: bread.category
+    property alias subcategories: catModel.categories
     property alias search: bread.search
 
     PageHeader {
@@ -44,43 +44,23 @@ ColumnLayout
         }
 
         ListView {
+            id: categoriesView
             Layout.fillWidth: true
             Layout.leftMargin: Kirigami.Units.gridUnit
             Layout.rightMargin: Kirigami.Units.gridUnit
             orientation: ListView.Horizontal
             model: CategoryModel {
                 id: catModel
+                Component.onCompleted: if(!page.category) {
+                    resetCategories()
+                }
             }
             delegate: HeaderButton {
                 text: display
-                onClicked: Navigation.openCategory(category)
+                onClicked: Navigation.openCategory(category, bread.search)
             }
             spacing: 3
             height: SystemFonts.generalFont.pointSize * 3
-        }
-    }
-
-    ApplicationsTop {
-        Layout.fillWidth: true
-        Layout.leftMargin: Kirigami.Units.gridUnit
-        Layout.rightMargin: Kirigami.Units.gridUnit
-        sortRole: "ratingCount"
-        filteredCategory: page.category
-        title: i18n("Most Popular")
-        extended: true
-        visible: bread.search === ""
-        roleDelegate: Item {
-            width: bg.width
-            implicitWidth: bg.implicitWidth
-            property var model
-            LabelBackground {
-                id: bg
-                anchors {
-                    verticalCenter: parent.verticalCenter
-                    right: parent.right
-                }
-                text: model ? model.ratingCount : ""
-            }
         }
     }
 }

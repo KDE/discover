@@ -50,6 +50,7 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QSortFilterProxyModel
     Q_PROPERTY(QString mimeTypeFilter READ mimeTypeFilter WRITE setMimeTypeFilter)
     Q_PROPERTY(QString search READ lastSearch WRITE setSearch NOTIFY searchChanged)
     Q_PROPERTY(QString extends READ extends WRITE setExtends)
+    Q_PROPERTY(QList<Category*> subcategories READ subcategories NOTIFY subcategoriesChanged)
 public:
     explicit ResourcesProxyModel(QObject *parent=nullptr);
 
@@ -76,6 +77,8 @@ public:
     QString extends() const;
     void setExtends(const QString &extends);
 
+    QList<Category*> subcategories() const;
+
 protected:
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
 
@@ -89,9 +92,6 @@ private:
     QList<AbstractResource*> m_searchResults;
 
     typedef QPair<FilterType, QString> FilterPair;
-    QVector<FilterPair> m_andFilters;
-    QVector<FilterPair> m_orFilters;
-    QVector<FilterPair> m_notFilters;
     QHash<QByteArray, QVariant> m_roleFilters;
 
     bool m_sortByRelevancy;
@@ -106,6 +106,7 @@ Q_SIGNALS:
     void stateFilterChanged();
     void showTechnicalChanged();
     void searchChanged(const QString &search);
+    void subcategoriesChanged(const QList<Category*>& subcategories);
 };
 
 #endif

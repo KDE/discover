@@ -108,7 +108,7 @@ Kirigami.ApplicationWindow
         }
         onListCategoryInternal:  {
             currentTopLevel = topBrowsingComp;
-            Navigation.openCategory(cat)
+            Navigation.openCategory(cat, "")
         }
     }
 

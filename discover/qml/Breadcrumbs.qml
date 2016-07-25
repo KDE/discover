@@ -34,7 +34,7 @@ RowLayout {
     Kirigami.Action {
         id: searchAction
         text: bread.search? i18n("Search: %1", bread.search) : ""
-        onTriggered: Navigation.openCategory(category);
+        onTriggered: Navigation.openCategory(category, "");
     }
 
     Component {
@@ -42,7 +42,7 @@ RowLayout {
         Kirigami.Action {
             property QtObject category
             text: category.name
-            onTriggered: Navigation.openCategory(category)
+            onTriggered: Navigation.openCategory(category, bread.search)
         }
     }
 
@@ -53,6 +53,7 @@ RowLayout {
             category = category.parent;
 
         while(category) {
+            //TODO: check for leaks
             var categoryAction = categoryActionComponent.createObject(rep, { category: category })
             ret.unshift(categoryAction)
             category = category.parent

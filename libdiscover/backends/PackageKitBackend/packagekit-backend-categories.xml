@@ -34,9 +34,7 @@
         <Or>
           <Category>Development</Category>
         </Or>
-        <Filename>emacs.desktop</Filename>
       </Include>
-
 
       <Menu>
         <Name>Debugging</Name>

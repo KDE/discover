@@ -23,15 +23,14 @@
 
 #include <QStandardItemModel>
 #include <QQmlParserStatus>
+#include "Category.h"
 
 #include "discovercommon_export.h"
 
-class Category;
-
-class DISCOVERCOMMON_EXPORT CategoryModel : public QStandardItemModel, public QQmlParserStatus
+class DISCOVERCOMMON_EXPORT CategoryModel : public QStandardItemModel
 {
     Q_OBJECT
-    Q_PROPERTY(Category* displayedCategory READ displayedCategory WRITE setDisplayedCategory NOTIFY categoryChanged)
+    Q_PROPERTY(QList<Category *> categories READ categories WRITE setCategories NOTIFY categoryChanged)
     public:
         enum CategoryModelRole {
             CategoryRole = Qt::UserRole + 1
@@ -41,25 +40,23 @@ class DISCOVERCOMMON_EXPORT CategoryModel : public QStandardItemModel, public QQ
 
         Category* categoryForRow(int row);
 
-        void setDisplayedCategory(Category* c);
-        Category* displayedCategory() const;
         QHash< int, QByteArray > roleNames() const override;
 
         Q_SCRIPTABLE static Category* findCategoryByName(const QString& name);
         static void blacklistPlugin(const QString& name);
+        static QList<Category*> rootCategories();
 
-        void classBegin() override {}
-        void componentComplete() override;
+        void setCategories(const QList<Category *> &categoryList);
+        QList<Category*> categories() const { return m_categories; }
+        Q_SCRIPTABLE void resetCategories();
 
     Q_SIGNALS:
-        void categoryChanged(Category* displayedCategory);
+        void categoryChanged();
 
     private:
-        void resetCategories();
         void categoryDeleted(QObject* cat);
-        void setCategories(const QVector<Category *> &categoryList);
 
-        Category* m_currentCategory;
+        QList<Category*> m_categories;
 };
 
 #endif // CATEGORYMODEL_H

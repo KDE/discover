@@ -33,21 +33,23 @@ Kirigami.GlobalDrawer {
     titleIcon: "plasmadiscover"
     bannerImageSource: "image://icon/plasma"
 
-    function itemsFilter(actions, items) {
-        var ret = [];
-        for(var v in actions)
-            ret.push(actions[v]);
-
-        return ret.concat(items);
-    }
     topContent: TextField {
+        id: searchField
         Layout.fillWidth: true
 
-        enabled: window.stack.currentItem!=null && (window.stack.currentItem.searchFor!=null || window.stack.currentItem.hasOwnProperty("search"))
+        enabled: window.stack.currentItem && (window.stack.currentItem.searchFor != null || window.stack.currentItem.hasOwnProperty("search"))
         focus: true
 
         placeholderText: (!enabled || window.stack.currentItem.title == "") ? i18n("Search...") : i18n("Search in '%1'...", window.stack.currentItem.title)
         onTextChanged: searchTimer.running = true
+
+        Connections {
+            target: window.stack.currentItem
+            onClearSearch: {
+                searchField.text = ""
+                console.log("search cleared")
+            }
+        }
 
         Timer {
             id: searchTimer
@@ -87,10 +89,12 @@ Kirigami.GlobalDrawer {
 
     property var objects: []
     Instantiator {
-        model: CategoryModel {}
+        model: CategoryModel {
+            Component.onCompleted: resetCategories()
+        }
         delegate: Kirigami.Action {
             text: display
-            onTriggered: Navigation.openCategory(category)
+            onTriggered: Navigation.openCategory(category, "")
         }
 
         onObjectAdded: {

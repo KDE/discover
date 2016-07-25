@@ -37,9 +37,32 @@ Kirigami.ScrollablePage
     function searchFor(text) {
         if (text === "")
             return;
-        Navigation.openCategory(null)
+        Navigation.openCategory(null, "")
     }
     CategoryDisplay {
+        category: null
         width: parent.width
+
+        ApplicationsTop {
+            Layout.fillWidth: true
+            Layout.leftMargin: Kirigami.Units.gridUnit
+            Layout.rightMargin: Kirigami.Units.gridUnit
+            sortRole: "ratingCount"
+            title: i18n("Most Popular")
+            extended: true
+            roleDelegate: Item {
+                width: bg.width
+                implicitWidth: bg.implicitWidth
+                property var model
+                LabelBackground {
+                    id: bg
+                    anchors {
+                        verticalCenter: parent.verticalCenter
+                        right: parent.right
+                    }
+                    text: model ? model.ratingCount : ""
+                }
+            }
+        }
     }
 }

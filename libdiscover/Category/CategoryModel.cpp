@@ -28,7 +28,6 @@ Q_GLOBAL_STATIC_WITH_ARGS(QVector<Category*>, s_categories, (CategoriesReader().
 
 CategoryModel::CategoryModel(QObject* parent)
     : QStandardItemModel(parent)
-    , m_currentCategory(nullptr)
 {
 }
 
@@ -39,12 +38,12 @@ QHash< int, QByteArray > CategoryModel::roleNames() const
     return names;
 }
 
-void CategoryModel::setCategories(const QVector<Category *> &categoryList)
+void CategoryModel::setCategories(const QList<Category *> &categoryList)
 {
     clear();
 
-    invisibleRootItem()->removeRows(0, invisibleRootItem()->rowCount());
-    foreach (Category *category, categoryList) {
+    m_categories = categoryList;
+    foreach (Category *category, m_categories) {
         QStandardItem *categoryItem = new QStandardItem;
         categoryItem->setText(category->name());
         categoryItem->setIcon(QIcon::fromTheme(category->icon()));
@@ -54,6 +53,7 @@ void CategoryModel::setCategories(const QVector<Category *> &categoryList)
 
         appendRow(categoryItem);
     }
+    sort(0);
 }
 
 void CategoryModel::categoryDeleted(QObject* cat)
@@ -70,28 +70,12 @@ Category* CategoryModel::categoryForRow(int row)
     return qobject_cast<Category*>(item(row)->data(CategoryRole).value<QObject*>());
 }
 
-void CategoryModel::setDisplayedCategory(Category* c)
-{
-    if (m_currentCategory == c && (c || rowCount()>0))
-        return;
-
-    m_currentCategory = c;
-    resetCategories();
-
-    Q_EMIT categoryChanged(c);
-}
-
-Category* CategoryModel::displayedCategory() const
-{
-    return m_currentCategory;
-}
-
 static Category* recFindCategory(Category* root, const QString& name)
 {
     if(root->name()==name)
         return root;
     else {
-        const QVector<Category*> subs = root->subCategories();
+        const auto subs = root->subCategories();
         Q_FOREACH (Category* c, subs) {
             Category* ret = recFindCategory(c, name);
             if(ret)
@@ -101,9 +85,14 @@ static Category* recFindCategory(Category* root, const QString& name)
     return nullptr;
 }
 
+QList<Category*> CategoryModel::rootCategories()
+{
+    return s_categories->toList();
+}
+
 Category* CategoryModel::findCategoryByName(const QString& name)
 {
-    const QVector<Category*> cats = *s_categories;
+    const auto cats = *s_categories;
     Q_FOREACH (Category* cat, cats) {
         Category* ret = recFindCategory(cat, name);
         if(ret)
@@ -126,14 +115,5 @@ void CategoryModel::blacklistPlugin(const QString& name)
 
 void CategoryModel::resetCategories()
 {
-    if(m_currentCategory)
-        setCategories(m_currentCategory->subCategories());
-    else
-        setCategories(*s_categories);
-}
-
-void CategoryModel::componentComplete()
-{
-    if (rowCount() == 0)
-        resetCategories();
+    setCategories(rootCategories());
 }

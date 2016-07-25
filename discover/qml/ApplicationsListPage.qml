@@ -43,21 +43,7 @@ Kirigami.ScrollablePage {
     title: category ? category.name : ""
 
     onSearchChanged: appsModel.sortOrder = Qt.AscendingOrder
-
-    Component {
-        id: categoryHeaderComponent
-        CategoryDisplay {
-            id: categoryHeader
-            category: page.category
-            search: appsModel.search
-            width: apps.width
-
-            Item {
-                Layout.fillWidth: true
-                height: Kirigami.Units.largeSpacing * 3
-            }
-        }
-    }
+    signal clearSearch()
 
     ListView {
         id: apps
@@ -69,7 +55,17 @@ Kirigami.ScrollablePage {
             }
         }
 
-        header: categoryHeaderComponent
+        header: CategoryDisplay {
+            category: appsModel.filteredCategory
+            subcategories: appsModel.subcategories
+            search: appsModel.search
+            width: apps.width
+
+            Item {
+                Layout.fillWidth: true
+                height: Kirigami.Units.largeSpacing * 3
+            }
+        }
         model: ApplicationProxyModel {
             id: appsModel
             isSortingByRelevancy: true
