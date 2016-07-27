@@ -93,13 +93,17 @@ ScrollView
         }
 
         delegate: GridItem {
+            id: delegateItem
             x: proposedMargin
             width: Math.min(Helpers.actualWidth, page.viewport.width)
             height: layout.extended ? 200 : layout.implicitHeight + 2*internalMargin
+            enabled: !resourcesUpdatesModel.isProgressing
+            onEnabledChanged: if (!enabled) {
+                layout.extended = false;
+            }
 
             ColumnLayout {
                 id: layout
-                enabled: !resourcesUpdatesModel.isProgressing
                 property bool extended: false
                 anchors.fill: parent
                 RowLayout {
