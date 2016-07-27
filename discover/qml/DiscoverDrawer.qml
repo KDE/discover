@@ -44,6 +44,7 @@ Kirigami.GlobalDrawer {
         onTextChanged: searchTimer.running = true
 
         Connections {
+            ignoreUnknownSignals: true
             target: window.stack.currentItem
             onClearSearch: {
                 searchField.text = ""
