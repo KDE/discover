@@ -89,7 +89,6 @@ void UpdateModel::activityChanged()
     } else if(!m_updates->isProgressing()) {
         m_updates->prepare();
         setResources(m_updates->toUpdate());
-        m_updates->fetchChangelog();
     }
 }
 
@@ -164,6 +163,15 @@ bool UpdateModel::setData(const QModelIndex &idx, const QVariant &value, int rol
     }
 
     return false;
+}
+
+void UpdateModel::fetchChangelog(int row)
+{
+    UpdateItem *item = itemFromIndex(index(row, 0));
+    Q_ASSERT(item);
+    if (!item) return;
+
+    item->app()->fetchChangelog();
 }
 
 void UpdateModel::integrateChangelog(const QString &changelog)
