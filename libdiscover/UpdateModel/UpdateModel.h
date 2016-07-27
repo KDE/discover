@@ -69,6 +69,8 @@ public:
     ///packages marked to upgrade
     int toUpdateCount() const;
 
+    Q_SCRIPTABLE void fetchChangelog(int row);
+
     QString updateSize() const;
 
     ResourcesUpdatesModel* backend() const;

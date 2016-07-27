@@ -155,7 +155,10 @@ ScrollView
                 }
             }
 
-            onClicked: layout.extended = !layout.extended
+            onClicked: {
+                updateModel.fetchChangelog(index)
+                layout.extended = !layout.extended
+            }
         }
     }
 }
