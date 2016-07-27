@@ -181,6 +181,10 @@ Kirigami.ScrollablePage
         delegate: Kirigami.AbstractListItem {
             x: Kirigami.Units.gridUnit
             width: ListView.view.width - Kirigami.Units.gridUnit * 2
+            enabled: !resourcesUpdatesModel.isProgressing
+            onEnabledChanged: if (!enabled) {
+                layout.extended = false;
+            }
 
             ColumnLayout {
                 id: layout
@@ -188,7 +192,6 @@ Kirigami.ScrollablePage
                     left: parent.left
                     right: parent.right
                 }
-                enabled: !resourcesUpdatesModel.isProgressing
                 property bool extended: false
                 RowLayout {
                     Layout.fillWidth: true
@@ -242,7 +245,10 @@ Kirigami.ScrollablePage
                 }
             }
 
-            onClicked: layout.extended = !layout.extended
+            onClicked: {
+                updateModel.fetchChangelog(index)
+                layout.extended = !layout.extended
+            }
         }
     }
 }
