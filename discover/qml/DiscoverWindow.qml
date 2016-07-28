@@ -115,7 +115,7 @@ Kirigami.ApplicationWindow
     globalDrawer: DiscoverDrawer {}
 
     onCurrentTopLevelChanged: {
-        if(currentTopLevel.status==Component.Error) {
+        if(currentTopLevel && currentTopLevel.status==Component.Error) {
             console.log("status error: "+currentTopLevel.errorString())
         }
         var stackView = window.pageStack;
