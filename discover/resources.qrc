@@ -12,6 +12,7 @@
     <file>qml/ApplicationDelegate.qml</file>
     <file>qml/ApplicationsGridDelegate.qml</file>
     <file>qml/Breadcrumbs.qml</file>
+    <file>qml/CategoryBreadcrumbs.qml</file>
     <file>qml/InstallApplicationButton.qml</file>
     <file>qml/Rating.qml</file>
     <file>qml/UpdatesPage.qml</file>

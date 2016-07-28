@@ -48,6 +48,14 @@ ColumnLayout {
         Item {
             id: topItem
             anchors.fill: parent
+            data: Breadcrumbs {
+                Kirigami.Action {
+                    id: currentPage
+                    text: page.title
+                    enabled: false
+                }
+                model: [ homeAction, currentPage ]
+            }
         }
 
         Label {

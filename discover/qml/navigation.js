@@ -47,3 +47,8 @@ function openReviews(app) {
 function openExtends(ext) {
     window.stack.push(applicationListComp, { extend: ext, title: i18n("Extensions...") })
 }
+
+function openHome() {
+    window.stack.clear();
+    window.stack.push(topBrowsingComp)
+}

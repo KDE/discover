@@ -26,44 +26,15 @@ import "navigation.js" as Navigation
 
 RowLayout {
     id: bread
-    property var category
-    property string search
+    property alias model: rep.model
 
-    spacing: 2
-
-    Kirigami.Action {
-        id: searchAction
-        text: bread.search? i18n("Search: %1", bread.search) : ""
-        onTriggered: Navigation.openCategory(category, "");
-    }
-
-    Component {
-        id: categoryActionComponent
-        Kirigami.Action {
-            property QtObject category
-            text: category.name
-            onTriggered: Navigation.openCategory(category, bread.search)
-            enabled: category != bread.category
-        }
-    }
-
-    function breadcrumbs(search, category) {
-        var ret = [];
-
-        while(category) {
-            //TODO: check for leaks
-            var categoryAction = categoryActionComponent.createObject(rep, { category: category })
-            ret.unshift(categoryAction)
-            category = category.parent
-        }
-        if (search !== "")
-            ret.unshift(searchAction);
-        return ret
+    readonly property Action homeAction: Kirigami.Action {
+        text: i18n("Home")
+        onTriggered: Navigation.openHome()
     }
 
     Repeater {
         id: rep
-        model: breadcrumbs(bread.search, bread.category)
 
         delegate: RowLayout {
             spacing: 0
@@ -75,17 +46,8 @@ RowLayout {
             LinkButton {
                 id: button
                 Layout.fillHeight: true
-
-                text: modelData.text
-                enabled: modelData.enabled
-                onClicked: modelData.trigger()
+                action: modelData
             }
-        }
-    }
-    function doClick(index) {
-        var pos = bread.pageStack.depth
-        for(; pos>(index+1); --pos) {
-            bread.pageStack.pop(pos>index).destroy(2000);
         }
     }
 }

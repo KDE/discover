@@ -3,6 +3,7 @@ import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 1.0
 import org.kde.discover.app 1.0
+import org.kde.kirigami 1.0 as Kirigami
 
 ApplicationsListPage {
     id: page

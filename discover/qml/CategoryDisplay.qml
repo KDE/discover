@@ -32,13 +32,15 @@ ColumnLayout
     property alias category: bread.category
     property alias subcategories: catModel.categories
     property alias search: bread.search
+    property alias headerItem: header.headerItem
 
     PageHeader {
+        id: header
         Layout.fillWidth: true
         background: category ? category.decoration : "https://c2.staticflickr.com/8/7193/6900377481_76367f973a_o.jpg"
         search: page.search
 
-        headerItem: Breadcrumbs {
+        headerItem: CategoryBreadcrumbs {
             id: bread
             category: page.category
         }
