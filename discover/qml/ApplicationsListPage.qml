@@ -58,7 +58,10 @@ Kirigami.ScrollablePage {
             category: appsModel.filteredCategory
             subcategories: appsModel.subcategories
             search: appsModel.search
-            width: apps.width
+            anchors {
+                left: parent.left
+                right: parent.right
+            }
 
             Item {
                 Layout.fillWidth: true

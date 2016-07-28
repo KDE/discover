@@ -45,7 +45,10 @@ Kirigami.ScrollablePage
 
         header: PageHeader {
             id: header
-            width: parent.width
+            anchors {
+                left: parent.left
+                right: parent.right
+            }
             background: "https://c2.staticflickr.com/4/3095/3246726097_711731f31a_b.jpg"
 
             Component {
