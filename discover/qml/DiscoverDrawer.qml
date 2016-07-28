@@ -72,21 +72,34 @@ Kirigami.GlobalDrawer {
         Layout.fillWidth: true
 
         Kirigami.BasicListItem {
+            checked: installedAction.checked
             icon: installedAction.iconName
             label: installedAction.text
             onClicked: installedAction.trigger()
         }
         Kirigami.BasicListItem {
+            checked: settingsAction.checked
             icon: settingsAction.iconName
             label: settingsAction.text
             onClicked: settingsAction.trigger()
         }
         Kirigami.BasicListItem {
+            checked: updateAction.checked
             icon: updateAction.iconName
             label: updateAction.text
             onClicked: updateAction.trigger()
         }
     }
+
+    function rootCategory(cat) {
+        var ret = null
+        while (cat) {
+            ret = cat
+            cat = cat.parent
+        }
+        return ret
+    }
+    readonly property var currentRootCategory: window.stack.currentItem ? rootCategory(window.stack.currentItem.category) : null
 
     property var objects: []
     Instantiator {
@@ -96,6 +109,8 @@ Kirigami.GlobalDrawer {
         delegate: Kirigami.Action {
             text: display
             onTriggered: Navigation.openCategory(category, "")
+            checkable: true
+            checked: drawer.currentRootCategory == category
         }
 
         onObjectAdded: {
