@@ -39,7 +39,6 @@ Kirigami.ScrollablePage {
     property alias search: appsModel.search
     property alias shouldShowTechnical: appsModel.isShowingTechnical
     property alias header: apps.header
-    property Component extendedToolBar: null
     title: category ? category.name : ""
 
     onSearchChanged: appsModel.sortOrder = Qt.AscendingOrder
