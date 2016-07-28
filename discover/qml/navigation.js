@@ -27,6 +27,7 @@ function openApplicationMime(mime) {
 
 function openApplicationList(props) {
     window.stack.clear();
+    window.currentTopLevel=null
     var page = window.stack.push(applicationListComp, props)
     if (props.search === "")
         page.clearSearch()
