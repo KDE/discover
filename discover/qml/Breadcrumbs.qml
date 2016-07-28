@@ -43,14 +43,12 @@ RowLayout {
             property QtObject category
             text: category.name
             onTriggered: Navigation.openCategory(category, bread.search)
+            enabled: category != bread.category
         }
     }
 
     function breadcrumbs(search, category) {
         var ret = [];
-
-        if (category) //skip the first one
-            category = category.parent;
 
         while(category) {
             //TODO: check for leaks
@@ -79,6 +77,7 @@ RowLayout {
                 Layout.fillHeight: true
 
                 text: modelData.text
+                enabled: modelData.enabled
                 onClicked: modelData.trigger()
             }
         }

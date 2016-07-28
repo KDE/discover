@@ -13,7 +13,9 @@ T.ToolButton {
     readonly property alias textColor: textItem.color
     hoverEnabled: true
 
-    onHoveredChanged: textItem.font.underline = control.hovered
+    onHoveredChanged: {
+        textItem.font.underline = hovered && enabled
+    }
 
     contentItem: Text {
         id: textItem
