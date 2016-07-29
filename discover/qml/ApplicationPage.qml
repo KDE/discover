@@ -27,7 +27,7 @@ import org.kde.discover.app 1.0
 import org.kde.kirigami 1.0 as Kirigami
 import "navigation.js" as Navigation
 
-Kirigami.ScrollablePage {
+DiscoverPage {
     id: appInfo
     property QtObject application: null
     clip: true

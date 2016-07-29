@@ -26,7 +26,7 @@ import org.kde.discover.app 1.0
 import "navigation.js" as Navigation
 import org.kde.kirigami 1.0 as Kirigami
 
-Kirigami.ScrollablePage
+DiscoverPage
 {
     title: i18n("Discover")
     leftPadding: 0
@@ -39,6 +39,7 @@ Kirigami.ScrollablePage
             return;
         Navigation.openCategory(null, "")
     }
+    pageHeader: Item {}
     CategoryDisplay {
         category: null
         width: parent.width

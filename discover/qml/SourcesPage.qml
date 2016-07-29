@@ -7,7 +7,7 @@ import org.kde.kquickcontrolsaddons 2.0
 import org.kde.kirigami 1.0 as Kirigami
 import "navigation.js" as Navigation
 
-Kirigami.ScrollablePage {
+DiscoverPage {
     id: page
     clip: true
     title: i18n("Sources")

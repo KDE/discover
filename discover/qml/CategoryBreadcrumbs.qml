@@ -22,7 +22,7 @@ import org.kde.kirigami 1.0 as Kirigami
 import "navigation.js" as Navigation
 
 Breadcrumbs {
-    id: bread
+    id: root
     property var category
     property string search
 
@@ -30,7 +30,7 @@ Breadcrumbs {
 
     Kirigami.Action {
         id: searchAction
-        text: bread.search? i18n("Search: %1", bread.search) : ""
+        text: root.search ? i18n("Search: %1", root.search) : ""
         onTriggered: Navigation.openCategory(category, "");
     }
 
@@ -39,8 +39,8 @@ Breadcrumbs {
         Kirigami.Action {
             property QtObject category
             text: category.name
-            onTriggered: Navigation.openCategory(category, bread.search)
-            enabled: category != bread.category
+            onTriggered: Navigation.openCategory(category, root.search)
+            enabled: category != root.category
         }
     }
 
@@ -53,10 +53,10 @@ Breadcrumbs {
             ret.unshift(categoryAction)
             category = category.parent
         }
-        ret.unshift(bread.homeAction)
+        ret.unshift(homeAction)
         if (search !== "")
             ret.unshift(searchAction);
         return ret
     }
-    model: breadcrumbs(bread.search, bread.category)
+    model: breadcrumbs(search, category)
 }

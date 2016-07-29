@@ -24,7 +24,7 @@ import org.kde.discover 1.0
 import org.kde.discover.app 1.0
 import org.kde.kirigami 1.0 as Kirigami
 
-Kirigami.ScrollablePage {
+DiscoverPage {
     id: page
     title: i18n("Ratings for %1", resource.name)
     property alias resource: reviewsModel.resource

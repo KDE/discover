@@ -20,6 +20,7 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 1.2
+import QtGraphicalEffects 1.0
 import org.kde.discover.app 1.0
 import org.kde.kirigami 1.0 as Kirigami
 
@@ -27,7 +28,7 @@ ColumnLayout {
     id: root
     readonly property QtObject _page: findPage()
     property alias background: decorationImage.source
-    property alias headerItem: topItem.data
+    property alias headerItem: topItemLoader.sourceComponent
     property string search: ""
 
     function findPage() {
@@ -39,16 +40,60 @@ ColumnLayout {
     }
     spacing: 0
 
+    Component.onCompleted: {
+        if (!root._page.pageHeader)
+            root._page.pageHeader = tinyHeader
+    }
+
+    Component {
+        id: tinyHeader
+        DropShadow {
+            height: layout.implicitHeight
+            Image {
+                anchors.fill: parent
+                source: root.background
+                fillMode: Image.PreserveAspectCrop
+            }
+
+            RowLayout {
+                id: layout
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
+                Loader {
+                    sourceComponent: root.headerItem
+                }
+                Item {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+                }
+                Text {
+                    text: titleLabel.text
+                }
+            }
+
+            horizontalOffset: 3
+            verticalOffset: 3
+            radius: 8.0
+            samples: 17
+            color: "gray"
+        }
+    }
+
     Image {
         id: decorationImage
         fillMode: Image.PreserveAspectCrop
         Layout.preferredHeight: titleLabel.paintedHeight * 4
         Layout.fillWidth: true
 
-        Item {
-            id: topItem
-            anchors.fill: parent
-            data: Breadcrumbs {
+        Loader {
+            id: topItemLoader
+            anchors {
+                left: parent.left
+                right: parent.right
+            }
+            sourceComponent: Breadcrumbs {
                 Kirigami.Action {
                     id: currentPage
                     text: page.title

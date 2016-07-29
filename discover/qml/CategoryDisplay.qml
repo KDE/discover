@@ -29,9 +29,9 @@ import org.kde.kirigami 1.0 as Kirigami
 ColumnLayout
 {
     id: page
-    property alias category: bread.category
+    property QtObject category: null
+    property string search: ""
     property alias subcategories: catModel.categories
-    property alias search: bread.search
     property alias headerItem: header.headerItem
 
     PageHeader {
@@ -41,8 +41,8 @@ ColumnLayout
         search: page.search
 
         headerItem: CategoryBreadcrumbs {
-            id: bread
             category: page.category
+            search: page.search
         }
 
         ListView {
@@ -59,7 +59,7 @@ ColumnLayout
             }
             delegate: HeaderButton {
                 text: display
-                onClicked: Navigation.openCategory(category, bread.search)
+                onClicked: Navigation.openCategory(category, page.search)
             }
             spacing: 3
             height: SystemFonts.generalFont.pointSize * 3
