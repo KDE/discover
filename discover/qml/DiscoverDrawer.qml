@@ -40,7 +40,7 @@ Kirigami.GlobalDrawer {
         enabled: window.stack.currentItem && (window.stack.currentItem.searchFor != null || window.stack.currentItem.hasOwnProperty("search"))
         focus: true
 
-        placeholderText: (!enabled || window.stack.currentItem.title == "") ? i18n("Search...") : i18n("Search in '%1'...", window.stack.currentItem.title)
+        placeholderText: (!enabled || window.stack.currentItem.title.length === 0) ? i18n("Search...") : i18n("Search in '%1'...", window.stack.currentItem.title)
         onTextChanged: searchTimer.running = true
 
         Connections {

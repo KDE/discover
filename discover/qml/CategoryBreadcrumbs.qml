@@ -54,7 +54,7 @@ Breadcrumbs {
             category = category.parent
         }
         ret.unshift(homeAction)
-        if (search !== "")
+        if (search.length > 0)
             ret.unshift(searchAction);
         return ret
     }

@@ -35,7 +35,7 @@ DiscoverPage
     bottomPadding: 0
 
     function searchFor(text) {
-        if (text === "")
+        if (text.length === 0)
             return;
         Navigation.openCategory(null, "")
     }

@@ -80,7 +80,7 @@ ColumnLayout
         }
         Button {
             text: i18n("More...")
-            visible: application.appstreamId !== "" && addonsView.isExtended
+            visible: application.appstreamId.length>0 && addonsView.isExtended
             onClicked: Navigation.openExtends(application.appstreamId)
         }
     }

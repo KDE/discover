@@ -231,7 +231,7 @@ DiscoverPage
                     Layout.fillHeight: true
                     Layout.fillWidth: true
                     frameVisible: true
-                    visible: layout.extended && changelog !== ""
+                    visible: layout.extended && changelog.length>0
 
                     Label {
                         width: view.width-32

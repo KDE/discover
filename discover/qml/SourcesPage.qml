@@ -151,7 +151,7 @@ DiscoverPage {
                         }
                         Button {
                             id: browseOrigin
-                            enabled: display!=""
+                            enabled: display.length>0
                             iconName: "view-filter"
                             tooltip: i18n("Browse the origin's resources")
                             onClicked: Navigation.openApplicationListSource(model.display)
