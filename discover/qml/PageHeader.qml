@@ -68,8 +68,15 @@ ColumnLayout {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
-                Text {
+                LinkButton {
                     text: titleLabel.text
+                    onClicked: {
+                        var flic = root._page.flickable
+                        if (flic.positionViewAtBeginning)
+                            flic.positionViewAtBeginning();
+                        else
+                            flic.contentY = 0;
+                    }
                 }
             }
 

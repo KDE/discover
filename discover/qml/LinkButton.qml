@@ -7,8 +7,8 @@ T.ToolButton {
 
     property Action action: null
     text: action ? action.text : ""
-    enabled: action && action.enabled
-    onClicked: action.trigger()
+    enabled: !action || action.enabled
+    onClicked: if (action) action.trigger()
 
     implicitWidth: textItem.implicitWidth + leftPadding + rightPadding
     implicitHeight: textItem.implicitHeight + topPadding + bottomPadding
