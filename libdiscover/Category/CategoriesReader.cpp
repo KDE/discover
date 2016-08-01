@@ -62,7 +62,7 @@ QVector<Category*> CategoriesReader::loadCategoriesPath(const QString& path)
     {
         if (node.nodeType() == QDomNode::ElementNode) {
             ret << new Category( {path} );
-            ret.last()->parseData(path, node, true);
+            ret.last()->parseData(path, node);
         }
 
         node = node.nextSibling();

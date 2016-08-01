@@ -35,7 +35,7 @@ Category::Category(QSet<QString>  pluginName, QObject* parent)
 
 Category::~Category() = default;
 
-void Category::parseData(const QString& path, const QDomNode& data, bool canHaveChildren)
+void Category::parseData(const QString& path, const QDomNode& data)
 {
     for(QDomNode node = data.firstChild(); !node.isNull(); node = node.nextSibling())
     {
@@ -50,7 +50,7 @@ void Category::parseData(const QString& path, const QDomNode& data, bool canHave
             m_name = i18nc("Category", tempElement.text().toUtf8().constData());
         } else if (tempElement.tagName() == QLatin1String("Menu")) {
             m_subCategories << new Category(m_plugins, this);
-            m_subCategories.last()->parseData(path, node, true);
+            m_subCategories.last()->parseData(path, node);
         } else if (tempElement.tagName() == QLatin1String("Image")) {
             m_decoration = QUrl(tempElement.text());
         } else if (tempElement.tagName() == QLatin1String("Addons")) {

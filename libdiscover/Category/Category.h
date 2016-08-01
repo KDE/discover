@@ -60,7 +60,7 @@ public:
     QVector<Category *> subCategories() const;
 
     static void addSubcategory(QVector<Category*>& list, Category* cat);
-    void parseData(const QString& path, const QDomNode& data, bool canHaveChildren);
+    void parseData(const QString& path, const QDomNode& data);
     bool blacklistPlugins(const QSet<QString>& pluginName);
     bool isAddons() const { return m_isAddons; }
     QUrl decoration() const;
