@@ -40,7 +40,6 @@ Breadcrumbs {
             property QtObject category
             text: category.name
             onTriggered: Navigation.openCategory(category, root.search)
-            enabled: category != root.category
         }
     }
 
@@ -48,7 +47,6 @@ Breadcrumbs {
         var ret = [];
 
         while(category) {
-            //TODO: check for leaks
             var categoryAction = categoryActionComponent.createObject(searchAction, { category: category })
             ret.unshift(categoryAction)
             category = category.parent
