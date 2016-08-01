@@ -120,7 +120,8 @@ Kirigami.ApplicationWindow
         }
         var stackView = window.pageStack;
         stackView.clear()
-        stackView.push(currentTopLevel, {}, window.status!=Component.Ready)
+        if (currentTopLevel)
+            stackView.push(currentTopLevel, {}, window.status!=Component.Ready)
     }
 
     Connections {
