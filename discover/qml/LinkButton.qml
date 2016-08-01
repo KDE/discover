@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import QtGraphicalEffects 1.0
 import QtQuick.Templates 2.0 as T
 import org.kde.kirigami 1.0
 
@@ -27,11 +28,19 @@ T.ToolButton {
         text: control.text
         font: control.font
         color: Theme.viewBackgroundColor
-        style: Text.Raised
-        styleColor: Theme.disabledTextColor
         elide: Text.ElideRight
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
+    }
+
+    DropShadow {
+        horizontalOffset: 2
+        verticalOffset: 2
+        radius: 8.0
+        samples: 17
+        color: "#f0000000"
+        source: textItem
+        anchors.fill: textItem
     }
 
     background: Item {}

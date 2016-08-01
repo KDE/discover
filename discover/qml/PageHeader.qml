@@ -117,14 +117,22 @@ ColumnLayout {
                 margins: Kirigami.Units.gridUnit
             }
             font.pointSize: SystemFonts.titleFont.pointSize * 3
-            style: Text.Raised
-            styleColor: "gray"
             text: root.search.length>0 && root._page.title.length>0 ? i18n("Search: %1 + %2", root.search, root._page.title)
                 : root.search.length>0 ? i18n("Search: %1", root.search)
                 : root._page.title
             color: Kirigami.Theme.highlightedTextColor
             horizontalAlignment: Text.AlignRight
             verticalAlignment: Text.AlignBottom
+        }
+
+        DropShadow {
+            horizontalOffset: 3
+            verticalOffset: 3
+            radius: 8.0
+            samples: 17
+            color: "#80000000"
+            source: titleLabel
+            anchors.fill: titleLabel
         }
     }
     Rectangle {

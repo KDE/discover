@@ -84,6 +84,7 @@ Kirigami.GlobalDrawer {
             onClicked: settingsAction.trigger()
         }
         Kirigami.BasicListItem {
+            enabled: updateAction.enabled
             checked: updateAction.checked
             icon: updateAction.iconName
             label: updateAction.text
