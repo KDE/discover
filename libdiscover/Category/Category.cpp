@@ -37,10 +37,6 @@ Category::~Category() = default;
 
 void Category::parseData(const QString& path, const QDomNode& data, bool canHaveChildren)
 {
-    if(!canHaveChildren) {
-        m_name = i18nc("@label The label used for viewing all members of this category", "All");
-    }
-
     for(QDomNode node = data.firstChild(); !node.isNull(); node = node.nextSibling())
     {
         if(!node.isElement()) {
@@ -50,16 +46,12 @@ void Category::parseData(const QString& path, const QDomNode& data, bool canHave
         }
         QDomElement tempElement = node.toElement();
 
-        if (canHaveChildren) {
-            if (tempElement.tagName() == QLatin1String("Name")) {
-                m_name = i18nc("Category", tempElement.text().toUtf8().constData());
-            } else if (tempElement.tagName() == QLatin1String("Menu")) {
-                m_subCategories << new Category(m_plugins, this);
-                m_subCategories.last()->parseData(path, node, true);
-            }
-        }
-        
-        if (tempElement.tagName() == QLatin1String("Image")) {
+        if (tempElement.tagName() == QLatin1String("Name")) {
+            m_name = i18nc("Category", tempElement.text().toUtf8().constData());
+        } else if (tempElement.tagName() == QLatin1String("Menu")) {
+            m_subCategories << new Category(m_plugins, this);
+            m_subCategories.last()->parseData(path, node, true);
+        } else if (tempElement.tagName() == QLatin1String("Image")) {
             m_decoration = QUrl(tempElement.text());
         } else if (tempElement.tagName() == QLatin1String("Addons")) {
             m_isAddons = true;
@@ -72,11 +64,6 @@ void Category::parseData(const QString& path, const QDomNode& data, bool canHave
         } else if (tempElement.tagName() == QLatin1String("Categories")) { //as provided by appstream
             parseIncludes(tempElement);
         }
-    }
-
-    if (!m_subCategories.isEmpty()) {
-        m_subCategories << new Category(m_plugins, this);
-        m_subCategories.last()->parseData(path, data, false);
     }
 }
 
