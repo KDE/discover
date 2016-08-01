@@ -47,9 +47,19 @@ ColumnLayout {
 
     Component {
         id: tinyHeader
-        DropShadow {
+        Item {
             height: layout.implicitHeight
+            DropShadow {
+                anchors.fill: bg
+                source: bg
+                horizontalOffset: 0
+                verticalOffset: 3
+                radius: 8.0
+                samples: 17
+                color: "gray"
+            }
             Image {
+                id: bg
                 anchors.fill: parent
                 source: root.background
                 fillMode: Image.PreserveAspectCrop
@@ -79,12 +89,6 @@ ColumnLayout {
                     }
                 }
             }
-
-            horizontalOffset: 3
-            verticalOffset: 3
-            radius: 8.0
-            samples: 17
-            color: "gray"
         }
     }
 
