@@ -33,7 +33,8 @@ ColumnLayout
         text: i18n("Size: %1", application.sizeDescription)
     }
     Label {
-        text: i18n("License: %1", application.license)
+        visible: text.length>0
+        text: application.license ? i18n("License: %1", application.license) : ""
     }
     Label {
         text: i18n("Version: %1", application.isInstalled ? application.installedVersion : application.availableVersion)
