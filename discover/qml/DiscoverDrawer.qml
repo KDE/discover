@@ -89,6 +89,8 @@ Kirigami.GlobalDrawer {
             icon: updateAction.iconName
             label: updateAction.text
             onClicked: updateAction.trigger()
+
+            backgroundColor: enabled ? "orange" : Kirigami.Theme.viewBackgroundColor
         }
     }
 
