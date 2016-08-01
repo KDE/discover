@@ -41,19 +41,22 @@ Kirigami.AbstractListItem
     RowLayout {
         id: lowLayout
         anchors {
-            leftMargin: 2
             left: parent.left
             right: parent.right
+            leftMargin: Kirigami.Units.largeSpacing
+            topMargin: Kirigami.Units.largeSpacing
+            bottomMargin: Kirigami.Units.largeSpacing
         }
+        spacing: Kirigami.Units.largeSpacing
 
         QIconItem {
             id: resourceIcon
             icon: application.icon
 
-            Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
-            readonly property real contHeight: Math.max(conts.height * 0.8, 128)
-            Layout.minimumWidth: contHeight
-            Layout.minimumHeight: contHeight
+            Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+            readonly property real contHeight: Math.max(delegateArea.height * 0.8, 128)
+            width: contHeight
+            height: contHeight
             anchors.verticalCenter: parent.verticalCenter
         }
 
@@ -61,8 +64,6 @@ Kirigami.AbstractListItem
             id: conts
             Layout.fillWidth: true
             Layout.fillHeight: true
-
-            Item { height: 3; width: 3 }
 
             RowLayout {
                 Layout.fillWidth: true
@@ -110,8 +111,6 @@ Kirigami.AbstractListItem
                 Layout.alignment: Qt.AlignRight
                 canUpgrade: false
             }
-
-            Item { height: 3; width: 3 }
         }
 
         ApplicationIndicator {
