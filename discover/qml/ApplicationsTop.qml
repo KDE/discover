@@ -58,7 +58,9 @@ ColumnLayout {
             Layout.fillWidth: parent
             condition: model["name"] !== undefined
             componentFalse: Item {}
-            componentTrue: ApplicationDelegate {}
+            componentTrue: ApplicationDelegate {
+                application: model.application
+            }
         }
     }
 }

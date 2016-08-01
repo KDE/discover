@@ -82,6 +82,7 @@ DiscoverPage {
         delegate: ApplicationDelegate {
             x: Kirigami.Units.gridUnit
             width: ListView.view.width - Kirigami.Units.gridUnit*2
+            application: model.application
         }
     }
 }

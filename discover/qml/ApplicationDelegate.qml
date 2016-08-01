@@ -30,6 +30,7 @@ import org.kde.kirigami 1.0 as Kirigami
 Kirigami.AbstractListItem
 {
     id: delegateArea
+    property alias application: installButton.application
 
     onClicked: {
         if (ListView.view)
@@ -47,7 +48,7 @@ Kirigami.AbstractListItem
 
         QIconItem {
             id: resourceIcon
-            icon: model.icon
+            icon: application.icon
 
             Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
             readonly property real contHeight: Math.max(conts.height * 0.8, 128)
@@ -107,7 +108,6 @@ Kirigami.AbstractListItem
             InstallApplicationButton {
                 id: installButton
                 Layout.alignment: Qt.AlignRight
-                application: model.application
                 canUpgrade: false
             }
 
