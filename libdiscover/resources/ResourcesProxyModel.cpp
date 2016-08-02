@@ -28,57 +28,6 @@
 #include "AbstractResourcesBackend.h"
 #include <Category/CategoryModel.h>
 
-static bool shouldFilter(AbstractResource* res, const QPair<FilterType, QString>& filter)
-{
-    bool ret = true;
-    switch (filter.first) {
-        case CategoryFilter:
-            ret = res->categories().contains(filter.second);
-            break;
-        case PkgSectionFilter:
-            ret = res->section() == filter.second;
-            break;
-        case PkgWildcardFilter: {
-            QString wildcard = filter.second;
-            wildcard.remove(QLatin1Char('*'));
-            ret = res->packageName().contains(wildcard);
-        }   break;
-        case PkgNameFilter: // Only useful in the not filters
-            ret = res->packageName() == filter.second;
-            break;
-        case InvalidFilter:
-            break;
-    }
-    return ret;
-}
-
-static bool categoryMatches(AbstractResource* res, Category* cat)
-{
-    {
-        const auto orFilters = cat->orFilters();
-        bool orValue = orFilters.isEmpty();
-        for (const auto& filter: orFilters) {
-            if(shouldFilter(res, filter)) {
-                orValue = true;
-                break;
-            }
-        }
-        if(!orValue)
-            return false;
-    }
-
-    Q_FOREACH (const auto &filter, cat->andFilters()) {
-        if(!shouldFilter(res, filter))
-            return false;
-    }
-
-    Q_FOREACH (const auto &filter, cat->notFilters()) {
-        if(shouldFilter(res, filter))
-            return false;
-    }
-    return true;
-}
-
 ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
     , m_sortByRelevancy(false)
@@ -185,7 +134,7 @@ QList<Category *> ResourcesProxyModel::subcategories() const
 
         for (int i=0; i<count; ++i) {
             AbstractResource* res = qobject_cast<AbstractResource*>(index(i, 0).data(ResourcesModel::ApplicationRole).value<QObject*>());
-            if (categoryMatches(res, cat)) {
+            if (res->categoryMatches(cat)) {
                 ret.insert(cat);
                 break;
             }
@@ -240,7 +189,7 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
         return false;
     }
 
-    return !m_filteredCategory || categoryMatches(res, m_filteredCategory);
+    return !m_filteredCategory || res->categoryMatches(m_filteredCategory);
 }
 
 bool ResourcesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const

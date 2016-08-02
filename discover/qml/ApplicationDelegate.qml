@@ -74,7 +74,7 @@ Kirigami.AbstractListItem
                     font: SystemFonts.titleFont
                 }
                 Label {
-                    text: category[0]
+                    text: categoryDisplay
                     color: Kirigami.Theme.linkColor
                 }
             }

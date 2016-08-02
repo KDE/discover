@@ -53,6 +53,7 @@ class DISCOVERCOMMON_EXPORT ResourcesModel : public QAbstractListModel
             PackageNameRole,
             IsTechnicalRole,
             CategoryRole,
+            CategoryDisplayRole,
             SectionRole,
             MimeTypes,
             SizeRole,

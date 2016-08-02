@@ -21,8 +21,11 @@
 #include "AbstractResource.h"
 #include "AbstractResourcesBackend.h"
 #include <ReviewsBackend/AbstractReviewsBackend.h>
-#include <klocalizedstring.h>
+#include <Category/CategoryModel.h>
+#include <KLocalizedString>
 #include <KFormat>
+#include <QList>
+#include <QDebug>
 
 AbstractResource::AbstractResource(AbstractResourcesBackend* parent)
     : QObject(parent)
@@ -130,4 +133,78 @@ void AbstractResource::reportNewState()
         return;
 
     emit backend()->resourcesChanged(this, {"state", "status", "canUpgrade", "size", "sizeDescription", "installedVersion", "availableVersion" });
+}
+
+static bool shouldFilter(AbstractResource* res, const QPair<FilterType, QString>& filter)
+{
+    bool ret = true;
+    switch (filter.first) {
+        case CategoryFilter:
+            ret = res->categories().contains(filter.second);
+            break;
+        case PkgSectionFilter:
+            ret = res->section() == filter.second;
+            break;
+        case PkgWildcardFilter: {
+            QString wildcard = filter.second;
+            wildcard.remove(QLatin1Char('*'));
+            ret = res->packageName().contains(wildcard);
+        }   break;
+        case PkgNameFilter: // Only useful in the not filters
+            ret = res->packageName() == filter.second;
+            break;
+        case InvalidFilter:
+            break;
+    }
+    return ret;
+}
+
+bool AbstractResource::categoryMatches(Category* cat)
+{
+    {
+        const auto orFilters = cat->orFilters();
+        bool orValue = orFilters.isEmpty();
+        for (const auto& filter: orFilters) {
+            if(shouldFilter(this, filter)) {
+                orValue = true;
+                break;
+            }
+        }
+        if(!orValue)
+            return false;
+    }
+
+    Q_FOREACH (const auto &filter, cat->andFilters()) {
+        if(!shouldFilter(this, filter))
+            return false;
+    }
+
+    Q_FOREACH (const auto &filter, cat->notFilters()) {
+        if(shouldFilter(this, filter))
+            return false;
+    }
+    return true;
+}
+
+static QStringList walkCategories(AbstractResource* res, const QVector<Category*>& cats)
+{
+    QStringList ret;
+    foreach (Category* cat, cats) {
+        if (res->categoryMatches(cat)) {
+            const auto subcats = walkCategories(res, cat->subCategories());
+            if (subcats.isEmpty()) {
+                ret += cat->name();
+            } else {
+                ret += subcats;
+            }
+        }
+    }
+
+    return ret;
+}
+
+QString AbstractResource::categoryDisplay() const
+{
+    const auto matchedCategories = walkCategories(const_cast<AbstractResource*>(this), CategoryModel::rootCategories().toVector());
+    return matchedCategories.join(QStringLiteral(", "));
 }

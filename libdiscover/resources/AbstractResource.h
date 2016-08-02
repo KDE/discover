@@ -30,6 +30,7 @@
 #include "discovercommon_export.h"
 #include "PackageState.h"
 
+class Category;
 class Rating;
 class AbstractResourcesBackend;
 
@@ -69,6 +70,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(AbstractResourcesBackend* backend READ backend CONSTANT)
     Q_PROPERTY(Rating* rating READ rating NOTIFY ratingFetched)
     Q_PROPERTY(QString appstreamId READ appstreamId CONSTANT)
+    Q_PROPERTY(QString categoryDisplay READ categoryDisplay CONSTANT)
     public:
         /**
          * This describes the state of the resource
@@ -172,6 +174,13 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
          * @returns the rating for the resource or null if not available
          */
         Rating* rating() const;
+
+        /**
+         * @returns a string defining the categories the resource belongs to
+         */
+        QString categoryDisplay() const;
+
+        bool categoryMatches(Category* cat);
 
     public Q_SLOTS:
         virtual void fetchScreenshots();
