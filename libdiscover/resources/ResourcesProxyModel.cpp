@@ -128,8 +128,10 @@ void ResourcesProxyModel::setSearch(const QString &searchText)
     }
     invalidateFilter();
 
-    if (diff)
+    if (diff) {
         Q_EMIT searchChanged(m_lastSearch);
+        Q_EMIT subcategoriesChanged(subcategories());
+    }
 }
 
 QString ResourcesProxyModel::lastSearch() const
