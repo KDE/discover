@@ -62,11 +62,6 @@ DiscoverPage {
                 left: parent.left
                 right: parent.right
             }
-
-            Item {
-                Layout.fillWidth: true
-                height: Kirigami.Units.largeSpacing * 3
-            }
             z: 5000
         }
         model: ApplicationProxyModel {
