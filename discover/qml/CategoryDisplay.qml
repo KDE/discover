@@ -45,24 +45,23 @@ ColumnLayout
             search: page.search
         }
 
-        ListView {
+        Flow {
             id: categoriesView
             Layout.fillWidth: true
             Layout.leftMargin: Kirigami.Units.gridUnit
             Layout.rightMargin: Kirigami.Units.gridUnit
-            orientation: ListView.Horizontal
-            model: CategoryModel {
-                id: catModel
-                Component.onCompleted: if(!page.category) {
-                    resetCategories()
+            Repeater {
+                model: CategoryModel {
+                    id: catModel
+                    Component.onCompleted: if(!page.category) {
+                        resetCategories()
+                    }
+                }
+                delegate: HeaderButton {
+                    text: display
+                    onClicked: Navigation.openCategory(category, page.search)
                 }
             }
-            delegate: HeaderButton {
-                text: display
-                onClicked: Navigation.openCategory(category, page.search)
-            }
-            spacing: 3
-            height: SystemFonts.generalFont.pointSize * 3
         }
     }
 }
