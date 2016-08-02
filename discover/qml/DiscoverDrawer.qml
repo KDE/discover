@@ -28,10 +28,13 @@ import "navigation.js" as Navigation
 
 Kirigami.GlobalDrawer {
     id: drawer
-    anchors.fill: parent
     title: i18n("Discover")
     titleIcon: "plasmadiscover"
-    bannerImageSource: "image://icon/plasma"
+    bannerImageSource: "image://icon/plasmadiscover"
+    topPadding: -50
+    leftPadding: 0
+    rightPadding: 0
+    bottomPadding: 0
 
     topContent: TextField {
         id: searchField
@@ -48,7 +51,7 @@ Kirigami.GlobalDrawer {
             target: window.stack.currentItem
             onClearSearch: {
                 searchField.text = ""
-                console.log("search cleared")
+//                 console.log("search cleared")
             }
         }
 
