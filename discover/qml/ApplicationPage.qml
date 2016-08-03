@@ -123,9 +123,10 @@ DiscoverPage {
             }
         }
 
-        AddonsView {
-            application: appInfo.application
-            Layout.fillWidth: true
+        Button {
+            Layout.alignment: Qt.AlignRight
+            text: i18n("Addons")
+            onClicked: addonsView.opened = true
         }
 
         InstallApplicationButton {
@@ -146,5 +147,10 @@ DiscoverPage {
         application: appInfo.application
         parent: overlay
         onAccepted: reviewButton.reviewsBackend.submitReview(application, summary, review, rating)
+    }
+    readonly property var addons: AddonsView {
+        id: addonsView
+        application: appInfo.application
+        parent: overlay
     }
 }
