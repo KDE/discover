@@ -72,10 +72,19 @@ DiscoverPage {
                     elide: Text.ElideRight
                     maximumLineCount: 1
                 }
-                ApplicationDetails {
-                    id: details
+                ColumnLayout
+                {
                     Layout.fillWidth: true
-                    application: appInfo.application
+                    Label {
+                        text: i18n("Size: %1", appInfo.application.sizeDescription)
+                    }
+                    Label {
+                        visible: text.length>0
+                        text: appInfo.application.license ? i18n("License: %1", appInfo.application.license) : ""
+                    }
+                    Label {
+                        text: i18n("Version: %1", appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion)
+                    }
                 }
             }
         }
@@ -85,12 +94,16 @@ DiscoverPage {
             resource: appInfo.application
         }
 
-        ApplicationDescription {
-            id: desc
+        Heading {
+            text: i18n("Description")
             Layout.fillWidth: true
-
-            application: appInfo.application
-            z: -1
+            visible: appInfo.application.longDescription
+        }
+        Label {
+            Layout.fillWidth: true
+            horizontalAlignment: Text.AlignJustify
+            wrapMode: Text.WordWrap
+            text: appInfo.application.longDescription
         }
 
         GridLayout {

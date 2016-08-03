@@ -29,7 +29,6 @@
     <file>qml/AwesomeGrid.qml</file>
     <file>qml/ReviewDelegate.qml</file>
     <file>qml/ScrolledAwesomeGrid.qml</file>
-    <file>qml/ApplicationDescription.qml</file>
     <file>qml/Heading.qml</file>
     <file>qml/AddSourceDialog.qml</file>
     <file>qml/MessageAction.qml</file>
@@ -37,7 +36,6 @@
     <file>qml/ConditionalLoader.qml</file>
     <file>qml/LinkButton.qml</file>
     <file>qml/HeaderButton.qml</file>
-    <file>qml/ApplicationDetails.qml</file>
     <file>qml/ApplicationScreenshots.qml</file>
     <file>qml/ApplicationIndicator.qml</file>
     <file>qml/ApplicationHeader.qml</file>
