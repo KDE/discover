@@ -67,3 +67,8 @@ void DummyReviewsBackend::submitUsefulness(Review* r, bool useful)
     qDebug() << "usefulness..." << r->applicationName() << r->reviewer() << useful;
     r->setUsefulChoice(useful ? ReviewsModel::Yes : ReviewsModel::No);
 }
+
+void DummyReviewsBackend::submitReview(AbstractResource* res, const QString& a, const QString& b, const QString& c)
+{
+    qDebug() << "dummy submit review" << res->name() << a << b << c;
+}

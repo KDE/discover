@@ -11,7 +11,7 @@
       <Icon>kalarm</Icon>
       <Image>https://c2.staticflickr.com/6/5308/5876407905_6f31082232_o.jpg</Image>
       <Include>
-          <Category>dummy</Category>
+          <Category>dummy1</Category>
       </Include>
     </Menu>
     <Menu>
@@ -20,7 +20,7 @@
       <Image>https://c2.staticflickr.com/4/3221/2897450915_a1fcde62b7_o.jpg</Image>
       <Addons />
       <Include>
-          <Category>dummy</Category>
+          <Category>dummy2</Category>
       </Include>
     </Menu>
     <Menu>
@@ -28,7 +28,7 @@
       <Icon>kontact</Icon>
       <Image>https://c2.staticflickr.com/2/1347/955467402_be4f5970b2_o.jpg</Image>
       <Include>
-          <Category>dummy</Category>
+          <Category>dummy3</Category>
       </Include>
     </Menu>
     <Menu>
@@ -50,7 +50,7 @@
       <Name>dummy with quite some stuff</Name>
       <Icon>kmail</Icon>
       <Include>
-          <Category>dummy</Category>
+          <Category>dummy2</Category>
       </Include>
 
       <Menu>
@@ -80,55 +80,6 @@
           <And>
             <Category>notthree</Category>
           </And>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>dummy 5</Name>
-      <Icon>kdevelop</Icon>
-      <Include>
-          <Category>dummy</Category>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>dummy 6</Name>
-      <Icon>kate</Icon>
-      <Include>
-          <Category>dummy</Category>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>dummy 7</Name>
-      <Icon>firefox</Icon>
-      <Include>
-          <Category>dummy</Category>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>dummy 8</Name>
-      <Icon>konversation</Icon>
-      <Include>
-          <Category>dummy</Category>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>dummy 9</Name>
-      <Icon>chromium</Icon>
-      <Include>
-          <Category>dummy</Category>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>dummy 10</Name>
-      <Icon>ktorrent</Icon>
-      <Include>
-          <Category>dummy</Category>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>dummy 11</Name>
-      <Icon>akregator</Icon>
-      <Include>
-          <Category>dummy</Category>
       </Include>
     </Menu>
   </Menu>
