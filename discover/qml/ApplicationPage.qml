@@ -36,6 +36,8 @@ DiscoverPage {
 
     mainAction: Kirigami.Action { iconName: application.icon }
 
+    background: Rectangle { color: Kirigami.Theme.viewBackgroundColor }
+
     ColumnLayout {
         RowLayout {
             Layout.fillWidth: true
