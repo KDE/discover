@@ -34,8 +34,6 @@ DiscoverPage {
 
     title: application.name
 
-    mainAction: Kirigami.Action { iconName: application.icon }
-
     background: Rectangle { color: Kirigami.Theme.viewBackgroundColor }
 
     ColumnLayout {
@@ -72,19 +70,15 @@ DiscoverPage {
                     elide: Text.ElideRight
                     maximumLineCount: 1
                 }
-                ColumnLayout
-                {
-                    Layout.fillWidth: true
-                    Label {
-                        text: i18n("Size: %1", appInfo.application.sizeDescription)
-                    }
-                    Label {
-                        visible: text.length>0
-                        text: appInfo.application.license ? i18n("License: %1", appInfo.application.license) : ""
-                    }
-                    Label {
-                        text: i18n("Version: %1", appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion)
-                    }
+                Label {
+                    text: i18n("Version: %1", appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion)
+                }
+                Label {
+                    text: i18n("Size: %1", appInfo.application.sizeDescription)
+                }
+                Label {
+                    visible: text.length>0
+                    text: appInfo.application.license ? i18n("License: %1", appInfo.application.license) : ""
                 }
             }
         }
@@ -97,7 +91,7 @@ DiscoverPage {
         Heading {
             text: i18n("Description")
             Layout.fillWidth: true
-            visible: appInfo.application.longDescription
+            visible: appInfo.application.longDescription.length > 0
         }
         Label {
             Layout.fillWidth: true
@@ -106,40 +100,31 @@ DiscoverPage {
             text: appInfo.application.longDescription
         }
 
-        GridLayout {
-            columns: 2
-            Label { text: i18n("Homepage:") }
-            ToolButton {
-                text: application.homepage
-                onClicked: Qt.openUrlExternally(application.homepage)
-            }
+        ToolButton {
+            text: i18n("Homepage: %1", application.homepage)
+            onClicked: Qt.openUrlExternally(application.homepage)
         }
         RowLayout {
             Layout.alignment: Qt.AlignRight
             spacing: 5
 
             Button {
-                readonly property QtObject rating: desc.application.rating
+                readonly property QtObject rating: appInfo.application.rating
                 visible: rating && rating.ratingCount>0
                 text: i18n("Show comments (%1)...", rating ? rating.ratingCount : 0)
                 onClicked: Navigation.openReviews(application)
             }
             Button {
+                id: reviewButton
                 readonly property QtObject reviewsBackend: application.backend.reviewsBackend
                 visible: reviewsBackend != null && application.isInstalled
                 text: i18n("Review")
-                onClicked: reviewDialog.visible = true
-
-                ReviewDialog {
-                    id: reviewDialog
-                    application: desc.application
-                    onAccepted: parent.reviewsBackend.submitReview(application, summary, review, rating)
-                }
+                onClicked: reviewDialog.opened = true
             }
         }
 
         AddonsView {
-            application: desc.application
+            application: appInfo.application
             Layout.fillWidth: true
         }
 
@@ -154,5 +139,12 @@ DiscoverPage {
                 onClicked: application.invokeApplication()
             }
         }
+    }
+
+    readonly property var rd: ReviewDialog {
+        id: reviewDialog
+        application: appInfo.application
+        parent: overlay
+        onAccepted: reviewButton.reviewsBackend.submitReview(application, summary, review, rating)
     }
 }
