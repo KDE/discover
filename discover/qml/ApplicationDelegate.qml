@@ -68,12 +68,14 @@ Kirigami.AbstractListItem
             RowLayout {
                 Layout.fillWidth: true
                 Label {
-                    Layout.fillWidth: true
                     elide: Text.ElideRight
                     text: name
                     font: SystemFonts.titleFont
                 }
                 Label {
+                    Layout.fillWidth: true
+                    elide: Text.ElideRight
+                    horizontalAlignment: Text.AlignRight
                     text: categoryDisplay
                     color: Kirigami.Theme.linkColor
                 }
