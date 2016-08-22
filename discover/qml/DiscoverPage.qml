@@ -30,10 +30,16 @@ Kirigami.ScrollablePage
      * have some UI available at all time.
      */
     property alias pageHeader: pageHeaderLoader.sourceComponent
+    property alias pageOverlay: overlayLoader.sourceComponent
 
     readonly property Item overlay: Item {
         parent: root
         anchors.fill: parent
+
+        Loader {
+            id: overlayLoader
+            anchors.fill: parent
+        }
 
         Loader {
             id: pageHeaderLoader
