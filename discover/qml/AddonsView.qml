@@ -86,6 +86,7 @@ Kirigami.OverlaySheet
                 height: 5
             }
             Button {
+                Layout.alignment: Qt.AlignRight
                 text: i18n("More...")
                 visible: application.appstreamId.length>0 && addonsView.isExtended
                 onClicked: Navigation.openExtends(application.appstreamId)
