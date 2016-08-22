@@ -123,7 +123,10 @@ Kirigami.GlobalDrawer {
             drawer.objects.push(object)
             drawer.actions = drawer.objects
         }
-        onObjectRemoved: drawer.objects = drawer.objects.splice(drawer.objects.indexOf(object))
+        onObjectRemoved: {
+            drawer.objects.splice(drawer.objects.indexOf(object), 1)
+            drawer.objects = drawer.objects;
+        }
     }
 
     actions: objects
