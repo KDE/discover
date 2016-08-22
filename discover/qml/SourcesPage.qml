@@ -10,7 +10,7 @@ import "navigation.js" as Navigation
 DiscoverPage {
     id: page
     clip: true
-    title: i18n("Sources")
+    title: i18n("Settings")
 
     ListView {
         model: SourcesModel
