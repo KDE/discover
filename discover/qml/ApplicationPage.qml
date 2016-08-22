@@ -21,6 +21,7 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Window 2.1
 import QtQuick.Layouts 1.1
+import QtGraphicalEffects 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.discover 1.0
 import org.kde.discover.app 1.0
@@ -35,6 +36,38 @@ DiscoverPage {
     title: application.name
 
     background: Rectangle { color: Kirigami.Theme.viewBackgroundColor }
+
+    pageOverlay: Item {
+        InstallApplicationButton {
+            id: button
+            anchors {
+                right: parent.right
+                bottom: parent.bottom
+                bottomMargin: Kirigami.Units.gridUnit
+                rightMargin: appInfo.width - appInfo.flickable.width
+            }
+
+            Layout.alignment: Qt.AlignRight
+            application: appInfo.application
+            fill: true
+            additionalItem: Button {
+                Layout.fillWidth: true
+                visible: application.isInstalled && application.canExecute
+                text: i18n("Launch")
+                onClicked: application.invokeApplication()
+            }
+        }
+
+        DropShadow {
+            anchors.fill: button
+            source: button
+            horizontalOffset: 3
+            verticalOffset: 3
+            radius: 12.0
+            samples: 17
+            color: "black"
+        }
+    }
 
     ColumnLayout {
         RowLayout {
@@ -105,7 +138,6 @@ DiscoverPage {
             onClicked: Qt.openUrlExternally(application.homepage)
         }
         RowLayout {
-            Layout.alignment: Qt.AlignRight
             spacing: 5
 
             Button {
@@ -124,21 +156,8 @@ DiscoverPage {
         }
 
         Button {
-            Layout.alignment: Qt.AlignRight
             text: i18n("Addons")
             onClicked: addonsView.opened = true
-        }
-
-        InstallApplicationButton {
-            Layout.alignment: Qt.AlignRight
-            application: appInfo.application
-            fill: true
-            additionalItem: Button {
-                Layout.fillWidth: true
-                visible: application.isInstalled && application.canExecute
-                text: i18n("Launch")
-                onClicked: application.invokeApplication()
-            }
         }
     }
 
