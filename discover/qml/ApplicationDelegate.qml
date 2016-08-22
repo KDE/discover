@@ -103,6 +103,7 @@ Kirigami.AbstractListItem
                 Layout.fillWidth: true
                 clip: true
 
+                horizontalAlignment: Text.AlignJustify
                 wrapMode: Text.WordWrap
                 text: longDescription
                 maximumLineCount: 5
