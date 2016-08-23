@@ -39,6 +39,7 @@ TransactionModel::TransactionModel(QObject *parent)
 {
     connect(this, &QAbstractItemModel::rowsInserted, this, &TransactionModel::countChanged);
     connect(this, &QAbstractItemModel::rowsRemoved, this, &TransactionModel::countChanged);
+    connect(this, &TransactionModel::countChanged, this, &TransactionModel::progressChanged);
 }
 
 QHash< int, QByteArray > TransactionModel::roleNames() const
