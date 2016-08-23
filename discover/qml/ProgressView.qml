@@ -18,8 +18,8 @@ Kirigami.BasicListItem {
     readonly property var v1: Connections {
         target: TransactionModel
         onTransactionAdded: {
-            if(page.enabled && progressModel.appAt(trans.resource)<0)
-                progressModel.append({'app': trans.resource})
+            if(page.enabled && trans.resource && progressModel.appAt(trans.resource)<0)
+                progressModel.append({app: trans.resource})
         }
 
         onTransactionCancelled: {
