@@ -74,6 +74,8 @@ Kirigami.GlobalDrawer {
         spacing: 0
         Layout.fillWidth: true
 
+        ProgressView {}
+
         Kirigami.BasicListItem {
             checked: installedAction.checked
             icon: installedAction.iconName

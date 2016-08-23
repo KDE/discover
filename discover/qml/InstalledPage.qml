@@ -13,14 +13,5 @@ ApplicationsListPage {
 
     header: PageHeader {
         background: "https://c2.staticflickr.com/8/7146/6783941909_30c7c5d52f_b.jpg"
-        width: page.width
-        RowLayout {
-            Item { Layout.fillWidth: true }
-            Label {
-                visible: TransactionModel.count>0
-                text: i18np("%1 job pending...", "%1 jobs pending...", TransactionModel.count)
-            }
-            Item { Layout.fillWidth: true }
-        }
     }
 }
