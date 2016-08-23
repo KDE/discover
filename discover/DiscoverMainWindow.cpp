@@ -192,6 +192,8 @@ void DiscoverMainWindow::integrateObject(QObject* object)
     KConfigGroup window(KSharedConfig::openConfig(), "Window");
     if (window.hasKey("geometry"))
         rootObject()->setGeometry(window.readEntry("geometry", QRect()));
+    if (window.hasKey("visibility"))
+        rootObject()->setVisibility(QWindow::Visibility(window.readEntry<int>("visibility", QWindow::Windowed)));
 
     object->installEventFilter(this);
 }
@@ -210,6 +212,7 @@ bool DiscoverMainWindow::eventFilter(QObject * object, QEvent * event)
 
         KConfigGroup window(KSharedConfig::openConfig(), "Window");
         window.writeEntry("geometry", rootObject()->geometry());
+        window.writeEntry<int>("visibility", rootObject()->visibility());
     }
     return false;
 }
