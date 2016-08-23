@@ -75,6 +75,12 @@ GridItem
             height: grid.cellHeight-2
             hoverEnabled: true
 
+            Component.onCompleted: {
+                if (grid.cellWidth < nameLabel.contentWidth) {
+                    grid.cellWidth = nameLabel.contentWidth
+                }
+            }
+
             ColumnLayout {
                 id: layout
 
