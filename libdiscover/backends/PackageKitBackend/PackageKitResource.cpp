@@ -94,7 +94,7 @@ QString PackageKitResource::icon() const
 QString PackageKitResource::license()
 {
     fetchDetails();
-    return m_details.license();
+    return m_details.license().isEmpty() ? i18n("Unknown") : m_details.license();
 }
 
 QList<PackageState> PackageKitResource::addonsInformation()

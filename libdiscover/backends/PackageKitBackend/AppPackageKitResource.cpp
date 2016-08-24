@@ -61,7 +61,8 @@ QString AppPackageKitResource::icon() const
 
 QString AppPackageKitResource::license()
 {
-    return m_appdata.projectLicense();
+    const auto license = m_appdata.projectLicense();
+    return license.isEmpty() ? PackageKitResource::license() : license;
 }
 
 QStringList AppPackageKitResource::mimetypes() const
