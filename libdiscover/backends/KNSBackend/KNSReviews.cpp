@@ -116,9 +116,11 @@ void KNSReviews::deleteReview(Review*  /*r*/)
     qWarning() << "cannot delete comments";
 }
 
-void KNSReviews::submitReview(AbstractResource* app, const QString& summary, const QString& review_text, const QString& /*rating*/)
+void KNSReviews::submitReview(AbstractResource* app, const QString& summary, const QString& review_text, const QString& rating)
 {
-    provider().addNewComment(Attica::Comment::ContentComment, app->packageName(), QString(), QString(), summary, review_text);
+    provider().voteForContent(app->packageName(), rating.toUInt() * 20);
+    if (!summary.isEmpty())
+        provider().addNewComment(Attica::Comment::ContentComment, app->packageName(), QString(), QString(), summary, review_text);
 }
 
 void KNSReviews::submitUsefulness(Review* r, bool useful)
