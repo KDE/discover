@@ -22,7 +22,6 @@ DiscoverPage {
                 left: parent.left
                 right: parent.right
             }
-            background: "https://c2.staticflickr.com/8/7460/10058518443_d0a3eb47e8_b.jpg"
 
             RowLayout {
                 Layout.fillWidth: true
