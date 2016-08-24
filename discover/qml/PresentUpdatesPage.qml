@@ -11,8 +11,11 @@ ScrollView
     id: page
     property real proposedMargin: 0
 
-    function start() {
+    Component.onCompleted: {
         resourcesUpdatesModel.prepare()
+    }
+
+    function start() {
         resourcesUpdatesModel.updateAll()
     }
 
