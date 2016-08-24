@@ -157,6 +157,14 @@ ApplicationWindow
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 currentTopLevel: window.currentTopLevel
+
+                MouseArea {
+                    anchors.fill: parent
+                    acceptedButtons: Qt.BackButton
+                    onClicked: {
+                        toolbar.backAction.trigger()
+                    }
+                }
             }
         }
     }

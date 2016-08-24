@@ -27,6 +27,7 @@ ToolBar
 {
     id: root
     property Item search: searchWidget
+    readonly property alias backAction: backAction.action
     Layout.preferredHeight: layout.Layout.preferredHeight
     function clearSearch() {
         searchWidget.text=""
