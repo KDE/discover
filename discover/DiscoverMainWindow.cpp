@@ -222,24 +222,24 @@ void DiscoverMainWindow::setupActions()
     QAction *quitAction = KStandardAction::quit(QCoreApplication::instance(), SLOT(quit()), actionCollection());
     actionCollection()->addAction(QStringLiteral("file_quit"), quitAction);
 
-    if (KAuthorized::authorizeKAction(QStringLiteral("help_contents"))) {
+    if (KAuthorized::authorizeAction(QStringLiteral("help_contents"))) {
         auto mHandBookAction = KStandardAction::helpContents(this, SLOT(appHelpActivated()), this);
         actionCollection()->addAction(mHandBookAction->objectName(), mHandBookAction);
     }
 
-    if (KAuthorized::authorizeKAction(QStringLiteral("help_report_bug")) && !KAboutData::applicationData().bugAddress().isEmpty()) {
+    if (KAuthorized::authorizeAction(QStringLiteral("help_report_bug")) && !KAboutData::applicationData().bugAddress().isEmpty()) {
         auto mReportBugAction = KStandardAction::reportBug(this, SLOT(reportBug()), this);
         actionCollection()->addAction(mReportBugAction->objectName(), mReportBugAction);
     }
 
-    if (KAuthorized::authorizeKAction(QStringLiteral("switch_application_language"))) {
+    if (KAuthorized::authorizeAction(QStringLiteral("switch_application_language"))) {
 //         if (KLocalizedString::availableApplicationTranslations().count() > 1) {
             auto mSwitchApplicationLanguageAction = KStandardAction::create(KStandardAction::SwitchApplicationLanguage, this, SLOT(switchApplicationLanguage()), this);
             actionCollection()->addAction(mSwitchApplicationLanguageAction->objectName(), mSwitchApplicationLanguageAction);
 //         }
     }
 
-    if (KAuthorized::authorizeKAction(QStringLiteral("help_about_app"))) {
+    if (KAuthorized::authorizeAction(QStringLiteral("help_about_app"))) {
         auto mAboutAppAction = KStandardAction::aboutApp(this, SLOT(aboutApplication()), this);
         actionCollection()->addAction(mAboutAppAction->objectName(), mAboutAppAction);
     }
