@@ -18,6 +18,8 @@ DiscoverPage
         resourcesUpdatesModel.updateAll()
     }
 
+    property string footerLabel: ""
+
     //TODO: use supportsRefreshing to fetch updates
 
     ListView
@@ -110,6 +112,7 @@ DiscoverPage
                         name: "now-uptodate"
                         PropertyChanges { target: page; title: i18nc("@info", "The system is up to date.") }
                         PropertyChanges { target: header; background: "https://c2.staticflickr.com/4/3095/3246726097_711731f31a_b.jpg" }
+                        PropertyChanges { target: page; footerLabel: i18nc("@info", "No updates") }
                     },
                     State {
                         name: "uptodate"
@@ -134,7 +137,27 @@ DiscoverPage
                 ]
         }
 
-        footer: Item { width: 5; height: 5 }
+        footer: ColumnLayout {
+            anchors.horizontalCenter: parent.horizontalCenter
+            Kirigami.Heading {
+                Layout.alignment: Qt.AlignHCenter
+                visible: page.footerLabel !== ""
+                text: page.footerLabel
+            }
+            QIconItem {
+                Layout.alignment: Qt.AlignHCenter
+                visible: page.footerLabel !== ""
+                icon: "update-none"
+                opacity: 0.3
+                width: 200
+                height: 200
+            }
+            Item {
+                visible: page.footerLabel === ""
+                height: Kirigami.Units.gridUnit
+                width: 1
+            }
+        }
 
         model: updateModel
 
