@@ -34,6 +34,7 @@
 
     <Menu>
       <Name>Developer Tools</Name>
+      <Image>pkcategories/toolssystem.jpe</Image>
       <Icon>applications-development</Icon>
       <Include>
         <Or>
@@ -104,6 +105,7 @@
     <Menu>
       <Name>Education</Name>
       <Icon>applications-education</Icon>
+      <Image>pkcategories/education.jpg</Image>
       <Include>
         <And>
           <Category>Education</Category>
@@ -114,6 +116,7 @@
 
     <Menu>
       <Name>Science &amp; Engineering</Name>
+      <Image>pkcategories/science.jpg</Image>
       <Icon>applications-science</Icon>
       <Include>
         <Or>
@@ -216,6 +219,7 @@
 
     <Menu>
       <Name>Fonts</Name>
+      <Image>pkcategories/font.jpg</Image>
       <Icon>preferences-desktop-font</Icon>
       <ShowTechnical>true</ShowTechnical>
       <Include>
@@ -227,6 +231,7 @@
 
     <Menu>
       <Name>Games</Name>
+      <Image>pkcategories/games.jpg</Image>
       <Icon>applications-games</Icon>
       <Include>
         <And>
@@ -303,6 +308,7 @@
 
     <Menu>
       <Name>Graphics</Name>
+      <Image>pkcategories/graphics.jpe</Image>
       <Icon>applications-graphics</Icon>
       <Include>
         <And>
@@ -432,6 +438,7 @@
 
     <Menu>
       <Name>Multimedia</Name>
+      <Image>pkcategories/multimedia.jpg</Image>
       <Icon>applications-multimedia</Icon>
       <Include>
         <And>
@@ -443,6 +450,7 @@
 
     <Menu>
       <Name>Office</Name>
+      <Image>pkcategories/office.jpe</Image>
       <Icon>applications-office</Icon>
       <Include>
         <And>

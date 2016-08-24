@@ -22,3 +22,16 @@ target_link_libraries(DiscoverPackageKitNotifier PRIVATE PK::packagekitqt5 Disco
 set_target_properties(DiscoverPackageKitNotifier PROPERTIES INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/plasma-discover)
 
 install(TARGETS DiscoverPackageKitNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/discover-notifier)
+
+install( FILES
+    categoryimages/education.jpg
+    categoryimages/font.jpg
+    categoryimages/games.jpg
+    categoryimages/graphics.jpe
+#     categoryimages/multimedia2.jpg
+    categoryimages/multimedia.jpg
+#     categoryimages/music.jpe
+    categoryimages/office.jpe
+    categoryimages/science.jpg
+    categoryimages/toolssystem.jpe
+    DESTINATION ${KDE_INSTALL_FULL_DATAROOTDIR}/discover/pkcategories)
