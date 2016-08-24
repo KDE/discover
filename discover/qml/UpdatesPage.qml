@@ -13,8 +13,11 @@ DiscoverPage
     id: page
     title: i18n("Updates")
 
-    function start() {
+    Component.onCompleted: {
         resourcesUpdatesModel.prepare()
+    }
+
+    function start() {
         resourcesUpdatesModel.updateAll()
     }
 
