@@ -51,69 +51,38 @@ DiscoverPage
             }
             background: "https://c2.staticflickr.com/4/3095/3246726097_711731f31a_b.jpg"
 
-            Component {
-                id: progressComponent
-                ColumnLayout {
-                    Label {
-                        Layout.fillWidth: true
-                        horizontalAlignment: Text.AlignHCenter
-                        text: resourcesUpdatesModel.remainingTime
-                    }
-                    ProgressBar {
-                        id: pbar
-                        anchors.centerIn: parent
-                        minimumValue: 0
-                        maximumValue: 100
-
-                        // Workaround for bug in Qt
-                        // https://bugreports.qt.io/browse/QTBUG-48598
-                        Connections {
-                            target: resourcesUpdatesModel
-                            onProgressChanged: pbar.value = resourcesUpdatesModel.progress
-                        }
-                    }
-                }
-            }
-
-            Component {
-                id: selectionComponent
-                RowLayout {
-                    LabelBackground {
-                        text: updateModel.toUpdateCount + " (" + updateModel.updateSize+")"
-                    }
-                    Label {
-                        text: i18n("updates selected")
-                    }
-                    LabelBackground {
-                        id: unselectedItem
-                        readonly property int unselected: (updateModel.totalUpdatesCount - updateModel.toUpdateCount)
-                        text: unselected
-                        visible: unselected>0
-                    }
-                    Label {
-                        text: i18n("updates not selected")
-                        visible: unselectedItem.visible
-                    }
-                    Item { Layout.fillWidth: true}
-                    Button {
-                        id: startButton
-                        text: i18n("Update")
-                        onClicked: page.start()
-                    }
-                }
-            }
-
-            ConditionalLoader {
+            RowLayout {
                 Layout.fillWidth: true
                 Layout.leftMargin: Kirigami.Units.gridUnit
                 Layout.rightMargin: Kirigami.Units.gridUnit
                 Layout.topMargin: Kirigami.Units.smallSpacing
                 Layout.bottomMargin: Kirigami.Units.smallSpacing
 
+                enabled: !resourcesUpdatesModel.isProgressing
                 visible: resourcesUpdatesModel.isProgressing || updateModel.hasUpdates
-                condition: resourcesUpdatesModel.isProgressing
-                componentFalse: selectionComponent
-                componentTrue: progressComponent
+
+                LabelBackground {
+                    text: updateModel.toUpdateCount + " (" + updateModel.updateSize+")"
+                }
+                Label {
+                    text: i18n("updates selected")
+                }
+                LabelBackground {
+                    id: unselectedItem
+                    readonly property int unselected: (updateModel.totalUpdatesCount - updateModel.toUpdateCount)
+                    text: unselected
+                    visible: unselected>0
+                }
+                Label {
+                    text: i18n("updates not selected")
+                    visible: unselectedItem.visible
+                }
+                Item { Layout.fillWidth: true}
+                Button {
+                    id: startButton
+                    text: unselectedItem.visible ? i18n("Update Selected") : i18n("Update All")
+                    onClicked: page.start()
+                }
             }
 
             readonly property var secSinceUpdate: resourcesUpdatesModel.secsToLastUpdate
