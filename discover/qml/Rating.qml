@@ -57,7 +57,7 @@ RowLayout
                 condition: view.editable
                 componentTrue: MouseArea {
                     hoverEnabled: true
-                    onClicked: rating = (max/theRepeater.model*index)
+                    onClicked: rating = (max/theRepeater.model*(index+1))
                 }
                 componentFalse: null
             }
