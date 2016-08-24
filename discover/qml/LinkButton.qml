@@ -6,6 +6,7 @@ import org.kde.kirigami 1.0
 T.ToolButton {
     id: control
 
+    property alias shadow: shadow.visible
     property Action action: null
     text: action ? action.text : ""
     enabled: !action || action.enabled
@@ -27,13 +28,14 @@ T.ToolButton {
         id: textItem
         text: control.text
         font: control.font
-        color: Theme.viewBackgroundColor
+        color: control.shadow ? Theme.viewBackgroundColor : Theme.textColor
         elide: Text.ElideRight
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
     }
 
     DropShadow {
+        id: shadow
         horizontalOffset: 2
         verticalOffset: 2
         radius: 8.0

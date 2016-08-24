@@ -133,9 +133,15 @@ DiscoverPage {
             text: appInfo.application.longDescription
         }
 
-        ToolButton {
-            text: i18n("Homepage: %1", application.homepage)
-            onClicked: Qt.openUrlExternally(application.homepage)
+        RowLayout {
+            Label {
+                text: i18n("Homepage: ")
+            }
+            LinkButton {
+                shadow: false
+                text: application.homepage
+                onClicked: Qt.openUrlExternally(application.homepage)
+            }
         }
         RowLayout {
             spacing: 5
