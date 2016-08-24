@@ -24,6 +24,7 @@
 
 #include <klocalizedstring.h>
 #include <QFile>
+#include <QStandardPaths>
 #include <QDebug>
 
 Category::Category(QSet<QString>  pluginName, QObject* parent)
@@ -53,6 +54,9 @@ void Category::parseData(const QString& path, const QDomNode& data)
             m_subCategories.last()->parseData(path, node);
         } else if (tempElement.tagName() == QLatin1String("Image")) {
             m_decoration = QUrl(tempElement.text());
+            if (m_decoration.isRelative()) {
+                m_decoration = QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("discover/") + tempElement.text()));
+            }
         } else if (tempElement.tagName() == QLatin1String("Addons")) {
             m_isAddons = true;
         } else if (tempElement.tagName() == QLatin1String("Icon") && tempElement.hasChildNodes()) {
