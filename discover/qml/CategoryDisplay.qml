@@ -41,6 +41,7 @@ ColumnLayout
         search: page.search
 
         headerItem: CategoryBreadcrumbs {
+            shadow: true
             category: page.category
             search: page.search
         }

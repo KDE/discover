@@ -27,9 +27,10 @@ import org.kde.kirigami 1.0 as Kirigami
 ColumnLayout {
     id: root
     readonly property QtObject _page: findPage()
-    property alias background: decorationImage.source
+    property string background
     property alias headerItem: topItemLoader.sourceComponent
     property string search: ""
+    readonly property bool shadow: background.length > 0
 
     function findPage() {
         var obj = root;
@@ -79,6 +80,7 @@ ColumnLayout {
                     Layout.fillHeight: true
                 }
                 LinkButton {
+                    shadow: root.background !== ""
                     text: titleLabel.text
                     onClicked: {
                         var flic = root._page.flickable
@@ -95,8 +97,9 @@ ColumnLayout {
     Image {
         id: decorationImage
         fillMode: Image.PreserveAspectCrop
-        Layout.preferredHeight: titleLabel.paintedHeight * 4
+        Layout.preferredHeight: root.shadow ? titleLabel.paintedHeight * 4 : titleLabel.paintedHeight * 2
         Layout.fillWidth: true
+        source: root.background
 
         Loader {
             id: topItemLoader
@@ -105,6 +108,8 @@ ColumnLayout {
                 right: parent.right
             }
             sourceComponent: Breadcrumbs {
+                shadow: root.shadow
+
                 Kirigami.Action {
                     id: currentPage
                     text: page.title
@@ -124,7 +129,7 @@ ColumnLayout {
             text: root.search.length>0 && root._page.title.length>0 ? i18n("Search: %1 + %2", root.search, root._page.title)
                 : root.search.length>0 ? i18n("Search: %1", root.search)
                 : root._page.title
-            color: Kirigami.Theme.highlightedTextColor
+            color: root.shadow ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
             horizontalAlignment: Text.AlignRight
             verticalAlignment: Text.AlignBottom
         }
@@ -137,6 +142,7 @@ ColumnLayout {
             color: "#80000000"
             source: titleLabel
             anchors.fill: titleLabel
+            visible: root.shadow
         }
     }
     Rectangle {

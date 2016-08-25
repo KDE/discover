@@ -27,6 +27,7 @@ import "navigation.js" as Navigation
 RowLayout {
     id: bread
     property alias model: rep.model
+    property bool shadow: false
 
     readonly property Action homeAction: Kirigami.Action {
         text: i18n("Home")
@@ -45,6 +46,7 @@ RowLayout {
             }
             LinkButton {
                 id: button
+                shadow: bread.shadow
                 Layout.fillHeight: true
                 action: modelData
             }
