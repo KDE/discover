@@ -28,6 +28,14 @@ DiscoverPage {
     id: page
     title: i18n("Ratings for %1", resource.name)
     property alias resource: reviewsModel.resource
+    readonly property QtObject reviewsBackend: resource.backend.reviewsBackend
+
+    readonly property var rd: ReviewDialog {
+        id: reviewDialog
+        application: page.resource
+        parent: overlay
+        onAccepted: page.reviewsBackend.submitReview(resource, summary, review, rating)
+    }
 
     ListView {
         id: reviewsView
@@ -35,6 +43,13 @@ DiscoverPage {
         clip: true
         visible: count>0
         spacing: 5
+
+        header: Button {
+            visible: page.reviewsBackend != null && page.resource.isInstalled
+            text: i18n("Review")
+            onClicked: reviewDialog.opened = true
+        }
+
         model: ReviewsModel {
             id: reviewsModel
         }

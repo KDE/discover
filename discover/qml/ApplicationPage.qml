@@ -143,36 +143,28 @@ DiscoverPage {
                 onClicked: Qt.openUrlExternally(application.homepage)
             }
         }
-        RowLayout {
-            spacing: 5
 
-            Button {
-                readonly property QtObject rating: appInfo.application.rating
-                visible: rating && rating.ratingCount>0
-                text: i18n("Show comments (%1)...", rating ? rating.ratingCount : 0)
-                onClicked: Navigation.openReviews(application)
-            }
-            Button {
-                id: reviewButton
-                readonly property QtObject reviewsBackend: application.backend.reviewsBackend
-                visible: reviewsBackend != null && application.isInstalled
-                text: i18n("Review")
-                onClicked: reviewDialog.opened = true
-            }
-        }
-
-        Button {
+        LinkButton {
+            id: addonsButton
+            shadow: false
             text: i18n("Addons")
             onClicked: addonsView.opened = true
         }
+
+        LinkButton {
+            readonly property QtObject rating: appInfo.application.rating
+            visible: rating && rating.ratingCount>0
+            text: i18n("Show comments (%1)...", rating ? rating.ratingCount : 0)
+            shadow: false
+            onClicked: Navigation.openReviews(application)
+        }
+
+        Item {
+            height: addonsButton.height
+            width: 5
+        }
     }
 
-    readonly property var rd: ReviewDialog {
-        id: reviewDialog
-        application: appInfo.application
-        parent: overlay
-        onAccepted: reviewButton.reviewsBackend.submitReview(application, summary, review, rating)
-    }
     readonly property var addons: AddonsView {
         id: addonsView
         application: appInfo.application
