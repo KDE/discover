@@ -16,7 +16,6 @@ T.ToolButton {
     implicitHeight: textItem.implicitHeight + topPadding + bottomPadding
     baselineOffset: contentItem.y + contentItem.baselineOffset
 
-    padding: 6
     readonly property alias textColor: textItem.color
     hoverEnabled: true
 
@@ -28,7 +27,7 @@ T.ToolButton {
         id: textItem
         text: control.text
         font: control.font
-        color: control.shadow ? Theme.viewBackgroundColor : Theme.textColor
+        color: control.shadow ? Theme.viewBackgroundColor : Theme.linkColor
         elide: Text.ElideRight
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
@@ -45,5 +44,5 @@ T.ToolButton {
         anchors.fill: textItem
     }
 
-    background: Item {}
+    background: null
 }

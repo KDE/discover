@@ -28,6 +28,7 @@ RowLayout {
     id: bread
     property alias model: rep.model
     property bool shadow: false
+    spacing: Kirigami.Unit.smallSpacing
 
     readonly property Action homeAction: Kirigami.Action {
         text: i18n("Home")
@@ -38,7 +39,8 @@ RowLayout {
         id: rep
 
         delegate: RowLayout {
-            spacing: 0
+            Layout.leftMargin: Kirigami.Units.smallSpacing
+            spacing: Kirigami.Units.smallSpacing
             Text {
                 visible: index > 0
                 text: ">"
@@ -48,6 +50,8 @@ RowLayout {
                 id: button
                 shadow: bread.shadow
                 Layout.fillHeight: true
+                Layout.topMargin: Kirigami.Units.smallSpacing
+                Layout.bottomMargin: Kirigami.Units.smallSpacing
                 action: modelData
             }
         }
