@@ -88,7 +88,7 @@ bool processArgs(QCommandLineParser* parser, DiscoverMainWindow* mainWindow)
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
-    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("muondiscover")));
+    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("plasmadiscover")));
     app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 #ifdef WITH_KCRASH_INIT
