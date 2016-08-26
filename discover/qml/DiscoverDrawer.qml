@@ -36,11 +36,13 @@ Kirigami.GlobalDrawer {
     rightPadding: 0
     bottomPadding: 0
 
+    readonly property var currentRootCategory: window.leftPage ? rootCategory(window.leftPage) : null
+
     topContent: TextField {
         id: searchField
         Layout.fillWidth: true
 
-        enabled: window.stack.currentItem && (window.stack.currentItem.searchFor != null || window.stack.currentItem.hasOwnProperty("search"))
+        enabled: window.leftPage && (window.leftPage.searchFor != null || window.leftPage.hasOwnProperty("search"))
 
         Component.onCompleted: {
             searchField.forceActiveFocus()
@@ -52,12 +54,12 @@ Kirigami.GlobalDrawer {
             }
         }
 
-        placeholderText: (!enabled || window.stack.currentItem.title.length === 0) ? i18n("Search...") : i18n("Search in '%1'...", window.stack.currentItem.title)
+        placeholderText: (!enabled || window.leftPage.title.length === 0) ? i18n("Search...") : i18n("Search in '%1'...", window.leftPage.title)
         onTextChanged: searchTimer.running = true
 
         Connections {
             ignoreUnknownSignals: true
-            target: window.stack.currentItem
+            target: window.leftPage
             onClearSearch: {
                 searchField.text = ""
 //                 console.log("search cleared")
@@ -70,7 +72,7 @@ Kirigami.GlobalDrawer {
             repeat: false
             interval: 200
             onTriggered: {
-                var curr = window.stack.currentItem;
+                var curr = window.leftPage;
                 if (!curr.hasOwnProperty("search"))
                     Navigation.openApplicationList( { search: parent.text })
                 else
@@ -116,7 +118,6 @@ Kirigami.GlobalDrawer {
         }
         return ret
     }
-    readonly property var currentRootCategory: window.stack.currentItem ? rootCategory(window.stack.currentItem.category) : null
 
     property var objects: []
     Instantiator {

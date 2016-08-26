@@ -28,6 +28,8 @@ Kirigami.ApplicationWindow
     header: null
     visible: true
 
+    readonly property var leftPage: window.stack.get(0)
+
     Component.onCompleted: {
         Helpers.mainWindow = window
         if (app.isRoot)
