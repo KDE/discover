@@ -55,8 +55,14 @@ GridLayout {
             Layout.preferredWidth: root.side
             fillMode: Image.PreserveAspectFit
             smooth: true
+            opacity: mouse.containsMouse? 0.7 : 1
+
+            Behavior on opacity { NumberAnimation { easing.type: Easing.OutQuad; duration: 500 } }
+
             MouseArea {
+                id: mouse
                 anchors.fill: parent
+                hoverEnabled: true
                 onClicked: {
                     overlayImage.source = large_image_url
                     overlay.open()
