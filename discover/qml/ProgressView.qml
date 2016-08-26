@@ -53,7 +53,7 @@ Kirigami.BasicListItem {
                 delegate: Kirigami.AbstractListItem {
                     separatorVisible: false
                     onClicked: {
-                        window.stack.clear();
+                        Navigation.clearStack()
                         Navigation.openApplication(model.app)
                     }
 
