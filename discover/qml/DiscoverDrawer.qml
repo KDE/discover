@@ -36,7 +36,7 @@ Kirigami.GlobalDrawer {
     rightPadding: 0
     bottomPadding: 0
 
-    readonly property var currentRootCategory: window.leftPage ? rootCategory(window.leftPage) : null
+    readonly property var currentRootCategory: window.leftPage ? rootCategory(window.leftPage.category) : null
 
     topContent: TextField {
         id: searchField
