@@ -149,11 +149,12 @@ DiscoverPage {
         }
 
         RowLayout {
-            visible: application.homepage.length > 0
+            visible: button.text.length > 0
             Label {
                 text: i18n("Homepage: ")
             }
             LinkButton {
+                id: button
                 shadow: false
                 text: application.homepage
                 onClicked: Qt.openUrlExternally(application.homepage)
