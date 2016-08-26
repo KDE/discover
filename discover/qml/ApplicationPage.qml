@@ -119,6 +119,7 @@ DiscoverPage {
         ApplicationScreenshots {
             Layout.fillWidth: true
             resource: appInfo.application
+            page: appInfo
         }
 
         Heading {

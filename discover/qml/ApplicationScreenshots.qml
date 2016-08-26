@@ -25,14 +25,24 @@ import org.kde.discover 1.0
 import org.kde.kirigami 1.0 as Kirigami
 
 GridLayout {
-    id: shadow
+    id: root
     property alias resource: screenshotsModel.application
 
     columnSpacing: Kirigami.Units.smallSpacing
     rowSpacing: Kirigami.Units.smallSpacing
 
     readonly property real side: Kirigami.Units.gridUnit*3
+    property QtObject page
     visible: screenshotsModel.count>1
+
+    readonly property var fu: Kirigami.OverlaySheet {
+        id: overlay
+        parent: root.page
+        Image {
+            id: overlayImage
+            fillMode: Image.PreserveAspectFit
+        }
+    }
 
     Repeater {
         model: ScreenshotsModel {
@@ -41,11 +51,17 @@ GridLayout {
 
         delegate: Image {
             source: small_image_url
-            Layout.preferredHeight: shadow.side
-            Layout.preferredWidth: shadow.side
+            Layout.preferredHeight: root.side
+            Layout.preferredWidth: root.side
             fillMode: Image.PreserveAspectFit
             smooth: true
-            MouseArea { anchors.fill: parent; onClicked: {/*do someting*/} }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    overlayImage.source = large_image_url
+                    overlay.open()
+                }
+            }
         }
     }
 
