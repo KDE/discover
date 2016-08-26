@@ -109,7 +109,6 @@ DiscoverPage {
                 Label {
                     Layout.fillWidth: true
                     elide: Text.ElideRight
-                    horizontalAlignment: Text.AlignRight
                     text: appInfo.application.categoryDisplay
                     color: Kirigami.Theme.linkColor
                 }
