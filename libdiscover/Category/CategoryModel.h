@@ -21,13 +21,13 @@
 #ifndef CATEGORYMODEL_H
 #define CATEGORYMODEL_H
 
-#include <QStandardItemModel>
+#include <QAbstractListModel>
 #include <QQmlParserStatus>
 #include "Category.h"
 
 #include "discovercommon_export.h"
 
-class DISCOVERCOMMON_EXPORT CategoryModel : public QStandardItemModel
+class DISCOVERCOMMON_EXPORT CategoryModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(QList<Category *> categories READ categories WRITE setCategories NOTIFY categoryChanged)
@@ -49,6 +49,9 @@ class DISCOVERCOMMON_EXPORT CategoryModel : public QStandardItemModel
         void setCategories(const QList<Category *> &categoryList);
         QList<Category*> categories() const { return m_categories; }
         Q_SCRIPTABLE void resetCategories();
+
+        QVariant data(const QModelIndex & index, int role) const override;
+        int rowCount(const QModelIndex & parent) const override;
 
     Q_SIGNALS:
         void categoryChanged();
