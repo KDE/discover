@@ -129,7 +129,7 @@ ColumnLayout {
             text: root.search.length>0 && root._page.title.length>0 ? i18n("Search: %1 + %2", root.search, root._page.title)
                 : root.search.length>0 ? i18n("Search: %1", root.search)
                 : root._page.title
-            color: root.shadow ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
+            color: root.shadow ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.linkColor
             horizontalAlignment: Text.AlignRight
             verticalAlignment: Text.AlignBottom
         }
