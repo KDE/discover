@@ -135,6 +135,7 @@ DiscoverPage {
         }
 
         RowLayout {
+            visible: application.homepage.length > 0
             Label {
                 text: i18n("Homepage: ")
             }
@@ -149,15 +150,23 @@ DiscoverPage {
             id: addonsButton
             shadow: false
             text: i18n("Addons")
+            visible: addonsView.containsAddons
             onClicked: addonsView.opened = true
         }
 
         LinkButton {
             readonly property QtObject rating: appInfo.application.rating
-            visible: rating && rating.ratingCount>0
+            visible: rating && rating.ratingCount>0 && reviewsModel.count
             text: i18n("Show comments (%1)...", rating ? rating.ratingCount : 0)
             shadow: false
-            onClicked: Navigation.openReviews(application)
+
+            ReviewsModel {
+                id: reviewsModel
+                resource: appInfo.application
+            }
+            onClicked: {
+                Navigation.openReviews(reviewsModel)
+            }
         }
 
         Item {

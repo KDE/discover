@@ -46,8 +46,8 @@ function openApplication(app) {
     window.stack.push(applicationComp, { application: app })
 }
 
-function openReviews(app) {
-    window.stack.push(reviewsComp, { resource: app })
+function openReviews(model) {
+    window.stack.push(reviewsComp, { model: model })
 }
 
 function openExtends(ext) {

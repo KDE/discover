@@ -11,11 +11,12 @@ Kirigami.OverlaySheet
     id: addonsView
     property alias application: addonsModel.application
     property bool isInstalling: false
+    readonly property bool containsAddons: rep.count>0 || isExtended
     readonly property bool isExtended: ResourcesModel.isExtended(application.appstreamId)
 
     ColumnLayout
     {
-        visible: rep.count>0 || isExtended
+        visible: addonsView.containsAddons
         enabled: !addonsView.isInstalling
         spacing: 5
 
