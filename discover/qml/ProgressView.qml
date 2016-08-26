@@ -52,7 +52,10 @@ Kirigami.BasicListItem {
 
                 delegate: Kirigami.AbstractListItem {
                     separatorVisible: false
-                    onClicked: Navigation.openApplication(model.app)
+                    onClicked: {
+                        window.stack.clear();
+                        Navigation.openApplication(model.app)
+                    }
 
                     ColumnLayout {
                         width: parent.width
