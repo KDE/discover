@@ -23,6 +23,7 @@
 #include <AppstreamQt/image.h>
 #include <KLocalizedString>
 #include <KToolInvocation>
+#include <QProcess>
 #include <QDebug>
 
 AppPackageKitResource::AppPackageKitResource(const Appstream::Component& data, PackageKitBackend* parent)
@@ -111,7 +112,7 @@ void AppPackageKitResource::invokeApplication() const
 {
     QStringList exes = executables();
     if(!exes.isEmpty())
-        KToolInvocation::startServiceByDesktopPath(exes.first());
+        QProcess::startDetached(exes.first());
 }
 
 static QUrl imageOfKind(const QList<Appstream::Image>& images, Appstream::Image::Kind kind)
