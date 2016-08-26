@@ -117,6 +117,7 @@ void ReviewsModel::setResource(AbstractResource* app)
             QMetaObject::invokeMethod(this, "restartFetching", Qt::QueuedConnection);
         }
         emit rowsChanged();
+        emit resourceChanged();
     }
 }
 
