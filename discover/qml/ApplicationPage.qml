@@ -77,13 +77,16 @@ DiscoverPage {
                 Layout.preferredWidth: 128
 
                 icon: appInfo.application.icon
-                Layout.alignment: Qt.AlignTop
+                Layout.alignment: Qt.AlignVCenter
             }
             ColumnLayout {
                 id: conts
 
                 Layout.fillWidth: true
                 Layout.fillHeight: true
+                Layout.topMargin: Kirigami.Units.largeSpacing
+                Layout.bottomMargin: Kirigami.Units.largeSpacing
+                spacing: 0
 
                 Heading {
                     id: title
@@ -102,6 +105,18 @@ DiscoverPage {
                     wrapMode: Text.WordWrap
                     elide: Text.ElideRight
                     maximumLineCount: 1
+                }
+                Label {
+                    Layout.fillWidth: true
+                    elide: Text.ElideRight
+                    horizontalAlignment: Text.AlignRight
+                    text: appInfo.application.categoryDisplay
+                    color: Kirigami.Theme.linkColor
+                }
+
+                Item {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
                 }
                 Label {
                     text: i18n("Version: %1", appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion)
