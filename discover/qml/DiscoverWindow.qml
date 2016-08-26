@@ -65,7 +65,6 @@ Kirigami.ApplicationWindow
     ]
     TopLevelPageData {
         id: installedAction
-        iconName: "installed"
         text: TransactionModel.count == 0 ? i18n("Installed") : i18n("Installing...")
         component: topInstalledComp
         objectName: "installed"
