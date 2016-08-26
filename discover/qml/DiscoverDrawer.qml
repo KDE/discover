@@ -18,7 +18,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-import QtQuick 2.1
+import QtQuick 2.7
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.1
 import org.kde.discover 1.0
@@ -41,7 +41,16 @@ Kirigami.GlobalDrawer {
         Layout.fillWidth: true
 
         enabled: window.stack.currentItem && (window.stack.currentItem.searchFor != null || window.stack.currentItem.hasOwnProperty("search"))
-        focus: true
+
+        Component.onCompleted: {
+            searchField.forceActiveFocus()
+        }
+        Shortcut {
+            sequence: "Ctrl+F"
+            onActivated: {
+                searchField.forceActiveFocus()
+            }
+        }
 
         placeholderText: (!enabled || window.stack.currentItem.title.length === 0) ? i18n("Search...") : i18n("Search in '%1'...", window.stack.currentItem.title)
         onTextChanged: searchTimer.running = true
