@@ -229,7 +229,7 @@ DiscoverPage
                     visible: layout.extended && changelog.length>0
 
                     Label {
-                        width: view.width-32
+                        width: view.viewport.width
                         text: changelog
                         textFormat: Text.RichText
                         wrapMode: Text.WordWrap
