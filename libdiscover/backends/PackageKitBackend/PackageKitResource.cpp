@@ -86,7 +86,7 @@ QUrl PackageKitResource::homepage()
     return QUrl(m_details.url());
 }
 
-QString PackageKitResource::icon() const
+QVariant PackageKitResource::icon() const
 {
     return QStringLiteral("applications-other");
 }

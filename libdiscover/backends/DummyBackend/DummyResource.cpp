@@ -76,7 +76,7 @@ QUrl DummyResource::homepage()
     return QUrl(QStringLiteral("http://kde.org"));
 }
 
-QString DummyResource::icon() const
+QVariant DummyResource::icon() const
 {
     return isTechnical() ? QStringLiteral("kalarm") : m_iconName;
 }

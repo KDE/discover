@@ -47,7 +47,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(QString packageName READ packageName CONSTANT)
     Q_PROPERTY(QString comment READ comment CONSTANT)
-    Q_PROPERTY(QString icon READ icon CONSTANT)
+    Q_PROPERTY(QVariant icon READ icon CONSTANT)
     Q_PROPERTY(bool canExecute READ canExecute CONSTANT)
     Q_PROPERTY(State state READ state NOTIFY stateChanged)
     Q_PROPERTY(QString status READ status NOTIFY stateChanged)
@@ -109,8 +109,8 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         ///short description of the resource
         virtual QString comment() = 0;
 
-        ///xdg-compatible icon name to represent the resource
-        virtual QString icon() const = 0;
+        ///xdg-compatible icon name to represent the resource, url or QIcon
+        virtual QVariant icon() const = 0;
 
         ///@returns whether invokeApplication makes something
         /// false if not overridden

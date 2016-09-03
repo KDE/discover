@@ -34,7 +34,7 @@ class AppPackageKitResource : public PackageKitResource
 
         bool isTechnical() const override;
         QString name() override;
-        QString icon() const override;
+        QVariant icon() const override;
         QStringList mimetypes() const override;
         QStringList categories() override;
         QString longDescription() override;

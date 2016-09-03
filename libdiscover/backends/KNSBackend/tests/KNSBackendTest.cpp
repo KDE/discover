@@ -74,7 +74,7 @@ void KNSBackendTest::testRetrieval()
         QVERIFY(!res->name().isEmpty());
         QVERIFY(!res->categories().isEmpty());
         QVERIFY(!res->origin().isEmpty());
-        QVERIFY(!res->icon().isEmpty());
+        QVERIFY(!res->icon().isNull());
         QVERIFY(!res->comment().isEmpty());
         QVERIFY(!res->longDescription().isEmpty());
 //         QVERIFY(!res->license().isEmpty());

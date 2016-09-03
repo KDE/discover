@@ -23,6 +23,7 @@
 #include <AppstreamQt/image.h>
 #include <KLocalizedString>
 #include <KToolInvocation>
+#include <QIcon>
 #include <QProcess>
 #include <QDebug>
 
@@ -47,17 +48,20 @@ QString AppPackageKitResource::longDescription()
     return PackageKitResource::longDescription();
 }
 
-QString AppPackageKitResource::icon() const
+QVariant AppPackageKitResource::icon() const
 {
-    const QString anIcon = m_appdata.icon();
-    if (!anIcon.isEmpty())
-        return anIcon;
+    QIcon ret;
 
-    const QUrl iconUrl = m_appdata.iconUrl(QSize());
-    if (iconUrl.isLocalFile())
-        return iconUrl.toLocalFile();
-
-    return QStringLiteral("applications-other");
+    const auto icons = m_appdata.iconUrls();
+    if (icons.isEmpty())
+        return m_appdata.name();
+    else {
+        for (auto it = icons.constBegin(), itEnd = icons.constEnd(); it!=itEnd; ++it) {
+            if (it->isLocalFile())
+                ret.addFile(it->toLocalFile(), it.key());
+        }
+    }
+    return ret;
 }
 
 QString AppPackageKitResource::license()

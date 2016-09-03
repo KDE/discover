@@ -52,7 +52,7 @@ AbstractResource::State KNSResource::state()
     return None;
 }
 
-QString KNSResource::icon() const
+QVariant KNSResource::icon() const
 {
     return qobject_cast<KNSBackend*>(parent())->iconName();
 }
