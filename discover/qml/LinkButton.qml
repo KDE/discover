@@ -27,7 +27,7 @@ T.ToolButton {
         id: textItem
         text: control.text
         font: control.font
-        color: control.shadow ? Theme.viewBackgroundColor : Theme.linkColor
+        color: control.shadow ? Theme.highlightedTextColor : Theme.linkColor
         elide: Text.ElideRight
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
