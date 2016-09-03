@@ -28,6 +28,9 @@ Kirigami.ApplicationWindow
     header: null
     visible: true
 
+    minimumWidth: 300
+    minimumHeight: 300
+
     readonly property var leftPage: window.stack.get(0)
 
     Component.onCompleted: {
