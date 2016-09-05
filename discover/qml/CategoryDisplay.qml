@@ -26,16 +26,9 @@ import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
 import org.kde.kirigami 1.0 as Kirigami
 
-ColumnLayout
-{
-    id: page
+PageHeader {
+    id: header
     property QtObject category: null
-    property string search: ""
-
-    PageHeader {
-        id: header
-        Layout.fillWidth: true
-        background: category ? category.decoration : "https://c2.staticflickr.com/8/7193/6900377481_76367f973a_o.jpg"
-        search: page.search
-    }
+    Layout.fillWidth: true
+    background: category ? category.decoration : "https://c2.staticflickr.com/8/7193/6900377481_76367f973a_o.jpg"
 }
