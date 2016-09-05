@@ -29,7 +29,7 @@ ColumnLayout {
     readonly property QtObject _page: findPage()
     property string background
     property string search: ""
-    readonly property bool shadow: background.length > 0
+    readonly property bool shadow: background.length > 0 && decorationImage.status !== Image.Error
 
     function findPage() {
         var obj = root;
