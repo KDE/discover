@@ -123,7 +123,9 @@ Kirigami.GlobalDrawer {
 
     Component {
         id: categoryActionComponent
-        CategoryAction {
+        Kirigami.Action {
+            property QtObject category
+            text: category.name
             enabled: (!window.leftPage
                    || !window.leftPage.subcategories
                    || window.leftPage.subcategories === undefined

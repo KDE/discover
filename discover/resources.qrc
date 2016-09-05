@@ -3,7 +3,6 @@
     <file>qml/Main.qml</file>
     <file>qml/TopLevelPageData.qml</file>
     <file>qml/CategoryDisplay.qml</file>
-    <file>qml/CategoryAction.qml</file>
     <file>qml/ApplicationsTop.qml</file>
     <file>qml/FeaturedBanner.qml</file>
     <file>qml/ApplicationsListPage.qml</file>
