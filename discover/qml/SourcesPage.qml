@@ -33,6 +33,7 @@ DiscoverPage {
 //                         iconName: "list-add"
                     text: i18n("Add Source")
 
+                    enabled: sourcesMenu.items.count > 0
                     tooltip: text
                     menu: sourcesMenu
                 }
@@ -54,38 +55,12 @@ DiscoverPage {
                         }
                     }
                 }
-                ToolButton {
-                    action: Kirigami.Action {
-                        id: configureMenu
-                        text: i18n("Configure...")
-//                             iconName: "settings-configure"
-
-                        ActionBridge {
-                            id: bindings
-                            action: app.action("options_configure_keybinding");
-                        }
-
-                        Instantiator {
-                            id: advanced
-                            model: MessageActionsModel {}
-                            delegate: ActionBridge { action: model.action }
-
-                            property var objects: []
-                            onObjectAdded: objects.push(object)
-                            onObjectRemoved: objects = objects.splice(configureMenu.children.indexOf(object))
-                        }
-
-                        children: [sources, bindings].concat(advanced.objects)
-                    }
-                }
 
                 ToolButton {
-                    action: Kirigami.Action {
-                        text: i18n("Help...")
-//                             iconName: "system-help"
-
-                        ActionBridge { action: app.action("help_about_app"); }
-                        ActionBridge { action: app.action("help_report_bug"); }
+                    text: i18n("Help...")
+                    menu: Menu {
+                        MenuItem { action: ActionBridge { action: app.action("help_about_app") } }
+                        MenuItem { action: ActionBridge { action: app.action("help_report_bug") } }
                     }
                 }
             }
