@@ -48,6 +48,7 @@ public:
     Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical CONSTANT)
     Q_PROPERTY(QObject* parent READ parent CONSTANT)
     Q_PROPERTY(QUrl decoration READ decoration CONSTANT)
+    Q_PROPERTY(QVariantList subcategories READ subCategoriesVariant CONSTANT)
     explicit Category(QSet<QString>  pluginNames, QObject* parent = nullptr);
     ~Category() override;
 
@@ -58,12 +59,16 @@ public:
     QVector<QPair<FilterType, QString> > notFilters() const;
     bool shouldShowTechnical() const;
     QVector<Category *> subCategories() const;
+    QVariantList subCategoriesVariant() const;
 
     static void addSubcategory(QVector<Category*>& list, Category* cat);
     void parseData(const QString& path, const QDomNode& data);
     bool blacklistPlugins(const QSet<QString>& pluginName);
     bool isAddons() const { return m_isAddons; }
     QUrl decoration() const;
+
+    Q_SCRIPTABLE bool contains(Category* cat) const;
+    Q_SCRIPTABLE bool contains(const QVariantList &cats) const;
 
 private:
     QString m_name;

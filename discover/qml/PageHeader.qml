@@ -28,7 +28,6 @@ ColumnLayout {
     id: root
     readonly property QtObject _page: findPage()
     property string background
-    property alias headerItem: topItemLoader.sourceComponent
     property string search: ""
     readonly property bool shadow: background.length > 0
 
@@ -72,9 +71,6 @@ ColumnLayout {
                     left: parent.left
                     right: parent.right
                 }
-                Loader {
-                    sourceComponent: root.headerItem
-                }
                 Item {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
@@ -100,24 +96,6 @@ ColumnLayout {
         Layout.preferredHeight: root.shadow ? titleLabel.paintedHeight * 4 : titleLabel.paintedHeight * 2
         Layout.fillWidth: true
         source: root.background
-
-        Loader {
-            id: topItemLoader
-            anchors {
-                left: parent.left
-                right: parent.right
-            }
-            sourceComponent: Breadcrumbs {
-                shadow: root.shadow
-
-                Kirigami.Action {
-                    id: currentPage
-                    text: page.title
-                    enabled: false
-                }
-                model: [ homeAction, currentPage ]
-            }
-        }
 
         Label {
             id: titleLabel

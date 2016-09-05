@@ -39,9 +39,14 @@ DiscoverPage {
     property alias search: appsModel.search
     property alias shouldShowTechnical: appsModel.isShowingTechnical
     property alias header: apps.header
+    readonly property alias subcategories: appsModel.subcategories
     title: category ? category.name : ""
 
-    onSearchChanged: appsModel.sortOrder = Qt.AscendingOrder
+    onSearchChanged: {
+        if (search.length === 0)
+            Navigation.openHome()
+        appsModel.sortOrder = Qt.AscendingOrder
+    }
     signal clearSearch()
 
     ListView {
@@ -56,7 +61,6 @@ DiscoverPage {
 
         header: CategoryDisplay {
             category: appsModel.filteredCategory
-            subcategories: appsModel.subcategories
             search: appsModel.search
             anchors {
                 left: parent.left

@@ -79,7 +79,7 @@ void ResourcesProxyModel::setSearch(const QString &searchText)
 
     if (diff) {
         Q_EMIT searchChanged(m_lastSearch);
-        Q_EMIT subcategoriesChanged(subcategories());
+        fetchSubcategories();
     }
 }
 
@@ -119,28 +119,32 @@ void ResourcesProxyModel::setFiltersFromCategory(Category *category)
     m_filteredCategory = category;
     invalidateFilter();
     emit categoryChanged();
-    emit subcategoriesChanged(subcategories());
+    fetchSubcategories();
 }
 
-QList<Category *> ResourcesProxyModel::subcategories() const
+void ResourcesProxyModel::fetchSubcategories()
 {
     const auto cats = m_filteredCategory ? m_filteredCategory->subCategories().toList() : CategoryModel::rootCategories();
 
     const int count = rowCount();
-    QSet<Category *> ret;
-    foreach(Category* cat, cats) {
-        if (ret.contains(cat))
-            continue;
-
-        for (int i=0; i<count; ++i) {
-            AbstractResource* res = qobject_cast<AbstractResource*>(index(i, 0).data(ResourcesModel::ApplicationRole).value<QObject*>());
-            if (res->categoryMatches(cat)) {
-                ret.insert(cat);
-                break;
-            }
-        }
+    QSet<Category*> done;
+    for (int i=0; i<count; ++i) {
+        AbstractResource* res = qobject_cast<AbstractResource*>(index(i, 0).data(ResourcesModel::ApplicationRole).value<QObject*>());
+        done.unite(res->categoryObjects());
     }
-    return ret.toList();
+    QVariantList ret;
+    for (Category* cat: qAsConst(done))
+        ret += QVariant::fromValue<QObject*>(cat);
+
+    if (ret != m_subcategories) {
+        m_subcategories = ret;
+        Q_EMIT subcategoriesChanged(m_subcategories);
+    }
+}
+
+QVariantList ResourcesProxyModel::subcategories() const
+{
+    return m_subcategories;
 }
 
 void ResourcesProxyModel::setShouldShowTechnical(bool show)

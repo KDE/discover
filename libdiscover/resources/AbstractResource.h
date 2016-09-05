@@ -122,7 +122,6 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         virtual State state() = 0;
 
         virtual QStringList categories() = 0;
-
         ///@returns a URL that points to the content
         virtual QUrl homepage() = 0;
 
@@ -181,6 +180,8 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         QString categoryDisplay() const;
 
         bool categoryMatches(Category* cat);
+
+        QSet<Category*> categoryObjects() const;
 
     public Q_SLOTS:
         virtual void fetchScreenshots();

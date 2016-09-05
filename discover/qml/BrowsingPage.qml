@@ -43,7 +43,6 @@ DiscoverPage
     CategoryDisplay {
         category: null
         width: parent.width
-        headerItem: null
 
         ApplicationsTop {
             Layout.fillWidth: true

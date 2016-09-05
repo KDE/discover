@@ -31,38 +31,11 @@ ColumnLayout
     id: page
     property QtObject category: null
     property string search: ""
-    property alias subcategories: catModel.categories
-    property alias headerItem: header.headerItem
 
     PageHeader {
         id: header
         Layout.fillWidth: true
         background: category ? category.decoration : "https://c2.staticflickr.com/8/7193/6900377481_76367f973a_o.jpg"
         search: page.search
-
-        headerItem: CategoryBreadcrumbs {
-            shadow: true
-            category: page.category
-            search: page.search
-        }
-
-        Flow {
-            id: categoriesView
-            Layout.fillWidth: true
-            Layout.leftMargin: Kirigami.Units.gridUnit
-            Layout.rightMargin: Kirigami.Units.gridUnit
-            Repeater {
-                model: CategoryModel {
-                    id: catModel
-                    Component.onCompleted: if(!page.category) {
-                        resetCategories()
-                    }
-                }
-                delegate: HeaderButton {
-                    text: display
-                    onClicked: Navigation.openCategory(category, page.search)
-                }
-            }
-        }
     }
 }

@@ -41,6 +41,8 @@ Kirigami.GlobalDrawer {
     topContent: TextField {
         id: searchField
         Layout.fillWidth: true
+        Layout.leftMargin: Kirigami.Units.smallSpacing
+        Layout.rightMargin: Kirigami.Units.smallSpacing
 
         enabled: window.leftPage && (window.leftPage.searchFor != null || window.leftPage.hasOwnProperty("search"))
 
@@ -119,29 +121,40 @@ Kirigami.GlobalDrawer {
         return ret
     }
 
-    property var objects: []
-    Instantiator {
-        model: CategoryModel {
-            Component.onCompleted: resetCategories()
-        }
-        delegate: Kirigami.Action {
-            text: display
-            onTriggered: Navigation.openCategory(category, "")
-            checkable: true
-            checked: drawer.currentRootCategory == category
-        }
-
-        onObjectAdded: {
-            drawer.objects.push(object)
-            drawer.actions = drawer.objects
-        }
-        onObjectRemoved: {
-            drawer.objects.splice(drawer.objects.indexOf(object), 1)
-            drawer.objects = drawer.objects;
+    Component {
+        id: categoryActionComponent
+        CategoryAction {
+            enabled: (!window.leftPage
+                   || !window.leftPage.subcategories
+                   || window.leftPage.subcategories === undefined
+                   || searchField.text.length === 0
+                   || category.contains(window.leftPage.subcategories)
+                     )
+            onTriggered: {
+                Navigation.openCategory(category, searchField.text)
+            }
         }
     }
 
-    actions: objects
+    function createCategoryActions(parent, categories) {
+        var actions = []
+        for(var i in categories) {
+            var cat = categories[i];
+            var catAction = categoryActionComponent.createObject(parent, {category: cat});
+            catAction.children = createCategoryActions(catAction, cat.subcategories);
+            actions.push(catAction)
+        }
+        return actions;
+    }
+
+    CategoryModel {
+        id: rootCategories
+        Component.onCompleted: {
+            resetCategories();
+            drawer.actions = createCategoryActions(rootCategories, rootCategories.categories)
+        }
+    }
+
     modal: Helpers.isCompact
     handleVisible: Helpers.isCompact
 

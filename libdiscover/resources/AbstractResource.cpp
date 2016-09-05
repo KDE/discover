@@ -186,14 +186,14 @@ bool AbstractResource::categoryMatches(Category* cat)
     return true;
 }
 
-static QStringList walkCategories(AbstractResource* res, const QVector<Category*>& cats)
+static QSet<Category*> walkCategories(AbstractResource* res, const QVector<Category*>& cats)
 {
-    QStringList ret;
+    QSet<Category*> ret;
     foreach (Category* cat, cats) {
         if (res->categoryMatches(cat)) {
             const auto subcats = walkCategories(res, cat->subCategories());
             if (subcats.isEmpty()) {
-                ret += cat->name();
+                ret += cat;
             } else {
                 ret += subcats;
             }
@@ -203,8 +203,18 @@ static QStringList walkCategories(AbstractResource* res, const QVector<Category*
     return ret;
 }
 
+QSet<Category*> AbstractResource::categoryObjects() const
+{
+    return walkCategories(const_cast<AbstractResource*>(this), CategoryModel::rootCategories().toVector());
+}
+
 QString AbstractResource::categoryDisplay() const
 {
-    const auto matchedCategories = walkCategories(const_cast<AbstractResource*>(this), CategoryModel::rootCategories().toVector());
-    return matchedCategories.join(QStringLiteral(", "));
+    const auto matchedCategories = categoryObjects();
+    QStringList ret;
+    foreach(auto cat, matchedCategories) {
+        ret.append(cat->name());
+    }
+    ret.sort();
+    return ret.join(QStringLiteral(", "));
 }

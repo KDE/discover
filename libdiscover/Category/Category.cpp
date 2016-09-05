@@ -194,3 +194,31 @@ QUrl Category::decoration() const
         return m_decoration;
     }
 }
+
+QVariantList Category::subCategoriesVariant() const
+{
+    QVariantList ret;
+    ret.reserve(m_subCategories.count());
+    for(Category* cat : m_subCategories) {
+        ret.append(QVariant::fromValue<QObject*>(cat));
+    }
+    return ret;
+}
+
+bool Category::contains(Category* cat) const
+{
+    const bool ret = cat == this || (cat && contains(qobject_cast<Category*>(cat->parent())));
+    return ret;
+}
+
+bool Category::contains(const QVariantList& cats) const
+{
+    bool ret = false;
+    for(auto itCat : cats) {
+        if (contains(qobject_cast<Category*>(itCat.value<QObject*>()))) {
+            ret = true;
+            break;
+        }
+    }
+    return ret;
+}

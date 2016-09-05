@@ -55,6 +55,15 @@ void CategoryModel::setCategories(const QList<Category *> &categoryList)
     endResetModel();
 }
 
+void CategoryModel::setCategories(const QVariantList& categoryList)
+{
+    QList<Category*> cats;
+    foreach(const QVariant &cat, categoryList)
+        cats += cat.value<Category*>();
+
+    setCategories(cats);
+}
+
 void CategoryModel::categoryDeleted(QObject* cat)
 {
     auto idx = m_categories.indexOf(static_cast<Category*>(cat));
@@ -140,4 +149,13 @@ QVariant CategoryModel::data(const QModelIndex& index, int role) const
             return QVariant::fromValue<QObject*>(c);
     }
     return {};
+}
+
+QVariantList CategoryModel::categories() const
+{
+    QVariantList ret;
+    for(Category* cat : m_categories) {
+        ret.append(QVariant::fromValue<QObject*>(cat));
+    }
+    return ret;
 }

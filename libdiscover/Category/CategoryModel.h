@@ -30,7 +30,7 @@
 class DISCOVERCOMMON_EXPORT CategoryModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(QList<Category *> categories READ categories WRITE setCategories NOTIFY categoryChanged)
+    Q_PROPERTY(QVariantList categories READ categories WRITE setCategories NOTIFY categoryChanged)
     public:
         enum CategoryModelRole {
             CategoryRole = Qt::UserRole + 1
@@ -47,7 +47,8 @@ class DISCOVERCOMMON_EXPORT CategoryModel : public QAbstractListModel
         static QList<Category*> rootCategories();
 
         void setCategories(const QList<Category *> &categoryList);
-        QList<Category*> categories() const { return m_categories; }
+        void setCategories(const QVariantList &categoryList);
+        QVariantList categories() const;
         Q_SCRIPTABLE void resetCategories();
 
         QVariant data(const QModelIndex & index, int role) const override;
