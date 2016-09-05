@@ -31,7 +31,7 @@ Kirigami.ApplicationWindow
     minimumWidth: 300
     minimumHeight: 300
 
-    readonly property var leftPage: window.stack.get(0)
+    readonly property var leftPage: window.stack.count ? window.stack.get(0) : null
 
     Component.onCompleted: {
         Helpers.mainWindow = window
