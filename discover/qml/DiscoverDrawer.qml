@@ -91,10 +91,14 @@ Kirigami.GlobalDrawer {
 
         ProgressView {}
 
+        Kirigami.Separator {
+            Layout.fillWidth: true
+        }
         Kirigami.BasicListItem {
             checked: installedAction.checked
             icon: installedAction.iconName
             label: installedAction.text
+            separatorVisible: false
             onClicked: {
                 installedAction.trigger()
                 drawer.resetMenu()
@@ -104,6 +108,7 @@ Kirigami.GlobalDrawer {
             checked: settingsAction.checked
             icon: settingsAction.iconName
             label: settingsAction.text
+            separatorVisible: false
             onClicked: {
                 settingsAction.trigger()
                 drawer.resetMenu()
@@ -114,6 +119,7 @@ Kirigami.GlobalDrawer {
             checked: updateAction.checked
             icon: updateAction.iconName
             label: updateAction.text
+            separatorVisible: false
             onClicked: {
                 updateAction.trigger()
                 drawer.resetMenu()
