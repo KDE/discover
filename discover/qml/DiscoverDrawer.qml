@@ -36,6 +36,8 @@ Kirigami.GlobalDrawer {
     rightPadding: 0
     bottomPadding: 0
 
+    resetMenuOnTriggered: false
+
     readonly property var currentRootCategory: window.leftPage ? rootCategory(window.leftPage.category) : null
 
     topContent: TextField {
@@ -93,20 +95,29 @@ Kirigami.GlobalDrawer {
             checked: installedAction.checked
             icon: installedAction.iconName
             label: installedAction.text
-            onClicked: installedAction.trigger()
+            onClicked: {
+                installedAction.trigger()
+                drawer.resetMenu()
+            }
         }
         Kirigami.BasicListItem {
             checked: settingsAction.checked
             icon: settingsAction.iconName
             label: settingsAction.text
-            onClicked: settingsAction.trigger()
+            onClicked: {
+                settingsAction.trigger()
+                drawer.resetMenu()
+            }
         }
         Kirigami.BasicListItem {
             enabled: updateAction.enabled
             checked: updateAction.checked
             icon: updateAction.iconName
             label: updateAction.text
-            onClicked: updateAction.trigger()
+            onClicked: {
+                updateAction.trigger()
+                drawer.resetMenu()
+            }
 
             backgroundColor: enabled ? "orange" : Kirigami.Theme.viewBackgroundColor
         }
