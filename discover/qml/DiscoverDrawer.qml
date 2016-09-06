@@ -89,11 +89,14 @@ Kirigami.GlobalDrawer {
         spacing: 0
         Layout.fillWidth: true
 
-        ProgressView {}
-
         Kirigami.Separator {
             Layout.fillWidth: true
         }
+
+        ProgressView {
+            separatorVisible: false
+        }
+
         Kirigami.BasicListItem {
             checked: installedAction.checked
             icon: installedAction.iconName
