@@ -28,9 +28,7 @@ import "navigation.js" as Navigation
 
 Kirigami.GlobalDrawer {
     id: drawer
-    title: i18n("Discover")
-    titleIcon: "plasmadiscover"
-    bannerImageSource: "image://icon/plasmadiscover"
+    bannerImageSource: "qrc:/icons/banner.svg"
     topPadding: -50
     leftPadding: 0
     rightPadding: 0

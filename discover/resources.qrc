@@ -49,5 +49,7 @@
     <file>qml/Helpers.qml</file>
 
     <file>qml/navigation.js</file>
+
+    <file>icons/banner.svg</file>
  </qresource>
 </RCC>
