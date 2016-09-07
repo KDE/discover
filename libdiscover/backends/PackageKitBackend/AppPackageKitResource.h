@@ -50,6 +50,7 @@ class AppPackageKitResource : public PackageKitResource
         QList<PackageState> addonsInformation() override;
         QStringList extends() const override;
         void fetchScreenshots() override;
+        void fetchChangelog() override;
 
     private:
         QStringList findProvides(Appstream::Provides::Kind kind) const;

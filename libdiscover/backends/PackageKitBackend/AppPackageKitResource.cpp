@@ -21,6 +21,7 @@
 #include "AppPackageKitResource.h"
 #include <AppstreamQt/screenshot.h>
 #include <AppstreamQt/image.h>
+#include <AppstreamQt/release.h>
 #include <KLocalizedString>
 #include <KToolInvocation>
 #include <QIcon>
@@ -204,4 +205,14 @@ QList<PackageState> AppPackageKitResource::addonsInformation()
 QStringList AppPackageKitResource::extends() const
 {
     return m_appdata.extends();
+}
+
+void AppPackageKitResource::fetchChangelog()
+{
+    QString changelog;
+    for(const auto& rel: m_appdata.releases()) {
+        changelog += QStringLiteral("<h3>") + rel.version() + QStringLiteral("</h3>");
+        changelog += QStringLiteral("<p>") + rel.description() + QStringLiteral("</p>");
+    }
+    emit changelogFetched(changelog);
 }
