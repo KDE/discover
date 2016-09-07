@@ -24,12 +24,11 @@ import QtQuick.Controls 1.1
 import org.kde.discover 1.0
 import org.kde.kirigami 1.0 as Kirigami
 
-GridLayout {
+Flow {
     id: root
     property alias resource: screenshotsModel.application
 
-    columnSpacing: Kirigami.Units.smallSpacing
-    rowSpacing: Kirigami.Units.smallSpacing
+    spacing: Kirigami.Units.smallSpacing
 
     readonly property real side: Kirigami.Units.gridUnit * 8
     property QtObject page
@@ -51,9 +50,9 @@ GridLayout {
 
         delegate: Image {
             source: small_image_url
-            Layout.preferredHeight: root.side
-            Layout.preferredWidth: root.side
-            fillMode: Image.PreserveAspectFit
+            height: root.side
+            width: root.side
+            fillMode: Image.PreserveAspectCrop
             smooth: true
             opacity: mouse.containsMouse? 0.7 : 1
 
