@@ -70,14 +70,18 @@ ColumnLayout {
                 anchors {
                     left: parent.left
                     right: parent.right
+                    rightMargin: Kirigami.Units.largeSpacing
                 }
                 Item {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
                 LinkButton {
+                    Layout.topMargin: Kirigami.Units.smallSpacing*2
+                    Layout.bottomMargin: Kirigami.Units.smallSpacing*2
                     shadow: root.background !== ""
                     text: titleLabel.text
+                    font: SystemFonts.titleFont
                     onClicked: {
                         var flic = root._page.flickable
                         if (flic.positionViewAtBeginning)

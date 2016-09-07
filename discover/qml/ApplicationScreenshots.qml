@@ -31,7 +31,7 @@ GridLayout {
     columnSpacing: Kirigami.Units.smallSpacing
     rowSpacing: Kirigami.Units.smallSpacing
 
-    readonly property real side: Kirigami.Units.gridUnit*3
+    readonly property real side: Kirigami.Units.gridUnit * 8
     property QtObject page
     visible: screenshotsModel.count>1
 
