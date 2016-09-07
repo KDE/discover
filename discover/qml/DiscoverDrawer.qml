@@ -144,7 +144,7 @@ Kirigami.GlobalDrawer {
         Kirigami.Action {
             property QtObject category
             text: category.name
-            enabled: (!window.leftPage
+            visible: (!window.leftPage
                    || !window.leftPage.subcategories
                    || window.leftPage.subcategories === undefined
                    || searchField.text.length === 0
