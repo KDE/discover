@@ -21,11 +21,11 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.discover.app 1.0
+import org.kde.kirigami 1.0 as Kirigami
 
 Item
 {
     property alias text: theLabel.text
-    property bool progressing: false
     property real progress: 1.
     readonly property real margin: 5
     implicitWidth: theLabel.implicitWidth + margin*2
@@ -34,8 +34,7 @@ Item
     height: implicitHeight
 
     Rectangle {
-        color: DiscoverSystemPalette.dark
-        visible: parent.progressing
+        color: Kirigami.Theme.disabledTextColor
         anchors.fill: parent
         radius: parent.margin
     }
@@ -43,15 +42,15 @@ Item
     Rectangle {
         anchors {
             fill: parent
-            rightMargin: !parent.progressing ? 0 : (1-parent.progress) * parent.width
+            rightMargin: (1-parent.progress) * parent.width
         }
-        color: DiscoverSystemPalette.highlight
+        color: Kirigami.Theme.highlightColor
         radius: parent.margin
     }
 
     Label {
         id: theLabel
         anchors.centerIn: parent
-        color: DiscoverSystemPalette.highlightedText
+        color: Kirigami.Theme.highlightedTextColor
     }
 }

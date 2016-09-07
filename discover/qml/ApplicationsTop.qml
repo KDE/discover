@@ -30,7 +30,6 @@ ColumnLayout {
     id: topView
     property alias sortRole: appsModel.stringSortRole
     property alias filteredCategory: appsModel.filteredCategory
-    property Component roleDelegate: null
     property string title: ""
     property bool extended: false
     readonly property alias titleHeight: title.height

@@ -51,19 +51,6 @@ DiscoverPage
             sortRole: "ratingCount"
             title: i18n("Most Popular")
             extended: true
-            roleDelegate: Item {
-                width: bg.width
-                implicitWidth: bg.implicitWidth
-                property var model
-                LabelBackground {
-                    id: bg
-                    anchors {
-                        verticalCenter: parent.verticalCenter
-                        right: parent.right
-                    }
-                    text: model ? model.ratingCount : ""
-                }
-            }
         }
     }
 }

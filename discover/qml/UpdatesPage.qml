@@ -141,9 +141,12 @@ DiscoverPage
         }
 
         footer: ColumnLayout {
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.right: parent.right
+            anchors.left: parent.left
             Kirigami.Heading {
+                Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter
+                horizontalAlignment: Text.AlignHCenter
                 visible: page.footerLabel !== ""
                 text: page.footerLabel
             }
@@ -216,7 +219,6 @@ DiscoverPage
                         Layout.minimumWidth: 90
                         text: size
 
-                        progressing: resourcesUpdatesModel.isProgressing
                         progress: resourceProgress/100
                     }
                 }
