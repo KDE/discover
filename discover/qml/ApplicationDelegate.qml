@@ -31,6 +31,7 @@ Kirigami.AbstractListItem
 {
     id: delegateArea
     property alias application: installButton.application
+    property bool compact: false
 
     onClicked: {
         if (ListView.view)
@@ -43,9 +44,7 @@ Kirigami.AbstractListItem
         anchors {
             left: parent.left
             right: parent.right
-            leftMargin: Kirigami.Units.largeSpacing
-            topMargin: Kirigami.Units.largeSpacing
-            bottomMargin: Kirigami.Units.largeSpacing
+            margins: Kirigami.Units.largeSpacing
         }
         spacing: Kirigami.Units.largeSpacing
 
@@ -84,7 +83,7 @@ Kirigami.AbstractListItem
             Rectangle {
                 color: Kirigami.Theme.linkColor
                 Layout.fillWidth: true
-                height: 1
+                height: Kirigami.Units.devicePixelRatio
             }
 
             Label {
@@ -97,7 +96,7 @@ Kirigami.AbstractListItem
                 clip: true
             }
 
-            Item { height: Kirigami.Units.largeSpacing; width: 3 }
+            Item { height: Kirigami.Units.smallSpacing; Layout.fillWidth: true }
 
             Label {
                 Layout.fillWidth: true
@@ -106,7 +105,7 @@ Kirigami.AbstractListItem
                 horizontalAlignment: Text.AlignJustify
                 wrapMode: Text.WordWrap
                 text: longDescription
-                maximumLineCount: 5
+                maximumLineCount: delegateArea.compact ? 2 : 5
             }
 
             InstallApplicationButton {
@@ -114,13 +113,6 @@ Kirigami.AbstractListItem
                 Layout.alignment: Qt.AlignRight
                 canUpgrade: false
             }
-        }
-
-        ApplicationIndicator {
-            id: indicator
-            width: 5
-            height: parent.height
-            anchors.right: parent.right
         }
     }
 }

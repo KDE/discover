@@ -10,6 +10,7 @@ ApplicationsListPage {
     stateFilter: 2
 
     title: i18n("Installed")
+    compact: true
 
     header: PageHeader {
         width: parent.width

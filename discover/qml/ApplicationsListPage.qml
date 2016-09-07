@@ -39,6 +39,7 @@ DiscoverPage {
     property alias search: appsModel.search
     property alias shouldShowTechnical: appsModel.isShowingTechnical
     property alias header: apps.header
+    property bool compact: false
     readonly property alias subcategories: appsModel.subcategories
     title: category ? category.name : ""
 
@@ -82,6 +83,7 @@ DiscoverPage {
             x: Kirigami.Units.gridUnit
             width: ListView.view.width - Kirigami.Units.gridUnit*2
             application: model.application
+            compact: page.compact
         }
     }
 }
