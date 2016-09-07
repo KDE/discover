@@ -40,7 +40,7 @@ DiscoverPage {
                 Repeater {
                     model: SourcesModel.actions
 
-                    delegate: RowLayout{
+                    delegate: RowLayout {
                         QIconItem {
                             icon: modelData.icon
                         }
@@ -71,6 +71,8 @@ DiscoverPage {
             anchors {
                 left: parent.left
                 right: parent.right
+                leftMargin: Kirigami.Units.largeSpacing
+                rightMargin: Kirigami.Units.largeSpacing
             }
 
             property QtObject sourceBackend: model.sourceBackend
@@ -104,11 +106,11 @@ DiscoverPage {
                     height: browseOrigin.implicitHeight*1.4
                     enabled: browseOrigin.enabled
                     onClicked: Navigation.openApplicationListSource(model.display)
-                    width: parent.width
+                    Layout.fillWidth: true
 
                     RowLayout {
                         Layout.alignment: Qt.AlignVCenter
-                        width: parent.width
+                        Layout.fillWidth: true
 
                         CheckBox {
                             id: enabledBox
