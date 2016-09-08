@@ -56,6 +56,8 @@ void Category::parseData(const QString& path, const QDomNode& data)
             m_decoration = QUrl(tempElement.text());
             if (m_decoration.isRelative()) {
                 m_decoration = QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("discover/") + tempElement.text()));
+                if (m_decoration.isEmpty())
+                    qWarning() << "couldn't find category decoration" << tempElement.text();
             }
         } else if (tempElement.tagName() == QLatin1String("Addons")) {
             m_isAddons = true;
@@ -191,6 +193,7 @@ QUrl Category::decoration() const
         Category* c = qobject_cast<Category*>(parent());
         return c ? c->decoration() : QUrl();
     } else {
+        Q_ASSERT(!m_decoration.isLocalFile() || QFile::exists(m_decoration.toLocalFile()));
         return m_decoration;
     }
 }

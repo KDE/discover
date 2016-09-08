@@ -4,7 +4,7 @@
   <Menu>
     <Name>Applications</Name>
     <Icon>applications-internet</Icon>
-    <Image>https://c2.staticflickr.com/8/7303/9462149812_2a904bf5d5_b.jpg</Image>
+    <Image>pkcategories/applicationcrop.jpg</Image>
     <Include>
         <And>
             <Category>Application</Category>
@@ -13,6 +13,7 @@
     <Menu>
       <Name>Accessories</Name>
       <Icon>applications-utilities</Icon>
+      <Image>pkcategories/accessoriescrop.jpg</Image>
       <Include>
         <And>
           <Category>Utility</Category>
@@ -24,6 +25,7 @@
     <Menu>
       <Name>Accessibility</Name>
       <Icon>preferences-desktop-accessibility</Icon>
+      <Image>pkcategories/accesscropped.jpg</Image>
       <Include>
         <And>
           <Category>Accessibility</Category>
@@ -34,7 +36,7 @@
 
     <Menu>
       <Name>Developer Tools</Name>
-      <Image>pkcategories/toolssystem.jpe</Image>
+      <Image>pkcategories/toolcrop.jpg</Image>
       <Icon>applications-development</Icon>
       <Include>
         <Or>
@@ -308,7 +310,7 @@
 
     <Menu>
       <Name>Graphics</Name>
-      <Image>pkcategories/graphics.jpe</Image>
+      <Image>pkcategories/graphiccrop.jpg</Image>
       <Icon>applications-graphics</Icon>
       <Include>
         <And>
@@ -391,6 +393,7 @@
     <Menu>
       <Name>Internet</Name>
       <Icon>applications-internet</Icon>
+      <Image>pkcategories/internetcrop.jpg</Image>
       <Include>
         <And>
           <Category>Network</Category>
@@ -450,7 +453,7 @@
 
     <Menu>
       <Name>Office</Name>
-      <Image>pkcategories/office.jpe</Image>
+      <Image>pkcategories/officecrop.jpg</Image>
       <Icon>applications-office</Icon>
       <Include>
         <And>
@@ -461,6 +464,7 @@
 
     <Menu>
       <Name>System &amp; Settings</Name>
+      <Image>pkcategories/settingscrop.jpg</Image>
       <Icon>preferences-system</Icon>
       <Include>
         <Or>

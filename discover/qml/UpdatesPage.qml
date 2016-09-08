@@ -55,7 +55,7 @@ DiscoverPage
                 left: parent.left
                 right: parent.right
             }
-            background: "https://c2.staticflickr.com/4/3095/3246726097_711731f31a_b.jpg"
+            background: "qrc:/icons/updatescrop.jpg"
 
             RowLayout {
                 Layout.fillWidth: true
@@ -219,7 +219,6 @@ DiscoverPage
         State {
             name: "fetching"
             PropertyChanges { target: page; title: i18nc("@info", "Loading...") }
-            PropertyChanges { target: updatesView.headerItem; background: "https://c2.staticflickr.com/4/3873/14950433815_1794b390d4_b.jpg" }
         },
         State {
             name: "progressing"
@@ -228,33 +227,27 @@ DiscoverPage
         State {
             name: "has-updates"
             PropertyChanges { target: page; title: i18nc("@info", "Updates") }
-            PropertyChanges { target: updatesView.headerItem; background: "https://c2.staticflickr.com/4/3873/14950433815_1794b390d4_b.jpg" }
         },
         State {
             name: "now-uptodate"
             PropertyChanges { target: page; title: i18nc("@info", "The system is up to date.") }
-            PropertyChanges { target: updatesView.headerItem; background: "https://c2.staticflickr.com/4/3095/3246726097_711731f31a_b.jpg" }
             PropertyChanges { target: page; footerLabel: i18nc("@info", "No updates") }
         },
         State {
             name: "uptodate"
             PropertyChanges { target: page; title: i18nc("@info", "The system is up to date.") }
-            PropertyChanges { target: updatesView.headerItem; background: "https://c2.staticflickr.com/4/3095/3246726097_711731f31a_b.jpg" }
         },
         State {
             name: "medium"
             PropertyChanges { target: page; title: i18nc("@info", "No updates are available.") }
-            PropertyChanges { target: updatesView.headerItem; background: "https://c2.staticflickr.com/4/3095/3246726097_711731f31a_b.jpg" }
         },
         State {
             name: "low"
             PropertyChanges { target: page; title: i18nc("@info", "Should check for updates.") }
-            PropertyChanges { target: updatesView.headerItem; background: "https://c2.staticflickr.com/4/3100/2466596520_776eda5d3d_o.jpg" }
         },
         State {
             name: "unknown"
             PropertyChanges { target: page; title: i18nc("@info", "It is unknown when the last check for updates was.") }
-            PropertyChanges { target: updatesView.headerItem; background: "https://c2.staticflickr.com/4/3100/2466596520_776eda5d3d_o.jpg" }
         }
     ]
 }

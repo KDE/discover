@@ -24,14 +24,20 @@ set_target_properties(DiscoverPackageKitNotifier PROPERTIES INSTALL_RPATH ${CMAK
 install(TARGETS DiscoverPackageKitNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/discover-notifier)
 
 install( FILES
-    categoryimages/education.jpg
-    categoryimages/font.jpg
-    categoryimages/games.jpg
-    categoryimages/graphics.jpe
+    categoryimages/educationcrop.jpg
+    categoryimages/fontcrop.jpg
+    categoryimages/gamecrop.jpg
+    categoryimages/graphiccrop.jpg
 #     categoryimages/multimedia2.jpg
-    categoryimages/multimedia.jpg
+    categoryimages/multimediacrop.jpg
 #     categoryimages/music.jpe
-    categoryimages/office.jpe
-    categoryimages/science.jpg
-    categoryimages/toolssystem.jpe
+    categoryimages/officecrop.jpg
+    categoryimages/sciencecrop.jpg
+    categoryimages/accesscropped.jpg
+    categoryimages/toolcrop.jpg
+    categoryimages/accesscropped.jpg
+    categoryimages/accessoriescrop.jpg
+    categoryimages/applicationcrop.jpg
+    categoryimages/internetcrop.jpg
+    categoryimages/settingscrop.jpg
     DESTINATION ${KDE_INSTALL_FULL_DATAROOTDIR}/discover/pkcategories)

@@ -14,6 +14,6 @@ ApplicationsListPage {
 
     header: PageHeader {
         width: parent.width
-        background: "https://c2.staticflickr.com/8/7146/6783941909_30c7c5d52f_b.jpg"
+        background: "qrc:/icons/installedcrop.jpg"
     }
 }

@@ -51,5 +51,7 @@
     <file>qml/navigation.js</file>
 
     <file>icons/banner.svg</file>
+    <file>icons/installedcrop.jpg</file>
+    <file>icons/updatescrop.jpg</file>
  </qresource>
 </RCC>
