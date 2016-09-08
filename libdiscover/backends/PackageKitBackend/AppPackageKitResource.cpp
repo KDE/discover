@@ -21,7 +21,7 @@
 #include "AppPackageKitResource.h"
 #include <AppstreamQt/screenshot.h>
 #include <AppstreamQt/image.h>
-#include <AppstreamQt/release.h>
+// #include <AppstreamQt/release.h>
 #include <KLocalizedString>
 #include <KToolInvocation>
 #include <QIcon>
@@ -209,10 +209,12 @@ QStringList AppPackageKitResource::extends() const
 
 void AppPackageKitResource::fetchChangelog()
 {
-    QString changelog;
-    for(const auto& rel: m_appdata.releases()) {
-        changelog += QStringLiteral("<h3>") + rel.version() + QStringLiteral("</h3>");
-        changelog += QStringLiteral("<p>") + rel.description() + QStringLiteral("</p>");
-    }
-    emit changelogFetched(changelog);
+    PackageKitResource::fetchChangelog();
+    //TODO: uncomment when the API is publicly released
+//     QString changelog;
+//     for(const auto& rel: m_appdata.releases()) {
+//         changelog += QStringLiteral("<h3>") + rel.version() + QStringLiteral("</h3>");
+//         changelog += QStringLiteral("<p>") + rel.description() + QStringLiteral("</p>");
+//     }
+//     emit changelogFetched(changelog);
 }
