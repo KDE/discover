@@ -38,6 +38,7 @@ DiscoverPage {
     property alias extend: appsModel.extends
     property alias search: appsModel.search
     property alias shouldShowTechnical: appsModel.isShowingTechnical
+    property alias count: apps.count
     property alias header: apps.header
     property bool compact: false
     readonly property alias subcategories: appsModel.subcategories

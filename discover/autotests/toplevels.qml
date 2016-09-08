@@ -27,11 +27,11 @@ DiscoverTest
 
         var updatePage = appRoot.stack.currentItem;
         compare(typeName(updatePage), "UpdatesPage")
-        compare(updatePage.condition, true, "to update")
+        compare(updatePage.state, "has-updates", "to update")
         var button = findChild(updatePage, "Button")
         verify(button);
         button.clicked();
-        compare(updatePage.condition, true, "updating")
+        compare(updatePage.state, "has-updates", "updating")
 
         //make sure the window doesn't close while updating
         verify(appRoot.visible);
@@ -41,23 +41,26 @@ DiscoverTest
 
         while(ResourcesModel.updatesCount>0)
             verify(waitForSignal(ResourcesModel, "updatesCountChanged"))
-        compare(updatePage.condition, false, "update finished")
+        compare(updatePage.state, "now-uptodate", "update finished")
         compare(ResourcesModel.updatesCount, 0, "should be up to date")
     }
 
     function test_search() {
         app.openMode("Browsing");
-        var searchField = findChild(appRoot, "TextField");
+        var searchField = findChild(appRoot.globalDrawer, "TextField");
         verify(searchField);
         searchField.text = "cocacola"
         verify(waitForSignal(appRoot.stack, "currentItemChanged"))
         while(!isType(appRoot.stack.currentItem, "ApplicationsListPage"))
             verify(waitForSignal(appRoot.stack, "currentItemChanged"))
-        searchField.text = "dummy"
         var listPage = appRoot.stack.currentItem
-        compare(listPage.state, "list")
-        verify(waitForSignal(listPage.model, "countChanged"))
-        compare(listPage.model.count, ResourcesModel.rowCount()/2)
+        compare(listPage.count, 0)
+        verify(waitForSignal(listPage, "searchChanged"))
+        compare(listPage.search, "cocacola")
+        searchField.text = "dummy"
+        verify(waitForSignal(listPage, "searchChanged"))
+        compare(listPage.search, searchField.text)
+        compare(listPage.count, ResourcesModel.rowCount()/2)
     }
 
     function test_modes() {
