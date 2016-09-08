@@ -93,14 +93,12 @@ Kirigami.AbstractListItem
                 text: comment
                 maximumLineCount: 1
                 font: SystemFonts.titleFont
-                clip: true
             }
 
             Item { height: Kirigami.Units.smallSpacing; Layout.fillWidth: true }
 
             Label {
                 Layout.fillWidth: true
-                clip: true
 
                 horizontalAlignment: Text.AlignJustify
                 wrapMode: Text.WordWrap
