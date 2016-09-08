@@ -98,20 +98,31 @@ DiscoverPage {
                 sourcesMenu.insertItem(0, menuItem)
             }
 
+
             Label { text: sourceBackend.name }
+            spacing: 0
             Repeater {
                 model: sourceBackend.sources
 
-                delegate: Kirigami.AbstractListItem {
-                    height: browseOrigin.implicitHeight*1.4
-                    enabled: browseOrigin.enabled
+                delegate: Kirigami.SwipeListItem {
+                    enabled: display.length>0
                     onClicked: Navigation.openApplicationListSource(model.display)
-                    Layout.fillWidth: true
+
+                    actions: [
+                        Kirigami.Action {
+                            enabled: display.length>0
+                            iconName: "view-filter"
+                            tooltip: i18n("Browse the origin's resources")
+                            onTriggered: Navigation.openApplicationListSource(model.display)
+                        },
+                        Kirigami.Action {
+                            iconName: "edit-delete"
+                            tooltip: i18n("Delete the origin")
+                            onTriggered: sourceDelegate.sourceBackend.removeSource(model.display)
+                        }
+                    ]
 
                     RowLayout {
-                        Layout.alignment: Qt.AlignVCenter
-                        Layout.fillWidth: true
-
                         CheckBox {
                             id: enabledBox
                             enabled: false //TODO: implement the application of this change
@@ -124,18 +135,6 @@ DiscoverPage {
                         }
                         Label {
                             text: model.toolTip
-                        }
-                        Button {
-                            id: browseOrigin
-                            enabled: display.length>0
-                            iconName: "view-filter"
-                            tooltip: i18n("Browse the origin's resources")
-                            onClicked: Navigation.openApplicationListSource(model.display)
-                        }
-                        Button {
-                            iconName: "edit-delete"
-                            onClicked: sourceDelegate.sourceBackend.removeSource(model.display)
-                            tooltip: i18n("Delete the origin")
                         }
                     }
                 }
