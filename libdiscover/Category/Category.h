@@ -25,6 +25,7 @@
 #include <QtCore/QPair>
 #include <QtCore/QObject>
 #include <QtCore/QSet>
+#include <QtCore/QUrl>
 
 #include "discovercommon_export.h"
 
@@ -45,6 +46,9 @@ public:
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(QString icon READ icon CONSTANT)
     Q_PROPERTY(bool shouldShowTechnical READ shouldShowTechnical CONSTANT)
+    Q_PROPERTY(QObject* parent READ parent CONSTANT)
+    Q_PROPERTY(QUrl decoration READ decoration CONSTANT)
+    Q_PROPERTY(QVariantList subcategories READ subCategoriesVariant CONSTANT)
     explicit Category(QSet<QString>  pluginNames, QObject* parent = nullptr);
     ~Category() override;
 
@@ -55,15 +59,21 @@ public:
     QVector<QPair<FilterType, QString> > notFilters() const;
     bool shouldShowTechnical() const;
     QVector<Category *> subCategories() const;
+    QVariantList subCategoriesVariant() const;
 
     static void addSubcategory(QVector<Category*>& list, Category* cat);
-    void parseData(const QString& path, const QDomNode& data, bool canHaveChildren);
+    void parseData(const QString& path, const QDomNode& data);
     bool blacklistPlugins(const QSet<QString>& pluginName);
     bool isAddons() const { return m_isAddons; }
+    QUrl decoration() const;
+
+    Q_SCRIPTABLE bool contains(Category* cat) const;
+    Q_SCRIPTABLE bool contains(const QVariantList &cats) const;
 
 private:
     QString m_name;
     QString m_iconString;
+    QUrl m_decoration;
     QVector<QPair<FilterType, QString> > m_andFilters;
     QVector<QPair<FilterType, QString> > m_orFilters;
     QVector<QPair<FilterType, QString> > m_notFilters;
@@ -74,5 +84,6 @@ private:
     QSet<QString> m_plugins;
     bool m_isAddons = false;
 };
+Q_DECLARE_METATYPE(QList<Category *>);
 
 #endif

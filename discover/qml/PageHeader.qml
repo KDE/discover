@@ -18,27 +18,118 @@
  */
 
 import QtQuick 2.0
+import QtQuick.Layouts 1.2
+import QtQuick.Controls 1.2
+import QtGraphicalEffects 1.0
 import org.kde.discover.app 1.0
+import org.kde.kirigami 1.0 as Kirigami
 
-Item {
+ColumnLayout {
     id: root
-    property alias internalMargin: item.internalMargin
-    property real topMargin: 20
-    default property Item content
-    height: Math.max(SystemFonts.generalFont.pointSize*5, content.implicitHeight + 2*item.internalMargin) + item.anchors.topMargin
+    readonly property QtObject _page: findPage()
+    property string background
+    property string search: ""
+    readonly property bool shadow: background.length > 0 && decorationImage.status !== Image.Error
 
-    GridItem
-    {
-        id: item
-        anchors {
-            fill: parent
-            topMargin: root.topMargin
+    function findPage() {
+        var obj = root;
+        while(obj && !obj.hasOwnProperty("title")) {
+            obj = obj.parent
         }
-        enabled: false
-        clip: true
-        content: root.content
+        return obj;
+    }
+    spacing: 0
 
-        Binding { target: root.content; property: "width"; value: item.internalWidth }
-        Binding { target: root.content; property: "height"; value: item.internalHeight }
+    Component.onCompleted: {
+        if (!root._page.pageHeader)
+            root._page.pageHeader = tinyHeader
+    }
+
+    Component {
+        id: tinyHeader
+        Item {
+            height: layout.implicitHeight
+            DropShadow {
+                anchors.fill: bg
+                source: bg
+                horizontalOffset: 0
+                verticalOffset: 3
+                radius: 8.0
+                samples: 17
+                color: "gray"
+            }
+            Image {
+                id: bg
+                anchors.fill: parent
+                source: root.background
+                fillMode: Image.PreserveAspectCrop
+            }
+
+            RowLayout {
+                id: layout
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    rightMargin: Kirigami.Units.largeSpacing
+                }
+                Item {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+                }
+                LinkButton {
+                    Layout.topMargin: Kirigami.Units.smallSpacing*2
+                    Layout.bottomMargin: Kirigami.Units.smallSpacing*2
+                    shadow: root.background !== ""
+                    text: titleLabel.text
+                    font: SystemFonts.titleFont
+                    onClicked: {
+                        var flic = root._page.flickable
+                        if (flic.positionViewAtBeginning)
+                            flic.positionViewAtBeginning();
+                        else
+                            flic.contentY = 0;
+                    }
+                }
+            }
+        }
+    }
+
+    Image {
+        id: decorationImage
+        fillMode: Image.PreserveAspectCrop
+        Layout.preferredHeight: root.shadow ? titleLabel.paintedHeight * 4 : titleLabel.paintedHeight * 2
+        Layout.fillWidth: true
+        source: root.background
+
+        Label {
+            id: titleLabel
+            anchors {
+                fill: parent
+                margins: Kirigami.Units.gridUnit
+            }
+            font.pointSize: SystemFonts.titleFont.pointSize * 3
+            text: root.search.length>0 && root._page.title.length>0 ? i18n("Search: %1 + %2", root.search, root._page.title)
+                : root.search.length>0 ? i18n("Search: %1", root.search)
+                : root._page.title
+            color: root.shadow ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.linkColor
+            horizontalAlignment: Text.AlignRight
+            verticalAlignment: Text.AlignBottom
+        }
+
+        DropShadow {
+            horizontalOffset: 3
+            verticalOffset: 3
+            radius: 8.0
+            samples: 17
+            color: "#80000000"
+            source: titleLabel
+            anchors.fill: titleLabel
+            visible: root.shadow
+        }
+    }
+    Rectangle {
+        color: Kirigami.Theme.linkColor
+        Layout.fillWidth: true
+        height: 3
     }
 }

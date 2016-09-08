@@ -22,13 +22,13 @@
 #include "CategoryModel.h"
 #include "Category.h"
 #include "CategoriesReader.h"
+#include <QDebug>
+#include <QCollator>
 
 Q_GLOBAL_STATIC_WITH_ARGS(QVector<Category*>, s_categories, (CategoriesReader().populateCategories()))
 
 CategoryModel::CategoryModel(QObject* parent)
-    : QStandardItemModel(parent)
-    , m_currentCategory(nullptr)
-    , m_filter(ShowEverything)
+    : QAbstractListModel(parent)
 {
 }
 
@@ -39,55 +39,44 @@ QHash< int, QByteArray > CategoryModel::roleNames() const
     return names;
 }
 
-void CategoryModel::setCategories(const QVector<Category *> &categoryList)
+bool lessThan(Category* a, Category* b)
 {
-    clear();
+    if (a->isAddons() == b->isAddons())
+        return QCollator().compare(a->name(), b->name()) < 0;
+    else
+        return b->isAddons();
+}
 
-    invisibleRootItem()->removeRows(0, invisibleRootItem()->rowCount());
-    foreach (Category *category, categoryList) {
-        if (m_filter != ShowEverything && (category->isAddons() != (m_filter == OnlyAddons))) {
-            continue;
-        }
+void CategoryModel::setCategories(const QList<Category *> &categoryList)
+{
+    beginResetModel();
+    m_categories = categoryList;
+    std::sort(m_categories.begin(), m_categories.end(), lessThan);
+    endResetModel();
+}
 
-        QStandardItem *categoryItem = new QStandardItem;
-        categoryItem->setText(category->name());
-        categoryItem->setIcon(QIcon::fromTheme(category->icon()));
-        categoryItem->setEditable(false);
-        categoryItem->setData(qVariantFromValue<QObject*>(category), CategoryRole);
-        connect(category, &QObject::destroyed, this, &CategoryModel::categoryDeleted);
+void CategoryModel::setCategories(const QVariantList& categoryList)
+{
+    QList<Category*> cats;
+    foreach(const QVariant &cat, categoryList)
+        cats += cat.value<Category*>();
 
-        appendRow(categoryItem);
-    }
+    setCategories(cats);
 }
 
 void CategoryModel::categoryDeleted(QObject* cat)
 {
-    for(int i=0; i<rowCount(); ++i) {
-        if (cat == item(i)->data(CategoryRole).value<QObject*>()) {
-            removeRow(i);
-        }
+    auto idx = m_categories.indexOf(static_cast<Category*>(cat));
+    if (idx >= 0) {
+        beginRemoveRows(QModelIndex(), idx, idx);
+        m_categories.removeAt(idx);
+        endRemoveRows();
     }
 }
 
 Category* CategoryModel::categoryForRow(int row)
 {
-    return qobject_cast<Category*>(item(row)->data(CategoryRole).value<QObject*>());
-}
-
-void CategoryModel::setDisplayedCategory(Category* c)
-{
-    if (m_currentCategory == c && (c || rowCount()>0))
-        return;
-
-    m_currentCategory = c;
-    resetCategories();
-
-    Q_EMIT categoryChanged(c);
-}
-
-Category* CategoryModel::displayedCategory() const
-{
-    return m_currentCategory;
+    return qobject_cast<Category*>(m_categories.at(row));
 }
 
 static Category* recFindCategory(Category* root, const QString& name)
@@ -95,7 +84,7 @@ static Category* recFindCategory(Category* root, const QString& name)
     if(root->name()==name)
         return root;
     else {
-        const QVector<Category*> subs = root->subCategories();
+        const auto subs = root->subCategories();
         Q_FOREACH (Category* c, subs) {
             Category* ret = recFindCategory(c, name);
             if(ret)
@@ -105,9 +94,14 @@ static Category* recFindCategory(Category* root, const QString& name)
     return nullptr;
 }
 
+QList<Category*> CategoryModel::rootCategories()
+{
+    return s_categories->toList();
+}
+
 Category* CategoryModel::findCategoryByName(const QString& name)
 {
-    const QVector<Category*> cats = *s_categories;
+    const auto cats = *s_categories;
     Q_FOREACH (Category* cat, cats) {
         Category* ret = recFindCategory(cat, name);
         if(ret)
@@ -128,21 +122,40 @@ void CategoryModel::blacklistPlugin(const QString& name)
     }
 }
 
-CategoryModel::ShowAddons CategoryModel::filter() const
-{
-    return m_filter;
-}
-
-void CategoryModel::setFilter(CategoryModel::ShowAddons filter)
-{
-    m_filter = filter;
-    resetCategories();
-}
-
 void CategoryModel::resetCategories()
 {
-    if(m_currentCategory)
-        setCategories(m_currentCategory->subCategories());
-    else
-        setCategories(*s_categories);
+    setCategories(rootCategories());
+}
+
+int CategoryModel::rowCount(const QModelIndex& parent) const
+{
+    return parent.isValid() ? 0 : m_categories.count();
+}
+
+QVariant CategoryModel::data(const QModelIndex& index, int role) const
+{
+    if (!index.isValid() || index.row()<0 || index.row() >= m_categories.count())
+        return {};
+
+    Category* c = m_categories[index.row()];
+    Q_ASSERT(c);
+
+    switch (role) {
+        case Qt::DisplayRole:
+            return c->name();
+        case Qt::DecorationRole:
+            return c->icon();
+        case CategoryRole:
+            return QVariant::fromValue<QObject*>(c);
+    }
+    return {};
+}
+
+QVariantList CategoryModel::categories() const
+{
+    QVariantList ret;
+    for(Category* cat : m_categories) {
+        ret.append(QVariant::fromValue<QObject*>(cat));
+    }
+    return ret;
 }

@@ -3,22 +3,21 @@ import QtQuick.Controls 1.2
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.0
+import org.kde.kirigami 1.0 as Kirigami
 
-Dialog
+Kirigami.OverlaySheet
 {
     id: reviewDialog
 
     property QtObject application
-    property alias rating: ratingInput.rating
-    property alias summary: summaryInput.text
-    property alias review: reviewInput.text
-    title: i18n("Reviewing '%1'", application.name)
-    modality: Qt.WindowModal
-    width: 500
+    readonly property alias rating: ratingInput.rating
+    readonly property alias summary: summaryInput.text
+    readonly property alias review: reviewInput.text
+
+    signal accepted()
 
     ColumnLayout {
-        width: parent.width
-
+        Heading { text: i18n("Reviewing '%1'", application.name) }
         Label { text: i18n("Rating:") }
         Rating {
             id: ratingInput
@@ -37,7 +36,14 @@ Dialog
             Layout.fillWidth: true
             Layout.fillHeight: true
         }
-    }
 
-    standardButtons: StandardButton.Ok | StandardButton.Close
+        Button {
+            Layout.alignment: Qt.AlignRight
+            text: i18n("Accept")
+            onClicked: {
+                reviewDialog.accepted()
+                reviewDialog.opened = false
+            }
+        }
+    }
 }

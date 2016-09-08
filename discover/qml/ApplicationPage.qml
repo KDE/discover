@@ -21,215 +21,178 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Window 2.1
 import QtQuick.Layouts 1.1
+import QtGraphicalEffects 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.discover 1.0
 import org.kde.discover.app 1.0
+import org.kde.kirigami 1.0 as Kirigami
+import "navigation.js" as Navigation
 
-Item {
+DiscoverPage {
     id: appInfo
     property QtObject application: null
     clip: true
 
-    readonly property var icon: application.icon
-    readonly property string title: application.name
+    title: application.name
 
-    ConditionalLoader {
-        anchors.fill: parent
-        condition: Helpers.isCompact
+    background: Rectangle { color: Kirigami.Theme.viewBackgroundColor }
 
-        componentFalse: Item {
-            readonly property real proposedMargin: (width-Helpers.actualWidth)/2
+    pageOverlay: Item {
+        InstallApplicationButton {
+            id: button
+            anchors {
+                right: parent.right
+                bottom: parent.bottom
+                bottomMargin: Kirigami.Units.gridUnit
+                rightMargin: appInfo.width - appInfo.flickable.width
+            }
 
-            GridLayout {
-                x: proposedMargin
-                width: Helpers.actualWidth
-                height: parent.height
-                columns: 2
-                rows: 2
-                rowSpacing: 3*SystemFonts.generalFont.pointSize
-                columnSpacing: rowSpacing
-
-                PageHeader {
-                    Layout.columnSpan: 2
-                    Layout.fillWidth: true
-                    topMargin: 0
-
-                    RowLayout {
-                        QIconItem {
-                            Layout.preferredHeight: col.height
-                            Layout.preferredWidth: col.height
-
-                            icon: appInfo.application.icon
-                        }
-
-                        ColumnLayout {
-                            id: col
-                            Layout.fillWidth: true
-
-                            spacing: 0
-                            Heading {
-                                text: appInfo.application.name
-                                Layout.fillWidth: true
-                                elide: Text.ElideRight
-                            }
-                            Label {
-                                Layout.fillWidth: true
-                                text: appInfo.application.comment
-                                wrapMode: Text.WordWrap
-                                elide: Text.ElideRight
-                                maximumLineCount: 1
-                            }
-                        }
-                        InstallApplicationButton {
-                            id: installButton
-                            application: appInfo.application
-                            additionalItem:  Rating {
-                                readonly property QtObject ratingInstance: application.rating
-                                visible: ratingInstance!=null
-                                rating:  ratingInstance==null ? 0 : ratingInstance.rating
-                            }
-                        }
-                    }
-                }
-
-                ColumnLayout {
-                    Layout.fillWidth: true
-                    Layout.preferredWidth: Helpers.actualWidth/3
-
-                    Item {
-                        id: screenshotsPlaceholder
-                        Layout.fillWidth: true
-                        Layout.preferredHeight: width/1.618
-
-                        ApplicationScreenshots {
-                            initialParent: screenshotsPlaceholder
-                            fullParent: appInfo
-                            application: appInfo.application
-                        }
-                    }
-                    ApplicationDetails {
-                        Layout.fillWidth: true
-                        application: appInfo.application
-                    }
-                    Button {
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        visible: application.isInstalled && application.canExecute
-                        text: i18n("Launch")
-                        onClicked: application.invokeApplication()
-                    }
-                    Item {
-                        Layout.fillHeight: true
-                    }
-                }
-                ScrollView {
-                    id: scroll
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    Layout.preferredWidth: Helpers.actualWidth/2
-
-                    ApplicationDescription {
-                        width: scroll.viewport.width-margin/2
-                        application: appInfo.application
-                        isInstalling: installButton.isActive
-                    }
-                }
+            Layout.alignment: Qt.AlignRight
+            application: appInfo.application
+            fill: true
+            additionalItem: Button {
+                Layout.fillWidth: true
+                visible: application.isInstalled && application.canExecute
+                text: i18n("Launch")
+                onClicked: application.invokeApplication()
             }
         }
-        componentTrue: ScrollView {
-            id: scroll
-            flickableItem.flickableDirection: Flickable.VerticalFlick
 
+        DropShadow {
+            anchors.fill: button
+            source: button
+            horizontalOffset: 2
+            verticalOffset: 2
+            radius: 12.0
+            samples: 17
+            color: "gray"
+        }
+    }
 
+    ColumnLayout {
+        RowLayout {
+            Layout.fillWidth: true
+            QIconItem {
+                Layout.preferredHeight: 128
+                Layout.preferredWidth: 128
+
+                icon: appInfo.application.icon
+                Layout.alignment: Qt.AlignVCenter
+            }
             ColumnLayout {
-                width: scroll.viewport.width-desc.margin*4
-                x: desc.margin*2
+                id: conts
 
-                GridItem {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.topMargin: Kirigami.Units.largeSpacing
+                Layout.bottomMargin: Kirigami.Units.largeSpacing
+                spacing: 0
+
+                Heading {
+                    id: title
+                    text: appInfo.application.name
                     Layout.fillWidth: true
-                    height: conts.Layout.minimumHeight + 2*internalMargin
-                    enabled: false
-
-                    ColumnLayout {
-                        id: conts
-                        anchors.fill: parent
-
-                        RowLayout {
-                            Layout.fillWidth: true
-                            QIconItem {
-                                Layout.preferredHeight: title.height
-                                Layout.preferredWidth: title.height
-
-                                icon: appInfo.application.icon
-                                Layout.alignment: Qt.AlignTop
-                            }
-
-                            ColumnLayout {
-                                Layout.fillWidth: true
-                                Layout.fillHeight: true
-
-                                Heading {
-                                    id: title
-                                    text: appInfo.application.name
-                                    Layout.fillWidth: true
-                                    elide: Text.ElideRight
-                                }
-                                Label {
-                                    Layout.fillWidth: true
-                                    text: appInfo.application.comment
-                                    wrapMode: Text.WordWrap
-                                    elide: Text.ElideRight
-                                    maximumLineCount: 1
-                                }
-                                Rating {
-                                    readonly property QtObject ratingInstance: application.rating
-                                    visible: ratingInstance!=null
-                                    rating:  ratingInstance==null ? 0 : ratingInstance.rating
-                                    starSize: title.paintedHeight
-
-                                    Text { text: parent.ratingInstance ? i18n(" (%1)", parent.ratingInstance.ratingCount) : "" }
-                                }
-                            }
-                        }
-                        InstallApplicationButton {
-                            Layout.fillWidth: true
-                            application: appInfo.application
-                            fill: true
-                            additionalItem: Button {
-                                Layout.fillWidth: true
-                                visible: application.isInstalled && application.canExecute
-                                text: i18n("Launch")
-                                onClicked: application.invokeApplication()
-                            }
-                        }
-                    }
+                    elide: Text.ElideRight
+                }
+                Rectangle {
+                    color: Kirigami.Theme.linkColor
+                    Layout.fillWidth: true
+                    height: 1
+                }
+                Label {
+                    Layout.fillWidth: true
+                    text: appInfo.application.comment
+                    wrapMode: Text.WordWrap
+                    elide: Text.ElideRight
+                    maximumLineCount: 1
+                }
+                Label {
+                    Layout.fillWidth: true
+                    elide: Text.ElideRight
+                    text: appInfo.application.categoryDisplay
+                    color: Kirigami.Theme.linkColor
                 }
 
                 Item {
-                    id: screenshotsPlaceholder
                     Layout.fillWidth: true
-                    Layout.minimumHeight: width/1.618
-
-                    ApplicationScreenshots {
-                        application: appInfo.application
-                        initialParent: screenshotsPlaceholder
-                        fullParent: scroll
-                    }
+                    Layout.fillHeight: true
                 }
-
-                ApplicationDescription {
-                    id: desc
-                    Layout.fillWidth: true
-
-                    application: appInfo.application
-                    z: -1
+                Label {
+                    text: i18n("Version: %1", appInfo.application.isInstalled ? appInfo.application.installedVersion : appInfo.application.availableVersion)
                 }
-
-                ApplicationDetails {
-                    id: details
-                    Layout.fillWidth: true
-                    application: appInfo.application
+                Label {
+                    text: i18n("Size: %1", appInfo.application.sizeDescription)
+                }
+                Label {
+                    visible: text.length>0
+                    text: appInfo.application.license ? i18n("License: %1", appInfo.application.license) : ""
                 }
             }
         }
+
+        ApplicationScreenshots {
+            Layout.fillWidth: true
+            resource: appInfo.application
+            page: appInfo
+        }
+
+        Heading {
+            text: i18n("Description")
+            Layout.fillWidth: true
+            visible: appInfo.application.longDescription.length > 0
+        }
+        Label {
+            Layout.fillWidth: true
+            horizontalAlignment: Text.AlignJustify
+            wrapMode: Text.WordWrap
+            text: appInfo.application.longDescription
+        }
+
+        RowLayout {
+            visible: button.text.length > 0
+            Label {
+                text: i18n("Homepage: ")
+            }
+            LinkButton {
+                id: button
+                shadow: false
+                text: application.homepage
+                onClicked: Qt.openUrlExternally(application.homepage)
+            }
+        }
+
+        LinkButton {
+            id: addonsButton
+            shadow: false
+            text: i18n("Addons")
+            visible: addonsView.containsAddons
+            onClicked: addonsView.opened = true
+        }
+
+        LinkButton {
+            readonly property QtObject rating: appInfo.application.rating
+            visible: rating && rating.ratingCount>0 && reviewsModel.count
+            text: i18n("Show comments (%1)...", rating ? rating.ratingCount : 0)
+            shadow: false
+
+            ReviewsModel {
+                id: reviewsModel
+                resource: appInfo.application
+            }
+            onClicked: {
+                Navigation.openReviews(reviewsModel)
+            }
+        }
+
+        Item {
+            height: addonsButton.height
+            width: 5
+        }
+    }
+
+    readonly property var addons: AddonsView {
+        id: addonsView
+        application: appInfo.application
+        parent: overlay
     }
 }

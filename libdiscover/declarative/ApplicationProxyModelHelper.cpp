@@ -24,14 +24,7 @@
 ApplicationProxyModelHelper::ApplicationProxyModelHelper(QObject* parent)
     : ResourcesProxyModel(parent)
 {
-    connect(this, &QAbstractItemModel::rowsInserted, this, &ApplicationProxyModelHelper::countChanged);
-    connect(this, &QAbstractItemModel::rowsRemoved, this, &ApplicationProxyModelHelper::countChanged);
     setDynamicSortFilter(false);
-}
-
-QHash<int, QByteArray> ApplicationProxyModelHelper::roleNames() const
-{
-    return ResourcesModel::global()->roleNames();
 }
 
 void ApplicationProxyModelHelper::componentComplete()

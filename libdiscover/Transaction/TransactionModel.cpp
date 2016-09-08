@@ -39,6 +39,7 @@ TransactionModel::TransactionModel(QObject *parent)
 {
     connect(this, &QAbstractItemModel::rowsInserted, this, &TransactionModel::countChanged);
     connect(this, &QAbstractItemModel::rowsRemoved, this, &TransactionModel::countChanged);
+    connect(this, &TransactionModel::countChanged, this, &TransactionModel::progressChanged);
 }
 
 QHash< int, QByteArray > TransactionModel::roleNames() const
@@ -155,23 +156,15 @@ void TransactionModel::addTransaction(Transaction *trans)
     if (m_transactions.isEmpty())
         emit startingFirstTransaction();
 
-    // Connect all notify signals to our transactionChanged slot
-    const QMetaObject *meta = trans->metaObject();
-    const QMetaMethod notifySlot = metaObject()->method(metaObject()->indexOfSlot("transactionChanged()"));
-    for (int i = 0; i < meta->propertyCount(); ++i) {
-        const QMetaProperty prop = meta->property(i);
-
-        if (prop.notifySignalIndex() == -1)
-            continue;
-
-        const QMetaMethod notifySignal = prop.notifySignal();
-        connect(trans, notifySignal, this, notifySlot);
-    }
-
     int before = m_transactions.size();
     beginInsertRows(QModelIndex(), before, before + 1);
     m_transactions.append(trans);
     endInsertRows();
+
+    connect(trans, &Transaction::statusChanged, this, [this](){ transactionChanged(StatusTextRole); });
+    connect(trans, &Transaction::cancellableChanged, this, [this](){ transactionChanged(CancellableRole); });
+    connect(trans, &Transaction::progressChanged, this, [this](){ transactionChanged(ProgressRole); Q_EMIT progressChanged(); });
+
     emit transactionAdded(trans);
 }
 
@@ -196,9 +189,22 @@ void TransactionModel::removeTransaction(Transaction *trans)
         emit lastTransactionFinished(); 
 }
 
-void TransactionModel::transactionChanged()
+void TransactionModel::transactionChanged(int role)
 {
     Transaction *trans = qobject_cast<Transaction *>(sender());
     QModelIndex transIdx = indexOf(trans);
-    emit dataChanged(transIdx, transIdx);
+    emit dataChanged(transIdx, transIdx, {role});
+}
+
+int TransactionModel::progress() const
+{
+    int sum = 0;
+    int count = 0;
+    foreach(Transaction* t, m_transactions) {
+        if (t->isActive()) {
+            sum += t->progress();
+            ++count;
+        }
+    }
+    return sum / count;
 }

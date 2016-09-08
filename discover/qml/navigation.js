@@ -17,30 +17,44 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-function openApplicationList(cat, search) {
-    window.stack.push(applicationListComp, { category: cat, search: search, preferList: search!="" })
+function clearStack()
+{
+    window.currentTopLevel=null
+    window.stack.clear();
 }
 
 function openApplicationListSource(origin) {
-    window.stack.push(applicationListComp, { originFilter: origin, preferList: true, title: origin, icon: "view-filter" })
+    openApplicationList({ originFilter: origin, title: origin })
 }
 
 function openApplicationMime(mime) {
-    window.stack.push(applicationListComp, { mimeTypeFilter: mime , icon: "document-open-data", title: i18n("Resources for '%1'", mime) })
+    openApplicationList({ mimeTypeFilter: mime , title: i18n("Resources for '%1'", mime) })
 }
 
-function openCategory(cat) {
-    window.stack.push(categoryComp, { category: cat })
+function openApplicationList(props) {
+    clearStack()
+    var page = window.stack.push(applicationListComp, props)
+    if (props.search === "")
+        page.clearSearch()
+}
+
+function openCategory(cat, search) {
+    openApplicationList({ category: cat, search: search })
 }
 
 function openApplication(app) {
     window.stack.push(applicationComp, { application: app })
 }
 
-function openReviews(app, reviews) {
-    window.stack.push(reviewsComp, { model: reviews, title: i18n("Ratings for %1", app.name), icon: "rating" })
+function openReviews(model) {
+    window.stack.push(reviewsComp, { model: model })
 }
 
 function openExtends(ext) {
     window.stack.push(applicationListComp, { extend: ext, title: i18n("Extensions...") })
+}
+
+function openHome() {
+    clearStack()
+    window.stack.push(topBrowsingComp)
 }

@@ -39,7 +39,7 @@ Information {
             readonly property int d1: Math.abs(info.currentIndex - model.index)
             readonly property int distance: Math.min(d1, info.count - d1)
             property real size: 1/((distance+3)/3)
-            enabled: modelData.package!=""
+            enabled: modelData.package.length>0
 
             width: info.side*1.618 * size
             height: info.side * size
@@ -52,7 +52,7 @@ Information {
             }
 
             onClicked: {
-                if(model.packageName !== "")
+                if(model.packageName.length > 0)
                     Navigation.openApplication(ResourcesModel.resourceByPackageName(modelData.packageName))
                 else
                     Qt.openUrlExternally(modelData.url)
@@ -111,7 +111,7 @@ Information {
                     Label {
                         Layout.fillWidth: true
                         text: itemDelegate.modelData.comment
-                        visible: text !== ""
+                        visible: text.length > 0
                         elide: Text.ElideRight
                         maximumLineCount: 1
                     }

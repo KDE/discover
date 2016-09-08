@@ -30,6 +30,7 @@
 #include "discovercommon_export.h"
 #include "PackageState.h"
 
+class Category;
 class Rating;
 class AbstractResourcesBackend;
 
@@ -46,7 +47,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(QString packageName READ packageName CONSTANT)
     Q_PROPERTY(QString comment READ comment CONSTANT)
-    Q_PROPERTY(QString icon READ icon CONSTANT)
+    Q_PROPERTY(QVariant icon READ icon CONSTANT)
     Q_PROPERTY(bool canExecute READ canExecute CONSTANT)
     Q_PROPERTY(State state READ state NOTIFY stateChanged)
     Q_PROPERTY(QString status READ status NOTIFY stateChanged)
@@ -69,6 +70,7 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
     Q_PROPERTY(AbstractResourcesBackend* backend READ backend CONSTANT)
     Q_PROPERTY(Rating* rating READ rating NOTIFY ratingFetched)
     Q_PROPERTY(QString appstreamId READ appstreamId CONSTANT)
+    Q_PROPERTY(QString categoryDisplay READ categoryDisplay CONSTANT)
     public:
         /**
          * This describes the state of the resource
@@ -107,8 +109,8 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         ///short description of the resource
         virtual QString comment() = 0;
 
-        ///xdg-compatible icon name to represent the resource
-        virtual QString icon() const = 0;
+        ///xdg-compatible icon name to represent the resource, url or QIcon
+        virtual QVariant icon() const = 0;
 
         ///@returns whether invokeApplication makes something
         /// false if not overridden
@@ -120,7 +122,6 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
         virtual State state() = 0;
 
         virtual QStringList categories() = 0;
-
         ///@returns a URL that points to the content
         virtual QUrl homepage() = 0;
 
@@ -172,6 +173,15 @@ class DISCOVERCOMMON_EXPORT AbstractResource : public QObject
          * @returns the rating for the resource or null if not available
          */
         Rating* rating() const;
+
+        /**
+         * @returns a string defining the categories the resource belongs to
+         */
+        QString categoryDisplay() const;
+
+        bool categoryMatches(Category* cat);
+
+        QSet<Category*> categoryObjects() const;
 
     public Q_SLOTS:
         virtual void fetchScreenshots();

@@ -43,7 +43,7 @@ public:
     QUrl homepage() override;
     QStringList categories() override;
     AbstractResource::State state() override;
-    QString icon() const override;
+    QVariant icon() const override;
     QString comment() override;
     QString name() override;
     QString packageName() const override;
@@ -51,6 +51,7 @@ public:
     bool canExecute() const override { return true; }
     void invokeApplication() const override;
     void fetchChangelog() override;
+    void fetchScreenshots() override;
     void setState(State state);
     void setAddons(const AddonList& addons);
 
@@ -59,8 +60,8 @@ public:
 public:
     QString m_name;
     AbstractResource::State m_state;
-    QUrl m_screenshot;
-    QUrl m_screenshotThumbnail;
+    QList<QUrl> m_screenshots;
+    QList<QUrl> m_screenshotThumbnails;
     QString m_iconName;
     QList<PackageState> m_addons;
     bool m_isTechnical;

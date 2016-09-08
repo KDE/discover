@@ -49,7 +49,7 @@ public:
     QString name() override;
     QString comment() override;
     QApt::Package *package();
-    QString icon() const override;
+    QVariant icon() const override;
     QStringList mimetypes() const override;
     QStringList categories() override;
     QString license() override;

@@ -2,7 +2,6 @@
  <qresource>
     <file>qml/Main.qml</file>
     <file>qml/TopLevelPageData.qml</file>
-    <file>qml/CategoryView.qml</file>
     <file>qml/CategoryDisplay.qml</file>
     <file>qml/ApplicationsTop.qml</file>
     <file>qml/FeaturedBanner.qml</file>
@@ -10,9 +9,10 @@
     <file>qml/ApplicationPage.qml</file>
     <file>qml/ReviewsPage.qml</file>
     <file>qml/AddonsView.qml</file>
-    <file>qml/ApplicationsList.qml</file>
+    <file>qml/ApplicationDelegate.qml</file>
     <file>qml/ApplicationsGridDelegate.qml</file>
     <file>qml/Breadcrumbs.qml</file>
+    <file>qml/CategoryBreadcrumbs.qml</file>
     <file>qml/InstallApplicationButton.qml</file>
     <file>qml/Rating.qml</file>
     <file>qml/UpdatesPage.qml</file>
@@ -20,7 +20,6 @@
     <file>qml/ProgressView.qml</file>
     <file>qml/BrowsingPage.qml</file>
     <file>qml/InstalledPage.qml</file>
-    <file>qml/PresentUpdatesPage.qml</file>
     <file>qml/Information.qml</file>
     <file>qml/SourcesPage.qml</file>
     <file>qml/FeaturedModel.qml</file>
@@ -30,15 +29,13 @@
     <file>qml/AwesomeGrid.qml</file>
     <file>qml/ReviewDelegate.qml</file>
     <file>qml/ScrolledAwesomeGrid.qml</file>
-    <file>qml/ApplicationDescription.qml</file>
     <file>qml/Heading.qml</file>
     <file>qml/AddSourceDialog.qml</file>
     <file>qml/MessageAction.qml</file>
     <file>qml/JustMessageAction.qml</file>
     <file>qml/ConditionalLoader.qml</file>
-    <file>qml/MuonToolbar.qml</file>
-    <file>qml/MuonToolButton.qml</file>
-    <file>qml/ApplicationDetails.qml</file>
+    <file>qml/LinkButton.qml</file>
+    <file>qml/HeaderButton.qml</file>
     <file>qml/ApplicationScreenshots.qml</file>
     <file>qml/ApplicationIndicator.qml</file>
     <file>qml/ApplicationHeader.qml</file>
@@ -46,10 +43,15 @@
     <file>qml/PageHeader.qml</file>
     <file>qml/ActionBridge.qml</file>
     <file>qml/DiscoverSystemPalette.qml</file>
+    <file>qml/DiscoverPage.qml</file>
     <file>qml/DiscoverWindow.qml</file>
-    <file>qml/DiscoverWindow_PlasmaPhone.qml</file>
+    <file>qml/DiscoverDrawer.qml</file>
     <file>qml/Helpers.qml</file>
 
     <file>qml/navigation.js</file>
+
+    <file>icons/banner.svg</file>
+    <file>icons/installedcrop.jpg</file>
+    <file>icons/updatescrop.jpg</file>
  </qresource>
 </RCC>

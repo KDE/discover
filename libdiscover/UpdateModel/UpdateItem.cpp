@@ -52,9 +52,9 @@ QString UpdateItem::version() const
     return m_app->availableVersion();
 }
 
-QIcon UpdateItem::icon() const
+QVariant UpdateItem::icon() const
 {
-    return QIcon::fromTheme(m_app->icon());
+    return m_app->icon();
 }
 
 qint64 UpdateItem::size() const

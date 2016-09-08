@@ -3,41 +3,17 @@ import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.discover 1.0
 import org.kde.discover.app 1.0
+import org.kde.kirigami 1.0 as Kirigami
 
 ApplicationsListPage {
     id: page
     stateFilter: 2
-    preferList: true
 
-    Component.onCompleted: {
-        page.changeSorting("size", Qt.DescendingOrder, "")
-    }
-
-    readonly property var icon: "applications-other"
-    readonly property string title: i18n("Installed")
+    title: i18n("Installed")
+    compact: true
 
     header: PageHeader {
-        width: Helpers.actualWidth
-        x: page.proposedMargin
-
-        RowLayout {
-            LabelBackground {
-                text: page.model.count
-            }
-            Label {
-                text: i18n("items installed")
-            }
-            Item { Layout.fillWidth: true }
-            Label {
-                visible: TransactionModel.count>0
-                text: i18np("%1 job pending...", "%1 jobs pending...", TransactionModel.count)
-            }
-            Item { Layout.fillWidth: true }
-            Label { text: i18n("Sort by ") }
-            Button {
-                text: page.currentSortAction
-                menu: page.sortMenu
-            }
-        }
+        width: parent.width
+        background: "qrc:/icons/installedcrop.jpg"
     }
 }

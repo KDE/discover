@@ -31,7 +31,7 @@ class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(AbstractReviewsBackend* backend READ backend)
-    Q_PROPERTY(AbstractResource* resource READ resource WRITE setResource)
+    Q_PROPERTY(AbstractResource* resource READ resource WRITE setResource NOTIFY resourceChanged)
     Q_PROPERTY(int count READ rowCount NOTIFY rowsChanged)
     public:
         enum Roles {
@@ -74,6 +74,7 @@ class DISCOVERCOMMON_EXPORT ReviewsModel : public QAbstractListModel
 
     Q_SIGNALS:
         void rowsChanged();
+        void resourceChanged();
 
     private:
         AbstractResource* m_app;

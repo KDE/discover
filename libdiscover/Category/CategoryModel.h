@@ -21,53 +21,46 @@
 #ifndef CATEGORYMODEL_H
 #define CATEGORYMODEL_H
 
-#include <QStandardItemModel>
+#include <QAbstractListModel>
+#include <QQmlParserStatus>
+#include "Category.h"
 
 #include "discovercommon_export.h"
 
-class Category;
-
-class DISCOVERCOMMON_EXPORT CategoryModel : public QStandardItemModel
+class DISCOVERCOMMON_EXPORT CategoryModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(Category* displayedCategory READ displayedCategory WRITE setDisplayedCategory NOTIFY categoryChanged)
-    Q_PROPERTY(ShowAddons filter READ filter WRITE setFilter)
+    Q_PROPERTY(QVariantList categories READ categories WRITE setCategories NOTIFY categoryChanged)
     public:
         enum CategoryModelRole {
             CategoryRole = Qt::UserRole + 1
         };
 
-        enum ShowAddons {
-            OnlyAddons,
-            NoAddons,
-            ShowEverything
-        };
-        Q_ENUM(ShowAddons)
-
         explicit CategoryModel(QObject* parent = nullptr);
 
         Category* categoryForRow(int row);
 
-        ShowAddons filter() const;
-        void setFilter(ShowAddons filter);
-
-        void setDisplayedCategory(Category* c);
-        Category* displayedCategory() const;
         QHash< int, QByteArray > roleNames() const override;
 
         Q_SCRIPTABLE static Category* findCategoryByName(const QString& name);
         static void blacklistPlugin(const QString& name);
+        static QList<Category*> rootCategories();
+
+        void setCategories(const QList<Category *> &categoryList);
+        void setCategories(const QVariantList &categoryList);
+        QVariantList categories() const;
+        Q_SCRIPTABLE void resetCategories();
+
+        QVariant data(const QModelIndex & index, int role) const override;
+        int rowCount(const QModelIndex & parent) const override;
 
     Q_SIGNALS:
-        void categoryChanged(Category* displayedCategory);
+        void categoryChanged();
 
     private:
-        void resetCategories();
         void categoryDeleted(QObject* cat);
-        void setCategories(const QVector<Category *> &categoryList);
 
-        Category* m_currentCategory;
-        ShowAddons m_filter;
+        QList<Category*> m_categories;
 };
 
 #endif // CATEGORYMODEL_H

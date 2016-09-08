@@ -2,457 +2,477 @@
 <Menu>
 
   <Menu>
-    <Name>Accessories</Name>
-    <Icon>applications-utilities</Icon>
+    <Name>Applications</Name>
+    <Icon>applications-internet</Icon>
+    <Image>pkcategories/applicationcrop.jpg</Image>
     <Include>
-      <And>
-        <Category>Utility</Category>
-        <Not><Category>Accessibility</Category></Not>
-      </And>
+        <And>
+            <Category>Application</Category>
+        </And>
     </Include>
-  </Menu>
-
-  <Menu>
-    <Name>Accessibility</Name>
-    <Icon>preferences-desktop-accessibility</Icon>
-    <Include>
-      <And>
-        <Category>Accessibility</Category>
-        <Not><Category>Settings</Category></Not>
-      </And>
-    </Include>
-  </Menu>
-
-  <Menu>
-    <Name>Developer Tools</Name>
-    <Icon>applications-development</Icon>
-    <Include>
-      <Or>
-        <Category>Development</Category>
-      </Or>
-      <Filename>emacs.desktop</Filename>
-    </Include>
-
-
     <Menu>
-      <Name>Debugging</Name>
-      <Icon>tools-report-bug</Icon>
+      <Name>Accessories</Name>
+      <Icon>applications-utilities</Icon>
+      <Image>pkcategories/accessoriescrop.jpg</Image>
       <Include>
         <And>
-          <Category>Debugger</Category>
+          <Category>Utility</Category>
+          <Not><Category>Accessibility</Category></Not>
         </And>
       </Include>
     </Menu>
 
     <Menu>
-      <Name>Graphic Interface Design</Name>
+      <Name>Accessibility</Name>
+      <Icon>preferences-desktop-accessibility</Icon>
+      <Image>pkcategories/accesscropped.jpg</Image>
       <Include>
         <And>
-          <Category>GUIDesigner</Category>
+          <Category>Accessibility</Category>
+          <Not><Category>Settings</Category></Not>
         </And>
       </Include>
     </Menu>
 
     <Menu>
-      <Name>IDEs</Name>
-      <Include>
-        <And>
-          <Category>IDE</Category>
-        </And>
-      </Include>
-    </Menu>
-
-    <Menu>
-      <Name>Localization</Name>
-      <Icon>preferences-desktop-locale</Icon>
-      <Include>
-        <And>
-          <Category>Translation</Category>
-        </And>
-      </Include>
-    </Menu>
-
-    <Menu>
-      <Name>Profiling</Name>
+      <Name>Developer Tools</Name>
+      <Image>pkcategories/toolcrop.jpg</Image>
+      <Icon>applications-development</Icon>
       <Include>
         <Or>
-          <Category>Profiling</Category>
+          <Category>Development</Category>
         </Or>
       </Include>
+
+      <Menu>
+        <Name>Debugging</Name>
+        <Icon>tools-report-bug</Icon>
+        <Include>
+          <And>
+            <Category>Debugger</Category>
+          </And>
+        </Include>
+      </Menu>
+
+      <Menu>
+        <Name>Graphic Interface Design</Name>
+        <Include>
+          <And>
+            <Category>GUIDesigner</Category>
+          </And>
+        </Include>
+      </Menu>
+
+      <Menu>
+        <Name>IDEs</Name>
+        <Include>
+          <And>
+            <Category>IDE</Category>
+          </And>
+        </Include>
+      </Menu>
+
+      <Menu>
+        <Name>Localization</Name>
+        <Icon>preferences-desktop-locale</Icon>
+        <Include>
+          <And>
+            <Category>Translation</Category>
+          </And>
+        </Include>
+      </Menu>
+
+      <Menu>
+        <Name>Profiling</Name>
+        <Include>
+          <Or>
+            <Category>Profiling</Category>
+          </Or>
+        </Include>
+      </Menu>
+
+      <Menu>
+        <Name>Web Development</Name>
+        <Include>
+          <And>
+            <Category>WebDevelopment</Category>
+          </And>
+        </Include>
+        <Icon>applications-internet</Icon>
+      </Menu>
+
     </Menu>
 
+
     <Menu>
-      <Name>Web Development</Name>
+      <Name>Education</Name>
+      <Icon>applications-education</Icon>
+      <Image>pkcategories/education.jpg</Image>
       <Include>
         <And>
-          <Category>WebDevelopment</Category>
-        </And>
-      </Include>
-      <Icon>applications-internet</Icon>
-    </Menu>
-
-  </Menu>
-
-
-  <Menu>
-    <Name>Education</Name>
-    <Icon>applications-education</Icon>
-    <Include>
-      <And>
-        <Category>Education</Category>
-      </And>
-    </Include>
-  </Menu>
-
-
-  <Menu>
-    <Name>Science &amp; Engineering</Name>
-    <Icon>applications-science</Icon>
-    <Include>
-      <Or>
-        <Category>Science</Category>
-        <Category>Engineering</Category>
-      </Or>
-    </Include>
-    <Menu>
-      <Name>Astronomy</Name>
-      <Include>
-        <And>
-          <Category>Astronomy</Category>
+          <Category>Education</Category>
         </And>
       </Include>
     </Menu>
+
+
     <Menu>
-      <Name>Biology</Name>
-      <Include>
-        <And>
-          <Category>Biology</Category>
-        </And>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>Chemistry</Name>
+      <Name>Science &amp; Engineering</Name>
+      <Image>pkcategories/science.jpg</Image>
       <Icon>applications-science</Icon>
       <Include>
-        <And>
-          <Category>Chemistry</Category>
-        </And>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>Computer Science &amp; Robotics</Name>
-      <Icon>computer</Icon>
-      <Include>
         <Or>
-          <Category>ArtificialIntelligence</Category>
-          <Category>ComputerScience</Category>
-          <Category>Robotics</Category>
-        </Or>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>Electronics</Name>
-      <Icon>audio-card</Icon>
-      <Include>
-        <And>
-          <Category>Electronics</Category>
-        </And>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>Engineering</Name>
-      <Icon>applications-engineering</Icon>
-      <Include>
-        <And>
+          <Category>Science</Category>
           <Category>Engineering</Category>
-        </And>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>Geography</Name>
-      <Include>
-        <And>
-          <Category>Geography</Category>
-        </And>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>Geology</Name>
-      <Include>
-        <Or>
-          <Category>Geology</Category>
-          <Category>Geoscience</Category>
         </Or>
       </Include>
+      <Menu>
+        <Name>Astronomy</Name>
+        <Include>
+          <And>
+            <Category>Astronomy</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Biology</Name>
+        <Include>
+          <And>
+            <Category>Biology</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Chemistry</Name>
+        <Icon>applications-science</Icon>
+        <Include>
+          <And>
+            <Category>Chemistry</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Computer Science &amp; Robotics</Name>
+        <Icon>computer</Icon>
+        <Include>
+          <Or>
+            <Category>ArtificialIntelligence</Category>
+            <Category>ComputerScience</Category>
+            <Category>Robotics</Category>
+          </Or>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Electronics</Name>
+        <Icon>audio-card</Icon>
+        <Include>
+          <And>
+            <Category>Electronics</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Engineering</Name>
+        <Icon>applications-engineering</Icon>
+        <Include>
+          <And>
+            <Category>Engineering</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Geography</Name>
+        <Include>
+          <And>
+            <Category>Geography</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Geology</Name>
+        <Include>
+          <Or>
+            <Category>Geology</Category>
+            <Category>Geoscience</Category>
+          </Or>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Mathematics</Name>
+        <Icon>applications-education-mathematics</Icon>
+        <Include>
+          <Or>
+            <Category>DataVisualization</Category>
+            <Category>Math</Category>
+            <Category>NumericalAnalysis</Category>
+          </Or>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Physics</Name>
+        <Icon>step</Icon>
+        <Include>
+          <And>
+            <Category>Physics</Category>
+          </And>
+        </Include>
+      </Menu>
     </Menu>
-    <Menu>
-      <Name>Mathematics</Name>
-      <Icon>applications-education-mathematics</Icon>
-      <Include>
-        <Or>
-          <Category>DataVisualization</Category>
-          <Category>Math</Category>
-          <Category>NumericalAnalysis</Category>
-        </Or>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>Physics</Name>
-      <Icon>step</Icon>
-      <Include>
-        <And>
-          <Category>Physics</Category>
-        </And>
-      </Include>
-    </Menu>
-  </Menu>
 
-  <Menu>
-    <Name>Fonts</Name>
-    <Icon>preferences-desktop-font</Icon>
-    <ShowTechnical>true</ShowTechnical>
-    <Include>
-      <And>
-          <Category>Fonts</Category>
-      </And>
-    </Include>
-  </Menu>
-
-  <Menu>
-    <Name>Games</Name>
-    <Icon>applications-games</Icon>
-    <Include>
-      <And>
-        <Category>Game</Category>
-      </And>
-    </Include>
+    <Menu>
+      <Name>Fonts</Name>
+      <Image>pkcategories/font.jpg</Image>
+      <Icon>preferences-desktop-font</Icon>
+      <ShowTechnical>true</ShowTechnical>
+      <Include>
+        <And>
+            <Category>Fonts</Category>
+        </And>
+      </Include>
+    </Menu>
 
     <Menu>
-      <Name>Arcade</Name>
-      <Icon>applications-games-arcade</Icon>
-      <Include>
-        <And>
-          <Category>ArcadeGame</Category>
-        </And>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>Board Games</Name>
-      <Icon>applications-games-board</Icon>
-      <Include>
-        <And>
-          <Category>BoardGame</Category>
-        </And>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>Card Games</Name>
-      <Icon>applications-games-card</Icon>
-      <Include>
-        <And>
-          <Category>CardGame</Category>
-        </And>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>Puzzles</Name>
+      <Name>Games</Name>
+      <Image>pkcategories/games.jpg</Image>
       <Icon>applications-games</Icon>
       <Include>
         <And>
-          <Category>LogicGame</Category>
+          <Category>Game</Category>
         </And>
       </Include>
-    </Menu>
-    <Menu>
-      <Name>Role Playing</Name>
-      <Icon>applications-games</Icon>
-      <Include>
-        <And>
-          <Category>RolePlaying</Category>
-        </And>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>Simulation</Name>
-      <Icon>applications-games-strategy</Icon>
-      <Include>
-        <And>
-          <Category>Simulation</Category>
-        </And>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>Sports</Name>
-      <Icon>applications-games</Icon>
-      <Include>
-        <And>
-          <Category>SportsGame</Category>
-        </And>
-      </Include>
+
+      <Menu>
+        <Name>Arcade</Name>
+        <Icon>applications-games-arcade</Icon>
+        <Include>
+          <And>
+            <Category>ArcadeGame</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Board Games</Name>
+        <Icon>applications-games-board</Icon>
+        <Include>
+          <And>
+            <Category>BoardGame</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Card Games</Name>
+        <Icon>applications-games-card</Icon>
+        <Include>
+          <And>
+            <Category>CardGame</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Puzzles</Name>
+        <Icon>applications-games</Icon>
+        <Include>
+          <And>
+            <Category>LogicGame</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Role Playing</Name>
+        <Icon>applications-games</Icon>
+        <Include>
+          <And>
+            <Category>RolePlaying</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Simulation</Name>
+        <Icon>applications-games-strategy</Icon>
+        <Include>
+          <And>
+            <Category>Simulation</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Sports</Name>
+        <Icon>applications-games</Icon>
+        <Include>
+          <And>
+            <Category>SportsGame</Category>
+          </And>
+        </Include>
+      </Menu>
+
     </Menu>
 
-  </Menu>
 
-
-  <Menu>
-    <Name>Graphics</Name>
-    <Icon>applications-graphics</Icon>
-    <Include>
-      <And>
-        <Category>Graphics</Category>
-      </And>
-    </Include>
     <Menu>
-      <Name>3D</Name>
+      <Name>Graphics</Name>
+      <Image>pkcategories/graphiccrop.jpg</Image>
+      <Icon>applications-graphics</Icon>
       <Include>
         <And>
-          <Category>3DGraphics</Category>
+          <Category>Graphics</Category>
         </And>
       </Include>
-    </Menu>
-    <Menu>
-      <Name>Drawing</Name>
-      <Icon>draw-freehand</Icon>
-      <Include>
-        <And>
-          <Category>VectorGraphics</Category>
-          <Not>
-            <Category>Viewer</Category>
-          </Not>
-        </And>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>Painting &amp; Editing</Name>
-      <Icon>draw-brush</Icon>
-      <Include>
-        <And>
-          <Category>RasterGraphics</Category>
-          <Not>
+      <Menu>
+        <Name>3D</Name>
+        <Include>
+          <And>
+            <Category>3DGraphics</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Drawing</Name>
+        <Icon>draw-freehand</Icon>
+        <Include>
+          <And>
+            <Category>VectorGraphics</Category>
+            <Not>
               <Category>Viewer</Category>
-              <Category>Scanning</Category>
-          </Not>
-        </And>
-      </Include>
+            </Not>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Painting &amp; Editing</Name>
+        <Icon>draw-brush</Icon>
+        <Include>
+          <And>
+            <Category>RasterGraphics</Category>
+            <Not>
+                <Category>Viewer</Category>
+                <Category>Scanning</Category>
+            </Not>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Photography</Name>
+        <Icon>image-x-generic</Icon>
+        <Include>
+          <And>
+            <Category>Photography</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Publishing</Name>
+        <Icon>document-export</Icon>
+        <Include>
+          <And>
+            <Category>Publishing</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Scanning &amp; OCR</Name>
+        <Icon>scanner</Icon>
+        <Include>
+          <Or>
+            <Category>Scanning</Category>
+            <Category>OCR</Category>
+          </Or>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Viewers</Name>
+        <Icon>graphics-viewer-document</Icon>
+        <Include>
+          <And>
+            <Category>Viewer</Category>
+          </And>
+        </Include>
+      </Menu>
     </Menu>
+
+
     <Menu>
-      <Name>Photography</Name>
-      <Icon>image-x-generic</Icon>
+      <Name>Internet</Name>
+      <Icon>applications-internet</Icon>
+      <Image>pkcategories/internetcrop.jpg</Image>
       <Include>
         <And>
-          <Category>Photography</Category>
+          <Category>Network</Category>
         </And>
       </Include>
+      <Menu>
+        <Name>Chat</Name>
+        <Icon>kopete</Icon>
+        <Include>
+          <Or>
+            <Category>InstantMessaging</Category>
+            <Category>IRCClient</Category>
+          </Or>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>File Sharing</Name>
+        <Icon>ktorrent</Icon>
+        <Include>
+          <And>
+            <Category>FileTransfer</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Mail</Name>
+        <Icon>internet-mail</Icon>
+        <Include>
+          <And>
+            <Category>Email</Category>
+          </And>
+        </Include>
+      </Menu>
+      <Menu>
+        <Name>Web Browsers</Name>
+        <Icon>internet-web-browser</Icon>
+        <Include>
+          <And>
+            <Category>WebBrowser</Category>
+          </And>
+        </Include>
+      </Menu>
     </Menu>
+
+
     <Menu>
-      <Name>Publishing</Name>
-      <Icon>document-export</Icon>
+      <Name>Multimedia</Name>
+      <Image>pkcategories/multimedia.jpg</Image>
+      <Icon>applications-multimedia</Icon>
       <Include>
         <And>
-          <Category>Publishing</Category>
+          <Category>AudioVideo</Category>
         </And>
       </Include>
     </Menu>
+
+
     <Menu>
-      <Name>Scanning &amp; OCR</Name>
-      <Icon>scanner</Icon>
+      <Name>Office</Name>
+      <Image>pkcategories/officecrop.jpg</Image>
+      <Icon>applications-office</Icon>
+      <Include>
+        <And>
+          <Category>Office</Category>
+        </And>
+      </Include>
+    </Menu>
+
+    <Menu>
+      <Name>System &amp; Settings</Name>
+      <Image>pkcategories/settingscrop.jpg</Image>
+      <Icon>preferences-system</Icon>
       <Include>
         <Or>
-          <Category>Scanning</Category>
-          <Category>OCR</Category>
+          <Category>Settings</Category>
+          <Category>System</Category>
         </Or>
       </Include>
     </Menu>
-    <Menu>
-      <Name>Viewers</Name>
-      <Icon>graphics-viewer-document</Icon>
-      <Include>
-        <And>
-          <Category>Viewer</Category>
-        </And>
-      </Include>
-    </Menu>
-  </Menu>
-
-
-  <Menu>
-    <Name>Internet</Name>
-    <Icon>applications-internet</Icon>
-    <Include>
-      <And>
-        <Category>Network</Category>
-      </And>
-    </Include>
-    <Menu>
-      <Name>Chat</Name>
-      <Icon>kopete</Icon>
-      <Include>
-        <Or>
-          <Category>InstantMessaging</Category>
-          <Category>IRCClient</Category>
-        </Or>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>File Sharing</Name>
-      <Icon>ktorrent</Icon>
-      <Include>
-        <And>
-          <Category>FileTransfer</Category>
-        </And>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>Mail</Name>
-      <Icon>internet-mail</Icon>
-      <Include>
-        <And>
-          <Category>Email</Category>
-        </And>
-      </Include>
-    </Menu>
-    <Menu>
-      <Name>Web Browsers</Name>
-      <Icon>internet-web-browser</Icon>
-      <Include>
-        <And>
-          <Category>WebBrowser</Category>
-        </And>
-      </Include>
-    </Menu>
-  </Menu>
-
-
-  <Menu>
-    <Name>Multimedia</Name>
-    <Icon>applications-multimedia</Icon>
-    <Include>
-      <And>
-        <Category>AudioVideo</Category>
-      </And>
-    </Include>
-  </Menu>
-
-
-  <Menu>
-    <Name>Office</Name>
-    <Icon>applications-office</Icon>
-    <Include>
-      <And>
-        <Category>Office</Category>
-      </And>
-    </Include>
-  </Menu>
-
-  <Menu>
-    <Name>System &amp; Settings</Name>
-    <Icon>preferences-system</Icon>
-    <Include>
-      <Or>
-        <Category>Settings</Category>
-        <Category>System</Category>
-      </Or>
-    </Include>
   </Menu>
 
   <Menu>

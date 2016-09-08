@@ -21,45 +21,42 @@ import QtQuick 2.1
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
 import org.kde.kquickcontrolsaddons 2.0
+import org.kde.kirigami 1.0 as Kirigami
+import "navigation.js" as Navigation
 
 RowLayout {
     id: bread
-    readonly property int count: pageStack.depth
-    property StackView pageStack: null
-    spacing: 0
-    anchors {
-        top: parent.top
-        bottom: parent.bottom
+    property alias model: rep.model
+    property bool shadow: false
+    spacing: Kirigami.Units.smallSpacing
+
+    readonly property Action homeAction: Kirigami.Action {
+        text: i18n("Home")
+        onTriggered: Navigation.openHome()
     }
-    Repeater
-    {
-        model: bread.pageStack.depth
+
+    Repeater {
+        id: rep
+
         delegate: RowLayout {
-            spacing: 0
-            QIconItem {
+            Layout.leftMargin: Kirigami.Units.smallSpacing
+            spacing: Kirigami.Units.smallSpacing
+            Text {
                 visible: index > 0
-                width: button.Layout.preferredHeight/2
-                height: width
-                icon: "arrow-right"
+                text: ">"
+                color: button.textColor
             }
-            MuonToolButton {
+            LinkButton {
                 id: button
+                shadow: bread.shadow
                 Layout.fillHeight: true
-
-                readonly property QtObject currentPage: bread.pageStack.get(modelData, false)
-
-                iconName: currentPage.icon
-                onClicked: bread.doClick(index)
-                text: currentPage.title
-                enabled: bread.pageStack.depth!=(modelData+1)
-                checkable: checked
+                Layout.topMargin: Kirigami.Units.smallSpacing
+                Layout.bottomMargin: Kirigami.Units.smallSpacing
+                action: modelData
             }
         }
     }
-    function doClick(index) {
-        var pos = bread.pageStack.depth
-        for(; pos>(index+1); --pos) {
-            bread.pageStack.pop(pos>index).destroy(2000);
-        }
+    Item {
+        Layout.fillWidth: true
     }
 }

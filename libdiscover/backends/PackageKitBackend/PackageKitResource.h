@@ -37,7 +37,7 @@ class PackageKitResource : public AbstractResource
         QString comment() override;
         QString longDescription() override;
         QUrl homepage() override;
-        QString icon() const override;
+        QVariant icon() const override;
         QStringList categories() override;
         QString license() override;
         QString origin() const override;

@@ -42,7 +42,7 @@ public:
     void deleteReview(Review*) override {}
     void fetchReviews(AbstractResource* app, int page = 1) override;
     bool isFetching() const override { return false; }
-    void submitReview(AbstractResource*, const QString&, const QString&, const QString&) override {}
+    void submitReview(AbstractResource*, const QString&, const QString&, const QString&) override;
     void flagReview(Review*, const QString&, const QString&) override {}
     void submitUsefulness(Review*, bool) override;
 

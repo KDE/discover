@@ -36,7 +36,7 @@ public:
     ~KNSResource() override;
 
     AbstractResource::State state() override;
-    QString icon() const override;
+    QVariant icon() const override;
     QString comment() override;
     QString name() override;
     QString packageName() const override;

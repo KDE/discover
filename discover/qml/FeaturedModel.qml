@@ -11,7 +11,7 @@ ListModel
 
     function fetchSource(source)
     {
-        if(source=="")
+        if(source.length == 0)
             return
         var xhr = new XMLHttpRequest;
         xhr.open("GET", source);

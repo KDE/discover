@@ -140,14 +140,18 @@ QApt::Package *Application::package()
 
 QString Application::icon() const
 {
-    QString anIcon = m_data.icon();
+    QIcon ret;
 
-    if (anIcon.isEmpty()) {
-        QUrl iconUrl = m_data.iconUrl(QSize());
-        if (iconUrl.isLocalFile())
-            anIcon = iconUrl.toLocalFile();
+    const auto icons = m_appdata.iconUrls();
+    if (icons.isEmpty())
+        return m_appdata.name();
+    else {
+        for (auto it = icons.constBegin(), itEnd = icons.constEnd(); it!=itEnd; ++it) {
+            if (it->isLocalFile())
+                ret.addFile(it->toLocalFile(), it.key());
+        }
     }
-    return anIcon;
+    return ret;
 }
 
 QStringList Application::findProvides(Appstream::Provides::Kind kind) const

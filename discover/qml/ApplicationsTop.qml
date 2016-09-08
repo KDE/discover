@@ -24,16 +24,17 @@ import org.kde.discover 1.0
 import org.kde.discover.app 1.0
 import org.kde.kquickcontrolsaddons 2.0
 import "navigation.js" as Navigation
+import org.kde.kirigami 1.0 as Kirigami
 
 ColumnLayout {
     id: topView
     property alias sortRole: appsModel.stringSortRole
     property alias filteredCategory: appsModel.filteredCategory
-    property Component roleDelegate: null
     property string title: ""
     property bool extended: false
     readonly property alias titleHeight: title.height
 
+    spacing: Kirigami.Units.gridUnit
     Label {
         id: title
         text: topView.title
@@ -41,7 +42,6 @@ ColumnLayout {
         font.weight: Font.Bold
         Layout.minimumHeight: paintedHeight*1.5
     }
-    spacing: -2 //GridItem.border.width
     Repeater {
         id: rep
         model: PaginateModel {
@@ -53,58 +53,13 @@ ColumnLayout {
 //                 onRowsInserted: sortModel()
             }
         }
-        delegate: GridItem {
-                    id: delegate
-                    Layout.fillWidth: true
-                    Layout.minimumHeight: title.paintedHeight*(topView.extended ? 3.5 : 2.5)
-
-                    enabled: model["name"] !== undefined
-                    ConditionalLoader {
-                        anchors {
-                            fill: parent
-                            margins: 2
-                        }
-                        condition: delegate.enabled
-                        componentFalse: Item {}
-                        componentTrue: RowLayout {
-                            id: layo
-                            QIconItem {
-                                Layout.fillHeight: true
-                                Layout.preferredWidth: height
-                                icon: model.icon
-                            }
-                            ColumnLayout {
-                                Layout.fillHeight: true
-                                Layout.fillWidth: true
-                                Layout.maximumWidth: layo.width/2
-
-                                Label {
-                                    id: nameItem
-                                    Layout.fillWidth: true
-                                    text: name
-                                    elide: Text.ElideRight
-                                    verticalAlignment: Text.AlignVCenter
-                                }
-                                Label {
-                                    Layout.fillWidth: true
-                                    visible: topView.extended
-                                    text: category[0]
-                                    elide: Text.ElideRight
-                                    verticalAlignment: Text.AlignVCenter
-                                    opacity: 0.6
-                                }
-                            }
-                            Loader {
-                                Layout.fillHeight: true
-                                Layout.preferredWidth: item.implicitWidth
-                                sourceComponent: topView.roleDelegate
-                                onItemChanged: item.model=model
-
-                                visible: width < layo.width/2
-                            }
-                        }
-                    }
-                    onClicked: Navigation.openApplication(application)
-                }
+        delegate: ConditionalLoader {
+            Layout.fillWidth: parent
+            condition: model["name"] !== undefined
+            componentFalse: Item {}
+            componentTrue: ApplicationDelegate {
+                application: model.application
+            }
+        }
     }
 }

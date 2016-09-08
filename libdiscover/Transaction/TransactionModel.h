@@ -30,6 +30,7 @@
 class DISCOVERCOMMON_EXPORT TransactionModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(int progress READ progress NOTIFY progressChanged)
     Q_PROPERTY(int count READ rowCount NOTIFY countChanged)
 public:
     enum Roles {
@@ -58,6 +59,8 @@ public:
     void cancelTransaction(Transaction *trans);
     void removeTransaction(Transaction *trans);
 
+    int progress() const;
+
 private:
     QVector<Transaction *> m_transactions;
     
@@ -68,9 +71,10 @@ Q_SIGNALS:
     void transactionCancelled(Transaction *trans);
     void transactionRemoved(Transaction* trans);
     void countChanged();
+    void progressChanged();
 
 private Q_SLOTS:
-    void transactionChanged();
+    void transactionChanged(int role);
 };
 
 #endif // TRANSACTIONMODEL_H

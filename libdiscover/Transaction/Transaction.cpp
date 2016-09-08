@@ -94,3 +94,7 @@ void Transaction::setProgress(int progress)
     }
 }
 
+bool Transaction::isActive() const
+{
+    return m_status == DownloadingStatus || m_status == CommittingStatus;
+}

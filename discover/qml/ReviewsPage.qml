@@ -22,13 +22,21 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 import org.kde.discover 1.0
 import org.kde.discover.app 1.0
+import org.kde.kirigami 1.0 as Kirigami
 
-ScrollView {
+DiscoverPage {
     id: page
+    title: i18n("Ratings for %1", resource.name)
     property alias model: reviewsView.model
-    readonly property real proposedMargin: Helpers.isCompact ? 0 : (width-Helpers.actualWidth)/2
-    property var icon
-    property string title
+    readonly property QtObject reviewsBackend: resource.backend.reviewsBackend
+    readonly property var resource: model.resource
+
+    readonly property var rd: ReviewDialog {
+        id: reviewDialog
+        application: page.resource
+        parent: overlay
+        onAccepted: page.reviewsBackend.submitReview(resource, summary, review, rating)
+    }
 
     ListView {
         id: reviewsView
@@ -37,10 +45,14 @@ ScrollView {
         visible: count>0
         spacing: 5
 
+        header: Button {
+            visible: page.reviewsBackend != null && page.resource.isInstalled
+            text: i18n("Review")
+            onClicked: reviewDialog.opened = true
+        }
+
         delegate: ReviewDelegate {
-            x: page.proposedMargin
-            width: Helpers.isCompact ? page.viewport.width : Helpers.actualWidth
-            onMarkUseful: page.model.markUseful(index, useful)
+            onMarkUseful: page.reviewsModel.markUseful(index, useful)
         }
     }
 }

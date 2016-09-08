@@ -24,6 +24,7 @@
 
 #include <klocalizedstring.h>
 #include <QFile>
+#include <QStandardPaths>
 #include <QDebug>
 
 Category::Category(QSet<QString>  pluginName, QObject* parent)
@@ -35,12 +36,8 @@ Category::Category(QSet<QString>  pluginName, QObject* parent)
 
 Category::~Category() = default;
 
-void Category::parseData(const QString& path, const QDomNode& data, bool canHaveChildren)
+void Category::parseData(const QString& path, const QDomNode& data)
 {
-    if(!canHaveChildren) {
-        m_name = i18nc("@label The label used for viewing all members of this category", "All");
-    }
-
     for(QDomNode node = data.firstChild(); !node.isNull(); node = node.nextSibling())
     {
         if(!node.isElement()) {
@@ -50,16 +47,19 @@ void Category::parseData(const QString& path, const QDomNode& data, bool canHave
         }
         QDomElement tempElement = node.toElement();
 
-        if (canHaveChildren) {
-            if (tempElement.tagName() == QLatin1String("Name")) {
-                m_name = i18nc("Category", tempElement.text().toUtf8().constData());
-            } else if (tempElement.tagName() == QLatin1String("Menu")) {
-                m_subCategories << new Category(m_plugins, this);
-                m_subCategories.last()->parseData(path, node, true);
+        if (tempElement.tagName() == QLatin1String("Name")) {
+            m_name = i18nc("Category", tempElement.text().toUtf8().constData());
+        } else if (tempElement.tagName() == QLatin1String("Menu")) {
+            m_subCategories << new Category(m_plugins, this);
+            m_subCategories.last()->parseData(path, node);
+        } else if (tempElement.tagName() == QLatin1String("Image")) {
+            m_decoration = QUrl(tempElement.text());
+            if (m_decoration.isRelative()) {
+                m_decoration = QUrl::fromLocalFile(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("discover/") + tempElement.text()));
+                if (m_decoration.isEmpty())
+                    qWarning() << "couldn't find category decoration" << tempElement.text();
             }
-        }
-        
-        if (tempElement.tagName() == QLatin1String("Addons")) {
+        } else if (tempElement.tagName() == QLatin1String("Addons")) {
             m_isAddons = true;
         } else if (tempElement.tagName() == QLatin1String("Icon") && tempElement.hasChildNodes()) {
             m_iconString = tempElement.text();
@@ -70,11 +70,6 @@ void Category::parseData(const QString& path, const QDomNode& data, bool canHave
         } else if (tempElement.tagName() == QLatin1String("Categories")) { //as provided by appstream
             parseIncludes(tempElement);
         }
-    }
-
-    if (!m_subCategories.isEmpty()) {
-        m_subCategories << new Category(m_plugins, this);
-        m_subCategories.last()->parseData(path, data, false);
     }
 }
 
@@ -94,25 +89,15 @@ QVector<QPair<FilterType, QString> > Category::parseIncludes(const QDomNode &dat
         } else if (tempElement.tagName() == QLatin1String("Not")) {
             m_notFilters.append(parseIncludes(node));
         } else if (tempElement.tagName() == QLatin1String("PkgSection")) {
-            QPair<FilterType, QString> pkgSectionFilter;
-            pkgSectionFilter.first = PkgSectionFilter;
-            pkgSectionFilter.second = tempElement.text();
-            filter.append(pkgSectionFilter);
+            filter.append({ PkgSectionFilter, tempElement.text() });
         } else if (tempElement.tagName() == QLatin1String("Category")) {
-            QPair<FilterType, QString> categoryFilter;
-            categoryFilter.first = CategoryFilter;
-            categoryFilter.second = tempElement.text();
-            filter.append(categoryFilter);
+            filter.append({ CategoryFilter, tempElement.text() });
         } else if (tempElement.tagName() == QLatin1String("PkgWildcard")) {
-            QPair<FilterType, QString> wildcardFilter;
-            wildcardFilter.first = PkgWildcardFilter;
-            wildcardFilter.second = tempElement.text();
-            filter.append(wildcardFilter);
+            filter.append({ PkgWildcardFilter, tempElement.text() });
         } else if (tempElement.tagName() == QLatin1String("PkgName")) {
-            QPair<FilterType, QString> nameFilter;
-            nameFilter.first = PkgNameFilter;
-            nameFilter.second = tempElement.text();
-            filter.append(nameFilter);
+            filter.append({ PkgNameFilter, tempElement.text() });
+        } else {
+            qWarning() << "unknown" << tempElement.tagName();
         }
         node = node.nextSibling();
     }
@@ -200,4 +185,43 @@ bool Category::blacklistPlugins(const QSet<QString>& pluginNames)
     m_plugins.subtract(pluginNames);
 
     return m_plugins.isEmpty();
+}
+
+QUrl Category::decoration() const
+{
+    if (m_decoration.isEmpty()) {
+        Category* c = qobject_cast<Category*>(parent());
+        return c ? c->decoration() : QUrl();
+    } else {
+        Q_ASSERT(!m_decoration.isLocalFile() || QFile::exists(m_decoration.toLocalFile()));
+        return m_decoration;
+    }
+}
+
+QVariantList Category::subCategoriesVariant() const
+{
+    QVariantList ret;
+    ret.reserve(m_subCategories.count());
+    for(Category* cat : m_subCategories) {
+        ret.append(QVariant::fromValue<QObject*>(cat));
+    }
+    return ret;
+}
+
+bool Category::contains(Category* cat) const
+{
+    const bool ret = cat == this || (cat && contains(qobject_cast<Category*>(cat->parent())));
+    return ret;
+}
+
+bool Category::contains(const QVariantList& cats) const
+{
+    bool ret = false;
+    for(auto itCat : cats) {
+        if (contains(qobject_cast<Category*>(itCat.value<QObject*>()))) {
+            ret = true;
+            break;
+        }
+    }
+    return ret;
 }

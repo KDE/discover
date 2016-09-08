@@ -26,6 +26,7 @@
 #include "ResourcesModel.h"
 #include "AbstractResource.h"
 #include "AbstractResourcesBackend.h"
+#include <Category/CategoryModel.h>
 
 ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
@@ -41,6 +42,11 @@ ResourcesProxyModel::ResourcesProxyModel(QObject *parent)
     setSourceModel(ResourcesModel::global());
 }
 
+QHash<int, QByteArray> ResourcesProxyModel::roleNames() const
+{
+    return ResourcesModel::global()->roleNames();
+}
+
 void ResourcesProxyModel::setSourceModel(QAbstractItemModel* source)
 {
     Q_ASSERT(ResourcesModel::global() == source);
@@ -49,6 +55,8 @@ void ResourcesProxyModel::setSourceModel(QAbstractItemModel* source)
 
 void ResourcesProxyModel::setSearch(const QString &searchText)
 {
+    const bool diff = searchText != m_lastSearch;
+
     m_searchResults.clear();
     m_lastSearch = searchText;
     ResourcesModel* model = qobject_cast<ResourcesModel*>(sourceModel());
@@ -68,6 +76,11 @@ void ResourcesProxyModel::setSearch(const QString &searchText)
         m_sortByRelevancy = false;
     }
     invalidateFilter();
+
+    if (diff) {
+        Q_EMIT searchChanged(m_lastSearch);
+        fetchSubcategories();
+    }
 }
 
 QString ResourcesProxyModel::lastSearch() const
@@ -103,19 +116,35 @@ void ResourcesProxyModel::setFiltersFromCategory(Category *category)
     if(category==m_filteredCategory)
         return;
 
-    if(category) {
-        m_andFilters = category->andFilters();
-        m_orFilters = category->orFilters();
-        m_notFilters = category->notFilters();
-    } else {
-        m_andFilters.clear();
-        m_orFilters.clear();
-        m_notFilters.clear();
-    }
-
     m_filteredCategory = category;
     invalidateFilter();
     emit categoryChanged();
+    fetchSubcategories();
+}
+
+void ResourcesProxyModel::fetchSubcategories()
+{
+    const auto cats = m_filteredCategory ? m_filteredCategory->subCategories().toList() : CategoryModel::rootCategories();
+
+    const int count = rowCount();
+    QSet<Category*> done;
+    for (int i=0; i<count; ++i) {
+        AbstractResource* res = qobject_cast<AbstractResource*>(index(i, 0).data(ResourcesModel::ApplicationRole).value<QObject*>());
+        done.unite(res->categoryObjects());
+    }
+    QVariantList ret;
+    for (Category* cat: qAsConst(done))
+        ret += QVariant::fromValue<QObject*>(cat);
+
+    if (ret != m_subcategories) {
+        m_subcategories = ret;
+        Q_EMIT subcategoriesChanged(m_subcategories);
+    }
+}
+
+QVariantList ResourcesProxyModel::subcategories() const
+{
+    return m_subcategories;
 }
 
 void ResourcesProxyModel::setShouldShowTechnical(bool show)
@@ -134,30 +163,6 @@ void ResourcesProxyModel::setShouldShowTechnical(bool show)
 bool ResourcesProxyModel::shouldShowTechnical() const
 {
     return !m_roleFilters.contains("isTechnical");
-}
-
-bool shouldFilter(AbstractResource* res, const QPair<FilterType, QString>& filter)
-{
-    bool ret = true;
-    switch (filter.first) {
-        case CategoryFilter:
-            ret = res->categories().contains(filter.second);
-            break;
-        case PkgSectionFilter:
-            ret = res->section() == filter.second;
-            break;
-        case PkgWildcardFilter: {
-            QString wildcard = filter.second;
-            wildcard.remove(QLatin1Char('*'));
-            ret = res->packageName().contains(wildcard);
-        }   break;
-        case PkgNameFilter: // Only useful in the not filters
-            ret = res->packageName() == filter.second;
-            break;
-        case InvalidFilter:
-            break;
-    }
-    return ret;
 }
 
 bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
@@ -188,29 +193,7 @@ bool ResourcesProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sou
         return false;
     }
 
-    {
-        bool orValue = m_orFilters.isEmpty();
-        Q_FOREACH (const FilterPair& filter, m_orFilters) {
-            if(shouldFilter(res, filter)) {
-                orValue = true;
-                break;
-            }
-        }
-        if(!orValue)
-            return false;
-    }
-
-    Q_FOREACH (const FilterPair &filter, m_andFilters) {
-        if(!shouldFilter(res, filter))
-            return false;
-    }
-
-    Q_FOREACH (const FilterPair &filter, m_notFilters) {
-        if(shouldFilter(res, filter))
-            return false;
-    }
-
-    return true;
+    return !m_filteredCategory || res->categoryMatches(m_filteredCategory);
 }
 
 bool ResourcesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
@@ -299,6 +282,8 @@ QString ResourcesProxyModel::extends() const
 {
     return m_extends;
 }
+
+
 
 void ResourcesProxyModel::setExtends(const QString& extends)
 {

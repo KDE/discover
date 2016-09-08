@@ -122,6 +122,11 @@ public:
      */
     virtual void cancel() = 0;
 
+    /**
+     * @returns if the transaction is either downloading or committing
+     */
+    bool isActive() const;
+
 private:
     AbstractResource * const m_resource;
     const Role m_role;

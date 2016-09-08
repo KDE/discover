@@ -17,12 +17,6 @@ Item
         replaceTransition: StackViewTransition { immediate: true }
     }
 
-    onAppRootChanged: {
-        if (!appRoot)
-            return;
-        appRoot.stack.delegate = noTransitionsDelegate
-    }
-
     function verify(condition, msg) {
         if (!condition) {
             console.trace();

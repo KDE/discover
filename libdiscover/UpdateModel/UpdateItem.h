@@ -48,7 +48,7 @@ public:
     AbstractResource *app() const;
     QString name() const;
     QString version() const;
-    QIcon icon() const;
+    QVariant icon() const;
     qint64 size() const;
     Qt::CheckState checked() const;
 

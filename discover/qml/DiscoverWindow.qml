@@ -3,14 +3,14 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.1
 import org.kde.discover 1.0
 import org.kde.discover.app 1.0
+import org.kde.kirigami 1.0 as Kirigami
 import "navigation.js" as Navigation
 
-ApplicationWindow
+Kirigami.ApplicationWindow
 {
     id: window
     readonly property Component applicationListComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
     readonly property Component applicationComp: Qt.createComponent("qrc:/qml/ApplicationPage.qml")
-    readonly property Component categoryComp: Qt.createComponent("qrc:/qml/ApplicationsListPage.qml")
     readonly property Component reviewsComp: Qt.createComponent("qrc:/qml/ReviewsPage.qml")
 
     //toplevels
@@ -18,18 +18,25 @@ ApplicationWindow
     readonly property Component topInstalledComp: Qt.createComponent("qrc:/qml/InstalledPage.qml")
     readonly property Component topUpdateComp: Qt.createComponent("qrc:/qml/UpdatesPage.qml")
     readonly property Component topSourcesComp: Qt.createComponent("qrc:/qml/SourcesPage.qml")
-    readonly property Component phoneWindow: Qt.createComponent("qrc:/qml/DiscoverWindow_PlasmaPhone.qml")
-    readonly property QtObject stack: loader.item.stack
+    readonly property QtObject stack: window.pageStack
     property Component currentTopLevel: defaultStartup ? topBrowsingComp : loadingComponent
     property bool defaultStartup: true
     property bool navigationEnabled: true
 
     objectName: "DiscoverMainWindow"
 
+    header: null
     visible: true
+
+    minimumWidth: 300
+    minimumHeight: 300
+
+    readonly property var leftPage: window.stack.get(0)
 
     Component.onCompleted: {
         Helpers.mainWindow = window
+        if (app.isRoot)
+            showPassiveNotification(i18n("Running as <em>root</em> is discouraged and unnecessary."));
     }
 
     function clearSearch() {
@@ -39,9 +46,8 @@ ApplicationWindow
 
     Component {
         id: loadingComponent
-        Item {
-            readonly property string title: ""
-            readonly property string icon: "applications-other"
+        Kirigami.Page {
+            title: ""
             Label {
                 id: label
                 text: i18n("Loading...")
@@ -60,23 +66,39 @@ ApplicationWindow
             component: topBrowsingComp
             objectName: "discover"
             shortcut: "Alt+D"
-        },
-        TopLevelPageData {
-            iconName: "installed"
-            text: TransactionModel.count == 0 ? i18n("Installed") : i18n("Installing...")
-            component: topInstalledComp
-            objectName: "installed"
-            shortcut: "Alt+I"
-        },
-        TopLevelPageData {
-            iconName: enabled ? "update-low" : "update-none"
-            text: !enabled ? i18n("No Updates") : i18nc("Update section name", "Update (%1)", ResourcesModel.updatesCount)
-            enabled: ResourcesModel.updatesCount>0
-            component: topUpdateComp
-            objectName: "update"
-            shortcut: "Alt+U"
         }
     ]
+    TopLevelPageData {
+        id: installedAction
+        text: TransactionModel.count == 0 ? i18n("Installed") : i18n("Installing...")
+        component: topInstalledComp
+        objectName: "installed"
+        shortcut: "Alt+I"
+    }
+    TopLevelPageData {
+        id: updateAction
+        iconName: enabled ? "update-low" : "update-none"
+        text: !enabled ? i18n("No Updates") : i18nc("Update section name", "Update (%1)", ResourcesModel.updatesCount)
+        enabled: ResourcesModel.updatesCount>0
+        component: topUpdateComp
+        objectName: "update"
+        shortcut: "Alt+U"
+    }
+    TopLevelPageData {
+        id: settingsAction
+        iconName: "settings"
+        text: i18n("Settings")
+        component: topSourcesComp
+        objectName: "settings"
+        shortcut: "Alt+S"
+    }
+    TopLevelPageData {
+        id: sources
+        text: i18n("Configure Sources...")
+        iconName: "repository"
+        shortcut: "Alt+S"
+        component: topSourcesComp
+    }
 
     Connections {
         target: app
@@ -90,82 +112,41 @@ ApplicationWindow
         }
         onListCategoryInternal:  {
             currentTopLevel = topBrowsingComp;
-            Navigation.openCategory(cat)
+            Navigation.openCategory(cat, "")
         }
     }
 
-    Menu {
-        id: moreMenu
-        MenuItem {
-            action: TopLevelPageData {
-                text: i18n("Configure Sources...")
-                iconName: "repository"
-                shortcut: "Alt+S"
-                component: topSourcesComp
-            }
-        }
-        MenuSeparator {}
-        Instantiator {
-            id: actionsInstantiator
-            model: MessageActionsModel {}
-            delegate: MenuItem { action: ActionBridge { action: model.action } }
+    globalDrawer: DiscoverDrawer {}
 
-            onObjectAdded: moreMenu.insertItem(index, object)
-            onObjectRemoved: moreMenu.removeItem(object)
+    onCurrentTopLevelChanged: {
+        if(currentTopLevel && currentTopLevel.status==Component.Error) {
+            console.log("status error: "+currentTopLevel.errorString())
         }
-        MenuSeparator {
-            visible: actionsInstantiator.count > 0
-        }
-        MenuItem { action: ActionBridge { action: app.action("options_configure_keybinding"); } }
-        MenuItem { action: ActionBridge { action: app.action("help_about_app"); } }
-        MenuItem { action: ActionBridge { action: app.action("help_report_bug"); } }
+        var stackView = window.pageStack;
+        stackView.clear()
+        if (currentTopLevel)
+            stackView.push(currentTopLevel, {}, window.status!=Component.Ready)
     }
 
-    ConditionalLoader
-    {
-        id: loader
-        anchors.fill: parent
-
-        condition: Helpers.isCompact
-        componentTrue: Main {
-            id: main
-            readonly property alias stack: main.stack
-            currentTopLevel: window.currentTopLevel
-            function clearSearch() {
-                //TODO
-            }
-
-            Loader {
-                anchors.fill: parent
-                sourceComponent: phoneWindow
-            }
-        }
-
-        componentFalse: ColumnLayout {
-            readonly property alias stack: main.stack
-            spacing: 0
-
-            function clearSearch() { toolbar.clearSearch() }
-
-            MuonToolbar {
-                id: toolbar
-                Layout.fillWidth: true
-            }
-
-            Main {
-                id: main
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                currentTopLevel: window.currentTopLevel
-
-                MouseArea {
-                    anchors.fill: parent
-                    acceptedButtons: Qt.BackButton
-                    onClicked: {
-                        toolbar.backAction.trigger()
-                    }
-                }
-            }
-        }
+    Connections {
+        target: app
+        onPreventedClose: showPassiveNotification(i18n("Could not close the application, there are tasks that need to be done."), 3000)
+        onUnableToFind: showPassiveNotification(i18n("Unable to find resource: %1", resid));
     }
+
+//     ColumnLayout {
+//         spacing: 0
+//         anchors.fill: parent
+//
+//         Repeater {
+//             model: MessageActionsModel {
+//                 filterPriority: QAction.HighPriority
+//             }
+//             delegate: MessageAction {
+//                 Layout.fillWidth: true
+//                 height: Layout.minimumHeight
+//                 theAction: action
+//             }
+//         }
+//     }
 }

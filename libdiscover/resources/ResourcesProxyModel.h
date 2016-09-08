@@ -48,10 +48,13 @@ class DISCOVERCOMMON_EXPORT ResourcesProxyModel : public QSortFilterProxyModel
     Q_PROPERTY(bool isSortingByRelevancy READ sortingByRelevancy WRITE setSortByRelevancy)
     Q_PROPERTY(AbstractResource::State stateFilter READ stateFilter WRITE setStateFilter NOTIFY stateFilterChanged)
     Q_PROPERTY(QString mimeTypeFilter READ mimeTypeFilter WRITE setMimeTypeFilter)
-    Q_PROPERTY(QString search READ lastSearch WRITE setSearch)
+    Q_PROPERTY(QString search READ lastSearch WRITE setSearch NOTIFY searchChanged)
     Q_PROPERTY(QString extends READ extends WRITE setExtends)
+    Q_PROPERTY(QVariantList subcategories READ subcategories NOTIFY subcategoriesChanged)
 public:
     explicit ResourcesProxyModel(QObject *parent=nullptr);
+
+    QHash<int, QByteArray> roleNames() const override;
 
     void setSearch(const QString &text);
     QString lastSearch() const;
@@ -74,6 +77,8 @@ public:
     QString extends() const;
     void setExtends(const QString &extends);
 
+    QVariantList subcategories() const;
+
 protected:
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
 
@@ -81,15 +86,13 @@ private Q_SLOTS:
     void refreshSearch();
 
 private:
+    void fetchSubcategories();
     void setSourceModel(QAbstractItemModel *sourceModel) override;
 
     QString m_lastSearch;
     QList<AbstractResource*> m_searchResults;
 
     typedef QPair<FilterType, QString> FilterPair;
-    QVector<FilterPair> m_andFilters;
-    QVector<FilterPair> m_orFilters;
-    QVector<FilterPair> m_notFilters;
     QHash<QByteArray, QVariant> m_roleFilters;
 
     bool m_sortByRelevancy;
@@ -98,11 +101,14 @@ private:
     AbstractResource::State m_stateFilter;
     QString m_filteredMimeType;
     QString m_extends;
+    QVariantList m_subcategories;
 
 Q_SIGNALS:
     void categoryChanged();
     void stateFilterChanged();
     void showTechnicalChanged();
+    void searchChanged(const QString &search);
+    void subcategoriesChanged(const QVariantList &subcategories);
 };
 
 #endif

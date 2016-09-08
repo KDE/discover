@@ -4,6 +4,7 @@
     <Name>Application Addons</Name>
     <Addons/>
     <Icon>plasma</Icon>
+    <Image>https://c2.staticflickr.com/8/7067/6847903539_d9324dcd19_o.jpg</Image>
     <Menu>
       <Name>Kate Snippets</Name>
       <Icon>kate</Icon>

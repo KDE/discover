@@ -3,23 +3,23 @@ import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 import org.kde.kquickcontrolsaddons 2.0
 import org.kde.discover 1.0
+import org.kde.kirigami 1.0 as Kirigami
 import "navigation.js" as Navigation
 
-Item {
+Kirigami.BasicListItem {
     id: page
-    property bool active: enabled && progressModel.count>0
-    Layout.minimumHeight: active ? contents.height : 0
-    Layout.maximumHeight: Layout.minimumHeight
-    
-    Behavior on Layout.maximumHeight {
-        NumberAnimation { duration: 250; easing.type: Easing.InOutQuad }
+    label: TransactionModel.count ? i18n("Tasks (%1%)", TransactionModel.progress) : i18n("Tasks")
+    visible: progressModel.count > 0
+
+    onClicked: {
+        sheet.open()
     }
-    
-    Connections {
+
+    readonly property var v1: Connections {
         target: TransactionModel
         onTransactionAdded: {
-            if(page.enabled && progressModel.appAt(trans.resource)<0)
-                progressModel.append({'app': trans.resource})
+            if(page.enabled && trans.resource && progressModel.appAt(trans.resource)<0)
+                progressModel.append({app: trans.resource})
         }
 
         onTransactionCancelled: {
@@ -29,7 +29,7 @@ Item {
         }
     }
     
-    ListModel {
+    readonly property var v2: ListModel {
         id: progressModel
         function appAt(app) {
             for(var i=0; i<progressModel.count; i++) {
@@ -41,94 +41,67 @@ Item {
         }
     }
     
-    ListView {
-        id: contents
-        anchors {
-            left: parent.left
-            right: closeButton.left
-            top: parent.top
-            margins: 3
-        }
+    readonly property var v3: Kirigami.OverlaySheet {
+        id: sheet
+        parent: pageStack
 
-        spacing: 3
-        height: 30
-        orientation: ListView.Horizontal
+        contentItem: ColumnLayout {
+            spacing: 0
+            Repeater {
+                model: progressModel
 
-        model: progressModel
-
-        delegate: Button {
-            width: launcherRow.implicitWidth+launcherRow.anchors.margins*2
-            height: contents.height
-
-            onClicked: Navigation.openApplication(model.app)
-            TransactionListener {
-                id: listener
-                resource: model.app
-                onCancelled: model.remove(index)
-            }
-
-            Behavior on width { NumberAnimation { duration: 250 } }
-
-            RowLayout {
-                id: launcherRow
-                anchors {
-                    fill: parent
-                    margins: 5
-                }
-                spacing: 2
-                QIconItem {
-                    anchors.verticalCenter: parent.verticalCenter
-                    icon: model.app.icon
-                    Layout.preferredHeight: parent.height*0.5
-                    width: height
-                }
-                Label {
-                    anchors.verticalCenter: parent.verticalCenter
-                    Layout.fillWidth: true
-                    elide: Text.ElideRight
-                    text: model.app.name + (listener.isActive ? " "+listener.statusText : "")
-                }
-                ToolButton {
-                    anchors.verticalCenter: parent.verticalCenter
-                    iconName: "dialog-cancel"
-                    visible: listener.isCancellable
-                    onClicked: listener.cancel()
-                }
-                ToolButton {
-                    anchors.verticalCenter: parent.verticalCenter
-                    iconName: "system-run"
-                    visible: model.app.isInstalled && !listener.isActive && model.app.canExecute
+                delegate: Kirigami.AbstractListItem {
+                    separatorVisible: false
                     onClicked: {
-                        model.app.invokeApplication()
-                        model.remove(index)
+                        Navigation.clearStack()
+                        Navigation.openApplication(model.app)
+                    }
+
+                    ColumnLayout {
+                        width: parent.width
+                        TransactionListener {
+                            id: listener
+                            resource: model.app
+                            onCancelled: model.remove(index)
+                        }
+
+                        RowLayout {
+                            Layout.fillWidth: true
+
+                            QIconItem {
+                                Layout.fillHeight: true
+                                Layout.minimumWidth: height
+                                icon: model.app.icon
+                            }
+                            Label {
+                                anchors.verticalCenter: parent.verticalCenter
+                                Layout.fillWidth: true
+                                elide: Text.ElideRight
+                                text: model.app.name + (listener.isActive ? " "+listener.statusText : "")
+                            }
+                            ToolButton {
+                                iconName: "dialog-cancel"
+                                visible: listener.isCancellable
+                                onClicked: listener.cancel()
+                            }
+                            ToolButton {
+                                iconName: "system-run"
+                                visible: model.app.isInstalled && !listener.isActive && model.app.canExecute
+                                onClicked: {
+                                    model.app.invokeApplication()
+                                    model.remove(index)
+                                }
+                            }
+                        }
+                        ProgressBar {
+                            Layout.fillWidth: true
+                            visible: listener.isActive
+                            value: listener.progress
+                            maximumValue: 100
+                        }
                     }
                 }
             }
-            Rectangle {
-                anchors {
-                    bottom: parent.bottom
-                    left: parent.left
-                    bottomMargin: 3
-                    leftMargin: 3
-                    rightMargin: 3
-                }
-                width: (parent.width - anchors.leftMargin - anchors.rightMargin)*(listener.progress/100)
-                color: DiscoverSystemPalette.buttonText
-                height: 1
-                opacity: 0.5
-                visible: listener.isActive
-            }
         }
-    }
-    ToolButton {
-        id: closeButton
-        visible: parent.active //otherwise it shows. even if parent.height==0, parent.visible is true
-        anchors {
-            verticalCenter: parent.verticalCenter
-            right: parent.right
-        }
-        enabled: parent.active
-        iconName: "window-close"
-        onClicked: progressModel.clear()
     }
 }
