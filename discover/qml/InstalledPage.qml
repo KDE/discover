@@ -15,5 +15,10 @@ ApplicationsListPage {
     header: PageHeader {
         width: parent.width
         background: "qrc:/icons/installedcrop.jpg"
+
+        Item {
+            Layout.fillWidth: true
+            height: Kirigami.Units.largeSpacing
+        }
     }
 }

@@ -99,7 +99,11 @@ DiscoverPage {
             }
 
 
-            Label { text: sourceBackend.name }
+            Kirigami.Heading {
+                Layout.topMargin: Kirigami.Units.largeSpacing
+                Layout.bottomMargin: Kirigami.Units.smallSpacing
+                text: sourceBackend.name
+            }
             spacing: 0
             Repeater {
                 model: sourceBackend.sources
