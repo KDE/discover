@@ -157,6 +157,8 @@ void PackageKitBackend::fetchUpdates()
     connect(tUpdates, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackageToUpdate);
     connect(tUpdates, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
     m_updatesPackageId.clear();
+
+    m_updater->setProgressing(true);
 }
 
 
@@ -385,6 +387,8 @@ void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
         connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
         connect(transaction, &PackageKit::Transaction::finished, this, &PackageKitBackend::getUpdatesDetailsFinished);
     }
+
+    m_updater->setProgressing(false);
 
     includePackagesToAdd();
     emit updatesCountChanged();

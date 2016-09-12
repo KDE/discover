@@ -107,6 +107,8 @@ QSet<QString> PackageKitUpdater::involvedPackages(const QSet<AbstractResource*>&
 
 void PackageKitUpdater::start()
 {
+    Q_ASSERT(!isProgressing());
+
     setTransaction(PackageKit::Daemon::updatePackages(involvedPackages(m_toUpgrade).toList()));
     setProgressing(true);
 }

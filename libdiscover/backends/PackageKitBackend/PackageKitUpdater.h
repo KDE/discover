@@ -35,6 +35,8 @@ class PackageKitUpdater : public AbstractBackendUpdater
         
         bool hasUpdates() const override;
         qreal progress() const override;
+
+        void setProgressing(bool progressing);
         
         /** proposed ETA in milliseconds */
         long unsigned int remainingTime() const override;
@@ -77,7 +79,6 @@ class PackageKitUpdater : public AbstractBackendUpdater
         void itemProgress(const QString &itemID, PackageKit::Transaction::Status status, uint percentage);
         void fetchLastUpdateTime();
         void lastUpdateTimeReceived(QDBusPendingCallWatcher* w);
-        void setProgressing(bool progressing);
         void setTransaction(PackageKit::Transaction* transaction);
         QSet<QString> involvedPackages(const QSet<AbstractResource*>& packages) const;
         QSet<AbstractResource*> packagesForPackageId(const QSet<QString>& packages) const;
