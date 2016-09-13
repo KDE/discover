@@ -23,6 +23,7 @@
 
 #include <QStandardItemModel>
 #include <QDateTime>
+#include <QPointer>
 #include "discovercommon_export.h"
 
 class AbstractResourcesBackend;
@@ -79,14 +80,15 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
     private Q_SLOTS:
         void updaterDestroyed(QObject* obj);
         void message(const QString& msg);
-        void slotProgressingChanged(bool progressing);
+        void slotProgressingChanged();
 
     private:
         void init();
+        void updateFinished();
 
         QVector<AbstractBackendUpdater*> m_updaters;
         bool m_lastIsProgressing;
-        Transaction* m_transaction;
+        QPointer<Transaction> m_transaction;
 };
 
 #endif // RESOURCESUPDATESMODEL_H

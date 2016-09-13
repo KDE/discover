@@ -50,6 +50,7 @@ void ResourcesUpdatesModel::init()
     foreach(AbstractResourcesBackend* b, backends) {
         AbstractBackendUpdater* updater = b->backendUpdater();
         if(updater && !m_updaters.contains(updater)) {
+            connect(updater, &AbstractBackendUpdater::progressingChanged, this, &ResourcesUpdatesModel::slotProgressingChanged);
             connect(updater, &AbstractBackendUpdater::progressChanged, this, &ResourcesUpdatesModel::progressChanged);
             connect(updater, &AbstractBackendUpdater::statusMessageChanged, this, &ResourcesUpdatesModel::statusMessageChanged);
             connect(updater, &AbstractBackendUpdater::statusMessageChanged, this, &ResourcesUpdatesModel::message);
@@ -73,18 +74,16 @@ void ResourcesUpdatesModel::updaterDestroyed(QObject* obj)
         m_updaters.remove(idx);
 }
 
-void ResourcesUpdatesModel::slotProgressingChanged(bool progressing)
+void ResourcesUpdatesModel::slotProgressingChanged()
 {
-    Q_UNUSED(progressing);
-    Q_ASSERT(m_transaction);
-
     const bool newProgressing = isProgressing();
     if (newProgressing != m_lastIsProgressing) {
         m_lastIsProgressing = newProgressing;
 
 
-        if (!newProgressing) {
+        if (!newProgressing && m_transaction) {
             TransactionModel::global()->removeTransaction(m_transaction);
+            m_transaction->deleteLater();
         }
 
         emit progressingChanged(newProgressing);
@@ -143,7 +142,7 @@ private:
 void ResourcesUpdatesModel::updateAll()
 {
     if(m_updaters.isEmpty())
-        emit progressingChanged(false);
+        slotProgressingChanged();
     else {
         delete m_transaction;
         m_transaction = new UpdateTransaction(this);
@@ -151,9 +150,6 @@ void ResourcesUpdatesModel::updateAll()
         Q_FOREACH (AbstractBackendUpdater* upd, m_updaters) {
             if (upd->hasUpdates())
                 QMetaObject::invokeMethod(upd, "start", Qt::QueuedConnection);
-        }
-        foreach(auto updater, m_updaters) {
-            connect(updater, &AbstractBackendUpdater::progressingChanged, this, &ResourcesUpdatesModel::slotProgressingChanged, Qt::UniqueConnection);
         }
     }
 }
