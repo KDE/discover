@@ -189,6 +189,8 @@ QUrl DiscoverMainWindow::prioritaryFeaturedSource() const
 
 void DiscoverMainWindow::integrateObject(QObject* object)
 {
+    Q_ASSERT(object == rootObject());
+
     KConfigGroup window(KSharedConfig::openConfig(), "Window");
     if (window.hasKey("geometry"))
         rootObject()->setGeometry(window.readEntry("geometry", QRect()));
