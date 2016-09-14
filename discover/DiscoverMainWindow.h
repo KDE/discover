@@ -65,6 +65,7 @@ class DiscoverMainWindow : public QObject
         void loadTest(const QUrl& url);
 
         static bool isRoot();
+        QWindow* rootObject() const;
 
     public Q_SLOTS:
         void openApplication(const QString& app);
@@ -90,7 +91,6 @@ class DiscoverMainWindow : public QObject
         void unableToFind(const QString &resid);
 
     private:
-        QWindow* rootObject() const;
         void integrateObject(QObject* object);
         QQmlApplicationEngine* engine() const { return m_engine; }
 

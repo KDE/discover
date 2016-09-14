@@ -118,6 +118,9 @@ int main(int argc, char** argv)
         mainWindow = new DiscoverMainWindow(decodeCompactMode(parser->value(QStringLiteral("compact"))));
         QObject::connect(&app, &QApplication::aboutToQuit, mainWindow, &DiscoverMainWindow::deleteLater);
         QObject::connect(service, &KDBusService::activateRequested, mainWindow, [mainWindow](const QStringList &arguments, const QString &/*workingDirectory*/){
+            mainWindow->rootObject()->raise();
+            if (arguments.isEmpty())
+                return;
             QScopedPointer<QCommandLineParser> parser(createParser());
             parser->process(arguments);
             processArgs(parser.data(), mainWindow);
