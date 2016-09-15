@@ -133,7 +133,7 @@ void ResourcesProxyModel::fetchSubcategories()
         done.unite(res->categoryObjects());
     }
     QVariantList ret;
-    for (Category* cat: qAsConst(done))
+    foreach (Category* cat, done)
         ret += QVariant::fromValue<QObject*>(cat);
 
     if (ret != m_subcategories) {
