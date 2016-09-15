@@ -223,6 +223,7 @@ void UpdateModel::setResources(const QList< AbstractResource* >& resources)
     endResetModel();
 
     Q_EMIT hasUpdatesChanged(!resources.isEmpty());
+    Q_EMIT toUpdateChanged();
 }
 
 bool UpdateModel::hasUpdates() const
