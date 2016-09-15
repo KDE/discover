@@ -155,7 +155,6 @@ DiscoverPage {
             }
             LinkButton {
                 id: button
-                shadow: false
                 text: application.homepage
                 onClicked: Qt.openUrlExternally(application.homepage)
             }
@@ -163,7 +162,6 @@ DiscoverPage {
 
         LinkButton {
             id: addonsButton
-            shadow: false
             text: i18n("Addons")
             visible: addonsView.containsAddons
             onClicked: addonsView.opened = true
@@ -173,7 +171,6 @@ DiscoverPage {
             readonly property QtObject rating: appInfo.application.rating
             visible: rating && rating.ratingCount>0 && reviewsModel.count
             text: i18n("Show comments (%1)...", rating ? rating.ratingCount : 0)
-            shadow: false
 
             ReviewsModel {
                 id: reviewsModel

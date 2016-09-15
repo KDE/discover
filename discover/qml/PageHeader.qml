@@ -76,18 +76,32 @@ ColumnLayout {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
-                LinkButton {
+                Item {
                     Layout.topMargin: Kirigami.Units.smallSpacing*2
                     Layout.bottomMargin: Kirigami.Units.smallSpacing*2
-                    shadow: root.background !== ""
-                    text: titleLabel.text
-                    font: SystemFonts.titleFont
-                    onClicked: {
-                        var flic = root._page.flickable
-                        if (flic.positionViewAtBeginning)
-                            flic.positionViewAtBeginning();
-                        else
-                            flic.contentY = 0;
+                    Layout.preferredHeight: title.paintedHeight
+                    Layout.preferredWidth: title.paintedWidth
+                    LinkButton {
+                        id: title
+                        text: titleLabel.text
+                        font: SystemFonts.titleFont
+                        color: Kirigami.Theme.highlightedTextColor
+                        onClicked: {
+                            var flic = root._page.flickable
+                            if (flic.positionViewAtBeginning)
+                                flic.positionViewAtBeginning();
+                            else
+                                flic.contentY = 0;
+                        }
+                    }
+                    DropShadow {
+                        horizontalOffset: 2
+                        verticalOffset: 2
+                        radius: 8.0
+                        samples: 17
+                        color: "#f0000000"
+                        source: title
+                        anchors.fill: title
                     }
                 }
             }

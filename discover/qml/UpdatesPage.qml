@@ -145,6 +145,8 @@ DiscoverPage
                 property bool extended: false
                 RowLayout {
                     Layout.fillWidth: true
+                    Layout.fillHeight: true
+
                     CheckBox {
                         anchors.verticalCenter: parent.verticalCenter
                         checked: model.checked == Qt.Checked
@@ -153,8 +155,7 @@ DiscoverPage
 
                     QIconItem {
                         Layout.fillHeight: true
-                        anchors.verticalCenter: parent.verticalCenter
-                        width: 30
+                        Layout.preferredWidth: height
                         icon: decoration
                     }
 
