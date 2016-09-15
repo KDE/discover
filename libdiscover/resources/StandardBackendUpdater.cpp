@@ -66,7 +66,6 @@ void StandardBackendUpdater::start()
     emit statusMessageChanged(statusMessage());
 
     if(m_pendingResources.isEmpty()) {
-        emit progressingChanged(false);
         cleanup();
     } else {
         setProgress(1);
@@ -102,7 +101,6 @@ void StandardBackendUpdater::transactionRemoved(Transaction* t)
         setProgress(100*p);
         if(m_pendingResources.isEmpty()) {
             cleanup();
-            emit progressingChanged(false);
         }
     }
     refreshUpdateable();
@@ -169,6 +167,7 @@ void StandardBackendUpdater::cleanup()
 {
     m_lastUpdate = QDateTime::currentDateTime();
     m_toUpgrade.clear();
+    emit progressingChanged(false);
 }
 
 QList<AbstractResource*> StandardBackendUpdater::toUpdate() const
