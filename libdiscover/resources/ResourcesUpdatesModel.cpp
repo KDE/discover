@@ -116,6 +116,10 @@ void ResourcesUpdatesModel::message(const QString& msg)
 
 void ResourcesUpdatesModel::prepare()
 {
+    if(isProgressing()) {
+        qWarning() << "trying to set up a running instance";
+        return;
+    }
     foreach(AbstractBackendUpdater* upd, m_updaters) {
         upd->prepare();
     }

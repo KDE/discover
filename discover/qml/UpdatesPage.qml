@@ -13,10 +13,6 @@ DiscoverPage
     id: page
     title: i18n("Updates")
 
-    Component.onCompleted: {
-        resourcesUpdatesModel.prepare()
-    }
-
     function start() {
         resourcesUpdatesModel.updateAll()
     }
@@ -32,21 +28,22 @@ DiscoverPage
             id: resourcesUpdatesModel
             onIsProgressingChanged: {
                 window.navigationEnabled = !isProgressing
+
+                if (!isProgressing) {
+                    resourcesUpdatesModel.prepare()
+                }
+            }
+
+            Component.onCompleted: {
+                if (!isProgressing) {
+                    resourcesUpdatesModel.prepare()
+                }
             }
         }
 
         UpdateModel {
             id: updateModel
             backend: resourcesUpdatesModel
-        }
-
-        BusyIndicator {
-            anchors.centerIn: parent
-            visible: ResourcesModel.isFetching
-            enabled: visible
-            anchors.horizontalCenter: parent.horizontalCenter
-            width: 32
-            height: 32
         }
 
         header: PageHeader {
@@ -223,6 +220,7 @@ DiscoverPage
         State {
             name: "progressing"
             PropertyChanges { target: page; title: i18nc("@info", "Updating...") }
+            PropertyChanges { target: page; footerLabel: resourcesUpdatesModel.progress<=0 ? i18nc("@info", "Fetching updates") : "" }
         },
         State {
             name: "has-updates"
@@ -230,24 +228,24 @@ DiscoverPage
         },
         State {
             name: "now-uptodate"
-            PropertyChanges { target: page; title: i18nc("@info", "The system is up to date.") }
+            PropertyChanges { target: page; title: i18nc("@info", "The system is up to date") }
             PropertyChanges { target: page; footerLabel: i18nc("@info", "No updates") }
         },
         State {
             name: "uptodate"
-            PropertyChanges { target: page; title: i18nc("@info", "The system is up to date.") }
+            PropertyChanges { target: page; title: i18nc("@info", "The system is up to date") }
         },
         State {
             name: "medium"
-            PropertyChanges { target: page; title: i18nc("@info", "No updates are available.") }
+            PropertyChanges { target: page; title: i18nc("@info", "No updates are available") }
         },
         State {
             name: "low"
-            PropertyChanges { target: page; title: i18nc("@info", "Should check for updates.") }
+            PropertyChanges { target: page; title: i18nc("@info", "Should check for updates") }
         },
         State {
             name: "unknown"
-            PropertyChanges { target: page; title: i18nc("@info", "It is unknown when the last check for updates was.") }
+            PropertyChanges { target: page; title: i18nc("@info", "It is unknown when the last check for updates was") }
         }
     ]
 }
