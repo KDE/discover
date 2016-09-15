@@ -47,6 +47,7 @@ ResourcesUpdatesModel::ResourcesUpdatesModel(QObject* parent)
 void ResourcesUpdatesModel::init()
 {
     const QVector<AbstractResourcesBackend*> backends = ResourcesModel::global()->backends();
+    m_lastIsProgressing = false;
     foreach(AbstractResourcesBackend* b, backends) {
         AbstractBackendUpdater* updater = b->backendUpdater();
         if(updater && !m_updaters.contains(updater)) {
@@ -62,6 +63,8 @@ void ResourcesUpdatesModel::init()
             connect(updater, &AbstractBackendUpdater::resourceProgressed, this, &ResourcesUpdatesModel::resourceProgressed);
             connect(updater, &AbstractBackendUpdater::destroyed, this, &ResourcesUpdatesModel::updaterDestroyed);
             m_updaters += updater;
+
+            m_lastIsProgressing |= updater->isProgressing();
         }
     }
 }
@@ -113,6 +116,10 @@ void ResourcesUpdatesModel::message(const QString& msg)
 
 void ResourcesUpdatesModel::prepare()
 {
+    if(isProgressing()) {
+        qWarning() << "trying to set up a running instance";
+        return;
+    }
     foreach(AbstractBackendUpdater* upd, m_updaters) {
         upd->prepare();
     }

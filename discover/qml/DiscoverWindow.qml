@@ -114,6 +114,9 @@ Kirigami.ApplicationWindow
             currentTopLevel = topBrowsingComp;
             Navigation.openCategory(cat, "")
         }
+
+        onPreventedClose: showPassiveNotification(i18n("Could not close the application, there are tasks that need to be done."), 3000)
+        onUnableToFind: showPassiveNotification(i18n("Unable to find resource: %1", resid));
     }
 
     globalDrawer: DiscoverDrawer {}
@@ -126,12 +129,6 @@ Kirigami.ApplicationWindow
         stackView.clear()
         if (currentTopLevel)
             stackView.push(currentTopLevel, {}, window.status!=Component.Ready)
-    }
-
-    Connections {
-        target: app
-        onPreventedClose: showPassiveNotification(i18n("Could not close the application, there are tasks that need to be done."), 3000)
-        onUnableToFind: showPassiveNotification(i18n("Unable to find resource: %1", resid));
     }
 
 //     ColumnLayout {
