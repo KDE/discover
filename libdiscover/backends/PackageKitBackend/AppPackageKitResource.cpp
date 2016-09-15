@@ -62,6 +62,11 @@ QVariant AppPackageKitResource::icon() const
                 ret.addFile(it->toLocalFile(), it.key());
         }
     }
+
+    if (ret.isNull()) {
+        ret = QIcon::fromTheme(QStringLiteral("package-x-generic"));
+    }
+
     return ret;
 }
 

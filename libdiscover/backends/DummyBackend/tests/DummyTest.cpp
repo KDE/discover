@@ -219,7 +219,6 @@ void DummyTest::testScreenshotsModel()
     QCOMPARE(res, m.resource());
 
     int c=m.rowCount();
-    QCOMPARE(c, 1);
     for(int i=0; i<c; ++i) {
         const auto idx = m.index(i, 0);
         QVERIFY(!idx.data(ScreenshotsModel::ThumbnailUrl).isNull());
