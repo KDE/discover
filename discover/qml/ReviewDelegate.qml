@@ -18,14 +18,15 @@
  */
 
 import QtQuick 2.1
-import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.1
+import org.kde.kirigami 1.0
 import org.kde.discover 1.0
 
-Item
+AbstractListItem
 {
     id: item
     visible: model.shouldShow
-    height: content.height+10
+    height: Math.max(layout.implicitHeight, 0) + 2*Units.smallSpacing
 
     signal markUseful(bool useful)
 
@@ -35,31 +36,39 @@ Item
                 ? i18n("<em>Tell us about this review!</em>")
                 : i18n("<em>%1 out of %2 people found this review useful</em>", favorable, total)
     }
-    MouseArea {
-        id: delegateArea
-        hoverEnabled: true
-        width: parent.width
-        height: content.height
+    ColumnLayout {
+        id: layout
+        anchors {
+            left: parent.left
+            right: parent.right
+            margins: Units.gridUnit
+        }
+        Layout.fillWidth: true
 
-        Label {
-            anchors {
-                left: parent.left
-                right: rating.left
+        RowLayout {
+            Layout.fillWidth: true
+            Label {
+                id: content
+                Layout.fillWidth: true
+                text: i18n("<b>%1</b> by %2", summary, reviewer)
             }
-
-            id: content
-            text: i18n("<p style='margin: 0 0 0 0'><b>%1</b> by %2</p><p style='margin: 0 0 0 0'>%3</p><p style='margin: 0 0 0 0'>%4</p>", summary, reviewer,
-                    display, usefulnessToString(usefulnessFavorable, usefulnessTotal))
-            wrapMode: Text.WordWrap
+            Rating {
+                id: rating
+                rating: model.rating
+                starSize: content.font.pointSize
+            }
+        }
+        Label {
+            Layout.fillWidth: true
+            text: display
+            wrapMode: Text.Wrap
+        }
+        Label {
+            text: usefulnessToString(usefulnessFavorable, usefulnessTotal)
         }
 
         Label {
-            anchors {
-                right: parent.right
-                bottom: parent.bottom
-                bottomMargin: -5
-            }
-            opacity: delegateArea.containsMouse ? 1 : 0.2
+            opacity: item.containsMouse ? 1 : 0.2
 
             text: {
                 switch(usefulChoice) {
@@ -75,14 +84,6 @@ Item
                 }
             }
             onLinkActivated: item.markUseful(link=='true')
-        }
-
-        Rating {
-            id: rating
-            anchors.top: parent.top
-            anchors.right: parent.right
-            rating: model.rating
-            starSize: content.font.pointSize
         }
     }
 }

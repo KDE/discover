@@ -31,6 +31,8 @@ Kirigami.ApplicationWindow
     minimumWidth: 300
     minimumHeight: 300
 
+    pageStack.defaultColumnWidth: Kirigami.Units.gridUnit * 25
+
     readonly property var leftPage: window.stack.get(0)
 
     Component.onCompleted: {
@@ -47,7 +49,7 @@ Kirigami.ApplicationWindow
     Component {
         id: loadingComponent
         Kirigami.Page {
-            title: ""
+            title: label.text
             Label {
                 id: label
                 text: i18n("Loading...")
@@ -116,7 +118,10 @@ Kirigami.ApplicationWindow
         }
 
         onPreventedClose: showPassiveNotification(i18n("Could not close the application, there are tasks that need to be done."), 3000)
-        onUnableToFind: showPassiveNotification(i18n("Unable to find resource: %1", resid));
+        onUnableToFind: {
+            showPassiveNotification(i18n("Unable to find resource: %1", resid));
+            Navigation.openHome()
+        }
     }
 
     globalDrawer: DiscoverDrawer {}

@@ -5,6 +5,6 @@ DiscoverTest
 {
     function test_open() {
         verify(!appRoot.defaultStartup)
-        compare(typeName(appRoot.stack.currentItem), "BrowsingPage")
+        compare(appRoot.stack.currentItem.title, "Home")
     }
 }

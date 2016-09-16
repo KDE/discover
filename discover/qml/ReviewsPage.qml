@@ -24,9 +24,8 @@ import org.kde.discover 1.0
 import org.kde.discover.app 1.0
 import org.kde.kirigami 1.0 as Kirigami
 
-DiscoverPage {
+Kirigami.OverlaySheet {
     id: page
-    title: i18n("Ratings for %1", resource.name)
     property alias model: reviewsView.model
     readonly property QtObject reviewsBackend: resource.backend.reviewsBackend
     readonly property var resource: model.resource
@@ -40,9 +39,9 @@ DiscoverPage {
 
     ListView {
         id: reviewsView
+        implicitWidth: page.width*2/3
 
         clip: true
-        visible: count>0
         spacing: 5
 
         header: Button {
@@ -52,6 +51,7 @@ DiscoverPage {
         }
 
         delegate: ReviewDelegate {
+            width: reviewsView.implicitWidth
             onMarkUseful: page.reviewsModel.markUseful(index, useful)
         }
     }

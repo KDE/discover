@@ -37,6 +37,11 @@ DiscoverPage {
 
     background: Rectangle { color: Kirigami.Theme.viewBackgroundColor }
 
+    ReviewsPage {
+        id: reviewsSheet
+        model: reviewsModel
+    }
+
     pageOverlay: Item {
         InstallApplicationButton {
             id: button
@@ -176,8 +181,9 @@ DiscoverPage {
                 id: reviewsModel
                 resource: appInfo.application
             }
+
             onClicked: {
-                Navigation.openReviews(reviewsModel)
+                reviewsSheet.open()
             }
         }
 
