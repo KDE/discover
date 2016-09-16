@@ -165,7 +165,7 @@ DiscoverPage
                     }
 
                     LabelBackground {
-                        Layout.minimumWidth: 90
+                        Layout.minimumWidth: Kirigami.Units.gridUnit * 6
                         text: size
 
                         progress: resourceProgress/100
