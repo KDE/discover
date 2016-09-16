@@ -118,10 +118,9 @@ DiscoverPage
 
         section {
             property: "section"
-            delegate: Label {
-                height: 1.5*implicitHeight
-                horizontalAlignment: Text.AlignRight
-                verticalAlignment: Text.AlignVCenter
+            delegate: Kirigami.Heading {
+                x: Kirigami.Units.gridUnit
+                level: 2
                 text: section
             }
         }
