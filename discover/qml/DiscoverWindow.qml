@@ -31,6 +31,8 @@ Kirigami.ApplicationWindow
     minimumWidth: 300
     minimumHeight: 300
 
+    pageStack.defaultColumnWidth: Kirigami.Units.gridUnit * 25
+
     readonly property var leftPage: window.stack.get(0)
 
     Component.onCompleted: {
