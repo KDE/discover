@@ -33,7 +33,7 @@ Kirigami.ApplicationWindow
 
     pageStack.defaultColumnWidth: Kirigami.Units.gridUnit * 25
 
-    readonly property var leftPage: window.stack.get(0)
+    readonly property var leftPage: window.stack.depth>0 ? window.stack.get(0) : null
 
     Component.onCompleted: {
         Helpers.mainWindow = window
