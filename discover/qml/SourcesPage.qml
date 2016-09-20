@@ -57,6 +57,12 @@ DiscoverPage {
                 }
 
                 ToolButton {
+                    text: i18n("More...")
+                    menu: actionsMenu
+                    enabled: actionsMenu.items.length>0
+                }
+
+                ToolButton {
                     text: i18n("Help...")
                     menu: Menu {
                         MenuItem { action: ActionBridge { action: app.action("help_about_app") } }
