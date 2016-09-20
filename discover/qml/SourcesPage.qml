@@ -127,6 +127,7 @@ DiscoverPage {
                     ]
 
                     RowLayout {
+                        anchors.verticalCenter: parent.verticalCenter
                         CheckBox {
                             id: enabledBox
                             enabled: false //TODO: implement the application of this change
