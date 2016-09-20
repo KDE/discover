@@ -24,6 +24,7 @@ Kirigami.ApplicationWindow
     property bool navigationEnabled: true
 
     objectName: "DiscoverMainWindow"
+    title: leftPage ? leftPage.title : ""
 
     header: null
     visible: true
