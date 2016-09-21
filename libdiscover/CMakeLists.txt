@@ -43,10 +43,10 @@ add_library(DiscoverCommon ${discovercommon_SRCS})
 target_link_libraries(DiscoverCommon
 LINK_PUBLIC
     Qt5::Core
+    Qt5::Qml
     Qt5::Widgets
     KF5::I18n
 LINK_PRIVATE
-    Qt5::Qml
     Qt5::Xml
     KF5::XmlGui
     KF5::CoreAddons

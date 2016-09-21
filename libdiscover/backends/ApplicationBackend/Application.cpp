@@ -26,6 +26,7 @@
 #include <QStandardPaths>
 #include <QStringList>
 #include <QThread>
+#include <QIcon>
 #include <QVector>
 
 // KDE includes
@@ -138,7 +139,7 @@ QApt::Package *Application::package()
     return m_package;
 }
 
-QString Application::icon() const
+QVariant Application::icon() const
 {
     QIcon ret;
 
