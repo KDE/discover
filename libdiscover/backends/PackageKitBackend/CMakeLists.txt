@@ -14,7 +14,6 @@ target_link_libraries(packagekit-backend PRIVATE Discover::Common Qt5::Core PK::
 
 install(TARGETS packagekit-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
 install(FILES packagekit-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/libdiscover/backends)
-install(FILES packagekit-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
 
 #notifier
 add_library(DiscoverPackageKitNotifier MODULE PackageKitNotifier.cpp)
@@ -23,21 +22,5 @@ set_target_properties(DiscoverPackageKitNotifier PROPERTIES INSTALL_RPATH ${CMAK
 
 install(TARGETS DiscoverPackageKitNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/discover-notifier)
 
-install( FILES
-    categoryimages/educationcrop.jpg
-    categoryimages/fontcrop.jpg
-    categoryimages/gamecrop.jpg
-    categoryimages/graphiccrop.jpg
-#     categoryimages/multimedia2.jpg
-    categoryimages/multimediacrop.jpg
-#     categoryimages/music.jpe
-    categoryimages/officecrop.jpg
-    categoryimages/sciencecrop.jpg
-    categoryimages/accesscropped.jpg
-    categoryimages/toolcrop.jpg
-    categoryimages/accesscropped.jpg
-    categoryimages/accessoriescrop.jpg
-    categoryimages/applicationcrop.jpg
-    categoryimages/internetcrop.jpg
-    categoryimages/settingscrop.jpg
-    DESTINATION ${KDE_INSTALL_FULL_DATAROOTDIR}/discover/pkcategories)
+install(FILES packagekit-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
+add_subdirectory(categoryimages)
