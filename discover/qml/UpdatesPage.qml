@@ -61,7 +61,6 @@ DiscoverPage
                 Layout.topMargin: Kirigami.Units.smallSpacing
                 Layout.bottomMargin: Kirigami.Units.smallSpacing
 
-                enabled: !resourcesUpdatesModel.isProgressing
                 visible: resourcesUpdatesModel.isProgressing || updateModel.hasUpdates
 
                 LabelBackground {
@@ -84,6 +83,7 @@ DiscoverPage
                 Button {
                     id: startButton
                     text: unselectedItem.visible ? i18n("Update Selected") : i18n("Update All")
+                    enabled: !resourcesUpdatesModel.isProgressing
                     onClicked: page.start()
                 }
             }
@@ -130,7 +130,6 @@ DiscoverPage
         delegate: Kirigami.AbstractListItem {
             x: Kirigami.Units.gridUnit
             width: ListView.view.width - Kirigami.Units.gridUnit * 2
-            enabled: !resourcesUpdatesModel.isProgressing
             onEnabledChanged: if (!enabled) {
                 layout.extended = false;
             }
@@ -190,6 +189,7 @@ DiscoverPage
                 Button {
                     text: i18n("Open")
                     visible: layout.extended
+                    enabled: !resourcesUpdatesModel.isProgressing
                     onClicked: Navigation.openApplication(resource)
                 }
             }
