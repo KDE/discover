@@ -84,6 +84,6 @@ private:
     QSet<QString> m_plugins;
     bool m_isAddons = false;
 };
-Q_DECLARE_METATYPE(QList<Category *>);
+Q_DECLARE_METATYPE(QList<Category *>)
 
 #endif
