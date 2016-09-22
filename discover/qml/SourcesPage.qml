@@ -143,7 +143,6 @@ DiscoverPage {
                             checked: model.checked != Qt.Unchecked
                         }
                         Label {
-                            Layout.fillWidth: true
                             text: model.display
                         }
                         Label {
