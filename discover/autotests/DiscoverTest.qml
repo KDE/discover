@@ -67,11 +67,12 @@ Item
         spy.target = object;
         spy.signalName = name;
         verify(spy);
+        verify(spy.valid);
 
         try {
             spy.wait(timeout);
         } catch (e) {
-            console.warn("wait for signal unsuccessful")
+            console.warn("wait for signal '"+name+"' unsuccessful")
             return false;
         }
         return spy.count>0;
