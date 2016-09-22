@@ -38,6 +38,10 @@ Kirigami.GlobalDrawer {
 
     readonly property var currentRootCategory: window.leftPage ? rootCategory(window.leftPage.category) : null
 
+    onBannerClicked: {
+        Navigation.openHome();
+    }
+
     topContent: TextField {
         id: searchField
         Layout.fillWidth: true

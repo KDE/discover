@@ -56,6 +56,7 @@ function openExtends(ext) {
 }
 
 function openHome() {
+    drawer.resetMenu();
     clearStack()
     window.stack.push(topBrowsingComp)
 }
