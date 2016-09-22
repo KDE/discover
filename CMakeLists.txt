@@ -17,8 +17,8 @@ include(ECMMarkAsTest)
 include(ECMAddTests)
 include(GenerateExportHeader)
 
-find_package(KF5 REQUIRED CoreAddons Config Crash DBusAddons I18n Archive Declarative XmlGui)
-find_package(KF5TextWidgets REQUIRED)
+find_package(KF5 5.24 REQUIRED CoreAddons Config Crash DBusAddons I18n Archive Declarative XmlGui)
+find_package(KF5Kirigami 1.0 REQUIRED)
 
 find_package(packagekitqt5)
 if (NOT packagekitqt5_FOUND)
@@ -28,13 +28,9 @@ if (NOT packagekitqt5_FOUND)
         find_package(KF5 REQUIRED IconThemes Notifications KIO)
     endif()
 endif()
-find_package(AppstreamQt 0.9.2)
+find_package(AppstreamQt 0.10)
 find_package(KF5Attica 5.23)
 find_package(KF5NewStuff 5.23)
-
-if (${KF5_VERSION} VERSION_GREATER "5.14.0")
-    add_definitions(-DWITH_KCRASH_INIT)
-endif()
 
 configure_file(DiscoverVersion.h.in DiscoverVersion.h)
 

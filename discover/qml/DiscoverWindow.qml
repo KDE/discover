@@ -137,19 +137,20 @@ Kirigami.ApplicationWindow
             stackView.push(currentTopLevel, {}, window.status!=Component.Ready)
     }
 
-//     ColumnLayout {
-//         spacing: 0
-//         anchors.fill: parent
-//
-//         Repeater {
-//             model: MessageActionsModel {
-//                 filterPriority: QAction.HighPriority
-//             }
-//             delegate: MessageAction {
-//                 Layout.fillWidth: true
-//                 height: Layout.minimumHeight
-//                 theAction: action
-//             }
-//         }
-//     }
+    Menu {
+        id: actionsMenu
+    }
+
+    Instantiator {
+        model: MessageActionsModel {}
+        delegate: MenuItem {
+            action: ActionBridge { action: model.action }
+        }
+        onObjectAdded: {
+            actionsMenu.insertItem(index, object)
+        }
+        onObjectRemoved: {
+            object.destroy()
+        }
+    }
 }

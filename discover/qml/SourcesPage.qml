@@ -57,6 +57,12 @@ DiscoverPage {
                 }
 
                 ToolButton {
+                    text: i18n("More...")
+                    menu: actionsMenu
+                    enabled: actionsMenu.items.length>0
+                }
+
+                ToolButton {
                     text: i18n("Help...")
                     menu: Menu {
                         MenuItem { action: ActionBridge { action: app.action("help_about_app") } }
@@ -127,6 +133,10 @@ DiscoverPage {
                     ]
 
                     RowLayout {
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
                         CheckBox {
                             id: enabledBox
                             enabled: false //TODO: implement the application of this change
@@ -134,11 +144,12 @@ DiscoverPage {
                         }
                         Label {
                             Layout.fillWidth: true
-                            elide: Text.ElideRight
                             text: model.display
                         }
                         Label {
+                            Layout.fillWidth: true
                             text: model.toolTip
+                            elide: Text.ElideRight
                         }
                     }
                 }

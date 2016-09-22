@@ -28,17 +28,18 @@ function openApplicationListSource(origin) {
 }
 
 function openApplicationMime(mime) {
+    clearStack()
     openApplicationList({ mimeTypeFilter: mime , title: i18n("Resources for '%1'", mime) })
 }
 
 function openApplicationList(props) {
-    clearStack()
     var page = window.stack.push(applicationListComp, props)
     if (props.search === "")
         page.clearSearch()
 }
 
 function openCategory(cat, search) {
+    clearStack()
     openApplicationList({ category: cat, search: search })
 }
 
@@ -55,6 +56,7 @@ function openExtends(ext) {
 }
 
 function openHome() {
+    window.globalDrawer.resetMenu();
     clearStack()
     window.stack.push(topBrowsingComp)
 }

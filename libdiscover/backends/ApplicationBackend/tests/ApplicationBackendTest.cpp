@@ -136,10 +136,8 @@ void ApplicationBackendTest::testReload()
 void ApplicationBackendTest::testCategories()
 {
     ResourcesProxyModel* proxy = new ResourcesProxyModel(this);
-    CategoryModel* categoryModel = new CategoryModel(proxy);
-    categoryModel->setDisplayedCategory(nullptr);
-    for(int i=0; i<categoryModel->rowCount(); ++i) {
-        Category* cat = categoryModel->categoryForRow(i);
+    const auto cats = CategoryModel::rootCategories();
+    for(auto cat: cats) {
         proxy->setFiltersFromCategory(cat);
     }
 }

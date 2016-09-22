@@ -27,7 +27,6 @@ target_include_directories(qapt-backend PRIVATE /usr/include/Qca-qt5/QtCrypto)
 
 install(TARGETS qapt-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
 install(FILES qapt-backend.desktop DESTINATION ${DATA_INSTALL_DIR}/libdiscover/backends)
-install(FILES qapt-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories)
 install(FILES distupgradeevent/releasechecker DESTINATION ${DATA_INSTALL_DIR}/libdiscover/applicationsbackend/
     PERMISSIONS
         OWNER_EXECUTE OWNER_READ OWNER_WRITE
@@ -49,3 +48,6 @@ endforeach()
 
 install(TARGETS MuonApplicationNotifier DESTINATION ${PLUGIN_INSTALL_DIR}/discover-notifier)
 install(FILES muonapplicationnotifier.notifyrc DESTINATION ${KNOTIFYRC_INSTALL_DIR})
+
+install(FILES ../PackageKitBackend/packagekit-backend-categories.xml DESTINATION ${DATA_INSTALL_DIR}/libdiscover/categories/ RENAME qapt-backend-categories.xml)
+# add_subdirectory(${CMAKE_SOURCE_DIR}/libdiscover/backends/PackageKitBackend/categoryimages)

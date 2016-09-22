@@ -91,9 +91,7 @@ int main(int argc, char** argv)
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("plasmadiscover")));
     app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
-#ifdef WITH_KCRASH_INIT
     KCrash::initialize();
-#endif
     KLocalizedString::setApplicationDomain("plasma-discover");
     KAboutData about(QStringLiteral("discover"), i18n("Discover"), version, i18n("An application explorer"),
                      KAboutLicense::GPL, i18n("© 2010-2016 Plasma Development Team"));

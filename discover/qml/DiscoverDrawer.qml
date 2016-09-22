@@ -18,7 +18,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ***************************************************************************/
 
-import QtQuick 2.6
+import QtQuick 2.5
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.1
 import org.kde.discover 1.0
@@ -36,7 +36,19 @@ Kirigami.GlobalDrawer {
 
     resetMenuOnTriggered: false
 
-    readonly property var currentRootCategory: window.leftPage ? rootCategory(window.leftPage.category) : null
+    onBannerClicked: {
+        Navigation.openHome();
+    }
+
+    onCurrentSubMenuChanged: {
+        if (currentSubMenu)
+            currentSubMenu.trigger()
+        else if (searchField.text !== "")
+            window.leftPage.category = null
+        else
+            Navigation.openHome()
+
+    }
 
     topContent: TextField {
         id: searchField
@@ -75,9 +87,10 @@ Kirigami.GlobalDrawer {
             interval: 200
             onTriggered: {
                 var curr = window.leftPage;
-                if (!curr.hasOwnProperty("search"))
+                if (!curr.hasOwnProperty("search")) {
+                    Navigation.clearStack()
                     Navigation.openApplicationList( { search: parent.text })
-                else
+                } else
                     curr.search = parent.text;
             }
         }
@@ -154,7 +167,10 @@ Kirigami.GlobalDrawer {
                    || category.contains(window.leftPage.subcategories)
                      )
             onTriggered: {
-                Navigation.openCategory(category, searchField.text)
+                if (window.leftPage.category === undefined)
+                    Navigation.openCategory(category, searchField.text)
+                else
+                    window.leftPage.category = category
             }
         }
     }
