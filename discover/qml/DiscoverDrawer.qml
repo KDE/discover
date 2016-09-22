@@ -167,7 +167,10 @@ Kirigami.GlobalDrawer {
                    || category.contains(window.leftPage.subcategories)
                      )
             onTriggered: {
-                Navigation.openCategory(category, searchField.text)
+                if (window.leftPage.category === undefined)
+                    Navigation.openCategory(category, searchField.text)
+                else
+                    window.leftPage.category = category
             }
         }
     }
