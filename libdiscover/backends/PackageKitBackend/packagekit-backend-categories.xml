@@ -220,18 +220,6 @@
     </Menu>
 
     <Menu>
-      <Name>Fonts</Name>
-      <Image>pkcategories/fontcrop.jpg</Image>
-      <Icon>preferences-desktop-font</Icon>
-      <ShowTechnical>true</ShowTechnical>
-      <Include>
-        <And>
-            <Category>Fonts</Category>
-        </And>
-      </Include>
-    </Menu>
-
-    <Menu>
       <Name>Games</Name>
       <Image>pkcategories/gamecrop.jpg</Image>
       <Icon>applications-games</Icon>
@@ -490,6 +478,20 @@
         </Or>
       </Include>
     </Menu>
+
+<!--
+    <Menu>
+      <Name>Fonts</Name>
+      <Image>pkcategories/fontcrop.jpg</Image>
+      <Icon>preferences-desktop-font</Icon>
+      <ShowTechnical>true</ShowTechnical>
+      <Include>
+        <And>
+            <Category>Fonts</Category>
+        </And>
+      </Include>
+    </Menu>
+-->
   </Menu>
 
 </Menu>
