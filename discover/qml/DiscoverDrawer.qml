@@ -75,9 +75,10 @@ Kirigami.GlobalDrawer {
             interval: 200
             onTriggered: {
                 var curr = window.leftPage;
-                if (!curr.hasOwnProperty("search"))
+                if (!curr.hasOwnProperty("search")) {
+                    Navigation.clearStack()
                     Navigation.openApplicationList( { search: parent.text })
-                else
+                } else
                     curr.search = parent.text;
             }
         }
