@@ -42,6 +42,16 @@ Kirigami.GlobalDrawer {
         Navigation.openHome();
     }
 
+    onCurrentSubMenuChanged: {
+        if (currentSubMenu)
+            currentSubMenu.trigger()
+        else if (searchField.text !== "")
+            window.leftPage.category = null
+        else
+            Navigation.openHome()
+
+    }
+
     topContent: TextField {
         id: searchField
         Layout.fillWidth: true
