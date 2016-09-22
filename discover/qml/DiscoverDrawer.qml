@@ -36,8 +36,6 @@ Kirigami.GlobalDrawer {
 
     resetMenuOnTriggered: false
 
-    readonly property var currentRootCategory: window.leftPage ? rootCategory(window.leftPage.category) : null
-
     onBannerClicked: {
         Navigation.openHome();
     }
