@@ -18,7 +18,7 @@ include(ECMAddTests)
 include(GenerateExportHeader)
 
 find_package(KF5 5.24 REQUIRED CoreAddons Config Crash DBusAddons I18n Archive Declarative XmlGui)
-find_package(KF5Kirigami 1.0 REQUIRED)
+find_package(KF5Kirigami 1.0)
 
 find_package(packagekitqt5)
 if (NOT packagekitqt5_FOUND)
@@ -53,6 +53,11 @@ set_package_properties(KF5Attica PROPERTIES
     DESCRIPTION "KDE Framework that implements the Open Collaboration Services API"
     PURPOSE "Required to build the KNewStuff3 backend"
     TYPE OPTIONAL)
+set_package_properties(KF5Kirigami PROPERTIES
+    DESCRIPTION "KDE’s lightweight user interface framework for mobile and convergent applications"
+    URL "https://techbase.kde.org/Kirigami"
+    PURPOSE "Required by discover qml components"
+    TYPE RUNTIME)
 set_package_properties(KF5NewStuff PROPERTIES
     DESCRIPTION "Qt library that allows to interact with KNewStuff implementations"
     PURPOSE "Required to build the KNS backend"
