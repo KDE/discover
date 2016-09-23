@@ -35,6 +35,7 @@ Name[sv]=Uppdateringar
 Name[uk]=Оновлення
 Name[x-test]=xxUpdatesxx
 Name[zh_CN]=更新
+Name[zh_TW]=更新
 Comment=Helps you keep your system up to date
 Comment[ar]=يساعدك في إبقاء نظامك محدّثًا
 Comment[ast]=Ayúdate a caltener el to sistema anováu
@@ -71,6 +72,7 @@ Comment[sv]=Hjälper dig hålla systemet uppdaterat
 Comment[uk]=Допомагає підтримувати актуальний стан вашої системи
 Comment[x-test]=xxHelps you keep your system up to datexx
 Comment[zh_CN]=帮助您保持系统更新
+Comment[zh_TW]=協助您的系統更新到最新狀態
 Encoding=UTF-8
 
 Icon=update-none
