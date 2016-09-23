@@ -33,7 +33,7 @@ DiscoverPage {
 //                         iconName: "list-add"
                     text: i18n("Add Source")
 
-                    enabled: sourcesMenu.items.count > 0
+                    visible: sourcesMenu.items.count > 0
                     tooltip: text
                     menu: sourcesMenu
                 }
@@ -143,7 +143,6 @@ DiscoverPage {
                             checked: model.checked != Qt.Unchecked
                         }
                         Label {
-                            Layout.fillWidth: true
                             text: model.display
                         }
                         Label {
