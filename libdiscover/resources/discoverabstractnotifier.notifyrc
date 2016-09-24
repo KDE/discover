@@ -30,7 +30,6 @@ Comment[sv]=Upptäck
 Comment[uk]=Discover
 Comment[x-test]=xxDiscoverxx
 Comment[zh_CN]=发现者
-Comment[zh_TW]=軟體中心
 
 [Event/Update]
 Name=Updates Are Available
@@ -69,7 +68,6 @@ Name[sv]=Uppdateringar är tillgängliga
 Name[uk]=Доступні оновлення
 Name[x-test]=xxUpdates Are Availablexx
 Name[zh_CN]=更新可用
-Name[zh_TW]=有可用的更新
 Comment=Updates Available
 Comment[ar]=التّحديثات متوفّرة
 Comment[ast]=Anovamientos disponibles
@@ -106,6 +104,5 @@ Comment[sv]=Uppdateringar tillgängliga
 Comment[uk]=Доступні оновлення
 Comment[x-test]=xxUpdates Availablexx
 Comment[zh_CN]=更新可用
-Comment[zh_TW]=有可用的更新
 Action=Popup
 
