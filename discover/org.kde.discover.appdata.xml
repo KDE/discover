@@ -32,7 +32,6 @@
   <name xml:lang="uk">Discover</name>
   <name xml:lang="x-test">xxDiscoverxx</name>
   <name xml:lang="zh-CN">发现</name>
-  <name xml:lang="zh-TW">Discover</name>
   <summary>Discover</summary>
   <summary xml:lang="ar">استكشف</summary>
   <summary xml:lang="ca">Discover</summary>
@@ -62,7 +61,6 @@
   <summary xml:lang="uk">Discover</summary>
   <summary xml:lang="x-test">xxDiscoverxx</summary>
   <summary xml:lang="zh-CN">发现</summary>
-  <summary xml:lang="zh-TW">Discover</summary>
   <description>
     <p>Haven’t you ever found a tool that was perfect for your need but you only found it after some time stumbling upon it on the net? When considering to install an application, don’t you wonder sometimes if it’s really worth it? Or if it’s actually what you’re looking for?</p>
     <p xml:lang="ar">ألم تجد يومًا أداة كانت تلبّي احتياجاتك تمامًا، ولكن بعد صراع طويل بالبحث عنها في الإنترنت؟ هل عنمدا تريد تثبيت تطبيق ما، هل تفكّر إن كان ذلك يستحقّ؟ أو حتّى إن كان هو ما تبحث عنه؟</p>
@@ -89,7 +87,6 @@
     <p xml:lang="uk">Чи траплялося вам знаходити програму, яка повністю задовольняє ваші потреби, після довгих пошуків у інтернеті? Чи не кортіло вам дізнатися про те, чи варто встановлювати програму, ще до її встановлення? Чи хотіли б ви наперед знати, чи та це програма, яка вам потрібна?</p>
     <p xml:lang="x-test">xxHaven’t you ever found a tool that was perfect for your need but you only found it after some time stumbling upon it on the net? When considering to install an application, don’t you wonder sometimes if it’s really worth it? Or if it’s actually what you’re looking for?xx</p>
     <p xml:lang="zh-CN">您是否只网络上搜索之后才找到一个完美符合需求的工具？当安装一个程序时，您没有想过知道是否真的值得安装吗？或者它确实是您想要找的目标？</p>
-    <p xml:lang="zh-TW">您曾在網路上找到一些原先看起來很完美，但到最後卻一直阻礙您生活的工具嗎？當考慮安裝應用程式時，您不會想到它是否真的符合我的需要嗎？又或著，您實際上是在找些什麼東西？</p>
     <p>Discover helps users easily and quickly find applications or tools. By allowing to navigate a software library by search, software categories, top lists along with detailed application information that includes screenshots and reviews, users can more quickly find applications that suit their needs.</p>
     <p xml:lang="ar">يساعد «استكشف» المستخدمين بإيجاد التّطبيقات أو الأدوات بسهولة وسرعة، وذلك بالتّنقّل في مكتبة البرمجيّات عبر البحث والفئات وأفضل البرمجيّات. هذا إلى جانب معلومات التّطبيقات التي تتضمّن لقطات شاشة ومراجعات. بذلك يصبح إيجاد التّطبيقاتت سريعًا ومناسبًا لحاجة المستخدم.</p>
     <p xml:lang="ca">El Discover ajuda als usuaris a cercar aplicacions i eines fàcilment i ràpidament. Permet explorar una biblioteca de programari cercant per categories de programari, llistes més valorades, junt amb informació detallada que inclou captures de pantalla i ressenyes. Els usuaris poden cercar ràpidament aplicacions que s'ajustin a les seves necessitats.</p>
@@ -115,7 +112,6 @@
     <p xml:lang="uk">Discover допомагає користувачам просто і швидко знаходити програми або інструменти. Користувач може просто мандрувати бібліотекою програмного забезпечення, шукаючи програми, передивляючись списки категорій програм, найкращих програм, та ознайомлюючись із докладною інформацією щодо програм, знімками вікон та відгуками інших користувачів. Знайти потрібну програму у такий спосіб можна набагато швидше.</p>
     <p xml:lang="x-test">xxDiscover helps users easily and quickly find applications or tools. By allowing to navigate a software library by search, software categories, top lists along with detailed application information that includes screenshots and reviews, users can more quickly find applications that suit their needs.xx</p>
     <p xml:lang="zh-CN">发现能够帮助用户简单快捷的找到程序或者工具。通过对软件库的搜索，软件分类，热门列表和包括截图和评论的细节的程序信息，用户可以更快的找到符合要求的程序。</p>
-    <p xml:lang="zh-TW">Discover 協助使用者簡單且快速地找到應用程式或工具。透過搜尋、軟體類別、精選軟體清單等等的方式瀏覽軟體庫，其中並包含了詳細的應用程式資訊，如螢幕截圖、使用感想等，使用者可以更快速地找到符合他們需求的應用程式。</p>
     <p>Furthermore, Discover will let you manage the different sources of software you have and manage the applications you’ve already installed in the past but you don’t want anymore.</p>
     <p xml:lang="ar">عدى عن هذا كلّه، يتيح لك «استكشف» بإدارة مختلف مصادر البرمجيّات التي لديك كما وإدارة التّطبيقات المثبّتة والتي لا تحتاجها بعد الآن.</p>
     <p xml:lang="ca">Per altra banda, el Discover permet gestionar les diferents fonts de programari que tingueu i gestionar les aplicacions que ja heu instal·lat en el passat però ja no desitgeu.</p>
@@ -141,7 +137,6 @@
     <p xml:lang="uk">Крім того, Discover надасть вам змогу керувати різними джерелами програмного забезпечення та вилучати програми, у яких уже немає потреби.</p>
     <p xml:lang="x-test">xxFurthermore, Discover will let you manage the different sources of software you have and manage the applications you’ve already installed in the past but you don’t want anymore.xx</p>
     <p xml:lang="zh-CN">进一步，发现还可以管理多个不同软件源并且管理过去已安装但不再需要的程序。</p>
-    <p xml:lang="zh-TW">此外，Discover 讓您管理您所擁有的不同的軟體來源，也可以管理您以前安裝，但現在並不想要了的應用程式。</p>
   </description>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=Discover</url>
   <screenshots>
