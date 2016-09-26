@@ -29,7 +29,6 @@
 #include <QSet>
 #include <PackageKit/Transaction>
 #include <AppstreamQt/database.h>
-#include <functional>
 
 class AppstreamReviews;
 class AppPackageKitResource;
@@ -63,6 +62,8 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QString upgradeablePackageId(const PackageKitResource* res) const;
         QVector<AppPackageKitResource*> extendedBy(const QString& id) const;
         void fetchUpdates();
+
+        void resolvePackages(const QStringList &packageNames);
 
     public Q_SLOTS:
         void transactionCanceled(Transaction* t);

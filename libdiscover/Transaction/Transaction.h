@@ -117,15 +117,18 @@ public:
      * @param progress this should be a percentage of how much of the transaction is already done
      */
     void setProgress(int progress);
+
     /**
      * Cancels the transaction
      */
-    virtual void cancel() = 0;
+    Q_SCRIPTABLE virtual void cancel() = 0;
 
     /**
      * @returns if the transaction is either downloading or committing
      */
     bool isActive() const;
+
+    Q_SCRIPTABLE virtual void proceed() {}
 
 private:
     AbstractResource * const m_resource;
@@ -148,6 +151,15 @@ Q_SIGNALS:
      * This gets emitted when the transaction changed the percentage of how much of it is already done
      */
     void progressChanged(int progress);
+
+    /**
+     * Provides a message to be shown to the user
+     *
+     * The user gets to acknowledge and proceed or cancel the transaction.
+     *
+     * @sa proceed(), cancel()
+     */
+    void proceedRequest(const QString &title, const QString &description);
 };
 
 #endif // TRANSACTION_H

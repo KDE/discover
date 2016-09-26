@@ -29,12 +29,17 @@
 #include <KLocalizedString>
 #include <PackageKit/Transaction>
 #include <PackageKit/Daemon>
+#include <functional>
 
 PKTransaction::PKTransaction(const QVector<AbstractResource*>& apps, Transaction::Role role)
     : Transaction(apps.first(), apps.first(), role)
     , m_apps(apps)
 {
     Q_ASSERT(!apps.contains(nullptr));
+    foreach(auto r, apps) {
+        PackageKitResource* res = qobject_cast<PackageKitResource*>(r);
+        m_pkgnames.unite(res->allPackageNames().toSet());
+    }
 }
 
 static QStringList packageIds(const QVector<AbstractResource*>& res, std::function<QString(PackageKitResource*)> func)
@@ -49,21 +54,29 @@ static QStringList packageIds(const QVector<AbstractResource*>& res, std::functi
 
 void PKTransaction::start()
 {
+    trigger(PackageKit::Transaction::TransactionFlagSimulate);
+}
+
+void PKTransaction::trigger(PackageKit::Transaction::TransactionFlags flags)
+{
     if (m_trans)
         m_trans->deleteLater();
+    m_newPackageStates.clear();
 
     switch (role()) {
         case Transaction::ChangeAddonsRole:
         case Transaction::InstallRole:
-            m_trans = PackageKit::Daemon::installPackages(packageIds(m_apps, [](PackageKitResource* r){return r->availablePackageId(); }));
+            m_trans = PackageKit::Daemon::installPackages(packageIds(m_apps, [](PackageKitResource* r){return r->availablePackageId(); }), flags);
             break;
         case Transaction::RemoveRole:
             //see bug #315063
-            m_trans = PackageKit::Daemon::removePackages(packageIds(m_apps, [](PackageKitResource* r){return r->installedPackageId(); }), true /*allowDeps*/);
+            m_trans = PackageKit::Daemon::removePackages(packageIds(m_apps, [](PackageKitResource* r){return r->installedPackageId(); }), true /*allowDeps*/, false, flags);
             break;
     };
     Q_ASSERT(m_trans);
 
+//     connect(m_trans.data(), &PackageKit::Transaction::statusChanged, this, [this]() { qDebug() << "state..." << m_trans->status(); });
+    connect(m_trans.data(), &PackageKit::Transaction::package, this, &PKTransaction::packageResolved);
     connect(m_trans.data(), &PackageKit::Transaction::finished, this, &PKTransaction::cleanup);
     connect(m_trans.data(), &PackageKit::Transaction::errorCode, this, &PKTransaction::errorFound);
     connect(m_trans.data(), &PackageKit::Transaction::mediaChangeRequired, this, &PKTransaction::mediaChange);
@@ -95,7 +108,10 @@ void PKTransaction::cancellableChanged()
 
 void PKTransaction::cancel()
 {
-    if (m_trans->allowCancel()) {
+    if (!m_trans) {
+        const auto backend = qobject_cast<PackageKitBackend*>(resource()->backend());
+        backend->transactionCanceled(this);
+    } else if (m_trans->allowCancel()) {
         m_trans->cancel();
     } else {
         qWarning() << "trying to cancel a non-cancellable transaction: " << resource()->name();
@@ -110,19 +126,41 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
         cancel = true;
     }
 
+    const bool simulate = m_trans->transactionFlags() & PackageKit::Transaction::TransactionFlagSimulate;
+
     disconnect(m_trans, nullptr, this, nullptr);
     m_trans = nullptr;
 
-    PackageKit::Transaction* t = PackageKit::Daemon::resolve(resource()->packageName(), PackageKit::Transaction::FilterArch);
-    connect(t, &PackageKit::Transaction::package, this, &PKTransaction::packageResolved);
+    if (!cancel && simulate) {
+        auto packagesToRemove = m_newPackageStates.value(PackageKit::Transaction::InfoRemoving);
+        QMutableListIterator<QString> i(packagesToRemove);
+        while (i.hasNext()) {
+            if (m_pkgnames.contains(PackageKit::Daemon::packageName(i.next()))) {
+                i.remove();
+            }
+        }
 
-    connect(t, &PackageKit::Transaction::finished, t, [cancel, this](PackageKit::Transaction::Exit /*status*/, uint /*runtime*/) {
-        this->submitResolve();
-        auto backend = qobject_cast<PackageKitBackend*>(resource()->backend());
-        if (cancel) backend->transactionCanceled(this);
-        else backend->removeTransaction(this);
-        backend->fetchUpdates();
-    });
+        if (!packagesToRemove.isEmpty()) {
+            Q_EMIT proceedRequest(PackageKitMessages::statusMessage(PackageKit::Transaction::StatusRemove), PackageKitResource::joinPackages(packagesToRemove));
+        } else {
+            proceed();
+        }
+        return;
+    }
+
+    this->submitResolve();
+    const auto backend = qobject_cast<PackageKitBackend*>(resource()->backend());
+    setStatus(Transaction::DoneStatus);
+    if (cancel)
+        backend->transactionCanceled(this);
+    else
+        backend->removeTransaction(this);
+    backend->fetchUpdates();
+}
+
+void PKTransaction::proceed()
+{
+    trigger(PackageKit::Transaction::TransactionFlagOnlyTrusted);
 }
 
 void PKTransaction::packageResolved(PackageKit::Transaction::Info info, const QString& packageId)
@@ -132,8 +170,13 @@ void PKTransaction::packageResolved(PackageKit::Transaction::Info info, const QS
 
 void PKTransaction::submitResolve()
 {
-    qobject_cast<PackageKitResource*>(resource())->setPackages(m_newPackageStates);
-    setStatus(Transaction::DoneStatus);
+    QStringList needResolving;
+    const auto pkgids = m_newPackageStates.value(PackageKit::Transaction::InfoFinished);
+    foreach(const auto pkgid, pkgids) {
+        needResolving += PackageKit::Daemon::packageName(pkgid);
+    }
+    const auto backend = qobject_cast<PackageKitBackend*>(resource()->backend());
+    backend->resolvePackages(needResolving);
 }
 
 PackageKit::Transaction* PKTransaction::transaction()
@@ -155,10 +198,9 @@ void PKTransaction::eulaRequired(const QString& eulaID, const QString& packageID
 
 void PKTransaction::errorFound(PackageKit::Transaction::Error err, const QString& error)
 {
-    Q_UNUSED(error);
     if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
         return;
-    qWarning() << "PackageKit error:" << err << PackageKitMessages::errorMessage(err);
+    qWarning() << "PackageKit error:" << err << PackageKitMessages::errorMessage(err) << error;
     QMessageBox::critical(nullptr, i18n("PackageKit Error"), PackageKitMessages::errorMessage(err));
 }
 

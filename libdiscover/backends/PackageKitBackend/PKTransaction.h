@@ -24,6 +24,7 @@
 #include <Transaction/Transaction.h>
 #include <PackageKit/Transaction>
 #include <QPointer>
+#include <QSet>
 
 class PKTransaction : public Transaction
 {
@@ -33,11 +34,12 @@ class PKTransaction : public Transaction
         PackageKit::Transaction* transaction();
 
         void cancel() override;
+        void proceed() override;
 
     public Q_SLOTS:
         void start();
 
-    private Q_SLOTS:
+    private:
         void cleanup(PackageKit::Transaction::Exit, uint);
         void errorFound(PackageKit::Transaction::Error err, const QString& error);
         void mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text);
@@ -48,9 +50,10 @@ class PKTransaction : public Transaction
         void packageResolved(PackageKit::Transaction::Info info, const QString& packageId);
         void submitResolve();
 
-    private:
+        void trigger(PackageKit::Transaction::TransactionFlags flags);
         QPointer<PackageKit::Transaction> m_trans;
         const QVector<AbstractResource*> m_apps;
+        QSet<QString> m_pkgnames;
 
         QMap<PackageKit::Transaction::Info, QStringList> m_newPackageStates;
 };

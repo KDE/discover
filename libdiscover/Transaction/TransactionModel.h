@@ -72,6 +72,7 @@ Q_SIGNALS:
     void transactionRemoved(Transaction* trans);
     void countChanged();
     void progressChanged();
+    void proceedRequest(Transaction* transaction, const QString &title, const QString &description);
 
 private Q_SLOTS:
     void transactionChanged(int role);

@@ -43,6 +43,7 @@ DiscoverPage
     CategoryDisplay {
         category: null
         width: parent.width
+        background: "https://c2.staticflickr.com/8/7193/6900377481_76367f973a_o.jpg"
 
         ApplicationsTop {
             Layout.fillWidth: true

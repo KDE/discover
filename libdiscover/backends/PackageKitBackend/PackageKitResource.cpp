@@ -177,11 +177,12 @@ bool PackageKitResource::isTechnical() const
 
 void PackageKitResource::fetchDetails()
 {
-    if (!m_details.isEmpty())
+    const QString pkgid = availablePackageId();
+    if (!m_details.isEmpty() || pkgid.isEmpty())
         return;
     m_details.insert(QStringLiteral("fetching"), true);//we add an entry so it's not re-fetched.
 
-    PackageKit::Transaction* t = PackageKit::Daemon::getDetails(availablePackageId());
+    PackageKit::Transaction* t = PackageKit::Daemon::getDetails(pkgid);
     connect(t, &PackageKit::Transaction::details, this, &PackageKitResource::setDetails);
     connect(t, &PackageKit::Transaction::errorCode, this, &PackageKitResource::failedFetchingDetails);
 }
@@ -219,7 +220,7 @@ static void addIfNotEmpty(const QString& title, const QString& content, QString&
         where += QStringLiteral("<p><b>") + title + QStringLiteral("</b>&nbsp;") + content + QStringLiteral("</p>");
 }
 
-static QString joinPackages(const QStringList& pkgids)
+QString PackageKitResource::joinPackages(const QStringList& pkgids)
 {
     QStringList ret;
     foreach(const QString& pkgid, pkgids) {
