@@ -125,6 +125,48 @@ Kirigami.ApplicationWindow
         }
     }
 
+    Component {
+        id: proceedDialog
+        Kirigami.OverlaySheet {
+            id: sheet
+            property QtObject transaction
+            property alias title: heading.text
+            property alias description: desc.text
+            property bool acted: false
+            ColumnLayout {
+                Kirigami.Heading {
+                    id: heading
+                }
+                Kirigami.Label {
+                    id: desc
+                    Layout.fillWidth: true
+                }
+                Button {
+                    Layout.alignment: Qt.AlignRight
+                    iconName: "dialog-ok"
+                    onClicked: {
+                        transaction.proceed()
+                        sheet.acted = true
+                        sheet.close()
+                    }
+                }
+            }
+            onVisibleChanged: if(!visible) {
+                sheet.destroy(1000)
+                if (!sheet.acted)
+                    transaction.cancel()
+            }
+        }
+    }
+
+    Connections {
+        target: TransactionModel
+        onProceedRequest: {
+            var dialog = proceedDialog.createObject(window, {transaction: transaction, title: title, description: description})
+            dialog.open()
+        }
+    }
+
     globalDrawer: DiscoverDrawer {}
 
     onCurrentTopLevelChanged: {

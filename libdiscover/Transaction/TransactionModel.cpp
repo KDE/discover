@@ -164,6 +164,7 @@ void TransactionModel::addTransaction(Transaction *trans)
     connect(trans, &Transaction::statusChanged, this, [this](){ transactionChanged(StatusTextRole); });
     connect(trans, &Transaction::cancellableChanged, this, [this](){ transactionChanged(CancellableRole); });
     connect(trans, &Transaction::progressChanged, this, [this](){ transactionChanged(ProgressRole); Q_EMIT progressChanged(); });
+    connect(trans, &Transaction::proceedRequest, this, [this, trans](const QString & title, const QString &desc){ Q_EMIT proceedRequest(trans, title, desc); });
 
     emit transactionAdded(trans);
 }
