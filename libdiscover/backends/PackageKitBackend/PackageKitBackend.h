@@ -29,7 +29,6 @@
 #include <QSet>
 #include <PackageKit/Transaction>
 #include <AppstreamQt/database.h>
-#include <functional>
 
 class AppstreamReviews;
 class AppPackageKitResource;
