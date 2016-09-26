@@ -155,10 +155,9 @@ void PKTransaction::eulaRequired(const QString& eulaID, const QString& packageID
 
 void PKTransaction::errorFound(PackageKit::Transaction::Error err, const QString& error)
 {
-    Q_UNUSED(error);
     if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
         return;
-    qWarning() << "PackageKit error:" << err << PackageKitMessages::errorMessage(err);
+    qWarning() << "PackageKit error:" << err << PackageKitMessages::errorMessage(err) << error;
     QMessageBox::critical(nullptr, i18n("PackageKit Error"), PackageKitMessages::errorMessage(err));
 }
 
