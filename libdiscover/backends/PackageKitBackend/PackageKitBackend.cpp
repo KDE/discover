@@ -142,7 +142,12 @@ void PackageKitBackend::reloadPackageList()
     neededPackages.removeDuplicates();
 
     qDebug() << "needed..." << neededPackages.count();
-    PackageKit::Transaction * t = PackageKit::Daemon::resolve(neededPackages);
+    resolvePackages(neededPackages);
+}
+
+void PackageKitBackend::resolvePackages(const QStringList &packageNames)
+{
+    PackageKit::Transaction * t = PackageKit::Daemon::resolve(packageNames);
     connect(t, &PackageKit::Transaction::finished, this, &PackageKitBackend::getPackagesFinished);
     connect(t, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackage);
     connect(t, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);

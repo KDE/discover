@@ -64,6 +64,8 @@ class DISCOVERCOMMON_EXPORT PackageKitBackend : public AbstractResourcesBackend
         QVector<AppPackageKitResource*> extendedBy(const QString& id) const;
         void fetchUpdates();
 
+        void resolvePackages(const QStringList &packageNames);
+
     public Q_SLOTS:
         void transactionCanceled(Transaction* t);
         void removeTransaction(Transaction* t);

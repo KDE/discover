@@ -220,7 +220,7 @@ static void addIfNotEmpty(const QString& title, const QString& content, QString&
         where += QStringLiteral("<p><b>") + title + QStringLiteral("</b>&nbsp;") + content + QStringLiteral("</p>");
 }
 
-static QString joinPackages(const QStringList& pkgids)
+QString PackageKitResource::joinPackages(const QStringList& pkgids)
 {
     QStringList ret;
     foreach(const QString& pkgid, pkgids) {

@@ -63,6 +63,8 @@ class PackageKitResource : public AbstractResource
 
         PackageKitBackend* backend() const;
 
+        static QString joinPackages(const QStringList& pkgids);
+
     public Q_SLOTS:
         void addPackageId(PackageKit::Transaction::Info info, const QString &packageId);
         void setDetails(const PackageKit::Details& details);
