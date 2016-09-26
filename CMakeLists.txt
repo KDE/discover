@@ -18,7 +18,7 @@ include(ECMAddTests)
 include(GenerateExportHeader)
 
 find_package(KF5 5.24 REQUIRED CoreAddons Config Crash DBusAddons I18n Archive Declarative XmlGui)
-find_package(KF5Kirigami 1.0)
+find_package(KF5Kirigami 1.1)
 
 find_package(packagekitqt5)
 if (NOT packagekitqt5_FOUND)
