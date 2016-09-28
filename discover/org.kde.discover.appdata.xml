@@ -13,6 +13,7 @@
   <name xml:lang="en-GB">Discover</name>
   <name xml:lang="es">Discover</name>
   <name xml:lang="et">Avastusretk</name>
+  <name xml:lang="fi">Discover</name>
   <name xml:lang="gl">Discover</name>
   <name xml:lang="id">Discover</name>
   <name xml:lang="it">Discover</name>
@@ -42,6 +43,7 @@
   <summary xml:lang="en-GB">Discover</summary>
   <summary xml:lang="es">Discover</summary>
   <summary xml:lang="et">Avastusretk</summary>
+  <summary xml:lang="fi">Discover</summary>
   <summary xml:lang="gl">Discover</summary>
   <summary xml:lang="id">Discover</summary>
   <summary xml:lang="it">Discover</summary>
@@ -69,6 +71,7 @@
     <p xml:lang="en-GB">Haven’t you ever found a tool that was perfect for your need but you only found it after some time stumbling upon it on the net? When considering to install an application, don’t you wonder sometimes if it’s really worth it? Or if it’s actually what you’re looking for?</p>
     <p xml:lang="es">¿Ha encontrado alguna vez una herramienta perfecta para sus necesidades aunque solo la ha encontrado tras perder un tiempo valioso en Internet? Cuando considera instalar una aplicación, ¿no se pregunta a veces si realmente merece la pena o si realmente es lo que estaba buscando?</p>
     <p xml:lang="et">Kahtlemata on sulgi ette tulnud, et oled leidnud täpselt sobiva ja vajaliku tööriista täiesti kogemata sellele internetis peale komistades. Või oled mõne rakenduse puhul kaalunud, kas ikka tasub seda üldse paigaldada või kas see on üldse see, mida sulle tegelikult vaja läheb.</p>
+    <p xml:lang="fi">Oletko koskaan törmännyt työkaluun, joka täyttää täysin tarpeesi mutta jonka löysit vasta pitkään verkossa etsittyäsi? Harkitessasi sovelluksen asentamista, etkö joskus mieti, onko se sen arvoista, tai onko se mitä todella etsit?</p>
     <p xml:lang="gl">Nunca lle pasou que atopou unha ferramenta perfecta para o que necesitaba, pero que para atopala tivo que pasar un bo anaco buscando en internet? Á hora de instalar un programa, non se pregunta ás veces se paga a pena? Ou se realmente é o programa que está a buscar?</p>
     <p xml:lang="id">Apakah kamu tidak pernah menemukan sebuah alat yang sempurna untuk kebutuhanmu, tetapi hanya kamu yang menemukannya setelah beberapa waktu tersandung atas itu di internet? Ketika mempertimbangkan untuk memasang aplikasi, tidakkah kamu bertanya-tanya kadang-kadang apakah itu benar-benar layak? Atau jika itu benar demikian apa yang kamu cari?</p>
     <p xml:lang="it">Non hai mai trovato uno strumento che fosse perfetto per le tue esigenze, ma lo hai trovato solo dopo esserci incappato in Internet? Quando decidi se installare un'applicazione, non ti chiedi a volte se ne valga davvero la pena? O se è effettivamente ciò che stai cercando?</p>
@@ -94,6 +97,7 @@
     <p xml:lang="en-GB">Discover helps users easily and quickly find applications or tools. By allowing to navigate a software library by search, software categories, top lists along with detailed application information that includes screenshots and reviews, users can more quickly find applications that suit their needs.</p>
     <p xml:lang="es">Discover le ayuda a encontrar aplicaciones y herramientas de una forma rápida y fácil. Al poder explorar una biblioteca de software usando búsquedas, categorías de software y listas de puntuaciones, junto a una detallada información sobre las aplicaciones que incluye capturas de pantalla y comentarios, los usuarios pueden encontrar más rápidamente aplicaciones que satisfagan sus necesidades.</p>
     <p xml:lang="et">Avastusretk aitab kasutajatel kiiresti ja vähese vaevaga leida vajaliku tööriista või rakenduse. Kui kasutaja saab tarkvarakogus hõlpsasti ringi liikuda ja olemasolevat näha nii otsides, kategooriate kaupa või mitmel alusel järjestatavate edetabelite abil, kusjuures alati pakutakse rakenduste kohta põhjalikku teavet koos ekraanipiltide ja arvustustega, ei ole täpselt sobiva tööriista või rakenduse leidmine enam kuigi keeruline.</p>
+    <p xml:lang="fi">Discover auttaa käyttäjiä löytämään sovellukset helposti ja nopeasti. Selaamalla ohjelmistokirjastoja hakujen, sovellusluokkien, suosikkiluetteloiden sekä ruutukaappauksia ja arvosteluja sisältävien yksityiskohtaisten lisätietojen avulla käyttäjät löytävät nopeammin tarpeitaan vastaavat sovellukset.</p>
     <p xml:lang="gl">Discover permite atopar programas e ferramentas de maneira fácil e rápida. Atope rapidamente programas que se axustan ás súas necesidades explorando a biblioteca de software mediante buscas, categorías de software, e listas de programas máis usados con información detallada dos programas, incluíndo capturas de pantalla e opinións de usuarios.</p>
     <p xml:lang="id">Discover membantu pengguna dengan mudah dan cepat menemukan aplikasi atau alat-alat. Oleh karena itu memungkinkan untuk menavigasi sebuah perpustakaan software dengan menelusuri, kategori software, daftar-daftar atas bersama dengan informasi aplikasi terinci yang meliputi cuplikan layar dan ulasan, pengguna bisa lebih cepat menemukan aplikasi yang sesuai dengan kebutuhan mereka.</p>
     <p xml:lang="it">Discover aiuta gli utenti a trovare in modo semplice e rapido applicazioni o strumenti. Permettendo di navigare una raccolta di software tramite ricerca, categorie di software, liste preferite oltre alle informazioni dettagliate sulle applicazioni che includono schermate e recensioni, gli utenti possono trovare più rapidamente applicazioni che si adattano alle loro esigenze.</p>
@@ -119,6 +123,7 @@
     <p xml:lang="en-GB">Furthermore, Discover will let you manage the different sources of software you have and manage the applications you’ve already installed in the past but you don’t want anymore.</p>
     <p xml:lang="es">Además, Discover le permite gestionar las distintas fuentes de software de las que disponga y las aplicaciones que ya hubiera instalado en el pasado y que ya no desee.</p>
     <p xml:lang="et">Lisaks laseb Avastusretk sul mitmekülgselt hallata kõiki sinu käsutuses olevaid tarkvaraallikaid ega jäta sind hätta ka siis, kui sul leidub tarkvara, mille oled kunagi paigaldanud, aga enam sugugi ei vaja.</p>
+    <p xml:lang="fi">Discover sallii sinun lisäksi hallita erilaisia ohjelmalähteitä sekä sovelluksia, jotka olet jo asentanut mutta joita et enää halua.</p>
     <p xml:lang="gl">Ademais, Discover permitiralle xestionar as distintas fontes de software de que dispón e xestionar os programas que ten instalados pero que xa non lle interesan.</p>
     <p xml:lang="id">Selanjutnya, Discover akan membiarkan kamu mengelola sumber software yang berbeda-beda yang kamu miliki dan mengelola aplikasi yang sudah kamu pasang di masa lalu tetapi kamu tidak menginginkan lagi.</p>
     <p xml:lang="it">Inoltre, Discover ti consentirà di gestire le diverse fonti del software disponibili e gestire le applicazioni che hai già installato in passato, ma che non ti servono più.</p>
