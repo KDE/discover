@@ -106,7 +106,7 @@ Kirigami.ApplicationWindow
     Connections {
         target: app
         onOpenApplicationInternal: {
-            currentTopLevel = topBrowsingComp;
+            Navigation.clearStack()
             Navigation.openApplication(app)
         }
         onListMimeInternal:  {
