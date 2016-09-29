@@ -66,10 +66,9 @@ Kirigami.AbstractListItem
 
             RowLayout {
                 Layout.fillWidth: true
-                Label {
+                Heading {
                     elide: Text.ElideRight
                     text: name
-                    font: SystemFonts.titleFont
                 }
                 Label {
                     Layout.fillWidth: true
