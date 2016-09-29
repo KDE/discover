@@ -151,14 +151,6 @@ AbstractResource::State PackageKitResource::state()
         return Broken;
 }
 
-void PackageKitResource::setPackages(const QMap<PackageKit::Transaction::Info, QStringList> &packages)
-{
-    if (m_packages != packages) {
-        m_packages = packages;
-        emit stateChanged();
-    }
-}
-
 void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId)
 {
     m_packages[info].append(packageId);

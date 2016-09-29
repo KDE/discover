@@ -59,7 +59,6 @@ class PackageKitResource : public AbstractResource
         QString availablePackageId() const;
 
         QMap<PackageKit::Transaction::Info, QStringList> packages() const { return m_packages; }
-        void setPackages(const QMap<PackageKit::Transaction::Info, QStringList> &packages);
 
         PackageKitBackend* backend() const;
 
