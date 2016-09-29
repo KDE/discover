@@ -74,12 +74,13 @@ class PackageKitUpdater : public AbstractBackendUpdater
         void updateDetail(const QString& packageID, const QStringList& updates, const QStringList& obsoletes, const QStringList& vendorUrls,
                                       const QStringList& bugzillaUrls, const QStringList& cveUrls, PackageKit::Transaction::Restart restart, const QString& updateText,
                                       const QString& changelog, PackageKit::Transaction::UpdateState state, const QDateTime& issued, const QDateTime& updated);
+        void packageResolved(PackageKit::Transaction::Info info, const QString& packageId);
 
     private:
         void itemProgress(const QString &itemID, PackageKit::Transaction::Status status, uint percentage);
         void fetchLastUpdateTime();
         void lastUpdateTimeReceived(QDBusPendingCallWatcher* w);
-        void setTransaction(PackageKit::Transaction* transaction);
+        void setupTransaction(PackageKit::Transaction::TransactionFlags flags);
         QSet<QString> involvedPackages(const QSet<AbstractResource*>& packages) const;
         QSet<AbstractResource*> packagesForPackageId(const QSet<QString>& packages) const;
 
@@ -96,6 +97,7 @@ class PackageKitUpdater : public AbstractBackendUpdater
         long unsigned int m_remainingTime;
         uint m_percentage;
         QDateTime m_lastUpdate;
+        QStringList m_packagesRemoved;
 };
 
 

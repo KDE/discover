@@ -55,12 +55,14 @@ void PackageKitUpdater::prepare()
     m_allUpgradeable = m_toUpgrade;
 }
 
-void PackageKitUpdater::setTransaction(PackageKit::Transaction* transaction)
+void PackageKitUpdater::setupTransaction(PackageKit::Transaction::TransactionFlags flags)
 {
-    m_transaction = transaction;
-    m_isCancelable = transaction->allowCancel();
+    m_packagesRemoved.clear();
+    m_transaction = PackageKit::Daemon::updatePackages(involvedPackages(m_toUpgrade).toList(), flags);
+    m_isCancelable = m_transaction->allowCancel();
 
     connect(m_transaction.data(), &PackageKit::Transaction::finished, this, &PackageKitUpdater::finished);
+    connect(m_transaction.data(), &PackageKit::Transaction::package, this, &PackageKitUpdater::packageResolved);
     connect(m_transaction.data(), &PackageKit::Transaction::errorCode, this, &PackageKitUpdater::errorFound);
     connect(m_transaction.data(), &PackageKit::Transaction::message, this, &PackageKitUpdater::printMessage);
     connect(m_transaction.data(), &PackageKit::Transaction::mediaChangeRequired, this, &PackageKitUpdater::mediaChange);
@@ -109,17 +111,28 @@ void PackageKitUpdater::start()
 {
     Q_ASSERT(!isProgressing());
 
-    setTransaction(PackageKit::Daemon::updatePackages(involvedPackages(m_toUpgrade).toList()));
+    setupTransaction(PackageKit::Transaction::TransactionFlagSimulate);
     setProgressing(true);
 }
 
 void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint time)
 {
-    qDebug() << "update finished!" << exit << time;
+//     qDebug() << "update finished!" << exit << time;
     if (exit == PackageKit::Transaction::ExitEulaRequired)
         return;
+    const bool cancel = exit == PackageKit::Transaction::ExitCancelled;
+    const bool simulate = m_transaction->transactionFlags() & PackageKit::Transaction::TransactionFlagSimulate;
+
     disconnect(m_transaction, nullptr, this, nullptr);
     m_transaction = nullptr;
+
+    if (!cancel && simulate) {
+        int ret = m_packagesRemoved.isEmpty() ? QMessageBox::Yes : QMessageBox::question(nullptr, PackageKitMessages::statusMessage(PackageKit::Transaction::StatusRemove), PackageKitResource::joinPackages(m_packagesRemoved), QMessageBox::Yes, QMessageBox::No);
+        if (ret == QMessageBox::Yes) {
+            setupTransaction(PackageKit::Transaction::TransactionFlagOnlyTrusted);
+            return;
+        }
+    }
 
     setProgressing(false);
     m_backend->refreshDatabase();
@@ -338,4 +351,10 @@ void PackageKitUpdater::updateDetail(const QString& packageID, const QStringList
         static_cast<PackageKitResource*>(r)->updateDetail(packageID, updates, obsoletes, vendorUrls, bugzillaUrls,
                                                           cveUrls, restart, updateText, changelog, state, issued, updated);
     }
+}
+
+void PackageKitUpdater::packageResolved(PackageKit::Transaction::Info info, const QString& packageId)
+{
+    if (info == PackageKit::Transaction::InfoRemoving)
+        m_packagesRemoved << packageId;
 }
