@@ -127,17 +127,34 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     disconnect(m_trans, nullptr, this, nullptr);
     m_trans = nullptr;
 
+    const auto backend = qobject_cast<PackageKitBackend*>(resource()->backend());
+
     if (!cancel && simulate) {
         auto packagesToRemove = m_newPackageStates.value(PackageKit::Transaction::InfoRemoving);
         QMutableListIterator<QString> i(packagesToRemove);
+        QSet<AbstractResource*> removedResources;
         while (i.hasNext()) {
-            if (m_pkgnames.contains(PackageKit::Daemon::packageName(i.next()))) {
+            const auto pkgname = PackageKit::Daemon::packageName(i.next());
+            removedResources.unite(backend->searchPackageName(pkgname).toSet());
+
+            if (m_pkgnames.contains(pkgname)) {
                 i.remove();
             }
         }
+        removedResources.subtract(m_apps.toList().toSet());
 
-        if (!packagesToRemove.isEmpty()) {
-            Q_EMIT proceedRequest(PackageKitMessages::statusMessage(PackageKit::Transaction::StatusRemove), PackageKitResource::joinPackages(packagesToRemove));
+        QString msg = PackageKitResource::joinPackages(packagesToRemove);
+        if (!removedResources.isEmpty()) {
+            QStringList removedResourcesStr;
+            removedResourcesStr.reserve(removedResources.size());
+            foreach(AbstractResource* res, removedResources)
+                removedResourcesStr.append(res->name());
+            msg += QLatin1Char('\n');
+            msg += removedResourcesStr.join(QStringLiteral(", "));
+        }
+
+        if (!msg.isEmpty()) {
+            Q_EMIT proceedRequest(PackageKitMessages::statusMessage(PackageKit::Transaction::StatusRemove), msg);
         } else {
             proceed();
         }
@@ -145,7 +162,6 @@ void PKTransaction::cleanup(PackageKit::Transaction::Exit exit, uint runtime)
     }
 
     this->submitResolve();
-    const auto backend = qobject_cast<PackageKitBackend*>(resource()->backend());
     setStatus(Transaction::DoneStatus);
     if (cancel)
         backend->transactionCanceled(this);
