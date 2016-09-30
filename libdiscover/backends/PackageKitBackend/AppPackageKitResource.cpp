@@ -104,8 +104,7 @@ QString AppPackageKitResource::appstreamId() const
 
 QUrl AppPackageKitResource::homepage()
 {
-    QList< QUrl > urls = m_appdata.urls(Appstream::Component::UrlKindHomepage);
-    return urls.isEmpty() ? PackageKitResource::homepage() : urls.first();
+    return m_appdata.urls().value(Appstream::Component::UrlKindHomepage);
 }
 
 bool AppPackageKitResource::isTechnical() const
