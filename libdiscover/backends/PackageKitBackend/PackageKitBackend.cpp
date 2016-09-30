@@ -145,13 +145,50 @@ void PackageKitBackend::reloadPackageList()
     resolvePackages(neededPackages);
 }
 
+class TransactionSet : public QObject
+{
+    Q_OBJECT
+    public:
+        TransactionSet(const QVector<PackageKit::Transaction*> &transactions)
+            : m_transactions(transactions)
+        {
+            foreach(PackageKit::Transaction* t, transactions) {
+                connect(t, &PackageKit::Transaction::finished, this, &TransactionSet::transactionFinished);
+            }
+        }
+
+        void transactionFinished(PackageKit::Transaction::Exit exit) {
+            PackageKit::Transaction* t = qobject_cast<PackageKit::Transaction*>(sender());
+            if (exit != PackageKit::Transaction::ExitSuccess) {
+                qWarning() << "failed" << exit << t;
+            }
+
+            m_transactions.removeAll(t);
+            if (m_transactions.isEmpty()) {
+                Q_EMIT allFinished();
+            }
+        }
+
+    Q_SIGNALS:
+        void allFinished();
+
+    private:
+        QVector<PackageKit::Transaction*> m_transactions;
+
+};
+
 void PackageKitBackend::resolvePackages(const QStringList &packageNames)
 {
-    PackageKit::Transaction * t = PackageKit::Daemon::resolve(packageNames);
-    connect(t, &PackageKit::Transaction::finished, this, &PackageKitBackend::getPackagesFinished);
-    connect(t, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackage);
-    connect(t, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
+    PackageKit::Transaction * tArch = PackageKit::Daemon::resolve(packageNames, PackageKit::Transaction::FilterArch);
+    connect(tArch, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackageArch);
+    connect(tArch, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
 
+    PackageKit::Transaction * tNotArch = PackageKit::Daemon::resolve(packageNames, PackageKit::Transaction::FilterNotArch);
+    connect(tNotArch, &PackageKit::Transaction::package, this, &PackageKitBackend::addPackageNotArch);
+    connect(tNotArch, &PackageKit::Transaction::errorCode, this, &PackageKitBackend::transactionError);
+
+    TransactionSet* merge = new TransactionSet({tArch, tNotArch});
+    connect(merge, &TransactionSet::allFinished, this, &PackageKitBackend::getPackagesFinished);
     fetchUpdates();
 }
 
@@ -166,8 +203,17 @@ void PackageKitBackend::fetchUpdates()
     m_updater->setProgressing(true);
 }
 
+void PackageKitBackend::addPackageArch(PackageKit::Transaction::Info info, const QString& packageId, const QString& summary)
+{
+    addPackage(info, packageId, summary, true);
+}
 
-void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary)
+void PackageKitBackend::addPackageNotArch(PackageKit::Transaction::Info info, const QString& packageId, const QString& summary)
+{
+    addPackage(info, packageId, summary, false);
+}
+
+void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QString &packageId, const QString &summary, bool arch)
 {
     const QString packageName = PackageKit::Daemon::packageName(packageId);
     QSet<AbstractResource*> r = resourcesByPackageName(packageName);
@@ -177,15 +223,11 @@ void PackageKitBackend::addPackage(PackageKit::Transaction::Info info, const QSt
         m_packagesToAdd.insert(pk);
     }
     foreach(auto res, r)
-        static_cast<PackageKitResource*>(res)->addPackageId(info, packageId);
+        static_cast<PackageKitResource*>(res)->addPackageId(info, packageId, arch);
 }
 
-void PackageKitBackend::getPackagesFinished(PackageKit::Transaction::Exit exit)
+void PackageKitBackend::getPackagesFinished()
 {
-    if (exit != PackageKit::Transaction::ExitSuccess) {
-        qWarning() << "error while fetching details" << exit;
-    }
-
     for(auto it = m_packages.packages.cbegin(); it != m_packages.packages.cend(); ++it) {
         auto pkr = qobject_cast<PackageKitResource*>(it.value());
         if (pkr->packages().isEmpty()) {
@@ -380,7 +422,7 @@ void PackageKitBackend::addPackageToUpdate(PackageKit::Transaction::Info info, c
 {
     if (info != PackageKit::Transaction::InfoBlocked) {
         m_updatesPackageId += packageId;
-        addPackage(info, packageId, summary);
+        addPackage(info, packageId, summary, true);
     }
 }
 

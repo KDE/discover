@@ -66,11 +66,11 @@ DiscoverPage {
         DropShadow {
             anchors.fill: button
             source: button
-            horizontalOffset: 2
-            verticalOffset: 2
-            radius: 12.0
-            samples: 17
-            color: "gray"
+            horizontalOffset: 3
+            verticalOffset: 3
+            radius: 8
+            samples: 10
+            color: "#000000"
         }
     }
 
