@@ -77,6 +77,7 @@ DiscoverPage {
     ColumnLayout {
         RowLayout {
             Layout.fillWidth: true
+            spacing: Kirigami.Units.gridUnit
             QIconItem {
                 Layout.preferredHeight: 128
                 Layout.preferredWidth: 128
