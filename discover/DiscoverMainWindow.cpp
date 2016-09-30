@@ -30,9 +30,7 @@
 #include <QtQml/QQmlContext>
 #include <QtQml/QQmlApplicationEngine>
 #include <QtQuick/QQuickItem>
-#include <QScreen>
 #include <qqml.h>
-#include <QQmlNetworkAccessManagerFactory>
 #include <QPointer>
 #include <QGuiApplication>
 
