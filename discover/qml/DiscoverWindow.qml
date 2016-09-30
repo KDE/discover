@@ -195,4 +195,10 @@ Kirigami.ApplicationWindow
             object.destroy()
         }
     }
+
+    UnityLauncher {
+        launcherId: "org.kde.discover.desktop"
+        progressVisible: TransactionModel.count > 0
+        progress: TransactionModel.progress
+    }
 }
