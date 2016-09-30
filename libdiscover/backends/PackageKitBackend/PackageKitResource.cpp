@@ -59,14 +59,14 @@ QString PackageKitResource::availablePackageId() const
 
     QMap<PackageKit::Transaction::Info, QStringList>::const_iterator it = m_packages.constFind(PackageKit::Transaction::InfoAvailable);
     if (it != m_packages.constEnd())
-        return it->first();
+        return it->last();
     return installedPackageId();
 }
 
 QString PackageKitResource::installedPackageId() const
 {
     const auto installed = m_packages[PackageKit::Transaction::InfoInstalled];
-    return installed.isEmpty() ? QString() : installed.first();
+    return installed.isEmpty() ? QString() : installed.last();
 }
 
 QString PackageKitResource::comment()
@@ -151,9 +151,12 @@ AbstractResource::State PackageKitResource::state()
         return Broken;
 }
 
-void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId)
+void PackageKitResource::addPackageId(PackageKit::Transaction::Info info, const QString &packageId, bool arch)
 {
-    m_packages[info].append(packageId);
+    if (arch)
+        m_packages[info].append(packageId);
+    else
+        m_packages[info].prepend(packageId);
     emit stateChanged();
 }
 
