@@ -207,5 +207,5 @@ int TransactionModel::progress() const
             ++count;
         }
     }
-    return sum / count;
+    return count==0 ? 0 : sum / count;
 }
