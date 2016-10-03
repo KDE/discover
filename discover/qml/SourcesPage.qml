@@ -81,7 +81,7 @@ DiscoverPage {
                 rightMargin: Kirigami.Units.largeSpacing
             }
 
-            property QtObject sourceBackend: model.sourceBackend
+            readonly property QtObject sourceBackend: model.sourceBackend
 
             Connections {
                 target: sourceDelegate.sourceBackend
