@@ -140,6 +140,7 @@ Kirigami.ApplicationWindow
                 Kirigami.Label {
                     id: desc
                     Layout.fillWidth: true
+                    wrapMode: Text.WordWrap
                 }
                 Button {
                     Layout.alignment: Qt.AlignRight
