@@ -170,6 +170,9 @@ Kirigami.ApplicationWindow
                 var dialog = proceedDialog.createObject(window, {transaction: transaction, title: title, description: description})
                 dialog.open()
             }
+            onPassiveMessage: {
+                window.showPassiveNotification(message)
+            }
         }
     }
 

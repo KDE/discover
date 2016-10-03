@@ -213,16 +213,16 @@ void PKTransaction::errorFound(PackageKit::Transaction::Error err, const QString
     if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
         return;
     qWarning() << "PackageKit error:" << err << PackageKitMessages::errorMessage(err) << error;
-    QMessageBox::critical(nullptr, i18n("PackageKit Error"), PackageKitMessages::errorMessage(err));
+    Q_EMIT passiveMessage(PackageKitMessages::errorMessage(err));
 }
 
 void PKTransaction::mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text)
 {
     Q_UNUSED(media)
-    QMessageBox::information(nullptr, i18n("PackageKit media change"), i18n("Media Change of type '%1' is requested.\n%2", type, text));
+    Q_EMIT passiveMessage(i18n("Media Change of type '%1' is requested.\n%2", type, text));
 }
 
 void PKTransaction::requireRestart(PackageKit::Transaction::Restart restart, const QString& pkgid)
 {
-    QMessageBox::information(nullptr, i18n("PackageKit restart required"), PackageKitMessages::restartMessage(restart, pkgid));
+    Q_EMIT passiveMessage(PackageKitMessages::restartMessage(restart, pkgid));
 }
