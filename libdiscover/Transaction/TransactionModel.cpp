@@ -44,13 +44,14 @@ TransactionModel::TransactionModel(QObject *parent)
 
 QHash< int, QByteArray > TransactionModel::roleNames() const
 {
-    QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
+    QHash<int, QByteArray> roles;
     roles[TransactionRoleRole] = "transactionRole";
     roles[TransactionStatusRole] = "status";
     roles[CancellableRole] = "cancellable";
     roles[ProgressRole] = "progress";
     roles[StatusTextRole] = "statusText";
     roles[ResourceRole] = "resource";
+    roles[TransactionRole] = "transaction";
     return roles;
 }
 
@@ -101,8 +102,9 @@ QVariant TransactionModel::data(const QModelIndex &index, int role) const
             return i18nc("@info:status", "Done");
         }
         break;
+    case TransactionRole:
+        return qVariantFromValue<QObject*>(trans);
     case ResourceRole:
-
         return qVariantFromValue<QObject*>(trans->resource());
     }
 
@@ -164,7 +166,6 @@ void TransactionModel::addTransaction(Transaction *trans)
     connect(trans, &Transaction::statusChanged, this, [this](){ transactionChanged(StatusTextRole); });
     connect(trans, &Transaction::cancellableChanged, this, [this](){ transactionChanged(CancellableRole); });
     connect(trans, &Transaction::progressChanged, this, [this](){ transactionChanged(ProgressRole); Q_EMIT progressChanged(); });
-    connect(trans, &Transaction::proceedRequest, this, [this, trans](const QString & title, const QString &desc){ Q_EMIT proceedRequest(trans, title, desc); });
 
     emit transactionAdded(trans);
 }

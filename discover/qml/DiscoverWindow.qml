@@ -160,11 +160,16 @@ Kirigami.ApplicationWindow
         }
     }
 
-    Connections {
-        target: TransactionModel
-        onProceedRequest: {
-            var dialog = proceedDialog.createObject(window, {transaction: transaction, title: title, description: description})
-            dialog.open()
+    Instantiator {
+        model: TransactionModel
+
+        delegate: Connections {
+            target: model.transaction ? model.transaction : null
+
+            onProceedRequest: {
+                var dialog = proceedDialog.createObject(window, {transaction: transaction, title: title, description: description})
+                dialog.open()
+            }
         }
     }
 
