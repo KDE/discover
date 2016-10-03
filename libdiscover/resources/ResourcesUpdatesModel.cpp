@@ -133,6 +133,9 @@ public:
         connect(m_updater, &ResourcesUpdatesModel::cancelableChanged, this, [this]() {
             setCancellable(m_updater->isCancelable());
         });
+
+        foreach(auto updater, parent->updaters())
+            connect(updater, &AbstractBackendUpdater::passiveMessage, this, &Transaction::passiveMessage);
     }
 
     void cancel() override {

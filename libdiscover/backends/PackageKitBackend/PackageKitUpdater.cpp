@@ -261,7 +261,7 @@ void PackageKitUpdater::errorFound(PackageKit::Transaction::Error err, const QSt
     Q_UNUSED(error);
     if (err == PackageKit::Transaction::ErrorNoLicenseAgreement)
         return;
-    QMessageBox::critical(nullptr, i18n("PackageKit error found"), QStringLiteral("%1\n%2").arg(PackageKitMessages::errorMessage(err), error));
+    Q_EMIT passiveMessage(QStringLiteral("%1\n%2").arg(PackageKitMessages::errorMessage(err), error));
     qWarning() << "Error happened" << err << error;
 }
 
@@ -273,12 +273,12 @@ void PackageKitUpdater::printMessage(PackageKit::Transaction::Message type, cons
 void PackageKitUpdater::mediaChange(PackageKit::Transaction::MediaType media, const QString& type, const QString& text)
 {
     Q_UNUSED(media)
-    QMessageBox::information(nullptr, i18n("PackageKit media change"), i18n("Media Change of type '%1' is requested.\n%2", type, text));
+    Q_EMIT passiveMessage(i18n("Media Change of type '%1' is requested.\n%2", type, text));
 }
 
 void PackageKitUpdater::requireRestart(PackageKit::Transaction::Restart restart, const QString& pkgid)
 {
-    QMessageBox::information(nullptr, i18n("PackageKit restart required"), PackageKitMessages::restartMessage(restart, pkgid));
+    Q_EMIT passiveMessage(PackageKitMessages::restartMessage(restart, pkgid));
 }
 
 void PackageKitUpdater::eulaRequired(const QString& eulaID, const QString& packageID, const QString& vendor, const QString& licenseAgreement)
