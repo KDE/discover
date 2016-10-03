@@ -160,6 +160,8 @@ Q_SIGNALS:
      * @sa proceed(), cancel()
      */
     void proceedRequest(const QString &title, const QString &description);
+
+    void passiveMessage(const QString &message);
 };
 
 #endif // TRANSACTION_H

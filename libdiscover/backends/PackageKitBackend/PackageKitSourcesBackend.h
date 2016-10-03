@@ -22,8 +22,10 @@
 #define PACKAGEKITSOURCESBACKEND_H
 
 #include <PackageKit/Transaction>
-#include <QStandardItemModel>
 #include <resources/AbstractSourcesBackend.h>
+
+class QStandardItem;
+class PKSourcesModel;
 
 class PackageKitSourcesBackend : public AbstractSourcesBackend
 {
@@ -40,14 +42,14 @@ class PackageKitSourcesBackend : public AbstractSourcesBackend
         QAbstractItemModel* sources();
         QList<QAction*> actions() const;
 
+        void transactionError(PackageKit::Transaction::Error, const QString& message);
 
     private:
         void resetSources();
         void addRepositoryDetails(const QString &id, const QString &description, bool enabled);
         QStandardItem* findItemForId(const QString &id) const;
-        void transactionError(PackageKit::Transaction::Error, const QString& message);
 
-        QStandardItemModel* m_sources;
+        PKSourcesModel* m_sources;
 };
 
 #endif // PACKAGEKITSOURCESBACKEND_H

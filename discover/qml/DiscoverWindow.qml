@@ -140,6 +140,7 @@ Kirigami.ApplicationWindow
                 Kirigami.Label {
                     id: desc
                     Layout.fillWidth: true
+                    wrapMode: Text.WordWrap
                 }
                 Button {
                     Layout.alignment: Qt.AlignRight
@@ -159,11 +160,19 @@ Kirigami.ApplicationWindow
         }
     }
 
-    Connections {
-        target: TransactionModel
-        onProceedRequest: {
-            var dialog = proceedDialog.createObject(window, {transaction: transaction, title: title, description: description})
-            dialog.open()
+    Instantiator {
+        model: TransactionModel
+
+        delegate: Connections {
+            target: model.transaction ? model.transaction : null
+
+            onProceedRequest: {
+                var dialog = proceedDialog.createObject(window, {transaction: transaction, title: title, description: description})
+                dialog.open()
+            }
+            onPassiveMessage: {
+                window.showPassiveNotification(message)
+            }
         }
     }
 
@@ -194,5 +203,11 @@ Kirigami.ApplicationWindow
         onObjectRemoved: {
             object.destroy()
         }
+    }
+
+    UnityLauncher {
+        launcherId: "org.kde.discover.desktop"
+        progressVisible: TransactionModel.count > 0
+        progress: TransactionModel.progress
     }
 }

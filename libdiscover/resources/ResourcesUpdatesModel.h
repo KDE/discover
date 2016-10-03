@@ -61,6 +61,7 @@ class DISCOVERCOMMON_EXPORT ResourcesUpdatesModel : public QStandardItemModel
         void removeResources(const QList<AbstractResource*>& resources);
 
         qint64 secsToLastUpdate() const;
+        QVector<AbstractBackendUpdater*> updaters() const { return m_updaters; }
 
     Q_SIGNALS:
         void downloadSpeedChanged();

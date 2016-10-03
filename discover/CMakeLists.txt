@@ -10,6 +10,7 @@ set(plasma_discover_SRCS
     PaginateModel.cpp
     SystemFonts.cpp
     IconColors.cpp
+    UnityLauncher.cpp
 )
 
 qt5_add_resources(plasma_discover_SRCS resources.qrc)
