@@ -88,7 +88,6 @@ X-KDE-PluginInfo-Category=Online Services
 X-KDE-PluginInfo-Depends=
 X-KDE-PluginInfo-License=GPL
 X-KDE-PluginInfo-EnabledByDefault=true
-X-KDE-ParentApp=org.kde.discover.desktop
 
 X-Plasma-API=declarativeappletscript
 X-Plasma-MainScript=ui/main.qml
