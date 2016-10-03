@@ -82,6 +82,11 @@ DiscoverPage {
             }
 
             property QtObject sourceBackend: model.sourceBackend
+
+            Connections {
+                target: sourceDelegate.sourceBackend
+                onPassiveMessage: window.showPassiveNotification(message)
+            }
             AddSourceDialog {
                 id: addSourceDialog
                 source: sourceDelegate.sourceBackend

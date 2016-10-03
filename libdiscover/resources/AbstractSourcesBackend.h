@@ -44,6 +44,9 @@ class DISCOVERCOMMON_EXPORT AbstractSourcesBackend : public QObject
 
         virtual QAbstractItemModel* sources() = 0;
         virtual QList<QAction*> actions() const = 0;
+
+    Q_SIGNALS:
+        void passiveMessage(const QString &message);
 };
 
 #endif // ABSTRACTRESOURCESBACKEND_H
