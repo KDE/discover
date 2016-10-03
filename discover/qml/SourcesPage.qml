@@ -144,8 +144,11 @@ DiscoverPage {
                         }
                         CheckBox {
                             id: enabledBox
-                            enabled: false //TODO: implement the application of this change
                             checked: model.checked != Qt.Unchecked
+                            enabled: model.checked !== undefined
+                            onClicked: {
+                                model.checked = checkedState
+                            }
                         }
                         Label {
                             text: model.display

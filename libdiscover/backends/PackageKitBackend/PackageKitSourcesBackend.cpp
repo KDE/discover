@@ -19,14 +19,49 @@
  ***************************************************************************/
 
 #include "PackageKitSourcesBackend.h"
+#include <QStandardItemModel>
 #include <KLocalizedString>
 #include <PackageKit/Transaction>
 #include <PackageKit/Daemon>
 #include <QDebug>
 
+class PKSourcesModel : public QStandardItemModel
+{
+public:
+    PKSourcesModel(PackageKitSourcesBackend* backend)
+        : QStandardItemModel(backend)
+        , m_backend(backend) {}
+
+    QHash<int, QByteArray> roleNames() const override
+    {
+        auto roles = QStandardItemModel::roleNames();
+        roles[Qt::CheckStateRole] = "checked";
+        return roles;
+    }
+
+    bool setData(const QModelIndex & index, const QVariant & value, int role) override {
+        auto item = itemFromIndex(index);
+        if (!item)
+            return false;
+
+        switch(role) {
+            case Qt::CheckStateRole: {
+                auto transaction = PackageKit::Daemon::global()->repoEnable(item->text(), value.toInt() == Qt::Checked);
+                connect(transaction, &PackageKit::Transaction::errorCode, m_backend, &PackageKitSourcesBackend::transactionError);
+                return true;
+            }
+        }
+        item->setData(value, role);
+        return true;
+    }
+
+private:
+    PackageKitSourcesBackend* m_backend;
+};
+
 PackageKitSourcesBackend::PackageKitSourcesBackend(QObject* parent)
     : AbstractSourcesBackend(parent)
-    , m_sources(new QStandardItemModel(this))
+    , m_sources(new PKSourcesModel(this))
 {
     connect(PackageKit::Daemon::global(), &PackageKit::Daemon::repoListChanged, this, &PackageKitSourcesBackend::resetSources);
     resetSources();
@@ -54,15 +89,19 @@ QStandardItem* PackageKitSourcesBackend::findItemForId(const QString &id) const
 
 void PackageKitSourcesBackend::addRepositoryDetails(const QString &id, const QString &description, bool enabled)
 {
+    bool add = false;
     QStandardItem* item = findItemForId(id);
 
     if (!item) {
         item = new QStandardItem;
         item->setText(id);
-        m_sources->appendRow(item);
+        add = true;
     }
     item->setData(description, Qt::ToolTipRole);
-    item->setEnabled(enabled);
+    item->setCheckState(enabled ? Qt::Checked : Qt::Unchecked);
+
+    if (add)
+        m_sources->appendRow(item);
 }
 
 QAbstractItemModel * PackageKitSourcesBackend::sources()
@@ -72,9 +111,7 @@ QAbstractItemModel * PackageKitSourcesBackend::sources()
 
 bool PackageKitSourcesBackend::addSource(const QString& id)
 {
-    auto transaction = PackageKit::Daemon::global()->repoEnable(id, true);
-    connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitSourcesBackend::transactionError);
-    return true;
+    return false;
 }
 
 bool PackageKitSourcesBackend::removeSource(const QString& id)
@@ -97,7 +134,8 @@ void PackageKitSourcesBackend::resetSources()
     connect(transaction, &PackageKit::Transaction::errorCode, this, &PackageKitSourcesBackend::transactionError);
 }
 
-void PackageKitSourcesBackend::transactionError(PackageKit::Transaction::Error, const QString& message)
+void PackageKitSourcesBackend::transactionError(PackageKit::Transaction::Error error, const QString& message)
 {
-    qWarning() << "Transaction error: " << message << sender();
+    Q_EMIT passiveMessage(message);
+    qWarning() << "Transaction error: " << error << message << sender();
 }
