@@ -120,8 +120,8 @@ int PackageKitResource::size()
 
 QString PackageKitResource::origin() const
 {
-    //TODO
-    return QStringLiteral("PackageKit");
+    auto pkgid = availablePackageId();
+    return PackageKit::Daemon::packageData(pkgid);
 }
 
 QString PackageKitResource::section()
