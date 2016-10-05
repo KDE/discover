@@ -8,7 +8,6 @@
     <Menu>
       <Name>Plasma Desktop Widgets</Name>
       <Icon>plasma</Icon>
-      <ShowTechnical>true</ShowTechnical>
       <Include>
         <Or>
           <Category>plasmoids.knsrc</Category>

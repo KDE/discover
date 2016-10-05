@@ -8,7 +8,6 @@
     <Menu>
       <Name>Kate Snippets</Name>
       <Icon>kate</Icon>
-      <ShowTechnical>true</ShowTechnical>
       <Include>
         <Or>
           <Category>discover_ktexteditor_codesnippets_core.knsrc</Category>

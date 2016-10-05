@@ -75,7 +75,6 @@ int main(int argc, char** argv)
             "    <Menu>\n"
             "      <Name>" << categoryName[1] << "</Name>\n"
             "      <Icon>" << iconName << "</Icon>\n"
-            "      <ShowTechnical>true</ShowTechnical>\n"
             << filter <<
             "    </Menu>\n"
             << filter <<
