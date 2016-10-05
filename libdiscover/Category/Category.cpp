@@ -94,6 +94,8 @@ QVector<QPair<FilterType, QString> > Category::parseIncludes(const QDomNode &dat
             filter.append({ CategoryFilter, tempElement.text() });
         } else if (tempElement.tagName() == QLatin1String("PkgWildcard")) {
             filter.append({ PkgWildcardFilter, tempElement.text() });
+        } else if (tempElement.tagName() == QLatin1String("AppstreamIdWildcard")) {
+            filter.append({ AppstreamIdWildcardFilter, tempElement.text() });
         } else if (tempElement.tagName() == QLatin1String("PkgName")) {
             filter.append({ PkgNameFilter, tempElement.text() });
         } else {

@@ -150,6 +150,11 @@ static bool shouldFilter(AbstractResource* res, const QPair<FilterType, QString>
             wildcard.remove(QLatin1Char('*'));
             ret = res->packageName().contains(wildcard);
         }   break;
+        case AppstreamIdWildcardFilter: {
+            QString wildcard = filter.second;
+            wildcard.remove(QLatin1Char('*'));
+            ret = res->appstreamId().contains(wildcard);
+        }   break;
         case PkgNameFilter: // Only useful in the not filters
             ret = res->packageName() == filter.second;
             break;
