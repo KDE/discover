@@ -61,7 +61,7 @@ QString KNSResource::comment()
 {
     QString s = m_entry.shortSummary();
     if(s.isEmpty()) {
-        s = longDescription();
+        s = m_entry.summary();
         int newLine = s.indexOf(QLatin1Char('\n'));
         if(newLine>0)
             s=s.left(newLine);
@@ -107,9 +107,17 @@ QUrl KNSResource::screenshotUrl()
 
 QString KNSResource::longDescription()
 {
-    QString ret = m_entry.summary();
-    ret = ret.replace(QLatin1Char('\r'), QString());
-    return ret;
+    if (m_entry.shortSummary().isEmpty()) {
+        QString ret = m_entry.summary();
+        ret = ret.replace(QLatin1Char('\r'), QString());
+        int newLine = ret.indexOf(QLatin1Char('\n'));
+        ret = ret.mid(newLine+1).trimmed();
+        return ret;
+    } else {
+        QString ret = m_entry.summary();
+        ret = ret.replace(QLatin1Char('\r'), QString());
+        return ret;
+    }
 }
 
 void KNSResource::setEntry(const KNS3::Entry& entry)
