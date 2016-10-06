@@ -8,7 +8,6 @@
     <Menu>
       <Name>Comics</Name>
       <Icon>face-smile-big</Icon>
-      <ShowTechnical>true</ShowTechnical>
       <Include>
         <Or>
           <Category>comic.knsrc</Category>

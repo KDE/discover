@@ -468,13 +468,18 @@
     <Icon>plasma</Icon>
     <Addons />
 
+    <Include>
+        <Or>
+            <AppstreamIdWildcard>org.kde.plasma.*</AppstreamIdWildcard>
+        </Or>
+    </Include>
+
     <Menu>
       <Name>Plasma Desktop Widgets</Name>
       <Icon>plasma</Icon>
-      <ShowTechnical>true</ShowTechnical> <!-- needs to be like this to be the same as the Plasmoid category over . -->
       <Include>
         <Or>
-            <PkgWildcard>plasma-widget-*</PkgWildcard>
+            <AppstreamIdWildcard>org.kde.plasma.*</AppstreamIdWildcard>
         </Or>
       </Include>
     </Menu>

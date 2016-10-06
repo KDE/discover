@@ -84,7 +84,8 @@ QStringList AppPackageKitResource::mimetypes() const
 QStringList AppPackageKitResource::categories()
 {
     auto cats = m_appdata.categories();
-    cats.append(QStringLiteral("Application"));
+    if (m_appdata.kind() != Appstream::Component::KindAddon)
+        cats.append(QStringLiteral("Application"));
     return cats;
 }
 

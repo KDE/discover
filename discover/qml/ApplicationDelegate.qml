@@ -39,20 +39,19 @@ Kirigami.AbstractListItem
         Navigation.openApplication(application)
     }
 
-    RowLayout {
+    Item {
         id: lowLayout
         anchors {
             left: parent.left
             right: parent.right
             margins: Kirigami.Units.largeSpacing
         }
-        spacing: Kirigami.Units.largeSpacing
 
+        height: Kirigami.Units.gridUnit * (compact ? 7 : 10)
         QIconItem {
             id: resourceIcon
             icon: application.icon
 
-            Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
             readonly property real contHeight: Math.max(delegateArea.height * 0.8, 128)
             width: contHeight
             height: contHeight
@@ -61,8 +60,13 @@ Kirigami.AbstractListItem
 
         ColumnLayout {
             id: conts
-            Layout.fillWidth: true
-            Layout.fillHeight: true
+            anchors {
+                leftMargin: Kirigami.Units.largeSpacing
+                left: resourceIcon.right
+                bottom: installButton.top
+                top: parent.top
+                right: parent.right
+            }
 
             RowLayout {
                 Layout.fillWidth: true
@@ -94,22 +98,24 @@ Kirigami.AbstractListItem
                 font: SystemFonts.titleFont
             }
 
-            Item { height: Kirigami.Units.smallSpacing; Layout.fillWidth: true }
-
             Label {
                 Layout.fillWidth: true
+                Layout.maximumHeight: parent.height/2
 
                 horizontalAlignment: Text.AlignJustify
                 wrapMode: Text.WordWrap
+                elide: Text.ElideRight
+                textFormat: Text.StyledText
                 text: longDescription
-                maximumLineCount: delegateArea.compact ? 2 : 5
             }
-
-            InstallApplicationButton {
-                id: installButton
-                Layout.alignment: Qt.AlignRight
-                canUpgrade: false
+        }
+        InstallApplicationButton {
+            id: installButton
+            anchors {
+                right: parent.right
+                bottom: parent.bottom
             }
+            canUpgrade: false
         }
     }
 }

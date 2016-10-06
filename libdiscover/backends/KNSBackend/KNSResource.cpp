@@ -20,10 +20,10 @@
 
 #include "KNSResource.h"
 #include "KNSBackend.h"
-#include <QDebug>
+#include <QRegularExpression>
 #include <knewstuff_version.h>
 
-KNSResource::KNSResource(const KNS3::Entry& entry, QString  category, KNSBackend* parent)
+KNSResource::KNSResource(const KNS3::Entry& entry, QString category, KNSBackend* parent)
     : AbstractResource(parent)
     , m_category(std::move(category))
     , m_entry(entry)
@@ -59,14 +59,32 @@ QVariant KNSResource::icon() const
 
 QString KNSResource::comment()
 {
-    QString s = m_entry.shortSummary();
-    if(s.isEmpty()) {
-        s = longDescription();
-        int newLine = s.indexOf(QLatin1Char('\n'));
-        if(newLine>0)
-            s=s.left(newLine);
+    QString ret = m_entry.shortSummary();
+    if(ret.isEmpty()) {
+        ret = m_entry.summary();
+        int newLine = ret.indexOf(QLatin1Char('\n'));
+        if(newLine>0) {
+            ret=ret.left(newLine);
+        }
+        ret = ret.replace(QRegularExpression(QStringLiteral("\\[/?[a-z]*\\]")), QString());
     }
-    return s;
+    return ret;
+}
+
+QString KNSResource::longDescription()
+{
+    QString ret = m_entry.summary();
+    if (m_entry.shortSummary().isEmpty()) {
+        const int newLine = ret.indexOf(QLatin1Char('\n'));
+        if (newLine<0)
+            ret.clear();
+        else
+            ret = ret.mid(newLine+1).trimmed();
+    }
+    ret = ret.replace(QLatin1Char('\r'), QString());
+    ret = ret.replace(QStringLiteral("[li]"), QStringLiteral("\n* "));
+    ret = ret.replace(QRegularExpression(QStringLiteral("\\[/?[a-z]*\\]")), QString());
+    return ret;
 }
 
 QString KNSResource::name()
@@ -105,13 +123,6 @@ QUrl KNSResource::screenshotUrl()
     return firstIfExists(m_entry.previewImages());
 }
 
-QString KNSResource::longDescription()
-{
-    QString ret = m_entry.summary();
-    ret = ret.replace(QLatin1Char('\r'), QString());
-    return ret;
-}
-
 void KNSResource::setEntry(const KNS3::Entry& entry)
 {
     m_entry = entry;
@@ -140,7 +151,7 @@ QString KNSResource::installedVersion() const
 
 QString KNSResource::availableVersion() const
 {
-    return m_entry.updateVersion();
+    return !m_entry.updateVersion().isEmpty() ? m_entry.updateVersion() : m_entry.version();
 }
 
 QString KNSResource::origin() const
