@@ -115,7 +115,7 @@ void PackageKitUpdater::start()
     setProgressing(true);
 }
 
-void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint time)
+void PackageKitUpdater::finished(PackageKit::Transaction::Exit exit, uint /*time*/)
 {
 //     qDebug() << "update finished!" << exit << time;
     if (exit == PackageKit::Transaction::ExitEulaRequired)
