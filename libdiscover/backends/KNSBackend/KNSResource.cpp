@@ -151,7 +151,7 @@ QString KNSResource::installedVersion() const
 
 QString KNSResource::availableVersion() const
 {
-    return m_entry.updateVersion();
+    return !m_entry.updateVersion().isEmpty() ? m_entry.updateVersion() : m_entry.version();
 }
 
 QString KNSResource::origin() const
