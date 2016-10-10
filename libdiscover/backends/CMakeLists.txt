@@ -28,3 +28,8 @@ option(BUILD_DummyBackend "Build the DummyBackend" "OFF")
 if(BUILD_DummyBackend)
     add_subdirectory(DummyBackend)
 endif()
+
+option(BUILD_SnapBackend "Build Snap support" "ON")
+if(BUILD_SnapBackend)
+    add_subdirectory(SnapBackend)
+endif()
