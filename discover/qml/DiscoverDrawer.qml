@@ -169,8 +169,10 @@ Kirigami.GlobalDrawer {
             onTriggered: {
                 if (window.leftPage.category === undefined)
                     Navigation.openCategory(category, searchField.text)
-                else
+                else {
                     window.leftPage.category = category
+                    pageStack.currentIndex = 0
+                }
             }
         }
     }
