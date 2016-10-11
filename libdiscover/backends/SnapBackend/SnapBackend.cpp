@@ -44,15 +44,22 @@ SnapBackend::SnapBackend(QObject* parent)
     , m_reviews(new SnapReviewsBackend(this))
 {
     connect(m_reviews, &SnapReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
-}
 
-void SnapBackend::setMetaData(const QString& path)
-{
+    const auto installedSnaps = m_socket.snaps();
+    for(const auto& snap: installedSnaps) {
+        auto res = new SnapResource(snap.toObject(), this);
+        m_resources[res->packageName()] = res;
+    }
 }
 
 QVector<AbstractResource*> SnapBackend::allResources() const
 {
-    return {};
+    QVector<AbstractResource*> ret;
+    ret.reserve(m_resources.size());
+    foreach(AbstractResource* res, m_resources) {
+        ret += res;
+    }
+    return ret;
 }
 
 int SnapBackend::updatesCount() const

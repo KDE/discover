@@ -23,6 +23,7 @@
 
 #include <resources/AbstractResourcesBackend.h>
 #include <QVariantList>
+#include "SnapSocket.h"
 
 class QAction;
 class SnapReviewsBackend;
@@ -34,7 +35,6 @@ Q_OBJECT
 public:
     explicit SnapBackend(QObject* parent = nullptr);
 
-    void setMetaData(const QString& path) override;
     AbstractResource* resourceByPackageName(const QString& name) const override;
     int updatesCount() const override;
     AbstractBackendUpdater* backendUpdater() const override;
@@ -53,6 +53,8 @@ private:
     QHash<QString, SnapResource*> m_resources;
     StandardBackendUpdater* m_updater;
     SnapReviewsBackend* m_reviews;
+
+    SnapSocket m_socket;
 };
 
 #endif // SNAPBACKEND_H

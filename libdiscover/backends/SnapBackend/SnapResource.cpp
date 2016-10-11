@@ -20,12 +20,12 @@
 
 #include "SnapResource.h"
 #include <QDebug>
+#include <QProcess>
 
 SnapResource::SnapResource(QJsonObject data, AbstractResourcesBackend* parent)
     : AbstractResource(parent)
     , m_data(std::move(data))
 {
-    qDebug() << "fuuuuuuuu" << m_data;
 }
 
 QString SnapResource::availableVersion() const
@@ -40,12 +40,12 @@ QStringList SnapResource::categories()
 
 QString SnapResource::comment()
 {
-    return {};
+    return m_data.value(QLatin1String("summary")).toString();
 }
 
 int SnapResource::size()
 {
-    return 0;
+    return m_data.value(QLatin1String("installed-size")).toInt();
 }
 
 QUrl SnapResource::homepage()
@@ -60,7 +60,7 @@ QVariant SnapResource::icon() const
 
 QString SnapResource::installedVersion() const
 {
-    return {};
+    return m_data.value(QLatin1String("version")).toString();
 }
 
 QString SnapResource::license()
@@ -70,7 +70,7 @@ QString SnapResource::license()
 
 QString SnapResource::longDescription()
 {
-    return {};
+    return m_data.value(QLatin1String("description")).toString();
 }
 
 QString SnapResource::name()
@@ -80,12 +80,12 @@ QString SnapResource::name()
 
 QString SnapResource::origin() const
 {
-    return QStringLiteral("Snappy");
+    return QStringLiteral("snappy:") + m_data.value(QLatin1String("channel")).toString();
 }
 
 QString SnapResource::packageName() const
 {
-    return {};
+    return m_data.value(QLatin1String("id")).toString();
 }
 
 QUrl SnapResource::screenshotUrl()
@@ -105,7 +105,7 @@ QString SnapResource::section()
 
 AbstractResource::State SnapResource::state()
 {
-    return None;
+    return Installed;
 }
 
 void SnapResource::fetchChangelog()
@@ -121,5 +121,10 @@ void SnapResource::fetchScreenshots()
 
 void SnapResource::invokeApplication() const
 {
-    //TODO
+    QProcess::startDetached(m_data[QLatin1String("resource")].toString());
+}
+
+bool SnapResource::isTechnical() const
+{
+    return m_data.value(QLatin1String("type")) == QLatin1String("os") || m_data.value(QLatin1String("private")).toBool();
 }

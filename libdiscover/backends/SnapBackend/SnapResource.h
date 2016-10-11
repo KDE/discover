@@ -47,7 +47,7 @@ public:
     QString comment() override;
     QString name() override;
     QString packageName() const override;
-    bool isTechnical() const override { return false; }
+    bool isTechnical() const override;
     bool canExecute() const override { return true; }
     void invokeApplication() const override;
     void fetchChangelog() override;
