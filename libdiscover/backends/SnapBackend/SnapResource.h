@@ -22,15 +22,15 @@
 #define SNAPRESOURCE_H
 
 #include <resources/AbstractResource.h>
+#include <QJsonObject>
 
 class AddonList;
 class SnapResource : public AbstractResource
 {
 Q_OBJECT
 public:
-    explicit SnapResource(QString  name, bool isTechnical, AbstractResourcesBackend* parent);
+    explicit SnapResource(QJsonObject data, AbstractResourcesBackend* parent);
 
-    QList<PackageState> addonsInformation() override;
     QString section() override;
     QString origin() const override;
     QString longDescription() override;
@@ -47,24 +47,15 @@ public:
     QString comment() override;
     QString name() override;
     QString packageName() const override;
-    bool isTechnical() const override { return m_isTechnical; }
+    bool isTechnical() const override { return false; }
     bool canExecute() const override { return true; }
     void invokeApplication() const override;
     void fetchChangelog() override;
     void fetchScreenshots() override;
-    void setState(State state);
-    void setAddons(const AddonList& addons);
-
-    void setAddonInstalled(const QString& addon, bool installed);
+    QList<PackageState> addonsInformation() override { return {}; }
 
 public:
-    QString m_name;
-    AbstractResource::State m_state;
-    QList<QUrl> m_screenshots;
-    QList<QUrl> m_screenshotThumbnails;
-    QString m_iconName;
-    QList<PackageState> m_addons;
-    bool m_isTechnical;
+    QJsonObject m_data;
 };
 
 #endif // SNAPRESOURCE_H

@@ -32,43 +32,18 @@ SnapReviewsBackend::SnapReviewsBackend(SnapBackend* parent)
 
 void SnapReviewsBackend::fetchReviews(AbstractResource* app, int page)
 {
-    if (page>=5)
-        return;
-
-    QList<Review*> review;
-    for(int i=0; i<33; i++) {
-        review += new Review(app->name(), app->packageName(), QStringLiteral("en_US"), QStringLiteral("good morning"), QStringLiteral("the morning is very good"), QStringLiteral("snap"),
-                             QDateTime(), true, page+i, i%5, 1, 1, app->packageName());
-    }
-    emit reviewsReady(app, review);
+    emit reviewsReady({}, {});
 }
 
 Rating* SnapReviewsBackend::ratingForApplication(AbstractResource* app) const
 {
-    return m_ratings[app];
-}
-
-void SnapReviewsBackend::initialize()
-{
-    SnapBackend* b = qobject_cast<SnapBackend*>(parent());
-    foreach(AbstractResource* app, b->allResources()) {
-        if (m_ratings.contains(app))
-            continue;
-        auto randomRating = qrand()%10;
-        Rating* rating = new Rating(app->packageName(), 15, randomRating, QStringLiteral("\"0, 0, 0, 4, %1\"").arg(randomRating));
-        rating->setParent(this);
-        m_ratings.insert(app, rating);
-    }
-    emit ratingsReady();
+    return nullptr;
 }
 
 void SnapReviewsBackend::submitUsefulness(Review* r, bool useful)
 {
-    qDebug() << "usefulness..." << r->applicationName() << r->reviewer() << useful;
-    r->setUsefulChoice(useful ? ReviewsModel::Yes : ReviewsModel::No);
 }
 
 void SnapReviewsBackend::submitReview(AbstractResource* res, const QString& a, const QString& b, const QString& c)
 {
-    qDebug() << "snap submit review" << res->name() << a << b << c;
 }

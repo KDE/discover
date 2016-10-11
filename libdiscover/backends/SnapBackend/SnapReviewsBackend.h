@@ -46,13 +46,8 @@ public:
     void flagReview(Review*, const QString&, const QString&) override {}
     void submitUsefulness(Review*, bool) override;
 
-    void initialize();
-
 Q_SIGNALS:
     void ratingsReady();
-
-private:
-    QHash<AbstractResource*, Rating*> m_ratings;
 };
 
 #endif // SNAPREVIEWSBACKEND_H

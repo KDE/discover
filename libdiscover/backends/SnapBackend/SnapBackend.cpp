@@ -69,7 +69,7 @@ QList<AbstractResource*> SnapBackend::searchPackageName(const QString& searchTex
 {
     QList<AbstractResource*> ret;
     foreach(AbstractResource* r, m_resources) {
-        if(r->name().contains(searchText, Qt::CaseInsensitive) || r->comment().contains(searchText, Qt::CaseInsensitive))
+        if(r->packageName().contains(searchText, Qt::CaseInsensitive))
             ret += r;
     }
     return ret;
@@ -103,3 +103,4 @@ void SnapBackend::removeApplication(AbstractResource* app)
 // 	transModel->addTransaction(new SnapTransaction(qobject_cast<SnapResource*>(app), Transaction::RemoveRole));
 }
 
+#include "SnapBackend.moc"
