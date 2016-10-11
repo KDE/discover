@@ -1,4 +1,6 @@
-add_library(snap-backend MODULE SnapResource.cpp SnapBackend.cpp SnapReviewsBackend.cpp)
+add_subdirectory(tests)
+
+add_library(snap-backend MODULE SnapResource.cpp SnapBackend.cpp SnapReviewsBackend.cpp SnapSocket.cpp)
 target_link_libraries(snap-backend Qt5::Core Qt5::Widgets KF5::CoreAddons KF5::ConfigCore Discover::Common)
 
 install(TARGETS snap-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
