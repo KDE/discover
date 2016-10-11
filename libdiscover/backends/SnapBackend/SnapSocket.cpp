@@ -118,36 +118,57 @@ void SnapJob::processReply(QIODevice* device)
             qWarning() << "error" << line;
     }
 
-    {
+    QHash<QByteArray, QByteArray> headers;
+    for(; true; ) {
         const QByteArray line = device->readLine();
-        if (line != "Content-Type: application/json\r\n")
-            qWarning() << "error: unexpected content" << line;
+        if (line == "\r\n") {
+            break;
+        }
+
+        const auto idx = line.indexOf(": ");
+        if (idx<=0) {
+            qWarning() << "error: wrong header" << line;
+        }
+        const auto id = line.left(idx);
+        const auto val = line.mid(idx+2).trimmed();
+        headers[id] = val;
     }
 
-    {
-        device->readLine(); //Date: Tue, 11 Oct 2016 13:52:23 GMT
-    }
-
+    const auto transferEncoding = headers.value("Transfer-Encoding");
+    const bool chunked = transferEncoding == "chunked";
     qint64 length = 0;
-    {
-        const QByteArray line = device->readLine();
-        const QByteArray prefix("Content-Length: ");
-        if (!line.startsWith(prefix))
-            qWarning() << "wrong Content-Length" << line;
+    if (!chunked) {
+        const auto numberStr = headers.value("Content-Length");
+        if (numberStr.isEmpty()) {
+            qWarning() << "no content length" << headers;
+            return;
+        }
 
         bool ok;
-        const auto numberStr = line.mid(prefix.size()).trimmed();
         length = numberStr.toInt(&ok);
-        if (!ok)
-            qWarning() << "wrong Content-Length integer parsing" << line << numberStr;
+        if (!ok) {
+            qWarning() << "wrong Content-Length integer parsing" << numberStr << headers;
+            return;
+        }
     }
 
     {
-        device->readLine(); //empty line
-    }
+        QByteArray rest;
+        if (chunked) {
+            for (;;) {
+                bool ok;
+                const auto numberString = device->readLine().trimmed();
+                const auto number = numberString.toInt(&ok, 16);
 
-    {
-        QByteArray rest = device->read(length);
+                if (number == 0)
+                    break;
+                rest += device->read(number);
+                device->read(2);
+            }
+            device->read(2);
+        } else {
+            rest = device->read(length);
+        }
         QJsonParseError error;
         const auto doc = QJsonDocument::fromJson(rest, &error);
         if (!doc.isObject())
