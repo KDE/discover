@@ -58,7 +58,7 @@ QByteArray SnapSocket::createRequest(const QByteArray &method, const QByteArray 
     }
     if (!content.isEmpty()) {
         request += "Content-Length: " + QByteArray::number(content.size()) + "\r\n";
-        request += "r\n";
+        request += "\r\n";
         request += content;
     } else {
         request += "\r\n";
