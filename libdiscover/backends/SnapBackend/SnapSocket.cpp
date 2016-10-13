@@ -25,38 +25,12 @@
 
 SnapSocket::SnapSocket(QObject* parent)
     : QObject(parent)
-    , m_socket(new QLocalSocket(this))
 {
-    connect(m_socket, &QLocalSocket::connected, this, [](){ qDebug() << "connected"; });
-    connect(m_socket, &QLocalSocket::disconnected, this, [](){ qDebug() << "disconnected :("; });
-    connect(m_socket, static_cast<void(QLocalSocket::*)(QLocalSocket::LocalSocketError)>(&QLocalSocket::error), this, [](QLocalSocket::LocalSocketError socketError){ qDebug() << "error!" << socketError; });
-
-    m_socket->connectToServer(QStringLiteral("/run/snapd.socket"), QIODevice::ReadWrite);
 }
 
 SnapSocket::~SnapSocket()
 {
     qDeleteAll(m_jobs);
-}
-
-bool SnapSocket::isConnected() const
-{
-    return m_socket->isOpen();
-}
-
-void SnapSocket::stateChanged(QLocalSocket::LocalSocketState newState)
-{
-//     qDebug() << "state changed!" << newState;
-    switch(newState) {
-        case QLocalSocket::ConnectedState:
-            Q_EMIT connectedChanged(true);
-            break;
-        case QLocalSocket::UnconnectedState:
-            Q_EMIT connectedChanged(false);
-            break;
-        default:
-            break;
-    }
 }
 
 QByteArray SnapSocket::createRequest(const QByteArray &method, const QByteArray &path, const QByteArray &content) const
@@ -82,35 +56,23 @@ QByteArray SnapSocket::createRequest(const QByteArray &method, const QByteArray 
 
 QJsonArray SnapSocket::snaps()
 {
-    auto sj = new SnapJob();
+    auto sj = new SnapJob(createRequest("GET", "/v2/snaps", {}), this);
     m_jobs.append(sj);
-    m_socket->write(createRequest("GET", "/v2/snaps", {}));
-    m_socket->waitForReadyRead();
-    sj->processReply(m_socket);
-
-    return sj->isSuccessful() ? sj->result().toArray() : QJsonArray{};
+    return sj->exec() ? sj->result().toArray() : QJsonArray{};
 }
 
 QJsonObject SnapSocket::snapByName(const QByteArray& name)
 {
-    auto sj = new SnapJob();
+    auto sj = new SnapJob(createRequest("GET", "/v2/snaps/"+name, {}), this);
     m_jobs.append(sj);
-    m_socket->write(createRequest("GET", "/v2/snaps/"+name, {}));
-    m_socket->waitForReadyRead();
-    sj->processReply(m_socket);
-
-    return sj->isSuccessful() ? sj->result().toObject() : QJsonObject{};
+    return sj->exec() ? sj->result().toObject() : QJsonObject{};
 }
 
 QJsonArray SnapSocket::find(const QString& query)
 {
-    auto sj = new SnapJob();
+    auto sj = new SnapJob(createRequest("GET", "/v2/find?q="+query.toUtf8(), {}), this);
     m_jobs.append(sj);
-    m_socket->write(createRequest("GET", "/v2/find?q="+query.toUtf8(), {}));
-    m_socket->waitForReadyRead();
-    sj->processReply(m_socket);
-
-    return sj->isSuccessful() ? sj->result().toArray() : QJsonArray{};
+    return sj->exec() ? sj->result().toArray() : QJsonArray{};
 }
 
 QJsonArray SnapSocket::findByName(const QString& name)
@@ -118,16 +80,39 @@ QJsonArray SnapSocket::findByName(const QString& name)
     return {};
 }
 
-/////////////
-
-SnapJob::SnapJob(QObject* parent)
-    : QObject(parent)
+SnapJob * SnapSocket::snapAction(const QString& name, SnapSocket::SnapAction action, const QString& channel)
 {
-    connect(this, &SnapJob::finished, this, &QObject::deleteLater);
+    return nullptr;
 }
 
-void SnapJob::processReply(QIODevice* device)
+/////////////
+
+SnapJob::SnapJob(const QByteArray& request, QObject* parent)
+    : QObject(parent)
+    , m_socket(new QLocalSocket(this))
 {
+    connect(this, &SnapJob::finished, this, &QObject::deleteLater);
+
+    connect(m_socket, &QLocalSocket::connected, this, [this, request](){
+//         qDebug() << "connected";
+        m_socket->write(request);
+    });
+    connect(m_socket, &QLocalSocket::disconnected, this, [](){ qDebug() << "disconnected :("; });
+    connect(m_socket, static_cast<void(QLocalSocket::*)(QLocalSocket::LocalSocketError)>(&QLocalSocket::error), this, [](QLocalSocket::LocalSocketError socketError){ qDebug() << "error!" << socketError; });
+
+    m_socket->connectToServer(QStringLiteral("/run/snapd.socket"), QIODevice::ReadWrite);
+}
+
+bool SnapJob::exec()
+{
+    m_socket->waitForReadyRead();
+    processReply();
+    return isSuccessful();
+}
+
+void SnapJob::processReply()
+{
+    auto device = m_socket;
     {
         const QByteArray line = device->readLine().trimmed();
         if (!line.endsWith("OK"))

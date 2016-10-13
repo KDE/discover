@@ -59,15 +59,9 @@ class SnapTest : public QObject
 {
 Q_OBJECT
 public:
-    SnapTest() : socket(this) {}
+    SnapTest() {}
 
 private Q_SLOTS:
-    void initTestCase()
-    {
-        QSignalSpy spy(&socket, &SnapSocket::connectedChanged);
-        QVERIFY(socket.isConnected() || spy.wait());
-        QVERIFY(socket.isConnected());
-    }
 
     void listing()
     {

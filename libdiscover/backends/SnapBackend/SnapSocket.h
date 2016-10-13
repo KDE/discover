@@ -30,14 +30,14 @@ class SnapJob : public QObject
 {
     Q_OBJECT
 public:
-    SnapJob(QObject* parent = nullptr);
+    SnapJob(const QByteArray& request, QObject* parent = nullptr);
 
     QJsonValue result() const { return m_data.value(QLatin1String("result")); }
     int statusCode() const { return m_data.value(QLatin1String("status-code")).toInt(); }
     QString status() const { return m_data.value(QLatin1String("status")).toString(); }
     QString type() const { return m_data.value(QLatin1String("type")).toString(); }
 
-    void processReply(QIODevice* device);
+    bool exec();
 
     bool isSuccessful() const { return statusCode()==200; }
 
@@ -45,6 +45,9 @@ Q_SIGNALS:
     void finished();
 
 private:
+    void processReply();
+
+    QLocalSocket * const m_socket;
     QJsonObject m_data;
 };
 
@@ -55,33 +58,38 @@ private:
 class SnapSocket : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(bool isConnected READ isConnected NOTIFY connectedChanged)
+//     Q_PROPERTY(bool isConnected READ isConnected NOTIFY connectedChanged)
 public:
     SnapSocket(QObject* parent = nullptr);
     ~SnapSocket();
 
-    bool isConnected() const;
+//     bool isConnected() const;
 
-    /// /v2/snaps
+    /// GET /v2/snaps
     QJsonArray snaps();
 
-    /// /v2/snaps/@p name
+    /// GET /v2/snaps/@p name
     QJsonObject snapByName(const QByteArray& name);
 
-    /// /v2/find query
+    /// GET /v2/find query
     QJsonArray find(const QString &query);
 
-    /// /v2/find query
+    /// GET /v2/find query
     QJsonArray findByName(const QString &name);
 
-Q_SIGNALS:
-    bool connectedChanged(bool connected);
+    enum SnapAction { Install, Refresh, Remove, Revert, Enable, Disable };
+
+    /// POST /v2/snaps/@p name
+    /// stable is the default channel
+    SnapJob* snapAction(const QString &name, SnapAction action, const QString &channel = {});
+
+// Q_SIGNALS:
+//     bool connectedChanged(bool connected);
 
 private:
     QByteArray createRequest(const QByteArray &method, const QByteArray &path, const QByteArray &content) const;
     void stateChanged(QLocalSocket::LocalSocketState newState);
 
-    QLocalSocket * const m_socket;
     QVector<SnapJob*> m_jobs;
 
     QByteArray m_macaroon;
