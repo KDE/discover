@@ -21,6 +21,7 @@
 #include "SnapSocket.h"
 #include <QDebug>
 #include <QJsonDocument>
+#include <QUrlQuery>
 #include <QRegularExpression>
 
 SnapSocket::SnapSocket(QObject* parent)
@@ -30,6 +31,19 @@ SnapSocket::SnapSocket(QObject* parent)
 
 SnapSocket::~SnapSocket()
 {
+}
+
+QByteArray SnapSocket::createRequest(const QByteArray& method, const QByteArray& path, const QUrlQuery& content) const
+{
+    QByteArray ret;
+    const auto query = content.toString().toUtf8();
+    if (method == "GET")
+        ret = createRequest(method, path+'?'+query, QByteArray());
+    else if(method == "POST")
+        ret = createRequest(method, path, query);
+    else
+        qWarning() << "unknown method" << method;
+    return ret;
 }
 
 QByteArray SnapSocket::createRequest(const QByteArray &method, const QByteArray &path, const QByteArray &content) const
@@ -55,17 +69,19 @@ QByteArray SnapSocket::createRequest(const QByteArray &method, const QByteArray 
 
 SnapJob* SnapSocket::snaps()
 {
-    return new SnapJob(createRequest("GET", "/v2/snaps", {}), this);
+    return new SnapJob(createRequest("GET", "/v2/snaps"), this);
 }
 
 SnapJob* SnapSocket::snapByName(const QByteArray& name)
 {
-    return new SnapJob(createRequest("GET", "/v2/snaps/"+name, {}), this);
+    return new SnapJob(createRequest("GET", "/v2/snaps/"+name), this);
 }
 
 SnapJob* SnapSocket::find(const QString& query)
 {
-    return new SnapJob(createRequest("GET", "/v2/find?q="+query.toUtf8(), {}), this);
+    QUrlQuery uq;
+    uq.addQueryItem(QStringLiteral("q"), query);
+    return new SnapJob(createRequest("GET", "/v2/find", uq), this);
 }
 
 SnapJob* SnapSocket::findByName(const QString& name)
@@ -75,7 +91,23 @@ SnapJob* SnapSocket::findByName(const QString& name)
 
 SnapJob * SnapSocket::snapAction(const QString& name, SnapSocket::SnapAction action, const QString& channel)
 {
-    return nullptr;
+    QString actionStr;
+    switch(action) {
+        case Install: actionStr = QStringLiteral("install"); break;
+        case Refresh: actionStr = QStringLiteral("refresh"); break;
+        case Remove: actionStr = QStringLiteral("remove"); break;
+        case Revert: actionStr = QStringLiteral("revert"); break;
+        case Enable: actionStr = QStringLiteral("enable"); break;
+        case Disable: actionStr = QStringLiteral("disable"); break;
+        default:
+            Q_UNREACHABLE();
+    }
+    QUrlQuery uq;
+    uq.addQueryItem(QStringLiteral("action"), actionStr);
+    if (!channel.isEmpty())
+        uq.addQueryItem(QStringLiteral("channel"), channel);
+
+    return new SnapJob(createRequest("POST", "/v2/snaps/"+name.toUtf8(), uq), this);
 }
 
 /////////////

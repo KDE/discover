@@ -26,6 +26,8 @@
 #include <QJsonArray>
 #include <QLocalSocket>
 
+class QUrlQuery;
+
 class SnapJob : public QObject
 {
     Q_OBJECT
@@ -87,8 +89,8 @@ public:
 //     bool connectedChanged(bool connected);
 
 private:
-    QByteArray createRequest(const QByteArray &method, const QByteArray &path, const QByteArray &content) const;
-    void stateChanged(QLocalSocket::LocalSocketState newState);
+    QByteArray createRequest(const QByteArray &method, const QByteArray &path, const QUrlQuery &content) const;
+    QByteArray createRequest(const QByteArray &method, const QByteArray &path, const QByteArray &content = {}) const;
 
     QByteArray m_macaroon;
     QJsonArray m_discharges;
