@@ -40,11 +40,15 @@ public:
     SnapTest() : socket(this) {}
 
 private Q_SLOTS:
-    void things() {
+    void initTestCase()
+    {
         QSignalSpy spy(&socket, &SnapSocket::connectedChanged);
         QVERIFY(socket.isConnected() || spy.wait());
         QVERIFY(socket.isConnected());
+    }
 
+    void listing()
+    {
         //Need to have installed snaps for this test to do something
         const auto snaps = socket.snaps();
         for(const auto &snapValue : snaps) {
@@ -55,6 +59,18 @@ private Q_SLOTS:
 
             const auto requestedSnap = socket.snapByName(snap.value(QLatin1String("name")).toString().toUtf8());
             QCOMPARE(requestedSnap, snap);
+        }
+    }
+
+    void find()
+    {
+        const auto snaps = socket.find(QStringLiteral("editor"));
+        QVERIFY(snaps.count() > 1);
+        for(const auto &snapValue : snaps) {
+            QVERIFY(snapValue.isObject());
+            const auto snap = snapValue.toObject();
+            QVERIFY(snap.contains(QLatin1String("name") ));
+            QVERIFY(snap.contains(QLatin1String("developer")));
         }
     }
 

@@ -46,7 +46,7 @@ bool SnapSocket::isConnected() const
 
 void SnapSocket::stateChanged(QLocalSocket::LocalSocketState newState)
 {
-    qDebug() << "state changed!" << newState;
+//     qDebug() << "state changed!" << newState;
     switch(newState) {
         case QLocalSocket::ConnectedState:
             Q_EMIT connectedChanged(true);
@@ -100,6 +100,22 @@ QJsonObject SnapSocket::snapByName(const QByteArray& name)
     sj->processReply(m_socket);
 
     return sj->isSuccessful() ? sj->result().toObject() : QJsonObject{};
+}
+
+QJsonArray SnapSocket::find(const QString& query)
+{
+    auto sj = new SnapJob();
+    m_jobs.append(sj);
+    m_socket->write(createRequest("GET", "/v2/find?q="+query.toUtf8(), {}));
+    m_socket->waitForReadyRead();
+    sj->processReply(m_socket);
+
+    return sj->isSuccessful() ? sj->result().toArray() : QJsonArray{};
+}
+
+QJsonArray SnapSocket::findByName(const QString& name)
+{
+    return {};
 }
 
 /////////////

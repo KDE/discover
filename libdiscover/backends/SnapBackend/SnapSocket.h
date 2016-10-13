@@ -48,6 +48,10 @@ private:
     QJsonObject m_data;
 };
 
+/**
+ * https://developer.ubuntu.com/en/snappy/guides/rest/
+ */
+
 class SnapSocket : public QObject
 {
     Q_OBJECT
@@ -58,11 +62,17 @@ public:
 
     bool isConnected() const;
 
-    /// /v2/snaps query
+    /// /v2/snaps
     QJsonArray snaps();
 
     /// /v2/snaps/@p name
     QJsonObject snapByName(const QByteArray& name);
+
+    /// /v2/find query
+    QJsonArray find(const QString &query);
+
+    /// /v2/find query
+    QJsonArray findByName(const QString &name);
 
 Q_SIGNALS:
     bool connectedChanged(bool connected);
