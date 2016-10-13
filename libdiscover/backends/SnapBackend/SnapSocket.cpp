@@ -187,6 +187,8 @@ void SnapJob::processReply(QIODevice* device)
         }
         QJsonParseError error;
         const auto doc = QJsonDocument::fromJson(rest, &error);
+        if (error.error)
+            qWarning() << "error parsing json" << error.errorString();
         if (!doc.isObject())
             qWarning() << "wrong object type" << rest;
         m_data = doc.object();

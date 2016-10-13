@@ -47,14 +47,18 @@ public:
     void installApplication(AbstractResource* app) override;
     void installApplication(AbstractResource* app, const AddonList& addons) override;
     void removeApplication(AbstractResource* app) override;
-    bool isFetching() const override { return false; }
+    bool isFetching() const override { return m_fetching; }
 
 private:
+    void setFetching(bool fetching);
+    QList<AbstractResource*> populate(const QJsonArray& snaps);
+
     QHash<QString, SnapResource*> m_resources;
     StandardBackendUpdater* m_updater;
     SnapReviewsBackend* m_reviews;
 
     SnapSocket m_socket;
+    bool m_fetching = false;
 };
 
 #endif // SNAPBACKEND_H

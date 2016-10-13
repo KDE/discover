@@ -45,11 +45,7 @@ SnapBackend::SnapBackend(QObject* parent)
 {
     connect(m_reviews, &SnapReviewsBackend::ratingsReady, this, &AbstractResourcesBackend::emitRatingsReady);
 
-    const auto installedSnaps = m_socket.snaps();
-    for(const auto& snap: installedSnaps) {
-        auto res = new SnapResource(snap.toObject(), this);
-        m_resources[res->packageName()] = res;
-    }
+    populate(m_socket.snaps());
 }
 
 QVector<AbstractResource*> SnapBackend::allResources() const
@@ -74,12 +70,42 @@ AbstractResource* SnapBackend::resourceByPackageName(const QString& name) const
 
 QList<AbstractResource*> SnapBackend::searchPackageName(const QString& searchText)
 {
+    return populate(m_socket.find(searchText));
+}
+
+QList<AbstractResource*> SnapBackend::populate(const QJsonArray& snaps)
+{
     QList<AbstractResource*> ret;
-    foreach(AbstractResource* r, m_resources) {
-        if(r->packageName().contains(searchText, Qt::CaseInsensitive))
-            ret += r;
+    QSet<SnapResource*> resources;
+    for(const auto& snap: snaps) {
+        const auto snapObj = snap.toObject();
+        const auto snapid = snapObj.value(QLatin1String("id")).toString();
+        SnapResource* res = m_resources.value(snapid);
+        if (!res) {
+            res = new SnapResource(snapObj, this);
+            Q_ASSERT(res->packageName() == snapid);
+            resources += res;
+        }
+        ret += res;
+    }
+
+    if (!resources.isEmpty()) {
+        setFetching(true);
+        foreach(SnapResource* res, resources)
+            m_resources[res->packageName()] = res;
+        setFetching(false);
     }
     return ret;
+}
+
+void SnapBackend::setFetching(bool fetching)
+{
+    if (m_fetching != fetching) {
+        m_fetching = fetching;
+        Q_EMIT fetchingChanged();
+    } else {
+        qWarning() << "fetching already on state" << fetching;
+    }
 }
 
 AbstractBackendUpdater* SnapBackend::backendUpdater() const
