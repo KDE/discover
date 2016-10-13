@@ -30,7 +30,6 @@ SnapSocket::SnapSocket(QObject* parent)
 
 SnapSocket::~SnapSocket()
 {
-    qDeleteAll(m_jobs);
 }
 
 QByteArray SnapSocket::createRequest(const QByteArray &method, const QByteArray &path, const QByteArray &content) const
@@ -54,28 +53,22 @@ QByteArray SnapSocket::createRequest(const QByteArray &method, const QByteArray 
     return request;
 }
 
-QJsonArray SnapSocket::snaps()
+SnapJob* SnapSocket::snaps()
 {
-    auto sj = new SnapJob(createRequest("GET", "/v2/snaps", {}), this);
-    m_jobs.append(sj);
-    return sj->exec() ? sj->result().toArray() : QJsonArray{};
+    return new SnapJob(createRequest("GET", "/v2/snaps", {}), this);
 }
 
-QJsonObject SnapSocket::snapByName(const QByteArray& name)
+SnapJob* SnapSocket::snapByName(const QByteArray& name)
 {
-    auto sj = new SnapJob(createRequest("GET", "/v2/snaps/"+name, {}), this);
-    m_jobs.append(sj);
-    return sj->exec() ? sj->result().toObject() : QJsonObject{};
+    return new SnapJob(createRequest("GET", "/v2/snaps/"+name, {}), this);
 }
 
-QJsonArray SnapSocket::find(const QString& query)
+SnapJob* SnapSocket::find(const QString& query)
 {
-    auto sj = new SnapJob(createRequest("GET", "/v2/find?q="+query.toUtf8(), {}), this);
-    m_jobs.append(sj);
-    return sj->exec() ? sj->result().toArray() : QJsonArray{};
+    return new SnapJob(createRequest("GET", "/v2/find?q="+query.toUtf8(), {}), this);
 }
 
-QJsonArray SnapSocket::findByName(const QString& name)
+SnapJob* SnapSocket::findByName(const QString& name)
 {
     return {};
 }

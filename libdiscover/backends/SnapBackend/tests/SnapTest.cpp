@@ -66,14 +66,19 @@ private Q_SLOTS:
     void listing()
     {
         //Need to have installed snaps for this test to do something
-        const auto snaps = socket.snaps();
+        const auto snapJob = socket.snaps();
+        QVERIFY(snapJob->exec());
+        const auto snaps = snapJob->result().toArray();
+
         for(const auto &snapValue : snaps) {
             QVERIFY(snapValue.isObject());
             auto snap = snapValue.toObject();
             QVERIFY(snap.contains(QLatin1String("name") ));
             QVERIFY(snap.contains(QLatin1String("developer")));
 
-            auto requestedSnap = socket.snapByName(snap.value(QLatin1String("name")).toString().toUtf8());
+            const auto requestedSnapJob = socket.snapByName(snap.value(QLatin1String("name")).toString().toUtf8());
+            QVERIFY(requestedSnapJob->exec());
+            auto requestedSnap = requestedSnapJob->result().toObject();
 
             //should treat these separately becauase they're randomly delivered in different order
             //just make sure they're the same number, for now
@@ -93,7 +98,9 @@ private Q_SLOTS:
 
     void find()
     {
-        const auto snaps = socket.find(QStringLiteral("editor"));
+        const auto findJob = socket.find(QStringLiteral("editor"));
+        QVERIFY(findJob->exec());
+        const auto snaps = findJob->result().toArray();
         QVERIFY(snaps.count() > 1);
         for(const auto &snapValue : snaps) {
             QVERIFY(snapValue.isObject());

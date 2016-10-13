@@ -73,8 +73,15 @@ QList<AbstractResource*> SnapBackend::searchPackageName(const QString& searchTex
     return populate(m_socket.find(searchText));
 }
 
-QList<AbstractResource*> SnapBackend::populate(const QJsonArray& snaps)
+QList<AbstractResource*> SnapBackend::populate(SnapJob* job)
 {
+    if (!job->exec()) {
+        qWarning() << "job failed" << job;
+        return {};
+    }
+
+    const auto snaps = job->result().toArray();
+
     QList<AbstractResource*> ret;
     QSet<SnapResource*> resources;
     for(const auto& snap: snaps) {

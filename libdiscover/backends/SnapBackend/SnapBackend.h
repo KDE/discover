@@ -51,7 +51,7 @@ public:
 
 private:
     void setFetching(bool fetching);
-    QList<AbstractResource*> populate(const QJsonArray& snaps);
+    QList<AbstractResource*> populate(SnapJob* snaps);
 
     QHash<QString, SnapResource*> m_resources;
     StandardBackendUpdater* m_updater;

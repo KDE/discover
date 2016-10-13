@@ -66,16 +66,16 @@ public:
 //     bool isConnected() const;
 
     /// GET /v2/snaps
-    QJsonArray snaps();
+    SnapJob* snaps();
 
     /// GET /v2/snaps/@p name
-    QJsonObject snapByName(const QByteArray& name);
+    SnapJob* snapByName(const QByteArray& name);
 
     /// GET /v2/find query
-    QJsonArray find(const QString &query);
+    SnapJob* find(const QString &query);
 
     /// GET /v2/find query
-    QJsonArray findByName(const QString &name);
+    SnapJob* findByName(const QString &name);
 
     enum SnapAction { Install, Refresh, Remove, Revert, Enable, Disable };
 
@@ -89,8 +89,6 @@ public:
 private:
     QByteArray createRequest(const QByteArray &method, const QByteArray &path, const QByteArray &content) const;
     void stateChanged(QLocalSocket::LocalSocketState newState);
-
-    QVector<SnapJob*> m_jobs;
 
     QByteArray m_macaroon;
     QJsonArray m_discharges;
