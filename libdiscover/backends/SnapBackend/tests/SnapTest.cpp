@@ -33,6 +33,28 @@
 #include <QtTest>
 #include <QAction>
 
+namespace QTest {
+    template<>
+    char *toString(const QJsonValue &value)
+    {
+        QByteArray ret;
+        if (value.isObject())
+            ret = QJsonDocument(value.toObject()).toJson();
+        else if (value.isArray())
+            ret = QJsonDocument(value.toArray()).toJson();
+        else
+            ret = value.toString().toLatin1();
+        return qstrdup(ret.data());
+    }
+
+    template<>
+    char *toString(const QJsonObject &object)
+    {
+        QByteArray ret = QJsonDocument(object).toJson();
+        return qstrdup(ret.data());
+    }
+}
+
 class SnapTest : public QObject
 {
 Q_OBJECT
@@ -53,11 +75,24 @@ private Q_SLOTS:
         const auto snaps = socket.snaps();
         for(const auto &snapValue : snaps) {
             QVERIFY(snapValue.isObject());
-            const auto snap = snapValue.toObject();
+            auto snap = snapValue.toObject();
             QVERIFY(snap.contains(QLatin1String("name") ));
             QVERIFY(snap.contains(QLatin1String("developer")));
 
-            const auto requestedSnap = socket.snapByName(snap.value(QLatin1String("name")).toString().toUtf8());
+            auto requestedSnap = socket.snapByName(snap.value(QLatin1String("name")).toString().toUtf8());
+
+            //should treat these separately becauase they're randomly delivered in different order
+            //just make sure they're the same number, for now
+            const auto apps = snap.take(QLatin1String("apps")).toArray(), reqApps = requestedSnap.take(QLatin1String("apps")).toArray();
+            QCOMPARE(apps.count(), reqApps.count());
+
+            if (requestedSnap != snap) {
+                const auto keys = snap.keys();
+                QCOMPARE(requestedSnap.keys(), keys);
+                foreach(const auto &key, keys) {
+                    QCOMPARE(requestedSnap.value(key), snap.value(key));
+                }
+            }
             QCOMPARE(requestedSnap, snap);
         }
     }
