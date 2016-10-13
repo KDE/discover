@@ -171,4 +171,5 @@ void SnapJob::processReply()
             qWarning() << "wrong object type" << rest;
         m_data = doc.object();
     }
+    Q_EMIT finished();
 }
